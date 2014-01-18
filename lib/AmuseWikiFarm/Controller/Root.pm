@@ -1,7 +1,7 @@
 package AmuseWikiFarm::Controller::Root;
 use Moose;
 use namespace::autoclean;
-
+use File::Spec::Functions qw/catfile/;
 BEGIN { extends 'Catalyst::Controller' }
 
 #
@@ -47,13 +47,38 @@ sub default :Path {
     $c->response->status(404);
 }
 
-=head2 end
+=head2 auto
 
-Attempt to render a view, if needed.
+Root auto methods sets the site code C<site_id> in the stash, for
+farming purposes, defaulting to C<default>.
 
 =cut
 
-sub end : ActionClass('RenderView') {}
+sub auto :Private {
+    my ($self, $c) = @_;
+    my $server_id = $c->request->header('host');
+    my $site_id = 'default';
+    $c->log->debug("Site ID for $server_id is $site_id");
+    $c->stash(site_id => $site_id);
+}
+
+
+
+=head2 end
+
+Attempt to render a view, if needed, prepending the stashed C<site_id>.
+
+=cut
+
+sub end : ActionClass('RenderView') {
+    my ($self, $c) = @_;
+    if ($c->stash->{site_id}) {
+        my $template_fullpath = catfile($c->stash->{site_id},
+                                        $c->stash->{template});
+        $c->log->debug("Tring to render $template_fullpath");
+        $c->stash(template => $template_fullpath );
+    };
+}
 
 =head1 AUTHOR
 

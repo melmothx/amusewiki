@@ -23,10 +23,8 @@ Catalyst Controller.
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-
-    $c->response->body('Matched AmuseWikiFarm::Controller::Library in Library.');
+    $c->stash(template => 'list.tt');
 }
-
 
 
 =encoding utf8

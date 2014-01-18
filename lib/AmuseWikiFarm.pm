@@ -42,6 +42,15 @@ __PACKAGE__->config(
     enable_catalyst_header => 1, # Send X-Catalyst header
 );
 
+
+__PACKAGE__->config(
+    'View::HTML' => {
+        INCLUDE_PATH => [
+            __PACKAGE__->path_to('root', 'src'),
+           ],
+       },
+   );
+
 # Start the application
 __PACKAGE__->setup();
 
@@ -73,5 +82,9 @@ This library is free software. You can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
+
+# Local Variables:
+# cperl-indent-parens-as-block: t
+# End:
 
 1;
