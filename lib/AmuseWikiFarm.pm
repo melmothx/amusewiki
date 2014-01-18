@@ -20,6 +20,9 @@ use Catalyst qw/
     -Debug
     ConfigLoader
     Static::Simple
+
+    StackTrace
+    MemoryUsage
 /;
 
 extends 'Catalyst';
