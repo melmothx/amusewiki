@@ -9,7 +9,7 @@ use Module::Install::Catalyst; # Complain loudly if you don't have
 name 'AmuseWikiFarm';
 all_from 'lib/AmuseWikiFarm.pm';
 
-requires 'Catalyst::Runtime' => '5.90053';
+requires 'Catalyst::Runtime' => '5.90015';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
