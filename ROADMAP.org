@@ -1,0 +1,45 @@
+* Frontend
+
+** /library display
+
+*** DB script to bootstrap the archive
+
+*** document directory structure
+
+** template migration for the existing libraries
+
+*** not. fun. at. all.
+
+** editing
+
+*** /edit
+
+** X-Accel
+
+*** serve static files without catalyst
+
+** /admin
+
+*** site and user creation
+
+** /queue
+
+*** patch manager, individual commits
+
+** users + authentication + roles
+
+*** root user for site creation
+
+*** regular for approvals
+
+*** anon for editing
+
+* Backend
+
+** beanstalk, probably, as broker + Beanstalk::Client
+
+** compilation + Xapian indexing (Search::Xapian)
+
+** bookbuilder Text::Amuse + PDF::Imposition
+
+*** Provide more formats and fonts: XeLaTeX + js notifications
