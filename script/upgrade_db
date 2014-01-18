@@ -1,0 +1,7 @@
+#!/bin/bash
+
+script/amusewikifarm_create.pl model DB \
+    DBIC::Schema AmuseWikiFarm::Schema \
+    create=static naming=current use_namespaces=1 \
+    dbi:SQLite:sqlite.db \
+    on_connect_do="PRAGMA foreign_keys = ON"

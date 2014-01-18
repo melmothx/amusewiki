@@ -56,9 +56,23 @@ farming purposes, defaulting to C<default>.
 
 sub auto :Private {
     my ($self, $c) = @_;
-    my $server_id = $c->request->header('host');
-    my $site_id = 'default';
-    $c->log->debug("Site ID for $server_id is $site_id");
+
+    # catch the host. Here we assume that ->base returns an URI object.
+    # Otherwise it's troubles and will die.
+    my $host = $c->request->base->host;
+
+    # lookup in the db
+    my $site = $c->model('DB::Site')->find($host);
+    my $site_id;
+    if ($site) {
+        $site_id = $site->site_id;
+    }
+    # assign the code
+    $site_id ||= 'default';
+    # log for good measure
+    $c->log->debug("Site ID for $host is $site_id");
+
+    # stash the site_id
     $c->stash(site_id => $site_id);
 }
 
@@ -66,13 +80,14 @@ sub auto :Private {
 
 =head2 end
 
-Attempt to render a view, if needed, prepending the stashed C<site_id>.
+Attempt to render a view, if needed, prepending the stashed C<site_id>
+if C<shared_template> is not set.
 
 =cut
 
 sub end : ActionClass('RenderView') {
     my ($self, $c) = @_;
-    if ($c->stash->{site_id}) {
+    unless ($c->stash->{shared_template}) {
         my $template_fullpath = catfile($c->stash->{site_id},
                                         $c->stash->{template});
         $c->log->debug("Tring to render $template_fullpath");

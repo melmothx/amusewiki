@@ -12,13 +12,18 @@ all_from 'lib/AmuseWikiFarm.pm';
 requires 'Catalyst::Runtime' => '5.90015';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
-requires 'Catalyst::Plugin::Static::StackTrace';
-requires 'Catalyst::Plugin::Static::MemoryUsage';
 requires 'Catalyst::Action::RenderView';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Config::General'; # This should reflect the config file format you've chosen
                  # See Catalyst::Plugin::ConfigLoader for supported formats
+
+# devel things to be removed at the end of the development cycle
+requires 'Catalyst::Plugin::StackTrace';
+requires 'Catalyst::Plugin::MemoryUsage';
+requires 'DBIx::Class::Schema::Loader';
+requires 'MooseX::MarkAsMethods';
+
 test_requires 'Test::More' => '0.88';
 catalyst;
 

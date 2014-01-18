@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS author;
 
 CREATE TABLE site (
        name VARCHAR(255) PRIMARY KEY,
-       id VARCHAR(16) NOT NULL DEFAULT 'default'
+       site_id VARCHAR(16) NOT NULL DEFAULT 'default'
 );
 
 CREATE TABLE title (
@@ -31,14 +31,6 @@ CREATE TABLE author (
         site_id VARCHAR(16)
 );
 
-
-INSERT INTO site VALUES ('en.anarhija.net:3000', 'en');
-INSERT INTO site VALUES ('fi.anarhija.net:3000', 'fi');
-INSERT INTO site VALUES ('mk.anarhija.net:3000', 'mk');
-INSERT INTO site VALUES ('sh.anarhija.net:3000', 'yu');
-INSERT INTO site VALUES ('hr.anarhija.net:3000', 'yu');
-INSERT INTO site VALUES ('sr.anarhija.net:3000', 'yu');
-INSERT INTO site VALUES ('ba.anarhija.net:3000', 'yu');
 INSERT INTO site VALUES ('yu.anarhija.net', 'yu');
 INSERT INTO site VALUES ('en.anarhija.net', 'en');
 INSERT INTO site VALUES ('fi.anarhija.net', 'fi');
