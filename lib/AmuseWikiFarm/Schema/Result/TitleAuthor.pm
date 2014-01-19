@@ -41,7 +41,6 @@ __PACKAGE__->table("title_author");
 =head2 title_id
 
   data_type: 'integer'
-  is_auto_increment: 1
   is_foreign_key: 1
   is_nullable: 0
 
@@ -49,20 +48,15 @@ __PACKAGE__->table("title_author");
 
   data_type: 'integer'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
 
 =cut
 
 __PACKAGE__->add_columns(
   "title_id",
-  {
-    data_type         => "integer",
-    is_auto_increment => 1,
-    is_foreign_key    => 1,
-    is_nullable       => 0,
-  },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "author_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -71,13 +65,13 @@ __PACKAGE__->add_columns(
 
 =item * L</title_id>
 
-=item * L</title_id>
+=item * L</author_id>
 
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("title_id", "title_id");
+__PACKAGE__->set_primary_key("title_id", "author_id");
 
 =head1 RELATIONS
 
@@ -93,12 +87,7 @@ __PACKAGE__->belongs_to(
   "author",
   "AmuseWikiFarm::Schema::Result::Author",
   { id => "author_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 =head2 title
@@ -117,8 +106,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 15:46:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H5ul2mBQcd/fXTQglKK4FA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 19:24:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:X9XuHjFvjenVzJrRX28duw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -57,7 +57,7 @@ CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
 CREATE TABLE title_author (
         title_id     INTEGER REFERENCES title(id) ON DELETE CASCADE ON UPDATE CASCADE,
         author_id   INTEGER REFERENCES author(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        PRIMARY KEY (title_id, title_id)
+        PRIMARY KEY (title_id, author_id)
 );
 CREATE TABLE author (
         id          INTEGER PRIMARY KEY,
