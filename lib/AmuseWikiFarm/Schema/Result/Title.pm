@@ -209,6 +209,22 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<uri_site_id_unique>
+
+=over 4
+
+=item * L</uri>
+
+=item * L</site_id>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
+
 =head1 RELATIONS
 
 =head2 title_authors
@@ -237,8 +253,8 @@ Composing rels: L</title_authors> -> author
 __PACKAGE__->many_to_many("authors", "title_authors", "author");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 16:17:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EUTsPT8LZO2YpKuUqOuuTA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 17:10:38
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TpyOxS036XynOQaA48g0dQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

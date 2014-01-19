@@ -50,6 +50,8 @@ CREATE TABLE title (
         deleted     TEXT,
         site_id     VARCHAR(16) NOT NULL
 );
+CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
+
 
 -- 'book_author' is a many-to-many join table between books & authors
 CREATE TABLE title_author (
@@ -60,9 +62,11 @@ CREATE TABLE title_author (
 CREATE TABLE author (
         id          INTEGER PRIMARY KEY,
         name  TEXT,
-        uri   TEXT,
+        uri   VARCHAR(255) NOT NULL,
         site_id VARCHAR(16) NOT NULL
 );
+CREATE UNIQUE INDEX unique_author ON author (uri, site_id);
+
 
 INSERT INTO site VALUES ('yu.anarhija.net', 'yu');
 INSERT INTO site VALUES ('en.anarhija.net', 'en');

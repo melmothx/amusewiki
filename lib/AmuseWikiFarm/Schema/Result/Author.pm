@@ -51,8 +51,9 @@ __PACKAGE__->table("author");
 
 =head2 uri
 
-  data_type: 'text'
-  is_nullable: 1
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
 
 =head2 site_id
 
@@ -68,7 +69,7 @@ __PACKAGE__->add_columns(
   "name",
   { data_type => "text", is_nullable => 1 },
   "uri",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 0, size => 255 },
   "site_id",
   { data_type => "varchar", is_nullable => 0, size => 16 },
 );
@@ -84,6 +85,22 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
+
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<uri_site_id_unique>
+
+=over 4
+
+=item * L</uri>
+
+=item * L</site_id>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
 
 =head1 RELATIONS
 
@@ -113,8 +130,8 @@ Composing rels: L</title_authors> -> title
 __PACKAGE__->many_to_many("titles", "title_authors", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 15:46:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0MFsXyUvj6FFLptDBEy69g
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 17:11:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lQd1+uuOJuv80zLrFHy31w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
