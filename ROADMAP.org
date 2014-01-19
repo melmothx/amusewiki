@@ -43,3 +43,11 @@
 ** bookbuilder Text::Amuse + PDF::Imposition
 
 *** Provide more formats and fonts: XeLaTeX + js notifications
+* Needed features
+** simple to use
+** simple to install
+** template management
+** page deletion
+** category management
+
+
