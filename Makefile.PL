@@ -12,11 +12,15 @@ all_from 'lib/AmuseWikiFarm.pm';
 requires 'Catalyst::Runtime' => '5.90015';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
+requires 'Catalyst::Plugin::Unicode::Encoding';
 requires 'Catalyst::Action::RenderView';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Config::General'; # This should reflect the config file format you've chosen
                  # See Catalyst::Plugin::ConfigLoader for supported formats
+
+# our own dogfood
+requires 'Text::Amuse' => 0.05;
 
 # devel things to be removed at the end of the development cycle
 requires 'Catalyst::Plugin::StackTrace';
