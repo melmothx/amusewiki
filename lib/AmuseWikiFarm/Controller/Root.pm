@@ -57,9 +57,8 @@ farming purposes, defaulting to C<default>.
 sub auto :Private {
     my ($self, $c) = @_;
 
-    # catch the host. Here we assume that ->base returns an URI object.
-    # Otherwise it's troubles and will die.
-    my $host = $c->request->base->host;
+    # catch the host. ->uri is an URI object, as per doc.
+    my $host = $c->request->uri->host;
 
     # lookup in the db
     my $site = $c->model('DB::Site')->find($host);
