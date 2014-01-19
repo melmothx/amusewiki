@@ -11,6 +11,9 @@ __PACKAGE__->config(
         user => '',
         password => '',
         on_connect_do => q{PRAGMA foreign_keys = ON},
+        AutoCommit => 1,
+        RaiseError => 1,
+        sqlite_unicode => 1,
     }
 );
 
@@ -42,3 +45,7 @@ it under the same terms as Perl itself.
 =cut
 
 1;
+
+# Local Variables:
+# cperl-indent-parens-as-block: t
+# End:
