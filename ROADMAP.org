@@ -2,7 +2,8 @@
 
 ** /library display
 
-*** DB script to bootstrap the archive
+*** DONE DB script to bootstrap the archive
+    CLOSED: [2014-01-19 dom 20:44]
 
 *** document directory structure
 
