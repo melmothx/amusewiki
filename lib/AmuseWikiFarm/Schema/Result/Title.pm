@@ -47,9 +47,95 @@ __PACKAGE__->table("title");
 =head2 title
 
   data_type: 'text'
+  default_value: (empty string)
+  is_nullable: 0
+
+=head2 subtitle
+
+  data_type: 'text'
+  default_value: (empty string)
+  is_nullable: 0
+
+=head2 lang
+
+  data_type: 'varchar'
+  default_value: 'en'
+  is_nullable: 0
+  size: 3
+
+=head2 date
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 notes
+
+  data_type: 'text'
+  default_value: (empty string)
+  is_nullable: 0
+
+=head2 source
+
+  data_type: 'text'
+  default_value: (empty string)
+  is_nullable: 0
+
+=head2 list_title
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 author
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 uid
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 attach
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 pubdate
+
+  data_type: 'timestamp'
+  is_nullable: 1
+
+=head2 f_path
+
+  data_type: 'text'
+  is_nullable: 0
+
+=head2 f_name
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
+=head2 f_archive_rel_path
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 4
+
+=head2 f_timestmap
+
+  data_type: 'text'
   is_nullable: 1
 
 =head2 uri
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
+=head2 deleted
 
   data_type: 'text'
   is_nullable: 1
@@ -57,7 +143,7 @@ __PACKAGE__->table("title");
 =head2 site_id
 
   data_type: 'varchar'
-  is_nullable: 1
+  is_nullable: 0
   size: 16
 
 =cut
@@ -66,11 +152,41 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "title",
+  { data_type => "text", default_value => "", is_nullable => 0 },
+  "subtitle",
+  { data_type => "text", default_value => "", is_nullable => 0 },
+  "lang",
+  { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
+  "date",
+  { data_type => "text", is_nullable => 1 },
+  "notes",
+  { data_type => "text", default_value => "", is_nullable => 0 },
+  "source",
+  { data_type => "text", default_value => "", is_nullable => 0 },
+  "list_title",
+  { data_type => "text", is_nullable => 1 },
+  "author",
+  { data_type => "text", is_nullable => 1 },
+  "uid",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "attach",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "pubdate",
+  { data_type => "timestamp", is_nullable => 1 },
+  "f_path",
+  { data_type => "text", is_nullable => 0 },
+  "f_name",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "f_archive_rel_path",
+  { data_type => "varchar", is_nullable => 0, size => 4 },
+  "f_timestmap",
   { data_type => "text", is_nullable => 1 },
   "uri",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "deleted",
   { data_type => "text", is_nullable => 1 },
   "site_id",
-  { data_type => "varchar", is_nullable => 1, size => 16 },
+  { data_type => "varchar", is_nullable => 0, size => 16 },
 );
 
 =head1 PRIMARY KEY
@@ -113,8 +229,8 @@ Composing rels: L</title_authors> -> author
 __PACKAGE__->many_to_many("authors", "title_authors", "author");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-18 18:28:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:fytz1j/BIkwHPIwWZ0f3QQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 15:52:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2BOtBImVRJ4O2e6IMVi0lQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

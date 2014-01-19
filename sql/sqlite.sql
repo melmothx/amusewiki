@@ -13,9 +13,41 @@ CREATE TABLE site (
 
 CREATE TABLE title (
         id          INTEGER PRIMARY KEY,
-        title       TEXT,
-        uri         TEXT,
-        site_id     VARCHAR(16)
+
+        -- from the .muse file
+        title       TEXT NOT NULL DEFAULT '',
+        subtitle    TEXT NOT NULL DEFAULT '',
+
+        -- 3 letters, as per doc
+        lang        VARCHAR(3) NOT NULL DEFAULT 'en',
+
+        date        TEXT,
+        notes       TEXT NOT NULL DEFAULT '',
+        source      TEXT NOT NULL DEFAULT '',
+
+        -- sorting only, as per doc
+        list_title  TEXT,
+
+        -- display only, as per doc
+        author      TEXT,
+
+        -- from tabula rasa
+        -- to identify translations texts across libraries
+        uid         VARCHAR(255),
+        -- to attach files
+        attach      VARCHAR(255),
+        -- to overwrite the timestamp
+        pubdate     TIMESTAMP,
+
+        -- from the scanner
+        f_path      TEXT NOT NULL,
+        f_name      VARCHAR(255) NOT NULL,
+        f_archive_rel_path VARCHAR(4) NOT NULL,
+        f_timestmap TEXT,
+
+        uri         VARCHAR(255) NOT NULL,
+        deleted     TEXT,
+        site_id     VARCHAR(16) NOT NULL
 );
 
 -- 'book_author' is a many-to-many join table between books & authors
@@ -28,7 +60,7 @@ CREATE TABLE author (
         id          INTEGER PRIMARY KEY,
         name  TEXT,
         uri   TEXT,
-        site_id VARCHAR(16)
+        site_id VARCHAR(16) NOT NULL
 );
 
 INSERT INTO site VALUES ('yu.anarhija.net', 'yu');
@@ -39,16 +71,4 @@ INSERT INTO site VALUES ('sh.anarhija.net', 'yu');
 INSERT INTO site VALUES ('hr.anarhija.net', 'yu');
 INSERT INTO site VALUES ('sr.anarhija.net', 'yu');
 INSERT INTO site VALUES ('ba.anarhija.net', 'yu');
-
-
-INSERT INTO title VALUES (1, 'Kaliban i veštica',
-        'silvia-federici-kaliban-i-vestica', 'yu');
-INSERT INTO title VALUES (2, 'Dadaland',
-       'jean-arp-dadaland', 'yu');
-
-INSERT INTO author VALUES (1, 'Silvia Federici', 'silvia-federici', 'yu');
-INSERT INTO author VALUES (2, 'Jean Arp', 'jean-arp', 'yu');
-
-INSERT INTO title_author VALUES (1, 1);
-INSERT INTO title_author VALUES (2, 2);
 

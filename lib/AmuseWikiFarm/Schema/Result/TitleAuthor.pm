@@ -94,7 +94,7 @@ __PACKAGE__->belongs_to(
   "AmuseWikiFarm::Schema::Result::Author",
   { id => "author_id" },
   {
-    is_deferrable => 1,
+    is_deferrable => 0,
     join_type     => "LEFT",
     on_delete     => "CASCADE",
     on_update     => "CASCADE",
@@ -113,12 +113,12 @@ __PACKAGE__->belongs_to(
   "title",
   "AmuseWikiFarm::Schema::Result::Title",
   { id => "title_id" },
-  { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07025 @ 2014-01-18 19:20:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SLKin0G4yahLsMGHEVe1TA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 15:46:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H5ul2mBQcd/fXTQglKK4FA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

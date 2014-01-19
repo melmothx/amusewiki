@@ -57,7 +57,7 @@ __PACKAGE__->table("author");
 =head2 site_id
 
   data_type: 'varchar'
-  is_nullable: 1
+  is_nullable: 0
   size: 16
 
 =cut
@@ -70,7 +70,7 @@ __PACKAGE__->add_columns(
   "uri",
   { data_type => "text", is_nullable => 1 },
   "site_id",
-  { data_type => "varchar", is_nullable => 1, size => 16 },
+  { data_type => "varchar", is_nullable => 0, size => 16 },
 );
 
 =head1 PRIMARY KEY
@@ -113,8 +113,8 @@ Composing rels: L</title_authors> -> title
 __PACKAGE__->many_to_many("titles", "title_authors", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-18 18:28:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QT3rNIVn6xfZVNFzsFvL8Q
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 15:46:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0MFsXyUvj6FFLptDBEy69g
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
