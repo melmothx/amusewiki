@@ -66,9 +66,28 @@ foreach my $archive (@archives) {
         # TODO
         delete $details->{SORTauthors};
         delete $details->{SORTtopics};
-        delete $details->{LISTtitle};
+
+        # TODO fixed categories, to lookup in tables, space separated
         delete $details->{cat};
 
+        my $title_order_by = delete $details->{LISTtitle};
+        if (defined $title_order_by and length($title_order_by)) {
+            $insertion{list_title} = $title_order_by;
+        }
+        else {
+            $title_order_by = $insertion{title};
+            if (defined $title_order_by and
+                and $title_order_by =~ m/\w/) {
+                $title_order_by =~ s/^[\W]+//;
+                $insertion{list_title} = $title_order_by;
+            }
+        }
+
+        # check if the title exists
+        unless ($insertion{title}) {
+            warn "$file has no title! Setting deletion\n";
+            $insertion{deleted} ||= "Missing title";
+        }
 
         if (%$details) {
             warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
