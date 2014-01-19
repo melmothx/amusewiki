@@ -43,7 +43,8 @@ CREATE TABLE title (
         f_path      TEXT NOT NULL,
         f_name      VARCHAR(255) NOT NULL,
         f_archive_rel_path VARCHAR(4) NOT NULL,
-        f_timestmap TEXT,
+        f_timestamp VARCHAR(255) NOT NULL,
+        f_full_path_name TEXT NOT NULL,
 
         uri         VARCHAR(255) NOT NULL,
         deleted     TEXT,

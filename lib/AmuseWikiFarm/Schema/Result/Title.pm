@@ -124,10 +124,16 @@ __PACKAGE__->table("title");
   is_nullable: 0
   size: 4
 
-=head2 f_timestmap
+=head2 f_timestamp
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
+=head2 f_full_path_name
 
   data_type: 'text'
-  is_nullable: 1
+  is_nullable: 0
 
 =head2 uri
 
@@ -179,8 +185,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "f_archive_rel_path",
   { data_type => "varchar", is_nullable => 0, size => 4 },
-  "f_timestmap",
-  { data_type => "text", is_nullable => 1 },
+  "f_timestamp",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "f_full_path_name",
+  { data_type => "text", is_nullable => 0 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "deleted",
@@ -229,8 +237,8 @@ Composing rels: L</title_authors> -> author
 __PACKAGE__->many_to_many("authors", "title_authors", "author");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 15:52:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2BOtBImVRJ4O2e6IMVi0lQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 16:17:51
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EUTsPT8LZO2YpKuUqOuuTA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

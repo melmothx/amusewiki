@@ -25,9 +25,12 @@ foreach my $s ($db->resultset('Site')->all) {
 
 my @archives = @ARGV;
 
+my %title_columns = map { $_ => 1 } $db->resultset('Title')->result_source->columns;
+
 foreach my $archive (@archives) {
     my $code = basename($archive);
     print "Scanning $archive with code $code\n";
+    die "Wrong code or directory $code" unless ($code =~ m/^[a-z]{2,50}+$/);
     my @files;
     find (sub {
               my $file = $_;
@@ -46,7 +49,32 @@ foreach my $archive (@archives) {
             warn "Found wrong file $file for $archive ($code)\n";
             next;
         }
-        print Dumper($details);
+        $details->{site_id} = $code;
+        $details->{uri} = $details->{f_name};
+        # print Dumper($details);
+
+        # ready to store into titles?
+        my %insertion;
+        # lower case the keys
+        foreach my $col (keys %$details) {
+            my $db_col = lc($col);
+            if ($title_columns{$db_col}) {
+                $insertion{$db_col} = delete $details->{$col};
+            }
+        }
+
+        # TODO
+        delete $details->{SORTauthors};
+        delete $details->{SORTtopics};
+        delete $details->{LISTtitle};
+        delete $details->{cat};
+
+
+        if (%$details) {
+            warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
+        }
+        print "Inserting data for $file\n";
+        $db->resultset('Title')->create(\%insertion);
     }
 }
 
