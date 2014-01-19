@@ -1,12 +1,12 @@
 use utf8;
-package AmuseWikiFarm::Schema::Result::TitleAuthor;
+package AmuseWikiFarm::Schema::Result::TitleCategory;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::TitleAuthor
+AmuseWikiFarm::Schema::Result::TitleCategory
 
 =cut
 
@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<title_author>
+=head1 TABLE: C<title_category>
 
 =cut
 
-__PACKAGE__->table("title_author");
+__PACKAGE__->table("title_category");
 
 =head1 ACCESSORS
 
@@ -44,7 +44,7 @@ __PACKAGE__->table("title_author");
   is_foreign_key: 1
   is_nullable: 0
 
-=head2 author_id
+=head2 category_id
 
   data_type: 'integer'
   is_foreign_key: 1
@@ -55,7 +55,7 @@ __PACKAGE__->table("title_author");
 __PACKAGE__->add_columns(
   "title_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
-  "author_id",
+  "category_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
 
@@ -65,28 +65,28 @@ __PACKAGE__->add_columns(
 
 =item * L</title_id>
 
-=item * L</author_id>
+=item * L</category_id>
 
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("title_id", "author_id");
+__PACKAGE__->set_primary_key("title_id", "category_id");
 
 =head1 RELATIONS
 
-=head2 author
+=head2 category
 
 Type: belongs_to
 
-Related object: L<AmuseWikiFarm::Schema::Result::Author>
+Related object: L<AmuseWikiFarm::Schema::Result::Category>
 
 =cut
 
 __PACKAGE__->belongs_to(
-  "author",
-  "AmuseWikiFarm::Schema::Result::Author",
-  { id => "author_id" },
+  "category",
+  "AmuseWikiFarm::Schema::Result::Category",
+  { id => "category_id" },
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
@@ -106,8 +106,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 19:24:45
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:X9XuHjFvjenVzJrRX28duw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 20:05:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cFBO5VVs7KPgsq9Iaa5GZA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

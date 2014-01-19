@@ -227,34 +227,34 @@ __PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
 
 =head1 RELATIONS
 
-=head2 title_authors
+=head2 title_categories
 
 Type: has_many
 
-Related object: L<AmuseWikiFarm::Schema::Result::TitleAuthor>
+Related object: L<AmuseWikiFarm::Schema::Result::TitleCategory>
 
 =cut
 
 __PACKAGE__->has_many(
-  "title_authors",
-  "AmuseWikiFarm::Schema::Result::TitleAuthor",
+  "title_categories",
+  "AmuseWikiFarm::Schema::Result::TitleCategory",
   { "foreign.title_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 authors
+=head2 categories
 
 Type: many_to_many
 
-Composing rels: L</title_authors> -> author
+Composing rels: L</title_categories> -> category
 
 =cut
 
-__PACKAGE__->many_to_many("authors", "title_authors", "author");
+__PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 17:10:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TpyOxS036XynOQaA48g0dQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 20:05:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3rlT5V5LnMNoOujSP+dddA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

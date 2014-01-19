@@ -54,18 +54,21 @@ CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
 
 
 -- 'book_author' is a many-to-many join table between books & authors
-CREATE TABLE title_author (
-        title_id     INTEGER REFERENCES title(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        author_id   INTEGER REFERENCES author(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        PRIMARY KEY (title_id, author_id)
+CREATE TABLE title_category (
+        title_id     INTEGER REFERENCES title(id)
+                     ON DELETE CASCADE ON UPDATE CASCADE,
+        category_id  INTEGER REFERENCES category(id)
+                     ON DELETE CASCADE ON UPDATE CASCADE,
+        PRIMARY KEY (title_id, category_id)
 );
-CREATE TABLE author (
+CREATE TABLE category (
         id          INTEGER PRIMARY KEY,
         name  TEXT,
         uri   VARCHAR(255) NOT NULL,
+        type  VARCHAR(16) NOT NULL,
         site_id VARCHAR(16) NOT NULL
 );
-CREATE UNIQUE INDEX unique_author ON author (uri, site_id);
+CREATE UNIQUE INDEX unique_category ON category (uri, site_id, type);
 
 
 INSERT INTO site VALUES ('yu.anarhija.net', 'yu');

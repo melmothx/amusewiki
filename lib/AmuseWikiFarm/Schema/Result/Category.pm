@@ -1,12 +1,12 @@
 use utf8;
-package AmuseWikiFarm::Schema::Result::Author;
+package AmuseWikiFarm::Schema::Result::Category;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Author
+AmuseWikiFarm::Schema::Result::Category
 
 =cut
 
@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<author>
+=head1 TABLE: C<category>
 
 =cut
 
-__PACKAGE__->table("author");
+__PACKAGE__->table("category");
 
 =head1 ACCESSORS
 
@@ -55,6 +55,12 @@ __PACKAGE__->table("author");
   is_nullable: 0
   size: 255
 
+=head2 type
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 16
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -70,6 +76,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "type",
+  { data_type => "varchar", is_nullable => 0, size => 16 },
   "site_id",
   { data_type => "varchar", is_nullable => 0, size => 16 },
 );
@@ -88,7 +96,7 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 UNIQUE CONSTRAINTS
 
-=head2 C<uri_site_id_unique>
+=head2 C<uri_site_id_type_unique>
 
 =over 4
 
@@ -96,26 +104,28 @@ __PACKAGE__->set_primary_key("id");
 
 =item * L</site_id>
 
+=item * L</type>
+
 =back
 
 =cut
 
-__PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
+__PACKAGE__->add_unique_constraint("uri_site_id_type_unique", ["uri", "site_id", "type"]);
 
 =head1 RELATIONS
 
-=head2 title_authors
+=head2 title_categories
 
 Type: has_many
 
-Related object: L<AmuseWikiFarm::Schema::Result::TitleAuthor>
+Related object: L<AmuseWikiFarm::Schema::Result::TitleCategory>
 
 =cut
 
 __PACKAGE__->has_many(
-  "title_authors",
-  "AmuseWikiFarm::Schema::Result::TitleAuthor",
-  { "foreign.author_id" => "self.id" },
+  "title_categories",
+  "AmuseWikiFarm::Schema::Result::TitleCategory",
+  { "foreign.category_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
@@ -123,15 +133,15 @@ __PACKAGE__->has_many(
 
 Type: many_to_many
 
-Composing rels: L</title_authors> -> title
+Composing rels: L</title_categories> -> title
 
 =cut
 
-__PACKAGE__->many_to_many("titles", "title_authors", "title");
+__PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 17:11:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lQd1+uuOJuv80zLrFHy31w
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 20:05:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bifOTRO5uj0py9NusfpaIg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

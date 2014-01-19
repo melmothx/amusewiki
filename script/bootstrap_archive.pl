@@ -61,11 +61,15 @@ foreach my $archive (@archives) {
             }
         }
 
+        my $parsed_cats = delete $details->{parsed_categories};
         if (%$details) {
             warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
         }
         print "Inserting data for $file\n";
         # TODO: see if we have to update the insertion
-        $db->resultset('Title')->update_or_create(\%insertion);
+        my $title = $db->resultset('Title')->update_or_create(\%insertion);
+        if ($parsed_cats && @$parsed_cats) {
+            $title->set_categories($parsed_cats);
+        }
     }
 }

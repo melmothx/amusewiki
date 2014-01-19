@@ -7,7 +7,7 @@ use Data::Dumper;
 use File::Spec;
 use File::Basename;
 use Text::Amuse::Functions qw/muse_fast_scan_header/;
-use HTML::Entities qw/decode_entities/;
+use HTML::Entities qw/decode_entities encode_entities/;
 use Encode;
 use Digest::MD5 qw/md5_hex/;
 
@@ -42,16 +42,29 @@ sub muse_file_info {
     my $details = _parse_muse_file($file);
     return unless $details;
 
-    # TODO
-    my $authors = delete $details->{SORTauthors};
-    unless (defined($authors)) {
-        $authors = $details->{author};
+    # normalize and use author as default if missing
+    unless ($details->{SORTauthors}) {
+        $details->{SORTauthors} = $details->{author};
     }
 
-    # TODO
-    delete $details->{SORTtopics};
+    my @categories;
 
-    # TODO fixed categories, to lookup in tables, space separated
+    foreach my $category (keys %$details) {
+        if ($category =~ m/^SORT(\w+?)s?$/) {
+            my $type = $1;
+            if (my $string = delete $details->{$category}) {
+                if (my @cats = _parse_topic_or_author($type, $string, $site_id)) {
+                    push @categories, @cats;
+                }
+            }
+        }
+    }
+    if (@categories) {
+        $details->{parsed_categories} = \@categories;
+    }
+
+    # TODO fixed categories, to lookup in tables, space separated, it
+    # needs a different routine.
     delete $details->{cat};
 
     my $title_order_by = delete $details->{LISTtitle};
@@ -411,7 +424,41 @@ sub _get_mtime {
   return $mtime;
 }
 
-
+sub _parse_topic_or_author {
+    my ($type, $string, $site_id) = @_;
+    return unless $type && $string;
+    $site_id ||= 'default';
+    # given that we asked for HTML in _parse_muse_file, first we strip
+    # the tags.
+    $string =~ s/<.*?>//g;
+    unless ($string) {
+        warn "It looks like we stripped too much from $string";
+        return;
+    }
+    # then we decode the entities
+    $string = decode_entities($string);
+    
+    # now we decide where to split
+    my $splitchar = ',';
+    if (index($string, ';') >= 0) {
+        $splitchar = ';'
+    }
+   
+    my @list = split(/\s*\Q$splitchar\E\s*/, $string);
+    my @out;
+    foreach my $el (@list) {
+        # no word, nothing to do
+        if ($el =~ m/\w/) {
+            push @out, {
+                        name => encode_entities($el, q{<>&"'}),
+                        uri => muse_naming_algo($el),
+                        type => $type,
+                        site_id => $site_id,
+                       }
+        }
+    }
+    @out ? return @out : return;
+}
 
 
 1;
