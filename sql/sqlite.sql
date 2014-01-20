@@ -8,7 +8,8 @@ DROP TABLE IF EXISTS author;
 
 CREATE TABLE site (
        name VARCHAR(255) PRIMARY KEY,
-       site_id VARCHAR(16) NOT NULL DEFAULT 'default'
+       site_id VARCHAR(16) NOT NULL DEFAULT 'default',
+       locale VARCHAR(3) NOT NULL DEFAULT 'en'
 );
 
 CREATE TABLE title (
@@ -47,7 +48,7 @@ CREATE TABLE title (
         f_full_path_name TEXT NOT NULL,
 
         uri         VARCHAR(255) NOT NULL,
-        deleted     TEXT,
+        deleted     TEXT NOT NULL DEFAULT '',
         site_id     VARCHAR(16) NOT NULL
 );
 CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
@@ -71,12 +72,5 @@ CREATE TABLE category (
 CREATE UNIQUE INDEX unique_category ON category (uri, site_id, type);
 
 
-INSERT INTO site VALUES ('yu.anarhija.net', 'yu');
-INSERT INTO site VALUES ('en.anarhija.net', 'en');
-INSERT INTO site VALUES ('fi.anarhija.net', 'fi');
-INSERT INTO site VALUES ('mk.anarhija.net', 'mk');
-INSERT INTO site VALUES ('sh.anarhija.net', 'yu');
-INSERT INTO site VALUES ('hr.anarhija.net', 'yu');
-INSERT INTO site VALUES ('sr.anarhija.net', 'yu');
-INSERT INTO site VALUES ('ba.anarhija.net', 'yu');
-
+INSERT INTO site VALUES ('yu.anarhija.net', 'yu', 'hr');
+INSERT INTO site VALUES ('ru.anarhija.net', 'ru', 'ru');

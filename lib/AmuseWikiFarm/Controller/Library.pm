@@ -19,10 +19,15 @@ Catalyst Controller.
 
 =head2 index
 
+List the titles.
+
 =cut
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
+    my $id = $c->stash->{site_id};
+    my $locale = $c->stash->{locale};
+    $c->stash(texts => $c->model('DB::Title')->list_titles($id, $locale));
     $c->stash(template => 'list.tt');
 }
 

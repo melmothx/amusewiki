@@ -1,2 +1,11 @@
 Site ID: [% site_id %]
+
+<ol>
+
+[% FOREACH text IN texts %]
+
+<li>[% text.title %] -- [% text.categories.first.name %]
+
+[% END %]
  
+</ol>

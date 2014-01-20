@@ -62,17 +62,20 @@ sub auto :Private {
 
     # lookup in the db
     my $site = $c->model('DB::Site')->find($host);
-    my $site_id;
+    my $site_id = 'default';
+    my $locale  = 'en';
     if ($site) {
         $site_id = $site->site_id;
+        $locale  = $site->locale;
     }
-    # assign the code
-    $site_id ||= 'default';
     # log for good measure
-    $c->log->debug("Site ID for $host is $site_id");
+    $c->log->debug("Site ID for $host is $site_id, with locale $locale");
 
     # stash the site_id
-    $c->stash(site_id => $site_id);
+    $c->stash(
+              site_id => $site_id,
+              locale  => $locale,
+             );
 }
 
 

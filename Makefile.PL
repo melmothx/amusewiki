@@ -19,6 +19,9 @@ requires 'namespace::autoclean';
 requires 'Config::General'; # This should reflect the config file format you've chosen
                  # See Catalyst::Plugin::ConfigLoader for supported formats
 
+# modules used
+requires 'Unicode::Collate';
+
 # our own dogfood
 requires 'Text::Amuse' => 0.05;
 
