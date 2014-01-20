@@ -4,8 +4,8 @@ Site ID: [% site_id %]
 
 [% FOREACH text IN texts %]
 
-<li>[% text.title %] -- [% text.categories.first.name %]
-
+<li><!-- [% text.id %] -->
+    [% text.title %] -- [% text.author_list %]
 [% END %]
  
 </ol>

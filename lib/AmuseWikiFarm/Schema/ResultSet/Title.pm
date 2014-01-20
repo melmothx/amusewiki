@@ -13,7 +13,7 @@ List the title for a single site
 
 =cut
 
-sub list_titles {
+sub title_list {
     my ($self, $id, $locale) = @_;
     $id ||= 'default';
     my @titles = $self->search({

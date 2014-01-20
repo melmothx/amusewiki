@@ -257,6 +257,43 @@ __PACKAGE__->many_to_many("categories", "title_categories", "category");
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-20 19:05:46
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:U87B8WDjn1HVoIWo4FMtVw
 
+=head2 listing
+
+The following methods return a string, which may be empty if no
+related record is found.
+
+=head3 author_list
+
+Return a comma separated list of authors for the current text.
+
+=head3 topic_list
+
+Return a comma separated list of topics for the current text.
+
+=head3 category_listing($type, $separator)
+
+Return a string with the list of category of type $type (so far
+<topic> or <author>) separated by $separator.
+
+=cut
+
+sub topic_list {
+    return shift->category_listing(topic => ', ');
+}
+
+sub author_list {
+    return shift->category_listing(author => ', ');
+}
+
+sub category_listing {
+    my ($self, $type, $sep) = @_;
+    my @cats;
+    foreach my $cat ($self->categories->search({ type => $type })) {
+        push @cats, $cat->name;
+    }
+    @cats ? return join($sep, @cats) : return '';
+}
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
