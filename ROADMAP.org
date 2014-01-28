@@ -5,6 +5,13 @@
 *** DONE DB script to bootstrap the archive
     CLOSED: [2014-01-19 dom 20:44]
 
+
+*** DONE /library/* routing
+    CLOSED: [2014-01-28 mar 22:35]
+
+*** Add to db attachments, so we can route them from /library/* 
+    We already looked in the db, so let's use it...
+
 *** document directory structure
 
 ** template migration for the existing libraries
