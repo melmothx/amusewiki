@@ -12,7 +12,9 @@ use Encode;
 use Digest::MD5 qw/md5_hex/;
 
 our @ISA = qw(Exporter);
-our @EXPORT_OK = qw/muse_file_info/;
+our @EXPORT_OK = qw/muse_file_info
+                    muse_naming_algo
+                   /;
 
 =head2 muse_file_info($file, $site_id)
 

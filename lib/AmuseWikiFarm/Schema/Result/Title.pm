@@ -18,6 +18,8 @@ use MooseX::NonMoose;
 use MooseX::MarkAsMethods autoclean => 1;
 extends 'DBIx::Class::Core';
 
+use File::Spec;
+
 =head1 COMPONENTS LOADED
 
 =over 4
@@ -292,6 +294,26 @@ sub category_listing {
         push @cats, $cat->name;
     }
     @cats ? return join($sep, @cats) : return '';
+}
+
+=head2 File serving
+
+=head3 filepath_for_ext($ext)
+
+Given the extension (without the leading dot) as argument, return the
+filename. It's not guaranteed to exists, though.
+
+The method concatenates C<f_path>, C<f_name>, a dot and the extension,
+using L<File::Spec>.
+
+
+=cut
+
+sub filepath_for_ext {
+    my ($self, $ext) = @_;
+    die "Wrong usage, ext is mandatory!" unless $ext;
+    return File::Spec->catfile($self->f_path,
+                               $self->f_name . '.' . $ext);
 }
 
 
