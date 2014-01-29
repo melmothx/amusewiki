@@ -18,8 +18,6 @@ use MooseX::NonMoose;
 use MooseX::MarkAsMethods autoclean => 1;
 extends 'DBIx::Class::Core';
 
-use File::Spec;
-
 =head1 COMPONENTS LOADED
 
 =over 4
@@ -259,6 +257,8 @@ __PACKAGE__->many_to_many("categories", "title_categories", "category");
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-20 19:05:46
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:U87B8WDjn1HVoIWo4FMtVw
 
+use File::Spec;
+
 =head2 listing
 
 The following methods return a string, which may be empty if no
@@ -311,7 +311,7 @@ using L<File::Spec>.
 
 sub filepath_for_ext {
     my ($self, $ext) = @_;
-    die "Wrong usage, ext is mandatory!" unless $ext;
+    $ext ||= "html";
     return File::Spec->catfile($self->f_path,
                                $self->f_name . '.' . $ext);
 }
