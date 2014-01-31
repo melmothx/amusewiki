@@ -1,4 +1,5 @@
 package AmuseWikiFarm;
+use 5.010001;
 use Moose;
 use namespace::autoclean;
 
