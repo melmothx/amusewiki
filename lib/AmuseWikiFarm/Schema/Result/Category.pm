@@ -143,6 +143,14 @@ __PACKAGE__->many_to_many("titles", "title_categories", "title");
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 20:05:44
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bifOTRO5uj0py9NusfpaIg
 
+sub title_count {
+    my $self = shift;
+    my @titles = $self->titles->search({
+                                        deleted => '',
+                                       });
+    return scalar(@titles);
+}
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
