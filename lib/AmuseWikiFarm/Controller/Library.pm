@@ -48,9 +48,8 @@ sub text :Path :Args(1) {
     my ($self, $c, $arg) = @_;
     # strip the extension
     my $name = $arg;
-    my $ext  = "";
-    my $append_ext = $ext;
-    my $is_image;
+    my $ext = '';
+    my $append_ext = '';
     if ($arg =~ m/(.+?) # name
                   \.   # dot
                   # and extensions we provide
@@ -70,11 +69,6 @@ sub text :Path :Args(1) {
                  /x) {
         $name = $1;
         $ext  = $2;
-        if ($ext eq 'jpeg' or
-            $ext eq 'png'  or
-            $ext eq 'jpg') {
-            $is_image = 1;
-        }
     }
 
     $c->log->debug("Ext is $ext");
@@ -87,6 +81,8 @@ sub text :Path :Args(1) {
         $append_ext = '.' . $ext;
     }
 
+    # assert we are using canonical names.
+    # TODO make it permanent
     my $canonical = muse_naming_algo($name);
     if ($canonical ne $name) {
         $c->response->redirect($c->uri_for($c->action, $canonical . $append_ext));
@@ -101,11 +97,17 @@ sub text :Path :Args(1) {
     if ($text) {
         $c->log->debug("Got $canonical $ext => " . $text->title);
         $c->serve_static_file($text->filepath_for_ext($ext));
-        $c->detach();
     }
-
-    $c->log->debug("Got $name $ext");
-
+    elsif (my $attach = $c->model('DB::Attachment')->single({
+                                                             site_id => $c->stash->{site_id},
+                                                             uri => $canonical . $append_ext,
+                                                            })) {
+        $c->log->debug("Found attachment $canonical$append_ext");
+        $c->serve_static_file($attach->f_full_path_name);
+    }
+    else {
+        # issue a 404 or redirect somewhere else
+    }
 }
 
 =encoding utf8

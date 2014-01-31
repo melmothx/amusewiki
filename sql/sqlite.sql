@@ -46,6 +46,7 @@ CREATE TABLE title (
         f_archive_rel_path VARCHAR(4) NOT NULL,
         f_timestamp VARCHAR(255) NOT NULL,
         f_full_path_name TEXT NOT NULL,
+        f_suffix    VARCHAR(16) NOT NULL,
 
         uri         VARCHAR(255) NOT NULL,
         deleted     TEXT NOT NULL DEFAULT '',
@@ -71,6 +72,19 @@ CREATE TABLE category (
 );
 CREATE UNIQUE INDEX unique_category ON category (uri, site_id, type);
 
+CREATE TABLE attachment (
+       id INTEGER PRIMARY KEY,
+       f_path      TEXT NOT NULL,
+       f_name      VARCHAR(255) NOT NULL,
+       f_archive_rel_path VARCHAR(4) NOT NULL,
+       f_timestamp VARCHAR(255) NOT NULL,
+       f_full_path_name TEXT NOT NULL,
+       f_suffix    VARCHAR(16) NOT NULL,
+       uri   VARCHAR(255) NOT NULL,
+       site_id VARCHAR(16) NOT NULL
+);
+
+CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
 INSERT INTO site VALUES ('yu.anarhija.net', 'yu', 'hr');
 INSERT INTO site VALUES ('ru.anarhija.net', 'ru', 'ru');

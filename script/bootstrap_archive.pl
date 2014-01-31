@@ -35,11 +35,18 @@ foreach my $archive (@archives) {
     find (sub {
               my $file = $_;
               return unless -f $file;
-              return unless $file =~ m/\.muse$/;
-              
               return unless index($File::Find::dir, '.git') < 0;
-              push @files, $File::Find::name;
-              
+
+              if ($file =~ m/\.muse$/) {
+                  push @files, $File::Find::name;
+              }
+              if ($file =~ m/([0-9a-z-]+?)(\.(a4|lt))?\.pdf$/) {
+                  # don't save it if exists a muse file
+                  return if (-f $1 . '.muse');
+              }
+              if ($file =~ m/\.(pdf|png|jpe?g)$/) {
+                  push @files, $File::Find::name;
+              }
           }, $archive);
     # print Dumper(\@files);
     foreach my $file (@files) {
@@ -48,6 +55,12 @@ foreach my $archive (@archives) {
 
         unless ($details) {
             warn "Found wrong file $file for $archive ($code)\n";
+            next;
+        }
+
+        if ($details->{f_suffix} ne '.muse') {
+            print "Inserting data for attachment $file\n";
+            $db->resultset('Attachment')->update_or_create($details);
             next;
         }
 

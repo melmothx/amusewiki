@@ -135,6 +135,12 @@ __PACKAGE__->table("title");
   data_type: 'text'
   is_nullable: 0
 
+=head2 f_suffix
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 16
+
 =head2 uri
 
   data_type: 'varchar'
@@ -190,6 +196,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "f_full_path_name",
   { data_type => "text", is_nullable => 0 },
+  "f_suffix",
+  { data_type => "varchar", is_nullable => 0, size => 16 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "deleted",
@@ -254,8 +262,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-20 19:05:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:U87B8WDjn1HVoIWo4FMtVw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-31 12:27:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7XIM6UcQLUx/ISpVxSLlrA
 
 use File::Spec;
 

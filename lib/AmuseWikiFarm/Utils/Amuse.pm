@@ -26,6 +26,11 @@ The result is suitable to feed the database, so see
 L<AmuseWikiFarm::Schema::Result::Title> for the returned keys and the
 AmuseWiki manual for the list of supported and defined directives.
 
+If the file passed is not a muse file, but a jpeg, jpg, png or pdf
+file, header is not checked, but the file info are returned, together
+with uri and site_id, suitable to be inserted in the
+L<AmuseWikiFarm::Schema::Result::Attachment> table.
+
 Special cases:
 
 LISTtitle in the header will map to C<list_title>, defaulting to
@@ -43,6 +48,17 @@ sub muse_file_info {
     $site_id ||= 'default';
     my $details = _parse_muse_file($file);
     return unless $details;
+
+    $details->{site_id} = $site_id;
+
+    if ($details->{f_suffix} ne '.muse') {
+        $details->{uri} = $details->{f_name} . $details->{f_suffix};
+        return $details;
+    }
+
+    $details->{uri} = $details->{f_name};
+
+
 
     # normalize and use author as default if missing
     unless ($details->{SORTauthors}) {
@@ -87,19 +103,19 @@ sub muse_file_info {
         $details->{deleted} ||= "Missing title";
     }
 
-    $details->{site_id} = $site_id;
-    $details->{uri} = $details->{f_name};
     return $details;
 }
 
-sub _parse_muse_file {
+sub _parse_file_path {
     my $file = shift;
     unless (File::Spec->file_name_is_absolute($file)) {
         $file = File::Spec->rel2abs($file);
     }
-    my ($name, $path, $suffix) = fileparse($file, ".muse");
+    my @exts = (qw/.muse .png .jpeg .jpg .pdf/);
+    my ($name, $path, $suffix) = fileparse($file, @exts);
+
     unless ($suffix) {
-        warn "$file is not a muse file!";
+        warn "$file is not a recognized file!";
         return;
     }
 
@@ -119,10 +135,30 @@ sub _parse_muse_file {
         warn "$file is not in the correct path:" . Dumper(\@relpath);
         return;
     }
+    my %out = (
+               f_path => $path,
+               f_name => $name,
+               f_archive_rel_path => File::Spec->catdir(@relpath),
+               f_timestamp => _get_mtime($file),
+               f_full_path_name  => $file,
+               f_suffix => $suffix,
+              );
+    return \%out;
+}
 
+
+sub _parse_muse_file {
+    my $file = shift;
+    my $fileinfo = _parse_file_path($file);
+    return unless $fileinfo;
+    # remove the suffix key
+    if ($fileinfo->{f_suffix} ne '.muse') {
+        return $fileinfo;
+    }
 
     # scan the directives;
-    my $directives = muse_fast_scan_header($file, 'html');
+    my $directives = muse_fast_scan_header($fileinfo->{f_full_path_name},
+                                           'html');
     unless ($directives && %$directives) {
         # title is mandatory?
         warn "$file couldn't be parsed by muse_fast_scan_header\n";
@@ -138,12 +174,8 @@ sub _parse_muse_file {
     # directives have not underscors in them
 
     my %out = (
+               %$fileinfo,
                %$directives,
-               f_path => $path,
-               f_name => $name,
-               f_archive_rel_path => File::Spec->catdir(@relpath),
-               f_timestamp => _get_mtime($file),
-               f_full_path_name  => $file,
               );
 
     return \%out;
