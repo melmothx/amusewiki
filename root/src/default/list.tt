@@ -1,11 +1,7 @@
-Site ID: [% site_id %]
-
 <ol>
-
-[% FOREACH text IN texts %]
-
-<li><!-- [% text.id %] -->
-    [% text.title %] -- [% text.author_list %]
-[% END %]
- 
+  [% FOREACH text IN texts %]
+  <li>
+    <a href="[% baseurl %]/[% text.uri %]">[% text.title %]</a> — [% text.author %]
+    [% END %]
+  </li>
 </ol>
