@@ -1,12 +1,13 @@
 Site ID: [% site_id %]
 
 <ol>
-
-[% FOREACH cat IN list %]
-[% IF count %]
-<li><a href="[% cat.uri %]">[% cat.name %]</a> ([% cat.count %])</li>
-[% ELSE %]
-<li><a href="[% cat.uri %]">[% cat.name %]</a> ([% cat.count %])</li>
-[% END %]
-[% END %]
+  [% FOREACH cat IN list %]
+  [% count = cat.title_count %]
+  [% IF count %]
+  <li>
+    <a href="[% baseurl %]/[% cat.uri %]">[% cat.name %]</a>
+    ([% count %])
+  </li>
+  [% END %]
+  [% END %]
 </ol>

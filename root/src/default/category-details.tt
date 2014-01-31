@@ -1,0 +1,14 @@
+<h2>[% category.name %]</h2>
+
+<ol>
+  [% FOREACH title IN list %]
+  <li>
+    <a href="[% baseurl %]/[% title.uri %]">[% title.title %]</a>
+    [% IF title.author %]
+      [% IF category.name != title.author %]
+      -- [% title.author %]
+      [% END %]
+    [% END %]
+  </li>
+  [% END %]
+</ol>
