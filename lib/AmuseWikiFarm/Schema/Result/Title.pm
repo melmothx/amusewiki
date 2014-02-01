@@ -266,6 +266,7 @@ __PACKAGE__->many_to_many("categories", "title_categories", "category");
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7XIM6UcQLUx/ISpVxSLlrA
 
 use File::Spec;
+use File::Slurp qw/read_file/;
 
 =head2 listing
 
@@ -324,7 +325,20 @@ sub filepath_for_ext {
                                $self->f_name . '.' . $ext);
 }
 
+=head3 html_body
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+Retrieve the bare HTML, if present.
+
+=cut
+
+sub html_body {
+    my $self = shift;
+    my $barefile = File::Spec->catfile($self->f_path,
+                               $self->f_name . '.bare.html');
+    return "No body found!" unless -f $barefile;
+    my $text = read_file($barefile => { bimode => ':encoding(UTF-8)' });
+    return $text;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

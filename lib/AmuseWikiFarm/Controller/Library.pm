@@ -96,8 +96,16 @@ sub text :Path :Args(1) {
                                                uri     => $canonical,
                                               });
     if ($text) {
-        $c->log->debug("Got $canonical $ext => " . $text->title);
-        $c->serve_static_file($text->filepath_for_ext($ext));
+        if ($ext) {
+            $c->log->debug("Got $canonical $ext => " . $text->title);
+            $c->serve_static_file($text->filepath_for_ext($ext));
+        }
+        else {
+            $c->stash(
+                      template => 'text.tt',
+                      text => $text,
+                     );
+        }
     }
     elsif (my $attach = $c->model('DB::Attachment')->single({
                                                              site_id => $c->stash->{site_id},
