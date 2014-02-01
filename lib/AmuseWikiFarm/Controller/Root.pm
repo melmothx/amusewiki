@@ -89,12 +89,30 @@ if C<shared_template> is not set.
 
 sub end : ActionClass('RenderView') {
     my ($self, $c) = @_;
-    unless ($c->stash->{shared_template}) {
+
+    # TODO: probably better do in the view?
+    # if it's not marked as a shared template, looks into the
+    # include path and try to find the template.
+    if ($c->stash->{template} && !$c->stash->{shared_template}) {
+        my @paths = @{ $c->view('HTML')->config->{INCLUDE_PATH} };
         my $template_fullpath = catfile($c->stash->{site_id},
                                         $c->stash->{template});
-        $c->log->debug("Tring to render $template_fullpath");
+
+        my $missing = 1;
+        foreach my $path (@paths) {
+            if (-f catfile($path, $template_fullpath)) {
+                $missing = 0;
+                $c->log->debug("Found $template_fullpath");
+                last;
+            }
+        }
+        if ($missing) {
+            $c->log->debug("$template_fullpath not found, using one in default");
+            $template_fullpath = catfile(default => $c->stash->{template});
+        }
+
         $c->stash(template => $template_fullpath );
-    };
+    }
 }
 
 =head1 AUTHOR
