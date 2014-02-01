@@ -1,4 +1,4 @@
-\documentclass[DIV=9,fontsize=10pt,oneside,paper=a5]{scrartcl}
+\documentclass[DIV=9,fontsize=10pt,oneside,paper=a5]{scrbook}
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -21,6 +21,7 @@
 % remove the numbering
 \setcounter{secnumdepth}{-2}
 
+% remove labels from the captions
 \renewcommand*{\captionformat}{}
 \renewcommand*{\figureformat}{}
 
@@ -69,6 +70,13 @@
 
 
 
+\tableofcontents
+\cleardoublepage
+
+
+
+\chapter{A header}
+
 
 My first test
 
@@ -77,6 +85,8 @@ My first test
 \centering
 \includegraphics[width=\textwidth]{testimage.png}
 \end{figure}
+
+\chapter{Another header}
 
 
 Done with Catalyst

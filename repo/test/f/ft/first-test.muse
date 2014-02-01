@@ -5,9 +5,14 @@
 #SORTtopics ecoleX, XécoleX, ÈmileX, ŽtopicX, ZitopicX, ZimbaX, ZurroX
 #pubdate 2014-02-01
 
+** A header
+
 My first test
 
 [[testimage.png]]
+
+
+** Another header
 
 Done with Catalyst
 
