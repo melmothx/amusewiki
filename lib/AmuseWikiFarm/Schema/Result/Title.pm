@@ -336,7 +336,7 @@ sub html_body {
     my $barefile = File::Spec->catfile($self->f_path,
                                $self->f_name . '.bare.html');
     return "No body found!" unless -f $barefile;
-    my $text = read_file($barefile => { bimode => ':encoding(UTF-8)' });
+    my $text = read_file($barefile => { binmode => ':encoding(UTF-8)' });
     return $text;
 }
 
