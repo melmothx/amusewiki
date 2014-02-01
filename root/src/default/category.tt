@@ -1,5 +1,3 @@
-Site ID: [% site_id %]
-
 <ol>
   [% FOREACH cat IN list %]
   [% count = cat.title_count %]

@@ -1,0 +1,10 @@
+[%- # from http://wiki.catalystframework.org/wiki/gettingstarted/howtos/template_wrappers.view -%]
+[%- IF no_wrapper;
+        debug("Passing page through as text: $template.name");
+        content;
+    ELSE;
+        wrapper = wrapper || 'default/layout/full.tt';
+        debug("Applying wrapper $wrapper to $template.name");
+        content WRAPPER $wrapper;
+    END;
+-%]
