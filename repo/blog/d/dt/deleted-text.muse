@@ -1,0 +1,10 @@
+#title Third test
+#LISTtitle Third test
+#author Marco P.
+#SORTauthors CPegula, Cikla, Ćao, More, Ciao
+#SORTtopics Žtopic, Zitopic, Zimba, Zurro, Miao, Bau
+#pubdate 2014-03-04
+#DELETED garbage
+
+This is another test.
+

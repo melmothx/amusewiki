@@ -86,5 +86,6 @@ CREATE TABLE attachment (
 
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
-INSERT INTO site VALUES ('yu.anarhija.net', 'yu', 'hr');
-INSERT INTO site VALUES ('ru.anarhija.net', 'ru', 'ru');
+INSERT INTO site VALUES ('blog.amusewiki.org', 'blog', 'hr');
+INSERT INTO site VALUES ('test.amusewiki.org', 'test', 'en');
+INSERT INTO site VALUES ('empty.amusewiki.org', 'empty', 'en');
