@@ -9,7 +9,8 @@
 *** DONE /library/* routing
     CLOSED: [2014-01-28 mar 22:35]
 
-*** Add to db attachments, so we can route them from /library/* 
+*** DONE Add to db attachments, so we can route them from /library/* 
+    CLOSED: [2014-02-01 sab 10:16]
     We already looked in the db, so let's use it...
 
 *** document directory structure
