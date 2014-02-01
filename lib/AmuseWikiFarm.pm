@@ -12,19 +12,35 @@ use Catalyst::Runtime 5.80;
 # list if you're using it.
 #
 #         -Debug: activates the debug mode for very useful log messages
+#                 also activated by -d, so useless to have it here
 #   ConfigLoader: will load the configuration from a Config::General file in the
 #                 application's home directory
 # Static::Simple: will serve static files from the application's root
 #                 directory
 
+#    MemoryUsage: show some stats. 2014-02-1 figures
+# .------+------+------+------+------+------+------+------+------+------.
+# | vsz  | del- | rss  | del- | sha- | del- | code | del- | data | del- |
+# |      | ta   |      | ta   | red  | ta   |      | ta   |      | ta   |
+# +------+------+------+------+------+------+------+------+------+------+
+# | 151M |      | 60M  |      | 3.0M |      | 8.0K |      | 57M  |      |
+# | 151M |      | 60M  |      | 3.0M |      | 8.0K |      | 57M  |      |
+# | 161M | 9.9M | 64M  | 3.6M | 3.5M | 544K | 8.0K |      | 60M  | 3.0M |
+# | 161M |      | 64M  |      | 3.5M |      | 8.0K |      | 60M  |      |
+# | 167M | 5.8M | 68M  | 4.0M | 3.9M | 460K | 8.0K |      | 64M  | 3.3M |
+# | 167M |      | 68M  |      | 3.9M |      | 8.0K |      | 64M  |      |
+# | 169M | 2.0M | 70M  | 1.8M | 4.0M | 40K  | 8.0K |      | 66M  | 2.0M |
+# | 169M |      | 70M  |      | 4.0M |      | 8.0K |      | 66M  |      |
+# | 169M |      | 70M  |      | 4.0M |      | 8.0K |      | 66M  |      |
+# | 169M |      | 70M  |      | 4.0M |      | 8.0K |      | 66M  |      |
+# '------+------+------+------+------+------+------+------+------+------'
+
 use Catalyst qw/
-    -Debug
     ConfigLoader
     Unicode::Encoding
 
     Static::Simple
     StackTrace
-    MemoryUsage
 /;
 
 extends 'Catalyst';
