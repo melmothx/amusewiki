@@ -88,6 +88,9 @@ if the file is present.
 Routes that don't set the template in the stash will pick the default
 without any checking.
 
+The default wrapper is layout.tt. It's not overriden if no_wrapper is
+set, otherwise the localized one is always preferred.
+
 =cut
 
 sub end : ActionClass('RenderView') {
@@ -96,13 +99,23 @@ sub end : ActionClass('RenderView') {
     # TODO: probably better do in the view?
     # if it's not marked as a shared template, looks into the
     # include path and try to find the template.
-    if ($c->stash->{template}) {
+    foreach my $k (qw/template wrapper/) {
+        if ($k eq 'template') {
+            next unless $c->stash->{$k};
+        }
+        elsif ($k eq 'wrapper') {
+            next if $c->stash->{no_wrapper};
+            if (!$c->stash->{$k}) {
+                $c->stash($k, "layout.tt");
+            }
+        }
+
         my $override = $self->_find_template($c->stash->{site_id},
-                                             $c->stash->{template},
+                                             $c->stash->{$k},
                                              $c->view('HTML')->config->{INCLUDE_PATH});
         if ($override) {
-            $c->log->debug("Found $override!");
-            $c->stash(template => $override );
+            $c->log->debug("Found $k $override!");
+            $c->stash($k, $override);
         }
     }
 }
@@ -113,7 +126,7 @@ sub _find_template {
     foreach my $path (@$paths) {
         my $try = catfile($path, $id, $name);
         if (-f $try) {
-            $found = $try;
+            $found = catfile($id, $name);
             last;
         }
     }

@@ -1,0 +1,25 @@
+[%- # -*- mode: html -*- -%]
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>[% template.name %]</title>
+  </head>
+  <body>
+    <h3>Sites</h3>
+    <h4>Custom layout</h4>
+    <p>Current site ID: [% site_id %]</p>
+
+    <ul>
+      <li><a href="http://test.amusewiki.org:3000/library">Test</a></li>
+      <li><a href="http://blog.amusewiki.org:3000/library">Blog</a></li>
+    </ul>
+    <h3>Links</h3>
+    <ul>
+      <li><a href="/library">List of text</a></li>
+      <li><a href="/topics">List of topics</a></li>
+      <li><a href="/authors">List of authors</a></li>
+    </ul>
+    [% content %]
+  </body>
+</html>

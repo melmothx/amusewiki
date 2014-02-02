@@ -1,0 +1,12 @@
+CUSTOM TEMPLATE
+
+<ol>
+  [% FOREACH text IN texts %]
+  <li>
+    <a href="[% baseurl %]/[% text.uri %]">[% text.title %]</a>
+    [% IF text.author %]
+    — [% text.author %]
+    [% END %]
+  </li>
+  [% END %]
+</ol>

@@ -32,7 +32,7 @@ sub index :Path :Args(0) {
     my $locale = $c->stash->{locale};
     $c->stash(texts => $c->model('DB::Title')->title_list($id, $locale));
     $c->stash(baseurl => $c->uri_for($c->action));
-    $c->stash(template => 'list.tt');
+    $c->stash(template => 'library.tt');
 }
 
 =head2 text
