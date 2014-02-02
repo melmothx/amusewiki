@@ -4,7 +4,6 @@
   <head>
     <meta charset="UTF-8">
     <title>[% template.name %]</title>
-    <link rel="stylesheet" href="/style.css" media="all">
   </head>
   <body>
     <h3>Sites</h3>
