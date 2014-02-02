@@ -36,7 +36,10 @@ Show the site id.
 sub debug_site_id :Local :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->response->body($c->stash->{site_id});
+    $c->response->body(join(" ",
+                            $c->stash->{site_id},
+                            $c->stash->{locale},
+                           ));
 }
 
 
