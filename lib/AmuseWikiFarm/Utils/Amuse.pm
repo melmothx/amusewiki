@@ -480,12 +480,20 @@ sub _parse_topic_or_author {
    
     my @list = split(/\s*\Q$splitchar\E\s*/, $string);
     my @out;
+    # keep track to avoid duplicated with same uri.
+    my %uri_found;
     foreach my $el (@list) {
         # no word, nothing to do
         if ($el =~ m/\w/) {
+            my $uri = muse_naming_algo($el);
+            if ($uri_found{$uri}) {
+                warn "Found duplicate $type $uri: $el";
+                next;
+            }
+            $uri_found{$uri} = 1;
             push @out, {
                         name => encode_entities($el, q{<>&"'}),
-                        uri => muse_naming_algo($el),
+                        uri => $uri,
                         type => $type,
                         site_id => $site_id,
                        }
