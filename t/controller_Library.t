@@ -15,13 +15,13 @@ ok( request('/library')->is_success, 'Request should succeed' );
 my ($res, $diag);
 my $host = { host => 'test.amusewiki.org' };
 
-$diag = request('/admin/debug_site_id')->decoded_content;
+$diag = request('/admin/debug_site_id', $host)->decoded_content;
 $res = request('/library', $host);
 like $res->decoded_content, qr{Ža Third test.*Zu A XSecond test}s,
   "sorting with Ž and Z is diacritics-insensitive for code locale: $diag";
 
 $host = { host => 'blog.amusewiki.org' };
-$diag = request('/admin/debug_site_id')->decoded_content;
+$diag = request('/admin/debug_site_id', $host)->decoded_content;
 $res = request('/library', $host);
 like $res->decoded_content, qr{Zu A Second test.*Ža Third test}s,
   "sorting with Ž and Z is diacritics-sensitive for code locale: $diag";
