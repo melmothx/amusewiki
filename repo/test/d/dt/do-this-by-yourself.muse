@@ -1,5 +1,5 @@
-#title XThird test
-#LISTtitle XThird test
+#title Ža Third test
+#LISTtitle Ža third test
 #author XMarco XP.
 #SORTauthors CPegulaX, CiklaX, ĆaoX, MoreX, CiaoX
 #SORTtopics ŽtopicX, ZitopicX, ZimbaX, ZurroX, MiaoX, BauX

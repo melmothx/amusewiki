@@ -1,5 +1,5 @@
-#title Third test
-#LISTtitle Third test
+#title Ža Third test
+#LISTtitle Ža Third test
 #author Marco P.
 #SORTauthors CPegula, Cikla, Ćao, More, Ciao
 #SORTtopics Žtopic, Zitopic, Zimba, Zurro, Miao, Bau
