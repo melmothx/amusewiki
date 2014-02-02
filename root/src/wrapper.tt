@@ -3,7 +3,7 @@
         debug("Passing page through as text: $template.name");
         content;
     ELSE;
-        wrapper = wrapper || 'default/layout/full.tt';
+        wrapper = wrapper || 'layout.tt';
         debug("Applying wrapper $wrapper to $template.name");
         content WRAPPER $wrapper;
     END;

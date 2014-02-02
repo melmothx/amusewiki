@@ -83,7 +83,10 @@ sub auto :Private {
 =head2 end
 
 Attempt to render a view, if needed, prepending the stashed C<site_id>
-if C<shared_template> is not set.
+if the file is present.
+
+Routes that don't set the template in the stash will pick the default
+without any checking.
 
 =cut
 
@@ -93,27 +96,30 @@ sub end : ActionClass('RenderView') {
     # TODO: probably better do in the view?
     # if it's not marked as a shared template, looks into the
     # include path and try to find the template.
-    if ($c->stash->{template} && !$c->stash->{shared_template}) {
-        my @paths = @{ $c->view('HTML')->config->{INCLUDE_PATH} };
-        my $template_fullpath = catfile($c->stash->{site_id},
-                                        $c->stash->{template});
-
-        my $missing = 1;
-        foreach my $path (@paths) {
-            if (-f catfile($path, $template_fullpath)) {
-                $missing = 0;
-                $c->log->debug("Found $template_fullpath");
-                last;
-            }
+    if ($c->stash->{template}) {
+        my $override = $self->_find_template($c->stash->{site_id},
+                                             $c->stash->{template},
+                                             $c->view('HTML')->config->{INCLUDE_PATH});
+        if ($override) {
+            $c->log->debug("Found $override!");
+            $c->stash(template => $override );
         }
-        if ($missing) {
-            $c->log->debug("$template_fullpath not found, using one in default");
-            $template_fullpath = catfile(default => $c->stash->{template});
-        }
-
-        $c->stash(template => $template_fullpath );
     }
 }
+
+sub _find_template {
+    my ($self, $id, $name, $paths) = @_;
+    my $found;
+    foreach my $path (@$paths) {
+        my $try = catfile($path, $id, $name);
+        if (-f $try) {
+            $found = $try;
+            last;
+        }
+    }
+    return $found;
+}
+
 
 =head1 AUTHOR
 
