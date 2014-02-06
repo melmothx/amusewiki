@@ -249,7 +249,7 @@ __PACKAGE__->belongs_to(
   "site",
   "AmuseWikiFarm::Schema::Result::Site",
   { id => "site_id" },
-  { is_deferrable => 0, on_delete => "NO ACTION", on_update => "NO ACTION" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 =head2 title_categories
@@ -278,8 +278,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 21:21:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+6wGB+vjSsZCUCLyUwbYKQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 22:40:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:j5M8Nmisa2jGTsToQ9av8A
 
 use File::Spec;
 use File::Slurp qw/read_file/;

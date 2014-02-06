@@ -6,3 +6,4 @@ script/amusewikifarm_create.pl model DB \
     create=static naming=current use_namespaces=1 \
     dbi:SQLite:sqlite.db \
     on_connect_do="PRAGMA foreign_keys = ON"
+script/bootstrap_archive.pl repo/{test,blog}

@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS author;
 CREATE TABLE vhost (
        name VARCHAR(255) PRIMARY KEY,
        site_id VARCHAR(8) REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE site (
@@ -55,6 +56,7 @@ CREATE TABLE title (
         uri         VARCHAR(255) NOT NULL,
         deleted     TEXT NOT NULL DEFAULT '',
         site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
+                                ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
 
@@ -73,6 +75,7 @@ CREATE TABLE category (
         uri   VARCHAR(255) NOT NULL,
         type  VARCHAR(16) NOT NULL,
         site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX unique_category ON category (uri, site_id, type);
 
@@ -86,6 +89,7 @@ CREATE TABLE attachment (
        f_suffix    VARCHAR(16) NOT NULL,
        uri   VARCHAR(255) NOT NULL,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);

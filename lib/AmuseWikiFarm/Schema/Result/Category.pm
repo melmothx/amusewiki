@@ -127,7 +127,7 @@ __PACKAGE__->belongs_to(
   "site",
   "AmuseWikiFarm::Schema::Result::Site",
   { id => "site_id" },
-  { is_deferrable => 0, on_delete => "NO ACTION", on_update => "NO ACTION" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 =head2 title_categories
@@ -156,8 +156,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 21:21:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mXQgaKt/7JrxuUmEu3zX0w
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 22:40:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:r3umv4HR/CmG4a47FjHgHw
 
 sub title_count {
     my $self = shift;
