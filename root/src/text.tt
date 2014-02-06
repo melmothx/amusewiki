@@ -1,2 +1,16 @@
+<h3>Topics</h3>
+[% text.topic_list %]
 
+<h3>Author(s)</h3>
+[% text.author_list %]
+
+<h2>[% text.author %]<h2>
+
+<h1>[% text.title %]</h1>
+
+<div>
 [% text.html_body %]
+</div>
+
+<hr>
+
