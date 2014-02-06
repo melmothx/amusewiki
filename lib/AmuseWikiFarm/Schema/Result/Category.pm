@@ -64,6 +64,7 @@ __PACKAGE__->table("category");
 =head2 site_id
 
   data_type: 'varchar'
+  is_foreign_key: 1
   is_nullable: 0
   size: 16
 
@@ -79,7 +80,7 @@ __PACKAGE__->add_columns(
   "type",
   { data_type => "varchar", is_nullable => 0, size => 16 },
   "site_id",
-  { data_type => "varchar", is_nullable => 0, size => 16 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
 
 =head1 PRIMARY KEY
@@ -114,6 +115,21 @@ __PACKAGE__->add_unique_constraint("uri_site_id_type_unique", ["uri", "site_id",
 
 =head1 RELATIONS
 
+=head2 site
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::Site>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "site",
+  "AmuseWikiFarm::Schema::Result::Site",
+  { id => "site_id" },
+  { is_deferrable => 0, on_delete => "NO ACTION", on_update => "NO ACTION" },
+);
+
 =head2 title_categories
 
 Type: has_many
@@ -140,8 +156,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-19 20:05:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bifOTRO5uj0py9NusfpaIg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 21:21:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mXQgaKt/7JrxuUmEu3zX0w
 
 sub title_count {
     my $self = shift;

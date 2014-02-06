@@ -87,6 +87,7 @@ __PACKAGE__->table("attachment");
 =head2 site_id
 
   data_type: 'varchar'
+  is_foreign_key: 1
   is_nullable: 0
   size: 16
 
@@ -110,7 +111,7 @@ __PACKAGE__->add_columns(
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "site_id",
-  { data_type => "varchar", is_nullable => 0, size => 16 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
 
 =head1 PRIMARY KEY
@@ -141,9 +142,26 @@ __PACKAGE__->set_primary_key("id");
 
 __PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
 
+=head1 RELATIONS
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-31 12:35:42
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CwdI5wJPOKXeJMuvGC6pEA
+=head2 site
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::Site>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "site",
+  "AmuseWikiFarm::Schema::Result::Site",
+  { id => "site_id" },
+  { is_deferrable => 0, on_delete => "NO ACTION", on_update => "NO ACTION" },
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 21:21:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UrFRxL4ns+104sjOHIey0Q
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

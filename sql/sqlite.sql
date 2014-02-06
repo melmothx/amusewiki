@@ -1,14 +1,18 @@
 PRAGMA foreign_keys = ON;
 
+DROP TABLE IF EXISTS vhost;
 DROP TABLE IF EXISTS site;
 DROP TABLE IF EXISTS title_author;
 DROP TABLE IF EXISTS title;
 DROP TABLE IF EXISTS author;
 
+CREATE TABLE vhost (
+       name VARCHAR(255),
+       site_id VARCHAR(8) REFERENCES site(id)
+);
 
 CREATE TABLE site (
-       name VARCHAR(255) PRIMARY KEY,
-       site_id VARCHAR(16) NOT NULL DEFAULT 'default',
+       id VARCHAR(8) PRIMARY KEY,
        locale VARCHAR(3) NOT NULL DEFAULT 'en'
 );
 
@@ -50,7 +54,7 @@ CREATE TABLE title (
 
         uri         VARCHAR(255) NOT NULL,
         deleted     TEXT NOT NULL DEFAULT '',
-        site_id     VARCHAR(16) NOT NULL
+        site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
 );
 CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
 
@@ -68,7 +72,7 @@ CREATE TABLE category (
         name  TEXT,
         uri   VARCHAR(255) NOT NULL,
         type  VARCHAR(16) NOT NULL,
-        site_id VARCHAR(16) NOT NULL
+        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
 );
 CREATE UNIQUE INDEX unique_category ON category (uri, site_id, type);
 
@@ -81,11 +85,16 @@ CREATE TABLE attachment (
        f_full_path_name TEXT NOT NULL,
        f_suffix    VARCHAR(16) NOT NULL,
        uri   VARCHAR(255) NOT NULL,
-       site_id VARCHAR(16) NOT NULL
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
 );
 
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
-INSERT INTO site VALUES ('blog.amusewiki.org', 'blog', 'hr');
-INSERT INTO site VALUES ('test.amusewiki.org', 'test', 'en');
-INSERT INTO site VALUES ('empty.amusewiki.org', 'empty', 'en');
+INSERT INTO site VALUES ('blog', 'hr');
+INSERT INTO site VALUES ('test', 'en');
+INSERT INTO site VALUES ('empty', 'en');
+
+INSERT INTO vhost VALUES ('blog.amusewiki.org', 'blog');
+INSERT INTO vhost VALUES ('test.amusewiki.org', 'test');
+INSERT INTO vhost VALUES ('empty.amusewiki.org', 'empty');
+

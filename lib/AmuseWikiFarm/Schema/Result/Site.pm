@@ -38,18 +38,11 @@ __PACKAGE__->table("site");
 
 =head1 ACCESSORS
 
-=head2 name
+=head2 id
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 255
-
-=head2 site_id
-
-  data_type: 'varchar'
-  default_value: 'default'
-  is_nullable: 0
-  size: 16
+  size: 8
 
 =head2 locale
 
@@ -61,15 +54,8 @@ __PACKAGE__->table("site");
 =cut
 
 __PACKAGE__->add_columns(
-  "name",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
-  "site_id",
-  {
-    data_type => "varchar",
-    default_value => "default",
-    is_nullable => 0,
-    size => 16,
-  },
+  "id",
+  { data_type => "varchar", is_nullable => 0, size => 8 },
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
 );
@@ -78,17 +64,79 @@ __PACKAGE__->add_columns(
 
 =over 4
 
-=item * L</name>
+=item * L</id>
 
 =back
 
 =cut
 
-__PACKAGE__->set_primary_key("name");
+__PACKAGE__->set_primary_key("id");
+
+=head1 RELATIONS
+
+=head2 attachments
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Attachment>
+
+=cut
+
+__PACKAGE__->has_many(
+  "attachments",
+  "AmuseWikiFarm::Schema::Result::Attachment",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 categories
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Category>
+
+=cut
+
+__PACKAGE__->has_many(
+  "categories",
+  "AmuseWikiFarm::Schema::Result::Category",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 titles
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Title>
+
+=cut
+
+__PACKAGE__->has_many(
+  "titles",
+  "AmuseWikiFarm::Schema::Result::Title",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 vhosts
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Vhost>
+
+=cut
+
+__PACKAGE__->has_many(
+  "vhosts",
+  "AmuseWikiFarm::Schema::Result::Vhost",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-20 19:06:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:KjWWd2DzGNd2t71/KRV/Hg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 21:21:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:i6Y4yifQRc8r2848kXbC6A
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
