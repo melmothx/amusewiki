@@ -115,6 +115,8 @@ sub text :Path :Args(1) {
         $c->serve_static_file($attach->f_full_path_name);
     }
     else {
+        $c->log->debug("Not found!");
+        $c->detach('/not_found');
         # issue a 404 or redirect somewhere else
     }
 }

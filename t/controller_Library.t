@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 7;
+use Test::More tests => 6;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -9,8 +9,6 @@ binmode $builder->todo_output,    ":utf8";
 
 use Catalyst::Test 'AmuseWikiFarm';
 use AmuseWikiFarm::Controller::Library;
-
-ok( request('/library')->is_success, 'Request should succeed' );
 
 my ($res, $diag);
 my $host = { host => 'test.amusewiki.org' };

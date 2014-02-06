@@ -43,8 +43,7 @@ Standard 404 error page
 
 sub default :Path {
     my ( $self, $c ) = @_;
-    $c->response->body( 'Page not found' );
-    $c->response->status(404);
+    $c->detach('not_found');
 }
 
 =head2 auto
@@ -62,23 +61,30 @@ sub auto :Private {
 
     # lookup in the db
     my $vhost = $c->model('DB::Vhost')->find($host);
-    my $site_id = 'default';
-    my $locale  = 'en';
-    if ($vhost) {
-        $site_id = $vhost->site->id;
-        $locale  = $vhost->site->locale;
+    unless ($vhost) {
+        $c->detach('not_found');
     }
-    # log for good measure
-    $c->log->debug("Site ID for $host is $site_id, with locale $locale");
+    my $site = $vhost->site;
+    $c->log->debug("Site ID for $host is " . $site->id
+                   . ", with locale " . $site->locale);
 
-    # stash the site_id
+    # stash the site_id and the locale. This will be removed
     $c->stash(
-              site_id => $site_id,
-              locale  => $locale,
+              site_id => $site->id,
+              locale  => $site->locale,
              );
+
+    # stash the site object
+    $c->stash(site => $site);
 }
 
-
+sub not_found :Global {
+    my ($self, $c) = @_;
+    $c->response->status(404);
+    $c->log->debug("In the not_found!");
+    $c->stash(error_msg => "Page not found!");
+    $c->stash(template => "not_found.tt");
+}
 
 =head2 end
 
@@ -99,6 +105,7 @@ sub end : ActionClass('RenderView') {
     # TODO: probably better do in the view?
     # if it's not marked as a shared template, looks into the
     # include path and try to find the template.
+    return unless $c->stash->{site};
     foreach my $k (qw/template wrapper/) {
         if ($k eq 'template') {
             next unless $c->stash->{$k};
@@ -110,7 +117,7 @@ sub end : ActionClass('RenderView') {
             }
         }
 
-        my $override = $self->_find_template($c->stash->{site_id},
+        my $override = $self->_find_template($c->stash->{site}->id,
                                              $c->stash->{$k},
                                              $c->view('HTML')->config->{INCLUDE_PATH});
         if ($override) {

@@ -37,8 +37,8 @@ sub debug_site_id :Local :Args(0) {
     my ( $self, $c ) = @_;
 
     $c->response->body(join(" ",
-                            $c->stash->{site_id},
-                            $c->stash->{locale},
+                            $c->stash->{site}->id,
+                            $c->stash->{site}->locale,
                            ));
 }
 
