@@ -19,7 +19,7 @@ my $db = AmuseWikiFarm::Model::DB->new;
 print "DB loaded, starting up\n";
 
 foreach my $s ($db->resultset('Site')->all) {
-    print $s->site_id . " " . $s->name . "\n";
+    print $s->id . " " . $s->vhosts->single->name . "\n";
 }
 
 my @archives = @ARGV;
@@ -82,6 +82,7 @@ foreach my $archive (@archives) {
         # TODO: see if we have to update the insertion
         my $title = $db->resultset('Title')->update_or_create(\%insertion);
         if ($parsed_cats && @$parsed_cats) {
+            # here we can die if there are duplicated uris
             $title->set_categories($parsed_cats);
         }
     }

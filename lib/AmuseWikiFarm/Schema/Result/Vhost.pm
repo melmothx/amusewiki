@@ -41,7 +41,7 @@ __PACKAGE__->table("vhost");
 =head2 name
 
   data_type: 'varchar'
-  is_nullable: 1
+  is_nullable: 0
   size: 255
 
 =head2 site_id
@@ -55,10 +55,22 @@ __PACKAGE__->table("vhost");
 
 __PACKAGE__->add_columns(
   "name",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", is_nullable => 0, size => 255 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 8 },
 );
+
+=head1 PRIMARY KEY
+
+=over 4
+
+=item * L</name>
+
+=back
+
+=cut
+
+__PACKAGE__->set_primary_key("name");
 
 =head1 RELATIONS
 
@@ -83,8 +95,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 21:21:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:93nqgZJBafJjNkSpxY7Bgw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 21:29:31
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:9RIXYutpCiYr8PyGT9nQlA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

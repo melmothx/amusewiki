@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS title;
 DROP TABLE IF EXISTS author;
 
 CREATE TABLE vhost (
-       name VARCHAR(255),
+       name VARCHAR(255) PRIMARY KEY,
        site_id VARCHAR(8) REFERENCES site(id)
 );
 

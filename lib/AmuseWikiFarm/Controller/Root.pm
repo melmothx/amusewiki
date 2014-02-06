@@ -61,12 +61,12 @@ sub auto :Private {
     my $host = $c->request->uri->host;
 
     # lookup in the db
-    my $site = $c->model('DB::Site')->find($host);
+    my $vhost = $c->model('DB::Vhost')->find($host);
     my $site_id = 'default';
     my $locale  = 'en';
-    if ($site) {
-        $site_id = $site->site_id;
-        $locale  = $site->locale;
+    if ($vhost) {
+        $site_id = $vhost->site->id;
+        $locale  = $vhost->site->locale;
     }
     # log for good measure
     $c->log->debug("Site ID for $host is $site_id, with locale $locale");
