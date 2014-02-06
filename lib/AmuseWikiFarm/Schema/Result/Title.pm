@@ -299,7 +299,9 @@ sub author_list {
 sub category_listing {
     my ($self, $type, $sep) = @_;
     my @cats;
-    foreach my $cat ($self->categories->search({ type => $type })) {
+    my @results = $self->categories->search({ type => $type },
+                                            { order_by => 'name' });
+    foreach my $cat (@results) {
         push @cats, $cat->name;
     }
     @cats ? return join($sep, @cats) : return '';

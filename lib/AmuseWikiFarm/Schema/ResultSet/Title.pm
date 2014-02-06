@@ -5,9 +5,9 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
-use Unicode::Collate::Locale;
+# use Unicode::Collate::Locale;
 # faster but hard to install
-# Unicode::ICU::Collator;
+use Unicode::ICU::Collator;
 
 =head2 list_titles($id)
 
@@ -21,11 +21,14 @@ sub title_list {
     my @titles = $self->search({
                                 site_id => $id,
                                 deleted => '',
+                               },
+                               {
+                                order_by => 'title',
                                });
     # we have to do the sorting to avoid the specific of the DB...
     # e.g., sqlite sucks
-    # $collator = Unicode::ICU::Collator->new($locale);
-    my $collator = Unicode::Collate::Locale->new(locale => $locale);
+    my $collator = Unicode::ICU::Collator->new($locale);
+    # my $collator = Unicode::Collate::Locale->new(locale => $locale);
     @titles = sort { $collator->cmp($a->list_title, $b->list_title) } @titles;
     return \@titles;
 }
