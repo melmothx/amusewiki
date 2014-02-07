@@ -1,7 +1,7 @@
 <h2>[% category.name %]</h2>
 
 <ol>
-  [% FOREACH title IN list %]
+  [% FOREACH title IN category.published_titles %]
   <li>
     <a href="[% baseurl %]/[% title.uri %]">[% title.title %]</a>
     [% IF title.author %]

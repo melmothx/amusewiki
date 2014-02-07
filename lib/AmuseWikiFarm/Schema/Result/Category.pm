@@ -161,20 +161,12 @@ __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 sub title_count {
     my $self = shift;
-    my @titles = $self->titles->search({
-                                        deleted => '',
-                                       });
-    return scalar(@titles);
+    return $self->titles->published_texts->count;
 }
 
 sub published_titles {
     my $self = shift;
-    my @titles = $self->titles->search({
-                                        deleted => '',
-                                       },
-                                       {
-                                        order_by => 'title',
-                                       });
+    my @titles = $self->titles->published_texts;
     return @titles;
 }
 

@@ -28,9 +28,8 @@ List the titles.
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-    my $id = $c->stash->{site_id};
-    my $locale = $c->stash->{locale};
-    $c->stash(texts => $c->model('DB::Title')->title_list($id, $locale));
+    my @texts = $c->stash->{site}->titles->published_texts;
+    $c->stash(texts => \@texts);
     $c->stash(baseurl => $c->uri_for($c->action));
     $c->stash(template => 'library.tt');
 }
@@ -91,10 +90,9 @@ sub text :Path :Args(1) {
     }
 
     # search the damned title.
-    my $text = $c->model('DB::Title')->single({
-                                               site_id => $c->stash->{site_id},
-                                               uri     => $canonical,
-                                              });
+    my $text = $c->stash->{site}->titles->single({
+                                                    uri => $canonical,
+                                                   });
     if ($text) {
         if ($ext) {
             $c->log->debug("Got $canonical $ext => " . $text->title);
@@ -107,17 +105,11 @@ sub text :Path :Args(1) {
                      );
         }
     }
-    elsif (my $attach = $c->model('DB::Attachment')->single({
-                                                             site_id => $c->stash->{site_id},
-                                                             uri => $canonical . $append_ext,
-                                                            })) {
+    elsif (my $attach = $c->stash->{site}->attachments->single({
+                                                                uri => $canonical . $append_ext,
+                                                               })) {
         $c->log->debug("Found attachment $canonical$append_ext");
         $c->serve_static_file($attach->f_full_path_name);
-    }
-    else {
-        $c->log->debug("Not found!");
-        $c->detach('/not_found');
-        # issue a 404 or redirect somewhere else
     }
 }
 
