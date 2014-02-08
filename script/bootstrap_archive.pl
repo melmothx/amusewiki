@@ -33,14 +33,18 @@ foreach my $code (@codes) {
         warn "Wrong code $code, see README.txt for naming convention. Skipping...\n";
         next;
     }
-
-    unless ($db->resultset('Site')->find($code)) {
+    my $locale;
+    if (my $site = $db->resultset('Site')->find($code)) {
+        $locale = $site->locale;
+    }
+    else {
         warn "Site code $code not found in the database. Skipping...\n";
         next;
     }
 
     my $archive = AmuseWikiFarm::Archive->new(repo => catdir(repo => $code),
                                               code => $code,
+                                              locale => $locale,
                                               dbic => $db,
                                               xapian => catdir(xapian => $code));
 

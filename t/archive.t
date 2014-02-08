@@ -71,6 +71,7 @@ $title = $schema->resultset('Title')->single({uri => 'do-this-by-yourself',
                                               site_id => $id });
 ok($title, "Title reinserted");
 
+ok($archive->xapian_db);
 
 
 

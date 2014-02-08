@@ -11,7 +11,7 @@ use Search::Xapian (':all');
 use AmuseWikiFarm::Utils::Amuse qw/muse_file_info/;
 
 has xapian => (is => 'ro',
-               required => 1,
+               required => 0,
                isa => 'Str');
 
 has repo   => (is => 'ro',
@@ -23,12 +23,44 @@ has fields => (is => 'ro',
                lazy => 1,
                builder => '_build_fields');
 
+has xapian_db => (is => 'ro',
+                  isa => 'Object',
+                  lazy => 1,
+                  builder => '_build_xapian_db');
+
+has xapian_indexer => (
+                       is => 'ro',
+                       isa => 'Object',
+                       lazy => 1,
+                       builder => '_build_xapian_indexer');
+
 has code => (is => 'ro',
              required => 1,
              isa => 'Str');
 
+has locale => (is => 'ro',
+               required => 0,
+               isa => 'Str');
+
 has dbic   => (is => 'ro',
                isa => 'Object');
+
+sub _build_xapian_db {
+    my $self = shift;
+    my $db = $self->xapian;
+    unless (-d $db) {
+        mkdir $db or die "Couldn't create $db $!";
+    }
+    return Search::Xapian::WritableDatabase->new($db, DB_CREATE_OR_OPEN);
+}
+
+sub _build_xapian_indexer {
+    my $self = shift;
+    my $indexer = Search::Xapian::TermGenerator->new();
+    # set it by default with the locale stemmer, if available
+    $indexer->set_stemmer($self->xapian_stemmer($self->locale));
+    return $indexer;
+}
 
 sub _build_fields {
     my $self = shift;
@@ -38,6 +70,33 @@ sub _build_fields {
     return \%fields;
 }
 
+sub xapian_stemmer {
+    my ($self, $locale) = @_;
+    # from http://xapian.org/docs/apidoc/html/classXapian_1_1Stem.html
+    my %stemmers = (
+                    da => 'danish',
+                    nl => 'dutch',
+                    en => 'english',
+                    fi => 'finnish',
+                    fr => 'french',
+                    de => 'german',
+                    hu => 'hungarian',
+                    it => 'italina',
+                    no => 'norwegian',
+                    pt => 'portuguese',
+                    ro => 'romanian',
+                    ru => 'russian',
+                    es => 'spanish',
+                    sv => 'swedish',
+                    tr => 'turkish',
+                   );
+    if ($locale && $stemmers{$locale}) {
+        return Search::Xapian::Stem->new($stemmers{$locale});
+    }
+    else {
+        return Search::Xapian::Stem->new('none');
+    }
+}
 
 sub index_file {
     my ($self, $file) = @_;
@@ -78,7 +137,92 @@ sub index_file {
         # here we can die if there are duplicated uris
         $title->set_categories($parsed_cats);
     }
+
+    # TODO maybe the categories should be cleaned if there are none?
+
+    return $file unless $self->xapian;
+    # print $title->topic_list, ' ', $title->author_list, "\n";
+    # XAPIAN INDEXING
+
+    $self->xapian_index_text($title);
     return $file;
+}
+
+
+sub xapian_index_text {
+    my ($self, $title) = @_;
+    # stolen from the example full-indexer.pl in Search::Xapian
+    # get and create
+    my $database = $self->xapian_db;
+    my $indexer = $self->xapian_indexer;
+
+    my $qterm = 'Q' . $title->uri;
+
+    if ($title->deleted) {
+        print "Deleting " . $title->uri . " from Xapian db\n";
+        eval {
+            $database->delete_document_by_term($qterm);
+        };
+    }
+    else {
+        print "Updating " . $title->uri . " in Xapian db\n";
+        eval {
+            my $doc = Search::Xapian::Document->new();
+            $indexer->set_document($doc);
+
+            # Set the document data to the uri so we can show it for matches.
+            $doc->set_data($title->uri);
+
+            # Unique ID.
+            $doc->add_term($qterm);
+
+            # To allow sorting by author.
+            # $doc->add_value($SLOT_AUTHOR, $author);
+
+            # To allow sorting by title..
+            # $doc->add_value($SLOT_TITLE, $doc_name);
+
+            # Index the author to allow fielded free-text searching.
+            $indexer->index_text($title->author, 1, 'A');
+
+            # with lesser weight, index the list
+            $indexer->index_text($title->author_list, 2, 'A');
+
+            # Index the title and subtitle to allow fielded free-text searching.
+            $indexer->index_text($title->title, 1, 'S');
+            $indexer->index_text($title->subtitle, 2, 'S');
+
+            # To allow date range searching and sorting by date.
+            if ($title->date and $title->date =~ /(\d{4})/) {
+                $indexer->index_text($1, 1, 'Y');
+                # $doc->add_value($SLOT_DATE, "$1$2$3");
+            }
+
+            $indexer->index_text($title->topic_list, 1, 'K');
+            $indexer->index_text($title->source, 1, 'XSOURCE');
+            $indexer->index_text($title->notes, 1, 'XNOTES');
+
+
+            # Increase the term position so that phrases can't straddle the
+            # doc_name and keywords.
+            $indexer->increase_termpos();
+
+            my $filepath = $title->f_full_path_name;
+            open (my $fh, '<:encoding(UTF-8)', $filepath)
+              or die "Couldn't open $filepath: $!";
+            while (my $line = <$fh>) {
+                $line =~ s/^\#\w+//g; # delete the directives
+                $line =~ s/<.+?>//g; # delete the tags.
+                $indexer->index_text($line);
+            }
+            close $fh;
+
+            # Add or the replace the document to the database.
+            $database->replace_document_by_term($qterm, $doc);
+        };
+    }
+    warn $@ if $@;
+    $@ ? return : return 1;
 }
 
 
