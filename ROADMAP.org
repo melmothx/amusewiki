@@ -48,7 +48,13 @@
 
 ** beanstalk, probably, as broker + Beanstalk::Client
 
-** compilation + Xapian indexing (Search::Xapian)
+
+** DONE Xapian indexing (Search::Xapian)
+   CLOSED: [2014-02-08 sab 12:36]
+
+** compilation: Makefile and muse-quick
+
+Probably slower but more standard and with less problems.
 
 ** bookbuilder Text::Amuse + PDF::Imposition
 
