@@ -5,10 +5,12 @@ use warnings;
 use FindBin qw/$Bin/;
 use File::Basename;
 use File::Find;
+use File::Spec::Functions qw/catdir/;
 use Data::Dumper;
 
 use lib "$Bin/../lib";
 use AmuseWikiFarm::Model::DB;
+use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Utils::Amuse qw/muse_file_info/;
 
 binmode STDOUT, ':encoding(UTF-8)';
@@ -22,15 +24,27 @@ foreach my $s ($db->resultset('Site')->all) {
     print $s->id . " " . $s->vhosts->single->name . "\n";
 }
 
-my @archives = @ARGV;
+my @codes = @ARGV;
 
-my %title_columns = map { $_ => 1 } $db->resultset('Title')->result_source->columns;
-print Dumper(\%title_columns);
+foreach my $code (@codes) {
 
-foreach my $archive (@archives) {
-    my $code = basename($archive);
-    print "Scanning $archive with code $code\n";
-    die "Wrong code or directory $code" unless ($code =~ m/^[a-z]{2,50}+$/);
+    # checking
+    unless ($code =~ m/^[a-z0-9]{2,8}+$/) {
+        warn "Wrong code $code, see README.txt for naming convention. Skipping...\n";
+        next;
+    }
+
+    unless ($db->resultset('Site')->find($code)) {
+        warn "Site code $code not found in the database. Skipping...\n";
+        next;
+    }
+
+    my $archive = AmuseWikiFarm::Archive->new(repo => catdir(repo => $code),
+                                              code => $code,
+                                              dbic => $db,
+                                              xapian => catdir(xapian => $code));
+
+    # find the file
     my @files;
     find (sub {
               my $file = $_;
@@ -47,43 +61,10 @@ foreach my $archive (@archives) {
               if ($file =~ m/\.(pdf|png|jpe?g)$/) {
                   push @files, $File::Find::name;
               }
-          }, $archive);
+          }, catdir(repo => $code));
     # print Dumper(\@files);
     foreach my $file (@files) {
-        die "$file not found!" unless -f $file;
-        my $details = muse_file_info($file, $code);
-
-        unless ($details) {
-            warn "Found wrong file $file for $archive ($code)\n";
-            next;
-        }
-
-        if ($details->{f_suffix} ne '.muse') {
-            print "Inserting data for attachment $file\n";
-            $db->resultset('Attachment')->update_or_create($details);
-            next;
-        }
-
-        # ready to store into titles?
-        my %insertion;
-        # lower case the keys
-        foreach my $col (keys %$details) {
-            my $db_col = lc($col);
-            if ($title_columns{$db_col}) {
-                $insertion{$db_col} = delete $details->{$col};
-            }
-        }
-
-        my $parsed_cats = delete $details->{parsed_categories};
-        if (%$details) {
-            warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
-        }
-        print "Inserting data for $file\n";
-        # TODO: see if we have to update the insertion
-        my $title = $db->resultset('Title')->update_or_create(\%insertion);
-        if ($parsed_cats && @$parsed_cats) {
-            # here we can die if there are duplicated uris
-            $title->set_categories($parsed_cats);
-        }
+        print "indexing $file\n";
+        $archive->index_file($file) || print "Ignored $file\n";
     }
 }
