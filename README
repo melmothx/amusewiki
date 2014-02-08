@@ -1,1 +1,75 @@
-Run script/amusewikifarm_server.pl to test the application.
+* AmuseWikiFarm
+
+This is a wiki engine based on the Text::Amuse parser, with a Git
+backend. The web interface is powered by Catalyst and Plack.
+
+* Directory structure
+
+** repositories
+
+This is where the texts are stored.
+
+Even if the bootstrapper could look everywhere (it checkes the path
+with the Amuse directory conventions, so in theory it could scan
+multiple archives too, assuming the filename is unique), the
+convention is as follow.
+
+The site ID is the key of everything, given that the whole circus is
+based on that, to serve the right file without leaking in other sites.
+
+The max length of the site ID is 8 characters, and with a minimum of
+2, in the range [0-9a-z] (no special character, no uppercase).
+
+The directory is "repo", and there reside the git archives, named with
+the site ID.
+
+The shipped test archives are named "test" and "blog" and starting
+from the root of the application, have the following structure.
+
+repo
+├── blog
+│   ├── d
+│   │   └── dt/file.{muse,...}
+│   ├── f
+│   │   └── ft/file.{muse,...}
+│   └── s
+│       └── st/file.{muse,...}
+└── test
+    ├── d
+    │   └── dt/file.{muse,...}
+    ├── f
+    │   └── ft/file.{muse,...}
+    └── s
+        └── st/file.{muse,...}
+
+
+The Xapian databases are located in "xapian", with the same schema:
+
+xapian
+├── blog
+└── test
+
+
+** MCV
+
+Standar location for Catalyst app:
+
+ - lib/AmuseWikiFarm/Model
+ - lib/AmuseWikiFarm/View
+ - lib/AmuseWikiFarm/Controller
+
+Templates and public directory:
+
+ - root
+
+
+** Schema
+
+DBIx::Class schema in lib/AmuseWikiFarm/Schema.pm and its namespace.
+
+SQL scripts in "sql"
+
+** Utils
+
+ - lib/AmuseWikiFarm/Utils
+
