@@ -13,7 +13,8 @@
     CLOSED: [2014-02-01 sab 10:16]
     We already looked in the db, so let's use it...
 
-*** document directory structure
+*** DONE document directory structure
+    CLOSED: [2014-02-08 sab 08:18]
 
 ** template migration for the existing libraries
 
