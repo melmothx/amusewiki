@@ -51,6 +51,39 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 3
 
+=head2 sitename
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 255
+
+=head2 siteslogan
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 255
+
+=head2 logo
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
+=head2 mail
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 128
+
+=head2 canonical
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 255
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -58,6 +91,16 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 8 },
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
+  "sitename",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "siteslogan",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "logo",
+  { data_type => "varchar", is_nullable => 1, size => 32 },
+  "mail",
+  { data_type => "varchar", is_nullable => 1, size => 128 },
+  "canonical",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
 );
 
 =head1 PRIMARY KEY
@@ -104,6 +147,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 texoptions
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Texoption>
+
+=cut
+
+__PACKAGE__->has_many(
+  "texoptions",
+  "AmuseWikiFarm::Schema::Result::Texoption",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 titles
 
 Type: has_many
@@ -135,8 +193,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 22:40:27
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QXn9/O2ica8YasLtFj3gzQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:34:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CsuQOh3UcM9LEiiYXpUkaQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -14,7 +14,26 @@ CREATE TABLE vhost (
 
 CREATE TABLE site (
        id VARCHAR(8) PRIMARY KEY,
-       locale VARCHAR(3) NOT NULL DEFAULT 'en'
+       locale VARCHAR(3) NOT NULL DEFAULT 'en',
+       -- canonical url for RSS and other things
+       sitename VARCHAR(255) NOT NULL DEFAULT '',
+       siteslogan VARCHAR(255) NOT NULL DEFAULT '',
+       logo VARCHAR(32),
+       mail VARCHAR(128),
+       canonical VARCHAR(255) NOT NULL DEFAULT ''
+);
+
+CREATE TABLE texoption (
+       id INTEGER PRIMARY KEY,
+       size VARCHAR(64) NOT NULL DEFAULT '', -- will pick the generic
+       division INTEGER NOT NULL DEFAULT '12',
+       bcor VARCHAR(16) NOT NULL DEFAULT '0mm',
+       fontsize INTEGER NOT NULL DEFAULT '10',
+       mainfont VARCHAR(255) NOT NULL DEFAULT 'Linux Libertine O',
+       twoside INTEGER NOT NULL DEFAULT 0,
+       site_id VARCHAR(8) REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE
+
 );
 
 CREATE TABLE title (
@@ -55,7 +74,7 @@ CREATE TABLE title (
 
         uri         VARCHAR(255) NOT NULL,
         deleted     TEXT NOT NULL DEFAULT '',
-        site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
+        site_id     VARCHAR(8) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
@@ -74,7 +93,7 @@ CREATE TABLE category (
         name  TEXT,
         uri   VARCHAR(255) NOT NULL,
         type  VARCHAR(16) NOT NULL,
-        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+        site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX unique_category ON category (uri, site_id, type);
@@ -88,17 +107,32 @@ CREATE TABLE attachment (
        f_full_path_name TEXT NOT NULL,
        f_suffix    VARCHAR(16) NOT NULL,
        uri   VARCHAR(255) NOT NULL,
-       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
-INSERT INTO site VALUES ('blog', 'hr');
-INSERT INTO site VALUES ('test', 'en');
-INSERT INTO site VALUES ('empty', 'en');
+INSERT INTO site VALUES (
+                        '0blog0', 'hr',
+                        'hrvatski blog', 'samo test',
+                        'logo-yu', '',
+                        'http://blog.amusewiki.org'
+                        );
+INSERT INTO site VALUES (
+                         '0test0', 'en',
+                         'english test', 'only a test',
+                         'logo-en', '',
+                         'http://test.amusewiki.org'
+                         );
+INSERT INTO site VALUES (
+                         '0empty0', 'en',
+                         '', '',
+                         '', '',
+                         'http://empty.amusewiki.org'
+                         );
 
-INSERT INTO vhost VALUES ('blog.amusewiki.org', 'blog');
-INSERT INTO vhost VALUES ('test.amusewiki.org', 'test');
-INSERT INTO vhost VALUES ('empty.amusewiki.org', 'empty');
+INSERT INTO vhost VALUES ('blog.amusewiki.org', '0blog0');
+INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');
+INSERT INTO vhost VALUES ('empty.amusewiki.org', '0empty0');
 

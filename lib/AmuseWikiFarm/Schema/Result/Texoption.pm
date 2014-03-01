@@ -1,12 +1,12 @@
 use utf8;
-package AmuseWikiFarm::Schema::Result::Attachment;
+package AmuseWikiFarm::Schema::Result::Texoption;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Attachment
+AmuseWikiFarm::Schema::Result::Texoption
 
 =cut
 
@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<attachment>
+=head1 TABLE: C<texoption>
 
 =cut
 
-__PACKAGE__->table("attachment");
+__PACKAGE__->table("texoption");
 
 =head1 ACCESSORS
 
@@ -44,51 +44,50 @@ __PACKAGE__->table("attachment");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 f_path
-
-  data_type: 'text'
-  is_nullable: 0
-
-=head2 f_name
+=head2 size
 
   data_type: 'varchar'
+  default_value: (empty string)
   is_nullable: 0
-  size: 255
+  size: 64
 
-=head2 f_archive_rel_path
+=head2 division
+
+  data_type: 'integer'
+  default_value: 12
+  is_nullable: 0
+
+=head2 bcor
 
   data_type: 'varchar'
-  is_nullable: 0
-  size: 4
-
-=head2 f_timestamp
-
-  data_type: 'varchar'
-  is_nullable: 0
-  size: 255
-
-=head2 f_full_path_name
-
-  data_type: 'text'
-  is_nullable: 0
-
-=head2 f_suffix
-
-  data_type: 'varchar'
+  default_value: '0mm'
   is_nullable: 0
   size: 16
 
-=head2 uri
+=head2 fontsize
+
+  data_type: 'integer'
+  default_value: 10
+  is_nullable: 0
+
+=head2 mainfont
 
   data_type: 'varchar'
+  default_value: 'Linux Libertine O'
   is_nullable: 0
   size: 255
+
+=head2 twoside
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
 
 =head2 site_id
 
   data_type: 'varchar'
   is_foreign_key: 1
-  is_nullable: 0
+  is_nullable: 1
   size: 8
 
 =cut
@@ -96,22 +95,30 @@ __PACKAGE__->table("attachment");
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "f_path",
-  { data_type => "text", is_nullable => 0 },
-  "f_name",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
-  "f_archive_rel_path",
-  { data_type => "varchar", is_nullable => 0, size => 4 },
-  "f_timestamp",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
-  "f_full_path_name",
-  { data_type => "text", is_nullable => 0 },
-  "f_suffix",
-  { data_type => "varchar", is_nullable => 0, size => 16 },
-  "uri",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "size",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 64 },
+  "division",
+  { data_type => "integer", default_value => 12, is_nullable => 0 },
+  "bcor",
+  {
+    data_type => "varchar",
+    default_value => "0mm",
+    is_nullable => 0,
+    size => 16,
+  },
+  "fontsize",
+  { data_type => "integer", default_value => 10, is_nullable => 0 },
+  "mainfont",
+  {
+    data_type => "varchar",
+    default_value => "Linux Libertine O",
+    is_nullable => 0,
+    size => 255,
+  },
+  "twoside",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 8 },
 );
 
 =head1 PRIMARY KEY
@@ -125,22 +132,6 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
-
-=head1 UNIQUE CONSTRAINTS
-
-=head2 C<uri_site_id_unique>
-
-=over 4
-
-=item * L</uri>
-
-=item * L</site_id>
-
-=back
-
-=cut
-
-__PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
 
 =head1 RELATIONS
 
@@ -156,12 +147,17 @@ __PACKAGE__->belongs_to(
   "site",
   "AmuseWikiFarm::Schema::Result::Site",
   { id => "site_id" },
-  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
 );
 
 
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:34:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8dRRfvD3nZcJj+XUtzoCqA
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jlOz4lmGMOcrHE02d6ruog
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -66,7 +66,7 @@ __PACKAGE__->table("category");
   data_type: 'varchar'
   is_foreign_key: 1
   is_nullable: 0
-  size: 16
+  size: 8
 
 =cut
 
@@ -80,7 +80,7 @@ __PACKAGE__->add_columns(
   "type",
   { data_type => "varchar", is_nullable => 0, size => 16 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
 );
 
 =head1 PRIMARY KEY
@@ -156,8 +156,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 22:40:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:r3umv4HR/CmG4a47FjHgHw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:34:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:arJgX1Cv9AIPc09xYOb1aw
 
 sub title_count {
     my $self = shift;

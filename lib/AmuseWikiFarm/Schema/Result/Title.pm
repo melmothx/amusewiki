@@ -158,7 +158,7 @@ __PACKAGE__->table("title");
   data_type: 'varchar'
   is_foreign_key: 1
   is_nullable: 0
-  size: 16
+  size: 8
 
 =cut
 
@@ -204,7 +204,7 @@ __PACKAGE__->add_columns(
   "deleted",
   { data_type => "text", default_value => "", is_nullable => 0 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
 );
 
 =head1 PRIMARY KEY
@@ -278,8 +278,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-02-06 22:40:10
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:j5M8Nmisa2jGTsToQ9av8A
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:34:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3c+Eqd75eBwfsW/OKYtkAg
 
 use File::Spec;
 use File::Slurp qw/read_file/;
