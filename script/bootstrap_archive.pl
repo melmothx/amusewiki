@@ -29,7 +29,7 @@ my @codes = @ARGV;
 foreach my $code (@codes) {
 
     # checking
-    unless ($code =~ m/^[a-z0-9]{2,8}+$/) {
+    unless ($code =~ m/^[a-z0-9]{2,8}$/) {
         warn "Wrong code $code, see README.txt for naming convention. Skipping...\n";
         next;
     }
