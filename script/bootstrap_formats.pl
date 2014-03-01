@@ -18,32 +18,33 @@ binmode STDERR, ':encoding(UTF-8)';
 
 my $db = AmuseWikiFarm::Model::DB->new;
 
-my @todo;
 foreach my $s ($db->resultset('Site')->all) {
-    push @todo, $s;
+    print $s->id . " " . $s->vhosts->single->name . "\n";
 }
-
-$| = 1;
 
 die "Missing repo dir!" unless -d 'repo';
 chdir 'repo' or die $!;
-for my $site (@todo) {
-    print "Compiling all in " . $site->id . ":\n";
-    if (-d $site->id) {
+
+my @todo = @ARGV;
+for my $id (@todo) {
+    if (-d $id) {
+        my $site = $db->resultset('Site')->find($id);
+        die "$id not found" unless $site;
+        print "Compiling all in $id\n";
         print "Starting (" . localtime() . ")\n";
         compile_all($site);
         print "Done (" . localtime() . ")\n";
         
     }
     else {
-        print "Skipping, " . $site->id . " not found\n";
+        print "Skipping, $id not found\n";
     }
 }
 
 sub compile_all {
     my $site = shift;
 
-      
+
     my $logfile = $site->id . ".error.log";
     my $report = sub {
         my @errors = @_;
