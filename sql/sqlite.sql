@@ -138,3 +138,5 @@ INSERT INTO vhost VALUES ('blog.amusewiki.org', '0blog0');
 INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');
 INSERT INTO vhost VALUES ('empty.amusewiki.org', '0empty0');
 
+INSERT INTO texoption (size, division, bcor, fontsize, mainfont, twoside, site_di)
+       VALUES ('a4', 9, '1cm', 12, 'Charis SIL', 1, '0blog0');
