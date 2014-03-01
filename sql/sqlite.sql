@@ -21,6 +21,8 @@ CREATE TABLE site (
        logo VARCHAR(32),
        mail VARCHAR(128),
        -- formats
+       tex       INTEGER NOT NULL DEFAULT 1,
+       pdf       INTEGER NOT NULL DEFAULT 1,
        a4_pdf    INTEGER NOT NULL DEFAULT 1,
        lt_pdf    INTEGER NOT NULL DEFAULT 1,
        html      INTEGER NOT NULL DEFAULT 1,

@@ -77,6 +77,18 @@ __PACKAGE__->table("site");
   is_nullable: 1
   size: 128
 
+=head2 tex
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 pdf
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
 =head2 a4_pdf
 
   data_type: 'integer'
@@ -129,6 +141,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "mail",
   { data_type => "varchar", is_nullable => 1, size => 128 },
+  "tex",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "pdf",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
   "a4_pdf",
   { data_type => "integer", default_value => 1, is_nullable => 0 },
   "lt_pdf",
@@ -233,8 +249,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 19:24:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/ZddWe4/hzLOWWAxiWlJJQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 19:49:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+t3Q7nFEYOKddS1Yi5c9Tw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
