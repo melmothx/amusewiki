@@ -25,12 +25,12 @@ requires 'File::Slurp';
 
 # our own dogfood
 requires 'Text::Amuse' => 0.10;
-requires 'Text::Amuse::Compile' => 0.4;
+requires 'Text::Amuse::Compile' => 0.04;
 
 # devel things to be removed at the end of the development cycle
-requires 'Catalyst::Plugin::StackTrace';
-requires 'Catalyst::Plugin::MemoryUsage';
-requires 'DBIx::Class::Schema::Loader';
+# requires 'Catalyst::Plugin::StackTrace';
+# requires 'Catalyst::Plugin::MemoryUsage';
+# requires 'DBIx::Class::Schema::Loader';
 requires 'MooseX::MarkAsMethods';
 
 test_requires 'Test::More' => '0.88';
