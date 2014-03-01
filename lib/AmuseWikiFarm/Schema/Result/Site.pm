@@ -77,48 +77,6 @@ __PACKAGE__->table("site");
   is_nullable: 1
   size: 128
 
-=head2 tex
-
-  data_type: 'integer'
-  default_value: 1
-  is_nullable: 0
-
-=head2 pdf
-
-  data_type: 'integer'
-  default_value: 1
-  is_nullable: 0
-
-=head2 a4_pdf
-
-  data_type: 'integer'
-  default_value: 1
-  is_nullable: 0
-
-=head2 lt_pdf
-
-  data_type: 'integer'
-  default_value: 1
-  is_nullable: 0
-
-=head2 html
-
-  data_type: 'integer'
-  default_value: 1
-  is_nullable: 0
-
-=head2 bare_html
-
-  data_type: 'integer'
-  default_value: 1
-  is_nullable: 0
-
-=head2 epub
-
-  data_type: 'integer'
-  default_value: 1
-  is_nullable: 0
-
 =head2 canonical
 
   data_type: 'varchar'
@@ -141,20 +99,6 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "mail",
   { data_type => "varchar", is_nullable => 1, size => 128 },
-  "tex",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
-  "pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
-  "a4_pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
-  "lt_pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
-  "html",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
-  "bare_html",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
-  "epub",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
 );
@@ -199,6 +143,21 @@ Related object: L<AmuseWikiFarm::Schema::Result::Category>
 __PACKAGE__->has_many(
   "categories",
   "AmuseWikiFarm::Schema::Result::Category",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 format
+
+Type: might_have
+
+Related object: L<AmuseWikiFarm::Schema::Result::Format>
+
+=cut
+
+__PACKAGE__->might_have(
+  "format",
+  "AmuseWikiFarm::Schema::Result::Format",
   { "foreign.site_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
@@ -249,8 +208,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 19:49:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+t3Q7nFEYOKddS1Yi5c9Tw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 20:20:00
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EWFdjc26GL1GQLv/991K0w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

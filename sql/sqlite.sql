@@ -21,6 +21,11 @@ CREATE TABLE site (
        logo VARCHAR(32),
        mail VARCHAR(128),
        -- formats
+       canonical VARCHAR(255) NOT NULL DEFAULT ''
+);
+
+CREATE TABLE format (
+       id INTEGER PRIMARY KEY,
        tex       INTEGER NOT NULL DEFAULT 1,
        pdf       INTEGER NOT NULL DEFAULT 1,
        a4_pdf    INTEGER NOT NULL DEFAULT 1,
@@ -28,8 +33,12 @@ CREATE TABLE site (
        html      INTEGER NOT NULL DEFAULT 1,
        bare_html INTEGER NOT NULL DEFAULT 1,
        epub      INTEGER NOT NULL DEFAULT 1,
-       canonical VARCHAR(255) NOT NULL DEFAULT ''
+       ttdir     VARCHAR(1024) NOT NULL DEFAULT '',
+       site_id   VARCHAR(8) REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE
 );
+CREATE UNIQUE INDEX unique_format ON format (site_id);
+
 
 CREATE TABLE texoption (
        id INTEGER PRIMARY KEY,
@@ -41,7 +50,6 @@ CREATE TABLE texoption (
        twoside INTEGER NOT NULL DEFAULT 0,
        site_id VARCHAR(8) REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE
-
 );
 CREATE UNIQUE INDEX unique_texoption ON texoption (site_id);
 
