@@ -156,8 +156,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:34:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:arJgX1Cv9AIPc09xYOb1aw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 22:09:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:LTan1ILubifu/KNz44BzdA
 
 sub title_count {
     my $self = shift;

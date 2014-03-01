@@ -20,12 +20,8 @@ CREATE TABLE site (
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
        logo VARCHAR(32),
        mail VARCHAR(128),
+       canonical VARCHAR(255) NOT NULL DEFAULT '',
        -- formats
-       canonical VARCHAR(255) NOT NULL DEFAULT ''
-);
-
-CREATE TABLE generate (
-       id INTEGER PRIMARY KEY,
        tex       INTEGER NOT NULL DEFAULT 1,
        pdf       INTEGER NOT NULL DEFAULT 1,
        a4_pdf    INTEGER NOT NULL DEFAULT 1,
@@ -34,25 +30,14 @@ CREATE TABLE generate (
        bare_html INTEGER NOT NULL DEFAULT 1,
        epub      INTEGER NOT NULL DEFAULT 1,
        ttdir     VARCHAR(1024) NOT NULL DEFAULT '',
-       site_id   VARCHAR(8) REFERENCES site(id)
-                          ON DELETE CASCADE ON UPDATE CASCADE
-);
-CREATE UNIQUE INDEX unique_format ON generate (site_id);
-
-
-CREATE TABLE texoption (
-       id INTEGER PRIMARY KEY,
+       -- tex options
        size VARCHAR(64) NOT NULL DEFAULT '', -- will pick the generic
        division INTEGER NOT NULL DEFAULT '12',
        bcor VARCHAR(16) NOT NULL DEFAULT '0mm',
        fontsize INTEGER NOT NULL DEFAULT '10',
        mainfont VARCHAR(255) NOT NULL DEFAULT 'Linux Libertine O',
-       twoside INTEGER NOT NULL DEFAULT 0,
-       site_id VARCHAR(8) REFERENCES site(id)
-                          ON DELETE CASCADE ON UPDATE CASCADE
+       twoside INTEGER NOT NULL DEFAULT 0
 );
-CREATE UNIQUE INDEX unique_texoption ON texoption (site_id);
-
 
 CREATE TABLE title (
         id          INTEGER PRIMARY KEY,
@@ -133,31 +118,36 @@ CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
 INSERT INTO site (id, locale,
                   sitename, siteslogan,
-                  logo, canonical)
+                  logo, canonical,
+                  a4_pdf, lt_pdf,
+                  size, division, bcor, fontsize, mainfont, twoside
+                  )
        VALUES (
               '0blog0', 'hr',
               'hrvatski blog', 'samo test',
               'logo-yu',
-              'http://blog.amusewiki.org'
+              'http://blog.amusewiki.org',
+              1, 1,
+              'a4', 9, '1cm', 12, 'Charis SIL', 1
               ),
               (
               '0test0', 'en',
               'english test', 'only a test',
               'logo-en',
-              'http://test.amusewiki.org'
+              'http://test.amusewiki.org',
+              0, 0,
+              '', 12, '0mm', 10, '', 1
               ),
               (
               '0empty0', 'en',
               '', '',
               '',
-              'http://empty.amusewiki.org'
+              'http://empty.amusewiki.org',
+              1, 1,
+              '', 12, '', '', '', 1
               );
 
 INSERT INTO vhost VALUES ('blog.amusewiki.org', '0blog0');
 INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');
 INSERT INTO vhost VALUES ('empty.amusewiki.org', '0empty0');
 
-INSERT INTO texoption (size, division, bcor, fontsize, mainfont, twoside, site_id)
-       VALUES ('a4', 9, '1cm', 12, 'Charis SIL', 1, '0blog0');
-INSERT INTO generate (a4_pdf, lt_pdf, site_id)
-       VALUES (0, 0, '0test0');

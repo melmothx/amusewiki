@@ -84,6 +84,94 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 255
 
+=head2 tex
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 pdf
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 a4_pdf
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 lt_pdf
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 html
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 bare_html
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 epub
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 ttdir
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 1024
+
+=head2 size
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 64
+
+=head2 division
+
+  data_type: 'integer'
+  default_value: 12
+  is_nullable: 0
+
+=head2 bcor
+
+  data_type: 'varchar'
+  default_value: '0mm'
+  is_nullable: 0
+  size: 16
+
+=head2 fontsize
+
+  data_type: 'integer'
+  default_value: 10
+  is_nullable: 0
+
+=head2 mainfont
+
+  data_type: 'varchar'
+  default_value: 'Linux Libertine O'
+  is_nullable: 0
+  size: 255
+
+=head2 twoside
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -101,6 +189,44 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 128 },
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "tex",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "pdf",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "a4_pdf",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "lt_pdf",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "html",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "bare_html",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "epub",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "ttdir",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 1024 },
+  "size",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 64 },
+  "division",
+  { data_type => "integer", default_value => 12, is_nullable => 0 },
+  "bcor",
+  {
+    data_type => "varchar",
+    default_value => "0mm",
+    is_nullable => 0,
+    size => 16,
+  },
+  "fontsize",
+  { data_type => "integer", default_value => 10, is_nullable => 0 },
+  "mainfont",
+  {
+    data_type => "varchar",
+    default_value => "Linux Libertine O",
+    is_nullable => 0,
+    size => 255,
+  },
+  "twoside",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
 );
 
 =head1 PRIMARY KEY
@@ -147,36 +273,6 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 generate
-
-Type: might_have
-
-Related object: L<AmuseWikiFarm::Schema::Result::Generate>
-
-=cut
-
-__PACKAGE__->might_have(
-  "generate",
-  "AmuseWikiFarm::Schema::Result::Generate",
-  { "foreign.site_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
-=head2 texoption
-
-Type: might_have
-
-Related object: L<AmuseWikiFarm::Schema::Result::Texoption>
-
-=cut
-
-__PACKAGE__->might_have(
-  "texoption",
-  "AmuseWikiFarm::Schema::Result::Texoption",
-  { "foreign.site_id" => "self.id" },
-  { cascade_copy => 0, cascade_delete => 0 },
-);
-
 =head2 titles
 
 Type: has_many
@@ -208,8 +304,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 20:29:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gBXH10JqxCYc/pbSzHO2XQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 22:09:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ATmG3i+rRhuAuQL9c7Ggow
 
 
 =head2 compile_options
@@ -225,35 +321,20 @@ Options to feed the extra key of the Text::Amuse::Compile object.
 sub compile_options {
     my $self = shift;
     my %opts;
-    if ($self->generate) {
-        %opts = $self->generate->compile_options;
+
+    foreach my $f (qw/tex pdf a4_pdf lt_pdf html bare_html epub/) {
+        $opts{$f} = $self->$f;
     }
-
-    my %extra = (
-                 $self->compile_texoptions,
-                 $self->compile_extra_options,
-                );
-    $opts{extra} = \%extra;
-    return %opts;
-}
-
-sub compile_extra_options {
-    my $self = shift;
-    my %extra = (
-                 sitename => $self->sitename,
-                 siteslogan => $self->siteslogan,
-                 logo => $self->logo,
-                 site => $self->canonical,
-                );
-    return %extra;
-}
-
-sub compile_texoptions {
-    my $self = shift;
-    my %opts;
-    if ($self->texoption) {
-        %opts = $self->texoption->compile_options;
+    if (my $dir = $self->ttdir) {
+        $opts{ttdir} = $dir;
     }
+    my %extra;
+    foreach my $ext (qw/sitename siteslogan logo
+                        size division fontsize
+                        bcor mainfont twoside/) {
+        $opts{extra}{$ext} = $self->$ext;
+    }
+    $opts{extra}{site} = $self->canonical;
     return %opts;
 }
 
