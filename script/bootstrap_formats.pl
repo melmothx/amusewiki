@@ -70,6 +70,6 @@ sub compile_all {
              }
          }, $site->id);
     print Dumper(\@files);
-    $c->compile(@files);
+    $c->compile(sort(@files));
     $report->("Ended at " . localtime() . "\n");
 }
