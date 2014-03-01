@@ -6,3 +6,11 @@ blib/*
 inc/*
 pm_to_blib
 sqlite.db
+repo/*/*/*/*.pdf
+repo/*/*/*/*.tex
+repo/*/*/*/*.html
+repo/*/*/*/*.log
+repo/*/*/*/*.epub
+xapian/*
+!xapian/README.txt
+

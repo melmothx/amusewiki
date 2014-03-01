@@ -1,9 +1,12 @@
 #!/bin/bash
 rm -v sqlite.db
+rm -rfv xapian/{0blog0,0test0}
 sqlite3 sqlite.db < sql/sqlite.sql
 script/amusewikifarm_create.pl model DB \
     DBIC::Schema AmuseWikiFarm::Schema \
     create=static naming=current use_namespaces=1 \
     dbi:SQLite:sqlite.db \
     on_connect_do="PRAGMA foreign_keys = ON"
-script/bootstrap_archive.pl repo/{test,blog}
+script/bootstrap_archive.pl 0test0 0blog0
+
+
