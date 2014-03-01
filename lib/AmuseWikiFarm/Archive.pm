@@ -183,14 +183,21 @@ sub xapian_index_text {
             # $doc->add_value($SLOT_TITLE, $doc_name);
 
             # Index the author to allow fielded free-text searching.
-            $indexer->index_text($title->author, 1, 'A');
+            if (my $author = $title->author) {
+                $indexer->index_text($author, 1, 'A');
+            }
 
-            # with lesser weight, index the list
-            $indexer->index_text($title->author_list, 2, 'A');
+            if (my $author_list = $title->author_list) {
+                # with lesser weight, index the list
+                $indexer->index_text($author_list, 2, 'A');
+            }
 
             # Index the title and subtitle to allow fielded free-text searching.
             $indexer->index_text($title->title, 1, 'S');
-            $indexer->index_text($title->subtitle, 2, 'S');
+
+            if (my $subtitle = $title->subtitle) {
+                $indexer->index_text($subtitle, 2, 'S');
+            }
 
             # To allow date range searching and sorting by date.
             if ($title->date and $title->date =~ /(\d{4})/) {
@@ -198,10 +205,15 @@ sub xapian_index_text {
                 # $doc->add_value($SLOT_DATE, "$1$2$3");
             }
 
-            $indexer->index_text($title->topic_list, 1, 'K');
-            $indexer->index_text($title->source, 1, 'XSOURCE');
-            $indexer->index_text($title->notes, 1, 'XNOTES');
-
+            if (my $topic_list = $title->topic_list) {
+                $indexer->index_text($topic_list, 1, 'K');
+            }
+            if (my $source = $title->source) {
+                $indexer->index_text($source, 1, 'XSOURCE');
+            }
+            if (my $notes = $title->notes) {
+                $indexer->index_text($notes, 1, 'XNOTES');
+            }
 
             # Increase the term position so that phrases can't straddle the
             # doc_name and keywords.
