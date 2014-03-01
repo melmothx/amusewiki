@@ -1,12 +1,12 @@
 use utf8;
-package AmuseWikiFarm::Schema::Result::Format;
+package AmuseWikiFarm::Schema::Result::Generate;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Format
+AmuseWikiFarm::Schema::Result::Generate
 
 =cut
 
@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<format>
+=head1 TABLE: C<generate>
 
 =cut
 
-__PACKAGE__->table("format");
+__PACKAGE__->table("generate");
 
 =head1 ACCESSORS
 
@@ -174,8 +174,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 20:20:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AlTo4gXa83nU7Z8ytZ8Z+g
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 20:29:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7FR2AP+4yiVIZGDjpKMT5A
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

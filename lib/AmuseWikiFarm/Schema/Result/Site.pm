@@ -147,17 +147,17 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 format
+=head2 generate
 
 Type: might_have
 
-Related object: L<AmuseWikiFarm::Schema::Result::Format>
+Related object: L<AmuseWikiFarm::Schema::Result::Generate>
 
 =cut
 
 __PACKAGE__->might_have(
-  "format",
-  "AmuseWikiFarm::Schema::Result::Format",
+  "generate",
+  "AmuseWikiFarm::Schema::Result::Generate",
   { "foreign.site_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
@@ -208,8 +208,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 20:20:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EWFdjc26GL1GQLv/991K0w
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 20:29:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gBXH10JqxCYc/pbSzHO2XQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

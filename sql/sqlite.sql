@@ -24,7 +24,7 @@ CREATE TABLE site (
        canonical VARCHAR(255) NOT NULL DEFAULT ''
 );
 
-CREATE TABLE format (
+CREATE TABLE generate (
        id INTEGER PRIMARY KEY,
        tex       INTEGER NOT NULL DEFAULT 1,
        pdf       INTEGER NOT NULL DEFAULT 1,
@@ -37,7 +37,7 @@ CREATE TABLE format (
        site_id   VARCHAR(8) REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE
 );
-CREATE UNIQUE INDEX unique_format ON format (site_id);
+CREATE UNIQUE INDEX unique_format ON generate (site_id);
 
 
 CREATE TABLE texoption (
