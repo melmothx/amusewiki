@@ -177,7 +177,22 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 20:29:28
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7FR2AP+4yiVIZGDjpKMT5A
 
+=head2 compile_options
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+Hash with the formats to feed Text::Amuse::Compile (all the column,
+minus C<id> and C<site_id>.
+
+=cut
+
+sub compile_options {
+    my $self = shift;
+    my %hash = $self->get_columns;
+    delete $hash{id};
+    delete $hash{ttdir} unless $hash{ttdir};
+    delete $hash{site_id};
+    return %hash;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

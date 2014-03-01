@@ -174,6 +174,20 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7izeMGy0VHoL49tzwmv76w
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+=head2 compile_options
+
+Hash with the formats to feed Text::Amuse::Compile (all the column,
+minus C<id> and C<site_id>.
+
+=cut
+
+sub compile_options {
+    my $self = shift;
+    my %hash = $self->get_columns;
+    delete $hash{id};
+    delete $hash{site_id};
+    return %hash;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

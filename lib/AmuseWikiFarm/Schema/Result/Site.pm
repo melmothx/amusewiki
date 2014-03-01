@@ -212,6 +212,51 @@ __PACKAGE__->has_many(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gBXH10JqxCYc/pbSzHO2XQ
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+=head2 compile_options
+
+Options to feed the Text::Amuse::Compile object.
+
+=head2 compile_extra_options
+
+Options to feed the extra key of the Text::Amuse::Compile object.
+
+=cut
+
+sub compile_options {
+    my $self = shift;
+    my %opts;
+    if ($self->generate) {
+        %opts = $self->generate->compile_options;
+    }
+
+    my %extra = (
+                 $self->compile_texoptions,
+                 $self->compile_extra_options,
+                );
+    $opts{extra} = \%extra;
+    return %opts;
+}
+
+sub compile_extra_options {
+    my $self = shift;
+    my %extra = (
+                 sitename => $self->sitename,
+                 siteslogan => $self->siteslogan,
+                 logo => $self->logo,
+                 site => $self->canonical,
+                );
+    return %extra;
+}
+
+sub compile_texoptions {
+    my $self = shift;
+    my %opts;
+    if ($self->texoption) {
+        %opts = $self->texoption->compile_options;
+    }
+    return %opts;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;
