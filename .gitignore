@@ -11,6 +11,10 @@ repo/*/*/*/*.tex
 repo/*/*/*/*.html
 repo/*/*/*/*.log
 repo/*/*/*/*.epub
+repo/*/*/*/*.ok
+repo/*/*/*/*.aux
+repo/*/*/*/*.toc
+repo/*.log
 xapian/*
 !xapian/README.txt
 
