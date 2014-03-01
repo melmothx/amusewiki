@@ -35,6 +35,8 @@ CREATE TABLE texoption (
                           ON DELETE CASCADE ON UPDATE CASCADE
 
 );
+CREATE UNIQUE INDEX unique_texoption ON texoption (site_id);
+
 
 CREATE TABLE title (
         id          INTEGER PRIMARY KEY,

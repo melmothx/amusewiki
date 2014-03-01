@@ -133,6 +133,20 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<site_id_unique>
+
+=over 4
+
+=item * L</site_id>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("site_id_unique", ["site_id"]);
+
 =head1 RELATIONS
 
 =head2 site
@@ -156,8 +170,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:34:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jlOz4lmGMOcrHE02d6ruog
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:49:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7izeMGy0VHoL49tzwmv76w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

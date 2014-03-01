@@ -147,16 +147,16 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 texoptions
+=head2 texoption
 
-Type: has_many
+Type: might_have
 
 Related object: L<AmuseWikiFarm::Schema::Result::Texoption>
 
 =cut
 
-__PACKAGE__->has_many(
-  "texoptions",
+__PACKAGE__->might_have(
+  "texoption",
   "AmuseWikiFarm::Schema::Result::Texoption",
   { "foreign.site_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
@@ -193,8 +193,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:34:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CsuQOh3UcM9LEiiYXpUkaQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:49:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qEWXhyqsD1RK2tbP1gKvWA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
