@@ -159,3 +159,5 @@ INSERT INTO vhost VALUES ('empty.amusewiki.org', '0empty0');
 
 INSERT INTO texoption (size, division, bcor, fontsize, mainfont, twoside, site_id)
        VALUES ('a4', 9, '1cm', 12, 'Charis SIL', 1, '0blog0');
+INSERT INTO generate (a4_pdf, lt_pdf, site_id)
+       VALUES (0, 0, '0test0');
