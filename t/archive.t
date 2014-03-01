@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 11;
+use Test::More tests => 12;
 use File::Slurp;
 use File::Temp;
 use File::Copy qw/copy/;
@@ -14,7 +14,7 @@ use Data::Dumper;
 use AmuseWikiFarm::Model::DB;
 use AmuseWikiFarm::Archive;
 
-my $id = 'test';
+my $id = '0test0';
 my $schema = AmuseWikiFarm::Model::DB->new;
 my $archive = AmuseWikiFarm::Archive->new(repo => catdir(repo => $id),
                                           dbic => $schema,
