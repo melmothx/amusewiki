@@ -20,6 +20,12 @@ CREATE TABLE site (
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
        logo VARCHAR(32),
        mail VARCHAR(128),
+       -- formats
+       a4_pdf    INTEGER NOT NULL DEFAULT 1,
+       lt_pdf    INTEGER NOT NULL DEFAULT 1,
+       html      INTEGER NOT NULL DEFAULT 1,
+       bare_html INTEGER NOT NULL DEFAULT 1,
+       epub      INTEGER NOT NULL DEFAULT 1,
        canonical VARCHAR(255) NOT NULL DEFAULT ''
 );
 
@@ -115,28 +121,31 @@ CREATE TABLE attachment (
 
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
-INSERT INTO site VALUES (
-                        '0blog0', 'hr',
-                        'hrvatski blog', 'samo test',
-                        'logo-yu', '',
-                        'http://blog.amusewiki.org'
-                        );
-INSERT INTO site VALUES (
-                         '0test0', 'en',
-                         'english test', 'only a test',
-                         'logo-en', '',
-                         'http://test.amusewiki.org'
-                         );
-INSERT INTO site VALUES (
-                         '0empty0', 'en',
-                         '', '',
-                         '', '',
-                         'http://empty.amusewiki.org'
-                         );
+INSERT INTO site (id, locale,
+                  sitename, siteslogan,
+                  logo, canonical)
+       VALUES (
+              '0blog0', 'hr',
+              'hrvatski blog', 'samo test',
+              'logo-yu',
+              'http://blog.amusewiki.org'
+              ),
+              (
+              '0test0', 'en',
+              'english test', 'only a test',
+              'logo-en',
+              'http://test.amusewiki.org'
+              ),
+              (
+              '0empty0', 'en',
+              '', '',
+              '',
+              'http://empty.amusewiki.org'
+              );
 
 INSERT INTO vhost VALUES ('blog.amusewiki.org', '0blog0');
 INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');
 INSERT INTO vhost VALUES ('empty.amusewiki.org', '0empty0');
 
-INSERT INTO texoption (size, division, bcor, fontsize, mainfont, twoside, site_di)
+INSERT INTO texoption (size, division, bcor, fontsize, mainfont, twoside, site_id)
        VALUES ('a4', 9, '1cm', 12, 'Charis SIL', 1, '0blog0');

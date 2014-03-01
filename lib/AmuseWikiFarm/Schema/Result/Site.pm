@@ -77,6 +77,36 @@ __PACKAGE__->table("site");
   is_nullable: 1
   size: 128
 
+=head2 a4_pdf
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 lt_pdf
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 html
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 bare_html
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
+=head2 epub
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
 =head2 canonical
 
   data_type: 'varchar'
@@ -99,6 +129,16 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "mail",
   { data_type => "varchar", is_nullable => 1, size => 128 },
+  "a4_pdf",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "lt_pdf",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "html",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "bare_html",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "epub",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
 );
@@ -193,8 +233,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:49:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qEWXhyqsD1RK2tbP1gKvWA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 19:24:18
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/ZddWe4/hzLOWWAxiWlJJQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
