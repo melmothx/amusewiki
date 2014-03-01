@@ -21,9 +21,11 @@ requires 'Config::General'; # This should reflect the config file format you've 
 
 # modules used
 requires 'Unicode::Collate';
+requires 'File::Slurp';
 
 # our own dogfood
-requires 'Text::Amuse' => 0.05;
+requires 'Text::Amuse' => 0.10;
+requires 'Text::Amuse::Compile' => 0.4;
 
 # devel things to be removed at the end of the development cycle
 requires 'Catalyst::Plugin::StackTrace';
