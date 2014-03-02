@@ -52,9 +52,9 @@
 ** DONE Xapian indexing (Search::Xapian)
    CLOSED: [2014-02-08 sab 12:36]
 
-** compilation: Makefile and muse-quick
-
-Probably slower but more standard and with less problems.
+** DONE compilation: Makefile and muse-quick
+   CLOSED: [2014-03-02 dom 10:39]
+   Use Text::Amuse::Compile
 
 ** bookbuilder Text::Amuse + PDF::Imposition
 
@@ -65,5 +65,15 @@ Probably slower but more standard and with less problems.
 ** template management
 ** page deletion
 ** category management
+
+* Notes
+
+** Git merging
+
+When pulling from remotes repos, permit only fast-forward. If it
+fails, send a mail to the user associated with that repository and
+notify the failure.
+
+On post-merge, run make via tiny hook, update xapian and the db.
 
 
