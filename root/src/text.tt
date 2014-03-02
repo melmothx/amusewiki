@@ -66,11 +66,14 @@
       </strong>
     </div>
     <div id="downloadformats-list">
+      [% IF site.pdf %]
       <span id="pdfgeneric">
         <a href="[% basename %].pdf" class="pdflinks">
 	      <img src="/static/images/pdf-gen.png" alt="plain PDF" title="plainPDF" 
 	           class="pdfmyicons" /></a>
       </span>
+      [% END %]
+      [% IF site.a4_pdf %]
       <span id="pdfa4imp">
         <a href="[% basename %].a4.pdf" class="pdflinks">
 	      <img src="/static/images/pdf-a4-imposed.png"
@@ -78,6 +81,8 @@
 	           title="A4 imposed"
 	           class="pdfmyicons" /></a> 
       </span>
+      [% END %]
+      [% IF site.lt_pdf %]
       <span id="letterimp">
         <a href="[% basename %].lt.pdf" class="pdflinks">
 	      <img src="/static/images/pdf-letter-imposed.png"
@@ -85,22 +90,29 @@
 	           title="PDF Letter imposed"
 	           class="pdfmyicons" /></a> 
       </span>
+      [% END %]
+      [% IF site.epub %]
       <span id="downloadepub">
         <a href="[% basename %].epub">
 	      <img src="/static/images/epub.png" alt="EPUB"
 	           title="EPUB (for mobile devices)" class="pdfmyicons" /></a>
       </span>
+      [% END %]
+      [% IF site.html %]
       <span id="downloadhtml">
         <a href="[% basename %].html">
 	      <img src="/static/images/pf-html.png" alt="clean HTML"
 	           title="Standalone HTML (printer-friendly)"
 	           class="pdfmyicons" /></a>
       </span>
+      [% END %]
+      [% IF site.tex %]
       <span id="downloadtex">
         <a href="[% basename %].tex">
 	      <img src="/static/images/tex.png" alt="TeX" title="ConTeXt source"
 	           class="pdfmyicons" /></a>
       </span>
+      [% END %]
       <span id="downloadsrc">
         <a href="[% basename %].muse">
 	      <img src="/static/images/muse.png" alt="source" title="plain
