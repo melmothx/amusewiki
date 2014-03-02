@@ -12,5 +12,17 @@
 [% text.html_body %]
 </div>
 
-<hr>
+<hr />
+<div id="impressum">
+  [% IF text.source %]
+  <div id="source">
+    [% text.source %]
+  </div>
+  [% END %]
 
+  [% IF text.notes %]
+  <div id="notes">
+    [% text.notes %]
+  </div>
+  [% END %]
+</div>

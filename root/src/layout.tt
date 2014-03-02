@@ -7,7 +7,7 @@
   </head>
   <body>
     <h3>Sites</h3>
-    <p>Current site ID: [% site_id %]</p>
+    <p>Current site ID: [% site.id %]</p>
     <ul>
       <li><a href="http://test.amusewiki.org:3000/library">Test</a></li>
       <li><a href="http://blog.amusewiki.org:3000/library">Blog</a></li>

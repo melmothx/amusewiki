@@ -4,6 +4,9 @@
 #SORTauthors ŽMarco, ZMario, ćPegula, CPegulaX, Cikla, Ćao
 #SORTtopics ecole, écoleX, Èmile, Žtopic, Zitopic, Zimba, Zurro
 #pubdate 2014-02-01
+#source Source: My own work
+#notes Note: This is just a test, however.
+
 
 My first test
 
