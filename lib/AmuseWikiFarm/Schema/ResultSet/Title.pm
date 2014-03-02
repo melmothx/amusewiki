@@ -17,7 +17,9 @@ List the title for a single site
 
 sub published_texts {
     my $self = shift;
-    return $self->search({ deleted => '' }, { order_by => 'title' });
+    return $self->search({ deleted => '' }, { order_by => [qw/sorting_pos
+                                                              title/] });
+
 }
 
 1;

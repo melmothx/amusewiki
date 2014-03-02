@@ -86,7 +86,8 @@ sub category_details :Private {
 sub category_listing :Private {
     my ( $self, $c, $type ) = @_;
     my @list = $c->stash->{site}->categories->search({ type => $type },
-                                                     { order_by => 'name' });
+                                                     { order_by => [qw/sorting_pos
+                                                                       name/] });
     $c->stash(
               list => \@list,
               template => 'category.tt',

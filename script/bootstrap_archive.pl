@@ -71,4 +71,7 @@ foreach my $code (@codes) {
         print "indexing $file\n";
         $archive->index_file($file) || print "Ignored $file\n";
     }
+    # set the sorting
+    print "Updating the sorting for $code\n";
+    $archive->collation_index;
 }

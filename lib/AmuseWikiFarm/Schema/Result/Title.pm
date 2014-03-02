@@ -324,7 +324,8 @@ sub category_listing {
     my ($self, $type, $sep) = @_;
     my @cats;
     my @results = $self->categories->search({ type => $type },
-                                            { order_by => 'name' });
+                                            { order_by => [qw/sorting_pos
+                                                              name/]});
     foreach my $cat (@results) {
         push @cats, $cat->name;
     }

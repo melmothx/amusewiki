@@ -9,6 +9,10 @@ use namespace::autoclean;
 
 use Search::Xapian (':all');
 use AmuseWikiFarm::Utils::Amuse qw/muse_file_info/;
+use Unicode::Collate::Locale;
+
+# use Data::Dumper;
+
 
 has xapian => (is => 'ro',
                required => 0,
@@ -237,7 +241,44 @@ sub xapian_index_text {
     $@ ? return : return 1;
 }
 
+=head2 collation_index
 
+Update the C<sorting_pos> field of each text and category based on the
+collation for the current locale.
+
+Collation on the fly would have been too slow, or would depend on the
+(possibly crappy) collation of the database engine, if any.
+
+=cut
+
+sub collation_index {
+    my $self = shift;
+    my $site = $self->dbic->resultset('Site')->find($self->code);
+
+    my $collator = Unicode::Collate::Locale->new(locale => $site->locale);
+
+    my @texts = sort {
+        $collator->cmp($a->list_title, $b->list_title)
+    } $site->titles;
+
+    my $i = 1;
+    foreach my $t (@texts) {
+        $t->sorting_pos($i++);
+        $t->update;
+    }
+
+    # and then sort the categories
+    my @categories = sort {
+        $collator->cmp($a->name, $b->name)
+    } $site->categories;
+
+    $i = 1;
+    foreach my $cat (@categories) {
+        $cat->sorting_pos($i++);
+        $cat->update;
+    }
+
+}
 
 __PACKAGE__->meta->make_immutable;
 
