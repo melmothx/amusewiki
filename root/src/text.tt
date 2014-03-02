@@ -2,55 +2,57 @@
 
 <div id="page">
   <div id="preamble">
+
     <p id="texttitle">
       <strong>Title:</strong>
       [% text.title %]
     </p>
-    [% IF text.subtitle -%]
+
+    [% IF text.subtitle %]
     <p id="textsubtitle">
       <strong>Subtitle:</strong>
       [% text.subtitle %]
     </p>
-    [%- END -%]
+    [% END %]
 
-    [% IF text.authors.size -%]
+    [% IF text.authors.size %]
     <p id="authors">
       <strong>Authors:</strong>
       [% FOREACH author IN text.authors -%]
       <a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>
-      [% END -%]
+      [% END %]
     </p>
-    [%- END -%]
+    [% END %]
 
-    [% IF text.date -%]
+    [% IF text.date %]
     <p id="textdate">
       <strong>Date:</strong>
       [% text.date %]
     </p>
-    [%- END -%]
+    [% END %]
 
-    [% IF text.topics.size -%]
-    <div id="topics">
+    [% IF text.topics.size %]
+    <p id="topics">
       <strong>Topics:</strong>
       [% FOREACH topic IN text.topics -%]
       <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">[% topic.name %]</a>
-      [% END -%]
-    </div>
-    [%- END -%]
+      [% END %]
+    </p>
+    [% END %]
 
-    [% IF text.source -%]
+    [% IF text.source %]
     <p id="preamblesrc">
       <strong>Source:</strong>
       [% text.source %]
     </p>
-    [%- END -%]
+    [% END %]
 
-    [% IF text.notes -%]
+    [% IF text.notes %]
     <p id="preamblenotes">
       <strong>Notes:</strong>
       [% text.notes %]
     </p>
-    [%- END -%]
+    [% END %]
   </div>
 
   <!-- end of the preamble -->
