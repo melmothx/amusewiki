@@ -34,6 +34,7 @@ requires 'Text::Amuse::Compile' => 0.06;
 requires 'MooseX::MarkAsMethods';
 
 test_requires 'Test::More' => '0.88';
+catalyst_ignore('repo');
 catalyst;
 
 install_script glob('script/*.pl');
