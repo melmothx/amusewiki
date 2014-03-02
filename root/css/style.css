@@ -252,7 +252,7 @@ a img, img {
 
 #vwbanner {
     min-width: 770px;
-    background: url(images/cobble.png) repeat-x;
+    /* background: url(images/repeatable.png) repeat-x; */
     border: none;
 /*    border-top: solid 4px black;   */
 /*    border-bottom: solid 1px black; */
