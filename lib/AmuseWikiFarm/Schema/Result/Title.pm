@@ -153,6 +153,12 @@ __PACKAGE__->table("title");
   default_value: (empty string)
   is_nullable: 0
 
+=head2 sorting_pos
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -203,6 +209,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "deleted",
   { data_type => "text", default_value => "", is_nullable => 0 },
+  "sorting_pos",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
 );
@@ -278,8 +286,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 18:34:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3c+Eqd75eBwfsW/OKYtkAg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-02 12:01:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:O3ydK2uwsZcAxsaj30XCug
 
 use File::Spec;
 use File::Slurp qw/read_file/;

@@ -61,6 +61,12 @@ __PACKAGE__->table("category");
   is_nullable: 0
   size: 16
 
+=head2 sorting_pos
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -79,6 +85,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "type",
   { data_type => "varchar", is_nullable => 0, size => 16 },
+  "sorting_pos",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
 );
@@ -156,8 +164,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 22:09:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:LTan1ILubifu/KNz44BzdA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-02 12:01:25
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6inwK8n8xyRElWOGzwnhrQ
 
 sub title_count {
     my $self = shift;

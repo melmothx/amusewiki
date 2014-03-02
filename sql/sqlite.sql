@@ -77,6 +77,8 @@ CREATE TABLE title (
 
         uri         VARCHAR(255) NOT NULL,
         deleted     TEXT NOT NULL DEFAULT '',
+
+        sorting_pos INTEGER NOT NULL DEFAULT 0,
         site_id     VARCHAR(8) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -96,6 +98,7 @@ CREATE TABLE category (
         name  TEXT,
         uri   VARCHAR(255) NOT NULL,
         type  VARCHAR(16) NOT NULL,
+        sorting_pos INTEGER NOT NULL DEFAULT 0,
         site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
