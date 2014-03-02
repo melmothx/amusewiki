@@ -133,7 +133,7 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1024
 
-=head2 size
+=head2 papersize
 
   data_type: 'varchar'
   default_value: (empty string)
@@ -205,7 +205,7 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 1, is_nullable => 0 },
   "ttdir",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 1024 },
-  "size",
+  "papersize",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 64 },
   "division",
   { data_type => "integer", default_value => 12, is_nullable => 0 },
@@ -304,8 +304,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 22:09:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ATmG3i+rRhuAuQL9c7Ggow
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-02 10:58:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:k8uOp4BoEhqpBNy7+EP9BA
 
 
 =head2 compile_options
@@ -330,7 +330,7 @@ sub compile_options {
     }
     my %extra;
     foreach my $ext (qw/sitename siteslogan logo
-                        size division fontsize
+                        papersize division fontsize
                         bcor mainfont twoside/) {
         $opts{extra}{$ext} = $self->$ext;
     }

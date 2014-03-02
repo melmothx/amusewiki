@@ -31,7 +31,7 @@ CREATE TABLE site (
        epub      INTEGER NOT NULL DEFAULT 1,
        ttdir     VARCHAR(1024) NOT NULL DEFAULT '',
        -- tex options
-       size VARCHAR(64) NOT NULL DEFAULT '', -- will pick the generic
+       papersize VARCHAR(64) NOT NULL DEFAULT '', -- will pick the generic
        division INTEGER NOT NULL DEFAULT '12',
        bcor VARCHAR(16) NOT NULL DEFAULT '0mm',
        fontsize INTEGER NOT NULL DEFAULT '10',
@@ -120,7 +120,7 @@ INSERT INTO site (id, locale,
                   sitename, siteslogan,
                   logo, canonical,
                   a4_pdf, lt_pdf,
-                  size, division, bcor, fontsize, mainfont, twoside
+                  papersize, division, bcor, fontsize, mainfont, twoside
                   )
        VALUES (
               '0blog0', 'hr',
