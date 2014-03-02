@@ -50,6 +50,7 @@ sub text :Path :Args(1) {
     my $name = $arg;
     my $ext = '';
     my $append_ext = '';
+    my $site = $c->stash->{site};
     if ($arg =~ m/(.+?) # name
                   \.   # dot
                   # and extensions we provide
@@ -90,9 +91,8 @@ sub text :Path :Args(1) {
     }
 
     # search the damned title.
-    my $text = $c->stash->{site}->titles->single({
-                                                    uri => $canonical,
-                                                   });
+    my $text = $site->titles->by_uri($canonical);
+
     if ($text) {
         if ($ext) {
             $c->log->debug("Got $canonical $ext => " . $text->title);
@@ -105,11 +105,12 @@ sub text :Path :Args(1) {
                      );
         }
     }
-    elsif (my $attach = $c->stash->{site}->attachments->single({
-                                                                uri => $canonical . $append_ext,
-                                                               })) {
+    elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
         $c->log->debug("Found attachment $canonical$append_ext");
         $c->serve_static_file($attach->f_full_path_name);
+    }
+    else {
+        $c->detach('/not_found');
     }
 }
 

@@ -5,13 +5,10 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
-# use Unicode::Collate::Locale;
-# faster but hard to install
-# use Unicode::ICU::Collator;
 
-=head2 list_titles($id)
+=head2 published_texts
 
-List the title for a single site
+List the published titles
 
 =cut
 
@@ -21,6 +18,19 @@ sub published_texts {
                                                               title/] });
 
 }
+
+=head2 by_uri
+
+Find a text by uri
+
+=cut
+
+sub by_uri {
+    my ($self, $uri) = @_;
+    return $self->single({ deleted => '',
+                           uri => $uri });
+}
+
 
 1;
 

@@ -71,12 +71,9 @@ sub topic :Path('/topics') :Args(1) {
 sub category_details :Private {
     my ( $self, $c, $type, $name ) = @_;
     $c->stash(baseurl => $c->uri_for_action('/library/index'));
-    my $cat = $c->stash->{site}->categories->single({
-                                                     type => $type,
-                                                     uri  => $name,
-                                                    });
+    my $cat = $c->stash->{site}->categories->by_type_and_uri($type, $name);
     # not found unless $cat;
-    return unless $cat;
+    $c->detach('/not_found') unless $cat;
     $c->stash(
               template => 'category-details.tt',
               category => $cat,
@@ -85,9 +82,7 @@ sub category_details :Private {
 
 sub category_listing :Private {
     my ( $self, $c, $type ) = @_;
-    my @list = $c->stash->{site}->categories->search({ type => $type },
-                                                     { order_by => [qw/sorting_pos
-                                                                       name/] });
+    my @list = $c->stash->{site}->categories->by_type($type);
     $c->stash(
               list => \@list,
               template => 'category.tt',
