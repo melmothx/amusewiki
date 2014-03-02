@@ -21,7 +21,7 @@ my $db = AmuseWikiFarm::Model::DB->new;
 print "DB loaded, starting up\n";
 
 foreach my $s ($db->resultset('Site')->all) {
-    print $s->id . " " . $s->vhosts->single->name . "\n";
+    print $s->id . " " . $s->vhosts->first->name . "\n";
 }
 
 my @codes = @ARGV;
