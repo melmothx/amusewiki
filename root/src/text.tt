@@ -1,42 +1,119 @@
-<div id="topics">
-<strong>Topics:</strong>
-[% FOREACH topic IN text.topics %]
-<a href="[% c.uri_for('/topics') %]/[% topic.uri %]">[% topic.name %]</a>
-[% END %]
-</div>
+[% # -*- mode: html -*- %]
 
-<div id="authors">
-<strong>Authors:</strong>
-[% FOREACH author IN text.authors %]
-<a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>
-[% END %]
-</div>
+<div id="page">
+  <div id="preamble">
+    <p id="texttitle">
+      <strong>Title:</strong>
+      [% text.title %]
+    </p>
+    [% IF text.subtitle -%]
+    <p id="textsubtitle">
+      <strong>Subtitle:</strong>
+      [% text.subtitle %]
+    </p>
+    [%- END -%]
 
+    [% IF text.authors.size -%]
+    <p id="authors">
+      <strong>Authors:</strong>
+      [% FOREACH author IN text.authors -%]
+      <a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>
+      [% END -%]
+    </p>
+    [%- END -%]
 
-<h4>Downloads</h4>
+    [% IF text.date -%]
+    <p id="textdate">
+      <strong>Date:</strong>
+      [% text.date %]
+    </p>
+    [%- END -%]
 
+    [% IF text.topics.size -%]
+    <div id="topics">
+      <strong>Topics:</strong>
+      [% FOREACH topic IN text.topics -%]
+      <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">[% topic.name %]</a>
+      [% END -%]
+    </div>
+    [%- END -%]
 
+    [% IF text.source -%]
+    <p id="preamblesrc">
+      <strong>Source:</strong>
+      [% text.source %]
+    </p>
+    [%- END -%]
 
+    [% IF text.notes -%]
+    <p id="preamblenotes">
+      <strong>Notes:</strong>
+      [% text.notes %]
+    </p>
+    [%- END -%]
+  </div>
 
-<h2>[% text.author %]<h2>
+  <!-- end of the preamble -->
 
-<h1>[% text.title %]</h1>
+  [%- SET basename = text.uri -%] 
 
-<div>
-[% text.html_body %]
-</div>
+  <div id="downloadformats">
+    <div id="downloadformats-title">
+      <strong>
+        Downloads
+      </strong>
+    </div>
+    <div id="downloadformats-list">
+      <span id="pdfgeneric">
+        <a href="[% basename %].pdf" class="pdflinks">
+	      <img src="/static/images/pdf-gen.png" alt="plain PDF" title="plainPDF" 
+	           class="pdfmyicons" /></a>
+      </span>
+      <span id="pdfa4imp">
+        <a href="[% basename %].a4.pdf" class="pdflinks">
+	      <img src="/static/images/pdf-a4-imposed.png"
+	           alt="A4 imposed PDF"
+	           title="A4 imposed"
+	           class="pdfmyicons" /></a> 
+      </span>
+      <span id="letterimp">
+        <a href="[% basename %].lt.pdf" class="pdflinks">
+	      <img src="/static/images/pdf-letter-imposed.png"
+	           alt="Letter imposed PDF"
+	           title="PDF Letter imposed"
+	           class="pdfmyicons" /></a> 
+      </span>
+      <span id="downloadepub">
+        <a href="[% basename %].epub">
+	      <img src="/static/images/epub.png" alt="EPUB"
+	           title="EPUB (for mobile devices)" class="pdfmyicons" /></a>
+      </span>
+      <span id="downloadhtml">
+        <a href="[% basename %].html">
+	      <img src="/static/images/pf-html.png" alt="clean HTML"
+	           title="Standalone HTML (printer-friendly)"
+	           class="pdfmyicons" /></a>
+      </span>
+      <span id="downloadtex">
+        <a href="[% basename %].tex">
+	      <img src="/static/images/tex.png" alt="TeX" title="ConTeXt source"
+	           class="pdfmyicons" /></a>
+      </span>
+      <span id="downloadsrc">
+        <a href="[% basename %].muse">
+	      <img src="/static/images/muse.png" alt="source" title="plain
+	           text source" class="pdfmyicons" /></a>
+      </span>
+    </div>
+  </div>
 
+  <h2>[% text.author %]</h2>
+
+  <h1>[% text.title %]</h1>
+
+  <div id="htmltextbody">
+    [% text.html_body %]
+  </div>
 <hr />
-<div id="impressum">
-  [% IF text.source %]
-  <div id="source">
-    [% text.source %]
-  </div>
-  [% END %]
-
-  [% IF text.notes %]
-  <div id="notes">
-    [% text.notes %]
-  </div>
-  [% END %]
 </div>
+
