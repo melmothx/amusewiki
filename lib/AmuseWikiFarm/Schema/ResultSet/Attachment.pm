@@ -13,7 +13,7 @@ Find an attachment by uri
 =cut
 
 sub by_uri {
-    my ($self, $uri) = shift;
+    my ($self, $uri) = @_;
     return $self->single({ uri => $uri });
 }
 

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 8;
+use Test::More tests => 10;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -36,3 +36,7 @@ like $res->decoded_content, qr{Ža Third test}s;
 
 unlike $res->decoded_content, qr{CUSTOM TEMPLATE}, "custom template not found";
 unlike $res->decoded_content, qr{Custom layout}, "custom layout not";
+
+$res = request('/library/cata.jpg', $host);
+ok($res->is_success, "found the image");
+is($res->header('content-type'), 'image/jpeg', "Content type is correct");
