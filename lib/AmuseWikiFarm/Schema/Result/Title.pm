@@ -310,7 +310,24 @@ Return a comma separated list of topics for the current text.
 Return a string with the list of category of type $type (so far
 <topic> or <author>) separated by $separator.
 
+=head3 authors
+
+A result set for related authors
+
+=head3 topics
+
+A result set for related topics
+
 =cut
+
+sub topics {
+    return shift->categories->by_type('topic');
+}
+
+sub authors {
+    return shift->categories->by_type('author');
+}
+
 
 sub topic_list {
     return shift->category_listing(topic => ', ');
@@ -323,9 +340,7 @@ sub author_list {
 sub category_listing {
     my ($self, $type, $sep) = @_;
     my @cats;
-    my @results = $self->categories->search({ type => $type },
-                                            { order_by => [qw/sorting_pos
-                                                              name/]});
+    my @results = $self->categories->by_type($type);
     foreach my $cat (@results) {
         push @cats, $cat->name;
     }

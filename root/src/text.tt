@@ -1,8 +1,22 @@
-<h3>Topics</h3>
-[% text.topic_list %]
+<div id="topics">
+<strong>Topics:</strong>
+[% FOREACH topic IN text.topics %]
+<a href="[% c.uri_for('/topics') %]/[% topic.uri %]">[% topic.name %]</a>
+[% END %]
+</div>
 
-<h3>Author(s)</h3>
-[% text.author_list %]
+<div id="authors">
+<strong>Authors:</strong>
+[% FOREACH author IN text.authors %]
+<a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>
+[% END %]
+</div>
+
+
+<h4>Downloads</h4>
+
+
+
 
 <h2>[% text.author %]<h2>
 
