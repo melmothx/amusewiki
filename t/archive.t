@@ -49,7 +49,8 @@ is_deeply $archive->fields, {
                              'uri' => 1,
                              'subtitle' => 1,
                              'notes' => 1,
-                             'title' => 1
+                             'title' => 1,
+                             'sorting_pos' => 1,
                             }, "the archive knows the title fields";
 
 
