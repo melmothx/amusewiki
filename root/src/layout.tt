@@ -1,23 +1,98 @@
-[%- # -*- mode: html -*- -%]
-<!doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>[% template.name %]</title>
+    <meta http-equiv="Content-type"
+          content="application/xhtml+xml; charset=UTF-8" />
+    <link rel="stylesheet" media="all"
+          href="[% c.uri_for('/css/style.css') %]?v=1" />
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" media="all"
+          href="[% c.uri_for('/css/adaptive.css') %]?v=1" />
+    <link rel="alternate" type="application/rss+xml"
+          title="[% site.sitename %]" href="[% c.uri_for('/rss.xml') %]" />
+
+    [%# title block, templates should pass the shared hash %]
+    <title>[% site.sitename %]</title>
+    [% IF shared.scraperignore %]
+    <meta name="robots" content="noindex,nofollow" />
+    [% END %]
   </head>
   <body>
-    <h3>Sites</h3>
-    <p>Current site ID: [% site.id %]</p>
-    <ul>
-      <li><a href="http://test.amusewiki.org:3000/library">Test</a></li>
-      <li><a href="http://blog.amusewiki.org:3000/library">Blog</a></li>
-    </ul>
-    <h3>Links</h3>
-    <ul>
-      <li><a href="/library">List of text</a></li>
-      <li><a href="/topics">List of topics</a></li>
-      <li><a href="/authors">List of authors</a></li>
-    </ul>
-    [% content %]
+    <div id="secondary-menu">
+      <ul id="sec-men-ul">
+        <li>
+          <a href="[% c.uri_for('/special/about') %]">About</a>
+        </li>
+        <li>
+	      <a href="/random">Random text</a>
+        </li>
+      </ul>
+    </div>
+    <div id="vwbanner">
+      <div id="wbanner">
+	    <div id="banner">
+	      <div id="searchbox">
+	        <form id="formsearchbox" action="[% c.uri_for('/search') %]">
+	          <p id="searchp">
+		        <input type="text" name="query" value="" size="12" />
+                <br id="full-text-search-separator" />
+		        <input type="submit" value="Full text search" />
+              </p>
+	        </form>
+	      </div>
+	      <div id="bannerimage">
+	        <a title="[% site.sitename %]"
+               href="[% c.uri_for('/') %]">
+	          <img title="[% site.siteslogan %]"
+		           alt="[% site.siteslogan %]"
+                   src="[% uri_for('/static/images/') %]"
+		           id="title-banner-img" />
+	        </a>
+	      </div>
+	    </div>
+	    <div id="nav">
+	      <ul>
+	        <li>
+              <a href="/authors"
+		         [% IF nav == 'authors' %]id="current"[% END %]
+		         title="texts sorted by author">
+                Authors
+              </a>
+            </li>
+	        <li>
+              <a href="/library"
+		         [% IF nav == 'titles' %]id="current"[% END %]
+		         title="texts sorted by title">
+                Titles
+              </a>
+            </li>
+	        <li>
+              <a href="/topics"
+		         [% IF nav == 'topics' %]id="current"[% END %]
+		         title="texts sorted by topics">
+                Topics
+              </a>
+            </li>
+	      </ul>
+	    </div>
+      </div>
+    </div>
+    <div id="container">
+
+      <div id="widepage">
+        [% content %]
+      </div>
+      <div id="footer">
+        <a href="/rss.xml">
+          <img src="/images/feed-icon-28x28.png" alt="syndicate" id="rssicon" />
+          RSS
+        </a>
+      </div>
+    </div>
   </body>
 </html>
+

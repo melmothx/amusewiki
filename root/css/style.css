@@ -1,0 +1,696 @@
+html,body, pre.verse {
+	margin:0;
+	padding:0;
+	border: none;
+ 	background: transparent;
+	font-family: Verdana, "DejaVu Sans", Helvetica, Arial, sans-serif;
+	font-size: 10pt;
+} 
+
+div#widepage {
+    padding: 20px 20px 0px 20px;
+    overflow: hidden;
+    min-height:400px;
+}
+
+div#container {
+    background: url(images/bg-soft.png) repeat-x;
+    overflow: auto;
+}
+
+
+div#page, div#uploadform {
+    width: 69%;
+}
+
+pre, code, .commit-diff {
+    font-family: Consolas, courier, monospace;
+}
+
+pre {
+    border: 1pt solid #AEBDCC;
+    margin: 24px 0;
+}
+
+/* arial for some things */
+h1,h2,h3,h4,h5,h6,#cloud { 
+    font-weight: bolder;
+    font-family: Arial, Helvetica, "DejaVu Sans", sans-serif;
+}
+
+h2 a, h3 a, h4 a, h5 a, h6 a, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited
+  {
+  color: #000000;
+  text-decoration: none;
+}
+
+
+h1 { 
+    font-size: 200%;
+    margin: .67em 0
+}
+h2 { 
+    font-size: 180%;
+    margin: .75em 0
+}
+h3 { 
+    font-size: 150%;
+    margin: .83em 0
+}
+h4 { 
+    font-size: 130%;
+    margin: 1.12em 0
+}
+h5 { 
+    font-size: 115%;
+    margin: 1.5em 0
+}
+h6 { 
+    font-size: 100%;
+    margin: 0;
+}
+
+sup, sub {
+    font-size: 8pt;
+    line-height: 0;
+}
+
+/* invisibles */
+span.hiddenindex, span.commentmarker, .comment, span.tocprefix, #hitme {
+    display: none
+}
+
+.comment {
+    background: rgb(255,255,158);
+}
+
+pre.verse {          
+    margin: 24px 48px;
+    overflow: auto;
+    border: none;
+} 
+
+table, th, td {
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+td, th {
+    padding: 2px 5px;
+}
+
+hr {
+    margin: 24px 0;
+    color: #000;
+    height: 1px;
+    background-color: #000;
+}
+
+table {
+    margin: 24px auto;
+}
+
+td, th { vertical-align: top; }
+th {font-weight: bold;}
+
+caption {
+    caption-side:bottom;
+}
+
+img.embedimg {
+    margin: 1em;
+    max-width:90%;
+}
+div.image {
+    margin: 1em;
+    text-align: center;
+    padding: 3px;
+    background-color: white;
+}
+
+.biblio p, .play p {
+  margin-left: 1em;
+  text-indent: -1em;
+}
+
+div.biblio, div.play {
+  padding: 24px 0;
+}
+
+div.caption {
+    padding-bottom: 1em;
+}
+
+div.center {
+    text-align: center;
+}
+
+div.right {
+    text-align: right;
+}
+
+a { text-decoration: none; }
+
+
+span.loggingin {
+    font-weight: bold;
+}
+span.diff-removed {
+    color: red;
+}
+span.diff-added {
+    color: green;
+}
+
+span.diff-context {
+    color: #444
+}
+
+div#footer {
+    clear: both;
+    text-align: center;
+    display: none;
+}
+
+
+img#rssicon {
+    width: 14px;
+}
+
+/* footnotes */
+
+a.footnote, a.footnotebody {
+    font-size: 8pt;
+    line-height: 0;
+    vertical-align: super;
+}
+
+* + p.fnline {
+    margin-top: 3em;
+    border-top: 1px solid black;
+    padding-top: 2em;
+}
+
+p.fnline + p.fnline {
+    margin-top: 1em;
+    border-top: none;
+    padding-top: 0;
+}
+
+p.fnline {
+    font-size: 8pt;
+}
+/* end footnotes */
+
+
+/* exceptions: toc and indexes */
+.index a, h4 a.frontpageitem, div#header h4 {
+    font-weight: normal; 
+}
+
+
+/* which on hover get the underline */
+#tableofcontents a:hover{
+    text-decoration: underline;
+}
+
+
+
+/***********
+LINK COLORS
+************/
+
+/* this is the main color link */
+a { color: #8b0000; }
+
+/* visited links, hovering over links */
+a:visited, a:hover {
+    color:#610503; /* just a bit darker, not too much */
+}
+
+/* color for the links in the indexes titles topics authors */
+div.index ul li a, 
+div#frontpage div#header h4 a,
+div#cloud a
+ {
+    color: #8b1111;
+}
+
+/* color for hover on links on indexes */
+#nav a:hover, 
+#nav a#current,
+div#frontpage div#header h4 a:hover,
+div#cloud a:hover
+ {
+    color: #ff0505;
+}
+
+a img, img {
+    border: none;
+}
+
+/* END COLORS */
+
+#vwbanner {
+    min-width: 770px;
+    background: url(images/cobble.png) repeat-x;
+    border: none;
+/*    border-top: solid 4px black;   */
+/*    border-bottom: solid 1px black; */
+    margin: 0;
+    padding: 0;
+    display: block;
+    height: 134px;
+}
+
+#wbanner {
+    background: url(images/singlelogo.png) no-repeat;
+    height: 134px;
+}
+
+div#banner {
+    height: 110px;
+}
+
+div#nav {
+    height: 18px;
+    border-bottom: solid black 1px;
+}
+
+img#title-banner-img {
+    padding-left: 180px;
+    margin-top: 19px;
+    padding-bottom: 9px;
+}
+
+div#page {
+    float: left;
+    background: transparent;
+/*    overflow: hidden; */
+    margin-bottom: 50px;
+}
+
+div#frontpage div#header h4 {
+    margin: 5px 0 5px 5px;
+    font-size: 11pt;
+}
+
+div#downloadformats {
+padding: 0 0 10px 0;
+}
+
+div#preamble p {
+    padding:0;
+    margin: 0;
+}
+
+#preamble a:hover {
+    text-decoration: underline;
+}
+
+/* NAVIGATION BAR */
+
+#nav { 
+/*    background-color: black; */
+    color: white;
+    margin: 0px 0px;
+/*    padding: 3px 5px 5px 5px; */
+    padding-top: 5px;
+    font-size: 15px;
+    font-family: Arial, Helvetica, "Dejavu Sans", sans-serif;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+}
+
+#nav ul {
+/*    background-color: black; */
+    color: black;
+    margin: 0px 0px;
+/*    border: solid black 1px; */
+    padding-left: 190px;
+}
+
+
+#nav ul li a {
+    color: black;
+    font-weight: normal;
+    background-color: white;
+    font-size: 15px;
+    padding: 0 7px;
+/*    border: 1px solid white ;*/
+/*    border-bottom: 1px solid black ; */
+}
+
+#nav a#current {
+    border: 1px solid black ;
+    border-bottom: 2px solid #f0f0f0;
+    background-color: #f0f0f0;
+    color: black;
+    padding: 0 6px;
+}
+
+#nav a:hover {
+    color: red;
+}
+
+/* dunno what is this for 
+#current a a:visited {
+    text-decoration: underline;
+}
+*/
+
+
+#nav ul li {
+    display: inline;
+    list-style-type: none;
+}
+
+#nav li {
+    margin: 0 0;
+}
+
+/* END NAVIGATION BAR */
+
+/* TOC and BUTTONS */ 
+
+
+div#tableofcontents {
+    margin: 1px;
+    padding: 0 5px;
+    margin-right: 0px; 
+    width: 25%;
+    text-align: left;
+    height: 55%;
+    overflow: auto;
+    position: fixed;
+    right: 20px;
+    bottom: 55px;
+    border: 1px solid black;
+    background-color: #ddd;
+}
+
+div#toctoggler, div#cheattoggler {
+    margin: 0 0;
+    padding: 0 0;
+    text-align: right;
+    height: 55px;
+    position: fixed;
+    right: 20px;
+    bottom: 1px;
+}
+
+#tableofcontents a {
+	color: #000;
+	text-decoration: none;}
+
+
+ul#toc {
+    margin:0;
+    padding:0;
+    text-indent: 0; 
+
+}
+
+#tableofcontents p {
+    margin: 3px 1em;
+    text-indent: -1em;
+}
+
+.toclevel2 {
+	font-weight: bold;
+	font-size:11pt
+}	
+
+.toclevel3 {
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.toclevel4 {
+	font-weight: normal;
+	font-size: 9pt;
+}
+
+.toclevel5 {
+	font-weight: normal;
+	font-size: 8pt;
+}
+
+#nothere {
+    display: none;
+}
+
+.feed-icon {
+    width: 30%;
+    float: left;
+}
+a.feed-icon  {
+    color: white;
+}
+
+
+/* This is for the autosuggestion feature */
+
+.suggestion_list
+{
+    background: white;
+    border: 1px solid;
+    padding: 4px;
+}
+
+/* this is the cloud */
+
+.cloud1, .cloud2, .cloud3, .cloud4, .cloud5, .cloud6, .cloud7, .cloud8 {
+    padding: 0px;
+    margin: 0px;
+}
+
+.cloud1 {
+	font-weight: bold;
+	font-size:100%;
+}	
+
+.cloud2 {
+	font-weight: bold;
+	font-size: 110%;
+}
+
+.cloud3 {
+	font-weight: bold;
+	font-size:120%;
+}	
+
+.cloud4 {
+	font-weight: bold;
+	font-size: 130%;
+}
+
+.cloud5 {
+	font-weight: bold;
+	font-size:140%;
+}	
+
+.cloud6 {
+	font-weight: bold;
+	font-size: 150%;
+}
+
+.cloud7 {
+	font-weight: bold;
+	font-size:170%;
+}	
+
+.cloud8 {
+	font-weight: bold;
+	font-size: 190%;
+}
+
+div#cloud {
+    float: right;
+/*    clear: both; */
+    width: 25%;
+}
+
+div#recenttexts {
+    float: left;
+}
+
+ul#listrecenttexts {
+    list-style: none;
+    margin: 0;
+    padding: 20px 0 0 0;
+}
+
+ul#listrecenttexts li {
+    text-indent: 0;
+}
+
+div#searchbox {
+    display: inline;
+    float:right;
+}
+
+form#formsearchbox {
+    display: inline;
+}
+
+label.error {
+    float: none;
+    color: red;
+    padding-left: .5em;
+}
+
+fieldset em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.submit { margin-left: 12em; }
+
+.flashmessage {
+     background-color: #7FFF00;
+     padding: 0.5em;
+     border: 1px solid #458B00;
+     text-align: center;
+}
+
+
+.formerror {
+     background: #F88F84;
+     margin: 0;
+     padding: 0.5em;
+     border: 0px solid #F12525;
+     text-align: center;
+}
+
+.loggedin {
+     background: #444;
+     color: white;
+     padding: 0;
+     font-size: 9pt;
+     text-align: center;
+}
+
+div.loggedin a {
+    color: #00F5FF;
+}
+
+div.loggedin a:hover {
+    text-decoration: underline;
+}
+
+
+.bookbuilderok, .bookbuilderwait {
+     background: #CEE5F5;
+     padding: 0.5em;
+     border: 1px solid #AACBE2;
+     text-align: center;
+}
+
+
+#hitme {
+    display:none;
+}
+
+
+/* tweak to the form */
+
+div#uploadform {
+    margin: 20px;
+}
+
+
+fieldset {
+    border: none;
+}
+
+#preview-or-commit input {
+    margin: 10px auto;
+}
+
+input.submit {
+    margin: 20px auto 10px;
+}
+
+table.fullsearchform {
+    border: none;
+}
+
+table.fullsearchform td, table.fullsearchform label {
+    font-weight: bold;
+    border:none;
+}
+
+
+div#recenttexts h3 {
+    margin: 0.5em 0 0 0;
+    padding: 0 0;
+}
+
+div#cheatsheet {
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    height: 55%;
+    overflow: auto;
+    position: fixed;
+    right: 20px;
+    bottom: 55px;
+    border: 1px solid black;
+    background-color: #ddd;
+
+}
+
+
+/* SECONDARY NAVIGATION BAR */
+
+div#secondary-menu {
+    background-color: #333;
+    color: #bbb;
+    padding: 4px 4px 6px 4px;
+    font-weight: bolder;
+}
+
+#secondary-menu a {
+    color: #bbb;
+}
+
+#secondary-menu a:hover {
+    color: #fff;
+}
+
+
+ul#sec-men-ul, ul#sec-nav-submenu {
+    list-style-type:none;
+    margin:0;
+    padding: 0;
+}
+
+ul#sec-men-ul > li {
+    display: inline;
+    padding-left: 15px;
+}
+
+ul#sec-men-ul > li {
+    position: relative;
+}
+
+#sec-nav-submenu {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    background-color: #333;
+    color: #eee;
+}
+
+#sec-nav-submenu a {
+    display: block;
+    margin: 5px;
+}
+
+#secondary-menu a#current {
+    color: #fff;
+}
+
