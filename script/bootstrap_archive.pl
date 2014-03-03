@@ -9,14 +9,14 @@ use File::Spec::Functions qw/catdir/;
 use Data::Dumper;
 
 use lib "$Bin/../lib";
-use AmuseWikiFarm::Model::DB;
+use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Utils::Amuse qw/muse_file_info/;
 
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';
 
-my $db = AmuseWikiFarm::Model::DB->new;
+my $db = AmuseWikiFarm::Schema->connect('amuse');
 
 print "DB loaded, starting up\n";
 

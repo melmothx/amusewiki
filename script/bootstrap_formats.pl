@@ -10,13 +10,13 @@ use Text::Amuse::Compile;
 use FindBin qw/$Bin/;
 use lib "$Bin/../lib";
 use Cwd;
-use AmuseWikiFarm::Model::DB;
+use AmuseWikiFarm::Schema;
 use Data::Dumper;
 
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';
 
-my $db = AmuseWikiFarm::Model::DB->new;
+my $db = AmuseWikiFarm::Schema->connect('amuse');
 
 foreach my $s ($db->resultset('Site')->all) {
     print $s->id . " " . $s->vhosts->single->name . "\n";

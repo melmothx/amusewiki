@@ -5,16 +5,7 @@ use base 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
     schema_class => 'AmuseWikiFarm::Schema',
-    
-    connect_info => {
-        dsn => 'dbi:SQLite:sqlite.db',
-        user => '',
-        password => '',
-        on_connect_do => q{PRAGMA foreign_keys = ON},
-        AutoCommit => 1,
-        RaiseError => 1,
-        sqlite_unicode => 1,
-    }
+    connect_info => 'amuse',
 );
 
 =head1 NAME

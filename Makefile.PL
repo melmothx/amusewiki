@@ -22,6 +22,7 @@ requires 'Config::General'; # This should reflect the config file format you've 
 # modules used
 requires 'Unicode::Collate';
 requires 'File::Slurp';
+requires 'DBIx::Class::Schema::Config';
 
 # our own dogfood
 requires 'Text::Amuse' => 0.10;
