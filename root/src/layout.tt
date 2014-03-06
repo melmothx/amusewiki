@@ -28,7 +28,8 @@
           <a href="[% c.uri_for('/special/about') %]">About</a>
         </li>
         <li>
-	      <a href="/random">Random text</a>
+
+	      <a href="/random">[% c.loc('Random text') %]</a>
         </li>
       </ul>
     </div>
@@ -40,7 +41,7 @@
 	          <p id="searchp">
 		        <input type="text" name="query" value="" size="12" />
                 <br id="full-text-search-separator" />
-		        <input type="submit" value="Full text search" />
+		        <input type="submit" value="[% c.loc('Full text search') %]" />
               </p>
 	        </form>
 	      </div>
@@ -59,22 +60,22 @@
 	        <li>
               <a href="/authors"
 		         [% IF nav == 'authors' %]id="current"[% END %]
-		         title="texts sorted by author">
-                Authors
+		         title="[% c.loc('texts sorted by author') %]">
+                [% c.loc('Authors') %]
               </a>
             </li>
 	        <li>
               <a href="/library"
 		         [% IF nav == 'titles' %]id="current"[% END %]
-		         title="texts sorted by title">
-                Titles
+		         title="[% c.loc('texts sorted by title') %]">
+                [% c.loc('Titles') %]
               </a>
             </li>
 	        <li>
               <a href="/topics"
 		         [% IF nav == 'topics' %]id="current"[% END %]
-		         title="texts sorted by topics">
-                Topics
+		         title="[% c.loc('texts sorted by topics') %]">
+                [% c.loc('Topics') %]
               </a>
             </li>
 	      </ul>
@@ -88,8 +89,9 @@
       </div>
       <div id="footer">
         <a href="/rss.xml">
-          <img src="/images/feed-icon-28x28.png" alt="syndicate" id="rssicon" />
-          RSS
+          <img src="/images/feed-icon-28x28.png"
+               alt="[% c.loc('syndicate') %]" id="rssicon" />
+          [% c.loc("RSS") %]
         </a>
       </div>
     </div>

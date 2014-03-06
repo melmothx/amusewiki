@@ -4,20 +4,20 @@
   <div id="preamble">
 
     <p id="texttitle">
-      <strong>Title:</strong>
+      <strong>[% c.loc('Title') %]:</strong>
       [% text.title %]
     </p>
 
     [% IF text.subtitle %]
     <p id="textsubtitle">
-      <strong>Subtitle:</strong>
+      <strong>[% c.loc('Subtitle') %]:</strong>
       [% text.subtitle %]
     </p>
     [% END %]
 
     [% IF text.authors.size %]
     <p id="authors">
-      <strong>Authors:</strong>
+      <strong>[% c.loc('Authors') %]:</strong>
       [% FOREACH author IN text.authors -%]
       <a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>
       [% END %]
@@ -26,14 +26,14 @@
 
     [% IF text.date %]
     <p id="textdate">
-      <strong>Date:</strong>
+      <strong>[% c.loc('Date') %]:</strong>
       [% text.date %]
     </p>
     [% END %]
 
     [% IF text.topics.size %]
     <p id="topics">
-      <strong>Topics:</strong>
+      <strong>[% c.loc('Topics') %]:</strong>
       [% FOREACH topic IN text.topics -%]
       <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">[% topic.name %]</a>
       [% END %]
@@ -42,14 +42,14 @@
 
     [% IF text.source %]
     <p id="preamblesrc">
-      <strong>Source:</strong>
+      <strong>[% c.loc('Source') %]:</strong>
       [% text.source %]
     </p>
     [% END %]
 
     [% IF text.notes %]
     <p id="preamblenotes">
-      <strong>Notes:</strong>
+      <strong>[% c.loc('Notes') %]:</strong>
       [% text.notes %]
     </p>
     [% END %]
@@ -62,14 +62,16 @@
   <div id="downloadformats">
     <div id="downloadformats-title">
       <strong>
-        Downloads
+        [% c.loc('Downloads') %]
       </strong>
     </div>
     <div id="downloadformats-list">
       [% IF site.pdf %]
       <span id="pdfgeneric">
         <a href="[% basename %].pdf" class="pdflinks">
-	      <img src="/static/images/pdf-gen.png" alt="plain PDF" title="plainPDF" 
+	      <img src="/static/images/pdf-gen.png"
+                 alt="[% c.loc('plain PDF') %]"
+               title="[% c.loc('plain PDF') %]"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -77,8 +79,8 @@
       <span id="pdfa4imp">
         <a href="[% basename %].a4.pdf" class="pdflinks">
 	      <img src="/static/images/pdf-a4-imposed.png"
-	           alt="A4 imposed PDF"
-	           title="A4 imposed"
+	             alt="[% c.loc('A4 imposed PDF') %]"
+	           title="[% c.loc('A4 imposed PDF') %]"
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
@@ -86,37 +88,44 @@
       <span id="letterimp">
         <a href="[% basename %].lt.pdf" class="pdflinks">
 	      <img src="/static/images/pdf-letter-imposed.png"
-	           alt="Letter imposed PDF"
-	           title="PDF Letter imposed"
+	             alt="[% c.loc('Letter imposed PDF') %]"
+	           title="[% c.loc('Letter imposed PDF') %]"
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
       [% IF site.epub %]
       <span id="downloadepub">
         <a href="[% basename %].epub">
-	      <img src="/static/images/epub.png" alt="EPUB"
-	           title="EPUB (for mobile devices)" class="pdfmyicons" /></a>
+	      <img src="/static/images/epub.png"
+                 alt="[% c.loc('EPUB (for mobile devices)') %]"
+	           title="[% c.loc('EPUB (for mobile devices)') %]"
+               class="pdfmyicons" /></a>
       </span>
       [% END %]
       [% IF site.html %]
       <span id="downloadhtml">
         <a href="[% basename %].html">
-	      <img src="/static/images/pf-html.png" alt="clean HTML"
-	           title="Standalone HTML (printer-friendly)"
+	      <img src="/static/images/pf-html.png"
+                 alt="[% c.loc('Standalone HTML (printer-friendly)') %]"
+	           title="[% c.loc('Standalone HTML (printer-friendly)') %]"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
       [% IF site.tex %]
       <span id="downloadtex">
         <a href="[% basename %].tex">
-	      <img src="/static/images/tex.png" alt="TeX" title="ConTeXt source"
+	      <img src="/static/images/tex.png"
+                 alt="[% c.loc('XeLaTeX source') %]"
+               title="[% c.loc('XeLaTeX source') %]"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
       <span id="downloadsrc">
         <a href="[% basename %].muse">
-	      <img src="/static/images/muse.png" alt="source" title="plain
-	           text source" class="pdfmyicons" /></a>
+	      <img src="/static/images/muse.png"
+                 alt="[% c.loc('plain text source') %]"
+               title="[% c.loc('plain text source') %]"
+               class="pdfmyicons" /></a>
       </span>
     </div>
   </div>

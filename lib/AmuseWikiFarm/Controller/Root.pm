@@ -68,6 +68,8 @@ sub auto :Private {
     $c->log->debug("Site ID for $host is " . $site->id
                    . ", with locale " . $site->locale);
 
+    $c->languages([ $site->locale ]);
+
     # stash the site object
     $c->stash(site => $site);
 }

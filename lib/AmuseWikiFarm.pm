@@ -38,7 +38,7 @@ use Catalyst::Runtime 5.80;
 use Catalyst qw/
     ConfigLoader
     Unicode::Encoding
-
+    I18N
     Static::Simple
     StackTrace
 /;

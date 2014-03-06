@@ -24,6 +24,9 @@ requires 'Unicode::Collate';
 requires 'File::Slurp';
 requires 'DBIx::Class::Schema::Config';
 
+requires 'Catalyst::Plugin::I18N';
+
+
 # our own dogfood
 requires 'Text::Amuse' => 0.10;
 requires 'Text::Amuse::Compile' => 0.06;
