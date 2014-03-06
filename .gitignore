@@ -18,4 +18,5 @@ repo/*.log
 xapian/*
 !xapian/README.txt
 dbic.yaml
+*~
 

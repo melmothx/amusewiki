@@ -1,0 +1,12 @@
+#!/bin/sh
+
+xgettext.pl -P perl=* -P tt2=* \
+    --output=lib/AmuseWikiFarm/I18N/messages.pot \
+    --directory=root/src/ \
+    --directory=lib/AmuseWikiFarm/
+
+for i in hr fi es mk ru it de fr nl en; do
+    msgmerge --update lib/AmuseWikiFarm/I18N/$i.po \
+        lib/AmuseWikiFarm/I18N/messages.pot
+done
+

@@ -1,0 +1,107 @@
+# AmuseWiki i18n
+# This file is distributed under the same license as the AmuseWiki package.
+# Marco Pessotto <melmothx@gmail.com>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AmuseWiki 0.01\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@theanarchistlibrary.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: root/src/text.tt:82 root/src/text.tt:83
+msgid "A4 imposed PDF"
+msgstr ""
+
+#: root/src/layout.tt:64 root/src/text.tt:20
+msgid "Authors"
+msgstr ""
+
+#: root/src/text.tt:29
+msgid "Date"
+msgstr ""
+
+#: root/src/text.tt:65
+msgid "Downloads"
+msgstr ""
+
+#: root/src/text.tt:100 root/src/text.tt:101
+msgid "EPUB (for mobile devices)"
+msgstr ""
+
+#: root/src/layout.tt:44
+msgid "Full text search"
+msgstr ""
+
+#: root/src/text.tt:91 root/src/text.tt:92
+msgid "Letter imposed PDF"
+msgstr ""
+
+#: root/src/text.tt:52
+msgid "Notes"
+msgstr ""
+
+#: root/src/layout.tt:94
+msgid "RSS"
+msgstr ""
+
+#: root/src/layout.tt:32
+msgid "Random text"
+msgstr ""
+
+#: root/src/text.tt:45
+msgid "Source"
+msgstr ""
+
+#: root/src/text.tt:109 root/src/text.tt:110
+msgid "Standalone HTML (printer-friendly)"
+msgstr ""
+
+#: root/src/text.tt:13
+msgid "Subtitle"
+msgstr ""
+
+#: root/src/text.tt:7
+msgid "Title"
+msgstr ""
+
+#: root/src/layout.tt:71
+msgid "Titles"
+msgstr ""
+
+#: root/src/layout.tt:78 root/src/text.tt:36
+msgid "Topics"
+msgstr ""
+
+#: root/src/text.tt:118 root/src/text.tt:119
+msgid "XeLaTeX source"
+msgstr ""
+
+#: root/src/text.tt:73 root/src/text.tt:74
+msgid "plain PDF"
+msgstr ""
+
+#: root/src/text.tt:126 root/src/text.tt:127
+msgid "plain text source"
+msgstr ""
+
+#: root/src/layout.tt:93
+msgid "syndicate"
+msgstr ""
+
+#: root/src/layout.tt:63
+msgid "texts sorted by author"
+msgstr ""
+
+#: root/src/layout.tt:70
+msgid "texts sorted by title"
+msgstr ""
+
+#: root/src/layout.tt:77
+msgid "texts sorted by topics"
+msgstr ""
