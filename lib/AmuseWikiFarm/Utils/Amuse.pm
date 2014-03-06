@@ -68,7 +68,7 @@ sub muse_file_info {
     my @categories;
 
     foreach my $category (keys %$details) {
-        if ($category =~ m/^SORT(\w+?)s?$/) {
+        if ($category =~ m/^SORT(\w+?)s$/) {
             my $type = $1;
             if (my $string = delete $details->{$category}) {
                 if (my @cats = _parse_topic_or_author($type, $string, $site_id)) {
