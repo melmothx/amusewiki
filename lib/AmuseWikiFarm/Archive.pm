@@ -62,7 +62,7 @@ has site_exists => (is => 'ro',
 
 sub _build_site_exists {
     my $self = shift;
-    my $site = $self->dbic->resultset('Site')->find($self->code);
+    my $site = $self->site;
     $site ? return 1 : return 0;
     
 }
@@ -79,6 +79,10 @@ sub repo {
     return $dir;
 }
 
+sub site {
+    my $self = shift;
+    return $self->dbic->resultset('Site')->find($self->code);
+}
 
 =head2 index_file($file)
 
@@ -150,8 +154,7 @@ Collation on the fly would have been too slow, or would depend on the
 
 sub collation_index {
     my $self = shift;
-    my $site = $self->dbic->resultset('Site')->find($self->code);
-
+    my $site = $self->site;
     my $collator = Unicode::Collate::Locale->new(locale => $site->locale);
 
     my @texts = sort {
@@ -162,7 +165,7 @@ sub collation_index {
     my $i = 1;
     foreach my $t (@texts) {
         $t->sorting_pos($i++);
-        $t->update;
+        $t->update if $t->is_changed;
     }
 
     # and then sort the categories
@@ -174,7 +177,7 @@ sub collation_index {
     $i = 1;
     foreach my $cat (@categories) {
         $cat->sorting_pos($i++);
-        $cat->update;
+        $cat->update if $cat->is_changed;
     }
 
 }

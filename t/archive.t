@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 12;
+use Test::More tests => 14;
 use File::Slurp;
 use File::Temp;
 use File::Copy qw/copy/;
@@ -20,6 +20,8 @@ my $archive = AmuseWikiFarm::Archive->new(code => $id,
                                           dbic => $schema);
 
 ok($archive);
+ok $archive->site, "Site exists";
+ok $archive->site_exists;
 is $archive->code, $id;
 ok(-d $archive->repo);
 ok($archive->xapian->xapian_dir);
