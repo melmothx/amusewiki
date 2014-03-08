@@ -18,6 +18,7 @@ CREATE TABLE site (
        -- canonical url for RSS and other things
        sitename VARCHAR(255) NOT NULL DEFAULT '',
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
+       theme VARCHAR(32) NOT NULL DEFAULT '',
        logo VARCHAR(32),
        mail VARCHAR(128),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
@@ -121,14 +122,14 @@ CREATE TABLE attachment (
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
 INSERT INTO site (id, locale,
-                  sitename, siteslogan,
+                  sitename, siteslogan, theme,
                   logo, canonical,
                   a4_pdf, lt_pdf,
                   papersize, division, bcor, fontsize, mainfont, twoside
                   )
        VALUES (
               '0blog0', 'hr',
-              'hrvatski blog', 'samo test',
+              'hrvatski blog', 'samo test', '',
               'logo-yu',
               'http://blog.amusewiki.org',
               1, 1,
@@ -136,7 +137,7 @@ INSERT INTO site (id, locale,
               ),
               (
               '0test0', 'en',
-              'english test', 'only a test',
+              'english test', 'only a test', 'test-theme',
               'logo-en',
               'http://test.amusewiki.org',
               0, 0,
@@ -144,7 +145,7 @@ INSERT INTO site (id, locale,
               ),
               (
               '0empty0', 'en',
-              '', '',
+              '', '', '',
               '',
               'http://empty.amusewiki.org',
               1, 1,

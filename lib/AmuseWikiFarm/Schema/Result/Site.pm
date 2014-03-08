@@ -65,6 +65,13 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 255
 
+=head2 theme
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 32
+
 =head2 logo
 
   data_type: 'varchar'
@@ -189,6 +196,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "siteslogan",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "theme",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 32 },
   "logo",
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "mail",
@@ -312,8 +321,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-08 11:18:02
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tnFZBMoxZZkh9ZrVFb21zQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-08 14:31:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:R1eGCxM49TKDMvpDMwloaw
 
 
 =head2 compile_options

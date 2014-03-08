@@ -96,28 +96,12 @@ set, otherwise the localized one is always preferred.
 sub end : ActionClass('RenderView') {
     my ($self, $c) = @_;
 
-    # TODO: probably better do in the view?
-    # if it's not marked as a shared template, looks into the
-    # include path and try to find the template.
-    return unless $c->stash->{site};
-    foreach my $k (qw/template wrapper/) {
-        if ($k eq 'template') {
-            next unless $c->stash->{$k};
-        }
-        elsif ($k eq 'wrapper') {
-            next if $c->stash->{no_wrapper};
-            if (!$c->stash->{$k}) {
-                $c->stash($k, "layout.tt");
-            }
-        }
-
-        my $override = $self->_find_template($c->stash->{site}->id,
-                                             $c->stash->{$k},
-                                             $c->view('HTML')->config->{INCLUDE_PATH});
-        if ($override) {
-            $c->log->debug("Found $k $override!");
-            $c->stash($k, $override);
-        }
+    my $site = $c->stash->{site};
+    die "No site found?" unless $site;
+    if (my $theme = $site->theme) {
+        die "Bad theme name!" unless $theme =~ m/^\w[\w-]+\w$/s;
+        $c->stash->{additional_template_paths} =
+          [$c->path_to(root => themes => $theme)];
     }
 }
 
