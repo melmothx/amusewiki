@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 12;
+use Test::More tests => 19;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -23,6 +23,17 @@ like $res->decoded_content, qr{Zu A XSecond test}s;
 
 like $res->decoded_content, qr{CUSTOM TEMPLATE}, "found custom template";
 like $res->decoded_content, qr{Custom layout}, "found layout template";
+
+$res = request('/library/second-test', $host);
+ok($res->is_success($res));
+
+foreach my $ext (qw/pdf epub tex muse zip/) {
+    $res = request('/library/second-test.' . $ext, $host);
+    ok($res->is_success);
+}
+
+$res = request('/library/second-test.lt.pdf', $host);
+ok(!$res->is_success);
 
 
 $host = { host => 'blog.amusewiki.org' };

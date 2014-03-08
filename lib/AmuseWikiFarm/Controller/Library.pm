@@ -75,12 +75,16 @@ sub text :Path :Args(1) {
 
     $c->log->debug("Ext is $ext");
 
-    # TODO
-    # here we have to manage images too.
-
-    # clean up, eventually redirect if doesn't match
     if ($ext) {
         $append_ext = '.' . $ext;
+
+        my %managed = $site->available_text_exts;
+        if (exists $managed{$append_ext}) {
+            unless ($managed{$append_ext}) {
+                $c->log->debug("$ext is not provided");
+                $c->detach('/not_found');
+            }
+        }
     }
 
     # assert we are using canonical names.

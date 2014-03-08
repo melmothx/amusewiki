@@ -324,15 +324,20 @@ Options to feed the Text::Amuse::Compile object.
 
 Options to feed the extra key of the Text::Amuse::Compile object.
 
+=head2 available_formats
+
+Return a list of format => enable pairs.
+
+=head2 available_text_exts
+
+As above, but instead of the compiler options, list the extensions.
+
 =cut
 
 sub compile_options {
     my $self = shift;
-    my %opts;
+    my %opts = $self->available_formats;
 
-    foreach my $f (qw/tex pdf a4_pdf lt_pdf html bare_html epub zip/) {
-        $opts{$f} = $self->$f;
-    }
     if (my $dir = $self->ttdir) {
         $opts{ttdir} = $dir;
     }
@@ -346,6 +351,27 @@ sub compile_options {
     return %opts;
 }
 
+sub available_formats {
+    my $self = shift;
+    my %formats;
+    foreach my $f (qw/tex pdf a4_pdf lt_pdf html bare_html epub zip/) {
+        $formats{$f} = $self->$f;
+    }
+    return %formats;
+}
+
+sub available_text_exts {
+    my $self = shift;
+    my %formats = $self->available_formats;
+    my %exts;
+    foreach my $k (keys %formats) {
+        my $ext = $k;
+        $ext =~ s/_/./g;
+        $ext = '.' . $ext;
+        $exts{$ext} = $formats{$k};
+    }
+    return %exts;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;
