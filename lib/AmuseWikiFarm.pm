@@ -35,13 +35,14 @@ use Catalyst::Runtime 5.80;
 # | 169M |      | 70M  |      | 4.0M |      | 8.0K |      | 66M  |      |
 # '------+------+------+------+------+------+------+------+------+------'
 
-use Catalyst qw/
-    ConfigLoader
-    Unicode::Encoding
-    I18N
-    Static::Simple
-    StackTrace
-/;
+use Catalyst
+  'ConfigLoader',
+  'Unicode::Encoding',
+  'I18N',
+  'Static::Simple',
+  '-Log=warn,fatal,error',
+  'StackTrace';
+
 
 extends 'Catalyst';
 
