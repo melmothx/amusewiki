@@ -23,9 +23,10 @@ requires 'Config::General'; # This should reflect the config file format you've 
 requires 'Unicode::Collate';
 requires 'File::Slurp';
 requires 'DBIx::Class::Schema::Config';
-
 requires 'Catalyst::Plugin::I18N';
 
+requires 'Search::Xapian';
+requires 'Catalyst::Model::Adaptor';
 
 # our own dogfood
 requires 'Text::Amuse' => 0.10;
