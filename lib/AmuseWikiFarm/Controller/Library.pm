@@ -101,7 +101,15 @@ sub text :Path :Args(1) {
     if ($text) {
         if ($ext) {
             $c->log->debug("Got $canonical $ext => " . $text->title);
-            $c->serve_static_file($text->filepath_for_ext($ext));
+            my $served_file = $text->filepath_for_ext($ext);
+            if (-f $served_file) {
+                $c->serve_static_file($served_file);
+            }
+            else {
+                # this should not happen
+                $c->log->warn("File $served_file expected but not found!");
+                $c->detach('/not_found');
+            }
         }
         else {
             $c->stash(
