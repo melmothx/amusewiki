@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use Cwd;
 use FindBin qw/$Bin/;
 use File::Basename;
 use File::Find;
@@ -33,20 +34,15 @@ foreach my $code (@codes) {
         warn "Wrong code $code, see README.txt for naming convention. Skipping...\n";
         next;
     }
-    my $locale;
-    if (my $site = $db->resultset('Site')->find($code)) {
-        $locale = $site->locale;
-    }
-    else {
+    my $archive = AmuseWikiFarm::Archive->new(
+                                              code => $code,
+                                              dbic => $db,
+                                             );
+
+    unless ($archive->site_exists) {
         warn "Site code $code not found in the database. Skipping...\n";
         next;
     }
-
-    my $archive = AmuseWikiFarm::Archive->new(repo => catdir(repo => $code),
-                                              code => $code,
-                                              locale => $locale,
-                                              dbic => $db,
-                                              xapian => catdir(xapian => $code));
 
     # find the file
     my @files;
@@ -65,7 +61,9 @@ foreach my $code (@codes) {
               if ($file =~ m/\.(pdf|png|jpe?g)$/) {
                   push @files, $File::Find::name;
               }
-          }, catdir(repo => $code));
+          }, $archive->repo);
+
+
     # print Dumper(\@files);
     foreach my $file (@files) {
         print "indexing $file\n";

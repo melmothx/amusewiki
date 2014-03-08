@@ -11,21 +11,20 @@ use File::Path qw/make_path/;
 use File::Spec::Functions qw/catdir catfile/;
 use Data::Dumper;
 
-use AmuseWikiFarm::Model::DB;
+use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive;
 
 my $id = '0test0';
-my $schema = AmuseWikiFarm::Model::DB->new;
-my $archive = AmuseWikiFarm::Archive->new(repo => catdir(repo => $id),
-                                          dbic => $schema,
-                                          code => $id,
-                                          xapian => catdir(xapian => $id));
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my $archive = AmuseWikiFarm::Archive->new(code => $id,
+                                          dbic => $schema);
 
 ok($archive);
 is $archive->code, $id;
 ok(-d $archive->repo);
+ok($archive->xapian->xapian_dir);
 mkdir $archive->xapian unless -d $archive->xapian;
-ok(-d $archive->xapian);
+ok(-d $archive->xapian->xapian_dir);
 ok($archive->dbic);
 ok($archive->fields);
 is_deeply $archive->fields, {
@@ -72,7 +71,7 @@ $title = $schema->resultset('Title')->single({uri => 'do-this-by-yourself',
                                               site_id => $id });
 ok($title, "Title reinserted");
 
-ok($archive->xapian_db);
+# ok($archive->xapian_db);
 
 
 
