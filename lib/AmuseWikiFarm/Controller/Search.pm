@@ -24,10 +24,11 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
-    $c->log->debug("Loading xapian");
     my $xapian = $c->model('Xapian');
-    $c->log->debug($xapian->site);
-    $c->response->body($xapian->site);
+    $c->response->body(join(" ",
+                            $xapian->code, $xapian->locale,
+                            $xapian->basedir, $xapian->xapian_dir
+                           ));
 }
 
 

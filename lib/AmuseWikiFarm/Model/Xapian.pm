@@ -5,13 +5,18 @@ use warnings;
 use base 'Catalyst::Model::Factory::PerRequest';
 
 __PACKAGE__->config(
-    class => 'AmuseWikiFarm::Xapian',
+    class => 'AmuseWikiFarm::Archive::Xapian',
 );
 
 sub prepare_arguments {
     my ($self, $c) = @_;
     $c->log->debug("Loading xapian search");
-    return { site => $c->stash->{site}->id };
+    my $args = {
+        code => $c->stash->{site}->id,
+        locale => $c->stash->{site}->locale,
+        basedir => $c->config->{home},
+    };
+    return $args;
 }
 
 
