@@ -18,13 +18,13 @@ AmuseWikiFarm::Controller::Root - Root Controller for AmuseWikiFarm
 
 =head1 DESCRIPTION
 
-[enter your description here]
+This class provides the site selection and the theme management.
 
 =head1 METHODS
 
 =head2 index
 
-The root page (/)
+The root page (/) points to /library/index
 
 =cut
 
@@ -66,6 +66,7 @@ sub auto :Private {
     $c->log->debug("Site ID for $host is " . $site->id
                    . ", with locale " . $site->locale);
 
+    # set the localization
     $c->languages([ $site->locale ]);
 
     # stash the site object
@@ -82,14 +83,10 @@ sub not_found :Global {
 
 =head2 end
 
-Attempt to render a view, if needed, prepending the stashed C<site_id>
-if the file is present.
+Attempt to render a view, if needed.
 
-Routes that don't set the template in the stash will pick the default
-without any checking.
-
-The default wrapper is layout.tt. It's not overriden if no_wrapper is
-set, otherwise the localized one is always preferred.
+If the site has a theme, add that at the beginning of the TT's include
+path.
 
 =cut
 
@@ -104,20 +101,6 @@ sub end : ActionClass('RenderView') {
           [$c->path_to(root => themes => $theme)];
     }
 }
-
-sub _find_template {
-    my ($self, $id, $name, $paths) = @_;
-    my $found;
-    foreach my $path (@$paths) {
-        my $try = catfile($path, $id, $name);
-        if (-f $try) {
-            $found = catfile($id, $name);
-            last;
-        }
-    }
-    return $found;
-}
-
 
 =head1 AUTHOR
 

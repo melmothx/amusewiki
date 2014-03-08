@@ -5,6 +5,12 @@ backend. The web interface is powered by Catalyst and Plack.
 
 * Directory structure
 
+** themes
+
+The sites can have a theme defined. In this case, the search path of
+TT is extended to root/themes/<theme-name>, where the templates can be
+overridden.
+
 ** repositories
 
 This is where the texts are stored.
