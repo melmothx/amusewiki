@@ -14,6 +14,7 @@ repo/*/*/*/*.epub
 repo/*/*/*/*.ok
 repo/*/*/*/*.aux
 repo/*/*/*/*.toc
+repo/*/*/*/*.zip
 repo/*.log
 xapian/*
 !xapian/README.txt

@@ -127,6 +127,15 @@
                title="[% c.loc('plain text source') %]"
                class="pdfmyicons" /></a>
       </span>
+      [% IF site.zip %]
+      <span id="downloadzip">
+        <a href="[% basename %].zip">
+	      <img src="/static/images/zip.png"
+                 alt="[% c.loc('Source files with attachments') %]"
+               title="[% c.loc('Source files with attachments') %]"
+	           class="pdfmyicons" /></a>
+      </span>
+      [% END %]
     </div>
   </div>
 

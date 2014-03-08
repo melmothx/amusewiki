@@ -62,6 +62,7 @@ sub text :Path :Args(1) {
                       tex     |
                       epub    |
                       muse    |
+                      zip     |
 
                       # these two need special treatment
                       jpe?g   |
