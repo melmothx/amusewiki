@@ -102,6 +102,13 @@ sub xapian_stemmer {
     }
 }
 
+=head2 index_file($file)
+
+Add the file to the DB and Xapian databases, first parsing it with
+C<muse_info_file> from L<AmuseWikiFarm::Utils::Amuse>.
+
+=cut
+
 sub index_file {
     my ($self, $file) = @_;
     unless ($file && -f $file) {
@@ -151,6 +158,13 @@ sub index_file {
     $self->xapian_index_text($title);
     return $file;
 }
+
+=head2 xapian_index_text($text_result_row)
+
+The argument is a Title resultset. The text is indexed by Xapian in
+the archive's database.
+
+=cut
 
 
 sub xapian_index_text {
@@ -258,6 +272,7 @@ sub collation_index {
     my $collator = Unicode::Collate::Locale->new(locale => $site->locale);
 
     my @texts = sort {
+        # warn $a->id . ' <=>  ' . $b->id;
         $collator->cmp($a->list_title, $b->list_title)
     } $site->titles;
 
@@ -269,6 +284,7 @@ sub collation_index {
 
     # and then sort the categories
     my @categories = sort {
+        # warn $a->id . ' <=> ' . $b->id;
         $collator->cmp($a->name, $b->name)
     } $site->categories;
 

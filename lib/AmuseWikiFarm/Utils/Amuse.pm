@@ -60,6 +60,14 @@ sub muse_file_info {
 
 
 
+    unless (exists $details->{title} and
+            length($details->{title}) and
+            $details->{title} =~ m/\S/) {
+        warn "Setting deletion on $file, no title found\n";
+        $details->{title} = $details->{LISTtitle} ||= $details->{uri};
+        $details->{DELETED} ||= "Missing title";
+    }
+
     # normalize and use author as default if missing
     unless ($details->{SORTauthors}) {
         $details->{SORTauthors} = $details->{author};
@@ -95,12 +103,6 @@ sub muse_file_info {
             $title_order_by =~ s/^[\W]+//;
             $details->{list_title} = $title_order_by;
         }
-    }
-
-    # check if the title exists
-    unless ($details->{title}) {
-        warn "$file has no title! Setting deletion\n";
-        $details->{deleted} ||= "Missing title";
     }
 
     return $details;

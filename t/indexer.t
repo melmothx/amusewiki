@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 23;
+use Test::More tests => 32;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -101,3 +101,33 @@ foreach my $k (qw/f_timestamp f_path f_archive_rel_path f_full_path_name/) {
 }
 
 is_deeply $info, $expected, "Info returned correctly";
+
+
+$testfile = catfile(t => a => at => 'another-test-1.muse');
+$info = muse_file_info($testfile);
+
+# is $info->{DELETED}, no
+is $info->{title}, 'blabla', "title picked from list_title";
+is $info->{DELETED}, 'Missing title';
+ok $info->{uri};
+
+# print Dumper($info);
+
+$testfile = catfile(t => a => at => 'another-test-2.muse');
+$info = muse_file_info($testfile);
+
+is $info->{DELETED}, 'Missing title';
+ok $info->{uri}, "Uri found";
+is $info->{title}, $info->{uri}, "title set to uri";
+
+# print Dumper ($info);
+
+$testfile = catfile(t => a => at => 'another-test-3.muse');
+$info = muse_file_info($testfile);
+print Dumper ($info);
+
+ok !$info->{parsed_categories}, "SORTauthor (missing s) is ignored";
+is $info->{DELETED}, 'ignore';
+ok $info->{uri}, "Uri found";
+
+# 
