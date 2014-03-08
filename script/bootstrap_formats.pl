@@ -53,6 +53,16 @@ if (%options) {
 
 print Dumper(\%override);
 
+if (%override) {
+    if ($override{zip}) {
+        $override{tex} = $override{html} = 1;
+    }
+    if ($override{pdf}) {
+        $override{tex} = 1;
+    }
+}
+
+
 my @todo = @ARGV;
 for my $id (@todo) {
     if (-d $id) {
