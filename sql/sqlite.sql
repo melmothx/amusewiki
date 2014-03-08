@@ -29,6 +29,7 @@ CREATE TABLE site (
        html      INTEGER NOT NULL DEFAULT 1,
        bare_html INTEGER NOT NULL DEFAULT 1,
        epub      INTEGER NOT NULL DEFAULT 1,
+       zip       INTEGER NOT NULL DEFAULT 1,
        ttdir     VARCHAR(1024) NOT NULL DEFAULT '',
        -- tex options
        papersize VARCHAR(64) NOT NULL DEFAULT '', -- will pick the generic

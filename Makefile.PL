@@ -29,7 +29,7 @@ requires 'Catalyst::Plugin::I18N';
 
 # our own dogfood
 requires 'Text::Amuse' => 0.10;
-requires 'Text::Amuse::Compile' => 0.06;
+requires 'Text::Amuse::Compile' => 0.07;
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';

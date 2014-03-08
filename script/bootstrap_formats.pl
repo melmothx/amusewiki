@@ -2,16 +2,18 @@
 use strict;
 use warnings;
 
-use File::Spec::Functions qw/catdir catfile/;
+# core modules
+use Cwd;
 use File::Find;
+use Data::Dumper;
+use Getopt::Long;
+use File::Spec::Functions qw/catdir catfile/;
 
+# ours
 use Text::Amuse::Compile;
-
 use FindBin qw/$Bin/;
 use lib "$Bin/../lib";
-use Cwd;
 use AmuseWikiFarm::Schema;
-use Data::Dumper;
 
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';
@@ -24,6 +26,32 @@ foreach my $s ($db->resultset('Site')->all) {
 
 die "Missing repo dir!" unless -d 'repo';
 chdir 'repo' or die $!;
+
+my %options;
+my @avails = (qw/epub
+               html
+               bare-html
+               a4-pdf
+               lt-pdf
+               tex
+               pdf
+               zip/);
+
+GetOptions (\%options,
+            @avails);
+
+print Dumper(\%options);
+
+my %override;
+if (%options) {
+    foreach my $k (@avails) {
+        my $real = $k;
+        $real =~ s/-/_/g;
+        $override{$real} = $options{$k} || 0;
+    }
+}
+
+print Dumper(\%override);
 
 my @todo = @ARGV;
 for my $id (@todo) {
@@ -54,6 +82,15 @@ sub compile_all {
     };
     $report->("starting at " . localtime() . "\n");
     my %opts = $site->compile_options;
+
+    if (%override) {
+        foreach my $k (keys %opts) {
+            if (exists $override{$k}) {
+                warn "Replacing $k with $override{$k}\n";
+                $opts{$k} = $override{$k};
+            }
+        }
+    }
     my $c = Text::Amuse::Compile->new(
                                       %opts,
                                       report_failure_sub => $report,

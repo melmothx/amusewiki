@@ -126,6 +126,12 @@ __PACKAGE__->table("site");
   default_value: 1
   is_nullable: 0
 
+=head2 zip
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+
 =head2 ttdir
 
   data_type: 'varchar'
@@ -202,6 +208,8 @@ __PACKAGE__->add_columns(
   "bare_html",
   { data_type => "integer", default_value => 1, is_nullable => 0 },
   "epub",
+  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  "zip",
   { data_type => "integer", default_value => 1, is_nullable => 0 },
   "ttdir",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 1024 },
@@ -304,8 +312,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-02 10:58:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:k8uOp4BoEhqpBNy7+EP9BA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-08 11:18:02
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tnFZBMoxZZkh9ZrVFb21zQ
 
 
 =head2 compile_options
@@ -322,7 +330,7 @@ sub compile_options {
     my $self = shift;
     my %opts;
 
-    foreach my $f (qw/tex pdf a4_pdf lt_pdf html bare_html epub/) {
+    foreach my $f (qw/tex pdf a4_pdf lt_pdf html bare_html epub zip/) {
         $opts{$f} = $self->$f;
     }
     if (my $dir = $self->ttdir) {
