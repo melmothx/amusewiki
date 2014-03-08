@@ -192,7 +192,52 @@ sub index_text {
     $@ ? return : return 1;
 }
 
+sub search {
+    my ($self, $query_string) = @_;
+    my $database = Search::Xapian::Database->new($self->xapian_dir);
 
+    # set up the query parser
+    my $qp = Search::Xapian::QueryParser->new($database);
+
+    # lot of room here for optimization and fun
+    $qp->set_stemmer($self->xapian_stemmer);
+    $qp->set_stemming_strategy(STEM_SOME);
+    $qp->set_default_op(OP_AND);
+    $qp->add_prefix(author => 'A');
+    $qp->add_prefix(title => 'S');
+    $qp->add_prefix(year => 'Y');
+    $qp->add_prefix(date => 'Y');
+    $qp->add_prefix(topic => 'K');
+    $qp->add_prefix(source => 'XSOURCE');
+    $qp->add_prefix(notes => 'XNOTES');
+    $qp->add_boolean_prefix(uri => 'Q');
+
+    my $query = $qp->parse_query($query_string,
+                                 (FLAG_PHRASE   |
+                                  FLAG_BOOLEAN  |
+                                  FLAG_LOVEHATE |
+                                  FLAG_WILDCARD ));
+
+    my $enquire = $database->enquire($query);
+
+    # paging
+    my $mset = $enquire->get_mset(0, 50);
+    my $msize = $mset->size;
+    if ($msize == 0) {
+        return;
+    }
+
+    my $totaldocs = $mset->get_matches_estimated();
+    my @results;
+    foreach my $m ($mset->items) {
+        my $founddoc = {};
+        $founddoc->{rank} = $m->get_rank + 1;
+        $founddoc->{relevance} = $m->get_percent;
+        $founddoc->{pagename} = $m->get_document->get_data;
+        push @results, $founddoc;
+    }
+    return @results
+}
 
 __PACKAGE__->meta->make_immutable;
 
