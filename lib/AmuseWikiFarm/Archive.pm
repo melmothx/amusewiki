@@ -38,6 +38,7 @@ sub _build_xapian_object {
     return AmuseWikiFarm::Archive::Xapian->new(
                                                code => $self->code,
                                                basedir => $self->basedir || '',
+                                               locale => $self->site->locale,
                                               );
 }
 
@@ -48,7 +49,6 @@ has fields => (is => 'ro',
 
 sub _build_fields {
     my $self = shift;
-    warn "Building fields\n";
     my %fields = map { $_ => 1 }
       $self->dbic->resultset('Title')->result_source->columns;
     return \%fields;

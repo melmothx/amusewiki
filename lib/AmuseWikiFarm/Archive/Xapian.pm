@@ -62,12 +62,13 @@ sub _build_xapian_indexer {
     my $self = shift;
     my $indexer = Search::Xapian::TermGenerator->new();
     # set it by default with the locale stemmer, if available
-    $indexer->set_stemmer($self->xapian_stemmer($self->locale));
+    $indexer->set_stemmer($self->xapian_stemmer);
     return $indexer;
 }
 
 sub xapian_stemmer {
-    my ($self, $locale) = @_;
+    my $self = shift;
+    my $locale = $self->locale;
     # from http://xapian.org/docs/apidoc/html/classXapian_1_1Stem.html
     my %stemmers = (
                     da => 'danish',
