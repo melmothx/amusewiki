@@ -16,10 +16,9 @@
 *** DONE document directory structure
     CLOSED: [2014-02-08 sab 08:18]
 
-** template migration for the existing libraries
-
-*** not. fun. at. all.
-
+** DONE template migration for the existing libraries
+   CLOSED: [2014-03-08 sab 14:45]
+** Xapian search plugging
 ** editing
 
 *** /edit
@@ -45,10 +44,7 @@
 *** anon for editing
 
 * Backend
-
-** beanstalk, probably, as broker + Beanstalk::Client
-
-
+** Queue using the db.
 ** DONE Xapian indexing (Search::Xapian)
    CLOSED: [2014-02-08 sab 12:36]
 
@@ -56,7 +52,7 @@
    CLOSED: [2014-03-02 dom 10:39]
    Use Text::Amuse::Compile
 
-** bookbuilder Text::Amuse + PDF::Imposition
+** TODO bookbuilder Text::Amuse + PDF::Imposition
 
 *** Provide more formats and fonts: XeLaTeX + js notifications
 * Needed features
