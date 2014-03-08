@@ -30,7 +30,7 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     my @texts = $c->stash->{site}->titles->published_texts;
     $c->stash(texts => \@texts);
-    $c->stash(baseurl => $c->uri_for($c->action));
+    $c->stash(baseurl => $c->uri_for_action('/library/index'));
     $c->stash(template => 'library.tt');
 }
 
