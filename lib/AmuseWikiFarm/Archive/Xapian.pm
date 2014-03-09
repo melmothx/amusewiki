@@ -178,12 +178,12 @@ sub index_text {
             open (my $fh, '<:encoding(UTF-8)', $filepath)
               or die "Couldn't open $filepath: $!";
             while (my $line = <$fh>) {
+                chomp $line;
                 $line =~ s/^\#\w+//g; # delete the directives
                 $line =~ s/<.+?>//g; # delete the tags.
-                $indexer->index_text($line);
+                $indexer->index_text($line) if $line =~ /\S/;
             }
             close $fh;
-
             # Add or the replace the document to the database.
             $database->replace_document_by_term($qterm, $doc);
         };
