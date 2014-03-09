@@ -25,16 +25,41 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
     my $xapian = $c->model('Xapian');
-    my ($matches, @results) = $xapian->search($c->req->params->{query},
-                                              $c->req->params->{page});
+    # here we could configure the paging
+    # $xapian->page(1);
 
+    my $query = $c->req->params->{query};
+
+    my $page = 1;
+    if ($c->req->params->{page} && $c->req->params->{page} =~ m/^([0-9]+)$/) {
+        $page = $1;
+    }
+
+    my ($matches, @results) = $xapian->search($query, $page);
     foreach my $res (@results) {
         $res->{text} = $site->titles->by_uri($res->{pagename});
     }
 
+    my $paging = $xapian->page;
+
     $c->stash( matches => $matches,
                text_uri_base => $c->uri_for_action('/library/index'),
                results => \@results );
+
+    my $last_thing = (($page - 1) * $paging) + scalar(@results);
+
+
+    $c->log->debug("$last_thing, $matches, " . scalar(@results));
+
+    if ($matches > $paging  && $last_thing < $matches) {
+        $c->stash(next_page => $c->uri_for($c->action, { page => $page + 1,
+                                                         query => $query }));
+    }
+
+    if ($page > 1) {
+        $c->stash(previous_page => $c->uri_for($c->action, { page => $page - 1,
+                                                             query => $query }));
+    }
 }
 
 

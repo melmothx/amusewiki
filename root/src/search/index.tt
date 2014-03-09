@@ -2,14 +2,22 @@
 [% c.loc("Results found") %]: [% matches %]
 
 
-<ol>
-
 [% FOREACH res IN results %]
-<li>
-[% res.relevance %]% [% c.loc("Relevant") %]
+<div>
+&nbsp;[% res.rank %].
 <a href="[% text_uri_base %]/[% res.text.uri %]">[% res.text.title %]</a>
-</li>
+— [% res.text.author %]
+([% res.relevance %]% [% c.loc("relevant") %])
+</div>
 [% END %] 
 
+<div>
+[% IF previous_page %]
+<a href="[% previous_page %]">[% c.loc("Previous") %]</a>
+[% END %]
 
 
+[% IF next_page %]
+<a href="[% next_page %]">[% c.loc("Next") %]</a>
+[% END %]
+</div>
