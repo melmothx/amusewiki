@@ -42,11 +42,19 @@ sub index :Path :Args(0) {
 
     my $paging = $xapian->page;
 
+    my $last_thing = (($page - 1) * $paging) + scalar(@results);
+
+    my $range;
+    if (@results) {
+        $range = $results[0]->{rank} . '-' . $results[$#results]->{rank};
+    }
+
     $c->stash( matches => $matches,
+               range => $range,
                text_uri_base => $c->uri_for_action('/library/index'),
                results => \@results );
 
-    my $last_thing = (($page - 1) * $paging) + scalar(@results);
+
 
 
     $c->log->debug("$last_thing, $matches, " . scalar(@results));

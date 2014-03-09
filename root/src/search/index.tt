@@ -1,6 +1,10 @@
 [% # -*- mode: html -*- %]
+<div>
 [% c.loc("Results found") %]: [% matches %]
-
+</div>
+<div>
+[% c.loc("Displaying") %] [% range %]
+</div>
 
 [% FOREACH res IN results %]
 <div>
