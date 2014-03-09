@@ -1,0 +1,15 @@
+[% # -*- mode: html -*- %]
+[% c.loc("Results found") %]: [% matches %]
+
+
+<ol>
+
+[% FOREACH res IN results %]
+<li>
+[% res.relevance %]% [% c.loc("Relevant") %]
+<a href="[% text_uri_base %]/[% res.text.uri %]">[% res.text.title %]</a>
+</li>
+[% END %] 
+
+
+

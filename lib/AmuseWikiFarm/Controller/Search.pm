@@ -24,8 +24,17 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
-    my @results = $c->model('Xapian')->search($c->req->params->{query});
-    $c->response->body("found " . scalar(@results) . " results");
+    my $xapian = $c->model('Xapian');
+    my ($matches, @results) = $xapian->search($c->req->params->{query},
+                                              $c->req->params->{page});
+
+    foreach my $res (@results) {
+        $res->{text} = $site->titles->by_uri($res->{pagename});
+    }
+
+    $c->stash( matches => $matches,
+               text_uri_base => $c->uri_for_action('/library/index'),
+               results => \@results );
 }
 
 

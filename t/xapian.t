@@ -44,9 +44,10 @@ $xapian = AmuseWikiFarm::Archive::Xapian->new(
 
 
 
-my @results = $xapian->search('"XXXX"');
+my ($total, @results) = $xapian->search('"XXXX"');
 
+is($total, 1);
 ok(@results == 1, "Found 1 result with XXXX");
 
-is shift(@results)->{pagename}, 'second-test';
+
 

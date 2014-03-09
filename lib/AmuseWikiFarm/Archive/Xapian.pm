@@ -37,6 +37,11 @@ has xapian_indexer => (
                        lazy => 1,
                        builder => '_build_xapian_indexer');
 
+has page => (
+             is => 'rw',
+             isa => 'Int',
+             default => sub { return 10 },
+            );
 
 sub xapian_dir {
     my $self = shift;
@@ -192,8 +197,15 @@ sub index_text {
     $@ ? return : return 1;
 }
 
+=head2 search($query_string, $page);
+
+Run a query against the Xapian database. Return the number of matches
+and a list of matches, each being an hashref with the following keys:
+
+=cut
+
 sub search {
-    my ($self, $query_string) = @_;
+    my ($self, $query_string, $page) = @_;
     my $database = Search::Xapian::Database->new($self->xapian_dir);
 
     # set up the query parser
@@ -221,12 +233,15 @@ sub search {
     my $enquire = $database->enquire($query);
 
     # paging
-    my $mset = $enquire->get_mset(0, 50);
+    my $pagesize = $self->page;
+    # be sure to have a number
+    $page ||= 1;
+    my $start = ($page - 1) * $pagesize;
+    my $mset = $enquire->get_mset($start, $pagesize, $pagesize);
     my $msize = $mset->size;
     if ($msize == 0) {
-        return;
+        return 0;
     }
-
     my $totaldocs = $mset->get_matches_estimated();
     my @results;
     foreach my $m ($mset->items) {
@@ -236,8 +251,24 @@ sub search {
         $founddoc->{pagename} = $m->get_document->get_data;
         push @results, $founddoc;
     }
-    return @results
+    return $totaldocs, @results;
 }
+
+=over 4
+
+=item rank
+
+=item relevance
+
+=item pagename
+
+=back
+
+=cut
+
+
+
+
 
 __PACKAGE__->meta->make_immutable;
 
