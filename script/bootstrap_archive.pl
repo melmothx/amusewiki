@@ -65,7 +65,7 @@ foreach my $code (@codes) {
 
 
     # print Dumper(\@files);
-    foreach my $file (@files) {
+    foreach my $file (sort @files) {
         print "indexing $file\n";
         $archive->index_file($file) || print "Ignored $file\n";
     }
