@@ -18,7 +18,8 @@
 
 ** DONE template migration for the existing libraries
    CLOSED: [2014-03-08 sab 14:45]
-** Xapian search plugging
+** DONE Xapian search plugging
+   CLOSED: [2014-03-10 lun 18:29]
 ** editing
 
 *** /edit
