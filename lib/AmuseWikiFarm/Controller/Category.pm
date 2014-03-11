@@ -14,18 +14,6 @@ Catalyst Controller.
 
 =head1 METHODS
 
-=cut
-
-
-=head2 index
-
-=cut
-
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-    $c->response->body('Matched AmuseWikiFarm::Controller::Category in Category.');
-}
-
 =head2 Category listing
 
 =head3 authors
