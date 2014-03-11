@@ -110,7 +110,9 @@ sub index_file {
     }
 
     # ready to store into titles?
-    my %insertion;
+    # by default text are published, unless the file info returns something else
+    # and if it's an update we have to reset it.
+    my %insertion = (deleted => '');
     # lower case the keys
     foreach my $col (keys %$details) {
         my $db_col = lc($col);
@@ -125,13 +127,32 @@ sub index_file {
     }
     print "Inserting data for $file\n";
     # TODO: see if we have to update the insertion
+
     my $title = $self->dbic->resultset('Title')->update_or_create(\%insertion);
-    if ($parsed_cats && @$parsed_cats) {
+
+    # pick the old categories.
+    my @old_cats_ids;
+    foreach my $old_cat ($title->categories) {
+        push @old_cats_ids, $old_cat->id;
+    }
+
+    if (!$title->deleted && $parsed_cats && @$parsed_cats) {
         # here we can die if there are duplicated uris
         $title->set_categories($parsed_cats);
     }
+    else {
+        # purge the categories if there is none.
+        $title->set_categories([]);
+    }
 
-    # TODO maybe the categories should be cleaned if there are none?
+    foreach my $cat ($title->categories) {
+        $cat->title_count_update;
+    }
+
+    foreach my $cat_id (@old_cats_ids) {
+        my $cat = $self->dbic->resultset('Category')->find($cat_id);
+        $cat->title_count_update;
+    }
 
     return $file unless $self->xapian;
     # print $title->topic_list, ' ', $title->author_list, "\n";

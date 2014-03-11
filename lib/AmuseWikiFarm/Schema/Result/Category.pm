@@ -67,6 +67,12 @@ __PACKAGE__->table("category");
   default_value: 0
   is_nullable: 0
 
+=head2 text_count
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -86,6 +92,8 @@ __PACKAGE__->add_columns(
   "type",
   { data_type => "varchar", is_nullable => 0, size => 16 },
   "sorting_pos",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "text_count",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
@@ -164,13 +172,29 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-02 12:01:25
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6inwK8n8xyRElWOGzwnhrQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-11 08:12:12
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UOOouoTsn4olsp4DxR3sqQ
 
-sub title_count {
+
+=head2 title_count_update
+
+Update the published texts count. It doesn't look at the text_count in
+the row, but rather B<set> it.
+
+=cut
+
+sub title_count_update {
     my $self = shift;
-    return $self->titles->published_texts->count;
+    my $count = $self->titles->published_texts->count;
+    $self->text_count($count);
+    $self->update if $self->is_changed;
 }
+
+=head2 published_titles
+
+Return a Title resultset, but only with published texts
+
+=cut
 
 sub published_titles {
     my $self = shift;

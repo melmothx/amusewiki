@@ -1,6 +1,6 @@
 <ol>
   [% FOREACH cat IN list %]
-  [% count = cat.title_count %]
+  [% count = cat.text_count %]
   [% IF count %]
   <li>
     <a href="[% baseurl %]/[% cat.uri %]">[% cat.name %]</a>

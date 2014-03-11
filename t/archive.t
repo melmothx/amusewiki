@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 14;
+use Test::More tests => 33;
 use File::Slurp;
 use File::Temp;
 use File::Copy qw/copy/;
@@ -66,14 +66,88 @@ $title = $schema->resultset('Title')->single({uri => 'do-this-by-yourself',
 
 ok(!$title, "Title purged");
 
-
 ok $archive->index_file(catfile(repo => $id => d => dt =>'do-this-by-yourself.muse'));
 
 $title = $schema->resultset('Title')->single({uri => 'do-this-by-yourself',
                                               site_id => $id });
 ok($title, "Title reinserted");
 
-# ok($archive->xapian_db);
 
+my $dummy_file = catfile(repo => $id => d => dt => 'dummy-text.muse');
+my $dummy_content =<<'MUSE';
+#title Dummy text
+#author Supermarco
+
+bla bla
+MUSE
+
+write_file($dummy_file, $dummy_content);
+$archive->index_file($dummy_file);
+
+$title = $schema->resultset('Title')->single({uri => 'dummy-text',
+                                              site_id => $id });
+
+ok($title);
+ok(!$title->deleted, "Is not deleted") or diag $title->deleted;
+
+my @cats = $title->categories;
+
+ok(@cats == 1);
+is($cats[0]->name, 'Supermarco');
+is($cats[0]->uri, 'supermarco');
+is($cats[0]->type, 'author');
+is($cats[0]->text_count, 1);
+
+my $dummy_content_updated =<<'MUSE';
+#title Dummy text
+#author Superpippo
+
+bla bla
+MUSE
+
+write_file($dummy_file, $dummy_content_updated);
+$archive->index_file($dummy_file);
+
+$title = $schema->resultset('Title')->single({uri => 'dummy-text',
+                                              site_id => $id });
+
+ok($title);
+
+@cats = $title->categories;
+
+ok(@cats == 1);
+is($cats[0]->name, 'Superpippo');
+is($cats[0]->uri, 'superpippo');
+is($cats[0]->type, 'author');
+is($cats[0]->text_count, 1);
+
+# check the old author
+my $deleted_cat = $schema->resultset('Category')->single({uri => 'supermarco',
+                                                          type => 'author',
+                                                          site_id => $id });
+
+ok($deleted_cat);
+is($deleted_cat->text_count, 0);
+
+my $dummy_content_deleted =<<'MUSE';
+#title Dummy text
+#author Superpippo
+#DELETED nuked
+
+bla bla
+MUSE
+
+write_file($dummy_file, $dummy_content_deleted);
+$archive->index_file($dummy_file);
+
+foreach my $deletion (qw/superpippo supermarco/) {
+    $deleted_cat = $schema->resultset('Category')->single({uri => $deletion,
+                                                           type => 'author',
+                                                           site_id => $id });
+    ok($deleted_cat);
+    is($deleted_cat->text_count, 0);
+}
+
+unlink $dummy_file or die $!;
 
 
