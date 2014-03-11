@@ -69,7 +69,7 @@
       [% IF site.pdf %]
       <span id="pdfgeneric">
         <a href="[% basename %].pdf" class="pdflinks">
-	      <img src="/static/images/pdf-gen.png"
+	      <img src="[% c.uri_for('/static/images/pdf-gen.png') %]"
                  alt="[% c.loc('plain PDF') %]"
                title="[% c.loc('plain PDF') %]"
 	           class="pdfmyicons" /></a>
@@ -78,7 +78,7 @@
       [% IF site.a4_pdf %]
       <span id="pdfa4imp">
         <a href="[% basename %].a4.pdf" class="pdflinks">
-	      <img src="/static/images/pdf-a4-imposed.png"
+	      <img src="[% c.uri_for('/static/images/pdf-a4-imposed.png') %]"
 	             alt="[% c.loc('A4 imposed PDF') %]"
 	           title="[% c.loc('A4 imposed PDF') %]"
 	           class="pdfmyicons" /></a> 
@@ -87,7 +87,7 @@
       [% IF site.lt_pdf %]
       <span id="letterimp">
         <a href="[% basename %].lt.pdf" class="pdflinks">
-	      <img src="/static/images/pdf-letter-imposed.png"
+	      <img src="[% c.uri_for('/static/images/pdf-letter-imposed.png') %]"
 	             alt="[% c.loc('Letter imposed PDF') %]"
 	           title="[% c.loc('Letter imposed PDF') %]"
 	           class="pdfmyicons" /></a> 
@@ -96,7 +96,7 @@
       [% IF site.epub %]
       <span id="downloadepub">
         <a href="[% basename %].epub">
-	      <img src="/static/images/epub.png"
+	      <img src="[% c.uri_for('/static/images/epub.png') %]"
                  alt="[% c.loc('EPUB (for mobile devices)') %]"
 	           title="[% c.loc('EPUB (for mobile devices)') %]"
                class="pdfmyicons" /></a>
@@ -105,7 +105,7 @@
       [% IF site.html %]
       <span id="downloadhtml">
         <a href="[% basename %].html">
-	      <img src="/static/images/pf-html.png"
+	      <img src="[% c.uri_for('/static/images/pf-html.png') %]"
                  alt="[% c.loc('Standalone HTML (printer-friendly)') %]"
 	           title="[% c.loc('Standalone HTML (printer-friendly)') %]"
 	           class="pdfmyicons" /></a>
@@ -114,7 +114,7 @@
       [% IF site.tex %]
       <span id="downloadtex">
         <a href="[% basename %].tex">
-	      <img src="/static/images/tex.png"
+	      <img src="[% c.uri_for('/static/images/tex.png') %]"
                  alt="[% c.loc('XeLaTeX source') %]"
                title="[% c.loc('XeLaTeX source') %]"
 	           class="pdfmyicons" /></a>
@@ -122,7 +122,7 @@
       [% END %]
       <span id="downloadsrc">
         <a href="[% basename %].muse">
-	      <img src="/static/images/muse.png"
+	      <img src="[% c.uri_for('/static/images/muse.png') %]"
                  alt="[% c.loc('plain text source') %]"
                title="[% c.loc('plain text source') %]"
                class="pdfmyicons" /></a>
@@ -130,7 +130,7 @@
       [% IF site.zip %]
       <span id="downloadzip">
         <a href="[% basename %].zip">
-	      <img src="/static/images/zip.png"
+	      <img src="[% c.uri_for('/static/images/zip.png') %]"
                  alt="[% c.loc('Source files with attachments') %]"
                title="[% c.loc('Source files with attachments') %]"
 	           class="pdfmyicons" /></a>

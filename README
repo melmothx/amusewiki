@@ -66,7 +66,12 @@ Standar location for Catalyst app:
 
 Templates and public directory:
 
- - root
+ - root/static static files (css, js, images)
+
+Deny the following in the webserver configuration:
+
+ - root/themes theme files (override the templates with the same structure)
+ - root/src    template directory.
 
 
 ** Schema

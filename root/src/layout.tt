@@ -5,13 +5,13 @@
     <meta http-equiv="Content-type"
           content="application/xhtml+xml; charset=UTF-8" />
     <link rel="stylesheet" media="all"
-          href="[% c.uri_for('/css/style.css') %]?v=1" />
+          href="[% c.uri_for('/static/css/style.css') %]?v=1" />
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" media="all"
-          href="[% c.uri_for('/css/adaptive.css') %]?v=1" />
+          href="[% c.uri_for('/static/css/adaptive.css') %]?v=1" />
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename %]" href="[% c.uri_for('/rss.xml') %]" />
 
@@ -29,7 +29,7 @@
         </li>
         <li>
 
-	      <a href="/random">[% c.loc('Random text') %]</a>
+	      <a href="[% c.uri_for('/random') %]">[% c.loc('Random text') %]</a>
         </li>
       </ul>
     </div>
@@ -50,7 +50,7 @@
                href="[% c.uri_for('/') %]">
 	          <img title="[% site.siteslogan %]"
 		           alt="[% site.siteslogan %]"
-                   src="[% uri_for('/static/images/') %]"
+                   src="[% c.uri_for('/static/images/') %][% site.id %]/banner.png"
 		           id="title-banner-img" />
 	        </a>
 	      </div>
@@ -58,21 +58,21 @@
 	    <div id="nav">
 	      <ul>
 	        <li>
-              <a href="/authors"
+              <a href="[% c.uri_for('/authors') %]"
 		         [% IF nav == 'authors' %]id="current"[% END %]
 		         title="[% c.loc('texts sorted by author') %]">
                 [% c.loc('Authors') %]
               </a>
             </li>
 	        <li>
-              <a href="/library"
+              <a href="[% c.uri_for('/library') %]"
 		         [% IF nav == 'titles' %]id="current"[% END %]
 		         title="[% c.loc('texts sorted by title') %]">
                 [% c.loc('Titles') %]
               </a>
             </li>
 	        <li>
-              <a href="/topics"
+              <a href="[% c.uri_for('/topics') %]"
 		         [% IF nav == 'topics' %]id="current"[% END %]
 		         title="[% c.loc('texts sorted by topics') %]">
                 [% c.loc('Topics') %]
@@ -88,8 +88,8 @@
         [% content %]
       </div>
       <div id="footer">
-        <a href="/rss.xml">
-          <img src="/images/feed-icon-28x28.png"
+        <a href="[% c.uri_for('/rss.xml') %]">
+          <img src="[% c.uri_for('/static/images/feed-icon-28x28.png') %]"
                alt="[% c.loc('syndicate') %]" id="rssicon" />
           [% c.loc("RSS") %]
         </a>
