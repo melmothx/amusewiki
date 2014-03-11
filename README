@@ -84,6 +84,8 @@ shipped tests sites, site specific images goes (or should go) in
 The default theme looks for root/static/images/<SITE-ID>/logo.png and
 root/static/images/<SITE-ID>/banner.png
 
+The favicon is looked up there too, named favicon.ico
+
 
 ** Schema
 

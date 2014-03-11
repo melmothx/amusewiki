@@ -4,6 +4,8 @@
   <head>
     <meta http-equiv="Content-type"
           content="application/xhtml+xml; charset=UTF-8" />
+    <link rel="shortcut icon"
+          href="[% c.uri_for('/static/images/') %]sites/[% site.id %]/favicon.ico" />
     <link rel="stylesheet" media="all"
           href="[% c.uri_for('/static/css/style.css') %]?v=1" />
     <!--[if lt IE 9]>
