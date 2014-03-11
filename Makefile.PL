@@ -23,6 +23,7 @@ requires 'Config::General'; # This should reflect the config file format you've 
 requires 'Unicode::Collate';
 requires 'File::Slurp';
 requires 'DBIx::Class::Schema::Config';
+requires 'DBIx::Class::Helper::ResultSet::Random';
 requires 'Catalyst::Plugin::I18N';
 
 requires 'Search::Xapian';

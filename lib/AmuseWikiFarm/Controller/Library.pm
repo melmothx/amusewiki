@@ -127,6 +127,21 @@ sub text :Path :Args(1) {
     }
 }
 
+=head2 random
+
+Path: /random
+
+Get the a random text
+
+=cut
+
+sub random :Global :Args(0) {
+    my ($self, $c) = @_;
+    my $text = $c->stash->{site}->titles->random_text;
+    $c->response->redirect($c->uri_for_action('/library/text' => $text->uri));
+}
+
+
 =encoding utf8
 
 =head1 AUTHOR
