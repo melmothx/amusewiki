@@ -25,7 +25,7 @@ ok $archive->site_exists;
 is $archive->code, $id;
 ok(-d $archive->repo);
 ok($archive->xapian->xapian_dir);
-mkdir $archive->xapian unless -d $archive->xapian;
+mkdir $archive->xapian->xapian_dir unless -d $archive->xapian->xapian_dir;
 ok(-d $archive->xapian->xapian_dir);
 ok($archive->dbic);
 ok($archive->fields);
