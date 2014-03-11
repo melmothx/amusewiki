@@ -44,6 +44,15 @@
 
 *** anon for editing
 
+
+** Feed
+
+*** Force the pubdate and pick the timestamp if there is not any
+*** Manage the pubdate in the future (also check published_text)
+*** Update the database
+*** Create the controller with the DB unrolling
+*** Add nginx rule to manage the legacy rss.xml with a rewrite to /feed
+
 * Backend
 ** Queue using the db.
 ** DONE Xapian indexing (Search::Xapian)
