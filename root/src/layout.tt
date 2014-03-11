@@ -48,9 +48,14 @@
 	      <div id="bannerimage">
 	        <a title="[% site.sitename %]"
                href="[% c.uri_for('/') %]">
-	          <img title="[% site.siteslogan %]"
+              <img title="[% site.siteslogan %]"
+                   alt="[% site.siteslogan %]"
+                   src="[% c.uri_for('/static/images/') %]sites/[% site.id %]/logo.png"
+                   id="title-logo-img" />
+
+              <img title="[% site.siteslogan %]"
 		           alt="[% site.siteslogan %]"
-                   src="[% c.uri_for('/static/images/') %][% site.id %]/banner.png"
+                   src="[% c.uri_for('/static/images/') %]sites/[% site.id %]/banner.png"
 		           id="title-banner-img" />
 	        </a>
 	      </div>

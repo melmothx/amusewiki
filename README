@@ -64,7 +64,7 @@ Standar location for Catalyst app:
  - lib/AmuseWikiFarm/View
  - lib/AmuseWikiFarm/Controller
 
-Templates and public directory:
+** Templates and public directory:
 
  - root/static static files (css, js, images)
 
@@ -72,6 +72,17 @@ Deny the following in the webserver configuration:
 
  - root/themes theme files (override the templates with the same structure)
  - root/src    template directory.
+
+
+** Banner and logo images
+
+Given that there is no point in providing a default, save for the
+shipped tests sites, site specific images goes (or should go) in 
+
+ - root/static/images/<SITE-ID>
+
+The default theme looks for root/static/images/<SITE-ID>/logo.png and
+root/static/images/<SITE-ID>/banner.png
 
 
 ** Schema

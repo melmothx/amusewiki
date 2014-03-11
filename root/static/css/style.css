@@ -262,11 +262,6 @@ a img, img {
     height: 134px;
 }
 
-#wbanner {
-    background: url(images/singlelogo.png) no-repeat;
-    height: 134px;
-}
-
 div#banner {
     height: 110px;
 }
@@ -277,9 +272,9 @@ div#nav {
 }
 
 img#title-banner-img {
-    padding-left: 180px;
-    margin-top: 19px;
-    padding-bottom: 9px;
+    padding-left: 10px;
+    margin-top: 0;
+    padding-bottom: 35px;
 }
 
 div#page {
