@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Mar  6 11:29:05 2014
+-- Created on Thu Mar 13 10:20:26 2014
 -- 
 SET foreign_key_checks=0;
 
@@ -14,6 +14,7 @@ CREATE TABLE `site` (
   `locale` varchar(3) NOT NULL DEFAULT 'en',
   `sitename` varchar(255) NOT NULL DEFAULT '',
   `siteslogan` varchar(255) NOT NULL DEFAULT '',
+  `theme` varchar(32) NOT NULL DEFAULT '',
   `logo` varchar(32) NULL,
   `mail` varchar(128) NULL,
   `canonical` varchar(255) NOT NULL DEFAULT '',
@@ -24,6 +25,7 @@ CREATE TABLE `site` (
   `html` integer NOT NULL DEFAULT 1,
   `bare_html` integer NOT NULL DEFAULT 1,
   `epub` integer NOT NULL DEFAULT 1,
+  `zip` integer NOT NULL DEFAULT 1,
   `ttdir` text NOT NULL DEFAULT '',
   `papersize` varchar(64) NOT NULL DEFAULT '',
   `division` integer NOT NULL DEFAULT 12,
@@ -44,7 +46,7 @@ CREATE TABLE `attachment` (
   `f_path` text NOT NULL,
   `f_name` varchar(255) NOT NULL,
   `f_archive_rel_path` varchar(4) NOT NULL,
-  `f_timestamp` varchar(255) NOT NULL,
+  `f_timestamp` datetime NOT NULL,
   `f_full_path_name` text NOT NULL,
   `f_suffix` varchar(16) NOT NULL,
   `uri` varchar(255) NOT NULL,
@@ -66,6 +68,7 @@ CREATE TABLE `category` (
   `uri` varchar(255) NOT NULL,
   `type` varchar(16) NOT NULL,
   `sorting_pos` integer NOT NULL DEFAULT 0,
+  `text_count` integer NOT NULL DEFAULT 0,
   `site_id` varchar(8) NOT NULL,
   INDEX `category_idx_site_id` (`site_id`),
   PRIMARY KEY (`id`),
@@ -90,11 +93,11 @@ CREATE TABLE `title` (
   `author` text NULL,
   `uid` varchar(255) NULL,
   `attach` varchar(255) NULL,
-  `pubdate` timestamp NULL,
+  `pubdate` datetime NOT NULL,
   `f_path` text NOT NULL,
   `f_name` varchar(255) NOT NULL,
   `f_archive_rel_path` varchar(4) NOT NULL,
-  `f_timestamp` varchar(255) NOT NULL,
+  `f_timestamp` datetime NOT NULL,
   `f_full_path_name` text NOT NULL,
   `f_suffix` varchar(16) NOT NULL,
   `uri` varchar(255) NOT NULL,

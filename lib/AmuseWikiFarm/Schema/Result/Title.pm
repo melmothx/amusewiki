@@ -104,8 +104,8 @@ __PACKAGE__->table("title");
 
 =head2 pubdate
 
-  data_type: 'timestamp'
-  is_nullable: 1
+  data_type: 'datetime'
+  is_nullable: 0
 
 =head2 f_path
 
@@ -126,9 +126,8 @@ __PACKAGE__->table("title");
 
 =head2 f_timestamp
 
-  data_type: 'varchar'
+  data_type: 'datetime'
   is_nullable: 0
-  size: 255
 
 =head2 f_full_path_name
 
@@ -192,7 +191,7 @@ __PACKAGE__->add_columns(
   "attach",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "pubdate",
-  { data_type => "timestamp", is_nullable => 1 },
+  { data_type => "datetime", is_nullable => 0 },
   "f_path",
   { data_type => "text", is_nullable => 0 },
   "f_name",
@@ -200,7 +199,7 @@ __PACKAGE__->add_columns(
   "f_archive_rel_path",
   { data_type => "varchar", is_nullable => 0, size => 4 },
   "f_timestamp",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  { data_type => "datetime", is_nullable => 0 },
   "f_full_path_name",
   { data_type => "text", is_nullable => 0 },
   "f_suffix",
@@ -286,8 +285,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-02 12:01:25
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:O3ydK2uwsZcAxsaj30XCug
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-13 09:53:14
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vRTlARTLspmURXai0BrYkA
 
 use File::Spec;
 use File::Slurp qw/read_file/;

@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Mar  6 11:29:05 2014
+-- Created on Thu Mar 13 10:20:28 2014
 -- 
 --
 -- Table: site.
@@ -11,6 +11,7 @@ CREATE TABLE "site" (
   "locale" character varying(3) DEFAULT 'en' NOT NULL,
   "sitename" character varying(255) DEFAULT '' NOT NULL,
   "siteslogan" character varying(255) DEFAULT '' NOT NULL,
+  "theme" character varying(32) DEFAULT '' NOT NULL,
   "logo" character varying(32),
   "mail" character varying(128),
   "canonical" character varying(255) DEFAULT '' NOT NULL,
@@ -21,6 +22,7 @@ CREATE TABLE "site" (
   "html" integer DEFAULT 1 NOT NULL,
   "bare_html" integer DEFAULT 1 NOT NULL,
   "epub" integer DEFAULT 1 NOT NULL,
+  "zip" integer DEFAULT 1 NOT NULL,
   "ttdir" character varying(1024) DEFAULT '' NOT NULL,
   "papersize" character varying(64) DEFAULT '' NOT NULL,
   "division" integer DEFAULT 12 NOT NULL,
@@ -40,7 +42,7 @@ CREATE TABLE "attachment" (
   "f_path" text NOT NULL,
   "f_name" character varying(255) NOT NULL,
   "f_archive_rel_path" character varying(4) NOT NULL,
-  "f_timestamp" character varying(255) NOT NULL,
+  "f_timestamp" timestamp NOT NULL,
   "f_full_path_name" text NOT NULL,
   "f_suffix" character varying(16) NOT NULL,
   "uri" character varying(255) NOT NULL,
@@ -60,6 +62,7 @@ CREATE TABLE "category" (
   "uri" character varying(255) NOT NULL,
   "type" character varying(16) NOT NULL,
   "sorting_pos" integer DEFAULT 0 NOT NULL,
+  "text_count" integer DEFAULT 0 NOT NULL,
   "site_id" character varying(8) NOT NULL,
   PRIMARY KEY ("id"),
   CONSTRAINT "uri_site_id_type_unique" UNIQUE ("uri", "site_id", "type")
@@ -82,11 +85,11 @@ CREATE TABLE "title" (
   "author" text,
   "uid" character varying(255),
   "attach" character varying(255),
-  "pubdate" timestamp,
+  "pubdate" timestamp NOT NULL,
   "f_path" text NOT NULL,
   "f_name" character varying(255) NOT NULL,
   "f_archive_rel_path" character varying(4) NOT NULL,
-  "f_timestamp" character varying(255) NOT NULL,
+  "f_timestamp" timestamp NOT NULL,
   "f_full_path_name" text NOT NULL,
   "f_suffix" character varying(16) NOT NULL,
   "uri" character varying(255) NOT NULL,

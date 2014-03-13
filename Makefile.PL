@@ -22,9 +22,14 @@ requires 'Config::General'; # This should reflect the config file format you've 
 # modules used
 requires 'Unicode::Collate';
 requires 'File::Slurp';
+requires 'DBIx::Class::InflateColumn::DateTime';
 requires 'DBIx::Class::Schema::Config';
 requires 'DBIx::Class::Helper::ResultSet::Random';
 requires 'Catalyst::Plugin::I18N';
+requires 'DateTime';
+requires 'Date::Parse';
+requires 'DateTime::Format::SQLite';
+
 
 requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor';

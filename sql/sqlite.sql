@@ -67,13 +67,13 @@ CREATE TABLE title (
         -- to attach files
         attach      VARCHAR(255),
         -- to overwrite the timestamp
-        pubdate     TIMESTAMP,
+        pubdate     DATETIME NOT NULL,
 
         -- from the scanner
         f_path      TEXT NOT NULL,
         f_name      VARCHAR(255) NOT NULL,
         f_archive_rel_path VARCHAR(4) NOT NULL,
-        f_timestamp VARCHAR(255) NOT NULL,
+        f_timestamp DATETIME NOT NULL,
         f_full_path_name TEXT NOT NULL,
         f_suffix    VARCHAR(16) NOT NULL,
 
@@ -112,7 +112,7 @@ CREATE TABLE attachment (
        f_path      TEXT NOT NULL,
        f_name      VARCHAR(255) NOT NULL,
        f_archive_rel_path VARCHAR(4) NOT NULL,
-       f_timestamp VARCHAR(255) NOT NULL,
+       f_timestamp DATETIME NOT NULL,
        f_full_path_name TEXT NOT NULL,
        f_suffix    VARCHAR(16) NOT NULL,
        uri   VARCHAR(255) NOT NULL,

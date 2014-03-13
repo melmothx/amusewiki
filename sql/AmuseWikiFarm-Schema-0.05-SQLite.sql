@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Sat Mar  8 14:39:54 2014
+-- Created on Thu Mar 13 10:20:27 2014
 -- 
 
 BEGIN TRANSACTION;
@@ -47,7 +47,7 @@ CREATE TABLE attachment (
   f_path text NOT NULL,
   f_name varchar(255) NOT NULL,
   f_archive_rel_path varchar(4) NOT NULL,
-  f_timestamp varchar(255) NOT NULL,
+  f_timestamp datetime NOT NULL,
   f_full_path_name text NOT NULL,
   f_suffix varchar(16) NOT NULL,
   uri varchar(255) NOT NULL,
@@ -70,6 +70,7 @@ CREATE TABLE category (
   uri varchar(255) NOT NULL,
   type varchar(16) NOT NULL,
   sorting_pos integer NOT NULL DEFAULT 0,
+  text_count integer NOT NULL DEFAULT 0,
   site_id varchar(8) NOT NULL,
   FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -95,11 +96,11 @@ CREATE TABLE title (
   author text,
   uid varchar(255),
   attach varchar(255),
-  pubdate timestamp,
+  pubdate datetime NOT NULL,
   f_path text NOT NULL,
   f_name varchar(255) NOT NULL,
   f_archive_rel_path varchar(4) NOT NULL,
-  f_timestamp varchar(255) NOT NULL,
+  f_timestamp datetime NOT NULL,
   f_full_path_name text NOT NULL,
   f_suffix varchar(16) NOT NULL,
   uri varchar(255) NOT NULL,

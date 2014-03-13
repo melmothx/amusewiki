@@ -10,6 +10,9 @@ use Text::Amuse::Functions qw/muse_fast_scan_header/;
 use HTML::Entities qw/decode_entities encode_entities/;
 use Encode;
 use Digest::MD5 qw/md5_hex/;
+use DateTime;
+use Date::Parse qw/str2time/;
+
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
@@ -87,6 +90,18 @@ sub muse_file_info {
     }
     if (@categories) {
         $details->{parsed_categories} = \@categories;
+    }
+
+    # handle the pubdate field
+
+    if (my $timestring = delete $details->{pubdate}) {
+        if (my $epoch = str2time($timestring, 'UTC')) {
+            $details->{pubdate} = DateTime->from_epoch(epoch => $epoch);
+        }
+    }
+    # check if we have something
+    unless ($details->{pubdate}) {
+        $details->{pubdate} = $details->{f_timestamp}->clone;
     }
 
     # TODO fixed categories, to lookup in tables, space separated, it
@@ -457,7 +472,7 @@ sub _get_mtime {
   my $file = shift;
   my @stats = stat($file);
   my $mtime = $stats[9];
-  return $mtime;
+  return DateTime->from_epoch(epoch => $mtime);
 }
 
 sub _parse_topic_or_author {

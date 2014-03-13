@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 32;
+use Test::More tests => 35;
+use Date::Parse qw/str2time/;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -100,6 +101,11 @@ foreach my $k (qw/f_timestamp f_path f_archive_rel_path f_full_path_name/) {
     ok $del, "Found $k $del";
 }
 
+my $pubdate = delete $info->{pubdate};
+
+ok($pubdate, "Found publication date");
+is(str2time($pubdate->iso8601, 'UTC'), str2time('2014-01-01 00:00', 'UTC'));
+
 is_deeply $info, $expected, "Info returned correctly";
 
 
@@ -110,7 +116,7 @@ $info = muse_file_info($testfile);
 is $info->{title}, 'blabla', "title picked from list_title";
 is $info->{DELETED}, 'Missing title';
 ok $info->{uri};
-
+ok $info->{pubdate}->iso8601, "found timestamp: " . $info->{pubdate}->iso8601;
 # print Dumper($info);
 
 $testfile = catfile(t => a => at => 'another-test-2.muse');
