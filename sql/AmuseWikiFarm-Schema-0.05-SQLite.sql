@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Thu Mar 13 10:20:27 2014
+-- Created on Thu Mar 13 23:14:47 2014
 -- 
 
 BEGIN TRANSACTION;
@@ -97,6 +97,7 @@ CREATE TABLE title (
   uid varchar(255),
   attach varchar(255),
   pubdate datetime NOT NULL,
+  status varchar(16) NOT NULL DEFAULT 'unpublished',
   f_path text NOT NULL,
   f_name varchar(255) NOT NULL,
   f_archive_rel_path varchar(4) NOT NULL,

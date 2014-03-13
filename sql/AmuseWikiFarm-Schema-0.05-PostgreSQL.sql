@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Mar 13 10:20:28 2014
+-- Created on Thu Mar 13 23:14:47 2014
 -- 
 --
 -- Table: site.
@@ -86,6 +86,7 @@ CREATE TABLE "title" (
   "uid" character varying(255),
   "attach" character varying(255),
   "pubdate" timestamp NOT NULL,
+  "status" character varying(16) DEFAULT 'unpublished' NOT NULL,
   "f_path" text NOT NULL,
   "f_name" character varying(255) NOT NULL,
   "f_archive_rel_path" character varying(4) NOT NULL,

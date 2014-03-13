@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Mar 13 10:20:26 2014
+-- Created on Thu Mar 13 23:14:47 2014
 -- 
 SET foreign_key_checks=0;
 
@@ -94,6 +94,7 @@ CREATE TABLE `title` (
   `uid` varchar(255) NULL,
   `attach` varchar(255) NULL,
   `pubdate` datetime NOT NULL,
+  `status` varchar(16) NOT NULL DEFAULT 'unpublished',
   `f_path` text NOT NULL,
   `f_name` varchar(255) NOT NULL,
   `f_archive_rel_path` varchar(4) NOT NULL,
