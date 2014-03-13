@@ -68,6 +68,7 @@ CREATE TABLE title (
         attach      VARCHAR(255),
         -- to overwrite the timestamp
         pubdate     DATETIME NOT NULL,
+        status      VARCHAR(16) NOT NULL DEFAULT 'unpublished',
 
         -- from the scanner
         f_path      TEXT NOT NULL,

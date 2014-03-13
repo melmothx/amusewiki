@@ -107,6 +107,13 @@ __PACKAGE__->table("title");
   data_type: 'datetime'
   is_nullable: 0
 
+=head2 status
+
+  data_type: 'varchar'
+  default_value: 'unpublished'
+  is_nullable: 0
+  size: 16
+
 =head2 f_path
 
   data_type: 'text'
@@ -192,6 +199,13 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "pubdate",
   { data_type => "datetime", is_nullable => 0 },
+  "status",
+  {
+    data_type => "varchar",
+    default_value => "unpublished",
+    is_nullable => 0,
+    size => 16,
+  },
   "f_path",
   { data_type => "text", is_nullable => 0 },
   "f_name",
@@ -285,8 +299,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-13 09:53:14
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vRTlARTLspmURXai0BrYkA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-13 22:58:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Nyjdb1DrDLwwYZKutBdvUQ
 
 use File::Spec;
 use File::Slurp qw/read_file/;
@@ -384,7 +398,6 @@ sub is_deleted {
 
 sub is_deferred {
     my $self = shift;
-    warn join('>', $self->pubdate->epoch, DateTime->now->epoch);
     $self->pubdate->epoch > DateTime->now->epoch ? return 1 : return 0;
 }
 

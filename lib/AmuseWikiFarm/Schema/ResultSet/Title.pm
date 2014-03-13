@@ -9,14 +9,19 @@ __PACKAGE__->load_components('Helper::ResultSet::Random');
 
 =head2 published_texts
 
-List the published titles
+List the published titles (deleted set to empty string and publication
+date in the past.
 
 =cut
 
 sub published_texts {
     my $self = shift;
-    return $self->search({ deleted => '' }, { order_by => [qw/sorting_pos
-                                                              title/] });
+    return $self->search({
+                          status => 'published',
+                         },
+                         { order_by => [qw/sorting_pos
+                                           title/]
+                         });
 
 }
 

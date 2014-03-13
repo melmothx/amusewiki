@@ -47,9 +47,11 @@
 
 ** Feed
 
-*** Force the pubdate and pick the timestamp if there is not any
+*** DONE Force the pubdate and pick the timestamp if there is not any
+    CLOSED: [2014-03-13 gio 10:39]
 *** Manage the pubdate in the future (also check published_text)
-*** Update the database
+*** DONE Update the database
+    CLOSED: [2014-03-13 gio 10:39]
 *** Create the controller with the DB unrolling
 *** Add nginx rule to manage the legacy rss.xml with a rewrite to /feed
 

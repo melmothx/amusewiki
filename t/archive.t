@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 45;
+use Test::More tests => 49;
 use File::Slurp;
 use File::Temp;
 use File::Copy qw/copy/;
@@ -52,6 +52,7 @@ is_deeply $archive->fields, {
                              'notes' => 1,
                              'title' => 1,
                              'sorting_pos' => 1,
+                             'status' => 1,
                             }, "the archive knows the title fields";
 
 
@@ -93,7 +94,7 @@ ok(!$title->deleted, "Is not deleted") or diag $title->deleted;
 ok(!$title->is_deferred, "Is not deferred");
 ok(!$title->is_deleted, "Is not deleted");
 ok($title->is_published, "It's published");
-
+is($title->status, 'published');
 
 
 my @cats = $title->categories;
@@ -102,7 +103,7 @@ ok(@cats == 1);
 is($cats[0]->name, 'Supermarco');
 is($cats[0]->uri, 'supermarco');
 is($cats[0]->type, 'author');
-is($cats[0]->text_count, 1);
+is($cats[0]->text_count, 1, "supermarco has 1 text");
 
 my $dummy_content_updated =<<'MUSE';
 #title Dummy text
@@ -126,6 +127,7 @@ is($cats[0]->name, 'Superpippo');
 is($cats[0]->uri, 'superpippo');
 is($cats[0]->type, 'author');
 is($cats[0]->text_count, 1);
+is($title->status, 'published');
 
 # check the old author
 my $deleted_cat = $schema->resultset('Category')->single({uri => 'supermarco',
@@ -156,7 +158,7 @@ ok(@cats == 0);
 ok($title->is_deferred);
 ok(!$title->is_published);
 ok(!$title->is_deleted);
-
+is($title->status, 'deferred');
 
 foreach my $deletion (qw/superpippo supermarco/) {
     $deleted_cat = $schema->resultset('Category')->single({uri => $deletion,
@@ -179,6 +181,9 @@ MUSE
 write_file($dummy_file, $dummy_content_deleted);
 $archive->index_file($dummy_file);
 
+$title = $schema->resultset('Title')->single({uri => 'dummy-text',
+                                              site_id => $id });
+
 foreach my $deletion (qw/superpippo supermarco/) {
     $deleted_cat = $schema->resultset('Category')->single({uri => $deletion,
                                                            type => 'author',
@@ -187,6 +192,7 @@ foreach my $deletion (qw/superpippo supermarco/) {
     is($deleted_cat->text_count, 0);
 }
 
+is($title->status, 'deleted');
 unlink $dummy_file or die $!;
 
 

@@ -136,6 +136,17 @@ sub index_file {
         push @old_cats_ids, $old_cat->id;
     }
 
+    if ($title->is_deleted) {
+        $title->status('deleted');
+    }
+    elsif ($title->is_deferred) {
+        $title->status('deferred');
+    }
+    elsif ($title->is_published) {
+        $title->status('published');
+    }
+    $title->update if $title->is_changed;
+
     if ($title->is_published && $parsed_cats && @$parsed_cats) {
         # here we can die if there are duplicated uris
         $title->set_categories($parsed_cats);
