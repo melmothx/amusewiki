@@ -29,6 +29,8 @@ requires 'Catalyst::Plugin::I18N';
 requires 'DateTime';
 requires 'Date::Parse';
 requires 'DateTime::Format::SQLite';
+requires 'DateTime::Format::MySQL';
+requires 'DateTime::Format::Pg';
 
 
 requires 'Search::Xapian';
