@@ -58,7 +58,7 @@ xapian
 
 ** MCV
 
-Standar location for Catalyst app:
+Standard location for Catalyst app:
 
  - lib/AmuseWikiFarm/Model
  - lib/AmuseWikiFarm/View
