@@ -136,7 +136,7 @@ sub index_file {
         push @old_cats_ids, $old_cat->id;
     }
 
-    if (!$title->deleted && $parsed_cats && @$parsed_cats) {
+    if ($title->is_published && $parsed_cats && @$parsed_cats) {
         # here we can die if there are duplicated uris
         $title->set_categories($parsed_cats);
     }

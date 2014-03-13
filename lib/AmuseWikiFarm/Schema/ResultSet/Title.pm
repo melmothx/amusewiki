@@ -34,14 +34,13 @@ sub random_text {
 
 =head2 by_uri
 
-Find a text by uri
+Find a published text by uri
 
 =cut
 
 sub by_uri {
     my ($self, $uri) = @_;
-    return $self->single({ deleted => '',
-                           uri => $uri });
+    return $self->published_texts->single({ uri => $uri });
 }
 
 

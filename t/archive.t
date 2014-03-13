@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 33;
+use Test::More tests => 45;
 use File::Slurp;
 use File::Temp;
 use File::Copy qw/copy/;
@@ -81,6 +81,7 @@ my $dummy_content =<<'MUSE';
 bla bla
 MUSE
 
+diag "Creating $dummy_file";
 write_file($dummy_file, $dummy_content);
 $archive->index_file($dummy_file);
 
@@ -89,6 +90,11 @@ $title = $schema->resultset('Title')->single({uri => 'dummy-text',
 
 ok($title);
 ok(!$title->deleted, "Is not deleted") or diag $title->deleted;
+ok(!$title->is_deferred, "Is not deferred");
+ok(!$title->is_deleted, "Is not deleted");
+ok($title->is_published, "It's published");
+
+
 
 my @cats = $title->categories;
 
@@ -128,6 +134,39 @@ my $deleted_cat = $schema->resultset('Category')->single({uri => 'supermarco',
 
 ok($deleted_cat);
 is($deleted_cat->text_count, 0);
+
+my $dummy_content_deferred =<<'MUSE';
+#title Dummy text
+#author Superpippo
+#pubdate 2024-01-01
+
+bla bla
+
+MUSE
+
+write_file($dummy_file, $dummy_content_deferred);
+$archive->index_file($dummy_file);
+
+$title = $schema->resultset('Title')->single({uri => 'dummy-text',
+                                              site_id => $id });
+
+ok($title);
+@cats = $title->categories;
+ok(@cats == 0);
+ok($title->is_deferred);
+ok(!$title->is_published);
+ok(!$title->is_deleted);
+
+
+foreach my $deletion (qw/superpippo supermarco/) {
+    $deleted_cat = $schema->resultset('Category')->single({uri => $deletion,
+                                                           type => 'author',
+                                                           site_id => $id });
+    ok($deleted_cat);
+    is($deleted_cat->text_count, 0);
+}
+
+
 
 my $dummy_content_deleted =<<'MUSE';
 #title Dummy text

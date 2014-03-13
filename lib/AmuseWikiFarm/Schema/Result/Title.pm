@@ -290,6 +290,7 @@ __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 use File::Spec;
 use File::Slurp qw/read_file/;
+use DateTime;
 
 =head2 listing
 
@@ -346,12 +347,54 @@ sub category_listing {
     @cats ? return join($sep, @cats) : return '';
 }
 
+=head2 Published text
+
+Logic to determine if a file is published or not. These routine should
+be called on indexing, not on searching, because they depend on the
+current datetime.
+
+=head3 is_published
+
+B<Check> if it's not deleted and if it's not deferred. 
+
+=head3 is_deleted
+
+Return true if is deleted, false otherwise.
+
+=head3 is_deferrend
+
+Return true if the publish date is set in the future.
+
+=cut
+
+sub is_published {
+    my $self = shift;
+    if ($self->is_deleted || $self->is_deferred) {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
+sub is_deleted {
+    my $self = shift;
+    $self->deleted eq '' ? return 0 : return 1;
+}
+
+sub is_deferred {
+    my $self = shift;
+    warn join('>', $self->pubdate->epoch, DateTime->now->epoch);
+    $self->pubdate->epoch > DateTime->now->epoch ? return 1 : return 0;
+}
+
+
 =head2 File serving
 
 =head3 filepath_for_ext($ext)
 
 Given the extension (without the leading dot) as argument, return the
-filename. It's not guaranteed to exists, though.
+filename. It's not guaranteed to exist, though.
 
 The method concatenates C<f_path>, C<f_name>, a dot and the extension,
 using L<File::Spec>.

@@ -118,7 +118,7 @@ sub index_text {
 
     my $qterm = 'Q' . $title->uri;
 
-    if ($title->deleted) {
+    if (!$title->is_published) {
         print "Deleting " . $title->uri . " from Xapian db\n";
         eval {
             $database->delete_document_by_term($qterm);
