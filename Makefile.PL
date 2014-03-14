@@ -31,6 +31,7 @@ requires 'Date::Parse';
 requires 'DateTime::Format::SQLite';
 requires 'DateTime::Format::MySQL';
 requires 'DateTime::Format::Pg';
+requires 'XML::FeedPP';
 
 
 requires 'Search::Xapian';
