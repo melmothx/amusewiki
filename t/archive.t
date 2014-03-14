@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 49;
+use Test::More tests => 53;
 use File::Slurp;
 use File::Temp;
 use File::Copy qw/copy/;
@@ -129,6 +129,16 @@ is($cats[0]->type, 'author');
 is($cats[0]->text_count, 1);
 is($title->status, 'published');
 
+is $schema->resultset('Title')->latest(3)->first->uri, 'dummy-text';
+is $schema->resultset('Title')->latest(1)->first->uri, 'dummy-text';
+
+my @latest = $schema->resultset('Title')->latest(2);
+ok(@latest == 2);
+
+diag $latest[0]->pubdate;
+diag $latest[1]->pubdate;
+my $next_latest = $latest[1]->uri;
+
 # check the old author
 my $deleted_cat = $schema->resultset('Category')->single({uri => 'supermarco',
                                                           type => 'author',
@@ -168,7 +178,8 @@ foreach my $deletion (qw/superpippo supermarco/) {
     is($deleted_cat->text_count, 0);
 }
 
-
+diag "Now that it was deferred, the latest is $next_latest which was second";
+is $schema->resultset('Title')->latest(3)->first->uri, $next_latest;
 
 my $dummy_content_deleted =<<'MUSE';
 #title Dummy text

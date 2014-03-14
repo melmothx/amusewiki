@@ -48,6 +48,23 @@ sub by_uri {
     return $self->published_texts->single({ uri => $uri });
 }
 
+=head2 latest($number_of_items)
+
+Return the latest published text, ordered by publishing date. If no
+argument is provided, return 50 titles (at max).
+
+=cut
+
+sub latest {
+    my ($self, $items) = @_;
+    $items ||= 50;
+    die "Bad usage, a number is required" unless $items =~ m/^[1-9][0-9]*$/s;
+    return $self->published_texts->search({}, {
+                                               rows => $items,
+                                               order_by => { -desc => [qw/pubdate/] },
+                                              });
+}
+
 
 1;
 
