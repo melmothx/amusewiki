@@ -63,6 +63,20 @@ sub index :Path :Args(0) {
             }
         }
         $item->description('<div>' . join('<br>', @lines) . '</div>');
+
+        # if we provide epub, add it as attachment, so the poor
+        # bastards with phones can actually read something.
+        if ($site->epub) {
+            my $epub_local_file = $text->filepath_for_ext('epub');
+            if (-f $epub_local_file) {
+                my $epub_url = $c->uri_for_action('/library/text',
+                                                  $text->uri . '.epub');
+                $c->log->debug("EPUB path = $epub_local_file");
+                $item->set('enclosure@url' => $epub_url);
+                $item->set('enclosure@type' => 'application/epub+zip');
+                $item->set('enclosure@length' => -s $epub_local_file);
+            }
+        }
     }
 
     # render and set

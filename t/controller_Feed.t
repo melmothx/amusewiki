@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 9;
+use Test::More tests => 11;
 use utf8;
 
 use Catalyst::Test 'AmuseWikiFarm';
@@ -14,6 +14,7 @@ foreach my $host ({ host => 'test.amusewiki.org' },
 
     like $request->decoded_content, qr/\Q$host->{host}\E/;
     is $request->content_type, 'application/rss+xml';
+    like $request->decoded_content, qr/<enclosure.*epub/;
 }
 
 my $request = request('/feed', { host => 'blog.amusewiki.org' });
