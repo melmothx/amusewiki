@@ -55,7 +55,7 @@ sub index :Path :Args(0) {
         $item->guid(undef, isPermaLink => 1);
 
         my @lines;
-        foreach my $method (qw/author title subtitle notes source/) {
+        foreach my $method (qw/author title subtitle date notes source/) {
             my $string = $text->$method;
             if (length($string)) {
                 push @lines,
