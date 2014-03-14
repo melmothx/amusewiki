@@ -1,0 +1,5 @@
+#title Text in the future
+#pubdate 2024-01-01
+#author Marco P.
+
+This text will be published in 10 years
