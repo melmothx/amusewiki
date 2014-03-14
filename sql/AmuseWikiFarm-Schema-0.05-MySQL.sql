@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Mar 13 23:14:47 2014
+-- Created on Fri Mar 14 10:52:19 2014
 -- 
 SET foreign_key_checks=0;
 
@@ -86,11 +86,11 @@ CREATE TABLE `title` (
   `title` text NOT NULL DEFAULT '',
   `subtitle` text NOT NULL DEFAULT '',
   `lang` varchar(3) NOT NULL DEFAULT 'en',
-  `date` text NULL,
+  `date` text NOT NULL DEFAULT '',
   `notes` text NOT NULL DEFAULT '',
   `source` text NOT NULL DEFAULT '',
-  `list_title` text NULL,
-  `author` text NULL,
+  `list_title` text NOT NULL DEFAULT '',
+  `author` text NOT NULL DEFAULT '',
   `uid` varchar(255) NULL,
   `attach` varchar(255) NULL,
   `pubdate` datetime NOT NULL,

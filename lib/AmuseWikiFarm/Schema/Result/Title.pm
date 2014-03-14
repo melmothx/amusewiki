@@ -66,7 +66,8 @@ __PACKAGE__->table("title");
 =head2 date
 
   data_type: 'text'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
 
 =head2 notes
 
@@ -83,12 +84,14 @@ __PACKAGE__->table("title");
 =head2 list_title
 
   data_type: 'text'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
 
 =head2 author
 
   data_type: 'text'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
 
 =head2 uid
 
@@ -184,15 +187,15 @@ __PACKAGE__->add_columns(
   "lang",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "date",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "text", default_value => "", is_nullable => 0 },
   "notes",
   { data_type => "text", default_value => "", is_nullable => 0 },
   "source",
   { data_type => "text", default_value => "", is_nullable => 0 },
   "list_title",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "text", default_value => "", is_nullable => 0 },
   "author",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "text", default_value => "", is_nullable => 0 },
   "uid",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "attach",
@@ -299,8 +302,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-13 22:58:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Nyjdb1DrDLwwYZKutBdvUQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-14 10:51:31
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:11utASyvRjnkc7sBmznSMg
 
 use File::Spec;
 use File::Slurp qw/read_file/;

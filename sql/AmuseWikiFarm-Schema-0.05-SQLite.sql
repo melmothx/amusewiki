@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Thu Mar 13 23:14:47 2014
+-- Created on Fri Mar 14 10:52:19 2014
 -- 
 
 BEGIN TRANSACTION;
@@ -89,11 +89,11 @@ CREATE TABLE title (
   title text NOT NULL DEFAULT '',
   subtitle text NOT NULL DEFAULT '',
   lang varchar(3) NOT NULL DEFAULT 'en',
-  date text,
+  date text NOT NULL DEFAULT '',
   notes text NOT NULL DEFAULT '',
   source text NOT NULL DEFAULT '',
-  list_title text,
-  author text,
+  list_title text NOT NULL DEFAULT '',
+  author text NOT NULL DEFAULT '',
   uid varchar(255),
   attach varchar(255),
   pubdate datetime NOT NULL,

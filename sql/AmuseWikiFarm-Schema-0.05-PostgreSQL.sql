@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Mar 13 23:14:47 2014
+-- Created on Fri Mar 14 10:52:19 2014
 -- 
 --
 -- Table: site.
@@ -78,11 +78,11 @@ CREATE TABLE "title" (
   "title" text DEFAULT '' NOT NULL,
   "subtitle" text DEFAULT '' NOT NULL,
   "lang" character varying(3) DEFAULT 'en' NOT NULL,
-  "date" text,
+  "date" text DEFAULT '' NOT NULL,
   "notes" text DEFAULT '' NOT NULL,
   "source" text DEFAULT '' NOT NULL,
-  "list_title" text,
-  "author" text,
+  "list_title" text DEFAULT '' NOT NULL,
+  "author" text DEFAULT '' NOT NULL,
   "uid" character varying(255),
   "attach" character varying(255),
   "pubdate" timestamp NOT NULL,

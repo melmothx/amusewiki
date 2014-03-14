@@ -51,15 +51,15 @@ CREATE TABLE title (
         -- 3 letters, as per doc
         lang        VARCHAR(3) NOT NULL DEFAULT 'en',
 
-        date        TEXT,
+        date        TEXT NOT NULL DEFAULT '',
         notes       TEXT NOT NULL DEFAULT '',
         source      TEXT NOT NULL DEFAULT '',
 
         -- sorting only, as per doc
-        list_title  TEXT,
+        list_title  TEXT NOT NULL DEFAULT '',
 
         -- display only, as per doc
-        author      TEXT,
+        author      TEXT NOT NULL DEFAULT '',
 
         -- from tabula rasa
         -- to identify translations texts across libraries
