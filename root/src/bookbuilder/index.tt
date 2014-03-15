@@ -3,8 +3,8 @@
 
 <div id="bb-list-edit">
   <table id="bookbuilderlist">
-    [% textindex = 0 %]
-    [% FOREACH book IN c.session.bblist %]
+    [% textindex = 1 %]
+    [% FOREACH book IN bb.texts %]
     <tr>
       <td>
         <a href="[% c.uri_for('/library', book) %]">[% book %]</a>
@@ -12,18 +12,24 @@
       <td>
         <form action="[% c.uri_for('/bookbuilder/edit') %]" method="post">
           <input type="hidden" name="text"      value="[% book  %]" />
-          <input type="hidden" name="textindex" value="[% count %]" />
+          <input type="hidden" name="textindex" value="[% textindex %]" />
 	      <input type="submit" name="moveup" value="[% c.loc('Move up')   %]" />
 	      <input type="submit" name="movedw" value="[% c.loc('Move down') %]" />
 	      <input type="submit" name="delete" value="[% c.loc('Delete')    %]" />
         </form>
     </tr>
+    [% textindex = textindex + 1 %]
     [% END %]
   </table>
 </div>
 
-  <a href="[% HTML.escape(request.path) %]?deleteall=true">Clear the book list</a>
-</fieldset>
+[% IF bb.texts.size %]
+<div id="bb-clear-all">
+  <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
+    <input type="submit" name="clear" value="[% c.loc('Clear the book list') %]" />
+  </form>
+</div>
+[% END %]
 
 <form action="[% c.uri_for() %]" method="post" enctype="multipart/form-data">
 <fieldset>

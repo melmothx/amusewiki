@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 27;
+use Test::More tests => 35;
+use Data::Dumper;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -64,3 +65,28 @@ eval {
 
 ok $@, "Putting undef in textlist raises an exception";
 
+$bb->add_text('ciao');
+is_deeply $bb->textlist, [qw/my-good-text ciao/], "Text added correctly";
+
+$bb->delete_text(1);
+is_deeply $bb->textlist, [qw/ciao/], "Text removed correctly";
+
+$bb->move_down(1);
+is_deeply $bb->textlist, [qw/ciao/], "Nothing happens";
+
+$bb->move_up(1);
+is_deeply $bb->textlist, [qw/ciao/], "Nothing happens";
+
+$bb->add_text('appended');
+is_deeply $bb->textlist, [qw/ciao appended/], "Text added";
+
+$bb->move_down(1);
+is_deeply $bb->textlist, [qw/appended ciao/], "Text swapped";
+
+diag "Testing the moving up";
+$bb->move_up(2);
+
+is_deeply $bb->textlist, [qw/ciao appended/], "Text swapped";
+
+$bb->delete_all;
+is_deeply $bb->textlist, [], "Texts purged";

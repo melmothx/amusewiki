@@ -43,6 +43,79 @@ sub filename_is_valid {
     return muse_filename_is_valid($name);
 }
 
+sub add_text {
+    my ($self, $text) = @_;
+    if (muse_filename_is_valid($text)) {
+        my $list = $self->textlist;
+        push @$list, $text;
+    }
+}
+
+sub delete_text {
+    my ($self, $digit) = @_;
+    $self->_modify_list(delete => $digit);
+}
+
+sub move_up {
+    my ($self, $digit) = @_;
+    $self->_modify_list(up => $digit);
+}
+
+sub move_down {
+    my ($self, $digit) = @_;
+    $self->_modify_list(down => $digit);
+}
+
+sub _modify_list {
+    my ($self, $operation, $digit) = @_;
+    return unless ($digit and $digit =~ m/^[1-9][0-9]*$/);
+    my $index = $digit - 1;
+    return if $index < 0;
+    my $list = $self->textlist;
+    return unless exists $list->[$index];
+
+    # deletion
+    if ($operation eq 'delete') {
+        splice(@$list, $index, 1);
+        return;
+    }
+
+    # swapping
+    my $replace = $index;
+
+    if ($operation eq 'up') {
+        $replace--;
+        return if $replace < 0;
+    }
+    elsif ($operation eq 'down') {
+        $replace++;
+    }
+    else {
+        die "Wrong op $operation";
+    }
+    return unless exists $list->[$replace];
+
+    # and swap
+    my $tmp = $list->[$replace];
+    $list->[$replace] = $list->[$index];
+    $list->[$index] = $tmp;
+    # all done
+}
+
+sub delete_all {
+    shift->textlist([]);
+}
+
+=head2 texts
+
+Return a copy of the text list.
+
+=cut
+
+sub texts {
+    return [ @{ shift->textlist } ];
+}
+
 
 
 __PACKAGE__->meta->make_immutable;

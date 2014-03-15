@@ -21,13 +21,16 @@ Catalyst Controller.
 
 =cut
 
-use Data::Dumper;
-
 sub root :Chained('/') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
+
     # this is the root method. Initialize the session with the list;
     my $bblist = $c->session->{bblist} ||= [];
-    my $bb = $c->model('BookBuilder')->textlist($bblist);
+
+    # initialize the BookBuilder object
+    my $bb = $c->model('BookBuilder');
+    $bb->textlist($bblist);
+
     $c->stash(bb => $bb);
 }
 
@@ -40,27 +43,50 @@ sub status :Chained('root') :PathPart('status') :Args(0) {
 
 sub edit :Chained('root') :PathPart('edit') :Args(0) {
     my ($self, $c) = @_;
-    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
+    if (my $index = $c->request->params->{textindex}) {
+        $c->log->debug("Operating on $index");
+        if ($c->request->params->{moveup}) {
+            $c->stash->{bb}->move_up($index);
+        }
+        elsif ($c->request->params->{movedw}) {
+            $c->stash->{bb}->move_down($index);
+        }
+        elsif ($c->request->params->{delete}) {
+            $c->stash->{bb}->delete_text($index);
+        }
+    }
     $c->forward('save_session');
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
+}
+
+sub clear :Chained('root') :PathPart('clear') :Args(0) {
+    my ($self, $c) = @_;
+    if ($c->request->params->{clear}) {
+        $c->stash->{bb}->delete_all;
+        $c->forward('save_session');
+    }
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
 sub add :Chained('root') :PathPart('add') :Args(0) {
     my ( $self, $c ) = @_;
-    $c->log->debug(Dumper($c->request->params));
-    if (my $book = $c->request->params->{text}) {
-        push @{ $c->session->{bblist} }, $book;
-        $c->flash->{status_msg} = $c->loc('Text added');
-        $c->response->redirect($c->uri_for_action('/library/text' => $book));
+    if (my $text = $c->request->params->{text}) {
+        if ($c->stash->{bb}->add_text($text)) {
+            $c->forward('save_session');
+            $c->flash->{status_msg} = $c->loc('Text added');
+            $c->response->redirect($c->uri_for_action('/library/text' => $text));
+            return;
+        }
     }
-    else {
-        $c->response->redirect($c->uri_for('/'));
-    }
-    $c->forward('save_session');
+    # fall back, something is off
+    $c->flash->{error_msg} = $c->loc("Bad text name or no name provided");
+    $c->response->redirect($c->uri_for('/'));
 }
 
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->log->debug('Saving books in the session');
+    $c->session->{bblist} = $c->stash->{bb}->texts;
 }
 
 =encoding utf8
