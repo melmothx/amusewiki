@@ -42,7 +42,7 @@ use Catalyst
   'Static::Simple',
   '-Log=warn,fatal,error',
   'Session',
-  'Session::Store::FastMmap',
+  'Session::Store::File',
   'Session::State::Cookie';
 
 
