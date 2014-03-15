@@ -11,11 +11,11 @@ use DateTime;
 
 =head2 site
 
-The Schema::Result::Site dbic object.
+The schema object.
 
 =cut
 
-has site => (
+has dbic => (
              isa => 'Object',
              is => 'ro',
              required => 1,
