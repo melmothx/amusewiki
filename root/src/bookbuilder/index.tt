@@ -67,6 +67,7 @@
       </option>
       [% END %]
     </select>
+    pt
   </fieldset>
   <fieldset>
     [% c.loc('Choose a paper format') %] <br />
@@ -80,6 +81,30 @@
       [% END %]
     </select>
   </fieldset>
+
+  <fieldset>
+    <label>
+      <input type="checkbox" name="twoside" value="1"
+	         [% IF c.request.params.twoside %]checked="checked"[% END %] />
+      [% c.loc('Two side layout') %]
+    </label>
+  </fieldset>
+
+  <fieldset>
+    [% c.loc('Binding correction') %]:
+    <select name="bcor">
+      [% bcor_counter = 0 %]
+      [% WHILE 30 > bcor_counter %]
+      [% bcor_counter = bcor_counter + 1 %]
+      <option value="[% bcor_counter %]"
+              [%- IF c.request.params.bcor == bcor_counter -%]
+              selected="selected"[% END %]>[% bcor_counter %]</option>
+      [% END %]
+    </select>
+    mm.
+  </fieldset>
+
+
   <fieldset>
     <label>
       <input type="checkbox" name="imposed" value="1"
@@ -113,7 +138,8 @@
     <label>
       <input type="checkbox" name="signatures" value="1"
              [% IF c.request.params.signatures %]checked="checked"[% END %] />
-      [% c.loc('When imposing, use optimized signatures with 40-80 pages each.') %]
+      [% c.loc('When imposing, use optimized signatures with 40-80 pages each') %]
+      ([% c.loc('if applicable') %]).
     </label>
   </fieldset>
 
