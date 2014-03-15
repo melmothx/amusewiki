@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Fri Mar 14 10:52:19 2014
+-- Created on Sat Mar 15 23:42:12 2014
 -- 
 SET foreign_key_checks=0;
 
@@ -74,6 +74,26 @@ CREATE TABLE `category` (
   PRIMARY KEY (`id`),
   UNIQUE `uri_site_id_type_unique` (`uri`, `site_id`, `type`),
   CONSTRAINT `category_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `job`;
+
+--
+-- Table: `job`
+--
+CREATE TABLE `job` (
+  `id` integer NOT NULL auto_increment,
+  `site_id` varchar(8) NULL,
+  `task` varchar(32) NULL,
+  `payload` text NULL,
+  `status` varchar(32) NULL,
+  `created` datetime NOT NULL,
+  `completed` datetime NOT NULL,
+  `priority` integer NULL,
+  `errors` text NULL,
+  INDEX `job_idx_site_id` (`site_id`),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `job_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `title`;

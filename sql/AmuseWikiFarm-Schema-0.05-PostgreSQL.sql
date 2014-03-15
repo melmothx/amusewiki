@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Fri Mar 14 10:52:19 2014
+-- Created on Sat Mar 15 23:42:12 2014
 -- 
 --
 -- Table: site.
@@ -70,6 +70,24 @@ CREATE TABLE "category" (
 CREATE INDEX "category_idx_site_id" on "category" ("site_id");
 
 --
+-- Table: job.
+--
+DROP TABLE "job" CASCADE;
+CREATE TABLE "job" (
+  "id" serial NOT NULL,
+  "site_id" character varying(8),
+  "task" character varying(32),
+  "payload" text,
+  "status" character varying(32),
+  "created" timestamp NOT NULL,
+  "completed" timestamp NOT NULL,
+  "priority" integer,
+  "errors" text,
+  PRIMARY KEY ("id")
+);
+CREATE INDEX "job_idx_site_id" on "job" ("site_id");
+
+--
 -- Table: title.
 --
 DROP TABLE "title" CASCADE;
@@ -133,6 +151,9 @@ ALTER TABLE "attachment" ADD CONSTRAINT "attachment_fk_site_id" FOREIGN KEY ("si
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "category" ADD CONSTRAINT "category_fk_site_id" FOREIGN KEY ("site_id")
+  REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE "job" ADD CONSTRAINT "job_fk_site_id" FOREIGN KEY ("site_id")
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "title" ADD CONSTRAINT "title_fk_site_id" FOREIGN KEY ("site_id")

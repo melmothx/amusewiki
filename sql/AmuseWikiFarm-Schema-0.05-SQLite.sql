@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Fri Mar 14 10:52:19 2014
+-- Created on Sat Mar 15 23:42:12 2014
 -- 
 
 BEGIN TRANSACTION;
@@ -78,6 +78,26 @@ CREATE TABLE category (
 CREATE INDEX category_idx_site_id ON category (site_id);
 
 CREATE UNIQUE INDEX uri_site_id_type_unique ON category (uri, site_id, type);
+
+--
+-- Table: job
+--
+DROP TABLE job;
+
+CREATE TABLE job (
+  id INTEGER PRIMARY KEY NOT NULL,
+  site_id varchar(8),
+  task varchar(32),
+  payload text,
+  status varchar(32),
+  created datetime NOT NULL,
+  completed datetime NOT NULL,
+  priority integer,
+  errors text,
+  FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE INDEX job_idx_site_id ON job (site_id);
 
 --
 -- Table: title
