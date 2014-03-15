@@ -1,6 +1,13 @@
 [%# -*- mode: html -*- %]
 [% USE HTML %]
 
+[% coming_from = c.flash.referrer %]
+[% IF coming_from %]
+<div>
+  <a href="[% coming_from %]">[% c.loc('Back to the text') %]</a>
+</div>
+[% END %]
+
 <div id="bb-list-edit">
   [% IF bb.texts.size %]
   <table id="bookbuilderlist">

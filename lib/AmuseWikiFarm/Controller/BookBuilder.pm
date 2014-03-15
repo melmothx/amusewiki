@@ -115,7 +115,7 @@ sub add :Chained('root') :PathPart('add') :Args(0) {
             $c->forward('save_session');
             $c->flash->{status_msg} = $c->loc('Text added');
             my $referrer = $c->uri_for_action('/library/text' => $text);
-            $c->stash(referrer => $referrer);
+            $c->flash(referrer => $referrer);
         }
         else {
             $c->flash->{error_msg} = $c->loc("Couldn't add the text");
