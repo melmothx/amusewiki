@@ -1,10 +1,10 @@
 * Frontend
 
-** /library display
+** DONE /library display
+   CLOSED: [2014-03-14 ven 17:08]
 
 *** DONE DB script to bootstrap the archive
     CLOSED: [2014-01-19 dom 20:44]
-
 
 *** DONE /library/* routing
     CLOSED: [2014-01-28 mar 22:35]
@@ -16,10 +16,13 @@
 *** DONE document directory structure
     CLOSED: [2014-02-08 sab 08:18]
 
+
 ** DONE template migration for the existing libraries
    CLOSED: [2014-03-08 sab 14:45]
+
 ** DONE Xapian search plugging
    CLOSED: [2014-03-10 lun 18:29]
+
 ** editing
 
 *** /edit
@@ -45,15 +48,19 @@
 *** anon for editing
 
 
-** Feed
+** DONE Feed
+   CLOSED: [2014-03-14 ven 17:08]
 
 *** DONE Force the pubdate and pick the timestamp if there is not any
     CLOSED: [2014-03-13 gio 10:39]
-*** Manage the pubdate in the future (also check published_text)
+*** DONE Manage the pubdate in the future (also check published_text)
+    CLOSED: [2014-03-14 ven 17:08]
 *** DONE Update the database
     CLOSED: [2014-03-13 gio 10:39]
-*** Create the controller with the DB unrolling
-*** Add nginx rule to manage the legacy rss.xml with a rewrite to /feed
+*** DONE Create the controller with the DB unrolling
+    CLOSED: [2014-03-14 ven 11:33]
+*** DONE Add nginx rule to manage the legacy rss.xml with a rewrite to /feed
+    CLOSED: [2014-03-14 ven 11:40]
 
 * Backend
 ** Queue using the db.
