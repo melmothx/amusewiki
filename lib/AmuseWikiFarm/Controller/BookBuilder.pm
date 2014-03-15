@@ -36,22 +36,41 @@ sub root :Chained('/') :PathPart('bookbuilder') :CaptureArgs(0) {
 
 sub index :Chained('root') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my %params = %{ $c->request->params };
-    if ($params{build} and
-        $params{collectionname} =~ m/\w/ and
-        @{$c->stash->{bb}->texts}) {
-        $c->log->debug("Builing now");
 
-        if (my $job = $c->stash->{bb}->enqueu($c->stash->{site}, \%params)) {
+    my $bb = $c->stash->{bb};
+    my @texts = @{ $bb->texts };
+
+    my %params = %{ $c->request->params };
+
+    if (@texts and $params{build} and $params{collectionname} =~ m/\w/) {
+        $c->log->debug("Putting the job in the queue now");
+
+        my $bb = $c->stash->{bb};
+        my $site_id = $c->stash->{site}->id;
+
+        # prepare the job hash
+        my $args = {
+                    text_list  => [ @texts ],
+                    title      => $params{collectionname},
+                    template_options => $bb->validate_options({ %params }),
+                    imposer_options  => $bb->validate_imposer_options({ %params }),
+                   };
+
+        my $queue = $c->model('Queue');
+
+        use Data::Dumper;
+        $c->log->debug(Dumper($args));
+
+        if (my $job_id = $queue->bookbuilder_add($site_id, $args)) {
             # flush the toilet
+            $bb->delete_all;
             $c->forward('save_session');
 
             # and redirect to the status page
-            $c->res->redirect($c->uri_for_action('/bookbuilder/status', $job));
+            $c->res->redirect($c->uri_for_action('/bookbuilder/status', $job_id));
         }
         # if we get this, the user cheated and doesn't deserve an explanation
         else {
-
             $c->flash->{error_msg} = $c->loc("Couldn't build that");
         }
     }

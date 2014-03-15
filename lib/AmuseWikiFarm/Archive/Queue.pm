@@ -1,4 +1,4 @@
-package AmuseWikiFarm::Utils::Queue;
+package AmuseWikiFarm::Archive::Queue;
 use utf8;
 use strict;
 use warnings;
@@ -21,17 +21,9 @@ has dbic => (
              required => 1,
             );
 
-sub add {
+sub bookbuilder_add {
     return;
 }
-
-
-
-
-
-
-
-
 
 __PACKAGE__->meta->make_immutable;
 
