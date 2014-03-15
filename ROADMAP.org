@@ -73,7 +73,44 @@
 
 ** TODO bookbuilder Text::Amuse + PDF::Imposition
 
-*** Provide more formats and fonts: XeLaTeX + js notifications
+*** DONE Add a form to each text to add the text to the collection
+    CLOSED: [2014-03-14 ven 22:27]
+*** DONE Store the text list in the session
+    CLOSED: [2014-03-14 ven 22:49]
+*** TODO Model for the bookbuilder
+*** TODO Controller for the bookbuilder
+*** TODO Add the page to manage the options
+*** On submit, clear the session and write the job to the queue
+*** Jobs table with at least these columns:
+
+ - id (job id)
+ - site id
+ - status (pending, compiling, completed)
+ - created
+ - completed
+ - text_list (as json)
+ - compiler_options (for the template, as json)
+ - imposer_options  (for the final imposition, if any, may be empty)
+ - epub_options (not implemented yet)
+
+*** Job daemon
+
+It should run syncronously with a nice -n 19 in an infinite loop with
+a sleep of 10 seconds or so. I guess a query every 10 seconds
+shouldn't be too hard to manage.
+
+*** Add a status page where the user can wait for the job, using the queue id.
+
+*** Don't rewrite the tex template
+
+Instead scan the already produced tex file and retrieve the body, do
+not reparse the muse. We already have the zip with all the needed
+files inside. The epubs have inside the splat html, so unclear what's
+better.
+
+*** When is ready offer the link and stop the queue polling.
+*** Delete the file after a couple of hours, we are short on resources.
+
 * Needed features
 ** simple to use
 ** simple to install

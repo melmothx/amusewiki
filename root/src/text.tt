@@ -1,8 +1,15 @@
 [% # -*- mode: html -*- %]
 
+<div id="bookbuilderform">
+  <form name="add-text-to-builder" method="post"
+        action="[% c.uri_for('/bookbuilder/add') %]">
+    <input type="hidden" name="text" value="[% text.uri %]" />
+    <input type="submit" value="[% c.loc('Add this text to the bookbuilder') %]">
+  </form>
+</div>
+
 <div id="page">
   <div id="preamble">
-
     <p id="texttitle">
       <strong>[% c.loc('Title') %]:</strong>
       [% text.title %]

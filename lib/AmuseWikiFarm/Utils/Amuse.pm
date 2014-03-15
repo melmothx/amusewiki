@@ -17,7 +17,7 @@ use Date::Parse qw/str2time/;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
                     muse_naming_algo
-                   /;
+                    muse_filename_is_valid/;
 
 =head2 muse_file_info($file, $site_id)
 
@@ -136,7 +136,7 @@ sub _parse_file_path {
         return;
     }
 
-    unless ($name =~ m/^[0-9a-z]+[0-9a-z-]*[0-9a-z]+$/) {
+    unless (muse_filename_is_valid($name)) {
         warn "$file has not a sane name!";
         return;
     }
@@ -396,7 +396,7 @@ Or undef if the filename is dangerous.
 sub muse_get_full_path {
   my $filename = shift;
   # path required, so don't be so sure about names.
-  return undef unless $filename =~ m/^[a-z0-9][a-z0-9\-]*[a-z0-9]$/s;
+  return undef unless muse_filename_is_valid($filename);
   my @chars = split //, $filename;
   my @path;
   # given the above regexp, the first character is guaranteed to be a
@@ -519,5 +519,27 @@ sub _parse_topic_or_author {
     @out ? return @out : return;
 }
 
+=head2 muse_filename_valid($uri)
+
+Return true (the uri itself) if the passed uri is valid. Valid names
+are lowercased and digits, with optionals hyphens inside the name, and
+with a maximum length of 95 characters.
+
+Consecutive dashes are not checked, but at least guarantees the
+filename is safe.
+
+
+=cut
+
+sub muse_filename_is_valid {
+    my $file = shift;
+    return unless defined($file);
+    if ($file =~ m/^[a-z0-9][a-z0-9\-]+[a-z0-9]$/s and length($file) <= 95) {
+        return $file;
+    }
+    else {
+        return;
+    }
+}
 
 1;

@@ -30,8 +30,12 @@
           <a href="[% c.uri_for('/special/about') %]">About</a>
         </li>
         <li>
-
 	      <a href="[% c.uri_for('/random') %]">[% c.loc('Random text') %]</a>
+        </li>
+        <li>
+          <a href="[% c.uri_for('/bookbuilder') %]">
+            [% c.loc('Book builder') %]
+          </a>
         </li>
       </ul>
     </div>
@@ -90,6 +94,8 @@
       </div>
     </div>
     <div id="container">
+      <div id="status_message">[% c.flash.status_msg %]</div>
+      <div id="error_message">[% c.flash.error_msg %]</div>
 
       <div id="widepage">
         [% content %]
