@@ -77,10 +77,18 @@
     CLOSED: [2014-03-14 ven 22:27]
 *** DONE Store the text list in the session
     CLOSED: [2014-03-14 ven 22:49]
-*** TODO Model for the bookbuilder
-*** TODO Controller for the bookbuilder
-*** TODO Add the page to manage the options
-*** On submit, clear the session and write the job to the queue
+*** DONE Model for the bookbuilder
+    CLOSED: [2014-03-15 sab 23:18]
+
+It should do the validation too, to avoid passing garbage or malicious
+stuff to the template.
+
+*** DONE Controller for the bookbuilder
+    CLOSED: [2014-03-15 sab 23:18]
+*** DONE Add the page to manage the options
+    CLOSED: [2014-03-15 sab 23:18]
+*** DONE On submit, clear the session and write the job to the queue
+    CLOSED: [2014-03-15 sab 23:18]
 *** Jobs table with at least these columns:
 
  - id (job id)
