@@ -116,6 +116,116 @@ sub texts {
     return [ @{ shift->textlist } ];
 }
 
+=head2 available_tex_options
+
+Return an hashref with the available options and the validation sub,
+which will return the correct value to pass to the template.
+
+=head2 paper_sizes
+
+Return an hash with available paper sizes. This needs coordination
+with the template.
+
+=head2 page_divs
+
+Return an 
+
+=cut
+
+sub paper_sizes {
+    my $self = shift;
+    my %paper = (
+                 a4 => 'A4 paper',
+                 a5 => 'A5 paper',
+                 a6 => 'A6 paper (also suitable for e-readers)',
+                 letter => 'Letter paper',
+                 'half-lt' => 'Half Letter paper',
+                 'quarter-lt' => 'Quarter Letter paper',
+                );
+    return \%paper;
+}
+
+sub page_divs {
+    my %divs =  map { $_ => $_ } (9..15);
+    return \%divs;
+}
+
+sub font_sizes {
+    my %sizes= map { $_ => $_ } (10..12);
+    return \%sizes;
+}
+
+sub avail_fonts {
+    my %fonts = (
+                 charis    => 'Charis SIL',
+                 libertine => 'Linux Libertine O',
+                 cmu       => 'CMU Serif',
+                 paratype  => 'PT Serif',
+                );
+    return \%fonts;
+}
+
+sub available_tex_options {
+    my $self = shift;
+    my %paper =     %{ $self->paper_sizes };
+    my %divs  =     %{ $self->page_divs   };
+    my %fontsizes = %{ $self->font_sizes  };
+    my %fonts     = %{ $self->avail_fonts };   
+    my $options = {
+                   twoside => sub {
+                       my $i = shift;
+                       $i ? return 1 : return 0;
+                   },
+                   papersize => sub {
+                       my $i = shift;
+                       return unless defined $i;
+                       $i = lc($i);
+                       $paper{$i} ? return $i : return;
+                   },
+                   division => sub {
+                       my $i = shift;
+                       return unless defined $i;
+                       $divs{$i} ? return $i : return;
+                   },
+                   fontsize => sub {
+                       my $i = shift;
+                       return unless defined $i;
+                       $fontsizes{$i} ? return $i : return;
+                   },
+                   bcor => sub {
+                       my $i = shift;
+                       if ($i and $i =~ m/^([0-9]+)$/s) {
+                           return $1 . 'mm';
+                       }
+                       else {
+                           return '0mm';
+                       }
+                   },
+                   mainfont => sub {
+                       my $i = shift;
+                       return unless defined $i;
+                       $fonts{$i} ? return $fonts{$i} : return;
+                   },
+                  };
+    return $options;
+};
+
+=head2 validate_options(\%params)
+
+Validate the parameter passed and return an hashref with the template options.
+
+=cut
+
+sub validate_options {
+    my ($self, $params) = @_;
+    my $options = $self->available_tex_options;
+    my %safe;
+    foreach my $k (keys %$options) {
+        $safe{$k} = $options->{$k}->($params->{$k});
+    }
+    return \%safe;
+}
+
 
 
 __PACKAGE__->meta->make_immutable;

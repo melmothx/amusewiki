@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 35;
+use Test::More tests => 52;
 use Data::Dumper;
 
 my $builder = Test::More->builder;
@@ -90,3 +90,50 @@ is_deeply $bb->textlist, [qw/ciao appended/], "Text swapped";
 
 $bb->delete_all;
 is_deeply $bb->textlist, [], "Texts purged";
+
+my $options = $bb->available_tex_options;
+
+# $Data::Dumper::Deparse = 1;
+# print Dumper($options);
+
+is $options->{twoside}->('lkasdf'), 1;
+is $options->{twoside}->(undef), 0;
+is $options->{papersize}->('lasdf'), undef;
+is $options->{papersize}->('a4'), 'a4';
+is $options->{division}->('4'), undef;
+is $options->{division}->('12'), 12;
+is $options->{fontsize}->('9'), undef;
+is $options->{fontsize}->('10'), 10;
+is $options->{fontsize}->('10.5'), undef;
+is $options->{bcor}->(''), '0mm';
+is $options->{bcor}->('blabla'), '0mm';
+is $options->{bcor}->('10'), '10mm';
+is $options->{mainfont}->('charis'), 'Charis SIL';
+is $options->{mainfont}->('libertine'), 'Linux Libertine O';
+is $options->{mainfont}->('\hello'), undef;
+
+my %params = (
+              twoside => '\hello',
+              garbage => 'lkjasdfl',
+              schifo  => '\\\\\\\\bla',
+              papersize => 'A4',
+              fontsize => 10,
+              bcor => 20,
+              mainfont => 'cmu',
+              division => '8',
+             );
+
+my %copy = %params;
+
+my $validated = $bb->validate_options(\%params);
+
+is_deeply(\%params, \%copy);
+
+is_deeply $validated, {
+                       twoside => 1,
+                       papersize => 'a4',
+                       division => undef,
+                       fontsize => 10,
+                       bcor => '20mm',
+                       mainfont => 'CMU Serif',
+                      }, "Validation works";
