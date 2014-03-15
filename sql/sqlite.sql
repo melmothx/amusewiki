@@ -41,6 +41,19 @@ CREATE TABLE site (
        twoside INTEGER NOT NULL DEFAULT 0
 );
 
+CREATE TABLE job (
+       id INTEGER PRIMARY KEY,
+       site_id VARCHAR(8) REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       task      VARCHAR(32),
+       payload   TEXT, -- the JSON stuff
+       status    VARCHAR(32),
+       created   DATETIME NOT NULL,
+       completed DATETIME NOT NULL,
+       priority  INTEGER,
+       errors    TEXT
+);
+
 CREATE TABLE title (
         id          INTEGER PRIMARY KEY,
 

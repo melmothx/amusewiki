@@ -290,6 +290,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 jobs
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Job>
+
+=cut
+
+__PACKAGE__->has_many(
+  "jobs",
+  "AmuseWikiFarm::Schema::Result::Job",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 titles
 
 Type: has_many
@@ -321,8 +336,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-08 14:31:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:R1eGCxM49TKDMvpDMwloaw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-15 23:39:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2CJv4dLoyf4SImDbqLAY+w
 
 
 =head2 compile_options
