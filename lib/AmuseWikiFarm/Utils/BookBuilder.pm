@@ -139,10 +139,14 @@ sub paper_sizes {
                  a5 => 'A5 paper',
                  a6 => 'A6 paper (also suitable for e-readers)',
                  letter => 'Letter paper',
-                 'half-lt' => 'Half Letter paper',
-                 'quarter-lt' => 'Quarter Letter paper',
+                 '5.5in:8.5in' => 'Half Letter paper',
+                 '4.25in:5.5in' => 'Quarter Letter paper',
                 );
     return \%paper;
+}
+
+sub paper_sizes_sorted {
+    return [qw/a4 a5 a6 letter 5.5in:8.5in 4.25in:5.5in/]
 }
 
 sub page_divs {
@@ -163,6 +167,20 @@ sub avail_fonts {
                  paratype  => 'PT Serif',
                 );
     return \%fonts;
+}
+
+sub avail_fonts_sorted {
+    return [qw/libertine charis cmu paratype/];
+}
+
+sub schemas {
+    my $self = shift;
+    my %schemas = map { $_ => $_ } @{ $self->schemas_sorted };
+    return \%schemas;
+}
+
+sub schemas_sorted {
+    return [qw/2up 2down 2x4x2 2side/]
 }
 
 sub available_tex_options {
@@ -212,7 +230,11 @@ sub available_tex_options {
 
 =head2 validate_options(\%params)
 
-Validate the parameter passed and return an hashref with the template options.
+Validate the parameters passed and return an hashref with the template options.
+
+=head2 validate_imposer_options(\%params);
+
+Validate the parameters passed and return an hashref with the imposer options.
 
 =cut
 
@@ -226,7 +248,25 @@ sub validate_options {
     return \%safe;
 }
 
+sub validate_imposer_options {
+    my ($self, $params) = @_;
+    my %opts;
+    return unless ($params->{imposed} && $params->{schema});
 
+    if ($self->schemas->{ $params->{schema} }) {
+        $opts{schema} = $params->{schema};
+    }
+    else {
+        return;
+    }
+    if ($params->{signatures}) {
+        $opts{signature} = '40-80';
+    }
+    if ($params->{cover}) {
+        $opts{cover} = 1;
+    }
+    return \%opts;
+}
 
 __PACKAGE__->meta->make_immutable;
 

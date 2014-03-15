@@ -1,8 +1,10 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 52;
+use Test::More tests => 58;
 use Data::Dumper;
+# use Test::Memory::Cycle;
+
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -121,6 +123,10 @@ my %params = (
               bcor => 20,
               mainfont => 'cmu',
               division => '8',
+              schema => '2up',
+              imposed => 1,
+              cover => '',
+              signatures => 1,
              );
 
 my %copy = %params;
@@ -137,3 +143,38 @@ is_deeply $validated, {
                        bcor => '20mm',
                        mainfont => 'CMU Serif',
                       }, "Validation works";
+
+
+
+my $c_validated = $bb->validate_imposer_options(\%params);
+
+is_deeply($c_validated, {
+                         schema => '2up',
+                         signature => '40-80',
+                        }, "Got the options");
+
+$params{schema} = 'blablabla';
+
+is_deeply($c_validated, {
+                         schema => '2up',
+                         signature => '40-80',
+                        }, "Got the options");
+
+is $bb->validate_imposer_options(\%params), undef;
+$params{schema} = '2down';
+
+is_deeply($bb->validate_imposer_options(\%params), {
+                                                    schema => '2down',
+                                                    signature => '40-80',
+                                                   }, "Got the options");
+
+$params{imposed} = 0;
+is $bb->validate_imposer_options(\%params), undef;
+
+$params{imposed} = 1;
+$params{signatures} = 0;
+
+is_deeply $bb->validate_imposer_options(\%params), { schema => '2down' };
+
+
+# memory_cycle_ok($bb);
