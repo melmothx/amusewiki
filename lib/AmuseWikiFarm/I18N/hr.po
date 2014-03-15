@@ -16,94 +16,210 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: root/src/text.tt:82 root/src/text.tt:83
+#: root/src/text.tt:89 root/src/text.tt:90
 msgid "A4 imposed PDF"
 msgstr ""
 
-#: root/src/layout.tt:64 root/src/text.tt:20
+#: root/src/text.tt:7
+msgid "Add this text to the bookbuilder"
+msgstr ""
+
+#: root/src/layout.tt:75 root/src/text.tt:27
 msgid "Authors"
 msgstr ""
 
-#: root/src/text.tt:29
+#: root/src/bookbuilder/index.tt:7
+msgid "Back to the text"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:101
+msgid "Binding correction"
+msgstr ""
+
+#: root/src/layout.tt:37
+msgid "Book builder"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:155
+msgid "Build it"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:80
+msgid "Choose a paper format"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:35
+msgid "Clear the book list"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:121
+msgid "Couldn't add the text"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:74
+msgid "Couldn't build that"
+msgstr ""
+
+#: root/src/text.tt:36
 msgid "Date"
 msgstr ""
 
-#: root/src/text.tt:65
+#: root/src/bookbuilder/index.tt:26
+msgid "Delete"
+msgstr ""
+
+#: root/src/search/index.tt:6
+msgid "Displaying"
+msgstr ""
+
+#: root/src/text.tt:72
 msgid "Downloads"
 msgstr ""
 
-#: root/src/text.tt:100 root/src/text.tt:101
+#: root/src/text.tt:107 root/src/text.tt:108
 msgid "EPUB (for mobile devices)"
 msgstr ""
 
-#: root/src/layout.tt:44
+#: root/src/layout.tt:50
 msgid "Full text search"
 msgstr ""
 
-#: root/src/text.tt:91 root/src/text.tt:92
+#: root/src/bookbuilder/index.tt:119
+msgid "I want an imposed (ready to print) PDF"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:127
+msgid "I want the cover"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:132
+msgid "If you asked for imposition, select an imposition schema"
+msgstr ""
+
+#: root/src/text.tt:98 root/src/text.tt:99
 msgid "Letter imposed PDF"
 msgstr ""
 
-#: root/src/text.tt:52
+#: root/src/bookbuilder/index.tt:25
+msgid "Move down"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:24
+msgid "Move up"
+msgstr ""
+
+#: root/src/search/index.tt:25
+msgid "Next"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:125
+msgid "No text provided!"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:42
+msgid "No text was added yet"
+msgstr ""
+
+#: root/src/text.tt:59
 msgid "Notes"
 msgstr ""
 
-#: root/src/layout.tt:94
+#: root/src/bookbuilder/index.tt:49
+msgid "Please give a name to the collection"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:55
+msgid "Please select the desired fonts"
+msgstr ""
+
+#: root/src/search/index.tt:20
+msgid "Previous"
+msgstr ""
+
+#: root/src/layout.tt:107
 msgid "RSS"
 msgstr ""
 
-#: root/src/layout.tt:32
+#: root/src/layout.tt:33
 msgid "Random text"
 msgstr ""
 
-#: root/src/text.tt:45
+#: root/src/search/index.tt:3
+msgid "Results found"
+msgstr ""
+
+#: root/src/text.tt:52
 msgid "Source"
 msgstr ""
 
-#: root/src/text.tt:109 root/src/text.tt:110
+#: root/src/text.tt:141 root/src/text.tt:142
+msgid "Source files with attachments"
+msgstr ""
+
+#: root/src/text.tt:116 root/src/text.tt:117
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
-#: root/src/text.tt:13
+#: root/src/text.tt:20
 msgid "Subtitle"
 msgstr ""
 
-#: root/src/text.tt:7
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:116
+msgid "Text added"
+msgstr ""
+
+#: root/src/text.tt:14
 msgid "Title"
 msgstr ""
 
-#: root/src/layout.tt:71
+#: root/src/layout.tt:82
 msgid "Titles"
 msgstr ""
 
-#: root/src/layout.tt:78 root/src/text.tt:36
+#: root/src/layout.tt:89 root/src/text.tt:43
 msgid "Topics"
 msgstr ""
 
-#: root/src/text.tt:118 root/src/text.tt:119
+#: root/src/bookbuilder/index.tt:96
+msgid "Two side layout"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:148
+msgid "When imposing, use optimized signatures with 40-80 pages each"
+msgstr ""
+
+#: root/src/text.tt:125 root/src/text.tt:126
 msgid "XeLaTeX source"
 msgstr ""
 
-#: root/src/text.tt:73 root/src/text.tt:74
+#: root/src/bookbuilder/index.tt:149
+msgid "if applicable"
+msgstr ""
+
+#: root/src/text.tt:80 root/src/text.tt:81
 msgid "plain PDF"
 msgstr ""
 
-#: root/src/text.tt:126 root/src/text.tt:127
+#: root/src/text.tt:133 root/src/text.tt:134
 msgid "plain text source"
 msgstr ""
 
-#: root/src/layout.tt:93
+#: root/src/search/index.tt:14
+msgid "relevant"
+msgstr ""
+
+#: root/src/layout.tt:106
 msgid "syndicate"
 msgstr ""
 
-#: root/src/layout.tt:63
+#: root/src/layout.tt:74
 msgid "texts sorted by author"
 msgstr ""
 
-#: root/src/layout.tt:70
+#: root/src/layout.tt:81
 msgid "texts sorted by title"
 msgstr ""
 
-#: root/src/layout.tt:77
+#: root/src/layout.tt:88
 msgid "texts sorted by topics"
 msgstr ""
