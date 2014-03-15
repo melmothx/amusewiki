@@ -41,7 +41,10 @@ use Catalyst
   'I18N',
   'Static::Simple',
   '-Log=warn,fatal,error',
-  'StackTrace';
+  'Session',
+  'Session::Store::FastMmap',
+  'Session::State::Cookie';
+
 
 
 extends 'Catalyst';
