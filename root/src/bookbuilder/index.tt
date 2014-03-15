@@ -20,164 +20,103 @@
     </tr>
     [% textindex = textindex + 1 %]
     [% END %]
+    <tr>
+      <td colspan="2">
+        [% IF bb.texts.size %]
+        <div id="bb-clear-all">
+          <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
+            <input type="submit" name="clear" value="[% c.loc('Clear the book list') %]" />
+          </form>
+        </div>
+        [% END %]
+      </td>
+    </tr>
   </table>
 </div>
 
-[% IF bb.texts.size %]
-<div id="bb-clear-all">
-  <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
-    <input type="submit" name="clear" value="[% c.loc('Clear the book list') %]" />
-  </form>
-</div>
-[% END %]
-
-<form action="[% c.uri_for() %]" method="post" enctype="multipart/form-data">
-<fieldset>
-  <em>Please give a name to the collection. This parameter is only
-  used to give you the filename of the resulting PDF, as the cover is
-      left to you </em><br />
-    <input type="text" name="collectionname" 
-	   value="[% HTML.escape(params.collectionname) %]"/>
-
-</fieldset>
-[% IF count == 1 %]
+<div id="bb-compiler-options">
+<form action="[% c.uri_for() %]" method="post">
   <fieldset>
-    <label>
-	<input type="checkbox" name="tocwanted" value="1" />
-	Should this PDF have a Table of Contents? (I'm asking because I
-	see only 1 title)
-      </label>
+    <em>[% c.loc('Please give a name to the collection') %]</em>
+    <input type="text" name="collectionname" 
+	       value="[% HTML.escape(c.request.params.collectionname) %]"/>
   </fieldset>
-  [% END %]
+  <fieldset>
+    <a href="http://bookshelf.theanarchistlibrary.org/The%20Book%20Builder#Fonts_preview">
+      [% c.loc('Please select the desired fonts') %]      
+    </a>
+    <br />
+    <select name="mainfont">
+      [% SET myfonts =  bb.avail_fonts %]
+      [% FOREACH font IN bb.avail_fonts_sorted %]
+      <option value="[% font %]"
+              [% IF c.request.params.mainfont == font %]selected="selected"[% END %]>
+        [% myfonts.$font %]
+      </option>
+      [% END %]
+    </select>
+    @
+    <select name="fontsize">
+      [% SET myfontsizes = bb.font_sizes %]
+      [% FOREACH size IN myfontsizes.keys.sort %]
+      <option value="[% size %]"
+              [% IF c.request.params.fontsize == size %]selected="selected"[% END %]>
+        [% size %]
+      </option>
+      [% END %]
+    </select>
+  </fieldset>
+  <fieldset>
+    [% c.loc('Choose a paper format') %] <br />
+    <select name="papersize">
+      [% SET mypapers = bb.paper_sizes %]
+      [% FOREACH paper IN bb.paper_sizes_sorted %]
+      <option value="[% paper %]"
+              [% IF c.request.params.papersize == paper %]selected="selected"[% END %]>
+        [% c.loc(mypapers.$paper) %]
+      </option>
+      [% END %]
+    </select>
+  </fieldset>
   <fieldset>
     <label>
       <input type="checkbox" name="imposed" value="1"
-	     [% IF params.imposed %]checked="checked"[% END %] />
-      I want an imposed (ready to print) PDF
+	         [% IF c.request.params.imposed %]checked="checked"[% END %] />
+      [% c.loc('I want an imposed (ready to print) PDF') %]
     </label>
   </fieldset>
-<fieldset>
-  Select the desired fonts
-    <a href="http://bookshelf.theanarchistlibrary.org/The%20Book%20Builder#Fonts_preview">
-      (preview here)
-    </a>
-    <br />
-    <select name="font" >
-      <option [% IF params.font == "antykwa" %]selected="selected"[% END %] value="antykwa">
-	Antykwa Półtawskiego
+
+  <fieldset>
+    <label>
+      <input type="checkbox" name="cover" value="1"
+             [% IF c.request.params.cover %]checked="checked"[% END %] />
+      [% c.loc('I want the cover') %]
+    </label>
+  </fieldset>
+
+  <fieldset>
+    [% c.loc('If you asked for imposition, select an imposition schema') %]:
+    <select name="schema">
+      [% SET myschemas = bb.schemas %]
+      [% FOREACH schema IN bb.schemas_sorted %]
+      <option value="[% schema %]"
+              [% IF c.request.params.schema == schema %]selected="selected"[% END %]>
+        [% c.loc(myschemas.$schema) %]
       </option>
-      <option [% IF params.font == "century" %]selected="selected"[% END %] value="century">
-	TeX Gyre Schola (New Century Schoolbook)
-      </option>
-      <option [% IF params.font == "helvetica" %]selected="selected"[% END %] value="helvetica">
-	TeX Gyre Heros (Helvetica)
-      </option>
-      <option [% IF params.font == "iwona" %]selected="selected"[% END %] value="iwona">
-	Iwona
-      </option>
-      <option [% IF params.font == "libertine" %]selected="selected"[% END %] value="libertine">
-	Linux Libertine
-      </option>
-      <option [% IF params.font == "modern" %]selected="selected"[% END %] value="modern">
-	Latin Modern
-      </option>
-      <option [% IF params.font == "pagella" %]selected="selected"[% END %] value="pagella">
-	TeX Gyre Pagella (Palatino)
-      </option>
+      [% END %]
     </select>
-    @
-    <select name="fontdim">
-      <option [% IF params.fontdim == "tenpt" %]selected="selected"[% END %]
-	      value="tenpt">
-	10pt
-      </option>
-      <option [% IF params.fontdim == "elevenpt" %]selected="selected"[% END %]
-	      value="elevenpt">
-	11pt
-      </option>
-      <option [% IF params.fontdim == "twelvept" %]selected="selected"[% END %]
-	      value="twelvept">
-	12pt
-      </option>
-    </select>
-</fieldset>
-<fieldset>
-  Signatures: <br />
-  Min:
-  <select name="signmin" >
-    <option value="0">0</option>
-  [% sign = 32 %]
-  [% WHILE sign <= 400 %]
-  <option value="[% sign %]"
-	  [%- IF params.signmin  == sign %] selected="selected"
-	  [%- END -%]>[% sign %]
-  </option>
-  [% sign = sign + 4 %]
-  [% END %]
-  </select>
-  Max:
-  <select name="signmax" >
-    <option value="0">0</option>
-  [% sign = 60 %]
-  [% WHILE sign <= 400 %]
-   <option value="[% sign %]"
-	  [%- IF params.signmax  == sign %] selected="selected"
-	  [%- END -%]>[% sign %]
-   </option>
-   [% sign = sign + 4 %]
-  [% END %]
-  </select>
-</fieldset>
-<fieldset>
-Choose a paper format <br />
-  <select name="paper">
-    <option value="a4" [% IF params.paper == "a4" -%] selected="selected" [%- END %]>
-      A4 paper
-    </option>
-    <option value="a4imposed" [% IF params.paper == "a4imposed" -%] selected="selected" [%- END %] >
-      A4 imposed (A5), no binding correction
-    </option>
-    <option value="a4imposedbc" [% IF params.paper == "a4imposedbc" -%] selected="selected" [%- END %] >
-      A4 imposed (A5), with binding correction
-    </option>
-    <option value="a5imposed" [% IF params.paper == "a5imposed" -%] selected="selected" [%- END %] >
-      A5 imposed (A6), no binding correction
-    </option>
-    <option value="a5imposedbc" [% IF params.paper == "a5imposedbc" -%] selected="selected" [%- END %] >
-      A5 imposed (A6), with binding correction
-    </option>
-    <option value="halfletterimposed" [% IF params.paper == "halfletterimposed" -%] selected="selected" [%- END %] >
-      half letter imposed, no binding correction (i.e., on a letter
-      paper sheet will fit 4 of these pages)
-    </option>
-    <option value="halfletterimposedbc" [% IF params.paper == "halfletterimposedbc" -%] selected="selected" [%- END %] >
-      half letter imposed, with binding correction (i.e., on a letter paper sheet will fit 4 of these pages)
-    </option>
-    <option value="letter" [% IF params.paper == "letter" -%] selected="selected" [%- END %] >
-      Letter paper
-    </option>
-    <option value="letterimposed" [% IF params.paper == "letterimposed" -%] selected="selected" [%- END %] >
-      letter imposed (half letter), no binding correction
-    </option>
-    <option value="letterimposedbc" [% IF params.paper == "letterimposedbc" -%] selected="selected" [%- END %] >
-      letter imposed (half letter), with binding correction
-    </option>
-    <option value="mini" [% IF params.paper == "mini" -%] selected="selected" [%- END %] >
-      Mini format for e-reader
-    </option>
-  </select>
-</fieldset>
-<fieldset>
-<label><em>Antispam:</em> [% settings.amusewiki_antispam_question  %]
-<input type="text" name="magicquestion" maxlength="30"
-       value="[%- IF params.magicquestion -%]
-	      [%- HTML.escape(params.magicquestion) -%]
-	      [%- END %]" />
-</label>
-</fieldset>
-<fieldset>
-  <input type="submit" name="build" value="Build it" />
-</fieldset>
+  </fieldset>
+
+  <fieldset>
+    <label>
+      <input type="checkbox" name="signatures" value="1"
+             [% IF c.request.params.signatures %]checked="checked"[% END %] />
+      [% c.loc('When imposing, use optimized signatures with 40-80 pages each.') %]
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <input type="submit" name="build" value="[% c.loc('Build it') %]" />
+  </fieldset>
 </form>
-
-
+</div>
