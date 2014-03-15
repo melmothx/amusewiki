@@ -7,6 +7,7 @@ use Moose;
 use namespace::autoclean;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
+use AmuseWikiFarm::Utils::Queue;
 
 has textlist => (is => 'rw',
                  isa => 'ArrayRef[Str]',
@@ -267,6 +268,17 @@ sub validate_imposer_options {
     }
     return \%opts;
 }
+
+sub enqueu {
+    my ($self, $site, $params) = @_;
+    my $queue = AmuseWikiFarm::Utils::Queue->new(site => $site);
+    my %args = (
+                options => $self->validate_options($params),
+                imposer => $self->validate_imposer_options($params),
+               );
+    return $queue->add(bookbuilder => \%args);
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

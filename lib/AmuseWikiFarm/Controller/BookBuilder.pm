@@ -34,9 +34,30 @@ sub root :Chained('/') :PathPart('bookbuilder') :CaptureArgs(0) {
     $c->stash(bb => $bb);
 }
 
-sub index :Chained('root') :PathPart('') :Args(0) {}
+sub index :Chained('root') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my %params = %{ $c->request->params };
+    if ($params{build} and
+        $params{collectionname} =~ m/\w/ and
+        @{$c->stash->{bb}->texts}) {
+        $c->log->debug("Builing now");
 
-sub status :Chained('root') :PathPart('status') :Args(0) {
+        if (my $job = $c->stash->{bb}->enqueu($c->stash->{site}, \%params)) {
+            # flush the toilet
+            $c->forward('save_session');
+
+            # and redirect to the status page
+            $c->res->redirect($c->uri_for_action('/bookbuilder/status', $job));
+        }
+        # if we get this, the user cheated and doesn't deserve an explanation
+        else {
+
+            $c->flash->{error_msg} = $c->loc("Couldn't build that");
+        }
+    }
+}
+
+sub status :Chained('root') :PathPart('status') :Args(1) {
     my ($self, $c) = @_;
     $c->forward('save_session');
 }
@@ -74,13 +95,17 @@ sub add :Chained('root') :PathPart('add') :Args(0) {
         if ($c->stash->{bb}->add_text($text)) {
             $c->forward('save_session');
             $c->flash->{status_msg} = $c->loc('Text added');
-            $c->response->redirect($c->uri_for_action('/library/text' => $text));
-            return;
+            my $referrer = $c->uri_for_action('/library/text' => $text);
+            $c->stash(referrer => $referrer);
+        }
+        else {
+            $c->flash->{error_msg} = $c->loc("Couldn't add the text");
         }
     }
-    # fall back, something is off
-    $c->flash->{error_msg} = $c->loc("Bad text name or no name provided");
-    $c->response->redirect($c->uri_for('/'));
+    else {
+        $c->flash->{error_msg} = $c->loc("No text provided!");
+    }
+    $c->response->redirect($c->uri_for_action('bookbuilder/index'));
 }
 
 sub save_session :Private {

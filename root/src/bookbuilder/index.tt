@@ -2,6 +2,7 @@
 [% USE HTML %]
 
 <div id="bb-list-edit">
+  [% IF bb.texts.size %]
   <table id="bookbuilderlist">
     [% textindex = 1 %]
     [% FOREACH book IN bb.texts %]
@@ -22,16 +23,17 @@
     [% END %]
     <tr>
       <td colspan="2">
-        [% IF bb.texts.size %]
         <div id="bb-clear-all">
           <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
             <input type="submit" name="clear" value="[% c.loc('Clear the book list') %]" />
           </form>
         </div>
-        [% END %]
       </td>
     </tr>
   </table>
+  [% ELSE %]
+  <p>[% c.loc('No text was added yet') %]</p>
+  [% END %]
 </div>
 
 <div id="bb-compiler-options">
@@ -115,8 +117,11 @@
     </label>
   </fieldset>
 
+  [% IF bb.texts.size %]
   <fieldset>
     <input type="submit" name="build" value="[% c.loc('Build it') %]" />
   </fieldset>
+  [% END %]
 </form>
 </div>
+
