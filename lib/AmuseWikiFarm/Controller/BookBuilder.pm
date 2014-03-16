@@ -49,7 +49,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
         my $site_id = $c->stash->{site}->id;
 
         # prepare the job hash
-        my $args = {
+        my $data = {
                     text_list  => [ @texts ],
                     title      => $params{collectionname},
                     template_options => $bb->validate_options({ %params }),
@@ -59,9 +59,9 @@ sub index :Chained('root') :PathPart('') :Args(0) {
         my $queue = $c->model('Queue');
 
         use Data::Dumper;
-        $c->log->debug(Dumper($args));
+        $c->log->debug(Dumper($data));
 
-        if (my $job_id = $queue->bookbuilder_add($site_id, $args)) {
+        if (my $job_id = $queue->bookbuilder_add($site_id, $data)) {
             # flush the toilet
             $bb->delete_all;
             $c->forward('save_session');

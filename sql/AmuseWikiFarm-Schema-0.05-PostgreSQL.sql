@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sat Mar 15 23:42:12 2014
+-- Created on Sun Mar 16 18:43:51 2014
 -- 
 --
 -- Table: site.
@@ -80,8 +80,9 @@ CREATE TABLE "job" (
   "payload" text,
   "status" character varying(32),
   "created" timestamp NOT NULL,
-  "completed" timestamp NOT NULL,
+  "completed" timestamp,
   "priority" integer,
+  "produced" character varying(255),
   "errors" text,
   PRIMARY KEY ("id")
 );

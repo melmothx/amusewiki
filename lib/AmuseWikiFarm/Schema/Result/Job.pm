@@ -76,12 +76,18 @@ __PACKAGE__->table("job");
 =head2 completed
 
   data_type: 'datetime'
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 priority
 
   data_type: 'integer'
   is_nullable: 1
+
+=head2 produced
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
 
 =head2 errors
 
@@ -104,9 +110,11 @@ __PACKAGE__->add_columns(
   "created",
   { data_type => "datetime", is_nullable => 0 },
   "completed",
-  { data_type => "datetime", is_nullable => 0 },
+  { data_type => "datetime", is_nullable => 1 },
   "priority",
   { data_type => "integer", is_nullable => 1 },
+  "produced",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "errors",
   { data_type => "text", is_nullable => 1 },
 );
@@ -146,8 +154,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-15 23:40:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+KRT8PQvOnE9Tjn+9t199w
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-16 18:33:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H3u2jQ3b9j1Z+jMy/cKUHg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

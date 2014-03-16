@@ -16,6 +16,8 @@ repo/*/*/*/*.aux
 repo/*/*/*/*.toc
 repo/*/*/*/*.zip
 repo/*.log
+root/custom/*.pdf
+root/custom/*.epub
 xapian/*
 !xapian/README.txt
 dbic.yaml

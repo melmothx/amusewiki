@@ -50,6 +50,7 @@ requires 'MooseX::MarkAsMethods';
 test_requires 'Test::More' => '0.88';
 catalyst_ignore('repo');
 catalyst_ignore('xapian');
+catalyst_ignore('root/custom');
 catalyst;
 
 install_script glob('script/*.pl');

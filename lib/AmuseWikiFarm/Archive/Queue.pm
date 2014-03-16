@@ -6,7 +6,7 @@ use warnings;
 use Moose;
 use namespace::autoclean;
 
-use JSON;
+use JSON qw/to_json/;
 use DateTime;
 
 =head2 site
@@ -22,8 +22,45 @@ has dbic => (
             );
 
 sub bookbuilder_add {
-    return;
+    my ($self, $site_id, $payload) = @_;
+    return $self->add_job(bookbuilder => $site_id, $payload, 3);
 }
+
+sub add_job {
+    my ($self, $task, $site_id, $payload, $priority) = @_;
+    my $insertion = {
+                     site_id => $site_id,
+                     task    => $task,
+                     payload => to_json($payload),
+                     status  => 'pending',
+                     created => DateTime->now,
+                     priority => $priority || 10,
+                    };
+    my $job = $self->dbic->resultset('Job')->create($insertion);
+    return $job->id;
+}
+
+sub fetch_job_by_id {
+    my ($self, $id) = @_;
+    my $job = $self->dbic->resultset('Job')->find($id);
+    return $job;
+}
+
+sub get_job {
+    my $self = shift;
+    my $job = $self->dbic->resultset('Job')->search({
+                                                     status => 'pending',
+                                                    },
+                                                    {
+                                                     order_by => [qw/priority
+                                                                     created/],
+                                                    })->first;
+    return unless $job;
+    $job->status('taken');
+    $job->update;
+    return $job;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sat Mar 15 23:42:12 2014
+-- Created on Sun Mar 16 18:43:51 2014
 -- 
 SET foreign_key_checks=0;
 
@@ -88,8 +88,9 @@ CREATE TABLE `job` (
   `payload` text NULL,
   `status` varchar(32) NULL,
   `created` datetime NOT NULL,
-  `completed` datetime NOT NULL,
+  `completed` datetime NULL,
   `priority` integer NULL,
+  `produced` varchar(255) NULL,
   `errors` text NULL,
   INDEX `job_idx_site_id` (`site_id`),
   PRIMARY KEY (`id`),

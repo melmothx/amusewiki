@@ -49,8 +49,9 @@ CREATE TABLE job (
        payload   TEXT, -- the JSON stuff
        status    VARCHAR(32),
        created   DATETIME NOT NULL,
-       completed DATETIME NOT NULL,
+       completed DATETIME,
        priority  INTEGER,
+       produced  VARCHAR(255),
        errors    TEXT
 );
 

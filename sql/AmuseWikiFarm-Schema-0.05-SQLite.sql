@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Sat Mar 15 23:42:12 2014
+-- Created on Sun Mar 16 18:43:51 2014
 -- 
 
 BEGIN TRANSACTION;
@@ -91,8 +91,9 @@ CREATE TABLE job (
   payload text,
   status varchar(32),
   created datetime NOT NULL,
-  completed datetime NOT NULL,
+  completed datetime,
   priority integer,
+  produced varchar(255),
   errors text,
   FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
