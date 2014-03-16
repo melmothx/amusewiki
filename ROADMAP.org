@@ -89,17 +89,10 @@ stuff to the template.
     CLOSED: [2014-03-15 sab 23:18]
 *** DONE On submit, clear the session and write the job to the queue
     CLOSED: [2014-03-15 sab 23:18]
-*** Jobs table with at least these columns:
-
- - id (job id)
- - site id
- - status (pending, compiling, completed)
- - created
- - completed
- - text_list (as json)
- - compiler_options (for the template, as json)
- - imposer_options  (for the final imposition, if any, may be empty)
- - epub_options (not implemented yet)
+*** DONE Jobs table
+    CLOSED: [2014-03-16 dom 15:18]
+*** DONE Upgrade Text::Amuse::Compile to support merging
+    CLOSED: [2014-03-16 dom 15:18]
 
 *** Job daemon
 
@@ -108,14 +101,6 @@ a sleep of 10 seconds or so. I guess a query every 10 seconds
 shouldn't be too hard to manage.
 
 *** Add a status page where the user can wait for the job, using the queue id.
-
-*** Don't rewrite the tex template
-
-Instead scan the already produced tex file and retrieve the body, do
-not reparse the muse. We already have the zip with all the needed
-files inside. The epubs have inside the splat html, so unclear what's
-better.
-
 *** When is ready offer the link and stop the queue polling.
 *** Delete the file after a couple of hours, we are short on resources.
 
