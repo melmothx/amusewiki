@@ -30,7 +30,7 @@ my $jobdir = File::Spec->catdir($cwd, 'root', 'custom');
 
 while (1) {
     do_the_job();
-    sleep 10;
+    sleep 3;
 }
 
 
@@ -74,17 +74,27 @@ sub bookbuilder {
 
     print "Created $basedir\n";
 
+    my %archives;
+
     # validate the texts passed looking up the uri in the db
     my @texts;
     foreach my $text (@$textlist) {
         my $title = $j->site->titles->by_uri($text);
         next unless $title;
+
+        push @texts, $text;
+        if ($archives{$text}) {
+            next;
+        }
+        else {
+            $archives{$text}++;
+        }
+
         # pick and copy the zip in the temporary dir
         my $zip = $title->filepath_for_ext('zip');
         if (-f $zip) {
             copy($zip, $basedir) or die $!;
         }
-        push @texts, $text;
     }
     unless (@texts) {
         $j->errors('No text found!');
@@ -94,7 +104,7 @@ sub bookbuilder {
 
     chdir $basedir;
     # extract the archives
-    foreach my $i (@texts) {
+    foreach my $i (keys %archives) {
         my $zipfile = $i . '.zip';
         my $zip = Archive::Zip->new;
         unless ($zip->read($zipfile) == AZ_OK) {

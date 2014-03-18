@@ -77,8 +77,9 @@ sub index :Chained('root') :PathPart('') :Args(0) {
 }
 
 sub status :Chained('root') :PathPart('status') :Args(1) {
-    my ($self, $c) = @_;
-    $c->forward('save_session');
+    my ($self, $c, $job) = @_;
+    $c->stash(job => $c->model('Queue')->fetch_job_by_id($job));
+    $c->log->debug("Job id is $job");
 }
 
 sub edit :Chained('root') :PathPart('edit') :Args(0) {

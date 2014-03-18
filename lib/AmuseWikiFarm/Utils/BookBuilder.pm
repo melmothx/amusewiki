@@ -251,13 +251,13 @@ sub validate_options {
 sub validate_imposer_options {
     my ($self, $params) = @_;
     my %opts;
-    return unless ($params->{imposed} && $params->{schema});
+    return undef unless ($params->{imposed} && $params->{schema});
 
     if ($self->schemas->{ $params->{schema} }) {
         $opts{schema} = $params->{schema};
     }
     else {
-        return;
+        return undef;
     }
     if ($params->{signatures}) {
         $opts{signature} = '40-80';
