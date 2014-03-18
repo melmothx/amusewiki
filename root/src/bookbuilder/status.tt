@@ -1,0 +1,11 @@
+[% # -*- mode: html -*- %]
+
+[% job.id %]
+[% job.status %]
+[% job.errors %]
+
+[% IF job.produced %]
+<a href="[% c.uri_for('/custom', job.produced) %]">
+  [% c.loc('Your file is ready') %]
+</a>
+[% END %]
