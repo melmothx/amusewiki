@@ -92,15 +92,24 @@ stuff to the template.
 *** DONE Jobs table
     CLOSED: [2014-03-16 dom 15:18]
 *** DONE Upgrade Text::Amuse::Compile to support merging
-    CLOSED: [2014-03-16 dom 15:18]
+    CLOSED: [2014-03-22 sab 10:59]
 
-*** Job daemon
+Fix the wrong language code when compiling the thing.
+
+*** TODO Use IO::Pipe instead of open |- and such
+
+*** DONE Job daemon
+    CLOSED: [2014-03-18 mar 22:06]
 
 It should run syncronously with a nice -n 19 in an infinite loop with
 a sleep of 10 seconds or so. I guess a query every 10 seconds
 shouldn't be too hard to manage.
 
-*** Add a status page where the user can wait for the job, using the queue id.
+
+*** TODO Add a limit in megabyte to the target text
+
+*** DONE Add a status page where the user can wait for the job, using the queue id.
+    CLOSED: [2014-03-18 mar 22:06]
 *** When is ready offer the link and stop the queue polling.
 *** Delete the file after a couple of hours, we are short on resources.
 
