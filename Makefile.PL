@@ -38,8 +38,8 @@ requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor';
 
 # our own dogfood
-requires 'Text::Amuse' => 0.10;
-requires 'Text::Amuse::Compile' => 0.08;
+requires 'Text::Amuse' => 0.11;
+requires 'Text::Amuse::Compile' => 0.09;
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
