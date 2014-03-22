@@ -133,22 +133,29 @@ sub bookbuilder {
                                              pdf => 1,
                                              extra => $template_opts,
                                             );
-#    if (@texts == 1) {
-#        $compiler->compile($texts[0] . '.muse');
-#    }
-
-    my $target = {
-                  path => $basedir,
-                  files => \@texts,
-                  name => $j->id,
-                  title => $data->{title},
-                 };
-
-    # compile
-    $compiler->compile($target);
 
     my $outfile = $j->id . '.pdf';
-    die "$outfile not produced!" unless (-f $outfile);
+
+    if (@texts == 1) {
+        my $basename = shift(@texts);
+        my $pdfout   = $basename . '.pdf';
+        $compiler->compile($basename . '.muse');
+        if (-f $pdfout) {
+            move($pdfout, $outfile);
+        }
+    }
+    else {
+        my $target = {
+                      path => $basedir,
+                      files => \@texts,
+                      name => $j->id,
+                      title => $data->{title},
+                     };
+        # compile
+        $compiler->compile($target);
+    }
+
+    die "$outfile not produced!\n" unless (-f $outfile);
 
     # imposing needed?
     if ($data->{imposer_options} and %{$data->{imposer_options}}) {
