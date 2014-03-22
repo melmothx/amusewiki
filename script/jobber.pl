@@ -28,6 +28,8 @@ my $queue = AmuseWikiFarm::Archive::Queue->new(dbic => $schema);
 my $cwd = getcwd();
 my $jobdir = File::Spec->catdir($cwd, 'root', 'custom');
 
+print "Starting job server loop in $cwd\n";
+
 while (1) {
     do_the_job();
     sleep 3;
@@ -68,6 +70,16 @@ sub bookbuilder {
     my $textlist = $data->{text_list};
 
     print $j->site->id, "\n";
+
+    my %compile_opts = $j->site->compile_options;
+    my $template_opts = $compile_opts{extra};
+
+    # overwrite the site ones with the user-defined (and validated)
+    foreach my $k (keys %{ $data->{template_options} }) {
+        $template_opts->{$k} = $data->{template_options}->{$k};
+    }
+
+    print Dumper($template_opts);
 
     my $bbdir    = File::Temp->newdir(CLEANUP => 0);
     my $basedir = $bbdir->dirname;
@@ -119,7 +131,7 @@ sub bookbuilder {
     my $compiler = Text::Amuse::Compile->new(
                                              tex => 1,
                                              pdf => 1,
-                                             extra => $data->{template_options},
+                                             extra => $template_opts,
                                             );
 #    if (@texts == 1) {
 #        $compiler->compile($texts[0] . '.muse');

@@ -231,10 +231,12 @@ sub available_tex_options {
 =head2 validate_options(\%params)
 
 Validate the parameters passed and return an hashref with the template options.
+All keys will be present.
 
 =head2 validate_imposer_options(\%params);
 
 Validate the parameters passed and return an hashref with the imposer options.
+All keys will be present.
 
 =cut
 
