@@ -22,6 +22,9 @@ CREATE TABLE site (
        logo VARCHAR(32),
        mail VARCHAR(128),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
+
+       -- book builder page limit
+       bb_page_limit INTEGER NOT NULL DEFAULT 1000,
        -- formats
        tex       INTEGER NOT NULL DEFAULT 1,
        pdf       INTEGER NOT NULL DEFAULT 1,

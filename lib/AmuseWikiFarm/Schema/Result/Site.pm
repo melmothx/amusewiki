@@ -91,6 +91,12 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 255
 
+=head2 bb_page_limit
+
+  data_type: 'integer'
+  default_value: 1000
+  is_nullable: 0
+
 =head2 tex
 
   data_type: 'integer'
@@ -204,6 +210,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 128 },
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "bb_page_limit",
+  { data_type => "integer", default_value => 1000, is_nullable => 0 },
   "tex",
   { data_type => "integer", default_value => 1, is_nullable => 0 },
   "pdf",
@@ -336,8 +344,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-15 23:39:26
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2CJv4dLoyf4SImDbqLAY+w
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-22 11:19:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WF9eQXfaMq4e1jijFFAKlg
 
 
 =head2 compile_options
