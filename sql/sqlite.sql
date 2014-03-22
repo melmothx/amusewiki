@@ -141,14 +141,14 @@ CREATE TABLE attachment (
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
 INSERT INTO site (id, locale,
-                  sitename, siteslogan, theme,
+                  sitename, siteslogan, theme, bb_page_limit,
                   logo, canonical,
                   a4_pdf, lt_pdf,
                   papersize, division, bcor, fontsize, mainfont, twoside
                   )
        VALUES (
               '0blog0', 'hr',
-              'hrvatski blog', 'samo test', '',
+              'hrvatski blog', 'samo test', '', 5,
               'logo-yu',
               'http://blog.amusewiki.org',
               1, 1,
@@ -156,7 +156,7 @@ INSERT INTO site (id, locale,
               ),
               (
               '0test0', 'en',
-              'english test', 'only a test', 'test-theme',
+              'english test', 'only a test', 'test-theme', 10,
               'logo-en',
               'http://test.amusewiki.org',
               0, 0,
@@ -164,12 +164,13 @@ INSERT INTO site (id, locale,
               ),
               (
               '0empty0', 'en',
-              '', '', '',
+              '', '', '', 10,
               '',
               'http://empty.amusewiki.org',
               1, 1,
               '', 12, '', '', '', 1
               );
+
 
 INSERT INTO vhost VALUES ('blog.amusewiki.org', '0blog0');
 INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');

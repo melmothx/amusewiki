@@ -440,5 +440,33 @@ sub html_body {
     return $text;
 }
 
+=head3 pages_estimated
+
+Returns the expected page of output. We consider a page 2000 bytes.
+This is not really true for cyrillic languages, so we double it for
+them.
+
+=cut
+
+sub pages_estimated {
+    my $self = shift;
+    my $path = $self->filepath_for_ext('muse');
+    my %factors = (
+                   mk => 2,
+                   ru => 2,
+                  );
+    if (-f $path) {
+        my $size = -s $path;
+        if (my $factor = $factors{$self->lang}) {
+            $size = $size / $factor;
+        }
+        my $pages = sprintf('%d', $size / 2000);
+        return $pages || 1;
+    }
+    else {
+        return;
+    }
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

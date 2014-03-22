@@ -29,7 +29,10 @@
     [% textindex = textindex + 1 %]
     [% END %]
     <tr>
-      <td colspan="2">
+      <td>
+        [% c.loc('Total pages') %]: [% bb_page_count %]
+      </td>
+      <td>
         <div id="bb-clear-all">
           <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
             <input type="submit" name="clear" value="[% c.loc('Clear the book list') %]" />

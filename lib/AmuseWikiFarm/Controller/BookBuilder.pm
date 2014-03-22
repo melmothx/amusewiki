@@ -31,6 +31,14 @@ sub root :Chained('/') :PathPart('bookbuilder') :CaptureArgs(0) {
     my $bb = $c->model('BookBuilder');
     $bb->textlist($bblist);
 
+    # set the current page count
+    my $bb_page_count = 0;
+    foreach my $t (@{$bb->texts}) {
+        my $title = $c->stash->{site}->titles->by_uri($t);
+        next unless $title;
+        $bb_page_count += $title->pages_estimated;
+    }
+    $c->stash(bb_page_count => $bb_page_count);
     $c->stash(bb => $bb);
 }
 
@@ -112,7 +120,30 @@ sub clear :Chained('root') :PathPart('clear') :Args(0) {
 sub add :Chained('root') :PathPart('add') :Args(0) {
     my ( $self, $c ) = @_;
     if (my $text = $c->request->params->{text}) {
-        if ($c->stash->{bb}->add_text($text)) {
+
+        my $bb   = $c->stash->{bb};
+        my $site = $c->stash->{site};
+
+        # do we have the text in the db?
+        my $to_add = $site->titles->by_uri($text);
+        unless ($to_add) {
+            $c->log->warn("Tried to added $text but not found");
+            $c->flash->{error_msg} = $c->loc("Couldn't add the text");
+            $c->response->redirect($c->uri_for_action('bookbuilder/index'));
+            return;
+        }
+
+        # is exceeding the limit?
+        my $current_state = $c->stash->{bb_page_count};
+        $c->log->debug("Current state is $current_state");
+
+        if (($current_state + $to_add->pages_estimated) > $site->bb_page_limit) {
+            $c->flash->{error_msg} = $c->loc("Quota exceeded, too many pages");
+            $c->response->redirect($c->uri_for_action('bookbuilder/index'));
+            return;
+        }
+
+        if ($bb->add_text($text)) {
             $c->forward('save_session');
             $c->flash->{status_msg} = $c->loc('Text added');
             my $referrer = $c->uri_for_action('/library/text' => $text);
