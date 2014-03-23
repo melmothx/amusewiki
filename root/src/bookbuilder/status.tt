@@ -9,3 +9,18 @@
   [% c.loc('Your file is ready') %]
 </a>
 [% END %]
+
+<div class="nojs">
+    JS disabled, please manually reload the page. Your file should be
+    ready in a couple of minutes.
+</div>
+
+<div id="debug"></div>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="[% c.uri_for('/static/js/bookbuilder.js') %]"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    update_status('[% c.uri_for('/bookbuilder/ajax/status', job.id) %]');
+  });
+</script>

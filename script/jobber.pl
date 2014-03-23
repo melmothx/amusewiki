@@ -133,6 +133,7 @@ sub bookbuilder {
                                              pdf => 1,
                                              extra => $template_opts,
                                             );
+    print $compiler->version;
 
     my $outfile = $j->id . '.pdf';
 

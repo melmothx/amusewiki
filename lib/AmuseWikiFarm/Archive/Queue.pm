@@ -6,7 +6,7 @@ use warnings;
 use Moose;
 use namespace::autoclean;
 
-use JSON qw/to_json/;
+use JSON qw/to_json from_json/;
 use DateTime;
 
 =head2 site
@@ -44,6 +44,26 @@ sub fetch_job_by_id {
     my ($self, $id) = @_;
     my $job = $self->dbic->resultset('Job')->find($id);
     return $job;
+}
+
+sub fetch_job_by_id_json {
+    my ($self, $id) = @_;
+    my $job = $self->fetch_job_by_id($id);
+    return to_json({ errors => 'No such job' }) unless $job;
+    # for now expose everything
+    my $struct = {
+                  id       => $id,
+                  site_id  => $job->site_id,
+                  task     => $job->task,
+                  payload  => from_json($job->payload),
+                  status   => $job->status,
+                  created  => $job->created->iso8601,
+                  # completed => $job->completed->iso8601,
+                  priority => $job->priority,
+                  produced => $job->produced,
+                  errors   => $job->errors,
+                 };
+    return to_json($struct);
 }
 
 sub get_job {
