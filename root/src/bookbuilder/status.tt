@@ -1,19 +1,52 @@
 [% # -*- mode: html -*- %]
 
-[% job.id %]
-[% job.status %]
-[% job.errors %]
-
-[% IF job.produced %]
-<a href="[% c.uri_for('/custom', job.produced) %]">
-  [% c.loc('Your file is ready') %]
-</a>
-[% END %]
+<script type="text/javascript">
+  var bbstatus = {
+  'unpublished': '[%- c.loc('unpublished') -%]',
+  'published':   '[%- c.loc('published')   -%]',
+  'pending':     '[%- c.loc('pending')     -%]',
+  'taken':       '[%- c.loc('taken')       -%]',
+  'completed':   '[%- c.loc('completed')   -%]',
+  'failed':      '[%- c.loc('failed')      -%]'
+  };
+</script>
 
 <div class="nojs">
-    JS disabled, please manually reload the page. Your file should be
-    ready in a couple of minutes.
+  <pre>
+    [% job.errors %]
+  </pre>
+  [% IF job.produced %]
+  <a href="[% c.uri_for('/custom', job.produced) %]">
+    [% c.loc('Your file is ready') %]
+  </a>
+  [% ELSE %]
+  <p>
+    [% c.loc('Please reload your page') %]. [% c.loc('Status') %]:
+    [% c.loc(job.status) %]
+  </p>
+  [% END %]
 </div>
+
+<div class="bbstatus taken pending" style="display:none">
+  <img src="[% c.uri_for('/static/images/ajax-loader.gif') %]" /> <br />
+  [% c.loc("Please wait") %],
+  <strong>
+    <span class="bbstatusstring">[% c.loc(job.status) %]</span>
+  </strong>
+
+</div>
+
+<div class="bbstatus completed" style="display:none">
+  <strong>
+    <a class="produced" href="[% c.uri_for('/custom/') %]">Your file is ready</a>
+  </strong>
+</div>
+
+<div class="bbstatus failed">
+  <strong>[% c.loc('Error producing the file') %]</strong>
+</div>
+<pre class="bbstatus failed errors" style="display:none">
+</pre>
 
 <div id="debug"></div>
 
