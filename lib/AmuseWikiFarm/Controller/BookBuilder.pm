@@ -50,7 +50,8 @@ sub index :Chained('root') :PathPart('') :Args(0) {
 
     my %params = %{ $c->request->params };
 
-    if (@texts and $params{build} and $params{collectionname} =~ m/\w/) {
+    if (@texts and $params{build} and 
+        $params{collectionname} and $params{collectionname} =~ m/\w/) {
         $c->log->debug("Putting the job in the queue now");
 
         my $bb = $c->stash->{bb};
