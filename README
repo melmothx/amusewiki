@@ -74,6 +74,12 @@ Deny the following in the webserver configuration:
  - root/src    template directory.
 
 
+** Special pages
+
+Rendered special pages are stored in the DB. However, a copy for
+editing is stored in specials/<site_id>. The module responsible for
+editing and storing is AmuseWikiFarm::Archive::Special.
+
 ** Banner and logo images
 
 Given that there is no point in providing a default, save for the

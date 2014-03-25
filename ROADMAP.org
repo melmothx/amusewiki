@@ -25,6 +25,10 @@
 
 ** editing
 
+*** /special/* pages
+
+**** Handle the publishing in the future (optimizitaion)
+
 *** /edit
 
 ** X-Accel

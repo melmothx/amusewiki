@@ -313,6 +313,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 pages
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Page>
+
+=cut
+
+__PACKAGE__->has_many(
+  "pages",
+  "AmuseWikiFarm::Schema::Result::Page",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 titles
 
 Type: has_many
@@ -344,8 +359,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-22 11:19:26
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WF9eQXfaMq4e1jijFFAKlg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-25 17:59:54
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XhmQftzNQK3hqYP3JxZirA
 
 
 =head2 compile_options
