@@ -38,7 +38,9 @@
 
 <div class="bbstatus completed" style="display:none">
   <strong>
-    <a class="produced" href="[% c.uri_for('/custom/') %]">Your file is ready</a>
+    <a class="produced" href="[% c.uri_for('/custom/') %]">
+      [% c.loc('Your file is ready') %]
+    </a>
   </strong>
 </div>
 
