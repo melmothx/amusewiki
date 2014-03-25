@@ -41,6 +41,7 @@ use Catalyst
   'I18N',
   'Static::Simple',
   '-Log=warn,fatal,error',
+#  'MemoryUsage',
   'Session',
   'Session::Store::File',
   'Session::State::Cookie';
