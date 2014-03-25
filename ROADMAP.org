@@ -63,7 +63,8 @@
     CLOSED: [2014-03-14 ven 11:40]
 
 * Backend
-** Queue using the db.
+** DONE Queue using the db.
+   CLOSED: [2014-03-23 dom 10:00]
 ** DONE Xapian indexing (Search::Xapian)
    CLOSED: [2014-02-08 sab 12:36]
 
@@ -71,7 +72,8 @@
    CLOSED: [2014-03-02 dom 10:39]
    Use Text::Amuse::Compile
 
-** TODO bookbuilder Text::Amuse + PDF::Imposition
+** DONE bookbuilder Text::Amuse + PDF::Imposition
+   CLOSED: [2014-03-23 dom 09:59]
 
 *** DONE Add a form to each text to add the text to the collection
     CLOSED: [2014-03-14 ven 22:27]
@@ -96,7 +98,8 @@ stuff to the template.
 
 Fix the wrong language code when compiling the thing.
 
-*** TODO Use IO::Pipe instead of open |- and such
+*** DONE Use IO::Pipe instead of open |- and such
+    CLOSED: [2014-03-23 dom 09:59]
 
 *** DONE Job daemon
     CLOSED: [2014-03-18 mar 22:06]
@@ -106,7 +109,8 @@ a sleep of 10 seconds or so. I guess a query every 10 seconds
 shouldn't be too hard to manage.
 
 
-*** TODO Add a limit in megabyte to the target text
+*** DONE Add a limit in megabyte to the target text
+    CLOSED: [2014-03-23 dom 09:59]
 
 *** DONE Add a status page where the user can wait for the job, using the queue id.
     CLOSED: [2014-03-18 mar 22:06]
