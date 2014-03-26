@@ -107,7 +107,7 @@ var ckconfiguration = {
       <label for="lang">Language</label><br />
       <select name="lang" id="lang">
 
-      
+      [% known_langs = site.known_langs %]
       [% FOREACH lang IN known_langs.keys.sort %]
       <option [% IF current_language == lang %]selected="selected"[% END %]
               value="[% lang %]">
@@ -143,7 +143,7 @@ var ckconfiguration = {
     <div>&nbsp;</div>
     <div>
       <textarea id="textbody" name="textbody" cols="80"
-                rows="20">[%- c.req.params.maineditor | html -%]</textarea>
+                rows="20">[%- c.req.params.textbody | html -%]</textarea>
     </div>
     
     <h3>Notes</h3>

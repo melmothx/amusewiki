@@ -435,5 +435,17 @@ sub available_text_exts {
     return %exts;
 }
 
+sub known_langs {
+    my $self = shift;
+    return { ru => 'Русский',
+             sr => 'Srpski',
+             hr => 'Hrvatski',
+             mk => 'Македонски',
+             fi => 'Suomi',
+             es => 'Español',
+             en => 'English',
+           };
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
