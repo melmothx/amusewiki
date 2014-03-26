@@ -51,10 +51,14 @@ requires 'Text::Amuse::Preprocessor' => 0.04;
 requires 'MooseX::MarkAsMethods';
 
 test_requires 'Test::More' => '0.88';
+
+# locations where we store the stuff
 catalyst_ignore('repo');
 catalyst_ignore('xapian');
 catalyst_ignore('staging');
+catalyst_ignore('specials');
 catalyst_ignore('root/custom');
+
 catalyst;
 
 install_script glob('script/*.pl');
