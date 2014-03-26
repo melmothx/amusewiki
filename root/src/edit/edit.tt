@@ -4,8 +4,70 @@
 
 [% revision.title.uri %]
 
-<pre>
-[% revision.muse_body | html%]
-</pre>
+<form action="" method="post">
+<fieldset>
+<textarea rows="30" cols="80" id="maintextarea"
+          name="body">[%- revision.muse_body | html -%]</textarea>
+</fieldset>
+<fieldset>
+<input type="submit" name="preview" value="[% c.loc('Preview') %]" />
+<input type="submit" name="commit"  value="[% c.loc('Commit')  %]" />
+</fieldset>
+</form>
 
-[% revision.muse_doc.as_html %]
+[% SET text = revision.muse_doc.header_as_html %]
+
+<div id="page">
+  <div id="preamble">
+    <p id="texttitle">
+      <strong>[% c.loc('Title') %]:</strong>
+      [% text.title %]
+    </p>
+
+    [% IF text.subtitle %]
+    <p id="textsubtitle">
+      <strong>[% c.loc('Subtitle') %]:</strong>
+      [% text.subtitle %]
+    </p>
+    [% END %]
+
+    [% IF (text.SORTauthors || text.author) %]
+    <p id="authors">
+      <strong>[% c.loc('Authors') %]:</strong>
+      [% text.SORTauthors || text.author %]
+    </p>
+    [% END %]
+
+    [% IF text.date %]
+    <p id="textdate">
+      <strong>[% c.loc('Date') %]:</strong>
+      [% text.date %]
+    </p>
+    [% END %]
+
+    [% IF text.SORTtopics %]
+    <p id="topics">
+      <strong>[% c.loc('Topics') %]:</strong>
+      [% text.SORTtopics %]
+    </p>
+    [% END %]
+
+    [% IF text.source %]
+    <p id="preamblesrc">
+      <strong>[% c.loc('Source') %]:</strong>
+      [% text.source %]
+    </p>
+    [% END %]
+
+    [% IF text.notes %]
+    <p id="preamblenotes">
+      <strong>[% c.loc('Notes') %]:</strong>
+      [% text.notes %]
+    </p>
+    [% END %]
+  </div>
+  <div id="htmltextbody">
+    [% revision.muse_doc.as_html %]
+  </div>
+</div>
+  <!-- end of the preamble -->
