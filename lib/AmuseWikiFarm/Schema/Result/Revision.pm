@@ -57,10 +57,10 @@ __PACKAGE__->table("revision");
   is_foreign_key: 1
   is_nullable: 1
 
-=head2 f_path
+=head2 f_full_path_name
 
   data_type: 'text'
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 updated
 
@@ -76,8 +76,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 8 },
   "title_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
-  "f_path",
-  { data_type => "text", is_nullable => 0 },
+  "f_full_path_name",
+  { data_type => "text", is_nullable => 1 },
   "updated",
   { data_type => "datetime", is_nullable => 0 },
 );
@@ -137,10 +137,25 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 08:29:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AEgqv+Ctiw6Tr5VUFNXaAQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 12:38:38
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+kcdIGDZPSeRauslB6tq6A
+
+use File::Slurp;
+
+=head2 muse_body
+
+Return the text stored in the staging area (for editing)
+
+=cut
+
+sub muse_body  {
+    my $self = shift;
+    my $file = $self->f_full_path_name;
+    return '' unless -f $file;
+    return read_file($file => { binmode => ':encoding(UTF-8)' });
+}
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+
 __PACKAGE__->meta->make_immutable;
 1;

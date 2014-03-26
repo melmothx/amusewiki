@@ -33,6 +33,14 @@ var ckconfiguration = {
 <form id="ckform" action="[%- form_action -%]" method="post"
       enctype="multipart/form-data">
   <fieldset>
+    <label for="uri">
+      <strong>[% c.loc('Desired URI') %]</strong>
+      ([% c.loc('automatically generated if not present') %])
+    </label>
+    <input type="text" name="uri" id="uri" size="50"
+           value="[% c.req.params.uri %]"/>
+  </fieldset>
+  <fieldset>
     <p><label><em>Author</em> (for display):<br />
       <input type="text" name="author" id="author"
 	     maxlength="100" class="required"
@@ -134,7 +142,7 @@ var ckconfiguration = {
     </div>
     <div>&nbsp;</div>
     <div>
-      <textarea id="maineditor" name="maineditor" cols="80"
+      <textarea id="textbody" name="textbody" cols="80"
                 rows="20">[%- c.req.params.maineditor | html -%]</textarea>
     </div>
     
@@ -172,7 +180,7 @@ var ckconfiguration = {
 </form>
 
 <script type="text/javascript">
-  $('#maineditor').ckeditor(ckconfiguration);
+  $('#textbody).ckeditor(ckconfiguration);
   ckconfiguration.height = 100;
   $('#notes').ckeditor(ckconfiguration);
 </script>

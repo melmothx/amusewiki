@@ -23,5 +23,7 @@ xapian/*
 dbic.yaml
 root/static/js/ckeditor*
 specials/0blog0/*
+staging/*
+!staging/README.txt
 *~
 

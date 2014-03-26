@@ -383,7 +383,37 @@ sub category_listing {
 
 Logic to determine if a file is published or not. These routine should
 be called on indexing, not on searching, because they depend on the
-current datetime.
+current datetime. Only texts with a C<published> status should be
+served directly.
+
+Recognized statuses:
+
+=over 4
+
+=item unpublished
+
+Default status.
+
+=item deleted
+
+File has been deleted
+
+=item deferred
+
+File has a publishing date in the future
+
+=item published
+
+File is up and running
+
+=item editing
+
+File is stashed in the staging area and should not be served. It will
+have some revisions attached. The only real things set here are uri
+and id. Everything else is bogus, and is used only to hook the
+revisions, and prevent duplications and such.
+
+=back
 
 =head3 is_published
 

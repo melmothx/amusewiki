@@ -46,12 +46,12 @@ CREATE TABLE site (
 
 
 CREATE TABLE revision (
-       id INTEGER PRIMARY KEY,
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
        site_id VARCHAR(8) REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        title_id INTEGER REFERENCES title(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
-       f_path TEXT NOT NULL,
+       f_full_path_name TEXT,
        updated DATETIME NOT NULL -- internal
 );
 
