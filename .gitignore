@@ -21,5 +21,9 @@ root/custom/*.epub
 xapian/*
 !xapian/README.txt
 dbic.yaml
+root/static/js/ckeditor*
+specials/0blog0/*
+
+
 *~
 

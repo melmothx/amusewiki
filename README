@@ -103,3 +103,19 @@ SQL scripts in "sql"
 
  - lib/AmuseWikiFarm/Utils
 
+** Javascript packages used
+
+The root of the javascript packages and scripts is "root/static/js"
+
+*** JQuery
+
+*** CKeditor
+
+The configuration is done in place using the "best practice". The
+package is not shipped in the source (but could eventually end up in a
+release tarball).
+
+CKeditor should be unpacked in root/static/js/ (hence creating the
+root 'ckeditor'). The default template (edit/create.tt) asks for
+"/static/js/ckeditor/ckeditor.js" and
+"/static/js/ckeditor/adapters/jquery.js".

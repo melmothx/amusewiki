@@ -1,0 +1,178 @@
+[% # -*- mode: html -*- %]
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="[% c.uri_for('/static/js/ckeditor/ckeditor.js') %]"></script>
+<script src="[% c.uri_for('/static/js/ckeditor/adapters/jquery.js') %]"></script>
+<script type="text/javascript">
+var ckconfiguration = {
+    'language' : '[% site.locale %]',
+    'toolbar': 'AmuseWiki',
+    'toolbar_AmuseWiki': [
+	    { 'name': 'document', 'items' : [ 'Source'] },
+	    { 'name': 'clipboard',
+	      'items' : 
+	      [ 'Cut','Copy','Paste','PasteText',
+		    'PasteFromWord','-','Undo','Redo' ] },
+	    { 'name': 'editing',
+	      'items' : [ 'Find','Replace','-','SelectAll' ] },
+	    { 'name': 'basicstyles',
+          'items' : [
+		      'Bold','Italic','Strike','Subscript','Superscript',
+		      '-','RemoveFormat' ] },
+	    { 'name': 'paragraph',
+	      'items' : [ 'NumberedList','BulletedList','-','Blockquote', ] },
+	    { 'name': 'styles',
+          'items' : [ 'Format'] }
+    ]
+};
+</script>
+
+
+[% form_action %]
+
+<form id="ckform" action="[%- form_action -%]" method="post"
+      enctype="multipart/form-data">
+  <fieldset>
+    <p><label><em>Author</em> (for display):<br />
+      <input type="text" name="author" id="author"
+	     maxlength="100" class="required"
+	     size="30"
+	     value="[% c.req.params.author | html %]" />
+    </label></p>
+    
+    <p><label><em>Authors</em> (for indexing, semi-colon or <em>comma separated list</em>):<br />
+      <input id="SORTauthors"
+	     size="50"
+	     maxlength="250"
+	     name="SORTauthors"
+	     value="[% c.req.params.SORTauthors | html %]" />
+    </label></p>
+    
+    <p><label><em>Title</em> (mandatory):<br />
+      <input type="text" name="title"  class="required"
+	     maxlength="100"
+	     size="30"
+	     value="[% c.req.params.title | html %]" />
+    </label></p>
+    
+    <p><label><em>Subtitle</em> (optional):<br />
+      <input type="text" name="subtitle"
+	     maxlength="100"
+	     size="30"
+	     value="[% c.req.params.subtitle | html %]" />
+    </label></p>
+    
+    <p><label><em>Title for sorting</em> (you may want to strip the leading "A",
+      "An", "The", and so on; optional)<br />
+      <input type="text" name="LISTtitle"
+	     maxlength="100" size="30"
+	     value="[% c.req.params.LISTtitle | html %]" />
+    </label></p>
+    
+    <p><label><em>Topics</em> (mandatory, topics are very important 
+      to browse the library — <em>comma or semicolon separated list</em><br />
+      <input id="SORTtopics"  class="required"
+	     size="50"
+	     maxlength="250"
+	     name="SORTtopics"
+	     value="[% c.req.params.SORTtopics | html %]" />
+    </label></p>
+        
+    <p><label><em>Date</em> of the original publication:
+      (optional, but do your best to find it)<br />
+      <input id="date"
+	     size="50"
+	     maxlength="250"
+	     name="date"
+	     value="[% c.req.params.date | html %]" />
+    </label></p>
+    
+    <p><label><em>Source</em> (mandatory) (For texts from the internet use:
+      Retrieved on May 29, 2009 from URL. For texts freshly scanned
+      you may want to use “Scanned from original” or something like
+      that) <br />
+      <input id="source" size="50" maxlength="250"  class="required"
+	     name="source" value="[% c.req.params.source | html %]" />
+    </label></p>
+    <p>
+      [% SET current_language = c.req.params.lang || site.locale %]
+      <label for="lang">Language</label><br />
+      <select name="lang" id="lang">
+
+      
+      [% FOREACH lang IN known_langs.keys.sort %]
+      <option [% IF current_language == lang %]selected="selected"[% END %]
+              value="[% lang %]">
+        [% known_langs.$lang %]
+      </option>
+      [% END %]
+    </select>
+    </p>
+
+    <h3>Main text</h3>
+    <div>
+      <label for="maineditor">
+        Please note that you may want to paste from a
+        Word/OpenOffice/LibreOffice/HTML document using the “paste
+        from word” button. This is supposed to preserve the markup.
+
+        <br />
+        
+        This is a WYSIWYG editor. If you prefer to use
+        the wiki-like syntax leave it as is, fill the required fields
+        above and postpone the editing to the next step.
+        <br />
+
+        Image uploading may be done on the next step, when you can
+        review and preview the upload.
+
+        <br />
+        Keep in mind that unusually
+        complex formatting will be stripped. Is it possible to add
+        tables and images only on the next step.
+      </label>
+    </div>
+    <div>&nbsp;</div>
+    <div>
+      <textarea id="maineditor" name="maineditor" cols="80"
+                rows="20">[%- c.req.params.maineditor | html -%]</textarea>
+    </div>
+    
+    <h3>Notes</h3>
+    <div>
+      <label for="notes">
+	    Put additional information here (original
+	    title, translators, credits, etc). Footnotes go in the
+	    body.
+      </label>
+    </div>
+    <div>&nbsp;</div>
+    <div>
+      <textarea id="notes" name="notes" cols="80"
+                rows="5">[%- c.req.params.notes | html %]</textarea>
+    </div>
+
+    
+    <p><label>Keep in mind that I'm cleaning the text and give it back to
+      you in the markup used on this site. It's up to you to check it
+      and finally upload it. Some rarely used markup will be lost in
+      the process. Please check the preview on the next step, where
+      you can also insert images. <br />
+      <input type="submit"
+	     name="go" value="Prepare this text for the archiving"
+	     class="submit" />
+    </label></p>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#ckform").validate();
+      });
+  </script>
+
+  </fieldset>
+</form>
+
+<script type="text/javascript">
+  $('#maineditor').ckeditor(ckconfiguration);
+  ckconfiguration.height = 100;
+  $('#notes').ckeditor(ckconfiguration);
+</script>
