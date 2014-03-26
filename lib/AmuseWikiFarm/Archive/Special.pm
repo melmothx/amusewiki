@@ -92,8 +92,10 @@ sub edit {
     $params->{body} =~ s/\r//gs;
     # remove tabs
     $params->{body} =~ s/\t/    /gs;
-    # add two new line as a good measure
-    $params->{body} .= "\n\n";
+    # add the new line if missing
+    unless ($params->{body} =~ /\n$/s) {
+        $params->{body} .= "\n";
+    }
 
     open (my $fh, '>:encoding(utf-8)', $target) or die $!;
     print $fh $params->{body};
