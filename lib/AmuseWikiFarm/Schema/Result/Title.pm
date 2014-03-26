@@ -444,14 +444,26 @@ sub filepath_for_ext {
 
 Retrieve the bare HTML, if present.
 
+=head3 muse_body
+
+Retrieve the Muse source.
+
 =cut
 
 sub html_body {
-    my $self = shift;
-    my $barefile = File::Spec->catfile($self->f_path,
-                               $self->f_name . '.bare.html');
-    return "No body found!" unless -f $barefile;
-    my $text = read_file($barefile => { binmode => ':encoding(UTF-8)' });
+    return shift->_get_body('bare.html');
+}
+
+sub muse_body {
+    return shift->_get_body('muse');
+}
+
+sub _get_body {
+    my ($self, $ext) = @_;
+    die "Wrong usage" unless $ext;
+    my $file = $self->filepath_for_ext($ext);
+    return '' unless -f $file;
+    my $text = read_file($file => { binmode => ':encoding(UTF-8)' });
     return $text;
 }
 

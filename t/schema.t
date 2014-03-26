@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 4;
+use Test::More tests => 6;
 use Data::Dumper;
 
 use AmuseWikiFarm::Schema;
@@ -41,8 +41,8 @@ is_deeply \%exts, {
                    '.epub' => 1
                   };
 
+my $test = $site->titles->random_text;
 
-
-
-
+like $test->html_body, qr/<p>/, "Found the HTML body";
+like $test->muse_body, qr/#title/, "Found the muse body";
 
