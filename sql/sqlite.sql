@@ -44,6 +44,17 @@ CREATE TABLE site (
        twoside INTEGER NOT NULL DEFAULT 0
 );
 
+
+CREATE TABLE revision (
+       id INTEGER PRIMARY KEY,
+       site_id VARCHAR(8) REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       title_id INTEGER REFERENCES title(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       f_path TEXT NOT NULL,
+       updated DATETIME NOT NULL -- internal
+);
+
 CREATE TABLE page (
        id INTEGER PRIMARY KEY,
        site_id VARCHAR(8) REFERENCES site(id)

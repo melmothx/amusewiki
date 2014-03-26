@@ -328,6 +328,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 revisions
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Revision>
+
+=cut
+
+__PACKAGE__->has_many(
+  "revisions",
+  "AmuseWikiFarm::Schema::Result::Revision",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 titles
 
 Type: has_many
@@ -359,8 +374,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-25 17:59:54
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XhmQftzNQK3hqYP3JxZirA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 08:30:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uoYX18M0VJIFiadGBhwVBg
 
 
 =head2 compile_options

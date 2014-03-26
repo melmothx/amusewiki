@@ -261,6 +261,21 @@ __PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
 
 =head1 RELATIONS
 
+=head2 revisions
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Revision>
+
+=cut
+
+__PACKAGE__->has_many(
+  "revisions",
+  "AmuseWikiFarm::Schema::Result::Revision",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -302,8 +317,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-14 10:51:31
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:11utASyvRjnkc7sBmznSMg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 08:30:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uhXbrjXhNVH0o/Cd9Wbu5Q
 
 use File::Spec;
 use File::Slurp qw/read_file/;
