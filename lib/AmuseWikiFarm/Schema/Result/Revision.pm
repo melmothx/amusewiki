@@ -152,7 +152,8 @@ sub muse_body  {
     my $self = shift;
     my $file = $self->f_full_path_name;
     return '' unless -f $file;
-    return read_file($file => { binmode => ':encoding(UTF-8)' });
+    my $body = read_file($file => { binmode => ':encoding(UTF-8)' });
+    return $body;
 }
 
 
