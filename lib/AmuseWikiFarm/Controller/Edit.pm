@@ -22,31 +22,30 @@ Catalyst Controller.
 
 =head2 /new
 
-Chained action for creation of new texts
-
-=head3 create
-
-Root chain element.
-
-=head3 render_created
-
-Path: /new
-
-The only purpose of this path is to present a form, which will post to
-
-
-=head3 add_created
-
-Path: /new/add
-
-
+Theis 
 
 =cut
 
-sub create :Chained('') :PathPart('new') :CaptureArgs(0) {
+sub index :Path('/new') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(template => 'edit/create.tt');
-    $c->stash(form_action => $c->uri_for_action('edit/add_created'));
+
+    # if there was a posting, process it
+    if ($c->request->params->{go}) {
+        my $model = $c->model('Edit');
+        my $revision = $model->create_new($c->request->params);
+        if ($revision) {
+            $c->log->debug("All ok, found " . $revision->id);
+            $c->flash->{status_msg} = $c->loc("Created new text");
+        }
+        else {
+            $c->flash->{error_msg} = $c->loc($model->error);
+            if (my $existing = $model->redirect) {
+                $c->flash->{status_msg} = $existing;
+            }
+        }
+    }
+
+    # otherwise populate the stash and render the template
     my %available_languages = (
                                ru => 'Русский',
                                sr => 'Srpski',
@@ -58,22 +57,6 @@ sub create :Chained('') :PathPart('new') :CaptureArgs(0) {
                               );
     $c->stash(known_langs => \%available_languages);
 }
-
-sub render_created :Chained('create') :PathPart('') :Args(0) {
-
-}
-
-sub add_created :Chained('create') :PathPart('add') :Args(0) {
-
-}
-
-
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-
-    $c->response->body('Matched AmuseWikiFarm::Controller::Edit in Edit.');
-}
-
 
 =head1 AUTHOR
 

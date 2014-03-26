@@ -1,16 +1,16 @@
-package AmuseWikiFarm::Model::Special;
+package AmuseWikiFarm::Model::Edit;
 
 use strict;
 use warnings;
 use base 'Catalyst::Model::Factory::PerRequest';
 
 __PACKAGE__->config(
-    class => 'AmuseWikiFarm::Archive::Special',
+    class => 'AmuseWikiFarm::Archive::Edit',
 );
 
 sub prepare_arguments {
     my ($self, $c) = @_;
-    $c->log->debug("Loading special pages");
+    $c->log->debug("Loading backend for editing pages");
     my $args = {
                 site_schema => $c->stash->{site},
                 basedir => $c->config->{home},
@@ -21,11 +21,11 @@ sub prepare_arguments {
 
 =head1 NAME
 
-AmuseWikiFarm::Model::Special
+AmuseWikiFarm::Model::Edit
 
 =head1 SYNOPSIS
 
-Wrap and instantiate AmuseWikiFarm::Archive::Special
+Wrap and instantiate AmuseWikiFarm::Archive::Edit
 
 See L<AmuseWikiFarm>
 
