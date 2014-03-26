@@ -17,7 +17,7 @@ var ckconfiguration = {
 	      'items' : [ 'Find','Replace','-','SelectAll' ] },
 	    { 'name': 'basicstyles',
           'items' : [
-		      'Bold','Italic','Strike','Subscript','Superscript',
+		      'Bold','Italic',
 		      '-','RemoveFormat' ] },
 	    { 'name': 'paragraph',
 	      'items' : [ 'NumberedList','BulletedList','-','Blockquote', ] },
@@ -180,7 +180,7 @@ var ckconfiguration = {
 </form>
 
 <script type="text/javascript">
-  $('#textbody).ckeditor(ckconfiguration);
+  $('#textbody').ckeditor(ckconfiguration);
   ckconfiguration.height = 100;
   $('#notes').ckeditor(ckconfiguration);
 </script>
