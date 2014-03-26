@@ -9,6 +9,7 @@ use namespace::autoclean;
 
 use File::Spec;
 use File::Basename qw/basename/;
+use File::Copy;
 use Cwd;
 use Data::Dumper;
 use Date::Parse;
@@ -120,11 +121,7 @@ sub import_text_from_html_params {
     # where to store the text. But we need to know which id we have in
     # advance, so first set f_path to the empty string.
 
-    my $revision = $title->revisions->create({
-                                              updated => DateTime->now,
-                                             });
-
-    $self->revision_set_file_path($revision);
+    my $revision = $self->create_revision_for_title($title);
 
     my $file = $revision->f_full_path_name;
     die "full path was not set!" unless $file;
@@ -167,10 +164,11 @@ sub _add_directive {
     print $fh '#' . $directive . ' ' . $text . "\n";
 }
 
-sub revision_set_file_path {
-    my ($self, $revision) = @_;
-    die "Bad usage, missing argument (revision row)" unless $revision;
-
+sub create_revision_for_title {
+    my ($self, $title ) = @_;
+    my $revision = $title->revisions->create({
+                                              updated => DateTime->now,
+                                             });
     my $uri = $revision->title->uri;
     die "Couldn't find uri for belonging title!" unless $uri;
     
@@ -194,6 +192,32 @@ sub revision_set_file_path {
     my $fullpath = File::Spec->catfile($target_dir, $uri . '.muse');
     $revision->f_full_path_name($fullpath);
     $revision->update;
+    return $revision;
+}
+
+=head2 new_revision($text)
+
+The argument is the Title result row. Create a new revision for it.
+
+=head2 new_revision_from_uri("my-text");
+
+Same as above, but passing an uri.
+
+=cut
+
+sub new_revision_from_uri {
+    my ($self, $uri) = @_;
+    my $text = $self->site_schema->titles->find({ uri => $uri });
+    return $self->new_revision($text);
+}
+
+sub new_revision {
+    my ($self, $text) = @_;
+    return unless $text;
+    my $revision = $self->create_revision_for_title($text);
+    # and copy the file in the new dir
+    copy($text->f_full_path_name, $revision->f_full_path_name);
+    return $revision;
 }
 
 

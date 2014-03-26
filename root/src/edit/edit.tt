@@ -1,9 +1,11 @@
 [% # -*- mode:html -*- %]
 
-[% uri_to_edit %]
-
 [% revision.id %]
+
+[% revision.title.uri %]
 
 <pre>
 [% revision.muse_body | html%]
 </pre>
+
+[% revision.muse_doc.as_html %]

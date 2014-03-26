@@ -26,16 +26,26 @@ Theis
 
 =cut
 
-sub index :Path('/new') :Args(0) {
+sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->stash(editor => $c->model('Edit'));
+}
+
+sub index :Chained('root') :PathPart('new') :Args(0) {
     my ($self, $c) = @_;
 
     # if there was a posting, process it
     if ($c->request->params->{go}) {
-        my $model = $c->model('Edit');
+        my $model = $c->stash->{editor};
         my $revision = $model->create_new($c->request->params);
         if ($revision) {
             $c->log->debug("All ok, found " . $revision->id);
             $c->flash->{status_msg} = $c->loc("Created new text");
+
+            my $uri = $revision->title->uri;
+            my $id  = $revision->id;
+            my $location = $c->uri_for_action('edit/edit', [$uri, $id]);
+            $c->response->redirect($location);
         }
         else {
             $c->flash->{error_msg} = $c->loc($model->error);

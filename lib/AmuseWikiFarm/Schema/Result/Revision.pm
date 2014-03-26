@@ -141,10 +141,15 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+kcdIGDZPSeRauslB6tq6A
 
 use File::Slurp;
+use Text::Amuse;
 
 =head2 muse_body
 
 Return the text stored in the staging area (for editing)
+
+=head2 muse_doc
+
+Return a L<Text::Amuse> object for that file.
 
 =cut
 
@@ -156,7 +161,13 @@ sub muse_body  {
     return $body;
 }
 
-
+sub muse_doc {
+    my $self = shift;
+    my $file = $self->f_full_path_name;
+    return '' unless -f $file;
+    my $doc = Text::Amuse->new(file => $file);
+    return $doc;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;
