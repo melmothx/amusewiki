@@ -193,6 +193,7 @@ sub revision_set_file_path {
     }
     my $fullpath = File::Spec->catfile($target_dir, $uri . '.muse');
     $revision->f_full_path_name($fullpath);
+    $revision->update;
 }
 
 
