@@ -137,6 +137,7 @@ use Text::Amuse;
 use File::Copy qw/copy move/;
 use File::MimeInfo::Magic qw/mimetype/;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
+                                   muse_parse_file_path
                                    muse_naming_algo/;
 
 =head2 muse_body
@@ -334,6 +335,10 @@ sub add_attachment {
     elsif ($mime eq 'image/png') {
         $ext = '.png';
     }
+    # TODO
+    # the destination of the pdf attachment should be out of text tree
+    # to avoid silly overwriting. After all, we don't embed pdf in
+    # html or tex.
     elsif ($mime eq 'application/pdf') {
         $ext = '.pdf';
     }
@@ -344,20 +349,32 @@ sub add_attachment {
     unless ($pieces && @$pieces) {
         return "Couldn't parse the filename... this is a bug";
     }
-    use Data::Dumper;
-    print Dumper($pieces);
     # create a new filename
     my $full = join('-', @$pieces);
     my $base = muse_naming_algo(substr(join('-', @$pieces), 0, 50));
-    print "Base is $base";
-    my $suffix = 1;
+    my $suffix = 0;
     # and now we have to check if the same name exists in the
     # attachment table for the same site.
     my $name;
     do {
-        $name = $base . '-' . $suffix . $ext;
+        $name = $base . '-' . ++$suffix . $ext;
     } while ($self->site->attachments->find({ uri => $name }));
+
     die "Something went wrong" unless $name;
+
+    # copy it in the working directory
+    my $target = File::Spec->catfile($self->working_dir, $name);
+    copy($filename, $target) or die "Couldn't copy $filename to $target $!";
+
+    # and finally insert the thing in the db
+    my $info = muse_parse_file_path($target, 1);
+    return "Couldn't retrieve info from $target" unless $info;
+
+    $info->{uri} = $info->{f_name} . $info->{f_suffix};
+
+    # and let it crash on race conditions
+    $self->site->attachments->create($info);
+
     return 0;
 }
 

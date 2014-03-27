@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 58;
+use Test::More tests => 67;
 use File::Slurp qw/read_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
@@ -146,13 +146,18 @@ my %todo = (
             pdf => 1,
            );
 foreach my $f (@attached_paths) {
-    ok (-$ $f);
+    ok (-f $f);
     ok (index($f, $revision->working_dir) == 0);
     if ($f =~ m/\.(\w+)$/) {
         delete $todo{$1};
     }
 }
 ok (!%todo, "All extensions found");
+
+foreach my $f (@attached) {
+    my $att = $site->attachments->find({ uri => $f});
+    ok($att, "Attachment found in the db") and diag($att->uri);
+}
 
 # clean up for next test iteration
 $revision->title->delete;

@@ -18,6 +18,7 @@ our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
                     muse_naming_algo
                     muse_get_full_path
+                    muse_parse_file_path
                     muse_filename_is_valid/;
 
 =head2 muse_file_info($file, $site_id)
@@ -124,11 +125,52 @@ sub muse_file_info {
     return $details;
 }
 
-sub _parse_file_path {
-    my $file = shift;
+=head2 muse_parse_file_path($file, $skip_path_checking)
+
+Given a file $file, return an hashref with the following keys:
+
+=over 4
+
+=item f_path
+
+The directory
+
+=item f_name
+
+The basename
+
+=item f_archive_rel_path
+
+The archive path (e.g. a/ab)
+
+=item f_timestamp
+
+The file timestamp
+
+=item f_full_path_name
+
+The full absolute path to the file
+
+=item f_suffix
+
+The file extension
+
+=back
+
+If the second optional argument is provided, the archive relative path
+is not checked for sanity, so the file could reside anywhere. So,
+without the second argument with a true value C</etc/password.muse>
+would have been ignored, and C</tmp/my.muse> too. The same doesn't
+happen with the switch on and the file stats are collected nevertheless.
+
+=cut
+
+sub muse_parse_file_path {
+    my ($file, $skip_path_checking) = @_;
     unless (File::Spec->file_name_is_absolute($file)) {
         $file = File::Spec->rel2abs($file);
     }
+    return unless -f $file;
     my @exts = (qw/.muse .png .jpeg .jpg .pdf/);
     my ($name, $path, $suffix) = fileparse($file, @exts);
 
@@ -141,6 +183,17 @@ sub _parse_file_path {
         warn "$file has not a sane name!";
         return;
     }
+
+    my %out = (
+               f_path => $path,
+               f_name => $name,
+               f_archive_rel_path => '', # invalid by default
+               f_timestamp => _get_mtime($file),
+               f_full_path_name  => $file,
+               f_suffix => $suffix,
+              );
+    return \%out if $skip_path_checking;
+
     my @dirs = File::Spec->splitdir($path);
     @dirs = grep { $_ ne '' } @dirs;
     unless (@dirs >= 2) {
@@ -153,21 +206,14 @@ sub _parse_file_path {
         warn "$file is not in the correct path:" . Dumper(\@relpath);
         return;
     }
-    my %out = (
-               f_path => $path,
-               f_name => $name,
-               f_archive_rel_path => File::Spec->catdir(@relpath),
-               f_timestamp => _get_mtime($file),
-               f_full_path_name  => $file,
-               f_suffix => $suffix,
-              );
+    $out{f_archive_rel_path} = File::Spec->catdir(@relpath);
     return \%out;
 }
 
 
 sub _parse_muse_file {
     my $file = shift;
-    my $fileinfo = _parse_file_path($file);
+    my $fileinfo = muse_parse_file_path($file);
     return unless $fileinfo;
     # remove the suffix key
     if ($fileinfo->{f_suffix} ne '.muse') {

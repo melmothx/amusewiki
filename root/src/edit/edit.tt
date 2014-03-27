@@ -10,8 +10,8 @@
 <ul>
   [% FOREACH attach IN attachments %]
   <li><code>[% attach %]</code><br>
-    Use it in the body as <code>[[ [%- attach -%] ]]
-      or <code>[[ [%- attach -%] ][<em>My description</em>]]</code>.
+    Use it in the body as <code>[[[%- attach -%]]]</code>
+      or <code>[[[%- attach -%]][<em>My description</em>]]</code>.
   </li>
 </ul>
 [% END %]
