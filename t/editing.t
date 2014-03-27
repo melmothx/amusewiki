@@ -3,7 +3,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 38;
+use Test::More tests => 46;
+use File::Slurp qw/read_file/;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::Edit;
 
@@ -78,7 +79,7 @@ is $params->{uri}, 'my-uri-eruerer', "URI generated";
 ok !$arch->error, "No error set";
 ok !$arch->redirect, "No redirection";
 ok $revision->id, "Found revision" . $revision->id;
-
+ok (-d $revision->working_dir, "Working dir exists: " . $revision->working_dir);
 
 $muse = $revision->muse_body;
 
@@ -96,9 +97,26 @@ foreach my $k (qw/title
     like $muse, qr/\Q$string\E/, "And found in the body";
 }
 
+my $html_stored = read_file($revision->original_html);
+is $html_stored, $params->{textbody}, "HTML saved verbatim";
+
 like $muse, qr/^#notes Hello there asd <strong>fasdf<\/strong> as df$/m,
   "Notes parsed correctly";
 like $muse, qr/Hello <em>world/, "Body seems fine";
+
+ok (! -f $revision->starting_file, "No orig.muse");
+$revision->edit("blablabla");
+is $revision->muse_body, "blablabla", "Body overwritten";
+ok (-f $revision->starting_file, "Found orig.muse");
+like $revision->starting_file, qr/orig\.muse$/,
+  "orig file looks good " . $revision->starting_file;
+
+# is $revision->status, 'editing';
+
+$revision->edit("blablablaasdfasdf\r\nlaksdf\r\n");
+
+unlike $revision->muse_body, qr/\r/, "Carriage return stripped";
+is $revision->muse_body, "blablablaasdfasdf\nlaksdf\n";
 
 # clean up for next test iteration
 $revision->title->delete;

@@ -146,6 +146,11 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
     }
 
     # TODO manage file uploads
+
+    if (exists $c->request->params->{body}) {
+        $revision->edit($c->request->params);
+    }
+
     if ($c->request->params->{preview}) {
         # save a copy and overwrite
     }

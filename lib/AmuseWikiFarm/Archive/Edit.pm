@@ -126,6 +126,13 @@ sub import_text_from_html_params {
     my $file = $revision->f_full_path_name;
     die "full path was not set!" unless $file;
 
+    # save a copy of the html request
+    my $html_copy = File::Spec->catfile($revision->original_html);
+    open (my $fhh, '>:encoding(utf-8)', $html_copy)
+      or die "Couldn't open $html_copy $!";
+    print $fhh $params->{textbody};
+    close $fhh or die $!;
+
     # populate the file with the parameters
     open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
     # TODO add support for uid and cat (ATR)
