@@ -17,6 +17,7 @@ use Date::Parse qw/str2time/;
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
                     muse_naming_algo
+                    muse_get_full_path
                     muse_filename_is_valid/;
 
 =head2 muse_file_info($file, $site_id)

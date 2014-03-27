@@ -140,12 +140,14 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 12:38:38
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+kcdIGDZPSeRauslB6tq6A
 
-use File::Slurp;
+use File::Slurp qw/read_file/;
 use File::Basename qw/fileparse/;
 use File::Spec;
 use Text::Amuse;
 use File::Copy qw/copy move/;
-
+use File::MimeInfo::Magic qw/mimetype/;
+use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
+                                   muse_naming_algo/;
 
 =head2 muse_body
 
@@ -334,7 +336,40 @@ sub add_attachment {
     my ($self, $filename) = @_;
     die "Missing argument" unless $filename;
     return "$filename doesn't exist" unless -f $filename;
-    return "Couldn't upload $filename!: not implemented";
+    my $mime = mimetype($filename) || "";
+    my $ext;
+    if ($mime eq 'image/jpeg') {
+        $ext = '.jpg';
+    }
+    elsif ($mime eq 'image/png') {
+        $ext = '.png';
+    }
+    elsif ($mime eq 'application/pdf') {
+        $ext = '.pdf';
+    }
+    else {
+        return "Unsupported file type $mime";
+    }
+    my $pieces = muse_get_full_path($self->muse_uri);
+    unless ($pieces && @$pieces) {
+        return "Couldn't parse the filename... this is a bug";
+    }
+    use Data::Dumper;
+    print Dumper($pieces);
+    # create a new filename
+    my $full = join('-', @$pieces);
+    my $base = muse_naming_algo(substr(join('-', @$pieces), 0, 50));
+    print "Base is $base";
+    my $suffix = 1;
+    # and now we have to check if the same name exists in the
+    # attachment table for the same site.
+    my $name;
+    do {
+        $name = $base . '-' . $suffix . $ext;
+    } while ($name && $self->site->attachments->find({ uri => $name }));
+    print "$name is good";
+
+    return 0;
 }
 
 

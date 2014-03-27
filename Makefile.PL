@@ -49,6 +49,7 @@ requires 'Text::Amuse::Preprocessor' => 0.04;
 # requires 'Catalyst::Plugin::MemoryUsage';
 # requires 'DBIx::Class::Schema::Loader';
 requires 'MooseX::MarkAsMethods';
+requires 'File::MimeInfo';
 
 test_requires 'Test::More' => '0.88';
 

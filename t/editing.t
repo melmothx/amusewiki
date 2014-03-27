@@ -3,12 +3,13 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 46;
+use Test::More tests => 58;
 use File::Slurp qw/read_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::Edit;
 use Data::Dumper;
+use File::Copy;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -120,19 +121,38 @@ $revision->edit("blablablaasdfasdf\r\nlaksdf\r\n");
 unlike $revision->muse_body, qr/\r/, "Carriage return stripped";
 is $revision->muse_body, "blablablaasdfasdf\nlaksdf\n";
 
-my $attachbasename = 'shot.png';
-my $attachment = File::Spec->catfile(t => files => $attachbasename);
-ok (-f $attachment);
-
-is 0, $revision->add_attachment($attachment), "Attachment successful";
+foreach my $att (qw/png jpg pdf/) {
+    my $attachment = File::Spec->catfile(t => files => 'shot.' . $att);
+    ok (-f $attachment);
+    # make a copy without extension
+    my $obfuscated = File::Spec->catfile(t => files => 'xx' . $att . 'grbgd');
+    copy ($attachment, $obfuscated);
+    ok (-f $obfuscated);
+    is 0, $revision->add_attachment($obfuscated), "Attachment successful";
+    unlink $obfuscated;
+}
 
 my @attached = @{ $revision->attached_files };
 
-ok ((@attached == 1), "Got 1 attachment " . Dumper(\@attached));
+ok ((@attached == 3), "Got 3 attachment " . Dumper(\@attached));
 
 my @attached_paths = $revision->attached_files_paths;
 
-ok ((@attached_paths == 1), "Got 1 path " . Dumper(\@attached_paths));
+ok ((@attached_paths == 3), "Got 3 path " . Dumper(\@attached_paths));
+
+my %todo = (
+            jpg => 1,
+            png => 1,
+            pdf => 1,
+           );
+foreach my $f (@attached_paths) {
+    ok (-$ $f);
+    ok (index($f, $revision->working_dir) == 0);
+    if ($f =~ m/\.(\w+)$/) {
+        delete $todo{$1};
+    }
+}
+ok (!%todo, "All extensions found");
 
 # clean up for next test iteration
 $revision->title->delete;
