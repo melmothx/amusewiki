@@ -4,15 +4,39 @@
 
 [% revision.title.uri %]
 
-<form action="" method="post">
-<fieldset>
-<textarea rows="30" cols="80" id="maintextarea"
-          name="body">[%- revision.muse_body | html -%]</textarea>
-</fieldset>
-<fieldset>
-<input type="submit" name="preview" value="[% c.loc('Preview') %]" />
-<input type="submit" name="commit"  value="[% c.loc('Commit')  %]" />
-</fieldset>
+[% SET attachments = revision.attached_files %]
+[% IF attachments.size %]
+<h3>Attached files</h3>
+<ul>
+  [% FOREACH attach IN attachments %]
+  <li><code>[% attach %]</code><br>
+    Use it in the body as <code>[[ [%- attach -%] ]]
+      or <code>[[ [%- attach -%] ][<em>My description</em>]]</code>.
+  </li>
+</ul>
+[% END %]
+[% END %]
+
+<form method="post" enctype="multipart/form-data">
+</form>
+
+<h3>[% c.loc('Text editing') %]</h3>
+
+
+<form method="post" enctype="multipart/form-data">
+  <fieldset>
+    <h4>[% c.loc('Add an attachment') %]</h4>
+    <input id="attachment" name="attachment" type="file" /><br />
+  </fieldset>
+  <fieldset>
+    <h4>[% c.loc('Editing') %]</h4>
+    <textarea rows="30" cols="80" id="maintextarea"
+              name="body">[%- revision.muse_body | html -%]</textarea>
+  </fieldset>
+  <fieldset>
+    <input type="submit" name="preview" value="[% c.loc('Preview') %]" />
+    <input type="submit" name="commit"  value="[% c.loc('Commit')  %]" />
+  </fieldset>
 </form>
 
 [% SET text = revision.muse_doc.header_as_html %]

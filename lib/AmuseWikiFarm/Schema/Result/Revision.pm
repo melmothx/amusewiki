@@ -218,6 +218,50 @@ sub aux_file {
     return File::Spec->catfile($self->working_dir, 'private_aux.muse');
 }
 
+=head2 attached_files
+
+Return an array reference to the list of attached basenames.
+
+=cut
+
+sub attached_files {
+    my $self = shift;
+    my @files;
+    my $dir = $self->working_dir;
+    opendir(my $dh, $dir) || die "can't opendir $dir: $!";
+    # we know only about pdf, jpeg, png
+    @files = grep { /\w\.(pdf|jpe?g|png)$/ && -f File::Spec->catfile($dir, $_) }
+      readdir($dh);
+    closedir $dh;
+    return \@files;
+}
+
+sub attached_file_path {
+    my ($self, $name) = @_;
+    return unless $name;
+    my $path = File::Spec->catfile($self->working_dir, $name);
+    return unless -f $path;
+    return $path;
+}
+
+=head2 attached_files_path
+
+Return a list of absolute path to the attached files.
+
+=cut
+
+
+sub attached_files_paths {
+    my $self = shift;
+    my @paths;
+    foreach my $file (@{$self->attached_files}) {
+        my $path = $self->attached_file_path($file);
+        push @paths, $path if $path;
+    }
+    return @paths;
+}
+
+
 =head2 edit(\$string)
 
 Edit the current revision. It's reccomended to pass a reference to a
@@ -265,6 +309,8 @@ sub edit {
     # then filter it and write to an aux
     open (my $tmpfh, '<:encoding(utf-8)', $temp) or die "Can't open $temp $!";
     open (my $auxfh, '>:encoding(utf-8)', $aux) or die "Can't open $aux $!";
+
+    # TODO this is the good place to use the filters, not modifying the params
     while (<$tmpfh>) {
         s/\r//;
         s/\t/    /;
@@ -274,6 +320,21 @@ sub edit {
     close $tmpfh or die $!;
     move($aux, $target) or die "Couldn't move $aux to $target";
     # finally move it to the target file
+}
+
+=head2 add_attachment($filename)
+
+Given the filename as first argument, copy it into the working
+directory, taking care of not overwrite anything. Return 0 on success,
+the error otherwise.
+
+=cut
+
+sub add_attachment {
+    my ($self, $filename) = @_;
+    die "Missing argument" unless $filename;
+    return "$filename doesn't exist" unless -f $filename;
+    return "Couldn't upload $filename!: not implemented";
 }
 
 

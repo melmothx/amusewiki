@@ -145,18 +145,35 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
         $c->detach('/not_found');
     }
 
-    # TODO manage file uploads
+    my $params = $c->request->params;
 
-    if (exists $c->request->params->{body}) {
-        $revision->edit($c->request->params);
-    }
+    # on submit, do the editing. Please note that we don't care about
+    # the params. We save the body and pass that as preview. So if the
+    # user closes the browser, when it has a chance to pick it back.
+    if ($params->{preview} || $params->{commit}) {
+        $c->log->debug("Handling the thing");
+        if (exists $params->{body}) {
+            $revision->edit($params);
+        }
 
-    if ($c->request->params->{preview}) {
-        # save a copy and overwrite
-    }
-    elsif ($c->request->params->{submit}) {
-        # TODO release the lock and schedule a job.
-        # maybe also cleanup the files.
+        # handle the uploads, if any
+        foreach my $upload ($c->request->upload('attachment')) {
+
+            $c->log->debug($upload->tempname . ' => '. $upload->size );
+            $c->log->debug("Exists!") if -f $upload->tempname;
+
+            if (my $error = $revision->add_attachment($upload->tempname)) {
+                $c->flash->{error_msg} = $c->loc($error);
+            }
+            else {
+                $c->flash->{status_msg} = $c->loc("File uploaded!");
+            }
+        }
+
+        # if it's a commit, close the editing.
+        if ($params->{commit}) {
+
+        }
     }
 
     $c->stash(revision => $revision);

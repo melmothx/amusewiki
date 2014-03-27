@@ -5,8 +5,10 @@ use warnings;
 use utf8;
 use Test::More tests => 46;
 use File::Slurp qw/read_file/;
+use File::Spec;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::Edit;
+use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -117,6 +119,20 @@ $revision->edit("blablablaasdfasdf\r\nlaksdf\r\n");
 
 unlike $revision->muse_body, qr/\r/, "Carriage return stripped";
 is $revision->muse_body, "blablablaasdfasdf\nlaksdf\n";
+
+my $attachbasename = 'shot.png';
+my $attachment = File::Spec->catfile(t => files => $attachbasename);
+ok (-f $attachment);
+
+is 0, $revision->add_attachment($attachment), "Attachment successful";
+
+my @attached = @{ $revision->attached_files };
+
+ok ((@attached == 1), "Got 1 attachment " . Dumper(\@attached));
+
+my @attached_paths = $revision->attached_files_paths;
+
+ok ((@attached_paths == 1), "Got 1 path " . Dumper(\@attached_paths));
 
 # clean up for next test iteration
 $revision->title->delete;
