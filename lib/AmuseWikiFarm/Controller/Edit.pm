@@ -128,17 +128,18 @@ here.
 sub edit :Chained('text') :PathPart('') :Args(1) {
     my ($self, $c, $revision_id) = @_;
     # avoid stash cluttering
+    unless ($revision_id =~ m/^[0-9]+$/s) {
+        $c->detach(attachments => [$revision_id]);
+    }
+
     my $text = delete $c->stash->{text_to_edit};
     # if we're here and $text was not passed, something is wrong, so we die
     my $revision = $text->revisions->find($revision_id);
     unless ($revision) {
-        $c->log->warn("Couldn't find $revision_id!");
         $c->detach('/not_found');
-        return;
     }
 
     # TODO manage file uploads
-
     if ($c->request->params->{preview}) {
         # save a copy and overwrite
     }
@@ -147,12 +148,21 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
         # maybe also cleanup the files.
     }
 
-
-
     $c->stash(revision => $revision);
 }
 
-
+sub attachments :Private {
+    my ($self, $c, $path) = @_;
+    $c->log->debug("Handling attachment: $path");
+    # first, see if we have something global
+    if (my $attach = $c->stash->{site}->attachments->by_uri($path)) {
+        $c->log->debug("Found attachment $path");
+        $c->serve_static_file($attach->f_full_path_name);
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
 
 
 =Head1 AUTHOR
