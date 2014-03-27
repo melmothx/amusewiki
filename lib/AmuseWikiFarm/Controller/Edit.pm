@@ -7,6 +7,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use DateTime;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Edit - Catalyst Controller
@@ -174,8 +176,10 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
         if ($params->{commit}) {
             $c->flash(status_msg => "Changes committed, thanks!");
             $revision->status('ready');
-            $revision->update if $revision->is_changed;
-            $c->response->redirect('/');
+            $revision->updated(DateTime->now);
+            $revision->update;
+            $c->response->redirect($c->uri_for_action('/admin/pending'));
+            return;
         }
     }
 

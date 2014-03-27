@@ -1,0 +1,31 @@
+[% # -*- mode: html -*- %]
+
+[% c.loc('Pending revisions') %]
+
+<form method="post">
+  <table>
+    [% FOREACH rev IN revisions %]
+    <tr>
+      <td>
+        <a href="[% c.uri_for_action('/edit/edit', [rev.title.uri, rev.id]) %]">
+          [% rev.title.uri %]
+        </a>
+      </td>
+      <td>
+        [% rev.updated.dmy %] [% rev.updated.hms %]
+      </td>
+      <td>
+        [% rev.status %]
+      </td>
+    </tr>
+    [% END %]
+  </table>
+</form>
+        
+          
+        </a>
+      </li>
+
+    </ul>
+  </fieldset>
+</form>

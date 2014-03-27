@@ -42,6 +42,19 @@ sub debug_site_id :Local :Args(0) {
                            ));
 }
 
+=head2 pending
+
+List and act on the existing revisions
+
+=cut
+
+sub pending :Local :Args(0) {
+    my ($self, $c) = @_;
+    my @search = ({}, { order_by => { -desc => 'updated' } });
+    my @revisions = $c->stash->{site}->revisions->search(@search);
+    $c->stash(revisions => \@revisions);
+}
+
 
 =encoding utf8
 
