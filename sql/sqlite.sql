@@ -52,7 +52,8 @@ CREATE TABLE revision (
        title_id INTEGER NOT NULL REFERENCES title(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        f_full_path_name TEXT,
-       -- TODO: add an user_id, so we know to whom it belongs
+       status VARCHAR(16) NOT NULL DEFAULT 'editing',
+       user_id INTEGER NOT NULL DEFAULT 0, -- will reference the user
        updated DATETIME NOT NULL -- internal
 );
 

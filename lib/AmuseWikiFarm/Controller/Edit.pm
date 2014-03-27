@@ -47,7 +47,7 @@ sub index :Chained('root') :PathPart('new') :Args(0) {
         my $revision = $model->create_new($params);
         if ($revision) {
             $c->log->debug("All ok, found " . $revision->id);
-            $c->flash->{status_msg} = $c->loc("Created new text");
+            $c->flash(status_msg => $c->loc("Created new text"));
 
             my $uri = $revision->title->uri;
             my $id  = $revision->id;
@@ -56,9 +56,9 @@ sub index :Chained('root') :PathPart('new') :Args(0) {
         }
         else {
             $c->stash(processed_params => $params);
-            $c->flash->{error_msg} = $c->loc($model->error);
+            $c->flash(error_msg => $c->loc($model->error));
             if (my $existing = $model->redirect) {
-                $c->flash->{status_msg} = $existing;
+                $c->flash(status_msg => $existing);
             }
         }
     }
@@ -150,7 +150,7 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
     # on submit, do the editing. Please note that we don't care about
     # the params. We save the body and pass that as preview. So if the
     # user closes the browser, when it has a chance to pick it back.
-    if ($params->{preview} || $params->{commit}) {
+    if ($params->{preview} || $params->{commit} || $params->{upload}) {
         $c->log->debug("Handling the thing");
         if (exists $params->{body}) {
             $revision->edit($params);
@@ -163,16 +163,19 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
             $c->log->debug("Exists!") if -f $upload->tempname;
 
             if (my $error = $revision->add_attachment($upload->tempname)) {
-                $c->flash->{error_msg} = $c->loc($error);
+                $c->flash(error_msg => $c->loc($error));
             }
             else {
-                $c->flash->{status_msg} = $c->loc("File uploaded!");
+                $c->flash(status_msg => $c->loc("File uploaded!"));
             }
         }
 
         # if it's a commit, close the editing.
         if ($params->{commit}) {
-
+            $c->flash(status_msg => "Changes committed, thanks!");
+            $revision->status('ready');
+            $revision->update if $revision->is_changed;
+            $c->response->redirect('/');
         }
     }
 

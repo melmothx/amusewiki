@@ -13,8 +13,8 @@
     Use it in the body as <code>[[[%- attach -%]]]</code>
       or <code>[[[%- attach -%]][<em>My description</em>]]</code>.
   </li>
+  [% END %]
 </ul>
-[% END %]
 [% END %]
 
 <form method="post" enctype="multipart/form-data">
@@ -27,6 +27,7 @@
   <fieldset>
     <h4>[% c.loc('Add an attachment') %]</h4>
     <input id="attachment" name="attachment" type="file" /><br />
+    <input type="submit" name="upload" value="[% c.loc('Upload') %]" />
   </fieldset>
   <fieldset>
     <h4>[% c.loc('Editing') %]</h4>

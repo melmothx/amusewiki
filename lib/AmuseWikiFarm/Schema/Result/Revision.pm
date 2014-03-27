@@ -62,6 +62,19 @@ __PACKAGE__->table("revision");
   data_type: 'text'
   is_nullable: 1
 
+=head2 status
+
+  data_type: 'varchar'
+  default_value: 'editing'
+  is_nullable: 0
+  size: 16
+
+=head2 user_id
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 updated
 
   data_type: 'datetime'
@@ -78,6 +91,15 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "f_full_path_name",
   { data_type => "text", is_nullable => 1 },
+  "status",
+  {
+    data_type => "varchar",
+    default_value => "editing",
+    is_nullable => 0,
+    size => 16,
+  },
+  "user_id",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "updated",
   { data_type => "datetime", is_nullable => 0 },
 );
@@ -127,8 +149,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 13:43:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1oekzzMhYuSQ1uc/CXJsbA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 15:53:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MK51pOugupyd9sIvAvi2qw
 
 use File::Slurp qw/read_file/;
 use File::Basename qw/fileparse/;
