@@ -30,7 +30,7 @@ var ckconfiguration = {
 
 [% form_action %]
 
-<form id="ckform" action="[%- c.uri_for_action('edit/index') -%]" method="post"
+<form id="ckform" method="post"
       enctype="multipart/form-data">
   <fieldset>
     <label for="uri">

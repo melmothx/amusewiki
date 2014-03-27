@@ -46,7 +46,7 @@ sub index :Chained('root') :PathPart('new') :Args(0) {
 
             my $uri = $revision->title->uri;
             my $id  = $revision->id;
-            my $location = $c->uri_for_action('edit/edit', [$uri, $id]);
+            my $location = $c->uri_for_action('/edit/edit', [$uri, $id]);
             $c->response->redirect($location);
         }
         else {

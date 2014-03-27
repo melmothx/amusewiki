@@ -130,7 +130,7 @@ sub add :Chained('root') :PathPart('add') :Args(0) {
         unless ($to_add) {
             $c->log->warn("Tried to added $text but not found");
             $c->flash->{error_msg} = $c->loc("Couldn't add the text");
-            $c->response->redirect($c->uri_for_action('bookbuilder/index'));
+            $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
             return;
         }
 
@@ -140,7 +140,7 @@ sub add :Chained('root') :PathPart('add') :Args(0) {
 
         if (($current_state + $to_add->pages_estimated) > $site->bb_page_limit) {
             $c->flash->{error_msg} = $c->loc("Quota exceeded, too many pages");
-            $c->response->redirect($c->uri_for_action('bookbuilder/index'));
+            $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
             return;
         }
 
@@ -157,7 +157,7 @@ sub add :Chained('root') :PathPart('add') :Args(0) {
     else {
         $c->flash->{error_msg} = $c->loc("No text provided!");
     }
-    $c->response->redirect($c->uri_for_action('bookbuilder/index'));
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
 sub save_session :Private {
