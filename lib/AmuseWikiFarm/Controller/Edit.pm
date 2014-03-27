@@ -85,24 +85,32 @@ fresh one forking from the existing one.
 sub revs :Chained('text') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $text = $c->stash->{text_to_edit};
-    if ($c->request->params->{create}) {
+    my $uri  = $text->uri;
+    my @revs = $text->revisions->all;
+
+    # no existing revision or explicit request by posting: create new
+    if (!@revs || $c->request->params->{create}) {
         $c->log->debug("Creating a new revision");
         my $model = $c->stash->{editor};
         my $revision = $model->new_revision($text);
+        my $location = $c->uri_for_action('/edit/edit', [ $uri,
+                                                         $revision->id ]);
+        $c->response->redirect($location);
+        $c->detach();
+        return;
     }
 
-
-    my @revs = $text->revisions->all;
-
-    unless(@revs) {
-
-    }
+    # we can't decide ourself, so we list the revs
     my @uris;
-    if (@revs == 1) {
-        my $rev = $revs[0]->id;
-        my $uri = $revs[0]->title->uri;
-        push @uris, $c->uri_for_action('edit/edit', [$uri, $rev]);
+    foreach my $rev (@revs) {
+        push @uris, {
+                     uri => $c->uri_for_action('/edit/edit', [ $uri, $rev->id ]),
+                     created => $rev->updated->clone,
+                     # TODO add the user
+                     user => 0,
+                    };
     }
+    $c->stash(revisions => \@uris);
 }
 
 =head2 edit
@@ -111,6 +119,9 @@ Path /edit/<my-text>/<id>
 
 This path identifies a revision without ambiguity, and it's here where
 the real editing happens.
+
+This also intercepts the embedded images, so they should be handled
+here.
 
 =cut
 
