@@ -39,7 +39,12 @@ sub index :Chained('root') :PathPart('new') :Args(0) {
     # if there was a posting, process it
     if ($c->request->params->{go}) {
         my $model = $c->stash->{editor};
-        my $revision = $model->create_new($c->request->params);
+
+        # create a working copy of the params
+        my $params = { %{$c->request->params} };
+
+        # this call is going to add uri to $params, if not present
+        my $revision = $model->create_new($params);
         if ($revision) {
             $c->log->debug("All ok, found " . $revision->id);
             $c->flash->{status_msg} = $c->loc("Created new text");
@@ -50,6 +55,7 @@ sub index :Chained('root') :PathPart('new') :Args(0) {
             $c->response->redirect($location);
         }
         else {
+            $c->stash(processed_params => $params);
             $c->flash->{error_msg} = $c->loc($model->error);
             if (my $existing = $model->redirect) {
                 $c->flash->{status_msg} = $existing;

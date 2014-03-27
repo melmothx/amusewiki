@@ -38,14 +38,14 @@ var ckconfiguration = {
       ([% c.loc('automatically generated if not present') %])
     </label>
     <input type="text" name="uri" id="uri" size="50"
-           value="[% c.req.params.uri %]"/>
+           value="[% processed_params.uri %]"/>
   </fieldset>
   <fieldset>
     <p><label><em>Author</em> (for display):<br />
       <input type="text" name="author" id="author"
 	     maxlength="100" class="required"
 	     size="30"
-	     value="[% c.req.params.author | html %]" />
+	     value="[% processed_params.author | html %]" />
     </label></p>
     
     <p><label><em>Authors</em> (for indexing, semi-colon or <em>comma separated list</em>):<br />
@@ -53,28 +53,28 @@ var ckconfiguration = {
 	     size="50"
 	     maxlength="250"
 	     name="SORTauthors"
-	     value="[% c.req.params.SORTauthors | html %]" />
+	     value="[% processed_params.SORTauthors | html %]" />
     </label></p>
     
     <p><label><em>Title</em> (mandatory):<br />
       <input type="text" name="title"  class="required"
 	     maxlength="100"
 	     size="30"
-	     value="[% c.req.params.title | html %]" />
+	     value="[% processed_params.title | html %]" />
     </label></p>
     
     <p><label><em>Subtitle</em> (optional):<br />
       <input type="text" name="subtitle"
 	     maxlength="100"
 	     size="30"
-	     value="[% c.req.params.subtitle | html %]" />
+	     value="[% processed_params.subtitle | html %]" />
     </label></p>
     
     <p><label><em>Title for sorting</em> (you may want to strip the leading "A",
       "An", "The", and so on; optional)<br />
       <input type="text" name="LISTtitle"
 	     maxlength="100" size="30"
-	     value="[% c.req.params.LISTtitle | html %]" />
+	     value="[% processed_params.LISTtitle | html %]" />
     </label></p>
     
     <p><label><em>Topics</em> (mandatory, topics are very important 
@@ -83,7 +83,7 @@ var ckconfiguration = {
 	     size="50"
 	     maxlength="250"
 	     name="SORTtopics"
-	     value="[% c.req.params.SORTtopics | html %]" />
+	     value="[% processed_params.SORTtopics | html %]" />
     </label></p>
         
     <p><label><em>Date</em> of the original publication:
@@ -92,7 +92,7 @@ var ckconfiguration = {
 	     size="50"
 	     maxlength="250"
 	     name="date"
-	     value="[% c.req.params.date | html %]" />
+	     value="[% processed_params.date | html %]" />
     </label></p>
     
     <p><label><em>Source</em> (mandatory) (For texts from the internet use:
@@ -100,10 +100,10 @@ var ckconfiguration = {
       you may want to use “Scanned from original” or something like
       that) <br />
       <input id="source" size="50" maxlength="250"  class="required"
-	     name="source" value="[% c.req.params.source | html %]" />
+	     name="source" value="[% processed_params.source | html %]" />
     </label></p>
     <p>
-      [% SET current_language = c.req.params.lang || site.locale %]
+      [% SET current_language = processed_params.lang || site.locale %]
       <label for="lang">Language</label><br />
       <select name="lang" id="lang">
 
@@ -143,7 +143,7 @@ var ckconfiguration = {
     <div>&nbsp;</div>
     <div>
       <textarea id="textbody" name="textbody" cols="80"
-                rows="20">[%- c.req.params.textbody | html -%]</textarea>
+                rows="20">[%- processed_params.textbody | html -%]</textarea>
     </div>
     
     <h3>Notes</h3>
@@ -157,7 +157,7 @@ var ckconfiguration = {
     <div>&nbsp;</div>
     <div>
       <textarea id="notes" name="notes" cols="80"
-                rows="5">[%- c.req.params.notes | html %]</textarea>
+                rows="5">[%- processed_params.notes | html %]</textarea>
     </div>
 
     
