@@ -1,0 +1,24 @@
+[% # -*- mode: html -*- %]
+
+<h3>[% c.loc('Editing') %] [% text_to_edit.title %]</h3>
+
+<p>
+  [% c.loc("Some ongoing revisions were found") %].
+  [% c.loc("You can continue editing one of those, or create a new one") %]
+</p>
+
+<ul>
+  [% FOREACH rev IN revisions %]
+  <li>
+    <a href="[% rev.uri %]">[% c.loc("Created") %]
+      [% rev.created.dmy %] [% rev.created.hms %]</a>
+  </li>
+  [% END %] 
+</ul>
+
+[% c.loc("or create a new one") %]
+
+<form method="post">
+  <input type="submit" name="create" value="[% c.loc('New revision') %]">
+</form>
+
