@@ -48,7 +48,7 @@ __PACKAGE__->table("vhost");
 
   data_type: 'varchar'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
   size: 8
 
 =cut
@@ -57,7 +57,7 @@ __PACKAGE__->add_columns(
   "name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
 );
 
 =head1 PRIMARY KEY
@@ -86,17 +86,12 @@ __PACKAGE__->belongs_to(
   "site",
   "AmuseWikiFarm::Schema::Result::Site",
   { id => "site_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-01 22:09:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:k6hDUlN5n5h8ebpX3I+apQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 13:43:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rVB2FbOAAZQMxhaRi5Y1FA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -48,7 +48,7 @@ __PACKAGE__->table("page");
 
   data_type: 'varchar'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
   size: 8
 
 =head2 pubdate
@@ -107,7 +107,7 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
   "pubdate",
   { data_type => "datetime", is_nullable => 0 },
   "created",
@@ -175,17 +175,12 @@ __PACKAGE__->belongs_to(
   "site",
   "AmuseWikiFarm::Schema::Result::Site",
   { id => "site_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-25 19:14:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+kui97oyvv76rmNg4pg+3g
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 13:43:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zKo0up91CuT93tMXnTbXFA
 
 use File::Slurp;
 

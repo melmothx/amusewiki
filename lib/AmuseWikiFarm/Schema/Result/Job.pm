@@ -48,7 +48,7 @@ __PACKAGE__->table("job");
 
   data_type: 'varchar'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
   size: 8
 
 =head2 task
@@ -100,7 +100,7 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
   "task",
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "payload",
@@ -145,17 +145,12 @@ __PACKAGE__->belongs_to(
   "site",
   "AmuseWikiFarm::Schema::Result::Site",
   { id => "site_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-16 18:33:45
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H3u2jQ3b9j1Z+jMy/cKUHg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 13:43:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OtIcCassMd3LqfX1YQUvBg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

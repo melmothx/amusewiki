@@ -48,14 +48,14 @@ __PACKAGE__->table("revision");
 
   data_type: 'varchar'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
   size: 8
 
 =head2 title_id
 
   data_type: 'integer'
   is_foreign_key: 1
-  is_nullable: 1
+  is_nullable: 0
 
 =head2 f_full_path_name
 
@@ -73,9 +73,9 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
   "title_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "f_full_path_name",
   { data_type => "text", is_nullable => 1 },
   "updated",
@@ -108,12 +108,7 @@ __PACKAGE__->belongs_to(
   "site",
   "AmuseWikiFarm::Schema::Result::Site",
   { id => "site_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 =head2 title
@@ -128,17 +123,12 @@ __PACKAGE__->belongs_to(
   "title",
   "AmuseWikiFarm::Schema::Result::Title",
   { id => "title_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 12:38:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+kcdIGDZPSeRauslB6tq6A
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 13:43:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1oekzzMhYuSQ1uc/CXJsbA
 
 use File::Slurp qw/read_file/;
 use File::Basename qw/fileparse/;
@@ -366,9 +356,8 @@ sub add_attachment {
     my $name;
     do {
         $name = $base . '-' . $suffix . $ext;
-    } while ($name && $self->site->attachments->find({ uri => $name }));
-    print "$name is good";
-
+    } while ($self->site->attachments->find({ uri => $name }));
+    die "Something went wrong" unless $name;
     return 0;
 }
 

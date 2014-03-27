@@ -176,6 +176,8 @@ sub _add_directive {
 sub create_revision_for_title {
     my ($self, $title ) = @_;
     my $revision = $title->revisions->create({
+                                              # help dbic to cope with this
+                                              site_id => $title->site->id,
                                               updated => DateTime->now,
                                              });
     my $uri = $revision->title->uri;

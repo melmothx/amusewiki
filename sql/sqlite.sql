@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS author;
 
 CREATE TABLE vhost (
        name VARCHAR(255) PRIMARY KEY,
-       site_id VARCHAR(8) REFERENCES site(id)
+       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -47,17 +47,18 @@ CREATE TABLE site (
 
 CREATE TABLE revision (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       site_id VARCHAR(8) REFERENCES site(id)
+       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
-       title_id INTEGER REFERENCES title(id)
+       title_id INTEGER NOT NULL REFERENCES title(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        f_full_path_name TEXT,
+       -- TODO: add an user_id, so we know to whom it belongs
        updated DATETIME NOT NULL -- internal
 );
 
 CREATE TABLE page (
        id INTEGER PRIMARY KEY,
-       site_id VARCHAR(8) REFERENCES site(id)
+       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        pubdate DATETIME NOT NULL,
        created DATETIME NOT NULL, -- internal
@@ -73,7 +74,7 @@ CREATE UNIQUE INDEX unique_page ON page (uri, site_id);
 
 CREATE TABLE job (
        id INTEGER PRIMARY KEY,
-       site_id VARCHAR(8) REFERENCES site(id)
+       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        task      VARCHAR(32),
        payload   TEXT, -- the JSON stuff
@@ -134,9 +135,9 @@ CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
 
 -- 'book_author' is a many-to-many join table between books & authors
 CREATE TABLE title_category (
-        title_id     INTEGER REFERENCES title(id)
+        title_id     INTEGER NOT NULL REFERENCES title(id)
                      ON DELETE CASCADE ON UPDATE CASCADE,
-        category_id  INTEGER REFERENCES category(id)
+        category_id  INTEGER NOT NULL REFERENCES category(id)
                      ON DELETE CASCADE ON UPDATE CASCADE,
         PRIMARY KEY (title_id, category_id)
 );
