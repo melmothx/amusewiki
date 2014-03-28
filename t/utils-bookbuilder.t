@@ -12,9 +12,9 @@ binmode $builder->failure_output, ":utf8";
 binmode $builder->todo_output,    ":utf8";
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid muse_naming_algo/;
-use AmuseWikiFarm::Utils::BookBuilder;
+use AmuseWikiFarm::Archive::BookBuilder;
 
-my $bb = AmuseWikiFarm::Utils::BookBuilder->new;
+my $bb = AmuseWikiFarm::Archive::BookBuilder->new;
 
 my @list = (qw/a-a
                a-b-c

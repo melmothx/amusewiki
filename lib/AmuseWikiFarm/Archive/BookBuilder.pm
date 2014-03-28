@@ -1,4 +1,5 @@
-package AmuseWikiFarm::Utils::BookBuilder;
+package AmuseWikiFarm::Archive::BookBuilder;
+
 use utf8;
 use strict;
 use warnings;

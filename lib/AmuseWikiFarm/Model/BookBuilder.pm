@@ -5,7 +5,7 @@ use warnings;
 use base 'Catalyst::Model::Factory::PerRequest';
 
 __PACKAGE__->config(
-    class => 'AmuseWikiFarm::Utils::BookBuilder',
+    class => 'AmuseWikiFarm::Archive::BookBuilder',
 );
 
 =head1 NAME
@@ -18,7 +18,7 @@ See L<AmuseWikiFarm>
 
 =head1 DESCRIPTION
 
-Wrap L<XML::FeedPP> into the catalyst app
+Wrap L<AmuseWikiFarm::Archive::BookBuilder> into the catalyst app
 
 =head1 AUTHOR
 
