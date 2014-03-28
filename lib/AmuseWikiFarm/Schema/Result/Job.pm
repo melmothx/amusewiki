@@ -152,7 +152,27 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 13:43:57
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OtIcCassMd3LqfX1YQUvBg
 
+use JSON qw/to_json
+            from_json/;
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub as_json {
+    my $self = shift;
+    my $struct = {
+                  id       => $self->id,
+                  site_id  => $self->site_id,
+                  task     => $self->task,
+                  payload  => from_json($self->payload),
+                  status   => $self->status,
+                  created  => $self->created->iso8601,
+                  # completed => $self->completed->iso8601,
+                  priority => $self->priority,
+                  produced => $self->produced,
+                  errors   => $self->errors,
+                 };
+    return to_json($struct);
+}
+
+
+
 __PACKAGE__->meta->make_immutable;
 1;

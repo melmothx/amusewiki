@@ -55,20 +55,7 @@ sub fetch_job_by_id_json {
     my ($self, $id) = @_;
     my $job = $self->fetch_job_by_id($id);
     return to_json({ errors => 'No such job' }) unless $job;
-    # for now expose everything
-    my $struct = {
-                  id       => $id,
-                  site_id  => $job->site_id,
-                  task     => $job->task,
-                  payload  => from_json($job->payload),
-                  status   => $job->status,
-                  created  => $job->created->iso8601,
-                  # completed => $job->completed->iso8601,
-                  priority => $job->priority,
-                  produced => $job->produced,
-                  errors   => $job->errors,
-                 };
-    return to_json($struct);
+    return $job->as_json;
 }
 
 sub get_job {

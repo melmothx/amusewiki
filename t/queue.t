@@ -3,7 +3,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More;
+use Test::More tests => 13;
+use Data::Dumper;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::Queue;
 use JSON qw/from_json/;
@@ -29,7 +30,17 @@ is($job->status, 'taken');
 
 is_deeply(from_json($job->payload), { this  => 0, test => 'òć' });
 
-sleep 1;
+my $json = $job->as_json;
+ok($json);
+
+my $struct = from_json($json);
+
+is_deeply($struct->{payload},  { this  => 0, test => 'òć' });
+is $struct->{task}, 'testing';
+is $struct->{status}, 'taken';
+is $struct->{site_id}, '0blog0';
+is $struct->{priority}, 5;
+is $struct->{id}, $id;
 
 # empty the jobs
 
