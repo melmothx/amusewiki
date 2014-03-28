@@ -44,6 +44,11 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 8
 
+=head2 archive_root
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 locale
 
   data_type: 'varchar'
@@ -196,6 +201,8 @@ __PACKAGE__->table("site");
 __PACKAGE__->add_columns(
   "id",
   { data_type => "varchar", is_nullable => 0, size => 8 },
+  "archive_root",
+  { data_type => "text", is_nullable => 1 },
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "sitename",
@@ -374,9 +381,25 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 08:30:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uoYX18M0VJIFiadGBhwVBg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-28 09:43:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:57n9HXSX1JNk3em05IGFtA
 
+use File::Spec;
+use Cwd;
+use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
+                                   muse_naming_algo/;
+
+=head2 repo_root
+
+The root of the repository.
+
+=cut
+
+sub repo_root {
+    my $self = shift;
+    my $root = $self->archive_root || File::Spec->catdir(getcwd(), 'repo');
+    return File::Spec->catdir($root, $self->id);
+}
 
 =head2 compile_options
 
@@ -446,6 +469,27 @@ sub known_langs {
              en => 'English',
            };
 }
+
+
+sub path_for_file {
+    my ($self, $uri) = @_;
+    return unless $uri;
+    my $pieces = muse_get_full_path($uri);
+    return unless $pieces && @$pieces && @$pieces == 3;
+
+    # add the path piece by piece
+    my $target_dir = File::Spec->catdir($self->repo_root, $pieces->[0]);
+    unless (-d $target_dir) {
+        mkdir $target_dir or die $!;
+    }
+    $target_dir = File::Spec->catdir($self->repo_root,
+                                     $pieces->[0], $pieces->[1]);
+    unless (-d $target_dir) {
+        mkdir $target_dir or die $!;
+    }
+    return $target_dir;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

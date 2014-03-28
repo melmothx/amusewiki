@@ -2,8 +2,10 @@
 
 use strict;
 use warnings;
-use Test::More tests => 6;
+use Test::More tests => 10;
 use Data::Dumper;
+use Cwd;
+use File::Spec;
 
 use AmuseWikiFarm::Schema;
 
@@ -45,4 +47,18 @@ my $test = $site->titles->random_text;
 
 like $test->html_body, qr/<p>/, "Found the HTML body";
 like $test->muse_body, qr/#title/, "Found the muse body";
+
+ok (!$site->archive_root);
+is ($site->repo_root, File::Spec->catdir(getcwd(), repo => $site->id));
+
+my $targetdir = $site->path_for_file("che-cacca");
+
+is ($targetdir, File::Spec->catdir($site->repo_root,
+                                   qw/c cc/));
+
+diag "Found $targetdir";
+rmdir $targetdir if -d $targetdir;
+ok (-d $site->path_for_file("che-cacca"));
+
+
 
