@@ -259,7 +259,7 @@ sub attached_file_path {
     return $path;
 }
 
-=head2 attached_files_path
+=head2 attached_files_paths
 
 Return a list of absolute path to the attached files.
 
@@ -400,6 +400,17 @@ sub add_attachment {
     return 0;
 }
 
+sub destination_paths {
+    my $self = shift;
+    my $target_dir = $self->site->path_for_file($self->muse_uri);
+    return unless $target_dir && -d $target_dir;
+    my %dests;
+    foreach my $file ($self->f_full_path_name, $self->attached_files_paths) {
+        my ($basename, $path) = fileparse($file);
+        $dests{$file} = File::Spec->catfile($target_dir, $basename);
+    }
+    return %dests;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

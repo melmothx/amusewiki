@@ -3,10 +3,11 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 67;
+use Test::More tests => 76;
 use File::Slurp qw/read_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
+use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Archive::Edit;
 use Data::Dumper;
 use File::Copy;
@@ -51,6 +52,12 @@ $revision = $arch->create_new($params);
 ok(!$revision, "Nothing returned");
 is $arch->redirect, 'deleted-text', "Found a redirect, text exists";
 is $arch->redirect, $params->{uri};
+
+# clean up before testing
+
+if (my $testtext = $site->titles->find({ uri => 'my-uri-eruerer' })) {
+    $testtext->delete;
+}
 
 
 $arch = AmuseWikiFarm::Archive::Edit->new(site_schema => $site);
@@ -121,6 +128,9 @@ $revision->edit("blablablaasdfasdf\r\nlaksdf\r\n");
 unlike $revision->muse_body, qr/\r/, "Carriage return stripped";
 is $revision->muse_body, "blablablaasdfasdf\nlaksdf\n";
 
+$revision->edit("#title From editing\n\n llaksdl ajksdflja lsdjkfl akjsdf\n");
+
+
 foreach my $att (qw/png jpg pdf/) {
     my $attachment = File::Spec->catfile(t => files => 'shot.' . $att);
     ok (-f $attachment);
@@ -160,5 +170,38 @@ foreach my $f (@attached) {
 }
 
 # clean up for next test iteration
-$revision->title->delete;
+
+my %dests = $revision->destination_paths;
+
+ok (%dests, "Found destination paths");
+
+foreach my $k (keys %dests) {
+    ok (-f $k, "Found $k => $dests{$k}");
+}
+
+my $archive = AmuseWikiFarm::Archive->new(dbic => $schema,
+                                          code => $site->id);
+
+
+$archive->publish_revision($revision->id);
+
+my $rev_id = $revision->id;
+
+undef $revision;
+
+
+my $testtext = $site->titles->find({ uri => 'my-uri-eruerer' });
+
+ok $testtext->id;
+
+ok $testtext->title, "revision has been published" and diag $testtext->title;
+
+ok $testtext->is_published, "Published ok";
+
+$testtext->delete;
+
+my $purge_rev = $site->revisions->find($rev_id);
+ok(!$purge_rev, "Revision $rev_id purged");
+
+# $revision->title->delete;
 

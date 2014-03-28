@@ -11,7 +11,9 @@ use Search::Xapian (':all');
 use AmuseWikiFarm::Utils::Amuse qw/muse_file_info/;
 use Unicode::Collate::Locale;
 use File::Spec;
+use File::Copy;
 use AmuseWikiFarm::Archive::Xapian;
+use Text::Amuse::Compile;
 
 
 has code => (is => 'ro',
@@ -83,6 +85,63 @@ sub site {
     my $self = shift;
     return $self->dbic->resultset('Site')->find($self->code);
 }
+
+
+=head2 publish_revision($revision)
+
+Receive a revision id as first argument and publish it.
+
+Procedure:
+
+=over 4
+
+=item carefully move it in the target directory
+
+=item if in a git directory, add it to the git and commit
+
+This is marked as TODO
+
+=item compile the file and report errors, if any
+
+=item call index_file on the muse and the attachments
+
+=item call collation_index
+
+=back
+
+=cut
+
+sub publish_revision {
+    my ($self, $id) = @_;
+    die "Wrong usage" unless defined $id;
+
+    # TODO here we should check that the site match the revision.
+
+    my $rev = $self->dbic->resultset('Revision')->find($id);
+    my %files = $rev->destination_paths;
+
+    my @todo;
+    my $muse;
+
+    # TODO some validation
+    foreach my $k (keys %files) {
+        my $dest = $files{$k};
+        copy($k, $dest) or die "Couldn't copy $k to $dest $!";
+        push @todo, $dest;
+        if ($dest =~ m/\.muse$/s) {
+            $muse = $dest;
+        }
+    }
+
+    die "Couldn't find a muse file in the revision" unless $muse;
+    my $compiler = Text::Amuse::Compile->new($rev->site->compile_options);
+    $compiler->compile($muse);
+    foreach my $f (@todo) {
+        $self->index_file($f);
+    }
+    $self->collation_index;
+}
+
 
 =head2 index_file($file)
 
