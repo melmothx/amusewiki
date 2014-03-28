@@ -37,6 +37,16 @@
             [% c.loc('Book builder') %]
           </a>
         </li>
+        <li>
+          <a href="[% c.uri_for('/new') %]">
+            [% c.loc('Add to library') %]
+          </a>
+        </li>
+        <li>
+          <a href="[% c.uri_for('/admin/pending') %]">
+            [% c.loc('Pending') %]
+          </a>
+        </li>
       </ul>
     </div>
     <div id="vwbanner">

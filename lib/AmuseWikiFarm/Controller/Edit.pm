@@ -145,14 +145,19 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
     my $revision = $text->revisions->find($revision_id);
     unless ($revision) {
         $c->detach('/not_found');
+        return;
     }
-
     my $params = $c->request->params;
 
     # on submit, do the editing. Please note that we don't care about
     # the params. We save the body and pass that as preview. So if the
     # user closes the browser, when it has a chance to pick it back.
     if ($params->{preview} || $params->{commit} || $params->{upload}) {
+
+        $revision->status('editing');
+        $revision->updated(DateTime->now);
+        $revision->update;
+
         $c->log->debug("Handling the thing");
         if (exists $params->{body}) {
             $revision->edit($params);
@@ -176,7 +181,6 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
         if ($params->{commit}) {
             $c->flash(status_msg => "Changes committed, thanks!");
             $revision->status('ready');
-            $revision->updated(DateTime->now);
             $revision->update;
             $c->response->redirect($c->uri_for_action('/admin/pending'));
             return;

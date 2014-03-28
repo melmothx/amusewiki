@@ -1,6 +1,6 @@
 [% # -*- mode: html -*- %]
 
-[% c.loc('Pending revisions') %]
+<h3>[% c.loc('Pending revisions') %]</h3>
 
 <form method="post">
   <table>
@@ -12,7 +12,7 @@
         </a>
       </td>
       <td>
-        [% rev.updated.dmy %] [% rev.updated.hms %]
+        [% rev.updated.dmy %] [% rev.updated.hms %] [% c.loc('UTC') %]
       </td>
       <td>
         [% rev.status %]
