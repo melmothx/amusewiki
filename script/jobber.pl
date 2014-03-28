@@ -9,6 +9,7 @@ use lib "$Bin/../lib";
 
 
 use AmuseWikiFarm::Schema;
+use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Archive::Queue;
 use JSON qw/from_json/;
 use Data::Dumper;
@@ -30,20 +31,22 @@ my $jobdir = File::Spec->catdir($cwd, 'root', 'custom');
 
 print "Starting job server loop in $cwd\n";
 
+my %handlers = (
+                bookbuilder => \&bookbuilder,
+                publish     => \&publish,
+               );
+
 while (1) {
-    do_the_job();
-    sleep 3;
-}
-
-
-sub do_the_job {
     chdir $cwd or die $!;
+    sleep 3;
     my $job = $queue->get_job;
-    return unless $job;
-    if ($job->task eq 'bookbuilder') {
+    next unless $job;
+    print $job->status, " => ", $job->task, "\n";
+    print Dumper(\%handlers);
+    if (my $handler = $handlers{$job->task}) {
         my $output;
         eval {
-            $output = bookbuilder($job);
+            $output = $handler->($job);
         };
         if (!$@ && $output) {
             $job->completed(DateTime->now);
@@ -56,11 +59,24 @@ sub do_the_job {
         }
     }
     else {
+        print "No handler found for " . $job->task . "\n";
         $job->status('pending');
     }
     $job->update;
 }
 
+sub publish {
+    my $j = shift;
+    my $archive = AmuseWikiFarm::Archive->new(code => $j->site->id,
+                                              dbic => $schema);
+    my $data = from_json($j->payload);
+    print Dumper($data);
+    $archive->publish_revision($data->{id});
+}
+
+# TODO this one should be moved in Archive::BookBuilder, or in
+# archive, so it should know how to handle the options. It also lacks
+# testing, but appears good
 sub bookbuilder {
     my $j = shift;
     my $data = from_json($j->payload);

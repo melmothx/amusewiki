@@ -1,8 +1,14 @@
 [% # -*- mode: html -*- %]
 
+<!-- [% c.loc('editing') %]
+     [% c.loc('ready')   %]
+     [% c.loc('processing') %]
+     [% c.loc('failed') %]
+     [% c.loc('published') %] -->
+
+[% IF revisions.size %]
 <h3>[% c.loc('Pending revisions') %]</h3>
 
-<form method="post">
   <table>
     [% FOREACH rev IN revisions %]
     <tr>
@@ -15,17 +21,23 @@
         [% rev.updated.dmy %] [% rev.updated.hms %] [% c.loc('UTC') %]
       </td>
       <td>
+        [% IF rev.status == 'ready' %]
+        <form method="post">
+          <input type="hidden" name="publish" value="[% rev.id %]" />
+          <input type="submit" name="go" value="[% c.loc('Publish') %]" />
+        </form>
+        [% ELSIF rev.status == 'published' %]
+        <a href="[% c.uri_for_action('/library/text', [ rev.title.uri ]) %]">
+          [% c.loc(rev.status) %]
+        </a>
+        [% ELSE %]
         [% rev.status %]
+        [% END %]
       </td>
+
     </tr>
     [% END %]
   </table>
-</form>
-        
-          
-        </a>
-      </li>
 
-    </ul>
-  </fieldset>
-</form>
+        
+[% END %]

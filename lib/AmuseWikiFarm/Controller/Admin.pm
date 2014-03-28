@@ -50,9 +50,28 @@ List and act on the existing revisions
 
 sub pending :Local :Args(0) {
     my ($self, $c) = @_;
-    my @search = ({}, { order_by => { -desc => 'updated' } });
-    my @revisions = $c->stash->{site}->revisions->search(@search);
+    my $site = $c->stash->{site};
+    if (my $revid = $c->request->params->{publish}) {
+        # TODO validate the params
+        my $rev = $site->revisions->find($revid);
+        if ($rev and $rev->status eq 'ready') {
+            my $data = { id => $rev->id };
+            my $queue = $c->model('Queue')->publish_add($rev->site_id, $data);
+            $rev->status('processing');
+            $rev->update;
+        }
+        else {
+            $c->flash(error_msg => "Bad revision!");
+        }
+    }
+
+    my @search = ({},
+                  { order_by => { -desc => 'updated' } });
+
+    my @revisions = $site->revisions->search(@search);
     $c->stash(revisions => \@revisions);
+
+
 }
 
 

@@ -115,15 +115,15 @@ sub publish_revision {
     my ($self, $id) = @_;
     die "Wrong usage" unless defined $id;
 
-    # TODO here we should check that the site match the revision.
-
-    my $rev = $self->dbic->resultset('Revision')->find($id);
+    my $rev = $self->site->revisions->find($id);
+    # let it die if rev is undef.
     my %files = $rev->destination_paths;
 
     my @todo;
     my $muse;
 
-    # TODO some validation
+    # TODO some validation. The original file should match the orig.muse
+    # otherwise we loose history
     foreach my $k (keys %files) {
         my $dest = $files{$k};
         copy($k, $dest) or die "Couldn't copy $k to $dest $!";
@@ -140,6 +140,9 @@ sub publish_revision {
         $self->index_file($f);
     }
     $self->collation_index;
+    $rev->status('published');
+    $rev->update; # or even delete it
+    return $rev->muse_uri;
 }
 
 

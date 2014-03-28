@@ -26,6 +26,11 @@ sub bookbuilder_add {
     return $self->add_job(bookbuilder => $site_id, $payload, 3);
 }
 
+sub publish_add {
+    my ($self, $site_id, $payload) = @_;
+    return $self->add_job(publish => $site_id, $payload, 5);
+}
+
 sub add_job {
     my ($self, $task, $site_id, $payload, $priority) = @_;
     my $insertion = {
