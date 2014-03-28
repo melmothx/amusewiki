@@ -56,9 +56,11 @@ sub pending :Local :Args(0) {
         my $rev = $site->revisions->find($revid);
         if ($rev and $rev->status eq 'ready') {
             my $data = { id => $rev->id };
-            my $queue = $c->model('Queue')->publish_add($rev->site_id, $data);
+            my $job_id = $c->model('Queue')->publish_add($rev->site_id, $data);
             $rev->status('processing');
             $rev->update;
+            $c->res->redirect($c->uri_for_action('/tasks/display', [$job_id]));
+            return;
         }
         else {
             $c->flash(error_msg => "Bad revision!");

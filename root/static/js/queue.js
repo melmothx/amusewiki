@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('.nojs').hide();
 });
 
-var BookBuilderStatus = '';
+var JobStatus = '';
 
 function update_status(url) {
     $.getJSON(url, function(data) {
@@ -22,13 +22,14 @@ function update_status(url) {
             $('pre.errors').text(data.errors);
             console.log(data.errors);
         }
-
-        if (data.status != BookBuilderStatus) {
+        console.log(data.status + '=>' + JobStatus);
+        if (data.status != JobStatus) {
             $('.bbstatus').hide();
             $('span.bbstatusstring').text(bbstatus[data.status]);
             var div = '.' + data.status;
+            console.log("Showing" + div);
             $(div).show();
-            BookBuilderStatus = data.status;
+            JobStatus = data.status;
         }
     });
 };

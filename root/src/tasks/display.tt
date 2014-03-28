@@ -11,13 +11,22 @@
   };
 </script>
 
+[% IF job.task == 'bookbuilder' %]
+  [% SET mymessage =  c.loc('Your file is ready') %]
+  [% SET baseuri = c.uri_for('/custom/') %]
+[% ELSIF job.task == 'publish' %]
+  [% SET mymessage =  c.loc('The text has been published') %]
+  [% SET baseuri = c.uri_for('/library/') %]
+[% END %]
+
+
 <div class="nojs">
   <pre>
     [% job.errors %]
   </pre>
   [% IF job.produced %]
-  <a href="[% c.uri_for('/custom', job.produced) %]">
-    [% c.loc('Your file is ready') %]
+  <a href="[% baseuri %][% produced %]">
+    [% mymessage %]
   </a>
   [% ELSE %]
   <p>
@@ -38,8 +47,8 @@
 
 <div class="bbstatus completed" style="display:none">
   <strong>
-    <a class="produced" href="[% c.uri_for('/custom/') %]">
-      [% c.loc('Your file is ready') %]
+    <a class="produced" href="[% baseuri %]">
+      [% mymessage %]
     </a>
   </strong>
 </div>
@@ -53,9 +62,9 @@
 <div id="debug"></div>
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="[% c.uri_for('/static/js/bookbuilder.js') %]"></script>
+<script src="[% c.uri_for('/static/js/queue.js') %]"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    update_status('[% c.uri_for('/bookbuilder/ajax/status', job.id) %]');
+    update_status('[% c.uri_for_action('/tasks/ajax', [job.id]) %]');
   });
 </script>

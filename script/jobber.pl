@@ -41,6 +41,7 @@ while (1) {
     sleep 3;
     my $job = $queue->get_job;
     next unless $job;
+    print "Dispatching " . $job->id;
     print $job->status, " => ", $job->task, "\n";
     print Dumper(\%handlers);
     if (my $handler = $handlers{$job->task}) {

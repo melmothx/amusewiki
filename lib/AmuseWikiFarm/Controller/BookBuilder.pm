@@ -76,19 +76,13 @@ sub index :Chained('root') :PathPart('') :Args(0) {
             $c->forward('save_session');
 
             # and redirect to the status page
-            $c->res->redirect($c->uri_for_action('/bookbuilder/status', $job_id));
+            $c->res->redirect($c->uri_for_action('/tasks/display', [$job_id]));
         }
         # if we get this, the user cheated and doesn't deserve an explanation
         else {
             $c->flash->{error_msg} = $c->loc("Couldn't build that");
         }
     }
-}
-
-sub status :Chained('root') :PathPart('status') :Args(1) {
-    my ($self, $c, $job) = @_;
-    $c->stash(job => $c->model('Queue')->fetch_job_by_id($job));
-    $c->log->debug("Job id is $job");
 }
 
 sub edit :Chained('root') :PathPart('edit') :Args(0) {
