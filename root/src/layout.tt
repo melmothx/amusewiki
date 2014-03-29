@@ -42,11 +42,18 @@
             [% c.loc('Add to library') %]
           </a>
         </li>
+        [% IF c.user_exists %]
         <li>
           <a href="[% c.uri_for('/admin/pending') %]">
             [% c.loc('Pending') %]
           </a>
         </li>
+        <li>
+          <a href="[% c.uri_for('/logout') %]">
+            [% c.loc('Logout') %]
+          </a>
+        </li>
+        [% END %]
       </ul>
     </div>
     <div id="vwbanner">
