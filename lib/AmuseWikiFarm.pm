@@ -58,6 +58,7 @@ use Catalyst
   'Static::Simple',
   '-Log=warn,fatal,error',
 #  'MemoryUsage',
+  'Authentication',
   'Session',
   'Session::Store::File',
   'Session::State::Cookie';
@@ -93,6 +94,17 @@ __PACKAGE__->config(
            ],
        },
    );
+
+# Configure SimpleDB Authentication
+__PACKAGE__->config(
+    'Plugin::Authentication' => {
+        default => {
+            class           => 'SimpleDB',
+            user_model      => 'DB::User',
+            password_type   => 'clear',
+        },
+    },
+);
 
 # Start the application
 __PACKAGE__->setup();
