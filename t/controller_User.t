@@ -28,18 +28,26 @@ $user->set_roles([{ role => 'librarian' }]);
 
 $mech->get_ok( '/login'  );
 $mech->get_ok( '/logout' );
-
+$mech->get_ok( '/human'  );
 $mech->get_ok( '/special/index', "Can access the index page");
 
 $mech->content_lacks('textarea', "No textarea found in special");
+
+$mech->content_lacks('/admin/', "No link to admin");
 
 $mech->post('/special/index/edit', {
                                     body => "#title blabla\n\nnblablabla\n"
                                    });
 
-like ($mech->uri, qr{/login}, "Bounced to login");
+is $mech->status, 403, "Bounced to error page";
+$mech->content_contains("Access denied", "Access denied");
 
-$mech->content_lacks('/special/index', 'blablabla', "Index not updated");
+$mech->content_lacks('blablabla', "Index not updated");
+
+$mech->get('/special/pippo/edit');
+
+is $mech->status, 403, "Bounced to error page";
+$mech->content_contains("Access denied", "Access denied");
 
 $mech->post('/login' => {
                          username => 'pallino'
@@ -49,10 +57,14 @@ like $mech->uri, qr{/login}, "No authorized, still on login";
 
 $mech->post('/login' => {
                          username => 'pinco',
-                         password => 'pallino'
+                         password => 'pallino',
+                         submit => 1,
                         });
 
 $mech->content_contains(q{/logout"}, "Page contains the logout link");
 $mech->get_ok( '/logout' );
+
+like $mech->uri, qr{/login}, "Bounced to login";
+like $mech->content, qr{You have logged out}, "status message correct";
 
 done_testing();

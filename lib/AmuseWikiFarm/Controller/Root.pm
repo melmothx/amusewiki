@@ -77,8 +77,16 @@ sub not_found :Global {
     my ($self, $c) = @_;
     $c->response->status(404);
     $c->log->debug("In the not_found!");
-    $c->stash(error_msg => "Page not found!");
-    $c->stash(template => "not_found.tt");
+    $c->stash(error_msg => $c->loc("Page not found!"));
+    $c->stash(template => "error.tt");
+}
+
+sub not_permitted :Global {
+    my ($self, $c) = @_;
+    $c->response->status(403);
+    $c->log->debug("denied");
+    $c->stash(error_msg => $c->loc("Access denied!"));
+    $c->stash(template => "error.tt");
 }
 
 =head2 end

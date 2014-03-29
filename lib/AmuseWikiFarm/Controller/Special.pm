@@ -46,6 +46,13 @@ sub display :Chained('entry') :PathPart('') :Args(0) {
 
 sub edit :Chained('entry') :PathPart('edit') :Args(0) {
     my ($self, $c) = @_;
+
+    # prevent editing from non-logged in. Don't bother to offer a
+    # login page, it just should not happen.
+    unless ($c->user_exists) {
+        $c->detach('/not_permitted');
+        return;
+    }
     my $params = $c->request->params;
     my $page   = $c->stash->{special_uri};
     my $model  = $c->stash->{specials};

@@ -7,14 +7,17 @@
 [% special_page.html_body %]
 </div>
 
+[% IF c.user_exists %]
 <form action="[% edit_action %]" method="post">
-  <textarea cols="80" rows="20" name="body">
+  <fieldset>
+    <textarea cols="80" rows="20" name="body">
 [%- IF c.req.params.body -%]
 [%- c.req.params.body | html -%]
 [%- ELSE -%]
 [%- special_page.muse_body | html -%]
-[%- END  -%]
-</textarea>
-  <br />
-  <input type="submit" name="submit" value="Update" />
+[%- END  -%]</textarea>
+    <br />
+    <input type="submit" name="submit" value="Update" />
+  </fieldset>
 </form>
+[% END %]
