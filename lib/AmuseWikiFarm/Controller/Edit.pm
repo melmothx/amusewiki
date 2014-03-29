@@ -21,8 +21,23 @@ TODO: lock a text while someone is editing.
 
 =head1 METHODS
 
+=head2 auto
+
+Deny access to non human. Also fine grain control needed (TODO)
+
 =cut
 
+sub auto :Private {
+    my ($self, $c) = @_;
+    if ($c->session->{i_am_human}) {
+        return 1;
+    }
+    else {
+        $c->session(redirect_after_login => $c->request->path);
+        $c->response->redirect($c->uri_for('/human'));
+        return 0;
+    }
+}
 
 =head2 /new
 

@@ -16,6 +16,24 @@ Catalyst Controller.
 
 =cut
 
+=head2 auto
+
+Deny access to not-human
+
+=cut
+
+
+sub auto :Private {
+    my ($self, $c) = @_;
+    if ($c->session->{i_am_human}) {
+        return 1;
+    }
+    else {
+        $c->session(redirect_after_login => $c->request->path);
+        $c->response->redirect($c->uri_for('/human'));
+        return 0;
+    }
+}
 
 =head2 index
 

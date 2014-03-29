@@ -14,12 +14,26 @@ Catalyst Controller.
 
 =head1 METHODS
 
-=cut
+=head2 auto
 
+Deny access to non-logged in
 
 =head2 index
 
 =cut
+
+sub auto :Private {
+    my ($self, $c) = @_;
+    if ($c->user_exists) {
+        return 1;
+    }
+    else {
+        $c->session(redirect_after_login => $c->request->path);
+        $c->response->redirect($c->uri_for('/login'));
+        return 0;
+    }
+}
+
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
@@ -72,8 +86,6 @@ sub pending :Local :Args(0) {
 
     my @revisions = $site->revisions->search(@search);
     $c->stash(revisions => \@revisions);
-
-
 }
 
 
