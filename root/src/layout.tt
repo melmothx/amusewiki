@@ -50,7 +50,7 @@
         </li>
         <li>
           <a href="[% c.uri_for('/logout') %]">
-            [% c.loc('Logout') %]
+            [% c.user.get('username') %] [% c.loc('logout') %]
           </a>
         </li>
         [% END %]

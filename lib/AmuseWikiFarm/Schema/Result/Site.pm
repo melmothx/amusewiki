@@ -58,6 +58,18 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 3
 
+=head2 magic_question
+
+  data_type: 'text'
+  default_value: 'The first month of the year...'
+  is_nullable: 0
+
+=head2 magic_answer
+
+  data_type: 'text'
+  default_value: 'January'
+  is_nullable: 0
+
 =head2 sitename
 
   data_type: 'varchar'
@@ -212,6 +224,14 @@ __PACKAGE__->add_columns(
   },
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
+  "magic_question",
+  {
+    data_type     => "text",
+    default_value => "The first month of the year...",
+    is_nullable   => 0,
+  },
+  "magic_answer",
+  { data_type => "text", default_value => "January", is_nullable => 0 },
   "sitename",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "siteslogan",
@@ -403,8 +423,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-29 11:17:19
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8pAkH09jlf2f5e2MkjA2Mw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-29 18:00:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XTm5N65WDMXu4uj1O1VxAg
 
 use File::Spec;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path

@@ -16,6 +16,11 @@ CREATE TABLE site (
        id VARCHAR(8) PRIMARY KEY,
        mode VARCHAR(16) NOT NULL DEFAULT 'blog',
        locale VARCHAR(3) NOT NULL DEFAULT 'en',
+
+       -- TODO: move these things in a setting table, it's too cluttered
+       magic_question TEXT NOT NULL DEFAULT 'The first month of the year...',
+       magic_answer   TEXT NOT NULL DEFAULT 'January',
+
        -- canonical url for RSS and other things
        sitename VARCHAR(255) NOT NULL DEFAULT '',
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
@@ -222,6 +227,8 @@ INSERT INTO site (id, locale,
               '', 12, '', '', '', 1
               );
 
+UPDATE site SET magic_question = 'First month of the year';
+UPDATE site SET magic_answer = 'January';
 
 INSERT INTO vhost VALUES ('blog.amusewiki.org', '0blog0');
 INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');

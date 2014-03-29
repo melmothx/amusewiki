@@ -1,0 +1,21 @@
+[% # -*- mode: html -*- %]
+
+<h3>[% c.loc('Please prove you are a human.') %]</h3>
+
+<h4>[% c.loc('You can do so answering a simple question.') %]</h4>
+
+<form method="post" action="[% c.uri_for('/human') %]">
+  <fieldset>
+    [% site.magic_question %]
+    <input type="text" size="20" name="answer" />
+    <input type="submit" name="submit" value="[% c.loc('I am human') %]"/>
+  </fieldset>
+</form>
+
+<h4>[% c.loc('Or logging in, if you have an account.') %]</h4>
+
+[% INCLUDE user/login.tt %]
+
+
+
+

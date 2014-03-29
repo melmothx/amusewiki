@@ -98,8 +98,26 @@ sub logout :Path('/logout') :Args(0) {
 
 sub human :Path('/human') :Args(0) {
     my ($self, $c) = @_;
-    $c->response->body('Are you human?');
-    # $c->session(i_am_human => 1);
+    if ($c->session->{i_am_human}) {
+        # wtf...
+        $c->flash(status_msg => $c->loc('You already proved you are human'));
+        $c->response->redirect($c->uri_for('/'));
+        return;
+    }
+
+    if ($c->request->params->{answer}) {
+        if ($c->request->params->{answer} eq $c->stash->{site}->magic_answer) {
+            # ok, you're a human
+            $c->session(i_am_human => 1);
+            my $goto = delete $c->session->{redirect_after_login};
+            $goto ||= $c->uri_for('/');
+            $c->response->redirect($goto);
+            return;
+        }
+        else {
+            $c->flash(error_msg => $c->loc('Wrong answer!'));
+        }
+    }
 }
 
 =head1 AUTHOR
