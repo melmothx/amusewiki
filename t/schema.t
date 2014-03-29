@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 21;
 use Data::Dumper;
 use Cwd;
 use File::Spec;
@@ -48,7 +48,6 @@ my $test = $site->titles->random_text;
 like $test->html_body, qr/<p>/, "Found the HTML body";
 like $test->muse_body, qr/#title/, "Found the muse body";
 
-ok (!$site->archive_root);
 is ($site->repo_root, File::Spec->catdir(getcwd(), repo => $site->id));
 
 my $targetdir = $site->path_for_file("che-cacca");
@@ -74,3 +73,10 @@ is $site->repo_root($tmp), File::Spec->catdir($tmp, qw/repo 0blog0/);
 is $site->repo_root(0), File::Spec->catdir(getcwd(), 0, qw/repo 0blog0/);
 
 
+my @users = $site->users;
+
+ok ((@users == 3), "3 users found");
+foreach my $user (@users) {
+    ok ($user->username);
+    ok ($user->password);
+}
