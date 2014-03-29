@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 10;
+use Test::More tests => 15;
 use Data::Dumper;
 use Cwd;
 use File::Spec;
@@ -60,5 +60,17 @@ diag "Found $targetdir";
 rmdir $targetdir if -d $targetdir;
 ok (-d $site->path_for_file("che-cacca"));
 
+is ($site->mode, 'blog');
+
+$site = $db->resultset('Site')->find('0blog0');
+
+is $site->repo_root_rel, File::Spec->catdir('repo', '0blog0');
+is $site->repo_root, File::Spec->catdir(getcwd(), 'repo', '0blog0');
+
+my $tmp = File::Spec->tmpdir;
+
+is $site->repo_root($tmp), File::Spec->catdir($tmp, qw/repo 0blog0/);
+
+is $site->repo_root(0), File::Spec->catdir(getcwd(), 0, qw/repo 0blog0/);
 
 

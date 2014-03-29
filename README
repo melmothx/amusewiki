@@ -3,6 +3,68 @@
 This is a wiki engine based on the Text::Amuse parser, with a Git
 backend. The web interface is powered by Catalyst and Plack.
 
+* Modes
+
+AmuseWiki can run in different modes for each site and gives different
+permissions to the various user roles.
+
+** Users
+
+We define 4 levels of users.
+
+*** root permissions
+
+The users with root permissions have full access to anything, but most
+important, they can create new sites, change settings, add themes,
+etc.. The same login works for all the sites. Given that being able to
+access the templates means being able to inject code, this role should
+be reserved to people that know what they are doing and have a shell
+access.
+
+*** librarian permissions
+
+Every site can and should have one or more librarians with login. They
+are able to access the revisions, approve the texts, etc. Special
+pages are always reserved for them.
+
+*** human permissions
+
+This is not strictly speaking a role, because no login is required.
+Anyway, to access some part of the sites (adding new texts, editing,
+the bookbuilder), a prove that the user is a human and not a bot is
+required. This is implemented via a question which the human has to
+answer. It takes 10 seconds and after that the humanity of the user is
+not questioned any more. Also, they should have cookies enabled
+(otherwise we can't store a session for them).
+
+*** robot permissions
+
+Humans which don't prove to be such and robots can access all the
+public part, including reading and download.
+
+** Modes
+
+Each site can run in one of these three modes, which differs on the
+privileges granted to the humans.
+
+*** blog
+
+This mode restricts access to the text editing to librarians only.
+Humans can still use the bookbuilder.
+
+*** modwiki
+
+This mode is a "moderated wiki". Humans can add new texts and edit
+them, but approvals and publishing is reserved to the librarians.
+
+*** openwiki
+
+This mode is an "open wiki". Humans can add new texts, edit them, and
+the result is published right away. Revisions are kept in the git, so
+it's always possible to revert to a previous one (but could be
+complicated and messy). Use at your own risk, but it could make sense
+as a private wiki or in a LAN.
+
 * Directory structure
 
 ** themes

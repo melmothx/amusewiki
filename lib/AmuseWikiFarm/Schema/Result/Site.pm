@@ -44,10 +44,12 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 8
 
-=head2 archive_root
+=head2 mode
 
-  data_type: 'text'
-  is_nullable: 1
+  data_type: 'varchar'
+  default_value: 'blog'
+  is_nullable: 0
+  size: 16
 
 =head2 locale
 
@@ -201,8 +203,13 @@ __PACKAGE__->table("site");
 __PACKAGE__->add_columns(
   "id",
   { data_type => "varchar", is_nullable => 0, size => 8 },
-  "archive_root",
-  { data_type => "text", is_nullable => 1 },
+  "mode",
+  {
+    data_type => "varchar",
+    default_value => "blog",
+    is_nullable => 0,
+    size => 16,
+  },
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "sitename",
@@ -381,24 +388,41 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-28 09:43:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:57n9HXSX1JNk3em05IGFtA
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-29 10:30:31
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5tTrcnN+6V9eZ2arWXvkfg
 
 use File::Spec;
-use Cwd;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_naming_algo/;
 
+=head2 repo_root_rel
+
+The location of the repository. It's hardcoded as 'repo/<id>'
+according to the system path separator. You have no reason to change
+this.
+
 =head2 repo_root
 
-The root of the repository.
+The absolute location of the repository. Keep in mind that the
+absolute location is inferred with C<getcwd()> + C<repo_name>, so it's
+not safe to change directory and call this method.
+
+You can provide an optional argument to get the base (absolute or
+relative to the CWD).
 
 =cut
 
-sub repo_root {
+sub repo_root_rel {
     my $self = shift;
-    my $root = $self->archive_root || File::Spec->catdir(getcwd(), 'repo');
-    return File::Spec->catdir($root, $self->id);
+    return File::Spec->catdir(repo => $self->id);
+}
+
+sub repo_root {
+    my ($self, $base) = @_;
+    unless (defined $base) {
+        $base = '';
+    }
+    return File::Spec->rel2abs($self->repo_root_rel, $base);
 }
 
 =head2 compile_options

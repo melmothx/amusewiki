@@ -14,7 +14,7 @@ CREATE TABLE vhost (
 
 CREATE TABLE site (
        id VARCHAR(8) PRIMARY KEY,
-       archive_root TEXT, -- e.g. repo or /home/..../myrepos/
+       mode VARCHAR(16) NOT NULL DEFAULT 'blog',
        locale VARCHAR(3) NOT NULL DEFAULT 'en',
        -- canonical url for RSS and other things
        sitename VARCHAR(255) NOT NULL DEFAULT '',
