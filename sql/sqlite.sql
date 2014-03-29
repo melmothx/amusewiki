@@ -45,6 +45,27 @@ CREATE TABLE site (
        twoside INTEGER NOT NULL DEFAULT 0
 );
 
+CREATE TABLE users (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       username VARCHAR(32) NOT NULL,
+       password VARCHAR(255) NOT NULL,
+       email    VARCHAR(255),
+       active   INTEGER NOT NULL DEFAULT 0,
+       site_id VARCHAR(8) REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE roles (
+       id INTEGER PRIMARY KEY,
+       role VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE user_role (
+        user_id INTEGER REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        PRIMARY KEY (user_id, role_id)
+);
+
 
 CREATE TABLE revision (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -206,3 +227,10 @@ INSERT INTO vhost VALUES ('blog.amusewiki.org', '0blog0');
 INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');
 INSERT INTO vhost VALUES ('empty.amusewiki.org', '0empty0');
 
+INSERT INTO roles VALUES (1, 'root');
+INSERT INTO roles VALUES (2, 'librarian');
+
+INSERT INTO users VALUES (1, 'root', 'root', '', 1, NULL);
+INSERT INTO users VALUES (2, 'user1', 'pass', '', 1, '0blog0');
+INSERT INTO users VALUES (3, 'user2', 'pass', '', 1, '0blog0');
+INSERT INTO users VALUES (4, 'user3', 'pass', '', 0, '0blog0');

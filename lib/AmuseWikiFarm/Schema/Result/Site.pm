@@ -372,6 +372,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 users
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::User>
+
+=cut
+
+__PACKAGE__->has_many(
+  "users",
+  "AmuseWikiFarm::Schema::Result::User",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 vhosts
 
 Type: has_many
@@ -388,8 +403,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-29 10:30:31
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5tTrcnN+6V9eZ2arWXvkfg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-29 11:17:19
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8pAkH09jlf2f5e2MkjA2Mw
 
 use File::Spec;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
