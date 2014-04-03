@@ -93,6 +93,23 @@
   </fieldset>
 
   <fieldset>
+    <label for="division">
+      [% c.loc('Division factor') %]
+      <select name="division" id="division">
+        [% SET mydiv = 9 %]
+        [% SET mydivselected = (c.request.params.division || 12) %]
+        [% WHILE 16 > mydiv %]
+        <option value="[% mydiv %]"
+                [% IF mydivselected == mydiv -%]
+                selected="selected"[% END %]>[% mydiv %]
+          [% mydiv = mydiv + 1 %]
+        </option>
+        [% END %]
+      </select>
+    </label>
+  </fieldset>
+
+  <fieldset>
     <label>
       <input type="checkbox" name="twoside" value="1"
 	         [% IF c.request.params.twoside %]checked="checked"[% END %] />
@@ -105,10 +122,10 @@
     <select name="bcor">
       [% bcor_counter = 0 %]
       [% WHILE 30 > bcor_counter %]
-      [% bcor_counter = bcor_counter + 1 %]
       <option value="[% bcor_counter %]"
               [%- IF c.request.params.bcor == bcor_counter -%]
               selected="selected"[% END %]>[% bcor_counter %]</option>
+      [% bcor_counter = bcor_counter + 1 %]
       [% END %]
     </select>
     mm.
