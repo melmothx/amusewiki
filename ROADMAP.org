@@ -35,11 +35,11 @@
 *** DONE /edit
     CLOSED: [2014-03-28 ven 13:16]
 
-** X-Accel
+** TODO X-Accel
 
 *** serve static files without catalyst
 
-** /admin
+** TODO /admin
 
 *** site and user creation
 
@@ -47,7 +47,7 @@
 
 *** patch manager, individual commits
 
-** users + authentication + roles
+** TODO users + authentication + roles
 
 *** root user for site creation
 
@@ -72,6 +72,27 @@
     CLOSED: [2014-03-14 ven 11:33]
 *** DONE Add nginx rule to manage the legacy rss.xml with a rewrite to /feed
     CLOSED: [2014-03-14 ven 11:40]
+
+** TODO support #uid and #cat in Archive::Edit and Utiles::Amuse
+
+** TODO git support in Archive::Edit and Archive
+
+** TODO original text in revision Archive::Edit
+
+** TODO plug the preprocessor in Schema::Result::Revision
+
+** TODO store the pdf attachmentes in a directory by themselves
+
+** TODO when publishing a revision, do not overwrite anything.
+
+(and store every change in the git)
+
+** TODO check if the original revision file matches the one we are going to overwrite.
+
+Otherwise we have to ask the user to force the operation.
+
+** TODO permanent redirections for legacy naming scheme
+
 
 * Backend
 ** DONE Queue using the db.
