@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 30;
+use Test::More tests => 32;
 
 
 use Test::WWW::Mechanize::Catalyst;
@@ -10,6 +10,12 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $mech->get_ok('/bookbuilder/');
 
+
+$mech->get_ok('/bookbuilder/add?text=alsdflasdf');
+
+$mech->content_contains("test if the user is a human");
+
+$mech->post('/human', { answer => 'January', submit => 1 });
 
 $mech->get_ok('/bookbuilder/add?text=alsdflasdf');
 $mech->content_contains("Couldn't add the text");
