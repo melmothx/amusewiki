@@ -34,13 +34,6 @@ sub auto :Private {
     }
 }
 
-
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-
-    $c->response->body('Matched AmuseWikiFarm::Controller::Admin in Admin.');
-}
-
 =head2 debug_site_id
 
 Show the site id.
