@@ -27,7 +27,11 @@ sub auto :Private {
         return 1;
     }
     else {
-        $c->session(redirect_after_login => $c->request->path);
+        my $uri = $c->uri_for($c->action, $c->req->captures,
+                              @{ $c->req->args },
+                              $c->req->params);
+        $c->session(redirect_after_login => $uri);
+
         $c->response->redirect($c->uri_for('/human'));
         return 0;
     }
