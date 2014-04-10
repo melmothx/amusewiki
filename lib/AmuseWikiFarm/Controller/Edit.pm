@@ -109,6 +109,7 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $text = $c->stash->{text_to_edit};
     my $uri  = $text->uri;
+    # TODO filter by user
     my @revs = $text->revisions->all;
 
     # no existing revision or explicit request by posting: create new

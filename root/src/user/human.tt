@@ -1,5 +1,7 @@
 [% # -*- mode: html -*- %]
 
+<!-- test if the user is a human -->
+
 <h3>[% c.loc('Please prove you are a human.') %]</h3>
 
 <h4>[% c.loc('You can do so answering a simple question.') %]</h4>
