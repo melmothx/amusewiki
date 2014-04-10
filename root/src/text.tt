@@ -8,6 +8,13 @@
   </form>
 </div>
 
+<div id="edit-text">
+  <a href="[% c.uri_for_action('/edit/revs', [ text.uri ]) %]">
+    [% c.loc('Edit this text') %]
+  </a>
+</div>
+
+
 <div id="page">
   <div id="preamble">
     <p id="texttitle">
