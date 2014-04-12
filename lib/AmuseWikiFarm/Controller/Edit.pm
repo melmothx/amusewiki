@@ -50,7 +50,7 @@ sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
     $c->stash(editor => $c->model('Edit'));
 }
 
-sub index :Chained('root') :PathPart('new') :Args(0) {
+sub newtext :Chained('root') :PathPart('new') :Args(0) {
     my ($self, $c) = @_;
 
     # if there was a posting, process it
