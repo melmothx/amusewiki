@@ -91,6 +91,8 @@ sub site {
 
 Receive a revision id as first argument and publish it.
 
+TODO this method probably belongs to Result::Revision
+
 Procedure:
 
 =over 4

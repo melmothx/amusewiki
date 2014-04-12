@@ -24,7 +24,13 @@
         [% IF rev.pending %]
         <form method="post">
           <input type="hidden" name="publish" value="[% rev.id %]" />
-          <input type="submit" name="go" value="[% c.loc('Publish') %]" />
+          [% IF rev.can_be_merged -%]
+          [%- SET publish_msg = c.loc('Publish') -%]
+          [%- ELSE -%]
+          [%- SET publish_msg = c.loc('Force publishing') -%]
+          [%- END -%]
+          <input type="submit" name="go" value="[% publish_msg %]" />
+
         </form>
         [% ELSIF rev.published %]
         <a href="[% c.uri_for_action('/library/text', [ rev.title.uri ]) %]">

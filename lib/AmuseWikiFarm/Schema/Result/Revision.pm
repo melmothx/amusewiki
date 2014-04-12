@@ -152,15 +152,19 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 15:53:08
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MK51pOugupyd9sIvAvi2qw
 
-use File::Slurp qw/read_file/;
+# core modules
 use File::Basename qw/fileparse/;
 use File::Spec;
-use Text::Amuse;
 use File::Copy qw/copy move/;
+use Digest::SHA;
+
+use File::Slurp qw/read_file/;
 use File::MimeInfo::Magic qw/mimetype/;
+use Text::Amuse;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
                                    muse_naming_algo/;
+
 
 =head2 muse_body
 
@@ -484,6 +488,36 @@ sub conflict {
 sub processing {
     shift->status eq 'processing' ? return 1 : return 0;
 }
+
+
+=head2 can_be_merged
+
+Calling this method will trigger the SHA1 checksum on the
+original_file and the target file. If they don't match, it means that
+the revision would overwrite something.
+
+=cut
+
+sub can_be_merged {
+    my $self = shift;
+
+    my $destination = $self->title->f_full_path_name;
+    my $source = $self->starting_file;
+
+    # will not merge, source doesn't exists, strange enough
+    die "No starting file, this is a bug"  unless ($source and -f $source);
+
+    if ($destination and -f $destination) {
+        my $src_sha = Digest::SHA->new('SHA-1')->addfile($source);
+        my $dst_sha = Digest::SHA->new('SHA-1')->addfile($destination);
+        return $src_sha->hexdigest eq $dst_sha->hexdigest;
+    }
+    else {
+        # no destination? nothing to do, will merge cleanly
+        return 1;
+    }
+}
+
 
 
 __PACKAGE__->meta->make_immutable;

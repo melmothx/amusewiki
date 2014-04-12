@@ -24,6 +24,8 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
 This class must B<not> be reusued. Create in one request and throw it
 away.
 
+TODO: This probably belongs to Result::Revision or ResultSet::Revision
+
 =cut
 
 has site_schema => (is => 'ro',
@@ -60,8 +62,8 @@ sub create_new {
     }
 
     # URI generation
-    my $author = $params->{author} || "";
-    my $title  = $params->{title}  || "";
+    my $author = $params->{author} // "";
+    my $title  = $params->{title}  // "";
     my $uri;
     if ($params->{uri}) {
         $uri = muse_naming_algo($params->{uri});
@@ -128,12 +130,12 @@ sub import_text_from_html_params {
 
     # save a copy of the html request
     my $html_copy = File::Spec->catfile($revision->original_html);
-    if (defined $params->{textbody}) {
-        open (my $fhh, '>:encoding(utf-8)', $html_copy)
-          or die "Couldn't open $html_copy $!";
-        print $fhh $params->{textbody};
-        close $fhh or die $!;
-    }
+
+    $params->{textbody} //= "\n";
+    open (my $fhh, '>:encoding(utf-8)', $html_copy)
+      or die "Couldn't open $html_copy $!";
+    print $fhh $params->{textbody};
+    close $fhh or die $!;
 
     # populate the file with the parameters
     open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
@@ -156,6 +158,11 @@ sub import_text_from_html_params {
     }
     print $fh "\n\n";
     close $fh or die $!;
+    # save a copy as the starting file
+    # see "new_revision" below
+    die $revision->starting_file . ' already present'
+      if -f $revision->starting_file;;
+    copy($file, $revision->starting_file) or die $!;
     return $revision;
 }
 
@@ -227,8 +234,8 @@ sub new_revision {
     return unless $text;
     my $revision = $self->create_revision_for_title($text);
     # and copy the file in the new dir
-    copy($text->f_full_path_name, $revision->f_full_path_name);
-    # TODO copy the file as orig.muse, so we can store the full history
+    copy($text->f_full_path_name, $revision->starting_file) or die $!;
+    copy($text->f_full_path_name, $revision->f_full_path_name) or die $!;
     return $revision;
 }
 

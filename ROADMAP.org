@@ -93,6 +93,13 @@ Otherwise we have to ask the user to force the operation.
 
 ** TODO permanent redirections for legacy naming scheme
 
+** TODO when editing, check that the revision belongs to the same session id
+** TODO put the revisions code into the ResultSet::Revision and Result::Revision
+
+Otherwise we go crazy
+
+** TODO Bug: when updating a text, clear the fields.
+
 
 * Backend
 ** DONE Queue using the db.
