@@ -45,7 +45,8 @@ is_deeply \%exts, {
 
 my $test = $site->titles->random_text;
 
-like $test->html_body, qr/<p>/, "Found the HTML body";
+like $test->html_body, qr/<p>/, "Found the HTML body"
+  or diag $test->title . " without a body?";
 like $test->muse_body, qr/#title/, "Found the muse body";
 
 is ($site->repo_root, File::Spec->catdir(getcwd(), repo => $site->id));

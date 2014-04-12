@@ -110,7 +110,7 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     my $text = $c->stash->{text_to_edit};
     my $uri  = $text->uri;
     # TODO filter by user
-    my @revs = $text->revisions->all;
+    my @revs = $text->revisions->pending;
 
     # no existing revision or explicit request by posting: create new
     if (!@revs || $c->request->params->{create}) {
