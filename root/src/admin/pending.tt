@@ -1,9 +1,9 @@
 [% # -*- mode: html -*- %]
 
 <!-- [% c.loc('editing') %]
-     [% c.loc('ready')   %]
+     [% c.loc('pending')   %]
      [% c.loc('processing') %]
-     [% c.loc('failed') %]
+     [% c.loc('conflict') %]
      [% c.loc('published') %] -->
 
 [% IF revisions.size %]
@@ -21,17 +21,17 @@
         [% rev.updated.dmy %] [% rev.updated.hms %] [% c.loc('UTC') %]
       </td>
       <td>
-        [% IF rev.status == 'ready' %]
+        [% IF rev.pending %]
         <form method="post">
           <input type="hidden" name="publish" value="[% rev.id %]" />
           <input type="submit" name="go" value="[% c.loc('Publish') %]" />
         </form>
-        [% ELSIF rev.status == 'published' %]
+        [% ELSIF rev.published %]
         <a href="[% c.uri_for_action('/library/text', [ rev.title.uri ]) %]">
           [% c.loc(rev.status) %]
         </a>
         [% ELSE %]
-        [% rev.status %]
+        [% c.loc(rev.status) %]
         [% END %]
       </td>
 

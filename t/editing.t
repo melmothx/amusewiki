@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 76;
+use Test::More tests => 79;
 use File::Slurp qw/read_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
@@ -182,6 +182,8 @@ foreach my $k (keys %dests) {
 my $archive = AmuseWikiFarm::Archive->new(dbic => $schema,
                                           code => $site->id);
 
+ok !$revision->pending, "Revision is not pending";
+ok $revision->editing, "Revision is under edit";
 
 $archive->publish_revision($revision->id);
 
@@ -198,9 +200,16 @@ ok $testtext->title, "revision has been published" and diag $testtext->title;
 
 ok $testtext->is_published, "Published ok";
 
+my $published_rev = $site->revisions->find($rev_id);
+
+ok $published_rev->published, "Revision is published"
+  or diag $published_rev->status;
+
+
 $testtext->delete;
 
 my $purge_rev = $site->revisions->find($rev_id);
+
 ok(!$purge_rev, "Revision $rev_id purged");
 
 # $revision->title->delete;

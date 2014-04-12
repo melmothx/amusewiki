@@ -203,7 +203,7 @@ sub create_revision_for_title {
     my $fullpath = File::Spec->catfile($target_dir, $uri . '.muse');
     $revision->f_full_path_name($fullpath);
     $revision->update;
-    return $revision;
+    return $revision->get_from_storage;
 }
 
 =head2 new_revision($text)

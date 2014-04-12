@@ -127,7 +127,7 @@ sub bookbuilder {
     }
     unless (@texts) {
         $j->errors('No text found!');
-        $j->status('Rejected');
+        $j->status('rejected');
         return;
     }
 

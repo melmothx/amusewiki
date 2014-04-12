@@ -210,6 +210,23 @@ sub working_dir {
 =head2 private files
 
 They have an underscore, so they are invalid files for use and avoid clashes.
+They are pretty much internals
+
+=over 4
+
+=item starting_file
+
+=item original_html
+
+=item temporary_file
+
+Temporary file
+
+=item aux_file
+
+Auxiliary file
+
+=back
 
 =cut
 
@@ -411,6 +428,63 @@ sub destination_paths {
     }
     return %dests;
 }
+
+=head1 STATUSES
+
+The C<status> column determines the status of a revision. The valid
+statuses are:
+
+=over 4
+
+=item editing
+
+The default. The revision has not been committed yet and should be
+left alone.
+
+=item pending
+
+The revision has been committed and is ready to be published.
+
+=item published
+
+The revision has been published and can be ignored.
+
+=item processing
+
+The revision has been given to the job server and is under processing.
+
+=item conflict
+
+The revision couldn't be published because couldn't be merged cleanly,
+i.e., it would have overwritten some other change.
+
+=back
+
+Each of them are methods you can call and return true when the status
+matches. You don't set them directly.
+
+=cut
+
+sub editing {
+    shift->status eq 'editing' ? return 1 : return 0;
+}
+
+sub pending {
+    shift->status eq 'pending' ? return 1 : return 0;
+}
+
+sub published {
+    shift->status eq 'published' ? return 1 : return 0;
+}
+
+sub conflict {
+    shift->status eq 'conflict' ? return 1 : return 0;
+}
+
+sub processing {
+    shift->status eq 'processing' ? return 1 : return 0;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

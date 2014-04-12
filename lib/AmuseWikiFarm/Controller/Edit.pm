@@ -170,6 +170,8 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
     # user closes the browser, when it has a chance to pick it back.
     if ($params->{preview} || $params->{commit} || $params->{upload}) {
 
+        # See Result::Revision for the supported status
+        # reset to editing in case
         $revision->status('editing');
         $revision->updated(DateTime->now);
         $revision->update;
@@ -196,7 +198,7 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
         # if it's a commit, close the editing.
         if ($params->{commit}) {
             $c->flash(status_msg => "Changes committed, thanks!");
-            $revision->status('ready');
+            $revision->status('pending');
             $revision->update;
             $c->response->redirect($c->uri_for_action('/admin/pending'));
             return;

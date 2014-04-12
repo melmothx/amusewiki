@@ -27,8 +27,12 @@ sub bookbuilder_add {
 }
 
 sub publish_add {
-    my ($self, $site_id, $payload) = @_;
-    return $self->add_job(publish => $site_id, $payload, 5);
+    my ($self, $revision) = @_;
+    # see Result::Revision for the status
+    $revision->status('processing');
+    $revision->update;
+    return $self->add_job(publish => $revision->site_id,
+                          { id => $revision->id }, 5);
 }
 
 sub add_job {
