@@ -145,11 +145,16 @@ sub publish_revision {
     if ($git and -f $rev->original_html) {
         die "Original html found, but target exists" if -f $muse;
         copy ($rev->original_html, $muse) or die $!;
-        # TODO see if the starting file needs to be saved as well
-        # it contains a non-filtered copy
         $git->add($muse);
-        # add the author
+        # TODO add the author?
         $git->commit({ message => "Imported HTML revision no.$revid"});
+        die "starting muse revision not found!" unless -f $rev->starting_file;
+        copy ($rev->starting_file, $muse) or die $!;
+        $git->add($muse);
+        # this means that the publishing was forced or is a new file
+        if ($git->status->is_dirty) {
+            $git->commit({ message => "Begin editing no.$revid"});
+        }
     }
 
     foreach my $k (keys %files) {
@@ -167,11 +172,9 @@ sub publish_revision {
 
     if ($git) {
         if ($git->status->is_dirty) {
-            # TODO add message and author
+            # could be very well already been stored above
             $git->commit({ message => "Published revision $revid" });
-        }
-        else {
-            warn "Revision $revid published, but no changes in the git. Why?";
+            # TODO add message and author in the message.
         }
     }
 

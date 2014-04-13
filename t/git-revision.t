@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 9;
+use Test::More tests => 11;
 
 use AmuseWikiFarm::Schema;
 use Git::Wrapper;
@@ -68,14 +68,27 @@ use AmuseWikiFarm::Archive::Edit;
 use AmuseWikiFarm::Archive;
 
 my $arch = AmuseWikiFarm::Archive::Edit->new(site_schema => $site);
-my $revision = $arch->create_new({ uri => 'first-test',
-                                   title => 'Hello',
-                                   textbody => '<p>My precious</p>',
-                                 });
+my $revision =
+  $arch->create_new({ uri => 'first-test',
+                      title => 'Hello',
+                      lang => 'hr',
+                      textbody => '<p>http://my.org My "precious"</p>',
+                    });
 ok ($revision->id);
+
+$revision->edit({
+                 fix_links => 1,
+                 fix_typography => 1,
+                 body => $revision->muse_body,
+                });
+my $expected = '[[http://my.org][my.org]] My „precious”';
+
+like $revision->muse_body, qr/\Q$expected\E/, "Correctly filtered";
 
 my $archive = AmuseWikiFarm::Archive->new(code => $site->id,
                                           dbic => $schema);
+
+
 
 my $uri = $archive->publish_revision($revision->id);
 
@@ -83,8 +96,10 @@ ok($uri, "Publish revision returned the uri") and diag "Found $uri";
 
 my @logs = $archive_git->log;
 
-ok ((@logs == 3), "Found 3 commits");
+ok ((@logs == 4), "Found 4 commits");
 
 like $logs[0]->message, qr/Published revision \d+/, "Log message matches";
 
-like $logs[1]->message, qr/Imported HTML/, "Log for html ok";
+like $logs[1]->message, qr/Begin editing no\.\d+/, "Log message ok";
+
+like $logs[2]->message, qr/Imported HTML/, "Log for html ok";
