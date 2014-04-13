@@ -427,6 +427,16 @@ sub add_attachment {
     return 0;
 }
 
+=head2 destination_paths
+
+Return an hash (not an hashref) where the keys are the existing files
+in the staging directory, while the values are the absolute paths to
+the future location of the same files (so you can copy the key to the
+value).
+
+=cut
+
+
 sub destination_paths {
     my $self = shift;
     my $target_dir = $self->site->path_for_file($self->muse_uri);
