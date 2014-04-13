@@ -75,7 +75,8 @@
 
 ** TODO support #uid and #cat in Archive::Edit and Utiles::Amuse
 
-** TODO git support in Archive::Edit and Archive
+** DONE git support in Archive::Edit and Archive
+   CLOSED: [2014-04-13 dom 13:39]
 
 ** DONE original text in revision Archive::Edit
    CLOSED: [2014-04-12 sab 20:30]
@@ -84,7 +85,8 @@
 
 ** TODO store the pdf attachmentes in a directory by themselves
 
-** TODO when publishing a revision, do not overwrite anything.
+** DONE when publishing a revision, do not overwrite anything.
+   CLOSED: [2014-04-13 dom 13:39]
 
 (and store every change in the git)
 
