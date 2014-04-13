@@ -33,6 +33,7 @@ my $site = $schema->resultset('Site')->create({
                                                lt_pdf => 0,
                                               })->get_from_storage;
 
+$site->add_to_vhosts({ name => 'git.amusewiki.org' });
 ok ($site);
 
 mkdir $site->repo_root unless -d $site->repo_root;

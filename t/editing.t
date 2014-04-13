@@ -115,8 +115,8 @@ like $muse, qr/^#notes Hello there asd <strong>fasdf<\/strong> as df$/m,
 like $muse, qr/Hello <em>world/, "Body seems fine";
 
 ok (-f $revision->starting_file, "Original body was stored");
-$revision->edit("blablabla");
-is $revision->muse_body, "blablabla", "Body overwritten";
+$revision->edit("blablaàbla");
+is $revision->muse_body, "blablaàbla\n", "Body overwritten, but new line appended";
 ok (-f $revision->starting_file, "Found orig.muse");
 like $revision->starting_file, qr/orig\.muse$/,
   "orig file looks good " . $revision->starting_file;

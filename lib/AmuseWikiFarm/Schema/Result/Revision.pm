@@ -347,10 +347,16 @@ sub edit {
     open (my $auxfh, '>:encoding(utf-8)', $aux) or die "Can't open $aux $!";
 
     # TODO this is the good place to use the filters, not modifying the params
+    my $current;
     while (<$tmpfh>) {
         s/\r//;
         s/\t/    /;
         print $auxfh $_;
+        $current = $_;
+    }
+    # last line
+    if ($current !~ /\n$/s) {
+        print $auxfh "\n";
     }
     close $auxfh or die $!;
     close $tmpfh or die $!;
