@@ -206,6 +206,8 @@ and a list of matches, each being an hashref with the following keys:
 
 sub search {
     my ($self, $query_string, $page) = @_;
+    return 0 unless $query_string;
+
     my $database = Search::Xapian::Database->new($self->xapian_dir);
 
     # set up the query parser
