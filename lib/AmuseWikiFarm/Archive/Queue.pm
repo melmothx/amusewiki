@@ -13,6 +13,8 @@ use DateTime;
 
 The schema object.
 
+Probably these methods should go into a the Job resultset
+
 =cut
 
 has dbic => (

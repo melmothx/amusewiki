@@ -77,7 +77,8 @@
 
 ** TODO git support in Archive::Edit and Archive
 
-** TODO original text in revision Archive::Edit
+** DONE original text in revision Archive::Edit
+   CLOSED: [2014-04-12 sab 20:30]
 
 ** TODO plug the preprocessor in Schema::Result::Revision
 
@@ -87,7 +88,8 @@
 
 (and store every change in the git)
 
-** TODO check if the original revision file matches the one we are going to overwrite.
+** DONE check if the original revision file matches the one we are going to overwrite.
+   CLOSED: [2014-04-12 sab 20:30]
 
 Otherwise we have to ask the user to force the operation.
 
