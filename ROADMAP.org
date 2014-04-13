@@ -81,7 +81,8 @@
 ** DONE original text in revision Archive::Edit
    CLOSED: [2014-04-12 sab 20:30]
 
-** TODO plug the preprocessor in Schema::Result::Revision
+** DONE plug the preprocessor in Schema::Result::Revision
+   CLOSED: [2014-04-13 dom 20:07]
 
 ** TODO store the pdf attachmentes in a directory by themselves
 

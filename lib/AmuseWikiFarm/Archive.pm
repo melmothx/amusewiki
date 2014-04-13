@@ -145,6 +145,8 @@ sub publish_revision {
     if ($git and -f $rev->original_html) {
         die "Original html found, but target exists" if -f $muse;
         copy ($rev->original_html, $muse) or die $!;
+        # TODO see if the starting file needs to be saved as well
+        # it contains a non-filtered copy
         $git->add($muse);
         # add the author
         $git->commit({ message => "Imported HTML revision no.$revid"});

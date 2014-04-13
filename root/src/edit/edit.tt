@@ -35,6 +35,18 @@
               name="body">[%- revision.muse_body | html -%]</textarea>
   </fieldset>
   <fieldset>
+    <input id="fix-typo"
+           [% IF c.req.params.fix_typography %]checked="checked"[% END %]
+           type="checkbox" name="fix_typography" />
+    <label for="fix-typo">[% c.loc('Fix typography') %]</label>
+  </fieldset>
+  <fieldset>
+    <input id="fix-links"
+           [% IF c.req.params.fix_links %]checked="checked"[% END %]
+           type="checkbox" name="fix_links" />
+    <label for="fix-links">[% c.loc('Make all links active') %]</label>
+  </fieldset>
+  <fieldset>
     <input type="submit" name="preview" value="[% c.loc('Preview') %]" />
     <input type="submit" name="commit"  value="[% c.loc('Commit')  %]" />
   </fieldset>

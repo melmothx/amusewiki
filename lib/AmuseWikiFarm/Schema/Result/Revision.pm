@@ -165,6 +165,9 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
                                    muse_naming_algo/;
 
+use Text::Amuse::Functions qw/muse_fast_scan_header/;
+use Text::Amuse::Preprocessor::Typography qw/get_typography_filter/;
+
 
 =head2 muse_body
 
@@ -342,6 +345,25 @@ sub edit {
     }
     close $fh or die "Fail to close $temp $!";
 
+    # load the metainfo
+    my $info = muse_fast_scan_header($temp);
+    my $lang;
+    if ($info && $info->{lang}) {
+        $lang = $info->{lang};
+    }
+
+    my $filter;
+    if ($is_ref and $is_ref eq 'HASH') {
+        my ($fixtypo, $fixlinks);
+        if ($string->{fix_typography}) {
+            $fixtypo = $lang;
+        }
+        if ($string->{fix_links}) {
+            $fixlinks = 1;
+        }
+        $filter = get_typography_filter($fixtypo, $fixlinks);
+    }
+
     # then filter it and write to an aux
     open (my $tmpfh, '<:encoding(utf-8)', $temp) or die "Can't open $temp $!";
     open (my $auxfh, '>:encoding(utf-8)', $aux) or die "Can't open $aux $!";
@@ -349,10 +371,13 @@ sub edit {
     # TODO this is the good place to use the filters, not modifying the params
     my $current;
     while (<$tmpfh>) {
-        s/\r//;
-        s/\t/    /;
-        print $auxfh $_;
         $current = $_;
+        $current =~ s/\r//;
+        $current =~ s/\t/    /;
+        if ($filter) {
+            $current = $filter->($current);
+        }
+        print $auxfh $current;
     }
     # last line
     if ($current !~ /\n$/s) {

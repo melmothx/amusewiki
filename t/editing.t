@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 79;
+use Test::More tests => 80;
 use File::Slurp qw/read_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
@@ -125,8 +125,15 @@ like $revision->starting_file, qr/orig\.muse$/,
 
 $revision->edit("blablablaasdfasdf\r\nlaksdf\r\n");
 
-unlike $revision->muse_body, qr/\r/, "Carriage return stripped";
 is $revision->muse_body, "blablablaasdfasdf\nlaksdf\n";
+
+unlike $revision->muse_body, qr/\r/, "Carriage return stripped";
+
+$revision->edit({fix_links => 1,
+                 fix_typography => 1,
+                 body => qq{#title bla\n#lang en\n\n"hello"\n"there"}});
+
+is $revision->muse_body, qq{#title bla\n#lang en\n\n“hello”\n“there”\n};
 
 $revision->edit("#title From editing\n\n llaksdl ajksdflja lsdjkfl akjsdf\n");
 
