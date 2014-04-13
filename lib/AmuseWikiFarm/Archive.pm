@@ -14,7 +14,7 @@ use File::Spec;
 use File::Copy;
 use AmuseWikiFarm::Archive::Xapian;
 use Text::Amuse::Compile;
-
+use Git::Wrapper;
 
 has code => (is => 'ro',
              required => 1,
@@ -101,8 +101,6 @@ Procedure:
 
 =item if in a git directory, add it to the git and commit
 
-This is marked as TODO
-
 =item compile the file and report errors, if any
 
 =item call index_file on the muse and the attachments
@@ -114,6 +112,7 @@ This is marked as TODO
 =cut
 
 sub publish_revision {
+    # TODO add $force argument if the revisions can't me merged cleanly
     my ($self, $id) = @_;
     die "Wrong usage" unless defined $id;
 
@@ -121,24 +120,62 @@ sub publish_revision {
     # let it die if rev is undef.
     my %files = $rev->destination_paths;
 
-    my @todo;
+    # catch the muse files and its attachments, and validate it.
     my $muse;
+    my @attachments;
+    foreach my $src (keys %files) {
+        my $target = $files{$src};
+        if ($target =~ m/\.muse$/) {
+            die "Multiple muse files found in " . $rev->id if $muse;
+            $muse = $target;
+        }
+        else {
+            push @attachments, $target;
+        }
+    }
+    # first process the muse file
+    die "muse file not found in " . $rev->id unless $muse;
 
-    # TODO some validation. The original file should match the orig.muse
-    # otherwise we loose history
+    my $git;
+    if ($rev->site->repo_is_under_git) {
+        $git = Git::Wrapper->new($rev->site->repo_root);
+    }
+    my $revid = $rev->id;
+
+    if ($git and -f $rev->original_html) {
+        die "Original html found, but target exists" if -f $muse;
+        copy ($rev->original_html, $muse) or die $!;
+        $git->add($muse);
+        # add the author
+        $git->commit({ message => "Imported HTML revision no.$revid"});
+    }
+
     foreach my $k (keys %files) {
         my $dest = $files{$k};
+        if ($dest ne $muse) {
+            # this shouldn't happen
+            die "Attachment already exists" if -f $dest;
+        }
         copy($k, $dest) or die "Couldn't copy $k to $dest $!";
-        push @todo, $dest;
-        if ($dest =~ m/\.muse$/s) {
-            $muse = $dest;
+
+        if ($git) {
+            $git->add($dest);
         }
     }
 
-    die "Couldn't find a muse file in the revision" unless $muse;
+    if ($git) {
+        if ($git->status->is_dirty) {
+            # TODO add message and author
+            $git->commit({ message => "Published revision $revid" });
+        }
+        else {
+            warn "Revision $revid published, but no changes in the git. Why?";
+        }
+    }
+
     my $compiler = Text::Amuse::Compile->new($rev->site->compile_options);
     $compiler->compile($muse);
-    foreach my $f (@todo) {
+    foreach my $f (values %files) {
         $self->index_file($f);
     }
     $self->collation_index;

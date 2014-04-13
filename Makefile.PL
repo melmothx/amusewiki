@@ -39,7 +39,7 @@ requires 'DateTime::Format::SQLite';
 requires 'DateTime::Format::MySQL';
 requires 'DateTime::Format::Pg';
 requires 'XML::FeedPP';
-
+requires 'Git::Wrapper';
 
 requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor';

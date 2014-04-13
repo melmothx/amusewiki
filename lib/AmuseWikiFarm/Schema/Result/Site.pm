@@ -549,6 +549,18 @@ sub path_for_file {
     return $target_dir;
 }
 
+=head2 repo_is_under_git
+
+Return true if the site repo is kept under git.
+
+=cut
+
+sub repo_is_under_git {
+    my $self = shift;
+    return -d File::Spec->catdir($self->repo_root, '.git');
+}
+
 
 __PACKAGE__->meta->make_immutable;
+
 1;
