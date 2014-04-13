@@ -12,6 +12,7 @@ repo/*/*/*/*.html
 repo/*/*/*/*.log
 repo/*/*/*/*.epub
 repo/*/*/*/*.ok
+repo/*/*/*/*.status
 repo/*/*/*/*.aux
 repo/*/*/*/*.toc
 repo/*/*/*/*.zip
