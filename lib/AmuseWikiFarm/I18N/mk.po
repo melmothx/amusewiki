@@ -14,15 +14,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: root/src/text.tt:89 root/src/text.tt:90
+#. ($page)
+#: lib/AmuseWikiFarm/Controller/Special.pm:61
+msgid "%1 updated!"
+msgstr ""
+
+#: root/src/text.tt:96 root/src/text.tt:97
 msgid "A4 imposed PDF"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Root.pm:88
+msgid "Access denied!"
+msgstr ""
+
+#: root/src/edit/edit.tt:28
+msgid "Add an attachment"
 msgstr ""
 
 #: root/src/text.tt:7
 msgid "Add this text to the bookbuilder"
 msgstr ""
 
-#: root/src/layout.tt:75 root/src/text.tt:27
+#: root/src/layout.tt:42
+msgid "Add to library"
+msgstr ""
+
+#: root/src/edit/edit.tt:73 root/src/layout.tt:92 root/src/text.tt:34
 msgid "Authors"
 msgstr ""
 
@@ -30,7 +47,7 @@ msgstr ""
 msgid "Back to the text"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:101
+#: root/src/bookbuilder/index.tt:121
 msgid "Binding correction"
 msgstr ""
 
@@ -38,27 +55,40 @@ msgstr ""
 msgid "Book builder"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:155
+#: root/src/bookbuilder/index.tt:175
 msgid "Build it"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:80
+#: root/src/bookbuilder/index.tt:83
 msgid "Choose a paper format"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:35
+#: root/src/bookbuilder/index.tt:38
 msgid "Clear the book list"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:121
+#: root/src/edit/edit.tt:51
+msgid "Commit"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:148
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:170
 msgid "Couldn't add the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:74
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:105
 msgid "Couldn't build that"
 msgstr ""
 
-#: root/src/text.tt:36
+#: root/src/edit/revs.tt:13
+msgid "Created"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:67
+msgid "Created new text"
+msgstr ""
+
+#: root/src/edit/edit.tt:80 root/src/text.tt:43
 msgid "Date"
 msgstr ""
 
@@ -66,36 +96,84 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: root/src/search/index.tt:6
+#: root/src/edit/newtext.tt:37
+msgid "Desired URI"
+msgstr ""
+
+#: root/src/search/index.tt:7
 msgid "Displaying"
 msgstr ""
 
-#: root/src/text.tt:72
+#: root/src/bookbuilder/index.tt:97
+msgid "Division factor"
+msgstr ""
+
+#: root/src/text.tt:79
 msgid "Downloads"
 msgstr ""
 
-#: root/src/text.tt:107 root/src/text.tt:108
+#: root/src/text.tt:114 root/src/text.tt:115
 msgid "EPUB (for mobile devices)"
 msgstr ""
 
-#: root/src/layout.tt:50
+#: root/src/text.tt:13
+msgid "Edit this text"
+msgstr ""
+
+#: root/src/edit/edit.tt:33 root/src/edit/revs.tt:3
+msgid "Editing"
+msgstr ""
+
+#: root/src/tasks/display.tt:57
+msgid "Error producing the file"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:194
+msgid "File uploaded!"
+msgstr ""
+
+#: root/src/edit/edit.tt:41
+msgid "Fix typography"
+msgstr ""
+
+#: root/src/admin/pending.tt:30
+msgid "Force publishing"
+msgstr ""
+
+#: root/src/layout.tt:67
 msgid "Full text search"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:119
+#: root/src/user/human.tt:13
+msgid "I am human"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:139
 msgid "I want an imposed (ready to print) PDF"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:127
+#: root/src/bookbuilder/index.tt:147
 msgid "I want the cover"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:132
+#: root/src/bookbuilder/index.tt:152
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
-#: root/src/text.tt:98 root/src/text.tt:99
+#: root/src/text.tt:105 root/src/text.tt:106
 msgid "Letter imposed PDF"
+msgstr ""
+
+#: root/src/user/login.tt:25
+msgid "Log in"
+msgstr ""
+
+#: root/src/edit/edit.tt:47
+msgid "Make all links active"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/User.pm:62
+msgid "Missing username or password"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:25
@@ -106,35 +184,87 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
+#: root/src/edit/revs.tt:22
+msgid "New revision"
+msgstr ""
+
 #: root/src/search/index.tt:25
 msgid "Next"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:125
+#: root/src/search/index.tt:30
+msgid "No result found!"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:174
 msgid "No text provided!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:42
+#: root/src/bookbuilder/index.tt:45
 msgid "No text was added yet"
 msgstr ""
 
-#: root/src/text.tt:59
+#: root/src/edit/edit.tt:101 root/src/text.tt:66
 msgid "Notes"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:49
+#: root/src/user/human.tt:17
+msgid "Or logging in, if you have an account."
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Root.pm:80
+msgid "Page not found!"
+msgstr ""
+
+#: root/src/user/login.tt:16
+msgid "Password"
+msgstr ""
+
+#: root/src/layout.tt:48
+msgid "Pending"
+msgstr ""
+
+#: root/src/admin/pending.tt:10
+msgid "Pending revisions"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:52
 msgid "Please give a name to the collection"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:55
+#: root/src/user/human.tt:5
+msgid "Please prove you are a human."
+msgstr ""
+
+#: root/src/tasks/display.tt:33
+msgid "Please reload your page"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:58
 msgid "Please select the desired fonts"
 msgstr ""
 
-#: root/src/search/index.tt:20
+#: root/src/tasks/display.tt:41
+msgid "Please wait"
+msgstr ""
+
+#: root/src/edit/edit.tt:50
+msgid "Preview"
+msgstr ""
+
+#: root/src/search/index.tt:21
 msgid "Previous"
 msgstr ""
 
-#: root/src/layout.tt:107
+#: root/src/admin/pending.tt:28
+msgid "Publish"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:158
+msgid "Quota exceeded, too many pages"
+msgstr ""
+
+#: root/src/layout.tt:124
 msgid "RSS"
 msgstr ""
 
@@ -142,82 +272,198 @@ msgstr ""
 msgid "Random text"
 msgstr ""
 
-#: root/src/search/index.tt:3
+#: root/src/search/index.tt:4
 msgid "Results found"
 msgstr ""
 
-#: root/src/text.tt:52
+#: root/src/edit/revs.tt:6
+msgid "Some ongoing revisions were found"
+msgstr ""
+
+#: root/src/edit/edit.tt:94 root/src/text.tt:59
 msgid "Source"
 msgstr ""
 
-#: root/src/text.tt:141 root/src/text.tt:142
+#: root/src/text.tt:148 root/src/text.tt:149
 msgid "Source files with attachments"
 msgstr ""
 
-#: root/src/text.tt:116 root/src/text.tt:117
+#: root/src/text.tt:123 root/src/text.tt:124
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
-#: root/src/text.tt:20
+#: root/src/tasks/display.tt:33
+msgid "Status"
+msgstr ""
+
+#: root/src/edit/edit.tt:66 root/src/text.tt:27
 msgid "Subtitle"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:116
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:165
 msgid "Text added"
 msgstr ""
 
-#: root/src/text.tt:14
+#: root/src/edit/edit.tt:23
+msgid "Text editing"
+msgstr ""
+
+#: root/src/tasks/display.tt:18
+msgid "The text has been published"
+msgstr ""
+
+#: root/src/edit/edit.tt:60 root/src/text.tt:21
 msgid "Title"
 msgstr ""
 
-#: root/src/layout.tt:82
+#: root/src/layout.tt:99
 msgid "Titles"
 msgstr ""
 
-#: root/src/layout.tt:89 root/src/text.tt:43
+#: root/src/edit/edit.tt:87 root/src/layout.tt:106 root/src/text.tt:50
 msgid "Topics"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:96
+#: root/src/bookbuilder/index.tt:33
+msgid "Total pages"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:116
 msgid "Two side layout"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:148
+#: root/src/admin/pending.tt:21
+msgid "UTC"
+msgstr ""
+
+#: root/src/edit/edit.tt:30
+msgid "Upload"
+msgstr ""
+
+#: root/src/user/login.tt:8
+msgid "Username"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:168
 msgid "When imposing, use optimized signatures with 40-80 pages each"
 msgstr ""
 
-#: root/src/text.tt:125 root/src/text.tt:126
+#: lib/AmuseWikiFarm/Controller/User.pm:118
+msgid "Wrong answer!"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/User.pm:87
+msgid "Wrong username or password"
+msgstr ""
+
+#: root/src/text.tt:132 root/src/text.tt:133
 msgid "XeLaTeX source"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:149
+#: lib/AmuseWikiFarm/Controller/User.pm:103
+msgid "You already proved you are human"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/User.pm:50
+msgid "You are already logged in"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/User.pm:78
+msgid "You are logged in now!"
+msgstr ""
+
+#: root/src/edit/revs.tt:7
+msgid "You can continue editing one of those, or create a new one"
+msgstr ""
+
+#: root/src/user/human.tt:7
+msgid "You can do so answering a simple question."
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/User.pm:94
+msgid "You have logged out"
+msgstr ""
+
+#: root/src/tasks/display.tt:15
+msgid "Your file is ready"
+msgstr ""
+
+#: root/src/edit/newtext.tt:38
+msgid "automatically generated if not present"
+msgstr ""
+
+#: root/src/tasks/display.tt:9
+msgid "completed"
+msgstr ""
+
+#: root/src/admin/pending.tt:6
+msgid "conflict"
+msgstr ""
+
+#: root/src/admin/pending.tt:3
+msgid "editing"
+msgstr ""
+
+#: root/src/tasks/display.tt:10
+msgid "failed"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:169
 msgid "if applicable"
 msgstr ""
 
-#: root/src/text.tt:80 root/src/text.tt:81
+#: root/src/layout.tt:53
+msgid "logout"
+msgstr ""
+
+#: root/src/edit/revs.tt:19
+msgid "or create a new one"
+msgstr ""
+
+#: root/src/admin/pending.tt:4 root/src/tasks/display.tt:7
+msgid "pending"
+msgstr ""
+
+#: root/src/text.tt:87 root/src/text.tt:88
 msgid "plain PDF"
 msgstr ""
 
-#: root/src/text.tt:133 root/src/text.tt:134
+#: root/src/text.tt:140 root/src/text.tt:141
 msgid "plain text source"
 msgstr ""
 
-#: root/src/search/index.tt:14
+#: root/src/admin/pending.tt:5
+msgid "processing"
+msgstr ""
+
+#: root/src/admin/pending.tt:7 root/src/tasks/display.tt:6
+msgid "published"
+msgstr ""
+
+#: root/src/search/index.tt:15
 msgid "relevant"
 msgstr ""
 
-#: root/src/layout.tt:106
+#: root/src/layout.tt:123
 msgid "syndicate"
 msgstr ""
 
-#: root/src/layout.tt:74
+#: root/src/tasks/display.tt:8
+msgid "taken"
+msgstr ""
+
+#: root/src/layout.tt:91
 msgid "texts sorted by author"
 msgstr ""
 
-#: root/src/layout.tt:81
+#: root/src/layout.tt:98
 msgid "texts sorted by title"
 msgstr ""
 
-#: root/src/layout.tt:88
+#: root/src/layout.tt:105
 msgid "texts sorted by topics"
+msgstr ""
+
+#: root/src/tasks/display.tt:5
+msgid "unpublished"
 msgstr ""

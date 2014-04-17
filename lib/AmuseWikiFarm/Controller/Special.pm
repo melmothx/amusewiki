@@ -58,7 +58,7 @@ sub edit :Chained('entry') :PathPart('edit') :Args(0) {
     my $model  = $c->stash->{specials};
     my $text   = $model->edit($page => { %$params });
     if ($text) {
-        $c->flash->{status_msg} = $c->loc("$page updated!");
+        $c->flash->{status_msg} = $c->loc("[_1] updated!", $page);
         $c->res->redirect($c->uri_for_action('/special/display', [$page]));
     }
     else {
