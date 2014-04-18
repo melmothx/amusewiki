@@ -69,7 +69,7 @@ $params = {
            date => "2014",
            go => "Prepare this text for the archiving",
            lang => "hr",
-           textbody => "<p>Hello <em>world <s>sdafasdf asdfasd asdf asdf</s></em> asdf <strong>asdf </strong></p>",
+           textbody => "<p>Hello <em>world <s>sdafasdf asdfasd asdf asdf</s></em> asdf <strong>asdf </strong></p>\r",
            notes => "<p>Hello there asd\n<strong>fasdf</strong> as df</p>",
            source => "the source",
            subtitle => "subtitle",
@@ -108,7 +108,7 @@ foreach my $k (qw/title
 }
 
 my $html_stored = read_file($revision->original_html);
-is $html_stored, $params->{textbody}, "HTML saved verbatim";
+is $html_stored, $params->{textbody} . "\n", "HTML saved verbatim with new line";
 
 like $muse, qr/^#notes Hello there asd <strong>fasdf<\/strong> as df$/m,
   "Notes parsed correctly";
