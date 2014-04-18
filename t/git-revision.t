@@ -3,13 +3,14 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 11;
+use Test::More tests => 15;
 
 use AmuseWikiFarm::Schema;
 use Git::Wrapper;
 use File::Spec::Functions qw/catfile catdir/;
 use File::Slurp qw/write_file/;
 use File::Path qw/make_path remove_tree/;
+use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -103,3 +104,24 @@ like $logs[0]->message, qr/Published revision \d+/, "Log message matches";
 like $logs[1]->message, qr/Begin editing no\.\d+/, "Log message ok";
 
 like $logs[2]->message, qr/Imported HTML/, "Log for html ok";
+
+
+$revision =
+  $arch->create_new({ uri => 'first-test-xxxxxxx',
+                      title => 'Hello',
+                      lang => 'hr',
+                      textbody => '<p>http://my.org My "precious"</p>',
+                    });
+ok ($revision->id);
+
+$revision->edit({ body  => $revision->muse_body });
+
+$uri = $archive->publish_revision($revision->id);
+
+ok ($uri);
+
+@logs = $archive_git->log;
+
+ok (@logs == 6, "Two new revisions");
+like $logs[0]->message, qr/Begin editing/, "No published found";
+

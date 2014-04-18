@@ -152,7 +152,7 @@ sub publish_revision {
         copy ($rev->starting_file, $muse) or die $!;
         $git->add($muse);
         # this means that the publishing was forced or is a new file
-        if ($git->status->is_dirty) {
+        if ($git->status->get('indexed')) {
             $git->commit({ message => "Begin editing no.$revid"});
         }
     }
@@ -171,7 +171,7 @@ sub publish_revision {
     }
 
     if ($git) {
-        if ($git->status->is_dirty) {
+        if ($git->status->get('indexed')) {
             # could be very well already been stored above
             $git->commit({ message => "Published revision $revid" });
             # TODO add message and author in the message.
