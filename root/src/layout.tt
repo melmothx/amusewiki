@@ -37,19 +37,21 @@
             [% c.loc('Book builder') %]
           </a>
         </li>
-        [% IF site.human_can_edit %]
+        [% IF c.user_exists || site.human_can_edit %]
         <li>
           <a href="[% c.uri_for('/new') %]">
             [% c.loc('Add to library') %]
           </a>
         </li>
         [% END %]
-        [% IF c.user_exists %]
+        [% IF c.user_exists || site.human_can_publish %]
         <li>
           <a href="[% c.uri_for('/publish/pending') %]">
             [% c.loc('Pending') %]
           </a>
         </li>
+        [% END %]
+        [% IF c.user_exists %]
         <li>
           <a href="[% c.uri_for('/logout') %]">
             [% c.user.get('username') %] [% c.loc('logout') %]
