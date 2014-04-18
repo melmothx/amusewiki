@@ -3,12 +3,12 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 15;
+use Test::More tests => 16;
 
 use AmuseWikiFarm::Schema;
 use Git::Wrapper;
 use File::Spec::Functions qw/catfile catdir/;
-use File::Slurp qw/write_file/;
+use File::Slurp qw/write_file read_file/;
 use File::Path qw/make_path remove_tree/;
 use Data::Dumper;
 
@@ -110,11 +110,17 @@ $revision =
   $arch->create_new({ uri => 'first-test-xxxxxxx',
                       title => 'Hello',
                       lang => 'hr',
-                      textbody => '<p>http://my.org My "precious"</p>',
+                      textbody => qq{\r<p>http://my.org My "precious"</p>},
                     });
 ok ($revision->id);
 
 $revision->edit({ body  => $revision->muse_body });
+
+is read_file($revision->original_html,
+             { binmode => ':encoding(utf-8)' }),
+  qq{<p>http://my.org My "precious"</p>\n},
+  "Body filtered from \r";
+
 
 $uri = $archive->publish_revision($revision->id);
 

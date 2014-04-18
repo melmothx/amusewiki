@@ -132,9 +132,11 @@ sub import_text_from_html_params {
     my $html_copy = File::Spec->catfile($revision->original_html);
 
     $params->{textbody} //= "\n";
+    $params->{textbody} =~ s/\r//g;
     open (my $fhh, '>:encoding(utf-8)', $html_copy)
       or die "Couldn't open $html_copy $!";
     print $fhh $params->{textbody};
+    print $fhh "\n";
     close $fhh or die $!;
 
     # populate the file with the parameters
