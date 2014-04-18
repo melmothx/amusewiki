@@ -36,6 +36,8 @@
         <a href="[% c.uri_for_action('/library/text', [ rev.title.uri ]) %]">
           [% c.loc(rev.status) %]
         </a>
+        [% ELSIF rev.editing && !rev.editing_ongoing %]
+        [% c.loc('Stale editing') %]
         [% ELSE %]
         [% c.loc(rev.status) %]
         [% END %]

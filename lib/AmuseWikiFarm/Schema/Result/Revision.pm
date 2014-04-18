@@ -567,6 +567,23 @@ sub can_be_merged {
     }
 }
 
+=head2 editing_ongoing
+
+Check if the revision is being actively edited and permit the hijaking
+of abandoned one. I guess 15 minutes of lock is good enough.
+
+=cut
+
+sub editing_ongoing {
+    my $self = shift;
+    return unless $self->editing;
+    if (((time() - $self->updated->epoch) / 60) < 15) {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
 
 
 __PACKAGE__->meta->make_immutable;

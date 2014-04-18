@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 9;
+use Test::More tests => 10;
 use AmuseWikiFarm::Archive::Edit;
 use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Schema;
@@ -30,6 +30,7 @@ is $revision->status, 'editing', "status is editing";
 $revision->edit("#title Another first test\n\nbla bla bla\n");
 
 ok $revision->editing;
+ok $revision->editing_ongoing;
 
 ok $revision->can_be_merged, "Revision can be merged";
 
