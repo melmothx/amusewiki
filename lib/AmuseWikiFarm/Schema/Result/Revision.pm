@@ -75,6 +75,12 @@ __PACKAGE__->table("revision");
   default_value: 0
   is_nullable: 0
 
+=head2 session_id
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 updated
 
   data_type: 'datetime'
@@ -100,6 +106,8 @@ __PACKAGE__->add_columns(
   },
   "user_id",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "session_id",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "updated",
   { data_type => "datetime", is_nullable => 0 },
 );
@@ -149,8 +157,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 15:53:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MK51pOugupyd9sIvAvi2qw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-18 08:46:36
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0v72ID3CzoF1VeC7n2UA3w
 
 # core modules
 use File::Basename qw/fileparse/;

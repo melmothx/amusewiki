@@ -1,6 +1,12 @@
 [% # -*- mode:html -*- %]
 
-[% revision.id %]
+[% IF editing_warnings %]
+<div id="editing-warnings">
+  [% editing_warnings %]
+</div>
+[% END %]
+
+[% revision.id %] [% revision.status %]
 
 [% revision.title.uri %]
 

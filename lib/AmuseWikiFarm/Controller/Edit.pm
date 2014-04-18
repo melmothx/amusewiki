@@ -117,6 +117,9 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
         $c->log->debug("Creating a new revision");
         my $model = $c->stash->{editor};
         my $revision = $model->new_revision($text);
+        # on creation, set the session id
+        $revision->session_id($c->sessionid);
+        $revision->update;
         my $location = $c->uri_for_action('/edit/edit', [ $uri,
                                                          $revision->id ]);
         $c->response->redirect($location);
@@ -163,15 +166,23 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
         $c->detach('/not_found');
         return;
     }
+
     my $params = $c->request->params;
 
+    # while editing, prevent multiple session to write stuff
+    if ($revision->editing and
+        $revision->session_id ne $c->sessionid) {
+        $c->stash->{editing_warnings} =
+          $c->loc("This revision is being edited by someone else!");
+    }
     # on submit, do the editing. Please note that we don't care about
     # the params. We save the body and pass that as preview. So if the
     # user closes the browser, when it has a chance to pick it back.
-    if ($params->{preview} || $params->{commit} || $params->{upload}) {
+    elsif ($params->{preview} || $params->{commit} || $params->{upload}) {
 
+        # set the session id
+        $revision->session_id($c->sessionid);
         # See Result::Revision for the supported status
-        # reset to editing in case
         $revision->status('editing');
         $revision->updated(DateTime->now);
         $revision->update;

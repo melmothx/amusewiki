@@ -85,7 +85,9 @@ sub not_permitted :Global {
     my ($self, $c) = @_;
     $c->response->status(403);
     $c->log->debug("denied");
-    $c->stash(error_msg => $c->loc("Access denied!"));
+    unless ($c->stash->{error_msg}) {
+        $c->stash(error_msg => $c->loc("Access denied!"));
+    }
     $c->stash(template => "error.tt");
 }
 
