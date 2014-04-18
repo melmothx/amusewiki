@@ -98,13 +98,17 @@ Otherwise we have to ask the user to force the operation.
 
 ** TODO permanent redirections for legacy naming scheme
 
-** TODO when editing, check that the revision belongs to the same session id
+** DONE when editing, check that the revision belongs to the same session id
+   CLOSED: [2014-04-18 ven 10:00]
 ** TODO put the revisions code into the ResultSet::Revision and Result::Revision
 
 Otherwise we go crazy
 
 ** TODO Bug: when updating a text, clear the fields.
 
+** TODO Create a setting table for common setting of the wiki instance
+
+I.e., not site specific. Example: basedir.
 
 * Backend
 ** DONE Queue using the db.

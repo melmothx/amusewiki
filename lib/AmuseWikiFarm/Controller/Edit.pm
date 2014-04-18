@@ -39,9 +39,16 @@ sub auto :Private {
     }
 }
 
-=head2 /new
+=head2 root
 
-Theis 
+Root of the chaining. Retrieve the Edit model (TODO: remove the need
+of this model)
+
+=head2 newtext
+
+Path: /new
+
+The main route to create a new text from scratch
 
 =cut
 
@@ -88,6 +95,7 @@ sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
         $c->stash->{text_to_edit} = $text;
     }
     else {
+        # TODO create one, we should be able to create one on the fly
         $c->log->debug('text does not exist...');
         $c->detach('/not_found');
     }
