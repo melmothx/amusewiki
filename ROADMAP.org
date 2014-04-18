@@ -110,6 +110,8 @@ Otherwise we go crazy
 
 I.e., not site specific. Example: basedir.
 
+** TODO updating from remote gits
+
 * Backend
 ** DONE Queue using the db.
    CLOSED: [2014-03-23 dom 10:00]
