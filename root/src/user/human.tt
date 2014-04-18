@@ -6,7 +6,7 @@
 
 <h4>[% c.loc('You can do so answering a simple question.') %]</h4>
 
-<form method="post" action="[% c.uri_for('/human') %]">
+<form name="human" method="post" action="[% c.uri_for('/human') %]">
   <fieldset>
     [% site.magic_question %]
     <input type="text" size="20" name="answer" />

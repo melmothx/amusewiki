@@ -23,13 +23,9 @@
 </ul>
 [% END %]
 
-<form method="post" enctype="multipart/form-data">
-</form>
-
 <h3>[% c.loc('Text editing') %]</h3>
 
-
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" id="museform">
   <fieldset>
     <h4>[% c.loc('Add an attachment') %]</h4>
     <input id="attachment" name="attachment" type="file" /><br />
