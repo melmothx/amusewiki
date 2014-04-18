@@ -197,14 +197,14 @@ CREATE TABLE attachment (
 
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
-INSERT INTO site (id, locale,
+INSERT INTO site (id, locale, mode,
                   sitename, siteslogan, theme, bb_page_limit,
                   logo, canonical,
                   a4_pdf, lt_pdf,
                   papersize, division, bcor, fontsize, mainfont, twoside
                   )
        VALUES (
-              '0blog0', 'hr',
+              '0blog0', 'hr', 'modwiki',
               'hrvatski blog', 'samo test', '', 5,
               'logo-yu',
               'http://blog.amusewiki.org',
@@ -212,15 +212,22 @@ INSERT INTO site (id, locale,
               'a4', 9, '1cm', 12, 'Charis SIL', 1
               ),
               (
-              '0test0', 'en',
+              '0test0', 'en', 'blog',
               'english test', 'only a test', 'test-theme', 10,
               'logo-en',
               'http://test.amusewiki.org',
               0, 0,
               '', 12, '0mm', 10, '', 1
               ),
+              ('0wiki0', 'en', 'openwiki',
+              'a wiki', 'a wiki', '', 5,
+              'logo-en',
+              'http://wiki.amusewiki.org',
+              0, 0,
+              '', 12, '0mm', 10, '', 1
+              ),
               (
-              '0empty0', 'en',
+              '0empty0', 'en', 'blog',
               '', '', '', 10,
               '',
               'http://empty.amusewiki.org',
@@ -234,6 +241,7 @@ UPDATE site SET magic_answer = 'January';
 INSERT INTO vhost VALUES ('blog.amusewiki.org', '0blog0');
 INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');
 INSERT INTO vhost VALUES ('empty.amusewiki.org', '0empty0');
+INSERT INTO vhost VALUES ('wiki.amusewiki.org', '0wiki0');
 
 INSERT INTO roles VALUES (1, 'root');
 INSERT INTO roles VALUES (2, 'librarian');

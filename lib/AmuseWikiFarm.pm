@@ -59,6 +59,7 @@ use Catalyst
   '-Log=warn,fatal,error',
 #  'MemoryUsage',
   'Authentication',
+  'Authorization::Roles',
   'Session',
   'Session::Store::File',
   'Session::State::Cookie';

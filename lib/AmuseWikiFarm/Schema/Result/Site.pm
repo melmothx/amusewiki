@@ -560,6 +560,38 @@ sub repo_is_under_git {
     return -d File::Spec->catdir($self->repo_root, '.git');
 }
 
+=head1 Site modes
+
+To check the site mode, you should use these methods, instead of
+looking at C<mode>.
+
+The filtered actions boil down to editing and publishing, where
+editing is also the creation of new texts.
+
+=cut
+
+sub human_can_edit {
+    my $self = shift;
+    my $mode = $self->mode;
+    if ($mode eq 'modwiki' or
+        $mode eq 'openwiki') {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
+sub human_can_publish {
+    my $self = shift;
+    my $mode = $self->mode;
+    if ($mode eq 'openwiki') {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 

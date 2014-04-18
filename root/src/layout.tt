@@ -44,7 +44,7 @@
         </li>
         [% IF c.user_exists %]
         <li>
-          <a href="[% c.uri_for('/admin/pending') %]">
+          <a href="[% c.uri_for('/publish/pending') %]">
             [% c.loc('Pending') %]
           </a>
         </li>

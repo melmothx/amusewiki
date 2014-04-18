@@ -10,7 +10,7 @@
 <h3>[% c.loc('Pending revisions') %]</h3>
 
   <table>
-    [% FOREACH rev IN revisions %]
+    [% FOREACH rev IN revisions.all %]
     <tr>
       <td>
         <a href="[% c.uri_for_action('/edit/edit', [rev.title.uri, rev.id]) %]">
@@ -22,7 +22,7 @@
       </td>
       <td>
         [% IF rev.pending %]
-        <form method="post">
+        <form method="post" action="[% c.uri_for('/publish/publish') %]">
           <input type="hidden" name="publish" value="[% rev.id %]" />
           [% IF rev.can_be_merged -%]
           [%- SET publish_msg = c.loc('Publish') -%]

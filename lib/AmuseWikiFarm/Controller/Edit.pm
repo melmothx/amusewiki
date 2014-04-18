@@ -29,13 +29,28 @@ Deny access to non human. Also fine grain control needed (TODO)
 
 sub auto :Private {
     my ($self, $c) = @_;
-    if ($c->session->{i_am_human}) {
+    my $site = $c->stash->{site};
+    # librarians can always edit
+    if ($c->user_exists) {
         return 1;
     }
+    # humans can edit if the site says so
+    elsif ($site->human_can_edit) {
+        # but prove it
+        if ($c->session->{i_am_human}) {
+            return 1;
+        }
+        else {
+            $c->session(redirect_after_login => $c->request->path);
+            $c->response->redirect($c->uri_for('/human'));
+            return;
+        }
+    }
+    # otherwise ask for login
     else {
         $c->session(redirect_after_login => $c->request->path);
-        $c->response->redirect($c->uri_for('/human'));
-        return 0;
+        $c->response->redirect($c->uri_for('/login'));
+        return;
     }
 }
 
@@ -221,7 +236,7 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
             $c->flash(status_msg => "Changes committed, thanks!");
             $revision->status('pending');
             $revision->update;
-            $c->response->redirect($c->uri_for_action('/admin/pending'));
+            $c->response->redirect($c->uri_for_action('/publish/pending'));
             return;
         }
     }

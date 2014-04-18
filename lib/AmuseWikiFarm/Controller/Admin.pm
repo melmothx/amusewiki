@@ -16,21 +16,18 @@ Catalyst Controller.
 
 =head2 auto
 
-Deny access to non-logged in
-
-=head2 index
+Grant access to root users only.
 
 =cut
 
 sub auto :Private {
     my ($self, $c) = @_;
-    if ($c->user_exists) {
+    if ($c->user_exists && $c->check_user_roles('root')) {
         return 1;
     }
     else {
-        $c->session(redirect_after_login => $c->request->path);
-        $c->response->redirect($c->uri_for('/login'));
-        return 0;
+        c->detach('/not_permitted');
+        return;
     }
 }
 

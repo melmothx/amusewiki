@@ -52,10 +52,15 @@ privileges granted to the humans.
 This mode restricts access to the text editing to librarians only.
 Humans can still use the bookbuilder.
 
+The test site with id '0empty0' works this way.
+
+
 *** modwiki
 
 This mode is a "moderated wiki". Humans can add new texts and edit
 them, but approvals and publishing is reserved to the librarians.
+
+The test site '0blog0' works this way.
 
 *** openwiki
 
@@ -64,6 +69,8 @@ the result is published right away. Revisions are kept in the git, so
 it's always possible to revert to a previous one (but could be
 complicated and messy). Use at your own risk, but it could make sense
 as a private wiki or in a LAN.
+
+The test site '0wiki0' works this way.
 
 * Directory structure
 
