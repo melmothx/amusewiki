@@ -57,7 +57,8 @@
 
 ** TODO robot ignores on some pages like the forms
 
-** TODO more substantial tests on access control
+** DONE more substantial tests on access control
+   CLOSED: [2014-04-18 ven 16:39]
 
 ** DONE Feed
    CLOSED: [2014-03-14 ven 17:08]
@@ -111,6 +112,7 @@ Otherwise we go crazy
 I.e., not site specific. Example: basedir.
 
 ** TODO updating from remote gits
+** TODO When a "published" text sets a deletion, notify it
 
 * Backend
 ** DONE Queue using the db.
