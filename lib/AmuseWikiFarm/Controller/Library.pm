@@ -156,8 +156,12 @@ Get the a random text
 
 sub random :Global :Args(0) {
     my ($self, $c) = @_;
-    my $text = $c->stash->{site}->titles->random_text;
-    $c->response->redirect($c->uri_for_action('/library/text' => $text->uri));
+    if (my $text = $c->stash->{site}->titles->random_text) {
+        $c->response->redirect($c->uri_for_action('/library/text' => $text->uri));
+    }
+    else {
+        $c->detach('/not_found');
+    }
 }
 
 
