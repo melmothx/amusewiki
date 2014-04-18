@@ -250,3 +250,9 @@ INSERT INTO users VALUES (1, 'root', 'root', '', 1, NULL);
 INSERT INTO users VALUES (2, 'user1', 'pass', '', 1, '0blog0');
 INSERT INTO users VALUES (3, 'user2', 'pass', '', 1, '0blog0');
 INSERT INTO users VALUES (4, 'user3', 'pass', '', 0, '0blog0');
+
+INSERT INTO user_role VALUES (1, 1),
+                             (2, 2),
+                             (3, 2),
+                             (4, 2);
+

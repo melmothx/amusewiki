@@ -1,7 +1,7 @@
 [% # -*- mode: html -*- %]
  
 <!-- Login form -->
-<form method="post" action="[% c.uri_for('/login') %]">
+<form id="login-form" method="post" action="[% c.uri_for('/login') %]">
   <table>
     <tr>
       <td>

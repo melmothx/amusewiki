@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 17;
 
 use Catalyst::Test 'AmuseWikiFarm';
 use Test::WWW::Mechanize::Catalyst;
@@ -20,14 +20,37 @@ my %hosts = (
 foreach my $host (keys %hosts) {
     my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                    host => $host);
-
-    $mech->get_ok('/admin/pending');
-    $mech->content_contains('<input type="password" name="password"');
-    $mech->post('/login' => { username => 'root',
-                              password => 'root',
-                              submit => '1',
-                            });
+    $mech->get('/admin/debug_site_id');
+    ok (!$mech->success, "Not a success");
+    is ($mech->status, 403);
+    $mech->get_ok('/login');
+    $mech->content_contains('name="password"');
+    $mech->content_contains('name="username"');
+    $mech->submit_form(form_id => 'login-form',
+                       fields => { username => 'root',
+                                   password => 'root',
+                                 },
+                       button => 'submit');
     $mech->get_ok('/admin/debug_site_id');
     $mech->content_is($hosts{$host}{id} . ' ' . $hosts{$host}{locale}) or
       print $mech->content;
 }
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => 'blog.amusewiki.org');
+
+diag "Regular users can't access admin";
+
+$mech->get('/logout');
+$mech->get('/login');
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'user1',
+                               password => 'pass',
+                             },
+                   button => 'submit');
+$mech->get('/');
+$mech->content_contains("/logout");
+$mech->get('/admin/debug_site_id');
+ok (!$mech->success, "Not a success");
+is ($mech->status, 403);
+

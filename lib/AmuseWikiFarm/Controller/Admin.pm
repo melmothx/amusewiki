@@ -26,7 +26,7 @@ sub auto :Private {
         return 1;
     }
     else {
-        c->detach('/not_permitted');
+        $c->detach('/not_permitted');
         return;
     }
 }
