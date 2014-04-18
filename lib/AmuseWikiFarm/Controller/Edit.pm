@@ -179,7 +179,9 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
 
     # while editing, prevent multiple session to write stuff
     if ($revision->editing_ongoing and
+        $revision->session_id      and
         $revision->session_id ne $c->sessionid) {
+        $c->log->debug($revision->session_id . ' ne ' . $c->sessionid);
         $c->stash->{editing_warnings} =
           $c->loc("This revision is being edited by someone else!");
     }
