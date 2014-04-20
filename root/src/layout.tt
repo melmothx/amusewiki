@@ -73,6 +73,19 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
+                [% IF show_edit_bb %]
+                <li>
+                  <a href="[% c.uri_for('/bookbuilder/add', { text => text.uri }) %]">
+                    [% c.loc('Add this text to the bookbuilder') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/edit/revs', [ text.uri ]) %]">
+                    [% c.loc('Edit this text') %]
+                  </a>
+                </li>
+                <li class="divider"></li>
+                [% END %]
                 <li>
                   <a href="[% c.uri_for('/special/about') %]">About</a>
                 </li>

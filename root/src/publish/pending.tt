@@ -9,7 +9,8 @@
 [% IF revisions.size %]
 <h3>[% c.loc('Pending revisions') %]</h3>
 
-  <table>
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered">
     [% FOREACH rev IN revisions.all %]
     <tr>
       <td>
@@ -46,6 +47,6 @@
     </tr>
     [% END %]
   </table>
-
+</div>
         
 [% END %]

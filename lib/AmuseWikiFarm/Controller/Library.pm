@@ -116,6 +116,7 @@ sub text :Path :Args(1) {
             $c->stash(
                       template => 'text.tt',
                       text => $text,
+                      show_edit_bb => 1,
                      );
         }
     }

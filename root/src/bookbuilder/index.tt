@@ -10,7 +10,14 @@
 
 <div id="bb-list-edit">
   [% IF bb.texts.size %]
-  <table id="bookbuilderlist">
+  <div class="table-responsive">
+  <table id="bookbuilderlist" class="table table-striped
+                                     table-condensed
+                                     table-bordered">
+    <tr>
+      <th>URI</th>
+      <th>action</th>
+    </tr>
     [% textindex = 1 %]
     [% FOREACH book IN bb.texts %]
     <tr>
@@ -41,6 +48,7 @@
       </td>
     </tr>
   </table>
+  </div>
   [% ELSE %]
   <p>[% c.loc('No text was added yet') %]</p>
   [% END %]
