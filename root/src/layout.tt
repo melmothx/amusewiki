@@ -103,6 +103,11 @@
                   </a>
                 </li>
                 [% END %]
+                <li>
+                  <a href="[% c.uri_for('/feed') %]">
+                    [% c.loc("RSS feed") %]
+                  </a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -137,11 +142,6 @@
         [% content %]
       </div>
       <div id="footer">
-        <a href="[% c.uri_for('/rss.xml') %]">
-          <img src="[% c.uri_for('/static/images/feed-icon-28x28.png') %]"
-               alt="[% c.loc('syndicate') %]" id="rssicon" />
-          [% c.loc("RSS") %]
-        </a>
       </div>
     </div>
   </body>
