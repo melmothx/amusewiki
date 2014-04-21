@@ -65,16 +65,12 @@ ok (!$schema->resultset('Site')->find('0blog0')->repo_is_under_git,
 
 diag "creating a new revision";
 
-use AmuseWikiFarm::Archive::Edit;
-use AmuseWikiFarm::Archive;
-
-my $arch = AmuseWikiFarm::Archive::Edit->new(site_schema => $site);
-my $revision =
-  $arch->create_new({ uri => 'first-test',
-                      title => 'Hello',
-                      lang => 'hr',
-                      textbody => '<p>http://my.org My "precious"</p>',
-                    });
+my ($revision, $error) =
+  $site->create_new_text({ uri => 'first-test',
+                           title => 'Hello',
+                           lang => 'hr',
+                           textbody => '<p>http://my.org My "precious"</p>',
+                         });
 ok ($revision->id);
 
 $revision->edit({
@@ -86,12 +82,7 @@ my $expected = '[[http://my.org][my.org]] My „precious”';
 
 like $revision->muse_body, qr/\Q$expected\E/, "Correctly filtered";
 
-my $archive = AmuseWikiFarm::Archive->new(code => $site->id,
-                                          dbic => $schema);
-
-
-
-my $uri = $archive->publish_revision($revision->id);
+my $uri = $revision->publish_text;
 
 ok($uri, "Publish revision returned the uri") and diag "Found $uri";
 
@@ -106,8 +97,8 @@ like $logs[1]->message, qr/Begin editing no\.\d+/, "Log message ok";
 like $logs[2]->message, qr/Imported HTML/, "Log for html ok";
 
 
-$revision =
-  $arch->create_new({ uri => 'first-test-xxxxxxx',
+($revision, $error) =
+  $site->create_new_text({ uri => 'first-test-xxxxxxx',
                       title => 'Hello',
                       lang => 'hr',
                       textbody => qq{\r<p>http://my.org My "precious"</p>},
@@ -122,7 +113,7 @@ is read_file($revision->original_html,
   "Body filtered from \r";
 
 
-$uri = $archive->publish_revision($revision->id);
+$uri = $revision->publish_text;
 
 ok ($uri);
 

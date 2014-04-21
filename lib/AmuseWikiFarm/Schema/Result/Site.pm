@@ -427,8 +427,17 @@ __PACKAGE__->has_many(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XTm5N65WDMXu4uj1O1VxAg
 
 use File::Spec;
+use Cwd;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
+                                   muse_file_info
                                    muse_naming_algo/;
+use Text::Amuse::Preprocessor::HTML qw/html_to_muse/;
+use Date::Parse;
+use DateTime;
+use File::Copy qw/copy/;
+use AmuseWikiFarm::Archive::Xapian;
+use Unicode::Collate::Locale;
+
 
 =head2 repo_root_rel
 
@@ -592,6 +601,327 @@ sub human_can_publish {
         return;
     }
 }
+
+=head1 Create new texts
+
+=head2 staging_dirname
+
+The relative path to the staging directory. Hardcoded for now as 'staging'.
+
+=head2 staging_dir
+
+The absolute path to the staging directory, concatenating the
+C<staging_dirname> and the current directory.
+
+TODO: use a setting instead of the getcwd.
+
+=cut
+
+sub staging_dirname {
+    return 'staging';
+}
+
+sub staging_dir {
+    my $self = shift;
+    return File::Spec->catdir(getcwd(), $self->staging_dirname);
+}
+
+=head2 create_new_text(\%params)
+
+Using the parameters passed, create a new text and return its revision
+object or undef it couldn't be created.
+
+Always return two values: the first is the revision object, the second
+is the redirection.
+
+If the revision could not be created, return undef as the first
+element and the error in the second.
+
+=cut
+
+sub create_new_text {
+    my ($self, $params) = @_;
+
+    # assert that the directory where to put the files exists
+    my $staging_dir = $self->staging_dir;
+    unless (-d $staging_dir) {
+        mkdir $self->staging_dir or die "Couldn't create $staging_dir $!";
+    }
+    # URI generation
+    my $author = $params->{author} // "";
+    my $title  = $params->{title}  // "";
+    my $uri;
+    if ($params->{uri}) {
+        $uri = muse_naming_algo($params->{uri});
+        # replace the params with our clean form
+    }
+    elsif ($title) {
+        $uri = muse_naming_algo("$author $title");
+    }
+    unless ($uri) {
+        return undef, "Couldn't generate the uri!";
+    }
+    # and store it in the params
+    $params->{uri} = $uri;
+
+    if ($self->titles->find({ uri => $uri })) {
+        return undef, "Such an uri already exists";
+    }
+    my $text = $self->import_text_from_html_params($params);
+
+}
+
+=head2 import_text_from_html_params
+
+HTML => muse conversion
+
+=cut
+
+sub import_text_from_html_params {
+    my ($self, $params) = @_;
+    my $uri = $params->{uri};
+    die "uri not set!" unless $uri;
+
+    # the first thing we do is to assing a path and create a revision in the db
+    my $pubdate = str2time($params->{pubdate}) || time();
+    my $pubdt = DateTime->from_epoch(epoch => $pubdate);
+    $params->{pubdate} = $pubdt->iso8601;
+
+    # documented in Result::Title
+    my $bogus = {
+                 uri => $uri,
+                 pubdate => $pubdate,
+                 f_suffix => '.muse',
+                 status => 'editing',
+                };
+
+    foreach my $f (qw/f_path f_archive_rel_path f_timestamp
+                      f_full_path_name f_name/) {
+        $bogus->{$f} = '';
+    }
+
+    my $revision = $self->titles->create($bogus)->new_revision(1);
+    my $file = $revision->f_full_path_name;
+    die "full path was not set!" unless $file;
+
+    # save a copy of the html request
+    my $html_copy = File::Spec->catfile($revision->original_html);
+
+    $params->{textbody} //= "\n";
+    $params->{textbody} =~ s/\r//g;
+    open (my $fhh, '>:encoding(utf-8)', $html_copy)
+      or die "Couldn't open $html_copy $!";
+    print $fhh $params->{textbody};
+    print $fhh "\n";
+    close $fhh or die $!;
+
+    # populate the file with the parameters
+    open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
+    # TODO add support for uid and cat (ATR)
+    foreach my $directive (qw/title subtitle author LISTtitle SORTauthors
+                              SORTtopics date
+                              source lang pubdate/) {
+
+        $self->_add_directive($fh, $directive, $params->{$directive});
+    }
+    # add the notes
+    $self->_add_directive($fh, notes => html_to_muse($params->{notes}));
+
+    # separator
+    print $fh "\n";
+
+    my $body = html_to_muse($params->{textbody});
+    if (defined $body) {
+        print $fh $body;
+    }
+    print $fh "\n\n";
+    close $fh or die $!;
+    # save a copy as the starting file
+    # see "new_revision" below
+    die $revision->starting_file . ' already present'
+      if -f $revision->starting_file;;
+    copy($file, $revision->starting_file) or die $!;
+    return $revision;
+}
+
+sub _add_directive {
+    my ($self, $fh, $directive, $text) = @_;
+    die unless $fh && $directive;
+    return unless defined $text;
+    # usual washing
+    $text =~ s/\r*\n/ /gs; # it's a directive, no \n
+    # leading and trailing spaces
+    $text =~ s/^\s*//s;
+    $text =~ s/\s+$//s;
+    $text =~ s/  +/ /gs; # pack the whitespaces
+    return unless length($text);
+    print $fh '#' . $directive . ' ' . $text . "\n";
+}
+
+=head2 new_revision_from_uri($uri)
+
+Return a new revision object for the text uri or undef if it doesn't
+exist.
+
+=cut
+
+sub new_revision_from_uri {
+    my ($self, $uri) = @_;
+    my $text = $self->titles->find({ uri => $uri });
+    $text ? return $text->new_revision : return;
+}
+
+=head2 xapian
+
+Return a L<AmuseWikiFarm::Archive::Xapian> object
+
+=cut
+
+sub xapian {
+    my $self = shift;
+    return AmuseWikiFarm::Archive::Xapian->new(
+                                               code => $self->id,
+                                               locale => $self->locale,
+                                              );
+}
+
+=head2 collation_index
+
+Update the C<sorting_pos> field of each text and category based on the
+collation for the current locale.
+
+Collation on the fly would have been too slow, or would depend on the
+(possibly crappy) collation of the database engine, if any.
+
+=cut
+
+sub collation_index {
+    my $self = shift;
+    my $collator = Unicode::Collate::Locale->new(locale => $self->locale);
+
+    my @texts = sort {
+        # warn $a->id . ' <=>  ' . $b->id;
+        $collator->cmp($a->list_title, $b->list_title)
+    } $self->titles;
+
+    my $i = 1;
+    foreach my $t (@texts) {
+        $t->sorting_pos($i++);
+        $t->update if $t->is_changed;
+    }
+
+    # and then sort the categories
+    my @categories = sort {
+        # warn $a->id . ' <=> ' . $b->id;
+        $collator->cmp($a->name, $b->name)
+    } $self->categories;
+
+    $i = 1;
+    foreach my $cat (@categories) {
+        $cat->sorting_pos($i++);
+        $cat->update if $cat->is_changed;
+    }
+
+}
+
+=head2 index_file($path_to_file)
+
+Add the file to the DB and Xapian databases, first parsing it with
+C<muse_info_file> from L<AmuseWikiFarm::Utils::Amuse>.
+
+=cut
+
+sub index_file {
+    my ($self, $file) = @_;
+    unless ($file && -f $file) {
+        $file ||= '<empty>';
+        warn "File $file does not exist";
+        return;
+    }
+
+    my $details = muse_file_info($file, $self->id);
+    # unparsable
+    return unless $details;
+
+    if ($details->{f_suffix} ne '.muse') {
+        warn "Inserting data for attachment $file\n";
+        $self->attachments->update_or_create($details);
+        return $file;
+    }
+
+    # ready to store into titles?
+    # by default text are published, unless the file info returns something else
+    # and if it's an update we have to reset it.
+    my %insertion = (deleted => '');
+    # lower case the keys
+
+
+    my $fields = $self->title_fields;
+
+    foreach my $col (keys %$details) {
+        my $db_col = lc($col);
+        if (exists $fields->{$db_col}) {
+            $insertion{$db_col} = delete $details->{$col};
+        }
+    }
+
+    my $parsed_cats = delete $details->{parsed_categories};
+    if (%$details) {
+        warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
+    }
+    print "Inserting data for $file\n";
+    # TODO: see if we have to update the insertion
+
+    my $title = $self->titles->update_or_create(\%insertion)->get_from_storage;
+
+    # pick the old categories.
+    my @old_cats_ids;
+    foreach my $old_cat ($title->categories) {
+        push @old_cats_ids, $old_cat->id;
+    }
+
+    if ($title->is_deleted) {
+        $title->status('deleted');
+    }
+    elsif ($title->is_deferred) {
+        $title->status('deferred');
+    }
+    elsif ($title->is_published) {
+        $title->status('published');
+    }
+    $title->update if $title->is_changed;
+
+    if ($title->is_published && $parsed_cats && @$parsed_cats) {
+        # here we can die if there are duplicated uris
+        $title->set_categories($parsed_cats);
+    }
+    else {
+        # purge the categories if there is none.
+        $title->set_categories([]);
+    }
+
+    foreach my $cat ($title->categories) {
+        $cat->title_count_update;
+    }
+
+    foreach my $cat_id (@old_cats_ids) {
+        my $cat = $self->categories->find($cat_id);
+        $cat->title_count_update;
+    }
+
+    # XAPIAN INDEXING
+    $self->xapian->index_text($title);
+    return $file;
+}
+
+sub title_fields {
+    my $self = shift;
+    my %fields = map { $_ => 1 } $self->titles->result_source->columns;
+    return \%fields;
+
+}
+
+
 
 __PACKAGE__->meta->make_immutable;
 

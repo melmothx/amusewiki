@@ -24,7 +24,7 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
-    my $xapian = $c->model('Xapian');
+    my $xapian = $site->xapian;
     # here we could configure the paging
     # $xapian->page(1);
 

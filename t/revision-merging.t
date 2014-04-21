@@ -4,17 +4,13 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 10;
-use AmuseWikiFarm::Archive::Edit;
-use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Schema;
 use File::Slurp qw/read_file write_file/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
 
-my $arch = AmuseWikiFarm::Archive::Edit->new(site_schema => $site);
-
-my $revision = $arch->new_revision_from_uri('first-test');
+my $revision = $site->new_revision_from_uri('first-test');
 
 # do a copy to avoid modifing our own git...
 my $original_file = read_file($revision->title->f_full_path_name,
@@ -36,24 +32,21 @@ ok $revision->can_be_merged, "Revision can be merged";
 
 # create another one
 
-my $other_revision = $arch->new_revision_from_uri('first-test');
+my $other_revision = $site->new_revision_from_uri('first-test');
 
 ok $other_revision->can_be_merged, "The other revision can be merged";
 
 # publish
 
-my $archive = AmuseWikiFarm::Archive->new(code => $site->id,
-                                          dbic => $schema);
-
-$archive->publish_revision($revision->id);
+$revision->publish_text;
 
 
 ok !$other_revision->can_be_merged, "The other revision now can't be merged";
 
 # reset
-my $restore = $arch->new_revision_from_uri('first-test');
+my $restore = $site->new_revision_from_uri('first-test');
 $restore->edit($original_file);
 
 ok $restore->can_be_merged, "New revision works";
 
-$archive->publish_revision($restore->id);
+$restore->publish_text;

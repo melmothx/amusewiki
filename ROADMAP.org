@@ -102,7 +102,8 @@ Otherwise we have to ask the user to force the operation.
 
 ** DONE when editing, check that the revision belongs to the same session id
    CLOSED: [2014-04-18 ven 10:00]
-** TODO put the revisions code into the ResultSet::Revision and Result::Revision
+** DONE put the revisions code into the ResultSet::Revision and Result::Revision
+   CLOSED: [2014-04-21 lun 15:27]
 
 Otherwise we go crazy
 

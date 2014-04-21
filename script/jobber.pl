@@ -9,7 +9,6 @@ use lib "$Bin/../lib";
 
 
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Archive::Queue;
 use JSON qw/from_json/;
 use Data::Dumper;
@@ -68,11 +67,9 @@ while (1) {
 
 sub publish {
     my $j = shift;
-    my $archive = AmuseWikiFarm::Archive->new(code => $j->site->id,
-                                              dbic => $schema);
     my $data = from_json($j->payload);
     print Dumper($data);
-    $archive->publish_revision($data->{id});
+    $schema->resultset('Revision')->find($data->{id})->publish_text;
 }
 
 # TODO this one should be moved in Archive::BookBuilder, or in

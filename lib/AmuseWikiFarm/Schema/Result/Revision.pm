@@ -175,6 +175,9 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
 
 use Text::Amuse::Functions qw/muse_fast_scan_header/;
 use Text::Amuse::Preprocessor::Typography qw/get_typography_filter/;
+use Text::Amuse::Compile;
+use Git::Wrapper;
+
 
 
 =head2 muse_body
@@ -585,6 +588,99 @@ sub editing_ongoing {
     }
 }
 
+=head2 publish_text
+
+Procedure:
+
+=over 4
+
+=item carefully move it in the target directory
+
+=item if in a git directory, add it to the git and commit
+
+=item compile the file and report errors, if any
+
+=item call $site->index_file on the muse and the attachments
+
+=item call $site->collation_index
+
+=back
+
+=cut
+
+sub publish_text {
+    my $self = shift;
+
+    my %files = $self->destination_paths;
+
+    # catch the muse files and its attachments, and validate it.
+    my $muse;
+    my @attachments;
+    foreach my $src (keys %files) {
+        my $target = $files{$src};
+        if ($target =~ m/\.muse$/) {
+            die "Multiple muse files found in " . $self->id if $muse;
+            $muse = $target;
+        }
+        else {
+            push @attachments, $target;
+        }
+    }
+    # first process the muse file
+    die "muse file not found in " . $self->id unless $muse;
+
+    my $git;
+    if ($self->site->repo_is_under_git) {
+        $git = Git::Wrapper->new($self->site->repo_root);
+    }
+    my $revid = $self->id;
+
+    if ($git and -f $self->original_html) {
+        die "Original html found, but target exists" if -f $muse;
+        copy ($self->original_html, $muse) or die $!;
+        $git->add($muse);
+        # TODO add the author?
+        $git->commit({ message => "Imported HTML revision no.$revid"});
+        die "starting muse revision not found!" unless -f $self->starting_file;
+        copy ($self->starting_file, $muse) or die $!;
+        $git->add($muse);
+        # this means that the publishing was forced or is a new file
+        if ($git->status->get('indexed')) {
+            $git->commit({ message => "Begin editing no.$revid"});
+        }
+    }
+
+    foreach my $k (keys %files) {
+        my $dest = $files{$k};
+        if ($dest ne $muse) {
+            # this shouldn't happen
+            die "Attachment already exists" if -f $dest;
+        }
+        copy($k, $dest) or die "Couldn't copy $k to $dest $!";
+
+        if ($git) {
+            $git->add($dest);
+        }
+    }
+
+    if ($git) {
+        if ($git->status->get('indexed')) {
+            # could be very well already been stored above
+            $git->commit({ message => "Published revision $revid" });
+            # TODO add message and author in the message.
+        }
+    }
+
+    my $compiler = Text::Amuse::Compile->new($self->site->compile_options);
+    $compiler->compile($muse);
+    foreach my $f (values %files) {
+        $self->site->index_file($f);
+    }
+    $self->site->collation_index;
+    $self->status('published');
+    $self->update;
+    return $self->muse_uri;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

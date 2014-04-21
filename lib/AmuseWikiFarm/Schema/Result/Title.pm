@@ -323,6 +323,7 @@ __PACKAGE__->many_to_many("categories", "title_categories", "category");
 use File::Spec;
 use File::Slurp qw/read_file/;
 use DateTime;
+use File::Copy qw/copy/;
 
 =head2 listing
 
@@ -524,6 +525,57 @@ sub pages_estimated {
         return;
     }
 }
+
+
+=head2 new_revision
+
+Create a new revision for the current text. With an optional true
+argument, skip the copying of the file.
+
+=cut
+
+sub new_revision {
+    my ($self, $skip_copying) = @_;
+    my $revision = $self->revisions->create({
+                                             # help dbic to cope with this
+                                             site_id => $self->site->id,
+                                             updated => DateTime->now,
+                                            });
+    my $uri = $revision->title->uri;
+    die "Couldn't find uri for belonging title!" unless $uri;
+    my $target_dir = File::Spec->catdir($self->site->staging_dir, $revision->id);
+    if (-d $target_dir) {
+        # mm, some db backend is reusing the ids, so clean it up
+        opendir(my $dh, $target_dir) or die "Can't open dir $target_dir $!";
+        my @cleanup = grep {
+            -f File::Spec->catfile($target_dir, $_)
+        } readdir($dh);
+        closedir $dh;
+        foreach my $clean (@cleanup) {
+            warn "Removing $clean in $target_dir";
+            unlink File::Spec->catfile($target_dir, $clean) or warn $!;
+        }
+    }
+    else {
+        mkdir $target_dir or  die "Couldn't create $target_dir $!";
+    }
+    my $fullpath = File::Spec->catfile($target_dir, $uri . '.muse');
+    $revision->f_full_path_name($fullpath);
+
+    # copy the file twice. The first is the starting file, the second the
+    # actual revision.
+
+    unless ($skip_copying) {
+        copy($self->f_full_path_name, $revision->starting_file) or die $!;
+        copy($self->f_full_path_name, $revision->f_full_path_name) or die $!;
+    }
+
+    # update and return a fresh copy
+    $revision->update;
+    return $revision->get_from_storage;
+
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;
