@@ -1,6 +1,14 @@
 #!/bin/bash
 rm -v sqlite.db
 rm -rfv xapian/{0blog0,0test0}
+rm -rfv staging
+git checkout -- staging
+
+if [ "$1" == '--cleanup' ]; then
+    rm -rfv repo
+    git checkout -- repo
+fi
+
 sqlite3 sqlite.db < sql/sqlite.sql
 script/amusewikifarm_create.pl model DB \
     DBIC::Schema AmuseWikiFarm::Schema \
@@ -11,4 +19,7 @@ script/amusewikifarm_create.pl model DB \
 script/bootstrap_archive.pl 0test0 0blog0
 script/bootstrap_specials.pl 0test0 0blog0
 
+if [ "$!" == '--cleanup']; then
+    script/boostrap_formats.pl 0test0 0blog0
+fi
 
