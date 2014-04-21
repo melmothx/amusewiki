@@ -726,7 +726,7 @@ sub import_text_from_html_params {
     open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
     # TODO add support for uid and cat (ATR)
     foreach my $directive (qw/title subtitle author LISTtitle SORTauthors
-                              SORTtopics date
+                              SORTtopics date uid cat
                               source lang pubdate/) {
 
         $self->_add_directive($fh, $directive, $params->{$directive});
@@ -934,7 +934,15 @@ sub title_fields {
 
 }
 
-
+sub list_fixed_categories {
+    my $self = shift;
+    if (my $list = $self->fixed_category_list) {
+        return [ split(/\s+/, $list) ];
+    }
+    else {
+        return;
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 

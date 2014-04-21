@@ -85,6 +85,25 @@ var ckconfiguration = {
 	     name="SORTtopics"
 	     value="[% processed_params.SORTtopics | html %]" />
     </label></p>
+
+    [% IF site.fixed_category_list %]
+    <p>
+      <label for="fixed-cats">Categories</label>
+      <select name="cat" id="fixed-cats" multiple="multiple"
+              size="[% site.list_fixed_categories.size %]">
+        [% FOREACH cat IN site.list_fixed_categories %]
+        <option value="[% cat %]" [% IF sticky_cats.${cat} %]selected="selected"[% END %]>
+          [% c.loc(cat) %]
+        </option>
+        [% END %]
+      </select>
+    </p>
+    <p>
+      <label for="text-uid">Unique ID for the text</label>
+      <input name="uid" id="text-uid" type="text"
+             value="[% processed_params.uid | html %]" />
+    </p>
+    [% END %]
         
     <p><label><em>Date</em> of the original publication:
       (optional, but do your best to find it)<br />

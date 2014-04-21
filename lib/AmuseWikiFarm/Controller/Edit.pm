@@ -23,7 +23,7 @@ TODO: lock a text while someone is editing.
 
 =head2 auto
 
-Deny access to non human. Also fine grain control needed (TODO)
+Deny access to non human and to human depending on the site type.
 
 =cut
 
@@ -78,6 +78,19 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
         # create a working copy of the params
         my $params = { %{$c->request->params} };
 
+        # manage the multiple selections
+        if (my $cat = delete $params->{cat}) {
+            my %sticky;
+            if (ref($cat) and ref($cat) eq 'ARRAY') {
+                $params->{cat} = join(' ', @$cat);
+                %sticky = map { $_ => 1 } @$cat;
+            }
+            else {
+                $params->{cat} = $cat;
+                %sticky = ($cat => 1);
+            }
+            $c->stash(sticky_cats => \%sticky);
+        }
         # this call is going to add uri to $params, if not present
         my ($revision, $error) = $site->create_new_text($params);
         if ($revision) {

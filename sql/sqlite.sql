@@ -259,3 +259,6 @@ INSERT INTO user_role VALUES (1, 1),
                              (3, 2),
                              (4, 2);
 
+UPDATE site SET fixed_category_list =
+       'riot anarch spec antipolit antiwork geo nociv war hist lines'
+       WHERE id = '0empty0';
