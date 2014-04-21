@@ -57,7 +57,6 @@
 *** anon for editing
 
 ** TODO robot ignores on some pages like the forms
-
 ** DONE more substantial tests on access control
    CLOSED: [2014-04-18 ven 16:39]
 
@@ -77,10 +76,19 @@
 
 ** DONE support #uid and #cat in Archive::Edit and Utiles::Amuse
    CLOSED: [2014-04-21 lun 18:51]
+
+* Multilingual sites need the following
+
 ** TODO add category/*/lang
 ** TODO add support for uid on display
 ** TODO add multilanguage support for the same site
+
+* Needed before first beta release
+
 ** TODO store the pdf attachmentes in a directory by themselves
+
+   This also could include storing the special pages inside the git
+   itself, so we can carry around the whole site
 
 ** DONE git support in Archive::Edit and Archive
    CLOSED: [2014-04-13 dom 13:39]
@@ -118,8 +126,16 @@ Otherwise we go crazy
 
 I.e., not site specific. Example: basedir.
 
+
+This is unclear if needed
+
 ** TODO updating from remote gits
+
+This is related to the bootstrapping with the mass compile
+
 ** TODO When a "published" text sets a deletion, notify it
+
+This is a wider issue to pass output from the jobber to the status
 
 * Backend
 ** DONE Queue using the db.
