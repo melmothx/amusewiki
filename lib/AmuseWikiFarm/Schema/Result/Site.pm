@@ -914,6 +914,12 @@ sub index_file {
     return $file;
 }
 
+=head2 title_fields
+
+Return an hashref with the keys set to each column of the Title row.
+
+=cut
+
 sub title_fields {
     my $self = shift;
     my %fields = map { $_ => 1 } $self->titles->result_source->columns;
