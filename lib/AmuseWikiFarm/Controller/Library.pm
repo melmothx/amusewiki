@@ -88,10 +88,10 @@ sub text :Path :Args(1) {
     }
 
     # assert we are using canonical names.
-    # TODO make it permanent
     my $canonical = muse_naming_algo($name);
     if ($canonical ne $name) {
-        $c->response->redirect($c->uri_for($c->action, $canonical . $append_ext));
+        my $location = $c->uri_for($c->action, $canonical . $append_ext);
+        $c->response->redirect($location, 301);
         $c->detach();
     }
 
