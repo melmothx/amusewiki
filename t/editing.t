@@ -3,12 +3,11 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 80;
+use Test::More tests => 77;
 use File::Slurp qw/read_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive;
-use AmuseWikiFarm::Archive::Edit;
 use Data::Dumper;
 use File::Copy;
 
@@ -20,20 +19,17 @@ my $site = $schema->resultset('Site')->find('0blog0');
 # get the params
                                              
 
-my $arch = AmuseWikiFarm::Archive::Edit->new(site_schema => $site);
 my $params = {};
-my $revision = $arch->create_new($params);
+my ($revision, $error) = $site->create_new_text($params);
 
 ok(!$params->{uri});
-ok($arch->error, "Found error: " . $arch->error);
+ok($error, "Found error: " . $error);
 
-$arch = AmuseWikiFarm::Archive::Edit->new(site_schema => $site);
 $params = { author => 'pInco ', title => ' Pallino ' };
-$revision = $arch->create_new($params);
+($revision, $error) = $site->create_new_text($params);
 
 is $params->{uri}, 'pinco-pallino', "Found uri pinco-pallino";
-ok !$arch->redirect, "No redirection";
-ok !$arch->error, "No error";
+ok !$error, "No error";
 ok $revision->id, "Found revision " . $revision->id;
 ok -f ($revision->f_full_path_name),
   "Text stored in " . $revision->f_full_path_name;
@@ -46,12 +42,10 @@ like $muse, qr/^#title Pallino$/m, "Found title";
 
 $revision->title->delete;
 
-$arch = AmuseWikiFarm::Archive::Edit->new(site_schema => $site);
 $params = { author => 'DeLeTeD ', title => ' TeXt- ' };
-$revision = $arch->create_new($params);
+($revision, $error) = $site->create_new_text($params);
 ok(!$revision, "Nothing returned");
-is $arch->redirect, 'deleted-text', "Found a redirect, text exists";
-is $arch->redirect, $params->{uri};
+ok $error, "Found an error";
 
 # clean up before testing
 
@@ -59,8 +53,6 @@ if (my $testtext = $site->titles->find({ uri => 'my-uri-eruerer' })) {
     $testtext->delete;
 }
 
-
-$arch = AmuseWikiFarm::Archive::Edit->new(site_schema => $site);
 $params = {
            LISTtitle => "subtitle",
            SORTauthors => "first author",
@@ -80,14 +72,13 @@ $params = {
 # copy
 my %check = %$params;
 
-$revision = $arch->create_new($params);
-ok (-d $arch->staging_dirname, "Found and created the staging dir");
+($revision, $error) = $site->create_new_text($params);
+ok (-d $site->staging_dirname, "Found and created the staging dir");
 ok $revision, "Revision created";
 
 is $params->{uri}, 'my-uri-eruerer', "URI generated";
 
-ok !$arch->error, "No error set";
-ok !$arch->redirect, "No redirection";
+ok !$error, "No error set";
 ok $revision->id, "Found revision" . $revision->id;
 ok (-d $revision->working_dir, "Working dir exists: " . $revision->working_dir);
 

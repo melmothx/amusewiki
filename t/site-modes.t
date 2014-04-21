@@ -37,8 +37,12 @@ foreach my $m (keys %$sites) {
                                                       mode => $m
                                                      })->get_from_storage;
     $site_ob->add_to_vhosts({ name => $sites->{$m}->{url} });
-    mkdir $site_ob->repo_root or die $!;
-    ok ((-d $site_ob->repo_root), "site $sites->{$m}->{url} created");
+    my $repo_root = $site_ob->repo_root;
+    if (-d $repo_root) {
+        diag "Removing existing repo dir $repo_root";
+    }
+    mkdir $repo_root or die $repo_root . " => " . $!;
+    ok ((-d $repo_root), "site $sites->{$m}->{url} created");
 }
 
 diag "Testing the closed site";
