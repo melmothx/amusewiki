@@ -76,6 +76,10 @@
     CLOSED: [2014-03-14 ven 11:40]
 
 ** TODO support #uid and #cat in Archive::Edit and Utiles::Amuse
+** TODO add category/*/lang
+** TODO add support for uid on display
+** TODO add multilanguage support for the same site
+** TODO store the pdf attachmentes in a directory by themselves
 
 ** DONE git support in Archive::Edit and Archive
    CLOSED: [2014-04-13 dom 13:39]
@@ -85,8 +89,6 @@
 
 ** DONE plug the preprocessor in Schema::Result::Revision
    CLOSED: [2014-04-13 dom 20:07]
-
-** TODO store the pdf attachmentes in a directory by themselves
 
 ** DONE when publishing a revision, do not overwrite anything.
    CLOSED: [2014-04-13 dom 13:39]

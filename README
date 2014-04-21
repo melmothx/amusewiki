@@ -74,6 +74,19 @@ The test site '0wiki0' works this way.
 
 * Directory structure
 
+** Categories
+
+Normally, topics are free form. This means that the uploader can set
+them to whatever she wants. Sometimes this is not what you want, but
+you want instead a fixed range of categories. The directive to use is
+#cat with a whitespace separated list of categories. Here you should
+use codes instead of their real name, and set "category mycode" in the
+.po files.
+
+The full list of the fixed categories supported by the site should go
+in the "fixed_category_list" column of the "site" table. Everything
+else is managed by the code transparently.
+
 ** themes
 
 The sites can have a theme defined. In this case, the search path of
@@ -188,3 +201,4 @@ CKeditor should be unpacked in root/static/js/ (hence creating the
 root 'ckeditor'). The default template (edit/create.tt) asks for
 "/static/js/ckeditor/ckeditor.js" and
 "/static/js/ckeditor/adapters/jquery.js".
+

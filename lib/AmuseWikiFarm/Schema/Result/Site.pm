@@ -70,6 +70,11 @@ __PACKAGE__->table("site");
   default_value: 'January'
   is_nullable: 0
 
+=head2 fixed_category_list
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 sitename
 
   data_type: 'varchar'
@@ -232,6 +237,8 @@ __PACKAGE__->add_columns(
   },
   "magic_answer",
   { data_type => "text", default_value => "January", is_nullable => 0 },
+  "fixed_category_list",
+  { data_type => "text", is_nullable => 1 },
   "sitename",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "siteslogan",
@@ -423,8 +430,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-29 18:00:16
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:XTm5N65WDMXu4uj1O1VxAg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-21 18:22:00
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UrB4WaUKsYAjAclxOGTj+g
 
 use File::Spec;
 use Cwd;

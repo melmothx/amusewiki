@@ -21,6 +21,9 @@ CREATE TABLE site (
        magic_question TEXT NOT NULL DEFAULT 'The first month of the year...',
        magic_answer   TEXT NOT NULL DEFAULT 'January',
 
+       -- list of space separated category codes, if you want this feature
+       fixed_category_list TEXT,
+
        -- canonical url for RSS and other things
        sitename VARCHAR(255) NOT NULL DEFAULT '',
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
