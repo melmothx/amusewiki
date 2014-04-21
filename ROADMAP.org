@@ -101,7 +101,8 @@
 
 Otherwise we have to ask the user to force the operation.
 
-** TODO permanent redirections for legacy naming scheme
+** DONE permanent redirections for legacy naming scheme
+   CLOSED: [2014-04-21 lun 21:15]
 
 ** DONE when editing, check that the revision belongs to the same session id
    CLOSED: [2014-04-18 ven 10:00]
