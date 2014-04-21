@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 35;
+use Test::More tests => 37;
 use Date::Parse qw/str2time/;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -137,10 +137,33 @@ is $info->{title}, $info->{uri}, "title set to uri";
 
 $testfile = catfile(t => a => at => 'another-test-3.muse');
 $info = muse_file_info($testfile);
-print Dumper ($info);
 
 ok !$info->{parsed_categories}, "SORTauthor (missing s) is ignored";
 is $info->{DELETED}, 'ignore';
 ok $info->{uri}, "Uri found";
 
 # 
+$testfile = catfile(t => a => at => 'another-test-4.muse');
+$info = muse_file_info($testfile);
+is $info->{uid}, 'bau', "Found the unique id";
+is_deeply $info->{parsed_categories}, [
+                                       {
+                                        site_id => 'default',
+                                        name => 'baux',
+                                        type => 'category',
+                                        uri  => 'baux',
+                                       },
+                                       {
+                                        site_id => 'default',
+                                        name => 'fido',
+                                        type => 'category',
+                                        uri  => 'fido',
+                                       },
+                                       {
+                                        site_id => 'default',
+                                        name => 'bobi',
+                                        type => 'category',
+                                        uri  => 'bobi',
+                                       },
+                                      ], "Found fixed categories";
+

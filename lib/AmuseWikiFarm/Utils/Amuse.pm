@@ -90,6 +90,31 @@ sub muse_file_info {
             }
         }
     }
+
+    if (my $fixed_categories = delete $details->{cat}) {
+        my @cats = split(/ +/, $fixed_categories);
+        my %uris;
+        foreach my $cat (@cats) {
+            my $catcode = muse_naming_algo($cat);
+            if ($uris{$catcode}) {
+                warn "Found duplicated category $catcode!";
+                next;
+            }
+            else {
+                $uris{$catcode} = 1;
+            }
+            push @categories, {
+                               site_id => $site_id,
+                               type => 'category',
+                               uri => $catcode,
+                               name => $catcode,
+                              };
+        }
+        
+    }
+
+
+
     if (@categories) {
         $details->{parsed_categories} = \@categories;
     }
@@ -105,10 +130,6 @@ sub muse_file_info {
     unless ($details->{pubdate}) {
         $details->{pubdate} = $details->{f_timestamp}->clone;
     }
-
-    # TODO fixed categories, to lookup in tables, space separated, it
-    # needs a different routine.
-    delete $details->{cat};
 
     my $title_order_by = delete $details->{LISTtitle};
     if (defined $title_order_by and length($title_order_by)) {

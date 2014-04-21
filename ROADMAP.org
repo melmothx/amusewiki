@@ -75,7 +75,8 @@
 *** DONE Add nginx rule to manage the legacy rss.xml with a rewrite to /feed
     CLOSED: [2014-03-14 ven 11:40]
 
-** TODO support #uid and #cat in Archive::Edit and Utiles::Amuse
+** DONE support #uid and #cat in Archive::Edit and Utiles::Amuse
+   CLOSED: [2014-04-21 lun 18:51]
 ** TODO add category/*/lang
 ** TODO add support for uid on display
 ** TODO add multilanguage support for the same site
