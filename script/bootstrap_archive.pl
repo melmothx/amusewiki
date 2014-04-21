@@ -11,35 +11,24 @@ use Data::Dumper;
 
 use lib "$Bin/../lib";
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Utils::Amuse qw/muse_file_info/;
 
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';
 
-my $db = AmuseWikiFarm::Schema->connect('amuse');
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 print "DB loaded, starting up\n";
 
-foreach my $s ($db->resultset('Site')->all) {
+foreach my $s ($schema->resultset('Site')->all) {
     print $s->id . " " . $s->vhosts->first->name . "\n";
 }
 
 my @codes = @ARGV;
 
 foreach my $code (@codes) {
-
-    # checking
-    unless ($code =~ m/^[a-z0-9]{2,8}$/) {
-        warn "Wrong code $code, see README.txt for naming convention. Skipping...\n";
-        next;
-    }
-    my $archive = AmuseWikiFarm::Archive->new(
-                                              code => $code,
-                                              dbic => $db,
-                                             );
-
-    unless ($archive->site_exists) {
+    my $site = $schema->resultset('Site')->find($code);
+    unless ($site) {
         warn "Site code $code not found in the database. Skipping...\n";
         next;
     }
@@ -61,15 +50,15 @@ foreach my $code (@codes) {
               if ($file =~ m/\.(pdf|png|jpe?g)$/) {
                   push @files, $File::Find::name;
               }
-          }, $archive->repo);
+          }, $site->repo_root);
 
 
     # print Dumper(\@files);
     foreach my $file (sort @files) {
         print "indexing $file\n";
-        $archive->index_file($file) || print "Ignored $file\n";
+        $site->index_file($file) || print "Ignored $file\n";
     }
     # set the sorting
     print "Updating the sorting for $code\n";
-    $archive->collation_index;
+    $site->collation_index;
 }
