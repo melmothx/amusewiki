@@ -7,7 +7,6 @@ use Test::More tests => 77;
 use File::Slurp qw/read_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm::Archive;
 use Data::Dumper;
 use File::Copy;
 
@@ -177,13 +176,10 @@ foreach my $k (keys %dests) {
     ok (-f $k, "Found $k => $dests{$k}");
 }
 
-my $archive = AmuseWikiFarm::Archive->new(dbic => $schema,
-                                          code => $site->id);
-
 ok !$revision->pending, "Revision is not pending";
 ok $revision->editing, "Revision is under edit";
 
-$archive->publish_revision($revision->id);
+$revision->publish_text;
 
 my $rev_id = $revision->id;
 

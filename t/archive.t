@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 53;
+use Test::More tests => 50;
 use File::Slurp;
 use File::Temp;
 use File::Copy qw/copy/;
@@ -12,24 +12,20 @@ use File::Spec::Functions qw/catdir catfile/;
 use Data::Dumper;
 
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm::Archive;
 
 my $id = '0test0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $archive = AmuseWikiFarm::Archive->new(code => $id,
-                                          dbic => $schema);
 
-ok($archive);
-ok $archive->site, "Site exists";
-ok $archive->site_exists;
-is $archive->code, $id;
-ok(-d $archive->repo);
-ok($archive->xapian->xapian_dir);
-mkdir $archive->xapian->xapian_dir unless -d $archive->xapian->xapian_dir;
-ok(-d $archive->xapian->xapian_dir);
-ok($archive->dbic);
-ok($archive->fields);
-is_deeply $archive->fields, {
+my $site = $schema->resultset('Site')->find($id);
+ok($site);
+is $site->id, $id;
+ok(-d $site->repo_root);
+my $xapian_dir = $site->xapian->xapian_dir;
+ok $xapian_dir, "found " . $xapian_dir;
+mkdir $xapian_dir unless -d $xapian_dir;
+ok(-d $xapian_dir);
+ok($site->title_fields);
+is_deeply $site->title_fields, {
                              'source' => 1,
                              'f_timestamp' => 1,
                              'pubdate' => 1,
@@ -55,8 +51,7 @@ is_deeply $archive->fields, {
                              'status' => 1,
                             }, "the archive knows the title fields";
 
-
-ok(!$archive->index_file);
+ok(!$site->index_file);
 
 # delete and reinsert
 my $title = $schema->resultset('Title')->search({uri => 'do-this-by-yourself',
@@ -67,7 +62,7 @@ $title = $schema->resultset('Title')->single({uri => 'do-this-by-yourself',
 
 ok(!$title, "Title purged");
 
-ok $archive->index_file(catfile(repo => $id => d => dt =>'do-this-by-yourself.muse'));
+ok $site->index_file(catfile(repo => $id => d => dt =>'do-this-by-yourself.muse'));
 
 $title = $schema->resultset('Title')->single({uri => 'do-this-by-yourself',
                                               site_id => $id });
@@ -84,7 +79,7 @@ MUSE
 
 diag "Creating $dummy_file";
 write_file($dummy_file, $dummy_content);
-$archive->index_file($dummy_file);
+$site->index_file($dummy_file);
 
 $title = $schema->resultset('Title')->single({uri => 'dummy-text',
                                               site_id => $id });
@@ -113,7 +108,7 @@ bla bla
 MUSE
 
 write_file($dummy_file, $dummy_content_updated);
-$archive->index_file($dummy_file);
+$site->index_file($dummy_file);
 
 $title = $schema->resultset('Title')->single({uri => 'dummy-text',
                                               site_id => $id });
@@ -157,7 +152,7 @@ bla bla
 MUSE
 
 write_file($dummy_file, $dummy_content_deferred);
-$archive->index_file($dummy_file);
+$site->index_file($dummy_file);
 
 $title = $schema->resultset('Title')->single({uri => 'dummy-text',
                                               site_id => $id });
@@ -190,7 +185,7 @@ bla bla
 MUSE
 
 write_file($dummy_file, $dummy_content_deleted);
-$archive->index_file($dummy_file);
+$site->index_file($dummy_file);
 
 $title = $schema->resultset('Title')->single({uri => 'dummy-text',
                                               site_id => $id });

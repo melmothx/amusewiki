@@ -65,8 +65,6 @@ ok (!$schema->resultset('Site')->find('0blog0')->repo_is_under_git,
 
 diag "creating a new revision";
 
-use AmuseWikiFarm::Archive;
-
 my ($revision, $error) =
   $site->create_new_text({ uri => 'first-test',
                            title => 'Hello',
@@ -84,12 +82,7 @@ my $expected = '[[http://my.org][my.org]] My „precious”';
 
 like $revision->muse_body, qr/\Q$expected\E/, "Correctly filtered";
 
-my $archive = AmuseWikiFarm::Archive->new(code => $site->id,
-                                          dbic => $schema);
-
-
-
-my $uri = $archive->publish_revision($revision->id);
+my $uri = $revision->publish_text;
 
 ok($uri, "Publish revision returned the uri") and diag "Found $uri";
 
@@ -120,7 +113,7 @@ is read_file($revision->original_html,
   "Body filtered from \r";
 
 
-$uri = $archive->publish_revision($revision->id);
+$uri = $revision->publish_text;
 
 ok ($uri);
 

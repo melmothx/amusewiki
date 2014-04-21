@@ -4,7 +4,6 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 10;
-use AmuseWikiFarm::Archive;
 use AmuseWikiFarm::Schema;
 use File::Slurp qw/read_file write_file/;
 
@@ -39,10 +38,7 @@ ok $other_revision->can_be_merged, "The other revision can be merged";
 
 # publish
 
-my $archive = AmuseWikiFarm::Archive->new(code => $site->id,
-                                          dbic => $schema);
-
-$archive->publish_revision($revision->id);
+$revision->publish_text;
 
 
 ok !$other_revision->can_be_merged, "The other revision now can't be merged";
@@ -53,4 +49,4 @@ $restore->edit($original_file);
 
 ok $restore->can_be_merged, "New revision works";
 
-$archive->publish_revision($restore->id);
+$restore->publish_text;

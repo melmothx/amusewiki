@@ -429,11 +429,15 @@ __PACKAGE__->has_many(
 use File::Spec;
 use Cwd;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
+                                   muse_file_info
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor::HTML qw/html_to_muse/;
 use Date::Parse;
 use DateTime;
 use File::Copy qw/copy/;
+use AmuseWikiFarm::Archive::Xapian;
+use Unicode::Collate::Locale;
+
 
 =head2 repo_root_rel
 
@@ -766,6 +770,158 @@ sub new_revision_from_uri {
     my $text = $self->titles->find({ uri => $uri });
     $text ? return $text->new_revision : return;
 }
+
+=head2 xapian
+
+Return a L<AmuseWikiFarm::Archive::Xapian> object
+
+=cut
+
+sub xapian {
+    my $self = shift;
+    return AmuseWikiFarm::Archive::Xapian->new(
+                                               code => $self->id,
+                                               locale => $self->locale,
+                                              );
+}
+
+=head2 collation_index
+
+Update the C<sorting_pos> field of each text and category based on the
+collation for the current locale.
+
+Collation on the fly would have been too slow, or would depend on the
+(possibly crappy) collation of the database engine, if any.
+
+=cut
+
+sub collation_index {
+    my $self = shift;
+    my $collator = Unicode::Collate::Locale->new(locale => $self->locale);
+
+    my @texts = sort {
+        # warn $a->id . ' <=>  ' . $b->id;
+        $collator->cmp($a->list_title, $b->list_title)
+    } $self->titles;
+
+    my $i = 1;
+    foreach my $t (@texts) {
+        $t->sorting_pos($i++);
+        $t->update if $t->is_changed;
+    }
+
+    # and then sort the categories
+    my @categories = sort {
+        # warn $a->id . ' <=> ' . $b->id;
+        $collator->cmp($a->name, $b->name)
+    } $self->categories;
+
+    $i = 1;
+    foreach my $cat (@categories) {
+        $cat->sorting_pos($i++);
+        $cat->update if $cat->is_changed;
+    }
+
+}
+
+=head2 index_file($path_to_file)
+
+Add the file to the DB and Xapian databases, first parsing it with
+C<muse_info_file> from L<AmuseWikiFarm::Utils::Amuse>.
+
+=cut
+
+sub index_file {
+    my ($self, $file) = @_;
+    unless ($file && -f $file) {
+        $file ||= '<empty>';
+        warn "File $file does not exist";
+        return;
+    }
+
+    my $details = muse_file_info($file, $self->id);
+    # unparsable
+    return unless $details;
+
+    if ($details->{f_suffix} ne '.muse') {
+        warn "Inserting data for attachment $file\n";
+        $self->attachments->update_or_create($details);
+        return $file;
+    }
+
+    # ready to store into titles?
+    # by default text are published, unless the file info returns something else
+    # and if it's an update we have to reset it.
+    my %insertion = (deleted => '');
+    # lower case the keys
+
+
+    my $fields = $self->title_fields;
+
+    foreach my $col (keys %$details) {
+        my $db_col = lc($col);
+        if (exists $fields->{$db_col}) {
+            $insertion{$db_col} = delete $details->{$col};
+        }
+    }
+
+    my $parsed_cats = delete $details->{parsed_categories};
+    if (%$details) {
+        warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
+    }
+    print "Inserting data for $file\n";
+    # TODO: see if we have to update the insertion
+
+    my $title = $self->titles->update_or_create(\%insertion)->get_from_storage;
+
+    # pick the old categories.
+    my @old_cats_ids;
+    foreach my $old_cat ($title->categories) {
+        push @old_cats_ids, $old_cat->id;
+    }
+
+    if ($title->is_deleted) {
+        $title->status('deleted');
+    }
+    elsif ($title->is_deferred) {
+        $title->status('deferred');
+    }
+    elsif ($title->is_published) {
+        $title->status('published');
+    }
+    $title->update if $title->is_changed;
+
+    if ($title->is_published && $parsed_cats && @$parsed_cats) {
+        # here we can die if there are duplicated uris
+        $title->set_categories($parsed_cats);
+    }
+    else {
+        # purge the categories if there is none.
+        $title->set_categories([]);
+    }
+
+    foreach my $cat ($title->categories) {
+        $cat->title_count_update;
+    }
+
+    foreach my $cat_id (@old_cats_ids) {
+        my $cat = $self->categories->find($cat_id);
+        $cat->title_count_update;
+    }
+
+    # XAPIAN INDEXING
+    $self->xapian->index_text($title);
+    return $file;
+}
+
+sub title_fields {
+    my $self = shift;
+    my %fields = map { $_ => 1 } $self->titles->result_source->columns;
+    return \%fields;
+
+}
+
+
 
 __PACKAGE__->meta->make_immutable;
 
