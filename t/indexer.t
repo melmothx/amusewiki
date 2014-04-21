@@ -93,6 +93,13 @@ my $expected = {
                                        ],
                 'f_suffix' => '.muse',
                 'title' => 'Test',
+                source => '',
+                lang => '',
+                date => '',
+                attach => '',
+                uid => '',
+                subtitle => '',
+                notes => '',
                };
 
 

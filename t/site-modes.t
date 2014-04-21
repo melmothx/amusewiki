@@ -40,6 +40,7 @@ foreach my $m (keys %$sites) {
     my $repo_root = $site_ob->repo_root;
     if (-d $repo_root) {
         diag "Removing existing repo dir $repo_root";
+        remove_tree($repo_root);
     }
     mkdir $repo_root or die $repo_root . " => " . $!;
     ok ((-d $repo_root), "site $sites->{$m}->{url} created");

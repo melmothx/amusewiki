@@ -122,6 +122,16 @@ sub muse_file_info {
         }
     }
 
+    # when headers line are removed, we don't get a proper update
+    # unless we pass them to update_or_create (because the removed
+    # directive is not listed).
+
+    # author, title, topics are already handled
+    foreach my $mandatory (qw/subtitle lang date notes source uid attach/) {
+        unless (exists $details->{$mandatory}) {
+            $details->{$mandatory} = '';
+        }
+    }
     return $details;
 }
 

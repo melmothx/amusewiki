@@ -107,7 +107,8 @@ Otherwise we have to ask the user to force the operation.
 
 Otherwise we go crazy
 
-** TODO Bug: when updating a text, clear the fields.
+** DONE Bug: when updating a text, clear the fields.
+   CLOSED: [2014-04-21 lun 16:20]
 
 ** TODO Create a setting table for common setting of the wiki instance
 
