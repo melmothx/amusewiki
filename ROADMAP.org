@@ -47,7 +47,8 @@
 
 *** patch manager, individual commits
 
-** TODO users + authentication + roles
+** DONE users + authentication + roles
+   CLOSED: [2014-04-21 lun 09:55]
 
 *** root user for site creation
 
