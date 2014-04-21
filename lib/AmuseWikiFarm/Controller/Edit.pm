@@ -56,8 +56,7 @@ sub auto :Private {
 
 =head2 root
 
-Root of the chaining. Retrieve the Edit model (TODO: remove the need
-of this model)
+Empty root method
 
 =head2 newtext
 
@@ -132,8 +131,7 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     # no existing revision or explicit request by posting: create new
     if (!@revs || $c->request->params->{create}) {
         $c->log->debug("Creating a new revision");
-        my $model = $c->stash->{editor};
-        my $revision = $model->new_revision($text);
+        my $revision = $text->new_revision;
         # on creation, set the session id
         $revision->session_id($c->sessionid);
         $revision->update;
