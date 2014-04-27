@@ -1,0 +1,190 @@
+html,body {
+	margin:0;
+	padding:0;
+	border: none;
+ 	background: transparent;
+	font-family: serif;
+	font-size: 10pt;
+}
+div#page {
+   margin:20px;
+   padding:20px;
+}
+pre, code {
+    font-family: Consolas, courier, monospace;
+}
+/* invisibles */
+span.hiddenindex, span.commentmarker, .comment, span.tocprefix, #hitme {
+    display: none
+}
+
+h1 {
+    font-size: 200%;
+    margin: .67em 0
+}
+h2 {
+    font-size: 180%;
+    margin: .75em 0
+}
+h3 {
+    font-size: 150%;
+    margin: .83em 0
+}
+h4 {
+    font-size: 130%;
+    margin: 1.12em 0
+}
+h5 {
+    font-size: 115%;
+    margin: 1.5em 0
+}
+h6 {
+    font-size: 100%;
+    margin: 0;
+}
+
+sup, sub {
+    font-size: 8pt;
+    line-height: 0;
+}
+
+/* invisibles */
+span.hiddenindex, span.commentmarker, .comment, span.tocprefix, #hitme {
+    display: none
+}
+
+.comment {
+    background: rgb(255,255,158);
+}
+
+.verse {
+    margin: 24px 48px;
+    overflow: auto;
+}
+
+table, th, td {
+    border: solid 1px black;
+    border-collapse: collapse;
+}
+td, th {
+    padding: 2px 5px;
+}
+
+hr {
+    margin: 24px 0;
+    color: #000;
+    height: 1px;
+    background-color: #000;
+}
+
+table {
+    margin: 24px auto;
+}
+
+td, th { vertical-align: top; }
+th {font-weight: bold;}
+
+caption {
+    caption-side:bottom;
+}
+
+img.embedimg {
+    max-width:90%;
+}
+div.image, div.float_image_f {
+    margin: 1em;
+    text-align: center;
+    padding: 3px;
+    background-color: white;
+}
+
+div.float_image_r {
+    float: right;
+}
+
+div.float_image_l {
+    float: left;
+}
+
+div.float_image_f {
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.biblio p, .play p {
+  margin-left: 1em;
+  text-indent: -1em;
+}
+
+div.biblio, div.play {
+  padding: 24px 0;
+}
+
+div.caption {
+    padding-bottom: 1em;
+}
+
+div.center {
+    text-align: center;
+}
+
+div.right {
+    text-align: right;
+}
+
+div#tableofcontents{
+    padding:20px;
+}
+
+#tableofcontents p {
+    margin: 3px 1em;
+    text-indent: -1em;
+}
+
+.toclevel1 {
+	font-weight: bold;
+	font-size:11pt
+}	
+
+.toclevel2 {
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.toclevel3 {
+	font-weight: normal;
+	font-size: 9pt;
+}
+
+.toclevel4 {
+	font-weight: normal;
+	font-size: 8pt;
+}
+
+
+/* footnotes */
+
+a.footnote, a.footnotebody {
+    font-size: 8pt;
+    line-height: 0;
+    vertical-align: super;
+}
+
+* + p.fnline {
+    margin-top: 3em;
+    border-top: 1px solid black;
+    padding-top: 2em;
+}
+
+p.fnline + p.fnline {
+    margin-top: 1em;
+    border-top: none;
+    padding-top: 0;
+}
+
+p.fnline {
+    font-size: 8pt;
+}
+/* end footnotes */
