@@ -215,18 +215,21 @@ sub muse_parse_file_path {
         return;
     }
 
+    my $epoch_timestamp = (stat($file))[9];
+
     my %out = (
                f_path => $path,
                f_name => $name,
                f_archive_rel_path => '', # invalid by default
-               f_timestamp => _get_mtime($file),
+               f_timestamp => DateTime->from_epoch(epoch => $epoch_timestamp),
+               f_timestamp_epoch => $epoch_timestamp,
                f_full_path_name  => $file,
                f_suffix => $suffix,
               );
     return \%out if $skip_path_checking;
 
-    my @dirs = File::Spec->splitdir($path);
-    @dirs = grep { $_ ne '' } @dirs;
+    my @dirs = grep { $_ ne '' } File::Spec->splitdir($path);
+
     unless (@dirs >= 2) {
         warn "$file is not in the correct path!";
         return;
@@ -542,15 +545,6 @@ sub muse_get_full_path {
   push @path, $filename;
   die "bad filename" if $#path < 2;
   return \@path;
-}
-
-
-
-sub _get_mtime {
-  my $file = shift;
-  my @stats = stat($file);
-  my $mtime = $stats[9];
-  return DateTime->from_epoch(epoch => $mtime);
 }
 
 sub _parse_topic_or_author {

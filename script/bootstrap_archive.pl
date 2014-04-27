@@ -11,7 +11,6 @@ use Data::Dumper;
 
 use lib "$Bin/../lib";
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm::Utils::Amuse qw/muse_file_info/;
 
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';

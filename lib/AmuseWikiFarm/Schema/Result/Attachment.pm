@@ -66,6 +66,12 @@ __PACKAGE__->table("attachment");
   data_type: 'datetime'
   is_nullable: 0
 
+=head2 f_timestamp_epoch
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 f_full_path_name
 
   data_type: 'text'
@@ -103,6 +109,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 4 },
   "f_timestamp",
   { data_type => "datetime", is_nullable => 0 },
+  "f_timestamp_epoch",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "f_full_path_name",
   { data_type => "text", is_nullable => 0 },
   "f_suffix",
@@ -159,8 +167,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-13 09:53:14
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3CL1aOSp4v1ejqQdSoYCAw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-27 17:31:24
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cMeMGwrqalUbnsF/JrVG9w
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

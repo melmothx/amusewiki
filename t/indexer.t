@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 37;
+use Test::More tests => 38;
 use Date::Parse qw/str2time/;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -103,7 +103,8 @@ my $expected = {
                };
 
 
-foreach my $k (qw/f_timestamp f_path f_archive_rel_path f_full_path_name/) {
+foreach my $k (qw/f_timestamp f_path f_archive_rel_path f_full_path_name
+                  f_timestamp_epoch/) {
     my $del = delete $info->{$k};
     ok $del, "Found $k $del";
 }

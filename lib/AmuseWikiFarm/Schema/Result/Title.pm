@@ -139,6 +139,12 @@ __PACKAGE__->table("title");
   data_type: 'datetime'
   is_nullable: 0
 
+=head2 f_timestamp_epoch
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 f_full_path_name
 
   data_type: 'text'
@@ -217,6 +223,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 4 },
   "f_timestamp",
   { data_type => "datetime", is_nullable => 0 },
+  "f_timestamp_epoch",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "f_full_path_name",
   { data_type => "text", is_nullable => 0 },
   "f_suffix",
@@ -317,8 +325,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-26 08:30:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uhXbrjXhNVH0o/Cd9Wbu5Q
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-27 17:31:24
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:34FtkdhOl6C06VHDivOrrQ
 
 use File::Spec;
 use File::Slurp qw/read_file/;

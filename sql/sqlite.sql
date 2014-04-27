@@ -152,6 +152,7 @@ CREATE TABLE title (
         f_name      VARCHAR(255) NOT NULL,
         f_archive_rel_path VARCHAR(4) NOT NULL,
         f_timestamp DATETIME NOT NULL,
+        f_timestamp_epoch INTEGER NOT NULL DEFAULT 0,
         f_full_path_name TEXT NOT NULL,
         f_suffix    VARCHAR(16) NOT NULL,
 
@@ -191,6 +192,7 @@ CREATE TABLE attachment (
        f_name      VARCHAR(255) NOT NULL,
        f_archive_rel_path VARCHAR(4) NOT NULL,
        f_timestamp DATETIME NOT NULL,
+       f_timestamp_epoch INTEGER NOT NULL DEFAULT 0,
        f_full_path_name TEXT NOT NULL,
        f_suffix    VARCHAR(16) NOT NULL,
        uri   VARCHAR(255) NOT NULL,
