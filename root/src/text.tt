@@ -60,9 +60,7 @@
 
   <div id="downloadformats">
     <div id="downloadformats-title">
-      <strong>
-        [% c.loc('Downloads') %]
-      </strong>
+      <!-- <strong>[% c.loc('Downloads') %]</strong> -->
     </div>
     <div id="downloadformats-list">
       [% IF site.pdf %]
