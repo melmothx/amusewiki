@@ -19,6 +19,7 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_naming_algo
                     muse_get_full_path
                     muse_parse_file_path
+                    muse_filepath_is_valid
                     muse_filename_is_valid/;
 
 =head2 muse_file_info($file, $site_id)
@@ -196,14 +197,18 @@ happen with the switch on and the file stats are collected nevertheless.
 
 =cut
 
+sub _my_suffixes {
+    return (qw/.muse .png .jpeg .jpg .pdf/);
+}
+
+
 sub muse_parse_file_path {
     my ($file, $skip_path_checking) = @_;
     unless (File::Spec->file_name_is_absolute($file)) {
         $file = File::Spec->rel2abs($file);
     }
     return unless -f $file;
-    my @exts = (qw/.muse .png .jpeg .jpg .pdf/);
-    my ($name, $path, $suffix) = fileparse($file, @exts);
+    my ($name, $path, $suffix) = fileparse($file, _my_suffixes());
 
     unless ($suffix) {
         warn "$file is not a recognized file!";
@@ -613,5 +618,76 @@ sub muse_filename_is_valid {
         return;
     }
 }
+
+=head2 filepath_is_valid($repo_relative_path_to_file)
+
+Return true if, and only if, these conditions are met:
+
+=over 4
+
+=item * The basename is valid, using C<muse_filename_is_valid>
+
+=item * The relative path is permitted
+
+This usually means, but with some exceptions, that it is 2 levels
+deep, and looking at the basename there is a match, using the
+algorithm of C<muse_get_full_path>.
+
+=back
+
+=cut
+
+sub muse_filepath_is_valid {
+    my $relpath = shift;
+    return unless $relpath;
+    my ($name, $path, $suffix) = fileparse($relpath, _my_suffixes());
+    return unless $suffix && $path;
+
+    my @dirs = File::Spec->splitdir($path);
+    return unless @dirs;
+    # remove trailing separator, if any
+    if ($dirs[$#dirs] eq '') {
+        pop @dirs;
+    }
+    return unless @dirs;
+    return unless muse_filename_is_valid($name);
+
+    # handle the pdf, which are indexed only if in the 'uploads' directory
+    if ($suffix eq '.pdf') {
+        my $dir = shift @dirs;
+        return if @dirs;
+        if (basename($dir) eq 'uploads') {
+            return $relpath;
+        }
+        else {
+            return;
+        }
+    }
+    # then process the regular files.
+    if (@dirs != 2) {
+        # warn "$relpath not two levels down\n";
+        return;
+    }
+    # file with no hyphens, pick the first and the last
+    if ($name =~ m/^([0-9a-z])[0-9a-z]+([0-9a-z])$/s) {
+        if ($dirs[0] eq $1 and $dirs[1] eq "$1$2") {
+            return $relpath;
+        }
+        # else {
+        #     warn "$relpath in the wrong path!";
+        # }
+    }
+    elsif ($name =~ m/^([0-9a-z])[0-9a-z]?-([0-9a-z])[0-9a-z-]*[0-9a-z]$/s) {
+        if ($dirs[0] eq $1 and $dirs[1] eq "$1$2") {
+            return $relpath;
+        }
+        # else {
+        #     warn "$relpath in the wrong path!";
+        # }
+    }
+    # catch all and return false
+    return;
+}
+
 
 1;
