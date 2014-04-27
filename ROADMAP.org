@@ -131,7 +131,11 @@ This is unclear if needed
 
 ** TODO updating from remote gits
 
-This is related to the bootstrapping with the mass compile
+This is related to the bootstrapping with the mass compile.
+
+ - routine to check new, modified and delete files, comparing with the DB
+ - routine to run the git pull, and manage remote gits.
+ - job for that, we can't bind it so long.
 
 ** TODO When a "published" text sets a deletion, notify it
 
@@ -192,6 +196,8 @@ shouldn't be too hard to manage.
 *** When is ready offer the link and stop the queue polling.
 *** Delete the file after a couple of hours, we are short on resources.
 
+** TODO The special pages should be kept under 'special' in the repo
+** TODO The pdf uploads (attachments) should be kept under 'upload' in the repo
 * Needed features
 ** simple to use
 ** simple to install
