@@ -1,28 +1,36 @@
 [% # -*- mode: html -*- %]
 [% IF matches %]
-<div>
+<div class="well">
+  <p>
   [% c.loc("Results found") %]: [% matches %]
-</div>
-<div>
+  </p>
+  <p>
   [% c.loc("Displaying") %] [% range %]
+  </p>
 </div>
 
-[% FOREACH res IN results %]
-<div>
-  &nbsp;[% res.rank %].
-  <a href="[% text_uri_base %]/[% res.text.uri %]">[% res.text.title %]</a>
-  — [% res.text.author %]
-  ([% res.relevance %]% [% c.loc("relevant") %])
-</div>
-[% END %] 
+<ul class="list-group">
+  [% FOREACH res IN results %]
+  <li class="list-group-item">
+    <a href="[% text_uri_base %]/[% res.text.uri %]">[% res.text.title %]</a>
+    — [% res.text.author %]
+    ([% res.relevance %]% [% c.loc("relevant") %])
+    <span class="badge">[% res.rank %]</span>
+  </li>
+  [% END %]
+</ul>
 
-<div>
+<ul class="pager">
   [% IF previous_page %]
-  <a href="[% previous_page %]">[% c.loc("Previous") %]</a>
+  <li>
+    <a href="[% previous_page %]">[% c.loc("Previous") %]</a>
+  </li>
   [% END %]
 
   [% IF next_page %]
-  <a href="[% next_page %]">[% c.loc("Next") %]</a>
+  <li>
+    <a href="[% next_page %]">[% c.loc("Next") %]</a>
+  </li>
   [% END %]
 </div>
 [% ELSE %]

@@ -63,6 +63,7 @@ sub category_details :Private {
     # not found unless $cat;
     $c->detach('/not_found') unless $cat;
     $c->stash(
+              nav => $type,
               template => 'category-details.tt',
               category => $cat,
              );
@@ -73,6 +74,7 @@ sub category_listing :Private {
     my @list = $c->stash->{site}->categories->by_type($type);
     $c->stash(
               list => \@list,
+              nav  => $type,
               template => 'category.tt',
               baseurl => $c->uri_for_action("/category/$type"),
              );

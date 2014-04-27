@@ -29,9 +29,10 @@ List the titles.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     my @texts = $c->stash->{site}->titles->published_texts;
-    $c->stash(texts => \@texts);
-    $c->stash(baseurl => $c->uri_for_action('/library/index'));
-    $c->stash(template => 'library.tt');
+    $c->stash(texts => \@texts,
+              baseurl => $c->uri_for_action('/library/index'),
+              template => 'library.tt',
+              nav => 'titles');
 }
 
 =head2 text
@@ -115,6 +116,7 @@ sub text :Path :Args(1) {
             $c->stash(
                       template => 'text.tt',
                       text => $text,
+                      show_edit_bb => 1,
                      );
         }
     }

@@ -1,6 +1,5 @@
 [% # -*- mode: html -*- %]
 
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="[% c.uri_for('/static/js/ckeditor/ckeditor.js') %]"></script>
 <script src="[% c.uri_for('/static/js/ckeditor/adapters/jquery.js') %]"></script>
 <script type="text/javascript">

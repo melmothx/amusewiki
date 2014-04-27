@@ -1,19 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta http-equiv="Content-type"
-          content="application/xhtml+xml; charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon"
           href="[% c.uri_for('/static/images/') %]sites/[% site.id %]/favicon.ico" />
-    <link rel="stylesheet" media="all"
-          href="[% c.uri_for('/static/css/style.css') %]?v=1" />
-    <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" media="all"
-          href="[% c.uri_for('/static/css/adaptive.css') %]?v=1" />
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename %]" href="[% c.uri_for('/feed') %]" />
 
@@ -22,111 +15,146 @@
     [% IF shared.scraperignore %]
     <meta name="robots" content="noindex,nofollow" />
     [% END %]
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div id="secondary-menu">
-      <ul id="sec-men-ul">
-        <li>
-          <a href="[% c.uri_for('/special/about') %]">About</a>
-        </li>
-        <li>
-	      <a href="[% c.uri_for('/random') %]">[% c.loc('Random text') %]</a>
-        </li>
-        <li>
-          <a href="[% c.uri_for('/bookbuilder') %]">
-            [% c.loc('Book builder') %]
-          </a>
-        </li>
-        [% IF c.user_exists || site.human_can_edit %]
-        <li>
-          <a href="[% c.uri_for('/new') %]">
-            [% c.loc('Add to library') %]
-          </a>
-        </li>
-        [% END %]
-        [% IF c.user_exists || site.human_can_publish %]
-        <li>
-          <a href="[% c.uri_for('/publish/pending') %]">
-            [% c.loc('Pending') %]
-          </a>
-        </li>
-        [% END %]
-        [% IF c.user_exists %]
-        <li>
-          <a href="[% c.uri_for('/logout') %]">
-            [% c.user.get('username') %] [% c.loc('logout') %]
-          </a>
-        </li>
-        [% END %]
-      </ul>
-    </div>
-    <div id="vwbanner">
-      <div id="wbanner">
-	    <div id="banner">
-	      <div id="searchbox">
-	        <form id="formsearchbox" action="[% c.uri_for('/search') %]">
-	          <p id="searchp">
-		        <input type="text" name="query" value="" size="12" />
-                <br id="full-text-search-separator" />
-		        <input type="submit" value="[% c.loc('Full text search') %]" />
-              </p>
-	        </form>
-	      </div>
-	      <div id="bannerimage">
-	        <a title="[% site.sitename %]"
-               href="[% c.uri_for('/') %]">
-              <img title="[% site.siteslogan %]"
-                   alt="[% site.siteslogan %]"
-                   src="[% c.uri_for('/static/images/') %]sites/[% site.id %]/logo.png"
-                   id="title-logo-img" />
-
-              <img title="[% site.siteslogan %]"
-		           alt="[% site.siteslogan %]"
-                   src="[% c.uri_for('/static/images/') %]sites/[% site.id %]/banner.png"
-		           id="title-banner-img" />
-	        </a>
-	      </div>
-	    </div>
-	    <div id="nav">
-	      <ul>
-	        <li>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluiid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+                  data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="[% c.uri_for('/') %]">
+            [% site.sitename %]</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li[% IF nav == 'author' %] class="active" [% END %]>
               <a href="[% c.uri_for('/authors') %]"
-		         [% IF nav == 'authors' %]id="current"[% END %]
 		         title="[% c.loc('texts sorted by author') %]">
                 [% c.loc('Authors') %]
               </a>
             </li>
-	        <li>
+	        <li[% IF nav == 'titles' %] class="active" [% END %]>
               <a href="[% c.uri_for('/library') %]"
-		         [% IF nav == 'titles' %]id="current"[% END %]
 		         title="[% c.loc('texts sorted by title') %]">
                 [% c.loc('Titles') %]
               </a>
             </li>
-	        <li>
+	        <li[% IF nav == 'topic' %] class="active" [% END %]>
               <a href="[% c.uri_for('/topics') %]"
-		         [% IF nav == 'topics' %]id="current"[% END %]
 		         title="[% c.loc('texts sorted by topics') %]">
                 [% c.loc('Topics') %]
               </a>
             </li>
-	      </ul>
-	    </div>
+            <li>
+	          <a href="[% c.uri_for('/random') %]">[% c.loc('Random') %]</a>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                [% c.loc('More') %]
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                [% IF show_edit_bb %]
+                <li>
+                  <a href="[% c.uri_for('/bookbuilder/add', { text => text.uri }) %]">
+                    [% c.loc('Add this text to the bookbuilder') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/edit/revs', [ text.uri ]) %]">
+                    [% c.loc('Edit this text') %]
+                  </a>
+                </li>
+                <li class="divider"></li>
+                [% END %]
+                <li>
+                  <a href="[% c.uri_for('/special/about') %]">About</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="[% c.uri_for('/bookbuilder') %]">
+                    [% c.loc('Book builder') %]
+                  </a>
+                </li>
+                [% IF c.user_exists || site.human_can_edit %]
+                <li>
+                  <a href="[% c.uri_for('/new') %]">
+                    [% c.loc('Add to library') %]
+                  </a>
+                </li>
+                [% END %]
+                [% IF c.user_exists || site.human_can_publish %]
+                <li>
+                  <a href="[% c.uri_for('/publish/pending') %]">
+                    [% c.loc('Pending') %]
+                  </a>
+                </li>
+                [% END %]
+                [% IF c.user_exists %]
+                <li>
+                  <a href="[% c.uri_for('/logout') %]">
+                    [% c.user.get('username') %] [% c.loc('logout') %]
+                  </a>
+                </li>
+                [% END %]
+                <li>
+                  <a href="[% c.uri_for('/feed') %]">
+                    [% c.loc("RSS feed") %]
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right navbar-input-group" role="search"
+                id="formsearchbox" action="[% c.uri_for('/search') %]">
+            <div class="input-group" style="width:225px">
+		      <input type="text" class="form-control"
+                     placeholder="[% c.loc('Full text search') %]"
+                     name="query" value=""/>
+              <div class="input-group-btn">
+                <button type="submit" class="btn btn-info">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
-    <div id="container">
-      <div id="status_message">[% c.flash.status_msg %]</div>
-      <div id="error_message">[% c.flash.error_msg %]</div>
-
+    <div class="container">
+      [% IF c.flash.status_msg %]
+      <div class="alert alert-success" id="status_message">
+        [% c.flash.status_msg %]
+      </div>
+      [% END %]
+      [% IF c.flash.error_msg %]
+      <div class="alert alert-warning" id="error_message">
+        [% c.flash.error_msg %]
+      </div>
+      [% END %]
       <div id="widepage">
         [% content %]
       </div>
       <div id="footer">
-        <a href="[% c.uri_for('/rss.xml') %]">
-          <img src="[% c.uri_for('/static/images/feed-icon-28x28.png') %]"
-               alt="[% c.loc('syndicate') %]" id="rssicon" />
-          [% c.loc("RSS") %]
-        </a>
       </div>
     </div>
   </body>
