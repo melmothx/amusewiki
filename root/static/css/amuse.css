@@ -3,54 +3,29 @@ html,body {
 	padding:0;
 	border: none;
  	background: transparent;
-	font-family: serif;
 	font-size: 10pt;
 }
-div#page {
-   margin:20px;
-   padding:20px;
+/* override bootstrap */
+blockquote {
+    font-size: 10pt;
 }
-pre, code {
-    font-family: Consolas, courier, monospace;
-}
+
 /* invisibles */
-span.hiddenindex, span.commentmarker, .comment, span.tocprefix, #hitme {
+span.hiddenindex, span.commentmarker, .comment, span.tocprefix {
     display: none
 }
 
-h1 {
-    font-size: 200%;
-    margin: .67em 0
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
 }
-h2 {
-    font-size: 180%;
-    margin: .75em 0
-}
-h3 {
-    font-size: 150%;
-    margin: .83em 0
-}
-h4 {
-    font-size: 130%;
-    margin: 1.12em 0
-}
-h5 {
-    font-size: 115%;
-    margin: 1.5em 0
-}
-h6 {
-    font-size: 100%;
-    margin: 0;
+
+h1, h2, h3, h4, h5 {
+    margin-top: 24pt;
 }
 
 sup, sub {
     font-size: 8pt;
     line-height: 0;
-}
-
-/* invisibles */
-span.hiddenindex, span.commentmarker, .comment, span.tocprefix, #hitme {
-    display: none
 }
 
 .comment {
@@ -59,7 +34,6 @@ span.hiddenindex, span.commentmarker, .comment, span.tocprefix, #hitme {
 
 .verse {
     margin: 24px 48px;
-    overflow: auto;
 }
 
 table, th, td {
