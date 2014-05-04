@@ -28,6 +28,7 @@ ok($site->title_fields);
 is_deeply $site->title_fields, {
                              'source' => 1,
                              'f_timestamp' => 1,
+                             'f_timestamp_epoch' => 1,
                              'pubdate' => 1,
                              'date' => 1,
                              'site_id' => 1,
