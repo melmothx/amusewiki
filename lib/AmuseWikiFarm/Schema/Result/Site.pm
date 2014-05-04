@@ -925,6 +925,11 @@ sub index_file {
 
 Return an hashref with the keys set to each column of the Title row.
 
+=head2 list_fixed_categories
+
+Return an arrayref with the list of the fixed category, if they exist,
+or nothing.
+
 =cut
 
 sub title_fields {
