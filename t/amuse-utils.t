@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 30;
+use Test::More tests => 36;
 use File::Spec::Functions qw/catfile/;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
@@ -51,6 +51,12 @@ my @valid = (
              [qw/a am a-muse.muse/],
              [qw/a as anonymous.muse/],
              [qw/t tt test.muse/],
+             [qw/d dt do-this-by-yourself.muse/],
+             [qw/f ft f-t-bad-2.muse/],
+             [qw/f ft f-t-bad.muse/],
+             [qw/s st second-test.muse/],
+             [qw/f ft first-test.muse/],
+             [qw/d dt deleted-text.muse/],
             );
 my @invalid = (
                [qw/a as anonymous.pdf/],

@@ -677,7 +677,7 @@ sub muse_filepath_is_valid {
         #     warn "$relpath in the wrong path!";
         # }
     }
-    elsif ($name =~ m/^([0-9a-z])[0-9a-z]?-([0-9a-z])[0-9a-z-]*[0-9a-z]$/s) {
+    elsif ($name =~ m/^([0-9a-z])[0-9a-z]*-([0-9a-z])[0-9a-z-]*[0-9a-z]$/s) {
         if ($dirs[0] eq $1 and $dirs[1] eq "$1$2") {
             return $relpath;
         }
