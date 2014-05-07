@@ -201,5 +201,7 @@ foreach my $deletion (qw/superpippo supermarco/) {
 
 is($title->status, 'deleted');
 unlink $dummy_file or die $!;
+$title->delete;
+
 
 

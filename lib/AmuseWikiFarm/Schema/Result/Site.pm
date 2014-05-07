@@ -437,6 +437,7 @@ use File::Spec;
 use Cwd;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_file_info
+                                   muse_filepath_is_valid
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor::HTML qw/html_to_muse/;
 use Date::Parse;
@@ -444,6 +445,7 @@ use DateTime;
 use File::Copy qw/copy/;
 use AmuseWikiFarm::Archive::Xapian;
 use Unicode::Collate::Locale;
+use File::Find;
 
 
 =head2 repo_root_rel
@@ -947,6 +949,112 @@ sub list_fixed_categories {
     else {
         return;
     }
+}
+
+=head1 SCANNING
+
+=head2 repo_find_files
+
+Return an hashrefs, where each key is the relative path to the file,
+and the value is the epoch timestamp in seconds.
+
+=cut
+
+sub repo_find_files {
+    my $self = shift;
+    my %files;
+    my $root = $self->repo_root;
+    find (sub {
+              my $file = $_;
+              return unless -f $file;
+              my $relpath = File::Spec->abs2rel($File::Find::name, $root);
+              if (muse_filepath_is_valid($relpath)) {
+                  die "Something is wrong here" if exists $files{$relpath};
+                  $files{$relpath} = (stat($file))[9];
+              }
+              else {
+                  warn "Discarding $relpath\n" if $relpath =~ m/\.muse$/;
+              }
+          }, $root);
+    return \%files;
+}
+
+=head2 repo_find_tracked_files
+
+Return an hashrefs, where each key is the relative path to the file,
+and the value is the epoch timestamp in seconds.
+
+=cut
+
+sub repo_find_tracked_files {
+    my $self = shift;
+    my %files;
+    my $root = $self->repo_root;
+
+    foreach my $f ($self->titles, $self->attachments) {
+
+        # ignore bogus entries without a timestamp (placeholders for revisions)
+        my $abspath = $f->f_full_path_name;
+        next unless $abspath;
+
+        my $relpath = File::Spec->abs2rel($f->f_full_path_name, $root);
+
+        if (muse_filepath_is_valid($relpath)) {
+            die "Something is wrong here" if exists $files{$relpath};
+            $files{$relpath} = $f->f_timestamp_epoch;
+        }
+        else {
+            warn "Discarding $relpath, not in the right directory\n";
+        }
+    }
+    return \%files;
+}
+
+=head2 repo_find_changed_files
+
+Compare the timestamp found in the tree with the ones stored in the
+db, and run a check. It return an hashref with three keys, C<changed>,
+C<new>, C<removed>. Each of them points to an arrayref with the list
+of relative paths.
+
+=cut
+
+sub repo_find_changed_files {
+    my $self = shift;
+    my $report = {
+                  new => [],
+                  changed => [],
+                  removed => [],
+                 };
+    my $in_tree = $self->repo_find_files;
+    my $in_db = $self->repo_find_tracked_files;
+    foreach my $file (keys %$in_db) {
+        if (exists $in_tree->{$file}) {
+            if ($in_tree->{$file} != $in_db->{$file}) {
+                push @{$report->{changed}}, $file;
+            }
+        }
+        else {
+            push @{$report->{removed}}, $file;
+        }
+    }
+    # and the other way around
+    foreach my $file (keys %$in_tree) {
+        unless (exists $in_db->{$file}) {
+            push @{$report->{new}}, $file;
+        }
+    }
+    return $report;
+}
+
+sub bootstrap_archive {
+    my $self = shift;
+    my $root = $self->repo_root;
+    foreach my $file (sort keys %{$self->repo_find_files}) {
+        $self->index_file(File::Spec->catfile($root, $file))
+          or warn "Ignored $file\n";
+    }
+    $self->collation_index;
 }
 
 __PACKAGE__->meta->make_immutable;

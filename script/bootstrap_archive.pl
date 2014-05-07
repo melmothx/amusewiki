@@ -31,33 +31,5 @@ foreach my $code (@codes) {
         warn "Site code $code not found in the database. Skipping...\n";
         next;
     }
-
-    # find the file
-    my @files;
-    find (sub {
-              my $file = $_;
-              return unless -f $file;
-              return unless index($File::Find::dir, '.git') < 0;
-
-              if ($file =~ m/\.muse$/) {
-                  push @files, $File::Find::name;
-              }
-              if ($file =~ m/([0-9a-z-]+?)(\.(a4|lt))?\.pdf$/) {
-                  # don't save it if exists a muse file
-                  return if (-f $1 . '.muse');
-              }
-              if ($file =~ m/\.(pdf|png|jpe?g)$/) {
-                  push @files, $File::Find::name;
-              }
-          }, $site->repo_root);
-
-
-    # print Dumper(\@files);
-    foreach my $file (sort @files) {
-        print "indexing $file\n";
-        $site->index_file($file) || print "Ignored $file\n";
-    }
-    # set the sorting
-    print "Updating the sorting for $code\n";
-    $site->collation_index;
+    $site->bootstrap_archive;
 }
