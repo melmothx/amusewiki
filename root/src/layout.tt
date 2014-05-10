@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="[% c.uri_for('/static/css/amusewiki.css') %]" />
 
     [%# here we should add a local js and a local css %]
+    <script src="[% c.uri_for('/static/js/amuse.js') %]"></script>
   </head>
   <body>
     <!-- Fixed navbar -->

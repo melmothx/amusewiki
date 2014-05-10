@@ -35,3 +35,12 @@ p.tableofcontentline a{
 div#htmltextbody {
     margin-top: 40px;
 }
+
+div.float_image_r,div.float_image_l {
+    margin: 3px;
+}
+
+div.float_image_r {
+    margin-left: 12px;
+}
+

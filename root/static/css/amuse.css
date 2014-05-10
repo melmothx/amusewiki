@@ -38,6 +38,7 @@ sup, sub {
     margin: 24px 48px;
 }
 
+/*
 table, th, td {
     border: solid 1px black;
     border-collapse: collapse;
@@ -45,6 +46,7 @@ table, th, td {
 td, th {
     padding: 2px 5px;
 }
+*/
 
 hr {
     margin: 24px 0;
