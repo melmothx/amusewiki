@@ -9,51 +9,21 @@ use File::Spec::Functions qw/catfile catdir/;
 use File::Slurp qw/write_file/;
 use AmuseWikiFarm::Schema;
 use Git::Wrapper;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-if (my $stray = $schema->resultset('Site')->find('0revs0')) {
-    if ( -d $stray->repo_root) {
-        remove_tree($stray->repo_root);
-        diag "Removed tree";
-    }
-    $stray->delete;
-};
-my $site = $schema->resultset('Site')->create({
-                                                  id => '0revs0',
-                                                  locale => 'en',
-                                                  a4_pdf => 0,
-                                                  pdf => 0,
-                                                  epub => 0,
-                                                  lt_pdf => 0,
-                                                  mode => 'blog',
-                                                 })->get_from_storage;
-$site->add_to_vhosts({ name => 'revs.amusewiki.org' });
-mkdir $site->repo_root or die $!;
+my $site_id = '0revs0';
+my $git = create_site($schema, '0revs0');
+my $site = $schema->resultset('Site')->find($site_id);
+
 ok ((-d $site->repo_root), "test site created");
-
 is ($site->staging_dirname, 'staging');
-
 ok (-d $site->staging_dir, "Staging directory found");
 
 
-
-
 # interface to create a new text
-
-my $git = Git::Wrapper->new($site->repo_root);
-unless (-d catdir($site->repo_root, '.git')) {
-    diag "Initializing " . $site->repo_root;
-
-    write_file(catfile($site->repo_root, "README"),
-               { binmode => ':encoding(UTF-8)' },
-               "test repo\n");
-
-    $git->init;
-    $git->add('.');
-    $git->commit({ message => "Initial import" });
-}
-
 my ($log) = $git->log;
 
 is $log->message, "Initial import\n", "Found root git revision";
