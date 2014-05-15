@@ -440,12 +440,14 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_filepath_is_valid
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor::HTML qw/html_to_muse/;
+use Text::Amuse::Compile;
 use Date::Parse;
 use DateTime;
 use File::Copy qw/copy/;
 use AmuseWikiFarm::Archive::Xapian;
 use Unicode::Collate::Locale;
 use File::Find;
+use File::Basename qw/fileparse/;
 
 
 =head2 repo_root_rel
@@ -1047,6 +1049,61 @@ sub repo_find_changed_files {
     return $report;
 }
 
+=head3 repo_git_pull($remote_name)
+
+Try to pull the remote git into the master branch (fast-forward only),
+compile and index the files if succeed.
+
+=cut
+
+sub repo_git_pull {
+    my ($self, $remote) = @_;
+    $remote ||= 'origin';
+    my $root = $self->repo_root;
+    require Git::Wrapper;
+    my $git = Git::Wrapper->new($root);
+    $git->pull({ ff_only => 1 }, $remote, 'master');
+    if (my $exp = $@) {
+        warn $exp->error, "\n";
+        return;
+    }
+    return $self->update_db_from_tree;
+}
+
+=head3 update_db_from_tree
+
+Check the consistency of the repo and the db. Index and compile
+new/changed files and purge the removed ones.
+
+TODO: logging
+
+=cut
+
+sub update_db_from_tree {
+    my $self = shift;
+    my $todo = $self->repo_find_changed_files;
+
+    # first delete
+    foreach my $purge (@{ $todo->{removed} }) {
+        if (my $found = $self->find_file_by_path($purge)) {
+            $found->delete;
+        }
+        else {
+            warn "$purge was not present in the db!";
+        }
+    }
+    my $compiler = Text::Amuse::Compile->new($self->compile_options);
+    foreach my $new (@{ $todo->{new} }, @{ $todo->{changed} }) {
+        my $file = File::Spec->catfile($self->repo_root, $new);
+        $self->index_file($file);
+        print "Compiling $new";
+        if ($new =~ m/\.muse$/) {
+            $compiler->compile($file);
+        }
+    }
+    $self->collation_index;
+}
+
 sub bootstrap_archive {
     my $self = shift;
     my $root = $self->repo_root;
@@ -1055,6 +1112,28 @@ sub bootstrap_archive {
           or warn "Ignored $file\n";
     }
     $self->collation_index;
+}
+
+=head2 find_file_by_path($path)
+
+Return a title or attachment depending on the path provided (or
+nothing if not found).
+
+=cut
+
+sub find_file_by_path {
+    my ($self, $path) = @_;
+    return unless $path;
+    my ($name, $dirs, $suffix) = fileparse($path, '.muse');
+    # TODO add support for the special pages when dumped in the git
+    if ($suffix eq '.muse') {
+        my $title = $self->titles->find({ uri => $name });
+        return $title;
+    }
+    else {
+        my $file = $self->attachments->find({ uri => $name });
+        return $file;
+    }
 }
 
 __PACKAGE__->meta->make_immutable;

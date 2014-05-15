@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More;
+use Test::More tests => 33;
 
 use File::Path qw/make_path remove_tree/;
 use File::Slurp qw/write_file/;
@@ -72,4 +72,63 @@ $working_copy->push;
 
 is $rlog->message, "Work at home\n", "Pushing ok";
 
-done_testing;
+$site->repo_git_pull;
+
+ok(-f catfile($site->repo_root, qw/a at a-test.zip/), "Found zip");
+ok(-f catfile($site->repo_root, qw/a at a-test.html/), "Found html");
+ok(-f catfile($site->repo_root, qw/a at a-test.tex/), "Found html");
+ok(-f catfile($site->repo_root, qw/a at a-test.bare.html/), "Found bare html");
+
+my ($gitlog) = $git->log;
+
+is $gitlog->message, "Work at home\n", "Pulling in site ok";
+
+my $title = $site->titles->by_uri('a-test');
+is ($title->title, "A Test", "Find title in db");
+my $author = $title->authors->first;
+
+is ($author->name, 'Pippo', "Found author in db");
+
+my $current_size = -s catfile($site->repo_root, qw/a at a-test.muse/);
+write_file($newfile,
+           { binmode => ':encoding(UTF-8)' },
+           "#title A Test\n#author Pippo\n\nblabla bla\n\nFirst file\n\n");
+
+my $secondfile = catfile($working_copy_dir, qw/a at a-test-2.muse/);
+
+write_file($secondfile,
+           { binmode => ':encoding(UTF-8)' },
+           "#title A Test 2\n#author Pippo\n\nblabla bla\nSecond File\n");
+
+
+$working_copy->add($newfile);
+$working_copy->add($secondfile);
+$working_copy->commit({ message => "Second commit, two files" });
+$working_copy->push;
+
+$site->repo_git_pull;
+ok($current_size != (-s catfile($site->repo_root, qw/a at a-test.muse/)));
+
+foreach my $f (qw/a-test a-test-2/) {
+    ok(-f catfile($site->repo_root, qw/a at/, "$f.zip"), "Found zip");
+    ok(-f catfile($site->repo_root, qw/a at/, "$f.html"), "Found html");
+    ok(-f catfile($site->repo_root, qw/a at/, "$f.tex"), "Found html");
+    ok(-f catfile($site->repo_root, qw/a at/, "$f.bare.html"), "Found bare html");
+    my $path = catfile($site->repo_root, qw/a at/, "$f.muse");
+    my $title = $site->find_file_by_path($path);
+    ok $title, "Found the title";
+    ok $title->title, "Found the title " . $title->title;
+    like $title->html_body, qr/blabla/;
+}
+
+$working_copy->rm($secondfile);
+$working_copy->commit({ message => "Removed second file" });
+
+$working_copy->push;
+
+$site->repo_git_pull;
+
+my $removed = catfile($site->repo_root, qw/a at/, "a-test-2.muse");
+ok (! -f catfile($site->repo_root, qw/a at/, "a-test-2.muse"), "File deleted");
+ok (! $site->find_file_by_path($removed));
+ok (! $site->titles->find({ uri => "a-test-2" }), "$removed purged in the db");

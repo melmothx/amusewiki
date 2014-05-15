@@ -26,7 +26,7 @@ sub create_site {
     die unless $id;
     if (my $stray = $schema->resultset('Site')->find($id)) {
         if ( -d $stray->repo_root) {
-            remove_tree($stray->repo_root, { verbose => 1 });
+            remove_tree($stray->repo_root);
         }
         $stray->delete;
     }
