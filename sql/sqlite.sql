@@ -18,8 +18,8 @@ CREATE TABLE site (
        locale VARCHAR(3) NOT NULL DEFAULT 'en',
 
        -- TODO: move these things in a setting table, it's too cluttered
-       magic_question TEXT NOT NULL DEFAULT 'The first month of the year...',
-       magic_answer   TEXT NOT NULL DEFAULT 'January',
+       magic_question TEXT NOT NULL DEFAULT '',
+       magic_answer   TEXT NOT NULL DEFAULT '',
 
        -- list of space separated category codes, if you want this feature
        fixed_category_list TEXT,
