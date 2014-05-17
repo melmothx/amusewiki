@@ -1058,14 +1058,19 @@ compile and index the files if succeed.
 
 sub repo_git_pull {
     my ($self, $remote) = @_;
-    $remote ||= 'origin';
-    my $root = $self->repo_root;
-    require Git::Wrapper;
-    my $git = Git::Wrapper->new($root);
-    $git->pull({ ff_only => 1 }, $remote, 'master');
-    if (my $exp = $@) {
-        warn $exp->error, "\n";
-        return;
+    if ($self->repo_is_under_git) {
+        $remote ||= 'origin';
+        my $root = $self->repo_root;
+        require Git::Wrapper;
+        my $git = Git::Wrapper->new($root);
+        $git->pull({ ff_only => 1 }, $remote, 'master');
+        if (my $exp = $@) {
+            warn $exp->error, "\n";
+            return;
+        }
+    }
+    else {
+        warn "Repo is not under git!\n";
     }
     return $self->update_db_from_tree;
 }

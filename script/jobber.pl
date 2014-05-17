@@ -33,6 +33,7 @@ print "Starting job server loop in $cwd\n";
 my %handlers = (
                 bookbuilder => \&bookbuilder,
                 publish     => \&publish,
+                pull        => \&git_pull,
                );
 
 while (1) {
@@ -71,6 +72,19 @@ sub publish {
     print Dumper($data);
     $schema->resultset('Revision')->find($data->{id})->publish_text;
 }
+
+sub git_pull {
+    my $j = shift;
+    my $data = from_json($j->payload);
+    print Dumper($data);
+    my $site = $j->site;
+    my $remote = $data->{remote};
+    # enforce the remote passing
+    die "No remote repo provided" unless $remote;
+    $j->site->repo_git_pull($remote);
+    return;
+}
+
 
 # TODO this one should be moved in Archive::BookBuilder, or in
 # archive, so it should know how to handle the options. It also lacks
