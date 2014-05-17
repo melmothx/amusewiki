@@ -61,13 +61,13 @@ __PACKAGE__->table("site");
 =head2 magic_question
 
   data_type: 'text'
-  default_value: 'The first month of the year...'
+  default_value: (empty string)
   is_nullable: 0
 
 =head2 magic_answer
 
   data_type: 'text'
-  default_value: 'January'
+  default_value: (empty string)
   is_nullable: 0
 
 =head2 fixed_category_list
@@ -230,13 +230,9 @@ __PACKAGE__->add_columns(
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "magic_question",
-  {
-    data_type     => "text",
-    default_value => "The first month of the year...",
-    is_nullable   => 0,
-  },
+  { data_type => "text", default_value => "", is_nullable => 0 },
   "magic_answer",
-  { data_type => "text", default_value => "January", is_nullable => 0 },
+  { data_type => "text", default_value => "", is_nullable => 0 },
   "fixed_category_list",
   { data_type => "text", is_nullable => 1 },
   "sitename",
@@ -430,8 +426,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-21 18:22:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UrB4WaUKsYAjAclxOGTj+g
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-17 10:15:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Vd3ywWYI65ed1Er9siJJaw
 
 use File::Spec;
 use Cwd;
