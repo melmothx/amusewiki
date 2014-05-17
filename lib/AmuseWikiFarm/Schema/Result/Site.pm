@@ -1094,7 +1094,7 @@ sub update_db_from_tree {
         }
     }
     my $compiler = Text::Amuse::Compile->new($self->compile_options);
-    foreach my $new (@{ $todo->{new} }, @{ $todo->{changed} }) {
+    foreach my $new (sort @{ $todo->{new} }, @{ $todo->{changed} }) {
         my $file = File::Spec->catfile($self->repo_root, $new);
         $self->index_file($file);
         print "Compiling $new";
