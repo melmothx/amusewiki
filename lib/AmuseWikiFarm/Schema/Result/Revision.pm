@@ -171,6 +171,7 @@ use File::MimeInfo::Magic qw/mimetype/;
 use Text::Amuse;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
+                                   muse_attachment_basename_for
                                    muse_naming_algo/;
 
 use Text::Amuse::Functions qw/muse_fast_scan_header/;
@@ -430,13 +431,7 @@ sub add_attachment {
     else {
         return "Unsupported file type $mime";
     }
-    my $pieces = muse_get_full_path($self->muse_uri);
-    unless ($pieces && @$pieces) {
-        return "Couldn't parse the filename... this is a bug";
-    }
-    # create a new filename
-    my $full = join('-', @$pieces);
-    my $base = muse_naming_algo(substr(join('-', @$pieces), 0, 50));
+    my $base = muse_attachment_basename_for($self->muse_uri);
     my $suffix = 0;
     # and now we have to check if the same name exists in the
     # attachment table for the same site.

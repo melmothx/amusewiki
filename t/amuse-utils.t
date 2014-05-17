@@ -1,12 +1,13 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 36;
+use Test::More tests => 40;
 use File::Spec::Functions qw/catfile/;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
                                    muse_filepath_is_valid
+                                   muse_attachment_basename_for
                                   /;
 
 is_deeply(muse_get_full_path("cacca"), [ "c", "ca", "cacca" ]);
@@ -79,3 +80,11 @@ foreach my $v (@invalid) {
     my $f = catfile(@$v);
     ok(!muse_filepath_is_valid($f), "$f is invalid as expected");
 }
+
+is muse_attachment_basename_for("test"), "t-t-test";
+is muse_attachment_basename_for("my-uri"), "m-u-my-uri";
+is muse_attachment_basename_for("my-uri-123456789-123456789-123456789-123456789-123456789"), "m-u-my-uri-123456789-123456789-123456789-123456789";
+
+eval { muse_attachment_basename_for("_this_") };
+ok $@, "Found exception $@";
+

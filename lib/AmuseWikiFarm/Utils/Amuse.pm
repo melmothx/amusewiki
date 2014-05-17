@@ -18,6 +18,7 @@ our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
                     muse_naming_algo
                     muse_get_full_path
+                    muse_attachment_basename_for
                     muse_parse_file_path
                     muse_filepath_is_valid
                     muse_filename_is_valid/;
@@ -687,6 +688,27 @@ sub muse_filepath_is_valid {
     }
     # catch all and return false
     return;
+}
+
+sub muse_attachment_basename_for {
+    my $uri = shift;
+    die "Missing muse uri!" unless $uri;
+    my $pieces = muse_get_full_path($uri);
+    unless ($pieces && @$pieces && @$pieces == 3) {
+        die "Couldn't parse the filename... this is a bug";
+    }
+    # create a new filename
+    my $full = join('-', @$pieces);
+    my @elements = ($pieces->[0]);
+    if ($pieces->[1] =~ m/^[0-9a-z]([0-9a-z])$/) {
+        push @elements, $1;
+    }
+    else {
+        die "Wrong piece, this is a bug!";
+    }
+    push @elements, $pieces->[2];
+    my $base = muse_naming_algo(substr(join('-', @elements), 0, 50));
+    return $base;
 }
 
 
