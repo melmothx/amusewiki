@@ -1096,9 +1096,10 @@ sub update_db_from_tree {
     my $compiler = Text::Amuse::Compile->new($self->compile_options);
     foreach my $new (sort @{ $todo->{new} }, @{ $todo->{changed} }) {
         my $file = File::Spec->catfile($self->repo_root, $new);
+        print "Indexing $file\n";
         $self->index_file($file);
-        print "Compiling $new";
         if ($new =~ m/\.muse$/) {
+            print "Compiling $new\n";
             $compiler->compile($file);
         }
     }
