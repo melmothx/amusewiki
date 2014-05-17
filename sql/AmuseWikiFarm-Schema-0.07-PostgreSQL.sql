@@ -1,20 +1,36 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sun Mar 16 18:43:51 2014
+-- Created on Sat May 17 10:24:02 2014
 -- 
+--
+-- Table: roles.
+--
+DROP TABLE "roles" CASCADE;
+CREATE TABLE "roles" (
+  "id" serial NOT NULL,
+  "role" character varying(255),
+  PRIMARY KEY ("id"),
+  CONSTRAINT "role_unique" UNIQUE ("role")
+);
+
 --
 -- Table: site.
 --
 DROP TABLE "site" CASCADE;
 CREATE TABLE "site" (
   "id" character varying(8) NOT NULL,
+  "mode" character varying(16) DEFAULT 'blog' NOT NULL,
   "locale" character varying(3) DEFAULT 'en' NOT NULL,
+  "magic_question" text DEFAULT '' NOT NULL,
+  "magic_answer" text DEFAULT '' NOT NULL,
+  "fixed_category_list" text,
   "sitename" character varying(255) DEFAULT '' NOT NULL,
   "siteslogan" character varying(255) DEFAULT '' NOT NULL,
   "theme" character varying(32) DEFAULT '' NOT NULL,
   "logo" character varying(32),
   "mail" character varying(128),
   "canonical" character varying(255) DEFAULT '' NOT NULL,
+  "bb_page_limit" integer DEFAULT 1000 NOT NULL,
   "tex" integer DEFAULT 1 NOT NULL,
   "pdf" integer DEFAULT 1 NOT NULL,
   "a4_pdf" integer DEFAULT 1 NOT NULL,
@@ -43,6 +59,7 @@ CREATE TABLE "attachment" (
   "f_name" character varying(255) NOT NULL,
   "f_archive_rel_path" character varying(4) NOT NULL,
   "f_timestamp" timestamp NOT NULL,
+  "f_timestamp_epoch" integer DEFAULT 0 NOT NULL,
   "f_full_path_name" text NOT NULL,
   "f_suffix" character varying(16) NOT NULL,
   "uri" character varying(255) NOT NULL,
@@ -75,7 +92,7 @@ CREATE INDEX "category_idx_site_id" on "category" ("site_id");
 DROP TABLE "job" CASCADE;
 CREATE TABLE "job" (
   "id" serial NOT NULL,
-  "site_id" character varying(8),
+  "site_id" character varying(8) NOT NULL,
   "task" character varying(32),
   "payload" text,
   "status" character varying(32),
@@ -87,6 +104,27 @@ CREATE TABLE "job" (
   PRIMARY KEY ("id")
 );
 CREATE INDEX "job_idx_site_id" on "job" ("site_id");
+
+--
+-- Table: page.
+--
+DROP TABLE "page" CASCADE;
+CREATE TABLE "page" (
+  "id" serial NOT NULL,
+  "site_id" character varying(8) NOT NULL,
+  "pubdate" timestamp NOT NULL,
+  "created" timestamp NOT NULL,
+  "updated" timestamp NOT NULL,
+  "user_id" integer DEFAULT 0 NOT NULL,
+  "uri" character varying(255),
+  "title" character varying(255),
+  "html_body" text,
+  "f_path" text NOT NULL,
+  "status" character varying(16) DEFAULT 'published' NOT NULL,
+  PRIMARY KEY ("id"),
+  CONSTRAINT "uri_site_id_unique" UNIQUE ("uri", "site_id")
+);
+CREATE INDEX "page_idx_site_id" on "page" ("site_id");
 
 --
 -- Table: title.
@@ -110,6 +148,7 @@ CREATE TABLE "title" (
   "f_name" character varying(255) NOT NULL,
   "f_archive_rel_path" character varying(4) NOT NULL,
   "f_timestamp" timestamp NOT NULL,
+  "f_timestamp_epoch" integer DEFAULT 0 NOT NULL,
   "f_full_path_name" text NOT NULL,
   "f_suffix" character varying(16) NOT NULL,
   "uri" character varying(255) NOT NULL,
@@ -122,15 +161,48 @@ CREATE TABLE "title" (
 CREATE INDEX "title_idx_site_id" on "title" ("site_id");
 
 --
+-- Table: users.
+--
+DROP TABLE "users" CASCADE;
+CREATE TABLE "users" (
+  "id" serial NOT NULL,
+  "username" character varying(32) NOT NULL,
+  "password" character varying(255) NOT NULL,
+  "email" character varying(255),
+  "active" integer DEFAULT 0 NOT NULL,
+  "site_id" character varying(8),
+  PRIMARY KEY ("id")
+);
+CREATE INDEX "users_idx_site_id" on "users" ("site_id");
+
+--
 -- Table: vhost.
 --
 DROP TABLE "vhost" CASCADE;
 CREATE TABLE "vhost" (
   "name" character varying(255) NOT NULL,
-  "site_id" character varying(8),
+  "site_id" character varying(8) NOT NULL,
   PRIMARY KEY ("name")
 );
 CREATE INDEX "vhost_idx_site_id" on "vhost" ("site_id");
+
+--
+-- Table: revision.
+--
+DROP TABLE "revision" CASCADE;
+CREATE TABLE "revision" (
+  "id" serial NOT NULL,
+  "site_id" character varying(8) NOT NULL,
+  "title_id" integer NOT NULL,
+  "f_full_path_name" text,
+  "status" character varying(16) DEFAULT 'editing' NOT NULL,
+  "user_id" integer DEFAULT 0 NOT NULL,
+  "session_id" character varying(255),
+  "updated" timestamp NOT NULL,
+  PRIMARY KEY ("id")
+);
+CREATE INDEX "revision_idx_site_id" on "revision" ("site_id");
+CREATE INDEX "revision_idx_title_id" on "revision" ("title_id");
 
 --
 -- Table: title_category.
@@ -145,6 +217,18 @@ CREATE INDEX "title_category_idx_category_id" on "title_category" ("category_id"
 CREATE INDEX "title_category_idx_title_id" on "title_category" ("title_id");
 
 --
+-- Table: user_role.
+--
+DROP TABLE "user_role" CASCADE;
+CREATE TABLE "user_role" (
+  "user_id" integer NOT NULL,
+  "role_id" integer NOT NULL,
+  PRIMARY KEY ("user_id", "role_id")
+);
+CREATE INDEX "user_role_idx_role_id" on "user_role" ("role_id");
+CREATE INDEX "user_role_idx_user_id" on "user_role" ("user_id");
+
+--
 -- Foreign Key Definitions
 --
 
@@ -157,15 +241,33 @@ ALTER TABLE "category" ADD CONSTRAINT "category_fk_site_id" FOREIGN KEY ("site_i
 ALTER TABLE "job" ADD CONSTRAINT "job_fk_site_id" FOREIGN KEY ("site_id")
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
+ALTER TABLE "page" ADD CONSTRAINT "page_fk_site_id" FOREIGN KEY ("site_id")
+  REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
 ALTER TABLE "title" ADD CONSTRAINT "title_fk_site_id" FOREIGN KEY ("site_id")
+  REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE "users" ADD CONSTRAINT "users_fk_site_id" FOREIGN KEY ("site_id")
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "vhost" ADD CONSTRAINT "vhost_fk_site_id" FOREIGN KEY ("site_id")
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE "revision" ADD CONSTRAINT "revision_fk_site_id" FOREIGN KEY ("site_id")
+  REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE "revision" ADD CONSTRAINT "revision_fk_title_id" FOREIGN KEY ("title_id")
+  REFERENCES "title" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "title_category" ADD CONSTRAINT "title_category_fk_category_id" FOREIGN KEY ("category_id")
   REFERENCES "category" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "title_category" ADD CONSTRAINT "title_category_fk_title_id" FOREIGN KEY ("title_id")
   REFERENCES "title" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE "user_role" ADD CONSTRAINT "user_role_fk_role_id" FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE "user_role" ADD CONSTRAINT "user_role_fk_user_id" FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 

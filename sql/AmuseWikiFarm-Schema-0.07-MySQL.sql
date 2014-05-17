@@ -1,8 +1,20 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sat Mar 22 11:20:27 2014
+-- Created on Sat May 17 10:24:02 2014
 -- 
 SET foreign_key_checks=0;
+
+DROP TABLE IF EXISTS `roles`;
+
+--
+-- Table: `roles`
+--
+CREATE TABLE `roles` (
+  `id` integer NOT NULL auto_increment,
+  `role` varchar(255) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE `role_unique` (`role`)
+) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `site`;
 
@@ -11,7 +23,11 @@ DROP TABLE IF EXISTS `site`;
 --
 CREATE TABLE `site` (
   `id` varchar(8) NOT NULL,
+  `mode` varchar(16) NOT NULL DEFAULT 'blog',
   `locale` varchar(3) NOT NULL DEFAULT 'en',
+  `magic_question` text NOT NULL DEFAULT '',
+  `magic_answer` text NOT NULL DEFAULT '',
+  `fixed_category_list` text NULL,
   `sitename` varchar(255) NOT NULL DEFAULT '',
   `siteslogan` varchar(255) NOT NULL DEFAULT '',
   `theme` varchar(32) NOT NULL DEFAULT '',
@@ -48,6 +64,7 @@ CREATE TABLE `attachment` (
   `f_name` varchar(255) NOT NULL,
   `f_archive_rel_path` varchar(4) NOT NULL,
   `f_timestamp` datetime NOT NULL,
+  `f_timestamp_epoch` integer NOT NULL DEFAULT 0,
   `f_full_path_name` text NOT NULL,
   `f_suffix` varchar(16) NOT NULL,
   `uri` varchar(255) NOT NULL,
@@ -84,7 +101,7 @@ DROP TABLE IF EXISTS `job`;
 --
 CREATE TABLE `job` (
   `id` integer NOT NULL auto_increment,
-  `site_id` varchar(8) NULL,
+  `site_id` varchar(8) NOT NULL,
   `task` varchar(32) NULL,
   `payload` text NULL,
   `status` varchar(32) NULL,
@@ -96,6 +113,29 @@ CREATE TABLE `job` (
   INDEX `job_idx_site_id` (`site_id`),
   PRIMARY KEY (`id`),
   CONSTRAINT `job_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `page`;
+
+--
+-- Table: `page`
+--
+CREATE TABLE `page` (
+  `id` integer NOT NULL auto_increment,
+  `site_id` varchar(8) NOT NULL,
+  `pubdate` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime NOT NULL,
+  `user_id` integer NOT NULL DEFAULT 0,
+  `uri` varchar(255) NULL,
+  `title` varchar(255) NULL,
+  `html_body` text NULL,
+  `f_path` text NOT NULL,
+  `status` varchar(16) NOT NULL DEFAULT 'published',
+  INDEX `page_idx_site_id` (`site_id`),
+  PRIMARY KEY (`id`),
+  UNIQUE `uri_site_id_unique` (`uri`, `site_id`),
+  CONSTRAINT `page_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `title`;
@@ -121,6 +161,7 @@ CREATE TABLE `title` (
   `f_name` varchar(255) NOT NULL,
   `f_archive_rel_path` varchar(4) NOT NULL,
   `f_timestamp` datetime NOT NULL,
+  `f_timestamp_epoch` integer NOT NULL DEFAULT 0,
   `f_full_path_name` text NOT NULL,
   `f_suffix` varchar(16) NOT NULL,
   `uri` varchar(255) NOT NULL,
@@ -133,6 +174,23 @@ CREATE TABLE `title` (
   CONSTRAINT `title_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
+DROP TABLE IF EXISTS `users`;
+
+--
+-- Table: `users`
+--
+CREATE TABLE `users` (
+  `id` integer NOT NULL auto_increment,
+  `username` varchar(32) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NULL,
+  `active` integer NOT NULL DEFAULT 0,
+  `site_id` varchar(8) NULL,
+  INDEX `users_idx_site_id` (`site_id`),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `users_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
 DROP TABLE IF EXISTS `vhost`;
 
 --
@@ -140,10 +198,31 @@ DROP TABLE IF EXISTS `vhost`;
 --
 CREATE TABLE `vhost` (
   `name` varchar(255) NOT NULL,
-  `site_id` varchar(8) NULL,
+  `site_id` varchar(8) NOT NULL,
   INDEX `vhost_idx_site_id` (`site_id`),
   PRIMARY KEY (`name`),
   CONSTRAINT `vhost_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `revision`;
+
+--
+-- Table: `revision`
+--
+CREATE TABLE `revision` (
+  `id` integer NOT NULL auto_increment,
+  `site_id` varchar(8) NOT NULL,
+  `title_id` integer NOT NULL,
+  `f_full_path_name` text NULL,
+  `status` varchar(16) NOT NULL DEFAULT 'editing',
+  `user_id` integer NOT NULL DEFAULT 0,
+  `session_id` varchar(255) NULL,
+  `updated` datetime NOT NULL,
+  INDEX `revision_idx_site_id` (`site_id`),
+  INDEX `revision_idx_title_id` (`title_id`),
+  PRIMARY KEY (`id`),
+  CONSTRAINT `revision_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `revision_fk_title_id` FOREIGN KEY (`title_id`) REFERENCES `title` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `title_category`;
@@ -159,6 +238,21 @@ CREATE TABLE `title_category` (
   PRIMARY KEY (`title_id`, `category_id`),
   CONSTRAINT `title_category_fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `title_category_fk_title_id` FOREIGN KEY (`title_id`) REFERENCES `title` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+DROP TABLE IF EXISTS `user_role`;
+
+--
+-- Table: `user_role`
+--
+CREATE TABLE `user_role` (
+  `user_id` integer NOT NULL,
+  `role_id` integer NOT NULL,
+  INDEX `user_role_idx_role_id` (`role_id`),
+  INDEX `user_role_idx_user_id` (`user_id`),
+  PRIMARY KEY (`user_id`, `role_id`),
+  CONSTRAINT `user_role_fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_role_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 SET foreign_key_checks=1;

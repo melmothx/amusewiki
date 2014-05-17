@@ -1,9 +1,21 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Sun Mar 16 18:43:51 2014
+-- Created on Sat May 17 10:24:02 2014
 -- 
 
 BEGIN TRANSACTION;
+
+--
+-- Table: roles
+--
+DROP TABLE roles;
+
+CREATE TABLE roles (
+  id INTEGER PRIMARY KEY NOT NULL,
+  role varchar(255)
+);
+
+CREATE UNIQUE INDEX role_unique ON roles (role);
 
 --
 -- Table: site
@@ -12,13 +24,18 @@ DROP TABLE site;
 
 CREATE TABLE site (
   id varchar(8) NOT NULL,
+  mode varchar(16) NOT NULL DEFAULT 'blog',
   locale varchar(3) NOT NULL DEFAULT 'en',
+  magic_question text NOT NULL DEFAULT '',
+  magic_answer text NOT NULL DEFAULT '',
+  fixed_category_list text,
   sitename varchar(255) NOT NULL DEFAULT '',
   siteslogan varchar(255) NOT NULL DEFAULT '',
   theme varchar(32) NOT NULL DEFAULT '',
   logo varchar(32),
   mail varchar(128),
   canonical varchar(255) NOT NULL DEFAULT '',
+  bb_page_limit integer NOT NULL DEFAULT 1000,
   tex integer NOT NULL DEFAULT 1,
   pdf integer NOT NULL DEFAULT 1,
   a4_pdf integer NOT NULL DEFAULT 1,
@@ -48,6 +65,7 @@ CREATE TABLE attachment (
   f_name varchar(255) NOT NULL,
   f_archive_rel_path varchar(4) NOT NULL,
   f_timestamp datetime NOT NULL,
+  f_timestamp_epoch integer NOT NULL DEFAULT 0,
   f_full_path_name text NOT NULL,
   f_suffix varchar(16) NOT NULL,
   uri varchar(255) NOT NULL,
@@ -86,7 +104,7 @@ DROP TABLE job;
 
 CREATE TABLE job (
   id INTEGER PRIMARY KEY NOT NULL,
-  site_id varchar(8),
+  site_id varchar(8) NOT NULL,
   task varchar(32),
   payload text,
   status varchar(32),
@@ -99,6 +117,30 @@ CREATE TABLE job (
 );
 
 CREATE INDEX job_idx_site_id ON job (site_id);
+
+--
+-- Table: page
+--
+DROP TABLE page;
+
+CREATE TABLE page (
+  id INTEGER PRIMARY KEY NOT NULL,
+  site_id varchar(8) NOT NULL,
+  pubdate datetime NOT NULL,
+  created datetime NOT NULL,
+  updated datetime NOT NULL,
+  user_id integer NOT NULL DEFAULT 0,
+  uri varchar(255),
+  title varchar(255),
+  html_body text,
+  f_path text NOT NULL,
+  status varchar(16) NOT NULL DEFAULT 'published',
+  FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE INDEX page_idx_site_id ON page (site_id);
+
+CREATE UNIQUE INDEX uri_site_id_unique02 ON page (uri, site_id);
 
 --
 -- Table: title
@@ -123,6 +165,7 @@ CREATE TABLE title (
   f_name varchar(255) NOT NULL,
   f_archive_rel_path varchar(4) NOT NULL,
   f_timestamp datetime NOT NULL,
+  f_timestamp_epoch integer NOT NULL DEFAULT 0,
   f_full_path_name text NOT NULL,
   f_suffix varchar(16) NOT NULL,
   uri varchar(255) NOT NULL,
@@ -134,7 +177,24 @@ CREATE TABLE title (
 
 CREATE INDEX title_idx_site_id ON title (site_id);
 
-CREATE UNIQUE INDEX uri_site_id_unique02 ON title (uri, site_id);
+CREATE UNIQUE INDEX uri_site_id_unique03 ON title (uri, site_id);
+
+--
+-- Table: users
+--
+DROP TABLE users;
+
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY NOT NULL,
+  username varchar(32) NOT NULL,
+  password varchar(255) NOT NULL,
+  email varchar(255),
+  active integer NOT NULL DEFAULT 0,
+  site_id varchar(8),
+  FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE INDEX users_idx_site_id ON users (site_id);
 
 --
 -- Table: vhost
@@ -143,12 +203,34 @@ DROP TABLE vhost;
 
 CREATE TABLE vhost (
   name varchar(255) NOT NULL,
-  site_id varchar(8),
+  site_id varchar(8) NOT NULL,
   PRIMARY KEY (name),
   FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE INDEX vhost_idx_site_id ON vhost (site_id);
+
+--
+-- Table: revision
+--
+DROP TABLE revision;
+
+CREATE TABLE revision (
+  id INTEGER PRIMARY KEY NOT NULL,
+  site_id varchar(8) NOT NULL,
+  title_id integer NOT NULL,
+  f_full_path_name text,
+  status varchar(16) NOT NULL DEFAULT 'editing',
+  user_id integer NOT NULL DEFAULT 0,
+  session_id varchar(255),
+  updated datetime NOT NULL,
+  FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (title_id) REFERENCES title(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE INDEX revision_idx_site_id ON revision (site_id);
+
+CREATE INDEX revision_idx_title_id ON revision (title_id);
 
 --
 -- Table: title_category
@@ -166,5 +248,22 @@ CREATE TABLE title_category (
 CREATE INDEX title_category_idx_category_id ON title_category (category_id);
 
 CREATE INDEX title_category_idx_title_id ON title_category (title_id);
+
+--
+-- Table: user_role
+--
+DROP TABLE user_role;
+
+CREATE TABLE user_role (
+  user_id integer NOT NULL,
+  role_id integer NOT NULL,
+  PRIMARY KEY (user_id, role_id),
+  FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE INDEX user_role_idx_role_id ON user_role (role_id);
+
+CREATE INDEX user_role_idx_user_id ON user_role (user_id);
 
 COMMIT;
