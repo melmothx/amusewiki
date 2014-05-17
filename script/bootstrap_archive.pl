@@ -31,5 +31,5 @@ foreach my $code (@codes) {
         warn "Site code $code not found in the database. Skipping...\n";
         next;
     }
-    $site->bootstrap_archive;
+    $site->update_db_from_tree;
 }

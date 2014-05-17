@@ -1109,15 +1109,6 @@ sub update_db_from_tree {
     $self->collation_index;
 }
 
-sub bootstrap_archive {
-    my $self = shift;
-    my $root = $self->repo_root;
-    foreach my $file (sort keys %{$self->repo_find_files}) {
-        $self->index_file(File::Spec->catfile($root, $file))
-          or warn "Ignored $file\n";
-    }
-    $self->collation_index;
-}
 
 =head2 find_file_by_path($path)
 

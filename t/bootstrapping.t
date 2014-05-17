@@ -15,7 +15,7 @@ my $id = '0test0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find($id);
 
-$site->bootstrap_archive;
+$site->update_db_from_tree;
 my $files = $site->repo_find_files;
 
 my @found = sort keys %$files;

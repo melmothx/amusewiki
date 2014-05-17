@@ -13,7 +13,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 ok($schema);
 
 foreach my $site ($schema->resultset('Site')->all) {
-    # $site->bootstrap_archive;
+    # $site->update_db_from_tree;
 }
 
 done_testing;
