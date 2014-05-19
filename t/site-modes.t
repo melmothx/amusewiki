@@ -12,11 +12,14 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $sites = {
              closed  => { id => '0closed0',
-                          url  => 'closed.amusewiki.org' },
+                          url  => 'closed.amusewiki.org',
+                        },
              modwiki => { id => '0modewiki0',
-                          url  => 'modwiki.amusewiki.org' },
+                          url  => 'modwiki.amusewiki.org',
+                        },
              openwiki => { id => '0openwiki0',
-                           url  => 'openwiki.amusewiki.org' }
+                           url  => 'openwiki.amusewiki.org',
+                         },
             };
 diag "Creating sites";
 foreach my $m (keys %$sites) {
@@ -34,7 +37,9 @@ foreach my $m (keys %$sites) {
                                                       pdf => 0,
                                                       epub => 0,
                                                       lt_pdf => 0,
-                                                      mode => $m
+                                                      mode => $m,
+                                                      magic_question => 'First month of the year',
+                                                      magic_answer => 'January',
                                                      })->get_from_storage;
     $site_ob->add_to_vhosts({ name => $sites->{$m}->{url} });
     my $repo_root = $site_ob->repo_root;
