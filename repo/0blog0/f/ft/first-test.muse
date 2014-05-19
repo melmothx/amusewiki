@@ -10,9 +10,9 @@
 
 My first test
 
-[[testimage.png]]
+[[f-t-testimage.png]]
 
 Done with Catalyst
 
-[[cata.jpg]]
+[[f-t-cata.jpg]]
 
