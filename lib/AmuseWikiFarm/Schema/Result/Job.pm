@@ -155,6 +155,14 @@ __PACKAGE__->belongs_to(
 use JSON qw/to_json
             from_json/;
 
+use File::Spec;
+
+=head2 as_json
+
+Return the json string for the job
+
+=cut
+
 sub as_json {
     my $self = shift;
     my $struct = {
@@ -172,7 +180,20 @@ sub as_json {
     return to_json($struct);
 }
 
+=head2 log_file
 
+Return the location of the log file. Beware that the location is
+computed in the current directory, but returned as absolute.
+
+=cut
+
+sub log_file {
+    my $self = shift;
+    my $dir = File::Spec->catdir(qw/log jobs/);
+    die "We're in the wrong directory" unless -d $dir;
+    my $file = File::Spec->catfile($dir, $self->id . '.log');
+    return File::Spec->rel2abs($file);
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

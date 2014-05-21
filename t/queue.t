@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 13;
+use Test::More tests => 15;
 use Data::Dumper;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::Queue;
@@ -27,6 +27,8 @@ my $job = $queue->get_job;
 ok($job);
 is($job->id, $id);
 is($job->status, 'taken');
+ok($job->log_file, "Found log file " . $job->log_file);
+like $job->log_file, qr/\.log$/;
 
 is_deeply(from_json($job->payload), { this  => 0, test => 'òć' });
 
@@ -47,6 +49,4 @@ is $struct->{id}, $id;
 while (my $j = $queue->get_job) {
     diag "Got stale job " . $j->id;
 }
-
-done_testing;
 
