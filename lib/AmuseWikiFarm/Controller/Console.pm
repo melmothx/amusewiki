@@ -41,15 +41,25 @@ Empty base method for chaining
 
 =cut
 
-sub root :Chained('/') :PathPart('console') :CaptureArgs(0) {}
+sub root :Chained('/') :PathPart('console') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my @remotes = $c->stash->{site}->remote_gits;
+    $c->stash(remotes => \@remotes);
+    my %validation;
+    foreach my $remote (@remotes) {
+        $validation{$remote->{name}}{$remote->{action}} = 1;
+    }
+    $c->stash(repo_validation => \%validation);
+}
 
 sub console :Chained('root') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    die "wtf?" unless $c->user_exists;
-    my @remotes = $c->stash->{site}->remote_gits;
-    unless ($c->check_user_roles('root')) {
-    }
-    $c->stash(remotes => \@remotes);
+}
+
+sub git :Chained('root') :PathPart('git') :Args(0) {
+    my ($self, $c) = @_;
+    # TODO push the task and redirect to the task monitor
+    $c->response->redirect($c->uri_for_action('console/console'));
 }
 
 

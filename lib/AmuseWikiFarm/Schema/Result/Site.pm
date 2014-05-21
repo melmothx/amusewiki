@@ -1157,10 +1157,10 @@ sub remote_gits {
     my @out;
     foreach my $remote (@remotes) {
         my ($name, $url, $action) = split(/\s+/, $remote, 3);
-        if ($action =~ m/fetch/) {
+        if ($action =~ m/\s*\((.+)\)\s*/) {
             push @out, { name => $name,
                          url => $url,
-                         action => $action };
+                         action => $1 };
         }
     }
     return @out;

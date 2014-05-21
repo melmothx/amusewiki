@@ -1,0 +1,39 @@
+[%# -*- mode: html -*- %]
+[% IF remotes.size %]
+<table class="table table-striped">
+  <tr>
+    <th>
+      [% c.loc('Repository') %]
+    </th>
+    <th>
+      [% c.loc('URL') %]
+    </th>
+    <th>
+      [% c.loc('Action') %]
+    </th>
+  </tr>
+[% FOREACH remote IN remotes %]
+   <tr>
+     <td>
+       [% remote.name %]
+     </td>
+     <td>
+       [% remote.url %]
+     </td>
+     <td>
+       <form action="[% c.uri_for_action('console/git') %]" method="post">
+         <input type="hidden" name="action" value="[% remote.action %]" />
+         <input type="hidden" name="remote" value="[% remote.name %]" />
+         <button type="submit" class="btn btn-primary">
+           [% remote.action %]
+         </button>
+       </form>
+     </td>
+   </tr>
+[% END %]
+</table>
+[% ELSE %]
+
+[% c.loc('Nothing to see here') %]
+
+[% END %]
