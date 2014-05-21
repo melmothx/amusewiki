@@ -1047,8 +1047,13 @@ sub repo_find_changed_files {
 
 =head3 repo_git_pull($remote_name)
 
-Try to pull the remote git into the master branch (fast-forward only),
-compile and index the files if succeed.
+Try to pull the remote git into the master branch (fast-forward only).
+
+You want to call C<update_db_from_tree> afterward.
+
+=head3 repo_git_push($remote_name)
+
+Try to push master into the remote git.
 
 =cut
 
@@ -1056,7 +1061,9 @@ sub repo_git_pull {
     my ($self, $remote) = @_;
     if (my $git = $self->git) {
         $remote ||= 'origin';
-        $git->pull({ ff_only => 1 }, $remote, 'master');
+        eval {
+            $git->pull({ ff_only => 1 }, $remote, 'master');
+        };
         if (my $exp = $@) {
             warn $exp->error, "\n";
             return;
@@ -1065,7 +1072,22 @@ sub repo_git_pull {
     else {
         warn "Repo is not under git!\n";
     }
-    return $self->update_db_from_tree;
+    return;
+}
+
+sub repo_git_push {
+    my ($self, $remote) = @_;
+    if (my $git = $self->git) {
+        $remote ||= 'origin';
+        $git->push($remote, 'master');
+        eval {
+            $git->push($remote, 'master');
+        };
+        if (my $exp = $@) {
+            warn $exp->error, "\n";
+            return;
+        }
+    }
 }
 
 =head3 update_db_from_tree

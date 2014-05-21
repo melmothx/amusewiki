@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 34;
+use Data::Dumper;
 
 use File::Path qw/make_path remove_tree/;
 use File::Slurp qw/write_file/;
@@ -37,18 +38,24 @@ is_deeply(\@remotes, [
                       {
                        name => 'origin',
                        url => $remotedir,
-                       action => '(fetch)',
+                       action => 'fetch',
+                      },
+                      {
+                       name => 'origin',
+                       url => $remotedir,
+                       action => 'push',
                       }
-                     ], "Found remotes");
+
+                     ], "Found remotes") or diag Dumper(\@remotes);
 
 
 
 
-$git->push(origin => 'master');
+$site->repo_git_push;
 
 
 my ($rlog) = $remote->log;
-my ($llog) = $git->log;
+my ($llog) = $site->git->log;
 
 ok($rlog, "Found log in remote");
 ok($llog, "Found log in local");
@@ -86,13 +93,13 @@ $working_copy->push;
 is $rlog->message, "Work at home\n", "Pushing ok";
 
 $site->repo_git_pull;
-
+$site->update_db_from_tree;
 ok(-f catfile($site->repo_root, qw/a at a-test.zip/), "Found zip");
 ok(-f catfile($site->repo_root, qw/a at a-test.html/), "Found html");
 ok(-f catfile($site->repo_root, qw/a at a-test.tex/), "Found html");
 ok(-f catfile($site->repo_root, qw/a at a-test.bare.html/), "Found bare html");
 
-my ($gitlog) = $git->log;
+my ($gitlog) = $site->git->log;
 
 is $gitlog->message, "Work at home\n", "Pulling in site ok";
 
@@ -120,6 +127,7 @@ $working_copy->commit({ message => "Second commit, two files" });
 $working_copy->push;
 
 $site->repo_git_pull;
+$site->update_db_from_tree;
 ok($current_size != (-s catfile($site->repo_root, qw/a at a-test.muse/)));
 
 foreach my $f (qw/a-test a-test-2/) {
@@ -140,6 +148,7 @@ $working_copy->commit({ message => "Removed second file" });
 $working_copy->push;
 
 $site->repo_git_pull;
+$site->update_db_from_tree;
 
 my $removed = catfile($site->repo_root, qw/a at/, "a-test-2.muse");
 ok (! -f catfile($site->repo_root, qw/a at/, "a-test-2.muse"), "File deleted");
