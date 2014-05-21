@@ -10,6 +10,7 @@ repo/*
 !repo/0blog0
 !repo/0wiki0
 !repo/README.txt
+root/static/images/sites/*
 repo/*/*/*/*.pdf
 repo/*/*/*/*.tex
 repo/*/*/*/*.html
