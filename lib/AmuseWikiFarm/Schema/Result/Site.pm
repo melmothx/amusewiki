@@ -1054,11 +1054,8 @@ compile and index the files if succeed.
 
 sub repo_git_pull {
     my ($self, $remote) = @_;
-    if ($self->repo_is_under_git) {
+    if (my $git = $self->git) {
         $remote ||= 'origin';
-        my $root = $self->repo_root;
-        require Git::Wrapper;
-        my $git = Git::Wrapper->new($root);
         $git->pull({ ff_only => 1 }, $remote, 'master');
         if (my $exp = $@) {
             warn $exp->error, "\n";
@@ -1128,6 +1125,47 @@ sub find_file_by_path {
         return $file;
     }
 }
+
+=head2 git
+
+Return the Git::Wrapper object bound to the repo (or undef if it's not under git).
+
+=cut
+
+sub git {
+    my $self = shift;
+    return unless $self->repo_is_under_git;
+    my $root = $self->repo_root;
+    require Git::Wrapper;
+    my $git = Git::Wrapper->new($root);
+    return $git;
+}
+
+
+
+=head2 remote_gits
+
+Return a list of remote gits found in the repo.
+
+=cut
+
+sub remote_gits {
+    my $self = shift;
+    my $git = $self->git;
+    return unless $git;
+    my @remotes = $git->remote('-v');
+    my @out;
+    foreach my $remote (@remotes) {
+        my ($name, $url, $action) = split(/\s+/, $remote, 3);
+        if ($action =~ m/fetch/) {
+            push @out, { name => $name,
+                         url => $url,
+                         action => $action };
+        }
+    }
+    return @out;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

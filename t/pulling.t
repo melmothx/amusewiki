@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 33;
+use Test::More tests => 34;
 
 use File::Path qw/make_path remove_tree/;
 use File::Slurp qw/write_file/;
@@ -30,6 +30,19 @@ my $remote = Git::Wrapper->new($remotedir);
 $remote->init({ bare => 1 });
 
 $git->remote(add => origin => $remotedir);
+
+
+my @remotes = $site->remote_gits;
+is_deeply(\@remotes, [
+                      {
+                       name => 'origin',
+                       url => $remotedir,
+                       action => '(fetch)',
+                      }
+                     ], "Found remotes");
+
+
+
 
 $git->push(origin => 'master');
 

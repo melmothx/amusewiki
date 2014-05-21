@@ -131,6 +131,15 @@ repo
         └── st/file.{muse,...}
 
 
+Every account can have one remote git from which the user can pull
+from /console (fast-forward only). Root accounts can see all of them
+and pull from anywhere.
+
+The name of the remote have to match the username, so username must
+have sensible values: ASCII only, alphanumeric, no special characters.
+
+** Xapian
+
 The Xapian databases are located in "xapian", with the same schema:
 
 xapian
