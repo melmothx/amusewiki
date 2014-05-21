@@ -6,6 +6,10 @@ blib/*
 inc/*
 pm_to_blib
 sqlite.db
+repo/*
+!repo/0blog0
+!repo/0wiki0
+!repo/README.txt
 repo/*/*/*/*.pdf
 repo/*/*/*/*.tex
 repo/*/*/*/*.html
