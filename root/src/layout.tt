@@ -23,9 +23,8 @@
     <![endif]-->
 
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="[% c.uri_for('/static/css/bootstrap.css') %]" />
+    <link rel="stylesheet" href="[% c.uri_for('/static/css/theme.css') %]" />
     <!-- Latest compiled and minified JavaScript -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
@@ -140,7 +139,7 @@
                      placeholder="[% c.loc('Full text search') %]"
                      name="query" value=""/>
               <div class="input-group-btn">
-                <button type="submit" class="btn btn-info">
+                <button type="submit" class="btn btn-primary">
                   <span class="glyphicon glyphicon-search"></span>
                 </button>
               </div>
