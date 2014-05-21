@@ -9,10 +9,26 @@ use File::Spec;
 use AmuseWikiFarm::Schema;
 use Data::Dumper;
 use File::Copy;
+use File::Path qw/make_path/;
+use File::Slurp qw/write_file/;
+
+use lib File::Spec->catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my $site = $schema->resultset('Site')->find('0blog0');
+create_site($schema, '0editing0');
+
+my $site = $schema->resultset('Site')->find('0editing0');
+
+my $existing_path = File::Spec->catdir($site->repo_root, qw/d dt/);
+my $existing = File::Spec->catfile($existing_path, 'deleted-text.muse');
+
+make_path($existing_path) or die $!;
+
+write_file($existing, "#title deleted\n#DELETED test\n\nblaksldfal");
+
+$site->index_file($existing);
 
 
 # get the params
