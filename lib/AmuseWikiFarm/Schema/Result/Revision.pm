@@ -166,7 +166,7 @@ use File::Spec;
 use File::Copy qw/copy move/;
 use Digest::SHA;
 
-use File::Slurp qw/read_file/;
+use File::Slurp qw/read_file append_file/;
 use File::MimeInfo::Magic qw/mimetype/;
 use Text::Amuse;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
@@ -177,9 +177,6 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
 use Text::Amuse::Functions qw/muse_fast_scan_header/;
 use Text::Amuse::Preprocessor::Typography qw/get_typography_filter/;
 use Text::Amuse::Compile;
-use Git::Wrapper;
-
-
 
 =head2 muse_body
 
@@ -604,7 +601,7 @@ Procedure:
 =cut
 
 sub publish_text {
-    my $self = shift;
+    my ($self, $logfile) = @_;
 
     my %files = $self->destination_paths;
 
@@ -624,10 +621,7 @@ sub publish_text {
     # first process the muse file
     die "muse file not found in " . $self->id unless $muse;
 
-    my $git;
-    if ($self->site->repo_is_under_git) {
-        $git = Git::Wrapper->new($self->site->repo_root);
-    }
+    my $git = $self->site->git;
     my $revid = $self->id;
 
     if ($git and -f $self->original_html) {
@@ -667,10 +661,26 @@ sub publish_text {
     }
 
     my $compiler = Text::Amuse::Compile->new($self->site->compile_options);
+    if ($logfile) {
+        my $logger = sub {
+            append_file($logfile, @_);
+        };
+        $compiler->logger($logger);
+    }
+    my $failure;
+    $compiler->report_failure_sub(sub { $failure = 1 });
     $compiler->compile($muse);
+
     foreach my $f (values %files) {
         $self->site->index_file($f);
     }
+
+    if ($failure) {
+        my $failed = $self->site->titles->find({ uri => $self->muse_uri });
+        $failed->status('deleted');
+        $failed->deleted(q{Document has errors and couldn't be compiled});
+    }
+
     $self->site->collation_index;
     $self->status('published');
     $self->update;

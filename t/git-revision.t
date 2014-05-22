@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 16;
+use Test::More tests => 17;
 
 use AmuseWikiFarm::Schema;
 use Git::Wrapper;
@@ -11,6 +11,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use File::Slurp qw/write_file read_file/;
 use File::Path qw/make_path remove_tree/;
 use Data::Dumper;
+use File::Temp;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -112,8 +113,13 @@ is read_file($revision->original_html,
   qq{<p>http://my.org My "precious"</p>\n},
   "Body filtered from \r";
 
+my $tmpfh = File::Temp->new;
+my $tmpfile = $tmpfh->filename;
+diag "Logging in $tmpfile";
+$uri = $revision->publish_text($tmpfile);
+my $logged = read_file($tmpfile);
 
-$uri = $revision->publish_text;
+ok ($logged, "Found log: " . $logged);
 
 ok ($uri);
 
