@@ -46,7 +46,7 @@ requires 'Catalyst::Model::Adaptor';
 
 # our own dogfood
 requires 'Text::Amuse' => 0.11;
-requires 'Text::Amuse::Compile' => 0.14;
+requires 'Text::Amuse::Compile' => 0.16;
 requires 'Text::Amuse::Preprocessor' => 0.07;
 
 # devel things to be removed at the end of the development cycle
