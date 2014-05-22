@@ -8,9 +8,13 @@
 #notes Note: This is just a test, however.
 
 
+** first chapter
+
 My first test
 
 [[f-t-testimage.png]]
+
+** second chapter
 
 Done with Catalyst
 
