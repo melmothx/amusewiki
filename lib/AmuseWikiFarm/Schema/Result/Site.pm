@@ -1071,18 +1071,24 @@ sub _repo_git_action {
     my @out;
     if (my $git = $self->git) {
         $remote ||= 'origin';
+        my $fatal;
         if ($action eq 'push') {
             eval {
                 @out = $git->push($remote, 'master');
             };
+            $fatal = $@;
         }
         elsif ($action eq 'pull') {
             eval {
                 @out = $git->pull({ ff_only => 1 }, $remote, 'master');
             };
+            $fatal = $@;
         }
         else {
             die "Bad usage $action";
+        }
+        if ($fatal) {
+            push @out, $fatal->error;
         }
         if (my $err = $git->ERR) {
             push @out, @$err;

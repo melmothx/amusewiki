@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 3;
+use Test::More tests => 9;
 use Data::Dumper;
 use File::Spec::Functions qw/catdir/;
 
@@ -29,6 +29,15 @@ $git->push(origin => 'master');
 
 foreach my $r (qw/marco pippo pluto/) {
     $git->remote(add => $r => "git://localhost/$r/test.git");
+    my @out;
+    eval { @out = $git->pull($r, 'master') };
+    my $fatal = $@;
+    my $output = $fatal->error;
+    ok($output, "Found $output");
+    eval { @out = $git->push($r, 'master') };
+    $fatal = $@;
+    $output = $fatal->error;
+    ok ($output, "Found $output");
 }
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',

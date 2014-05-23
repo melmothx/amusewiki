@@ -208,7 +208,6 @@ sub logs {
     my $self = shift;
     my $file = $self->log_file;
     if (-f $file) {
-        warn "Slurping $file\n";
         my $log = read_file($file => { binmode => ':encoding(UTF-8)' });
         # obfuscate the current directory
         my $cwd = getcwd();
