@@ -17,6 +17,10 @@ server {
 		expires max;
 	}
 	location @proxy {
+    # or
+    # include /etc/nginx/fastcgi_params;
+    # fastcgi_param SCRIPT_NAME '';
+    # fastcgi_param PATH_INFO   $fastcgi_script_name;
 		include proxy_params;
 		proxy_pass http://127.0.0.1:5001;
 	}
