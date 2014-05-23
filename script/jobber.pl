@@ -49,20 +49,21 @@ while (1) {
         eval {
             $output = $handler->($job);
         };
-        if (!$@ && $output) {
+        if ($@) {
+            $job->status('failed');
+            $job->errors($@);
+        }
+        else {
             $job->completed(DateTime->now);
             $job->status('completed');
             $job->produced($output);
-        }
-        else {
-            $job->status('failed');
-            $job->errors($@);
         }
     }
     else {
         print "No handler found for " . $job->task . "\n";
         $job->status('pending');
     }
+    chdir $cwd or die $!;
     $job->update;
 }
 
@@ -70,43 +71,32 @@ sub publish {
     my $j = shift;
     my $data = from_json($j->payload);
     print Dumper($data);
-    $schema->resultset('Revision')->find($data->{id})->publish_text($j->log_file);
+    $schema->resultset('Revision')->find($data->{id})->publish_text($j->logger);
 }
 
 sub git_actions {
     my $j = shift;
     my $data = from_json($j->payload);
+    my $logger = $j->logger;
     print Dumper($data);
     my $site = $j->site;
     my $remote = $data->{remote};
     my $action = $data->{action};
     my $validate = $j->site->remote_gits_hashref;
     die "Couldn't validate" unless $validate->{$remote}->{$action};
-    my @output;
     if ($action eq 'fetch') {
-        @output = $j->site->repo_git_pull($remote);
-        $j->site->update_db_from_tree;
+        $j->site->repo_git_pull($remote, $logger);
+        $j->site->update_db_from_tree($logger);
     }
     elsif ($action eq 'push') {
-        @output = $j->site->repo_git_push($remote);
+        $j->site->repo_git_push($remote, $logger);
     }
     else {
         die "Unhandled action!";
     }
-    print Dumper(\@output);
     return 1;
 }
 
-sub git_push {
-    my $j = shift;
-    my $data = from_json($j->payload);
-    print Dumper($data);
-    my $site = $j->site;
-    my $remote = $data->{remote};
-    # enforce the remote passing
-    die "No remote repo provided" unless $remote;
-    $j->site->repo_git_push($remote);
-}
 
 # TODO this one should be moved in Archive::BookBuilder, or in
 # archive, so it should know how to handle the options. It also lacks
@@ -114,7 +104,7 @@ sub git_push {
 sub bookbuilder {
     my $j = shift;
     my $data = from_json($j->payload);
-
+    my $logger = $j->logger;
     print Dumper($data);
     # first, get the text list
     my $textlist = $data->{text_list};
@@ -158,11 +148,7 @@ sub bookbuilder {
             copy($zip, $basedir) or die $!;
         }
     }
-    unless (@texts) {
-        $j->errors('No text found!');
-        $j->status('rejected');
-        return;
-    }
+    die "No text found!" unless @texts;
 
     chdir $basedir;
     # extract the archives
@@ -177,11 +163,15 @@ sub bookbuilder {
         undef $zip;
         unlink $zipfile or die $!;
     }
-
+    my @warnings;
+    local $SIG{__WARN__} = sub {
+        push @warnings, @_;
+    };
     my $compiler = Text::Amuse::Compile->new(
                                              tex => 1,
                                              pdf => 1,
                                              extra => $template_opts,
+                                             logger => $logger,
                                             );
     print $compiler->version;
 
@@ -221,5 +211,8 @@ sub bookbuilder {
         copy($imposer->outfile, $outfile);
     }
     copy($outfile, $jobdir);
+    if (@warnings) {
+        $logger->(@warnings);
+    }
     return $outfile;
 }

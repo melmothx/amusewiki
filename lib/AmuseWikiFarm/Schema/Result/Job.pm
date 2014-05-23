@@ -156,7 +156,7 @@ use JSON qw/to_json
             from_json/;
 
 use File::Spec;
-use File::Slurp qw/read_file/;
+use File::Slurp qw/read_file append_file/;
 use Cwd;
 
 =head2 as_json
@@ -193,7 +193,7 @@ computed in the current directory, but returned as absolute.
 sub log_file {
     my $self = shift;
     my $dir = File::Spec->catdir(qw/log jobs/);
-    die "We're in the wrong directory" unless -d $dir;
+    die "We're in the wrong directory: " . getcwd()  unless -d $dir;
     my $file = File::Spec->catfile($dir, $self->id . '.log');
     return File::Spec->rel2abs($file);
 }
@@ -218,6 +218,20 @@ sub logs {
     return '';
 }
 
+=head2 logger
+
+Return a sub for logging into C<log_file>
+
+=cut
+
+sub logger {
+    my $self = shift;
+    my $logfile = $self->log_file;
+    my $logger = sub {
+        append_file($logfile, { binmode => ':encoding(utf-8)' }, @_);
+    };
+    return $logger;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

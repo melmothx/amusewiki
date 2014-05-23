@@ -1058,35 +1058,49 @@ Try to push master into the remote git.
 =cut
 
 sub repo_git_pull {
-    my ($self, $remote) = @_;
-    if (my $git = $self->git) {
-        $remote ||= 'origin';
-        eval {
-            $git->pull({ ff_only => 1 }, $remote, 'master');
-        };
-        if (my $exp = $@) {
-            warn $exp->error, "\n";
-            return;
-        }
-    }
-    else {
-        warn "Repo is not under git!\n";
-    }
-    return;
+    shift->_repo_git_action(pull => @_);
 }
 
 sub repo_git_push {
-    my ($self, $remote) = @_;
+    shift->_repo_git_action(push => @_);
+}
+
+sub _repo_git_action {
+    my ($self, $action, $remote, $logger) = @_;
+    die "Wrong usage" unless $action;
+    my @out;
     if (my $git = $self->git) {
         $remote ||= 'origin';
-        eval {
-            $git->push($remote, 'master');
-        };
-        if (my $exp = $@) {
-            warn $exp->error, "\n";
-            return;
+        if ($action eq 'push') {
+            eval {
+                @out = $git->push($remote, 'master');
+            };
+        }
+        elsif ($action eq 'pull') {
+            eval {
+                @out = $git->pull({ ff_only => 1 }, $remote, 'master');
+            };
+        }
+        else {
+            die "Bad usage $action";
+        }
+        if (my $err = $git->ERR) {
+            push @out, @$err;
         }
     }
+    else {
+        push @out, "Not under git!";
+    }
+    if (@out) {
+        @out = map { $_ . "\n" } @out;
+        if ($logger) {
+            $logger->(@out);
+        }
+        else {
+            print @out;
+        }
+    }
+    return;
 }
 
 =head3 update_db_from_tree
@@ -1099,7 +1113,7 @@ TODO: logging
 =cut
 
 sub update_db_from_tree {
-    my $self = shift;
+    my ($self, $logger) = @_;
     my $todo = $self->repo_find_changed_files;
 
     # first delete
@@ -1112,13 +1126,28 @@ sub update_db_from_tree {
         }
     }
     my $compiler = Text::Amuse::Compile->new($self->compile_options);
+    if ($logger) {
+        $compiler->logger($logger);
+    }
     foreach my $new (sort @{ $todo->{new} }, @{ $todo->{changed} }) {
         my $file = File::Spec->catfile($self->repo_root, $new);
         print "Indexing $file\n";
         $self->index_file($file);
+        my $failure = 0;
+        $compiler->report_failure_sub(sub {  $failure = 1 });
         if ($new =~ m/\.muse$/) {
             print "Compiling $new\n";
             $compiler->compile($file);
+        }
+        if ($failure) {
+            my $failed = $self->titles->find({ f_full_path_name => $file });
+            if ($failed) {
+                $failed->status('deleted');
+                $failed->deleted(q{Document has errors and couldn't be compiled});
+            }
+            else {
+                warn "Couldn't find $file in the db\n";
+            }
         }
     }
     $self->collation_index;

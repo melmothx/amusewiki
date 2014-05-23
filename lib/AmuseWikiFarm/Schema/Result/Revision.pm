@@ -601,7 +601,7 @@ Procedure:
 =cut
 
 sub publish_text {
-    my ($self, $logfile) = @_;
+    my ($self, $logger) = @_;
 
     my %files = $self->destination_paths;
 
@@ -661,10 +661,7 @@ sub publish_text {
     }
 
     my $compiler = Text::Amuse::Compile->new($self->site->compile_options);
-    if ($logfile) {
-        my $logger = sub {
-            append_file($logfile, @_);
-        };
+    if ($logger) {
         $compiler->logger($logger);
     }
     my $failure;
