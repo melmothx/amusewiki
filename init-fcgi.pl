@@ -27,7 +27,7 @@ my $socket = File::Spec->catfile($vardir, 'amw.sock');
 die "Don't run as root!" unless $uid && $gid;
 
 Daemon::Control->new({
-                      name => "AmuseWiki",
+                      name => "amusewiki-webapp",
                       lsb_start   => '$syslog $remote_fs',
                       lsb_stop    => '$syslog',
                       lsb_sdesc   => 'AmuseWiki',
