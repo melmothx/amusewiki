@@ -8,9 +8,9 @@ $(document).ready(function(){
     $(".center p").removeClass("text-justify").addClass("text-center");
     $(".right p").removeClass("text-justify").addClass("text-right");
     if ($("div.table-of-contents").length > 0) {
-        $("div.table-of-contents").addClass("col-md-3");
-        $("div.table-of-contents").addClass("well");
-        $("div#thework").addClass("col-md-9");
+        $(".hidden-when-no-toc").show();
+        $("div.table-of-contents").clone().appendTo("#pop-up-toc");
+        $("div.table-of-contents").addClass("well well-lg");
     }
     else {
         $("div#thework").addClass("col-md-12");

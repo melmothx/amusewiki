@@ -1,5 +1,20 @@
 [% # -*- mode: html -*- %]
 
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">
+          [% c.loc("Table of Contents") %]
+        </h4>
+      </div>
+      <div class="modal-body" id="pop-up-toc"></div>
+    </div>
+  </div>
+</div>
+
 <div id="page">
   <div id="preamble-container" class="well">
   <div id="preamble">
@@ -137,12 +152,12 @@
     </div>
   </div>
   </div>
-  <div class="row-fluid center">
+  <div class="center">
   <h2>[% text.author %]</h2>
 
   <h1>[% text.title %]</h1>
   </div>
-  <div id="htmltextbody" class="row-fluid">
+  <div id="htmltextbody" />
     [% text.html_body %]
   </div>
 </div>

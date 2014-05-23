@@ -16,7 +16,9 @@ My first test
 
 ** second chapter
 
+<right>
 Done with Catalyst
+</right>
 
 [[f-t-cata.jpg]]
 

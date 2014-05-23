@@ -7,3 +7,6 @@
 
 This is another test.
 
+<right>
+This is at right
+</right>
