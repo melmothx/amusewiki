@@ -34,6 +34,7 @@ my %handlers = (
                 bookbuilder => \&bookbuilder,
                 publish     => \&publish,
                 pull        => \&git_pull,
+                push        => \&git_push,
                );
 
 while (1) {
@@ -85,6 +86,16 @@ sub git_pull {
     return;
 }
 
+sub git_push {
+    my $j = shift;
+    my $data = from_json($j->payload);
+    print Dumper($data);
+    my $site = $j->site;
+    my $remote = $data->{remote};
+    # enforce the remote passing
+    die "No remote repo provided" unless $remote;
+    $j->site->repo_git_push($remote);
+}
 
 # TODO this one should be moved in Archive::BookBuilder, or in
 # archive, so it should know how to handle the options. It also lacks

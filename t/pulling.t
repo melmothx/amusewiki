@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 34;
+use Test::More tests => 35;
 use Data::Dumper;
 
 use File::Path qw/make_path remove_tree/;
@@ -49,7 +49,12 @@ is_deeply(\@remotes, [
                      ], "Found remotes") or diag Dumper(\@remotes);
 
 
-
+is_deeply $site->remote_gits_hashref, {
+                                       origin => {
+                                                  fetch => $remotedir,
+                                                  push  => $remotedir,
+                                                 },
+                                      }, "Found remotes hashref";
 
 $site->repo_git_push;
 

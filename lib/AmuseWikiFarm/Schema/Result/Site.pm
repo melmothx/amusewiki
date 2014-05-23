@@ -1188,6 +1188,35 @@ sub remote_gits {
     return @out;
 }
 
+=head2 remote_git
+
+Return an hashref (empty hashref is no git or no remotes) with this structure:
+
+ {
+  origin => {
+             fetch => $remotedir,
+             push  => $remotedir,
+            },
+  other => {
+            fetch => $repo,
+           },
+  # ....
+ }
+
+This is used for validation of actions.
+
+=cut
+
+sub remote_gits_hashref {
+    my $self = shift;
+    my @remotes = $self->remote_gits;
+    my $out = {};
+    foreach my $remote (@remotes) {
+        $out->{$remote->{name}}->{$remote->{action}} = $remote->{url};
+    }
+    return $out;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 
