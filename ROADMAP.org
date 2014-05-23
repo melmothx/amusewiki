@@ -129,7 +129,8 @@ I.e., not site specific. Example: basedir.
 
 This is unclear if needed
 
-** TODO updating from remote gits
+** DONE updating from remote gits
+   CLOSED: [2014-05-23 ven 13:32]
 
 This is related to the bootstrapping with the mass compile.
 
