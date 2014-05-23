@@ -31,5 +31,6 @@ root/static/js/ckeditor*
 specials/0blog0/*
 staging/*
 !staging/README.txt
+log/jobs/*.log
 *~
 
