@@ -55,7 +55,23 @@ sub console :Chained('root') :PathPart('') :Args(0) {
 sub git :Chained('root') :PathPart('git') :Args(0) {
     my ($self, $c) = @_;
     # TODO push the task and redirect to the task monitor
-    $c->response->redirect($c->uri_for_action('console/console'));
+    my $remote = $c->request->params->{remote};
+    my $action = $c->request->params->{action};
+    if ($remote && $action && $c->stash->{repo_validation}->{$remote}->{$action}) {
+        my $payload = {
+                       remote => $remote,
+                       action => $action,
+                      };
+        my $jid = $c->model('Queue')->add_job(git => $c->stash->{site}->id,
+                                              $payload);
+        $c->res->redirect($c->uri_for_action('/tasks/display',
+                                             [$jid]));
+
+    }
+    else {
+        $c->flash(error_msg => "Bad request! Please report this incident");
+        $c->response->redirect($c->uri_for_action('console/console'));
+    }
 }
 
 

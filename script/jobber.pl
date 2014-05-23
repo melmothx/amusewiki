@@ -33,8 +33,7 @@ print "Starting job server loop in $cwd\n";
 my %handlers = (
                 bookbuilder => \&bookbuilder,
                 publish     => \&publish,
-                pull        => \&git_pull,
-                push        => \&git_push,
+                git        => \&git_actions,
                );
 
 while (1) {
@@ -74,16 +73,28 @@ sub publish {
     $schema->resultset('Revision')->find($data->{id})->publish_text;
 }
 
-sub git_pull {
+sub git_actions {
     my $j = shift;
     my $data = from_json($j->payload);
     print Dumper($data);
     my $site = $j->site;
     my $remote = $data->{remote};
-    # enforce the remote passing
-    die "No remote repo provided" unless $remote;
-    $j->site->repo_git_pull($remote);
-    return;
+    my $action = $data->{action};
+    my $validate = $j->site->remote_gits_hashref;
+    die "Couldn't validate" unless $validate->{$remote}->{$action};
+    my @output;
+    if ($action eq 'fetch') {
+        @output = $j->site->repo_git_pull($remote);
+        $j->site->update_db_from_tree;
+    }
+    elsif ($action eq 'push') {
+        @output = $j->site->repo_git_push($remote);
+    }
+    else {
+        die "Unhandled action!";
+    }
+    print Dumper(\@output);
+    return 1;
 }
 
 sub git_push {

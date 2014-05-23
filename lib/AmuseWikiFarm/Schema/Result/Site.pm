@@ -1079,7 +1079,6 @@ sub repo_git_push {
     my ($self, $remote) = @_;
     if (my $git = $self->git) {
         $remote ||= 'origin';
-        $git->push($remote, 'master');
         eval {
             $git->push($remote, 'master');
         };
