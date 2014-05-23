@@ -1,10 +1,3 @@
-$(window).on('hashchange', function(){
-    if (location.hash) {
-        $('body').animate({
-            scrollTop: $(location.hash).offset().top - $('#navbar').outerHeight(true)*1.2 }, 1);
-    }
-});
-
 
 $(document).ready(function(){
     $("p").each(function(i) {
@@ -25,3 +18,7 @@ $(document).ready(function(){
     }
 });
 $(document).ready(function(){$(window).trigger('hashchange')});
+
+var shiftWindow = function() { scrollBy(0, -70) };
+if (location.hash) shiftWindow();
+window.addEventListener("hashchange", shiftWindow);
