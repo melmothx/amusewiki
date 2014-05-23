@@ -8,7 +8,7 @@ use Test::More tests => 17;
 use AmuseWikiFarm::Schema;
 use Git::Wrapper;
 use File::Spec::Functions qw/catfile catdir/;
-use File::Slurp qw/write_file read_file/;
+use File::Slurp qw/write_file read_file append_file/;
 use File::Path qw/make_path remove_tree/;
 use Data::Dumper;
 use File::Temp;
@@ -116,7 +116,7 @@ is read_file($revision->original_html,
 my $tmpfh = File::Temp->new;
 my $tmpfile = $tmpfh->filename;
 diag "Logging in $tmpfile";
-$uri = $revision->publish_text($tmpfile);
+$uri = $revision->publish_text(sub { append_file($tmpfile, @_) });
 my $logged = read_file($tmpfile);
 
 ok ($logged, "Found log: " . $logged);
