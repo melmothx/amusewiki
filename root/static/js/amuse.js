@@ -1,3 +1,11 @@
+$(window).on('hashchange', function(){
+    if (location.hash) {
+        $('body').animate({
+            scrollTop: $(location.hash).offset().top - $('#navbar').outerHeight(true)*1.2 }, 1);
+    }
+});
+
+
 $(document).ready(function(){
     $("p").each(function(i) {
         if(!$(this).attr('class')) {
@@ -16,3 +24,4 @@ $(document).ready(function(){
         $("div#thework").addClass("col-md-12");
     }
 });
+$(document).ready(function(){$(window).trigger('hashchange')});
