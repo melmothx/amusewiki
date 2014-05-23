@@ -14,15 +14,6 @@ div#preamble {
     text-indent: -1em;
 }
 
-div.table-of-contents {
-    margin-top: 20px;
-    margin-bottom: 40px;
-    border: 1px solid black;
-    background-color: #eee;
-    margin-right: 0px;
-    max-width: 400px;
-}
-
 p.tableofcontentline {
     margin: 0px 3px;
 }

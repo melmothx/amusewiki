@@ -1,6 +1,7 @@
 [% # -*- mode: html -*- %]
 
 <div id="page">
+  <div id="preamble-container" class="well">
   <div id="preamble">
     <p id="texttitle">
       <strong>[% c.loc('Title') %]:</strong>
@@ -135,12 +136,13 @@
       [% END %]
     </div>
   </div>
-
+  </div>
+  <div class="row-fluid center">
   <h2>[% text.author %]</h2>
 
   <h1>[% text.title %]</h1>
-
-  <div id="htmltextbody">
+  </div>
+  <div id="htmltextbody" class="row-fluid">
     [% text.html_body %]
   </div>
 <hr />
