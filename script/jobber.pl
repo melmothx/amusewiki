@@ -70,7 +70,7 @@ sub publish {
     my $j = shift;
     my $data = from_json($j->payload);
     print Dumper($data);
-    $schema->resultset('Revision')->find($data->{id})->publish_text;
+    $schema->resultset('Revision')->find($data->{id})->publish_text($j->log_file);
 }
 
 sub git_actions {

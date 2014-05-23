@@ -156,6 +156,8 @@ use JSON qw/to_json
             from_json/;
 
 use File::Spec;
+use File::Slurp qw/read_file/;
+use Cwd;
 
 =head2 as_json
 
@@ -176,6 +178,7 @@ sub as_json {
                   priority => $self->priority,
                   produced => $self->produced,
                   errors   => $self->errors,
+                  logs     => $self->logs,
                  };
     return to_json($struct);
 }
@@ -194,6 +197,27 @@ sub log_file {
     my $file = File::Spec->catfile($dir, $self->id . '.log');
     return File::Spec->rel2abs($file);
 }
+
+=head2 logs
+
+Return the content of the log file.
+
+=cut
+
+sub logs {
+    my $self = shift;
+    my $file = $self->log_file;
+    if (-f $file) {
+        warn "Slurping $file\n";
+        my $log = read_file($file => { binmode => ':encoding(UTF-8)' });
+        # obfuscate the current directory
+        my $cwd = getcwd();
+        $log =~ s/$cwd/./g;
+        return $log;
+    }
+    return '';
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

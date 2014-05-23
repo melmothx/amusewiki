@@ -58,7 +58,7 @@
 </div>
 <pre class="bbstatus failed errors" style="display:none">
 </pre>
-
+<pre id="job-logs">[% job.logs %]</pre>
 <div id="debug"></div>
 
 <script src="[% c.uri_for('/static/js/queue.js') %]"></script>

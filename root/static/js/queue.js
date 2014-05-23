@@ -7,6 +7,7 @@ var JobStatus = '';
 function update_status(url) {
     $.getJSON(url, function(data) {
         console.log(data.status);
+        $('pre#job-logs').text(data.logs);
         if ((data.status == 'pending') ||
             (data.status == 'taken')) {
             var funct = 'update_status("' + url + '")';
