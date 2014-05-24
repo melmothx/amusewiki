@@ -153,9 +153,13 @@
   </div>
   </div>
   <div class="center">
-  <h2>[% text.author %]</h2>
-
-  <h1>[% text.title %]</h1>
+    [% IF text.author %]
+    <h3 id="text-author">[% text.author %]</h3>
+    [% END %]
+    <h1 id="text-title">[% text.title %]</h1>
+    [% IF text.subtitle %] 
+    <h2 id="text-subtitle">[% text.subtitle %]</h2>
+    [% END %]
   </div>
   <div id="htmltextbody" />
     [% text.html_body %]
