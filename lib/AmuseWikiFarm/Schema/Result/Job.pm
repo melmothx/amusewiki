@@ -152,12 +152,24 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 13:43:57
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OtIcCassMd3LqfX1YQUvBg
 
+use Cwd;
+use Data::Dumper;
+
+
+use File::Spec;
+use File::Temp;
+use File::Copy;
+
+use File::Slurp qw/read_file append_file/;
+use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
+
+use DateTime;
 use JSON qw/to_json
             from_json/;
 
-use File::Spec;
-use File::Slurp qw/read_file append_file/;
-use Cwd;
+use Text::Amuse::Compile;
+use PDF::Imposition;
+
 
 =head2 as_json
 
@@ -231,6 +243,228 @@ sub logger {
     };
     return $logger;
 }
+
+=head2 dispatch_job
+
+Inspect the content of the job and do it. This is the main method to
+trigger a job.
+
+=cut
+
+sub dispatch_job {
+    my $self = shift;
+    my $task = $self->task;
+    my $handlers = $self->result_source->resultset->handled_jobs_hashref;
+    if ($handlers->{$task}) {
+        my $method = "dispatch_job_$task";
+        my $logger = $self->logger;
+        $logger->("Job $task started at " . localtime() . "\n");
+        my $output;
+        # catch the warns
+        my @warnings;
+        local $SIG{__WARN__} = sub {
+            push @warnings, @_;
+        };
+        eval {
+            $output = $self->$method($logger);
+        };
+        if ($@) {
+            $self->status('failed');
+            $self->errors($@);
+        }
+        else {
+            $self->completed(DateTime->now);
+            $self->status('completed');
+            $self->produced($output);
+        }
+        if (@warnings) {
+            $logger->("WARNINGS intercepted: ", @warnings);
+        }
+        $logger->("Job $task finished at " . localtime() . "\n");
+    }
+    else {
+        warn "No handler found for $task!\n";
+        $self->status('failed');
+        $self->errors("No handler found for $task!\n");
+    }
+    $self->update;
+}
+
+=head2 job_data
+
+Return the deserialized payload, or an empty hashref.
+
+=cut
+
+sub job_data {
+    my $self = shift;
+    my $payload = $self->payload;
+    return {} unless $payload;
+    return from_json($payload);
+}
+
+=head2 DISPATCHERS
+
+=head3 dispatch_job_publish
+
+Publish the revision
+
+=head3 dispatch_job_testing
+
+Dummy method
+
+=head3 dispatch_job_git
+
+Git push/pull
+
+=head3 dispatch_job_bookbuilder
+
+Bookbuilder job.
+
+=cut
+
+
+sub dispatch_job_publish {
+    my ($self, $logger) = @_;
+    my $id = $self->job_data->{id};
+    return $self->site->revisions->find($id)->publish_text($logger);
+}
+
+sub dispatch_job_git {
+    my ($self, $logger) = @_;
+    my $data = $self->job_data;
+    my $site = $self->site;
+    my $remote = $data->{remote};
+    my $action = $data->{action};
+    my $validate = $site->remote_gits_hashref;
+    die "Couldn't validate" unless $validate->{$remote}->{$action};
+    if ($action eq 'fetch') {
+        $site->repo_git_pull($remote, $logger);
+        $site->update_db_from_tree($logger);
+    }
+    elsif ($action eq 'push') {
+        $site->repo_git_push($remote, $logger);
+    }
+    else {
+        die "Unhandled action $action!";
+    }
+    return 1;
+}
+
+sub dispatch_job_bookbuilder {
+    my ($self, $logger) = @_;
+    my $data = $self->job_data;
+    my $jobdir = File::Spec->catdir(qw/root custom/);
+    $jobdir =    File::Spec->rel2abs($jobdir);
+    die "In the wrong dir: " . getcwd() unless -d $jobdir;
+    
+    print Dumper($data);
+    # first, get the text list
+    my $textlist = $data->{text_list};
+
+    print $self->site->id, "\n";
+
+    my %compile_opts = $self->site->compile_options;
+    my $template_opts = $compile_opts{extra};
+
+    # overwrite the site ones with the user-defined (and validated)
+    foreach my $k (keys %{ $data->{template_options} }) {
+        $template_opts->{$k} = $data->{template_options}->{$k};
+    }
+
+    print Dumper($template_opts);
+
+    my $bbdir    = File::Temp->newdir(CLEANUP => 0);
+    my $basedir = $bbdir->dirname;
+
+    print "Created $basedir\n";
+
+    my %archives;
+
+    # validate the texts passed looking up the uri in the db
+    my @texts;
+    foreach my $text (@$textlist) {
+        my $title = $self->site->titles->by_uri($text);
+        next unless $title;
+
+        push @texts, $text;
+        if ($archives{$text}) {
+            next;
+        }
+        else {
+            $archives{$text}++;
+        }
+
+        # pick and copy the zip in the temporary dir
+        my $zip = $title->filepath_for_ext('zip');
+        if (-f $zip) {
+            copy($zip, $basedir) or die $!;
+        }
+    }
+    die "No text found!" unless @texts;
+
+    chdir $basedir;
+    # extract the archives
+    foreach my $i (keys %archives) {
+        my $zipfile = $i . '.zip';
+        my $zip = Archive::Zip->new;
+        unless ($zip->read($zipfile) == AZ_OK) {
+            warn "Couldn't read $i.zip";
+            next;
+        }
+        $zip->extractTree($i);
+        undef $zip;
+        unlink $zipfile or die $!;
+    }
+    my $compiler = Text::Amuse::Compile->new(
+                                             tex => 1,
+                                             pdf => 1,
+                                             extra => $template_opts,
+                                             logger => $logger,
+                                            );
+    print $compiler->version;
+
+    my $outfile = $self->id . '.pdf';
+
+    if (@texts == 1) {
+        my $basename = shift(@texts);
+        my $pdfout   = $basename . '.pdf';
+        $compiler->compile($basename . '.muse');
+        if (-f $pdfout) {
+            move($pdfout, $outfile) or die "Couldn't move $pdfout to $outfile";
+        }
+    }
+    else {
+        my $target = {
+                      path => $basedir,
+                      files => \@texts,
+                      name => $self->id,
+                      title => $data->{title},
+                     };
+        # compile
+        $compiler->compile($target);
+    }
+
+    die "$outfile not produced!\n" unless (-f $outfile);
+
+    # imposing needed?
+    if ($data->{imposer_options} and %{$data->{imposer_options}}) {
+
+        my %args = %{$data->{imposer_options}};
+        $args{file}    =  $outfile;
+        $args{outfile} = $self->id. '.imp.pdf';
+        $args{suffix}  = 'imp';
+        my $imposer = PDF::Imposition->new(%args);
+        $imposer->impose;
+        # overwrite the original pdf, we can get another one any time
+        copy($imposer->outfile, $outfile) or die "Copy to $outfile failed $!";
+    }
+    copy($outfile, $jobdir) or die "Copy $outfile to $jobdir failed $!";
+    return $outfile;
+}
+
+
+
 
 __PACKAGE__->meta->make_immutable;
 1;

@@ -8,16 +8,6 @@ use base 'DBIx::Class::ResultSet';
 use DateTime;
 use JSON qw/to_json from_json/;
 
-sub _handled_jobs {
-    return qw/testing publish git bookbuilder/;
-}
-
-sub _handled_jobs_hashref {
-    my $self = shift;
-    my %hash = map { $_ => 1 } $self->_handled_jobs;
-    return \%hash;
-}
-
 =head1 NAME
 
 AmuseWikiFarm::Schema::ResultSet::Job
@@ -34,6 +24,10 @@ throwing exceptions everywhere.
 
 =head1 METHODS
 
+=head2 handled_jobs_hashref
+
+Return a hashref with the handled jobs as keys and true as value.
+
 =head2 enqueue($task, $payload, $priority)
 
 Enqueye the task C<$task>, with the payload C<$payload>, at priority
@@ -43,13 +37,23 @@ $payload must be an hashref.
 
 =cut
 
+sub _handled_jobs {
+    return qw/testing publish git bookbuilder/;
+}
+
+sub handled_jobs_hashref {
+    my $self = shift;
+    my %hash = map { $_ => 1 } $self->_handled_jobs;
+    return \%hash;
+}
+
 sub enqueue {
     my ($self, $task, $payload, $priority) = @_;
 
     # validate
     die "Missing task and/or payload: $task $payload" unless $task && $payload;
     die unless (ref($payload) && (ref($payload) eq 'HASH'));
-    die "Unhandled job $task" unless $self->_handled_jobs_hashref->{$task};
+    die "Unhandled job $task" unless $self->handled_jobs_hashref->{$task};
 
     my $insertion = {
                      task    => $task,
