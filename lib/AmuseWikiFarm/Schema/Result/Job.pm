@@ -357,7 +357,7 @@ sub dispatch_job_bookbuilder {
     my $jobdir = File::Spec->catdir(qw/root custom/);
     $jobdir =    File::Spec->rel2abs($jobdir);
     die "In the wrong dir: " . getcwd() unless -d $jobdir;
-    
+
     print Dumper($data);
     # first, get the text list
     my $textlist = $data->{text_list};
@@ -385,7 +385,10 @@ sub dispatch_job_bookbuilder {
     my @texts;
     foreach my $text (@$textlist) {
         my $title = $self->site->titles->by_uri($text);
-        next unless $title;
+        unless ($title) {
+            warn "Couldn't find $text\n";
+            next;
+        }
 
         push @texts, $text;
         if ($archives{$text}) {
