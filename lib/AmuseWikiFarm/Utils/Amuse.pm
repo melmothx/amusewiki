@@ -666,7 +666,7 @@ sub muse_filepath_is_valid {
     }
     # then process the regular files.
     if (@dirs != 2) {
-        # warn "$relpath not two levels down\n";
+        warn "$relpath not two levels down\n";
         return;
     }
     # file with no hyphens, pick the first and the last
@@ -674,17 +674,20 @@ sub muse_filepath_is_valid {
         if ($dirs[0] eq $1 and $dirs[1] eq "$1$2") {
             return $relpath;
         }
-        # else {
-        #     warn "$relpath in the wrong path!";
-        # }
+        else {
+            warn "$relpath in the wrong path!\n";
+        }
     }
     elsif ($name =~ m/^([0-9a-z])[0-9a-z]*-([0-9a-z])[0-9a-z-]*[0-9a-z]$/s) {
         if ($dirs[0] eq $1 and $dirs[1] eq "$1$2") {
             return $relpath;
         }
-        # else {
-        #     warn "$relpath in the wrong path!";
-        # }
+        else {
+            warn "$relpath in the wrong path!\n";
+        }
+    }
+    else {
+        warn "Checking of $relpath failed\n";
     }
     # catch all and return false
     return;
