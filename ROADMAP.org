@@ -188,6 +188,10 @@ It should run syncronously with a nice -n 19 in an infinite loop with
 a sleep of 10 seconds or so. I guess a query every 10 seconds
 shouldn't be too hard to manage.
 
+*** DONE job daemon killing
+    CLOSED: [2014-05-24 sab 23:53]
+    Intercept the signals and wait for the job to finish before
+    leaving.
 
 *** DONE Add a limit in megabyte to the target text
     CLOSED: [2014-03-23 dom 09:59]
