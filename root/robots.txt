@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /edit/
+Disallow: /bookbuilder/
+Disallow: /bookbuilder
+Disallow: /search
+
