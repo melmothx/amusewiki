@@ -6,7 +6,7 @@
 #pubdate 2014-02-01
 #source Source: My own work
 #notes Note: This is just a test, however.
-
+#subtitle Test subtitle
 
 ** first chapter
 
