@@ -161,7 +161,7 @@
     <h2 id="text-subtitle">[% text.subtitle %]</h2>
     [% END %]
   </div>
-  <div id="htmltextbody" />
+  <div id="htmltextbody">
     [% text.html_body %]
   </div>
 </div>
