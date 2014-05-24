@@ -9,7 +9,6 @@ use lib "$Bin/../lib";
 
 
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm::Archive::Queue;
 use JSON qw/from_json/;
 use Data::Dumper;
 use File::Temp;
@@ -23,7 +22,7 @@ use DateTime;
 
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $queue = AmuseWikiFarm::Archive::Queue->new(dbic => $schema);
+my $queue = $schema->resultset('Job');
 
 my $cwd = getcwd();
 my $jobdir = File::Spec->catdir($cwd, 'root', 'custom');
@@ -39,7 +38,7 @@ my %handlers = (
 while (1) {
     chdir $cwd or die $!;
     sleep 3;
-    my $job = $queue->get_job;
+    my $job = $queue->dequeue;
     next unless $job;
     print "Dispatching " . $job->id;
     print $job->status, " => ", $job->task, "\n";

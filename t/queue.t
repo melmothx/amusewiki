@@ -6,23 +6,31 @@ use utf8;
 use Test::More tests => 15;
 use Data::Dumper;
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm::Archive::Queue;
 use JSON qw/from_json/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $queue = AmuseWikiFarm::Archive::Queue->new(dbic => $schema);
+my $site = $schema->resultset('Site')->find('0blog0');
 
-ok($queue);
+my $j = $site->jobs->enqueue(testing => {});
 
-my $late = $queue->add_job(testing => '0blog0' => { this => 0, test => 'òć' }, 9);
+is $j->site->id, '0blog0';
+
+eval {
+    $schema->resultset('Job')->enqueue(testing => {});
+};
+
+ok("Adding jobs without a site triggers an exception");
+
+my $late = $site->jobs->enqueue(testing => { this => 0, test => 'òć' }, 9);
 
 sleep 1;
 
-my $id = $queue->add_job(testing => '0blog0' => { this => 0, test => 'òć' }, 5);
+my $highpriority = $site->jobs->enqueue(testing => { this => 0, test => 'òć' }, 5);
+my $id = $highpriority->id;
 
 ok($id, "Id is $id");
 
-my $job = $queue->get_job;
+my $job = $site->jobs->dequeue;
 
 ok($job);
 is($job->id, $id);
@@ -46,7 +54,7 @@ is $struct->{id}, $id;
 
 # empty the jobs
 
-while (my $j = $queue->get_job) {
+while (my $j = $site->jobs->dequeue) {
     diag "Got stale job " . $j->id;
 }
 

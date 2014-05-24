@@ -2,6 +2,7 @@
 rm -v sqlite.db
 rm -rfv xapian/{0blog0,0test0}
 rm -rfv staging
+rm v log/jobs/*.log
 git checkout -- staging
 
 if [ "$1" == '--cleanup' ]; then

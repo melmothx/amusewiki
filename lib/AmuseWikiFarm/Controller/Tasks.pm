@@ -45,7 +45,7 @@ sub root :Chained('/') :PathPart('tasks') :CaptureArgs(0) {
 
 sub status :Chained('root') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
-    my $job = $c->model('Queue')->fetch_job_by_id($id);
+    my $job = $c->stash->{site}->jobs->find($id);
     unless ($job) {
         $c->detach('/not_found');
         return;

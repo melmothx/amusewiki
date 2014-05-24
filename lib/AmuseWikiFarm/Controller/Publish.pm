@@ -105,9 +105,9 @@ sub publish :Chained('root') :PathPart('publish') :Args(0) {
                 # found and pending? publish!
                 if ($found && $found->pending) {
                     $c->log->debug("$revid is pending, processing!");
-                    my $job_id = $c->model('Queue')->publish_add($found);
+                    my $job = $c->stash->{site}->jobs->publish_add($found);
                     $c->res->redirect($c->uri_for_action('/tasks/display',
-                                                         [$job_id]));
+                                                         [$job->id]));
                     return;
                 }
             }

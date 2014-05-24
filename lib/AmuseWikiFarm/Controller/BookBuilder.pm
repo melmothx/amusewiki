@@ -87,18 +87,13 @@ sub index :Chained('root') :PathPart('') :Args(0) {
                     imposer_options  => $bb->validate_imposer_options({ %params }),
                    };
 
-        my $queue = $c->model('Queue');
-
-        use Data::Dumper;
-        $c->log->debug(Dumper($data));
-
-        if (my $job_id = $queue->bookbuilder_add($site_id, $data)) {
+        if (my $job = $c->stash->{site}->jobs->bookbuilder_add($data)) {
             # flush the toilet
             $bb->delete_all;
             $c->forward('save_session');
 
             # and redirect to the status page
-            $c->res->redirect($c->uri_for_action('/tasks/display', [$job_id]));
+            $c->res->redirect($c->uri_for_action('/tasks/display', [$job->id]));
         }
         # if we get this, the user cheated and doesn't deserve an explanation
         else {

@@ -59,8 +59,8 @@ sub pending :Local :Args(0) {
         # TODO validate the params
         my $rev = $site->revisions->find($revid);
         if ($rev and $rev->pending) {
-            my $job_id = $c->model('Queue')->publish_add($rev);
-            $c->res->redirect($c->uri_for_action('/tasks/display', [$job_id]));
+            my $job = $c->stash->{site}->jobs->publish_add($rev);
+            $c->res->redirect($c->uri_for_action('/tasks/display', [$job->id]));
             return;
         }
         else {

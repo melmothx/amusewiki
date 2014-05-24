@@ -62,10 +62,10 @@ sub git :Chained('root') :PathPart('git') :Args(0) {
                        remote => $remote,
                        action => $action,
                       };
-        my $jid = $c->model('Queue')->add_job(git => $c->stash->{site}->id,
-                                              $payload);
+        my $job = $c->stash->{site}->jobs->git_action_add($payload);
+
         $c->res->redirect($c->uri_for_action('/tasks/display',
-                                             [$jid]));
+                                             [$job->id]));
 
     }
     else {
