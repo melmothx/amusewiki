@@ -41,7 +41,7 @@ sub create_site {
                                                   })->get_from_storage;
 
     $site->add_to_vhosts({ name => $id . '.amusewiki.org' });
-
+    remove_tree($site->repo_root) if -d $site->repo_root;
     mkdir $site->repo_root or die $!;
 
     my $git = Git::Wrapper->new($site->repo_root);

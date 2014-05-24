@@ -105,7 +105,7 @@ CREATE TABLE page (
 CREATE UNIQUE INDEX unique_page ON page (uri, site_id);
 
 CREATE TABLE job (
-       id INTEGER PRIMARY KEY,
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
        site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        task      VARCHAR(32),
