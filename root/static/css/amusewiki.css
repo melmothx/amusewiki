@@ -14,19 +14,14 @@ div#preamble {
     padding-bottom: 20px;
 }
 
-#tableofcontents p {
-    margin: 3px 1em;
-    text-indent: -1em;
-}
-
 p.tableofcontentline {
-    margin: 0px 3px;
+    margin: 0px 1em;
+    text-indent: -1em;
 }
 
 p.tableofcontentline a{
     color: black;
 }
-
 
 div#htmltextbody {
     margin-top: 40px;
