@@ -68,8 +68,24 @@ The main route to create a new text from scratch
 
 sub root :Chained('/') :PathPart('') :CaptureArgs(0) {}
 
-sub newtext :Chained('root') :PathPart('new') :Args(0) {
-    my ($self, $c) = @_;
+sub newtext :Chained('root') :PathPart('new') :Args(1) {
+    my ($self, $c, $f_class) = @_;
+
+    # validate
+    unless ($f_class eq 'text' or $f_class eq 'special') {
+        $c->detach('/not_found');
+        return;
+    }
+
+    # but only users can edit special pages
+    if ($f_class eq 'special') {
+        unless ($c->user_exists) {
+            $c->session(redirect_after_login => $c->request->path);
+            $c->response->redirect($c->uri_for('/login'));
+        }
+    }
+
+
     my $site = $c->stash->{site};
     # if there was a posting, process it
 
@@ -92,14 +108,14 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
             $c->stash(sticky_cats => \%sticky);
         }
         # this call is going to add uri to $params, if not present
-        my ($revision, $error) = $site->create_new_text($params);
+        my ($revision, $error) = $site->create_new_text($params, $f_class);
         if ($revision) {
             $c->log->debug("All ok, found " . $revision->id);
             $c->flash(status_msg => $c->loc("Created new text"));
 
             my $uri = $revision->title->uri;
             my $id  = $revision->id;
-            my $location = $c->uri_for_action('/edit/edit', [$uri, $id]);
+            my $location = $c->uri_for_action('/edit/edit', [$f_class, $uri, $id]);
             $c->response->redirect($location);
         }
         else {
@@ -109,9 +125,22 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     }
 }
 
-sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
-    my ($self, $c, $uri) = @_;
-    my $text = $c->stash->{site}->titles->find({ uri => $uri });
+sub text :Chained('root') :PathPart('edit') :CaptureArgs(2) {
+    my ($self, $c, $f_class, $uri) = @_;
+
+    # this self validate the f_class
+    my $text = $c->stash->{site}->titles->find({ uri => $uri,
+                                                 f_class => $f_class,
+                                               });
+
+    # but only users can edit special pages
+    if ($f_class eq 'special') {
+        unless ($c->user_exists) {
+            $c->session(redirect_after_login => $c->request->path);
+            $c->response->redirect($c->uri_for('/login'));
+        }
+    }
+
     if ($text) {
         $c->stash->{text_to_edit} = $text;
     }
@@ -148,8 +177,11 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
         # on creation, set the session id
         $revision->session_id($c->sessionid);
         $revision->update;
-        my $location = $c->uri_for_action('/edit/edit', [ $uri,
-                                                         $revision->id ]);
+        my $location = $c->uri_for_action('/edit/edit', [
+                                                         $revision->f_class,
+                                                         $uri,
+                                                         $revision->id
+                                                        ]);
         $c->response->redirect($location);
         $c->detach();
         return;
@@ -158,8 +190,13 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     # we can't decide ourself, so we list the revs
     my @uris;
     foreach my $rev (@revs) {
+        my $uri = $c->uri_for_action('/edit/edit', [
+                                                    $rev->f_class,
+                                                    $uri,
+                                                    $rev->id
+                                                   ]);
         push @uris, {
-                     uri => $c->uri_for_action('/edit/edit', [ $uri, $rev->id ]),
+                     uri => $uri,
                      created => $rev->updated->clone,
                      # TODO add the user
                      user => 0,

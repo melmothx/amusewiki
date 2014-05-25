@@ -471,12 +471,26 @@ value).
 
 sub destination_paths {
     my $self = shift;
-    my $target_dir = $self->site->path_for_file($self->muse_uri);
-    return unless $target_dir && -d $target_dir;
+    my $target_dir;
+    my $f_class = $self->f_class;
+    if ($f_class eq 'text') {
+        $target_dir = $self->site->path_for_file($self->muse_uri);
+    }
+    elsif ($f_class eq 'special')  {
+        $target_dir = $self->site->path_for_specials;
+    }
+    my $pdf_dir = $self->site->path_for_uploads;
+    die "wtf" unless $target_dir && -d $target_dir;
+    die "wtf pdf" unless $pdf_dir && -d $pdf_dir;
     my %dests;
     foreach my $file ($self->f_full_path_name, $self->attached_files_paths) {
-        my ($basename, $path) = fileparse($file);
-        $dests{$file} = File::Spec->catfile($target_dir, $basename);
+        my ($basename, $path, $suffix) = fileparse($file, '.pdf');
+        if ($suffix) {
+            $dests{$file} = File::Spec->catfile($pdf_dir, $basename);
+        }
+        else {
+            $dests{$file} = File::Spec->catfile($target_dir, $basename);
+        }
     }
     return %dests;
 }
@@ -687,6 +701,12 @@ sub publish_text {
     $self->update;
     return $self->muse_uri;
 }
+
+sub f_class {
+    my $self = shift;
+    return $self->title->f_class;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

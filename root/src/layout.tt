@@ -95,7 +95,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="[% c.uri_for_action('/edit/revs', [ text.uri ]) %]">
+                  <a href="[% c.uri_for_action('/edit/revs', [ text.f_class, text.uri ]) %]">
                     [% c.loc('Edit this text') %]
                   </a>
                 </li>
@@ -112,7 +112,7 @@
                 </li>
                 [% IF c.user_exists || site.human_can_edit %]
                 <li>
-                  <a href="[% c.uri_for('/new') %]">
+                  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
                     [% c.loc('Add to library') %]
                   </a>
                 </li>

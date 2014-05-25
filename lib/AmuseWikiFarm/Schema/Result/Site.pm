@@ -545,6 +545,21 @@ sub known_langs {
            };
 }
 
+# TODO special
+
+sub path_for_specials {
+    my $self = shift;
+    my $target = File::Spec->catdir($self->repo_root, 'specials');
+    mkdir $target unless -d $target;
+    return $target;
+}
+
+sub path_for_uploads {
+    my $self = shift;
+    my $target = File::Spec->catdir($self->repo_root, 'uploads');
+    mkdir $target unless -d $target;
+    return $target;
+}
 
 sub path_for_file {
     my ($self, $uri) = @_;
@@ -633,10 +648,12 @@ sub staging_dir {
     return File::Spec->catdir(getcwd(), $self->staging_dirname);
 }
 
-=head2 create_new_text(\%params)
+=head2 create_new_text(\%params, $f_class)
 
 Using the parameters passed, create a new text and return its revision
 object or undef it couldn't be created.
+
+The second argument B<must> be C<text> or C<special>.
 
 Always return two values: the first is the revision object, the second
 is the redirection.
@@ -646,15 +663,13 @@ element and the error in the second.
 
 =cut
 
-sub create_new_text {
-    my ($self, $params) = @_;
-    return $self->_do_create_new_text($params, 'text');
-}
 
-sub _do_create_new_text {
+sub create_new_text {
     my ($self, $params, $f_class) = @_;
     die "Missing params"  unless $params;
     die "Missing f_class" unless $f_class;
+    die "Wrong f_class $f_class"
+      unless ($f_class eq 'text' or $f_class eq 'special');
     # assert that the directory where to put the files exists
     my $staging_dir = $self->staging_dir;
     unless (-d $staging_dir) {
