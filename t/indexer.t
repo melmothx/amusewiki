@@ -67,7 +67,7 @@ eval {
 };
 ok ($@);
 
-$testfile = catfile(t => a => at => 'another-test.muse');
+$testfile = catfile(qw/t repotest a at another-test.muse/);
 ok (-f $testfile);
 
 my $info = muse_file_info($testfile);
@@ -117,7 +117,7 @@ is(str2time($pubdate->iso8601, 'UTC'), str2time('2014-01-01 00:00', 'UTC'));
 is_deeply $info, $expected, "Info returned correctly";
 
 
-$testfile = catfile(t => a => at => 'another-test-1.muse');
+$testfile = catfile(qw/t repotest a at another-test-1.muse/);
 $info = muse_file_info($testfile);
 
 # is $info->{DELETED}, no
@@ -127,7 +127,7 @@ ok $info->{uri};
 ok $info->{pubdate}->iso8601, "found timestamp: " . $info->{pubdate}->iso8601;
 # print Dumper($info);
 
-$testfile = catfile(t => a => at => 'another-test-2.muse');
+$testfile = catfile(qw/t repotest a at another-test-2.muse/);
 $info = muse_file_info($testfile);
 
 is $info->{DELETED}, 'Missing title';
@@ -136,15 +136,14 @@ is $info->{title}, $info->{uri}, "title set to uri";
 
 # print Dumper ($info);
 
-$testfile = catfile(t => a => at => 'another-test-3.muse');
+$testfile = catfile(qw/t repotest a at another-test-3.muse/);
 $info = muse_file_info($testfile);
 
 ok !$info->{parsed_categories}, "SORTauthor (missing s) is ignored";
 is $info->{DELETED}, 'ignore';
 ok $info->{uri}, "Uri found";
 
-# 
-$testfile = catfile(t => a => at => 'another-test-4.muse');
+$testfile = catfile(qw/t repotest a at another-test-4.muse/);
 $info = muse_file_info($testfile);
 is $info->{uid}, 'bau', "Found the unique id";
 is_deeply $info->{parsed_categories}, [

@@ -30,7 +30,7 @@ is_deeply(muse_get_full_path("zo-d-axa-us"), ["z", "zd", "zo-d-axa-us"],
 	  "Testing new algo for path");
 
 
-my $file = catfile(qw/t a at another-test.muse/);
+my $file = catfile(qw/t repotest a at another-test.muse/);
 ok (-f $file);
 my $info = muse_parse_file_path($file);
 ok ($info);
