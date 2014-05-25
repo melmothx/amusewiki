@@ -584,6 +584,8 @@ sub new_revision {
     # actual revision.
 
     unless ($skip_copying) {
+        # TODO check here when you commit a revision and before publishing
+        # someone try to edit it. Thing crashes
         copy($self->f_full_path_name, $revision->starting_file) or die $!;
         copy($self->f_full_path_name, $revision->f_full_path_name) or die $!;
     }
