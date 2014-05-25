@@ -648,7 +648,13 @@ element and the error in the second.
 
 sub create_new_text {
     my ($self, $params) = @_;
+    return $self->_do_create_new_text($params, 'text');
+}
 
+sub _do_create_new_text {
+    my ($self, $params, $f_class) = @_;
+    die "Missing params"  unless $params;
+    die "Missing f_class" unless $f_class;
     # assert that the directory where to put the files exists
     my $staging_dir = $self->staging_dir;
     unless (-d $staging_dir) {
@@ -674,8 +680,7 @@ sub create_new_text {
     if ($self->titles->find({ uri => $uri })) {
         return undef, "Such an uri already exists";
     }
-    my $text = $self->import_text_from_html_params($params);
-
+    return $self->import_text_from_html_params($params, $f_class);
 }
 
 =head2 import_text_from_html_params
@@ -685,7 +690,9 @@ HTML => muse conversion
 =cut
 
 sub import_text_from_html_params {
-    my ($self, $params) = @_;
+    my ($self, $params, $f_class) = @_;
+    die "Missing params"  unless $params;
+    die "Missing f_class" unless $f_class;
     my $uri = $params->{uri};
     die "uri not set!" unless $uri;
 
@@ -700,6 +707,7 @@ sub import_text_from_html_params {
                  pubdate => $pubdate,
                  f_suffix => '.muse',
                  status => 'editing',
+                 f_class => $f_class,
                 };
 
     foreach my $f (qw/f_path f_archive_rel_path f_timestamp

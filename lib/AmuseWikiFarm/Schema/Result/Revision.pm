@@ -449,6 +449,10 @@ sub add_attachment {
 
     $info->{uri} = $info->{f_name} . $info->{f_suffix};
 
+    # I think we will update this later, attachment uri are unique across
+    # the site, so we can set it to a bogus value
+    $info->{f_class} = 'attachment';
+
     # and let it crash on race conditions
     $self->site->attachments->create($info);
 
