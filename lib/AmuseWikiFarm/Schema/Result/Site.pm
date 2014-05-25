@@ -846,15 +846,23 @@ sub index_file {
         return;
     }
 
-    my $details = muse_file_info($file, $self->id);
+    my $details = muse_file_info($file, $self->repo_root);
     # unparsable
     return unless $details;
 
-    if ($details->{f_suffix} ne '.muse') {
+    my $class  = delete $details->{_class_};
+    die "Missing class!" unless $class;
+
+    if ($class eq 'image' or $class eq 'upload_pdf') {
         warn "Inserting data for attachment $file\n";
         $self->attachments->update_or_create($details);
         return $file;
     }
+    elsif ($class eq 'special' or $class eq 'special_image') {
+        warn "Unhandled yet!";
+        return;
+    }
+    die "Something went wrong $class" unless $class eq 'title';
 
     # ready to store into titles?
     # by default text are published, unless the file info returns something else
@@ -872,7 +880,15 @@ sub index_file {
         }
     }
 
-    my $parsed_cats = delete $details->{parsed_categories};
+    # this is needed because we insert it from title, and DBIC can't
+    # infer the site_id from there (even if it should, but hey).
+    my @parsed_cats;
+    if (my $cats_from_title = delete $details->{parsed_categories}) {
+        foreach my $cat (@$cats_from_title) {
+            $cat->{site_id} = $self->id;
+            push @parsed_cats, $cat;
+        }
+    }
     if (%$details) {
         warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
     }
@@ -898,9 +914,9 @@ sub index_file {
     }
     $title->update if $title->is_changed;
 
-    if ($title->is_published && $parsed_cats && @$parsed_cats) {
+    if ($title->is_published && @parsed_cats) {
         # here we can die if there are duplicated uris
-        $title->set_categories($parsed_cats);
+        $title->set_categories(\@parsed_cats);
     }
     else {
         # purge the categories if there is none.

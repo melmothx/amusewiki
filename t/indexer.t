@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 38;
+use Test::More tests => 57;
 use Date::Parse qw/str2time/;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -16,7 +16,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo
 use HTML::Entities;
 use Encode;
 use Data::Dumper;
-use File::Spec::Functions qw/catfile/;
+use File::Spec::Functions qw/catfile catdir/;
 
 my $string = "à&amp;è";
 my $utf8 = encode("utf-8", $string);
@@ -60,32 +60,32 @@ is muse_naming_algo(".ciao."), "ciao", "testing dots";
 is muse_naming_algo('\\".-,ci\ao-,.'), "ci-ao", "testing weird chars";
 
 my $testfile = catfile(t => not => parsable => 'ciao.muse');
+
+my $reporoot = catdir(qw/t repotest/);
+
 ok (-f $testfile);
-ok (!muse_file_info($testfile));
+ok (!muse_file_info($testfile, $reporoot));
 eval {
-    muse_file_info("alksdjf");
+    muse_file_info("alksdjf", $reporoot);
 };
 ok ($@);
 
 $testfile = catfile(qw/t repotest a at another-test.muse/);
 ok (-f $testfile);
 
-my $info = muse_file_info($testfile);
+my $info = muse_file_info($testfile, $reporoot);
 
 my $expected = {
                 'f_name' => 'another-test',
-                'site_id' => 'default',
                 'uri' => 'another-test',
                 'list_title' => 'Test',
                 'parsed_categories' => [
                                         {
-                                         'site_id' => 'default',
                                          'name' => "\x{e8}cole",
                                          'type' => 'topic',
                                          'uri' => 'ecole'
                                         },
                                         {
-                                         'site_id' => 'default',
                                          'name' => "\x{c9}mile",
                                          'type' => 'author',
                                          'uri' => 'emile'
@@ -100,6 +100,7 @@ my $expected = {
                 uid => '',
                 subtitle => '',
                 notes => '',
+                _class_ => 'title',
                };
 
 
@@ -118,52 +119,86 @@ is_deeply $info, $expected, "Info returned correctly";
 
 
 $testfile = catfile(qw/t repotest a at another-test-1.muse/);
-$info = muse_file_info($testfile);
+$info = muse_file_info($testfile, $reporoot);
 
 # is $info->{DELETED}, no
 is $info->{title}, 'blabla', "title picked from list_title";
 is $info->{DELETED}, 'Missing title';
 ok $info->{uri};
+is $info->{_class_}, 'title';
 ok $info->{pubdate}->iso8601, "found timestamp: " . $info->{pubdate}->iso8601;
 # print Dumper($info);
 
 $testfile = catfile(qw/t repotest a at another-test-2.muse/);
-$info = muse_file_info($testfile);
+$info = muse_file_info($testfile, $reporoot);
 
 is $info->{DELETED}, 'Missing title';
 ok $info->{uri}, "Uri found";
 is $info->{title}, $info->{uri}, "title set to uri";
+is $info->{_class_}, 'title';
 
 # print Dumper ($info);
 
 $testfile = catfile(qw/t repotest a at another-test-3.muse/);
-$info = muse_file_info($testfile);
+$info = muse_file_info($testfile, $reporoot);
 
 ok !$info->{parsed_categories}, "SORTauthor (missing s) is ignored";
 is $info->{DELETED}, 'ignore';
 ok $info->{uri}, "Uri found";
+is $info->{_class_}, 'title';
 
 $testfile = catfile(qw/t repotest a at another-test-4.muse/);
-$info = muse_file_info($testfile);
+$info = muse_file_info($testfile, $reporoot);
+
 is $info->{uid}, 'bau', "Found the unique id";
 is_deeply $info->{parsed_categories}, [
                                        {
-                                        site_id => 'default',
                                         name => 'baux',
                                         type => 'category',
                                         uri  => 'baux',
                                        },
                                        {
-                                        site_id => 'default',
                                         name => 'fido',
                                         type => 'category',
                                         uri  => 'fido',
                                        },
                                        {
-                                        site_id => 'default',
                                         name => 'bobi',
                                         type => 'category',
                                         uri  => 'bobi',
                                        },
                                       ], "Found fixed categories";
 
+
+$testfile = catfile(qw/t repotest specials index.muse/);
+$info = muse_file_info($testfile, $reporoot);
+ok($info);
+is $info->{_class_}, 'special';
+
+
+
+$testfile = catfile(qw/t repotest specials i-x-myfile.png/);
+$info = muse_file_info($testfile, $reporoot);
+ok($info);
+is $info->{_class_}, 'special_image';
+
+
+
+$testfile = catfile(qw/t repotest uploads a-t-myfile.pdf/);
+ok($info);
+$info = muse_file_info($testfile, $reporoot);
+is $info->{_class_}, 'upload_pdf';
+
+$testfile = catfile(qw/t repotest a at a-t-another.png/);
+ok($info);
+$info = muse_file_info($testfile, $reporoot);
+is $info->{_class_}, 'image';
+
+
+
+foreach my $suffix (qw/aux log pdf tex/) {
+    $testfile = catfile(qw/t repotest a at/,  "another-test.$suffix");
+    ok(-f $testfile, "$testfile exists");
+    $info = muse_file_info($testfile, $reporoot);
+    ok(!$info, "Info for $suffix file in tree ignored") or diag Dumper($info);
+}

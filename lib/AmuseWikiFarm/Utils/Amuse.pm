@@ -23,11 +23,11 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_filepath_is_valid
                     muse_filename_is_valid/;
 
-=head2 muse_file_info($file, $site_id)
+=head2 muse_file_info($file, $root)
 
-Scan the header of the file $file and collect all the relevant
-informations, returning them as a hashref. It includes also the file
-attributes, like timestamp, paths, etc.
+Scan the header of the file $file, considering its root $root, and
+collect all the relevant informations, returning them as a hashref. It
+includes also the file attributes, like timestamp, paths, etc.
 
 The result is suitable to feed the database, so see
 L<AmuseWikiFarm::Schema::Result::Title> for the returned keys and the
@@ -35,8 +35,10 @@ AmuseWiki manual for the list of supported and defined directives.
 
 If the file passed is not a muse file, but a jpeg, jpg, png or pdf
 file, header is not checked, but the file info are returned, together
-with uri and site_id, suitable to be inserted in the
-L<AmuseWikiFarm::Schema::Result::Attachment> table.
+with uri, suitable to be inserted in the
+L<AmuseWikiFarm::Schema::Result::Attachment> table, or
+L<AmuseWikiFarm::Schema::Result::Special> or
+L<AmuseWikiFarm::Schema::Result::Specialimage>
 
 Special cases:
 
@@ -50,13 +52,10 @@ if the files are not in the right path, the indexing is skipped.
 =cut
 
 sub muse_file_info {
-    my ($file, $site_id) = @_;
+    my ($file, $root) = @_;
     die "$file not found!" unless -f $file;
-    $site_id ||= 'default';
-    my $details = _parse_muse_file($file);
+    my $details = _parse_muse_file($file, $root);
     return unless $details;
-
-    $details->{site_id} = $site_id;
 
     if ($details->{f_suffix} ne '.muse') {
         $details->{uri} = $details->{f_name} . $details->{f_suffix};
@@ -86,7 +85,7 @@ sub muse_file_info {
         if ($category =~ m/^SORT(\w+?)s$/) {
             my $type = $1;
             if (my $string = delete $details->{$category}) {
-                if (my @cats = _parse_topic_or_author($type, $string, $site_id)) {
+                if (my @cats = _parse_topic_or_author($type, $string)) {
                     push @categories, @cats;
                 }
             }
@@ -106,7 +105,6 @@ sub muse_file_info {
                 $uris{$catcode} = 1;
             }
             push @categories, {
-                               site_id => $site_id,
                                type => 'category',
                                uri => $catcode,
                                name => $catcode,
@@ -158,7 +156,7 @@ sub muse_file_info {
     return $details;
 }
 
-=head2 muse_parse_file_path($file, $skip_path_checking)
+=head2 muse_parse_file_path($file, $root, $skip_path_checking)
 
 Given a file $file, return an hashref with the following keys:
 
@@ -188,13 +186,25 @@ The full absolute path to the file
 
 The file extension
 
+=item _class_
+
+The return value of C<muse_filepath_is_valid>. You want to delete this
+before you dump the item in the database, because it hints you to
+which table it belongs.
+
 =back
 
-If the second optional argument is provided, the archive relative path
+The second, mandatory, argument is the root of the repo. This is not
+used if the third argument is provided, but could be in the future.
+
+If the third optional argument is provided, the archive relative path
 is not checked for sanity, so the file could reside anywhere. So,
 without the second argument with a true value C</etc/password.muse>
 would have been ignored, and C</tmp/my.muse> too. The same doesn't
-happen with the switch on and the file stats are collected nevertheless.
+happen with the switch on and the file stats are collected
+nevertheless. B<This argument requires that you pass the root as the
+directory of the target>. So: C</etc/password.muse> will be considered
+valid only if root is C</etc>.
 
 =cut
 
@@ -204,16 +214,35 @@ sub _my_suffixes {
 
 
 sub muse_parse_file_path {
-    my ($file, $skip_path_checking) = @_;
+    my ($file, $root, $skip_path_checking) = @_;
+    unless ($file && $root) {
+        die "Missing file ($file) and root ($root)!";
+    }
     unless (File::Spec->file_name_is_absolute($file)) {
         $file = File::Spec->rel2abs($file);
     }
+
+    unless (File::Spec->file_name_is_absolute($root)) {
+        $root = File::Spec->rel2abs($root);
+    }
     return unless -f $file;
-    my ($name, $path, $suffix) = fileparse($file, _my_suffixes());
+    return unless -d $root;
+
+    my $rel_file = File::Spec->abs2rel($file, $root);
+    # warn "Rel path is $rel_file";
+
+    my ($name, $path, $suffix)          = fileparse($file, _my_suffixes());
+    my ($relname, $relpath, $relsuffix) = fileparse($rel_file, _my_suffixes());
+
 
     unless ($suffix) {
         warn "$file is not a recognized file!";
         return;
+    }
+
+    if ($name ne $relname or
+        $suffix ne $relsuffix) {
+        die "Something fishy is going on, $name doesn't match $relname";
     }
 
     unless (muse_filename_is_valid($name)) {
@@ -232,28 +261,27 @@ sub muse_parse_file_path {
                f_full_path_name  => $file,
                f_suffix => $suffix,
               );
-    return \%out if $skip_path_checking;
+    # warn "Parsing $relpath";
+    my @dirs = grep { $_ ne '' and $_ ne '.' } File::Spec->splitdir($relpath);
 
-    my @dirs = grep { $_ ne '' } File::Spec->splitdir($path);
-
-    unless (@dirs >= 2) {
-        warn "$file is not in the correct path!";
-        return;
+    # skip path checking requires no deep path, just '.'
+    if ($skip_path_checking) {
+        if (!@dirs) {
+            return \%out;
+        }
     }
-    my @relpath = ($dirs[$#dirs-1], $dirs[$#dirs]);
-    unless ($relpath[0] =~ m/^[0-9a-z]$/s and
-            $relpath[1] =~ m/^[0-9a-z]{2}$/s) {
-        warn "$file is not in the correct path:" . Dumper(\@relpath);
-        return;
+    elsif (my $class = muse_filepath_is_valid($rel_file)) {
+        $out{f_archive_rel_path} = File::Spec->catdir(@dirs);
+        $out{_class_} = $class;
+        return \%out;
     }
-    $out{f_archive_rel_path} = File::Spec->catdir(@relpath);
-    return \%out;
+    return;
 }
 
 
 sub _parse_muse_file {
-    my $file = shift;
-    my $fileinfo = muse_parse_file_path($file);
+    my ($file, $root) = @_;
+    my $fileinfo = muse_parse_file_path($file, $root);
     return unless $fileinfo;
     # remove the suffix key
     if ($fileinfo->{f_suffix} ne '.muse') {
@@ -554,9 +582,8 @@ sub muse_get_full_path {
 }
 
 sub _parse_topic_or_author {
-    my ($type, $string, $site_id) = @_;
+    my ($type, $string) = @_;
     return unless $type && $string;
-    $site_id ||= 'default';
     # given that we asked for HTML in _parse_muse_file, first we strip
     # the tags.
     $string =~ s/<.*?>//g;
@@ -590,7 +617,6 @@ sub _parse_topic_or_author {
                         name => encode_entities($el, q{<>&"'}),
                         uri => $uri,
                         type => $type,
-                        site_id => $site_id,
                        }
         }
     }
@@ -636,6 +662,32 @@ algorithm of C<muse_get_full_path>.
 
 =back
 
+The return values depends on the path of the file:
+
+=over 4
+
+=item title
+
+Regular title file
+
+=item image
+
+Regular attachment
+
+=item special
+
+A special page
+
+=item upload_pdf
+
+An uploaded pdf file
+
+=item special_image
+
+An attachment to the special page
+
+=back
+
 =cut
 
 sub muse_filepath_is_valid {
@@ -654,25 +706,47 @@ sub muse_filepath_is_valid {
     return unless muse_filename_is_valid($name);
 
     # handle the pdf, which are indexed only if in the 'uploads' directory
-    if ($suffix eq '.pdf') {
+    if (@dirs == 1) {
         my $dir = shift @dirs;
-        return if @dirs;
-        if (basename($dir) eq 'uploads') {
-            return $relpath;
+
+        if ($dir eq 'uploads' and $suffix eq '.pdf') {
+            return 'upload_pdf';
         }
-        else {
-            return;
+        elsif ($dir eq 'specials') {
+            if ($suffix =~ m/^\.(jpe?g|png)$/s) {
+                return 'special_image';
+            }
+            elsif ($suffix eq '.muse') {
+                return 'special';
+            }
         }
+        warn "$relpath not in the right dir!\n";
+        return;
     }
     # then process the regular files.
     if (@dirs != 2) {
         warn "$relpath not two levels down\n";
         return;
     }
+
+    # check the suffixes
+    unless ($suffix =~ m/^\.(muse|jpe?g|png)$/s) {
+        warn "$relpath has a suffix I don't recognize\n";
+        return;
+    }
+
+    my $ret_value;
+    if ($suffix eq '.muse') {
+        $ret_value = 'title';
+    }
+    else {
+        $ret_value = 'image';
+    }
+
     # file with no hyphens, pick the first and the last
     if ($name =~ m/^([0-9a-z])[0-9a-z]+([0-9a-z])$/s) {
         if ($dirs[0] eq $1 and $dirs[1] eq "$1$2") {
-            return $relpath;
+            return $ret_value;
         }
         else {
             warn "$relpath in the wrong path!\n";
@@ -680,16 +754,11 @@ sub muse_filepath_is_valid {
     }
     elsif ($name =~ m/^([0-9a-z])[0-9a-z]*-([0-9a-z])[0-9a-z-]*[0-9a-z]$/s) {
         if ($dirs[0] eq $1 and $dirs[1] eq "$1$2") {
-            return $relpath;
+            return $ret_value;
         }
-        else {
-            warn "$relpath in the wrong path!\n";
-        }
-    }
-    else {
-        warn "Checking of $relpath failed\n";
     }
     # catch all and return false
+    warn "Checking of $relpath failed\n";
     return;
 }
 

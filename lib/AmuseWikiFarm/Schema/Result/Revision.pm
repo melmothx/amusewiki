@@ -444,7 +444,7 @@ sub add_attachment {
     copy($filename, $target) or die "Couldn't copy $filename to $target $!";
 
     # and finally insert the thing in the db
-    my $info = muse_parse_file_path($target, 1);
+    my $info = muse_parse_file_path($target, $self->working_dir, 1);
     return "Couldn't retrieve info from $target" unless $info;
 
     $info->{uri} = $info->{f_name} . $info->{f_suffix};

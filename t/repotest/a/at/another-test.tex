@@ -1,0 +1,140 @@
+\documentclass[DIV=12,%
+               BCOR=0mm,%
+               fontsize=10pt,%
+               oneside,%
+               paper=210mm:11in]{scrartcl}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainfont[Mapping=tex-text]{Linux Libertine O}
+% these are not used but prevents XeTeX to barf
+\setsansfont[Mapping=tex-text,Scale=MatchLowercase]{DejaVu Sans}
+\setmonofont[Mapping=tex-text,Scale=MatchLowercase]{DejaVu Sans Mono}
+
+\setmainlanguage{english}
+
+
+
+
+
+\usepackage{microtype} % you need an *updated* texlive 2012, but harmless
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{verbatim}
+% http://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+\PassOptionsToPackage{hyphens}{url}\usepackage[hyperfootnotes=false,hidelinks,breaklinks=true]{hyperref}
+\usepackage{bookmark}
+\usepackage[stable]{footmisc}
+\usepackage{enumerate}
+\usepackage{tabularx}
+\usepackage[normalem]{ulem}
+\usepackage{wrapfig}
+\usepackage{indentfirst}
+% remove the numbering
+\setcounter{secnumdepth}{-2}
+
+% remove labels from the captions
+\renewcommand*{\captionformat}{}
+\renewcommand*{\figureformat}{}
+\renewcommand*{\tableformat}{}
+\KOMAoption{captions}{belowfigure,nooneline}
+\addtokomafont{caption}{\centering}
+
+% avoid breakage on multiple <br><br> and avoid the next [] to be eaten
+\newcommand*{\forcelinebreak}{\strut\\{}}
+
+\newcommand*{\hairline}{%
+  \bigskip%
+  \noindent \hrulefill%
+  \bigskip%
+}
+
+% reverse indentation for biblio and play
+
+\newenvironment*{amusebiblio}{
+  \leftskip=\parindent
+  \parindent=-\parindent
+  \smallskip
+  \indent
+}{\smallskip}
+
+\newenvironment*{amuseplay}{
+  \leftskip=\parindent
+  \parindent=-\parindent
+  \smallskip
+  \indent
+}{\smallskip}
+
+\newcommand*{\Slash}{\slash\hspace{0pt}}
+
+% global style
+\pagestyle{plain}
+\addtokomafont{disposition}{\rmfamily}
+% forbid widows/orphans
+\clubpenalty=10000
+\widowpenalty=10000
+\frenchspacing
+\sloppy
+
+\title{Test}
+\date{}
+\author{}
+\subtitle{}
+
+\begin{document}
+
+
+\maketitle
+
+
+
+
+
+hello
+
+
+
+\clearpage
+% new page for the colophon
+
+\thispagestyle{empty}
+
+\begin{center}
+
+
+
+
+
+\strut
+
+\end{center}
+
+
+\strut
+
+
+\vfill
+
+\begin{center}
+
+
+
+Test
+
+
+
+
+
+\bigskip
+
+
+
+
+
+
+
+% Here an URL maybe?
+
+\end{center}
+
+\end{document}
+

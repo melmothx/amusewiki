@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 42; # !
+use Test::More tests => 43;
 use Cwd;
 use File::Spec::Functions qw/catdir catfile/;
 use File::Temp;
@@ -77,6 +77,7 @@ $mech->click;
 
 my $success = check_jobber($mech);
 
+ok ($success) or die "No success can't proceed";
 like $success->{logs}, qr/Created pippo-ciccia/;
 
 $mech->get_ok("/tasks/status/$success->{id}");
@@ -134,7 +135,12 @@ sub check_jobber {
             $success = $ajax;
             last;
         }
-        diag "Nothing yet...";
+        elsif ($ajax->{status} eq 'failed') {
+            diag "Job failed!\n";
+            diag $ajax->{errors};
+            return;
+        }
+        diag "Nothing yet...$ajax->{status}";
         sleep 1;
     }
     ok($success);

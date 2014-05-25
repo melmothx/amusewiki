@@ -1,8 +1,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 40;
-use File::Spec::Functions qw/catfile/;
+use Test::More tests => 43;
+use File::Spec::Functions qw/catfile catdir/;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
@@ -32,7 +32,7 @@ is_deeply(muse_get_full_path("zo-d-axa-us"), ["z", "zd", "zo-d-axa-us"],
 
 my $file = catfile(qw/t repotest a at another-test.muse/);
 ok (-f $file);
-my $info = muse_parse_file_path($file);
+my $info = muse_parse_file_path($file, catdir(qw/t repotest/));
 ok ($info);
 is $info->{f_name}, 'another-test';
 is $info->{f_suffix}, '.muse';
@@ -40,12 +40,19 @@ is $info->{f_suffix}, '.muse';
 $file = catfile(qw/t files shot.jpg/);
 
 ok (-f $file);
-$info = muse_parse_file_path($file);
+$info = muse_parse_file_path($file, '.');
 ok !$info, "Nothing returned";
-$info = muse_parse_file_path($file, 1);
-is $info->{f_name}, 'shot';
-is $info->{f_suffix}, '.jpg';
-ok $info->{f_full_path_name}, $info->{f_full_path_name};
+
+$info = muse_parse_file_path($file, '.', 1);
+ok !$info, "Wrong root, still invalid";
+
+$info = muse_parse_file_path($file, catdir(qw/t files/), 1);
+ok $info, "The file $file was parsed";
+is $info->{f_name}, 'shot', "Found the f_name";
+is $info->{f_suffix}, '.jpg', "Found the f_suffix";
+ok $info->{f_full_path_name}, "Found $info->{f_full_path_name}";
+ok !$info->{f_archive_rel_path}, "No archive rel path";
+
 
 my @valid = (
              [qw/uploads test.pdf/],
