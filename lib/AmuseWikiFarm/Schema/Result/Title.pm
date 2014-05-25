@@ -156,6 +156,12 @@ __PACKAGE__->table("title");
   is_nullable: 0
   size: 16
 
+=head2 f_class
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 16
+
 =head2 uri
 
   data_type: 'varchar'
@@ -229,6 +235,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 0 },
   "f_suffix",
   { data_type => "varchar", is_nullable => 0, size => 16 },
+  "f_class",
+  { data_type => "varchar", is_nullable => 0, size => 16 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "deleted",
@@ -253,11 +261,13 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 UNIQUE CONSTRAINTS
 
-=head2 C<uri_site_id_unique>
+=head2 C<uri_f_class_site_id_unique>
 
 =over 4
 
 =item * L</uri>
+
+=item * L</f_class>
 
 =item * L</site_id>
 
@@ -265,7 +275,7 @@ __PACKAGE__->set_primary_key("id");
 
 =cut
 
-__PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
+__PACKAGE__->add_unique_constraint("uri_f_class_site_id_unique", ["uri", "f_class", "site_id"]);
 
 =head1 RELATIONS
 
@@ -325,8 +335,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-27 17:31:24
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:34FtkdhOl6C06VHDivOrrQ
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-25 18:00:03
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ffLJqZ5m9R2Ftgu2ReJ+xg
 
 use File::Spec;
 use File::Slurp qw/read_file/;

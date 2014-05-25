@@ -50,6 +50,7 @@ is_deeply $site->title_fields, {
                              'title' => 1,
                              'sorting_pos' => 1,
                              'status' => 1,
+                             'f_class' => 1,
                             }, "the archive knows the title fields";
 
 ok(!$site->index_file);

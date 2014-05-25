@@ -100,7 +100,7 @@ my $expected = {
                 uid => '',
                 subtitle => '',
                 notes => '',
-                _class_ => 'title',
+                f_class => 'text',
                };
 
 
@@ -125,7 +125,7 @@ $info = muse_file_info($testfile, $reporoot);
 is $info->{title}, 'blabla', "title picked from list_title";
 is $info->{DELETED}, 'Missing title';
 ok $info->{uri};
-is $info->{_class_}, 'title';
+is $info->{f_class}, 'text';
 ok $info->{pubdate}->iso8601, "found timestamp: " . $info->{pubdate}->iso8601;
 # print Dumper($info);
 
@@ -135,7 +135,7 @@ $info = muse_file_info($testfile, $reporoot);
 is $info->{DELETED}, 'Missing title';
 ok $info->{uri}, "Uri found";
 is $info->{title}, $info->{uri}, "title set to uri";
-is $info->{_class_}, 'title';
+is $info->{f_class}, 'text';
 
 # print Dumper ($info);
 
@@ -145,7 +145,7 @@ $info = muse_file_info($testfile, $reporoot);
 ok !$info->{parsed_categories}, "SORTauthor (missing s) is ignored";
 is $info->{DELETED}, 'ignore';
 ok $info->{uri}, "Uri found";
-is $info->{_class_}, 'title';
+is $info->{f_class}, 'text';
 
 $testfile = catfile(qw/t repotest a at another-test-4.muse/);
 $info = muse_file_info($testfile, $reporoot);
@@ -173,26 +173,26 @@ is_deeply $info->{parsed_categories}, [
 $testfile = catfile(qw/t repotest specials index.muse/);
 $info = muse_file_info($testfile, $reporoot);
 ok($info);
-is $info->{_class_}, 'special';
+is $info->{f_class}, 'special';
 
 
 
 $testfile = catfile(qw/t repotest specials i-x-myfile.png/);
 $info = muse_file_info($testfile, $reporoot);
 ok($info);
-is $info->{_class_}, 'special_image';
+is $info->{f_class}, 'special_image';
 
 
 
 $testfile = catfile(qw/t repotest uploads a-t-myfile.pdf/);
 ok($info);
 $info = muse_file_info($testfile, $reporoot);
-is $info->{_class_}, 'upload_pdf';
+is $info->{f_class}, 'upload_pdf';
 
 $testfile = catfile(qw/t repotest a at a-t-another.png/);
 ok($info);
 $info = muse_file_info($testfile, $reporoot);
-is $info->{_class_}, 'image';
+is $info->{f_class}, 'image';
 
 
 

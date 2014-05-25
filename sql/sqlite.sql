@@ -155,6 +155,7 @@ CREATE TABLE title (
         f_timestamp_epoch INTEGER NOT NULL DEFAULT 0,
         f_full_path_name TEXT NOT NULL,
         f_suffix    VARCHAR(16) NOT NULL,
+        f_class     VARCHAR(16) NOT NULL,
 
         uri         VARCHAR(255) NOT NULL,
         deleted     TEXT NOT NULL DEFAULT '',
@@ -163,7 +164,7 @@ CREATE TABLE title (
         site_id     VARCHAR(8) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
-CREATE UNIQUE INDEX unique_text ON title (uri, site_id);
+CREATE UNIQUE INDEX unique_text ON title (uri, f_class, site_id);
 
 
 -- 'book_author' is a many-to-many join table between books & authors
@@ -195,6 +196,7 @@ CREATE TABLE attachment (
        f_timestamp_epoch INTEGER NOT NULL DEFAULT 0,
        f_full_path_name TEXT NOT NULL,
        f_suffix    VARCHAR(16) NOT NULL,
+       f_class     VARCHAR(16) NOT NULL,
        uri   VARCHAR(255) NOT NULL,
        site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE

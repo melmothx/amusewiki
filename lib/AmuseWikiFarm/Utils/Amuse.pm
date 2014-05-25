@@ -272,7 +272,7 @@ sub muse_parse_file_path {
     }
     elsif (my $class = muse_filepath_is_valid($rel_file)) {
         $out{f_archive_rel_path} = File::Spec->catdir(@dirs);
-        $out{_class_} = $class;
+        $out{f_class} = $class;
         return \%out;
     }
     return;
@@ -666,7 +666,7 @@ The return values depends on the path of the file:
 
 =over 4
 
-=item title
+=item text
 
 Regular title file
 
@@ -737,7 +737,7 @@ sub muse_filepath_is_valid {
 
     my $ret_value;
     if ($suffix eq '.muse') {
-        $ret_value = 'title';
+        $ret_value = 'text';
     }
     else {
         $ret_value = 'image';

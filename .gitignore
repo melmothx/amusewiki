@@ -24,6 +24,9 @@ repo/*/*/*/*.zip
 repo/*.log
 root/custom/*.pdf
 root/custom/*.epub
+repo/0blog0/specials/*
+!repo/0blog0/specials/index.muse
+!repo/0blog0/specials/i-x-myfile.png
 xapian/*
 !xapian/README.txt
 dbic.yaml

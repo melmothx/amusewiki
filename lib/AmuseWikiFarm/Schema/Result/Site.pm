@@ -850,19 +850,28 @@ sub index_file {
     # unparsable
     return unless $details;
 
-    my $class  = delete $details->{_class_};
+    my $class  = $details->{f_class};
     die "Missing class!" unless $class;
 
-    if ($class eq 'image' or $class eq 'upload_pdf') {
+    my %handled = (
+                   image => 1,
+                   upload_pdf => 1,
+                   special => 1,
+                   special_image => 1,
+                   text => 1,
+                  );
+
+    die "Unknown class $class" unless $handled{$class};
+
+    if ($class eq 'upload_pdf' or
+        $class eq 'image' or
+        $class eq 'special_image') {
         warn "Inserting data for attachment $file\n";
         $self->attachments->update_or_create($details);
         return $file;
     }
-    elsif ($class eq 'special' or $class eq 'special_image') {
-        warn "Unhandled yet!";
-        return;
-    }
-    die "Something went wrong $class" unless $class eq 'title';
+
+    # handle specials and texts
 
     # ready to store into titles?
     # by default text are published, unless the file info returns something else

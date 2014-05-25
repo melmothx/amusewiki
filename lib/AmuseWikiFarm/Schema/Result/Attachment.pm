@@ -83,6 +83,12 @@ __PACKAGE__->table("attachment");
   is_nullable: 0
   size: 16
 
+=head2 f_class
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 16
+
 =head2 uri
 
   data_type: 'varchar'
@@ -114,6 +120,8 @@ __PACKAGE__->add_columns(
   "f_full_path_name",
   { data_type => "text", is_nullable => 0 },
   "f_suffix",
+  { data_type => "varchar", is_nullable => 0, size => 16 },
+  "f_class",
   { data_type => "varchar", is_nullable => 0, size => 16 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
@@ -167,8 +175,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-27 17:31:24
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cMeMGwrqalUbnsF/JrVG9w
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-25 18:00:03
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4l2O7jV/wUHrrp6q2A/lSQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
