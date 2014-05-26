@@ -85,7 +85,11 @@
 
 * Needed before first beta release
 
-** TODO store the pdf attachmentes in a directory by themselves
+
+** TODO Test the /special/ namespace, after it was refactored
+
+** DONE store the pdf attachmentes in a directory by themselves
+   CLOSED: [2014-05-26 lun 17:41]
 
    This also could include storing the special pages inside the git
    itself, so we can carry around the whole site
@@ -122,13 +126,6 @@ Otherwise we go crazy
 ** DONE Bug: when updating a text, clear the fields.
    CLOSED: [2014-04-21 lun 16:20]
 
-** TODO Create a setting table for common setting of the wiki instance
-
-I.e., not site specific. Example: basedir.
-
-
-This is unclear if needed
-
 ** DONE updating from remote gits
    CLOSED: [2014-05-23 ven 13:32]
 
@@ -140,7 +137,7 @@ This is related to the bootstrapping with the mass compile.
 
 ** TODO When a "published" text sets a deletion, notify it
 
-This is a wider issue to pass output from the jobber to the status
+This has been done, but needs to barf more and loudly.
 
 * Backend
 ** DONE Queue using the db.
