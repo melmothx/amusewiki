@@ -34,7 +34,7 @@ my $revision = $site->create_new_text({ uri => 'first-testx',
                                         title => 'Hello',
                                         lang => 'hr',
                                         textbody => '<p>http://my.org My "precious"</p>',
-                                      });
+                                      }, 'text');
 
 ok ($revision->id, "Found the revision id");
 

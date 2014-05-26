@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 77;
+use Test::More tests => 87;
 use File::Slurp qw/read_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
@@ -35,13 +35,13 @@ $site->index_file($existing);
                                              
 
 my $params = {};
-my ($revision, $error) = $site->create_new_text($params);
+my ($revision, $error) = $site->create_new_text($params, 'text');
 
 ok(!$params->{uri});
 ok($error, "Found error: " . $error);
 
 $params = { author => 'pInco ', title => ' Pallino ' };
-($revision, $error) = $site->create_new_text($params);
+($revision, $error) = $site->create_new_text($params, 'text');
 
 is $params->{uri}, 'pinco-pallino', "Found uri pinco-pallino";
 ok !$error, "No error";
@@ -58,7 +58,7 @@ like $muse, qr/^#title Pallino$/m, "Found title";
 $revision->title->delete;
 
 $params = { author => 'DeLeTeD ', title => ' TeXt- ' };
-($revision, $error) = $site->create_new_text($params);
+($revision, $error) = $site->create_new_text($params, 'text');
 ok(!$revision, "Nothing returned");
 ok $error, "Found an error";
 
@@ -87,7 +87,7 @@ $params = {
 # copy
 my %check = %$params;
 
-($revision, $error) = $site->create_new_text($params);
+($revision, $error) = $site->create_new_text($params, 'text');
 ok (-d $site->staging_dirname, "Found and created the staging dir");
 ok $revision, "Revision created";
 
@@ -196,6 +196,32 @@ ok !$revision->pending, "Revision is not pending";
 ok $revision->editing, "Revision is under edit";
 
 $revision->publish_text;
+
+%todo = (
+         jpg => 'jpg',
+         png => 'png',
+         pdf => 'pdf',
+        );
+
+foreach my $file (@attached_paths) {
+    my $out = $dests{$file};
+    ok ($out, "dest for file $file exists: $out");
+    ok (-f $out);
+    if ($out =~ m/\.(\w+)$/) {
+        my $ext = delete $todo{$1};
+        die "Already caught $ext!" unless $ext;
+        diag "$file => $out => $ext";
+        if ($ext eq 'pdf') {
+            like $out, qr/uploads.*pdf$/;
+        }
+        else {
+            like $out, qr/m.mu.m-u-my-uri.*\Q$ext\E$/;
+        }
+    }
+}
+
+ok !%todo, "all destinations are ok";
+
 
 my $rev_id = $revision->id;
 

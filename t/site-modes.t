@@ -99,9 +99,9 @@ sub common_tests {
 sub closed_new {
     my $mech = shift;
     $mech->get('/');
-    $mech->content_lacks('/new"');
+    $mech->content_lacks('/new/text"');
     diag "Checking /new";
-    $mech->get('/new');
+    $mech->get('/new/text');
     is $mech->uri->path, '/login', "Bounced to login";
 }
 
@@ -115,9 +115,9 @@ sub closed_publish {
 sub open_new {
     my $mech = shift;
     $mech->get_ok('/');
-    $mech->content_contains('/new');
+    $mech->content_contains('/new/text');
     $mech->follow_link_ok( { text_regex => qr/Add to library/}, "Going on new");
-    is $mech->uri->path, '/new';
+    is $mech->uri->path, '/new/text';
     $mech->submit_form(
                        form_id => 'ckform',
                        fields => {

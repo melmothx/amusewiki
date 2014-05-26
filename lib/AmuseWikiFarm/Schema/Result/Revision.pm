@@ -486,7 +486,7 @@ sub destination_paths {
     foreach my $file ($self->f_full_path_name, $self->attached_files_paths) {
         my ($basename, $path, $suffix) = fileparse($file, '.pdf');
         if ($suffix) {
-            $dests{$file} = File::Spec->catfile($pdf_dir, $basename);
+            $dests{$file} = File::Spec->catfile($pdf_dir, $basename . $suffix);
         }
         else {
             $dests{$file} = File::Spec->catfile($target_dir, $basename);

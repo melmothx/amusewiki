@@ -71,7 +71,7 @@ my ($revision, $error) =
                            title => 'Hello',
                            lang => 'hr',
                            textbody => '<p>http://my.org My "precious"</p>',
-                         });
+                         }, 'text');
 ok ($revision->id);
 
 $revision->edit({
@@ -103,7 +103,7 @@ like $logs[2]->message, qr/Imported HTML/, "Log for html ok";
                       title => 'Hello',
                       lang => 'hr',
                       textbody => qq{\r<p>http://my.org My "precious"</p>},
-                    });
+                    }, 'text');
 ok ($revision->id);
 
 $revision->edit({ body  => $revision->muse_body });
