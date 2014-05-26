@@ -141,7 +141,7 @@ sub text_edit :Path :Args(2) {
     my ($self, $c, $text, $action) = @_;
     if ($action eq 'edit') {
         $c->log->debug("$text => $action");
-        $c->response->redirect($c->uri_for_action('/edit/revs', [$text]));
+        $c->response->redirect($c->uri_for_action('/edit/revs', [text => $text]));
     }
     else {
         $c->detach('/not_found');

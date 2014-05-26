@@ -25,50 +25,49 @@ the .muse file.
 
 =cut
 
-sub root :Chained('/') :PathPart('special') :CaptureArgs(0) {
-    my ($self, $c) = @_;
-    $c->stash(specials => $c->model('Special'));
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+    my @texts = $c->stash->{site}->titles->published_specials;
+    $c->stash(texts => \@texts,
+              baseurl => $c->uri_for_action('/special/index'),
+              template => 'library.tt');
 }
 
-sub entry :Chained('root') :PathPart('') :CaptureArgs(1) {
+sub display :Path :Args(1) {
     my ($self, $c, $page) = @_;
-    $c->stash(special_uri => $page);
-    $c->stash(edit_action => $c->uri_for_action('/special/edit', [$page]));
-    $c->log->debug($c->stash->{edit_action});
-    $c->stash(special_page => $c->stash->{specials}->find_page($page));
-    # $c->log->debug($c->stash->{specials}->site_schema->id);
-}
+    my $site = $c->stash->{site};
 
-sub display :Chained('entry') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    # empty method, just to close the chain
-}
-
-sub edit :Chained('entry') :PathPart('edit') :Args(0) {
-    my ($self, $c) = @_;
-
-    # prevent editing from non-logged in. Don't bother to offer a
-    # login page, it just should not happen.
-    unless ($c->user_exists) {
-        $c->detach('/not_permitted');
-        return;
-    }
-    my $params = $c->request->params;
-    my $page   = $c->stash->{special_uri};
-    my $model  = $c->stash->{specials};
-    my $text   = $model->edit($page => { %$params });
-    if ($text) {
-        $c->flash->{status_msg} = $c->loc("[_1] updated!", $page);
-        $c->res->redirect($c->uri_for_action('/special/display', [$page]));
+    # has extension? serve it if found
+    if ($page =~ m/\./) {
+        if (my $attach = $site->attachments->by_uri($page)) {
+            $c->serve_static_file($attach->f_full_path_name);
+            return;
+        }
     }
     else {
-        $c->flash->{error_msg} = $c->loc($model->error);
-        # got an error, so don't redirect if we don't want the loser
-        # to loose the param.
-        $c->stash(template => 'special/display.tt');
-        return;
+        if (my $page = $site->titles->published_specials->find({ uri => $page })) {
+            $c->stash(
+                      template => 'text.tt',
+                      text => $page,
+                     );
+            return;
+        }
+    }
+    $c->detach('/not_found');
+}
+
+sub special_edit :Path :Args(2) {
+    my ($self, $c, $text, $action) = @_;
+    if ($action eq 'edit') {
+        $c->log->debug("$text => $action");
+        $c->response->redirect($c->uri_for_action('/edit/revs', [special => $text]));
+    }
+    else {
+        $c->detach('/not_found');
     }
 }
+
+
 
 
 =head1 AUTHOR

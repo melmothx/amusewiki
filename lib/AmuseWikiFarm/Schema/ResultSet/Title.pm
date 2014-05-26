@@ -18,12 +18,27 @@ sub published_texts {
     my $self = shift;
     return $self->search({
                           status => 'published',
+                          f_class => 'text',
                          },
                          { order_by => [qw/sorting_pos
                                            title/]
                          });
 
 }
+
+sub published_specials {
+    my $self = shift;
+    return $self->search({
+                          status => 'published',
+                          f_class => 'special',
+                         },
+                         { order_by => [qw/sorting_pos
+                                           title/]
+                         });
+
+}
+
+
 
 =head2 random_text
 
