@@ -201,8 +201,10 @@ shouldn't be too hard to manage.
 *** When is ready offer the link and stop the queue polling.
 *** Delete the file after a couple of hours, we are short on resources.
 
-** TODO The special pages should be kept under 'special' in the repo
-** TODO The pdf uploads (attachments) should be kept under 'upload' in the repo
+** DONE The special pages should be kept under 'specials' in the repo
+   CLOSED: [2014-05-26 lun 17:40]
+** DONE The pdf uploads (attachments) should be kept under 'uploads' in the repo
+   CLOSED: [2014-05-26 lun 17:40]
 * Needed features
 ** simple to use
 ** simple to install
