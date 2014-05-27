@@ -88,22 +88,6 @@ CREATE TABLE revision (
        updated DATETIME NOT NULL -- internal
 );
 
-CREATE TABLE page (
-       id INTEGER PRIMARY KEY,
-       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
-                          ON DELETE CASCADE ON UPDATE CASCADE,
-       pubdate DATETIME NOT NULL,
-       created DATETIME NOT NULL, -- internal
-       updated DATETIME NOT NULL, -- internal
-       user_id INTEGER NOT NULL DEFAULT 0, -- will reference the user
-       uri VARCHAR(255),
-       title VARCHAR(255), -- the title
-       html_body TEXT, -- the body itself
-       f_path TEXT NOT NULL,
-       status VARCHAR(16) NOT NULL DEFAULT 'published'
-);
-CREATE UNIQUE INDEX unique_page ON page (uri, site_id);
-
 CREATE TABLE job (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        site_id VARCHAR(8) NOT NULL REFERENCES site(id)
