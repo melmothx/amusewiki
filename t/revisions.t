@@ -15,8 +15,8 @@ use AmuseWiki::Tests qw/create_site/;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site_id = '0revs0';
-my $git = create_site($schema, $site_id);
-my $site = $schema->resultset('Site')->find($site_id);
+my $site = create_site($schema, $site_id);
+my $git = $site->git;
 
 ok ((-d $site->repo_root), "test site created");
 is ($site->staging_dirname, 'staging');

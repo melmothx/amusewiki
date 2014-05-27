@@ -21,11 +21,11 @@ system($init, 'restart');
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0job0';
-my $git = create_site($schema, $site_id);
+my $site = create_site($schema, $site_id);
+ok($site);
+my $git = $site->git;
 $git->remote(add => origin => '/tmp/blablabla.git');
 
-my $site = $schema->resultset('Site')->find($site_id);
-ok($site);
 
 my $host = $site->vhosts->first->name;
 

@@ -17,7 +17,8 @@ unless (eval q{use Test::WWW::Mechanize::Catalyst 0.55; 1}) {
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0pull0';
-my $git = create_site($schema, $site_id);
+my $site = create_site($schema, $site_id);
+my $git = $site->git;
 my $testdir = File::Temp->newdir(CLEANUP => 0);
 my $remotedir = $testdir->dirname;
 ok( -d $remotedir, "Found $remotedir");

@@ -54,7 +54,7 @@ sub create_site {
         $git->add('.');
         $git->commit({ message => "Initial import" });
     }
-    return $git;
+    return $site;
 }
 
 1;

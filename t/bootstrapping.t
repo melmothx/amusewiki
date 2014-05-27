@@ -27,6 +27,7 @@ is_deeply \@found, [
                     catfile(qw/f ft f-t-bad.muse/),
                     catfile(qw/f ft first-test.muse/),
                     catfile(qw/s st second-test.muse/),
+                    catfile(qw/specials index.muse/),
                    ], "Found all the muse files, excluding images in wrong place";
 
 my $changes = $site->repo_find_changed_files;

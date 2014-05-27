@@ -13,47 +13,15 @@ use File::Path qw/make_path remove_tree/;
 use Data::Dumper;
 use File::Temp;
 
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
+
+my $site_id = '0gitz0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my $site = create_site($schema, $site_id);
+my $archive_git = $site->git;
 
-if (my $stray = $schema->resultset('Site')->find('0git0')) {
-    if (my $text = $stray->titles->find({ uri => 'first-test' })) {
-        $text->delete;
-    };
-    if ( -d $stray->repo_root) {
-        remove_tree($stray->repo_root);
-        diag "Removed tree";
-    }
-    $stray->delete;
-}
-
-my $site = $schema->resultset('Site')->create({
-                                               id => '0git0',
-                                               locale => 'en',
-                                               a4_pdf => 0,
-                                               pdf => 0,
-                                               epub => 0,
-                                               lt_pdf => 0,
-                                              })->get_from_storage;
-
-$site->add_to_vhosts({ name => 'git.amusewiki.org' });
 ok ($site);
-
-mkdir $site->repo_root unless -d $site->repo_root;
-
-unless (-d catdir($site->repo_root, '.git')) {
-    diag "Initializing " . $site->repo_root;
-    my $git = Git::Wrapper->new($site->repo_root);
-
-    write_file(catfile($site->repo_root, "README"),
-               { binmode => ':encoding(UTF-8)' },
-               "test repo\n");
-
-    $git->init;
-    $git->add('.');
-    $git->commit({ message => "Initial import" });
-}
-
-my $archive_git = Git::Wrapper->new($site->repo_root);
 
 my ($log) = $archive_git->log;
 

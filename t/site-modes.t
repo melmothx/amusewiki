@@ -7,11 +7,14 @@ use Test::More tests => 44;
 use File::Path qw/make_path remove_tree/;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
+use File::Spec::Functions qw/catfile catdir/;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $sites = {
-             closed  => { id => '0closed0',
+             blog  => { id => '0closed0',
                           url  => 'closed.amusewiki.org',
                         },
              modwiki => { id => '0modewiki0',
@@ -23,38 +26,20 @@ my $sites = {
             };
 diag "Creating sites";
 foreach my $m (keys %$sites) {
-    if (my $stray = $schema->resultset('Site')->find($sites->{$m}->{id})) {
-        if ( -d $stray->repo_root) {
-            remove_tree($stray->repo_root);
-            diag "Removed tree";
-        }
-        $stray->delete;
-    };
-    my $site_ob = $schema->resultset('Site')->create({
-                                                      id => $sites->{$m}->{id},
-                                                      locale => 'en',
-                                                      a4_pdf => 0,
-                                                      pdf => 0,
-                                                      epub => 0,
-                                                      lt_pdf => 0,
-                                                      mode => $m,
-                                                      magic_question => 'First month of the year',
-                                                      magic_answer => 'January',
-                                                     })->get_from_storage;
+    my $site_ob = create_site($schema, $sites->{$m}->{id});
     $site_ob->add_to_vhosts({ name => $sites->{$m}->{url} });
     my $repo_root = $site_ob->repo_root;
-    if (-d $repo_root) {
-        diag "Removing existing repo dir $repo_root";
-        remove_tree($repo_root);
-    }
-    mkdir $repo_root or die $repo_root . " => " . $!;
+    $site_ob->magic_question('First month of the year');
+    $site_ob->magic_answer('January');
+    $site_ob->mode($m);
+    $site_ob->update;
     ok ((-d $repo_root), "site $sites->{$m}->{url} created");
 }
 
 diag "Testing the closed site";
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                               host => $sites->{closed}->{url});
+                                               host => $sites->{blog}->{url});
 
 common_tests($mech);
 closed_new($mech);
@@ -115,7 +100,7 @@ sub closed_publish {
 sub open_new {
     my $mech = shift;
     $mech->get_ok('/');
-    $mech->content_contains('/new/text');
+    $mech->content_contains('/new/text') or diag $mech->response->decoded_content;
     $mech->follow_link_ok( { text_regex => qr/Add to library/}, "Going on new");
     is $mech->uri->path, '/new/text';
     $mech->submit_form(

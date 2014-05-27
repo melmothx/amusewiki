@@ -39,21 +39,22 @@ $mech->post('/special/index/edit', {
                                     body => "#title blabla\n\nnblablabla\n"
                                    });
 
-is $mech->status, 403, "Bounced to error page";
+is $mech->response->base->path, '/login', "Bounced to login page";
 $mech->content_contains("Access denied", "Access denied");
 
 $mech->content_lacks('blablabla', "Index not updated");
 
 $mech->get('/special/pippo/edit');
 
-is $mech->status, 403, "Bounced to error page";
+is $mech->response->base->path, '/login', "Bounced to login";
+
 $mech->content_contains("Access denied", "Access denied");
 
 $mech->post('/login' => {
                          username => 'pallino'
                         });
 
-like $mech->uri, qr{/login}, "No authorized, still on login";
+is $mech->response->base->path, '/login', "No authorized, still on login";
 
 $mech->post('/login' => {
                          username => 'pinco',
