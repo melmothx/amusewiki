@@ -115,6 +115,12 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 255
 
+=head2 sitegroup
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
 =head2 bb_page_limit
 
   data_type: 'integer'
@@ -247,6 +253,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 128 },
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "sitegroup",
+  { data_type => "varchar", is_nullable => 1, size => 32 },
   "bb_page_limit",
   { data_type => "integer", default_value => 1000, is_nullable => 0 },
   "tex",
@@ -411,8 +419,8 @@ __PACKAGE__->has_many(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-27 17:32:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:iu6dR4LlDJprImreH7Ffwg
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-28 22:42:52
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H8hvOzMEJ4dvYs2WNnYUSw
 
 use File::Spec;
 use Cwd;
@@ -1282,6 +1290,41 @@ sub remote_gits_hashref {
         $out->{$remote->{name}}->{$remote->{action}} = $remote->{url};
     }
     return $out;
+}
+
+sub related_sites {
+    my $self = shift;
+    my $sg = $self->sitegroup;
+    my $id = $self->id;
+    return unless $sg;
+    my @related = $self->result_source->schema->resultset('Site')
+      ->search({ id => { '!=' => $id },
+                 canonical => { '!=' => '' },
+                 sitename =>  { '!=' => '' },
+                 sitegroup => $sg,
+               },
+               { columns => [qw/sitename canonical/] });
+    my @out;
+    foreach my $r (@related) {
+        push @out, { uri => $r->canonical,
+                     name => $r->sitename };
+    }
+    return @out;
+}
+
+sub special_list {
+    my $self = shift;
+    my @list = $self->titles->published_specials
+      ->search({
+                title => { '!=' => '' },
+               },
+               { columns => [qw/title uri/] });
+    my @out;
+    foreach my $l (@list) {
+        push @out, { uri => $l->uri,
+                     name => $l->title };
+    }
+    return @out;
 }
 
 

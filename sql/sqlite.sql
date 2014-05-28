@@ -31,6 +31,7 @@ CREATE TABLE site (
        logo VARCHAR(32),
        mail VARCHAR(128),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
+       sitegroup VARCHAR(32),
 
        -- book builder page limit
        bb_page_limit INTEGER NOT NULL DEFAULT 1000,
@@ -250,3 +251,5 @@ INSERT INTO user_role VALUES (1, 1),
 UPDATE site SET fixed_category_list =
        'riot anarch spec antipolit antiwork geo nociv war hist lines'
        WHERE id = '0empty0';
+
+UPDATE site SET sitegroup = '1';

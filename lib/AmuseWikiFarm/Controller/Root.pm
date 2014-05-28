@@ -40,7 +40,9 @@ sub auto :Private {
     unless ($vhost) {
         $c->detach('not_found');
     }
+
     my $site = $vhost->site;
+    return unless $site;
     $c->log->debug("Site ID for $host is " . $site->id
                    . ", with locale " . $site->locale);
 
@@ -49,6 +51,20 @@ sub auto :Private {
 
     # stash the site object
     $c->stash(site => $site);
+
+    my @related = $site->related_sites;
+    my @specials = $site->special_list;
+    for my $sp (@specials) {
+        my $uri = $sp->{uri};
+        $sp->{special_uri} = $uri;
+        $sp->{uri} = $c->uri_for_action('special/display', [ $uri ]);
+    }
+
+    if (@related || @specials) {
+        $c->stash(navigation => { projects => \@related,
+                                  specials => \@specials });
+    }
+    return 1;
 }
 
 sub not_found :Global {
@@ -77,11 +93,14 @@ The root page (/) points to /library/index
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-    # check if we have a special page named inded
-    my $site = $c->stash->{site};
-    if ($site->titles->published_specials->search({ uri => 'index' })) {
-        $c->res->redirect($c->uri_for_action('/special/display', [ 'index' ]));
-        $c->detach();
+    # check if we have a special page named index
+    my $nav = $c->stash->{navigation};
+    if ($nav and exists $nav->{specials}) {
+        if (grep {$_->{special_uri} eq 'index' } @{ $nav->{specials} }) {
+            $c->res->redirect($c->uri_for_action('/special/display', [ 'index' ]));
+            $c->detach();
+            return;
+        }
     }
     $c->detach('/library/index');
 }
