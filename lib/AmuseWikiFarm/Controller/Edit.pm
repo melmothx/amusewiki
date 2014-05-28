@@ -66,13 +66,14 @@ The main route to create a new text from scratch
 
 =cut
 
-sub root :Chained('/') :PathPart('') :CaptureArgs(0) {}
-
-sub newtext :Chained('root') :PathPart('new') :Args(1) {
+sub root :Chained('/') :PathPart('action') :CaptureArgs(1) {
     my ($self, $c, $f_class) = @_;
 
     # validate
-    unless ($f_class eq 'text' or $f_class eq 'special') {
+    if ($f_class eq 'text' or $f_class eq 'special') {
+        $c->stash(f_class => $f_class);
+    }
+    else {
         $c->detach('/not_found');
         return;
     }
@@ -82,11 +83,15 @@ sub newtext :Chained('root') :PathPart('new') :Args(1) {
         unless ($c->user_exists) {
             $c->session(redirect_after_login => $c->request->path);
             $c->response->redirect($c->uri_for('/login'));
+            $c->detach();
         }
     }
+}
 
-
-    my $site = $c->stash->{site};
+sub newtext :Chained('root') :PathPart('new') :Args(0) {
+    my ($self, $c) = @_;
+    my $site    = $c->stash->{site};
+    my $f_class = $c->stash->{f_class} or die;
     # if there was a posting, process it
 
     if ($c->request->params->{go}) {
@@ -125,9 +130,9 @@ sub newtext :Chained('root') :PathPart('new') :Args(1) {
     }
 }
 
-sub text :Chained('root') :PathPart('edit') :CaptureArgs(2) {
-    my ($self, $c, $f_class, $uri) = @_;
-
+sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
+    my ($self, $c, $uri) = @_;
+    my $f_class = $c->stash->{f_class} or die;
     # this self validate the f_class
     my $text = $c->stash->{site}->titles->find({ uri => $uri,
                                                  f_class => $f_class,

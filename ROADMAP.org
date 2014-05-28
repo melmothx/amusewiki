@@ -87,7 +87,7 @@
 
 
 ** TODO Test the /special/ namespace, after it was refactored
-
+** TODO remove controller_User and do some deeper tests
 ** DONE store the pdf attachmentes in a directory by themselves
    CLOSED: [2014-05-26 lun 17:41]
 

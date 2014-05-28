@@ -18,6 +18,8 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
 
+is $site->mode, 'modwiki', "Site mode is blog";
+
 my $user = $site->users->update_or_create({
                                            username => 'pinco',
                                            password => 'pallino',
@@ -34,21 +36,16 @@ $mech->get_ok( '/special/index', "Can access the index page");
 $mech->content_lacks('textarea', "No textarea found in special");
 
 $mech->content_lacks('/admin/', "No link to admin");
+$mech->content_lacks('/action/special/edit/index', "No link to admin");
+$mech->get('/action/special/edit/index');
 
-$mech->post('/special/index/edit', {
-                                    body => "#title blabla\n\nnblablabla\n"
-                                   });
-
-is $mech->response->base->path, '/login', "Bounced to login page";
-$mech->content_contains("Access denied", "Access denied");
-
-$mech->content_lacks('blablabla', "Index not updated");
+is $mech->response->base->path, '/human', "Bounced to login page";
 
 $mech->get('/special/pippo/edit');
 
-is $mech->response->base->path, '/login', "Bounced to login";
+is $mech->response->base->path, '/human', "Bounced to login";
 
-$mech->content_contains("Access denied", "Access denied");
+$mech->content_contains("Please prove you are a human");
 
 $mech->post('/login' => {
                          username => 'pallino'
@@ -63,6 +60,11 @@ $mech->post('/login' => {
                         });
 
 $mech->content_contains(q{/logout"}, "Page contains the logout link");
+
+$mech->get_ok('/action/special/edit/index');
+$mech->content_contains('textarea');
+
+
 $mech->get_ok( '/logout' );
 
 like $mech->uri, qr{/login}, "Bounced to login";

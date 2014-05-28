@@ -34,7 +34,7 @@ my $testdir = File::Temp->newdir(CLEANUP => 0);
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
 
-$mech->get_ok('/new/text');
+$mech->get_ok('/action/text/new');
 
 ok($mech->form_id('login-form'), "Found the login-form");
 
@@ -56,7 +56,7 @@ $mech->click;
 $mech->content_contains('Created new text');
 $title =~ s/ /-/;
 
-like $mech->response->base->path, qr{^/edit/text/pippo-\Q$title\E}, "Location matches";
+like $mech->response->base->path, qr{^/action/text/edit/pippo-\Q$title\E}, "Location matches";
 
 $mech->content_like(qr/\#title\s* ciccia.*
                        \#author\s* pippo.*

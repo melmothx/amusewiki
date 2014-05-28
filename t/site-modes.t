@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 44;
+use Test::More tests => 50;
 use File::Path qw/make_path remove_tree/;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
@@ -79,14 +79,16 @@ sub common_tests {
     diag "Check if the bookbuilder works";
     $mech->get_ok('/bookbuilder/add?text=alsdflasdf');
     $mech->content_contains("Couldn't add the text");
+    $mech->get_ok('/action/special/new');
+    is $mech->uri->path, '/login';
 }
 
 sub closed_new {
     my $mech = shift;
     $mech->get('/');
-    $mech->content_lacks('/new/text"');
-    diag "Checking /new";
-    $mech->get('/new/text');
+    $mech->content_lacks('/action/text/new"');
+    diag "Checking /action/text/new";
+    $mech->get('/action/text/new');
     is $mech->uri->path, '/login', "Bounced to login";
 }
 
@@ -100,9 +102,9 @@ sub closed_publish {
 sub open_new {
     my $mech = shift;
     $mech->get_ok('/');
-    $mech->content_contains('/new/text') or diag $mech->response->decoded_content;
+    $mech->content_contains('/action/text/new') or diag $mech->response->decoded_content;
     $mech->follow_link_ok( { text_regex => qr/Add to library/}, "Going on new");
-    is $mech->uri->path, '/new/text';
+    is $mech->uri->path, '/action/text/new';
     $mech->submit_form(
                        form_id => 'ckform',
                        fields => {
@@ -112,7 +114,7 @@ sub open_new {
                                  },
                        button => 'go',
                       );
-    ok ($mech->success, "post to /new ok");
+    ok ($mech->success, "post to /action/text/new ok");
     if ($mech->uri->path =~ m{pinco-pallino/(\d+)$}) {
         my $rev = $schema->resultset('Revision')->find($1);
         ok ($rev, "Got a revision $1");
