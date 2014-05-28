@@ -94,13 +94,15 @@
                     [% c.loc('Add this text to the bookbuilder') %]
                   </a>
                 </li>
+                [% END %]
+                [% IF text && text.f_class %]
                 <li>
                   <a href="[% c.uri_for_action('/edit/revs', [ text.f_class, text.uri ]) %]">
                     [% c.loc('Edit this text') %]
                   </a>
                 </li>
-                <li class="divider"></li>
                 [% END %]
+                <li class="divider"></li>
                 <li>
                   <a href="[% c.uri_for('/special/about') %]">About</a>
                 </li>

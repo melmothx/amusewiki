@@ -16,6 +16,7 @@
 </div>
 
 <div id="page">
+  [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   <div id="preamble">
     <p id="texttitle">
@@ -152,6 +153,7 @@
     </div>
   </div>
   </div>
+  [% END %]
   <div class="center">
     [% IF text.author %]
     <h3 id="text-author">[% text.author %]</h3>

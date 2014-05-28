@@ -22,28 +22,6 @@ This class provides the site selection and the theme management.
 
 =head1 METHODS
 
-=head2 index
-
-The root page (/) points to /library/index
-
-=cut
-
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-    $c->detach('/library/index');
-}
-
-=head2 default
-
-Standard 404 error page
-
-=cut
-
-sub default :Path {
-    my ( $self, $c ) = @_;
-    $c->detach('not_found');
-}
-
 =head2 auto
 
 Root auto methods sets the site code C<site_id> in the stash, for
@@ -89,6 +67,34 @@ sub not_permitted :Global {
         $c->stash(error_msg => $c->loc("Access denied!"));
     }
     $c->stash(template => "error.tt");
+}
+
+=head2 index
+
+The root page (/) points to /library/index
+
+=cut
+
+sub index :Path :Args(0) {
+    my ( $self, $c ) = @_;
+    # check if we have a special page named inded
+    my $site = $c->stash->{site};
+    if ($site->titles->published_specials->search({ uri => 'index' })) {
+        $c->res->redirect($c->uri_for_action('/special/display', [ 'index' ]));
+        $c->detach();
+    }
+    $c->detach('/library/index');
+}
+
+=head2 default
+
+Standard 404 error page
+
+=cut
+
+sub default :Path {
+    my ( $self, $c ) = @_;
+    $c->detach('not_found');
 }
 
 =head2 end
