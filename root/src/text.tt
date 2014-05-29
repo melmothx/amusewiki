@@ -166,5 +166,26 @@
   <div id="htmltextbody">
     [% text.html_body %]
   </div>
+
+
+  [% IF text.f_class == 'special' %]
+  <div style="heigth:10px">&nbsp;
+    &nbsp;
+  </div>
+  <div class="center">
+    <h1><small>[% c.loc('Latest entries') %]</small></h1>
+  </div>
+  <div class="well">
+    <ul>
+      [% FOREACH entry IN latest_entries %]
+      <li>
+        <a href="[% c.uri_for_action('/library/text', [ entry.uri ]) %]">
+          [% entry.title %]</a> [% IF entry.author %] — [% entry.author %][% END %]
+      </li>
+      [% END %]
+    </ul>
+  </div>
+  [% END %]
+
 </div>
 

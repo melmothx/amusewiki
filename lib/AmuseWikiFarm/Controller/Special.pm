@@ -46,10 +46,12 @@ sub display :Path :Args(1) {
     }
     else {
         if (my $page = $site->titles->published_specials->find({ uri => $page })) {
+            my @latest = $site->titles->latest;
             $c->stash(
                       template => 'text.tt',
                       text => $page,
                       is_library_special => 1,
+                      latest_entries => \@latest,
                      );
             return;
         }
