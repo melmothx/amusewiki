@@ -969,9 +969,10 @@ sub index_file {
         my $cat = $self->categories->find($cat_id);
         $cat->title_count_update;
     }
-
-    # XAPIAN INDEXING
-    $self->xapian->index_text($title);
+    # XAPIAN INDEXING, excluding specials
+    if ($class eq 'text') {
+        $self->xapian->index_text($title);
+    }
     return $file;
 }
 
