@@ -422,6 +422,19 @@ __PACKAGE__->has_many(
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-28 22:42:52
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H8hvOzMEJ4dvYs2WNnYUSw
 
+=head2 other_sites
+
+Other sites with the same sitegroup id.
+
+=cut
+
+__PACKAGE__->has_many(
+                      "other_sites",
+                      "AmuseWikiFarm::Schema::Result::Site",
+                      { "foreign.sitegroup" => "self.sitegroup" },
+                      { cascade_copy => 0, cascade_delete => 0 },
+                     );
+
 use File::Spec;
 use Cwd;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
@@ -1294,20 +1307,14 @@ sub remote_gits_hashref {
 
 sub related_sites {
     my $self = shift;
-    my $sg = $self->sitegroup;
-    my $id = $self->id;
-    return unless $sg;
-    my @related = $self->result_source->schema->resultset('Site')
-      ->search({ id => { '!=' => $id },
-                 canonical => { '!=' => '' },
-                 sitename =>  { '!=' => '' },
-                 sitegroup => $sg,
-               },
-               { columns => [qw/sitename canonical/] });
+    my @related = $self->other_sites->search({},
+                                             { columns => [qw/canonical
+                                                              sitename/] });
     my @out;
     foreach my $r (@related) {
         push @out, { uri => $r->canonical,
-                     name => $r->sitename };
+                     current => ($r->canonical eq $self->canonical),
+                     name => ($r->sitename || $r->canonical) };
     }
     return @out;
 }
@@ -1315,14 +1322,14 @@ sub related_sites {
 sub special_list {
     my $self = shift;
     my @list = $self->titles->published_specials
-      ->search({
-                title => { '!=' => '' },
-               },
+      ->search({},
                { columns => [qw/title uri/] });
     my @out;
     foreach my $l (@list) {
-        push @out, { uri => $l->uri,
-                     name => $l->title };
+        push @out, {
+                    uri => $l->uri,
+                    name => $l->title || $l->uri
+                   };
     }
     return @out;
 }

@@ -95,12 +95,10 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     # check if we have a special page named index
     my $nav = $c->stash->{navigation};
-    if ($nav and exists $nav->{specials}) {
-        if (grep {$_->{special_uri} eq 'index' } @{ $nav->{specials} }) {
-            $c->res->redirect($c->uri_for_action('/special/display', [ 'index' ]));
-            $c->detach();
-            return;
-        }
+    if (my $index = $c->stash->{site}->titles->special_by_uri('index')) {
+        $c->res->redirect($c->uri_for_action('/special/display', [ 'index' ]));
+        $c->detach();
+        return;
     }
     $c->detach('/library/index');
 }

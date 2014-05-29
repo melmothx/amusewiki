@@ -158,7 +158,7 @@
               </a>
               <ul class="dropdown-menu">
                 [% FOREACH link IN navigation.projects %]
-                <li>
+                <li[% IF link.current %] class="active" [% END %]>
                   <a href="[% link.uri %]">[% link.name %]</a>
                 </li>
                 [% END %]

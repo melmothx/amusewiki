@@ -9,8 +9,8 @@ __PACKAGE__->load_components('Helper::ResultSet::Random');
 
 =head2 published_texts
 
-List the published titles (deleted set to empty string and publication
-date in the past.
+Result set with published titles (deleted set to empty string and
+publication date in the past.
 
 =cut
 
@@ -25,6 +25,13 @@ sub published_texts {
                          });
 
 }
+
+=head2 published_specials
+
+Resultset with published special pages, with the same criteria of
+C<published_texts>.
+
+=cut
 
 sub published_specials {
     my $self = shift;
@@ -54,13 +61,24 @@ sub random_text {
 
 =head2 by_uri
 
-Find a published text by uri
+Find a published text by uri.
 
 =cut
 
 sub by_uri {
     my ($self, $uri) = @_;
     return $self->published_texts->single({ uri => $uri });
+}
+
+=head2 special_by_uri
+
+Find a published special by uri.
+
+=cut
+
+sub special_by_uri {
+    my ($self, $uri) = @_;
+    return $self->published_specials->single({ uri => $uri });
 }
 
 =head2 latest($number_of_items)
