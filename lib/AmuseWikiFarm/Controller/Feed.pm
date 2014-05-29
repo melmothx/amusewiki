@@ -26,6 +26,9 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
     my @texts = $site->titles->latest;
+
+    my @specials = $site->titles->published_specials;
+
     my $feed = $c->model('Feed');
 
     # set up the channel
@@ -45,8 +48,18 @@ sub index :Path :Args(0) {
         $feed->pubDate($texts[0]->pubdate->epoch);
     }
 
-    foreach my $text (@texts) {
-        my $link = $c->uri_for_action('/library/text', $text->uri);
+    foreach my $text (@specials, @texts) {
+        my $link;
+        if ($text->f_class eq 'text') {
+            $link = $c->uri_for_action('/library/text', [$text->uri]);
+        }
+        else {
+            # to fool the scrapers, set the permalink for specials
+            # adding a version with the timestamp of the file, so we
+            # catch updates
+            $link = $c->uri_for_action('/special/display', [$text->uri],
+                                       { v => $text->f_timestamp_epoch });
+        }
 
         # here we must force stringification
         my $item = $feed->add_item("$link");
@@ -54,6 +67,11 @@ sub index :Path :Args(0) {
         $item->pubDate($text->pubdate->epoch);
         $item->guid(undef, isPermaLink => 1);
 
+        if ($text->f_class eq 'special') {
+            my $body = $text->html_body;
+            $item->description($body);
+            next;
+        }
         my @lines;
         foreach my $method (qw/author title subtitle date notes source/) {
             my $string = $text->$method;
