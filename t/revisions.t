@@ -57,6 +57,7 @@ ok (-f $revision->starting_file, "Original body was stored");
 $revision->edit("#title blabla\n#notes blabla\n\n Hello world!\n");
 
 my $uri = $revision->publish_text;
+$uri =~ s!^library/!!;
 
 ok $uri, "Found uri $uri";
 
@@ -68,7 +69,9 @@ ok ($text->notes, "Found the notes");
 
 $revision = $text->new_revision;
 $revision->edit("#title blabla\n\n Hellox worldx!\n");
-is $uri, $revision->publish_text, "New revision published";
+my $newuri = $revision->publish_text, "New revision published";
+$newuri =~ s!^library/!!;
+is $uri, $newuri;
 $text = $site->titles->published_texts->find({ uri => $uri});
 like $text->html_body, qr/Hellox worldx/, "Found updated html body";
 

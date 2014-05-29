@@ -89,12 +89,12 @@ my $text = $success->{produced} or die "Can't continue without a text";
 
 $mech->get('/');
 $mech->content_contains($title);
-$mech->get_ok("/library/$text");
+$mech->get_ok("/$text");
 $mech->content_contains(q{<h3 id="text-author">pippo</h3>});
 ok($mech->follow_link(url_regex => qr{bookbuilder/add}), "Found bb link");
 
 $mech->content_contains("Text added");
-$mech->content_contains("/library/$text");
+$mech->content_contains("/$text");
 
 $mech->form_with_fields('collectionname');
 

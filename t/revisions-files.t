@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 26;
+use Test::More tests => 30;
 use File::Spec::Functions qw/catfile catdir/;
 use File::Copy qw/copy/;
 use File::Basename qw/basename/;
@@ -40,13 +40,14 @@ test_revision($site, special => $suffix);
 
 sub test_revision {
     my ($site, $class, $suffix) = @_;
+    my $outpath = $class eq 'special' ? 'special/' : 'library/';
     my $rev = $site->create_new_text({ title => 'HELLO',
                                        lang => 'hr',
                                        textbody => '<p>ciao</p>'
                                      }, $class);
     ok ($rev, "Revision exists");
     is $rev->f_class, $class, "Revision has $class";
-    $rev->publish_text;
+    is $rev->publish_text, $outpath . 'hello';
     # reset
     $rev = $rev->get_from_storage;
     # check the path
@@ -64,7 +65,7 @@ sub test_revision {
     foreach my $att (@attach) {
         is $rev->add_attachment($att), 0, "$att uploaded";
     }
-    $rev->publish_text;
+    is $rev->publish_text, $outpath . 'hello';
 
     my $imagepath;
     if ($class eq 'special') {
