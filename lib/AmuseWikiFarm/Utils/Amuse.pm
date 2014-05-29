@@ -236,7 +236,7 @@ sub muse_parse_file_path {
 
 
     unless ($suffix) {
-        warn "$file is not a recognized file!";
+        # warn "$file is not a recognized file!";
         return;
     }
 
@@ -246,7 +246,7 @@ sub muse_parse_file_path {
     }
 
     unless (muse_filename_is_valid($name)) {
-        warn "$file has not a sane name!";
+        # warn "$file has not a sane name!";
         return;
     }
 
@@ -720,18 +720,18 @@ sub muse_filepath_is_valid {
                 return 'special';
             }
         }
-        warn "$relpath not in the right dir!\n";
+        # warn "$relpath not in the right dir!\n";
         return;
     }
     # then process the regular files.
     if (@dirs != 2) {
-        warn "$relpath not two levels down\n";
+        # warn "$relpath not two levels down\n";
         return;
     }
 
     # check the suffixes
     unless ($suffix =~ m/^\.(muse|jpe?g|png)$/s) {
-        warn "$relpath has a suffix I don't recognize\n";
+        # warn "$relpath has a suffix I don't recognize\n";
         return;
     }
 
@@ -749,7 +749,7 @@ sub muse_filepath_is_valid {
             return $ret_value;
         }
         else {
-            warn "$relpath in the wrong path!\n";
+            #  warn "$relpath in the wrong path!\n";
         }
     }
     elsif ($name =~ m/^([0-9a-z])[0-9a-z]*-([0-9a-z])[0-9a-z-]*[0-9a-z]$/s) {
@@ -758,7 +758,7 @@ sub muse_filepath_is_valid {
         }
     }
     # catch all and return false
-    warn "Checking of $relpath failed\n";
+    # warn "Checking of $relpath failed\n";
     return;
 }
 
