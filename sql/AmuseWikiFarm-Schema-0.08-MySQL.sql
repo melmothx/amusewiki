@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sat May 17 10:24:02 2014
+-- Created on Thu May 29 09:58:23 2014
 -- 
 SET foreign_key_checks=0;
 
@@ -34,6 +34,7 @@ CREATE TABLE `site` (
   `logo` varchar(32) NULL,
   `mail` varchar(128) NULL,
   `canonical` varchar(255) NOT NULL DEFAULT '',
+  `sitegroup` varchar(32) NULL,
   `bb_page_limit` integer NOT NULL DEFAULT 1000,
   `tex` integer NOT NULL DEFAULT 1,
   `pdf` integer NOT NULL DEFAULT 1,
@@ -67,6 +68,7 @@ CREATE TABLE `attachment` (
   `f_timestamp_epoch` integer NOT NULL DEFAULT 0,
   `f_full_path_name` text NOT NULL,
   `f_suffix` varchar(16) NOT NULL,
+  `f_class` varchar(16) NOT NULL,
   `uri` varchar(255) NOT NULL,
   `site_id` varchar(8) NOT NULL,
   INDEX `attachment_idx_site_id` (`site_id`),
@@ -115,29 +117,6 @@ CREATE TABLE `job` (
   CONSTRAINT `job_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `page`;
-
---
--- Table: `page`
---
-CREATE TABLE `page` (
-  `id` integer NOT NULL auto_increment,
-  `site_id` varchar(8) NOT NULL,
-  `pubdate` datetime NOT NULL,
-  `created` datetime NOT NULL,
-  `updated` datetime NOT NULL,
-  `user_id` integer NOT NULL DEFAULT 0,
-  `uri` varchar(255) NULL,
-  `title` varchar(255) NULL,
-  `html_body` text NULL,
-  `f_path` text NOT NULL,
-  `status` varchar(16) NOT NULL DEFAULT 'published',
-  INDEX `page_idx_site_id` (`site_id`),
-  PRIMARY KEY (`id`),
-  UNIQUE `uri_site_id_unique` (`uri`, `site_id`),
-  CONSTRAINT `page_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
-
 DROP TABLE IF EXISTS `title`;
 
 --
@@ -164,13 +143,14 @@ CREATE TABLE `title` (
   `f_timestamp_epoch` integer NOT NULL DEFAULT 0,
   `f_full_path_name` text NOT NULL,
   `f_suffix` varchar(16) NOT NULL,
+  `f_class` varchar(16) NOT NULL,
   `uri` varchar(255) NOT NULL,
   `deleted` text NOT NULL DEFAULT '',
   `sorting_pos` integer NOT NULL DEFAULT 0,
   `site_id` varchar(8) NOT NULL,
   INDEX `title_idx_site_id` (`site_id`),
   PRIMARY KEY (`id`),
-  UNIQUE `uri_site_id_unique` (`uri`, `site_id`),
+  UNIQUE `uri_f_class_site_id_unique` (`uri`, `f_class`, `site_id`),
   CONSTRAINT `title_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 

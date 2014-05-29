@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sat May 17 10:24:02 2014
+-- Created on Thu May 29 09:58:25 2014
 -- 
 --
 -- Table: roles.
@@ -30,6 +30,7 @@ CREATE TABLE "site" (
   "logo" character varying(32),
   "mail" character varying(128),
   "canonical" character varying(255) DEFAULT '' NOT NULL,
+  "sitegroup" character varying(32),
   "bb_page_limit" integer DEFAULT 1000 NOT NULL,
   "tex" integer DEFAULT 1 NOT NULL,
   "pdf" integer DEFAULT 1 NOT NULL,
@@ -62,6 +63,7 @@ CREATE TABLE "attachment" (
   "f_timestamp_epoch" integer DEFAULT 0 NOT NULL,
   "f_full_path_name" text NOT NULL,
   "f_suffix" character varying(16) NOT NULL,
+  "f_class" character varying(16) NOT NULL,
   "uri" character varying(255) NOT NULL,
   "site_id" character varying(8) NOT NULL,
   PRIMARY KEY ("id"),
@@ -106,27 +108,6 @@ CREATE TABLE "job" (
 CREATE INDEX "job_idx_site_id" on "job" ("site_id");
 
 --
--- Table: page.
---
-DROP TABLE "page" CASCADE;
-CREATE TABLE "page" (
-  "id" serial NOT NULL,
-  "site_id" character varying(8) NOT NULL,
-  "pubdate" timestamp NOT NULL,
-  "created" timestamp NOT NULL,
-  "updated" timestamp NOT NULL,
-  "user_id" integer DEFAULT 0 NOT NULL,
-  "uri" character varying(255),
-  "title" character varying(255),
-  "html_body" text,
-  "f_path" text NOT NULL,
-  "status" character varying(16) DEFAULT 'published' NOT NULL,
-  PRIMARY KEY ("id"),
-  CONSTRAINT "uri_site_id_unique" UNIQUE ("uri", "site_id")
-);
-CREATE INDEX "page_idx_site_id" on "page" ("site_id");
-
---
 -- Table: title.
 --
 DROP TABLE "title" CASCADE;
@@ -151,12 +132,13 @@ CREATE TABLE "title" (
   "f_timestamp_epoch" integer DEFAULT 0 NOT NULL,
   "f_full_path_name" text NOT NULL,
   "f_suffix" character varying(16) NOT NULL,
+  "f_class" character varying(16) NOT NULL,
   "uri" character varying(255) NOT NULL,
   "deleted" text DEFAULT '' NOT NULL,
   "sorting_pos" integer DEFAULT 0 NOT NULL,
   "site_id" character varying(8) NOT NULL,
   PRIMARY KEY ("id"),
-  CONSTRAINT "uri_site_id_unique" UNIQUE ("uri", "site_id")
+  CONSTRAINT "uri_f_class_site_id_unique" UNIQUE ("uri", "f_class", "site_id")
 );
 CREATE INDEX "title_idx_site_id" on "title" ("site_id");
 
@@ -239,9 +221,6 @@ ALTER TABLE "category" ADD CONSTRAINT "category_fk_site_id" FOREIGN KEY ("site_i
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "job" ADD CONSTRAINT "job_fk_site_id" FOREIGN KEY ("site_id")
-  REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
-ALTER TABLE "page" ADD CONSTRAINT "page_fk_site_id" FOREIGN KEY ("site_id")
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "title" ADD CONSTRAINT "title_fk_site_id" FOREIGN KEY ("site_id")

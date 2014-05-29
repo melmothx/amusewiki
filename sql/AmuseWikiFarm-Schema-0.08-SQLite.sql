@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Sat May 17 10:24:02 2014
+-- Created on Thu May 29 09:58:24 2014
 -- 
 
 BEGIN TRANSACTION;
@@ -35,6 +35,7 @@ CREATE TABLE site (
   logo varchar(32),
   mail varchar(128),
   canonical varchar(255) NOT NULL DEFAULT '',
+  sitegroup varchar(32),
   bb_page_limit integer NOT NULL DEFAULT 1000,
   tex integer NOT NULL DEFAULT 1,
   pdf integer NOT NULL DEFAULT 1,
@@ -68,6 +69,7 @@ CREATE TABLE attachment (
   f_timestamp_epoch integer NOT NULL DEFAULT 0,
   f_full_path_name text NOT NULL,
   f_suffix varchar(16) NOT NULL,
+  f_class varchar(16) NOT NULL,
   uri varchar(255) NOT NULL,
   site_id varchar(8) NOT NULL,
   FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -119,30 +121,6 @@ CREATE TABLE job (
 CREATE INDEX job_idx_site_id ON job (site_id);
 
 --
--- Table: page
---
-DROP TABLE page;
-
-CREATE TABLE page (
-  id INTEGER PRIMARY KEY NOT NULL,
-  site_id varchar(8) NOT NULL,
-  pubdate datetime NOT NULL,
-  created datetime NOT NULL,
-  updated datetime NOT NULL,
-  user_id integer NOT NULL DEFAULT 0,
-  uri varchar(255),
-  title varchar(255),
-  html_body text,
-  f_path text NOT NULL,
-  status varchar(16) NOT NULL DEFAULT 'published',
-  FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
-);
-
-CREATE INDEX page_idx_site_id ON page (site_id);
-
-CREATE UNIQUE INDEX uri_site_id_unique02 ON page (uri, site_id);
-
---
 -- Table: title
 --
 DROP TABLE title;
@@ -168,6 +146,7 @@ CREATE TABLE title (
   f_timestamp_epoch integer NOT NULL DEFAULT 0,
   f_full_path_name text NOT NULL,
   f_suffix varchar(16) NOT NULL,
+  f_class varchar(16) NOT NULL,
   uri varchar(255) NOT NULL,
   deleted text NOT NULL DEFAULT '',
   sorting_pos integer NOT NULL DEFAULT 0,
@@ -177,7 +156,7 @@ CREATE TABLE title (
 
 CREATE INDEX title_idx_site_id ON title (site_id);
 
-CREATE UNIQUE INDEX uri_site_id_unique03 ON title (uri, site_id);
+CREATE UNIQUE INDEX uri_f_class_site_id_unique ON title (uri, f_class, site_id);
 
 --
 -- Table: users
