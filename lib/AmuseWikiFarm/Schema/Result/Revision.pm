@@ -691,9 +691,9 @@ sub publish_text {
     }
 
     if ($failure) {
-        my $failed = $self->site->titles->find({ uri => $self->muse_uri });
-        $failed->status('deleted');
-        $failed->deleted(q{Document has errors and couldn't be compiled});
+        $self->title->status('deleted');
+        $self->title->deleted(q{Document has errors and couldn't be compiled});
+        $self->title->update;
     }
 
     $self->site->collation_index;

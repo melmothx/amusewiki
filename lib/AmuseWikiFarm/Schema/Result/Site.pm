@@ -698,7 +698,7 @@ sub create_new_text {
     # and store it in the params
     $params->{uri} = $uri;
 
-    if ($self->titles->find({ uri => $uri })) {
+    if ($self->titles->find({ uri => $uri, f_class => $f_class })) {
         return undef, "Such an uri already exists";
     }
     return $self->import_text_from_html_params($params, $f_class);
@@ -1190,7 +1190,7 @@ sub update_db_from_tree {
         $compiler->report_failure_sub(sub {  $failure = 1 });
         $compiler->compile($file);
         if ($failure) {
-            my $failed = $self->titles->find({ f_full_path_name => $file });
+            my $failed = $self->titles->find_file($file);
             if ($failed) {
                 $failed->status('deleted');
                 $failed->deleted(q{Document has errors and couldn't be compiled});
@@ -1214,14 +1214,13 @@ nothing if not found).
 sub find_file_by_path {
     my ($self, $path) = @_;
     return unless $path;
-    my ($name, $dirs, $suffix) = fileparse($path, '.muse');
-    # TODO add support for the special pages when dumped in the git
-    if ($suffix eq '.muse') {
-        my $title = $self->titles->find({ uri => $name });
+    my $fullpath = File::Spec->rel2abs($path, $self->repo_root);
+    if ($fullpath =~ m/\.muse$/) {
+        my $title = $self->titles->find_file($fullpath);
         return $title;
     }
     else {
-        my $file = $self->attachments->find({ uri => $name });
+        my $file = $self->attachments->find_file($fullpath);
         return $file;
     }
 }

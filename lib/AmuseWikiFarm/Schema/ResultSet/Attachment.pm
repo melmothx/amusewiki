@@ -17,6 +17,21 @@ sub by_uri {
     return $self->single({ uri => $uri });
 }
 
+=head2 find_file($path)
+
+Shortcut for
+
+ $self->search({ f_full_path_name => $path })->single;
+
+=cut
+
+sub find_file {
+    my ($self, $path) = @_;
+    die "Bad usage" unless $path;
+    return $self->search({ f_full_path_name => $path })->single;
+}
+
+
 
 1;
 

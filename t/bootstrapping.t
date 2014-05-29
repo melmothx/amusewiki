@@ -54,7 +54,8 @@ is_deeply $changes, {
                      new => [],
                      changed => [],
                      removed => [ $target_rel_file ],
-                    }, "Found the removed file!" or diag Dumper($changes);
+                    }, "Found the removed file $target_rel_file!"
+  or diag Dumper($changes);
 
 
 write_file($target_abs_file, { binmode => ':encoding(utf-8)' }, $save);
@@ -64,7 +65,8 @@ is_deeply $changes, {
                      new => [],
                      changed => [ $target_rel_file ],
                      removed => [],
-                    }, "Found the changed file!" or diag Dumper($changes);
+                    }, "Found the changed file $target_rel_file!"
+  or diag Dumper($changes);
 
 
 write_file(catfile($site->repo_root, qw/d dt d-t-test.muse/), "lassdklfa laksdf");

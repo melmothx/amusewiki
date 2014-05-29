@@ -135,8 +135,9 @@ sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     my $f_class = $c->stash->{f_class} or die;
     # this self validate the f_class
-    my $text = $c->stash->{site}->titles->find({ uri => $uri,
-                                                 f_class => $f_class,
+    my $text = $c->stash->{site}->titles->find({
+                                                uri => $uri,
+                                                f_class => $f_class,
                                                });
 
     # but only users can edit special pages
