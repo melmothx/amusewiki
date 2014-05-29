@@ -1193,12 +1193,14 @@ sub update_db_from_tree {
         my $file = File::Spec->catfile($self->repo_root, $new);
         print "Indexing $file\n";
         $self->index_file($file);
+
+        # skip already compiled files or not muse files
+        next unless $file =~ m/\.muse$/;
+        next unless $compiler->file_needs_compilation($file);
+
         my $failure = 0;
         $compiler->report_failure_sub(sub {  $failure = 1 });
-        if ($new =~ m/\.muse$/) {
-            print "Compiling $new\n";
-            $compiler->compile($file);
-        }
+        $compiler->compile($file);
         if ($failure) {
             my $failed = $self->titles->find({ f_full_path_name => $file });
             if ($failed) {
