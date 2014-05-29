@@ -86,7 +86,8 @@
 * Needed before first beta release
 
 
-** TODO Test the /special/ namespace, after it was refactored
+** DONE Test the /special/ namespace, after it was refactored
+   CLOSED: [2014-05-29 gio 16:16]
 ** TODO remove controller_User and do some deeper tests
 ** DONE store the pdf attachmentes in a directory by themselves
    CLOSED: [2014-05-26 lun 17:41]
