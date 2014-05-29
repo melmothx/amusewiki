@@ -49,6 +49,7 @@ sub display :Path :Args(1) {
             $c->stash(
                       template => 'text.tt',
                       text => $page,
+                      is_library_special => 1,
                      );
             return;
         }

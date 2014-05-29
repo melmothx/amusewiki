@@ -64,7 +64,7 @@
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
-                 title="text by authors, title, topic..."
+                 title="texts by authors, title, topic..."
                  data-toggle="dropdown">
                 [% c.loc('Catalog') %]
                 <b class="caret"></b>
@@ -91,19 +91,21 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="#"
+                 title="[% c.loc('Editing, bookbuilder...') %]"
+                 class="dropdown-toggle" data-toggle="dropdown">
                 [% c.loc('Tools') %]
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                [% IF show_edit_bb %]
+                [% IF is_library_regular_title %]
                 <li>
                   <a href="[% c.uri_for('/bookbuilder/add', { text => text.uri }) %]">
                     [% c.loc('Add this text to the bookbuilder') %]
                   </a>
                 </li>
                 [% END %]
-                [% IF text && text.f_class %]
+                [% IF is_library_regular_title || (is_library_special && c.user_exists) %]
                 <li>
                   <a href="[% c.uri_for_action('/edit/revs', [ text.f_class, text.uri ]) %]">
                     [% c.loc('Edit this text') %]
