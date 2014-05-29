@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<roles>
+=head1 TABLE: C<role>
 
 =cut
 
-__PACKAGE__->table("roles");
+__PACKAGE__->table("role");
 
 =head1 ACCESSORS
 
@@ -48,7 +48,7 @@ __PACKAGE__->table("roles");
 
   data_type: 'varchar'
   is_nullable: 1
-  size: 255
+  size: 128
 
 =cut
 
@@ -56,7 +56,7 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "role",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", is_nullable => 1, size => 128 },
 );
 
 =head1 PRIMARY KEY
@@ -113,8 +113,8 @@ Composing rels: L</user_roles> -> user
 __PACKAGE__->many_to_many("users", "user_roles", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-19 16:15:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NdcdKWtG+03CnynPoCO9Dw
+# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-29 17:18:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qSkBiDA0MY2KJW2eRsc2zA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

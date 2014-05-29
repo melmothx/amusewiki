@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<users>
+=head1 TABLE: C<user>
 
 =cut
 
-__PACKAGE__->table("users");
+__PACKAGE__->table("user");
 
 =head1 ACCESSORS
 
@@ -48,7 +48,7 @@ __PACKAGE__->table("users");
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 32
+  size: 64
 
 =head2 password
 
@@ -68,28 +68,19 @@ __PACKAGE__->table("users");
   default_value: 0
   is_nullable: 0
 
-=head2 site_id
-
-  data_type: 'varchar'
-  is_foreign_key: 1
-  is_nullable: 1
-  size: 8
-
 =cut
 
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "username",
-  { data_type => "varchar", is_nullable => 0, size => 32 },
+  { data_type => "varchar", is_nullable => 0, size => 64 },
   "password",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "email",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "active",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
-  "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 8 },
 );
 
 =head1 PRIMARY KEY
@@ -104,27 +95,21 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("id");
 
-=head1 RELATIONS
+=head1 UNIQUE CONSTRAINTS
 
-=head2 site
+=head2 C<username_unique>
 
-Type: belongs_to
+=over 4
 
-Related object: L<AmuseWikiFarm::Schema::Result::Site>
+=item * L</username>
+
+=back
 
 =cut
 
-__PACKAGE__->belongs_to(
-  "site",
-  "AmuseWikiFarm::Schema::Result::Site",
-  { id => "site_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
-);
+__PACKAGE__->add_unique_constraint("username_unique", ["username"]);
+
+=head1 RELATIONS
 
 =head2 user_roles
 
@@ -141,6 +126,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 user_sites
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::UserSite>
+
+=cut
+
+__PACKAGE__->has_many(
+  "user_sites",
+  "AmuseWikiFarm::Schema::Result::UserSite",
+  { "foreign.user_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 roles
 
 Type: many_to_many
@@ -151,9 +151,19 @@ Composing rels: L</user_roles> -> role
 
 __PACKAGE__->many_to_many("roles", "user_roles", "role");
 
+=head2 sites
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-19 17:18:22
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:aWFMb6D0kyefdqB1tjbJVw
+Type: many_to_many
+
+Composing rels: L</user_sites> -> site
+
+=cut
+
+__PACKAGE__->many_to_many("sites", "user_sites", "site");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-05-29 17:28:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yrh2bawYycWZEaG1z2kXcw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

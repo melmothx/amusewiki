@@ -388,17 +388,17 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
-=head2 users
+=head2 user_sites
 
 Type: has_many
 
-Related object: L<AmuseWikiFarm::Schema::Result::User>
+Related object: L<AmuseWikiFarm::Schema::Result::UserSite>
 
 =cut
 
 __PACKAGE__->has_many(
-  "users",
-  "AmuseWikiFarm::Schema::Result::User",
+  "user_sites",
+  "AmuseWikiFarm::Schema::Result::UserSite",
   { "foreign.site_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
@@ -418,9 +418,19 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 users
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-28 22:42:52
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:H8hvOzMEJ4dvYs2WNnYUSw
+Type: many_to_many
+
+Composing rels: L</user_sites> -> user
+
+=cut
+
+__PACKAGE__->many_to_many("users", "user_sites", "user");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-05-29 17:28:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hHik7JjW81g7Zo1RiB9SEQ
 
 =head2 other_sites
 

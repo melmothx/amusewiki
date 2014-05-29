@@ -54,24 +54,30 @@ CREATE TABLE site (
        twoside INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE TABLE users (
+CREATE TABLE user (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       username VARCHAR(32) NOT NULL,
+       username VARCHAR(64) NOT NULL UNIQUE,
        password VARCHAR(255) NOT NULL,
        email    VARCHAR(255),
-       active   INTEGER NOT NULL DEFAULT 0,
-       site_id VARCHAR(8) REFERENCES site(id)
-                          ON DELETE CASCADE ON UPDATE CASCADE
+       active   INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE TABLE roles (
-       id INTEGER PRIMARY KEY,
-       role VARCHAR(255) UNIQUE
+CREATE TABLE role (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       role VARCHAR(128) UNIQUE
+);
+
+CREATE TABLE user_site (
+       user_id INTEGER NOT NULL REFERENCES user(id)
+                       ON DELETE CASCADE ON UPDATE CASCADE,
+       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (user_id, site_id)
 );
 
 CREATE TABLE user_role (
-        user_id INTEGER REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        user_id INTEGER REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        role_id INTEGER REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE,
         PRIMARY KEY (user_id, role_id)
 );
 
@@ -235,13 +241,13 @@ INSERT INTO vhost VALUES ('test.amusewiki.org', '0test0');
 INSERT INTO vhost VALUES ('empty.amusewiki.org', '0empty0');
 INSERT INTO vhost VALUES ('wiki.amusewiki.org', '0wiki0');
 
-INSERT INTO roles VALUES (1, 'root');
-INSERT INTO roles VALUES (2, 'librarian');
+INSERT INTO role VALUES (1, 'root');
+INSERT INTO role VALUES (2, 'librarian');
 
-INSERT INTO users VALUES (1, 'root', 'root', '', 1, NULL);
-INSERT INTO users VALUES (2, 'user1', 'pass', '', 1, '0blog0');
-INSERT INTO users VALUES (3, 'user2', 'pass', '', 1, '0blog0');
-INSERT INTO users VALUES (4, 'user3', 'pass', '', 0, '0blog0');
+INSERT INTO user VALUES (1, 'root', 'root', '', 1);
+INSERT INTO user VALUES (2, 'user1', 'pass', '', 1);
+INSERT INTO user VALUES (3, 'user2', 'pass', '', 1);
+INSERT INTO user VALUES (4, 'user3', 'pass', '', 0);
 
 INSERT INTO user_role VALUES (1, 1),
                              (2, 2),
