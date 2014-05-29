@@ -16,7 +16,7 @@
   [% SET baseuri = c.uri_for('/custom/') %]
 [% ELSIF job.task == 'publish' %]
   [% SET mymessage =  c.loc('The text has been published') %]
-  [% SET baseuri = c.uri_for('/library/') %]
+  [% SET baseuri = c.uri_for('/') %]
 [% END %]
 
 

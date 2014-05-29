@@ -699,7 +699,13 @@ sub publish_text {
     $self->site->collation_index;
     $self->status('published');
     $self->update;
-    return $self->muse_uri;
+    my $uri = $self->muse_uri;
+    if ($self->f_class eq 'special') {
+        return "special/$uri";
+    }
+    else {
+        return "library/$uri";
+    }
 }
 
 sub f_class {
