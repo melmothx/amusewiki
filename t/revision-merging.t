@@ -10,7 +10,10 @@ use File::Slurp qw/read_file write_file/;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
 
-my $revision = $site->new_revision_from_uri('first-test');
+my $text = $site->titles->published_texts->find({ uri => 'first-test' });
+
+
+my $revision = $text->new_revision;
 
 # do a copy to avoid modifing our own git...
 my $original_file = read_file($revision->title->f_full_path_name,
@@ -32,7 +35,7 @@ ok $revision->can_be_merged, "Revision can be merged";
 
 # create another one
 
-my $other_revision = $site->new_revision_from_uri('first-test');
+my $other_revision = $text->new_revision;
 
 ok $other_revision->can_be_merged, "The other revision can be merged";
 
@@ -44,7 +47,7 @@ $revision->publish_text;
 ok !$other_revision->can_be_merged, "The other revision now can't be merged";
 
 # reset
-my $restore = $site->new_revision_from_uri('first-test');
+my $restore = $text->new_revision;
 $restore->edit($original_file);
 
 ok $restore->can_be_merged, "New revision works";

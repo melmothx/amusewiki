@@ -794,19 +794,6 @@ sub _add_directive {
     print $fh '#' . $directive . ' ' . $text . "\n";
 }
 
-=head2 new_revision_from_uri($uri)
-
-Return a new revision object for the text uri or undef if it doesn't
-exist.
-
-=cut
-
-sub new_revision_from_uri {
-    my ($self, $uri) = @_;
-    my $text = $self->titles->find({ uri => $uri });
-    $text ? return $text->new_revision : return;
-}
-
 =head2 xapian
 
 Return a L<AmuseWikiFarm::Archive::Xapian> object
