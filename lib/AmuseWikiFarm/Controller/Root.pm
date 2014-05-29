@@ -58,6 +58,7 @@ sub auto :Private {
         my $uri = $sp->{uri};
         $sp->{special_uri} = $uri;
         $sp->{uri} = $c->uri_for_action('special/display', [ $uri ]);
+        $sp->{active} = ($c->request->uri eq $sp->{uri});
     }
 
     if (@related || @specials) {

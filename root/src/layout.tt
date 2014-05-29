@@ -112,13 +112,13 @@
                   </a>
                 </li>
                 [% END %]
-                <li>
+                <li[% IF nav == 'bookbuilder' %] class="active"[% END %]>
                   <a href="[% c.uri_for('/bookbuilder') %]">
                     [% c.loc('Book builder') %]
                   </a>
                 </li>
                 [% IF c.user_exists || site.human_can_edit %]
-                <li>
+                <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
                   <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
                     [% c.loc('Add to library') %]
                   </a>
@@ -166,7 +166,7 @@
                 <li class="divider"></li>
                 [% END %]
                 [% FOREACH link IN navigation.specials %]
-                <li>
+                <li[% IF link.active %] class="active"[% END %]>
                   <a href="[% link.uri %]">[% link.name %]</a>
                 </li>
                 [% END %]

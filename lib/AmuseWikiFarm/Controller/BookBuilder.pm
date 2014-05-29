@@ -23,6 +23,7 @@ Deny access to not-human
 
 sub auto :Private {
     my ($self, $c) = @_;
+    $c->stash(nav => 'bookbuilder');
     if ($c->session->{i_am_human}) {
         return 1;
     }

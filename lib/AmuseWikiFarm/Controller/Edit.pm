@@ -90,6 +90,7 @@ sub root :Chained('/') :PathPart('action') :CaptureArgs(1) {
 
 sub newtext :Chained('root') :PathPart('new') :Args(0) {
     my ($self, $c) = @_;
+    $c->stash(nav => 'add-to-library');
     my $site    = $c->stash->{site};
     my $f_class = $c->stash->{f_class} or die;
     # if there was a posting, process it
