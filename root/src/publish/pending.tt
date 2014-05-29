@@ -15,7 +15,11 @@
     <tr>
       <td>
         <a href="[% c.uri_for_action('/edit/edit', [rev.f_class, rev.title.uri, rev.id]) %]">
-          [% rev.title.uri %]
+          [% IF rev.f_class == 'special' %]
+          /special/[% rev.title.uri %]
+          [% ELSE %]
+          /library/[% rev.title.uri %]
+          [% END %]
         </a>
       </td>
       <td>
