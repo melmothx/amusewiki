@@ -938,14 +938,20 @@ sub index_file {
         push @old_cats_ids, $old_cat->id;
     }
 
+    my $name = $title->uri;
+    my $status;
     if ($title->is_deleted) {
-        $title->status('deleted');
+        $status = 'deleted';
     }
     elsif ($title->is_deferred) {
-        $title->status('deferred');
+        $status = 'deferred';
     }
     elsif ($title->is_published) {
-        $title->status('published');
+        $status = 'published';
+    }
+    if ($status) {
+        $title->status($status);
+        warn "STATUS for $class $name SET TO **$status**\n";
     }
     $title->update if $title->is_changed;
 
@@ -1254,7 +1260,8 @@ sub git {
 
 =head2 remote_gits
 
-Return a list of remote gits found in the repo.
+Return a list of remote gits found in the repo. Each element is an
+hashref with the following keys: C<name>, C<url>, C<action>.
 
 =cut
 
@@ -1275,7 +1282,7 @@ sub remote_gits {
     return @out;
 }
 
-=head2 remote_git
+=head2 remote_gits_hashref
 
 Return an hashref (empty hashref is no git or no remotes) with this structure:
 
@@ -1304,6 +1311,14 @@ sub remote_gits_hashref {
     return $out;
 }
 
+=head2 related_sites
+
+Return a list where each element is an hashref describing the related
+site (with the same group) and has the following keys: C<uri>,
+C<current> (if it's ourselves), C<name>.
+
+=cut
+
 sub related_sites {
     my $self = shift;
     my @related = $self->other_sites->search({},
@@ -1317,6 +1332,13 @@ sub related_sites {
     }
     return @out;
 }
+
+=head2 special_list
+
+Return a list where each element is an hashref describing the special
+pages we have and has the following keys: C<uri>, C<name>.
+
+=cut
 
 sub special_list {
     my $self = shift;

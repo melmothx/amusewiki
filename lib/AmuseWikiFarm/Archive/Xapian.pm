@@ -119,13 +119,13 @@ sub index_text {
     my $qterm = 'Q' . $title->uri;
 
     if (!$title->is_published) {
-        print "Deleting " . $title->uri . " from Xapian db\n";
+        warn "Deleting " . $title->uri . " from Xapian db\n";
         eval {
             $database->delete_document_by_term($qterm);
         };
     }
     else {
-        print "Updating " . $title->uri . " in Xapian db\n";
+        warn "Updating " . $title->uri . " in Xapian db\n";
         eval {
             my $doc = Search::Xapian::Document->new();
             $indexer->set_document($doc);

@@ -278,7 +278,7 @@ sub dispatch_job {
             $self->produced($output);
         }
         if (@warnings) {
-            $logger->("WARNINGS intercepted: ", @warnings);
+            $logger->("WARNINGS intercepted:\n", @warnings);
         }
         $logger->("Job $task finished at " . localtime() . "\n");
     }
