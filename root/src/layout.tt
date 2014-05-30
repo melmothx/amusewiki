@@ -49,16 +49,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <button class="btn btn-default navbar-btn hidden-when-no-toc"
-                  data-toggle="modal"
-                  style="display:none"
-                  title="Toggle ToC"
-                  data-target="#myModal">
-            <span class="glyphicon glyphicon-list"></span>
-          </button>
           <a class="navbar-brand" href="[% c.uri_for('/') %]">
-            [% site.sitename %]
+            <small>[% site.sitename %]</small>
           </a>
+          <a class="navbar-brand hidden-when-no-toc" href="#"
+             data-toggle="modal"
+             style="display:none"
+             title="Toggle ToC"
+             data-target="#myModal">
+            <span class="glyphicon glyphicon-list"></span>
+          </a>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
