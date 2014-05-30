@@ -21,12 +21,16 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript"
+            src="[% c.uri_for('/static/js/jquery-1.11.1.min.js') %]">
+    </script>
     <link rel="stylesheet" href="[% c.uri_for('/static/css/bootstrap.css') %]" />
     <link rel="stylesheet" href="[% c.uri_for('/static/css/theme.css') %]" />
+
     <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="[% c.uri_for('/static/js/bootstrap.min.js') %]">
+    </script>
 
     [%# base css for amuse texts %]
     <link rel="stylesheet" href="[% c.uri_for('/static/css/amuse.css') %]" />
