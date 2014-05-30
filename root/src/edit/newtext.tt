@@ -41,7 +41,7 @@ var ckconfiguration = {
     <p>
       <label for="author">[% c.loc('Author') %]</label>
       ([% c.loc('for display') %]):
-      <input class="form-control required" type="text" name="author" id="author"
+      <input class="form-control" type="text" name="author" id="author"
 	         maxlength="100"
 	         value="[% processed_params.author | html %]" />
     </p>
@@ -57,7 +57,7 @@ var ckconfiguration = {
 
     <p>
       <label for="title">[% c.loc('Title') %]</label>
-      ([% c.loc('Mandatory') %]).
+      (<span class="error">[% c.loc('Mandatory') %]</span>).
       [% c.loc('If by chance another text with the same author and title exists, try to add a number to the “Desired URI” input field above') %]
       <input class="form-control required" type="text" name="title"
 	     maxlength="100" id="title"
@@ -83,7 +83,8 @@ var ckconfiguration = {
     
     <p>
       <label for="SORTtopics">[% c.loc('Topics') %]</label>
-      ([% c.loc('comma or semicolon separated list') %])
+      (<span class="error">[% c.loc('Mandatory') %]</span>):
+      [% c.loc('comma or semicolon separated list') %]
       <br />
       <input class="form-control required" id="SORTtopics"
 	     size="50"
@@ -196,11 +197,14 @@ var ckconfiguration = {
         [% c.loc('Prepare this text for the archiving') %]
       </button>
     </div>
+    <script type="text/javascript"
+            src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
+    </script>
     <script type="text/javascript">
       $(document).ready(function(){
         $("#ckform").validate();
       });
-  </script>
+    </script>
 </div>
 </form>
 
