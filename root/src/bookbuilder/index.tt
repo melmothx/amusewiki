@@ -144,46 +144,27 @@
       [% bcor_counter = bcor_counter + 1 %]
       [% END %]
     </select>
-
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <input type="checkbox" name="twoside" value="1" id="twoside" />
-          </span>
-          <span class="form-control">[% c.loc('Two side layout') %]</span>
-        </div>
-      </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="twoside" value="1" id="twoside" />
+        [% c.loc('Two side layout') %]
+      </label>
     </div>
-
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <input type="checkbox" name="imposed" value="1" />
-          </span>
-          <span class="form-control">
-            [% c.loc('I want an imposed (ready to print) PDF') %]
-          </span>
-        </div>
-      </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="imposed" value="1" />
+        [% c.loc('I want an imposed (ready to print) PDF') %]
+      </label>
     </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="signatures" value="1" />
+        [% c.loc('When imposing, use optimized signatures with 40-80 pages each') %]
+        ([% c.loc('if applicable') %]).
 
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <span class="input-group-addon">
-            <input type="checkbox" name="signatures" value="1" />
-          </span>
-          <span class="form-control">
-            [% c.loc('When imposing, use optimized signatures with 40-80 pages each') %]
-            ([% c.loc('if applicable') %]).
-          </span>
-        </div>
-      </div>
+      </label>
     </div>
     <p>
-      <br >
       <label for="schema">
         [% c.loc('If you asked for imposition, select an imposition schema') %]:
       </label>
