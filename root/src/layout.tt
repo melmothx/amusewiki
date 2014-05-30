@@ -118,27 +118,6 @@
                     [% c.loc('Book builder') %]
                   </a>
                 </li>
-                [% IF c.user_exists || site.human_can_edit %]
-                <li[% IF nav == 'add-to-library' %] class="disabled"[% END %]>
-                  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
-                    [% c.loc('Add to library') %]
-                  </a>
-                </li>
-                [% END %]
-                [% IF c.user_exists || site.human_can_publish %]
-                <li>
-                  <a href="[% c.uri_for('/publish/pending') %]">
-                    [% c.loc('Pending') %]
-                  </a>
-                </li>
-                [% END %]
-                [% IF c.user_exists %]
-                <li>
-                  <a href="[% c.uri_for('/logout') %]">
-                    [% c.user.get('username') %] [% c.loc('logout') %]
-                  </a>
-                </li>
-                [% END %]
                 <li>
                   <a href="[% c.uri_for('/feed') %]">
                     [% c.loc("RSS feed") %]
@@ -174,10 +153,52 @@
               </ul>
             </li>
             [% END %]
+            [% IF c.user_exists %]
+            [% SET myloggedin = c.user.get('username') %]
+            [% END %]
+            [% IF myloggedin || site.human_can_edit || site.human_can_publish %]
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle"
+                 title="about, links..."
+                 data-toggle="dropdown">
+                [% myloggedin || c.loc('You') %]
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                [% IF c.user_exists || site.human_can_edit %]
+                <li[% IF nav == 'add-to-library' %] class="disabled"[% END %]>
+                  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
+                    [% c.loc('Add to library') %]
+                  </a>
+                </li>
+                [% END %]
+                [% IF c.user_exists || site.human_can_publish %]
+                <li>
+                  <a href="[% c.uri_for('/publish/pending') %]">
+                    [% c.loc('Pending') %]
+                  </a>
+                </li>
+                [% END %]
+                [% IF c.user_exists %]
+                <li>
+                  <a href="[% c.uri_for('/logout') %]">
+                    [% c.user.get('username') %] [% c.loc('logout') %]
+                  </a>
+                </li>
+                [% ELSE %]
+                <li[% IF nav == 'login' %] class="disabled"[% END %]>
+                  <a href="[% c.uri_for('/login') %]">
+                    [% c.loc('login') %]
+                  </a>
+                </li>
+                [% END %]
+              </ul>
+            </li>
+            [% END %]
           </ul>
           <form class="navbar-form navbar-right navbar-input-group" role="search"
                 id="formsearchbox" action="[% c.uri_for('/search') %]">
-            <div class="input-group" style="width:225px">
+            <div class="input-group" style="width:170px">
 		      <input type="text" class="form-control"
                      placeholder="[% c.loc('Full text search') %]"
                      name="query" value=""/>

@@ -52,6 +52,7 @@ sub login :Path('/login') :Args(0) {
         return;
     }
 
+    $c->stash(nav => 'login');
     my $username = $c->request->params->{username};
     my $password = $c->request->params->{password};
 
