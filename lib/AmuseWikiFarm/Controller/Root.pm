@@ -61,7 +61,8 @@ sub auto :Private {
         $sp->{active} = ($c->request->uri eq $sp->{uri});
     }
 
-    if (@related || @specials) {
+    # let's assume related will return self, and special index
+    if (@related > 1 or @specials > 1) {
         $c->stash(navigation => { projects => \@related,
                                   specials => \@specials });
     }
