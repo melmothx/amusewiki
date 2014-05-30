@@ -28,9 +28,16 @@
         <form action="[% c.uri_for('/bookbuilder/edit') %]" method="post">
           <input type="hidden" name="text"      value="[% book  %]" />
           <input type="hidden" name="textindex" value="[% textindex %]" />
-	      <input type="submit" name="moveup" value="[% c.loc('Move up')   %]" />
-	      <input type="submit" name="movedw" value="[% c.loc('Move down') %]" />
-	      <input type="submit" name="delete" value="[% c.loc('Delete')    %]" />
+          <button type="submit" name="moveup" value="up" class="btn btn-default">
+            [% c.loc('Move up') %]
+          </button>
+          <button type="submit" name="movedw" value="down" class="btn btn-default">
+            [% c.loc('Move down') %]
+          </button>
+          <button type="submit" name="delete" value="delete"
+                  class="btn btn-default">
+            [% c.loc('Delete') %]
+          </button>
         </form>
     </tr>
     [% textindex = textindex + 1 %]
@@ -42,7 +49,9 @@
       <td>
         <div id="bb-clear-all">
           <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
-            <input type="submit" name="clear" value="[% c.loc('Clear the book list') %]" />
+            <button type="submit" name="clear" value="clear" class="btn btn-default">
+              [% c.loc('Clear the book list') %]
+            </button>
           </form>
         </div>
       </td>
