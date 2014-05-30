@@ -1355,8 +1355,8 @@ sub special_list {
     return @out;
 }
 
-=head2 update_or_create_user(\%attrs)
-       update_or_create_user($username)
+=head2 update_or_create_user(\%attrs, $role)
+       update_or_create_user($username, $role)
 
 Create or update a user and add it to our user unless already present.
 If an hashref is passed, it must contain the username key with some
@@ -1364,10 +1364,12 @@ value. Also, the sanity of the username is checked.
 
 Returns the User object.
 
+If the optional $role is passed, the role will be assigned.
+
 =cut
 
 sub update_or_create_user {
-    my ($self, $details) = @_;
+    my ($self, $details, $role) = @_;
 
     # first, search our users
 
@@ -1391,18 +1393,19 @@ sub update_or_create_user {
         my %query = %$details;
         delete $query{username};
         if (%query) {
-            return $user->update(\%query)->discard_changes;
-        }
-        else {
-            return $user;
+            $user->update(\%query)->discard_changes;
         }
     }
-
-    # still here? check the existing userbase
-    $user = $self->result_source->schema->resultset('User')
-      ->update_or_create({ %$details })->get_from_storage;
-
-    $self->add_to_users($user);
+    else {
+        # still here? check the existing userbase
+        $user = $self->result_source->schema->resultset('User')
+          ->update_or_create({ %$details })->get_from_storage;
+        $self->add_to_users($user);
+    }
+    # check the roles
+    unless ($user->roles->find({ role => $role })) {
+        $user->add_to_roles({ role => $role });
+    }
     return $user;
 }
 

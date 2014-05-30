@@ -59,7 +59,7 @@ CREATE TABLE user (
        username VARCHAR(128) NOT NULL,
        password VARCHAR(255) NOT NULL,
        email    VARCHAR(255),
-       active   INTEGER NOT NULL DEFAULT 0
+       active   INTEGER NOT NULL DEFAULT 1
 );
 
 CREATE UNIQUE INDEX unique_username ON user (username);
