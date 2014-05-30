@@ -1,5 +1,4 @@
 [%# -*- mode: html -*- %]
-[% USE HTML %]
 
 [% coming_from = c.flash.referrer %]
 [% IF coming_from %]
@@ -74,8 +73,7 @@
       [% c.loc('Always required, but used only for multiple texts') %]
     </label>
     <input type="text" name="collectionname" id="collectionname"
-           class="form-control required"
-	       value="[% HTML.escape(c.request.params.collectionname) %]"/>
+           class="form-control required" value=""/>
     </p>
     <p>
       <label for="mainfont">
@@ -86,8 +84,7 @@
       <select name="mainfont" id="mainfont">
       [% SET myfonts =  bb.avail_fonts %]
       [% FOREACH font IN bb.avail_fonts_sorted %]
-      <option value="[% font %]"
-              [% IF c.request.params.mainfont == font %]selected="selected"[% END %]>
+      <option value="[% font %]">
         [% myfonts.$font %]
       </option>
       [% END %]
@@ -96,8 +93,7 @@
     <select name="fontsize">
       [% SET myfontsizes = bb.font_sizes %]
       [% FOREACH size IN myfontsizes.keys.sort %]
-      <option value="[% size %]"
-              [% IF c.request.params.fontsize == size %]selected="selected"[% END %]>
+      <option value="[% size %]">
         [% size %]
       </option>
       [% END %]
@@ -111,8 +107,7 @@
     <select name="papersize" id="papersize" class="form-control">
       [% SET mypapers = bb.paper_sizes %]
       [% FOREACH paper IN bb.paper_sizes_sorted %]
-      <option value="[% paper %]"
-              [% IF c.request.params.papersize == paper %]selected="selected"[% END %]>
+      <option value="[% paper %]">
         [% c.loc(mypapers.$paper) %]
       </option>
       [% END %]
@@ -126,7 +121,6 @@
 
       <select name="division" id="division" class="form-control">
         [% SET mydiv = 9 %]
-        [% SET mydivselected = (c.request.params.division || 12) %]
         [% WHILE 16 > mydiv %]
         <option value="[% mydiv %]"
                 [% IF mydiv == 12 -%]
@@ -144,9 +138,9 @@
     <select name="bcor" id="bcor" class="form-control">
       [% bcor_counter = 0 %]
       [% WHILE 30 > bcor_counter %]
-      <option value="[% bcor_counter %]"
-              [%- IF c.request.params.bcor == bcor_counter -%]
-              selected="selected"[% END %]>[% bcor_counter %]</option>
+      <option value="[% bcor_counter %]">
+        [% bcor_counter %] mm
+      </option>
       [% bcor_counter = bcor_counter + 1 %]
       [% END %]
     </select>
@@ -155,8 +149,7 @@
       <div class="col-lg-6">
         <div class="input-group">
           <span class="input-group-addon">
-            <input type="checkbox" name="twoside" value="1" id="twoside"
-	               [% IF c.request.params.twoside %]checked="checked"[% END %] />
+            <input type="checkbox" name="twoside" value="1" id="twoside" />
           </span>
           <span class="form-control">[% c.loc('Two side layout') %]</span>
         </div>
@@ -167,8 +160,7 @@
       <div class="col-lg-6">
         <div class="input-group">
           <span class="input-group-addon">
-            <input type="checkbox" name="imposed" value="1"
-	               [% IF c.request.params.imposed %]checked="checked"[% END %] />
+            <input type="checkbox" name="imposed" value="1" />
           </span>
           <span class="form-control">
             [% c.loc('I want an imposed (ready to print) PDF') %]
@@ -181,8 +173,7 @@
       <div class="col-lg-6">
         <div class="input-group">
           <span class="input-group-addon">
-            <input type="checkbox" name="signatures" value="1"
-                   [% IF c.request.params.signatures %]checked="checked"[% END %] />
+            <input type="checkbox" name="signatures" value="1" />
           </span>
           <span class="form-control">
             [% c.loc('When imposing, use optimized signatures with 40-80 pages each') %]
