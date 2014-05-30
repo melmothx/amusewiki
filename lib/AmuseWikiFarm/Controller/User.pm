@@ -62,15 +62,20 @@ sub login :Path('/login') :Args(0) {
         $c->flash(error_msg => $c->loc("Missing username or password"));
         return;
     }
+    my $site = $c->stash->{site};
     # get the details from the db before authenticate it.
     # here we have another layer befor hitting the authenticate
-    if (my $user = $c->find_user({ username => $username })) {
 
-        # authenticate only if the user doesn't belong to any specific file
+    # TODO this is the critical chunk and needs a review and testing,
+    # empty passwords/username and cross site.
+
+    if (my $user = $c->model('DB::User')->find({ username => $username })) {
+
+        # authenticate only if the user is a superuser
         # or if the site id matches the current site id
-        if (!$user->site or
-            $user->site->id eq $c->stash->{site}->id) {
-            # ok, let'd go
+        if (($user->sites->find($site->id) or
+             $user->roles->find({ role => 'root' })) and $user->active) {
+
             if ($c->authenticate({ username => $username,
                                    password => $password })) {
 

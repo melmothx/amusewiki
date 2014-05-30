@@ -1,30 +1,39 @@
 use strict;
 use warnings;
 use Test::More;
-
+use File::Spec::Functions qw/catfile catdir/;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
+use AmuseWikiFarm::Schema;
 
 unless (eval q{use Test::WWW::Mechanize::Catalyst 0.55; 1}) {
     plan skip_all => 'Test::WWW::Mechanize::Catalyst >= 0.55 required';
     exit 0;
 }
 
-my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                               host => 'blog.amusewiki.org');
-
-
+my $site_id = '0user0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my $site = create_site($schema, $site_id);
 
-# insert a bogus user
 
-my $site = $schema->resultset('Site')->find('0blog0');
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => "$site_id.amusewiki.org");
 
-is $site->mode, 'modwiki', "Site mode is blog";
+my $rev = $site->create_new_text({ uri => 'index',
+                                   title => 'test',
+                                   textbody => 'Hello' }, 'special');
 
-my $user = $site->users->update_or_create({
-                                           username => 'pinco',
-                                           password => 'pallino',
-                                           active   => 1,
-                                          });
+$site->mode('blog');
+$site->update;
+
+ok($rev);
+$rev->publish_text;
+
+my $user = $site->update_or_create_user({
+                                         username => 'pinco',
+                                         password => 'pallino',
+                                         active   => 1,
+                                        });
 
 $user->set_roles([{ role => 'librarian' }]);
 
@@ -37,15 +46,18 @@ $mech->content_lacks('textarea', "No textarea found in special");
 
 $mech->content_lacks('/admin/', "No link to admin");
 $mech->content_lacks('/action/special/edit/index', "No link to admin");
+
+$mech->get('/special/index/edit');
+
+is $mech->response->base->path, '/login', "Bounced to human page";
+
 $mech->get('/action/special/edit/index');
 
-is $mech->response->base->path, '/human', "Bounced to login page";
+is $mech->response->base->path, '/login', "Bounced to login page";
 
 $mech->get('/special/pippo/edit');
 
-is $mech->response->base->path, '/human', "Bounced to login";
-
-$mech->content_contains("Please prove you are a human");
+is $mech->response->base->path, '/login', "Bounced to login";
 
 $mech->post('/login' => {
                          username => 'pallino'
@@ -69,5 +81,7 @@ $mech->get_ok( '/logout' );
 
 like $mech->uri, qr{/login}, "Bounced to login";
 like $mech->content, qr{You have logged out}, "status message correct";
+
+$user->delete;
 
 done_testing();
