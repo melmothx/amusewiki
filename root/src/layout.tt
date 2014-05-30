@@ -95,35 +95,10 @@
                 </li>
               </ul>
             </li>
-            <li class="dropdown">
-              <a href="#"
-                 title="[% c.loc('Editing, bookbuilder...') %]"
-                 class="dropdown-toggle" data-toggle="dropdown">
-                [% c.loc('Tools') %]
-                <b class="caret"></b>
+            <li[% IF nav == 'bookbuilder' %] class="disabled"[% END %]>
+              <a href="[% c.uri_for('/bookbuilder') %]">
+                [% c.loc('Bookbuilder') %]
               </a>
-              <ul class="dropdown-menu">
-                [% IF is_library_regular_title %]
-                <li>
-                  <a href="[% c.uri_for('/bookbuilder/add', { text => text.uri }) %]">
-                    [% c.loc('Add this text to the bookbuilder') %]
-                  </a>
-                </li>
-                [% END %]
-                <li[% IF nav == 'bookbuilder' %] class="disabled"[% END %]>
-                  <a href="[% c.uri_for('/bookbuilder') %]">
-                    [% c.loc('Go to the book builder') %]
-                  </a>
-                </li>
-                <li>
-                  <a href="[% c.uri_for('/feed') %]">
-                    [% c.loc("RSS feed") %]
-                  </a>
-                </li>
-                <li>
-	              <a href="[% c.uri_for('/random') %]">[% c.loc('Random') %]</a>
-                </li>
-              </ul>
             </li>
             [% IF navigation %]
             <li class="dropdown">
@@ -228,8 +203,13 @@
       <div id="widepage">
         [% content %]
       </div>
-      <div id="footer">
-      </div>
+    </div>
+    <div id="footer" class="footer center">
+      <a href="[% c.uri_for('/feed') %]" class="feed">
+        [% c.loc('RSS feed') %]
+      </a>
+      |
+	  <a href="[% c.uri_for('/random') %]">[% c.loc('Random') %]</a>
     </div>
   </body>
 </html>

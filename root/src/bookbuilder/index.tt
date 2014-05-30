@@ -204,9 +204,8 @@
   </p>
   <p>
     [% c.loc("You can add texts to the bookbuilder clicking on the
-    menu “Tools” and then clicking on “Add this text to the
-    bookbuilder” when visiting a text. You can add and remove the
-    texts later.") %]
+    “plus” icon near the downloads of each text. You can add and
+    remove the texts later.") %]
   </p>
   <p>
     <a href="[% c.uri_for('/random') %]">

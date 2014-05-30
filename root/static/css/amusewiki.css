@@ -2,7 +2,6 @@
 
 body {
     padding-top: 70px;
-    padding-bottom: 70px;
 }
 
 div#preamble p {
@@ -37,5 +36,18 @@ div.float_image_r {
 
 .error {
     color: #8b0000;
+}
+
+.feed {
+    margin-left: 3px;
+    padding: 0 0 0 19px;
+    background: url("../images/feed-icon-14x14.png") no-repeat 0 50%;
+}
+
+div#footer {
+    margin-top: 50px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: #efefef;
 }
 
