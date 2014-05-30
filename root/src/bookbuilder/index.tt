@@ -67,17 +67,22 @@
 
 <div id="bb-compiler-options">
 <form action="[% c.uri_for() %]" method="post" id="bbform">
-  <fieldset>
-    <em>[% c.loc('Please give a name to the collection') %]</em>
-    <input type="text" name="collectionname" class="required"
+  <div class="form-group">
+    <p>
+    <label for="collectionname">
+      [% c.loc('Please give a name to the collection') %]
+    </label>
+    <input type="text" name="collectionname" id="collectionname"
+           class="form-control required"
 	       value="[% HTML.escape(c.request.params.collectionname) %]"/>
-  </fieldset>
-  <fieldset>
-    <a href="http://bookshelf.theanarchistlibrary.org/The%20Book%20Builder#Fonts_preview">
-      [% c.loc('Please select the desired fonts') %]      
-    </a>
-    <br />
-    <select name="mainfont">
+    </p>
+    <p>
+      <label for="mainfont">
+        <a href="http://bookshelf.theanarchistlibrary.org/The%20Book%20Builder#Fonts_preview">
+        [% c.loc('Please select the desired fonts') %]
+        </a>
+      </label>
+      <select name="mainfont" id="mainfont">
       [% SET myfonts =  bb.avail_fonts %]
       [% FOREACH font IN bb.avail_fonts_sorted %]
       <option value="[% font %]"
@@ -97,10 +102,12 @@
       [% END %]
     </select>
     pt
-  </fieldset>
-  <fieldset>
-    [% c.loc('Choose a paper format') %] <br />
-    <select name="papersize">
+    </p>
+    <p>
+    <label for="papersize">
+    [% c.loc('Choose a paper format') %]
+    </label>
+    <select name="papersize" id="papersize" class="form-control">
       [% SET mypapers = bb.paper_sizes %]
       [% FOREACH paper IN bb.paper_sizes_sorted %]
       <option value="[% paper %]"
@@ -109,36 +116,29 @@
       </option>
       [% END %]
     </select>
-  </fieldset>
-
-  <fieldset>
-    <label for="division">
+    </p>
+    <p>
+      <label for="division">
       [% c.loc('Division factor') %]
+      </label>
       <select name="division" id="division">
         [% SET mydiv = 9 %]
         [% SET mydivselected = (c.request.params.division || 12) %]
         [% WHILE 16 > mydiv %]
         <option value="[% mydiv %]"
-                [% IF mydivselected == mydiv -%]
+                [% IF mydiv == 12 -%]
                 selected="selected"[% END %]>[% mydiv %]
           [% mydiv = mydiv + 1 %]
         </option>
         [% END %]
       </select>
-    </label>
-  </fieldset>
+    </p>
 
-  <fieldset>
-    <label>
-      <input type="checkbox" name="twoside" value="1"
-	         [% IF c.request.params.twoside %]checked="checked"[% END %] />
-      [% c.loc('Two side layout') %]
-    </label>
-  </fieldset>
-
-  <fieldset>
-    [% c.loc('Binding correction') %]:
-    <select name="bcor">
+    <p>
+      <label for="bcor">
+        [% c.loc('Binding correction') %]:
+      </label>
+    <select name="bcor" id="bcor">
       [% bcor_counter = 0 %]
       [% WHILE 30 > bcor_counter %]
       <option value="[% bcor_counter %]"
@@ -148,61 +148,77 @@
       [% END %]
     </select>
     mm.
-  </fieldset>
 
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="checkbox" name="twoside" value="1" id="twoside"
+	               [% IF c.request.params.twoside %]checked="checked"[% END %] />
+          </span>
+          <span class="form-control">[% c.loc('Two side layout') %]</span>
+        </div>
+      </div>
+    </div>
 
-  <fieldset>
-    <label>
-      <input type="checkbox" name="imposed" value="1"
-	         [% IF c.request.params.imposed %]checked="checked"[% END %] />
-      [% c.loc('I want an imposed (ready to print) PDF') %]
-    </label>
-  </fieldset>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="checkbox" name="imposed" value="1"
+	               [% IF c.request.params.imposed %]checked="checked"[% END %] />
+          </span>
+          <span class="form-control">
+            [% c.loc('I want an imposed (ready to print) PDF') %]
+          </span>
+        </div>
+      </div>
+    </div>
 
-  <fieldset>
-    <label>
-      <input type="checkbox" name="cover" value="1"
-             [% IF c.request.params.cover %]checked="checked"[% END %] />
-      [% c.loc('I want the cover') %]
-    </label>
-  </fieldset>
-
-  <fieldset>
-    [% c.loc('If you asked for imposition, select an imposition schema') %]:
-    <select name="schema">
-      [% SET myschemas = bb.schemas %]
-      [% FOREACH schema IN bb.schemas_sorted %]
-      <option value="[% schema %]"
-              [% IF c.request.params.schema == schema %]selected="selected"[% END %]>
-        [% c.loc(myschemas.$schema) %]
-      </option>
-      [% END %]
-    </select>
-  </fieldset>
-
-  <fieldset>
-    <label>
-      <input type="checkbox" name="signatures" value="1"
-             [% IF c.request.params.signatures %]checked="checked"[% END %] />
-      [% c.loc('When imposing, use optimized signatures with 40-80 pages each') %]
-      ([% c.loc('if applicable') %]).
-    </label>
-  </fieldset>
-
-  [% IF bb.texts.size %]
-  <fieldset>
-    <input type="submit" name="build" value="[% c.loc('Build it') %]" />
-  </fieldset>
-  [% END %]
-  <script type="text/javascript"
-          src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-    $("#bbform").validate();
-    });
-  </script>
-
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="checkbox" name="signatures" value="1"
+                   [% IF c.request.params.signatures %]checked="checked"[% END %] />
+          </span>
+          <span class="form-control">
+            [% c.loc('When imposing, use optimized signatures with 40-80 pages each') %]
+            ([% c.loc('if applicable') %]).
+          </span>
+        </div>
+      </div>
+    </div>
+    <p>
+      <br >
+      <label for="schema">
+        [% c.loc('If you asked for imposition, select an imposition schema') %]:
+      </label>
+        <select name="schema" id="schema">
+          [% SET myschemas = bb.schemas %]
+          [% FOREACH schema IN bb.schemas_sorted %]
+          <option value="[% schema %]" [% IF schema == '2up' %]selected="selected"[% END %]>
+            [% c.loc(myschemas.$schema) %]
+          </option>
+          [% END %]
+        </select>
+      </p>
+    [% IF bb.texts.size %]
+    <p>
+      <button type="submit" name="build" value="go" class="btn btn-default">
+        [% c.loc('Build it') %]
+      </button>
+    </p>
+    [% END %]
+  </div>
 </form>
-</div>
 
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+  $("#bbform").validate();
+  });
+</script>
+</div>
