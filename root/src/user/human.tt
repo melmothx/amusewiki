@@ -2,19 +2,23 @@
 
 <!-- test if the user is a human -->
 
-<h3>[% c.loc('Please prove you are a human.') %]</h3>
+<h3 class="h3">[% c.loc('Please prove you are a human.') %]</h3>
 
-<h4>[% c.loc('You can do so answering a simple question.') %]</h4>
+<p>[% c.loc('You can do so answering a simple question.') %]</p>
 
 <form name="human" method="post" action="[% c.uri_for('/human') %]">
-  <fieldset>
-    [% site.magic_question %]
-    <input type="text" size="20" name="answer" />
-    <input type="submit" name="submit" value="[% c.loc('I am human') %]"/>
-  </fieldset>
+  <div class="form-group">
+    <label for="answer">
+        [% site.magic_question %]
+    </label>
+    <input class="form-control" type="text" size="20" name="answer" id="answer"/>
+  </div>
+  <button type="submit" class="btn btn-default" name="submit" value="go">
+    [% c.loc('I am human') %]
+  </button>
 </form>
 
-<h4>[% c.loc('Or logging in, if you have an account.') %]</h4>
+<h3 class="h3">[% c.loc('Or logging in, if you have an account.') %]</h3>
 
 [% INCLUDE user/login.tt %]
 
