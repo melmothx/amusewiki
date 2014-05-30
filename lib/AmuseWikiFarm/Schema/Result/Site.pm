@@ -1355,6 +1355,56 @@ sub special_list {
     return @out;
 }
 
+=head2 update_or_create_user(\%attrs)
+       update_or_create_user($username)
+
+Create or update a user and add it to our user unless already present.
+If an hashref is passed, it must contain the username key with some
+value. Also, the sanity of the username is checked.
+
+Returns the User object.
+
+=cut
+
+sub update_or_create_user {
+    my ($self, $details) = @_;
+
+    # first, search our users
+
+    my $username;
+
+    if (ref($details)) {
+        $username = $details->{username};
+    }
+    else {
+        $username = $details;
+        $details = { username => $username };
+    }
+
+    die "Missing username" unless $username;
+    my $cleaned = muse_naming_algo($username);
+    die "$username doesn't match $cleaned" unless $username eq $cleaned;
+
+    # search the site
+    my $user = $self->users->find({ username => $username });
+    if ($user) {
+        my %query = %$details;
+        delete $query{username};
+        if (%query) {
+            return $user->update(\%query)->discard_changes;
+        }
+        else {
+            return $user;
+        }
+    }
+
+    # still here? check the existing userbase
+    $user = $self->result_source->schema->resultset('User')
+      ->update_or_create({ %$details })->get_from_storage;
+
+    $self->add_to_users($user);
+    return $user;
+}
 
 __PACKAGE__->meta->make_immutable;
 

@@ -56,16 +56,21 @@ CREATE TABLE site (
 
 CREATE TABLE user (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       username VARCHAR(64) NOT NULL UNIQUE,
+       username VARCHAR(128) NOT NULL,
        password VARCHAR(255) NOT NULL,
        email    VARCHAR(255),
        active   INTEGER NOT NULL DEFAULT 0
 );
 
+CREATE UNIQUE INDEX unique_username ON user (username);
+
+
 CREATE TABLE role (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       role VARCHAR(128) UNIQUE
+       role VARCHAR(128)
 );
+
+CREATE UNIQUE INDEX unique_role ON role (role);
 
 CREATE TABLE user_site (
        user_id INTEGER NOT NULL REFERENCES user(id)
@@ -248,6 +253,10 @@ INSERT INTO user VALUES (1, 'root', 'root', '', 1);
 INSERT INTO user VALUES (2, 'user1', 'pass', '', 1);
 INSERT INTO user VALUES (3, 'user2', 'pass', '', 1);
 INSERT INTO user VALUES (4, 'user3', 'pass', '', 0);
+
+INSERT INTO user_site VALUES (2, '0blog0'),
+                             (3, '0blog0'),
+                             (4, '0blog0');
 
 INSERT INTO user_role VALUES (1, 1),
                              (2, 2),

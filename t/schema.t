@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 21;
+use Test::More tests => 22;
 use Data::Dumper;
 use Cwd;
 use File::Spec;
@@ -74,12 +74,16 @@ is $site->repo_root($tmp), File::Spec->catdir($tmp, qw/repo 0blog0/);
 is $site->repo_root(0), File::Spec->catdir(getcwd(), 0, qw/repo 0blog0/);
 
 
-my @users = $site->users->search({ username => { -like => 'user%' }});
+my @users = $site->users;
 
-ok ((@users == 3), "3 users named user* found")
-  or diag join(' ', map { $_->username } @users);
+ok ((@users == 3), "3 users named user* found");
 
 foreach my $user (@users) {
     ok ($user->username);
     ok ($user->password);
 }
+
+my $user = $db->resultset('User')->find({ username => 'root' });
+
+my $usite = $user->sites->find({ id => '0blog0' });
+ok (!$usite);
