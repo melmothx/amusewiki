@@ -71,19 +71,19 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li[% IF nav == 'author' %] class="active" [% END %]>
+                <li[% IF nav == 'author' %] class="disabled" [% END %]>
                   <a href="[% c.uri_for('/authors') %]"
 		             title="[% c.loc('texts sorted by author') %]">
                     [% c.loc('Authors') %]
                   </a>
                 </li>
-	            <li[% IF nav == 'titles' %] class="active" [% END %]>
+	            <li[% IF nav == 'titles' %] class="disabled" [% END %]>
                   <a href="[% c.uri_for('/library') %]"
 		             title="[% c.loc('texts sorted by title') %]">
                     [% c.loc('Titles') %]
                   </a>
                 </li>
-	            <li[% IF nav == 'topic' %] class="active" [% END %]>
+	            <li[% IF nav == 'topic' %] class="disabled" [% END %]>
                   <a href="[% c.uri_for('/topics') %]"
 		             title="[% c.loc('texts sorted by topics') %]">
                     [% c.loc('Topics') %]
@@ -113,13 +113,13 @@
                   </a>
                 </li>
                 [% END %]
-                <li[% IF nav == 'bookbuilder' %] class="active"[% END %]>
+                <li[% IF nav == 'bookbuilder' %] class="disabled"[% END %]>
                   <a href="[% c.uri_for('/bookbuilder') %]">
                     [% c.loc('Book builder') %]
                   </a>
                 </li>
                 [% IF c.user_exists || site.human_can_edit %]
-                <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
+                <li[% IF nav == 'add-to-library' %] class="disabled"[% END %]>
                   <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
                     [% c.loc('Add to library') %]
                   </a>
@@ -159,7 +159,7 @@
               </a>
               <ul class="dropdown-menu">
                 [% FOREACH link IN navigation.projects %]
-                <li[% IF link.current %] class="active" [% END %]>
+                <li[% IF link.current %] class="disabled" [% END %]>
                   <a href="[% link.uri %]">[% link.name %]</a>
                 </li>
                 [% END %]
@@ -167,7 +167,7 @@
                 <li class="divider"></li>
                 [% END %]
                 [% FOREACH link IN navigation.specials %]
-                <li[% IF link.active %] class="active"[% END %]>
+                <li[% IF link.active %] class="disabled"[% END %]>
                   <a href="[% link.uri %]">[% link.name %]</a>
                 </li>
                 [% END %]
