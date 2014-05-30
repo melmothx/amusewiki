@@ -59,15 +59,17 @@
   </table>
   </div>
   [% ELSE %]
-  <p>[% c.loc('No text was added yet') %]</p>
+  <div class="alert alert-warning">
+    <p>[% c.loc('No text was added yet') %]</p>
+  </div>
   [% END %]
 </div>
 
 <div id="bb-compiler-options">
-<form action="[% c.uri_for() %]" method="post">
+<form action="[% c.uri_for() %]" method="post" id="bbform">
   <fieldset>
     <em>[% c.loc('Please give a name to the collection') %]</em>
-    <input type="text" name="collectionname" 
+    <input type="text" name="collectionname" class="required"
 	       value="[% HTML.escape(c.request.params.collectionname) %]"/>
   </fieldset>
   <fieldset>
@@ -192,6 +194,15 @@
     <input type="submit" name="build" value="[% c.loc('Build it') %]" />
   </fieldset>
   [% END %]
+  <script type="text/javascript"
+          src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $("#bbform").validate();
+    });
+  </script>
+
 </form>
 </div>
 
