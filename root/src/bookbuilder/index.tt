@@ -198,10 +198,17 @@
 
 <div class="bb-explanation">
   <p>
+    [% c.loc("With the bookbuilder you can change the layout (fonts,
+    dimensions, paper, margins) of the texts on the library. You can
+    also merge more texts to create your own booklet. Just try it!") %]
+  </p>
+  <p>
     [% c.loc("You can add texts to the bookbuilder clicking on the
     menu “Tools” and then clicking on “Add this text to the
     bookbuilder” when visiting a text. You can add and remove the
     texts later.") %]
+  </p>
+  <p>
     <a href="[% c.uri_for('/random') %]">
       [% c.loc("Try a random text if unsure") %]
     </a>
