@@ -106,16 +106,9 @@
                   </a>
                 </li>
                 [% END %]
-                [% IF is_library_regular_title || (is_library_special && c.user_exists) %]
-                <li>
-                  <a href="[% c.uri_for_action('/edit/revs', [ text.f_class, text.uri ]) %]">
-                    [% c.loc('Edit this text') %]
-                  </a>
-                </li>
-                [% END %]
                 <li[% IF nav == 'bookbuilder' %] class="disabled"[% END %]>
                   <a href="[% c.uri_for('/bookbuilder') %]">
-                    [% c.loc('Book builder') %]
+                    [% c.loc('Go to the book builder') %]
                   </a>
                 </li>
                 <li>
@@ -153,18 +146,23 @@
               </ul>
             </li>
             [% END %]
-            [% IF c.user_exists %]
-            [% SET myloggedin = c.user.get('username') %]
-            [% END %]
-            [% IF myloggedin || site.human_can_edit || site.human_can_publish %]
+            [% IF c.user_exists || site.human_can_edit || site.human_can_publish %]
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
                  title="about, links..."
                  data-toggle="dropdown">
-                [% myloggedin || c.loc('You') %]
+                [% c.loc('You') %]
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
+                [% IF is_library_regular_title || (is_library_special && c.user_exists) %]
+                <li>
+                  <a href="[% c.uri_for_action('/edit/revs', [ text.f_class, text.uri ]) %]">
+                    [% c.loc('Edit this text') %]
+                  </a>
+                </li>
+                [% END %]
+
                 [% IF c.user_exists || site.human_can_edit %]
                 <li[% IF nav == 'add-to-library' %] class="disabled"[% END %]>
                   <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
@@ -188,7 +186,7 @@
                 [% ELSE %]
                 <li[% IF nav == 'login' %] class="disabled"[% END %]>
                   <a href="[% c.uri_for('/login') %]">
-                    [% c.loc('login') %]
+                    [% c.loc('Login') %]
                   </a>
                 </li>
                 [% END %]
