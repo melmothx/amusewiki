@@ -95,7 +95,7 @@
                 </li>
               </ul>
             </li>
-            <li[% IF nav == 'bookbuilder' %] class="disabled"[% END %]>
+            <li[% IF nav == 'bookbuilder' %] class="active"[% END %]>
               <a href="[% c.uri_for('/bookbuilder') %]">
                 [% c.loc('Bookbuilder') %]
               </a>
