@@ -196,15 +196,17 @@
       <label for="schema">
         [% c.loc('If you asked for imposition, select an imposition schema') %]:
       </label>
-        <select name="schema" id="schema" class="form-control">
-          [% SET myschemas = bb.schemas %]
-          [% FOREACH schema IN bb.schemas_sorted %]
-          <option value="[% schema %]" [% IF schema == '2up' %]selected="selected"[% END %]>
-            [% c.loc(myschemas.$schema) %]
-          </option>
-          [% END %]
-        </select>
-      </p>
+      <select name="schema" id="schema" class="form-control">
+        [% SET myschemas = bb.schemas %]
+        [% FOREACH schema IN bb.schemas_sorted %]
+        <option value="[% schema %]" [% IF schema == '2up' %]selected="selected"[% END %]>
+          [% c.loc(myschemas.$schema) %]
+        </option>
+        [% END %]
+      </select>
+    </p>
+    <!-- always set cover to 1, it just confuses users -->
+    <input type="hidden" name="cover" value="1" />
     [% IF bb.texts.size %]
     <p>
       <button type="submit" name="build" value="go" class="btn btn-default">
