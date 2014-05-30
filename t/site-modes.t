@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 50;
+use Test::More tests => 101;
 use File::Path qw/make_path remove_tree/;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
@@ -12,6 +12,17 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+# create a root user
+
+my ($username, $password) = (myroot => "myroot");
+
+my $user = $schema->resultset('User')->update_or_create({
+                                                         username => $username,
+                                                         password => $password,
+                                                        });
+$user->set_roles({ role => 'root' });
+
 
 my $sites = {
              blog  => { id => '0closed0',
@@ -36,6 +47,11 @@ foreach my $m (keys %$sites) {
     ok ((-d $repo_root), "site $sites->{$m}->{url} created");
 }
 
+my $outer_user = $schema->resultset('Site')->find('0test0')
+  ->update_or_create_user({ username => 'pippuzzo', password => 'xxxx' },
+                          'librarian');
+
+
 diag "Testing the closed site";
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
@@ -44,6 +60,11 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 common_tests($mech);
 closed_new($mech);
 closed_publish($mech);
+
+check_after_login($mech, 0, $user);
+check_after_login($mech, 1, $user);
+
+failing_login($mech, $outer_user);
 
 diag "checking the moderated site";
 
@@ -57,6 +78,10 @@ closed_publish($mech);
 
 diag "checking the open site";
 
+check_after_login($mech, 0, $user);
+check_after_login($mech, 1, $user);
+failing_login($mech, $outer_user);
+
 $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                             host => $sites->{openwiki}->{url});
 
@@ -64,6 +89,66 @@ common_tests($mech);
 open_new($mech);
 
 is $mech->uri->path, '/publish/pending', "After submitting, I'm on pending!";
+
+
+check_after_login($mech, 0, $user);
+check_after_login($mech, 1, $user);
+failing_login($mech, $outer_user);
+
+
+sub check_after_login {
+    my ($mech, $active, $user) = @_;
+    $user->active($active);
+    $user->update if $user->is_changed;
+    $mech->get_ok('/login');
+
+    $mech->form_with_fields('username');
+    $mech->click;
+    $mech->content_contains("Missing username or password");
+
+    $mech->form_with_fields('username');
+    $mech->field(username => 'root');
+    $mech->click;
+    $mech->content_contains("Missing username or password");
+
+    $mech->form_with_fields('username');
+    $mech->set_fields(username => '',
+                      password => 'xxx');
+    $mech->click;
+    $mech->content_contains("Missing username or password");
+
+    $mech->form_with_fields('username');
+    $mech->set_fields(username => $user->username,
+                      password => 'xxx');
+    $mech->click;
+    $mech->content_contains("Wrong username or password");
+
+    $mech->form_with_fields('username');
+    $mech->set_fields(username => $user->username,
+                      password => $user->password);
+    $mech->click;
+    if ($active) {
+        diag "user is active";
+        $mech->content_contains("You are logged in");
+    }
+    else {
+        diag "user inactive";
+        $mech->content_contains("Wrong username or password");
+    }
+    $mech->get_ok('/logout');
+}
+
+sub failing_login {
+    my ($mech, $user) = @_;
+    diag "Checking if " . $user->username . " belonging to another site can login";
+    $mech->get_ok('/login');
+    $mech->form_with_fields('username');
+    $mech->set_fields(username => $user->username,
+                      password => $user->password);
+    $mech->click;
+    $mech->content_contains("Wrong username or password");
+    is $mech->uri->path, '/login';
+}
 
 sub common_tests {
     my $mech = shift;
