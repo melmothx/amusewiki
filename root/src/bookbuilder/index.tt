@@ -7,8 +7,8 @@
 </div>
 [% END %]
 
+[% IF bb.texts.size %]
 <div id="bb-list-edit">
-  [% IF bb.texts.size %]
   <div class="table-responsive">
   <table id="bookbuilderlist" class="table table-striped
                                      table-condensed
@@ -57,13 +57,7 @@
     </tr>
   </table>
   </div>
-  [% ELSE %]
-  <div class="alert alert-warning">
-    <p>[% c.loc('No text was added yet') %]</p>
-  </div>
-  [% END %]
 </div>
-
 <div id="bb-compiler-options">
 <form action="[% c.uri_for() %]" method="post" id="bbform">
   <div class="form-group">
@@ -179,13 +173,11 @@
     </p>
     <!-- always set cover to 1, it just confuses users -->
     <input type="hidden" name="cover" value="1" />
-    [% IF bb.texts.size %]
     <p>
       <button type="submit" name="build" value="go" class="btn btn-default">
         [% c.loc('Build it') %]
       </button>
     </p>
-    [% END %]
   </div>
 </form>
 
@@ -198,3 +190,23 @@
   });
 </script>
 </div>
+[% ELSE %]
+
+<div class="alert alert-warning">
+  <p>[% c.loc('No text was added yet') %]</p>
+</div>
+
+<div class="bb-explanation">
+  <p>
+    [% c.loc("You can add texts to the bookbuilder clicking on the
+    menu “Tools” and then clicking on “Add this text to the
+    bookbuilder” when visiting a text. You can add and remove the
+    texts later.") %]
+    <a href="[% c.uri_for('/random') %]">
+      [% c.loc("Try a random text if unsure") %]
+    </a>
+  </p>
+</div>
+
+
+[% END %]
