@@ -77,12 +77,6 @@ $(document).ready(function() {
 </div>
 [% END %]
 
-<!--
-[% revision.id %] [% revision.status %]
--->
-
-[% revision.title.uri %]
-
 [% SET attachments = revision.attached_files %]
 [% IF attachments.size %]
 <h3>[% c.loc('Attached files') %]</h3>
@@ -96,42 +90,55 @@ $(document).ready(function() {
 </ul>
 [% END %]
 
-<h3>[% c.loc('Text editing') %]</h3>
+<h3>[% c.loc('Editing') %] [% revision.title.uri %]</h3>
 
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform">
-  <fieldset>
-    <h4>[% c.loc('Add an attachment') %]</h4>
-    <input id="attachment" name="attachment" type="file" /><br />
-    <input type="submit" name="upload" value="[% c.loc('Upload') %]" />
-  </fieldset>
-  <fieldset>
-    <h4>[% c.loc('Editing') %] [% revision.title.uri %]</h4>
-    <textarea rows="30" cols="80" id="maintextarea"
-              name="body">[%- revision.muse_body | html -%]</textarea>
-  </fieldset>
-  <fieldset>
-    <input id="fix-typo"
-           [% IF c.req.params.fix_typography %]checked="checked"[% END %]
-           type="checkbox" name="fix_typography" />
-    <label for="fix-typo">[% c.loc('Fix typography') %]</label>
-  </fieldset>
-  <fieldset>
-    <input id="fix-links"
-           [% IF c.req.params.fix_links %]checked="checked"[% END %]
-           type="checkbox" name="fix_links" />
-    <label for="fix-links">[% c.loc('Make all links active') %]</label>
-  </fieldset>
-  <fieldset>
-    <input type="submit" name="preview" value="[% c.loc('Preview') %]" />
-    <input type="submit" name="commit"  value="[% c.loc('Commit')  %]" />
-  </fieldset>
+  <div class="form-group">
+    <p>
+      <label for="attachment">[% c.loc('Add an attachment') %]</label>
+      <input id="attachment" name="attachment" type="file" />
+    </p>
+    <p>
+      <button type="submit" name="upload" value="upload" class="btn btn-default">
+        [% c.loc('Upload') %]
+      </button>
+      <br />
+    </p>
+  </div>
+  <div class="form-group">
+    <div>
+      <textarea rows="30" cols="80" id="maintextarea"
+                name="body">[%- revision.muse_body | html -%]</textarea>
+    </div>
+    <div class="checkbox">
+      <label>
+      <input id="fix-typo"
+             [% IF c.req.params.fix_typography %]checked="checked"[% END %]
+             type="checkbox" name="fix_typography" />
+      [% c.loc('Fix typography') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input id="fix-links"
+               [% IF c.req.params.fix_links %]checked="checked"[% END %]
+               type="checkbox" name="fix_links" />
+        [% c.loc('Make all links active') %]
+      </label>
+    </div>
+    <p>
+      <button type="submit" class="btn btn-default" name="preview" value="preview">[% c.loc('Preview') %]</button>
+      <button type="submit" class="btn btn-default" name="commit"  value="commit">[% c.loc('Commit')  %]</button>
+    </p>
+  </div>
 </form>
 </div>
 
 [% SET text = revision.muse_doc.header_as_html %]
 
 <div id="page">
+  <h2><small>[% c.loc('Preview') %]</small></h2>
   <div id="preamble-container" class="well">
   <div id="preamble">
     <p id="texttitle">

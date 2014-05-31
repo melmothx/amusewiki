@@ -18,7 +18,7 @@
   </button>
 </form>
 
-<h3 class="h3">[% c.loc('Or logging in, if you have an account.') %]</h3>
+<h3 class="h3">[% c.loc('Or log in, if you have an account.') %]</h3>
 
 [% INCLUDE user/login.tt %]
 
