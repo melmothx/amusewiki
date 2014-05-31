@@ -1,6 +1,8 @@
 /* -------------------------------------------------------------------
 // markItUp! Universal MarkUp Engine, JQuery plugin
 // By Jay Salvat - http://markitup.jaysalvat.com/
+// style which doesn't force the textarea width, but instead rely on 
+// the bootstrap's form-control
 // ------------------------------------------------------------------*/
 .markItUp * {
 	margin:0px; padding:0px;
@@ -12,17 +14,14 @@
 	text-decoration:none;
 }
 .markItUp  {
-	width:700px;
 	margin:5px 0 5px 0;
 }
 .markItUpContainer  {
-	font:11px Verdana, Arial, Helvetica, sans-serif;
+	font:11px Menlo,Monaco,Consolas,"Courier New",monospace;
 }
 .markItUpEditor {
-	font:12px 'Courier New', Courier, monospace;
+	font:12px Menlo,Monaco,Consolas,"Courier New",monospace;
 	padding:5px;
-	width:690px;
-	height:320px;
 	clear:both;
 	line-height:18px;
 	overflow:auto;

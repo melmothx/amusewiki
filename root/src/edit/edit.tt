@@ -108,7 +108,7 @@ $(document).ready(function() {
   </div>
   <div class="form-group">
     <div>
-      <textarea rows="30" cols="80" id="maintextarea"
+      <textarea rows="30" cols="60" id="maintextarea" class="form-control"
                 name="body">[%- revision.muse_body | html -%]</textarea>
     </div>
     <div class="checkbox">

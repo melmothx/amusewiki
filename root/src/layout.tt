@@ -34,7 +34,7 @@
 
     [%# markitup css -- maybe made it conditional %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/js/markitup/skins/simple/style.css') %]" />
+          href="[% c.uri_for('/static/js/markitup/skins/amw/style.css') %]" />
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/js/markitup/sets/muse/style.css') %]" />
 
