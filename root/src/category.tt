@@ -5,31 +5,41 @@
 [%- c.loc('Topics') -%]
 [%- END -%]
 </h1>
-
+[%- # This is overly complicated to get the columns right...      -%]
+[%- # alternative approach would be to split the list in the code -%]
+[%- # but in turn this is bound to the bootstramp mumbo-jumbo so  -%]
+[%- # looks even worse                                            -%]
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-4" style="padding:0px">
     <ul>
-[%- SET items_count = 1 -%]
+[%- SET inner_count = 0 -%]
 [%- FOREACH cat IN list -%]
-[%-  SET count = cat.text_count -%]
-[%-  IF count -%]
-[%-     IF ((items_count % 10) == 0) -%]
+[%- # prevent displaying categories without members -%]
+[%-   SET count = cat.text_count -%]
+[%-   IF count -%]
+[%- # start of the column interpolation %]
+[%-     IF (inner_count && ((inner_count % 10) == 0)) -%]
+
     </ul>
   </div>
-[%-         IF ((items_count % 30) == 0) -%]
+
+[%-       IF (inner_count % 30) == 0 -%]
+
 </div>
 <div class="row">
-[%-            END -%]
-  <div class="col-sm-4">
+[%-       END -%]
+  <div class="col-sm-4" style="padding:0px">
     <ul>
-[%-         END -%]
-[%-     items_count = items_count + 1 -%]
+[%-     END   -%]
+[%-   SET inner_count = inner_count + 1 -%]
+[%- # end of the column interpolation %]
       <li class="list-group-item">
-        <a href="[%-baseurl -%]/[%-cat.uri -%]">[%-cat.name -%]</a>
-        <span class="badge">[%-count -%]</span>
+        <a href="[%- baseurl -%]/[%- cat.uri -%]">[%- cat.name -%]</a>
+        <span class="badge">[%- count -%]</span>
       </li>
-[%-    END -%]
-[%- END -%]
+[%-   END     -%]
+[%- END       -%]
+
     </ul>
   </div>
 </div>

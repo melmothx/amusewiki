@@ -1,8 +1,8 @@
 <h2>[% category.name %]</h2>
 
-<ol>
+<ul class="list-group">
   [% FOREACH title IN category.published_titles %]
-  <li>
+  <li class="list-group-item">
     <a href="[% baseurl %]/[% title.uri %]">[% title.title %]</a>
     [% IF title.author %]
       [% IF category.name != title.author %]
@@ -11,4 +11,4 @@
     [% END %]
   </li>
   [% END %]
-</ol>
+</ul>
