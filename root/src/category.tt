@@ -10,7 +10,7 @@
 [%- # but in turn this is bound to the bootstramp mumbo-jumbo so  -%]
 [%- # looks even worse                                            -%]
 <div class="row">
-  <div class="col-sm-4" style="padding:0px">
+  <div class="col-sm-4">
     <ul>
 [%- SET inner_count = 0 -%]
 [%- FOREACH cat IN list -%]
@@ -28,12 +28,12 @@
 </div>
 <div class="row">
 [%-       END -%]
-  <div class="col-sm-4" style="padding:0px">
+  <div class="col-sm-4">
     <ul>
 [%-     END   -%]
 [%-   SET inner_count = inner_count + 1 -%]
 [%- # end of the column interpolation %]
-      <li class="list-group-item">
+      <li class="list-group-item clearfix">
         <a href="[%- baseurl -%]/[%- cat.uri -%]">[%- cat.name -%]</a>
         <span class="badge">[%- count -%]</span>
       </li>
