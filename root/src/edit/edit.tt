@@ -34,20 +34,33 @@ $(document).ready(function() {
 
 	        {name:'Italic',
              key:'I', openWith:' *', closeWith:'* '},
+
 	        {name:'Bold',
              key:'B', openWith:' **', closeWith:'** '},
+
 	        {name:'Bulleted List',
              openWith:'\n - ' },
+
 	        {name:'Numeric List',
              openWith:'\n 1. ' },
+
 	        {name:'Picture',
-             key:'P', replaceWith:'[[[![Image url (see the gallery)]!]][[![description]!]]]' },
+             key:'P',
+             replaceWith:'[[[![Image url]!]][[![description]!]]]' },
+
 	        {name:'Link',
-             key:'L', replaceWith:'[[[![Url:!:http://]!]][[![Display url as:]!]]]' },
+             key:'L',
+             replaceWith:'[[[![Url:!:http://]!]][[![Display url as:]!]]]' },
+
 	        {name:'Quotes',
-             openWith:'  '},
+             multiline:true,
+             openBlockWith:'\n<quote>\n',
+             closeBlockWith:'\n</quote>\n'},
+
 	        {name:'Code Block / Code',
-             multiline:true, openBlockWith:'\n<example>\n', closeBlockWith:'\n</example>\n'},
+             multiline:true,
+             openBlockWith:'\n<example>\n',
+             closeBlockWith:'\n</example>\n'},
 	    ]
     }
     $('#maintextarea').markItUp(myMuseSettings);
