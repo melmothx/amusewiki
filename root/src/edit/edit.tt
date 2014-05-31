@@ -85,12 +85,12 @@ $(document).ready(function() {
 
 [% SET attachments = revision.attached_files %]
 [% IF attachments.size %]
-<h3>Attached files</h3>
+<h3>[% c.loc('Attached files') %]</h3>
 <ul>
   [% FOREACH attach IN attachments %]
   <li><code>[% attach %]</code><br>
-    Use it in the body as <code>[[[%- attach -%]]]</code>
-      or <code>[[[%- attach -%]][<em>My description</em>]]</code>
+    [% c.loc('Use it in the body as') %] <code>[[[%- attach -%]]]</code>
+    [% c.loc('or') %] <code>[[[%- attach -%]][<em>[% c.loc ('My description') %]</em>]]</code>
   </li>
   [% END %]
 </ul>
@@ -98,6 +98,7 @@ $(document).ready(function() {
 
 <h3>[% c.loc('Text editing') %]</h3>
 
+<div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform">
   <fieldset>
     <h4>[% c.loc('Add an attachment') %]</h4>
@@ -105,7 +106,7 @@ $(document).ready(function() {
     <input type="submit" name="upload" value="[% c.loc('Upload') %]" />
   </fieldset>
   <fieldset>
-    <h4>[% c.loc('Editing') %]</h4>
+    <h4>[% c.loc('Editing') %] [% revision.title.uri %]</h4>
     <textarea rows="30" cols="80" id="maintextarea"
               name="body">[%- revision.muse_body | html -%]</textarea>
   </fieldset>
@@ -126,10 +127,12 @@ $(document).ready(function() {
     <input type="submit" name="commit"  value="[% c.loc('Commit')  %]" />
   </fieldset>
 </form>
+</div>
 
 [% SET text = revision.muse_doc.header_as_html %]
 
 <div id="page">
+  <div id="preamble-container" class="well">
   <div id="preamble">
     <p id="texttitle">
       <strong>[% c.loc('Title') %]:</strong>
@@ -178,6 +181,8 @@ $(document).ready(function() {
     </p>
     [% END %]
   </div>
+  </div>
+
   <div id="htmltextbody">
     [% revision.muse_doc.as_html %]
   </div>
