@@ -1,11 +1,35 @@
-<ol>
-  [% FOREACH cat IN list %]
-  [% count = cat.text_count %]
-  [% IF count %]
-  <li>
-    <a href="[% baseurl %]/[% cat.uri %]">[% cat.name %]</a>
-    ([% count %])
-  </li>
-  [% END %]
-  [% END %]
-</ol>
+<h1>
+[%- IF nav == 'author' -%]
+[%- c.loc('Authors') -%]
+[%- ELSIF nav == 'topic' -%]
+[%- c.loc('Topics') -%]
+[%- END -%]
+</h1>
+
+<div class="row">
+  <div class="col-sm-4">
+    <ul>
+[%- SET items_count = 0 -%]
+[%- FOREACH cat IN list -%]
+[%-  SET count = cat.text_count -%]
+[%-  IF count -%]
+[%-     items_count = items_count + 1 -%]
+[%-     IF ((items_count % 10) == 0) -%]
+    </ul>
+  </div>
+[%-         IF ((items_count % 30) == 0) -%]
+</div>
+<div class="row">
+[%-            END -%]
+  <div class="col-sm-4">
+    <ul>
+[%-         END -%]
+      <li class="list-group-item">
+        <a href="[%-baseurl -%]/[%-cat.uri -%]">[%-cat.name -%]</a>
+        <span class="badge">[%-count -%]</span>
+      </li>
+[%-    END -%]
+[%- END -%]
+    </ul>
+  </div>
+</div>
