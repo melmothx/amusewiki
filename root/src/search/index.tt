@@ -11,7 +11,7 @@
 
 <ul class="list-group">
   [% FOREACH res IN results %]
-  <li class="list-group-item">
+  <li class="list-group-item clearfix">
     <a href="[% text_uri_base %]/[% res.text.uri %]">[% res.text.title %]</a>
     — [% res.text.author %]
     ([% res.relevance %]% [% c.loc("relevant") %])
