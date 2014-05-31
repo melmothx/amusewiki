@@ -32,6 +32,12 @@
             src="[% c.uri_for('/static/js/bootstrap.min.js') %]">
     </script>
 
+    [%# markitup css -- maybe made it conditional %]
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/js/markitup/skins/simple/style.css') %]" />
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/js/markitup/sets/muse/style.css') %]" />
+
     [%# base css for amuse texts %]
     <link rel="stylesheet" href="[% c.uri_for('/static/css/amuse.css') %]" />
 
