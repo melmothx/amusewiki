@@ -89,7 +89,8 @@
 
 ** DONE Test the /special/ namespace, after it was refactored
    CLOSED: [2014-05-29 gio 16:16]
-** TODO remove controller_User and do some deeper tests
+** DONE remove controller_User and do some deeper tests
+   CLOSED: [2014-06-01 dom 11:20]
 ** DONE store the pdf attachmentes in a directory by themselves
    CLOSED: [2014-05-26 lun 17:41]
 
@@ -137,10 +138,12 @@ This is related to the bootstrapping with the mass compile.
  - routine to run the git pull, and manage remote gits.
  - job for that, we can't bind it so long.
 
-** TODO When a "published" text sets a deletion, notify it
+** DONE When a "published" text sets a deletion, notify it
+   CLOSED: [2014-06-01 dom 11:21]
 
 This has been done, but needs to barf more and loudly.
 
+** TODO refuse to accept editing without a #title
 * Backend
 ** DONE Queue using the db.
    CLOSED: [2014-03-23 dom 10:00]
@@ -220,5 +223,6 @@ fails, send a mail to the user associated with that repository and
 notify the failure.
 
 On post-merge, run make via tiny hook, update xapian and the db.
+
 
 
