@@ -56,7 +56,8 @@
 
 *** anon for editing
 
-** TODO robot ignores on some pages like the forms
+** DONE robot ignores on some pages like the forms
+   CLOSED: [2014-06-01 dom 11:06]
 ** DONE more substantial tests on access control
    CLOSED: [2014-04-18 ven 16:39]
 

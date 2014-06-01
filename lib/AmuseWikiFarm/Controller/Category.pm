@@ -32,6 +32,11 @@ The list of topics
 
 =cut
 
+sub auto :Private {
+    my ($self, $c) = @_;
+    $c->stash(please_index => 1);
+}
+
 sub authors :Global :Args(0) {
     my ( $self, $c ) = @_;
 

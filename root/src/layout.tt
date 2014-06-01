@@ -10,7 +10,8 @@
 
     [%# title block, templates should pass the shared hash %]
     <title>[% site.sitename %]</title>
-    [% IF shared.scraperignore %]
+
+    [% UNLESS please_index %]
     <meta name="robots" content="noindex,nofollow" />
     [% END %]
 

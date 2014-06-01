@@ -19,6 +19,11 @@ Catalyst Controller.
 
 =cut
 
+sub auto :Private {
+    my ($self, $c) = @_;
+    $c->stash(please_index => 1);
+}
+
 
 =head2 index
 
