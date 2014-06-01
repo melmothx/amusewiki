@@ -205,15 +205,10 @@ $.validator.addMethod("muse", function (value, element) {
     console.log("Validating " + value);
     return this.optional(element) || re.test(value);
 }, "[% c.loc('Missing #title header in the text') %]");
-$.validator.addMethod("hasbody", function (value, element) {
-    var re = new RegExp("(\r?\n){2,}.*[a-z]");
-    console.log("Validating " + value);
-    return this.optional(element) || re.test(value);
-}, "[% c.loc('Missing body for the document') %]");
 $(document).ready(function(){
     $("#museform").validate({
         rules: {
-            body: "required muse hasbody"
+            body: "required muse"
         }
     });
 });
