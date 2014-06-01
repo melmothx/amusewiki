@@ -150,15 +150,27 @@
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
-      <form action="[% c.uri_for('/bookbuilder/add') %]"
+      [% IF c.user_exists || site.human_can_edit %]
+      <form action="[% c.uri_for_action('/library/text_edit', text.uri, 'edit') %]"
+            id="text-edit-button" name="text-edit-button" style="display:inline">
+        <button type="submit" class="btn btn-default"
+                title="[% c.loc('Edit this text') %]"
+                id="edit-button">
+          <span class="glyphicon glyphicon-edit" style="font-size: 1.5em"></span>
+          <span style="display:none">Edit this text</span>
+        </button>
+      </form>
+      [% END %]
+      <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
             id="book-builder-add-text"
             name="book-builder-add-text"
             style="display:inline">
-        <input type="hidden" name="text" value="[% text.uri %]"/>
         <button type="submit" class="btn btn-default"
                 title="[% c.loc('Add this text to the bookbuilder') %]"
                 id="add-to-bookbuilder">
-          <span class="glyphicon glyphicon-plus"></span>
+          <span class="glyphicon glyphicon-plus" style="font-size: 1.5em"></span>
+          <span style="display:none">Add to the bookbuilder</small>
+          <small>
         </button>
       </form>
     </div>

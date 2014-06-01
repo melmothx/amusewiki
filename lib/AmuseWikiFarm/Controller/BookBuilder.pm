@@ -130,10 +130,8 @@ sub clear :Chained('root') :PathPart('clear') :Args(0) {
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
-sub add :Chained('root') :PathPart('add') :Args(0) {
-    my ( $self, $c ) = @_;
-    if (my $text = $c->request->params->{text}) {
-
+sub add :Chained('root') :PathPart('add') :Args(1) {
+    my ( $self, $c, $text ) = @_;
         my $bb   = $c->stash->{bb};
         my $site = $c->stash->{site};
         my $referrer = $c->uri_for_action('/library/text' => $text);
@@ -166,11 +164,6 @@ sub add :Chained('root') :PathPart('add') :Args(0) {
         }
         $c->response->redirect($referrer);
         return;
-    }
-    else {
-        $c->flash->{error_msg} = $c->loc("No text provided!");
-    }
-    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
 sub save_session :Private {

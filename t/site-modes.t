@@ -162,7 +162,7 @@ sub common_tests {
                                  },
                       );
     diag "Check if the bookbuilder works";
-    $mech->get('/bookbuilder/add?text=alsdflasdf');
+    $mech->get('/bookbuilder/add/alsdflasdf');
     is ($mech->status, '404', "Page alsdflasdf not found");
     $mech->content_contains("Couldn't add the text");
     $mech->get_ok('/action/special/new');
