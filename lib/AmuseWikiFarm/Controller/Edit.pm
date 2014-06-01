@@ -285,7 +285,7 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
 
             # validate the body, it should at least contain a #title
             if ($params->{body} and
-                $params->{body} =~ m/^#title .*[A-Za-z]/sm) {
+                (index($params->{body}, '#title ') >= 0)) {
 
                 $c->flash(status_msg => "Changes committed, thanks!");
                 $revision->status('pending');

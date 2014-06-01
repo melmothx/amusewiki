@@ -201,8 +201,7 @@ $(document).ready(function() {
 </script>
 <script type="text/javascript">
 $.validator.addMethod("muse", function (value, element) {
-    var re = new RegExp("^#title .*[A-Za-z]", "m");
-    console.log("Validating " + value);
+    var re = new RegExp("^#title +", "m");
     return this.optional(element) || re.test(value);
 }, "[% c.loc('Missing #title header in the text') %]");
 $(document).ready(function(){
