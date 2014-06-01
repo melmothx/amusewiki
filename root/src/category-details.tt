@@ -6,7 +6,7 @@
     <a href="[% baseurl %]/[% title.uri %]">[% title.title %]</a>
     [% IF title.author %]
       [% IF category.name != title.author %]
-      -- [% title.author %]
+      — [% title.author %]
       [% END %]
     [% END %]
   </li>
