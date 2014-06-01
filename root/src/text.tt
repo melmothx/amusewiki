@@ -150,7 +150,10 @@
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
-      <form action="[% c.uri_for('/bookbuilder/add') %]" style="display:inline">
+      <form action="[% c.uri_for('/bookbuilder/add') %]"
+            id="book-builder-add-text"
+            name="book-builder-add-text"
+            style="display:inline">
         <input type="hidden" name="text" value="[% text.uri %]"/>
         <button type="submit" class="btn btn-default"
                 title="[% c.loc('Add this text to the bookbuilder') %]"

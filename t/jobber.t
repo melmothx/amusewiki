@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 43;
+use Test::More tests => 44;
 use Cwd;
 use File::Spec::Functions qw/catdir catfile/;
 use File::Temp;
@@ -91,10 +91,12 @@ $mech->get('/');
 $mech->content_contains($title);
 $mech->get_ok("/$text");
 $mech->content_contains(q{<h3 id="text-author">pippo</h3>});
-ok($mech->follow_link(url_regex => qr{bookbuilder/add}), "Found bb link");
+ok($mech->form_id('book-builder-add-text'));
+$mech->click;
 
-$mech->content_contains("Text added");
-$mech->content_contains("/$text");
+$mech->content_contains("The text was added to the bookbuilder");
+is ($mech->uri->path, "/$text");
+$mech->get_ok("/bookbuilder");
 
 $mech->form_with_fields('collectionname');
 
