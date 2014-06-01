@@ -120,8 +120,6 @@ my $gitop = check_jobber($mech);
 like $gitop->{logs}, qr/fatal: The remote end hung up unexpectedly/,
   "git job works";
 
-done_testing;
-
 sub check_jobber {
     my $mech = shift;
     like $mech->response->base->path, qr{^/tasks/status/}, "Location for tasks ok";
