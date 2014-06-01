@@ -282,11 +282,21 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
 
         # if it's a commit, close the editing.
         if ($params->{commit}) {
-            $c->flash(status_msg => "Changes committed, thanks!");
-            $revision->status('pending');
-            $revision->update;
-            $c->response->redirect($c->uri_for_action('/publish/pending'));
-            return;
+
+            # validate the body, it should at least contain a #title
+            if ($params->{body} and
+                $params->{body} =~ m/^#title .*[A-Za-z]/sm) {
+
+                $c->flash(status_msg => "Changes committed, thanks!");
+                $revision->status('pending');
+                $revision->update;
+                $c->response->redirect($c->uri_for_action('/publish/pending'));
+                return;
+            }
+            else {
+                $c->stash->{editing_warnings} =
+                  $c->loc("Missing #title header in the text!");
+            }
         }
     }
 

@@ -72,7 +72,7 @@ $(document).ready(function() {
 </script>
 
 [% IF editing_warnings %]
-<div id="editing-warnings">
+<div id="editing-warnings" class="alert alert-danger">
   [% editing_warnings %]
 </div>
 [% END %]
@@ -108,7 +108,8 @@ $(document).ready(function() {
   </div>
   <div class="form-group">
     <div>
-      <textarea rows="30" cols="60" id="maintextarea" class="form-control"
+      <textarea rows="20" cols="60" id="maintextarea"
+                class="form-control"
                 name="body">[%- revision.muse_body | html -%]</textarea>
     </div>
     <div class="checkbox">
@@ -194,4 +195,28 @@ $(document).ready(function() {
     [% revision.muse_doc.as_html %]
   </div>
 </div>
+
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
+</script>
+<script type="text/javascript">
+$.validator.addMethod("muse", function (value, element) {
+    var re = new RegExp("^#title .*[A-Za-z]", "m");
+    console.log("Validating " + value);
+    return this.optional(element) || re.test(value);
+}, "[% c.loc('Missing #title header in the text') %]");
+$.validator.addMethod("hasbody", function (value, element) {
+    var re = new RegExp("(\r?\n){2,}.*[a-z]");
+    console.log("Validating " + value);
+    return this.optional(element) || re.test(value);
+}, "[% c.loc('Missing body for the document') %]");
+$(document).ready(function(){
+    $("#museform").validate({
+        rules: {
+            body: "required muse hasbody"
+        }
+    });
+});
+</script>
+
   <!-- end of the preamble -->

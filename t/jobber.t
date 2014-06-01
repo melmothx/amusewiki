@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 44;
+use Test::More tests => 46;
 use Cwd;
 use File::Spec::Functions qw/catdir catfile/;
 use File::Temp;
@@ -67,9 +67,20 @@ $mech->content_like(qr/\#title\s* ciccia.*
 
 $mech->form_id('museform');
 
+$mech->field(body => "Hello there");
+
 $mech->click('commit');
 
-$mech->content_contains('Changes committed');
+$mech->content_contains('Missing #title header in the text!');
+
+ok($mech->form_id('museform'), "Found form again");
+
+$mech->field(body => "#title ciccia\n#author pippo\n#lang en\n\nHello there\n");
+
+$mech->click('commit');
+
+$mech->content_contains('Changes committed') or diag $mech->response->content;
+
 
 ok($mech->form_with_fields('publish'));
 

@@ -34,7 +34,7 @@ div.float_image_r {
     margin-left: 12px;
 }
 
-.error {
+.error, .mandatory {
     color: #8b0000;
 }
 
