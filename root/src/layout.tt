@@ -80,24 +80,32 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li[% IF nav == 'author' %] class="disabled" [% END %]>
-                  <a href="[% c.uri_for('/authors') %]"
-		             title="[% c.loc('texts sorted by author') %]">
-                    [% c.loc('Authors') %]
-                  </a>
-                </li>
-	            <li[% IF nav == 'titles' %] class="disabled" [% END %]>
+	            <li[% IF nav == 'titles' %] class="active" [% END %]>
                   <a href="[% c.uri_for('/library') %]"
 		             title="[% c.loc('texts sorted by title') %]">
                     [% c.loc('Titles') %]
                   </a>
                 </li>
-	            <li[% IF nav == 'topic' %] class="disabled" [% END %]>
+                <li[% IF nav == 'author' %] class="active" [% END %]>
+                  <a href="[% c.uri_for('/authors') %]"
+		             title="[% c.loc('texts sorted by author') %]">
+                    [% c.loc('Authors') %]
+                  </a>
+                </li>
+	            <li[% IF nav == 'topic' %] class="active" [% END %]>
                   <a href="[% c.uri_for('/topics') %]"
 		             title="[% c.loc('texts sorted by topics') %]">
                     [% c.loc('Topics') %]
                   </a>
                 </li>
+                [% IF c.user_exists || site.human_can_edit %]
+                <li class="divider"></li>
+                <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
+                  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
+                    [% c.loc('Add to library') %]
+                  </a>
+                </li>
+                [% END %]
               </ul>
             </li>
             <li[% IF nav == 'bookbuilder' %] class="active"[% END %]>
@@ -115,68 +123,47 @@
               </a>
               <ul class="dropdown-menu">
                 [% FOREACH link IN navigation.projects %]
-                <li[% IF link.current %] class="disabled" [% END %]>
+                [%   UNLESS link.current               %]
+                <li>
                   <a href="[% link.uri %]">[% link.name %]</a>
                 </li>
-                [% END %]
+                [%   END %]
+                [% END   %]
                 [% IF navigation.specials %]
                 <li class="divider"></li>
                 [% END %]
                 [% FOREACH link IN navigation.specials %]
-                <li[% IF link.active %] class="disabled"[% END %]>
+                <li[% IF link.active %] class="active"[% END %]>
                   <a href="[% link.uri %]">[% link.name %]</a>
                 </li>
                 [% END %]
               </ul>
             </li>
             [% END %]
-            [% IF c.user_exists || site.human_can_edit || site.human_can_publish %]
+            [%- # this menu is reserved for logged in users -%]
+            [% IF c.user_exists %]
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
                  title="about, links..."
                  data-toggle="dropdown">
-                [% c.loc('You') %]
+                [% c.user.get('username') %]
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                [% IF is_library_regular_title || (is_library_special && c.user_exists) %]
-                <li>
-                  <a href="[% c.uri_for_action('/edit/revs', [ text.f_class, text.uri ]) %]">
-                    [% c.loc('Edit this text') %]
-                  </a>
-                </li>
-                [% END %]
-
-                [% IF c.user_exists || site.human_can_edit %]
-                <li[% IF nav == 'add-to-library' %] class="disabled"[% END %]>
-                  <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
-                    [% c.loc('Add to library') %]
-                  </a>
-                </li>
-                [% END %]
-                [% IF c.user_exists || site.human_can_publish %]
                 <li>
                   <a href="[% c.uri_for('/publish/pending') %]">
-                    [% c.loc('Pending') %]
+                    [% c.loc('Pending revisions') %]
                   </a>
                 </li>
-                [% END %]
-                [% IF c.user_exists %]
                 <li>
                   <a href="[% c.uri_for('/logout') %]">
-                    [% c.user.get('username') %] [% c.loc('logout') %]
+                    [% c.loc('Logout') %]
                   </a>
                 </li>
-                [% ELSE %]
-                <li[% IF nav == 'login' %] class="disabled"[% END %]>
-                  <a href="[% c.uri_for('/login') %]">
-                    [% c.loc('Login') %]
-                  </a>
-                </li>
-                [% END %]
               </ul>
             </li>
             [% END %]
+            [%- # the menu for logged in ends here -%]
           </ul>
           <form class="navbar-form navbar-right navbar-input-group" role="search"
                 id="formsearchbox" action="[% c.uri_for('/search') %]">
