@@ -151,6 +151,11 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
+                  <a href="[% c.uri_for_action('/edit/newtext', ['special']) %]">
+                    Create a new special page
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for('/publish/pending') %]">
                     [% c.loc('Pending revisions') %]
                   </a>
