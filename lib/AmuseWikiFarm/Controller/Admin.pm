@@ -46,36 +46,6 @@ sub debug_site_id :Local :Args(0) {
                            ));
 }
 
-=head2 pending
-
-List and act on the existing revisions
-
-=cut
-
-sub pending :Local :Args(0) {
-    my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    if (my $revid = $c->request->params->{publish}) {
-        # TODO validate the params
-        my $rev = $site->revisions->find($revid);
-        if ($rev and $rev->pending) {
-            my $job = $c->stash->{site}->jobs->publish_add($rev);
-            $c->res->redirect($c->uri_for_action('/tasks/display', [$job->id]));
-            return;
-        }
-        else {
-            $c->flash(error_msg => "Bad revision!");
-        }
-    }
-
-    my @search = ({},
-                  { order_by => { -desc => 'updated' } });
-
-    my @revisions = $site->revisions->search(@search);
-    $c->stash(revisions => \@revisions);
-}
-
-
 =encoding utf8
 
 =head1 AUTHOR
