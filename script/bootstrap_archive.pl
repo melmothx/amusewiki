@@ -19,11 +19,15 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 print "DB loaded, starting up\n";
 
+my @codes;
 foreach my $s ($schema->resultset('Site')->all) {
     print $s->id . " " . $s->vhosts->first->name . "\n";
+    push @codes, $s->id;
 }
 
-my @codes = @ARGV;
+if (@ARGV) {
+    @codes = @ARGV;
+}
 
 foreach my $code (@codes) {
     my $site = $schema->resultset('Site')->find($code);
