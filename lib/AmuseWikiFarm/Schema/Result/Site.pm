@@ -551,13 +551,17 @@ sub available_text_exts {
 
 sub known_langs {
     my $self = shift;
-    return { ru => 'Русский',
-             sr => 'Srpski',
-             hr => 'Hrvatski',
-             mk => 'Македонски',
-             fi => 'Suomi',
-             es => 'Español',
-             en => 'English',
+    return {
+            ru => 'Русский',
+            sr => 'Srpski',
+            hr => 'Hrvatski',
+            mk => 'Македонски',
+            fi => 'Suomi',
+            es => 'Español',
+            en => 'English',
+            fr => 'Français',
+            nl => 'Nederlands',
+            de => 'Deutsch',
            };
 }
 
