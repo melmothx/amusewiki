@@ -220,7 +220,7 @@ var ckconfiguration = {
                 title: "required"
             },
             messages: {
-                title: "[% c.loc('This field is xx required') %]"
+                title: "[% c.loc('This field is required') %]"
             }
         });
       });
