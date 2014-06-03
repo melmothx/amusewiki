@@ -17,8 +17,6 @@ AmuseWikiFarm::Controller::Edit - Catalyst Controller
 
 Catalyst Controller.
 
-TODO: lock a text while someone is editing.
-
 =head1 METHODS
 
 =head2 auto

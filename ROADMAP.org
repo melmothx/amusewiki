@@ -143,7 +143,8 @@ This is related to the bootstrapping with the mass compile.
 
 This has been done, but needs to barf more and loudly.
 
-** TODO refuse to accept editing without a #title
+** DONE refuse to accept editing without a #title
+   CLOSED: [2014-06-02 lun 18:38]
 * Backend
 ** DONE Queue using the db.
    CLOSED: [2014-03-23 dom 10:00]

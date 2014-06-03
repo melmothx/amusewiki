@@ -54,7 +54,6 @@ sub console :Chained('root') :PathPart('') :Args(0) {
 
 sub git :Chained('root') :PathPart('git') :Args(0) {
     my ($self, $c) = @_;
-    # TODO push the task and redirect to the task monitor
     my $remote = $c->request->params->{remote};
     my $action = $c->request->params->{action};
     if ($remote && $action && $c->stash->{repo_validation}->{$remote}->{$action}) {

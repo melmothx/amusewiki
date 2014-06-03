@@ -377,7 +377,6 @@ sub edit {
     open (my $tmpfh, '<:encoding(utf-8)', $temp) or die "Can't open $temp $!";
     open (my $auxfh, '>:encoding(utf-8)', $aux) or die "Can't open $aux $!";
 
-    # TODO this is the good place to use the filters, not modifying the params
     my $current;
     while (<$tmpfh>) {
         $current = $_;
@@ -418,10 +417,6 @@ sub add_attachment {
     elsif ($mime eq 'image/png') {
         $ext = '.png';
     }
-    # TODO
-    # the destination of the pdf attachment should be out of text tree
-    # to avoid silly overwriting. After all, we don't embed pdf in
-    # html or tex.
     elsif ($mime eq 'application/pdf') {
         $ext = '.pdf';
     }

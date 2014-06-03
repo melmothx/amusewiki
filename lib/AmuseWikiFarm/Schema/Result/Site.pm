@@ -561,8 +561,6 @@ sub known_langs {
            };
 }
 
-# TODO special
-
 sub path_for_specials {
     my $self = shift;
     my $target = File::Spec->catdir($self->repo_root, 'specials');
@@ -928,7 +926,6 @@ sub index_file {
         warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
     }
     print "Inserting data for $file\n";
-    # TODO: see if we have to update the insertion
 
     my $title = $self->titles->update_or_create(\%insertion)->get_from_storage;
 
@@ -1167,12 +1164,13 @@ sub _repo_git_action {
     return;
 }
 
-=head3 update_db_from_tree
+=head3 update_db_from_tree($logger)
 
 Check the consistency of the repo and the db. Index and compile
 new/changed files and purge the removed ones.
 
-TODO: logging
+Pass the first argument (a sub ref) as logger to
+L<Text::Amuse::Compile> if present.
 
 =cut
 

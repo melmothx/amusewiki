@@ -67,9 +67,6 @@ sub login :Path('/login') :Args(0) {
     # get the details from the db before authenticate it.
     # here we have another layer befor hitting the authenticate
 
-    # TODO this is the critical chunk and needs a review and testing,
-    # empty passwords/username and cross site.
-
     if (my $user = $c->model('DB::User')->find({ username => $username })) {
 
         # authenticate only if the user is a superuser
