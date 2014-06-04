@@ -17,4 +17,4 @@ script/amusewikifarm_create.pl model DB \
     naming=current use_namespaces=1 \
     dbi:SQLite:sqlite.db \
     on_connect_do="PRAGMA foreign_keys = ON"
-script/bootstrap_archive.pl 0test0 0blog0
+script/bootstrap_archive.pl
