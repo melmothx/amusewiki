@@ -80,7 +80,7 @@ my %repos = ('0blog0' => {
                           logo => 'logo-en',
                           canonical => 'http://test.amusewiki.org',
                           a4_pdf => 0,
-                          pdf => 0,
+                          pdf => 1,
                           lt_pdf => 0,
                           papersize => '',
                           division => '12',
