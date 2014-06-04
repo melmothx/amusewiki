@@ -71,7 +71,7 @@ ok ($text->notes, "Found the notes");
 
 $revision = $text->new_revision;
 $revision->edit("#title blabla\n\n Hellox worldx!\n");
-my $newuri = $revision->publish_text, "New revision published";
+my $newuri = $revision->publish_text;
 $newuri =~ s!^library/!!;
 is $uri, $newuri;
 $text = $site->titles->published_texts->find({ uri => $uri});
