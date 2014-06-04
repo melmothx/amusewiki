@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 16;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use Data::Dumper;
 use AmuseWikiFarm::Schema;
 use JSON qw/from_json/;

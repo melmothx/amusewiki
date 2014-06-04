@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 use Test::More tests => 1;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use Data::Dumper;
 use AmuseWikiFarm::Schema;
 

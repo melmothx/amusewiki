@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 101;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use File::Path qw/make_path remove_tree/;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;

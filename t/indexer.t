@@ -2,6 +2,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 57;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use Date::Parse qw/str2time/;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";

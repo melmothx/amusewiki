@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 use Test::More tests => 11;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use utf8;
 
 use Catalyst::Test 'AmuseWikiFarm';

@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 30;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use File::Spec::Functions qw/catfile catdir/;
 use File::Copy qw/copy/;
 use File::Basename qw/basename/;

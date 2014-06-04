@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 use Test::More tests => 17;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 
 use Catalyst::Test 'AmuseWikiFarm';
 use Test::WWW::Mechanize::Catalyst;

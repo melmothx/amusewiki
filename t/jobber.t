@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 use Test::More tests => 46;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use Cwd;
 use File::Spec::Functions qw/catdir catfile/;
 use File::Temp;

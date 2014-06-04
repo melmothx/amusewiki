@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 use Test::More;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 
 
 unless (eval q{use Test::WWW::Mechanize::Catalyst 0.55; 1}) {

@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 17;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
 use File::Slurp qw/write_file/;

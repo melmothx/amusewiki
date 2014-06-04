@@ -3,6 +3,8 @@
 use strict;
 use warnings;
 use Test::More;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;

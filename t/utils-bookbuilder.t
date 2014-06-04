@@ -2,6 +2,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 58;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use Data::Dumper;
 # use Test::Memory::Cycle;
 

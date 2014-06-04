@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 50;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use File::Slurp;
 use File::Temp;
 use File::Copy qw/copy/;

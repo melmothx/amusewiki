@@ -8,6 +8,8 @@ use AmuseWikiFarm::Schema;
 use File::Temp;
 use File::Spec;
 use Test::More tests => 3;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use Data::Dumper;
 
 my $testdir = File::Temp->newdir;

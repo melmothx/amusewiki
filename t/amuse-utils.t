@@ -2,6 +2,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 43;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use File::Spec::Functions qw/catfile catdir/;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path

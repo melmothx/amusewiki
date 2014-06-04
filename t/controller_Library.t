@@ -2,6 +2,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 21;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";

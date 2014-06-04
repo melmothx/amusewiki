@@ -1,6 +1,8 @@
 use strict;
 use warnings;
 use Test::More tests => 54;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 
 use Test::WWW::Mechanize::Catalyst;
 

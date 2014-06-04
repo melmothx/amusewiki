@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 10;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use AmuseWikiFarm::Schema;
 use File::Slurp qw/read_file write_file/;
 

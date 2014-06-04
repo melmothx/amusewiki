@@ -2,6 +2,8 @@
 use strict;
 use warnings;
 use Test::More;
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 
 plan skip_all => 'set TEST_POD to enable this test' unless $ENV{TEST_POD};
 eval "use Test::Pod 1.14";
