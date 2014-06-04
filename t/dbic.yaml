@@ -1,0 +1,9 @@
+amuse:
+  dsn: 'dbi:SQLite:test.db'
+  user: ''
+  password: ''
+  on_connect_do: 'PRAGMA foreign_keys = ON'
+  AutoCommit: 1
+  RaiseError: 1
+  sqlite_unicode: 1
+
