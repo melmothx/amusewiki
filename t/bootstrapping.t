@@ -3,6 +3,9 @@
 use strict;
 use warnings;
 use utf8;
+
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use Data::Dumper;
 use File::Copy qw/move/;
 use File::Spec::Functions qw/catfile/;
@@ -10,8 +13,6 @@ use File::Slurp;
 use AmuseWikiFarm::Schema;
 
 use Test::More tests => 5;
-BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-
 
 my $id = '0test0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
