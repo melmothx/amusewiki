@@ -409,10 +409,6 @@ Recognized statuses:
 
 =over 4
 
-=item unpublished
-
-Default status.
-
 =item deleted
 
 File has been deleted
@@ -434,40 +430,46 @@ revisions, and prevent duplications and such.
 
 =back
 
-=head3 is_published
+=head2 is_published
 
-B<Check> if it's not deleted and if it's not deferred. 
+Return true when the status is set to C<published>
 
-=head3 is_deleted
+=head2 update_text_status
 
-Return true if is deleted, false otherwise.
-
-=head3 is_deferrend
-
-Return true if the publish date is set in the future.
+This method should be called only on indexing. It will check the
+deleted column and the pubdate and update the status column.
 
 =cut
 
-sub is_published {
+sub update_text_status {
     my $self = shift;
-    if ($self->is_deleted || $self->is_deferred) {
-        return 0;
+    my $old_status = $self->status;
+    if ($self->deleted) {
+        $self->status('deleted');
+    }
+    elsif($self->pubdate->epoch > DateTime->now->epoch) {
+        $self->status('deferred');
     }
     else {
-        return 1;
+        $self->status('published');
+    }
+    if ($self->is_changed) {
+        warn "Changing status from $old_status to " . $self->status . "\n";
+        $self->update;
     }
 }
 
-sub is_deleted {
-    my $self = shift;
-    $self->deleted eq '' ? return 0 : return 1;
+sub is_published {
+    return shift->status eq 'published';
 }
 
-sub is_deferred {
+sub can_spawn_revision {
     my $self = shift;
-    $self->pubdate->epoch > DateTime->now->epoch ? return 1 : return 0;
+    if (-f $self->f_full_path_name) {
+        return 1;
+    }
+    return 0;
 }
-
 
 =head2 File serving
 

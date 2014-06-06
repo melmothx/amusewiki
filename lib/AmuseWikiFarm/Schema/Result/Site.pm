@@ -940,21 +940,7 @@ sub index_file {
     }
 
     my $name = $title->uri;
-    my $status;
-    if ($title->is_deleted) {
-        $status = 'deleted';
-    }
-    elsif ($title->is_deferred) {
-        $status = 'deferred';
-    }
-    elsif ($title->is_published) {
-        $status = 'published';
-    }
-    if ($status) {
-        $title->status($status);
-        warn "STATUS for $class $name SET TO **$status**\n";
-    }
-    $title->update if $title->is_changed;
+    $title->update_text_status;
 
     if ($title->is_published && @parsed_cats) {
         # here we can die if there are duplicated uris

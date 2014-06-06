@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 17;
+use Test::More tests => 21;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Path qw/make_path remove_tree/;
@@ -38,6 +38,8 @@ my $revision = $site->create_new_text({ uri => 'first-testx',
                                         textbody => '<p>http://my.org My "precious"</p>',
                                       }, 'text');
 
+ok(!$revision->title->can_spawn_revision, "Can't generate another revision");
+
 ok ($revision->id, "Found the revision id");
 
 ok -f ($revision->f_full_path_name),
@@ -46,6 +48,13 @@ ok -f ($revision->f_full_path_name),
 ok (-f $revision->starting_file, "Original body was stored");
 
 ok $revision->publish_text;
+
+ok($revision->title->can_spawn_revision, "Now it can generate another revision");
+ok($revision->title->f_full_path_name, "Full path found in the object");
+
+ok -f $revision->title->f_full_path_name,
+  "File is in place " . $revision->title->f_full_path_name;
+
 
 my $published = $site->titles->published_texts->find({ uri => 'first-testx' });
 ok($published, "Text is published");

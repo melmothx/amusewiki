@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 50;
+use Test::More tests => 49;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Slurp;
@@ -90,9 +90,8 @@ $title = $schema->resultset('Title')->single({uri => 'dummy-text',
 
 ok($title);
 ok(!$title->deleted, "Is not deleted") or diag $title->deleted;
-ok(!$title->is_deferred, "Is not deferred");
-ok(!$title->is_deleted, "Is not deleted");
 ok($title->is_published, "It's published");
+ok($title->can_spawn_revision, "can create a revision");
 is($title->status, 'published');
 
 
@@ -164,9 +163,9 @@ $title = $schema->resultset('Title')->single({uri => 'dummy-text',
 ok($title);
 @cats = $title->categories;
 ok(@cats == 0);
-ok($title->is_deferred);
 ok(!$title->is_published);
-ok(!$title->is_deleted);
+ok($title->can_spawn_revision, "can create a revision");
+ok(!$title->deleted);
 is($title->status, 'deferred');
 
 foreach my $deletion (qw/superpippo supermarco/) {

@@ -691,6 +691,10 @@ sub publish_text {
         $self->title->update;
     }
 
+    # assert to have a fresh copy
+    $self->title->discard_changes;
+
+
     $self->site->collation_index;
     $self->status('published');
     $self->update;
