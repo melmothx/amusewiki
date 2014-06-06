@@ -547,15 +547,22 @@ sub pages_estimated {
 }
 
 
-=head2 new_revision
+=head2 new_revision($force)
 
 Create a new revision for the current text. With an optional true
-argument, skip the copying of the file.
+argument, skip the copying of the files. This is true when you're
+creating a new revision from scratch, so the original file is not in
+place.
 
 =cut
 
 sub new_revision {
-    my ($self, $skip_copying) = @_;
+    my ($self, $force) = @_;
+    my $can_spawn = $self->can_spawn_revision;
+
+    unless ($can_spawn || $force) {
+        die "Can't create a revision from id: " . $self->id;
+    }
     my $revision = $self->revisions->create({
                                              # help dbic to cope with this
                                              site_id => $self->site->id,
@@ -585,9 +592,7 @@ sub new_revision {
     # copy the file twice. The first is the starting file, the second the
     # actual revision.
 
-    unless ($skip_copying) {
-        # TODO check here when you commit a revision and before publishing
-        # someone try to edit it. Thing crashes
+    if ($can_spawn) {
         copy($self->f_full_path_name, $revision->starting_file) or die $!;
         copy($self->f_full_path_name, $revision->f_full_path_name) or die $!;
     }

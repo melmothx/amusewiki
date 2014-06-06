@@ -176,7 +176,8 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     my @revs = $text->revisions->pending;
 
     # no existing revision or explicit request by posting: create new
-    if (!@revs || $c->request->params->{create}) {
+    # but only if can spawn one.
+    if (!@revs or ($c->request->params->{create} && $text->can_spawn_revision)) {
         $c->log->debug("Creating a new revision");
         my $revision = $text->new_revision;
         # on creation, set the session id

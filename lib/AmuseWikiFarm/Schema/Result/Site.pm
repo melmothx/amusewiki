@@ -748,7 +748,8 @@ sub import_text_from_html_params {
         $bogus->{$f} = '';
     }
 
-    my $revision = $self->titles->create($bogus)->new_revision(1);
+    # title->can_spawn_revision will return false, so we have to force
+    my $revision = $self->titles->create($bogus)->new_revision('force');
     my $file = $revision->f_full_path_name;
     die "full path was not set!" unless $file;
 

@@ -4,7 +4,7 @@
 
 <p>
   [% c.loc("Some ongoing revisions were found") %].
-  [% c.loc("You can continue editing one of those, or create a new one") %]
+  [% c.loc("You can continue editing one of those:") %]
 </p>
 
 <ul>
@@ -16,9 +16,17 @@
   [% END %] 
 </ul>
 
+[% IF text_to_edit.can_spawn_revision %]
 [% c.loc("or create a new one") %]
 
 <form method="post">
-  <input type="submit" name="create" value="[% c.loc('New revision') %]">
+  <button type="submit" name="create" value="create" class="btn btn-primary">
+    [% c.loc('New revision') %]
+  </button>
 </form>
 
+[% ELSE %]
+
+[% c.loc("You can't create a new revision because the text has not been published yet") %]
+
+[% END %]
