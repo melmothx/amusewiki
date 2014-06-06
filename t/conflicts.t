@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 30;
 use Cwd;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -64,4 +64,26 @@ foreach my $mech ($mechone, $mechtwo) {
     }
 }
 
-done_testing;
+$created = '';
+
+foreach my $mech ($mechone, $mechtwo) {
+    if (!$created) {
+        $mech->get_ok('/action/text/new');
+        ok($mech->form_with_fields('title'));
+        $mech->field('title' => 'hulloz');
+        $mech->click;
+        $created = $mech->uri->path;
+        like $created, qr{/action/text/edit/hulloz/}, "Path looks correct";
+        $mech->content_contains('Created new text');
+    }
+    else {
+        $created =~ s/[0-9]+$//;
+        $mech->get_ok($created, "Visiting $created");
+        $mech->content_contains('Some ongoing revisions were found');
+        ok(!$mech->form_with_fields('create'), "Creation is not offered");
+        $mech->get_ok("$created?create=1");
+        $mech->content_contains('Some ongoing revisions were found');
+        $mech->content_contains('text has not been published yet');
+    }
+}
+

@@ -172,12 +172,12 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $text = $c->stash->{text_to_edit};
     my $uri  = $text->uri;
-    # TODO filter by user
     my @revs = $text->revisions->pending;
 
     # no existing revision or explicit request by posting: create new
     # but only if can spawn one.
-    if (!@revs or ($c->request->params->{create} && $text->can_spawn_revision)) {
+    if ($text->can_spawn_revision and
+        (!@revs || $c->request->params->{create})) {
         $c->log->debug("Creating a new revision");
         my $revision = $text->new_revision;
         # on creation, set the session id
