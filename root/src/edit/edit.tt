@@ -128,6 +128,15 @@ $(document).ready(function() {
         [% c.loc('Make all links active') %]
       </label>
     </div>
+    <div>
+      <label for="rev-message">
+        [% c.loc('Please describe shortly what you did') %]
+      </label>
+      <textarea rows="5" cols="72" id="rev-message"
+                name="message" class="form-control">
+[%- c.req.params.message | html -%]</textarea>
+      <br />
+    </div>
     <p>
       <button type="submit" class="btn btn-default" name="preview" value="preview">[% c.loc('Preview') %]</button>
       <button type="submit" class="btn btn-default" name="commit"  value="commit">[% c.loc('Commit')  %]</button>
@@ -207,7 +216,8 @@ $.validator.addMethod("muse", function (value, element) {
 $(document).ready(function(){
     $("#museform").validate({
         rules: {
-            body: "required muse"
+            body: "required muse",
+            message: "required"
         }
     });
 });

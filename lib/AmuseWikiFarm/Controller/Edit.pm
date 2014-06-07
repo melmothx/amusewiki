@@ -8,6 +8,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use DateTime;
+use Text::Wrapper;
 
 =head1 NAME
 
@@ -286,9 +287,24 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
             if ($params->{body} and
                 (index($params->{body}, '#title ') >= 0)) {
 
-                $c->flash(status_msg => "Changes committed, thanks!");
                 $revision->status('pending');
+
+                # append the message to the existing one
+                my $rev_message = $params->{message} || '';
+                $rev_message =~ s/\r//g;
+                my $wrapper = Text::Wrapper->new(columns => 72);
+                my $message = $revision->message || '';
+                $message .= "\n\n * " . DateTime->now->datetime . "\n" .
+                  $wrapper->wrap($params->{message}) . "\n";
+
+                if ($c->user_exists) {
+                    $message .= "\n-- " . $c->user->get('username') . "\n\n"
+                }
+                $revision->message($message);
                 $revision->update;
+
+                # TODO here shit out a mail if there is a setting in site
+                $c->flash(status_msg => "Changes committed, thanks!");
                 $c->response->redirect($c->uri_for_action('/publish/pending'));
                 return;
             }

@@ -62,6 +62,11 @@ __PACKAGE__->table("revision");
   data_type: 'text'
   is_nullable: 1
 
+=head2 message
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 status
 
   data_type: 'varchar'
@@ -96,6 +101,8 @@ __PACKAGE__->add_columns(
   "title_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "f_full_path_name",
+  { data_type => "text", is_nullable => 1 },
+  "message",
   { data_type => "text", is_nullable => 1 },
   "status",
   {
@@ -157,8 +164,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-04-18 08:46:36
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0v72ID3CzoF1VeC7n2UA3w
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-07 07:16:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:BXUFatyMORfowXqFnFzjwg
 
 # core modules
 use File::Basename qw/fileparse/;
@@ -166,7 +173,7 @@ use File::Spec;
 use File::Copy qw/copy move/;
 use Digest::SHA;
 
-use File::Slurp qw/read_file append_file/;
+use File::Slurp qw/read_file append_file write_file/;
 use File::MimeInfo::Magic qw/mimetype/;
 use Text::Amuse;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
@@ -242,6 +249,10 @@ Temporary file
 
 Auxiliary file
 
+=item git_msg_file
+
+File for commit message
+
 =back
 
 =cut
@@ -264,6 +275,22 @@ sub temporary_file {
 sub aux_file {
     my $self = shift;
     return File::Spec->catfile($self->working_dir, 'private_aux.muse');
+}
+
+sub git_msg_file {
+    my $self = shift;
+    return File::Spec->catfile($self->working_dir, 'private_git_msg.muse');
+}
+
+sub _write_commit_file {
+    my ($self, $title) = @_;
+    die "Bad usage" unless $title;
+    my $file = $self->git_msg_file;
+    write_file($file, { binmode => ':encoding(utf-8)' }, "$title\n");
+    if (my $body = $self->message) {
+        append_file($file, { binmode => ':encoding(utf-8)' }, "\n$body\n");
+    }
+    return $file;
 }
 
 =head2 attached_files
@@ -636,19 +663,24 @@ sub publish_text {
 
     my $git = $self->site->git;
     my $revid = $self->id;
-
+    my $commit_msg_file = $self->git_msg_file;
     if ($git and -f $self->original_html) {
         die "Original html found, but target exists" if -f $muse;
+
         copy ($self->original_html, $muse) or die $!;
         $git->add($muse);
-        # TODO add the author?
-        $git->commit({ message => "Imported HTML revision no.$revid"});
+
+        $self->_write_commit_file("Imported HTML revision no.$revid");
+        $git->commit({ file => $commit_msg_file });
+
         die "starting muse revision not found!" unless -f $self->starting_file;
         copy ($self->starting_file, $muse) or die $!;
+
         $git->add($muse);
         # this means that the publishing was forced or is a new file
         if ($git->status->get('indexed')) {
-            $git->commit({ message => "Begin editing no.$revid"});
+            $self->_write_commit_file("Begin editing no.$revid");
+            $git->commit({ file => $commit_msg_file });
         }
     }
 
@@ -668,8 +700,8 @@ sub publish_text {
     if ($git) {
         if ($git->status->get('indexed')) {
             # could be very well already been stored above
-            $git->commit({ message => "Published revision $revid" });
-            # TODO add message and author in the message.
+            $self->_write_commit_file("Published revision $revid");
+            $git->commit({ file => $commit_msg_file });
         }
     }
 
@@ -711,7 +743,6 @@ sub f_class {
     my $self = shift;
     return $self->title->f_class;
 }
-
 
 __PACKAGE__->meta->make_immutable;
 1;

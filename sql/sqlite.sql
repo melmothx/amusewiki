@@ -94,6 +94,7 @@ CREATE TABLE revision (
        title_id INTEGER NOT NULL REFERENCES title(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        f_full_path_name TEXT,
+       message TEXT,
        status VARCHAR(16) NOT NULL DEFAULT 'editing',
        user_id INTEGER NOT NULL DEFAULT 0, -- will reference the user
        session_id VARCHAR(255), -- can be null or false
