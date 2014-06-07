@@ -14,6 +14,7 @@
     <tr>
       <th>[% c.loc('Revision') %]</th>
       <th>[% c.loc('Action')   %]</th>
+      <th>[% c.loc('Changes')  %]</th>
       <th>[% c.loc('Message')  %]</th>
       <th>[% c.loc('Date')     %]</th>
     </tr>
@@ -54,6 +55,12 @@
         [% ELSE %]
         [% c.loc(rev.status) %]
         [% END %]
+      </td>
+      <td>
+        <a href="[% c.uri_for_action('/edit/diff', [rev.f_class, rev.title.uri, rev.id]) %]"
+           target="_blank">
+          [% c.loc('Show differences in other tab') %]
+        </a>
       </td>
       <td>
         [% rev.message | html %]
