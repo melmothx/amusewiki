@@ -1,10 +1,6 @@
-<h1>
-[%- IF nav == 'author' -%]
-[%- c.loc('Authors') -%]
-[%- ELSIF nav == 'topic' -%]
-[%- c.loc('Topics') -%]
-[%- END -%]
-</h1>
+[% # -*- mode: html -*- %]
+<h2>[% page_title %]</h2>
+<div><br /></div>
 [%- # This is overly complicated to get the columns right...      -%]
 [%- # alternative approach would be to split the list in the code -%]
 [%- # but in turn this is bound to the bootstramp mumbo-jumbo so  -%]

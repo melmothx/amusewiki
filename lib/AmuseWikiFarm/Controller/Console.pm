@@ -45,6 +45,7 @@ sub root :Chained('/') :PathPart('console') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my @remotes = $c->stash->{site}->remote_gits;
     $c->stash(remotes => \@remotes);
+    $c->stash(page_title => $c->loc('Git console'));
     $c->stash(repo_validation => $c->stash->{site}->remote_gits_hashref);
 }
 

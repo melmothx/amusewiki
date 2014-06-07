@@ -8,8 +8,12 @@
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename %]" href="[% c.uri_for('/feed') %]" />
 
-    [%# title block, templates should pass the shared hash %]
-    <title>[% site.sitename %]</title>
+    <title>
+      [%- IF page_title -%]
+      [%- page_title | html -%] |
+      [%- END -%]
+      [% site.sitename | html -%]
+    </title>
 
     [% UNLESS please_index %]
     <meta name="robots" content="noindex,nofollow" />

@@ -23,8 +23,9 @@ Deny access to not-human
 
 sub auto :Private {
     my ($self, $c) = @_;
-    $c->stash(nav => 'bookbuilder');
     if ($c->session->{i_am_human}) {
+        $c->stash(nav => 'bookbuilder');
+        $c->stash(page_title => $c->loc('Bookbuilder'));
         return 1;
     }
     else {

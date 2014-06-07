@@ -39,7 +39,7 @@ sub auto :Private {
 
 sub authors :Global :Args(0) {
     my ( $self, $c ) = @_;
-
+    $c->stash(page_title => $c->loc('Authors'));
     $c->detach(category_listing => [ 'author' ]);
 }
 
@@ -51,7 +51,7 @@ sub author :Path('/authors') :Args(1) {
 
 sub topics :Global :Args(0) {
     my ( $self, $c ) = @_;
-
+    $c->stash(page_title => $c->loc('Topics'));
     $c->detach(category_listing => [ 'topic' ]);
 }
 
@@ -69,6 +69,7 @@ sub category_details :Private {
     $c->detach('/not_found') unless $cat;
     $c->stash(
               nav => $type,
+              page_title => $cat->name,
               template => 'category-details.tt',
               category => $cat,
              );

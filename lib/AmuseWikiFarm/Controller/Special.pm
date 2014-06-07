@@ -54,6 +54,7 @@ sub display :Path :Args(1) {
             $c->stash(
                       template => 'text.tt',
                       text => $page,
+                      page_title => $page->title,
                       is_library_special => 1,
                       latest_entries => \@latest,
                      );

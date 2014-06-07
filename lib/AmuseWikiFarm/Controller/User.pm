@@ -52,7 +52,10 @@ sub login :Path('/login') :Args(0) {
         return;
     }
 
-    $c->stash(nav => 'login');
+    $c->stash(
+              nav => 'login',
+              page_title => $c->loc('Login'),
+             );
     my $username = $c->request->params->{username};
     my $password = $c->request->params->{password};
 
@@ -108,6 +111,7 @@ sub human :Path('/human') :Args(0) {
         return;
     }
 
+    $c->stash(page_title => $c->loc('Please prove you are a human'));
     if ($c->request->params->{answer}) {
         if ($c->request->params->{answer} eq $c->stash->{site}->magic_answer) {
             # ok, you're a human

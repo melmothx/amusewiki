@@ -37,6 +37,7 @@ sub index :Path :Args(0) {
     $c->stash(texts => \@texts,
               baseurl => $c->uri_for_action('/library/index'),
               template => 'library.tt',
+              page_title => $c->loc('Full list of texts'),
               nav => 'titles');
 }
 
@@ -121,6 +122,7 @@ sub text :Path :Args(1) {
             $c->stash(
                       template => 'text.tt',
                       text => $text,
+                      page_title => $text->title,
                       is_library_regular_title => 1,
                      );
         }

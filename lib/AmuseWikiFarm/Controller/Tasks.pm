@@ -50,7 +50,10 @@ sub status :Chained('root') :CaptureArgs(1) {
         $c->detach('/not_found');
         return;
     }
-    $c->stash(job => $job);
+    $c->stash(
+              job => $job,
+              page_title => $c->loc('Queue'),
+             );
 }
 
 sub display :Chained('status') :PathPart('') :Args(0) {

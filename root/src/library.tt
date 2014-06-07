@@ -1,3 +1,7 @@
+[% # -*- mode: html -*- %]
+<h2>[% page_title %]</h2>
+<div><br /></div>
+
 <ol>
   [% FOREACH text IN texts %]
   <li>

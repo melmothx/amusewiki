@@ -130,6 +130,11 @@ sub end : ActionClass('RenderView') {
 
     my $site = $c->stash->{site};
     die "No site found?" unless $site;
+
+    # before passing the thing to the template, strip <> from page_title
+    if ($c->stash->{page_title}) {
+        $c->stash->{page_title} =~ s/<.*?>//g;
+    }
     if (my $theme = $site->theme) {
         die "Bad theme name!" unless $theme =~ m/^\w[\w-]+\w$/s;
         $c->stash->{additional_template_paths} =

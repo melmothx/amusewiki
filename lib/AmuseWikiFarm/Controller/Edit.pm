@@ -89,7 +89,12 @@ sub root :Chained('/') :PathPart('action') :CaptureArgs(1) {
 
 sub newtext :Chained('root') :PathPart('new') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(nav => 'add-to-library');
+
+    $c->stash(
+              nav => 'add-to-library',
+              page_title => $c->loc('Add to library'),
+             );
+
     my $site    = $c->stash->{site};
     my $f_class = $c->stash->{f_class} or die;
     # if there was a posting, process it
@@ -148,7 +153,10 @@ sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
     }
 
     if ($text) {
-        $c->stash->{text_to_edit} = $text;
+        $c->stash(
+                  text_to_edit => $text,
+                  page_title => $c->loc('Editing') . ' ' . $text->uri,
+                 );
     }
     else {
         my $newuri = $c->uri_for_action('/edit/newtext', [$c->stash->{f_class}]);
@@ -346,7 +354,11 @@ Path: /action/edit/<my-text>/<rev-id>/diff
 
 =cut
 
-sub diff :Chained('get_revision') :PathPart('diff') :Args(0) {}
+sub diff :Chained('get_revision') :PathPart('diff') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash->{page_title} =
+      $c->loc('Changes for [_1]', $c->stash->{revision}->title->uri);
+}
 
 
 =Head1 AUTHOR

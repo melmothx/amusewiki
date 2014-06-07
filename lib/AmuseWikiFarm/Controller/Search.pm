@@ -51,6 +51,7 @@ sub index :Path :Args(0) {
 
     $c->stash( matches => $matches,
                range => $range,
+               page_title => $c->loc('Search'),
                text_uri_base => $c->uri_for_action('/library/index'),
                results => \@results );
 
