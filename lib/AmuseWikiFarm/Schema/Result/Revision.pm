@@ -74,12 +74,6 @@ __PACKAGE__->table("revision");
   is_nullable: 0
   size: 16
 
-=head2 user_id
-
-  data_type: 'integer'
-  default_value: 0
-  is_nullable: 0
-
 =head2 session_id
 
   data_type: 'varchar'
@@ -111,8 +105,6 @@ __PACKAGE__->add_columns(
     is_nullable => 0,
     size => 16,
   },
-  "user_id",
-  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "session_id",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "updated",
@@ -164,8 +156,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-07 07:16:26
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:BXUFatyMORfowXqFnFzjwg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-07 12:46:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8VsTldQexIBuIvwq9gR6bw
 
 # core modules
 use File::Basename qw/fileparse/;
