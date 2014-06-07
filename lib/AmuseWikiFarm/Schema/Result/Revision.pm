@@ -193,11 +193,25 @@ Return the text stored in the staging area (for editing)
 
 Return a L<Text::Amuse> object for that file.
 
+=head2 starting_file_body
+
+Return the text stored in the starting file (for diffing).
+
 =cut
 
 sub muse_body  {
     my $self = shift;
-    my $file = $self->f_full_path_name;
+    return $self->_read_muse_body($self->f_full_path_name);
+}
+
+sub starting_file_body {
+    my $self = shift;
+    return $self->_read_muse_body($self->starting_file);
+}
+
+sub _read_muse_body {
+    my ($self, $file) = @_;
+    die "Bad usage" unless $file;
     return '' unless -f $file;
     my $body = read_file($file => { binmode => ':encoding(utf-8)' });
     return $body;

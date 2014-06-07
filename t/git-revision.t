@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 17;
+use Test::More tests => 18;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -49,7 +49,11 @@ $revision->edit({
                  fix_typography => 1,
                  body => $revision->muse_body,
                 });
+my $expected_starting = 'http://my.org My "precious"';
 my $expected = '[[http://my.org][my.org]] My „precious”';
+
+like $revision->starting_file_body, qr/\Q$expected_starting\E/,
+  "Correctly unfiltered";
 
 like $revision->muse_body, qr/\Q$expected\E/, "Correctly filtered";
 

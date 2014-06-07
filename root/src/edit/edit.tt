@@ -148,7 +148,13 @@ $(document).ready(function() {
 [% SET text = revision.muse_doc.header_as_html %]
 
 <div id="page">
-  <h2><small>[% c.loc('Preview') %]</small></h2>
+  <h2>
+    <small>[% c.loc('Preview') %]</small>
+    <button type="button" id="goto-diff" class="btn btn-primary">
+      [% c.loc('Show differences in other tab') %]
+    </button>
+  </h2>
+  <p>[% c.loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]</p>
   <div id="preamble-container" class="well">
   <div id="preamble">
     <p id="texttitle">
@@ -220,6 +226,7 @@ $(document).ready(function(){
             message: "required"
         }
     });
+    $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });
 });
 </script>
 

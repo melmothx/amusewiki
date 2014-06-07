@@ -224,7 +224,7 @@ here.
 
 =cut
 
-sub edit :Chained('text') :PathPart('') :Args(1) {
+sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $revision_id) = @_;
     # avoid stash cluttering
     unless ($revision_id =~ m/^[0-9]+$/s) {
@@ -233,14 +233,26 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
 
     my $text = delete $c->stash->{text_to_edit};
     # if we're here and $text was not passed, something is wrong, so we die
-    my $revision = $text->revisions->find($revision_id);
-    unless ($revision) {
+    if (my $revision = $text->revisions->find($revision_id)) {
+        my @args = ($revision->f_class,
+                    $revision->title->uri,
+                    $revision->id);
+        $c->stash(
+                  revision => $revision,
+                  editing_uri => $c->uri_for_action('/edit/edit', [@args]),
+                  diffing_uri => $c->uri_for_action('/edit/diff', [@args]),
+                 );
+    }
+    else {
         $c->detach('/not_found');
         return;
     }
+}
 
+sub edit :Chained('get_revision') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
     my $params = $c->request->params;
-
+    my $revision = $c->stash->{revision};
     # while editing, prevent multiple session to write stuff
     if ($revision->editing_ongoing and
         $revision->session_id      and
@@ -314,8 +326,6 @@ sub edit :Chained('text') :PathPart('') :Args(1) {
             }
         }
     }
-
-    $c->stash(revision => $revision);
 }
 
 sub attachments :Private {
@@ -330,6 +340,14 @@ sub attachments :Private {
         $c->detach('/not_found');
     }
 }
+
+=head2 diff
+
+Path: /action/edit/<my-text>/<rev-id>/diff
+
+=cut
+
+sub diff :Chained('get_revision') :PathPart('diff') :Args(0) {}
 
 
 =Head1 AUTHOR

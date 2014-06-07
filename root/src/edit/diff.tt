@@ -1,0 +1,57 @@
+[% # -*- mode:html -*- %]
+
+<!--
+Source at
+[% c.uri_for('/static/js/diff/diff_match_patch_uncompressed.js') %]
+-->
+
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/diff/diff_match_patch.js') %]">
+</script>
+
+<h1>[% c.loc('Current changes for') %] [% revision.title.uri %]
+  #[% revision.id %]</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <textarea id="original" class="form-control" readonly="readonly">[%-
+      revision.starting_file_body | html
+      -%]</textarea>
+
+  </div>
+  <div class="col-md-6">
+    <textarea id="current"  class="form-control" readonly="readonly">[%-
+      revision.muse_body | html
+      -%]</textarea>
+  </div>
+</div>
+
+<div class="center" style="margin: 10px">
+  <button type="button" class="btn btn-primary" id="reload">
+    [% c.loc('Recheck') %]
+  </button>
+</div>
+
+<div class="well">
+  <div id="outputdiv"></div>
+</div>
+
+<script type="text/javascript">
+$('#reload').click(function() { location.reload() });
+
+var dmp = new diff_match_patch();
+$(document).ready(function () {
+    var text1 = document.getElementById('original').value;
+    var text2 = document.getElementById('current').value;
+    dmp.Diff_Timeout = 0;
+    dmp.Diff_EditCost = 4;
+    var ms_start = (new Date()).getTime();
+    var d = dmp.diff_main(text1, text2);
+    var ms_end = (new Date()).getTime();
+    dmp.diff_cleanupSemantic(d);
+    var ds = dmp.diff_prettyHtml(d);
+    document.getElementById('outputdiv').innerHTML =
+        ds + '<br /><br />-- <br />' + (ms_end - ms_start) / 1000 + 's';
+});
+
+</script>
