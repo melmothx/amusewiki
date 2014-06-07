@@ -156,8 +156,18 @@
                   </a>
                 </li>
                 <li>
-                  <a href="[% c.uri_for('/publish/pending') %]">
+                  <a href="[% c.uri_for_action('/publish/pending') %]">
                     [% c.loc('Pending revisions') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/publish/all') %]">
+                    [% c.loc('All revisions') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/console/console') %]">
+                    [% c.loc('Remotes') %]
                   </a>
                 </li>
                 <li>

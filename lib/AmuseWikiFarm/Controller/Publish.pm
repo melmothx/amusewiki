@@ -53,21 +53,12 @@ Stash the available revisions, depending on the site mode.
 sub root :Chained('/') :PathPart('publish') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
+
+    my $search = {};
     # if it's a librarian, we show all the pending revisions
-    my $search;
-    if ($c->user_exists) {
-        # root sees everything
-        if ($c->check_user_roles('root')) {
-            $search = {};
-        }
-        # librarians see their own or anonymous things
-        else {
-            $search =  { user_id => [$c->user->id, 0] };
-        }
-    }
-    # human can see only their own 
-    else {
-        $search = { session_id => $c->sessionid };
+    # while human can see only their own
+    unless ($c->user_exists) {
+        $search->{session_id} = $c->sessionid;
     }
     my $revs = $site->revisions->search($search,
                                         { order_by => { -desc => 'updated' } });
@@ -76,11 +67,28 @@ sub root :Chained('/') :PathPart('publish') :CaptureArgs(0) {
 
 =head2 pending
 
-Empty method to close the chain
+Show the revisions not marked as pending
+
+=head2 all
+
+Show all revisions.
 
 =cut
 
-sub pending :Chained('root') :PathPart('pending') :Args(0) {};
+sub pending :Chained('root') :PathPart('pending') :Args(0) {
+    my ($self, $c) = @_;
+    my $revisions = delete $c->stash->{revisions};
+    my $revs = $revisions->search({ status => { '!=' => 'published' } });
+    $c->stash(page_title => $c->loc('Pending revisions'));
+    $c->stash(revisions => $revs);
+};
+
+sub all :Chained('root') :PathPart('all') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(page_title => $c->loc('All revisions'));
+    $c->stash(template => 'publish/pending.tt');
+}
+
 
 =head2 publish
 
