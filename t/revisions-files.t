@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 30;
+use Test::More tests => 36;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -86,8 +86,11 @@ sub test_revision {
     ok (-f $pdf, "pdf $pdf exists");
     push @files,$pdf;
 
+    my $git = $site->git;
     foreach my $f (@files) {
         my $attdb = $site->attachments->find({ f_full_path_name => $f });
         ok ($attdb, "record found");
+        my @logs = $git->log($f);
+        ok (@logs) and diag "$f => " . $logs[0]->id;
     }
 }
