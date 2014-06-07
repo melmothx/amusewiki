@@ -208,7 +208,7 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
                      user => 0,
                     };
     }
-    $c->stash(revisions => \@uris);
+    $c->stash(revisions => \@uris) if @uris;
 }
 
 =head2 edit

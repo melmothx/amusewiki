@@ -2,9 +2,12 @@
 
 <h3>[% c.loc('Editing') %] [% text_to_edit.title %]</h3>
 
+
+[% IF revisions %]
+
 <p>
   [% c.loc("Some ongoing revisions were found") %].
-  [% c.loc("You can continue editing one of those:") %]
+  [% c.loc("You may want to resume the editing of one of them") %].
 </p>
 
 <ul>
@@ -15,6 +18,7 @@
   </li>
   [% END %] 
 </ul>
+[% END %]
 
 [% IF text_to_edit.can_spawn_revision %]
 [% c.loc("or create a new one") %]

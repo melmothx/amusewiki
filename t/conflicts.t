@@ -79,10 +79,10 @@ foreach my $mech ($mechone, $mechtwo) {
     else {
         $created =~ s/[0-9]+$//;
         $mech->get_ok($created, "Visiting $created");
-        $mech->content_contains('Some ongoing revisions were found');
+        $mech->content_lacks('Some ongoing revisions were found');
         ok(!$mech->form_with_fields('create'), "Creation is not offered");
         $mech->get_ok("$created?create=1");
-        $mech->content_contains('Some ongoing revisions were found');
+        $mech->content_lacks('Some ongoing revisions were found');
         $mech->content_contains('text has not been published yet');
     }
 }
