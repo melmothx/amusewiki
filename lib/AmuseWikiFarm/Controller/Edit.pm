@@ -151,9 +151,10 @@ sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
         $c->stash->{text_to_edit} = $text;
     }
     else {
-        # TODO create one, we should be able to create one on the fly
-        $c->log->debug('text does not exist...');
-        $c->detach('/not_found');
+        my $newuri = $c->uri_for_action('/edit/newtext', [$c->stash->{f_class}]);
+        $c->flash(error_msg => $c->loc('This text does not exist'));
+        $c->response->redirect($newuri);
+        $c->detach();
     }
 }
 
@@ -205,8 +206,6 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
         push @uris, {
                      uri => $uri,
                      created => $rev->updated->clone,
-                     # TODO add the user
-                     user => 0,
                     };
     }
     $c->stash(revisions => \@uris) if @uris;

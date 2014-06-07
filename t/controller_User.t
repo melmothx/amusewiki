@@ -1,8 +1,8 @@
 use strict;
 use warnings;
-use Test::More;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
+use Test::More tests => 21;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -78,6 +78,13 @@ $mech->content_contains(q{/logout"}, "Page contains the logout link");
 $mech->get_ok('/action/special/edit/index');
 $mech->content_contains('textarea');
 
+$mech->get_ok('/action/text/edit/indexxxxxx');
+
+ok($mech->form_with_fields(qw/title subtitle date/),
+   "Landed on the /action/text/new");
+
+is $mech->uri->path, '/action/text/new';
+
 
 $mech->get_ok( '/logout' );
 
@@ -85,5 +92,3 @@ like $mech->uri, qr{/login}, "Bounced to login";
 like $mech->content, qr{You have logged out}, "status message correct";
 
 $user->delete;
-
-done_testing();
