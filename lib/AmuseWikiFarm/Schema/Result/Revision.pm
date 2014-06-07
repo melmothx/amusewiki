@@ -716,23 +716,12 @@ sub publish_text {
         $compiler->logger($logger);
     }
     my $failure;
-    $compiler->report_failure_sub(sub { $failure = 1 });
     $compiler->compile($muse);
 
     foreach my $f (values %files) {
         $self->site->index_file($f);
     }
-
-    if ($failure) {
-        $self->title->status('deleted');
-        $self->title->deleted(q{Document has errors and couldn't be compiled});
-        $self->title->update;
-    }
-
-    # assert to have a fresh copy
     $self->title->discard_changes;
-
-
     $self->site->collation_index;
     $self->status('published');
     $self->update;

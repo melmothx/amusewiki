@@ -457,6 +457,37 @@ sub update_text_status {
         warn "Changing status from $old_status to " . $self->status . "\n";
         $self->update;
     }
+    $self->_check_status_file if $self->is_published;
+}
+
+sub _check_status_file {
+    my $self = shift;
+    # override if we find a status file, as we should
+    my $statusfile = $self->filepath_for_ext('status');
+    unless (-f $statusfile) {
+        warn "$statusfile not found!\n";
+        return;
+    }
+
+    my $statusline = read_file($statusfile) || '';
+
+    return if $statusline =~ m/^OK/;
+
+    $self->status('deleted');
+    if ($statusline =~ m/^DELETED/) {
+        warn "status file says deleted, we don't! wtf?\n";
+        $self->deleted('You found a bug. Deletion via statusfile!');
+    }
+    elsif ($statusline =~ m/^FAILED/) {
+        $self->deleted('You found a bug. Deletion via statusfile!');
+    }
+    else {
+        $self->deleted('Suspicious statusfile: <$statusline>');
+    }
+    if ($self->is_changed) {
+        warn "Changing status from published to " . $self->status . "\n";
+        $self->update;
+    }
 }
 
 sub is_published {
