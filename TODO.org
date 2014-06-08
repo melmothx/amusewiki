@@ -1,4 +1,9 @@
+* TODO When bootstrapping, the status file is not consulted, apparently
 * TODO Fix the ajax on the status page
+
+When done, refresh the .po
+
+* TODO Autocompletion for authors and topics
 * TODO Clear the log dir before starting a job
 
 * TODO X-Accel, maybe?
