@@ -458,6 +458,7 @@ sub update_text_status {
         $self->update;
     }
     $self->_check_status_file if $self->is_published;
+    return;
 }
 
 sub _check_status_file {
@@ -471,22 +472,26 @@ sub _check_status_file {
 
     my $statusline = read_file($statusfile) || '';
 
-    return if $statusline =~ m/^OK/;
-
-    $self->status('deleted');
-    if ($statusline =~ m/^DELETED/) {
-        warn "status file says deleted, we don't! wtf?\n";
-        $self->deleted('You found a bug. Deletion via statusfile!');
-    }
-    elsif ($statusline =~ m/^FAILED/) {
-        $self->deleted('You found a bug. Deletion via statusfile!');
+    if ($statusline =~ m/^(OK|DELETED|FAILED)/) {
+        my $status = $1;
+        if ($status eq 'OK') {
+            # nothing to do
+        }
+        elsif ($status eq 'DELETED') {
+            warn "This should not happen! $statusline, but we're published!";
+        }
+        elsif ($status eq 'FAILED') {
+            $self->deleted('Compilation failed!');
+            $self->status('deleted');
+            $self->update;
+            warn "Compilation failed, setting status to deleted";
+        }
+        else {
+            die "This shouldn't happen";
+        }
     }
     else {
-        $self->deleted('Suspicious statusfile: <$statusline>');
-    }
-    if ($self->is_changed) {
-        warn "Changing status from published to " . $self->status . "\n";
-        $self->update;
+        warn "$statusfile is not parsable <$statusline>\n";
     }
 }
 
