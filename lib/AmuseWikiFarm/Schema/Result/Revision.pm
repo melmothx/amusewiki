@@ -715,7 +715,6 @@ sub publish_text {
     if ($logger) {
         $compiler->logger($logger);
     }
-    my $failure;
     $compiler->compile($muse);
 
     foreach my $f (values %files) {
