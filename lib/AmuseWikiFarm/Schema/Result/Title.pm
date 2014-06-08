@@ -478,13 +478,13 @@ sub _check_status_file {
             # nothing to do
         }
         elsif ($status eq 'DELETED') {
-            warn "This should not happen! $statusline, but we're published!";
+            warn "This should not happen! $statusline, but we're published!\n";
         }
         elsif ($status eq 'FAILED') {
             $self->deleted('Compilation failed!');
             $self->status('deleted');
             $self->update;
-            warn "Compilation failed, setting status to deleted";
+            warn "Compilation failed, setting status to deleted\n";
         }
         else {
             die "This shouldn't happen";
