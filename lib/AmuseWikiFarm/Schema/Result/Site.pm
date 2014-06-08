@@ -737,7 +737,7 @@ sub import_text_from_html_params {
     # documented in Result::Title
     my $bogus = {
                  uri => $uri,
-                 pubdate => $pubdate,
+                 pubdate => $pubdt,
                  f_suffix => '.muse',
                  status => 'editing',
                  f_class => $f_class,
