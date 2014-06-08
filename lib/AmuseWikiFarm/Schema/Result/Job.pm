@@ -192,7 +192,7 @@ sub as_json {
                   errors   => $self->errors,
                   logs     => $self->logs,
                  };
-    return to_json($struct);
+    return to_json($struct, { ascii => 1, pretty => 1 } );
 }
 
 =head2 log_file
