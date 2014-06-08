@@ -1,0 +1,19 @@
+* TODO Fix the ajax on the status page
+* TODO Clear the log dir before starting a job
+
+* TODO X-Accel, maybe?
+* TODO Middlewares
+* TODO Multilingual
+** TODO add category/*/lang
+** TODO add support for uid on display
+** TODO add multilanguage support for the same site
+
+* TODO Admin page for user and site creation
+
+* Needed features
+** simple to use
+** simple to install
+** template management
+** page deletion
+** category management
+
