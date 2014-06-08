@@ -457,6 +457,42 @@ sub update_text_status {
         warn "Changing status from $old_status to " . $self->status . "\n";
         $self->update;
     }
+    $self->_check_status_file if $self->is_published;
+    return;
+}
+
+sub _check_status_file {
+    my $self = shift;
+    # override if we find a status file, as we should
+    my $statusfile = $self->filepath_for_ext('status');
+    unless (-f $statusfile) {
+        warn "$statusfile not found!\n";
+        return;
+    }
+
+    my $statusline = read_file($statusfile) || '';
+
+    if ($statusline =~ m/^(OK|DELETED|FAILED)/) {
+        my $status = $1;
+        if ($status eq 'OK') {
+            # nothing to do
+        }
+        elsif ($status eq 'DELETED') {
+            warn "This should not happen! $statusline, but we're published!";
+        }
+        elsif ($status eq 'FAILED') {
+            $self->deleted('Compilation failed!');
+            $self->status('deleted');
+            $self->update;
+            warn "Compilation failed, setting status to deleted";
+        }
+        else {
+            die "This shouldn't happen";
+        }
+    }
+    else {
+        warn "$statusfile is not parsable <$statusline>\n";
+    }
 }
 
 sub is_published {
