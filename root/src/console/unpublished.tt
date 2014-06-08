@@ -1,5 +1,7 @@
 [%# -*- mode: html -*- %]
 
+<h2>[% c.loc('List of text not published') %]</h2>
+
 [% IF text_list %]
 
 <table class="table table-striped">
