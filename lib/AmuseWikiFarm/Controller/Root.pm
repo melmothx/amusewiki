@@ -46,6 +46,17 @@ sub auto :Private {
     $c->log->debug("Site ID for $host is " . $site->id
                    . ", with locale " . $site->locale);
 
+
+    # this means some fucker reused a cookie from another site to gain
+    # access to this. A bit unlikely, but better now than later.
+    if ($c->user_exists and ($c->session->{site_id} ne $site->id)) {
+        $c->log->error("Session stealing from " . $c->req->address . " on " .
+                       localtime());
+        $c->delete_session;
+        $c->detach('/not_permitted');
+        return;
+    }
+
     # set the localization
     $c->languages([ $site->locale ]);
 
@@ -80,11 +91,9 @@ sub not_found :Global {
 sub not_permitted :Global {
     my ($self, $c) = @_;
     $c->response->status(403);
-    $c->log->debug("denied");
-    unless ($c->stash->{error_msg}) {
-        $c->stash(error_msg => $c->loc("Access denied!"));
-    }
-    $c->stash(template => "error.tt");
+    $c->log->error("Access denied");
+    $c->response->body("Access denied");
+    return;
 }
 
 =head2 index
@@ -128,13 +137,14 @@ path.
 sub end : ActionClass('RenderView') {
     my ($self, $c) = @_;
 
-    my $site = $c->stash->{site};
-    die "No site found?" unless $site;
-
     # before passing the thing to the template, strip <> from page_title
     if ($c->stash->{page_title}) {
         $c->stash->{page_title} =~ s/<.*?>//g;
     }
+
+    my $site = $c->stash->{site};
+    return unless $site;
+
     if (my $theme = $site->theme) {
         die "Bad theme name!" unless $theme =~ m/^\w[\w-]+\w$/s;
         $c->stash->{additional_template_paths} =
