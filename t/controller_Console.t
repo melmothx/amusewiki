@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 9;
+use Test::More tests => 11;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -48,4 +48,10 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $mech->get_ok('/console/git');
 is $mech->response->base->path, '/login', "Denied access to not logged in";
+
+$mech->get_ok('/console/unpublished');
+is $mech->response->base->path, '/login', "Denied access to not logged in";
+
+
+# TODO Where are the tests?
 

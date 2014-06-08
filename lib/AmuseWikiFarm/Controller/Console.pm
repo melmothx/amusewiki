@@ -39,6 +39,18 @@ sub auto :Private {
 
 Empty base method for chaining
 
+=head2 git
+
+Private, retrieve the remote gits
+
+=head2 git_display
+
+Endpoint for git
+
+=head2 git_action
+
+Posting here will trigger the action
+
 =cut
 
 sub root :Chained('/') :PathPart('console') :CaptureArgs(0) {
@@ -74,6 +86,20 @@ sub git_action :Chained('git') :PathPart('action') :Args(0) {
     else {
         $c->flash(error_msg => "Bad request! Please report this incident");
         $c->response->redirect($c->uri_for_action('console/git_display'));
+    }
+}
+
+=head2 unpublished
+
+List the unpublished titles.
+
+=cut
+
+sub unpublished :Chained('root') :PathPart('unpublished') :Args(0) {
+    my ($self, $c) = @_;
+    my @list = $c->stash->{site}->titles->unpublished;
+    if (@list) {
+        $c->stash(text_list => \@list)
     }
 }
 

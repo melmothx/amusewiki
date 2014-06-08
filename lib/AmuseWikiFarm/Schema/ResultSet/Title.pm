@@ -7,6 +7,19 @@ use base 'DBIx::Class::ResultSet';
 
 __PACKAGE__->load_components('Helper::ResultSet::Random');
 
+=head2 published_all
+
+All records in Title with the status set to 'published'
+
+=cut
+
+sub published_all {
+    my $self = shift;
+    return $self->search({ status => 'published' },
+                         { order_by => [qw/sorting_pos
+                                           title/] });
+}
+
 =head2 published_texts
 
 Result set with published titles (deleted set to empty string and
@@ -15,15 +28,7 @@ publication date in the past.
 =cut
 
 sub published_texts {
-    my $self = shift;
-    return $self->search({
-                          status => 'published',
-                          f_class => 'text',
-                         },
-                         { order_by => [qw/sorting_pos
-                                           title/]
-                         });
-
+    return shift->published_all->search({ f_class => 'text' });
 }
 
 =head2 published_specials
@@ -34,18 +39,8 @@ C<published_texts>.
 =cut
 
 sub published_specials {
-    my $self = shift;
-    return $self->search({
-                          status => 'published',
-                          f_class => 'special',
-                         },
-                         { order_by => [qw/sorting_pos
-                                           title/]
-                         });
-
+    return shift->published_all->search({ f_class => 'special' });
 }
-
-
 
 =head2 random_text
 
@@ -112,6 +107,22 @@ sub latest {
                                                order_by => { -desc => [qw/pubdate/] },
                                               });
 }
+
+=head1 Admin-related queries
+
+=head2 unpublished
+
+Return the titles, specials included, with the status not set to 'published'
+
+=cut
+
+sub unpublished {
+    return shift->search( { status =>   { '!=' => 'published'    }, },
+                          { order_by => { -desc => [qw/pubdate/] }, } );
+}
+
+
+=cut
 
 
 1;

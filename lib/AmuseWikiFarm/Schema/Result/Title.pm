@@ -603,6 +603,32 @@ sub new_revision {
 
 }
 
+=head2 URIs
+
+WARNING! For practical and performance concerns, here we hardcode the
+catalyst app url, instead of calling uri_for with 2 or 3 arguments
+
+=cut
+
+sub full_uri {
+    my $self = shift;
+    my $uri = $self->uri;
+    my $class = $self->f_class;
+    if ($class eq 'special') {
+        return '/special/' . $uri;
+    }
+    elsif ($class eq 'text') {
+        return '/library/' . $uri;
+    }
+}
+
+sub full_edit_uri {
+    my $self = shift;
+    return $self->full_uri . '/edit';
+}
+
+
+
 
 __PACKAGE__->meta->make_immutable;
 1;

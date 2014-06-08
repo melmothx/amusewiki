@@ -170,6 +170,11 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/console/unpublished') %]">
+                    [% c.loc('Deferred/Deleted texts') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for_action('/console/git_display') %]">
                     [% c.loc('Remotes') %]
                   </a>

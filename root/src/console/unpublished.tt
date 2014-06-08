@@ -1,0 +1,46 @@
+[%# -*- mode: html -*- %]
+
+[% IF text_list %]
+
+<table class="table table-striped">
+  <tr>
+    <th>[% c.loc('URI') %]</th>
+    <th>[% c.loc('Author') %]</th>
+    <th>[% c.loc('Title') %]</th>
+    <th>[% c.loc('Status') %]</th>
+    <th>[% c.loc('Reason') %]</th>
+    <th>[% c.loc('Pubdate') %]</th>
+    <th></th>
+  </tr>
+  [% FOREACH text IN text_list %]
+  <tr>
+    <td>
+      <a href="[% text.full_edit_uri %]">[% text.full_uri %]</a>
+    </td>
+    <td>
+      [% text.author %]
+    </td>
+    <td>
+      [% text.title %]
+    </td>
+    <td>
+      [% text.status %]
+    </td>
+    <td>
+      [% text.deleted %]
+    </td>
+    <td>
+      [% text.pubdate.datetime %]
+    </td>
+  </tr>
+  [% END %]
+</table>
+
+
+[% ELSE %]
+
+[% c.loc('Nothing to see here, so far') %]
+
+[% END %]
+
+
