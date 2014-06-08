@@ -61,11 +61,13 @@ sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my @remotes = $c->stash->{site}->remote_gits;
     $c->stash(remotes => \@remotes);
-    $c->stash(page_title => $c->loc('Git console'));
     $c->stash(repo_validation => $c->stash->{site}->remote_gits_hashref);
 }
 
-sub git_display :Chained('git') :PathPart('') :Args(0) {}
+sub git_display :Chained('git') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(page_title => $c->loc('Git console'));
+}
 
 
 sub git_action :Chained('git') :PathPart('action') :Args(0) {
@@ -98,6 +100,7 @@ List the unpublished titles.
 sub unpublished :Chained('root') :PathPart('unpublished') :Args(0) {
     my ($self, $c) = @_;
     my @list = $c->stash->{site}->titles->unpublished;
+    $c->stash(page_title => $c->loc('Unpublished texts'));
     if (@list) {
         $c->stash(text_list => \@list)
     }
