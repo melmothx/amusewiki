@@ -123,7 +123,7 @@ ok(!$bbres->{errors}, "Error field exists but empty");
 like $bbres->{logs}, qr/Created pippo-ciccia.*pdf/;
 like $bbres->{produced}, qr/\.pdf$/;
 
-$mech->get_ok('/console');
+$mech->get_ok('/console/git');
 
 ok($mech->form_with_fields('action'));
 $mech->click;

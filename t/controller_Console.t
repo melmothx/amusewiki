@@ -46,6 +46,6 @@ foreach my $r (qw/marco pippo pluto/) {
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => '0pull0.amusewiki.org');
 
-$mech->get_ok('/console');
+$mech->get_ok('/console/git');
 is $mech->response->base->path, '/login', "Denied access to not logged in";
 

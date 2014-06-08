@@ -21,7 +21,7 @@
        [% remote.url %]
      </td>
      <td>
-       <form action="[% c.uri_for_action('console/git') %]" method="post">
+       <form action="[% c.uri_for_action('console/git_action') %]" method="post">
          <input type="hidden" name="action" value="[% remote.action %]" />
          <input type="hidden" name="remote" value="[% remote.name %]" />
          <button type="submit" class="btn btn-primary">

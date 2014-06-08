@@ -43,17 +43,20 @@ Empty base method for chaining
 
 sub root :Chained('/') :PathPart('console') :CaptureArgs(0) {
     my ($self, $c) = @_;
+}
+
+sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
+    my ($self, $c) = @_;
     my @remotes = $c->stash->{site}->remote_gits;
     $c->stash(remotes => \@remotes);
     $c->stash(page_title => $c->loc('Git console'));
     $c->stash(repo_validation => $c->stash->{site}->remote_gits_hashref);
 }
 
-sub console :Chained('root') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-}
+sub git_display :Chained('git') :PathPart('') :Args(0) {}
 
-sub git :Chained('root') :PathPart('git') :Args(0) {
+
+sub git_action :Chained('git') :PathPart('action') :Args(0) {
     my ($self, $c) = @_;
     my $remote = $c->request->params->{remote};
     my $action = $c->request->params->{action};
@@ -70,7 +73,7 @@ sub git :Chained('root') :PathPart('git') :Args(0) {
     }
     else {
         $c->flash(error_msg => "Bad request! Please report this incident");
-        $c->response->redirect($c->uri_for_action('console/console'));
+        $c->response->redirect($c->uri_for_action('console/git_display'));
     }
 }
 

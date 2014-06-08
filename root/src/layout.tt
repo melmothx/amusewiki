@@ -170,7 +170,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="[% c.uri_for_action('/console/console') %]">
+                  <a href="[% c.uri_for_action('/console/git_display') %]">
                     [% c.loc('Remotes') %]
                   </a>
                 </li>
