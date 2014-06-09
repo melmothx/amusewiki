@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 51;
+use Test::More tests => 54;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Slurp;
@@ -210,11 +210,29 @@ $title->delete;
 eval { $site->compile_and_index_files(['/etc/passwd']) };
 my $exception = $@;
 
-ok $exception, "Found $exception";
+like $exception, qr/valid path/, "Found $exception";
 
 eval { $site->compile_and_index_files([File::Spec->abs2rel('/etc/passwd',
                                                           $site->repo_root)]) };
-my $exception = $@;
-ok $exception, "Found $exception";
+$exception = $@;
+like $exception, qr/valid path/, "Found $exception";
+
+
+my $other = $schema->resultset('Title')
+  ->search({ site_id => { '!=' => $site->id },
+             status => 'published',
+             f_full_path_name => { '!=' => '' }})->first->f_full_path_name;
+
+ok (-f $other, "$other exists");
+
+eval { $site->compile_and_index_files([File::Spec->abs2rel($other,
+                                                          $site->repo_root)]) };
+$exception = $@;
+like $exception, qr/valid path/, "Found $exception";
+
+eval { $site->compile_and_index_files([$other]) };
+$exception = $@;
+like $exception, qr/valid path/, "Found $exception";
+
 
 
