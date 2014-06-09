@@ -860,12 +860,42 @@ sub collation_index {
 
 }
 
+
 =head2 index_file($path_to_file)
 
 Add the file to the DB and Xapian databases, first parsing it with
 C<muse_info_file> from L<AmuseWikiFarm::Utils::Amuse>.
 
+=head2 compile_and_index_files(\@abs_paths_to_files, $logger)
+
+Same as above, but before proceeding, compile it if it's a muse file
+and it's outdated.
+
 =cut
+
+sub compile_and_index_files {
+    my ($self, $files, $logger) = @_;
+    my $compiler = Text::Amuse::Compile->new($self->compile_options);
+    if ($logger) {
+        $compiler->logger($logger);
+    }
+    foreach my $f (@$files) {
+        my $file;
+        # check if it's in place
+        if (-f $f) {
+            $file = File::Spec->rel2abs($f);
+        }
+        else {
+            $file = File::Spec->rel2abs($f, $self->repo_root);
+        }
+        if ($file =~ m/\.muse$/ and $compiler->file_needs_compilation($file)) {
+            $compiler->compile($file);
+        }
+        $self->index_file($file);
+    }
+    $self->collation_index;
+}
+
 
 sub index_file {
     my ($self, $file) = @_;
@@ -1178,34 +1208,8 @@ sub update_db_from_tree {
             warn "$purge was not present in the db!";
         }
     }
-    my $compiler = Text::Amuse::Compile->new($self->compile_options);
-    if ($logger) {
-        $compiler->logger($logger);
-    }
-    foreach my $new (sort @{ $todo->{new} }, @{ $todo->{changed} }) {
-        my $file = File::Spec->catfile($self->repo_root, $new);
-        print "Indexing $file\n";
-        $self->index_file($file);
-
-        # skip already compiled files or not muse files
-        next unless $file =~ m/\.muse$/;
-        next unless $compiler->file_needs_compilation($file);
-
-        my $failure = 0;
-        $compiler->report_failure_sub(sub {  $failure = 1 });
-        $compiler->compile($file);
-        if ($failure) {
-            my $failed = $self->titles->find_file($file);
-            if ($failed) {
-                $failed->status('deleted');
-                $failed->deleted(q{Document has errors and couldn't be compiled});
-            }
-            else {
-                warn "Couldn't find $file in the db\n";
-            }
-        }
-    }
-    $self->collation_index;
+    my @files = (sort @{ $todo->{new} }, @{ $todo->{changed} });
+    $self->compile_and_index_files(\@files, $logger);
 }
 
 

@@ -83,9 +83,10 @@ MUSE
 
 diag "Creating $dummy_file";
 write_file($dummy_file, $dummy_content);
-$site->index_file($dummy_file);
+$site->compile_and_index_files([$dummy_file]);
 
 $title = $schema->resultset('Title')->single({uri => 'dummy-text',
+                                              f_class => 'text',
                                               site_id => $id });
 
 ok($title);
@@ -93,6 +94,7 @@ ok(!$title->deleted, "Is not deleted") or diag $title->deleted;
 ok($title->is_published, "It's published");
 ok($title->can_spawn_revision, "can create a revision");
 is($title->status, 'published');
+diag $title->f_full_path_name;
 
 
 my @cats = $title->categories;

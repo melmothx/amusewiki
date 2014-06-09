@@ -43,7 +43,7 @@ is_deeply $changes, {
 
 diag "Running it again after moving a file";
 
-diag "Remove a file an see if it's detected";
+diag "Remove a file and see if it's detected";
 
 my $target_rel_file = catfile(qw/d dt deleted-text.muse/);
 my $target_abs_file = catfile($site->repo_root, qw/d dt deleted-text.muse/);

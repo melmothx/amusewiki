@@ -636,11 +636,9 @@ Procedure:
 
 =item if in a git directory, add it to the git and commit
 
-=item compile the file and report errors, if any
+=item call $site->compile_and_index_files on the muse and the attachments
 
-=item call $site->index_file on the muse and the attachments
-
-=item call $site->collation_index
+=item return $self->title->full_uri
 
 =back
 
@@ -710,20 +708,12 @@ sub publish_text {
             $git->commit({ file => $commit_msg_file });
         }
     }
-
-    my $compiler = Text::Amuse::Compile->new($self->site->compile_options);
-    if ($logger) {
-        $compiler->logger($logger);
-    }
-    $compiler->compile($muse);
-
-    foreach my $f (values %files) {
-        $self->site->index_file($f);
-    }
+    $self->site->compile_and_index_files([ values %files ], $logger);
+    # assert to have an up-to-date title object
     $self->title->discard_changes;
-    $self->site->collation_index;
     $self->status('published');
     $self->update;
+    # TODO return $self->title->full_uri;
     my $uri = $self->muse_uri;
     if ($self->f_class eq 'special') {
         return "special/$uri";
