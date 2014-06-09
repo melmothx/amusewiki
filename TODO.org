@@ -1,4 +1,5 @@
-* TODO When bootstrapping, the status file is not consulted, apparently
+* DONE When bootstrapping, the status file is not consulted, apparently
+  CLOSED: [2014-06-09 lun 12:23]
 * TODO Fix the ajax on the status page
 
 When done, refresh the .po

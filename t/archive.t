@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 49;
+use Test::More tests => 51;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Slurp;
@@ -207,5 +207,14 @@ is($title->status, 'deleted');
 unlink $dummy_file or die $!;
 $title->delete;
 
+eval { $site->compile_and_index_files(['/etc/passwd']) };
+my $exception = $@;
+
+ok $exception, "Found $exception";
+
+eval { $site->compile_and_index_files([File::Spec->abs2rel('/etc/passwd',
+                                                          $site->repo_root)]) };
+my $exception = $@;
+ok $exception, "Found $exception";
 
 

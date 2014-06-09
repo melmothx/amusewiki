@@ -888,6 +888,13 @@ sub compile_and_index_files {
         else {
             $file = File::Spec->rel2abs($f, $self->repo_root);
         }
+        unless (-f $file) {
+            die "File $file does not exists\n";
+        }
+        my $relpath = File::Spec->abs2rel($file, $self->repo_root);
+        unless (muse_filepath_is_valid($relpath)) {
+            die "$relpath doesn't appear a valid path!";
+        }
         if ($file =~ m/\.muse$/ and $compiler->file_needs_compilation($file)) {
             $compiler->compile($file);
         }

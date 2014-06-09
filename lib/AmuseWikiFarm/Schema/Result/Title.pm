@@ -466,7 +466,7 @@ sub _check_status_file {
     # override if we find a status file, as we should
     my $statusfile = $self->filepath_for_ext('status');
     unless (-f $statusfile) {
-        warn "$statusfile not found!\n";
+        die "<$statusfile> not found!\n";
         return;
     }
 
