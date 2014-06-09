@@ -713,14 +713,7 @@ sub publish_text {
     $self->title->discard_changes;
     $self->status('published');
     $self->update;
-    # TODO return $self->title->full_uri;
-    my $uri = $self->muse_uri;
-    if ($self->f_class eq 'special') {
-        return "special/$uri";
-    }
-    else {
-        return "library/$uri";
-    }
+    return $self->title->full_uri;
 }
 
 sub f_class {

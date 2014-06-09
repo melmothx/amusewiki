@@ -173,11 +173,15 @@ use PDF::Imposition;
 
 =head2 as_json
 
-Return the json string for the job
+Return the json string for the job, ascii encoded.
+
+=head2 as_hashref
+
+Return the job representation as an hashref
 
 =cut
 
-sub as_json {
+sub as_hashref {
     my $self = shift;
     my $struct = {
                   id       => $self->id,
@@ -192,7 +196,12 @@ sub as_json {
                   errors   => $self->errors,
                   logs     => $self->logs,
                  };
-    return to_json($struct, { ascii => 1, pretty => 1 } );
+    return $struct;
+}
+
+sub as_json {
+    my $self = shift;
+    return to_json($self->as_hashref, { ascii => 1, pretty => 1 } );
 }
 
 =head2 log_file
@@ -361,6 +370,7 @@ Bookbuilder job.
 sub dispatch_job_publish {
     my ($self, $logger) = @_;
     my $id = $self->job_data->{id};
+    # will return the $self->title->full_uri
     return $self->site->revisions->find($id)->publish_text($logger);
 }
 
@@ -382,7 +392,7 @@ sub dispatch_job_git {
     else {
         die "Unhandled action $action!";
     }
-    return 1;
+    return '/';
 }
 
 sub dispatch_job_bookbuilder {
@@ -497,7 +507,8 @@ sub dispatch_job_bookbuilder {
         copy($imposer->outfile, $outfile) or die "Copy to $outfile failed $!";
     }
     copy($outfile, $jobdir) or die "Copy $outfile to $jobdir failed $!";
-    return $outfile;
+    # defined above at the beginning
+    return "/custom/$outfile";
 }
 
 

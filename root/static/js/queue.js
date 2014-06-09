@@ -2,35 +2,33 @@ $(document).ready(function() {
     $('.nojs').hide();
 });
 
-var JobStatus = '';
-
-function update_status(url) {
+function update_status(url, reloaded) {
     $.getJSON(url, function(data) {
         console.log(data.status);
+        if (!reloaded) {
+            $('#waiting').show();
+        }
         $('pre#job-logs').text(data.logs);
+        $('.bbstatusstring').text(data.status_loc);
+        if (data.errors) {
+            $('#job-errors').show().text(data.errors);
+        }
+        else {
+            $('#job-errors').hide();
+        }
+        // recurse if pending or taken
         if ((data.status == 'pending') ||
             (data.status == 'taken')) {
-            var funct = 'update_status("' + url + '")';
+            var funct = 'update_status("' + url + '", 1)';
             setTimeout(funct, 1000);
-            console.log("Replacing with " + bbstatus[data.status]);
         }
-        else if (data.status == 'completed') {
-            var phref = $('a.produced').attr('href');
-            $('a.produced').attr('href', phref + data.produced);
-            console.log(bbstatus[data.status]);
+        else {
+            $('#waiting').hide();
         }
-        else if (data.status == 'failed') {
-            $('pre.errors').text(data.errors);
-            console.log(data.errors);
-        }
-        console.log(data.status + '=>' + JobStatus);
-        if (data.status != JobStatus) {
-            $('.bbstatus').hide();
-            $('span.bbstatusstring').text(bbstatus[data.status]);
-            var div = '.' + data.status;
-            console.log("Showing" + div);
-            $(div).show();
-            JobStatus = data.status;
+        if (data.status == 'completed') {
+            $('a.completed').text(data.message);
+            $('a.completed').attr('href', data.produced_uri);
+            $('.completed').show();
         }
     });
 };

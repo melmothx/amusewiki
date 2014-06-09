@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 46;
+use Test::More tests => 47;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -102,13 +102,13 @@ my $text = $success->{produced} or die "Can't continue without a text";
 
 $mech->get('/');
 $mech->content_contains($title);
-$mech->get_ok("/$text");
+$mech->get_ok($text);
 $mech->content_contains(q{<h3 id="text-author">pippo</h3>});
 ok($mech->form_id('book-builder-add-text'));
 $mech->click;
 
 $mech->content_contains("The text was added to the bookbuilder");
-is ($mech->uri->path, "/$text");
+is ($mech->uri->path, $text);
 $mech->get_ok("/bookbuilder");
 
 $mech->form_with_fields('collectionname');
@@ -122,6 +122,7 @@ ok(exists $bbres->{errors}, "Error field exists");
 ok(!$bbres->{errors}, "Error field exists but empty");
 like $bbres->{logs}, qr/Created pippo-ciccia.*pdf/;
 like $bbres->{produced}, qr/\.pdf$/;
+$mech->get_ok($bbres->{produced});
 
 $mech->get_ok('/console/git');
 

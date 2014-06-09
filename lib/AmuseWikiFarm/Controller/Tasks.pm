@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use JSON qw/to_json/;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Tasks - Catalyst Controller
@@ -50,8 +52,30 @@ sub status :Chained('root') :CaptureArgs(1) {
         $c->detach('/not_found');
         return;
     }
+
+    # here we inject the message, depending on the task
+
+    my $data = $job->as_hashref;
+    $data->{status_loc} = $c->loc($data->{status});
+
+    if ($data->{status} eq 'completed') {
+
+        $data->{produced} ||= '/';
+        $data->{produced_uri} = $c->uri_for($data->{produced})->as_string;
+
+        if ($data->{task} eq 'bookbuilder') {
+            $data->{message} = $c->loc('Your file is ready');
+        }
+        elsif ($data->{task} eq 'publish') {
+            $data->{message} = $c->loc('Changes applied');
+        }
+        else {
+            $data->{message} = $c->loc('Done');
+        }
+    }
+
     $c->stash(
-              job => $job,
+              job => $data,
               page_title => $c->loc('Queue'),
              );
 }
@@ -62,9 +86,9 @@ sub display :Chained('status') :PathPart('') :Args(0) {
 
 sub ajax :Chained('status') :PathPart('ajax') :Args(0) {
     my ($self, $c, $job) = @_;
-    my $json =  $c->stash->{job}->as_json;
     $c->res->content_type('application/json');
-    $c->response->body($json);
+    $c->response->body(to_json($c->stash->{job}, { ascii => 1,
+                                                   pretty => 1 }));
 }
 
 

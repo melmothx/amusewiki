@@ -1,65 +1,71 @@
 [% # -*- mode: html -*- %]
 
-<script type="text/javascript">
-  var bbstatus = {
-  'unpublished': '[%- c.loc('unpublished') -%]',
-  'published':   '[%- c.loc('published')   -%]',
+[% MACRO l(text, args) BLOCK; c.localize(text, args) | html ; END %]
+
+<!--
+  Status:
   'pending':     '[%- c.loc('pending')     -%]',
   'taken':       '[%- c.loc('taken')       -%]',
   'completed':   '[%- c.loc('completed')   -%]',
   'failed':      '[%- c.loc('failed')      -%]'
   };
-</script>
+-->
 
-[% IF job.task == 'bookbuilder' %]
-  [% SET mymessage =  c.loc('Your file is ready') %]
-  [% SET baseuri = c.uri_for('/custom/') %]
-[% ELSIF job.task == 'publish' %]
-  [% SET mymessage =  c.loc('Changes applied, thanks') %]
-  [% SET baseuri = c.uri_for('/') %]
-[% END %]
-
-
+[% # this will be hidden by the js right away, so it's nojs only %]
 <div class="nojs">
-  <pre>
-    [% job.errors %]
-  </pre>
+  [% c.loc('Status') %]: [% job.status_loc | html %]<br />
   [% IF job.produced %]
-  <a href="[% baseuri %][% produced %]">
-    [% mymessage %]
-  </a>
+  <a href="[% job.produced_uri %]">[% job.message | html %]</a>
+  [% END %]
+  <pre>[% job.logs %]</pre>
+  [% IF job.errors %]
+  <pre>[% job.errors | html %]</pre>
+  [% END %]
+
+  [% IF job.produced %]
+  <h3>
+    <a href="[% job.produced_uri %]">[% job.message | html %]</a>
+  </h3>
   [% ELSE %]
   <p>
     [% c.loc('Please reload your page') %]. [% c.loc('Status') %]:
-    [% c.loc(job.status) %]
+    [% job.status_loc | html  %]
   </p>
   [% END %]
 </div>
 
-<div class="bbstatus taken pending" style="display:none">
-  <img src="[% c.uri_for('/static/images/ajax-loader.gif') %]" /> <br />
-  [% c.loc("Please wait") %],
-  <strong>
-    <span class="bbstatusstring">[% c.loc(job.status) %]</span>
-  </strong>
-
-</div>
-
-<div class="bbstatus completed" style="display:none">
-  <strong>
-    <a class="produced" href="[% baseuri %]">
-      [% mymessage %]
-    </a>
-  </strong>
-</div>
-
-<div class="bbstatus failed">
-  <strong>[% c.loc('Error producing the file') %]</strong>
-</div>
-<pre class="bbstatus failed errors" style="display:none">
+<pre style="display:none">
++---------------------------------------------------------------------------+
+| You're using a browser without CSS support and without javascript, please |
+| disregard the following                                                   |
++---------------------------------------------------------------------------+
 </pre>
-<pre id="job-logs">[% job.logs %]</pre>
-<div id="debug"></div>
+
+
+[%#  placeholders %]
+<div>
+  <div class="center">
+    <strong>
+      [% c.loc('Status') %]: <span class="bbstatusstring"></span><br />
+      <img id="waiting" src="[% c.uri_for('/static/images/ajax-loader.gif') %]" />
+    </strong>
+  </div>
+  <div class="center">
+    <strong>
+      <a class="completed" style="display:none">#</a>
+    </strong>
+  </div>
+</div>
+
+<pre id="job-logs" style="margin: 30px 0px"></pre>
+<pre id="job-errors"></pre>
+
+<div class="center">
+  <strong>
+    <a class="completed" style="display:none">#</a>
+  </strong>
+</div>
+
 
 <script src="[% c.uri_for('/static/js/queue.js') %]"></script>
 <script type="text/javascript">
@@ -67,3 +73,4 @@
     update_status('[% c.uri_for_action('/tasks/ajax', [job.id]) %]');
   });
 </script>
+

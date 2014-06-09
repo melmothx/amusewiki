@@ -1,6 +1,7 @@
 * DONE When bootstrapping, the status file is not consulted, apparently
   CLOSED: [2014-06-09 lun 12:23]
-* TODO Fix the ajax on the status page
+* DONE Fix the ajax on the status page
+  CLOSED: [2014-06-09 lun 17:42]
 
 When done, refresh the .po
 
@@ -8,6 +9,10 @@ When done, refresh the .po
 * TODO Autocompletion for authors and topics
 * DONE Clear the log dir before starting a job
   CLOSED: [2014-06-09 lun 14:25]
+
+* TODO use a macro for loc in the templates
+
+See tasks/dispaly.tt for an example
 
 * TODO X-Accel, maybe?
 * TODO Middlewares
