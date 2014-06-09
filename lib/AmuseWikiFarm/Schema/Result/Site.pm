@@ -460,7 +460,7 @@ use AmuseWikiFarm::Archive::Xapian;
 use Unicode::Collate::Locale;
 use File::Find;
 use File::Basename qw/fileparse/;
-
+use Data::Dumper;
 
 =head2 repo_root_rel
 
