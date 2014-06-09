@@ -634,9 +634,8 @@ sub new_revision {
     }
 
     # update and return a fresh copy
-    $revision->update;
-    return $revision->get_from_storage;
-
+    $revision->update->discard_changes;
+    return $revision;
 }
 
 =head2 URIs

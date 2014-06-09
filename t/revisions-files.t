@@ -51,7 +51,7 @@ sub test_revision {
     is $rev->f_class, $class, "Revision has $class";
     is $rev->publish_text, $outpath . 'hello';
     # reset
-    $rev = $rev->get_from_storage;
+    $rev->discard_changes;
     # check the path
     my $expected;
     if ($class eq 'special') {

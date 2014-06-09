@@ -38,7 +38,7 @@ sub create_site {
                                                    epub => 0,
                                                    lt_pdf => 0,
                                                    mode => 'blog',
-                                                  })->get_from_storage;
+                                                  })->discard_changes;
 
     $site->add_to_vhosts({ name => $id . '.amusewiki.org' });
     remove_tree($site->repo_root) if -d $site->repo_root;

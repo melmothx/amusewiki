@@ -962,7 +962,7 @@ sub index_file {
     }
     print "Inserting data for $file\n";
 
-    my $title = $self->titles->update_or_create(\%insertion)->get_from_storage;
+    my $title = $self->titles->update_or_create(\%insertion)->discard_changes;
 
     # pick the old categories.
     my @old_cats_ids;
@@ -1392,7 +1392,7 @@ sub update_or_create_user {
     else {
         # still here? check the existing userbase
         $user = $self->result_source->schema->resultset('User')
-          ->update_or_create({ %$details })->get_from_storage;
+          ->update_or_create({ %$details })->discard_changes;
         $self->add_to_users($user);
     }
     # check the roles

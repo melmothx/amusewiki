@@ -41,7 +41,7 @@ my $mr_root = $schema->resultset('User')
   ->create({
             username => 'root',
             password => 'root',
-           })->get_from_storage;
+           })->discard_changes;
 
 my $root_role = $schema->resultset('Role')->create({ role => 'root' });
 my $libr_role = $schema->resultset('Role')->create({ role => 'librarian' });
@@ -99,7 +99,7 @@ foreach my $repo (sort keys %repos) {
         remove_tree($dest) or die $!;
     }
     ok(dircopy($src, $dest), "File copied, ready to go");
-    my $site = $schema->resultset('Site')->create($repos{$repo})->get_from_storage;
+    my $site = $schema->resultset('Site')->create($repos{$repo})->discard_changes;
     ok ($site->id) or diag $repo->{id} . " couldn't be created";
     $site->magic_question('First month of the year');
     $site->magic_answer('January');
@@ -115,7 +115,7 @@ foreach my $i (1..3) {
       ->create({
                 username => "user" . $i,
                 password => "pass",
-               })->get_from_storage;
+               })->discard_changes;
     if ($i == 3) {
         $user->active(0);
         $user->update;

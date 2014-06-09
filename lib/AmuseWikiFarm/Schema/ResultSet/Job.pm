@@ -62,7 +62,7 @@ sub enqueue {
                      created => DateTime->now,
                      priority => $priority || 10,
                     };
-    return $self->create($insertion)->get_from_storage;
+    return $self->create($insertion)->discard_changes;
 }
 
 =head2 bookbuilder_add ($payload)
