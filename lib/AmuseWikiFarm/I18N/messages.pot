@@ -18,11 +18,7 @@ msgstr ""
 msgid "A4 imposed PDF"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:85
-msgid "Access denied!"
-msgstr ""
-
-#: root/src/console/console.tt:12 root/src/publish/pending.tt:16
+#: root/src/console/git_display.tt:12 root/src/publish/pending.tt:16
 msgid "Action"
 msgstr ""
 
@@ -60,7 +56,7 @@ msgstr ""
 msgid "Attached files"
 msgstr ""
 
-#: root/src/edit/newtext.tt:63
+#: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:63
 msgid "Author"
 msgstr ""
 
@@ -102,6 +98,10 @@ msgstr ""
 
 #: root/src/publish/pending.tt:17
 msgid "Changes"
+msgstr ""
+
+#: root/src/tasks/display.tt:18
+msgid "Changes applied, thanks"
 msgstr ""
 
 #: root/src/edit/diff.tt:13
@@ -155,6 +155,10 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:111
 msgid "Date of the original publication"
+msgstr ""
+
+#: root/src/layout.tt:174
+msgid "Deferred/Deleted texts"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:38
@@ -221,11 +225,11 @@ msgstr ""
 msgid "Full list of texts"
 msgstr ""
 
-#: root/src/layout.tt:191
+#: root/src/layout.tt:196
 msgid "Full text search"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:48
+#: lib/AmuseWikiFarm/Controller/Console.pm:69
 msgid "Git console"
 msgstr ""
 
@@ -295,6 +299,10 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
+#: root/src/console/unpublished.tt:3
+msgid "List of texts on hold"
+msgstr ""
+
 #: root/src/user/login.tt:16
 msgid "Log in"
 msgstr ""
@@ -303,7 +311,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: root/src/layout.tt:179
+#: root/src/layout.tt:184
 msgid "Logout"
 msgstr ""
 
@@ -367,8 +375,8 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
-#: root/src/console/console.tt:37
-msgid "Nothing to see here"
+#: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:44
+msgid "Nothing to see here, so far"
 msgstr ""
 
 #: root/src/edit/edit.tt:48
@@ -379,7 +387,7 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:76
+#: lib/AmuseWikiFarm/Controller/Root.pm:87
 msgid "Page not found!"
 msgstr ""
 
@@ -446,6 +454,10 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
+#: root/src/console/unpublished.tt:14
+msgid "Pubdate"
+msgstr ""
+
 #: root/src/publish/pending.tt:37
 msgid "Publish"
 msgstr ""
@@ -469,23 +481,27 @@ msgstr ""
 msgid "Quotes"
 msgstr ""
 
-#: root/src/layout.tt:220
+#: root/src/layout.tt:225
 msgid "RSS feed"
 msgstr ""
 
-#: root/src/layout.tt:223
+#: root/src/layout.tt:228
 msgid "Random"
+msgstr ""
+
+#: root/src/console/unpublished.tt:13
+msgid "Reason"
 msgstr ""
 
 #: root/src/edit/diff.tt:33
 msgid "Recheck"
 msgstr ""
 
-#: root/src/layout.tt:174
+#: root/src/layout.tt:179
 msgid "Remotes"
 msgstr ""
 
-#: root/src/console/console.tt:6
+#: root/src/console/git_display.tt:6
 msgid "Repository"
 msgstr ""
 
@@ -529,7 +545,7 @@ msgstr ""
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
-#: root/src/tasks/display.tt:33
+#: root/src/console/unpublished.tt:12 root/src/tasks/display.tt:33
 msgid "Status"
 msgstr ""
 
@@ -539,10 +555,6 @@ msgstr ""
 
 #: root/src/text.tt:10
 msgid "Table of Contents"
-msgstr ""
-
-#: root/src/tasks/display.tt:18
-msgid "The text has been published"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:161
@@ -568,7 +580,7 @@ msgstr ""
 msgid "This text does not exist"
 msgstr ""
 
-#: root/src/edit/edit.tt:161 root/src/edit/newtext.tt:37 root/src/text.tt:23
+#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:161 root/src/edit/newtext.tt:37 root/src/text.tt:23
 msgid "Title"
 msgstr ""
 
@@ -592,7 +604,11 @@ msgstr ""
 msgid "Two side layout"
 msgstr ""
 
-#: root/src/console/console.tt:9
+#: root/src/console/unpublished.tt:9
+msgid "URI"
+msgstr ""
+
+#: root/src/console/git_display.tt:9
 msgid "URL"
 msgstr ""
 
@@ -602,6 +618,10 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:104
 msgid "Unique ID for the text"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:103
+msgid "Unpublished texts"
 msgstr ""
 
 #: root/src/edit/edit.tt:104
