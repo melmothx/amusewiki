@@ -6,7 +6,8 @@ When done, refresh the .po
 
 * TODO Mail on commit
 * TODO Autocompletion for authors and topics
-* TODO Clear the log dir before starting a job
+* DONE Clear the log dir before starting a job
+  CLOSED: [2014-06-09 lun 14:25]
 
 * TODO X-Accel, maybe?
 * TODO Middlewares

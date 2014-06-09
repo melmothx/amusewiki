@@ -158,7 +158,7 @@ use Data::Dumper;
 
 use File::Spec;
 use File::Temp;
-use File::Copy;
+use File::Copy qw/copy move/;
 
 use File::Slurp qw/read_file append_file/;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
@@ -200,14 +200,30 @@ sub as_json {
 Return the location of the log file. Beware that the location is
 computed in the current directory, but returned as absolute.
 
+=head2 log_dir
+
+Return the B<absolute> path to the log directory (./log/jobs).
+
 =cut
+
+sub log_dir {
+    my $dir = File::Spec->catdir(qw/log jobs/);
+    # guaranteed to exist by log/jobs/README.txt
+    die "We're in the wrong directory: " . getcwd()  unless -d $dir;
+    return File::Spec->rel2abs($dir);
+}
+
 
 sub log_file {
     my $self = shift;
-    my $dir = File::Spec->catdir(qw/log jobs/);
-    die "We're in the wrong directory: " . getcwd()  unless -d $dir;
-    my $file = File::Spec->catfile($dir, $self->id . '.log');
-    return File::Spec->rel2abs($file);
+    return File::Spec->catfile($self->log_dir, $self->id . '.log');
+}
+
+sub old_log_file {
+    my $self = shift;
+    my $now = DateTime->now->iso8601;
+    $now =~ s/[^0-9a-zA-Z]/-/g;
+    return File::Spec->catfile($self->log_dir, $self->id . '-' . $now . '.log');
 }
 
 =head2 logs
@@ -256,15 +272,21 @@ sub dispatch_job {
     my $task = $self->task;
     my $handlers = $self->result_source->resultset->handled_jobs_hashref;
     if ($handlers->{$task}) {
-        my $method = "dispatch_job_$task";
-        my $logger = $self->logger;
-        $logger->("Job $task started at " . localtime() . "\n");
-        my $output;
         # catch the warns
         my @warnings;
         local $SIG{__WARN__} = sub {
             push @warnings, @_;
         };
+        my $method = "dispatch_job_$task";
+        my $logfile = $self->log_file;
+        if (-f $logfile) {
+            my $oldfile = $self->old_log_file;
+            warn "$logfile exists, renaming to $oldfile";
+            move($logfile, $oldfile) or warn "WTF?";
+        }
+        my $logger = $self->logger;
+        $logger->("Job $task started at " . localtime() . "\n");
+        my $output;
         eval {
             $output = $self->$method($logger);
         };
