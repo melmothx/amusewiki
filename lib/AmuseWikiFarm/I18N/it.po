@@ -102,8 +102,8 @@ msgstr ""
 msgid "Changes"
 msgstr ""
 
-#: root/src/tasks/display.tt:18
-msgid "Changes applied, thanks"
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:70
+msgid "Changes applied"
 msgstr ""
 
 #: root/src/edit/diff.tt:13
@@ -185,6 +185,10 @@ msgstr ""
 msgid "Division factor"
 msgstr ""
 
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:73
+msgid "Done"
+msgstr ""
+
 #: root/src/text.tt:80
 msgid "Downloads"
 msgstr ""
@@ -200,10 +204,6 @@ msgstr ""
 #: lib/AmuseWikiFarm/Controller/Edit.pm:158 root/src/edit/edit.tt:93
 #: root/src/edit/revs.tt:3
 msgid "Editing"
-msgstr ""
-
-#: root/src/tasks/display.tt:57
-msgid "Error producing the file"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:298
@@ -436,16 +436,12 @@ msgstr ""
 msgid "Please prove you are a human."
 msgstr ""
 
-#: root/src/tasks/display.tt:33
+#: root/src/tasks/display.tt:31
 msgid "Please reload your page"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:75
 msgid "Please select the desired fonts"
-msgstr ""
-
-#: root/src/tasks/display.tt:41
-msgid "Please wait"
 msgstr ""
 
 #: root/src/edit/newtext.tt:210
@@ -475,7 +471,7 @@ msgid ""
 "\t  body."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:55
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:79
 msgid "Queue"
 msgstr ""
 
@@ -551,7 +547,8 @@ msgstr ""
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
-#: root/src/console/unpublished.tt:12 root/src/tasks/display.tt:33
+#: root/src/console/unpublished.tt:12 root/src/tasks/display.tt:16
+#: root/src/tasks/display.tt:31 root/src/tasks/display.tt:49
 msgid "Status"
 msgstr ""
 
@@ -721,7 +718,7 @@ msgstr ""
 msgid "Your chapter here..."
 msgstr ""
 
-#: root/src/tasks/display.tt:15
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:67
 msgid "Your file is ready"
 msgstr ""
 
@@ -816,7 +813,7 @@ msgstr ""
 msgid "processing"
 msgstr ""
 
-#: root/src/publish/pending.tt:7 root/src/tasks/display.tt:6
+#: root/src/publish/pending.tt:7
 msgid "published"
 msgstr ""
 
@@ -850,10 +847,6 @@ msgstr ""
 
 #: root/src/layout.tt:101
 msgid "texts sorted by topics"
-msgstr ""
-
-#: root/src/tasks/display.tt:5
-msgid "unpublished"
 msgstr ""
 
 #: root/src/edit/newtext.tt:55
