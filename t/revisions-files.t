@@ -42,7 +42,7 @@ test_revision($site, special => $suffix);
 
 sub test_revision {
     my ($site, $class, $suffix) = @_;
-    my $outpath = $class eq 'special' ? 'special/' : 'library/';
+    my $outpath = $class eq 'special' ? '/special/' : '/library/';
     my $rev = $site->create_new_text({ title => 'HELLO',
                                        lang => 'hr',
                                        textbody => '<p>ciao</p>'
