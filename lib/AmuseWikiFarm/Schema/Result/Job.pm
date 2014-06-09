@@ -204,6 +204,12 @@ computed in the current directory, but returned as absolute.
 
 Return the B<absolute> path to the log directory (./log/jobs).
 
+=head2 old_log_file
+
+=head2 make_room_for_logs
+
+Ensure that the file doesn't exit yet.
+
 =cut
 
 sub log_dir {
@@ -223,7 +229,18 @@ sub old_log_file {
     my $self = shift;
     my $now = DateTime->now->iso8601;
     $now =~ s/[^0-9a-zA-Z]/-/g;
+    $now .= '-' . int(rand(10000));
     return File::Spec->catfile($self->log_dir, $self->id . '-' . $now . '.log');
+}
+
+sub make_room_for_logs {
+    my $self = shift;
+    my $logfile = $self->log_file;
+    if (-f $logfile) {
+        my $oldfile = $self->old_log_file;
+        warn "$logfile exists, renaming to $oldfile\n";
+        move($logfile, $oldfile) or warn "WTF?";
+    }
 }
 
 =head2 logs
@@ -278,12 +295,7 @@ sub dispatch_job {
             push @warnings, @_;
         };
         my $method = "dispatch_job_$task";
-        my $logfile = $self->log_file;
-        if (-f $logfile) {
-            my $oldfile = $self->old_log_file;
-            warn "$logfile exists, renaming to $oldfile";
-            move($logfile, $oldfile) or warn "WTF?";
-        }
+        $self->make_room_for_logs;
         my $logger = $self->logger;
         $logger->("Job $task started at " . localtime() . "\n");
         my $output;

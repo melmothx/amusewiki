@@ -57,12 +57,14 @@ sub enqueue {
 
     my $insertion = {
                      task    => $task,
-                     payload => to_json($payload),
+                     payload => to_json($payload, { pretty => 1 }),
                      status  => 'pending',
                      created => DateTime->now,
                      priority => $priority || 10,
                     };
-    return $self->create($insertion)->discard_changes;
+    my $job = $self->create($insertion)->discard_changes;
+    $job->make_room_for_logs;
+    return $job;
 }
 
 =head2 bookbuilder_add ($payload)
