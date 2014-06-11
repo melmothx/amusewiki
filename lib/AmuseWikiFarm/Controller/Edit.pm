@@ -344,7 +344,6 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                         $c->flash(error_msg => $c->loc('Error sending mail!'));
                     }
                 }
-                # TODO here shit out a mail if there is a setting in site
                 $c->flash(status_msg => "Changes committed, thanks!");
                 $c->response->redirect($c->uri_for_action('/publish/pending'));
                 return;

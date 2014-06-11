@@ -147,6 +147,13 @@ xapian
 └── test
 
 
+** Email notification
+
+On commit emails are sent to the site.mail address, if any, with the
+committer in CC, if he minded to leave one. If site.mail is not set
+for the site, the whole mailing is skipped, including the notification
+to the committer (as we assume we don't want to spam around).
+
 ** MCV
 
 Standard location for Catalyst app:
