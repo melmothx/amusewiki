@@ -5,7 +5,12 @@ use base 'Catalyst::View::Email::Template';
 
 __PACKAGE__->config(
     stash_key       => 'email',
-    template_prefix => ''
+    template_prefix => 'email',
+    default => {
+        view => 'TT',
+        charset => 'utf-8',
+        content_type => 'text/plain',
+    },
 );
 
 =head1 NAME

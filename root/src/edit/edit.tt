@@ -137,6 +137,13 @@ $(document).ready(function() {
 [%- c.req.params.message | html -%]</textarea>
       <br />
     </div>
+    <div>
+      <label for="email">
+        [% c.loc('Please leave a mail if you want to be contacted about this change') %]
+      </label>
+      <input type="text" name="email" id="email" class="form-control" value="[% c.req.params.email | html %]"/>
+      <br />
+    </div>
     <p>
       <button type="submit" class="btn btn-default" name="preview" value="preview">[% c.loc('Preview') %]</button>
       <button type="submit" class="btn btn-default" name="commit"  value="commit">[% c.loc('Commit')  %]</button>
@@ -223,7 +230,8 @@ $(document).ready(function(){
     $("#museform").validate({
         rules: {
             body: "required muse",
-            message: "required"
+            message: "required",
+            email: "email",
         }
     });
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });

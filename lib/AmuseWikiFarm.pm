@@ -85,6 +85,7 @@ __PACKAGE__->config(
     disable_component_resolution_regex_fallback => 1,
     enable_catalyst_header => 1, # Send X-Catalyst header
     encoding => 'UTF-8',
+    default_view => 'HTML',
 );
 
 
@@ -95,6 +96,19 @@ __PACKAGE__->config(
            ],
        },
    );
+
+# like above, but without the wrapper, so you get no layout with this.
+# Used for sending email and such.
+
+__PACKAGE__->config(
+    'View::TT' => {
+        INCLUDE_PATH => [
+            __PACKAGE__->path_to('root', 'src'),
+           ],
+       },
+   );
+
+
 
 # Configure SimpleDB Authentication
 __PACKAGE__->config(

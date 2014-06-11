@@ -9,6 +9,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use DateTime;
 use Text::Wrapper;
+use Email::Valid;
 
 =head1 NAME
 
@@ -320,8 +321,29 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                     $message .= "\n-- " . $c->user->get('username') . "\n\n"
                 }
                 $revision->message($message);
-                $revision->update;
+                # assert to have a fresh copy
+                $revision->update->discard_changes;
 
+                if (my $mail_to = $c->stash->{site}->mail) {
+                    my $subject = $revision->title->uri;
+                    my %mail = (
+                                to => $mail_to,
+                                from => 'noreply@localhost',
+                                subject => $revision->title->uri,
+                                template => 'commit.tt',
+                               );
+                    if (my $cc = Email::Valid->address($params->{email})) {
+                        $mail{cc} = $cc;
+                    }
+                    elsif (my $mail = $params->{email}) {
+                        $c->log->warn("Invalid mail $mail provided, ignoring");
+                    }
+                    $c->stash(email => \%mail);
+                    $c->forward($c->view('Email::Template'));
+                    if (scalar(@{ $c->error })) {
+                        $c->flash(error_msg => $c->loc('Error sending mail!'));
+                    }
+                }
                 # TODO here shit out a mail if there is a setting in site
                 $c->flash(status_msg => "Changes committed, thanks!");
                 $c->response->redirect($c->uri_for_action('/publish/pending'));

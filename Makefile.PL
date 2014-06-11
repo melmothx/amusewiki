@@ -41,6 +41,7 @@ requires 'DateTime::Format::Pg';
 requires 'XML::FeedPP';
 requires 'Git::Wrapper';
 requires 'Text::Wrapper'; # for revision messages
+requires 'Email::Valid';
 
 requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor';
