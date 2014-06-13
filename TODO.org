@@ -11,6 +11,11 @@ When done, refresh the .po
 
 This need a Controller::API which can be used for other things as well.
 
+* TODO Revision deletion
+* TODO Text purging
+* TODO Wrong jumping offset on js
+* TODO Handle redirections
+* TODO Other languages on its own menu?
 * DONE Clear the log dir before starting a job
   CLOSED: [2014-06-09 lun 14:25]
 
