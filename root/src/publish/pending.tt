@@ -17,6 +17,9 @@
       <th>[% c.loc('Changes')  %]</th>
       <th>[% c.loc('Message')  %]</th>
       <th>[% c.loc('Date')     %]</th>
+      [% IF c.user_exists %]
+      <th>[% c.loc('Purge')    %]</th>
+      [% END %]
     </tr>
     [% FOREACH rev IN revisions.all %]
     <tr>
@@ -31,14 +34,17 @@
       </td>
       <td>
         [% IF rev.pending %]
-        <form method="post" action="[% c.uri_for('/publish/publish') %]">
-          <input type="hidden" name="publish" value="[% rev.id %]" />
+        <form method="post" name="publish"
+              action="[% c.uri_for_action('/publish/publish') %]">
+          <input type="hidden" name="target" value="[% rev.id %]" />
           [% IF rev.can_be_merged -%]
           [%- SET publish_msg = c.loc('Publish') -%]
           [%- ELSE -%]
           [%- SET publish_msg = c.loc('Force publishing') -%]
           [%- END -%]
-          <input type="submit" name="go" value="[% publish_msg %]" />
+          <button class="btn btn-default" type="submit" name="go" value="go">
+            [% publish_msg %]
+          </button>
 
         </form>
         [% ELSIF rev.published %]
@@ -68,9 +74,36 @@
       <td>
         [% rev.updated.dmy %] [% rev.updated.hms %] [% c.loc('UTC') %]
       </td>
+      [% IF c.user_exists %]
+      <td>
+        <form method="post" name="deletion"
+              action="[% c.uri_for_action('/publish/purge') %]">
+          <input type="hidden" name="target" value="[% rev.id %]" />
+          <button class="btn btn-danger" type="submit" name="delete"
+                  value="delete">
+            [% c.loc('Erase this revision') %]
+          </button>
+        </form>
+      </td>
+      [% END %]
     </tr>
     [% END %]
   </table>
+</div>
+
+<div class="well">
+  <p>
+    [% c.loc("Please keep in mind that if you see “Force publishing”
+    as action, it means that the revision has been superseded by
+    another one, so publishing this one, you'll end up reverting a
+    previous one. Try to avoid this, unless you know what you're
+    doing.") %]
+  </p>
+  <p>
+    [% c.loc("“Stale editing” means that the revision was abandoned
+    while editing, but it's still there, in case someone wants to pick
+    it up when editing a text.") %]
+  </p>
 </div>
         
 [% END %]

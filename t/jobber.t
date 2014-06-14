@@ -85,7 +85,7 @@ $mech->click('commit');
 $mech->content_contains('Changes committed') or diag $mech->response->content;
 
 
-ok($mech->form_with_fields('publish'));
+ok($mech->form_name('publish'));
 
 $mech->click;
 

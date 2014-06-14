@@ -96,10 +96,9 @@ Method to publish the texts.
 
 =cut
 
-sub publish :Chained('root') :PathPart('publish') :Args(0) {
+sub validate_revision :Chained('root') :PathPart('') CaptureArgs(0) {
     my ($self, $c) = @_;
-    # ask for the param
-    if (my $revid = $c->request->params->{publish}) {
+    if (my $revid = $c->request->params->{target}) {
         $c->log->debug("Found publish parameter, validating");
 
         # revisions should be already stashed
@@ -109,20 +108,51 @@ sub publish :Chained('root') :PathPart('publish') :Args(0) {
             # search that revision id
             if (my $found = $revs->find($revid)) {
                 $c->log->debug("Found $revid!");
-
-                # found and pending? publish!
-                if ($found && $found->pending) {
-                    $c->log->debug("$revid is pending, processing!");
-                    my $job = $c->stash->{site}->jobs->publish_add($found);
-                    $c->res->redirect($c->uri_for_action('/tasks/display',
-                                                         [$job->id]));
-                    return;
-                }
+                $c->stash(target_revision => $found);
+                return;
             }
         }
     }
     $c->flash(error_msg => "Bad revision!");
     $c->res->redirect($c->uri_for_action('/publish/pending'));
+    $c->detach();
+}
+
+
+sub publish :Chained('validate_revision') :PathPart('publish') :Args(0) {
+    my ($self, $c) = @_;
+    if (my $rev = $c->stash->{target_revision}) {
+        if ($rev->pending) {
+            $c->log->debug($rev->id . " is pending, processing!");
+            my $job = $c->stash->{site}->jobs->publish_add($rev);
+            $c->res->redirect($c->uri_for_action('/tasks/display',
+                                                 [$job->id]));
+            return;
+        }
+    }
+    # we don't care, this means the ui has been bypassed
+    $c->detach('/not_found');
+}
+
+=head2 purge
+
+Logged in users can delete revisions.
+
+=cut
+
+sub purge :Chained('validate_revision') :PathPart('purge') :Args(0) {
+    my ($self, $c) = @_;
+    if (my $rev = $c->stash->{target_revision}) {
+        if ($c->user_exists) {
+            my $uri = $rev->title->full_uri;
+            $rev->delete;
+            $c->flash(status_msg => $c->loc('Revision for [_1] has been deleted',
+                                            $uri));
+            $c->res->redirect($c->uri_for_action('/publish/all'));
+            return;
+        }
+    }
+    $c->detach('/not_found');
 }
 
 
