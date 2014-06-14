@@ -16,7 +16,8 @@ This need a Controller::API which can be used for other things as well.
   CLOSED: [2014-06-14 sab 17:15]
 * DONE Text purging
   CLOSED: [2014-06-14 sab 18:43]
-* TODO Wrong jumping offset on js
+* DONE Wrong jumping offset on js
+  CLOSED: [2014-06-14 sab 22:55]
 * TODO Handle redirections
 * TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
 
