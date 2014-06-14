@@ -77,6 +77,7 @@
       [% IF c.user_exists %]
       <td>
         <form method="post" name="deletion"
+              onsubmit="return confirm('[% c.loc('Are you sure?') %]');"
               action="[% c.uri_for_action('/publish/purge') %]">
           <input type="hidden" name="target" value="[% rev.id %]" />
           <button class="btn btn-danger" type="submit" name="delete"
