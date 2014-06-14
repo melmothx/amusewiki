@@ -364,7 +364,34 @@ Git push/pull
 
 Bookbuilder job.
 
+=head3 dispatch_job_purge
+
+Purge an already deleted text.
+
 =cut
+
+sub dispatch_job_purge {
+    my ($self, $logger) = @_;
+    my $data = $self->job_data;
+    my $site = $self->site;
+    my $text = $site->titles->find($data->{id});
+    die "Couldn't find title $data->{id} in this site!\n" unless $text;
+    die $text->title . " is not deleted!\n" unless $text->deleted;
+    my $user = $data->{username};
+    die "No user!" unless $user;
+    my $path = $text->f_full_path_name;
+    my $uri = $text->full_uri;
+    warn "Removing $path\n";
+    if (my $git = $site->git) {
+        $git->rm($path);
+        $git->commit({ message => "$uri deleted by $user" });
+    }
+    else {
+        unlink $path or die "Couldn't delete $path $!\n";
+    }
+    $text->delete;
+    return '/';
+}
 
 
 sub dispatch_job_publish {

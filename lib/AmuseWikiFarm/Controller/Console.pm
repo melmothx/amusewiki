@@ -87,7 +87,7 @@ sub git_action :Chained('git') :PathPart('action') :Args(0) {
     }
     else {
         $c->flash(error_msg => "Bad request! Please report this incident");
-        $c->response->redirect($c->uri_for_action('console/git_display'));
+        $c->response->redirect($c->uri_for_action('/console/git_display'));
     }
 }
 
@@ -106,6 +106,30 @@ sub unpublished :Chained('root') :PathPart('unpublished') :Args(0) {
     }
 }
 
+=head2 purge
+
+Erase the text from the file system and the database. The text must be
+already marked as deleted as a safety measure.
+
+=cut
+
+sub purge :Chained('root') :PathPart('purge') :Args(0) {
+    my ($self, $c) = @_;
+    die "This shouldn't happen" unless $c->user_exists;
+    if (my $target = $c->request->params->{purge}) {
+        my $payload = {
+                       id => $target,
+                       username  => $c->user->get('username'),
+                      };
+        my $job = $c->stash->{site}->jobs->purge_add($payload);
+        $c->res->redirect($c->uri_for_action('/tasks/display',
+                                             [$job->id]));
+    }
+    else {
+        $c->flash(error_msg => "Bad purge request! Please report this incident");
+        $c->response->redirect($c->uri_for_action('/console/unpublished'));
+    }
+}
 
 =head1 AUTHOR
 

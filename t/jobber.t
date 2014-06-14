@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 53;
+use Test::More tests => 75;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -148,6 +148,62 @@ my $gitop = check_jobber($mech);
 
 like $gitop->{logs}, qr/fatal: The remote end hung up unexpectedly/,
   "git job works";
+
+
+diag "trying the deletion";
+
+$mech->get_ok('/action/text/new');
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+
+$title = 'cacca ' . int(rand(1000));
+$mech->set_fields(author => 'bobi',
+                  title => $title,
+                  textbody => 'bau');
+
+$mech->click;
+
+$mech->content_contains('Created new text');
+$title =~ s/ /-/;
+
+like $mech->response->base->path, qr{^/action/text/edit/bobi-\Q$title\E}, "Location matches";
+
+$mech->form_id('museform');
+$mech->field(body => "#title $title\n#author bobi\n#lang en\n#DELETED null\n\nbau\n");
+$mech->click('commit');
+
+$mech->content_contains('Changes committed') or diag $mech->response->content;
+
+ok($mech->form_name('publish'));
+
+$mech->click;
+
+$success = check_jobber($mech);
+
+$text = $success->{produced} or die "Can't continue without a text";
+
+my $text_file = catfile($site->repo_root,
+                        qw/b bc/, "bobi-$title.muse");
+
+ok (-f $text_file, "$text_file is present");
+
+
+$mech->get($text);
+
+is $mech->status, '404', "deleted text not found";
+
+$mech->get_ok('/console/unpublished');
+
+ok ($mech->form_name('purge'), "Found purging form");
+
+$mech->click;
+
+check_jobber($mech);
+
+my ($log) = $git->log;
+
+is $log->message, "$text deleted by root\n", "Deletion found in the git";
+
+ok (! -f $text_file, "$text_file is no more");
 
 sub check_jobber {
     my $mech = shift;

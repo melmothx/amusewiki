@@ -12,6 +12,7 @@
     <th>[% c.loc('Status') %]</th>
     <th>[% c.loc('Reason') %]</th>
     <th>[% c.loc('Pubdate') %]</th>
+    <th>[% c.loc('Purge') %]</th>
     <th></th>
   </tr>
   [% FOREACH text IN text_list %]
@@ -33,6 +34,16 @@
     </td>
     <td>
       [% text.pubdate.datetime %]
+    </td>
+    <td>
+      <form name="purge" action="[% c.uri_for_action('/console/purge') %]"
+            onsubmit="return confirm('[% c.loc('Are you sure?') %]');"
+            method="post">
+        <input type="hidden" name="purge" value="[% text.id %]"/>
+        <button type="submit" class="btn btn-danger">
+          [% c.loc('Purge') %]
+        </button>
+      </form>
     </td>
   </tr>
   [% END %]

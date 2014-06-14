@@ -38,7 +38,7 @@ $payload must be an hashref.
 =cut
 
 sub _handled_jobs {
-    return qw/testing publish git bookbuilder/;
+    return qw/testing publish git bookbuilder purge/;
 }
 
 sub handled_jobs_hashref {
@@ -96,6 +96,12 @@ sub git_action_add {
     my ($self, $payload) = @_;
     return $self->enqueue(git => $payload);
 }
+
+sub purge_add {
+    my ($self, $payload) = @_;
+    return $self->enqueue(purge => $payload);
+}
+
 
 =head2 dequeue
 

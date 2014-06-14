@@ -105,6 +105,10 @@
     while editing, but it's still there, in case someone wants to pick
     it up when editing a text.") %]
   </p>
+  <p>
+    [% c.loc("Deleting a revision is safe if a text has been
+    published. Otherwise deleting it you'll lose the unpublished changes") %]
+  </p>
 </div>
         
 [% END %]
