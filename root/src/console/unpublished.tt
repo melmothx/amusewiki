@@ -36,6 +36,7 @@
       [% text.pubdate.datetime %]
     </td>
     <td>
+      [% IF text.deleted %]
       <form name="purge" action="[% c.uri_for_action('/console/purge') %]"
             onsubmit="return confirm('[% c.loc('Are you sure?') %]');"
             method="post">
@@ -44,6 +45,7 @@
           [% c.loc('Purge') %]
         </button>
       </form>
+      [% END %]
     </td>
   </tr>
   [% END %]

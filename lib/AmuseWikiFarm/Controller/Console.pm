@@ -97,13 +97,18 @@ List the unpublished titles.
 
 =cut
 
-sub unpublished :Chained('root') :PathPart('unpublished') :Args(0) {
+sub unpublished_list :Chained('root') :PathPart('unpublished') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my @list = $c->stash->{site}->titles->unpublished;
     $c->stash(page_title => $c->loc('Unpublished texts'));
     if (@list) {
         $c->stash(text_list => \@list)
     }
+}
+
+sub unpublished :Chained('unpublished_list') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    # empty to close the chain
 }
 
 =head2 purge
@@ -113,22 +118,31 @@ already marked as deleted as a safety measure.
 
 =cut
 
-sub purge :Chained('root') :PathPart('purge') :Args(0) {
+sub purge :Chained('unpublished_list') :PathPart('purge') :Args(0) {
     my ($self, $c) = @_;
     die "This shouldn't happen" unless $c->user_exists;
     if (my $target = $c->request->params->{purge}) {
-        my $payload = {
-                       id => $target,
-                       username  => $c->user->get('username'),
-                      };
-        my $job = $c->stash->{site}->jobs->purge_add($payload);
-        $c->res->redirect($c->uri_for_action('/tasks/display',
-                                             [$job->id]));
+        # validated
+        my $found;
+        foreach my $r (@{ $c->stash->{text_list} }) {
+            if ($r->id eq $target and $r->deleted) {
+                $found = 1;
+                last;
+            }
+        }
+        if ($found) {
+            my $payload = {
+                           id => $target,
+                           username  => $c->user->get('username'),
+                          };
+            my $job = $c->stash->{site}->jobs->purge_add($payload);
+            $c->res->redirect($c->uri_for_action('/tasks/display',
+                                                 [$job->id]));
+            return;
+        }
     }
-    else {
-        $c->flash(error_msg => "Bad purge request! Please report this incident");
-        $c->response->redirect($c->uri_for_action('/console/unpublished'));
-    }
+    $c->flash(error_msg => "Bad purge request! Please report this incident");
+    $c->response->redirect($c->uri_for_action('/console/unpublished'));
 }
 
 =head1 AUTHOR
