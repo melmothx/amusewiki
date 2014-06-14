@@ -245,8 +245,15 @@ var ckconfiguration = {
 		             $( this ).data( "ui-autocomplete" ).menu.active ) {
 		            event.preventDefault();
 		        }
-                console.log($(this).attr('name'));
-                availableTerms = [ "anarcardi", "bagigi" ];
+                availableTerms = [];
+                $.ajax({
+                    url: "[% c.uri_for('/api/autocompletion/') %]" + $(this).attr('name'),
+                    async: false,
+                    dataType: 'json',
+                    success: function(response) {
+                        availableTerms = response;
+                    }
+                });
 	        })
 	        .autocomplete({
 		        minLength: 0,
