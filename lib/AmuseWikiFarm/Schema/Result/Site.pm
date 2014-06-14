@@ -102,11 +102,17 @@ __PACKAGE__->table("site");
   is_nullable: 1
   size: 32
 
-=head2 mail
+=head2 mail_notify
 
   data_type: 'varchar'
   is_nullable: 1
-  size: 128
+  size: 255
+
+=head2 mail_from
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
 
 =head2 canonical
 
@@ -249,8 +255,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 32 },
   "logo",
   { data_type => "varchar", is_nullable => 1, size => 32 },
-  "mail",
-  { data_type => "varchar", is_nullable => 1, size => 128 },
+  "mail_notify",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "mail_from",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "sitegroup",
@@ -429,8 +437,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-05-29 17:28:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hHik7JjW81g7Zo1RiB9SEQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-14 11:54:54
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JOAnjV4TW6VE1UjFjMZwiA
 
 =head2 other_sites
 

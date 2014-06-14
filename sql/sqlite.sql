@@ -29,7 +29,8 @@ CREATE TABLE site (
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
        theme VARCHAR(32) NOT NULL DEFAULT '',
        logo VARCHAR(32),
-       mail VARCHAR(128),
+       mail_notify VARCHAR(255),
+       mail_from   VARCHAR(255),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
        sitegroup VARCHAR(32),
 

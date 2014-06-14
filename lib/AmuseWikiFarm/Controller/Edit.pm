@@ -323,12 +323,13 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 $revision->message($message);
                 # assert to have a fresh copy
                 $revision->update->discard_changes;
-
-                if (my $mail_to = $c->stash->{site}->mail) {
+                my $mail_to =   $c->stash->{site}->mail_notify;
+                my $mail_from = $c->stash->{site}->mail_from;
+                if ($mail_to && $mail_from) {
                     my $subject = $revision->title->uri;
                     my %mail = (
                                 to => $mail_to,
-                                from => 'noreply@localhost',
+                                from => $mail_from,
                                 subject => $revision->title->uri,
                                 template => 'commit.tt',
                                );
