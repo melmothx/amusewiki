@@ -280,9 +280,6 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
 
         # set the session id
         $revision->session_id($c->sessionid);
-        # See Result::Revision for the supported status
-        $revision->status('editing');
-        $revision->updated(DateTime->now);
         $revision->update;
 
         $c->log->debug("Handling the thing");
@@ -311,8 +308,6 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
             if ($params->{body} and
                 (index($params->{body}, '#title ') >= 0)) {
 
-                $revision->status('pending');
-
                 # append the message to the existing one
                 my $rev_message = $params->{message} || '';
                 $rev_message =~ s/\r//g;
@@ -324,9 +319,11 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 if ($c->user_exists) {
                     $message .= "\n-- " . $c->user->get('username') . "\n\n"
                 }
-                $revision->message($message);
+                $revision->commit_version($message);
+
                 # assert to have a fresh copy
-                $revision->update->discard_changes;
+                $revision->discard_changes;
+
                 my $mail_to =   $c->stash->{site}->mail_notify;
                 my $mail_from = $c->stash->{site}->mail_from;
                 if ($mail_to && $mail_from) {

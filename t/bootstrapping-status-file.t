@@ -54,6 +54,8 @@ my $rev = $site->create_new_text({
 
 $rev->edit($faulty_muse);
 
+$rev->commit_version;
+
 $rev->publish_text;
 
 check_failure('a-test-2');

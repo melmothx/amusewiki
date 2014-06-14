@@ -43,6 +43,7 @@ ok $other_revision->can_be_merged, "The other revision can be merged";
 
 # publish
 
+$revision->commit_version;
 $revision->publish_text;
 
 
@@ -54,4 +55,5 @@ $restore->edit($original_file);
 
 ok $restore->can_be_merged, "New revision works";
 
+$restore->commit_version;
 $restore->publish_text;

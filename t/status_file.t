@@ -23,6 +23,7 @@ my $revision = $site->create_new_text({ uri => 'first-testx',
                                         lang => 'hr',
                                         textbody => 'blabla' }, 'text');
 
+$revision->commit_version;
 $revision->publish_text;
 
 my $title = $revision->title->discard_changes;

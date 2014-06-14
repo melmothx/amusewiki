@@ -49,6 +49,7 @@ sub test_revision {
                                      }, $class);
     ok ($rev, "Revision exists");
     is $rev->f_class, $class, "Revision has $class";
+    $rev->commit_version;
     is $rev->publish_text, $outpath . 'hello';
     # reset
     $rev->discard_changes;
@@ -67,6 +68,7 @@ sub test_revision {
     foreach my $att (@attach) {
         is $rev->add_attachment($att), 0, "$att uploaded";
     }
+    $rev->commit_version;
     is $rev->publish_text, $outpath . 'hello';
 
     my $imagepath;

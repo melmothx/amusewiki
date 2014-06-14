@@ -28,7 +28,6 @@ ok($site);
 my $git = $site->git;
 $git->remote(add => origin => '/tmp/blablabla.git');
 
-
 my $host = $site->vhosts->first->name;
 
 my $testdir = File::Temp->newdir(CLEANUP => 1);

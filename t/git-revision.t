@@ -57,6 +57,8 @@ like $revision->starting_file_body, qr/\Q$expected_starting\E/,
 
 like $revision->muse_body, qr/\Q$expected\E/, "Correctly filtered";
 
+$revision->commit_version;
+
 my $uri = $revision->publish_text;
 
 ok($uri, "Publish revision returned the uri") and diag "Found $uri";
@@ -90,6 +92,7 @@ is read_file($revision->original_html,
 my $tmpfh = File::Temp->new;
 my $tmpfile = $tmpfh->filename;
 diag "Logging in $tmpfile";
+$revision->commit_version;
 $uri = $revision->publish_text(sub { append_file($tmpfile, @_) });
 my $logged = read_file($tmpfile);
 

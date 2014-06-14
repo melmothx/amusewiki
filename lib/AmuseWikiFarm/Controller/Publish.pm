@@ -78,7 +78,7 @@ Show all revisions.
 sub pending :Chained('root') :PathPart('pending') :Args(0) {
     my ($self, $c) = @_;
     my $revisions = delete $c->stash->{revisions};
-    my $revs = $revisions->search({ status => { '!=' => 'published' } });
+    my $revs = $revisions->search({ status => 'pending' });
     $c->stash(page_title => $c->loc('Pending revisions'));
     $c->stash(revisions => $revs);
 };

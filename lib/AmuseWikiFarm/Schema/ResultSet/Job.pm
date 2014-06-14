@@ -89,9 +89,6 @@ sub bookbuilder_add {
 
 sub publish_add {
     my ($self, $revision) = @_;
-    # see Result::Revision for the status
-    $revision->status('processing');
-    $revision->update;
     return $self->enqueue(publish => { id => $revision->id }, 5);
 }
 

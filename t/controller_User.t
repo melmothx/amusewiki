@@ -29,6 +29,7 @@ $site->mode('blog');
 $site->update;
 
 ok($rev);
+$rev->commit_version;
 $rev->publish_text;
 
 my $user = $site->update_or_create_user({

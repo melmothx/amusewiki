@@ -47,6 +47,7 @@ ok -f ($revision->f_full_path_name),
 
 ok (-f $revision->starting_file, "Original body was stored");
 
+$revision->commit_version;
 ok $revision->publish_text;
 
 ok($revision->title->can_spawn_revision, "Now it can generate another revision");
@@ -67,6 +68,7 @@ ok (-f $revision->starting_file, "Original body was stored");
 
 $revision->edit("#title blabla\n#notes blabla\n\n Hello world!\n");
 
+$revision->commit_version;
 my $uri = $revision->publish_text;
 $uri =~ s!^/library/!!;
 
@@ -80,6 +82,7 @@ ok ($text->notes, "Found the notes");
 
 $revision = $text->new_revision;
 $revision->edit("#title blabla\n\n Hellox worldx!\n");
+$revision->commit_version;
 my $newuri = $revision->publish_text;
 $newuri =~ s!^/library/!!;
 is $uri, $newuri;

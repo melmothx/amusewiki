@@ -164,6 +164,7 @@ use File::Basename qw/fileparse/;
 use File::Spec;
 use File::Copy qw/copy move/;
 use Digest::SHA;
+use DateTime;
 
 use File::Slurp qw/read_file append_file write_file/;
 use File::MimeInfo::Magic qw/mimetype/;
@@ -428,7 +429,28 @@ sub edit {
     close $tmpfh or die $!;
     move($aux, $target) or die "Couldn't move $aux to $target";
     # finally move it to the target file
+
+    # and update
+    $self->status('editing');
+    $self->updated(DateTime->now);
+    $self->update;
 }
+
+=head2 commit_version($message);
+
+When this method is called, update the revision's status to "pending"
+and set the message.
+
+=cut
+
+sub commit_version {
+    my ($self, $message) = @_;
+    $message ||= "No message provided!";
+    $self->message($message);
+    $self->status('pending');
+    $self->update;
+}
+
 
 =head2 add_attachment($filename)
 
@@ -632,6 +654,8 @@ Procedure:
 
 =over 4
 
+=item check if the status is pending
+
 =item carefully move it in the target directory
 
 =item if in a git directory, add it to the git and commit
@@ -646,9 +670,10 @@ Procedure:
 
 sub publish_text {
     my ($self, $logger) = @_;
-    if ($self->published) {
+    unless ($self->pending) {
         if ($logger) {
-            $logger->("Revision " .  $self->id . " is already published");
+            $logger->("Revision " .  $self->id . " has status " . $self->status .
+                      ": can't proceed");
         }
         return;
     }

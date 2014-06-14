@@ -193,7 +193,7 @@ foreach my $k (keys %dests) {
 
 ok !$revision->pending, "Revision is not pending";
 ok $revision->editing, "Revision is under edit";
-
+$revision->commit_version;
 ok $revision->publish_text, "Text is published now";
 
 ok !$revision->publish_text, "Can't publish an already published revision";
