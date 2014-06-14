@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 47;
+use Test::More tests => 53;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -31,7 +31,7 @@ $git->remote(add => origin => '/tmp/blablabla.git');
 
 my $host = $site->vhosts->first->name;
 
-my $testdir = File::Temp->newdir(CLEANUP => 0);
+my $testdir = File::Temp->newdir(CLEANUP => 1);
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
@@ -57,6 +57,8 @@ $mech->click;
 
 $mech->content_contains('Created new text');
 $title =~ s/ /-/;
+
+my $editinglocation = $mech->response->base->path;
 
 like $mech->response->base->path, qr{^/action/text/edit/pippo-\Q$title\E}, "Location matches";
 
@@ -99,6 +101,20 @@ $mech->content_contains($success->{logs});
 ok $success->{produced};
 
 my $text = $success->{produced} or die "Can't continue without a text";
+
+$mech->get_ok($editinglocation);
+$mech->content_contains("This revision is already published, ignoring changes");
+
+$mech->form_id('museform');
+$mech->click('commit');
+$mech->content_contains("This revision is already published, ignoring changes");
+is ($mech->response->base->path, $editinglocation, "Can't go further");
+
+$mech->form_id('museform');
+$mech->click('preview');
+$mech->content_contains("This revision is already published, ignoring changes");
+is ($mech->response->base->path, $editinglocation, "Can't go further");
+
 
 $mech->get('/');
 $mech->content_contains($title);

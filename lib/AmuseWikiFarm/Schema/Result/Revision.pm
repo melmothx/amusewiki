@@ -646,7 +646,12 @@ Procedure:
 
 sub publish_text {
     my ($self, $logger) = @_;
-
+    if ($self->published) {
+        if ($logger) {
+            $logger->("Revision " .  $self->id . " is already published");
+        }
+        return;
+    }
     my %files = $self->destination_paths;
 
     # catch the muse files and its attachments, and validate it.

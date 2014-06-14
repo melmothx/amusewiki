@@ -234,7 +234,7 @@ here.
 
 sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $revision_id) = @_;
-    # avoid stash cluttering
+
     unless ($revision_id =~ m/^[0-9]+$/s) {
         $c->detach(attachments => [$revision_id]);
     }
@@ -268,6 +268,10 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
         $c->log->debug($revision->session_id . ' ne ' . $c->sessionid);
         $c->stash->{editing_warnings} =
           $c->loc("This revision is being edited by someone else!");
+    }
+    elsif ($revision->published) {
+        $c->stash->{editing_warnings} =
+          $c->loc("This revision is already published, ignoring changes");
     }
     # on submit, do the editing. Please note that we don't care about
     # the params. We save the body and pass that as preview. So if the

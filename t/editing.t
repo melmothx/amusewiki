@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 87;
+use Test::More tests => 89;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Slurp qw/read_file/;
@@ -194,7 +194,15 @@ foreach my $k (keys %dests) {
 ok !$revision->pending, "Revision is not pending";
 ok $revision->editing, "Revision is under edit";
 
-$revision->publish_text;
+ok $revision->publish_text, "Text is published now";
+
+ok !$revision->publish_text, "Can't publish an already published revision";
+
+
+
+
+
+
 
 %todo = (
          jpg => 'jpg',

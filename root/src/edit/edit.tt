@@ -110,6 +110,7 @@ $(document).ready(function() {
     <div>
       <textarea rows="20" cols="60" id="maintextarea"
                 class="form-control"
+                [% IF revision.published %]readonly="readonly"[% END %]
                 name="body">[%- revision.muse_body | html -%]</textarea>
     </div>
     <div class="checkbox">
