@@ -14,7 +14,8 @@ This need a Controller::API which can be used for other things as well.
 
 * DONE Revision deletion
   CLOSED: [2014-06-14 sab 17:15]
-* TODO Text purging
+* DONE Text purging
+  CLOSED: [2014-06-14 sab 18:43]
 * TODO Wrong jumping offset on js
 * TODO Handle redirections
 * TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
