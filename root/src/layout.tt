@@ -35,7 +35,14 @@
             src="[% c.uri_for('/static/js/bootstrap.min.js') %]">
     </script>
 
-    [%# markitup css -- maybe made it conditional %]
+    <!-- jquery-ui for the highlight effect everywhere and autocompletion
+         source in [% c.uri_for('/static/js/jquery-ui-1.10.4.custom.js') %] -->
+
+    <script type="text/javascript"
+            src="[% c.uri_for('/static/js/jquery-ui-1.10.4.custom.min.js') %]" >
+    </script>
+
+    [%# markitup css -- maybe make it conditional %]
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/js/markitup/skins/amw/style.css') %]" />
     <link rel="stylesheet" type="text/css"

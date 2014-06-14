@@ -26,8 +26,6 @@ var ckconfiguration = {
 };
 </script>
 
-<script src="[% c.uri_for('/static/js/jquery-ui-1.10.4.custom.min.js') %]" ></script>
-
 [% form_action %]
 
 <form id="ckform" method="post"
