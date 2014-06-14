@@ -272,7 +272,7 @@ var ckconfiguration = {
                     availableTerms = availableAuthors;
                 }
                 else if (target.match(/topic/)) {
-                    availableTerms = availableAuthors;
+                    availableTerms = availableTopics;
                 }
                 else {
                     availableTerms = [];
