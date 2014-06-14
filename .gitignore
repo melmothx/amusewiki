@@ -16,6 +16,7 @@ xapian/*
 dbic.yaml
 !t/dbic.yaml
 root/static/js/ckeditor*
+root/static/js/*.zip
 staging/*
 !staging/README.txt
 log/jobs/*.log
