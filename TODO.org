@@ -7,7 +7,8 @@ When done, refresh the .po
 
 * DONE Mail on commit
   CLOSED: [2014-06-11 mer 22:28]
-* TODO Autocompletion for authors and topics
+* DONE Autocompletion for authors and topics
+  CLOSED: [2014-06-14 sab 11:45]
 
 This need a Controller::API which can be used for other things as well.
 

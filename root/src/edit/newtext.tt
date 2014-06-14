@@ -239,21 +239,44 @@ var ckconfiguration = {
     $(document).ready(function() {
         var separator = /[;,]\s*/;
         var availableTerms = [];
+        var availableTopics = [];
+        var availableAuthors = [];
+
+        $.ajax({
+            url: "[% c.uri_for_action('/api/autocompletion', ['topic']) %]",
+            async: false,
+            dataType: 'json',
+            success: function(response) {
+                availableTopics = response;
+            }
+        });
+        $.ajax({
+            url: "[% c.uri_for_action('/api/autocompletion', ['author']) %]",
+            async: false,
+            dataType: 'json',
+            success: function(response) {
+                availableAuthors = response;
+            }
+        });
+
+
+
 	    $( ".amwautocomplete")
 	        .bind( "keydown", function( event ) {
 		        if ( event.keyCode === $.ui.keyCode.TAB &&
 		             $( this ).data( "ui-autocomplete" ).menu.active ) {
 		            event.preventDefault();
 		        }
-                availableTerms = [];
-                $.ajax({
-                    url: "[% c.uri_for('/api/autocompletion/') %]" + $(this).attr('name'),
-                    async: false,
-                    dataType: 'json',
-                    success: function(response) {
-                        availableTerms = response;
-                    }
-                });
+                var target = $(this).attr('name');
+                if (target.match(/author/)) {
+                    availableTerms = availableAuthors;
+                }
+                else if (target.match(/topic/)) {
+                    availableTerms = availableAuthors;
+                }
+                else {
+                    availableTerms = [];
+                }
 	        })
 	        .autocomplete({
 		        minLength: 0,
