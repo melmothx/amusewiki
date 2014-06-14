@@ -26,6 +26,7 @@ var ckconfiguration = {
 };
 </script>
 
+<script src="[% c.uri_for('/static/js/jquery-ui-1.10.4.custom.min.js') %]" ></script>
 
 [% form_action %]
 
@@ -70,7 +71,7 @@ var ckconfiguration = {
     <p>
       <label for="SORTauthors">[% c.loc('Authors') %]</label>
       ([% c.loc('for indexing') %], [% c.loc('comma or semicolon separated list') %]):
-      <input class="form-control" id="SORTauthors"
+      <input class="form-control amwautocomplete" id="SORTauthors"
 	     maxlength="250"
 	     name="SORTauthors"
 	     value="[% processed_params.SORTauthors | html %]" />
@@ -81,7 +82,7 @@ var ckconfiguration = {
       <label for="SORTtopics">[% c.loc('Topics') %]</label>:
       [% c.loc('comma or semicolon separated list') %]
       <br />
-      <input class="form-control" id="SORTtopics"
+      <input class="form-control amwautocomplete" id="SORTtopics"
 	     size="50"
 	     maxlength="250"
 	     name="SORTtopics"
@@ -232,4 +233,38 @@ var ckconfiguration = {
   $('#textbody').ckeditor(ckconfiguration);
   ckconfiguration.height = 100;
   $('#notes').ckeditor(ckconfiguration);
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var separator = /[;,]\s*/;
+        var availableTerms = [];
+	    $( ".amwautocomplete")
+	        .bind( "keydown", function( event ) {
+		        if ( event.keyCode === $.ui.keyCode.TAB &&
+		             $( this ).data( "ui-autocomplete" ).menu.active ) {
+		            event.preventDefault();
+		        }
+                console.log($(this).attr('name'));
+                availableTerms = [ "anarcardi", "bagigi" ];
+	        })
+	        .autocomplete({
+		        minLength: 0,
+		        source: function( request, response ) {
+		            // delegate back to autocomplete, but extract the last term
+		            response( $.ui.autocomplete.filter(
+			            availableTerms, request.term.split(separator).pop()));
+		        },
+		        focus: function() {
+		            return false;
+		        },
+		        select: function( event, ui ) {
+		            var terms = this.value.split(separator);
+		            terms.pop();
+		            terms.push( ui.item.value );
+		            this.value = terms.join( ", " );
+		            return false;
+		        }
+	        });
+    });
 </script>
