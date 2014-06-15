@@ -18,7 +18,8 @@
   [% FOREACH text IN text_list %]
   <tr>
     <td>
-      <a href="[% text.full_edit_uri %]">[% text.full_uri %]</a>
+      <a href="[% c.uri_for_action('/edit/revs', [text.f_class, text.uri]) %]">
+        [% text.full_uri %]</a>
     </td>
     <td>
       [% text.author %]

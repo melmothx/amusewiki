@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 11;
+use Test::More tests => 20;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -54,4 +54,33 @@ is $mech->response->base->path, '/login', "Denied access to not logged in";
 
 
 # TODO Where are the tests?
+
+# check the blog
+$mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => 'blog.amusewiki.org');
+
+$mech->get_ok('/console/unpublished');
+
+ok($mech->form_id('login-form'), "Found the login-form");
+
+$mech->set_fields(username => 'root',
+                  password => 'root');
+$mech->click;
+$mech->content_contains('You are logged in now!');
+
+$mech->content_contains('/library/deleted-text');
+
+$mech->content_contains(q{/action/text/edit/deleted-text"});
+
+ok($mech->follow_link( text_regex => qr/deleted-text$/),
+   "Following link to deleted-text");
+
+like $mech->uri->path, qr{action/text/edit/deleted-text/[0-9]+$},
+  "Got the editing";
+$mech->content_contains('Editing deleted-text');
+$mech->content_contains('#DELETED garbage');
+
+
+
+
 
