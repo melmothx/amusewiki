@@ -135,7 +135,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
     my ( $self, $c, $text ) = @_;
         my $bb   = $c->stash->{bb};
         my $site = $c->stash->{site};
-        my $referrer = $c->uri_for_action('/library/text' => $text);
+        my $referrer = $c->uri_for_action('/library/text', [$text]);
 
         # do we have the text in the db?
         my $to_add = $site->titles->by_uri($text);

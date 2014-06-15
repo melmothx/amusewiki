@@ -58,6 +58,8 @@ sub random_text {
 
 Find a published text by uri.
 
+TODO: this methos is misnamed, should be text_by_uri
+
 =cut
 
 sub by_uri {

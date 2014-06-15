@@ -57,7 +57,7 @@ sub index :Path :Args(0) {
             # to fool the scrapers, set the permalink for specials
             # adding a version with the timestamp of the file, so we
             # catch updates
-            $link = $c->uri_for_action('/special/display', [$text->uri],
+            $link = $c->uri_for_action('/library/special', [$text->uri],
                                        { v => $text->f_timestamp_epoch });
         }
 

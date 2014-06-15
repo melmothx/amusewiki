@@ -5,7 +5,7 @@
 <ol>
   [% FOREACH text IN texts %]
   <li>
-    <a href="[% baseurl %]/[% text.uri %]">[% text.title %]</a>
+    <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
     [% IF text.author %]
     — [% text.author %]
     [% END %]

@@ -3,7 +3,7 @@
 <ul class="list-group">
   [% FOREACH title IN category.published_titles %]
   <li class="list-group-item">
-    <a href="[% baseurl %]/[% title.uri %]">[% title.title %]</a>
+    <a href="[% c.uri_for(title.full_uri) %]">[% title.title %]</a>
     [% IF title.author %]
       [% IF category.name != title.author %]
       — [% title.author %]

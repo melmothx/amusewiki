@@ -25,11 +25,7 @@
     <tr>
       <td>
         <a href="[% c.uri_for_action('/edit/edit', [rev.f_class, rev.title.uri, rev.id]) %]">
-          [% IF rev.f_class == 'special' %]
-          /special/[% rev.title.uri %]
-          [% ELSE %]
-          /library/[% rev.title.uri %]
-          [% END %]
+          [% rev.title.full_uri %]
         </a>
       </td>
       <td>
@@ -48,12 +44,7 @@
 
         </form>
         [% ELSIF rev.published %]
-        [% IF rev.f_class == 'text' %]
-        [% SET pub_uri = c.uri_for_action('/library/text', [ rev.title.uri ]) %]
-        [% ELSIF rev.f_class == 'special' %]
-        [% SET pub_uri = c.uri_for_action('/special/display', [ rev.title.uri ]) %]
-        [% END %]
-        <a href="[% pub_uri %]">
+        <a href="[% c.uri_for(rev.title.full_uri) %]">
           [% c.loc(rev.status) %]
         </a>
         [% ELSIF rev.editing && !rev.editing_ongoing %]

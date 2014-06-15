@@ -24,22 +24,88 @@ sub auto :Private {
     $c->stash(please_index => 1);
 }
 
+=head2 root
 
-=head2 index
-
-List the titles.
+Empty base method to start the chain
 
 =cut
 
-sub index :Path :Args(0) {
-    my ( $self, $c ) = @_;
-    my @texts = $c->stash->{site}->titles->published_texts;
-    $c->stash(texts => \@texts,
-              baseurl => $c->uri_for_action('/library/index'),
-              template => 'library.tt',
-              page_title => $c->loc('Full list of texts'),
-              nav => 'titles');
+sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->log->debug('In library root');
 }
+
+=head2 Listing
+
+=over 4
+
+=item regular_list
+
+Mapping to /library
+
+=item regular_list_display
+
+Forward to C<template_listing>
+
+=item special_list
+
+Mapping to /special
+
+=item special_list_display
+
+Forward to C<template_listing>
+
+=item template_listing
+
+Render the library.tt template using the texts in the C<texts_rs>
+stash.
+
+=back
+
+=cut
+
+sub regular_list :Chained('root') :PathPart('library') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->log->debug('stashing f_class');
+    my $rs = $c->stash->{site}->titles->published_texts;
+    $c->stash(
+              f_class => 'text',
+              texts_rs => $rs,
+              page_title => $c->loc('Full list of texts'),
+              nav => 'titles',
+             );
+}
+
+sub special_list :Chained('root') :PathPart('special') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->log->debug('stashing f_class');
+    my $rs = $c->stash->{site}->titles->published_specials;
+    $c->stash(
+              f_class => 'special',
+              texts_rs => $rs,
+              page_title => $c->loc('Special pages'),
+             );
+}
+
+sub regular_list_display :Chained('regular_list') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->forward('template_listing');
+}
+
+sub special_list_display :Chained('special_list') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->forward('template_listing');
+}
+
+sub template_listing :Private {
+    my ($self, $c) = @_;
+    my $rs = delete $c->stash->{texts_rs};
+    $c->stash(texts => [ $rs->all ],
+              template => 'library.tt');
+}
+
+
+
 
 =head2 text
 
@@ -51,13 +117,54 @@ TODO: if behind proxy, try to use an acceleration method.
 
 =cut
 
-sub text :Path :Args(1) {
+sub special_match :Chained('special_list') PathPart('') :CaptureArgs(1) {
+    my ($self, $c, $uri) = @_;
+    $c->forward('text_matching', [ $uri ]);
+}
+
+sub regular_match :Chained('regular_list') PathPart('') :CaptureArgs(1) {
+    my ($self, $c, $uri) = @_;
+    $c->forward('text_matching', [ $uri ]);
+}
+
+
+sub special :Chained('special_match') PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->forward('text_serving');
+}
+
+sub text    :Chained('regular_match') PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->forward('text_serving');
+}
+
+sub special_edit :Chained('special_match') PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    $c->forward('redirect_to_edit');
+}
+
+sub regular_edit :Chained('regular_match') PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    $c->forward('redirect_to_edit');
+
+}
+
+sub redirect_to_edit :Private {
+    my ($self, $c) = @_;
+    my $text = $c->stash->{text};
+    $c->response->redirect($c->uri_for_action('/edit/revs', [$text->f_class,
+                                                             $text->uri]));
+}
+
+
+sub text_matching :Private {
     my ($self, $c, $arg) = @_;
-    # strip the extension
     my $name = $arg;
     my $ext = '';
     my $append_ext = '';
     my $site = $c->stash->{site};
+
+    # strip the extension
     if ($arg =~ m/(.+?) # name
                   \.   # dot
                   # and extensions we provide
@@ -80,7 +187,7 @@ sub text :Path :Args(1) {
         $ext  = $2;
     }
 
-    $c->log->debug("Ext is $ext");
+    $c->log->debug("Ext is $ext, name is $name");
 
     if ($ext) {
         $append_ext = '.' . $ext;
@@ -96,81 +203,61 @@ sub text :Path :Args(1) {
 
     # assert we are using canonical names.
     my $canonical = muse_naming_algo($name);
-    if ($canonical ne $name) {
-        my $location = $c->uri_for($c->action, $canonical . $append_ext);
-        $c->response->redirect($location, 301);
-        $c->detach();
-    }
+    $c->log->debug("canonical is $canonical");
 
-    # search the damned title.
-    my $text = $site->titles->by_uri($canonical);
-
-    if ($text) {
+    # find the title or the attachment
+    if (my $text = $c->stash->{texts_rs}->find({ uri => $canonical})) {
+        $c->stash(text => $text);
+        if ($canonical ne $name) {
+            my $location = $c->uri_for($text->full_uri);
+            $c->response->redirect($location, 301);
+            $c->detach();
+            return;
+        }
+        # static files are served here
         if ($ext) {
             $c->log->debug("Got $canonical $ext => " . $text->title);
             my $served_file = $text->filepath_for_ext($ext);
             if (-f $served_file) {
                 $c->serve_static_file($served_file);
+                $c->detach();
+                return;
             }
             else {
                 # this should not happen
                 $c->log->warn("File $served_file expected but not found!");
                 $c->detach('/not_found');
+                return;
             }
-        }
-        else {
-            $c->stash(
-                      template => 'text.tt',
-                      text => $text,
-                      page_title => $text->title,
-                      is_library_regular_title => 1,
-                     );
         }
     }
     elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
         $c->log->debug("Found attachment $canonical$append_ext");
+        if ($name ne $canonical) {
+            $c->log->warn("Using $canonical instead of $name, shouldn't happen");
+        }
         $c->serve_static_file($attach->f_full_path_name);
+        # close it here
+        $c->detach();
+        return;
     }
     else {
+        my @list = map { $_->uri } $c->stash->{texts_rs}->all;
+        use Data::Dumper;
+        $c->log->debug("Not found in " . Dumper(\@list));
         $c->detach('/not_found');
     }
 }
 
-=head2 text_edit
-
-Path: /library/<text>/edit
-
-Redirects to /edit/<text>
-
-=cut
-
-sub text_edit :Path :Args(2) {
-    my ($self, $c, $text, $action) = @_;
-    if ($action eq 'edit') {
-        $c->log->debug("$text => $action");
-        $c->response->redirect($c->uri_for_action('/edit/revs', [text => $text]));
-    }
-    else {
-        $c->detach('/not_found');
-    }
-}
-
-=head2 random
-
-Path: /random
-
-Get the a random text
-
-=cut
-
-sub random :Global :Args(0) {
+sub text_serving :Private {
     my ($self, $c) = @_;
-    if (my $text = $c->stash->{site}->titles->random_text) {
-        $c->response->redirect($c->uri_for_action('/library/text' => $text->uri));
-    }
-    else {
-        $c->detach('/not_found');
-    }
+    # search the damned title.
+    my $text = $c->stash->{text} or die "WTF?";
+    $c->stash(
+              template => 'text.tt',
+              text => $text,
+              page_title => $text->title,
+             );
 }
 
 

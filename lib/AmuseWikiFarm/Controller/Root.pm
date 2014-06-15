@@ -68,7 +68,7 @@ sub auto :Private {
     for my $sp (@specials) {
         my $uri = $sp->{uri};
         $sp->{special_uri} = $uri;
-        $sp->{uri} = $c->uri_for_action('special/display', [ $uri ]);
+        $sp->{uri} = $c->uri_for_action('/library/special', [ $uri ]);
         $sp->{active} = ($c->request->uri eq $sp->{uri});
     }
 
@@ -96,9 +96,28 @@ sub not_permitted :Global {
     return;
 }
 
+=head2 random
+
+Path: /random
+
+Get the a random text
+
+=cut
+
+sub random :Global :Args(0) {
+    my ($self, $c) = @_;
+    if (my $text = $c->stash->{site}->titles->random_text) {
+        $c->response->redirect($c->uri_for_action('/library/text', [$text->uri]));
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
+
+
 =head2 index
 
-The root page (/) points to /library/index
+The root page (/) points to /library/ if there is no special/index
 
 =cut
 
@@ -106,12 +125,14 @@ sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     # check if we have a special page named index
     my $nav = $c->stash->{navigation};
+    my $target;
     if (my $index = $c->stash->{site}->titles->special_by_uri('index')) {
-        $c->res->redirect($c->uri_for_action('/special/display', [ 'index' ]));
-        $c->detach();
-        return;
+        $target = $c->uri_for($index->full_uri);
     }
-    $c->detach('/library/index');
+    else {
+        $target = $c->uri_for_action('/library/regular_list_display');
+    }
+    $c->res->redirect($target);
 }
 
 =head2 default

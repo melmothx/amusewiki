@@ -63,7 +63,6 @@ sub topic :Path('/topics') :Args(1) {
 
 sub category_details :Private {
     my ( $self, $c, $type, $name ) = @_;
-    $c->stash(baseurl => $c->uri_for_action('/library/index'));
     my $cat = $c->stash->{site}->categories->by_type_and_uri($type, $name);
     # not found unless $cat;
     $c->detach('/not_found') unless $cat;

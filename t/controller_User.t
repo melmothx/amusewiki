@@ -60,7 +60,7 @@ is $mech->response->base->path, '/login', "Bounced to login page";
 
 $mech->get('/special/pippo/edit');
 
-is $mech->response->base->path, '/login', "Bounced to login";
+is $mech->status, '404';
 
 $mech->post('/login' => {
                          username => 'pallino'

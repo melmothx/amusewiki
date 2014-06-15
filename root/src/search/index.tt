@@ -12,7 +12,7 @@
 <ul class="list-group">
   [% FOREACH res IN results %]
   <li class="list-group-item clearfix">
-    <a href="[% text_uri_base %]/[% res.text.uri %]">[% res.text.title %]</a>
+    <a href="[% c.uri_for(res.text.full_uri) %]">[% res.text.title %]</a>
     — [% res.text.author %]
     ([% res.relevance %]% [% c.loc("relevant") %])
     <span class="badge">[% res.rank %]</span>
