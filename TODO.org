@@ -21,6 +21,10 @@ This need a Controller::API which can be used for other things as well.
 * TODO Handle redirections
 * TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
 
+* TODO Before creating a new revision, check if there is editing in progress
+
+I think this was present but got lost somehow
+
 * TODO Other languages on its own menu?
 * DONE Clear the log dir before starting a job
   CLOSED: [2014-06-09 lun 14:25]
