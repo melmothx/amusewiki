@@ -22,4 +22,6 @@ staging/*
 log/jobs/*.log
 *~
 *.db
+bootstrap-amw/bootstrap/*
+
 

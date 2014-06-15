@@ -27,8 +27,8 @@
     <script type="text/javascript"
             src="[% c.uri_for('/static/js/jquery-1.11.1.min.js') %]">
     </script>
-    <link rel="stylesheet" href="[% c.uri_for('/static/css/bootstrap.css') %]" />
-    <link rel="stylesheet" href="[% c.uri_for('/static/css/theme.css') %]" />
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/bootstrap.css', { v => 1 }) %]" />
 
     <!-- Latest compiled and minified JavaScript -->
     <script type="text/javascript"
@@ -54,10 +54,10 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 1 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 2 }) %]" />
 
     [%# here we should add a local js and a local css %]
-    <script src="[% c.uri_for('/static/js/amuse.js') %]"></script>
+    <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
   </head>
   <body>
     <!-- Fixed navbar -->
