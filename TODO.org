@@ -38,6 +38,7 @@ See tasks/dispaly.tt for an example
 
 * TODO Admin page for user and site creation
 
+* TODO After a wrong answer, and a good one, popup doesn't go away
 * Needed features
 ** simple to use
 ** simple to install
