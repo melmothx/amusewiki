@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More;
+use Test::More tests => 3;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -16,4 +16,5 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 ok($mech);
 
 $mech->get_ok( '/special/index' );
-done_testing();
+$mech->content_contains('Zu A Second test', "Found the latest entries");
+
