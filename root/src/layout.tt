@@ -49,10 +49,12 @@
           href="[% c.uri_for('/static/js/markitup/sets/muse/style.css') %]" />
 
     [%# base css for amuse texts %]
-    <link rel="stylesheet" href="[% c.uri_for('/static/css/amuse.css') %]" />
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/amuse.css') %]" />
 
     [%# our css for the web application %]
-    <link rel="stylesheet" href="[% c.uri_for('/static/css/amusewiki.css') %]" />
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 1 }) %]" />
 
     [%# here we should add a local js and a local css %]
     <script src="[% c.uri_for('/static/js/amuse.js') %]"></script>
