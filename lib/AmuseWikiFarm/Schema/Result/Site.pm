@@ -366,6 +366,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 redirections
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Redirection>
+
+=cut
+
+__PACKAGE__->has_many(
+  "redirections",
+  "AmuseWikiFarm::Schema::Result::Redirection",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 revisions
 
 Type: has_many
@@ -437,8 +452,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-14 11:54:54
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JOAnjV4TW6VE1UjFjMZwiA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-16 21:50:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WcoNBQjlQ62zw8BfmJgrjA
 
 =head2 other_sites
 
@@ -978,6 +993,19 @@ sub index_file {
     print "Inserting data for $file\n";
 
     my $title = $self->titles->update_or_create(\%insertion)->discard_changes;
+
+    # handle redirections
+    if (my $deletion_msg = $title->deleted) {
+        if ($deletion_msg =~ m/^\s*redirect\:?\s+([a-z0-9-]+)\s*$/i) {
+            my $target = $1;
+            warn "Setting redirection to $target\n";
+            $self->redirections->update_or_create(
+                                                  uri => $title->uri,
+                                                  type => $title->f_class,
+                                                  redirect => $target,
+                                                 );
+        }
+    }
 
     # pick the old categories.
     my @old_cats_ids;

@@ -163,6 +163,18 @@ CREATE TABLE title (
 );
 CREATE UNIQUE INDEX unique_text ON title (uri, f_class, site_id);
 
+CREATE TABLE redirection (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       uri VARCHAR(255) NOT NULL,
+       -- this is text, special, author, topic and eventual other
+       type VARCHAR(16) NOT NULL,
+       -- the redirection
+       redirect VARCHAR(255) NOT NULL,
+       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE UNIQUE INDEX unique_redirection ON redirection (uri, type, site_id);
+
 
 -- 'book_author' is a many-to-many join table between books & authors
 CREATE TABLE title_category (
