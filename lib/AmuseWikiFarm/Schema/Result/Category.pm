@@ -202,6 +202,23 @@ sub published_titles {
     return @titles;
 }
 
+sub full_uri {
+    my $self = shift;
+    my $type = $self->type;
+    my $uri  = $self->uri;
+    if ($type eq 'topic') {
+        return "/topics/$uri";
+    }
+    elsif ($type eq 'author') {
+        return "/authors/$uri";
+    }
+    elsif ($type eq 'category') {
+        return "/category/$uri";
+    }
+    else {
+        die "WTF?";
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

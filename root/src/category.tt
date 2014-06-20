@@ -10,10 +10,6 @@
     <ul>
 [%- SET inner_count = 0 -%]
 [%- FOREACH cat IN list -%]
-[%- # prevent displaying categories without members -%]
-[%-   SET count = cat.text_count -%]
-[%-   IF count -%]
-[%- # start of the column interpolation %]
 [%-     IF (inner_count && ((inner_count % 10) == 0)) -%]
 
     </ul>
@@ -30,10 +26,9 @@
 [%-   SET inner_count = inner_count + 1 -%]
 [%- # end of the column interpolation %]
       <li class="list-group-item clearfix">
-        <a href="[%- baseurl -%]/[%- cat.uri -%]">[%- cat.name -%]</a>
-        <span class="badge">[%- count -%]</span>
+        <a href="[%- c.uri_for(cat.full_uri) -%]">[%- cat.name -%]</a>
+        <span class="badge">[%- cat.text_count -%]</span>
       </li>
-[%-   END     -%]
 [%- END       -%]
 
     </ul>

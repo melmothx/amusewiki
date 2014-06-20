@@ -655,14 +655,15 @@ sub full_uri {
     elsif ($class eq 'text') {
         return '/library/' . $uri;
     }
+    else {
+        die "WTF";
+    }
 }
 
 sub full_edit_uri {
     my $self = shift;
     return $self->full_uri . '/edit';
 }
-
-
 
 
 __PACKAGE__->meta->make_immutable;

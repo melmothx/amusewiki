@@ -82,6 +82,7 @@ sub auto :Private {
 
 sub not_found :Global {
     my ($self, $c) = @_;
+    $c->stash(please_index => 0);
     $c->response->status(404);
     $c->log->debug("In the not_found!");
     $c->stash(error_msg => $c->loc("Page not found!"));

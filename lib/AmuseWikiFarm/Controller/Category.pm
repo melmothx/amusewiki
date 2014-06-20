@@ -37,53 +37,81 @@ sub auto :Private {
     $c->stash(please_index => 1);
 }
 
-sub authors :Global :Args(0) {
-    my ( $self, $c ) = @_;
-    $c->stash(page_title => $c->loc('Authors'));
-    $c->detach(category_listing => [ 'author' ]);
+
+sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
 }
 
-sub author :Path('/authors') :Args(1) {
-    my ( $self, $c, $arg ) = @_;
-
-    $c->detach(category_details => [ author => $arg ]);
+sub authors :Chained('root') :PathPart('authors') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->forward(category_list => [qw/author/]);
 }
 
-sub topics :Global :Args(0) {
-    my ( $self, $c ) = @_;
-    $c->stash(page_title => $c->loc('Topics'));
-    $c->detach(category_listing => [ 'topic' ]);
+sub topics :Chained('root') :PathPart('topics') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->forward(category_list => [qw/topic/]);
 }
 
-sub topic :Path('/topics') :Args(1) {
-    my ( $self, $c, $arg ) = @_;
-
-    $c->detach(category_details => [ topic => $arg ]);
-}
-
-sub category_details :Private {
-    my ( $self, $c, $type, $name ) = @_;
-    my $cat = $c->stash->{site}->categories->by_type_and_uri($type, $name);
-    # not found unless $cat;
-    $c->detach('/not_found') unless $cat;
+sub category_list :Private {
+    my ($self, $c, $type) = @_;
+    my $rs = $c->stash->{site}->categories->by_type($type)
+      ->search({
+                text_count => { '>' => 0 },
+               });
     $c->stash(
               nav => $type,
-              page_title => $cat->name,
-              template => 'category-details.tt',
-              category => $cat,
+              categories_rs => $rs,
+              f_class => $type,
              );
 }
 
-sub category_listing :Private {
-    my ( $self, $c, $type ) = @_;
-    my @list = $c->stash->{site}->categories->by_type($type);
-    $c->stash(
-              list => \@list,
-              nav  => $type,
-              template => 'category.tt',
-              baseurl => $c->uri_for_action("/category/$type"),
-             );
+sub authors_listing :Chained('authors') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(page_title => $c->loc('Authors'));
+    $c->forward('category_list_display');
 }
+
+sub topics_listing :Chained('topics') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(page_title => $c->loc('Topics'));
+    $c->forward('category_list_display');
+}
+
+sub category_list_display :Private {
+    my ($self, $c) = @_;
+    my @list = $c->stash->{categories_rs}->all;
+    $c->stash(list => \@list,
+              template => 'category.tt');
+}
+
+sub single_topic :Chained('topics') :PathPart('') :CaptureArgs(1) {
+    my ($self, $c, $uri) = @_;
+    $c->forward(single_category => [$uri]);
+}
+
+sub single_author :Chained('authors') :PathPart('') :CaptureArgs(1) {
+    my ($self, $c, $uri) = @_;
+    $c->forward(single_category => [$uri]);
+}
+
+sub single_category :Private {
+    my ($self, $c, $uri) = @_;
+    my $cat = $c->stash->{categories_rs}->find({ uri => $uri });
+    if ($cat) {
+        $c->stash(page_title => $cat->name,
+                  template => 'category-details.tt',
+                  category => $cat);
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
+
+
+sub single_topic_display :Chained('single_topic') :PathPart('') :Args(0) {}
+
+sub single_author_display :Chained('single_author') :PathPart('') :Args(0) {}
+
 
 
 =encoding utf8
