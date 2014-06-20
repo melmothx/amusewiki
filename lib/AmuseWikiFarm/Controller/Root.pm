@@ -85,6 +85,22 @@ sub not_found :Global {
     $c->stash(please_index => 0);
     $c->response->status(404);
     $c->log->debug("In the not_found!");
+
+
+    # last chance: look into the redirections if we have a type and an uri,
+    # set in C::Library or C::Category
+    if (my $f_class = $c->stash->{f_class}) {
+        if (my $uri = $c->stash->{uri}) {
+            if (my $red = $c->stash->{site}->redirections->find({
+                                                                 type => $f_class,
+                                                                 uri => $uri
+                                                                })) {
+                $c->response->redirect($c->uri_for($red->full_uri));
+                $c->detach();
+                return;
+            }
+        }
+    }
     $c->stash(error_msg => $c->loc("Page not found!"));
     $c->stash(template => "error.tt");
 }

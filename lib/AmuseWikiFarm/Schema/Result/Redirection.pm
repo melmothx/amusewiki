@@ -143,5 +143,19 @@ special page nor a topic nor a title.
 
 =cut
 
+sub full_uri {
+    my $self = shift;
+    my %map = (
+               text => 'library',
+               topic => 'topics',
+               author => 'authors',
+               special => 'specials',
+              );
+    my $prefix = $map{$self->type};
+    die "Unhandle type " . $self->type unless $prefix;
+    return "/$prefix/" . $self->redirect;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

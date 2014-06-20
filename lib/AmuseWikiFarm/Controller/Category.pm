@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Category - Catalyst Controller
@@ -96,13 +98,20 @@ sub single_author :Chained('authors') :PathPart('') :CaptureArgs(1) {
 
 sub single_category :Private {
     my ($self, $c, $uri) = @_;
+    my $canonical = muse_naming_algo($uri);
     my $cat = $c->stash->{categories_rs}->find({ uri => $uri });
     if ($cat) {
+        if ($cat->uri ne $uri) {
+            $c->response->redirect($c->uri_for($cat->full_uri));
+            $c->detach();
+            return;
+        }
         $c->stash(page_title => $cat->name,
                   template => 'category-details.tt',
                   category => $cat);
     }
     else {
+        $c->stash(uri => $canonical);
         $c->detach('/not_found');
     }
 }

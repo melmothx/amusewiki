@@ -243,9 +243,7 @@ sub text_matching :Private {
         return;
     }
     else {
-        my @list = map { $_->uri } $c->stash->{texts_rs}->all;
-        use Data::Dumper;
-        $c->log->debug("Not found in " . Dumper(\@list));
+        $c->stash(uri => $canonical);
         $c->detach('/not_found');
     }
 }
