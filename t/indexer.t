@@ -77,18 +77,34 @@ ok (-f $testfile);
 
 my $info = muse_file_info($testfile, $reporoot);
 
+# title Test
+# SORTauthors Émile, Èmile
+# SORTtopics ècole, École-
+# pubdate 2014-01-01 00:00
+
+
 my $expected = {
                 'f_name' => 'another-test',
                 'uri' => 'another-test',
                 'list_title' => 'Test',
                 'parsed_categories' => [
                                         {
-                                         'name' => "\x{e8}cole",
+                                         'name' => "ècole",
                                          'type' => 'topic',
                                          'uri' => 'ecole'
                                         },
                                         {
-                                         'name' => "\x{c9}mile",
+                                         'name' => "École-",
+                                         'type' => 'topic',
+                                         'uri' => 'ecole'
+                                        },
+                                        {
+                                         'name' => "Émile",
+                                         'type' => 'author',
+                                         'uri' => 'emile'
+                                        },
+                                        {
+                                         'name' => "Èmile",
                                          'type' => 'author',
                                          'uri' => 'emile'
                                         },
@@ -117,7 +133,7 @@ my $pubdate = delete $info->{pubdate};
 ok($pubdate, "Found publication date");
 is(str2time($pubdate->iso8601, 'UTC'), str2time('2014-01-01 00:00', 'UTC'));
 
-is_deeply $info, $expected, "Info returned correctly";
+is_deeply $info, $expected, "Info returned correctly" or warn Dumper($info);
 
 
 $testfile = catfile(qw/t repotest a at another-test-1.muse/);

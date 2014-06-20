@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 9;
+use Test::More tests => 13;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Slurp qw/write_file read_file/;
@@ -59,6 +59,8 @@ ok( !@texts, "No published texts so far");
 
 my $good = <<'MUSE';
 #title a test $count
+#SORTauthors PLUTO, pluto, pluto-2, pluto-3
+#SORTtopics TOPIC-1, topic-1, topic-2, topic-3
 
 Good
 
@@ -76,5 +78,46 @@ ok($published, "Found the published text");
 
 like $published->html_body, qr/Good/;
 
+my @cats = $published->categories;
+
+is(scalar(@cats), 6, "Found 6 categories");
+
+
+# define aliases
+
+foreach my $uri (qw/pluto-2 pluto-3/) {
+    $site->redirections->update_or_create({
+                                           uri => $uri,
+                                           type => 'author',
+                                           redirect => 'pluto',
+                                          });
+}
+foreach my $uri (qw/topic-2 topic-3/) {
+    $site->redirections->update_or_create({
+                                           uri => $uri,
+                                           type => 'topic',
+                                           redirect => 'topic-1',
+                                          });
+}
+
+# reindex
+
+$site->compile_and_index_files([catfile($repo_root, qw/a at a-test-pippo.muse/)]);
+
+$published->discard_changes;
+
+@cats = $published->categories->search({ text_count => { '>' => 0 } });
+
+# foreach my $c (@cats) {
+#     print "Found ", $c->uri, "\n";
+# }
+
+is(scalar(@cats), 2, "Found 2 categories");
+
+my ($author) = $published->authors;
+my ($topic)  = $published->topics;
+
+is ($topic->uri, 'topic-1');
+is ($author->uri, 'pluto');
 
 

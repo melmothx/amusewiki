@@ -982,9 +982,43 @@ sub index_file {
     # infer the site_id from there (even if it should, but hey).
     my @parsed_cats;
     if (my $cats_from_title = delete $details->{parsed_categories}) {
+        my %cat_hash;
         foreach my $cat (@$cats_from_title) {
+            # help dbic to cope with this
             $cat->{site_id} = $self->id;
-            push @parsed_cats, $cat;
+            # check if there is an alias
+            if (my $alias = $self->redirections->find({
+                                                       uri => $cat->{uri},
+                                                       type => $cat->{type},
+                                                      })) {
+
+                # check if the alias points to something
+                if (my $acat = $self->categories->find({
+                                                        uri => $alias->redirect,
+                                                        type => $alias->type,
+                                                       })) {
+                    # insert that instead
+                    warn "Alias for $cat->{name} found, using " . $acat->name .
+                      " instead\n";
+                    foreach my $m (qw/name uri type/) {
+                        $cat->{$m} = $acat->$m;
+                    }
+                }
+                else {
+                    warn sprintf("Alias %s defined, but no %s found in %s\n",
+                                 $alias->uri, $alias->redirect, $alias->type);
+                }
+            }
+            # here we have to check duplicated categories after the
+            # aliasing, which would trigger an exception.
+            my $cat_hashed = $cat->{type} . '/' . $cat->{uri};
+            if ($cat_hash{$cat_hashed}) {
+                warn "Duplicated $cat_hashed\n";
+            }
+            else {
+                $cat_hash{$cat_hashed} = 1;
+                push @parsed_cats, $cat;
+            }
         }
     }
     if (%$details) {
