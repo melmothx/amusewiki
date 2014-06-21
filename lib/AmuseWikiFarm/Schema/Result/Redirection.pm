@@ -193,6 +193,16 @@ sub can_safe_delete {
     }
 }
 
+sub is_a_text {
+    my $self = shift;
+    if ($self->target_table eq 'title') {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
 sub linked_texts {
     my $self = shift;
     my $type = $self->type;

@@ -1043,6 +1043,14 @@ sub index_file {
                                                  );
         }
     }
+    elsif (my $redir = $self->redirections->find({
+                                                  uri => $title->uri,
+                                                  type => $title->f_class,
+                                                 })) {
+        warn "Removing existing redirection to "
+          . $redir->full_dest_uri . "\n";
+        $redir->delete;
+    }
 
     # pick the old categories.
     my @old_cats_ids;
