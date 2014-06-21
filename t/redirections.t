@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 31;
+use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Slurp qw/write_file read_file/;
@@ -161,3 +161,10 @@ foreach my $alias (@author_aliases) {
     $mech->get_ok("/authors/$alias");
     is $mech->uri->path, $uri, "/authors/$alias points to $uri";
 }
+
+$alias = $site->redirections->find({ uri => 'pluto-2', type => 'author' });
+
+my @linked = $alias->linked_texts;
+is (scalar(@linked), 1, "Found one text");
+ok ($alias->can_safe_delete, "Alias can be deleted safely");
+

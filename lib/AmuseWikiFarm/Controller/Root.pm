@@ -95,7 +95,7 @@ sub not_found :Global {
                                                                  type => $f_class,
                                                                  uri => $uri
                                                                 })) {
-                $c->response->redirect($c->uri_for($red->full_uri));
+                $c->response->redirect($c->uri_for($red->full_dest_uri));
                 $c->detach();
                 return;
             }

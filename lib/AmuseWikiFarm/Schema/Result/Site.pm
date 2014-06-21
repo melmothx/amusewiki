@@ -904,8 +904,11 @@ sub compile_and_index_files {
     }
     foreach my $f (@$files) {
         my $file;
+        if (ref($f)) {
+            $file = $f->f_full_path_name;
+        }
         # check if it's in place
-        if (-f $f) {
+        elsif (-f $f) {
             $file = File::Spec->rel2abs($f);
         }
         else {

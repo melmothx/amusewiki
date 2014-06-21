@@ -145,6 +145,46 @@ sub purge :Chained('unpublished_list') :PathPart('purge') :Args(0) {
     $c->response->redirect($c->uri_for_action('/console/unpublished'));
 }
 
+=head2 alias
+
+List the exiting redirections and stash the resultset as C<aliases>.
+
+=cut
+
+sub alias :Chained('root') :PathPart('alias') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $rs = $c->stash->{site}->redirections;
+    $c->stash(aliases => $rs);
+}
+
+=head2 alias_list
+
+Display the aliases
+
+=cut
+
+sub alias_display :Chained('alias') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(page_title => $c->loc('Redirections'),
+              redirections => [ $c->stash->{aliases}->all ],
+             );
+}
+
+sub alias_delete :Chained('alias') :PathPart('delete') :Args(0) {
+    my ($self, $c) = @_;
+    if (my $id = $c->request->params->{delete}) {
+        if (my $alias = $c->stash->{aliases}->find($id)) {
+            $c->flash(status_msg => "Deletion for $id set");
+            my $job = $c->stash->{site}->jobs->alias_delete_add({ id => $id });
+            $c->res->redirect($c->uri_for_action('/tasks/display',
+                                                 [$job->id]));
+            return;
+        }
+    }
+    $c->flash(error_msg => "No such alias");
+    $c->response->redirect($c->uri_for_action('/console/alias_display'));
+}
+
 =head1 AUTHOR
 
 Marco,,,

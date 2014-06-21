@@ -143,19 +143,83 @@ special page nor a topic nor a title.
 
 =cut
 
-sub full_uri {
+sub url_map {
+    return 
+}
+
+sub uri_prefix {
     my $self = shift;
-    my %map = (
-               text => 'library',
-               topic => 'topics',
-               author => 'authors',
-               special => 'specials',
-              );
-    my $prefix = $map{$self->type};
+    my $uri_map = {
+                   text => 'library',
+                   topic => 'topics',
+                   author => 'authors',
+                   special => 'specials',
+                  };
+    my $prefix = $uri_map->{$self->type};
     die "Unhandle type " . $self->type unless $prefix;
-    return "/$prefix/" . $self->redirect;
+    return $prefix;
+}
+
+
+sub full_dest_uri {
+    my $self = shift;
+    return '/' . $self->uri_prefix . '/' . $self->redirect;
+}
+
+sub full_src_uri {
+    my $self = shift;
+    return '/' . $self->uri_prefix . '/' . $self->uri;
+}
+
+sub target_table {
+    my $self = shift;
+    my $type = $self->type;
+    if ($type eq 'topic' or $type eq 'author' or $type eq 'category') {
+        return 'category';
+    }
+    else {
+        return 'title';
+    }
+}
+
+
+sub can_safe_delete {
+    my $self = shift;
+    if ($self->target_table eq 'category') {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
+sub linked_texts {
+    my $self = shift;
+    my $type = $self->type;
+    my $uri = $self->redirect;
+    my $target = $self->target_table;
+    if ($target eq 'category') {
+        my $cat = $self->site->categories->find({
+                                                 type => $type,
+                                                 uri => $uri,
+                                                });
+        if ($cat) {
+            return $cat->titles;
+        }
+    }
+    elsif ($target eq 'title') {
+        my $title = $self->site->titles->find({
+                                               f_class => $type,
+                                               uri => $uri,
+                                              });
+        if ($title) {
+            return $title;
+        }
+    }
+    return;
 }
 
 
 __PACKAGE__->meta->make_immutable;
+
 1;

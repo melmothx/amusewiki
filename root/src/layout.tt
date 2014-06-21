@@ -189,6 +189,11 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/console/alias_display') %]">
+                    [% c.loc('Redirections') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for('/logout') %]">
                     [% c.loc('Logout') %]
                   </a>

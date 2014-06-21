@@ -422,6 +422,25 @@ sub dispatch_job_git {
     return '/';
 }
 
+sub dispatch_job_alias_delete {
+    my ($self, $logger) = @_;
+    my $data = $self->job_data;
+    my $site = $self->site;
+    if (my $alias = $site->redirections->find($data->{id})) {
+        die $alias->full_src_uri . " can't be deleted by us\n"
+          unless $alias->can_safe_delete;
+        if (my @texts = $alias->linked_texts) {
+            $site->compile_and_index_files(\@texts);
+            $alias->delete;
+        }
+        else {
+            warn "No texts found for " . $alias->full_dest_uri . "\n";
+        }
+    }
+    return '/console/alias';
+}
+
+
 sub dispatch_job_bookbuilder {
     my ($self, $logger) = @_;
     my $data = $self->job_data;

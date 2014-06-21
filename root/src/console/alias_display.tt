@@ -1,0 +1,67 @@
+[%# -*- mode: html -*- %]
+
+<h2>[% c.loc('Redirections') %]</h2>
+
+<p>
+  [% c.loc('Text redirections are set in the text itself, using the
+  DELETED header with this syntax') %]:
+</p>
+
+<pre>
+#title My title 
+#DELETED redirect: other-uri-to-redirect-to
+
+Text...
+</pre>
+
+<p>
+  [% c.loc('Such an header will unpublish the text and put a
+  redirection in place, and will be listed here') %].
+</p>
+
+<p>
+  [% c.loc('For topics and authors redirections, you can create them
+  here') %].
+</p>
+
+
+<table class="table table-striped">
+  <tr>
+    <th>
+      [% c.loc('URI')  %]
+    </th>
+    <th>
+      [% c.loc('Destination') %]
+    </th>
+    <th>
+      [% c.loc('Delete') %]
+    </th>
+  </tr>
+  [% FOREACH alias IN redirections %]
+  <tr>
+    <td>
+      <a href="[% c.uri_for(alias.full_src_uri) %]">
+        [% alias.full_src_uri %]
+      </a>
+    </td>
+    <td>
+      <a href="[% c.uri_for(alias.full_dest_uri) %]">
+        [% alias.full_dest_uri %]
+      </a>
+    </td>
+    <td>
+      [% IF alias.can_safe_delete %]
+      <form id="alias-delete-[% alias.id %]"
+            method="POST"
+            action="[% c.uri_for_action('/console/alias_delete') %]"
+            onsubmit="return confirm('[% c.loc('Are you sure?') %]');">
+        <input type="hidden" name="delete" value="[% alias.id %]" />
+        <button type="submit" class="btn btn-danger">
+          [% c.loc('Delete') %]
+        </button>
+      </form>
+      [% END %]
+    </td>
+  </tr>
+  [% END %]
+</table>
