@@ -38,7 +38,8 @@ $payload must be an hashref.
 =cut
 
 sub _handled_jobs {
-    return qw/testing publish git bookbuilder purge alias_delete/;
+    return qw/testing publish git bookbuilder purge
+              alias_delete alias_create/;
 }
 
 sub handled_jobs_hashref {
@@ -105,6 +106,11 @@ sub purge_add {
 sub alias_delete_add {
     my ($self, $payload) = @_;
     return $self->enqueue(alias_delete => $payload);
+}
+
+sub alias_create_add {
+    my ($self, $payload) = @_;
+    return $self->enqueue(alias_create => $payload);
 }
 
 =head2 dequeue

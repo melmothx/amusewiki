@@ -153,7 +153,11 @@ List the exiting redirections and stash the resultset as C<aliases>.
 
 sub alias :Chained('root') :PathPart('alias') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    my $rs = $c->stash->{site}->redirections;
+    my $rs = $c->stash->{site}->redirections->search({},
+                                                     {
+                                                      order_by => [qw/type
+                                                                      uri/],
+                                                     });
     $c->stash(aliases => $rs);
 }
 
@@ -165,8 +169,11 @@ Display the aliases
 
 sub alias_display :Chained('alias') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(page_title => $c->loc('Redirections'),
+    $c->stash(
+              page_title => $c->loc('Redirections'),
               redirections => [ $c->stash->{aliases}->all ],
+              author_list  => [ $c->stash->{site}->my_authors ],
+              topic_list   => [ $c->stash->{site}->my_topics  ],
              );
 }
 
@@ -184,6 +191,38 @@ sub alias_delete :Chained('alias') :PathPart('delete') :Args(0) {
     $c->flash(error_msg => "No such alias");
     $c->response->redirect($c->uri_for_action('/console/alias_display'));
 }
+
+sub alias_create :Chained('alias') :PathPart('create') :Args(0) {
+    my ($self, $c) = @_;
+    my $params = $c->request->params;
+    if (!$params->{src}) {
+        $c->flash(error_msg => $c->loc("Missing alias"));
+    }
+    elsif (!$params->{dest}) {
+        $c->flash(error_msg => $c->loc("Missing redirection"));
+    }
+    elsif ($params->{dest} eq $params->{src}) {
+        $c->flash(error_msg => $c->loc("Alias can't be the same of redirection"));
+    }
+    elsif (($params->{type} eq 'author' or $params->{type} eq 'topic') and
+        $params->{src} and $params->{dest} and
+        $params->{src} ne $params->{dest}) {
+        my $payload = {
+                       src => $params->{src},
+                       dest => $params->{dest},
+                       type => $params->{type}
+                      };
+        my $job = $c->stash->{site}->jobs->alias_create_add($payload);
+        $c->res->redirect($c->uri_for_action('/tasks/display',
+                                             [$job->id]));
+        return;
+    }
+    else {
+        $c->flash(error_msg => $c->loc("Bad request"));
+    }
+    $c->response->redirect($c->uri_for_action('/console/alias_display'));
+}
+
 
 =head1 AUTHOR
 

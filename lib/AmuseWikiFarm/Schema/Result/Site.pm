@@ -1445,13 +1445,14 @@ value. Also, the sanity of the username is checked.
 
 Returns the User object.
 
-If the optional $role is passed, the role will be assigned.
+If the optional $role is passed, the role will be assigned, defaulting
+to librarian if not passed.
 
 =cut
 
 sub update_or_create_user {
     my ($self, $details, $role) = @_;
-
+    $role ||= 'librarian';
     # first, search our users
 
     my $username;
@@ -1488,6 +1489,16 @@ sub update_or_create_user {
         $user->add_to_roles({ role => $role });
     }
     return $user;
+}
+
+sub my_topics {
+    my $self = shift;
+    return $self->categories->by_type('topic');
+}
+
+sub my_authors {
+    my $self = shift;
+    return $self->categories->by_type('author');
 }
 
 __PACKAGE__->meta->make_immutable;

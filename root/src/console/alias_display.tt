@@ -24,6 +24,72 @@ Text...
   here') %].
 </p>
 
+<h3>[% c.loc('Create an author alias') %]</h3>
+
+<form id="alias-create-author"
+      action="[% c.uri_for_action('/console/alias_create') %]"
+      class="form-inline" role="form"
+      method="POST">
+  <div class="form-group">
+    <input type="hidden" name="type" value="author" />
+    <label for="author-src">[% c.loc('Alias') %]</label>
+    <select class="form-control" name="src" id="author-src">
+      <option value="">[% c.loc('Please select') %]</option>
+      [% FOREACH cat IN author_list %]
+      <option value="[% cat.uri %]">[% cat.name %]</option>
+      [% END %]
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="author-dest">[% c.loc('Pointing to') %]</label>
+    <select class="form-control" name="dest" id="author-dest">
+      <option value="">[% c.loc('Please select') %]</option>
+      [% FOREACH cat IN author_list %]
+      <option value="[% cat.uri %]">[% cat.name %]</option>
+      [% END %]
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">
+      [% c.loc('Create') %]
+    </button>
+  </div>
+</form>
+
+<h3>[% c.loc('Create a topic alias') %]</h3>
+
+<form id="alias-create-topic"
+      action="[% c.uri_for_action('/console/alias_create') %]"
+      class="form-inline" role="form"
+      method="POST">
+  <div class="form-group">
+    <input type="hidden" name="type" value="topic" />
+    <label for="topic-src">[% c.loc('Alias') %]</label>
+    <select class="form-control" name="src" id="topic-src">
+      <option value="">[% c.loc('Please select') %]</option>
+      [% FOREACH cat IN topic_list %]
+      <option value="[% cat.uri %]">[% cat.name %]</option>
+      [% END %]
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="topic-dest">[% c.loc('Pointing to') %]</label>
+    <select class="form-control" name="dest" id="topic-dest">
+      <option value="">[% c.loc('Please select') %]</option>
+      [% FOREACH cat IN topic_list %]
+      <option value="[% cat.uri %]">[% cat.name %]</option>
+      [% END %]
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">
+      [% c.loc('Create') %]
+    </button>
+  </div>
+</form>
+
+<h3>[% c.loc('Existing redirections') %]</h3>
+
 
 <table class="table table-striped">
   <tr>
@@ -73,3 +139,4 @@ Text...
   </tr>
   [% END %]
 </table>
+

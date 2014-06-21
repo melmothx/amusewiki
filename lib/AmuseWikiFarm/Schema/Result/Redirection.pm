@@ -182,15 +182,8 @@ sub target_table {
     }
 }
 
-
 sub can_safe_delete {
-    my $self = shift;
-    if ($self->target_table eq 'category') {
-        return 1;
-    }
-    else {
-        return;
-    }
+    return shift->is_a_category;
 }
 
 sub is_a_text {
@@ -203,28 +196,43 @@ sub is_a_text {
     }
 }
 
+sub is_a_category {
+    my $self = shift;
+    if ($self->target_table eq 'category') {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
+sub linked_category {
+    my $self = shift;
+    my $cat = $self->site->categories->find({
+                                             type => $self->type,
+                                             uri => $self->uri,
+                                            });
+    $cat ? return $cat : return;
+}
+
 sub linked_texts {
     my $self = shift;
-    my $type = $self->type;
-    my $uri = $self->redirect;
-    my $target = $self->target_table;
-    if ($target eq 'category') {
-        my $cat = $self->site->categories->find({
-                                                 type => $type,
-                                                 uri => $uri,
-                                                });
-        if ($cat) {
+    if ($self->is_a_category) {
+        if (my $cat = $self->linked_category) {
             return $cat->titles;
         }
     }
-    elsif ($target eq 'title') {
+    elsif ($self->is_a_text) {
         my $title = $self->site->titles->find({
-                                               f_class => $type,
-                                               uri => $uri,
+                                               f_class => $self->type,
+                                               uri => $self->uri,
                                               });
         if ($title) {
             return $title;
         }
+    }
+    else {
+        die "WTF? " . join(" ", $self->type, $self->uri, $self->redirect) . "\n";
     }
     return;
 }

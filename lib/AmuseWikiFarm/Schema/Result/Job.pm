@@ -422,6 +422,34 @@ sub dispatch_job_git {
     return '/';
 }
 
+sub dispatch_job_alias_create {
+    my ($self, $logger) = @_;
+    my $data = $self->job_data;
+    my $site = $self->site;
+    my $alias = $site->redirections->update_or_create({
+                                                       uri => $data->{src},
+                                                       type => $data->{type},
+                                                       redirect => $data->{dest},
+                                                      });
+    unless ($alias->is_a_category) {
+        $alias->delete;
+        die "Direct creation possible only for categories\n";
+    }
+    $logger->("Created alias " . $alias->full_src_uri .
+              " pointing to " . $alias->full_dest_uri . "\n");
+    if (my @texts = $alias->linked_texts) {
+        if (my $cat = $alias->linked_category) {
+            $logger->("Deleting " . $cat->full_uri . "\n");
+            $cat->delete;
+        }
+        $site->compile_and_index_files(\@texts, $logger);
+    }
+    else {
+        $logger->("No texts found for " . $alias->full_dest_uri . "\n");
+    }
+    return '/console/alias';
+}
+
 sub dispatch_job_alias_delete {
     my ($self, $logger) = @_;
     my $data = $self->job_data;
@@ -429,12 +457,13 @@ sub dispatch_job_alias_delete {
     if (my $alias = $site->redirections->find($data->{id})) {
         die $alias->full_src_uri . " can't be deleted by us\n"
           unless $alias->can_safe_delete;
-        if (my @texts = $alias->linked_texts) {
-            $alias->delete;
-            $site->compile_and_index_files(\@texts);
+        my @texts = $alias->linked_texts;
+        $alias->delete;
+        if (@texts) {
+            $site->compile_and_index_files(\@texts, $logger);
         }
         else {
-            warn "No texts found for " . $alias->full_dest_uri . "\n";
+            $logger->("No texts found for " . $alias->full_dest_uri . "\n");
         }
     }
     return '/console/alias';
