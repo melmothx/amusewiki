@@ -44,6 +44,8 @@ install in the session the key C<i_am_human>.
 
 =cut
 
+use Email::Valid;
+
 sub login :Path('/login') :Args(0) {
     my ( $self, $c ) = @_;
     if ($c->user_exists) {
@@ -126,6 +128,79 @@ sub human :Path('/human') :Args(0) {
         }
     }
 }
+
+sub create :Local :Args(0) {
+    my ($self, $c) = @_;
+    # start validating
+    my %params = %{ $c->request->params };
+    if ($params{create}) {
+        # check if all the fields are in place
+        my %insertion;
+        $c->log->debug("Validating");
+        my $missing = 0;
+        foreach my $f (qw/username password passwordrepeat
+                          email emailrepeat/) {
+            $missing++ unless $params{$f};
+        }
+        if ($missing) {
+            $c->flash(error_msg => $c->loc('Some fields are missing, all are required'));
+            return;
+        }
+
+        # check username
+        if ($params{username} =~ m/^([0-9a-z]+)$/) {
+            $insertion{username} = $1;
+        }
+        else {
+            $c->flash(error_msg => $c->loc('Invalid username'));
+            return;
+        }
+
+        # check mail
+        if (my $mail = Email::Valid->address($params{email})) {
+            $insertion{email} = $mail;
+        }
+        else {
+            $c->flash(error_msg => $c->loc('Invalid mail'));
+            return;
+        }
+
+        # check password
+        if (length($params{password}) > 7) {
+            $insertion{password} = $params{password};
+        }
+        else {
+            $c->flash(error_msg => $c->loc('Password too short'));
+            return;
+        }
+
+        if ($insertion{password} ne $params{passwordrepeat}) {
+            $c->flash(error_msg => $c->loc('Passwords do not match'));
+            return;
+        }
+
+        if ($insertion{email} ne $params{emailrepeat}) {
+            $c->flash(error_msg => $c->loc('Emails do not match'));
+            return;
+        }
+        my $users = $c->model('DB::User');
+        # at this point we should be good, if the user doesn't exist
+        if ($users->find({ username => $insertion{username} })) {
+            $c->flash(error_msg => $c->loc('Such username already exists'));
+            return;
+        }
+        my $user = $users->create(\%insertion);
+        $user->add_to_roles({ role => 'librarian' });
+        $c->stash->{site}->add_to_users($user);
+        $c->flash(status_msg => $c->loc("User [_1] created!", $user->username));
+        $c->response->redirect($c->uri_for('/'));
+    }
+}
+
+sub edit :Local :Args(0) {
+    my ($self, $c) = @_;
+}
+
 
 =head1 AUTHOR
 

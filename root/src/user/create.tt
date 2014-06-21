@@ -1,0 +1,54 @@
+[%# -*- mode:html -*- %]
+
+<h2>[% c.loc('Create a new librarian') %]</h2>
+
+<p>
+  [% c.loc('The user will have the same your level of access') %]
+</p>
+
+<form id="create-user" method="post">
+  <div class="form-group">
+    <p>
+      <label for="username">
+        [% c.loc('Username, alphanumerical only, no special characters, no uppercase') %]
+      </label>
+      <input class="form-control" type="text" name="username"
+             id="username" value="[% c.req.params.username | html %]" />
+    </p>
+    <p>
+      <label for="password">
+        <a href="http://xkcd.com/936/" target="_blank">
+          [% c.loc('Password, minimum 8 characters') %]
+        </a>
+      </label>
+      <input class="form-control" type="password" name="password"
+             id="password" value="" />
+    </p>
+    <p>
+      <label for="passwordrepeat">
+        [% c.loc('Repeat password') %]
+      </label>
+      <input class="form-control" type="password" name="passwordrepeat"
+             id="passwordrepeat" value="" />
+    </p>
+    <p>
+      <label for="email">
+        [% c.loc('Email') %]
+      </label>
+      [% c.loc('The password will be mailed at this address') %]
+      <input class="form-control" type="text" name="email"
+             id="email" value="[% c.req.params.email | html %]" />
+    </p>
+    <p>
+      <label for="email">
+        [% c.loc('Repeat email') %]
+      </label>
+      [% c.loc('So we can be sure we are not mailing passwords to random people') %]
+      <input class="form-control" type="text" name="emailrepeat"
+             id="emailrepeat" value="" />
+    </p>
+    <button type="submit" class="btn btn-default" name="create" value="create">
+      [% c.loc('Create user and mail password') %]
+    </button>
+  </div>
+</form>
