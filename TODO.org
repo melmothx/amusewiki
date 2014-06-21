@@ -20,7 +20,8 @@ This need a Controller::API which can be used for other things as well.
   CLOSED: [2014-06-14 sab 22:55]
 * DONE Handle redirections
   CLOSED: [2014-06-21 sab 11:50]
-* TODO Before creating a new revision, check if there is editing in progress
+* DONE Before creating a new revision, check if there is editing in progress
+  CLOSED: [2014-06-21 sab 17:04]
 
 I think this was present but got lost somehow
 
