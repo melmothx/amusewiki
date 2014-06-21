@@ -924,17 +924,20 @@ sub compile_and_index_files {
         if ($file =~ m/\.muse$/ and $compiler->file_needs_compilation($file)) {
             $compiler->compile($file);
         }
-        $self->index_file($file);
+        $self->index_file($file, $logger);
     }
     $self->collation_index;
 }
 
 
 sub index_file {
-    my ($self, $file) = @_;
+    my ($self, $file, $logger) = @_;
+    unless ($logger) {
+        $logger = sub { warn join(" ", @_) };
+    }
     unless ($file && -f $file) {
         $file ||= '<empty>';
-        warn "File $file does not exist";
+        $logger->("File $file does not exist\n");
         return;
     }
 
@@ -958,7 +961,7 @@ sub index_file {
     if ($class eq 'upload_pdf' or
         $class eq 'image' or
         $class eq 'special_image') {
-        warn "Inserting data for attachment $file\n";
+        $logger->("Inserting data for attachment $file\n");
         $self->attachments->update_or_create($details);
         return $file;
     }
@@ -1001,22 +1004,23 @@ sub index_file {
                                                         type => $alias->type,
                                                        })) {
                     # insert that instead
-                    warn "Alias for $cat->{name} found, using " . $acat->name .
-                      " instead\n";
+                    $logger->("Alias for $cat->{name} found, using "
+                              . $acat->name . " instead\n");
                     foreach my $m (qw/name uri type/) {
                         $cat->{$m} = $acat->$m;
                     }
                 }
                 else {
-                    warn sprintf("Alias %s defined, but no %s found in %s\n",
-                                 $alias->uri, $alias->redirect, $alias->type);
+                    $logger->(sprintf("Alias %s defined, but no %s found in %s\n",
+                                      $alias->uri, $alias->redirect,
+                                      $alias->type));
                 }
             }
             # here we have to check duplicated categories after the
             # aliasing, which would trigger an exception.
             my $cat_hashed = $cat->{type} . '/' . $cat->{uri};
             if ($cat_hash{$cat_hashed}) {
-                warn "Duplicated $cat_hashed\n";
+                $logger->("Duplicated $cat_hashed\n");
             }
             else {
                 $cat_hash{$cat_hashed} = 1;
@@ -1025,9 +1029,9 @@ sub index_file {
         }
     }
     if (%$details) {
-        warn "Unhandle directive in $file: " . join(", ", %$details) . "\n";
+        $logger->("Unhandle directive in $file: " . join(", ", %$details) . "\n");
     }
-    print "Inserting data for $file\n";
+    $logger->("Inserting data for $file\n");
 
     my $title = $self->titles->update_or_create(\%insertion)->discard_changes;
 
@@ -1035,7 +1039,7 @@ sub index_file {
     if (my $deletion_msg = $title->deleted) {
         if ($deletion_msg =~ m/^\s*redirect\:?\s+([a-z0-9-]+)\s*$/i) {
             my $target = $1;
-            warn "Setting redirection to $target\n";
+            $logger->("Setting redirection to $target\n");
             $self->redirections->update_or_create(
                                                   uri => $title->uri,
                                                   type => $title->f_class,
@@ -1047,8 +1051,8 @@ sub index_file {
                                                   uri => $title->uri,
                                                   type => $title->f_class,
                                                  })) {
-        warn "Removing existing redirection to "
-          . $redir->full_dest_uri . "\n";
+        $logger->("Removing existing redirection to "
+                  . $redir->full_dest_uri . "\n");
         $redir->delete;
     }
 
