@@ -437,12 +437,17 @@ sub dispatch_job_alias_create {
     }
     $logger->("Created alias " . $alias->full_src_uri .
               " pointing to " . $alias->full_dest_uri . "\n");
-    if (my @texts = $alias->linked_texts) {
-        if (my $cat = $alias->aliased_category) {
-            $logger->("Deleting " . $cat->full_uri . "\n");
-            $cat->delete;
+    if (my $cat = $alias->aliased_category) {
+        my @texts = $cat->titles;
+        my $cat_uri = $cat->full_uri;
+        $logger->("Deleting $cat_uri\n");
+        $cat->delete;
+        if (@texts) {
+            $site->compile_and_index_files(\@texts, $logger);
         }
-        $site->compile_and_index_files(\@texts, $logger);
+        else {
+            $logger->("No texts found in $cat_uri\n");
+        }
     }
     else {
         $logger->("No texts found for " . $alias->full_dest_uri . "\n");
