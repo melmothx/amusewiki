@@ -133,7 +133,6 @@ sub create :Local :Args(0) {
     my ($self, $c) = @_;
 
     unless ($c->user_exists) {
-        $c->flash(status_msg => $c->loc('Access denied'));
         $c->detach('/not_permitted');
         return;
     }
