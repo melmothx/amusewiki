@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 21;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -53,11 +53,17 @@ $mech->get_ok('/console/unpublished');
 is $mech->response->base->path, '/login', "Denied access to not logged in";
 
 
-# TODO Where are the tests?
+# create an unpublished text.
 
-# check the blog
+my $rev = $site->create_new_text({ uri => 'deleted-text', title => 'Deleted',
+                                   lang => 'en' }, 'text');
+
+$rev->edit("#title Deleted\n#DELETED garbage\n\nblablab\n");
+$rev->commit_version;
+ok $rev->publish_text;
+
 $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                               host => 'blog.amusewiki.org');
+                                            host => "$site_id.amusewiki.org");
 
 $mech->get_ok('/console/unpublished');
 

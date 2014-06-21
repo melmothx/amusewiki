@@ -49,6 +49,8 @@ var ckconfiguration = {
 	     value="[% processed_params.subtitle | html %]" />
     </p>
     
+    [% IF f_class == 'text' %]
+
     <p>
       <label for="LISTtitle">Title for sorting</label>
       ([% c.loc('you may want to strip the leading “A”, “An”, “The”, and so on from the title') %]):
@@ -124,6 +126,7 @@ var ckconfiguration = {
       <input class="form-control" id="source" size="50" maxlength="250"
 	         name="source" value="[% processed_params.source | html %]" />
     </p>
+    [% END %]
     <p>
       [% SET current_language = processed_params.lang || site.locale %]
       <label for="lang">[% c.loc('Language') %]</label>
@@ -166,6 +169,7 @@ var ckconfiguration = {
                 rows="20">[%- processed_params.textbody | html -%]</textarea>
     </div>
     
+    [% IF f_class == 'text' %]
     <h3>[% c.loc('Notes') %]</h3>
     <div>
       [% c.loc('Put additional information here (original
@@ -178,7 +182,7 @@ var ckconfiguration = {
                 rows="5">[%- processed_params.notes | html %]</textarea>
       <br />
     </div>
-
+    [% END %]
     <p>
       <label for="uri">[% c.loc('Desired URI') %]</label>
       ([% c.loc('automatically generated if not present, using author and title') %])<br />
@@ -233,6 +237,8 @@ var ckconfiguration = {
   ckconfiguration.height = 100;
   $('#notes').ckeditor(ckconfiguration);
 </script>
+
+[% IF f_class == 'text' %]
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -297,3 +303,4 @@ var ckconfiguration = {
 	        });
     });
 </script>
+[% END %]
