@@ -180,9 +180,10 @@ var ckconfiguration = {
     <div>
       <textarea id="notes" name="notes" cols="80"
                 rows="5">[%- processed_params.notes | html %]</textarea>
-      <br />
     </div>
     [% END %]
+    <div>
+      <br /><br />
     <p>
       <label for="uri">[% c.loc('Desired URI') %]</label>
       ([% c.loc('automatically generated if not present, using author and title') %])<br />
@@ -198,7 +199,8 @@ var ckconfiguration = {
       <input class="form-control" type="text" name="uri" id="uri" size="50"
              value="[% processed_params.uri | html %]"/>
     </p>
-
+    <br />
+    </div>
 
 
     <div class="center">
