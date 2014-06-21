@@ -27,9 +27,10 @@ I think this was present but got lost somehow
 
 * DONE Strip down the /new form for specials
   CLOSED: [2014-06-21 sab 17:30]
-* TODO Other languages on its own menu?
 * DONE Clear the log dir before starting a job
   CLOSED: [2014-06-09 lun 14:25]
+
+* TODO Admin page for user and site creation
 
 * TODO use a macro for loc in the templates
 
@@ -42,14 +43,13 @@ See tasks/dispaly.tt for an example
 ** TODO add support for uid on display
 ** TODO add multilanguage support for the same site
 
-* TODO Admin page for user and site creation
-
 * TODO After a wrong answer, and a good one, popup doesn't go away
 * TODO Upgrade catalyst
 * TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
 
 This looks like searching for troubles... Deferred
 
+* TODO Other languages on its own menu?
 
 * Needed features
 ** simple to use
