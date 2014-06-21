@@ -140,3 +140,12 @@ Text...
   [% END %]
 </table>
 
+
+<script>
+  $(document).ready(function() {
+      $("#topic-dest").select2();
+      $("#topic-src").select2();
+      $("#author-dest").select2();
+      $("#author-src").select2();
+  });
+</script>

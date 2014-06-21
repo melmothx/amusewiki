@@ -26,6 +26,7 @@ here.
 sub auto :Private {
     my ($self, $c) = @_;
     if ($c->user_exists) {
+        $c->stash(nav => 'console');
         return 1;
     }
     else {
