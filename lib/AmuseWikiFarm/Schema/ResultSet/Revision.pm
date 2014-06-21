@@ -17,5 +17,16 @@ sub pending {
                          { order_by => { -desc => 'updated' }});
 }
 
+=head2 not_published
+
+Return a list of revisions not yet published
+
+=cut
+
+sub not_published {
+    return shift->search({ status => { '!=' => 'published'  } },
+                         { order_by => { -desc => 'updated' } });
+}
+
 
 1;

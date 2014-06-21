@@ -105,12 +105,12 @@ $mech->get_ok($editinglocation);
 $mech->content_contains("This revision is already published, ignoring changes");
 
 $mech->form_id('museform');
-$mech->click('commit');
+$mech->submit;
 $mech->content_contains("This revision is already published, ignoring changes");
 is ($mech->response->base->path, $editinglocation, "Can't go further");
 
 $mech->form_id('museform');
-$mech->click('preview');
+$mech->submit;
 $mech->content_contains("This revision is already published, ignoring changes");
 is ($mech->response->base->path, $editinglocation, "Can't go further");
 

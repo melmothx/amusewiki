@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 30;
+use Test::More tests => 35;
 use Cwd;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -12,6 +12,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
+use Data::Dumper;
 
 my $init = catfile(getcwd(), 'init-jobs.pl');
 ok(system($init, 'restart') == 0);
@@ -79,10 +80,20 @@ foreach my $mech ($mechone, $mechtwo) {
     else {
         $created =~ s/[0-9]+$//;
         $mech->get_ok($created, "Visiting $created");
-        $mech->content_lacks('Some ongoing revisions were found');
+        $mech->content_contains('Some ongoing revisions were found');
+        # count the links
+        my @links = grep { $_->url =~ m!\Q$created\E[0-9]+$! } $mech->links;
+        is (scalar(@links), 1, "Found 1 link") or diag Dumper($mech->links);
+        $mech->content_contains('This revision is being actively edited');
+        $mech->content_contains('text has not been published yet');
         ok(!$mech->form_with_fields('create'), "Creation is not offered");
+
         $mech->get_ok("$created?create=1");
-        $mech->content_lacks('Some ongoing revisions were found');
+        @links = grep { $_->url =~ m!\Q$created\E[0-9]+$! } $mech->links;
+        is (scalar(@links), 1, "Found 1 link");
+        $mech->content_contains('This revision is being actively edited');
+
+        $mech->content_contains('Some ongoing revisions were found');
         $mech->content_contains('text has not been published yet');
     }
 }

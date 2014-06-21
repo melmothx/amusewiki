@@ -121,7 +121,9 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
         # this call is going to add uri to $params, if not present
         my ($revision, $error) = $site->create_new_text($params, $f_class);
         if ($revision) {
-            $c->log->debug("All ok, found " . $revision->id);
+            # set the session id
+            $revision->session_id($c->sessionid);
+            $revision->update;
             $c->flash(status_msg => $c->loc("Created new text"));
 
             my $uri = $revision->title->uri;
@@ -183,7 +185,9 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $text = $c->stash->{text_to_edit};
     my $uri  = $text->uri;
-    my @revs = $text->revisions->pending;
+    # show  not published revision which can be merged, i.e., they are not
+    # old abandoned and not cleaned up revisions.
+    my @revs = grep { $_->can_be_merged } $text->revisions->not_published;
 
     # no existing revision or explicit request by posting: create new
     # but only if can spawn one.
@@ -194,6 +198,7 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
         # on creation, set the session id
         $revision->session_id($c->sessionid);
         $revision->update;
+        $c->log->debug("Set session in for " . $revision->id);
         my $location = $c->uri_for_action('/edit/edit', [
                                                          $revision->f_class,
                                                          $uri,
@@ -205,19 +210,7 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     }
 
     # we can't decide ourself, so we list the revs
-    my @uris;
-    foreach my $rev (@revs) {
-        my $uri = $c->uri_for_action('/edit/edit', [
-                                                    $rev->f_class,
-                                                    $uri,
-                                                    $rev->id
-                                                   ]);
-        push @uris, {
-                     uri => $uri,
-                     created => $rev->updated->clone,
-                    };
-    }
-    $c->stash(revisions => \@uris) if @uris;
+    $c->stash(revisions => \@revs) if @revs;
 }
 
 =head2 edit

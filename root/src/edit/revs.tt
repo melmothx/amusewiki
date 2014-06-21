@@ -13,15 +13,41 @@
 <ul>
   [% FOREACH rev IN revisions %]
   <li>
-    <a href="[% rev.uri %]">[% c.loc("Created") %]
-      [% rev.created.dmy %] [% rev.created.hms %]</a>
+    <a href="[% c.uri_for_action('/edit/edit', [rev.f_class, rev.title.uri, rev.id]) %]">
+      Edit this revision
+    </a>
+    [% c.loc("Last updated") %] [% rev.updated.dmy %] [% rev.updated.hms %] [% c.loc('UTC') %]
+
+    [% IF rev.editing_ongoing %]
+    <strong>
+      [% IF c.sessionid == rev.session_id %]
+      [% c.loc('This revision is being actively edited by you') %]
+      [% ELSE %]
+      [% c.loc('This revision is being actively edited') %]
+      [% END %]
+    </strong>
+    [% ELSIF rev.status == 'editing' %]
+    [% c.loc('Abandoned editing in progress, feel free to check the diff and resume') %]
+    [% ELSE %]
+    [% c.loc(rev.status) %]
+    [% END %]
+    <a href="[% c.uri_for_action('/edit/diff', [rev.f_class, rev.title.uri, rev.id]) %]"
+       target="_blank">
+      [% c.loc('Show differences in other tab') %]
+    </a>
+
   </li>
   [% END %] 
 </ul>
 [% END %]
 
 [% IF text_to_edit.can_spawn_revision %]
-[% c.loc("or create a new one") %]
+
+[% c.loc("Or create a new revision, at your own peril. Having multiple
+          concurrent revisions means that, unless someone takes care
+          of it, only one will be chosen. You can go ahead, or retry
+          later, or, better, contact the librarians before proceeding,
+          to avoid wasting energies.") %]
 
 <form method="post">
   <button type="submit" name="create" value="create" class="btn btn-primary">
