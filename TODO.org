@@ -20,8 +20,6 @@ This need a Controller::API which can be used for other things as well.
   CLOSED: [2014-06-14 sab 22:55]
 * DONE Handle redirections
   CLOSED: [2014-06-21 sab 11:50]
-* TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
-
 * TODO Before creating a new revision, check if there is editing in progress
 
 I think this was present but got lost somehow
@@ -46,6 +44,11 @@ See tasks/dispaly.tt for an example
 
 * TODO After a wrong answer, and a good one, popup doesn't go away
 * TODO Upgrade catalyst
+* TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
+
+This looks like searching for troubles... Deferred
+
+
 * Needed features
 ** simple to use
 ** simple to install

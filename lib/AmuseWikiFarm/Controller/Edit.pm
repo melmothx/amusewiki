@@ -268,10 +268,12 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
         $c->log->debug($revision->session_id . ' ne ' . $c->sessionid);
         $c->stash->{editing_warnings} =
           $c->loc("This revision is being edited by someone else!");
+        $c->stash(locked_editing => 1);
     }
     elsif ($revision->published) {
         $c->stash->{editing_warnings} =
           $c->loc("This revision is already published, ignoring changes");
+        $c->stash(locked_editing => 1);
     }
     # on submit, do the editing. Please note that we don't care about
     # the params. We save the body and pass that as preview. So if the
