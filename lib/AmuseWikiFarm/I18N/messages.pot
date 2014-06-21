@@ -14,11 +14,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. (site.canonical)
+#: root/src/email/commit.tt:2
+msgid "A new revision has been created at %1"
+msgstr ""
+
 #: root/src/text.tt:96 root/src/text.tt:97
 msgid "A4 imposed PDF"
 msgstr ""
 
-#: root/src/console/git_display.tt:12 root/src/publish/pending.tt:16
+#: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:12 root/src/publish/pending.tt:16
 msgid "Action"
 msgstr ""
 
@@ -30,11 +35,19 @@ msgstr ""
 msgid "Add this text to the bookbuilder"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:95 root/src/layout.tt:109
+#: lib/AmuseWikiFarm/Controller/Edit.pm:96 root/src/layout.tt:118
 msgid "Add to library"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:88 root/src/layout.tt:169
+#: root/src/console/alias_display.tt:35 root/src/console/alias_display.tt:67
+msgid "Alias"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:205
+msgid "Alias can't be the same of redirection"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Publish.pm:88 root/src/layout.tt:178
 msgid "All revisions"
 msgstr ""
 
@@ -52,20 +65,28 @@ msgid ""
 "      not needed"
 msgstr ""
 
+#: root/src/console/alias_display.tt:123 root/src/console/unpublished.tt:42 root/src/publish/pending.tt:71
+msgid "Are you sure?"
+msgstr ""
+
 #: root/src/edit/edit.tt:82
 msgid "Attached files"
 msgstr ""
 
-#: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:63
+#: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:62
 msgid "Author"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:42 root/src/edit/edit.tt:174 root/src/edit/newtext.tt:71 root/src/layout.tt:96 root/src/text.tt:36
+#: lib/AmuseWikiFarm/Controller/Category.pm:72 root/src/edit/edit.tt:182 root/src/edit/newtext.tt:71 root/src/layout.tt:105 root/src/text.tt:36
 msgid "Authors"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:6
 msgid "Back to the text"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:221
+msgid "Bad request"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:130
@@ -76,7 +97,7 @@ msgstr ""
 msgid "Bold"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:28 root/src/layout.tt:117
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:28 root/src/layout.tt:126
 msgid "Bookbuilder"
 msgstr ""
 
@@ -88,7 +109,7 @@ msgstr ""
 msgid "Bulleted List"
 msgstr ""
 
-#: root/src/layout.tt:83
+#: root/src/layout.tt:92
 msgid "Catalog"
 msgstr ""
 
@@ -109,7 +130,7 @@ msgid "Changes for"
 msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:360
+#: lib/AmuseWikiFarm/Controller/Edit.pm:383
 msgid "Changes for %1"
 msgstr ""
 
@@ -125,7 +146,7 @@ msgstr ""
 msgid "Clear the book list"
 msgstr ""
 
-#: root/src/edit/edit.tt:142
+#: root/src/edit/edit.tt:150
 msgid "Commit"
 msgstr ""
 
@@ -141,15 +162,27 @@ msgstr ""
 msgid "Couldn't build that"
 msgstr ""
 
+#: root/src/console/alias_display.tt:54 root/src/console/alias_display.tt:86
+msgid "Create"
+msgstr ""
+
+#: root/src/console/alias_display.tt:59
+msgid "Create a topic alias"
+msgstr ""
+
+#: root/src/console/alias_display.tt:27
+msgid "Create an author alias"
+msgstr ""
+
 #: root/src/edit/revs.tt:16
 msgid "Created"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:124
+#: lib/AmuseWikiFarm/Controller/Edit.pm:125
 msgid "Created new text"
 msgstr ""
 
-#: root/src/edit/edit.tt:181 root/src/publish/pending.tt:19 root/src/text.tt:45
+#: root/src/edit/edit.tt:189 root/src/publish/pending.tt:19 root/src/text.tt:45
 msgid "Date"
 msgstr ""
 
@@ -157,16 +190,26 @@ msgstr ""
 msgid "Date of the original publication"
 msgstr ""
 
-#: root/src/layout.tt:174
+#: root/src/layout.tt:183
 msgid "Deferred/Deleted texts"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:38
+#: root/src/bookbuilder/index.tt:38 root/src/console/alias_display.tt:126
 msgid "Delete"
+msgstr ""
+
+#: root/src/publish/pending.tt:100
+msgid ""
+"Deleting a revision is safe if a text has been\n"
+"    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
 
 #: root/src/edit/newtext.tt:183
 msgid "Desired URI"
+msgstr ""
+
+#: root/src/console/alias_display.tt:100
+msgid "Destination"
 msgstr ""
 
 #: root/src/edit/edit.tt:57
@@ -193,19 +236,35 @@ msgstr ""
 msgid "EPUB (for mobile devices)"
 msgstr ""
 
+#: root/src/console/alias_display.tt:134
+msgid "Edit"
+msgstr ""
+
 #: root/src/text.tt:157
 msgid "Edit this text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:158 root/src/edit/edit.tt:93 root/src/edit/revs.tt:3
+#: lib/AmuseWikiFarm/Controller/Edit.pm:159 root/src/edit/edit.tt:93 root/src/edit/revs.tt:3
 msgid "Editing"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:298
+#: root/src/publish/pending.tt:76
+msgid "Erase this revision"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:346
+msgid "Error sending mail!"
+msgstr ""
+
+#: root/src/console/alias_display.tt:91
+msgid "Existing redirections"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:300
 msgid "File uploaded!"
 msgstr ""
 
-#: root/src/edit/edit.tt:120
+#: root/src/edit/edit.tt:121
 msgid "Fix typography"
 msgstr ""
 
@@ -217,15 +276,21 @@ msgstr ""
 msgid "For texts from the internet use"
 msgstr ""
 
+#: root/src/console/alias_display.tt:23
+msgid ""
+"For topics and authors redirections, you can create them\n"
+"  here"
+msgstr ""
+
 #: root/src/publish/pending.tt:39
 msgid "Force publishing"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Library.pm:40
+#: lib/AmuseWikiFarm/Controller/Library.pm:74
 msgid "Full list of texts"
 msgstr ""
 
-#: root/src/layout.tt:196
+#: root/src/layout.tt:210
 msgid "Full text search"
 msgstr ""
 
@@ -247,6 +312,10 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:150
 msgid "I want an imposed (ready to print) PDF"
+msgstr ""
+
+#: root/src/email/commit.tt:4
+msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:163
@@ -311,7 +380,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: root/src/layout.tt:184
+#: root/src/layout.tt:198
 msgid "Logout"
 msgstr ""
 
@@ -319,7 +388,7 @@ msgstr ""
 msgid "Main text"
 msgstr ""
 
-#: root/src/edit/edit.tt:128
+#: root/src/edit/edit.tt:129
 msgid "Make all links active"
 msgstr ""
 
@@ -327,19 +396,27 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: root/src/edit/edit.tt:221
+#: root/src/edit/edit.tt:229
 msgid "Missing #title header in the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:332
+#: lib/AmuseWikiFarm/Controller/Edit.pm:355
 msgid "Missing #title header in the text!"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:199
+msgid "Missing alias"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:202
+msgid "Missing redirection"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:66
 msgid "Missing username or password"
 msgstr ""
 
-#: root/src/layout.tt:125
+#: root/src/layout.tt:134
 msgid "More"
 msgstr ""
 
@@ -371,11 +448,11 @@ msgstr ""
 msgid "No text was added yet"
 msgstr ""
 
-#: root/src/edit/edit.tt:202 root/src/edit/newtext.tt:169 root/src/text.tt:68
+#: root/src/edit/edit.tt:210 root/src/edit/newtext.tt:169 root/src/text.tt:68
 msgid "Notes"
 msgstr ""
 
-#: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:44
+#: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:58
 msgid "Nothing to see here, so far"
 msgstr ""
 
@@ -387,7 +464,7 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:87
+#: lib/AmuseWikiFarm/Controller/Root.pm:104
 msgid "Page not found!"
 msgstr ""
 
@@ -399,7 +476,7 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:164
+#: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:173
 msgid "Pending revisions"
 msgstr ""
 
@@ -407,12 +484,25 @@ msgstr ""
 msgid "Picture"
 msgstr ""
 
-#: root/src/edit/edit.tt:133
+#: root/src/edit/edit.tt:134
 msgid "Please describe shortly what you did"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:66
 msgid "Please give a name to the collection"
+msgstr ""
+
+#: root/src/publish/pending.tt:88
+msgid ""
+"Please keep in mind that if you see “Force publishing”\n"
+"    as action, it means that the revision has been superseded by\n"
+"    another one, so publishing this one, you'll end up reverting a\n"
+"    previous one. Try to avoid this, unless you know what you're\n"
+"    doing."
+msgstr ""
+
+#: root/src/edit/edit.tt:143
+msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 
 #: root/src/edit/newtext.tt:144
@@ -434,15 +524,23 @@ msgstr ""
 msgid "Please reload your page"
 msgstr ""
 
+#: root/src/console/alias_display.tt:37 root/src/console/alias_display.tt:46 root/src/console/alias_display.tt:69 root/src/console/alias_display.tt:78
+msgid "Please select"
+msgstr ""
+
 #: root/src/bookbuilder/index.tt:75
 msgid "Please select the desired fonts"
+msgstr ""
+
+#: root/src/console/alias_display.tt:44 root/src/console/alias_display.tt:76
+msgid "Pointing to"
 msgstr ""
 
 #: root/src/edit/newtext.tt:210
 msgid "Prepare this text for the archiving"
 msgstr ""
 
-#: root/src/edit/edit.tt:141 root/src/edit/edit.tt:152
+#: root/src/edit/edit.tt:149 root/src/edit/edit.tt:160
 msgid "Preview"
 msgstr ""
 
@@ -456,6 +554,10 @@ msgstr ""
 
 #: root/src/publish/pending.tt:37
 msgid "Publish"
+msgstr ""
+
+#: root/src/console/unpublished.tt:15 root/src/console/unpublished.tt:46 root/src/publish/pending.tt:21
+msgid "Purge"
 msgstr ""
 
 #: root/src/edit/newtext.tt:171
@@ -477,11 +579,11 @@ msgstr ""
 msgid "Quotes"
 msgstr ""
 
-#: root/src/layout.tt:225
+#: root/src/layout.tt:239
 msgid "RSS feed"
 msgstr ""
 
-#: root/src/layout.tt:228
+#: root/src/layout.tt:242
 msgid "Random"
 msgstr ""
 
@@ -493,7 +595,11 @@ msgstr ""
 msgid "Recheck"
 msgstr ""
 
-#: root/src/layout.tt:179
+#: lib/AmuseWikiFarm/Controller/Console.pm:173 root/src/console/alias_display.tt:3 root/src/layout.tt:193
+msgid "Redirections"
+msgstr ""
+
+#: root/src/layout.tt:188
 msgid "Remotes"
 msgstr ""
 
@@ -513,11 +619,16 @@ msgstr ""
 msgid "Revision"
 msgstr ""
 
+#. ($uri)
+#: lib/AmuseWikiFarm/Controller/Publish.pm:150
+msgid "Revision for %1 has been deleted"
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/Search.pm:54
 msgid "Search"
 msgstr ""
 
-#: root/src/edit/edit.tt:154 root/src/publish/pending.tt:62
+#: root/src/edit/edit.tt:162 root/src/publish/pending.tt:59
 msgid "Show differences in other tab"
 msgstr ""
 
@@ -525,7 +636,7 @@ msgstr ""
 msgid "Some ongoing revisions were found"
 msgstr ""
 
-#: root/src/edit/edit.tt:195 root/src/edit/newtext.tt:119 root/src/text.tt:61
+#: root/src/edit/edit.tt:203 root/src/edit/newtext.tt:119 root/src/text.tt:61
 msgid "Source"
 msgstr ""
 
@@ -533,7 +644,11 @@ msgstr ""
 msgid "Source files with attachments"
 msgstr ""
 
-#: root/src/publish/pending.tt:54
+#: lib/AmuseWikiFarm/Controller/Library.pm:86
+msgid "Special pages"
+msgstr ""
+
+#: root/src/publish/pending.tt:51
 msgid "Stale editing"
 msgstr ""
 
@@ -545,12 +660,28 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: root/src/edit/edit.tt:167 root/src/edit/newtext.tt:46 root/src/text.tt:29
+#: root/src/edit/edit.tt:175 root/src/edit/newtext.tt:45 root/src/text.tt:29
 msgid "Subtitle"
+msgstr ""
+
+#: root/src/console/alias_display.tt:18
+msgid ""
+"Such an header will unpublish the text and put a\n"
+"  redirection in place, and will be listed here"
 msgstr ""
 
 #: root/src/text.tt:10
 msgid "Table of Contents"
+msgstr ""
+
+#: root/src/console/alias_display.tt:6
+msgid ""
+"Text redirections are set in the text itself, using the\n"
+"  DELETED header with this syntax"
+msgstr ""
+
+#: root/src/email/commit.tt:17
+msgid "The revision has the following messages"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:161
@@ -568,23 +699,40 @@ msgid ""
 "        above and postpone the editing to the next step."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:269
+#: lib/AmuseWikiFarm/Controller/Edit.pm:274
+msgid "This revision is already published, ignoring changes"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:270
 msgid "This revision is being edited by someone else!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:163
+#: lib/AmuseWikiFarm/Controller/Edit.pm:164
 msgid "This text does not exist"
 msgstr ""
 
-#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:161 root/src/edit/newtext.tt:37 root/src/text.tt:23
+#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:169 root/src/edit/newtext.tt:36 root/src/text.tt:23
 msgid "Title"
 msgstr ""
 
-#: root/src/layout.tt:90
+#: root/src/layout.tt:99
 msgid "Titles"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:54 root/src/edit/edit.tt:188 root/src/edit/newtext.tt:81 root/src/layout.tt:102 root/src/text.tt:52
+#. (c.uri_for_action('/publish/pending')
+#: root/src/email/commit.tt:15
+msgid "To apply the changes, you can visit %1"
+msgstr ""
+
+#: root/src/email/commit.tt:6
+msgid "To resume the editing you can visit the following URL"
+msgstr ""
+
+#: root/src/email/commit.tt:10
+msgid "To view the changes introduced, you can visit the following URL"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:196 root/src/edit/newtext.tt:81 root/src/layout.tt:111 root/src/text.tt:52
 msgid "Topics"
 msgstr ""
 
@@ -600,7 +748,7 @@ msgstr ""
 msgid "Two side layout"
 msgstr ""
 
-#: root/src/console/unpublished.tt:9
+#: root/src/console/alias_display.tt:97 root/src/console/unpublished.tt:9
 msgid "URI"
 msgstr ""
 
@@ -608,7 +756,7 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: root/src/publish/pending.tt:69
+#: root/src/publish/pending.tt:66
 msgid "UTC"
 msgstr ""
 
@@ -698,7 +846,7 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#: root/src/edit/edit.tt:157
+#: root/src/edit/edit.tt:165
 msgid "Your changes are saved and can be checked every time you hit Preview or Commit"
 msgstr ""
 
@@ -754,7 +902,7 @@ msgstr ""
 msgid "failed"
 msgstr ""
 
-#: root/src/edit/newtext.tt:64
+#: root/src/edit/newtext.tt:63
 msgid "for display"
 msgstr ""
 
@@ -770,7 +918,7 @@ msgstr ""
 msgid "if applicable"
 msgstr ""
 
-#: root/src/edit/newtext.tt:38
+#: root/src/edit/newtext.tt:37
 msgid "if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1"
 msgstr ""
 
@@ -822,18 +970,25 @@ msgstr ""
 msgid "taken"
 msgstr ""
 
-#: root/src/layout.tt:95
+#: root/src/layout.tt:104
 msgid "texts sorted by author"
 msgstr ""
 
-#: root/src/layout.tt:89
+#: root/src/layout.tt:98
 msgid "texts sorted by title"
 msgstr ""
 
-#: root/src/layout.tt:101
+#: root/src/layout.tt:110
 msgid "texts sorted by topics"
 msgstr ""
 
-#: root/src/edit/newtext.tt:55
+#: root/src/edit/newtext.tt:54
 msgid "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+
+#: root/src/publish/pending.tt:95
+msgid ""
+"“Stale editing” means that the revision was abandoned\n"
+"    while editing, but it's still there, in case someone wants to pick\n"
+"    it up when editing a text."
 msgstr ""
