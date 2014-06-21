@@ -18,13 +18,15 @@ This need a Controller::API which can be used for other things as well.
   CLOSED: [2014-06-14 sab 18:43]
 * DONE Wrong jumping offset on js
   CLOSED: [2014-06-14 sab 22:55]
-* TODO Handle redirections
+* DONE Handle redirections
+  CLOSED: [2014-06-21 sab 11:50]
 * TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
 
 * TODO Before creating a new revision, check if there is editing in progress
 
 I think this was present but got lost somehow
 
+* TODO Strip down the /new form for specials
 * TODO Other languages on its own menu?
 * DONE Clear the log dir before starting a job
   CLOSED: [2014-06-09 lun 14:25]
