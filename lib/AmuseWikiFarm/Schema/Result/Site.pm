@@ -1084,7 +1084,7 @@ sub index_file {
     }
     # XAPIAN INDEXING, excluding specials
     if ($class eq 'text') {
-        $self->xapian->index_text($title);
+        $self->xapian->index_text($title, $logger);
     }
     return $file;
 }

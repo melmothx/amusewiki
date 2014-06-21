@@ -110,7 +110,10 @@ the archive's database.
 
 
 sub index_text {
-    my ($self, $title) = @_;
+    my ($self, $title, $logger) = @_;
+    unless ($logger) {
+        $logger = sub { warn join(" ", @_) };
+    }
     # stolen from the example full-indexer.pl in Search::Xapian
     # get and create
     my $database = $self->xapian_db;
@@ -119,13 +122,13 @@ sub index_text {
     my $qterm = 'Q' . $title->uri;
 
     if (!$title->is_published) {
-        warn "Deleting " . $title->uri . " from Xapian db\n";
+        $logger->("Deleting " . $title->uri . " from Xapian db\n");
         eval {
             $database->delete_document_by_term($qterm);
         };
     }
     else {
-        warn "Updating " . $title->uri . " in Xapian db\n";
+        $logger->("Updating " . $title->uri . " in Xapian db\n");
         eval {
             my $doc = Search::Xapian::Document->new();
             $indexer->set_document($doc);
