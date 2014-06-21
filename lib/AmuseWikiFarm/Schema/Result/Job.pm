@@ -438,7 +438,7 @@ sub dispatch_job_alias_create {
     $logger->("Created alias " . $alias->full_src_uri .
               " pointing to " . $alias->full_dest_uri . "\n");
     if (my @texts = $alias->linked_texts) {
-        if (my $cat = $alias->linked_category) {
+        if (my $cat = $alias->aliased_category) {
             $logger->("Deleting " . $cat->full_uri . "\n");
             $cat->delete;
         }

@@ -143,10 +143,6 @@ special page nor a topic nor a title.
 
 =cut
 
-sub url_map {
-    return 
-}
-
 sub uri_prefix {
     my $self = shift;
     my $uri_map = {
@@ -210,10 +206,20 @@ sub linked_category {
     my $self = shift;
     my $cat = $self->site->categories->find({
                                              type => $self->type,
+                                             uri => $self->redirect,
+                                            });
+    $cat ? return $cat : return;
+}
+
+sub aliased_category {
+    my $self = shift;
+    my $cat = $self->site->categories->find({
+                                             type => $self->type,
                                              uri => $self->uri,
                                             });
     $cat ? return $cat : return;
 }
+
 
 sub linked_texts {
     my $self = shift;
@@ -225,7 +231,7 @@ sub linked_texts {
     elsif ($self->is_a_text) {
         my $title = $self->site->titles->find({
                                                f_class => $self->type,
-                                               uri => $self->uri,
+                                               uri => $self->redirect,
                                               });
         if ($title) {
             return $title;
