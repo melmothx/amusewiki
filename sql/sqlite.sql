@@ -57,7 +57,7 @@ CREATE TABLE site (
 
 CREATE TABLE user (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       username VARCHAR(128) NOT NULL,
+       username VARCHAR(255) NOT NULL,
        password VARCHAR(255) NOT NULL,
        email    VARCHAR(255),
        active   INTEGER NOT NULL DEFAULT 1

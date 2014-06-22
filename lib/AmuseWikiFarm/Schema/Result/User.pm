@@ -48,7 +48,7 @@ __PACKAGE__->table("user");
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 128
+  size: 255
 
 =head2 password
 
@@ -74,7 +74,7 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "username",
-  { data_type => "varchar", is_nullable => 0, size => 128 },
+  { data_type => "varchar", is_nullable => 0, size => 255 },
   "password",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "email",
@@ -162,8 +162,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-05-30 08:55:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pu9ZbUTozWm9V0Lc6C9JHw
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-22 11:47:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:HH14sYYl3+k2BkJ4DL5yNg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
