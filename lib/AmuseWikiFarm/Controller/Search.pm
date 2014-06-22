@@ -43,7 +43,7 @@ sub index :Path :Args(0) {
             push @tokens, qq{$k:"$string"};
         }
         my $joiner = $match_any ? ' OR ' : ' AND ';
-        $query = join($joiner, @tokens);
+        $query = join($joiner, grep { defined and m/\w/ } @tokens);
     }
 
     my $page = 1;
