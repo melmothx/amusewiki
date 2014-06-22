@@ -129,14 +129,16 @@ sub human :Path('/human') :Args(0) {
     }
 }
 
-sub create :Local :Args(0) {
-    my ($self, $c) = @_;
 
+sub user :Chained('/') :CaptureArgs(0) {
+    my ($self, $c) = @_;
     unless ($c->user_exists) {
         $c->detach('/not_permitted');
-        return;
     }
+}
 
+sub create :Chained('user') :Args(0) {
+    my ($self, $c) = @_;
     # start validating
     my %params = %{ $c->request->params };
     if ($params{create}) {
@@ -196,14 +198,37 @@ sub create :Local :Args(0) {
             return;
         }
         my $user = $users->create(\%insertion);
-        $user->add_to_roles({ role => 'librarian' });
+        $user->set_roles([{ role => 'librarian' }]);
         $c->stash->{site}->add_to_users($user);
+        $user->discard_changes;
+
         $c->flash(status_msg => $c->loc("User [_1] created!", $user->username));
+        $c->stash(user => $user);
+
+        if (my $mail_from = $c->stash->{site}->mail_from) {
+            my %mail = (
+                        to => $user->email,
+                        from => $mail_from,
+                        subject => $c->loc('User created'),
+                        template => 'newuser.tt'
+                       );
+            if (my $cc = Email::Valid->address($c->user->get('email'))) {
+                $mail{cc} = $cc;
+            }
+            $c->stash(email => \%mail);
+            $c->forward($c->view('Email::Template'));
+            if (scalar(@{ $c->error })) {
+                $c->flash(error_msg => $c->loc('Error sending mail!'));
+            }
+            else {
+                $c->flash->{status_msg} .= "\n" . $c->loc('Email sent!');
+            }
+        }
         $c->response->redirect($c->uri_for('/'));
     }
 }
 
-sub edit :Local :Args(0) {
+sub edit :Chained('user') :Args(1) {
     my ($self, $c) = @_;
 }
 

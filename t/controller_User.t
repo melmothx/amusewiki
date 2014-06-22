@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 21;
+use Test::More tests => 42;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -16,7 +16,6 @@ unless (eval q{use Test::WWW::Mechanize::Catalyst 0.55; 1}) {
 my $site_id = '0user0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
-
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
@@ -92,4 +91,131 @@ $mech->get_ok( '/logout' );
 like $mech->uri, qr{/login}, "Bounced to login";
 like $mech->content, qr{You have logged out}, "status message correct";
 
-$user->delete;
+$mech->get('/user/create');
+is $mech->status, '403', "Not logged in can't access /user/";
+
+# let pinco create a new fellow librarian
+
+my @users = $site->users;
+
+is (scalar(@users), 1, "Found 1 user");
+
+$mech->get('/login');
+
+$mech->submit_form(with_fields =>  {
+                                    username => 'pinco',
+                                    password => 'pallino',
+                                   },
+                   button => 'submit');
+
+$mech->content_contains('You are logged in') or diag $mech->content;
+
+$mech->get_ok('/user/create');
+
+$mech->submit_form(with_fields => {
+                                   username => 'pinco',
+                                   password => 'pallinopinco',
+                                   passwordrepeat => 'pallinopinco',
+                                   email => 'pinco@amusewiki.org',
+                                   emailrepeat => 'pinco@amusewiki.org',
+                                  },
+                   button => 'create');
+
+
+$mech->content_contains('already exists') or diag $mech->content;
+
+# check validation
+
+my $form = goodform();
+$form->{password} = '123';
+$form->{passwordrepeat} = '123';
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Password too short');
+
+$form = goodform();
+$form->{passwordrepeat} = 'xx';
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Passwords do not match');
+
+$form = goodform();
+$form->{emailrepeat} = 'xx';
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Emails do not match');
+
+
+$form = goodform();
+$form->{email} = $form->{emailrepeat} = 'xx@xx';
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Invalid mail');
+
+
+$form = goodform();
+$form->{username} = "_pippo_";
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Invalid username');
+
+$form = goodform();
+$form->{password} = $form->{passwordrepeat} = '1234';
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Password too short');
+
+$form = goodform();
+delete $form->{passwordrepeat};
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Some fields are missing');
+
+$form = goodform();
+$form->{username} = 'pinco';
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Such username already exists');
+
+$form = goodform();
+$form->{username} = 'root'; # root is create in 00-prepare-tests
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('Such username already exists');
+
+ok(!$site->users->find({ username => 'root' }), "But no root on the site");
+
+$form = goodform();
+$mech->submit_form(with_fields => $form,
+                   button => 'create');
+$mech->content_contains('User pincuz created!');
+
+@users = $site->users;
+
+is (scalar(@users), 2, "Now the site has two users");
+
+my $pincuz = $site->users->find({ username => 'pincuz' });
+
+is $pincuz->email, $form->{email}, "Mail ok";
+
+is $pincuz->password, $form->{password}, "password ok";
+
+ok $pincuz->active, "active ok";
+
+is $pincuz->roles->first->role, 'librarian', "Found role librarian";
+
+
+diag "Purging users";
+
+$site->users->delete;
+
+
+sub goodform {
+    return {
+            username => 'pincuz',
+            password => 'pallinopinco',
+            passwordrepeat => 'pallinopinco',
+            email => 'pinco@amusewiki.org',
+            emailrepeat => 'pinco@amusewiki.org',
+           };
+}
