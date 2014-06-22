@@ -52,7 +52,14 @@ sub index :Path :Args(0) {
         $page = $1;
     }
 
-    my ($matches, @results) = $xapian->search($query, $page);
+    my ($matches, @results);
+    eval {
+        ($matches, @results) = $xapian->search($query, $page);
+    };
+    if ($@) {
+        $c->flash(error_msg => "$@");
+    }
+
     foreach my $res (@results) {
         $res->{text} = $site->titles->by_uri($res->{pagename});
     }
