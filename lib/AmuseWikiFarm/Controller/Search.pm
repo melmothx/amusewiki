@@ -32,6 +32,7 @@ sub index :Path :Args(0) {
     my %params = %{ $c->req->params };
     if (delete $params{complex_query}) {
         delete $params{fmt};
+        my $match_any = delete $params{match_any};
         my @tokens = (delete $params{query});
         foreach my $k (keys %params) {
             my $string = $params{$k};
@@ -41,7 +42,8 @@ sub index :Path :Args(0) {
             $string =~ s/\s+$//;
             push @tokens, qq{$k:"$string"};
         }
-        $query = join(' ', @tokens);
+        my $joiner = $match_any ? ' OR ' : ' AND ';
+        $query = join($joiner, @tokens);
     }
 
     my $page = 1;
