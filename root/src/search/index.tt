@@ -1,12 +1,11 @@
 [% # -*- mode: html -*- %]
 
-<div class="center" style="padding-bottom:40px">
+<div class="col-xs-offset-3 col-xs-9" style="padding-bottom:40px">
   <h2>[% c.loc('Full text search') %]</h2>
 </div>
 
 <div>
-  <form id="search" method="post" class="form-horizontal" role="form"
-        action="#results">
+  <form id="search" method="post" class="form-horizontal" role="form">
     <div class="form-group">
       <label for="query" class="col-xs-3 control-label">
         [% c.loc('Free text') %]
