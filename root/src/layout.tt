@@ -204,6 +204,11 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/user/create') %]">
+                    [% c.loc('Create a new librarian') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for('/logout') %]">
                     [% c.loc('Logout') %]
                   </a>

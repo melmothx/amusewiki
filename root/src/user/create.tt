@@ -6,6 +6,9 @@
   [% c.loc('The user will have the same your level of access') %]
 </p>
 
+<div class="row">
+  <div class="col-md-6">
+
 <form id="create-user" method="post">
   <div class="form-group">
     <p>
@@ -52,3 +55,10 @@
     </button>
   </div>
 </form>
+
+  </div>
+  <div class="col-md-6">
+    <strong>[% c.loc('How to choose a password') %]</strong><br />
+    <img src="http://imgs.xkcd.com/comics/password_strength.png" width="90%"/>
+  </div>
+</div>
