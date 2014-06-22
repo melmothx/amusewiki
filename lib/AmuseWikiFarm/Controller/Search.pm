@@ -39,7 +39,7 @@ sub index :Path :Args(0) {
             $string =~ s/["<>]//g;
             $string =~ s/^\s+//;
             $string =~ s/\s+$//;
-            push @tokens, "$k:$string";
+            push @tokens, qq{$k:"$string"};
         }
         $query = join(' ', @tokens);
     }
