@@ -9,7 +9,7 @@
         action="#results">
     <div class="form-group">
       <label for="query" class="col-xs-3 control-label">
-        [% c.loc('Content') %]
+        [% c.loc('Free text') %]
       </label>
       <div class="col-xs-9">
         <input type="text" class="form-control" id="query" name="query"
@@ -96,6 +96,9 @@
 </div>
 <div class="well">
   <p>
+    [% c.loc("Query was") %]: [% built_query | html %]
+  </p>
+  <p>
   [% c.loc("Results found") %]: [% matches %]
   </p>
   <p>
@@ -127,8 +130,13 @@
   </li>
   [% END %]
 </div>
-[% ELSE %]
+[% ELSIF built_query %]
 <div>
-  <strong>[% c.loc("No result found!") %]</strong>
+  <p>
+    <strong>[% c.loc("No result found!") %]</strong>
+  </p>
+  <p>
+    [% c.loc("Query was") %]: [% built_query | html %]
+  </p>
 </div>
 [% END %]

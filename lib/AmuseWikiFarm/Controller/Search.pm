@@ -66,6 +66,7 @@ sub index :Path :Args(0) {
 
     $c->stash( matches => $matches,
                range => $range,
+               built_query => $query,
                page_title => $c->loc('Search'),
                results => \@results );
 
