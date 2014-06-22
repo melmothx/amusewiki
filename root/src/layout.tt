@@ -209,6 +209,11 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/user/edit', [c.user.get('id')]) %]">
+                    [% c.loc('Update account info') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for('/logout') %]">
                     [% c.loc('Logout') %]
                   </a>

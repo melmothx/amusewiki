@@ -20,8 +20,8 @@
     </p>
     <p>
       <label for="password">
-          [% c.loc('Password, minimum 8 characters') %]
-          <strong>[% c.loc('Please do not use a valuable password') %]</strong>
+          [% c.loc('Password, minimum 8 characters.') %]<br />
+          <strong>[% c.loc('Please do not use a valuable password.') %]</strong>
       </label>
       <input class="form-control" type="password" name="password"
              id="password" value="" />

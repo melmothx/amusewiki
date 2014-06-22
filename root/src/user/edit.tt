@@ -1,0 +1,48 @@
+[%# -*- mode:html -*- %]
+
+<h2>[% c.loc('Edit user [_1]', user.username) %]</h2>
+
+<div class="row">
+  <div class="col-md-6">
+    <form id="create-user" method="post">
+      <div class="form-group">
+        <p>
+          <label for="password">
+            [% c.loc('Password, minimum 8 characters.') %] <br />
+            <strong>[% c.loc('Please do not use a valuable password.') %]</strong>
+          </label>
+          <input class="form-control" type="password" name="password"
+                 id="password" value="" />
+        </p>
+        <p>
+          <label for="passwordrepeat">
+            [% c.loc('Repeat password') %]
+          </label>
+          <input class="form-control" type="password" name="passwordrepeat"
+                 id="passwordrepeat" value="" />
+        </p>
+        <p>
+          <label for="email">
+            [% c.loc('Email') %]
+          </label>
+          <input class="form-control" type="text" name="email"
+                 id="email" value="[% user.email | html %]" />
+        </p>
+        <p>
+          <label for="email">
+            [% c.loc('Repeat email') %]
+          </label>
+          <input class="form-control" type="text" name="emailrepeat"
+                 id="emailrepeat" value="" />
+        </p>
+        <button type="submit" class="btn btn-default" name="update" value="update">
+          [% c.loc('Update') %]
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <strong>[% c.loc('How to choose a password') %]</strong><br />
+    <img src="http://imgs.xkcd.com/comics/password_strength.png" width="90%"/>
+  </div>
+</div>

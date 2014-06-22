@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 42;
+use Test::More tests => 60;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -150,7 +150,7 @@ $form = goodform();
 $form->{email} = $form->{emailrepeat} = 'xx@xx';
 $mech->submit_form(with_fields => $form,
                    button => 'create');
-$mech->content_contains('Invalid mail');
+$mech->content_contains('Invalid email');
 
 
 $form = goodform();
@@ -205,10 +205,85 @@ ok $pincuz->active, "active ok";
 is $pincuz->roles->first->role, 'librarian', "Found role librarian";
 
 
+$mech->get_ok( '/logout' );
+
+like $mech->uri, qr{/login}, "Bounced to login";
+like $mech->content, qr{You have logged out}, "status message correct";
+
+# now, pincuz log in and updates its info
+
+$mech->submit_form(with_fields =>  {
+                                    username => $pincuz->username,
+                                    password => $pincuz->password,
+                                   },
+                   button => 'submit');
+
+$mech->content_contains('You are logged in') or diag $mech->content;
+
+my $userid = $pincuz->id;
+
+die "Test are broken" if $userid < 4;
+
+foreach my $i (1..3) {
+    $mech->get("/user/edit/$i");
+    is $mech->status, "403", "librarian can't access other editing";
+}
+
+$mech->get('/');
+
+$mech->follow_link(text_regex => qr/Update account info/);
+
+is ($mech->uri->path, '/user/edit/' . $pincuz->id,
+    "Landed on " . $mech->uri->path);
+
+
+
+$mech->submit_form(button => 'update',
+                   with_fields => {
+                                   password => 'pippo',
+                                   passwordrepeat => 'pippo',
+                                   email => 'xxx',
+                                   emailrepeat => 'xxx',
+                                  });
+
+$mech->content_lacks("Password updated");
+$mech->content_contains("Password too short");
+$mech->content_contains("Invalid email");
+
+$mech->submit_form(button => 'update',
+                   with_fields => {
+                                   password => 'pippox',
+                                   passwordrepeat => 'pippo',
+                                   email => 'xxxx',
+                                   emailrepeat => 'xxx',
+                                  });
+
+$mech->content_lacks("Password updated");
+$mech->content_contains("Passwords do not match");
+$mech->content_contains("Emails do not match");
+
+my $newpassword = 'pippoxxxxx';
+my $newemail = 'pipppppo@amusewiki.org';
+
+$mech->submit_form(button => 'update',
+                   with_fields => {
+                                   password => $newpassword,
+                                   passwordrepeat => $newpassword,
+                                   email => $newemail,
+                                   emailrepeat => $newemail,
+                                  });
+
+$mech->content_contains("Password updated");
+$mech->content_contains("Email updated");
+
+$pincuz->discard_changes;
+is ($pincuz->email, $newemail, "Email correctly changed");
+is ($pincuz->password, $newpassword, "Password correctly changed");
+
+
 diag "Purging users";
 
 $site->users->delete;
-
 
 sub goodform {
     return {

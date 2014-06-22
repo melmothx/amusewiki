@@ -46,6 +46,8 @@ install in the session the key C<i_am_human>.
 
 use Email::Valid;
 
+use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
+
 sub login :Path('/login') :Args(0) {
     my ( $self, $c ) = @_;
     if ($c->user_exists) {
@@ -146,12 +148,23 @@ sub create :Chained('user') :Args(0) {
         my %insertion;
         $c->log->debug("Validating");
         my $missing = 0;
-        foreach my $f (qw/username password passwordrepeat
-                          email emailrepeat/) {
+        my @fields = qw/username password passwordrepeat
+                        email emailrepeat/;
+        foreach my $f (@fields) {
             $missing++ unless $params{$f};
         }
+
         if ($missing) {
             $c->flash(error_msg => $c->loc('Some fields are missing, all are required'));
+            return;
+        }
+
+        my $toolong = 0;
+        foreach my $f (@fields) {
+            $toolong++ if length($params{$f}) > MAXLENGTH;
+        }
+        if ($toolong) {
+            $c->flash(error_msg => $c->loc('Some fields are too long'));
             return;
         }
 
@@ -169,12 +182,12 @@ sub create :Chained('user') :Args(0) {
             $insertion{email} = $mail;
         }
         else {
-            $c->flash(error_msg => $c->loc('Invalid mail'));
+            $c->flash(error_msg => $c->loc('Invalid email'));
             return;
         }
 
         # check password
-        if (length($params{password}) > 7) {
+        if (length($params{password}) > MINPASSWORD) {
             $insertion{password} = $params{password};
         }
         else {
@@ -229,7 +242,64 @@ sub create :Chained('user') :Args(0) {
 }
 
 sub edit :Chained('user') :Args(1) {
-    my ($self, $c) = @_;
+    my ($self, $c, $id) = @_;
+    unless ($c->user->get('id') eq $id or
+            $c->check_user_roles(qw/root/)) {
+        $c->detach('/not_permitted');
+        return;
+    }
+    my $user = $c->model('DB::User')->find($id);
+    die "This should not happen" unless $user;
+
+    my %params = %{ $c->request->params };
+    if ($params{update}) {
+        my @msgs;
+        my @errors;
+        # password
+        if ($params{passwordrepeat} && $params{password}) {
+            if ($params{passwordrepeat} eq $params{password}) {
+                if (length($params{password}) > MINPASSWORD and
+                    length($params{password}) < MAXLENGTH) {
+                    $user->password($params{password});
+                    push @msgs, $c->loc("Password updated");
+                }
+                else {
+                    push @errors, $c->loc("Password too short");
+                }
+            }
+            else {
+                push @errors, $c->loc("Passwords do not match");
+            }
+        }
+        # email
+        if ($params{emailrepeat} && $params{email}) {
+            if ($params{emailrepeat} eq $params{email}) {
+                if (length($params{email}) < MAXLENGTH) {
+                    if (my $email = Email::Valid->address($params{email})) {
+                        $user->email($params{email});
+                        push @msgs, $c->loc("Email updated");
+                    }
+                    else {
+                        push @errors, $c->loc('Invalid email');
+                    }
+                }
+                else {
+                    push @errors, $c->loc('Some fields are too long');
+                }
+            }
+            else {
+                push @errors, $c->loc('Emails do not match');
+            }
+        }
+        if ($user->is_changed) {
+            $user->update->discard_changes;
+            $c->flash(status_msg => join("\n", @msgs));
+        }
+        if (@errors) {
+            $c->flash(error_msg => join("\n", @errors));
+        }
+    }
+    $c->stash(user => $user);
 }
 
 
