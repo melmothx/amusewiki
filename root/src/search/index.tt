@@ -5,7 +5,7 @@
 </div>
 
 <div>
-  <form id="search" method="post" class="form-horizontal" role="form">
+  <form id="search" method="get" class="form-horizontal" role="form">
     <div class="form-group">
       <label for="query" class="col-xs-3 control-label">
         [% c.loc('Free text') %]
