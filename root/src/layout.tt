@@ -242,12 +242,12 @@
     <div class="container">
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
-        [% c.flash.status_msg %]
+        [% c.flash.status_msg | html %]
       </div>
       [% END %]
       [% IF c.flash.error_msg %]
       <div class="alert alert-warning" id="error_message">
-        [% c.flash.error_msg %]
+        [% c.flash.error_msg | html %]
       </div>
       [% END %]
       <div id="widepage">
