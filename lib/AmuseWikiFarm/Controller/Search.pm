@@ -29,9 +29,24 @@ sub index :Path :Args(0) {
     # $xapian->page(1);
 
     my $query = $c->req->params->{query};
+    my %params = %{ $c->req->params };
+    if (delete $params{complex_query}) {
+        delete $params{fmt};
+        my @tokens = (delete $params{query});
+        foreach my $k (keys %params) {
+            my $string = $params{$k};
+            next unless $string =~ m/\w/;
+            $string =~ s/["<>]//g;
+            $string =~ s/^\s+//;
+            $string =~ s/\s+$//;
+            push @tokens, "$k:$string";
+        }
+        $query = join(' ', @tokens);
+    }
 
     my $page = 1;
-    if ($c->req->params->{page} && $c->req->params->{page} =~ m/^([0-9]+)$/) {
+    if ($c->req->params->{page} and
+        $c->req->params->{page} =~ m/([1-9][0-9]*)/) {
         $page = $1;
     }
 

@@ -40,7 +40,7 @@ has xapian_indexer => (
 has page => (
              is => 'rw',
              isa => 'Int',
-             default => sub { return 10 },
+             default => sub { return 50 },
             );
 
 sub xapian_dir {
