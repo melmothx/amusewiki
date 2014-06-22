@@ -30,8 +30,9 @@ I think this was present but got lost somehow
 * DONE Clear the log dir before starting a job
   CLOSED: [2014-06-09 lun 14:25]
 
-* TODO Admin page for user and site creation
-
+* DONE Admin page for user creation
+  CLOSED: [2014-06-22 dom 12:03]
+* TODO admin page for site creation/modification
 * TODO use a macro for loc in the templates
 
 See tasks/dispaly.tt for an example
