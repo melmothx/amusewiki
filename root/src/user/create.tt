@@ -20,9 +20,8 @@
     </p>
     <p>
       <label for="password">
-        <a href="http://xkcd.com/936/" target="_blank">
           [% c.loc('Password, minimum 8 characters') %]
-        </a>
+          <strong>[% c.loc('Please do not use a valuable password') %]</strong>
       </label>
       <input class="form-control" type="password" name="password"
              id="password" value="" />
