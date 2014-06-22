@@ -27,6 +27,9 @@ Every site can and should have one or more librarians with login. They
 are able to access the revisions, approve the texts, etc. Special
 pages are always reserved for them.
 
+They can also create fellow librarians which will share the same
+privileges. They are peers and they can create peers.
+
 *** human permissions
 
 This is not strictly speaking a role, because no login is required.
