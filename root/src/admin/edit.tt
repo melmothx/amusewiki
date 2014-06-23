@@ -2,8 +2,251 @@
 
 <h2>[% c.loc('Edit site [_1]', esite.id) %]</h2>
 
-<form method="post">
-  
-</form>
+<div style="margin-top: 30px">
+  <form method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="mode" class="col-sm-2 control-label">
+        [% c.loc('Site mode') %]
+      </label>
+      <div class="col-sm-10">
+        <select name="mode" id="mode" class="form-control">
+          <option value="modwiki"
+                  [%- IF esite.mode == 'modwiki' %]checked="checked"[% END %]>
+                  [% c.loc('Moderated wiki') %]
+          </option>
+          <option value="blog"
+                  [%- IF esite.mode == 'blog' %]checked="checked"[% END %]>
+            [% c.loc('Blog') %]
+          </option>
+          <option value="openwiki"
+                  [%- IF esite.mode == 'openwiki' %]checked="checked"[% END %]>
+            [% c.loc('Open wiki') %]
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mode" class="col-sm-2 control-label">
+        [% c.loc('Locale') %]
+      </label>
+      <div class="col-sm-10">
+        <select name="lang" id="lang" class="form-control">
+          [% known_langs = esite.known_langs %]
+          [% SET current_language = esite.locale %]
+          [% FOREACH lang IN known_langs.keys.sort %]
+          <option [% IF current_language == lang %]selected="selected"[% END %]
+                  value="[% lang %]">
+            [% known_langs.$lang %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="magic_question" class="col-sm-2 control-label">
+        [% c.loc('Magic question') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="magic_question" id="magic_question"
+               class="form-control" value="[% esite.magic_question %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="magic_answer" class="col-sm-2 control-label">
+        [% c.loc('Magic answer') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="magic_answer" id="magic_answer"
+               class="form-control" value="[% esite.magic_answer %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fixed_category_list" class="col-sm-2 control-label">
+        [% c.loc('Fixed category list') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="fixed_category_list" id="fixed_category_list"
+               class="form-control" value="[% esite.fixed_category_list %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sitename" class="col-sm-2 control-label">
+        [% c.loc('Site name') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="sitename" id="sitename"
+               class="form-control" value="[% esite.sitename %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="siteslogan" class="col-sm-2 control-label">
+        [% c.loc('Site slogan') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="siteslogan" id="siteslogan"
+               class="form-control" value="[% esite.siteslogan %]" />
+      </div>
+    </div>
+
+    [% # theme is skipped, not sure it's actually a good idea %]
+
+    <div class="form-group">
+      <label for="logo" class="col-sm-2 control-label">
+        [% c.loc('PDF logo (absolute path or put it in texmf)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="logo" id="logo"
+               class="form-control" value="[% esite.logo %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mail_notify" class="col-sm-2 control-label">
+        [% c.loc('Notify mail: blank field will disable them') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="mail_notify" id="mail_notify"
+               class="form-control" value="[% esite.mail_notify %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mail_from" class="col-sm-2 control-label">
+        [% c.loc('Site mail (From field)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="mail_from" id="mail_from"
+               class="form-control" value="[% esite.mail_from %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="canonical" class="col-sm-2 control-label">
+        [% c.loc('Full site canonical URL, including protocol') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="canonical" id="canonical"
+               class="form-control" value="[% esite.canonical %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sitegroup" class="col-sm-2 control-label">
+        [% c.loc('Site group') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="sitegroup" id="sitegroup"
+               class="form-control" value="[% esite.sitegroup %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bb_page_limit" class="col-sm-2 control-label">
+        [% c.loc('Bookbuilder page limit (integer, default unlimited)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="bb_page_limit" id="bb_page_limit"
+               class="form-control" value="[% esite.bb_page_limit %]" />
+      </div>
+    </div>
+
+    <div class="col-sm-offset-2 col-sm-10">
+      <h4>[% c.loc('Formats') %]</h4>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.pdf %]checked="checked"[% END %]
+                 name="pdf" />
+          [% c.loc('Plain PDF') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.tex %]checked="checked"[% END %]
+                 name="tex" />
+          [% c.loc('TeX') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.a4_pdf %]checked="checked"[% END %]
+                 name="a4_pdf" />
+          [% c.loc('A4 imposed PDF') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.lt_pdf %]checked="checked"[% END %]
+                 name="lt_pdf" />
+          [% c.loc('Letter imposed PDF') %]
+        </label>
+      </div>
+    </div>
 
 
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.html %]checked="checked"[% END %]
+                 name="html" />
+          [% c.loc('HTML') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.bare_html %]checked="checked"[% END %]
+                 name="bare_html" />
+          [% c.loc('Bare HTML, needed by the application') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.epub %]checked="checked"[% END %]
+                 name="epub" />
+          [% c.loc('EPUB') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.zip %]checked="checked"[% END %]
+                 name="epub" />
+          [% c.loc('ZIP archive with sources, needed by the bookbuilder') %]
+        </label>
+      </div>
+    </div>
+  </form>
+</div>
