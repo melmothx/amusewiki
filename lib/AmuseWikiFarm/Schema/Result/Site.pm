@@ -42,7 +42,7 @@ __PACKAGE__->table("site");
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 8
+  size: 16
 
 =head2 mode
 
@@ -231,7 +231,7 @@ __PACKAGE__->table("site");
 
 __PACKAGE__->add_columns(
   "id",
-  { data_type => "varchar", is_nullable => 0, size => 8 },
+  { data_type => "varchar", is_nullable => 0, size => 16 },
   "mode",
   {
     data_type => "varchar",
@@ -452,8 +452,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-16 21:50:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WcoNBQjlQ62zw8BfmJgrjA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-23 18:13:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EDWGypoUzI8y6unwTc9/TQ
 
 =head2 other_sites
 

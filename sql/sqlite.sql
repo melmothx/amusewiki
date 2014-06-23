@@ -13,7 +13,7 @@ CREATE TABLE vhost (
 );
 
 CREATE TABLE site (
-       id VARCHAR(8) PRIMARY KEY,
+       id VARCHAR(16) PRIMARY KEY,
        mode VARCHAR(16) NOT NULL DEFAULT 'blog',
        locale VARCHAR(3) NOT NULL DEFAULT 'en',
 
