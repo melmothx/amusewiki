@@ -66,7 +66,7 @@ sub list :Chained('sites') :PathPart('') :Args(0)  {
 
 sub edit :Chained('sites') :Args() {
     my ($self, $c, $id) = @_;
-    my %params = %{ $c->request->params };
+    my %params = %{ $c->request->body_parameters };
     my $site;
     my $listing_url = $c->uri_for_action('/admin/list');
 
