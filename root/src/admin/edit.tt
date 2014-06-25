@@ -157,7 +157,7 @@
 
     <div class="form-group">
       <label for="bb_page_limit" class="col-sm-2 control-label">
-        [% c.loc('Bookbuilder page limit (integer, default unlimited)') %]
+        [% c.loc('Bookbuilder page limit (integer)') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="bb_page_limit" id="bb_page_limit"
@@ -377,7 +377,8 @@
 
     <div class="form-group more-option">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary" name="update" value="update">
+        <button type="submit" class="btn btn-primary" name="edit_site"
+                value="update">
           [% c.loc('Update') %]
         </button>
       </div>

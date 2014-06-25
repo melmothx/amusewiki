@@ -1505,6 +1505,94 @@ sub my_authors {
     return $self->categories->by_type('author');
 }
 
+=head2 update_from_params(\%params)
+
+If the params is valid, perform an update, otherwise return the error.
+
+=cut
+
+
+sub update_from_params {
+    my ($self, $params) = @_;
+    my @errors;
+    # allwoing to set bare_html, we get the chance to the sloppy admin
+    # to break the app, but hey...
+
+    # first round: booleans. Here there is not much to do. If it's set, 1,
+    # otherwise 0
+    my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub twoside/);
+    foreach my $boolean (@booleans) {
+        if (delete $params->{$boolean}) {
+            $self->$boolean(1);
+        }
+        else {
+            $self->$boolean(0);
+        }
+    }
+
+    # strings: same here, nothing which should go too wrong, save for
+    # the the length.
+    my @strings = (qw/magic_answer magic_question fixed_category_list
+                      sitename siteslogan logo mail_notify mail_from
+                      canonical sitegroup ttdir/);
+    foreach my $string (@strings) {
+        my $param = delete $params->{$string};
+        if (defined $param) {
+            if (length($param) < 256) {
+                $self->$string($param);
+            }
+            else {
+                push @errors, "$string $param exceeds 255 chars";
+            }
+        }
+        else {
+            push @errors, "$string is not defined!";
+        }
+    }
+
+    # ranges
+    my %ranges = (
+                  division => [9, 15],
+                  fontsize => [10, 12],
+                  bb_page_limit => [10, 2000], # 2000 pages should be enough...
+                 );
+
+    foreach my $integer (keys %ranges) {
+        my $int = delete $params->{$integer};
+        unless (defined $int and $int =~ m/^[1-9][0-9]*$/) {
+            push @errors, "$integer $int doesn't look like an integer";
+            next;
+        }
+        my $range = $ranges{$integer};
+        if ($int < $range->[0] and $int > $range->[1]) {
+            push @errors, "$integer $int is out of range";
+        }
+        else {
+            $self->$integer($int);
+        }
+    }
+
+    # most critical: strings which need to have exactly defined values
+    #      'mode' => 'modwiki',
+    #      'papersize' => 'a4',
+    #      'mainfont' => 'Charis SIL',
+    #      'locale' => 'hr',
+    #      'bcor' => '0mm'
+
+    if (%$params) {
+        push @errors, "Unprocessed parameters found: "
+          . join(", ", keys %$params);
+    }
+
+
+    # no error? update the db
+    unless (@errors) {
+        $self->update;
+    }
+    $self->discard_changes;
+    @errors ? return join("\n", @errors) : return;
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;

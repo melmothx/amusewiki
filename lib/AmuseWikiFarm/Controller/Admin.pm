@@ -72,8 +72,11 @@ sub edit :Chained('sites') :Args() {
 
     if ($id) {
         if ($site = $c->model('DB::Site')->find($id)) {
-            if ($params{edit_site}) {
-                # edit it...
+            if (delete $params{edit_site}) {
+                if (my $err = $site->update_from_params(\%params)) {
+                    # probably the error will never get localized...
+                    $c->flash(error_msg => $c->loc($err));
+                }
             }
         }
     }
@@ -89,6 +92,7 @@ sub edit :Chained('sites') :Args() {
             else {
                 # creation
                 $site = $c->model('DB::Site')->create({ id => $id });
+                # TODO $site->initialize_git;
             }
         }
         else {
@@ -97,7 +101,6 @@ sub edit :Chained('sites') :Args() {
             $c->detach();
             return;
         }
-
     }
     else {
         $c->response->redirect($listing_url);
@@ -106,11 +109,6 @@ sub edit :Chained('sites') :Args() {
     $site->discard_changes;
     $c->stash(esite => $site);
 }
-
-sub site_params_for_db :Private {
-    my ($self, $params) = @_;
-}
-
 
 =encoding utf8
 
