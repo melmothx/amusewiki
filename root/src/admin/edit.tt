@@ -1,9 +1,18 @@
 [%# -*- mode:html -*- %]
 
+[%# c.loc('A4 paper'); %]
+[%# c.loc('A5 paper'); %]
+[%# c.loc('A6 paper (also suitable for e-readers)'); %]
+[%# c.loc('Letter paper'); %]
+[%# c.loc('Half Letter paper'); %]
+[%# c.loc('Quarter Letter paper'); %]
+
+
 <h2>[% c.loc('Edit site [_1]', esite.id) %]</h2>
 
 <div style="margin-top: 30px">
-  <form method="post" class="form-horizontal" role="form">
+  <form method="post" class="form-horizontal" role="form"
+        onsubmit="return confirm('[% c.loc('Are you sure?') %]');">
     <div class="form-group">
       <label for="mode" class="col-sm-2 control-label">
         [% c.loc('Site mode') %]
@@ -27,11 +36,11 @@
     </div>
 
     <div class="form-group">
-      <label for="mode" class="col-sm-2 control-label">
+      <label for="locale" class="col-sm-2 control-label">
         [% c.loc('Locale') %]
       </label>
       <div class="col-sm-10">
-        <select name="lang" id="lang" class="form-control">
+        <select name="locale" id="lang" class="form-control">
           [% known_langs = esite.known_langs %]
           [% SET current_language = esite.locale %]
           [% FOREACH lang IN known_langs.keys.sort %]
@@ -164,9 +173,9 @@
       <div class="col-sm-offset-2 col-sm-10">
         <label>
           <input type="checkbox"
-                 [% IF esite.pdf %]checked="checked"[% END %]
-                 name="pdf" />
-          [% c.loc('Plain PDF') %]
+                 [% IF esite.tex %]checked="checked"[% END %]
+                 name="tex" />
+          [% c.loc('TeX') %]
         </label>
       </div>
     </div>
@@ -175,9 +184,9 @@
       <div class="col-sm-offset-2 col-sm-10">
         <label>
           <input type="checkbox"
-                 [% IF esite.tex %]checked="checked"[% END %]
-                 name="tex" />
-          [% c.loc('TeX') %]
+                 [% IF esite.pdf %]checked="checked"[% END %]
+                 name="pdf" />
+          [% c.loc('Plain PDF') %]
         </label>
       </div>
     </div>
@@ -246,6 +255,131 @@
                  name="epub" />
           [% c.loc('ZIP archive with sources, needed by the bookbuilder') %]
         </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="ttdir" class="col-sm-2 control-label">
+        [% c.loc('Directory with templates. Do not set it unless you know what you are doing') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ttdir" id="ttdir"
+               class="form-control" value="[% esite.ttdir %]" />
+      </div>
+    </div>
+
+
+    [% # pick these options from the bookbuilder %]
+    [% SET bb = c.model('BookBuilder') %]
+    <div class="form-group">
+      <label for="papersize" class="col-sm-2 control-label">
+        [% c.loc('Choose a paper format') %]
+      </label>
+      <div class="col-sm-10">
+        <select name="papersize" id="papersize" class="form-control">
+          [% SET mypapers = bb.paper_sizes %]
+          [% FOREACH paper IN bb.paper_sizes_sorted %]
+          <option value="[% paper %]"
+                  [% IF esite.papersize == paper %]selected="selected"[% END %]>
+            [% c.loc(mypapers.$paper) %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="division" class="col-sm-2 control-label">
+        [% c.loc('Division factor') %]
+        ([% c.loc('Higher division factor means narrower margins') %])
+      </label>
+      <div class="col-sm-10">
+        <select name="division" id="division" class="form-control">
+          [% SET mydiv = 9 %]
+          [% WHILE 16 > mydiv %]
+          <option value="[% mydiv %]"
+                  [% IF mydiv == esite.division -%]
+                  selected="selected"[% END %]>
+            [% mydiv %]
+            [% mydiv = mydiv + 1 %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bcor" class="col-sm-2 control-label">
+        [% c.loc('Binding correction in millimeters (additional inner margin)') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="bcor" id="bcor" class="form-control">
+          [% bcor_counter = 0 %]
+          [% WHILE bcor_counter < 40 %]
+          [% bcor_option = bcor_counter _ 'mm' %]
+          <option value="[% bcor_option %]"
+                  [% IF bcor_option == esite.bcor -%]
+                  selected="selected"[% END %]>
+            [% bcor_option %]
+          </option>
+          [% bcor_counter = bcor_counter + 1 %]
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% c.loc('Font size') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="fontsize" id="fontsize" class="form-control">
+          [% SET myfontsizes = bb.font_sizes %]
+          [% FOREACH size IN bb.font_sizes.keys.sort %]
+          <option value="[% size %]"
+                  [% IF esite.fontsize == size %]selected="selected"[% END %]>
+            [% size %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% c.loc('Main font') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="mainfont" id="mainfont" class="form-control">
+          [% SET myfonts = bb.avail_fonts %]
+          [% FOREACH font IN bb.avail_fonts_sorted %]
+          [% SET myfont = myfonts.$font %]
+          <option value="[% myfont %]"
+                  [% IF esite.mainfont == myfont %]selected="selected"[% END %]>
+            [% myfont %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.twoside %]checked="checked"[% END %]
+                 name="twoside" />
+          [% c.loc('Two side layout') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group more-option">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary" name="update" value="update">
+          [% c.loc('Update') %]
+        </button>
       </div>
     </div>
   </form>

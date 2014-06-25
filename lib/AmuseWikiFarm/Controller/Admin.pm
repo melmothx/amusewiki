@@ -99,6 +99,10 @@ sub edit :Chained('sites') :Args() {
         }
 
     }
+    else {
+        $c->response->redirect($listing_url);
+        return;
+    }
     $site->discard_changes;
     $c->stash(esite => $site);
 }
