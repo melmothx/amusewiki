@@ -57,7 +57,7 @@ sub sites :Chained('root') :CaptureArgs(0) {
     $c->stash(all_sites => $rs);
 }
 
-sub list :Chained('sites') :Args(0) {
+sub list :Chained('sites') :PathPart('') :Args(0)  {
     my ($self, $c) = @_;
     my $sites = delete $c->stash->{all_sites};
     $c->stash(page_title => $c->loc('All sites'),
