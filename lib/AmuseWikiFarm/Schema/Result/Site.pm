@@ -60,20 +60,23 @@ __PACKAGE__->table("site");
 
 =head2 magic_question
 
-  data_type: 'text'
+  data_type: 'varchar'
   default_value: (empty string)
   is_nullable: 0
+  size: 255
 
 =head2 magic_answer
 
-  data_type: 'text'
+  data_type: 'varchar'
   default_value: (empty string)
   is_nullable: 0
+  size: 255
 
 =head2 fixed_category_list
 
-  data_type: 'text'
+  data_type: 'varchar'
   is_nullable: 1
+  size: 255
 
 =head2 sitename
 
@@ -100,7 +103,7 @@ __PACKAGE__->table("site");
 
   data_type: 'varchar'
   is_nullable: 1
-  size: 32
+  size: 255
 
 =head2 mail_notify
 
@@ -125,7 +128,7 @@ __PACKAGE__->table("site");
 
   data_type: 'varchar'
   is_nullable: 1
-  size: 32
+  size: 255
 
 =head2 bb_page_limit
 
@@ -186,7 +189,7 @@ __PACKAGE__->table("site");
   data_type: 'varchar'
   default_value: (empty string)
   is_nullable: 0
-  size: 1024
+  size: 255
 
 =head2 papersize
 
@@ -242,11 +245,11 @@ __PACKAGE__->add_columns(
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "magic_question",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "magic_answer",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "fixed_category_list",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "sitename",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "siteslogan",
@@ -254,7 +257,7 @@ __PACKAGE__->add_columns(
   "theme",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 32 },
   "logo",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "mail_notify",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "mail_from",
@@ -262,7 +265,7 @@ __PACKAGE__->add_columns(
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "sitegroup",
-  { data_type => "varchar", is_nullable => 1, size => 32 },
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "bb_page_limit",
   { data_type => "integer", default_value => 1000, is_nullable => 0 },
   "tex",
@@ -282,7 +285,7 @@ __PACKAGE__->add_columns(
   "zip",
   { data_type => "integer", default_value => 1, is_nullable => 0 },
   "ttdir",
-  { data_type => "varchar", default_value => "", is_nullable => 0, size => 1024 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "papersize",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 64 },
   "division",
@@ -452,8 +455,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-23 18:13:45
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:EDWGypoUzI8y6unwTc9/TQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-25 22:00:35
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wtfJ/sTaY9aSKNOSuRcOGA
 
 =head2 other_sites
 

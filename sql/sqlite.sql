@@ -18,21 +18,21 @@ CREATE TABLE site (
        locale VARCHAR(3) NOT NULL DEFAULT 'en',
 
        -- TODO: move these things in a setting table, it's too cluttered
-       magic_question TEXT NOT NULL DEFAULT '',
-       magic_answer   TEXT NOT NULL DEFAULT '',
+       magic_question VARCHAR(255) NOT NULL DEFAULT '',
+       magic_answer   VARCHAR(255) NOT NULL DEFAULT '',
 
        -- list of space separated category codes, if you want this feature
-       fixed_category_list TEXT,
+       fixed_category_list VARCHAR(255),
 
        -- canonical url for RSS and other things
        sitename VARCHAR(255) NOT NULL DEFAULT '',
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
        theme VARCHAR(32) NOT NULL DEFAULT '',
-       logo VARCHAR(32),
+       logo VARCHAR(255), -- could be a path, so keep it at 255
        mail_notify VARCHAR(255),
        mail_from   VARCHAR(255),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
-       sitegroup VARCHAR(32),
+       sitegroup VARCHAR(255), -- overkill, but who cares
 
        -- book builder page limit
        bb_page_limit INTEGER NOT NULL DEFAULT 1000,
@@ -45,7 +45,7 @@ CREATE TABLE site (
        bare_html INTEGER NOT NULL DEFAULT 1,
        epub      INTEGER NOT NULL DEFAULT 1,
        zip       INTEGER NOT NULL DEFAULT 1,
-       ttdir     VARCHAR(1024) NOT NULL DEFAULT '',
+       ttdir     VARCHAR(255) NOT NULL DEFAULT '',
        -- tex options
        papersize VARCHAR(64) NOT NULL DEFAULT '', -- will pick the generic
        division INTEGER NOT NULL DEFAULT '12',
