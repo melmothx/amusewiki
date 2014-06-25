@@ -252,7 +252,7 @@
         <label>
           <input type="checkbox"
                  [% IF esite.zip %]checked="checked"[% END %]
-                 name="epub" />
+                 name="zip" />
           [% c.loc('ZIP archive with sources, needed by the bookbuilder') %]
         </label>
       </div>
