@@ -1637,6 +1637,22 @@ sub update_from_params {
         push @errors, "Invalid binding correction\n";
     }
 
+    my @vhosts;
+    # ignore missing vhosts
+    if (my $vhosts = delete $params->{vhosts}) {
+        @vhosts = grep { m/\w/ } split(/\s+/, $vhosts);
+        if (@vhosts) {
+            my @existing = $self->result_source->schema->resultset('Vhost')
+              ->search( {
+                         name => [ @vhosts ],
+                         site_id => { '!=' => $self->id }
+                        } );
+            foreach my $ex (@existing) {
+                push @errors, "Found existing vhost: " . $ex->name;
+            }
+        }
+    }
+
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
           . join(", ", keys %$params);
@@ -1646,7 +1662,15 @@ sub update_from_params {
     # no error? update the db
     unless (@errors) {
         $self->update;
+        if (@vhosts) {
+            # delete and reinsert, even if it doesn't feel too right
+            $self->vhosts->delete;
+            foreach my $vhost (@vhosts) {
+                $self->vhosts->create({ name => $vhost });
+            }
+        }
     }
+
     # in any case discard the changes
     $self->discard_changes;
     @errors ? return join("\n", @errors) : return;

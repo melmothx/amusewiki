@@ -377,6 +377,20 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
+        <label for="vhosts">
+          [% c.loc('Virtual hosts, one per line') %]
+        </label>
+        <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
+          [%- SET vhosts = esite.vhosts_rs -%]
+          [%- FOREACH vhost IN vhosts.all %]
+          [%- vhost.name +%]
+
+          [%- END -%]</textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-primary" name="edit_site"
                 value="update">
           [% c.loc('Update') %]
