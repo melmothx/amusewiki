@@ -160,6 +160,12 @@ sub font_sizes {
     return \%sizes;
 }
 
+sub available_fonts {
+    my $self = shift;
+    my %fonts = reverse %{ $self->avail_fonts };
+    return \%fonts;
+}
+
 sub avail_fonts {
     my %fonts = (
                  charis    => 'Charis SIL',

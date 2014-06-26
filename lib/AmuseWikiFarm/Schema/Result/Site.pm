@@ -487,6 +487,7 @@ use Unicode::Collate::Locale;
 use File::Find;
 use File::Basename qw/fileparse/;
 use Data::Dumper;
+use AmuseWikiFarm::Archive::BookBuilder;
 
 =head2 repo_root_rel
 
@@ -644,6 +645,15 @@ The filtered actions boil down to editing and publishing, where
 editing is also the creation of new texts.
 
 =cut
+
+sub available_modes {
+    return {
+            modwiki => 1,
+            openwiki => 1,
+            blog => 1,
+           };
+}
+
 
 sub human_can_edit {
     my $self = shift;
@@ -1582,6 +1592,51 @@ sub update_from_params {
     #      'locale' => 'hr',
     #      'bcor' => '0mm'
 
+    # these are select options, so just ignore wrong values
+    my $mode = delete $params->{mode};
+    if ($mode && $self->available_modes->{$mode}) {
+        $self->mode($mode);
+    }
+    else {
+        push @errors, "Wrong mode!";
+    }
+
+    my $locale = delete $params->{locale};
+    if ($locale && $self->known_langs->{$locale}) {
+        $self->locale($locale);
+    }
+    else {
+        push @errors, "Wrong locale!";
+    }
+
+
+    # for papersize and fonts, we ask the bookbuilder
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new;
+
+    my $ppsize = delete $params->{papersize};
+    if ($ppsize && $bb->paper_sizes->{$ppsize}) {
+        $self->papersize($ppsize);
+    }
+    else {
+        push @errors, "Wrong papersize!";
+    }
+
+    my $mainfont = delete $params->{mainfont};
+    if ($mainfont && $bb->available_fonts->{$mainfont}) {
+        $self->mainfont($mainfont);
+    }
+    else {
+        push @errors, "Wrong font!";
+    }
+
+    my $bcor = delete $params->{bcor};
+    if ($bcor && $bcor =~ m/^([0-9]+mm)$/) {
+        $self->bcor($1);
+    }
+    else {
+        push @errors, "Invalid binding correction\n";
+    }
+
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
           . join(", ", keys %$params);
@@ -1592,6 +1647,7 @@ sub update_from_params {
     unless (@errors) {
         $self->update;
     }
+    # in any case discard the changes
     $self->discard_changes;
     @errors ? return join("\n", @errors) : return;
 }

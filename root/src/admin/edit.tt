@@ -20,15 +20,15 @@
       <div class="col-sm-10">
         <select name="mode" id="mode" class="form-control">
           <option value="modwiki"
-                  [%- IF esite.mode == 'modwiki' %]checked="checked"[% END %]>
+                  [%- IF esite.mode == 'modwiki' %]selected="selected"[% END %]>
                   [% c.loc('Moderated wiki') %]
           </option>
           <option value="blog"
-                  [%- IF esite.mode == 'blog' %]checked="checked"[% END %]>
+                  [%- IF esite.mode == 'blog' %]selected="selected"[% END %]>
             [% c.loc('Blog') %]
           </option>
           <option value="openwiki"
-                  [%- IF esite.mode == 'openwiki' %]checked="checked"[% END %]>
+                  [%- IF esite.mode == 'openwiki' %]selected="selected"[% END %]>
             [% c.loc('Open wiki') %]
           </option>
         </select>
