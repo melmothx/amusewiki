@@ -1,6 +1,6 @@
 [% # -*- mode: html -*- %]
 
-[% MACRO l(text, args) BLOCK; c.localize(text, args) | html ; END %]
+
 
 <!--
   Status:

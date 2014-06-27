@@ -8,6 +8,7 @@ __PACKAGE__->config(
     TEMPLATE_EXTENSION => '.tt',
     ENCODING => 'utf8',
     WRAPPER => 'wrapper.tt',
+    PRE_PROCESS => 'macros.tt',
     render_die => 1,
 );
 
