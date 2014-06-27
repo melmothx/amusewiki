@@ -1,19 +1,12 @@
 [% # -*- mode: html -*- %]
-
-
-
-<!--
-  Status:
-  'pending':     '[%- c.loc('pending')     -%]',
-  'taken':       '[%- c.loc('taken')       -%]',
-  'completed':   '[%- c.loc('completed')   -%]',
-  'failed':      '[%- c.loc('failed')      -%]'
-  };
--->
+[%# - loc('pending')     -%]
+[%# - loc('taken')       -%]
+[%# - loc('completed')   -%]
+[%# - loc('failed')      -%]
 
 [% # this will be hidden by the js right away, so it's nojs only %]
 <div class="nojs">
-  [% c.loc('Status') %]: [% job.status_loc | html %]<br />
+  [% loc('Status') %]: [% job.status_loc | html %]<br />
   [% IF job.produced %]
   <a href="[% job.produced_uri %]">[% job.message | html %]</a>
   [% END %]
@@ -28,7 +21,7 @@
   </h3>
   [% ELSE %]
   <p>
-    [% c.loc('Please reload your page') %]. [% c.loc('Status') %]:
+    [% loc('Please reload your page') %]. [% loc('Status') %]:
     [% job.status_loc | html  %]
   </p>
   [% END %]
@@ -46,7 +39,7 @@
 <div>
   <div class="center">
     <strong>
-      [% c.loc('Status') %]: <span class="bbstatusstring"></span><br />
+      [% loc('Status') %]: <span class="bbstatusstring"></span><br />
       <img id="waiting" src="[% c.uri_for('/static/images/ajax-loader.gif') %]" />
     </strong>
   </div>

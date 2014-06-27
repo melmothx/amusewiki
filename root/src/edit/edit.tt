@@ -11,57 +11,57 @@ $(document).ready(function() {
 	    previewParserPath:	'',
 	    onShiftEnter:		{keepDefault:false, openWith:'\n\n'},
 	    markupSet: [
-	        {name:'[% c.loc("Heading") %] 1 ([% c.loc("Part, for larger books only") %])',
+	        {name:'[% jsloc("Heading") %] 1 ([% jsloc("Part, for larger books only") %])',
 	         key:'1',
-             placeHolder:'[% c.loc("Your part here...") %]',
+             placeHolder:'[% jsloc("Your part here...") %]',
 	         openWith:'\n* '},
 
-	        {name:'[% c.loc("Heading") %] 2 ([% c.loc("Chapter, only for chapter divisions in books") %])',
+	        {name:'[% jsloc("Heading") %] 2 ([% jsloc("Chapter, only for chapter divisions in books") %])',
 	         key:'2',
-	         placeHolder:'[% c.loc("Your chapter here...") %]',
+	         placeHolder:'[% jsloc("Your chapter here...") %]',
 	         openWith:'\n** ' },
 
-	        {name:'[% c.loc("Heading") %] 3 ([% c.loc("generic sectioning, good for articles") %])',
+	        {name:'[% jsloc("Heading") %] 3 ([% jsloc("generic sectioning, good for articles") %])',
              key:'3',
              openWith:'\n*** ',
-             placeHolder:'[% c.loc("Your section here...") %]' },
+             placeHolder:'[% jsloc("Your section here...") %]' },
 
-	        {name:'[% c.loc("Heading") %] 4 ([% c.loc("subsection") %])',
+	        {name:'[% jsloc("Heading") %] 4 ([% jsloc("subsection") %])',
              key:'4',
              openWith:'\n**** ',
-             placeHolder:'[% c.loc("Your subsection here...") %]' },
+             placeHolder:'[% jsloc("Your subsection here...") %]' },
 
-	        {name:'[% c.loc("Heading") %] 5 ([% c.loc("sub-sub-section") %])',
+	        {name:'[% jsloc("Heading") %] 5 ([% jsloc("sub-sub-section") %])',
              key:'5',
              openWith:'\n***** ',
-             placeHolder:'[% c.loc("Your sub-sub-section (or description heading) here...") %]' },
+             placeHolder:'[% jsloc("Your sub-sub-section (or description heading) here...") %]' },
 
-	        {name:'[% c.loc("Italic") %]',
+	        {name:'[% jsloc("Italic") %]',
              key:'I', openWith:' *', closeWith:'* '},
 
-	        {name:'[% c.loc("Bold") %]',
+	        {name:'[% jsloc("Bold") %]',
              key:'B', openWith:' **', closeWith:'** '},
 
-	        {name:'[% c.loc("Bulleted List") %]',
+	        {name:'[% jsloc("Bullet List") %]',
              openWith:'\n - ' },
 
-	        {name:'[% c.loc("Numeric List") %]',
+	        {name:'[% jsloc("Numeric List") %]',
              openWith:'\n 1. ' },
 
-	        {name:'[% c.loc("Picture") %]',
+	        {name:'[% jsloc("Picture") %]',
              key:'P',
-             replaceWith:'[[[![[% c.loc("Image url")%]]!]][[![[% c.loc("description")%]]!]]]' },
+             replaceWith:'[[[![[% jsloc("Image url")%]]!]][[![[% jsloc("description")%]]!]]]' },
 
-	        {name:'[% c.loc("Link") %]',
+	        {name:'[% jsloc("Link") %]',
              key:'L',
-             replaceWith:'[[[![[% c.loc("Url") %]:!:http://]!]][[![[% c.loc("Display url as") %]:]!]]]' },
+             replaceWith:'[[[![[% jsloc("Url") %]:!:http://]!]][[![[% jsloc("Display url as") %]:]!]]]' },
 
-	        {name:'[% c.loc("Quotes") %]',
+	        {name:'[% jsloc("Quotes") %]',
              multiline:true,
              openBlockWith:'\n<quote>\n',
              closeBlockWith:'\n</quote>\n'},
 
-	        {name:'[% c.loc("Verbatim block") %]',
+	        {name:'[% jsloc("Verbatim block") %]',
              multiline:true,
              openBlockWith:'\n<example>\n',
              closeBlockWith:'\n</example>\n'},
@@ -79,29 +79,29 @@ $(document).ready(function() {
 
 [% SET attachments = revision.attached_files %]
 [% IF attachments.size %]
-<h3>[% c.loc('Attached files') %]</h3>
+<h3>[% loc('Attached files') %]</h3>
 <ul>
   [% FOREACH attach IN attachments %]
   <li><code>[% attach %]</code><br>
-    [% c.loc('Use it in the body as') %] <code>[[[%- attach -%]]]</code>
-    [% c.loc('or') %] <code>[[[%- attach -%]][<em>[% c.loc ('My description') %]</em>]]</code>
+    [% loc('Use it in the body as') %] <code>[[[%- attach -%]]]</code>
+    [% loc('or') %] <code>[[[%- attach -%]][<em>[% c.loc ('My description') %]</em>]]</code>
   </li>
   [% END %]
 </ul>
 [% END %]
 
-<h3>[% c.loc('Editing') %] [% revision.title.uri %]</h3>
+<h3>[% loc('Editing') %] [% revision.title.uri %]</h3>
 
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform">
   <div class="form-group">
     <p>
-      <label for="attachment">[% c.loc('Add an attachment') %]</label>
+      <label for="attachment">[% loc('Add an attachment') %]</label>
       <input id="attachment" name="attachment" type="file" />
     </p>
     <p>
       <button type="submit" name="upload" value="upload" class="btn btn-default">
-        [% c.loc('Upload') %]
+        [% loc('Upload') %]
       </button>
       <br />
     </p>
@@ -118,7 +118,7 @@ $(document).ready(function() {
       <input id="fix-typo"
              [% IF c.req.params.fix_typography %]checked="checked"[% END %]
              type="checkbox" name="fix_typography" />
-      [% c.loc('Fix typography') %]
+      [% loc('Fix typography') %]
       </label>
     </div>
     <div class="checkbox">
@@ -126,12 +126,12 @@ $(document).ready(function() {
         <input id="fix-links"
                [% IF c.req.params.fix_links %]checked="checked"[% END %]
                type="checkbox" name="fix_links" />
-        [% c.loc('Make all links active') %]
+        [% loc('Make all links active') %]
       </label>
     </div>
     <div>
       <label for="rev-message">
-        [% c.loc('Please describe shortly what you did') %]
+        [% loc('Please describe shortly what you did') %]
       </label>
       <textarea rows="5" cols="72" id="rev-message"
                 [% IF locked_editing %]readonly="readonly"[% END %]
@@ -141,15 +141,15 @@ $(document).ready(function() {
     </div>
     <div>
       <label for="email">
-        [% c.loc('Please leave a mail if you want to be contacted about this change') %]
+        [% loc('Please leave a mail if you want to be contacted about this change') %]
       </label>
       <input type="text" name="email" id="email" class="form-control" value="[% c.req.params.email | html %]"/>
       <br />
     </div>
     [% UNLESS locked_editing %]
     <p>
-      <button type="submit" class="btn btn-default" name="preview" value="preview">[% c.loc('Preview') %]</button>
-      <button type="submit" class="btn btn-default" name="commit"  value="commit">[% c.loc('Commit')  %]</button>
+      <button type="submit" class="btn btn-default" name="preview" value="preview">[% loc('Preview') %]</button>
+      <button type="submit" class="btn btn-default" name="commit"  value="commit">[% loc('Commit')  %]</button>
     </p>
     [% END %]
   </div>
@@ -160,57 +160,57 @@ $(document).ready(function() {
 
 <div id="page">
   <h2>
-    <small>[% c.loc('Preview') %]</small>
+    <small>[% loc('Preview') %]</small>
     <button type="button" id="goto-diff" class="btn btn-primary">
-      [% c.loc('Show differences in other tab') %]
+      [% loc('Show differences in other tab') %]
     </button>
   </h2>
-  <p>[% c.loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]</p>
+  <p>[% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]</p>
   <div id="preamble-container" class="well">
   <div id="preamble">
     <p id="texttitle">
-      <strong>[% c.loc('Title') %]:</strong>
+      <strong>[% loc('Title') %]:</strong>
       [% text.title %]
     </p>
 
     [% IF text.subtitle %]
     <p id="textsubtitle">
-      <strong>[% c.loc('Subtitle') %]:</strong>
+      <strong>[% loc('Subtitle') %]:</strong>
       [% text.subtitle %]
     </p>
     [% END %]
 
     [% IF (text.SORTauthors || text.author) %]
     <p id="authors">
-      <strong>[% c.loc('Authors') %]:</strong>
+      <strong>[% loc('Authors') %]:</strong>
       [% text.SORTauthors || text.author %]
     </p>
     [% END %]
 
     [% IF text.date %]
     <p id="textdate">
-      <strong>[% c.loc('Date') %]:</strong>
+      <strong>[% loc('Date') %]:</strong>
       [% text.date %]
     </p>
     [% END %]
 
     [% IF text.SORTtopics %]
     <p id="topics">
-      <strong>[% c.loc('Topics') %]:</strong>
+      <strong>[% loc('Topics') %]:</strong>
       [% text.SORTtopics %]
     </p>
     [% END %]
 
     [% IF text.source %]
     <p id="preamblesrc">
-      <strong>[% c.loc('Source') %]:</strong>
+      <strong>[% loc('Source') %]:</strong>
       [% text.source %]
     </p>
     [% END %]
 
     [% IF text.notes %]
     <p id="preamblenotes">
-      <strong>[% c.loc('Notes') %]:</strong>
+      <strong>[% loc('Notes') %]:</strong>
       [% text.notes %]
     </p>
     [% END %]
@@ -229,7 +229,7 @@ $(document).ready(function() {
 $.validator.addMethod("muse", function (value, element) {
     var re = new RegExp("^#title +", "m");
     return this.optional(element) || re.test(value);
-}, "[% c.loc('Missing #title header in the text') %]");
+}, "[% jsloc('Missing #title header in the text') %]");
 $(document).ready(function(){
     $("#museform").validate({
         rules: {

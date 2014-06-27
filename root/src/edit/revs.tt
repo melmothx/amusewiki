@@ -1,21 +1,21 @@
 [% # -*- mode: html -*- %]
 
-<h3>[% c.loc('Editing') %] [% text_to_edit.title %]</h3>
+<h3>[% loc('Editing') %] [% text_to_edit.title %]</h3>
 
 
 [% IF revisions %]
 
 <p>
-  [% c.loc("Some ongoing revisions were found") %].
-  [% c.loc("You may want to resume the editing of one of them") %].
+  [% loc("Some ongoing revisions were found") %].
+  [% loc("You may want to resume the editing of one of them") %].
 </p>
 
 <table class="table table-striped table-condensed table-bordered">
   <tr>
-    <th>[% c.loc('URI') %]</th>
-    <th>[% c.loc('Last updated') %]</th>
-    <th>[% c.loc('Notes') %]</th>
-    <th>[% c.loc('Differences') %]</th>
+    <th>[% loc('URI') %]</th>
+    <th>[% loc('Last updated') %]</th>
+    <th>[% loc('Notes') %]</th>
+    <th>[% loc('Differences') %]</th>
   </tr>
     
   [% FOREACH rev IN revisions %]
@@ -26,27 +26,27 @@
     </a>
     </td>
     <td>
-      [% rev.updated.dmy %] [% rev.updated.hms %] [% c.loc('UTC') %]
+      [% rev.updated.dmy %] [% rev.updated.hms %] [% loc('UTC') %]
     </td>
     <td>
     [% IF rev.editing_ongoing %]
     <strong>
       [% IF c.sessionid == rev.session_id %]
-      [% c.loc('This revision is being actively edited by you') %]
+      [% loc('This revision is being actively edited by you') %]
       [% ELSE %]
-      [% c.loc('This revision is being actively edited') %]
+      [% loc('This revision is being actively edited') %]
       [% END %]
     </strong>
     [% ELSIF rev.status == 'editing' %]
-    [% c.loc('Abandoned editing in progress, feel free to check the diff and resume') %]
+    [% loc('Abandoned editing in progress, feel free to check the diff and resume') %]
     [% ELSE %]
-    [% c.loc(rev.status) %]
+    [% loc(rev.status) %]
     [% END %]
     </td>
     <td>
     <a href="[% c.uri_for_action('/edit/diff', [rev.f_class, rev.title.uri, rev.id]) %]"
        target="_blank">
-      [% c.loc('Show differences in other tab') %]
+      [% loc('Show differences in other tab') %]
     </a>
     </td>
   </tr>
@@ -56,7 +56,7 @@
 
 [% IF text_to_edit.can_spawn_revision %]
 
-[% c.loc("Or create a new revision, at your own peril. Having multiple
+[% loc("Or create a new revision, at your own peril. Having multiple
           concurrent revisions means that, unless someone takes care
           of it, only one will be chosen. You can go ahead, or retry
           later, or, better, contact the librarians before proceeding,
@@ -64,12 +64,12 @@
 
 <form method="post">
   <button type="submit" name="create" value="create" class="btn btn-primary">
-    [% c.loc('New revision') %]
+    [% loc('New revision') %]
   </button>
 </form>
 
 [% ELSE %]
 
-[% c.loc("You can't create a new revision because the text has not been published yet") %]
+[% loc("You can't create a new revision because the text has not been published yet") %]
 
 [% END %]

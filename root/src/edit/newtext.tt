@@ -33,8 +33,8 @@ var ckconfiguration = {
   <div class="form-group">
 
     <p>
-      <label for="title" class="mandatory">[% c.loc('Title') %]</label>:
-      [% c.loc('if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %]
+      <label for="title" class="mandatory">[% loc('Title') %]</label>:
+      [% loc('if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %]
       <input class="form-control" type="text" name="title"
 	     maxlength="100" id="title"
 	     size="30"
@@ -42,7 +42,7 @@ var ckconfiguration = {
     </p>
 
     <p>
-      <label for="subtitle">[% c.loc('Subtitle') %]</label>:
+      <label for="subtitle">[% loc('Subtitle') %]</label>:
       <input class="form-control" type="text" name="subtitle" id="subtitle"
 	     maxlength="100"
 	     size="30"
@@ -53,7 +53,7 @@ var ckconfiguration = {
 
     <p>
       <label for="LISTtitle">Title for sorting</label>
-      ([% c.loc('you may want to strip the leading “A”, “An”, “The”, and so on from the title') %]):
+      ([% loc('you may want to strip the leading “A”, “An”, “The”, and so on from the title') %]):
       <input class="form-control" type="text" name="LISTtitle" id="LISTtitle"
 	     maxlength="100" size="30"
 	     value="[% processed_params.LISTtitle | html %]" />
@@ -61,8 +61,8 @@ var ckconfiguration = {
 
 
     <p>
-      <label for="author">[% c.loc('Author') %]</label>
-      ([% c.loc('for display') %]):
+      <label for="author">[% loc('Author') %]</label>
+      ([% loc('for display') %]):
       <input class="form-control amwautocomplete"
              type="text" name="author" id="author"
 	         maxlength="100"
@@ -70,8 +70,8 @@ var ckconfiguration = {
     </p>
 
     <p>
-      <label for="SORTauthors">[% c.loc('Authors') %]</label>
-      ([% c.loc('for indexing') %], [% c.loc('comma or semicolon separated list') %]):
+      <label for="SORTauthors">[% loc('Authors') %]</label>
+      ([% loc('for indexing') %], [% loc('comma or semicolon separated list') %]):
       <input class="form-control amwautocomplete" id="SORTauthors"
 	     maxlength="250"
 	     name="SORTauthors"
@@ -80,8 +80,8 @@ var ckconfiguration = {
 
     
     <p>
-      <label for="SORTtopics">[% c.loc('Topics') %]</label>:
-      [% c.loc('comma or semicolon separated list') %]
+      <label for="SORTtopics">[% loc('Topics') %]</label>:
+      [% loc('comma or semicolon separated list') %]
       <br />
       <input class="form-control amwautocomplete" id="SORTtopics"
 	     size="50"
@@ -92,25 +92,25 @@ var ckconfiguration = {
 
     [% IF site.fixed_category_list %]
     <p>
-      <label for="fixed-cats">[% c.loc('Categories') %]</label>
+      <label for="fixed-cats">[% loc('Categories') %]</label>
       <select name="cat" id="fixed-cats" multiple="multiple"
               size="[% site.list_fixed_categories.size %]">
         [% FOREACH cat IN site.list_fixed_categories %]
         <option value="[% cat %]" [% IF sticky_cats.${cat} %]selected="selected"[% END %]>
-          [% c.loc(cat) %]
+          [% loc(cat) %]
         </option>
         [% END %]
       </select>
     </p>
     <p>
-      <label for="text-uid">[% c.loc('Unique ID for the text') %]</label>
+      <label for="text-uid">[% loc('Unique ID for the text') %]</label>
       <input class="form-control" name="uid" id="text-uid" type="text"
              value="[% processed_params.uid | html %]" />
     </p>
     [% END %]
         
     <p>
-      <label for="date">[% c.loc('Date of the original publication') %]</label>
+      <label for="date">[% loc('Date of the original publication') %]</label>
       <input class="form-control" id="date"
 	     size="50"
 	     maxlength="250"
@@ -118,18 +118,18 @@ var ckconfiguration = {
 	     value="[% processed_params.date | html %]" />
     </p>
     
-    <p><label for="source">[% c.loc('Source') %]</label>
+    <p><label for="source">[% loc('Source') %]</label>
 
-      ([% c.loc('For texts from the internet use') %]:
-       [% c.loc('Retrieved on DATE from URL') %].
-       [% c.loc('For freshly scanned texts use “Scanned from original”') %]
+      ([% loc('For texts from the internet use') %]:
+       [% loc('Retrieved on DATE from URL') %].
+       [% loc('For freshly scanned texts use “Scanned from original”') %]
       <input class="form-control" id="source" size="50" maxlength="250"
 	         name="source" value="[% processed_params.source | html %]" />
     </p>
     [% END %]
     <p>
       [% SET current_language = processed_params.lang || site.locale %]
-      <label for="lang">[% c.loc('Language') %]</label>
+      <label for="lang">[% loc('Language') %]</label>
       <select name="lang" id="lang" class="form-control">
 
       [% known_langs = site.known_langs %]
@@ -142,24 +142,24 @@ var ckconfiguration = {
     </select>
     </p>
 
-    <h3>[% c.loc('Main text') %]</h3>
+    <h3>[% loc('Main text') %]</h3>
     <div>
-        [% c.loc('Please note that you may want to paste from a
+        [% loc('Please note that you may want to paste from a
         Word/OpenOffice/LibreOffice/HTML document using the “paste
         from word” button. This is supposed to preserve the markup.') %]
 
         <br />
         
-        [% c.loc('This is a WYSIWYG editor. If you prefer to use
+        [% loc('This is a WYSIWYG editor. If you prefer to use
         the wiki-like syntax leave it as is, fill the required fields
         above and postpone the editing to the next step.') %]
         <br />
 
-        [% c.loc('Image uploading may be done on the next step, when you can
+        [% loc('Image uploading may be done on the next step, when you can
         review and preview the upload.') %]
 
         <br />
-        [% c.loc('Keep in mind that unusually
+        [% loc('Keep in mind that unusually
         complex formatting will be stripped. Is it possible to add
         tables and images only on the next step.') %]
     </div>
@@ -170,9 +170,9 @@ var ckconfiguration = {
     </div>
     
     [% IF f_class == 'text' %]
-    <h3>[% c.loc('Notes') %]</h3>
+    <h3>[% loc('Notes') %]</h3>
     <div>
-      [% c.loc('Put additional information here (original
+      [% loc('Put additional information here (original
 	  title, translators, credits, etc). Footnotes go in the
 	  body.') %]
     </div>
@@ -185,10 +185,10 @@ var ckconfiguration = {
     <div>
       <br /><br />
     <p>
-      <label for="uri">[% c.loc('Desired URI') %]</label>
-      ([% c.loc('automatically generated if not present, using author and title') %])<br />
+      <label for="uri">[% loc('Desired URI') %]</label>
+      ([% loc('automatically generated if not present, using author and title') %])<br />
 
-      [% c.loc("An URI is a string which uniquely identifies the text
+      [% loc("An URI is a string which uniquely identifies the text
       in the archive. In theory, it could be anything, but if you want
       to set it yourself, please stick with the convention: author
       name, title, eventual number for disambiguation, e.g.
@@ -205,7 +205,7 @@ var ckconfiguration = {
 
     <div class="center">
       <p>
-        [% c.loc('Keep in mind that I’m cleaning the text and give it
+        [% loc('Keep in mind that I’m cleaning the text and give it
         back to you in the markup used on this site. It’s up to you to
         check it and finally upload it. Some rarely used markup will
         be lost in the process. Please check the preview on the next
@@ -213,7 +213,7 @@ var ckconfiguration = {
       </p>
       <button type="submit" class="btn btn-default"
 	          name="go" value="go">
-        [% c.loc('Prepare this text for the archiving') %]
+        [% loc('Prepare this text for the archiving') %]
       </button>
     </div>
     <script type="text/javascript"
@@ -226,7 +226,7 @@ var ckconfiguration = {
                 title: "required"
             },
             messages: {
-                title: "[% c.loc('This field is required') %]"
+                title: "[% loc('This field is required') %]"
             }
         });
       });

@@ -99,33 +99,33 @@
               <a href="#" class="dropdown-toggle"
                  title="texts by authors, title, topic..."
                  data-toggle="dropdown">
-                [% c.loc('Catalog') %]
+                [% loc('Catalog') %]
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
 	            <li[% IF nav == 'titles' %] class="active" [% END %]>
                   <a href="[% c.uri_for('/library') %]"
-		             title="[% c.loc('texts sorted by title') %]">
-                    [% c.loc('Titles') %]
+		             title="[% loc('texts sorted by title') %]">
+                    [% loc('Titles') %]
                   </a>
                 </li>
                 <li[% IF nav == 'author' %] class="active" [% END %]>
                   <a href="[% c.uri_for('/authors') %]"
-		             title="[% c.loc('texts sorted by author') %]">
-                    [% c.loc('Authors') %]
+		             title="[% loc('texts sorted by author') %]">
+                    [% loc('Authors') %]
                   </a>
                 </li>
 	            <li[% IF nav == 'topic' %] class="active" [% END %]>
                   <a href="[% c.uri_for('/topics') %]"
-		             title="[% c.loc('texts sorted by topics') %]">
-                    [% c.loc('Topics') %]
+		             title="[% loc('texts sorted by topics') %]">
+                    [% loc('Topics') %]
                   </a>
                 </li>
                 [% IF c.user_exists || site.human_can_edit %]
                 <li class="divider"></li>
                 <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
                   <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
-                    [% c.loc('Add to library') %]
+                    [% loc('Add to library') %]
                   </a>
                 </li>
                 [% END %]
@@ -133,7 +133,7 @@
             </li>
             <li[% IF nav == 'bookbuilder' %] class="active"[% END %]>
               <a href="[% c.uri_for('/bookbuilder') %]">
-                [% c.loc('Bookbuilder') %]
+                [% loc('Bookbuilder') %]
               </a>
             </li>
             [% IF navigation %]
@@ -141,7 +141,7 @@
               <a href="#" class="dropdown-toggle"
                  title="about, links..."
                  data-toggle="dropdown">
-                [% c.loc('More') %]
+                [% loc('More') %]
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
@@ -180,55 +180,55 @@
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/publish/pending') %]">
-                    [% c.loc('Pending revisions') %]
+                    [% loc('Pending revisions') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/publish/all') %]">
-                    [% c.loc('All revisions') %]
+                    [% loc('All revisions') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/console/unpublished') %]">
-                    [% c.loc('Deferred/Deleted texts') %]
+                    [% loc('Deferred/Deleted texts') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/console/git_display') %]">
-                    [% c.loc('Remotes') %]
+                    [% loc('Remotes') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/console/alias_display') %]">
-                    [% c.loc('Redirections') %]
+                    [% loc('Redirections') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/user/create') %]">
-                    [% c.loc('Create a new librarian') %]
+                    [% loc('Create a new librarian') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/user/edit', [c.user.get('id')]) %]">
-                    [% c.loc('Update account info') %]
+                    [% loc('Update account info') %]
                   </a>
                 </li>
                 [%# and these are for root %]
                 [% IF c.check_user_roles('root') %]
                 <li>
                   <a href="[% c.uri_for_action('/admin/list') %]">
-                    [% c.loc('Sites') %]
+                    [% loc('Sites') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/admin/edit', site.id) %]">
-                    [% c.loc('Edit site configuration') %]
+                    [% loc('Edit site configuration') %]
                   </a>
                 </li>
                 [% END %]
                 <li>
                   <a href="[% c.uri_for('/logout') %]">
-                    [% c.loc('Logout') %]
+                    [% loc('Logout') %]
                   </a>
                 </li>
               </ul>
@@ -241,7 +241,7 @@
                 id="formsearchbox" action="[% c.uri_for('/search') %]">
             <div class="input-group" style="width:170px">
 		      <input type="text" class="form-control"
-                     placeholder="[% c.loc('Full text search') %]"
+                     placeholder="[% loc('Full text search') %]"
                      name="query" value=""/>
               <div class="input-group-btn">
                 <button type="submit" class="btn btn-primary">
@@ -270,10 +270,10 @@
     </div>
     <div id="footer" class="footer center">
       <a href="[% c.uri_for('/feed') %]" class="feed">
-        [% c.loc('RSS feed') %]
+        [% loc('RSS feed') %]
       </a>
       |
-	  <a href="[% c.uri_for('/random') %]">[% c.loc('Random') %]</a>
+	  <a href="[% c.uri_for('/random') %]">[% loc('Random') %]</a>
     </div>
   </body>
 </html>

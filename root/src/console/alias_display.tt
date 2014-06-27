@@ -1,9 +1,9 @@
 [%# -*- mode: html -*- %]
 
-<h2>[% c.loc('Redirections') %]</h2>
+<h2>[% loc('Redirections') %]</h2>
 
 <p>
-  [% c.loc('Text redirections are set in the text itself, using the
+  [% loc('Text redirections are set in the text itself, using the
   DELETED header with this syntax') %]:
 </p>
 
@@ -15,16 +15,16 @@ Text...
 </pre>
 
 <p>
-  [% c.loc('Such an header will unpublish the text and put a
+  [% loc('Such an header will unpublish the text and put a
   redirection in place, and will be listed here') %].
 </p>
 
 <p>
-  [% c.loc('For topics and authors redirections, you can create them
+  [% loc('For topics and authors redirections, you can create them
   here') %].
 </p>
 
-<h3>[% c.loc('Create an author alias') %]</h3>
+<h3>[% loc('Create an author alias') %]</h3>
 
 <form id="alias-create-author"
       action="[% c.uri_for_action('/console/alias_create') %]"
@@ -32,18 +32,18 @@ Text...
       method="POST">
   <div class="form-group">
     <input type="hidden" name="type" value="author" />
-    <label for="author-src">[% c.loc('Alias') %]</label>
+    <label for="author-src">[% loc('Alias') %]</label>
     <select class="form-control" name="src" id="author-src">
-      <option value="">[% c.loc('Please select') %]</option>
+      <option value="">[% loc('Please select') %]</option>
       [% FOREACH cat IN author_list %]
       <option value="[% cat.uri %]">[% cat.name %]</option>
       [% END %]
     </select>
   </div>
   <div class="form-group">
-    <label for="author-dest">[% c.loc('Pointing to') %]</label>
+    <label for="author-dest">[% loc('Pointing to') %]</label>
     <select class="form-control" name="dest" id="author-dest">
-      <option value="">[% c.loc('Please select') %]</option>
+      <option value="">[% loc('Please select') %]</option>
       [% FOREACH cat IN author_list %]
       <option value="[% cat.uri %]">[% cat.name %]</option>
       [% END %]
@@ -51,12 +51,12 @@ Text...
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-default">
-      [% c.loc('Create') %]
+      [% loc('Create') %]
     </button>
   </div>
 </form>
 
-<h3>[% c.loc('Create a topic alias') %]</h3>
+<h3>[% loc('Create a topic alias') %]</h3>
 
 <form id="alias-create-topic"
       action="[% c.uri_for_action('/console/alias_create') %]"
@@ -64,18 +64,18 @@ Text...
       method="POST">
   <div class="form-group">
     <input type="hidden" name="type" value="topic" />
-    <label for="topic-src">[% c.loc('Alias') %]</label>
+    <label for="topic-src">[% loc('Alias') %]</label>
     <select class="form-control" name="src" id="topic-src">
-      <option value="">[% c.loc('Please select') %]</option>
+      <option value="">[% loc('Please select') %]</option>
       [% FOREACH cat IN topic_list %]
       <option value="[% cat.uri %]">[% cat.name %]</option>
       [% END %]
     </select>
   </div>
   <div class="form-group">
-    <label for="topic-dest">[% c.loc('Pointing to') %]</label>
+    <label for="topic-dest">[% loc('Pointing to') %]</label>
     <select class="form-control" name="dest" id="topic-dest">
-      <option value="">[% c.loc('Please select') %]</option>
+      <option value="">[% loc('Please select') %]</option>
       [% FOREACH cat IN topic_list %]
       <option value="[% cat.uri %]">[% cat.name %]</option>
       [% END %]
@@ -83,24 +83,24 @@ Text...
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-default">
-      [% c.loc('Create') %]
+      [% loc('Create') %]
     </button>
   </div>
 </form>
 
-<h3>[% c.loc('Existing redirections') %]</h3>
+<h3>[% loc('Existing redirections') %]</h3>
 
 
 <table class="table table-striped">
   <tr>
     <th>
-      [% c.loc('URI')  %]
+      [% loc('URI')  %]
     </th>
     <th>
-      [% c.loc('Destination') %]
+      [% loc('Destination') %]
     </th>
     <th>
-      [% c.loc('Action') %]
+      [% loc('Action') %]
     </th>
   </tr>
   [% FOREACH alias IN redirections %]
@@ -120,10 +120,10 @@ Text...
       <form id="alias-delete-[% alias.id %]"
             method="POST"
             action="[% c.uri_for_action('/console/alias_delete') %]"
-            onsubmit="return confirm('[% c.loc('Are you sure?') %]');">
+            onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
         <input type="hidden" name="delete" value="[% alias.id %]" />
         <button type="submit" class="btn btn-danger">
-          [% c.loc('Delete') %]
+          [% loc('Delete') %]
         </button>
       </form>
       [% ELSIF alias.is_a_text %]
@@ -131,7 +131,7 @@ Text...
             action="[% c.uri_for_action('/edit/revs', [alias.type, alias.uri]) %]"
             method="GET">
         <button type="submit" class="btn btn-default">
-          [% c.loc('Edit') %]
+          [% loc('Edit') %]
         </button>
       </form>
       [% END %]

@@ -1,35 +1,34 @@
 [%# -*- mode:html -*- %]
 
-[%# c.loc('A4 paper'); %]
-[%# c.loc('A5 paper'); %]
-[%# c.loc('A6 paper (also suitable for e-readers)'); %]
-[%# c.loc('Letter paper'); %]
-[%# c.loc('Half Letter paper'); %]
-[%# c.loc('Quarter Letter paper'); %]
+[%# loc('A4 paper'); %]
+[%# loc('A5 paper'); %]
+[%# loc('A6 paper (also suitable for e-readers)'); %]
+[%# loc('Letter paper'); %]
+[%# loc('Half Letter paper'); %]
+[%# loc('Quarter Letter paper'); %]
 
-
-<h2>[% c.loc('Edit site [_1]', esite.id) %]</h2>
+<h2>[% loc('Edit site [_1]', esite.id) %]</h2>
 
 <div style="margin-top: 30px">
   <form method="post" class="form-horizontal" role="form"
-        onsubmit="return confirm('[% c.loc('Are you sure?') %]');">
+        onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
     <div class="form-group">
       <label for="mode" class="col-sm-2 control-label">
-        [% c.loc('Site mode') %]
+        [% loc('Site mode') %]
       </label>
       <div class="col-sm-10">
         <select name="mode" id="mode" class="form-control">
           <option value="modwiki"
                   [%- IF esite.mode == 'modwiki' %]selected="selected"[% END %]>
-                  [% c.loc('Moderated wiki') %]
+                  [% loc('Moderated wiki') %]
           </option>
           <option value="blog"
                   [%- IF esite.mode == 'blog' %]selected="selected"[% END %]>
-            [% c.loc('Blog') %]
+            [% loc('Blog') %]
           </option>
           <option value="openwiki"
                   [%- IF esite.mode == 'openwiki' %]selected="selected"[% END %]>
-            [% c.loc('Open wiki') %]
+            [% loc('Open wiki') %]
           </option>
         </select>
       </div>
@@ -37,7 +36,7 @@
 
     <div class="form-group">
       <label for="locale" class="col-sm-2 control-label">
-        [% c.loc('Locale') %]
+        [% loc('Locale') %]
       </label>
       <div class="col-sm-10">
         <select name="locale" id="lang" class="form-control">
@@ -55,7 +54,7 @@
 
     <div class="form-group">
       <label for="magic_question" class="col-sm-2 control-label">
-        [% c.loc('Magic question') %]
+        [% loc('Magic question') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="magic_question" id="magic_question"
@@ -65,7 +64,7 @@
 
     <div class="form-group">
       <label for="magic_answer" class="col-sm-2 control-label">
-        [% c.loc('Magic answer') %]
+        [% loc('Magic answer') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="magic_answer" id="magic_answer"
@@ -75,7 +74,7 @@
 
     <div class="form-group">
       <label for="fixed_category_list" class="col-sm-2 control-label">
-        [% c.loc('Fixed category list') %]
+        [% loc('Fixed category list') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="fixed_category_list" id="fixed_category_list"
@@ -85,7 +84,7 @@
 
     <div class="form-group">
       <label for="sitename" class="col-sm-2 control-label">
-        [% c.loc('Site name') %]
+        [% loc('Site name') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="sitename" id="sitename"
@@ -95,7 +94,7 @@
 
     <div class="form-group">
       <label for="siteslogan" class="col-sm-2 control-label">
-        [% c.loc('Site slogan') %]
+        [% loc('Site slogan') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="siteslogan" id="siteslogan"
@@ -107,7 +106,7 @@
 
     <div class="form-group">
       <label for="logo" class="col-sm-2 control-label">
-        [% c.loc('PDF logo (absolute path or put it in texmf)') %]
+        [% loc('PDF logo (absolute path or put it in texmf)') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="logo" id="logo"
@@ -117,7 +116,7 @@
 
     <div class="form-group">
       <label for="mail_notify" class="col-sm-2 control-label">
-        [% c.loc('Notify mail: blank field will disable them') %]
+        [% loc('Notify mail: blank field will disable them') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="mail_notify" id="mail_notify"
@@ -127,7 +126,7 @@
 
     <div class="form-group">
       <label for="mail_from" class="col-sm-2 control-label">
-        [% c.loc('Site mail (From field)') %]
+        [% loc('Site mail (From field)') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="mail_from" id="mail_from"
@@ -137,7 +136,7 @@
 
     <div class="form-group">
       <label for="canonical" class="col-sm-2 control-label">
-        [% c.loc('Full site canonical URL, including protocol') %]
+        [% loc('Full site canonical URL, including protocol') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="canonical" id="canonical"
@@ -147,7 +146,7 @@
 
     <div class="form-group">
       <label for="sitegroup" class="col-sm-2 control-label">
-        [% c.loc('Site group') %]
+        [% loc('Site group') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="sitegroup" id="sitegroup"
@@ -157,7 +156,7 @@
 
     <div class="form-group">
       <label for="bb_page_limit" class="col-sm-2 control-label">
-        [% c.loc('Bookbuilder page limit (integer)') %]
+        [% loc('Bookbuilder page limit (integer)') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="bb_page_limit" id="bb_page_limit"
@@ -166,7 +165,7 @@
     </div>
 
     <div class="col-sm-offset-2 col-sm-10">
-      <h4>[% c.loc('Formats') %]</h4>
+      <h4>[% loc('Formats') %]</h4>
     </div>
 
     <div class="form-group">
@@ -175,7 +174,7 @@
           <input type="checkbox"
                  [% IF esite.tex %]checked="checked"[% END %]
                  name="tex" />
-          [% c.loc('TeX') %]
+          [% loc('TeX') %]
         </label>
       </div>
     </div>
@@ -186,7 +185,7 @@
           <input type="checkbox"
                  [% IF esite.pdf %]checked="checked"[% END %]
                  name="pdf" />
-          [% c.loc('Plain PDF') %]
+          [% loc('Plain PDF') %]
         </label>
       </div>
     </div>
@@ -197,7 +196,7 @@
           <input type="checkbox"
                  [% IF esite.a4_pdf %]checked="checked"[% END %]
                  name="a4_pdf" />
-          [% c.loc('A4 imposed PDF') %]
+          [% loc('A4 imposed PDF') %]
         </label>
       </div>
     </div>
@@ -208,7 +207,7 @@
           <input type="checkbox"
                  [% IF esite.lt_pdf %]checked="checked"[% END %]
                  name="lt_pdf" />
-          [% c.loc('Letter imposed PDF') %]
+          [% loc('Letter imposed PDF') %]
         </label>
       </div>
     </div>
@@ -220,7 +219,7 @@
           <input type="checkbox"
                  [% IF esite.html %]checked="checked"[% END %]
                  name="html" />
-          [% c.loc('HTML') %]
+          [% loc('HTML') %]
         </label>
       </div>
     </div>
@@ -231,7 +230,7 @@
           <input type="checkbox"
                  [% IF esite.bare_html %]checked="checked"[% END %]
                  name="bare_html" />
-          [% c.loc('Bare HTML, needed by the application') %]
+          [% loc('Bare HTML, needed by the application') %]
         </label>
       </div>
     </div>
@@ -242,7 +241,7 @@
           <input type="checkbox"
                  [% IF esite.epub %]checked="checked"[% END %]
                  name="epub" />
-          [% c.loc('EPUB') %]
+          [% loc('EPUB') %]
         </label>
       </div>
     </div>
@@ -253,14 +252,14 @@
           <input type="checkbox"
                  [% IF esite.zip %]checked="checked"[% END %]
                  name="zip" />
-          [% c.loc('ZIP archive with sources, needed by the bookbuilder') %]
+          [% loc('ZIP archive with sources, needed by the bookbuilder') %]
         </label>
       </div>
     </div>
 
     <div class="form-group">
       <label for="ttdir" class="col-sm-2 control-label">
-        [% c.loc('Directory with templates. Do not set it unless you know what you are doing') %]
+        [% loc('Directory with templates. Do not set it unless you know what you are doing') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="ttdir" id="ttdir"
@@ -273,7 +272,7 @@
     [% SET bb = c.model('BookBuilder') %]
     <div class="form-group">
       <label for="papersize" class="col-sm-2 control-label">
-        [% c.loc('Choose a paper format') %]
+        [% loc('Choose a paper format') %]
       </label>
       <div class="col-sm-10">
         <select name="papersize" id="papersize" class="form-control">
@@ -281,7 +280,7 @@
           [% FOREACH paper IN bb.paper_sizes_sorted %]
           <option value="[% paper %]"
                   [% IF esite.papersize == paper %]selected="selected"[% END %]>
-            [% c.loc(mypapers.$paper) %]
+            [% loc(mypapers.$paper) %]
           </option>
           [% END %]
         </select>
@@ -290,8 +289,8 @@
 
     <div class="form-group">
       <label for="division" class="col-sm-2 control-label">
-        [% c.loc('Division factor') %]
-        ([% c.loc('Higher division factor means narrower margins') %])
+        [% loc('Division factor') %]
+        ([% loc('Higher division factor means narrower margins') %])
       </label>
       <div class="col-sm-10">
         <select name="division" id="division" class="form-control">
@@ -310,7 +309,7 @@
 
     <div class="form-group">
       <label for="bcor" class="col-sm-2 control-label">
-        [% c.loc('Binding correction in millimeters (additional inner margin)') %]:
+        [% loc('Binding correction in millimeters (additional inner margin)') %]:
       </label>
       <div class="col-sm-10">
         <select name="bcor" id="bcor" class="form-control">
@@ -330,7 +329,7 @@
 
     <div class="form-group">
       <label for="fontsize" class="col-sm-2 control-label">
-        [% c.loc('Font size') %]:
+        [% loc('Font size') %]:
       </label>
       <div class="col-sm-10">
         <select name="fontsize" id="fontsize" class="form-control">
@@ -348,7 +347,7 @@
 
     <div class="form-group">
       <label for="fontsize" class="col-sm-2 control-label">
-        [% c.loc('Main font') %]:
+        [% loc('Main font') %]:
       </label>
       <div class="col-sm-10">
         <select name="mainfont" id="mainfont" class="form-control">
@@ -370,7 +369,7 @@
           <input type="checkbox"
                  [% IF esite.twoside %]checked="checked"[% END %]
                  name="twoside" />
-          [% c.loc('Two side layout') %]
+          [% loc('Two side layout') %]
         </label>
       </div>
     </div>
@@ -378,7 +377,7 @@
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <label for="vhosts">
-          [% c.loc('Virtual hosts, one per line') %]
+          [% loc('Virtual hosts, one per line') %]
         </label>
         <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
           [%- SET vhosts = esite.vhosts_rs -%]
@@ -393,7 +392,7 @@
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-primary" name="edit_site"
                 value="update">
-          [% c.loc('Update') %]
+          [% loc('Update') %]
         </button>
       </div>
     </div>

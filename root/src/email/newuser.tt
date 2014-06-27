@@ -1,14 +1,14 @@
 
-[% c.loc("Your user at [_1] has been created.", site.canonical) %]
+[% loc("Your user at [_1] has been created.", site.canonical) %]
 
-[% c.loc("Your username is [_1].", user.username) %]
+[% loc("Your username is [_1].", user.username) %]
 
-[% c.loc("Your password is [_1].", user.password) %]
+[% loc("Your password is [_1].", user.password) %]
 
-[% c.loc("You should change your password right away at [_1]",
+[% loc("You should change your password right away at [_1]",
    c.uri_for_action('/user/edit', [ user.id ])) %]
 
-[% c.loc("You can create a peer at [_1]", c.uri_for_action('/user/create')) %]
+[% loc("You can create a peer at [_1]", c.uri_for_action('/user/create')) %]
 
 
 

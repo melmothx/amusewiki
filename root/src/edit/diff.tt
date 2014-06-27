@@ -10,8 +10,8 @@ Source at
 </script>
 
 <h2>
-  [% c.loc('Changes for') %] [% revision.title.uri %]
-  ([% c.loc('revision') %] #[% revision.id %])
+  [% loc('Changes for') %] [% revision.title.uri %]
+  ([% loc('revision') %] #[% revision.id %])
 </h2>
 
 <div class="row">
@@ -30,7 +30,7 @@ Source at
 
 <div class="center" style="margin: 10px">
   <button type="button" class="btn btn-primary" id="reload">
-    [% c.loc('Recheck') %]
+    [% loc('Recheck') %]
   </button>
 </div>
 
@@ -38,7 +38,7 @@ Source at
   <div id="outputdiv"></div>
 </div>
 
-<div class="well">[% c.loc('Computing took')%] <span id="timing"></span></div>
+<div class="well">[% loc('Computing took')%] <span id="timing"></span></div>
 
 <script type="text/javascript">
 $('#reload').click(function() { location.reload() });

@@ -10,15 +10,15 @@
 <div class="table-responsive">
   <table class="table table-striped table-condensed table-bordered">
     <tr>
-      <th>[% c.loc('Id') %]</th>
-      <th>[% c.loc('Site group') %]</th>
-      <th>[% c.loc('Mode') %]</th>
-      <th>[% c.loc('Locale') %]</th>
-      <th>[% c.loc('Name') %]</th>
-      <th>[% c.loc('Mail from') %]</th>
-      <th>[% c.loc('Notify to') %]</th>
-      <th>[% c.loc('Canonical name') %]</th>
-      <th>[% c.loc('Virtual hosts') %]</th>
+      <th>[% loc('Id') %]</th>
+      <th>[% loc('Site group') %]</th>
+      <th>[% loc('Mode') %]</th>
+      <th>[% loc('Locale') %]</th>
+      <th>[% loc('Name') %]</th>
+      <th>[% loc('Mail from') %]</th>
+      <th>[% loc('Notify to') %]</th>
+      <th>[% loc('Canonical name') %]</th>
+      <th>[% loc('Virtual hosts') %]</th>
     </tr>
     [% FOREACH obj IN list %]
     <tr>
@@ -70,13 +70,13 @@
         role="form">
     <div class="form-group">
       <label for="create_site">
-        [% c.loc('New site id') %]
+        [% loc('New site id') %]
       </label>
       <input type="text" name="create_site" class="form-control" id="create_site"/>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-default">
-        [% c.loc('Create new site') %]
+        [% loc('Create new site') %]
       </button>
     </div>
   </form>

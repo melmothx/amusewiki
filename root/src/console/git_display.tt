@@ -3,13 +3,13 @@
 <table class="table table-striped">
   <tr>
     <th>
-      [% c.loc('Repository') %]
+      [% loc('Repository') %]
     </th>
     <th>
-      [% c.loc('URL') %]
+      [% loc('URL') %]
     </th>
     <th>
-      [% c.loc('Action') %]
+      [% loc('Action') %]
     </th>
   </tr>
 [% FOREACH remote IN remotes %]
@@ -34,6 +34,6 @@
 </table>
 [% ELSE %]
 
-[% c.loc('Nothing to see here, so far') %]
+[% loc('Nothing to see here, so far') %]
 
 [% END %]

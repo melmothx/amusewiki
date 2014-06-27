@@ -3,7 +3,7 @@
 [% coming_from = c.flash.referrer %]
 [% IF coming_from %]
 <div>
-  <a href="[% coming_from %]">[% c.loc('Back to the text') %]</a>
+  <a href="[% coming_from %]">[% loc('Back to the text') %]</a>
 </div>
 [% END %]
 
@@ -28,14 +28,14 @@
           <input type="hidden" name="text"      value="[% book  %]" />
           <input type="hidden" name="textindex" value="[% textindex %]" />
           <button type="submit" name="moveup" value="up" class="btn btn-default">
-            [% c.loc('Move up') %]
+            [% loc('Move up') %]
           </button>
           <button type="submit" name="movedw" value="down" class="btn btn-default">
-            [% c.loc('Move down') %]
+            [% loc('Move down') %]
           </button>
           <button type="submit" name="delete" value="delete"
                   class="btn btn-default">
-            [% c.loc('Delete') %]
+            [% loc('Delete') %]
           </button>
         </form>
     </tr>
@@ -43,13 +43,13 @@
     [% END %]
     <tr>
       <td>
-        [% c.loc('Total pages') %]: [% bb_page_count %]
+        [% loc('Total pages') %]: [% bb_page_count %]
       </td>
       <td>
         <div id="bb-clear-all">
           <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
             <button type="submit" name="clear" value="clear" class="btn btn-default">
-              [% c.loc('Clear the book list') %]
+              [% loc('Clear the book list') %]
             </button>
           </form>
         </div>
@@ -63,8 +63,8 @@
   <div class="form-group">
     <p>
     <label for="collectionname">
-      [% c.loc('Please give a name to the collection') %]
-      [% c.loc('Always required, but used only for multiple texts') %]
+      [% loc('Please give a name to the collection') %]
+      [% loc('Always required, but used only for multiple texts') %]
     </label>
     <input type="text" name="collectionname" id="collectionname"
            class="form-control required" value=""/>
@@ -72,7 +72,7 @@
     <p>
       <label for="mainfont">
         <a href="http://bookshelf.theanarchistlibrary.org/The%20Book%20Builder#Fonts_preview">
-        [% c.loc('Please select the desired fonts') %]
+        [% loc('Please select the desired fonts') %]
         </a>
       </label>
       <select name="mainfont" id="mainfont">
@@ -96,22 +96,22 @@
     </p>
     <p>
     <label for="papersize">
-    [% c.loc('Choose a paper format') %]
+    [% loc('Choose a paper format') %]
     </label>
     <select name="papersize" id="papersize" class="form-control">
       [% SET mypapers = bb.paper_sizes %]
       [% FOREACH paper IN bb.paper_sizes_sorted %]
       <option value="[% paper %]">
-        [% c.loc(mypapers.$paper) %]
+        [% loc(mypapers.$paper) %]
       </option>
       [% END %]
     </select>
     </p>
     <p>
       <label for="division">
-      [% c.loc('Division factor') %]
+      [% loc('Division factor') %]
       </label>
-      ([% c.loc('Higher division factor means narrower margins') %])
+      ([% loc('Higher division factor means narrower margins') %])
 
       <select name="division" id="division" class="form-control">
         [% SET mydiv = 9 %]
@@ -127,7 +127,7 @@
 
     <p>
       <label for="bcor">
-        [% c.loc('Binding correction in millimeters (additional inner margin)') %]:
+        [% loc('Binding correction in millimeters (additional inner margin)') %]:
       </label>
     <select name="bcor" id="bcor" class="form-control">
       [% bcor_counter = 0 %]
@@ -141,32 +141,32 @@
     <div class="checkbox">
       <label>
         <input type="checkbox" name="twoside" value="1" id="twoside" />
-        [% c.loc('Two side layout') %]
+        [% loc('Two side layout') %]
       </label>
     </div>
     <div class="checkbox">
       <label>
         <input type="checkbox" name="imposed" value="1" />
-        [% c.loc('I want an imposed (ready to print) PDF') %]
+        [% loc('I want an imposed (ready to print) PDF') %]
       </label>
     </div>
     <div class="checkbox">
       <label>
         <input type="checkbox" name="signatures" value="1" />
-        [% c.loc('When imposing, use optimized signatures with 40-80 pages each') %]
-        ([% c.loc('if applicable') %]).
+        [% loc('When imposing, use optimized signatures with 40-80 pages each') %]
+        ([% loc('if applicable') %]).
 
       </label>
     </div>
     <p>
       <label for="schema">
-        [% c.loc('If you asked for imposition, select an imposition schema') %]:
+        [% loc('If you asked for imposition, select an imposition schema') %]:
       </label>
       <select name="schema" id="schema" class="form-control">
         [% SET myschemas = bb.schemas %]
         [% FOREACH schema IN bb.schemas_sorted %]
         <option value="[% schema %]" [% IF schema == '2up' %]selected="selected"[% END %]>
-          [% c.loc(myschemas.$schema) %]
+          [% loc(myschemas.$schema) %]
         </option>
         [% END %]
       </select>
@@ -175,7 +175,7 @@
     <input type="hidden" name="cover" value="1" />
     <p>
       <button type="submit" name="build" value="go" class="btn btn-default">
-        [% c.loc('Build it') %]
+        [% loc('Build it') %]
       </button>
     </p>
   </div>
@@ -193,23 +193,23 @@
 [% ELSE %]
 
 <div class="alert alert-warning">
-  <p>[% c.loc('No text was added yet') %]</p>
+  <p>[% loc('No text was added yet') %]</p>
 </div>
 
 <div class="bb-explanation">
   <p>
-    [% c.loc("With the bookbuilder you can change the layout (fonts,
+    [% loc("With the bookbuilder you can change the layout (fonts,
     dimensions, paper, margins) of the texts on the library. You can
     also merge more texts to create your own booklet. Just try it!") %]
   </p>
   <p>
-    [% c.loc("You can add texts to the bookbuilder clicking on the
+    [% loc("You can add texts to the bookbuilder clicking on the
     “plus” icon near the downloads of each text. You can add and
     remove the texts later.") %]
   </p>
   <p>
     <a href="[% c.uri_for('/random') %]">
-      [% c.loc("Try a random text if unsure") %]
+      [% loc("Try a random text if unsure") %]
     </a>
   </p>
 </div>

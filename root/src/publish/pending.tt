@@ -1,10 +1,10 @@
 [% # -*- mode: html -*- %]
 
-<!-- [% c.loc('editing') %]
-     [% c.loc('pending')   %]
-     [% c.loc('processing') %]
-     [% c.loc('conflict') %]
-     [% c.loc('published') %] -->
+[%# loc('editing') %]
+[%# loc('pending')   %]
+[%# loc('processing') %]
+[%# loc('conflict') %]
+[%# loc('published') %] -->
 
 [% IF revisions.size %]
 <h3>[% page_title %]</h3>
@@ -12,13 +12,13 @@
 <div class="table-responsive">
   <table class="table table-striped table-condensed table-bordered">
     <tr>
-      <th>[% c.loc('Revision') %]</th>
-      <th>[% c.loc('Action')   %]</th>
-      <th>[% c.loc('Changes')  %]</th>
-      <th>[% c.loc('Message')  %]</th>
-      <th>[% c.loc('Date')     %]</th>
+      <th>[% loc('Revision') %]</th>
+      <th>[% loc('Action')   %]</th>
+      <th>[% loc('Changes')  %]</th>
+      <th>[% loc('Message')  %]</th>
+      <th>[% loc('Date')     %]</th>
       [% IF c.user_exists %]
-      <th>[% c.loc('Purge')    %]</th>
+      <th>[% loc('Purge')    %]</th>
       [% END %]
     </tr>
     [% FOREACH rev IN revisions.all %]
@@ -34,9 +34,9 @@
               action="[% c.uri_for_action('/publish/publish') %]">
           <input type="hidden" name="target" value="[% rev.id %]" />
           [% IF rev.can_be_merged -%]
-          [%- SET publish_msg = c.loc('Publish') -%]
+          [%- SET publish_msg = loc('Publish') -%]
           [%- ELSE -%]
-          [%- SET publish_msg = c.loc('Force publishing') -%]
+          [%- SET publish_msg = loc('Force publishing') -%]
           [%- END -%]
           <button class="btn btn-default" type="submit" name="go" value="go">
             [% publish_msg %]
@@ -45,35 +45,35 @@
         </form>
         [% ELSIF rev.published %]
         <a href="[% c.uri_for(rev.title.full_uri) %]">
-          [% c.loc(rev.status) %]
+          [% loc(rev.status) %]
         </a>
         [% ELSIF rev.editing && !rev.editing_ongoing %]
-        [% c.loc('Stale editing') %]
+        [% loc('Stale editing') %]
         [% ELSE %]
-        [% c.loc(rev.status) %]
+        [% loc(rev.status) %]
         [% END %]
       </td>
       <td>
         <a href="[% c.uri_for_action('/edit/diff', [rev.f_class, rev.title.uri, rev.id]) %]"
            target="_blank">
-          [% c.loc('Show differences in other tab') %]
+          [% loc('Show differences in other tab') %]
         </a>
       </td>
       <td>
         [% rev.message | html %]
       </td>
       <td>
-        [% rev.updated.dmy %] [% rev.updated.hms %] [% c.loc('UTC') %]
+        [% rev.updated.dmy %] [% rev.updated.hms %] [% loc('UTC') %]
       </td>
       [% IF c.user_exists %]
       <td>
         <form method="post" name="deletion"
-              onsubmit="return confirm('[% c.loc('Are you sure?') %]');"
+              onsubmit="return confirm('[% htjsloc('Are you sure?') %]');"
               action="[% c.uri_for_action('/publish/purge') %]">
           <input type="hidden" name="target" value="[% rev.id %]" />
           <button class="btn btn-danger" type="submit" name="delete"
                   value="delete">
-            [% c.loc('Erase this revision') %]
+            [% loc('Erase this revision') %]
           </button>
         </form>
       </td>
@@ -85,19 +85,19 @@
 
 <div class="well">
   <p>
-    [% c.loc("Please keep in mind that if you see “Force publishing”
+    [% loc("Please keep in mind that if you see “Force publishing”
     as action, it means that the revision has been superseded by
     another one, so publishing this one, you'll end up reverting a
     previous one. Try to avoid this, unless you know what you're
     doing.") %]
   </p>
   <p>
-    [% c.loc("“Stale editing” means that the revision was abandoned
+    [% loc("“Stale editing” means that the revision was abandoned
     while editing, but it's still there, in case someone wants to pick
     it up when editing a text.") %]
   </p>
   <p>
-    [% c.loc("Deleting a revision is safe if a text has been
+    [% loc("Deleting a revision is safe if a text has been
     published. Otherwise deleting it you'll lose the unpublished changes") %]
   </p>
 </div>

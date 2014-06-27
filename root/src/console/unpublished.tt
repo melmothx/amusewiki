@@ -1,18 +1,18 @@
 [%# -*- mode: html -*- %]
 
-<h2>[% c.loc('List of texts on hold') %]</h2>
+<h2>[% loc('List of texts on hold') %]</h2>
 
 [% IF text_list %]
 
 <table class="table table-striped">
   <tr>
-    <th>[% c.loc('URI') %]</th>
-    <th>[% c.loc('Author') %]</th>
-    <th>[% c.loc('Title') %]</th>
-    <th>[% c.loc('Status') %]</th>
-    <th>[% c.loc('Reason') %]</th>
-    <th>[% c.loc('Pubdate') %]</th>
-    <th>[% c.loc('Purge') %]</th>
+    <th>[% loc('URI') %]</th>
+    <th>[% loc('Author') %]</th>
+    <th>[% loc('Title') %]</th>
+    <th>[% loc('Status') %]</th>
+    <th>[% loc('Reason') %]</th>
+    <th>[% loc('Pubdate') %]</th>
+    <th>[% loc('Purge') %]</th>
     <th></th>
   </tr>
   [% FOREACH text IN text_list %]
@@ -39,11 +39,11 @@
     <td>
       [% IF text.deleted %]
       <form name="purge" action="[% c.uri_for_action('/console/purge') %]"
-            onsubmit="return confirm('[% c.loc('Are you sure?') %]');"
+            onsubmit="return confirm('[% htjsloc('Are you sure?') %]');"
             method="post">
         <input type="hidden" name="purge" value="[% text.id %]"/>
         <button type="submit" class="btn btn-danger">
-          [% c.loc('Purge') %]
+          [% loc('Purge') %]
         </button>
       </form>
       [% END %]
@@ -55,7 +55,7 @@
 
 [% ELSE %]
 
-[% c.loc('Nothing to see here, so far') %]
+[% loc('Nothing to see here, so far') %]
 
 [% END %]
 

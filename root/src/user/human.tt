@@ -2,9 +2,9 @@
 
 <!-- test if the user is a human -->
 
-<h3 class="h3">[% c.loc('Please prove you are a human.') %]</h3>
+<h3 class="h3">[% loc('Please prove you are a human.') %]</h3>
 
-<p>[% c.loc('You can do so answering a simple question.') %]</p>
+<p>[% loc('You can do so answering a simple question.') %]</p>
 
 <form name="human" method="post" action="[% c.uri_for('/human') %]">
   <div class="form-group">
@@ -14,11 +14,11 @@
     <input class="form-control" type="text" size="20" name="answer" id="answer"/>
   </div>
   <button type="submit" class="btn btn-default" name="submit" value="go">
-    [% c.loc('I am human') %]
+    [% loc('I am human') %]
   </button>
 </form>
 
-<h3 class="h3">[% c.loc('Or log in, if you have an account.') %]</h3>
+<h3 class="h3">[% loc('Or log in, if you have an account.') %]</h3>
 
 [% INCLUDE user/login.tt %]
 

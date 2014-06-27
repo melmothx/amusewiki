@@ -7,7 +7,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">
-          [% c.loc("Table of Contents") %]
+          [% loc("Table of Contents") %]
         </h4>
       </div>
       <div class="modal-body" id="pop-up-toc"></div>
@@ -20,20 +20,20 @@
   <div id="preamble-container" class="well">
   <div id="preamble">
     <p id="texttitle">
-      <strong>[% c.loc('Title') %]:</strong>
+      <strong>[% loc('Title') %]:</strong>
       [% text.title %]
     </p>
 
     [% IF text.subtitle %]
     <p id="textsubtitle">
-      <strong>[% c.loc('Subtitle') %]:</strong>
+      <strong>[% loc('Subtitle') %]:</strong>
       [% text.subtitle %]
     </p>
     [% END %]
 
     [% IF text.authors.size %]
     <p id="authors">
-      <strong>[% c.loc('Authors') %]:</strong>
+      <strong>[% loc('Authors') %]:</strong>
       [% FOREACH author IN text.authors -%]
       <a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>
       [% END %]
@@ -42,14 +42,14 @@
 
     [% IF text.date %]
     <p id="textdate">
-      <strong>[% c.loc('Date') %]:</strong>
+      <strong>[% loc('Date') %]:</strong>
       [% text.date %]
     </p>
     [% END %]
 
     [% IF text.topics.size %]
     <p id="topics">
-      <strong>[% c.loc('Topics') %]:</strong>
+      <strong>[% loc('Topics') %]:</strong>
       [% FOREACH topic IN text.topics -%]
       <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">[% topic.name %]</a>
       [% END %]
@@ -58,14 +58,14 @@
 
     [% IF text.source %]
     <p id="preamblesrc">
-      <strong>[% c.loc('Source') %]:</strong>
+      <strong>[% loc('Source') %]:</strong>
       [% text.source %]
     </p>
     [% END %]
 
     [% IF text.notes %]
     <p id="preamblenotes">
-      <strong>[% c.loc('Notes') %]:</strong>
+      <strong>[% loc('Notes') %]:</strong>
       [% text.notes %]
     </p>
     [% END %]
@@ -77,15 +77,15 @@
 
   <div id="downloadformats">
     <div id="downloadformats-title">
-      <!-- <strong>[% c.loc('Downloads') %]</strong> -->
+      <!-- <strong>[% loc('Downloads') %]</strong> -->
     </div>
     <div id="downloadformats-list">
       [% IF site.pdf %]
       <span id="pdfgeneric">
         <a href="[% basename %].pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-gen.png') %]"
-                 alt="[% c.loc('plain PDF') %]"
-               title="[% c.loc('plain PDF') %]"
+                 alt="[% loc('plain PDF') %]"
+               title="[% loc('plain PDF') %]"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -93,8 +93,8 @@
       <span id="pdfa4imp">
         <a href="[% basename %].a4.pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-a4-imposed.png') %]"
-	             alt="[% c.loc('A4 imposed PDF') %]"
-	           title="[% c.loc('A4 imposed PDF') %]"
+	             alt="[% loc('A4 imposed PDF') %]"
+	           title="[% loc('A4 imposed PDF') %]"
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
@@ -102,8 +102,8 @@
       <span id="letterimp">
         <a href="[% basename %].lt.pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-letter-imposed.png') %]"
-	             alt="[% c.loc('Letter imposed PDF') %]"
-	           title="[% c.loc('Letter imposed PDF') %]"
+	             alt="[% loc('Letter imposed PDF') %]"
+	           title="[% loc('Letter imposed PDF') %]"
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
@@ -111,8 +111,8 @@
       <span id="downloadepub">
         <a href="[% basename %].epub">
 	      <img src="[% c.uri_for('/static/images/epub.png') %]"
-                 alt="[% c.loc('EPUB (for mobile devices)') %]"
-	           title="[% c.loc('EPUB (for mobile devices)') %]"
+                 alt="[% loc('EPUB (for mobile devices)') %]"
+	           title="[% loc('EPUB (for mobile devices)') %]"
                class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -120,8 +120,8 @@
       <span id="downloadhtml">
         <a href="[% basename %].html">
 	      <img src="[% c.uri_for('/static/images/pf-html.png') %]"
-                 alt="[% c.loc('Standalone HTML (printer-friendly)') %]"
-	           title="[% c.loc('Standalone HTML (printer-friendly)') %]"
+                 alt="[% loc('Standalone HTML (printer-friendly)') %]"
+	           title="[% loc('Standalone HTML (printer-friendly)') %]"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -129,24 +129,24 @@
       <span id="downloadtex">
         <a href="[% basename %].tex">
 	      <img src="[% c.uri_for('/static/images/tex.png') %]"
-                 alt="[% c.loc('XeLaTeX source') %]"
-               title="[% c.loc('XeLaTeX source') %]"
+                 alt="[% loc('XeLaTeX source') %]"
+               title="[% loc('XeLaTeX source') %]"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
       <span id="downloadsrc">
         <a href="[% basename %].muse">
 	      <img src="[% c.uri_for('/static/images/muse.png') %]"
-                 alt="[% c.loc('plain text source') %]"
-               title="[% c.loc('plain text source') %]"
+                 alt="[% loc('plain text source') %]"
+               title="[% loc('plain text source') %]"
                class="pdfmyicons" /></a>
       </span>
       [% IF site.zip %]
       <span id="downloadzip">
         <a href="[% basename %].zip">
 	      <img src="[% c.uri_for('/static/images/zip.png') %]"
-                 alt="[% c.loc('Source files with attachments') %]"
-               title="[% c.loc('Source files with attachments') %]"
+                 alt="[% loc('Source files with attachments') %]"
+               title="[% loc('Source files with attachments') %]"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -154,7 +154,7 @@
       <form action="[% c.uri_for(text.full_edit_uri) %]"
             id="text-edit-button" name="text-edit-button" style="display:inline">
         <button type="submit" class="btn btn-default"
-                title="[% c.loc('Edit this text') %]"
+                title="[% loc('Edit this text') %]"
                 id="edit-button">
           <span class="glyphicon glyphicon-edit" style="font-size: 1.5em"></span>
           <span style="display:none">Edit this text</span>
@@ -166,7 +166,7 @@
             name="book-builder-add-text"
             style="display:inline">
         <button type="submit" class="btn btn-default"
-                title="[% c.loc('Add this text to the bookbuilder') %]"
+                title="[% loc('Add this text to the bookbuilder') %]"
                 id="add-to-bookbuilder">
           <span class="glyphicon glyphicon-plus" style="font-size: 1.5em"></span>
           <span style="display:none">Add to the bookbuilder</span>
@@ -195,7 +195,7 @@
     &nbsp;
   </div>
   <div class="center">
-    <h1><small>[% c.loc('Latest entries') %]</small></h1>
+    <h1><small>[% loc('Latest entries') %]</small></h1>
   </div>
   <div class="well">
     <ul>

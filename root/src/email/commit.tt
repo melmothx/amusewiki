@@ -1,20 +1,20 @@
 
-[% c.loc('A new revision has been created at [_1]', site.canonical) %]
+[% loc('A new revision has been created at [_1]', site.canonical) %]
 
-[% c.loc("If the committer provided a mail, it's listed in the mail's CC field") %]
+[% loc("If the committer provided a mail, it's listed in the mail's CC field") %]
 
-[% c.loc('To resume the editing you can visit the following URL') %]:
+[% loc('To resume the editing you can visit the following URL') %]:
 
 [% c.uri_for_action('/edit/edit', [ revision.f_class, revision.title.uri, revision.id ]) %]
 
-[% c.loc('To view the changes introduced, you can visit the following URL') %]:
+[% loc('To view the changes introduced, you can visit the following URL') %]:
 
 [% c.uri_for_action('/edit/diff', [ revision.f_class, revision.title.uri, revision.id ]) %]
 
-[% c.loc('To apply the changes, you can visit [_1]',
+[% loc('To apply the changes, you can visit [_1]',
     c.uri_for_action('/publish/pending')) %]
 
-[% c.loc('The revision has the following messages') %]
+[% loc('The revision has the following messages') %]
 
 [% revision.message %]
 
