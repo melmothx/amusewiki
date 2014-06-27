@@ -34,7 +34,8 @@ I think this was present but got lost somehow
   CLOSED: [2014-06-22 dom 12:03]
 * DONE admin page for site creation/modification
   CLOSED: [2014-06-26 gio 20:34]
-* TODO use a macro for loc in the templates
+* DONE use a macro for loc in the templates
+  CLOSED: [2014-06-27 ven 22:07]
 
 See tasks/dispaly.tt for an example
 
