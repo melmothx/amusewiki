@@ -27,4 +27,5 @@
 [%# loc("Display url as") %]
 [%# loc("Quotes") %]
 [%# loc("Verbatim block") %]
-[%# loc('Missing #title header in the text' %]
+[%# loc('Missing #title header in the text') %]
+

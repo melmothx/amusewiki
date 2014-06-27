@@ -19,7 +19,7 @@ msgstr ""
 msgid "A new revision has been created at %1"
 msgstr ""
 
-#: root/src/admin/edit.tt:200 root/src/text.tt:96 root/src/text.tt:97
+#: root/src/admin/edit.tt:199 root/src/text.tt:96 root/src/text.tt:97
 msgid "A4 imposed PDF"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgid ""
 "      not needed"
 msgstr ""
 
-#: root/src/admin/edit.tt:15 root/src/console/alias_display.tt:123 root/src/console/unpublished.tt:42 root/src/publish/pending.tt:71
+#: root/src/macros.tt:6
 msgid "Are you sure?"
 msgstr ""
 
@@ -109,19 +109,19 @@ msgstr ""
 msgid "Bad request"
 msgstr ""
 
-#: root/src/admin/edit.tt:234
+#: root/src/admin/edit.tt:233
 msgid "Bare HTML, needed by the application"
 msgstr ""
 
-#: root/src/admin/edit.tt:313 root/src/bookbuilder/index.tt:130
+#: root/src/admin/edit.tt:312 root/src/bookbuilder/index.tt:130
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 
-#: root/src/admin/edit.tt:28
+#: root/src/admin/edit.tt:27
 msgid "Blog"
 msgstr ""
 
-#: root/src/edit/edit.tt:42
+#: root/src/macros.tt:19
 msgid "Bold"
 msgstr ""
 
@@ -129,7 +129,7 @@ msgstr ""
 msgid "Bookbuilder"
 msgstr ""
 
-#: root/src/admin/edit.tt:160
+#: root/src/admin/edit.tt:159
 msgid "Bookbuilder page limit (integer)"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Build it"
 msgstr ""
 
-#: root/src/edit/edit.tt:45
+#: root/src/macros.tt:20
 msgid "Bulleted List"
 msgstr ""
 
@@ -170,11 +170,11 @@ msgstr ""
 msgid "Changes for %1"
 msgstr ""
 
-#: root/src/edit/edit.tt:19
+#: root/src/macros.tt:11
 msgid "Chapter, only for chapter divisions in books"
 msgstr ""
 
-#: root/src/admin/edit.tt:276 root/src/bookbuilder/index.tt:99
+#: root/src/admin/edit.tt:275 root/src/bookbuilder/index.tt:99
 msgid "Choose a paper format"
 msgstr ""
 
@@ -260,11 +260,11 @@ msgstr ""
 msgid "Differences"
 msgstr ""
 
-#: root/src/admin/edit.tt:263
+#: root/src/admin/edit.tt:262
 msgid "Directory with templates. Do not set it unless you know what you are doing"
 msgstr ""
 
-#: root/src/edit/edit.tt:57
+#: root/src/macros.tt:27
 msgid "Display url as"
 msgstr ""
 
@@ -272,7 +272,7 @@ msgstr ""
 msgid "Displaying"
 msgstr ""
 
-#: root/src/admin/edit.tt:293 root/src/bookbuilder/index.tt:112
+#: root/src/admin/edit.tt:292 root/src/bookbuilder/index.tt:112
 msgid "Division factor"
 msgstr ""
 
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Downloads"
 msgstr ""
 
-#: root/src/admin/edit.tt:245
+#: root/src/admin/edit.tt:244
 msgid "EPUB"
 msgstr ""
 
@@ -297,7 +297,7 @@ msgid "Edit"
 msgstr ""
 
 #. (esite.id)
-#: root/src/admin/edit.tt:11
+#: root/src/admin/edit.tt:10
 msgid "Edit site %1"
 msgstr ""
 
@@ -354,11 +354,11 @@ msgstr ""
 msgid "Fix typography"
 msgstr ""
 
-#: root/src/admin/edit.tt:78
+#: root/src/admin/edit.tt:77
 msgid "Fixed category list"
 msgstr ""
 
-#: root/src/admin/edit.tt:333
+#: root/src/admin/edit.tt:332
 msgid "Font size"
 msgstr ""
 
@@ -380,7 +380,7 @@ msgstr ""
 msgid "Force publishing"
 msgstr ""
 
-#: root/src/admin/edit.tt:169
+#: root/src/admin/edit.tt:168
 msgid "Formats"
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr ""
 msgid "Full list of texts"
 msgstr ""
 
-#: root/src/admin/edit.tt:140
+#: root/src/admin/edit.tt:139
 msgid "Full site canonical URL, including protocol"
 msgstr ""
 
@@ -400,7 +400,7 @@ msgstr ""
 msgid "Git console"
 msgstr ""
 
-#: root/src/admin/edit.tt:223
+#: root/src/admin/edit.tt:222
 msgid "HTML"
 msgstr ""
 
@@ -408,7 +408,7 @@ msgstr ""
 msgid "Half Letter paper"
 msgstr ""
 
-#: root/src/edit/edit.tt:14 root/src/edit/edit.tt:19 root/src/edit/edit.tt:24 root/src/edit/edit.tt:29 root/src/edit/edit.tt:34
+#: root/src/macros.tt:8
 msgid "Heading"
 msgstr ""
 
@@ -416,7 +416,7 @@ msgstr ""
 msgid "Hide options"
 msgstr ""
 
-#: root/src/admin/edit.tt:294 root/src/bookbuilder/index.tt:114
+#: root/src/admin/edit.tt:293 root/src/bookbuilder/index.tt:114
 msgid "Higher division factor means narrower margins"
 msgstr ""
 
@@ -450,7 +450,7 @@ msgid ""
 "        review and preview the upload."
 msgstr ""
 
-#: root/src/edit/edit.tt:53
+#: root/src/macros.tt:23
 msgid "Image url"
 msgstr ""
 
@@ -466,7 +466,7 @@ msgstr ""
 msgid "Invalid username"
 msgstr ""
 
-#: root/src/edit/edit.tt:39
+#: root/src/macros.tt:18
 msgid "Italic"
 msgstr ""
 
@@ -498,7 +498,7 @@ msgstr ""
 msgid "Latest entries"
 msgstr ""
 
-#: root/src/admin/edit.tt:211 root/src/text.tt:105 root/src/text.tt:106
+#: root/src/admin/edit.tt:210 root/src/text.tt:105 root/src/text.tt:106
 msgid "Letter imposed PDF"
 msgstr ""
 
@@ -506,7 +506,7 @@ msgstr ""
 msgid "Letter paper"
 msgstr ""
 
-#: root/src/edit/edit.tt:55
+#: root/src/macros.tt:25
 msgid "Link"
 msgstr ""
 
@@ -514,7 +514,7 @@ msgstr ""
 msgid "List of texts on hold"
 msgstr ""
 
-#: root/src/admin/edit.tt:40 root/src/admin/list.tt:16
+#: root/src/admin/edit.tt:39 root/src/admin/list.tt:16
 msgid "Locale"
 msgstr ""
 
@@ -530,11 +530,11 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: root/src/admin/edit.tt:68
+#: root/src/admin/edit.tt:67
 msgid "Magic answer"
 msgstr ""
 
-#: root/src/admin/edit.tt:58
+#: root/src/admin/edit.tt:57
 msgid "Magic question"
 msgstr ""
 
@@ -542,7 +542,7 @@ msgstr ""
 msgid "Mail from"
 msgstr ""
 
-#: root/src/admin/edit.tt:351
+#: root/src/admin/edit.tt:350
 msgid "Main font"
 msgstr ""
 
@@ -562,7 +562,7 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: root/src/edit/edit.tt:232
+#: root/src/macros.tt:30
 msgid "Missing #title header in the text"
 msgstr ""
 
@@ -586,7 +586,7 @@ msgstr ""
 msgid "Mode"
 msgstr ""
 
-#: root/src/admin/edit.tt:24
+#: root/src/admin/edit.tt:23
 msgid "Moderated wiki"
 msgstr ""
 
@@ -638,7 +638,7 @@ msgstr ""
 msgid "Nothing to see here, so far"
 msgstr ""
 
-#: root/src/admin/edit.tt:120
+#: root/src/admin/edit.tt:119
 msgid "Notify mail: blank field will disable them"
 msgstr ""
 
@@ -646,11 +646,11 @@ msgstr ""
 msgid "Notify to"
 msgstr ""
 
-#: root/src/edit/edit.tt:48
+#: root/src/macros.tt:21
 msgid "Numeric List"
 msgstr ""
 
-#: root/src/admin/edit.tt:32
+#: root/src/admin/edit.tt:31
 msgid "Open wiki"
 msgstr ""
 
@@ -667,7 +667,7 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr ""
 
-#: root/src/admin/edit.tt:110
+#: root/src/admin/edit.tt:109
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr ""
 
@@ -675,7 +675,7 @@ msgstr ""
 msgid "Page not found!"
 msgstr ""
 
-#: root/src/edit/edit.tt:14
+#: root/src/macros.tt:9
 msgid "Part, for larger books only"
 msgstr ""
 
@@ -703,11 +703,11 @@ msgstr ""
 msgid "Pending revisions"
 msgstr ""
 
-#: root/src/edit/edit.tt:51
+#: root/src/macros.tt:22
 msgid "Picture"
 msgstr ""
 
-#: root/src/admin/edit.tt:189
+#: root/src/admin/edit.tt:188
 msgid "Plain PDF"
 msgstr ""
 
@@ -751,7 +751,7 @@ msgstr ""
 msgid "Please prove you are a human."
 msgstr ""
 
-#: root/src/tasks/display.tt:31
+#: root/src/tasks/display.tt:24
 msgid "Please reload your page"
 msgstr ""
 
@@ -814,7 +814,7 @@ msgstr ""
 msgid "Quota exceeded, too many pages"
 msgstr ""
 
-#: root/src/edit/edit.tt:59
+#: root/src/macros.tt:28
 msgid "Quotes"
 msgstr ""
 
@@ -891,23 +891,23 @@ msgstr ""
 msgid "Site already exists"
 msgstr ""
 
-#: root/src/admin/edit.tt:150 root/src/admin/list.tt:14
+#: root/src/admin/edit.tt:149 root/src/admin/list.tt:14
 msgid "Site group"
 msgstr ""
 
-#: root/src/admin/edit.tt:130
+#: root/src/admin/edit.tt:129
 msgid "Site mail (From field)"
 msgstr ""
 
-#: root/src/admin/edit.tt:18
+#: root/src/admin/edit.tt:17
 msgid "Site mode"
 msgstr ""
 
-#: root/src/admin/edit.tt:88
+#: root/src/admin/edit.tt:87
 msgid "Site name"
 msgstr ""
 
-#: root/src/admin/edit.tt:98
+#: root/src/admin/edit.tt:97
 msgid "Site slogan"
 msgstr ""
 
@@ -951,7 +951,7 @@ msgstr ""
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
-#: root/src/console/unpublished.tt:12 root/src/tasks/display.tt:16 root/src/tasks/display.tt:31 root/src/tasks/display.tt:49
+#: root/src/console/unpublished.tt:12 root/src/tasks/display.tt:24 root/src/tasks/display.tt:42 root/src/tasks/display.tt:9
 msgid "Status"
 msgstr ""
 
@@ -973,7 +973,7 @@ msgstr ""
 msgid "Table of Contents"
 msgstr ""
 
-#: root/src/admin/edit.tt:178
+#: root/src/admin/edit.tt:177
 msgid "TeX"
 msgstr ""
 
@@ -1068,7 +1068,7 @@ msgstr ""
 msgid "Try a random text if unsure"
 msgstr ""
 
-#: root/src/admin/edit.tt:373 root/src/bookbuilder/index.tt:144
+#: root/src/admin/edit.tt:372 root/src/bookbuilder/index.tt:144
 msgid "Two side layout"
 msgstr ""
 
@@ -1092,7 +1092,7 @@ msgstr ""
 msgid "Unpublished texts"
 msgstr ""
 
-#: root/src/admin/edit.tt:396 root/src/user/edit.tt:39
+#: root/src/admin/edit.tt:395 root/src/user/edit.tt:39
 msgid "Update"
 msgstr ""
 
@@ -1104,7 +1104,7 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: root/src/edit/edit.tt:57
+#: root/src/macros.tt:26
 msgid "Url"
 msgstr ""
 
@@ -1129,7 +1129,7 @@ msgstr ""
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 
-#: root/src/edit/edit.tt:64
+#: root/src/macros.tt:29
 msgid "Verbatim block"
 msgstr ""
 
@@ -1137,7 +1137,7 @@ msgstr ""
 msgid "Virtual hosts"
 msgstr ""
 
-#: root/src/admin/edit.tt:381
+#: root/src/admin/edit.tt:380
 msgid "Virtual hosts, one per line"
 msgstr ""
 
@@ -1219,7 +1219,7 @@ msgstr ""
 msgid "Your changes are saved and can be checked every time you hit Preview or Commit"
 msgstr ""
 
-#: root/src/edit/edit.tt:21
+#: root/src/macros.tt:12
 msgid "Your chapter here..."
 msgstr ""
 
@@ -1227,7 +1227,7 @@ msgstr ""
 msgid "Your file is ready"
 msgstr ""
 
-#: root/src/edit/edit.tt:16
+#: root/src/macros.tt:10
 msgid "Your part here..."
 msgstr ""
 
@@ -1236,15 +1236,11 @@ msgstr ""
 msgid "Your password is %1."
 msgstr ""
 
-#: root/src/edit/edit.tt:27
-msgid "Your section here..."
-msgstr ""
-
-#: root/src/edit/edit.tt:37
+#: root/src/macros.tt:17
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr ""
 
-#: root/src/edit/edit.tt:32
+#: root/src/macros.tt:15
 msgid "Your subsection here..."
 msgstr ""
 
@@ -1258,7 +1254,7 @@ msgstr ""
 msgid "Your username is %1."
 msgstr ""
 
-#: root/src/admin/edit.tt:256
+#: root/src/admin/edit.tt:255
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr ""
 
@@ -1270,7 +1266,7 @@ msgstr ""
 msgid "comma or semicolon separated list"
 msgstr ""
 
-#: root/src/tasks/display.tt:9
+#: root/src/tasks/display.tt:4
 msgid "completed"
 msgstr ""
 
@@ -1278,7 +1274,7 @@ msgstr ""
 msgid "conflict"
 msgstr ""
 
-#: root/src/edit/edit.tt:53
+#: root/src/macros.tt:24
 msgid "description"
 msgstr ""
 
@@ -1286,7 +1282,7 @@ msgstr ""
 msgid "editing"
 msgstr ""
 
-#: root/src/tasks/display.tt:10
+#: root/src/tasks/display.tt:5
 msgid "failed"
 msgstr ""
 
@@ -1298,7 +1294,7 @@ msgstr ""
 msgid "for indexing"
 msgstr ""
 
-#: root/src/edit/edit.tt:24
+#: root/src/macros.tt:13
 msgid "generic sectioning, good for articles"
 msgstr ""
 
@@ -1314,7 +1310,7 @@ msgstr ""
 msgid "or"
 msgstr ""
 
-#: root/src/publish/pending.tt:4 root/src/tasks/display.tt:7
+#: root/src/publish/pending.tt:4 root/src/tasks/display.tt:2
 msgid "pending"
 msgstr ""
 
@@ -1342,15 +1338,15 @@ msgstr ""
 msgid "revision"
 msgstr ""
 
-#: root/src/edit/edit.tt:34
+#: root/src/macros.tt:16
 msgid "sub-sub-section"
 msgstr ""
 
-#: root/src/edit/edit.tt:29
+#: root/src/macros.tt:14
 msgid "subsection"
 msgstr ""
 
-#: root/src/tasks/display.tt:8
+#: root/src/tasks/display.tt:3
 msgid "taken"
 msgstr ""
 
