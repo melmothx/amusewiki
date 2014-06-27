@@ -1064,7 +1064,8 @@ msgid "Titles"
 msgstr ""
 
 #. (c.uri_for_action('/publish/pending')
-#: root/src/email/commit.tt:15
+#. (c.uri_for_action("/publish/pending"))
+#: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1214,6 +1215,7 @@ msgid ""
 msgstr ""
 
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
 msgstr ""
@@ -1236,7 +1238,8 @@ msgid "You may want to resume the editing of one of them"
 msgstr ""
 
 #. (c.uri_for_action('/user/edit', [ user.id ])
-#: root/src/email/newuser.tt:9
+#. (c.uri_for_action("/user/edit", [ user.id ]))
+#: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr ""
 
