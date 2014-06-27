@@ -4,6 +4,16 @@ use namespace::autoclean;
 
 extends 'Catalyst::View::TT';
 
+use Template::Filters;
+
+$Template::Filters::FILTERS->{escape_js} = \&escape_js_string;
+
+sub escape_js_string {
+    my $s = shift;
+    $s =~ s/(\\|'|"|\/)/\\$1/g;
+    return $s;
+};
+
 __PACKAGE__->config(
     TEMPLATE_EXTENSION => '.tt',
     ENCODING => 'utf8',
