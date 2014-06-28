@@ -1,10 +1,10 @@
 [% # -*- mode: html -*- %]
 
-[%# loc('editing') %]
-[%# loc('pending')   %]
-[%# loc('processing') %]
-[%# loc('conflict') %]
-[%# loc('published') %] -->
+[%- # loc('editing')    -%]
+[%- # loc('pending')    -%]
+[%- # loc('processing') -%]
+[%- # loc('conflict')   -%]
+[%- # loc('published')  -%]
 
 [% IF revisions.size %]
 <h3>[% page_title %]</h3>
