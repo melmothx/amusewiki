@@ -140,7 +140,7 @@ __PACKAGE__->config(
             check_every_n_requests  => 50,
            },
         'ConditionalGET',
-        'ETag',
+        ETag => { check_last_modified_header => 1 },
        ],
 );
 
