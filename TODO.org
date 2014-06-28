@@ -45,7 +45,8 @@ See tasks/dispaly.tt for an example
 * DONE Upgrade catalyst
   CLOSED: [2014-06-28 sab 12:33]
 
-* TODO X-Accel, maybe?
+* DONE X-Accel, maybe?
+  CLOSED: [2014-06-28 sab 21:29]
 
 * TODO After a wrong answer, and a good one, popup doesn't go away
 
