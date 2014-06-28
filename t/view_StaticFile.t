@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 74;
+use Test::More tests => 362;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{CATALYST_DEBUG} = 0;
@@ -9,6 +9,7 @@ BEGIN {
 }
 
 use Data::Dumper;
+use Cwd;
 use Test::WWW::Mechanize::Catalyst;
 
 # attachments are accessible everywhere
@@ -58,3 +59,25 @@ foreach my $get ('/special/index', '/feed', '/library/first-test') {
 }
 
 
+# emulate X-SendFile
+
+foreach my $h (qw/X-Sendfile X-Lighttpd-Send-File X-Accel-Redirect/) {
+    if ($h eq 'X-Accel-Redirect') {
+        $mech->add_header('X-Accel-Mapping' => getcwd() . '=' . '/private');
+    }
+    $mech->add_header('X-Sendfile-Type' => $h);
+    foreach my $get (sort keys %files) {
+        $mech->get_ok($get);
+        my $type = $mech->response->content_type;
+        ok($mech->response->header($h), "Found $h header!: " . $mech->response->header($h));
+        is $type, $files{$get};
+        # these things has no etag
+        ok (!$mech->response->header('ETag'), "Etag not present");
+        ok ($mech->response->header('Last-Modified'),
+            "Last-Modified present: " . $mech->response->header('Last-Modified'));
+        is $mech->response->content, '', "Empty body for $get";
+    }
+}
+
+$mech->delete_header('X-Accel-Mapping');
+$mech->delete_header('X-Sendfile-Type');
