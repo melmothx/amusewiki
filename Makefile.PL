@@ -29,6 +29,13 @@ requires 'Test::WWW::Mechanize::Catalyst';
 # modules used
 requires 'Unicode::Collate';
 requires 'File::Slurp';
+requires 'DBIx::Class';
+requires 'DBD::SQLite';
+requires 'Daemon::Control';
+requires 'MooseX::NonMoose';
+requires 'JSON';
+requires 'JSON::XS';
+requires 'DBIx::Class::Schema::Loader';
 requires 'DBIx::Class::InflateColumn::DateTime';
 requires 'DBIx::Class::Schema::Config';
 requires 'DBIx::Class::Helper::ResultSet::Random';
