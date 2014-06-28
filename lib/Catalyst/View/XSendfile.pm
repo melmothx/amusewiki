@@ -12,6 +12,33 @@ use File::stat;
 my $mime_types = MIME::Types->new(only_complete => 1);
 
 # TODO: make this configurable.
+# TODO: document it properly.
+
+=head2 nginx configuration:
+
+    location /private/repo/ {
+        internal;
+        alias /myapp-dir/amw/repo/;
+    }
+    location /private/staging/ {
+        internal;
+        alias /myapp-dir/amw/staging/;
+    }
+	location @proxy {
+		access_log /var/log/nginx/library.log hitcount;
+#		include proxy_params;
+#		proxy_pass http://127.0.0.1:5001;
+    	include /etc/nginx/fastcgi_params;
+    	fastcgi_param SCRIPT_NAME '';
+    	fastcgi_param PATH_INFO   $fastcgi_script_name;
+        fastcgi_param HTTP_X_SENDFILE_TYPE X-Accel-Redirect;
+        fastcgi_param HTTP_X_ACCEL_MAPPING /myapp-dir/amw=/private;
+		fastcgi_pass  unix:/myapp-dir/amw/var/amw.sock;
+	}
+
+=cut
+
+
 my $override = {
                 muse => 'text/plain',
                 epub => 'application/epub+zip',
