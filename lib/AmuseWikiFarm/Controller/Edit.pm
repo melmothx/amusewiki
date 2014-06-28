@@ -359,7 +359,8 @@ sub attachments :Private {
     # first, see if we have something global
     if (my $attach = $c->stash->{site}->attachments->by_uri($path)) {
         $c->log->debug("Found attachment $path");
-        $c->serve_static_file($attach->f_full_path_name);
+        $c->stash(serve_static_file => $attach->f_full_path_name);
+        $c->detach($c->view('StaticFile'));
     }
     else {
         $c->detach('/not_found');

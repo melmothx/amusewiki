@@ -220,8 +220,8 @@ sub text_matching :Private {
             $c->log->debug("Got $canonical $ext => " . $text->title);
             my $served_file = $text->filepath_for_ext($ext);
             if (-f $served_file) {
-                $c->serve_static_file($served_file);
-                $c->detach();
+                $c->stash(serve_static_file => $served_file);
+                $c->detach($c->view('StaticFile'));
                 return;
             }
             else {
@@ -237,9 +237,8 @@ sub text_matching :Private {
         if ($name ne $canonical) {
             $c->log->warn("Using $canonical instead of $name, shouldn't happen");
         }
-        $c->serve_static_file($attach->f_full_path_name);
-        # close it here
-        $c->detach();
+        $c->stash(serve_static_file => $attach->f_full_path_name);
+        $c->detach($c->view('StaticFile'));
         return;
     }
     else {
