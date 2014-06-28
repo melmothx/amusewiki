@@ -47,7 +47,8 @@ See tasks/dispaly.tt for an example
 ** TODO add multilanguage support for the same site
 
 * TODO After a wrong answer, and a good one, popup doesn't go away
-* TODO Upgrade catalyst
+* DONE Upgrade catalyst
+  CLOSED: [2014-06-28 sab 12:33]
 * TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
 
 This looks like searching for troubles... Deferred
