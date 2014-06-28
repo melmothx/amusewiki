@@ -70,7 +70,7 @@ foreach my $h (qw/X-Sendfile X-Lighttpd-Send-File X-Accel-Redirect/) {
         $mech->get_ok($get);
         my $type = $mech->response->content_type;
         ok($mech->response->header($h), "Found $h header!: " . $mech->response->header($h));
-        is $type, $files{$get};
+        is $type, $files{$get}, "Content-type is correct ($files{$get})";
         # these things has no etag
         ok (!$mech->response->header('ETag'), "Etag not present");
         ok ($mech->response->header('Last-Modified'),

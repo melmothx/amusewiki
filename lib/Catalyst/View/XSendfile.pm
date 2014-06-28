@@ -6,6 +6,7 @@ extends 'Catalyst::View';
 
 # use Data::Dumper;
 use MIME::Types ();
+use File::stat;
 
 my $mime_types = MIME::Types->new(only_complete => 1);
 
@@ -24,6 +25,7 @@ sub process {
         my $type = $self->_ext_to_type($file);
         $c->response->content_type($type);
         $c->response->body('');
+        $c->response->headers->last_modified(stat($file)->mtime);
         $c->log->debug("Serving $header $set as $type");
     }
     else {
