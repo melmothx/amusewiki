@@ -8,7 +8,17 @@ extends 'Catalyst::View';
 use MIME::Types ();
 use File::stat;
 
+# this should load straight away before forking
 my $mime_types = MIME::Types->new(only_complete => 1);
+
+# TODO: make this configurable.
+my $override = {
+                muse => 'text/plain',
+                epub => 'application/epub+zip',
+               };
+
+# Code here was stolen from Plack::Middleware::ETag and
+# Catalyst::Plugin::Static::Simple
 
 sub process {
     my ($self, $c) = @_;
@@ -25,6 +35,7 @@ sub process {
         my $type = $self->_ext_to_type($file);
         $c->response->content_type($type);
         $c->response->body('');
+        # set last modified to prevent etag
         $c->response->headers->last_modified(stat($file)->mtime);
         $c->log->debug("Serving $header $set as $type");
     }
@@ -37,7 +48,8 @@ sub _ext_to_type {
     my ($self, $file) = @_;
     my $type;
     if ($file =~ m/\.(\w+)$/s) {
-        $type = $mime_types->mimeTypeOf($1);
+        my $ext = $1;
+        $type = $override->{$ext} || $mime_types->mimeTypeOf($ext);
     }
     $type ? return "$type" : return 'text/plain';
 }
