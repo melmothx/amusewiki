@@ -4,7 +4,7 @@
 [%- # placeholders -%]
 [%- # loc('Are you sure?') -%]
 [%- # loc("Heading") -%]
-[%- # loc("Part, for larger books only") %
+[%- # loc("Part, for larger books only") -%]
 [%- # loc("Your part here...") -%]
 [%- # loc("Chapter, only for chapter divisions in books") -%]
 [%- # loc("Your chapter here...") -%]
