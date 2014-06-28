@@ -8,6 +8,7 @@ __PACKAGE__->config(
     TEMPLATE_EXTENSION => '.tt',
     ENCODING => 'utf8',
     render_die => 1,
+    PRE_PROCESS => 'macros.tt',
 );
 
 =head1 NAME
