@@ -40,7 +40,8 @@ I think this was present but got lost somehow
 See tasks/dispaly.tt for an example
 
 * TODO X-Accel, maybe?
-* TODO Middlewares
+* DONE Middlewares
+  CLOSED: [2014-06-28 sab 13:57]
 * TODO Multilingual
 ** TODO add category/*/lang
 ** TODO add support for uid on display

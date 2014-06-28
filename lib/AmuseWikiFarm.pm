@@ -120,6 +120,22 @@ __PACKAGE__->config(
     },
 );
 
+# Middlewares
+
+__PACKAGE__->config(
+    psgi_middleware => [
+        # Debug => { panels => [ qw/DBITrace Environment Response Memory Timer/ ] },
+        # AccessLog => { format => '%P %V %t %s %b %r' },
+        SizeLimit => {
+            max_unshared_size_in_kb => 230000, # max size, shouldn't hit so much
+            check_every_n_requests  => 50,
+           },
+        'ConditionalGET',
+        'ETag',
+       ],
+);
+
+
 # Start the application
 __PACKAGE__->setup();
 

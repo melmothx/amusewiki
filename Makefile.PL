@@ -30,6 +30,15 @@ requires 'Config::General'; # This should reflect the config file format you've 
 requires 'Test::WWW::Mechanize::Catalyst';
 requires 'Term::Size::Any';
 # modules used
+
+# middlewares
+requires 'Plack::Middleware::ETag',
+requires 'Plack::Middleware::ConditionalGET',
+requires 'Plack::Middleware::SizeLimit',
+
+
+
+
 requires 'Unicode::Collate';
 requires 'File::Slurp';
 requires 'DBIx::Class';
