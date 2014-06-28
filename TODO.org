@@ -54,6 +54,7 @@ See tasks/dispaly.tt for an example
 
 * Future releases
 
+* TODO The jobber should publish deferred texts
 * TODO Multilingual
 ** TODO add category/*/lang
 ** TODO add support for uid on display
@@ -64,11 +65,5 @@ See tasks/dispaly.tt for an example
 This looks like searching for troubles... Deferred
 
 
-
-* Needed features
-** simple to use
-** simple to install
-** template management
-** page deletion
-** category management
+* TODO Add descriptions to categories
 
