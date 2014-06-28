@@ -81,7 +81,7 @@ sub muse_file_info {
 
     my @categories;
 
-    foreach my $category (keys %$details) {
+    foreach my $category (sort keys %$details) {
         if ($category =~ m/^SORT(\w+?)s$/) {
             my $type = $1;
             if (my $string = delete $details->{$category}) {

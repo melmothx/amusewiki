@@ -89,16 +89,6 @@ my $expected = {
                 'list_title' => 'Test',
                 'parsed_categories' => [
                                         {
-                                         'name' => "ècole",
-                                         'type' => 'topic',
-                                         'uri' => 'ecole'
-                                        },
-                                        {
-                                         'name' => "École-",
-                                         'type' => 'topic',
-                                         'uri' => 'ecole'
-                                        },
-                                        {
                                          'name' => "Émile",
                                          'type' => 'author',
                                          'uri' => 'emile'
@@ -107,6 +97,16 @@ my $expected = {
                                          'name' => "Èmile",
                                          'type' => 'author',
                                          'uri' => 'emile'
+                                        },
+                                        {
+                                         'name' => "ècole",
+                                         'type' => 'topic',
+                                         'uri' => 'ecole'
+                                        },
+                                        {
+                                         'name' => "École-",
+                                         'type' => 'topic',
+                                         'uri' => 'ecole'
                                         },
                                        ],
                 'f_suffix' => '.muse',
