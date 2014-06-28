@@ -39,22 +39,31 @@ I think this was present but got lost somehow
 
 See tasks/dispaly.tt for an example
 
-* TODO X-Accel, maybe?
 * DONE Middlewares
   CLOSED: [2014-06-28 sab 13:57]
+
+* DONE Upgrade catalyst
+  CLOSED: [2014-06-28 sab 12:33]
+
+* TODO X-Accel, maybe?
+
+* TODO After a wrong answer, and a good one, popup doesn't go away
+
+* TODO Other languages on its own menu?
+
+
+* Future releases
+
 * TODO Multilingual
 ** TODO add category/*/lang
 ** TODO add support for uid on display
 ** TODO add multilanguage support for the same site
 
-* TODO After a wrong answer, and a good one, popup doesn't go away
-* DONE Upgrade catalyst
-  CLOSED: [2014-06-28 sab 12:33]
 * TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
 
 This looks like searching for troubles... Deferred
 
-* TODO Other languages on its own menu?
+
 
 * Needed features
 ** simple to use
