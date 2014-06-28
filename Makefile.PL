@@ -32,12 +32,12 @@ requires 'Term::Size::Any';
 # modules used
 
 # middlewares
-requires 'Plack::Middleware::ETag',
-requires 'Plack::Middleware::ConditionalGET',
-requires 'Plack::Middleware::SizeLimit',
+requires 'Plack::Middleware::ETag';
+requires 'Plack::Middleware::ConditionalGET';
+requires 'Plack::Middleware::SizeLimit';
 
-
-
+# needs a recent thing
+requires 'MIME::Types' => '2.04';
 
 requires 'Unicode::Collate';
 requires 'File::Slurp';
