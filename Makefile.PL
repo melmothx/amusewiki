@@ -9,7 +9,7 @@ use Module::Install::Catalyst; # Complain loudly if you don't have
 name 'AmuseWikiFarm';
 all_from 'lib/AmuseWikiFarm.pm';
 
-requires 'Catalyst::Runtime' => '5.90015';
+requires 'Catalyst::Runtime' => '5.90065';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Plugin::Unicode::Encoding';
@@ -28,7 +28,7 @@ requires 'Config::General'; # This should reflect the config file format you've 
                  # See Catalyst::Plugin::ConfigLoader for supported formats
 
 requires 'Test::WWW::Mechanize::Catalyst';
-
+requires 'Term::Size::Any';
 # modules used
 requires 'Unicode::Collate';
 requires 'File::Slurp';
@@ -49,13 +49,13 @@ requires 'Date::Parse';
 requires 'DateTime::Format::SQLite';
 requires 'DateTime::Format::MySQL';
 requires 'DateTime::Format::Pg';
-requires 'XML::FeedPP';
+requires 'XML::FeedPP' => '0.43';
 requires 'Git::Wrapper';
 requires 'Text::Wrapper'; # for revision messages
 requires 'Email::Valid';
 
 requires 'Search::Xapian';
-requires 'Catalyst::Model::Adaptor';
+requires 'Catalyst::Model::Adaptor' => '0.10';
 
 # our own dogfood
 requires 'Text::Amuse' => 0.12;

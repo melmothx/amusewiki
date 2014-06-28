@@ -7,8 +7,12 @@ use XML::FeedPP;
 
 __PACKAGE__->config(
     class => 'XML::FeedPP::RSS',
-    args  => undef,
 );
+
+sub mangle_arguments {
+    my ($self, $args) = @_;
+    return;
+}
 
 =head1 NAME
 

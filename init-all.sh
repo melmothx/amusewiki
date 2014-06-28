@@ -1,7 +1,6 @@
 #!/bin/bash
 
 cd `dirname $0`
-eval `perl -Mlocal::lib`
 
 if [ "$1" == "" ]; then
     echo "Usage: $0 [ start | stop | restart ]"

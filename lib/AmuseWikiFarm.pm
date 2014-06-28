@@ -53,7 +53,6 @@ use Catalyst::Runtime 5.80;
 
 use Catalyst
   'ConfigLoader',
-  'Unicode::Encoding',
   'I18N',
   'Static::Simple',
   '-Log=warn,fatal,error',
