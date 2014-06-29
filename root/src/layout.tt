@@ -264,6 +264,8 @@
         [% c.flash.error_msg | html %]
       </div>
       [% END %]
+      [%- # all rendered, clear this -%]
+      [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
       <div id="widepage">
         [% content %]
       </div>
