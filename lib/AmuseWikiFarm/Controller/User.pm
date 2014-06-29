@@ -225,8 +225,12 @@ sub create :Chained('user') :Args(0) {
                         subject => $c->loc('User created'),
                         template => 'newuser.tt'
                        );
-            if (my $cc = Email::Valid->address($c->user->get('email'))) {
-                $mail{cc} = $cc;
+            $c->log->warn("Sending mail from $mail_from to " . $user->email);
+            if (my $usercc = $c->user->get('email')) {
+                if (my $cc = Email::Valid->address($usercc)) {
+                    $mail{cc} = $cc;
+                    $c->log->warn("Adding CC: $cc");
+                }
             }
             $c->stash(email => \%mail);
             $c->forward($c->view('Email::Template'));

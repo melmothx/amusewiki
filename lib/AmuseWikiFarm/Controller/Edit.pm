@@ -329,8 +329,10 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                                 subject => $revision->title->uri,
                                 template => 'commit.tt',
                                );
+                    $c->log->warn("Sending mail from $mail_from to $mail_to");
                     if (my $cc = Email::Valid->address($params->{email})) {
                         $mail{cc} = $cc;
+                        $c->log->warn("Adding CC: $cc");
                     }
                     elsif (my $mail = $params->{email}) {
                         $c->log->warn("Invalid mail $mail provided, ignoring");
