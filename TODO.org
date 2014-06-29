@@ -48,7 +48,8 @@ See tasks/dispaly.tt for an example
 * DONE X-Accel, maybe?
   CLOSED: [2014-06-28 sab 21:29]
 
-* TODO After a wrong answer, and a good one, popup doesn't go away
+* DONE After a wrong answer, and a good one, popup doesn't go away
+  CLOSED: [2014-06-29 dom 15:11]
 
 * TODO Other languages on its own menu?
 
@@ -56,6 +57,7 @@ See tasks/dispaly.tt for an example
 * Future releases
 
 * TODO The jobber should publish deferred texts
+* TODO Move the flash to Catalyst::Plugin::StatusMessage
 * TODO Multilingual
 ** TODO add category/*/lang
 ** TODO add support for uid on display
