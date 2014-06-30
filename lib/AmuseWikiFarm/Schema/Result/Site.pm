@@ -584,6 +584,7 @@ sub known_langs {
             hr => 'Hrvatski',
             mk => 'Македонски',
             fi => 'Suomi',
+            it => 'Italiano',
             es => 'Español',
             en => 'English',
             fr => 'Français',
