@@ -10,9 +10,6 @@ name 'AmuseWikiFarm';
 all_from 'lib/AmuseWikiFarm.pm';
 
 requires 'Catalyst::Runtime' => '5.90065';
-requires 'Catalyst::Plugin::ConfigLoader';
-requires 'Catalyst::Plugin::Static::Simple';
-requires 'Catalyst::Plugin::Unicode::Encoding';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Session';
 requires 'Catalyst::Plugin::Session::Store::File';
@@ -24,9 +21,6 @@ requires 'Catalyst::View::Email::Template';
 requires 'Catalyst::Action::RenderView';
 requires 'Moose';
 requires 'namespace::autoclean';
-requires 'Config::General'; # This should reflect the config file format you've chosen
-                 # See Catalyst::Plugin::ConfigLoader for supported formats
-
 requires 'Test::WWW::Mechanize::Catalyst';
 requires 'Term::Size::Any';
 # modules used
@@ -34,7 +28,7 @@ requires 'Term::Size::Any';
 # middlewares
 requires 'Plack::Middleware::ETag';
 requires 'Plack::Middleware::ConditionalGET';
-requires 'Plack::Middleware::SizeLimit';
+requires 'Plack::Middleware::XSendfile';
 
 # needs a recent thing
 requires 'MIME::Types' => '2.04';
