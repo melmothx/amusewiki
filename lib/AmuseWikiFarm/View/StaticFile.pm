@@ -2,9 +2,46 @@ package AmuseWikiFarm::View::StaticFile;
 use Moose;
 use namespace::autoclean;
 
-extends 'Catalyst::View::XSendfile';
+extends 'Catalyst::View';
 
-# placeholder for configuration
+use Plack::Util;
+
+sub process {
+    my ($self, $c) = @_;
+    my $file = $c->stash->{serve_static_file};
+    unless ($file and -f $file) {
+        $c->log->error("$file is not a file!");
+        return;
+    }
+    my $mime = {
+                tex => 'application/x-tex',
+                pdf => 'application/pdf',
+                html => 'text/html',
+                epub => 'application/epub+zip',
+                muse => 'text/plain',
+                zip => 'application/zip',
+                png => 'image/png',
+                jpg => 'image/jpeg',
+                jpeg => 'image/jpeg',
+               };
+
+    # no extension => octect-stream
+    my $type = 'application/octet-stream';
+    if ($file =~ m/\.(\w+)$/) {
+        $type = $mime->{$1} || 'text/plain';
+    }
+
+    my $fh = IO::File->new($file, 'r');
+    Plack::Util::set_io_path($fh, $file);
+    # or
+    # my $fh = IO::File::WithPath->new($file, 'r');
+    $c->response->headers->content_type($type);
+    $c->response->headers->content_length(-s $file);
+    $c->response->headers->last_modified((stat($file))[9]);
+    $c->response->body($fh);
+}
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 

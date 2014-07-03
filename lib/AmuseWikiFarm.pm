@@ -52,9 +52,8 @@ use Catalyst::Runtime 5.80;
 # +------+------+------+------+------+------+------+------+------+------'
 
 use Catalyst
-  'ConfigLoader',
   'I18N',
-  'Static::Simple',
+#   'Static::Simple',
   '-Log=warn,fatal,error',
 #  'MemoryUsage',
   'Authentication',
@@ -133,12 +132,7 @@ __PACKAGE__->config(
 
 __PACKAGE__->config(
     psgi_middleware => [
-        # Debug => { panels => [ qw/DBITrace Environment Response Memory Timer/ ] },
-        # AccessLog => { format => '%P %V %t %s %b %r' },
-        SizeLimit => {
-            max_unshared_size_in_kb => 230000, # max size, shouldn't hit so much
-            check_every_n_requests  => 50,
-           },
+        'XSendfile',
         'ConditionalGET',
         ETag => { check_last_modified_header => 1 },
        ],
