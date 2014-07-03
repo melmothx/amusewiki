@@ -137,7 +137,7 @@ ok(exists $bbres->{errors}, "Error field exists");
 ok(!$bbres->{errors}, "Error field exists but empty");
 like $bbres->{logs}, qr/Created pippo-ciccia.*pdf/;
 like $bbres->{produced}, qr/\.pdf$/;
-$mech->get_ok($bbres->{produced});
+ok (-f catfile(root => $bbres->{produced}), "$bbres->{produced} ok");
 
 $mech->get_ok('/console/git');
 
