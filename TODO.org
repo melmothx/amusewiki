@@ -51,7 +51,8 @@ See tasks/dispaly.tt for an example
 * DONE After a wrong answer, and a good one, popup doesn't go away
   CLOSED: [2014-06-29 dom 15:11]
 
-* TODO store favicon, logo, site files in the repo
+* DONE store favicon, logo, site files in the repo
+  CLOSED: [2014-07-05 sab 14:52]
 * TODO List available images while editing
 * TODO Other languages on its own menu?
 

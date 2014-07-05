@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 20;
+use Test::More tests => 22;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use File::Slurp qw/write_file/;
