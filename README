@@ -181,7 +181,7 @@ Rendered special pages are stored in the DB. However, a copy for
 editing is stored in specials/<site_id>. The module responsible for
 editing and storing is AmuseWikiFarm::Archive::Special.
 
-** Local files (favicon.ico, logo.png, local.css, local.js)
+** Local files (favicon.ico, navlogo.png, local.css, local.js)
 
 These files may provide an override for cosmetics and features (via
 js) without tampering the code. These files should be placed in the
@@ -192,6 +192,8 @@ hence you can get some optimization symlinking the the
 repo/<site_id>/site_files directory to root/sitefiles/<site_id> (so
 the files are served right away by the webserver.
 
+The navigation logo (navlogo.png) needs (and it's enforced to) an
+height of 20px.
 
 ** Schema
 
