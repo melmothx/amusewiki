@@ -54,7 +54,8 @@ See tasks/dispaly.tt for an example
 * DONE store favicon, logo, site files in the repo
   CLOSED: [2014-07-05 sab 14:52]
 * TODO List available images while editing
-* TODO Other languages on its own menu?
+* DONE Other languages on its own menu?
+  CLOSED: [2014-07-05 sab 20:02]
 
 
 * TODO Find a way or document clashes between uploaded pdf and titles
