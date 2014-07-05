@@ -14,13 +14,11 @@
     <title>
       [%- IF page_title -%]
       [%- page_title | html -%] |
-      [%- END -%]
-      [% site.sitename | html -%]
-    </title>
+      [%- END %] [% site.sitename | html -%]</title>
 
-    [% UNLESS please_index %]
+    [%- UNLESS please_index -%]
     <meta name="robots" content="noindex,nofollow" />
-    [% END %]
+    [%- END -%]
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -45,7 +43,7 @@
             src="[% c.uri_for('/static/js/jquery-ui-1.10.4.custom.min.js') %]" >
     </script>
 
-    [% IF nav == 'console' %]
+    [%- IF nav == 'console' -%]
     <script type="text/javascript"
             src="[% c.uri_for('/static/js/select2/select2.min.js') %]" >
     </script>
@@ -53,7 +51,7 @@
           href="[% c.uri_for('/static/css/select2/select2.css') %]" />
     <link rel="stylesheet"
           href="[% c.uri_for('/static/css/select2//select2-bootstrap.css') %]" />
-    [% END %]
+    [%- END -%]
 
     [%# markitup css -- maybe make it conditional %]
     <link rel="stylesheet" type="text/css"
