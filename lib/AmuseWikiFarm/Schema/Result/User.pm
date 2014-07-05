@@ -67,6 +67,7 @@ __PACKAGE__->table("user");
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =cut
 
@@ -80,7 +81,7 @@ __PACKAGE__->add_columns(
   "email",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "active",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -162,8 +163,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-22 11:47:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:HH14sYYl3+k2BkJ4DL5yNg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-05 19:31:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:HecE7jkU/Xs9Wqgm1MLvzQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

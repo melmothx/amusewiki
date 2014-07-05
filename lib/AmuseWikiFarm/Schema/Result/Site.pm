@@ -148,6 +148,13 @@ __PACKAGE__->table("site");
   is_nullable: 1
   size: 255
 
+=head2 multilanguage
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 bb_page_limit
 
   data_type: 'integer'
@@ -159,48 +166,56 @@ __PACKAGE__->table("site");
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =head2 pdf
 
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =head2 a4_pdf
 
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =head2 lt_pdf
 
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =head2 html
 
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =head2 bare_html
 
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =head2 epub
 
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =head2 zip
 
   data_type: 'integer'
   default_value: 1
   is_nullable: 0
+  size: 1
 
 =head2 ttdir
 
@@ -247,6 +262,7 @@ __PACKAGE__->table("site");
   data_type: 'integer'
   default_value: 0
   is_nullable: 0
+  size: 1
 
 =cut
 
@@ -290,24 +306,26 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "specials_label",
   { data_type => "varchar", is_nullable => 1, size => 255 },
+  "multilanguage",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "bb_page_limit",
   { data_type => "integer", default_value => 1000, is_nullable => 0 },
   "tex",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "a4_pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "lt_pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "html",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "bare_html",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "epub",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "zip",
-  { data_type => "integer", default_value => 1, is_nullable => 0 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "ttdir",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "papersize",
@@ -331,7 +349,7 @@ __PACKAGE__->add_columns(
     size => 255,
   },
   "twoside",
-  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -479,8 +497,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-05 19:19:00
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Mj+C+FYNVHftIl5MWZh1jw
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-05 19:31:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ROdjcSdoMzxTno4z/oalJQ
 
 =head2 other_sites
 

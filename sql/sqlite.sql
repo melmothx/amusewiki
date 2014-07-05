@@ -32,22 +32,28 @@ CREATE TABLE site (
        mail_notify VARCHAR(255),
        mail_from   VARCHAR(255),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
+
        sitegroup VARCHAR(255), -- overkill, but who cares
-       sitegroup_label VARCHAR(255), -- the label for that
+
+       -- labels
+       sitegroup_label VARCHAR(255),
        catalog_label VARCHAR(255),
        specials_label VARCHAR(255),
+
+       -- boolean for multilanguage
+       multilanguage INTEGER(1) NOT NULL DEFAULT 0,
 
        -- book builder page limit
        bb_page_limit INTEGER NOT NULL DEFAULT 1000,
        -- formats
-       tex       INTEGER NOT NULL DEFAULT 1,
-       pdf       INTEGER NOT NULL DEFAULT 1,
-       a4_pdf    INTEGER NOT NULL DEFAULT 1,
-       lt_pdf    INTEGER NOT NULL DEFAULT 1,
-       html      INTEGER NOT NULL DEFAULT 1,
-       bare_html INTEGER NOT NULL DEFAULT 1,
-       epub      INTEGER NOT NULL DEFAULT 1,
-       zip       INTEGER NOT NULL DEFAULT 1,
+       tex       INTEGER(1) NOT NULL DEFAULT 1,
+       pdf       INTEGER(1) NOT NULL DEFAULT 1,
+       a4_pdf    INTEGER(1) NOT NULL DEFAULT 1,
+       lt_pdf    INTEGER(1) NOT NULL DEFAULT 1,
+       html      INTEGER(1) NOT NULL DEFAULT 1,
+       bare_html INTEGER(1) NOT NULL DEFAULT 1,
+       epub      INTEGER(1) NOT NULL DEFAULT 1,
+       zip       INTEGER(1) NOT NULL DEFAULT 1,
        ttdir     VARCHAR(255) NOT NULL DEFAULT '',
        -- tex options
        papersize VARCHAR(64) NOT NULL DEFAULT '', -- will pick the generic
@@ -55,7 +61,7 @@ CREATE TABLE site (
        bcor VARCHAR(16) NOT NULL DEFAULT '0mm',
        fontsize INTEGER NOT NULL DEFAULT '10',
        mainfont VARCHAR(255) NOT NULL DEFAULT 'Linux Libertine O',
-       twoside INTEGER NOT NULL DEFAULT 0
+       twoside INTEGER(1) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE user (
@@ -63,7 +69,7 @@ CREATE TABLE user (
        username VARCHAR(255) NOT NULL,
        password VARCHAR(255) NOT NULL,
        email    VARCHAR(255),
-       active   INTEGER NOT NULL DEFAULT 1
+       active   INTEGER(1) NOT NULL DEFAULT 1
 );
 
 CREATE UNIQUE INDEX unique_username ON user (username);

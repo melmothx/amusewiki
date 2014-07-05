@@ -18,3 +18,6 @@ script/amusewikifarm_create.pl model DB \
     dbi:SQLite:test.db \
     on_connect_do="PRAGMA foreign_keys = ON"
 script/bootstrap_archive.pl
+
+rm -f lib/AmuseWikiFarm/Model/DB.pm.new
+rm -f t/model_DB.t.new
