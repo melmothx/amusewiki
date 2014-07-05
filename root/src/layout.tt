@@ -96,7 +96,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="[% c.uri_for('/') %]">
-            [%- IF site.has_site_file(navlogo.png') -%]
+            [%- IF site.has_site_file('navlogo.png') -%]
             <img src="[% c.uri_for_action('/sitefiles/local_files',
                       [ site.id, 'navlogo.png' ]) %]"
                  title="[% site.sitename %]"
