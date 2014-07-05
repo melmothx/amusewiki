@@ -96,8 +96,17 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="[% c.uri_for('/') %]">
+            [%- IF site.has_site_file('logo.png') -%]
+            <img src="[% c.uri_for_action('/sitefiles/local_files',
+                      [ site.id, 'logo.png' ]) %]"
+                 title="[% site.sitename %]"
+                 height="20px"
+                 alt="[% site.sitename %]" />
+            [% ELSE %]
             <small>[% site.sitename %]</small>
+            [%- END -%]
           </a>
+
           <a class="navbar-brand hidden-when-no-toc" href="#"
              data-toggle="modal"
              style="display:none"
