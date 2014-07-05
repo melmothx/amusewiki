@@ -626,6 +626,23 @@ sub path_for_file {
     return $target_dir;
 }
 
+sub path_for_site_files {
+    my $self = shift;
+    return File::Spec->catdir($self->repo_root, 'site_files');
+}
+
+sub has_site_file {
+    my ($self, $file) = @_;
+    return unless $file && $file =~ m/^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$/s;
+    my $path = File::Spec->catfile($self->path_for_site_files, $file);
+    if (-f $path) {
+        return $path;
+    }
+    else {
+        return;
+    }
+}
+
 =head2 repo_is_under_git
 
 Return true if the site repo is kept under git.

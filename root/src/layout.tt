@@ -3,8 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    [% IF site.has_site_file('favicon.ico') %]
     <link rel="shortcut icon"
-          href="[% c.uri_for('/static/images/') %]sites/[% site.id %]/favicon.ico" />
+          href="[% c.uri_for_action('/sitefiles/local_files',
+                                    [ site.id, 'favicon.ico']) %]" />
+    [% END %]
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename %]" href="[% c.uri_for('/feed') %]" />
 
@@ -59,15 +62,28 @@
           href="[% c.uri_for('/static/js/markitup/sets/muse/style.css') %]" />
 
     [%# base css for amuse texts %]
-    <link rel="stylesheet"
+    <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/css/amuse.css') %]" />
 
     [%# our css for the web application %]
-    <link rel="stylesheet"
+    <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/css/amusewiki.css', { v => 2 }) %]" />
 
-    [%# here we should add a local js and a local css %]
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
+
+    [%- IF site.has_site_file('local.css') -%]
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for_action('/sitefiles/local_files',
+                                    [ site.id, 'local.css']) %]" />
+    [%- END -%]
+    [%- IF site.has_site_file('local.js') -%]
+    <script type="text/javascript"
+            src="[% c.uri_for_action('/sitefiles/local_files',
+                                    [ site.id, 'local.js']) %]">
+    </script>
+    [%- END -%]
+
+
   </head>
   <body>
     <!-- Fixed navbar -->

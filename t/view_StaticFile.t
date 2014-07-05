@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 362;
+use Test::More tests => 369;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{CATALYST_DEBUG} = 0;
@@ -81,3 +81,21 @@ foreach my $h (qw/X-Sendfile X-Lighttpd-Send-File X-Accel-Redirect/) {
 
 $mech->delete_header('X-Accel-Mapping');
 $mech->delete_header('X-Sendfile-Type');
+
+$mech->get_ok('/');
+my $icon = "/sitefiles/0blog0/favicon.ico";
+$mech->content_contains($icon);
+$mech->get_ok($icon);
+is $mech->response->header('content-type'), 'image/x-icon';
+
+$mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                            host => "test.amusewiki.org");
+
+$mech->get_ok('/');
+
+$mech->content_lacks('favicon.ico');
+$mech->get($icon);
+
+is $mech->status, '404', "404, no leaking between sites";
+
+

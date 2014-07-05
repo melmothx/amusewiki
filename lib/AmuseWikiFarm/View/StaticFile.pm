@@ -23,6 +23,7 @@ sub process {
                 png => 'image/png',
                 jpg => 'image/jpeg',
                 jpeg => 'image/jpeg',
+                ico => 'image/x-icon',
                };
 
     # no extension => octect-stream
