@@ -20,9 +20,9 @@ my $site = create_site($schema, $site_id);
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
-my $rev = $site->create_new_text({ uri => 'index',
-                                   title => 'test',
-                                   textbody => 'Hello' }, 'special');
+my ($rev) = $site->create_new_text({ uri => 'index',
+                                     title => 'test',
+                                     textbody => 'Hello' }, 'special');
 
 $site->mode('blog');
 $site->update;

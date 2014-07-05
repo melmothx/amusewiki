@@ -18,7 +18,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = create_site($schema, '0stfl0');
 
-my $revision = $site->create_new_text({ uri => 'first-testx',
+my ($revision) = $site->create_new_text({ uri => 'first-testx',
                                         title => 'Hello',
                                         lang => 'hr',
                                         textbody => 'blabla' }, 'text');

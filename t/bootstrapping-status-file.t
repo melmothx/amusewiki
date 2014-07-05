@@ -47,10 +47,10 @@ check_failure($name);
 
 # then, create a revision and publish it.
 
-my $rev = $site->create_new_text({
-                                  uri => 'a-test-2',
-                                  title => 'Fail',
-                                 }, 'text');
+my ($rev) = $site->create_new_text({
+                                    uri => 'a-test-2',
+                                    title => 'Fail',
+                                   }, 'text');
 
 $rev->edit($faulty_muse);
 

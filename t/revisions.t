@@ -32,7 +32,7 @@ is $log->message, "Initial import\n", "Found root git revision";
 
 # the interface should be
 
-my $revision = $site->create_new_text({ uri => 'first-testx',
+my ($revision) = $site->create_new_text({ uri => 'first-testx',
                                         title => 'Hello',
                                         lang => 'hr',
                                         textbody => '<p>http://my.org My "precious"</p>',

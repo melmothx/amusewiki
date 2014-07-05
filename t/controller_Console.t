@@ -55,8 +55,8 @@ is $mech->response->base->path, '/login', "Denied access to not logged in";
 
 # create an unpublished text.
 
-my $rev = $site->create_new_text({ uri => 'deleted-text', title => 'Deleted',
-                                   lang => 'en' }, 'text');
+my ($rev) = $site->create_new_text({ uri => 'deleted-text', title => 'Deleted',
+                                     lang => 'en' }, 'text');
 
 $rev->edit("#title Deleted\n#DELETED garbage\n\nblablab\n");
 $rev->commit_version;
