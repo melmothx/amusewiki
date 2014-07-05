@@ -751,5 +751,25 @@ sub f_class {
     return $self->title->f_class;
 }
 
+=head1 METHOD MODIFIERS
+
+Delete method is overloaded to check if the title would become orphan
+and can't spawn further revisions.
+
+=cut
+
+sub delete {
+    my $self = shift;
+    my $title = $self->title;
+    if ($title->can_spawn_revision) {
+        return $self->next::method;
+    }
+    else {
+        # this will bring down this row with it
+        return $title->delete;
+    }
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

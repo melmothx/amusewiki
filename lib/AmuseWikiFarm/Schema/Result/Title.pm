@@ -499,12 +499,30 @@ sub is_published {
     return shift->status eq 'published';
 }
 
-sub can_spawn_revision {
+=head2 can_spawn_revision
+
+Return true if the file exists in the tree, hence can be copied to the
+staging area.
+
+=head2 muse_file_exists_in_tree
+
+Implementation and alias for C<can_spawn_revision>
+
+=cut
+
+sub muse_file_exists_in_tree {
     my $self = shift;
     if (-f $self->f_full_path_name) {
         return 1;
     }
-    return 0;
+    else {
+        return 0;
+    }
+}
+
+
+sub can_spawn_revision {
+    return shift->muse_file_exists_in_tree;
 }
 
 =head2 File serving

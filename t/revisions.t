@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 21;
+use Test::More tests => 36;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Path qw/make_path remove_tree/;
@@ -90,3 +90,54 @@ $text = $site->titles->published_texts->find({ uri => $uri});
 like $text->html_body, qr/Hellox worldx/, "Found updated html body";
 
 ok !$text->notes, "Notes are empty" or diag "Found " . $text->notes;
+
+# create a new text
+
+{
+    my $body = '<p>http://my.org My "precious"</p>';
+    my ($revision) = $site->create_new_text({ uri => 'first-testxxxxx',
+                                              title => 'Hello',
+                                              lang => 'hr',
+                                              textbody => $body,
+                                            }, 'text');
+    my $title = $revision->title;
+    ok ($title, "Got the text");
+    ok (!$title->can_spawn_revision, "can't spawn revisions");
+    is ($title->status, "editing", "Title in editing state");
+    # delete the revision
+    my $rev_id = $revision->id;
+    $revision->delete;
+    my $title_id = $title->id;
+    $title = $site->titles->find($title_id);
+    ok(!$title, "Title was purged as well by revision deletion");
+    ok !$schema->resultset('Revision')->find($rev_id), "Revision is gone";
+}
+
+{
+    my $body = '<p>http://my.org My "precious"</p>';
+    my ($revision) = $site->create_new_text({ uri => 'first-testxxxxx',
+                                              title => 'Hello',
+                                              lang => 'hr',
+                                              textbody => $body,
+                                            }, 'text');
+    ok ($revision, "Found revision");
+    my $title = $revision->title;
+    my $title_id = $title->id;
+    ok ($title, "Got the text");
+    ok (!$title->can_spawn_revision, "can't spawn revisions");
+    is ($title->status, "editing", "Title in editing state");
+    $revision->commit_version;
+    $revision->publish_text;
+    $title->discard_changes;
+    is $title->status, "published", "Title status now is published";
+
+    my $rev_id = $revision->id;
+    $revision->delete;
+
+    $title = $site->titles->find($title_id);
+    ok($title, "Title is here");
+    is $title->status, "published";
+    ok($title->can_spawn_revision, "Title can spawn revisions");
+    ok(-f $title->f_full_path_name, "File exists");
+    ok !$schema->resultset('Revision')->find($rev_id), "Revision is gone";
+}
