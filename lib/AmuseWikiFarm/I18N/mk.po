@@ -52,7 +52,7 @@ msgstr ""
 msgid "Add this text to the bookbuilder"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:96 root/src/layout.tt:128
+#: lib/AmuseWikiFarm/Controller/Edit.pm:96 root/src/layout.tt:151
 msgid "Add to library"
 msgstr ""
 
@@ -64,7 +64,7 @@ msgstr ""
 msgid "Alias can't be the same of redirection"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:88 root/src/layout.tt:188
+#: lib/AmuseWikiFarm/Controller/Publish.pm:88 root/src/layout.tt:227
 msgid "All revisions"
 msgstr ""
 
@@ -86,7 +86,7 @@ msgid ""
 "      not needed"
 msgstr ""
 
-#: root/src/macros.tt:6
+#: root/src/macros.tt:5
 msgid "Are you sure?"
 msgstr ""
 
@@ -100,7 +100,7 @@ msgid "Author"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:72 root/src/edit/edit.tt:185
-#: root/src/edit/newtext.tt:73 root/src/layout.tt:115 root/src/text.tt:36
+#: root/src/edit/newtext.tt:73 root/src/layout.tt:138 root/src/text.tt:36
 msgid "Authors"
 msgstr ""
 
@@ -124,11 +124,11 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: root/src/macros.tt:19
+#: root/src/macros.tt:17
 msgid "Bold"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:28 root/src/layout.tt:136
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:28 root/src/layout.tt:159
 msgid "Bookbuilder"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Build it"
 msgstr ""
 
-#: root/src/macros.tt:20
+#: root/src/macros.tt:18
 msgid "Bulleted List"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Canonical name"
 msgstr ""
 
-#: root/src/layout.tt:102
+#: root/src/layout.tt:125
 msgid "Catalog"
 msgstr ""
 
@@ -169,11 +169,11 @@ msgid "Changes for"
 msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:378
+#: lib/AmuseWikiFarm/Controller/Edit.pm:381
 msgid "Changes for %1"
 msgstr ""
 
-#: root/src/macros.tt:11
+#: root/src/macros.tt:9
 msgid "Chapter, only for chapter divisions in books"
 msgstr ""
 
@@ -206,7 +206,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: root/src/layout.tt:208 root/src/user/create.tt:3
+#: root/src/layout.tt:247 root/src/user/create.tt:3
 msgid "Create a new librarian"
 msgstr ""
 
@@ -239,7 +239,7 @@ msgstr ""
 msgid "Date of the original publication"
 msgstr ""
 
-#: root/src/layout.tt:193
+#: root/src/layout.tt:232
 msgid "Deferred/Deleted texts"
 msgstr ""
 
@@ -270,7 +270,7 @@ msgid ""
 "Directory with templates. Do not set it unless you know what you are doing"
 msgstr ""
 
-#: root/src/macros.tt:27
+#: root/src/macros.tt:25
 msgid "Display url as"
 msgstr ""
 
@@ -307,7 +307,7 @@ msgstr ""
 msgid "Edit site %1"
 msgstr ""
 
-#: root/src/layout.tt:225
+#: root/src/layout.tt:264
 msgid "Edit site configuration"
 msgstr ""
 
@@ -329,16 +329,16 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:237
+#: lib/AmuseWikiFarm/Controller/User.pm:241
 msgid "Email sent!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:280
+#: lib/AmuseWikiFarm/Controller/User.pm:284
 msgid "Email updated"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:204
-#: lib/AmuseWikiFarm/Controller/User.pm:291
+#: lib/AmuseWikiFarm/Controller/User.pm:295
 msgid "Emails do not match"
 msgstr ""
 
@@ -346,8 +346,8 @@ msgstr ""
 msgid "Erase this revision"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:341
-#: lib/AmuseWikiFarm/Controller/User.pm:234
+#: lib/AmuseWikiFarm/Controller/Edit.pm:343
+#: lib/AmuseWikiFarm/Controller/User.pm:238
 msgid "Error sending mail!"
 msgstr ""
 
@@ -401,8 +401,7 @@ msgstr ""
 msgid "Full site canonical URL, including protocol"
 msgstr ""
 
-#: root/src/layout.tt:244 root/src/search/index.tt:7
-#: root/src/search/index.tt:91
+#: root/src/search/index.tt:7 root/src/search/index.tt:91
 msgid "Full text search"
 msgstr ""
 
@@ -418,7 +417,7 @@ msgstr ""
 msgid "Half Letter paper"
 msgstr ""
 
-#: root/src/macros.tt:8
+#: root/src/macros.tt:6
 msgid "Heading"
 msgstr ""
 
@@ -460,12 +459,12 @@ msgid ""
 "        review and preview the upload."
 msgstr ""
 
-#: root/src/macros.tt:23
+#: root/src/macros.tt:21
 msgid "Image url"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:185
-#: lib/AmuseWikiFarm/Controller/User.pm:283
+#: lib/AmuseWikiFarm/Controller/User.pm:287
 msgid "Invalid email"
 msgstr ""
 
@@ -477,7 +476,7 @@ msgstr ""
 msgid "Invalid username"
 msgstr ""
 
-#: root/src/macros.tt:18
+#: root/src/macros.tt:16
 msgid "Italic"
 msgstr ""
 
@@ -517,7 +516,7 @@ msgstr ""
 msgid "Letter paper"
 msgstr ""
 
-#: root/src/macros.tt:25
+#: root/src/macros.tt:23
 msgid "Link"
 msgstr ""
 
@@ -537,7 +536,7 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-#: root/src/layout.tt:231
+#: root/src/layout.tt:270
 msgid "Logout"
 msgstr ""
 
@@ -573,11 +572,11 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: root/src/macros.tt:30
+#: root/src/macros.tt:28
 msgid "Missing #title header in the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:350
+#: lib/AmuseWikiFarm/Controller/Edit.pm:352
 msgid "Missing #title header in the text!"
 msgstr ""
 
@@ -601,7 +600,7 @@ msgstr ""
 msgid "Moderated wiki"
 msgstr ""
 
-#: root/src/layout.tt:144
+#: root/src/layout.tt:170
 msgid "More"
 msgstr ""
 
@@ -658,7 +657,7 @@ msgstr ""
 msgid "Notify to"
 msgstr ""
 
-#: root/src/macros.tt:21
+#: root/src/macros.tt:19
 msgid "Numeric List"
 msgstr ""
 
@@ -679,15 +678,19 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr ""
 
+#: root/src/layout.tt:189
+msgid "Other languages"
+msgstr ""
+
 #: root/src/admin/edit.tt:109
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:104
+#: lib/AmuseWikiFarm/Controller/Root.pm:110
 msgid "Page not found!"
 msgstr ""
 
-#: root/src/macros.tt:9
+#: root/src/macros.tt:7
 msgid "Part, for larger books only"
 msgstr ""
 
@@ -696,11 +699,11 @@ msgid "Password"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:194
-#: lib/AmuseWikiFarm/Controller/User.pm:267
+#: lib/AmuseWikiFarm/Controller/User.pm:271
 msgid "Password too short"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:264
+#: lib/AmuseWikiFarm/Controller/User.pm:268
 msgid "Password updated"
 msgstr ""
 
@@ -709,15 +712,15 @@ msgid "Password, minimum 8 characters."
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:199
-#: lib/AmuseWikiFarm/Controller/User.pm:271
+#: lib/AmuseWikiFarm/Controller/User.pm:275
 msgid "Passwords do not match"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:183
+#: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:222
 msgid "Pending revisions"
 msgstr ""
 
-#: root/src/macros.tt:22
+#: root/src/macros.tt:20
 msgid "Picture"
 msgstr ""
 
@@ -830,15 +833,15 @@ msgstr ""
 msgid "Quota exceeded, too many pages"
 msgstr ""
 
-#: root/src/macros.tt:28
+#: root/src/macros.tt:26
 msgid "Quotes"
 msgstr ""
 
-#: root/src/layout.tt:273
+#: root/src/layout.tt:314
 msgid "RSS feed"
 msgstr ""
 
-#: root/src/layout.tt:276
+#: root/src/layout.tt:317
 msgid "Random"
 msgstr ""
 
@@ -851,11 +854,15 @@ msgid "Recheck"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:174
-#: root/src/console/alias_display.tt:3 root/src/layout.tt:203
+#: root/src/console/alias_display.tt:3 root/src/layout.tt:242
 msgid "Redirections"
 msgstr ""
 
-#: root/src/layout.tt:198
+#: root/src/layout.tt:187
+msgid "Related projects"
+msgstr ""
+
+#: root/src/layout.tt:237
 msgid "Remotes"
 msgstr ""
 
@@ -892,7 +899,7 @@ msgstr ""
 msgid "Revision for %1 has been deleted"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Search.pm:79
+#: lib/AmuseWikiFarm/Controller/Search.pm:79 root/src/layout.tt:283
 msgid "Search"
 msgstr ""
 
@@ -929,7 +936,7 @@ msgstr ""
 msgid "Site slogan"
 msgstr ""
 
-#: root/src/layout.tt:220
+#: root/src/layout.tt:259
 msgid "Sites"
 msgstr ""
 
@@ -942,7 +949,7 @@ msgid "Some fields are missing, all are required"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:167
-#: lib/AmuseWikiFarm/Controller/User.pm:287
+#: lib/AmuseWikiFarm/Controller/User.pm:291
 msgid "Some fields are too long"
 msgstr ""
 
@@ -1056,7 +1063,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: root/src/layout.tt:109
+#: root/src/layout.tt:132
 msgid "Titles"
 msgstr ""
 
@@ -1079,7 +1086,7 @@ msgid "Topic"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:199
-#: root/src/edit/newtext.tt:83 root/src/layout.tt:121 root/src/text.tt:52
+#: root/src/edit/newtext.tt:83 root/src/layout.tt:144 root/src/text.tt:52
 msgid "Topics"
 msgstr ""
 
@@ -1120,7 +1127,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: root/src/layout.tt:213
+#: root/src/layout.tt:252
 msgid "Update account info"
 msgstr ""
 
@@ -1128,7 +1135,7 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: root/src/macros.tt:26
+#: root/src/macros.tt:24
 msgid "Url"
 msgstr ""
 
@@ -1153,7 +1160,7 @@ msgstr ""
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 
-#: root/src/macros.tt:29
+#: root/src/macros.tt:27
 msgid "Verbatim block"
 msgstr ""
 
@@ -1246,7 +1253,7 @@ msgid ""
 "Commit"
 msgstr ""
 
-#: root/src/macros.tt:12
+#: root/src/macros.tt:10
 msgid "Your chapter here..."
 msgstr ""
 
@@ -1254,7 +1261,7 @@ msgstr ""
 msgid "Your file is ready"
 msgstr ""
 
-#: root/src/macros.tt:10
+#: root/src/macros.tt:8
 msgid "Your part here..."
 msgstr ""
 
@@ -1263,11 +1270,11 @@ msgstr ""
 msgid "Your password is %1."
 msgstr ""
 
-#: root/src/macros.tt:17
+#: root/src/macros.tt:15
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr ""
 
-#: root/src/macros.tt:15
+#: root/src/macros.tt:13
 msgid "Your subsection here..."
 msgstr ""
 
@@ -1283,6 +1290,10 @@ msgstr ""
 
 #: root/src/admin/edit.tt:255
 msgid "ZIP archive with sources, needed by the bookbuilder"
+msgstr ""
+
+#: root/src/layout.tt:168
+msgid "about, links..."
 msgstr ""
 
 #: root/src/edit/newtext.tt:189
@@ -1301,7 +1312,7 @@ msgstr ""
 msgid "conflict"
 msgstr ""
 
-#: root/src/macros.tt:24
+#: root/src/macros.tt:22
 msgid "description"
 msgstr ""
 
@@ -1321,7 +1332,7 @@ msgstr ""
 msgid "for indexing"
 msgstr ""
 
-#: root/src/macros.tt:13
+#: root/src/macros.tt:11
 msgid "generic sectioning, good for articles"
 msgstr ""
 
@@ -1368,11 +1379,11 @@ msgstr ""
 msgid "revision"
 msgstr ""
 
-#: root/src/macros.tt:16
+#: root/src/macros.tt:14
 msgid "sub-sub-section"
 msgstr ""
 
-#: root/src/macros.tt:14
+#: root/src/macros.tt:12
 msgid "subsection"
 msgstr ""
 
@@ -1380,15 +1391,20 @@ msgstr ""
 msgid "taken"
 msgstr ""
 
-#: root/src/layout.tt:114
+#. (args)
+#: root/src/macros.tt:1 root/src/macros.tt:2 root/src/macros.tt:3
+msgid "text"
+msgstr ""
+
+#: root/src/layout.tt:137
 msgid "texts sorted by author"
 msgstr ""
 
-#: root/src/layout.tt:108
+#: root/src/layout.tt:131
 msgid "texts sorted by title"
 msgstr ""
 
-#: root/src/layout.tt:120
+#: root/src/layout.tt:143
 msgid "texts sorted by topics"
 msgstr ""
 
