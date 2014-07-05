@@ -51,8 +51,14 @@ See tasks/dispaly.tt for an example
 * DONE After a wrong answer, and a good one, popup doesn't go away
   CLOSED: [2014-06-29 dom 15:11]
 
+* TODO store favicon, logo, site files in the repo
+* TODO List available images while editing
 * TODO Other languages on its own menu?
 
+
+* TODO Find a way or document clashes between uploaded pdf and titles
+* TODO PDF thumbnails
+* TODO attach directive (atr)
 
 * Future releases
 
@@ -70,3 +76,4 @@ This looks like searching for troubles... Deferred
 
 * TODO Add descriptions to categories
 
+* TODO covers/decorative text image 
