@@ -73,9 +73,15 @@ sub auto :Private {
     }
 
     # let's assume related will return self, and special index
-    if (@related > 1 or @specials > 1) {
-        $c->stash(navigation => { projects => \@related,
-                                  specials => \@specials });
+    if (@related || @specials) {
+        my $nav_hash = {};
+        if (@related) {
+            $nav_hash->{projects} = \@related;
+        }
+        if (@specials) {
+            $nav_hash->{specials} = \@specials;
+        }
+        $c->stash(navigation => $nav_hash);
     }
     return 1;
 }

@@ -122,7 +122,7 @@
               <a href="#" class="dropdown-toggle"
                  title="texts by authors, title, topic..."
                  data-toggle="dropdown">
-                [% loc('Catalog') %]
+                [% site.catalog_label || loc('Catalog') %]
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
@@ -160,11 +160,33 @@
               </a>
             </li>
             [% IF navigation %]
+
+            [%- # begin project -%]
+            [% IF navigation.projects %]
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
-                 title="about, links..."
+                 title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
-                [% loc('More') %]
+                [% site.specials_label || loc('More') %]
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                [% FOREACH link IN navigation.specials %]
+                <li[% IF link.active %] class="active"[% END %]>
+                  <a href="[% link.uri %]">[% link.name %]</a>
+                </li>
+                [% END %]
+              </ul>
+            </li>
+            [% END %]
+
+            [%- # begin specials -%]
+            [% IF navigation.specials %]
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle"
+                 title="[% loc('Related projects') %]"
+                 data-toggle="dropdown">
+                [% site.sitegroup_label || loc('Other languages') %]
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
@@ -175,16 +197,10 @@
                 </li>
                 [%   END %]
                 [% END   %]
-                [% IF navigation.specials %]
-                <li class="divider"></li>
-                [% END %]
-                [% FOREACH link IN navigation.specials %]
-                <li[% IF link.active %] class="active"[% END %]>
-                  <a href="[% link.uri %]">[% link.name %]</a>
-                </li>
-                [% END %]
               </ul>
             </li>
+            [% END %]
+
             [% END %]
             [%- # this menu is reserved for logged in users -%]
             [% IF c.user_exists %]
@@ -262,9 +278,9 @@
           <form class="navbar-form navbar-right navbar-input-group" role="search"
                 method="get"
                 id="formsearchbox" action="[% c.uri_for('/search') %]">
-            <div class="input-group" style="width:170px">
+            <div class="input-group" style="width:140px">
 		      <input type="text" class="form-control"
-                     placeholder="[% loc('Full text search') %]"
+                     placeholder="[% loc('Search') %]"
                      name="query" value=""/>
               <div class="input-group-btn">
                 <button type="submit" class="btn btn-primary">

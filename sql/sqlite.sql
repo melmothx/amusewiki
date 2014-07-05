@@ -33,6 +33,9 @@ CREATE TABLE site (
        mail_from   VARCHAR(255),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
        sitegroup VARCHAR(255), -- overkill, but who cares
+       sitegroup_label VARCHAR(255), -- the label for that
+       catalog_label VARCHAR(255),
+       specials_label VARCHAR(255),
 
        -- book builder page limit
        bb_page_limit INTEGER NOT NULL DEFAULT 1000,

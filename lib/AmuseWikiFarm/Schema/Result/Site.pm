@@ -130,6 +130,24 @@ __PACKAGE__->table("site");
   is_nullable: 1
   size: 255
 
+=head2 sitegroup_label
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 catalog_label
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 specials_label
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 bb_page_limit
 
   data_type: 'integer'
@@ -265,6 +283,12 @@ __PACKAGE__->add_columns(
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "sitegroup",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "sitegroup_label",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "catalog_label",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "specials_label",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "bb_page_limit",
   { data_type => "integer", default_value => 1000, is_nullable => 0 },
@@ -455,8 +479,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-25 22:00:35
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wtfJ/sTaY9aSKNOSuRcOGA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-05 19:19:00
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Mj+C+FYNVHftIl5MWZh1jw
 
 =head2 other_sites
 
