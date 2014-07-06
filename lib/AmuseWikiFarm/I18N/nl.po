@@ -45,8 +45,8 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: root/src/edit/edit.tt:99
-msgid "Add an attachment"
+#: root/src/edit/edit.tt:119
+msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr ""
 
 #: root/src/text.tt:169
@@ -91,8 +91,12 @@ msgstr ""
 msgid "Are you sure?"
 msgstr ""
 
+#: root/src/edit/edit.tt:97
+msgid "Attached PDFs"
+msgstr ""
+
 #: root/src/edit/edit.tt:82
-msgid "Attached files"
+msgid "Attached images"
 msgstr ""
 
 #: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:64
@@ -100,7 +104,7 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:72 root/src/edit/edit.tt:185
+#: lib/AmuseWikiFarm/Controller/Category.pm:72 root/src/edit/edit.tt:206
 #: root/src/edit/newtext.tt:73 root/src/layout.tt:138 root/src/text.tt:36
 msgid "Authors"
 msgstr ""
@@ -186,7 +190,7 @@ msgstr ""
 msgid "Clear the book list"
 msgstr ""
 
-#: root/src/edit/edit.tt:152
+#: root/src/edit/edit.tt:173
 msgid "Commit"
 msgstr ""
 
@@ -231,7 +235,7 @@ msgstr ""
 msgid "Created new text"
 msgstr ""
 
-#: root/src/edit/edit.tt:192 root/src/publish/pending.tt:19
+#: root/src/edit/edit.tt:213 root/src/publish/pending.tt:19
 #: root/src/text.tt:45
 msgid "Date"
 msgstr ""
@@ -321,7 +325,7 @@ msgstr ""
 msgid "Edit user %1"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:161 root/src/edit/edit.tt:93
+#: lib/AmuseWikiFarm/Controller/Edit.pm:161 root/src/edit/edit.tt:112
 #: root/src/edit/revs.tt:3
 msgid "Editing"
 msgstr ""
@@ -360,7 +364,7 @@ msgstr ""
 msgid "File uploaded!"
 msgstr ""
 
-#: root/src/edit/edit.tt:121
+#: root/src/edit/edit.tt:142
 msgid "Fix typography"
 msgstr ""
 
@@ -464,6 +468,10 @@ msgstr ""
 msgid "Image url"
 msgstr ""
 
+#: root/src/edit/edit.tt:92
+msgid "Images not used in the text are stored, but will be ignored."
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/User.pm:185
 #: lib/AmuseWikiFarm/Controller/User.pm:287
 msgid "Invalid email"
@@ -561,7 +569,7 @@ msgstr ""
 msgid "Main text"
 msgstr ""
 
-#: root/src/edit/edit.tt:129
+#: root/src/edit/edit.tt:150
 msgid "Make all links active"
 msgstr ""
 
@@ -641,7 +649,7 @@ msgstr ""
 msgid "No text was added yet"
 msgstr ""
 
-#: root/src/edit/edit.tt:213 root/src/edit/newtext.tt:173
+#: root/src/edit/edit.tt:234 root/src/edit/newtext.tt:173
 #: root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:68
 msgid "Notes"
 msgstr ""
@@ -687,6 +695,16 @@ msgstr ""
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr ""
 
+#: root/src/edit/edit.tt:108
+msgid "PDFs cannot be used in the body."
+msgstr ""
+
+#. ("#ATTACH")
+#. ('#ATTACH')
+#: root/src/edit/edit.tt:106 root/src/edit/edit.tt:107
+msgid "PDFs not listed in the %1 directive will be stored but ignored."
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/Root.pm:110
 msgid "Page not found!"
 msgstr ""
@@ -729,7 +747,7 @@ msgstr ""
 msgid "Plain PDF"
 msgstr ""
 
-#: root/src/edit/edit.tt:134
+#: root/src/edit/edit.tt:155
 msgid "Please describe shortly what you did"
 msgstr ""
 
@@ -750,7 +768,7 @@ msgid ""
 "    doing."
 msgstr ""
 
-#: root/src/edit/edit.tt:144
+#: root/src/edit/edit.tt:165
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 
@@ -790,7 +808,7 @@ msgstr ""
 msgid "Prepare this text for the archiving"
 msgstr ""
 
-#: root/src/edit/edit.tt:151 root/src/edit/edit.tt:163
+#: root/src/edit/edit.tt:172 root/src/edit/edit.tt:184
 msgid "Preview"
 msgstr ""
 
@@ -904,7 +922,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: root/src/edit/edit.tt:165 root/src/edit/revs.tt:49
+#: root/src/edit/edit.tt:186 root/src/edit/revs.tt:49
 #: root/src/publish/pending.tt:59
 msgid "Show differences in other tab"
 msgstr ""
@@ -958,7 +976,7 @@ msgstr ""
 msgid "Some ongoing revisions were found"
 msgstr ""
 
-#: root/src/edit/edit.tt:206 root/src/edit/newtext.tt:121
+#: root/src/edit/edit.tt:227 root/src/edit/newtext.tt:121
 #: root/src/search/index.tt:58 root/src/text.tt:61
 msgid "Source"
 msgstr ""
@@ -984,7 +1002,7 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: root/src/edit/edit.tt:178 root/src/edit/newtext.tt:45 root/src/text.tt:29
+#: root/src/edit/edit.tt:199 root/src/edit/newtext.tt:45 root/src/text.tt:29
 msgid "Subtitle"
 msgstr ""
 
@@ -1028,6 +1046,10 @@ msgstr ""
 msgid "The user will have the same your level of access"
 msgstr ""
 
+#: root/src/edit/edit.tt:105
+msgid "This directive wants a whitespace separated list of filenames."
+msgstr ""
+
 #: root/src/edit/newtext.tt:229
 msgid "This field is required"
 msgstr ""
@@ -1059,7 +1081,7 @@ msgstr ""
 msgid "This text does not exist"
 msgstr ""
 
-#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:172
+#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:193
 #: root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:23
 msgid "Title"
 msgstr ""
@@ -1068,10 +1090,14 @@ msgstr ""
 msgid "Titles"
 msgstr ""
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
+msgstr ""
+
+#: root/src/edit/edit.tt:99
+msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
 
 #: root/src/email/commit.tt:6
@@ -1086,7 +1112,7 @@ msgstr ""
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:199
+#: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:220
 #: root/src/edit/newtext.tt:83 root/src/layout.tt:144 root/src/text.tt:52
 msgid "Topics"
 msgstr ""
@@ -1132,7 +1158,7 @@ msgstr ""
 msgid "Update account info"
 msgstr ""
 
-#: root/src/edit/edit.tt:104
+#: root/src/edit/edit.tt:125
 msgid "Upload"
 msgstr ""
 
@@ -1219,8 +1245,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
 msgstr ""
@@ -1242,13 +1268,13 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr ""
 
-#: root/src/edit/edit.tt:168
+#: root/src/edit/edit.tt:189
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
 "Commit"
