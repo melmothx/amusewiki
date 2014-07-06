@@ -29,6 +29,13 @@ is_deeply($rev->attached_pdfs, [ $expected ]);
 $rev->commit_version;
 $rev->publish_text;
 
+my $thumb = catfile(qw/root uploads/, $site_id, "thumbnails",
+                    "$expected.thumb.png");
+
+if (-f $thumb) {
+    unlink $thumb or die $!;
+}
+
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
@@ -36,8 +43,6 @@ $mech->get_ok("/uploads/$site_id/$expected");
 $mech->get_ok("/uploads/$site_id/thumbnails/$expected.thumb.png");
 
 ok (-f catfile(qw/root uploads/, $site_id, thumbnails => "$expected.thumb.png"));
-my $thumb = catfile(qw/root uploads/, $site_id, "thumbnails",
-                    "$expected.thumb.png");
 my $stat = (stat($thumb))[9];
 sleep 2;
 $mech->get_ok("/uploads/$site_id/thumbnails/$expected.thumb.png");
