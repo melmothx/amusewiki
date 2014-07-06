@@ -70,20 +70,20 @@ sub muse_file_info {
             length($details->{title}) and
             $details->{title} =~ m/\S/) {
         warn "Setting deletion on $file, no title found\n";
-        $details->{title} = $details->{LISTtitle} ||= $details->{uri};
-        $details->{DELETED} ||= "Missing title";
+        $details->{title} = $details->{listtitle} ||= $details->{uri};
+        $details->{deleted} ||= "Missing title";
     }
 
     # normalize and use author as default if missing
-    unless ($details->{SORTauthors}) {
-        $details->{SORTauthors} = $details->{author};
+    unless ($details->{sortauthors}) {
+        $details->{sortauthors} = $details->{author};
     }
 
     my @categories;
 
     foreach my $category (sort keys %$details) {
-        if ($category =~ m/^SORT(\w+?)s$/) {
-            my $type = $1;
+        if ($category =~ m/^(sort)?(author|topic)s$/) {
+            my $type = $2;
             if (my $string = delete $details->{$category}) {
                 if (my @cats = _parse_topic_or_author($type, $string)) {
                     push @categories, @cats;
@@ -91,18 +91,16 @@ sub muse_file_info {
             }
         }
     }
-
     if (my $fixed_categories = delete $details->{cat}) {
         my @cats = split(/ +/, $fixed_categories);
         foreach my $cat (@cats) {
             my $catcode = muse_naming_algo($cat);
             push @categories, {
-                               type => 'category',
+                               type => 'topic',
                                uri => $catcode,
                                name => $catcode,
                               };
         }
-        
     }
 
 
@@ -123,7 +121,7 @@ sub muse_file_info {
         $details->{pubdate} = $details->{f_timestamp}->clone;
     }
 
-    my $title_order_by = delete $details->{LISTtitle};
+    my $title_order_by = delete $details->{listtitle};
     if (defined $title_order_by and length($title_order_by)) {
         $details->{list_title} = $title_order_by;
     }
@@ -288,9 +286,20 @@ sub _parse_muse_file {
         warn "$file couldn't be parsed by muse_fast_scan_header\n";
         return;
     }
+    # convert all to lowercase
+
+    my %lowered;
+    foreach my $k (keys %$directives) {
+        my $lck = lc($k);
+        if (exists $lowered{$lck}) {
+            warn "Overwriting $lck, directives are case insensitive!\n";
+        }
+        $lowered{$lck} = $directives->{$k};
+    }
+
     # just to be sure, check that the keys have not an underscore
 
-    foreach my $k (keys %$directives) {
+    foreach my $k (keys %lowered) {
         die "Got $k directive with underscore in $file" unless index($k, '_') < 0;
     }
 
@@ -299,7 +308,7 @@ sub _parse_muse_file {
 
     my %out = (
                %$fileinfo,
-               %$directives,
+               %lowered,
               );
 
     return \%out;

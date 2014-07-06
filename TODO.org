@@ -76,7 +76,8 @@ served from /library and /edit, hence, no clash.
 ** TODO add support for uid on display
 ** TODO add multilanguage support for the same site
 
-* TODO Handle #topics as #SORTtopics, and #authors as #SORTauthors
+* DONE Handle #topics as #SORTtopics, and #authors as #SORTauthors
+  CLOSED: [2014-07-06 dom 10:31]
 
 This looks like searching for troubles... Deferred
 

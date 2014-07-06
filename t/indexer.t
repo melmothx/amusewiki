@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 57;
+use Test::More tests => 63;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Date::Parse qw/str2time/;
@@ -19,6 +19,7 @@ use HTML::Entities;
 use Encode;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
+use File::Slurp qw/write_file/;
 
 my $string = "à&amp;è";
 my $utf8 = encode("utf-8", $string);
@@ -133,7 +134,7 @@ my $pubdate = delete $info->{pubdate};
 ok($pubdate, "Found publication date");
 is(str2time($pubdate->iso8601, 'UTC'), str2time('2014-01-01 00:00', 'UTC'));
 
-is_deeply $info, $expected, "Info returned correctly" or warn Dumper($info);
+is_deeply $info, $expected, "Info returned correctly" or diag Dumper($info);
 
 
 $testfile = catfile(qw/t repotest a at another-test-1.muse/);
@@ -141,7 +142,7 @@ $info = muse_file_info($testfile, $reporoot);
 
 # is $info->{DELETED}, no
 is $info->{title}, 'blabla', "title picked from list_title";
-is $info->{DELETED}, 'Missing title';
+is $info->{deleted}, 'Missing title';
 ok $info->{uri};
 is $info->{f_class}, 'text';
 ok $info->{pubdate}->iso8601, "found timestamp: " . $info->{pubdate}->iso8601;
@@ -150,7 +151,7 @@ ok $info->{pubdate}->iso8601, "found timestamp: " . $info->{pubdate}->iso8601;
 $testfile = catfile(qw/t repotest a at another-test-2.muse/);
 $info = muse_file_info($testfile, $reporoot);
 
-is $info->{DELETED}, 'Missing title';
+is $info->{deleted}, 'Missing title';
 ok $info->{uri}, "Uri found";
 is $info->{title}, $info->{uri}, "title set to uri";
 is $info->{f_class}, 'text';
@@ -161,7 +162,7 @@ $testfile = catfile(qw/t repotest a at another-test-3.muse/);
 $info = muse_file_info($testfile, $reporoot);
 
 ok !$info->{parsed_categories}, "SORTauthor (missing s) is ignored";
-is $info->{DELETED}, 'ignore';
+is $info->{deleted}, 'ignore';
 ok $info->{uri}, "Uri found";
 is $info->{f_class}, 'text';
 
@@ -172,17 +173,17 @@ is $info->{uid}, 'bau', "Found the unique id";
 is_deeply $info->{parsed_categories}, [
                                        {
                                         name => 'baux',
-                                        type => 'category',
+                                        type => 'topic',
                                         uri  => 'baux',
                                        },
                                        {
                                         name => 'fido',
-                                        type => 'category',
+                                        type => 'topic',
                                         uri  => 'fido',
                                        },
                                        {
                                         name => 'bobi',
-                                        type => 'category',
+                                        type => 'topic',
                                         uri  => 'bobi',
                                        },
                                       ], "Found fixed categories";
@@ -220,3 +221,75 @@ foreach my $suffix (qw/aux log pdf tex/) {
     $info = muse_file_info($testfile, $reporoot);
     ok(!$info, "Info for $suffix file in tree ignored") or diag Dumper($info);
 }
+
+foreach my $topic_header (qw/sOrttOpIcS SORTtopics topics/) {
+    $testfile = catfile(qw/t repotest a at a-t-throwaway.muse/);
+    my $content = <<"MUSE";
+#title Test
+#cat 1first 2second
+#$topic_header 3third, 4forth
+MUSE
+
+    write_file($testfile, $content);
+    $info = muse_file_info($testfile, $reporoot);
+    is_deeply ($info->{parsed_categories}, [
+                                            {
+                                             name => '3third',
+                                             type => 'topic',
+                                             uri => '3third',
+                                            },
+                                            {
+                                             name => '4forth',
+                                             type => 'topic',
+                                             uri => '4forth',
+                                            },
+                                            {
+                                             name => '1first',
+                                             type => 'topic',
+                                             uri => '1first',
+                                            },
+                                            {
+                                             name => '2second',
+                                             type => 'topic',
+                                             uri => '2second',
+                                            },
+                                           ], "topics merged ok")
+      or diag Dumper($info, $content);
+}
+
+foreach my $author_header (qw/sOrtAuthOrS SORTauthors authors/) {
+    $testfile = catfile(qw/t repotest a at a-t-throwaway.muse/);
+    my $content = <<"MUSE";
+#title Test
+#cat 1first 2second
+#$author_header 3third, 4forth
+MUSE
+
+    write_file($testfile, $content);
+    $info = muse_file_info($testfile, $reporoot);
+    is_deeply ($info->{parsed_categories}, [
+                                            {
+                                             name => '3third',
+                                             type => 'author',
+                                             uri => '3third',
+                                            },
+                                            {
+                                             name => '4forth',
+                                             type => 'author',
+                                             uri => '4forth',
+                                            },
+                                            {
+                                             name => '1first',
+                                             type => 'topic',
+                                             uri => '1first',
+                                            },
+                                            {
+                                             name => '2second',
+                                             type => 'topic',
+                                             uri => '2second',
+                                            },
+                                           ], "authors ok")
+      or diag Dumper($info, $content);
+}
+
+unlink $testfile or die "Couldn't remove $testfile $!";
