@@ -199,6 +199,7 @@
       [% SET thumbpath = att _ '.thumb.png' %]
       <img src="[% c.uri_for_action('/uploads/thumbnail',
                 [site.id, thumbpath ]) %]"
+           style="padding:0px; border:black solid 1px; margin:3px"
            alt="PDF"/>
     </a>
   </div>
