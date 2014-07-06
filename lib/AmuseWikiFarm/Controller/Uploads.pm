@@ -106,7 +106,7 @@ sub generate_thumbnail_from_to :Private {
     die unless ($src && $out);
     return unless (-f $src);
     return if (-f $out and ((stat($src))[9]) < (stat($out))[9]);
-    system('gm', 'convert', '-thumbnail', 'x300', $src . '[0]', $out);
+    system(qw/gm convert -thumbnail 300x/, $src . '[0]', $out);
 }
 
 =encoding utf8
