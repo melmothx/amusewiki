@@ -77,9 +77,9 @@ $(document).ready(function() {
 </div>
 [% END %]
 
-[% SET attachments = revision.attached_files %]
+[% SET attachments = revision.attached_images %]
 [% IF attachments.size %]
-<h3>[% loc('Attached files') %]</h3>
+<h3>[% loc('Attached images') %]</h3>
 <ul>
   [% FOREACH attach IN attachments %]
   <li><code>[% attach %]</code><br>
@@ -88,6 +88,25 @@ $(document).ready(function() {
   </li>
   [% END %]
 </ul>
+<p>
+  [% loc('Images not used in the text are stored, but will be ignored.') %]
+</p>
+[% END %]
+
+[% IF revision.attached_pdfs_string %]
+<h3>[% loc('Attached PDFs') %]</h3>
+<p>
+  [% loc('To display the PDFs, set or append the following string in the header') %]:
+</p>
+<blockquote>
+  <code>[% revision.attached_pdfs_string | html %]</code>
+</blockquote>
+<p>
+  [% loc('This directive wants a whitespace separated list of filenames.') %]<br/>
+  [% loc('PDFs not listed in the [_1] directive will be stored but ignored.',
+         '#ATTACH') %]<br />
+  [% loc('PDFs cannot be used in the body.') %]
+</p>
 [% END %]
 
 <h3>[% loc('Editing') %] [% revision.title.uri %]</h3>
@@ -96,7 +115,9 @@ $(document).ready(function() {
 <form method="post" enctype="multipart/form-data" id="museform">
   <div class="form-group">
     <p>
-      <label for="attachment">[% loc('Add an attachment') %]</label>
+      <label for="attachment">
+        [% loc('Add an attachment (PNG, JPG or PDF)' ) %]
+      </label>
       <input id="attachment" name="attachment" type="file" />
     </p>
     <p>

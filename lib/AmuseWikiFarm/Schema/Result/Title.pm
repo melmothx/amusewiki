@@ -101,9 +101,8 @@ __PACKAGE__->table("title");
 
 =head2 attach
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =head2 pubdate
 
@@ -211,7 +210,7 @@ __PACKAGE__->add_columns(
   "uid",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "attach",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
   "pubdate",
   { data_type => "datetime", is_nullable => 0 },
   "status",
@@ -335,8 +334,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-25 18:00:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ffLJqZ5m9R2Ftgu2ReJ+xg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-06 09:28:34
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yg08suv1kzbLCXosyaqghA
 
 use File::Spec;
 use File::Slurp qw/read_file/;

@@ -148,7 +148,7 @@ CREATE TABLE title (
         -- to identify translations texts across libraries
         uid         VARCHAR(255),
         -- to attach files
-        attach      VARCHAR(255),
+        attach      TEXT,
         -- to overwrite the timestamp
         pubdate     DATETIME NOT NULL,
         status      VARCHAR(16) NOT NULL DEFAULT 'unpublished',

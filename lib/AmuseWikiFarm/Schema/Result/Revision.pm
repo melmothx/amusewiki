@@ -318,6 +318,42 @@ sub attached_files {
     return \@files;
 }
 
+sub attached_images {
+    my $self = shift;
+    my @images;
+    foreach my $i (@{ $self->attached_files }) {
+        if ($i =~ m/\.pdf$/) {
+            next;
+        }
+        else {
+            push @images, $i;
+        }
+    }
+    return \@images;
+}
+
+sub attached_pdfs {
+    my $self = shift;
+    my @pdfs;
+    foreach my $i (@{ $self->attached_files }) {
+        if ($i =~ m/\.pdf$/) {
+            push @pdfs, $i;
+        }
+    }
+    return \@pdfs;
+}
+
+sub attached_pdfs_string {
+    my $self = shift;
+    my @pdfs = @{ $self->attached_pdfs };
+    if (@pdfs) {
+        return "#ATTACH " . join(" ", @pdfs);
+    }
+    else {
+        return '';
+    }
+}
+
 sub attached_file_path {
     my ($self, $name) = @_;
     return unless $name;

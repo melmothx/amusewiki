@@ -53,12 +53,17 @@ See tasks/dispaly.tt for an example
 
 * DONE store favicon, logo, site files in the repo
   CLOSED: [2014-07-05 sab 14:52]
-* TODO List available images while editing
 * DONE Other languages on its own menu?
   CLOSED: [2014-07-05 sab 20:02]
 
+* DONE Find a way or document clashes between uploaded pdf and titles
+  CLOSED: [2014-07-05 sab 21:15]
 
-* TODO Find a way or document clashes between uploaded pdf and titles
+Not a bug. PDFs cannot be inlined in the texts, so they should not be
+served from /library and /edit, hence, no clash.
+
+
+
 * TODO PDF thumbnails
 * TODO attach directive (atr)
 
@@ -75,7 +80,7 @@ See tasks/dispaly.tt for an example
 
 This looks like searching for troubles... Deferred
 
-
 * TODO Add descriptions to categories
 
 * TODO covers/decorative text image 
+* TODO List available images while editing

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 36;
+use Test::More tests => 48;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -18,7 +18,7 @@ use AmuseWikiFarm::Schema;
 
 my @source_files = map { catfile(qw/t files/, $_) } qw/shot.jpg shot.png shot.pdf/;
 
-print Dumper(\@source_files);
+# print Dumper(\@source_files);
 
 my $tmpdir = File::Temp->newdir;
 
@@ -68,6 +68,24 @@ sub test_revision {
     foreach my $att (@attach) {
         is $rev->add_attachment($att), 0, "$att uploaded";
     }
+    # print Dumper($rev->attached_images, $rev->attached_files, $rev->attached_pdfs);
+
+    is_deeply([ sort @{$rev->attached_files} ],
+              [ "h-o-hello-$suffix.jpg",
+                "h-o-hello-$suffix.pdf",
+                "h-o-hello-$suffix.png" ],
+              "Attached files ok");
+
+
+    is_deeply([ sort @{$rev->attached_images} ],
+              [ "h-o-hello-$suffix.jpg",
+                "h-o-hello-$suffix.png" ],
+              "Attached images ok");
+
+    is_deeply([ sort @{$rev->attached_pdfs} ],
+              [ "h-o-hello-$suffix.pdf" ],
+              "Attached pdfs ok");
+
     $rev->commit_version;
     is $rev->publish_text, $outpath . 'hello';
 
@@ -94,5 +112,11 @@ sub test_revision {
         ok ($attdb, "record found");
         my @logs = $git->log($f);
         ok (@logs) and diag "$f => " . $logs[0]->id;
+        if ($f =~ m/\.pdf$/) {
+            ok !$attdb->can_be_inlined, "$f cannot be inlined";
+        }
+        else {
+            ok $attdb->can_be_inlined, "$f *can* be inlined";
+        }
     }
 }

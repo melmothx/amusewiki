@@ -178,7 +178,43 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-25 18:00:03
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4l2O7jV/wUHrrp6q2A/lSQ
 
+=head2 File classes
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+Defined C<f_class> values:
+
+=over 4
+
+=item image
+
+A standard image
+
+=item special_image
+
+An images beloging to a special text
+
+=item upload_pdf
+
+A pdf. Cannot be inlined.
+
+=back
+
+=head3 can_be_inlined
+
+Return false if it's a PDF, false otherwise
+
+=cut
+
+sub can_be_inlined {
+    my $self = shift;
+    if ($self->f_class eq 'upload_pdf') {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
+
+
 __PACKAGE__->meta->make_immutable;
 1;
