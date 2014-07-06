@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 48;
+use Test::More tests => 54;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -85,10 +85,17 @@ sub test_revision {
     is_deeply([ sort @{$rev->attached_pdfs} ],
               [ "h-o-hello-$suffix.pdf" ],
               "Attached pdfs ok");
-
+    $rev->edit("#ATTACH h-o-hello-$suffix.pdf\n" . $rev->muse_body);
     $rev->commit_version;
     is $rev->publish_text, $outpath . 'hello';
 
+    $rev->discard_changes;
+    my $title = $rev->title;
+    is ($title->attach, "h-o-hello-$suffix.pdf");
+
+    my $attachment = $site->attachments->find({ uri => "h-o-hello-$suffix.pdf" });
+    ok ($attachment, "attachment found");
+    is_deeply($title->attached_pdfs, ["h-o-hello-$suffix.pdf"]);
     my $imagepath;
     if ($class eq 'special') {
         $imagepath = catdir($site->repo_root, 'specials');

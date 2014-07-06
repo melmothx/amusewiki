@@ -682,6 +682,30 @@ sub full_edit_uri {
     return $self->full_uri . '/edit';
 }
 
+=head2 Attached pdf (#ATTACH directive)
+
+=head2 attached_pdfs
+
+Return an arrayref with the list of attached pdfs which are actually
+stored in the tree and indexed in the db, or nothing.
+
+=cut
+
+sub attached_pdfs {
+    my $self = shift;
+    my $string = $self->attach;
+    return unless $string;
+    my @tokens = split(/[\s;,]+/, $string);
+    my @indexed;
+    foreach my $token (@tokens) {
+        next unless $token;
+        if ($self->site->attachments->find({ uri => $token })) {
+            push @indexed, $token;
+        }
+    }
+    @indexed ? return \@indexed : return;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;
