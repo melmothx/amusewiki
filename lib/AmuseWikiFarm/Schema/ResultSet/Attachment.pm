@@ -17,6 +17,20 @@ sub by_uri {
     return $self->single({ uri => $uri });
 }
 
+=head2 pdf_by_uri
+
+As above, but assert the class is C<upload_pdf>
+
+=cut
+
+sub pdf_by_uri {
+    my ($self, $uri) = @_;
+    return $self->single({
+                          uri => $uri,
+                          f_class => 'upload_pdf',
+                         });
+}
+
 =head2 find_file($path)
 
 Shortcut for

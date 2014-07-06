@@ -699,7 +699,7 @@ sub attached_pdfs {
     my @indexed;
     foreach my $token (@tokens) {
         next unless $token;
-        if ($self->site->attachments->find({ uri => $token })) {
+        if ($self->site->attachments->by_uri($token)) {
             push @indexed, $token;
         }
     }

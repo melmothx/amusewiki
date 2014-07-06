@@ -65,8 +65,8 @@ served from /library and /edit, hence, no clash.
 
 
 * TODO PDF thumbnails
-* TODO attach directive (atr)
-
+* DONE attach directive (atr)
+  CLOSED: [2014-07-06 dom 10:31]
 * Future releases
 
 * TODO The jobber should publish deferred texts
