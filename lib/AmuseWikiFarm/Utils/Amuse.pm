@@ -92,7 +92,7 @@ sub muse_file_info {
         }
     }
     if (my $fixed_categories = delete $details->{cat}) {
-        my @cats = split(/ +/, $fixed_categories);
+        my @cats = split(/[\s;,]+/, $fixed_categories);
         foreach my $cat (@cats) {
             my $catcode = muse_naming_algo($cat);
             push @categories, {

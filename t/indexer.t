@@ -261,7 +261,7 @@ foreach my $author_header (qw/sOrtAuthOrS SORTauthors authors/) {
     $testfile = catfile(qw/t repotest a at a-t-throwaway.muse/);
     my $content = <<"MUSE";
 #title Test
-#cat 1first 2second
+#cat 1first, 2second
 #$author_header 3third, 4forth
 MUSE
 
