@@ -64,7 +64,8 @@ served from /library and /edit, hence, no clash.
 
 
 
-* TODO PDF thumbnails
+* DONE PDF thumbnails
+  CLOSED: [2014-07-06 dom 14:38]
 * DONE attach directive (atr)
   CLOSED: [2014-07-06 dom 10:31]
 * Future releases
