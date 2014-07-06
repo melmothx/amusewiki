@@ -63,15 +63,11 @@ Not a bug. PDFs cannot be inlined in the texts, so they should not be
 served from /library and /edit, hence, no clash.
 
 
-
 * DONE PDF thumbnails
   CLOSED: [2014-07-06 dom 14:38]
 * DONE attach directive (atr)
   CLOSED: [2014-07-06 dom 10:31]
-* Future releases
-
 * TODO The jobber should publish deferred texts
-* TODO Move the flash to Catalyst::Plugin::StatusMessage
 * TODO Multilingual
 ** TODO add category/*/lang
 ** TODO add support for uid on display
@@ -82,7 +78,10 @@ served from /library and /edit, hence, no clash.
 
 This looks like searching for troubles... Deferred
 
+* Future releases
+* TODO Move the flash to Catalyst::Plugin::StatusMessage
 * TODO Add descriptions to categories
 
 * TODO covers/decorative text image 
 * TODO List available images while editing
+
