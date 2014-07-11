@@ -88,7 +88,7 @@ sub index :Path :Args(0) {
             my $epub_local_file = $text->filepath_for_ext('epub');
             if (-f $epub_local_file) {
                 my $epub_url = $c->uri_for_action('/library/text',
-                                                  $text->uri . '.epub');
+                                                  [ $text->uri . '.epub' ]);
                 $c->log->debug("EPUB path = $epub_local_file");
                 $item->set('enclosure@url' => $epub_url);
                 $item->set('enclosure@type' => 'application/epub+zip');

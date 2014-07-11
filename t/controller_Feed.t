@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 11;
+use Test::More tests => 12;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use utf8;
@@ -19,9 +19,13 @@ foreach my $host ({ host => 'test.amusewiki.org' },
     like $request->decoded_content, qr/<enclosure.*epub/;
 }
 
-my $request = request('/feed', { host => 'blog.amusewiki.org' });
-diag "Testing encoding";
-like $request->decoded_content, qr/Ža Third test/;
-like $request->decoded_content, qr/Marco &amp;amp; C./;
-like $request->decoded_content, qr/isPermaLink="true"/;
+{
+    my $request = request('/feed', { host => 'blog.amusewiki.org' });
+    diag "Testing encoding";
+    my $content = $request->decoded_content;
+    like $content, qr/Ža Third test/;
+    like $content, qr/Marco &amp;amp; C./;
+    like $content, qr/isPermaLink="true"/;
+    like $content, qr[library/first-test.epub];
+}
 
