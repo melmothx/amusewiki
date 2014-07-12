@@ -35,5 +35,6 @@ foreach my $code (@codes) {
         warn "Site code $code not found in the database. Skipping...\n";
         next;
     }
-    $site->update_db_from_tree;
+    my @files = sort keys %{ $site->repo_find_files };
+    $site->compile_and_index_files(\@files);
 }
