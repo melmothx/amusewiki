@@ -106,8 +106,10 @@ sub single_category :Private {
             $c->detach();
             return;
         }
+        my $texts = $cat->titles->published_texts;
         $c->stash(page_title => $cat->name,
                   template => 'category-details.tt',
+                  texts => $texts,
                   category => $cat);
     }
     else {
@@ -121,7 +123,18 @@ sub single_topic_display :Chained('single_topic') :PathPart('') :Args(0) {}
 
 sub single_author_display :Chained('single_author') :PathPart('') :Args(0) {}
 
-
+sub single_topic_by_lang :Chained('single_topic') :PathPart('') :Args(1) {
+    my ($self, $c, $lang) = @_;
+    my $texts = delete $c->stash->{texts};
+    if ($c->stash->{site}->known_langs->{$lang}) {
+        my $filtered = $texts->search({ lang => $lang });
+        if ($filtered->count) {
+            $c->stash(texts => $filtered);
+            return;
+        }
+    }
+    $c->detach('/not_found');
+}
 
 =encoding utf8
 

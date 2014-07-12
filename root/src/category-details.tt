@@ -1,7 +1,7 @@
 <h2>[% category.name %]</h2>
 
 <ul class="list-group">
-  [% FOREACH title IN category.published_titles %]
+  [% WHILE (title = texts.next) %]
   <li class="list-group-item">
     <a href="[% c.uri_for(title.full_uri) %]">[% title.title %]</a>
     [% IF title.author %]

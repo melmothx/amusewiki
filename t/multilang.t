@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 41;
+use Test::More tests => 73;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -79,17 +79,22 @@ foreach my $text (@texts) {
     $mech->content_contains($text);
 }
 
-foreach my $lang (@langs) {
-    $mech->get_ok("/archive/$lang");
-    foreach my $uid (@uids) {
-        $mech->content_contains("/library/a-test-$uid-$lang");
-    }
-    my @others = grep { $_ ne $lang } @langs;
-    foreach my $other (@others) {
+foreach my $path ("/archive", "/topics/test") {
+    foreach my $lang (@langs) {
+        $mech->get_ok("$path/$lang");
         foreach my $uid (@uids) {
-            $mech->content_lacks("/library/a-test-$uid-$other");
+            $mech->content_contains("/library/a-test-$uid-$lang");
+        }
+        my @others = grep { $_ ne $lang } @langs;
+        foreach my $other (@others) {
+            foreach my $uid (@uids) {
+                $mech->content_lacks("/library/a-test-$uid-$other");
+            }
         }
     }
-    
 }
 
+$mech->get("/archive/ru");
+is $mech->status, "404", "No russian texts, no archive/ru";
+$mech->get("/topics/test/ru")
+;is $mech->status, "404", "No russian texts, no topics/test/ru";
