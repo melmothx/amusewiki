@@ -76,6 +76,11 @@ sub regular_list :Chained('root') :PathPart('library') :CaptureArgs(0) {
              );
 }
 
+sub archive_list :Chained('root') :PathPart('archive') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->forward('regular_list');
+}
+
 sub special_list :Chained('root') :PathPart('special') :CaptureArgs(0) {
     my ($self, $c) = @_;
     $c->log->debug('stashing f_class');
@@ -85,6 +90,11 @@ sub special_list :Chained('root') :PathPart('special') :CaptureArgs(0) {
               texts_rs => $rs,
               page_title => $c->loc('Special pages'),
              );
+}
+
+sub archive :Chained('archive_list') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    $c->forward('template_listing');
 }
 
 sub regular_list_display :Chained('regular_list') :PathPart('') :Args(0) {
@@ -104,7 +114,20 @@ sub template_listing :Private {
               template => 'library.tt');
 }
 
-
+sub archive_by_lang :Chained('archive_list') :PathPart('') :Args(1) {
+    my ($self, $c, $lang) = @_;
+    my $rs = delete $c->stash->{texts_rs};
+    $c->log->debug("In $lang");
+    if ($lang =~ m/^\w{2,3}$/s) {
+        my @filtered = $rs->search({ lang => $lang });
+        if (@filtered) {
+            $c->stash(texts => \@filtered,
+                      template => 'library.tt');
+            return;
+        }
+    }
+    $c->detach('/not_found');
+}
 
 
 =head2 text
