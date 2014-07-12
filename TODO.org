@@ -68,12 +68,14 @@ served from /library and /edit, hence, no clash.
 * DONE attach directive (atr)
   CLOSED: [2014-07-06 dom 10:31]
 * TODO The jobber should publish deferred texts
-* TODO Multilingual
+* DONE Multilingual
+  CLOSED: [2014-07-12 sab 19:25]
 ** DONE add category/*/lang
    CLOSED: [2014-07-12 sab 11:27]
 ** DONE add support for uid on display
    CLOSED: [2014-07-12 sab 16:27]
-** TODO Optimize the Category controller for multilang
+** DONE Optimize the Category controller for multilang
+   CLOSED: [2014-07-12 sab 19:25]
 
 Store an hash in the stash, with uris if there it's a multisite.
 
