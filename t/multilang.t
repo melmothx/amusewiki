@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 74;
+use Test::More tests => 77;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -102,3 +102,15 @@ is $mech->status, "404", "No russian texts, no topics/test/ru";
 my $text = $site->titles->find({ uri => "a-test-id2-hr" });
 my @translations = $text->translations;
 is (scalar(@translations), 2, "Found two translations");
+
+my $without = $schema->resultset('Title')->find({ uri => 'second-test',
+                                                  f_class => 'text',
+                                                  site_id => '0blog0' });
+
+ok($without, "Found the text");
+
+@translations = $without->translations;
+ok(!@translations, "No translations found");
+
+my @sites = $site->other_sites;
+ok(!@sites, "No related sites found");

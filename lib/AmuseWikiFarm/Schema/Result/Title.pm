@@ -96,7 +96,8 @@ __PACKAGE__->table("title");
 =head2 uid
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 attach
@@ -208,7 +209,7 @@ __PACKAGE__->add_columns(
   "author",
   { data_type => "text", default_value => "", is_nullable => 0 },
   "uid",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "attach",
   { data_type => "text", is_nullable => 1 },
   "pubdate",
@@ -334,16 +335,17 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-06 09:28:34
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yg08suv1kzbLCXosyaqghA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-12 13:02:48
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:E2zHa6yhEhIYm+5A+DuKQw
 
 __PACKAGE__->has_many(
     translations => "AmuseWikiFarm::Schema::Result::Title",
     sub {
         my $args = shift;
         return {
-            "$args->{foreign_alias}.uid" => { -ident => "$args->{self_alias}.uid" },
-            "$args->{foreign_alias}.id" => { '!=' => { -ident => "$args->{self_alias}.id" } },
+            "$args->{foreign_alias}.id"  => { '!=' => { -ident => "$args->{self_alias}.id" } },
+            "$args->{foreign_alias}.uid" => { -ident => "$args->{self_alias}.uid",
+                                              '!=' => ''},
         };
     },
     { cascade_copy => 0, cascade_delete => 0 },

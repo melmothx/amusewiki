@@ -33,7 +33,7 @@ CREATE TABLE site (
        mail_from   VARCHAR(255),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
 
-       sitegroup VARCHAR(255), -- overkill, but who cares
+       sitegroup VARCHAR(255) NOT NULL DEFAULT '',
 
        -- labels
        sitegroup_label VARCHAR(255),
@@ -146,7 +146,7 @@ CREATE TABLE title (
 
         -- from tabula rasa
         -- to identify translations texts across libraries
-        uid         VARCHAR(255),
+        uid         VARCHAR(255) NOT NULL DEFAULT '',
         -- to attach files
         attach      TEXT,
         -- to overwrite the timestamp

@@ -127,7 +127,8 @@ __PACKAGE__->table("site");
 =head2 sitegroup
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 sitegroup_label
@@ -299,7 +300,7 @@ __PACKAGE__->add_columns(
   "canonical",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "sitegroup",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "sitegroup_label",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "catalog_label",
@@ -497,8 +498,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-05 19:31:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ROdjcSdoMzxTno4z/oalJQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-12 13:02:48
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AKL1X6jFgzCnhfpX8kgdwA
 
 =head2 other_sites
 
@@ -511,7 +512,8 @@ __PACKAGE__->has_many(
     sub {
         my $args = shift;
         return {
-            "$args->{foreign_alias}.sitegroup" => { -ident => "$args->{self_alias}.sitegroup" },
+            "$args->{foreign_alias}.sitegroup" => { -ident => "$args->{self_alias}.sitegroup",
+                                                    '!=' => '' },
             "$args->{foreign_alias}.id" => { "!=" => { -ident => "$args->{self_alias}.id" } },
         };
     },
