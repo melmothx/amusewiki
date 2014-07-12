@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 77;
+use Test::More tests => 115;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -94,6 +94,22 @@ foreach my $path ("/archive", "/topics/test") {
     }
 }
 
+foreach my $ttext (@texts) {
+    my $text = $ttext;
+    $mech->get_ok("/library/$text");
+    $mech->content_contains("translations");
+    my $others = $text;
+    if ($text =~ m/^(.+-)([a-z]+)$/) {
+        my $base = $1;
+        my $current = $2;
+        foreach my $lang (@langs) {
+            next if $lang eq $current;
+            $mech->content_contains("/library/$base$lang");
+        }
+    }
+}
+
+
 $mech->get("/archive/ru");
 is $mech->status, "404", "No russian texts, no archive/ru";
 $mech->get("/topics/test/ru");
@@ -102,6 +118,9 @@ is $mech->status, "404", "No russian texts, no topics/test/ru";
 my $text = $site->titles->find({ uri => "a-test-id2-hr" });
 my @translations = $text->translations;
 is (scalar(@translations), 2, "Found two translations");
+foreach my $tr (@translations) {
+    ok ($tr->full_uri, "Found " . $tr->full_uri);
+}
 
 my $without = $schema->resultset('Title')->find({ uri => 'second-test',
                                                   f_class => 'text',

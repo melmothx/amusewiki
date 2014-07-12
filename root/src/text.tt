@@ -207,6 +207,22 @@
   [%- END -%]
 
 
+  [% SET translations = text.translations_rs %]
+  [% IF translations.count %]
+  <div style="heigth:10px">&nbsp;
+    &nbsp;
+  </div>
+  <div id="translations" class="well well-sm">
+    <ul>
+      [% WHILE (translation = translations.next) %]
+      <li>
+        <a href="[% c.uri_for(translation.full_uri) %]">
+          [% translation.title %] [[% translation.lang %]]
+        </a>
+      </li>
+      [% END %]
+  </div>
+  [% END %]
 
   [% IF text.f_class == 'special' %]
   <div style="heigth:10px">&nbsp;
