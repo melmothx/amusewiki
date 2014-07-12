@@ -162,7 +162,7 @@
             [% IF navigation %]
 
             [%- # begin project -%]
-            [% IF navigation.projects %]
+            [% IF navigation.specials %]
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
                  title="[% loc('about, links...') %]"
@@ -181,7 +181,7 @@
             [% END %]
 
             [%- # begin specials -%]
-            [% IF navigation.specials %]
+            [% IF navigation.projects %]
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Related projects') %]"
@@ -191,11 +191,9 @@
               </a>
               <ul class="dropdown-menu">
                 [% FOREACH link IN navigation.projects %]
-                [%   UNLESS link.current               %]
                 <li>
-                  <a href="[% link.uri %]">[% link.name %]</a>
+                  <a href="[% link.canonical %]">[% link.sitename || link.canonical %]</a>
                 </li>
-                [%   END %]
                 [% END   %]
               </ul>
             </li>
