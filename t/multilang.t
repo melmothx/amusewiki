@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 115;
+use Test::More tests => 118;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -133,3 +133,10 @@ ok(!@translations, "No translations found");
 
 my @sites = $site->other_sites;
 ok(!@sites, "No related sites found");
+
+$mech->get('/topics/test');
+$mech->content_contains('/topics/test/en');
+$mech->get_ok('/set-language?lang=it&goto=%2Ftopics%2Ftest');
+$mech->content_contains('/topics/test/it');
+
+

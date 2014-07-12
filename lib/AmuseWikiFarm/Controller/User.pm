@@ -131,6 +131,24 @@ sub human :Path('/human') :Args(0) {
     }
 }
 
+sub language :Path('/set-language') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    if ($site->multilanguage) {
+        my $locale = $site->locale;
+        if (my $lang = $c->request->params->{lang}) {
+            if ($site->known_langs->{$lang}) {
+                $locale = $lang;
+                $c->session(user_locale => $locale);
+            }
+        }
+    }
+    my $goto = '/';
+    if (my $path = $c->request->params->{goto}) {
+        $goto .= $path;
+    }
+    $c->response->redirect($c->uri_for($goto));
+}
 
 sub user :Chained('/') :CaptureArgs(0) {
     my ($self, $c) = @_;

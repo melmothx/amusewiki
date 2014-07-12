@@ -60,6 +60,16 @@ sub auto :Private {
     # stash the site object
     $c->stash(site => $site);
     my $locale = $site->locale;
+
+    if ($site->multilanguage) {
+        if (my $user_locale = $c->session->{user_locale}) {
+            if (my $language = $site->known_langs->{$user_locale}) {
+                $c->log->debug("Language is $language");
+                # validated by now
+                $locale = $user_locale;
+            }
+        }
+    }
     $c->stash(current_locale_code => $locale,
               current_locale_name => $site->known_langs->{$locale},
              );

@@ -159,6 +159,30 @@
                 [% loc('Bookbuilder') %]
               </a>
             </li>
+
+            [% IF site.multilanguage %]
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle"
+                 title="[% loc('Language selection') %]"
+                 data-toggle="dropdown">
+                [% loc('Language selection') %]
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                [% SET known_langs = site.known_langs %]
+                [% FOREACH lang IN known_langs.keys.sort %]
+                <li [% IF current_locale_code == lang -%] class="active" [%- END %]
+                    id="select-lang-[% lang %]">
+                  <a href="[% c.uri_for_action('/user/language',
+                           { 'lang' => lang, goto => c.request.path }) %]">
+                    [% known_langs.$lang %]
+                  </a>
+                </li>
+                [% END %]
+              </ul>
+            </li>
+            [% END %]
+
             [% IF navigation %]
 
             [%- # begin project -%]
