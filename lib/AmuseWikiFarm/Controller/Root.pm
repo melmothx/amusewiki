@@ -63,7 +63,7 @@ sub auto :Private {
     # stash the site object
     $c->stash(site => $site);
 
-    my @related = $site->related_sites;
+    my @related = $site->other_sites;
     my @specials = $site->special_list;
     for my $sp (@specials) {
         my $uri = $sp->{uri};

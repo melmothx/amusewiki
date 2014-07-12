@@ -14,7 +14,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use AmuseWikiFarm::Schema;
 
 if ($ENV{RELEASE_TESTING}) {
-    plan tests => 10;
+    plan tests => 11;
 }
 else {
     plan skip_all => "Skipping bootstrapping";
@@ -109,6 +109,11 @@ foreach my $repo (sort keys %repos) {
 }
 
 my $blog = $schema->resultset('Site')->find('0blog0');
+
+my @others = $blog->other_sites;
+
+is scalar(@others), 1, "Found the other site";
+
 
 foreach my $i (1..3) {
     my $user = $schema->resultset('User')

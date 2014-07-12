@@ -507,11 +507,16 @@ Other sites with the same sitegroup id.
 =cut
 
 __PACKAGE__->has_many(
-                      "other_sites",
-                      "AmuseWikiFarm::Schema::Result::Site",
-                      { "foreign.sitegroup" => "self.sitegroup" },
-                      { cascade_copy => 0, cascade_delete => 0 },
-                     );
+    other_sites => "AmuseWikiFarm::Schema::Result::Site",
+    sub {
+        my $args = shift;
+        return {
+            "$args->{foreign_alias}.sitegroup" => { -ident => "$args->{self_alias}.sitegroup" },
+            "$args->{foreign_alias}.id" => { "!=" => { -ident => "$args->{self_alias}.id" } },
+        };
+    },
+    { cascade_copy => 0, cascade_delete => 0 },
+   );
 
 use File::Spec;
 use Cwd;
@@ -1467,28 +1472,6 @@ sub remote_gits_hashref {
         $out->{$remote->{name}}->{$remote->{action}} = $remote->{url};
     }
     return $out;
-}
-
-=head2 related_sites
-
-Return a list where each element is an hashref describing the related
-site (with the same group) and has the following keys: C<uri>,
-C<current> (if it's ourselves), C<name>.
-
-=cut
-
-sub related_sites {
-    my $self = shift;
-    my @related = $self->other_sites->search({},
-                                             { columns => [qw/canonical
-                                                              sitename/] });
-    my @out;
-    foreach my $r (@related) {
-        push @out, { uri => $r->canonical,
-                     current => ($r->canonical eq $self->canonical),
-                     name => ($r->sitename || $r->canonical) };
-    }
-    return @out;
 }
 
 =head2 special_list
