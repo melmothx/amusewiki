@@ -99,7 +99,8 @@ sub single_author :Chained('authors') :PathPart('') :CaptureArgs(1) {
 sub single_category :Private {
     my ($self, $c, $uri) = @_;
     my $canonical = muse_naming_algo($uri);
-    my $cat = $c->stash->{categories_rs}->find({ uri => $uri });
+    my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
+    $c->stash(uri => $canonical);
     if ($cat) {
         if ($cat->uri ne $uri) {
             $c->response->redirect($c->uri_for($cat->full_uri));
@@ -113,7 +114,6 @@ sub single_category :Private {
                   category => $cat);
     }
     else {
-        $c->stash(uri => $canonical);
         $c->detach('/not_found');
     }
 }
@@ -126,10 +126,11 @@ sub single_author_display :Chained('single_author') :PathPart('') :Args(0) {}
 sub single_topic_by_lang :Chained('single_topic') :PathPart('') :Args(1) {
     my ($self, $c, $lang) = @_;
     my $texts = delete $c->stash->{texts};
-    if ($c->stash->{site}->known_langs->{$lang}) {
+    if (my $category_lang = $c->stash->{site}->known_langs->{$lang}) {
         my $filtered = $texts->search({ lang => $lang });
         if ($filtered->count) {
-            $c->stash(texts => $filtered);
+            $c->stash(texts => $filtered,
+                      category_lang => $category_lang);
             return;
         }
     }

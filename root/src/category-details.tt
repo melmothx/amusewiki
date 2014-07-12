@@ -1,4 +1,24 @@
+[%- # -*- mode: html -*- -%]
 <h2>[% category.name %]</h2>
+
+[%- IF site.multilanguage     -%]
+[%-   IF nav == 'topic'       -%]
+<ul class="nav nav-pills">
+  <li [% UNLESS category_lang %]class="active"[% END %]>
+    <a href="[% c.uri_for_action('/category/single_topic_display', [ uri ]) %]">
+      [% loc('All languages') %]
+    </a>
+  </li>
+  <li [% IF category_lang %]class="active"[% END %]>
+    <a href="[% c.uri_for_action('/category/single_topic_by_lang',
+                                 [ uri, current_locale_code ]) %]">
+      [% current_locale_name %]
+    </a>
+  </li>
+</ul>
+[%-   END                     -%]
+[%- END                       -%]
+
 
 <ul class="list-group">
   [% WHILE (title = texts.next) %]

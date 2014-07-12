@@ -57,11 +57,16 @@ sub auto :Private {
         return;
     }
 
-    # set the localization
-    $c->languages([ $site->locale ]);
-
     # stash the site object
     $c->stash(site => $site);
+    my $locale = $site->locale;
+    $c->stash(current_locale_code => $locale,
+              current_locale_name => $site->known_langs->{$locale},
+             );
+    # set the localization
+    $c->languages([ $locale ]);
+
+
 
     my @related = $site->other_sites;
     my @specials = $site->special_list;

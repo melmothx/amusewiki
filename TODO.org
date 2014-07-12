@@ -69,9 +69,19 @@ served from /library and /edit, hence, no clash.
   CLOSED: [2014-07-06 dom 10:31]
 * TODO The jobber should publish deferred texts
 * TODO Multilingual
-** TODO add category/*/lang
-** TODO add support for uid on display
-** TODO add multilanguage support for the same site
+** DONE add category/*/lang
+   CLOSED: [2014-07-12 sab 11:27]
+** DONE add support for uid on display
+   CLOSED: [2014-07-12 sab 16:27]
+** TODO Optimize the Category controller for multilang
+
+Store an hash in the stash, with uris if there it's a multisite.
+
+If present, show the uris for filtering. Same applies for authors as
+well.
+
+Check if there are topics with texts for the given language, before
+showing the uri.
 
 * DONE Handle #topics as #SORTtopics, and #authors as #SORTauthors
   CLOSED: [2014-07-06 dom 10:31]
@@ -84,4 +94,4 @@ This looks like searching for troubles... Deferred
 
 * TODO covers/decorative text image 
 * TODO List available images while editing
-
+* TODO Create static indexing
