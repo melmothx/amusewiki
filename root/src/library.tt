@@ -1,14 +1,48 @@
 [% # -*- mode: html -*- %]
-<h2>[% page_title %]</h2>
+<h2>[% page_title %]
+  [%- IF multilang.filter_label -%]
+  <small>[% multilang.filter_label %]</small>
+  [%- END -%]
+</h2>
 <div><br /></div>
+
+[%- IF site.multilanguage     -%]
+<div style="margin: 0 0 30px 0">
+  <ul class="nav nav-pills">
+    <li [% UNLESS multilang.filter_lang %]class="active"[% END %]>
+    <a href="[% c.uri_for_action('/library/archive') %]">
+      [% loc('All languages') %]
+    </a>
+  </li>
+  <li [% IF multilang.filter_lang == current_locale_code %]class="active"[% END %]>
+    <a href="[% c.uri_for_action('/library/archive_by_lang',
+                                 [ current_locale_code ]) %]">
+      [% current_locale_name %]
+    </a>
+  </li>
+</ul>
+</div>
+[%- END                       -%]
+
+
 
 <ol>
   [% FOREACH text IN texts %]
+  [%- SET title_has_been_found = 1 -%]
   <li>
     <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
     [% IF text.author %]
     — [% text.author %]
     [% END %]
+    [%- IF site.multilanguage -%]
+    [[% text.lang %]]
+    [%- END -%]
   </li>
   [% END %]
 </ol>
+
+[% UNLESS title_has_been_found %]
+<p>
+  [% loc('No text found!') %]
+</p>
+[% END %]

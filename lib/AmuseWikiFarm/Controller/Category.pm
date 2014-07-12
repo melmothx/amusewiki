@@ -100,7 +100,6 @@ sub single_category :Private {
     my ($self, $c, $uri) = @_;
     my $canonical = muse_naming_algo($uri);
     my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
-    $c->stash(uri => $canonical);
     if ($cat) {
         if ($cat->uri ne $uri) {
             $c->response->redirect($c->uri_for($cat->full_uri));
@@ -112,8 +111,27 @@ sub single_category :Private {
                   template => 'category-details.tt',
                   texts => $texts,
                   category => $cat);
+
+        # if the site is multilanguage, prepare the links
+        if ($c->stash->{site}->multilanguage) {
+            my $action_all =  "/category/single_" . $c->stash->{nav} . "_display";
+            my $action_lang = "/category/single_" . $c->stash->{nav} . "_by_lang";
+            my $current_locale = $c->stash->{current_locale_code};
+            my $multi = {
+                         cat_uri_all => $c->uri_for_action($action_all, [ $uri ]),
+                         cat_uri_lang => $c->uri_for_action($action_lang,
+                                                            [
+                                                             $uri,
+                                                             $current_locale,
+                                                            ]),
+                         cat_lang_name => $c->stash->{current_locale_name},
+                         default_lang_code => $current_locale,
+                        };
+            $c->stash(multilang => $multi);
+        }
     }
     else {
+        $c->stash(uri => $canonical);
         $c->detach('/not_found');
     }
 }
@@ -123,19 +141,31 @@ sub single_topic_display :Chained('single_topic') :PathPart('') :Args(0) {}
 
 sub single_author_display :Chained('single_author') :PathPart('') :Args(0) {}
 
+
+sub single_author_by_lang :Chained('single_author') :PathPart('') :Args(1) {
+    my ($self, $c, $lang) = @_;
+    $c->forward(single_category_by_lang => [ $lang ]);
+}
+
 sub single_topic_by_lang :Chained('single_topic') :PathPart('') :Args(1) {
+    my ($self, $c, $lang) = @_;
+    $c->forward(single_category_by_lang => [ $lang ]);
+}
+
+sub single_category_by_lang :Private {
     my ($self, $c, $lang) = @_;
     my $texts = delete $c->stash->{texts};
     if (my $category_lang = $c->stash->{site}->known_langs->{$lang}) {
         my $filtered = $texts->search({ lang => $lang });
-        if ($filtered->count) {
-            $c->stash(texts => $filtered,
-                      category_lang => $category_lang);
-            return;
-        }
+        $c->stash(texts => $filtered);
+        $c->stash->{multilang}->{filtered} = $category_lang;
+        $c->stash->{multilang}->{code} = $lang;
     }
-    $c->detach('/not_found');
+    else {
+        $c->detach('/not_found');
+    }
 }
+
 
 =encoding utf8
 

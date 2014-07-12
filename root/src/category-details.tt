@@ -1,27 +1,32 @@
 [%- # -*- mode: html -*- -%]
-<h2>[% category.name %]</h2>
+<h2>[% category.name %]
+[% IF multilang %]
+[% IF multilang.filtered %]
+  <small>[% multilang.filtered %]</small>
+[% END %]
+[% END %]
+</h2>
 
-[%- IF site.multilanguage     -%]
-[%-   IF nav == 'topic'       -%]
+[%- IF multilang -%]
 <ul class="nav nav-pills">
-  <li [% UNLESS category_lang %]class="active"[% END %]>
-    <a href="[% c.uri_for_action('/category/single_topic_display', [ uri ]) %]">
+  <li [% UNLESS multilang.code -%] class="active" [%- END %]>
+    <a href="[% multilang.cat_uri_all  %]">
       [% loc('All languages') %]
     </a>
   </li>
-  <li [% IF category_lang %]class="active"[% END %]>
-    <a href="[% c.uri_for_action('/category/single_topic_by_lang',
-                                 [ uri, current_locale_code ]) %]">
-      [% current_locale_name %]
+  <li [% IF multilang.default_lang_code == multilang.code -%]
+      class="active" [%- END %]>
+    <a href="[% multilang.cat_uri_lang %]">
+      [% multilang.cat_lang_name %]
     </a>
   </li>
 </ul>
-[%-   END                     -%]
 [%- END                       -%]
 
 
 <ul class="list-group">
   [% WHILE (title = texts.next) %]
+  [%- SET title_has_been_found = 1 -%]
   <li class="list-group-item">
     <a href="[% c.uri_for(title.full_uri) %]">[% title.title %]</a>
     [% IF title.author %]
@@ -29,6 +34,15 @@
       — [% title.author %]
       [% END %]
     [% END %]
+    [%- IF site.multilanguage -%]
+    [[% title.lang %]]
+    [%- END -%]
   </li>
   [% END %]
 </ul>
+
+[% UNLESS title_has_been_found %]
+<p>
+  [% loc('No text found!') %]
+</p>
+[% END %]

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 118;
+use Test::More tests => 119;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -111,9 +111,13 @@ foreach my $ttext (@texts) {
 
 
 $mech->get("/archive/ru");
-is $mech->status, "404", "No russian texts, no archive/ru";
+$mech->content_contains("No text found!", "No russian texts, no archive/ru");
 $mech->get("/topics/test/ru");
-is $mech->status, "404", "No russian texts, no topics/test/ru";
+$mech->content_contains("No text found!");
+$mech->get("/authors/marco/ru");
+$mech->content_contains("No text found!");
+
+
 
 my $text = $site->titles->find({ uri => "a-test-id2-hr" });
 my @translations = $text->translations;

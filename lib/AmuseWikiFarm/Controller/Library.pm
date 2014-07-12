@@ -118,13 +118,15 @@ sub archive_by_lang :Chained('archive_list') :PathPart('') :Args(1) {
     my ($self, $c, $lang) = @_;
     my $rs = delete $c->stash->{texts_rs};
     $c->log->debug("In $lang");
-    if ($c->stash->{site}->known_langs->{$lang}) {
+    if (my $label = $c->stash->{site}->known_langs->{$lang}) {
         my @filtered = $rs->search({ lang => $lang });
-        if (@filtered) {
-            $c->stash(texts => \@filtered,
-                      template => 'library.tt');
-            return;
-        }
+        $c->stash(texts => \@filtered,
+                  multilang => {
+                                filter_lang => $lang,
+                                filter_label => $label,
+                               },
+                  template => 'library.tt');
+        return;
     }
     $c->detach('/not_found');
 }
