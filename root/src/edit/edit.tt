@@ -128,6 +128,19 @@ $(document).ready(function() {
     </p>
   </div>
   <div class="form-group">
+    [% IF site.fixed_category_list %]
+    <div>
+      <p>
+        <strong>
+          [% loc('Available category tags for header') %]
+        </strong>
+      </p>
+      <p>
+        <code>#cat [% site.fixed_category_list | html %]</code>
+      </p>
+    </div>
+    [% END %]
+
     <div>
       <textarea rows="20" cols="60" id="maintextarea"
                 class="form-control"

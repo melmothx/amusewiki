@@ -92,9 +92,15 @@ This looks like searching for troubles... Deferred
 
 * TODO proper fixed category handling
 
-** TODO In the creation menu, offer checkboxes
-** TODO In the edit page, list them.
-** TODO Indexing probably need to ignore other topics
+** DONE In the creation menu, offer checkboxes
+   CLOSED: [2014-07-13 dom 09:20]
+** DONE In the edit page, list them.
+   CLOSED: [2014-07-13 dom 09:47]
+** DONE Indexing probably need to ignore other topics
+   CLOSED: [2014-07-13 dom 09:48]
+
+No reason to do that.
+
 ** TODO The fixes categories are codes
 
 So there is a need to get in the translations and eventually

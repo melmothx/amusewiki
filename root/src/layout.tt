@@ -138,14 +138,30 @@
                     [% loc('Authors') %]
                   </a>
                 </li>
+                [% IF site.fixed_category_list %]
+                <li role="presentation" class="divider"></li>
+                <li role="presentation" class="dropdown-header">
+                  [% loc('Topics') %]
+                </li>
+                [%     FOREACH fixedcat IN site.list_fixed_categories %]
+                <li>
+                  <a href="[% c.uri_for_action('/category/single_topic_display',
+                                               [ fixedcat ]) %]">
+                    [% site.label_for_fixed_category(fixedcat) | html %]
+                  </a>
+                </li>
+                [% %]
+                [%     END  %]
+                [% ELSE %]
 	            <li[% IF nav == 'topic' %] class="active" [% END %]>
                   <a href="[% c.uri_for('/topics') %]"
 		             title="[% loc('texts sorted by topics') %]">
                     [% loc('Topics') %]
                   </a>
                 </li>
+                [% END %]
                 [% IF c.user_exists || site.human_can_edit %]
-                <li class="divider"></li>
+                <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
                   <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
                     [% loc('Add to library') %]
