@@ -62,7 +62,6 @@ See tasks/dispaly.tt for an example
 Not a bug. PDFs cannot be inlined in the texts, so they should not be
 served from /library and /edit, hence, no clash.
 
-
 * DONE PDF thumbnails
   CLOSED: [2014-07-06 dom 14:38]
 * DONE attach directive (atr)
@@ -89,7 +88,6 @@ showing the uri.
 
 This looks like searching for troubles... Deferred
 
-
 * DONE proper fixed category handling
   CLOSED: [2014-07-13 dom 11:11]
 
@@ -113,6 +111,9 @@ the tree.
 * TODO The jobber should publish deferred texts
 
 
+* TODO URI generation: append the language, if present.
+* TODO Internal list of translations
+* TODO Admin for jobs
 
 * Future releases
 * TODO Move the flash to Catalyst::Plugin::StatusMessage
