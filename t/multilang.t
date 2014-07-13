@@ -54,7 +54,7 @@ MUSE
 #title $lang-$uid
 #uid $uid
 #lang $lang
-#topics Test
+#cat test
 #author Marco
 
 Blabla *bla* has uid $uid and lang $lang
