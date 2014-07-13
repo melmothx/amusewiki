@@ -164,7 +164,13 @@ sub index :Path :Args(0) {
     # check if we have a special page named index
     my $nav = $c->stash->{navigation};
     my $target;
-    if (my $index = $c->stash->{site}->titles->special_by_uri('index')) {
+    my $site = $c->stash->{site};
+    my $locale = $c->stash->{current_locale_code} || $site->locale;
+
+    if (my $locindex = $site->titles->special_by_uri('index-' . $locale)) {
+        $target = $c->uri_for($locindex->full_uri);
+    }
+    elsif (my $index = $site->titles->special_by_uri('index')) {
         $target = $c->uri_for($index->full_uri);
     }
     else {
