@@ -1,0 +1,82 @@
+{
+   "war" : {
+      "de" : "Krieg und Staatsterrorismus",
+      "nl" : "Oorlog en staatsterrorisme",
+      "hr" : "Ratovi i državni terorizam",
+      "en" : "War and state terrorism",
+      "it" : "Guerre e terrorismo di Stato",
+      "fr" : "Guerres et terrorisme d’Etat"
+   },
+   "anarch" : {
+      "nl" : "Anarchie en anarchisme",
+      "hr" : "Anarhija i anarhizam",
+      "de" : "Anarchie und Anarchismus",
+      "fr" : "Anarchie et anarchisme",
+      "it" : "Anarchia e anarchismo",
+      "en" : "Anarchy and anarchism"
+   },
+   "lines" : {
+      "nl" : "Tussen de lijnen",
+      "hr" : "Između redaka",
+      "de" : "Zwischen den Zeilen",
+      "fr" : "Entre les lignes",
+      "it" : "Fra le righe",
+      "en" : "Between the lines"
+   },
+   "riot" : {
+      "de" : "Revolten, Unruhen, Insurrektionen",
+      "hr" : "Pobune, neredi, ustanci",
+      "nl" : "Revoltes, rellen, opstanden",
+      "fr" : "Révoltes, émeutes, insurrections",
+      "en" : "Revolts, riots, insurrections",
+      "it" : "Rivolte, sommosse, insurrezioni"
+   },
+   "nociv" : {
+      "en" : "Nuisances and surroundings",
+      "it" : "Nocività e dintorni",
+      "fr" : "Nuisances et leurs contours",
+      "de" : "Schädlichkeiten und ihre Konturen",
+      "hr" : "Štetnosti i okolica",
+      "nl" : "Vervuiling en omstreken"
+   },
+   "hist" : {
+      "nl" : "Wat een geschiedenis!",
+      "hr" : "Koja povijest!",
+      "de" : "Was für eine Geschichte!",
+      "fr" : "Quelle histoire!",
+      "it" : "Che storia!",
+      "en" : "What a story!"
+   },
+   "antipolit" : {
+      "de" : "Dolchstiche gegen die Politik",
+      "nl" : "Dolksteken voor de politiek",
+      "hr" : "Bodežom na politiku",
+      "fr" : "Poignardons la politique",
+      "en" : "Let’s stab politics",
+      "it" : "Pugnaliamo la politica"
+   },
+   "spec" : {
+      "fr" : "Luttes spécifiques",
+      "en" : "Specific struggles",
+      "it" : "Lotte specifiche",
+      "de" : "Spezifische Kämpfe",
+      "hr" : "Specifične borbe",
+      "nl" : "Specifieke strijden"
+   },
+   "antiwork" : {
+      "de" : "Zerstören wir die Arbeit",
+      "hr" : "Uništimo rad",
+      "nl" : "Laten we het werk vernietigen",
+      "en" : "Let’s destroy work",
+      "it" : "Distruggiamo il lavoro",
+      "fr" : "Détruisons le travail"
+   },
+   "geo" : {
+      "de" : "Geographie der sozialen Kontrolle",
+      "hr" : "Geografija kontrole",
+      "nl" : "Geografie van de controle",
+      "en" : "Geography of control",
+      "it" : "Geografia del controllo",
+      "fr" : "Géographie du contrôle social"
+   }
+}
