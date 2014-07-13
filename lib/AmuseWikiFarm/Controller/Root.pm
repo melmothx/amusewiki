@@ -166,8 +166,8 @@ sub index :Path :Args(0) {
     my $target;
     my $site = $c->stash->{site};
     my $locale = $c->stash->{current_locale_code} || $site->locale;
-
-    if (my $locindex = $site->titles->special_by_uri('index-' . $locale)) {
+    if ($site->multilanguage and
+        (my $locindex = $site->titles->special_by_uri('index-' . $locale))) {
         $target = $c->uri_for($locindex->full_uri);
     }
     elsif (my $index = $site->titles->special_by_uri('index')) {

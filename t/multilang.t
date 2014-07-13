@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 131;
+use Test::More tests => 134;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -177,3 +177,7 @@ ok $site->lexicon_hashref;
 # print Dumper($site->lexicon_hashref);
 is $site->lexicon_translate(hr => 'geo'), 'Geografija kontrole';
 is $site->lexicon_translate(hr => 'blablabla'), 'blablabla';
+
+$mech->get_ok('/set-language?lang=it');
+$mech->get_ok('/');
+$mech->content_contains('This is the it index');
