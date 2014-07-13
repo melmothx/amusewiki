@@ -1197,6 +1197,14 @@ sub list_fixed_categories {
     }
 }
 
+
+# TODO this is a placeholder
+sub label_for_fixed_category {
+    my ($self, $cat) = @_;
+    return $cat;
+}
+
+
 =head1 SCANNING
 
 =head2 repo_find_files

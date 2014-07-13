@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 119;
+use Test::More tests => 128;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -143,4 +143,28 @@ $mech->content_contains('/topics/test/en');
 $mech->get_ok('/set-language?lang=it&goto=%2Ftopics%2Ftest');
 $mech->content_contains('/topics/test/it');
 
+$site->fixed_category_list("test prova pippo");
+$site->update->discard_changes;
+
+$mech->get_ok('/login');
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'root',
+                               password => 'root',
+                             },
+                   button => 'submit');
+$mech->get_ok('/action/text/new');
+ok($mech->form_with_fields(qw/uid title textbody/));
+foreach my $cat (@{$site->list_fixed_categories}) {
+    $mech->content_contains("fixed_cat_" . $cat);
+    $mech->tick("fixed_cat_" . $cat, $cat);
+}
+$mech->field(title => "Test cat");
+$mech->field(uri => "xxxx" . int(rand(1000)));
+$mech->field(textbody => "Hello there");
+$mech->click;
+
+$mech->content_contains("#cat test prova pippo");
+$mech->form_with_fields('body');
+ok($mech->click('commit'));
+$mech->content_contains('Changes committed, thanks');
 

@@ -105,19 +105,21 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
         # create a working copy of the params
         my $params = { %{$c->request->params} };
 
-        # manage the multiple selections
-        if (my $cat = delete $params->{cat}) {
-            my %sticky;
-            if (ref($cat) and ref($cat) eq 'ARRAY') {
-                $params->{cat} = join(' ', @$cat);
-                %sticky = map { $_ => 1 } @$cat;
+        if (my $fixed_cats = $site->list_fixed_categories) {
+            my @out;
+            foreach my $cat (@$fixed_cats) {
+                # see newtext.tt
+                my $param_name = 'fixed_cat_' . $cat;
+                if (delete $params->{$param_name}) {
+                    # already validated, because we do it the other way
+                    push @out, $cat;
+                }
             }
-            else {
-                $params->{cat} = $cat;
-                %sticky = ($cat => 1);
+            if (@out) {
+                $params->{cat} = join(' ', @out);
             }
-            $c->stash(sticky_cats => \%sticky);
         }
+
         # this call is going to add uri to $params, if not present
         my ($revision, $error) = $site->create_new_text($params, $f_class);
         if ($revision) {
