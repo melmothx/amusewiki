@@ -151,10 +151,10 @@ __PACKAGE__->table("site");
 
 =head2 multilanguage
 
-  data_type: 'integer'
-  default_value: 0
+  data_type: 'varchar'
+  default_value: (empty string)
   is_nullable: 0
-  size: 1
+  size: 255
 
 =head2 bb_page_limit
 
@@ -308,7 +308,7 @@ __PACKAGE__->add_columns(
   "specials_label",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "multilanguage",
-  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "bb_page_limit",
   { data_type => "integer", default_value => 1000, is_nullable => 0 },
   "tex",
@@ -498,8 +498,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-12 13:02:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AKL1X6jFgzCnhfpX8kgdwA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-13 11:24:31
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dtkeufFUaJna0UO8oGM7TA
 
 =head2 other_sites
 
@@ -1228,6 +1228,27 @@ sub lexicon_translate {
     return $self->lexicon_hashref->{$term}->{$lang} || $term;
 }
 
+sub multilanguage_list {
+    my ($self) = @_;
+    my $list = $self->multilanguage;
+    if ($list) {
+        my @langs =  grep { /\w/  } split(/\s+/, $list);
+        my @out;
+        my $check = $self->known_langs;
+        foreach my $i (@langs) {
+            if (my $label = $check->{$i}) {
+                push @out, {
+                            code => $i,
+                            label => $label,
+                           },
+            }
+        }
+        return \@out;
+    }
+    else {
+        return;
+    }
+}
 
 =head1 SCANNING
 
@@ -1623,11 +1644,15 @@ sub update_from_params {
     # strings: same here, nothing which should go too wrong, save for
     # the the length.
     my @strings = (qw/magic_answer magic_question fixed_category_list
+                      multilanguage
                       sitename siteslogan logo mail_notify mail_from
                       canonical sitegroup ttdir/);
     foreach my $string (@strings) {
         my $param = delete $params->{$string};
         if (defined $param) {
+            $param =~ s/\s+/ /gs;
+            $param =~ s/^\s+//;
+            $param =~ s/\s+$//;
             if (length($param) < 256) {
                 $self->$string($param);
             }

@@ -186,13 +186,14 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                [% SET known_langs = site.known_langs %]
-                [% FOREACH lang IN known_langs.keys.sort %]
-                <li [% IF current_locale_code == lang -%] class="active" [%- END %]
-                    id="select-lang-[% lang %]">
+                [% FOREACH lang IN site.multilanguage_list %]
+                <li [% IF current_locale_code == lang.code -%]
+                    class="active"
+                    [%- END %]
+                    id="select-lang-[% lang.code %]">
                   <a href="[% c.uri_for_action('/user/language',
-                           { 'lang' => lang, goto => c.request.path }) %]">
-                    [% known_langs.$lang %]
+                           { 'lang' => lang.code, goto => c.request.path }) %]">
+                    [% lang.label %]
                   </a>
                 </li>
                 [% END %]
