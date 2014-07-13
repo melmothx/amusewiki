@@ -90,7 +90,8 @@ showing the uri.
 This looks like searching for troubles... Deferred
 
 
-* TODO proper fixed category handling
+* DONE proper fixed category handling
+  CLOSED: [2014-07-13 dom 11:11]
 
 ** DONE In the creation menu, offer checkboxes
    CLOSED: [2014-07-13 dom 09:20]
@@ -101,7 +102,8 @@ This looks like searching for troubles... Deferred
 
 No reason to do that.
 
-** TODO The fixes categories are codes
+** DONE The fixes categories are codes
+   CLOSED: [2014-07-13 dom 11:11]
 
 So there is a need to get in the translations and eventually
 descriptions. For this, I guess we need another table, pointing to the

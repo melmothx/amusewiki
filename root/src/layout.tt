@@ -147,7 +147,8 @@
                 <li>
                   <a href="[% c.uri_for_action('/category/single_topic_display',
                                                [ fixedcat ]) %]">
-                    [% site.label_for_fixed_category(fixedcat) | html %]
+                    [% site.lexicon_translate(current_locale_code,
+                                              fixedcat) | html %]
                   </a>
                 </li>
                 [% %]

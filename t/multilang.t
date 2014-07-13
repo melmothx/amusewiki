@@ -3,11 +3,12 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 128;
+use Test::More tests => 131;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
 use File::Path qw/make_path/;
+use File::Copy qw/copy/;
 use Data::Dumper;
 use File::Slurp qw/write_file/;
 use lib catdir(qw/t lib/);
@@ -54,7 +55,7 @@ MUSE
 #title $lang-$uid
 #uid $uid
 #lang $lang
-#cat test
+#cat geo
 #author Marco
 
 Blabla *bla* has uid $uid and lang $lang
@@ -79,7 +80,7 @@ foreach my $text (@texts) {
     $mech->content_contains($text);
 }
 
-foreach my $path ("/archive", "/topics/test") {
+foreach my $path ("/archive", "/topics/geo") {
     foreach my $lang (@langs) {
         $mech->get_ok("$path/$lang");
         foreach my $uid (@uids) {
@@ -112,7 +113,7 @@ foreach my $ttext (@texts) {
 
 $mech->get("/archive/ru");
 $mech->content_contains("No text found!", "No russian texts, no archive/ru");
-$mech->get("/topics/test/ru");
+$mech->get("/topics/geo/ru");
 $mech->content_contains("No text found!");
 $mech->get("/authors/marco/ru");
 $mech->content_contains("No text found!");
@@ -138,12 +139,12 @@ ok(!@translations, "No translations found");
 my @sites = $site->other_sites;
 ok(!@sites, "No related sites found");
 
-$mech->get('/topics/test');
-$mech->content_contains('/topics/test/en');
-$mech->get_ok('/set-language?lang=it&goto=%2Ftopics%2Ftest');
-$mech->content_contains('/topics/test/it');
+$mech->get('/topics/geo');
+$mech->content_contains('/topics/geo/en');
+$mech->get_ok('/set-language?lang=it&goto=%2Ftopics%2Fgeo');
+$mech->content_contains('/topics/geo/it');
 
-$site->fixed_category_list("test prova pippo");
+$site->fixed_category_list("geo lines war");
 $site->update->discard_changes;
 
 $mech->get_ok('/login');
@@ -163,8 +164,16 @@ $mech->field(uri => "xxxx" . int(rand(1000)));
 $mech->field(textbody => "Hello there");
 $mech->click;
 
-$mech->content_contains("#cat test prova pippo");
+$mech->content_contains("#cat geo lines war");
 $mech->form_with_fields('body');
 ok($mech->click('commit'));
 $mech->content_contains('Changes committed, thanks');
 
+mkdir $site->path_for_site_files unless -d $site->path_for_site_files;
+copy(catfile(qw/t atr-lexicon.json/), $site->lexicon_file);
+
+ok $site->lexicon_hashref;
+
+# print Dumper($site->lexicon_hashref);
+is $site->lexicon_translate(hr => 'geo'), 'Geografija kontrole';
+is $site->lexicon_translate(hr => 'blablabla'), 'blablabla';

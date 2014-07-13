@@ -537,6 +537,8 @@ use File::Find;
 use File::Basename qw/fileparse/;
 use Data::Dumper;
 use AmuseWikiFarm::Archive::BookBuilder;
+use JSON ();
+use File::Slurp ();
 
 =head2 repo_root_rel
 
@@ -1197,11 +1199,33 @@ sub list_fixed_categories {
     }
 }
 
+sub lexicon_file {
+    my $self = shift;
+    return File::Spec->catfile($self->path_for_site_files, "lexicon.json");
+}
 
-# TODO this is a placeholder
-sub label_for_fixed_category {
-    my ($self, $cat) = @_;
-    return $cat;
+has lexicon_hashref => (is => 'ro',
+                               isa => 'HashRef',
+                               lazy => 1,
+                               builder => '_build_lexicon_hashref');
+
+sub _build_lexicon_hashref {
+    my $self = shift;
+    my $file = $self->lexicon_file;
+    warn "Loading up the lexicon file\n";
+    if (-f $file) {
+        my $json = File::Slurp::read_file($file);
+        return JSON::decode_json($json);
+    }
+    else {
+        return {};
+    }
+}
+
+sub lexicon_translate {
+    my ($self, $lang, $term) = @_;
+    return $term unless $lang && $term;
+    return $self->lexicon_hashref->{$term}->{$lang} || $term;
 }
 
 

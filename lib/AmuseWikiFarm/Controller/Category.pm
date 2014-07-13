@@ -107,7 +107,9 @@ sub single_category :Private {
             return;
         }
         my $texts = $cat->titles->published_texts;
-        $c->stash(page_title => $cat->name,
+        my $current_locale = $c->stash->{current_locale_code};
+
+        $c->stash(page_title => $cat->loc_name($current_locale),
                   template => 'category-details.tt',
                   texts => $texts,
                   category => $cat);
@@ -116,7 +118,6 @@ sub single_category :Private {
         if ($c->stash->{site}->multilanguage) {
             my $action_all =  "/category/single_" . $c->stash->{nav} . "_display";
             my $action_lang = "/category/single_" . $c->stash->{nav} . "_by_lang";
-            my $current_locale = $c->stash->{current_locale_code};
             my $multi = {
                          cat_uri_all => $c->uri_for_action($action_all, [ $uri ]),
                          cat_uri_lang => $c->uri_for_action($action_lang,

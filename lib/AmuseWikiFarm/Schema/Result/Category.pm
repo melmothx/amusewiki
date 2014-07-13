@@ -220,5 +220,16 @@ sub full_uri {
     }
 }
 
+sub loc_name {
+    my ($self, $locale) = @_;
+    if ($locale) {
+        return $self->site->lexicon_translate($locale, $self->name);
+    }
+    else {
+        return $self->name;
+    }
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

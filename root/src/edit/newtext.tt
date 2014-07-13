@@ -89,7 +89,7 @@ var ckconfiguration = {
           <input type="checkbox"
                  [% IF c.req.params.$fixed_cat_name %]checked="checked"[% END %]
                  name="[% fixed_cat_name %]" value="[% cat %]"/>
-          [% site.label_for_fixed_category(cat) | html %]
+          [% site.lexicon_translate(current_locale_code, cat) | html %]
         </label>
       </div>
       [% END %]

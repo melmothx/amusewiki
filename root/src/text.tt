@@ -49,9 +49,17 @@
 
     [% IF text.topics.size %]
     <p id="topics">
-      <strong>[% loc('Topics') %]:</strong>
+      <span id="preamble-topics-label">
+        <strong>[% loc('Topics') %]:</strong>
+      </span>
       [% FOREACH topic IN text.topics -%]
-      <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">[% topic.name %]</a>
+      <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">
+      [%- IF site.multilanguage -%]
+      {[% topic.loc_name(current_locale_code) %]}
+      [%- ELSE -%]
+      [% topic.name %]
+      [%- END -%]
+      </a>
       [% END %]
     </p>
     [% END %]
