@@ -224,6 +224,21 @@ sub alias_create :Chained('alias') :PathPart('create') :Args(0) {
     $c->response->redirect($c->uri_for_action('/console/alias_display'));
 }
 
+sub translations :Chained('root') :PathPart('translations') :Args(0) {
+    my ($self, $c) = @_;
+    # TODO move it in the model
+    my $site = $c->stash->{site};
+    if ($site->multilanguage) {
+        $c->stash(
+                  translations => $site->translations_list,
+                  page_title => $c->loc('Internal list of translations'),
+                 );
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
+
 
 =head1 AUTHOR
 

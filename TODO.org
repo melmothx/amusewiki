@@ -112,7 +112,8 @@ the tree.
 
 
 * TODO URI generation: append the language, if present.
-* TODO Internal list of translations
+* DONE Internal list of translations
+  CLOSED: [2014-07-15 mar 10:58]
 * DONE Admin for jobs
   CLOSED: [2014-07-15 mar 10:08]
 

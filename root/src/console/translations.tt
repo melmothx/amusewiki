@@ -1,0 +1,44 @@
+[% # -*- mode:html -*- %]
+
+<h2>[% page_title | html %]</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered">
+    <tr>
+      <th>
+        <code>#uid</code>
+      </th>
+      <th>
+        [% loc('Texts') %]
+      </th>
+    </tr>
+    [% FOREACH item IN translations %]
+    <tr>
+      <td>
+        [% IF item.uid %]
+        <code>[% item.uid %]</code>
+        [% ELSE %]
+        <strong>[% loc('These texts are missing the unique id.') %]</strong>
+        [% END %]
+      </td>
+      <td>
+        <ul>
+          [% FOREACH text IN item.texts %]
+          <li>
+            <a href="[% c.uri_for(text.full_uri) %]">
+              [% text.title %]
+            </a>
+            |
+            <a href="[% c.uri_for(text.full_edit_uri) %]">
+              [% loc('Edit') %]
+            </a>
+                     
+          </li>
+          [% END %]
+        </ul>
+      </td>
+    </tr>
+    
+    [% END %]
+  </table>
+</div>

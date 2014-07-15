@@ -257,6 +257,13 @@
                     Create a new special page
                   </a>
                 </li>
+                [% IF site.multilanguage %]
+                <li>
+                  <a href="[% c.uri_for_action('/console/translations') %]">
+                    [% loc('Internal list of translations') %]
+                  </a>
+                </li>
+                [% END %]
                 <li>
                   <a href="[% c.uri_for_action('/publish/pending') %]">
                     [% loc('Pending revisions') %]

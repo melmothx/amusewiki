@@ -1778,6 +1778,34 @@ sub update_from_params {
     @errors ? return join("\n", @errors) : return;
 }
 
+sub translations_list {
+    my $self = shift;
+    # get all the texts
+    my $rs = $self->titles->search({ f_class => 'text' },
+                                   {
+                                    columns => [qw/uid title uri f_class/],
+                                    order_by => [qw/list_title/],
+                                   });
+    my %all;
+    while (my $text = $rs->next) {
+        my $uid = $text->uid || 0; # consider '', null and 0 all the same
+        $all{$uid} ||= [];
+        push @{$all{$uid}}, {
+                             full_uri => $text->full_uri,
+                             title => $text->uri,
+                             full_edit_uri => $text->full_edit_uri,
+                            };
+    }
+    my @out;
+    my @list = sort keys %all;
+    foreach my $k (@list) {
+        push @out, { uid => $k,
+                     texts => delete($all{$k}) };
+    }
+    return \@out;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;
