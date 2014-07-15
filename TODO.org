@@ -113,7 +113,8 @@ the tree.
 
 * TODO URI generation: append the language, if present.
 * TODO Internal list of translations
-* TODO Admin for jobs
+* DONE Admin for jobs
+  CLOSED: [2014-07-15 mar 10:08]
 
 * Future releases
 * TODO Move the flash to Catalyst::Plugin::StatusMessage

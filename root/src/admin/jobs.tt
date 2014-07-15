@@ -1,0 +1,74 @@
+[%# -*- mode:html -*- %]
+
+<h2>[% page_title | html %]</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered">
+    <tr>
+      <th>[% loc('Id') %]</th>
+      <th>[% loc('Site id') %]</th>
+      <th>[% loc('Task') %]</th>
+      <th>[% loc('Payload') %]</th>
+      <th>[% loc('Status') %]</th>
+      <th>[% loc('Created') %]</th>
+      <th>[% loc('Completed') %]</th>
+      <th>[% loc('Priority') %]</th>
+      <th>[% loc('Produced') %]</th>
+      <th>[% loc('Errors') %]</th>
+      <th>[% loc('Action') %]</th>
+    </tr>
+    [% FOREACH job IN jobs %]
+    <tr>
+      <td>
+        <a href="[% job.site.canonical %]/tasks/status/[% job.id %]">
+          [% job.id | html %]
+        </a>
+      </td>
+      <td>
+        [% IF job.site.canonical %]
+        <a href="[% job.site.canonical %]">
+          [% job.site_id | html %]  
+        </a>
+        [% ELSE %]
+        [% job.site_id | html %]  
+        [% END %]
+      </td>
+      <td>
+        [% job.task | html %]
+      </td>
+      <td>
+        [% job.payload | html %]
+      </td>
+      <td>
+        [% job.status | html %]
+      </td>
+      <td>
+        [% job.created.ymd | html %]
+      </td>
+      <td>
+        [% job.completed.ymd | html %]
+      </td>
+      <td>
+        [% job.priority | html %]
+      </td>
+      <td>
+        [% IF job.produced %]
+        <a href="[% job.site.canonical %][% job.produced %]">[% job.produced | html %]</a>
+        [% END %]
+      </td>
+      <td>
+        [% job.errors | html %]
+      </td>
+      <td>
+        <form action="[% c.uri_for_action('/admin/delete_job') %]" method="post">
+          <input type="hidden" name="job_id" value="[% job.id %]" />
+          <button type="submit" class="btn btn-default">
+          [% loc('Delete') %]
+          </button>
+        </form>
+      </td>
+    </tr>
+    [% END %]
+  </table>
+</div>
+

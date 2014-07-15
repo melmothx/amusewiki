@@ -64,7 +64,7 @@ sub list :Chained('sites') :PathPart('') :Args(0)  {
               list => [ $sites->all ]);
 }
 
-sub edit :Chained('sites') :Args() {
+sub edit :Chained('sites') :PathPart('edit') :Args() {
     my ($self, $c, $id) = @_;
     my %params = %{ $c->request->body_parameters };
     my $site;
@@ -108,6 +108,41 @@ sub edit :Chained('sites') :Args() {
     }
     $site->discard_changes;
     $c->stash(esite => $site);
+}
+
+sub get_jobs :Chained('root') :PathPart('jobs') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $rs = $c->model('DB::Job')->search({},
+                                          { order_by => [qw/id/] });
+    $c->stash(
+              all_jobs => $rs,
+              page_title => $c->loc('Jobs'),
+             );
+}
+
+sub jobs :Chained('get_jobs') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $all = delete $c->stash->{all_jobs};
+    $c->stash(jobs => [ $all->all ]);
+}
+
+sub delete_job :Chained('get_jobs') :PathPart('delete') :Args(0) {
+    my ($self, $c) = @_;
+    if (my $id = $c->request->body_parameters->{job_id}) {
+        if (my $job = $c->stash->{all_jobs}->find($id)) {
+            $job->delete;
+            $c->flash(status_msg => $c->loc("Job deleted"));
+        }
+        else {
+            $c->flash(error_msg => $c->loc("Job not found"));
+        }
+    }
+    else {
+        $c->flash(error_msg => $c->loc("Bad request"));
+    }
+    $c->response->redirect($c->uri_for_action('/admin/jobs'));
+    return;
+
 }
 
 =encoding utf8

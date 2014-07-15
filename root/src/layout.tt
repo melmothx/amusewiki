@@ -304,6 +304,11 @@
                     [% loc('Edit site configuration') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/admin/jobs') %]">
+                    [% loc('Jobs') %]
+                  </a>
+                </li>
                 [% END %]
                 <li>
                   <a href="[% c.uri_for('/logout') %]">
