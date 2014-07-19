@@ -121,7 +121,6 @@ CREATE TABLE job (
        completed DATETIME,
        priority  INTEGER,
        produced  VARCHAR(255),
-       files     TEXT,
        errors    TEXT
 );
 
