@@ -9,6 +9,7 @@ use FindBin ();
 use File::Basename ();
 use File::Spec;
 use Fcntl qw/:flock/;
+use DateTime;
 use lib 'lib';
 
 $| = 1;
@@ -123,6 +124,22 @@ sub main_loop {
         flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
         print $lock $$;
         # do it
+        if ($count == 0) {
+            eval {
+                check_and_publish_deferred($schema);
+            };
+            if ($@) {
+                warn "Errors: $@\n";
+            }
+            $count++;
+        }
+        elsif ($count == 1000) {
+            # reset the counter and trigger the deferred texts.
+            $count = 0;
+        }
+        else {
+            $count++;
+        }
         my $job = $queue->dequeue;
         unless ($job) {
             flock($lock, LOCK_UN);
@@ -141,3 +158,20 @@ sub main_loop {
 }
 
 
+sub check_and_publish_deferred {
+    my $schema = shift;
+    my $now = $schema->storage->datetime_parser->format_datetime(DateTime->now());
+    print localtime() . ": checking deferred titles for $now\n";
+    my @deferred = $schema->resultset('Title')
+      ->search({
+                status => 'deferred',
+                pubdate => { '<' => $now },
+               });
+    foreach my $title (@deferred) {
+        my $site = $title->site;
+        my $file = $title->f_full_path_name;
+        print "Publishing $file for site " . $site->id . "\n";
+        $site->compile_and_index_files([ $file ]);
+        print "Done\n";
+    }
+}

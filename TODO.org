@@ -108,8 +108,13 @@ descriptions. For this, I guess we need another table, pointing to the
 topic id (need an interface probably). Or, a file with translations in
 the tree.
 
-* TODO The jobber should publish deferred texts
+* DONE The jobber should publish deferred texts
+  CLOSED: [2014-07-19 sab 12:44]
 
+* TODO The jobber should remove old completed jobs
+  This implies also cleaning up the served files
+  Overload delete, so the job deletion will do the cleanup as well.
+  Probably a change to the table is needed.
 
 * TODO URI generation: append the language, if present.
 * DONE Internal list of translations
