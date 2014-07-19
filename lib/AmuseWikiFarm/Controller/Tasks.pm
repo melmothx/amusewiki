@@ -65,6 +65,7 @@ sub status :Chained('root') :CaptureArgs(1) {
 
         if ($data->{task} eq 'bookbuilder') {
             $data->{message} = $c->loc('Your file is ready');
+            $data->{sources} = $c->uri_for($job->bb_produced_zip)->as_string;
         }
         elsif ($data->{task} eq 'publish') {
             $data->{message} = $c->loc('Changes applied');

@@ -481,11 +481,51 @@ sub dispatch_job_alias_delete {
     return '/console/alias';
 }
 
+sub customdir {
+    return 'custom';
+}
+sub bb_produced_pdf {
+    my $self = shift;
+    my $id = $self->id;
+    return join('/', '', $self->customdir, $self->bb_pdfname);
+}
+
+sub bb_produced_zip {
+    my $self = shift;
+    return join('/', '', $self->customdir, $self->bb_zipname);
+}
+
+sub bb_zipbasename {
+    my $self = shift;
+    my $id = $self->id;
+    return "bookbuilder-$id";
+}
+
+sub bb_zipname {
+    return shift->bb_zipbasename . '.zip';
+}
+
+sub bb_pdfname {
+    my $self = shift;
+    my $id = $self->id;
+    return "$id.pdf";
+}
+
+sub produced_files {
+    my $self = shift;
+    my @out;
+    if ($self->task eq 'bookbuilder') {
+        foreach my $f ($self->bb_zipname, $self->bb_pdfname) {
+            push @out, File::Spec->catfile('root', $self->customdir, $f);
+        }
+    }
+    return @out;
+}
 
 sub dispatch_job_bookbuilder {
     my ($self, $logger) = @_;
     my $data = $self->job_data;
-    my $jobdir = File::Spec->catdir(qw/root custom/);
+    my $jobdir = File::Spec->catdir('root', $self->customdir);
     $jobdir =    File::Spec->rel2abs($jobdir);
     die "In the wrong dir: " . getcwd() unless -d $jobdir;
 
@@ -558,7 +598,7 @@ sub dispatch_job_bookbuilder {
                                             );
     print $compiler->version;
 
-    my $outfile = $self->id . '.pdf';
+    my $outfile = $self->bb_pdfname;
 
     if (@texts == 1) {
         my $basename = shift(@texts);
@@ -603,18 +643,15 @@ sub dispatch_job_bookbuilder {
 
     # create a zip archive with the temporary directory and serve it.
     my $zipdir = Archive::Zip->new;
-    my $zipname = "bookbuilder-" . $self->id;
+    my $zipname = $self->bb_zipbasename;
     $zipdir->addTree($basedir, $zipname) == AZ_OK
       or $logger->("Failed to produce a zip");
     $zipdir->writeToFileNamed(File::Spec->catfile($jobdir,
                                                   $zipname . '.zip')) == AZ_OK
       or $logger->("Failure writing $zipname.zip");
 
-    # defined above at the beginning
-    return "/custom/$outfile";
+    return $self->bb_produced_pdf;
 }
-
-
 
 
 __PACKAGE__->meta->make_immutable;

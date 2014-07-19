@@ -25,6 +25,12 @@
     [% job.status_loc | html  %]
   </p>
   [% END %]
+  [% IF job.sources %]
+  <h4>
+    <a href="[% job.sources %]">[% loc('Source files') %]</a>
+  </h4>
+  [% END %]
+
 </div>
 
 <pre style="display:none">
@@ -48,6 +54,11 @@
       <a class="completed" style="display:none">#</a>
     </strong>
   </div>
+  <div class="center">
+    <strong>
+      <a class="sources" style="display:none">[% loc('Sources') %]</a>
+    </strong>
+  </div>
 </div>
 
 <pre id="job-logs" style="margin: 30px 0px"></pre>
@@ -58,7 +69,11 @@
     <a class="completed" style="display:none">#</a>
   </strong>
 </div>
-
+  <div class="center">
+    <strong>
+      <a class="sources" style="display:none">[% loc('Sources') %]</a>
+    </strong>
+  </div>
 
 <script src="[% c.uri_for('/static/js/queue.js') %]"></script>
 <script type="text/javascript">
