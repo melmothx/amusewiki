@@ -17,7 +17,7 @@ use Data::Dumper;
 
 diag "(Re)starting the jobber";
 
-my $init = catfile(getcwd(), 'init-jobs.pl');
+my $init = catfile(getcwd(), qw/script jobber.pl/);
 
 system($init, 'restart');
 

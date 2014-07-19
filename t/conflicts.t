@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 
-my $init = catfile(getcwd(), 'init-jobs.pl');
+my $init = catfile(getcwd(), qw/script jobber.pl/);
 ok(system($init, 'restart') == 0);
 
 my $site_id = '0confl0';

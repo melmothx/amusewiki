@@ -9,13 +9,13 @@ fi
 
 start_all () {
 	./init-fcgi.pl start
-    nice -n 19 ./init-jobs.pl start
+    ./script/jobber.pl start
     sleep 5
 }
 
 stop_all () {
 	./init-fcgi.pl stop
-    ./init-jobs.pl stop
+    ./script/jobber.pl stop
 }
 
 case $1 in

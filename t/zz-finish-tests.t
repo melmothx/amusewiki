@@ -9,7 +9,7 @@ use File::Spec::Functions qw/catdir catfile/;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-my $init = catfile(getcwd(), 'init-jobs.pl');
+my $init = catfile(getcwd(), qw/script jobber.pl/);
 
 ok(system($init, 'stop') == 0);
 

@@ -4,42 +4,140 @@ use strict;
 use warnings;
 use utf8;
 
-use FindBin qw/$Bin/;
-use lib "$Bin/../lib";
-use Cwd;
+use POSIX qw/nice setsid SIGTERM/;
+use FindBin ();
+use File::Basename ();
+use File::Spec;
+use Fcntl qw/:flock/;
+use lib 'lib';
+
+$| = 1;
 
 
-use AmuseWikiFarm::Schema;
+my $scriptname = File::Basename::basename($0);
+my $script = File::Spec->catfile($FindBin::Bin, $scriptname);
+my $cwd    = File::Basename::dirname($FindBin::Bin);
+my $libdir = File::Spec->catdir($cwd, 'lib');
 
-my $harakiri;
-
-sub do_harakiri {
-    $harakiri = 1;
+# sanity check
+foreach my $expected (qw/repo var lib/) {
+    die "No directory $expected found!" unless -d $expected;
 }
 
-$SIG{'TERM'} = 'do_harakiri';
-$SIG{'INT'}  = 'do_harakiri';
-$SIG{'KILL'} = 'do_harakiri';
+chdir $cwd or die $!;
 
+my $stderr = File::Spec->catfile(var => "jobs.err");
+my $stdout = File::Spec->catfile(var => "jobs.log");
+my $pidfile = File::Spec->catfile(var => "jobs.pid");
 
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $queue = $schema->resultset('Job');
-my $cwd = getcwd();
-print "Starting job server loop in $cwd\n";
+my $action = $ARGV[0] || 'start';
 
-while (1) {
-    if ($harakiri) {
-        print "Exiting as requested\n";
+if ($action eq 'start') {
+    p_start();
+}
+elsif ($action eq 'restart') {
+    p_start();
+}
+elsif ($action eq 'stop') {
+    p_stop();
+}
+else {
+    die "Usage $0 [ start | stop | restart ]\n";
+}
+
+sub p_start {
+    # try to stop any other running process
+    p_stop();
+    daemonize();
+}
+
+sub p_stop {
+    # get the pid
+    if (-f $pidfile) {
+        open (my $fh, '<', $pidfile) or die $!;
+        flock($fh, LOCK_EX);
+        my $pid = <$fh>;
+        flock($fh, LOCK_UN) or die "Cannot unlock $pidfile $!";
+        close $fh;
+
+        print "Checking PID $pid\n";
+        if ($pid) {
+            if (kill 0, $pid) {
+                print "Jobber is alive, killing it safely";
+                open (my $pfh, '>', $pidfile) or die $!;
+                while (!flock($pfh, LOCK_EX | LOCK_NB)) {
+                    print ".";
+                    sleep 1;
+                }
+                print "\n";
+                # now we hold the lock and we can kill the brother
+                kill SIGTERM, $pid or die "Couldn't kill $pid $!";
+                flock($pfh, LOCK_UN) or die "Cannot unlock $pidfile $!";
+                close $pfh;
+                unlink $pidfile;
+                "Removed pidfile\n";
+            }
+        }
+        else {
+            die "Couldn't get the pid from file!";
+        }
+    }
+}
+
+sub daemonize {
+    print "Starting jobber\n";
+    nice(19);
+    open (STDIN, '<', File::Spec->devnull)
+      or die "Couldn't open" . File::Spec->devnull;
+    defined(my $pid = fork()) or die "Cannot fork: $!";
+    if ($pid) {
+        print "Jobber forked in the background with pid $pid\n";
         exit;
     }
-    chdir $cwd or die $!;
-    sleep 3;
-    my $job = $queue->dequeue;
-    next unless $job;
-    print "Starting job on " . localtime() . "\n";
-    print "Dispatching ", $job->id, " ", $job->status, " => ", $job->task, "\n";
-    $job->dispatch_job;
-    print "Job finished on " . localtime() . "\n";
-    chdir $cwd or die $!;
+
+    open (STDOUT, '>>:encoding(utf-8)', $stdout)
+      or die "Couldn't open $stdout";
+    open (STDERR, '>>:encoding(utf-8)', $stderr)
+      or die "Couldn't open $stderr";
+    die "Can't start a new session $!" if (setsid() == -1);
+
+    open (my $lock, '>', $pidfile) or die "Can't open pidfile $!";
+    flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
+    print $lock $$;
+    flock($lock, LOCK_UN) or die "Cannot unlock $pidfile $!";
+    close $lock;
+    main_loop();
 }
+
+sub main_loop {
+    require AmuseWikiFarm::Schema;
+    my $schema = AmuseWikiFarm::Schema->connect('amuse');
+    my $queue = $schema->resultset('Job');
+    my $count = 0;
+    while (1) {
+        # assert we are in the right directoy
+        chdir $cwd or die $!;
+
+        # acquire a lock on the pid file and keep until the job is over
+        open (my $lock, '>', $pidfile) or die "Can't open pidfile $!";
+        flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
+        print $lock $$;
+        # do it
+        my $job = $queue->dequeue;
+        unless ($job) {
+            flock($lock, LOCK_UN);
+            close $lock;
+            sleep 5;
+            next;
+        }
+        print "Starting job on " . localtime() . "\n";
+        print join(" ", "Dispatching", $job->id, $job->status, $job->task), "\n";
+        $job->dispatch_job;
+        print "Job finished on " . localtime() . "\n";
+        chdir $cwd or die $!;
+        flock($lock, LOCK_UN);
+        close $lock;
+    }
+}
+
 
