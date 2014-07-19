@@ -89,6 +89,11 @@ __PACKAGE__->table("job");
   is_nullable: 1
   size: 255
 
+=head2 files
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 errors
 
   data_type: 'text'
@@ -115,6 +120,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_nullable => 1 },
   "produced",
   { data_type => "varchar", is_nullable => 1, size => 255 },
+  "files",
+  { data_type => "text", is_nullable => 1 },
   "errors",
   { data_type => "text", is_nullable => 1 },
 );
@@ -149,8 +156,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-03-27 13:43:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OtIcCassMd3LqfX1YQUvBg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-19 16:42:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:h/IDHPvBxsQs64ztonmVoQ
 
 use Cwd;
 use Data::Dumper;
