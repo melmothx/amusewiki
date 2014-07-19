@@ -64,8 +64,8 @@
   <div class="form-group">
     <p>
     <label for="collectionname">
-      [% loc('Please give a name to the collection') %]
-      [% loc('Always required, but used only for multiple texts') %]
+      [% loc('Please give a name to the collection.') %]
+      [% loc('The name is always required, but used only if there are multiple texts.') %]
     </label>
     <input type="text" name="collectionname" id="collectionname"
            class="form-control required" value=""/>
