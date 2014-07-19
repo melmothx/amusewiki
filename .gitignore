@@ -14,6 +14,8 @@ root/custom/*.epub
 root/custom/*.zip
 xapian/*
 !xapian/README.txt
+bbfiles/*
+!bbfiles/README.txt
 dbic.yaml
 !t/dbic.yaml
 root/static/js/ckeditor*
