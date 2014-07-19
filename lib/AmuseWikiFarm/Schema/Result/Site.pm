@@ -1212,7 +1212,6 @@ has lexicon_hashref => (is => 'ro',
 sub _build_lexicon_hashref {
     my $self = shift;
     my $file = $self->lexicon_file;
-    warn "Loading up the lexicon file\n";
     if (-f $file) {
         my $json = File::Slurp::read_file($file);
         return JSON::decode_json($json);
