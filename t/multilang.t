@@ -188,6 +188,6 @@ my $uri_suffixed = $site->create_new_text({
                                            lang => "\nhr\n",
                                           }, 'text');
 like $uri_suffixed->title->uri, qr/-hr$/s,
-  "Long titles get the suffix for multilanguage;
+  "Long titles get the suffix for multilanguage";
 
 
