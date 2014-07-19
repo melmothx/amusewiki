@@ -8,6 +8,10 @@ use Moose;
 use namespace::autoclean;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
+use File::Spec;
+use Cwd;
+use File::MimeInfo::Magic qw/mimetype/;
+use File::Copy qw/copy/;
 
 has textlist => (is => 'rw',
                  isa => 'ArrayRef[Str]',
@@ -18,6 +22,16 @@ has textlist => (is => 'rw',
 has error => (is => 'rw',
                isa => 'Str',
                default => sub { '' });
+
+has filedir => (is => 'ro',
+                isa => 'Str',
+                default => sub {
+                    return File::Spec->catdir(getcwd(), 'bbfiles');
+                });
+
+has files => (is => 'rw',
+              isa => 'ArrayRef[Str]',
+              default => sub { [] });
 
 sub _check_names {
     my ($self, $list, $old_value) = @_;
@@ -37,6 +51,46 @@ sub _check_names {
     if (@removed) {
         $self->error(join(' ', 'Removed', @removed));
     }
+}
+
+=head2 add_file($filepath)
+
+Add a file to be merged into the the options. This has to be done
+B<before> the call to C<validate_options>, because it's used to add
+the cover.
+
+=cut
+
+sub add_file {
+    my ($self, $filename) = @_;
+    # copy it the filedir
+    return unless -f $filename;
+    die "Look like we're in the wrong path!, bbfiles dir not found"
+      unless -d $self->filedir;
+    my $mime = mimetype($filename) || "";
+    my $ext;
+    if ($mime eq 'image/jpeg') {
+        $ext = '.jpg';
+    }
+    elsif ($mime eq 'image/png') {
+        $ext = '.png';
+    }
+    else {
+        return;
+    }
+    # find a random name
+    my $file = $self->_generate_random_name($ext);
+    while (-f $file) {
+        $file = $self->_generate_random_name($ext);
+    }
+    copy $filename, $file or die "Copy $filename => $file failed $!";
+    push @{ $self->files }, $file;
+}
+
+sub _generate_random_name {
+    my ($self, $ext) = @_;
+    my $basename = 'bb-' . int(rand(1000000)) . $ext;
+    return File::Spec->rel2abs(File::Spec->catfile($self->filedir, $basename));
 }
 
 sub filename_is_valid {
@@ -231,6 +285,15 @@ sub available_tex_options {
                        return unless defined $i;
                        $fonts{$i} ? return $fonts{$i} : return;
                    },
+                   coverwidth => sub {
+                       my $i = shift;
+                       if ($i and $i =~ m/^([0-9]+)$/s) {
+                           return sprintf('%.2f', $i / 100) . "\\textwidth";
+                       }
+                       else {
+                           return "\\textwidth";
+                       }
+                   }
                   };
     return $options;
 };
@@ -253,6 +316,10 @@ sub validate_options {
     my %safe;
     foreach my $k (keys %$options) {
         $safe{$k} = $options->{$k}->($params->{$k});
+    }
+    if (@{$self->files}) {
+        # safe provided the C<add_files> has been used...
+        $safe{cover} = $self->files->[0];
     }
     return \%safe;
 }

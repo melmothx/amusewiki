@@ -593,6 +593,12 @@ sub dispatch_job_bookbuilder {
         # overwrite the original pdf, we can get another one any time
         copy($imposer->outfile, $outfile) or die "Copy to $outfile failed $!";
     }
+    if (my $coverfile = $template_opts->{cover}) {
+        if (-f $coverfile) {
+            print "Removing $coverfile\n";
+            unlink $coverfile or die $!;
+        }
+    }
     copy($outfile, $jobdir) or die "Copy $outfile to $jobdir failed $!";
     # defined above at the beginning
     return "/custom/$outfile";

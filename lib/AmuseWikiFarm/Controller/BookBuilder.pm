@@ -72,7 +72,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
     my $bb = $c->stash->{bb};
     my @texts = @{ $bb->texts };
 
-    my %params = %{ $c->request->params };
+    my %params = %{ $c->request->body_parameters };
 
     if (@texts and $params{build} and 
         $params{collectionname} and $params{collectionname} =~ m/\w/) {
@@ -80,6 +80,12 @@ sub index :Chained('root') :PathPart('') :Args(0) {
 
         my $bb = $c->stash->{bb};
         my $site_id = $c->stash->{site}->id;
+
+        foreach my $upload ($c->request->upload('coverimage')) {
+            $c->log->debug($upload->tempname . ' => '. $upload->size );
+            $c->log->debug("Adding file");
+            $bb->add_file($upload->tempname);
+        }
 
         # prepare the job hash
         my $data = {
