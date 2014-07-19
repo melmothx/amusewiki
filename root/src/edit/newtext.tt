@@ -33,7 +33,9 @@ var ckconfiguration = {
   <div class="form-group">
 
     <p>
-      <label for="title" class="mandatory">[% loc('Title') %]</label>:
+      <label for="title" class="mandatory">[% loc('Title') %]
+        ([% loc('mandatory') %])
+      </label>:
       [% loc('if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %]
       <input class="form-control" type="text" name="title"
 	     maxlength="100" id="title"
@@ -191,8 +193,10 @@ var ckconfiguration = {
     <div>
       <br /><br />
     <p>
-      <label for="uri">[% loc('Desired URI') %]</label>
-      ([% loc('automatically generated if not present, using author and title') %])<br />
+      <label for="uri">[% loc('Desired URI') %]
+      ([% loc('automatically generated if not present, using author and title') %])
+      </label>
+      <br />
 
       [% loc("An URI is a string which uniquely identifies the text
       in the archive. In theory, it could be anything, but if you want
@@ -205,10 +209,20 @@ var ckconfiguration = {
       <input class="form-control" type="text" name="uri" id="uri" size="50"
              value="[% processed_params.uri | html %]"/>
     </p>
-    <br />
     </div>
-
-
+    <div>
+      <br />
+      <p>
+        <label for="pubdate">[% loc('Publication date on this site.') %]
+        [% loc('Leave it blank if you want it published right away.') %]
+        </label><br />
+        [% loc('Set a date in the future if you want it deferred.') %]
+        [% loc('Time is optional.') %]
+        [% loc('Format: yyyy-mm-dd hh:mm, e.g.') %]
+        <code>2014-10-19 08:30</code><br />
+        <input class="form-control" id="pubdate"
+               name="pubdate" />
+    </div>
     <div class="center">
       <p>
         [% loc('Keep in mind that I’m cleaning the text and give it
