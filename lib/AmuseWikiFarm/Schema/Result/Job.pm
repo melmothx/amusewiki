@@ -600,6 +600,16 @@ sub dispatch_job_bookbuilder {
         }
     }
     copy($outfile, $jobdir) or die "Copy $outfile to $jobdir failed $!";
+
+    # create a zip archive with the temporary directory and serve it.
+    my $zipdir = Archive::Zip->new;
+    my $zipname = "bookbuilder-" . $self->id;
+    $zipdir->addTree($basedir, $zipname) == AZ_OK
+      or $logger->("Failed to produce a zip");
+    $zipdir->writeToFileNamed(File::Spec->catfile($jobdir,
+                                                  $zipname . '.zip')) == AZ_OK
+      or $logger->("Failure writing $zipname.zip");
+
     # defined above at the beginning
     return "/custom/$outfile";
 }
