@@ -143,6 +143,7 @@ is_deeply $validated, {
                        division => undef,
                        fontsize => 10,
                        bcor => '20mm',
+                       coverwidth => "\\textwidth",
                        mainfont => 'CMU Serif',
                       }, "Validation works";
 

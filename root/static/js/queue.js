@@ -29,6 +29,10 @@ function update_status(url, reloaded) {
             $('a.completed').text(data.message);
             $('a.completed').attr('href', data.produced_uri);
             $('.completed').show();
+            if (data.sources ) {
+                $('a.sources').attr('href', data.sources);
+                $('a.sources').show();
+            }
         }
     });
 };

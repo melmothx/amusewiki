@@ -59,7 +59,8 @@
   </div>
 </div>
 <div id="bb-compiler-options">
-<form action="[% c.uri_for() %]" method="post" id="bbform">
+<form action="[% c.uri_for() %]" method="post" id="bbform"
+      enctype="multipart/form-data">
   <div class="form-group">
     <p>
     <label for="collectionname">
@@ -138,6 +139,27 @@
       [% bcor_counter = bcor_counter + 1 %]
       [% END %]
     </select>
+    </p>
+    <p>
+      <label for="coverimage">
+        [% loc('Add a cover image (PNG or JPG)' ) %]
+      </label>
+      <input id="coverimage" name="coverimage" type="file" />
+    </p>
+    <p>
+      <label for="coverwidth">
+        [% loc("Width of the cover image in percent of the text block width,
+        leave it blank if you don't need a cover image") %]
+      </label>
+      <select id="coverwidth" class="form-control" name="coverwidth">
+        [% SET coverw = 20 %]
+        <option value="">[% loc('Please select') %]</option>
+        [% WHILE 101 > coverw %]
+        <option value="[% coverw %]">[% coverw %]%</option>
+        [% SET coverw = coverw + 5 %]
+        [% END %]
+      </select>
+    </p>
     <div class="checkbox">
       <label>
         <input type="checkbox" name="twoside" value="1" id="twoside" />

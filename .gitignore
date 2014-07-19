@@ -11,6 +11,7 @@ repo/*
 root/static/images/sites/*
 root/custom/*.pdf
 root/custom/*.epub
+root/custom/*.zip
 xapian/*
 !xapian/README.txt
 dbic.yaml
