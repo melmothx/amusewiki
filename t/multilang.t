@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 134;
+use Test::More tests => 135;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -181,3 +181,13 @@ is $site->lexicon_translate(hr => 'blablabla'), 'blablabla';
 $mech->get_ok('/set-language?lang=it');
 $mech->get_ok('/');
 $mech->content_contains('This is the it index');
+
+my $uri_suffixed = $site->create_new_text({
+                                           title => 'ciaoo ' x 10,
+                                           author => 'pippo ' x 10,
+                                           lang => "\nhr\n",
+                                          }, 'text');
+like $uri_suffixed->title->uri, qr/-hr$/s,
+  "Long titles get the suffix for multilanguage;
+
+

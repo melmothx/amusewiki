@@ -809,6 +809,9 @@ sub create_new_text {
     elsif ($title) {
         $uri = muse_naming_algo("$author $title");
     }
+    if ($self->multilanguage && $params->{lang}) {
+        $uri = muse_naming_algo(substr($uri, 0, 90) . ' ' . $params->{lang});
+    }
     unless ($uri) {
         return undef, "Couldn't generate the uri!";
     }

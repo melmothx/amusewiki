@@ -110,19 +110,19 @@ the tree.
 
 * DONE The jobber should publish deferred texts
   CLOSED: [2014-07-19 sab 12:44]
-
-* TODO The jobber should remove old completed jobs
-  This implies also cleaning up the served files
-  Overload delete, so the job deletion will do the cleanup as well.
-  Probably a change to the table is needed.
-
-* TODO URI generation: append the language, if present.
+* DONE URI generation: append the language, if present.
+  CLOSED: [2014-07-19 sab 13:50]
 * DONE Internal list of translations
   CLOSED: [2014-07-15 mar 10:58]
 * DONE Admin for jobs
   CLOSED: [2014-07-15 mar 10:08]
 
 * Future releases
+* TODO The jobber should remove old completed jobs
+  This implies also cleaning up the served files
+  Overload delete, so the job deletion will do the cleanup as well.
+  Probably a change to the table is needed.
+
 * TODO Move the flash to Catalyst::Plugin::StatusMessage
 * TODO Add descriptions to categories
 
