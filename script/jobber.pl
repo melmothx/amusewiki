@@ -76,7 +76,7 @@ sub p_stop {
                 flock($pfh, LOCK_UN) or die "Cannot unlock $pidfile $!";
                 close $pfh;
                 unlink $pidfile;
-                print "Removed pidfile\n";
+                print "Removed pidfile $pidfile\n";
             }
         }
         else {
