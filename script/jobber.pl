@@ -10,7 +10,12 @@ use File::Basename ();
 use File::Spec;
 use Fcntl qw/:flock/;
 use DateTime;
+use Getopt::Long;
 use lib 'lib';
+
+my ($foreground);
+
+GetOptions(debug => \$foreground) or die;
 
 $| = 1;
 
@@ -88,20 +93,24 @@ sub p_stop {
 sub daemonize {
     print "Starting jobber\n";
     nice(19);
-    open (STDIN, '<', File::Spec->devnull)
-      or die "Couldn't open" . File::Spec->devnull;
-    defined(my $pid = fork()) or die "Cannot fork: $!";
-    if ($pid) {
-        print "Jobber forked in the background with pid $pid\n";
-        exit;
+    if ($foreground) {
+        print "Working in foreground, logging to console\n";
     }
+    else {
+        open (STDIN, '<', File::Spec->devnull)
+          or die "Couldn't open" . File::Spec->devnull;
+        defined(my $pid = fork()) or die "Cannot fork: $!";
+        if ($pid) {
+            print "Jobber forked in the background with pid $pid\n";
+            exit;
+        }
 
-    open (STDOUT, '>>:encoding(utf-8)', $stdout)
-      or die "Couldn't open $stdout";
-    open (STDERR, '>>:encoding(utf-8)', $stderr)
-      or die "Couldn't open $stderr";
-    die "Can't start a new session $!" if (setsid() == -1);
-
+        open (STDOUT, '>>:encoding(utf-8)', $stdout)
+          or die "Couldn't open $stdout";
+        open (STDERR, '>>:encoding(utf-8)', $stderr)
+          or die "Couldn't open $stderr";
+        die "Can't start a new session $!" if (setsid() == -1);
+    }
     open (my $lock, '>', $pidfile) or die "Can't open pidfile $!";
     flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
     print $lock $$;
