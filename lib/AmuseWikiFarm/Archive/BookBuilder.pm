@@ -288,10 +288,11 @@ sub available_tex_options {
                    coverwidth => sub {
                        my $i = shift;
                        if ($i and $i =~ m/^([0-9]+)$/s) {
-                           return sprintf('%.2f', $i / 100) . "\\textwidth";
+                           my $float = sprintf('%.2f', $i / 100);
+                           return $float;
                        }
                        else {
-                           return "\\textwidth";
+                           return "1";
                        }
                    }
                   };
