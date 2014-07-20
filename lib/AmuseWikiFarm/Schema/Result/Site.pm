@@ -538,7 +538,7 @@ use File::Basename qw/fileparse/;
 use Data::Dumper;
 use AmuseWikiFarm::Archive::BookBuilder;
 use JSON ();
-use File::Slurp ();
+use Text::Amuse::Compile::Utils ();
 
 =head2 repo_root_rel
 
@@ -1216,8 +1216,8 @@ sub _build_lexicon_hashref {
     my $self = shift;
     my $file = $self->lexicon_file;
     if (-f $file) {
-        my $json = File::Slurp::read_file($file);
-        return JSON::decode_json($json);
+        my $json = Text::Amuse::Compile::Utils::read_file($file);
+        return JSON::from_json($json);
     }
     else {
         return {};

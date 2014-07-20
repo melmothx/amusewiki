@@ -6,13 +6,12 @@ use utf8;
 use Test::More tests => 89;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use File::Slurp qw/read_file/;
+use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
 use Data::Dumper;
 use File::Copy;
 use File::Path qw/make_path/;
-use File::Slurp qw/write_file/;
 
 use lib File::Spec->catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;

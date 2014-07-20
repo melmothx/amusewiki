@@ -6,7 +6,7 @@ use utf8;
 use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use File::Slurp qw/write_file read_file/;
+use Text::Amuse::Compile::Utils qw/write_file read_file/;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -41,7 +41,6 @@ MUSE
     my $text = "a-test-" . $count;
     push @text_aliases, $text;
     write_file(catfile($text_path, "$text.muse"),
-               { binmode => ':encoding(utf-8)'},
                $textc);
     $count++;
 }
@@ -72,7 +71,6 @@ Good
 MUSE
 
 write_file (catfile($repo_root, qw/a at a-test-pippo.muse/),
-            { binmode => ':encoding(utf-8)' },
             $good);
 
 $site->update_db_from_tree;

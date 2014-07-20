@@ -7,7 +7,7 @@ use Test::More tests => 10;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
-use File::Slurp qw/read_file write_file/;
+use Text::Amuse::Compile::Utils qw/read_file write_file/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -18,8 +18,8 @@ my $text = $site->titles->published_texts->find({ uri => 'first-test' });
 my $revision = $text->new_revision;
 
 # do a copy to avoid modifing our own git...
-my $original_file = read_file($revision->title->f_full_path_name,
-                             { binmode => ':encoding(UTF-8)'});
+my $original_file = read_file($revision->title->f_full_path_name);
+
 
 ok ($revision->id);
 like $revision->f_full_path_name, qr/first-test\.muse$/, "Found the revision"

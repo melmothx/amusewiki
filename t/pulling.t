@@ -9,7 +9,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use Data::Dumper;
 
 use File::Path qw/make_path remove_tree/;
-use File::Slurp qw/write_file/;
+use Text::Amuse::Compile::Utils qw/write_file/;
 use Git::Wrapper;
 use File::Spec::Functions qw/catfile catdir/;
 
@@ -87,7 +87,6 @@ make_path(catdir($working_copy_dir, qw/a at/));
 my $newfile = catfile($working_copy_dir, qw/a at a-test.muse/);
 
 write_file($newfile,
-           { binmode => ':encoding(UTF-8)' },
            "#title A Test\n#author Pippo\n\nblabla bla\n");
 
 ok (-f $newfile, "$newfile written");
@@ -118,13 +117,11 @@ is ($author->name, 'Pippo', "Found author in db");
 
 my $current_size = -s catfile($site->repo_root, qw/a at a-test.muse/);
 write_file($newfile,
-           { binmode => ':encoding(UTF-8)' },
            "#title A Test\n#author Pippo\n\nblabla bla\n\nFirst file\n\n");
 
 my $secondfile = catfile($working_copy_dir, qw/a at a-test-2.muse/);
 
 write_file($secondfile,
-           { binmode => ':encoding(UTF-8)' },
            "#title A Test 2\n#author Pippo\n\nblabla bla\nSecond File\n");
 
 

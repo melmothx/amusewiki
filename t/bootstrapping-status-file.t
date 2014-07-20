@@ -10,7 +10,7 @@ use Data::Dumper;
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
-use File::Slurp qw/read_file write_file/;
+use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Schema;
 use File::Path qw/make_path/;
 
@@ -39,7 +39,7 @@ my $wd = catdir($site->repo_root, 'a', 'at');
 make_path($wd);
 my $name = 'a-test';
 my $target = catfile($wd, $name . '.muse');
-write_file($target, { binmode => ':encoding(utf-8)' }, $faulty_muse);
+write_file($target, $faulty_muse);
 
 $site->update_db_from_tree;
 

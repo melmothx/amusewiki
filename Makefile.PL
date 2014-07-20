@@ -34,7 +34,6 @@ requires 'Plack::Middleware::XSendfile';
 requires 'MIME::Types' => '2.04';
 
 requires 'Unicode::Collate';
-requires 'File::Slurp';
 requires 'DBIx::Class';
 requires 'DBD::SQLite';
 requires 'Daemon::Control';
@@ -62,7 +61,7 @@ requires 'Catalyst::Model::Adaptor' => '0.10';
 
 # our own dogfood
 requires 'Text::Amuse' => 0.12;
-requires 'Text::Amuse::Compile' => 0.18;
+requires 'Text::Amuse::Compile' => 0.19;
 requires 'Text::Amuse::Preprocessor' => 0.07;
 
 # devel things to be removed at the end of the development cycle

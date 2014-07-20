@@ -160,7 +160,7 @@ use File::Spec;
 use File::Temp;
 use File::Copy qw/copy move/;
 
-use File::Slurp qw/read_file append_file/;
+use Text::Amuse::Compile::Utils qw/read_file append_file/;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 
 use DateTime;
@@ -262,7 +262,7 @@ sub logs {
     my $self = shift;
     my $file = $self->log_file;
     if (-f $file) {
-        my $log = read_file($file => { binmode => ':encoding(UTF-8)' });
+        my $log = read_file($file);
         # obfuscate the current directory
         my $cwd = getcwd();
         $log =~ s/$cwd/./g;
@@ -281,7 +281,7 @@ sub logger {
     my $self = shift;
     my $logfile = $self->log_file;
     my $logger = sub {
-        append_file($logfile, { binmode => ':encoding(utf-8)' }, @_);
+        append_file($logfile, @_);
     };
     return $logger;
 }

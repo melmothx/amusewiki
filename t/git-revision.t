@@ -10,7 +10,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use AmuseWikiFarm::Schema;
 use Git::Wrapper;
 use File::Spec::Functions qw/catfile catdir/;
-use File::Slurp qw/write_file read_file append_file/;
+use Text::Amuse::Compile::Utils qw/write_file read_file append_file/;
 use File::Path qw/make_path remove_tree/;
 use Data::Dumper;
 use File::Temp;
@@ -84,8 +84,7 @@ ok ($revision->id);
 
 $revision->edit({ body  => $revision->muse_body });
 
-is read_file($revision->original_html,
-             { binmode => ':encoding(utf-8)' }),
+is read_file($revision->original_html),
   qq{<p>http://my.org My "precious"</p>\n},
   "Body filtered from \r";
 

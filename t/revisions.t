@@ -8,7 +8,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
-use File::Slurp qw/write_file/;
+use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWikiFarm::Schema;
 use Git::Wrapper;
 use lib catdir(qw/t lib/);

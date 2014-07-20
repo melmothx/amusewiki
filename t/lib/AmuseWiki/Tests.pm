@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use File::Spec::Functions qw/catfile catdir/;
 use File::Path qw/make_path remove_tree/;
-use File::Slurp qw/write_file/;
+use Text::Amuse::Compile::Utils qw/write_file/;
 use Git::Wrapper;
 
 our @ISA = qw(Exporter);
@@ -48,7 +48,6 @@ sub create_site {
 
     unless (-d catdir($site->repo_root, '.git')) {
         write_file(catfile($site->repo_root, "README"),
-                   { binmode => ':encoding(UTF-8)' },
                    "test repo\n");
         $git->init;
         $git->add('.');

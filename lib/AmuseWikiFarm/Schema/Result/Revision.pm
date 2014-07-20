@@ -166,7 +166,7 @@ use File::Copy qw/copy move/;
 use Digest::SHA;
 use DateTime;
 
-use File::Slurp qw/read_file append_file write_file/;
+use Text::Amuse::Compile::Utils qw/read_file append_file write_file/;
 use File::MimeInfo::Magic qw/mimetype/;
 use Text::Amuse;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
@@ -206,7 +206,7 @@ sub _read_muse_body {
     my ($self, $file) = @_;
     die "Bad usage" unless $file;
     return '' unless -f $file;
-    my $body = read_file($file => { binmode => ':encoding(utf-8)' });
+    my $body = read_file($file);
     return $body;
 }
 
@@ -293,9 +293,9 @@ sub _write_commit_file {
     my ($self, $title) = @_;
     die "Bad usage" unless $title;
     my $file = $self->git_msg_file;
-    write_file($file, { binmode => ':encoding(utf-8)' }, "$title\n");
+    write_file($file, "$title\n");
     if (my $body = $self->message) {
-        append_file($file, { binmode => ':encoding(utf-8)' }, "\n$body\n");
+        append_file($file, "\n$body\n");
     }
     return $file;
 }

@@ -8,7 +8,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use Test::More tests => 22;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
-use File::Slurp qw/write_file/;
+use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;

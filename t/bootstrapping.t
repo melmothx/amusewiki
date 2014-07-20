@@ -9,7 +9,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use Data::Dumper;
 use File::Copy qw/move/;
 use File::Spec::Functions qw/catfile/;
-use File::Slurp;
+use Text::Amuse::Compile::Utils qw/write_file read_file/;
 use AmuseWikiFarm::Schema;
 
 use Test::More tests => 5;
@@ -48,7 +48,7 @@ diag "Remove a file and see if it's detected";
 my $target_rel_file = catfile(qw/d dt deleted-text.muse/);
 my $target_abs_file = catfile($site->repo_root, qw/d dt deleted-text.muse/);
 
-my $save = read_file($target_abs_file, { binmode => ':encoding(utf-8)' });
+my $save = read_file($target_abs_file);
 
 unlink $target_abs_file;
 
@@ -61,7 +61,7 @@ is_deeply $changes, {
   or diag Dumper($changes);
 
 
-write_file($target_abs_file, { binmode => ':encoding(utf-8)' }, $save);
+write_file($target_abs_file, $save);
 
 $changes = $site->repo_find_changed_files;
 is_deeply $changes, {

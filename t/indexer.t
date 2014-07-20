@@ -19,7 +19,7 @@ use HTML::Entities;
 use Encode;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
-use File::Slurp qw/write_file/;
+use Text::Amuse::Compile::Utils qw/write_file/;
 
 my $string = "à&amp;è";
 my $utf8 = encode("utf-8", $string);

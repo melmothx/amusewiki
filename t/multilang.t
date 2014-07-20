@@ -10,7 +10,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use File::Path qw/make_path/;
 use File::Copy qw/copy/;
 use Data::Dumper;
-use File::Slurp qw/write_file/;
+use Text::Amuse::Compile::Utils qw/write_file/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
@@ -44,7 +44,7 @@ foreach my $lang (@langs) {
 This is the $lang index
 
 MUSE
-    write_file($indexfilename, { binmode => ':encoding(utf-8)' }, $body);
+    write_file($indexfilename, $body);
 
     foreach my $uid (qw/id1 id2 id3/) {
         # create the muse files
@@ -61,7 +61,7 @@ MUSE
 Blabla *bla* has uid $uid and lang $lang
 
 MUSE
-        write_file($filename, { binmode => ':encoding(utf-8)' }, $body);
+        write_file($filename, $body);
     }
 }
 

@@ -353,7 +353,7 @@ __PACKAGE__->has_many(
 
 
 use File::Spec;
-use File::Slurp qw/read_file/;
+use Text::Amuse::Compile::Utils qw/read_file/;
 use DateTime;
 use File::Copy qw/copy/;
 
@@ -582,7 +582,7 @@ sub _get_body {
     die "Wrong usage" unless $ext;
     my $file = $self->filepath_for_ext($ext);
     return '' unless -f $file;
-    my $text = read_file($file => { binmode => ':encoding(UTF-8)' });
+    my $text = read_file($file);
     return $text;
 }
 

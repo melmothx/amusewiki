@@ -6,7 +6,7 @@ use utf8;
 use Test::More tests => 11;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use File::Slurp qw/write_file read_file/;
+use Text::Amuse::Compile::Utils qw/write_file read_file/;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;

@@ -117,6 +117,8 @@ the tree.
 * DONE Admin for jobs
   CLOSED: [2014-07-15 mar 10:08]
 
+* DONE Replace File::Slurp with File::Slurp::Tiny or Path::Tiny
+  CLOSED: [2014-07-20 dom 13:08]
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files

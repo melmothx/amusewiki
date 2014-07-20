@@ -6,7 +6,7 @@ use utf8;
 use Test::More tests => 54;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use File::Slurp;
+use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use File::Temp;
 use File::Copy qw/copy/;
 use File::Path qw/make_path/;
