@@ -10,6 +10,7 @@ __PACKAGE__->config(
         view => 'TT',
         charset => 'utf-8',
         content_type => 'text/plain',
+        encoding => 'quoted-printable',
     },
 );
 
