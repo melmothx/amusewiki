@@ -112,8 +112,8 @@ is $options->{fontsize}->('10.5'), undef;
 is $options->{bcor}->(''), '0mm';
 is $options->{bcor}->('blabla'), '0mm';
 is $options->{bcor}->('10'), '10mm';
-is $options->{mainfont}->('charis'), 'Charis SIL';
-is $options->{mainfont}->('libertine'), 'Linux Libertine O';
+is $options->{mainfont}->('Charis SIL'), 'Charis SIL';
+is $options->{mainfont}->('Linux Libertine O'), 'Linux Libertine O';
 is $options->{mainfont}->('\hello'), undef;
 
 my %params = (
@@ -123,7 +123,7 @@ my %params = (
               papersize => 'A4',
               fontsize => 10,
               bcor => 20,
-              mainfont => 'cmu',
+              mainfont => 'CMU Serif',
               division => '8',
               schema => '2up',
               imposed => 1,

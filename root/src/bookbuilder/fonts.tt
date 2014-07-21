@@ -1,0 +1,20 @@
+[%# -*- mode: html -*- %]
+
+<div class="center">
+<h2>[% loc('Font preview') %]</h2>
+
+[% loc('Click on the images to get the sample PDF') %]
+</div>
+
+[% FOREACH font IN all_fonts %]
+<div class="center">
+  <h4>[% font.desc %]</h4>
+</div>
+<div class="center">
+  <a href="[% font.pdf %]">
+    <img src="[% font.thumb %]" width="400px"
+         alt="[% font.name %]" title="[% font.desc %]" />
+  </a>
+</div>
+
+[% END %]

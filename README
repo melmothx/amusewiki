@@ -222,3 +222,7 @@ root 'ckeditor'). The default template (edit/create.tt) asks for
 "/static/js/ckeditor/ckeditor.js" and
 "/static/js/ckeditor/adapters/jquery.js".
 
+*** Font preview
+
+Execute the gen.sh script in the font-preview directory. If it fails,
+you are missing the required fonts.

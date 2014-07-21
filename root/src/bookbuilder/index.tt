@@ -72,15 +72,17 @@
     </p>
     <p>
       <label for="mainfont">
-        <a href="http://bookshelf.theanarchistlibrary.org/The%20Book%20Builder#Fonts_preview">
-        [% loc('Please select the desired fonts') %]
+        <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
+          [% loc('Please select the desired fonts') %]
         </a>
+        ([% loc('keep in mind that some character may be missing and will be reported if so') %])
       </label>
+      <br />
       <select name="mainfont" id="mainfont">
-      [% SET myfonts =  bb.avail_fonts %]
-      [% FOREACH font IN bb.avail_fonts_sorted %]
-      <option value="[% font %]">
-        [% myfonts.$font %]
+      [% FOREACH font IN bb.all_fonts %]
+      <option value="[% font.name %]"
+              [% IF font.name == site.mainfont %]selected="selected"[% END %]>
+        [% font.desc %]
       </option>
       [% END %]
     </select>

@@ -363,12 +363,10 @@
       </label>
       <div class="col-sm-10">
         <select name="mainfont" id="mainfont" class="form-control">
-          [% SET myfonts = bb.avail_fonts %]
-          [% FOREACH font IN bb.avail_fonts_sorted %]
-          [% SET myfont = myfonts.$font %]
-          <option value="[% myfont %]"
-                  [% IF esite.mainfont == myfont %]selected="selected"[% END %]>
-            [% myfont %]
+          [% FOREACH font IN bb.all_fonts %]
+          <option value="[% font.name %]"
+                  [% IF esite.mainfont == font.name %]selected="selected"[% END %]>
+            [% font.desc %]
           </option>
           [% END %]
         </select>

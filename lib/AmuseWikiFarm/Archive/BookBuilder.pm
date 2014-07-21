@@ -214,24 +214,66 @@ sub font_sizes {
     return \%sizes;
 }
 
+=head2 available_fonts
+
+Return an hashref, where keys and values are the same, with the name
+of the font. This is used for validation.
+
+=cut
+
 sub available_fonts {
     my $self = shift;
-    my %fonts = reverse %{ $self->avail_fonts };
+    my %fonts = ();
+    foreach my $font (@{ $self->all_fonts }) {
+        my $name = $font->{name};
+        $fonts{$name} = $name;
+    }
     return \%fonts;
 }
 
-sub avail_fonts {
-    my %fonts = (
-                 charis    => 'Charis SIL',
-                 libertine => 'Linux Libertine O',
-                 cmu       => 'CMU Serif',
-                 paratype  => 'PT Serif',
+sub all_fonts {
+    my @fonts = ({
+                  name => 'Linux Libertine O',
+                  desc => 'Linux Libertine'
+                 },
+                 {
+                  name => 'CMU Serif',
+                  desc => 'Computer Modern',
+                 },
+                 {
+                  name => 'TeX Gyre Termes',
+                  desc => 'TeX Gyre Termes (Times)',
+                 },
+                 {
+                  name => 'TeX Gyre Pagella',
+                  desc => 'TeX Gyre Pagella (Palatino)',
+                 },
+                 {
+                  name => 'TeX Gyre Schola',
+                  desc => 'TeX Gyre Schola (Century)',
+                 },
+                 {
+                  name => 'TeX Gyre Bonum',
+                  desc => 'TeX Gyre Bonum (Bookman)',
+                 },
+                 {
+                  name => 'Antykwa Poltawskiego',
+                  desc => 'Antykwa Półtawskiego',
+                 },
+                 {
+                  name => 'Antykwa Torunska',
+                  desc => 'Antykwa Toruńska',
+                 },
+                 {
+                  name => 'Charis SIL',
+                  desc => 'Charis SIL (Bitstream Charter)',
+                 },
+                 {
+                  name => 'PT Serif',
+                  desc => 'Paratype (cyrillic)',
+                 },
                 );
-    return \%fonts;
-}
-
-sub avail_fonts_sorted {
-    return [qw/libertine charis cmu paratype/];
+    return \@fonts;
 }
 
 sub schemas {
@@ -249,7 +291,7 @@ sub available_tex_options {
     my %paper =     %{ $self->paper_sizes };
     my %divs  =     %{ $self->page_divs   };
     my %fontsizes = %{ $self->font_sizes  };
-    my %fonts     = %{ $self->avail_fonts };   
+    my %fonts     = %{ $self->available_fonts };
     my $options = {
                    twoside => sub {
                        my $i = shift;

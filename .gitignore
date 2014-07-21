@@ -20,6 +20,8 @@ dbic.yaml
 !t/dbic.yaml
 root/static/js/ckeditor*
 root/static/js/*.zip
+root/static/images/font-preview/*.pdf
+root/static/images/font-preview/*.png
 staging/*
 !staging/README.txt
 log/jobs/*.log

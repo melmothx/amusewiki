@@ -173,6 +173,23 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
         return;
 }
 
+sub fonts :Chained('root') :PathPart('fonts') :Args(0) {
+    my ($self, $c) = @_;
+    my $all_fonts = $c->stash->{bb}->all_fonts;
+    my @out;
+    foreach my $font (@$all_fonts) {
+        my %myfont = %$font;
+        my $name = $myfont{name};
+        $name =~ s/ /-/g;
+        my $path = "/static/images/font-preview/";
+        $myfont{thumb} = $c->uri_for($path . $name . '.png');
+        $myfont{pdf}   = $c->uri_for($path . $name . '.pdf');
+        push @out, \%myfont;
+    }
+    $c->stash(page_title => $c->loc('Font preview'),
+              all_fonts => \@out);
+}
+
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->log->debug('Saving books in the session');
