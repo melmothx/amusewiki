@@ -77,6 +77,8 @@ $(document).ready(function() {
 </div>
 [% END %]
 
+<div class="row">
+  <div class="col-md-8">
 [% SET attachments = revision.attached_images %]
 [% IF attachments.size %]
 <h3>[% loc('Attached images') %]</h3>
@@ -255,6 +257,247 @@ $(document).ready(function() {
     [% revision.muse_doc.as_html %]
   </div>
 </div>
+
+  </div>
+  <div class="col-md-4" style="border-left: black solid 1px">
+    <div id="cheatsheet">
+      <h3>[% loc('Cheatsheet for the markup') %]</h3>
+      <h4>Summary</h4>
+
+      <ul id="cssummary">
+        <li><a href="#csheads">Headings</a></li>
+        <li><a href="#cspars">Paragraphs</a></li>
+        <li><a href="#csinline">Italics, bold, monospace, linebreaks...</a></li>
+        <li><a href="#csfootnotes">Footnotes</a></li>
+        <li><a href="#csspecial">Poetry, bibliographies, plays,
+            code</a></li>
+        <li><a href="#cslists">Lists</a></li>
+        <li><a href="#cslinks">Links and images</a></li>
+        <li><a href="#cstabs">Tables</a></li>
+        <li><a href="#csdirs">Supported directive in the header</a></li>
+      </ul>
+      <h4 id="csheads">Headings</h4>
+      <ul>
+        <li>
+          <code>* Part</code>
+        </li>
+        <li>
+          <code>** Chapter</code>
+        </li>
+        <li>
+          <code>*** Section</code>
+        </li>
+        <li>
+          <code>**** Subsection</code>
+        </li>
+        <li>
+          <code>***** Subsubsection or description item</code>
+        </li>
+      </ul>
+      <p>Don't use higher levels (Part or Chapter) for short articles with
+        sections.
+      </p>
+      <h4 id="cspars">Paragraphs</h4>
+      <ul>
+        <li>A blank line (or more blank lines) starts a new paragraph.
+        </li>
+        <li>A line which starts with 2 or more whitespaces is a quotation. (Or wrap it in <code>
+	        &lt;quote&gt;&lt;/quote&gt;
+	      </code>
+          )
+        </li>
+        <li>A line which starts with 6 or more whitespaces is centered. (Or wrap it in <code>
+	        &lt;center&gt;&lt;/center&gt;
+	      </code>
+          )
+        </li>
+        <li>A line which starts with 20 or more whitespaces is
+          right-aligned. (Or wrap it in <code>
+	        &lt;right&gt;&lt;/right&gt;
+	      </code>
+          )
+        </li>
+      </ul>
+      <p>Please note that tags <strong>must</strong> be placed on a line
+        by themselves.</p>
+
+      <h4 id="csinline">Inline elements</h4>
+      <ul>
+        <li>
+          <code>
+            *emphasis* or &lt;em&gt;emphasis&lt;/em&gt;
+          </code>
+          <br /> <em>emphasis</em>
+        </li>
+        <li>
+          <code>
+            **strong emphasis** or &lt;strong&gt;strong emphasis&lt;/strong&gt; 
+          </code>
+          <br /> <strong>strong</strong>
+        </li>
+        <li>
+          <code>
+            ***very strong emphasis*** or &lt;strong&gt;&lt;em&gt;very strong emphasis&lt;/em&gt;&lt;/strong&gt;
+          </code>
+          <br /> <strong><em>very strong</em></strong>
+        </li>
+        <li><code>
+	        =code and monospace= or &lt;code&gt;code and
+	        monospace&lt;/code&gt; 
+	      </code>
+          <br /> <code>code and monospace</code>
+        </li>
+        <li><code>&lt;br&gt;</code><br />Force a line break. Useful for footnotes or in
+          the headers of the document, where you can't put a blank
+          line to mark a new paragraph.</li>
+        <li><code>&lt;sub&gt;subscript&lt;/sub&gt;
+            &lt;sup&gt;superscript&lt;/sup&gt;
+            &lt;del&gt;overstriked&lt;/del&gt;</code><br />
+          <sub>subscript</sub> <sup>superscritp</sup>, <del>overstriked</del>
+        </li>
+      </ul>
+      
+      <h4 id="csfootnotes">Footnotes</h4>
+      <ul>
+        <li>
+          In the text a number within square brackets is interpreted as a
+          footnote reference, <em>if</em> a footnote
+          exists. <br /><code>Like this [1]</code>
+        </li>
+        <li>
+          A footnote is a line which starts with a number between square
+          brackets, with no leading whitespace.<br />
+          <code>[1] Like this</code>
+        </li>
+      </ul>
+
+      <h4 id="csspecial">Special blocks</h4>
+
+      <p>To preserve the whitespaces and line breakings, wrap the paragraphs
+        with <code>
+          &lt;verse&gt; &lt;/verse&gt;
+        </code>
+        (handy for poetry) or <code>
+          &lt;example&gt;
+          &lt;/example&gt;
+        </code>
+        (for code, monospaced)</p>
+      <p>
+        To quickly format bibliographies wrap them in <code>
+          &lt;biblio&gt;
+          &lt;/biblio&gt;</code>.
+        To quickly format plays, use <code>
+          &lt;play&gt;
+          &lt;/play&gt;</code>.
+        In both case you'll get a reverse indentation.
+      </p>
+
+      <h4 id="cslists">Lists</h4>
+      <em>Lists start with a single leading whitespace</em>
+      <ul>
+        <li>
+          <p>
+            <code> - unnumbered list</code>  <br />
+            <code> - unnumbered list</code>  
+          </p>
+        </li>
+        <li>
+          <p>
+            <code> 1. numbered list</code>  <br />
+            <code> 1. numbered list</code>  
+          </p>
+        </li>
+      </ul>
+      <p>
+        <a href="http://theanarchistlibrary.org/docs/MANUAL.html#toc15">See the full
+          manual for more details, nesting, different styles</a>
+      </p>
+      
+      <h4 id="cslinks">Links and images</h4>
+      <p>They have the same syntax (images are actually links)</p>
+      <ul>
+        <li>
+          <code>[[http://theanarchistlibrary.org][displayed text]]</code>
+          or just <code>[[http://theanarchistlibrary.org]]</code> to make
+          a link active.
+        </li>
+        <li>
+          <code>[[image-name.jpg][Description]]</code> or just
+          <code>[[image-name.jpg]]</code> for uploaded images. Please note
+          that you have to upload them first and use the name the form
+          provides. Images are always renamed by us.
+        </li>
+      </ul>
+
+      <h4 id="cstabs">Tables</h4>
+      <pre>
+        Triple bars ||| Separate footer fields
+        Double bars  || Separate header fields
+        Single bars   | Separate body fields
+        |+ This is the caption +|
+      </pre>
+
+
+      <h4 id="csdirs">Supported directive in the header</h4>
+      <ul>
+        <li>
+          <code>#author First Author and Second Author</code> <br />
+          The author of the text (display only)
+        </li>
+        <li>
+          <code>
+	        #SORTauthors First Author, Second Author
+          </code>
+          <br /> Comma- or semicolon-separated list of authors (for
+          sorting, defaults to <code>#author</code>
+        </li>
+        <li>
+          <code>#title A nice title</code><br />
+          The title of the document
+        </li>
+        <li>
+          <code>#LISTtitle Nice title</code> <br />The title of the document, for
+          alphabetical sorting (defaults to <code>#title</code>). Useful if
+          you want to strip the article, if any.
+        </li>
+        <li>
+          <code>#subtitle With a subtitle</code><br />
+          The subtitle (if any).
+        </li>
+        <li>
+          <code>#SORTtopics topic 1, topic 2, topic 3</code><br />
+          Comma- or semicolon-separated list of topics for the current text.
+        </li>
+        <li>
+          <code>#date 2012</code><br /> The <strong>year</strong> of
+          publishing of the document. More information should be provided
+          in the <code>#notes</code> directive.
+        </li>
+        <li>
+          <code>#notes Published in *A nice book*, published by My House,
+	        2012</code><br /> This directive is used for additional
+          information here (full date, original title, translators,
+          credits, etc).
+        </li>
+        <li>
+          <code>#source Retrieved on March 8, 2012 from the [[http://url.org]]</code><br />
+          Where does this text come from?
+        </li>
+        <li>
+          <code>#lang en</code><br />
+          Language code of the document (2 or 3 letters). 
+        </li>
+      </ul>
+
+
+      <p>
+        <a href="http://theanarchistlibrary.org/docs/MANUAL.html">See the full
+          manual for more details...</a>
+      </p>
+    </div>
+  </div>
+</div>
+
 
 <script type="text/javascript"
         src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
