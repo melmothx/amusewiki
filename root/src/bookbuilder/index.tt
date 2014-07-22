@@ -75,9 +75,9 @@
         <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
           [% loc('Please select the desired fonts') %]
         </a>
-        ([% loc('keep in mind that some character may be missing and will be reported if so') %])
-      </label>
-      <br />
+        [% loc('Keep in mind that some character may be missing in the required font.') %]
+        [% loc('Missing character will be reported') %]
+      </label><br />
       <select name="mainfont" id="mainfont">
       [% FOREACH font IN bb.all_fonts %]
       <option value="[% font.name %]"
