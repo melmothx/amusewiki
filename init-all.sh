@@ -23,6 +23,7 @@ case $1 in
     reboot)
         rm -fv ./var/*.pid
         start_all
+    ;;
     start)
         start_all
 	;;
