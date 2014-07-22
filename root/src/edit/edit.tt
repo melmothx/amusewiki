@@ -459,10 +459,10 @@ $(document).ready(function() {
       </ul>
       <h4 id="cstabs">[% loc('Tables') %]</h4>
       <pre>
-        [% loc('Triple bars') %] ||| [% loc('Separate footer fields') %]
-        [% loc('Double bars') %]  || [% loc('Separate header fields') %]
-        [% loc('Single bars') %]   | [% loc('Separate body fields') %]
-        |+ [% loc('This is the caption') %] +|
+[% loc('Triple bars') %] ||| [% loc('Separate footer fields') %]
+[% loc('Double bars') %]  || [% loc('Separate header fields') %]
+[% loc('Single bars') %]   | [% loc('Separate body fields') %]
+|+ [% loc('This is the caption') %] +|
       </pre>
       <h4 id="csdirs">[% loc('Supported directive in the header') %]</h4>
       <ul>
