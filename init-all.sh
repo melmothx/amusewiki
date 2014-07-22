@@ -3,7 +3,7 @@
 cd `dirname $0`
 
 if [ "$1" == "" ]; then
-    echo "Usage: $0 [ start | stop | restart ]"
+    echo "Usage: $0 [ start | stop | restart | reboot ]"
     exit
 fi
 
@@ -19,6 +19,9 @@ stop_all () {
 }
 
 case $1 in
+    reboot)
+        rm -fv ./var/*.pid
+        start_all
     start)
         start_all
 	;;
