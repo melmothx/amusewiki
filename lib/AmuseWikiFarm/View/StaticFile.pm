@@ -24,6 +24,8 @@ sub process {
                 jpg => 'image/jpeg',
                 jpeg => 'image/jpeg',
                 ico => 'image/x-icon',
+                css => 'text/css',
+                js => 'text/javascript',
                };
 
     # no extension => octect-stream
