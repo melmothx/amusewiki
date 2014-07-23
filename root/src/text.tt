@@ -5,12 +5,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[% loc('Close') %]</button>
         <h4 class="modal-title" id="myModalLabel">
           [% loc("Table of Contents") %]
         </h4>
       </div>
       <div class="modal-body" id="pop-up-toc"></div>
+      <div class="modal-footer center">
+        <button type="button" class="btn btn-default center" data-dismiss="modal">
+          [% loc('Close') %]
+        </button>
+      </div>
     </div>
   </div>
 </div>
