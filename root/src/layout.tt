@@ -95,26 +95,28 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="[% c.uri_for('/') %]">
-            [%- IF site.has_site_file('navlogo.png') -%]
+          [%- IF site.has_site_file('navlogo.png') -%]
+          <a class="amw-navlogo" href="[% c.uri_for('/') %]">
             <img src="[% c.uri_for_action('/sitefiles/local_files',
                       [ site.id, 'navlogo.png' ]) %]"
                  title="[% site.sitename %]"
-                 height="20"
+                 class="amw-navlogo-img"
                  alt="[% site.sitename %]" />
-            [% ELSE %]
-            <small>[% site.sitename %]</small>
-            [%- END -%]
           </a>
-
-          <a class="navbar-brand hidden-when-no-toc" href="#"
+          [% ELSE %]
+          <a class="navbar-brand" href="[% c.uri_for('/') %]">
+            <small>[% site.sitename %]</small>
+          </a>
+          [%- END -%]
+          <a class="amw-navlogo hidden-when-no-toc" href="#"
              data-toggle="modal"
              style="display:none"
-             title="Toggle ToC"
+             title="[% loc('Toggle the table of contents') %]"
              data-target="#myModal">
-            <span class="glyphicon glyphicon-list"></span>
+            <img src="[% c.uri_for('/static/images/toc.png') %]"
+                 alt="[% loc('Toggle the table of contents') %]"
+                 class="amw-navlogo-img"/>
           </a>
-
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
