@@ -346,7 +346,8 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-    <div class="container">
+    <div id="wrap">
+    <div id="main" class="container clear-top">
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
         [% c.flash.status_msg | html %]
@@ -363,6 +364,8 @@
         [% content %]
       </div>
     </div>
+    </div>
+
     <div id="footer" class="footer center">
       <a href="[% c.uri_for('/feed') %]" class="feed">
         [% loc('RSS feed') %]
