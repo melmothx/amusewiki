@@ -8,7 +8,7 @@
 </h2>
 
 [%- IF multilang -%]
-<ul class="nav nav-pills">
+<ul class="nav nav-tabs" role="tablist">
   <li [% UNLESS multilang.code -%] class="active" [%- END %]>
     <a href="[% multilang.cat_uri_all  %]">
       [% loc('All languages') %]
