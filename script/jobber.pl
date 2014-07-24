@@ -128,6 +128,7 @@ sub main_loop {
     my $queue = $schema->resultset('Job');
     my $count = 0;
     while (1) {
+        print "sleeping...\n" if $foreground;
         sleep AMW_POLLING;
         # assert we are in the right directoy
         chdir $cwd or die $!;
