@@ -1111,11 +1111,11 @@ msgstr ""
 msgid "Quotes"
 msgstr "Notes"
 
-#: root/src/layout.tt:368
+#: root/src/layout.tt:371
 msgid "RSS feed"
 msgstr ""
 
-#: root/src/layout.tt:371
+#: root/src/layout.tt:374
 #, fuzzy
 msgid "Random"
 msgstr "Random text"
