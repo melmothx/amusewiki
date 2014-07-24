@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sat Jul  5 19:44:47 2014
+-- Created on Thu Jul 24 09:54:50 2014
 -- 
 --
 -- Table: role.
@@ -31,11 +31,11 @@ CREATE TABLE "site" (
   "mail_notify" character varying(255),
   "mail_from" character varying(255),
   "canonical" character varying(255) DEFAULT '' NOT NULL,
-  "sitegroup" character varying(255),
+  "sitegroup" character varying(255) DEFAULT '' NOT NULL,
   "sitegroup_label" character varying(255),
   "catalog_label" character varying(255),
   "specials_label" character varying(255),
-  "multilanguage" smallint DEFAULT 0 NOT NULL,
+  "multilanguage" character varying(255) DEFAULT '' NOT NULL,
   "bb_page_limit" integer DEFAULT 1000 NOT NULL,
   "tex" smallint DEFAULT 1 NOT NULL,
   "pdf" smallint DEFAULT 1 NOT NULL,
@@ -155,8 +155,8 @@ CREATE TABLE "title" (
   "source" text DEFAULT '' NOT NULL,
   "list_title" text DEFAULT '' NOT NULL,
   "author" text DEFAULT '' NOT NULL,
-  "uid" character varying(255),
-  "attach" character varying(255),
+  "uid" character varying(255) DEFAULT '' NOT NULL,
+  "attach" text,
   "pubdate" timestamp NOT NULL,
   "status" character varying(16) DEFAULT 'unpublished' NOT NULL,
   "f_path" text NOT NULL,

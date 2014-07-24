@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sun Jul  6 09:36:41 2014
+-- Created on Thu Jul 24 09:54:48 2014
 -- 
 SET foreign_key_checks=0;
 
@@ -35,11 +35,11 @@ CREATE TABLE `site` (
   `mail_notify` varchar(255) NULL,
   `mail_from` varchar(255) NULL,
   `canonical` varchar(255) NOT NULL DEFAULT '',
-  `sitegroup` varchar(255) NULL,
+  `sitegroup` varchar(255) NOT NULL DEFAULT '',
   `sitegroup_label` varchar(255) NULL,
   `catalog_label` varchar(255) NULL,
   `specials_label` varchar(255) NULL,
-  `multilanguage` integer(1) NOT NULL DEFAULT 0,
+  `multilanguage` varchar(255) NOT NULL DEFAULT '',
   `bb_page_limit` integer NOT NULL DEFAULT 1000,
   `tex` integer(1) NOT NULL DEFAULT 1,
   `pdf` integer(1) NOT NULL DEFAULT 1,
@@ -169,7 +169,7 @@ CREATE TABLE `title` (
   `source` text NOT NULL DEFAULT '',
   `list_title` text NOT NULL DEFAULT '',
   `author` text NOT NULL DEFAULT '',
-  `uid` varchar(255) NULL,
+  `uid` varchar(255) NOT NULL DEFAULT '',
   `attach` text NULL,
   `pubdate` datetime NOT NULL,
   `status` varchar(16) NOT NULL DEFAULT 'unpublished',
