@@ -1111,11 +1111,11 @@ msgstr ""
 msgid "Quotes"
 msgstr "Notes"
 
-#: root/src/layout.tt:371
+#: root/src/layout.tt:378
 msgid "RSS feed"
 msgstr ""
 
-#: root/src/layout.tt:374
+#: root/src/layout.tt:381
 #, fuzzy
 msgid "Random"
 msgstr "Random text"
@@ -1382,7 +1382,7 @@ msgstr ""
 msgid "The revision has the following messages"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:167
+#: root/src/layout.tt:356
 msgid "The text was added to the bookbuilder"
 msgstr ""
 
