@@ -350,7 +350,14 @@
     <div id="main" class="container clear-top">
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
+        [% IF c.flash.status_msg == 'BOOKBUILDER_ADDED' %]
+        <a href="[% c.uri_for_action('/bookbuilder/index') %]"
+           style="color: black">
+          [% loc('The text was added to the bookbuilder') %]
+        </a>
+        [% ELSE %]
         [% c.flash.status_msg | html %]
+        [% END %]
       </div>
       [% END %]
       [% IF c.flash.error_msg %]

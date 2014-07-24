@@ -164,7 +164,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
 
         if ($bb->add_text($text)) {
             $c->forward('save_session');
-            $c->flash->{status_msg} = $c->loc('The text was added to the bookbuilder, you can get a PDF clicking on the Bookbuilder menu on the navigation bar');
+            $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
         }
         else {
             $c->flash->{error_msg} = $c->loc("Couldn't add the text");
