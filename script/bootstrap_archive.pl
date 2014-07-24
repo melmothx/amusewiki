@@ -11,6 +11,10 @@ use Data::Dumper;
 
 use lib "$Bin/../lib";
 use AmuseWikiFarm::Schema;
+use POSIX qw/nice/;
+
+# be nice
+nice(19);
 
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';

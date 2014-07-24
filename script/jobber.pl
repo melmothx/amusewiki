@@ -13,6 +13,8 @@ use DateTime;
 use Getopt::Long;
 use lib 'lib';
 
+use constant AMW_POLLING => $ENV{AMW_POLLING} || 5;
+
 my ($foreground);
 
 GetOptions(debug => \$foreground) or die;
@@ -54,6 +56,7 @@ else {
 sub p_start {
     # try to stop any other running process
     p_stop();
+    print "Using a poll interval of " . AMW_POLLING . " seconds\n";
     daemonize();
 }
 
@@ -125,6 +128,7 @@ sub main_loop {
     my $queue = $schema->resultset('Job');
     my $count = 0;
     while (1) {
+        sleep AMW_POLLING;
         # assert we are in the right directoy
         chdir $cwd or die $!;
 
@@ -149,17 +153,13 @@ sub main_loop {
         else {
             $count++;
         }
-        my $job = $queue->dequeue;
-        unless ($job) {
-            flock($lock, LOCK_UN);
-            close $lock;
-            sleep 5;
-            next;
+        if (my $job = $queue->dequeue) {
+            print "Starting job on " . localtime() . "\n";
+            print join(" ", "Dispatching", $job->id, $job->status, $job->task),
+              "\n";
+            $job->dispatch_job;
+            print "Job finished on " . localtime() . "\n";
         }
-        print "Starting job on " . localtime() . "\n";
-        print join(" ", "Dispatching", $job->id, $job->status, $job->task), "\n";
-        $job->dispatch_job;
-        print "Job finished on " . localtime() . "\n";
         chdir $cwd or die $!;
         flock($lock, LOCK_UN);
         close $lock;
@@ -177,6 +177,7 @@ sub check_and_publish_deferred {
                 pubdate => { '<' => $now },
                });
     foreach my $title (@deferred) {
+        sleep AMW_POLLING;
         my $site = $title->site;
         my $file = $title->f_full_path_name;
         print "Publishing $file for site " . $site->id . "\n";

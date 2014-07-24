@@ -987,6 +987,7 @@ sub compile_and_index_files {
     if ($logger) {
         $compiler->logger($logger);
     }
+    my $count = 0;
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
@@ -1010,6 +1011,11 @@ sub compile_and_index_files {
             $compiler->compile($file);
         }
         $self->index_file($file, $logger);
+        $count++;
+        if ($count > 1) {
+            # don't hammer the machine, we have to serve these files too
+            sleep 1;
+        }
     }
     $self->collation_index;
 }
