@@ -14,8 +14,8 @@
                                      table-condensed
                                      table-bordered">
     <tr>
-      <th>URI</th>
-      <th>action</th>
+      <th>[% loc('URI') %]</th>
+      <th>[% loc('Action') %]</th>
     </tr>
     [% textindex = 1 %]
     [% FOREACH book IN bb.texts %]

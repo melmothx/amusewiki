@@ -38,7 +38,9 @@ Source at
   <div id="outputdiv"></div>
 </div>
 
-<div class="well">[% loc('Computing took')%] <span id="timing"></span></div>
+<div class="well">[% loc('Computing of differences took')%]
+  <span id="timing"></span>
+</div>
 
 <script type="text/javascript">
 $('#reload').click(function() { location.reload() });

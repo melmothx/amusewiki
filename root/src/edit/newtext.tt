@@ -4,7 +4,7 @@
 <script src="[% c.uri_for('/static/js/ckeditor/adapters/jquery.js') %]"></script>
 <script type="text/javascript">
 var ckconfiguration = {
-    'language' : '[% site.locale %]',
+    'language' : '[% current_locale_code %]',
     'toolbar': 'AmuseWiki',
     'toolbar_AmuseWiki': [
 	    { 'name': 'document', 'items' : [ 'Source'] },
@@ -54,7 +54,7 @@ var ckconfiguration = {
     [% IF f_class == 'text' %]
 
     <p>
-      <label for="LISTtitle">Title for sorting</label>
+      <label for="LISTtitle">[% loc('Title for sorting') %]</label>
       ([% loc('you may want to strip the leading “A”, “An”, “The”, and so on from the title') %]):
       <input class="form-control" type="text" name="LISTtitle" id="LISTtitle"
 	     maxlength="100" size="30"
@@ -129,7 +129,7 @@ var ckconfiguration = {
     <p><label for="source">[% loc('Source') %]</label>
 
       ([% loc('For texts from the internet use') %]:
-       [% loc('Retrieved on DATE from URL') %].
+       [% loc('Retrieved on DATE from URL') %]).
 
       <input class="form-control" id="source" size="50" maxlength="250"
 	         name="source" value="[% processed_params.source | html %]" />
