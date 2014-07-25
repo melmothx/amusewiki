@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-20 09:18+0200\n"
+"PO-Revision-Date: 2014-07-25 10:11+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -17,85 +17,87 @@ msgstr ""
 
 #: root/src/edit/edit.tt:315
 msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
+msgstr "Una o più linee vuote marcano l'inizio di un nuovo paragrafo"
 
 #: root/src/edit/edit.tt:392
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"Una nota a piè di pagina è una linea che comincia con un numero tra\n"
+"parentesi quadre, senza alcun spazio bianco iniziale"
 
 #: root/src/edit/edit.tt:318
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "Unal linea che inizia con 2 o più spazi bianchi è una citazione"
 
 #: root/src/edit/edit.tt:331
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
+msgstr "Una linea che comincia con 20 o più spazi bianchi è allineata a destra"
 
 #: root/src/edit/edit.tt:324
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "Una linea che comincia con 6 o più spazi bianchi è centrata"
 
 #. (site.canonical)
 #: root/src/email/commit.tt:2
 msgid "A new revision has been created at %1"
-msgstr ""
+msgstr "Una nuova è stata creata a %1"
 
 #: root/src/edit/edit.tt:470
 msgid "A nice title"
-msgstr ""
+msgstr "Un bel titolo"
 
 #: root/src/admin/edit.tt:211 root/src/text.tt:109 root/src/text.tt:110
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "PDF impaginato su A4"
 
 #: root/src/admin/edit.tt:3
 msgid "A4 paper"
-msgstr ""
+msgstr "A4"
 
 #: root/src/admin/edit.tt:4
 msgid "A5 paper"
-msgstr ""
+msgstr "A5"
 
 #: root/src/admin/edit.tt:5
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "A6"
 
 #: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
+msgstr "Modifica in corso abbandonata, puoi controllare le differenze e riprenderla"
 
 #: root/src/admin/jobs.tt:18 root/src/console/alias_display.tt:103
 #: root/src/console/git_display.tt:12 root/src/publish/pending.tt:16
 msgid "Action"
-msgstr ""
+msgstr "Azione"
 
 #: root/src/bookbuilder/index.tt:147
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Aggiungi un'immagine di copertina (PNG o JPG)"
 
 #: root/src/edit/edit.tt:121
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr ""
+msgstr "Aggiungi un allegato (PNG, JPG o PDF)"
 
 #: root/src/text.tt:182
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Aggiungi questo testo all'impaginatore"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:96 root/src/layout.tt:170
 msgid "Add to library"
-msgstr ""
+msgstr "Aggiungi un nuovo testo alla biblioteca"
 
 #: root/src/edit/edit.tt:505
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
-msgstr ""
+msgstr "Informazioni aggiuntive (data completa, titolo originale, traduttori, ecc.)"
 
 #: root/src/console/alias_display.tt:35 root/src/console/alias_display.tt:67
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:206
 msgid "Alias can't be the same of redirection"
