@@ -175,7 +175,7 @@ msgstr ""
 msgid "Bookbuilder page limit (integer)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:202
+#: root/src/bookbuilder/index.tt:204
 msgid "Build it"
 msgstr ""
 
@@ -539,7 +539,7 @@ msgstr ""
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:187
+#: root/src/bookbuilder/index.tt:188
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
@@ -559,6 +559,10 @@ msgstr ""
 
 #: root/src/edit/edit.tt:451
 msgid "Images:"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:195 root/src/bookbuilder/schemas.tt:3
+msgid "Imposition schemas"
 msgstr ""
 
 #: root/src/edit/edit.tt:421
@@ -609,6 +613,10 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:119 root/src/layout.tt:318
 msgid "Jobs"
+msgstr ""
+
+#: root/src/bookbuilder/schemas.tt:63
+msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
 
 #: root/src/edit/newtext.tt:228
@@ -811,7 +819,7 @@ msgstr ""
 msgid "No text found!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:220
+#: root/src/bookbuilder/index.tt:222
 msgid "No text was added yet"
 msgstr ""
 
@@ -1129,6 +1137,10 @@ msgstr ""
 msgid "Revision for %1 has been deleted"
 msgstr ""
 
+#: root/src/bookbuilder/schemas.tt:25
+msgid "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/Search.pm:79 root/src/layout.tt:337
 msgid "Search"
 msgstr ""
@@ -1321,6 +1333,12 @@ msgstr ""
 msgid "The password will be mailed at this address"
 msgstr ""
 
+#: root/src/bookbuilder/schemas.tt:36
+msgid ""
+"The prefix “r” means logical page disposed upside-down, rotated\n"
+"by 180 degrees."
+msgstr ""
+
 #: root/src/email/commit.tt:17
 msgid "The revision has the following messages"
 msgstr ""
@@ -1458,7 +1476,7 @@ msgstr ""
 msgid "Triple bars"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:236
+#: root/src/bookbuilder/index.tt:238
 msgid "Try a random text if unsure"
 msgstr ""
 
@@ -1553,7 +1571,7 @@ msgid ""
 "        leave it blank if you don't need a cover image"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:225
+#: root/src/bookbuilder/index.tt:227
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1588,7 +1606,7 @@ msgstr ""
 msgid "You are logged in now!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:230
+#: root/src/bookbuilder/index.tt:232
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"

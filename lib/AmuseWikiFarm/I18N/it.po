@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-25 12:44+0200\n"
+"PO-Revision-Date: 2014-07-25 13:14+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -194,7 +194,7 @@ msgstr "Impaginatore"
 msgid "Bookbuilder page limit (integer)"
 msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 
-#: root/src/bookbuilder/index.tt:202
+#: root/src/bookbuilder/index.tt:204
 msgid "Build it"
 msgstr "Impagina"
 
@@ -572,7 +572,7 @@ msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Se chi ha fatto la modifica ha fornito una mail, è inclusa nella lista CC"
 
-#: root/src/bookbuilder/index.tt:187
+#: root/src/bookbuilder/index.tt:188
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Se vuoi l'impaginazione, scegli uno schema"
 
@@ -597,6 +597,11 @@ msgstr ""
 #: root/src/edit/edit.tt:451
 msgid "Images:"
 msgstr "Immagini:"
+
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:195
+#: root/src/bookbuilder/schemas.tt:3
+msgid "Imposition schemas"
+msgstr "Schemi di impaginamento"
 
 #: root/src/edit/edit.tt:421
 msgid "In both case you will get a reverse indentation."
@@ -652,6 +657,12 @@ msgstr "Lavoro non trovato"
 #: lib/AmuseWikiFarm/Controller/Admin.pm:119 root/src/layout.tt:318
 msgid "Jobs"
 msgstr "Lavori"
+
+#: root/src/bookbuilder/schemas.tt:63
+msgid "Just packs 2 consecutives logical pages on a physical one."
+msgstr ""
+"Semplicemente, due pagine logiche consecutive sono inserite in una\n"
+"singola pagina fisica."
 
 #: root/src/edit/newtext.tt:228
 msgid ""
@@ -860,7 +871,7 @@ msgstr "Nessun risultato trovato!"
 msgid "No text found!"
 msgstr "Nessun testo trovato"
 
-#: root/src/bookbuilder/index.tt:220
+#: root/src/bookbuilder/index.tt:222
 msgid "No text was added yet"
 msgstr "Nessun testo è stato ancora aggiunto"
 
@@ -1210,6 +1221,10 @@ msgstr "Revisione"
 msgid "Revision for %1 has been deleted"
 msgstr "La revisione per %1 è stata cancellata"
 
+#: root/src/bookbuilder/schemas.tt:25
+msgid "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
+msgstr "Uguale a 2up, ma ogni pagina è ruotata di 90 gradi in senso antiorario."
+
 #: lib/AmuseWikiFarm/Controller/Search.pm:79 root/src/layout.tt:337
 msgid "Search"
 msgstr "Cerca"
@@ -1411,6 +1426,12 @@ msgstr "Il sottotitolo opzionale"
 msgid "The password will be mailed at this address"
 msgstr "La password sarà inviata a questo indirizzo"
 
+#: root/src/bookbuilder/schemas.tt:36
+msgid ""
+"The prefix “r” means logical page disposed upside-down, rotated\n"
+"by 180 degrees."
+msgstr "il prefisso “r” indica una pagina logica ruotata di 180 gradi."
+
 #: root/src/email/commit.tt:17
 msgid "The revision has the following messages"
 msgstr "La revisione contiene i seguenti messaggi"
@@ -1563,7 +1584,7 @@ msgstr "Pagine totali"
 msgid "Triple bars"
 msgstr "Triple barre"
 
-#: root/src/bookbuilder/index.tt:236
+#: root/src/bookbuilder/index.tt:238
 msgid "Try a random text if unsure"
 msgstr "Prova con un testo casuale, se in dubbio"
 
@@ -1668,7 +1689,7 @@ msgstr ""
 "Larghezza dell'immagine di copertina in percentuale della larghezza del "
 "corpo del testo, lascia in bianco se non ne hai bisogno"
 
-#: root/src/bookbuilder/index.tt:225
+#: root/src/bookbuilder/index.tt:227
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1706,7 +1727,7 @@ msgstr "Hai già effettuato l'accesso"
 msgid "You are logged in now!"
 msgstr "Hai effettuato l'accesso!"
 
-#: root/src/bookbuilder/index.tt:230
+#: root/src/bookbuilder/index.tt:232
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"

@@ -190,6 +190,11 @@ sub fonts :Chained('root') :PathPart('fonts') :Args(0) {
               all_fonts => \@out);
 }
 
+sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(page_title => $c->loc('Imposition schemas'));
+}
+
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->log->debug('Saving books in the session');

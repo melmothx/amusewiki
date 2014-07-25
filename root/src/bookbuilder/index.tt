@@ -184,7 +184,9 @@
     </div>
     <p>
       <label for="schema">
-        [% loc('If you asked for imposition, select an imposition schema') %]:
+        <a target="_blank" href="[% c.uri_for_action('/bookbuilder/schemas') %]">
+          [% loc('If you asked for imposition, select an imposition schema') %]:
+        </a>
       </label>
       <select name="schema" id="schema" class="form-control">
         [% SET myschemas = bb.schemas %]
