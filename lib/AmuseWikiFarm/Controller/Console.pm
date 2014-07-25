@@ -203,7 +203,7 @@ sub alias_create :Chained('alias') :PathPart('create') :Args(0) {
         $c->flash(error_msg => $c->loc("Missing redirection"));
     }
     elsif ($params->{dest} eq $params->{src}) {
-        $c->flash(error_msg => $c->loc("Alias can't be the same of redirection"));
+        $c->flash(error_msg => $c->loc("Alias can't point to itself"));
     }
     elsif (($params->{type} eq 'author' or $params->{type} eq 'topic') and
         $params->{src} and $params->{dest} and

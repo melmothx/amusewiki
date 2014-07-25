@@ -87,7 +87,7 @@ msgstr ""
 msgid "Add to library"
 msgstr ""
 
-#: root/src/edit/edit.tt:505
+#: root/src/edit/edit.tt:506
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
@@ -98,7 +98,7 @@ msgid "Alias"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:206
-msgid "Alias can't be the same of redirection"
+msgid "Alias can't point to itself"
 msgstr ""
 
 #: root/src/category-details.tt:14 root/src/library.tt:14
@@ -118,7 +118,7 @@ msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"
 "      to set it yourself, please stick with the convention: author\n"
-"      name, title, eventual number for disambiguation, e.g.\n"
+"      name, title, language, eventual number for disambiguation, e.g.\n"
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
@@ -211,12 +211,9 @@ msgstr ""
 msgid "Changes applied"
 msgstr ""
 
-#: root/src/edit/diff.tt:13
-msgid "Changes for"
-msgstr ""
-
+#. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:383
+#: lib/AmuseWikiFarm/Controller/Edit.pm:383 root/src/edit/diff.tt:13
 msgid "Changes for %1"
 msgstr ""
 
@@ -306,7 +303,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: root/src/edit/edit.tt:500 root/src/edit/newtext.tt:121
+#: root/src/edit/edit.tt:501 root/src/edit/newtext.tt:121
 msgid "Date of the original publication"
 msgstr ""
 
@@ -470,10 +467,6 @@ msgstr ""
 
 #: root/src/edit/edit.tt:275 root/src/edit/edit.tt:384
 msgid "Footnotes"
-msgstr ""
-
-#: root/src/edit/newtext.tt:133
-msgid "For freshly scanned texts use “Scanned from original”"
 msgstr ""
 
 #: root/src/edit/newtext.tt:131
@@ -659,7 +652,7 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: root/src/edit/edit.tt:513
+#: root/src/edit/edit.tt:514
 msgid "Language code of the document (2 or 3 letters). "
 msgstr ""
 
@@ -757,10 +750,6 @@ msgstr ""
 
 #: root/src/publish/pending.tt:18
 msgid "Message"
-msgstr ""
-
-#: root/src/macros.tt:28
-msgid "Missing #title header in the text"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:354
@@ -1007,12 +996,8 @@ msgid ""
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:118
+#: lib/AmuseWikiFarm/Controller/User.pm:118 root/src/user/human.tt:5
 msgid "Please prove you are a human"
-msgstr ""
-
-#: root/src/user/human.tt:5
-msgid "Please prove you are a human."
 msgstr ""
 
 #: root/src/tasks/display.tt:24
@@ -1069,7 +1054,7 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
-#: root/src/edit/edit.tt:503
+#: root/src/edit/edit.tt:504
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 
@@ -1158,7 +1143,7 @@ msgstr ""
 msgid "Retrieved on DATE from URL"
 msgstr ""
 
-#: root/src/edit/edit.tt:508
+#: root/src/edit/edit.tt:509
 msgid "Retrieved on March 8, 2012 from"
 msgstr ""
 
@@ -1179,7 +1164,7 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: root/src/edit/edit.tt:518
+#: root/src/edit/edit.tt:519
 msgid "See the full manual for more details (english)"
 msgstr ""
 
@@ -1360,7 +1345,7 @@ msgstr ""
 msgid "The name is always required, but used only if there are multiple texts."
 msgstr ""
 
-#: root/src/edit/edit.tt:492
+#: root/src/edit/edit.tt:493
 msgid "The optional subtitle"
 msgstr ""
 
@@ -1378,9 +1363,10 @@ msgstr ""
 
 #: root/src/edit/edit.tt:487
 msgid ""
-"The title of the document, for sorting purposes.Useful\n"
-"          if you want to strip the article, if any, so will be listed\n"
-"          under N, not under A."
+"The title of the document, for sorting purposes. Useful\n"
+"          if you want to strip the article, if any. A text titled “A\n"
+"          nice title” could have this set to “Nice title”, and will be\n"
+"          listed under N, not under A."
 msgstr ""
 
 #: root/src/edit/edit.tt:471
@@ -1491,7 +1477,7 @@ msgid "Topic"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:235
-#: root/src/edit/edit.tt:496 root/src/edit/newtext.tt:101
+#: root/src/edit/edit.tt:497 root/src/edit/newtext.tt:101
 #: root/src/layout.tt:146 root/src/layout.tt:162 root/src/text.tt:58
 msgid "Topics"
 msgstr ""
@@ -1592,7 +1578,7 @@ msgstr ""
 msgid "When imposing, use optimized signatures with 40-80 pages each"
 msgstr ""
 
-#: root/src/edit/edit.tt:509
+#: root/src/edit/edit.tt:510
 msgid "Where does this text come from?"
 msgstr ""
 
@@ -1731,7 +1717,7 @@ msgstr ""
 msgid "code and monospace"
 msgstr ""
 
-#: root/src/edit/edit.tt:482 root/src/edit/edit.tt:496
+#: root/src/edit/edit.tt:482 root/src/edit/edit.tt:497
 #: root/src/edit/newtext.tt:102 root/src/edit/newtext.tt:76
 msgid "comma or semicolon separated list"
 msgstr ""
@@ -1891,7 +1877,7 @@ msgstr ""
 msgid "the author of the text (as displayed)"
 msgstr ""
 
-#: root/src/edit/edit.tt:495
+#: root/src/edit/edit.tt:496
 msgid "topic"
 msgstr ""
 

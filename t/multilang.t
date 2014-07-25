@@ -18,7 +18,7 @@ use AmuseWikiFarm::Schema;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0multi0';
 my $site = create_site($schema, $site_id);
-$site->multilanguage(1);
+$site->multilanguage('en it hr');
 $site->update->discard_changes;
 
 my $root = $site->repo_root;

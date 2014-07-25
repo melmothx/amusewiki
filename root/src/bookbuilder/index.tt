@@ -76,7 +76,7 @@
           [% loc('Please select the desired fonts') %]
         </a>
         [% loc('Keep in mind that some character may be missing in the required font.') %]
-        [% loc('Missing character will be reported') %]
+        [% loc('Missing character will be reported') %].
       </label><br />
       <select name="mainfont" id="mainfont">
       [% FOREACH font IN bb.all_fonts %]

@@ -2,7 +2,7 @@
 
 <!-- test if the user is a human -->
 
-<h3 class="h3">[% loc('Please prove you are a human.') %]</h3>
+<h3 class="h3">[% loc('Please prove you are a human') %].</h3>
 
 <p>[% loc('You can do so answering a simple question.') %]</p>
 

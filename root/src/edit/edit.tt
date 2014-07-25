@@ -484,9 +484,10 @@ $(document).ready(function() {
         </li>
         <li>
           <code>#LISTtitle [% loc('Nice title') %]</code> <br /> [%
-          loc('The title of the document, for sorting purposes.Useful
-          if you want to strip the article, if any, so will be listed
-          under N, not under A.') %]
+          loc('The title of the document, for sorting purposes. Useful
+          if you want to strip the article, if any. A text titled “A
+          nice title” could have this set to “Nice title”, and will be
+          listed under N, not under A.') %]
         </li>
         <li>
           <code>#subtitle [% loc('The optional subtitle') %]</code>
@@ -530,7 +531,7 @@ $(document).ready(function() {
 $.validator.addMethod("muse", function (value, element) {
     var re = new RegExp("^#title +", "m");
     return this.optional(element) || re.test(value);
-}, "[% jsloc('Missing #title header in the text') %]");
+}, "[% jsloc('Missing #title header in the text!') %]");
 $(document).ready(function(){
     $("#museform").validate({
         rules: {

@@ -130,7 +130,7 @@ var ckconfiguration = {
 
       ([% loc('For texts from the internet use') %]:
        [% loc('Retrieved on DATE from URL') %].
-       [% loc('For freshly scanned texts use “Scanned from original”') %]
+
       <input class="form-control" id="source" size="50" maxlength="250"
 	         name="source" value="[% processed_params.source | html %]" />
     </p>
@@ -201,7 +201,7 @@ var ckconfiguration = {
       [% loc("An URI is a string which uniquely identifies the text
       in the archive. In theory, it could be anything, but if you want
       to set it yourself, please stick with the convention: author
-      name, title, eventual number for disambiguation, e.g.
+      name, title, language, eventual number for disambiguation, e.g.
       errico-malatesta-anarchy-2. Please note that this is normally
       not needed") %]
 

@@ -10,7 +10,7 @@ Source at
 </script>
 
 <h2>
-  [% loc('Changes for') %] [% revision.title.uri %]
+  [% loc('Changes for [_1]', revision.title.uri) %]
   ([% loc('revision') %] #[% revision.id %])
 </h2>
 
