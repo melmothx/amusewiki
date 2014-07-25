@@ -67,8 +67,9 @@ msgstr ""
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 
-#: root/src/admin/jobs.tt:18 root/src/console/alias_display.tt:103
-#: root/src/console/git_display.tt:12 root/src/publish/pending.tt:16
+#: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:18
+#: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:12
+#: root/src/publish/pending.tt:16
 msgid "Action"
 msgstr ""
 
@@ -255,7 +256,7 @@ msgid "Completed"
 msgstr ""
 
 #: root/src/edit/diff.tt:41
-msgid "Computing took"
+msgid "Computing of differences took"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:150
@@ -1434,6 +1435,10 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#: root/src/edit/newtext.tt:57
+msgid "Title for sorting"
+msgstr ""
+
 #: root/src/layout.tt:134
 msgid "Titles"
 msgstr ""
@@ -1499,8 +1504,8 @@ msgstr ""
 msgid "Two side layout"
 msgstr ""
 
-#: root/src/console/alias_display.tt:97 root/src/console/unpublished.tt:9
-#: root/src/edit/revs.tt:15
+#: root/src/bookbuilder/index.tt:17 root/src/console/alias_display.tt:97
+#: root/src/console/unpublished.tt:9 root/src/edit/revs.tt:15
 msgid "URI"
 msgstr ""
 

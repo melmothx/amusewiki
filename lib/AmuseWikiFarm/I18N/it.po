@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-25 12:30+0200\n"
+"PO-Revision-Date: 2014-07-25 12:44+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -69,8 +69,9 @@ msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 "Modifica in corso abbandonata, puoi controllare le differenze e riprenderla"
 
-#: root/src/admin/jobs.tt:18 root/src/console/alias_display.tt:103
-#: root/src/console/git_display.tt:12 root/src/publish/pending.tt:16
+#: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:18
+#: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:12
+#: root/src/publish/pending.tt:16
 msgid "Action"
 msgstr "Azione"
 
@@ -264,8 +265,8 @@ msgid "Completed"
 msgstr "Completato"
 
 #: root/src/edit/diff.tt:41
-msgid "Computing took"
-msgstr "Il calcolo ha impiegato"
+msgid "Computing of differences took"
+msgstr "Il calcolo delle differenze ha impiegato"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:150
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:170
@@ -1448,7 +1449,9 @@ msgstr "Hanno la stessa sintassi (le immagini sono in realtà collegamenti)"
 
 #: root/src/edit/edit.tt:107
 msgid "This directive wants a whitespace separated list of filenames."
-msgstr "Questa direttiva richiede una lista di nomi di file separati da spazi bianchi."
+msgstr ""
+"Questa direttiva richiede una lista di nomi di file separati da spazi "
+"bianchi."
 
 #: root/src/edit/newtext.tt:249
 msgid "This field is required"
@@ -1497,6 +1500,10 @@ msgstr "L'ora è opzionale"
 msgid "Title"
 msgstr "Titolo"
 
+#: root/src/edit/newtext.tt:57
+msgid "Title for sorting"
+msgstr "Titolo da usare per l'ordinamento alfabetico"
+
 #: root/src/layout.tt:134
 msgid "Titles"
 msgstr "Titoli"
@@ -1509,12 +1516,14 @@ msgstr "Per applicare le modifiche, puoi visitare %1"
 
 #: root/src/edit/edit.tt:101
 msgid "To display the PDFs, set or append the following string in the header"
-msgstr "Per mostrare i PDF, imposta o aggiungi la seguente stringa nell'intestazione"
+msgstr ""
+"Per mostrare i PDF, imposta o aggiungi la seguente stringa nell'intestazione"
 
 #: root/src/edit/edit.tt:401
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr "Per preservare gli spazi bianchi e gli a capo, inserisci i paragrafi tra"
+msgstr ""
+"Per preservare gli spazi bianchi e gli a capo, inserisci i paragrafi tra"
 
 #: root/src/edit/edit.tt:411
 msgid "To quickly format bibliographies wrap them in"
@@ -1562,8 +1571,8 @@ msgstr "Prova con un testo casuale, se in dubbio"
 msgid "Two side layout"
 msgstr "Impaginazione fronte-retro"
 
-#: root/src/console/alias_display.tt:97 root/src/console/unpublished.tt:9
-#: root/src/edit/revs.tt:15
+#: root/src/bookbuilder/index.tt:17 root/src/console/alias_display.tt:97
+#: root/src/console/unpublished.tt:9 root/src/edit/revs.tt:15
 msgid "URI"
 msgstr "URI"
 
@@ -1607,7 +1616,9 @@ msgstr "Usalo nel corpo del testo con"
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
-msgstr "Utile per le note a piè di pagina o per le intestazioni, dove non puoi usare una riga vuota per separare un nuovo paragrafo."
+msgstr ""
+"Utile per le note a piè di pagina o per le intestazioni, dove non puoi usare "
+"una riga vuota per separare un nuovo paragrafo."
 
 #. ($user->username)
 #: lib/AmuseWikiFarm/Controller/User.pm:236
@@ -1642,7 +1653,8 @@ msgstr "Host virtuali, uno per riga"
 
 #: root/src/bookbuilder/index.tt:180
 msgid "When imposing, use optimized signatures with 40-80 pages each"
-msgstr "Durante l'impaginazione, usa blocchi ottimizzati di 40-80 pagine ciascuno"
+msgstr ""
+"Durante l'impaginazione, usa blocchi ottimizzati di 40-80 pagine ciascuno"
 
 #: root/src/edit/edit.tt:510
 msgid "Where does this text come from?"
@@ -1652,7 +1664,9 @@ msgstr "Da dove proviene il testo?"
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
-msgstr "Larghezza dell'immagine di copertina in percentuale della larghezza del corpo del testo, lascia in bianco se non ne hai bisogno"
+msgstr ""
+"Larghezza dell'immagine di copertina in percentuale della larghezza del "
+"corpo del testo, lascia in bianco se non ne hai bisogno"
 
 #: root/src/bookbuilder/index.tt:225
 msgid ""
@@ -1715,7 +1729,9 @@ msgstr "Puoi farlo rispondendo a una semplice domanda."
 #: root/src/edit/revs.tt:73
 msgid ""
 "You can't create a new revision because the text has not been published yet"
-msgstr "Non puoi creare una nuova revisione perché il testo ancora non è stato pubblicato"
+msgstr ""
+"Non puoi creare una nuova revisione perché il testo ancora non è stato "
+"pubblicato"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:104
 msgid "You have logged out"
@@ -1853,7 +1869,10 @@ msgid ""
 "if by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
-msgstr "Se per caso esite un altro testo con lo stesso autore e lo stesso titolo, scegli tu stesso un URI usando il campo più in basso, inserendo autore, titolo e un numero, ad esempio “autore-titlo-1”"
+msgstr ""
+"Se per caso esite un altro testo con lo stesso autore e lo stesso titolo, "
+"scegli tu stesso un URI usando il campo più in basso, inserendo autore, "
+"titolo e un numero, ad esempio “autore-titlo-1”"
 
 #: root/src/edit/newtext.tt:37
 msgid "mandatory"
