@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-03-06 10:51+0100\n"
+"PO-Revision-Date: 2014-07-25 16:48+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -41,59 +41,59 @@ msgstr ""
 #. (site.canonical)
 #: root/src/email/commit.tt:2
 msgid "A new revision has been created at %1"
-msgstr ""
+msgstr "Nova izmjena stvorena na %1"
 
 #: root/src/edit/edit.tt:470
 msgid "A nice title"
-msgstr ""
+msgstr "Lijep naslov"
 
 #: root/src/admin/edit.tt:211 root/src/text.tt:109 root/src/text.tt:110
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "A4 PDF za štampanje"
 
 #: root/src/admin/edit.tt:3
 msgid "A4 paper"
-msgstr ""
+msgstr "A4 papir"
 
 #: root/src/admin/edit.tt:4
 msgid "A5 paper"
-msgstr ""
+msgstr "A5 papir"
 
 #: root/src/admin/edit.tt:5
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "A6 papir (i za e-readere)"
 
 #: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
+msgstr "Napuštena izmjena u toku, slobodno provjeri razlike i preuzmi"
 
 #: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:18
 #: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:12
 #: root/src/publish/pending.tt:16
 msgid "Action"
-msgstr ""
+msgstr "Akcija"
 
 #: root/src/bookbuilder/index.tt:147
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Dodaj sliku za naslovnicu (PNG ili JPG)"
 
 #: root/src/edit/edit.tt:121
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr ""
+msgstr "Dodaj privitak (PNG, JPG ili PDF)"
 
 #: root/src/text.tt:182
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Dodaj tekst zbirci"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:96 root/src/layout.tt:170
 msgid "Add to library"
-msgstr ""
+msgstr "Dodaj biblioteci"
 
 #: root/src/edit/edit.tt:506
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
-msgstr ""
+msgstr "Dodatne informacije (kompletan datum, naslov originala, prevoditelji, itd."
 
 #: root/src/console/alias_display.tt:35 root/src/console/alias_display.tt:67
 msgid "Alias"
@@ -105,15 +105,15 @@ msgstr ""
 
 #: root/src/category-details.tt:14 root/src/library.tt:14
 msgid "All languages"
-msgstr ""
+msgstr "Svi jezici"
 
 #: lib/AmuseWikiFarm/Controller/Publish.pm:88 root/src/layout.tt:276
 msgid "All revisions"
-msgstr ""
+msgstr "Sve izmjene"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:63
 msgid "All sites"
-msgstr ""
+msgstr "Svi sajtovi"
 
 #: root/src/edit/newtext.tt:201
 msgid ""
@@ -127,26 +127,26 @@ msgstr ""
 
 #: root/src/macros.tt:5
 msgid "Are you sure?"
-msgstr ""
+msgstr "Sigurno?"
 
 #: root/src/edit/edit.tt:99
 msgid "Attached PDFs"
-msgstr ""
+msgstr "PDFovi u privitku"
 
 #: root/src/edit/edit.tt:84
 msgid "Attached images"
-msgstr ""
+msgstr "Slike u privitku"
 
 #: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:66
 #: root/src/search/index.tt:28
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:72 root/src/edit/edit.tt:221
 #: root/src/edit/edit.tt:481 root/src/edit/newtext.tt:75
 #: root/src/layout.tt:140 root/src/text.tt:41
 msgid "Authors"
-msgstr ""
+msgstr "Autori"
 
 #: root/src/edit/edit.tt:137
 msgid "Available category tags for header"
@@ -154,7 +154,7 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:6
 msgid "Back to the text"
-msgstr ""
+msgstr "Vrati se na tekst"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:141
 #: lib/AmuseWikiFarm/Controller/Console.pm:222
@@ -179,7 +179,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:28 root/src/layout.tt:178
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Napravi zbirku"
 
 #: root/src/admin/edit.tt:171
 msgid "Bookbuilder page limit (integer)"
@@ -187,7 +187,7 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:204
 msgid "Build it"
-msgstr ""
+msgstr "Stvori"
 
 #: root/src/macros.tt:18
 msgid "Bulleted List"
@@ -199,29 +199,29 @@ msgstr ""
 
 #: root/src/layout.tt:127
 msgid "Catalog"
-msgstr ""
+msgstr "Katalog"
 
 #: root/src/edit/newtext.tt:86
 msgid "Categories"
-msgstr ""
+msgstr "Teme"
 
 #: root/src/publish/pending.tt:17
 msgid "Changes"
-msgstr ""
+msgstr "Izmjene"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:71
 msgid "Changes applied"
-msgstr ""
+msgstr "Izmjene unesene"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
 #: lib/AmuseWikiFarm/Controller/Edit.pm:383 root/src/edit/diff.tt:13
 msgid "Changes for %1"
-msgstr ""
+msgstr "Izmjene za %1"
 
 #: root/src/edit/edit.tt:297
 msgid "Chapter"
-msgstr ""
+msgstr "Poglavlje"
 
 #: root/src/macros.tt:9
 msgid "Chapter, only for chapter divisions in books"
@@ -233,27 +233,27 @@ msgstr ""
 
 #: root/src/admin/edit.tt:287 root/src/bookbuilder/index.tt:102
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Izaberi papir"
 
 #: root/src/bookbuilder/index.tt:52
 msgid "Clear the book list"
-msgstr ""
+msgstr "Poništi popis tekstova"
 
 #: root/src/bookbuilder/fonts.tt:6
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Klikni na slike za PDF s primjerima"
 
 #: root/src/text.tt:16 root/src/text.tt:8
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
 #: root/src/edit/edit.tt:188
 msgid "Commit"
-msgstr ""
+msgstr "Spremi"
 
 #: root/src/admin/jobs.tt:14
 msgid "Completed"
-msgstr ""
+msgstr "Gotov"
 
 #: root/src/edit/diff.tt:41
 msgid "Computing of differences took"
@@ -262,7 +262,7 @@ msgstr ""
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:150
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:170
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Nije bilo moguće dodati tekst"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:108
 msgid "Couldn't build that"
@@ -270,11 +270,11 @@ msgstr ""
 
 #: root/src/console/alias_display.tt:54 root/src/console/alias_display.tt:86
 msgid "Create"
-msgstr ""
+msgstr "Stvori"
 
 #: root/src/layout.tt:296 root/src/user/create.tt:3
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Stvori novog korisnika"
 
 #: root/src/console/alias_display.tt:59
 msgid "Create a topic alias"
@@ -286,37 +286,37 @@ msgstr ""
 
 #: root/src/admin/list.tt:79
 msgid "Create new site"
-msgstr ""
+msgstr "Stvori novi sajt"
 
 #: root/src/user/create.tt:53
 msgid "Create user and mail password"
-msgstr ""
+msgstr "Stvori korisnika i pošalji lozinku"
 
 #: root/src/admin/jobs.tt:13
 msgid "Created"
-msgstr ""
+msgstr "Stvoreno"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:129
 msgid "Created new text"
-msgstr ""
+msgstr "Novi tekst stvoren"
 
 #: root/src/edit/edit.tt:228 root/src/publish/pending.tt:19
 #: root/src/text.tt:50
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: root/src/edit/edit.tt:501 root/src/edit/newtext.tt:121
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Datum izdavanja"
 
 #: root/src/layout.tt:281
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Odgođeni/izbrisani tekstovi"
 
 #: root/src/admin/jobs.tt:66 root/src/bookbuilder/index.tt:38
 #: root/src/console/alias_display.tt:126
 msgid "Delete"
-msgstr ""
+msgstr "Izbriši"
 
 #: root/src/publish/pending.tt:100
 msgid ""
@@ -326,7 +326,7 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:196
 msgid "Desired URI"
-msgstr ""
+msgstr "URI po želji"
 
 #: root/src/console/alias_display.tt:100
 msgid "Destination"
@@ -334,7 +334,7 @@ msgstr ""
 
 #: root/src/edit/revs.tt:18
 msgid "Differences"
-msgstr ""
+msgstr "Razlike"
 
 #: root/src/admin/edit.tt:274
 msgid ""
@@ -343,11 +343,11 @@ msgstr ""
 
 #: root/src/macros.tt:25
 msgid "Display url as"
-msgstr ""
+msgstr "Pokaži URL kao"
 
 #: root/src/search/index.tt:120
 msgid "Displaying"
-msgstr ""
+msgstr "Pokazujući"
 
 #: root/src/admin/edit.tt:304 root/src/bookbuilder/index.tt:115
 msgid "Division factor"
@@ -355,7 +355,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:74
 msgid "Done"
-msgstr ""
+msgstr "Gotovo"
 
 #: root/src/edit/edit.tt:463
 msgid "Double bars"
@@ -363,7 +363,7 @@ msgstr ""
 
 #: root/src/text.tt:93
 msgid "Downloads"
-msgstr ""
+msgstr "Fajlovi"
 
 #: root/src/admin/edit.tt:256
 msgid "EPUB"
@@ -375,30 +375,30 @@ msgstr ""
 
 #: root/src/console/alias_display.tt:134 root/src/console/translations.tt:33
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #. (esite.id)
 #: root/src/admin/edit.tt:10
 msgid "Edit site %1"
-msgstr ""
+msgstr "Uredi sajt %1"
 
 #: root/src/layout.tt:313
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Uredi sajtovu konfiguraciju"
 
 #: root/src/text.tt:170
 msgid "Edit this text"
-msgstr ""
+msgstr "Uredi ovaj tekst"
 
 #. (user.username)
 #: root/src/user/edit.tt:3
 msgid "Edit user %1"
-msgstr ""
+msgstr "Uredi korisnika %1"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:163 root/src/edit/edit.tt:114
 #: root/src/edit/revs.tt:3
 msgid "Editing"
-msgstr ""
+msgstr "Uređivanje"
 
 #: root/src/user/create.tt:38 root/src/user/edit.tt:26
 msgid "Email"
@@ -406,7 +406,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:259
 msgid "Email sent!"
-msgstr ""
+msgstr "E-majl poslan"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:302
 msgid "Email updated"
@@ -419,7 +419,7 @@ msgstr ""
 
 #: root/src/publish/pending.tt:76
 msgid "Erase this revision"
-msgstr ""
+msgstr "Izbriši izmjenu"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:345
 #: lib/AmuseWikiFarm/Controller/User.pm:256
@@ -428,11 +428,11 @@ msgstr ""
 
 #: root/src/admin/jobs.tt:17
 msgid "Errors"
-msgstr ""
+msgstr "Pogreške"
 
 #: root/src/edit/edit.tt:389 root/src/edit/edit.tt:395
 msgid "Example"
-msgstr ""
+msgstr "Primjer"
 
 #: root/src/console/alias_display.tt:91
 msgid "Existing redirections"
@@ -452,7 +452,7 @@ msgstr ""
 
 #: root/src/edit/edit.tt:157
 msgid "Fix typography"
-msgstr ""
+msgstr "Tipografsko ispravljanje"
 
 #: root/src/admin/edit.tt:77
 msgid "Fixed category list"
@@ -461,15 +461,15 @@ msgstr ""
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:189
 #: root/src/bookbuilder/fonts.tt:4
 msgid "Font preview"
-msgstr ""
+msgstr "Pregled fontova"
 
 #: root/src/admin/edit.tt:344
 msgid "Font size"
-msgstr ""
+msgstr "Dimenzije fontova"
 
 #: root/src/edit/edit.tt:275 root/src/edit/edit.tt:384
 msgid "Footnotes"
-msgstr ""
+msgstr "Fusnote"
 
 #: root/src/edit/newtext.tt:131
 msgid "For texts from the internet use"
@@ -491,7 +491,7 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:221
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr ""
+msgstr "Formatiranje: gggg-mm-dd hh:mm, npr."
 
 #: root/src/admin/edit.tt:180
 msgid "Formats"
@@ -499,7 +499,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Library.pm:74
 msgid "Full list of texts"
-msgstr ""
+msgstr "Svi tekstovi"
 
 #: root/src/admin/edit.tt:151
 msgid "Full site canonical URL, including protocol"
@@ -507,7 +507,7 @@ msgstr ""
 
 #: root/src/search/index.tt:7 root/src/search/index.tt:91
 msgid "Full text search"
-msgstr ""
+msgstr "Pretraga"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:70
 msgid "Git console"
@@ -531,7 +531,7 @@ msgstr ""
 
 #: root/src/search/index.tt:95
 msgid "Hide options"
-msgstr ""
+msgstr "Sakrij opcije"
 
 #: root/src/admin/edit.tt:305 root/src/bookbuilder/index.tt:117
 msgid "Higher division factor means narrower margins"
@@ -543,7 +543,7 @@ msgstr ""
 
 #: root/src/user/human.tt:17
 msgid "I am human"
-msgstr ""
+msgstr "Ja sam ljudsko biće"
 
 #: root/src/bookbuilder/index.tt:174
 msgid "I want an imposed (ready to print) PDF"
@@ -569,15 +569,15 @@ msgstr ""
 
 #: root/src/macros.tt:21
 msgid "Image url"
-msgstr ""
+msgstr "URL slike"
 
 #: root/src/edit/edit.tt:94
 msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
+msgstr "Slike koje se ne koriste u tekstu su spremljene, ali ignorirane."
 
 #: root/src/edit/edit.tt:451
 msgid "Images:"
-msgstr ""
+msgstr "Slike"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:195
 #: root/src/bookbuilder/schemas.tt:3
@@ -605,15 +605,15 @@ msgstr ""
 #: lib/AmuseWikiFarm/Controller/User.pm:203
 #: lib/AmuseWikiFarm/Controller/User.pm:305
 msgid "Invalid email"
-msgstr ""
+msgstr "Email nije valjan"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:99
 msgid "Invalid name"
-msgstr ""
+msgstr "Ime nije valjan"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:194
 msgid "Invalid username"
-msgstr ""
+msgstr "Ime korisnika nije valjan"
 
 #: root/src/macros.tt:16
 msgid "Italic"
@@ -647,10 +647,15 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Pazi, ja čistim tekst i vraćam ti ga u wiki formatu korištenom na\n"
+"ovom sajtu. Ti ga trebaš sam pregledati, provjeriti i spremiti.\n"
+"Rijetko korišteno formatiranje bit će izgubljeno u toku procesa. Molim\n"
+"te, provjeri pregled na slijedećoj stranici, gdje možeš dodati i\n"
+"slike. "
 
 #: root/src/bookbuilder/index.tt:78
 msgid "Keep in mind that some character may be missing in the required font."
-msgstr ""
+msgstr "Neka slova bi mogla faliti u željenim fontovima"
 
 #: root/src/edit/newtext.tt:170
 msgid ""
@@ -658,18 +663,21 @@ msgid ""
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Pazi, neobično i kompleksno formatirani tekstovi bit će\n"
+"pojednostavljeni. Možeš dodati tabele i slike samo na slijedećoj\n"
+"stranici"
 
 #: root/src/edit/newtext.tt:140
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: root/src/edit/edit.tt:514
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Kod jezika teksta (2 ili 3 slova)"
 
 #: root/src/layout.tt:185 root/src/layout.tt:187
 msgid "Language selection"
-msgstr ""
+msgstr "Izaberi jezik"
 
 #: root/src/edit/revs.tt:16
 msgid "Last updated"
@@ -677,11 +685,11 @@ msgstr ""
 
 #: root/src/text.tt:245
 msgid "Latest entries"
-msgstr ""
+msgstr "Poslednji unosi"
 
 #: root/src/edit/newtext.tt:217
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "Pusti to prazno ako hoćeš ga odmah objaviti."
 
 #: root/src/admin/edit.tt:222 root/src/text.tt:118 root/src/text.tt:119
 msgid "Letter imposed PDF"
@@ -701,11 +709,11 @@ msgstr ""
 
 #: root/src/console/unpublished.tt:3
 msgid "List of texts on hold"
-msgstr ""
+msgstr "Popis tekstova na čekanju"
 
 #: root/src/edit/edit.tt:281 root/src/edit/edit.tt:424
 msgid "Lists"
-msgstr ""
+msgstr "Popisi"
 
 #: root/src/edit/edit.tt:425
 msgid "Lists start with a single leading whitespace"
@@ -745,7 +753,7 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:153
 msgid "Main text"
-msgstr ""
+msgstr "Tekst"
 
 #: root/src/edit/edit.tt:444
 msgid "Make a link clickable"
@@ -753,19 +761,19 @@ msgstr ""
 
 #: root/src/edit/edit.tt:165
 msgid "Make all links active"
-msgstr ""
+msgstr "Aktiviraj sve linkove"
 
 #: root/src/search/index.tt:83
 msgid "Match any of the fields above"
-msgstr ""
+msgstr "Bilo koje polje"
 
 #: root/src/publish/pending.tt:18
 msgid "Message"
-msgstr ""
+msgstr "Poruka"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:354
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "#title nedostaje u tekstu"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:200
 msgid "Missing alias"
@@ -773,7 +781,7 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:79
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "Pokazat će se slova koja nedostaju"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:203
 msgid "Missing redirection"
@@ -793,15 +801,15 @@ msgstr ""
 
 #: root/src/layout.tt:214
 msgid "More"
-msgstr ""
+msgstr "Više"
 
 #: root/src/bookbuilder/index.tt:34
 msgid "Move down"
-msgstr ""
+msgstr "Niže"
 
 #: root/src/bookbuilder/index.tt:31
 msgid "Move up"
-msgstr ""
+msgstr "Više"
 
 #: root/src/admin/edit.tt:87
 msgid "Multilanguage: list of whitespace separated language codes"
@@ -813,11 +821,11 @@ msgstr ""
 
 #: root/src/admin/list.tt:17
 msgid "Name"
-msgstr ""
+msgstr "Ime"
 
 #: root/src/edit/revs.tt:67
 msgid "New revision"
-msgstr ""
+msgstr "Nova izmjena"
 
 #: root/src/admin/list.tt:73
 msgid "New site id"
@@ -825,7 +833,7 @@ msgstr ""
 
 #: root/src/search/index.tt:144
 msgid "Next"
-msgstr ""
+msgstr "Iduće"
 
 #: root/src/edit/edit.tt:486
 msgid "Nice title"
@@ -833,15 +841,15 @@ msgstr ""
 
 #: root/src/search/index.tt:151
 msgid "No result found!"
-msgstr ""
+msgstr "Nema rezultata!"
 
 #: root/src/category-details.tt:46 root/src/library.tt:46
 msgid "No text found!"
-msgstr ""
+msgstr "Nijedan tekst nije pronađen!"
 
 #: root/src/bookbuilder/index.tt:222
 msgid "No text was added yet"
-msgstr ""
+msgstr "Nije bio dodan nijedan tekst"
 
 #: root/src/edit/edit.tt:249 root/src/edit/newtext.tt:181
 #: root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:81
@@ -888,7 +896,7 @@ msgstr ""
 
 #: root/src/layout.tt:233
 msgid "Other languages"
-msgstr ""
+msgstr "Drugi jezici"
 
 #: root/src/admin/edit.tt:121
 msgid "PDF logo (absolute path or put it in texmf)"
@@ -896,7 +904,7 @@ msgstr ""
 
 #: root/src/edit/edit.tt:110
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "Nije moguće koristi PDF-ovi u tekstu."
 
 #. ("#ATTACH")
 #. ('#ATTACH')
@@ -906,7 +914,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Root.pm:125
 msgid "Page not found!"
-msgstr ""
+msgstr "Stranica nije pronađena!"
 
 #: root/src/edit/edit.tt:269 root/src/edit/edit.tt:313
 msgid "Paragraphs"
@@ -922,12 +930,12 @@ msgstr ""
 
 #: root/src/user/login.tt:11 root/src/user/login.tt:13
 msgid "Password"
-msgstr ""
+msgstr "Lozinka"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:212
 #: lib/AmuseWikiFarm/Controller/User.pm:289
 msgid "Password too short"
-msgstr ""
+msgstr "Lozika prekratka"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:286
 msgid "Password updated"
@@ -944,19 +952,19 @@ msgstr ""
 
 #: root/src/admin/jobs.tt:11
 msgid "Payload"
-msgstr ""
+msgstr "Sadržaj"
 
 #: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:271
 msgid "Pending revisions"
-msgstr ""
+msgstr "Izmjene na čekanju"
 
 #: root/src/macros.tt:20
 msgid "Picture"
-msgstr ""
+msgstr "Slika"
 
 #: root/src/admin/edit.tt:200
 msgid "Plain PDF"
-msgstr ""
+msgstr "Običan PDF"
 
 #: root/src/edit/edit.tt:170
 msgid "Please describe shortly what you did"
@@ -974,7 +982,7 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:67
 msgid "Please give a name to the collection."
-msgstr ""
+msgstr "Daj ime zbirci."
 
 #: root/src/publish/pending.tt:88
 msgid ""
@@ -987,7 +995,7 @@ msgstr ""
 
 #: root/src/edit/edit.tt:180
 msgid "Please leave a mail if you want to be contacted about this change"
-msgstr ""
+msgstr "Ostavi majl ako hoćeš biti kontaktiran u vezi ove izmjene"
 
 #: root/src/edit/edit.tt:340
 msgid "Please note that wrapping tags must be placed on a line by themselves."
@@ -1006,10 +1014,13 @@ msgid ""
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"Ako želiš zalijepiti (copy-paste) iz\n"
+"Word/OpenOffice/LibreOffice/HTML dokumenta možeš to učiniti samo ovdje\n"
+"da bi sačuvao originalni izgled teksta (italics, bold itd.)"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:118 root/src/user/human.tt:5
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Dokaži da si ljudsko biće"
 
 #: root/src/tasks/display.tt:24
 msgid "Please reload your page"
@@ -1019,11 +1030,11 @@ msgstr ""
 #: root/src/console/alias_display.tt:46 root/src/console/alias_display.tt:69
 #: root/src/console/alias_display.tt:78
 msgid "Please select"
-msgstr ""
+msgstr "Izaberi"
 
 #: root/src/bookbuilder/index.tt:76
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Izaberi fontove"
 
 #: root/src/edit/edit.tt:278
 msgid "Poetry, bibliographies, plays, code"
@@ -1035,27 +1046,27 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:236
 msgid "Prepare this text for the archiving"
-msgstr ""
+msgstr "Pripremi ovaj tekst za arhivu"
 
 #: root/src/edit/edit.tt:187 root/src/edit/edit.tt:199
 msgid "Preview"
-msgstr ""
+msgstr "Pregled"
 
 #: root/src/search/index.tt:138
 msgid "Previous"
-msgstr ""
+msgstr "Prethodno"
 
 #: root/src/admin/jobs.tt:15
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
 
 #: root/src/admin/jobs.tt:16
 msgid "Produced"
-msgstr ""
+msgstr "Stvoreno"
 
 #: root/src/console/unpublished.tt:14
 msgid "Pubdate"
-msgstr ""
+msgstr "Datum izdavanja"
 
 #: root/src/edit/newtext.tt:216
 msgid "Publication date on this site."
@@ -1080,6 +1091,8 @@ msgid ""
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Dodatne informacije napiši ovdje (naslov originala, prevodilac itd).\n"
+"Fusnote su dio teksta, ne stavljaj ih u Napomene."
 
 #: root/src/admin/edit.tt:8
 msgid "Quarter Letter paper"
@@ -1095,11 +1108,11 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:160
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Previše stranica"
 
 #: root/src/macros.tt:26
 msgid "Quotes"
-msgstr ""
+msgstr "Citati"
 
 #: root/src/layout.tt:378
 msgid "RSS feed"
@@ -1107,15 +1120,15 @@ msgstr ""
 
 #: root/src/layout.tt:381
 msgid "Random"
-msgstr ""
+msgstr "Slučajna stranica"
 
 #: root/src/console/unpublished.tt:13
 msgid "Reason"
-msgstr ""
+msgstr "Razlog"
 
 #: root/src/edit/diff.tt:33
 msgid "Recheck"
-msgstr ""
+msgstr "Ponovo provjeri"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:174
 #: root/src/console/alias_display.tt:3 root/src/layout.tt:291
@@ -1144,11 +1157,11 @@ msgstr ""
 
 #: root/src/search/index.tt:110
 msgid "Results"
-msgstr ""
+msgstr "Rezultati"
 
 #: root/src/search/index.tt:117
 msgid "Results found"
-msgstr ""
+msgstr "Pronađeno"
 
 #: root/src/edit/newtext.tt:132
 msgid "Retrieved on DATE from URL"
@@ -1160,12 +1173,12 @@ msgstr ""
 
 #: root/src/publish/pending.tt:15
 msgid "Revision"
-msgstr ""
+msgstr "Izmjena"
 
 #. ($uri)
 #: lib/AmuseWikiFarm/Controller/Publish.pm:150
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "Izmjena za %1 izbrisana"
 
 #: root/src/bookbuilder/schemas.tt:25
 msgid "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
@@ -1173,7 +1186,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Search.pm:79 root/src/layout.tt:337
 msgid "Search"
-msgstr ""
+msgstr "Traži"
 
 #: root/src/edit/edit.tt:300
 msgid "Section"
@@ -1181,7 +1194,7 @@ msgstr ""
 
 #: root/src/edit/edit.tt:519
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Vidi udžbenik za detalje (na engleskom)"
 
 #: root/src/edit/edit.tt:464
 msgid "Separate body fields"
@@ -1202,11 +1215,11 @@ msgstr ""
 #: root/src/edit/edit.tt:201 root/src/edit/revs.tt:49
 #: root/src/publish/pending.tt:59
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Pokaži razlike u drugom prozoru"
 
 #: root/src/search/index.tt:99
 msgid "Show options"
-msgstr ""
+msgstr "Pokaži opcije"
 
 #: root/src/edit/edit.tt:464
 msgid "Single bars"
@@ -1242,41 +1255,41 @@ msgstr ""
 
 #: root/src/layout.tt:308
 msgid "Sites"
-msgstr ""
+msgstr "Sajtovi"
 
 #: root/src/user/create.tt:48
 msgid "So we can be sure we are not mailing passwords to random people"
-msgstr ""
+msgstr "Tako da ne pošaljemo lozinke pogrešnoj osobi"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:176
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Neka polja nedostaju, a svi su potrebna"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:185
 #: lib/AmuseWikiFarm/Controller/User.pm:309
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Neka polja su previše dugačka"
 
 #: root/src/edit/revs.tt:9
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Pronađene su neke aktive izmjene"
 
 #: root/src/edit/edit.tt:242 root/src/edit/newtext.tt:129
 #: root/src/search/index.tt:58 root/src/text.tt:74
 msgid "Source"
-msgstr ""
+msgstr "Izvornik"
 
 #: root/src/tasks/display.tt:30
 msgid "Source files"
-msgstr ""
+msgstr "Izvorni fajlovi"
 
 #: root/src/text.tt:161 root/src/text.tt:162
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Izvorni fajlovi s privitcima"
 
 #: root/src/tasks/display.tt:59 root/src/tasks/display.tt:74
 msgid "Sources"
-msgstr ""
+msgstr "Izvori"
 
 #: root/src/edit/edit.tt:399
 msgid "Special blocks"
@@ -1284,11 +1297,11 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Library.pm:91
 msgid "Special pages"
-msgstr ""
+msgstr "Specijalne stranice"
 
 #: root/src/publish/pending.tt:51
 msgid "Stale editing"
-msgstr ""
+msgstr "Napuštena izmjena"
 
 #: root/src/text.tt:136 root/src/text.tt:137
 msgid "Standalone HTML (printer-friendly)"
@@ -1332,11 +1345,11 @@ msgstr ""
 
 #: root/src/text.tt:10
 msgid "Table of Contents"
-msgstr ""
+msgstr "Sadržaj"
 
 #: root/src/edit/edit.tt:283 root/src/edit/edit.tt:460
 msgid "Tables"
-msgstr ""
+msgstr "Tablice"
 
 #: root/src/admin/jobs.tt:10
 msgid "Task"
@@ -1354,15 +1367,15 @@ msgstr ""
 
 #: root/src/console/translations.tt:12
 msgid "Texts"
-msgstr ""
+msgstr "Tekstovi"
 
 #: root/src/bookbuilder/index.tt:68
 msgid "The name is always required, but used only if there are multiple texts."
-msgstr ""
+msgstr "Ime je obavezno, ali se koristi samo za zbirke s više tekstova"
 
 #: root/src/edit/edit.tt:493
 msgid "The optional subtitle"
-msgstr ""
+msgstr "Podnaslov"
 
 #: root/src/user/create.tt:40
 msgid "The password will be mailed at this address"
@@ -1376,11 +1389,11 @@ msgstr ""
 
 #: root/src/email/commit.tt:17
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "Izmjena ima slijedeće poruke"
 
 #: root/src/layout.tt:356
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "Tekst je bio dodan zbirci"
 
 #: root/src/edit/edit.tt:487
 msgid ""
@@ -1412,7 +1425,7 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:249
 msgid "This field is required"
-msgstr ""
+msgstr "Ovo polje je obavezno"
 
 #: root/src/edit/newtext.tt:161
 msgid ""
@@ -1427,11 +1440,11 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:270
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Ova izmjena je već objavljena, ignorirati će se dalje izmjene"
 
 #: root/src/edit/revs.tt:37
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Ova izmjena je u toku"
 
 #: root/src/edit/revs.tt:35
 msgid "This revision is being actively edited by you"
@@ -1439,11 +1452,11 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:265
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Ova izmjena je u toku od strane nekog drugog!"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:168
 msgid "This text does not exist"
-msgstr ""
+msgstr "Ovaj tekst ne postoji"
 
 #: root/src/edit/newtext.tt:220
 msgid "Time is optional."
@@ -1452,7 +1465,7 @@ msgstr ""
 #: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:208
 #: root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:28
 msgid "Title"
-msgstr ""
+msgstr "Naslov"
 
 #: root/src/edit/newtext.tt:57
 msgid "Title for sorting"
@@ -1460,13 +1473,13 @@ msgstr ""
 
 #: root/src/layout.tt:134
 msgid "Titles"
-msgstr ""
+msgstr "Naslovi"
 
 #. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "Da bi objavio izmjenu, idi na %1"
 
 #: root/src/edit/edit.tt:101
 msgid "To display the PDFs, set or append the following string in the header"
@@ -1487,29 +1500,29 @@ msgstr ""
 
 #: root/src/email/commit.tt:6
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "Da bi nastavio uređivanje, možeš ići na slijedeći URL"
 
 #: root/src/email/commit.tt:10
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "Da bi vidio razlike, možeš ići na slijedeći URL"
 
 #: root/src/layout.tt:114 root/src/layout.tt:117
 msgid "Toggle the table of contents"
-msgstr ""
+msgstr "Pokaži/sakrij sadržaj"
 
 #: root/src/search/index.tt:48
 msgid "Topic"
-msgstr ""
+msgstr "Tema"
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:235
 #: root/src/edit/edit.tt:497 root/src/edit/newtext.tt:101
 #: root/src/layout.tt:146 root/src/layout.tt:162 root/src/text.tt:58
 msgid "Topics"
-msgstr ""
+msgstr "Teme"
 
 #: root/src/bookbuilder/index.tt:46
 msgid "Total pages"
-msgstr ""
+msgstr "Ukupno stranica"
 
 #: root/src/edit/edit.tt:462
 msgid "Triple bars"
@@ -1517,7 +1530,7 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:238
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Pokušaj sa slučajnim tekstom ako nisi siguran"
 
 #: root/src/admin/edit.tt:382 root/src/bookbuilder/index.tt:168
 msgid "Two side layout"
@@ -1542,7 +1555,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:104
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Neobjavljeni tekstovi"
 
 #: root/src/admin/edit.tt:405 root/src/user/edit.tt:39
 msgid "Update"
@@ -1562,7 +1575,7 @@ msgstr ""
 
 #: root/src/edit/edit.tt:88
 msgid "Use it in the body as"
-msgstr ""
+msgstr "Koristi ga u tekstu kao"
 
 #: root/src/edit/edit.tt:373
 msgid ""
@@ -1581,7 +1594,7 @@ msgstr ""
 
 #: root/src/user/login.tt:6 root/src/user/login.tt:8
 msgid "Username"
-msgstr ""
+msgstr "Korisničko ime"
 
 #: root/src/user/create.tt:16
 msgid "Username, alphanumerical only, no special characters, no uppercase"
@@ -1605,13 +1618,15 @@ msgstr ""
 
 #: root/src/edit/edit.tt:510
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "Odakle dolazi ovaj tekst?"
 
 #: root/src/bookbuilder/index.tt:153
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
 msgstr ""
+"Širina naslovne slike u postotku širine teksta. Pusti prazno ako ne\n"
+"trebaš naslovnu sliku"
 
 #: root/src/bookbuilder/index.tt:227
 msgid ""
@@ -1619,14 +1634,16 @@ msgid ""
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"Možeš promjeniti fontove, dimenzije, papir tekstovima biblioteke.\n"
+"Možeš stvoriti svoju zbirku za svoj buklet ili fanzinu. Samo isprobaj!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:129
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Pogrešan odgovor!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:97
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Pogrešno korisničko ime ili lozinka"
 
 #: root/src/text.tt:145 root/src/text.tt:146
 msgid "XeLaTeX source"
@@ -1634,7 +1651,7 @@ msgstr ""
 
 #: root/src/search/index.tt:38
 msgid "Year"
-msgstr ""
+msgstr "Godina"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:113
 msgid "You already proved you are human"
@@ -1654,6 +1671,8 @@ msgid ""
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Klikni na “Plus” pored downloada na svakom tekstu da bi ga dodao\n"
+"svojoj zbirci. Kasnije možeš urediti zbirku.\n"
 
 #. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
@@ -1663,7 +1682,7 @@ msgstr ""
 
 #: root/src/user/human.tt:7
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Odgovarajući na jednostavno pitanje."
 
 #: root/src/edit/revs.tt:73
 msgid ""
@@ -1682,13 +1701,15 @@ msgstr ""
 #. (c.uri_for_action('/user/edit', [ user.id ])
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Trebao bi promjeniti svoju lozinku sada at %1"
 
 #: root/src/edit/edit.tt:204
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
 "Commit"
 msgstr ""
+"Tvoje izmjene su spremljene i možeš ih pregledati svaki put kad\n"
+"pretisneš “Pregled” ili “Spremi”"
 
 #: root/src/macros.tt:10
 msgid "Your chapter here..."
@@ -1705,7 +1726,7 @@ msgstr ""
 #. (user.password)
 #: root/src/email/newuser.tt:6
 msgid "Your password is %1."
-msgstr ""
+msgstr "Tvoja lozinka je %1."
 
 #: root/src/macros.tt:15
 msgid "Your sub-sub-section (or description heading) here..."
@@ -1718,12 +1739,12 @@ msgstr ""
 #. (site.canonical)
 #: root/src/email/newuser.tt:2
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Tvoj korisnik je stvoren na %1."
 
 #. (user.username)
 #: root/src/email/newuser.tt:4
 msgid "Your username is %1."
-msgstr ""
+msgstr "Tvoje korisničko ime je %1."
 
 #: root/src/admin/edit.tt:267
 msgid "ZIP archive with sources, needed by the bookbuilder"
@@ -1731,11 +1752,11 @@ msgstr ""
 
 #: root/src/layout.tt:212
 msgid "about, links..."
-msgstr ""
+msgstr "o projektu, linkovi..."
 
 #: root/src/edit/newtext.tt:197
 msgid "automatically generated if not present, using author and title"
-msgstr ""
+msgstr "automatski generiran sa autorom i naslovom"
 
 #: root/src/edit/edit.tt:366 root/src/edit/edit.tt:367
 #: root/src/edit/edit.tt:369
@@ -1745,19 +1766,19 @@ msgstr ""
 #: root/src/edit/edit.tt:482 root/src/edit/edit.tt:497
 #: root/src/edit/newtext.tt:102 root/src/edit/newtext.tt:76
 msgid "comma or semicolon separated list"
-msgstr ""
+msgstr "popis odvojen zarezom"
 
 #: root/src/tasks/display.tt:4
 msgid "completed"
-msgstr ""
+msgstr "gotovo"
 
 #: root/src/publish/pending.tt:6
 msgid "conflict"
-msgstr ""
+msgstr "konflikt"
 
 #: root/src/macros.tt:22
 msgid "description"
-msgstr ""
+msgstr "opis"
 
 #: root/src/edit/edit.tt:445 root/src/edit/edit.tt:452
 msgid "displayed text"
@@ -1765,7 +1786,7 @@ msgstr ""
 
 #: root/src/publish/pending.tt:3
 msgid "editing"
-msgstr ""
+msgstr "u toku uređenja"
 
 #: root/src/edit/edit.tt:348 root/src/edit/edit.tt:350
 msgid "emphasis"
@@ -1797,7 +1818,7 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:181
 msgid "if applicable"
-msgstr ""
+msgstr "ako je moguće"
 
 #: root/src/edit/newtext.tt:39
 msgid ""
@@ -1808,7 +1829,7 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:37
 msgid "mandatory"
-msgstr ""
+msgstr "obavezno"
 
 #: root/src/edit/edit.tt:435 root/src/edit/edit.tt:436
 msgid "numbered item"
@@ -1823,7 +1844,7 @@ msgstr ""
 #: root/src/edit/edit.tt:405 root/src/edit/edit.tt:447
 #: root/src/edit/edit.tt:452 root/src/edit/edit.tt:89
 msgid "or"
-msgstr ""
+msgstr "ili"
 
 #: root/src/edit/edit.tt:377 root/src/edit/edit.tt:380
 msgid "overstriked"
@@ -1831,23 +1852,23 @@ msgstr ""
 
 #: root/src/publish/pending.tt:4 root/src/tasks/display.tt:2
 msgid "pending"
-msgstr ""
+msgstr "na čekanju"
 
 #: root/src/text.tt:100 root/src/text.tt:101
 msgid "plain PDF"
-msgstr ""
+msgstr "običan PDF"
 
 #: root/src/text.tt:153 root/src/text.tt:154
 msgid "plain text source"
-msgstr ""
+msgstr "izvor u običnom tekstu"
 
 #: root/src/publish/pending.tt:5
 msgid "processing"
-msgstr ""
+msgstr "u toku"
 
 #: root/src/publish/pending.tt:7
 msgid "published"
-msgstr ""
+msgstr "objavljeno"
 
 #: root/src/search/index.tt:129
 msgid "relevant"
@@ -1855,7 +1876,7 @@ msgstr ""
 
 #: root/src/edit/diff.tt:14
 msgid "revision"
-msgstr ""
+msgstr "izmjena"
 
 #: root/src/edit/edit.tt:354 root/src/edit/edit.tt:356
 msgid "strong emphasis"
@@ -1879,32 +1900,32 @@ msgstr ""
 
 #: root/src/tasks/display.tt:3
 msgid "taken"
-msgstr ""
+msgstr "u toku"
 
 #. (args)
 #: root/src/macros.tt:1 root/src/macros.tt:2 root/src/macros.tt:3
 msgid "text"
-msgstr ""
+msgstr "tekst"
 
 #: root/src/layout.tt:139
 msgid "texts sorted by author"
-msgstr ""
+msgstr "tekstovi po autoru"
 
 #: root/src/layout.tt:133
 msgid "texts sorted by title"
-msgstr ""
+msgstr "tekstovi po naslovu"
 
 #: root/src/layout.tt:161
 msgid "texts sorted by topics"
-msgstr ""
+msgstr "tekstovi po temi"
 
 #: root/src/edit/edit.tt:475
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "autor teksta (za naslovnicu)"
 
 #: root/src/edit/edit.tt:496
 msgid "topic"
-msgstr ""
+msgstr "tema"
 
 #: root/src/edit/edit.tt:429 root/src/edit/edit.tt:430
 msgid "unnumbered item"
@@ -1917,11 +1938,11 @@ msgstr ""
 
 #: root/src/edit/edit.tt:446
 msgid "with description"
-msgstr ""
+msgstr "s opisom"
 
 #: root/src/edit/edit.tt:448
 msgid "without description"
-msgstr ""
+msgstr "bez opisa"
 
 #: root/src/edit/newtext.tt:58
 msgid ""
