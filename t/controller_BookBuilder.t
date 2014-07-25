@@ -3,7 +3,15 @@ use warnings;
 use Test::More tests => 49;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
+use AmuseWikiFarm::Schema;
 
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+my $site = $schema->resultset('Site')->find('0blog0');
+my $orig_locale = $site->locale;
+# set it to english for testing purposes.
+$site->locale('en');
+$site->update;
 
 use Test::WWW::Mechanize::Catalyst;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
@@ -53,3 +61,8 @@ $mech->content_contains("Quota exceeded");
 $mech->get_ok('/bookbuilder');
 $mech->content_lacks('first-test');
 $mech->content_contains("Total pages: 5");
+
+$site->locale($orig_locale);
+$site->update->discard_changes;
+
+diag "Locale restored to " . $site->locale;
