@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-03-06 10:51+0100\n"
+"PO-Revision-Date: 2014-07-25 15:31+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -139,13 +139,13 @@ msgstr ""
 #: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:66
 #: root/src/search/index.tt:28
 msgid "Author"
-msgstr ""
+msgstr "Auteur"
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:72 root/src/edit/edit.tt:221
 #: root/src/edit/edit.tt:481 root/src/edit/newtext.tt:75
 #: root/src/layout.tt:140 root/src/text.tt:41
 msgid "Authors"
-msgstr ""
+msgstr "Auteurs"
 
 #: root/src/edit/edit.tt:137
 msgid "Available category tags for header"
@@ -498,7 +498,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Library.pm:74
 msgid "Full list of texts"
-msgstr ""
+msgstr "Liste de tous les textes"
 
 #: root/src/admin/edit.tt:151
 msgid "Full site canonical URL, including protocol"
@@ -668,7 +668,7 @@ msgstr ""
 
 #: root/src/layout.tt:185 root/src/layout.tt:187
 msgid "Language selection"
-msgstr ""
+msgstr "Choisissez la langue"
 
 #: root/src/edit/revs.tt:16
 msgid "Last updated"
@@ -1172,7 +1172,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Search.pm:79 root/src/layout.tt:337
 msgid "Search"
-msgstr ""
+msgstr "Recherche"
 
 #: root/src/edit/edit.tt:300
 msgid "Section"
@@ -1504,7 +1504,7 @@ msgstr ""
 #: root/src/edit/edit.tt:497 root/src/edit/newtext.tt:101
 #: root/src/layout.tt:146 root/src/layout.tt:162 root/src/text.tt:58
 msgid "Topics"
-msgstr ""
+msgstr "Sujets"
 
 #: root/src/bookbuilder/index.tt:46
 msgid "Total pages"
@@ -1887,7 +1887,7 @@ msgstr ""
 
 #: root/src/layout.tt:139
 msgid "texts sorted by author"
-msgstr ""
+msgstr "Textes par auteur"
 
 #: root/src/layout.tt:133
 msgid "texts sorted by title"
