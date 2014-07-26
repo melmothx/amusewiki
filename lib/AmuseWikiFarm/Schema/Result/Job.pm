@@ -520,7 +520,8 @@ sub dispatch_job_bookbuilder {
     my $data = $self->job_data;
     my $jobdir = File::Spec->catdir('root', $self->customdir);
     $jobdir =    File::Spec->rel2abs($jobdir);
-    die "In the wrong dir: " . getcwd() unless -d $jobdir;
+    my $homedir = getcwd();
+    die "In the wrong dir: $homedir" unless -d $jobdir;
 
     print Dumper($data);
     # first, get the text list
@@ -570,7 +571,7 @@ sub dispatch_job_bookbuilder {
     }
     die "No text found!" unless @texts;
 
-    chdir $basedir;
+    chdir $basedir or die $!;
     # extract the archives
     foreach my $i (keys %archives) {
         my $zipfile = $i . '.zip';
@@ -643,6 +644,8 @@ sub dispatch_job_bookbuilder {
                                                   $zipname . '.zip')) == AZ_OK
       or $logger->("Failure writing $zipname.zip");
 
+    # chdir back to home
+    chdir $homedir or die $!;
     return $self->bb_produced_pdf;
 }
 
