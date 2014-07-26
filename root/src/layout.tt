@@ -65,7 +65,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 5 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 6 }) %]" />
 
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
 
@@ -115,7 +115,7 @@
              data-target="#myModal">
             <img src="[% c.uri_for('/static/images/toc.png') %]"
                  alt="[% loc('Toggle the table of contents') %]"
-                 class="amw-navlogo-img"/>
+                 class="amw-navlogo-img" id="amw-toc-toggler"/>
           </a>
         </div>
         <div class="navbar-collapse collapse">
