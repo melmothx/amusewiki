@@ -602,6 +602,8 @@ sub compile_options {
         $opts{extra}{$ext} = $self->$ext;
     }
     $opts{extra}{site} = $self->canonical;
+    # but strip the protocol
+    $opts{extra}{site} =~ s!^https?://!!;
     return %opts;
 }
 
