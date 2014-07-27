@@ -119,6 +119,8 @@ the tree.
 
 * DONE Replace File::Slurp with File::Slurp::Tiny or Path::Tiny
   CLOSED: [2014-07-20 dom 13:08]
+* TODO test for entities
+* TODO fmt=json output for search
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files
