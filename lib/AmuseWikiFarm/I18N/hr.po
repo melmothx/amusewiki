@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-27 19:39+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2014-07-27 19:47+0200\n"
+"Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,8 @@ msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
-"Fusnota je redak koji započinje brojem između uglatih zagrada, bez bez početnog razmaka"
+"Fusnota je redak koji započinje brojem između uglatih zagrada, bez\n"
+"početnog razmaka"
 
 #: root/src/edit/edit.tt:318
 msgid "A line which starts with 2 or more whitespaces is a quotation."
@@ -129,8 +130,11 @@ msgid ""
 "      name, title, language, eventual number for disambiguation, e.g.\n"
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
-msgstr "URI je niz znakova koji na jedinstven način određuje tekst u arhivi. Teoretski može biti bilo što, ali zbog dosljednosti molimo da se pridržavate ovog principa: autor, ime, naslov, jezik, eventualni broj, npr. "errico-malatesta-anarchy-2. Inače to nije potrebno."
-
+msgstr ""
+"URI je niz znakova koji na jedinstven način određuje tekst u arhivi.\n"
+"Teoretski može biti bilo što, ali zbog dosljednosti molimo da se\n"
+"pridržavate ovog principa: autor, ime, naslov, jezik, eventualni broj,\n"
+"npr. \"errico-malatesta-anarchy-2\". Inače to nije potrebno."
 
 #: root/src/macros.tt:5
 msgid "Are you sure?"
@@ -547,7 +551,7 @@ msgstr "HTML"
 
 #: root/src/admin/edit.tt:7
 msgid "Half Letter paper"
-msgstr "Polovica "Letter" papira"
+msgstr "Polovica “Letter” papira"
 
 #: root/src/macros.tt:6
 msgid "Heading"
@@ -597,7 +601,7 @@ msgstr "Ako želiš prijelom teksta izaberi obrazac"
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
-msgstr "Učitavanje slika u idućem koraku, gdje možeš vidjeti i pregledati izmjene".
+msgstr "Učitavanje slika u idućem koraku, gdje možeš vidjeti i pregledati izmjene"
 
 #: root/src/macros.tt:21
 msgid "Image url"
@@ -624,7 +628,7 @@ msgstr "U oba slučaja tekst će biti obrnuto uvučen"
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
-msgstr "U tekstu se broj unutar uglatih zagrada interpretira kao fusnota, ako fusnota postoji".
+msgstr "U tekstu se broj unutar uglatih zagrada interpretira kao fusnota, ako fusnota postoji"
 
 #: root/src/edit/edit.tt:344
 msgid "Inline elements"
@@ -681,7 +685,10 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
-"Pazi, ja čistim tekst i vraćam ti ga u wiki formatu korištenom na ovom sajtu. Ti ga trebaš sam pregledati, provjeriti i spremiti. Rijetko korišteno oblikovanje bit će izgubljeno u toku procesa. Molim te, provjeri pregled na slijedećoj stranici, gdje možeš dodati i slike."
+"Pazi, ja čistim tekst i vraćam ti ga u wiki formatu korištenom na ovom\n"
+"sajtu. Ti ga trebaš sam pregledati, provjeriti i spremiti. Rijetko\n"
+"korišteno oblikovanje bit će izgubljeno u toku procesa. Molim te,\n"
+"provjeri pregled na slijedećoj stranici, gdje možeš dodati i slike."
 
 #: root/src/bookbuilder/index.tt:78
 msgid "Keep in mind that some character may be missing in the required font."
@@ -693,7 +700,9 @@ msgid ""
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
-"Pazi, neobično i kompleksno oblikovani tekstovi bit će pojednostavljeni. Možeš dodati tabele i slike samo na slijedećoj stranici."
+"Pazi, neobično i kompleksno oblikovani tekstovi bit će\n"
+"pojednostavljeni. Možeš dodati tabele i slike samo na slijedećoj\n"
+"stranici."
 
 #: root/src/edit/newtext.tt:140
 msgid "Language"
@@ -724,11 +733,11 @@ msgstr "Ostavi prazno ako želiš odmah objaviti."
 #: root/src/text.tt:118
 #: root/src/text.tt:119
 msgid "Letter imposed PDF"
-msgstr "Format "Letter" u PDF formatu"
+msgstr "Format \"Letter\" u PDF formatu"
 
 #: root/src/admin/edit.tt:6
 msgid "Letter paper"
-msgstr "Papir "Letter" format"
+msgstr "Papir \"Letter\" format"
 
 #: root/src/macros.tt:23
 msgid "Link"
@@ -1034,7 +1043,11 @@ msgid ""
 "    another one, so publishing this one, you'll end up reverting a\n"
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
-msgstr "Pazi, ako vidiš "Prisili objavljivanje" kao akciju znači da je druga izmjena za isti tekst već objavljena, dakle, forsirajući objavljivanje izgubit će se izmjene već odobrene. Zato, nemoj to činiti, osim ako zaista znaš što radiš."
+msgstr ""
+"Pazi, ako vidiš \"Prisili objavljivanje\" kao akciju znači da je druga\n"
+"izmjena za isti tekst već objavljena, dakle, forsirajući objavljivanje\n"
+"izgubit će se izmjene već odobrene. Zato, nemoj to činiti, osim ako\n"
+"zaista znaš što radiš."
 
 #: root/src/edit/edit.tt:180
 msgid "Please leave a mail if you want to be contacted about this change"
@@ -1056,8 +1069,7 @@ msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
-msgstr ""
-"Ako želiš zalijepiti (copy-paste) iz Word/OpenOffice/LibreOffice/HTML dokumenta možeš to učiniti samo ovdje da bi sačuvao izvorni izgled teksta (kurziv, podebljano itd.)"
+msgstr "Ako želiš zalijepiti (copy-paste) iz Word/OpenOffice/LibreOffice/HTML dokumenta možeš to učiniti samo ovdje da bi sačuvao izvorni izgled teksta (kurziv, podebljano itd.)"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:118
 #: root/src/user/human.tt:5
@@ -1137,12 +1149,11 @@ msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
-msgstr ""
-"Dodatne informacije napiši ovdje (naslov originala, prevodilac itd.). Fusnote su dio teksta, ne stavljaj ih u Napomene."
+msgstr "Dodatne informacije napiši ovdje (naslov originala, prevodilac itd.). Fusnote su dio teksta, ne stavljaj ih u Napomene."
 
 #: root/src/admin/edit.tt:8
 msgid "Quarter Letter paper"
-msgstr "Četvrtina "Letter" papira"
+msgstr "Četvrtina \"Letter\" papira"
 
 #: root/src/search/index.tt:114
 #: root/src/search/index.tt:154
@@ -1449,7 +1460,7 @@ msgstr "Lozinka će biti poslana ovu e-mail adresu"
 msgid ""
 "The prefix “r” means logical page disposed upside-down, rotated\n"
 "by 180 degrees."
-msgstr "Prefiks "r" označava logičku stranicu rotiranu za 180 stupnjeva."
+msgstr "Prefiks \"r\" označava logičku stranicu rotiranu za 180 stupnjeva."
 
 #: root/src/email/commit.tt:17
 msgid "The revision has the following messages"
@@ -1466,7 +1477,6 @@ msgid ""
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr "Naslov dokumenta, u svrhu popisa. Obično se ne koriti u hrvatsko-srpskom jeziku."
-
 
 #: root/src/edit/edit.tt:471
 msgid "The title of the document. The only mandatory directive."
@@ -1701,16 +1711,14 @@ msgstr "Odakle dolazi ovaj tekst?"
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
-msgstr ""
-"Širina naslovne slike u postotku širine teksta. Pusti prazno ako ne trebaš naslovnu sliku"
+msgstr "Širina naslovne slike u postotku širine teksta. Pusti prazno ako ne trebaš naslovnu sliku"
 
 #: root/src/bookbuilder/index.tt:227
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
-msgstr ""
-"Možeš promjeniti fontove, dimenzije, papir, margine u tekstovima biblioteke. Možeš stvoriti vlastitu zbirku za tvoj buklet. Isprobaj!"
+msgstr "Možeš promjeniti fontove, dimenzije, papir, margine u tekstovima biblioteke. Možeš stvoriti vlastitu zbirku za tvoj buklet. Isprobaj!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:129
 msgid "Wrong answer!"
@@ -1746,8 +1754,7 @@ msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
-msgstr ""
-"Klikni na “Plus”, pored preuzimanja, kod svakog teksta da bi ga dodao svojoj zbirci. Kasnije možeš dodati i izbrisati tekstove."
+msgstr "Klikni na “Plus”, pored preuzimanja, kod svakog teksta da bi ga dodao svojoj zbirci. Kasnije možeš dodati i izbrisati tekstove."
 
 #. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
@@ -1781,7 +1788,8 @@ msgstr "Trebao bi promjeniti svoju lozinku sada na %1"
 #: root/src/edit/edit.tt:204
 msgid "Your changes are saved and can be checked every time you hit Preview or Commit"
 msgstr ""
-"Tvoje izmjene su spremljene i možeš ih pregledati svaki put kada klikneš na “Pregled” ili “Spremi”".
+"Tvoje izmjene su spremljene i možeš ih pregledati svaki put kada\n"
+"klikneš na “Pregled” ili “Spremi”"
 
 #: root/src/macros.tt:10
 msgid "Your chapter here..."
