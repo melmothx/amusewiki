@@ -595,8 +595,7 @@ sub compile_options {
     if (my $dir = $self->ttdir) {
         $opts{ttdir} = $dir;
     }
-    my %extra;
-    foreach my $ext (qw/sitename siteslogan logo
+    foreach my $ext (qw/siteslogan logo
                         papersize division fontsize
                         bcor mainfont twoside/) {
         $opts{extra}{$ext} = $self->$ext;
