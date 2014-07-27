@@ -121,7 +121,8 @@ the tree.
   CLOSED: [2014-07-20 dom 13:08]
 * DONE test for entities
   CLOSED: [2014-07-27 dom 15:39]
-* TODO fmt=json output for search
+* DONE fmt=json output for search
+  CLOSED: [2014-07-27 dom 16:12]
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files

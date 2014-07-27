@@ -21,6 +21,8 @@ Catalyst Controller.
 
 =cut
 
+use JSON qw/to_json/;
+
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
@@ -62,6 +64,23 @@ sub index :Path :Args(0) {
 
     foreach my $res (@results) {
         $res->{text} = $site->titles->by_uri($res->{pagename});
+    }
+
+    if ($c->req->params->{fmt} and $c->req->params->{fmt} eq 'json') {
+        my @unrolled;
+        foreach my $res (@results) {
+            my $txt = $res->{text};
+            push @unrolled, {
+                             title => $txt->title,
+                             author => $txt->author,
+                             url => $c->uri_for($txt->full_uri)->as_string,
+                            };
+        }
+        $c->res->content_type('application/json');
+        $c->response->body(to_json(\@unrolled, { ascii => 1,
+                                                 pretty => 1 }));
+        $c->detach();
+        return;
     }
 
     my $paging = $xapian->page;
