@@ -539,7 +539,6 @@ use Data::Dumper;
 use AmuseWikiFarm::Archive::BookBuilder;
 use JSON ();
 use Text::Amuse::Compile::Utils ();
-use HTML::Entities qw/encode_entities/;
 
 =head2 repo_root_rel
 
@@ -1216,6 +1215,17 @@ sub lexicon_file {
     return File::Spec->catfile($self->path_for_site_files, "lexicon.json");
 }
 
+has is_able_to_translate => (is => 'ro',
+                             isa => 'Int',
+                             lazy => 1,
+                             builder => '_build_is_able_to_translate');
+
+sub _build_is_able_to_translate {
+    my $self = shift;
+    my $hashref = $self->lexicon_hashref;
+    return scalar(keys %$hashref);
+}
+
 has lexicon_hashref => (is => 'ro',
                                isa => 'HashRef',
                                lazy => 1,
@@ -1235,13 +1245,8 @@ sub _build_lexicon_hashref {
 
 sub lexicon_translate {
     my ($self, $lang, $term) = @_;
-    return $term unless $lang && $term;
-    if (my $translation = $self->lexicon_hashref->{$term}->{$lang}) {
-        return encode_entities($translation, q{<>&"'});
-    }
-    else {
-        return $term;
-    }
+    return $term unless $lang && $term && $self->is_able_to_translate;
+    return $self->lexicon_hashref->{$term}->{$lang} || $term;
 }
 
 sub multilanguage_list {

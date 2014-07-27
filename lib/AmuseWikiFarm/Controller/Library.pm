@@ -5,7 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
-
+use HTML::Entities qw/decode_entities/;
 
 =head1 NAME
 
@@ -279,7 +279,7 @@ sub text_serving :Private {
     $c->stash(
               template => 'text.tt',
               text => $text,
-              page_title => $text->title,
+              page_title => decode_entities($text->title),
              );
 }
 

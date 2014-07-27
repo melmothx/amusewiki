@@ -110,6 +110,7 @@ sub single_category :Private {
         my $texts = $cat->titles->published_texts;
         my $current_locale = $c->stash->{current_locale_code};
 
+        # page_title is html-escaped, so unescape it back
         $c->stash(page_title => decode_entities($cat->loc_name($current_locale)),
                   template => 'category-details.tt',
                   texts => $texts,
