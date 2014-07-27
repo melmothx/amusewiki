@@ -144,8 +144,11 @@ sub language :Path('/set-language') :Args(0) {
         }
     }
     my $goto = '/';
+    # when reloading the page, go to / if we are in an /special/index page
     if (my $path = $c->request->params->{goto}) {
-        $goto .= $path;
+        if ($path !~ m%^/special/index%) {
+            $goto .= $path;
+        }
     }
     $c->response->redirect($c->uri_for($goto));
 }
