@@ -1,5 +1,5 @@
 [% # -*- mode: html -*- %]
-<h2>[% page_title %]</h2>
+<h2>[% page_title | html %]</h2>
 <div><br /></div>
 [%- # This is overly complicated to get the columns right...      -%]
 [%- # alternative approach would be to split the list in the code -%]
@@ -27,7 +27,7 @@
 [%- # end of the column interpolation %]
       <li class="list-group-item clearfix">
         <a href="[%- c.uri_for(cat.full_uri) -%]">
-          [%- cat.loc_name(current_locale_code) | html -%]
+          [%- cat.loc_name(current_locale_code) -%]
         </a>
         <span class="badge">[%- cat.text_count -%]</span>
       </li>

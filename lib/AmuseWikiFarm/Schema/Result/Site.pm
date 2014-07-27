@@ -539,6 +539,7 @@ use Data::Dumper;
 use AmuseWikiFarm::Archive::BookBuilder;
 use JSON ();
 use Text::Amuse::Compile::Utils ();
+use HTML::Entities qw/encode_entities/;
 
 =head2 repo_root_rel
 
@@ -1235,7 +1236,12 @@ sub _build_lexicon_hashref {
 sub lexicon_translate {
     my ($self, $lang, $term) = @_;
     return $term unless $lang && $term;
-    return $self->lexicon_hashref->{$term}->{$lang} || $term;
+    if (my $translation = $self->lexicon_hashref->{$term}->{$lang}) {
+        return encode_entities($translation, q{<>&"'});
+    }
+    else {
+        return $term;
+    }
 }
 
 sub multilanguage_list {
