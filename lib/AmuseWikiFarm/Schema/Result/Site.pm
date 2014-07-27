@@ -1544,12 +1544,16 @@ sub remote_gits_hashref {
 Return a list where each element is an hashref describing the special
 pages we have and has the following keys: C<uri>, C<name>.
 
+The index pages are excluded.
+
 =cut
 
 sub special_list {
     my $self = shift;
     my @list = $self->titles->published_specials
-      ->search({},
+      ->search({
+                uri => { -not_like => 'index%' },
+               },
                { columns => [qw/title uri/] });
     my @out;
     foreach my $l (@list) {
