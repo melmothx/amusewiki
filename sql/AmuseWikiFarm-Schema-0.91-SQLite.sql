@@ -1,21 +1,36 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Thu Jul 24 09:54:49 2014
+-- Created on Mon Jul 28 10:33:06 2014
 -- 
 
 BEGIN TRANSACTION;
 
 --
--- Table: role
+-- Table: roles
 --
-DROP TABLE role;
+DROP TABLE roles;
 
-CREATE TABLE role (
+CREATE TABLE roles (
   id INTEGER PRIMARY KEY NOT NULL,
   role varchar(128)
 );
 
-CREATE UNIQUE INDEX role_unique ON role (role);
+CREATE UNIQUE INDEX role_unique ON roles (role);
+
+--
+-- Table: users
+--
+DROP TABLE users;
+
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY NOT NULL,
+  username varchar(255) NOT NULL,
+  password varchar(255) NOT NULL,
+  email varchar(255),
+  active integer(1) NOT NULL DEFAULT 1
+);
+
+CREATE UNIQUE INDEX username_unique ON users (username);
 
 --
 -- Table: site
@@ -59,21 +74,6 @@ CREATE TABLE site (
   twoside integer(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (id)
 );
-
---
--- Table: user
---
-DROP TABLE user;
-
-CREATE TABLE user (
-  id INTEGER PRIMARY KEY NOT NULL,
-  username varchar(255) NOT NULL,
-  password varchar(255) NOT NULL,
-  email varchar(255),
-  active integer(1) NOT NULL DEFAULT 1
-);
-
-CREATE UNIQUE INDEX username_unique ON user (username);
 
 --
 -- Table: attachment
@@ -241,8 +241,8 @@ CREATE TABLE user_role (
   user_id integer NOT NULL,
   role_id integer NOT NULL,
   PRIMARY KEY (user_id, role_id),
-  FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE INDEX user_role_idx_role_id ON user_role (role_id);
@@ -259,7 +259,7 @@ CREATE TABLE user_site (
   site_id varchar(8) NOT NULL,
   PRIMARY KEY (user_id, site_id),
   FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE INDEX user_site_idx_site_id ON user_site (site_id);

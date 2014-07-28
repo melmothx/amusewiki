@@ -1,16 +1,30 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Jul 24 09:54:50 2014
+-- Created on Mon Jul 28 10:33:08 2014
 -- 
 --
--- Table: role.
+-- Table: roles.
 --
-DROP TABLE "role" CASCADE;
-CREATE TABLE "role" (
+DROP TABLE "roles" CASCADE;
+CREATE TABLE "roles" (
   "id" serial NOT NULL,
   "role" character varying(128),
   PRIMARY KEY ("id"),
   CONSTRAINT "role_unique" UNIQUE ("role")
+);
+
+--
+-- Table: users.
+--
+DROP TABLE "users" CASCADE;
+CREATE TABLE "users" (
+  "id" serial NOT NULL,
+  "username" character varying(255) NOT NULL,
+  "password" character varying(255) NOT NULL,
+  "email" character varying(255),
+  "active" smallint DEFAULT 1 NOT NULL,
+  PRIMARY KEY ("id"),
+  CONSTRAINT "username_unique" UNIQUE ("username")
 );
 
 --
@@ -53,20 +67,6 @@ CREATE TABLE "site" (
   "mainfont" character varying(255) DEFAULT 'Linux Libertine O' NOT NULL,
   "twoside" smallint DEFAULT 0 NOT NULL,
   PRIMARY KEY ("id")
-);
-
---
--- Table: user.
---
-DROP TABLE "user" CASCADE;
-CREATE TABLE "user" (
-  "id" serial NOT NULL,
-  "username" character varying(255) NOT NULL,
-  "password" character varying(255) NOT NULL,
-  "email" character varying(255),
-  "active" smallint DEFAULT 1 NOT NULL,
-  PRIMARY KEY ("id"),
-  CONSTRAINT "username_unique" UNIQUE ("username")
 );
 
 --
@@ -270,16 +270,16 @@ ALTER TABLE "revision" ADD CONSTRAINT "revision_fk_title_id" FOREIGN KEY ("title
   REFERENCES "title" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "user_role" ADD CONSTRAINT "user_role_fk_role_id" FOREIGN KEY ("role_id")
-  REFERENCES "role" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  REFERENCES "roles" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "user_role" ADD CONSTRAINT "user_role_fk_user_id" FOREIGN KEY ("user_id")
-  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "user_site" ADD CONSTRAINT "user_site_fk_site_id" FOREIGN KEY ("site_id")
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "user_site" ADD CONSTRAINT "user_site_fk_user_id" FOREIGN KEY ("user_id")
-  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+  REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE "title_category" ADD CONSTRAINT "title_category_fk_category_id" FOREIGN KEY ("category_id")
   REFERENCES "category" ("id") ON DELETE CASCADE ON UPDATE CASCADE;

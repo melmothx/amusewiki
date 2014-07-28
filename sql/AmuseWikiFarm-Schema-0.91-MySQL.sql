@@ -1,15 +1,15 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Jul 24 09:54:48 2014
+-- Created on Mon Jul 28 10:33:05 2014
 -- 
 SET foreign_key_checks=0;
 
-DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `roles`;
 
 --
--- Table: `role`
+-- Table: `roles`
 --
-CREATE TABLE `role` (
+CREATE TABLE `roles` (
   `id` integer NOT NULL auto_increment,
   `role` varchar(128) NULL,
   PRIMARY KEY (`id`),
@@ -59,12 +59,12 @@ CREATE TABLE `site` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 
 --
--- Table: `user`
+-- Table: `users`
 --
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` integer NOT NULL auto_increment,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -236,8 +236,8 @@ CREATE TABLE `user_role` (
   INDEX `user_role_idx_role_id` (`role_id`),
   INDEX `user_role_idx_user_id` (`user_id`),
   PRIMARY KEY (`user_id`, `role_id`),
-  CONSTRAINT `user_role_fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `user_role_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `user_role_fk_role_id` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_role_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `user_site`;
@@ -252,7 +252,7 @@ CREATE TABLE `user_site` (
   INDEX `user_site_idx_user_id` (`user_id`),
   PRIMARY KEY (`user_id`, `site_id`),
   CONSTRAINT `user_site_fk_site_id` FOREIGN KEY (`site_id`) REFERENCES `site` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `user_site_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `user_site_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS `title_category`;
