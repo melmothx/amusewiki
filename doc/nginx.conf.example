@@ -1,27 +1,41 @@
 # -*- mode: conf -*-
 
 server {
-	server_name site1.amusewiki.org site2.amusewiki.org;
-	root /home/amuse/amusewiki/root;
-	location = /rss.xml {
-		rewrite ^/rss\.xml$ /feed permanent;
-	}
-	location /src {
-		deny all;
-	}
-	location /themes {
-		deny all;
-	}
-	location / {
-		try_files $uri @proxy;
-		expires max;
-	}
-	location @proxy {
-    # or
-    # include /etc/nginx/fastcgi_params;
-    # fastcgi_param SCRIPT_NAME '';
-    # fastcgi_param PATH_INFO   $fastcgi_script_name;
-		include proxy_params;
-		proxy_pass http://127.0.0.1:5001;
-	}
+    server_name en.amusewiki.org atr.amusewiki.org yu.amusewiki.org
+                mk.amusewiki.org  fi.amusewiki.org es.amusewiki.org
+                ru.amusewiki.org sandbox.amusewiki.org;
+    root /home/amuse/amusewiki/root;
+    location = /rss.xml {
+        rewrite ^/rss\.xml$ /feed permanent;
+    }
+    location /src {
+        deny all;
+    }
+    location /themes {
+        deny all;
+    }
+    location /private/repo/ {
+        internal;
+        alias /home/amuse/amusewiki/repo/;
+    }
+    location /private/staging/ {
+        internal;
+        alias /home/amuse/amusewiki/staging/;
+    }
+
+    location / {
+        try_files $uri @proxy;
+        expires max;
+    }
+    location @proxy {
+        access_log /var/log/nginx/library.log hitcount;
+#       include proxy_params;
+#       proxy_pass http://127.0.0.1:5001;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_param SCRIPT_NAME '';
+        fastcgi_param PATH_INFO   $fastcgi_script_name;
+        fastcgi_param HTTP_X_SENDFILE_TYPE X-Accel-Redirect;
+        fastcgi_param HTTP_X_ACCEL_MAPPING /home/amuse/amusewiki=/private;
+        fastcgi_pass  unix:/home/amuse/amusewiki/var/amw.sock;
+    }
 }
