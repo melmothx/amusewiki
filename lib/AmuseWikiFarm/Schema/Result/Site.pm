@@ -498,8 +498,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-13 11:24:31
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dtkeufFUaJna0UO8oGM7TA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-28 10:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vRKCirxAYPcDGuxhPLO6rg
 
 =head2 other_sites
 

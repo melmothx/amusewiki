@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<role>
+=head1 TABLE: C<roles>
 
 =cut
 
-__PACKAGE__->table("role");
+__PACKAGE__->table("roles");
 
 =head1 ACCESSORS
 
@@ -113,8 +113,8 @@ Composing rels: L</user_roles> -> user
 __PACKAGE__->many_to_many("users", "user_roles", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-05-29 17:18:46
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qSkBiDA0MY2KJW2eRsc2zA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-28 10:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UZouveIzRcepf0EQNI95Ng
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

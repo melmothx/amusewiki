@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<user>
+=head1 TABLE: C<users>
 
 =cut
 
-__PACKAGE__->table("user");
+__PACKAGE__->table("users");
 
 =head1 ACCESSORS
 
@@ -163,8 +163,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-05 19:31:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:HecE7jkU/Xs9Wqgm1MLvzQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-28 10:19:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8aLrAQV516kD4TOT61Bfjw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

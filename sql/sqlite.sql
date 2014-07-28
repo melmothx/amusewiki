@@ -64,7 +64,7 @@ CREATE TABLE site (
        twoside INTEGER(1) NOT NULL DEFAULT 0
 );
 
-CREATE TABLE user (
+CREATE TABLE users (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        username VARCHAR(255) NOT NULL,
        password VARCHAR(255) NOT NULL,
@@ -72,18 +72,18 @@ CREATE TABLE user (
        active   INTEGER(1) NOT NULL DEFAULT 1
 );
 
-CREATE UNIQUE INDEX unique_username ON user (username);
+CREATE UNIQUE INDEX unique_username ON users (username);
 
 
-CREATE TABLE role (
+CREATE TABLE roles (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        role VARCHAR(128)
 );
 
-CREATE UNIQUE INDEX unique_role ON role (role);
+CREATE UNIQUE INDEX unique_role ON roles (role);
 
 CREATE TABLE user_site (
-       user_id INTEGER NOT NULL REFERENCES user(id)
+       user_id INTEGER NOT NULL REFERENCES users(id)
                        ON DELETE CASCADE ON UPDATE CASCADE,
        site_id VARCHAR(8) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
@@ -91,8 +91,8 @@ CREATE TABLE user_site (
 );
 
 CREATE TABLE user_role (
-        user_id INTEGER REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        role_id INTEGER REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        user_id INTEGER REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
         PRIMARY KEY (user_id, role_id)
 );
 
