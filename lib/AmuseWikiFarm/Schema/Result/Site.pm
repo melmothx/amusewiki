@@ -850,9 +850,11 @@ sub import_text_from_html_params {
                  f_suffix => '.muse',
                  status => 'editing',
                  f_class => $f_class,
+                 # dummy as well, 40 years in the past
+                 f_timestamp => DateTime->from_epoch(epoch => 1),
                 };
 
-    foreach my $f (qw/f_path f_archive_rel_path f_timestamp
+    foreach my $f (qw/f_path f_archive_rel_path
                       f_full_path_name f_name/) {
         $bogus->{$f} = '';
     }
