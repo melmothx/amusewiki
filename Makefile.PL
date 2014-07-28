@@ -35,7 +35,7 @@ requires 'MIME::Types' => '2.04';
 
 # for fcgi
 requires 'FCGI';
-requries 'FCGI::ProcManager';
+requires 'FCGI::ProcManager';
 
 requires 'Unicode::Collate';
 requires 'DBIx::Class';
