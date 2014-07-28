@@ -5,11 +5,16 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
 use Test::WWW::Mechanize::Catalyst;
+use AmuseWikiFarm::Schema;
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
 
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
+my $site = $schema->resultset('Site')->find('0blog0');
+$site->locale('en');
+$site->update;
 
 my @norobots = (
                 '/bookbuilder/add',
@@ -63,3 +68,5 @@ foreach my $link (@yesrobots) {
 }
 
 
+$site->locale('hr');
+$site->update;
