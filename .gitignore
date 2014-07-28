@@ -28,6 +28,7 @@ log/jobs/*.log
 *~
 *.db
 var/*
+!var/.exists
 bootstrap-amw/bootstrap/*
 
 
