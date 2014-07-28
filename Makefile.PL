@@ -33,6 +33,10 @@ requires 'Plack::Middleware::XSendfile';
 # needs a recent thing
 requires 'MIME::Types' => '2.04';
 
+# for fcgi
+requires 'FCGI';
+requries 'FCGI::ProcManager';
+
 requires 'Unicode::Collate';
 requires 'DBIx::Class';
 requires 'DBD::SQLite';
