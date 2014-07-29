@@ -110,7 +110,7 @@ msgstr "L'alias non può puntare a se stesso"
 msgid "All languages"
 msgstr "Tutte le lingue"
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:88 root/src/layout.tt:276
+#: lib/AmuseWikiFarm/Controller/Publish.pm:88 root/src/layout.tt:270
 msgid "All revisions"
 msgstr "Tutte le revisioni"
 
@@ -150,7 +150,7 @@ msgstr "Immagini allegate"
 msgid "Author"
 msgstr "Autore"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:72 root/src/edit/edit.tt:221
+#: lib/AmuseWikiFarm/Controller/Category.pm:73 root/src/edit/edit.tt:221
 #: root/src/edit/edit.tt:481 root/src/edit/newtext.tt:75
 #: root/src/layout.tt:140 root/src/text.tt:41
 msgid "Authors"
@@ -186,7 +186,7 @@ msgstr "Blog"
 msgid "Bold"
 msgstr "Grassetto"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:28 root/src/layout.tt:178
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:28 root/src/layout.tt:328
 msgid "Bookbuilder"
 msgstr "Impaginatore"
 
@@ -281,9 +281,14 @@ msgstr "Errore nella compilazione del testo"
 msgid "Create"
 msgstr "Crea"
 
-#: root/src/layout.tt:296 root/src/user/create.tt:3
+#: root/src/layout.tt:290 root/src/user/create.tt:3
 msgid "Create a new librarian"
 msgstr "Crea un nuovo bibliotecario"
+
+#: root/src/layout.tt:253
+#, fuzzy
+msgid "Create a new special page"
+msgstr "Crea un nuovo sito"
 
 #: root/src/console/alias_display.tt:59
 msgid "Create a topic alias"
@@ -318,7 +323,7 @@ msgstr "Data"
 msgid "Date of the original publication"
 msgstr "Data della pubblicazione originale"
 
-#: root/src/layout.tt:281
+#: root/src/layout.tt:275
 msgid "Deferred/Deleted texts"
 msgstr "Testi non ancora pubblicati o rimossi"
 
@@ -396,7 +401,7 @@ msgstr "Modifica"
 msgid "Edit site %1"
 msgstr "Modifica il sito %1"
 
-#: root/src/layout.tt:313
+#: root/src/layout.tt:307
 msgid "Edit site configuration"
 msgstr "Modifica la configurazione del sito"
 
@@ -418,16 +423,16 @@ msgstr "Modifica"
 msgid "Email"
 msgstr "e-mail"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:259
+#: lib/AmuseWikiFarm/Controller/User.pm:262
 msgid "Email sent!"
 msgstr "e-mail inviata"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:302
+#: lib/AmuseWikiFarm/Controller/User.pm:305
 msgid "Email updated"
 msgstr "e-mail aggiornata"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:222
-#: lib/AmuseWikiFarm/Controller/User.pm:313
+#: lib/AmuseWikiFarm/Controller/User.pm:225
+#: lib/AmuseWikiFarm/Controller/User.pm:316
 msgid "Emails do not match"
 msgstr "Le e-mail non coincidono"
 
@@ -436,7 +441,7 @@ msgid "Erase this revision"
 msgstr "Cancella questa revisione"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:345
-#: lib/AmuseWikiFarm/Controller/User.pm:256
+#: lib/AmuseWikiFarm/Controller/User.pm:259
 msgid "Error sending mail!"
 msgstr "Errore nell'invio dell'e-mail"
 
@@ -621,12 +626,12 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Elementi per la riga"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:234 root/src/layout.tt:265
+#: lib/AmuseWikiFarm/Controller/Console.pm:234 root/src/layout.tt:259
 msgid "Internal list of translations"
 msgstr "Lista interna delle traduzioni"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:203
-#: lib/AmuseWikiFarm/Controller/User.pm:305
+#: lib/AmuseWikiFarm/Controller/User.pm:206
+#: lib/AmuseWikiFarm/Controller/User.pm:308
 msgid "Invalid email"
 msgstr "E-mail non valida"
 
@@ -634,7 +639,7 @@ msgstr "E-mail non valida"
 msgid "Invalid name"
 msgstr "Nome non valido"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:194
+#: lib/AmuseWikiFarm/Controller/User.pm:197
 msgid "Invalid username"
 msgstr "Nome utente non valido"
 
@@ -654,7 +659,7 @@ msgstr "Lavoro cancellato"
 msgid "Job not found"
 msgstr "Lavoro non trovato"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:119 root/src/layout.tt:318
+#: lib/AmuseWikiFarm/Controller/Admin.pm:119 root/src/layout.tt:312
 msgid "Jobs"
 msgstr "Lavori"
 
@@ -699,7 +704,7 @@ msgstr "Lingua"
 msgid "Language code of the document (2 or 3 letters). "
 msgstr "Codice lingua del documento (2 o 3 lettere)"
 
-#: root/src/layout.tt:185 root/src/layout.tt:187
+#: root/src/layout.tt:179 root/src/layout.tt:181
 msgid "Language selection"
 msgstr "Selezione lingua"
 
@@ -727,7 +732,7 @@ msgstr "Carta Letter"
 msgid "Link"
 msgstr "Collegamento"
 
-#: root/src/edit/edit.tt:282
+#: root/src/edit/edit.tt:282 root/src/edit/edit.tt:440
 msgid "Links and images"
 msgstr "Collegamenti e immagini"
 
@@ -755,7 +760,7 @@ msgstr "Entra"
 msgid "Login"
 msgstr "Entra"
 
-#: root/src/layout.tt:324
+#: root/src/layout.tt:318
 msgid "Logout"
 msgstr "Esci"
 
@@ -823,7 +828,7 @@ msgstr "Modalità"
 msgid "Moderated wiki"
 msgstr "Wiki moderato"
 
-#: root/src/layout.tt:214
+#: root/src/layout.tt:208
 msgid "More"
 msgstr "Altro"
 
@@ -923,7 +928,7 @@ msgstr "O entra, se possiedi un'utenza"
 msgid "Or wrap it in"
 msgstr "O racchiudi in"
 
-#: root/src/layout.tt:233
+#: root/src/layout.tt:227
 msgid "Other languages"
 msgstr "Altre lingue"
 
@@ -961,12 +966,12 @@ msgstr "Parte, solo per libri con un elevato numero di pagine"
 msgid "Password"
 msgstr "Password"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:212
-#: lib/AmuseWikiFarm/Controller/User.pm:289
+#: lib/AmuseWikiFarm/Controller/User.pm:215
+#: lib/AmuseWikiFarm/Controller/User.pm:292
 msgid "Password too short"
 msgstr "La password è troppo breve"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:286
+#: lib/AmuseWikiFarm/Controller/User.pm:289
 msgid "Password updated"
 msgstr "Password aggiornata"
 
@@ -974,8 +979,8 @@ msgstr "Password aggiornata"
 msgid "Password, minimum 8 characters."
 msgstr "Password, minimo otto caratteri."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:217
-#: lib/AmuseWikiFarm/Controller/User.pm:293
+#: lib/AmuseWikiFarm/Controller/User.pm:220
+#: lib/AmuseWikiFarm/Controller/User.pm:296
 msgid "Passwords do not match"
 msgstr "Le password non coincidono"
 
@@ -983,7 +988,7 @@ msgstr "Le password non coincidono"
 msgid "Payload"
 msgstr "Contenuto"
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:271
+#: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:265
 msgid "Pending revisions"
 msgstr "Revisioni in attesa di approvazione"
 
@@ -1155,11 +1160,11 @@ msgstr "Quota superata, troppe pagine"
 msgid "Quotes"
 msgstr "Citazioni"
 
-#: root/src/layout.tt:378
+#: root/src/layout.tt:379
 msgid "RSS feed"
 msgstr "Feed RSS"
 
-#: root/src/layout.tt:381
+#: root/src/layout.tt:382
 msgid "Random"
 msgstr "Pagina casuale"
 
@@ -1172,15 +1177,15 @@ msgid "Recheck"
 msgstr "Ricontrolla"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:174
-#: root/src/console/alias_display.tt:3 root/src/layout.tt:291
+#: root/src/console/alias_display.tt:3 root/src/layout.tt:285
 msgid "Redirections"
 msgstr "Redirezioni"
 
-#: root/src/layout.tt:231
+#: root/src/layout.tt:225
 msgid "Related projects"
 msgstr "Progetti correlati"
 
-#: root/src/layout.tt:286
+#: root/src/layout.tt:280
 msgid "Remotes"
 msgstr "Archivi remoti"
 
@@ -1223,9 +1228,10 @@ msgstr "La revisione per %1 è stata cancellata"
 
 #: root/src/bookbuilder/schemas.tt:25
 msgid "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
-msgstr "Uguale a 2up, ma ogni pagina è ruotata di 90 gradi in senso antiorario."
+msgstr ""
+"Uguale a 2up, ma ogni pagina è ruotata di 90 gradi in senso antiorario."
 
-#: lib/AmuseWikiFarm/Controller/Search.pm:79 root/src/layout.tt:337
+#: lib/AmuseWikiFarm/Controller/Search.pm:98 root/src/layout.tt:338
 msgid "Search"
 msgstr "Cerca"
 
@@ -1294,7 +1300,7 @@ msgstr "Nome del sito"
 msgid "Site slogan"
 msgstr "Slogan del sito"
 
-#: root/src/layout.tt:308
+#: root/src/layout.tt:302
 msgid "Sites"
 msgstr "Siti"
 
@@ -1302,12 +1308,12 @@ msgstr "Siti"
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Così siamo sicuri di non inviare le password a gente casuale"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:176
+#: lib/AmuseWikiFarm/Controller/User.pm:179
 msgid "Some fields are missing, all are required"
 msgstr "Alcuni campi mancano, ma tutti sono richiesti"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:185
-#: lib/AmuseWikiFarm/Controller/User.pm:309
+#: lib/AmuseWikiFarm/Controller/User.pm:188
+#: lib/AmuseWikiFarm/Controller/User.pm:312
 msgid "Some fields are too long"
 msgstr "Alcuni campi sono troppo lunghi"
 
@@ -1374,7 +1380,7 @@ msgstr ""
 "Tale intestazione provoca la rimozione del testo dall'archivio e la\n"
 "sua sostituzione con una redirezione, e sarà qui mostrato."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:228
+#: lib/AmuseWikiFarm/Controller/User.pm:231
 msgid "Such username already exists"
 msgstr "Nome utente già esistente"
 
@@ -1436,7 +1442,7 @@ msgstr "il prefisso “r” indica una pagina logica ruotata di 180 gradi."
 msgid "The revision has the following messages"
 msgstr "La revisione contiene i seguenti messaggi"
 
-#: root/src/layout.tt:356
+#: root/src/layout.tt:357
 msgid "The text was added to the bookbuilder"
 msgstr "Il testo è stato aggiunto all'impaginatore"
 
@@ -1570,7 +1576,7 @@ msgstr "Mostra/nascondi il sommario"
 msgid "Topic"
 msgstr "Argomento"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:235
+#: lib/AmuseWikiFarm/Controller/Category.pm:79 root/src/edit/edit.tt:235
 #: root/src/edit/edit.tt:497 root/src/edit/newtext.tt:101
 #: root/src/layout.tt:146 root/src/layout.tt:162 root/src/text.tt:58
 msgid "Topics"
@@ -1617,7 +1623,7 @@ msgstr "Testi non pubblicati"
 msgid "Update"
 msgstr "Aggiorna"
 
-#: root/src/layout.tt:301
+#: root/src/layout.tt:295
 msgid "Update account info"
 msgstr "Aggiorna le informazioni relative all'utenza"
 
@@ -1642,11 +1648,11 @@ msgstr ""
 "una riga vuota per separare un nuovo paragrafo."
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/User.pm:236
+#: lib/AmuseWikiFarm/Controller/User.pm:239
 msgid "User %1 created!"
 msgstr "Utenza %1 creata!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:243
+#: lib/AmuseWikiFarm/Controller/User.pm:246
 msgid "User created"
 msgstr "Utenza creata"
 
@@ -1815,7 +1821,7 @@ msgstr "Il tuo nome utente è %1."
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "Archivio ZIP con sorgenti, richiesto dall'impaginatore"
 
-#: root/src/layout.tt:212
+#: root/src/layout.tt:206
 msgid "about, links..."
 msgstr "informazioni, link..."
 
@@ -1974,6 +1980,10 @@ msgstr "preso"
 #: root/src/macros.tt:1 root/src/macros.tt:2 root/src/macros.tt:3
 msgid "text"
 msgstr "testo"
+
+#: root/src/layout.tt:125
+msgid "texts by authors, title, topic..."
+msgstr ""
 
 #: root/src/layout.tt:139
 msgid "texts sorted by author"
