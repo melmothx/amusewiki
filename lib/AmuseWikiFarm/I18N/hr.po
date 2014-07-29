@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-29 09:31+0200\n"
+"PO-Revision-Date: 2014-07-29 11:54+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -228,11 +228,11 @@ msgstr "Izmjene za %1"
 
 #: root/src/edit/edit.tt:297
 msgid "Chapter"
-msgstr "Glava"
+msgstr "Poglavlje"
 
 #: root/src/macros.tt:9
 msgid "Chapter, only for chapter divisions in books"
-msgstr "Glava, samo za glave knjige"
+msgstr "Poglavlje, samo za cijele knjige"
 
 #: root/src/edit/edit.tt:264
 msgid "Cheatsheet for the markup"
@@ -373,7 +373,7 @@ msgstr "Gotovo"
 
 #: root/src/edit/edit.tt:463
 msgid "Double bars"
-msgstr "Dvostruke trake"
+msgstr "Dvostruke trake (\"||\")"
 
 #: root/src/text.tt:93
 msgid "Downloads"
@@ -1003,8 +1003,8 @@ msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
 msgstr ""
-"Molim, ne koristi visoke razine (dio ili glava) za kratke tekstove s "
-"poglavljima."
+"Radi bolje preglednosti, ne koristi visoke razine (dio ili poglavlje)\n"
+"za kratke tekstove, nego odjeljke."
 
 #: root/src/bookbuilder/index.tt:67
 msgid "Please give a name to the collection."
@@ -1226,7 +1226,7 @@ msgstr "Traži"
 
 #: root/src/edit/edit.tt:300
 msgid "Section"
-msgstr "Poglavlje"
+msgstr "Odjeljak"
 
 #: root/src/edit/edit.tt:519
 msgid "See the full manual for more details (english)"
@@ -1259,7 +1259,7 @@ msgstr "Pokaži opcije"
 
 #: root/src/edit/edit.tt:464
 msgid "Single bars"
-msgstr "Jednostruke trake"
+msgstr "Jednostruke trake (\"|\")"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:87
 msgid "Site already exists"
@@ -1351,11 +1351,11 @@ msgstr "Stanje"
 
 #: root/src/edit/edit.tt:303
 msgid "Subsection"
-msgstr "Potpoglavlje"
+msgstr "Pododjeljak"
 
 #: root/src/edit/edit.tt:306
 msgid "Subsubsection or description item"
-msgstr "Potpotpoglavlje ili element opisa"
+msgstr "Podpododjeljak ili element opisa"
 
 #: root/src/edit/edit.tt:214 root/src/edit/newtext.tt:47 root/src/text.tt:34
 msgid "Subtitle"
@@ -1570,7 +1570,7 @@ msgstr "Ukupno stranica"
 
 #: root/src/edit/edit.tt:462
 msgid "Triple bars"
-msgstr "Trostruka traka"
+msgstr "Trostruka traka (\"|||\")"
 
 #: root/src/bookbuilder/index.tt:238
 msgid "Try a random text if unsure"
@@ -1650,7 +1650,7 @@ msgstr ""
 
 #: root/src/macros.tt:27
 msgid "Verbatim block"
-msgstr "Doslovni dio"
+msgstr "Predformatirani dio"
 
 #: root/src/admin/list.tt:21
 msgid "Virtual hosts"
@@ -1762,7 +1762,7 @@ msgstr ""
 
 #: root/src/macros.tt:10
 msgid "Your chapter here..."
-msgstr "Tvoje glava..."
+msgstr "Tvoje poglavlje..."
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:67
 msgid "Your file is ready"
@@ -1779,11 +1779,11 @@ msgstr "Tvoja lozinka je %1."
 
 #: root/src/macros.tt:15
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr "Tvoje potpotpoglavlje (ili zaglavlje opisa)..."
+msgstr "Tvoj podpododjeljak (ili zaglavlje opisa)..."
 
 #: root/src/macros.tt:13
 msgid "Your subsection here..."
-msgstr "Tvoje potpoglavlje..."
+msgstr "Tvoj pododjeljak..."
 
 #. (site.canonical)
 #: root/src/email/newuser.tt:2
@@ -1863,7 +1863,7 @@ msgstr "za poeziju"
 
 #: root/src/macros.tt:11
 msgid "generic sectioning, good for articles"
-msgstr "općenita poglavlja, preporučeno za kratke tekstove"
+msgstr "općenit odjeljak, preporučen za kratke tekstove"
 
 #: root/src/bookbuilder/index.tt:181
 msgid "if applicable"
@@ -1936,7 +1936,7 @@ msgstr "istaknuto i podebljano"
 
 #: root/src/macros.tt:14
 msgid "sub-sub-section"
-msgstr "potpotpoglavlje"
+msgstr "podpododjeljak"
 
 #: root/src/edit/edit.tt:375 root/src/edit/edit.tt:378
 msgid "subscript"
@@ -1944,7 +1944,7 @@ msgstr "indeks"
 
 #: root/src/macros.tt:12
 msgid "subsection"
-msgstr "potpoglavlje"
+msgstr "pododjeljak"
 
 #: root/src/edit/edit.tt:376 root/src/edit/edit.tt:379
 msgid "superscript"
