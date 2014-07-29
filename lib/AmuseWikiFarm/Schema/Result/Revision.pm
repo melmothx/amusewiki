@@ -24,11 +24,13 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
+=item * L<DBIx::Class::PassphraseColumn>
+
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime", "PassphraseColumn");
 
 =head1 TABLE: C<revision>
 
@@ -156,8 +158,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-06-07 12:46:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8VsTldQexIBuIvwq9gR6bw
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qQ3v3RgP+h0IIMisS0CbHA
 
 # core modules
 use File::Basename qw/fileparse/;
