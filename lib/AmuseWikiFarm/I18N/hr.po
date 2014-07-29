@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-29 11:54+0200\n"
+"PO-Revision-Date: 2014-07-29 17:47+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -737,7 +737,7 @@ msgstr "Popisi"
 
 #: root/src/edit/edit.tt:425
 msgid "Lists start with a single leading whitespace"
-msgstr "Popisi započinju jednim jedinim praznim zankom na početku retka"
+msgstr "Popisi započinju jednim jedinim praznim znakom na početku retka"
 
 #: root/src/admin/edit.tt:39 root/src/admin/list.tt:16
 msgid "Locale"
@@ -1484,7 +1484,7 @@ msgstr "Ovo je opis"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:270
 msgid "This revision is already published, ignoring changes"
-msgstr "Ova izmjena je već objavljena, zanemarit će se dalje izmjene"
+msgstr "Ova izmjena je već objavljena, zanemarit će se daljne izmjene"
 
 #: root/src/edit/revs.tt:37
 msgid "This revision is being actively edited"
