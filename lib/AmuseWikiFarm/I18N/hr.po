@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-29 09:25+0200\n"
+"PO-Revision-Date: 2014-07-29 09:31+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -284,9 +284,8 @@ msgid "Create a new librarian"
 msgstr "Stvori novog bibliotekara"
 
 #: root/src/layout.tt:253
-#, fuzzy
 msgid "Create a new special page"
-msgstr "Stvori novi sajt"
+msgstr "Stvori novu posebnu stranicu"
 
 #: root/src/console/alias_display.tt:59
 msgid "Create a topic alias"
