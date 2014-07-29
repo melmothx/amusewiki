@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-27 19:47+0200\n"
+"PO-Revision-Date: 2014-07-29 09:13+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -247,7 +247,7 @@ msgstr "Glava, samo za glave knjige"
 
 #: root/src/edit/edit.tt:264
 msgid "Cheatsheet for the markup"
-msgstr "Sažetak za oblikovanje"
+msgstr "Sažetak za oblikovanje teksta"
 
 #: root/src/admin/edit.tt:287
 #: root/src/bookbuilder/index.tt:102
@@ -1663,7 +1663,7 @@ msgstr "URL"
 
 #: root/src/edit/edit.tt:88
 msgid "Use it in the body as"
-msgstr "Koristi ga u tekstu kao"
+msgstr "Koristi je u tekstu kao"
 
 #: root/src/edit/edit.tt:373
 msgid "Useful for footnotes or in the headers of the document, where you cannot put a blank line to mark a new paragraph."
