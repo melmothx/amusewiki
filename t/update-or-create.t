@@ -44,7 +44,7 @@ my $user = $schema->resultset('User')->update_or_create({
 
 $site->add_to_users($user) unless $user->sites->find($site->id);
 
-is $site->users->find( { username => 'pinco' } )->password, 'xxx';
+ok $site->users->find( { username => 'pinco' } )->check_password('xxx');
 
 $user->delete;
 

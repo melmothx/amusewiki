@@ -188,7 +188,7 @@ ok(!$site->users->find({ username => 'root' }), "But no root on the site");
 $form = goodform();
 $mech->submit_form(with_fields => $form,
                    button => 'create');
-$mech->content_contains('User pincuz created!');
+$mech->content_contains('User pincuz created!') or diag $mech->content;
 
 @users = $site->users;
 
@@ -198,7 +198,7 @@ my $pincuz = $site->users->find({ username => 'pincuz' });
 
 is $pincuz->email, $form->{email}, "Mail ok";
 
-is $pincuz->password, $form->{password}, "password ok";
+ok $pincuz->check_password($form->{password}), "password ok";
 
 ok $pincuz->active, "active ok";
 
@@ -214,7 +214,7 @@ like $mech->content, qr{You have logged out}, "status message correct";
 
 $mech->submit_form(with_fields =>  {
                                     username => $pincuz->username,
-                                    password => $pincuz->password,
+                                    password => $form->{password},
                                    },
                    button => 'submit');
 
@@ -278,7 +278,7 @@ $mech->content_contains("Email updated");
 
 $pincuz->discard_changes;
 is ($pincuz->email, $newemail, "Email correctly changed");
-is ($pincuz->password, $newpassword, "Password correctly changed");
+ok ($pincuz->check_password($newpassword), "Password correctly changed");
 
 
 diag "Purging users";

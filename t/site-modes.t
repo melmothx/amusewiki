@@ -19,6 +19,8 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my ($username, $password) = (myroot => "myroot");
 
+my %passwords = ($username => $password);
+
 my $user = $schema->resultset('User')->update_or_create({
                                                          username => $username,
                                                          password => $password,
@@ -49,6 +51,7 @@ foreach my $m (keys %$sites) {
     ok ((-d $repo_root), "site $sites->{$m}->{url} created");
 }
 
+$passwords{pippuzzo} = 'xxxx';
 my $outer_user = $schema->resultset('Site')->find('0test0')
   ->update_or_create_user({ username => 'pippuzzo', password => 'xxxx' },
                           'librarian');
@@ -127,7 +130,7 @@ sub check_after_login {
 
     $mech->form_with_fields('username');
     $mech->set_fields(username => $user->username,
-                      password => $user->password);
+                      password => $passwords{$user->username});
     $mech->click;
     if ($active) {
         diag "user is active";
@@ -135,7 +138,8 @@ sub check_after_login {
     }
     else {
         diag "user inactive";
-        $mech->content_contains("Wrong username or password");
+        $mech->content_contains("Wrong username or password")
+          or diag $mech->content;
     }
     $mech->get_ok('/logout');
 }
@@ -146,9 +150,10 @@ sub failing_login {
     $mech->get_ok('/login');
     $mech->form_with_fields('username');
     $mech->set_fields(username => $user->username,
-                      password => $user->password);
+                      password => $passwords{$user->username});
     $mech->click;
-    $mech->content_contains("Wrong username or password");
+    $mech->content_contains("Wrong username or password")
+      or diag $mech->content;
     is $mech->uri->path, '/login';
 }
 

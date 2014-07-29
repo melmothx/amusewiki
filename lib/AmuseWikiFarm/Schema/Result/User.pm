@@ -169,6 +169,21 @@ __PACKAGE__->many_to_many("sites", "user_sites", "site");
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CJzsHl3EjflCUszD9wVRZw
 
 
+# Have the 'password' column use a SHA-1 hash and 20-byte salt
+# with RFC 2307 encoding; Generate the 'check_password" method
+__PACKAGE__->add_columns(
+    'password' => {
+        passphrase       => 'rfc2307',
+        passphrase_class => 'SaltedDigest',
+        passphrase_args  => {
+            algorithm   => 'SHA-1',
+            salt_random => 20,
+        },
+        passphrase_check_method => 'check_password',
+    },
+);
+
+
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;
