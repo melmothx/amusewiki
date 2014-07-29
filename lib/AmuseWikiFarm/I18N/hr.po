@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-29 17:47+0200\n"
+"PO-Revision-Date: 2014-07-29 17:48+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -190,7 +190,7 @@ msgstr "Napravi zbirku"
 
 #: root/src/admin/edit.tt:171
 msgid "Bookbuilder page limit (integer)"
-msgstr "Limit stranica zbirke (cijeli broj)"
+msgstr "Maksimalni broj stranica zbirke"
 
 #: root/src/bookbuilder/index.tt:204
 msgid "Build it"
