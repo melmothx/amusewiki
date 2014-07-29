@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-25 13:15+0200\n"
+"PO-Revision-Date: 2014-07-29 10:12+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -1983,7 +1983,7 @@ msgstr "testo"
 
 #: root/src/layout.tt:125
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "testi per autore, titolo, argomento"
 
 #: root/src/layout.tt:139
 msgid "texts sorted by author"
