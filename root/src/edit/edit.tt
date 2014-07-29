@@ -42,7 +42,7 @@ $(document).ready(function() {
 	        {name:'[% jsloc("Bold") %]',
              key:'B', openWith:' **', closeWith:'** '},
 
-	        {name:'[% jsloc("Bullet List") %]',
+	        {name:'[% jsloc("Bulleted List") %]',
              openWith:'\n - ' },
 
 	        {name:'[% jsloc("Numeric List") %]',
@@ -437,7 +437,7 @@ $(document).ready(function() {
           </p>
         </li>
       </ul>
-      <h4 id="cslinks">Links and images</h4>
+      <h4 id="cslinks">[% loc('Links and images') %]</h4>
       <p>[% loc('They have the same syntax (images are actually links)') %]</p>
       <ul>
         <li>

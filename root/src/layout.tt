@@ -122,7 +122,7 @@
           <ul class="nav navbar-nav">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
-                 title="texts by authors, title, topic..."
+                 title="[% loc('texts by authors, title, topic...') %]"
                  data-toggle="dropdown">
                 [% site.catalog_label || loc('Catalog') %]
                 <b class="caret"></b>
@@ -241,8 +241,8 @@
             [%- # this menu is reserved for logged in users -%]
             [% IF c.user_exists %]
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle"
-                 title="about, links..."
+              <a href="#"
+                 class="dropdown-toggle"
                  data-toggle="dropdown">
                 [% c.user.get('username') %]
                 <b class="caret"></b>
@@ -250,7 +250,7 @@
               <ul class="dropdown-menu">
                 <li>
                   <a href="[% c.uri_for_action('/edit/newtext', ['special']) %]">
-                    Create a new special page
+                    [% loc('Create a new special page') %]
                   </a>
                 </li>
                 [% IF site.multilanguage %]
