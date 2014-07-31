@@ -123,6 +123,13 @@ the tree.
   CLOSED: [2014-07-27 dom 15:39]
 * DONE fmt=json output for search
   CLOSED: [2014-07-27 dom 16:12]
+
+* TODO fix crash on garbage with language. test required.
+* TODO remove bullets from list of latest entries
+* TODO remove the grey left margin from blockquotes
+* TODO add logo centered before latest entries.
+* TODO Right align the options?
+
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files
