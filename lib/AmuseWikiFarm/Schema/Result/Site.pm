@@ -1019,7 +1019,7 @@ sub compile_and_index_files {
         $count++;
         if ($count > 1) {
             # don't hammer the machine, we have to serve these files too
-            sleep 1;
+            sleep 1 unless $ENV{AMW_UNCAPPED};
         }
     }
     $self->collation_index;
