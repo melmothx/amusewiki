@@ -13,7 +13,6 @@ use Digest::MD5 qw/md5_hex/;
 use DateTime;
 use Date::Parse qw/str2time/;
 
-
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
                     muse_naming_algo
@@ -286,7 +285,26 @@ sub _parse_muse_file {
         warn "$file couldn't be parsed by muse_fast_scan_header\n";
         return;
     }
-    # convert all to lowercase
+
+    # language treatment
+    if (my $lang_orig = $directives->{lang}) {
+        if ($lang_orig =~ m/([a-z]{2,3})/) {
+            my $lang = $1;
+            if ($lang_orig ne $lang) {
+                warn qq[Language "$lang_orig" found, using $lang instead\n];
+            }
+            $directives->{lang} = $lang;
+        }
+        else {
+            warn qq[Garbage $lang_orig found in #lang, using "en" instead\n];
+            $directives->{lang} = 'en';
+        }
+    }
+    else {
+        warn "No language found, assuming english\n";
+        $directives->{lang} = 'en';
+    }
+
 
     my %lowered;
     foreach my $k (keys %$directives) {
