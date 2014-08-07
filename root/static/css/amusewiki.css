@@ -96,9 +96,9 @@ blockquote {
 
 #special-pages-logo {
     text-align: center;
-    padding: 40px 0px 10px;
+    padding: 40px 0px 0px;
 }
 
 #special-pages-logo-img {
-    width: 150px;
+    width: 110px;
 }
