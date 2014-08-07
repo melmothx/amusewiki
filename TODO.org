@@ -130,7 +130,8 @@ the tree.
   CLOSED: [2014-08-06 mer 08:43]
 * DONE remove the grey left margin from blockquotes
   CLOSED: [2014-08-07 gio 12:22]
-* TODO add logo centered before latest entries.
+* DONE add logo centered before latest entries.
+  CLOSED: [2014-08-07 gio 14:48]
 * DONE Right align the options?
   CLOSED: [2014-08-07 gio 12:22]
 
