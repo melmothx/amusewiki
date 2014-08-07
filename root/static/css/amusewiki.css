@@ -94,3 +94,11 @@ blockquote {
     margin-bottom: 10px;
 }
 
+#special-pages-logo {
+    text-align: center;
+    padding: 40px 0px 10px;
+}
+
+#special-pages-logo-img {
+    width: 20%;
+}

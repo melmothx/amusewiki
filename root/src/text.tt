@@ -238,6 +238,14 @@
   [% END %]
 
   [% IF text.f_class == 'special' %]
+  [% IF site.has_site_file('logo.png') %]
+  <div id="special-pages-logo">
+    <img src="[% c.uri_for_action('/sitefiles/local_files',
+              [ site.id, 'logo.png' ]) %]"
+         id="special-pages-logo-img" />
+  </div>
+  [% END %]
+
   <div style="heigth:10px">&nbsp;
     &nbsp;
   </div>
