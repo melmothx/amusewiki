@@ -81,3 +81,16 @@ a.amw-navlogo:hover {
     text-decoration: none;
 }
 
+ul.latest-entries {
+    list-style-type: none;
+}
+
+ul.latest-entries li {
+    padding-top: 4px;
+}
+
+blockquote {
+    border-left: none;
+    margin-bottom: 10px;
+}
+

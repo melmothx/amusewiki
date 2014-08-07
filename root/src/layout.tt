@@ -119,7 +119,24 @@
           </a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
+          <div class="nav navbar-nav navbar-right col-sm-3"
+               style="padding-left: 5px; padding-right: 0px; margin-right: 0px;">
+            <form class="navbar-form navbar-input-group"
+                  method="get" role="search"
+                  id="formsearchbox" action="[% c.uri_for('/search') %]">
+              <div class="input-group">
+		        <input type="text" class="form-control"
+                       placeholder="[% loc('Search') %]"
+                       name="query" value=""/>
+                <div class="input-group-btn">
+                  <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search"></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
                  title="[% loc('texts by authors, title, topic...') %]"
@@ -328,22 +345,7 @@
                 [% loc('Bookbuilder') %]
               </a>
             </li>
-
           </ul>
-          <form class="navbar-form navbar-right navbar-input-group" role="search"
-                method="get"
-                id="formsearchbox" action="[% c.uri_for('/search') %]">
-            <div class="input-group" style="width:140px">
-		      <input type="text" class="form-control"
-                     placeholder="[% loc('Search') %]"
-                     name="query" value=""/>
-              <div class="input-group-btn">
-                <button type="submit" class="btn btn-primary">
-                  <span class="glyphicon glyphicon-search"></span>
-                </button>
-              </div>
-            </div>
-          </form>
         </div><!--/.nav-collapse -->
       </div>
     </div>

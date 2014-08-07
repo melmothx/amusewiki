@@ -124,12 +124,19 @@ the tree.
 * DONE fmt=json output for search
   CLOSED: [2014-07-27 dom 16:12]
 
-* TODO fix crash on garbage with language. test required.
-* TODO remove bullets from list of latest entries
-* TODO remove the grey left margin from blockquotes
+* DONE fix crash on garbage with language. test required.
+  CLOSED: [2014-08-06 mer 08:43]
+* DONE remove bullets from list of latest entries
+  CLOSED: [2014-08-06 mer 08:43]
+* DONE remove the grey left margin from blockquotes
+  CLOSED: [2014-08-07 gio 12:22]
 * TODO add logo centered before latest entries.
-* TODO Right align the options?
+* DONE Right align the options?
+  CLOSED: [2014-08-07 gio 12:22]
 
+* DONE Disable toc for special pages
+  CLOSED: [2014-08-07 gio 12:23]
+  Not needed
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files
