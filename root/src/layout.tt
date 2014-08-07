@@ -119,7 +119,7 @@
           </a>
         </div>
         <div class="navbar-collapse collapse">
-          <div class="nav navbar-nav navbar-right col-sm-3"
+          <div class="nav navbar-nav navbar-right"
                style="padding-left: 5px; padding-right: 0px; margin-right: 0px;">
             <form class="navbar-form navbar-input-group"
                   method="get" role="search"
