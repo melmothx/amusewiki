@@ -65,7 +65,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 8 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 9 }) %]" />
 
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
 

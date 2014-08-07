@@ -242,6 +242,7 @@
   <div id="special-pages-logo">
     <img src="[% c.uri_for_action('/sitefiles/local_files',
               [ site.id, 'pagelogo.png' ]) %]"
+         alt="[% site.sitename %]"
          id="special-pages-logo-img" />
   </div>
   [% END %]
