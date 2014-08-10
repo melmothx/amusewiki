@@ -394,6 +394,18 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.nocoverpage %]checked="checked"[% END %]
+                 name="nocoverpage" />
+          [% loc('For texts without a table of content, start text on the very first page') %]
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
         <label for="vhosts">
           [% loc('Virtual hosts, one per line') %]
         </label>

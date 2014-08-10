@@ -260,6 +260,13 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 255
 
+=head2 nocoverpage
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 twoside
 
   data_type: 'integer'
@@ -351,6 +358,8 @@ __PACKAGE__->add_columns(
     is_nullable => 0,
     size => 255,
   },
+  "nocoverpage",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "twoside",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
 );
@@ -500,8 +509,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:iH/2A+qaudGG8yThqxHkJg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-08 16:13:59
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qqA3l31n4Zli1vOja8uG4w
 
 =head2 other_sites
 
@@ -597,7 +606,7 @@ sub compile_options {
     if (my $dir = $self->ttdir) {
         $opts{ttdir} = $dir;
     }
-    foreach my $ext (qw/siteslogan logo
+    foreach my $ext (qw/siteslogan logo nocoverpage
                         papersize division fontsize
                         bcor mainfont twoside/) {
         $opts{extra}{$ext} = $self->$ext;
@@ -1659,7 +1668,8 @@ sub update_from_params {
 
     # first round: booleans. Here there is not much to do. If it's set, 1,
     # otherwise 0
-    my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub twoside/);
+    my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
+                       twoside nocoverpage/);
     foreach my $boolean (@booleans) {
         if (delete $params->{$boolean}) {
             $self->$boolean(1);

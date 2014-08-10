@@ -61,6 +61,7 @@ CREATE TABLE site (
        bcor VARCHAR(16) NOT NULL DEFAULT '0mm',
        fontsize INTEGER NOT NULL DEFAULT '10',
        mainfont VARCHAR(255) NOT NULL DEFAULT 'Linux Libertine O',
+       nocoverpage INTEGER(1) NOT NULL DEFAULT 0,
        twoside INTEGER(1) NOT NULL DEFAULT 0
 );
 

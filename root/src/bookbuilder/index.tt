@@ -170,6 +170,15 @@
     </div>
     <div class="checkbox">
       <label>
+        <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage" />
+          [% loc('For texts without a table of content, start text on the very first page') %]
+      </label>
+    </div>
+
+
+
+    <div class="checkbox">
+      <label>
         <input type="checkbox" name="imposed" value="1" />
         [% loc('I want an imposed (ready to print) PDF') %]
       </label>

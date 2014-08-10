@@ -127,6 +127,7 @@ my %params = (
               division => '8',
               schema => '2up',
               imposed => 1,
+              nocoverpage => '\\x',
               cover => '',
               signatures => 1,
              );
@@ -144,6 +145,7 @@ is_deeply $validated, {
                        fontsize => 10,
                        bcor => '20mm',
                        coverwidth => "1",
+                       nocoverpage => "1",
                        mainfont => 'CMU Serif',
                       }, "Validation works";
 

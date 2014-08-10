@@ -298,6 +298,10 @@ sub available_tex_options {
                        my $i = shift;
                        $i ? return 1 : return 0;
                    },
+                   nocoverpage => sub {
+                       my $i = shift;
+                       $i ? return 1 : return 0;
+                   },
                    papersize => sub {
                        my $i = shift;
                        return unless defined $i;
