@@ -190,6 +190,7 @@ Return an
 sub paper_sizes {
     my $self = shift;
     my %paper = (
+                 generic => 'Generic (fits in A4 and Letter)',
                  a4 => 'A4 paper',
                  a5 => 'A5 paper',
                  a6 => 'A6 paper (also suitable for e-readers)',
@@ -201,7 +202,7 @@ sub paper_sizes {
 }
 
 sub paper_sizes_sorted {
-    return [qw/a4 a5 a6 letter 5.5in:8.5in 4.25in:5.5in/]
+    return [qw/generic a4 a5 a6 letter 5.5in:8.5in 4.25in:5.5in/]
 }
 
 sub page_divs {
