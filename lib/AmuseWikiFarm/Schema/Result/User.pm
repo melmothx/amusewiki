@@ -173,6 +173,9 @@ __PACKAGE__->many_to_many("sites", "user_sites", "site");
 # with RFC 2307 encoding; Generate the 'check_password" method
 __PACKAGE__->add_columns(
     'password' => {
+        data_type => "varchar",
+        is_nullable => 0,
+        size => 255,
         passphrase       => 'rfc2307',
         passphrase_class => 'SaltedDigest',
         passphrase_args  => {

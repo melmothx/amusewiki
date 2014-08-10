@@ -1,5 +1,8 @@
 This file documents the revision history for Perl extension AmuseWikiFarm.
 
+0.95 2014-08-10
+ - Added option nocoverpage to set LaTeX class without ToC. DB upgrade required.
+
 0.94 2014-07-29
  - Encrypted password. Please stop the app, run ./script/upgrade_passwords.pl,
    then restart.

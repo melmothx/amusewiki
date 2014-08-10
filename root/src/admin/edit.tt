@@ -11,10 +11,10 @@
 <h2>[% loc('Edit site [_1]', esite.id) %]</h2>
 
 <p>
-  Please note that the twoside and binding correction options follow
+  [% loc('Please note that the twoside and binding correction options follow
   this logic: if you have some imposed format, they are ignored for
   the standalone PDF but applied for the imposed ones. If you have
-  only the standalone PDF, they are applied to it.
+  only the standalone PDF, they are applied to it.') %]
 </p>
 
 <div style="margin-top: 30px">
