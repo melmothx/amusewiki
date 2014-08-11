@@ -51,7 +51,7 @@ __PACKAGE__->table("vhost");
   data_type: 'varchar'
   is_foreign_key: 1
   is_nullable: 0
-  size: 8
+  size: 16
 
 =cut
 
@@ -59,7 +59,7 @@ __PACKAGE__->add_columns(
   "name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
 
 =head1 PRIMARY KEY
@@ -92,8 +92,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:useCcTj4QIuXbPi0i21yPQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:fNVDKC4BOrdLRqcXSTudCA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

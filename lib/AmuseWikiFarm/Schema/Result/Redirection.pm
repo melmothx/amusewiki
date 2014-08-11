@@ -69,7 +69,7 @@ __PACKAGE__->table("redirection");
   data_type: 'varchar'
   is_foreign_key: 1
   is_nullable: 0
-  size: 8
+  size: 16
 
 =cut
 
@@ -83,7 +83,7 @@ __PACKAGE__->add_columns(
   "redirect",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
 
 =head1 PRIMARY KEY
@@ -134,8 +134,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mRV+o5ZIiw7EE0LzWbCZ+w
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3kHGaJh8DTxA7hPBlktx8Q
 
 =head1 REDIRECTIONS
 

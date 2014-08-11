@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS author;
 
 CREATE TABLE vhost (
        name VARCHAR(255) PRIMARY KEY,
-       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -86,7 +86,7 @@ CREATE UNIQUE INDEX unique_role ON roles (role);
 CREATE TABLE user_site (
        user_id INTEGER NOT NULL REFERENCES users(id)
                        ON DELETE CASCADE ON UPDATE CASCADE,
-       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        PRIMARY KEY (user_id, site_id)
 );
@@ -100,7 +100,7 @@ CREATE TABLE user_role (
 
 CREATE TABLE revision (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        title_id INTEGER NOT NULL REFERENCES title(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
@@ -113,7 +113,7 @@ CREATE TABLE revision (
 
 CREATE TABLE job (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        task      VARCHAR(32),
        payload   TEXT, -- the JSON stuff
@@ -157,7 +157,7 @@ CREATE TABLE title (
         -- from the scanner
         f_path      TEXT NOT NULL,
         f_name      VARCHAR(255) NOT NULL,
-        f_archive_rel_path VARCHAR(4) NOT NULL,
+        f_archive_rel_path VARCHAR(32) NOT NULL,
         f_timestamp DATETIME NOT NULL,
         f_timestamp_epoch INTEGER NOT NULL DEFAULT 0,
         f_full_path_name TEXT NOT NULL,
@@ -168,7 +168,7 @@ CREATE TABLE title (
         deleted     TEXT NOT NULL DEFAULT '',
 
         sorting_pos INTEGER NOT NULL DEFAULT 0,
-        site_id     VARCHAR(8) NOT NULL REFERENCES site(id)
+        site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX unique_text ON title (uri, f_class, site_id);
@@ -180,7 +180,7 @@ CREATE TABLE redirection (
        type VARCHAR(16) NOT NULL,
        -- the redirection
        redirect VARCHAR(255) NOT NULL,
-       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX unique_redirection ON redirection (uri, type, site_id);
@@ -201,7 +201,7 @@ CREATE TABLE category (
         type  VARCHAR(16) NOT NULL,
         sorting_pos INTEGER NOT NULL DEFAULT 0,
         text_count INTEGER NOT NULL DEFAULT 0,
-        site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
 CREATE UNIQUE INDEX unique_category ON category (uri, site_id, type);
@@ -210,14 +210,14 @@ CREATE TABLE attachment (
        id INTEGER PRIMARY KEY,
        f_path      TEXT NOT NULL,
        f_name      VARCHAR(255) NOT NULL,
-       f_archive_rel_path VARCHAR(4) NOT NULL,
+       f_archive_rel_path VARCHAR(32) NOT NULL,
        f_timestamp DATETIME NOT NULL,
        f_timestamp_epoch INTEGER NOT NULL DEFAULT 0,
        f_full_path_name TEXT NOT NULL,
        f_suffix    VARCHAR(16) NOT NULL,
        f_class     VARCHAR(16) NOT NULL,
        uri   VARCHAR(255) NOT NULL,
-       site_id VARCHAR(8) NOT NULL REFERENCES site(id)
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
 

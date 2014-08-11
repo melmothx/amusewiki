@@ -51,7 +51,7 @@ __PACKAGE__->table("revision");
   data_type: 'varchar'
   is_foreign_key: 1
   is_nullable: 0
-  size: 8
+  size: 16
 
 =head2 title_id
 
@@ -93,7 +93,7 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "title_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "f_full_path_name",
@@ -158,8 +158,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qQ3v3RgP+h0IIMisS0CbHA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rq2unIF87j0anJLmALv8Ag
 
 # core modules
 use File::Basename qw/fileparse/;

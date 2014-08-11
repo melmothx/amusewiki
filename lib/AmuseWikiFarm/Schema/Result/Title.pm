@@ -134,7 +134,7 @@ __PACKAGE__->table("title");
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 4
+  size: 32
 
 =head2 f_timestamp
 
@@ -187,7 +187,7 @@ __PACKAGE__->table("title");
   data_type: 'varchar'
   is_foreign_key: 1
   is_nullable: 0
-  size: 8
+  size: 16
 
 =cut
 
@@ -228,7 +228,7 @@ __PACKAGE__->add_columns(
   "f_name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "f_archive_rel_path",
-  { data_type => "varchar", is_nullable => 0, size => 4 },
+  { data_type => "varchar", is_nullable => 0, size => 32 },
   "f_timestamp",
   { data_type => "datetime", is_nullable => 0 },
   "f_timestamp_epoch",
@@ -246,7 +246,7 @@ __PACKAGE__->add_columns(
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
-  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 8 },
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
 
 =head1 PRIMARY KEY
@@ -337,8 +337,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:M4Y0Osk79aMj+qFZ+ugyvw
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Cl/kZIoP2KFSKMn3aDKpgw
 
 __PACKAGE__->has_many(
     translations => "AmuseWikiFarm::Schema::Result::Title",
