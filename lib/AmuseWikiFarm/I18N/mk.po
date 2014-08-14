@@ -6,112 +6,119 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-03-06 10:51+0100\n"
+"PO-Revision-Date: 2014-08-13 21:18+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.7\n"
 
 #: root/src/edit/edit.tt:315
 msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
+msgstr "Празен ред (или повеќе празни редови) започнуваат нов пасус."
 
 #: root/src/edit/edit.tt:392
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"Фуснота е линија кој започнува со број помеѓу средни\n"
+" загради, без празно место помеѓу."
 
 #: root/src/edit/edit.tt:318
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "Линија која започнува со 2 или повеќе празни места е цитат."
 
 #: root/src/edit/edit.tt:331
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
 msgstr ""
+"Линија која започнува со 20 или повеќе празни места значи десно порамнување."
 
 #: root/src/edit/edit.tt:324
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr ""
+"Линија која започнува со 6 или повеќе празни места значи централно "
+"порамнување."
 
 #. (site.canonical)
 #: root/src/email/commit.tt:2
 msgid "A new revision has been created at %1"
-msgstr ""
+msgstr "Нова измена создадена на %1"
 
 #: root/src/edit/edit.tt:470
 msgid "A nice title"
-msgstr ""
+msgstr "Убав наслов"
 
 #: root/src/admin/edit.tt:211 root/src/text.tt:109 root/src/text.tt:110
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "А4 PDF за печатење"
 
 #: root/src/admin/edit.tt:3
 msgid "A4 paper"
-msgstr ""
+msgstr "А4 формат"
 
 #: root/src/admin/edit.tt:4
 msgid "A5 paper"
-msgstr ""
+msgstr "А5 формат"
 
 #: root/src/admin/edit.tt:5
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "А6 формат (погоден и за е-читачи)"
 
 #: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
+msgstr "Напуштена измена во тек, слободно провери ги разликите и преземи"
 
 #: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:18
 #: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:12
 #: root/src/publish/pending.tt:16
 msgid "Action"
-msgstr ""
+msgstr "Акција"
 
 #: root/src/bookbuilder/index.tt:147
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Додади слика за насловна страница (PNG или JPG)"
 
 #: root/src/edit/edit.tt:121
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr ""
+msgstr "Додади прилог ((PNG, JPG или PDF)"
 
 #: root/src/text.tt:182
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Додади го овој текст на збирката"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:96 root/src/layout.tt:170
 msgid "Add to library"
-msgstr ""
+msgstr "Додади во библиотека"
 
 #: root/src/edit/edit.tt:506
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
 msgstr ""
+"Дополнителни информации (полн датум, наслов на оригиналот, преведувачи, итн.)"
 
 #: root/src/console/alias_display.tt:35 root/src/console/alias_display.tt:67
 msgid "Alias"
-msgstr ""
+msgstr "Алијас"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:206
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "Алијасот не може да посочува на самиот себе"
 
 #: root/src/category-details.tt:14 root/src/library.tt:14
 msgid "All languages"
-msgstr ""
+msgstr "Сите јазици"
 
 #: lib/AmuseWikiFarm/Controller/Publish.pm:88 root/src/layout.tt:270
 msgid "All revisions"
-msgstr ""
+msgstr "Сите измени"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:63
 msgid "All sites"
-msgstr ""
+msgstr "Сите сајтови"
 
 #: root/src/edit/newtext.tt:201
 msgid ""
@@ -122,524 +129,540 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"URI е низа од знаци кои на единствен начин го одредуваат текстот во "
+"архивата.\n"
+" Теоретски тоа може да биде што било, но заради доследност те замолуваме да "
+"се придржуваш до овој принцип: автор, име, наслов, јазик, евентуален број,\n"
+" на пр.\"errico-malatesta-anarchy-2\". Инаку тоа не е потребно."
 
 #: root/src/macros.tt:5
 msgid "Are you sure?"
-msgstr ""
+msgstr "Сигурно?"
 
 #: root/src/edit/edit.tt:99
 msgid "Attached PDFs"
-msgstr ""
+msgstr "PDF фајлови во прилог"
 
 #: root/src/edit/edit.tt:84
 msgid "Attached images"
-msgstr ""
+msgstr "Слики во прилог"
 
 #: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:66
 #: root/src/search/index.tt:28
 msgid "Author"
-msgstr ""
+msgstr "Автор"
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:73 root/src/edit/edit.tt:221
 #: root/src/edit/edit.tt:481 root/src/edit/newtext.tt:75
 #: root/src/layout.tt:140 root/src/text.tt:41
 msgid "Authors"
-msgstr ""
+msgstr "Автори"
 
 #: root/src/edit/edit.tt:137
 msgid "Available category tags for header"
-msgstr ""
+msgstr "Расположиви ознаки за категории за заглавието"
 
 #: root/src/bookbuilder/index.tt:6
 msgid "Back to the text"
-msgstr ""
+msgstr "Врати се на текстот"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:141
 #: lib/AmuseWikiFarm/Controller/Console.pm:222
 msgid "Bad request"
-msgstr ""
+msgstr "Погрешно барање"
 
 #: root/src/admin/edit.tt:245
 msgid "Bare HTML, needed by the application"
-msgstr ""
+msgstr "Гол HTML, го бара апликацијата"
 
 #: root/src/admin/edit.tt:324 root/src/bookbuilder/index.tt:133
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "Корекција за повезот во милиметри (дополнителна внатрешна маргина)"
 
 #: root/src/admin/edit.tt:27
 msgid "Blog"
-msgstr ""
+msgstr "Блог"
 
 #: root/src/macros.tt:17
 msgid "Bold"
-msgstr ""
+msgstr "Здебелено"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:28 root/src/layout.tt:328
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Направи збирка"
 
 #: root/src/admin/edit.tt:171
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Максимален број на страници на збирката"
 
 #: root/src/bookbuilder/index.tt:204
 msgid "Build it"
-msgstr ""
+msgstr "Направи"
 
 #: root/src/macros.tt:18
 msgid "Bulleted List"
-msgstr ""
+msgstr "Ненумерирана листа"
 
 #: root/src/admin/list.tt:20
 msgid "Canonical name"
-msgstr ""
+msgstr "Основно име"
 
 #: root/src/layout.tt:127
 msgid "Catalog"
-msgstr ""
+msgstr "Каталог"
 
 #: root/src/edit/newtext.tt:86
 msgid "Categories"
-msgstr ""
+msgstr "Теми"
 
 #: root/src/publish/pending.tt:17
 msgid "Changes"
-msgstr ""
+msgstr "Измени"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:71
 msgid "Changes applied"
-msgstr ""
+msgstr "Внесени измени"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
 #: lib/AmuseWikiFarm/Controller/Edit.pm:383 root/src/edit/diff.tt:13
 msgid "Changes for %1"
-msgstr ""
+msgstr "Измени за %1"
 
 #: root/src/edit/edit.tt:297
 msgid "Chapter"
-msgstr ""
+msgstr "Поглавје"
 
 #: root/src/macros.tt:9
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Поглавје, само за цели книги"
 
 #: root/src/edit/edit.tt:264
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Сиже за обликување на текстот"
 
 #: root/src/admin/edit.tt:287 root/src/bookbuilder/index.tt:102
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Избери формат на хартијата"
 
 #: root/src/bookbuilder/index.tt:52
 msgid "Clear the book list"
-msgstr ""
+msgstr "Поништи ја листата на текстови"
 
 #: root/src/bookbuilder/fonts.tt:6
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Кликни на сликите за пример за PDF"
 
 #: root/src/text.tt:16 root/src/text.tt:8
 msgid "Close"
-msgstr ""
+msgstr "Затвори"
 
 #: root/src/edit/edit.tt:188
 msgid "Commit"
-msgstr ""
+msgstr "Изврши"
 
 #: root/src/admin/jobs.tt:14
 msgid "Completed"
-msgstr ""
+msgstr "Готово"
 
 #: root/src/edit/diff.tt:41
 msgid "Computing of differences took"
-msgstr ""
+msgstr "За пресметување на разликите беше потребно"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:150
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:170
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Не беше возможно да се додаде текстот"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:108
 msgid "Couldn't build that"
-msgstr ""
+msgstr "Не можеше да се направи збирка"
 
 #: root/src/console/alias_display.tt:54 root/src/console/alias_display.tt:86
 msgid "Create"
-msgstr ""
+msgstr "Креирај"
 
 #: root/src/layout.tt:290 root/src/user/create.tt:3
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Креирај нов библиотекар"
 
 #: root/src/layout.tt:253
 msgid "Create a new special page"
-msgstr ""
+msgstr "Креирај нова посебна страница"
 
 #: root/src/console/alias_display.tt:59
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Креирај алијас за темата"
 
 #: root/src/console/alias_display.tt:27
 msgid "Create an author alias"
-msgstr ""
+msgstr "Креирај алијас за авторот"
 
 #: root/src/admin/list.tt:79
 msgid "Create new site"
-msgstr ""
+msgstr "Креирај нов сајт"
 
 #: root/src/user/create.tt:53
 msgid "Create user and mail password"
-msgstr ""
+msgstr "Креирај корисник и испрати лозинка"
 
 #: root/src/admin/jobs.tt:13
 msgid "Created"
-msgstr ""
+msgstr "Креирано"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:129
 msgid "Created new text"
-msgstr ""
+msgstr "Креиран е нов текст"
 
 #: root/src/edit/edit.tt:228 root/src/publish/pending.tt:19
 #: root/src/text.tt:50
 msgid "Date"
-msgstr ""
+msgstr "Датум"
 
 #: root/src/edit/edit.tt:501 root/src/edit/newtext.tt:121
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Датум на оригиналното издание"
 
 #: root/src/layout.tt:275
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Одложени/избришани текстови"
 
 #: root/src/admin/jobs.tt:66 root/src/bookbuilder/index.tt:38
 #: root/src/console/alias_display.tt:126
 msgid "Delete"
-msgstr ""
+msgstr "Избриши"
 
 #: root/src/publish/pending.tt:100
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"Сосема е безбедно да се избрише измена која веќе е објавена. Ако не е "
+"објавена, со бришењето измената засекогаш ќе биде изгубена."
 
 #: root/src/edit/newtext.tt:196
 msgid "Desired URI"
-msgstr ""
+msgstr "URI по желба"
 
 #: root/src/console/alias_display.tt:100
 msgid "Destination"
-msgstr ""
+msgstr "Одредиште"
 
 #: root/src/edit/revs.tt:18
 msgid "Differences"
-msgstr ""
+msgstr "Разлики"
 
 #: root/src/admin/edit.tt:274
 msgid ""
 "Directory with templates. Do not set it unless you know what you are doing"
 msgstr ""
+"Директориум со обрасци. Остави празно, освен ако навистина знаеш што правиш."
 
 #: root/src/macros.tt:25
 msgid "Display url as"
-msgstr ""
+msgstr "Покажи го URL kako"
 
 #: root/src/search/index.tt:120
 msgid "Displaying"
-msgstr ""
+msgstr "Покажувам"
 
 #: root/src/admin/edit.tt:304 root/src/bookbuilder/index.tt:115
 msgid "Division factor"
-msgstr ""
+msgstr "Фактор на поделба"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:74
 msgid "Done"
-msgstr ""
+msgstr "Готово"
 
 #: root/src/edit/edit.tt:463
 msgid "Double bars"
-msgstr ""
+msgstr "Двојни линии"
 
 #: root/src/text.tt:93
 msgid "Downloads"
-msgstr ""
+msgstr "Преземања"
 
 #: root/src/admin/edit.tt:256
 msgid "EPUB"
-msgstr ""
+msgstr "EPUB"
 
 #: root/src/text.tt:127 root/src/text.tt:128
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "EPUB (за мобилни уреди)"
 
 #: root/src/console/alias_display.tt:134 root/src/console/translations.tt:33
 msgid "Edit"
-msgstr ""
+msgstr "Уреди"
 
 #. (esite.id)
 #: root/src/admin/edit.tt:10
 msgid "Edit site %1"
-msgstr ""
+msgstr "Уреди го сајтот %1"
 
 #: root/src/layout.tt:307
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Уреди ја конфигурацијата на сајтот"
 
 #: root/src/text.tt:170
 msgid "Edit this text"
-msgstr ""
+msgstr "Уреди го овој текст"
 
 #. (user.username)
 #: root/src/user/edit.tt:3
 msgid "Edit user %1"
-msgstr ""
+msgstr "Уреди го корисникот %1"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:163 root/src/edit/edit.tt:114
 #: root/src/edit/revs.tt:3
 msgid "Editing"
-msgstr ""
+msgstr "Уредување"
 
 #: root/src/user/create.tt:38 root/src/user/edit.tt:26
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:262
 msgid "Email sent!"
-msgstr ""
+msgstr "Email-от е пратен!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:305
 msgid "Email updated"
-msgstr ""
+msgstr "Email-от е ажуриран"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:225
 #: lib/AmuseWikiFarm/Controller/User.pm:316
 msgid "Emails do not match"
-msgstr ""
+msgstr "E-mail-овите не се поклопуваат"
 
 #: root/src/publish/pending.tt:76
 msgid "Erase this revision"
-msgstr ""
+msgstr "Избриши ја измената"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:345
 #: lib/AmuseWikiFarm/Controller/User.pm:259
 msgid "Error sending mail!"
-msgstr ""
+msgstr "Грешка при праќање на e-mail-от !"
 
 #: root/src/admin/jobs.tt:17
 msgid "Errors"
-msgstr ""
+msgstr "Грешки"
 
 #: root/src/edit/edit.tt:389 root/src/edit/edit.tt:395
 msgid "Example"
-msgstr ""
+msgstr "Пример"
 
 #: root/src/console/alias_display.tt:91
 msgid "Existing redirections"
-msgstr ""
+msgstr "Постоечки пренасочувања"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:297
 msgid "File uploaded!"
-msgstr ""
+msgstr "Датотеката е вчитана!"
 
 #: root/src/edit/edit.tt:474
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "Прв Автор и Втор Автор"
 
 #: root/src/edit/edit.tt:479
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "Прв Автор, Втор Автор"
 
 #: root/src/edit/edit.tt:157
 msgid "Fix typography"
-msgstr ""
+msgstr "Типографски исправки"
 
 #: root/src/admin/edit.tt:77
 msgid "Fixed category list"
-msgstr ""
+msgstr "Непроменлива листа на категории"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:189
 #: root/src/bookbuilder/fonts.tt:4
 msgid "Font preview"
-msgstr ""
+msgstr "Преглед на фонт"
 
 #: root/src/admin/edit.tt:344
 msgid "Font size"
-msgstr ""
+msgstr "Големина на фонт"
 
 #: root/src/edit/edit.tt:275 root/src/edit/edit.tt:384
 msgid "Footnotes"
-msgstr ""
+msgstr "Фусноти"
 
 #: root/src/edit/newtext.tt:131
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "За текстови од интернет употреби"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
-msgstr ""
+msgstr "Овде можеш да создадеш пренасочување за теми и автори"
 
 #: root/src/edit/edit.tt:372
 msgid "Force a line break."
-msgstr ""
+msgstr "Принуди на преминување во нов ред."
 
 #: root/src/publish/pending.tt:39
 msgid "Force publishing"
-msgstr ""
+msgstr "Принуди на објавување"
 
 #: root/src/edit/newtext.tt:221
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr ""
+msgstr "Форматирање: гггг-мм-дд:мм, нпр.:"
 
 #: root/src/admin/edit.tt:180
 msgid "Formats"
-msgstr ""
+msgstr "Формати"
 
 #: lib/AmuseWikiFarm/Controller/Library.pm:74
 msgid "Full list of texts"
-msgstr ""
+msgstr "Сите текстови"
 
 #: root/src/admin/edit.tt:151
 msgid "Full site canonical URL, including protocol"
-msgstr ""
+msgstr "Целиот основен URL, вклучувајќи го протоколот"
 
 #: root/src/search/index.tt:7 root/src/search/index.tt:91
 msgid "Full text search"
-msgstr ""
+msgstr "Пребарување на целиот текст"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:70
 msgid "Git console"
-msgstr ""
+msgstr "Git конзола"
 
 #: root/src/admin/edit.tt:234
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: root/src/admin/edit.tt:7
 msgid "Half Letter paper"
-msgstr ""
+msgstr "Половина „Letter“ формат"
 
 #: root/src/macros.tt:6
 msgid "Heading"
-msgstr ""
+msgstr "Заглавие"
 
 #: root/src/edit/edit.tt:268 root/src/edit/edit.tt:291
 msgid "Headings"
-msgstr ""
+msgstr "Заглавија"
 
 #: root/src/search/index.tt:95
 msgid "Hide options"
-msgstr ""
+msgstr "Сокриј ги опциите"
 
 #: root/src/admin/edit.tt:305 root/src/bookbuilder/index.tt:117
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Колку факторот на поделба е поголем толку маргините ќе бидат потесни"
 
 #: root/src/user/create.tt:60 root/src/user/edit.tt:45
 msgid "How to choose a password"
-msgstr ""
+msgstr "Како да избереш лозинка"
 
 #: root/src/user/human.tt:17
 msgid "I am human"
-msgstr ""
+msgstr "Јас сум човек"
 
 #: root/src/bookbuilder/index.tt:174
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "Сакам PDF подготвен за печатење"
 
 #: root/src/admin/jobs.tt:8 root/src/admin/list.tt:13
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: root/src/email/commit.tt:4
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
+"Ако личноста која направила измени навела e-mail, вклучена е во CC листата"
 
 #: root/src/bookbuilder/index.tt:188
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "Ако сакаш прелом на текстот, избери образец"
 
 #: root/src/edit/newtext.tt:166
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"Вчитувањето слики е во следниот чекор, каде што можеш да ги видиш и "
+"прегледаш измените"
 
 #: root/src/macros.tt:21
 msgid "Image url"
-msgstr ""
+msgstr "URL од сликата"
 
 #: root/src/edit/edit.tt:94
 msgid "Images not used in the text are stored, but will be ignored."
 msgstr ""
+"Сликите кои не се користат во текстот се зачувани, но ќе бидат игнорирани."
 
 #: root/src/edit/edit.tt:451
 msgid "Images:"
-msgstr ""
+msgstr "Слики:"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:195
 #: root/src/bookbuilder/schemas.tt:3
 msgid "Imposition schemas"
-msgstr ""
+msgstr "Обрасци за прелом на текстот"
 
 #: root/src/edit/edit.tt:421
 msgid "In both case you will get a reverse indentation."
-msgstr ""
+msgstr "Во обата случаи текстот ќе биде обратно вовлечен."
 
 #: root/src/edit/edit.tt:387
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
 msgstr ""
+"Во текстот бројката во средни загради се толкува како фуснота, доколку таа "
+"фуснота постои ."
 
 #: root/src/edit/edit.tt:344
 msgid "Inline elements"
-msgstr ""
+msgstr "Елементи по линија"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:234 root/src/layout.tt:259
 msgid "Internal list of translations"
-msgstr ""
+msgstr "Внатрешна листа на преводи"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:206
 #: lib/AmuseWikiFarm/Controller/User.pm:308
 msgid "Invalid email"
-msgstr ""
+msgstr "Погрешен e-mail"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:99
 msgid "Invalid name"
-msgstr ""
+msgstr "Погрешно име"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:197
 msgid "Invalid username"
-msgstr ""
+msgstr "Погрешно корисничко име"
 
 #: root/src/macros.tt:16
 msgid "Italic"
-msgstr ""
+msgstr "Курзив"
 
 #: root/src/edit/edit.tt:272
 msgid "Italics, bold, monospace, linebreaks..."
-msgstr ""
+msgstr "Курзив, здебелено, нов ред..."
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:134
 msgid "Job deleted"
-msgstr ""
+msgstr "Задачата е избришана"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:137
 msgid "Job not found"
-msgstr ""
+msgstr "Задачата не е пронајдена"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:119 root/src/layout.tt:312
 msgid "Jobs"
-msgstr ""
+msgstr "Задачи"
 
 #: root/src/bookbuilder/schemas.tt:63
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
+"Две логички страници кои следуваат една по друга се вметнуваат на една "
+"физичка страница."
 
 #: root/src/edit/newtext.tt:228
 msgid ""
@@ -649,10 +672,16 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Имај на ум дека јас го прочистувам текстот и ти го враќам во wiki форматот "
+"кој се користи на овој\n"
+" сајт. Ти треба сам да го провериш, прегледаш и прикачиш. Невообичаено\n"
+" комплексното форматирање ќе биде изгубено во текот на процесот. Те молам,\n"
+" провери го прегледот на следната страница, каде што можеш да додадеш и "
+"слики. "
 
 #: root/src/bookbuilder/index.tt:78
 msgid "Keep in mind that some character may be missing in the required font."
-msgstr ""
+msgstr "Имај на ум дека некои букви може да недостигаат во саканиот фонт."
 
 #: root/src/edit/newtext.tt:170
 msgid ""
@@ -660,215 +689,219 @@ msgid ""
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Имај на ум дека невообичаено и комплексно форматираните текстови ќе бидат\n"
+" поедноставени. Можеш да додадеш табели и слики само на следната\n"
+" страница."
 
 #: root/src/edit/newtext.tt:140
 msgid "Language"
-msgstr ""
+msgstr "Јазик"
 
 #: root/src/edit/edit.tt:514
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Код на јазикот на текстот (2 или три букви)"
 
 #: root/src/layout.tt:179 root/src/layout.tt:181
 msgid "Language selection"
-msgstr ""
+msgstr "Избери јазик"
 
 #: root/src/edit/revs.tt:16
 msgid "Last updated"
-msgstr ""
+msgstr "Последна измена"
 
 #: root/src/text.tt:245
 msgid "Latest entries"
-msgstr ""
+msgstr "Последни записи"
 
 #: root/src/edit/newtext.tt:217
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "Остави празно ако сакаш веднаш да се објави."
 
 #: root/src/admin/edit.tt:222 root/src/text.tt:118 root/src/text.tt:119
 msgid "Letter imposed PDF"
-msgstr ""
+msgstr "PDF спремен за печатење во letter формат"
 
 #: root/src/admin/edit.tt:6
 msgid "Letter paper"
-msgstr ""
+msgstr "Letter формат"
 
 #: root/src/macros.tt:23
 msgid "Link"
-msgstr ""
+msgstr "Линк"
 
 #: root/src/edit/edit.tt:282 root/src/edit/edit.tt:440
 msgid "Links and images"
-msgstr ""
+msgstr "Линкови и слики"
 
 #: root/src/console/unpublished.tt:3
 msgid "List of texts on hold"
-msgstr ""
+msgstr "Листа на текстови на чекање"
 
 #: root/src/edit/edit.tt:281 root/src/edit/edit.tt:424
 msgid "Lists"
-msgstr ""
+msgstr "Листи"
 
 #: root/src/edit/edit.tt:425
 msgid "Lists start with a single leading whitespace"
 msgstr ""
+"Листите започнуваат со едон единствено празно место на почеток од редот"
 
 #: root/src/admin/edit.tt:39 root/src/admin/list.tt:16
 msgid "Locale"
-msgstr ""
+msgstr "Јазик"
 
 #: root/src/user/login.tt:16
 msgid "Log in"
-msgstr ""
+msgstr "Логирај се"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:61
 msgid "Login"
-msgstr ""
+msgstr "Најава"
 
 #: root/src/layout.tt:318
 msgid "Logout"
-msgstr ""
+msgstr "Одјава"
 
 #: root/src/admin/edit.tt:67
 msgid "Magic answer"
-msgstr ""
+msgstr "Магичен одговор"
 
 #: root/src/admin/edit.tt:57
 msgid "Magic question"
-msgstr ""
+msgstr "Магично прашање"
 
 #: root/src/admin/list.tt:18
 msgid "Mail from"
-msgstr ""
+msgstr "E-mail од"
 
 #: root/src/admin/edit.tt:362
 msgid "Main font"
-msgstr ""
+msgstr "Главен фонт"
 
 #: root/src/edit/newtext.tt:153
 msgid "Main text"
-msgstr ""
+msgstr "Текст"
 
 #: root/src/edit/edit.tt:444
 msgid "Make a link clickable"
-msgstr ""
+msgstr "Активирај линк"
 
 #: root/src/edit/edit.tt:165
 msgid "Make all links active"
-msgstr ""
+msgstr "Активирај ги сите линкови"
 
 #: root/src/search/index.tt:83
 msgid "Match any of the fields above"
-msgstr ""
+msgstr "Кое било поле"
 
 #: root/src/publish/pending.tt:18
 msgid "Message"
-msgstr ""
+msgstr "Порака"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:354
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "#title недостига во текстот!"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:200
 msgid "Missing alias"
-msgstr ""
+msgstr "Недостига алијас"
 
 #: root/src/bookbuilder/index.tt:79
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "Буквите кои недостигаат ќе бидат прикажани"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:203
 msgid "Missing redirection"
-msgstr ""
+msgstr "Недостига пренасочување"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:70
 msgid "Missing username or password"
-msgstr ""
+msgstr "Недостига корисничко име или лозинка"
 
 #: root/src/admin/list.tt:15
 msgid "Mode"
-msgstr ""
+msgstr "Начин"
 
 #: root/src/admin/edit.tt:23
 msgid "Moderated wiki"
-msgstr ""
+msgstr "Модериран wiki"
 
 #: root/src/layout.tt:208
 msgid "More"
-msgstr ""
+msgstr "Повеќе"
 
 #: root/src/bookbuilder/index.tt:34
 msgid "Move down"
-msgstr ""
+msgstr "Надолу"
 
 #: root/src/bookbuilder/index.tt:31
 msgid "Move up"
-msgstr ""
+msgstr "Нагоре"
 
 #: root/src/admin/edit.tt:87
 msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
+msgstr "Повеќејазичност: листа на јазични кодови разделни со празно место"
 
 #: root/src/edit/edit.tt:89
 msgid "My description"
-msgstr ""
+msgstr "Мој опис"
 
 #: root/src/admin/list.tt:17
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #: root/src/edit/revs.tt:67
 msgid "New revision"
-msgstr ""
+msgstr "Нова измена"
 
 #: root/src/admin/list.tt:73
 msgid "New site id"
-msgstr ""
+msgstr "Нов id на сајтот"
 
 #: root/src/search/index.tt:144
 msgid "Next"
-msgstr ""
+msgstr "Следно"
 
 #: root/src/edit/edit.tt:486
 msgid "Nice title"
-msgstr ""
+msgstr "Убав наслов"
 
 #: root/src/search/index.tt:151
 msgid "No result found!"
-msgstr ""
+msgstr "Нема резултати!"
 
 #: root/src/category-details.tt:46 root/src/library.tt:46
 msgid "No text found!"
-msgstr ""
+msgstr "Не е пронајден ниту еден текст!"
 
 #: root/src/bookbuilder/index.tt:222
 msgid "No text was added yet"
-msgstr ""
+msgstr "Сѐ уште не е додаден ниту еден текст"
 
 #: root/src/edit/edit.tt:249 root/src/edit/newtext.tt:181
 #: root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:81
 msgid "Notes"
-msgstr ""
+msgstr "Забелешки"
 
 #: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:58
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "Нема што да се види овде, засега"
 
 #: root/src/admin/edit.tt:131
 msgid "Notify mail: blank field will disable them"
-msgstr ""
+msgstr "E-mail известувања: остави празно за да ги оневозможиш"
 
 #: root/src/admin/list.tt:19
 msgid "Notify to"
-msgstr ""
+msgstr "Извести"
 
 #: root/src/macros.tt:19
 msgid "Numeric List"
-msgstr ""
+msgstr "Нумерирана листа"
 
 #: root/src/admin/edit.tt:31
 msgid "Open wiki"
-msgstr ""
+msgstr "Отворен wiki"
 
 #: root/src/edit/revs.tt:59
 msgid ""
@@ -878,105 +911,112 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
+"Или создади нова измена, на сопствен ризик. Кога постојат повеќебројни "
+"измени некој мора да избере и обично се избира само една. Можеш да продолжиш "
+"или да се обидеш подоцна, или, уште подобро, да ги контактираш "
+"библиотекарите за да се избегне беспотребно трошење енергија."
 
 #: root/src/user/human.tt:21
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "Или најави се, доколку имаш сметка."
 
 #: root/src/edit/edit.tt:319 root/src/edit/edit.tt:325
 #: root/src/edit/edit.tt:332
 msgid "Or wrap it in"
-msgstr ""
+msgstr "Или вметни помеѓу."
 
 #: root/src/layout.tt:227
 msgid "Other languages"
-msgstr ""
+msgstr "Други јазици"
 
 #: root/src/admin/edit.tt:121
 msgid "PDF logo (absolute path or put it in texmf)"
-msgstr ""
+msgstr "PDF лого (задолжителна насока или името на текстот во texmf)"
 
 #: root/src/edit/edit.tt:110
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "Не е можно да се користат PDF датотеки во самите текстови."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
 #: root/src/edit/edit.tt:108 root/src/edit/edit.tt:109
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
+"PDF датотеките кои не се на листата %1 ќе бидат зачувани, но игнорирани."
 
 #: lib/AmuseWikiFarm/Controller/Root.pm:125
 msgid "Page not found!"
-msgstr ""
+msgstr "Страницата не е пронајдена!"
 
 #: root/src/edit/edit.tt:269 root/src/edit/edit.tt:313
 msgid "Paragraphs"
-msgstr ""
+msgstr "Пасуси"
 
 #: root/src/edit/edit.tt:294
 msgid "Part"
-msgstr ""
+msgstr "Дел"
 
 #: root/src/macros.tt:7
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "Дел, само за поголеми книги"
 
 #: root/src/user/login.tt:11 root/src/user/login.tt:13
 msgid "Password"
-msgstr ""
+msgstr "Лозинка"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:215
 #: lib/AmuseWikiFarm/Controller/User.pm:292
 msgid "Password too short"
-msgstr ""
+msgstr "Лозинката е прекратка"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:289
 msgid "Password updated"
-msgstr ""
+msgstr "Лозинката е ажурирана"
 
 #: root/src/user/create.tt:23 root/src/user/edit.tt:11
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "Лозинка, минимум 8 карактери"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:220
 #: lib/AmuseWikiFarm/Controller/User.pm:296
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Лозинките не се совпаѓаат"
 
 #: root/src/admin/jobs.tt:11
 msgid "Payload"
-msgstr ""
+msgstr "Содржина"
 
 #: lib/AmuseWikiFarm/Controller/Publish.pm:82 root/src/layout.tt:265
 msgid "Pending revisions"
-msgstr ""
+msgstr "Измени на чекање"
 
 #: root/src/macros.tt:20
 msgid "Picture"
-msgstr ""
+msgstr "Слика"
 
 #: root/src/admin/edit.tt:200
 msgid "Plain PDF"
-msgstr ""
+msgstr "Обичен PDF"
 
 #: root/src/edit/edit.tt:170
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Те молам накратко опиши што направи"
 
 #: root/src/user/create.tt:24 root/src/user/edit.tt:12
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "Те молам не користи вредни лозинки кои ги користиш на друго место."
 
 #: root/src/edit/edit.tt:310
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
 msgstr ""
+"Заради подобра прегледност, не користи повисоки нивоа (дел или поглавје)\n"
+" за кратки текстови, туку оддели."
 
 #: root/src/bookbuilder/index.tt:67
 msgid "Please give a name to the collection."
-msgstr ""
+msgstr "Наслови ја збирката."
 
 #: root/src/publish/pending.tt:88
 msgid ""
@@ -986,14 +1026,23 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"Имај на ум дека ако видиш \"Присили на објавување\" како акција, тоа значи "
+"дека друга\n"
+" измена за истиот текст веќе е објавена. Што значи дека форсирајќи "
+"објавување\n"
+" ќе се изгубат веќе одобрени измени. Затоа, не прави го тоа, освен ако\n"
+" навистина знаеш што правиш."
 
 #: root/src/edit/edit.tt:180
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
+"Остави e-mail доколку сакаш да бидеш контактиран во врска со оваа измена"
 
 #: root/src/edit/edit.tt:340
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
+"Имај на ум дека ознаките меѓу кои се наоѓа дел од текстот мораат да бидат "
+"сами во ред, без празно место или нешто друго."
 
 #: root/src/edit/edit.tt:455
 msgid ""
@@ -1001,6 +1050,8 @@ msgid ""
 "          use the name the form provides. Images are always renamed by\n"
 "          us."
 msgstr ""
+"Имај на ум дека мораш прво да ги прикачиш и употребиш името кое ќе биде "
+"прикажано. Системот секогаш ги преименува сликите."
 
 #: root/src/edit/newtext.tt:155
 msgid ""
@@ -1008,73 +1059,76 @@ msgid ""
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"Ако сакаш да залепиш (copy-paste) од Word/OpenOffice/LibreOffice/HTML "
+"документ, тоа можеш да го направиш само овде за да го зачуваш изворниот "
+"изглед на текстот (курзив, здебелено итн.)"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:118 root/src/user/human.tt:5
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Докажи дека си човек"
 
 #: root/src/tasks/display.tt:24
 msgid "Please reload your page"
-msgstr ""
+msgstr "Вчитај ја повторно твојата страница"
 
 #: root/src/bookbuilder/index.tt:158 root/src/console/alias_display.tt:37
 #: root/src/console/alias_display.tt:46 root/src/console/alias_display.tt:69
 #: root/src/console/alias_display.tt:78
 msgid "Please select"
-msgstr ""
+msgstr "Избери"
 
 #: root/src/bookbuilder/index.tt:76
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Избери фонтови"
 
 #: root/src/edit/edit.tt:278
 msgid "Poetry, bibliographies, plays, code"
-msgstr ""
+msgstr "Поезија, библиографии, драми, код"
 
 #: root/src/console/alias_display.tt:44 root/src/console/alias_display.tt:76
 msgid "Pointing to"
-msgstr ""
+msgstr "Поврзува"
 
 #: root/src/edit/newtext.tt:236
 msgid "Prepare this text for the archiving"
-msgstr ""
+msgstr "Подготви го текстот за архивирање"
 
 #: root/src/edit/edit.tt:187 root/src/edit/edit.tt:199
 msgid "Preview"
-msgstr ""
+msgstr "Преглед"
 
 #: root/src/search/index.tt:138
 msgid "Previous"
-msgstr ""
+msgstr "Претходно"
 
 #: root/src/admin/jobs.tt:15
 msgid "Priority"
-msgstr ""
+msgstr "Приоритет"
 
 #: root/src/admin/jobs.tt:16
 msgid "Produced"
-msgstr ""
+msgstr "Изработено"
 
 #: root/src/console/unpublished.tt:14
 msgid "Pubdate"
-msgstr ""
+msgstr "Датум на објавување"
 
 #: root/src/edit/newtext.tt:216
 msgid "Publication date on this site."
-msgstr ""
+msgstr "Датум на објавување на овој сајт"
 
 #: root/src/publish/pending.tt:37
 msgid "Publish"
-msgstr ""
+msgstr "Објави"
 
 #: root/src/edit/edit.tt:504
 msgid "Published in *A nice book*, published by My House, 2014"
-msgstr ""
+msgstr "Објавено во *Убава книга*, објавена од Издавачка куќа, 2014"
 
 #: root/src/console/unpublished.tt:15 root/src/console/unpublished.tt:46
 #: root/src/publish/pending.tt:21
 msgid "Purge"
-msgstr ""
+msgstr "Исчисти"
 
 #: root/src/edit/newtext.tt:183
 msgid ""
@@ -1082,307 +1136,315 @@ msgid ""
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Дополнителните информации вметни ги овде (наслов на оригиналот, преведувач "
+"итн.) Фуснотите се дел од текстот, не ги ставај во Забелешки."
 
 #: root/src/admin/edit.tt:8
 msgid "Quarter Letter paper"
-msgstr ""
+msgstr "Четвртина од letter форматот"
 
 #: root/src/search/index.tt:114 root/src/search/index.tt:154
 msgid "Query was"
-msgstr ""
+msgstr "Прашањето е"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:80
 msgid "Queue"
-msgstr ""
+msgstr "Низа"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:160
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Премногу страници"
 
 #: root/src/macros.tt:26
 msgid "Quotes"
-msgstr ""
+msgstr "Цитати"
 
 #: root/src/layout.tt:379
 msgid "RSS feed"
-msgstr ""
+msgstr "RSS feed"
 
 #: root/src/layout.tt:382
 msgid "Random"
-msgstr ""
+msgstr "Случајна страница"
 
 #: root/src/console/unpublished.tt:13
 msgid "Reason"
-msgstr ""
+msgstr "Причина"
 
 #: root/src/edit/diff.tt:33
 msgid "Recheck"
-msgstr ""
+msgstr "Провери повторно"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:174
 #: root/src/console/alias_display.tt:3 root/src/layout.tt:285
 msgid "Redirections"
-msgstr ""
+msgstr "Пренасочувања"
 
 #: root/src/layout.tt:225
 msgid "Related projects"
-msgstr ""
+msgstr "Поврзани проекти"
 
 #: root/src/layout.tt:280
 msgid "Remotes"
-msgstr ""
+msgstr "Оддалечен репозиториум"
 
 #: root/src/user/create.tt:46 root/src/user/edit.tt:33
 msgid "Repeat email"
-msgstr ""
+msgstr "Повтори го email-от"
 
 #: root/src/user/create.tt:31 root/src/user/edit.tt:19
 msgid "Repeat password"
-msgstr ""
+msgstr "Повтори ја лозинката"
 
 #: root/src/console/git_display.tt:6
 msgid "Repository"
-msgstr ""
+msgstr "Репозиториум"
 
 #: root/src/search/index.tt:110
 msgid "Results"
-msgstr ""
+msgstr "Резултати"
 
 #: root/src/search/index.tt:117
 msgid "Results found"
-msgstr ""
+msgstr "Пронајдено"
 
 #: root/src/edit/newtext.tt:132
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "Пронајдено на ДАТУМ на URL"
 
 #: root/src/edit/edit.tt:509
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "Пронајдено на 8 март 2012, на"
 
 #: root/src/publish/pending.tt:15
 msgid "Revision"
-msgstr ""
+msgstr "Измена"
 
 #. ($uri)
 #: lib/AmuseWikiFarm/Controller/Publish.pm:150
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "Измената за %1 е избришана"
 
 #: root/src/bookbuilder/schemas.tt:25
 msgid "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
 msgstr ""
+"Исто како 2up, но секоја страница е ротирана за 90 степени во насока "
+"спротивна од насоката на сказалките на часовникот."
 
 #: lib/AmuseWikiFarm/Controller/Search.pm:98 root/src/layout.tt:338
 msgid "Search"
-msgstr ""
+msgstr "Барај"
 
 #: root/src/edit/edit.tt:300
 msgid "Section"
-msgstr ""
+msgstr "Оддел"
 
 #: root/src/edit/edit.tt:519
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Погледни го прирачникот за повеќе детали (на англиски)"
 
 #: root/src/edit/edit.tt:464
 msgid "Separate body fields"
-msgstr ""
+msgstr "Одвојуваат делови од текстот"
 
 #: root/src/edit/edit.tt:462
 msgid "Separate footer fields"
-msgstr ""
+msgstr "Одвојуваат делови од подножјето"
 
 #: root/src/edit/edit.tt:463
 msgid "Separate header fields"
-msgstr ""
+msgstr "Одвојуваат делови од заглавието"
 
 #: root/src/edit/newtext.tt:219
 msgid "Set a date in the future if you want it deferred."
-msgstr ""
+msgstr "Стави иден датум доколку сакаш да го одложиш објавувањето."
 
 #: root/src/edit/edit.tt:201 root/src/edit/revs.tt:49
 #: root/src/publish/pending.tt:59
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Покажи ги разликите во друго јазиче"
 
 #: root/src/search/index.tt:99
 msgid "Show options"
-msgstr ""
+msgstr "Покажи ги опциите"
 
 #: root/src/edit/edit.tt:464
 msgid "Single bars"
-msgstr ""
+msgstr "Единечна лента"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:87
 msgid "Site already exists"
-msgstr ""
+msgstr "Сајтот веќе постои"
 
 #: root/src/admin/edit.tt:161 root/src/admin/list.tt:14
 msgid "Site group"
-msgstr ""
+msgstr "Група на сајтот"
 
 #: root/src/admin/jobs.tt:9
 msgid "Site id"
-msgstr ""
+msgstr "Id на сајтот"
 
 #: root/src/admin/edit.tt:141
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "Е-mail на сајтот (полето Од)"
 
 #: root/src/admin/edit.tt:17
 msgid "Site mode"
-msgstr ""
+msgstr "Начин на сајтот"
 
 #: root/src/admin/edit.tt:99
 msgid "Site name"
-msgstr ""
+msgstr "Име на сајтот"
 
 #: root/src/admin/edit.tt:109
 msgid "Site slogan"
-msgstr ""
+msgstr "Слоган на сајтот"
 
 #: root/src/layout.tt:302
 msgid "Sites"
-msgstr ""
+msgstr "Сајтови"
 
 #: root/src/user/create.tt:48
 msgid "So we can be sure we are not mailing passwords to random people"
-msgstr ""
+msgstr "За да не праќаме лозинки на погрешни личности"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:179
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Некои полиња недостигаат, сите се задолжителни"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:188
 #: lib/AmuseWikiFarm/Controller/User.pm:312
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Некои полиња се предолги"
 
 #: root/src/edit/revs.tt:9
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Пронајдени се некои активни измени"
 
 #: root/src/edit/edit.tt:242 root/src/edit/newtext.tt:129
 #: root/src/search/index.tt:58 root/src/text.tt:74
 msgid "Source"
-msgstr ""
+msgstr "Извор"
 
 #: root/src/tasks/display.tt:30
 msgid "Source files"
-msgstr ""
+msgstr "Изворни датотеки"
 
 #: root/src/text.tt:161 root/src/text.tt:162
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Изворни датотеки со прилози"
 
 #: root/src/tasks/display.tt:59 root/src/tasks/display.tt:74
 msgid "Sources"
-msgstr ""
+msgstr "Извори"
 
 #: root/src/edit/edit.tt:399
 msgid "Special blocks"
-msgstr ""
+msgstr "Посебни делови"
 
 #: lib/AmuseWikiFarm/Controller/Library.pm:91
 msgid "Special pages"
-msgstr ""
+msgstr "Посебни страници"
 
 #: root/src/publish/pending.tt:51
 msgid "Stale editing"
-msgstr ""
+msgstr "Напуштена измена"
 
 #: root/src/text.tt:136 root/src/text.tt:137
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "Целосен HTML (за печатење)"
 
 #: root/src/admin/jobs.tt:12 root/src/console/unpublished.tt:12
 #: root/src/tasks/display.tt:24 root/src/tasks/display.tt:48
 #: root/src/tasks/display.tt:9
 msgid "Status"
-msgstr ""
+msgstr "Состојба"
 
 #: root/src/edit/edit.tt:303
 msgid "Subsection"
-msgstr ""
+msgstr "Пододдел"
 
 #: root/src/edit/edit.tt:306
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "Пододдел или елемент на опис"
 
 #: root/src/edit/edit.tt:214 root/src/edit/newtext.tt:47 root/src/text.tt:34
 msgid "Subtitle"
-msgstr ""
+msgstr "Поднаслов"
 
 #: root/src/console/alias_display.tt:18
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
+"Вакво заглавие го брише текстот од архивата и го заменува со пренасочување, "
+"а ќе се гледа овде."
 
 #: lib/AmuseWikiFarm/Controller/User.pm:231
 msgid "Such username already exists"
-msgstr ""
+msgstr "Такво корисничко име веќе постои"
 
 #: root/src/edit/edit.tt:266
 msgid "Summary"
-msgstr ""
+msgstr "Резиме"
 
 #: root/src/edit/edit.tt:286 root/src/edit/edit.tt:467
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "Поддржани полиња во заглавието"
 
 #: root/src/text.tt:10
 msgid "Table of Contents"
-msgstr ""
+msgstr "Содржина"
 
 #: root/src/edit/edit.tt:283 root/src/edit/edit.tt:460
 msgid "Tables"
-msgstr ""
+msgstr "Табели"
 
 #: root/src/admin/jobs.tt:10
 msgid "Task"
-msgstr ""
+msgstr "Задача"
 
 #: root/src/admin/edit.tt:189
 msgid "TeX"
-msgstr ""
+msgstr "TeX"
 
 #: root/src/console/alias_display.tt:6
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
+"Пренасочувањата се одредени во самиот текст, користејќи го заглавието "
+"#DELETED со оваа синтакса."
 
 #: root/src/console/translations.tt:12
 msgid "Texts"
-msgstr ""
+msgstr "Текстови"
 
 #: root/src/bookbuilder/index.tt:68
 msgid "The name is always required, but used only if there are multiple texts."
-msgstr ""
+msgstr "Името е задолжително, но се користи само за збирки со повеќе текстови."
 
 #: root/src/edit/edit.tt:493
 msgid "The optional subtitle"
-msgstr ""
+msgstr "Поднаслов (не е задолжителен)"
 
 #: root/src/user/create.tt:40
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "Лозинката ќе биде испратена на оваа e-mail адреса"
 
 #: root/src/bookbuilder/schemas.tt:36
 msgid ""
 "The prefix “r” means logical page disposed upside-down, rotated\n"
 "by 180 degrees."
-msgstr ""
+msgstr "Префискот \"r\"  означува логичка страница ротирана за 180 степени."
 
 #: root/src/email/commit.tt:17
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "Измената ги содржи следните пораки"
 
 #: root/src/layout.tt:357
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "Текстот е додаден на збирката"
 
 #: root/src/edit/edit.tt:487
 msgid ""
@@ -1391,30 +1453,32 @@ msgid ""
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr ""
+"Наслов на документот, заради сортирање. Обично не се користи во македонскиот "
+"јазик."
 
 #: root/src/edit/edit.tt:471
 msgid "The title of the document. The only mandatory directive."
-msgstr ""
+msgstr "Наслов на документот. Единственото задолжително поле."
 
 #: root/src/user/create.tt:6
 msgid "The user will have the same your level of access"
-msgstr ""
+msgstr "Корисникот ќе има исто ниво на пристап како и ти"
 
 #: root/src/console/translations.tt:21
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "На овие текстови им недостига единствениот id."
 
 #: root/src/edit/edit.tt:441
 msgid "They have the same syntax (images are actually links)"
-msgstr ""
+msgstr "Ја имаат истата синтакса (сликите всушност се само линкови)"
 
 #: root/src/edit/edit.tt:107
 msgid "This directive wants a whitespace separated list of filenames."
-msgstr ""
+msgstr "Ова поле бара листа на имињата на датотеки одвоени со празно место."
 
 #: root/src/edit/newtext.tt:249
 msgid "This field is required"
-msgstr ""
+msgstr "Ова поле е задолжително"
 
 #: root/src/edit/newtext.tt:161
 msgid ""
@@ -1422,198 +1486,209 @@ msgid ""
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"Ова е WYSIWYG уредувач на текст. Ако сакаш да ја користиш wiki синтаксата "
+"остави го празно, пополни ги останатите полиња и одложи ја измената за "
+"следниот чекор."
 
 #: root/src/edit/edit.tt:465
 msgid "This is the caption"
-msgstr ""
+msgstr "Ова е описот"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:270
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Оваа измена веќе е објавена, понатамошните измени ќе бидат игнорирани"
 
 #: root/src/edit/revs.tt:37
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Оваа измена е во тек"
 
 #: root/src/edit/revs.tt:35
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "Оваа измена е во тек од твоја страна"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:265
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Оваа измена е во тек од страна на некој друг!"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:168
 msgid "This text does not exist"
-msgstr ""
+msgstr "Овој текст не постои"
 
 #: root/src/edit/newtext.tt:220
 msgid "Time is optional."
-msgstr ""
+msgstr "Времето е незадолжително."
 
 #: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:208
 #: root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:28
 msgid "Title"
-msgstr ""
+msgstr "Наслов"
 
 #: root/src/edit/newtext.tt:57
 msgid "Title for sorting"
-msgstr ""
+msgstr "Наслов за азбучно подредување"
 
 #: root/src/layout.tt:134
 msgid "Titles"
-msgstr ""
+msgstr "Наслови"
 
 #. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "За да ја објавиш измената, оди на %1"
 
 #: root/src/edit/edit.tt:101
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
+"За да ги видиш PDF датотеките, примени го или додади го овој низ од знаци во "
+"заглавието"
 
 #: root/src/edit/edit.tt:401
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
+msgstr "За да ги зачуваш празните места и новите редови, вметни пасус помеѓу "
 
 #: root/src/edit/edit.tt:411
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "За брзо обликување на библиографиите, вметни ги помеѓу"
 
 #: root/src/edit/edit.tt:418
 msgid "To quickly format plays, use"
-msgstr ""
+msgstr "За брзо обликување на драми, употреби"
 
 #: root/src/email/commit.tt:6
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "За да го продолжиш уредувањето, можеш да одиш на овој URL"
 
 #: root/src/email/commit.tt:10
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "За да ги видиш внесените промени, можеш да одиш на овој URL"
 
 #: root/src/layout.tt:114 root/src/layout.tt:117
 msgid "Toggle the table of contents"
-msgstr ""
+msgstr "Покажи ја/сокриј ја содржината"
 
 #: root/src/search/index.tt:48
 msgid "Topic"
-msgstr ""
+msgstr "Тема"
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:79 root/src/edit/edit.tt:235
 #: root/src/edit/edit.tt:497 root/src/edit/newtext.tt:101
 #: root/src/layout.tt:146 root/src/layout.tt:162 root/src/text.tt:58
 msgid "Topics"
-msgstr ""
+msgstr "Теми"
 
 #: root/src/bookbuilder/index.tt:46
 msgid "Total pages"
-msgstr ""
+msgstr "Вкупно страници"
 
 #: root/src/edit/edit.tt:462
 msgid "Triple bars"
-msgstr ""
+msgstr "Тројна лента"
 
 #: root/src/bookbuilder/index.tt:238
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Обиди се со случаен текст доколку не си сигурен"
 
 #: root/src/admin/edit.tt:382 root/src/bookbuilder/index.tt:168
 msgid "Two side layout"
-msgstr ""
+msgstr "Двостран прелом"
 
 #: root/src/bookbuilder/index.tt:17 root/src/console/alias_display.tt:97
 #: root/src/console/unpublished.tt:9 root/src/edit/revs.tt:15
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 #: root/src/console/git_display.tt:9
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: root/src/edit/revs.tt:29 root/src/publish/pending.tt:66
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: root/src/edit/newtext.tt:114
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "Единствен ID за текстот"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:104
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Необјавени текстови"
 
 #: root/src/admin/edit.tt:405 root/src/user/edit.tt:39
 msgid "Update"
-msgstr ""
+msgstr "Ажурирај"
 
 #: root/src/layout.tt:295
 msgid "Update account info"
-msgstr ""
+msgstr "Ажурирај ги информациите за сметката"
 
 #: root/src/edit/edit.tt:127
 msgid "Upload"
-msgstr ""
+msgstr "Прикачи"
 
 #: root/src/macros.tt:24
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #: root/src/edit/edit.tt:88
 msgid "Use it in the body as"
-msgstr ""
+msgstr "Користи го во текстот како"
 
 #: root/src/edit/edit.tt:373
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
 msgstr ""
+"Корисно за фусноти или заглавија, онаму каде што не можеш да користиш празен "
+"ред за одвојување на пасусите."
 
 #. ($user->username)
 #: lib/AmuseWikiFarm/Controller/User.pm:239
 msgid "User %1 created!"
-msgstr ""
+msgstr "Корисникот %1 е креиран!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:246
 msgid "User created"
-msgstr ""
+msgstr "Корисникот е креиран"
 
 #: root/src/user/login.tt:6 root/src/user/login.tt:8
 msgid "Username"
-msgstr ""
+msgstr "Корисничко име"
 
 #: root/src/user/create.tt:16
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
+"Корисничко име, само алфанумерички знаци, без посебни знаци, без големи букви"
 
 #: root/src/macros.tt:27
 msgid "Verbatim block"
-msgstr ""
+msgstr "Предформатиран дел"
 
 #: root/src/admin/list.tt:21
 msgid "Virtual hosts"
-msgstr ""
+msgstr "Виртуелни хостови"
 
 #: root/src/admin/edit.tt:390
 msgid "Virtual hosts, one per line"
-msgstr ""
+msgstr "Виртуелни хостови, по еден во ред"
 
 #: root/src/bookbuilder/index.tt:180
 msgid "When imposing, use optimized signatures with 40-80 pages each"
 msgstr ""
+"При прелом на текстот користи оптимиризани табаци со 40-80 страници секој."
 
 #: root/src/edit/edit.tt:510
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "Од каде е овој текст?"
 
 #: root/src/bookbuilder/index.tt:153
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
 msgstr ""
+"Ширина на насловната слика процентуално во однос на ширината на текстот. "
+"Остави празно ако не ти треба насловна слика."
 
 #: root/src/bookbuilder/index.tt:227
 msgid ""
@@ -1621,34 +1696,37 @@ msgid ""
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"Можеш да ги промениш фонтовите, димензиите, форматот, маргините на "
+"текстовите во библиотеката. Можеш да направиш свој буклет со повеќе текстови "
+"заедно. Обиди се!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:129
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Погрешен одговор!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:97
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Погрешно корисничко име или лозинка"
 
 #: root/src/text.tt:145 root/src/text.tt:146
 msgid "XeLaTeX source"
-msgstr ""
+msgstr "XeLaTeX извор"
 
 #: root/src/search/index.tt:38
 msgid "Year"
-msgstr ""
+msgstr "Година"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:113
 msgid "You already proved you are human"
-msgstr ""
+msgstr "Веќе докажа дека си човек"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:54
 msgid "You are already logged in"
-msgstr ""
+msgstr "Веќе си пријавен"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:88
 msgid "You are logged in now!"
-msgstr ""
+msgstr "Сега си пријавен!"
 
 #: root/src/bookbuilder/index.tt:232
 msgid ""
@@ -1656,150 +1734,155 @@ msgid ""
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Кликни на иконата \"Плус\", покрај преземања, кај секој од текстовите за да "
+"го додадеш на својата збирка. Подоцна можеш да додадеш или избришеш текстови."
 
 #. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
-msgstr ""
+msgstr "Можеш да создадеш сметка на %1"
 
 #: root/src/user/human.tt:7
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Одговарајќи на едноставно прашање"
 
 #: root/src/edit/revs.tt:73
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
+"Не можеш да направиш нова измена затоа што текстот сѐ уште не е објавен"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:104
 msgid "You have logged out"
-msgstr ""
+msgstr "Одјавен си"
 
 #: root/src/edit/revs.tt:10
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "Можеш да се вратиш на една од измените во тек"
 
 #. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Треба веднаш да ја промениш својата лозинка на %1"
 
 #: root/src/edit/edit.tt:204
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
 "Commit"
 msgstr ""
+"Твоите измени се подготвени и можеш да ги прегледаш секојпат кога\n"
+" ќе кликнеш на \"Преглед\" или \"Зачувај\""
 
 #: root/src/macros.tt:10
 msgid "Your chapter here..."
-msgstr ""
+msgstr "Твоето поглавје"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:67
 msgid "Your file is ready"
-msgstr ""
+msgstr "Твојата датотека е подготвена"
 
 #: root/src/macros.tt:8
 msgid "Your part here..."
-msgstr ""
+msgstr "Твојот дел"
 
 #. (user.password)
 #: root/src/email/newuser.tt:6
 msgid "Your password is %1."
-msgstr ""
+msgstr "Твојата лозинка е %1."
 
 #: root/src/macros.tt:15
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "Твојот подпододдел (или опис на заглавието)..."
 
 #: root/src/macros.tt:13
 msgid "Your subsection here..."
-msgstr ""
+msgstr "Твојот пододдел"
 
 #. (site.canonical)
 #: root/src/email/newuser.tt:2
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Твојот корисник е креиран на %1."
 
 #. (user.username)
 #: root/src/email/newuser.tt:4
 msgid "Your username is %1."
-msgstr ""
+msgstr "Твоето корисничко име е %1."
 
 #: root/src/admin/edit.tt:267
 msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr ""
+msgstr "ZIP архивата со извор, потребна за создавање на збирка"
 
 #: root/src/layout.tt:206
 msgid "about, links..."
-msgstr ""
+msgstr "за проектот, линкови..."
 
 #: root/src/edit/newtext.tt:197
 msgid "automatically generated if not present, using author and title"
-msgstr ""
+msgstr "автоматски генериран доколку недостија, со автор и наслов"
 
 #: root/src/edit/edit.tt:366 root/src/edit/edit.tt:367
 #: root/src/edit/edit.tt:369
 msgid "code and monospace"
-msgstr ""
+msgstr "обликување на кодот"
 
 #: root/src/edit/edit.tt:482 root/src/edit/edit.tt:497
 #: root/src/edit/newtext.tt:102 root/src/edit/newtext.tt:76
 msgid "comma or semicolon separated list"
-msgstr ""
+msgstr "листа разделена со запирка или точка-запирка "
 
 #: root/src/tasks/display.tt:4
 msgid "completed"
-msgstr ""
+msgstr "готово"
 
 #: root/src/publish/pending.tt:6
 msgid "conflict"
-msgstr ""
+msgstr "конфликт"
 
 #: root/src/macros.tt:22
 msgid "description"
-msgstr ""
+msgstr "опис"
 
 #: root/src/edit/edit.tt:445 root/src/edit/edit.tt:452
 msgid "displayed text"
-msgstr ""
+msgstr "прикажан текст"
 
 #: root/src/publish/pending.tt:3
 msgid "editing"
-msgstr ""
+msgstr "уредување во тек"
 
 #: root/src/edit/edit.tt:348 root/src/edit/edit.tt:350
 msgid "emphasis"
-msgstr ""
+msgstr "истакнато"
 
 #: root/src/tasks/display.tt:5
 msgid "failed"
-msgstr ""
+msgstr "неуспешно"
 
 #: root/src/edit/edit.tt:409
 msgid "for code, monospaced"
-msgstr ""
+msgstr "за кодот"
 
 #: root/src/edit/newtext.tt:67
 msgid "for display"
-msgstr ""
+msgstr "како што е прикажано"
 
 #: root/src/edit/edit.tt:482 root/src/edit/newtext.tt:76
 msgid "for indexing"
-msgstr ""
+msgstr "за индексирање"
 
 #: root/src/edit/edit.tt:405
 msgid "for poetry"
-msgstr ""
+msgstr "за поезија"
 
 #: root/src/macros.tt:11
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "општ оддел, препорачан за кратки текстови"
 
 #: root/src/bookbuilder/index.tt:181
 msgid "if applicable"
-msgstr ""
+msgstr "доколку е можно"
 
 #: root/src/edit/newtext.tt:39
 msgid ""
@@ -1807,132 +1890,137 @@ msgid ""
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
+"доколку случајно постои уште еден текст од истиот автор и со ист наслов, "
+"избери го саканиот URL користејќи го полето подолу, внеси го авторот, "
+"насловот и еден број, на пр.: мој-автор-мој-наслов-1"
 
 #: root/src/edit/newtext.tt:37
 msgid "mandatory"
-msgstr ""
+msgstr "задолжително"
 
 #: root/src/edit/edit.tt:435 root/src/edit/edit.tt:436
 msgid "numbered item"
-msgstr ""
+msgstr "нумериран елемент"
 
 #: root/src/edit/edit.tt:483
 msgid "optional, defaults to the author directive"
-msgstr ""
+msgstr "незадолжително, доколку недостига ќе се користи полето автор"
 
 #: root/src/edit/edit.tt:348 root/src/edit/edit.tt:354
 #: root/src/edit/edit.tt:360 root/src/edit/edit.tt:366
 #: root/src/edit/edit.tt:405 root/src/edit/edit.tt:447
 #: root/src/edit/edit.tt:452 root/src/edit/edit.tt:89
 msgid "or"
-msgstr ""
+msgstr "или"
 
 #: root/src/edit/edit.tt:377 root/src/edit/edit.tt:380
 msgid "overstriked"
-msgstr ""
+msgstr "избришано"
 
 #: root/src/publish/pending.tt:4 root/src/tasks/display.tt:2
 msgid "pending"
-msgstr ""
+msgstr "на чекање"
 
 #: root/src/text.tt:100 root/src/text.tt:101
 msgid "plain PDF"
-msgstr ""
+msgstr "обичен PDF"
 
 #: root/src/text.tt:153 root/src/text.tt:154
 msgid "plain text source"
-msgstr ""
+msgstr "изворот во обичен текст"
 
 #: root/src/publish/pending.tt:5
 msgid "processing"
-msgstr ""
+msgstr "во тек"
 
 #: root/src/publish/pending.tt:7
 msgid "published"
-msgstr ""
+msgstr "објавено"
 
 #: root/src/search/index.tt:129
 msgid "relevant"
-msgstr ""
+msgstr "релевантно"
 
 #: root/src/edit/diff.tt:14
 msgid "revision"
-msgstr ""
+msgstr "измена"
 
 #: root/src/edit/edit.tt:354 root/src/edit/edit.tt:356
 msgid "strong emphasis"
-msgstr ""
+msgstr "истакнато и здебелено"
 
 #: root/src/macros.tt:14
 msgid "sub-sub-section"
-msgstr ""
+msgstr "подпододдел"
 
 #: root/src/edit/edit.tt:375 root/src/edit/edit.tt:378
 msgid "subscript"
-msgstr ""
+msgstr "индекс"
 
 #: root/src/macros.tt:12
 msgid "subsection"
-msgstr ""
+msgstr "пододдел"
 
 #: root/src/edit/edit.tt:376 root/src/edit/edit.tt:379
 msgid "superscript"
-msgstr ""
+msgstr "експонент"
 
 #: root/src/tasks/display.tt:3
 msgid "taken"
-msgstr ""
+msgstr "во тек"
 
 #. (args)
 #: root/src/macros.tt:1 root/src/macros.tt:2 root/src/macros.tt:3
 msgid "text"
-msgstr ""
+msgstr "текст"
 
 #: root/src/layout.tt:125
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "текстови според автор, наслов, тема..."
 
 #: root/src/layout.tt:139
 msgid "texts sorted by author"
-msgstr ""
+msgstr "текстови според автор"
 
 #: root/src/layout.tt:133
 msgid "texts sorted by title"
-msgstr ""
+msgstr "текстови според наслов"
 
 #: root/src/layout.tt:161
 msgid "texts sorted by topics"
-msgstr ""
+msgstr "текстови според тема"
 
 #: root/src/edit/edit.tt:475
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "автор на текстот (за насловна страница)"
 
 #: root/src/edit/edit.tt:496
 msgid "topic"
-msgstr ""
+msgstr "тема"
 
 #: root/src/edit/edit.tt:429 root/src/edit/edit.tt:430
 msgid "unnumbered item"
-msgstr ""
+msgstr "елементот не е нумериран"
 
 #: root/src/edit/edit.tt:360 root/src/edit/edit.tt:361
 #: root/src/edit/edit.tt:363
 msgid "very strong emphasis"
-msgstr ""
+msgstr "истакнато и многу здебелено"
 
 #: root/src/edit/edit.tt:446
 msgid "with description"
-msgstr ""
+msgstr "со опис"
 
 #: root/src/edit/edit.tt:448
 msgid "without description"
-msgstr ""
+msgstr "без опис"
 
 #: root/src/edit/newtext.tt:58
 msgid ""
 "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
+"Насловот на документот, за индексирање. Обично не се користи во македонскиот "
+"јазик"
 
 #: root/src/publish/pending.tt:95
 msgid ""
@@ -1940,3 +2028,5 @@ msgid ""
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
+"понатаму е таму, во случај некој да сака да продолжи."
