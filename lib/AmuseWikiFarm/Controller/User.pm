@@ -253,7 +253,10 @@ sub create :Chained('user') :Args(0) {
                     $c->log->warn("Adding CC: $cc");
                 }
             }
-            $c->stash(email => \%mail);
+            $c->stash(
+                      email => \%mail,
+                      password => $insertion{password},
+                     );
             $c->forward($c->view('Email::Template'));
             if (scalar(@{ $c->error })) {
                 $c->flash(error_msg => $c->loc('Error sending mail!'));

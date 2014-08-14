@@ -3,7 +3,7 @@
 
 [% loc("Your username is [_1].", user.username) %]
 
-[% loc("Your password is [_1].", user.password) %]
+[% loc("Your password is [_1].", password) %]
 
 [% loc("You should change your password right away at [_1]",
    c.uri_for_action('/user/edit', [ user.id ])) %]
