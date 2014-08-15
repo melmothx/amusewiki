@@ -607,6 +607,7 @@ sub compile_options {
         $opts{ttdir} = $dir;
     }
     foreach my $ext (qw/siteslogan logo nocoverpage
+                        sitename
                         papersize division fontsize
                         bcor mainfont twoside/) {
         $opts{extra}{$ext} = $self->$ext;
