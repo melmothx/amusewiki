@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-08-15 15:35+0100\n"
+"PO-Revision-Date: 2014-08-15 22:21+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -239,7 +239,7 @@ msgstr "Поглавје, само за цели книги"
 
 #: root/src/edit/edit.tt:264
 msgid "Cheatsheet for the markup"
-msgstr "Сиже за обликување на текстот"
+msgstr "Потсетник за обликување на текстот"
 
 #: root/src/admin/edit.tt:287 root/src/bookbuilder/index.tt:102
 msgid "Choose a paper format"
@@ -744,7 +744,7 @@ msgstr "Листи"
 #: root/src/edit/edit.tt:425
 msgid "Lists start with a single leading whitespace"
 msgstr ""
-"Листите започнуваат со едон единствено празно место на почеток од редот"
+"Листите започнуваат со едно единствено празно место на почеток од редот"
 
 #: root/src/admin/edit.tt:39 root/src/admin/list.tt:16
 msgid "Locale"
@@ -923,7 +923,7 @@ msgstr "Или најави се, доколку имаш сметка."
 #: root/src/edit/edit.tt:319 root/src/edit/edit.tt:325
 #: root/src/edit/edit.tt:332
 msgid "Or wrap it in"
-msgstr "Или вметни помеѓу."
+msgstr "Или вметни помеѓу"
 
 #: root/src/layout.tt:227
 msgid "Other languages"
@@ -1820,7 +1820,7 @@ msgstr "за проектот, линкови..."
 
 #: root/src/edit/newtext.tt:197
 msgid "automatically generated if not present, using author and title"
-msgstr "автоматски генериран доколку недостига, со автор и наслов"
+msgstr "се генерира автоматски доколку недостига, со автор и наслов"
 
 #: root/src/edit/edit.tt:366 root/src/edit/edit.tt:367
 #: root/src/edit/edit.tt:369
