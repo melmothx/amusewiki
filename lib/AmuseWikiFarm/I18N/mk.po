@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-08-13 21:18+0100\n"
+"PO-Revision-Date: 2014-08-15 15:35+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -1115,7 +1115,7 @@ msgstr "Датум на објавување"
 
 #: root/src/edit/newtext.tt:216
 msgid "Publication date on this site."
-msgstr "Датум на објавување на овој сајт"
+msgstr "Датум на објавување на овој сајт."
 
 #: root/src/publish/pending.tt:37
 msgid "Publish"
@@ -1820,7 +1820,7 @@ msgstr "за проектот, линкови..."
 
 #: root/src/edit/newtext.tt:197
 msgid "automatically generated if not present, using author and title"
-msgstr "автоматски генериран доколку недостија, со автор и наслов"
+msgstr "автоматски генериран доколку недостига, со автор и наслов"
 
 #: root/src/edit/edit.tt:366 root/src/edit/edit.tt:367
 #: root/src/edit/edit.tt:369
