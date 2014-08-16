@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-08-16 12:41+0200\n"
+"PO-Revision-Date: 2014-08-16 13:11+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -494,7 +494,7 @@ msgstr "Za tekstove pronađene na internetu upotrijebi"
 
 #: root/src/admin/edit.tt:401 root/src/bookbuilder/index.tt:174
 msgid "For texts without a table of content, start text on the very first page"
-msgstr ""
+msgstr "Ako tekst nema poglavlja, počni tekst na prvoj stranici (bez omotnice)"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
@@ -532,7 +532,7 @@ msgstr "Pretraga čitavog testa"
 
 #: root/src/admin/edit.tt:9
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Generičan format (može stati i na A4 i na Letter)"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:70
 msgid "Git console"
@@ -1045,6 +1045,11 @@ msgid ""
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
 msgstr ""
+"Pazi da opcije za obostrani prijelom i za korekciju za uvez slijede\n"
+"ovu logiku: ako su prisutni formati spremni za štampanje, onda za\n"
+"običan PDF opcije budu ignorirane (ali se ipak koriste za formate za\n"
+"štampanje). Ako samo običan PDF je prisutan, opcije se primjenjuju\n"
+"ovom formatu."
 
 #: root/src/edit/edit.tt:340
 msgid "Please note that wrapping tags must be placed on a line by themselves."
