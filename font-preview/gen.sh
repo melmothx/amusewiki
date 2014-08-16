@@ -14,6 +14,7 @@ for font in 'Linux Libertine O'    \
             'PT Serif'; do
     muse-compile.pl --extra papersize=a5 --extra division=15 \
         --extra sitename="$font" \
+        --extra nocoverpage=1 \
         --extra fontsize=11 --extra mainfont="$font" --pdf font-preview.muse
     pdf=$(echo $font | sed -e 's/ /-/g').pdf
     mv font-preview.pdf $pdf
