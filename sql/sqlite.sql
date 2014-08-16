@@ -62,6 +62,7 @@ CREATE TABLE site (
        fontsize INTEGER NOT NULL DEFAULT '10',
        mainfont VARCHAR(255) NOT NULL DEFAULT 'Linux Libertine O',
        nocoverpage INTEGER(1) NOT NULL DEFAULT 0,
+       logo_with_sitename INTEGER(1) NOT NULL DEFAULT 0,
        twoside INTEGER(1) NOT NULL DEFAULT 0
 );
 

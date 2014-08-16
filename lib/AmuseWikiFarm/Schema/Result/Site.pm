@@ -267,6 +267,13 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1
 
+=head2 logo_with_sitename
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 twoside
 
   data_type: 'integer'
@@ -359,6 +366,8 @@ __PACKAGE__->add_columns(
     size => 255,
   },
   "nocoverpage",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  "logo_with_sitename",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "twoside",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
@@ -509,8 +518,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-08 16:13:59
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qqA3l31n4Zli1vOja8uG4w
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-16 17:24:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CK26Fzfq9NuvboVHiRskvA
 
 =head2 other_sites
 
@@ -611,6 +620,10 @@ sub compile_options {
                         papersize division fontsize
                         bcor mainfont twoside/) {
         $opts{extra}{$ext} = $self->$ext;
+    }
+    # if the logo has the sitename in it, skip it.
+    if ($self->logo_with_sitename) {
+        $opts{extra}{sitename} = '';
     }
     $opts{extra}{site} = $self->canonical;
     # but strip the protocol
@@ -1670,6 +1683,7 @@ sub update_from_params {
     # first round: booleans. Here there is not much to do. If it's set, 1,
     # otherwise 0
     my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
+                       logo_with_sitename
                        twoside nocoverpage/);
     foreach my $boolean (@booleans) {
         if (delete $params->{$boolean}) {

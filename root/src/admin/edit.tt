@@ -403,6 +403,17 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.logo_with_sitename %]checked="checked"[% END %]
+                 name="logo_with_sitename" />
+          [% loc('The logo has the site name on itself') %]
+        </label>
+      </div>
+    </div>
+
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
