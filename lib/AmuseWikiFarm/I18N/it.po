@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-08-16 12:43+0200\n"
+"PO-Revision-Date: 2014-08-16 13:04+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -498,7 +498,7 @@ msgstr "Per testi trovati su internet puoi usare"
 
 #: root/src/admin/edit.tt:401 root/src/bookbuilder/index.tt:174
 msgid "For texts without a table of content, start text on the very first page"
-msgstr ""
+msgstr "Per i testi senza un sommario, fai iniziare il testo sulla prima pagina"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
@@ -536,7 +536,7 @@ msgstr "Ricerca a tutto testo"
 
 #: root/src/admin/edit.tt:9
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Formato generico (adatto per A4 e Letter)"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:70
 msgid "Git console"
@@ -1056,6 +1056,11 @@ msgid ""
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
 msgstr ""
+"Le opzioni per il fronte-retro e per la correzione per la rilegatura\n"
+"seguono la seguente logica: se è impostato un formato impaginato,\n"
+"vengono ignorate quando viene creato il formato semplice, e applicate\n"
+"sui formati impaginati. Se è presente solo il formato semplice, non\n"
+"impaginato, le opzioni vengono applicate.\n"
 
 #: root/src/edit/edit.tt:340
 msgid "Please note that wrapping tags must be placed on a line by themselves."
