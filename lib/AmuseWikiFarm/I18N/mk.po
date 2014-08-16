@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-08-16 12:35+0200\n"
+"PO-Revision-Date: 2014-08-16 14:40+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -159,7 +159,9 @@ msgstr "Автори"
 
 #: root/src/edit/edit.tt:481 root/src/edit/newtext.tt:75
 msgid "Authors for indexing"
-msgstr "Автори за индексирање"
+msgstr ""
+"Автори за индексирање - во заграда наведи го и изворното писмо - пр.: \"Џон "
+"Зерзан (John Zerzan)\""
 
 #: root/src/edit/edit.tt:137
 msgid "Available category tags for header"
@@ -498,6 +500,8 @@ msgstr "За текстови од интернет употреби"
 #: root/src/admin/edit.tt:401 root/src/bookbuilder/index.tt:174
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
+"Доколку текстот нема содржина, започни го текстот на првата страница (без "
+"насловница)"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
@@ -535,7 +539,7 @@ msgstr "Пребарување на целиот текст"
 
 #: root/src/admin/edit.tt:9
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Генеричен формат (го собира и на А4 и на Letter)"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:70
 msgid "Git console"
@@ -819,7 +823,9 @@ msgstr "Недостига алијас"
 
 #: root/src/bookbuilder/index.tt:79
 msgid "Missing character will be reported"
-msgstr "Буквите кои недостигаат ќе бидат прикажани"
+msgstr ""
+"Буквите кои недостигаат ќе бидат прикажани (следниве фонтови целосно го "
+"поддржуваат кириличното писмо: Linux Libertine, Computer Modern, Charis SIL)"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:203
 msgid "Missing redirection"
@@ -1056,6 +1062,12 @@ msgid ""
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
 msgstr ""
+"Имај на ум дека опциите за двостраниот прелом и за корекција на повезот ја "
+"следат\n"
+" оваа логика: доколку се присутни формати подготвени за печатење, тогаш за "
+"обичен PDF опциите се игнорираат (но сепак се користат за форматите за \n"
+" печатење). Доколку е присутен само обичен PDF, опциите се применуваат/n на "
+"тој формат."
 
 #: root/src/edit/edit.tt:340
 msgid "Please note that wrapping tags must be placed on a line by themselves."
@@ -1098,7 +1110,7 @@ msgstr "Избери"
 
 #: root/src/bookbuilder/index.tt:76
 msgid "Please select the desired fonts"
-msgstr "Избери фонтови"
+msgstr "Избери фонт"
 
 #: root/src/edit/edit.tt:278
 msgid "Poetry, bibliographies, plays, code"
@@ -1695,7 +1707,7 @@ msgstr "Виртуелни хостови, по еден во ред"
 #: root/src/bookbuilder/index.tt:189
 msgid "When imposing, use optimized signatures with 40-80 pages each"
 msgstr ""
-"При прелом на текстот користи оптимиризани табаци со 40-80 страници секој."
+"При прелом на текстот користи оптимиризани табаци со 40-80 страници секој"
 
 #: root/src/edit/edit.tt:510
 msgid "Where does this text come from?"
@@ -1849,7 +1861,7 @@ msgstr "обликување на кодот"
 #: root/src/edit/edit.tt:482 root/src/edit/edit.tt:497
 #: root/src/edit/newtext.tt:102 root/src/edit/newtext.tt:76
 msgid "comma or semicolon separated list"
-msgstr "листа разделена со запирка или точка-запирка "
+msgstr "листа разделена со запирка или точка-запирка"
 
 #: root/src/tasks/display.tt:4
 msgid "completed"
@@ -1885,7 +1897,7 @@ msgstr "за кодот"
 
 #: root/src/edit/newtext.tt:67
 msgid "for display"
-msgstr "како што е прикажано"
+msgstr "за приказ"
 
 #: root/src/edit/edit.tt:405
 msgid "for poetry"
