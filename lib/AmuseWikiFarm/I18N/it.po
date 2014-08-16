@@ -1060,7 +1060,7 @@ msgstr ""
 "seguono la seguente logica: se è impostato un formato impaginato,\n"
 "vengono ignorate quando viene creato il formato semplice, e applicate\n"
 "sui formati impaginati. Se è presente solo il formato semplice, non\n"
-"impaginato, le opzioni vengono applicate.\n"
+"impaginato, le opzioni vengono applicate."
 
 #: root/src/edit/edit.tt:340
 msgid "Please note that wrapping tags must be placed on a line by themselves."
