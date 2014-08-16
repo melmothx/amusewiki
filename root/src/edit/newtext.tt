@@ -72,8 +72,8 @@ var ckconfiguration = {
     </p>
 
     <p>
-      <label for="SORTauthors">[% loc('Authors') %]</label>
-      ([% loc('for indexing') %], [% loc('comma or semicolon separated list') %]):
+      <label for="SORTauthors">[% loc('Authors for indexing') %]</label>,
+      [% loc('comma or semicolon separated list') %]:
       <input class="form-control amwautocomplete" id="SORTauthors"
 	     maxlength="250"
 	     name="SORTauthors"

@@ -478,8 +478,8 @@ $(document).ready(function() {
           <code>
 	        #SORTauthors [% loc('First Author, Second Author') %]
           </code>
-          [% loc('Authors') %]:
-          [% loc('comma or semicolon separated list') %], [% loc('for indexing') %]
+          [% loc('Authors for indexing') %]:
+          [% loc('comma or semicolon separated list') %]
           ([% loc('optional, defaults to the author directive') %]).
         </li>
         <li>
