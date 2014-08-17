@@ -54,15 +54,15 @@ msgstr "PDF A4 para empaste"
 
 #: root/src/admin/edit.tt:3
 msgid "A4 paper"
-msgstr "Papel A4"
+msgstr "Tamaño A4"
 
 #: root/src/admin/edit.tt:4
 msgid "A5 paper"
-msgstr "Papel A5"
+msgstr "Tamaño A5"
 
 #: root/src/admin/edit.tt:5
 msgid "A6 paper (also suitable for e-readers)"
-msgstr "Papel A6 (útil también para lectores de libros electrónico)"
+msgstr "Tamaño A6 (útil también para lectores de libros electrónico)"
 
 #: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
@@ -177,7 +177,7 @@ msgstr "Petición errónea"
 
 #: root/src/admin/edit.tt:253
 msgid "Bare HTML, needed by the application"
-msgstr ""
+msgstr "HTML desnudo (bare), necesitado por la aplicación"
 
 #: root/src/admin/edit.tt:332 root/src/bookbuilder/index.tt:133
 msgid "Binding correction in millimeters (additional inner margin)"
@@ -498,7 +498,7 @@ msgstr "Para textos extraídos desde internet usa"
 
 #: root/src/admin/edit.tt:401 root/src/bookbuilder/index.tt:174
 msgid "For texts without a table of content, start text on the very first page"
-msgstr ""
+msgstr "Para textos sin índice de contenidos, comienza el texto en la primera página"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
@@ -538,7 +538,7 @@ msgstr "Búsqueda de texto completa"
 
 #: root/src/admin/edit.tt:9
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Genérico (para tamaños carta y A4)"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:70
 msgid "Git console"
@@ -550,7 +550,7 @@ msgstr "HTML"
 
 #: root/src/admin/edit.tt:7
 msgid "Half Letter paper"
-msgstr "Papel media carta"
+msgstr "Tamaño media carta"
 
 #: root/src/macros.tt:6
 msgid "Heading"
@@ -574,7 +574,7 @@ msgstr "Cómo elegir una contraseña"
 
 #: root/src/user/human.tt:17
 msgid "I am human"
-msgstr "Soy humana/o"
+msgstr "Soy una persona"
 
 #: root/src/bookbuilder/index.tt:183
 msgid "I want an imposed (ready to print) PDF"
@@ -1062,6 +1062,10 @@ msgid ""
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
 msgstr ""
+"Por favor ten en cuenta que las opciones de corrección para empaste\n"
+"  y doble página siguen esta lógica: si tienes algún formato para empaste,\n"
+"  son ignorados para el PDF normal, pero aplicados para los PDFs para empaste.\n"
+"  Si tienes solo un PDF, las correcciones se le aplican a ese."
 
 #: root/src/edit/edit.tt:340
 msgid "Please note that wrapping tags must be placed on a line by themselves."
@@ -1089,7 +1093,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:118 root/src/user/human.tt:5
 msgid "Please prove you are a human"
-msgstr "Por favor prueba que eres un/a humano/a"
+msgstr "Por favor prueba que eres una persona"
 
 #: root/src/tasks/display.tt:24
 msgid "Please reload your page"
@@ -1752,7 +1756,7 @@ msgstr "Año"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:113
 msgid "You already proved you are human"
-msgstr "Ya probaste que eres humana/o"
+msgstr "Ya probaste que eres una persona"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:54
 msgid "You are already logged in"
@@ -2008,7 +2012,7 @@ msgstr "texto"
 
 #: root/src/layout.tt:142
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "textos ordenados por autora/o, título, tema..."
 
 #: root/src/layout.tt:156
 msgid "texts sorted by author"
