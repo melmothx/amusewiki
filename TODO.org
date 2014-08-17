@@ -138,6 +138,12 @@ the tree.
 * DONE Disable toc for special pages
   CLOSED: [2014-08-07 gio 12:23]
   Not needed
+* TODO in the full listing, provide a paging-like alphabet to jump there.
+* TODO bookbuilder enhancement with explanations
+* TODO images on /bookbuilder/schemas
+* TODO delete Table of Contents option in the BB
+* TODO on /action/text/new, link to the uri field from the explanation
+
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files
