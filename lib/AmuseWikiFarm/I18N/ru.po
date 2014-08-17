@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-08-17 11:07+0200\n"
+"PO-Revision-Date: 2014-08-17 19:00+0400\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -56,7 +56,7 @@ msgstr "Хорошее название"
 
 #: root/src/admin/edit.tt:219 root/src/text.tt:109 root/src/text.tt:110
 msgid "A4 imposed PDF"
-msgstr "Разложенный на а4"
+msgstr "Спуск полос на А4"
 
 #: root/src/admin/edit.tt:3
 msgid "A4 paper"
@@ -135,9 +135,8 @@ msgstr ""
 "URI это строка, которая определяет уникальный идентификатор для текста в "
 "архиве. В теории это может быть всё что угодно, но если вы хотите прописать "
 "её сами, пожалуйста следуйте шаблону: автор, название, язык, возможное число "
-"для устранения неоднозначности e.g.\n"
-"      errico-malatesta-anarchy-2. Пожалуйста помните, что обычно в этом нет "
-"необходимости"
+"для устранения неоднозначности, например: errico-malatesta-anarchy-2. "
+"Пожалуйста помните, что обычно в этом нет необходимости"
 
 #: root/src/macros.tt:5
 msgid "Are you sure?"
@@ -163,7 +162,7 @@ msgstr "Авторы"
 
 #: root/src/edit/edit.tt:481 root/src/edit/newtext.tt:75
 msgid "Authors for indexing"
-msgstr "Автор (для индексации)"
+msgstr "Авторы (для индексации)"
 
 #: root/src/edit/edit.tt:137
 msgid "Available category tags for header"
@@ -184,7 +183,7 @@ msgstr ""
 
 #: root/src/admin/edit.tt:332 root/src/bookbuilder/index.tt:133
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr "Учёт толщины переплёта в мм (дополнительные внутренние поля)"
+msgstr "Учёт ширины переплёта в мм (дополнительные внутренние поля)"
 
 #: root/src/admin/edit.tt:35
 msgid "Blog"
@@ -266,7 +265,7 @@ msgstr "Закрыть"
 
 #: root/src/edit/edit.tt:188
 msgid "Commit"
-msgstr "Зафиксировать"
+msgstr "Опубликовать"
 
 #: root/src/admin/jobs.tt:14
 msgid "Completed"
@@ -274,7 +273,7 @@ msgstr "Завершено"
 
 #: root/src/edit/diff.tt:41
 msgid "Computing of differences took"
-msgstr ""
+msgstr "Вычисление различий заняло"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:150
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:170
@@ -375,7 +374,7 @@ msgstr "Отображение"
 
 #: root/src/admin/edit.tt:312 root/src/bookbuilder/index.tt:115
 msgid "Division factor"
-msgstr ""
+msgstr "Ширина текстового блока"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:74
 msgid "Done"
@@ -395,7 +394,7 @@ msgstr "EPUB"
 
 #: root/src/text.tt:127 root/src/text.tt:128
 msgid "EPUB (for mobile devices)"
-msgstr "EPUB (для мобильных устройств)"
+msgstr "EPUB (для электронных книг)"
 
 #: root/src/console/alias_display.tt:134 root/src/console/translations.tt:33
 msgid "Edit"
@@ -412,7 +411,7 @@ msgstr "Редактировать конфигурацию сайта"
 
 #: root/src/text.tt:170
 msgid "Edit this text"
-msgstr "Редактировать этот текст"
+msgstr "Редактировать текст"
 
 #. (user.username)
 #: root/src/user/edit.tt:3
@@ -501,7 +500,7 @@ msgstr "Для текстов из интернета используйте"
 
 #: root/src/admin/edit.tt:401 root/src/bookbuilder/index.tt:174
 msgid "For texts without a table of content, start text on the very first page"
-msgstr "Для текстов без содержания, начинать текст с самой первой страницы"
+msgstr "Начинать текст с самой первой страницы (для текстов без содержания)"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
@@ -519,7 +518,7 @@ msgstr "Принудительная публикация"
 
 #: root/src/edit/newtext.tt:221
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr "Формат гггг-мм-дд чч:мм, е.г."
+msgstr "Формат гггг-мм-дд чч:мм"
 
 #: root/src/admin/edit.tt:188
 msgid "Formats"
@@ -539,7 +538,7 @@ msgstr "Полнотекстовый поиск"
 
 #: root/src/admin/edit.tt:9
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Универсальный (умещается на A4 и Letter)"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:70
 msgid "Git console"
@@ -551,7 +550,7 @@ msgstr "HTML"
 
 #: root/src/admin/edit.tt:7
 msgid "Half Letter paper"
-msgstr ""
+msgstr "Половина Letter"
 
 #: root/src/macros.tt:6
 msgid "Heading"
@@ -567,7 +566,7 @@ msgstr "Скрыть опции"
 
 #: root/src/admin/edit.tt:313 root/src/bookbuilder/index.tt:117
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Чем больше число — тем уже поля"
 
 #: root/src/user/create.tt:60 root/src/user/edit.tt:45
 msgid "How to choose a password"
@@ -711,7 +710,7 @@ msgstr "Код языка документа (2 или 3 буквы)"
 
 #: root/src/layout.tt:196 root/src/layout.tt:198
 msgid "Language selection"
-msgstr "Выбор языка"
+msgstr "Язык интерфейса"
 
 #: root/src/edit/revs.tt:16
 msgid "Last updated"
@@ -719,7 +718,7 @@ msgstr "Последние обновления"
 
 #: root/src/text.tt:254
 msgid "Latest entries"
-msgstr "Последние записи"
+msgstr "Последние загруженные"
 
 #: root/src/edit/newtext.tt:217
 msgid "Leave it blank if you want it published right away."
@@ -727,11 +726,11 @@ msgstr "Оставьте поле пустым, если хотите опубл
 
 #: root/src/admin/edit.tt:230 root/src/text.tt:118 root/src/text.tt:119
 msgid "Letter imposed PDF"
-msgstr ""
+msgstr "Спуск полос на Letter"
 
 #: root/src/admin/edit.tt:6
 msgid "Letter paper"
-msgstr ""
+msgstr "Бумага Letter"
 
 #: root/src/macros.tt:23
 msgid "Link"
@@ -835,7 +834,7 @@ msgstr "Вики модератора"
 
 #: root/src/layout.tt:225
 msgid "More"
-msgstr "Далее"
+msgstr "Дополнительно"
 
 #: root/src/bookbuilder/index.tt:34
 msgid "Move down"
@@ -888,7 +887,7 @@ msgstr "Ни один текст не был добавлен"
 #: root/src/edit/edit.tt:249 root/src/edit/newtext.tt:181
 #: root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:81
 msgid "Notes"
-msgstr "Заметки"
+msgstr "Дополнительная информация"
 
 #: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:58
 msgid "Nothing to see here, so far"
@@ -934,7 +933,7 @@ msgstr "Или поместите это в "
 
 #: root/src/layout.tt:244
 msgid "Other languages"
-msgstr "Другие языки"
+msgstr "На других языках"
 
 #: root/src/admin/edit.tt:129
 msgid "PDF logo (absolute path or put it in texmf)"
@@ -1002,7 +1001,7 @@ msgstr "Изображение"
 
 #: root/src/admin/edit.tt:208
 msgid "Plain PDF"
-msgstr "Пустой PDF"
+msgstr "Обычный PDF"
 
 #: root/src/edit/edit.tt:170
 msgid "Please describe shortly what you did"
@@ -1022,7 +1021,7 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:67
 msgid "Please give a name to the collection."
-msgstr "Пожалуйста, дайте название сборнику"
+msgstr "Пожалуйста, дайте название сборнику."
 
 #: root/src/publish/pending.tt:88
 msgid ""
@@ -1040,7 +1039,7 @@ msgstr ""
 #: root/src/edit/edit.tt:180
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
-"Пожалуйста оставьте электронную почту если вы хотите узнать об этом изменении"
+"Пожалуйста оставьте электронную почту, чтобы с вами можно было связаться"
 
 #: root/src/admin/edit.tt:14
 msgid ""
@@ -1049,10 +1048,10 @@ msgid ""
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
 msgstr ""
-"Помните, что опции двустороняя печать и учёт толщины переплёта работают "
-"следующим образом: если у вас есть какой-то разложенный формат, они "
-"игнорируются для оригинального PDF, но применяются к разложенному. Если у "
-"вас есть только оригинальный PDF, они применяются к нему"
+"Помните, что опции \"разные внутренние и внешние поля\" и \"учёт ширины "
+"переплёта\" работают следующим образом: если у вас есть какой-то разложенный "
+"формат, они игнорируются для оригинального PDF, но применяются к "
+"разложенному. Если у вас есть только оригинальный PDF, они применяются к нему"
 
 #: root/src/edit/edit.tt:340
 msgid "Please note that wrapping tags must be placed on a line by themselves."
@@ -1105,7 +1104,7 @@ msgstr "Указывает на"
 
 #: root/src/edit/newtext.tt:236
 msgid "Prepare this text for the archiving"
-msgstr "Подготовить этот текст к архивации"
+msgstr "Подготовить этот текст к публикации"
 
 #: root/src/edit/edit.tt:187 root/src/edit/edit.tt:199
 msgid "Preview"
@@ -1129,7 +1128,7 @@ msgstr "Дата публикации"
 
 #: root/src/edit/newtext.tt:216
 msgid "Publication date on this site."
-msgstr "Дата публикации на этом сайте"
+msgstr "Дата публикации на этом сайте."
 
 #: root/src/publish/pending.tt:37
 msgid "Publish"
@@ -1155,7 +1154,7 @@ msgstr ""
 
 #: root/src/admin/edit.tt:8
 msgid "Quarter Letter paper"
-msgstr ""
+msgstr "Четверть Letter"
 
 #: root/src/search/index.tt:114 root/src/search/index.tt:154
 msgid "Query was"
@@ -1179,7 +1178,7 @@ msgstr "Лента RSS"
 
 #: root/src/layout.tt:384
 msgid "Random"
-msgstr "Любой"
+msgstr "Случайный текст"
 
 #: root/src/console/unpublished.tt:13
 msgid "Reason"
@@ -1224,7 +1223,7 @@ msgstr "Результаты поиска"
 
 #: root/src/edit/newtext.tt:132
 msgid "Retrieved on DATE from URL"
-msgstr "Скопировано DATE c URL"
+msgstr "Скопировано ДАТА c ССЫЛКА"
 
 #: root/src/edit/edit.tt:509
 msgid "Retrieved on March 8, 2012 from"
@@ -1242,8 +1241,8 @@ msgstr "Правка для %1 была удалена"
 #: root/src/bookbuilder/schemas.tt:25
 msgid "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
 msgstr ""
-"Тоже самое что и 2 страницы на листе, но каждая повёрнута на 90 градусов "
-"против часовой стрелки"
+"Тоже самое что и 2up, но каждая страница повёрнута на 90 градусов против "
+"часовой стрелки."
 
 #: lib/AmuseWikiFarm/Controller/Search.pm:98 root/src/layout.tt:129
 msgid "Search"
@@ -1271,7 +1270,7 @@ msgstr "Разделить поля шапки"
 
 #: root/src/edit/newtext.tt:219
 msgid "Set a date in the future if you want it deferred."
-msgstr "Установить дату в будущем, если вы хотите отложить"
+msgstr "Установите дату чтобы текст опубликовался позже."
 
 #: root/src/edit/edit.tt:201 root/src/edit/revs.tt:49
 #: root/src/publish/pending.tt:59
@@ -1366,7 +1365,7 @@ msgstr "Устаревшие редакции"
 
 #: root/src/text.tt:136 root/src/text.tt:137
 msgid "Standalone HTML (printer-friendly)"
-msgstr "Оригинальный HTML (подходит для печати)"
+msgstr "HTML (подходит для печати)"
 
 #: root/src/admin/jobs.tt:12 root/src/console/unpublished.tt:12
 #: root/src/tasks/display.tt:24 root/src/tasks/display.tt:48
@@ -1404,7 +1403,7 @@ msgstr "Краткое описание"
 
 #: root/src/edit/edit.tt:286 root/src/edit/edit.tt:467
 msgid "Supported directive in the header"
-msgstr "Поддерживаемое указание в заголовке"
+msgstr "Поддерживаемые указатели в шапке"
 
 #: root/src/text.tt:10
 msgid "Table of Contents"
@@ -1436,8 +1435,7 @@ msgstr "Тексты"
 
 #: root/src/bookbuilder/index.tt:68
 msgid "The name is always required, but used only if there are multiple texts."
-msgstr ""
-"Имя необходимо всегда, но используется только при наличии нескольких текстов"
+msgstr "Оно неоходимо, но используется только при наличии нескольких текстов."
 
 #: root/src/edit/edit.tt:493
 msgid "The optional subtitle"
@@ -1533,7 +1531,7 @@ msgstr "Текст не существует"
 
 #: root/src/edit/newtext.tt:220
 msgid "Time is optional."
-msgstr "Опционально"
+msgstr "Время можно не указывать."
 
 #: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:208
 #: root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:28
@@ -1603,11 +1601,11 @@ msgstr "Тройная решётка"
 
 #: root/src/bookbuilder/index.tt:247
 msgid "Try a random text if unsure"
-msgstr "Попробуйте любой текст, если не уверены"
+msgstr "Попробуйте случайный текст."
 
 #: root/src/admin/edit.tt:390 root/src/bookbuilder/index.tt:168
 msgid "Two side layout"
-msgstr "Двусторонняя вёрстка"
+msgstr "Разные внутренние и внешние поля"
 
 #: root/src/bookbuilder/index.tt:17 root/src/console/alias_display.tt:97
 #: root/src/console/unpublished.tt:9 root/src/edit/revs.tt:15
@@ -1712,9 +1710,9 @@ msgid ""
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
-"С помощью конструктор книг вы можете изменить вёрстку (шрифт, размер бумаги, "
-"поля) текстов из библиотеки. Также вы можете создать сборник из нескольких "
-"текстов. Просто попробуйте!"
+"С помощью конструктора книг вы можете изменить вёрстку текстов из "
+"библиотеки  (шрифт, размер бумаги, поля). Также вы можете создать сборник из "
+"нескольких текстов."
 
 #: lib/AmuseWikiFarm/Controller/User.pm:129
 msgid "Wrong answer!"
@@ -1726,7 +1724,7 @@ msgstr "Неправильные имя пользователя или паро
 
 #: root/src/text.tt:145 root/src/text.tt:146
 msgid "XeLaTeX source"
-msgstr ""
+msgstr "Исходник XeLaTeX"
 
 #: root/src/search/index.tt:38
 msgid "Year"
@@ -1750,8 +1748,9 @@ msgid ""
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
-"Вы можете добавить текст в конструктор книг нажав на иконку \"плюс\" около "
-"загрузок. Вы сможете добавить или удалить текст позже"
+"Вы можете добавить текст в конструктор книг нажав на иконку \"плюс"
+"\" (находится рядом с ссылками на скачивание). Вы сможете добавить или "
+"удалить текст позже."
 
 #. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
@@ -1788,8 +1787,8 @@ msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
 "Commit"
 msgstr ""
-"Ваши изменения сохранены и вы можете их посмотреть при нажатии на Просмотр "
-"или Коммит"
+"Ваши изменения сохранены и вы можете их посмотреть нажав на Просмотр или "
+"Опубликовать"
 
 #: root/src/macros.tt:10
 msgid "Your chapter here..."
@@ -1797,7 +1796,7 @@ msgstr "Ваша глава здесь"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:67
 msgid "Your file is ready"
-msgstr "Ваш фалй готов"
+msgstr "Ваш файл готов"
 
 #: root/src/macros.tt:8
 msgid "Your part here..."
@@ -1837,7 +1836,8 @@ msgstr "О проекте. ссылки"
 #: root/src/edit/newtext.tt:197
 msgid "automatically generated if not present, using author and title"
 msgstr ""
-"создаётся автоматически (используется автор и название) если не указано"
+"если поле оставлено пустым создаётся автоматически с использованием автора и "
+"названия"
 
 #: root/src/edit/edit.tt:366 root/src/edit/edit.tt:367
 #: root/src/edit/edit.tt:369
@@ -1883,7 +1883,7 @@ msgstr "для кода, моноширинного"
 
 #: root/src/edit/newtext.tt:67
 msgid "for display"
-msgstr "для экрана"
+msgstr "для отображения"
 
 #: root/src/edit/edit.tt:405
 msgid "for poetry"
@@ -1903,9 +1903,8 @@ msgid ""
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"если другой текст с этими же автором и названием существует, выберите нужный "
-"URI, используя поле ниже автор, название и номер, например moi-avtor-moe-"
-"nazvanie-1"
+"если другой текст с этими же автором и названием существует, введите нужный "
+"URI, включающий автора, название и номер, например moi-avtor-moe-nazvanie-1"
 
 #: root/src/edit/newtext.tt:37
 msgid "mandatory"
