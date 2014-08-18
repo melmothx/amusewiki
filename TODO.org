@@ -144,6 +144,7 @@ the tree.
 * TODO delete Table of Contents option in the BB
 * TODO on /action/text/new, link to the uri field from the explanation
 
+* TODO offer a link to add again to the bookbuilder the same texts
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files
