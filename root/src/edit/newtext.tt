@@ -38,7 +38,7 @@ var ckconfiguration = {
       </label>:
       [% loc('if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %]
       <a href="#choose-uri">
-        <span class="glyphicon glyphicon-pushpin"></span>
+        <span class="glyphicon glyphicon-share-alt"></span>
       </a>
       <input class="form-control" type="text" name="title"
 	     maxlength="100" id="title"
