@@ -166,10 +166,10 @@ is_deeply($c_validated, {
                         }, "Got the options");
 
 is $bb->validate_imposer_options(\%params), undef;
-$params{schema} = '2down';
+$params{schema} = '2side';
 
 is_deeply($bb->validate_imposer_options(\%params), {
-                                                    schema => '2down',
+                                                    schema => '2side',
                                                     signature => '40-80',
                                                    }, "Got the options");
 
@@ -179,7 +179,7 @@ is $bb->validate_imposer_options(\%params), undef;
 $params{imposed} = 1;
 $params{signatures} = 0;
 
-is_deeply $bb->validate_imposer_options(\%params), { schema => '2down' };
+is_deeply $bb->validate_imposer_options(\%params), { schema => '2side' };
 
 
 # memory_cycle_ok($bb);

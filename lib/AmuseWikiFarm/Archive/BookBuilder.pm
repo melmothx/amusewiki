@@ -284,7 +284,7 @@ sub schemas {
 }
 
 sub schemas_sorted {
-    return [qw/2up 2down 2x4x2 2side/]
+    return [qw/2up 2x4x2 2side/]
 }
 
 sub available_tex_options {
