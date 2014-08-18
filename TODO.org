@@ -142,7 +142,8 @@ the tree.
 * TODO bookbuilder enhancement with explanations
 * TODO images on /bookbuilder/schemas
 * TODO delete Table of Contents option in the BB
-* TODO on /action/text/new, link to the uri field from the explanation
+* DONE on /action/text/new, link to the uri field from the explanation
+  CLOSED: [2014-08-18 lun 10:22]
 
 * TODO offer a link to add again to the bookbuilder the same texts
 * Future releases
