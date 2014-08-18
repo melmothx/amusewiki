@@ -20,16 +20,6 @@
 +-----+-----+  +-----+-----+
 </pre>
 
-<h4>2down</h4>
-
-[% loc('Same as 2up, but each page is rotated by 90 degrees counter-clockwise.') %]
-
-<pre>
-+------+------+   +------+------+  
-|   4  |  1   |   |   2  |  3   |  
-+------+------+   +------+------+
-</pre>
-
 
 <h4>2x4x2</h4>
 
