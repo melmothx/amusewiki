@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 75;
+use Test::More tests => 76;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -146,8 +146,9 @@ $mech->click;
 
 my $gitop = check_jobber($mech);
 
-like $gitop->{logs}, qr/fatal: The remote end hung up unexpectedly/,
-  "git job works";
+like $gitop->{logs}, qr/fatal\:/,  "git job works but fails";
+like $gitop->{logs}, qr/(does not appear to be a git repository|Could not read from remote repository)/, "Found message";
+
 
 
 diag "trying the deletion";
