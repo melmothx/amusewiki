@@ -4,65 +4,21 @@
 
 <h4>2up</h4>
 
-<pre>
-  RECTO S.1     VERSO S.1
-+-----+-----+  +-----+-----+
-|     |     |  |     |     |
-|  8  |  1  |  |  2  |  7  |
-|     |     |  |     |     |
-+-----+-----+  +-----+-----+
- 
-  RECTO S.2     VERSO S.2
-+-----+-----+  +-----+-----+
-|     |     |  |     |     |
-|  6  |  3  |  |  4  |  5  |
-|     |     |  |     |     |
-+-----+-----+  +-----+-----+
-</pre>
+<img src="[% c.uri_for('/static/images/schema-preview/2up.png') %]"
+     alt="2up" />
 
 
 <h4>2x4x2</h4>
 
-[% loc('The prefix “r” means logical page disposed upside-down, rotated
-by 180 degrees.') %]
+<img src="[% c.uri_for('/static/images/schema-preview/2x4x2.png') %]"
+     alt="2x4x2" />
 
-<pre>
-+------+------+    +------+------+
-|      |      |    |      |      |
-|  r9  |  r8  |    |  r7  | r10  |
-|      |      |    |      |      |
-+------+------+    +------+------+
-|      |      |    |      |      |
-|  16  |  1   |    |  2   | 15   |
-|      |      |    |      |      |
-+------+------+    +------+------+
- 
-+------+------+    +------+------+
-|      |      |    |      |      |
-| r11  | r6   |    |  r5  | r12  |
-|      |      |    |      |      |
-+------+------+    +------+------+
-|      |      |    |      |      |
-|  14  |  3   |    |  4   |  13  |
-|      |      |    |      |      |
-+------+------+    +------+------+
-</pre>
 
 <h4>2side</h4>
 
-[% loc('Just packs 2 consecutives logical pages on a physical one.') %]
-<pre>
+<p>
+  [% loc('Just packs 2 consecutives logical pages on a physical one.') %]
+</p>
 
-+-----+-----+  +-----+-----+
-|     |     |  |     |     |
-|  1  |  2  |  |  3  |  4  |
-|     |     |  |     |     |
-+-----+-----+  +-----+-----+
- 
-
-+-----+-----+  +-----+-----+
-|     |     |  |     |     |
-|  5  |  6  |  |  7  |  8  |
-|     |     |  |     |     |
-+-----+-----+  +-----+-----+
-</pre>
+<img src="[% c.uri_for('/static/images/schema-preview/2side.png') %]"
+     alt="2side" />
