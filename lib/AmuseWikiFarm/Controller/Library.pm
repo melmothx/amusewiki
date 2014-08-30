@@ -145,7 +145,7 @@ sub _create_text_list {
     my %done;
     foreach my $row (@$rows) {
         if ($row->list_title =~ m/(\w)/) {
-            my $first_char = $1;
+            my $first_char = lc($1);
             if ($current ne $first_char) {
                 $counter++;
                 $current = $first_char;
