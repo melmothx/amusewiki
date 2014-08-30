@@ -139,7 +139,6 @@ the tree.
   CLOSED: [2014-08-07 gio 12:23]
   Not needed
 * TODO in the full listing, provide a paging-like alphabet to jump there.
-* TODO bookbuilder enhancement with explanations
 * DONE images on /bookbuilder/schemas
   CLOSED: [2014-08-30 sab 09:23]
 * DONE delete Table of Contents option in the BB
@@ -148,6 +147,9 @@ the tree.
   CLOSED: [2014-08-18 lun 10:22]
 
 * TODO offer a link to add again to the bookbuilder the same texts
+* TODO offer a static page for the builder, for dummy devices
+* TODO bookbuilder enhancement with explanations
+
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files
