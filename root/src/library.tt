@@ -26,22 +26,35 @@
 
 
 
-<ol>
-  [% FOREACH text IN texts %]
-  [%- SET title_has_been_found = 1 -%]
+[% IF texts.size %]
+
+<ul class="pagination">
+  [% FOREACH anchor IN pager %]
   <li>
-    <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
-    [% IF text.author %]
-    — [% text.author %]
-    [% END %]
-    [%- IF site.multilanguage -%]
-    [[% text.lang %]]
-    [%- END -%]
+    <a href="#paging-sep-[% anchor.anchor_id %]">[% anchor.anchor_name %]</a>
   </li>
   [% END %]
-</ol>
+</ul>
 
-[% UNLESS title_has_been_found %]
+
+<div class="list-group">
+  [% FOREACH text IN texts %]
+
+    [%- # add the separator %]
+    [% IF text.anchor_name %]
+</div>
+<h3 id="paging-sep-[% text.anchor_id %]">[% text.anchor_name %]</h3>
+<div class="list-group">
+    [% ELSE %]
+    <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item">
+      <strong>[% text.title %]</strong>
+      [%- IF text.author %] — [% text.author -%][% END -%]
+      [%- IF site.multilanguage -%] [[% text.lang %]][% END -%]
+    </a>
+    [% END %]
+    [% END %]
+</div>
+[% ELSE %]
 <p>
   [% loc('No text found!') %]
 </p>
