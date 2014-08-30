@@ -28,7 +28,7 @@
 
 [% IF texts.size %]
 
-<ul class="pagination">
+<ul class="pagination" id="alphabetical-pager">
   [% FOREACH anchor IN pager %]
   <li>
     <a href="#paging-sep-[% anchor.anchor_id %]">[% anchor.anchor_name %]</a>
@@ -43,7 +43,12 @@
     [%- # add the separator %]
     [% IF text.anchor_name %]
 </div>
-<h3 id="paging-sep-[% text.anchor_id %]">[% text.anchor_name %]</h3>
+<h3 id="paging-sep-[% text.anchor_id %]">
+  [% text.anchor_name %]
+    <a href="#alphabetical-pager" style="color:black">
+      <small><span class="glyphicon glyphicon-circle-arrow-up"></span></small>
+    </a>
+</h3>
 <div class="list-group">
     [% ELSE %]
     <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item">
