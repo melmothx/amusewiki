@@ -147,6 +147,7 @@ is_deeply $validated, {
                        coverwidth => "1",
                        nocoverpage => "1",
                        mainfont => 'CMU Serif',
+                       notoc => 0,
                       }, "Validation works";
 
 

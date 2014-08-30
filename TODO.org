@@ -140,8 +140,10 @@ the tree.
   Not needed
 * TODO in the full listing, provide a paging-like alphabet to jump there.
 * TODO bookbuilder enhancement with explanations
-* TODO images on /bookbuilder/schemas
-* TODO delete Table of Contents option in the BB
+* DONE images on /bookbuilder/schemas
+  CLOSED: [2014-08-30 sab 09:23]
+* DONE delete Table of Contents option in the BB
+  CLOSED: [2014-08-30 sab 10:12]
 * DONE on /action/text/new, link to the uri field from the explanation
   CLOSED: [2014-08-18 lun 10:22]
 

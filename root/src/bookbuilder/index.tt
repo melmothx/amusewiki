@@ -170,6 +170,12 @@
     </div>
     <div class="checkbox">
       <label>
+        <input type="checkbox" name="notoc" value="1" id="notoc" />
+        [% loc('Never generate a table of content') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
         <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage" />
           [% loc('For texts without a table of content, start text on the very first page') %]
       </label>
