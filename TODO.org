@@ -151,7 +151,11 @@ the tree.
   CLOSED: [2014-08-31 dom 18:22]
 * DONE offer a static page for the builder, for dummy devices
   CLOSED: [2014-08-31 dom 19:15]
-* TODO bookbuilder enhancement with explanations
+* DONE bookbuilder enhancement with explanations
+  CLOSED: [2014-08-31 dom 21:01]
+
+* TODO List available images while editing
+* TODO Create static indexing
 
 * Future releases
 * TODO The jobber should remove old completed jobs
@@ -163,5 +167,3 @@ the tree.
 * TODO Add descriptions to categories
 
 * TODO covers/decorative text image 
-* TODO List available images while editing
-* TODO Create static indexing
