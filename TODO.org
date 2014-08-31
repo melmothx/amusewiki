@@ -149,7 +149,8 @@ the tree.
 
 * DONE offer a link to add again to the bookbuilder the same texts
   CLOSED: [2014-08-31 dom 18:22]
-* TODO offer a static page for the builder, for dummy devices
+* DONE offer a static page for the builder, for dummy devices
+  CLOSED: [2014-08-31 dom 19:15]
 * TODO bookbuilder enhancement with explanations
 
 * Future releases

@@ -6,9 +6,24 @@
 
 [% # this will be hidden by the js right away, so it's nojs only %]
 <div class="nojs">
-  [% loc('Status') %]: [% job.status_loc | html %]<br />
+  <div class="center">
+    <strong>[% loc('Status') %]: [% job.status_loc | html %]</strong>
+  </div>
   [% IF job.produced %]
-  <a href="[% job.produced_uri %]">[% job.message | html %]</a>
+  <div class="center">
+    <a href="[% job.produced_uri %]">
+      <strong>[% job.message | html %]</strong>
+    </a>
+  </div>
+  [% IF job.sources %]
+  <div class="center">
+    <a href="[% job.sources %]">
+      <strong>
+        [% loc('Source files') %]
+      </strong>
+    </a>
+  </div>
+  [% END %]
   [% END %]
   <pre>[% job.logs %]</pre>
   [% IF job.errors %]
@@ -16,30 +31,30 @@
   [% END %]
 
   [% IF job.produced %]
-  <h3>
-    <a href="[% job.produced_uri %]">[% job.message | html %]</a>
-  </h3>
+  <div class="center">
+    <strong>
+      <a href="[% job.produced_uri %]">[% job.message | html %]</a>
+    </strong>
+  </div>
   [% ELSE %]
-  <p>
+  <p class="center">
     [% loc('Please reload your page') %]. [% loc('Status') %]:
     [% job.status_loc | html  %]
   </p>
   [% END %]
   [% IF job.sources %]
-  <h4>
-    <a href="[% job.sources %]">[% loc('Source files') %]</a>
-  </h4>
+  <div class="center">
+    <a href="[% job.sources %]">
+      <strong>
+        [% loc('Source files') %]
+      </strong>
+    </a>
+  </div>
   [% END %]
 
 </div>
 
-<pre style="display:none">
-+---------------------------------------------------------------------------+
-| You're using a browser without CSS support and without javascript, please |
-| disregard the following                                                   |
-+---------------------------------------------------------------------------+
-</pre>
-
+[% UNLESS c.request.params.nojs %]
 
 [%#  placeholders %]
 <div>
@@ -82,3 +97,8 @@
   });
 </script>
 
+<div class="center">
+  <a href="[% c.uri_for('/' _ c.request.path, { nojs => 1 }) %]">
+    [% loc('Static page without javascript') %]</a>
+</div>
+[% END %]
