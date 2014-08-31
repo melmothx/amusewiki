@@ -246,7 +246,7 @@
     </div>
     <div class="checkbox" id="signature-explanation">
       <label for="signature">
-        [% loc('When imposing, use optimized signatures with 40-80 pages each') %]
+        [% loc('Please select the signature size:') %]
       </label>
       <select id="signature" class="form-control" name="signature">
         [% FOREACH sign IN bb.signature_values %]
