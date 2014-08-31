@@ -170,7 +170,7 @@ enum(PaperType  => __PACKAGE__->papersize_values);
 
 has papersize => (
                   is => 'rw',
-                  isa => 'Maybe[PaperType]',
+                  isa => 'PaperType',
                   default => sub { 'generic' },
                  );
 
@@ -330,10 +330,10 @@ The cover width in text width percent. Default to 100%
 
 sub coverwidths {
     my @values;
-    my $v = 20;
-    while ($v < 101) {
+    my $v = 100;
+    while ($v > 20) {
         push @values, $v;
-        $v += 5;
+        $v -= 5;
     }
     return \@values;
 }
@@ -535,7 +535,7 @@ sub as_job {
     my $self = shift;
     my $job = {
                text_list => $self->texts,
-               title => $self->title,
+               title => $self->title || 'My collection', # enforce a title
                template_options => {
                                     twoside     => $self->twoside,
                                     nocoverpage => $self->nocoverpage,

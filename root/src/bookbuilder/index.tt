@@ -157,7 +157,6 @@
         leave it blank if you don't need a cover image") %]
       </label>
       <select id="coverwidth" class="form-control" name="coverwidth">
-        <option value="">[% loc('Please select') %]</option>
         [% FOREACH coverw IN bb.coverwidths %]
         <option value="[% coverw %]"
                 [% IF coverw == bb.coverwidth %]selected="selected"[% END %]>
