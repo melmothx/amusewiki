@@ -118,7 +118,8 @@ sub edit :Chained('root') :PathPart('edit') :Args(0) {
 sub clear :Chained('root') :PathPart('clear') :Args(0) {
     my ($self, $c) = @_;
     if ($c->request->params->{clear}) {
-        $c->stash->{bb}->delete_all;
+        # override with a shiny new thing
+        $c->stash->{bb} = AmuseWikiFarm::Archive::BookBuilder->new;
         $c->forward('save_session');
     }
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
