@@ -120,6 +120,7 @@ has imposed => (
 =head2 schema
 
 The schema to use for the imposer, if needed. Defaults to '2up'.
+Beware that these are hardcoded in the template.
 
 =cut
 

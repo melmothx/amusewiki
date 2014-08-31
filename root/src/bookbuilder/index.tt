@@ -191,7 +191,53 @@
       <label>
         <input type="checkbox" name="imposed" value="1"
                [% IF bb.imposed %]checked="checked"[% END %]/>
-        [% loc('I want an imposed (ready to print) PDF') %]
+        <strong>[% loc('I want an imposed (ready to print) PDF') %]</strong>
+      </label>
+    </div>
+    <div>
+      <strong>
+        <a target="_blank" href="[% c.uri_for_action('/bookbuilder/schemas') %]">
+          [% loc('If you asked for imposition, select an imposition schema') %]:
+        </a>
+      </strong>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="2side"
+               [% IF bb.schema == '2side' %]checked="checked"[% END %] />
+        <strong>2side</strong>:
+
+        [% loc("Pages are not reordered. The first sheet contains
+        pages 1 and 2, the second 3 and 4, and so on, side by side.
+        This is not meant to be folded") %]
+
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="2x4x2"
+               [% IF bb.schema == '2x4x2' %]checked="checked"[% END %] />
+        <strong>2x4x2</strong>:
+
+        [% loc("Blocks of 16 pages to be folded twice and then bound
+                together.") %]
+
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="2up"
+               [% IF bb.schema == '2up' %]checked="checked"[% END %] />
+        <strong>2up</strong>:
+
+        [% loc("Pages are reordered, in one or more groups
+        (signatures), then folded in half. If you have more
+        signatures, you will have to bound them together like a book.
+        With this option, you may want to decide the size of the
+        signatures. This can be a fixed value (4,8,16, etc.), the
+        whole book in a single signature, or an optimized size to
+        reduce the number of blank pages.") %]
+
       </label>
     </div>
     <div class="checkbox">
@@ -214,22 +260,6 @@
         [% END %]
       </select>
     </div>
-    <p>
-      <label for="schema">
-        <a target="_blank" href="[% c.uri_for_action('/bookbuilder/schemas') %]">
-          [% loc('If you asked for imposition, select an imposition schema') %]:
-        </a>
-      </label>
-      <select name="schema" id="schema" class="form-control">
-        [% FOREACH schema IN bb.schema_values %]
-        <option value="[% schema %]"
-                [% IF schema == bb.schema %]selected="selected"[% END %]>
-          [%# TODO: describe please %]
-          [% schema %]
-        </option>
-        [% END %]
-      </select>
-    </p>
     <div class="checkbox">
       <label for="cover">
         <input type="checkbox" name="cover" value="1" id="cover"
@@ -238,15 +268,14 @@
         ([% loc('if applicable') %]).
       </label>
     </div>
-    <p>
+    <div>
       <button type="submit" name="build" value="build" class="btn btn-default">
         [% loc('Build it') %]
       </button>
       <button type="submit" name="update" value="update" class="btn btn-default">
         [% loc('Update') %]
       </button>
-
-    </p>
+    </div>
   </div>
 </form>
 
