@@ -126,9 +126,9 @@ $mech->content_contains("The text was added to the bookbuilder");
 is ($mech->uri->path, $text);
 $mech->get_ok("/bookbuilder");
 
-$mech->form_with_fields('collectionname');
+$mech->form_with_fields('signature');
 
-$mech->field(collectionname => 'test');
+$mech->field(title => 'test');
 $mech->click;
 
 my $bbres = check_jobber($mech);

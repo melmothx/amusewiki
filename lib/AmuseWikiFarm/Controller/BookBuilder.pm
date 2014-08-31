@@ -20,6 +20,8 @@ Deny access to not-human
 
 =cut
 
+use Data::Dumper;
+use AmuseWikiFarm::Archive::BookBuilder;
 
 sub auto :Private {
     my ($self, $c) = @_;
@@ -49,11 +51,10 @@ sub root :Chained('/') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
 
     # this is the root method. Initialize the session with the list;
-    my $bblist = $c->session->{bblist} ||= [];
+    my $bb_args = $c->session->{bookbuilder} || {};
 
     # initialize the BookBuilder object
-    my $bb = $c->model('BookBuilder');
-    $bb->textlist($bblist);
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new(%$bb_args);
 
     # set the current page count
     my $bb_page_count = 0;
@@ -73,34 +74,22 @@ sub index :Chained('root') :PathPart('') :Args(0) {
     my @texts = @{ $bb->texts };
 
     my %params = %{ $c->request->body_parameters };
+    if (%params) {
+        $bb->import_from_params(%params);
+    }
+    foreach my $upload ($c->request->upload('coverimage')) {
+        $c->log->debug("Adding file: " . $upload->tempname . ' => '. $upload->size );
+        $bb->add_file($upload->tempname);
+    }
 
-    if (@texts and $params{build} and 
-        $params{collectionname} and $params{collectionname} =~ m/\w/) {
+    $c->log->debug(Dumper($bb));
+    $c->forward('save_session');
+
+    if (@texts and $params{build}) {
         $c->log->debug("Putting the job in the queue now");
+        # fake loop, should be only one. Last one override, anyway.
 
-        my $bb = $c->stash->{bb};
-        my $site_id = $c->stash->{site}->id;
-
-        foreach my $upload ($c->request->upload('coverimage')) {
-            $c->log->debug($upload->tempname . ' => '. $upload->size );
-            $c->log->debug("Adding file");
-            $bb->add_file($upload->tempname);
-        }
-
-        # prepare the job hash
-        my $data = {
-                    text_list  => [ @texts ],
-                    title      => $params{collectionname},
-                    template_options => $bb->validate_options({ %params }),
-                    imposer_options  => $bb->validate_imposer_options({ %params }),
-                   };
-
-        if (my $job = $c->stash->{site}->jobs->bookbuilder_add($data)) {
-            # flush the toilet
-            $bb->delete_all;
-            $c->forward('save_session');
-
-            # and redirect to the status page
+        if (my $job = $c->stash->{site}->jobs->bookbuilder_add($bb->as_job)) {
             $c->res->redirect($c->uri_for_action('/tasks/display', [$job->id]));
         }
         # if we get this, the user cheated and doesn't deserve an explanation
@@ -198,7 +187,7 @@ sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->log->debug('Saving books in the session');
-    $c->session->{bblist} = $c->stash->{bb}->texts;
+    $c->session->{bookbuilder} = $c->stash->{bb}->constructor_args;
 }
 
 =encoding utf8

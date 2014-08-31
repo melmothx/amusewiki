@@ -63,12 +63,12 @@
       enctype="multipart/form-data">
   <div class="form-group">
     <p>
-    <label for="collectionname">
+    <label for="title">
       [% loc('Please give a name to the collection.') %]
       [% loc('The name is always required, but used only if there are multiple texts.') %]
     </label>
-    <input type="text" name="collectionname" id="collectionname"
-           class="form-control required" value=""/>
+    <input type="text" name="title" id="title"
+           class="form-control required" value="[% bb.title | html %]"/>
     </p>
     <p>
       <label for="mainfont">
@@ -81,15 +81,14 @@
       <select name="mainfont" id="mainfont">
       [% FOREACH font IN bb.all_fonts %]
       <option value="[% font.name %]"
-              [% IF font.name == site.mainfont %]selected="selected"[% END %]>
+              [% IF font.name == bb.mainfont %]selected="selected"[% END %]>
         [% font.desc %]
       </option>
       [% END %]
     </select>
     @
     <select name="fontsize">
-      [% SET myfontsizes = bb.font_sizes %]
-      [% FOREACH size IN myfontsizes.keys.sort %]
+      [% FOREACH size IN bb.fontsize_values %]
       <option value="[% size %]">
         [% size %]
       </option>
@@ -102,9 +101,10 @@
     [% loc('Choose a paper format') %]
     </label>
     <select name="papersize" id="papersize" class="form-control">
-      [% SET mypapers = bb.paper_sizes %]
-      [% FOREACH paper IN bb.paper_sizes_sorted %]
-      <option value="[% paper %]">
+      [% SET mypapers = bb.papersizes %]
+      [% FOREACH paper IN bb.papersize_values %]
+      <option value="[% paper %]"
+              [% IF paper == bb.papersize %]selected="selected"[% END %]>
         [% loc(mypapers.$paper) %]
       </option>
       [% END %]
@@ -117,12 +117,10 @@
       ([% loc('Higher division factor means narrower margins') %])
 
       <select name="division" id="division" class="form-control">
-        [% SET mydiv = 9 %]
-        [% WHILE 16 > mydiv %]
+        [% FOREACH division IN bb.divs_values %]
         <option value="[% mydiv %]"
-                [% IF mydiv == 12 -%]
-                selected="selected"[% END %]>[% mydiv %]
-          [% mydiv = mydiv + 1 %]
+                [% IF bb.division == division %]selected="selected"[% END %]>
+                [% division %]
         </option>
         [% END %]
       </select>
@@ -133,16 +131,20 @@
         [% loc('Binding correction in millimeters (additional inner margin)') %]:
       </label>
     <select name="bcor" id="bcor" class="form-control">
-      [% bcor_counter = 0 %]
-      [% WHILE 30 > bcor_counter %]
-      <option value="[% bcor_counter %]">
-        [% bcor_counter %] mm
+      [% FOREACH bcor IN bb.bcor_values %]
+      <option value="[% bcor %]"
+              [% IF bcor == bb.bcor %]selected="selected"[% END %]>
+        [% bcor %] mm
       </option>
-      [% bcor_counter = bcor_counter + 1 %]
       [% END %]
     </select>
     </p>
     <p>
+      [% IF bb.coverfile %]
+      [% loc('A cover image was already added, but you can replace it uploading
+              a new one.') %]
+      <br />
+      [% END %]
       <label for="coverimage">
         [% loc('Add a cover image (PNG or JPG)' ) %]
       </label>
@@ -154,48 +156,63 @@
         leave it blank if you don't need a cover image") %]
       </label>
       <select id="coverwidth" class="form-control" name="coverwidth">
-        [% SET coverw = 20 %]
         <option value="">[% loc('Please select') %]</option>
-        [% WHILE 101 > coverw %]
-        <option value="[% coverw %]">[% coverw %]%</option>
-        [% SET coverw = coverw + 5 %]
+        [% FOREACH coverw IN bb.coverwidths %]
+        <option value="[% coverw %]"
+                [% IF coverw == bb.coverwidth %]selected="selected"[% END %]>
+          [% coverw %]%
+        </option>
         [% END %]
       </select>
     </p>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="twoside" value="1" id="twoside" />
+        <input type="checkbox" name="twoside" value="1" id="twoside"
+               [% IF bb.twoside %]checked="checked"[% END %]/>
         [% loc('Two side layout') %]
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="notoc" value="1" id="notoc" />
+        <input type="checkbox" name="notoc" value="1" id="notoc"
+               [% IF bb.notoc %]checked="checked"[% END %]/>
         [% loc('Never generate a table of content') %]
       </label>
     </div>
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage" />
-          [% loc('For texts without a table of content, start text on the very first page') %]
+        <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
+               [% IF bb.nocoverpage %]checked="checked"[% END %]/>
+        [% loc('For texts without a table of content, start text on the very first page') %]
       </label>
     </div>
 
-
-
     <div class="checkbox">
       <label>
-        <input type="checkbox" name="imposed" value="1" />
+        <input type="checkbox" name="imposed" value="1"
+               [% IF bb.imposed %]checked="checked"[% END %]/>
         [% loc('I want an imposed (ready to print) PDF') %]
       </label>
     </div>
     <div class="checkbox">
-      <label>
-        <input type="checkbox" name="signatures" value="1" />
+      <label for="signature">
         [% loc('When imposing, use optimized signatures with 40-80 pages each') %]
         ([% loc('if applicable') %]).
-
       </label>
+      <select id="signature" class="form-control" name="signature">
+        [% FOREACH sign IN bb.signature_values %]
+        <option value="[% sign %]"
+                [% IF sign == bb.signature %]selected="selected"[% END %]>
+          [% IF sign.match('-') %]
+          [% loc('Use optimized signatures with [_1] pages each', sign) %]
+          [% ELSIF sign == 0 %]
+          [% loc('The whole book in as single signature') %]
+          [% ELSE %]
+          [% sign %]
+          [% END %]
+        </option>
+        [% END %]
+      </select>
     </div>
     <p>
       <label for="schema">
@@ -204,20 +221,31 @@
         </a>
       </label>
       <select name="schema" id="schema" class="form-control">
-        [% SET myschemas = bb.schemas %]
-        [% FOREACH schema IN bb.schemas_sorted %]
-        <option value="[% schema %]" [% IF schema == '2up' %]selected="selected"[% END %]>
-          [% loc(myschemas.$schema) %]
+        [% FOREACH schema IN bb.schema_values %]
+        <option value="[% schema %]"
+                [% IF schema == bb.schema %]selected="selected"[% END %]>
+          [%# TODO: describe please %]
+          [% schema %]
         </option>
         [% END %]
       </select>
     </p>
-    <!-- always set cover to 1, it just confuses users -->
-    <input type="hidden" name="cover" value="1" />
+    <div class="checkbox">
+      <label for="cover">
+        <input type="checkbox" name="cover" value="1" id="cover"
+               [% IF bb.cover %]checked="checked"[% END %]/>
+        [% loc('Fill with black pages before the last page if the signature is not full') %]
+        ([% loc('if applicable') %]).
+      </label>
+    </div>
     <p>
       <button type="submit" name="build" value="go" class="btn btn-default">
         [% loc('Build it') %]
       </button>
+      <button type="submit" name="save" value="go" class="btn btn-default">
+        [% loc('Save') %]
+      </button>
+
     </p>
   </div>
 </form>

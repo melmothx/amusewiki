@@ -147,7 +147,8 @@ the tree.
 * DONE on /action/text/new, link to the uri field from the explanation
   CLOSED: [2014-08-18 lun 10:22]
 
-* TODO offer a link to add again to the bookbuilder the same texts
+* DONE offer a link to add again to the bookbuilder the same texts
+  CLOSED: [2014-08-31 dom 18:22]
 * TODO offer a static page for the builder, for dummy devices
 * TODO bookbuilder enhancement with explanations
 

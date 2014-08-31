@@ -1,12 +1,13 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 58;
+use Test::More tests => 67;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
 # use Test::Memory::Cycle;
-
+use JSON qw/to_json from_json/;
+use Try::Tiny;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -27,15 +28,9 @@ my @list = (qw/a-a
 push @list, 'a' x 95;
 
 foreach my $valid (@list) {
-    ok($bb->filename_is_valid($valid), "Valid: $valid");
+    ok($bb->add_text($valid), "Valid: $valid");
     is($valid, muse_naming_algo($valid), "Double check: $valid");
 }
-
-$bb->textlist([ @list ]);
-
-is_deeply $bb->textlist, [ @list ], "All texts are good";
-ok !$bb->error;
-
 
 @list = (qw/-a-a-a-
             blabla|bla
@@ -53,23 +48,19 @@ push @list, '1234,1234';
 push @list, '1l239z .-asdf asdf';
 
 foreach my $invalid (@list) {
-    ok(!$bb->filename_is_valid($invalid), "Not valid: $invalid");
+    ok(!$bb->add_text($invalid), "Not valid: $invalid");
+    ok($invalid ne muse_naming_algo($invalid), "Double check invalid: $invalid");
 }
-
-$bb->textlist([ @list ]);
-is_deeply $bb->textlist, [], "All the text are removed";
-ok $bb->error, "Got an error: " . $bb->error;
-
-$bb->textlist([qw/my-good-text/]);
-ok !$bb->error, "No error found with sane list";
 
 eval {
     $bb->textlist(undef);
 };
 
-ok $@, "Putting undef in textlist raises an exception";
+ok $@, "Putting undef in textlist raises an exception: " . $@->message;
 
-$bb->add_text('ciao');
+$bb->delete_all;
+ok($bb->add_text('my-good-text'));
+ok($bb->add_text('ciao'));
 is_deeply $bb->textlist, [qw/my-good-text ciao/], "Text added correctly";
 
 $bb->delete_text(1);
@@ -95,26 +86,39 @@ is_deeply $bb->textlist, [qw/ciao appended/], "Text swapped";
 $bb->delete_all;
 is_deeply $bb->textlist, [], "Texts purged";
 
-my $options = $bb->available_tex_options;
 
-# $Data::Dumper::Deparse = 1;
-# print Dumper($options);
-
-is $options->{twoside}->('lkasdf'), 1;
-is $options->{twoside}->(undef), 0;
-is $options->{papersize}->('lasdf'), undef;
-is $options->{papersize}->('a4'), 'a4';
-is $options->{division}->('4'), undef;
-is $options->{division}->('12'), 12;
-is $options->{fontsize}->('9'), undef;
-is $options->{fontsize}->('10'), 10;
-is $options->{fontsize}->('10.5'), undef;
-is $options->{bcor}->(''), '0mm';
-is $options->{bcor}->('blabla'), '0mm';
-is $options->{bcor}->('10'), '10mm';
-is $options->{mainfont}->('Charis SIL'), 'Charis SIL';
-is $options->{mainfont}->('Linux Libertine O'), 'Linux Libertine O';
-is $options->{mainfont}->('\hello'), undef;
+my @accessors = (
+                 [ twoside => 'lkasdf', 0],
+                 [ twoside => undef, undef],
+                 [ papersize => 'lasdf', 'generic'],
+                 [ papersize => 'a4', 'a4'],
+                 [ division => '4', 12],
+                 [ division => '15', 15],
+                 [ fontsize => '9', 10],
+                 [ fontsize => '12', 12],
+                 [ fontsize => '10.5', 12],
+                 [ bcor => '', '0'],
+                 [ bcor => 'blabla', '0'],
+                 [ bcor => '10', '10'],
+                 [ mainfont => 'Charis SIL', 'Charis SIL'],
+                 [ mainfont => 'Linux Libertine O', 'Linux Libertine O'],
+                 [ mainfont => '\hello', 'Linux Libertine O'],
+                );
+foreach my $try (@accessors) {
+    my $method   = $try->[0];
+    my $input    = $try->[1];
+    my $expected = $try->[2];
+    try {
+        $bb->$method($input);
+    } catch {
+        my $msg = $_->message;
+        chomp $msg;
+        diag $msg;
+    };
+    my $show = Dumper($expected);
+    chomp $show;
+    is ($bb->$method, $expected, "$method returned $show");
+}
 
 my %params = (
               twoside => '\hello',
@@ -132,55 +136,83 @@ my %params = (
               signatures => 1,
              );
 
-my %copy = %params;
-
-my $validated = $bb->validate_options(\%params);
-
-is_deeply(\%params, \%copy);
-
-is_deeply $validated, {
-                       twoside => 1,
-                       papersize => 'a4',
-                       division => undef,
-                       fontsize => 10,
-                       bcor => '20mm',
-                       coverwidth => "1",
-                       nocoverpage => "1",
-                       mainfont => 'CMU Serif',
-                       notoc => 0,
-                      }, "Validation works";
 
 
+eval { $bb->schema('2x4x2x') };
+my $err = $@;
 
-my $c_validated = $bb->validate_imposer_options(\%params);
+ok($err->message, "Found error") and diag $err->message;
 
-is_deeply($c_validated, {
-                         schema => '2up',
-                         signature => '40-80',
-                        }, "Got the options");
+eval { $bb->schema('2x4x2') };
 
-$params{schema} = 'blablabla';
+ok(!$@, "No error");
 
-is_deeply($c_validated, {
-                         schema => '2up',
-                         signature => '40-80',
-                        }, "Got the options");
-
-is $bb->validate_imposer_options(\%params), undef;
-$params{schema} = '2side';
-
-is_deeply($bb->validate_imposer_options(\%params), {
-                                                    schema => '2side',
-                                                    signature => '40-80',
-                                                   }, "Got the options");
-
-$params{imposed} = 0;
-is $bb->validate_imposer_options(\%params), undef;
-
-$params{imposed} = 1;
-$params{signatures} = 0;
-
-is_deeply $bb->validate_imposer_options(\%params), { schema => '2side' };
+eval { $bb->papersize('blablabla') };
+ok($@, "Error found") and diag $@->message;
 
 
-# memory_cycle_ok($bb);
+eval { $bb->papersize('a4') };
+ok(!$@, "No error");
+
+diag Dumper($bb);
+
+
+my $expected = {
+                'text_list' => [
+                                'appended',
+                                'pippo'
+                               ],
+                'imposer_options' => {
+                                      'signature' => '40-80',
+                                      'schema' => '2up',
+                                      'cover'  => '1',
+                                     },
+                'template_options' => {
+                                       'bcor' => '20mm',
+                                       'nocoverpage' => 1,
+                                       'notoc' => 1,
+                                       'mainfont' => 'CMU Serif',
+                                       'twoside' => 1,
+                                       'division' => 14,
+                                       'fontsize' => 10,
+                                       'coverwidth' => '0.85',
+                                       'papersize' => 'a4',
+                                       'cover' => undef,
+                                      },
+                'title' => 'Pippuzzo va in montagna'
+               };
+
+
+%params = (
+           title       => 'Pippuzzo va in montagna',
+           mainfont    => 'CMU Serif',
+           fontsize    => '10',
+           papersize   => 'a4',
+           division    => '14',
+           bcor        => '20',
+           coverwidth  => '85',
+           twoside     => 1,
+           notoc       => 1,
+           nocoverpage => 1,
+           imposed     => 1,
+           signature   => '40-80',
+           schema      => '2up',
+           cover       => 1,
+           # coverimage should be called with add_file
+          );
+
+$bb = AmuseWikiFarm::Archive::BookBuilder->new;
+
+foreach my $text (qw/appended pippo/) {
+    ok($bb->add_text($text), "$text added");
+}
+
+$bb->import_from_params(%params);
+
+is_deeply ($bb->as_job, $expected, "Output correct");
+
+my $newbb = AmuseWikiFarm::Archive::BookBuilder->new(%{$bb->constructor_args});
+
+is_deeply ($bb->as_job, $newbb->as_job, "Old and new have the same output");
+
+is($bb->as_job->{title}, $params{title});

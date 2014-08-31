@@ -1766,10 +1766,11 @@ sub update_from_params {
 
 
     # for papersize and fonts, we ask the bookbuilder
+    # TODO: just use the class.
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new;
 
     my $ppsize = delete $params->{papersize};
-    if ($ppsize && $bb->paper_sizes->{$ppsize}) {
+    if ($ppsize && $bb->papersize_values_as_hashref->{$ppsize}) {
         $self->papersize($ppsize);
     }
     else {

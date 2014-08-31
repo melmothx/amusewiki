@@ -5,6 +5,7 @@ use strict;
 use warnings;
 
 use Moose;
+use Moose::Util::TypeConstraints qw/enum/;
 use namespace::autoclean;
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
@@ -12,16 +13,43 @@ use File::Spec;
 use Cwd;
 use File::MimeInfo::Magic qw/mimetype/;
 use File::Copy qw/copy/;
+use Try::Tiny;
+
+
+=head1 NAME
+
+AmuseWikiFarm::Archive::BookBuilder -- Bookbuilder encapsulation
+
+=head1 ACCESSORS
+
+=head2 title
+
+The title of the collection.
+
+=cut
+
+has title => (
+              is => 'rw',
+              isa => 'Maybe[Str]',
+             );
+
+
+=head2 textlist
+
+An arrayref of valid AMW uris.
+
+=cut
 
 has textlist => (is => 'rw',
                  isa => 'ArrayRef[Str]',
                  default => sub { [] },
-                 trigger => \&_check_names,
                 );
 
-has error => (is => 'rw',
-               isa => 'Str',
-               default => sub { '' });
+=head2 filedir
+
+The directory with BB files. Defaults to C<bbfiles>
+
+=cut
 
 has filedir => (is => 'ro',
                 isa => 'Str',
@@ -29,35 +57,316 @@ has filedir => (is => 'ro',
                     return File::Spec->catdir(getcwd(), 'bbfiles');
                 });
 
-has files => (is => 'rw',
-              isa => 'ArrayRef[Str]',
-              default => sub { [] });
+=head2 coverfile
 
-sub _check_names {
-    my ($self, $list, $old_value) = @_;
-    $self->error('');
-    my @newlist;
-    my @removed;
-    foreach my $text (@$list) {
-        if (muse_filename_is_valid($text)) {
-            push @newlist, $text;
-        }
-        else {
-            push @removed, $text;
-        }
-    }
-    # modify the thing with the new list
-    @$list = @newlist;
-    if (@removed) {
-        $self->error(join(' ', 'Removed', @removed));
-    }
+The uploaded filename for the cover image.
+
+=cut
+
+has coverfile => (is => 'rw',
+                  isa => 'Maybe[Str]',
+                  default => sub { undef });
+
+=head2 Booleans
+
+Mostly documented in L<Text::Amuse::Compile::Templates>. All of them
+default to false.
+
+=item twoside
+
+=item nocoverpage
+
+=item notoc
+
+=item cover
+
+=item imposed
+
+If the imposition pass is required.
+
+=cut
+
+has twoside => (
+                is => 'rw',
+                isa => 'Bool',
+                default => sub { 0 },
+               );
+
+has nocoverpage => (
+                    is => 'rw',
+                    isa => 'Bool',
+                    default => sub { 0 },
+                   );
+
+has notoc => (
+              is => 'rw',
+              isa => 'Bool',
+              default => sub { 0 },
+             );
+
+# imposer options
+has cover => (
+              is => 'rw',
+              isa => 'Bool',
+              default => sub { 1 },
+             );
+
+has imposed => (
+                is => 'rw',
+                isa => 'Bool',
+                default => sub { 0 },
+               );
+
+=head2 schema
+
+The schema to use for the imposer, if needed. Defaults to '2up'.
+
+=cut
+
+sub schema_values {
+    return [qw/2up 2x4x2 2side/]
 }
+
+enum(SchemaType => __PACKAGE__->schema_values);
+
+has schema => (
+               is => 'rw',
+               isa => 'SchemaType',
+               default => sub { '2up' },
+              );
+
+=head2 papersize
+
+The paper size to use.
+
+=cut
+
+sub papersizes {
+    my $self = shift;
+    my %paper = (
+                 generic => 'Generic (fits in A4 and Letter)',
+                 a4 => 'A4 paper',
+                 a5 => 'A5 paper',
+                 a6 => 'A6 paper (also suitable for e-readers)',
+                 letter => 'Letter paper',
+                 '5.5in:8.5in' => 'Half Letter paper',
+                 '4.25in:5.5in' => 'Quarter Letter paper',
+                );
+    return \%paper;
+}
+
+sub papersize_values {
+    return [qw/generic a4 a5 a6 letter 5.5in:8.5in 4.25in:5.5in/]
+}
+
+sub papersize_values_as_hashref {
+    my $list = __PACKAGE__->papersize_values;
+    my %pairs = map { $_ => 1 } @$list;
+    return \%pairs;
+}
+
+
+enum(PaperType  => __PACKAGE__->papersize_values);
+
+has papersize => (
+                  is => 'rw',
+                  isa => 'Maybe[PaperType]',
+                  default => sub { 'generic' },
+                 );
+
+=head2 division
+
+The division factor, as an integer, from 9 to 15.
+
+=cut
+
+sub divs_values {
+    return [ 9..15 ];
+}
+
+enum(DivsType => __PACKAGE__->divs_values );
+
+sub page_divs {
+    my %divs =  map { $_ => $_ } @{ __PACKAGE__->divs_values };
+    return \%divs;
+}
+
+has division => (
+                 is => 'rw',
+                 isa => 'DivsType',
+                 default => sub { '12' },
+                );
+
+=head2 fontsize
+
+The font size in point, from 10 to 12.
+
+=cut
+
+
+sub fontsize_values {
+    return [ 10..12 ];
+}
+
+enum(FontSizeType => __PACKAGE__->fontsize_values);
+
+has fontsize => (
+                 is => 'rw',
+                 isa => 'FontSizeType',
+                 default => sub { '10' },
+                );
+
+=head2 bcor
+
+The binding correction in millimeters, from 0 to 30.
+
+=cut
+
+sub bcor_values {
+    return [0..30];
+}
+
+enum(BindingCorrectionType => __PACKAGE__->bcor_values );
+
+has bcor => (
+             is => 'rw',
+             isa => 'BindingCorrectionType',
+             default => sub { '0' },
+            );
+
+=head2 mainfont
+
+The main font to use in the PDF output. This maps exactly to the
+fc-list output, so be careful.
+
+=head3 Auxiliary methods:
+
+=head4 all_fonts
+
+Return an arrayref of hashrefs, where each hashref has two keys:
+C<name> and C<desc>.
+
+=head4 available_fonts
+
+Return an hashref, where keys and values are the same, with the name
+of the font. This is used for validation.
+
+=cut
+
+sub all_fonts {
+    my @fonts = ({
+                  name => 'Linux Libertine O',
+                  desc => 'Linux Libertine'
+                 },
+                 {
+                  name => 'CMU Serif',
+                  desc => 'Computer Modern',
+                 },
+                 {
+                  name => 'TeX Gyre Termes',
+                  desc => 'TeX Gyre Termes (Times)',
+                 },
+                 {
+                  name => 'TeX Gyre Pagella',
+                  desc => 'TeX Gyre Pagella (Palatino)',
+                 },
+                 {
+                  name => 'TeX Gyre Schola',
+                  desc => 'TeX Gyre Schola (Century)',
+                 },
+                 {
+                  name => 'TeX Gyre Bonum',
+                  desc => 'TeX Gyre Bonum (Bookman)',
+                 },
+                 {
+                  name => 'Antykwa Poltawskiego',
+                  desc => 'Antykwa Półtawskiego',
+                 },
+                 {
+                  name => 'Antykwa Torunska',
+                  desc => 'Antykwa Toruńska',
+                 },
+                 {
+                  name => 'Charis SIL',
+                  desc => 'Charis SIL (Bitstream Charter)',
+                 },
+                 {
+                  name => 'PT Serif',
+                  desc => 'Paratype (cyrillic)',
+                 },
+                );
+    return \@fonts;
+}
+
+sub mainfont_values {
+    my $list = __PACKAGE__->all_fonts;
+    my @values = map { $_->{name} } @$list;
+    return \@values;
+}
+
+sub available_fonts {
+    my %fonts = ();
+    foreach my $font (@{ __PACKAGE__->all_fonts }) {
+        my $name = $font->{name};
+        $fonts{$name} = $name;
+    }
+    return \%fonts;
+}
+
+
+enum(MainFontType => __PACKAGE__->mainfont_values );
+
+has mainfont => (
+                 is => 'rw',
+                 isa => 'MainFontType',
+                 default => sub { 'Linux Libertine O' },
+                );
+
+=head2 coverwidth
+
+The cover width in text width percent. Default to 100%
+
+=cut
+
+sub coverwidths {
+    my @values;
+    my $v = 20;
+    while ($v < 101) {
+        push @values, $v;
+        $v += 5;
+    }
+    return \@values;
+}
+
+enum(CoverWidthType => __PACKAGE__->coverwidths);
+
+has coverwidth => (
+                   is => 'rw',
+                   isa => 'CoverWidthType',
+                   default => sub { '100' },
+                  );
+
+=head2 signature
+
+The signature to use.
+
+=cut
+
+sub signature_values {
+    return [qw/0 4 8 12 16 20 24 28 32 36 40 40-80/];
+}
+
+enum(SignatureType => __PACKAGE__->signature_values);
+
+has signature => (
+                   is => 'rw',
+                   isa => 'SignatureType',
+                   default => sub { '0' },
+                  );
 
 =head2 add_file($filepath)
 
-Add a file to be merged into the the options. This has to be done
-B<before> the call to C<validate_options>, because it's used to add
-the cover.
+Add a file to be merged into the the options.
 
 =cut
 
@@ -84,7 +393,7 @@ sub add_file {
         $file = $self->_generate_random_name($ext);
     }
     copy $filename, $file or die "Copy $filename => $file failed $!";
-    push @{ $self->files }, $file;
+    $self->coverfile($file);
 }
 
 sub _generate_random_name {
@@ -93,16 +402,23 @@ sub _generate_random_name {
     return File::Spec->rel2abs(File::Spec->catfile($self->filedir, $basename));
 }
 
-sub filename_is_valid {
-    my ($self, $name) = @_;
-    return muse_filename_is_valid($name);
-}
+=head2 add_text($text);
+
+Add the text uri to the list of text. The URI will be checked with
+C<muse_naming_algo>. Return true if the import succeed, false
+otherwise.
+
+=cut
 
 sub add_text {
     my ($self, $text) = @_;
+    return unless defined $text;
     if (muse_filename_is_valid($text)) {
-        my $list = $self->textlist;
-        push @$list, $text;
+        push @{ $self->textlist }, $text;
+        return $text;
+    }
+    else {
+        return;
     }
 }
 
@@ -163,7 +479,7 @@ sub delete_all {
 
 =head2 texts
 
-Return a copy of the text list.
+Return a copy of the text list as an arrayref.
 
 =cut
 
@@ -171,230 +487,109 @@ sub texts {
     return [ @{ shift->textlist } ];
 }
 
-=head2 available_tex_options
+=head2 import_from_params(%params);
 
-Return an hashref with the available options and the validation sub,
-which will return the correct value to pass to the template.
-
-=head2 paper_sizes
-
-Return an hash with available paper sizes. This needs coordination
-with the template.
-
-=head2 page_divs
-
-Return an 
+Populate the object with the provided HTTP parameters. Given the the
+form has correct values, failing to import means that the params were
+tampered or incorrect, so just ignore those.
 
 =cut
 
-sub paper_sizes {
-    my $self = shift;
-    my %paper = (
-                 generic => 'Generic (fits in A4 and Letter)',
-                 a4 => 'A4 paper',
-                 a5 => 'A5 paper',
-                 a6 => 'A6 paper (also suitable for e-readers)',
-                 letter => 'Letter paper',
-                 '5.5in:8.5in' => 'Half Letter paper',
-                 '4.25in:5.5in' => 'Quarter Letter paper',
-                );
-    return \%paper;
+sub import_from_params {
+    my ($self, %params) = @_;
+    # first the title.
+    foreach my $method ($self->_accepted_params) {
+        try {
+            $self->$method($params{$method})
+        } catch {
+            my $error = $_;
+            warn $error->message;
+        };
+    }
 }
 
-sub paper_sizes_sorted {
-    return [qw/generic a4 a5 a6 letter 5.5in:8.5in 4.25in:5.5in/]
+sub _accepted_params {
+    return qw/title
+              mainfont
+              fontsize
+              papersize
+              division
+              bcor
+              coverwidth
+              twoside
+              notoc
+              nocoverpage
+              imposed
+              signature
+              schema
+              cover/;
 }
 
-sub page_divs {
-    my %divs =  map { $_ => $_ } (9..15);
-    return \%divs;
-}
+=head2 as_job
 
-sub font_sizes {
-    my %sizes= map { $_ => $_ } (10..12);
-    return \%sizes;
-}
-
-=head2 available_fonts
-
-Return an hashref, where keys and values are the same, with the name
-of the font. This is used for validation.
+Main method to create a structure to feed the jobber for the building
 
 =cut
 
-sub available_fonts {
+sub as_job {
     my $self = shift;
-    my %fonts = ();
-    foreach my $font (@{ $self->all_fonts }) {
-        my $name = $font->{name};
-        $fonts{$name} = $name;
+    my $job = {
+               text_list => $self->texts,
+               title => $self->title,
+               template_options => {
+                                    twoside     => $self->twoside,
+                                    nocoverpage => $self->nocoverpage,
+                                    notoc       => $self->notoc,
+                                    papersize   => $self->papersize,
+                                    division    => $self->division,
+                                    fontsize    => $self->fontsize,
+                                    bcor        => $self->bcor . 'mm',
+                                    mainfont    => $self->mainfont,
+                                    coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
+                                    cover       => $self->coverfile,
+                                   },
+              };
+    if ($self->imposed) {
+        $job->{imposer_options} = {
+                                   signature => $self->signature,
+                                   schema    => $self->schema,
+                                   cover     => $self->cover,
+                                  };
     }
-    return \%fonts;
+    return $job;
 }
 
-sub all_fonts {
-    my @fonts = ({
-                  name => 'Linux Libertine O',
-                  desc => 'Linux Libertine'
-                 },
-                 {
-                  name => 'CMU Serif',
-                  desc => 'Computer Modern',
-                 },
-                 {
-                  name => 'TeX Gyre Termes',
-                  desc => 'TeX Gyre Termes (Times)',
-                 },
-                 {
-                  name => 'TeX Gyre Pagella',
-                  desc => 'TeX Gyre Pagella (Palatino)',
-                 },
-                 {
-                  name => 'TeX Gyre Schola',
-                  desc => 'TeX Gyre Schola (Century)',
-                 },
-                 {
-                  name => 'TeX Gyre Bonum',
-                  desc => 'TeX Gyre Bonum (Bookman)',
-                 },
-                 {
-                  name => 'Antykwa Poltawskiego',
-                  desc => 'Antykwa Półtawskiego',
-                 },
-                 {
-                  name => 'Antykwa Torunska',
-                  desc => 'Antykwa Toruńska',
-                 },
-                 {
-                  name => 'Charis SIL',
-                  desc => 'Charis SIL (Bitstream Charter)',
-                 },
-                 {
-                  name => 'PT Serif',
-                  desc => 'Paratype (cyrillic)',
-                 },
-                );
-    return \@fonts;
-}
+=head2 constructor_args
 
-sub schemas {
-    my $self = shift;
-    my %schemas = map { $_ => $_ } @{ $self->schemas_sorted };
-    return \%schemas;
-}
-
-sub schemas_sorted {
-    return [qw/2up 2x4x2 2side/]
-}
-
-sub available_tex_options {
-    my $self = shift;
-    my %paper =     %{ $self->paper_sizes };
-    my %divs  =     %{ $self->page_divs   };
-    my %fontsizes = %{ $self->font_sizes  };
-    my %fonts     = %{ $self->available_fonts };
-    my $options = {
-                   twoside => sub {
-                       my $i = shift;
-                       $i ? return 1 : return 0;
-                   },
-                   nocoverpage => sub {
-                       my $i = shift;
-                       $i ? return 1 : return 0;
-                   },
-                   notoc => sub {
-                       my $i = shift;
-                       $i ? return 1 : return 0;
-                   },
-                   papersize => sub {
-                       my $i = shift;
-                       return unless defined $i;
-                       $i = lc($i);
-                       $paper{$i} ? return $i : return;
-                   },
-                   division => sub {
-                       my $i = shift;
-                       return unless defined $i;
-                       $divs{$i} ? return $i : return;
-                   },
-                   fontsize => sub {
-                       my $i = shift;
-                       return unless defined $i;
-                       $fontsizes{$i} ? return $i : return;
-                   },
-                   bcor => sub {
-                       my $i = shift;
-                       if ($i and $i =~ m/^([0-9]+)$/s) {
-                           return $1 . 'mm';
-                       }
-                       else {
-                           return '0mm';
-                       }
-                   },
-                   mainfont => sub {
-                       my $i = shift;
-                       return unless defined $i;
-                       $fonts{$i} ? return $fonts{$i} : return;
-                   },
-                   coverwidth => sub {
-                       my $i = shift;
-                       if ($i and $i =~ m/^([0-9]+)$/s) {
-                           my $float = sprintf('%.2f', $i / 100);
-                           return $float;
-                       }
-                       else {
-                           return "1";
-                       }
-                   }
-                  };
-    return $options;
-};
-
-=head2 validate_options(\%params)
-
-Validate the parameters passed and return an hashref with the template options.
-All keys will be present.
-
-=head2 validate_imposer_options(\%params);
-
-Validate the parameters passed and return an hashref with the imposer options.
-All keys will be present.
+Return an hashref which, when dereferenced, will be be able to feed
+the constructor and clone itself.
 
 =cut
 
-sub validate_options {
-    my ($self, $params) = @_;
-    my $options = $self->available_tex_options;
-    my %safe;
-    foreach my $k (keys %$options) {
-        $safe{$k} = $options->{$k}->($params->{$k});
+sub constructor_args {
+    my $self = shift;
+    my %args = (textlist => $self->texts);
+    foreach my $method (qw/title
+                           coverfile
+                           twoside
+                           nocoverpage
+                           notoc
+                           cover
+                           imposed
+                           schema
+                           papersize
+                           division
+                           fontsize
+                           bcor
+                           mainfont
+                           coverwidth
+                           signature
+                          /) {
+        $args{$method} = $self->$method;
     }
-    if (@{$self->files}) {
-        # safe provided the C<add_files> has been used...
-        $safe{cover} = $self->files->[0];
-    }
-    return \%safe;
+    return \%args;
 }
 
-sub validate_imposer_options {
-    my ($self, $params) = @_;
-    my %opts;
-    return undef unless ($params->{imposed} && $params->{schema});
-
-    if ($self->schemas->{ $params->{schema} }) {
-        $opts{schema} = $params->{schema};
-    }
-    else {
-        return undef;
-    }
-    if ($params->{signatures}) {
-        $opts{signature} = '40-80';
-    }
-    if ($params->{cover}) {
-        $opts{cover} = 1;
-    }
-    return \%opts;
-}
 
 __PACKAGE__->meta->make_immutable;
 
