@@ -89,7 +89,8 @@
     @
     <select name="fontsize">
       [% FOREACH size IN bb.fontsize_values %]
-      <option value="[% size %]">
+      <option value="[% size %]"
+              [% IF size == bb.fontsize %]selected="selected"[% END %]>
         [% size %]
       </option>
       [% END %]
@@ -118,7 +119,7 @@
 
       <select name="division" id="division" class="form-control">
         [% FOREACH division IN bb.divs_values %]
-        <option value="[% mydiv %]"
+        <option value="[% division %]"
                 [% IF bb.division == division %]selected="selected"[% END %]>
                 [% division %]
         </option>
@@ -239,11 +240,11 @@
       </label>
     </div>
     <p>
-      <button type="submit" name="build" value="go" class="btn btn-default">
+      <button type="submit" name="build" value="build" class="btn btn-default">
         [% loc('Build it') %]
       </button>
-      <button type="submit" name="save" value="go" class="btn btn-default">
-        [% loc('Save') %]
+      <button type="submit" name="update" value="update" class="btn btn-default">
+        [% loc('Update') %]
       </button>
 
     </p>

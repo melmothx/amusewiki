@@ -71,19 +71,17 @@ sub index :Chained('root') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
 
     my $bb = $c->stash->{bb};
-    my @texts = @{ $bb->texts };
-
     my %params = %{ $c->request->body_parameters };
-    if (%params) {
+    if ($params{build} || $params{update}) {
         $bb->import_from_params(%params);
-    }
-    foreach my $upload ($c->request->upload('coverimage')) {
-        $c->log->debug("Adding file: " . $upload->tempname . ' => '. $upload->size );
-        $bb->add_file($upload->tempname);
+        foreach my $upload ($c->request->upload('coverimage')) {
+            $c->log->debug("Adding file: " . $upload->tempname . ' => '. $upload->size );
+            $bb->add_file($upload->tempname);
+        }
+        $c->forward('save_session');
     }
 
-    $c->log->debug(Dumper($bb));
-    $c->forward('save_session');
+    my @texts = @{ $bb->texts };
 
     if (@texts and $params{build}) {
         $c->log->debug("Putting the job in the queue now");
