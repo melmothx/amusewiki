@@ -154,7 +154,11 @@ the tree.
 * DONE bookbuilder enhancement with explanations
   CLOSED: [2014-08-31 dom 21:01]
 
-* TODO List available images while editing
+* DONE List available images while editing
+  CLOSED: [2014-09-01 lun 14:10]
+  won't fix. I'd prefer duplicated images rather than code
+  complication just because users can't read what it says.
+
 * TODO Create static indexing
 
 * Future releases
