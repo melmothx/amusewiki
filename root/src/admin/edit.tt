@@ -296,8 +296,8 @@
       </label>
       <div class="col-sm-10">
         <select name="papersize" id="papersize" class="form-control">
-          [% SET mypapers = bb.paper_sizes %]
-          [% FOREACH paper IN bb.paper_sizes_sorted %]
+          [% SET mypapers = bb.papersizes %]
+          [% FOREACH paper IN bb.papersize_values %]
           <option value="[% paper %]"
                   [% IF esite.papersize == paper %]selected="selected"[% END %]>
             [% loc(mypapers.$paper) %]
@@ -353,8 +353,7 @@
       </label>
       <div class="col-sm-10">
         <select name="fontsize" id="fontsize" class="form-control">
-          [% SET myfontsizes = bb.font_sizes %]
-          [% FOREACH size IN bb.font_sizes.keys.sort %]
+          [% FOREACH size IN bb.fontsize_values %]
           <option value="[% size %]"
                   [% IF esite.fontsize == size %]selected="selected"[% END %]>
             [% size %]
