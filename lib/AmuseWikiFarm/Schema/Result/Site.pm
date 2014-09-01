@@ -902,7 +902,7 @@ sub import_text_from_html_params {
 
     # populate the file with the parameters
     open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
-    # TODO add support for uid and cat (ATR)
+
     foreach my $directive (qw/title subtitle author LISTtitle SORTauthors
                               SORTtopics date uid cat
                               source lang pubdate/) {

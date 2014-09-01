@@ -171,8 +171,6 @@ Path: /library/*
 
 Main method to serve the files, mapping them to the real location.
 
-TODO: if behind proxy, try to use an acceleration method.
-
 =cut
 
 sub special_match :Chained('special_list') PathPart('') :CaptureArgs(1) {

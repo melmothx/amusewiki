@@ -226,7 +226,6 @@ sub alias_create :Chained('alias') :PathPart('create') :Args(0) {
 
 sub translations :Chained('root') :PathPart('translations') :Args(0) {
     my ($self, $c) = @_;
-    # TODO move it in the model
     my $site = $c->stash->{site};
     if ($site->multilanguage) {
         $c->stash(
