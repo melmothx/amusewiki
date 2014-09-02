@@ -1,0 +1,8 @@
+amuse:
+  dsn: 'dbi:mysql:amuse'
+  user: 'amuse'
+  password: 'xxxxxx'
+  AutoCommit: 1
+  RaiseError: 1
+  mysql_enable_utf8: 1
+

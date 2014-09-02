@@ -1,0 +1,7 @@
+amuse:
+  dsn: 'dbi:Pg:host=localhost;database=amuse'
+  user: 'amuse'
+  password: 'xxxxxxx'
+  AutoCommit: 1
+  RaiseError: 1
+
