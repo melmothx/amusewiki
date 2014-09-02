@@ -197,8 +197,9 @@
     <div id="imposition-options">
     <div>
       <strong>
+        [% loc('If you asked for imposition, select an imposition schema') %]:
         <a target="_blank" href="[% c.uri_for_action('/bookbuilder/schemas') %]">
-          [% loc('If you asked for imposition, select an imposition schema') %]:
+          <span class="glyphicon glyphicon-question-sign"></span>
         </a>
       </strong>
     </div>
@@ -211,7 +212,7 @@
 
         [% loc("Pages are not reordered. The first sheet contains
         pages 1 and 2, the second 3 and 4, and so on, side by side.
-        This is not meant to be folded") %]
+        This is not meant to be folded.") %]
 
       </label>
     </div>
