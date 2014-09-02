@@ -182,10 +182,17 @@ print "########## END NGINX configuration ##########\n\n";
 
 print <<"EOF";
 
-All done, you can now start the app.
+All done, please configure the webserver, then you can now start the
+app with
+
+ ./init-all start.
 
 You may want to login at http://$host/login and then edit the site
 configuration at http://$host/admin/sites/edit/$site_id
+
+After the site configuration, you should bootstrap the repository with
+
+ ./script/bootstrap_archive.pl
 
 EOF
 
