@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 25;
+use Test::More tests => 24;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/write_file/;
@@ -17,6 +17,10 @@ use Test::WWW::Mechanize::Catalyst;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0sf0';
 my $site = create_site($schema, $site_id);
+
+ok(-f catfile($site->repo_root, '.gitignore'), "gitignore was created");
+
+ok ($site->git, "Git was initialized with ->initialize_git");
 
 ok(!$site->logo_with_sitename, "By default, the logo has not a sitename");
 
@@ -37,7 +41,6 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 my $basedir = $site->path_for_site_files;
 like $basedir, qr/\Q$site_id\E.\Qsite_files\E/ or die $basedir;
-mkdir $basedir or die "Cannot create $basedir !";
 
 my @good = ("test.txt");
 my @bad = (".tryme.torrent", "test me.exe", "hullo_therer.ciao");
@@ -62,21 +65,23 @@ foreach my $bad_one (@bad) {
 
 # default layout, so check the favicon
 
-$mech->get_ok('/');
-$mech->content_lacks('favicon.ico');
-$mech->content_lacks('local.css');
-$mech->content_lacks('local.js');
+my @localfiles = (qw/local.css local.js/);
 
-# create them and recheck
-
-foreach my $localf (qw/favicon.ico local.css local.js/) {
-    my $testfile = catfile($basedir, $localf);
-    write_file($testfile, "xxx\n");
-}
-
-foreach my $localf (qw/favicon.ico local.css local.js/) {
+foreach my $localf (@localfiles) {
     $mech->get('/');
     my $uri = "/sitefiles/$site_id/$localf";
     $mech->content_contains(qq{$localf"});
     $mech->get_ok($uri);
 }
+
+# delete and recheck
+foreach my $localf (@localfiles) {
+    my $testfile = catfile($basedir, $localf);
+    unlink $testfile or die "Couldn't unlink $testfile $!";
+}
+
+$mech->get_ok('/');
+foreach my $localf (@localfiles) {
+    $mech->content_lacks($localf);
+}
+

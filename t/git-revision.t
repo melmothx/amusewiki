@@ -27,7 +27,7 @@ ok ($site);
 
 my ($log) = $archive_git->log;
 
-is $log->message, "Initial import\n", "Found root git revision";
+is $log->message, "Initial AMuseWiki setup\n", "Found root git revision";
 
 ok ($site->repo_is_under_git, "db knows about git");
 

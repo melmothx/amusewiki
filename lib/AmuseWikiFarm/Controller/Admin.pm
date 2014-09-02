@@ -81,7 +81,8 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
         }
     }
     elsif ($params{create_site}) {
-        if ($params{create_site} =~ m/^([1-9a-z][0-9a-z]{1,15})$/) {
+        # here we accept 0 as prefix as well, but we warned
+        if ($params{create_site} =~ m/^([0-9a-z]{2,16})$/) {
             $id = $1;
             if ($c->model('DB::Site')->find($id)) {
                 $c->flash(error_msg => $c->loc('Site already exists'));
@@ -92,7 +93,7 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
             else {
                 # creation
                 $site = $c->model('DB::Site')->create({ id => $id });
-                # TODO $site->initialize_git;
+                $site->initialize_git;
             }
         }
         else {

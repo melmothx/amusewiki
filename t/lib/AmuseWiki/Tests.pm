@@ -42,17 +42,7 @@ sub create_site {
 
     $site->add_to_vhosts({ name => $id . '.amusewiki.org' });
     remove_tree($site->repo_root) if -d $site->repo_root;
-    mkdir $site->repo_root or die $!;
-
-    my $git = Git::Wrapper->new($site->repo_root);
-
-    unless (-d catdir($site->repo_root, '.git')) {
-        write_file(catfile($site->repo_root, "README"),
-                   "test repo\n");
-        $git->init;
-        $git->add('.');
-        $git->commit({ message => "Initial import" });
-    }
+    $site->initialize_git;
     return $site;
 }
 

@@ -67,6 +67,7 @@
 
 <div>
   <form action="[% c.uri_for_action('/admin/edit') %]" class="form-inline"
+        method="POST" id="creation-site-form"
         role="form">
     <div class="form-group">
       <label for="create_site">

@@ -108,8 +108,11 @@ convention is as follow.
 The site ID is the key of everything, given that the whole circus is
 based on that, to serve the right file without leaking in other sites.
 
-The max length of the site ID is 8 characters, and with a minimum of
+The max length of the site ID is 16 characters, and with a minimum of
 2, in the range [0-9a-z] (no special character, no uppercase).
+
+PLEASE NOTE THAT IDS STARTING WITH ZERO (0) ARE USED AND RESERVED FOR
+TESTING. JUST DO NOT ASSIGN IDS WHICH STARTS WITH ZERO.
 
 The directory is "repo", and there reside the git archives, named with
 the site ID.

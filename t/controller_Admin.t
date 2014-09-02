@@ -1,11 +1,12 @@
 use strict;
 use warnings;
-use Test::More tests => 17;
+use Test::More tests => 24;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-
 
 use Catalyst::Test 'AmuseWikiFarm';
 use Test::WWW::Mechanize::Catalyst;
+use AmuseWikiFarm::Schema;
+use File::Path qw/remove_tree/;
 
 my %hosts = (
              'blog.amusewiki.org' => {
@@ -56,3 +57,32 @@ $mech->get('/admin/debug_site_id');
 ok (!$mech->success, "Not a success");
 is ($mech->status, 403);
 
+$mech->get('/logout');
+$mech->get_ok('/login');
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'root',
+                               password => 'root',
+                             },
+                   button => 'submit');
+
+$mech->get_ok('/admin/sites');
+
+$mech->submit_form(form_id => 'creation-site-form',
+                   fields => {
+                              create_site => '0creation0',
+                             });
+
+is ($mech->uri->path, '/admin/sites/edit');
+
+$mech->content_contains('0creation0</h2>');
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+my $created = $schema->resultset('Site')->find('0creation0');
+ok( $created, "Site created");
+
+my $created_root = $created->repo_root;
+ok (-d $created_root, "Repo root created");
+ok ($created->git, "Created site has a git");
+$created->delete;
+remove_tree($created_root);

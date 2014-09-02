@@ -28,7 +28,7 @@ ok (-d $site->staging_dir, "Staging directory found");
 # interface to create a new text
 my ($log) = $git->log;
 
-is $log->message, "Initial import\n", "Found root git revision";
+is $log->message, "Initial AMuseWiki setup\n", "Found root git revision";
 
 # the interface should be
 

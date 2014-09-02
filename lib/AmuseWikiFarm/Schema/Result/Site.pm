@@ -1860,6 +1860,55 @@ sub translations_list {
 }
 
 
+=head2 initialize_git
+
+If there is no repo, initialize a git one.
+
+=cut
+
+sub initialize_git {
+    my $self = shift;
+    my $root = $self->repo_root;
+    if (-d $root) {
+        warn "$root already exist, skipping the git initialization";
+        return;
+    }
+    mkdir $self->repo_root
+      or die "Couldn't create " . $self->repo_root . " " . $!;
+    require Git::Wrapper;
+    my $git = Git::Wrapper->new($self->repo_root);
+    $git->init;
+    $self->_create_repo_stub;
+    $git->add('.');
+    $git->commit({ message => 'Initial AMuseWiki setup' });
+    return 1;
+}
+
+sub _create_repo_stub {
+    my $self = shift;
+    my $root = $self->repo_root;
+    my $stock_dir = 'stock_files';
+    die "In the wrong dir!" unless -d $stock_dir;
+    copy (File::Spec->catfile($stock_dir, 'dot-gitignore'),
+          File::Spec->catfile($root, '.gitignore'))
+      or die "Couldn't import the .gitignore: $!";
+
+    # create stub dirs
+    foreach my $dir (qw/site_files specials uploads/) {
+        my $target = File::Spec->catdir($root, $dir);
+        mkdir $target or die "Couldn't create $target: $!";
+    }
+    foreach my $file (qw/local.css local.js favicon.ico navlogo.png
+                         pagelogo.png/) {
+        my $source = File::Spec->catfile($stock_dir, $file);
+        my $target = File::Spec->catfile($root, 'site_files', $file);
+        if (-f $source) {
+            copy ($source, $target)
+              or die "Couldn't import $file into site_files, $!";
+        }
+    }
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;

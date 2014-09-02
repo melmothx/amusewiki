@@ -127,6 +127,10 @@ else {
 my $site = $schema->resultset('Site')->create({ id => $site_id });
 $site->vhosts->create({ name => $host });
 
+if ($site->initialize_git) {
+    print "An stub repository has been created at " . $site->repo_root . "\n";
+}
+
 my $user = $schema->resultset('User')->create({
                                                username => $username,
                                                password => $password,
