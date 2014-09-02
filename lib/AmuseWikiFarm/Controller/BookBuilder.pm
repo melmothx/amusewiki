@@ -59,7 +59,7 @@ sub root :Chained('/') :PathPart('bookbuilder') :CaptureArgs(0) {
     # set the current page count
     my $bb_page_count = 0;
     foreach my $t (@{$bb->texts}) {
-        my $title = $c->stash->{site}->titles->by_uri($t);
+        my $title = $c->stash->{site}->titles->text_by_uri($t);
         next unless $title;
         $bb_page_count += $title->pages_estimated;
     }
@@ -132,7 +132,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
         my $referrer = $c->uri_for_action('/library/text', [$text]);
 
         # do we have the text in the db?
-        my $to_add = $site->titles->by_uri($text);
+        my $to_add = $site->titles->text_by_uri($text);
         unless ($to_add) {
             $c->log->warn("Tried to added $text but not found");
             $c->flash->{error_msg} = $c->loc("Couldn't add the text");

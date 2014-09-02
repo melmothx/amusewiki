@@ -54,15 +54,13 @@ sub random_text {
 }
 
 
-=head2 by_uri
+=head2 text_by_uri
 
 Find a published text by uri.
 
-TODO: this methos is misnamed, should be text_by_uri
-
 =cut
 
-sub by_uri {
+sub text_by_uri {
     my ($self, $uri) = @_;
     return $self->published_texts->single({ uri => $uri });
 }

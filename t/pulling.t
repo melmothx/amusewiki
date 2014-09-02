@@ -109,7 +109,7 @@ my ($gitlog) = $site->git->log;
 
 is $gitlog->message, "Work at home\n", "Pulling in site ok";
 
-my $title = $site->titles->by_uri('a-test');
+my $title = $site->titles->text_by_uri('a-test');
 is ($title->title, "A Test", "Find title in db");
 my $author = $title->authors->first;
 

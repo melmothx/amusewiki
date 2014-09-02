@@ -63,7 +63,7 @@ sub index :Path :Args(0) {
     }
 
     foreach my $res (@results) {
-        $res->{text} = $site->titles->by_uri($res->{pagename});
+        $res->{text} = $site->titles->text_by_uri($res->{pagename});
     }
 
     if ($c->req->params->{fmt} and $c->req->params->{fmt} eq 'json') {

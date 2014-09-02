@@ -551,7 +551,7 @@ sub dispatch_job_bookbuilder {
     # validate the texts passed looking up the uri in the db
     my @texts;
     foreach my $text (@$textlist) {
-        my $title = $self->site->titles->by_uri($text);
+        my $title = $self->site->titles->text_by_uri($text);
         unless ($title) {
             warn "Couldn't find $text\n";
             next;
