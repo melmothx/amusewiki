@@ -1,0 +1,103 @@
+Prerequisites:
+
+ - a database (mysql, pg, sqlite)
+ - a working perl (i.e., you can install modules)
+ - fontconfig (install it before installing texlive)
+ - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
+ - TeXlive (minimum: texlive 2012)
+ - a mime-info database: shared-mime-info on debian
+
+Unpack the sources and change directory into them.
+
+Install Catalyst
+
+ cpanm Module::Install::Catalyst
+
+Execute "perl Makefile.PL" and install the dependencies if it complains.
+
+Execute make
+
+
+Answer yes to install the modules with cpan.
+
+Create a database for the application. E.g., for mysql:
+
+  mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+  
+  mysql> grant all privileges on amuse.* to amuse@localhost identified by XXX
+
+Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the credentials.
+
+Install TeXlive.
+
+ <1> TEXDIR:       /home/amuse/texlive/2014
+     support tree: /home/amuse/texlive/2014/texmf-dist
+
+ <2> TEXMFLOCAL:     /home/amuse/texlive/texmf-local
+ <3> TEXMFSYSVAR:    /home/amuse/texlive/2014/texmf-var
+ <4> TEXMFSYSCONFIG: /home/amuse/texlive/2014/texmf-config
+
+ <5> TEXMFVAR:       ~/.texlive2014/texmf-var
+ <6> TEXMFCONFIG:    ~/.texlive2014/texmf-config
+ <7> TEXMFHOME:      ~/texmf
+
+
+ Add /home/amuse/texlive/2014/texmf-dist/doc/info to INFOPATH.
+ Add /home/amuse/texlive/2014/texmf-dist/doc/man to MANPATH
+   (if not dynamically found).
+
+ Most importantly, add /home/amuse/texlive/2014/bin/x86_64-linux
+ to your PATH for current and future sessions.
+
+Put the fonts into ~/.fonts and execute fc-cache.
+
+The needed fonts are shipped in texlive, under texmf-dist/fonts/, so
+it's usually enough to symlink them.
+
+Fonts needed: antt  cm-unicode  libertine  paratype  poltawski  tex-gyre
+
+The SIL charis font is not shipped by texlive, but it's usually
+packaged by your distro. Or download it at
+http://www.sil.org/resources/software_fonts/charis-sil
+
+To test if everything is working as expected, go to ./font-preview and
+run ./gen.sh
+
+In ./root/static/js download and unpack ckeditor:
+
+e.g. 
+
+cd root/static/js/
+wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.4.3/ckeditor_4.4.3_standard.zip
+unzip ckeditor_4.4.3_standard.zip
+
+If you use logos in your pdfs, put them under in texmf (e.g
+$HOME/texmf/tex/generic/amusewiki/data) and run mktexlsr)
+
+Assuming your logo is named logo-yu.pdf, check if latex can find it
+with:
+
+  kpsewhich logo-yu.pdf
+
+Run the install script, which will take care of creating an initial
+site and root account. Once you login, you will be able to create
+librarian users and sites.
+
+ ./script/install.pl
+
+If you run under nginx, the install script will provide the relevant
+server configuration stanza.
+
+Once webserver is configured, you can start the application.
+
+  ./init-all start
+
+Login as the root account, configure your site, then you can bootstrap
+it.
+
+ ./script/bootstrap_archive.pl
+
+A 
+
+That's all, enjoy.
+
