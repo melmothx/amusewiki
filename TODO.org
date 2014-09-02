@@ -160,6 +160,8 @@ the tree.
   complication just because users can't read what it says.
 
 * TODO Create static indexing
+* TODO put the home dir in the env, so we don't rely on getcwd
+* TODO script to import the accounts
 
 * Future releases
 * TODO The jobber should remove old completed jobs
