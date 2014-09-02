@@ -268,7 +268,7 @@
       <label for="cover">
         <input type="checkbox" name="cover" value="1" id="cover"
                [% IF bb.cover %]checked="checked"[% END %]/>
-        [% loc('Fill with black pages before the last page if the signature is not full.') %]
+        [% loc('Fill with blank pages before the last page if the signature is not full.') %]
       </label>
     </div>
     </div>
