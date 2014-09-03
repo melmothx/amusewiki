@@ -161,7 +161,12 @@ the tree.
 
 * DONE Create static indexing
   CLOSED: [2014-09-03 mer 12:23]
-* TODO put the home dir in the env, so we don't rely on getcwd
+* DONE put the home dir in the env, so we don't rely on getcwd
+  CLOSED: [2014-09-03 mer 13:15]
+  At this point, no code which change directory unexpectedly has been
+  found. And if it is the case, it should be fixed. So, not a bug,
+  closing.
+
 * TODO script to import the accounts
 
 * Future releases
