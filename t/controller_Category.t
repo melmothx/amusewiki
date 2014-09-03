@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 17;
+use Test::More tests => 19;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -10,6 +10,7 @@ binmode $builder->failure_output, ":utf8";
 binmode $builder->todo_output,    ":utf8";
 
 use Catalyst::Test 'AmuseWikiFarm';
+use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Controller::Category;
 
 my ($res, $diag, $host);
@@ -72,3 +73,27 @@ $res = request('/authors/ciao', $host);
 like $res->decoded_content, qr{<h.>\s*Ciao\s*</h.>}, "title ok";
 like $res->decoded_content, qr{Zu A Second test.*Ža Third test}s,
   "author sorting details ok";
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my $site = $schema->resultset('Vhost')->find($host->{host})->site;
+
+my $newcat = $site->categories->update_or_create({
+                                                  name => 'This cat is not active',
+                                                  type => 'topic',
+                                                  uri => 'this-cat-is-not-active',
+                                                 });
+
+$newcat->discard_changes;
+
+diag $host->{host};
+
+$res = request('/topics/this-cat-is-not-active', $host);
+is($res->code, '404', 'Inactive cat not found') or diag $res->decoded_content;
+
+$res = request('/topics', $host);
+unlike($res->decoded_content, qr/this-cat-is-not-active/,
+       "Inactive cat is not listed") or diag $res->decoded_content;
+
+$newcat->delete;
+
+

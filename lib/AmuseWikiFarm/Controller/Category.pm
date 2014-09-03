@@ -57,10 +57,7 @@ sub topics :Chained('root') :PathPart('topics') :CaptureArgs(0) {
 
 sub category_list :Private {
     my ($self, $c, $type) = @_;
-    my $rs = $c->stash->{site}->categories->by_type($type)
-      ->search({
-                text_count => { '>' => 0 },
-               });
+    my $rs = $c->stash->{site}->categories->active_only_by_type($type);
     $c->stash(
               nav => $type,
               categories_rs => $rs,
