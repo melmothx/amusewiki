@@ -141,7 +141,7 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:73 root/src/edit/edit.tt:221 root/src/layout.tt:157 root/src/text.tt:41
+#: lib/AmuseWikiFarm/Controller/Category.pm:70 root/src/edit/edit.tt:221 root/src/layout.tt:157 root/src/text.tt:41
 msgid "Authors"
 msgstr ""
 
@@ -1532,7 +1532,7 @@ msgstr ""
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:79 root/src/edit/edit.tt:235 root/src/edit/edit.tt:497 root/src/edit/newtext.tt:104 root/src/layout.tt:163 root/src/layout.tt:179 root/src/text.tt:58
+#: lib/AmuseWikiFarm/Controller/Category.pm:76 root/src/edit/edit.tt:235 root/src/edit/edit.tt:497 root/src/edit/newtext.tt:104 root/src/layout.tt:163 root/src/layout.tt:179 root/src/text.tt:58
 msgid "Topics"
 msgstr ""
 

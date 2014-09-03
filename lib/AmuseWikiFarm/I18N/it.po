@@ -23,7 +23,8 @@ msgstr "Una o più linee vuote marcano l'inizio di un nuovo paragrafo"
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
-msgstr "Esiste già un'immagine di copertina. Puoi rimpiazzarla caricandone una nuova"
+msgstr ""
+"Esiste già un'immagine di copertina. Puoi rimpiazzarla caricandone una nuova"
 
 #: root/src/edit/edit.tt:392
 msgid ""
@@ -156,7 +157,7 @@ msgstr "Immagini allegate"
 msgid "Author"
 msgstr "Autore"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:73 root/src/edit/edit.tt:221
+#: lib/AmuseWikiFarm/Controller/Category.pm:70 root/src/edit/edit.tt:221
 #: root/src/layout.tt:157 root/src/text.tt:41
 msgid "Authors"
 msgstr "Autori"
@@ -478,7 +479,9 @@ msgstr "File caricato!"
 #: root/src/bookbuilder/index.tt:271
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
-msgstr "Riempi con pagine bianche prima dell'ultima pagina se il fascicolo non è completo"
+msgstr ""
+"Riempi con pagine bianche prima dell'ultima pagina se il fascicolo non è "
+"completo"
 
 #: root/src/edit/edit.tt:474
 msgid "First Author and Second Author"
@@ -1653,7 +1656,7 @@ msgstr "Mostra/nascondi il sommario"
 msgid "Topic"
 msgstr "Argomento"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:79 root/src/edit/edit.tt:235
+#: lib/AmuseWikiFarm/Controller/Category.pm:76 root/src/edit/edit.tt:235
 #: root/src/edit/edit.tt:497 root/src/edit/newtext.tt:104
 #: root/src/layout.tt:163 root/src/layout.tt:179 root/src/text.tt:58
 msgid "Topics"
