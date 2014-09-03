@@ -1046,6 +1046,7 @@ sub compile_and_index_files {
         }
     }
     $self->collation_index;
+    $self->static_indexes_generator->generate;
 }
 
 

@@ -159,7 +159,8 @@ the tree.
   won't fix. I'd prefer duplicated images rather than code
   complication just because users can't read what it says.
 
-* TODO Create static indexing
+* DONE Create static indexing
+  CLOSED: [2014-09-03 mer 12:23]
 * TODO put the home dir in the env, so we don't rely on getcwd
 * TODO script to import the accounts
 

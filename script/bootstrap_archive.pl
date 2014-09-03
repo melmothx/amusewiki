@@ -12,6 +12,11 @@ use Data::Dumper;
 use lib "$Bin/../lib";
 use AmuseWikiFarm::Schema;
 use POSIX qw/nice/;
+use Getopt::Long;
+
+my $refresh;
+
+GetOptions (refresh => \$refresh) or die;
 
 # be nice
 nice(19);
@@ -39,6 +44,13 @@ foreach my $code (@codes) {
         warn "Site code $code not found in the database. Skipping...\n";
         next;
     }
-    my @files = sort keys %{ $site->repo_find_files };
-    $site->compile_and_index_files(\@files);
+    # with --refresh, just check
+    if ($refresh) {
+        $site->update_db_from_tree;
+    }
+    # without, do a full import
+    else {
+        my @files = sort keys %{ $site->repo_find_files };
+        $site->compile_and_index_files(\@files);
+    }
 }
