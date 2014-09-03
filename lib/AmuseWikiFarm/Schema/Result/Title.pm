@@ -723,6 +723,20 @@ sub attached_pdfs {
     @indexed ? return \@indexed : return;
 }
 
+=head2 in_tree_uri
+
+Return the uri for the file, minus the extension, in the repo tree.
+Needed by the static generator.
+
+=cut
+
+sub in_tree_uri {
+    my $self = shift;
+    my $relpath = $self->f_archive_rel_path;
+    $relpath =~ s![^a-z0-9]!/!g;
+    return join('/', '.', $relpath, $self->uri);
+
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

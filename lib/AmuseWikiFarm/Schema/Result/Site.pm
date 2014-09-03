@@ -1909,6 +1909,34 @@ sub _create_repo_stub {
     }
 }
 
+sub static_indexes_generator {
+    my $self = shift;
+    require AmuseWikiFarm::Archive::StaticIndexes;
+    my $texts = $self->titles->published_texts;
+    my $authors = $self->categories->active_only_by_type('author');
+    my $topics  = $self->categories->active_only_by_type('topic');
+    my $generator = AmuseWikiFarm::Archive::StaticIndexes
+      ->new(
+            texts => $texts,
+            authors => $authors,
+            topics => $topics,
+            repo_root => $self->repo_root,
+            lang => $self->locale,
+            formats => {
+                        muse => 1,
+                        pdf => $self->pdf,
+                        a4_pdf => $self->a4_pdf,
+                        lt_pdf => $self->lt_pdf,
+                        tex => $self->tex,
+                        epub => $self->epub,
+                        zip  => $self->zip,
+                       },
+           );
+    return $generator;
+}
+
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;
