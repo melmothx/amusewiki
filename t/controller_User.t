@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 60;
+use Test::More tests => 71;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -66,6 +66,44 @@ $mech->post('/login' => {
                         });
 
 is $mech->response->base->path, '/login', "No authorized, still on login";
+
+$mech->post('/login' => {
+                         username => 'pinco',
+                         password => 'pallino',
+                         submit => 1,
+                        });
+
+$mech->content_contains(q{/logout"}, "Page contains the logout link");
+
+$mech->get_ok('/logout');
+
+
+my $user_active = $schema->resultset('User')->find({ username => 'pinco' });
+ok($user_active);
+$user_active->active(0);
+$user_active->update;
+
+$mech->get_ok('/login');
+$mech->content_contains('login-form');
+
+$mech->post('/login' => {
+                         username => 'pinco',
+                         password => 'pallino',
+                         submit => 1,
+                        });
+
+is $mech->response->base->path, '/login',
+  "No authorized, still on login because not active";
+$mech->content_contains('login-form');
+
+$mech->get_ok('/action/special/edit/index');
+$mech->content_lacks('textarea', "No textarea found for not logged-in");
+
+$user_active->active(1);
+$user_active->update;
+
+$mech->get_ok('/login');
+$mech->content_contains('login-form');
 
 $mech->post('/login' => {
                          username => 'pinco',
