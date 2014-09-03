@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 71;
+use Test::More tests => 75;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -15,6 +15,13 @@ unless (eval q{use Test::WWW::Mechanize::Catalyst 0.55; 1}) {
 
 my $site_id = '0user0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+my $other_site_id = '0other0';
+my $other_site = create_site($schema, $other_site_id);
+
+my $othermech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                    host => "$other_site_id.amusewiki.org");
+
 my $site = create_site($schema, $site_id);
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
@@ -112,6 +119,18 @@ $mech->post('/login' => {
                         });
 
 $mech->content_contains(q{/logout"}, "Page contains the logout link");
+
+$othermech->get_ok('/login');
+$othermech->content_contains('name="password"');
+$othermech->content_contains('name="username"');
+$othermech->submit_form(form_id => 'login-form',
+                        fields => {
+                                   username => 'pinco',
+                                   password => 'pallino',
+                                  },
+                        button => 'submit');
+$othermech->content_contains('Wrong username or password',
+                             "Can't login in other site");
 
 $mech->get_ok('/action/special/edit/index');
 $mech->content_contains('textarea');
