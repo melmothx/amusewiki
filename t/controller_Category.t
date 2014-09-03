@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 19;
+use Test::More tests => 22;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -93,6 +93,14 @@ is($res->code, '404', 'Inactive cat not found') or diag $res->decoded_content;
 $res = request('/topics', $host);
 unlike($res->decoded_content, qr/this-cat-is-not-active/,
        "Inactive cat is not listed") or diag $res->decoded_content;
+
+my @all_topics = $site->categories->by_type('topic');
+my @active_topics = $site->categories->active_only_by_type('topic');
+
+ok(scalar(@all_topics));
+ok(scalar(@active_topics));
+
+ok(@all_topics > @active_topics, "filtering by active works");
 
 $newcat->delete;
 
