@@ -40,7 +40,10 @@ if (@ARGV) {
 
 foreach my $code (@codes) {
     my $site = $schema->resultset('Site')->find($code);
-    unless ($site) {
+    if ($site) {
+        print "Processing $code\n";
+    }
+    else {
         warn "Site code $code not found in the database. Skipping...\n";
         next;
     }
