@@ -24,6 +24,8 @@ msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"Ya se añadió una imagen para la portada, pero puedes reemplazarla\n"
+"              subiendo una nueva."
 
 #: root/src/edit/edit.tt:392
 msgid ""
@@ -194,6 +196,8 @@ msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
+"Bloques de 16 páginas a encuadernar dos veces y luego\n"
+"                 juntarlas."
 
 #: root/src/admin/edit.tt:35
 msgid "Blog"
@@ -479,6 +483,7 @@ msgstr "¡Archivo subido!"
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
+"Llena con páginas en blanco antes de si la encuadernación no está completa."
 
 #: root/src/edit/edit.tt:474
 msgid "First Author and Second Author"
@@ -887,7 +892,7 @@ msgstr "Nombre"
 
 #: root/src/bookbuilder/index.tt:179
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Nunca generar un índice de contenidos"
 
 #: root/src/edit/revs.tt:67
 msgid "New revision"
@@ -994,6 +999,9 @@ msgid ""
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Las páginas no están reordenadas. La primera hoja\n"
+"        contiene las páginas 1 y 2, la segunda 3 y 4 y así sucesivamente,\n"
+"        lado por lado. Esto no significa que es para empaste."
 
 #: root/src/bookbuilder/index.tt:238
 msgid ""
@@ -1005,6 +1013,13 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Las páginas están reordenadas, en uno o más grupos\n"
+"        (hojas de cuadernillos), que luego se doblan por la mitad.\n"
+"        Si tienes más hojas de cuadernillo, tendrás que ponerlas juntas\n"
+"        como un libro. Con esta opción, quizás quieras decidir el tamaño\n"
+"        de la encuadernación. Esto puede ser un valor fijo (4,8,16, etc.),\n"
+"        todo el libro con un solo tipo de encuadernación, o un tamaño\n"
+"        optimizado para reducir el número de páginas en blanco."
 
 #: root/src/edit/edit.tt:269 root/src/edit/edit.tt:313
 msgid "Paragraphs"
@@ -1151,7 +1166,7 @@ msgstr "Por favo selecciona las tipografías deseadas"
 
 #: root/src/bookbuilder/index.tt:250
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Por favor, selecciona el tamaño de la encuadernación:"
 
 #: root/src/edit/edit.tt:278
 msgid "Poetry, bibliographies, plays, code"
@@ -1425,7 +1440,7 @@ msgstr "HTML puro (bueno para imprimir)"
 
 #: root/src/tasks/display.tt:102
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Página estática sin javascript"
 
 #: root/src/admin/jobs.tt:12 root/src/console/unpublished.tt:12
 #: root/src/tasks/display.tt:10 root/src/tasks/display.tt:41
@@ -1495,7 +1510,7 @@ msgstr "Textos"
 
 #: root/src/admin/edit.tt:411
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "El logo tiene el nombre del sitio en él"
 
 #: root/src/bookbuilder/index.tt:68
 msgid "The name is always required, but used only if there are multiple texts."
@@ -1541,7 +1556,7 @@ msgstr "La/el usuaria/o tendrá tu mismo nivel de acceso"
 
 #: root/src/bookbuilder/index.tt:259
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Todo el libro en una sola encuadernación"
 
 #: root/src/console/translations.tt:21
 msgid "These texts are missing the unique id."
