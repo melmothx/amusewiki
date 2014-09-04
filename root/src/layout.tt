@@ -95,6 +95,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          <span>
           [%- IF site.has_site_file('navlogo.png') -%]
           <a class="amw-navlogo" href="[% c.uri_for('/') %]">
             <img src="[% c.uri_for_action('/sitefiles/local_files',
@@ -117,6 +118,7 @@
                  alt="[% loc('Toggle the table of contents') %]"
                  class="amw-navlogo-img" id="amw-toc-toggler"/>
           </a>
+          </span>
         </div>
         <div class="navbar-collapse collapse">
           <div class="nav navbar-nav navbar-right"
