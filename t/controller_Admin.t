@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 24;
+use Test::More tests => 32;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Catalyst::Test 'AmuseWikiFarm';
@@ -65,20 +65,50 @@ $mech->submit_form(form_id => 'login-form',
                              },
                    button => 'submit');
 
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+my $site_id = '0xcreate0';
+
+if (my $site = $schema->resultset('Site')->find($site_id)) {
+    diag "Deleting existing site $site_id";
+    $site->delete;
+}
+
+
+
 $mech->get_ok('/admin/sites');
 
 $mech->submit_form(form_id => 'creation-site-form',
                    fields => {
-                              create_site => '0creation0',
+                              create_site => $site_id,
                              });
 
-is ($mech->uri->path, '/admin/sites/edit');
+is $mech->uri->path, "/admin/sites/edit/$site_id";
 
-$mech->content_contains('0creation0</h2>');
+$mech->content_contains("$site_id</h2>");
 
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
+ok($mech->form_with_fields(qw/mode locale/), "Found form") or diag $mech->content;
 
-my $created = $schema->resultset('Site')->find('0creation0');
+$mech->submit_form(with_fields => {
+                                   locale => 'en',
+                                   mail_notify => 'me@amusewiki.org',
+                                   mail_from => 'noreply@amusewiki.org',
+                                  },
+                   button => 'edit_site');
+
+is $mech->uri->path, "/admin/sites/edit/$site_id";
+
+$mech->get_ok('/admin/sites');
+
+$mech->content_contains('noreply@amusewiki.org', "Found the mail");
+$mech->content_contains('me@amusewiki.org', "Found the mail (2)");
+
+$mech->get_ok("/admin/sites/edit/$site_id");
+
+$mech->content_contains('noreply@amusewiki.org', "Found the mail");
+$mech->content_contains('me@amusewiki.org', "Found the mail (2)");
+
+my $created = $schema->resultset('Site')->find($site_id);
 ok( $created, "Site created");
 
 my $created_root = $created->repo_root;

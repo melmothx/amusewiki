@@ -94,6 +94,11 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
                 # creation
                 $site = $c->model('DB::Site')->create({ id => $id });
                 $site->initialize_git;
+                my $edit_link = $c->uri_for_action('/admin/edit', $id);
+                $c->log->info("Created site $id, redirecting to $edit_link");
+                $c->response->redirect($edit_link);
+                $c->detach();
+                return;
             }
         }
         else {
