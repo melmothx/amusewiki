@@ -384,6 +384,21 @@
       </a>
       |
 	  <a href="[% c.uri_for('/random') %]">[% loc('Random') %]</a>
+      |
+      <a href="[% c.uri_for('/library') %]"
+		 title="[% loc('texts sorted by title') %]">
+        [% loc('Titles') %]
+      </a>
+      |
+      <a href="[% c.uri_for('/authors') %]"
+		 title="[% loc('texts sorted by author') %]">
+        [% loc('Authors') %]
+      </a>
+      |
+      <a href="[% c.uri_for('/topics') %]"
+		 title="[% loc('texts sorted by topics') %]">
+        [% loc('Topics') %]
+      </a>
     </div>
   </body>
 </html>
