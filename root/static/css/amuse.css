@@ -17,10 +17,6 @@ span.hiddenindex, span.commentmarker, .comment, span.tocprefix {
     display: none
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: semi-bold;
-}
-
 h1, h2, h3, h4, h5 {
     margin-top: 24pt;
 }
