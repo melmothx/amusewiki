@@ -238,6 +238,9 @@
   [% END %]
 
   [% IF text.f_class == 'special' %]
+  <script>
+    $('.table-of-contents').remove();
+  </script>
   [% IF site.has_site_file('pagelogo.png') %]
   <div id="special-pages-logo">
     <img src="[% c.uri_for_action('/sitefiles/local_files',
