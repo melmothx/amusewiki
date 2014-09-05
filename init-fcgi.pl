@@ -26,6 +26,8 @@ my $socket = File::Spec->catfile($vardir, 'amw.sock');
 
 die "Don't run as root!" unless $uid && $gid;
 
+my $workers = $ENV{AMW_WORKERS} || 1;
+
 Daemon::Control->new({
                       name => "amusewiki-webapp",
                       lsb_start   => '$syslog $remote_fs',
@@ -36,7 +38,7 @@ Daemon::Control->new({
                       uid => $uid,
                       gid => $gid,
                       program_args => [ -l => $socket,
-                                        -n => 3,
+                                        -n => $workers,
                                         '--keeperr' ],
                       pid_file    => File::Spec->catfile($vardir, 'amw.pid'),
                       stderr_file => File::Spec->catfile($vardir, 'amw.err'),
