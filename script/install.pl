@@ -141,53 +141,16 @@ print "\n";
 
 print "########## START NGINX configuration ##########\n\n";
 
-my $amw_home = getcwd;
-
-print <<"EOF";
-server {
-    server_name $host;
-    root $amw_home/root;
-    location = /rss.xml {
-        rewrite ^/rss\\.xml\$ /feed permanent;
-    }
-    location /src {
-        deny all;
-    }
-    location /themes {
-        deny all;
-    }
-    location /private/repo/ {
-        internal;
-        alias $amw_home/repo/;
-    }
-    location /private/staging/ {
-        internal;
-        alias $amw_home/staging/;
-    }
-
-    location / {
-        try_files \$uri \@proxy;
-        expires max;
-    }
-    location \@proxy {
-        access_log /var/log/nginx/library.log hitcount;
-        include /etc/nginx/fastcgi_params;
-        fastcgi_param SCRIPT_NAME '';
-        fastcgi_param PATH_INFO   \$fastcgi_script_name;
-        fastcgi_param HTTP_X_SENDFILE_TYPE X-Accel-Redirect;
-        fastcgi_param HTTP_X_ACCEL_MAPPING $amw_home=/private;
-        fastcgi_pass  unix:$amw_home/var/amw.sock;
-    }
-}
-
-EOF
-
-print "########## END NGINX configuration ##########\n\n";
-
 print <<"EOF";
 
-All done, please configure the webserver, then you can now start the
-app with
+All done, please configure the webserver. If you use nginx, you can
+execute:
+
+ ./script/generate_nginx_conf.pl
+
+which will print out a suitable configuration for nginx.
+
+After the webserver is configured, you can now start the app with
 
  ./init-all start.
 
