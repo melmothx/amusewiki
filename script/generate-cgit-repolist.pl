@@ -20,10 +20,8 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 print "####### automatically generated on " . localtime() . " ######\n\n";
 
 foreach my $site ($schema->resultset('Site')->all) {
+    next unless $site->cgit_integration;
     my $path = $gitpath . $site->id . ".git";
-    unless (-d $path) {
-        next;
-    }
     print "repo.url=" . $site->id . "\n";
     print "repo.path=" . $path . "\n";
     print "repo.desc=" . $site->sitename . "\n";

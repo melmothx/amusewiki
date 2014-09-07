@@ -68,5 +68,7 @@ if [ ! -d $amw_home/root/static/cgit ]; then
 fi
 
 for i in cgit.css cgit.png; do
-    mv -v $amw_home/root/git/$i $amw_home/root/static/cgit
+    if [ ! -f $amw_home/root/static/cgit/$i ]; then
+        mv -v $amw_home/root/git/$i $amw_home/root/static/cgit
+    fi
 done
