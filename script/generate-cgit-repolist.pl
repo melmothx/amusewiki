@@ -9,6 +9,8 @@ use File::Spec::Functions qw/catfile catdir/;
 use Cwd;
 use Getopt::Long;
 
+binmode STDOUT, ":encoding(utf-8)";
+
 my $gitpath = '/var/cache/git/';
 
 GetOptions('gitpath=s' => \$gitpath);
