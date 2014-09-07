@@ -53,16 +53,16 @@ This is a sample configuration of the installer:
  Most importantly, add /home/amuse/texlive/2014/bin/x86_64-linux
  to your PATH for current and future sessions.
 
-Put the fonts into ~/.fonts and execute fc-cache.
-
 The needed fonts are shipped in texlive, under texmf-dist/fonts/, so
-it's usually enough to symlink them.
+it's usually enough to symlink them into ~/.fonts.
 
 Fonts needed: antt  cm-unicode  libertine  paratype  poltawski  tex-gyre
 
 The SIL charis font is not shipped by texlive, but it's usually
 packaged by your distro. Or download it at
 http://www.sil.org/resources/software_fonts/charis-sil
+
+Put the fonts into ~/.fonts and execute fc-cache.
 
 To test if everything is working as expected, go to ./font-preview and
 run ./gen.sh
