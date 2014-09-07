@@ -30,6 +30,10 @@ Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the credentials.
 
 Install TeXlive.
 
+https://www.tug.org/texlive/acquire-netinstall.html
+
+This is a sample configuration of the installer:
+
  <1> TEXDIR:       /home/amuse/texlive/2014
      support tree: /home/amuse/texlive/2014/texmf-dist
 
