@@ -738,5 +738,27 @@ sub in_tree_uri {
 
 }
 
+=head2 recent_changes_uri
+
+Return the git link if there the site is setup for that
+
+=cut
+
+sub recent_changes_uri {
+    my $self = shift;
+    my $site = $self->site;
+    if ($site->cgit_integration && $site->repo_is_under_git) {
+        my $path = File::Spec->abs2rel($self->f_full_path_name,
+                                       $site->repo_root);
+        # probably we have to tweak this if running under windows, but
+        # so far not a problem.
+        my $site_id = $site->id;
+        return "/git/$site_id/log/$path";
+    }
+    else {
+        return;
+    }
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

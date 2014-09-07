@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 18;
+use Test::More tests => 21;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -103,4 +103,20 @@ ok ($uri);
 
 ok (@logs == 6, "Two new revisions");
 like $logs[0]->message, qr/Begin editing/, "No published found";
+
+my $text = $site->titles->find({ f_class => 'text',
+                                 uri => 'first-test' });
+
+ok($text, "Text found");
+is ($text->recent_changes_uri, undef, "No recent_changes_uri");
+
+$site->cgit_integration(1);
+$site->update;
+
+$text = $site->titles->find({ f_class => 'text',
+                              uri => 'first-test' });
+
+
+is ($text->recent_changes_uri, '/git/0gitz0/log/f/ft/first-test.muse',
+    "URI for cgit is ok");
 

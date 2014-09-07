@@ -132,7 +132,9 @@ And in your repo directory, mark the repository for export:
 
 amuse@localhost:~/amusewiki/repo$ for i in */.git ; do touch $i/git-daemon-export-ok; done
 
-If you want a "recent change" page, you need to setup cgit.
+If you want a "recent change" page, you need to setup cgit and then
+set the checkbox on the "Recent changes" in the site configuration
+panel.
 
 Install fcgiwrap:
 

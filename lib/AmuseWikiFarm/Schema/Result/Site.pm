@@ -151,6 +151,13 @@ __PACKAGE__->table("site");
   is_nullable: 1
   size: 255
 
+=head2 cgit_integration
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 multilanguage
 
   data_type: 'varchar'
@@ -323,6 +330,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "specials_label",
   { data_type => "varchar", is_nullable => 1, size => 255 },
+  "cgit_integration",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "multilanguage",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "bb_page_limit",
@@ -518,8 +527,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-16 17:24:45
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CK26Fzfq9NuvboVHiRskvA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-09-07 15:50:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lM8KKskHS9Wm+aHRPu48uA
 
 =head2 other_sites
 
@@ -1685,6 +1694,7 @@ sub update_from_params {
     # otherwise 0
     my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
                        logo_with_sitename
+                       cgit_integration
                        twoside nocoverpage/);
     foreach my $boolean (@booleans) {
         if (delete $params->{$boolean}) {

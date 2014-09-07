@@ -40,6 +40,9 @@ CREATE TABLE site (
        catalog_label VARCHAR(255),
        specials_label VARCHAR(255),
 
+       -- cgit integration
+       cgit_integration INTEGER(1) NOT NULL DEFAULT 0,
+
        -- boolean for multilanguage
        multilanguage VARCHAR(255) NOT NULL DEFAULT '',
 

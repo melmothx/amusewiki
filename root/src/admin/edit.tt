@@ -413,6 +413,17 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.cgit_integration %]checked="checked"[% END %]
+                 name="cgit_integration" />
+          [% loc('Recent changes') %]
+        </label>
+      </div>
+    </div>
+
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
