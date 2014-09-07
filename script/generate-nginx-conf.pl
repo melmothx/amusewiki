@@ -31,6 +31,7 @@ if (-f $cgit_path) {
     $cgit = <<"EOF";
 
     location /git/ {
+        access_log /var/log/nginx/amusewiki.log $logformat;
         fastcgi_split_path_info ^/git()(.*);
         fastcgi_param   PATH_INFO       \$fastcgi_path_info;
         fastcgi_param   SCRIPT_FILENAME \$document_root/git/cgit.cgi;
