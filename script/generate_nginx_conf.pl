@@ -1,38 +1,5 @@
 #!/usr/bin/env perl
 
-#   location /git/ {
-#       root /srv/cgit/www;
-#        fastcgi_split_path_info ^/git()(.*);
-#        fastcgi_param PATH_INFO       $fastcgi_path_info;
-#        fastcgi_param  SCRIPT_FILENAME $document_root/cgit.cgi;        
-#        fastcgi_param  SCRIPT_NAME     $fastcgi_script_name;
-#        fastcgi_param  REQUEST_METHOD      $request_method;
-#        fastcgi_param  CONTENT_TYPE        $content_type;
-#        fastcgi_param  CONTENT_LENGTH      $content_length;
-#
-#        fastcgi_param  REQUEST_URI     $request_uri;
-#        fastcgi_param  DOCUMENT_URI        $document_uri;
-#        fastcgi_param  DOCUMENT_ROOT       $document_root;
-#        fastcgi_param  SERVER_PROTOCOL     $server_protocol;
-#        
-#        fastcgi_param  GATEWAY_INTERFACE   CGI/1.1;
-#        fastcgi_param  SERVER_SOFTWARE     nginx/$nginx_version;
-#        
-#        fastcgi_param  REMOTE_ADDR     $remote_addr;
-#        fastcgi_param  REMOTE_PORT     $remote_port;
-#        fastcgi_param  SERVER_ADDR     $server_addr;
-#        fastcgi_param  SERVER_PORT     $server_port;
-#        fastcgi_param  SERVER_NAME     $server_name;
-#        
-#        fastcgi_param  HTTPS           $https;
-#        fastcgi_param   QUERY_STRING    $args;
-#        fastcgi_param   HTTP_HOST       $server_name;
-#
-#        fastcgi_pass    unix:/var/run/fcgiwrap.socket;
-#
-#    }
-
-
 use strict;
 use warnings;
 use utf8;
@@ -40,6 +7,10 @@ use lib 'lib';
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile/;
 use Cwd;
+use Getopt::Long;
+
+my $logformat = 'combined';
+GetOptions (logformat => \$logformat) or die;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -50,7 +21,7 @@ my @vhosts = $schema->resultset('Vhost')->search(
                                                 )->all;
 my $hosts = join("\n" . (" " x 16), map { $_->name } @vhosts);
 
-my $cgit_path = catfile(qw/root git cgi-bin cgit.cgi/);
+my $cgit_path = catfile(qw/root git cgit.cgi/);
 
 my $cgit = "";
 
@@ -62,7 +33,7 @@ if (-f $cgit_path) {
     location /git/ {
         fastcgi_split_path_info ^/git()(.*);
         fastcgi_param   PATH_INFO       \$fastcgi_path_info;
-        fastcgi_param   SCRIPT_FILENAME \$document_root/git/cgi-bin/cgit.cgi;
+        fastcgi_param   SCRIPT_FILENAME \$document_root/git/cgit.cgi;
         fastcgi_param   SCRIPT_NAME     \$fastcgi_script_name;
         include fastcgi_params;
         fastcgi_pass    unix:/var/run/fcgiwrap.socket;
@@ -110,7 +81,7 @@ $cgit
         expires max;
     }
     location \@proxy {
-        access_log /var/log/nginx/library.log hitcount;
+        access_log /var/log/nginx/amusewiki.log $logformat;
         include /etc/nginx/fastcgi_params;
         fastcgi_param SCRIPT_NAME '';
         fastcgi_param PATH_INFO   \$fastcgi_script_name;

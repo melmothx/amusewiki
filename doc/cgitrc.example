@@ -1,0 +1,6 @@
+root-title=AmuseWiki
+root-desc=Projects hosted on this server
+css=/static/cgit/cgit.css
+logo=/static/cgit/cgit.png
+virtual-root=/git
+enable-index-owner=0

@@ -22,6 +22,10 @@ root/static/js/ckeditor*
 root/static/js/*.zip
 root/static/images/font-preview/*.pdf
 root/static/images/font-preview/*.png
+root/static/cgit/*
+root/git/*
+root/uploads/*
+opt/*
 staging/*
 !staging/README.txt
 log/jobs/*.log

@@ -3,4 +3,4 @@ Disallow: /edit/
 Disallow: /bookbuilder/
 Disallow: /bookbuilder
 Disallow: /search
-
+Disallow: /git/
