@@ -163,6 +163,15 @@
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
+      [% IF (cgit_link = text.recent_changes_uri) %]
+      <span id="filehistory">
+        <a href="[% c.uri_for(cgit_link) %]" rel="nofollow">
+          <img src="[% c.uri_for('/static/images/diff.png') %]"
+               alt="[% loc('Recent changes') %]"
+               title="[% loc('Recent changes') %]"
+               class="pdfmyicons" /></a>
+      </span>
+      [% END %]
       [% IF c.user_exists || site.human_can_edit %]
       <form action="[% c.uri_for(text.full_edit_uri) %]"
             id="text-edit-button" name="text-edit-button" style="display:inline">
@@ -173,15 +182,6 @@
           <span style="display:none">Edit this text</span>
         </button>
       </form>
-      [% END %]
-      [% IF (cgit_link = text.recent_changes_uri) %]
-      <span id="filehistory">
-        <a href="[% c.uri_for(cgit_link) %]" rel="nofollow">
-          <img src="[% c.uri_for('/static/images/diff.png') %]"
-               alt="[% loc('Recent changes') %]"
-               title="[% loc('Recent changes') %]"
-               class="pdfmyicons" /></a>
-      </span>
       [% END %]
       <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
             id="book-builder-add-text"
