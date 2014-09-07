@@ -43,7 +43,12 @@ use Cwd;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my $hosts = join("\n" . (" " x 16), map { $_->name } $schema->resultset('Vhost')->all);
+my @vhosts = $schema->resultset('Vhost')->search(
+                                                 {},
+                                                 { order_by => [qw/site_id
+                                                                   name/]}
+                                                )->all;
+my $hosts = join("\n" . (" " x 16), map { $_->name } @vhosts);
 
 my $cgit_path = catfile(qw/root git cgi-bin cgit.cgi/);
 
