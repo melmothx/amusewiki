@@ -14,7 +14,7 @@ __PACKAGE__->load_namespaces;
 # Created by DBIx::Class::Schema::Loader v0.07039 @ 2014-01-18 18:28:55
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:leb09wxTyDnkkszlT5Je0A
 
-our $VERSION = '0.97';
+our $VERSION = '0.992';
 
 __PACKAGE__->load_components('Schema::Config');
 
