@@ -11,7 +11,7 @@ use Getopt::Long;
 
 my $gitpath = '/var/cache/git/';
 
-GetOptions(gitpath => \$gitpath);
+GetOptions('gitpath=s' => \$gitpath);
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 

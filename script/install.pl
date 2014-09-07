@@ -146,7 +146,7 @@ print <<"EOF";
 All done, please configure the webserver. If you use nginx, you can
 execute:
 
- ./script/generate_nginx_conf.pl
+ ./script/generate-nginx-conf.pl
 
 which will print out a suitable configuration for nginx.
 

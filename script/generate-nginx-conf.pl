@@ -10,7 +10,7 @@ use Cwd;
 use Getopt::Long;
 
 my $logformat = 'combined';
-GetOptions (logformat => \$logformat) or die;
+GetOptions ('logformat=s' => \$logformat) or die;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
