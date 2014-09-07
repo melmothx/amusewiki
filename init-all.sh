@@ -5,8 +5,15 @@ cd `dirname $0`
 
 if [ "$1" == "" ]; then
     echo "Usage: $0 [ start | stop | restart | reboot ]"
-    exit
+    exit 2
 fi
+
+if [ ! -f "lib/AmuseWikiFarm.pm" ]; then
+    echo "In the wrong directory!";
+    exit 2
+fi
+
+mkdir -p opt/cache
 
 start_all () {
 	./init-fcgi.pl start

@@ -92,6 +92,7 @@ __PACKAGE__->config(
         INCLUDE_PATH => [
             __PACKAGE__->path_to('root', 'src'),
            ],
+        COMPILE_DIR => __PACKAGE__->path_to(qw/opt cache tt/),
        },
    );
 
@@ -142,6 +143,7 @@ __PACKAGE__->config(
     'Plugin::Session' => {
         expires => 60 * 60 * 24 * 30, # 30 days for expiration
         verify_address => 1,
+        storage => __PACKAGE__->path_to(qw/opt cache session/),
     },
 );
 
