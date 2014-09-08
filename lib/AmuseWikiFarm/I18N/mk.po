@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-02 19:19+0200\n"
+"PO-Revision-Date: 2014-09-08 20:39+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -24,6 +24,7 @@ msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"Веќе постои слика за насловната страница, но можеш да ја замениш со друга"
 
 #: root/src/edit/edit.tt:392
 msgid ""
@@ -194,7 +195,7 @@ msgstr "Корекција за повезот во милиметри (допо
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "Табаци од 16 страници кои треба да се свиткаат двапати"
 
 #: root/src/admin/edit.tt:35
 msgid "Blog"
@@ -480,6 +481,9 @@ msgstr "Датотеката е вчитана!"
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
+"Вметни празни страници пред последната страница доколку недостигаат страници "
+"за да\n"
+" се пополни табакот."
 
 #: root/src/edit/edit.tt:474
 msgid "First Author and Second Author"
@@ -886,7 +890,7 @@ msgstr "Име"
 
 #: root/src/bookbuilder/index.tt:179
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Не генерирај содржина"
 
 #: root/src/edit/revs.tt:67
 msgid "New revision"
@@ -992,6 +996,9 @@ msgid ""
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Страниците не се средени: првиот лист ја содржи првата и втората страница, "
+"вториот лист\n"
+" третата и четвртата итн. Не се добива буклет."
 
 #: root/src/bookbuilder/index.tt:238
 msgid ""
@@ -1003,6 +1010,15 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Страниците се организирани на начин да се добие буклет, во еден или повеќе "
+"табаци, кои треба да се свиткаат на половина. Ако има повеќе табаци, треба "
+"некако да ги\n"
+" споиш за да добиеш книжуле. Со оваа опција можеш да ја одредиш\n"
+" големината на табаците. Тоа може да биде некоја одредена вредност (4, 8, "
+"16\n"
+" итн.), или целиот текст во еден табак или некоја вредност која системот\n"
+" ќе ја пресмета за да го намали бројот на бели страници кои треба да се "
+"додадат."
 
 #: root/src/edit/edit.tt:269 root/src/edit/edit.tt:313
 msgid "Paragraphs"
@@ -1152,7 +1168,7 @@ msgstr "Избери фонт"
 
 #: root/src/bookbuilder/index.tt:250
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Избери ја големината на табакот"
 
 #: root/src/edit/edit.tt:278
 msgid "Poetry, bibliographies, plays, code"
@@ -1423,7 +1439,7 @@ msgstr "Целосен HTML (за печатење)"
 
 #: root/src/tasks/display.tt:102
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Статична страница без javascript"
 
 #: root/src/admin/jobs.tt:12 root/src/console/unpublished.tt:12
 #: root/src/tasks/display.tt:10 root/src/tasks/display.tt:41
@@ -1493,7 +1509,7 @@ msgstr "Текстови"
 
 #: root/src/admin/edit.tt:411
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "Логото го содржи името на сајтот"
 
 #: root/src/bookbuilder/index.tt:68
 msgid "The name is always required, but used only if there are multiple texts."
@@ -1535,7 +1551,7 @@ msgstr "Корисникот ќе има исто ниво на пристап �
 
 #: root/src/bookbuilder/index.tt:259
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Целата книга во еден единствен табак"
 
 #: root/src/console/translations.tt:21
 msgid "These texts are missing the unique id."
