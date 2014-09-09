@@ -92,7 +92,9 @@ __PACKAGE__->config(
         INCLUDE_PATH => [
             __PACKAGE__->path_to('root', 'src'),
            ],
-        COMPILE_DIR => __PACKAGE__->path_to(qw/opt cache tt/),
+        # not sure this is really a good idea, found some weirdnesses, like
+        # stale i18n
+        # COMPILE_DIR => __PACKAGE__->path_to(qw/opt cache tt/),
        },
    );
 
