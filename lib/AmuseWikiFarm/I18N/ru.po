@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-09 11:09+0200\n"
+"PO-Revision-Date: 2014-09-09 20:59+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.9\n"
 
 #: root/src/edit/edit.tt:315
 msgid "A blank line (or more blank lines) starts a new paragraph."
@@ -26,7 +26,7 @@ msgstr ""
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
-msgstr ""
+msgstr "Обложка уже добавлена, но Вы можете загрузить другую"
 
 #: root/src/edit/edit.tt:392
 msgid ""
@@ -79,6 +79,7 @@ msgstr "Бумага А6 (также подходит для электронн�
 #: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
+"Прошлое редактирвоание в процессе. Можете сравнить отличия и продолжать"
 
 #: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:18
 #: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:12
@@ -185,7 +186,7 @@ msgstr "Ошибочный запрос"
 
 #: root/src/admin/edit.tt:253
 msgid "Bare HTML, needed by the application"
-msgstr ""
+msgstr "Чистый HTML, необходим для приложения"
 
 #: root/src/admin/edit.tt:332 root/src/bookbuilder/index.tt:132
 msgid "Binding correction in millimeters (additional inner margin)"
@@ -195,7 +196,7 @@ msgstr "Учёт ширины переплёта в мм (дополнитель
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "Блоки из 16 страниц будут сложены дважды и скреплены"
 
 #: root/src/admin/edit.tt:35
 msgid "Blog"
@@ -211,7 +212,7 @@ msgstr "Конструктор книг"
 
 #: root/src/admin/edit.tt:179
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Лимит страницы конструктора книг (целое)"
 
 #: root/src/bookbuilder/index.tt:277
 msgid "Build it"
@@ -253,7 +254,7 @@ msgstr "Глава"
 
 #: root/src/macros.tt:9
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Глава. Только для выделения глав в книгах"
 
 #: root/src/edit/edit.tt:264
 msgid "Cheatsheet for the markup"
@@ -310,11 +311,11 @@ msgstr "Создать новую специальную страницу"
 
 #: root/src/console/alias_display.tt:59
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Создать связь между темами"
 
 #: root/src/console/alias_display.tt:27
 msgid "Create an author alias"
-msgstr ""
+msgstr "Создать связь между авторами"
 
 #: root/src/admin/list.tt:80
 msgid "Create new site"
@@ -471,7 +472,7 @@ msgstr "Пример"
 
 #: root/src/console/alias_display.tt:91
 msgid "Existing redirections"
-msgstr ""
+msgstr "Существующее перенаправление"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:297
 msgid "File uploaded!"
@@ -481,6 +482,7 @@ msgstr "Файл загружен!"
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
+"Добавить пустые страницы перед последней страницей, если тетрадки неполные."
 
 #: root/src/edit/edit.tt:474
 msgid "First Author and Second Author"
@@ -523,7 +525,7 @@ msgstr "Начинать текст с самой первой страницы 
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
-msgstr ""
+msgstr "Для авторов и тем. Вы можете создать их здесь"
 
 #: root/src/edit/edit.tt:372
 msgid "Force a line break."
@@ -547,7 +549,7 @@ msgstr "Полный список текстов"
 
 #: root/src/admin/edit.tt:159
 msgid "Full site canonical URL, including protocol"
-msgstr ""
+msgstr "Полная ссылка на оригинальный сайт, включая протокол"
 
 #: root/src/search/index.tt:7 root/src/search/index.tt:91
 msgid "Full text search"
@@ -771,7 +773,7 @@ msgstr "Список создаётся с помощью пробела пер�
 
 #: root/src/admin/edit.tt:47 root/src/admin/list.tt:16
 msgid "Locale"
-msgstr ""
+msgstr "Локаль"
 
 #: root/src/user/login.tt:16
 msgid "Log in"
@@ -835,7 +837,7 @@ msgstr "Об отсутствующих символах будет сообще
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:203
 msgid "Missing redirection"
-msgstr ""
+msgstr "Отсутствующие перенаправления"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:70
 msgid "Missing username or password"
@@ -875,7 +877,7 @@ msgstr "Имя"
 
 #: root/src/bookbuilder/index.tt:179
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Не создавать содержание"
 
 #: root/src/edit/revs.tt:67
 msgid "New revision"
@@ -980,6 +982,8 @@ msgid ""
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Порядок страниц не меняется. Первый лист содержит страницы 1 и 2, второй - 3 "
+"и 4, и т.д."
 
 #: root/src/bookbuilder/index.tt:238
 msgid ""
@@ -991,6 +995,12 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Порядок страниц изменяется и они группируются в тетрадки, которые потом "
+"складываются пополам. Если у вас несколько тетрадок, Вам надо будет скрепить "
+"их. С помощью этой опции Вы можете выбрать количество страниц в тетрадках. "
+"Вы можете задать фиксированное значение  (4,8,16 и т.д.) или выбрать "
+"оптимальное, чтобы уменьшить количество пустых страниц. Также всю книгу "
+"можно поместить  в одну тетрадку."
 
 #: root/src/edit/edit.tt:269 root/src/edit/edit.tt:313
 msgid "Paragraphs"
@@ -1134,7 +1144,7 @@ msgstr "Пожалуйста выберите понравившийся шри�
 
 #: root/src/bookbuilder/index.tt:250
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Пожалуйста выберите количество тетрадок"
 
 #: root/src/edit/edit.tt:278
 msgid "Poetry, bibliographies, plays, code"
@@ -1405,7 +1415,7 @@ msgstr "HTML (подходит для печати)"
 
 #: root/src/tasks/display.tt:102
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Статическая страница без javascript"
 
 #: root/src/admin/jobs.tt:12 root/src/console/unpublished.tt:12
 #: root/src/tasks/display.tt:10 root/src/tasks/display.tt:41
@@ -1518,7 +1528,7 @@ msgstr "У пользователя будет такой же доступ ка
 
 #: root/src/bookbuilder/index.tt:259
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Вся книга - это одна тетрадка"
 
 #: root/src/console/translations.tt:21
 msgid "These texts are missing the unique id."
