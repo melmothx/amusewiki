@@ -167,8 +167,8 @@
       <span id="filehistory">
         <a href="[% c.uri_for(cgit_link) %]" rel="nofollow">
           <img src="[% c.uri_for('/static/images/diff.png') %]"
-               alt="[% loc('Recent changes') %]"
-               title="[% loc('Recent changes') %]"
+               alt="[% loc('View history') %]"
+               title="[% loc('View history') %]"
                class="pdfmyicons" /></a>
       </span>
       [% END %]

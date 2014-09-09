@@ -419,7 +419,7 @@
           <input type="checkbox"
                  [% IF esite.cgit_integration %]checked="checked"[% END %]
                  name="cgit_integration" />
-          [% loc('Recent changes') %]
+          [% loc('View history') %] (CGIT)
         </label>
       </div>
     </div>

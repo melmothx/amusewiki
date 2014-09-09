@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-02 18:55+0200\n"
+"PO-Revision-Date: 2014-09-09 11:07+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -1259,10 +1259,6 @@ msgstr "Aleatorio"
 msgid "Reason"
 msgstr "Razón"
 
-#: root/src/admin/edit.tt:422 root/src/text.tt:170 root/src/text.tt:171
-msgid "Recent changes"
-msgstr ""
-
 #: root/src/edit/diff.tt:33
 msgid "Recheck"
 msgstr "Volver a revisar"
@@ -1771,6 +1767,10 @@ msgstr ""
 #: root/src/macros.tt:27
 msgid "Verbatim block"
 msgstr "Bloque de código"
+
+#: root/src/admin/edit.tt:422 root/src/text.tt:170 root/src/text.tt:171
+msgid "View history"
+msgstr "Ver historial"
 
 #: root/src/admin/list.tt:21
 msgid "Virtual hosts"

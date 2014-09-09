@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-08 21:14+0200\n"
+"PO-Revision-Date: 2014-09-09 11:10+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -1257,10 +1257,6 @@ msgstr "Случајна страница"
 msgid "Reason"
 msgstr "Причина"
 
-#: root/src/admin/edit.tt:422 root/src/text.tt:170 root/src/text.tt:171
-msgid "Recent changes"
-msgstr ""
-
 #: root/src/edit/diff.tt:33
 msgid "Recheck"
 msgstr "Провери повторно"
@@ -1761,6 +1757,10 @@ msgstr ""
 #: root/src/macros.tt:27
 msgid "Verbatim block"
 msgstr "Предформатиран дел"
+
+#: root/src/admin/edit.tt:422 root/src/text.tt:170 root/src/text.tt:171
+msgid "View history"
+msgstr "Историја"
 
 #: root/src/admin/list.tt:21
 msgid "Virtual hosts"
