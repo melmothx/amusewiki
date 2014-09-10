@@ -169,7 +169,7 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:226
+#: root/src/bookbuilder/index.tt:234
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -191,7 +191,7 @@ msgstr ""
 msgid "Bookbuilder page limit (integer)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:277
+#: root/src/bookbuilder/index.tt:285
 msgid "Build it"
 msgstr ""
 
@@ -217,6 +217,10 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:71
 msgid "Changes applied"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:348
+msgid "Changes committed, thanks!"
 msgstr ""
 
 #. (revision.title.uri)
@@ -445,7 +449,7 @@ msgstr ""
 msgid "File uploaded!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:271
+#: root/src/bookbuilder/index.tt:279
 msgid "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 
@@ -481,7 +485,7 @@ msgstr ""
 msgid "For texts from the internet use"
 msgstr ""
 
-#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:186
+#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:194
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 
@@ -559,7 +563,7 @@ msgstr ""
 msgid "I am human"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:194
+#: root/src/bookbuilder/index.tt:202
 msgid "I want an imposed (ready to print) PDF"
 msgstr ""
 
@@ -571,7 +575,7 @@ msgstr ""
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:200
+#: root/src/bookbuilder/index.tt:208
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
@@ -827,7 +831,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:179
+#: root/src/bookbuilder/index.tt:187
 msgid "Never generate a table of content"
 msgstr ""
 
@@ -855,7 +859,7 @@ msgstr ""
 msgid "No text found!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:322
+#: root/src/bookbuilder/index.tt:330
 msgid "No text was added yet"
 msgstr ""
 
@@ -922,14 +926,14 @@ msgstr ""
 msgid "Page not found!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:213
+#: root/src/bookbuilder/index.tt:221
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:238
+#: root/src/bookbuilder/index.tt:246
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1059,7 +1063,7 @@ msgstr ""
 msgid "Please select the desired fonts"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:250
+#: root/src/bookbuilder/index.tt:258
 msgid "Please select the signature size:"
 msgstr ""
 
@@ -1164,6 +1168,10 @@ msgstr ""
 
 #: root/src/layout.tt:299
 msgid "Remotes"
+msgstr ""
+
+#: root/src/bookbuilder/index.tt:158
+msgid "Remove cover image"
 msgstr ""
 
 #: root/src/user/create.tt:46 root/src/user/edit.tt:33
@@ -1427,7 +1435,7 @@ msgstr ""
 msgid "The user will have the same your level of access"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:259
+#: root/src/bookbuilder/index.tt:267
 msgid "The whole book in as single signature"
 msgstr ""
 
@@ -1544,11 +1552,11 @@ msgstr ""
 msgid "Triple bars"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:338
+#: root/src/bookbuilder/index.tt:346
 msgid "Try a random text if unsure"
 msgstr ""
 
-#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:172
+#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:180
 msgid "Two side layout"
 msgstr ""
 
@@ -1572,7 +1580,7 @@ msgstr ""
 msgid "Unpublished texts"
 msgstr ""
 
-#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:280 root/src/user/edit.tt:39
+#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288 root/src/user/edit.tt:39
 msgid "Update"
 msgstr ""
 
@@ -1593,7 +1601,7 @@ msgid "Use it in the body as"
 msgstr ""
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:257
+#: root/src/bookbuilder/index.tt:265
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
@@ -1638,13 +1646,13 @@ msgstr ""
 msgid "Where does this text come from?"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:156
+#: root/src/bookbuilder/index.tt:164
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:327
+#: root/src/bookbuilder/index.tt:335
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1679,7 +1687,7 @@ msgstr ""
 msgid "You are logged in now!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:332
+#: root/src/bookbuilder/index.tt:340
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"

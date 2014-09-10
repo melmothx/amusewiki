@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-09 11:08+0200\n"
+"PO-Revision-Date: 2014-09-10 22:07+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -185,7 +185,7 @@ msgstr "Goli HTML, zahtjeva ga aplikacija"
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Korekcija za uvez u milimetrima (dodatna unutarnja margina)"
 
-#: root/src/bookbuilder/index.tt:226
+#: root/src/bookbuilder/index.tt:234
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -207,7 +207,7 @@ msgstr "Napravi zbirku"
 msgid "Bookbuilder page limit (integer)"
 msgstr "Maksimalni broj stranica zbirke"
 
-#: root/src/bookbuilder/index.tt:277
+#: root/src/bookbuilder/index.tt:285
 msgid "Build it"
 msgstr "Stvori"
 
@@ -234,6 +234,10 @@ msgstr "Izmjene"
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:71
 msgid "Changes applied"
 msgstr "Unesene izmjene"
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:348
+msgid "Changes committed, thanks!"
+msgstr "Izmjene izvršene, hvala"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
@@ -471,7 +475,7 @@ msgstr "Postojeća preusmjeravanja"
 msgid "File uploaded!"
 msgstr "Datoteka učitana!"
 
-#: root/src/bookbuilder/index.tt:271
+#: root/src/bookbuilder/index.tt:279
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
@@ -511,7 +515,7 @@ msgstr "Fusnote"
 msgid "For texts from the internet use"
 msgstr "Za tekstove pronađene na internetu upotrijebi"
 
-#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:186
+#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:194
 msgid "For texts without a table of content, start text on the very first page"
 msgstr "Ako tekst nema poglavlja, počni tekst na prvoj stranici (bez omotnice)"
 
@@ -589,7 +593,7 @@ msgstr "Kako izabrati lozinku"
 msgid "I am human"
 msgstr "Ja sam ljudsko biće"
 
-#: root/src/bookbuilder/index.tt:194
+#: root/src/bookbuilder/index.tt:202
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Želim PDF spreman za štampu"
 
@@ -602,7 +606,7 @@ msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Ako je osoba koja je napravila izmijene navela mail, uključena je u CC listu"
 
-#: root/src/bookbuilder/index.tt:200
+#: root/src/bookbuilder/index.tt:208
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ako želiš prijelom teksta izaberi obrazac"
 
@@ -873,7 +877,7 @@ msgstr "Moj opis"
 msgid "Name"
 msgstr "Ime"
 
-#: root/src/bookbuilder/index.tt:179
+#: root/src/bookbuilder/index.tt:187
 msgid "Never generate a table of content"
 msgstr "Ne generiraj sadržaj"
 
@@ -901,7 +905,7 @@ msgstr "Nema rezultata!"
 msgid "No text found!"
 msgstr "Nijedan tekst nije pronađen!"
 
-#: root/src/bookbuilder/index.tt:322
+#: root/src/bookbuilder/index.tt:330
 msgid "No text was added yet"
 msgstr "Još nije dodan nijedan tekst"
 
@@ -974,7 +978,7 @@ msgstr "PDF-ovi koji nisu na popisu %1 polja bit će pohranjeni ali zanemareni."
 msgid "Page not found!"
 msgstr "Stranica nije pronađena!"
 
-#: root/src/bookbuilder/index.tt:213
+#: root/src/bookbuilder/index.tt:221
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
@@ -983,7 +987,7 @@ msgstr ""
 "Stranice nisu sređene: prvi list ima prvu i drugu stranicu, drugi list\n"
 "treću i četvrtu, itd. Ne dobiva se buklet."
 
-#: root/src/bookbuilder/index.tt:238
+#: root/src/bookbuilder/index.tt:246
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1142,7 +1146,7 @@ msgstr "Izaberi"
 msgid "Please select the desired fonts"
 msgstr "Izaberi fontove"
 
-#: root/src/bookbuilder/index.tt:250
+#: root/src/bookbuilder/index.tt:258
 msgid "Please select the signature size:"
 msgstr "Izaberi veličinu svezaka"
 
@@ -1252,6 +1256,10 @@ msgstr "Povezani projekti"
 #: root/src/layout.tt:299
 msgid "Remotes"
 msgstr "Udaljeni repozitorij"
+
+#: root/src/bookbuilder/index.tt:158
+msgid "Remove cover image"
+msgstr "Ukloni naslovnu sliku"
 
 #: root/src/user/create.tt:46 root/src/user/edit.tt:33
 msgid "Repeat email"
@@ -1525,7 +1533,7 @@ msgstr "Naslov dokumenta. Jedino obavezno polje."
 msgid "The user will have the same your level of access"
 msgstr "Korisnik će imati tvoju istu razinu pristupa."
 
-#: root/src/bookbuilder/index.tt:259
+#: root/src/bookbuilder/index.tt:267
 msgid "The whole book in as single signature"
 msgstr "Cijela knjiga u jednom jedinom svesku"
 
@@ -1649,11 +1657,11 @@ msgstr "Ukupno stranica"
 msgid "Triple bars"
 msgstr "Trostruka traka (\"|||\")"
 
-#: root/src/bookbuilder/index.tt:338
+#: root/src/bookbuilder/index.tt:346
 msgid "Try a random text if unsure"
 msgstr "Pokušaj sa slučajnim tekstom ako nisi siguran"
 
-#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:172
+#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:180
 msgid "Two side layout"
 msgstr "Obostrani prijelom"
 
@@ -1678,7 +1686,7 @@ msgstr "Jedinstveni ID za tekst"
 msgid "Unpublished texts"
 msgstr "Neobjavljeni tekstovi"
 
-#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:280
+#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39
 msgid "Update"
 msgstr "Ažuriraj"
@@ -1700,7 +1708,7 @@ msgid "Use it in the body as"
 msgstr "Koristi je u tekstu kao"
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:257
+#: root/src/bookbuilder/index.tt:265
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 "Kod prijeloma teksta koristi optimizirane sveske sa %1 stranica za svaki."
@@ -1752,7 +1760,7 @@ msgstr "Virtualni hostovi, po jedan za redak"
 msgid "Where does this text come from?"
 msgstr "Odakle dolazi ovaj tekst?"
 
-#: root/src/bookbuilder/index.tt:156
+#: root/src/bookbuilder/index.tt:164
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
@@ -1760,7 +1768,7 @@ msgstr ""
 "Širina naslovne slike u postotku širine teksta. Pusti prazno ako ne trebaš "
 "naslovnu sliku"
 
-#: root/src/bookbuilder/index.tt:327
+#: root/src/bookbuilder/index.tt:335
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1797,7 +1805,7 @@ msgstr "Već si prijavljen"
 msgid "You are logged in now!"
 msgstr "Sada si prijavljen!"
 
-#: root/src/bookbuilder/index.tt:332
+#: root/src/bookbuilder/index.tt:340
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"

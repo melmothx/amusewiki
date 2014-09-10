@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-09 11:08+0200\n"
+"PO-Revision-Date: 2014-09-10 22:08+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -188,7 +188,7 @@ msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 "Correzione per la rilegatura in millimetri (margine interno addizionale)"
 
-#: root/src/bookbuilder/index.tt:226
+#: root/src/bookbuilder/index.tt:234
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -210,7 +210,7 @@ msgstr "Impaginatore"
 msgid "Bookbuilder page limit (integer)"
 msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 
-#: root/src/bookbuilder/index.tt:277
+#: root/src/bookbuilder/index.tt:285
 msgid "Build it"
 msgstr "Impagina"
 
@@ -237,6 +237,10 @@ msgstr "Modifiche"
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:71
 msgid "Changes applied"
 msgstr "Modifiche applicate"
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:348
+msgid "Changes committed, thanks!"
+msgstr "Cambiamenti completati, grazie"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
@@ -476,7 +480,7 @@ msgstr "Redirezioni esistenti"
 msgid "File uploaded!"
 msgstr "File caricato!"
 
-#: root/src/bookbuilder/index.tt:271
+#: root/src/bookbuilder/index.tt:279
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
@@ -516,7 +520,7 @@ msgstr "Note a piè di pagina"
 msgid "For texts from the internet use"
 msgstr "Per testi trovati su internet puoi usare"
 
-#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:186
+#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:194
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 "Per i testi senza un sommario, fai iniziare il testo sulla prima pagina"
@@ -595,7 +599,7 @@ msgstr "Come scegliere una password"
 msgid "I am human"
 msgstr "Sono umano"
 
-#: root/src/bookbuilder/index.tt:194
+#: root/src/bookbuilder/index.tt:202
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Voglio un PDF pronto per la stampa"
 
@@ -608,7 +612,7 @@ msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Se chi ha fatto la modifica ha fornito una mail, è inclusa nella lista CC"
 
-#: root/src/bookbuilder/index.tt:200
+#: root/src/bookbuilder/index.tt:208
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Se vuoi l'impaginazione, scegli uno schema"
 
@@ -883,7 +887,7 @@ msgstr "La mia descrizione"
 msgid "Name"
 msgstr "Nome"
 
-#: root/src/bookbuilder/index.tt:179
+#: root/src/bookbuilder/index.tt:187
 msgid "Never generate a table of content"
 msgstr "Non generare un sommario"
 
@@ -911,7 +915,7 @@ msgstr "Nessun risultato trovato!"
 msgid "No text found!"
 msgstr "Nessun testo trovato"
 
-#: root/src/bookbuilder/index.tt:322
+#: root/src/bookbuilder/index.tt:330
 msgid "No text was added yet"
 msgstr "Nessun testo è stato ancora aggiunto"
 
@@ -985,7 +989,7 @@ msgstr "I PDF non elencatine nella direttiva %1 saranno salvati ma ignorati."
 msgid "Page not found!"
 msgstr "Pagina non trovata!"
 
-#: root/src/bookbuilder/index.tt:213
+#: root/src/bookbuilder/index.tt:221
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
@@ -995,7 +999,7 @@ msgstr ""
 "il secondo pagina 3 e 4, ecc., una accanto all'altra. I fogli non\n"
 "vanno piegati."
 
-#: root/src/bookbuilder/index.tt:238
+#: root/src/bookbuilder/index.tt:246
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1157,7 +1161,7 @@ msgstr "Seleziona"
 msgid "Please select the desired fonts"
 msgstr "Seleziona il carattere desiderato"
 
-#: root/src/bookbuilder/index.tt:250
+#: root/src/bookbuilder/index.tt:258
 msgid "Please select the signature size:"
 msgstr "Seleziona la dimensione dei fascicoli:"
 
@@ -1267,6 +1271,10 @@ msgstr "Progetti correlati"
 #: root/src/layout.tt:299
 msgid "Remotes"
 msgstr "Archivi remoti"
+
+#: root/src/bookbuilder/index.tt:158
+msgid "Remove cover image"
+msgstr "Rimuovi immagine di copertina"
 
 #: root/src/user/create.tt:46 root/src/user/edit.tt:33
 msgid "Repeat email"
@@ -1542,7 +1550,7 @@ msgstr "Il titolo del documento. L'unico campo obbligatorio."
 msgid "The user will have the same your level of access"
 msgstr "L'utenza avrà lo stesso tuo livello di accesso"
 
-#: root/src/bookbuilder/index.tt:259
+#: root/src/bookbuilder/index.tt:267
 msgid "The whole book in as single signature"
 msgstr "L'intero libro in un unico fascicolo"
 
@@ -1671,11 +1679,11 @@ msgstr "Pagine totali"
 msgid "Triple bars"
 msgstr "Triple barre"
 
-#: root/src/bookbuilder/index.tt:338
+#: root/src/bookbuilder/index.tt:346
 msgid "Try a random text if unsure"
 msgstr "Prova con un testo casuale, se in dubbio"
 
-#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:172
+#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:180
 msgid "Two side layout"
 msgstr "Impaginazione fronte-retro"
 
@@ -1700,7 +1708,7 @@ msgstr "Identificativo del testo"
 msgid "Unpublished texts"
 msgstr "Testi non pubblicati"
 
-#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:280
+#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39
 msgid "Update"
 msgstr "Aggiorna"
@@ -1722,7 +1730,7 @@ msgid "Use it in the body as"
 msgstr "Usalo nel corpo del testo con"
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:257
+#: root/src/bookbuilder/index.tt:265
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Durante l'impaginazione, usa blocchi ottimizzati di %s pagine ciascuno"
 
@@ -1773,7 +1781,7 @@ msgstr "Host virtuali, uno per riga"
 msgid "Where does this text come from?"
 msgstr "Da dove proviene il testo?"
 
-#: root/src/bookbuilder/index.tt:156
+#: root/src/bookbuilder/index.tt:164
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
@@ -1781,7 +1789,7 @@ msgstr ""
 "Larghezza dell'immagine di copertina in percentuale della larghezza del "
 "corpo del testo, lascia in bianco se non ne hai bisogno"
 
-#: root/src/bookbuilder/index.tt:327
+#: root/src/bookbuilder/index.tt:335
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1819,7 +1827,7 @@ msgstr "Hai già effettuato l'accesso"
 msgid "You are logged in now!"
 msgstr "Hai effettuato l'accesso!"
 
-#: root/src/bookbuilder/index.tt:332
+#: root/src/bookbuilder/index.tt:340
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"

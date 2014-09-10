@@ -155,7 +155,7 @@
     <div class="checkbox">
       <label>
         <input type="checkbox" name="removecover" value="1" id="removecover" />
-        [% loc('Remove cover') %]
+        [% loc('Remove cover image') %]
       </label>
     </div>
     [% END %]

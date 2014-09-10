@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-10 21:21+0200\n"
+"PO-Revision-Date: 2014-09-10 22:03+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -189,7 +189,7 @@ msgstr "Чистый HTML, необходим для приложения"
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Учёт ширины переплёта в мм (дополнительные внутренние поля)"
 
-#: root/src/bookbuilder/index.tt:226
+#: root/src/bookbuilder/index.tt:234
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -211,7 +211,7 @@ msgstr "Конструктор книг"
 msgid "Bookbuilder page limit (integer)"
 msgstr "Лимит страницы конструктора книг (целое)"
 
-#: root/src/bookbuilder/index.tt:277
+#: root/src/bookbuilder/index.tt:285
 msgid "Build it"
 msgstr "Создать"
 
@@ -238,6 +238,10 @@ msgstr "Изменения"
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:71
 msgid "Changes applied"
 msgstr "Изменения применены"
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:348
+msgid "Changes committed, thanks!"
+msgstr "Изменения опубликованы, спасибо!"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
@@ -475,7 +479,7 @@ msgstr "Существующее перенаправление"
 msgid "File uploaded!"
 msgstr "Файл загружен!"
 
-#: root/src/bookbuilder/index.tt:271
+#: root/src/bookbuilder/index.tt:279
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
@@ -514,7 +518,7 @@ msgstr "Сноски"
 msgid "For texts from the internet use"
 msgstr "Для текстов из интернета используйте"
 
-#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:186
+#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:194
 msgid "For texts without a table of content, start text on the very first page"
 msgstr "Начинать текст с самой первой страницы (для текстов без содержания)"
 
@@ -592,7 +596,7 @@ msgstr "Как сменить пароль"
 msgid "I am human"
 msgstr "Я человек"
 
-#: root/src/bookbuilder/index.tt:194
+#: root/src/bookbuilder/index.tt:202
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Сделать спуск полос (готовый к печати PDF)"
 
@@ -604,7 +608,7 @@ msgstr "Id"
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:200
+#: root/src/bookbuilder/index.tt:208
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Если вам нужен спуск полос, выберите схему"
 
@@ -872,7 +876,7 @@ msgstr "Моё описание"
 msgid "Name"
 msgstr "Имя"
 
-#: root/src/bookbuilder/index.tt:179
+#: root/src/bookbuilder/index.tt:187
 msgid "Never generate a table of content"
 msgstr "Не создавать содержание"
 
@@ -900,7 +904,7 @@ msgstr "Ничего не найдено!"
 msgid "No text found!"
 msgstr "Текст не найден!"
 
-#: root/src/bookbuilder/index.tt:322
+#: root/src/bookbuilder/index.tt:330
 msgid "No text was added yet"
 msgstr "Ни один текст не был добавлен"
 
@@ -973,7 +977,7 @@ msgstr "PDF не прописанные в %1 будут сохранены но
 msgid "Page not found!"
 msgstr "Страница не найдена"
 
-#: root/src/bookbuilder/index.tt:213
+#: root/src/bookbuilder/index.tt:221
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
@@ -982,7 +986,7 @@ msgstr ""
 "Порядок страниц не меняется. Первый лист содержит страницы 1 и 2, второй - 3 "
 "и 4, и т.д."
 
-#: root/src/bookbuilder/index.tt:238
+#: root/src/bookbuilder/index.tt:246
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1139,7 +1143,7 @@ msgstr "Пожалуйста выберите"
 msgid "Please select the desired fonts"
 msgstr "Пожалуйста выберите понравившийся шрифт"
 
-#: root/src/bookbuilder/index.tt:250
+#: root/src/bookbuilder/index.tt:258
 msgid "Please select the signature size:"
 msgstr "Пожалуйста выберите количество тетрадок"
 
@@ -1249,6 +1253,10 @@ msgstr "На других языках"
 #: root/src/layout.tt:299
 msgid "Remotes"
 msgstr ""
+
+#: root/src/bookbuilder/index.tt:158
+msgid "Remove cover image"
+msgstr "Удалить изображение"
 
 #: root/src/user/create.tt:46 root/src/user/edit.tt:33
 msgid "Repeat email"
@@ -1523,7 +1531,7 @@ msgstr "Название текста. Обязательно для указа�
 msgid "The user will have the same your level of access"
 msgstr "У пользователя будет такой же доступ как и у вас"
 
-#: root/src/bookbuilder/index.tt:259
+#: root/src/bookbuilder/index.tt:267
 msgid "The whole book in as single signature"
 msgstr "Вся книга - это одна тетрадка"
 
@@ -1648,11 +1656,11 @@ msgstr "Страниц всего"
 msgid "Triple bars"
 msgstr "Три вертикальные линии"
 
-#: root/src/bookbuilder/index.tt:338
+#: root/src/bookbuilder/index.tt:346
 msgid "Try a random text if unsure"
 msgstr "Попробуйте случайный текст."
 
-#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:172
+#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:180
 msgid "Two side layout"
 msgstr "Внутренние и внешние поля разной величины"
 
@@ -1677,7 +1685,7 @@ msgstr "Уникальный ID для текста"
 msgid "Unpublished texts"
 msgstr "Неопубликованные тексты"
 
-#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:280
+#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39
 msgid "Update"
 msgstr "Обновить"
@@ -1699,7 +1707,7 @@ msgid "Use it in the body as"
 msgstr "Использовать это в тексте как"
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:257
+#: root/src/bookbuilder/index.tt:265
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 "При спуске полос использовать оптимальные тетрадки по %s страниц в каждой"
@@ -1751,7 +1759,7 @@ msgstr ""
 msgid "Where does this text come from?"
 msgstr "Откуда этот текст?"
 
-#: root/src/bookbuilder/index.tt:156
+#: root/src/bookbuilder/index.tt:164
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
@@ -1759,7 +1767,7 @@ msgstr ""
 "Ширина обложки в процентном отношении к блоку. Оставьте поле пустым, если "
 "вам не нужна обложка"
 
-#: root/src/bookbuilder/index.tt:327
+#: root/src/bookbuilder/index.tt:335
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1797,7 +1805,7 @@ msgstr "Вы уже вошли"
 msgid "You are logged in now!"
 msgstr "Вы уже вошли"
 
-#: root/src/bookbuilder/index.tt:332
+#: root/src/bookbuilder/index.tt:340
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"

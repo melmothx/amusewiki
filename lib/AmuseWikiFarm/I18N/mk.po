@@ -191,7 +191,7 @@ msgstr "Гол HTML, го бара апликацијата"
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Корекција за повезот во милиметри (дополнителна внатрешна маргина)"
 
-#: root/src/bookbuilder/index.tt:226
+#: root/src/bookbuilder/index.tt:234
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -213,7 +213,7 @@ msgstr "Направи збирка"
 msgid "Bookbuilder page limit (integer)"
 msgstr "Максимален број на страници на збирката"
 
-#: root/src/bookbuilder/index.tt:277
+#: root/src/bookbuilder/index.tt:285
 msgid "Build it"
 msgstr "Направи"
 
@@ -240,6 +240,10 @@ msgstr "Измени"
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:71
 msgid "Changes applied"
 msgstr "Внесени измени"
+
+#: lib/AmuseWikiFarm/Controller/Edit.pm:348
+msgid "Changes committed, thanks!"
+msgstr ""
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
@@ -477,7 +481,7 @@ msgstr "Постоечки пренасочувања"
 msgid "File uploaded!"
 msgstr "Датотеката е вчитана!"
 
-#: root/src/bookbuilder/index.tt:271
+#: root/src/bookbuilder/index.tt:279
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
@@ -518,7 +522,7 @@ msgstr "Фусноти"
 msgid "For texts from the internet use"
 msgstr "За текстови од интернет употреби"
 
-#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:186
+#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:194
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 "Доколку текстот нема содржина, започни го текстот на првата страница (без "
@@ -598,7 +602,7 @@ msgstr "Како да избереш лозинка"
 msgid "I am human"
 msgstr "Јас сум човек"
 
-#: root/src/bookbuilder/index.tt:194
+#: root/src/bookbuilder/index.tt:202
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Сакам PDF подготвен за печатење"
 
@@ -611,7 +615,7 @@ msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Ако личноста која направила измени навела e-mail, вклучена е во CC листата"
 
-#: root/src/bookbuilder/index.tt:200
+#: root/src/bookbuilder/index.tt:208
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ако сакаш прелом на текстот, избери образец"
 
@@ -888,7 +892,7 @@ msgstr "Мој опис"
 msgid "Name"
 msgstr "Име"
 
-#: root/src/bookbuilder/index.tt:179
+#: root/src/bookbuilder/index.tt:187
 msgid "Never generate a table of content"
 msgstr "Не генерирај содржина"
 
@@ -916,7 +920,7 @@ msgstr "Нема резултати!"
 msgid "No text found!"
 msgstr "Не е пронајден ниту еден текст!"
 
-#: root/src/bookbuilder/index.tt:322
+#: root/src/bookbuilder/index.tt:330
 msgid "No text was added yet"
 msgstr "Сѐ уште не е додаден ниту еден текст"
 
@@ -990,7 +994,7 @@ msgstr ""
 msgid "Page not found!"
 msgstr "Страницата не е пронајдена!"
 
-#: root/src/bookbuilder/index.tt:213
+#: root/src/bookbuilder/index.tt:221
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
@@ -999,7 +1003,7 @@ msgstr ""
 "Страниците не се средени: првиот лист ја содржи првата и втората\n"
 "страница, вториот лист третата и четвртата итн. Не се добива буклет."
 
-#: root/src/bookbuilder/index.tt:238
+#: root/src/bookbuilder/index.tt:246
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1163,7 +1167,7 @@ msgstr "Избери"
 msgid "Please select the desired fonts"
 msgstr "Избери фонт"
 
-#: root/src/bookbuilder/index.tt:250
+#: root/src/bookbuilder/index.tt:258
 msgid "Please select the signature size:"
 msgstr "Избери ја големината на табакот"
 
@@ -1273,6 +1277,10 @@ msgstr "Поврзани проекти"
 #: root/src/layout.tt:299
 msgid "Remotes"
 msgstr "Оддалечен репозиториум"
+
+#: root/src/bookbuilder/index.tt:158
+msgid "Remove cover image"
+msgstr ""
 
 #: root/src/user/create.tt:46 root/src/user/edit.tt:33
 msgid "Repeat email"
@@ -1546,7 +1554,7 @@ msgstr "Наслов на документот. Единственото зад�
 msgid "The user will have the same your level of access"
 msgstr "Корисникот ќе има исто ниво на пристап како и ти"
 
-#: root/src/bookbuilder/index.tt:259
+#: root/src/bookbuilder/index.tt:267
 msgid "The whole book in as single signature"
 msgstr "Целата книга во еден единствен табак"
 
@@ -1673,11 +1681,11 @@ msgstr "Вкупно страници"
 msgid "Triple bars"
 msgstr "Тројна лента"
 
-#: root/src/bookbuilder/index.tt:338
+#: root/src/bookbuilder/index.tt:346
 msgid "Try a random text if unsure"
 msgstr "Обиди се со случаен текст доколку не си сигурен"
 
-#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:172
+#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:180
 msgid "Two side layout"
 msgstr "Двостран прелом"
 
@@ -1702,7 +1710,7 @@ msgstr "Единствен ID за текстот"
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
-#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:280
+#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39
 msgid "Update"
 msgstr "Ажурирај"
@@ -1724,7 +1732,7 @@ msgid "Use it in the body as"
 msgstr "Користи го во текстот како"
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:257
+#: root/src/bookbuilder/index.tt:265
 msgid "Use optimized signatures with %1 pages each"
 msgstr "При прелом на текстот користи оптимиризани табаци со %s страници секој"
 
@@ -1774,7 +1782,7 @@ msgstr "Виртуелни хостови, по еден во ред"
 msgid "Where does this text come from?"
 msgstr "Од каде е овој текст?"
 
-#: root/src/bookbuilder/index.tt:156
+#: root/src/bookbuilder/index.tt:164
 msgid ""
 "Width of the cover image in percent of the text block width,\n"
 "        leave it blank if you don't need a cover image"
@@ -1782,7 +1790,7 @@ msgstr ""
 "Ширина на насловната слика процентуално во однос на ширината на текстот. "
 "Остави празно ако не ти треба насловна слика."
 
-#: root/src/bookbuilder/index.tt:327
+#: root/src/bookbuilder/index.tt:335
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1820,7 +1828,7 @@ msgstr "Веќе си пријавен"
 msgid "You are logged in now!"
 msgstr "Сега си пријавен!"
 
-#: root/src/bookbuilder/index.tt:332
+#: root/src/bookbuilder/index.tt:340
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
