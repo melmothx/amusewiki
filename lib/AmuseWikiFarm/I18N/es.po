@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-09 11:07+0200\n"
+"PO-Revision-Date: 2014-09-10 23:54+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -14,6 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. ($filename)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:509
+msgid "%1 doesn't exist"
+msgstr "%1 no existe"
 
 #: root/src/edit/edit.tt:315
 msgid "A blank line (or more blank lines) starts a new paragraph."
@@ -297,6 +302,10 @@ msgstr "Calculando las diferencias"
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:158
 msgid "Couldn't add the text"
 msgstr "No se pudo agregar el texto"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:848
+msgid "Couldn't automatically generate the uri!"
+msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:95
 msgid "Couldn't build that"
@@ -1476,6 +1485,10 @@ msgstr ""
 "Ese encabezado despublicará el texto y pondrá una\n"
 "  redirección en su lugar, y será listado aquí"
 
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:859
+msgid "Such an uri already exists"
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/User.pm:231
 msgid "Such username already exists"
 msgstr "Ese nombre de usuaria/o ya existe"
@@ -1718,6 +1731,11 @@ msgstr "ID único para el texto"
 #: lib/AmuseWikiFarm/Controller/Console.pm:104
 msgid "Unpublished texts"
 msgstr "Textos no publicados"
+
+#. ($mime)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:524
+msgid "Unsupported file type %1"
+msgstr ""
 
 #: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39

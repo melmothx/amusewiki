@@ -14,6 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. ($filename)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:509
+msgid "%1 doesn't exist"
+msgstr ""
+
 #: root/src/edit/edit.tt:315
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
@@ -271,6 +276,10 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:138 lib/AmuseWikiFarm/Controller/BookBuilder.pm:158
 msgid "Couldn't add the text"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:848
+msgid "Couldn't automatically generate the uri!"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:95
@@ -1357,6 +1366,10 @@ msgid ""
 "  redirection in place, and will be listed here"
 msgstr ""
 
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:859
+msgid "Such an uri already exists"
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/User.pm:231
 msgid "Such username already exists"
 msgstr ""
@@ -1578,6 +1591,11 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:104
 msgid "Unpublished texts"
+msgstr ""
+
+#. ($mime)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:524
+msgid "Unsupported file type %1"
 msgstr ""
 
 #: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288 root/src/user/edit.tt:39

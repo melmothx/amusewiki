@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-10 22:03+0200\n"
+"PO-Revision-Date: 2014-09-10 23:57+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -16,6 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.6.9\n"
+
+#. ($filename)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:509
+msgid "%1 doesn't exist"
+msgstr "%1 не существует"
 
 #: root/src/edit/edit.tt:315
 msgid "A blank line (or more blank lines) starts a new paragraph."
@@ -293,6 +298,10 @@ msgstr "Вычисление различий заняло"
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:158
 msgid "Couldn't add the text"
 msgstr "Нельзя добавить текст"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:848
+msgid "Couldn't automatically generate the uri!"
+msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:95
 msgid "Couldn't build that"
@@ -1448,6 +1457,10 @@ msgstr ""
 "Такой заголовок приведет к отмене публикации текста и применить "
 "перенаправление на месте, и будут перечислены здесь"
 
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:859
+msgid "Such an uri already exists"
+msgstr "Такое URI уже существует"
+
 #: lib/AmuseWikiFarm/Controller/User.pm:231
 msgid "Such username already exists"
 msgstr "Такое имя пользователя уже существует"
@@ -1684,6 +1697,11 @@ msgstr "Уникальный ID для текста"
 #: lib/AmuseWikiFarm/Controller/Console.pm:104
 msgid "Unpublished texts"
 msgstr "Неопубликованные тексты"
+
+#. ($mime)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:524
+msgid "Unsupported file type %1"
+msgstr "Неподдерживаемый формат файла %1"
 
 #: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39

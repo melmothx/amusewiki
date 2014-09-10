@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-10 22:07+0200\n"
+"PO-Revision-Date: 2014-09-10 23:55+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -15,6 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. ($filename)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:509
+msgid "%1 doesn't exist"
+msgstr "%1 ne postoji"
 
 #: root/src/edit/edit.tt:315
 msgid "A blank line (or more blank lines) starts a new paragraph."
@@ -289,6 +294,10 @@ msgstr "Za izračunavanje razlika bilo je potrebno"
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:158
 msgid "Couldn't add the text"
 msgstr "Nije bilo moguće dodati tekst"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:848
+msgid "Couldn't automatically generate the uri!"
+msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:95
 msgid "Couldn't build that"
@@ -1451,6 +1460,10 @@ msgstr ""
 "Ovakvo zaglavlje briše tekst iz arhive i zamjenjuje ga preusmjeravanjem, a "
 "vidjet će se ovdje."
 
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:859
+msgid "Such an uri already exists"
+msgstr "Ovaj URI već postoji"
+
 #: lib/AmuseWikiFarm/Controller/User.pm:231
 msgid "Such username already exists"
 msgstr "Korisničko ime već postoji"
@@ -1685,6 +1698,11 @@ msgstr "Jedinstveni ID za tekst"
 #: lib/AmuseWikiFarm/Controller/Console.pm:104
 msgid "Unpublished texts"
 msgstr "Neobjavljeni tekstovi"
+
+#. ($mime)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:524
+msgid "Unsupported file type %1"
+msgstr ""
 
 #: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39

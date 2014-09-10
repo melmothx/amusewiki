@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-09 11:10+0200\n"
+"PO-Revision-Date: 2014-09-10 23:56+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -14,6 +14,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.7\n"
+
+#. ($filename)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:509
+msgid "%1 doesn't exist"
+msgstr "%1 не постои"
 
 #: root/src/edit/edit.tt:315
 msgid "A blank line (or more blank lines) starts a new paragraph."
@@ -295,6 +300,10 @@ msgstr "За пресметување на разликите беше потр�
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:158
 msgid "Couldn't add the text"
 msgstr "Не беше возможно да се додаде текстот"
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:848
+msgid "Couldn't automatically generate the uri!"
+msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:95
 msgid "Couldn't build that"
@@ -1472,6 +1481,10 @@ msgstr ""
 "Вакво заглавие го брише текстот од архивата и го заменува со пренасочување, "
 "а ќе се гледа овде."
 
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:859
+msgid "Such an uri already exists"
+msgstr "Такво URI веќе постои"
+
 #: lib/AmuseWikiFarm/Controller/User.pm:231
 msgid "Such username already exists"
 msgstr "Такво корисничко име веќе постои"
@@ -1709,6 +1722,11 @@ msgstr "Единствен ID за текстот"
 #: lib/AmuseWikiFarm/Controller/Console.pm:104
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
+
+#. ($mime)
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:524
+msgid "Unsupported file type %1"
+msgstr ""
 
 #: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39
