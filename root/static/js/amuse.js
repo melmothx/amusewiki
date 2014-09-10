@@ -6,6 +6,8 @@ $(document).ready(function(){
         }
     });
     $("div#thework table").addClass("table table-bordered");
+    /* preview as well */
+    $("div#htmltextbody table").addClass("table table-bordered");
     $(".center p").removeClass("text-justify").addClass("text-center");
     $(".right p").removeClass("text-justify").addClass("text-right");
     if ($("div.table-of-contents").length > 0) {
