@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 135;
+use Test::More tests => 137;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -191,3 +191,10 @@ like $uri_suffixed->title->uri, qr/-hr$/s,
   "Long titles get the suffix for multilanguage";
 
 
+my ($rev, $error) = $site->create_new_text({
+                                            title => '   ',
+                                            lang => 'it',
+                                           }, 'text');
+
+ok(!$rev, "no revision created");
+is $error, "Couldn't generate the uri!", "Error found";

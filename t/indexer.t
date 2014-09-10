@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 63;
+use Test::More tests => 64;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Date::Parse qw/str2time/;
@@ -25,6 +25,8 @@ my $string = "à&amp;è";
 my $utf8 = encode("utf-8", $string);
 is(decode_entities($string), "à&è", "encode entities is behaving correctly");
 is(decode_entities($utf8), encode("utf-8", "à&è"));
+
+is(muse_naming_algo("\n\n           "), '', "whitespace return empty string");
 
 is(muse_naming_algo("CrimethInc. Политика для тех, кому слишком скучно"),
    "crimethinc-politika-dlya-teh-komu-slishkom-skuchno",

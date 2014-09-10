@@ -497,6 +497,7 @@ sub muse_naming_algo {
             }
         }
     }
+    return '' unless @cleaned;
     # remove the trailing -
     while ($cleaned[$#cleaned] eq "-") {
         pop @cleaned;
