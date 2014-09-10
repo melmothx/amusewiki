@@ -151,6 +151,14 @@
       </label>
       <input id="coverimage" name="coverimage" type="file" />
     </p>
+    [% IF bb.coverfile %]
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="removecover" value="1" id="removecover" />
+        [% loc('Remove cover') %]
+      </label>
+    </div>
+    [% END %]
     <p>
       <label for="coverwidth">
         [% loc("Width of the cover image in percent of the text block width,

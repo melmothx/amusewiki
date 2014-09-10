@@ -507,6 +507,9 @@ sub import_from_params {
             warn $error->message;
         };
     }
+    if ($params{removecover}) {
+        $self->coverfile(undef);
+    }
 }
 
 sub _accepted_params {

@@ -170,7 +170,8 @@ the tree.
 * DONE script to import the accounts
   CLOSED: [2014-09-03 mer 16:21]
 
-* TODO Button to remove the image from the bookbuilder.
+* DONE Button to remove the image from the bookbuilder.
+  CLOSED: [2014-09-10 mer 21:56]
 * DONE Translation of: "Changes committed, thanks!".
   CLOSED: [2014-09-10 mer 21:37]
 * DONE Style on table preview
