@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-10 22:08+0200\n"
+"PO-Revision-Date: 2014-09-10 22:24+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -240,7 +240,7 @@ msgstr "Modifiche applicate"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:348
 msgid "Changes committed, thanks!"
-msgstr "Cambiamenti completati, grazie"
+msgstr "Cambiamenti effettuati e in attesa di revisione, grazie"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)

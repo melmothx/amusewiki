@@ -167,7 +167,7 @@ $mech->click;
 $mech->content_contains("#cat geo lines war");
 $mech->form_with_fields('body');
 ok($mech->click('commit'));
-$mech->content_contains('Changes committed, thanks');
+$mech->content_contains('Cambiamenti effettuati e in attesa di revisione, grazie');
 
 mkdir $site->path_for_site_files unless -d $site->path_for_site_files;
 copy(catfile(qw/t atr-lexicon.json/), $site->lexicon_file);
