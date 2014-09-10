@@ -291,7 +291,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
             $c->log->debug("Exists!") if -f $upload->tempname;
 
             if (my $error = $revision->add_attachment($upload->tempname)) {
-                $c->flash(error_msg => $c->loc($error));
+                $c->flash(error_msg => $c->loc(@$error));
             }
             else {
                 $c->flash(status_msg => $c->loc("File uploaded!"));

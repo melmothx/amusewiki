@@ -493,15 +493,21 @@ sub commit_version {
 =head2 add_attachment($filename)
 
 Given the filename as first argument, copy it into the working
-directory, taking care of not overwrite anything. Return 0 on success,
-the error otherwise.
+directory, taking care of not overwrite anything. Return nothing on
+success, otherwise an arrayref to pass to the localizer.
+
+if (my $error = $revision->add_attachment) {
+   return $c->loc(@$error);
+}
 
 =cut
 
 sub add_attachment {
     my ($self, $filename) = @_;
     die "Missing argument" unless $filename;
-    return "$filename doesn't exist" unless -f $filename;
+    # PO:
+    # loc("[_1] doesn't exist", $filename);
+    return [ "[_1] doesn't exist", $filename ] unless -f $filename;
     my $mime = mimetype($filename) || "";
     my $ext;
     if ($mime eq 'image/jpeg') {
@@ -514,7 +520,9 @@ sub add_attachment {
         $ext = '.pdf';
     }
     else {
-        return "Unsupported file type $mime";
+        # PO:
+        # loc("Unsupported file type [_1]", $mime);
+        return [ "Unsupported file type [_1]", $mime ];
     }
     my $base = muse_attachment_basename_for($self->muse_uri);
     my $suffix = 0;
@@ -533,7 +541,7 @@ sub add_attachment {
 
     # and finally insert the thing in the db
     my $info = muse_parse_file_path($target, $self->working_dir, 1);
-    return "Couldn't retrieve info from $target" unless $info;
+    die "Couldn't retrieve info from $target (this shouldn't happen)" unless $info;
 
     $info->{uri} = $info->{f_name} . $info->{f_suffix};
 
@@ -544,7 +552,7 @@ sub add_attachment {
     # and let it crash on race conditions
     $self->site->attachments->create($info);
 
-    return 0;
+    return;
 }
 
 =head2 destination_paths

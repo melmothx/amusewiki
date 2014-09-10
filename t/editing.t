@@ -149,7 +149,7 @@ foreach my $att (qw/png jpg pdf/) {
     my $obfuscated = File::Spec->catfile(t => files => 'xx' . $att . 'grbgd');
     copy ($attachment, $obfuscated);
     ok (-f $obfuscated);
-    is 0, $revision->add_attachment($obfuscated), "Attachment successful";
+    is $revision->add_attachment($obfuscated), undef, "Attachment successful";
     unlink $obfuscated;
 }
 

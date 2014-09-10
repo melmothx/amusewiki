@@ -848,12 +848,14 @@ sub create_new_text {
         $uri = muse_naming_algo(substr($uri, 0, 90) . ' ' . $params->{lang});
     }
     unless ($uri) {
+        # loc("Couldn't automatically generate the uri!");
         return undef, "Couldn't generate the uri!";
     }
     # and store it in the params
     $params->{uri} = $uri;
 
     if ($self->titles->find({ uri => $uri, f_class => $f_class })) {
+        # loc("Such an uri already exists");
         return undef, "Such an uri already exists";
     }
     return $self->import_text_from_html_params($params, $f_class);
