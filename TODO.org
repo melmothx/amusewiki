@@ -201,6 +201,34 @@ multisite thing.
 
 Cache the results for the full topics, titles, authors.
 
+* TODO ToC fixing
+
+>>> 3) why TOC is not on the right side of the text like in old AL?
+>> To be friendly with the persons using phones to browse the library. This
+>> way no space is lost and th button is always visible on the bar.
+
+> but we can combine it. or make that button shown up only when the
+> screen is too small.
+
+* TODO Add text
+
+>> I've been fighting with the crowded top bar too much. The current state
+>> is the best I could do. To non-logged in the bar looks almost empty, but
+>> then you login and it's totally full.
+>>
+> now i logged in and don't think that is too much. and non-logged user
+> is our main auditory, so i think it's really important to gave them
+> this "add text" button on visible space.
+
+* TODO Cheatsheet
+
+>> Also I've made the changes for the scrollable cheatseet and the cover
+>> removal. Let me know if it works as expected.
+> when you are clicking on the cheatsheet the page is jumping. and will
+> be better if i scroll the page down and cheatsheet is moving down (or
+> up) too.
+
+
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files
