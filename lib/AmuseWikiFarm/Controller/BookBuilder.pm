@@ -74,9 +74,11 @@ sub index :Chained('root') :PathPart('') :Args(0) {
     my %params = %{ $c->request->body_parameters };
     if ($params{build} || $params{update}) {
         $bb->import_from_params(%params);
-        foreach my $upload ($c->request->upload('coverimage')) {
-            $c->log->debug("Adding file: " . $upload->tempname . ' => '. $upload->size );
-            $bb->add_file($upload->tempname);
+        unless ($params{removecover}) {
+            foreach my $upload ($c->request->upload('coverimage')) {
+                $c->log->debug("Adding file: " . $upload->tempname . ' => '. $upload->size );
+                $bb->add_file($upload->tempname);
+            }
         }
         $c->forward('save_session');
     }
