@@ -233,9 +233,8 @@ translator, then encode it back.
 
 sub loc_name {
     my ($self, $locale) = @_;
-    my $site = $self->site;
     my $name = $self->name;
-    if ($locale && $site->is_able_to_translate) {
+    if ($locale && $self->site->is_able_to_translate) {
         my $out =  $self->site->lexicon_translate($locale, decode_entities($name));
         return encode_entities($out, q{<>&"'});
     }

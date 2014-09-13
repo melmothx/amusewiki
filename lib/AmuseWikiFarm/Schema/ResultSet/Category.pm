@@ -33,6 +33,8 @@ sub active_only_by_type {
                          },
                          {
                           order_by => [qw/sorting_pos name/],
+                          join => 'site',
+                          prefetch => 'site',
                          });
 }
 
