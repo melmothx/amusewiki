@@ -13,14 +13,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
 
-if ($ENV{RELEASE_TESTING}) {
-    plan tests => 13;
-}
-else {
-    plan skip_all => "Skipping bootstrapping";
-    exit;
-}
-
+plan tests => 13;
 
 if (-f 'test.db') {
     unlink 'test.db' or die $!;
