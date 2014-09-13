@@ -14,7 +14,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use AmuseWikiFarm::Schema;
 
 if ($ENV{RELEASE_TESTING}) {
-    plan tests => 11;
+    plan tests => 13;
 }
 else {
     plan skip_all => "Skipping bootstrapping";
@@ -49,6 +49,14 @@ my $libr_role = $schema->resultset('Role')->create({ role => 'librarian' });
 $mr_root->add_to_roles($root_role);
 
 ok($mr_root->id);
+
+foreach my $pdflogo (qw/logo-yu.pdf logo-en.pdf/) {
+    my $exit_code = system(kpsewhich => $pdflogo);
+    is $exit_code, 0, "$pdflogo found can proceed"
+      or die "No $pdflogo found by kpsewhich, needed by tests, "
+        . "please install it into texmf kpsewhich $pdflogo."
+          . "The files can be found in t/texmf-files\n";
+}
 
 my %repos = ('0blog0' => {
                           id => '0blog0',
