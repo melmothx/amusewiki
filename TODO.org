@@ -177,6 +177,30 @@ the tree.
 * DONE Style on table preview
   CLOSED: [2014-09-10 mer 21:37]
 
+
+* TODO Committed message
+
+If you have no account and edit text, after you click "commit" you go
+to the page with "Changes committed, thanks!". Somebody can be
+confused if willn't see changes immediately, so will be better to
+write "Changes committed, thanks! After editor review you will be able
+to see it on the website." And then redirect to the main page.
+
+* TODO Preview positioning
+
+When you click to "preview" page is reloading and you see
+text-editor. preview should be at the top of the page. if preview text
+is really big, maybe you can make scroll box for it. 
+
+* TODO HTTPS support
+
+Unclear if needed to enforce it or not. Pain in the ass for the
+multisite thing.
+
+* TODO Optimization
+
+Cache the results for the full topics, titles, authors.
+
 * Future releases
 * TODO The jobber should remove old completed jobs
   This implies also cleaning up the served files
