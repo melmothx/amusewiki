@@ -40,7 +40,7 @@
     <p id="authors">
       <strong>[% loc('Authors') %]:</strong>
       [% FOREACH author IN text.authors -%]
-      <a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>
+      <a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
     </p>
     [% END %]
@@ -62,9 +62,9 @@
       [%- IF site.multilanguage -%]
       {[% topic.loc_name(current_locale_code) %]}
       [%- ELSE -%]
-      [% topic.name %]
+      [%- topic.name -%]
       [%- END -%]
-      </a>
+      [%- # -%]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
     </p>
     [% END %]
