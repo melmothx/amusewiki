@@ -26,6 +26,15 @@ Create a database for the application. E.g., for mysql:
   
   mysql> grant all privileges on amuse.* to amuse@localhost identified by XXX
 
+Or, for postgres:
+
+Login as root.
+
+ su - postgres
+ psql
+ create user amuse with password 'XXXX';
+ create database amuse owner amuse;
+
 Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the credentials.
 
 Install TeXlive.
@@ -62,10 +71,13 @@ The SIL charis font is not shipped by texlive, but it's usually
 packaged by your distro. Or download it at
 http://www.sil.org/resources/software_fonts/charis-sil
 
-Put the fonts into ~/.fonts and execute fc-cache.
+Put the fonts into ~/.fonts and execute fc-cache. (You can find more detailed instructions in BUILD-SERVER.txt).
 
 To test if everything is working as expected, go to ./font-preview and
 run ./gen.sh
+
+Disregard the copious output of missing characters, this is fine (as
+we use this to test them).
 
 In ./root/static/js download and unpack ckeditor:
 
@@ -96,6 +108,22 @@ If you run under nginx, run:
 This will generate a suitable nginx configuration and print it to the
 standard output.
 
+I usually do some nginx tweaks:
+
+In the http { } stanza in nginx.conf:
+
+client_max_body_size 8m;
+log_format hitcount '$server_name $host [$time_local] "$request" $status - $bytes_sent "$http_referer" "$http_user_agent"';
+access_log hitcount;
+
+And in the type { } stanza in mime.types I add:
+
+  application/epub+zip  epub;
+
+And tweak the text/plain defintion adding "muse"
+
+   text/plain	txt muse;
+
 Once webserver is configured, you can start the application.
 
   ./init-all start
@@ -104,6 +132,12 @@ Login as the root account, configure your site, then you can bootstrap
 it.
 
  ./script/bootstrap_archive.pl
+
+If you get this error:
+
+ Can't call method "getPageDimensions" on an undefined value at /...
+
+run the script script/patch-cam-pdf.sh
 
 
 OPTIONAL SETUP
