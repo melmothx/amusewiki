@@ -24,11 +24,11 @@
 [%- END                       -%]
 
 
-<ul class="list-group">
+<div class="list-group">
   [% WHILE (title = texts.next) %]
   [%- SET title_has_been_found = 1 -%]
-  <li class="list-group-item">
-    <a href="[% c.uri_for(title.full_uri) %]">[% title.title %]</a>
+    <a class="list-group-item"
+       href="[% c.uri_for(title.full_uri) %]"><strong>[% title.title %]</strong>
     [% IF title.author %]
       [% IF category.name != title.author %]
       — [% title.author %]
@@ -37,9 +37,9 @@
     [%- IF site.multilanguage -%]
     [[% title.lang %]]
     [%- END -%]
-  </li>
+    </a>
   [% END %]
-</ul>
+</div>
 
 [% UNLESS title_has_been_found %]
 <p>

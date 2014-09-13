@@ -7,12 +7,12 @@
 [%- # looks even worse                                            -%]
 <div class="row">
   <div class="col-sm-4">
-    <ul>
+    <div class="item-group">
 [%- SET inner_count = 0 -%]
 [%- FOREACH cat IN list -%]
 [%-     IF (inner_count && ((inner_count % 10) == 0)) -%]
 
-    </ul>
+    </div>
   </div>
 
 [%-       IF (inner_count % 30) == 0 -%]
@@ -21,18 +21,18 @@
 <div class="row">
 [%-       END -%]
   <div class="col-sm-4">
-    <ul>
+    <div class="item-group">
 [%-     END   -%]
 [%-   SET inner_count = inner_count + 1 -%]
 [%- # end of the column interpolation %]
-      <li class="list-group-item clearfix">
-        <a href="[%- c.uri_for(cat.full_uri) -%]">
+        <a href="[%- c.uri_for(cat.full_uri) -%]" class="list-group-item clearfix">
+          <strong>
           [%- cat.loc_name(current_locale_code) -%]
+          </strong>
+          <span class="badge">[%- cat.text_count -%]</span>
         </a>
-        <span class="badge">[%- cat.text_count -%]</span>
-      </li>
 [%- END       -%]
 
-    </ul>
+    </div>
   </div>
 </div>
