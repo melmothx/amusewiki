@@ -346,13 +346,21 @@
       [% loc("Try a random text if unsure") %]
     </a>
   </p>
-  <div>
-    <h3>1</h3>
-    <img src="[% c.uri_for('/static/images/bb-instructions-1.png') %]" />
-  </div>
-  <div>
-    <h3>2</h3>
-    <img src="[% c.uri_for('/static/images/bb-instructions-2.png') %]" />
+  <div class="row">
+    <div class="col-md-6">
+      <div class="center">
+        <h3>1</h3>
+        <img src="[% c.uri_for('/static/images/bb-instructions-1.png') %]"
+             width="350px" />
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="center">
+        <h3>2</h3>
+        <img src="[% c.uri_for('/static/images/bb-instructions-2.png') %]"
+             width="350px" />
+      </div>
+    </div>
   </div>
 </div>
 
