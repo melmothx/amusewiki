@@ -121,16 +121,16 @@
   </p>
 </div>
 
-<ul class="list-group">
+<div class="list-group">
   [% FOREACH res IN results %]
-  <li class="list-group-item clearfix">
-    <a href="[% c.uri_for(res.text.full_uri) %]">[% res.text.title %]</a>
+  <a href="[% c.uri_for(res.text.full_uri) %]"
+     class="list-group-item clearfix">[% res.text.title %]
     — [% res.text.author %]
     ([% res.relevance %]% [% loc("relevant") %])
     <span class="badge">[% res.rank %]</span>
-  </li>
+  </a>
   [% END %]
-</ul>
+</div>
 
 <ul class="pager">
   [% IF previous_page %]
