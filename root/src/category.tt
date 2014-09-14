@@ -25,12 +25,14 @@
 [%-     END   -%]
 [%-   SET inner_count = inner_count + 1 -%]
 [%- # end of the column interpolation %]
+       <div class="amw-listing-item">
         <a href="[%- c.uri_for(cat.full_uri) -%]" class="list-group-item clearfix">
           <strong>
           [%- cat.loc_name(current_locale_code) -%]
           </strong>
           <span class="badge">[%- cat.text_count -%]</span>
         </a>
+       </div>
 [%- END       -%]
 
     </div>

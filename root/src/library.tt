@@ -51,11 +51,13 @@
 </h3>
 <div class="list-group">
     [% ELSE %]
+  <div class="amw-listing-item">
     <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item">
       <strong>[% text.title %]</strong>
       [%- IF text.author %] — [% text.author -%][% END -%]
       [%- IF site.multilanguage -%] [[% text.lang %]][% END -%]
     </a>
+  </div>
     [% END %]
     [% END %]
 </div>

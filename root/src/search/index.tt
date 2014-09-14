@@ -123,12 +123,14 @@
 
 <div class="list-group">
   [% FOREACH res IN results %]
+  <div class="amw-listing-item">
   <a href="[% c.uri_for(res.text.full_uri) %]"
      class="list-group-item clearfix">[% res.text.title %]
     — [% res.text.author %]
     ([% res.relevance %]% [% loc("relevant") %])
     <span class="badge">[% res.rank %]</span>
   </a>
+  </div>
   [% END %]
 </div>
 

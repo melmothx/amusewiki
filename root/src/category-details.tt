@@ -27,6 +27,7 @@
 <div class="list-group">
   [% WHILE (title = texts.next) %]
   [%- SET title_has_been_found = 1 -%]
+  <div class="amw-listing-item">
     <a class="list-group-item"
        href="[% c.uri_for(title.full_uri) %]"><strong>[% title.title %]</strong>
     [% IF title.author %]
@@ -38,6 +39,7 @@
     [[% title.lang %]]
     [%- END -%]
     </a>
+  </div>
   [% END %]
 </div>
 

@@ -65,7 +65,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 11 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 12 }) %]" />
 
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
 
@@ -377,7 +377,7 @@
       </div>
     </div>
     </div>
-
+    <div>&nbsp;</div>
     <div id="footer" class="footer center">
       <a href="[% c.uri_for('/feed') %]" class="feed">
         [% loc('RSS feed') %]

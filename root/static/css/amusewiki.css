@@ -136,3 +136,7 @@ blockquote {
     height:500px;
     overflow-y:auto;
 }
+
+.amw-listing-item {
+    margin-bottom: 1px;
+}
