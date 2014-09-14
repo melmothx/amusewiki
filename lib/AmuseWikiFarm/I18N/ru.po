@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-10 23:57+0200\n"
+"PO-Revision-Date: 2014-09-14 00:28+0400\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -246,7 +246,9 @@ msgstr "Изменения применены"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:348
 msgid "Changes committed, thanks!"
-msgstr "Изменения опубликованы, спасибо!"
+msgstr ""
+"Изменения внесены, спасибо! После того, как администрация проверит текст, вы "
+"сможете увидеть изменения на сайте."
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
@@ -301,7 +303,7 @@ msgstr "Нельзя добавить текст"
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:848
 msgid "Couldn't automatically generate the uri!"
-msgstr ""
+msgstr "Невозможно автоматически создать URI"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:95
 msgid "Couldn't build that"
@@ -615,7 +617,7 @@ msgstr "Id"
 
 #: root/src/email/commit.tt:4
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
-msgstr ""
+msgstr "Если редактор указывает e-mail, то он добавляется в поле CC."
 
 #: root/src/bookbuilder/index.tt:208
 msgid "If you asked for imposition, select an imposition schema"
@@ -1459,7 +1461,7 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:859
 msgid "Such an uri already exists"
-msgstr "Такое URI уже существует"
+msgstr "Текст с таким URI уже существует. Вы можете указать свой URI"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:231
 msgid "Such username already exists"
@@ -1523,7 +1525,9 @@ msgstr "Для правки есть следующие сообщения"
 
 #: root/src/layout.tt:361
 msgid "The text was added to the bookbuilder"
-msgstr "Текст был добавлен в конструктор книг"
+msgstr ""
+"Текст был добавлен в конструктор книг. Вы можете перейти в него по этой "
+"ссылке или продолжить добавлять тексты"
 
 #: root/src/edit/edit.tt:487
 msgid ""
@@ -1855,7 +1859,7 @@ msgstr "Вы вышли"
 
 #: root/src/edit/revs.tt:10
 msgid "You may want to resume the editing of one of them"
-msgstr "Возможно вы захотите продолжить редактирование одного из них"
+msgstr "Возможно вы захотите продолжить редактирование одной из них"
 
 #. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
