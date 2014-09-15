@@ -569,6 +569,7 @@ use AmuseWikiFarm::Archive::BookBuilder;
 use JSON ();
 use Text::Amuse::Compile::Utils ();
 use HTML::Entities qw/encode_entities decode_entities/;
+use AmuseWikiFarm::Archive::Cache;
 
 =head2 repo_root_rel
 
@@ -1009,6 +1010,17 @@ sub collation_index {
 
 }
 
+=head2 cache
+
+Return a AmuseWikiFarm::Archive::Cache object with the site_id set.
+Handy to clear it.
+
+=cut
+
+sub cache {
+    my $self = shift;
+    return AmuseWikiFarm::Archive::Cache->new(site_id => $self->id);
+}
 
 =head2 index_file($path_to_file)
 
@@ -1054,6 +1066,8 @@ sub compile_and_index_files {
     }
     $self->collation_index;
     $self->static_indexes_generator->generate;
+    # clear the cache
+    $self->cache->clear_site_cache;
 }
 
 
