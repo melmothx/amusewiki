@@ -88,7 +88,7 @@ sub _build_cache {
     my $path = $self->cache_file;
     # try to load the cache
     my $cache;
-    eval { $cache = Storable::lock_retrieve($path) };
+    eval { $cache = Storable::retrieve($path) };
     if ($cache) {
         warn "Using the cache!\n";
         return $cache;
