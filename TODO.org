@@ -197,7 +197,8 @@ is really big, maybe you can make scroll box for it.
 Unclear if needed to enforce it or not. Pain in the ass for the
 multisite thing.
 
-* TODO Optimization
+* DONE Optimization
+  CLOSED: [2014-09-15 lun 15:22]
 
 Cache the results for the full topics, titles, authors.
 
