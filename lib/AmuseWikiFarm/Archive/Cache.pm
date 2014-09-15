@@ -96,7 +96,12 @@ sub _build_cache {
     else {
         warn "Not using the cache!\n";
         $cache = $self->populate_cache($path);
-        Storable::lock_nstore($cache, $path);
+        # wrap in eval to mitigate race conditions.
+        # Say we created the directory some lines ago, when calling cache_file,
+        # but in the meanwhile the cache is cleared.
+        # The thing would fail, because the is no parent directory. The eval
+        # would prevent the thing to crash, and the result will not be cached.
+        eval { Storable::lock_nstore($cache, $path) };
     }
     return $cache;
 }
