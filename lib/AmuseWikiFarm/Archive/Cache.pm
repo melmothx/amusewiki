@@ -179,6 +179,7 @@ sub populate_cache {
     else {
         die "Wrong type $type!";
     }
+    return $cache;
 }
 
 sub _cache_for_library {
