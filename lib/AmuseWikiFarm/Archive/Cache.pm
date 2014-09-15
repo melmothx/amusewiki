@@ -90,11 +90,9 @@ sub _build_cache {
     my $cache;
     eval { $cache = Storable::retrieve($path) };
     if ($cache) {
-        warn "Using the cache!\n";
         return $cache;
     }
     else {
-        warn "Not using the cache!\n";
         $cache = $self->populate_cache($path);
         # wrap in eval to mitigate race conditions.
         # Say we created the directory some lines ago, when calling cache_file,
