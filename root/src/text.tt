@@ -59,11 +59,7 @@
       </span>
       [% FOREACH topic IN text.topics -%]
       <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">
-      [%- IF site.multilanguage -%]
-      {[% site.lexicon_translate_html(current_locale_code, topic.name) %]}
-      [%- ELSE -%]
-      [%- topic.name -%]
-      [%- END -%]
+      [% site.lexicon_translate_html(current_locale_code, topic.name) %]
       [%- # -%]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
     </p>
