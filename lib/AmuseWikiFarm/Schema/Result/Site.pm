@@ -1378,6 +1378,9 @@ sub repo_find_tracked_files {
         my $abspath = $f->f_full_path_name;
         next unless $abspath;
 
+        # ignore files in the staging area
+        next unless $f->f_archive_rel_path;
+
         my $relpath = File::Spec->abs2rel($f->f_full_path_name, $root);
 
         if (muse_filepath_is_valid($relpath)) {

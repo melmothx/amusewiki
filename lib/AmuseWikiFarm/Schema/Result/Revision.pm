@@ -179,6 +179,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
 use Text::Amuse::Functions qw/muse_fast_scan_header/;
 use Text::Amuse::Preprocessor::Typography qw/get_typography_filter/;
 use Text::Amuse::Compile;
+use File::Path qw/remove_tree/;
 
 =head2 muse_body
 
@@ -236,7 +237,9 @@ sub muse_uri {
 }
 
 sub working_dir {
-    return shift->file_parsing('dir');
+    my $self = shift;
+    die "WTF?" unless $self->id;
+    return File::Spec->catfile($self->site->staging_dir, $self->id);
 }
 
 =head2 private files
@@ -804,9 +807,21 @@ and can't spawn further revisions.
 
 =cut
 
+
 sub delete {
     my $self = shift;
     my $title = $self->title;
+    # cleanup the db from the attached files we are going to delete
+    # and remove the tree
+    my $site = $self->site;
+    foreach my $file ($self->attached_files_paths) {
+        warn "Deleting $file from db";
+        if (my $att_row = $site->attachments->find_file($file)) {
+            $att_row->delete;
+        }
+    }
+    remove_tree($self->working_dir, { verbose => 1 });
+
     if ($title->can_spawn_revision) {
         return $self->next::method;
     }
