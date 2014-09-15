@@ -55,7 +55,7 @@
     <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item">
       <strong>[% text.title %]</strong>
       [%- IF text.author %] — [% text.author -%][% END -%]
-      [%- IF site.multilanguage -%] [[% text.lang %]][% END -%]
+      [%- IF site.multilanguage -%] <small>[% text.lang %]</small>[% END -%]
     </a>
   </div>
     [% END %]

@@ -60,7 +60,7 @@
       [% FOREACH topic IN text.topics -%]
       <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">
       [%- IF site.multilanguage -%]
-      {[% topic.loc_name(current_locale_code) %]}
+      {[% site.lexicon_translate_html(current_locale_code, topic.name) %]}
       [%- ELSE -%]
       [%- topic.name -%]
       [%- END -%]

@@ -79,8 +79,16 @@ sub topics_listing :Chained('topics') :PathPart('') :Args(0) {
 
 sub category_list_display :Private {
     my ($self, $c) = @_;
-    my @list = $c->stash->{categories_rs}->all;
-    $c->stash(list => \@list,
+
+    my $site_id = $c->stash->{site}->id;
+    my $type = 'category-' . $c->stash->{f_class};
+    my $rs = delete $c->stash->{categories_rs};
+    my $cache = $c->model('Cache',
+                          site_id => $site_id,
+                          type => $type,
+                          resultset => $rs);
+
+    $c->stash(list => $cache->texts,
               template => 'category.tt');
 }
 
@@ -108,7 +116,9 @@ sub single_category :Private {
         my $current_locale = $c->stash->{current_locale_code};
 
         # page_title is html-escaped, so unescape it back
-        $c->stash(page_title => decode_entities($cat->loc_name($current_locale)),
+        my $page_title = $c->stash->{site}->lexicon_translate_html($current_locale,
+                                                                   $cat->name);
+        $c->stash(page_title => decode_entities($page_title),
                   template => 'category-details.tt',
                   texts => $texts,
                   category => $cat);

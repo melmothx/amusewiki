@@ -110,9 +110,14 @@ sub special_list_display :Chained('special_list') :PathPart('') :Args(0) {
 sub template_listing :Private {
     my ($self, $c) = @_;
     my $rs = delete $c->stash->{texts_rs};
-    my ($texts, $pager) = $self->_create_text_list([ $rs->all ]);
-    $c->stash(texts => $texts,
-              pager => $pager,
+    # these should be cached
+    my $cache = $c->model('Cache',
+                          site_id => $c->stash->{site}->id,
+                          type => 'library-' . $c->stash->{f_class},
+                          resultset => $rs,
+                         );
+    $c->stash(texts => $cache->texts,
+              pager => $cache->pager,
               template => 'library.tt');
 }
 
@@ -121,10 +126,15 @@ sub archive_by_lang :Chained('archive_list') :PathPart('') :Args(1) {
     my $rs = delete $c->stash->{texts_rs};
     $c->log->debug("In $lang");
     if (my $label = $c->stash->{site}->known_langs->{$lang}) {
-        my @filtered = $rs->search({ lang => $lang });
-        my ($texts, $pager) = $self->_create_text_list(\@filtered);
-        $c->stash(texts => $texts,
-                  pager => $pager,
+        my $resultset = $rs->search({ lang => $lang });
+        my $cache = $c->model('Cache',
+                              site_id => $c->stash->{site}->id,
+                              type => 'library-' . $c->stash->{f_class},
+                              subtype => $lang,
+                              resultset => $resultset,
+                             );
+        $c->stash(texts => $cache->texts,
+                  pager => $cache->pager,
                   multilang => {
                                 filter_lang => $lang,
                                 filter_label => $label,
@@ -135,35 +145,6 @@ sub archive_by_lang :Chained('archive_list') :PathPart('') :Args(1) {
     $c->detach('/not_found');
 }
 
-sub _create_text_list {
-    my ($self, $rows) = @_;
-    die "Missing rows" unless $rows;
-    my @list_with_separators;
-    my @paging;
-    my $current = '';
-    my $counter = 0;
-    my %done;
-    foreach my $row (@$rows) {
-        if ($row->list_title =~ m/(\w)/) {
-            my $first_char = uc($1);
-            if ($current ne $first_char) {
-                $counter++;
-                $current = $first_char;
-                push @paging, {
-                               anchor_name => $first_char,
-                               anchor_id => $counter,
-                              };
-                push @list_with_separators, {
-                                             anchor_name => $first_char,
-                                             anchor_id => $counter,
-                                            };
-            }
-        }
-        my %text = map { $_ => $row->$_ } qw/author title full_uri lang/;
-        push @list_with_separators, \%text;
-    }
-    return (\@list_with_separators, \@paging);
-}
 
 =head2 text
 

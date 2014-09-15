@@ -177,8 +177,6 @@ __PACKAGE__->many_to_many("titles", "title_categories", "title");
 # Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NhhuqgndhV/1xbiIZEmcfw
 
-use HTML::Entities qw/encode_entities decode_entities/;
-
 =head2 title_count_update
 
 Update the published texts count. It doesn't look at the text_count in
@@ -220,26 +218,6 @@ sub full_uri {
     }
     else {
         die "WTF?";
-    }
-}
-
-=head2 loc_name($locale)
-
-Given that the name of the topic is already HTML-escaped, when
-translating we do the same thing. First decode, then pass to the
-translator, then encode it back.
-
-=cut
-
-sub loc_name {
-    my ($self, $locale) = @_;
-    my $name = $self->name;
-    if ($locale && $self->site->is_able_to_translate) {
-        my $out =  $self->site->lexicon_translate($locale, decode_entities($name));
-        return encode_entities($out, q{<>&"'});
-    }
-    else {
-        return $name;
     }
 }
 
