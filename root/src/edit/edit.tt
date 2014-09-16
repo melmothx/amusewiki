@@ -259,7 +259,7 @@ $(document).ready(function() {
 </div>
 
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4" style="border-left: black solid 1px">
     <div id="cheatsheet">
       <h3>[% loc('Cheatsheet for the markup') %]</h3>
 

@@ -129,14 +129,7 @@ blockquote {
     font-weight: bold;
 }
 
-
-#cheatsheet {
-    border: #bbb solid 1px;
-    padding: 10px;
-    height:500px;
-    overflow-y:auto;
-}
-
 .amw-listing-item {
     margin-bottom: 1px;
 }
+
