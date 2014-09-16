@@ -78,7 +78,7 @@ $(document).ready(function() {
 [% END %]
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
 [% SET attachments = revision.attached_images %]
 [% IF attachments.size %]
 <h3>[% loc('Attached images') %]</h3>
@@ -191,10 +191,11 @@ $(document).ready(function() {
   </div>
 </form>
 </div>
+</div>
 
 [% SET text = revision.muse_doc.header_as_html %]
 
-<div id="page">
+<div id="page" class="col-md-5">
   <h2>
     <small>[% loc('Preview') %]</small>
     <button type="button" id="goto-diff" class="btn btn-primary">
@@ -256,10 +257,10 @@ $(document).ready(function() {
   <div id="htmltextbody">
     [% revision.muse_doc.as_html %]
   </div>
-</div>
-
   </div>
-  <div class="col-md-4" style="border-left: black solid 1px">
+</div>
+<div class="row">
+  <div class="col-md-12">
     <div id="cheatsheet">
       <h3>[% loc('Cheatsheet for the markup') %]</h3>
 
