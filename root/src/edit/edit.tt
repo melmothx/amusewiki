@@ -516,7 +516,7 @@ $(document).ready(function() {
         </li>
       </ul>
       <p>
-        <a href="[% c.uri_for('/docs/manual.html') %]">
+        <a href="http://www.amusewiki.org/library/manual" target="_blank">
           [% loc('See the full manual for more details (english)') %]
         </a>
       </p>
