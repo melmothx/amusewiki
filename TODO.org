@@ -186,11 +186,15 @@ confused if willn't see changes immediately, so will be better to
 write "Changes committed, thanks! After editor review you will be able
 to see it on the website." And then redirect to the main page.
 
-* TODO Preview positioning
+* DONE Preview positioning
+  CLOSED: [2014-09-16 mar 08:22]
 
 When you click to "preview" page is reloading and you see
 text-editor. preview should be at the top of the page. if preview text
 is really big, maybe you can make scroll box for it. 
+
+Retried with another solution
+
 
 * TODO HTTPS support
 
@@ -221,7 +225,8 @@ Cache the results for the full topics, titles, authors.
 > is our main auditory, so i think it's really important to gave them
 > this "add text" button on visible space.
 
-* TODO Cheatsheet
+* DONE Cheatsheet
+  CLOSED: [2014-09-16 mar 08:23]
 
 >> Also I've made the changes for the scrollable cheatseet and the cover
 >> removal. Let me know if it works as expected.
@@ -229,6 +234,8 @@ Cache the results for the full topics, titles, authors.
 > be better if i scroll the page down and cheatsheet is moving down (or
 > up) too.
 
+
+Retried with another solution
 
 * Future releases
 * TODO The jobber should remove old completed jobs
