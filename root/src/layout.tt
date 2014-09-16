@@ -399,6 +399,12 @@
 		 title="[% loc('texts sorted by topics') %]">
         [% loc('Topics') %]
       </a>
+      [% IF c.user_exists || site.human_can_edit %]
+      |
+      <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
+        [% loc('Add to library') %]
+      </a>
+      [% END %]
     </div>
   </body>
 </html>
