@@ -47,9 +47,6 @@ print <<"EOF";
 server {
     server_name $hosts;
     root $amw_home/root;
-    location = /rss.xml {
-        rewrite ^/rss\\.xml\$ /feed permanent;
-    }
 
     # LEGACY STUFF
     rewrite ^/lib/(.*)\$ /library/\$1 permanent;

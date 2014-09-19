@@ -152,6 +152,10 @@ sub random :Global :Args(0) {
     }
 }
 
+sub rss_xml :Path('/rss.xml') :Args(0) {
+    my ($self, $c) = @_;
+    $c->detach('/feed/index');
+}
 
 =head2 index
 
