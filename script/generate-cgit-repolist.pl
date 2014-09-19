@@ -12,8 +12,12 @@ use Getopt::Long;
 binmode STDOUT, ":encoding(utf-8)";
 
 my $gitpath = '/var/cache/git/';
+my $hostname;
 
-GetOptions('gitpath=s' => \$gitpath);
+GetOptions(
+           'gitpath=s' => \$gitpath,
+           'hostname=s' => \$hostname,
+          );
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -25,6 +29,9 @@ foreach my $site ($schema->resultset('Site')->all) {
     print "repo.url=" . $site->id . "\n";
     print "repo.path=" . $path . "\n";
     print "repo.desc=" . $site->sitename . "\n";
+    if ($hostname) {
+        print "repo.clone-url=git://$hostname/git/" . $site->id . ".git\n";
+    }
     print "\n\n";
 }
 
