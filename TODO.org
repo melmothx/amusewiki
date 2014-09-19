@@ -245,7 +245,8 @@ Moved in the footer
 Retried with another solution
 
 
-* TODO git clone urls in cgit
+* DONE git clone urls in cgit
+  CLOSED: [2014-09-19 ven 17:02]
 
 * Future releases
 * TODO The jobber should remove old completed jobs
