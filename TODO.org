@@ -178,7 +178,8 @@ the tree.
   CLOSED: [2014-09-10 mer 21:37]
 
 
-* TODO Committed message
+* DONE Committed message
+  CLOSED: [2014-09-19 ven 16:34]
 
 If you have no account and edit text, after you click "commit" you go
 to the page with "Changes committed, thanks!". Somebody can be
@@ -242,6 +243,9 @@ Moved in the footer
 
 
 Retried with another solution
+
+
+* TODO git clone urls in cgit
 
 * Future releases
 * TODO The jobber should remove old completed jobs
