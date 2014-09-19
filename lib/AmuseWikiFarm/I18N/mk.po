@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-10 23:56+0200\n"
+"PO-Revision-Date: 2014-09-19 22:10+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -249,7 +249,7 @@ msgstr "Внесени измени"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:348
 msgid "Changes committed, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "Измените се извршени, сега се на чекање"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
@@ -304,7 +304,7 @@ msgstr "Не беше возможно да се додаде текстот"
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:850
 msgid "Couldn't automatically generate the uri!"
-msgstr ""
+msgstr "Невозможно е автоматски да се генерира URI за овој текст"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:97
 msgid "Couldn't build that"
@@ -1290,7 +1290,7 @@ msgstr "Оддалечен репозиториум"
 
 #: root/src/bookbuilder/index.tt:158
 msgid "Remove cover image"
-msgstr ""
+msgstr "Отстрани ја насловната слика"
 
 #: root/src/user/create.tt:46 root/src/user/edit.tt:33
 msgid "Repeat email"
@@ -1727,7 +1727,7 @@ msgstr "Необјавени текстови"
 #. ($mime)
 #: lib/AmuseWikiFarm/Schema/Result/Revision.pm:527
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Погрешен вид на фајл %1"
 
 #: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39
