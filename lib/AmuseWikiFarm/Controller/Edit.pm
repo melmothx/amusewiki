@@ -345,12 +345,11 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                         $c->flash(error_msg => $c->loc('Error sending mail!'));
                     }
                 }
+                $c->flash(status_msg => $c->loc("Changes committed, thanks! They are now waiting to be published"));
                 if ($c->user_exists || $c->stash->{site}->human_can_publish ) {
-                    $c->flash(status_msg => $c->loc("Changes committed, thanks!"));
                     $c->response->redirect($c->uri_for_action('/publish/pending'));
                 }
                 else {
-                    $c->flash(status_msg => $c->loc("Changes committed, thanks! They will be published after an editor's review!"));
                     $c->response->redirect($c->uri_for('/'));
                 }
                 return;
