@@ -126,6 +126,13 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 255
 
+=head2 secure_site
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 255
+
 =head2 sitegroup
 
   data_type: 'varchar'
@@ -321,6 +328,8 @@ __PACKAGE__->add_columns(
   "mail_from",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "canonical",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "secure_site",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "sitegroup",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
@@ -527,8 +536,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-09-07 15:50:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lM8KKskHS9Wm+aHRPu48uA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-09-21 10:56:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ljSpiISVcb/17fPFo0E3Xg
 
 =head2 other_sites
 

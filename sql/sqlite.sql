@@ -32,6 +32,7 @@ CREATE TABLE site (
        mail_notify VARCHAR(255),
        mail_from   VARCHAR(255),
        canonical VARCHAR(255) NOT NULL DEFAULT '',
+       secure_site VARCHAR(255) NOT NULL DEFAULT '',
 
        sitegroup VARCHAR(255) NOT NULL DEFAULT '',
 

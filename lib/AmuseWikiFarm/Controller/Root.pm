@@ -27,6 +27,36 @@ This class provides the site selection and the theme management.
 Root auto methods sets the site code C<site_id> in the stash, for
 farming purposes, defaulting to C<default>.
 
+Values always stashed for every action:
+
+=over 4
+
+=item site
+
+The master L<AmuseWikiFarm::Schema::Result::Site> object. If the site
+is not looked up correctly, a 404 is issued. At some point a special
+page must be provided.
+
+=item user_login_uri
+
+The URI for the user login
+
+=item current_locale_code
+
+Locale code
+
+=item current_locale_name
+
+Locale name
+
+=item navigation
+
+(Present only if there are related sites or special pages).
+
+=item
+
+=back
+
 =cut
 
 sub auto :Private {
@@ -59,6 +89,23 @@ sub auto :Private {
 
     # stash the site object
     $c->stash(site => $site);
+
+    # always stash the login uri, at some point it could be needed by
+    # the layout
+    my $login_uri = $c->uri_for_action('/user/login');
+    if (my $sec_site = $site->secure_site) {
+        $login_uri->host($sec_site);
+        $login_uri->scheme('https');
+    }
+    $c->stash(user_login_uri => $login_uri);
+
+    # force ssl for authenticated users
+    if ($c->user_exists) {
+        unless ($c->request->secure) {
+            $c->forward('/redirect_to_secure');
+        }
+    }
+
     my $locale = $site->locale;
 
     if ($site->multilanguage) {
@@ -132,6 +179,18 @@ sub not_permitted :Global {
     $c->log->error("Access denied");
     $c->response->body("Access denied");
     return;
+}
+
+sub redirect_to_secure :Private {
+    my ($self, $c) = @_;
+    return if $c->request->secure;
+    if (my $sec_site = $c->stash->{site}->secure_site) {
+        my $uri = $c->request->uri->clone;
+        $uri->host($sec_site);
+        $uri->scheme('https');
+        $c->response->redirect($uri);
+        $c->detach();
+    }
 }
 
 =head2 random

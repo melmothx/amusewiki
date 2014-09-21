@@ -56,6 +56,8 @@ sub login :Path('/login') :Args(0) {
         return;
     }
 
+    $c->forward('/redirect_to_secure');
+
     $c->stash(
               nav => 'login',
               page_title => $c->loc('Login'),
