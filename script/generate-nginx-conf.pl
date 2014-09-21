@@ -14,12 +14,12 @@ GetOptions ('logformat=s' => \$logformat) or die;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my @vhosts = $schema->resultset('Vhost')->search(
-                                                 {},
-                                                 { order_by => [qw/site_id
-                                                                   name/]}
-                                                )->all;
-my $hosts = join("\n" . (" " x 16), map { $_->name } @vhosts);
+my @vhosts;
+foreach my $site ($schema->resultset('Site')->all) {
+    push @vhosts, $site->all_site_hostnames;
+}
+
+my $hosts = join("\n" . (" " x 16),  @vhosts);
 
 my $cgit_path = catfile(qw/root git cgit.cgi/);
 
@@ -43,9 +43,16 @@ if (-f $cgit_path) {
 EOF
 }
 
-print <<"EOF";
+print_server_stanza($hosts);
+
+
+
+
+sub print_server_stanza {
+    my $servers = shift;
+    print <<"EOF";
 server {
-    server_name $hosts;
+    server_name $servers;
     root $amw_home/root;
 
     # LEGACY STUFF
@@ -89,5 +96,5 @@ $cgit
     }
 }
 EOF
-
+}
 
