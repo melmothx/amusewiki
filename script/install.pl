@@ -124,8 +124,10 @@ else {
     die "Aborting\n";
 }
 
-my $site = $schema->resultset('Site')->create({ id => $site_id });
-$site->vhosts->create({ name => $host });
+my $site = $schema->resultset('Site')->create({
+                                               id => $site_id,
+                                               canonical => $host,
+                                              });
 
 if ($site->initialize_git) {
     print "An stub repository has been created at " . $site->repo_root . "\n";

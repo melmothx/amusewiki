@@ -1,5 +1,5 @@
 
-[% loc('A new revision has been created at [_1]', site.canonical) %]
+[% loc('A new revision has been created at [_1]', site.canonical_url) %]
 
 [% loc("If the committer provided a mail, it's listed in the mail's CC field") %]
 

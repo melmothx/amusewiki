@@ -65,17 +65,21 @@ sub auto :Private {
     # catch the host. ->uri is an URI object, as per doc.
     my $host = $c->request->uri->host;
 
-    # lookup in the db
-    my $vhost = $c->model('DB::Vhost')->find($host);
-    unless ($vhost) {
-        $c->detach('not_found');
+    # lookup in the db: first the canonical, then the vhosts
+    my $site = $c->model('DB::Site')->find({ canonical => $host });
+    unless ($site) {
+        $c->log->warn("$host not found in canonical");
+        if (my $vhost = $c->model('DB::Vhost')->find($host)) {
+            $site = $vhost->site;
+        }
+    }
+    unless ($site) {
+        $c->detach('/not_permitted');
+        return;
     }
 
-    my $site = $vhost->site;
-    return unless $site;
     $c->log->debug("Site ID for $host is " . $site->id
                    . ", with locale " . $site->locale);
-
 
     # this means some fucker reused a cookie from another site to gain
     # access to this. A bit unlikely, but better now than later.

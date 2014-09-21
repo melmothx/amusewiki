@@ -34,7 +34,8 @@ sub index :Path :Args(0) {
     # set up the channel
     $feed->title($site->sitename);
     $feed->description($site->siteslogan);
-    $feed->link($site->canonical);
+
+    $feed->link($site->canonical_url);
     $feed->language($site->locale);
 
     $feed->xmlns('xmlns:atom' => "http://www.w3.org/2005/Atom");

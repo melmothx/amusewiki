@@ -30,6 +30,7 @@ sub create_site {
         }
         $stray->delete;
     }
+    my $canonical = $id . '.amusewiki.org';
     my $site = $schema->resultset('Site')->create({
                                                    id => $id,
                                                    locale => 'en',
@@ -38,9 +39,9 @@ sub create_site {
                                                    epub => 0,
                                                    lt_pdf => 0,
                                                    mode => 'blog',
+                                                   canonical => $canonical,
                                                   })->discard_changes;
 
-    $site->add_to_vhosts({ name => $id . '.amusewiki.org' });
     remove_tree($site->repo_root) if -d $site->repo_root;
     $site->initialize_git;
     return $site;

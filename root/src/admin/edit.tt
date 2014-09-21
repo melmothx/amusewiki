@@ -156,7 +156,7 @@
 
     <div class="form-group">
       <label for="canonical" class="col-sm-2 control-label">
-        [% loc('Full site canonical URL, including protocol') %]
+        [% loc('Main canonical hostname, without protocol') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="canonical" id="canonical"

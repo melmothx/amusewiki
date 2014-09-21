@@ -75,7 +75,7 @@ like $res->decoded_content, qr{Zu A Second test.*Ža Third test}s,
   "author sorting details ok";
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $site = $schema->resultset('Vhost')->find($host->{host})->site;
+my $site = $schema->resultset('Site')->find({ canonical => $host->{host} });
 
 my $newcat = $site->categories->update_or_create({
                                                   name => 'This cat is not active',

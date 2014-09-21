@@ -46,7 +46,7 @@
         [% obj.mail_notify | html %]
       </td>
       <td>
-        <a href="[% obj.canonical %]">[% obj.canonical %]</a>
+        <a href="[% obj.canonical_url %]">[% obj.canonical %]</a>
       </td>
       <td>
         <ul>
@@ -74,6 +74,12 @@
         [% loc('New site id') %]
       </label>
       <input type="text" name="create_site" class="form-control" id="create_site"/>
+    </div>
+    <div class="form-group">
+      <label for="canonical">
+        [% loc('Main canonical hostname, without protocol') %]
+      </label>
+      <input type="text" name="canonical" class="form-control" id="canonical"/>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-default">

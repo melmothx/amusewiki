@@ -1,5 +1,5 @@
 
-[% loc("Your user at [_1] has been created.", site.canonical) %]
+[% loc("Your user at [_1] has been created.", site.canonical_url) %]
 
 [% loc("Your username is [_1].", user.username) %]
 
