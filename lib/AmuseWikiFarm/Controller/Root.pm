@@ -97,8 +97,8 @@ sub auto :Private {
     # always stash the login uri, at some point it could be needed by
     # the layout
     my $login_uri = $c->uri_for_action('/user/login');
-    if (my $sec_site = $site->secure_site) {
-        $login_uri->host($sec_site);
+    if ($site->secure_site) {
+        $login_uri->host($site->canonical);
         $login_uri->scheme('https');
     }
     $c->stash(user_login_uri => $login_uri);
@@ -188,9 +188,10 @@ sub not_permitted :Global {
 sub redirect_to_secure :Private {
     my ($self, $c) = @_;
     return if $c->request->secure;
-    if (my $sec_site = $c->stash->{site}->secure_site) {
+    my $site = $c->stash->{site};
+    if ($site->secure_site) {
         my $uri = $c->request->uri->clone;
-        $uri->host($sec_site);
+        $uri->host($site->canonical);
         $uri->scheme('https');
         $c->response->redirect($uri);
         $c->detach();

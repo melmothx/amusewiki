@@ -1743,6 +1743,7 @@ sub update_from_params {
     my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
                        logo_with_sitename
                        cgit_integration
+                       secure_site
                        twoside nocoverpage/);
     foreach my $boolean (@booleans) {
         if (delete $params->{$boolean}) {

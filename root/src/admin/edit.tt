@@ -163,7 +163,16 @@
                class="form-control" value="[% esite.canonical %]" />
       </div>
     </div>
-
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.secure_site %]checked="checked"[% END %]
+                 name="secure_site" />
+          [% loc('Use SSL for authenticated users') %]
+        </label>
+      </div>
+    </div>
     <div class="form-group">
       <label for="sitegroup" class="col-sm-2 control-label">
         [% loc('Site group') %]
