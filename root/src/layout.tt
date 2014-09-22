@@ -249,7 +249,7 @@
               <ul class="dropdown-menu">
                 [% FOREACH link IN navigation.projects %]
                 <li>
-                  <a href="[% link.canonical_url %]">[% link.canonical %]</a>
+                  <a href="[% link.canonical_url %]">[% link.sitename || link.canonical %]</a>
                 </li>
                 [% END   %]
               </ul>
