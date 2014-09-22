@@ -202,13 +202,19 @@ Retried with another solution
 Unclear if needed to enforce it or not. Pain in the ass for the
 multisite thing.
 
-** Change site.canonical to be without protocol.
+** DONE Change site.canonical to be without protocol.
+   CLOSED: [2014-09-22 lun 21:58]
 
-** When looking up the virtual host, check first against canonical
+** DONE When looking up the virtual host, check first against canonical
+   CLOSED: [2014-09-22 lun 21:58]
 
 This way, we can save a query against the vhost table
 
 ** In the install script, set the secure_site flag to true.
+
+Not needed.
+
+** TODO Do not use https:// with canonical_url, but only where it makes sense.
 
 * DONE Optimization
   CLOSED: [2014-09-15 lun 15:22]
