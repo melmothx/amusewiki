@@ -24,14 +24,16 @@ CREATE TABLE site (
        -- list of space separated category codes, if you want this feature
        fixed_category_list VARCHAR(255),
 
-       -- canonical url for RSS and other things
        sitename VARCHAR(255) NOT NULL DEFAULT '',
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
        theme VARCHAR(32) NOT NULL DEFAULT '',
        logo VARCHAR(255), -- could be a path, so keep it at 255
        mail_notify VARCHAR(255),
        mail_from   VARCHAR(255),
-       canonical VARCHAR(255) NOT NULL DEFAULT '',
+
+       -- canonical server name
+       canonical VARCHAR(255) NOT NULL,
+       secure_site INTEGER(1) NOT NULL DEFAULT 0,
 
        sitegroup VARCHAR(255) NOT NULL DEFAULT '',
 
@@ -68,6 +70,8 @@ CREATE TABLE site (
        logo_with_sitename INTEGER(1) NOT NULL DEFAULT 0,
        twoside INTEGER(1) NOT NULL DEFAULT 0
 );
+
+CREATE UNIQUE INDEX unique_site_canonical ON site (canonical);
 
 CREATE TABLE users (
        id INTEGER PRIMARY KEY AUTOINCREMENT,

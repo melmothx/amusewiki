@@ -122,9 +122,15 @@ __PACKAGE__->table("site");
 =head2 canonical
 
   data_type: 'varchar'
-  default_value: (empty string)
   is_nullable: 0
   size: 255
+
+=head2 secure_site
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
 
 =head2 sitegroup
 
@@ -321,7 +327,9 @@ __PACKAGE__->add_columns(
   "mail_from",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "canonical",
-  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "secure_site",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "sitegroup",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "sitegroup_label",
@@ -393,6 +401,20 @@ __PACKAGE__->add_columns(
 =cut
 
 __PACKAGE__->set_primary_key("id");
+
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<canonical_unique>
+
+=over 4
+
+=item * L</canonical>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("canonical_unique", ["canonical"]);
 
 =head1 RELATIONS
 
@@ -527,8 +549,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-09-07 15:50:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:lM8KKskHS9Wm+aHRPu48uA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-09-21 16:31:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C3/COK8EH0Dd7SiSt2g7rA
 
 =head2 other_sites
 
@@ -637,8 +659,6 @@ sub compile_options {
         $opts{extra}{sitename} = '';
     }
     $opts{extra}{site} = $self->canonical;
-    # but strip the protocol
-    $opts{extra}{site} =~ s!^https?://!!;
     return %opts;
 }
 
@@ -1723,6 +1743,7 @@ sub update_from_params {
     my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
                        logo_with_sitename
                        cgit_integration
+                       secure_site
                        twoside nocoverpage/);
     foreach my $boolean (@booleans) {
         if (delete $params->{$boolean}) {
@@ -1738,7 +1759,7 @@ sub update_from_params {
     my @strings = (qw/magic_answer magic_question fixed_category_list
                       multilanguage
                       sitename siteslogan logo mail_notify mail_from
-                      canonical sitegroup ttdir/);
+                      sitegroup ttdir/);
     foreach my $string (@strings) {
         my $param = delete $params->{$string};
         if (defined $param) {
@@ -1756,6 +1777,16 @@ sub update_from_params {
             push @errors, "$string is not defined!";
         }
     }
+
+    if ($params->{canonical} and
+        $params->{canonical} =~ m/^[0-9a-z]+(\.[0-9a-z]+){2,4}$/) {
+        my $canonical = delete $params->{canonical};
+        $self->canonical($canonical);
+    }
+    else {
+        push @errors, "Canonical is mandatory";
+    }
+
 
     # ranges
     my %ranges = (
@@ -1974,6 +2005,26 @@ sub static_indexes_generator {
     return $generator;
 }
 
+sub canonical_url {
+    my $self = shift;
+    my $proto = 'http://';
+    if ($self->secure_site) {
+        $proto = 'https://';
+    }
+    return $proto . $self->canonical;
+}
+
+sub all_site_hostnames {
+    my $self = shift;
+    my @hostnames = ($self->canonical);
+    push @hostnames, $self->alternate_hostnames;
+    return @hostnames;
+}
+
+sub alternate_hostnames {
+    my $self = shift;
+    return map { $_->name } $self->vhosts;
+}
 
 
 __PACKAGE__->meta->make_immutable;

@@ -30,8 +30,7 @@ sub auto :Private {
         return 1;
     }
     else {
-        $c->session(redirect_after_login => $c->request->path);
-        $c->response->redirect($c->uri_for('/login'));
+        $c->response->redirect($c->uri_for('/login', { goto => $c->req->path }));
         return;
     }
 }

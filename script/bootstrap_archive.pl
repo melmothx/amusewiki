@@ -30,7 +30,7 @@ print "DB loaded, starting up\n";
 
 my @codes;
 foreach my $s ($schema->resultset('Site')->all) {
-    print $s->id . " " . $s->vhosts->first->name . "\n";
+    print $s->id . " " . $s->canonical_url . "\n";
     push @codes, $s->id;
 }
 

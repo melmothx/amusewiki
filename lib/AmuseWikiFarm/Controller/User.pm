@@ -56,6 +56,8 @@ sub login :Path('/login') :Args(0) {
         return;
     }
 
+    $c->forward('/redirect_to_secure');
+
     $c->stash(
               nav => 'login',
               page_title => $c->loc('Login'),
@@ -86,11 +88,7 @@ sub login :Path('/login') :Args(0) {
                 $c->session(site_id => $site->id);
                 $c->session(i_am_human => 1);
                 $c->flash(status_msg => $c->loc("You are logged in now!"));
-
-                my $goto = delete $c->session->{redirect_after_login};
-                $goto ||= $c->uri_for('/');
-                $c->response->redirect($goto);
-                return;
+                $c->detach('redirect_after_login');
             }
         }
     }
@@ -120,10 +118,7 @@ sub human :Path('/human') :Args(0) {
         if ($c->request->params->{answer} eq $c->stash->{site}->magic_answer) {
             # ok, you're a human
             $c->session(i_am_human => 1);
-            my $goto = delete $c->session->{redirect_after_login};
-            $goto ||= $c->uri_for('/');
-            $c->response->redirect($goto);
-            return;
+            $c->detach('redirect_after_login');
         }
         else {
             $c->flash(error_msg => $c->loc('Wrong answer!'));
@@ -328,6 +323,15 @@ sub edit :Chained('user') :Args(1) {
         }
     }
     $c->stash(user => $user);
+}
+
+sub redirect_after_login :Private {
+    my ($self, $c) = @_;
+    my $path = $c->request->params->{goto} || '/';
+    if ($path !~ m!^/!) {
+        $path = "/$path";
+    }
+    $c->response->redirect($c->uri_for($path));
 }
 
 

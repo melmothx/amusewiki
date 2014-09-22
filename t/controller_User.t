@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 75;
+use Test::More tests => 81;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -30,6 +30,9 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my ($rev) = $site->create_new_text({ uri => 'index',
                                      title => 'test',
                                      textbody => 'Hello' }, 'special');
+
+my $index_text_id = $rev->title->id;
+ok($index_text_id, "Id for index is $index_text_id");
 
 $site->mode('blog');
 $site->update;
@@ -62,25 +65,55 @@ is $mech->response->base->path, '/login', "Bounced to human page";
 
 $mech->get('/action/special/edit/index');
 
+ok(!$schema->resultset('Revision')->search({
+                                            site_id => '0user0',
+                                            status => 'editing',
+                                            title_id => $index_text_id,
+                                           })->count,
+   "No index revision (1)");
+
 is $mech->response->base->path, '/login', "Bounced to login page";
 
 $mech->get('/special/pippo/edit');
 
+ok(!$schema->resultset('Revision')->search({
+                                            site_id => '0user0',
+                                            status => 'editing',
+                                            title_id => $index_text_id,
+                                           })->count,
+   "No index revisions (2)");
+
+diag $mech->content;
 is $mech->status, '404';
 
-$mech->post('/login' => {
-                         username => 'pallino'
-                        });
+$mech->get('/login');
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'pallino' },
+                   button => 'submit');
 
 is $mech->response->base->path, '/login', "No authorized, still on login";
 
-$mech->post('/login' => {
-                         username => 'pinco',
-                         password => 'pallino',
-                         submit => 1,
-                        });
+ok(!$schema->resultset('Revision')->search({
+                                            site_id => '0user0',
+                                            status => 'editing'
+                                           })->count,
+   "No index revisions(2a)");
+
+
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'pinco', password => 'pallino' },
+                   button => 'submit');
 
 $mech->content_contains(q{/logout"}, "Page contains the logout link");
+diag $mech->uri;
+
+
+ok(!$schema->resultset('Revision')->search({
+                                            site_id => '0user0',
+                                            status => 'editing'
+                                           })->count,
+   "No index revisions(2b)");
+
 
 $mech->get_ok('/logout');
 
@@ -93,17 +126,22 @@ $user_active->update;
 $mech->get_ok('/login');
 $mech->content_contains('login-form');
 
-$mech->post('/login' => {
-                         username => 'pinco',
-                         password => 'pallino',
-                         submit => 1,
-                        });
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'pinco', password => 'pallino' },
+                   button => 'submit');
 
 is $mech->response->base->path, '/login',
   "No authorized, still on login because not active";
 $mech->content_contains('login-form');
 
+ok(!$schema->resultset('Revision')->search({
+                                            site_id => '0user0',
+                                            status => 'editing'
+                                           })->count,
+   "No index revisions(3)");
+
 $mech->get_ok('/action/special/edit/index');
+
 $mech->content_lacks('textarea', "No textarea found for not logged-in");
 
 $user_active->active(1);
@@ -112,11 +150,9 @@ $user_active->update;
 $mech->get_ok('/login');
 $mech->content_contains('login-form');
 
-$mech->post('/login' => {
-                         username => 'pinco',
-                         password => 'pallino',
-                         submit => 1,
-                        });
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'pinco', password => 'pallino' },
+                   button => 'submit');
 
 $mech->content_contains(q{/logout"}, "Page contains the logout link");
 

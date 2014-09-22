@@ -28,7 +28,6 @@ my @norobots = (
                 '/publish/pending',
                 '/publish/publish',
                 '/tasks/status/1',
-                '/tasks/status/1/ajax',
                 '/admin/pending',
                 '/logout',
                 '/search',
@@ -47,15 +46,19 @@ my @yesrobots = (
                 );
 my $meta = '<meta name="robots" content="noindex,nofollow" />';
 
+$mech->get_ok('/tasks/status/1/ajax');
+is $mech->uri->path, '/human';
+
 foreach my $link ('/login', '/human', @norobots) {
     $mech->get($link);
     $mech->content_contains($meta, "$link has noindex, nofollow");
 }
 $mech->get('/human');
-ok($mech->form_with_fields('username'));
-$mech->set_fields(username => 'root', password => 'root');
-$mech->click;
-$mech->content_contains('logged in now');
+
+ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
+                      button => 'submit'));
+
+$mech->content_contains('logged in now') or diag $mech->content;
 foreach my $link (@norobots) {
     $mech->get($link);
     $mech->content_contains($meta, "$link has noindex, nofollow");

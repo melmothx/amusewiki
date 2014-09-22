@@ -80,10 +80,11 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
             }
         }
     }
-    elsif ($params{create_site}) {
+    elsif ($params{create_site} && $params{canonical}) {
         # here we accept 0 as prefix as well, but we warned
-        if ($params{create_site} =~ m/^([0-9a-z]{2,16})$/) {
-            $id = $1;
+        if ($params{create_site} =~ m/^([0-9a-z]{2,16})$/ and
+            $params{canonical}   =~ m/^[0-9a-z]+(\.[0-9a-z]+){2,4}$/) {
+            $id = $params{create_site};
             if ($c->model('DB::Site')->find($id)) {
                 $c->flash(error_msg => $c->loc('Site already exists'));
                 $c->response->redirect($listing_url);
@@ -92,7 +93,11 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
             }
             else {
                 # creation
-                $site = $c->model('DB::Site')->create({ id => $id });
+                my $site_creation = {
+                                     id => $id,
+                                     canonical => $params{canonical},
+                                    };
+                $site = $c->model('DB::Site')->create($site_creation);
                 $site->initialize_git;
                 my $edit_link = $c->uri_for_action('/admin/edit', $id);
                 $c->log->info("Created site $id, redirecting to $edit_link");

@@ -8,23 +8,25 @@ use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile/;
 use Cwd;
 use Getopt::Long;
+use File::Temp;
 
 my $logformat = 'combined';
 GetOptions ('logformat=s' => \$logformat) or die;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my @vhosts = $schema->resultset('Vhost')->search(
-                                                 {},
-                                                 { order_by => [qw/site_id
-                                                                   name/]}
-                                                )->all;
-my $hosts = join("\n" . (" " x 16), map { $_->name } @vhosts);
+my @vhosts;
+my @sites = $schema->resultset('Site')->search(undef, { order_by => [qw/id/] })->all;
+foreach my $site (@sites) {
+    push @vhosts, $site->all_site_hostnames;
+}
+
+my $hosts = join("\n" . (" " x 16),  @vhosts);
 
 my $cgit_path = catfile(qw/root git cgit.cgi/);
 
+# globals
 my $cgit = "";
-
 my $amw_home = getcwd;
 
 if (-f $cgit_path) {
@@ -43,9 +45,47 @@ if (-f $cgit_path) {
 EOF
 }
 
-print <<"EOF";
-server {
-    server_name $hosts;
+print_server_stanza($hosts);
+
+my $dir = File::Temp->newdir(CLEANUP => 0)->dirname;
+
+
+foreach my $site (@sites) {
+    my $cn = $site->canonical;
+    print_server_stanza($cn, 'ssl');
+    my $cert_out = catfile($dir, $cn . '.crt');
+    my $key_out =  catfile($dir, $cn . '.key');
+    unless (-f "/etc/nginx/ssl/$cn.crt" and
+            -f "/etc/nginx/ssl/$cn.key") {
+        system(openssl => req => '-new',
+               -newkey => 'rsa:4096',
+               -days   => '3650',
+               -nodes  => -x509 => -subj => "/CN=$cn",
+               -keyout => $key_out,
+               -out    => $cert_out) == 0 or die $!;
+    }
+}
+
+warn "Self-signed certificates left (if needed) in $dir. Please
+install them in /etc/nginx/ssl/ \n";
+
+
+
+# then print out the ssl conf
+
+
+sub print_server_stanza {
+    my ($server_names, $ssl) = @_;
+    print "server {\n";
+    if ($ssl) {
+        print <<"EOF"
+    listen 443 ssl;
+    ssl_certificate ssl/$server_names.crt;
+    ssl_certificate_key ssl/$server_names.key;
+EOF
+    }
+    print <<"EOF";
+    server_name $server_names;
     root $amw_home/root;
 
     # LEGACY STUFF
@@ -88,6 +128,7 @@ $cgit
         fastcgi_pass  unix:$amw_home/var/amw.sock;
     }
 }
-EOF
 
+EOF
+}
 

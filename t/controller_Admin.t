@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 32;
+use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Catalyst::Test 'AmuseWikiFarm';
@@ -81,9 +81,10 @@ $mech->get_ok('/admin/sites');
 $mech->submit_form(form_id => 'creation-site-form',
                    fields => {
                               create_site => $site_id,
+                              canonical => "$site_id.amusewiki.org",
                              });
 
-is $mech->uri->path, "/admin/sites/edit/$site_id";
+is $mech->uri->path, "/admin/sites/edit/$site_id", "Path is fine";
 
 $mech->content_contains("$site_id</h2>");
 
@@ -97,10 +98,12 @@ $mech->submit_form(with_fields => {
                    button => 'edit_site');
 
 is $mech->uri->path, "/admin/sites/edit/$site_id";
+$mech->content_lacks(q{id="error_message"});
 
 $mech->get_ok('/admin/sites');
 
-$mech->content_contains('noreply@amusewiki.org', "Found the mail");
+$mech->content_contains('noreply@amusewiki.org', "Found the mail")
+  or diag $mech->content;
 $mech->content_contains('me@amusewiki.org', "Found the mail (2)");
 
 $mech->get_ok("/admin/sites/edit/$site_id");

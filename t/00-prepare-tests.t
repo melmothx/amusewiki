@@ -59,7 +59,6 @@ my %repos = ('0blog0' => {
                           siteslogan => 'samo test',
                           bb_page_limit => 5,
                           logo => 'logo-yu',
-                          canonical => 'http://blog.amusewiki.org',
                           a4_pdf => 0,
                           lt_pdf => 0,
                           papersize => 'a4',
@@ -68,7 +67,7 @@ my %repos = ('0blog0' => {
                           fontsize => 12,
                           mainfont => 'Charis SIL',
                           twoside => 1,
-                          vhosts => [{ name => 'blog.amusewiki.org' }],
+                          canonical => 'blog.amusewiki.org',
                          },
              '0test0' => {
                           id => '0test0',
@@ -79,7 +78,6 @@ my %repos = ('0blog0' => {
                           theme => 'test-theme',
                           bb_page_limit => 10,
                           logo => 'logo-en',
-                          canonical => 'http://test.amusewiki.org',
                           a4_pdf => 0,
                           pdf => 1,
                           lt_pdf => 0,
@@ -89,7 +87,7 @@ my %repos = ('0blog0' => {
                           fontsize => 10,
                           mainfont => '',
                           twoside => 1,
-                          vhosts => [{ name => 'test.amusewiki.org' }],
+                          canonical => 'test.amusewiki.org',
                          },
             );
 

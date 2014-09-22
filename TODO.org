@@ -202,6 +202,14 @@ Retried with another solution
 Unclear if needed to enforce it or not. Pain in the ass for the
 multisite thing.
 
+** Change site.canonical to be without protocol.
+
+** When looking up the virtual host, check first against canonical
+
+This way, we can save a query against the vhost table
+
+** In the install script, set the secure_site flag to true.
+
 * DONE Optimization
   CLOSED: [2014-09-15 lun 15:22]
 

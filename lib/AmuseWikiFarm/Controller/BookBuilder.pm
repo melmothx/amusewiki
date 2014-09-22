@@ -34,9 +34,7 @@ sub auto :Private {
         my $uri = $c->uri_for($c->action, $c->req->captures,
                               @{ $c->req->args },
                               $c->req->params);
-        $c->session(redirect_after_login => $uri);
-
-        $c->response->redirect($c->uri_for('/human'));
+        $c->response->redirect($c->uri_for('/human', { goto => $uri->path }));
         return 0;
     }
 }

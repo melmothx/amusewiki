@@ -156,14 +156,23 @@
 
     <div class="form-group">
       <label for="canonical" class="col-sm-2 control-label">
-        [% loc('Full site canonical URL, including protocol') %]
+        [% loc('Main canonical hostname, without protocol') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="canonical" id="canonical"
                class="form-control" value="[% esite.canonical %]" />
       </div>
     </div>
-
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.secure_site %]checked="checked"[% END %]
+                 name="secure_site" />
+          [% loc('Use SSL for authenticated users') %]
+        </label>
+      </div>
+    </div>
     <div class="form-group">
       <label for="sitegroup" class="col-sm-2 control-label">
         [% loc('Site group') %]

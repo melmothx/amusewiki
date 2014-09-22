@@ -1,5 +1,16 @@
 This file documents the revision history for Perl extension AmuseWikiFarm.
 
+FUTURE RELEASE
+
+DB upgrade required. Procedure to upgrade. Stop the server. Run:
+./script/upgrade-to-secure-site.pl, apply the sql patch, start the
+server again. Refresh the nginx configuration with
+./script/generate-nginx-conf.pl, installing the SSL certificates if
+needed. Beware that without the certificate installed and the
+webserver configured correctly, setting the new SSL option in the site
+will lead to a lockout and a redirection loop. If you're stuck, set to
+0 the secure_site option in the database.
+
 0.95 2014-08-10
  - Added option nocoverpage to set LaTeX class without ToC. DB upgrade required.
 

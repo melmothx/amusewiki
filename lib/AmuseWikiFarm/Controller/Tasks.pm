@@ -31,8 +31,7 @@ sub auto :Private {
         return 1;
     }
     else {
-        $c->session(redirect_after_login => $c->request->path);
-        $c->response->redirect($c->uri_for('/human'));
+        $c->response->redirect($c->uri_for('/human', { goto => $c->req->path }));
         return 0;
     }
 }
