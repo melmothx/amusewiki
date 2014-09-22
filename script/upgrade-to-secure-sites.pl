@@ -27,4 +27,10 @@ foreach my $site ($schema->resultset('Site')->all) {
         $site->canonical($new);
     }
     $site->update;
+    foreach my $vhost ($site->vhosts) {
+        if ($site->canonical eq $vhost->name) {
+            warn "Deleting " . $vhost->name . " from vhost, is the canonical";
+            $vhost->delete;
+        }
+    }
 }
