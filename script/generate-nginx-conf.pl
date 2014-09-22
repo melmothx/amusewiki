@@ -46,45 +46,17 @@ EOF
 }
 
 print_server_stanza($hosts);
-
-my $dir = File::Temp->newdir(CLEANUP => 0)->dirname;
-
-
-foreach my $site (@sites) {
-    my $cn = $site->canonical;
-    print_server_stanza($cn, 'ssl');
-    my $cert_out = catfile($dir, $cn . '.crt');
-    my $key_out =  catfile($dir, $cn . '.key');
-    unless (-f "/etc/nginx/ssl/$cn.crt" and
-            -f "/etc/nginx/ssl/$cn.key") {
-        system(openssl => req => '-new',
-               -newkey => 'rsa:4096',
-               -days   => '3650',
-               -nodes  => -x509 => -subj => "/CN=$cn",
-               -keyout => $key_out,
-               -out    => $cert_out) == 0 or die $!;
-    }
-}
-
-warn "Self-signed certificates left (if needed) in $dir. Please
-install them in /etc/nginx/ssl/ \n";
-
-
-
-# then print out the ssl conf
-
+warn "Please install a key and a certificate for your (canonical) hosts at "
+  . "/etc/nginx/ssl/amusewiki.key and /etc/nginx/ssl/amusewiki.cert\n";
 
 sub print_server_stanza {
-    my ($server_names, $ssl) = @_;
-    print "server {\n";
-    if ($ssl) {
-        print <<"EOF"
-    listen 443 ssl;
-    ssl_certificate ssl/$server_names.crt;
-    ssl_certificate_key ssl/$server_names.key;
-EOF
-    }
+    my ($server_names) = @_;
     print <<"EOF";
+server {
+    listen 80;
+    listen 443 ssl;
+    ssl_certificate ssl/amusewiki.crt;
+    ssl_certificate_key ssl/amusewiki.key;
     server_name $server_names;
     root $amw_home/root;
 
