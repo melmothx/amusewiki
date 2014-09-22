@@ -84,6 +84,7 @@ catalyst_ignore('xapian');
 catalyst_ignore('staging');
 catalyst_ignore('specials');
 catalyst_ignore('root/custom');
+catalyst_ignore('opt');
 
 catalyst;
 
