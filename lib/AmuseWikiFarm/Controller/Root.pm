@@ -68,7 +68,6 @@ sub auto :Private {
     # lookup in the db: first the canonical, then the vhosts
     my $site = $c->model('DB::Site')->find({ canonical => $host });
     unless ($site) {
-        $c->log->warn("$host not found in canonical");
         if (my $vhost = $c->model('DB::Vhost')->find($host)) {
             $site = $vhost->site;
         }
