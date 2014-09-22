@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 101;
+use Test::More tests => 104;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Path qw/make_path remove_tree/;
@@ -47,6 +47,7 @@ foreach my $m (keys %$sites) {
     $site_ob->magic_question('First month of the year');
     $site_ob->magic_answer('January');
     $site_ob->mode($m);
+    $site_ob->secure_site(0);
     $site_ob->update;
     ok ((-d $repo_root), "site $sites->{$m}->{url} created");
 }
@@ -77,6 +78,7 @@ $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                             host => $sites->{modwiki}->{url});
 
 common_tests($mech);
+diag "common tests done";
 open_new($mech);
 is $mech->uri->path, '/library', "After submitting to new + revision, I'm at homepage";
 closed_publish($mech);
@@ -163,12 +165,13 @@ sub common_tests {
     $mech->get_ok('/bookbuilder/');
     $mech->content_contains("test if the user is a human");
     $mech->submit_form(
-                       form_name => 'human',
-                       fields => {
-                                  answer => 'January',
-                                 },
+                       with_fields => {
+                                       answer => 'January',
+                                      },
+                       button => 'submit',
                       );
     diag "Check if the bookbuilder works";
+    is ($mech->uri->path, '/bookbuilder');
     $mech->get('/bookbuilder/add/alsdflasdf');
     is ($mech->status, '404', "Page alsdflasdf not found");
     $mech->content_contains("Couldn't add the text");

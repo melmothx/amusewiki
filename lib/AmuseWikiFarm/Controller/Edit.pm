@@ -41,15 +41,14 @@ sub auto :Private {
             return 1;
         }
         else {
-            $c->session(redirect_after_login => $c->request->path);
-            $c->response->redirect($c->uri_for('/human'));
+            $c->response->redirect($c->uri_for('/human',
+                                               { goto => $c->req->path }));
             return;
         }
     }
     # otherwise ask for login
     else {
-        $c->session(redirect_after_login => $c->request->path);
-        $c->response->redirect($c->uri_for('/login'));
+        $c->response->redirect($c->uri_for('/login', { goto => $c->req->path }));
         return;
     }
 }
@@ -81,8 +80,8 @@ sub root :Chained('/') :PathPart('action') :CaptureArgs(1) {
     # but only users can edit special pages
     if ($f_class eq 'special') {
         unless ($c->user_exists) {
-            $c->session(redirect_after_login => $c->request->path);
-            $c->response->redirect($c->uri_for('/login'));
+            $c->response->redirect($c->uri_for('/login',
+                                              { goto => $c->req->path }));
             $c->detach();
         }
     }
@@ -152,8 +151,9 @@ sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
     # but only users can edit special pages
     if ($f_class eq 'special') {
         unless ($c->user_exists) {
-            $c->session(redirect_after_login => $c->request->path);
-            $c->response->redirect($c->uri_for('/login'));
+            $c->response->redirect($c->uri_for('/login',
+                                               { goto => $c->req->path }));
+            $c->detach();
         }
     }
 
