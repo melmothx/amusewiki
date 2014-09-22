@@ -43,6 +43,8 @@ is_deeply [ $site->all_site_hostnames ],
 is_deeply [ $site->alternate_hostnames ],
   [ "$site_id.amusewiki.org" ], "alternate_hostnames ok";
 
+$site->update({ secure_site => 0 });
+
 is $site->canonical_url, 'http://blablabla.amusewiki.org', "Url ok";
 
 $site->update({ secure_site => 1 });

@@ -39,6 +39,7 @@ sub create_site {
                                                    epub => 0,
                                                    lt_pdf => 0,
                                                    mode => 'blog',
+                                                   secure_site => 1,
                                                    canonical => $canonical,
                                                   })->discard_changes;
 
