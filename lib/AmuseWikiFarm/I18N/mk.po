@@ -54,7 +54,7 @@ msgstr ""
 "Линија која започнува со 6 или повеќе празни места значи централно "
 "порамнување."
 
-#. (site.canonical)
+#. (site.canonical_url)
 #: root/src/email/commit.tt:2
 msgid "A new revision has been created at %1"
 msgstr "Нова измена создадена на %1"
@@ -63,7 +63,7 @@ msgstr "Нова измена создадена на %1"
 msgid "A nice title"
 msgstr "Убав наслов"
 
-#: root/src/admin/edit.tt:219 root/src/text.tt:105 root/src/text.tt:106
+#: root/src/admin/edit.tt:228 root/src/text.tt:105 root/src/text.tt:106
 msgid "A4 imposed PDF"
 msgstr "А4 PDF за печатење"
 
@@ -101,7 +101,7 @@ msgstr "Додади прилог ((PNG, JPG или PDF)"
 msgid "Add this text to the bookbuilder"
 msgstr "Додади го овој текст на збирката"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:96 root/src/layout.tt:189
+#: lib/AmuseWikiFarm/Controller/Edit.pm:95 root/src/layout.tt:189
 #: root/src/layout.tt:405
 msgid "Add to library"
 msgstr "Додади во библиотека"
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Alias"
 msgstr "Алијас"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:206
+#: lib/AmuseWikiFarm/Controller/Console.pm:205
 msgid "Alias can't point to itself"
 msgstr "Алијасот не може да посочува на самиот себе"
 
@@ -184,16 +184,16 @@ msgstr "Расположиви ознаки за категории за заг�
 msgid "Back to the text"
 msgstr "Врати се на текстот"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:147
-#: lib/AmuseWikiFarm/Controller/Console.pm:222
+#: lib/AmuseWikiFarm/Controller/Admin.pm:152
+#: lib/AmuseWikiFarm/Controller/Console.pm:221
 msgid "Bad request"
 msgstr "Погрешно барање"
 
-#: root/src/admin/edit.tt:253
+#: root/src/admin/edit.tt:262
 msgid "Bare HTML, needed by the application"
 msgstr "Гол HTML, го бара апликацијата"
 
-#: root/src/admin/edit.tt:332 root/src/bookbuilder/index.tt:132
+#: root/src/admin/edit.tt:341 root/src/bookbuilder/index.tt:132
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Корекција за повезот во милиметри (дополнителна внатрешна маргина)"
 
@@ -215,7 +215,7 @@ msgstr "Здебелено"
 msgid "Bookbuilder"
 msgstr "Направи збирка"
 
-#: root/src/admin/edit.tt:179
+#: root/src/admin/edit.tt:188
 msgid "Bookbuilder page limit (integer)"
 msgstr "Максимален број на страници на збирката"
 
@@ -243,7 +243,7 @@ msgstr "Теми"
 msgid "Changes"
 msgstr "Измени"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:71
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:70
 msgid "Changes applied"
 msgstr "Внесени измени"
 
@@ -269,7 +269,7 @@ msgstr "Поглавје, само за цели книги"
 msgid "Cheatsheet for the markup"
 msgstr "Потсетник за обликување на текстот"
 
-#: root/src/admin/edit.tt:295 root/src/bookbuilder/index.tt:102
+#: root/src/admin/edit.tt:304 root/src/bookbuilder/index.tt:102
 msgid "Choose a paper format"
 msgstr "Избери формат на хартијата"
 
@@ -297,16 +297,16 @@ msgstr "Готово"
 msgid "Computing of differences took"
 msgstr "За пресметување на разликите беше потребно"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:140
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:160
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:138
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:158
 msgid "Couldn't add the text"
 msgstr "Не беше возможно да се додаде текстот"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:850
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:870
 msgid "Couldn't automatically generate the uri!"
 msgstr "Невозможно е автоматски да се генерира URI за овој текст"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:97
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:95
 msgid "Couldn't build that"
 msgstr "Не можеше да се направи збирка"
 
@@ -330,7 +330,7 @@ msgstr "Креирај алијас за темата"
 msgid "Create an author alias"
 msgstr "Креирај алијас за авторот"
 
-#: root/src/admin/list.tt:80
+#: root/src/admin/list.tt:86
 msgid "Create new site"
 msgstr "Креирај нов сајт"
 
@@ -342,7 +342,7 @@ msgstr "Креирај корисник и испрати лозинка"
 msgid "Created"
 msgstr "Креирано"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:129
+#: lib/AmuseWikiFarm/Controller/Edit.pm:128
 msgid "Created new text"
 msgstr "Креиран е нов текст"
 
@@ -359,7 +359,7 @@ msgstr "Датум на оригиналното издание"
 msgid "Deferred/Deleted texts"
 msgstr "Одложени/избришани текстови"
 
-#: root/src/admin/jobs.tt:66 root/src/bookbuilder/index.tt:38
+#: root/src/admin/jobs.tt:62 root/src/bookbuilder/index.tt:38
 #: root/src/console/alias_display.tt:126
 msgid "Delete"
 msgstr "Избриши"
@@ -384,7 +384,7 @@ msgstr "Одредиште"
 msgid "Differences"
 msgstr "Разлики"
 
-#: root/src/admin/edit.tt:282
+#: root/src/admin/edit.tt:291
 msgid ""
 "Directory with templates. Do not set it unless you know what you are doing"
 msgstr ""
@@ -398,11 +398,11 @@ msgstr "Покажи го URL kako"
 msgid "Displaying"
 msgstr "Покажувам"
 
-#: root/src/admin/edit.tt:312 root/src/bookbuilder/index.tt:116
+#: root/src/admin/edit.tt:321 root/src/bookbuilder/index.tt:116
 msgid "Division factor"
 msgstr "Фактор на поделба"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:74
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:73
 msgid "Done"
 msgstr "Готово"
 
@@ -414,7 +414,7 @@ msgstr "Двојни линии"
 msgid "Downloads"
 msgstr "Преземања"
 
-#: root/src/admin/edit.tt:264
+#: root/src/admin/edit.tt:273
 msgid "EPUB"
 msgstr "EPUB"
 
@@ -453,16 +453,16 @@ msgstr "Уредување"
 msgid "Email"
 msgstr "Email"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:265
+#: lib/AmuseWikiFarm/Controller/User.pm:260
 msgid "Email sent!"
 msgstr "Email-от е пратен!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:308
+#: lib/AmuseWikiFarm/Controller/User.pm:303
 msgid "Email updated"
 msgstr "Email-от е ажуриран"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:225
-#: lib/AmuseWikiFarm/Controller/User.pm:319
+#: lib/AmuseWikiFarm/Controller/User.pm:220
+#: lib/AmuseWikiFarm/Controller/User.pm:314
 msgid "Emails do not match"
 msgstr "E-mail-овите не се поклопуваат"
 
@@ -471,7 +471,7 @@ msgid "Erase this revision"
 msgstr "Избриши ја измената"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:345
-#: lib/AmuseWikiFarm/Controller/User.pm:262
+#: lib/AmuseWikiFarm/Controller/User.pm:257
 msgid "Error sending mail!"
 msgstr "Грешка при праќање на e-mail-от !"
 
@@ -515,12 +515,12 @@ msgstr "Типографски исправки"
 msgid "Fixed category list"
 msgstr "Непроменлива листа на категории"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:179
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:177
 #: root/src/bookbuilder/fonts.tt:4
 msgid "Font preview"
 msgstr "Преглед на фонт"
 
-#: root/src/admin/edit.tt:352
+#: root/src/admin/edit.tt:361
 msgid "Font size"
 msgstr "Големина на фонт"
 
@@ -532,7 +532,7 @@ msgstr "Фусноти"
 msgid "For texts from the internet use"
 msgstr "За текстови од интернет употреби"
 
-#: root/src/admin/edit.tt:400 root/src/bookbuilder/index.tt:194
+#: root/src/admin/edit.tt:409 root/src/bookbuilder/index.tt:194
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 "Доколку текстот нема содржина, започни го текстот на првата страница (без "
@@ -556,17 +556,13 @@ msgstr "Принуди на објавување"
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Форматирање: гггг-мм-дд:мм, нпр.:"
 
-#: root/src/admin/edit.tt:188
+#: root/src/admin/edit.tt:197
 msgid "Formats"
 msgstr "Формати"
 
 #: lib/AmuseWikiFarm/Controller/Library.pm:74
 msgid "Full list of texts"
 msgstr "Сите текстови"
-
-#: root/src/admin/edit.tt:159
-msgid "Full site canonical URL, including protocol"
-msgstr "Целиот основен URL, вклучувајќи го протоколот"
 
 #: root/src/search/index.tt:7 root/src/search/index.tt:91
 msgid "Full text search"
@@ -576,11 +572,11 @@ msgstr "Пребарување на целиот текст"
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Генеричен формат (го собира и на А4 и на Letter)"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:70
+#: lib/AmuseWikiFarm/Controller/Console.pm:69
 msgid "Git console"
 msgstr "Git конзола"
 
-#: root/src/admin/edit.tt:242
+#: root/src/admin/edit.tt:251
 msgid "HTML"
 msgstr "HTML"
 
@@ -600,7 +596,7 @@ msgstr "Заглавија"
 msgid "Hide options"
 msgstr "Сокриј ги опциите"
 
-#: root/src/admin/edit.tt:313 root/src/bookbuilder/index.tt:118
+#: root/src/admin/edit.tt:322 root/src/bookbuilder/index.tt:118
 msgid "Higher division factor means narrower margins"
 msgstr "Колку факторот на поделба е поголем толку маргините ќе бидат потесни"
 
@@ -608,7 +604,7 @@ msgstr "Колку факторот на поделба е поголем тол
 msgid "How to choose a password"
 msgstr "Како да избереш лозинка"
 
-#: root/src/user/human.tt:17
+#: root/src/user/human.tt:18
 msgid "I am human"
 msgstr "Јас сум човек"
 
@@ -650,7 +646,7 @@ msgstr ""
 msgid "Images:"
 msgstr "Слики:"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:185
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:183
 #: root/src/bookbuilder/schemas.tt:3
 msgid "Imposition schemas"
 msgstr "Обрасци за прелом на текстот"
@@ -671,20 +667,20 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Елементи по линија"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:233 root/src/layout.tt:278
+#: lib/AmuseWikiFarm/Controller/Console.pm:232 root/src/layout.tt:278
 msgid "Internal list of translations"
 msgstr "Внатрешна листа на преводи"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:206
-#: lib/AmuseWikiFarm/Controller/User.pm:311
+#: lib/AmuseWikiFarm/Controller/User.pm:201
+#: lib/AmuseWikiFarm/Controller/User.pm:306
 msgid "Invalid email"
 msgstr "Погрешен e-mail"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:105
+#: lib/AmuseWikiFarm/Controller/Admin.pm:110
 msgid "Invalid name"
 msgstr "Погрешно име"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:197
+#: lib/AmuseWikiFarm/Controller/User.pm:192
 msgid "Invalid username"
 msgstr "Погрешно корисничко име"
 
@@ -696,15 +692,15 @@ msgstr "Курзив"
 msgid "Italics, bold, monospace, linebreaks..."
 msgstr "Курзив, здебелено, нов ред..."
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:140
+#: lib/AmuseWikiFarm/Controller/Admin.pm:145
 msgid "Job deleted"
 msgstr "Задачата е избришана"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:143
+#: lib/AmuseWikiFarm/Controller/Admin.pm:148
 msgid "Job not found"
 msgstr "Задачата не е пронајдена"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:125 root/src/layout.tt:331
+#: lib/AmuseWikiFarm/Controller/Admin.pm:130 root/src/layout.tt:331
 msgid "Jobs"
 msgstr "Задачи"
 
@@ -767,7 +763,7 @@ msgstr "Последни записи"
 msgid "Leave it blank if you want it published right away."
 msgstr "Остави празно ако сакаш веднаш да се објави."
 
-#: root/src/admin/edit.tt:230 root/src/text.tt:114 root/src/text.tt:115
+#: root/src/admin/edit.tt:239 root/src/text.tt:114 root/src/text.tt:115
 msgid "Letter imposed PDF"
 msgstr "PDF спремен за печатење во letter формат"
 
@@ -800,11 +796,11 @@ msgstr ""
 msgid "Locale"
 msgstr "Јазик"
 
-#: root/src/user/login.tt:16
+#: root/src/user/login.tt:17
 msgid "Log in"
 msgstr "Логирај се"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:61
+#: lib/AmuseWikiFarm/Controller/User.pm:63
 msgid "Login"
 msgstr "Најава"
 
@@ -824,7 +820,11 @@ msgstr "Магично прашање"
 msgid "Mail from"
 msgstr "E-mail од"
 
-#: root/src/admin/edit.tt:369
+#: root/src/admin/edit.tt:159 root/src/admin/list.tt:80
+msgid "Main canonical hostname, without protocol"
+msgstr ""
+
+#: root/src/admin/edit.tt:378
 msgid "Main font"
 msgstr "Главен фонт"
 
@@ -852,7 +852,7 @@ msgstr "Порака"
 msgid "Missing #title header in the text!"
 msgstr "#title недостига во текстот!"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:200
+#: lib/AmuseWikiFarm/Controller/Console.pm:199
 msgid "Missing alias"
 msgstr "Недостига алијас"
 
@@ -862,11 +862,11 @@ msgstr ""
 "Буквите кои недостигаат ќе бидат прикажани (следниве фонтови целосно го "
 "поддржуваат кириличното писмо: Linux Libertine, Computer Modern, Charis SIL)"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:203
+#: lib/AmuseWikiFarm/Controller/Console.pm:202
 msgid "Missing redirection"
 msgstr "Недостига пренасочување"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:70
+#: lib/AmuseWikiFarm/Controller/User.pm:72
 msgid "Missing username or password"
 msgstr "Недостига корисничко име или лозинка"
 
@@ -972,7 +972,7 @@ msgstr ""
 "или да се обидеш подоцна, или, уште подобро, да ги контактираш "
 "библиотекарите за да се избегне беспотребно трошење енергија."
 
-#: root/src/user/human.tt:21
+#: root/src/user/human.tt:22
 msgid "Or log in, if you have an account."
 msgstr "Или најави се, доколку имаш сметка."
 
@@ -993,14 +993,14 @@ msgstr "PDF лого (задолжителна насока или името н
 msgid "PDFs cannot be used in the body."
 msgstr "Не е можно да се користат PDF датотеки во самите текстови."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 #: root/src/edit/edit.tt:108 root/src/edit/edit.tt:109
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "PDF датотеките кои не се на листата %1 ќе бидат зачувани, но игнорирани."
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:125
+#: lib/AmuseWikiFarm/Controller/Root.pm:175
 msgid "Page not found!"
 msgstr "Страницата не е пронајдена!"
 
@@ -1043,16 +1043,16 @@ msgstr "Дел"
 msgid "Part, for larger books only"
 msgstr "Дел, само за поголеми книги"
 
-#: root/src/user/login.tt:11 root/src/user/login.tt:13
+#: root/src/user/login.tt:12 root/src/user/login.tt:14
 msgid "Password"
 msgstr "Лозинка"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:215
-#: lib/AmuseWikiFarm/Controller/User.pm:295
+#: lib/AmuseWikiFarm/Controller/User.pm:210
+#: lib/AmuseWikiFarm/Controller/User.pm:290
 msgid "Password too short"
 msgstr "Лозинката е прекратка"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:292
+#: lib/AmuseWikiFarm/Controller/User.pm:287
 msgid "Password updated"
 msgstr "Лозинката е ажурирана"
 
@@ -1060,8 +1060,8 @@ msgstr "Лозинката е ажурирана"
 msgid "Password, minimum 8 characters."
 msgstr "Лозинка, минимум 8 карактери"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:220
-#: lib/AmuseWikiFarm/Controller/User.pm:299
+#: lib/AmuseWikiFarm/Controller/User.pm:215
+#: lib/AmuseWikiFarm/Controller/User.pm:294
 msgid "Passwords do not match"
 msgstr "Лозинките не се совпаѓаат"
 
@@ -1077,7 +1077,7 @@ msgstr "Измени на чекање"
 msgid "Picture"
 msgstr "Слика"
 
-#: root/src/admin/edit.tt:208
+#: root/src/admin/edit.tt:217
 msgid "Plain PDF"
 msgstr "Обичен PDF"
 
@@ -1160,7 +1160,7 @@ msgstr ""
 "документ, тоа можеш да го направиш само овде за да го зачуваш изворниот "
 "изглед на текстот (курзив, здебелено итн.)"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:118 root/src/user/human.tt:5
+#: lib/AmuseWikiFarm/Controller/User.pm:116 root/src/user/human.tt:5
 msgid "Please prove you are a human"
 msgstr "Докажи дека си човек"
 
@@ -1247,11 +1247,11 @@ msgstr "Четвртина од letter форматот"
 msgid "Query was"
 msgstr "Прашањето е"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:80
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:79
 msgid "Queue"
 msgstr "Низа"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:150
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:148
 msgid "Quota exceeded, too many pages"
 msgstr "Премногу страници"
 
@@ -1275,7 +1275,7 @@ msgstr "Причина"
 msgid "Recheck"
 msgstr "Провери повторно"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:174
+#: lib/AmuseWikiFarm/Controller/Console.pm:173
 #: root/src/console/alias_display.tt:3 root/src/layout.tt:304
 msgid "Redirections"
 msgstr "Пренасочувања"
@@ -1370,11 +1370,11 @@ msgstr "Покажи ги опциите"
 msgid "Single bars"
 msgstr "Единечна лента"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:88
+#: lib/AmuseWikiFarm/Controller/Admin.pm:89
 msgid "Site already exists"
 msgstr "Сајтот веќе постои"
 
-#: root/src/admin/edit.tt:169 root/src/admin/list.tt:14
+#: root/src/admin/edit.tt:178 root/src/admin/list.tt:14
 msgid "Site group"
 msgstr "Група на сајтот"
 
@@ -1406,12 +1406,12 @@ msgstr "Сајтови"
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "За да не праќаме лозинки на погрешни личности"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:179
+#: lib/AmuseWikiFarm/Controller/User.pm:174
 msgid "Some fields are missing, all are required"
 msgstr "Некои полиња недостигаат, сите се задолжителни"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:188
-#: lib/AmuseWikiFarm/Controller/User.pm:315
+#: lib/AmuseWikiFarm/Controller/User.pm:183
+#: lib/AmuseWikiFarm/Controller/User.pm:310
 msgid "Some fields are too long"
 msgstr "Некои полиња се предолги"
 
@@ -1482,11 +1482,11 @@ msgstr ""
 "Вакво заглавие го брише текстот од архивата и го заменува со пренасочување, "
 "а ќе се гледа овде."
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:861
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:881
 msgid "Such an uri already exists"
 msgstr "Такво URI веќе постои"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:231
+#: lib/AmuseWikiFarm/Controller/User.pm:226
 msgid "Such username already exists"
 msgstr "Такво корисничко име веќе постои"
 
@@ -1510,7 +1510,7 @@ msgstr "Табели"
 msgid "Task"
 msgstr "Задача"
 
-#: root/src/admin/edit.tt:197
+#: root/src/admin/edit.tt:206
 msgid "TeX"
 msgstr "TeX"
 
@@ -1526,7 +1526,7 @@ msgstr ""
 msgid "Texts"
 msgstr "Текстови"
 
-#: root/src/admin/edit.tt:411
+#: root/src/admin/edit.tt:420
 msgid "The logo has the site name on itself"
 msgstr "Логото го содржи името на сајтот"
 
@@ -1639,8 +1639,8 @@ msgstr "Наслов за азбучно подредување"
 msgid "Titles"
 msgstr "Наслови"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
 msgstr "За да ја објавиш измената, оди на %1"
@@ -1699,7 +1699,7 @@ msgstr "Тројна лента"
 msgid "Try a random text if unsure"
 msgstr "Обиди се со случаен текст доколку не си сигурен"
 
-#: root/src/admin/edit.tt:389 root/src/bookbuilder/index.tt:180
+#: root/src/admin/edit.tt:398 root/src/bookbuilder/index.tt:180
 msgid "Two side layout"
 msgstr "Двостран прелом"
 
@@ -1720,7 +1720,7 @@ msgstr "UTC"
 msgid "Unique ID for the text"
 msgstr "Единствен ID за текстот"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:104
+#: lib/AmuseWikiFarm/Controller/Console.pm:103
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
@@ -1729,7 +1729,7 @@ msgstr "Необјавени текстови"
 msgid "Unsupported file type %1"
 msgstr "Погрешен вид на фајл %1"
 
-#: root/src/admin/edit.tt:446 root/src/bookbuilder/index.tt:288
+#: root/src/admin/edit.tt:455 root/src/bookbuilder/index.tt:288
 #: root/src/user/edit.tt:39
 msgid "Update"
 msgstr "Ажурирај"
@@ -1745,6 +1745,10 @@ msgstr "Прикачи"
 #: root/src/macros.tt:24
 msgid "Url"
 msgstr "Url"
+
+#: root/src/admin/edit.tt:172
+msgid "Use SSL for authenticated users"
+msgstr ""
 
 #: root/src/edit/edit.tt:88
 msgid "Use it in the body as"
@@ -1764,11 +1768,11 @@ msgstr ""
 "ред за одвојување на пасусите."
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/User.pm:239
+#: lib/AmuseWikiFarm/Controller/User.pm:234
 msgid "User %1 created!"
 msgstr "Корисникот %1 е креиран!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:246
+#: lib/AmuseWikiFarm/Controller/User.pm:241
 msgid "User created"
 msgstr "Корисникот е креиран"
 
@@ -1785,7 +1789,7 @@ msgstr ""
 msgid "Verbatim block"
 msgstr "Предформатиран дел"
 
-#: root/src/admin/edit.tt:422 root/src/text.tt:166 root/src/text.tt:167
+#: root/src/admin/edit.tt:431 root/src/text.tt:166 root/src/text.tt:167
 msgid "View history"
 msgstr "Историја"
 
@@ -1793,7 +1797,7 @@ msgstr "Историја"
 msgid "Virtual hosts"
 msgstr "Виртуелни хостови"
 
-#: root/src/admin/edit.tt:431
+#: root/src/admin/edit.tt:440
 msgid "Virtual hosts, one per line"
 msgstr "Виртуелни хостови, по еден во ред"
 
@@ -1819,11 +1823,11 @@ msgstr ""
 "текстовите во библиотеката. Можеш да направиш свој буклет со повеќе текстови "
 "заедно. Обиди се!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:129
+#: lib/AmuseWikiFarm/Controller/User.pm:124
 msgid "Wrong answer!"
 msgstr "Погрешен одговор!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:97
+#: lib/AmuseWikiFarm/Controller/User.pm:95
 msgid "Wrong username or password"
 msgstr "Погрешно корисничко име или лозинка"
 
@@ -1835,7 +1839,7 @@ msgstr "XeLaTeX извор"
 msgid "Year"
 msgstr "Година"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:113
+#: lib/AmuseWikiFarm/Controller/User.pm:111
 msgid "You already proved you are human"
 msgstr "Веќе докажа дека си човек"
 
@@ -1843,7 +1847,7 @@ msgstr "Веќе докажа дека си човек"
 msgid "You are already logged in"
 msgstr "Веќе си пријавен"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:88
+#: lib/AmuseWikiFarm/Controller/User.pm:90
 msgid "You are logged in now!"
 msgstr "Сега си пријавен!"
 
@@ -1856,8 +1860,8 @@ msgstr ""
 "Кликни на иконата \"Плус\", покрај преземања, кај секој од текстовите за да "
 "го додадеш на својата збирка. Подоцна можеш да додадеш или избришеш текстови."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
 msgstr "Можеш да создадеш сметка на %1"
@@ -1872,7 +1876,7 @@ msgid ""
 msgstr ""
 "Не можеш да направиш нова измена затоа што текстот сѐ уште не е објавен"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:104
+#: lib/AmuseWikiFarm/Controller/User.pm:102
 msgid "You have logged out"
 msgstr "Одјавен си"
 
@@ -1880,8 +1884,8 @@ msgstr "Одјавен си"
 msgid "You may want to resume the editing of one of them"
 msgstr "Можеш да се вратиш на една од измените во тек"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr "Треба веднаш да ја промениш својата лозинка на %1"
@@ -1898,7 +1902,7 @@ msgstr ""
 msgid "Your chapter here..."
 msgstr "Твоето поглавје"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:67
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:66
 msgid "Your file is ready"
 msgstr "Твојата датотека е подготвена"
 
@@ -1919,7 +1923,7 @@ msgstr "Твојот подпододдел (или опис на заглави
 msgid "Your subsection here..."
 msgstr "Твојот пододдел"
 
-#. (site.canonical)
+#. (site.canonical_url)
 #: root/src/email/newuser.tt:2
 msgid "Your user at %1 has been created."
 msgstr "Твојот корисник е креиран на %1."
@@ -1929,7 +1933,7 @@ msgstr "Твојот корисник е креиран на %1."
 msgid "Your username is %1."
 msgstr "Твоето корисничко име е %1."
 
-#: root/src/admin/edit.tt:275
+#: root/src/admin/edit.tt:284
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "ZIP архивата со извор, потребна за создавање на збирка"
 
@@ -2141,6 +2145,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Full site canonical URL, including protocol"
+#~ msgstr "Целиот основен URL, вклучувајќи го протоколот"
 
 #~ msgid ""
 #~ "Same as 2up, but each page is rotated by 90 degrees counter-clockwise."
