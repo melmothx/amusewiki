@@ -1,6 +1,6 @@
 This file documents the revision history for Perl extension AmuseWikiFarm.
 
-FUTURE RELEASE
+0.998 2014-09-22
 
 DB upgrade required. Procedure to upgrade. Stop the server. Run:
 ./script/upgrade-to-secure-site.pl, apply the sql patch, start the
