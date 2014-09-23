@@ -70,7 +70,20 @@ print Dumper(\%hostnames);
 
 
 my @alternates = sort keys %hostnames;
-my $cn = shift @alternates;
+
+my $cn;
+# try to find the first non *.
+foreach my $alt (@alternates) {
+    if ($alt =~ m/^\w/) {
+        $cn = $alt;
+        last;
+    }
+}
+unless ($cn) {
+    $cn = $alternates[0];
+    $cn =~ s/^\*\.//;
+}
+
 
 if (@alternates) {
     create_basic_conf($openssl_conf);
