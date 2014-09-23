@@ -84,6 +84,7 @@ unless ($cn) {
     $cn =~ s/^\*\.//;
 }
 
+@alternates = grep { $_ ne $cn } @alternates;
 
 if (@alternates) {
     create_basic_conf($openssl_conf);
