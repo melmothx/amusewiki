@@ -97,7 +97,6 @@ sub auto :Private {
     # the layout
     my $login_uri = $c->uri_for_action('/user/login');
     if ($site->secure_site) {
-        $login_uri->host($site->canonical);
         $login_uri->scheme('https');
     }
     $c->stash(user_login_uri => $login_uri);
