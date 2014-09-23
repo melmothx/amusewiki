@@ -2007,12 +2007,19 @@ sub static_indexes_generator {
 
 sub canonical_url {
     my $self = shift;
-    my $proto = 'http://';
-    if ($self->secure_site) {
-        $proto = 'https://';
-    }
-    return $proto . $self->canonical;
+    return 'http://' . $self->canonical;
 }
+
+sub canonical_url_secure {
+    my $self = shift;
+    if ($self->secure_site) {
+        return 'https://' . $self->canonical;
+    }
+    else {
+        return $self->canonical_url;
+    }
+}
+
 
 sub all_site_hostnames {
     my $self = shift;

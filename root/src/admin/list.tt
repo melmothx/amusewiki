@@ -46,7 +46,7 @@
         [% obj.mail_notify | html %]
       </td>
       <td>
-        <a href="[% obj.canonical_url %]">[% obj.canonical %]</a>
+        <a href="[% obj.canonical_url_secure %]">[% obj.canonical %]</a>
       </td>
       <td>
         <ul>

@@ -20,12 +20,12 @@
     [% FOREACH job IN jobs %]
     <tr>
       <td>
-        <a href="[% job.site.canonical_url %]/tasks/status/[% job.id %]">
+        <a href="[% job.site.canonical_url_secure %]/tasks/status/[% job.id %]">
           [% job.id | html %]
         </a>
       </td>
       <td>
-        <a href="[% job.site.canonical_url %]">
+        <a href="[% job.site.canonical_url_secure %]">
           [% job.site_id | html %]  
         </a>
       </td>
@@ -49,7 +49,7 @@
       </td>
       <td>
         [% IF job.produced %]
-        <a href="[% job.site.canonical_url %][% job.produced %]">[% job.produced | html %]</a>
+        <a href="[% job.site.canonical_url_secure %][% job.produced %]">[% job.produced | html %]</a>
         [% END %]
       </td>
       <td>

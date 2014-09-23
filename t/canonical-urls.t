@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 8;
+use Test::More tests => 10;
 
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -46,10 +46,11 @@ is_deeply [ $site->alternate_hostnames ],
 $site->update({ secure_site => 0 });
 
 is $site->canonical_url, 'http://blablabla.amusewiki.org', "Url ok";
+is $site->canonical_url_secure, 'http://blablabla.amusewiki.org', "Url ok";
 
 $site->update({ secure_site => 1 });
 
-is $site->canonical_url, 'https://blablabla.amusewiki.org', "Url ok with https";
-
+is $site->canonical_url, 'http://blablabla.amusewiki.org', "Url ok with https";
+is $site->canonical_url_secure, 'https://blablabla.amusewiki.org', "Url ok";
 
 $site->delete;
