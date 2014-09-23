@@ -197,7 +197,8 @@ is really big, maybe you can make scroll box for it.
 Retried with another solution
 
 
-* TODO HTTPS support
+* DONE HTTPS support
+  CLOSED: [2014-09-23 mar 15:16]
 
 Unclear if needed to enforce it or not. Pain in the ass for the
 multisite thing.
@@ -214,7 +215,11 @@ This way, we can save a query against the vhost table
 
 Not needed.
 
-** TODO Do not use https:// with canonical_url, but only where it makes sense.
+** DONE Do not use https:// with canonical_url, but only where it makes sense.
+   CLOSED: [2014-09-23 mar 13:30]
+
+** DONE Add a script to generate the certificate with alternate names
+   CLOSED: [2014-09-23 mar 15:16]
 
 * DONE Optimization
   CLOSED: [2014-09-15 lun 15:22]
