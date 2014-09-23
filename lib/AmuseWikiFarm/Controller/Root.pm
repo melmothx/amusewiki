@@ -190,7 +190,6 @@ sub redirect_to_secure :Private {
     my $site = $c->stash->{site};
     if ($site->secure_site) {
         my $uri = $c->request->uri->clone;
-        $uri->host($site->canonical);
         $uri->scheme('https');
         $c->response->redirect($uri);
         $c->detach();
