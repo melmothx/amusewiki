@@ -52,9 +52,13 @@ my %hostnames;
 
 for my $host (@vhosts) {
     if ($wildcards) {
-        my $wild = $host;
-        $wild =~ s/^[\w-]+/*/;
-        $hostnames{$wild} = 1;
+        if ($host =~ m/^[\w-]+(\.[\w-]+\.[\w-]+)$/) {
+            my $wild = '*' . $1;
+            $hostnames{$wild} = 1;
+        }
+        else {
+            $hostnames{$host} = 1;
+        }
     }
     else {
         $hostnames{$host} = 1;
