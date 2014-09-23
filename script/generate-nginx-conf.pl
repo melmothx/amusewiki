@@ -48,6 +48,7 @@ EOF
 print_server_stanza($hosts);
 warn "Please install a key and a certificate for your (canonical) hosts at "
   . "/etc/nginx/ssl/amusewiki.key and /etc/nginx/ssl/amusewiki.cert\n";
+warn "You can use the script script/generate-ssl-certs.pl [--wildcards]\n";
 
 sub print_server_stanza {
     my ($server_names) = @_;
