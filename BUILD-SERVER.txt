@@ -53,7 +53,7 @@ traffic into the repo directory, which has to be cleaned up).
 
 mkdir testing; cd testing; git clone https://github.com/melmothx/amusewiki.git
 cd amusewiki
-cpanm --install-deps .
+cpanm --installdeps .
 make test
 
 If everything is fine, proceed to INSTALL.txt 
