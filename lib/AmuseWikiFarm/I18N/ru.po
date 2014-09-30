@@ -979,13 +979,13 @@ msgstr "PDF лого (точный путь или поместите в  texmf)
 msgid "PDFs cannot be used in the body."
 msgstr "PDF не могут быть использованы в теле текста"
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 #: root/src/edit/edit.tt:108 root/src/edit/edit.tt:109
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF не прописанные в %1 будут сохранены но проигнорированы"
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:175
+#: lib/AmuseWikiFarm/Controller/Root.pm:174
 msgid "Page not found!"
 msgstr "Страница не найдена"
 
@@ -1620,8 +1620,8 @@ msgstr "Название (для сортировки)"
 msgid "Titles"
 msgstr "Названия"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
 msgstr "Для применения изменений вы можете посетить %1"
@@ -1842,8 +1842,8 @@ msgstr ""
 "\" (находится рядом с ссылками на скачивание). Вы сможете добавить или "
 "удалить текст позже."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
 msgstr "Вы можете создать аналог в %1"
@@ -1866,8 +1866,8 @@ msgstr "Вы вышли"
 msgid "You may want to resume the editing of one of them"
 msgstr "Возможно вы захотите продолжить редактирование одной из них"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr "Вы должны сразу изменить свой пароль на %1"
@@ -1905,7 +1905,7 @@ msgstr "Ваш подзаголовок третьего уровня здесь
 msgid "Your subsection here..."
 msgstr "Ваш подзаголовк здесь"
 
-#. (site.canonical_url)
+#. (site.canonical_url_secure)
 #: root/src/email/newuser.tt:2
 msgid "Your user at %1 has been created."
 msgstr "Ваш пользователь в %1 был создан"

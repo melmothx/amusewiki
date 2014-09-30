@@ -993,14 +993,14 @@ msgstr "PDF лого (задолжителна насока или името н
 msgid "PDFs cannot be used in the body."
 msgstr "Не е можно да се користат PDF датотеки во самите текстови."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 #: root/src/edit/edit.tt:108 root/src/edit/edit.tt:109
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "PDF датотеките кои не се на листата %1 ќе бидат зачувани, но игнорирани."
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:175
+#: lib/AmuseWikiFarm/Controller/Root.pm:174
 msgid "Page not found!"
 msgstr "Страницата не е пронајдена!"
 
@@ -1639,8 +1639,8 @@ msgstr "Наслов за азбучно подредување"
 msgid "Titles"
 msgstr "Наслови"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
 msgstr "За да ја објавиш измената, оди на %1"
@@ -1860,8 +1860,8 @@ msgstr ""
 "Кликни на иконата \"Плус\", покрај преземања, кај секој од текстовите за да "
 "го додадеш на својата збирка. Подоцна можеш да додадеш или избришеш текстови."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
 msgstr "Можеш да создадеш сметка на %1"
@@ -1884,8 +1884,8 @@ msgstr "Одјавен си"
 msgid "You may want to resume the editing of one of them"
 msgstr "Можеш да се вратиш на една од измените во тек"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr "Треба веднаш да ја промениш својата лозинка на %1"
@@ -1923,7 +1923,7 @@ msgstr "Твојот подпододдел (или опис на заглави
 msgid "Your subsection here..."
 msgstr "Твојот пододдел"
 
-#. (site.canonical_url)
+#. (site.canonical_url_secure)
 #: root/src/email/newuser.tt:2
 msgid "Your user at %1 has been created."
 msgstr "Твојот корисник е креиран на %1."
