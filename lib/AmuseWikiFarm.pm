@@ -52,6 +52,7 @@ use Catalyst::Runtime 5.80;
 # +------+------+------+------+------+------+------+------+------+------'
 
 use Catalyst
+  'ConfigLoader',
   'I18N',
 #   'Static::Simple',
   '-Log=warn,fatal,error',
@@ -59,7 +60,7 @@ use Catalyst
   'Authentication',
   'Authorization::Roles',
   'Session',
-  'Session::Store::File',
+  'Session::Store::FastMmap',
   'Session::State::Cookie';
 
 
@@ -143,9 +144,12 @@ __PACKAGE__->config(
 
 __PACKAGE__->config(
     'Plugin::Session' => {
-        expires => 60 * 60 * 24 * 30, # 30 days for expiration
+        expires => 60 * 60 * 24, # 1 day for expiration
         verify_address => 1,
-        storage => __PACKAGE__->path_to(qw/opt cache session/),
+        verify_user_agent => 1,
+        cache_size => '40m',
+        unlink_on_exit => 0,
+        storage => __PACKAGE__->path_to(qw/opt cache fastmmap/),
     },
 );
 

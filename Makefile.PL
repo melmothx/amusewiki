@@ -12,7 +12,7 @@ all_from 'lib/AmuseWikiFarm.pm';
 requires 'Catalyst::Runtime' => '5.90065';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Session';
-requires 'Catalyst::Plugin::Session::Store::File';
+requires 'Catalyst::Plugin::Session::Store::FastMmap';
 requires 'Catalyst::Plugin::Session::State::Cookie';
 requires 'Catalyst::Plugin::Authorization::Roles';
 requires 'Catalyst::Authentication::Realm::SimpleDB';
