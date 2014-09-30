@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-30 20:25+0200\n"
+"PO-Revision-Date: 2014-09-30 21:14+0200\n"
 "Last-Translator: kolumbo <kolumbo@riseup.net>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -241,7 +241,7 @@ msgstr "Kanoninen nimi"
 
 #: root/src/layout.tt:146
 msgid "Catalog"
-msgstr "Katalogi"
+msgstr "Kokoelma"
 
 #: root/src/edit/newtext.tt:89
 msgid "Categories"
@@ -552,7 +552,7 @@ msgstr "Netistä otetuille teksteille"
 #: root/src/admin/edit.tt:409
 #: root/src/bookbuilder/index.tt:194
 msgid "For texts without a table of content, start text on the very first page"
-msgstr "Aloita sisällysluettelettomat tekstit ensimmäiseltä sivulta"
+msgstr "Aloita sisällysluettelottomat tekstit ensimmäiseltä sivulta"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
