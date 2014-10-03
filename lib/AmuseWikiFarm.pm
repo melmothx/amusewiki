@@ -144,10 +144,10 @@ __PACKAGE__->config(
 
 __PACKAGE__->config(
     'Plugin::Session' => {
-        expires => 60 * 60 * 24, # 1 day for expiration
-        verify_address => 1,
+        expires => 60 * 60 * 24 * 7, # 1 week for expiration
+        verify_address => 0, # let's keep the session across router's reboots
         verify_user_agent => 1,
-        cache_size => '40m',
+        cache_size => '100m',
         unlink_on_exit => 0,
         storage => __PACKAGE__->path_to(qw/opt cache fastmmap/),
     },
