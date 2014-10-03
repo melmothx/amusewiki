@@ -1779,7 +1779,7 @@ sub update_from_params {
     }
 
     if ($params->{canonical} and
-        $params->{canonical} =~ m/^[0-9a-z]+(\.[0-9a-z]+){2,4}$/) {
+        $params->{canonical} =~ m/^[0-9a-z-]+(\.[0-9a-z-]+){2,4}$/) {
         my $canonical = delete $params->{canonical};
         $self->canonical($canonical);
     }
