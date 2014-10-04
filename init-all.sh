@@ -22,8 +22,8 @@ start_all () {
 }
 
 stop_all () {
-	./init-fcgi.pl stop
     ./script/jobber.pl stop
+	./init-fcgi.pl stop
 }
 
 case $1 in
