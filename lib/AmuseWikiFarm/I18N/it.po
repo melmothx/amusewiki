@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-19 16:17+0200\n"
+"PO-Revision-Date: 2014-10-04 22:12+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -54,7 +54,7 @@ msgstr "Una riga che comincia con 6 o più spazi bianchi è centrata"
 #. (site.canonical_url)
 #: root/src/email/commit.tt:2
 msgid "A new revision has been created at %1"
-msgstr "Una nuova è stata creata a %1"
+msgstr "È stata creata una nuova revisione sul sito %1"
 
 #: root/src/edit/edit.tt:471
 msgid "A nice title"
