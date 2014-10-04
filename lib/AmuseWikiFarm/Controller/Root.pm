@@ -231,6 +231,12 @@ sub rss_xml :Path('/rss.xml') :Args(0) {
     $c->detach('/feed/index');
 }
 
+sub favicon :Path('/favicon.ico') :Args(0) {
+    my ($self, $c) = @_;
+    $c->detach('/sitefiles/local_files',
+                ['favicon.ico']);
+}
+
 =head2 index
 
 The root page (/) points to /library/ if there is no special/index
