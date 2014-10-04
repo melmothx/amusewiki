@@ -70,6 +70,19 @@ sub auto :Private {
     unless ($site) {
         if (my $vhost = $c->model('DB::Vhost')->find($host)) {
             $site = $vhost->site;
+            # permit the access to the site only if it's the canonical
+            # one this is kind of questionable, but it's a common SEO
+            # strategy to avoid splitting the results.
+            my $uri = $c->request->uri->clone;
+            $uri->host($site->canonical);
+            $c->log->warn("Redirecting to " . $uri->as_string);
+            # place a permanent redirect
+            $c->response->redirect($uri->as_string, 301);
+            $c->detach();
+            return;
+        }
+        else {
+            $c->log->warn("$host not found in vhosts");
         }
     }
     unless ($site) {

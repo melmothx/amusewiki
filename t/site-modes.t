@@ -42,7 +42,7 @@ my $sites = {
 diag "Creating sites";
 foreach my $m (keys %$sites) {
     my $site_ob = create_site($schema, $sites->{$m}->{id});
-    $site_ob->add_to_vhosts({ name => $sites->{$m}->{url} });
+    $site_ob->canonical($sites->{$m}->{url});
     my $repo_root = $site_ob->repo_root;
     $site_ob->magic_question('First month of the year');
     $site_ob->magic_answer('January');

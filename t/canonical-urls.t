@@ -5,36 +5,52 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 10;
+use Test::More tests => 13;
 
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::WWW::Mechanize::Catalyst;
-
+use Catalyst::Test 'AmuseWikiFarm';
+use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site_id = '0canonicals0';
+my $host = $site_id . '.amusewiki.org';
 
-my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                               host => "$site_id.amusewiki.org");
+my $res = request('/', { host => 'pincopallino.org' });
 
-$mech->get('/');
-is $mech->status, '403', "Access forbidded against non-existent host";
+is $res->code, '403', "Access forbidded against non-existent host";
 
 my $site = create_site($schema, $site_id);
-$mech->get_ok('/', "After site creation, site can be accessed");
+
+$res = request('/library', { host => $host });
+
+is $res->code, '200', "After site creation, site can be accessed"
+  or die;
 
 $site->update({ canonical => 'blablabla.amusewiki.org' });
-$mech->get('/');
-is $mech->status, '403', "Access forbidded after canonical change";
+$res = request('/', { host => $host });
+
+is $res->code, '403', "Access forbidded after canonical change";
 
 # then add the original host to the vhost
 
 $site->add_to_vhosts({ name => $site_id . '.amusewiki.org' });
-$mech->get_ok('/', "With hostname in vhost, site can be accessed again");
+$res = request('/', { host => $host });
+
+is $res->code, "301", "With hostname in vhost, site can be accessed again";
+
+is $res->header('location'), 'http://' . $site->canonical . '/';
+
+$res = request('/library', { host => $host });
+
+is $res->code, "301", "With hostname in vhost, site can be accessed again";
+
+is $res->header('location'), 'http://' . $site->canonical . '/library';
+
+
 
 is_deeply [ $site->all_site_hostnames ],
   [ "blablabla.amusewiki.org", "$site_id.amusewiki.org" ],
