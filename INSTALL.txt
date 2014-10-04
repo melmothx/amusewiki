@@ -187,7 +187,8 @@ should be good.
 
 Later, a list of repository for opt/etc/cgitrc can be obtained with
 
-  ./script/generated-cgit-repolist --gitpath /var/cache/git/
+  ./script/generate-cgit-repolist.pl --gitpath /var/cache/git/ \
+    --hostname amusewiki.org
 
 
 If you have texts with very long lines, you should consider tweaking
