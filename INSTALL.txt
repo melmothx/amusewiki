@@ -226,3 +226,7 @@ relevant word-wrapping, e.g.
 +    word-wrap: break-word;       /* Internet Explorer 5.5+ */
 +}
 +
++td.logo > a > img {
++    max-height: 50px;
++    padding-right: 10px;
++}
