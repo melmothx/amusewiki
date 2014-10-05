@@ -29,6 +29,11 @@ foreach my $site ($schema->resultset('Site')->all) {
     print "repo.url=" . $site->id . "\n";
     print "repo.path=" . $path . "\n";
     print "repo.desc=" . $site->sitename . "\n";
+    if ($site->has_site_file('navlogo.png')) {
+        print "repo.logo=" . $site->canonical_url_secure . "/sitefiles/" .
+          $site->id . "/navlogo.png\n";
+        print "repo.logo-link=" . $site->canonical_url_secure . "\n";
+    }
     if ($hostname) {
         print "repo.clone-url=git://$hostname/git/" . $site->id . ".git\n";
     }
