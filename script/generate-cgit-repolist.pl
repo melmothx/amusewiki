@@ -30,9 +30,9 @@ foreach my $site ($schema->resultset('Site')->all) {
     print "repo.path=" . $path . "\n";
     print "repo.desc=" . $site->sitename . "\n";
     if ($site->has_site_file('navlogo.png')) {
-        print "repo.logo=" . $site->canonical_url_secure . "/sitefiles/" .
+        print "repo.logo=" . $site->canonical_url . "/sitefiles/" .
           $site->id . "/navlogo.png\n";
-        print "repo.logo-link=" . $site->canonical_url_secure . "\n";
+        print "repo.logo-link=" . $site->canonical_url . "\n";
     }
     if ($hostname) {
         print "repo.clone-url=git://$hostname/git/" . $site->id . ".git\n";
