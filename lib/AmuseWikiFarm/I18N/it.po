@@ -20,7 +20,7 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 non esiste"
 
-#: root/src/edit/edit.tt:316
+#: root/src/edit/edit.tt:319
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Una o più linee vuote marcano l'inizio di un nuovo paragrafo"
 
@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "Esiste già un'immagine di copertina. Puoi rimpiazzarla caricandone una nuova"
 
-#: root/src/edit/edit.tt:393
+#: root/src/edit/edit.tt:396
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
@@ -39,15 +39,15 @@ msgstr ""
 "Una nota a piè di pagina è una riga che comincia con un numero tra\n"
 "parentesi quadre, senza alcun spazio bianco iniziale"
 
-#: root/src/edit/edit.tt:319
+#: root/src/edit/edit.tt:322
 msgid "A line which starts with 2 or more whitespaces is a quotation."
 msgstr "Una riga che inizia con 2 o più spazi bianchi è una citazione"
 
-#: root/src/edit/edit.tt:332
+#: root/src/edit/edit.tt:335
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
 msgstr "Una riga che comincia con 20 o più spazi bianchi è allineata a destra"
 
-#: root/src/edit/edit.tt:325
+#: root/src/edit/edit.tt:328
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr "Una riga che comincia con 6 o più spazi bianchi è centrata"
 
@@ -56,7 +56,7 @@ msgstr "Una riga che comincia con 6 o più spazi bianchi è centrata"
 msgid "A new revision has been created at %1"
 msgstr "È stata creata una nuova revisione sul sito %1"
 
-#: root/src/edit/edit.tt:471
+#: root/src/edit/edit.tt:474
 msgid "A nice title"
 msgstr "Un bel titolo"
 
@@ -91,7 +91,7 @@ msgstr "Azione"
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Aggiungi un'immagine di copertina (PNG o JPG)"
 
-#: root/src/edit/edit.tt:121
+#: root/src/edit/edit.tt:193
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Aggiungi un allegato (PNG, JPG o PDF)"
 
@@ -104,7 +104,7 @@ msgstr "Aggiungi questo testo all'impaginatore"
 msgid "Add to library"
 msgstr "Aggiungi un nuovo testo alla biblioteca"
 
-#: root/src/edit/edit.tt:507
+#: root/src/edit/edit.tt:510
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
@@ -150,11 +150,11 @@ msgstr ""
 msgid "Are you sure?"
 msgstr "Sicuro?"
 
-#: root/src/edit/edit.tt:99
+#: root/src/edit/edit.tt:173
 msgid "Attached PDFs"
 msgstr "PDF allegati"
 
-#: root/src/edit/edit.tt:84
+#: root/src/edit/edit.tt:158
 msgid "Attached images"
 msgstr "Immagini allegate"
 
@@ -163,16 +163,16 @@ msgstr "Immagini allegate"
 msgid "Author"
 msgstr "Autore"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:70 root/src/edit/edit.tt:222
+#: lib/AmuseWikiFarm/Controller/Category.pm:70 root/src/edit/edit.tt:115
 #: root/src/layout.tt:159 root/src/layout.tt:395 root/src/text.tt:41
 msgid "Authors"
 msgstr "Autori"
 
-#: root/src/edit/edit.tt:482 root/src/edit/newtext.tt:78
+#: root/src/edit/edit.tt:485 root/src/edit/newtext.tt:78
 msgid "Authors for indexing"
 msgstr "Autori indicizzati"
 
-#: root/src/edit/edit.tt:137
+#: root/src/edit/edit.tt:209
 msgid "Available category tags for header"
 msgstr "Codici categoria disponibili per l'intestazione"
 
@@ -216,7 +216,7 @@ msgstr "Impaginatore"
 msgid "Bookbuilder page limit (integer)"
 msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 
-#: root/src/bookbuilder/index.tt:285
+#: root/src/bookbuilder/index.tt:296
 msgid "Build it"
 msgstr "Impagina"
 
@@ -254,7 +254,7 @@ msgstr "Cambiamenti effettuati, ora sono in attesa di pubblicazione"
 msgid "Changes for %1"
 msgstr "Modifiche per %1"
 
-#: root/src/edit/edit.tt:298
+#: root/src/edit/edit.tt:301
 msgid "Chapter"
 msgstr "Capitolo"
 
@@ -262,7 +262,7 @@ msgstr "Capitolo"
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Capitolo, da usare esclusivamente per i capitoli di un libro"
 
-#: root/src/edit/edit.tt:265
+#: root/src/edit/edit.tt:268
 msgid "Cheatsheet for the markup"
 msgstr "Markup in sintesi"
 
@@ -282,7 +282,7 @@ msgstr "Clicca sulle immagini per avere un PDF di esempio"
 msgid "Close"
 msgstr "Chiudi"
 
-#: root/src/edit/edit.tt:188
+#: root/src/edit/edit.tt:260
 msgid "Commit"
 msgstr "Salva"
 
@@ -343,12 +343,12 @@ msgstr "Creazione riuscita"
 msgid "Created new text"
 msgstr "Un nuovo testo è stato creato"
 
-#: root/src/edit/edit.tt:229 root/src/publish/pending.tt:19
+#: root/src/edit/edit.tt:122 root/src/publish/pending.tt:19
 #: root/src/text.tt:50
 msgid "Date"
 msgstr "Data"
 
-#: root/src/edit/edit.tt:502 root/src/edit/newtext.tt:124
+#: root/src/edit/edit.tt:505 root/src/edit/newtext.tt:124
 msgid "Date of the original publication"
 msgstr "Data della pubblicazione originale"
 
@@ -405,7 +405,7 @@ msgstr "Fattore di divisione"
 msgid "Done"
 msgstr "Fatto"
 
-#: root/src/edit/edit.tt:464
+#: root/src/edit/edit.tt:467
 msgid "Double bars"
 msgstr "Doppie barre"
 
@@ -443,7 +443,7 @@ msgstr "Modifica questo testo"
 msgid "Edit user %1"
 msgstr "Modifica l'utenza %1"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:163 root/src/edit/edit.tt:114
+#: lib/AmuseWikiFarm/Controller/Edit.pm:163 root/src/edit/edit.tt:82
 #: root/src/edit/revs.tt:3
 msgid "Editing"
 msgstr "Modifica"
@@ -452,16 +452,16 @@ msgstr "Modifica"
 msgid "Email"
 msgstr "e-mail"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:260
+#: lib/AmuseWikiFarm/Controller/User.pm:261
 msgid "Email sent!"
 msgstr "e-mail inviata"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:303
+#: lib/AmuseWikiFarm/Controller/User.pm:304
 msgid "Email updated"
 msgstr "e-mail aggiornata"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:220
-#: lib/AmuseWikiFarm/Controller/User.pm:314
+#: lib/AmuseWikiFarm/Controller/User.pm:221
+#: lib/AmuseWikiFarm/Controller/User.pm:315
 msgid "Emails do not match"
 msgstr "Le e-mail non coincidono"
 
@@ -470,7 +470,7 @@ msgid "Erase this revision"
 msgstr "Cancella questa revisione"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:345
-#: lib/AmuseWikiFarm/Controller/User.pm:257
+#: lib/AmuseWikiFarm/Controller/User.pm:258
 msgid "Error sending mail!"
 msgstr "Errore nell'invio dell'e-mail"
 
@@ -478,7 +478,7 @@ msgstr "Errore nell'invio dell'e-mail"
 msgid "Errors"
 msgstr "Errori"
 
-#: root/src/edit/edit.tt:390 root/src/edit/edit.tt:396
+#: root/src/edit/edit.tt:393 root/src/edit/edit.tt:399
 msgid "Example"
 msgstr "Esempio"
 
@@ -490,28 +490,34 @@ msgstr "Redirezioni esistenti"
 msgid "File uploaded!"
 msgstr "File caricato!"
 
-#: root/src/bookbuilder/index.tt:279
+#: root/src/bookbuilder/index.tt:290
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Riempi con pagine bianche prima dell'ultima pagina se il fascicolo non è "
 "completo"
 
-#: root/src/edit/edit.tt:475
+#: root/src/edit/edit.tt:478
 msgid "First Author and Second Author"
 msgstr "Primo Autore e Secondo Autore"
 
-#: root/src/edit/edit.tt:480
+#: root/src/edit/edit.tt:483
 msgid "First Author, Second Author"
 msgstr "Primo Autore, Secondo Autore"
 
-#: root/src/edit/edit.tt:157
+#: root/src/edit/edit.tt:229
 msgid "Fix typography"
 msgstr "Attiva le correzioni tipografiche"
 
 #: root/src/admin/edit.tt:85
 msgid "Fixed category list"
 msgstr "Lista fissa delle categorie"
+
+#: root/src/bookbuilder/index.tt:246 root/src/bookbuilder/schemas.tt:29
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:177
 #: root/src/bookbuilder/fonts.tt:4
@@ -522,7 +528,7 @@ msgstr "Anteprima dei caratteri"
 msgid "Font size"
 msgstr "Dimensione caratteri"
 
-#: root/src/edit/edit.tt:276 root/src/edit/edit.tt:385
+#: root/src/edit/edit.tt:279 root/src/edit/edit.tt:388
 msgid "Footnotes"
 msgstr "Note a piè di pagina"
 
@@ -541,7 +547,7 @@ msgid ""
 "  here"
 msgstr "Qui puoi creare redirezioni a categorie e autori"
 
-#: root/src/edit/edit.tt:373
+#: root/src/edit/edit.tt:376
 msgid "Force a line break."
 msgstr "Forza un a capo"
 
@@ -585,7 +591,7 @@ msgstr "Mezzo foglio “Letter”"
 msgid "Heading"
 msgstr "Sezioni"
 
-#: root/src/edit/edit.tt:269 root/src/edit/edit.tt:292
+#: root/src/edit/edit.tt:272 root/src/edit/edit.tt:295
 msgid "Headings"
 msgstr "Sezione"
 
@@ -634,13 +640,13 @@ msgstr ""
 msgid "Image url"
 msgstr "URL dell'immagine"
 
-#: root/src/edit/edit.tt:94
+#: root/src/edit/edit.tt:168
 msgid "Images not used in the text are stored, but will be ignored."
 msgstr ""
 "Le immagini che non vengono utilizzate all'interno del testo sono salvate, "
 "ma ignorate."
 
-#: root/src/edit/edit.tt:452
+#: root/src/edit/edit.tt:455
 msgid "Images:"
 msgstr "Immagini:"
 
@@ -649,13 +655,13 @@ msgstr "Immagini:"
 msgid "Imposition schemas"
 msgstr "Schemi di impaginazione"
 
-#: root/src/edit/edit.tt:422
+#: root/src/edit/edit.tt:425
 msgid "In both case you will get a reverse indentation."
 msgstr ""
 "In entrambi i casi risulta un rientro negativo (la prima riga del\n"
 "paragrafo sporge a sinistra)."
 
-#: root/src/edit/edit.tt:388
+#: root/src/edit/edit.tt:391
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
@@ -663,7 +669,7 @@ msgstr ""
 "Nel testo, un numero tra parentesi quadre è interpretato come un\n"
 "riferimento a una nota a piè di pagina, se tale nota esiste."
 
-#: root/src/edit/edit.tt:345
+#: root/src/edit/edit.tt:348
 msgid "Inline elements"
 msgstr "Elementi per la riga"
 
@@ -671,8 +677,8 @@ msgstr "Elementi per la riga"
 msgid "Internal list of translations"
 msgstr "Lista interna delle traduzioni"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:201
-#: lib/AmuseWikiFarm/Controller/User.pm:306
+#: lib/AmuseWikiFarm/Controller/User.pm:202
+#: lib/AmuseWikiFarm/Controller/User.pm:307
 msgid "Invalid email"
 msgstr "E-mail non valida"
 
@@ -680,7 +686,7 @@ msgstr "E-mail non valida"
 msgid "Invalid name"
 msgstr "Nome non valido"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:192
+#: lib/AmuseWikiFarm/Controller/User.pm:193
 msgid "Invalid username"
 msgstr "Nome utente non valido"
 
@@ -688,7 +694,7 @@ msgstr "Nome utente non valido"
 msgid "Italic"
 msgstr "Corsivo"
 
-#: root/src/edit/edit.tt:273
+#: root/src/edit/edit.tt:276
 msgid "Italics, bold, monospace, linebreaks..."
 msgstr "Corsivo, grassetto, a capo..."
 
@@ -741,7 +747,7 @@ msgstr ""
 msgid "Language"
 msgstr "Lingua"
 
-#: root/src/edit/edit.tt:515
+#: root/src/edit/edit.tt:518
 msgid "Language code of the document (2 or 3 letters). "
 msgstr "Codice lingua del documento (2 o 3 lettere)"
 
@@ -773,7 +779,7 @@ msgstr "Carta Letter"
 msgid "Link"
 msgstr "Collegamento"
 
-#: root/src/edit/edit.tt:283 root/src/edit/edit.tt:441
+#: root/src/edit/edit.tt:286 root/src/edit/edit.tt:444
 msgid "Links and images"
 msgstr "Collegamenti e immagini"
 
@@ -781,11 +787,11 @@ msgstr "Collegamenti e immagini"
 msgid "List of texts on hold"
 msgstr "Lista dei testi in attesa di approvazione"
 
-#: root/src/edit/edit.tt:282 root/src/edit/edit.tt:425
+#: root/src/edit/edit.tt:285 root/src/edit/edit.tt:428
 msgid "Lists"
 msgstr "Liste"
 
-#: root/src/edit/edit.tt:426
+#: root/src/edit/edit.tt:429
 msgid "Lists start with a single leading whitespace"
 msgstr "Le liste cominciano con un singolo spazio bianco a inizio riga"
 
@@ -829,11 +835,11 @@ msgstr "Carattere principale"
 msgid "Main text"
 msgstr "Corpo del testo"
 
-#: root/src/edit/edit.tt:445
+#: root/src/edit/edit.tt:448
 msgid "Make a link clickable"
 msgstr "Rendi un collegamento cliccabile"
 
-#: root/src/edit/edit.tt:165
+#: root/src/edit/edit.tt:237
 msgid "Make all links active"
 msgstr "Rendi tutti i collegamenti cliccabili"
 
@@ -889,7 +895,7 @@ msgstr "Sposta in su"
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Multilingua: lista di codici lingua separati da uno spazio bianco"
 
-#: root/src/edit/edit.tt:89
+#: root/src/edit/edit.tt:163
 msgid "My description"
 msgstr "La mia descrizione"
 
@@ -913,7 +919,7 @@ msgstr "Nuovo ID sito"
 msgid "Next"
 msgstr "Prossimo"
 
-#: root/src/edit/edit.tt:487
+#: root/src/edit/edit.tt:490
 msgid "Nice title"
 msgstr "Un bel titolo"
 
@@ -925,11 +931,11 @@ msgstr "Nessun risultato trovato!"
 msgid "No text found!"
 msgstr "Nessun testo trovato"
 
-#: root/src/bookbuilder/index.tt:330
+#: root/src/bookbuilder/index.tt:341
 msgid "No text was added yet"
 msgstr "Nessun testo è stato ancora aggiunto"
 
-#: root/src/edit/edit.tt:250 root/src/edit/newtext.tt:184
+#: root/src/edit/edit.tt:143 root/src/edit/newtext.tt:184
 #: root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:77
 msgid "Notes"
 msgstr "Note"
@@ -972,8 +978,8 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "O entra, se possiedi un'utenza"
 
-#: root/src/edit/edit.tt:320 root/src/edit/edit.tt:326
-#: root/src/edit/edit.tt:333
+#: root/src/edit/edit.tt:323 root/src/edit/edit.tt:329
+#: root/src/edit/edit.tt:336
 msgid "Or wrap it in"
 msgstr "O racchiudi in"
 
@@ -985,17 +991,17 @@ msgstr "Altre lingue"
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr "Logo in PDF (percorso assoluto o nome del file in texmf)"
 
-#: root/src/edit/edit.tt:110
+#: root/src/edit/edit.tt:184
 msgid "PDFs cannot be used in the body."
 msgstr "I PDF non possono essere usati all'interno del testo."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
-#: root/src/edit/edit.tt:108 root/src/edit/edit.tt:109
+#. ("#ATTACH")
+#: root/src/edit/edit.tt:182 root/src/edit/edit.tt:183
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "I PDF non elencatine nella direttiva %1 saranno salvati ma ignorati."
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:174
+#: lib/AmuseWikiFarm/Controller/Root.pm:187
 msgid "Page not found!"
 msgstr "Pagina non trovata!"
 
@@ -1009,7 +1015,7 @@ msgstr ""
 "il secondo pagina 3 e 4, ecc., una accanto all'altra. I fogli non\n"
 "vanno piegati."
 
-#: root/src/bookbuilder/index.tt:246
+#: root/src/bookbuilder/index.tt:257
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1027,11 +1033,11 @@ msgstr ""
 "(che non si può conoscere in anticipo) per ridurre il numero di pagine\n"
 "necessarie a completare l'ultimo fascicolo."
 
-#: root/src/edit/edit.tt:270 root/src/edit/edit.tt:314
+#: root/src/edit/edit.tt:273 root/src/edit/edit.tt:317
 msgid "Paragraphs"
 msgstr "Paragrafi"
 
-#: root/src/edit/edit.tt:295
+#: root/src/edit/edit.tt:298
 msgid "Part"
 msgstr "Parte"
 
@@ -1043,12 +1049,12 @@ msgstr "Parte, solo per libri con un elevato numero di pagine"
 msgid "Password"
 msgstr "Password"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:210
-#: lib/AmuseWikiFarm/Controller/User.pm:290
+#: lib/AmuseWikiFarm/Controller/User.pm:211
+#: lib/AmuseWikiFarm/Controller/User.pm:291
 msgid "Password too short"
 msgstr "La password è troppo breve"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:287
+#: lib/AmuseWikiFarm/Controller/User.pm:288
 msgid "Password updated"
 msgstr "Password aggiornata"
 
@@ -1056,8 +1062,8 @@ msgstr "Password aggiornata"
 msgid "Password, minimum 8 characters."
 msgstr "Password, minimo otto caratteri."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:215
-#: lib/AmuseWikiFarm/Controller/User.pm:294
+#: lib/AmuseWikiFarm/Controller/User.pm:216
+#: lib/AmuseWikiFarm/Controller/User.pm:295
 msgid "Passwords do not match"
 msgstr "Le password non coincidono"
 
@@ -1077,7 +1083,7 @@ msgstr "Immagine"
 msgid "Plain PDF"
 msgstr "PDF semplice"
 
-#: root/src/edit/edit.tt:170
+#: root/src/edit/edit.tt:242
 msgid "Please describe shortly what you did"
 msgstr "Per cortesia, descrivi brevemente ciò che hai fatto"
 
@@ -1085,7 +1091,7 @@ msgstr "Per cortesia, descrivi brevemente ciò che hai fatto"
 msgid "Please do not use a valuable password."
 msgstr "Evita di usare password preziose usate altrove"
 
-#: root/src/edit/edit.tt:311
+#: root/src/edit/edit.tt:314
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
@@ -1110,7 +1116,7 @@ msgstr ""
 "modifiche introdotte dalla revisione già approvato. Evita di farlo, a\n"
 "meno che tu non sappia cosa stai facendo."
 
-#: root/src/edit/edit.tt:180
+#: root/src/edit/edit.tt:252
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Lascia una mail se vuoi essere contattato per eventuali problemi in\n"
@@ -1129,13 +1135,13 @@ msgstr ""
 "sui formati impaginati. Se è presente solo il formato semplice, non\n"
 "impaginato, le opzioni vengono applicate."
 
-#: root/src/edit/edit.tt:341
+#: root/src/edit/edit.tt:344
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Nota bene: i tag che racchiudono un blocco di testo devono essere\n"
 "posizionati da soli su una riga, senza spazi o altro materiale."
 
-#: root/src/edit/edit.tt:456
+#: root/src/edit/edit.tt:459
 msgid ""
 "Please note that you have to upload them first and\n"
 "          use the name the form provides. Images are always renamed by\n"
@@ -1154,7 +1160,7 @@ msgstr ""
 "Word/OpenOffice/LibreOffice/HTML usando il pulsante “incolla da word”,\n"
 "e la formattazione verrà mantenuta."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:116 root/src/user/human.tt:5
+#: lib/AmuseWikiFarm/Controller/User.pm:117 root/src/user/human.tt:5
 msgid "Please prove you are a human"
 msgstr "Dimostra di essere un umano"
 
@@ -1171,11 +1177,11 @@ msgstr "Seleziona"
 msgid "Please select the desired fonts"
 msgstr "Seleziona il carattere desiderato"
 
-#: root/src/bookbuilder/index.tt:258
+#: root/src/bookbuilder/index.tt:269
 msgid "Please select the signature size:"
 msgstr "Seleziona la dimensione dei fascicoli:"
 
-#: root/src/edit/edit.tt:279
+#: root/src/edit/edit.tt:282
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Poesia, bibliografie, teatro, codice"
 
@@ -1187,7 +1193,7 @@ msgstr "Che punta a"
 msgid "Prepare this text for the archiving"
 msgstr "Prepara questo testo per l'archivio"
 
-#: root/src/edit/edit.tt:187 root/src/edit/edit.tt:200
+#: root/src/edit/edit.tt:259 root/src/edit/edit.tt:93
 msgid "Preview"
 msgstr "Anteprima"
 
@@ -1215,7 +1221,7 @@ msgstr "Data di pubblicazione su questo sito."
 msgid "Publish"
 msgstr "Pubblica"
 
-#: root/src/edit/edit.tt:505
+#: root/src/edit/edit.tt:508
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Pubblicato in *Un bel libro*, edito da Casa Editrice, 2014"
 
@@ -1310,7 +1316,7 @@ msgstr "Risultati trovati"
 msgid "Retrieved on DATE from URL"
 msgstr "Consultato il giorno DATA su URL"
 
-#: root/src/edit/edit.tt:510
+#: root/src/edit/edit.tt:513
 msgid "Retrieved on March 8, 2012 from"
 msgstr "Consultato il giorno 25 luglio 2014 su"
 
@@ -1327,23 +1333,23 @@ msgstr "La revisione per %1 è stata cancellata"
 msgid "Search"
 msgstr "Cerca"
 
-#: root/src/edit/edit.tt:301
+#: root/src/edit/edit.tt:304
 msgid "Section"
 msgstr "Sezione"
 
-#: root/src/edit/edit.tt:520
+#: root/src/edit/edit.tt:523
 msgid "See the full manual for more details (english)"
 msgstr "Vedi il manuale completo per maggiori dettagli (in inglese)"
 
-#: root/src/edit/edit.tt:465
+#: root/src/edit/edit.tt:468
 msgid "Separate body fields"
 msgstr "Separano i campi del corpo"
 
-#: root/src/edit/edit.tt:463
+#: root/src/edit/edit.tt:466
 msgid "Separate footer fields"
 msgstr "Separano i campi dei piedini"
 
-#: root/src/edit/edit.tt:464
+#: root/src/edit/edit.tt:467
 msgid "Separate header fields"
 msgstr "Separano i campi dell'intestazione"
 
@@ -1351,7 +1357,7 @@ msgstr "Separano i campi dell'intestazione"
 msgid "Set a date in the future if you want it deferred."
 msgstr "Imposta una data nel futuro se vuoi rimandare la pubblicazione."
 
-#: root/src/edit/edit.tt:202 root/src/edit/revs.tt:49
+#: root/src/edit/edit.tt:95 root/src/edit/revs.tt:49
 #: root/src/publish/pending.tt:59
 msgid "Show differences in other tab"
 msgstr "Mostra le differenze in un'altra finestra"
@@ -1360,7 +1366,7 @@ msgstr "Mostra le differenze in un'altra finestra"
 msgid "Show options"
 msgstr "Mostra le opzioni"
 
-#: root/src/edit/edit.tt:465
+#: root/src/edit/edit.tt:468
 msgid "Single bars"
 msgstr "Le barre singole"
 
@@ -1400,12 +1406,12 @@ msgstr "Siti"
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Così siamo sicuri di non inviare le password a gente casuale"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:174
+#: lib/AmuseWikiFarm/Controller/User.pm:175
 msgid "Some fields are missing, all are required"
 msgstr "Alcuni campi mancano, ma tutti sono richiesti"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:183
-#: lib/AmuseWikiFarm/Controller/User.pm:310
+#: lib/AmuseWikiFarm/Controller/User.pm:184
+#: lib/AmuseWikiFarm/Controller/User.pm:311
 msgid "Some fields are too long"
 msgstr "Alcuni campi sono troppo lunghi"
 
@@ -1413,7 +1419,7 @@ msgstr "Alcuni campi sono troppo lunghi"
 msgid "Some ongoing revisions were found"
 msgstr "Sono state trovate delle revisioni in corso"
 
-#: root/src/edit/edit.tt:243 root/src/edit/newtext.tt:132
+#: root/src/edit/edit.tt:136 root/src/edit/newtext.tt:132
 #: root/src/search/index.tt:58 root/src/text.tt:70
 msgid "Source"
 msgstr "Origine"
@@ -1430,7 +1436,7 @@ msgstr "File sorgenti con allegati"
 msgid "Sources"
 msgstr "Sorgenti"
 
-#: root/src/edit/edit.tt:400
+#: root/src/edit/edit.tt:403
 msgid "Special blocks"
 msgstr "Blocchi speciali"
 
@@ -1456,15 +1462,15 @@ msgstr "Pagina statica senza javascript"
 msgid "Status"
 msgstr "Status"
 
-#: root/src/edit/edit.tt:304
+#: root/src/edit/edit.tt:307
 msgid "Subsection"
 msgstr "Sottosezione"
 
-#: root/src/edit/edit.tt:307
+#: root/src/edit/edit.tt:310
 msgid "Subsubsection or description item"
 msgstr "Sotto-sottosezione o elemento di descrizione"
 
-#: root/src/edit/edit.tt:215 root/src/edit/newtext.tt:50 root/src/text.tt:34
+#: root/src/edit/edit.tt:108 root/src/edit/newtext.tt:50 root/src/text.tt:34
 msgid "Subtitle"
 msgstr "Sottotitolo"
 
@@ -1480,15 +1486,15 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr "URI già esistente"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:226
+#: lib/AmuseWikiFarm/Controller/User.pm:227
 msgid "Such username already exists"
 msgstr "Nome utente già esistente"
 
-#: root/src/edit/edit.tt:267
+#: root/src/edit/edit.tt:270
 msgid "Summary"
 msgstr "Sommario"
 
-#: root/src/edit/edit.tt:287 root/src/edit/edit.tt:468
+#: root/src/edit/edit.tt:290 root/src/edit/edit.tt:471
 msgid "Supported directive in the header"
 msgstr "Direttive nell'intestazione supportate"
 
@@ -1496,7 +1502,7 @@ msgstr "Direttive nell'intestazione supportate"
 msgid "Table of Contents"
 msgstr "Sommario"
 
-#: root/src/edit/edit.tt:284 root/src/edit/edit.tt:461
+#: root/src/edit/edit.tt:287 root/src/edit/edit.tt:464
 msgid "Tables"
 msgstr "Tabelle"
 
@@ -1528,7 +1534,7 @@ msgstr "Il logo contiene il nome del sito"
 msgid "The name is always required, but used only if there are multiple texts."
 msgstr "Il nome è sempre richiesto, ma usato solo se ci sono testi multipli."
 
-#: root/src/edit/edit.tt:494
+#: root/src/edit/edit.tt:497
 msgid "The optional subtitle"
 msgstr "Il sottotitolo opzionale"
 
@@ -1544,7 +1550,7 @@ msgstr "La revisione contiene i seguenti messaggi"
 msgid "The text was added to the bookbuilder"
 msgstr "Il testo è stato aggiunto all'impaginatore"
 
-#: root/src/edit/edit.tt:488
+#: root/src/edit/edit.tt:491
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -1556,7 +1562,7 @@ msgstr ""
 "titolo”, qui è possibile inserire “Bel titolo”, in modo che compaia\n"
 "sotto la B, non sotto la A."
 
-#: root/src/edit/edit.tt:472
+#: root/src/edit/edit.tt:475
 msgid "The title of the document. The only mandatory directive."
 msgstr "Il titolo del documento. L'unico campo obbligatorio."
 
@@ -1564,7 +1570,7 @@ msgstr "Il titolo del documento. L'unico campo obbligatorio."
 msgid "The user will have the same your level of access"
 msgstr "L'utenza avrà lo stesso tuo livello di accesso"
 
-#: root/src/bookbuilder/index.tt:267
+#: root/src/bookbuilder/index.tt:278
 msgid "The whole book in as single signature"
 msgstr "L'intero libro in un unico fascicolo"
 
@@ -1572,11 +1578,11 @@ msgstr "L'intero libro in un unico fascicolo"
 msgid "These texts are missing the unique id."
 msgstr "Questi testi sono senza identificativo."
 
-#: root/src/edit/edit.tt:442
+#: root/src/edit/edit.tt:445
 msgid "They have the same syntax (images are actually links)"
 msgstr "Hanno la stessa sintassi (le immagini sono in realtà collegamenti)"
 
-#: root/src/edit/edit.tt:107
+#: root/src/edit/edit.tt:181
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
 "Questa direttiva richiede una lista di nomi di file separati da spazi "
@@ -1596,7 +1602,7 @@ msgstr ""
 "lascialo vuoto, compila gli altri campi e rimanda la modifica al passo\n"
 "successivo."
 
-#: root/src/edit/edit.tt:466
+#: root/src/edit/edit.tt:469
 msgid "This is the caption"
 msgstr "Questa è la didascalia"
 
@@ -1624,7 +1630,7 @@ msgstr "Questo testo non esiste"
 msgid "Time is optional."
 msgstr "L'ora è opzionale"
 
-#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:209
+#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:102
 #: root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:28
 msgid "Title"
 msgstr "Titolo"
@@ -1637,28 +1643,28 @@ msgstr "Titolo da usare per l'ordinamento alfabetico"
 msgid "Titles"
 msgstr "Titoli"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
 msgstr "Per applicare le modifiche, puoi visitare %1"
 
-#: root/src/edit/edit.tt:101
+#: root/src/edit/edit.tt:175
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
 "Per mostrare i PDF, imposta o aggiungi la seguente stringa nell'intestazione"
 
-#: root/src/edit/edit.tt:402
+#: root/src/edit/edit.tt:405
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
 "Per preservare gli spazi bianchi e gli a capo, inserisci i paragrafi tra"
 
-#: root/src/edit/edit.tt:412
+#: root/src/edit/edit.tt:415
 msgid "To quickly format bibliographies wrap them in"
 msgstr "Per formattare velocemente le bibliografie, inseriscile tra"
 
-#: root/src/edit/edit.tt:419
+#: root/src/edit/edit.tt:422
 msgid "To quickly format plays, use"
 msgstr "Per formattare pezzi teatrali, usa"
 
@@ -1678,8 +1684,8 @@ msgstr "Mostra/nascondi il sommario"
 msgid "Topic"
 msgstr "Argomento"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:76 root/src/edit/edit.tt:236
-#: root/src/edit/edit.tt:498 root/src/edit/newtext.tt:104
+#: lib/AmuseWikiFarm/Controller/Category.pm:76 root/src/edit/edit.tt:129
+#: root/src/edit/edit.tt:501 root/src/edit/newtext.tt:104
 #: root/src/layout.tt:165 root/src/layout.tt:181 root/src/layout.tt:400
 #: root/src/text.tt:58
 msgid "Topics"
@@ -1689,11 +1695,11 @@ msgstr "Argomenti"
 msgid "Total pages"
 msgstr "Pagine totali"
 
-#: root/src/edit/edit.tt:463
+#: root/src/edit/edit.tt:466
 msgid "Triple bars"
 msgstr "Triple barre"
 
-#: root/src/bookbuilder/index.tt:346
+#: root/src/bookbuilder/index.tt:357
 msgid "Try a random text if unsure"
 msgstr "Prova con un testo casuale, se in dubbio"
 
@@ -1727,7 +1733,7 @@ msgstr "Testi non pubblicati"
 msgid "Unsupported file type %1"
 msgstr "Tipo di file (%1) non supportato"
 
-#: root/src/admin/edit.tt:455 root/src/bookbuilder/index.tt:288
+#: root/src/admin/edit.tt:455 root/src/bookbuilder/index.tt:299
 #: root/src/user/edit.tt:39
 msgid "Update"
 msgstr "Aggiorna"
@@ -1736,7 +1742,7 @@ msgstr "Aggiorna"
 msgid "Update account info"
 msgstr "Aggiorna le informazioni relative all'utenza"
 
-#: root/src/edit/edit.tt:127
+#: root/src/edit/edit.tt:199
 msgid "Upload"
 msgstr "Carica"
 
@@ -1748,16 +1754,16 @@ msgstr "URL"
 msgid "Use SSL for authenticated users"
 msgstr ""
 
-#: root/src/edit/edit.tt:88
+#: root/src/edit/edit.tt:162
 msgid "Use it in the body as"
 msgstr "Usalo nel corpo del testo con"
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:265
+#: root/src/bookbuilder/index.tt:276
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Durante l'impaginazione, usa blocchi ottimizzati di %s pagine ciascuno"
 
-#: root/src/edit/edit.tt:374
+#: root/src/edit/edit.tt:377
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
@@ -1766,11 +1772,11 @@ msgstr ""
 "una riga vuota per separare un nuovo paragrafo."
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/User.pm:234
+#: lib/AmuseWikiFarm/Controller/User.pm:235
 msgid "User %1 created!"
 msgstr "Utenza %1 creata!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:241
+#: lib/AmuseWikiFarm/Controller/User.pm:242
 msgid "User created"
 msgstr "Utenza creata"
 
@@ -1800,7 +1806,7 @@ msgstr "Host virtuali"
 msgid "Virtual hosts, one per line"
 msgstr "Host virtuali, uno per riga"
 
-#: root/src/edit/edit.tt:511
+#: root/src/edit/edit.tt:514
 msgid "Where does this text come from?"
 msgstr "Da dove proviene il testo?"
 
@@ -1812,7 +1818,7 @@ msgstr ""
 "Larghezza dell'immagine di copertina in percentuale della larghezza del "
 "corpo del testo, lascia in bianco se non ne hai bisogno"
 
-#: root/src/bookbuilder/index.tt:335
+#: root/src/bookbuilder/index.tt:346
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1822,11 +1828,11 @@ msgstr ""
 "carta, margini) dei testi dell'archivio. Puoi inoltre fondere vari\n"
 "testi per creare il tuo opuscolo. Non ti resta che provare!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:124
+#: lib/AmuseWikiFarm/Controller/User.pm:125
 msgid "Wrong answer!"
 msgstr "Risposta errata!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:95
+#: lib/AmuseWikiFarm/Controller/User.pm:96
 msgid "Wrong username or password"
 msgstr "Nome utente o password errata"
 
@@ -1838,7 +1844,7 @@ msgstr "Sorgenti XeLaTeX"
 msgid "Year"
 msgstr "Anno"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:111
+#: lib/AmuseWikiFarm/Controller/User.pm:112
 msgid "You already proved you are human"
 msgstr "Hai già dimostrato di essere un umano"
 
@@ -1846,11 +1852,11 @@ msgstr "Hai già dimostrato di essere un umano"
 msgid "You are already logged in"
 msgstr "Hai già effettuato l'accesso"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:90
+#: lib/AmuseWikiFarm/Controller/User.pm:91
 msgid "You are logged in now!"
 msgstr "Hai effettuato l'accesso!"
 
-#: root/src/bookbuilder/index.tt:340
+#: root/src/bookbuilder/index.tt:351
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
@@ -1860,8 +1866,8 @@ msgstr ""
 "segno più nella sezione dei download di ciascun testo. In seguito\n"
 "potrai aggiungere o rimuovere altri testi."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
 msgstr "Puoi creare un'utenza su %1"
@@ -1877,7 +1883,7 @@ msgstr ""
 "Non puoi creare una nuova revisione perché il testo ancora non è stato "
 "pubblicato"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:102
+#: lib/AmuseWikiFarm/Controller/User.pm:103
 msgid "You have logged out"
 msgstr "Sei uscito"
 
@@ -1885,13 +1891,13 @@ msgstr "Sei uscito"
 msgid "You may want to resume the editing of one of them"
 msgstr "Potresti riprendere una delle modifiche in corso"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr "Dovresti cambiare subito la tua password a %1"
 
-#: root/src/edit/edit.tt:205
+#: root/src/edit/edit.tt:98
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
 "Commit"
@@ -1946,12 +1952,12 @@ msgstr "informazioni, link..."
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
 
-#: root/src/edit/edit.tt:367 root/src/edit/edit.tt:368
-#: root/src/edit/edit.tt:370
+#: root/src/edit/edit.tt:370 root/src/edit/edit.tt:371
+#: root/src/edit/edit.tt:373
 msgid "code and monospace"
 msgstr "formattazione codice"
 
-#: root/src/edit/edit.tt:483 root/src/edit/edit.tt:498
+#: root/src/edit/edit.tt:486 root/src/edit/edit.tt:501
 #: root/src/edit/newtext.tt:105 root/src/edit/newtext.tt:79
 msgid "comma or semicolon separated list"
 msgstr "lista separata da virgola o punto e virgola"
@@ -1968,7 +1974,7 @@ msgstr "conflitto"
 msgid "description"
 msgstr "descrizione"
 
-#: root/src/edit/edit.tt:446 root/src/edit/edit.tt:453
+#: root/src/edit/edit.tt:449 root/src/edit/edit.tt:456
 msgid "displayed text"
 msgstr "testo mostrato"
 
@@ -1976,7 +1982,7 @@ msgstr "testo mostrato"
 msgid "editing"
 msgstr "modifica in corso"
 
-#: root/src/edit/edit.tt:349 root/src/edit/edit.tt:351
+#: root/src/edit/edit.tt:352 root/src/edit/edit.tt:354
 msgid "emphasis"
 msgstr "corsivo"
 
@@ -1984,7 +1990,7 @@ msgstr "corsivo"
 msgid "failed"
 msgstr "fallito"
 
-#: root/src/edit/edit.tt:410
+#: root/src/edit/edit.tt:413
 msgid "for code, monospaced"
 msgstr "per codice"
 
@@ -1992,7 +1998,7 @@ msgstr "per codice"
 msgid "for display"
 msgstr "come mostrato"
 
-#: root/src/edit/edit.tt:406
+#: root/src/edit/edit.tt:409
 msgid "for poetry"
 msgstr "per brani poetici"
 
@@ -2014,22 +2020,22 @@ msgstr ""
 msgid "mandatory"
 msgstr "obbligatorio"
 
-#: root/src/edit/edit.tt:436 root/src/edit/edit.tt:437
+#: root/src/edit/edit.tt:439 root/src/edit/edit.tt:440
 msgid "numbered item"
 msgstr "elemento numerato"
 
-#: root/src/edit/edit.tt:484
+#: root/src/edit/edit.tt:487
 msgid "optional, defaults to the author directive"
 msgstr "opzionale, se mancante verrà usata la direttiva autore"
 
-#: root/src/edit/edit.tt:349 root/src/edit/edit.tt:355
-#: root/src/edit/edit.tt:361 root/src/edit/edit.tt:367
-#: root/src/edit/edit.tt:406 root/src/edit/edit.tt:448
-#: root/src/edit/edit.tt:453 root/src/edit/edit.tt:89
+#: root/src/edit/edit.tt:163 root/src/edit/edit.tt:352
+#: root/src/edit/edit.tt:358 root/src/edit/edit.tt:364
+#: root/src/edit/edit.tt:370 root/src/edit/edit.tt:409
+#: root/src/edit/edit.tt:451 root/src/edit/edit.tt:456
 msgid "or"
 msgstr "o"
 
-#: root/src/edit/edit.tt:378 root/src/edit/edit.tt:381
+#: root/src/edit/edit.tt:381 root/src/edit/edit.tt:384
 msgid "overstriked"
 msgstr "cancellato"
 
@@ -2061,7 +2067,7 @@ msgstr "rilevanza"
 msgid "revision"
 msgstr "revisione"
 
-#: root/src/edit/edit.tt:355 root/src/edit/edit.tt:357
+#: root/src/edit/edit.tt:358 root/src/edit/edit.tt:360
 msgid "strong emphasis"
 msgstr "forte enfasi"
 
@@ -2069,7 +2075,7 @@ msgstr "forte enfasi"
 msgid "sub-sub-section"
 msgstr "sotto-sotto-sezione"
 
-#: root/src/edit/edit.tt:376 root/src/edit/edit.tt:379
+#: root/src/edit/edit.tt:379 root/src/edit/edit.tt:382
 msgid "subscript"
 msgstr "deponente"
 
@@ -2077,7 +2083,7 @@ msgstr "deponente"
 msgid "subsection"
 msgstr "sottosezione"
 
-#: root/src/edit/edit.tt:377 root/src/edit/edit.tt:380
+#: root/src/edit/edit.tt:380 root/src/edit/edit.tt:383
 msgid "superscript"
 msgstr "esponente"
 
@@ -2106,28 +2112,28 @@ msgstr "testi per titolo"
 msgid "texts sorted by topics"
 msgstr "testi per argomento"
 
-#: root/src/edit/edit.tt:476
+#: root/src/edit/edit.tt:479
 msgid "the author of the text (as displayed)"
 msgstr "l'autore del testo (come mostrato)"
 
-#: root/src/edit/edit.tt:497
+#: root/src/edit/edit.tt:500
 msgid "topic"
 msgstr "argomento"
 
-#: root/src/edit/edit.tt:430 root/src/edit/edit.tt:431
+#: root/src/edit/edit.tt:433 root/src/edit/edit.tt:434
 msgid "unnumbered item"
 msgstr "elemento non numerato"
 
-#: root/src/edit/edit.tt:361 root/src/edit/edit.tt:362
-#: root/src/edit/edit.tt:364
+#: root/src/edit/edit.tt:364 root/src/edit/edit.tt:365
+#: root/src/edit/edit.tt:367
 msgid "very strong emphasis"
 msgstr "emfasi molto forte"
 
-#: root/src/edit/edit.tt:447
+#: root/src/edit/edit.tt:450
 msgid "with description"
 msgstr "con descrizione"
 
-#: root/src/edit/edit.tt:449
+#: root/src/edit/edit.tt:452
 msgid "without description"
 msgstr "senza descrizione"
 
