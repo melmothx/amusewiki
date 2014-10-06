@@ -22,3 +22,12 @@
 
 <img src="[% c.uri_for('/static/images/schema-preview/2side.png') %]"
      alt="2side" />
+
+<h4>1x4x2cutfoldbind</h4>
+
+<p>
+  [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
+</p>
+
+<img src="[% c.uri_for('/static/images/schema-preview/1x4x2cutfoldbind.png') %]"
+     alt="2side" />

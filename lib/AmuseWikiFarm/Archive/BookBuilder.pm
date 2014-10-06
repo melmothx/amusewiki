@@ -125,7 +125,7 @@ Beware that these are hardcoded in the template.
 =cut
 
 sub schema_values {
-    return [qw/2up 2x4x2 2side/]
+    return [qw/2up 2x4x2 2side 1x4x2cutfoldbind/]
 }
 
 enum(SchemaType => __PACKAGE__->schema_values);

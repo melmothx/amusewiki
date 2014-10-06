@@ -236,6 +236,17 @@
 
       </label>
     </div>
+
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="1x4x2cutfoldbind"
+               class="choose-schema"
+               [% IF bb.schema == '1x4x2cutfoldbind' %]checked="checked"[% END %] />
+        <strong>1x4x2cutfoldbind</strong>:
+        [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
+      </label>
+    </div>
+
     <div class="radio">
       <label>
         <input type="radio" name="schema" value="2up" id="schema2up"
