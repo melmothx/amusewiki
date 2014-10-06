@@ -77,6 +77,12 @@ $(document).ready(function() {
 </div>
 [% END %]
 
+<div class="row" style="margin-bottom: 20px">
+  <div class="col-md-12 center">
+    <h2>[% loc('Editing') %] [% revision.title.uri %]</h2>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-7">
 [% SET attachments = revision.attached_images %]
@@ -110,8 +116,6 @@ $(document).ready(function() {
   [% loc('PDFs cannot be used in the body.') %]
 </p>
 [% END %]
-
-<h3>[% loc('Editing') %] [% revision.title.uri %]</h3>
 
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform">
