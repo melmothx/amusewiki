@@ -84,6 +84,74 @@ $(document).ready(function() {
 </div>
 
 <div class="row">
+
+  [%- SET text = revision.muse_doc.header_as_html -%]
+
+  <div id="page" class="col-md-5 pull-right"
+       style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
+    <h2>
+      <small>[% loc('Preview') %]</small>
+      <button type="button" id="goto-diff" class="btn btn-default">
+        [% loc('Show differences in other tab') %]
+      </button>
+    </h2>
+    <p>[% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]</p>
+    <div id="preamble-container" class="well">
+      <div id="preamble">
+        <p id="texttitle">
+          <strong>[% loc('Title') %]:</strong>
+          [% text.title %]
+        </p>
+
+        [% IF text.subtitle %]
+        <p id="textsubtitle">
+          <strong>[% loc('Subtitle') %]:</strong>
+          [% text.subtitle %]
+        </p>
+        [% END %]
+
+        [% IF (text.SORTauthors || text.author) %]
+        <p id="authors">
+          <strong>[% loc('Authors') %]:</strong>
+          [% text.SORTauthors || text.author %]
+        </p>
+        [% END %]
+
+        [% IF text.date %]
+        <p id="textdate">
+          <strong>[% loc('Date') %]:</strong>
+          [% text.date %]
+        </p>
+        [% END %]
+
+        [% IF text.SORTtopics %]
+        <p id="topics">
+          <strong>[% loc('Topics') %]:</strong>
+          [% text.SORTtopics %]
+        </p>
+        [% END %]
+
+        [% IF text.source %]
+        <p id="preamblesrc">
+          <strong>[% loc('Source') %]:</strong>
+          [% text.source %]
+        </p>
+        [% END %]
+
+        [% IF text.notes %]
+        <p id="preamblenotes">
+          <strong>[% loc('Notes') %]:</strong>
+          [% text.notes %]
+        </p>
+        [% END %]
+      </div>
+    </div>
+
+    <div id="htmltextbody">
+      [% revision.muse_doc.as_html %]
+    </div>
+  </div>
+
   <div class="col-md-7">
 [% SET attachments = revision.attached_images %]
 [% IF attachments.size %]
@@ -195,77 +263,8 @@ $(document).ready(function() {
   </div>
 </form>
 </div>
-</div>
 
-[% SET text = revision.muse_doc.header_as_html %]
-
-<div id="page" class="col-md-5">
-  <h2>
-    <small>[% loc('Preview') %]</small>
-    <button type="button" id="goto-diff" class="btn btn-primary">
-      [% loc('Show differences in other tab') %]
-    </button>
-  </h2>
-  <p>[% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]</p>
-  <div id="preamble-container" class="well">
-  <div id="preamble">
-    <p id="texttitle">
-      <strong>[% loc('Title') %]:</strong>
-      [% text.title %]
-    </p>
-
-    [% IF text.subtitle %]
-    <p id="textsubtitle">
-      <strong>[% loc('Subtitle') %]:</strong>
-      [% text.subtitle %]
-    </p>
-    [% END %]
-
-    [% IF (text.SORTauthors || text.author) %]
-    <p id="authors">
-      <strong>[% loc('Authors') %]:</strong>
-      [% text.SORTauthors || text.author %]
-    </p>
-    [% END %]
-
-    [% IF text.date %]
-    <p id="textdate">
-      <strong>[% loc('Date') %]:</strong>
-      [% text.date %]
-    </p>
-    [% END %]
-
-    [% IF text.SORTtopics %]
-    <p id="topics">
-      <strong>[% loc('Topics') %]:</strong>
-      [% text.SORTtopics %]
-    </p>
-    [% END %]
-
-    [% IF text.source %]
-    <p id="preamblesrc">
-      <strong>[% loc('Source') %]:</strong>
-      [% text.source %]
-    </p>
-    [% END %]
-
-    [% IF text.notes %]
-    <p id="preamblenotes">
-      <strong>[% loc('Notes') %]:</strong>
-      [% text.notes %]
-    </p>
-    [% END %]
-  </div>
-  </div>
-
-  <div id="htmltextbody">
-    [% revision.muse_doc.as_html %]
-  </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div id="cheatsheet">
+    <div id="cheatsheet" style="border: solid 1px #bbb; padding: 5px;">
       <h3>[% loc('Cheatsheet for the markup') %]</h3>
 
       <h4>[% loc('Summary') %]</h4>
