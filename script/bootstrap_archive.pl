@@ -43,8 +43,8 @@ The better strategy to force a rebuilding is to set the timestamp of
 the .tex file in the past. Example to rebuild all the texts with a
 pagebreak:
 
-for i in \$(grep -l ' \(\* *\)\{5\}' */*/*.muse); do
-    touch --date="2013-01-01" \$(echo \$i | sed -e 's/\.muse\$/.tex/')
+for i in \$(grep -l ' \\(\\* *\\)\\{5\\}' */*/*.muse); do
+    touch --date="2013-01-01" \$(echo \$i | sed -e 's/\\.muse\$/.tex/')
 done
 
 $0 --recompile
