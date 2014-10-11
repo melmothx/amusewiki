@@ -5,6 +5,8 @@ Example file for testing fonts.
 
         * * * * * 
 
+Dashes: em-dash: — en-dash –
+
 The Quick Brown Fox Jumps Over The Sleazy Dog 01234567989.
 
 Ligatures: fi ffi ffl (&%!¡?¿“”«»„”“”„“#/)
@@ -13,9 +15,9 @@ Cyrillic: абвгдѓежзѕијклљмнњопрстќуфхцчџш ёѐѝ�
 
 Cyrillic caps: АБВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШ ЁЀЍЙ
 
-àáèéíìòóùúčćđžšñüåäöüűøõæœß
+àȃáèéíìòóùúčćđžšñüåäöüűøõæœß
 
-ÀÁÈÉÍÌÒÓÙÚČĆĐŽŠÑÜÅÄÖÜŰØÕÆŒß
+ÀȂÁÈÉÍÌÒÓÙÚČĆĐŽŠÑÜÅÄÖÜŰØÕÆŒß
 
 *The Quick Brown Fox Jumps Over The Sleazy Dog 0123456789.*
 
@@ -25,35 +27,39 @@ Cyrillic caps: АБВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШ Ё
 
 <em>Cyrillic caps: АБВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШ ЁЀЍЙ</em>
 
-<em>àáèéíìòóùúčćđžšñüåäöüűøõæœß</em>
+<em>àȃáèéíìòóùúčćđžšñüåäöüűøõæœß</em>
 
-<em>ÀÁÈÉÍÌÒÓÙÚČĆĐŽŠÑÜÅÄÖÜŰØÕÆŒß</em>
+<em>ÀȂÁÈÉÍÌÒÓÙÚČĆĐŽŠÑÜÅÄÖÜŰØÕÆŒß</em>
 
 
 **The Quick Brown Fox Jumps Over The Sleazy Dog 0123456789.**
 
+<strong>Dashes: em-dash: — en-dash –</strong>
+
 <strong>fi ffi ffl (&%!¡?¿“”«»„”“”„“#/)</strong>
 
 <strong>Cyrillic: абвгдѓежзѕијклљмнњопрстќуфхцчџш ёѐѝй</strong>
 
 <strong>Cyrillic caps: АБВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШ ЁЀЍЙ</strong>
 
-<strong>àáèéíìòóùúčćđžšñüåäöüűøõæœß</strong>
+<strong>àȃáèéíìòóùúčćđžšñüåäöüűøõæœß</strong>
 
-<strong>ÀÁÈÉÍÌÒÓÙÚČĆĐŽŠÑÜÅÄÖÜŰØÕÆŒß</strong>
+<strong>ÀȂÁÈÉÍÌÒÓÙÚČĆĐŽŠÑÜÅÄÖÜŰØÕÆŒß</strong>
 
 
 ***The Quick Brown Fox Jumps Over The Sleazy Dog 0123456789.***
 
-<strong>fi ffi ffl (&%!¡?¿“”«»„”“”„“#/)</strong>
+<strong><em>Dashes: em-dash: — en-dash –</em></strong>
 
-<strong>Cyrillic: абвгдѓежзѕијклљмнњопрстќуфхцчџш ёѐѝй</strong>
+<strong><em>fi ffi ffl (&%!¡?¿“”«»„”“”„“#/)</em></strong>
 
-<strong>Cyrillic caps: АБВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШ ЁЀЍЙ</strong>
+<strong><em>Cyrillic: абвгдѓежзѕијклљмнњопрстќуфхцчџш ёѐѝй</em></strong>
 
-<strong>àáèéíìòóùúčćđžšñüåäöüűøõæœß</strong>
+<strong><em>Cyrillic caps: АБВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШ ЁЀЍЙ</em></strong>
 
-<strong>ÀÁÈÉÍÌÒÓÙÚČĆĐŽŠÑÜÅÄÖÜŰØÕÆŒß</strong>
+<strong><em>àȃáèéíìòóùúčćđžšñüåäöüűøõæœß</em></strong>
+
+<strong><em>ÀȂÁÈÉÍÌÒÓÙÚČĆĐŽŠÑÜÅÄÖÜŰØÕÆŒß</em></strong>
 
 
 
