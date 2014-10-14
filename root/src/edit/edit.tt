@@ -87,7 +87,7 @@ $(document).ready(function() {
 
   [%- SET text = revision.muse_doc.header_as_html -%]
 
-  <div id="page" class="col-md-5 pull-right"
+  <div id="page" class="col-md-5 col-md-push-7"
        style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
     <h2>
       <small>[% loc('Preview') %]</small>
@@ -152,7 +152,7 @@ $(document).ready(function() {
     </div>
   </div>
 
-  <div class="col-md-7">
+  <div class="col-md-7 col-md-pull-5">
 [% SET attachments = revision.attached_images %]
 [% IF attachments.size %]
 <h3>[% loc('Attached images') %]</h3>
