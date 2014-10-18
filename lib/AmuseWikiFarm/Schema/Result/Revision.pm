@@ -175,10 +175,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
                                    muse_attachment_basename_for
                                    muse_naming_algo/;
-
-use Text::Amuse::Functions qw/muse_fast_scan_header/;
-use Text::Amuse::Preprocessor::Typography qw/get_typography_filter/;
-use Text::Amuse::Compile;
+use Text::Amuse::Preprocessor;
 use File::Path qw/remove_tree/;
 
 =head2 muse_body
@@ -391,6 +388,8 @@ Edit the current revision. It's reccomended to pass a reference to a
 scalar or an hashref with the string in the "body" key to avoid large
 copying, but a scalar will do the same.
 
+Return the error, if any.
+
 =cut
 
 sub edit {
@@ -429,52 +428,34 @@ sub edit {
     }
     close $fh or die "Fail to close $temp $!";
 
-    # load the metainfo
-    my $info = muse_fast_scan_header($temp);
-    my $lang;
-    if ($info && $info->{lang}) {
-        $lang = $info->{lang};
-    }
+    my %ppargs = (
+                  input => $temp,
+                  output => $aux,
+                 );
 
-    my $filter;
     if ($is_ref and $is_ref eq 'HASH') {
-        my ($fixtypo, $fixlinks);
-        if ($string->{fix_typography}) {
-            $fixtypo = $lang;
+        foreach my $k (qw/fix_links fix_typography
+                          fix_nbsp remove_nbsp
+                          fix_footnotes/) {
+            $ppargs{$k} = $string->{$k};
         }
-        if ($string->{fix_links}) {
-            $fixlinks = 1;
-        }
-        $filter = get_typography_filter($fixtypo, $fixlinks);
     }
-
-    # then filter it and write to an aux
-    open (my $tmpfh, '<:encoding(utf-8)', $temp) or die "Can't open $temp $!";
-    open (my $auxfh, '>:encoding(utf-8)', $aux) or die "Can't open $aux $!";
-
-    my $current;
-    while (<$tmpfh>) {
-        $current = $_;
-        $current =~ s/\r//;
-        $current =~ s/\t/    /;
-        if ($filter) {
-            $current = $filter->($current);
-        }
-        print $auxfh $current;
+    my $pp = Text::Amuse::Preprocessor->new(%ppargs);
+    if ($pp->process) {
+        move($aux, $target) or die "Couldn't move $aux to $target";
+        # finally move it to the target file
+        # and update
+        $self->status('editing');
+        $self->updated(DateTime->now);
+        $self->update;
+        return;
     }
-    # last line
-    if ($current !~ /\n$/s) {
-        print $auxfh "\n";
+    elsif (my $error = $pp->error) {
+        return $error;
     }
-    close $auxfh or die $!;
-    close $tmpfh or die $!;
-    move($aux, $target) or die "Couldn't move $aux to $target";
-    # finally move it to the target file
-
-    # and update
-    $self->status('editing');
-    $self->updated(DateTime->now);
-    $self->update;
+    else {
+        die "This shouldn't happen: process returned false, but no error set\n";
+    }
 }
 
 =head2 commit_version($message);

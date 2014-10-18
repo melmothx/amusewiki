@@ -254,7 +254,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
 
 sub edit :Chained('get_revision') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $params = $c->request->params;
+    my $params = $c->request->body_params;
     my $revision = $c->stash->{revision};
     # while editing, prevent multiple session to write stuff
     if ($revision->editing_ongoing and
@@ -281,7 +281,20 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
 
         $c->log->debug("Handling the thing");
         if (exists $params->{body}) {
-            $revision->edit($params);
+            if (my $error = $revision->edit($params)) {
+                my $errmsg;
+                if (ref($error) and ref($error) eq 'HASH') {
+                    $errmsg = $c->loc("Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4])",
+                                      $error->{footnotes},
+                                      $error->{footnotes_found},
+                                      $error->{references},
+                                      $error->{references_found});
+                }
+                else {
+                    $errmsg = $c->loc($error);
+                }
+                return;
+            }
         }
 
         # handle the uploads, if any

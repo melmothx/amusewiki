@@ -225,16 +225,55 @@ $(document).ready(function() {
       <label>
       <input id="fix-typo"
              [% IF c.req.params.fix_typography %]checked="checked"[% END %]
+             value="1"
              type="checkbox" name="fix_typography" />
-      [% loc('Fix typography') %]
+      [% loc('Fix typography (smart quotes)') %]
       </label>
     </div>
     <div class="checkbox">
       <label>
         <input id="fix-links"
                [% IF c.req.params.fix_links %]checked="checked"[% END %]
+               value="1"
                type="checkbox" name="fix_links" />
         [% loc('Make all links active') %]
+      </label>
+    </div>
+    <div class="checkbox fix-nbsp-related-stuff">
+      <label>
+        <input id="fix-nbsp"
+               [% IF c.req.params.fix_nbsp %]checked="checked"[% END %]
+               value="1"
+               type="checkbox" name="fix_nbsp" />
+        [% loc('Add non-breaking spaces where appropriate for the language') %]
+      </label>
+    </div>
+    <div class="checkbox fix-nbsp-related-stuff">
+      <label>
+        <input id="remove-nbsp"
+               [% IF c.req.params.remove_nbsp %]checked="checked"[% END %]
+               value="1"
+               type="checkbox" name="remove_nbsp" />
+
+        [% loc('Unconditionally remove all the invisible non-breaking
+                spaces in the text.') %]
+
+      </label>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input id="fix-footnotes"
+               [% IF c.req.params.fix_footnotes %]checked="checked"[% END %]
+               value="1"
+               type="checkbox" name="fix_footnotes" />
+  
+      [% loc('Rearrange the footnotes, considering only the order in
+              which they were inserted in the body. This option could
+              be destructive, please use with caution and check the
+              result. If encounter problems, please commit the result
+              reporting in the message the message the problem.') %]
+
       </label>
     </div>
     <div>
