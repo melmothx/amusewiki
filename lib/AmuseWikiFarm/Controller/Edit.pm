@@ -284,7 +284,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
             if (my $error = $revision->edit($params)) {
                 my $errmsg;
                 if (ref($error) and ref($error) eq 'HASH') {
-                    $errmsg = $c->loc("Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4])",
+                    $errmsg = $c->loc("Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes",
                                       $error->{footnotes},
                                       $error->{footnotes_found},
                                       $error->{references},
@@ -293,6 +293,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 else {
                     $errmsg = $c->loc($error);
                 }
+                $c->flash(error_msg => $errmsg);
                 return;
             }
         }

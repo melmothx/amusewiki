@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 30;
+use Test::More tests => 34;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -74,6 +74,7 @@ foreach my $lang (keys %expected) {
 
 [3] footnote http://amusewiki.org nbsp nbsp removed
 EOF
+    $mech->form_id('museform');
     $mech->field(body => $body);
     $mech->click('preview');
     $mech->form_id('museform');
@@ -84,4 +85,44 @@ EOF
       q{[1] footnote [[http://amusewiki.org][amusewiki.org]] nbsp nbsp removed};
     like $got_body, qr/\Q$exp_string\E/, "links, nbsp, footnotes fixed";
 }
-    
+
+my $off_before =<<'EOF';
+#title Title
+#lang en
+
+"hello" l'albero l'"adesso" 'adesso' [2] [3]
+
+[3] footnote http://amusewiki.org nbsp nbsp removed
+EOF
+
+my $off_after =<<'EOF';
+#title Title
+#lang en
+
+"hello" l'albero l'"adesso" 'adesso' [2] [3]
+
+[3] footnote http://amusewiki.org nbsp nbsp removed
+
+[4] footnote
+
+[4] blablabla
+EOF
+
+
+foreach my $muse_body ($off_before, $off_after) {
+    $mech->form_id('museform');
+    $mech->untick(fix_links => 1);
+    $mech->untick(fix_typography => 1);
+    $mech->untick(fix_footnotes => 1);
+    $mech->untick(fix_nbsp => 1);
+    $mech->untick(remove_nbsp => 1);
+    $mech->field(body => $muse_body);
+    $mech->click('preview');
+    $mech->form_id('museform');
+    $mech->tick(fix_footnotes => 1);
+    $mech->field(body => $muse_body);
+    $mech->click('preview');
+    $mech->form_id('museform');
+    is $mech->value('body'), $muse_body, "Changes ignored";
+    $mech->content_like(qr/Footnotes mismatch: found .+ footnotes .+ and found .+ footnote/);
+}

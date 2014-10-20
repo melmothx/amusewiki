@@ -241,15 +241,6 @@ $(document).ready(function() {
     </div>
     <div class="checkbox fix-nbsp-related-stuff">
       <label>
-        <input id="fix-nbsp"
-               [% IF c.req.params.fix_nbsp %]checked="checked"[% END %]
-               value="1"
-               type="checkbox" name="fix_nbsp" />
-        [% loc('Add non-breaking spaces where appropriate for the language') %]
-      </label>
-    </div>
-    <div class="checkbox fix-nbsp-related-stuff">
-      <label>
         <input id="remove-nbsp"
                [% IF c.req.params.remove_nbsp %]checked="checked"[% END %]
                value="1"
@@ -260,6 +251,15 @@ $(document).ready(function() {
 
       </label>
     </div>
+    <div class="checkbox fix-nbsp-related-stuff">
+      <label>
+        <input id="fix-nbsp"
+               [% IF c.req.params.fix_nbsp %]checked="checked"[% END %]
+               value="1"
+               type="checkbox" name="fix_nbsp" />
+        [% loc('Add non-breaking spaces where appropriate for the language') %]
+      </label>
+    </div>
 
     <div class="checkbox">
       <label>
@@ -268,11 +268,14 @@ $(document).ready(function() {
                value="1"
                type="checkbox" name="fix_footnotes" />
   
-      [% loc('Rearrange the footnotes, considering only the order in
-              which they were inserted in the body. This option could
-              be destructive, please use with caution and check the
-              result. If encounter problems, please commit the result
-              reporting in the message the message the problem.') %]
+      [% loc("Rearrange the footnotes, considering only the order in
+              which they were inserted in the body. Please leave
+              unchecked if you don't know what this means. This option
+              could be destructive, please use with caution and check
+              the result. If encounter problems, please commit the
+              result reporting in the message the problem. The
+              procedure tries to be safe and will ignore the change if
+              footnotes are missing or are too many.") %]
 
       </label>
     </div>
