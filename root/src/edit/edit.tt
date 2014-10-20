@@ -272,8 +272,8 @@ $(document).ready(function() {
               which they were inserted in the body. Please leave
               unchecked if you don't know what this means. This option
               could be destructive, please use with caution and check
-              the result. If encounter problems, please commit the
-              result reporting in the message the problem. The
+              the result. In case you encounter problemss, please
+              commit the result reporting them in the message. The
               procedure tries to be safe and will ignore the change if
               footnotes are missing or are too many.") %]
 
@@ -466,6 +466,12 @@ $(document).ready(function() {
           &lt;/play&gt;</code>.
         [% loc('In both case you will get a reverse indentation.') %]
       </p>
+      <p>
+        <strong>
+          [% loc('Please note that wrapping tags must be placed on a line by themselves.') %]
+        </strong>
+      </p>
+
 
       <h4 id="cslists">[% loc('Lists') %]</h4>
       <em>[% loc('Lists start with a single leading whitespace') %]</em>
