@@ -221,6 +221,13 @@ $(document).ready(function() {
                 [% IF locked_editing %]readonly="readonly"[% END %]
                 name="body">[%- revision.muse_body | html -%]</textarea>
     </div>
+    <h4>[% loc('Filters') %]</h4>
+    <p>
+      [% loc('Please keep in mind that filters are language-specific
+              and may or may not be available for the language of the
+              text. If not available, they will just leave the text as
+              is.') %]
+    </p>
     <div class="checkbox">
       <label>
       <input id="fix-typo"
@@ -247,7 +254,7 @@ $(document).ready(function() {
                type="checkbox" name="remove_nbsp" />
 
         [% loc('Unconditionally remove all the invisible non-breaking
-                spaces in the text.') %]
+                spaces in the text') %]
 
       </label>
     </div>
@@ -268,15 +275,14 @@ $(document).ready(function() {
                value="1"
                type="checkbox" name="fix_footnotes" />
   
-      [% loc("Rearrange the footnotes, considering only the order in
-              which they were inserted in the body. Please leave
-              unchecked if you don't know what this means. This option
-              could be destructive, please use with caution and check
-              the result. In case you encounter problemss, please
-              commit the result reporting them in the message. The
-              procedure tries to be safe and will ignore the change if
-              footnotes are missing or are too many.") %]
-
+      [% loc("Rearrange the footnotes, fixing the numbering,
+              considering only the order in which they were inserted.
+              Please leave unchecked if you don't know what this
+              means. This option could be destructive, please use with
+              caution and check the result. In case you encounter
+              problems, please commit the result reporting them in the
+              message. The procedure tries to be safe and will ignore
+              the change if footnotes are missing or are too many.") %]
       </label>
     </div>
     <div>
