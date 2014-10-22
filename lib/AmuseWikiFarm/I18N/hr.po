@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-10-22 17:52+0200\n"
+"PO-Revision-Date: 2014-10-22 18:02+0200\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -558,7 +558,9 @@ msgstr "Fusnote"
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 #: lib/AmuseWikiFarm/Controller/Edit.pm:291
 msgid "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references in the body (%4), ignoring changes"
-msgstr "Neusklađene fusnote:  pronađeno %1 fusnota (%2)  i pronađeno %3 fusnota u tekstu,  zanemarivši izmjene. "
+msgstr ""
+"Neusklađene fusnote: pronađeno %1 fusnota (%2) i pronađeno %3 fusnota\n"
+"u tekstu (%4), zanemarivši izmjene. "
 
 #: root/src/edit/newtext.tt:134
 msgid "For texts from the internet use"
