@@ -1,5 +1,9 @@
 This file documents the revision history for Perl extension AmuseWikiFarm.
 
+1.00 2014-10-22
+
+Reimplemented the filters in the edit page. No DB upgrade required
+
 0.998 2014-09-22
 
 DB upgrade required. Procedure to upgrade. Stop the server. Run:
