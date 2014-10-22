@@ -15,7 +15,7 @@ my $job = $site->jobs->git_action_add({ remote => $remote,
                                           action => 'fetch' });
 my $id = $job->discard_changes->id;
 
-print "Job id is tasks/status/$id";
+print "Job id is tasks/status/$id\n";
 
 # then loop and pool
 
