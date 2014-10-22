@@ -16,11 +16,11 @@ msgstr ""
 "X-Generator: Poedit 1.6.7\n"
 
 #. ($filename)
-#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:512
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:493
 msgid "%1 doesn't exist"
 msgstr "%1 не постои"
 
-#: root/src/edit/edit.tt:319
+#: root/src/edit/edit.tt:367
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Празен ред (или повеќе празни редови) започнуваат нов пасус."
 
@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "Веќе постои слика за насловната страница, но можеш да ја замениш со друга"
 
-#: root/src/edit/edit.tt:396
+#: root/src/edit/edit.tt:444
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
@@ -39,16 +39,16 @@ msgstr ""
 "Фуснота е линија кој започнува со број помеѓу средни\n"
 " загради, без празно место помеѓу."
 
-#: root/src/edit/edit.tt:322
+#: root/src/edit/edit.tt:370
 msgid "A line which starts with 2 or more whitespaces is a quotation."
 msgstr "Линија која започнува со 2 или повеќе празни места е цитат."
 
-#: root/src/edit/edit.tt:335
+#: root/src/edit/edit.tt:383
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
 msgstr ""
 "Линија која започнува со 20 или повеќе празни места значи десно порамнување."
 
-#: root/src/edit/edit.tt:328
+#: root/src/edit/edit.tt:376
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr ""
 "Линија која започнува со 6 или повеќе празни места значи централно "
@@ -59,7 +59,7 @@ msgstr ""
 msgid "A new revision has been created at %1"
 msgstr "Нова измена создадена на %1"
 
-#: root/src/edit/edit.tt:474
+#: root/src/edit/edit.tt:528
 msgid "A nice title"
 msgstr "Убав наслов"
 
@@ -97,6 +97,10 @@ msgstr "Додади слика за насловна страница (PNG ил
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Додади прилог ((PNG, JPG или PDF)"
 
+#: root/src/edit/edit.tt:267
+msgid "Add non-breaking spaces where appropriate for the language"
+msgstr ""
+
 #: root/src/text.tt:187
 msgid "Add this text to the bookbuilder"
 msgstr "Додади го овој текст на збирката"
@@ -106,7 +110,7 @@ msgstr "Додади го овој текст на збирката"
 msgid "Add to library"
 msgstr "Додади во библиотека"
 
-#: root/src/edit/edit.tt:510
+#: root/src/edit/edit.tt:564
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
@@ -170,7 +174,7 @@ msgstr "Автор"
 msgid "Authors"
 msgstr "Автори"
 
-#: root/src/edit/edit.tt:485 root/src/edit/newtext.tt:78
+#: root/src/edit/edit.tt:539 root/src/edit/newtext.tt:78
 msgid "Authors for indexing"
 msgstr ""
 "Автори за индексирање - во заграда наведи го и изворното писмо - пр.: \"Џон "
@@ -247,17 +251,17 @@ msgstr "Измени"
 msgid "Changes applied"
 msgstr "Внесени измени"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:348
+#: lib/AmuseWikiFarm/Controller/Edit.pm:362
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr "Измените се извршени, сега се на чекање"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:388 root/src/edit/diff.tt:13
+#: lib/AmuseWikiFarm/Controller/Edit.pm:402 root/src/edit/diff.tt:13
 msgid "Changes for %1"
 msgstr "Измени за %1"
 
-#: root/src/edit/edit.tt:301
+#: root/src/edit/edit.tt:349
 msgid "Chapter"
 msgstr "Поглавје"
 
@@ -265,7 +269,7 @@ msgstr "Поглавје"
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Поглавје, само за цели книги"
 
-#: root/src/edit/edit.tt:268
+#: root/src/edit/edit.tt:316
 msgid "Cheatsheet for the markup"
 msgstr "Потсетник за обликување на текстот"
 
@@ -285,7 +289,7 @@ msgstr "Кликни на сликите за пример за PDF"
 msgid "Close"
 msgstr "Затвори"
 
-#: root/src/edit/edit.tt:260
+#: root/src/edit/edit.tt:308
 msgid "Commit"
 msgstr "Изврши"
 
@@ -351,7 +355,7 @@ msgstr "Креиран е нов текст"
 msgid "Date"
 msgstr "Датум"
 
-#: root/src/edit/edit.tt:505 root/src/edit/newtext.tt:124
+#: root/src/edit/edit.tt:559 root/src/edit/newtext.tt:124
 msgid "Date of the original publication"
 msgstr "Датум на оригиналното издание"
 
@@ -406,7 +410,7 @@ msgstr "Фактор на поделба"
 msgid "Done"
 msgstr "Готово"
 
-#: root/src/edit/edit.tt:467
+#: root/src/edit/edit.tt:521
 msgid "Double bars"
 msgstr "Двојни линии"
 
@@ -470,7 +474,7 @@ msgstr "E-mail-овите не се поклопуваат"
 msgid "Erase this revision"
 msgstr "Избриши ја измената"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:345
+#: lib/AmuseWikiFarm/Controller/Edit.pm:359
 #: lib/AmuseWikiFarm/Controller/User.pm:258
 msgid "Error sending mail!"
 msgstr "Грешка при праќање на e-mail-от !"
@@ -479,7 +483,7 @@ msgstr "Грешка при праќање на e-mail-от !"
 msgid "Errors"
 msgstr "Грешки"
 
-#: root/src/edit/edit.tt:393 root/src/edit/edit.tt:399
+#: root/src/edit/edit.tt:441 root/src/edit/edit.tt:447
 msgid "Example"
 msgstr "Пример"
 
@@ -487,7 +491,7 @@ msgstr "Пример"
 msgid "Existing redirections"
 msgstr "Постоечки пренасочувања"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:297
+#: lib/AmuseWikiFarm/Controller/Edit.pm:311
 msgid "File uploaded!"
 msgstr "Датотеката е вчитана!"
 
@@ -499,16 +503,21 @@ msgstr ""
 "за да\n"
 " се пополни табакот."
 
-#: root/src/edit/edit.tt:478
+#: root/src/edit/edit.tt:224
+msgid "Filters"
+msgstr ""
+
+#: root/src/edit/edit.tt:532
 msgid "First Author and Second Author"
 msgstr "Прв Автор и Втор Автор"
 
-#: root/src/edit/edit.tt:483
+#: root/src/edit/edit.tt:537
 msgid "First Author, Second Author"
 msgstr "Прв Автор, Втор Автор"
 
-#: root/src/edit/edit.tt:229
-msgid "Fix typography"
+#: root/src/edit/edit.tt:237
+#, fuzzy
+msgid "Fix typography (smart quotes)"
 msgstr "Типографски исправки"
 
 #: root/src/admin/edit.tt:85
@@ -530,9 +539,16 @@ msgstr "Преглед на фонт"
 msgid "Font size"
 msgstr "Големина на фонт"
 
-#: root/src/edit/edit.tt:279 root/src/edit/edit.tt:388
+#: root/src/edit/edit.tt:327 root/src/edit/edit.tt:436
 msgid "Footnotes"
 msgstr "Фусноти"
+
+#. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
+#: lib/AmuseWikiFarm/Controller/Edit.pm:291
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes"
+msgstr ""
 
 #: root/src/edit/newtext.tt:134
 msgid "For texts from the internet use"
@@ -550,7 +566,7 @@ msgid ""
 "  here"
 msgstr "Овде можеш да создадеш пренасочување за теми и автори"
 
-#: root/src/edit/edit.tt:376
+#: root/src/edit/edit.tt:424
 msgid "Force a line break."
 msgstr "Принуди на преминување во нов ред."
 
@@ -594,7 +610,7 @@ msgstr "Половина „Letter“ формат"
 msgid "Heading"
 msgstr "Заглавие"
 
-#: root/src/edit/edit.tt:272 root/src/edit/edit.tt:295
+#: root/src/edit/edit.tt:320 root/src/edit/edit.tt:343
 msgid "Headings"
 msgstr "Заглавија"
 
@@ -648,7 +664,7 @@ msgid "Images not used in the text are stored, but will be ignored."
 msgstr ""
 "Сликите кои не се користат во текстот се зачувани, но ќе бидат игнорирани."
 
-#: root/src/edit/edit.tt:455
+#: root/src/edit/edit.tt:509
 msgid "Images:"
 msgstr "Слики:"
 
@@ -657,11 +673,11 @@ msgstr "Слики:"
 msgid "Imposition schemas"
 msgstr "Обрасци за прелом на текстот"
 
-#: root/src/edit/edit.tt:425
+#: root/src/edit/edit.tt:473
 msgid "In both case you will get a reverse indentation."
 msgstr "Во обата случаи текстот ќе биде обратно вовлечен."
 
-#: root/src/edit/edit.tt:391
+#: root/src/edit/edit.tt:439
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
@@ -669,7 +685,7 @@ msgstr ""
 "Во текстот бројката во средни загради се толкува како фуснота, доколку таа "
 "фуснота постои ."
 
-#: root/src/edit/edit.tt:348
+#: root/src/edit/edit.tt:396
 msgid "Inline elements"
 msgstr "Елементи по линија"
 
@@ -694,7 +710,7 @@ msgstr "Погрешно корисничко име"
 msgid "Italic"
 msgstr "Курзив"
 
-#: root/src/edit/edit.tt:276
+#: root/src/edit/edit.tt:324
 msgid "Italics, bold, monospace, linebreaks..."
 msgstr "Курзив, здебелено, нов ред..."
 
@@ -749,7 +765,7 @@ msgstr ""
 msgid "Language"
 msgstr "Јазик"
 
-#: root/src/edit/edit.tt:518
+#: root/src/edit/edit.tt:572
 msgid "Language code of the document (2 or 3 letters). "
 msgstr "Код на јазикот на текстот (2 или три букви)"
 
@@ -781,7 +797,7 @@ msgstr "Letter формат"
 msgid "Link"
 msgstr "Линк"
 
-#: root/src/edit/edit.tt:286 root/src/edit/edit.tt:444
+#: root/src/edit/edit.tt:334 root/src/edit/edit.tt:498
 msgid "Links and images"
 msgstr "Линкови и слики"
 
@@ -789,11 +805,11 @@ msgstr "Линкови и слики"
 msgid "List of texts on hold"
 msgstr "Листа на текстови на чекање"
 
-#: root/src/edit/edit.tt:285 root/src/edit/edit.tt:428
+#: root/src/edit/edit.tt:333 root/src/edit/edit.tt:482
 msgid "Lists"
 msgstr "Листи"
 
-#: root/src/edit/edit.tt:429
+#: root/src/edit/edit.tt:483
 msgid "Lists start with a single leading whitespace"
 msgstr ""
 "Листите започнуваат со едно единствено празно место на почеток од редот"
@@ -838,11 +854,11 @@ msgstr "Главен фонт"
 msgid "Main text"
 msgstr "Текст"
 
-#: root/src/edit/edit.tt:448
+#: root/src/edit/edit.tt:502
 msgid "Make a link clickable"
 msgstr "Активирај линк"
 
-#: root/src/edit/edit.tt:237
+#: root/src/edit/edit.tt:246
 msgid "Make all links active"
 msgstr "Активирај ги сите линкови"
 
@@ -854,7 +870,7 @@ msgstr "Кое било поле"
 msgid "Message"
 msgstr "Порака"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:359
+#: lib/AmuseWikiFarm/Controller/Edit.pm:373
 msgid "Missing #title header in the text!"
 msgstr "#title недостига во текстот!"
 
@@ -924,7 +940,7 @@ msgstr "Нов id на сајтот"
 msgid "Next"
 msgstr "Следно"
 
-#: root/src/edit/edit.tt:490
+#: root/src/edit/edit.tt:544
 msgid "Nice title"
 msgstr "Убав наслов"
 
@@ -982,8 +998,8 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "Или најави се, доколку имаш сметка."
 
-#: root/src/edit/edit.tt:323 root/src/edit/edit.tt:329
-#: root/src/edit/edit.tt:336
+#: root/src/edit/edit.tt:371 root/src/edit/edit.tt:377
+#: root/src/edit/edit.tt:384
 msgid "Or wrap it in"
 msgstr "Или вметни помеѓу"
 
@@ -1037,11 +1053,11 @@ msgstr ""
 " некоја вредност која системот ќе ја пресмета за да го намали бројот\n"
 " на бели страници кои треба да се додадат."
 
-#: root/src/edit/edit.tt:273 root/src/edit/edit.tt:317
+#: root/src/edit/edit.tt:321 root/src/edit/edit.tt:365
 msgid "Paragraphs"
 msgstr "Пасуси"
 
-#: root/src/edit/edit.tt:298
+#: root/src/edit/edit.tt:346
 msgid "Part"
 msgstr "Дел"
 
@@ -1087,7 +1103,7 @@ msgstr "Слика"
 msgid "Plain PDF"
 msgstr "Обичен PDF"
 
-#: root/src/edit/edit.tt:242
+#: root/src/edit/edit.tt:290
 msgid "Please describe shortly what you did"
 msgstr "Те молам накратко опиши што направи"
 
@@ -1095,7 +1111,7 @@ msgstr "Те молам накратко опиши што направи"
 msgid "Please do not use a valuable password."
 msgstr "Те молам не користи вредни лозинки кои ги користиш на друго место."
 
-#: root/src/edit/edit.tt:314
+#: root/src/edit/edit.tt:362
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
@@ -1106,6 +1122,14 @@ msgstr ""
 #: root/src/bookbuilder/index.tt:67
 msgid "Please give a name to the collection."
 msgstr "Наслови ја збирката."
+
+#: root/src/edit/edit.tt:226
+msgid ""
+"Please keep in mind that filters are language-specific\n"
+"              and may or may not be available for the language of the\n"
+"              text. If not available, they will just leave the text as\n"
+"              is."
+msgstr ""
 
 #: root/src/publish/pending.tt:88
 msgid ""
@@ -1122,7 +1146,7 @@ msgstr ""
 " ќе се изгубат веќе одобрени измени. Затоа, не прави го тоа, освен ако\n"
 " навистина знаеш што правиш."
 
-#: root/src/edit/edit.tt:252
+#: root/src/edit/edit.tt:300
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Остави e-mail доколку сакаш да бидеш контактиран во врска со оваа измена"
@@ -1141,13 +1165,13 @@ msgstr ""
 " печатење). Доколку е присутен само обичен PDF, опциите се применуваат/n на "
 "тој формат."
 
-#: root/src/edit/edit.tt:344
+#: root/src/edit/edit.tt:392 root/src/edit/edit.tt:477
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Имај на ум дека ознаките меѓу кои се наоѓа дел од текстот мораат да бидат "
 "сами во ред, без празно место или нешто друго."
 
-#: root/src/edit/edit.tt:459
+#: root/src/edit/edit.tt:513
 msgid ""
 "Please note that you have to upload them first and\n"
 "          use the name the form provides. Images are always renamed by\n"
@@ -1187,7 +1211,7 @@ msgstr "Избери фонт"
 msgid "Please select the signature size:"
 msgstr "Избери ја големината на табакот"
 
-#: root/src/edit/edit.tt:282
+#: root/src/edit/edit.tt:330
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Поезија, библиографии, драми, код"
 
@@ -1199,7 +1223,7 @@ msgstr "Поврзува"
 msgid "Prepare this text for the archiving"
 msgstr "Подготви го текстот за архивирање"
 
-#: root/src/edit/edit.tt:259 root/src/edit/edit.tt:93
+#: root/src/edit/edit.tt:307 root/src/edit/edit.tt:93
 msgid "Preview"
 msgstr "Преглед"
 
@@ -1227,7 +1251,7 @@ msgstr "Датум на објавување на овој сајт."
 msgid "Publish"
 msgstr "Објави"
 
-#: root/src/edit/edit.tt:508
+#: root/src/edit/edit.tt:562
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Објавено во *Убава книга*, објавена од Издавачка куќа, 2014"
 
@@ -1272,6 +1296,18 @@ msgstr "RSS feed"
 #: root/src/layout.tt:386
 msgid "Random"
 msgstr "Случајна страница"
+
+#: root/src/edit/edit.tt:278
+msgid ""
+"Rearrange the footnotes, fixing the numbering,\n"
+"              considering only the order in which they were inserted.\n"
+"              Please leave unchecked if you don't know what this\n"
+"              means. This option could be destructive, please use with\n"
+"              caution and check the result. In case you encounter\n"
+"              problems, please commit the result reporting them in the\n"
+"              message. The procedure tries to be safe and will ignore\n"
+"              the change if footnotes are missing or are too many."
+msgstr ""
 
 #: root/src/console/unpublished.tt:13
 msgid "Reason"
@@ -1322,7 +1358,7 @@ msgstr "Пронајдено"
 msgid "Retrieved on DATE from URL"
 msgstr "Пронајдено на ДАТУМ на URL"
 
-#: root/src/edit/edit.tt:513
+#: root/src/edit/edit.tt:567
 msgid "Retrieved on March 8, 2012 from"
 msgstr "Пронајдено на 8 март 2012, на"
 
@@ -1339,23 +1375,23 @@ msgstr "Измената за %1 е избришана"
 msgid "Search"
 msgstr "Барај"
 
-#: root/src/edit/edit.tt:304
+#: root/src/edit/edit.tt:352
 msgid "Section"
 msgstr "Оддел"
 
-#: root/src/edit/edit.tt:523
+#: root/src/edit/edit.tt:577
 msgid "See the full manual for more details (english)"
 msgstr "Погледни го прирачникот за повеќе детали (на англиски)"
 
-#: root/src/edit/edit.tt:468
+#: root/src/edit/edit.tt:522
 msgid "Separate body fields"
 msgstr "Одвојуваат делови од текстот"
 
-#: root/src/edit/edit.tt:466
+#: root/src/edit/edit.tt:520
 msgid "Separate footer fields"
 msgstr "Одвојуваат делови од подножјето"
 
-#: root/src/edit/edit.tt:467
+#: root/src/edit/edit.tt:521
 msgid "Separate header fields"
 msgstr "Одвојуваат делови од заглавието"
 
@@ -1372,7 +1408,7 @@ msgstr "Покажи ги разликите во друго јазиче"
 msgid "Show options"
 msgstr "Покажи ги опциите"
 
-#: root/src/edit/edit.tt:468
+#: root/src/edit/edit.tt:522
 msgid "Single bars"
 msgstr "Единечна лента"
 
@@ -1442,7 +1478,7 @@ msgstr "Изворни датотеки со прилози"
 msgid "Sources"
 msgstr "Извори"
 
-#: root/src/edit/edit.tt:403
+#: root/src/edit/edit.tt:451
 msgid "Special blocks"
 msgstr "Посебни делови"
 
@@ -1468,11 +1504,11 @@ msgstr "Статична страница без javascript"
 msgid "Status"
 msgstr "Состојба"
 
-#: root/src/edit/edit.tt:307
+#: root/src/edit/edit.tt:355
 msgid "Subsection"
 msgstr "Пододдел"
 
-#: root/src/edit/edit.tt:310
+#: root/src/edit/edit.tt:358
 msgid "Subsubsection or description item"
 msgstr "Пододдел или елемент на опис"
 
@@ -1496,11 +1532,11 @@ msgstr "Такво URI веќе постои"
 msgid "Such username already exists"
 msgstr "Такво корисничко име веќе постои"
 
-#: root/src/edit/edit.tt:270
+#: root/src/edit/edit.tt:318
 msgid "Summary"
 msgstr "Резиме"
 
-#: root/src/edit/edit.tt:290 root/src/edit/edit.tt:471
+#: root/src/edit/edit.tt:338 root/src/edit/edit.tt:525
 msgid "Supported directive in the header"
 msgstr "Поддржани полиња во заглавието"
 
@@ -1508,7 +1544,7 @@ msgstr "Поддржани полиња во заглавието"
 msgid "Table of Contents"
 msgstr "Содржина"
 
-#: root/src/edit/edit.tt:287 root/src/edit/edit.tt:464
+#: root/src/edit/edit.tt:335 root/src/edit/edit.tt:518
 msgid "Tables"
 msgstr "Табели"
 
@@ -1540,7 +1576,7 @@ msgstr "Логото го содржи името на сајтот"
 msgid "The name is always required, but used only if there are multiple texts."
 msgstr "Името е задолжително, но се користи само за збирки со повеќе текстови."
 
-#: root/src/edit/edit.tt:497
+#: root/src/edit/edit.tt:551
 msgid "The optional subtitle"
 msgstr "Поднаслов (не е задолжителен)"
 
@@ -1556,7 +1592,7 @@ msgstr "Измената ги содржи следните пораки"
 msgid "The text was added to the bookbuilder"
 msgstr "Текстот е додаден на збирката"
 
-#: root/src/edit/edit.tt:491
+#: root/src/edit/edit.tt:545
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -1566,7 +1602,7 @@ msgstr ""
 "Наслов на документот, заради сортирање. Обично не се користи во македонскиот "
 "јазик."
 
-#: root/src/edit/edit.tt:475
+#: root/src/edit/edit.tt:529
 msgid "The title of the document. The only mandatory directive."
 msgstr "Наслов на документот. Единственото задолжително поле."
 
@@ -1582,7 +1618,7 @@ msgstr "Целата книга во еден единствен табак"
 msgid "These texts are missing the unique id."
 msgstr "На овие текстови им недостига единствениот id."
 
-#: root/src/edit/edit.tt:445
+#: root/src/edit/edit.tt:499
 msgid "They have the same syntax (images are actually links)"
 msgstr "Ја имаат истата синтакса (сликите всушност се само линкови)"
 
@@ -1604,7 +1640,7 @@ msgstr ""
 "остави го празно, пополни ги останатите полиња и одложи ја измената за "
 "следниот чекор."
 
-#: root/src/edit/edit.tt:469
+#: root/src/edit/edit.tt:523
 msgid "This is the caption"
 msgstr "Ова е описот"
 
@@ -1657,16 +1693,16 @@ msgstr ""
 "За да ги видиш PDF датотеките, примени го или додади го овој низ од знаци во "
 "заглавието"
 
-#: root/src/edit/edit.tt:405
+#: root/src/edit/edit.tt:453
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "За да ги зачуваш празните места и новите редови, вметни пасус помеѓу "
 
-#: root/src/edit/edit.tt:415
+#: root/src/edit/edit.tt:463
 msgid "To quickly format bibliographies wrap them in"
 msgstr "За брзо обликување на библиографиите, вметни ги помеѓу"
 
-#: root/src/edit/edit.tt:422
+#: root/src/edit/edit.tt:470
 msgid "To quickly format plays, use"
 msgstr "За брзо обликување на драми, употреби"
 
@@ -1687,7 +1723,7 @@ msgid "Topic"
 msgstr "Тема"
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:76 root/src/edit/edit.tt:129
-#: root/src/edit/edit.tt:501 root/src/edit/newtext.tt:104
+#: root/src/edit/edit.tt:555 root/src/edit/newtext.tt:104
 #: root/src/layout.tt:165 root/src/layout.tt:181 root/src/layout.tt:400
 #: root/src/text.tt:58
 msgid "Topics"
@@ -1697,7 +1733,7 @@ msgstr "Теми"
 msgid "Total pages"
 msgstr "Вкупно страници"
 
-#: root/src/edit/edit.tt:466
+#: root/src/edit/edit.tt:520
 msgid "Triple bars"
 msgstr "Тројна лента"
 
@@ -1722,6 +1758,12 @@ msgstr "URL"
 msgid "UTC"
 msgstr "UTC"
 
+#: root/src/edit/edit.tt:256
+msgid ""
+"Unconditionally remove all the invisible non-breaking\n"
+"                spaces in the text"
+msgstr ""
+
 #: root/src/edit/newtext.tt:117
 msgid "Unique ID for the text"
 msgstr "Единствен ID за текстот"
@@ -1731,7 +1773,7 @@ msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
 #. ($mime)
-#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:527
+#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:508
 msgid "Unsupported file type %1"
 msgstr "Погрешен вид на фајл %1"
 
@@ -1765,7 +1807,7 @@ msgstr "Користи го во текстот како"
 msgid "Use optimized signatures with %1 pages each"
 msgstr "При прелом на текстот користи оптимиризани табаци со %s страници секој"
 
-#: root/src/edit/edit.tt:377
+#: root/src/edit/edit.tt:425
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
@@ -1807,7 +1849,7 @@ msgstr "Виртуелни хостови"
 msgid "Virtual hosts, one per line"
 msgstr "Виртуелни хостови, по еден во ред"
 
-#: root/src/edit/edit.tt:514
+#: root/src/edit/edit.tt:568
 msgid "Where does this text come from?"
 msgstr "Од каде е овој текст?"
 
@@ -1951,12 +1993,12 @@ msgstr "за проектот, линкови..."
 msgid "automatically generated if not present, using author and title"
 msgstr "се генерира автоматски доколку недостига, со автор и наслов"
 
-#: root/src/edit/edit.tt:370 root/src/edit/edit.tt:371
-#: root/src/edit/edit.tt:373
+#: root/src/edit/edit.tt:418 root/src/edit/edit.tt:419
+#: root/src/edit/edit.tt:421
 msgid "code and monospace"
 msgstr "обликување на кодот"
 
-#: root/src/edit/edit.tt:486 root/src/edit/edit.tt:501
+#: root/src/edit/edit.tt:540 root/src/edit/edit.tt:555
 #: root/src/edit/newtext.tt:105 root/src/edit/newtext.tt:79
 msgid "comma or semicolon separated list"
 msgstr "листа разделена со запирка или точка-запирка"
@@ -1973,7 +2015,7 @@ msgstr "конфликт"
 msgid "description"
 msgstr "опис"
 
-#: root/src/edit/edit.tt:449 root/src/edit/edit.tt:456
+#: root/src/edit/edit.tt:503 root/src/edit/edit.tt:510
 msgid "displayed text"
 msgstr "прикажан текст"
 
@@ -1981,7 +2023,7 @@ msgstr "прикажан текст"
 msgid "editing"
 msgstr "уредување во тек"
 
-#: root/src/edit/edit.tt:352 root/src/edit/edit.tt:354
+#: root/src/edit/edit.tt:400 root/src/edit/edit.tt:402
 msgid "emphasis"
 msgstr "истакнато"
 
@@ -1989,7 +2031,7 @@ msgstr "истакнато"
 msgid "failed"
 msgstr "неуспешно"
 
-#: root/src/edit/edit.tt:413
+#: root/src/edit/edit.tt:461
 msgid "for code, monospaced"
 msgstr "за кодот"
 
@@ -1997,7 +2039,7 @@ msgstr "за кодот"
 msgid "for display"
 msgstr "за приказ"
 
-#: root/src/edit/edit.tt:409
+#: root/src/edit/edit.tt:457
 msgid "for poetry"
 msgstr "за поезија"
 
@@ -2019,22 +2061,22 @@ msgstr ""
 msgid "mandatory"
 msgstr "задолжително"
 
-#: root/src/edit/edit.tt:439 root/src/edit/edit.tt:440
+#: root/src/edit/edit.tt:493 root/src/edit/edit.tt:494
 msgid "numbered item"
 msgstr "нумериран елемент"
 
-#: root/src/edit/edit.tt:487
+#: root/src/edit/edit.tt:541
 msgid "optional, defaults to the author directive"
 msgstr "незадолжително, доколку недостига ќе се користи полето автор"
 
-#: root/src/edit/edit.tt:163 root/src/edit/edit.tt:352
-#: root/src/edit/edit.tt:358 root/src/edit/edit.tt:364
-#: root/src/edit/edit.tt:370 root/src/edit/edit.tt:409
-#: root/src/edit/edit.tt:451 root/src/edit/edit.tt:456
+#: root/src/edit/edit.tt:163 root/src/edit/edit.tt:400
+#: root/src/edit/edit.tt:406 root/src/edit/edit.tt:412
+#: root/src/edit/edit.tt:418 root/src/edit/edit.tt:457
+#: root/src/edit/edit.tt:505 root/src/edit/edit.tt:510
 msgid "or"
 msgstr "или"
 
-#: root/src/edit/edit.tt:381 root/src/edit/edit.tt:384
+#: root/src/edit/edit.tt:429 root/src/edit/edit.tt:432
 msgid "overstriked"
 msgstr "избришано"
 
@@ -2066,7 +2108,7 @@ msgstr "релевантно"
 msgid "revision"
 msgstr "измена"
 
-#: root/src/edit/edit.tt:358 root/src/edit/edit.tt:360
+#: root/src/edit/edit.tt:406 root/src/edit/edit.tt:408
 msgid "strong emphasis"
 msgstr "истакнато и здебелено"
 
@@ -2074,7 +2116,7 @@ msgstr "истакнато и здебелено"
 msgid "sub-sub-section"
 msgstr "подпододдел"
 
-#: root/src/edit/edit.tt:379 root/src/edit/edit.tt:382
+#: root/src/edit/edit.tt:427 root/src/edit/edit.tt:430
 msgid "subscript"
 msgstr "индекс"
 
@@ -2082,7 +2124,7 @@ msgstr "индекс"
 msgid "subsection"
 msgstr "пододдел"
 
-#: root/src/edit/edit.tt:380 root/src/edit/edit.tt:383
+#: root/src/edit/edit.tt:428 root/src/edit/edit.tt:431
 msgid "superscript"
 msgstr "експонент"
 
@@ -2111,28 +2153,28 @@ msgstr "текстови според наслов"
 msgid "texts sorted by topics"
 msgstr "текстови според тема"
 
-#: root/src/edit/edit.tt:479
+#: root/src/edit/edit.tt:533
 msgid "the author of the text (as displayed)"
 msgstr "автор на текстот (за насловна страница)"
 
-#: root/src/edit/edit.tt:500
+#: root/src/edit/edit.tt:554
 msgid "topic"
 msgstr "тема"
 
-#: root/src/edit/edit.tt:433 root/src/edit/edit.tt:434
+#: root/src/edit/edit.tt:487 root/src/edit/edit.tt:488
 msgid "unnumbered item"
 msgstr "елементот не е нумериран"
 
-#: root/src/edit/edit.tt:364 root/src/edit/edit.tt:365
-#: root/src/edit/edit.tt:367
+#: root/src/edit/edit.tt:412 root/src/edit/edit.tt:413
+#: root/src/edit/edit.tt:415
 msgid "very strong emphasis"
 msgstr "истакнато и многу здебелено"
 
-#: root/src/edit/edit.tt:450
+#: root/src/edit/edit.tt:504
 msgid "with description"
 msgstr "со опис"
 
-#: root/src/edit/edit.tt:452
+#: root/src/edit/edit.tt:506
 msgid "without description"
 msgstr "без опис"
 
