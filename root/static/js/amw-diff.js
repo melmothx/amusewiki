@@ -31,8 +31,7 @@ function amw_diff_display (diffs) {
                                              '<br>[...]<br><br>',
                                              context_lines[last_index - 1],
                                              '&para;<br>',
-                                             context_lines[last_index],
-                                             '&para;<br>' ];
+                                             context_lines[last_index] ];
                     context = filtered_context.join('');
                 }
             }
