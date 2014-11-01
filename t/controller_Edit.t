@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 34;
+use Test::More tests => 37;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -126,3 +126,12 @@ foreach my $muse_body ($off_before, $off_after) {
     is $mech->value('body'), $muse_body, "Changes ignored";
     $mech->content_like(qr/Footnotes mismatch: found .+ footnotes .+ and found .+ footnote/);
 }
+
+diag "Testing the timestamp";
+$mech->get_ok('/action/text/new');
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+my $date = '2014-11-11 11:11';
+$mech->set_fields(title => "custom timestamp",
+                  pubdate => $date);
+$mech->click;
+$mech->content_contains("#pubdate 2014-11-11") or diag $mech->content;
