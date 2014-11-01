@@ -133,3 +133,15 @@ blockquote {
     margin-bottom: 1px;
 }
 
+.amw-diff-context {
+    color: #999;
+}
+
+.amw-diff-deletion {
+    color: red;
+}
+
+.amw-diff-insertion {
+    color: green;
+}
+
