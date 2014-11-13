@@ -206,9 +206,6 @@
     <div>
       <strong>
         [% loc('If you asked for imposition, select an imposition schema') %]:
-        <a target="_blank" href="[% c.uri_for_action('/bookbuilder/schemas') %]">
-          <span class="glyphicon glyphicon-question-sign"></span>
-        </a>
       </strong>
     </div>
     <div class="radio">
