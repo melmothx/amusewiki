@@ -213,42 +213,6 @@
     </div>
     <div class="radio">
       <label>
-        <input type="radio" name="schema" value="2side"
-               class="choose-schema"
-               [% IF bb.schema == '2side' %]checked="checked"[% END %] />
-        <strong>2side</strong>:
-
-        [% loc("Pages are not reordered. The first sheet contains
-        pages 1 and 2, the second 3 and 4, and so on, side by side.
-        This is not meant to be folded.") %]
-
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="2x4x2"
-               class="choose-schema"
-               [% IF bb.schema == '2x4x2' %]checked="checked"[% END %] />
-        <strong>2x4x2</strong>:
-
-        [% loc("Blocks of 16 pages to be folded twice and then bound
-                together.") %]
-
-      </label>
-    </div>
-
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="1x4x2cutfoldbind"
-               class="choose-schema"
-               [% IF bb.schema == '1x4x2cutfoldbind' %]checked="checked"[% END %] />
-        <strong>1x4x2cutfoldbind</strong>:
-        [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
-      </label>
-    </div>
-
-    <div class="radio">
-      <label>
         <input type="radio" name="schema" value="2up" id="schema2up"
                class="choose-schema"
                [% IF bb.schema == '2up' %]checked="checked"[% END %] />
@@ -283,6 +247,43 @@
         [% END %]
       </select>
     </div>
+
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="2side"
+               class="choose-schema"
+               [% IF bb.schema == '2side' %]checked="checked"[% END %] />
+        <strong>2side</strong>:
+
+        [% loc("Pages are not reordered. The first sheet contains
+        pages 1 and 2, the second 3 and 4, and so on, side by side.
+        This is not meant to be folded.") %]
+
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="2x4x2"
+               class="choose-schema"
+               [% IF bb.schema == '2x4x2' %]checked="checked"[% END %] />
+        <strong>2x4x2</strong>:
+
+        [% loc("Blocks of 16 pages to be folded twice and then bound
+                together.") %]
+
+      </label>
+    </div>
+
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="1x4x2cutfoldbind"
+               class="choose-schema"
+               [% IF bb.schema == '1x4x2cutfoldbind' %]checked="checked"[% END %] />
+        <strong>1x4x2cutfoldbind</strong>:
+        [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
+      </label>
+    </div>
+
     <div class="checkbox">
       <label for="cover">
         <input type="checkbox" name="cover" value="1" id="cover"
