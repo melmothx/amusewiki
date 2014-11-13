@@ -4,15 +4,19 @@
 
 <h4>2up</h4>
 
-<img src="[% c.uri_for('/static/images/schema-preview/2up.png') %]"
+<img src="[% c.uri_for('/static/images/schema-preview/2up_1.png') %]"
      alt="2up" />
 
+<img src="[% c.uri_for('/static/images/schema-preview/2up_2.png') %]"
+     alt="2up" />
 
 <h4>2x4x2</h4>
 
-<img src="[% c.uri_for('/static/images/schema-preview/2x4x2.png') %]"
+<img src="[% c.uri_for('/static/images/schema-preview/2x4x2_1.png') %]"
      alt="2x4x2" />
 
+<img src="[% c.uri_for('/static/images/schema-preview/2x4x2_2.png') %]"
+     alt="2x4x2" />
 
 <h4>2side</h4>
 
@@ -20,8 +24,12 @@
   [% loc('Just packs 2 consecutives logical pages on a physical one.') %]
 </p>
 
-<img src="[% c.uri_for('/static/images/schema-preview/2side.png') %]"
+<img src="[% c.uri_for('/static/images/schema-preview/2side_1.png') %]"
      alt="2side" />
+
+<img src="[% c.uri_for('/static/images/schema-preview/2side_2.png') %]"
+     alt="2side" />
+
 
 <h4>1x4x2cutfoldbind</h4>
 
@@ -29,5 +37,5 @@
   [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
 </p>
 
-<img src="[% c.uri_for('/static/images/schema-preview/1x4x2cutfoldbind.png') %]"
+<img src="[% c.uri_for('/static/images/schema-preview/1x4x2.png') %]"
      alt="2side" />
