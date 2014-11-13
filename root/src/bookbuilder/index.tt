@@ -227,6 +227,13 @@
         reduce the number of blank pages.") %]
 
       </label>
+      <div class="schema-preview">
+        <img src="[% c.uri_for('/static/images/schema-preview/2up_1.png') %]"
+             alt="2up" />
+
+        <img src="[% c.uri_for('/static/images/schema-preview/2up_2.png') %]"
+             alt="2up" />
+      </div>
     </div>
     <div class="checkbox" id="signature-explanation">
       <label for="signature">
@@ -260,6 +267,13 @@
         This is not meant to be folded.") %]
 
       </label>
+      <div class="schema-preview">
+        <img src="[% c.uri_for('/static/images/schema-preview/2side_1.png') %]"
+             alt="2side" />
+
+        <img src="[% c.uri_for('/static/images/schema-preview/2side_2.png') %]"
+             alt="2side" />
+      </div>
     </div>
     <div class="radio">
       <label>
@@ -272,6 +286,12 @@
                 together.") %]
 
       </label>
+      <div class="schema-preview">
+        <img src="[% c.uri_for('/static/images/schema-preview/2x4x2_1.png') %]"
+             alt="2x4x2" />
+        <img src="[% c.uri_for('/static/images/schema-preview/2x4x2_2.png') %]"
+             alt="2x4x2" />
+      </div>
     </div>
 
     <div class="radio">
@@ -282,6 +302,10 @@
         <strong>1x4x2cutfoldbind</strong>:
         [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
       </label>
+      <div>
+        <img src="[% c.uri_for('/static/images/schema-preview/1x4x2.png') %]"
+             alt="1x4x2cutfoldbind" />
+      </div>
     </div>
 
     <div class="checkbox">
