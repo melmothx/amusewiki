@@ -1,3 +1,5 @@
+* TODO Require an username (even fancy) when anon edits a page
+* TODO Convert all the circus to chained dispatch
 * TODO Put an absolute link (not just "") in the edit page.
 * TODO Add PT Sans font (and maybe some other sans ones)
 * TODO Hide the cover width when no image is attached.
