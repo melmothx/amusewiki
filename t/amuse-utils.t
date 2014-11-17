@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 43;
+use Test::More tests => 47;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -9,6 +9,8 @@ use File::Spec::Functions qw/catfile catdir/;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
                                    muse_filepath_is_valid
+                                   muse_filename_is_valid
+                                   muse_naming_algo
                                    muse_attachment_basename_for
                                   /;
 
@@ -97,3 +99,11 @@ is muse_attachment_basename_for("my-uri-123456789-123456789-123456789-123456789-
 eval { muse_attachment_basename_for("_this_") };
 ok $@, "Found exception $@";
 
+my $test_uri = muse_naming_algo("abc " x 30);
+is (length($test_uri), 95, "$test_uri is shorter than 96 chars");
+
+$test_uri = muse_naming_algo('Алексей Алексеевич Боровой Анархизм Общественные идеалы современного человечества. Либерализм. Социализм.');
+is (length($test_uri), 95, "$test_uri is shorter than 96 chars");
+ok muse_filename_is_valid($test_uri), "$test_uri is fully valid";
+$test_uri .= 'x';
+ok !muse_filename_is_valid($test_uri), "$test_uri is not valid (by one)";

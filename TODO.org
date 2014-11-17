@@ -1,4 +1,5 @@
-* TODO Fix bug
+* DONE Fix bug
+  CLOSED: [2014-11-17 lun 19:41]
 job publish started at Sat Nov 15 21:35:25 2014 Job publish finished
 at Sat Nov 15 21:35:25 2014 wtf at
 lib/AmuseWikiFarm/Schema/Result/Revision.pm line 563.

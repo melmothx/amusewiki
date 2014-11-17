@@ -498,6 +498,10 @@ sub muse_naming_algo {
         }
     }
     return '' unless @cleaned;
+    # while looping, we counted the tokens, not the chars, so we have
+    # to do it again
+    @cleaned = map { split // } @cleaned;
+    splice @cleaned, 95;
     # remove the trailing -
     while ($cleaned[$#cleaned] eq "-") {
         pop @cleaned;
