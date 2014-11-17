@@ -553,14 +553,15 @@ sub destination_paths {
     my $self = shift;
     my $target_dir;
     my $f_class = $self->f_class;
+    my $muse_uri = $self->muse_uri;
     if ($f_class eq 'text') {
-        $target_dir = $self->site->path_for_file($self->muse_uri);
+        $target_dir = $self->site->path_for_file($muse_uri);
     }
     elsif ($f_class eq 'special')  {
         $target_dir = $self->site->path_for_specials;
     }
     my $pdf_dir = $self->site->path_for_uploads;
-    die "<$target_dir> is not a dir" unless $target_dir && -d $target_dir;
+    die "<$target_dir> for $muse_uri is not a dir" unless $target_dir && -d $target_dir;
     die "pdf <$pdf_dir> is not a dir" unless $pdf_dir && -d $pdf_dir;
     my %dests;
     foreach my $file ($self->f_full_path_name, $self->attached_files_paths) {
