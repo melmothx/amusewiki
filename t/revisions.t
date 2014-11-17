@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 36;
+use Test::More tests => 37;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Path qw/make_path remove_tree/;
@@ -13,6 +13,7 @@ use AmuseWikiFarm::Schema;
 use Git::Wrapper;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
+use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -141,3 +142,13 @@ ok !$text->notes, "Notes are empty" or diag "Found " . $text->notes;
     ok(-f $title->f_full_path_name, "File exists");
     ok !$schema->resultset('Revision')->find($rev_id), "Revision is gone";
 }
+
+{
+    my ($revision, $error) = $site->create_new_text({title => 'Общественные идеалы современного человечества. Либерализм. Социализм. Анархизм',
+                                                     author => 'Алексей Алексеевич Боровой',
+                                                     lang => 'en',
+                                                     textbody => 'Hello',
+                                                    }, 'text');
+    ok scalar($revision->destination_paths);
+}
+
