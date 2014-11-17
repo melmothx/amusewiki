@@ -1,3 +1,9 @@
+* TODO Fix bug
+job publish started at Sat Nov 15 21:35:25 2014 Job publish finished
+at Sat Nov 15 21:35:25 2014 wtf at
+lib/AmuseWikiFarm/Schema/Result/Revision.pm line 563.
+
+
 * TODO Require an username (even fancy) when anon edits a page
 * TODO Convert all the circus to chained dispatch
 * TODO Put an absolute link (not just "") in the edit page.
