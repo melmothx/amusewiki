@@ -327,9 +327,10 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 $message .= "\n\n * " . DateTime->now->datetime . "\n" .
                   $wrapper->wrap($params->{message}) . "\n";
 
-                if ($c->user_exists) {
-                    $message .= "\n-- " . $c->user->get('username') . "\n\n"
-                }
+                # possibly fake, we don't care
+                my $reported_username = $params->{username} || 'anonymous';
+                $message .= "\n-- \n" . $reported_username . "\n\n";
+
                 $revision->commit_version($message);
 
                 # assert to have a fresh copy
