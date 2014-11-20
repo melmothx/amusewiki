@@ -20,7 +20,7 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 ei löydy"
 
-#: root/src/edit/edit.tt:367
+#: root/src/edit/edit.tt:383
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Tyhjä rivi (tai useampi) aloittaa uuden kappaleen."
 
@@ -30,7 +30,7 @@ msgid ""
 "              a new one."
 msgstr "Kansikuva on jo lisätty, mutta sen voi korvata uudella."
 
-#: root/src/edit/edit.tt:444
+#: root/src/edit/edit.tt:460
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
@@ -38,17 +38,17 @@ msgstr ""
 "Loppuviite on rivi, joka alkaa hakasulkeissa olevalla numerolla\n"
 "ilman tyhjiä merkkejä edessä."
 
-#: root/src/edit/edit.tt:370
+#: root/src/edit/edit.tt:386
 msgid "A line which starts with 2 or more whitespaces is a quotation."
 msgstr "Kahdella tai useammalla välilyönnillä alkava rivi on lainaus."
 
-#: root/src/edit/edit.tt:383
+#: root/src/edit/edit.tt:399
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
 msgstr ""
 "Jos rivin alussa on välilyöntejä 20 tai enemmän, se\n"
 "tasataan oikealle. "
 
-#: root/src/edit/edit.tt:376
+#: root/src/edit/edit.tt:392
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr "Jos rivin alussa on välilyöntejä 6 tai enemmän, rivi keskitetään."
 
@@ -57,7 +57,7 @@ msgstr "Jos rivin alussa on välilyöntejä 6 tai enemmän, rivi keskitetään."
 msgid "A new revision has been created at %1"
 msgstr "Uusi versio osoitteessa %1"
 
-#: root/src/edit/edit.tt:528
+#: root/src/edit/edit.tt:544
 msgid "A nice title"
 msgstr "Joku hyvä otsikko"
 
@@ -108,7 +108,7 @@ msgstr "Lisää kirjantekijään"
 msgid "Add to library"
 msgstr "Lisää kirjastoon"
 
-#: root/src/edit/edit.tt:564
+#: root/src/edit/edit.tt:580
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
@@ -171,7 +171,7 @@ msgstr "Kirjoittaja"
 msgid "Authors"
 msgstr "Kirjoittajat"
 
-#: root/src/edit/edit.tt:539 root/src/edit/newtext.tt:78
+#: root/src/edit/edit.tt:555 root/src/edit/newtext.tt:78
 msgid "Authors for indexing"
 msgstr "Kirjoittajat hakemistoa varten"
 
@@ -196,7 +196,7 @@ msgstr "Ohjelmiston tarvitsema raaka-HTML"
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Sidontakorjaus millimetreinä (sisämarginaali)"
 
-#: root/src/bookbuilder/index.tt:234
+#: root/src/bookbuilder/index.tt:282
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -218,7 +218,7 @@ msgstr "Kirjantekijä"
 msgid "Bookbuilder page limit (integer)"
 msgstr "Kirjantekijän sivurajoitus (kokonaisluku)"
 
-#: root/src/bookbuilder/index.tt:296
+#: root/src/bookbuilder/index.tt:318
 msgid "Build it"
 msgstr "Tee kirja"
 
@@ -246,17 +246,17 @@ msgstr "Muutokset"
 msgid "Changes applied"
 msgstr "Tehdyt muutokset"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:362
+#: lib/AmuseWikiFarm/Controller/Edit.pm:363
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr "Muutokset tehty, kiitos! Ne odottavat nyt julkaisua"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:402 root/src/edit/diff.tt:13
+#: lib/AmuseWikiFarm/Controller/Edit.pm:403 root/src/edit/diff.tt:13
 msgid "Changes for %1"
 msgstr "Tekstin %1 muutokset"
 
-#: root/src/edit/edit.tt:349
+#: root/src/edit/edit.tt:365
 msgid "Chapter"
 msgstr "Luku"
 
@@ -264,7 +264,7 @@ msgstr "Luku"
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Luku, vain kirjan eri lukuihin"
 
-#: root/src/edit/edit.tt:316
+#: root/src/edit/edit.tt:332
 msgid "Cheatsheet for the markup"
 msgstr "Merkintäohjeet"
 
@@ -284,7 +284,7 @@ msgstr "Klikkaa kuvaa nähdäksesi esimerkki PDF:n"
 msgid "Close"
 msgstr "Sulje"
 
-#: root/src/edit/edit.tt:308
+#: root/src/edit/edit.tt:324
 msgid "Commit"
 msgstr "Tee muutokset"
 
@@ -301,7 +301,7 @@ msgstr "Erojen laskeminen kesti"
 msgid "Couldn't add the text"
 msgstr "Tekstiä ei voitu lisätä"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:870
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:871
 msgid "Couldn't automatically generate the uri!"
 msgstr "Osoitetta ei pystytty luomaan automaattisesti!"
 
@@ -350,7 +350,7 @@ msgstr "Uusi teksti luotu"
 msgid "Date"
 msgstr "Päivämäärä"
 
-#: root/src/edit/edit.tt:559 root/src/edit/newtext.tt:124
+#: root/src/edit/edit.tt:575 root/src/edit/newtext.tt:124
 msgid "Date of the original publication"
 msgstr "Alkuperäisen julkaisun päivämäärä"
 
@@ -404,7 +404,7 @@ msgstr "Jakaja"
 msgid "Done"
 msgstr "Valmis"
 
-#: root/src/edit/edit.tt:521
+#: root/src/edit/edit.tt:537
 msgid "Double bars"
 msgstr "Kaksi putkea"
 
@@ -468,7 +468,7 @@ msgstr "Sähköpostiosoitteet eivät täsmää"
 msgid "Erase this revision"
 msgstr "Poista tämä versio"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:359
+#: lib/AmuseWikiFarm/Controller/Edit.pm:360
 #: lib/AmuseWikiFarm/Controller/User.pm:258
 msgid "Error sending mail!"
 msgstr "Virhe sähköpostin lähetyksessä!"
@@ -477,7 +477,7 @@ msgstr "Virhe sähköpostin lähetyksessä!"
 msgid "Errors"
 msgstr "Virheet"
 
-#: root/src/edit/edit.tt:441 root/src/edit/edit.tt:447
+#: root/src/edit/edit.tt:457 root/src/edit/edit.tt:463
 msgid "Example"
 msgstr "Esimerkki"
 
@@ -489,7 +489,7 @@ msgstr "Nykyiset uudelleenohjaukset"
 msgid "File uploaded!"
 msgstr "Tiedosto ladattu!"
 
-#: root/src/bookbuilder/index.tt:290
+#: root/src/bookbuilder/index.tt:312
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
@@ -499,11 +499,11 @@ msgstr ""
 msgid "Filters"
 msgstr ""
 
-#: root/src/edit/edit.tt:532
+#: root/src/edit/edit.tt:548
 msgid "First Author and Second Author"
 msgstr "Ensimmäinen ja toinen kirjoittaja"
 
-#: root/src/edit/edit.tt:537
+#: root/src/edit/edit.tt:553
 msgid "First Author, Second Author"
 msgstr "Ensimmäinen kirjoittaja, toinen kirjoittaja"
 
@@ -516,7 +516,7 @@ msgstr "Korjaa typografia"
 msgid "Fixed category list"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:246 root/src/bookbuilder/schemas.tt:29
+#: root/src/bookbuilder/index.tt:300 root/src/bookbuilder/schemas.tt:37
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
@@ -531,7 +531,7 @@ msgstr "Fonttien esikatselu"
 msgid "Font size"
 msgstr "Fonttikoko"
 
-#: root/src/edit/edit.tt:327 root/src/edit/edit.tt:436
+#: root/src/edit/edit.tt:343 root/src/edit/edit.tt:452
 msgid "Footnotes"
 msgstr "Loppuviitteet"
 
@@ -556,7 +556,7 @@ msgid ""
 "  here"
 msgstr "Aiheiden ja kirjoittajien uudelleenohjaukset voi tehdä täällä"
 
-#: root/src/edit/edit.tt:424
+#: root/src/edit/edit.tt:440
 msgid "Force a line break."
 msgstr "Pakotettu rivinvaihto"
 
@@ -600,7 +600,7 @@ msgstr "Half Letter"
 msgid "Heading"
 msgstr ""
 
-#: root/src/edit/edit.tt:320 root/src/edit/edit.tt:343
+#: root/src/edit/edit.tt:336 root/src/edit/edit.tt:359
 msgid "Headings"
 msgstr "Otsikot"
 
@@ -650,7 +650,7 @@ msgstr "Kuvan osoite"
 msgid "Images not used in the text are stored, but will be ignored."
 msgstr ""
 
-#: root/src/edit/edit.tt:509
+#: root/src/edit/edit.tt:525
 msgid "Images:"
 msgstr "Kuvat:"
 
@@ -659,11 +659,11 @@ msgstr "Kuvat:"
 msgid "Imposition schemas"
 msgstr "Taittomallit"
 
-#: root/src/edit/edit.tt:473
+#: root/src/edit/edit.tt:489
 msgid "In both case you will get a reverse indentation."
 msgstr "Molemmissa tapauksissa tuloksena on käänteinen sisennys"
 
-#: root/src/edit/edit.tt:439
+#: root/src/edit/edit.tt:455
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
@@ -671,7 +671,7 @@ msgstr ""
 "Tekstin sisällä hakasulkeissa oleva numero tulkitaan\n"
 "         loppuviitteeksi, mikäli lopussa on vastaava viite."
 
-#: root/src/edit/edit.tt:396
+#: root/src/edit/edit.tt:412
 msgid "Inline elements"
 msgstr "Sisäiset elementit"
 
@@ -696,7 +696,7 @@ msgstr "Virheellinen käyttäjänimi"
 msgid "Italic"
 msgstr "Kursivoitu"
 
-#: root/src/edit/edit.tt:324
+#: root/src/edit/edit.tt:340
 msgid "Italics, bold, monospace, linebreaks..."
 msgstr "Kursiivi, lihavointi, tasavälit, rivinvaihdot..."
 
@@ -712,7 +712,7 @@ msgstr "Työtä ei löytynyt"
 msgid "Jobs"
 msgstr "Työt"
 
-#: root/src/bookbuilder/schemas.tt:20
+#: root/src/bookbuilder/schemas.tt:24
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
 "Laittaa vain kaksi toisiaan seuraavaa loogista sivua samalle fyysiselle "
@@ -751,7 +751,7 @@ msgstr ""
 msgid "Language"
 msgstr "Kieli"
 
-#: root/src/edit/edit.tt:572
+#: root/src/edit/edit.tt:588
 msgid "Language code of the document (2 or 3 letters). "
 msgstr "Kielikoodi (2 tai 3 kirjainta)."
 
@@ -783,7 +783,7 @@ msgstr "Letter "
 msgid "Link"
 msgstr "Linkki"
 
-#: root/src/edit/edit.tt:334 root/src/edit/edit.tt:498
+#: root/src/edit/edit.tt:350 root/src/edit/edit.tt:514
 msgid "Links and images"
 msgstr "Linkit ja kuvat"
 
@@ -791,11 +791,11 @@ msgstr "Linkit ja kuvat"
 msgid "List of texts on hold"
 msgstr "Odottamassa olevat tekstit"
 
-#: root/src/edit/edit.tt:333 root/src/edit/edit.tt:482
+#: root/src/edit/edit.tt:349 root/src/edit/edit.tt:498
 msgid "Lists"
 msgstr "Listat"
 
-#: root/src/edit/edit.tt:483
+#: root/src/edit/edit.tt:499
 msgid "Lists start with a single leading whitespace"
 msgstr "Listat alkavat yhdellä välilyönnillä rivin alussa"
 
@@ -839,7 +839,7 @@ msgstr "Pääfontti"
 msgid "Main text"
 msgstr "Pääteksti"
 
-#: root/src/edit/edit.tt:502
+#: root/src/edit/edit.tt:518
 msgid "Make a link clickable"
 msgstr "Tee linkistä klikattava"
 
@@ -855,7 +855,7 @@ msgstr "Riittää kun täsmää mihin tahansa ylläolevaan kenttään"
 msgid "Message"
 msgstr "Viesti"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:373
+#: lib/AmuseWikiFarm/Controller/Edit.pm:374
 msgid "Missing #title header in the text!"
 msgstr "Tekstistä puuttuu #title"
 
@@ -923,7 +923,7 @@ msgstr "Uusi tunnus"
 msgid "Next"
 msgstr "Seuraava"
 
-#: root/src/edit/edit.tt:544
+#: root/src/edit/edit.tt:560
 msgid "Nice title"
 msgstr "Otsikko"
 
@@ -935,7 +935,7 @@ msgstr "Ei tuloksia!"
 msgid "No text found!"
 msgstr "Tekstiä ei löytynyt!"
 
-#: root/src/bookbuilder/index.tt:341
+#: root/src/bookbuilder/index.tt:363
 msgid "No text was added yet"
 msgstr "Ei vielä yhtään tekstiä."
 
@@ -983,8 +983,8 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "Kirjaudu, jos sinulla on jo tunnus."
 
-#: root/src/edit/edit.tt:371 root/src/edit/edit.tt:377
-#: root/src/edit/edit.tt:384
+#: root/src/edit/edit.tt:387 root/src/edit/edit.tt:393
+#: root/src/edit/edit.tt:400
 msgid "Or wrap it in"
 msgstr "Tai sen voi laittaa tageihin"
 
@@ -1000,8 +1000,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 #: root/src/edit/edit.tt:182 root/src/edit/edit.tt:183
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
@@ -1010,7 +1010,7 @@ msgstr ""
 msgid "Page not found!"
 msgstr "Sivua ei löydy!"
 
-#: root/src/bookbuilder/index.tt:221
+#: root/src/bookbuilder/index.tt:262
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
@@ -1020,7 +1020,7 @@ msgstr ""
 "        sisältää sivut 1 ja 2, toinen  sivut 3 ja 4 ja niin edelleen.\n"
 "        Papereita ei ole tarkoitettu taitettavaksi."
 
-#: root/src/bookbuilder/index.tt:257
+#: root/src/bookbuilder/index.tt:218
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1039,11 +1039,11 @@ msgstr ""
 "signature\n"
 "        tai se voi olla optimoitu tyhjien sivujen välttämiseksi."
 
-#: root/src/edit/edit.tt:321 root/src/edit/edit.tt:365
+#: root/src/edit/edit.tt:337 root/src/edit/edit.tt:381
 msgid "Paragraphs"
 msgstr "Kappaleet"
 
-#: root/src/edit/edit.tt:346
+#: root/src/edit/edit.tt:362
 msgid "Part"
 msgstr "Osa"
 
@@ -1097,7 +1097,7 @@ msgstr "Kuvaile lyhyesti mitä teit"
 msgid "Please do not use a valuable password."
 msgstr "Älä käytä tärkeää salasanaa"
 
-#: root/src/edit/edit.tt:362
+#: root/src/edit/edit.tt:378
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
@@ -1107,6 +1107,13 @@ msgstr ""
 #: root/src/bookbuilder/index.tt:67
 msgid "Please give a name to the collection."
 msgstr "Anna kokoelmalle nimi."
+
+#: root/src/edit/edit.tt:314
+msgid ""
+"Please give us a username. It should *not* be a mail address.\n"
+"        Just a fancy name, so we can know that multiple uploads come\n"
+"        from the same person."
+msgstr ""
 
 #: root/src/edit/edit.tt:226
 msgid ""
@@ -1142,11 +1149,11 @@ msgid ""
 "  only the standalone PDF, they are applied to it."
 msgstr ""
 
-#: root/src/edit/edit.tt:392 root/src/edit/edit.tt:477
+#: root/src/edit/edit.tt:408 root/src/edit/edit.tt:493
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr "Huomaa, että tällaiset tagit täytyy laittaa omalle rivilleen."
 
-#: root/src/edit/edit.tt:513
+#: root/src/edit/edit.tt:529
 msgid ""
 "Please note that you have to upload them first and\n"
 "          use the name the form provides. Images are always renamed by\n"
@@ -1183,11 +1190,11 @@ msgstr "Valitse"
 msgid "Please select the desired fonts"
 msgstr "Valitse haluamasi fontit."
 
-#: root/src/bookbuilder/index.tt:269
+#: root/src/bookbuilder/index.tt:237
 msgid "Please select the signature size:"
 msgstr "Valitse signaturen koko:"
 
-#: root/src/edit/edit.tt:330
+#: root/src/edit/edit.tt:346
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Runot, bibliografiat, näytelmät, koodit"
 
@@ -1199,7 +1206,7 @@ msgstr ""
 msgid "Prepare this text for the archiving"
 msgstr "Valmistele teksti arkistointia varten"
 
-#: root/src/edit/edit.tt:307 root/src/edit/edit.tt:93
+#: root/src/edit/edit.tt:323 root/src/edit/edit.tt:93
 msgid "Preview"
 msgstr "Esikatselu"
 
@@ -1227,7 +1234,7 @@ msgstr "Julkaisupäivä tällä sivustolla."
 msgid "Publish"
 msgstr "Julkaise"
 
-#: root/src/edit/edit.tt:562
+#: root/src/edit/edit.tt:578
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 "Julkaistu nimellä *Hauska kirja*, kustantajana Kustannusosuuskunta, 2013"
@@ -1335,7 +1342,7 @@ msgstr "Tuloksia"
 msgid "Retrieved on DATE from URL"
 msgstr "Haettu PVM osoitteesta URL"
 
-#: root/src/edit/edit.tt:567
+#: root/src/edit/edit.tt:583
 msgid "Retrieved on March 8, 2012 from"
 msgstr "Haettu 8. maaliskuuta 2012 osoitteesta"
 
@@ -1352,23 +1359,23 @@ msgstr "Versio %1 poistettu"
 msgid "Search"
 msgstr "Hae"
 
-#: root/src/edit/edit.tt:352
+#: root/src/edit/edit.tt:368
 msgid "Section"
 msgstr "Osio"
 
-#: root/src/edit/edit.tt:577
+#: root/src/edit/edit.tt:593
 msgid "See the full manual for more details (english)"
 msgstr "Katso lisätietoja käyttöohjeesta (englanniksi)"
 
-#: root/src/edit/edit.tt:522
+#: root/src/edit/edit.tt:538
 msgid "Separate body fields"
 msgstr "Erillinen runko-osio"
 
-#: root/src/edit/edit.tt:520
+#: root/src/edit/edit.tt:536
 msgid "Separate footer fields"
 msgstr "Erillinen alaosio"
 
-#: root/src/edit/edit.tt:521
+#: root/src/edit/edit.tt:537
 msgid "Separate header fields"
 msgstr "Erillinen yläosio"
 
@@ -1385,7 +1392,7 @@ msgstr "Näytä erot toisessa välilehdessä"
 msgid "Show options"
 msgstr "Näytä lisävaihtoehdot"
 
-#: root/src/edit/edit.tt:522
+#: root/src/edit/edit.tt:538
 msgid "Single bars"
 msgstr "Yksittäinen putki"
 
@@ -1455,7 +1462,7 @@ msgstr "Lähdetiedostot liitteineen"
 msgid "Sources"
 msgstr "Lähdetiedostot"
 
-#: root/src/edit/edit.tt:451
+#: root/src/edit/edit.tt:467
 msgid "Special blocks"
 msgstr "Erityislohkot"
 
@@ -1481,11 +1488,11 @@ msgstr "Staattinen sivu ilman javascriptiä"
 msgid "Status"
 msgstr "Tila"
 
-#: root/src/edit/edit.tt:355
+#: root/src/edit/edit.tt:371
 msgid "Subsection"
 msgstr "Alaosio"
 
-#: root/src/edit/edit.tt:358
+#: root/src/edit/edit.tt:374
 msgid "Subsubsection or description item"
 msgstr "Alaosion alaosio tai kuvaus"
 
@@ -1501,7 +1508,7 @@ msgstr ""
 "Tällainen otsake ottaa tekstin pois näkyvistä\n"
 "  ja laittaa tilalle uudelleenohjauksen, joka listataan täällä"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:881
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:882
 msgid "Such an uri already exists"
 msgstr ""
 
@@ -1509,11 +1516,11 @@ msgstr ""
 msgid "Such username already exists"
 msgstr "Käyttäjänimi on jo olemassa"
 
-#: root/src/edit/edit.tt:318
+#: root/src/edit/edit.tt:334
 msgid "Summary"
 msgstr "Yhteenveto"
 
-#: root/src/edit/edit.tt:338 root/src/edit/edit.tt:525
+#: root/src/edit/edit.tt:354 root/src/edit/edit.tt:541
 msgid "Supported directive in the header"
 msgstr "Otsakkeen merkinnät"
 
@@ -1521,7 +1528,7 @@ msgstr "Otsakkeen merkinnät"
 msgid "Table of Contents"
 msgstr "Sisällysluettelo"
 
-#: root/src/edit/edit.tt:335 root/src/edit/edit.tt:518
+#: root/src/edit/edit.tt:351 root/src/edit/edit.tt:534
 msgid "Tables"
 msgstr "Taulukot"
 
@@ -1554,7 +1561,7 @@ msgid "The name is always required, but used only if there are multiple texts."
 msgstr ""
 "Nimi vaaditaan aina, mutta sitä käytetään vain jos tekstejä on useampi."
 
-#: root/src/edit/edit.tt:551
+#: root/src/edit/edit.tt:567
 msgid "The optional subtitle"
 msgstr "Vaihtoehtoinen alaotsikko"
 
@@ -1570,7 +1577,7 @@ msgstr "Versiossa on seuraavat viestit"
 msgid "The text was added to the bookbuilder"
 msgstr "Teksti lisättiin kirjantekijään"
 
-#: root/src/edit/edit.tt:545
+#: root/src/edit/edit.tt:561
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -1578,7 +1585,7 @@ msgid ""
 "          listed under N, not under A."
 msgstr "Tekstin otsikko lajittelua varten, jos eri kuin näytölle."
 
-#: root/src/edit/edit.tt:529
+#: root/src/edit/edit.tt:545
 msgid "The title of the document. The only mandatory directive."
 msgstr "Tekstin otsikko. Ainoa pakollinen."
 
@@ -1586,7 +1593,7 @@ msgstr "Tekstin otsikko. Ainoa pakollinen."
 msgid "The user will have the same your level of access"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:278
+#: root/src/bookbuilder/index.tt:246
 msgid "The whole book in as single signature"
 msgstr "Koko kirja yhtenä signaturena"
 
@@ -1594,7 +1601,7 @@ msgstr "Koko kirja yhtenä signaturena"
 msgid "These texts are missing the unique id."
 msgstr "Näistä teksteistä puuttuu yksilöivä tunniste."
 
-#: root/src/edit/edit.tt:499
+#: root/src/edit/edit.tt:515
 msgid "They have the same syntax (images are actually links)"
 msgstr "Syntaksi on sama (kuvat ovat itse asiassa linkkejä)"
 
@@ -1617,7 +1624,7 @@ msgstr ""
 "       täytä vaadittavat kentät ja jätä editointi seuraavaan\n"
 "        vaiheeseen."
 
-#: root/src/edit/edit.tt:523
+#: root/src/edit/edit.tt:539
 msgid "This is the caption"
 msgstr "Kuvateksti"
 
@@ -1658,8 +1665,8 @@ msgstr "Otsikko lajittelua varten"
 msgid "Titles"
 msgstr "Tekstit"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
 msgstr ""
@@ -1668,16 +1675,16 @@ msgstr ""
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
 
-#: root/src/edit/edit.tt:453
+#: root/src/edit/edit.tt:469
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "Välilyöntien ja rivinvaihtojen säilyttämiseksi laita kappale tageihin"
 
-#: root/src/edit/edit.tt:463
+#: root/src/edit/edit.tt:479
 msgid "To quickly format bibliographies wrap them in"
 msgstr "Nopean kirjaluettelon laatimiseksi laita ympärille tagit"
 
-#: root/src/edit/edit.tt:470
+#: root/src/edit/edit.tt:486
 msgid "To quickly format plays, use"
 msgstr "Näytelmät saa muotoiltua nopeasti laittamalla ympärille tagit"
 
@@ -1698,7 +1705,7 @@ msgid "Topic"
 msgstr "Aihe"
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:76 root/src/edit/edit.tt:129
-#: root/src/edit/edit.tt:555 root/src/edit/newtext.tt:104
+#: root/src/edit/edit.tt:571 root/src/edit/newtext.tt:104
 #: root/src/layout.tt:165 root/src/layout.tt:181 root/src/layout.tt:400
 #: root/src/text.tt:58
 msgid "Topics"
@@ -1708,11 +1715,11 @@ msgstr "Aiheet"
 msgid "Total pages"
 msgstr "Sivuja yhteensä"
 
-#: root/src/edit/edit.tt:520
+#: root/src/edit/edit.tt:536
 msgid "Triple bars"
 msgstr "Kolme putkea"
 
-#: root/src/bookbuilder/index.tt:357
+#: root/src/bookbuilder/index.tt:379
 msgid "Try a random text if unsure"
 msgstr "Jos et ole varma, kokeile satunnaista tekstiä"
 
@@ -1752,7 +1759,7 @@ msgstr "Julkaisemattomat tekstit"
 msgid "Unsupported file type %1"
 msgstr "Tiedostotyyppi %1 ei ole tuettu"
 
-#: root/src/admin/edit.tt:455 root/src/bookbuilder/index.tt:299
+#: root/src/admin/edit.tt:455 root/src/bookbuilder/index.tt:321
 #: root/src/user/edit.tt:39
 msgid "Update"
 msgstr "Päivitä"
@@ -1778,11 +1785,11 @@ msgid "Use it in the body as"
 msgstr ""
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:276
+#: root/src/bookbuilder/index.tt:244
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Käytä optimoitua signaturea, joissa on %1 sivua kussakin. "
 
-#: root/src/edit/edit.tt:425
+#: root/src/edit/edit.tt:441
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
@@ -1825,7 +1832,7 @@ msgstr ""
 msgid "Virtual hosts, one per line"
 msgstr ""
 
-#: root/src/edit/edit.tt:568
+#: root/src/edit/edit.tt:584
 msgid "Where does this text come from?"
 msgstr "Mistä teksti on peräisin?"
 
@@ -1837,7 +1844,7 @@ msgstr ""
 "Kansikuvan leveys prosentteina tekstiosan leveydestä.\n"
 "    Jätä tyhjäksi, jos et tarvitse kansikuvaa"
 
-#: root/src/bookbuilder/index.tt:346
+#: root/src/bookbuilder/index.tt:368
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1875,7 +1882,7 @@ msgstr "Olet jo kirjautunut "
 msgid "You are logged in now!"
 msgstr "Olet kirjautunut!"
 
-#: root/src/bookbuilder/index.tt:351
+#: root/src/bookbuilder/index.tt:373
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
@@ -1885,8 +1892,8 @@ msgstr ""
 "    \"plus\"-kuvaketta tekstin latausvaihtoehtojen vieressä. Voit lisätä\n"
 "    ja poistaa tekstejä myöhemmin."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
 msgstr ""
@@ -1908,8 +1915,8 @@ msgstr "Olet kirjautunut ulos"
 msgid "You may want to resume the editing of one of them"
 msgstr "Saatat haluta jatkaa muokkausta"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr "Sinun tulisi vaihtaa salasanasi heti osoitteessa %1"
@@ -1969,12 +1976,12 @@ msgstr ""
 msgid "automatically generated if not present, using author and title"
 msgstr "luodaan automaattisesti kirjoittajan ja otsikon pohjalta"
 
-#: root/src/edit/edit.tt:418 root/src/edit/edit.tt:419
-#: root/src/edit/edit.tt:421
+#: root/src/edit/edit.tt:434 root/src/edit/edit.tt:435
+#: root/src/edit/edit.tt:437
 msgid "code and monospace"
 msgstr "koodi ja tasavälinen teksti"
 
-#: root/src/edit/edit.tt:540 root/src/edit/edit.tt:555
+#: root/src/edit/edit.tt:556 root/src/edit/edit.tt:571
 #: root/src/edit/newtext.tt:105 root/src/edit/newtext.tt:79
 msgid "comma or semicolon separated list"
 msgstr "pilkulla tai puolipisteellä erotettu lista"
@@ -1991,7 +1998,7 @@ msgstr "ristiriita"
 msgid "description"
 msgstr "kuvaus"
 
-#: root/src/edit/edit.tt:503 root/src/edit/edit.tt:510
+#: root/src/edit/edit.tt:519 root/src/edit/edit.tt:526
 msgid "displayed text"
 msgstr "näkyvä teksti"
 
@@ -1999,7 +2006,7 @@ msgstr "näkyvä teksti"
 msgid "editing"
 msgstr "muokataan"
 
-#: root/src/edit/edit.tt:400 root/src/edit/edit.tt:402
+#: root/src/edit/edit.tt:416 root/src/edit/edit.tt:418
 msgid "emphasis"
 msgstr "painotus"
 
@@ -2007,7 +2014,7 @@ msgstr "painotus"
 msgid "failed"
 msgstr "epäonnistui"
 
-#: root/src/edit/edit.tt:461
+#: root/src/edit/edit.tt:477
 msgid "for code, monospaced"
 msgstr "koodille, tasaväliselle tekstille"
 
@@ -2015,7 +2022,7 @@ msgstr "koodille, tasaväliselle tekstille"
 msgid "for display"
 msgstr "näytölle"
 
-#: root/src/edit/edit.tt:457
+#: root/src/edit/edit.tt:473
 msgid "for poetry"
 msgstr "runoille"
 
@@ -2037,22 +2044,22 @@ msgstr ""
 msgid "mandatory"
 msgstr "pakollinen"
 
-#: root/src/edit/edit.tt:493 root/src/edit/edit.tt:494
+#: root/src/edit/edit.tt:509 root/src/edit/edit.tt:510
 msgid "numbered item"
 msgstr "numeroitu elementti"
 
-#: root/src/edit/edit.tt:541
+#: root/src/edit/edit.tt:557
 msgid "optional, defaults to the author directive"
 msgstr "vapaaehtoinen, oletuksena kirjoittajamerkintä"
 
-#: root/src/edit/edit.tt:163 root/src/edit/edit.tt:400
-#: root/src/edit/edit.tt:406 root/src/edit/edit.tt:412
-#: root/src/edit/edit.tt:418 root/src/edit/edit.tt:457
-#: root/src/edit/edit.tt:505 root/src/edit/edit.tt:510
+#: root/src/edit/edit.tt:163 root/src/edit/edit.tt:416
+#: root/src/edit/edit.tt:422 root/src/edit/edit.tt:428
+#: root/src/edit/edit.tt:434 root/src/edit/edit.tt:473
+#: root/src/edit/edit.tt:521 root/src/edit/edit.tt:526
 msgid "or"
 msgstr "tai"
 
-#: root/src/edit/edit.tt:429 root/src/edit/edit.tt:432
+#: root/src/edit/edit.tt:445 root/src/edit/edit.tt:448
 msgid "overstriked"
 msgstr "yliviivattu"
 
@@ -2084,7 +2091,7 @@ msgstr "osumatarkkuus"
 msgid "revision"
 msgstr "versio"
 
-#: root/src/edit/edit.tt:406 root/src/edit/edit.tt:408
+#: root/src/edit/edit.tt:422 root/src/edit/edit.tt:424
 msgid "strong emphasis"
 msgstr "vahva painotus"
 
@@ -2092,7 +2099,7 @@ msgstr "vahva painotus"
 msgid "sub-sub-section"
 msgstr ""
 
-#: root/src/edit/edit.tt:427 root/src/edit/edit.tt:430
+#: root/src/edit/edit.tt:443 root/src/edit/edit.tt:446
 msgid "subscript"
 msgstr "alaindeksi"
 
@@ -2100,7 +2107,7 @@ msgstr "alaindeksi"
 msgid "subsection"
 msgstr "alaosio"
 
-#: root/src/edit/edit.tt:428 root/src/edit/edit.tt:431
+#: root/src/edit/edit.tt:444 root/src/edit/edit.tt:447
 msgid "superscript"
 msgstr "yläindeksi"
 
@@ -2129,28 +2136,28 @@ msgstr "tekstit otsikon mukaan lajiteltuna"
 msgid "texts sorted by topics"
 msgstr "tekstit aiheen mukaan lajiteltuna"
 
-#: root/src/edit/edit.tt:533
+#: root/src/edit/edit.tt:549
 msgid "the author of the text (as displayed)"
 msgstr "Tekstin kirjoittaja (kuten se tulee näkymään)"
 
-#: root/src/edit/edit.tt:554
+#: root/src/edit/edit.tt:570
 msgid "topic"
 msgstr "aihe"
 
-#: root/src/edit/edit.tt:487 root/src/edit/edit.tt:488
+#: root/src/edit/edit.tt:503 root/src/edit/edit.tt:504
 msgid "unnumbered item"
 msgstr "numeroimaton elementti"
 
-#: root/src/edit/edit.tt:412 root/src/edit/edit.tt:413
-#: root/src/edit/edit.tt:415
+#: root/src/edit/edit.tt:428 root/src/edit/edit.tt:429
+#: root/src/edit/edit.tt:431
 msgid "very strong emphasis"
 msgstr "todella vahva painotus"
 
-#: root/src/edit/edit.tt:504
+#: root/src/edit/edit.tt:520
 msgid "with description"
 msgstr "kuvauksen kanssa"
 
-#: root/src/edit/edit.tt:506
+#: root/src/edit/edit.tt:522
 msgid "without description"
 msgstr "ilman kuvausta"
 

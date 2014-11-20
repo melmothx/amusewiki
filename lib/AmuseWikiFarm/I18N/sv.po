@@ -6,13 +6,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-08-16 12:39+0200\n"
+"PO-Revision-Date: 2014-11-20 19:42+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
-"Language-Team: English\n"
-"Language: en\n"
+"Language-Team: Swedish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. ($filename)
@@ -59,7 +59,7 @@ msgstr ""
 
 #: root/src/admin/edit.tt:228 root/src/text.tt:105 root/src/text.tt:106
 msgid "A4 imposed PDF"
-msgstr "A4 imposed PDF"
+msgstr ""
 
 #: root/src/admin/edit.tt:3
 msgid "A4 paper"
@@ -339,7 +339,7 @@ msgstr ""
 #: root/src/edit/edit.tt:122 root/src/publish/pending.tt:19
 #: root/src/text.tt:50
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 #: root/src/edit/edit.tt:575 root/src/edit/newtext.tt:124
 msgid "Date of the original publication"
@@ -399,7 +399,7 @@ msgstr ""
 
 #: root/src/text.tt:89
 msgid "Downloads"
-msgstr "Downloads"
+msgstr ""
 
 #: root/src/admin/edit.tt:273
 msgid "EPUB"
@@ -407,7 +407,7 @@ msgstr ""
 
 #: root/src/text.tt:123 root/src/text.tt:124
 msgid "EPUB (for mobile devices)"
-msgstr "EPUB (for mobile devices)"
+msgstr ""
 
 #: root/src/console/alias_display.tt:134 root/src/console/translations.tt:33
 msgid "Edit"
@@ -565,7 +565,7 @@ msgstr ""
 
 #: root/src/search/index.tt:7 root/src/search/index.tt:91
 msgid "Full text search"
-msgstr "Full text search"
+msgstr ""
 
 #: root/src/admin/edit.tt:9
 msgid "Generic (fits in A4 and Letter)"
@@ -747,7 +747,7 @@ msgstr ""
 
 #: root/src/admin/edit.tt:239 root/src/text.tt:114 root/src/text.tt:115
 msgid "Letter imposed PDF"
-msgstr "Letter imposed PDF"
+msgstr ""
 
 #: root/src/admin/edit.tt:6
 msgid "Letter paper"
@@ -916,7 +916,7 @@ msgstr ""
 #: root/src/edit/edit.tt:143 root/src/edit/newtext.tt:184
 #: root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:77
 msgid "Notes"
-msgstr "Notes"
+msgstr ""
 
 #: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:58
 msgid "Nothing to see here, so far"
@@ -1390,7 +1390,7 @@ msgstr ""
 #: root/src/edit/edit.tt:136 root/src/edit/newtext.tt:132
 #: root/src/search/index.tt:58 root/src/text.tt:70
 msgid "Source"
-msgstr "Source"
+msgstr ""
 
 #: root/src/tasks/display.tt:22 root/src/tasks/display.tt:49
 msgid "Source files"
@@ -1418,7 +1418,7 @@ msgstr ""
 
 #: root/src/text.tt:132 root/src/text.tt:133
 msgid "Standalone HTML (printer-friendly)"
-msgstr "Standalone HTML (printer-friendly)"
+msgstr ""
 
 #: root/src/tasks/display.tt:102
 msgid "Static page without javascript"
@@ -1440,7 +1440,7 @@ msgstr ""
 
 #: root/src/edit/edit.tt:108 root/src/edit/newtext.tt:50 root/src/text.tt:34
 msgid "Subtitle"
-msgstr "Subtitle"
+msgstr ""
 
 #: root/src/console/alias_display.tt:18
 msgid ""
@@ -1588,7 +1588,7 @@ msgstr ""
 #: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:102
 #: root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:28
 msgid "Title"
-msgstr "Title"
+msgstr ""
 
 #: root/src/edit/newtext.tt:60
 msgid "Title for sorting"
@@ -1596,7 +1596,7 @@ msgstr ""
 
 #: root/src/layout.tt:153 root/src/layout.tt:390
 msgid "Titles"
-msgstr "Titles"
+msgstr ""
 
 #. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
@@ -1642,7 +1642,7 @@ msgstr ""
 #: root/src/layout.tt:165 root/src/layout.tt:181 root/src/layout.tt:400
 #: root/src/text.tt:58
 msgid "Topics"
-msgstr "Topics"
+msgstr ""
 
 #: root/src/bookbuilder/index.tt:46
 msgid "Total pages"
@@ -1788,7 +1788,7 @@ msgstr ""
 
 #: root/src/text.tt:141 root/src/text.tt:142
 msgid "XeLaTeX source"
-msgstr "XeLaTeX source"
+msgstr ""
 
 #: root/src/search/index.tt:38
 msgid "Year"
@@ -1985,11 +1985,11 @@ msgstr ""
 
 #: root/src/text.tt:96 root/src/text.tt:97
 msgid "plain PDF"
-msgstr "plain PDF"
+msgstr ""
 
 #: root/src/text.tt:149 root/src/text.tt:150
 msgid "plain text source"
-msgstr "plain text source"
+msgstr ""
 
 #: root/src/publish/pending.tt:5
 msgid "processing"
@@ -2042,15 +2042,15 @@ msgstr ""
 
 #: root/src/layout.tt:158 root/src/layout.tt:394
 msgid "texts sorted by author"
-msgstr "texts sorted by author"
+msgstr ""
 
 #: root/src/layout.tt:152 root/src/layout.tt:389
 msgid "texts sorted by title"
-msgstr "texts sorted by title"
+msgstr ""
 
 #: root/src/layout.tt:180 root/src/layout.tt:399
 msgid "texts sorted by topics"
-msgstr "texts sorted by topics"
+msgstr ""
 
 #: root/src/edit/edit.tt:549
 msgid "the author of the text (as displayed)"
@@ -2088,9 +2088,3 @@ msgid ""
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
-
-#~ msgid "RSS"
-#~ msgstr "RSS"
-
-#~ msgid "syndicate"
-#~ msgstr "syndicate"
