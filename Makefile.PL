@@ -65,10 +65,10 @@ requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor' => '0.10';
 
 # our own dogfood
-requires 'Text::Amuse' => 0.15;
+requires 'Text::Amuse' => 0.17;
 requires 'PDF::Imposition' => 0.09;
 requires 'Text::Amuse::Compile' => 0.25;
-requires 'Text::Amuse::Preprocessor' => 0.21;
+requires 'Text::Amuse::Preprocessor' => 0.23;
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
