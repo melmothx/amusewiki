@@ -698,6 +698,7 @@ sub known_langs {
             fr => 'Français',
             nl => 'Nederlands',
             de => 'Deutsch',
+            sv => 'Svenska',
            };
 }
 
