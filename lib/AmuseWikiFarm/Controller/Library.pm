@@ -19,11 +19,6 @@ Catalyst Controller.
 
 =cut
 
-sub auto :Private {
-    my ($self, $c) = @_;
-    $c->stash(please_index => 1);
-}
-
 =head2 root
 
 Empty base method to start the chain
@@ -32,7 +27,7 @@ Empty base method to start the chain
 
 sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    $c->log->debug('In library root');
+    $c->stash(please_index => 1);
 }
 
 =head2 Listing

@@ -9,6 +9,27 @@ A too long uri was generated (100 chars vs. 95)
 * DONE Require an username (even fancy) when anon edits a page
   CLOSED: [2014-11-18 mar 18:00]
 * TODO Convert all the circus to chained dispatch
+
+.--------------------------------------+--------------------------------------.
+| Path                                 | Private                              |
++--------------------------------------+--------------------------------------+
+| /                                    | /index                               |
+| /...                                 | /default                             |
+| /api/autocompletion/*                | /api/autocompletion                  |
+| /favicon.ico/                        | /favicon                             |
+| /feed/                               | /feed/index                          |
+| /human/                              | /user/human                          |
+| /login/                              | /user/login                          |
+| /logout/                             | /user/logout                         |
+| /not_found/...                       | /not_found                           |
+| /not_permitted/...                   | /not_permitted                       |
+| /random/                             | /random                              |
+| /rss.xml/                            | /rss_xml                             |
+| /search/                             | /search/index                        |
+| /set-language/                       | /user/language                       |
+'--------------------------------------+--------------------------------------'
+
+
 * TODO Put an absolute link (not just "") in the edit page.
 * TODO Add PT Sans font (and maybe some other sans ones)
 * TODO Hide the cover width when no image is attached.
