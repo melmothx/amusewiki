@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-09-22 14:11+0200\n"
+"PO-Revision-Date: 2014-11-22 18:10+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -1777,7 +1777,7 @@ msgstr ""
 #. ($user->username)
 #: lib/AmuseWikiFarm/Controller/User.pm:235
 msgid "User %1 created!"
-msgstr "BenutzerIn &1 erstellt!"
+msgstr "BenutzerIn %1 erstellt!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:242
 msgid "User created"
