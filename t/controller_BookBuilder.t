@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 49;
+use Test::More tests => 50;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
@@ -29,6 +29,7 @@ $mech->form_with_fields('answer');
 $mech->field(answer => 'January');
 $mech->click;
 is ($mech->status, '404', "bogus text not found: " . $mech->status);
+is $mech->uri->path, '/library/alsdflasdf';
 $mech->content_contains("Couldn't add the text");
 $mech->content_contains("Page not found!");
 

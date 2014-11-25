@@ -14,32 +14,15 @@ Catalyst Controller.
 
 =head1 METHODS
 
-=head2 auto
+=head2 root
 
 Deny access to not-human
 
 =cut
 
-use Data::Dumper;
+# TODO unclear if we want to use a model here.
+
 use AmuseWikiFarm::Archive::BookBuilder;
-
-sub auto :Private {
-    my ($self, $c) = @_;
-    if ($c->session->{i_am_human}) {
-        $c->stash(nav => 'bookbuilder');
-        $c->stash(page_title => $c->loc('Bookbuilder'));
-        return 1;
-    }
-    else {
-        my $uri = $c->uri_for($c->action, $c->req->captures,
-                              @{ $c->req->args },
-                              $c->req->params);
-        $c->response->redirect($c->uri_for('/human', { goto => $uri->path }));
-        return 0;
-    }
-}
-
-
 
 =head2 index
 
@@ -47,6 +30,17 @@ sub auto :Private {
 
 sub root :Chained('/') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
+
+    # check if human
+    if ($c->session->{i_am_human}) {
+        $c->stash(nav => 'bookbuilder');
+        $c->stash(page_title => $c->loc('Bookbuilder'));
+    }
+    else {
+        $c->response->redirect($c->uri_for('/human', { goto => $c->req->path }));
+        $c->detach();
+        return;
+    }
 
     # this is the root method. Initialize the session with the list;
     my $bb_args = $c->session->{bookbuilder} || {};
