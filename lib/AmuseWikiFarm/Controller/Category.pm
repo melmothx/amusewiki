@@ -35,14 +35,9 @@ The list of topics
 
 =cut
 
-sub auto :Private {
-    my ($self, $c) = @_;
-    $c->stash(please_index => 1);
-}
-
-
 sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    $c->stash(please_index => 1);
 }
 
 sub authors :Chained('root') :PathPart('authors') :CaptureArgs(0) {
