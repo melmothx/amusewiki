@@ -21,41 +21,9 @@ Catalyst Controller.
 
 =head1 METHODS
 
-=head2 auto
-
-Deny access to non human and to human depending on the site type.
-
-=cut
-
-sub auto :Private {
-    my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    # librarians can always edit
-    if ($c->user_exists) {
-        return 1;
-    }
-    # humans can edit if the site says so
-    elsif ($site->human_can_edit) {
-        # but prove it
-        if ($c->session->{i_am_human}) {
-            return 1;
-        }
-        else {
-            $c->response->redirect($c->uri_for('/human',
-                                               { goto => $c->req->path }));
-            return;
-        }
-    }
-    # otherwise ask for login
-    else {
-        $c->response->redirect($c->uri_for('/login', { goto => $c->req->path }));
-        return;
-    }
-}
-
 =head2 root
 
-Empty root method
+Deny access to non human and to human depending on the site type.
 
 =head2 newtext
 
@@ -67,6 +35,26 @@ The main route to create a new text from scratch
 
 sub root :Chained('/') :PathPart('action') :CaptureArgs(1) {
     my ($self, $c, $f_class) = @_;
+
+    my $site = $c->stash->{site};
+    # librarians can always edit
+    if (!$c->user_exists) {
+        if ($site->human_can_edit) {
+            # but prove it
+            if (!$c->session->{i_am_human}) {
+                $c->response->redirect($c->uri_for('/human',
+                                                   { goto => $c->req->path }));
+                $c->detach();
+                return;
+            }
+        }
+        else {
+            $c->response->redirect($c->uri_for('/login',
+                                               { goto => $c->req->path }));
+            $c->detach();
+            return;
+        }
+    }
 
     # validate
     if ($f_class eq 'text' or $f_class eq 'special') {
