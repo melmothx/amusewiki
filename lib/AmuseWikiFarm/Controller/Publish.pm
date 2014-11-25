@@ -14,38 +14,9 @@ Catalyst Controller for publishing texts.
 
 =head1 METHODS
 
-=head2 auto
-
-Depending on the site mode, deny access to humans.
-
-=cut
-
-sub auto :Private {
-    my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    if ($c->user_exists) {
-        return 1;
-    }
-    elsif ($site->human_can_publish) {
-        if ($c->session->{i_am_human}) {
-            return 1;
-        }
-        else {
-            $c->response->redirect($c->uri_for('/human',
-                                              { goto => $c->req->path }));
-            return;
-        }
-    }
-    else {
-        $c->response->redirect($c->uri_for('/login',
-                                          { goto => $c->req->path }));
-        return;
-    }
-}
-
-
 =head2 root
 
+Depending on the site mode, deny access to humans.
 Stash the available revisions, depending on the site mode.
 
 =cut
@@ -53,6 +24,25 @@ Stash the available revisions, depending on the site mode.
 sub root :Chained('/') :PathPart('publish') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
+    if (!$c->user_exists) {
+        # nothing to do
+        if ($site->human_can_publish) {
+            # send to human if not so
+            if (!$c->session->{i_am_human}) {
+                $c->response->redirect($c->uri_for('/human',
+                                                   { goto => $c->req->path }));
+                $c->detach();
+                return
+            }
+        }
+        else {
+            # send to login, we need the user
+            $c->response->redirect($c->uri_for('/login',
+                                               { goto => $c->req->path }));
+            $c->detach();
+            return
+        }
+    }
 
     my $search = {};
     # if it's a librarian, we show all the pending revisions
