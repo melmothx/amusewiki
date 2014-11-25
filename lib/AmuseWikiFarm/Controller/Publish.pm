@@ -25,7 +25,6 @@ sub root :Chained('/') :PathPart('publish') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     if (!$c->user_exists) {
-        # nothing to do
         if ($site->human_can_publish) {
             # send to human if not so
             if (!$c->session->{i_am_human}) {
