@@ -18,30 +18,18 @@ Catalyst Controller.
 
 =cut
 
-=head2 auto
+=head2 root
 
 Deny access to not-human
 
 =cut
 
-
-sub auto :Private {
-    my ($self, $c) = @_;
-    if ($c->session->{i_am_human}) {
-        return 1;
-    }
-    else {
-        $c->response->redirect($c->uri_for('/human', { goto => $c->req->path }));
-        return 0;
-    }
-}
-
-=head2 index
-
-=cut
-
 sub root :Chained('/') :PathPart('tasks') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
+    unless ($c->session->{i_am_human}) {
+        $c->response->redirect($c->uri_for('/human', { goto => $c->req->path }));
+        $c->detach();
+    }
 }
 
 sub status :Chained('root') :CaptureArgs(1) {
