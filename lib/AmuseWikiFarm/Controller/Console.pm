@@ -16,28 +16,10 @@ Catalyst Controller.
 
 =cut
 
-=head2 auto
+=head2 root
 
 In this namespace we manage remote gits. So not logged in can't enter
 here.
-
-=cut
-
-sub auto :Private {
-    my ($self, $c) = @_;
-    if ($c->user_exists) {
-        $c->stash(nav => 'console');
-        return 1;
-    }
-    else {
-        $c->response->redirect($c->uri_for('/login', { goto => $c->req->path }));
-        return;
-    }
-}
-
-=head2 root
-
-Empty base method for chaining
 
 =head2 git
 
@@ -55,6 +37,13 @@ Posting here will trigger the action
 
 sub root :Chained('/') :PathPart('console') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    if ($c->user_exists) {
+        $c->stash(nav => 'console');
+    }
+    else {
+        $c->response->redirect($c->uri_for('/login', { goto => $c->req->path }));
+        $c->detach();
+    }
 }
 
 sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
