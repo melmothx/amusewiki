@@ -162,7 +162,7 @@ sub failing_login {
 sub common_tests {
     my $mech = shift;
     $mech->get_ok('/');
-    $mech->get_ok('/bookbuilder/');
+    $mech->get_ok('/bookbuilder');
     $mech->content_contains("test if the user is a human");
     $mech->submit_form(
                        with_fields => {
