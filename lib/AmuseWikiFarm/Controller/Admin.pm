@@ -14,22 +14,11 @@ Catalyst Controller.
 
 =head1 METHODS
 
-=head2 auto
+=head2 root
 
 Grant access to root users only.
 
 =cut
-
-sub auto :Private {
-    my ($self, $c) = @_;
-    if ($c->user_exists && $c->check_user_roles('root')) {
-        return 1;
-    }
-    else {
-        $c->detach('/not_permitted');
-        return;
-    }
-}
 
 =head2 debug_site_id
 
@@ -39,6 +28,9 @@ Show the site id.
 
 sub root :Chained('/') :PathPart('admin') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    unless ($c->user_exists && $c->check_user_roles('root')) {
+        $c->detach('/not_permitted');
+    }
 }
 
 sub debug_site_id :Chained('root') :Args(0) {
