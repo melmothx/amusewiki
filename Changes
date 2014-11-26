@@ -1,6 +1,6 @@
 This file documents the revision history for AmuseWiki.
 
-1.02 Unreleased
+1.02 2014-11-26
 
 This release add Sans fonts support. To regenerate the preview (and
 check that all the fonts are in place), you have to rerun the script
@@ -18,6 +18,9 @@ Change list:
  - Added swedish translations
  - Added sans fonts
  - Improved language setting (html header and new texts) for multilanguage
+ - Added options table
+ - Added option for number of RSS and latest entry menu
+ - Added toggler for cover upload's options
 
 1.01 2014-11-20
 
