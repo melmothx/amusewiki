@@ -9,9 +9,13 @@ for font in 'Linux Libertine O'    \
             'TeX Gyre Pagella'     \
             'TeX Gyre Schola'      \
             'TeX Gyre Bonum'       \
+            'TeX Gyre Heros'       \
+            'TeX Gyre Adventor'    \
+            'Iwona'                \
             'Antykwa Poltawskiego' \
             'Antykwa Torunska'     \
-            'PT Serif'; do
+            'PT Serif' \
+            'PT Sans'; do
     muse-compile.pl --extra papersize=a5 --extra division=15 \
         --extra sitename="$font" \
         --extra nocoverpage=1 \
