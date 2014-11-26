@@ -39,7 +39,8 @@ is scalar(@rss_existing), $total,
 $site->site_options->update_or_create({ option_name => 'latest_entries_for_rss',
                                         option_value => $setting });
 
-is scalar(($site->latest_entries_for_rss)), $setting,
+@rss_existing = $site->latest_entries_for_rss;
+is scalar(@rss_existing), $setting,
   "RSS listing at $setting";
 
 
