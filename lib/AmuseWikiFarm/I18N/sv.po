@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-11-24 20:10+0100\n"
+"PO-Revision-Date: 2014-11-26 16:08+0100\n"
 "Last-Translator: Linda <...@...>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -24,17 +24,21 @@ msgstr "%1 existerar inte"
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "En tom rad (eller flera tomma rader) påbörjar ett nytt stycke."
 
-#: root/src/bookbuilder/index.tt:145
+#: root/src/bookbuilder/index.tt:146
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
-msgstr "En omslagsbild är redan tillagd men du kan ersätta den genom att ladda upp en ny."
+msgstr ""
+"En omslagsbild är redan tillagd men du kan ersätta den genom att ladda upp "
+"en ny."
 
 #: root/src/edit/edit.tt:460
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
-msgstr "En fotnot är en rad som börjar med ett nummer inom parentes, utan något ledande blanksteg."
+msgstr ""
+"En fotnot är en rad som börjar med ett nummer inom parentes, utan något "
+"ledande blanksteg."
 
 #: root/src/edit/edit.tt:386
 msgid "A line which starts with 2 or more whitespaces is a quotation."
@@ -57,9 +61,7 @@ msgstr "En ny revidering har skapats till 1%"
 msgid "A nice title"
 msgstr "En bra titel"
 
-#: root/src/admin/edit.tt:228
-#: root/src/text.tt:105
-#: root/src/text.tt:106
+#: root/src/admin/edit.tt:228 root/src/text.tt:107 root/src/text.tt:108
 msgid "A4 imposed PDF"
 msgstr "A4 imposed PDF"
 
@@ -77,17 +79,17 @@ msgstr "A6 papper (även lämpat för läsplatta)"
 
 #: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr "Övergiven redigering pågår, känn dig välkommen att kontrollera diff:en och återgå"
+msgstr ""
+"Övergiven redigering pågår, känn dig välkommen att kontrollera diff:en och "
+"återgå"
 
-#: root/src/admin/jobs.tt:18
-#: root/src/bookbuilder/index.tt:18
-#: root/src/console/alias_display.tt:103
-#: root/src/console/git_display.tt:12
+#: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:18
+#: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:12
 #: root/src/publish/pending.tt:16
 msgid "Action"
 msgstr "Handling"
 
-#: root/src/bookbuilder/index.tt:150
+#: root/src/bookbuilder/index.tt:152
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Lägg till en omslagsbild (PNG eller JPG)"
 
@@ -97,42 +99,43 @@ msgstr "Lägg till en bilaga (PNG, JPG eller PDF)"
 
 #: root/src/edit/edit.tt:267
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr "Lägg till ett hårt mellanslag där det är lämpligt för det aktuella språket"
+msgstr ""
+"Lägg till ett hårt mellanslag där det är lämpligt för det aktuella språket"
 
-#: root/src/text.tt:187
+#: root/src/text.tt:189
 msgid "Add this text to the bookbuilder"
 msgstr "Lägg till denna text i bokskaparen"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:95
-#: root/src/layout.tt:189
+#: lib/AmuseWikiFarm/Controller/Edit.pm:83 root/src/layout.tt:189
 #: root/src/layout.tt:405
 msgid "Add to library"
 msgstr "Lägg till i bibliotek"
 
 #: root/src/edit/edit.tt:580
-msgid "Additional information (full date, original title, translators, credits, etc)."
-msgstr "Ytterligare information (fullständigt datum, originaltitel, översättare, tillägnanden, etc.)"
+msgid ""
+"Additional information (full date, original title, translators, credits, "
+"etc)."
+msgstr ""
+"Ytterligare information (fullständigt datum, originaltitel, översättare, "
+"tillägnanden, etc.)"
 
-#: root/src/console/alias_display.tt:35
-#: root/src/console/alias_display.tt:67
+#: root/src/console/alias_display.tt:35 root/src/console/alias_display.tt:67
 msgid "Alias"
 msgstr "Alias"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:205
+#: lib/AmuseWikiFarm/Controller/Console.pm:194
 msgid "Alias can't point to itself"
 msgstr "Alias kan inte referera till sig själv"
 
-#: root/src/category-details.tt:14
-#: root/src/library.tt:14
+#: root/src/category-details.tt:14 root/src/library.tt:14
 msgid "All languages"
 msgstr "Alla språk"
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:88
-#: root/src/layout.tt:289
+#: lib/AmuseWikiFarm/Controller/Publish.pm:77 root/src/layout.tt:289
 msgid "All revisions"
 msgstr "Alla revideringer"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:63
+#: lib/AmuseWikiFarm/Controller/Admin.pm:55
 msgid "All sites"
 msgstr "Alla sidor"
 
@@ -144,7 +147,12 @@ msgid ""
 "      name, title, language, eventual number for disambiguation, e.g.\n"
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
-msgstr "En URL är en sträng som på ett unikt sätt identifierar texteni arkivet. Teoretiskt sett, kan det vara vad som helst men om du villbestämma den själv, snälla håll dig till överenskommelsen:författarens namn, titel, språk, eventuell diambiguering, t.ex.errico-malatesta-anarchy-2. Vanligtvis behövs det dock inte"
+msgstr ""
+"En URL är en sträng som på ett unikt sätt identifierar texteni arkivet. "
+"Teoretiskt sett, kan det vara vad som helst men om du villbestämma den "
+"själv, snälla håll dig till överenskommelsen:författarens namn, titel, "
+"språk, eventuell diambiguering, t.ex.errico-malatesta-anarchy-2. Vanligtvis "
+"behövs det dock inte"
 
 #: root/src/macros.tt:5
 msgid "Are you sure?"
@@ -158,22 +166,17 @@ msgstr "Bifogade PDF:er"
 msgid "Attached images"
 msgstr "Bifogade bilder"
 
-#: root/src/console/unpublished.tt:10
-#: root/src/edit/newtext.tt:69
+#: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:69
 #: root/src/search/index.tt:28
 msgid "Author"
 msgstr "Författare"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:70
-#: root/src/edit/edit.tt:115
-#: root/src/layout.tt:159
-#: root/src/layout.tt:395
-#: root/src/text.tt:41
+#: lib/AmuseWikiFarm/Controller/Category.pm:65 root/src/edit/edit.tt:115
+#: root/src/layout.tt:159 root/src/layout.tt:395 root/src/text.tt:43
 msgid "Authors"
 msgstr "Författare (flera)"
 
-#: root/src/edit/edit.tt:555
-#: root/src/edit/newtext.tt:78
+#: root/src/edit/edit.tt:555 root/src/edit/newtext.tt:78
 msgid "Authors for indexing"
 msgstr "Författare för indexering"
 
@@ -185,8 +188,8 @@ msgstr "Tillgängliga kategori-taggar för header"
 msgid "Back to the text"
 msgstr "Tillbaka till texten"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:152
-#: lib/AmuseWikiFarm/Controller/Console.pm:221
+#: lib/AmuseWikiFarm/Controller/Admin.pm:144
+#: lib/AmuseWikiFarm/Controller/Console.pm:210
 msgid "Bad request"
 msgstr "Bad request"
 
@@ -194,12 +197,11 @@ msgstr "Bad request"
 msgid "Bare HTML, needed by the application"
 msgstr "Bare HTML, behövd av applikationen"
 
-#: root/src/admin/edit.tt:341
-#: root/src/bookbuilder/index.tt:132
+#: root/src/admin/edit.tt:341 root/src/bookbuilder/index.tt:132
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Bindningsjustering i millimeter (extra innermarginal)"
 
-#: root/src/bookbuilder/index.tt:282
+#: root/src/bookbuilder/index.tt:283
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -213,8 +215,7 @@ msgstr "Blogg"
 msgid "Bold"
 msgstr "Fet"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:30
-#: root/src/layout.tt:347
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:37 root/src/layout.tt:347
 msgid "Bookbuilder"
 msgstr "Bokskapare"
 
@@ -222,7 +223,7 @@ msgstr "Bokskapare"
 msgid "Bookbuilder page limit (integer)"
 msgstr "Bokskapare sidbegränsning (heltal)"
 
-#: root/src/bookbuilder/index.tt:318
+#: root/src/bookbuilder/index.tt:319
 msgid "Build it"
 msgstr "Skapa den"
 
@@ -246,18 +247,17 @@ msgstr "Kategorier"
 msgid "Changes"
 msgstr "Ändringar"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:70
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:58
 msgid "Changes applied"
 msgstr "Ändrigar utförda"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:363
+#: lib/AmuseWikiFarm/Controller/Edit.pm:351
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr "Ändringar skickade, tack! Nu väntar de på att publiceras "
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:403
-#: root/src/edit/diff.tt:13
+#: lib/AmuseWikiFarm/Controller/Edit.pm:391 root/src/edit/diff.tt:13
 msgid "Changes for %1"
 msgstr "Ändringar till %1"
 
@@ -273,8 +273,7 @@ msgstr "Kapitel, endast för kapitelindelning i böcker"
 msgid "Cheatsheet for the markup"
 msgstr "Fusklapp för kodningen"
 
-#: root/src/admin/edit.tt:304
-#: root/src/bookbuilder/index.tt:102
+#: root/src/admin/edit.tt:304 root/src/bookbuilder/index.tt:102
 msgid "Choose a paper format"
 msgstr "Välj ett pappersformat"
 
@@ -286,8 +285,7 @@ msgstr "Rensa boklistan"
 msgid "Click on the images to get the sample PDF"
 msgstr "Klicka på bilden för att hämta sample PDF"
 
-#: root/src/text.tt:16
-#: root/src/text.tt:8
+#: root/src/text.tt:16 root/src/text.tt:8
 msgid "Close"
 msgstr "Stäng"
 
@@ -303,26 +301,24 @@ msgstr "Genomförd"
 msgid "Computing of differences took"
 msgstr "Beräknandet av skillnader tog"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:138
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:158
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:132
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:152
 msgid "Couldn't add the text"
 msgstr "Det gick inte att lägga till texten"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:871
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:886
 msgid "Couldn't automatically generate the uri!"
 msgstr "Det gick inte att automatiskt generera uri!"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:95
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:89
 msgid "Couldn't build that"
 msgstr "Det gick inte att bygga det"
 
-#: root/src/console/alias_display.tt:54
-#: root/src/console/alias_display.tt:86
+#: root/src/console/alias_display.tt:54 root/src/console/alias_display.tt:86
 msgid "Create"
 msgstr "Skapa"
 
-#: root/src/layout.tt:309
-#: root/src/user/create.tt:3
+#: root/src/layout.tt:309 root/src/user/create.tt:3
 msgid "Create a new librarian"
 msgstr "Skapa en ny bibliotekarie"
 
@@ -350,18 +346,16 @@ msgstr "Skapa användare och maillösenord"
 msgid "Created"
 msgstr "Skapad"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:128
+#: lib/AmuseWikiFarm/Controller/Edit.pm:116
 msgid "Created new text"
 msgstr "Ny text skapad"
 
-#: root/src/edit/edit.tt:122
-#: root/src/publish/pending.tt:19
-#: root/src/text.tt:50
+#: root/src/edit/edit.tt:122 root/src/publish/pending.tt:19
+#: root/src/text.tt:52
 msgid "Date"
 msgstr "Datum"
 
-#: root/src/edit/edit.tt:575
-#: root/src/edit/newtext.tt:124
+#: root/src/edit/edit.tt:575 root/src/edit/newtext.tt:124
 msgid "Date of the original publication"
 msgstr "Orginalpublikationens datum"
 
@@ -369,8 +363,7 @@ msgstr "Orginalpublikationens datum"
 msgid "Deferred/Deleted texts"
 msgstr "Uppskjutna/Raderade texter"
 
-#: root/src/admin/jobs.tt:62
-#: root/src/bookbuilder/index.tt:38
+#: root/src/admin/jobs.tt:62 root/src/bookbuilder/index.tt:38
 #: root/src/console/alias_display.tt:126
 msgid "Delete"
 msgstr "Radera"
@@ -379,7 +372,9 @@ msgstr "Radera"
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
-msgstr "Att radera en revidering är säkert, om texten har publicerats.Annars innebär raderingen att de opublicerade förändringarnaförloras"
+msgstr ""
+"Att radera en revidering är säkert, om texten har publicerats.Annars innebär "
+"raderingen att de opublicerade förändringarnaförloras"
 
 #: root/src/edit/newtext.tt:199
 msgid "Desired URI"
@@ -394,7 +389,8 @@ msgid "Differences"
 msgstr "Skillnader"
 
 #: root/src/admin/edit.tt:291
-msgid "Directory with templates. Do not set it unless you know what you are doing"
+msgid ""
+"Directory with templates. Do not set it unless you know what you are doing"
 msgstr "Mallkatalog. Ordna inte denna om du inte vet vad du gör"
 
 #: root/src/macros.tt:25
@@ -405,12 +401,11 @@ msgstr "Visa url som"
 msgid "Displaying"
 msgstr "Visar"
 
-#: root/src/admin/edit.tt:321
-#: root/src/bookbuilder/index.tt:116
+#: root/src/admin/edit.tt:321 root/src/bookbuilder/index.tt:116
 msgid "Division factor"
 msgstr "Uppdelningsfaktor"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:73
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:61
 msgid "Done"
 msgstr "Klart"
 
@@ -418,7 +413,7 @@ msgstr "Klart"
 msgid "Double bars"
 msgstr "Dubbla staplar"
 
-#: root/src/text.tt:89
+#: root/src/text.tt:91
 msgid "Downloads"
 msgstr "Nedladdningar"
 
@@ -426,13 +421,11 @@ msgstr "Nedladdningar"
 msgid "EPUB"
 msgstr "EPUB"
 
-#: root/src/text.tt:123
-#: root/src/text.tt:124
+#: root/src/text.tt:125 root/src/text.tt:126
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (för mobila enheter)"
 
-#: root/src/console/alias_display.tt:134
-#: root/src/console/translations.tt:33
+#: root/src/console/alias_display.tt:134 root/src/console/translations.tt:33
 msgid "Edit"
 msgstr "Redigera"
 
@@ -445,7 +438,7 @@ msgstr "Redigera sida %1"
 msgid "Edit site configuration"
 msgstr "Redigera sidkonfiguration"
 
-#: root/src/text.tt:175
+#: root/src/text.tt:177
 msgid "Edit this text"
 msgstr "Redigera denna text"
 
@@ -454,14 +447,12 @@ msgstr "Redigera denna text"
 msgid "Edit user %1"
 msgstr "Redigera användare %1"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:163
-#: root/src/edit/edit.tt:82
+#: lib/AmuseWikiFarm/Controller/Edit.pm:151 root/src/edit/edit.tt:82
 #: root/src/edit/revs.tt:3
 msgid "Editing"
 msgstr "Redigerar"
 
-#: root/src/user/create.tt:38
-#: root/src/user/edit.tt:26
+#: root/src/user/create.tt:38 root/src/user/edit.tt:26
 msgid "Email"
 msgstr "Email"
 
@@ -482,7 +473,7 @@ msgstr "Email matchar inte"
 msgid "Erase this revision"
 msgstr "Radera revideringen"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:360
+#: lib/AmuseWikiFarm/Controller/Edit.pm:348
 #: lib/AmuseWikiFarm/Controller/User.pm:258
 msgid "Error sending mail!"
 msgstr "Fel vid skickande av mail!"
@@ -491,8 +482,7 @@ msgstr "Fel vid skickande av mail!"
 msgid "Errors"
 msgstr "Fel"
 
-#: root/src/edit/edit.tt:457
-#: root/src/edit/edit.tt:463
+#: root/src/edit/edit.tt:457 root/src/edit/edit.tt:463
 msgid "Example"
 msgstr "Exempel"
 
@@ -500,12 +490,13 @@ msgstr "Exempel"
 msgid "Existing redirections"
 msgstr "Existerande omdirigeringar"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:311
+#: lib/AmuseWikiFarm/Controller/Edit.pm:299
 msgid "File uploaded!"
 msgstr "Fil uppladdad!"
 
-#: root/src/bookbuilder/index.tt:312
-msgid "Fill with blank pages before the last page if the signature is not full."
+#: root/src/bookbuilder/index.tt:313
+msgid ""
+"Fill with blank pages before the last page if the signature is not full."
 msgstr "Fyll med blanksteg innan den sista sidan om signaturen inte är full."
 
 #: root/src/edit/edit.tt:224
@@ -528,12 +519,15 @@ msgstr "Fixa typografi (smarta citat) "
 msgid "Fixed category list"
 msgstr "Fixad kategorilista"
 
-#: root/src/bookbuilder/index.tt:300
-#: root/src/bookbuilder/schemas.tt:37
-msgid "Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together."
-msgstr "Fixade signaturer från 8 sidor, att beskäras horisontellt, vikas individuellt och bindas samman."
+#: root/src/bookbuilder/index.tt:301 root/src/bookbuilder/schemas.tt:37
+msgid ""
+"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
+"and bound together."
+msgstr ""
+"Fixade signaturer från 8 sidor, att beskäras horisontellt, vikas "
+"individuellt och bindas samman."
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:177
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:171
 #: root/src/bookbuilder/fonts.tt:4
 msgid "Font preview"
 msgstr "Förhandsvisning av typsnitt"
@@ -542,24 +536,27 @@ msgstr "Förhandsvisning av typsnitt"
 msgid "Font size"
 msgstr "Storlek för typsnitt"
 
-#: root/src/edit/edit.tt:343
-#: root/src/edit/edit.tt:452
+#: root/src/edit/edit.tt:343 root/src/edit/edit.tt:452
 msgid "Footnotes"
 msgstr "Fotnoter"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
-#: lib/AmuseWikiFarm/Controller/Edit.pm:291
-msgid "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references in the body (%4), ignoring changes"
-msgstr "Dålig matchning av fotnoter: fann %1 fotnoter (%2) och fann %3 fotnotsreferenser i brödtexten (%4), ignorerar ändringar"
+#: lib/AmuseWikiFarm/Controller/Edit.pm:279
+msgid ""
+"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
+"in the body (%4), ignoring changes"
+msgstr ""
+"Dålig matchning av fotnoter: fann %1 fotnoter (%2) och fann %3 "
+"fotnotsreferenser i brödtexten (%4), ignorerar ändringar"
 
 #: root/src/edit/newtext.tt:134
 msgid "For texts from the internet use"
 msgstr "För texter från internet "
 
-#: root/src/admin/edit.tt:409
-#: root/src/bookbuilder/index.tt:194
+#: root/src/admin/edit.tt:409 root/src/bookbuilder/index.tt:195
 msgid "For texts without a table of content, start text on the very first page"
-msgstr "För texter utan innehållsförteckning, inled texten på den allra första sidan"
+msgstr ""
+"För texter utan innehållsförteckning, inled texten på den allra första sidan"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
@@ -583,12 +580,11 @@ msgstr "Format: åååå-mm-dd tt:mm, t.ex."
 msgid "Formats"
 msgstr "Format"
 
-#: lib/AmuseWikiFarm/Controller/Library.pm:74
+#: lib/AmuseWikiFarm/Controller/Library.pm:69
 msgid "Full list of texts"
 msgstr "Komplett lista med texter"
 
-#: root/src/search/index.tt:7
-#: root/src/search/index.tt:91
+#: root/src/search/index.tt:7 root/src/search/index.tt:91
 msgid "Full text search"
 msgstr "Fulltext sökning"
 
@@ -596,7 +592,7 @@ msgstr "Fulltext sökning"
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generisk (passar i A4 och Brev)"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:69
+#: lib/AmuseWikiFarm/Controller/Console.pm:58
 msgid "Git console"
 msgstr "Git-konsol"
 
@@ -612,8 +608,7 @@ msgstr "Halvt brevpapper"
 msgid "Heading"
 msgstr "Rubrik"
 
-#: root/src/edit/edit.tt:336
-#: root/src/edit/edit.tt:359
+#: root/src/edit/edit.tt:336 root/src/edit/edit.tt:359
 msgid "Headings"
 msgstr "Rubriker"
 
@@ -621,13 +616,11 @@ msgstr "Rubriker"
 msgid "Hide options"
 msgstr "Dölj alternativ"
 
-#: root/src/admin/edit.tt:322
-#: root/src/bookbuilder/index.tt:118
+#: root/src/admin/edit.tt:322 root/src/bookbuilder/index.tt:118
 msgid "Higher division factor means narrower margins"
 msgstr "Högre uppdelningsfaktor innebär mindre marginaler"
 
-#: root/src/user/create.tt:60
-#: root/src/user/edit.tt:45
+#: root/src/user/create.tt:60 root/src/user/edit.tt:45
 msgid "How to choose a password"
 msgstr "Hur du väljer lösenord"
 
@@ -635,12 +628,11 @@ msgstr "Hur du väljer lösenord"
 msgid "I am human"
 msgstr "Jag är en människa"
 
-#: root/src/bookbuilder/index.tt:202
+#: root/src/bookbuilder/index.tt:203
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Jag vill ha en imposed (redo att trycka) PDF"
 
-#: root/src/admin/jobs.tt:8
-#: root/src/admin/list.tt:13
+#: root/src/admin/jobs.tt:8 root/src/admin/list.tt:13
 msgid "Id"
 msgstr "Id"
 
@@ -648,7 +640,7 @@ msgstr "Id"
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr "Om avsändaren tillhandahöll mail, så är det listat i mailets CC-fält"
 
-#: root/src/bookbuilder/index.tt:208
+#: root/src/bookbuilder/index.tt:209
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Om du efterfrågade ett införande, välj ett införandesystem"
 
@@ -656,7 +648,9 @@ msgstr "Om du efterfrågade ett införande, välj ett införandesystem"
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
-msgstr "Uppladdning av bild kan göras i nästa steg, där du kan granska och förhandsvisa uppladdningen."
+msgstr ""
+"Uppladdning av bild kan göras i nästa steg, där du kan granska och "
+"förhandsvisa uppladdningen."
 
 #: root/src/macros.tt:21
 msgid "Image url"
@@ -670,7 +664,7 @@ msgstr "Bilder som inte används lagras men kommer att ignoreras."
 msgid "Images:"
 msgstr "Bilder:"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:183
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:177
 #: root/src/bookbuilder/schemas.tt:3
 msgid "Imposition schemas"
 msgstr "Införandesystem"
@@ -683,14 +677,15 @@ msgstr "I båda fallen kommer du att få ett omvänt indrag."
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
-msgstr "I texten tolkas en siffra inom parentes som en fotnotsreferens,om sådan fotnot existerar. "
+msgstr ""
+"I texten tolkas en siffra inom parentes som en fotnotsreferens,om sådan "
+"fotnot existerar. "
 
 #: root/src/edit/edit.tt:412
 msgid "Inline elements"
 msgstr "Infogade element"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:232
-#: root/src/layout.tt:278
+#: lib/AmuseWikiFarm/Controller/Console.pm:221 root/src/layout.tt:278
 msgid "Internal list of translations"
 msgstr "Intern lista med översättningar"
 
@@ -699,7 +694,7 @@ msgstr "Intern lista med översättningar"
 msgid "Invalid email"
 msgstr "Ogiltig email"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:110
+#: lib/AmuseWikiFarm/Controller/Admin.pm:102
 msgid "Invalid name"
 msgstr "Ogiltigt namn"
 
@@ -715,16 +710,15 @@ msgstr "Kursiv"
 msgid "Italics, bold, monospace, linebreaks..."
 msgstr "Kursiv, fet, monospace, radbrytare..."
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:145
+#: lib/AmuseWikiFarm/Controller/Admin.pm:137
 msgid "Job deleted"
 msgstr "Jobb raderat"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:148
+#: lib/AmuseWikiFarm/Controller/Admin.pm:140
 msgid "Job not found"
 msgstr "Jobb hittas inte"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:130
-#: root/src/layout.tt:331
+#: lib/AmuseWikiFarm/Controller/Admin.pm:122 root/src/layout.tt:331
 msgid "Jobs"
 msgstr "Jobb"
 
@@ -739,7 +733,12 @@ msgid ""
 "        check it and finally upload it. Some rarely used markup will\n"
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
-msgstr "Tänk på att jag förfinar texten och återlämnar dentill dig i kodningen som används på denna sida. Det är upp till digatt se över den och slutligen ladda upp den. Vissa sällan använda kodningar kommer att förloras i processen. Se gärna över granskningeni nästa steg, där du också kan infoga bilder."
+msgstr ""
+"Tänk på att jag förfinar texten och återlämnar dentill dig i kodningen som "
+"används på denna sida. Det är upp till digatt se över den och slutligen "
+"ladda upp den. Vissa sällan använda kodningar kommer att förloras i "
+"processen. Se gärna över granskningeni nästa steg, där du också kan infoga "
+"bilder."
 
 #: root/src/bookbuilder/index.tt:78
 msgid "Keep in mind that some character may be missing in the required font."
@@ -750,7 +749,9 @@ msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
-msgstr "Tänk på att komplex           formatering vanligtvis plockas bort. Det är endast möjligt att          lägga till tabeller och bilder i nästa steg. "
+msgstr ""
+"Tänk på att komplex           formatering vanligtvis plockas bort. Det är "
+"endast möjligt att          lägga till tabeller och bilder i nästa steg. "
 
 #: root/src/edit/newtext.tt:143
 msgid "Language"
@@ -760,8 +761,7 @@ msgstr "Språk"
 msgid "Language code of the document (2 or 3 letters). "
 msgstr "Dokumentets språkkod (2 eller 3 bokstäver)."
 
-#: root/src/layout.tt:198
-#: root/src/layout.tt:200
+#: root/src/layout.tt:198 root/src/layout.tt:200
 msgid "Language selection"
 msgstr "Val av språk"
 
@@ -769,7 +769,7 @@ msgstr "Val av språk"
 msgid "Last updated"
 msgstr "Senaste uppdaterad"
 
-#: root/src/text.tt:262
+#: root/src/text.tt:264
 msgid "Latest entries"
 msgstr "Senaste anteckning"
 
@@ -777,9 +777,7 @@ msgstr "Senaste anteckning"
 msgid "Leave it blank if you want it published right away."
 msgstr "Lämna fältet tomt om du vill publicera direkt."
 
-#: root/src/admin/edit.tt:239
-#: root/src/text.tt:114
-#: root/src/text.tt:115
+#: root/src/admin/edit.tt:239 root/src/text.tt:116 root/src/text.tt:117
 msgid "Letter imposed PDF"
 msgstr "Letter imposed PDF"
 
@@ -791,8 +789,7 @@ msgstr "Brevpapper"
 msgid "Link"
 msgstr "Länk"
 
-#: root/src/edit/edit.tt:350
-#: root/src/edit/edit.tt:514
+#: root/src/edit/edit.tt:350 root/src/edit/edit.tt:514
 msgid "Links and images"
 msgstr "Länkar och bilder"
 
@@ -800,8 +797,7 @@ msgstr "Länkar och bilder"
 msgid "List of texts on hold"
 msgstr "Lista med pausade texter"
 
-#: root/src/edit/edit.tt:349
-#: root/src/edit/edit.tt:498
+#: root/src/edit/edit.tt:349 root/src/edit/edit.tt:498
 msgid "Lists"
 msgstr "Listor"
 
@@ -809,8 +805,7 @@ msgstr "Listor"
 msgid "Lists start with a single leading whitespace"
 msgstr "Listor börjar med ett enskilt ledande blanksteg"
 
-#: root/src/admin/edit.tt:47
-#: root/src/admin/list.tt:16
+#: root/src/admin/edit.tt:47 root/src/admin/list.tt:16
 msgid "Locale"
 msgstr "Variant"
 
@@ -838,8 +833,7 @@ msgstr "Magisk fråga"
 msgid "Mail from"
 msgstr "Mail från"
 
-#: root/src/admin/edit.tt:159
-#: root/src/admin/list.tt:80
+#: root/src/admin/edit.tt:159 root/src/admin/list.tt:80
 msgid "Main canonical hostname, without protocol"
 msgstr "Kanoniskt huvudvärdnamn, utan protokoll"
 
@@ -867,11 +861,11 @@ msgstr "Matcha vilken av de ovanstående fälten som helst"
 msgid "Message"
 msgstr "Meddelande"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:374
+#: lib/AmuseWikiFarm/Controller/Edit.pm:362
 msgid "Missing #title header in the text!"
 msgstr "#title header saknas i texten!"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:199
+#: lib/AmuseWikiFarm/Controller/Console.pm:188
 msgid "Missing alias"
 msgstr "Alias saknas"
 
@@ -879,7 +873,7 @@ msgstr "Alias saknas"
 msgid "Missing character will be reported"
 msgstr "Saknat tecken kommer att rapporteras"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:202
+#: lib/AmuseWikiFarm/Controller/Console.pm:191
 msgid "Missing redirection"
 msgstr "Omdirigering saknas"
 
@@ -919,7 +913,7 @@ msgstr "Min beskrivning"
 msgid "Name"
 msgstr "Namn"
 
-#: root/src/bookbuilder/index.tt:187
+#: root/src/bookbuilder/index.tt:188
 msgid "Never generate a table of content"
 msgstr "Generera aldrig innehållsförteckning"
 
@@ -943,25 +937,20 @@ msgstr "Bra titel"
 msgid "No result found!"
 msgstr "Inga resultat hittades!"
 
-#: root/src/category-details.tt:48
-#: root/src/library.tt:66
+#: root/src/category-details.tt:48 root/src/library.tt:66
 msgid "No text found!"
 msgstr "Ingen text hittades!"
 
-#: root/src/bookbuilder/index.tt:363
+#: root/src/bookbuilder/index.tt:378
 msgid "No text was added yet"
 msgstr "Ingen text har ännu lagts till"
 
-#: root/src/edit/edit.tt:143
-#: root/src/edit/newtext.tt:184
-#: root/src/edit/revs.tt:17
-#: root/src/search/index.tt:68
-#: root/src/text.tt:77
+#: root/src/edit/edit.tt:143 root/src/edit/newtext.tt:184
+#: root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:79
 msgid "Notes"
 msgstr "Anteckningar"
 
-#: root/src/console/git_display.tt:37
-#: root/src/console/unpublished.tt:58
+#: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:58
 msgid "Nothing to see here, so far"
 msgstr "Än så länge finns här ingenting att se"
 
@@ -972,6 +961,14 @@ msgstr "Underrätta mail: tomt fält kommer att inaktivera dem"
 #: root/src/admin/list.tt:19
 msgid "Notify to"
 msgstr "Underrätta"
+
+#: root/src/admin/edit.tt:464
+msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr ""
+
+#: root/src/admin/edit.tt:453
+msgid "Number of latest entries to display on the special pages (an integer)"
+msgstr ""
 
 #: root/src/macros.tt:19
 msgid "Numeric List"
@@ -988,14 +985,18 @@ msgid ""
 "          of it, only one will be chosen. You can go ahead, or retry\n"
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
-msgstr "Eller skapa en ny revidering, på egen risk. Att ha flera          samtidiga revideringar innbär att, såvida inte någon tar hand          om det, så kommer endast en att väljas. Du kan fortsätta, eller          försöka igen senare, eller ännu bättre kontakta bibliotekarierna          innan du går vidare, för att undivka slöseri med energi."
+msgstr ""
+"Eller skapa en ny revidering, på egen risk. Att ha flera          samtidiga "
+"revideringar innbär att, såvida inte någon tar hand          om det, så "
+"kommer endast en att väljas. Du kan fortsätta, eller          försöka igen "
+"senare, eller ännu bättre kontakta bibliotekarierna          innan du går "
+"vidare, för att undivka slöseri med energi."
 
 #: root/src/user/human.tt:22
 msgid "Or log in, if you have an account."
 msgstr "Eller logga in, om du har ett konto."
 
-#: root/src/edit/edit.tt:387
-#: root/src/edit/edit.tt:393
+#: root/src/edit/edit.tt:387 root/src/edit/edit.tt:393
 #: root/src/edit/edit.tt:400
 msgid "Or wrap it in"
 msgstr "Eller wrappa in det"
@@ -1014,23 +1015,25 @@ msgstr "PDF:er kan inte användas i brödtexten."
 
 #. ("#ATTACH")
 #. ('#ATTACH')
-#: root/src/edit/edit.tt:182
-#: root/src/edit/edit.tt:183
+#: root/src/edit/edit.tt:182 root/src/edit/edit.tt:183
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF är inte listad i %1 direktiv kommer att lagras men ignoreras"
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:187
+#: lib/AmuseWikiFarm/Controller/Root.pm:194
 msgid "Page not found!"
 msgstr "Sidan hittas inte!"
 
-#: root/src/bookbuilder/index.tt:262
+#: root/src/bookbuilder/index.tt:263
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
-msgstr "Sidor är inte bokförd. Det första lagret innehåller        sida 1 och två, det andra 3 och 4, och så vidare, sida vid sida.        Detta är inte avsett för vikning."
+msgstr ""
+"Sidor är inte bokförd. Det första lagret innehåller        sida 1 och två, "
+"det andra 3 och 4, och så vidare, sida vid sida.        Detta är inte avsett "
+"för vikning."
 
-#: root/src/bookbuilder/index.tt:218
+#: root/src/bookbuilder/index.tt:219
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1039,10 +1042,16 @@ msgid ""
 "        signatures. This can be a fixed value (4,8,16, etc.), the\n"
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
-msgstr "Sidor är inte bokförda, i en eller flera grupper                    (signaturer), och sedan dubbelvikta. Om du har fler                    signaturer, måste du sammanbinda dem som en bok.                    Med detta alternativ, bör du välja storleken på                     signaturerna. Detta kan vara ett bestämt värde (4,8,16 etc.),                   hela boken i en enskild signatur eller en optimerad storlek                    för att minska antalet tomma sidor. "
+msgstr ""
+"Sidor är inte bokförda, i en eller flera grupper                    "
+"(signaturer), och sedan dubbelvikta. Om du har fler                    "
+"signaturer, måste du sammanbinda dem som en bok.                    Med "
+"detta alternativ, bör du välja storleken på                     "
+"signaturerna. Detta kan vara ett bestämt värde (4,8,16 "
+"etc.),                   hela boken i en enskild signatur eller en optimerad "
+"storlek                    för att minska antalet tomma sidor. "
 
-#: root/src/edit/edit.tt:337
-#: root/src/edit/edit.tt:381
+#: root/src/edit/edit.tt:337 root/src/edit/edit.tt:381
 msgid "Paragraphs"
 msgstr "Stycken"
 
@@ -1054,8 +1063,7 @@ msgstr "Del"
 msgid "Part, for larger books only"
 msgstr "Del, endast för större böcker"
 
-#: root/src/user/login.tt:12
-#: root/src/user/login.tt:14
+#: root/src/user/login.tt:12 root/src/user/login.tt:14
 msgid "Password"
 msgstr "Lösenord"
 
@@ -1068,8 +1076,7 @@ msgstr "Lösenord för kort"
 msgid "Password updated"
 msgstr "Lösenord uppdaterat"
 
-#: root/src/user/create.tt:23
-#: root/src/user/edit.tt:11
+#: root/src/user/create.tt:23 root/src/user/edit.tt:11
 msgid "Password, minimum 8 characters."
 msgstr "Lösenord, minst 8 tecken"
 
@@ -1082,8 +1089,7 @@ msgstr "Lösenord stämmer inte"
 msgid "Payload"
 msgstr "Payload"
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:82
-#: root/src/layout.tt:284
+#: lib/AmuseWikiFarm/Controller/Publish.pm:71 root/src/layout.tt:284
 msgid "Pending revisions"
 msgstr "Väntande revideringar"
 
@@ -1099,14 +1105,17 @@ msgstr "Plain PDF"
 msgid "Please describe shortly what you did"
 msgstr "Lämna gärna en kort beskrivning av vad du gjorde"
 
-#: root/src/user/create.tt:24
-#: root/src/user/edit.tt:12
+#: root/src/user/create.tt:24 root/src/user/edit.tt:12
 msgid "Please do not use a valuable password."
 msgstr "Vänligen använd inte ett värdefullt lösenord"
 
 #: root/src/edit/edit.tt:378
-msgid "Please do not use higher levels (part or chapter) for short articles with sections."
-msgstr "Vänligen använd inte högre nivåer (delar eller kapitel) för korta artiklar med sektioner."
+msgid ""
+"Please do not use higher levels (part or chapter) for short articles with "
+"sections."
+msgstr ""
+"Vänligen använd inte högre nivåer (delar eller kapitel) för korta artiklar "
+"med sektioner."
 
 #: root/src/bookbuilder/index.tt:67
 msgid "Please give a name to the collection."
@@ -1117,7 +1126,10 @@ msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
-msgstr "Vänligen ge oss ett användarnamn. Det borde *inte* vara en mailadress.         Bara ett fancy namn, så att vi kan veta att flera uppladdningar         kommer från samma person."
+msgstr ""
+"Vänligen ge oss ett användarnamn. Det borde *inte* vara en "
+"mailadress.         Bara ett fancy namn, så att vi kan veta att flera "
+"uppladdningar         kommer från samma person."
 
 #: root/src/edit/edit.tt:226
 msgid ""
@@ -1125,7 +1137,10 @@ msgid ""
 "              and may or may not be available for the language of the\n"
 "              text. If not available, they will just leave the text as\n"
 "              is."
-msgstr "Tänk på att filter är språkspecifika              och är kanske otillgängliga textens språk.              Om otillgängligt, kommer de att lämna texten som den är."
+msgstr ""
+"Tänk på att filter är språkspecifika              och är kanske "
+"otillgängliga textens språk.              Om otillgängligt, kommer de att "
+"lämna texten som den är."
 
 #: root/src/publish/pending.tt:88
 msgid ""
@@ -1134,7 +1149,11 @@ msgid ""
 "    another one, so publishing this one, you'll end up reverting a\n"
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
-msgstr "Tänk på att om du ser \"Tvinga publicering\" som handling, betyder     det att revideringen har ersatts av en annan. Så genom att     publicera denna kommer du att återgå till den förra. Försök att    undvika detta, såvida du inte vet vad du gör."
+msgstr ""
+"Tänk på att om du ser \"Tvinga publicering\" som handling, betyder     det "
+"att revideringen har ersatts av en annan. Så genom att     publicera denna "
+"kommer du att återgå till den förra. Försök att    undvika detta, såvida du "
+"inte vet vad du gör."
 
 #: root/src/edit/edit.tt:300
 msgid "Please leave a mail if you want to be contacted about this change"
@@ -1146,29 +1165,37 @@ msgid ""
 "  this logic: if you have some imposed format, they are ignored for\n"
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
-msgstr "Vänligen notera att den tvåsidiga- och bindningskorrekturens alternativ följer denna logik: om du har ett imposed format, så ignoreras de i den fristående PDF:en men används i de med imposed format. Om du endast har den fristående PDF:en, så används de i den.  "
+msgstr ""
+"Vänligen notera att den tvåsidiga- och bindningskorrekturens alternativ "
+"följer denna logik: om du har ett imposed format, så ignoreras de i den "
+"fristående PDF:en men används i de med imposed format. Om du endast har den "
+"fristående PDF:en, så används de i den.  "
 
-#: root/src/edit/edit.tt:408
-#: root/src/edit/edit.tt:493
+#: root/src/edit/edit.tt:408 root/src/edit/edit.tt:493
 msgid "Please note that wrapping tags must be placed on a line by themselves."
-msgstr "Vänligen lägg märke till att wrapping-taggarna måste placeras på en egen rad."
+msgstr ""
+"Vänligen lägg märke till att wrapping-taggarna måste placeras på en egen rad."
 
 #: root/src/edit/edit.tt:529
 msgid ""
 "Please note that you have to upload them first and\n"
 "          use the name the form provides. Images are always renamed by\n"
 "          us."
-msgstr "Vänligen notera att du måste ladda upp dem först och         använda det namn formen tillhandahåller. Bilder omdöps         alltid av oss."
+msgstr ""
+"Vänligen notera att du måste ladda upp dem först och         använda det "
+"namn formen tillhandahåller. Bilder omdöps         alltid av oss."
 
 #: root/src/edit/newtext.tt:158
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
-msgstr "Vänligen notera att du kanske kan vilja klistra in från ett        Word/OpenOffice/LibreOffice/HTML-dokument genom att använda        \"klistra in från word\"-knappen. Detta ska bevara kodningen."
+msgstr ""
+"Vänligen notera att du kanske kan vilja klistra in från ett        Word/"
+"OpenOffice/LibreOffice/HTML-dokument genom att använda        \"klistra in "
+"från word\"-knappen. Detta ska bevara kodningen."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:117
-#: root/src/user/human.tt:5
+#: lib/AmuseWikiFarm/Controller/User.pm:117 root/src/user/human.tt:5
 msgid "Please prove you are a human"
 msgstr "Vänligen bevisa att du är en människa"
 
@@ -1176,10 +1203,8 @@ msgstr "Vänligen bevisa att du är en människa"
 msgid "Please reload your page"
 msgstr "Ladda gärna om sidan"
 
-#: root/src/console/alias_display.tt:37
-#: root/src/console/alias_display.tt:46
-#: root/src/console/alias_display.tt:69
-#: root/src/console/alias_display.tt:78
+#: root/src/console/alias_display.tt:37 root/src/console/alias_display.tt:46
+#: root/src/console/alias_display.tt:69 root/src/console/alias_display.tt:78
 msgid "Please select"
 msgstr "Vänligen välj"
 
@@ -1187,7 +1212,7 @@ msgstr "Vänligen välj"
 msgid "Please select the desired fonts"
 msgstr "Vänligen välj det önskade typsnittet."
 
-#: root/src/bookbuilder/index.tt:237
+#: root/src/bookbuilder/index.tt:238
 msgid "Please select the signature size:"
 msgstr "Vänligen välj signaturens storlek:"
 
@@ -1195,8 +1220,7 @@ msgstr "Vänligen välj signaturens storlek:"
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Poesi, bibliografier, pjäser, kod"
 
-#: root/src/console/alias_display.tt:44
-#: root/src/console/alias_display.tt:76
+#: root/src/console/alias_display.tt:44 root/src/console/alias_display.tt:76
 msgid "Pointing to"
 msgstr "Hänvisar till"
 
@@ -1204,8 +1228,7 @@ msgstr "Hänvisar till"
 msgid "Prepare this text for the archiving"
 msgstr "Förbered denna text för arkiveringen"
 
-#: root/src/edit/edit.tt:323
-#: root/src/edit/edit.tt:93
+#: root/src/edit/edit.tt:323 root/src/edit/edit.tt:93
 msgid "Preview"
 msgstr "Förhandsvisa"
 
@@ -1237,8 +1260,7 @@ msgstr "Publicera"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Publicerad  i *En trevlig bok*, publicerad av Mitt Hus, 2014"
 
-#: root/src/console/unpublished.tt:15
-#: root/src/console/unpublished.tt:46
+#: root/src/console/unpublished.tt:15 root/src/console/unpublished.tt:46
 #: root/src/publish/pending.tt:21
 msgid "Purge"
 msgstr "Rensa"
@@ -1248,22 +1270,23 @@ msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
-msgstr "Lämna ytterligare information här (originaltitel,    översättare, tillägnanden, etc). Fotnoter går in i    i brödtexten"
+msgstr ""
+"Lämna ytterligare information här (originaltitel,    översättare, "
+"tillägnanden, etc). Fotnoter går in i    i brödtexten"
 
 #: root/src/admin/edit.tt:8
 msgid "Quarter Letter paper"
 msgstr "En kvarts Brevpapper"
 
-#: root/src/search/index.tt:114
-#: root/src/search/index.tt:156
+#: root/src/search/index.tt:114 root/src/search/index.tt:156
 msgid "Query was"
 msgstr "Frågan var"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:79
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:67
 msgid "Queue"
 msgstr "Kö"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:148
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:142
 msgid "Quota exceeded, too many pages"
 msgstr "Kvoten överskriden, för många sidor"
 
@@ -1289,7 +1312,15 @@ msgid ""
 "              problems, please commit the result reporting them in the\n"
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
-msgstr "Omordna fotnoterna, genom att bestämma numren,              med hänsyn till ordningen i vilken de infogades.               Vänligen lämna omarkerad om du inte vet vad detta innebär.               Detta alternativ kan vara destruktivt, så använd det helst              med försiktighet och granska resultatet. Om problem uppstår,              vänligen skicka resultatet genom att rapportera dem i               meddelandet. Proceduren försöker att vara säker och kommer              att ignorera ändringen om fotnoter saknas eller är för många."
+msgstr ""
+"Omordna fotnoterna, genom att bestämma numren,              med hänsyn till "
+"ordningen i vilken de infogades.               Vänligen lämna omarkerad om "
+"du inte vet vad detta innebär.               Detta alternativ kan vara "
+"destruktivt, så använd det helst              med försiktighet och granska "
+"resultatet. Om problem uppstår,              vänligen skicka resultatet "
+"genom att rapportera dem i               meddelandet. Proceduren försöker "
+"att vara säker och kommer              att ignorera ändringen om fotnoter "
+"saknas eller är för många."
 
 #: root/src/console/unpublished.tt:13
 msgid "Reason"
@@ -1299,9 +1330,8 @@ msgstr "Orsak"
 msgid "Recheck"
 msgstr "Recheck"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:173
-#: root/src/console/alias_display.tt:3
-#: root/src/layout.tt:304
+#: lib/AmuseWikiFarm/Controller/Console.pm:162
+#: root/src/console/alias_display.tt:3 root/src/layout.tt:304
 msgid "Redirections"
 msgstr "Omdirigeringar"
 
@@ -1313,17 +1343,15 @@ msgstr "Relaterade projekt"
 msgid "Remotes"
 msgstr "Avlägsnade"
 
-#: root/src/bookbuilder/index.tt:158
+#: root/src/bookbuilder/index.tt:160
 msgid "Remove cover image"
 msgstr "Avlägsna omslagsbild"
 
-#: root/src/user/create.tt:46
-#: root/src/user/edit.tt:33
+#: root/src/user/create.tt:46 root/src/user/edit.tt:33
 msgid "Repeat email"
 msgstr "Upprepa mailadress"
 
-#: root/src/user/create.tt:31
-#: root/src/user/edit.tt:19
+#: root/src/user/create.tt:31 root/src/user/edit.tt:19
 msgid "Repeat password"
 msgstr "Upprepa lösenord"
 
@@ -1352,12 +1380,11 @@ msgid "Revision"
 msgstr "Revidering"
 
 #. ($uri)
-#: lib/AmuseWikiFarm/Controller/Publish.pm:150
+#: lib/AmuseWikiFarm/Controller/Publish.pm:139
 msgid "Revision for %1 has been deleted"
 msgstr "Revidering för %1 har raderats"
 
-#: lib/AmuseWikiFarm/Controller/Search.pm:98
-#: root/src/layout.tt:131
+#: lib/AmuseWikiFarm/Controller/Search.pm:98 root/src/layout.tt:131
 msgid "Search"
 msgstr "Sök"
 
@@ -1385,8 +1412,7 @@ msgstr "Separera fält för sidhuvud"
 msgid "Set a date in the future if you want it deferred."
 msgstr "Bestämm ett datum i framtiden om du vill skjuta upp det."
 
-#: root/src/edit/edit.tt:95
-#: root/src/edit/revs.tt:49
+#: root/src/edit/edit.tt:95 root/src/edit/revs.tt:49
 #: root/src/publish/pending.tt:59
 msgid "Show differences in other tab"
 msgstr "Visa skillnader i en annan flik"
@@ -1399,12 +1425,11 @@ msgstr "Visa alternativ"
 msgid "Single bars"
 msgstr "Enkla staplar"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:89
+#: lib/AmuseWikiFarm/Controller/Admin.pm:81
 msgid "Site already exists"
 msgstr "Sidan finns redan"
 
-#: root/src/admin/edit.tt:178
-#: root/src/admin/list.tt:14
+#: root/src/admin/edit.tt:178 root/src/admin/list.tt:14
 msgid "Site group"
 msgstr "Sidgrupp"
 
@@ -1434,7 +1459,8 @@ msgstr "Sidor"
 
 #: root/src/user/create.tt:48
 msgid "So we can be sure we are not mailing passwords to random people"
-msgstr "Så att vi kan vara säkra på att vi inte mailar lösenord till random folk"
+msgstr ""
+"Så att vi kan vara säkra på att vi inte mailar lösenord till random folk"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:175
 msgid "Some fields are missing, all are required"
@@ -1449,25 +1475,20 @@ msgstr "Vissa fält är för långa"
 msgid "Some ongoing revisions were found"
 msgstr "Några pågående revideringar hittades"
 
-#: root/src/edit/edit.tt:136
-#: root/src/edit/newtext.tt:132
-#: root/src/search/index.tt:58
-#: root/src/text.tt:70
+#: root/src/edit/edit.tt:136 root/src/edit/newtext.tt:132
+#: root/src/search/index.tt:58 root/src/text.tt:72
 msgid "Source"
 msgstr "Källa"
 
-#: root/src/tasks/display.tt:22
-#: root/src/tasks/display.tt:49
+#: root/src/tasks/display.tt:22 root/src/tasks/display.tt:49
 msgid "Source files"
 msgstr "Källfiler"
 
-#: root/src/text.tt:157
-#: root/src/text.tt:158
+#: root/src/text.tt:159 root/src/text.tt:160
 msgid "Source files with attachments"
 msgstr "Källfiler med bilagor"
 
-#: root/src/tasks/display.tt:74
-#: root/src/tasks/display.tt:89
+#: root/src/tasks/display.tt:74 root/src/tasks/display.tt:89
 msgid "Sources"
 msgstr "Källor"
 
@@ -1475,7 +1496,7 @@ msgstr "Källor"
 msgid "Special blocks"
 msgstr "Specialblock"
 
-#: lib/AmuseWikiFarm/Controller/Library.pm:91
+#: lib/AmuseWikiFarm/Controller/Library.pm:86
 msgid "Special pages"
 msgstr "Specialsidor"
 
@@ -1483,8 +1504,7 @@ msgstr "Specialsidor"
 msgid "Stale editing"
 msgstr "Förlegad redigering"
 
-#: root/src/text.tt:132
-#: root/src/text.tt:133
+#: root/src/text.tt:134 root/src/text.tt:135
 msgid "Standalone HTML (printer-friendly)"
 msgstr "Fristående HTML (utskriftsvänlig)"
 
@@ -1492,10 +1512,8 @@ msgstr "Fristående HTML (utskriftsvänlig)"
 msgid "Static page without javascript"
 msgstr "Statisk sida utan javascript"
 
-#: root/src/admin/jobs.tt:12
-#: root/src/console/unpublished.tt:12
-#: root/src/tasks/display.tt:10
-#: root/src/tasks/display.tt:41
+#: root/src/admin/jobs.tt:12 root/src/console/unpublished.tt:12
+#: root/src/tasks/display.tt:10 root/src/tasks/display.tt:41
 #: root/src/tasks/display.tt:63
 msgid "Status"
 msgstr "Status"
@@ -1508,9 +1526,7 @@ msgstr "Underavdelning"
 msgid "Subsubsection or description item"
 msgstr "Underunderavdelning eller beskrivningspunkt"
 
-#: root/src/edit/edit.tt:108
-#: root/src/edit/newtext.tt:50
-#: root/src/text.tt:34
+#: root/src/edit/edit.tt:108 root/src/edit/newtext.tt:50 root/src/text.tt:36
 msgid "Subtitle"
 msgstr "Undertitel"
 
@@ -1518,9 +1534,11 @@ msgstr "Undertitel"
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
-msgstr "Ett sådant sidhuvud kommer att återkalla publiceringen  och placera en omdirigering, och kommer att listas här"
+msgstr ""
+"Ett sådant sidhuvud kommer att återkalla publiceringen  och placera en "
+"omdirigering, och kommer att listas här"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:882
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:897
 msgid "Such an uri already exists"
 msgstr "En sådan uri existerar redan"
 
@@ -1532,8 +1550,7 @@ msgstr "Ett sådant användarnamn existerar redan"
 msgid "Summary"
 msgstr "Summering"
 
-#: root/src/edit/edit.tt:354
-#: root/src/edit/edit.tt:541
+#: root/src/edit/edit.tt:354 root/src/edit/edit.tt:541
 msgid "Supported directive in the header"
 msgstr "Stödda direktiv i sidhuvudet"
 
@@ -1541,8 +1558,7 @@ msgstr "Stödda direktiv i sidhuvudet"
 msgid "Table of Contents"
 msgstr "Innehållsförteckning"
 
-#: root/src/edit/edit.tt:351
-#: root/src/edit/edit.tt:534
+#: root/src/edit/edit.tt:351 root/src/edit/edit.tt:534
 msgid "Tables"
 msgstr "Tabeller"
 
@@ -1558,7 +1574,9 @@ msgstr "TeX"
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
-msgstr "Omdirigeringar av text är inställda i texten och   använder DELETED-sidhuvudet med denna syntax"
+msgstr ""
+"Omdirigeringar av text är inställda i texten och   använder DELETED-"
+"sidhuvudet med denna syntax"
 
 #: root/src/console/translations.tt:12
 msgid "Texts"
@@ -1570,7 +1588,9 @@ msgstr "Logotypen innehåller sidnamnet"
 
 #: root/src/bookbuilder/index.tt:68
 msgid "The name is always required, but used only if there are multiple texts."
-msgstr "Namnet är alltid nödvändigt, men används endast när det rör sig om flera texter."
+msgstr ""
+"Namnet är alltid nödvändigt, men används endast när det rör sig om flera "
+"texter."
 
 #: root/src/edit/edit.tt:567
 msgid "The optional subtitle"
@@ -1594,7 +1614,11 @@ msgid ""
 "          if you want to strip the article, if any. A text titled “A\n"
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
-msgstr "Dokumentets titel, i sorteringssyfte. Användbart         om du vill skala ner artikeln, om det finns någon.         En text med titeln \"En trevlig titel\" kan kortas ner till         \"Trevlig titel\" och listas under T och inte under E. "
+msgstr ""
+"Dokumentets titel, i sorteringssyfte. Användbart         om du vill skala "
+"ner artikeln, om det finns någon.         En text med titeln \"En trevlig "
+"titel\" kan kortas ner till         \"Trevlig titel\" och listas under T och "
+"inte under E. "
 
 #: root/src/edit/edit.tt:545
 msgid "The title of the document. The only mandatory directive."
@@ -1604,7 +1628,7 @@ msgstr "Dokumentets tiel. Den enda obligatoriska anvisningen. "
 msgid "The user will have the same your level of access"
 msgstr "Användare kommer att ha samma tillgångsnivå som du"
 
-#: root/src/bookbuilder/index.tt:246
+#: root/src/bookbuilder/index.tt:247
 msgid "The whole book in as single signature"
 msgstr "Hela boken som en enskild signatur"
 
@@ -1629,13 +1653,16 @@ msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
-msgstr "Detta är en WYSIWYG redigerare. Om du föredrar att använda         den wiki-liknande syntaxen, lämna den som den är, fyll i         de nödvändiga fälten ovan och skjut upp redigerandet         till nästa steg."
+msgstr ""
+"Detta är en WYSIWYG redigerare. Om du föredrar att använda         den wiki-"
+"liknande syntaxen, lämna den som den är, fyll i         de nödvändiga fälten "
+"ovan och skjut upp redigerandet         till nästa steg."
 
 #: root/src/edit/edit.tt:539
 msgid "This is the caption"
 msgstr "Detta är överskriften"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:270
+#: lib/AmuseWikiFarm/Controller/Edit.pm:258
 msgid "This revision is already published, ignoring changes"
 msgstr "Revideringen har redan publicerats, ändringar ignoreras"
 
@@ -1647,11 +1674,11 @@ msgstr "Denna revidering redigeras aktivt"
 msgid "This revision is being actively edited by you"
 msgstr "Denna revidering redigeras aktivt av dig"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:265
+#: lib/AmuseWikiFarm/Controller/Edit.pm:253
 msgid "This revision is being edited by someone else!"
 msgstr "Revideringen redigeras av någon annan!"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:168
+#: lib/AmuseWikiFarm/Controller/Edit.pm:156
 msgid "This text does not exist"
 msgstr "Denna text existerar inte"
 
@@ -1659,11 +1686,8 @@ msgstr "Denna text existerar inte"
 msgid "Time is optional."
 msgstr "Tid är valfritt."
 
-#: root/src/console/unpublished.tt:11
-#: root/src/edit/edit.tt:102
-#: root/src/edit/newtext.tt:36
-#: root/src/search/index.tt:18
-#: root/src/text.tt:28
+#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:102
+#: root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:30
 msgid "Title"
 msgstr "Titel"
 
@@ -1671,15 +1695,13 @@ msgstr "Titel"
 msgid "Title for sorting"
 msgstr "Titel för sortering"
 
-#: root/src/layout.tt:153
-#: root/src/layout.tt:390
+#: root/src/layout.tt:153 root/src/layout.tt:390
 msgid "Titles"
 msgstr "Titlar"
 
 #. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
-#: root/src/email/commit.tt:14
-#: root/src/email/commit.tt:15
+#: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
 msgstr "För att verkställa ändringarna, kan du besöka %1"
 
@@ -1688,7 +1710,8 @@ msgid "To display the PDFs, set or append the following string in the header"
 msgstr "För att visa PDF:er, skriv eller bifoga följande sträng i sidhuvudet"
 
 #: root/src/edit/edit.tt:469
-msgid "To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgid ""
+"To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "För att behålla blankstegen, anpassa styckena med "
 
 #: root/src/edit/edit.tt:479
@@ -1705,10 +1728,10 @@ msgstr "För att återgå till redigeringen kan du besöka denna URL"
 
 #: root/src/email/commit.tt:10
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr "För att granska de introducerade ändringarna, kan du besöka följande URL"
+msgstr ""
+"För att granska de introducerade ändringarna, kan du besöka följande URL"
 
-#: root/src/layout.tt:115
-#: root/src/layout.tt:118
+#: root/src/layout.tt:115 root/src/layout.tt:118
 msgid "Toggle the table of contents"
 msgstr "Visa innehållsförteckningen"
 
@@ -1716,14 +1739,10 @@ msgstr "Visa innehållsförteckningen"
 msgid "Topic"
 msgstr "Ämne"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:76
-#: root/src/edit/edit.tt:129
-#: root/src/edit/edit.tt:571
-#: root/src/edit/newtext.tt:104
-#: root/src/layout.tt:165
-#: root/src/layout.tt:181
-#: root/src/layout.tt:400
-#: root/src/text.tt:58
+#: lib/AmuseWikiFarm/Controller/Category.pm:71 root/src/edit/edit.tt:129
+#: root/src/edit/edit.tt:571 root/src/edit/newtext.tt:104
+#: root/src/layout.tt:165 root/src/layout.tt:181 root/src/layout.tt:400
+#: root/src/text.tt:60
 msgid "Topics"
 msgstr "Ämnen"
 
@@ -1735,19 +1754,16 @@ msgstr "Totalt antal sidor"
 msgid "Triple bars"
 msgstr "Tredubbla staplar"
 
-#: root/src/bookbuilder/index.tt:379
+#: root/src/bookbuilder/index.tt:394
 msgid "Try a random text if unsure"
 msgstr "Prova en slumpmässig text om du är osäker"
 
-#: root/src/admin/edit.tt:398
-#: root/src/bookbuilder/index.tt:180
+#: root/src/admin/edit.tt:398 root/src/bookbuilder/index.tt:181
 msgid "Two side layout"
 msgstr "Tvåsidig layout"
 
-#: root/src/bookbuilder/index.tt:17
-#: root/src/console/alias_display.tt:97
-#: root/src/console/unpublished.tt:9
-#: root/src/edit/revs.tt:15
+#: root/src/bookbuilder/index.tt:17 root/src/console/alias_display.tt:97
+#: root/src/console/unpublished.tt:9 root/src/edit/revs.tt:15
 msgid "URI"
 msgstr "URI"
 
@@ -1755,8 +1771,7 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
-#: root/src/edit/revs.tt:29
-#: root/src/publish/pending.tt:66
+#: root/src/edit/revs.tt:29 root/src/publish/pending.tt:66
 msgid "UTC"
 msgstr "UTC"
 
@@ -1770,7 +1785,7 @@ msgstr "Ta villkorslöst bort alla osynliga hårda mellanslag i texten"
 msgid "Unique ID for the text"
 msgstr "Unik ID för texten"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:103
+#: lib/AmuseWikiFarm/Controller/Console.pm:92
 msgid "Unpublished texts"
 msgstr "Opublicerade texter"
 
@@ -1779,8 +1794,7 @@ msgstr "Opublicerade texter"
 msgid "Unsupported file type %1"
 msgstr "Filtypen stöds inte %1"
 
-#: root/src/admin/edit.tt:455
-#: root/src/bookbuilder/index.tt:321
+#: root/src/admin/edit.tt:479 root/src/bookbuilder/index.tt:322
 #: root/src/user/edit.tt:39
 msgid "Update"
 msgstr "Updatera"
@@ -1806,13 +1820,17 @@ msgid "Use it in the body as"
 msgstr "Använd i brödtexten som"
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:244
+#: root/src/bookbuilder/index.tt:245
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Använd optimerade signaturer med %1 sidor vardera"
 
 #: root/src/edit/edit.tt:441
-msgid "Useful for footnotes or in the headers of the document, where you cannot put a blank line to mark a new paragraph."
-msgstr "Användbart för fotnoter eller i dokumentets sidhuvud, där du inte kan markera ett nytt stycke med en tom rad."
+msgid ""
+"Useful for footnotes or in the headers of the document, where you cannot put "
+"a blank line to mark a new paragraph."
+msgstr ""
+"Användbart för fotnoter eller i dokumentets sidhuvud, där du inte kan "
+"markera ett nytt stycke med en tom rad."
 
 #. ($user->username)
 #: lib/AmuseWikiFarm/Controller/User.pm:235
@@ -1823,22 +1841,20 @@ msgstr "Användare %1 skapad!"
 msgid "User created"
 msgstr "Användare skapad"
 
-#: root/src/user/login.tt:6
-#: root/src/user/login.tt:8
+#: root/src/user/login.tt:6 root/src/user/login.tt:8
 msgid "Username"
 msgstr "Användarnamn"
 
 #: root/src/user/create.tt:16
 msgid "Username, alphanumerical only, no special characters, no uppercase"
-msgstr "Användarnamn, endast alfanumeriskt, inga specialtecken, inga stora bokstäver"
+msgstr ""
+"Användarnamn, endast alfanumeriskt, inga specialtecken, inga stora bokstäver"
 
 #: root/src/macros.tt:27
 msgid "Verbatim block"
 msgstr "Verbatim block"
 
-#: root/src/admin/edit.tt:431
-#: root/src/text.tt:166
-#: root/src/text.tt:167
+#: root/src/admin/edit.tt:431 root/src/text.tt:168 root/src/text.tt:169
 msgid "View history"
 msgstr "Se historik"
 
@@ -1854,18 +1870,19 @@ msgstr "Virtuella värdar, en per rad"
 msgid "Where does this text come from?"
 msgstr "Vartifrån kommer denna text?"
 
-#: root/src/bookbuilder/index.tt:164
-msgid ""
-"Width of the cover image in percent of the text block width,\n"
-"        leave it blank if you don't need a cover image"
-msgstr "Omslagsbildens bredd i procent av textblockets bredd,        lämna blank om du inte behöver någon omslagsbild"
+#: root/src/bookbuilder/index.tt:166
+msgid "Width of the cover image in percent of the text block width."
+msgstr "Omslagsbildens bredd i procent av textblockets bredd."
 
-#: root/src/bookbuilder/index.tt:368
+#: root/src/bookbuilder/index.tt:383
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
-msgstr "Med bokskaparen kan du ändra layouten (typsnitt,     dimensioner, papper, marginaler) av texterna i biblioteket. Du kan     också sammanfoga fler texter och skapa ditt egna häfte. Prova!"
+msgstr ""
+"Med bokskaparen kan du ändra layouten (typsnitt,     dimensioner, papper, "
+"marginaler) av texterna i biblioteket. Du kan     också sammanfoga fler "
+"texter och skapa ditt egna häfte. Prova!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:125
 msgid "Wrong answer!"
@@ -1875,8 +1892,7 @@ msgstr "Fel svar!"
 msgid "Wrong username or password"
 msgstr "Fel användarnamn och lösenord"
 
-#: root/src/text.tt:141
-#: root/src/text.tt:142
+#: root/src/text.tt:143 root/src/text.tt:144
 msgid "XeLaTeX source"
 msgstr "XeLaTeX källa"
 
@@ -1896,12 +1912,15 @@ msgstr "Du är redan inloggad"
 msgid "You are logged in now!"
 msgstr "Nu är du inloggad!"
 
-#: root/src/bookbuilder/index.tt:373
+#: root/src/bookbuilder/index.tt:388
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
-msgstr "Du kan lägga till texter i bokskaparen genom att trycka på      \"plus-ikonen\" bredvid nedladdnings-ikonerna på varje texts       sida. Du kan lägga till eller ta bort texterna senare."
+msgstr ""
+"Du kan lägga till texter i bokskaparen genom att trycka på      \"plus-ikonen"
+"\" bredvid nedladdnings-ikonerna på varje texts       sida. Du kan lägga "
+"till eller ta bort texterna senare."
 
 #. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
@@ -1914,7 +1933,8 @@ msgid "You can do so answering a simple question."
 msgstr "Detta kan du göra genom att svara på en enkel fråga."
 
 #: root/src/edit/revs.tt:73
-msgid "You can't create a new revision because the text has not been published yet"
+msgid ""
+"You can't create a new revision because the text has not been published yet"
 msgstr "Du kan inte skapa en ny revidering då texten ännu inte har publicerats"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:103
@@ -1927,20 +1947,23 @@ msgstr "Du bör överväga att återgå till redigeringen av en av dem"
 
 #. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
-#: root/src/email/newuser.tt:8
-#: root/src/email/newuser.tt:9
+#: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr "Du bör ändra ditt lösenord på direkten %1"
 
 #: root/src/edit/edit.tt:98
-msgid "Your changes are saved and can be checked every time you hit Preview or Commit"
-msgstr "Dina ändringar har sparats och kan granskas varje gång du trycker på Förhandsgranskning eller Skicka"
+msgid ""
+"Your changes are saved and can be checked every time you hit Preview or "
+"Commit"
+msgstr ""
+"Dina ändringar har sparats och kan granskas varje gång du trycker på "
+"Förhandsgranskning eller Skicka"
 
 #: root/src/macros.tt:10
 msgid "Your chapter here..."
 msgstr "Ditt kapitel här..."
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:66
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:54
 msgid "Your file is ready"
 msgstr "Din fil är redo"
 
@@ -1983,16 +2006,13 @@ msgstr "om, länkar..."
 msgid "automatically generated if not present, using author and title"
 msgstr "genereras automatiskt om saknad, genom författare och titel"
 
-#: root/src/edit/edit.tt:434
-#: root/src/edit/edit.tt:435
+#: root/src/edit/edit.tt:434 root/src/edit/edit.tt:435
 #: root/src/edit/edit.tt:437
 msgid "code and monospace"
 msgstr "kod och monospace"
 
-#: root/src/edit/edit.tt:556
-#: root/src/edit/edit.tt:571
-#: root/src/edit/newtext.tt:105
-#: root/src/edit/newtext.tt:79
+#: root/src/edit/edit.tt:556 root/src/edit/edit.tt:571
+#: root/src/edit/newtext.tt:105 root/src/edit/newtext.tt:79
 msgid "comma or semicolon separated list"
 msgstr "lista separerad med komma eller semikolon"
 
@@ -2008,8 +2028,7 @@ msgstr "konflikt"
 msgid "description"
 msgstr "beskrivning"
 
-#: root/src/edit/edit.tt:519
-#: root/src/edit/edit.tt:526
+#: root/src/edit/edit.tt:519 root/src/edit/edit.tt:526
 msgid "displayed text"
 msgstr "visad text"
 
@@ -2017,8 +2036,7 @@ msgstr "visad text"
 msgid "editing"
 msgstr "redigering"
 
-#: root/src/edit/edit.tt:416
-#: root/src/edit/edit.tt:418
+#: root/src/edit/edit.tt:416 root/src/edit/edit.tt:418
 msgid "emphasis"
 msgstr "tyngdpunkt"
 
@@ -2043,15 +2061,20 @@ msgid "generic sectioning, good for articles"
 msgstr "generisk uppdelning, bra för artiklar"
 
 #: root/src/edit/newtext.tt:39
-msgid "if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1"
-msgstr "om det av en händelse skulle finnas en annan text med samma författare och titel, välj den önskade URI genom att fylla i fältet nedan med författare, titel och nummer, t.ex. min-förf-min-titel-1"
+msgid ""
+"if by chance another text with the same author and title exists, choose the "
+"desired URI using the field below inserting author, title and a number, e.g. "
+"my-author-my-title-1"
+msgstr ""
+"om det av en händelse skulle finnas en annan text med samma författare och "
+"titel, välj den önskade URI genom att fylla i fältet nedan med författare, "
+"titel och nummer, t.ex. min-förf-min-titel-1"
 
 #: root/src/edit/newtext.tt:37
 msgid "mandatory"
 msgstr "obligatorisk"
 
-#: root/src/edit/edit.tt:509
-#: root/src/edit/edit.tt:510
+#: root/src/edit/edit.tt:509 root/src/edit/edit.tt:510
 msgid "numbered item"
 msgstr "numererat föremål"
 
@@ -2059,34 +2082,26 @@ msgstr "numererat föremål"
 msgid "optional, defaults to the author directive"
 msgstr "valfri, förvalda värden till författaranvisningen"
 
-#: root/src/edit/edit.tt:163
-#: root/src/edit/edit.tt:416
-#: root/src/edit/edit.tt:422
-#: root/src/edit/edit.tt:428
-#: root/src/edit/edit.tt:434
-#: root/src/edit/edit.tt:473
-#: root/src/edit/edit.tt:521
-#: root/src/edit/edit.tt:526
+#: root/src/edit/edit.tt:163 root/src/edit/edit.tt:416
+#: root/src/edit/edit.tt:422 root/src/edit/edit.tt:428
+#: root/src/edit/edit.tt:434 root/src/edit/edit.tt:473
+#: root/src/edit/edit.tt:521 root/src/edit/edit.tt:526
 msgid "or"
 msgstr "eller"
 
-#: root/src/edit/edit.tt:445
-#: root/src/edit/edit.tt:448
+#: root/src/edit/edit.tt:445 root/src/edit/edit.tt:448
 msgid "overstriked"
 msgstr "överstruken"
 
-#: root/src/publish/pending.tt:4
-#: root/src/tasks/display.tt:2
+#: root/src/publish/pending.tt:4 root/src/tasks/display.tt:2
 msgid "pending"
 msgstr "pending"
 
-#: root/src/text.tt:96
-#: root/src/text.tt:97
+#: root/src/text.tt:98 root/src/text.tt:99
 msgid "plain PDF"
 msgstr "plain PDF"
 
-#: root/src/text.tt:149
-#: root/src/text.tt:150
+#: root/src/text.tt:151 root/src/text.tt:152
 msgid "plain text source"
 msgstr "plain text källa"
 
@@ -2106,8 +2121,7 @@ msgstr "relevant"
 msgid "revision"
 msgstr "revidering"
 
-#: root/src/edit/edit.tt:422
-#: root/src/edit/edit.tt:424
+#: root/src/edit/edit.tt:422 root/src/edit/edit.tt:424
 msgid "strong emphasis"
 msgstr "stor tonvikt"
 
@@ -2115,8 +2129,7 @@ msgstr "stor tonvikt"
 msgid "sub-sub-section"
 msgstr "under-underavdelning"
 
-#: root/src/edit/edit.tt:443
-#: root/src/edit/edit.tt:446
+#: root/src/edit/edit.tt:443 root/src/edit/edit.tt:446
 msgid "subscript"
 msgstr "indexläge"
 
@@ -2124,8 +2137,7 @@ msgstr "indexläge"
 msgid "subsection"
 msgstr "underavdelning"
 
-#: root/src/edit/edit.tt:444
-#: root/src/edit/edit.tt:447
+#: root/src/edit/edit.tt:444 root/src/edit/edit.tt:447
 msgid "superscript"
 msgstr "exponentläge"
 
@@ -2134,9 +2146,7 @@ msgid "taken"
 msgstr "tagen"
 
 #. (args)
-#: root/src/macros.tt:1
-#: root/src/macros.tt:2
-#: root/src/macros.tt:3
+#: root/src/macros.tt:1 root/src/macros.tt:2 root/src/macros.tt:3
 msgid "text"
 msgstr "text"
 
@@ -2144,18 +2154,15 @@ msgstr "text"
 msgid "texts by authors, title, topic..."
 msgstr "text efter författare, titel, ämne..."
 
-#: root/src/layout.tt:158
-#: root/src/layout.tt:394
+#: root/src/layout.tt:158 root/src/layout.tt:394
 msgid "texts sorted by author"
 msgstr "text sorterad efter författare"
 
-#: root/src/layout.tt:152
-#: root/src/layout.tt:389
+#: root/src/layout.tt:152 root/src/layout.tt:389
 msgid "texts sorted by title"
 msgstr "texter sorterade efter titel"
 
-#: root/src/layout.tt:180
-#: root/src/layout.tt:399
+#: root/src/layout.tt:180 root/src/layout.tt:399
 msgid "texts sorted by topics"
 msgstr "texter sorterade efter ämnen"
 
@@ -2167,13 +2174,11 @@ msgstr "textens författare (såsom det visas)"
 msgid "topic"
 msgstr "ämne"
 
-#: root/src/edit/edit.tt:503
-#: root/src/edit/edit.tt:504
+#: root/src/edit/edit.tt:503 root/src/edit/edit.tt:504
 msgid "unnumbered item"
 msgstr "onumererat föremål"
 
-#: root/src/edit/edit.tt:428
-#: root/src/edit/edit.tt:429
+#: root/src/edit/edit.tt:428 root/src/edit/edit.tt:429
 #: root/src/edit/edit.tt:431
 msgid "very strong emphasis"
 msgstr "väldigt stor tonvikt vid"
@@ -2187,13 +2192,18 @@ msgid "without description"
 msgstr "utan beskrivning"
 
 #: root/src/edit/newtext.tt:61
-msgid "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr "du bör överväga att ta bort det inledande \"En\", \"Ett\", \"Den\" och så vidare från titeln"
+msgid ""
+"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr ""
+"du bör överväga att ta bort det inledande \"En\", \"Ett\", \"Den\" och så "
+"vidare från titeln"
 
 #: root/src/publish/pending.tt:95
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
-msgstr "\"Förlegad redigering\" innebär att revideringen övergavs    under redigeringens gång, men den är fortfarande där, utifall att     någon vill återuppta den, medans den redigerar en text."
-
+msgstr ""
+"\"Förlegad redigering\" innebär att revideringen övergavs    under "
+"redigeringens gång, men den är fortfarande där, utifall att     någon vill "
+"återuppta den, medans den redigerar en text."
