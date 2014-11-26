@@ -30,3 +30,4 @@ A too long uri was generated (100 chars vs. 95)
 * TODO Add descriptions to categories
 
 * TODO covers/decorative text image 
+* TODO user management in admin
