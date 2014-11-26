@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 5;
+use Test::More tests => 6;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use AmuseWikiFarm::Schema;
 
@@ -42,6 +42,9 @@ $site->site_options->update_or_create({ option_name => 'latest_entries_for_rss',
 @rss_existing = $site->latest_entries_for_rss;
 is scalar(@rss_existing), $setting,
   "RSS listing at $setting";
+
+
+is ($site->get_option('latest_entries_for_rss'), $setting);
 
 
 # and reset

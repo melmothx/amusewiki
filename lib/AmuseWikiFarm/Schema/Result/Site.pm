@@ -1904,6 +1904,25 @@ sub update_from_params {
         }
     }
 
+    my @options;
+    # these are numerics
+    foreach my $option (qw/latest_entries_for_rss
+                           latest_entries/) {
+        my $value = 0;
+        if (my $set_to = delete $params->{$option}) {
+            if ($set_to =~ m/([1-9][0-9]*)/) {
+                $value = $1;
+            }
+            else {
+                push @errors, "$option should be numeric";
+            }
+        }
+        push @options, {
+                        option_name => $option,
+                        option_value => $value,
+                       };
+    }
+
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
           . join(", ", keys %$params);
@@ -1919,6 +1938,9 @@ sub update_from_params {
             foreach my $vhost (@vhosts) {
                 $self->vhosts->create({ name => $vhost });
             }
+        }
+        foreach my $opt (@options) {
+            $self->site_options->update_or_create($opt);
         }
     }
 
@@ -2091,6 +2113,17 @@ sub _latest_entries_routine {
     }
     return $self->titles->latest($num);
 }
+
+sub get_option {
+    my ($self, $lookup) = @_;
+    if (my $setting = $self->site_options->find({ option_name => $lookup })) {
+        return $setting->option_value;
+    }
+    else {
+        return;
+    }
+}
+
 
 
 __PACKAGE__->meta->make_immutable;
