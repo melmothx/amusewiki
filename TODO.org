@@ -14,7 +14,8 @@ A too long uri was generated (100 chars vs. 95)
   CLOSED: [2014-11-26 mer 11:28]
 * DONE Add PT Sans font (and maybe some other sans ones)
   CLOSED: [2014-11-26 mer 11:07]
-* TODO Hide the cover width when no image is attached.
+* DONE Hide the cover width when no image is attached.
+  CLOSED: [2014-11-26 mer 16:46]
 * DONE Make the number of entries configurable.
   CLOSED: [2014-11-26 mer 15:27]
 * TODO 4up schema (in PDF::Imposition)
