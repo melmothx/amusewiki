@@ -44,6 +44,6 @@ is scalar(($site->latest_entries_for_rss)), $setting,
 
 
 # and reset
-# $site->site_options->delete;
+$site->site_options->delete;
 
 
