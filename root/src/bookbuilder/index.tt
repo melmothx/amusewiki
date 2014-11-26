@@ -140,29 +140,30 @@
       [% END %]
     </select>
     </p>
-    <p>
+    <div>
       [% IF bb.coverfile %]
+      <div id="coverfile-is-present">
       [% loc('A cover image was already added, but you can replace it uploading
               a new one.') %]
       <br />
+      </div>
       [% END %]
       <label for="coverimage">
         [% loc('Add a cover image (PNG or JPG)' ) %]
       </label>
       <input id="coverimage" name="coverimage" type="file" />
-    </p>
+    </div>
 
-    <div class="checkbox">
+    <div class="checkbox image-options">
       <label>
         <input type="checkbox" name="removecover" value="1" id="removecover" />
         [% loc('Remove cover image') %]
       </label>
     </div>
 
-    <p>
+    <div class="image-options">
       <label for="coverwidth">
-        [% loc("Width of the cover image in percent of the text block width,
-        leave it blank if you don't need a cover image") %]
+        [% loc("Width of the cover image in percent of the text block width.") %]
       </label>
       <select id="coverwidth" class="form-control" name="coverwidth">
         [% FOREACH coverw IN bb.coverwidths %]
@@ -172,7 +173,7 @@
         </option>
         [% END %]
       </select>
-    </p>
+    </div>
     <div class="checkbox">
       <label>
         <input type="checkbox" name="twoside" value="1" id="twoside"
@@ -344,15 +345,29 @@
           $('#imposition-options').hide('fast');
       }
   }
+  function show_image_options() {
+      if ($('#coverfile-is-present').length || $('#coverimage').val()) {
+          $('.image-options').show('fast');
+      }
+      else {
+          $('.image-options').hide('fast');
+      }
+  }
   $(document).ready(function(){
       $("#bbform").validate();
       show_imposition();
       show_signature();
+      show_image_options();
       $('#imposed').click(function() {
           show_imposition();
       });
       $('.choose-schema').click(function() {
           show_signature();
+      });
+      $("#coverimage").change(function() {
+          if ($(this).val()) {
+              $('.image-options').show('fast');
+          }
       });
   });
 </script>
