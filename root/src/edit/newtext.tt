@@ -139,7 +139,7 @@ var ckconfiguration = {
     </p>
     [% END %]
     <p>
-      [% SET current_language = processed_params.lang || site.locale %]
+      [% SET current_language = processed_params.lang || current_locale_code %]
       <label for="lang">[% loc('Language') %]</label>
       <select name="lang" id="lang" class="form-control">
 

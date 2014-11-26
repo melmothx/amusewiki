@@ -121,7 +121,12 @@ sub auto :Private {
         }
     }
 
-    my $locale = $site->locale;
+    my $locale = $site->locale || 'en';
+    # in case something weird happened
+    unless ($site->known_langs->{$locale}) {
+        $c->log->warn("$locale is not recognized");
+        $locale = 'en';
+    }
 
     if ($site->multilanguage) {
         if (my $user_locale = $c->session->{user_locale}) {
@@ -290,6 +295,12 @@ sub end : ActionClass('RenderView') {
     if ($c->stash->{page_title}) {
         $c->stash->{page_title} =~ s/<.*?>//g;
     }
+
+    # be sure to always pass the current_locale_code and default to english
+    unless ($c->stash->{current_locale_code}) {
+        $c->stash(current_locale_code => 'en');
+    }
+
 
     my $site = $c->stash->{site};
     return unless $site;
