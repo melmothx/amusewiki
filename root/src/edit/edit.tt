@@ -186,7 +186,7 @@ $(document).ready(function() {
 [% END %]
 
 <div id="museform-container">
-<form method="post" enctype="multipart/form-data" id="museform">
+<form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
   <div class="form-group">
     <p>
       <label for="attachment">
