@@ -65,7 +65,7 @@ This is a sample configuration of the installer:
 The needed fonts are shipped in texlive, under texmf-dist/fonts/, so
 it's usually enough to symlink them into ~/.fonts.
 
-Fonts needed: antt  cm-unicode  libertine  paratype  poltawski  tex-gyre
+Fonts needed: antt  cm-unicode  libertine  paratype  poltawski  tex-gyre iwona
 
 The SIL charis font is not shipped by texlive, but it's usually
 packaged by your distro. Or download it at
