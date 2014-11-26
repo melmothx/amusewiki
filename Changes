@@ -9,6 +9,10 @@ gen.sh in the font-preview directory:
  cd font-preview
  ./gen.sh
 
+This release also add a new table to the database. Please run the sql
+script sql/AmuseWikiFarm-Schema-0.998-1.02-XXXX.sql for your database
+before the server restart.
+
 Change list:
 
  - Added swedish translations

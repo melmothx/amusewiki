@@ -493,6 +493,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 site_options
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::SiteOption>
+
+=cut
+
+__PACKAGE__->has_many(
+  "site_options",
+  "AmuseWikiFarm::Schema::Result::SiteOption",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 titles
 
 Type: has_many
@@ -549,8 +564,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-09-21 16:31:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C3/COK8EH0Dd7SiSt2g7rA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-11-26 12:07:27
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ew1cFIdcihzXbfKxQwUY3A
 
 =head2 other_sites
 

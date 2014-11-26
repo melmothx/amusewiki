@@ -73,6 +73,14 @@ CREATE TABLE site (
 
 CREATE UNIQUE INDEX unique_site_canonical ON site (canonical);
 
+CREATE TABLE site_options (
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       option_name VARCHAR(64),
+       option_value VARCHAR(255),
+       PRIMARY KEY (site_id, option_name)
+);
+
 CREATE TABLE users (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        username VARCHAR(255) NOT NULL,
