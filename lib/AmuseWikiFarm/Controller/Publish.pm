@@ -21,7 +21,7 @@ Stash the available revisions, depending on the site mode.
 
 =cut
 
-sub root :Chained('/') :PathPart('publish') :CaptureArgs(0) {
+sub root :Chained('/site') :PathPart('publish') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     if (!$c->user_exists) {

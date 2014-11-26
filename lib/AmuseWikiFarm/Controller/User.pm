@@ -48,7 +48,7 @@ use Email::Valid;
 
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
-sub login :Path('/login') :Args(0) {
+sub login :Chained('/site') :PathPart('login') :Args(0) {
     my ( $self, $c ) = @_;
     if ($c->user_exists) {
         $c->flash(status_msg => $c->loc("You are already logged in"));
@@ -96,7 +96,7 @@ sub login :Path('/login') :Args(0) {
     $c->flash(error_msg => $c->loc("Wrong username or password"));
 }
 
-sub logout :Path('/logout') :Args(0) {
+sub logout :Chained('/site') :PathPart('logout') :Args(0) {
     my ($self, $c) = @_;
     if ($c->user_exists) {
         $c->logout;
@@ -105,7 +105,7 @@ sub logout :Path('/logout') :Args(0) {
     $c->response->redirect($c->uri_for('/login'));
 }
 
-sub human :Path('/human') :Args(0) {
+sub human :Chained('/site') :PathPart('human') :Args(0) {
     my ($self, $c) = @_;
     if ($c->session->{i_am_human}) {
         # wtf...
@@ -127,7 +127,7 @@ sub human :Path('/human') :Args(0) {
     }
 }
 
-sub language :Path('/set-language') :Args(0) {
+sub language :Chained('/site') :PathPart('set-language') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     if ($site->multilanguage) {
@@ -149,7 +149,7 @@ sub language :Path('/set-language') :Args(0) {
     $c->response->redirect($c->uri_for($goto));
 }
 
-sub user :Chained('/') :CaptureArgs(0) {
+sub user :Chained('/site') :CaptureArgs(0) {
     my ($self, $c) = @_;
     unless ($c->user_exists) {
         $c->detach('/not_permitted');

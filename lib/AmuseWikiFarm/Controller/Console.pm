@@ -35,7 +35,7 @@ Posting here will trigger the action
 
 =cut
 
-sub root :Chained('/') :PathPart('console') :CaptureArgs(0) {
+sub root :Chained('/site') :PathPart('console') :CaptureArgs(0) {
     my ($self, $c) = @_;
     if ($c->user_exists) {
         $c->stash(nav => 'console');

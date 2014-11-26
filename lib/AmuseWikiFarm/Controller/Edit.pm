@@ -33,7 +33,7 @@ The main route to create a new text from scratch
 
 =cut
 
-sub root :Chained('/') :PathPart('action') :CaptureArgs(1) {
+sub root :Chained('/site') :PathPart('action') :CaptureArgs(1) {
     my ($self, $c, $f_class) = @_;
 
     my $site = $c->stash->{site};

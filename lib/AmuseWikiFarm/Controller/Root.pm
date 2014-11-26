@@ -59,7 +59,7 @@ Locale name
 
 =cut
 
-sub auto :Private {
+sub site :Chained('/') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
 
     # catch the host. ->uri is an URI object, as per doc.
@@ -163,7 +163,7 @@ sub auto :Private {
     return 1;
 }
 
-sub not_found :Global {
+sub not_found :Private {
     my ($self, $c) = @_;
     $c->stash(please_index => 0);
     $c->response->status(404);
@@ -172,15 +172,17 @@ sub not_found :Global {
 
     # last chance: look into the redirections if we have a type and an uri,
     # set in C::Library or C::Category
-    if (my $f_class = $c->stash->{f_class}) {
-        if (my $uri = $c->stash->{uri}) {
-            if (my $red = $c->stash->{site}->redirections->find({
-                                                                 type => $f_class,
-                                                                 uri => $uri
-                                                                })) {
-                $c->response->redirect($c->uri_for($red->full_dest_uri));
-                $c->detach();
-                return;
+    if (my $site = $c->stash->{site}) {
+        if (my $f_class = $c->stash->{f_class}) {
+            if (my $uri = $c->stash->{uri}) {
+                if (my $red = $site->redirections->find({
+                                                         type => $f_class,
+                                                         uri => $uri
+                                                        })) {
+                    $c->response->redirect($c->uri_for($red->full_dest_uri));
+                    $c->detach();
+                    return;
+                }
             }
         }
     }
@@ -188,7 +190,7 @@ sub not_found :Global {
     $c->stash(template => "error.tt");
 }
 
-sub not_permitted :Global {
+sub not_permitted :Private {
     my ($self, $c) = @_;
     $c->response->status(403);
     $c->log->error("Access denied");
@@ -216,7 +218,7 @@ Get the a random text
 
 =cut
 
-sub random :Global :Args(0) {
+sub random :Chained('/site') :Args(0) {
     my ($self, $c) = @_;
     if (my $text = $c->stash->{site}->titles->random_text) {
         $c->response->redirect($c->uri_for_action('/library/text', [$text->uri]));
@@ -226,12 +228,12 @@ sub random :Global :Args(0) {
     }
 }
 
-sub rss_xml :Path('/rss.xml') :Args(0) {
+sub rss_xml :Chained('/site') :PathPart('rss.xml') :Args(0) {
     my ($self, $c) = @_;
     $c->detach('/feed/index');
 }
 
-sub favicon :Path('/favicon.ico') :Args(0) {
+sub favicon :Chained('/site') :PathPart('favicon.ico') :Args(0) {
     my ($self, $c) = @_;
     $c->detach('/sitefiles/local_files',
                 ['favicon.ico']);
@@ -243,7 +245,7 @@ The root page (/) points to /library/ if there is no special/index
 
 =cut
 
-sub index :Path :Args(0) {
+sub index :Chained('/site') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
     # check if we have a special page named index
     my $nav = $c->stash->{navigation};
@@ -269,7 +271,7 @@ Standard 404 error page
 
 =cut
 
-sub default :Path {
+sub default :Private {
     my ( $self, $c ) = @_;
     $c->detach('not_found');
 }

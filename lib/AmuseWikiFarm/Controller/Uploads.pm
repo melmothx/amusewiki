@@ -27,7 +27,7 @@ use File::Basename ();
 use File::Path ();
 use IO::File;
 
-sub root :Chained('/') :PathPart('uploads') :CaptureArgs(1) {
+sub root :Chained('/site') :PathPart('uploads') :CaptureArgs(1) {
     my ( $self, $c, $site_id ) = @_;
     if ($site_id ne $c->stash->{site}->id) {
         $c->detach('/not_found');

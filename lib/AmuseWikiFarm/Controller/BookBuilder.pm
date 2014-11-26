@@ -28,7 +28,7 @@ use AmuseWikiFarm::Archive::BookBuilder;
 
 =cut
 
-sub root :Chained('/') :PathPart('bookbuilder') :CaptureArgs(0) {
+sub root :Chained('/site') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
 
     # check if human

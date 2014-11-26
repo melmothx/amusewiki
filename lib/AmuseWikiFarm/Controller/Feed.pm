@@ -22,7 +22,7 @@ RSS 2.0 feed, built using XML::FeedPP
 
 =cut
 
-sub index :Path :Args(0) {
+sub index :Chained('/site') :PathPart('feed') :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
     my @texts = $site->titles->latest;

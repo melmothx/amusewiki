@@ -23,7 +23,7 @@ Catalyst Controller.
 
 use JSON qw/to_json/;
 
-sub index :Path :Args(0) {
+sub index :Chained('/site') :PathPart('search') :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
     my $xapian = $site->xapian;

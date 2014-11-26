@@ -24,7 +24,7 @@ Deny access to not-human
 
 =cut
 
-sub root :Chained('/') :PathPart('tasks') :CaptureArgs(0) {
+sub root :Chained('/site') :PathPart('tasks') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
     unless ($c->session->{i_am_human}) {
         $c->response->redirect($c->uri_for('/human', { goto => $c->req->path }));

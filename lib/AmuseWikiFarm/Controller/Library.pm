@@ -25,7 +25,7 @@ Empty base method to start the chain
 
 =cut
 
-sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
+sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     $c->stash(please_index => 1);
 }

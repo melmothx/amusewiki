@@ -26,7 +26,7 @@ Show the site id.
 
 =cut
 
-sub root :Chained('/') :PathPart('admin') :CaptureArgs(0) {
+sub root :Chained('/site') :PathPart('admin') :CaptureArgs(0) {
     my ($self, $c) = @_;
     unless ($c->user_exists && $c->check_user_roles('root')) {
         $c->detach('/not_permitted');

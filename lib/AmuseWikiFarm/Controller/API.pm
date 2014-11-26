@@ -24,7 +24,11 @@ Catalyst Controller.
 
 use JSON qw/encode_json/;
 
-sub autocompletion :Local :Args(1) {
+sub api :Chained('/site') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+}
+
+sub autocompletion :Chained('api') :Args(1) {
     my ($self, $c, $type) = @_;
     my $query = lc($type);
     if ($type =~ m/(topic|author)/) {
