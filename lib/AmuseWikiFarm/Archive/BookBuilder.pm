@@ -280,6 +280,18 @@ sub all_fonts {
                   desc => 'TeX Gyre Bonum (Bookman)',
                  },
                  {
+                  name => 'TeX Gyre Heros',
+                  desc => 'TeX Gyre Heros (Helvetica)',
+                 },
+                 {
+                  name => 'TeX Gyre Adventor',
+                  desc => 'TeX Gyre Adventor (Avant Garde Gothic)',
+                 },
+                 {
+                  name => 'Iwona',
+                  desc => 'Iwona',
+                 },
+                 {
                   name => 'Antykwa Poltawskiego',
                   desc => 'Antykwa Półtawskiego',
                  },
@@ -294,6 +306,10 @@ sub all_fonts {
                  {
                   name => 'PT Serif',
                   desc => 'Paratype (cyrillic)',
+                 },
+                 {
+                  name => 'PT Sans',
+                  desc => 'PT Sans (cyrillic)',
                  },
                 );
     return \@fonts;

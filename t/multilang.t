@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 137;
+use Test::More tests => 145;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -143,6 +143,8 @@ $mech->get('/topics/geo');
 $mech->content_contains('/topics/geo/en');
 $mech->get_ok('/set-language?lang=it&goto=%2Ftopics%2Fgeo');
 $mech->content_contains('/topics/geo/it');
+$mech->content_contains('<html lang="it">');
+
 
 $site->fixed_category_list("geo lines war");
 $site->update->discard_changes;
@@ -198,3 +200,12 @@ my ($rev, $error) = $site->create_new_text({
 
 ok(!$rev, "no revision created");
 is $error, "Couldn't generate the uri!", "Error found";
+$mech->get_ok('/set-language?lang=hr');
+$mech->content_contains('<html lang="hr">');
+$mech->get_ok('/action/text/new');
+$mech->content_like(qr/class="active"\s*id="select-lang-hr"/s);
+$mech->get_ok('/set-language?lang=it');
+$mech->get_ok('/action/text/new');
+$mech->content_like(qr/class="active"\s*id="select-lang-it"/s);
+
+

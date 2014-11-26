@@ -10,9 +10,10 @@ A too long uri was generated (100 chars vs. 95)
   CLOSED: [2014-11-18 mar 18:00]
 * DONE Convert all the circus to chained dispatch
   CLOSED: [2014-11-26 mer 09:16]
-
-* TODO Put an absolute link (not just "") in the edit page.
-* TODO Add PT Sans font (and maybe some other sans ones)
+* DONE Put an absolute link (not just "") in the edit page.
+  CLOSED: [2014-11-26 mer 11:28]
+* DONE Add PT Sans font (and maybe some other sans ones)
+  CLOSED: [2014-11-26 mer 11:07]
 * TODO Hide the cover width when no image is attached.
 * TODO Make the number of entries configurable.
 * TODO 4up schema (in PDF::Imposition)
