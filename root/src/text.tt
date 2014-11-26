@@ -19,8 +19,10 @@
     </div>
   </div>
 </div>
-
-<div id="page">
+<div class="row" id="page">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   <div id="preamble">
@@ -272,6 +274,8 @@
     </ul>
   </div>
   [% END %]
-
+  </div>
+  <div class="col-md-2">
+  </div>
 </div>
 
