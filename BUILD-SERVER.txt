@@ -40,6 +40,7 @@ ln -s /home/amuse/texlive/2014/texmf-dist/fonts/opentype/public/libertine/
 ln -s /home/amuse/texlive/2014/texmf-dist/fonts/truetype/paratype/
 ln -s /home/amuse/texlive/2014/texmf-dist/fonts/opentype/gust/poltawski/
 ln -s /home/amuse/texlive/2014/texmf-dist/fonts/opentype/public/tex-gyre
+ln -s /home/amuse/texlive/2014/texmf-dist/fonts/opentype/nowacki/iwona
 
 Run fc-cache -f -v
 
