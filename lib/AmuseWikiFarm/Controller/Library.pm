@@ -162,7 +162,7 @@ sub regular_match :Chained('regular_list') PathPart('') :CaptureArgs(1) {
 
 sub special :Chained('special_match') PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(latest_entries => [ $c->stash->{site}->titles->latest ]);
+    $c->stash(latest_entries => [ $c->stash->{site}->latest_entries ]);
     $c->forward('text_serving');
 }
 

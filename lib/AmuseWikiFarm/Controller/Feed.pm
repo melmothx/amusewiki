@@ -25,7 +25,7 @@ RSS 2.0 feed, built using XML::FeedPP
 sub index :Chained('/site') :PathPart('feed') :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
-    my @texts = $site->titles->latest;
+    my @texts = $site->latest_entries_for_rss;
 
     my @specials = $site->titles->published_specials;
 

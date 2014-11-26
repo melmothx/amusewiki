@@ -2059,6 +2059,40 @@ sub alternate_hostnames {
 }
 
 
+=head2 latest_entries
+
+Return the published texts (as a list of
+L<AmuseWikiFarm::Schema::Result::Title> objects or
+L<AmuseWikiFarm::Schema::ResultSet::Title>) sorted by publication
+date. Because of L<AmuseWikiFarm::Schema::ResultSet::Title>, this will
+default to max 50 entries. Use the C<latest_entries> setting to alter
+this number.
+
+=head2 latest_entries_for_rss
+
+As above, but using the setting C<latest_entries_for_rss>.
+
+=cut
+
+sub latest_entries {
+    return shift->_latest_entries_routine('latest_entries');
+}
+
+sub latest_entries_for_rss {
+    return shift->_latest_entries_routine('latest_entries_for_rss');
+}
+
+sub _latest_entries_routine {
+    my ($self, $lookup) = @_;
+    die "Bad usage" unless $lookup;
+    my $num;
+    if (my $setting = $self->site_options->find({ option_name => $lookup })) {
+        $num = $setting->option_value;
+    }
+    return $self->titles->latest($num);
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;
