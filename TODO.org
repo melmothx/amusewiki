@@ -18,6 +18,11 @@ A too long uri was generated (100 chars vs. 95)
   CLOSED: [2014-11-26 mer 16:46]
 * DONE Make the number of entries configurable.
   CLOSED: [2014-11-26 mer 15:27]
+* DONE Flash messages are too wide
+  CLOSED: [2014-11-27 gio 09:40]
+* DONE move "optimal value of signatures" to the
+  CLOSED: [2014-11-27 gio 09:44]
+  second position, after "all book in one signature"
 * TODO 4up schema (in PDF::Imposition)
 
 * Future releases

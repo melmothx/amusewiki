@@ -370,7 +370,9 @@ The signature to use.
 =cut
 
 sub signature_values {
-    return [qw/0 4 8 12 16 20 24 28 32 36 40 40-80/];
+    return [qw/0 40-80 4  8 12 16 20 24 28 32 36 40
+                      44 48 52 56 60 64 68 72 76 80
+              /];
 }
 
 enum(SignatureType => __PACKAGE__->signature_values);
