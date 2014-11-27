@@ -353,6 +353,9 @@
     </div>
     <div id="wrap">
     <div id="main" class="container clear-top">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
         [% IF c.flash.status_msg == 'BOOKBUILDER_ADDED' %]
@@ -372,6 +375,9 @@
       [% END %]
       [%- # all rendered, clear this -%]
       [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
+        </div>
+        <div class="col-md-2"></div>
+      </div>
       <div id="widepage">
         [% content %]
       </div>
