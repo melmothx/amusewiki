@@ -1,6 +1,27 @@
 [% # -*- mode: html -*- %]
 <h2>[% page_title | html %]</h2>
-<div><br /></div>
+<div class="row" style="padding-bottom: 3px">
+  <div class="col-xs-6">
+    <a href="?sorting=desc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-chevron-down">
+      </span>
+    </a>
+    <a href="?sorting=asc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-chevron-up">
+      </span>
+    </a>
+  </div>
+  <div class="col-xs-6 right">
+    <a href="?sorting=count-desc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-chevron-down">
+      </span>
+    </a>
+    <a href="?sorting=count-asc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-chevron-up">
+      </span>
+    </a>
+  </div>
+</div>
 <div class="item-group">
 [%- FOREACH cat IN list -%]
   <div style="margin-bottom: 1px">
@@ -12,6 +33,28 @@
     </a>
   </div>
 [% END %]
+</div>
+<div class="row" style="padding-top: 3px">
+  <div class="col-xs-6">
+    <a href="?sorting=desc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-chevron-up">
+      </span>
+    </a>
+    <a href="?sorting=asc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-chevron-down">
+      </span>
+    </a>
+  </div>
+  <div class="col-xs-6 right">
+    <a href="?sorting=count-desc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-chevron-up">
+      </span>
+    </a>
+    <a href="?sorting=count-asc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-chevron-down">
+      </span>
+    </a>
+  </div>
 </div>
 
 

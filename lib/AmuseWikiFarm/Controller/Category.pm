@@ -83,7 +83,22 @@ sub category_list_display :Private {
                           type => $type,
                           resultset => $rs);
 
-    $c->stash(list => $cache->texts,
+    # this should be safe.
+    my @list = @{ $cache->texts };
+
+    if (my $sorting = $c->req->params->{sorting}) {
+        if ($sorting eq 'count-desc') {
+            @list = sort { $b->{text_count} <=> $a->{text_count} } @list;
+        }
+        elsif ($sorting eq 'count-asc') {
+            @list = sort { $a->{text_count} <=> $b->{text_count} } @list;
+        }
+        elsif ($sorting eq 'desc') {
+            @list = reverse @list;
+        }
+    }
+
+    $c->stash(list => \@list,
               template => 'category.tt');
 }
 
