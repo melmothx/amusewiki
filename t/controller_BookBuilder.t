@@ -1,6 +1,8 @@
 use strict;
 use warnings;
-use Test::More tests => 50;
+use Test::More tests => 57;
+use File::Spec;
+use Data::Dumper;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
@@ -62,6 +64,23 @@ $mech->content_contains("Quota exceeded");
 $mech->get_ok('/bookbuilder');
 $mech->content_lacks('first-test');
 $mech->content_contains("Total pages: 5");
+
+$mech->get('/bookbuilder/cover');
+is ($mech->status, '404');
+$mech->get('/bookbuilder');
+
+foreach my $cover (qw/shot.jpg shot.png/) {
+    my $coverfile = File::Spec->catfile(qw/t files/, $cover);
+    my $res = $mech->submit_form(with_fields => {
+                                                 coverimage => $coverfile,
+                                                },
+                                 button => 'update',
+                                );
+
+    $mech->content_contains('coverfile-is-present');
+    $mech->get_ok('/bookbuilder/cover');
+    $mech->get_ok('/bookbuilder');
+}
 
 $site->locale($orig_locale);
 $site->update->discard_changes;

@@ -59,7 +59,7 @@ has filedir => (is => 'ro',
 
 =head2 coverfile
 
-The uploaded filename for the cover image.
+The absolute uploaded filename for the cover image.
 
 =cut
 

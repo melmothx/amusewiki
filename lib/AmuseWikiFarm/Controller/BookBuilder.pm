@@ -155,6 +155,17 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
         return;
 }
 
+sub cover :Chained('root') :Args(0) {
+    my ($self, $c) = @_;
+    if (my $cover = $c->stash->{bb}->coverfile) {
+        $c->stash(serve_static_file => $cover);
+        $c->detach($c->view('StaticFile'));
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
+
 sub fonts :Chained('root') :PathPart('fonts') :Args(0) {
     my ($self, $c) = @_;
     my $all_fonts = $c->stash->{bb}->all_fonts;

@@ -146,6 +146,7 @@
       [% loc('A cover image was already added, but you can replace it uploading
               a new one.') %]
       <br />
+        <img src="[% c.uri_for('/bookbuilder/cover') | html %]" width="100px"/>
       </div>
       [% END %]
       <label for="coverimage">
