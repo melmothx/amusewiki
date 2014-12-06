@@ -16,6 +16,9 @@ fi
 mkdir -p opt/cache
 
 start_all () {
+    rm -fv current_version_is_*.txt
+    amw_version=`perl -I lib -MAmuseWikiFarm -e 'print $AmuseWikiFarm::VERSION'`
+    touch current_version_is_$amw_version.txt
 	./init-fcgi.pl start
     ./script/jobber.pl start
     sleep 5

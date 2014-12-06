@@ -34,5 +34,4 @@ log/jobs/*.log
 var/*
 !var/.exists
 bootstrap-amw/bootstrap/*
-
-
+current_version_is*.txt
