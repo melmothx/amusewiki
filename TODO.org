@@ -28,7 +28,8 @@ A too long uri was generated (100 chars vs. 95)
 
 * DONE Add 9pt as font size (komascript supports that)
   CLOSED: [2014-12-06 sab 19:27]
-* TODO Add an anchor to the markup description.
+* DONE Add an anchor to the markup description.
+  CLOSED: [2014-12-06 sab 19:52]
 * TODO Display cover image in the bookbuilder
 
 * Future releases

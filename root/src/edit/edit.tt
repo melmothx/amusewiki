@@ -216,6 +216,12 @@ $(document).ready(function() {
     [% END %]
 
     <div>
+      <a href="#cheatsheet">
+        <span class="glyphicon glyphicon-hand-right"></span>
+        [% loc('Cheatsheet for the markup') %]
+      </a>
+    </div>
+    <div>
       <textarea rows="20" cols="60" id="maintextarea"
                 class="form-control"
                 [% IF locked_editing %]readonly="readonly"[% END %]
