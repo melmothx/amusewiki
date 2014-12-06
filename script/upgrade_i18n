@@ -6,7 +6,7 @@ xgettext.pl -P perl=* -P tt2=* \
     --directory=lib/AmuseWikiFarm/
 
 for i in hr fi es mk ru it de fr nl en sv; do
-    msgmerge --update lib/AmuseWikiFarm/I18N/$i.po \
+    msgmerge --update --no-location lib/AmuseWikiFarm/I18N/$i.po \
         lib/AmuseWikiFarm/I18N/messages.pot
 done
 
