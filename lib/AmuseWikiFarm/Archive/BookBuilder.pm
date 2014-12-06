@@ -125,7 +125,7 @@ Beware that these are hardcoded in the template.
 =cut
 
 sub schema_values {
-    return [qw/2up 2x4x2 2side 1x4x2cutfoldbind/]
+    return [qw/2up 2x4x2 2side 1x4x2cutfoldbind 4up/]
 }
 
 enum(SchemaType => __PACKAGE__->schema_values);
@@ -367,6 +367,8 @@ has coverwidth => (
 
 The signature to use.
 
+=head2 signature_4up
+
 =cut
 
 sub signature_values {
@@ -374,6 +376,15 @@ sub signature_values {
                       44 48 52 56 60 64 68 72 76 80
               /];
 }
+
+
+sub signature_values_4up {
+    return [qw/0 40-80  8 16 24 32 40
+                       48 56 64 72 80
+              /];
+}
+
+
 
 enum(SignatureType => __PACKAGE__->signature_values);
 
@@ -512,11 +523,16 @@ Populate the object with the provided HTTP parameters. Given the the
 form has correct values, failing to import means that the params were
 tampered or incorrect, so just ignore those.
 
+As a particular case, the 4up signature will be imported as signature
+if the schema name is C<4up>.
+
 =cut
 
 sub import_from_params {
     my ($self, %params) = @_;
-    # first the title.
+    if ($params{schema} and $params{schema} eq '4up') {
+        $params{signature} = delete $params{signature_4up};
+    }
     foreach my $method ($self->_accepted_params) {
         try {
             $self->$method($params{$method})

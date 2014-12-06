@@ -23,7 +23,12 @@ A too long uri was generated (100 chars vs. 95)
 * DONE move "optimal value of signatures" to the
   CLOSED: [2014-11-27 gio 09:44]
   second position, after "all book in one signature"
-* TODO 4up schema (in PDF::Imposition)
+* DONE 4up schema (in PDF::Imposition)
+  CLOSED: [2014-12-06 sab 14:38]
+
+* TODO Add 9pt as font size (komascript supports that)
+* TODO Add an anchor to the markup description.
+* TODO Display cover image in the bookbuilder
 
 * Future releases
 * TODO The jobber should remove old completed jobs

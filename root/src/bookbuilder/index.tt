@@ -235,10 +235,47 @@
     </div>
     <div class="checkbox" id="signature-explanation">
       <label for="signature">
-        [% loc('Please select the signature size:') %]
+        <strong>[% loc('Please select the signature size:') %]</strong>
       </label>
       <select id="signature" class="form-control" name="signature">
         [% FOREACH sign IN bb.signature_values %]
+        <option value="[% sign %]"
+                [% IF sign == bb.signature %]selected="selected"[% END %]>
+          [% IF sign.match('-') %]
+          [% loc('Use optimized signatures with [_1] pages each', sign) %]
+          [% ELSIF sign == 0 %]
+          [% loc('The whole book in as single signature') %]
+          [% ELSE %]
+          [% sign %]
+          [% END %]
+        </option>
+        [% END %]
+      </select>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="4up" id="schema4up"
+               class="choose-schema"
+               [% IF bb.schema == '4up' %]checked="checked"[% END %] />
+        <strong>4up</strong>:
+        [% loc("Exactly like 2up, but the sheets are meant to be cut
+        horizontally first and then stack on each other. This way you
+        can print, for example, A6 booklets on A4.") %]
+      </label>
+      <div class="schema-preview">
+        <img src="[% c.uri_for('/static/images/schema-preview/4up_1.png') %]"
+             alt="4up" />
+
+        <img src="[% c.uri_for('/static/images/schema-preview/4up_2.png') %]"
+             alt="4up" />
+      </div>
+    </div>
+    <div class="checkbox" id="signature-explanation-4up">
+      <label for="signature_4up">
+        <strong>[% loc('Please select the signature size:') %]</strong>
+      </label>
+      <select id="signature_4up" class="form-control" name="signature_4up">
+        [% FOREACH sign IN bb.signature_values_4up %]
         <option value="[% sign %]"
                 [% IF sign == bb.signature %]selected="selected"[% END %]>
           [% IF sign.match('-') %]
@@ -335,6 +372,12 @@
       }
       else {
           $('#signature-explanation').hide();
+      }
+      if ($('#schema4up').is(":checked")) {
+          $('#signature-explanation-4up').show();
+      }
+      else {
+          $('#signature-explanation-4up').hide();
       }
   }
   function show_imposition() {

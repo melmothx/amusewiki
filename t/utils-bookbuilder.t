@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 67;
+use Test::More tests => 69;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -216,3 +216,48 @@ my $newbb = AmuseWikiFarm::Archive::BookBuilder->new(%{$bb->constructor_args});
 is_deeply ($bb->as_job, $newbb->as_job, "Old and new have the same output");
 
 is($bb->as_job->{title}, $params{title});
+
+%params = (
+           title       => 'Pippuzzo va in montagna',
+           mainfont    => 'CMU Serif',
+           fontsize    => '10',
+           papersize   => 'a4',
+           division    => '14',
+           bcor        => '20',
+           coverwidth  => '85',
+           twoside     => 1,
+           notoc       => 1,
+           nocoverpage => 1,
+           imposed     => 1,
+           signature   => '40-80',
+           signature_4up => '8',
+           schema      => '2up',
+           cover       => 1,
+           # coverimage should be called with add_file
+          );
+
+$bb->import_from_params(%params);
+is $bb->signature, '40-80', "Signature_4up ignored with schema 2up";
+
+
+%params = (
+           title       => 'Pippuzzo va in montagna',
+           mainfont    => 'CMU Serif',
+           fontsize    => '10',
+           papersize   => 'a4',
+           division    => '14',
+           bcor        => '20',
+           coverwidth  => '85',
+           twoside     => 1,
+           notoc       => 1,
+           nocoverpage => 1,
+           imposed     => 1,
+           signature   => '4',
+           signature_4up => '16',
+           schema      => '4up',
+           cover       => 1,
+           # coverimage should be called with add_file
+          );
+
+$bb->import_from_params(%params);
+is $bb->signature, 16, "Signature_4up picked up with 4up schema";
