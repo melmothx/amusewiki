@@ -200,13 +200,13 @@ has division => (
 
 =head2 fontsize
 
-The font size in point, from 10 to 12.
+The font size in point, from 9 to 12.
 
 =cut
 
 
 sub fontsize_values {
-    return [ 10..12 ];
+    return [ 9..12 ];
 }
 
 enum(FontSizeType => __PACKAGE__->fontsize_values);
