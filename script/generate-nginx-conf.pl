@@ -82,6 +82,10 @@ server {
         internal;
         alias $amw_home/repo/;
     }
+    location /private/bbfiles/ {
+        internal;
+        alias $amw_home/bbfiles/;
+    }
     location /private/staging/ {
         internal;
         alias $amw_home/staging/;
