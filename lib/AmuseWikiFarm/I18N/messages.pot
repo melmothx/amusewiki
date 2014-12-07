@@ -426,15 +426,15 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:261
+#: lib/AmuseWikiFarm/Controller/User.pm:260
 msgid "Email sent!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:304
+#: lib/AmuseWikiFarm/Controller/User.pm:303
 msgid "Email updated"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:221 lib/AmuseWikiFarm/Controller/User.pm:315
+#: lib/AmuseWikiFarm/Controller/User.pm:220 lib/AmuseWikiFarm/Controller/User.pm:314
 msgid "Emails do not match"
 msgstr ""
 
@@ -442,7 +442,7 @@ msgstr ""
 msgid "Erase this revision"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:348 lib/AmuseWikiFarm/Controller/User.pm:258
+#: lib/AmuseWikiFarm/Controller/Edit.pm:348 lib/AmuseWikiFarm/Controller/User.pm:257
 msgid "Error sending mail!"
 msgstr ""
 
@@ -648,7 +648,7 @@ msgstr ""
 msgid "Internal list of translations"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:202 lib/AmuseWikiFarm/Controller/User.pm:307
+#: lib/AmuseWikiFarm/Controller/User.pm:201 lib/AmuseWikiFarm/Controller/User.pm:306
 msgid "Invalid email"
 msgstr ""
 
@@ -656,7 +656,7 @@ msgstr ""
 msgid "Invalid name"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:193
+#: lib/AmuseWikiFarm/Controller/User.pm:192
 msgid "Invalid username"
 msgstr ""
 
@@ -963,7 +963,7 @@ msgstr ""
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:194
+#: lib/AmuseWikiFarm/Controller/Root.pm:204
 msgid "Page not found!"
 msgstr ""
 
@@ -1001,11 +1001,11 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:211 lib/AmuseWikiFarm/Controller/User.pm:291
+#: lib/AmuseWikiFarm/Controller/User.pm:210 lib/AmuseWikiFarm/Controller/User.pm:290
 msgid "Password too short"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:288
+#: lib/AmuseWikiFarm/Controller/User.pm:287
 msgid "Password updated"
 msgstr ""
 
@@ -1013,7 +1013,7 @@ msgstr ""
 msgid "Password, minimum 8 characters."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:216 lib/AmuseWikiFarm/Controller/User.pm:295
+#: lib/AmuseWikiFarm/Controller/User.pm:215 lib/AmuseWikiFarm/Controller/User.pm:294
 msgid "Passwords do not match"
 msgstr ""
 
@@ -1103,7 +1103,7 @@ msgid ""
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:117 root/src/user/human.tt:5
+#: lib/AmuseWikiFarm/Controller/User.pm:116 root/src/user/human.tt:5
 msgid "Please prove you are a human"
 msgstr ""
 
@@ -1355,11 +1355,11 @@ msgstr ""
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:175
+#: lib/AmuseWikiFarm/Controller/User.pm:174
 msgid "Some fields are missing, all are required"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:184 lib/AmuseWikiFarm/Controller/User.pm:311
+#: lib/AmuseWikiFarm/Controller/User.pm:183 lib/AmuseWikiFarm/Controller/User.pm:310
 msgid "Some fields are too long"
 msgstr ""
 
@@ -1429,7 +1429,7 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:227
+#: lib/AmuseWikiFarm/Controller/User.pm:226
 msgid "Such username already exists"
 msgstr ""
 
@@ -1697,11 +1697,11 @@ msgid "Useful for footnotes or in the headers of the document, where you cannot 
 msgstr ""
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/User.pm:235
+#: lib/AmuseWikiFarm/Controller/User.pm:234
 msgid "User %1 created!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:242
+#: lib/AmuseWikiFarm/Controller/User.pm:241
 msgid "User created"
 msgstr ""
 
@@ -1744,11 +1744,11 @@ msgid ""
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:125
+#: lib/AmuseWikiFarm/Controller/User.pm:124
 msgid "Wrong answer!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:96
+#: lib/AmuseWikiFarm/Controller/User.pm:95
 msgid "Wrong username or password"
 msgstr ""
 
@@ -1760,7 +1760,7 @@ msgstr ""
 msgid "Year"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:112
+#: lib/AmuseWikiFarm/Controller/User.pm:111
 msgid "You already proved you are human"
 msgstr ""
 
@@ -1768,7 +1768,7 @@ msgstr ""
 msgid "You are already logged in"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:91
+#: lib/AmuseWikiFarm/Controller/User.pm:90
 msgid "You are logged in now!"
 msgstr ""
 
@@ -1793,7 +1793,7 @@ msgstr ""
 msgid "You can't create a new revision because the text has not been published yet"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:103
+#: lib/AmuseWikiFarm/Controller/User.pm:102
 msgid "You have logged out"
 msgstr ""
 
