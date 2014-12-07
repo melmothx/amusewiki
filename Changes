@@ -3,7 +3,8 @@ This file documents the revision history for AmuseWiki.
 1.03 UNRELEASED
 
  - Added 4UP imposition schema to the bookbuilder. The prerequisite of
-   PDF::Imposition has been bumped up, so please upgrade it first.
+   PDF::Imposition has been bumped up.
+ - Bumped up Text::Amuse to fix a crash in some corner case with weird markup.
  - Added 9pt to the bookbuilder options
  - The current running version is now shown as an empty file in the app dir
  - Display the current cover image, if any
@@ -19,6 +20,8 @@ stanza in the amusewiki server { } stanza:
         alias /home/amuse/amusewiki/bbfiles/;
     }
 
+Modules to upgrade via CPAN: Text::Amuse and PDF::Imposition. Running
+perl Makefile.PL will check if you got the correct versions.
 
 1.02 2014-11-26
 
