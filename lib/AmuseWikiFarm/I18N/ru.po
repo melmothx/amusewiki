@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-12-05 14:52+0300\n"
+"PO-Revision-Date: 2014-12-07 13:38+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -1433,7 +1433,6 @@ msgstr ""
 msgid "Where does this text come from?"
 msgstr "Откуда этот текст?"
 
-#, fuzzy
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Ширина обложки в процентном отношении к блоку."
 
