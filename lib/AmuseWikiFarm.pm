@@ -110,17 +110,6 @@ __PACKAGE__->config(
        },
    );
 
-
-__PACKAGE__->config(
-    'Plugin::Static::Simple' => {
-        mime_types => {
-            muse => 'text/plain',
-            epub => 'application/epub+zip',
-        },
-    },
-);
-
-
 # Configure SimpleDB Authentication
 __PACKAGE__->config(
     'Plugin::Authentication' => {
