@@ -3,7 +3,6 @@ use warnings;
 use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Catalyst::Test 'AmuseWikiFarm';
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
 use File::Path qw/remove_tree/;
