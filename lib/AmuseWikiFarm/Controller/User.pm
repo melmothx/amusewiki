@@ -86,7 +86,6 @@ sub login :Chained('/site') :PathPart('login') :Args(0) {
             if ($c->authenticate({ username => $username,
                                    password => $password })) {
                 $c->change_session_id;
-                $c->session(site_id => $site->id);
                 $c->session(i_am_human => 1);
                 $c->flash(status_msg => $c->loc("You are logged in now!"));
                 $c->detach('redirect_after_login');

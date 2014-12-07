@@ -93,14 +93,24 @@ sub site :Chained('/') :PathPart('') :CaptureArgs(0) {
     $c->log->debug("Site ID for $host is " . $site->id
                    . ", with locale " . $site->locale);
 
+    my $session_site_id = $c->session->{site_id};
+
     # this means some fucker reused a cookie from another site to gain
     # access to this. A bit unlikely, but better now than later.
-    if ($c->user_exists and ($c->session->{site_id} ne $site->id)) {
-        $c->log->error("Session stealing from " . $c->req->address . " on " .
-                       localtime());
-        $c->delete_session;
-        $c->detach('/not_permitted');
-        return;
+    if ($session_site_id) {
+        if ($session_site_id ne $site->id) {
+            my $sid = $site->id;
+            $c->log->error("Session stealing from " . $c->req->address
+                           . " $sid is not $session_site_id on "
+                           . localtime());
+            $c->delete_session;
+            $c->detach('/not_permitted');
+        }
+    }
+    else {
+        # new session, apparently
+        $c->delete_session if $c->user_exists;
+        $c->session(site_id => $site->id);
     }
 
     # stash the site object
