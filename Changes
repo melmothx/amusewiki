@@ -1,13 +1,17 @@
 This file documents the revision history for AmuseWiki.
 
-1.03 UNRELEASED
+1.03 2014-12-07
 
  - Added 4UP imposition schema to the bookbuilder. The prerequisite of
    PDF::Imposition has been bumped up.
  - Bumped up Text::Amuse to fix a crash in some corner case with weird markup.
- - Added 9pt to the bookbuilder options
- - The current running version is now shown as an empty file in the app dir
- - Display the current cover image, if any
+ - Added 9pt to the bookbuilder options.
+ - The current running version is now shown as an empty file in the app dir.
+ - Display the current cover image in the bookbuilder, if any.
+ - Added sorting to topics and authors pages.
+ - Extended the check on cross-site sessions. As a side effect, the
+   logs should not be spammed anymore by dumb messages about session
+   deletions because of UA mismatch.
 
 If you use nginx, this upgrade requires a change in the ngnix
 configuration. You can run again the script/generate-nginx-conf.pl and
