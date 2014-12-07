@@ -75,7 +75,7 @@ sub site :Chained('/') :PathPart('') :CaptureArgs(0) {
             # strategy to avoid splitting the results.
             my $uri = $c->request->uri->clone;
             $uri->host($site->canonical);
-            $c->log->warn("Redirecting to " . $uri->as_string);
+            # $c->log->debug("Redirecting to " . $uri->as_string);
             # place a permanent redirect
             $c->response->redirect($uri->as_string, 301);
             $c->detach();
