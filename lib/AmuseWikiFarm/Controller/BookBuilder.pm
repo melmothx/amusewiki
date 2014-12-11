@@ -78,8 +78,14 @@ sub index :Chained('root') :PathPart('') :Args(0) {
     my @texts = @{ $bb->texts };
 
     if (@texts and $params{build}) {
+        # put a limit on accepting slow jobs
+        unless ($c->model('DB::Job')->can_accept_further_jobs) {
+            $c->flash->{error_msg} =
+              $c->loc("Sorry, too many jobs pending, please try again later!");
+            return;
+        }
+
         $c->log->debug("Putting the job in the queue now");
-        # fake loop, should be only one. Last one override, anyway.
 
         if (my $job = $c->stash->{site}->jobs->bookbuilder_add($bb->as_job)) {
             $c->res->redirect($c->uri_for_action('/tasks/display', [$job->id]));

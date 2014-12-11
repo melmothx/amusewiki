@@ -5,10 +5,11 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
-use Test::More tests => 21;
+use Test::More tests => 32;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
+use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
 use JSON qw/from_json/;
 
@@ -83,3 +84,69 @@ ok($othersite->jobs->dequeue);
 
 my @jobs = $schema->resultset('Job')->pending;
 ok(!@jobs, "No more pending jobs");
+
+my $oldmode = $site->mode;
+my $oldlocale = $site->locale;
+
+$site->update({
+               mode => 'openwiki',
+               locale => 'en',
+              });
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
+$mech->get_ok('/human');
+$mech->submit_form(
+                   with_fields => {
+                                   answer => 'January',
+                                  },
+                   button => 'submit',
+                  );
+$mech->get_ok('/random');
+$mech->submit_form(form_id => 'book-builder-add-text');
+$mech->get_ok('/bookbuilder');
+$mech->form_with_fields('signature');
+$mech->field(title => 'test');
+fill_queue($site);
+$mech->click;
+is $mech->response->base->path, '/bookbuilder', "still here";
+$mech->content_contains('too many jobs pending');
+
+# try to publish something
+
+$mech->get_ok('/action/text/new');
+
+$mech->submit_form(with_fields => {
+                                   title => 'blablabla' . int(rand(1000)),
+                                   textbody => 'Hello there',
+                                  },
+                   button => 'go');
+
+ok($mech->form_id('museform'));
+$mech->click('commit');
+$mech->content_contains('Changes committed') or diag $mech->response->content;
+
+ok($mech->form_name('publish'));
+$mech->click;
+$mech->content_contains('too many jobs pending');
+is $mech->response->base->path, '/publish/pending', "still on pending";
+
+$site->update({
+               mode => $oldmode,
+               locale => $oldlocale
+              });
+empty_queue($site);
+
+
+sub fill_queue {
+    my $site = shift;
+    for (1..50) {
+        $site->jobs->enqueue(testing => { this => 1, test => 1  });
+    }
+}
+
+sub empty_queue {
+    my $site = shift;
+    $site->jobs->pending->delete;
+}

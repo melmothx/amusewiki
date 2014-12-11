@@ -111,6 +111,14 @@ sub validate_revision :Chained('root') :PathPart('') CaptureArgs(0) {
 sub publish :Chained('validate_revision') :PathPart('publish') :Args(0) {
     my ($self, $c) = @_;
     if (my $rev = $c->stash->{target_revision}) {
+        # put a limit on accepting slow jobs
+        unless ($c->model('DB::Job')->can_accept_further_jobs) {
+            $c->flash->{error_msg} =
+              $c->loc("Sorry, too many jobs pending, please try again later!");
+            $c->res->redirect($c->uri_for_action('/publish/pending'));
+            return;
+        }
+
         if ($rev->pending) {
             $c->log->debug($rev->id . " is pending, processing!");
             my $job = $c->stash->{site}->jobs->publish_add($rev);

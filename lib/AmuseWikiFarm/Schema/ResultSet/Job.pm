@@ -153,5 +153,16 @@ sub pending {
                          });
 }
 
+sub can_accept_further_jobs {
+    my $self = shift;
+    my $total_pending = $self->pending->count;
+    if ($total_pending < 50) {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
 
 1;
