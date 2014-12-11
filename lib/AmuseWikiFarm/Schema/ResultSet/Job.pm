@@ -121,13 +121,7 @@ Extract the first pending job, sorted by priority and timestamp.
 
 sub dequeue {
     my $self = shift;
-    my $job = $self->search({
-                             status => 'pending',
-                            },
-                            {
-                             order_by => [qw/priority
-                                             created/],
-                            })->first;
+    my $job = $self->pending->first;
     return unless $job;
     $job->status('taken');
     $job->update;
@@ -148,5 +142,16 @@ sub fetch_job_by_id_json {
     return to_json({ errors => 'No such job' }) unless $job;
     return $job->as_json;
 }
+
+sub pending {
+    return shift->search({
+                          status => 'pending',
+                         },
+                         {
+                          order_by => [qw/priority
+                                          created/],
+                         });
+}
+
 
 1;

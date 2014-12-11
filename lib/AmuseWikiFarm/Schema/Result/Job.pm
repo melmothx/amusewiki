@@ -197,7 +197,25 @@ sub as_hashref {
                   produced => $self->produced,
                   errors   => $self->errors,
                   logs     => $self->logs,
+                  position => 0,
                  };
+    if ($struct->{status} eq 'pending') {
+        my $pending = $self->result_source->resultset->pending
+          ->search({},
+                   { columns => [qw/id/] });
+        my $found = 0;
+        my $position = 0;
+        while (my $pend = $pending->next) {
+            if ($pend->id eq $self->id) {
+                $found = 1;
+                last;
+            }
+            $position++;
+        }
+        # update the position only if found, there could be a race
+        # condition.
+        $struct->{position} = $position if $found;
+    }
     return $struct;
 }
 

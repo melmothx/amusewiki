@@ -4,7 +4,6 @@ $(document).ready(function() {
 
 function update_status(url, reloaded) {
     $.getJSON(url, function(data) {
-        console.log(data.status);
         if (!reloaded) {
             $('#waiting').show();
         }
@@ -24,6 +23,13 @@ function update_status(url, reloaded) {
         }
         else {
             $('#waiting').hide();
+        }
+        if (data.position) {
+            $('#task-lane').show();
+            $('#lane').text(data.position);
+        }
+        else {
+            $('#task-lane').hide();
         }
         if (data.status == 'completed') {
             $('a.completed').text(data.message);

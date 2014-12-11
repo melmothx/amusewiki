@@ -8,6 +8,10 @@
 <div class="nojs">
   <div class="center">
     <strong>[% loc('Status') %]: [% job.status_loc | html %]</strong>
+    [% IF job.position %]
+    <br />
+    [% loc('Jobs waiting before yours:') %] [% job.position %]
+    [% END %]
   </div>
   [% IF job.produced %]
   <div class="center">
@@ -63,6 +67,9 @@
       [% loc('Status') %]: <span class="bbstatusstring"></span><br />
       <img id="waiting" src="[% c.uri_for('/static/images/ajax-loader.gif') %]" />
     </strong>
+  </div>
+  <div class="center" id="task-lane">
+    [% loc('Jobs waiting before yours:') %] <span id="lane">0</span>
   </div>
   <div class="center">
     <strong>
