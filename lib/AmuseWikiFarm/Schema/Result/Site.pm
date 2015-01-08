@@ -1242,6 +1242,16 @@ sub index_file {
     my $name = $title->uri;
     $title->update_text_status;
 
+    # before setting them, update or create. This way, the latest
+    # update will overwrite older one in case an error which maps to
+    # the same uri is spotted. For example, "pinco pallino" => "Pinco
+    # Pallino", without being stuck with the lower case. This of
+    # course is also a bit of performance penalty but i guess it's
+    # barely misurable on a normal run.
+    foreach my $category (@parsed_cats) {
+        $self->categories->update_or_create($category);
+    }
+
     if ($title->is_published && @parsed_cats) {
         # here we can die if there are duplicated uris
         $title->set_categories(\@parsed_cats);
