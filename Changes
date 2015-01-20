@@ -1,5 +1,10 @@
 This file documents the revision history for AmuseWiki.
 
+1.05 UNRELEASED
+
+ - Bumped up prerequisites: Text::Amuse, Text::Amuse::Compile,
+   PDF::Imposition
+
 1.04 2015-01-08
 
  - Updated translations: ru, mk
