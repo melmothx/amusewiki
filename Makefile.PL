@@ -83,9 +83,14 @@ test_requires 'Test::More' => '0.88';
 catalyst_ignore('repo');
 catalyst_ignore('xapian');
 catalyst_ignore('staging');
-catalyst_ignore('specials');
-catalyst_ignore('root/custom');
 catalyst_ignore('opt');
+catalyst_ignore('bbfiles');
+catalyst_ignore('var');
+catalyst_ignore('design');
+catalyst_ignore('bootstrap-amw');
+catalyst_ignore('current_version_is_.*txt');
+catalyst_ignore('dbic.yaml');
+catalyst_ignore('log');
 
 catalyst;
 
