@@ -533,7 +533,9 @@ sub import_from_params {
     if ($params{schema} and $params{schema} eq '4up') {
         $params{signature} = delete $params{signature_4up};
     }
-    foreach my $method ($self->_accepted_params) {
+    foreach my $method ($self->_main_methods) {
+        # ignore coverfile when importing from the params
+        next if $method eq 'coverfile';
         try {
             $self->$method($params{$method})
         } catch {
@@ -546,10 +548,11 @@ sub import_from_params {
     }
 }
 
-sub _accepted_params {
+sub _main_methods {
     return qw/title
               mainfont
               fontsize
+              coverfile
               papersize
               division
               bcor
@@ -607,22 +610,7 @@ the constructor and clone itself.
 sub constructor_args {
     my $self = shift;
     my %args = (textlist => $self->texts);
-    foreach my $method (qw/title
-                           mainfont
-                           fontsize
-                           coverfile
-                           papersize
-                           division
-                           bcor
-                           coverwidth
-                           twoside
-                           notoc
-                           nocoverpage
-                           imposed
-                           signature
-                           schema
-                           cover
-                          /) {
+    foreach my $method ($self->_main_methods) {
         $args{$method} = $self->$method;
     }
     return \%args;

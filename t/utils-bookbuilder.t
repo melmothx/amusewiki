@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 69;
+use Test::More tests => 70;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -198,6 +198,7 @@ my $expected = {
            signature   => '40-80',
            schema      => '2up',
            cover       => 1,
+           coverfile   => 'garbage',
            # coverimage should be called with add_file
           );
 
@@ -208,6 +209,7 @@ foreach my $text (qw/appended pippo/) {
 }
 
 $bb->import_from_params(%params);
+is $bb->coverfile, undef, 'coverfile not imported';
 
 is_deeply ($bb->as_job, $expected, "Output correct");
 
