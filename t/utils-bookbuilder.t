@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 70;
+use Test::More tests => 76;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -103,6 +103,9 @@ my @accessors = (
                  [ mainfont => 'Charis SIL', 'Charis SIL'],
                  [ mainfont => 'Linux Libertine O', 'Linux Libertine O'],
                  [ mainfont => '\hello', 'Linux Libertine O'],
+                 [ opening => '\\blabla', 'any' ],
+                 [ opening => 'right', 'right' ],
+                 [ opening => 'any', 'any' ],
                 );
 foreach my $try (@accessors) {
     my $method   = $try->[0];
@@ -119,24 +122,6 @@ foreach my $try (@accessors) {
     chomp $show;
     is ($bb->$method, $expected, "$method returned $show");
 }
-
-my %params = (
-              twoside => '\hello',
-              garbage => 'lkjasdfl',
-              schifo  => '\\\\\\\\bla',
-              papersize => 'A4',
-              fontsize => 10,
-              bcor => 20,
-              mainfont => 'CMU Serif',
-              division => '8',
-              schema => '2up',
-              imposed => 1,
-              nocoverpage => '\\x',
-              cover => '',
-              signatures => 1,
-             );
-
-
 
 eval { $bb->schema('2x4x2x') };
 my $err = $@;
@@ -178,28 +163,30 @@ my $expected = {
                                        'coverwidth' => '0.85',
                                        'papersize' => 'a4',
                                        'cover' => undef,
+                                       opening => 'right',
                                       },
                 'title' => 'Pippuzzo va in montagna'
                };
 
 
-%params = (
-           title       => 'Pippuzzo va in montagna',
-           mainfont    => 'CMU Serif',
-           fontsize    => '10',
-           papersize   => 'a4',
-           division    => '14',
-           bcor        => '20',
-           coverwidth  => '85',
-           twoside     => 1,
-           notoc       => 1,
-           nocoverpage => 1,
-           imposed     => 1,
-           signature   => '40-80',
-           schema      => '2up',
-           cover       => 1,
-           coverfile   => 'garbage',
-           # coverimage should be called with add_file
+my %params = (
+              title       => 'Pippuzzo va in montagna',
+              mainfont    => 'CMU Serif',
+              fontsize    => '10',
+              papersize   => 'a4',
+              division    => '14',
+              bcor        => '20',
+              coverwidth  => '85',
+              twoside     => 1,
+              notoc       => 1,
+              nocoverpage => 1,
+              imposed     => 1,
+              signature   => '40-80',
+              schema      => '2up',
+              cover       => 1,
+              # coverfile should be called with add_file
+              coverfile   => 'garbage',
+              opening     => 'right',
           );
 
 $bb = AmuseWikiFarm::Archive::BookBuilder->new;
@@ -219,6 +206,8 @@ is_deeply ($bb->as_job, $newbb->as_job, "Old and new have the same output");
 
 is($bb->as_job->{title}, $params{title});
 
+is ($bb->opening, 'right');
+
 %params = (
            title       => 'Pippuzzo va in montagna',
            mainfont    => 'CMU Serif',
@@ -235,12 +224,13 @@ is($bb->as_job->{title}, $params{title});
            signature_4up => '8',
            schema      => '2up',
            cover       => 1,
+           opening     => 'any',
            # coverimage should be called with add_file
           );
 
 $bb->import_from_params(%params);
 is $bb->signature, '40-80', "Signature_4up ignored with schema 2up";
-
+is $bb->opening, 'any';
 
 %params = (
            title       => 'Pippuzzo va in montagna',
@@ -258,8 +248,9 @@ is $bb->signature, '40-80', "Signature_4up ignored with schema 2up";
            signature_4up => '16',
            schema      => '4up',
            cover       => 1,
-           # coverimage should be called with add_file
+           opening     => '<em>',
           );
 
 $bb->import_from_params(%params);
 is $bb->signature, 16, "Signature_4up picked up with 4up schema";
+is $bb->opening, 'any', "Opening set to any because of invalid input";

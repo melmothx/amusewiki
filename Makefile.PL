@@ -65,7 +65,7 @@ requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor' => '0.10';
 
 # our own dogfood
-requires 'Text::Amuse' => '0.19';
+requires 'Text::Amuse' => '0.20';
 requires 'PDF::Imposition' => '0.11';
 requires 'Text::Amuse::Compile' => '0.31';
 requires 'Text::Amuse::Preprocessor' => '0.23';

@@ -182,6 +182,20 @@
         [% loc('Two side layout') %]
       </label>
     </div>
+    <div>
+      <label for="opening">
+        [% loc('Page where to start a chapter') %]
+        ([% loc('Only relevant if the two side layout is choosen') %]):
+      </label>
+      <select id="opening" class="form-control" name="opening">
+        [% FOREACH opening IN bb.opening_values %]
+        <option value="[% opening %]"
+                [% IF bb.opening == opening %]selected="selected"[% END %]>
+          [% loc(opening) %]
+        </option>
+        [% END %]
+      </select>
+    </div>
     <div class="checkbox">
       <label>
         <input type="checkbox" name="notoc" value="1" id="notoc"

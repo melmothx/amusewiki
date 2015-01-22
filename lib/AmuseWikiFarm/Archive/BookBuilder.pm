@@ -392,7 +392,21 @@ has signature => (
                    is => 'rw',
                    isa => 'SignatureType',
                    default => sub { '0' },
-                  );
+                 );
+
+
+sub opening_values {
+    return [qw/any right/];
+}
+
+enum(OpeningType => __PACKAGE__->opening_values);
+
+has opening => (
+                is => 'rw',
+                isa => 'OpeningType',
+                default => sub { 'any' },
+               );
+
 
 =head2 add_file($filepath)
 
@@ -536,6 +550,7 @@ sub import_from_params {
     foreach my $method ($self->_main_methods) {
         # ignore coverfile when importing from the params
         next if $method eq 'coverfile';
+        next unless exists $params{$method};
         try {
             $self->$method($params{$method})
         } catch {
@@ -563,6 +578,7 @@ sub _main_methods {
               imposed
               signature
               schema
+              opening
               cover/;
 }
 
@@ -587,6 +603,7 @@ sub as_job {
                                     bcor        => $self->bcor . 'mm',
                                     mainfont    => $self->mainfont,
                                     coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
+                                    opening     => $self->opening,
                                     cover       => $self->coverfile,
                                    },
               };

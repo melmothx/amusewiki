@@ -4,6 +4,11 @@ This file documents the revision history for AmuseWiki.
 
  - Bumped up prerequisites: Text::Amuse, Text::Amuse::Compile,
    PDF::Imposition
+ - Added "opening" option to the site options.
+
+This change is minor but requires a db upgrade. You have to apply the
+incremental script at sql/AmuseWikiFarm-Schema-1.02-1.05-<your-db>.sql
+before the server restart.
 
 1.04 2015-01-08
 

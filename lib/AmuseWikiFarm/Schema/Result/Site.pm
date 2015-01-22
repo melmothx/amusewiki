@@ -287,6 +287,13 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1
 
+=head2 opening
+
+  data_type: 'varchar'
+  default_value: 'any'
+  is_nullable: 0
+  size: 16
+
 =head2 twoside
 
   data_type: 'integer'
@@ -386,6 +393,13 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "logo_with_sitename",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  "opening",
+  {
+    data_type => "varchar",
+    default_value => "any",
+    is_nullable => 0,
+    size => 16,
+  },
   "twoside",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
 );
@@ -564,8 +578,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-11-26 12:07:27
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ew1cFIdcihzXbfKxQwUY3A
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-01-22 09:40:34
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:POyGFfhEE6KXLtP+pW0bmQ
 
 =head2 other_sites
 
@@ -664,7 +678,7 @@ sub compile_options {
         $opts{ttdir} = $dir;
     }
     foreach my $ext (qw/siteslogan logo nocoverpage
-                        sitename
+                        sitename opening
                         papersize division fontsize
                         bcor mainfont twoside/) {
         $opts{extra}{$ext} = $self->$ext;
@@ -1897,6 +1911,21 @@ sub update_from_params {
     else {
         push @errors, "Invalid binding correction\n";
     }
+
+    my $opening = delete $params->{opening};
+    if ($opening) {
+        my %avail_openings = map { $_ => 1 } @{ $bb->opening_values };
+        if ($avail_openings{$opening}) {
+            $self->opening($opening);
+        }
+        else {
+            push @errors, "Invalid opening!";
+        }
+    }
+    else {
+        push @errors, "Invalid opening!";
+    }
+
 
     my @vhosts;
     # ignore missing vhosts

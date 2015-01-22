@@ -3,8 +3,12 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 6;
+use Test::More tests => 10;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
+use File::Spec::Functions qw/catfile catdir/;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -50,4 +54,50 @@ is ($site->get_option('latest_entries_for_rss'), $setting);
 # and reset
 $site->site_options->delete;
 
+$site = create_site($schema, '0pening0');
 
+my $old_opening = $site->opening;
+
+$site->update({ opening => 'any' });
+
+my %old = map { $_ => ($site->$_ || '') } qw/magic_answer
+                                  magic_question
+                                  fixed_category_list
+                                  multilanguage
+                                  sitename
+                                  siteslogan
+                                  logo
+                                  mail_notify
+                                  mail_from
+                                  sitegroup
+                                  ttdir
+                                  canonical
+                                  division
+                                  fontsize
+                                  bb_page_limit
+                                  mode
+                                  locale
+                                  mainfont
+                                  bcor
+                                 /;
+
+my $errors = $site->update_from_params({
+                                        %old,
+                                        papersize => 'a4',
+                                        bcor => '0mm',
+                                        opening => 'right',
+                                       });
+ok(!$errors, "No errors found") or diag $errors;
+is $site->opening, 'right', "Site updated";
+
+$errors = $site->update_from_params({
+                                     %old,
+                                     bcor => '0mm',
+                                     papersize => 'a4',
+                                     opening => 'lasdf',
+                                    });
+like $errors, qr/invalid opening/i, "Errors found: $errors";
+is $site->opening, 'right', "Site not updated";
+
+
+$site->update({ opening => $old_opening });
