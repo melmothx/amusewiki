@@ -608,20 +608,20 @@ sub constructor_args {
     my $self = shift;
     my %args = (textlist => $self->texts);
     foreach my $method (qw/title
+                           mainfont
+                           fontsize
                            coverfile
-                           twoside
-                           nocoverpage
-                           notoc
-                           cover
-                           imposed
-                           schema
                            papersize
                            division
-                           fontsize
                            bcor
-                           mainfont
                            coverwidth
+                           twoside
+                           notoc
+                           nocoverpage
+                           imposed
                            signature
+                           schema
+                           cover
                           /) {
         $args{$method} = $self->$method;
     }
