@@ -26,8 +26,9 @@ while ($job->status ne 'completed' and $job->status ne 'failed') {
         print "Waiting for job completion timed out\n";
         last;
     }
+    sleep 10;
     $job = $schema->resultset('Job')->find($id);
-    sleep 3;
+
 }
 
 print join("\n", map { $_ || '' }
