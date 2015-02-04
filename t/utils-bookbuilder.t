@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 76;
+use Test::More tests => 80;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -254,3 +254,9 @@ is $bb->opening, 'any';
 $bb->import_from_params(%params);
 is $bb->signature, 16, "Signature_4up picked up with 4up schema";
 is $bb->opening, 'any', "Opening set to any because of invalid input";
+
+$bb->import_from_params();
+is $bb->imposed, undef, "imposed nulled out with empty params";
+is $bb->mainfont, 'CMU Serif', "mainfont kept with empty params";
+is $bb->notoc, undef, "notoc set to undef";
+is $bb->twoside, undef, "twoside set to undef";

@@ -550,7 +550,6 @@ sub import_from_params {
     foreach my $method ($self->_main_methods) {
         # ignore coverfile when importing from the params
         next if $method eq 'coverfile';
-        next unless exists $params{$method};
         try {
             $self->$method($params{$method})
         } catch {
