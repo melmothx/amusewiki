@@ -809,6 +809,7 @@ sub delete {
     }
     else {
         # this will bring down this row with it
+        warn "Purging " . $title->uri . " from db";
         return $title->delete;
     }
 }

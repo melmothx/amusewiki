@@ -29,4 +29,22 @@ sub not_published {
 }
 
 
+=head2 published_older_than($datetime)
+
+Return the resultset for the published revision older than the
+datetime object passed as argument.
+
+=cut
+
+sub published_older_than {
+    my ($self, $time) = @_;
+    die unless $time && $time->isa('DateTime');
+    my $format_time = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime($time);
+    return $self->search({
+                          status => 'published',
+                          updated => { '<' => $format_time },
+                         });
+}
+
 1;

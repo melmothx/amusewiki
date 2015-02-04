@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 30;
+use Test::More tests => 39;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -11,6 +11,7 @@ use File::Copy qw/copy/;
 use File::Basename qw/basename/;
 use File::Temp;
 use Data::Dumper;
+use DateTime;
 
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -60,8 +61,12 @@ foreach my $file (@$files) {
 
 is scalar(@stored), 3, "Found 3 files";
 
+ok $site->titles->find({ uri => 'prova' });
 
 $rev->delete;
+
+ok !$site->titles->find({ uri => 'prova' });
+
 
 diag "After deletion...";
 
@@ -104,3 +109,36 @@ foreach my $file (@$files) {
         "File not found in the db");
 }
 ok (! -d $rev->working_dir, "Working directory deleted");
+
+
+($rev, $error) = $site->create_new_text({
+                                         title => 'prova-xxxxx',
+                                         lang => 'en',
+                                         textbody => '<p>hello</p>',
+                                        }, 'text');
+ok(!$error, "No error") or die $error;
+
+foreach my $att (@attach) {
+    is $rev->add_attachment($att), undef, "$att uploaded";
+}
+$rev->commit_version;
+$rev->publish_text;
+my $datetime = DateTime->new(year => 2002,
+                             month => 1,
+                             day => 2);
+$rev->updated($datetime);
+$rev->update;
+
+ok !$schema->resultset('Revision')->published_older_than($datetime)->count,
+  "No revisions older than $datetime";
+
+$datetime->add(days => 1);
+
+my $old_published_revisions =
+  $schema->resultset('Revision')->published_older_than($datetime);
+is $old_published_revisions->count, 1,
+  "Found the revision older than $datetime";
+
+$old_published_revisions->first->delete;
+
+ok (! -d $rev->working_dir, "Working directory deleted") or diag $rev->working_dir;
