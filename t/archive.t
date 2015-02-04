@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 54;
+use Test::More tests => 56;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -169,6 +169,16 @@ ok(!$title->is_published);
 ok($title->can_spawn_revision, "can create a revision");
 ok(!$title->deleted);
 is($title->status, 'deferred');
+
+my $global_deferred_titles = $schema->resultset('Title')
+  ->deferred_to_publish(DateTime->new(year => 2025,
+                                      month => 1,
+                                      day => 1));
+ok ($global_deferred_titles->count, "Found deferred titles");
+my $deferred_found = $global_deferred_titles->find({ site_id => $id,
+                                                     uri => 'dummy-text',
+                                                   });
+ok ($deferred_found, "found deferred title to publish: " . $deferred_found->title);
 
 foreach my $deletion (qw/superpippo supermarco/) {
     $deleted_cat = $schema->resultset('Category')->single({uri => $deletion,

@@ -122,7 +122,25 @@ sub unpublished {
 }
 
 
+=head2 deferred_to_publish($datetime)
+
+Return the Title resultset with status C<deferred> and C<pubdate>
+lesser than the L<DateTime> object passed to method.
+
 =cut
+
+sub deferred_to_publish {
+    my ($self, $time) = @_;
+    die unless $time && $time->isa('DateTime');
+    my $format_time = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime($time);
+    return $self->search({
+                          status => 'deferred',
+                          pubdate => { '<' => $format_time },
+                         });
+
+}
+
 
 
 1;

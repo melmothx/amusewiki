@@ -170,14 +170,10 @@ sub main_loop {
 
 sub check_and_publish_deferred {
     my $schema = shift;
-    my $now = $schema->storage->datetime_parser->format_datetime(DateTime->now());
+    my $now = DateTime->now;
     print localtime() . ": checking deferred titles for $now\n";
-    my @deferred = $schema->resultset('Title')
-      ->search({
-                status => 'deferred',
-                pubdate => { '<' => $now },
-               });
-    foreach my $title (@deferred) {
+    my $deferred = $schema->resultset('Title')->deferred_to_publish($now);
+    while (my $title = $deferred->next) {
         sleep AMW_POLLING;
         my $site = $title->site;
         my $file = $title->f_full_path_name;
