@@ -182,10 +182,9 @@
         [% loc('Two side layout') %]
       </label>
     </div>
-    <div>
+    <div id="choose-opening">
       <label for="opening">
         [% loc('Page where to start a chapter') %]
-        ([% loc('Only relevant if the two side layout is choosen') %]):
       </label>
       <select id="opening" class="form-control" name="opening">
         [% FOREACH opening IN bb.opening_values %]
@@ -381,6 +380,14 @@
         src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
 </script>
 <script type="text/javascript">
+  function show_opening() {
+      if ($('#twoside').is(":checked")) {
+          $('#choose-opening').show('fast');
+      }
+      else {
+          $('#choose-opening').hide('fast');
+      }
+  }
   function show_signature() {
       if ($('#schema2up').is(":checked")) {
           $('#signature-explanation').show();
@@ -416,8 +423,12 @@
       show_imposition();
       show_signature();
       show_image_options();
+      show_opening();
       $('#imposed').click(function() {
           show_imposition();
+      });
+      $('#twoside').click(function() {
+          show_opening();
       });
       $('.choose-schema').click(function() {
           show_signature();
