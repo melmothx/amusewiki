@@ -797,8 +797,8 @@ sub delete {
     # and remove the tree
     my $site = $self->site;
     foreach my $file ($self->attached_files_paths) {
-        warn "Deleting $file from db";
         if (my $att_row = $site->attachments->find_file($file)) {
+            warn "Deleting $file from db";
             $att_row->delete;
         }
     }
