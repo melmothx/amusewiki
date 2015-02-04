@@ -46,7 +46,7 @@ case $1 in
 	;;
     *)
 	echo "uh?"
-	echo "Usage: $0 [ --start | --stop | --restart ]"
+	echo "Usage: $0 [ start | stop | restart ]"
 	exit 1
 	;;
 esac
