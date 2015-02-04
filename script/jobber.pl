@@ -141,6 +141,7 @@ sub main_loop {
         if ($count == 0) {
             eval {
                 check_and_publish_deferred($schema);
+                purge_jobs_and_revisions($schema);
             };
             if ($@) {
                 warn "Errors: $@\n";
@@ -180,5 +181,19 @@ sub check_and_publish_deferred {
         print "Publishing $file for site " . $site->id . "\n";
         $site->compile_and_index_files([ $file ]);
         print "Done\n";
+    }
+}
+
+sub purge_jobs_and_revisions {
+    my $schema = shift;
+    my $reftime = DateTime->now;
+    # after one month, delete the revisions and jobs
+    $reftime->subtract(months => 1);
+    my $old_revs = $schema->resultset('Revision')->published_older_than($reftime);
+    while (my $rev = $old_revs->next) {
+        die unless $rev->status eq 'published'; # this shouldn't happen
+        print "Removing published revision " . $rev->id . " for site " .
+          $rev->site->id . " and title " . $rev->title->uri . "\n";
+        $rev->delete;
     }
 }
