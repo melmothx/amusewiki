@@ -526,10 +526,28 @@ sub bb_pdfname {
 
 sub produced_files {
     my $self = shift;
-    my @out;
+    my @out = ($self->log_file);
     if ($self->task eq 'bookbuilder') {
         foreach my $f ($self->bb_zipname, $self->bb_pdfname) {
-            push @out, File::Spec->catfile('root', $self->customdir, $f);
+            my $file = File::Spec->catfile('root', $self->customdir, $f);
+            my $abs = File::Spec->rel2abs($file);
+            if (-f $abs) {
+                push @out, $abs;
+            }
+            else {
+                warn "$abs couldn't be found!\n";
+            }
+        }
+        # this is guaranteed to be user defined. Needs to be kept in
+        # sync with Bookbuilder object, but there is a test in place.
+        if (my $cover = $self->job_data->{template_options}->{cover}) {
+            $cover = File::Spec->rel2abs($cover);
+            if (-f $cover) {
+                push @out, $cover;
+            }
+            else {
+                warn "$cover set but not found!";
+            }
         }
     }
     return @out;
@@ -559,7 +577,7 @@ sub dispatch_job_bookbuilder {
 
     print Dumper($template_opts);
 
-    my $bbdir    = File::Temp->newdir(CLEANUP => 0);
+    my $bbdir    = File::Temp->newdir(CLEANUP => 1);
     my $basedir = $bbdir->dirname;
 
     print "Created $basedir\n";
@@ -662,6 +680,15 @@ sub dispatch_job_bookbuilder {
     chdir $homedir or die $!;
     return $self->bb_produced_pdf;
 }
+
+after delete => sub {
+    my $self = shift;
+    my @leftovers = $self->produced_files;
+    foreach my $file (@leftovers) {
+        warn "Unlinking $file after job removal\n";
+        unlink $file or warn "Cannot unlink $file $!";
+    }
+};
 
 
 __PACKAGE__->meta->make_immutable;

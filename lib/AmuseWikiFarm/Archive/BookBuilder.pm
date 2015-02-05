@@ -431,6 +431,15 @@ sub add_file {
     else {
         return;
     }
+    if (my $oldcoverfile = $self->coverfile) {
+        if (-f $oldcoverfile) {
+            # warn "Unlinking $oldcoverfile";
+            unlink $oldcoverfile;
+        }
+        else {
+            warn "$oldcoverfile was set but now is empty!";
+        }
+    }
     # find a random name
     my $file = $self->_generate_random_name($ext);
     while (-f $file) {
