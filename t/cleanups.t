@@ -3,7 +3,7 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 23;
+use Test::More tests => 24;
 use DateTime;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
@@ -68,6 +68,15 @@ $job->delete;
 foreach my $file (@leftovers) {
     ok (! -f $file, "$file deleted as expected");
 }
+
+$bb->add_file($cover);
+$job = $site->jobs->bookbuilder_add($bb->as_job);
+diag "Unlinking " . $bb->coverfile . " before dispatching";
+unlink $bb->coverfile or die $!;
+$job->dispatch_job;
+diag $job->produced;
+is $job->status, 'completed', "Even if the cover is missing, the thing went ok";
+$job->delete;
 
 $job = $site->jobs->alias_create_add({ src => 'pippo',
                                        dest => 'pluto',
