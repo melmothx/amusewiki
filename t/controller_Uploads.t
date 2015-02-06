@@ -13,7 +13,7 @@ use Test::WWW::Mechanize::Catalyst;
 my $pdf = catfile(qw/t files shot.pdf/);
 
 ok (-f $pdf);
-my $site_id = '0sf0';
+my $site_id = '0sf1';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
 

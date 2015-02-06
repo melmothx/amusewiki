@@ -15,7 +15,7 @@ use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $site_id = '0sf0';
+my $site_id = '0sf2';
 my $site = create_site($schema, $site_id);
 
 ok(-f catfile($site->repo_root, '.gitignore'), "gitignore was created");
