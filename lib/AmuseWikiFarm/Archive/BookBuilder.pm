@@ -417,6 +417,7 @@ Add a file to be merged into the the options.
 sub add_file {
     my ($self, $filename) = @_;
     # copy it the filedir
+    return unless defined $filename;
     return unless -f $filename;
     die "Look like we're in the wrong path!, bbfiles dir not found"
       unless -d $self->filedir;
@@ -567,6 +568,11 @@ sub import_from_params {
         };
     }
     if ($params{removecover}) {
+        if (my $oldcover = $self->coverfile) {
+            if (-f $oldcover) {
+                unlink $oldcover;
+            }
+        }
         $self->coverfile(undef);
     }
 }

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 57;
+use Test::More tests => 56;
 use File::Spec;
 use Data::Dumper;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
@@ -77,10 +77,17 @@ foreach my $cover (qw/shot.jpg shot.png/) {
                                  button => 'update',
                                 );
 
-    $mech->content_contains('coverfile-is-present');
     $mech->get_ok('/bookbuilder/cover');
     $mech->get_ok('/bookbuilder');
 }
+
+$mech->submit_form(with_fields => {
+                                   removecover => 1,
+                                  },
+                   button => 'update',
+                  );
+$mech->get('/bookbuilder/cover');
+is $mech->status, '404', "Cover not found with removecover";
 
 $site->locale($orig_locale);
 $site->update->discard_changes;
