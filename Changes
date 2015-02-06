@@ -5,6 +5,11 @@ This file documents the revision history for AmuseWiki.
  - Bumped up prerequisites: Text::Amuse, Text::Amuse::Compile,
    PDF::Imposition
  - Added "opening" option to the site options.
+ - Updated translations: it, hr.
+ - Safe old revision (published) and job (completed) purging.
+   Revisions and jobs older than 1 month will get be purged from the
+   database and the associated files removed. Of course, this doesn't
+   mean that the texts themselves are removed, just the revision.
 
 This change is minor but requires a db upgrade. You have to apply the
 incremental script at sql/AmuseWikiFarm-Schema-1.02-1.05-<your-db>.sql
