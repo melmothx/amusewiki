@@ -562,6 +562,9 @@ msgstr "Задание не найдено"
 msgid "Jobs"
 msgstr "Задание"
 
+msgid "Jobs waiting before yours:"
+msgstr ""
+
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr "Просто разместить 2 страницы макета на физической странице"
 
@@ -782,13 +785,16 @@ msgstr "PDF лого (точный путь или поместите в  texmf)
 msgid "PDFs cannot be used in the body."
 msgstr "PDF не могут быть использованы в теле текста"
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF не прописанные в %1 будут сохранены но проигнорированы"
 
 msgid "Page not found!"
 msgstr "Страница не найдена"
+
+msgid "Page where to start a chapter"
+msgstr ""
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1137,6 +1143,9 @@ msgstr "Некоторые поля очень длинные"
 msgid "Some ongoing revisions were found"
 msgstr "Некоторые незаконченные правки были найдены"
 
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+
 msgid "Source"
 msgstr "Источник"
 
@@ -1307,8 +1316,8 @@ msgstr "Название (для сортировки)"
 msgid "Titles"
 msgstr "Названия"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr "Для применения изменений вы можете посетить %1"
 
@@ -1478,8 +1487,8 @@ msgstr ""
 "\" (находится рядом с ссылками на скачивание). Вы сможете добавить или "
 "удалить текст позже."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr "Вы можете создать аналог в %1"
 
@@ -1497,8 +1506,8 @@ msgstr "Вы вышли"
 msgid "You may want to resume the editing of one of them"
 msgstr "Возможно вы захотите продолжить редактирование одной из них"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Вы должны сразу изменить свой пароль на %1"
 
@@ -1541,6 +1550,9 @@ msgstr "ZIP архив с исходниками. Необходим для ко
 
 msgid "about, links..."
 msgstr "О проекте. ссылки"
+
+msgid "any"
+msgstr ""
 
 msgid "automatically generated if not present, using author and title"
 msgstr ""
@@ -1594,6 +1606,9 @@ msgstr ""
 "если другой текст с этими же автором и названием существует, введите нужный "
 "URI, включающий автора, название и номер, например moi-avtor-moe-nazvanie-1"
 
+msgid "left"
+msgstr ""
+
 msgid "mandatory"
 msgstr "обязательно"
 
@@ -1629,6 +1644,9 @@ msgstr "релевантность"
 
 msgid "revision"
 msgstr "правка"
+
+msgid "right"
+msgstr ""
 
 msgid "strong emphasis"
 msgstr "жирный"

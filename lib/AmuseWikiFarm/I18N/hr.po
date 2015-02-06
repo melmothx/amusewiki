@@ -552,6 +552,9 @@ msgstr "Zadatak nije pronađen"
 msgid "Jobs"
 msgstr "Zadaci"
 
+msgid "Jobs waiting before yours:"
+msgstr ""
+
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
 "Dvije logičke susljedne stranice se jednostavno nalaze na jednoj jedinoj "
@@ -776,13 +779,16 @@ msgstr "PDF logo (obavezni smjer ili ime teksta u texmf)"
 msgid "PDFs cannot be used in the body."
 msgstr "Nije moguće koristi PDF-ove unutar tekstova."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF-ovi koji nisu na popisu %1 polja bit će pohranjeni ali zanemareni."
 
 msgid "Page not found!"
 msgstr "Stranica nije pronađena!"
+
+msgid "Page where to start a chapter"
+msgstr ""
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1134,6 +1140,9 @@ msgstr "Neka polja su predugačka"
 msgid "Some ongoing revisions were found"
 msgstr "Pronađene su neke aktivne izmjene"
 
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+
 msgid "Source"
 msgstr "Izvor"
 
@@ -1300,8 +1309,8 @@ msgstr "Naslov za abecedni popis"
 msgid "Titles"
 msgstr "Naslovi"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr "Da bi objavio izmjenu, idi na %1"
 
@@ -1469,8 +1478,8 @@ msgstr ""
 "Klikni na “Plus”, pored preuzimanja, kod svakog teksta da bi ga dodao svojoj "
 "zbirci. Kasnije možeš dodati i izbrisati tekstove."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr "Možeš stvoriti račun na %1"
 
@@ -1487,8 +1496,8 @@ msgstr "Odjavljen si"
 msgid "You may want to resume the editing of one of them"
 msgstr "Možeš se vratiti jednoj od izmjena u toku"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Trebao bi promjeniti svoju lozinku sada na %1"
 
@@ -1531,6 +1540,9 @@ msgstr "ZIP arhiva s izvorom, potrebna za stvaranje zbirke"
 
 msgid "about, links..."
 msgstr "o projektu, poveznice..."
+
+msgid "any"
+msgstr ""
 
 msgid "automatically generated if not present, using author and title"
 msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
@@ -1583,6 +1595,9 @@ msgstr ""
 "željeni URI koristeći polje niže, unesi autora, naslov i jedan broj, npr. "
 "moj-autor-moj-naslov-1"
 
+msgid "left"
+msgstr ""
+
 msgid "mandatory"
 msgstr "obavezno"
 
@@ -1618,6 +1633,9 @@ msgstr "relevantno"
 
 msgid "revision"
 msgstr "izmjena"
+
+msgid "right"
+msgstr ""
 
 msgid "strong emphasis"
 msgstr "istaknuto i podebljano"

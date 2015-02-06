@@ -544,6 +544,9 @@ msgstr "Työtä ei löytynyt"
 msgid "Jobs"
 msgstr "Työt"
 
+msgid "Jobs waiting before yours:"
+msgstr ""
+
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
 "Laittaa vain kaksi toisiaan seuraavaa loogista sivua samalle fyysiselle "
@@ -772,13 +775,16 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
 msgid "Page not found!"
 msgstr "Sivua ei löydy!"
+
+msgid "Page where to start a chapter"
+msgstr ""
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1119,6 +1125,9 @@ msgstr "Jotkut kentät liian pitkiä"
 msgid "Some ongoing revisions were found"
 msgstr ""
 
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+
 msgid "Source"
 msgstr "Lähde"
 
@@ -1286,8 +1295,8 @@ msgstr "Otsikko lajittelua varten"
 msgid "Titles"
 msgstr "Tekstit"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1456,8 +1465,8 @@ msgstr ""
 "    \"plus\"-kuvaketta tekstin latausvaihtoehtojen vieressä. Voit lisätä\n"
 "    ja poistaa tekstejä myöhemmin."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1474,8 +1483,8 @@ msgstr "Olet kirjautunut ulos"
 msgid "You may want to resume the editing of one of them"
 msgstr "Saatat haluta jatkaa muokkausta"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Sinun tulisi vaihtaa salasanasi heti osoitteessa %1"
 
@@ -1517,6 +1526,9 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "Kirjantekijän tarvitsema ZIP arkisto, josta löytyy lähteet"
 
 msgid "about, links..."
+msgstr ""
+
+msgid "any"
 msgstr ""
 
 msgid "automatically generated if not present, using author and title"
@@ -1570,6 +1582,9 @@ msgstr ""
 "nimellä, valitse haluttu URI laittamalla alla olevaan kenttään kirjoittaja, "
 "otsikko ja numero, esim. kirjoittaja-otsikko-1"
 
+msgid "left"
+msgstr ""
+
 msgid "mandatory"
 msgstr "pakollinen"
 
@@ -1605,6 +1620,9 @@ msgstr "osumatarkkuus"
 
 msgid "revision"
 msgstr "versio"
+
+msgid "right"
+msgstr ""
 
 msgid "strong emphasis"
 msgstr "vahva painotus"

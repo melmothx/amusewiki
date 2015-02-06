@@ -558,6 +558,9 @@ msgstr "Lavoro non trovato"
 msgid "Jobs"
 msgstr "Lavori"
 
+msgid "Jobs waiting before yours:"
+msgstr ""
+
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
 "Semplicemente, due pagine logiche consecutive sono inserite in una\n"
@@ -783,13 +786,16 @@ msgstr "Logo in PDF (percorso assoluto o nome del file in texmf)"
 msgid "PDFs cannot be used in the body."
 msgstr "I PDF non possono essere usati all'interno del testo."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "I PDF non elencatine nella direttiva %1 saranno salvati ma ignorati."
 
 msgid "Page not found!"
 msgstr "Pagina non trovata!"
+
+msgid "Page where to start a chapter"
+msgstr ""
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1136,6 +1142,9 @@ msgstr "Alcuni campi sono troppo lunghi"
 msgid "Some ongoing revisions were found"
 msgstr "Sono state trovate delle revisioni in corso"
 
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+
 msgid "Source"
 msgstr "Origine"
 
@@ -1307,8 +1316,8 @@ msgstr "Titolo da usare per l'ordinamento alfabetico"
 msgid "Titles"
 msgstr "Titoli"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr "Per applicare le modifiche, puoi visitare %1"
 
@@ -1481,8 +1490,8 @@ msgstr ""
 "segno più nella sezione dei download di ciascun testo. In seguito\n"
 "potrai aggiungere o rimuovere altri testi."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr "Puoi creare un'utenza su %1"
 
@@ -1501,8 +1510,8 @@ msgstr "Sei uscito"
 msgid "You may want to resume the editing of one of them"
 msgstr "Potresti riprendere una delle modifiche in corso"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Dovresti cambiare subito la tua password a %1"
 
@@ -1545,6 +1554,9 @@ msgstr "Archivio ZIP con sorgenti, richiesto dall'impaginatore"
 
 msgid "about, links..."
 msgstr "informazioni, link..."
+
+msgid "any"
+msgstr ""
 
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
@@ -1597,6 +1609,9 @@ msgstr ""
 "scegli tu stesso un URI usando il campo più in basso, inserendo autore, "
 "titolo e un numero, ad esempio “autore-titlo-1”"
 
+msgid "left"
+msgstr ""
+
 msgid "mandatory"
 msgstr "obbligatorio"
 
@@ -1632,6 +1647,9 @@ msgstr "rilevanza"
 
 msgid "revision"
 msgstr "revisione"
+
+msgid "right"
+msgstr ""
 
 msgid "strong emphasis"
 msgstr "forte enfasi"

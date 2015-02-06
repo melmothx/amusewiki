@@ -559,6 +559,9 @@ msgstr "Auftrag nicht gefunden"
 msgid "Jobs"
 msgstr "Aufträge"
 
+msgid "Jobs waiting before yours:"
+msgstr ""
+
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr "Packt 2 logisch fortlaufende Seiten auf eine physische."
 
@@ -781,13 +784,16 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
 msgid "Page not found!"
 msgstr "Seite nicht gefunden!"
+
+msgid "Page where to start a chapter"
+msgstr ""
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1106,6 +1112,9 @@ msgstr "Manche Felder sind zu lange"
 msgid "Some ongoing revisions were found"
 msgstr ""
 
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+
 msgid "Source"
 msgstr "Quelle"
 
@@ -1266,8 +1275,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Liste aller Texte"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1431,8 +1440,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr "D kannst einen Peer erstellen bei %1"
 
@@ -1449,8 +1458,8 @@ msgstr "Du hast dich abgemeldet"
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Du könntest dein Passwort sofort verändern bei %1"
 
@@ -1490,6 +1499,9 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr ""
 
 msgid "about, links..."
+msgstr ""
+
+msgid "any"
 msgstr ""
 
 msgid "automatically generated if not present, using author and title"
@@ -1540,6 +1552,9 @@ msgid ""
 "my-author-my-title-1"
 msgstr ""
 
+msgid "left"
+msgstr ""
+
 msgid "mandatory"
 msgstr ""
 
@@ -1575,6 +1590,9 @@ msgstr "relevant"
 
 msgid "revision"
 msgstr "Änderung"
+
+msgid "right"
+msgstr ""
 
 msgid "strong emphasis"
 msgstr "starke Hervorhebung"

@@ -565,6 +565,9 @@ msgstr "Задачата не е пронајдена"
 msgid "Jobs"
 msgstr "Задачи"
 
+msgid "Jobs waiting before yours:"
+msgstr ""
+
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
 "Две логички страници кои следуваат една по друга се вметнуваат на една "
@@ -795,14 +798,17 @@ msgstr "PDF лого (задолжителна насока или името н
 msgid "PDFs cannot be used in the body."
 msgstr "Не е можно да се користат PDF датотеки во самите текстови."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "PDF датотеките кои не се на листата %1 ќе бидат зачувани, но игнорирани."
 
 msgid "Page not found!"
 msgstr "Страницата не е пронајдена!"
+
+msgid "Page where to start a chapter"
+msgstr ""
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1166,6 +1172,9 @@ msgstr "Некои полиња се предолги"
 msgid "Some ongoing revisions were found"
 msgstr "Пронајдени се некои активни измени"
 
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+
 msgid "Source"
 msgstr "Извор"
 
@@ -1333,8 +1342,8 @@ msgstr "Наслов за азбучно подредување"
 msgid "Titles"
 msgstr "Наслови"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr "За да ја објавиш измената, оди на %1"
 
@@ -1505,8 +1514,8 @@ msgstr ""
 "Кликни на иконата \"Плус\", покрај преземања, кај секој од текстовите за да "
 "го додадеш на својата збирка. Подоцна можеш да додадеш или избришеш текстови."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr "Можеш да создадеш сметка на %1"
 
@@ -1524,8 +1533,8 @@ msgstr "Одјавен си"
 msgid "You may want to resume the editing of one of them"
 msgstr "Можеш да се вратиш на една од измените во тек"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Треба веднаш да ја промениш својата лозинка на %1"
 
@@ -1568,6 +1577,9 @@ msgstr "ZIP архивата со извор, потребна за создав
 
 msgid "about, links..."
 msgstr "за проектот, линкови..."
+
+msgid "any"
+msgstr ""
 
 msgid "automatically generated if not present, using author and title"
 msgstr "се генерира автоматски доколку недостига, со автор и наслов"
@@ -1620,6 +1632,9 @@ msgstr ""
 "избери го саканиот URL користејќи го полето подолу, внеси го авторот, "
 "насловот и еден број, на пр.: мој-автор-мој-наслов-1"
 
+msgid "left"
+msgstr ""
+
 msgid "mandatory"
 msgstr "задолжително"
 
@@ -1655,6 +1670,9 @@ msgstr "релевантно"
 
 msgid "revision"
 msgstr "измена"
+
+msgid "right"
+msgstr ""
 
 msgid "strong emphasis"
 msgstr "истакнато и здебелено"

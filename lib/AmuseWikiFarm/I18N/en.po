@@ -530,6 +530,9 @@ msgstr ""
 msgid "Jobs"
 msgstr ""
 
+msgid "Jobs waiting before yours:"
+msgstr ""
+
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
 
@@ -741,12 +744,15 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
 msgid "Page not found!"
+msgstr ""
+
+msgid "Page where to start a chapter"
 msgstr ""
 
 msgid ""
@@ -1062,6 +1068,9 @@ msgstr ""
 msgid "Some ongoing revisions were found"
 msgstr ""
 
+msgid "Sorry, too many jobs pending, please try again later!"
+msgstr ""
+
 msgid "Source"
 msgstr "Source"
 
@@ -1220,8 +1229,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Titles"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1380,8 +1389,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1398,8 +1407,8 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr ""
 
@@ -1439,6 +1448,9 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr ""
 
 msgid "about, links..."
+msgstr ""
+
+msgid "any"
 msgstr ""
 
 msgid "automatically generated if not present, using author and title"
@@ -1489,6 +1501,9 @@ msgid ""
 "my-author-my-title-1"
 msgstr ""
 
+msgid "left"
+msgstr ""
+
 msgid "mandatory"
 msgstr ""
 
@@ -1523,6 +1538,9 @@ msgid "relevant"
 msgstr ""
 
 msgid "revision"
+msgstr ""
+
+msgid "right"
 msgstr ""
 
 msgid "strong emphasis"
