@@ -39,10 +39,27 @@ A too long uri was generated (100 chars vs. 95)
   Overload delete, so the job deletion will do the cleanup as well.
   Probably a change to the table is needed.
 
+* DONE Move the flash to Catalyst::Plugin::StatusMessage
+  CLOSED: [2015-02-06 ven 17:23]
 
-* Future releases
-* TODO Move the flash to Catalyst::Plugin::StatusMessage
+Won't do unless there is a good reason to. Current thing works just fine.
+
+* TODO user management in admin
+
+This requires a change in the chain logic for root, which should be
+able to login even on whatever site.
+
 * TODO Add descriptions to categories
 
+Db only, probably.
+
 * TODO covers/decorative text image 
-* TODO user management in admin
+
+This kind of images kind of defeat the purpose of this engine, if we
+store the crap in the git. But still, this is a common feature of all
+the major blog engines. So maybe it should be stored in the db, and in
+a public directory.
+
+Same goes with the teaser, probably.
+
+
