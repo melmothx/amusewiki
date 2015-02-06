@@ -176,7 +176,6 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_attachment_basename_for
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor;
-use File::Path qw/remove_tree/;
 
 =head2 muse_body
 
@@ -802,7 +801,7 @@ sub delete {
             $att_row->delete;
         }
     }
-    remove_tree($self->working_dir, { verbose => 1 });
+    $self->purge_working_tree;
 
     if ($title->can_spawn_revision) {
         return $self->next::method;
@@ -813,6 +812,32 @@ sub delete {
         return $title->delete;
     }
 }
+
+sub purge_working_tree {
+    my $self = shift;
+    my $working_tree = $self->working_dir;
+    if (-d $working_tree) {
+        opendir(my $dh, $working_tree) or die "Can't opendir $working_tree: $!";
+        my @files = grep { /^\w/ } readdir($dh);
+        closedir $dh;
+        foreach my $file (@files) {
+            my $path = File::Spec->catfile($working_tree, $file);
+            if (-f $path) {
+                print "Removing $path\n";
+                unlink $path or warn "Couldn't unlink $path $!";
+            }
+            else {
+                warn "Found strange file in $working_tree: $path\n";
+            }
+        }
+        print "Removing $working_tree\n";
+        rmdir $working_tree or warn "Error removing $working_tree: $!";
+    }
+    else {
+        warn "$working_tree is not a directory!";
+    }
+}
+
 
 
 __PACKAGE__->meta->make_immutable;

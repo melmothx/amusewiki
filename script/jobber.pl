@@ -196,4 +196,11 @@ sub purge_jobs_and_revisions {
           $rev->site->id . " and title " . $rev->title->uri . "\n";
         $rev->delete;
     }
+    my $old_jobs = $schema->resultset('Job')->completed_older_than($reftime);
+    while (my $job = $old_jobs->next) {
+        die unless $job->status eq 'completed'; # shouldn't happen
+        print "Removing old job " . $job->id . " for site " . $job->site->id .
+          " and task " . $job->task . "\n";
+        $job->delete;
+    }
 }

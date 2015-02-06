@@ -33,12 +33,14 @@ A too long uri was generated (100 chars vs. 95)
 * DONE Display cover image in the bookbuilder
   CLOSED: [2014-12-06 sab 22:25]
 
-* Future releases
-* TODO The jobber should remove old completed jobs
+* DONE The jobber should remove old completed jobs
+  CLOSED: [2015-02-06 ven 17:12]
   This implies also cleaning up the served files
   Overload delete, so the job deletion will do the cleanup as well.
   Probably a change to the table is needed.
 
+
+* Future releases
 * TODO Move the flash to Catalyst::Plugin::StatusMessage
 * TODO Add descriptions to categories
 

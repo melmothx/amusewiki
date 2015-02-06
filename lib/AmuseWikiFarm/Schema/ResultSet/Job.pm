@@ -164,5 +164,25 @@ sub can_accept_further_jobs {
     }
 }
 
+=head2 completed_older_than($datetime)
+
+Return the resultset for the completed jobs older than the
+datetime object passed as argument.
+
+=cut
+
+sub completed_older_than {
+    my ($self, $time) = @_;
+    die unless $time && $time->isa('DateTime');
+    my $format_time = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime($time);
+    return $self->search({
+                          status => 'completed',
+                          completed => { '<' => $format_time },
+                         });
+}
+
+
+
 
 1;
