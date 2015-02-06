@@ -18,7 +18,7 @@ unless (eval q{use Test::WWW::Mechanize::Catalyst 0.55; 1}) {
 }
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $site_id = '0pull0';
+my $site_id = '0pull1';
 my $site = create_site($schema, $site_id);
 my $git = $site->git;
 my $testdir = File::Temp->newdir(CLEANUP => 0);
@@ -44,7 +44,7 @@ foreach my $r (qw/marco pippo pluto/) {
 }
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                               host => '0pull0.amusewiki.org');
+                                               host => "$site_id.amusewiki.org");
 
 $mech->get_ok('/console/git');
 is $mech->response->base->path, '/login', "Denied access to not logged in";
