@@ -116,7 +116,7 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
 sub get_jobs :Chained('root') :PathPart('jobs') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $rs = $c->model('DB::Job')->search({},
-                                          { order_by => [qw/id/] });
+                                          { order_by => { -desc => [qw/completed/] } });
     $c->stash(
               all_jobs => $rs,
               page_title => $c->loc('Jobs'),
