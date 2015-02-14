@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-12-08 15:38+0100\n"
+"PO-Revision-Date: 2015-02-07 10:34+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -566,7 +566,7 @@ msgid "Jobs"
 msgstr "Задачи"
 
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Задачи на чекање:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
@@ -808,7 +808,7 @@ msgid "Page not found!"
 msgstr "Страницата не е пронајдена!"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Страницата на која да започнат поглавјата"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1173,7 +1173,7 @@ msgid "Some ongoing revisions were found"
 msgstr "Пронајдени се некои активни измени"
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "Премногу задачи на чекање, вратете се подоцна!"
 
 msgid "Source"
 msgstr "Извор"
@@ -1579,7 +1579,7 @@ msgid "about, links..."
 msgstr "за проектот, линкови..."
 
 msgid "any"
-msgstr ""
+msgstr "која било"
 
 msgid "automatically generated if not present, using author and title"
 msgstr "се генерира автоматски доколку недостига, со автор и наслов"
@@ -1633,7 +1633,7 @@ msgstr ""
 "насловот и еден број, на пр.: мој-автор-мој-наслов-1"
 
 msgid "left"
-msgstr ""
+msgstr "лево"
 
 msgid "mandatory"
 msgstr "задолжително"
@@ -1672,7 +1672,7 @@ msgid "revision"
 msgstr "измена"
 
 msgid "right"
-msgstr ""
+msgstr "десно"
 
 msgid "strong emphasis"
 msgstr "истакнато и здебелено"
