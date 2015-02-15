@@ -819,7 +819,8 @@ sub _produced_file {
 
 sub compile {
     my ($self, $logger) = @_;
-    $logger ||= sub { warn @_; };
+    die "Can't compile a file without a job id!" unless $self->job_id;
+    $logger ||= sub { print @_; };
     my $jobdir = File::Spec->rel2abs($self->jobdir);
     my $homedir = getcwd();
     die "In the wrong dir: $homedir" unless -d $jobdir;
@@ -925,8 +926,9 @@ sub compile {
 
         my %args = %{$data->{imposer_options}};
         $args{file}    =  $outfile;
-        $args{outfile} = $self->id. '.imp.pdf';
+        $args{outfile} = $self->job_id. '.imp.pdf';
         $args{suffix}  = 'imp';
+        # print Dumper(\%args);
         my $imposer = PDF::Imposition->new(%args);
         $imposer->impose;
         # overwrite the original pdf, we can get another one any time

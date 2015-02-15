@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 93;
+use Test::More tests => 104;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -169,12 +169,12 @@ my $expected = {
                                        'cover' => undef,
                                        opening => 'right',
                                       },
-                'title' => 'Pippuzzo va in montagna'
+                'title' => 'Pippuzzo *va* in **montagna**'
                };
 
 
 my %params = (
-              title       => 'Pippuzzo va in montagna',
+              title       => 'Pippuzzo *va* in **montagna**',
               mainfont    => 'CMU Serif',
               fontsize    => '10',
               papersize   => 'a4',
@@ -213,7 +213,7 @@ is($bb->as_job->{title}, $params{title});
 is ($bb->opening, 'right');
 
 %params = (
-           title       => 'Pippuzzo va in montagna',
+           title       => 'Pippuzzo *va* in **montagna**',
            mainfont    => 'CMU Serif',
            fontsize    => '10',
            papersize   => 'a4',
@@ -237,7 +237,7 @@ is $bb->signature, '40-80', "Signature_4up ignored with schema 2up";
 is $bb->opening, 'any';
 
 %params = (
-           title       => 'Pippuzzo va in montagna',
+           title       => 'Pippuzzo *va* in **montagna**',
            mainfont    => 'CMU Serif',
            fontsize    => '10',
            papersize   => 'a4',
@@ -292,8 +292,42 @@ is_deeply ($bb->texts,
            ], "List ok");
 
 $bb->epub(1);
-my $out = $bb->compile;
-ok ($out, "$out produced!");
+check_file($bb, "epub");
 
+$bb->import_from_params(%params);
+ok (!$bb->epub);
+# readd
+$bb->delete_text(3);
+foreach my $text(qw/first-test do-this-by-yourself/) {
+    ok ($bb->add_text($text), "Added $text again") or diag $bb->error;
+}
+ok ($bb->imposed, "Imposing required");
+$bb->schema('2up');
+$bb->signature(0);
+$bb->cover(1);
+check_file($bb, "imposed one");
+cleanup($bb->job_id);
 
+sub check_file {
+    my ($bb, $msg) = @_;
+    my $out = $bb->compile;
+    ok ($out, "$msg: $out produced");
+    my $file = File::Spec->catfile($bb->rootdir, $bb->customdir, $out);
+    ok (-f $file, "$msg: $out: $file exists");
+    foreach my $f ($bb->produced_files) {
+        ok (-f $f, "$msg: $f exists");
+    }
+    # unlink $file or die $1;
+}
 
+sub cleanup {
+    my $id = shift;
+    my @files = ("$id.pdf", "$id.epub", "bookbuilder-$id.zip");
+    foreach my $file (@files) {
+        my $path = File::Spec->catfile(qw/root custom/, $file);
+        if (-f $path) {
+            diag "removing $path";
+            unlink $path or die $!;
+        }
+    }
+}
