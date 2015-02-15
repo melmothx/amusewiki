@@ -78,6 +78,9 @@
         <strong>[% loc("Produce an EPUB instead of a PDF") %]</strong>
       </label>
     </div>
+    <div id="epub-options">
+      <!-- placeholder -->
+    </div>
     <div id="pdf-options">
     <p>
       <label for="mainfont">
