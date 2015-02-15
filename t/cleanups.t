@@ -46,15 +46,15 @@ isnt $bb->coverfile, $cover, "Cover saved into " . $bb->coverfile;
 is_deeply ($bb->texts, [@uris, @uris], "Texts imported");
 # ok, we're settled
 
-diag Dumper($bb->as_job);
+diag Dumper($bb->serialize);
 
 # enqueue the job
-my $job = $site->jobs->bookbuilder_add($bb->as_job);
+my $job = $site->jobs->bookbuilder_add($bb->serialize);
 
 # dispatch
 $job->dispatch_job;
 
-is ($job->job_data->{template_options}->{cover}, $bb->coverfile,
+is ($job->bookbuilder->as_job->{template_options}->{cover}, $bb->coverfile,
   "cover can be retrieved");
 
 my @leftovers = $job->produced_files;
@@ -70,7 +70,7 @@ foreach my $file (@leftovers) {
 }
 
 $bb->add_file($cover);
-$job = $site->jobs->bookbuilder_add($bb->as_job);
+$job = $site->jobs->bookbuilder_add($bb->serialize);
 diag "Unlinking " . $bb->coverfile . " before dispatching";
 unlink $bb->coverfile or die $!;
 $job->dispatch_job;

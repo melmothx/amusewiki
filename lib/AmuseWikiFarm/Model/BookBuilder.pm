@@ -17,7 +17,6 @@ sub prepare_arguments {
        );
     if (my $site = $c->stash->{site}) {
         $constructor{site} = $site;
-        $constructor{site_id} = $site->id;
     }
     return \%constructor;
 }

@@ -71,7 +71,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
 
         $c->log->debug("Putting the job in the queue now");
 
-        if (my $job = $c->stash->{site}->jobs->bookbuilder_add($bb->as_job)) {
+        if (my $job = $c->stash->{site}->jobs->bookbuilder_add($bb->serialize)) {
             $c->res->redirect($c->uri_for_action('/tasks/display', [$job->id]));
         }
         # if we get this, the user cheated and doesn't deserve an explanation
@@ -162,7 +162,7 @@ sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->log->debug('Saving books in the session');
-    $c->session->{bookbuilder} = $c->stash->{bb}->constructor_args;
+    $c->session->{bookbuilder} = $c->stash->{bb}->serialize;
 }
 
 =encoding utf8

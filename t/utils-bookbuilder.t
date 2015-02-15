@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 92;
+use Test::More tests => 93;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -204,7 +204,7 @@ is $bb->coverfile, undef, 'coverfile not imported';
 
 is_deeply ($bb->as_job, $expected, "Output correct");
 
-my $newbb = AmuseWikiFarm::Archive::BookBuilder->new(%{$bb->constructor_args});
+my $newbb = AmuseWikiFarm::Archive::BookBuilder->new(%{$bb->serialize});
 
 is_deeply ($bb->as_job, $newbb->as_job, "Old and new have the same output");
 
@@ -268,6 +268,7 @@ is $bb->twoside, undef, "twoside set to undef";
 $bb = AmuseWikiFarm::Archive::BookBuilder->new({
                                                 dbic => $schema,
                                                 site_id => '0blog0',
+                                                job_id => 999999,
                                                });
 
 is ($bb->site_id, '0blog0', "Object ok");
@@ -289,4 +290,10 @@ is_deeply ($bb->texts,
             'second-test',
             'do-this-by-yourself',
            ], "List ok");
+
+$bb->epub(1);
+my $out = $bb->compile;
+ok ($out, "$out produced!");
+
+
 

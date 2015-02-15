@@ -155,23 +155,32 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0IlAAomj8TvRa7fy8p3i2w
 
 use Cwd;
-use Data::Dumper;
-
-
 use File::Spec;
-use File::Temp;
 use File::Copy qw/copy move/;
-
 use Text::Amuse::Compile::Utils qw/read_file append_file/;
-use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
-
 use DateTime;
 use JSON qw/to_json
             from_json/;
+use AmuseWikiFarm::Archive::BookBuilder;
 
-use Text::Amuse::Compile;
-use PDF::Imposition;
+has bookbuilder => (is => 'ro',
+                    isa => 'Maybe[Object]',
+                    lazy => 1,
+                    builder => '_build_bookbuilder');
 
+sub _build_bookbuilder {
+    my $self = shift;
+    if ($self->task eq 'bookbuilder') {
+        my $bb = AmuseWikiFarm::Archive::BookBuilder->new(%{$self->job_data},
+                                                          site => $self->site,
+                                                          job_id => $self->id,
+                                                         );
+        return $bb;
+    }
+    else {
+        return undef;
+    }
+}
 
 =head2 as_json
 
@@ -185,7 +194,7 @@ Return the job representation as an hashref
 
 sub as_hashref {
     my $self = shift;
-    my $struct = {
+    my $data = {
                   id       => $self->id,
                   site_id  => $self->site_id,
                   task     => $self->task,
@@ -199,7 +208,7 @@ sub as_hashref {
                   logs     => $self->logs,
                   position => 0,
                  };
-    if ($struct->{status} eq 'pending') {
+    if ($data->{status} eq 'pending') {
         my $pending = $self->result_source->resultset->pending
           ->search({},
                    { columns => [qw/id/] });
@@ -214,9 +223,23 @@ sub as_hashref {
         }
         # update the position only if found, there could be a race
         # condition.
-        $struct->{position} = $position if $found;
+        $data->{position} = $position if $found;
     }
-    return $struct;
+    elsif ($data->{status} eq 'completed') {
+        $data->{produced} ||= '/';
+        if (my $bb = $self->bookbuilder) {
+            $data->{message} = 'Your file is ready';
+            $data->{sources} = $bb->customdir . '/' .$bb->sources_filename;
+        }
+        elsif ($data->{task} eq 'publish') {
+            $data->{message} = 'Changes applied';
+        }
+        else {
+            $data->{message} = 'Done';
+        }
+
+    }
+    return $data;
 }
 
 sub as_json {
@@ -494,59 +517,17 @@ sub dispatch_job_alias_delete {
     return '/console/alias';
 }
 
-sub customdir {
-    return 'custom';
-}
-sub bb_produced_pdf {
-    my $self = shift;
-    my $id = $self->id;
-    return join('/', '', $self->customdir, $self->bb_pdfname);
-}
-
-sub bb_produced_zip {
-    my $self = shift;
-    return join('/', '', $self->customdir, $self->bb_zipname);
-}
-
-sub bb_zipbasename {
-    my $self = shift;
-    my $id = $self->id;
-    return "bookbuilder-$id";
-}
-
-sub bb_zipname {
-    return shift->bb_zipbasename . '.zip';
-}
-
-sub bb_pdfname {
-    my $self = shift;
-    my $id = $self->id;
-    return "$id.pdf";
-}
-
 sub produced_files {
     my $self = shift;
     my @out = ($self->log_file);
-    if ($self->task eq 'bookbuilder') {
-        foreach my $f ($self->bb_zipname, $self->bb_pdfname) {
-            my $file = File::Spec->catfile('root', $self->customdir, $f);
-            my $abs = File::Spec->rel2abs($file);
+    if (my $bb = $self->bookbuilder) {
+        foreach my $f ($bb->produced_files) {
+            my $abs = File::Spec->rel2abs($f);
             if (-f $abs) {
                 push @out, $abs;
             }
             else {
                 warn "$abs couldn't be found!\n";
-            }
-        }
-        # this is guaranteed to be user defined. Needs to be kept in
-        # sync with Bookbuilder object, but there is a test in place.
-        if (my $cover = $self->job_data->{template_options}->{cover}) {
-            $cover = File::Spec->rel2abs($cover);
-            if (-f $cover) {
-                push @out, $cover;
-            }
-            else {
-                warn "$cover set but not found!";
             }
         }
     }
@@ -555,130 +536,11 @@ sub produced_files {
 
 sub dispatch_job_bookbuilder {
     my ($self, $logger) = @_;
-    my $data = $self->job_data;
-    my $jobdir = File::Spec->catdir('root', $self->customdir);
-    $jobdir =    File::Spec->rel2abs($jobdir);
-    my $homedir = getcwd();
-    die "In the wrong dir: $homedir" unless -d $jobdir;
-
-    print Dumper($data);
-    # first, get the text list
-    my $textlist = $data->{text_list};
-
-    print $self->site->id, "\n";
-
-    my %compile_opts = $self->site->compile_options;
-    my $template_opts = $compile_opts{extra};
-
-    # overwrite the site ones with the user-defined (and validated)
-    foreach my $k (keys %{ $data->{template_options} }) {
-        $template_opts->{$k} = $data->{template_options}->{$k};
+    my $bb = $self->bookbuilder;
+    if (my $file = $bb->compile($logger)) {
+        return '/' . $bb->customdir . '/' . $file;
     }
-
-    print Dumper($template_opts);
-
-    my $bbdir    = File::Temp->newdir(CLEANUP => 1);
-    my $basedir = $bbdir->dirname;
-
-    print "Created $basedir\n";
-
-    my %archives;
-
-    # validate the texts passed looking up the uri in the db
-    my @texts;
-    foreach my $text (@$textlist) {
-        my $title = $self->site->titles->text_by_uri($text);
-        unless ($title) {
-            warn "Couldn't find $text\n";
-            next;
-        }
-
-        push @texts, $text;
-        if ($archives{$text}) {
-            next;
-        }
-        else {
-            $archives{$text}++;
-        }
-
-        # pick and copy the zip in the temporary dir
-        my $zip = $title->filepath_for_ext('zip');
-        if (-f $zip) {
-            copy($zip, $basedir) or die $!;
-        }
-    }
-    die "No text found!" unless @texts;
-
-    chdir $basedir or die $!;
-    # extract the archives
-    foreach my $i (keys %archives) {
-        my $zipfile = $i . '.zip';
-        my $zip = Archive::Zip->new;
-        unless ($zip->read($zipfile) == AZ_OK) {
-            warn "Couldn't read $i.zip";
-            next;
-        }
-        $zip->extractTree($i);
-        undef $zip;
-        unlink $zipfile or die $!;
-    }
-    my $compiler = Text::Amuse::Compile->new(
-                                             tex => 1,
-                                             pdf => 1,
-                                             extra => $template_opts,
-                                             logger => $logger,
-                                            );
-    print $compiler->version;
-
-    my $outfile = $self->bb_pdfname;
-
-    if (@texts == 1) {
-        my $basename = shift(@texts);
-        my $pdfout   = $basename . '.pdf';
-        $compiler->compile($basename . '.muse');
-        if (-f $pdfout) {
-            move($pdfout, $outfile) or die "Couldn't move $pdfout to $outfile";
-        }
-    }
-    else {
-        my $target = {
-                      path => $basedir,
-                      files => \@texts,
-                      name => $self->id,
-                      title => $data->{title},
-                     };
-        # compile
-        $compiler->compile($target);
-    }
-
-    die "$outfile not produced!\n" unless (-f $outfile);
-
-    # imposing needed?
-    if ($data->{imposer_options} and %{$data->{imposer_options}}) {
-
-        my %args = %{$data->{imposer_options}};
-        $args{file}    =  $outfile;
-        $args{outfile} = $self->id. '.imp.pdf';
-        $args{suffix}  = 'imp';
-        my $imposer = PDF::Imposition->new(%args);
-        $imposer->impose;
-        # overwrite the original pdf, we can get another one any time
-        copy($imposer->outfile, $outfile) or die "Copy to $outfile failed $!";
-    }
-    copy($outfile, $jobdir) or die "Copy $outfile to $jobdir failed $!";
-
-    # create a zip archive with the temporary directory and serve it.
-    my $zipdir = Archive::Zip->new;
-    my $zipname = $self->bb_zipbasename;
-    $zipdir->addTree($basedir, $zipname) == AZ_OK
-      or $logger->("Failed to produce a zip");
-    $zipdir->writeToFileNamed(File::Spec->catfile($jobdir,
-                                                  $zipname . '.zip')) == AZ_OK
-      or $logger->("Failure writing $zipname.zip");
-
-    # chdir back to home
-    chdir $homedir or die $!;
-    return $self->bb_produced_pdf;
+    return;
 }
 
 after delete => sub {

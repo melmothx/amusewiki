@@ -43,25 +43,22 @@ sub status :Chained('root') :CaptureArgs(1) {
     # here we inject the message, depending on the task
 
     my $data = $job->as_hashref;
+    # TODO move this shit into the Job method and keep only the
+    # localization here.
     $data->{status_loc} = $c->loc($data->{status});
 
-    if ($data->{status} eq 'completed') {
-
-        $data->{produced} ||= '/';
+    if ($data->{produced}) {
         $data->{produced_uri} = $c->uri_for($data->{produced})->as_string;
-
-        if ($data->{task} eq 'bookbuilder') {
-            $data->{message} = $c->loc('Your file is ready');
-            $data->{sources} = $c->uri_for($job->bb_produced_zip)->as_string;
-        }
-        elsif ($data->{task} eq 'publish') {
-            $data->{message} = $c->loc('Changes applied');
-        }
-        else {
-            $data->{message} = $c->loc('Done');
-        }
     }
-
+    if ($data->{sources}) {
+        $data->{sources} = $c->uri_for($data->{sources})->as_string;
+    }
+    if (my $msg = $data->{message}) {
+        # $c->loc('Your file is ready');
+        # $c->loc('Changes applied');
+        # $c->log('Done');
+        $data->{message} = $c->loc($msg);
+    }
     $c->stash(
               job => $data,
               page_title => $c->loc('Queue'),

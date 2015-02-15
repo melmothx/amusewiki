@@ -8,13 +8,18 @@ use Moose;
 use Moose::Util::TypeConstraints qw/enum/;
 use namespace::autoclean;
 
-use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
-use File::Spec;
 use Cwd;
+use Data::Dumper;
+use File::Spec;
+use File::Temp;
+use File::Copy qw/copy move/;
 use File::MimeInfo::Magic qw/mimetype/;
 use File::Copy qw/copy/;
 use Try::Tiny;
-
+use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
+use Text::Amuse::Compile;
+use PDF::Imposition;
+use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
 
 =head1 NAME
 
@@ -24,15 +29,22 @@ AmuseWikiFarm::Archive::BookBuilder -- Bookbuilder encapsulation
 
 =head2 dbic
 
-The L<AmuseWikiFarm::Schema> instance with the database.
+The L<AmuseWikiFarm::Schema> instance with the database. Needed if you
+don't pass the C<site> directly.
 
 =head2 site_id
 
-The id of the site for text lookup from the db.
+The id of the site for text lookup from the db. Needed if you don't
+pass the C<site> directly.
 
 =head2 site
 
 The L<AmuseWikiFarm::Schema::Result::Site> to which the texts belong.
+If not provided, build lazily from C<dbic> and C<site_id>.
+
+=head2 job_id
+
+The numeric ID for the output basename.
 
 =cut
 
@@ -47,6 +59,9 @@ has site => (is => 'ro',
              lazy => 1,
              builder => '_build_site');
 
+has job_id => (is => 'ro',
+               isa => 'Maybe[Str]');
+
 sub _build_site {
     my $self = shift;
     if (my $schema = $self->dbic) {
@@ -57,6 +72,40 @@ sub _build_site {
         }
     }
     return undef;
+}
+
+=head2 paths and output
+
+Defaults are sane.
+
+=over 4
+
+=item customdir
+
+default: custom
+
+=item rootdir
+
+default: root
+
+=back
+
+=cut
+
+
+has customdir => (is => 'ro',
+                  isa => 'Str',
+                  default => sub { 'custom' },
+                 );
+
+has rootdir => (is => 'ro',
+                isa => 'Str',
+                default => sub { 'root' },
+               );
+
+sub jobdir {
+    my $self = shift;
+    return File::Spec->catdir($self->rootdir, $self->customdir);
 }
 
 =head2 error
@@ -89,6 +138,15 @@ sub total_pages_estimated {
     return 0;
 }
 
+=head2 epub
+
+Build an EPUB instead of a PDF
+
+=cut
+
+has epub => (is => 'rw',
+             isa => 'Bool',
+             default => sub { 0 });
 
 =head2 title
 
@@ -674,6 +732,7 @@ sub import_from_params {
 
 sub _main_methods {
     return qw/title
+              epub
               mainfont
               fontsize
               coverfile
@@ -700,9 +759,11 @@ Main method to create a structure to feed the jobber for the building
 sub as_job {
     my $self = shift;
     my $job = {
-               text_list => $self->texts,
+               text_list => [ @{$self->texts} ],
                title => $self->title || 'My collection', # enforce a title
-               template_options => {
+              };
+    if (!$self->epub) {
+        $job->{template_options} = {
                                     twoside     => $self->twoside,
                                     nocoverpage => $self->nocoverpage,
                                     notoc       => $self->notoc,
@@ -714,9 +775,9 @@ sub as_job {
                                     coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                     opening     => $self->opening,
                                     cover       => $self->coverfile,
-                                   },
-              };
-    if ($self->imposed) {
+                                   };
+    }
+    if (!$self->epub && $self->imposed) {
         $job->{imposer_options} = {
                                    signature => $self->signature,
                                    schema    => $self->schema,
@@ -726,14 +787,190 @@ sub as_job {
     return $job;
 }
 
-=head2 constructor_args
+=head2 compile($logger)
+
+Compile 
+
+=cut
+
+sub produced_filename {
+    my $self = shift;
+    return $self->_produced_file($self->_produced_file_extension);
+}
+
+sub _produced_file_extension {
+    my $self = shift;
+    $self->epub ? return 'epub' :  return 'pdf';
+}
+
+sub sources_filename {
+    my $self = shift;
+    return 'bookbuilder-' . $self->_produced_file('zip');
+}
+
+sub _produced_file {
+    my ($self, $ext) = @_;
+    die unless $ext;
+    my $base = $self->job_id;
+    die "Can't call produced_filename if the job_id is not passed!" unless $base;
+    return $base . '.' . $ext;
+}
+
+
+sub compile {
+    my ($self, $logger) = @_;
+    $logger ||= sub { warn @_; };
+    my $jobdir = File::Spec->rel2abs($self->jobdir);
+    my $homedir = getcwd();
+    die "In the wrong dir: $homedir" unless -d $jobdir;
+    my $data = $self->as_job;
+    # print Dumper($data);
+    # first, get the text list
+    my $textlist = $data->{text_list};
+
+    # print $self->site->id, "\n";
+
+    my %compile_opts = $self->site->compile_options;
+    my $template_opts = $compile_opts{extra};
+
+    # overwrite the site ones with the user-defined (and validated)
+    foreach my $k (keys %{ $data->{template_options} }) {
+        $template_opts->{$k} = $data->{template_options}->{$k};
+    }
+
+    # print Dumper($template_opts);
+
+    my $bbdir    = File::Temp->newdir(CLEANUP => 1);
+    my $basedir = $bbdir->dirname;
+
+    # print "Created $basedir\n";
+
+    my %archives;
+
+    # validate the texts passed looking up the uri in the db
+    my @texts;
+    foreach my $text (@$textlist) {
+        my $title = $self->site->titles->text_by_uri($text);
+        unless ($title) {
+            warn "Couldn't find $text\n";
+            next;
+        }
+
+        push @texts, $text;
+        if ($archives{$text}) {
+            next;
+        }
+        else {
+            $archives{$text}++;
+        }
+
+        # pick and copy the zip in the temporary dir
+        my $zip = $title->filepath_for_ext('zip');
+        if (-f $zip) {
+            copy($zip, $basedir) or die $!;
+        }
+    }
+    die "No text found!" unless @texts;
+
+    chdir $basedir or die $!;
+
+    # extract the archives
+    foreach my $i (keys %archives) {
+        my $zipfile = $i . '.zip';
+        my $zip = Archive::Zip->new;
+        unless ($zip->read($zipfile) == AZ_OK) {
+            warn "Couldn't read $i.zip";
+            next;
+        }
+        $zip->extractTree($i);
+        undef $zip;
+        unlink $zipfile or die $!;
+    }
+    my $compiler = Text::Amuse::Compile->new(
+                                             tex => 1,
+                                             pdf => !$self->epub,
+                                             epub => $self->epub,
+                                             extra => $template_opts,
+                                             logger => $logger,
+                                            );
+    print $compiler->version;
+
+    my $outfile = $self->produced_filename;
+
+    if (@texts == 1) {
+        my $basename = shift(@texts);
+        my $fileout   = $basename . '.' . $self->_produced_file_extension;
+        $compiler->compile($basename . '.muse');
+        if (-f $fileout) {
+            move($fileout, $outfile) or die "Couldn't move $fileout to $outfile";
+        }
+    }
+    else {
+        my $target = {
+                      path => $basedir,
+                      files => \@texts,
+                      name => $self->job_id,
+                      title => $data->{title},
+                     };
+        # compile
+        $compiler->compile($target);
+    }
+
+    die "$outfile not produced!\n" unless (-f $outfile);
+
+    # imposing needed?
+    if (!$self->epub and
+        $data->{imposer_options} and
+        %{$data->{imposer_options}}) {
+
+        my %args = %{$data->{imposer_options}};
+        $args{file}    =  $outfile;
+        $args{outfile} = $self->id. '.imp.pdf';
+        $args{suffix}  = 'imp';
+        my $imposer = PDF::Imposition->new(%args);
+        $imposer->impose;
+        # overwrite the original pdf, we can get another one any time
+        copy($imposer->outfile, $outfile) or die "Copy to $outfile failed $!";
+    }
+    copy($outfile, $jobdir) or die "Copy $outfile to $jobdir failed $!";
+
+    # create a zip archive with the temporary directory and serve it.
+    my $zipdir = Archive::Zip->new;
+    my $zipname = $self->sources_filename;
+    my $ziproot = $zipname;
+    $ziproot =~ s/\.zip$//;
+    $zipdir->addTree($basedir, $ziproot) == AZ_OK
+      or $logger->("Failed to produce a zip");
+    $zipdir->writeToFileNamed(File::Spec->catfile($jobdir,
+                                                  $zipname)) == AZ_OK
+      or $logger->("Failure writing $zipname");
+
+    # chdir back to home
+    chdir $homedir or die $!;
+    return $outfile;
+}
+
+sub produced_files {
+    my $self = shift;
+    my @out;
+    foreach my $f ($self->produced_filename,
+                   $self->sources_filename) {
+        push @out, File::Spec->catfile($self->rootdir, $self->customdir, $f);
+    }
+    if (my $cover = $self->coverfile) {
+        push @out, $cover;
+    }
+    return @out;
+}
+
+=head2 serialize
 
 Return an hashref which, when dereferenced, will be be able to feed
 the constructor and clone itself.
 
 =cut
 
-sub constructor_args {
+sub serialize {
     my $self = shift;
     my %args = (textlist => $self->texts);
     foreach my $method ($self->_main_methods) {
