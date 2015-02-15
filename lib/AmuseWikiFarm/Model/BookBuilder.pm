@@ -8,6 +8,21 @@ __PACKAGE__->config(
     class => 'AmuseWikiFarm::Archive::BookBuilder',
 );
 
+sub prepare_arguments {
+    my ($self, $c) = @_;
+    my $args = $c->session->{bookbuilder} || {};
+    my %constructor = (
+        %$args,
+        dbic => $c->model('DB'),
+       );
+    if (my $site = $c->stash->{site}) {
+        $constructor{site} = $site;
+        $constructor{site_id} = $site->id;
+    }
+    return \%constructor;
+}
+
+
 =head1 NAME
 
 AmuseWikiFarm::Model::BookBuilder - Bookbuilder helper model

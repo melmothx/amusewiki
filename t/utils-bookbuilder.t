@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 80;
+use Test::More tests => 92;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -14,8 +14,12 @@ binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
 binmode $builder->todo_output,    ":utf8";
 
+use AmuseWikiFarm::Schema;
+
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid muse_naming_algo/;
 use AmuseWikiFarm::Archive::BookBuilder;
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $bb = AmuseWikiFarm::Archive::BookBuilder->new;
 
@@ -260,3 +264,29 @@ is $bb->imposed, undef, "imposed nulled out with empty params";
 is $bb->mainfont, 'CMU Serif', "mainfont kept with empty params";
 is $bb->notoc, undef, "notoc set to undef";
 is $bb->twoside, undef, "twoside set to undef";
+
+$bb = AmuseWikiFarm::Archive::BookBuilder->new({
+                                                dbic => $schema,
+                                                site_id => '0blog0',
+                                               });
+
+is ($bb->site_id, '0blog0', "Object ok");
+is ($bb->site->id, '0blog0', "site built");
+
+foreach my $text ($bb->site->titles->published_texts) {
+    ok ($bb->add_text($text->uri), "Added " . $text->uri);
+    ok (!$bb->error, "No error found") or diag $bb->error;
+}
+ok (!$bb->add_text('this-does-not-exists'));
+ok ($bb->error, "Found error: " . $bb->error);
+
+ok ($bb->total_pages_estimated,
+    "Found page estimated: " . $bb->total_pages_estimated);
+
+is_deeply ($bb->texts,
+           [
+            'first-test',
+            'second-test',
+            'do-this-by-yourself',
+           ], "List ok");
+

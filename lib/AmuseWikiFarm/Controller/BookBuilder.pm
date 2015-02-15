@@ -20,10 +20,6 @@ Deny access to not-human
 
 =cut
 
-# TODO unclear if we want to use a model here.
-
-use AmuseWikiFarm::Archive::BookBuilder;
-
 =head2 index
 
 =cut
@@ -42,20 +38,8 @@ sub root :Chained('/site') :PathPart('bookbuilder') :CaptureArgs(0) {
         return;
     }
 
-    # this is the root method. Initialize the session with the list;
-    my $bb_args = $c->session->{bookbuilder} || {};
-
-    # initialize the BookBuilder object
-    my $bb = AmuseWikiFarm::Archive::BookBuilder->new(%$bb_args);
-
-    # set the current page count
-    my $bb_page_count = 0;
-    foreach my $t (@{$bb->texts}) {
-        my $title = $c->stash->{site}->titles->text_by_uri($t);
-        next unless $title;
-        $bb_page_count += $title->pages_estimated;
-    }
-    $c->stash(bb_page_count => $bb_page_count);
+    # initialize the BookBuilder object. It will pick up the session
+    my $bb = $c->model('BookBuilder');
     $c->stash(bb => $bb);
 }
 
@@ -119,46 +103,27 @@ sub clear :Chained('root') :PathPart('clear') :Args(0) {
     my ($self, $c) = @_;
     if ($c->request->params->{clear}) {
         # override with a shiny new thing
-        $c->stash->{bb} = AmuseWikiFarm::Archive::BookBuilder->new;
-        $c->forward('save_session');
+        $c->log->debug('Resetting bookbuilder in the session');
+        $c->session->{bookbuilder} = {};
     }
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
 sub add :Chained('root') :PathPart('add') :Args(1) {
     my ( $self, $c, $text ) = @_;
-        my $bb   = $c->stash->{bb};
-        my $site = $c->stash->{site};
-        my $referrer = $c->uri_for_action('/library/text', [$text]);
-
-        # do we have the text in the db?
-        my $to_add = $site->titles->text_by_uri($text);
-        unless ($to_add) {
-            $c->log->warn("Tried to added $text but not found");
-            $c->flash->{error_msg} = $c->loc("Couldn't add the text");
-            $c->response->redirect($referrer);
-            return;
-        }
-
-        # is exceeding the limit?
-        my $current_state = $c->stash->{bb_page_count};
-        $c->log->debug("Current state is $current_state");
-
-        if (($current_state + $to_add->pages_estimated) > $site->bb_page_limit) {
-            $c->flash->{error_msg} = $c->loc("Quota exceeded, too many pages");
-            $c->response->redirect($referrer);
-            return;
-        }
-
-        if ($bb->add_text($text)) {
-            $c->forward('save_session');
-            $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
-        }
-        else {
-            $c->flash->{error_msg} = $c->loc("Couldn't add the text");
-        }
-        $c->response->redirect($referrer);
-        return;
+    my $bb   = $c->stash->{bb};
+    my $site = $c->stash->{site};
+    my $referrer = $c->uri_for_action('/library/text', [$text]);
+    if ($bb->add_text($text)) {
+        $c->forward('save_session');
+        $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
+    }
+    elsif (my $err = $bb->error) {
+        $c->log->warn("$err for $text");
+        $c->flash->{error_msg} = $c->loc($bb->error);
+    }
+    $c->response->redirect($referrer);
+    return;
 }
 
 sub cover :Chained('root') :Args(0) {

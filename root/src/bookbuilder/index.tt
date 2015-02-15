@@ -43,7 +43,7 @@
     [% END %]
     <tr>
       <td>
-        [% loc('Total pages') %]: [% bb_page_count %]
+        [% loc('Total pages') %]: [% bb.total_pages_estimated %]
       </td>
       <td>
         <div id="bb-clear-all">

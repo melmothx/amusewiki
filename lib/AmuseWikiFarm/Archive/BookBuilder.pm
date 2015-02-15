@@ -22,6 +22,74 @@ AmuseWikiFarm::Archive::BookBuilder -- Bookbuilder encapsulation
 
 =head1 ACCESSORS
 
+=head2 dbic
+
+The L<AmuseWikiFarm::Schema> instance with the database.
+
+=head2 site_id
+
+The id of the site for text lookup from the db.
+
+=head2 site
+
+The L<AmuseWikiFarm::Schema::Result::Site> to which the texts belong.
+
+=cut
+
+has dbic => (is => 'ro',
+             isa => 'Object');
+
+has site_id => (is => 'ro',
+                isa => 'Maybe[Str]');
+
+has site => (is => 'ro',
+             isa => 'Maybe[Object]',
+             lazy => 1,
+             builder => '_build_site');
+
+sub _build_site {
+    my $self = shift;
+    if (my $schema = $self->dbic) {
+        if (my $id = $self->site_id) {
+            if (my $site  = $schema->resultset('Site')->find($id)) {
+                return $site;
+            }
+        }
+    }
+    return undef;
+}
+
+=head2 error
+
+Accesso to the error (set by the object).
+
+=cut
+
+has error => (is => 'rw',
+              isa => 'Maybe[Str]');
+
+=head2 total_pages_estimated
+
+If the object has the dbic and the site object, then return the
+current page estimation.
+
+=cut
+
+sub total_pages_estimated {
+    my $self = shift;
+    if (my $site = $self->site) {
+        my $count = 0;
+        foreach my $text (@{ $self->texts }) {
+            if (my $title = $site->titles->text_by_uri($text)) {
+                $count += $title->pages_estimated;
+            }
+        }
+        return $count;
+    }
+    return 0;
+}
+
+
 =head2 title
 
 The title of the collection.
@@ -467,9 +535,36 @@ otherwise.
 sub add_text {
     my ($self, $text) = @_;
     return unless defined $text;
+    # cleanup the error
+    $self->error(undef);
+    my $to_add;
     if (muse_filename_is_valid($text)) {
-        push @{ $self->textlist }, $text;
-        return $text;
+        # additional checks if we have the site.
+        if (my $site = $self->site) {
+            if (my $title = $site->titles->text_by_uri($text)) {
+                my $limit = $site->bb_page_limit;
+                my $total = $self->total_pages_estimated + $title->pages_estimated;
+                if ($total <= $limit) {
+                    $to_add = $text;
+                }
+                else {
+                    # loc("Quota exceeded, too many pages")
+                    $self->error('Quota exceeded, too many pages');
+                }
+            }
+            else {
+                # loc("Couldn't add the text")
+                $self->error("Couldn't add the text");
+            }
+        }
+        # no site check
+        else {
+            $to_add = $text;
+        }
+    }
+    if ($to_add) {
+        push @{ $self->textlist }, $to_add;
+        return $to_add;
     }
     else {
         return;

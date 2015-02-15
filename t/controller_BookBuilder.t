@@ -63,7 +63,7 @@ $mech->get_ok('/bookbuilder/add/first-test');
 $mech->content_contains("Quota exceeded");
 $mech->get_ok('/bookbuilder');
 $mech->content_lacks('first-test');
-$mech->content_contains("Total pages: 5");
+$mech->content_contains("Total pages: 5") or diag $mech->content;
 
 $mech->get('/bookbuilder/cover');
 is ($mech->status, '404');
