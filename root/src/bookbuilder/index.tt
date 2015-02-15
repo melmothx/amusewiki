@@ -70,6 +70,15 @@
     <input type="text" name="title" id="title"
            class="form-control required" value="[% bb.title | html %]"/>
     </p>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="epub" value="1"
+               [% IF bb.epub %] checked="checked" [% END %]
+               id="epub" />
+        <strong>[% loc("Produce an EPUB instead of a PDF") %]</strong>
+      </label>
+    </div>
+    <div id="pdf-options">
     <p>
       <label for="mainfont">
         <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
@@ -365,6 +374,7 @@
       </label>
     </div>
     </div>
+    </div>
     <div>
       <button type="submit" name="build" value="build" class="btn btn-default">
         [% loc('Build it') %]
@@ -418,8 +428,19 @@
           $('.image-options').hide('fast');
       }
   }
+  function show_epub_options() {
+      if ($('#epub').is(":checked")) {
+          $('#pdf-options').hide('fast');
+          $('#epub-options').show('fast');
+      }
+      else {
+          $('#pdf-options').show('fast');
+          $('#epub-options').hide('fast');
+      }
+  }
   $(document).ready(function(){
       $("#bbform").validate();
+      show_epub_options();
       show_imposition();
       show_signature();
       show_image_options();
@@ -432,6 +453,9 @@
       });
       $('.choose-schema').click(function() {
           show_signature();
+      });
+      $("#epub").click(function() {
+          show_epub_options();
       });
       $("#coverimage").change(function() {
           if ($(this).val()) {
