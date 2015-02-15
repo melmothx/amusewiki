@@ -229,7 +229,7 @@ sub as_hashref {
         $data->{produced} ||= '/';
         if (my $bb = $self->bookbuilder) {
             $data->{message} = 'Your file is ready';
-            $data->{sources} = $bb->customdir . '/' .$bb->sources_filename;
+            $data->{sources} = '/' . $bb->customdir . '/' .$bb->sources_filename;
         }
         elsif ($data->{task} eq 'publish') {
             $data->{message} = 'Changes applied';
