@@ -123,8 +123,11 @@ sub _build_webfonts {
         closedir $dh;
         foreach my $fontdir (@fontdirs) {
             my $path = File::Spec->catdir($dir, $fontdir);
-            if (my $wf = Text::Amuse::Compile::Webfonts->new(webfontsdir => $path)) {
-                $out{$wf->family} = $wf->srcdir;
+            if (-d $path) {
+                if (my $wf = Text::Amuse::Compile::Webfonts
+                    ->new(webfontsdir => $path)) {
+                    $out{$wf->family} = $wf->srcdir;
+                }
             }
         }
     }
