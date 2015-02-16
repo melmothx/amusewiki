@@ -1,8 +1,0 @@
-family Linux Libertine
-regular LinLibertine_R.otf
-italic LinLibertine_RI.otf
-bold LinLibertine_RB.otf  
-bolditalic LinLibertine_RBI.otf  
-size 10
-
-

@@ -1,8 +1,0 @@
-family PT Serif
-bolditalic PTF76F.ttf
-italic PTF56F.ttf
-regular PTF55F.ttf
-bold PTF75F.ttf
-size 10
-
-

@@ -1,7 +1,0 @@
-family Droid Serif
-regular DroidSerif-Regular.ttf
-italic DroidSerif-Italic.ttf
-bold DroidSerif-Bold.ttf
-bolditalic DroidSerif-Bold.ttf
-size 9
-
