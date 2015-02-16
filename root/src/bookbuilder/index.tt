@@ -79,8 +79,18 @@
       </label>
     </div>
     <div id="epub-options">
-      <!-- placeholder -->
+      <label for="epubfont">[% loc('Please select the desired fonts') %]</label>
+      <select name="epubfont" id="mainfont" class="form-control">
+        <option value="">[% loc('no font embedding') %]</option>
+        [% FOREACH webfont IN bb.available_webfonts %]
+        <option [% IF webfont == bb.epubfont %] selected="selected" [% END %]
+                value="[% webfont %]">
+          [% webfont %]
+        </option>
+        [% END %]
+      </select>
     </div>
+    <div>&nbsp;</div>
     <div id="pdf-options">
     <p>
       <label for="mainfont">

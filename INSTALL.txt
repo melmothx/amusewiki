@@ -65,7 +65,7 @@ This is a sample configuration of the installer:
 The needed fonts are shipped in texlive, under texmf-dist/fonts/, so
 it's usually enough to symlink them into ~/.fonts.
 
-Fonts needed: antt  cm-unicode  libertine  paratype  poltawski  tex-gyre iwona
+Fonts needed: antt  cm-unicode  libertine  paratype  poltawski  tex-gyre iwona droids
 
 The SIL charis font is not shipped by texlive, but it's usually
 packaged by your distro. Or download it at
@@ -78,6 +78,12 @@ run ./gen.sh
 
 Disregard the copious output of missing characters, this is fine (as
 we use this to test them).
+
+For the EPUB to have the font bundling, you need to populate the
+webfonts subdirectories with the fonts.
+
+TODO: provide a script which will parse the fc-list output and copy
+the fonts there.
 
 In ./root/static/js download and unpack ckeditor:
 

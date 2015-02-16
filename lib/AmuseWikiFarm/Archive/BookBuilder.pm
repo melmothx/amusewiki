@@ -20,6 +20,7 @@ use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 use Text::Amuse::Compile;
 use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
+use Text::Amuse::Compile::Webfonts;
 
 =head1 NAME
 
@@ -103,6 +104,33 @@ has rootdir => (is => 'ro',
                 default => sub { 'root' },
                );
 
+has webfonts_rootdir => (is => 'ro',
+                         isa => 'Str',
+                         default => sub { 'webfonts' });
+
+has webfonts => (is => 'ro',
+                 isa => 'HashRef[Str]',
+                 lazy => 1,
+                 builder => '_build_webfonts');
+
+sub _build_webfonts {
+    my $self = shift;
+    my $dir = $self->webfonts_rootdir;
+    my %out;
+    if ($dir and -d $dir) {
+        opendir (my $dh, $dir) or die "Can't opendir $dir $!";
+        my @fontdirs = grep { /^\w+$/ } readdir $dh;
+        closedir $dh;
+        foreach my $fontdir (@fontdirs) {
+            my $path = File::Spec->catdir($dir, $fontdir);
+            if (my $wf = Text::Amuse::Compile::Webfonts->new(webfontsdir => $path)) {
+                $out{$wf->family} = $wf->srcdir;
+            }
+        }
+    }
+    return \%out;
+}
+
 sub jobdir {
     my $self = shift;
     return File::Spec->catdir($self->rootdir, $self->customdir);
@@ -147,6 +175,11 @@ Build an EPUB instead of a PDF
 has epub => (is => 'rw',
              isa => 'Bool',
              default => sub { 0 });
+
+has epubfont => (
+                 is => 'rw',
+                 isa => 'Maybe[Str]',
+                );
 
 =head2 title
 
@@ -733,6 +766,7 @@ sub import_from_params {
 sub _main_methods {
     return qw/title
               epub
+              epubfont
               mainfont
               fontsize
               coverfile
@@ -873,6 +907,20 @@ sub compile {
     }
     die "No text found!" unless @texts;
 
+    my %compiler_args = (
+                         logger => $logger,
+                         extra => $template_opts,
+                         pdf => !$self->epub,
+                         epub => $self->epub,
+                        );
+    if ($self->epub) {
+        if (my $epubfont = $self->epubfont) {
+            if (my $directory = $self->webfonts->{$epubfont}) {
+                $compiler_args{webfontsdir} = $directory;
+            }
+        }
+    }
+
     chdir $basedir or die $!;
 
     # extract the archives
@@ -887,15 +935,7 @@ sub compile {
         undef $zip;
         unlink $zipfile or die $!;
     }
-    my $compiler = Text::Amuse::Compile->new(
-                                             tex => 1,
-                                             pdf => !$self->epub,
-                                             epub => $self->epub,
-                                             extra => $template_opts,
-                                             logger => $logger,
-                                            );
-    print $compiler->version;
-
+    my $compiler = Text::Amuse::Compile->new(%compiler_args);
     my $outfile = $self->produced_filename;
 
     if (@texts == 1) {
@@ -979,6 +1019,12 @@ sub serialize {
         $args{$method} = $self->$method;
     }
     return \%args;
+}
+
+sub available_webfonts {
+    my $self = shift;
+    my @fonts = sort keys %{ $self->webfonts };
+    return \@fonts;
 }
 
 

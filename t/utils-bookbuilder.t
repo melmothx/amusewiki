@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 104;
+use Test::More tests => 106;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -307,6 +307,9 @@ $bb->signature(0);
 $bb->cover(1);
 check_file($bb, "imposed one");
 cleanup($bb->job_id);
+
+ok ($bb->webfonts_rootdir);
+ok ($bb->webfonts) and diag Dumper($bb->webfonts);
 
 sub check_file {
     my ($bb, $msg) = @_;
