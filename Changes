@@ -1,5 +1,12 @@
 This file documents the revision history for AmuseWiki.
 
+1.06 UNRELEASED
+
+ - Bumped up prerequisites: Text::Amuse::Compile
+ - Updated translations: mk
+ - Added EPUB output to Bookbuilder
+ - Added font embedding option to Bookbuilder's EPUBs
+
 1.05 2015-02-07
 
  - Bumped up prerequisites: Text::Amuse, Text::Amuse::Compile,
