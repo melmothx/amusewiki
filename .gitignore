@@ -35,6 +35,4 @@ var/*
 !var/.exists
 bootstrap-amw/bootstrap/*
 current_version_is*.txt
-webfonts/*/*.ttf
-webfonts/*/*.otf
-
+webfonts/*/*
