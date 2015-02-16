@@ -82,8 +82,8 @@ we use this to test them).
 For the EPUB to have the font bundling, you need to populate the
 webfonts subdirectories with the fonts.
 
-TODO: provide a script which will parse the fc-list output and copy
-the fonts there.
+Go into the webfonts directory and run ./populate-webfonts.pl from
+there.
 
 In ./root/static/js download and unpack ckeditor:
 
