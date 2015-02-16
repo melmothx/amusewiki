@@ -877,6 +877,10 @@ sub compile {
 
     my $bbdir    = File::Temp->newdir(CLEANUP => 1);
     my $basedir = $bbdir->dirname;
+    my $makeabs = sub {
+        my $name = shift;
+        return File::Spec->catfile($basedir, $name);
+    };
 
     # print "Created $basedir\n";
 
@@ -927,13 +931,13 @@ sub compile {
         $zip->extractTree($archive, $basedir);
     }
     my $compiler = Text::Amuse::Compile->new(%compiler_args);
-    my $outfile = File::Spec->catfile($basedir, $self->produced_filename);
+    my $outfile = $makeabs->($self->produced_filename);
 
     if (@texts == 1) {
         my $basename = shift(@texts);
-        my $fileout   = File::Spec->catfile($basedir,
-                                            $basename . '.' . $self->_produced_file_extension);
-        $compiler->compile(File::Spec->catfile($basedir, $basename . '.muse'));
+        my $fileout   = $makeabs->($basename . '.' . $self->_produced_file_extension);
+        $compiler->compile($makeabs->($basename . '.muse'));
+
         if (-f $fileout) {
             move($fileout, $outfile) or die "Couldn't move $fileout to $outfile";
         }
@@ -948,7 +952,7 @@ sub compile {
         # compile
         $compiler->compile($target);
     }
-
+    die "cwd changed. This is a bug" if getcwd() ne $homedir;
     die "$outfile not produced!\n" unless (-f $outfile);
 
     # imposing needed?
@@ -958,7 +962,7 @@ sub compile {
 
         my %args = %{$data->{imposer_options}};
         $args{file}    =  $outfile;
-        $args{outfile} = File::Spec->catfile($basedir, $self->job_id. '.imp.pdf');
+        $args{outfile} = $makeabs->($self->job_id. '.imp.pdf');
         $args{suffix}  = 'imp';
         print Dumper(\%args);
         my $imposer = PDF::Imposition->new(%args);
@@ -978,6 +982,7 @@ sub compile {
     $zipdir->writeToFileNamed(File::Spec->catfile($jobdir,
                                                   $zipname)) == AZ_OK
       or $logger->("Failure writing $zipname");
+    die "cwd changed. This is a bug" if getcwd() ne $homedir;
     return $self->produced_filename;
 }
 
