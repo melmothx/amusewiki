@@ -890,19 +890,12 @@ sub compile {
             warn "Couldn't find $text\n";
             next;
         }
-
         push @texts, $text;
         if ($archives{$text}) {
             next;
         }
         else {
-            $archives{$text}++;
-        }
-
-        # pick and copy the zip in the temporary dir
-        my $zip = $title->filepath_for_ext('zip');
-        if (-f $zip) {
-            copy($zip, $basedir) or die $!;
+            $archives{$text} = $title->filepath_for_ext('zip');
         }
     }
     die "No text found!" unless @texts;
@@ -921,27 +914,26 @@ sub compile {
         }
     }
 
-    chdir $basedir or die $!;
-
+    print Dumper(\%archives);
     # extract the archives
-    foreach my $i (keys %archives) {
-        my $zipfile = $i . '.zip';
+
+    foreach my $archive (keys %archives) {
+        my $zipfile = $archives{$archive};
         my $zip = Archive::Zip->new;
         unless ($zip->read($zipfile) == AZ_OK) {
-            warn "Couldn't read $i.zip";
+            warn "Couldn't read $zipfile";
             next;
         }
-        $zip->extractTree($i);
-        undef $zip;
-        unlink $zipfile or die $!;
+        $zip->extractTree($archive, $basedir);
     }
     my $compiler = Text::Amuse::Compile->new(%compiler_args);
-    my $outfile = $self->produced_filename;
+    my $outfile = File::Spec->catfile($basedir, $self->produced_filename);
 
     if (@texts == 1) {
         my $basename = shift(@texts);
-        my $fileout   = $basename . '.' . $self->_produced_file_extension;
-        $compiler->compile($basename . '.muse');
+        my $fileout   = File::Spec->catfile($basedir,
+                                            $basename . '.' . $self->_produced_file_extension);
+        $compiler->compile(File::Spec->catfile($basedir, $basename . '.muse'));
         if (-f $fileout) {
             move($fileout, $outfile) or die "Couldn't move $fileout to $outfile";
         }
@@ -966,9 +958,9 @@ sub compile {
 
         my %args = %{$data->{imposer_options}};
         $args{file}    =  $outfile;
-        $args{outfile} = $self->job_id. '.imp.pdf';
+        $args{outfile} = File::Spec->catfile($basedir, $self->job_id. '.imp.pdf');
         $args{suffix}  = 'imp';
-        # print Dumper(\%args);
+        print Dumper(\%args);
         my $imposer = PDF::Imposition->new(%args);
         $imposer->impose;
         # overwrite the original pdf, we can get another one any time
@@ -986,10 +978,7 @@ sub compile {
     $zipdir->writeToFileNamed(File::Spec->catfile($jobdir,
                                                   $zipname)) == AZ_OK
       or $logger->("Failure writing $zipname");
-
-    # chdir back to home
-    chdir $homedir or die $!;
-    return $outfile;
+    return $self->produced_filename;
 }
 
 sub produced_files {
