@@ -186,6 +186,52 @@ __PACKAGE__->add_columns(
     },
 );
 
+sub available_roles {
+    return qw/librarian root/;
+}
+
+sub role_list {
+    my $self = shift;
+    my %roles = map { $_->role => 1 } $self->roles;
+    my @out;
+    foreach my $role ($self->available_roles) {
+        push @out, { role => $role,
+                     active => $roles{$role} };
+    }
+    return \@out;
+}
+
+sub available_sites {
+    my $self = shift;
+    my $sites = $self->result_source->schema->resultset('Site')
+      ->search({}, {
+                    columns => [qw/id sitename canonical/],
+                    order_by => [qw/canonical/],
+                   });
+    my @out;
+    while (my $site = $sites->next) {
+        push @out, {
+                    id => $site->id,
+                    sitename => $site->sitename || $site->id,
+                    canonical => $site->canonical,
+                   };
+    }
+    return @out;
+
+}
+
+sub site_list {
+    my $self = shift;
+    my %sites = map { $_->id => 1 } $self->sites;
+    my @out = $self->available_sites;
+    foreach my $site (@out) {
+        if ($sites{$site->{id}}) {
+            $site->{active} = 1;
+        }
+    }
+    return \@out;
+}
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

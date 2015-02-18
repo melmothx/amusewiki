@@ -44,7 +44,8 @@ A too long uri was generated (100 chars vs. 95)
 
 Won't do unless there is a good reason to. Current thing works just fine.
 
-* TODO user management in admin
+* DONE user management in admin
+  CLOSED: [2015-02-18 mer 15:32]
 
 This requires a change in the chain logic for root, which should be
 able to login even on whatever site.

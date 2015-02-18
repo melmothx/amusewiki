@@ -278,6 +278,7 @@ sub edit :Chained('user') :Args(1) {
     if ($params{update}) {
         my @msgs;
         my @errors;
+        # TODO do not repeat this routine in Controller/Admin.pm
         # password
         if ($params{passwordrepeat} && $params{password}) {
             if ($params{passwordrepeat} eq $params{password}) {

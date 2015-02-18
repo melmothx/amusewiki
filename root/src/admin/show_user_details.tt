@@ -30,6 +30,42 @@
                  id="email" value="[% user.email | html %]" />
         </p>
       </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox"
+                 [% IF user.active %] checked="checked" [% END %]
+                 name="active" />
+          <strong>[% loc('Active') %]</strong>
+        </label>
+      </div>
+      <div>
+        <h2>[% loc('Roles') %]</h2>
+        <div class="form-group">
+          [% FOREACH role IN user.role_list %]
+          <label>
+            <input type="checkbox"
+                   [% IF role.active %]checked="checked"[% END %]
+                   name="role-[% role.role %]" />
+            [% role.role %]
+          </label>
+          <br />
+          [% END %]
+        </div>
+        <h2>[% loc('Sites') %]</h2>
+        <div class="form-group">
+          [% FOREACH usite IN user.site_list %]
+          <label>
+            <input type="checkbox"
+                   [% IF usite.active %]checked="checked"[% END %]
+                   name="site-[% usite.id %]" />
+            <a href="http://[% usite.canonical %]">
+              [% usite.sitename %]
+            </a>
+          </label>
+          <br />
+          [% END %]
+        </div>
+      </div>
       <button type="submit" class="btn btn-default" name="update" value="update">
         [% loc('Update') %]
       </button>

@@ -317,6 +317,11 @@
                 [%# and these are for root %]
                 [% IF c.check_user_roles('root') %]
                 <li>
+                  <a href="[% c.uri_for_action('/admin/show_users') %]">
+                    [% loc('Users') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for_action('/admin/list') %]">
                     [% loc('Sites') %]
                   </a>

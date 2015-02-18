@@ -216,7 +216,72 @@ sub show_user_details :Chained('user_details') :PathPart('') :Args(0) {
 
 sub edit_user_details :Chained('user_details') :PathPart('edit') :Args(0){
     my ($self, $c) = @_;
-    $c->flash(status_msg => $c->loc('User updated'));
+    # pick user from the stash
+    my $user = $c->stash->{user};
+    die "Shouldn't happen" unless $user;
+    my $params = $c->request->body_params;
+    my %updates;
+    my @errors;
+    # TODO: move the common validation out of Controller::User into
+    # ResultSet::User or helper class.
+
+    if ($params->{password} and $params->{passwordrepeat}) {
+        if ($params->{password} eq $params->{passwordrepeat}) {
+            if (length($params->{password}) > 7) {
+                $updates{password} = $params->{password};
+            }
+            else {
+                push @errors, $c->loc('Password too short') . '';
+            }
+        }
+        else {
+            push @errors, $c->loc('Passwords do not match') . '';
+        }
+    }
+    if ($params->{email}) {
+        if (my $mail = Email::Valid->address($params->{email})) {
+            $updates{email} = $mail;
+        }
+        else {
+            push @errors, $c->loc('Invalid email') . '';
+        }
+    }
+    if (@errors) {
+        $c->flash(error_msg => join(' - ', @errors));
+    }
+    elsif ($params->{update}) {
+        # check active bit
+        $updates{active} = $params->{active} ? 1 : 0;
+        my $mail_required = 0;
+        if (!$user->active and $updates{active}) {
+            $mail_required = 1;
+        }
+        $user->update(\%updates);
+
+        # check roles
+        my @roles;
+        foreach my $role ($user->available_roles) {
+            if ($params->{"role-$role"}) {
+                push @roles, { role => $role };
+            }
+        }
+        $user->set_roles(\@roles);
+
+        # and the sites
+        my @sites;
+        foreach my $site (map { $_->{id} } $user->available_sites) {
+            if ($params->{"site-$site"}) {
+                push @sites, { id => $site };
+            }
+        }
+        $user->set_sites(\@sites);
+        if ($mail_required) {
+            # TODO: send a mail like in C::User
+        }
+        $c->flash(status_msg => $c->loc('User [_1] updated', $user->username));
+        $c->response->redirect($c->uri_for_action('/admin/show_users'));
+        return;
+    }
     $c->response->redirect($c->uri_for_action('/admin/show_user_details',
                                               [ $c->stash->{user}->id ]));
 }

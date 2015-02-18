@@ -1,10 +1,12 @@
 #!perl
+
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 27;
-BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-
+use Test::More tests => 56;
+use Data::Dumper;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 
@@ -14,6 +16,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $new_username = 'piccoloutente';
+my $new_password = 'nuovapass';
 
 ok ($schema);
 
@@ -65,19 +68,48 @@ my $edit_url = $mech->uri->path;
 like $edit_url, qr{^/admin/users/\d+$};
 $mech->get_ok($edit_url);
 
-$mech->get_ok('/admin/users');
-
+diag "Editing $new_username";
 my $userobj = $schema->resultset('User')->find({ username => $new_username });
-
 ok ($userobj, "$new_username created and found: " . $userobj->id);
 
-$mech->submit_form(form_id => 'delete-user-form-' . $userobj->id,
-                   button => 'delete');
+my $default_pass = $userobj->password->hash_hex;
+ok(!$userobj->active, "User is inactive");
 
-diag $mech->uri->path;
-$mech->content_contains('id="status_message">');
-ok (!$schema->resultset('User')->find({ username => $new_username }),
-    "$new_username deleted");
+$mech->submit_form(with_fields => {
+                                   email => 'info@amusewiki.org',
+                                   password => $new_password,
+                                   passwordrepeat => $new_password,
+                                   active => 1,
+                                   'site-0blog0' => 1,
+                                   'role-librarian' => 1,
+                                  },
+                   button => 'update');
+$userobj->discard_changes;
+is $userobj->email, 'info@amusewiki.org';
+isnt $userobj->password->hash_hex, $default_pass, "Password updated";
+ok ($userobj->active, "User now is active");
+
+is_deeply $userobj->role_list, [
+                                {
+                                 role => 'librarian',
+                                 active => 1,
+                                },
+                                {
+                                 role => 'root',
+                                 active => undef,
+                                }
+                               ], "Roles ok"
+  or diag Dumper($userobj->role_list);
+
+is $userobj->sites->first->id, '0blog0';
+is $userobj->roles->first->role, 'librarian';
+is $userobj->sites->count, 1, "Only one site";
+is $userobj->roles->count, 1, "One role";
+is $mech->uri->path, '/admin/users';
+
+
+$mech->get_ok('/admin/users');
+
 
 foreach my $id (qw/garbage 9999999999/) {
     foreach my $path ("/admin/users/$id",
@@ -88,3 +120,57 @@ foreach my $id (qw/garbage 9999999999/) {
     }
 }
 
+$mech->get_ok('/logout');
+
+foreach my $path ('/admin/users',
+                  '/admin/users/1',
+                  '/admin/users/1/delete',
+                  '/admin/users/1/edit') {
+    $mech->get($path);
+    is ($mech->status, 403);
+}
+
+# after login with the new user, we should be denied
+$mech->get_ok('/login');
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => $new_username,
+                               password => $new_password,
+                             },
+                   button => 'submit');
+$mech->content_lacks('login-form');
+isnt $mech->uri->path, '/login', "Login appears ok";
+
+foreach my $path ('/admin/users',
+                  '/admin/users/1',
+                  '/admin/users/1/delete',
+                  '/admin/users/1/edit') {
+    $mech->get($path);
+    is ($mech->status, 403);
+}
+
+# logout and and login again with root, delete the user and try to
+# login again.
+
+$mech->get_ok('/logout');
+$mech->get_ok('/login');
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'root',
+                               password => 'root',
+                             },
+                   button => 'submit');
+$mech->get_ok('/admin/users');
+$mech->submit_form(form_id => 'delete-user-form-' . $userobj->id,
+                   button => 'delete');
+$mech->content_contains('id="status_message">');
+ok (!$schema->resultset('User')->find({ username => $new_username }),
+    "$new_username deleted");
+
+$mech->get_ok('/logout');
+$mech->get_ok('/login');
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => $new_username,
+                               password => $new_password,
+                             },
+                   button => 'submit');
+$mech->content_contains('login-form');
+is $mech->uri->path, '/login', "Still at login";
