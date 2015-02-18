@@ -161,66 +161,35 @@ sub create :Chained('user') :Args(0) {
     my %params = %{ $c->request->params };
     if ($params{create}) {
         # check if all the fields are in place
-        my %insertion;
+        my %to_validate;
         $c->log->debug("Validating");
         my $missing = 0;
-        my @fields = qw/username password passwordrepeat
-                        email emailrepeat/;
-        foreach my $f (@fields) {
-            $missing++ unless $params{$f};
+        foreach my $f (qw/username password passwordrepeat
+                          email emailrepeat/) {
+            if (my $v = $params{$f}) {
+                $to_validate{$f} = $params{$f};
+            }
+            else {
+                $missing++;
+            }
         }
-
         if ($missing) {
             $c->flash(error_msg => $c->loc('Some fields are missing, all are required'));
             return;
         }
-
-        my $toolong = 0;
-        foreach my $f (@fields) {
-            $toolong++ if length($params{$f}) > MAXLENGTH;
-        }
-        if ($toolong) {
-            $c->flash(error_msg => $c->loc('Some fields are too long'));
-            return;
-        }
-
-        # check username
-        if ($params{username} =~ m/^([0-9a-z]+)$/) {
-            $insertion{username} = $1;
-        }
-        else {
-            $c->flash(error_msg => $c->loc('Invalid username'));
-            return;
-        }
-
-        # check mail
-        if (my $mail = Email::Valid->address($params{email})) {
-            $insertion{email} = $mail;
-        }
-        else {
-            $c->flash(error_msg => $c->loc('Invalid email'));
-            return;
-        }
-
-        # check password
-        if (length($params{password}) > MINPASSWORD) {
-            $insertion{password} = $params{password};
-        }
-        else {
-            $c->flash(error_msg => $c->loc('Password too short'));
-            return;
-        }
-
-        if ($insertion{password} ne $params{passwordrepeat}) {
-            $c->flash(error_msg => $c->loc('Passwords do not match'));
-            return;
-        }
-
-        if ($insertion{email} ne $params{emailrepeat}) {
-            $c->flash(error_msg => $c->loc('Emails do not match'));
-            return;
-        }
         my $users = $c->model('DB::User');
+        my ($insert, @errors) = $users->validate_params(%to_validate);
+        my %insertion;
+
+        if ($insert and !@errors) {
+            %insertion = %$insert;
+        }
+        else {
+            $c->flash(error_msg => join ("\n", map { $c->loc($_) } @errors));
+            return;
+        }
+        die "shouldn't happen" unless $insertion{username};
+
         # at this point we should be good, if the user doesn't exist
         if ($users->find({ username => $insertion{username} })) {
             $c->flash(error_msg => $c->loc('Such username already exists'));
@@ -271,56 +240,36 @@ sub edit :Chained('user') :Args(1) {
         $c->detach('/not_permitted');
         return;
     }
-    my $user = $c->model('DB::User')->find($id);
-    die "This should not happen" unless $user;
-
+    my $users = $c->model('DB::User');
+    my $user = $users->find($id);
+    unless ($user) {
+        $c->log->warn("User $id not found!");
+        $c->detach('/not_found');
+        return;
+    }
     my %params = %{ $c->request->params };
     if ($params{update}) {
+        my %validate;
         my @msgs;
-        my @errors;
-        # TODO do not repeat this routine in Controller/Admin.pm
-        # password
         if ($params{passwordrepeat} && $params{password}) {
-            if ($params{passwordrepeat} eq $params{password}) {
-                if (length($params{password}) > MINPASSWORD and
-                    length($params{password}) < MAXLENGTH) {
-                    $user->password($params{password});
-                    push @msgs, $c->loc("Password updated");
-                }
-                else {
-                    push @errors, $c->loc("Password too short");
-                }
-            }
-            else {
-                push @errors, $c->loc("Passwords do not match");
-            }
+            $validate{passwordrepeat} = $params{passwordrepeat};
+            $validate{password} = $params{password};
+            push @msgs, $c->loc("Password updated");
         }
         # email
         if ($params{emailrepeat} && $params{email}) {
-            if ($params{emailrepeat} eq $params{email}) {
-                if (length($params{email}) < MAXLENGTH) {
-                    if (my $email = Email::Valid->address($params{email})) {
-                        $user->email($params{email});
-                        push @msgs, $c->loc("Email updated");
-                    }
-                    else {
-                        push @errors, $c->loc('Invalid email');
-                    }
-                }
-                else {
-                    push @errors, $c->loc('Some fields are too long');
-                }
-            }
-            else {
-                push @errors, $c->loc('Emails do not match');
-            }
+            $validate{emailrepeat} = $params{emailrepeat};
+            $validate{email} = $params{email};
+            push @msgs, $c->loc("Email updated");
         }
-        if ($user->is_changed) {
-            $user->update->discard_changes;
+        my ($validated, @errors) = $users->validate_params(%validate);
+        if ($validated and %$validated) {
+            $user->update($validated);
+            $user->discard_changes;
             $c->flash(status_msg => join("\n", @msgs));
         }
         if (@errors) {
-            $c->flash(error_msg => join("\n", @errors));
+            $c->flash(error_msg => join("\n", map { $c->loc($_) } @errors));
         }
     }
     $c->stash(user => $user);

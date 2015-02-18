@@ -227,63 +227,53 @@ sub edit_user_details :Chained('user_details') :PathPart('edit') :Args(0){
     my @errors;
     # TODO: move the common validation out of Controller::User into
     # ResultSet::User or helper class.
+    if ($params->{update}) {
+        if ($params->{password} and $params->{passwordrepeat}) {
+            $updates{password} = $params->{password};
+            $updates{passwordrepeat} = $params->{passwordrepeat};
+        };
+        if ($params->{email}) {
+            $updates{email} = $params->{email};
+        }
+        $updates{active} = $params->{active};
 
-    if ($params->{password} and $params->{passwordrepeat}) {
-        if ($params->{password} eq $params->{passwordrepeat}) {
-            if (length($params->{password}) > 7) {
-                $updates{password} = $params->{password};
-            }
-            else {
-                push @errors, $c->loc('Password too short') . '';
-            }
-        }
-        else {
-            push @errors, $c->loc('Passwords do not match') . '';
-        }
-    }
-    if ($params->{email}) {
-        if (my $mail = Email::Valid->address($params->{email})) {
-            $updates{email} = $mail;
-        }
-        else {
-            push @errors, $c->loc('Invalid email') . '';
-        }
-    }
-    if (@errors) {
-        $c->flash(error_msg => join(' - ', @errors));
-    }
-    elsif ($params->{update}) {
-        # check active bit
-        $updates{active} = $params->{active} ? 1 : 0;
-        my $mail_required = 0;
-        if (!$user->active and $updates{active}) {
-            $mail_required = 1;
-        }
-        $user->update(\%updates);
+        # validate
+        my ($validated, @errors) = $c->stash->{all_users}
+          ->validate_params(%updates);
 
-        # check roles
-        my @roles;
-        foreach my $role ($user->available_roles) {
-            if ($params->{"role-$role"}) {
-                push @roles, { role => $role };
+        if ($validated) {
+            # active flipping
+            my $mail_required = 0;
+            if (!$user->active and $validated->{active}) {
+                $mail_required = 1;
             }
-        }
-        $user->set_roles(\@roles);
 
-        # and the sites
-        my @sites;
-        foreach my $site (map { $_->{id} } $user->available_sites) {
-            if ($params->{"site-$site"}) {
-                push @sites, { id => $site };
+            $user->update($validated);
+            my @roles;
+            foreach my $role ($user->available_roles) {
+                if ($params->{"role-$role"}) {
+                    push @roles, { role => $role };
+                }
             }
+            $user->set_roles(\@roles);
+            # and the sites
+            my @sites;
+            foreach my $site (map { $_->{id} } $user->available_sites) {
+                if ($params->{"site-$site"}) {
+                    push @sites, { id => $site };
+                }
+            }
+            $user->set_sites(\@sites);
+            if ($mail_required) {
+                # TODO: send a mail like in C::User
+            }
+            $c->flash(status_msg => $c->loc('User [_1] updated', $user->username));
+            $c->response->redirect($c->uri_for_action('/admin/show_users'));
+            return;
         }
-        $user->set_sites(\@sites);
-        if ($mail_required) {
-            # TODO: send a mail like in C::User
+        if (@errors) {
+            $c->flash(error_msg => join("\n", map { $c->loc($_) } @errors));
         }
-        $c->flash(status_msg => $c->loc('User [_1] updated', $user->username));
-        $c->response->redirect($c->uri_for_action('/admin/show_users'));
-        return;
     }
     $c->response->redirect($c->uri_for_action('/admin/show_user_details',
                                               [ $c->stash->{user}->id ]));
