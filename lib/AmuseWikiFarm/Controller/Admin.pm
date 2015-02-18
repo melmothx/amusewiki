@@ -186,7 +186,10 @@ sub users :Chained('root') :PathPart('users') :CaptureArgs(0) {
                                               {
                                                order_by => [qw/username/]
                                               });
-    $c->stash(all_users => $users);
+    $c->stash(
+              all_users => $users,
+              page_title => $c->loc('Users'),
+             );
 }
 
 sub show_users :Chained('users') :PathPart('') :Args(0) {
