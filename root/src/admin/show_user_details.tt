@@ -1,0 +1,41 @@
+[% # -*- mode: html -*- %]
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <h2>[% loc('Edit user [_1]', user.username) %]</h2>
+    <form id="edit-user" method="post"
+          action="[% c.uri_for_action('/admin/edit_user_details', [ user.id ]) %]">
+      <div class="form-group">
+        <p>
+          <label for="password">
+            [% loc('Password, minimum 8 characters.') %] <br />
+            <strong>[% loc('Please do not use a valuable password.') %]</strong>
+          </label>
+          <input class="form-control" type="password" name="password"
+                 id="password" value="" />
+        </p>
+        <p>
+          <label for="passwordrepeat">
+            [% loc('Repeat password') %]
+          </label>
+          <input class="form-control" type="password" name="passwordrepeat"
+                 id="passwordrepeat" value="" />
+        </p>
+        <p>
+          <label for="email">
+            [% loc('Email') %]
+          </label>
+          <input class="form-control" type="text" name="email"
+                 id="email" value="[% user.email | html %]" />
+        </p>
+      </div>
+      <button type="submit" class="btn btn-default" name="update" value="update">
+        [% loc('Update') %]
+      </button>
+    </form>
+  </div>
+  <div class="col-md-2"></div>  
+</div>
+      
+

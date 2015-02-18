@@ -171,7 +171,7 @@ sub create_user :Chained('root') :PathPart('newuser') :Args(0) {
         }
         else {
             my $user = $c->model('DB::User')->create(\%insertion);
-            $c->response->redirect($c->uri_for_action('/admin/edit_user_details',
+            $c->response->redirect($c->uri_for_action('/admin/show_user_details',
                                                       [ $user->id ]));
             return;
         }
@@ -198,7 +198,7 @@ sub user_details :Chained('users') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
     if ($id =~ m/\A([0-9]+)\z/) {
         if (my $user = $c->stash->{all_users}->find($1)) {
-            $c->stash(user_detail => $user);
+            $c->stash(user => $user);
             return;
         }
         $c->log->warn("User $id not found");
@@ -216,14 +216,17 @@ sub show_user_details :Chained('user_details') :PathPart('') :Args(0) {
 
 sub edit_user_details :Chained('user_details') :PathPart('edit') :Args(0){
     my ($self, $c) = @_;
+    $c->flash(status_msg => $c->loc('User updated'));
+    $c->response->redirect($c->uri_for_action('/admin/show_user_details',
+                                              [ $c->stash->{user}->id ]));
 }
 
 sub delete_user :Chained('user_details') :PathPart('delete') :Args(0) {
     my ($self, $c) = @_;
     if ($c->request->body_params->{delete}) {
-        $c->log->info("Deleting user " . $c->stash->{user_detail}->username);
-        $c->flash(status_msg => $c->loc("User [_1] deleted", $c->stash->{user_detail}->username));
-        $c->stash->{user_detail}->delete;
+        $c->log->info("Deleting user " . $c->stash->{user}->username);
+        $c->flash(status_msg => $c->loc("User [_1] deleted", $c->stash->{user}->username));
+        $c->stash->{user}->delete;
     }
     $c->response->redirect($c->uri_for_action('/admin/show_users'));
 }

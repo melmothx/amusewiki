@@ -14,7 +14,11 @@
     </tr>
     [% WHILE (user = all_users.next) %]
     <tr>
-      <td>[% user.username %]</td>
+      <td>
+        <a href="[% c.uri_for_action('/admin/show_user_details', [ user.id ]) %]">
+          [% user.username %]
+        </a>
+      </td>
       <td>
         <form method="post" class="form-horizontal" role="form"
               id="delete-user-form-[% user.id %]"

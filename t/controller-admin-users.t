@@ -2,7 +2,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 26;
+use Test::More tests => 27;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
@@ -61,7 +61,9 @@ $mech->submit_form(form_id => 'user-create-form',
                    button => 'create');
 
 $mech->content_lacks('error_message');
-like $mech->uri->path, qr{^/admin/users/\d+/edit};
+my $edit_url = $mech->uri->path;
+like $edit_url, qr{^/admin/users/\d+$};
+$mech->get_ok($edit_url);
 
 $mech->get_ok('/admin/users');
 
