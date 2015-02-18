@@ -148,6 +148,90 @@ sub delete_job :Chained('get_jobs') :PathPart('delete') :Args(0) {
 
 }
 
+sub create_user :Chained('root') :PathPart('newuser') :Args(0) {
+    my ($self, $c) = @_;
+    my $params = $c->request->body_params;
+    my $home = $c->uri_for_action('/admin/show_users');
+    my %insertion = (
+                     active => 0,
+                     # password is (well, not so) weak, but the account is disabled.
+                     password => rand(9999999) . '',
+                    );
+    if ($params->{create} && $params->{username}) {
+        if ($params->{username} =~ m/\A([0-9a-z]{2,250})\z/) {
+            $insertion{username} = $1;
+        }
+        else {
+            $c->flash(error_msg => $c->loc("Username should be alphanumerical only and with 2-250 characters"));
+        }
+    }
+    if ($insertion{username}) {
+        if ($c->model('DB::User')->find({ username => $insertion{username} })) {
+            $c->flash(error_msg => $c->loc("Such an user already exists!"));
+        }
+        else {
+            my $user = $c->model('DB::User')->create(\%insertion);
+            $c->response->redirect($c->uri_for_action('/admin/edit_user_details',
+                                                      [ $user->id ]));
+            return;
+        }
+    }
+    $c->log->warn("Validation failed");
+    $c->response->redirect($home);
+}
+
+sub users :Chained('root') :PathPart('users') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $users = $c->model('DB::User')->search({},
+                                              {
+                                               order_by => [qw/username/]
+                                              });
+    $c->stash(all_users => $users);
+}
+
+sub show_users :Chained('users') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    return;
+}
+
+sub user_details :Chained('users') :PathPart('') :CaptureArgs(1) {
+    my ($self, $c, $id) = @_;
+    if ($id =~ m/\A([0-9]+)\z/) {
+        if (my $user = $c->stash->{all_users}->find($1)) {
+            $c->stash(user_detail => $user);
+            return;
+        }
+        $c->log->warn("User $id not found");
+    }
+    else {
+        $c->log->warn("Garbage passed as id: $id");
+    }
+    $c->detach('/not_found');
+}
+
+sub show_user_details :Chained('user_details') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    return;
+}
+
+sub edit_user_details :Chained('user_details') :PathPart('edit') :Args(0){
+    my ($self, $c) = @_;
+}
+
+sub delete_user :Chained('user_details') :PathPart('delete') :Args(0) {
+    my ($self, $c) = @_;
+    if ($c->request->body_params->{delete}) {
+        $c->log->info("Deleting user " . $c->stash->{user_detail}->username);
+        $c->flash(status_msg => $c->loc("User [_1] deleted", $c->stash->{user_detail}->username));
+        $c->stash->{user_detail}->delete;
+    }
+    $c->response->redirect($c->uri_for_action('/admin/show_users'));
+}
+
+
+
+
+
 =encoding utf8
 
 =head1 AUTHOR
