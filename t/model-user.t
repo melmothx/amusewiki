@@ -5,7 +5,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 2;
+use Test::More tests => 22;
 use Data::Dumper;
 use AmuseWikiFarm::Schema;
 
