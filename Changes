@@ -8,6 +8,17 @@ This file documents the revision history for AmuseWiki.
  - Added font embedding option to Bookbuilder's EPUBs
  - Added user administration (only for root users)
 
+There is no DB upgrade, but to get the font embedding working you need
+to populate the "webfonts" directory. To do so:
+
+  cd webfonts
+  ./populate-webfonts.pl
+
+If you have the fonts installed and the fc-list output is parsable,
+you should see the directory full of fonts. The space (ab)used with
+these copies is about 32Mb (if you can't have 50Mb spare, better you
+don't run this application at all).
+
 1.05 2015-02-07
 
  - Bumped up prerequisites: Text::Amuse, Text::Amuse::Compile,
