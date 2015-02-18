@@ -10,11 +10,22 @@ use File::Basename;
 
 my @styles = (qw/bold italic regular bolditalic/);
 
-my @fonts = ("Droid Serif",
-             "Linux Libertine O",
-             "PT Serif",
-             "TeX Gyre Pagella",
-             "Charis SIL",
+my @fonts = (
+             'Linux Libertine O',
+             'Charis SIL',
+             'CMU Serif',
+             'TeX Gyre Termes',
+             'TeX Gyre Pagella',
+             'TeX Gyre Schola',
+             'TeX Gyre Bonum',
+             'TeX Gyre Heros',
+             'TeX Gyre Adventor',
+             'Iwona',
+             'Antykwa Poltawskiego',
+             'Antykwa Torunska',
+             'PT Serif',
+             'PT Sans',
+             'Droid Serif',
             );
 
 my %specs;
