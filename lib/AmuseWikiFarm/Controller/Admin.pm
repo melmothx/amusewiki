@@ -225,12 +225,10 @@ sub edit_user_details :Chained('user_details') :PathPart('edit') :Args(0){
     my $params = $c->request->body_params;
     my %updates;
     my @errors;
-    # TODO: move the common validation out of Controller::User into
-    # ResultSet::User or helper class.
     if ($params->{update}) {
-        if ($params->{password} and $params->{passwordrepeat}) {
-            $updates{password} = $params->{password};
-            $updates{passwordrepeat} = $params->{passwordrepeat};
+        if ($params->{password} || $params->{passwordrepeat}) {
+            $updates{password} = $params->{password} || '';
+            $updates{passwordrepeat} = $params->{passwordrepeat} || '';
         };
         if ($params->{email}) {
             $updates{email} = $params->{email};

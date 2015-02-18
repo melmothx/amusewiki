@@ -43,8 +43,6 @@ sub status :Chained('root') :CaptureArgs(1) {
     # here we inject the message, depending on the task
 
     my $data = $job->as_hashref;
-    # TODO move this shit into the Job method and keep only the
-    # localization here.
     $data->{status_loc} = $c->loc($data->{status});
 
     if ($data->{produced}) {
