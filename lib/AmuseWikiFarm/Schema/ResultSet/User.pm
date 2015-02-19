@@ -56,7 +56,7 @@ sub validate_params {
         return undef, @errors;
     }
     if (exists $params{username}) {
-        if ($params{username} and $params{username} =~ m/\A([0-9a-z]+)\z/) {
+        if ($params{username} and $params{username} =~ m/\A([0-9a-z]{2,50})\z/) {
             $validated{username} = $1;
         }
         else {

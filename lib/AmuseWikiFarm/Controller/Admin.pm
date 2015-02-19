@@ -152,29 +152,32 @@ sub create_user :Chained('root') :PathPart('newuser') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;
     my $home = $c->uri_for_action('/admin/show_users');
+    unless ($params->{create} && $params->{username}) {
+        $c->response->redirect($home);
+        return;
+    }
+    my $dumb_pass = rand(9999999) . '';
     my %insertion = (
                      active => 0,
-                     # password is (well, not so) weak, but the account is disabled.
-                     password => rand(9999999) . '',
+                     password => $dumb_pass,
+                     passwordrepeat => $dumb_pass,
+                     username => $params->{username},
                     );
-    if ($params->{create} && $params->{username}) {
-        if ($params->{username} =~ m/\A([0-9a-z]{2,250})\z/) {
-            $insertion{username} = $1;
-        }
-        else {
-            $c->flash(error_msg => $c->loc("Username should be alphanumerical only and with 2-250 characters"));
-        }
-    }
-    if ($insertion{username}) {
-        if ($c->model('DB::User')->find({ username => $insertion{username} })) {
+    my $users = $c->model('DB::User');
+    my ($validated, @errors) = $users->validate_params(%insertion);
+    if ($validated) {
+        if ($users->find({ username => $validated->{username} })) {
             $c->flash(error_msg => $c->loc("Such an user already exists!"));
         }
         else {
-            my $user = $c->model('DB::User')->create(\%insertion);
+            my $user = $users->create($validated);
             $c->response->redirect($c->uri_for_action('/admin/show_user_details',
                                                       [ $user->id ]));
             return;
         }
+    }
+    elsif (@errors) {
+        $c->flash(error_msg => join("\n", map { $c->loc($_) } @errors));
     }
     $c->log->warn("Validation failed");
     $c->response->redirect($home);

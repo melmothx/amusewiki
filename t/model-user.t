@@ -5,7 +5,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 22;
+use Test::More tests => 26;
 use Data::Dumper;
 use AmuseWikiFarm::Schema;
 
@@ -123,9 +123,32 @@ my %tests = (
                                undef,
                                'Invalid email',
                               ],
+             invalid_username => [
+                                  {
+                                   active => 0,
+                                   password => '12341234',
+                                   passwordrepeat => '12341234',
+                                   username => 'a',
+                                  },
+                                  undef,
+                                  'Invalid username',
+                                 ],
+             valid_username => [
+                                {
+                                 active => 0,
+                                 password => '12341234',
+                                 passwordrepeat => '12341234',
+                                 username => 'ab',
+                                },
+                                {
+                                 active => 0,
+                                 password => '12341234',
+                                 username => 'ab',
+                                },
+                               ],
             );
 
-foreach my $test (keys %tests) {
+foreach my $test (sort keys %tests) {
     # print Dumper($tests{$test});
     test_validation($users, $test, @{$tests{$test}});
 }
