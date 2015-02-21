@@ -1,5 +1,9 @@
 This file documents the revision history for AmuseWiki.
 
+WARNING: *NEVER* run the test suite in the production tree, as will
+leave stray logs and files. If you want to run 'make test', do it in a
+dedicated tree.
+
 1.06 2015-02-21
 
  - Bumped up prerequisites: Text::Amuse::Compile
