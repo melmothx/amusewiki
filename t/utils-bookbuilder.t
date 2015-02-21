@@ -1,13 +1,14 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 106;
+use Test::More tests => 112;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
 # use Test::Memory::Cycle;
 use JSON qw/to_json from_json/;
 use Try::Tiny;
+use CAM::PDF;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -20,6 +21,28 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid muse_naming_algo/;
 use AmuseWikiFarm::Archive::BookBuilder;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+{
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
+                                                       dbic => $schema,
+                                                       site_id => '0blog0',
+                                                       job_id => 999998,
+                                                      });
+    cleanup($bb->job_id);
+    $bb->mainfont('TeX Gyre Pagella');
+
+    for (1..2) {
+        $bb->add_text('first-test');
+        my $pdffile = File::Spec->catfile($bb->rootdir, $bb->customdir,
+                                          $bb->compile);
+        my $pdf = CAM::PDF->new($pdffile);
+        my ($font) = ($pdf->getFonts(1));
+        ok $font->{BaseFont}->{value},
+          "Found font name: $font->{BaseFont}->{value}";
+        like $bb->mainfont, qr/Pagella/;
+        like $font->{BaseFont}->{value}, qr/Pagella/, "Font is correct";
+    }
+}
 
 my $bb = AmuseWikiFarm::Archive::BookBuilder->new;
 

@@ -78,6 +78,7 @@ requires 'MooseX::MarkAsMethods';
 requires 'File::MimeInfo';
 
 test_requires 'Test::More' => '0.88';
+test_requires 'CAM::PDF';
 
 # locations where we store the stuff
 catalyst_ignore('repo');

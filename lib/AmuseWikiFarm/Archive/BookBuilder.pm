@@ -911,6 +911,7 @@ sub compile {
                          logger => $logger,
                          extra => $template_opts,
                          pdf => !$self->epub,
+                         tex => !$self->epub,
                          epub => $self->epub,
                         );
     if ($self->epub) {
