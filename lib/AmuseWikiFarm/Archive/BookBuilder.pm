@@ -911,6 +911,10 @@ sub compile {
                          logger => $logger,
                          extra => $template_opts,
                          pdf => !$self->epub,
+                         # the following is required to avoid the
+                         # laziness of the compiler to recycle the
+                         # existing .tex when there is only one text,
+                         # so options will be ingnored.
                          tex => !$self->epub,
                          epub => $self->epub,
                         );
