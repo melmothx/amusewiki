@@ -227,25 +227,25 @@ TEMPLATE
 
 sub generate {
     my $self = shift;
-    my $css = $self->templates->css;
+    my $css = $self->css;
     my %todo = (
                 $self->titles_file  => {
                                         content => $self->create_titles || '',
                                         title   => 'Titles',
                                         lang    => $self->lang,
-                                        css     => $$css,
+                                        css     => $css,
                                        },
                 $self->topics_file  => {
                                         content => $self->create_topics || '',
                                         title   => 'Topics',
                                         lang    => $self->lang,
-                                        css     => $$css,
+                                        css     => $css,
                                        },
                 $self->authors_file  => {
                                         content => $self->create_authors || '',
                                         title   => 'Authors',
                                         lang    => $self->lang,
-                                        css     => $$css,
+                                        css     => $css,
                                        },
                );
     foreach my $file (keys %todo) {
@@ -294,6 +294,15 @@ sub create_category_listing {
                        {
                         list => $list,
                        },
+                       \$out) or die $self->tt->error;
+    return $out;
+}
+
+sub css {
+    my $self = shift;
+    my $out = '';
+    $self->tt->process($self->templates->css,
+                       { html => 1 },
                        \$out) or die $self->tt->error;
     return $out;
 }

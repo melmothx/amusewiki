@@ -7,14 +7,14 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
-use Text::Amuse::Compile::Utils qw/write_file/;
+use Text::Amuse::Compile::Utils qw/write_file read_file/;
 
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More;
+use Test::More tests => 32;
 
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -44,9 +44,17 @@ foreach my $method (map { 'create_' . $_ } @targets) {
 
 $indexes->generate;
 
+like $indexes->css, qr/div#page \{/, "Found css rule in css method";
+
 foreach my $file (@files) {
     ok (-f $file, "$file was generated");
+    my $content = read_file($file);
+    unlike $content, qr{\[\%}, "No opening TT tokens found in $file";
+    unlike $content, qr{\%\]}, "No closing TT tokens found in $file";
+    like $content, qr{<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr" lang="hr">}, "Found html tag in $file";
+    like $content, qr/div#page \{/, "Found css rule in $file";
+    like $content, qr/<div id="page">/, "Found container in $file";
+    like $content, qr/My first test/, "Found text in $file";
+    like $content, qr/first-test/, "Found text in $file";
 }
 
-
-done_testing;
