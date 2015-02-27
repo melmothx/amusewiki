@@ -4,9 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.07 UNRELEASED
+1.07 2015-02-27
 
  - Fixed leaked template in the static indexes
+
+This is a bug-fixing only release
 
 1.06 2015-02-21
 
