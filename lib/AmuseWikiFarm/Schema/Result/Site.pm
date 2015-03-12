@@ -807,6 +807,7 @@ sub available_modes {
             modwiki => 1,
             openwiki => 1,
             blog => 1,
+            private => 1,
            };
 }
 
@@ -827,6 +828,17 @@ sub human_can_publish {
     my $self = shift;
     my $mode = $self->mode;
     if ($mode eq 'openwiki') {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
+sub is_private {
+    my $self = shift;
+    my $mode = $self->mode;
+    if ($mode eq 'private') {
         return 1;
     }
     else {

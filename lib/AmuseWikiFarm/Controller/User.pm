@@ -48,7 +48,7 @@ use Email::Valid;
 
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
-sub login :Chained('/site') :PathPart('login') :Args(0) {
+sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
     my ( $self, $c ) = @_;
     if ($c->user_exists) {
         $c->flash(status_msg => $c->loc("You are already logged in"));

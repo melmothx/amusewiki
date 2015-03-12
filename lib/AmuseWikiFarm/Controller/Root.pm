@@ -59,7 +59,7 @@ Locale name
 
 =cut
 
-sub site :Chained('/') :PathPart('') :CaptureArgs(0) {
+sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
 
     # catch the host. ->uri is an URI object, as per doc.
@@ -176,6 +176,15 @@ sub site :Chained('/') :PathPart('') :CaptureArgs(0) {
         $c->stash(navigation => $nav_hash);
     }
     return 1;
+}
+
+sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    if ($c->stash->{site}->is_private and !$c->user_exists) {
+        $c->response->redirect($c->uri_for('/login',
+                                           { goto => $c->req->path }));
+        $c->detach();
+    }
 }
 
 sub not_found :Private {

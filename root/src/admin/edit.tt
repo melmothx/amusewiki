@@ -26,6 +26,10 @@
       </label>
       <div class="col-sm-10">
         <select name="mode" id="mode" class="form-control">
+          <option value="private"
+                  [%- IF esite.mode == 'private' %]selected="selected"[% END %]>
+                  [% loc('Private') %]
+          </option>
           <option value="modwiki"
                   [%- IF esite.mode == 'modwiki' %]selected="selected"[% END %]>
                   [% loc('Moderated wiki') %]

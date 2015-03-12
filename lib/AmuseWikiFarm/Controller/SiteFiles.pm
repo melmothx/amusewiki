@@ -43,7 +43,7 @@ files directory into root/repo/<site_id>
 
 
 
-sub root :Chained('/site') :PathPart('sitefiles') :CaptureArgs(1) {
+sub root :Chained('/site_no_auth') :PathPart('sitefiles') :CaptureArgs(1) {
     my ( $self, $c, $site_id ) = @_;
     # check if the site_id matches the stashed value
     if ($site_id ne $c->stash->{site}->id) {
