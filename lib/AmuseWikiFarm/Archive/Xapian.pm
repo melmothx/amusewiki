@@ -83,7 +83,7 @@ sub xapian_stemmer {
                     fr => 'french',
                     de => 'german',
                     hu => 'hungarian',
-                    it => 'italina',
+                    it => 'italian',
                     no => 'norwegian',
                     pt => 'portuguese',
                     ro => 'romanian',
