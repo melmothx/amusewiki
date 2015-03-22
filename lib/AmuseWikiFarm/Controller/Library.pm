@@ -288,6 +288,17 @@ sub text_serving :Private {
               text => $text,
               page_title => decode_entities($text->title),
              );
+    foreach my $listing (qw/authors topics/) {
+        my @list;
+        my $categories = $text->$listing;
+        while (my $cat = $categories->next) {
+            push @list, {
+                         uri => $cat->full_uri,
+                         name => $cat->name,
+                        };
+        }
+        $c->stash("text_$listing" => \@list);
+    }
 }
 
 

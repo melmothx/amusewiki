@@ -27,40 +27,60 @@
   <div id="preamble-container" class="well">
   <div id="preamble">
     <p id="texttitle">
-      <strong>[% loc('Title') %]:</strong>
+      <span id="texttitle-label">
+        <strong>[% loc('Title') %]:</strong>
+      </span>
       [% text.title %]
     </p>
 
     [% IF text.subtitle %]
     <p id="textsubtitle">
-      <strong>[% loc('Subtitle') %]:</strong>
+      <span id="textsubtitle-label">
+        <strong>[% loc('Subtitle') %]:</strong>
+      </span>
       [% text.subtitle %]
     </p>
     [% END %]
 
-    [% IF text.authors.size %]
+    [% IF text_authors.size %]
     <p id="authors">
-      <strong>[% loc('Authors') %]:</strong>
-      [% FOREACH author IN text.authors -%]
-      <a href="[% c.uri_for('/authors') %]/[% author.uri %]">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
+      <span id="authors-label">
+        <strong>
+          [%- IF text_authors.size == 1 -%]
+          [%- loc('Author') -%]
+          [%- ELSE -%]
+          [%- loc('Authors') -%]
+          [%- END -%]:
+        </strong>
+      </span>
+      [% FOREACH author IN text_authors -%]
+      <a href="[% c.uri_for(author.uri) %]">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
     </p>
     [% END %]
 
     [% IF text.date %]
     <p id="textdate">
-      <strong>[% loc('Date') %]:</strong>
+      <span id="textdate-label">
+        <strong>[% loc('Date') %]:</strong>
+      </span>
       [% text.date %]
     </p>
     [% END %]
 
-    [% IF text.topics.size %]
+    [% IF text_topics.size %]
     <p id="topics">
       <span id="preamble-topics-label">
-        <strong>[% loc('Topics') %]:</strong>
+        <strong>
+          [%- IF text_topics.size == 1 -%]
+          [%- loc('Topic') -%]
+          [%- ELSE -%]
+          [%- loc('Topics') -%]
+          [%- END -%]:
+        </strong>
       </span>
-      [% FOREACH topic IN text.topics -%]
-      <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">
+      [% FOREACH topic IN text_topics -%]
+      <a href="[% c.uri_for(topic.uri) %]">
       [% loc(topic.name) %]
       [%- # -%]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
@@ -69,14 +89,18 @@
 
     [% IF text.source %]
     <p id="preamblesrc">
-      <strong>[% loc('Source') %]:</strong>
+      <span id="preamblesrc-label">
+        <strong>[% loc('Source') %]:</strong>
+      </span>
       [% text.source %]
     </p>
     [% END %]
 
     [% IF text.notes %]
     <p id="preamblenotes">
-      <strong>[% loc('Notes') %]:</strong>
+      <span id="preamblenotes-label">
+        <strong id="preamblenotes-label">[% loc('Notes') %]:</strong>
+      </span>
       [% text.notes %]
     </p>
     [% END %]
