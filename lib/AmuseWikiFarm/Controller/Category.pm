@@ -5,7 +5,6 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
-use HTML::Entities qw/decode_entities/;
 
 =head1 NAME
 
@@ -125,10 +124,9 @@ sub single_category :Private {
         my $texts = $cat->titles->published_texts;
         my $current_locale = $c->stash->{current_locale_code};
 
-        # page_title is html-escaped, so unescape it back
-        my $page_title = $c->stash->{site}->lexicon_translate_html($current_locale,
-                                                                   $cat->name);
-        $c->stash(page_title => decode_entities($page_title),
+        # the unescaping happens when calling $c->loc
+        my $page_title = $c->loc($cat->name);
+        $c->stash(page_title => $page_title,
                   template => 'category-details.tt',
                   texts => $texts,
                   category => $cat);

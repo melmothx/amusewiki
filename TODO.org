@@ -1,3 +1,11 @@
+* DONE False positive for footnotes without text
+  CLOSED: [2015-03-22 dom 09:09]
+* TODO False positive for lists on right/center aligned text
+* DONE Category/Categories needs an override
+  CLOSED: [2015-03-22 dom 12:42]
+* DONE Clean soft-hyphen + space on typographical fixes
+  CLOSED: [2015-03-22 dom 09:09]
+
 * TODO When activating an user, send a mail
 * TODO Add descriptions to categories
 

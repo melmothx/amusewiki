@@ -61,7 +61,7 @@
       </span>
       [% FOREACH topic IN text.topics -%]
       <a href="[% c.uri_for('/topics') %]/[% topic.uri %]">
-      [% site.lexicon_translate_html(current_locale_code, topic.name) %]
+      [% loc(topic.name) %]
       [%- # -%]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
     </p>

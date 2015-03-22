@@ -160,7 +160,7 @@ $(document).ready(function() {
   [% FOREACH attach IN attachments %]
   <li><code>[% attach %]</code><br>
     [% loc('Use it in the body as') %] <code>[[[%- attach -%]]]</code>
-    [% loc('or') %] <code>[[[%- attach -%]][<em>[% c.loc ('My description') %]</em>]]</code>
+    [% loc('or') %] <code>[[[%- attach -%]][<em>[% loc ('My description') %]</em>]]</code>
   </li>
   [% END %]
 </ul>

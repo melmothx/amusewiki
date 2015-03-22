@@ -619,7 +619,6 @@ use Data::Dumper;
 use AmuseWikiFarm::Archive::BookBuilder;
 use JSON ();
 use Text::Amuse::Compile::Utils ();
-use HTML::Entities qw/encode_entities decode_entities/;
 use AmuseWikiFarm::Archive::Cache;
 
 =head2 repo_root_rel
@@ -1335,52 +1334,52 @@ sub lexicon_file {
     return File::Spec->catfile($self->path_for_site_files, "lexicon.json");
 }
 
-has is_able_to_translate => (is => 'ro',
-                             isa => 'Int',
-                             lazy => 1,
-                             builder => '_build_is_able_to_translate');
+has lexicon => (is => 'ro',
+                isa => 'Maybe[HashRef]',
+                lazy => 1,
+                builder => '_build_lexicon');
 
-sub _build_is_able_to_translate {
-    my $self = shift;
-    my $hashref = $self->lexicon_hashref;
-    return scalar(keys %$hashref);
-}
-
-has lexicon_hashref => (is => 'ro',
-                               isa => 'HashRef',
-                               lazy => 1,
-                               builder => '_build_lexicon_hashref');
-
-sub _build_lexicon_hashref {
+sub _build_lexicon {
     my $self = shift;
     my $file = $self->lexicon_file;
     if (-f $file) {
         my $json = Text::Amuse::Compile::Utils::read_file($file);
-        return JSON::from_json($json);
+        my $hashref;
+        eval { $hashref = JSON::from_json($json) };
+        if ($hashref and ref($hashref) eq 'HASH') {
+            return $hashref;
+        }
+        elsif ($@) {
+            warn $@;
+        }
     }
-    else {
-        return {};
-    }
+    return undef;
 }
 
 sub lexicon_translate {
-    my ($self, $lang, $term) = @_;
-    return $term unless $lang && $term && $self->is_able_to_translate;
-    return $self->lexicon_hashref->{$term}->{$lang} || $term;
-}
-
-sub lexicon_translate_html {
-    my ($self, $lang, $term) = @_;
-    return $term unless $lang && $term && $self->is_able_to_translate;
-    my $decoded = decode_entities($term);
-    if (my $out = $self->lexicon_hashref->{$decoded}->{$lang}) {
-        return encode_entities($out, q{<>&"'});
+    my ($self, $lang, $term, @args) = @_;
+    return undef unless $lang && $term;
+    if (my $lexicon = $self->lexicon) {
+        if (exists $lexicon->{$term} and
+            exists $lexicon->{$term}->{$lang} and
+            defined $lexicon->{$term}->{$lang}) {
+            my $string = $lexicon->{$term}->{$lang};
+            # and interpolate the args
+            if ($string =~ m/\[_[0-9]\]/) {
+                foreach my $i (0 .. $#args) {
+                    if (defined $args[$i]) {
+                        my $index = $i + 1;
+                        $string =~ s/\[_$index\]/$args[$i]/ge;
+                    }
+                }
+                # and remove the non-existent
+                $string =~ s/\[_[0-9]\]//g;
+            }
+            return $string;
+        }
     }
-    else {
-        return $term;
-    }
+    return undef;
 }
-
 
 sub multilanguage_list {
     my ($self) = @_;

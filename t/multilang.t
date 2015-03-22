@@ -174,11 +174,10 @@ $mech->content_contains('Cambiamenti effettuati, ora sono in attesa di pubblicaz
 mkdir $site->path_for_site_files unless -d $site->path_for_site_files;
 copy(catfile(qw/t atr-lexicon.json/), $site->lexicon_file);
 
-ok $site->lexicon_hashref;
+ok $site->lexicon;
 
-# print Dumper($site->lexicon_hashref);
 is $site->lexicon_translate(hr => 'geo'), 'Geografija kontrole';
-is $site->lexicon_translate(hr => 'blablabla'), 'blablabla';
+is $site->lexicon_translate(hr => 'blablabla'), undef;
 
 $mech->get_ok('/set-language?lang=it');
 $mech->get_ok('/');

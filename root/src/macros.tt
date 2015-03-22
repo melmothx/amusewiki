@@ -25,4 +25,3 @@
 [%- # loc("Display url as") -%]
 [%- # loc("Quotes") -%]
 [%- # loc("Verbatim block") -%]
-

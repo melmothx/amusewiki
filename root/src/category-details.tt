@@ -1,5 +1,6 @@
 [%- # -*- mode: html -*- -%]
-<h2>[% site.lexicon_translate_html(current_locale_code, category.name) %]
+
+<h2>[% loc(category.name) %]
 [% IF multilang %]
 [% IF multilang.filtered %]
   <small>[% multilang.filtered %]</small>

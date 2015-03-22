@@ -77,9 +77,10 @@ use Catalyst::Runtime 5.80;
 
 use Catalyst
   'ConfigLoader',
-  'I18N',
-#   'Static::Simple',
+#  'Static::Simple',
   '-Log=warn,fatal,error',
+  'I18N',
+  '+CatalystX::AmuseWiki::I18N',
 #  'MemoryUsage',
   'Authentication',
   'Authorization::Roles',
