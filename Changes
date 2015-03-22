@@ -4,6 +4,16 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.08 2015-03-22
+
+ - Added private site type, where only users have access.
+ - Fixed crash on Xapian stemmer where site language is italian
+ - Fixed crash when the supplied lexicon.json is invalid
+ - Integrated lexicon.json in the localization plugin
+ - Adjusted text's preamble
+
+No DB upgrade needed.
+
 1.07 2015-02-27
 
  - Fixed leaked template in the static indexes
