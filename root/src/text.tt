@@ -26,24 +26,24 @@
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   <div id="preamble">
-    <p id="texttitle">
+    <div id="texttitle">
       <span id="texttitle-label">
         <strong>[% loc('Title') %]:</strong>
       </span>
       [% text.title %]
-    </p>
+    </div>
 
     [% IF text.subtitle %]
-    <p id="textsubtitle">
+    <div id="textsubtitle">
       <span id="textsubtitle-label">
         <strong>[% loc('Subtitle') %]:</strong>
       </span>
       [% text.subtitle %]
-    </p>
+    </div>
     [% END %]
 
     [% IF text_authors.size %]
-    <p id="authors">
+    <div id="authors">
       <span id="authors-label">
         <strong>
           [%- IF text_authors.size == 1 -%]
@@ -56,20 +56,20 @@
       [% FOREACH author IN text_authors -%]
       <a href="[% c.uri_for(author.uri) %]">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
-    </p>
+    </div>
     [% END %]
 
     [% IF text.date %]
-    <p id="textdate">
+    <div id="textdate">
       <span id="textdate-label">
         <strong>[% loc('Date') %]:</strong>
       </span>
       [% text.date %]
-    </p>
+    </div>
     [% END %]
 
     [% IF text_topics.size %]
-    <p id="topics">
+    <div id="topics">
       <span id="preamble-topics-label">
         <strong>
           [%- IF text_topics.size == 1 -%]
@@ -84,25 +84,25 @@
       [% loc(topic.name) %]
       [%- # -%]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
-    </p>
+    </div>
     [% END %]
 
     [% IF text.source %]
-    <p id="preamblesrc">
+    <div id="preamblesrc">
       <span id="preamblesrc-label">
         <strong>[% loc('Source') %]:</strong>
       </span>
       [% text.source %]
-    </p>
+    </div>
     [% END %]
 
     [% IF text.notes %]
-    <p id="preamblenotes">
+    <div id="preamblenotes">
       <span id="preamblenotes-label">
         <strong id="preamblenotes-label">[% loc('Notes') %]:</strong>
       </span>
       [% text.notes %]
-    </p>
+    </div>
     [% END %]
   </div>
 
