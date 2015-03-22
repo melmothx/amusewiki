@@ -5,7 +5,7 @@
   CLOSED: [2015-03-22 dom 12:42]
 * DONE Clean soft-hyphen + space on typographical fixes
   CLOSED: [2015-03-22 dom 09:09]
-
+* TODO Properly document lexicon.json
 * TODO When activating an user, send a mail
 * TODO Add descriptions to categories
 
