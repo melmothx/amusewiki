@@ -1,6 +1,17 @@
 * DONE False positive for footnotes without text
   CLOSED: [2015-03-22 dom 09:09]
-* TODO False positive for lists on right/center aligned text
+* DONE False positive for lists on right/center aligned text
+  CLOSED: [2015-04-08 mer 11:20]
+
+ This turned out to be more complicated then expected.
+
+  - The parsing is done line by line without context
+  - Storing the previous element and looking back is not going to help
+    because the lines are not fully parsed yet
+  - The list code is insane
+
+This needs a refactoring when the parsing is done in context.
+
 * DONE Category/Categories needs an override
   CLOSED: [2015-03-22 dom 12:42]
 * DONE Clean soft-hyphen + space on typographical fixes
