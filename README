@@ -50,13 +50,16 @@ public part, including reading and download.
 Each site can run in one of these three modes, which differs on the
 privileges granted to the humans.
 
+*** private
+
+Only logged in can access texts and the site.
+
 *** blog
 
 This mode restricts access to the text editing to librarians only.
 Humans can still use the bookbuilder.
 
 The test site with id '0empty0' works this way.
-
 
 *** modwiki
 
@@ -83,18 +86,24 @@ Normally, topics are free form. This means that the uploader can set
 them to whatever she wants. Sometimes this is not what you want, but
 you want instead a fixed range of categories. The directive to use is
 #cat with a whitespace separated list of categories. Here you should
-use codes instead of their real name, and set "category mycode" in the
-.po files.
+use codes instead of their real name.
 
 The full list of the fixed categories supported by the site should go
 in the "fixed_category_list" column of the "site" table. Everything
 else is managed by the code transparently.
+
+To turn the category codes into human-readable strings, you have to
+make use of the lexicon.json file (see below).
 
 ** themes
 
 The sites can have a theme defined. In this case, the search path of
 TT is extended to root/themes/<theme-name>, where the templates can be
 overridden.
+
+Anyway, this practice is somehow discouraged, because you will have to
+propagate the changes from the default them to the custom ones.
+Leverage CSS/JS as much as you can before going down this road.
 
 ** repositories
 
@@ -137,9 +146,8 @@ repo
         └── st/file.{muse,...}
 
 
-Every account can have one remote git from which the user can pull
-from /console (fast-forward only). Root accounts can see all of them
-and pull from anywhere.
+Remote git archives can be pulled (and pushed, if there are enough
+permission -- not likely) from /console for librarians.
 
 The name of the remote have to match the username, so username must
 have sensible values: ASCII only, alphanumeric, no special characters.
@@ -202,6 +210,45 @@ If pagelogo.png is present, it will be placed before the latest
 entries on the special pages. The assigned ids are
 "special-pages-logo" for the container and "special-pages-logo-img"
 for the image itself.
+
+*** lexicon.json
+
+You can override translations and provide them for the categories (if
+your site is multilingual or if you use codes instead of strings)
+using the local file repo/<site_id>/site_files/lexicon.json.
+
+The format is as follows (plain JSON):
+
+  {
+     "term" : {
+        "hr" : "Term in croatian",
+        "en" : "Term in english",
+        "it" : "Term in italian"
+     },
+     "another term [_1]" : {
+        "hr" : "Another term in croatian with an argument [_1]",
+        "en" : "Another term in english with an argument [_1]",
+        "it" : "Another term in italian with an argumetn [_1]"
+     }
+  }
+
+The JSON must be correct, otherwise you will not get any translation
+out of that. You can use arguments for translations with the [_1],
+[_2] syntax.
+
+Strings are expected to be unescaped (html-wise). The HTML is escaped
+back when passed to the template.
+
+To validate the lexicon file prior to upload, use this (somehow
+longish) one-liner:
+
+perl -MJSON -MData::Dumper \
+     -e 'open (my $fh, "<:encoding(UTF-8)", "site_files/lexicon.json");
+         $/ = undef; my $json = <$fh>;
+            print Data::Dumper::Dumper(JSON::from_json($json));'
+
+If you see the dump of the data structures (an hashref of hashrefs),
+you're good. Otherwise fix the json and retry.
 
 ** Schema
 
