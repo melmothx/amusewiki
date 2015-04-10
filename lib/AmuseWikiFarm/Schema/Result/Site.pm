@@ -904,17 +904,18 @@ sub create_new_text {
         $uri = muse_naming_algo($params->{uri});
         # replace the params with our clean form
     }
-    elsif ($title) {
-        $uri = muse_naming_algo("$author $title");
+    elsif ($title =~ m/\w/) {
+        my $string = "$author $title";
+        if ($self->multilanguage && $params->{lang}) {
+            $string = substr($string, 0, 90) . ' ' . $params->{lang};
+        }
+        $uri = muse_naming_algo($string);
     }
     unless ($uri) {
         # loc("Couldn't automatically generate the uri!");
         return undef, "Couldn't generate the uri!";
     }
 
-    if ($self->multilanguage && $params->{lang}) {
-        $uri = muse_naming_algo(substr($uri, 0, 90) . ' ' . $params->{lang});
-    }
     # and store it in the params
     $params->{uri} = $uri;
 

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 145;
+use Test::More tests => 147;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -183,7 +183,7 @@ $mech->get_ok('/set-language?lang=it');
 $mech->get_ok('/');
 $mech->content_contains('This is the it index');
 
-my $uri_suffixed = $site->create_new_text({
+my ($uri_suffixed) = $site->create_new_text({
                                            title => 'ciaoo ' x 10,
                                            author => 'pippo ' x 10,
                                            lang => "\nhr\n",
@@ -207,4 +207,13 @@ $mech->get_ok('/set-language?lang=it');
 $mech->get_ok('/action/text/new');
 $mech->content_like(qr/class="active"\s*id="select-lang-it"/s);
 
+
+($rev, $error) = $site->create_new_text({
+                                         title => 'x',
+                                         lang => 'it',
+                                         uri => 'i-have-set-the-uri-it',
+                                        }, 'text');
+ok (!$error, "No error") or diag $error;
+is $rev->title->uri, 'i-have-set-the-uri-it',
+  "No lang suffix appended when the uri is set";
 
