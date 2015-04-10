@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 13;
+use Test::More tests => 17;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -12,6 +12,7 @@ use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Data::Dumper;
+use Test::WWW::Mechanize::Catalyst;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -29,6 +30,10 @@ $revision->commit_version;
 my $uri = $revision->publish_text;
 ok $uri, "Found uri $uri";
 
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => "$site_id.amusewiki.org");
+
+
 foreach my $uri ([qw/author pippo/],
                  [qw/topic the-cat/]) {
     my $cat = $site->categories->find({ uri => $uri->[1], type => $uri->[0] });
@@ -37,6 +42,8 @@ foreach my $uri ([qw/author pippo/],
     $cat->category_descriptions->update_description(en => 'this is just a *test*');
     my $desc = $cat->category_descriptions->find({ lang => 'en' });
     like $desc->html_body, qr{<p>.*<em>test</em>.*</p>}s, "found the HTML description";
+    $mech->get_ok($cat->full_uri);
+    $mech->content_like(qr{<p>.*<em>test</em>.*</p>}s, "found the HTML description");
 }
 
 my $title = $site->titles->find({ uri => 'the-text', f_class => 'text' });
