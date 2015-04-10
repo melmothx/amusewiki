@@ -1583,7 +1583,11 @@ sub update_db_from_tree {
     # first delete
     foreach my $purge (@{ $todo->{removed} }) {
         if (my $found = $self->find_file_by_path($purge)) {
+            my @cats = $found->categories;
             $found->delete;
+            foreach my $cat (@cats) {
+                $cat->title_count_update;
+            }
         }
         else {
             warn "$purge was not present in the db!";
