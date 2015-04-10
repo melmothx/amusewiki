@@ -223,6 +223,18 @@ CREATE TABLE category (
 );
 CREATE UNIQUE INDEX unique_category ON category (uri, site_id, type);
 
+-- site here is not needed, because it's already known by the category.
+CREATE TABLE category_description (
+       category_description_id INTEGER PRIMARY KEY,
+       muse_body TEXT,
+       html_body TEXT,
+       lang VARCHAR(3) NOT NULL DEFAULT 'en',
+       category_id INTEGER NOT NULL
+                   REFERENCES category(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE UNIQUE INDEX unique_category_description ON category_description(category_id, lang);
+
 CREATE TABLE attachment (
        id INTEGER PRIMARY KEY,
        f_path      TEXT NOT NULL,

@@ -133,6 +133,21 @@ __PACKAGE__->add_unique_constraint("uri_site_id_type_unique", ["uri", "site_id",
 
 =head1 RELATIONS
 
+=head2 category_descriptions
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::CategoryDescription>
+
+=cut
+
+__PACKAGE__->has_many(
+  "category_descriptions",
+  "AmuseWikiFarm::Schema::Result::CategoryDescription",
+  { "foreign.category_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -174,8 +189,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NhhuqgndhV/1xbiIZEmcfw
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-10 12:13:47
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pQBKjf+/vU2XCfhZiDPGxA
 
 =head2 title_count_update
 

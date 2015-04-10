@@ -34,6 +34,9 @@ foreach my $uri ([qw/author pippo/],
     my $cat = $site->categories->find({ uri => $uri->[1], type => $uri->[0] });
     ok ($cat, "Found " . $cat->full_uri);
     ok ($cat->text_count, $cat->name . " has " . $cat->text_count . " texts");
+    $cat->category_descriptions->update_description(en => 'this is just a *test*');
+    my $desc = $cat->category_descriptions->find({ lang => 'en' });
+    like $desc->html_body, qr{<p>.*<em>test</em>.*</p>}s, "found the HTML description";
 }
 
 my $title = $site->titles->find({ uri => 'the-text', f_class => 'text' });
