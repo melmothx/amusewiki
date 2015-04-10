@@ -123,12 +123,13 @@ sub single_category :Private {
         }
         my $texts = $cat->titles->published_texts;
         my $current_locale = $c->stash->{current_locale_code};
-
+        my $category_description = $cat->localized_desc($current_locale);
         # the unescaping happens when calling $c->loc
         my $page_title = $c->loc($cat->name);
         $c->stash(page_title => $page_title,
                   template => 'category-details.tt',
                   texts => $texts,
+                  category_description => $category_description,
                   category => $cat);
 
         # if the site is multilanguage, prepare the links

@@ -8,6 +8,12 @@
 [% END %]
 </h2>
 
+[% IF category_description %]
+<div class="category-description well" style="margin-top: 18px">
+  [% category_description %]
+</div>
+[% END %]
+
 [%- IF multilang -%]
 <ul class="nav nav-tabs" role="tablist">
   <li [% UNLESS multilang.code -%] class="active" [%- END %]>

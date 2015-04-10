@@ -236,6 +236,16 @@ sub full_uri {
     }
 }
 
+sub localized_desc {
+    my ($self, $lang) = @_;
+    my $desc = '';
+    if ($lang) {
+        if (my $desc_row = $self->category_descriptions->find({ lang => $lang })) {
+            $desc = $desc_row->html_body;
+        }
+    }
+    return $desc;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;
