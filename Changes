@@ -4,6 +4,16 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.10 2015-04-12
+
+This is a bugfix release.
+
+ - Fixed multilang bug when the uri got the language prefix appended
+   at each request on /new, so uri already taken generated something
+   like uri-it-it-it.
+ - Fixed missing category text count update on text deletion.
+ - Fixed autocompletion api to return only used categories.
+
 1.09 2015-04-08
 
  - Upgraded prerequisites to fix some false positives on lists
