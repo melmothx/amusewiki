@@ -10,6 +10,7 @@ use namespace::autoclean;
 use Moose::Util::TypeConstraints qw/enum/;
 use File::Spec;
 use Storable qw();
+use Unicode::Collate::Locale;
 
 =head1 NAME
 
@@ -82,6 +83,9 @@ has resultset => (is => 'ro',
 has cache => (is => 'ro',
               lazy => 1,
               builder => '_build_cache');
+
+has lang => (is => 'ro',
+             default => sub { 'en' });
 
 sub _build_cache {
     my $self = shift;
@@ -185,16 +189,24 @@ sub populate_cache {
     return $cache;
 }
 
-sub _cache_for_library {
-    my $self = shift;
-    my $rs = $self->resultset;
+sub _create_library_cache_with_breakpoints {
+    my ($self, $list) = @_;
+    my $collator = Unicode::Collate::Locale->new(locale => $self->lang,
+                                                 level => 1);
+    my @dummy = (0..9, 'A'..'Z');
     my @list_with_separators;
     my @paging;
     my $current = '';
     my $counter = 0;
-    while (my $row = $rs->next) {
-        if ($row->list_title =~ m/(\w)/) {
-            my $first_char = uc($1);
+    foreach my $item (@$list) {
+        if (defined $item->{first_char}) {
+            my $first_char = $item->{first_char};
+            foreach my $letter (@dummy) {
+                if ($collator->eq($first_char, $letter)) {
+                    $item->{first_char} = $first_char = $letter;
+                    last;
+                }
+            }
             if ($current ne $first_char) {
                 $counter++;
                 $current = $first_char;
@@ -208,12 +220,25 @@ sub _cache_for_library {
                                             };
             }
         }
-        my %text = map { $_ => $row->$_ } qw/author title full_uri lang/;
-        push @list_with_separators, \%text;
+        push @list_with_separators, $item;
     }
     my $cache = { texts => \@list_with_separators,
                   pager => \@paging };
     return $cache;
+}
+
+sub _cache_for_library {
+    my $self = shift;
+    my $rs = $self->resultset;
+    my @list;
+    while (my $row = $rs->next) {
+        my %text = map { $_ => $row->$_ } qw/author title full_uri lang/;
+        if ($row->list_title =~ m/(\w)/) {
+            $text{first_char} = uc($1);
+        }
+        push @list, \%text;
+    }
+    return $self->_create_library_cache_with_breakpoints(\@list);
 }
 
 sub _cache_for_category {
