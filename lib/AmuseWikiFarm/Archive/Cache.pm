@@ -194,28 +194,38 @@ sub _create_library_cache_with_breakpoints {
     my $collator = Unicode::Collate::Locale->new(locale => $self->lang,
                                                  level => 1);
     my @dummy = (0..9, 'A'..'Z');
-    my @list_with_separators;
-    my @paging;
+    my (%map, @list_with_separators, @paging);
     my $current = '';
     my $counter = 0;
     foreach my $item (@$list) {
         if (defined $item->{first_char}) {
-            my $first_char = $item->{first_char};
-            foreach my $letter (@dummy) {
-                if ($collator->eq($first_char, $letter)) {
-                    $item->{first_char} = $first_char = $letter;
-                    last;
+            unless (defined $map{$item->{first_char}}) {
+              REPLACEL:
+                foreach my $letter (@dummy) {
+                    if ($collator->eq($item->{first_char}, $letter)) {
+                        $map{$item->{first_char}} = $letter;
+                        last REPLACEL;
+                    }
+                }
+                unless (defined $map{$item->{first_char}}) {
+                    $map{$item->{first_char}} = $item->{first_char};
                 }
             }
-            if ($current ne $first_char) {
+            $item->{first_char} = $map{$item->{first_char}};
+
+            # assert we didn't screw up
+            die "This shouldn't happen, replacement not found"
+              unless defined $item->{first_char};
+
+            if ($current ne $item->{first_char}) {
                 $counter++;
-                $current = $first_char;
+                $current = $item->{first_char};
                 push @paging, {
-                               anchor_name => $first_char,
+                               anchor_name => $item->{first_char},
                                anchor_id => $counter,
                               };
                 push @list_with_separators, {
-                                             anchor_name => $first_char,
+                                             anchor_name => $item->{first_char},
                                              anchor_id => $counter,
                                             };
             }

@@ -95,7 +95,7 @@ is_deeply($returned->{pager},
             'anchor_id' => 4,
             'anchor_name' => 'Z'
            }
-          ]);
+          ], "pager correct");
 
 $cache = AmuseWikiFarm::Archive::Cache->new(lang => 'hr');
 
@@ -243,7 +243,7 @@ is_deeply($returned,
                           'lang' => "\x{17d}a lang"
                         }
                       ]
-          }) or diag Dumper($returned);
+          }, "Output correct") or diag Dumper($returned);
 
 
 sub create_list {
