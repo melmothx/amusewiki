@@ -10,6 +10,7 @@ use namespace::autoclean;
 use Moose::Util::TypeConstraints qw/enum/;
 use File::Spec;
 use Storable qw();
+use Unicode::Collate::Locale;
 
 =head1 NAME
 
@@ -60,11 +61,10 @@ Boolean. Return the list with the pager separators if true.
 =cut
 
 has type => (is => 'ro',
-             isa => enum([qw/library-special library-text
-                             category-topic category-author/]));
+             isa => enum([qw/library category/]));
 
 has subtype => (is => 'ro',
-                isa => 'Str');
+                isa => enum([qw/special text topic author/]));
 
 has site_id => (is => 'ro',
                 isa => 'Str');
@@ -82,6 +82,13 @@ has resultset => (is => 'ro',
 has cache => (is => 'ro',
               lazy => 1,
               builder => '_build_cache');
+
+has by_lang => (is => 'ro',
+                isa => 'Bool');
+
+has lang => (is => 'ro',
+             isa => 'Str',
+             default => sub { 'en' });
 
 sub _build_cache {
     my $self = shift;
@@ -129,7 +136,14 @@ sub cache_site_dir {
     my $self = shift;
     die "No site id set, can't retrieve the cache directory for site"
       unless $self->site_id;
-    return File::Spec->catdir($self->cache_dir, $self->site_id);
+    if ($self->site_id =~ m/([0-9a-z]+)/) {
+        my $site_id = $1;
+        return File::Spec->catdir($self->cache_dir, $site_id);
+    }
+    else {
+        die "Illegal site id!" . $self->site_id;
+    }
+
 }
 
 sub cache_file {
@@ -143,7 +157,15 @@ sub cache_file {
     if (my $subtype = $self->subtype) {
         push @dirs, $subtype;
     }
-    File::Path::make_path(File::Spec->catfile(@dirs));
+    if ($self->by_lang) {
+        push @dirs, 'by_lang';
+    }
+    if (my $lang = $self->lang) {
+        if ($lang =~ m/([a-z]+)/) {
+            push @dirs, $1;
+        }
+    }
+    File::Path::make_path(File::Spec->catdir(@dirs));
     return File::Spec->catfile(@dirs, 'cache');
 }
 
@@ -167,16 +189,22 @@ sub texts {
     return $self->cache->{texts};
 }
 
+sub text_count {
+    my $self = shift;
+    return $self->cache->{text_count} || 0;
+}
+
+
 sub populate_cache {
     my ($self, $path) = @_;
     my $type = $self->type;
     die unless $type;
     die "No resultset passed, can't build the cache!" unless $self->resultset;
     my $cache;
-    if ($type eq 'library-special' or $type eq 'library-text') {
+    if ($type eq 'library') {
         $cache = $self->_cache_for_library;
     }
-    elsif ($type eq 'category-topic' or $type eq 'category-author') {
+    elsif ($type eq 'category') {
         $cache = $self->_cache_for_category;
     }
     else {
@@ -185,35 +213,69 @@ sub populate_cache {
     return $cache;
 }
 
-sub _cache_for_library {
-    my $self = shift;
-    my $rs = $self->resultset;
-    my @list_with_separators;
-    my @paging;
+sub _create_library_cache_with_breakpoints {
+    my ($self, $list) = @_;
+    my $collator = Unicode::Collate::Locale->new(locale => $self->lang,
+                                                 level => 1);
+    my @dummy = (0..9, 'A'..'Z');
+    my (%map, @list_with_separators, @paging);
     my $current = '';
     my $counter = 0;
-    while (my $row = $rs->next) {
-        if ($row->list_title =~ m/(\w)/) {
-            my $first_char = uc($1);
-            if ($current ne $first_char) {
+    my $grand_total = scalar(@$list);
+
+    foreach my $item (@$list) {
+        if (defined $item->{first_char}) {
+            unless (defined $map{$item->{first_char}}) {
+              REPLACEL:
+                foreach my $letter (@dummy) {
+                    if ($collator->eq($item->{first_char}, $letter)) {
+                        $map{$item->{first_char}} = $letter;
+                        last REPLACEL;
+                    }
+                }
+                unless (defined $map{$item->{first_char}}) {
+                    $map{$item->{first_char}} = $item->{first_char};
+                }
+            }
+            $item->{first_char} = $map{$item->{first_char}};
+
+            # assert we didn't screw up
+            die "This shouldn't happen, replacement not found"
+              unless defined $item->{first_char};
+
+            if ($current ne $item->{first_char}) {
                 $counter++;
-                $current = $first_char;
+                $current = $item->{first_char};
                 push @paging, {
-                               anchor_name => $first_char,
+                               anchor_name => $item->{first_char},
                                anchor_id => $counter,
                               };
                 push @list_with_separators, {
-                                             anchor_name => $first_char,
+                                             anchor_name => $item->{first_char},
                                              anchor_id => $counter,
                                             };
             }
         }
-        my %text = map { $_ => $row->$_ } qw/author title full_uri lang/;
-        push @list_with_separators, \%text;
+        push @list_with_separators, $item;
     }
     my $cache = { texts => \@list_with_separators,
+                  text_count => $grand_total,
                   pager => \@paging };
     return $cache;
+}
+
+sub _cache_for_library {
+    my $self = shift;
+    my $rs = $self->resultset;
+    my @list;
+    while (my $row = $rs->next) {
+        my %text = map { $_ => $row->$_ } qw/author title full_uri lang/;
+        if ($row->list_title =~ m/(\w)/) {
+            $text{first_char} = uc($1);
+        }
+        push @list, \%text;
+    }
+    return $self->_create_library_cache_with_breakpoints(\@list);
 }
 
 sub _cache_for_category {

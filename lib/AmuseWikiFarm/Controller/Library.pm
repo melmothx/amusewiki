@@ -108,11 +108,15 @@ sub template_listing :Private {
     # these should be cached
     my $cache = $c->model('Cache',
                           site_id => $c->stash->{site}->id,
-                          type => 'library-' . $c->stash->{f_class},
+                          type => 'library',
+                          subtype => $c->stash->{f_class},
+                          # here we use the language set in the app
+                          lang => $c->stash->{current_locale_code},
                           resultset => $rs,
                          );
     $c->stash(texts => $cache->texts,
               pager => $cache->pager,
+              text_count => $cache->text_count,
               template => 'library.tt');
 }
 
@@ -124,12 +128,16 @@ sub archive_by_lang :Chained('archive_list') :PathPart('') :Args(1) {
         my $resultset = $rs->search({ lang => $lang });
         my $cache = $c->model('Cache',
                               site_id => $c->stash->{site}->id,
-                              type => 'library-' . $c->stash->{f_class},
-                              subtype => $lang,
+                              type => 'library',
+                              subtype => $c->stash->{f_class},
+                              # here we use the language of the filtering
+                              by_lang => 1,
+                              lang => $lang,
                               resultset => $resultset,
                              );
         $c->stash(texts => $cache->texts,
                   pager => $cache->pager,
+                  text_count => $cache->text_count,
                   multilang => {
                                 filter_lang => $lang,
                                 filter_label => $label,
