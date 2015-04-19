@@ -14,7 +14,8 @@ BEGIN {
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::Cache;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 21;
+use File::Spec;
+use Test::More tests => 32;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
@@ -38,12 +39,16 @@ ok($cache->cache_dir, "Found the cache dir") and diag $cache->cache_dir;
 
 $cache->clear_all;
 
-foreach my $path ('/library', '/topics', '/authors') {
+system(find => $cache->cache_dir);
+
+foreach my $path ('/library', '/topics', '/authors', '/archive', '/archive/hr') {
     $mech->get_ok($path);
     my $content = $mech->content;
     $mech->get_ok($path);
     is $mech->content, $content;
 }
+
+system(find => $cache->cache_dir);
 
 my $rs = $site->titles->published_specials;
 
@@ -244,6 +249,49 @@ is_deeply($returned,
                         }
                       ]
           }, "Output correct") or diag Dumper($returned);
+
+eval {
+    $cache = AmuseWikiFarm::Archive::Cache->new(type => '../library',
+                                                subtype => '../../test',
+                                                site_id => '../../../../etc/',
+                                                lang => '../../../../etc/');
+};
+
+ok $@, "Found exception with illegal constructor";
+
+$cache = AmuseWikiFarm::Archive::Cache->new(type => 'library',
+                                            site_id => '../../../../etc/',
+                                            lang => '../../../../etc/');
+like $cache->cache_file, qr{var[/\\]cache[/\\]etc[/\\]library[/\\]etc[/\\]cache$},
+  "lang and id filtered";
+
+$cache->clear_all;
+
+$cache = AmuseWikiFarm::Archive::Cache->new(type => 'library',
+                                            site_id => '0blog0',
+                                            type => 'library',
+                                            subtype => 'special',
+                                            lang => 'en');
+
+my $main_list = $cache->cache_file;
+is $cache->cache_file,
+  File::Spec->rel2abs(File::Spec->catfile(qw/var cache 0blog0 library special en cache/)),
+  "cache file ok";
+
+ok (-d File::Spec->catfile(qw/var cache 0blog0 library special en/), "Found target cache directory");
+
+$cache = AmuseWikiFarm::Archive::Cache->new(type => 'library',
+                                            site_id => '0blog0',
+                                            type => 'library',
+                                            subtype => 'special',
+                                            by_lang => 1,
+                                            lang => 'en');
+
+isnt $cache->cache_file, $main_list, "by_lang sets another path";
+
+system(find => $cache->cache_dir);
+
+
 
 
 sub create_list {
