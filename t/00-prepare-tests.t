@@ -68,6 +68,10 @@ my %repos = ('0blog0' => {
                           mainfont => 'Charis SIL',
                           twoside => 1,
                           canonical => 'blog.amusewiki.org',
+                          site_options => [{
+                                            option_name => 'paginate_archive_after',
+                                            option_value => 1,
+                                           }],
                          },
              '0test0' => {
                           id => '0test0',
