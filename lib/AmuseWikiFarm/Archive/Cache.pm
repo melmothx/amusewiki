@@ -189,6 +189,12 @@ sub texts {
     return $self->cache->{texts};
 }
 
+sub text_count {
+    my $self = shift;
+    return $self->cache->{text_count} || 0;
+}
+
+
 sub populate_cache {
     my ($self, $path) = @_;
     my $type = $self->type;
@@ -215,6 +221,8 @@ sub _create_library_cache_with_breakpoints {
     my (%map, @list_with_separators, @paging);
     my $current = '';
     my $counter = 0;
+    my $grand_total = scalar(@$list);
+
     foreach my $item (@$list) {
         if (defined $item->{first_char}) {
             unless (defined $map{$item->{first_char}}) {
@@ -251,6 +259,7 @@ sub _create_library_cache_with_breakpoints {
         push @list_with_separators, $item;
     }
     my $cache = { texts => \@list_with_separators,
+                  text_count => $grand_total,
                   pager => \@paging };
     return $cache;
 }

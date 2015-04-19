@@ -116,6 +116,7 @@ sub template_listing :Private {
                          );
     $c->stash(texts => $cache->texts,
               pager => $cache->pager,
+              text_count => $cache->text_count,
               template => 'library.tt');
 }
 
@@ -136,6 +137,7 @@ sub archive_by_lang :Chained('archive_list') :PathPart('') :Args(1) {
                              );
         $c->stash(texts => $cache->texts,
                   pager => $cache->pager,
+                  text_count => $cache->text_count,
                   multilang => {
                                 filter_lang => $lang,
                                 filter_label => $label,

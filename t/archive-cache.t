@@ -45,7 +45,12 @@ foreach my $path ('/library', '/topics', '/authors', '/archive', '/archive/hr') 
     $mech->get_ok($path);
     my $content = $mech->content;
     $mech->get_ok($path);
-    is $mech->content, $content;
+    # we have to ignore these links with the params, as hash
+    # randomization will make the test fail for no reason.
+    diag "Ignoring: " . Dumper([grep { /set-language/ } split /\n/, $mech->content]);
+    is_deeply ([grep { $_ !~ /set-language/ } split /\n/, $mech->content],
+               [grep { $_ !~ /set-language/ } split /\n/, $content],
+               "$path is the same after the first request");
 }
 
 system(find => $cache->cache_dir);
@@ -108,6 +113,7 @@ $returned = $cache->_create_library_cache_with_breakpoints(create_list('hr'));
 
 is_deeply($returned,
           {
+           text_count => 11,
            'pager' => [
                         {
                           'anchor_name' => 'A',

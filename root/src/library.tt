@@ -3,6 +3,7 @@
   [%- IF multilang.filter_label -%]
   <small>[% multilang.filter_label %]</small>
   [%- END -%]
+  <small>([% text_count %])</small>
 </h2>
 <div><br /></div>
 
@@ -61,6 +62,7 @@
     [% END %]
     [% END %]
 </div>
+
 [% ELSE %]
 <p>
   [% loc('No text found!') %]
