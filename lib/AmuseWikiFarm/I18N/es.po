@@ -71,6 +71,9 @@ msgstr ""
 msgid "Action"
 msgstr "Acción"
 
+msgid "Active"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Agregar una imagen de portada (PNG o JPG)"
 
@@ -78,6 +81,11 @@ msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Agregar un adjunto (PNG, JPG or PDF"
 
 msgid "Add non-breaking spaces where appropriate for the language"
+msgstr ""
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
 msgstr ""
 
 msgid "Add this text to the bookbuilder"
@@ -106,6 +114,9 @@ msgstr "Todas las revisiones"
 
 msgid "All sites"
 msgstr "Todos los sitios"
+
+msgid "All users"
+msgstr ""
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -235,6 +246,9 @@ msgstr "Completado"
 msgid "Computing of differences took"
 msgstr "Calculando las diferencias"
 
+msgid "Convert to archive markup"
+msgstr ""
+
 msgid "Couldn't add the text"
 msgstr "No se pudo agregar el texto"
 
@@ -252,6 +266,9 @@ msgstr "Crear un nuevo bibliotecario"
 
 msgid "Create a new special page"
 msgstr "Crear una nueva página especial"
+
+msgid "Create a new user"
+msgstr ""
 
 msgid "Create a topic alias"
 msgstr "Crear un nuevo alias de temas"
@@ -464,6 +481,9 @@ msgstr "Consola git"
 
 msgid "HTML"
 msgstr "HTML"
+
+msgid "HTML/Word Importer"
+msgstr ""
 
 msgid "Half Letter paper"
 msgstr "Tamaño media carta"
@@ -732,6 +752,9 @@ msgstr "Siguiente"
 msgid "Nice title"
 msgstr "Título"
 
+msgid "No"
+msgstr ""
+
 msgid "No result found!"
 msgstr "¡No se encontró resultado!"
 
@@ -793,8 +816,8 @@ msgstr "Logo en PDF (path absoluto o ponlo en texmf)"
 msgid "PDFs cannot be used in the body."
 msgstr "No se pueden usar PDFs en el cuerpo."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "Los PDFs no listados en la directiva %1 serán guardados, pero ignorados"
@@ -979,6 +1002,12 @@ msgstr "Anterior"
 msgid "Priority"
 msgstr "Prioridad"
 
+msgid "Private"
+msgstr ""
+
+msgid "Produce an EPUB instead of a PDF"
+msgstr ""
+
 msgid "Produced"
 msgstr "Producido"
 
@@ -1083,6 +1112,9 @@ msgstr "Revisión"
 #. ($uri)
 msgid "Revision for %1 has been deleted"
 msgstr "La revisión para %1 ha sido borrada"
+
+msgid "Roles"
+msgstr ""
 
 msgid "Search"
 msgstr "Búsqueda"
@@ -1204,6 +1236,9 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr ""
 
+msgid "Such an user already exists!"
+msgstr ""
+
 msgid "Such username already exists"
 msgstr "Ese nombre de usuaria/o ya existe"
 
@@ -1224,6 +1259,9 @@ msgstr "Tarea"
 
 msgid "TeX"
 msgstr "TeX"
+
+msgid "Text formatted with markup"
+msgstr ""
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
@@ -1329,8 +1367,8 @@ msgstr "Título para ordenar"
 msgid "Titles"
 msgstr "Títulos"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr "Para aplicar los camvios, puedes visitar %1"
 
@@ -1431,6 +1469,14 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "¡Se creó la/el usuaria/o %1!"
 
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr ""
+
 msgid "User created"
 msgstr "Usuaria/o creado"
 
@@ -1441,6 +1487,9 @@ msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 "Nombre de usuaria/o, solo alfanumérico, sin caracteres especiales ni "
 "mayúsculas"
+
+msgid "Users"
+msgstr ""
 
 msgid "Verbatim block"
 msgstr "Bloque de código"
@@ -1482,6 +1531,9 @@ msgstr "Fuente XeLaTeX"
 msgid "Year"
 msgstr "Año"
 
+msgid "Yes"
+msgstr ""
+
 msgid "You already proved you are human"
 msgstr "Ya probaste que eres una persona"
 
@@ -1500,8 +1552,8 @@ msgstr ""
 "    icono \"más\" cerca de las descargas de cada texto. Puedes agregar\n"
 "    y eliminar textos después."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr "Puedes crear un/a compañero/a en %1"
 
@@ -1520,8 +1572,8 @@ msgstr "Has cerrado sesión"
 msgid "You may want to resume the editing of one of them"
 msgstr "Quizás quieras continuar la edición de uno de ellos"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Deberías cambiar tu contraseña ahora en %1"
 
@@ -1624,6 +1676,9 @@ msgstr ""
 
 msgid "mandatory"
 msgstr "obligatorio"
+
+msgid "no font embedding"
+msgstr ""
 
 msgid "numbered item"
 msgstr "ítem numerado"

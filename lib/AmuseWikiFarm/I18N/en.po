@@ -66,6 +66,9 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
+msgid "Active"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr ""
 
@@ -73,6 +76,11 @@ msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr ""
 
 msgid "Add non-breaking spaces where appropriate for the language"
+msgstr ""
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
 msgstr ""
 
 msgid "Add this text to the bookbuilder"
@@ -99,6 +107,9 @@ msgid "All revisions"
 msgstr ""
 
 msgid "All sites"
+msgstr ""
+
+msgid "All users"
 msgstr ""
 
 msgid ""
@@ -219,6 +230,9 @@ msgstr ""
 msgid "Computing of differences took"
 msgstr ""
 
+msgid "Convert to archive markup"
+msgstr ""
+
 msgid "Couldn't add the text"
 msgstr ""
 
@@ -235,6 +249,9 @@ msgid "Create a new librarian"
 msgstr ""
 
 msgid "Create a new special page"
+msgstr ""
+
+msgid "Create a new user"
 msgstr ""
 
 msgid "Create a topic alias"
@@ -440,6 +457,9 @@ msgid "Git console"
 msgstr ""
 
 msgid "HTML"
+msgstr ""
+
+msgid "HTML/Word Importer"
 msgstr ""
 
 msgid "Half Letter paper"
@@ -688,6 +708,9 @@ msgstr ""
 msgid "Nice title"
 msgstr ""
 
+msgid "No"
+msgstr ""
+
 msgid "No result found!"
 msgstr ""
 
@@ -744,8 +767,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -900,6 +923,12 @@ msgstr ""
 msgid "Priority"
 msgstr ""
 
+msgid "Private"
+msgstr ""
+
+msgid "Produce an EPUB instead of a PDF"
+msgstr ""
+
 msgid "Produced"
 msgstr ""
 
@@ -1000,6 +1029,9 @@ msgstr ""
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
+msgstr ""
+
+msgid "Roles"
 msgstr ""
 
 msgid "Search"
@@ -1118,6 +1150,9 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr ""
 
+msgid "Such an user already exists!"
+msgstr ""
+
 msgid "Such username already exists"
 msgstr ""
 
@@ -1137,6 +1172,9 @@ msgid "Task"
 msgstr ""
 
 msgid "TeX"
+msgstr ""
+
+msgid "Text formatted with markup"
 msgstr ""
 
 msgid ""
@@ -1229,8 +1267,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Titles"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1329,6 +1367,14 @@ msgstr ""
 msgid "User %1 created!"
 msgstr ""
 
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr ""
+
 msgid "User created"
 msgstr ""
 
@@ -1336,6 +1382,9 @@ msgid "Username"
 msgstr ""
 
 msgid "Username, alphanumerical only, no special characters, no uppercase"
+msgstr ""
+
+msgid "Users"
 msgstr ""
 
 msgid "Verbatim block"
@@ -1374,6 +1423,9 @@ msgstr "XeLaTeX source"
 msgid "Year"
 msgstr ""
 
+msgid "Yes"
+msgstr ""
+
 msgid "You already proved you are human"
 msgstr ""
 
@@ -1389,8 +1441,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1407,8 +1459,8 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr ""
 
@@ -1505,6 +1557,9 @@ msgid "left"
 msgstr ""
 
 msgid "mandatory"
+msgstr ""
+
+msgid "no font embedding"
 msgstr ""
 
 msgid "numbered item"

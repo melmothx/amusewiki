@@ -72,6 +72,9 @@ msgstr ""
 msgid "Action"
 msgstr "Действия"
 
+msgid "Active"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Добавить обложку (PNG or JPG)"
 
@@ -80,6 +83,11 @@ msgstr "Добавить вложение (PNG, JPG or PDF)"
 
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Добавить неразрывные пробелы"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
 
 msgid "Add this text to the bookbuilder"
 msgstr "Добавить этот текст в конструктор книг"
@@ -107,6 +115,9 @@ msgstr "Все правки"
 
 msgid "All sites"
 msgstr "Все сайты"
+
+msgid "All users"
+msgstr ""
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -235,6 +246,9 @@ msgstr "Завершено"
 msgid "Computing of differences took"
 msgstr "Вычисление различий заняло"
 
+msgid "Convert to archive markup"
+msgstr ""
+
 msgid "Couldn't add the text"
 msgstr "Нельзя добавить текст"
 
@@ -252,6 +266,9 @@ msgstr "Создать нового библиотекаря"
 
 msgid "Create a new special page"
 msgstr "Создать новую специальную страницу"
+
+msgid "Create a new user"
+msgstr ""
 
 msgid "Create a topic alias"
 msgstr "Создать связь между темами"
@@ -468,6 +485,9 @@ msgstr "Консоль Git"
 
 msgid "HTML"
 msgstr "HTML"
+
+msgid "HTML/Word Importer"
+msgstr ""
 
 msgid "Half Letter paper"
 msgstr "Половина Letter"
@@ -725,6 +745,9 @@ msgstr "Следующая"
 msgid "Nice title"
 msgstr "Хорошее название"
 
+msgid "No"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Ничего не найдено!"
 
@@ -785,8 +808,8 @@ msgstr "PDF лого (точный путь или поместите в  texmf)
 msgid "PDFs cannot be used in the body."
 msgstr "PDF не могут быть использованы в теле текста"
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF не прописанные в %1 будут сохранены но проигнорированы"
 
@@ -967,6 +990,12 @@ msgstr "Предыдущий"
 msgid "Priority"
 msgstr "Приоритет"
 
+msgid "Private"
+msgstr ""
+
+msgid "Produce an EPUB instead of a PDF"
+msgstr ""
+
 msgid "Produced"
 msgstr "Изготовлено"
 
@@ -1076,6 +1105,9 @@ msgstr "Правка"
 #. ($uri)
 msgid "Revision for %1 has been deleted"
 msgstr "Правка для %1 была удалена"
+
+msgid "Roles"
+msgstr ""
 
 msgid "Search"
 msgstr "Поиск"
@@ -1195,6 +1227,9 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr "Текст с таким URI уже существует. Вы можете указать свой URI"
 
+msgid "Such an user already exists!"
+msgstr ""
+
 msgid "Such username already exists"
 msgstr "Такое имя пользователя уже существует"
 
@@ -1215,6 +1250,9 @@ msgstr "Задачи"
 
 msgid "TeX"
 msgstr "TeX"
+
+msgid "Text formatted with markup"
+msgstr ""
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
@@ -1316,8 +1354,8 @@ msgstr "Название (для сортировки)"
 msgid "Titles"
 msgstr "Названия"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr "Для применения изменений вы можете посетить %1"
 
@@ -1419,6 +1457,14 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Пользователь %1 создан!"
 
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr ""
+
 msgid "User created"
 msgstr "Пользователь создан"
 
@@ -1429,6 +1475,9 @@ msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 "Имя пользователя (только цифры и буквы, без специальных символов и верхнего "
 "регистра)"
+
+msgid "Users"
+msgstr ""
 
 msgid "Verbatim block"
 msgstr "Блок стенограммы"
@@ -1469,6 +1518,9 @@ msgstr "Исходник XeLaTeX"
 msgid "Year"
 msgstr "Год"
 
+msgid "Yes"
+msgstr ""
+
 msgid "You already proved you are human"
 msgstr "Вы уже доказали что вы челоек"
 
@@ -1487,8 +1539,8 @@ msgstr ""
 "\" (находится рядом с ссылками на скачивание). Вы сможете добавить или "
 "удалить текст позже."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr "Вы можете создать аналог в %1"
 
@@ -1506,8 +1558,8 @@ msgstr "Вы вышли"
 msgid "You may want to resume the editing of one of them"
 msgstr "Возможно вы захотите продолжить редактирование одной из них"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Вы должны сразу изменить свой пароль на %1"
 
@@ -1611,6 +1663,9 @@ msgstr ""
 
 msgid "mandatory"
 msgstr "обязательно"
+
+msgid "no font embedding"
+msgstr ""
 
 msgid "numbered item"
 msgstr "список с нумерацией"

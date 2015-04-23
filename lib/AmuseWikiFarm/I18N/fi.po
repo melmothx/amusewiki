@@ -70,6 +70,9 @@ msgstr "Keskeytynyt muokkaus käynnissä, kannattaa tarkistaa erot ja lopputulos
 msgid "Action"
 msgstr "Mitä tehdään"
 
+msgid "Active"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Lisää kansikuva (PNG tai JPG)"
 
@@ -77,6 +80,11 @@ msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Lisää liitetiedosto (PNG, JPG tai PDF)"
 
 msgid "Add non-breaking spaces where appropriate for the language"
+msgstr ""
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
 msgstr ""
 
 msgid "Add this text to the bookbuilder"
@@ -104,6 +112,9 @@ msgstr "Kaikki versiot"
 
 msgid "All sites"
 msgstr "Kaikki sivustot"
+
+msgid "All users"
+msgstr ""
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -228,6 +239,9 @@ msgstr "Valmis"
 msgid "Computing of differences took"
 msgstr "Erojen laskeminen kesti"
 
+msgid "Convert to archive markup"
+msgstr ""
+
 msgid "Couldn't add the text"
 msgstr "Tekstiä ei voitu lisätä"
 
@@ -245,6 +259,9 @@ msgstr "Luo uusi kirjastonhoitaja"
 
 msgid "Create a new special page"
 msgstr "Luo uusi erillinen sivu"
+
+msgid "Create a new user"
+msgstr ""
 
 msgid "Create a topic alias"
 msgstr "Luo uusi otsikon alias"
@@ -453,6 +470,9 @@ msgstr "Git konsoli"
 
 msgid "HTML"
 msgstr "HTML"
+
+msgid "HTML/Word Importer"
+msgstr ""
 
 msgid "Half Letter paper"
 msgstr "Half Letter"
@@ -713,6 +733,9 @@ msgstr "Seuraava"
 msgid "Nice title"
 msgstr "Otsikko"
 
+msgid "No"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Ei tuloksia!"
 
@@ -775,8 +798,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -954,6 +977,12 @@ msgstr "Edellinen"
 msgid "Priority"
 msgstr "Tärkeysjärjestys"
 
+msgid "Private"
+msgstr ""
+
+msgid "Produce an EPUB instead of a PDF"
+msgstr ""
+
 msgid "Produced"
 msgstr ""
 
@@ -1058,6 +1087,9 @@ msgstr "Versio"
 #. ($uri)
 msgid "Revision for %1 has been deleted"
 msgstr "Versio %1 poistettu"
+
+msgid "Roles"
+msgstr ""
 
 msgid "Search"
 msgstr "Hae"
@@ -1177,6 +1209,9 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr ""
 
+msgid "Such an user already exists!"
+msgstr ""
+
 msgid "Such username already exists"
 msgstr "Käyttäjänimi on jo olemassa"
 
@@ -1196,6 +1231,9 @@ msgid "Task"
 msgstr "Tehtävä"
 
 msgid "TeX"
+msgstr ""
+
+msgid "Text formatted with markup"
 msgstr ""
 
 msgid ""
@@ -1295,8 +1333,8 @@ msgstr "Otsikko lajittelua varten"
 msgid "Titles"
 msgstr "Tekstit"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1397,6 +1435,14 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Käyttäjä %1 luotu!"
 
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr ""
+
 msgid "User created"
 msgstr "Käyttäjä luotu"
 
@@ -1407,6 +1453,9 @@ msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 "Käyttäjänimi, vain kirjaimia ja numeroita, ei erikoismerkkejä, ei isoja "
 "kirjaimia"
+
+msgid "Users"
+msgstr ""
 
 msgid "Verbatim block"
 msgstr ""
@@ -1447,6 +1496,9 @@ msgstr "XeLaTex lähdetiedosto"
 msgid "Year"
 msgstr "Vuosi"
 
+msgid "Yes"
+msgstr ""
+
 msgid "You already proved you are human"
 msgstr "Osoitit jo olevasi ihminen"
 
@@ -1465,8 +1517,8 @@ msgstr ""
 "    \"plus\"-kuvaketta tekstin latausvaihtoehtojen vieressä. Voit lisätä\n"
 "    ja poistaa tekstejä myöhemmin."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1483,8 +1535,8 @@ msgstr "Olet kirjautunut ulos"
 msgid "You may want to resume the editing of one of them"
 msgstr "Saatat haluta jatkaa muokkausta"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Sinun tulisi vaihtaa salasanasi heti osoitteessa %1"
 
@@ -1587,6 +1639,9 @@ msgstr ""
 
 msgid "mandatory"
 msgstr "pakollinen"
+
+msgid "no font embedding"
+msgstr ""
 
 msgid "numbered item"
 msgstr "numeroitu elementti"

@@ -72,6 +72,9 @@ msgstr ""
 msgid "Action"
 msgstr "Aktion"
 
+msgid "Active"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Titelbild hinzufügen (PNG oder JPG)"
 
@@ -79,6 +82,11 @@ msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Anhang hinzufügen (PNG, JPG oder PDF)"
 
 msgid "Add non-breaking spaces where appropriate for the language"
+msgstr ""
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
 msgstr ""
 
 msgid "Add this text to the bookbuilder"
@@ -108,6 +116,9 @@ msgstr "Alle Änderungen"
 
 msgid "All sites"
 msgstr "Alle Seiten"
+
+msgid "All users"
+msgstr ""
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -233,6 +244,9 @@ msgstr "Abgeschlossen"
 msgid "Computing of differences took"
 msgstr "Berechnen der Unterschiede dauerte"
 
+msgid "Convert to archive markup"
+msgstr ""
+
 msgid "Couldn't add the text"
 msgstr "Konnte den Text nicht hinzufügen"
 
@@ -249,6 +263,9 @@ msgid "Create a new librarian"
 msgstr "Eine neue BibliothekarIn erstellen"
 
 msgid "Create a new special page"
+msgstr ""
+
+msgid "Create a new user"
 msgstr ""
 
 msgid "Create a topic alias"
@@ -459,6 +476,9 @@ msgstr "Deppenkonsole"
 
 msgid "HTML"
 msgstr "HTML"
+
+msgid "HTML/Word Importer"
+msgstr ""
 
 msgid "Half Letter paper"
 msgstr "Halbes Letterpapier"
@@ -728,6 +748,9 @@ msgstr "Nächste"
 msgid "Nice title"
 msgstr "Netter Titel"
 
+msgid "No"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Kein Resultat gefunden!"
 
@@ -784,8 +807,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -942,6 +965,12 @@ msgstr "Vorherige"
 msgid "Priority"
 msgstr "Priorität"
 
+msgid "Private"
+msgstr ""
+
+msgid "Produce an EPUB instead of a PDF"
+msgstr ""
+
 msgid "Produced"
 msgstr "Produziert"
 
@@ -1042,6 +1071,9 @@ msgstr "Änderung"
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
+msgstr ""
+
+msgid "Roles"
 msgstr ""
 
 msgid "Search"
@@ -1162,6 +1194,9 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr ""
 
+msgid "Such an user already exists!"
+msgstr ""
+
 msgid "Such username already exists"
 msgstr "Dieser BenutzerInnenname besteht bereits"
 
@@ -1182,6 +1217,9 @@ msgstr "Aufgabe"
 
 msgid "TeX"
 msgstr "TeX"
+
+msgid "Text formatted with markup"
+msgstr ""
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
@@ -1275,8 +1313,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Liste aller Texte"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1375,6 +1413,14 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "BenutzerIn %1 erstellt!"
 
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr ""
+
 msgid "User created"
 msgstr "BenutzerIn erstellt"
 
@@ -1384,6 +1430,9 @@ msgstr "BenutzerInnenname"
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 "BenutzerInnename, nur alphanumerisch, keine Sonderzeichen, keine Großschrift"
+
+msgid "Users"
+msgstr ""
 
 msgid "Verbatim block"
 msgstr ""
@@ -1425,6 +1474,9 @@ msgstr "XeLaTex Quelle"
 msgid "Year"
 msgstr "Jahr"
 
+msgid "Yes"
+msgstr ""
+
 msgid "You already proved you are human"
 msgstr "Du hast bereits bestätigt, dass du ein Mensch bist"
 
@@ -1440,8 +1492,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr "D kannst einen Peer erstellen bei %1"
 
@@ -1458,8 +1510,8 @@ msgstr "Du hast dich abgemeldet"
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Du könntest dein Passwort sofort verändern bei %1"
 
@@ -1556,6 +1608,9 @@ msgid "left"
 msgstr ""
 
 msgid "mandatory"
+msgstr ""
+
+msgid "no font embedding"
 msgstr ""
 
 msgid "numbered item"
