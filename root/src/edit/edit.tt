@@ -222,6 +222,12 @@ $(document).ready(function() {
       </a>
     </div>
     <div>
+      <a href="[% c.uri_for_action('utils/import') %]" target="_blank">
+        <span class="glyphicon glyphicon-hand-right"></span>
+        [% loc('HTML/Word Importer') %]
+      </a>
+    </div>
+    <div>
       <textarea rows="20" cols="60" id="maintextarea"
                 class="form-control"
                 [% IF locked_editing %]readonly="readonly"[% END %]
