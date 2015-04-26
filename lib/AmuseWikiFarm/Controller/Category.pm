@@ -75,11 +75,12 @@ sub category_list_display :Private {
     my ($self, $c) = @_;
 
     my $site_id = $c->stash->{site}->id;
-    my $type = 'category-' . $c->stash->{f_class};
     my $rs = delete $c->stash->{categories_rs};
     my $cache = $c->model('Cache',
                           site_id => $site_id,
-                          type => $type,
+                          type => 'category',
+                          subtype => $c->stash->{f_class},
+                          lang => $c->stash->{current_locale_code},
                           resultset => $rs);
 
     # this should be safe.

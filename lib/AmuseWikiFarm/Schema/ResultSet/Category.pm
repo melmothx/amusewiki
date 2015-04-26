@@ -51,5 +51,16 @@ sub by_type_and_uri {
                           uri  => $uri});
 }
 
+=head2 active_only
+
+Filter the categories which have text_count > 0
+
+=cut
+
+
+sub active_only {
+    return shift->search({ text_count => { '>' => 0 }});
+}
+
 1;
 

@@ -1962,6 +1962,7 @@ sub update_from_params {
     my @options;
     # these are numerics
     foreach my $option (qw/latest_entries_for_rss
+                           paginate_archive_after
                            latest_entries/) {
         my $value = 0;
         if (my $set_to = delete $params->{$option}) {
@@ -2168,6 +2169,19 @@ sub _latest_entries_routine {
     }
     return $self->titles->latest($num);
 }
+
+sub paginate_archive_after {
+    my $self = shift;
+    return $self->get_option('paginate_archive_after') || 25;
+}
+
+sub pagination_needed {
+    my ($self, $count) = @_;
+    return 0 unless $count;
+    my $min = $self->paginate_archive_after;
+    $count > $min ? return 1 : return 0;
+}
+
 
 sub get_option {
     my ($self, $lookup) = @_;

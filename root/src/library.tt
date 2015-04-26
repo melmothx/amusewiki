@@ -3,6 +3,7 @@
   [%- IF multilang.filter_label -%]
   <small>[% multilang.filter_label %]</small>
   [%- END -%]
+  <small>([% text_count %])</small>
 </h2>
 <div><br /></div>
 
@@ -28,6 +29,7 @@
 
 [% IF texts.size %]
 
+[% IF show_pager %]
 <ul class="pagination" id="alphabetical-pager">
   [% FOREACH anchor IN pager %]
   <li>
@@ -35,6 +37,7 @@
   </li>
   [% END %]
 </ul>
+[% END %]
 
 
 <div class="list-group">
@@ -42,6 +45,7 @@
 
     [%- # add the separator %]
     [% IF text.anchor_name %]
+      [% IF show_pager %]
 </div>
 <h3 id="paging-sep-[% text.anchor_id %]">
   [% text.anchor_name %]
@@ -50,6 +54,7 @@
     </a>
 </h3>
 <div class="list-group">
+      [% END %]
     [% ELSE %]
   <div class="amw-listing-item">
     <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item">
@@ -61,6 +66,7 @@
     [% END %]
     [% END %]
 </div>
+
 [% ELSE %]
 <p>
   [% loc('No text found!') %]

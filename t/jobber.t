@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 76;
+use Test::More tests => 78;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -196,6 +196,10 @@ $mech->get_ok('/console/unpublished');
 
 ok ($mech->form_name('purge'), "Found purging form");
 
+my $text_row = $schema->resultset('Title')
+  ->single({ f_full_path_name => $text_file });
+ok ($text_row, "$text_file found");
+
 $mech->click;
 
 check_jobber($mech);
@@ -204,6 +208,9 @@ my ($log) = $git->log;
 
 is $log->message, "$text deleted by root\n", "Deletion found in the git";
 
+$text_row = $schema->resultset('Title')
+  ->single({ f_full_path_name => $text_file });
+ok (!$text_row, "$text_file not found");
 ok (! -f $text_file, "$text_file is no more");
 
 sub check_jobber {

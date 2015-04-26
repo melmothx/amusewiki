@@ -1,0 +1,58 @@
+[% # -*- mode: html -*- %]
+
+<script src="[% c.uri_for('/static/js/ckeditor/ckeditor.js') %]"></script>
+<script src="[% c.uri_for('/static/js/ckeditor/adapters/jquery.js') %]"></script>
+<script type="text/javascript">
+var ckconfiguration = {
+    'language' : '[% current_locale_code %]',
+    'toolbar': 'AmuseWiki',
+    'toolbar_AmuseWiki': [
+	    { 'name': 'document', 'items' : [ 'Source'] },
+	    { 'name': 'clipboard',
+	      'items' : 
+	      [ 'Cut','Copy','Paste','PasteText',
+		    'PasteFromWord','-','Undo','Redo' ] },
+	    { 'name': 'editing',
+	      'items' : [ 'Find','Replace','-','SelectAll' ] },
+	    { 'name': 'basicstyles',
+          'items' : [
+		      'Bold','Italic',
+		      '-','RemoveFormat' ] },
+	    { 'name': 'paragraph',
+	      'items' : [ 'NumberedList','BulletedList','-','Blockquote', ] },
+	    { 'name': 'styles',
+          'items' : [ 'Format'] }
+    ]
+};
+</script>
+
+<div class="center">
+  <h3>[% loc('HTML/Word Importer') %]</h3>
+</div>
+
+<form id="ckform" method="post"
+      enctype="multipart/form-data">
+  <div>
+    <textarea id="html_body" name="html_body" cols="80" rows="20">[% html_body | html %]</textarea>
+  </div>
+  <br>
+  <div class="center">
+    <button type="submit" class="btn btn-default"
+	        name="go" value="go">
+      [% loc('Convert to archive markup') %]
+    </button>
+  </div>
+</form>
+
+[% IF muse_body %]
+<div class="center">
+  <h3>[% loc('Text formatted with markup') %]</h3>
+  <textarea id="muse_body" cols="80" rows="20">[% muse_body | html %]</textarea>
+</div>
+[% END %]
+
+<script type="text/javascript">
+  $('#html_body').ckeditor(ckconfiguration);
+  ckconfiguration.height = 100;
+  $('#notes').ckeditor(ckconfiguration);
+</script>

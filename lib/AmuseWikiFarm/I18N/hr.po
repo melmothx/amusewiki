@@ -69,6 +69,9 @@ msgstr "Napuštena izmjena u toku, slobodno provjeri razlike i preuzmi"
 msgid "Action"
 msgstr "Akcija"
 
+msgid "Active"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Dodaj sliku za naslovnicu (PNG ili JPG)"
 
@@ -77,6 +80,11 @@ msgstr "Dodaj privitak (PNG, JPG ili PDF)"
 
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Dodaj neodvojivi razmak prikladan jeziku"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
 
 msgid "Add this text to the bookbuilder"
 msgstr "Dodaj ovaj tekst zbirci"
@@ -104,6 +112,9 @@ msgstr "Sve izmjene"
 
 msgid "All sites"
 msgstr "Svi sajtovi"
+
+msgid "All users"
+msgstr ""
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -227,6 +238,9 @@ msgstr "Gotovo"
 msgid "Computing of differences took"
 msgstr "Za izračunavanje razlika bilo je potrebno"
 
+msgid "Convert to archive markup"
+msgstr ""
+
 msgid "Couldn't add the text"
 msgstr "Nije bilo moguće dodati tekst"
 
@@ -244,6 +258,9 @@ msgstr "Stvori novog bibliotekara"
 
 msgid "Create a new special page"
 msgstr "Stvori novu posebnu stranicu"
+
+msgid "Create a new user"
+msgstr ""
 
 msgid "Create a topic alias"
 msgstr "Stvori alias za temu"
@@ -461,6 +478,9 @@ msgstr "Git konzola"
 
 msgid "HTML"
 msgstr "HTML"
+
+msgid "HTML/Word Importer"
+msgstr ""
 
 msgid "Half Letter paper"
 msgstr "Polovica “Letter” papira"
@@ -722,6 +742,9 @@ msgstr "Iduće"
 msgid "Nice title"
 msgstr "Lijep naslov"
 
+msgid "No"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Nema rezultata!"
 
@@ -782,8 +805,8 @@ msgstr "PDF logo (obavezni smjer ili ime teksta u texmf)"
 msgid "PDFs cannot be used in the body."
 msgstr "Nije moguće koristi PDF-ove unutar tekstova."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF-ovi koji nisu na popisu %1 polja bit će pohranjeni ali zanemareni."
 
@@ -969,6 +992,12 @@ msgstr "Prethodno"
 msgid "Priority"
 msgstr "Prioritet"
 
+msgid "Private"
+msgstr ""
+
+msgid "Produce an EPUB instead of a PDF"
+msgstr ""
+
 msgid "Produced"
 msgstr "Stvoreno"
 
@@ -1078,6 +1107,9 @@ msgstr "Izmjena"
 #. ($uri)
 msgid "Revision for %1 has been deleted"
 msgstr "Izmjena za %1 izbrisana"
+
+msgid "Roles"
+msgstr ""
 
 msgid "Search"
 msgstr "Traži"
@@ -1197,6 +1229,9 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr "Ovaj URI već postoji"
 
+msgid "Such an user already exists!"
+msgstr ""
+
 msgid "Such username already exists"
 msgstr "Korisničko ime već postoji"
 
@@ -1217,6 +1252,9 @@ msgstr "Zadatak"
 
 msgid "TeX"
 msgstr "TeX"
+
+msgid "Text formatted with markup"
+msgstr ""
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
@@ -1314,8 +1352,8 @@ msgstr "Naslov za abecedni popis"
 msgid "Titles"
 msgstr "Naslovi"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr "Da bi objavio izmjenu, idi na %1"
 
@@ -1417,6 +1455,14 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Korisnik %1 stvoren!"
 
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr ""
+
 msgid "User created"
 msgstr "Korisnik stvoren"
 
@@ -1427,6 +1473,9 @@ msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 "Korisničko ime, samo slovnobrojčani znakovi, bez posebnih znakova, bez "
 "velikih slova."
+
+msgid "Users"
+msgstr ""
 
 msgid "Verbatim block"
 msgstr "Predformatirani dio"
@@ -1466,6 +1515,9 @@ msgstr "XeLaTex izvor"
 msgid "Year"
 msgstr "Godina"
 
+msgid "Yes"
+msgstr ""
+
 msgid "You already proved you are human"
 msgstr "Već si dokazao da si ljudsko biće"
 
@@ -1483,8 +1535,8 @@ msgstr ""
 "Klikni na “Plus”, pored preuzimanja, kod svakog teksta da bi ga dodao svojoj "
 "zbirci. Kasnije možeš dodati i izbrisati tekstove."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr "Možeš stvoriti račun na %1"
 
@@ -1501,8 +1553,8 @@ msgstr "Odjavljen si"
 msgid "You may want to resume the editing of one of them"
 msgstr "Možeš se vratiti jednoj od izmjena u toku"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Trebao bi promjeniti svoju lozinku sada na %1"
 
@@ -1605,6 +1657,9 @@ msgstr "lijeva"
 
 msgid "mandatory"
 msgstr "obavezno"
+
+msgid "no font embedding"
+msgstr ""
 
 msgid "numbered item"
 msgstr "numerirani element"

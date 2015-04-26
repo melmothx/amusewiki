@@ -34,7 +34,8 @@ sub autocompletion :Chained('api') :Args(1) {
     if ($type =~ m/(topic|author)/) {
         my $cats = $c->stash->{site}->categories;
         my @list;
-        my $result = $cats->by_type($1)->search({}, { columns => qw/name/ });
+        my $result = $cats->by_type($1)->active_only
+          ->search(undef, { columns => qw/name/ });
         while (my $row = $result->next) {
             push @list, $row->name;
         }

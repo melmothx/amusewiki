@@ -72,6 +72,9 @@ msgstr ""
 msgid "Action"
 msgstr "Handling"
 
+msgid "Active"
+msgstr ""
+
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Lägg till en omslagsbild (PNG eller JPG)"
 
@@ -81,6 +84,11 @@ msgstr "Lägg till en bilaga (PNG, JPG eller PDF)"
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr ""
 "Lägg till ett hårt mellanslag där det är lämpligt för det aktuella språket"
+
+msgid ""
+"Add paginator for text listing when the number of texts is greater than "
+"(integer)"
+msgstr ""
 
 msgid "Add this text to the bookbuilder"
 msgstr "Lägg till denna text i bokskaparen"
@@ -109,6 +117,9 @@ msgstr "Alla revideringer"
 
 msgid "All sites"
 msgstr "Alla sidor"
+
+msgid "All users"
+msgstr ""
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -233,6 +244,9 @@ msgstr "Genomförd"
 msgid "Computing of differences took"
 msgstr "Beräknandet av skillnader tog"
 
+msgid "Convert to archive markup"
+msgstr ""
+
 msgid "Couldn't add the text"
 msgstr "Det gick inte att lägga till texten"
 
@@ -250,6 +264,9 @@ msgstr "Skapa en ny bibliotekarie"
 
 msgid "Create a new special page"
 msgstr "Skapa en ny specialsida"
+
+msgid "Create a new user"
+msgstr ""
 
 msgid "Create a topic alias"
 msgstr "Skapa ett ämnesalias"
@@ -462,6 +479,9 @@ msgstr "Git-konsol"
 
 msgid "HTML"
 msgstr "HTML"
+
+msgid "HTML/Word Importer"
+msgstr ""
 
 msgid "Half Letter paper"
 msgstr "Halvt brevpapper"
@@ -720,6 +740,9 @@ msgstr "Nästa"
 msgid "Nice title"
 msgstr "Bra titel"
 
+msgid "No"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Inga resultat hittades!"
 
@@ -781,8 +804,8 @@ msgstr "PDF logotyp (absolut sökväg eller gör det i texmf)"
 msgid "PDFs cannot be used in the body."
 msgstr "PDF:er kan inte användas i brödtexten."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF är inte listad i %1 direktiv kommer att lagras men ignoreras"
 
@@ -969,6 +992,12 @@ msgstr "Förra"
 msgid "Priority"
 msgstr "Prioritet"
 
+msgid "Private"
+msgstr ""
+
+msgid "Produce an EPUB instead of a PDF"
+msgstr ""
+
 msgid "Produced"
 msgstr "Producerad"
 
@@ -1080,6 +1109,9 @@ msgstr "Revidering"
 #. ($uri)
 msgid "Revision for %1 has been deleted"
 msgstr "Revidering för %1 har raderats"
+
+msgid "Roles"
+msgstr ""
 
 msgid "Search"
 msgstr "Sök"
@@ -1200,6 +1232,9 @@ msgstr ""
 msgid "Such an uri already exists"
 msgstr "En sådan uri existerar redan"
 
+msgid "Such an user already exists!"
+msgstr ""
+
 msgid "Such username already exists"
 msgstr "Ett sådant användarnamn existerar redan"
 
@@ -1220,6 +1255,9 @@ msgstr "Uppgift"
 
 msgid "TeX"
 msgstr "TeX"
+
+msgid "Text formatted with markup"
+msgstr ""
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
@@ -1322,8 +1360,8 @@ msgstr "Titel för sortering"
 msgid "Titles"
 msgstr "Titlar"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr "För att verkställa ändringarna, kan du besöka %1"
 
@@ -1425,6 +1463,14 @@ msgstr ""
 msgid "User %1 created!"
 msgstr "Användare %1 skapad!"
 
+#. ($c->stash->{user}->username)
+msgid "User %1 deleted"
+msgstr ""
+
+#. ($user->username)
+msgid "User %1 updated"
+msgstr ""
+
 msgid "User created"
 msgstr "Användare skapad"
 
@@ -1434,6 +1480,9 @@ msgstr "Användarnamn"
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 "Användarnamn, endast alfanumeriskt, inga specialtecken, inga stora bokstäver"
+
+msgid "Users"
+msgstr ""
 
 msgid "Verbatim block"
 msgstr "Verbatim block"
@@ -1474,6 +1523,9 @@ msgstr "XeLaTeX källa"
 msgid "Year"
 msgstr "År"
 
+msgid "Yes"
+msgstr ""
+
 msgid "You already proved you are human"
 msgstr "Du har redan bevisat att du är en människa"
 
@@ -1492,8 +1544,8 @@ msgstr ""
 "\" bredvid nedladdnings-ikonerna på varje texts       sida. Du kan lägga "
 "till eller ta bort texterna senare."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr "Du kan skapa en peer vid %1"
 
@@ -1510,8 +1562,8 @@ msgstr "Du är nu utloggad"
 msgid "You may want to resume the editing of one of them"
 msgstr "Du bör överväga att återgå till redigeringen av en av dem"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Du bör ändra ditt lösenord på direkten %1"
 
@@ -1614,6 +1666,9 @@ msgstr ""
 
 msgid "mandatory"
 msgstr "obligatorisk"
+
+msgid "no font embedding"
+msgstr ""
 
 msgid "numbered item"
 msgstr "numererat föremål"

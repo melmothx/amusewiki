@@ -12,12 +12,15 @@ use File::Path qw/remove_tree/;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
+use AmuseWikiFarm::Archive::Cache;
 
 plan tests => 13;
 
 if (-f 'test.db') {
     unlink 'test.db' or die $!;
 }
+
+AmuseWikiFarm::Archive::Cache->new->clear_all;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -68,6 +71,10 @@ my %repos = ('0blog0' => {
                           mainfont => 'Charis SIL',
                           twoside => 1,
                           canonical => 'blog.amusewiki.org',
+                          site_options => [{
+                                            option_name => 'paginate_archive_after',
+                                            option_value => 1,
+                                           }],
                          },
              '0test0' => {
                           id => '0test0',

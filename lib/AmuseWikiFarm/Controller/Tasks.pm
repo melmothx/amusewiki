@@ -54,7 +54,7 @@ sub status :Chained('root') :CaptureArgs(1) {
     if (my $msg = $data->{message}) {
         # $c->loc('Your file is ready');
         # $c->loc('Changes applied');
-        # $c->log('Done');
+        # $c->loc('Done');
         $data->{message} = $c->loc($msg);
     }
     $c->stash(

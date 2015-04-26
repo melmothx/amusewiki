@@ -760,5 +760,22 @@ sub recent_changes_uri {
     }
 }
 
+=head1 METHOD MODIFIERS
+
+Delete method is overload to update the category text count.
+
+=cut
+
+sub delete {
+    my $self = shift;
+    my @categories = $self->categories;
+    # do the deletion
+    my $exit = $self->next::method;
+    foreach my $cat (@categories) {
+        $cat->title_count_update;
+    }
+    return $exit;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
