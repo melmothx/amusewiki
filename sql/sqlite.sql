@@ -240,3 +240,10 @@ CREATE TABLE attachment (
 
 CREATE UNIQUE INDEX unique_attachment ON attachment (uri, site_id);
 
+CREATE TABLE site_link (
+       url VARCHAR(255) NOT NULL,
+       label VARCHAR(255) NOT NULL,
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                ON DELETE CASCADE ON UPDATE CASCADE
+);
