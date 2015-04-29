@@ -78,7 +78,7 @@ CREATE TABLE site_options (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                ON DELETE CASCADE ON UPDATE CASCADE,
        option_name VARCHAR(64),
-       option_value VARCHAR(255),
+       option_value TEXT,
        PRIMARY KEY (site_id, option_name)
 );
 

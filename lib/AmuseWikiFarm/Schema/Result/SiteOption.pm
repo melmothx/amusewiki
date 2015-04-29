@@ -55,9 +55,8 @@ __PACKAGE__->table("site_options");
 
 =head2 option_value
 
-  data_type: 'varchar'
+  data_type: 'text'
   is_nullable: 1
-  size: 255
 
 =cut
 
@@ -67,7 +66,7 @@ __PACKAGE__->add_columns(
   "option_name",
   { data_type => "varchar", is_nullable => 0, size => 64 },
   "option_value",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "text", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -102,8 +101,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-11-26 12:07:27
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:b/ct+2QTuhioUDhtDcyfzQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-29 17:41:32
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3FumUn+M7oAPS0tLl8wgoQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
