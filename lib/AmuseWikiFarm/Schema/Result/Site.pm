@@ -1724,6 +1724,14 @@ sub special_list {
                     name => $l->title || $l->uri
                    };
     }
+    my @links = $self->site_links->search(undef,
+                                          { order_by => [qw/sorting_pos label/] });
+    foreach my $l (@links) {
+        push @out, {
+                    full_url => $l->url,
+                    name => $l->label,
+                   };
+    }
     return @out;
 }
 
@@ -1999,6 +2007,7 @@ sub update_from_params {
                        };
     }
 
+    my @site_links = $self->deserialize_links(delete $params->{site_links});
 
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
@@ -2007,6 +2016,7 @@ sub update_from_params {
 
 
     # no error? update the db
+    my $guard = $self->result_source->schema->txn_scope_guard;
     unless (@errors) {
         $self->update;
         if (@vhosts) {
@@ -2016,14 +2026,53 @@ sub update_from_params {
                 $self->vhosts->create({ name => $vhost });
             }
         }
+        $self->site_links->delete;
+        foreach my $link (@site_links) {
+            $self->site_links->create($link);
+        }
         foreach my $opt (@options) {
             $self->site_options->update_or_create($opt);
         }
     }
+    $guard->commit;
 
     # in any case discard the changes
     $self->discard_changes;
     @errors ? return join("\n", @errors) : return;
+}
+
+sub deserialize_links {
+    my ($self, $string) = @_;
+    my @links;
+    return @links unless $string;
+    my @lines = grep { $_ } split(/\r?\n/, $string);
+    return @links unless @lines;
+    my $order = 0;
+    foreach my $line (@lines) {
+        if ($line =~ m{^\s*(https?://\S+)\s+(.*?)\s*$}) {
+            push @links, {
+                          url => $1,
+                          label => $2,
+                          sorting_pos => $order++,
+                         };
+        }
+    }
+    return @links;
+}
+
+sub serialize_links {
+    my $self = shift;
+    my $links = $self->site_links->search(undef, { order_by => [qw/sorting_pos label/] });
+    my @lines;
+    while (my $link = $links->next) {
+        push @lines, $link->url . ' ' . $link->label;
+    }
+    if (@lines) {
+        return join("\n", @lines);
+    }
+    else {
+        return '';
+    }
 }
 
 sub translations_list {

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 14;
+use Test::More tests => 15;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -121,3 +121,22 @@ ok(!$errors, "No errors");
 
 is $site->html_special_page_bottom, '', "html wiped out";
 
+my @links = ({
+              url => 'http://bau.org',
+              label => 'Bauuuu',
+              sorting_pos => 0,
+             },
+             {
+              url => 'http://bau2.org',
+              label => 'Bauuuu 2',
+              sorting_pos => 1,
+             });
+
+$site->site_links->delete;
+foreach my $link (@links) {
+    $site->site_links->create($link);
+}
+
+my @outlinks = $site->deserialize_links($site->serialize_links);
+is_deeply(\@outlinks, \@links, "de/serialize works");
+diag $site->serialize_links;
