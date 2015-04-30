@@ -3,13 +3,14 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 10;
+use Test::More tests => 14;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
+use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -99,5 +100,24 @@ $errors = $site->update_from_params({
 like $errors, qr/invalid opening/i, "Errors found: $errors";
 is $site->opening, 'right', "Site not updated";
 
-
 $site->update({ opening => $old_opening });
+
+$old{papersize} = 'a4';
+$old{opening} = 'any';
+
+my $html_injection = q{<script>alert('hullo')</script>};
+
+$errors = $site->update_from_params({ %old,
+                                      html_special_page_bottom => $html_injection,
+                                    });
+ok(!$errors, "No errors") or diag Dumper($errors);
+
+is $site->html_special_page_bottom, $html_injection, "html stored";
+
+# reset
+$errors = $site->update_from_params({ %old });
+
+ok(!$errors, "No errors");
+
+is $site->html_special_page_bottom, '', "html wiped out";
+

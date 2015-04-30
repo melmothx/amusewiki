@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 33;
+use Test::More tests => 39;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -63,6 +63,27 @@ $mech->submit_form(form_id => 'login-form',
                                password => 'root',
                              },
                    button => 'submit');
+
+$mech->get_ok('/admin/sites/edit/0blog0');
+
+my $html_injection = q{<script>alert('hullo')</script>};
+
+$mech->submit_form(with_fields => {
+                                   html_special_page_bottom => $html_injection,
+                                  },
+                   button => 'edit_site');
+
+$mech->get_ok('/special/index');
+$mech->content_contains($html_injection, "Found HTML");
+
+$mech->get_ok('/admin/sites/edit/0blog0');
+$mech->submit_form(with_fields => {
+                                   html_special_page_bottom => '',
+                                  },
+                   button => 'edit_site');
+$mech->get_ok('/special/index');
+$mech->content_lacks($html_injection, "HTML wiped");
+
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 

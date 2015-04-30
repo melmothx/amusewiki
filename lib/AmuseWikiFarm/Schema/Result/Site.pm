@@ -1990,6 +1990,16 @@ sub update_from_params {
                        };
     }
 
+    # this is totally arbitrary
+    foreach my $option (qw/html_special_page_bottom/) {
+        my $value = delete $params->{$option};
+        push @options, {
+                        option_name => $option,
+                        option_value => $value,
+                       };
+    }
+
+
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
           . join(", ", keys %$params);
@@ -2204,7 +2214,10 @@ sub get_option {
     }
 }
 
-
+sub html_special_page_bottom {
+    my ($self) = @_;
+    return $self->get_option('html_special_page_bottom') || '';
+}
 
 __PACKAGE__->meta->make_immutable;
 

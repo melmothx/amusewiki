@@ -455,18 +455,41 @@
 
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="row">
+        <div class="col-sm-2">
         <label for="vhosts">
           [% loc('Virtual hosts, one per line') %]
         </label>
+        </div>
+        <div class="col-sm-10">
         <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
           [%- SET vhosts = esite.vhosts_rs -%]
           [%- FOREACH vhost IN vhosts.all %]
           [%- vhost.name +%]
 
           [%- END -%]</textarea>
+        </div>
       </div>
     </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div>
+          <label for="html_special_page_bottom" class="col-sm-2 control-label">
+            [% loc('HTML to append to each special page, inserted
+            verbatim, now you have a chance to screw up everything, so
+            be careful') %]
+          </label>
+        </div>
+        <div class="col-sm-10">
+          <textarea rows="10" name="html_special_page_bottom"
+                    id="html_special_page_bottom"
+                    class="form-control">
+            [%- esite.html_special_page_bottom | html -%]</textarea>
+        </div>
+      </div>
+    </div>
+
 
     <div class="form-group">
       <label for="latest_entries" class="col-sm-2 control-label">
