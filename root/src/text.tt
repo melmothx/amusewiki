@@ -273,7 +273,9 @@
     $('.table-of-contents').remove();
   </script>
 
+  <div>
   [%- site.html_special_page_bottom -%]
+  </div>
 
   [% IF site.has_site_file('pagelogo.png') %]
   <div id="special-pages-logo">
