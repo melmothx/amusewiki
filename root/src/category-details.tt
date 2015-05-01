@@ -1,7 +1,7 @@
 [%- # -*- mode: html -*- -%]
 
 <h2>[% loc(category.name) %]
-  [%- IF site.multilang -%]
+  [%- IF site.multilanguage -%]
   [%- IF multilang -%]
   [%- IF multilang.filtered -%]
   <small>[% multilang.filtered %]</small>
@@ -16,7 +16,7 @@
 </div>
 [% END %]
 
-[%- IF site.multilang -%]
+[%- IF site.multilanguage -%]
 [%- IF multilang -%]
 <ul class="nav nav-tabs" role="tablist">
   <li [% UNLESS multilang.code -%] class="active" [%- END %]>

@@ -140,9 +140,9 @@ my @sites = $site->other_sites;
 ok(!@sites, "No related sites found");
 
 $mech->get('/topics/geo');
-$mech->content_contains('/topics/geo/en');
+$mech->content_contains('/category/topic/geo/en');
 $mech->get_ok('/set-language?lang=it&goto=%2Ftopics%2Fgeo');
-$mech->content_contains('/topics/geo/it');
+$mech->content_contains('/category/topic/geo/it');
 $mech->content_contains('<html lang="it">');
 
 

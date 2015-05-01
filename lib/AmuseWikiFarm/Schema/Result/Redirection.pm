@@ -149,8 +149,8 @@ sub uri_prefix {
     my $self = shift;
     my $uri_map = {
                    text => 'library',
-                   topic => 'topics',
-                   author => 'authors',
+                   topic => 'category/topic',
+                   author => 'category/author',
                    special => 'specials',
                   };
     my $prefix = $uri_map->{$self->type};
