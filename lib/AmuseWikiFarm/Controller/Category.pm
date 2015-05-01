@@ -39,6 +39,35 @@ sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
     $c->stash(please_index => 1);
 }
 
+sub legacy_topics :Chained('root') :PathPart('topics') :Args {
+    my ($self, $c, @args) = @_;
+    $c->forward(legacy_category =>  [ topic => @args ]);
+}
+
+sub legacy_authors :Chained('root') :PathPart('authors') :Args {
+    my ($self, $c, @args) = @_;
+    $c->forward(legacy_category => [ author => @args ]);
+}
+
+sub legacy_category :Private {
+    my ($self, $c, @args) = @_;
+    my $uri;
+    my %map = (
+               1 => 'category_list_display',
+               2 => 'single_category_display',
+               3 => 'single_category_by_lang_display',
+              );
+    if (my $action = $map{scalar(@args)}) {
+        $c->response->redirect($c->uri_for_action("/category/$action", \@args));
+        $c->detach;
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
+
+
+
 sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
     my ($self, $c, $type) = @_;
     if ($type eq 'topic') {
