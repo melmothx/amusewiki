@@ -48,8 +48,8 @@ $mech->set_fields(username => 'marcolino',
 $mech->click;
 is $mech->uri->path, '/library', "Loaded library ok";
 
-foreach my $path (qw/library topics authors bookbuilder search special
-                     feed rss.xml/) {
+foreach my $path (qw[library category/topic category/author bookbuilder search special
+                     feed rss.xml]) {
     $mech->get_ok("/$path");
     is $mech->uri->path, "/$path", "/$path is retrieved correctly";
 }
