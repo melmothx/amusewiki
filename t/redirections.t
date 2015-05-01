@@ -146,18 +146,18 @@ foreach my $alias (@text_aliases) {
 }
 
 
-$uri = "/topics/topic-1";
+$uri = "/category/topic/topic-1";
 
 foreach my $alias (@topic_aliases) {
-    $mech->get_ok("/topics/$alias");
-    is $mech->uri->path, $uri, "/topics/$alias points to $uri";
+    $mech->get_ok("/category/topic/$alias");
+    is $mech->uri->path, $uri, "/category/topic/$alias points to $uri";
 }
 
-$uri = "/authors/pluto";
+$uri = "/category/author/pluto";
 
 foreach my $alias (@author_aliases) {
-    $mech->get_ok("/authors/$alias");
-    is $mech->uri->path, $uri, "/authors/$alias points to $uri";
+    $mech->get_ok("/category/author/$alias");
+    is $mech->uri->path, $uri, "/category/author/$alias points to $uri";
 }
 
 $alias = $site->redirections->find({ uri => 'pluto-2', type => 'author' });
