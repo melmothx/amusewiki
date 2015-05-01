@@ -154,7 +154,7 @@
                   </a>
                 </li>
                 <li[% IF nav == 'author' %] class="active" [% END %]>
-                  <a href="[% c.uri_for('/authors') %]"
+                  <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
 		             title="[% loc('texts sorted by author') %]">
                     [% loc('Authors') %]
                   </a>
@@ -166,16 +166,15 @@
                 </li>
                 [%     FOREACH fixedcat IN site.list_fixed_categories %]
                 <li>
-                  <a href="[% c.uri_for_action('/category/single_topic_display',
-                                               [ fixedcat ]) %]">
+                  <a href="[% c.uri_for_action('/category/single_category_display',
+                                               [ 'topic', fixedcat ]) %]">
                     [% loc(fixedcat) %]
                   </a>
                 </li>
-                [% %]
                 [%     END  %]
                 [% ELSE %]
 	            <li[% IF nav == 'topic' %] class="active" [% END %]>
-                  <a href="[% c.uri_for('/topics') %]"
+                  <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		             title="[% loc('texts sorted by topics') %]">
                     [% loc('Topics') %]
                   </a>
@@ -400,12 +399,12 @@
         [% loc('Titles') %]
       </a>
       |
-      <a href="[% c.uri_for('/authors') %]"
+      <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
 		 title="[% loc('texts sorted by author') %]">
         [% loc('Authors') %]
       </a>
       |
-      <a href="[% c.uri_for('/topics') %]"
+      <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		 title="[% loc('texts sorted by topics') %]">
         [% loc('Topics') %]
       </a>
