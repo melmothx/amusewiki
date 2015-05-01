@@ -1,75 +1,6 @@
 [% # -*- mode:html -*- %]
 
-[%# js thing for markit up %]
-<script type="text/javascript"
-        src="[% c.uri_for('/static/js/markitup/jquery.markitup.js') %]">
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    var myMuseSettings = {
-	    previewParserPath:	'',
-	    onShiftEnter:		{keepDefault:false, openWith:'\n\n'},
-	    markupSet: [
-	        {name:'[% jsloc("Heading") %] 1 ([% jsloc("Part, for larger books only") %])',
-	         key:'1',
-             placeHolder:'[% jsloc("Your part here...") %]',
-	         openWith:'\n* '},
-
-	        {name:'[% jsloc("Heading") %] 2 ([% jsloc("Chapter, only for chapter divisions in books") %])',
-	         key:'2',
-	         placeHolder:'[% jsloc("Your chapter here...") %]',
-	         openWith:'\n** ' },
-
-	        {name:'[% jsloc("Heading") %] 3 ([% jsloc("generic sectioning, good for articles") %])',
-             key:'3',
-             openWith:'\n*** ',
-             placeHolder:'[% jsloc("Your section here...") %]' },
-
-	        {name:'[% jsloc("Heading") %] 4 ([% jsloc("subsection") %])',
-             key:'4',
-             openWith:'\n**** ',
-             placeHolder:'[% jsloc("Your subsection here...") %]' },
-
-	        {name:'[% jsloc("Heading") %] 5 ([% jsloc("sub-sub-section") %])',
-             key:'5',
-             openWith:'\n***** ',
-             placeHolder:'[% jsloc("Your sub-sub-section (or description heading) here...") %]' },
-
-	        {name:'[% jsloc("Italic") %]',
-             key:'I', openWith:' *', closeWith:'* '},
-
-	        {name:'[% jsloc("Bold") %]',
-             key:'B', openWith:' **', closeWith:'** '},
-
-	        {name:'[% jsloc("Bulleted List") %]',
-             openWith:'\n - ' },
-
-	        {name:'[% jsloc("Numeric List") %]',
-             openWith:'\n 1. ' },
-
-	        {name:'[% jsloc("Picture") %]',
-             key:'P',
-             replaceWith:'[[[![[% jsloc("Image url")%]]!]][[![[% jsloc("description")%]]!]]]' },
-
-	        {name:'[% jsloc("Link") %]',
-             key:'L',
-             replaceWith:'[[[![[% jsloc("Url") %]:!:http://]!]][[![[% jsloc("Display url as") %]:]!]]]' },
-
-	        {name:'[% jsloc("Quotes") %]',
-             multiline:true,
-             openBlockWith:'\n<quote>\n',
-             closeBlockWith:'\n</quote>\n'},
-
-	        {name:'[% jsloc("Verbatim block") %]',
-             multiline:true,
-             openBlockWith:'\n<example>\n',
-             closeBlockWith:'\n</example>\n'},
-	    ]
-    }
-    $('#maintextarea').markItUp(myMuseSettings);
-});
-</script>
+[% INCLUDE 'include/markitup.tt' %]
 
 [% IF editing_warnings %]
 <div id="editing-warnings" class="alert alert-danger">
@@ -229,7 +160,7 @@ $(document).ready(function() {
     </div>
     <div>
       <textarea rows="20" cols="60" id="maintextarea"
-                class="form-control"
+                class="form-control text-muse-body"
                 [% IF locked_editing %]readonly="readonly"[% END %]
                 name="body">[%- revision.muse_body | html -%]</textarea>
     </div>
