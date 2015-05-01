@@ -18,7 +18,7 @@ my ($res, $diag, $host);
 $host = { host => 'test.amusewiki.org' };
 
 $diag = request('/admin/debug_site_id', $host)->decoded_content;
-$res = request('/authors', $host);
+$res = request('/category/author', $host);
 
 like $res->decoded_content, qr{ĆaoX};
 like $res->decoded_content, qr{CiaoX};
@@ -26,13 +26,13 @@ like $res->decoded_content, qr{Cikla};
 # like $res->decoded_content, qr{ĆaoX.*CiaoX.*Cikla}s,
 #   "sorting with Ž and Z is diacritics-insensitive for code locale: $diag";
 
-$res = request('/topics', $host);
+$res = request('/category/topic', $host);
 like $res->decoded_content, qr{ŽtopicX};
 like $res->decoded_content, qr{Zurro}s,
 # like $res->decoded_content, qr{ŽtopicX.*Zurro}s,
 #  "sorting with Ž and Z is diacritics-insensitive for code locale: $diag";
 
-$res = request('/topics/miaox', $host);
+$res = request('/category/topic/miaox', $host);
 like $res->decoded_content, qr{<h.>\s*MiaoX\s*</h.>}, "title ok";
 # like $res->decoded_content, qr{Ža Third test.*Zu A XSecond}s,
 #  "topic sorting details ok";
@@ -41,7 +41,7 @@ like $res->decoded_content, qr{Ža Third test};
 like $res->decoded_content, qr{Zu A XSecond};
 
 
-$res = request('/authors/caox', $host);
+$res = request('/category/author/caox', $host);
 like $res->decoded_content, qr{<h.>\s*ĆaoX\s*</h.>}, "title ok";
 
 # like $res->decoded_content, qr{Ža Third test.*Zu A XSecond}s,
@@ -53,23 +53,23 @@ $res->decoded_content, qr{Zu A XSecond};
 $host = { host => 'blog.amusewiki.org' };
 
 $diag = request('/admin/debug_site_id', $host)->decoded_content;
-$res = request('/authors', $host);
+$res = request('/category/author', $host);
 like $res->decoded_content, qr{Ciao};
 like $res->decoded_content, qr{Cikla};
 like $res->decoded_content, qr{Ćao};
 # like $res->decoded_content, qr{Ciao.*Cikla.*Ćao}s,
 #   "sorting with Ž and Z is diacritics-sensitive for code locale: $diag";
 
-$res = request('/topics', $host);
+$res = request('/category/topic', $host);
 like $res->decoded_content, qr{Zurro.*Žtopic}s,
   "sorting with Ž and Z is diacritics-sensitive for code locale: $diag";
 
-$res = request('/topics/ztopic', $host);
+$res = request('/category/topic/ztopic', $host);
 like $res->decoded_content, qr{<h.>\s*Žtopic\s*</h.>}, "title ok";
 like $res->decoded_content, qr{Zu A Second test.*Ža Third test}s,
   "topic sorting details ok";
 
-$res = request('/authors/ciao', $host);
+$res = request('/category/author/ciao', $host);
 like $res->decoded_content, qr{<h.>\s*Ciao\s*</h.>}, "title ok";
 like $res->decoded_content, qr{Zu A Second test.*Ža Third test}s,
   "author sorting details ok";
@@ -87,10 +87,10 @@ $newcat->discard_changes;
 
 diag $host->{host};
 
-$res = request('/topics/this-cat-is-not-active', $host);
+$res = request('/category/topic/this-cat-is-not-active', $host);
 is($res->code, '404', 'Inactive cat not found') or diag $res->decoded_content;
 
-$res = request('/topics', $host);
+$res = request('/category/topic', $host);
 unlike($res->decoded_content, qr/this-cat-is-not-active/,
        "Inactive cat is not listed") or diag $res->decoded_content;
 
