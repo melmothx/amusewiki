@@ -1,12 +1,12 @@
 use utf8;
-package AmuseWikiFarm::Schema::Result::SiteOption;
+package AmuseWikiFarm::Schema::Result::SiteLink;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::SiteOption
+AmuseWikiFarm::Schema::Result::SiteLink
 
 =cut
 
@@ -32,13 +32,31 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime", "PassphraseColumn");
 
-=head1 TABLE: C<site_options>
+=head1 TABLE: C<site_link>
 
 =cut
 
-__PACKAGE__->table("site_options");
+__PACKAGE__->table("site_link");
 
 =head1 ACCESSORS
+
+=head2 url
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
+=head2 label
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
+=head2 sorting_pos
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
 
 =head2 site_id
 
@@ -47,41 +65,18 @@ __PACKAGE__->table("site_options");
   is_nullable: 0
   size: 16
 
-=head2 option_name
-
-  data_type: 'varchar'
-  is_nullable: 0
-  size: 64
-
-=head2 option_value
-
-  data_type: 'text'
-  is_nullable: 1
-
 =cut
 
 __PACKAGE__->add_columns(
+  "url",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "label",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "sorting_pos",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
-  "option_name",
-  { data_type => "varchar", is_nullable => 0, size => 64 },
-  "option_value",
-  { data_type => "text", is_nullable => 1 },
 );
-
-=head1 PRIMARY KEY
-
-=over 4
-
-=item * L</site_id>
-
-=item * L</option_name>
-
-=back
-
-=cut
-
-__PACKAGE__->set_primary_key("site_id", "option_name");
 
 =head1 RELATIONS
 
@@ -101,8 +96,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-29 17:41:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3FumUn+M7oAPS0tLl8wgoQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-29 17:26:38
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+lfb0ORkT5Dj61IcPowC/Q
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -507,6 +507,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 site_links
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::SiteLink>
+
+=cut
+
+__PACKAGE__->has_many(
+  "site_links",
+  "AmuseWikiFarm::Schema::Result::SiteLink",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site_options
 
 Type: has_many
@@ -578,8 +593,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-01-22 09:40:34
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:POyGFfhEE6KXLtP+pW0bmQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-29 17:26:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dWVVsr2mEPd+hqyLaYoc/w
 
 =head2 other_sites
 
@@ -1713,6 +1728,14 @@ sub special_list {
                     name => $l->title || $l->uri
                    };
     }
+    my @links = $self->site_links->search(undef,
+                                          { order_by => [qw/sorting_pos label/] });
+    foreach my $l (@links) {
+        push @out, {
+                    full_url => $l->url,
+                    name => $l->label,
+                   };
+    }
     return @out;
 }
 
@@ -1979,6 +2002,17 @@ sub update_from_params {
                        };
     }
 
+    # this is totally arbitrary
+    foreach my $option (qw/html_special_page_bottom/) {
+        my $value = delete $params->{$option};
+        push @options, {
+                        option_name => $option,
+                        option_value => $value,
+                       };
+    }
+
+    my @site_links = $self->deserialize_links(delete $params->{site_links});
+
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
           . join(", ", keys %$params);
@@ -1986,6 +2020,7 @@ sub update_from_params {
 
 
     # no error? update the db
+    my $guard = $self->result_source->schema->txn_scope_guard;
     unless (@errors) {
         $self->update;
         if (@vhosts) {
@@ -1995,14 +2030,53 @@ sub update_from_params {
                 $self->vhosts->create({ name => $vhost });
             }
         }
+        $self->site_links->delete;
+        foreach my $link (@site_links) {
+            $self->site_links->create($link);
+        }
         foreach my $opt (@options) {
             $self->site_options->update_or_create($opt);
         }
     }
+    $guard->commit;
 
     # in any case discard the changes
     $self->discard_changes;
     @errors ? return join("\n", @errors) : return;
+}
+
+sub deserialize_links {
+    my ($self, $string) = @_;
+    my @links;
+    return @links unless $string;
+    my @lines = grep { $_ } split(/\r?\n/, $string);
+    return @links unless @lines;
+    my $order = 0;
+    foreach my $line (@lines) {
+        if ($line =~ m{^\s*(https?://\S+)\s+(.*?)\s*$}) {
+            push @links, {
+                          url => $1,
+                          label => $2,
+                          sorting_pos => $order++,
+                         };
+        }
+    }
+    return @links;
+}
+
+sub serialize_links {
+    my $self = shift;
+    my $links = $self->site_links->search(undef, { order_by => [qw/sorting_pos label/] });
+    my @lines;
+    while (my $link = $links->next) {
+        push @lines, $link->url . ' ' . $link->label;
+    }
+    if (@lines) {
+        return join("\n", @lines);
+    }
+    else {
+        return '';
+    }
 }
 
 sub translations_list {
@@ -2193,7 +2267,10 @@ sub get_option {
     }
 }
 
-
+sub html_special_page_bottom {
+    my ($self) = @_;
+    return $self->get_option('html_special_page_bottom') || '';
+}
 
 __PACKAGE__->meta->make_immutable;
 

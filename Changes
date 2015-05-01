@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.14 2015-04-30
+
+ - New option to add a HTML snippet to special pages
+ - New option to add arbitrary links in the "More" bar
+
+You have to apply the incremental script at
+sql/AmuseWikiFarm-Schema-1.05-1.14-<your-db>.sql before the server
+restart.
+
 1.12 2015-04-23
 
  - Added utils/import path to import chunks of HTML

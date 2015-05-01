@@ -455,18 +455,58 @@
 
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label for="vhosts">
-          [% loc('Virtual hosts, one per line') %]
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="vhosts" class="control-label">
+            [% loc('Virtual hosts, one per line') %]
         </label>
+        </div>
+        <div class="col-sm-9">
         <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
           [%- SET vhosts = esite.vhosts_rs -%]
           [%- FOREACH vhost IN vhosts.all %]
           [%- vhost.name +%]
 
           [%- END -%]</textarea>
+        </div>
       </div>
     </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="html_special_page_bottom" class="control-label">
+            [% loc('HTML to append to each special page, inserted
+            verbatim, now you have a chance to screw up everything, so
+            be careful') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="html_special_page_bottom"
+                    id="html_special_page_bottom"
+                    class="form-control">
+            [%- esite.html_special_page_bottom | html -%]</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="site_links" class="control-label">
+            [% loc('A list of links and labels to insert into the top
+            bar. One per line, first the url, then the label,
+            separated by a space, e.g. "http://test.me Test site"') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="site_links" id="site_links"
+                    class="form-control">
+            [%- esite.serialize_links | html -%]</textarea>
+        </div>
+      </div>
+    </div>
+
 
     <div class="form-group">
       <label for="latest_entries" class="col-sm-2 control-label">

@@ -92,7 +92,7 @@ use Catalyst
 
 extends 'Catalyst';
 
-our $VERSION = '1.12';
+our $VERSION = '1.14';
 
 # Configure the application.
 #
