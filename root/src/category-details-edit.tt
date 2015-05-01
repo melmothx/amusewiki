@@ -1,0 +1,25 @@
+[% # -*- mode:html -*- %]
+
+[% INCLUDE 'include/markitup.tt' %]
+
+<div class="row" style="margin-bottom: 20px">
+  <div class="col-md-12 center">
+    <h2>[% loc('Update category description') %]: [% loc(category.name) %]</h2>
+  </div>
+  [% IF category_description %]
+  <div class="category-description well" style="margin: 18px">
+    [% category_description.html_body %]
+  </div>
+  [% END %]
+  <form action="" method="POST">
+    <div>
+      <textarea rows="20" cols="60" id="maintextarea"
+                class="form-control text-muse-body"
+                name="desc_muse">[%- category_description.muse_body | html -%]</textarea>
+    </div>
+    <div class="center">
+      <button type="submit" class="btn btn-default" name="update" value="update"> [% loc('Update')  %]</button>
+    </div>
+  </form>
+</div>
+

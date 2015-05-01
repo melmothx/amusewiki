@@ -39,18 +39,18 @@ sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
     $c->stash(please_index => 1);
 }
 
-sub authors :Chained('root') :PathPart('authors') :CaptureArgs(0) {
-    my ($self, $c) = @_;
-    $c->forward(category_list => [qw/author/]);
-}
-
-sub topics :Chained('root') :PathPart('topics') :CaptureArgs(0) {
-    my ($self, $c) = @_;
-    $c->forward(category_list => [qw/topic/]);
-}
-
-sub category_list :Private {
+sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
     my ($self, $c, $type) = @_;
+    if ($type eq 'topic') {
+        $c->stash(page_title => $c->loc('Topics'));
+    }
+    elsif ($type eq 'author') {
+        $c->stash(page_title => $c->loc('Authors'));
+    }
+    else {
+        $c->detach('/not_found');
+        return;
+    }
     my $rs = $c->stash->{site}->categories->active_only_by_type($type);
     $c->stash(
               nav => $type,
@@ -59,21 +59,8 @@ sub category_list :Private {
              );
 }
 
-sub authors_listing :Chained('authors') :PathPart('') :Args(0) {
+sub category_list_display :Chained('category') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(page_title => $c->loc('Authors'));
-    $c->forward('category_list_display');
-}
-
-sub topics_listing :Chained('topics') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    $c->stash(page_title => $c->loc('Topics'));
-    $c->forward('category_list_display');
-}
-
-sub category_list_display :Private {
-    my ($self, $c) = @_;
-
     my $site_id = $c->stash->{site}->id;
     my $rs = delete $c->stash->{categories_rs};
     my $cache = $c->model('Cache',
@@ -97,22 +84,11 @@ sub category_list_display :Private {
             @list = reverse @list;
         }
     }
-
     $c->stash(list => \@list,
               template => 'category.tt');
 }
 
-sub single_topic :Chained('topics') :PathPart('') :CaptureArgs(1) {
-    my ($self, $c, $uri) = @_;
-    $c->forward(single_category => [$uri]);
-}
-
-sub single_author :Chained('authors') :PathPart('') :CaptureArgs(1) {
-    my ($self, $c, $uri) = @_;
-    $c->forward(single_category => [$uri]);
-}
-
-sub single_category :Private {
+sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     my $canonical = muse_naming_algo($uri);
     my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
@@ -133,22 +109,20 @@ sub single_category :Private {
                   category_description => $category_description,
                   category => $cat);
 
-        # if the site is multilanguage, prepare the links
-        if ($c->stash->{site}->multilanguage) {
-            my $action_all =  "/category/single_" . $c->stash->{nav} . "_display";
-            my $action_lang = "/category/single_" . $c->stash->{nav} . "_by_lang";
-            my $multi = {
-                         cat_uri_all => $c->uri_for_action($action_all, [ $uri ]),
-                         cat_uri_lang => $c->uri_for_action($action_lang,
+        # Prepare the links for multisite, if needed
+        my $multi = {
+                         cat_uri_all => $c->uri_for_action('/category/single_category_display',
+                                                           [ $c->stash->{f_class}, $uri ]),
+                         cat_uri_lang => $c->uri_for_action('/category/single_category_by_lang_display',
                                                             [
+                                                             $c->stash->{f_class},
                                                              $uri,
                                                              $current_locale,
                                                             ]),
                          cat_lang_name => $c->stash->{current_locale_name},
                          default_lang_code => $current_locale,
                         };
-            $c->stash(multilang => $multi);
-        }
+        $c->stash(multilang => $multi);
     }
     else {
         $c->stash(uri => $canonical);
@@ -157,27 +131,17 @@ sub single_category :Private {
 }
 
 
-sub single_topic_display :Chained('single_topic') :PathPart('') :Args(0) {}
+sub single_category_display :Chained('single_category') :PathPart('') :Args(0) {}
 
-sub single_author_display :Chained('single_author') :PathPart('') :Args(0) {}
-
-
-sub single_author_by_lang :Chained('single_author') :PathPart('') :Args(1) {
-    my ($self, $c, $lang) = @_;
-    $c->forward(single_category_by_lang => [ $lang ]);
-}
-
-sub single_topic_by_lang :Chained('single_topic') :PathPart('') :Args(1) {
-    my ($self, $c, $lang) = @_;
-    $c->forward(single_category_by_lang => [ $lang ]);
-}
-
-sub single_category_by_lang :Private {
+sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $lang) = @_;
     my $texts = delete $c->stash->{texts};
     if (my $category_lang = $c->stash->{site}->known_langs->{$lang}) {
         my $filtered = $texts->search({ lang => $lang });
-        $c->stash(texts => $filtered);
+        $c->stash(
+                  texts => $filtered,
+                  category_language => $lang,
+                 );
         $c->stash->{multilang}->{filtered} = $category_lang;
         $c->stash->{multilang}->{code} = $lang;
     }
@@ -186,6 +150,32 @@ sub single_category_by_lang :Private {
     }
 }
 
+sub single_category_by_lang_display :Chained('single_category_by_lang') :PathPart('') :Args(0) {}
+
+sub edit_category_description :Chained('single_category_by_lang') :PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
+    unless ($c->user_exists) {
+        $c->response->redirect($c->uri_for('/login',
+                                           { goto => $c->req->path }));
+        $c->detach;
+        return;
+    }
+    my $lang = $c->stash->{category_language};
+    if ($lang && $c->request->body_params->{update}) {
+        if (my $muse = $c->request->body_params->{desc_muse}) {
+            $c->stash->{category}->category_descriptions
+              ->update_description($lang, $muse);
+        }
+        my $dest = $c->uri_for_action('/category/single_category_display', [ $c->stash->{f_class},
+                                                                             $c->stash->{category}->uri ]);
+        $c->response->redirect($dest);
+        $c->detach();
+        return;
+    }
+    else {
+        $c->stash(template => 'category-details-edit.tt');
+    }
+}
 
 =encoding utf8
 

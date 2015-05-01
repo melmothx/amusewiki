@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 44;
+use Test::More tests => 48;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -50,9 +50,9 @@ foreach my $uri ([qw/author pippo/],
     my $regexp_hr = qr{<p>\s*\Q$full_uri\E : ovo je samo <em>test</em>\s*</p>}s;
     my $desc = $cat->category_descriptions->find({ lang => 'en' });
     like $desc->html_body, $regexp_en, "found the HTML description";
-    $desc = $cat->localized_desc('en');
+    $desc = $cat->localized_desc('en')->html_body;
     like $desc, $regexp_en, "localized_desc works";
-    is $cat->localized_desc('it'), '', "No desc for italian";
+    ok !$cat->localized_desc('it'), "No desc for italian";
     $mech->get_ok('/set-language?lang=en');
     $mech->get_ok($cat->full_uri);
     $mech->content_like($regexp_en, "found the HTML description");
@@ -104,6 +104,8 @@ foreach my $uri ([qw/author pippo/],
     ok ($cat, "Found " . $cat->full_uri);
     ok ($cat->text_count, $cat->name . " should have 1 text")
       or diag "But has " . $cat->text_count;
+    ok($cat->localized_desc('en'), "Description is there");
+    ok($cat->localized_desc('hr'), "Description is there");
 }
 
 

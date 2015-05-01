@@ -1,19 +1,22 @@
 [%- # -*- mode: html -*- -%]
 
 <h2>[% loc(category.name) %]
-[% IF multilang %]
-[% IF multilang.filtered %]
+  [%- IF site.multilang -%]
+  [%- IF multilang -%]
+  [%- IF multilang.filtered -%]
   <small>[% multilang.filtered %]</small>
-[% END %]
-[% END %]
+  [%- END -%]
+  [%- END -%]
+  [%- END -%]
 </h2>
 
 [% IF category_description %]
 <div class="category-description well" style="margin-top: 18px">
-  [% category_description %]
+  [% category_description.html_body %]
 </div>
 [% END %]
 
+[%- IF site.multilang -%]
 [%- IF multilang -%]
 <ul class="nav nav-tabs" role="tablist">
   <li [% UNLESS multilang.code -%] class="active" [%- END %]>
@@ -28,8 +31,8 @@
     </a>
   </li>
 </ul>
-[%- END                       -%]
-
+[%- END -%]
+[%- END -%]
 
 <div class="list-group">
   [% WHILE (title = texts.next) %]

@@ -222,29 +222,15 @@ sub full_uri {
     my $self = shift;
     my $type = $self->type;
     my $uri  = $self->uri;
-    if ($type eq 'topic') {
-        return "/topics/$uri";
-    }
-    elsif ($type eq 'author') {
-        return "/authors/$uri";
-    }
-    elsif ($type eq 'category') {
-        return "/category/$uri";
-    }
-    else {
-        die "WTF?";
-    }
+    return '/' . join('/', 'category', $self->type, $self->uri);
 }
 
 sub localized_desc {
     my ($self, $lang) = @_;
-    my $desc = '';
     if ($lang) {
-        if (my $desc_row = $self->category_descriptions->find({ lang => $lang })) {
-            $desc = $desc_row->html_body;
-        }
+        return $self->category_descriptions->find({ lang => $lang });
     }
-    return $desc;
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;
