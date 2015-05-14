@@ -4,6 +4,18 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.20 2015-05-14
+
+ - Changed /topics and /authors to /category/topic/ and /category/author
+ - Left permanent redirections in place
+ - Added category description
+ - Added category description editor (with muse markup)
+ - Major bump because of changed paths
+
+You have to apply the incremental script at
+sql/AmuseWikiFarm-Schema-1.14-1.20-<your-db>.sql before the server
+restart.
+
 1.14 2015-04-30
 
  - New option to add a HTML snippet to special pages
