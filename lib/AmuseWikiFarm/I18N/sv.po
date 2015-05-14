@@ -45,6 +45,12 @@ msgstr "En rad som börjar med 20 eller fler blanksteg justerar till höger."
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr "En rad som börjar med 6 eller fler blanksteg centrerar."
 
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+
 #. (site.canonical_url)
 msgid "A new revision has been created at %1"
 msgstr "En ny revidering har skapats till 1%"
@@ -480,6 +486,12 @@ msgstr "Git-konsol"
 msgid "HTML"
 msgstr "HTML"
 
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+
 msgid "HTML/Word Importer"
 msgstr ""
 
@@ -804,8 +816,8 @@ msgstr "PDF logotyp (absolut sökväg eller gör det i texmf)"
 msgid "PDFs cannot be used in the body."
 msgstr "PDF:er kan inte användas i brödtexten."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF är inte listad i %1 direktiv kommer att lagras men ignoreras"
 
@@ -1360,8 +1372,8 @@ msgstr "Titel för sortering"
 msgid "Titles"
 msgstr "Titlar"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr "För att verkställa ändringarna, kan du besöka %1"
 
@@ -1435,6 +1447,9 @@ msgstr "Updatera"
 
 msgid "Update account info"
 msgstr "Updatera kontoinformation"
+
+msgid "Update category description"
+msgstr ""
 
 msgid "Upload"
 msgstr "Ladda upp"
@@ -1544,8 +1559,8 @@ msgstr ""
 "\" bredvid nedladdnings-ikonerna på varje texts       sida. Du kan lägga "
 "till eller ta bort texterna senare."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr "Du kan skapa en peer vid %1"
 
@@ -1562,8 +1577,8 @@ msgstr "Du är nu utloggad"
 msgid "You may want to resume the editing of one of them"
 msgstr "Du bör överväga att återgå till redigeringen av en av dem"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Du bör ändra ditt lösenord på direkten %1"
 

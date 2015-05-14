@@ -41,6 +41,12 @@ msgstr ""
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr ""
 
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+
 #. (site.canonical_url)
 msgid "A new revision has been created at %1"
 msgstr ""
@@ -459,6 +465,12 @@ msgstr ""
 msgid "HTML"
 msgstr ""
 
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+
 msgid "HTML/Word Importer"
 msgstr ""
 
@@ -767,8 +779,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -1267,8 +1279,8 @@ msgstr ""
 msgid "Titles"
 msgstr ""
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1340,6 +1352,9 @@ msgid "Update"
 msgstr ""
 
 msgid "Update account info"
+msgstr ""
+
+msgid "Update category description"
 msgstr ""
 
 msgid "Upload"
@@ -1441,8 +1456,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1459,8 +1474,8 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr ""
 

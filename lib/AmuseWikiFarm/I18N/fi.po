@@ -45,6 +45,12 @@ msgstr ""
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr "Jos rivin alussa on välilyöntejä 6 tai enemmän, rivi keskitetään."
 
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+
 #. (site.canonical_url)
 msgid "A new revision has been created at %1"
 msgstr "Uusi versio osoitteessa %1"
@@ -471,6 +477,12 @@ msgstr "Git konsoli"
 msgid "HTML"
 msgstr "HTML"
 
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+
 msgid "HTML/Word Importer"
 msgstr ""
 
@@ -798,8 +810,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -1333,8 +1345,8 @@ msgstr "Otsikko lajittelua varten"
 msgid "Titles"
 msgstr "Tekstit"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1407,6 +1419,9 @@ msgstr "Päivitä"
 
 msgid "Update account info"
 msgstr "Päivitä käyttäjätietoja"
+
+msgid "Update category description"
+msgstr ""
 
 msgid "Upload"
 msgstr "Lisää"
@@ -1517,8 +1532,8 @@ msgstr ""
 "    \"plus\"-kuvaketta tekstin latausvaihtoehtojen vieressä. Voit lisätä\n"
 "    ja poistaa tekstejä myöhemmin."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1535,8 +1550,8 @@ msgstr "Olet kirjautunut ulos"
 msgid "You may want to resume the editing of one of them"
 msgstr "Saatat haluta jatkaa muokkausta"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Sinun tulisi vaihtaa salasanasi heti osoitteessa %1"
 

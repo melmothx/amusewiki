@@ -45,6 +45,12 @@ msgstr "Una línea que comienza con 20 o más espacios se alinea a la derecha."
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr "Una línea que comienza con 6 o más espacios se centra."
 
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+
 #. (site.canonical_url)
 msgid "A new revision has been created at %1"
 msgstr "Se ha creado una nueva revisión en %1"
@@ -482,6 +488,12 @@ msgstr "Consola git"
 msgid "HTML"
 msgstr "HTML"
 
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+
 msgid "HTML/Word Importer"
 msgstr ""
 
@@ -816,8 +828,8 @@ msgstr "Logo en PDF (path absoluto o ponlo en texmf)"
 msgid "PDFs cannot be used in the body."
 msgstr "No se pueden usar PDFs en el cuerpo."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "Los PDFs no listados en la directiva %1 serán guardados, pero ignorados"
@@ -1367,8 +1379,8 @@ msgstr "Título para ordenar"
 msgid "Titles"
 msgstr "Títulos"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr "Para aplicar los camvios, puedes visitar %1"
 
@@ -1441,6 +1453,9 @@ msgstr "Actualizar"
 
 msgid "Update account info"
 msgstr "Actualizar información de la cuenta"
+
+msgid "Update category description"
+msgstr ""
 
 msgid "Upload"
 msgstr "Subir"
@@ -1552,8 +1567,8 @@ msgstr ""
 "    icono \"más\" cerca de las descargas de cada texto. Puedes agregar\n"
 "    y eliminar textos después."
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr "Puedes crear un/a compañero/a en %1"
 
@@ -1572,8 +1587,8 @@ msgstr "Has cerrado sesión"
 msgid "You may want to resume the editing of one of them"
 msgstr "Quizás quieras continuar la edición de uno de ellos"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Deberías cambiar tu contraseña ahora en %1"
 

@@ -45,6 +45,12 @@ msgstr "Eine Zeile die mit 20 oder mehr Leerzeichen beginnt ist rechtsbündig."
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr "Eine Zeile die mit 6 oder mehr Leerzeichen beginnt ist zentriert."
 
+msgid ""
+"A list of links and labels to insert into the top\n"
+"            bar. One per line, first the url, then the label,\n"
+"            separated by a space, e.g. \"http://test.me Test site\""
+msgstr ""
+
 #. (site.canonical_url)
 msgid "A new revision has been created at %1"
 msgstr "Eine neue Änderung wurde erstellt bei %1"
@@ -477,6 +483,12 @@ msgstr "Deppenkonsole"
 msgid "HTML"
 msgstr "HTML"
 
+msgid ""
+"HTML to append to each special page, inserted\n"
+"            verbatim, now you have a chance to screw up everything, so\n"
+"            be careful"
+msgstr ""
+
 msgid "HTML/Word Importer"
 msgstr ""
 
@@ -807,8 +819,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -1313,8 +1325,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Liste aller Texte"
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1387,6 +1399,9 @@ msgstr "Aktualisierung"
 
 msgid "Update account info"
 msgstr "Aktualisiere die Accountinfo"
+
+msgid "Update category description"
+msgstr ""
 
 msgid "Upload"
 msgstr "Upload"
@@ -1492,8 +1507,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 msgid "You can create a peer at %1"
 msgstr "D kannst einen Peer erstellen bei %1"
 
@@ -1510,8 +1525,8 @@ msgstr "Du hast dich abgemeldet"
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 msgid "You should change your password right away at %1"
 msgstr "Du könntest dein Passwort sofort verändern bei %1"
 
