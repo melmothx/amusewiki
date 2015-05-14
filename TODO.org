@@ -19,7 +19,8 @@ This needs a refactoring when the parsing is done in context.
 * DONE Properly document lexicon.json
   CLOSED: [2015-04-08 mer 12:00]
 * TODO When activating an user, send a mail
-* TODO Add descriptions to categories
+* DONE Add descriptions to categories
+  CLOSED: [2015-05-14 gio 15:31]
 
 Db only, probably.
 
