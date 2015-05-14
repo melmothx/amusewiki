@@ -58,7 +58,8 @@ sub legacy_category :Private {
                3 => 'single_category_by_lang_display',
               );
     if (my $action = $map{scalar(@args)}) {
-        $c->response->redirect($c->uri_for_action("/category/$action", \@args));
+        $c->response->redirect($c->uri_for_action("/category/$action", \@args),
+                               301);
         $c->detach;
     }
     else {
@@ -135,9 +136,10 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
         $c->stash(page_title => $page_title,
                   template => 'category-details.tt',
                   texts => $texts,
+                  category_canonical_name => $canonical,
                   category_description => $category_description,
                   category => $cat);
-
+        # $c->log->debug($category_description . ' for ' . $current_locale);
         # Prepare the links for multisite, if needed
         my $multi = {
                          cat_uri_all => $c->uri_for_action('/category/single_category_display',
@@ -150,6 +152,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
                                                             ]),
                          cat_lang_name => $c->stash->{current_locale_name},
                          default_lang_code => $current_locale,
+                         active => $c->stash->{site}->multilanguage ? 1 : 0,
                         };
         $c->stash(multilang => $multi);
     }
@@ -165,14 +168,31 @@ sub single_category_display :Chained('single_category') :PathPart('') :Args(0) {
 sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $lang) = @_;
     my $texts = delete $c->stash->{texts};
-    if (my $category_lang = $c->stash->{site}->known_langs->{$lang}) {
+    if ($lang eq 'edit') {
+        $c->response->redirect($c->uri_for_action('/category/edit_category_description',
+                                                  [
+                                                   $c->stash->{f_class},
+                                                   $c->stash->{category_canonical_name},
+                                                   $c->stash->{current_locale_code},
+                                                  ]));
+        return;
+    }
+    elsif (my $category_lang = $c->stash->{site}->known_langs->{$lang}) {
+        my $category_description = $c->stash->{category}->localized_desc($lang);
         my $filtered = $texts->search({ lang => $lang });
         $c->stash(
                   texts => $filtered,
                   category_language => $lang,
+                  category_description => $category_description,
                  );
         $c->stash->{multilang}->{filtered} = $category_lang;
         $c->stash->{multilang}->{code} = $lang;
+        $c->stash->{multilang}->{active} = 1;
+        if ($c->stash->{multilang}->{code} ne $c->stash->{multilang}->{default_lang_code}) {
+            $c->stash->{multilang}->{cat_uri_selected} =
+              $c->uri_for_action('/category/single_category_by_lang_display',
+                                 [ $c->stash->{f_class}, $c->stash->{category_canonical_name}, $lang ]);
+        }
     }
     else {
         $c->detach('/not_found');
@@ -195,8 +215,11 @@ sub edit_category_description :Chained('single_category_by_lang') :PathPart('edi
             $c->stash->{category}->category_descriptions
               ->update_description($lang, $muse);
         }
-        my $dest = $c->uri_for_action('/category/single_category_display', [ $c->stash->{f_class},
-                                                                             $c->stash->{category}->uri ]);
+        my $dest = $c->uri_for_action('/category/single_category_by_lang_display',
+                                      [ $c->stash->{f_class},
+                                        $c->stash->{category}->uri,
+                                        $lang,
+                                      ]);
         $c->response->redirect($dest);
         $c->detach();
         return;

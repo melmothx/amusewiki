@@ -4,15 +4,21 @@
 
 <div class="row" style="margin-bottom: 20px">
   <div class="col-md-12 center">
-    <h2>[% loc('Update category description') %]: [% loc(category.name) %]</h2>
+    <h2>[% loc('Update category description') %]: [% loc(category.name) %] ([% multilang.filtered %])</h2>
   </div>
-  [% IF category_description %]
-  <div class="category-description well" style="margin: 18px">
-    [% category_description.html_body %]
+</div>
+<div class="row">
+  <div class="col-md-12">
+    [% IF category_description %]
+    <div class="category-description well" style="margin: 18px">
+      [% category_description.html_body %]
+    </div>
   </div>
+</div>
+<div class="row">
   [% END %]
   <form action="" method="POST">
-    <div>
+    <div class="col-md-12">
       <textarea rows="20" cols="60" id="maintextarea"
                 class="form-control text-muse-body"
                 name="desc_muse">[%- category_description.muse_body | html -%]</textarea>

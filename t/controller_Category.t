@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 22;
+use Test::More tests => 40;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -12,6 +12,7 @@ binmode $builder->todo_output,    ":utf8";
 use Catalyst::Test 'AmuseWikiFarm';
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Controller::Category;
+use Data::Dumper;
 
 my ($res, $diag, $host);
 
@@ -74,6 +75,23 @@ like $res->decoded_content, qr{<h.>\s*Ciao\s*</h.>}, "title ok";
 like $res->decoded_content, qr{Zu A Second test.*Ža Third test}s,
   "author sorting details ok";
 
+diag "Testing legacy paths";
+foreach my $path ('/authors/ciao',
+                   '/topics/ztopic',
+                   '/topics',
+                   '/authors',
+                   # non existent, but redirection works
+                   '/topics/xyz',
+                   '/authors/xyz') {
+    $res = request($path, $host);
+    is $res->code, '301', "Requesting $path lead to permanent redirect";
+    my $expected = 'http://' . $host->{host} . $path;
+    $expected =~ s!/(topic|author)s!/category/$1!;
+    is $res->header('location'), $expected, "Redirect to location $expected";
+    is $res->message, 'Moved Permanently', "Message is " . $res->message;
+}
+
+
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find({ canonical => $host->{host} });
 
@@ -103,5 +121,3 @@ ok(scalar(@active_topics));
 ok(@all_topics > @active_topics, "filtering by active works");
 
 $newcat->delete;
-
-

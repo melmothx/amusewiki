@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 48;
+use Test::More tests => 108;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -29,7 +29,7 @@ my ($revision) = $site->create_new_text({ uri => 'the-text',
                                           textbody => '',
                                         }, 'text');
 
-$revision->edit("#title blabla\n#author Pippo\n#topics the cat\n\nblabla\n\n Hello world!\n");
+$revision->edit("#title blabla\n#author Pippo\n#topics the cat\n#lang en\n\nblabla\n\n Hello world!\n");
 $revision->commit_version;
 my $uri = $revision->publish_text;
 ok $uri, "Found uri $uri";
@@ -108,7 +108,84 @@ foreach my $uri ([qw/author pippo/],
     ok($cat->localized_desc('hr'), "Description is there");
 }
 
-
 # $site->delete;
 
+$mech->get_ok('/library/the-text');
+$mech->content_contains('/category/author/pippo');
+$mech->content_contains('/category/topic/the-cat');
+$mech->page_links_ok("Links ok on text page");
+$mech->get_ok('/authors');
+$mech->page_links_ok("Links ok on authors page");
+$mech->get_ok('/topics');
+$mech->page_links_ok("Links ok on topics page");
+
+$mech->get_ok('/set-language?lang=en');
+$mech->get_ok('/authors/pippo');
+is $mech->uri->path, '/category/author/pippo', "Redirection ok";
+$mech->get_ok('/category/author/pippo/edit');
+ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
+                      button => 'submit'), "Found login form");
+is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
+
+$mech->get_ok('/authors/pippo');
+is $mech->uri->path, '/category/author/pippo', "Redirection ok";
+$mech->get_ok('/category/author/pippo/edit');
+is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
+$mech->content_like(qr{<h2>Update category description});
+ok($mech->submit_form(with_fields => { desc_muse => "Pippo *is* a nice author" },
+                      button => 'update'));
+is $mech->uri->path, '/category/author/pippo/en', "Redirection ok";
+
+$mech->get_ok('/category/author/pippo');
+$mech->content_contains('Pippo <em>is</em> a nice author');
+$mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo">\s*All languages});
+$mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
+$mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
+
+$mech->get_ok('/set-language?lang=it&goto=category%2Fauthor%2Fpippo"');
+$mech->content_lacks('Pippo <em>is</em> a nice author', "No description, language changed");
+$mech->content_like(qr{<li\s+class="active"\s*>\s*
+                       <a\s+href=".*?/category/author/pippo">\s*
+                       Tutte\s*le\s*lingue}x) or diag $mech->content;
+$mech->content_unlike(qr{<a href=.*?/category/author/pippo/en">\s*English});
+$mech->content_like(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
+
+$mech->get_ok('/category/author/pippo/en');
+# we are in italian locale, but we get the description because of /en
+$mech->content_contains('Pippo <em>is</em> a nice author');
+$mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo">\s*Tutte le lingue});
+$mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
+$mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo/it">\s*Italiano});
+
+$mech->get_ok('/category/author/pippo/en/edit');
+$mech->content_contains('Pippo *is* a nice author'); # edit
+$mech->content_contains('Pippo <em>is</em> a nice author'); # preview
+
+$mech->get_ok('/category/author/pippo/edit');
+is $mech->uri->path, '/category/author/pippo/it/edit', "Default edit goes into current lang";
+
+$site->update({ multilanguage => '' });
+
+$mech->get_ok('/category/author/pippo');
+$mech->content_contains('Pippo <em>is</em> a nice author');
+$mech->content_unlike(qr{<a href=.*?/category/author/pippo">\s*Tutte le lingue});
+$mech->content_unlike(qr{<a href=.*?/category/author/pippo/en">\s*English});
+$mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
+
+$mech->get_ok('/category/author/pippo/edit');
+is $mech->uri->path, '/category/author/pippo/en/edit', "Default edit goes into locale lang";
+
+$mech->get_ok('/category/author/pippo/en');
+$mech->content_contains('Pippo <em>is</em> a nice author');
+$mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo">\s*All languages});
+$mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
+$mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
+$mech->content_lacks('No text found!');
+
+$mech->get_ok('/category/author/pippo/it');
+$mech->content_lacks('Pippo <em>is</em> a nice author');
+$mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo">\s*All languages});
+$mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
+$mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo/it">\s*Italiano});
+$mech->content_contains('No text found!');
 

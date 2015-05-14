@@ -1,8 +1,8 @@
 [%- # -*- mode: html -*- -%]
 
 <h2>[% loc(category.name) %]
-  [%- IF site.multilanguage -%]
   [%- IF multilang -%]
+  [%- IF multilang.active -%]
   [%- IF multilang.filtered -%]
   <small>[% multilang.filtered %]</small>
   [%- END -%]
@@ -16,20 +16,32 @@
 </div>
 [% END %]
 
-[%- IF site.multilanguage -%]
 [%- IF multilang -%]
+[%- IF multilang.active %]
 <ul class="nav nav-tabs" role="tablist">
   <li [% UNLESS multilang.code -%] class="active" [%- END %]>
     <a href="[% multilang.cat_uri_all  %]">
       [% loc('All languages') %]
     </a>
   </li>
-  <li [% IF multilang.default_lang_code == multilang.code -%]
-      class="active" [%- END %]>
+  [%- IF multilang.cat_uri_selected -%]
+  <li>
     <a href="[% multilang.cat_uri_lang %]">
       [% multilang.cat_lang_name %]
     </a>
   </li>
+  <li class="active">
+    <a href="[% multilang.cat_uri_selected %]">
+      [% multilang.filtered %]
+    </a>
+  </li>
+  [% ELSE %]
+  <li [% IF multilang.code %] class="active" [% END %]>
+    <a href="[% multilang.cat_uri_lang %]">
+      [% multilang.cat_lang_name %]
+    </a>
+  </li>
+  [%- END -%]
 </ul>
 [%- END -%]
 [%- END -%]
