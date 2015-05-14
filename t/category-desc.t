@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 108;
+use Test::More tests => 118;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -113,11 +113,14 @@ foreach my $uri ([qw/author pippo/],
 $mech->get_ok('/library/the-text');
 $mech->content_contains('/category/author/pippo');
 $mech->content_contains('/category/topic/the-cat');
-$mech->page_links_ok("Links ok on text page");
-$mech->get_ok('/authors');
-$mech->page_links_ok("Links ok on authors page");
-$mech->get_ok('/topics');
-$mech->page_links_ok("Links ok on topics page");
+
+foreach my $page ('/library/the-text', '/authors', '/topics',
+                  '/authors/pippo', '/topics/the-cat') {
+    $mech->get_ok($page);
+    my @links = grep { $_->url !~ /\/static\//}  $mech->find_all_links;
+    $mech->links_ok(\@links);
+    ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
+}
 
 $mech->get_ok('/set-language?lang=en');
 $mech->get_ok('/authors/pippo');
