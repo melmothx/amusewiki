@@ -687,6 +687,9 @@ As above, but instead of the compiler options, list the extensions.
 sub compile_options {
     my $self = shift;
     my %opts = $self->available_formats;
+    if ($self->use_luatex) {
+        $opts{luatex} = 1;
+    }
 
     if (my $dir = $self->ttdir) {
         $opts{ttdir} = $dir;
@@ -2003,8 +2006,8 @@ sub update_from_params {
     }
 
     # this is totally arbitrary
-    foreach my $option (qw/html_special_page_bottom/) {
-        my $value = delete $params->{$option};
+    foreach my $option (qw/html_special_page_bottom use_luatex/) {
+        my $value = delete $params->{$option} || '';
         push @options, {
                         option_name => $option,
                         option_value => $value,
@@ -2236,12 +2239,7 @@ sub latest_entries_for_rss {
 
 sub _latest_entries_routine {
     my ($self, $lookup) = @_;
-    die "Bad usage" unless $lookup;
-    my $num;
-    if (my $setting = $self->site_options->find({ option_name => $lookup })) {
-        $num = $setting->option_value;
-    }
-    return $self->titles->latest($num);
+    return $self->titles->latest($self->get_option($lookup));
 }
 
 sub paginate_archive_after {
@@ -2271,6 +2269,12 @@ sub html_special_page_bottom {
     my ($self) = @_;
     return $self->get_option('html_special_page_bottom') || '';
 }
+
+sub use_luatex {
+    my ($self) = @_;
+    $self->get_option('use_luatex') ? 1 : 0;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

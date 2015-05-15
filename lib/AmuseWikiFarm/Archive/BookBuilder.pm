@@ -918,6 +918,11 @@ sub compile {
                          tex => !$self->epub,
                          epub => $self->epub,
                         );
+    foreach my $setting (qw/luatex/) {
+        if ($compile_opts{$setting}) {
+            $compiler_args{$setting} = $compile_opts{$setting};
+        }
+    }
     if ($self->epub) {
         if (my $epubfont = $self->epubfont) {
             if (my $directory = $self->webfonts->{$epubfont}) {
