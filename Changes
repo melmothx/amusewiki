@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.21 2015-05-15
+
+ - Added LuaLaTeX option (slow and experimental)
+
 1.20 2015-05-14
 
  - Changed /topics and /authors to /category/topic/ and /category/author
