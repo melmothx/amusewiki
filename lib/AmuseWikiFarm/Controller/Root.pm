@@ -160,7 +160,7 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     for my $sp (@specials) {
         my $uri = $sp->{uri};
         $sp->{special_uri} = $uri;
-        $sp->{uri} = $sp->{full_url} || $c->uri_for_action('/library/special', [ $uri ]);
+        $sp->{uri} = $sp->{full_url} || $c->uri_for_action('//special/text', [ $uri ]);
         $sp->{active} = ($c->request->uri eq $sp->{uri});
     }
 
@@ -186,6 +186,12 @@ sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
         $c->detach();
     }
 }
+
+sub site_robot_index :Chained('site') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $c->stash(please_index => 1);
+}
+
 
 sub not_found :Private {
     my ($self, $c) = @_;
@@ -284,7 +290,7 @@ sub index :Chained('/site') :PathPart('') :Args(0) {
         $target = $c->uri_for($index->full_uri);
     }
     else {
-        $target = $c->uri_for_action('/library/regular_list_display');
+        $target = $c->uri_for_action('/library/listing');
     }
     $c->res->redirect($target);
 }

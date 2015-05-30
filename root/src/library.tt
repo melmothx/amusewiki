@@ -11,12 +11,12 @@
 <div style="margin: 0 0 30px 0">
   <ul class="nav nav-tabs" role="tablist">
     <li [% UNLESS multilang.filter_lang %]class="active"[% END %]>
-    <a href="[% c.uri_for_action('/library/archive') %]">
+    <a href="[% c.uri_for_action('/archive/listing') %]">
       [% loc('All languages') %]
     </a>
   </li>
   <li [% IF multilang.filter_lang == current_locale_code %]class="active"[% END %]>
-    <a href="[% c.uri_for_action('/library/archive_by_lang',
+    <a href="[% c.uri_for_action('/archive/archive_by_lang',
                                  [ current_locale_code ]) %]">
       [% current_locale_name %]
     </a>
