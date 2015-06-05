@@ -1,11 +1,13 @@
 package AmuseWikiFarm::Controller::Library;
 use Moose;
+with qw/AmuseWikiFarm::Role::Controller::RegularListing
+        AmuseWikiFarm::Role::Controller::ListingDisplay
+        AmuseWikiFarm::Role::Controller::Text/;
+
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
-use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
-use HTML::Entities qw/decode_entities/;
 
 =head1 NAME
 
@@ -14,6 +16,23 @@ AmuseWikiFarm::Controller::Library - Catalyst Controller
 =head1 DESCRIPTION
 
 Catalyst Controller.
+
+=head1 WHY THIS CLASS IS ALMOST EMPTY
+
+22:17 <@mst> have two controllers that consume the role
+22:17 <@mst> that then means both are first class citizens
+22:17 <@mst> because the role can contain the relevant chain parts
+22:17 <@mst> and now you have shared code *and* working uri_for_action
+22:18 < melmothX_> mm, is there some example around?
+22:22 < melmothX_> ah, now I think I understand what do you mean
+22:23 < melmothX_> mst: thanks, I think it should work once i figure out how to write it
+22:24 < melmothX_> so both controller will have just the first chaining, + role with the endpoints . am I understand correctly?
+22:25 <@mst> right. remember you can chain between controllers too though
+22:25 <@mst> so you can have a Controller::Thing with the base line stuff
+22:25 <@mst> then Controller::Thing::Library and Controller::Thing::Special
+22:26 <@mst> with 'MyApp::ControllerRole::SubThing'; sub base :Chained('/thing/some_method') :PathPart('library') :CaptureArgs(0) {
+             ... }
+22:26 <@mst> and ::SubThing has 'sub common_method :Chained('base') ...
 
 =head1 METHODS
 
@@ -24,13 +43,6 @@ Catalyst Controller.
 Empty base method to start the chain
 
 =cut
-
-sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
-    my ($self, $c) = @_;
-    $c->stash(please_index => 1);
-}
-
-=head2 Listing
 
 =over 4
 
@@ -59,96 +71,8 @@ stash.
 
 =cut
 
-sub regular_list :Chained('root') :PathPart('library') :CaptureArgs(0) {
-    my ($self, $c) = @_;
-    $c->log->debug('stashing f_class');
-    my $rs = $c->stash->{site}->titles->published_texts;
-    $c->stash(
-              f_class => 'text',
-              texts_rs => $rs,
-              page_title => $c->loc('Full list of texts'),
-              nav => 'titles',
-             );
-}
+sub pre_base :Chained('/site_robot_index') :PathPart('library') :CaptureArgs(0) {}
 
-sub archive_list :Chained('root') :PathPart('archive') :CaptureArgs(0) {
-    my ($self, $c) = @_;
-    $c->forward('regular_list');
-}
-
-sub special_list :Chained('root') :PathPart('special') :CaptureArgs(0) {
-    my ($self, $c) = @_;
-    $c->log->debug('stashing f_class');
-    my $rs = $c->stash->{site}->titles->published_specials;
-    $c->stash(
-              f_class => 'special',
-              texts_rs => $rs,
-              page_title => $c->loc('Special pages'),
-             );
-}
-
-sub archive :Chained('archive_list') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    $c->forward('template_listing');
-}
-
-sub regular_list_display :Chained('regular_list') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    $c->forward('template_listing');
-}
-
-sub special_list_display :Chained('special_list') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    $c->forward('template_listing');
-}
-
-sub template_listing :Private {
-    my ($self, $c) = @_;
-    my $rs = delete $c->stash->{texts_rs};
-    # these should be cached
-    my $cache = $c->model('Cache',
-                          site_id => $c->stash->{site}->id,
-                          type => 'library',
-                          subtype => $c->stash->{f_class},
-                          # here we use the language set in the app
-                          lang => $c->stash->{current_locale_code},
-                          resultset => $rs,
-                         );
-    $c->stash(texts => $cache->texts,
-              pager => $cache->pager,
-              text_count => $cache->text_count,
-              show_pager => $c->stash->{site}->pagination_needed($cache->text_count),
-              template => 'library.tt');
-}
-
-sub archive_by_lang :Chained('archive_list') :PathPart('') :Args(1) {
-    my ($self, $c, $lang) = @_;
-    my $rs = delete $c->stash->{texts_rs};
-    $c->log->debug("In $lang");
-    if (my $label = $c->stash->{site}->known_langs->{$lang}) {
-        my $resultset = $rs->search({ lang => $lang });
-        my $cache = $c->model('Cache',
-                              site_id => $c->stash->{site}->id,
-                              type => 'library',
-                              subtype => $c->stash->{f_class},
-                              # here we use the language of the filtering
-                              by_lang => 1,
-                              lang => $lang,
-                              resultset => $resultset,
-                             );
-        $c->stash(texts => $cache->texts,
-                  pager => $cache->pager,
-                  text_count => $cache->text_count,
-                  show_pager => $c->stash->{site}->pagination_needed($cache->text_count),
-                  multilang => {
-                                filter_lang => $lang,
-                                filter_label => $label,
-                               },
-                  template => 'library.tt');
-        return;
-    }
-    $c->detach('/not_found');
-}
 
 
 =head2 text
@@ -159,157 +83,6 @@ Main method to serve the files, mapping them to the real location.
 
 =cut
 
-sub special_match :Chained('special_list') PathPart('') :CaptureArgs(1) {
-    my ($self, $c, $uri) = @_;
-    $c->forward('text_matching', [ $uri ]);
-}
-
-sub regular_match :Chained('regular_list') PathPart('') :CaptureArgs(1) {
-    my ($self, $c, $uri) = @_;
-    $c->forward('text_matching', [ $uri ]);
-}
-
-
-sub special :Chained('special_match') PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    $c->stash(latest_entries => [ $c->stash->{site}->latest_entries ]);
-    $c->forward('text_serving');
-}
-
-sub text    :Chained('regular_match') PathPart('') :Args(0) {
-    my ($self, $c) = @_;
-    $c->forward('text_serving');
-}
-
-sub special_edit :Chained('special_match') PathPart('edit') :Args(0) {
-    my ($self, $c) = @_;
-    $c->forward('redirect_to_edit');
-}
-
-sub regular_edit :Chained('regular_match') PathPart('edit') :Args(0) {
-    my ($self, $c) = @_;
-    $c->forward('redirect_to_edit');
-
-}
-
-sub redirect_to_edit :Private {
-    my ($self, $c) = @_;
-    my $text = $c->stash->{text};
-    $c->response->redirect($c->uri_for_action('/edit/revs', [$text->f_class,
-                                                             $text->uri]));
-}
-
-
-sub text_matching :Private {
-    my ($self, $c, $arg) = @_;
-    my $name = $arg;
-    my $ext = '';
-    my $append_ext = '';
-    my $site = $c->stash->{site};
-
-    # strip the extension
-    if ($arg =~ m/(.+?) # name
-                  \.   # dot
-                  # and extensions we provide
-                  (
-                      a4\.pdf |
-                      lt\.pdf |
-                      pdf     |
-                      html    |
-                      tex     |
-                      epub    |
-                      muse    |
-                      zip     |
-
-                      # these two need special treatment
-                      jpe?g   |
-                      png
-                  )$
-                 /x) {
-        $name = $1;
-        $ext  = $2;
-    }
-
-    $c->log->debug("Ext is $ext, name is $name");
-
-    if ($ext) {
-        $append_ext = '.' . $ext;
-
-        my %managed = $site->available_text_exts;
-        if (exists $managed{$append_ext}) {
-            unless ($managed{$append_ext}) {
-                $c->log->debug("$ext is not provided");
-                $c->detach('/not_found');
-            }
-        }
-    }
-
-    # assert we are using canonical names.
-    my $canonical = muse_naming_algo($name);
-    $c->log->debug("canonical is $canonical");
-
-    # find the title or the attachment
-    if (my $text = $c->stash->{texts_rs}->find({ uri => $canonical})) {
-        $c->stash(text => $text);
-        if ($canonical ne $name) {
-            my $location = $c->uri_for($text->full_uri);
-            $c->response->redirect($location, 301);
-            $c->detach();
-            return;
-        }
-        # static files are served here
-        if ($ext) {
-            $c->log->debug("Got $canonical $ext => " . $text->title);
-            my $served_file = $text->filepath_for_ext($ext);
-            if (-f $served_file) {
-                $c->stash(serve_static_file => $served_file);
-                $c->detach($c->view('StaticFile'));
-                return;
-            }
-            else {
-                # this should not happen
-                $c->log->warn("File $served_file expected but not found!");
-                $c->detach('/not_found');
-                return;
-            }
-        }
-    }
-    elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
-        $c->log->debug("Found attachment $canonical$append_ext");
-        if ($name ne $canonical) {
-            $c->log->warn("Using $canonical instead of $name, shouldn't happen");
-        }
-        $c->stash(serve_static_file => $attach->f_full_path_name);
-        $c->detach($c->view('StaticFile'));
-        return;
-    }
-    else {
-        $c->stash(uri => $canonical);
-        $c->detach('/not_found');
-    }
-}
-
-sub text_serving :Private {
-    my ($self, $c) = @_;
-    # search the damned title.
-    my $text = $c->stash->{text} or die "WTF?";
-    $c->stash(
-              template => 'text.tt',
-              text => $text,
-              page_title => decode_entities($text->title),
-             );
-    foreach my $listing (qw/authors topics/) {
-        my @list;
-        my $categories = $text->$listing;
-        while (my $cat = $categories->next) {
-            push @list, {
-                         uri => $cat->full_uri,
-                         name => $cat->name,
-                        };
-        }
-        $c->stash("text_$listing" => \@list);
-    }
-}
 
 
 =encoding utf8
