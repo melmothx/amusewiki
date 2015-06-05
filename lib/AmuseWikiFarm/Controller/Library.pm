@@ -17,6 +17,23 @@ AmuseWikiFarm::Controller::Library - Catalyst Controller
 
 Catalyst Controller.
 
+=head1 WHY THIS CLASS IS ALMOST EMPTY
+
+22:17 <@mst> have two controllers that consume the role
+22:17 <@mst> that then means both are first class citizens
+22:17 <@mst> because the role can contain the relevant chain parts
+22:17 <@mst> and now you have shared code *and* working uri_for_action
+22:18 < melmothX_> mm, is there some example around?
+22:22 < melmothX_> ah, now I think I understand what do you mean
+22:23 < melmothX_> mst: thanks, I think it should work once i figure out how to write it
+22:24 < melmothX_> so both controller will have just the first chaining, + role with the endpoints . am I understand correctly?
+22:25 <@mst> right. remember you can chain between controllers too though
+22:25 <@mst> so you can have a Controller::Thing with the base line stuff
+22:25 <@mst> then Controller::Thing::Library and Controller::Thing::Special
+22:26 <@mst> with 'MyApp::ControllerRole::SubThing'; sub base :Chained('/thing/some_method') :PathPart('library') :CaptureArgs(0) {
+             ... }
+22:26 <@mst> and ::SubThing has 'sub common_method :Chained('base') ...
+
 =head1 METHODS
 
 =cut
