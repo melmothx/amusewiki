@@ -18,8 +18,9 @@
   [% FOREACH text IN text_list %]
   <tr>
     <td>
-      <a href="[% c.uri_for_action('/edit/revs', [text.f_class, text.uri]) %]">
-        [% text.full_uri %]</a>
+      <a href="[% IF text.is_deferred %][% c.uri_for(text.full_uri) %][% ELSE %][% c.uri_for_action('/edit/revs', [text.f_class, text.uri]) %][% END %]">
+        [% text.full_uri %]
+      </a>
     </td>
     <td>
       [% text.author %]

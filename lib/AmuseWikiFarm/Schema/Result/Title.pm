@@ -515,6 +515,10 @@ sub is_published {
     return shift->status eq 'published';
 }
 
+sub is_deferred {
+    return shift->status eq 'deferred';
+}
+
 =head2 can_spawn_revision
 
 Return true if the file exists in the tree, hence can be copied to the
