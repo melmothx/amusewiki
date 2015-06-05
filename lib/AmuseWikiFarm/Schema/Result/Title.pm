@@ -565,6 +565,19 @@ sub filepath_for_ext {
                                $self->f_name . '.' . $ext);
 }
 
+sub check_if_file_exists {
+    my ($self, $ext) = @_;
+    die "Bad usage" unless $ext;
+    if (-f $self->filepath_for_ext($ext)) {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
+
+
 =head3 html_body
 
 Retrieve the bare HTML, if present.
