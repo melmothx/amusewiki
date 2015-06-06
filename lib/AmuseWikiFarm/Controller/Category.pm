@@ -41,12 +41,12 @@ sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
 
 sub legacy_topics :Chained('root') :PathPart('topics') :Args {
     my ($self, $c, @args) = @_;
-    $c->forward(legacy_category =>  [ topic => @args ]);
+    $c->detach(legacy_category =>  [ topic => @args ]);
 }
 
 sub legacy_authors :Chained('root') :PathPart('authors') :Args {
     my ($self, $c, @args) = @_;
-    $c->forward(legacy_category => [ author => @args ]);
+    $c->detach(legacy_category => [ author => @args ]);
 }
 
 sub legacy_category :Private {
