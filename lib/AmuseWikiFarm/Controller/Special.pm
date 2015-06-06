@@ -10,7 +10,14 @@ BEGIN { extends 'Catalyst::Controller'; }
 sub base :Chained('/site_robot_index') :PathPart('special') :CaptureArgs(0) {
     my ($self, $c) = @_;
     $c->log->debug('stashing f_class');
-    my $rs = $c->stash->{site}->titles->published_specials;
+    my $titles = $c->stash->{site}->titles;
+    my $rs;
+    if ($c->user_exists) {
+        $rs = $titles->published_or_deferred_specials;
+    }
+    else {
+        $rs = $titles->published_specials;
+    }
     $c->stash(
               f_class => 'special',
               texts_rs => $rs,

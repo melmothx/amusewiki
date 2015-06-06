@@ -2,16 +2,18 @@
 
 use strict;
 use warnings;
-use Test::More tests => 27;
+use Test::More tests => 57;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Schema;
+use AmuseWikiFarm::Archive::Cache;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
+use File::Find;
 
 diag "(Re)starting the jobber";
 
@@ -105,6 +107,67 @@ MUSE
     $mech->follow_link_ok({ text => $full_uri });
 }
 
+my $cache = AmuseWikiFarm::Archive::Cache->new;
+$cache->clear_all;
+my @cache_files = check_cache($cache->cache_dir);
+ok(!@cache_files, "Cache is clean") or diag Dumper(\@cache_files);
+
+$mech->get_ok('/library');
+$mech->content_contains('/library/pippo-deferred-text');
+$mech->content_lacks('/library/pippo-deleted-text');
+$mech->get_ok('/logout');
+
+diag "Logging out and checking listing again";
+diag $mech->uri->path;
+@cache_files = check_cache($cache->cache_dir);
+ok(!@cache_files, "Cache is clean") or diag Dumper(\@cache_files);
+
+$mech->get_ok('/library');
+$mech->content_lacks('/library/pippo-deferred-text');
+$mech->content_lacks('/library/pippo-deleted-text');
+$mech->get('/library/pippo-deferred-text');
+is $mech->status, '404', "deferred not found";
+
+@cache_files = check_cache($cache->cache_dir);
+ok(!!@cache_files, "Cache is created") or diag Dumper(\@cache_files);
+
+$mech->get_ok('/login');
+ok($mech->form_id('login-form'), "Found the login-form");
+$mech->set_fields(username => 'root',
+                  password => 'root');
+$mech->click;
+$mech->content_contains('You are logged in now!');
+
+$mech->get_ok('/library');
+$mech->content_contains('/library/pippo-deferred-text');
+$mech->content_lacks('/library/pippo-deleted-text');
+$mech->get_ok('/logout');
+
+diag "Logging out and checking listing again";
+
+$mech->get_ok('/library');
+$mech->content_lacks('/library/pippo-deferred-text');
+$mech->content_lacks('/library/pippo-deleted-text');
+$mech->get('/library/pippo-deferred-text');
+is $mech->status, '404', "deferred not found";
+
 system($init, 'stop');
 
-$site->delete;
+# $site->delete;
+
+sub check_cache {
+    my $dir = shift;
+    my @files;
+    find sub { push @files, $_ if -f $_ }, $dir;
+    return @files;
+}
+
+is ($site->titles->published_all->count, 0, "0 published");
+is ($site->titles->published_or_deferred_all->count, 1, "1 deferred");
+is ($site->titles->published_or_deferred_texts->first->status, 'deferred');
+is ($site->titles->published_or_deferred_texts->count, 1);
+is ($site->titles->published_or_deferred_specials->count, 0);
+is ($site->titles->published_texts->count, 0);
+is ($site->titles->published_specials->count, 0);
+is ($site->titles->published_or_deferred_texts
+    ->single({ uri => 'pippo-deferred-text' })->status, 'deferred');
