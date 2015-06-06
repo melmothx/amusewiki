@@ -26,13 +26,22 @@
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   <div id="preamble">
+    [% IF text.is_deferred %]
+    <div>
+      <span id="pubdate-label">
+        <strong>[% loc('Publication date') %]:</strong>
+        <span class="glyphicon glyphicon-time"
+              title="[% loc('This text is not published yet') %]"></span>
+        [% text.pubdate %]
+      </span>
+    </div>
+    [% END %]
     <div id="texttitle">
       <span id="texttitle-label">
         <strong>[% loc('Title') %]:</strong>
       </span>
       [% text.title %]
     </div>
-
     [% IF text.subtitle %]
     <div id="textsubtitle">
       <span id="textsubtitle-label">

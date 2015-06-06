@@ -61,6 +61,9 @@
       <strong>[% text.title %]</strong>
       [%- IF text.author %] — [% text.author -%][% END -%]
       [%- IF site.multilanguage -%] <small>[[% text.lang %]]</small>[% END -%]
+      [% IF text.is_deferred %]
+      <span class="glyphicon glyphicon-time"></span>
+      [% END %]
     </a>
   </div>
     [% END %]

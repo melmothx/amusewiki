@@ -11,7 +11,7 @@
     <th>[% loc('Title') %]</th>
     <th>[% loc('Status') %]</th>
     <th>[% loc('Reason') %]</th>
-    <th>[% loc('Pubdate') %]</th>
+    <th>[% loc('Publication date') %]</th>
     <th>[% loc('Purge') %]</th>
     <th></th>
   </tr>

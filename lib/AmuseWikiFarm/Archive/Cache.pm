@@ -275,7 +275,8 @@ sub _cache_for_library {
     my $rs = $self->resultset;
     my @list;
     while (my $row = $rs->next) {
-        my %text = map { $_ => $row->$_ } qw/author title full_uri lang/;
+        my %text = map { $_ => $row->$_ } qw/author title full_uri lang
+                                             is_deferred/;
         if ($row->list_title =~ m/(\w)/) {
             $text{first_char} = uc($1);
         }
