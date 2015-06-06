@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 57;
+use Test::More tests => 75;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -112,9 +112,11 @@ $cache->clear_all;
 my @cache_files = check_cache($cache->cache_dir);
 ok(!@cache_files, "Cache is clean") or diag Dumper(\@cache_files);
 
-$mech->get_ok('/library');
-$mech->content_contains('/library/pippo-deferred-text');
-$mech->content_lacks('/library/pippo-deleted-text');
+foreach my $path (qw{/library /archive archive/en}) {
+    $mech->get_ok($path);
+    $mech->content_contains('/library/pippo-deferred-text');
+    $mech->content_lacks('/library/pippo-deleted-text');
+}
 $mech->get_ok('/logout');
 
 diag "Logging out and checking listing again";
@@ -122,9 +124,11 @@ diag $mech->uri->path;
 @cache_files = check_cache($cache->cache_dir);
 ok(!@cache_files, "Cache is clean") or diag Dumper(\@cache_files);
 
-$mech->get_ok('/library');
-$mech->content_lacks('/library/pippo-deferred-text');
-$mech->content_lacks('/library/pippo-deleted-text');
+foreach my $path (qw{/library /archive archive/en}) {
+    $mech->get_ok("$path");
+    $mech->content_lacks('/library/pippo-deferred-text');
+    $mech->content_lacks('/library/pippo-deleted-text');
+}
 $mech->get('/library/pippo-deferred-text');
 is $mech->status, '404', "deferred not found";
 
@@ -138,9 +142,11 @@ $mech->set_fields(username => 'root',
 $mech->click;
 $mech->content_contains('You are logged in now!');
 
-$mech->get_ok('/library');
-$mech->content_contains('/library/pippo-deferred-text');
-$mech->content_lacks('/library/pippo-deleted-text');
+foreach my $path (qw{/library /archive archive/en}) {
+    $mech->get_ok($path);
+    $mech->content_contains('/library/pippo-deferred-text');
+    $mech->content_lacks('/library/pippo-deleted-text');
+}
 $mech->get_ok('/logout');
 
 diag "Logging out and checking listing again";
