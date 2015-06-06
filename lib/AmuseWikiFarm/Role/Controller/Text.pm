@@ -56,7 +56,7 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
     $c->log->debug("canonical is $canonical");
 
     # find the title or the attachment
-    if (my $text = $c->stash->{texts_rs}->find({ uri => $canonical})) {
+    if (my $text = $c->stash->{texts_rs}->single({ uri => $canonical})) {
         $c->stash(text => $text);
         if ($canonical ne $name) {
             my $location = $c->uri_for($text->full_uri);

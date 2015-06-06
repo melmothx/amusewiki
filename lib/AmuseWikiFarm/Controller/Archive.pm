@@ -25,6 +25,7 @@ sub archive_by_lang :Chained('base') :PathPart('') :Args(1) {
                               by_lang => 1,
                               lang => $lang,
                               resultset => $resultset,
+                              no_caching => !!$c->user_exists,
                              );
         $c->stash(texts => $cache->texts,
                   pager => $cache->pager,

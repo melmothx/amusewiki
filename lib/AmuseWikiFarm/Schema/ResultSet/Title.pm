@@ -14,8 +14,31 @@ All records in Title with the status set to 'published'
 =cut
 
 sub published_all {
-    my $self = shift;
-    return $self->search({ status => 'published' },
+    return shift->sorted_by_title->status_is_published;
+}
+
+sub published_or_deferred_all  {
+    return shift->sorted_by_title->status_is_published_or_deferred;
+}
+
+sub texts_only {
+    return shift->search({ f_class => 'text' });
+}
+
+sub specials_only {
+    return shift->search({ f_class => 'special' });
+}
+
+sub status_is_published {
+    return shift->search({ status => 'published' });
+}
+
+sub status_is_published_or_deferred {
+    return shift->search({ status => [qw/published deferred/] });
+}
+
+sub sorted_by_title {
+    return shift->search(undef,
                          { order_by => [qw/sorting_pos
                                            title/] });
 }
@@ -28,8 +51,13 @@ publication date in the past.
 =cut
 
 sub published_texts {
-    return shift->published_all->search({ f_class => 'text' });
+    return shift->published_all->texts_only;
 }
+
+sub published_or_deferred_texts {
+    return shift->published_or_deferred_all->texts_only;
+}
+
 
 =head2 published_specials
 
@@ -39,7 +67,11 @@ C<published_texts>.
 =cut
 
 sub published_specials {
-    return shift->published_all->search({ f_class => 'special' });
+    return shift->published_all->specials_only;
+}
+
+sub published_or_deferred_specials {
+    return shift->published_or_deferred_all->specials_only;
 }
 
 =head2 random_text

@@ -26,13 +26,22 @@
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   <div id="preamble">
+    [% IF text.is_deferred %]
+    <div>
+      <span id="pubdate-label">
+        <strong>[% loc('Publication date') %]:</strong>
+        <span class="glyphicon glyphicon-time"
+              title="[% loc('This text is not published yet') %]"></span>
+        [% text.pubdate %]
+      </span>
+    </div>
+    [% END %]
     <div id="texttitle">
       <span id="texttitle-label">
         <strong>[% loc('Title') %]:</strong>
       </span>
       [% text.title %]
     </div>
-
     [% IF text.subtitle %]
     <div id="textsubtitle">
       <span id="textsubtitle-label">
@@ -115,7 +124,7 @@
       <!-- <strong>[% loc('Downloads') %]</strong> -->
     </div>
     <div id="downloadformats-list">
-      [% IF site.pdf %]
+      [% IF site.pdf && text.check_if_file_exists('pdf') %]
       <span id="pdfgeneric">
         <a href="[% basename %].pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-gen.png') %]"
@@ -124,7 +133,7 @@
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
-      [% IF site.a4_pdf %]
+      [% IF site.a4_pdf && text.check_if_file_exists('a4.pdf') %]
       <span id="pdfa4imp">
         <a href="[% basename %].a4.pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-a4-imposed.png') %]"
@@ -133,7 +142,7 @@
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
-      [% IF site.lt_pdf %]
+      [% IF site.lt_pdf && text.check_if_file_exists('lt.pdf') %]
       <span id="letterimp">
         <a href="[% basename %].lt.pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-letter-imposed.png') %]"
@@ -142,7 +151,7 @@
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
-      [% IF site.epub %]
+      [% IF site.epub && text.check_if_file_exists('epub') %]
       <span id="downloadepub">
         <a href="[% basename %].epub">
 	      <img src="[% c.uri_for('/static/images/epub.png') %]"
@@ -151,7 +160,7 @@
                class="pdfmyicons" /></a>
       </span>
       [% END %]
-      [% IF site.html %]
+      [% IF site.html && text.check_if_file_exists('html') %]
       <span id="downloadhtml">
         <a href="[% basename %].html">
 	      <img src="[% c.uri_for('/static/images/pf-html.png') %]"
@@ -160,7 +169,7 @@
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
-      [% IF site.tex %]
+      [% IF site.tex && text.check_if_file_exists('tex') %]
       <span id="downloadtex">
         <a href="[% basename %].tex">
 	      <img src="[% c.uri_for('/static/images/tex.png') %]"

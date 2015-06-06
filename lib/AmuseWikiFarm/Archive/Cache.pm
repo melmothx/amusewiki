@@ -90,17 +90,23 @@ has lang => (is => 'ro',
              isa => 'Str',
              default => sub { 'en' });
 
+has no_caching => (is => 'ro',
+                   isa => 'Bool');
+
 sub _build_cache {
     my $self = shift;
     my $path = $self->cache_file;
     # try to load the cache
+    if ($self->no_caching) {
+        return $self->populate_cache;
+    }
     my $cache;
     eval { $cache = Storable::retrieve($path) };
     if ($cache) {
         return $cache;
     }
     else {
-        $cache = $self->populate_cache($path);
+        $cache = $self->populate_cache;
         # wrap in eval to mitigate race conditions.
         # Say we created the directory some lines ago, when calling cache_file,
         # but in the meanwhile the cache is cleared.
@@ -196,7 +202,7 @@ sub text_count {
 
 
 sub populate_cache {
-    my ($self, $path) = @_;
+    my ($self) = @_;
     my $type = $self->type;
     die unless $type;
     die "No resultset passed, can't build the cache!" unless $self->resultset;
@@ -269,7 +275,8 @@ sub _cache_for_library {
     my $rs = $self->resultset;
     my @list;
     while (my $row = $rs->next) {
-        my %text = map { $_ => $row->$_ } qw/author title full_uri lang/;
+        my %text = map { $_ => $row->$_ } qw/author title full_uri lang
+                                             is_deferred/;
         if ($row->list_title =~ m/(\w)/) {
             $text{first_char} = uc($1);
         }

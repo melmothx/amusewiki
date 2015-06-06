@@ -515,6 +515,10 @@ sub is_published {
     return shift->status eq 'published';
 }
 
+sub is_deferred {
+    return shift->status eq 'deferred';
+}
+
 =head2 can_spawn_revision
 
 Return true if the file exists in the tree, hence can be copied to the
@@ -560,6 +564,19 @@ sub filepath_for_ext {
     return File::Spec->catfile($self->f_path,
                                $self->f_name . '.' . $ext);
 }
+
+sub check_if_file_exists {
+    my ($self, $ext) = @_;
+    die "Bad usage" unless $ext;
+    if (-f $self->filepath_for_ext($ext)) {
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
+
 
 =head3 html_body
 
