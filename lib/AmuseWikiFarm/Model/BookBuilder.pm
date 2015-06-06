@@ -10,6 +10,10 @@ __PACKAGE__->config(
 
 sub prepare_arguments {
     my ($self, $c) = @_;
+    # WARNING: here the $c->session->{bookbuilder}->{textlist} get
+    # passed directly, hence any modification done in it, will be
+    # reflected in the session. At some point, we could pass a copy
+    # here instead, but it seems to work as expected...
     my $args = $c->session->{bookbuilder} || {};
     my %constructor = (
         %$args,

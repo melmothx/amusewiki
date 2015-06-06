@@ -56,7 +56,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
                 $bb->add_file($upload->tempname);
             }
         }
-        $c->forward('save_session');
+        $self->save_session($c);
     }
 
     my @texts = @{ $bb->texts };
@@ -95,7 +95,9 @@ sub edit :Chained('root') :PathPart('edit') :Args(0) {
             $c->stash->{bb}->delete_text($index);
         }
     }
-    $c->forward('save_session');
+    # this is basically not needed, because the session's textlist
+    # arrayref is modified in place, but better safe than sorry.
+    $self->save_session($c);
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }
 
@@ -115,7 +117,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
     my $site = $c->stash->{site};
     my $referrer = $c->uri_for_action('/library/text', [$text]);
     if ($bb->add_text($text)) {
-        $c->forward('save_session');
+        $self->save_session($c);
         $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
     }
     elsif (my $err = $bb->error) {
@@ -161,7 +163,6 @@ sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
 
 sub save_session :Private {
     my ( $self, $c ) = @_;
-    $c->log->debug('Saving books in the session');
     $c->session->{bookbuilder} = $c->stash->{bb}->serialize;
 }
 

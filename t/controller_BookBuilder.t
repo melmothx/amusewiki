@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 56;
+use Test::More tests => 64;
 use File::Spec;
 use Data::Dumper;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
@@ -41,6 +41,17 @@ $mech->get('/bookbuilder/add/alsdflasdf');
 is ($mech->status, '404', "bogus text not found: " . $mech->status);
 $mech->content_contains("Couldn't add the text");
 $mech->content_contains("Page not found!");
+
+$mech->get_ok('/bookbuilder/add/first-test');
+is $mech->uri->path, '/library/first-test';
+$mech->get_ok('/bookbuilder');
+$mech->get_ok('/bookbuilder');
+$mech->content_contains('/library/first-test');
+$mech->submit_form(form_id => 'bookbuilder-edit-list-1',
+                   button => 'delete');
+$mech->content_lacks('/library/first-test');
+$mech->get_ok('/bookbuilder');
+$mech->content_lacks('/library/first-test');
 
 $mech->get_ok('/library/second-test');
 

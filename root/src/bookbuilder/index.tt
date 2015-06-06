@@ -24,7 +24,8 @@
         <a href="[% c.uri_for('/library', book) %]">[% book %]</a>
       </td>
       <td>
-        <form action="[% c.uri_for('/bookbuilder/edit') %]" method="post">
+        <form action="[% c.uri_for('/bookbuilder/edit') %]" method="post"
+              id="bookbuilder-edit-list-[% textindex %]">
           <input type="hidden" name="text"      value="[% book  %]" />
           <input type="hidden" name="textindex" value="[% textindex %]" />
           <button type="submit" name="moveup" value="up" class="btn btn-default">

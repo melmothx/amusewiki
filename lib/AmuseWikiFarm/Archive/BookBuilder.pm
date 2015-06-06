@@ -198,7 +198,9 @@ has title => (
 
 =head2 textlist
 
-An arrayref of valid AMW uris.
+An arrayref of valid AMW uris. This arrayref possibly comes from the
+session. So when we modify it, we end up modifying the session.
+Unclear if this side-effect is welcome or not.
 
 =cut
 
