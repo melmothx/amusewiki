@@ -7,7 +7,7 @@ sub listing :Chained('base') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     $c->log->debug("In listing");
     my $rs = delete $c->stash->{texts_rs};
-    # these should be cached
+    # these should be cached if the user doesn't exist
     my $cache = $c->model('Cache',
                           site_id => $c->stash->{site}->id,
                           type => 'library',
@@ -15,6 +15,7 @@ sub listing :Chained('base') :PathPart('') :Args(0) {
                           # here we use the language set in the app
                           lang => $c->stash->{current_locale_code},
                           resultset => $rs,
+                          no_caching => !!$c->user_exists,
                          );
     $c->stash(texts => $cache->texts,
               pager => $cache->pager,
