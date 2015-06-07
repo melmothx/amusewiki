@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.22 2015-06-06
+
+ - Refactored Library controller to avoid ugly ->forward (thanks to mst)
+ - Make possible to librarians to list and display deferred texts
+ - Updated translations: it
+
 1.21 2015-05-15
 
  - Added LuaLaTeX option (slow and experimental)
