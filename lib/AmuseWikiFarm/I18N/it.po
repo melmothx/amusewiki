@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2015-04-23 18:25+0200\n"
+"PO-Revision-Date: 2015-06-07 12:13+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -1033,7 +1033,7 @@ msgstr "Crea un EPUB invece di un PDF"
 msgid "Produced"
 msgstr "Prodotto"
 
-msgid "Pubdate"
+msgid "Publication date"
 msgstr "Data di pubblicazione"
 
 msgid "Publication date on this site."
@@ -1380,6 +1380,9 @@ msgstr "Questa revisione è in corso di modifica da qualcun altro!"
 msgid "This text does not exist"
 msgstr "Questo testo non esiste"
 
+msgid "This text is not published yet"
+msgstr ""
+
 msgid "Time is optional."
 msgstr "L'ora è opzionale"
 
@@ -1479,6 +1482,9 @@ msgstr "Carica"
 
 msgid "Url"
 msgstr "URL"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr ""
 
 msgid "Use SSL for authenticated users"
 msgstr "Usa SSL per gli utenti loggati"
@@ -1815,6 +1821,9 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Pubdate"
+#~ msgstr "Data di pubblicazione"
 
 #~ msgid "Full site canonical URL, including protocol"
 #~ msgstr "URL canonico completo, protocollo incluso "

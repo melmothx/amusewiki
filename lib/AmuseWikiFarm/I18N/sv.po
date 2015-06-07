@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-11-26 16:08+0100\n"
+"PO-Revision-Date: 2015-06-07 12:15+0200\n"
 "Last-Translator: Linda <...@...>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -1013,8 +1013,8 @@ msgstr ""
 msgid "Produced"
 msgstr "Producerad"
 
-msgid "Pubdate"
-msgstr "Pubdatum"
+msgid "Publication date"
+msgstr "Publikationsdatum"
 
 msgid "Publication date on this site."
 msgstr "Publikationsdatum på denna sida."
@@ -1360,6 +1360,9 @@ msgstr "Revideringen redigeras av någon annan!"
 msgid "This text does not exist"
 msgstr "Denna text existerar inte"
 
+msgid "This text is not published yet"
+msgstr ""
+
 msgid "Time is optional."
 msgstr "Tid är valfritt."
 
@@ -1456,6 +1459,9 @@ msgstr "Ladda upp"
 
 msgid "Url"
 msgstr "Url"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr ""
 
 msgid "Use SSL for authenticated users"
 msgstr "Använd SSL för verifierade användare"
@@ -1787,3 +1793,6 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Pubdate"
+#~ msgstr "Pubdatum"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2015-02-07 10:34+0100\n"
+"PO-Revision-Date: 2015-06-07 12:14+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -1037,7 +1037,7 @@ msgstr ""
 msgid "Produced"
 msgstr "Изработено"
 
-msgid "Pubdate"
+msgid "Publication date"
 msgstr "Датум на објавување"
 
 msgid "Publication date on this site."
@@ -1380,6 +1380,9 @@ msgstr "Оваа измена е во тек од страна на некој �
 msgid "This text does not exist"
 msgstr "Овој текст не постои"
 
+msgid "This text is not published yet"
+msgstr ""
+
 msgid "Time is optional."
 msgstr "Времето е незадолжително."
 
@@ -1478,6 +1481,9 @@ msgstr "Прикачи"
 
 msgid "Url"
 msgstr "Url"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr ""
 
 msgid "Use SSL for authenticated users"
 msgstr "Користи SSL за овластени корисници"
@@ -1809,6 +1815,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Pubdate"
+#~ msgstr "Датум на објавување"
 
 #~ msgid "Full site canonical URL, including protocol"
 #~ msgstr "Целиот основен URL, вклучувајќи го протоколот"

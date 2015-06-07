@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-12-07 23:28+0300\n"
+"PO-Revision-Date: 2015-06-07 12:15+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -1011,7 +1011,7 @@ msgstr ""
 msgid "Produced"
 msgstr "Изготовлено"
 
-msgid "Pubdate"
+msgid "Publication date"
 msgstr "Дата публикации"
 
 msgid "Publication date on this site."
@@ -1354,6 +1354,9 @@ msgstr "Правка редактируется кем-то другим"
 msgid "This text does not exist"
 msgstr "Текст не существует"
 
+msgid "This text is not published yet"
+msgstr ""
+
 msgid "Time is optional."
 msgstr "Время можно не указывать."
 
@@ -1449,6 +1452,9 @@ msgstr "Загрузить"
 
 msgid "Url"
 msgstr "Ссылка"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr ""
 
 msgid "Use SSL for authenticated users"
 msgstr "Использовать SSL для авторизованных пользователей"
@@ -1782,6 +1788,9 @@ msgstr ""
 "\"Устаревшее редактирование\" означает, что правка была недоделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Pubdate"
+#~ msgstr "Дата публикации"
 
 #~ msgid "Full site canonical URL, including protocol"
 #~ msgstr "Полная ссылка на оригинальный сайт, включая протокол"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2015-02-06 19:15+0100\n"
+"PO-Revision-Date: 2015-06-07 12:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -1013,7 +1013,7 @@ msgstr ""
 msgid "Produced"
 msgstr "Stvoreno"
 
-msgid "Pubdate"
+msgid "Publication date"
 msgstr "Datum objavljivanja"
 
 msgid "Publication date on this site."
@@ -1352,6 +1352,9 @@ msgstr "Ova izmjena je u toku od strane nekog drugog!"
 msgid "This text does not exist"
 msgstr "Ovaj tekst ne postoji"
 
+msgid "This text is not published yet"
+msgstr ""
+
 msgid "Time is optional."
 msgstr "Sat je neobavezan"
 
@@ -1447,6 +1450,9 @@ msgstr "Učitaj"
 
 msgid "Url"
 msgstr "URL"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr ""
 
 msgid "Use SSL for authenticated users"
 msgstr "Koristi SSL za ovlaštene korisnike"
@@ -1777,6 +1783,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Pubdate"
+#~ msgstr "Datum objavljivanja"
 
 #~ msgid "Full site canonical URL, including protocol"
 #~ msgstr "Čitav osnovni URL, uključujući protokol"

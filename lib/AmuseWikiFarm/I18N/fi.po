@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-11-26 16:08+0100\n"
+"PO-Revision-Date: 2015-06-07 12:12+0200\n"
 "Last-Translator: kolumbo <kolumbo@riseup.net>\n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -998,7 +998,7 @@ msgstr ""
 msgid "Produced"
 msgstr ""
 
-msgid "Pubdate"
+msgid "Publication date"
 msgstr "Julkaisuajankohta"
 
 msgid "Publication date on this site."
@@ -1333,6 +1333,9 @@ msgstr ""
 msgid "This text does not exist"
 msgstr "Tekstiä ei ole"
 
+msgid "This text is not published yet"
+msgstr ""
+
 msgid "Time is optional."
 msgstr "Aika on valinnainen"
 
@@ -1427,6 +1430,9 @@ msgid "Upload"
 msgstr "Lisää"
 
 msgid "Url"
+msgstr ""
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
 msgid "Use SSL for authenticated users"
@@ -1757,3 +1763,6 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "Pubdate"
+#~ msgstr "Julkaisuajankohta"

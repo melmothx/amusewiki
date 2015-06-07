@@ -986,7 +986,7 @@ msgstr ""
 msgid "Produced"
 msgstr "Produziert"
 
-msgid "Pubdate"
+msgid "Publication date"
 msgstr ""
 
 msgid "Publication date on this site."
@@ -1313,6 +1313,9 @@ msgstr ""
 msgid "This text does not exist"
 msgstr ""
 
+msgid "This text is not published yet"
+msgstr ""
+
 msgid "Time is optional."
 msgstr "Zeit ist optional."
 
@@ -1408,6 +1411,9 @@ msgstr "Upload"
 
 msgid "Url"
 msgstr "Url"
+
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr ""
 
 msgid "Use SSL for authenticated users"
 msgstr ""
