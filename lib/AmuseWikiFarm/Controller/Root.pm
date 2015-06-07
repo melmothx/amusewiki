@@ -160,7 +160,7 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     for my $sp (@specials) {
         my $uri = $sp->{uri};
         $sp->{special_uri} = $uri;
-        $sp->{uri} = $sp->{full_url} || $c->uri_for_action('//special/text', [ $uri ]);
+        $sp->{uri} = $sp->{full_url} || $c->uri_for_action('/special/text', [ $uri ]);
         $sp->{active} = ($c->request->uri eq $sp->{uri});
     }
 

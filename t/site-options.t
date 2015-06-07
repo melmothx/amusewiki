@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 15;
+use Test::More tests => 16;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -11,6 +11,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Data::Dumper;
+use Test::WWW::Mechanize::Catalyst;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -140,3 +141,9 @@ foreach my $link (@links) {
 my @outlinks = $site->deserialize_links($site->serialize_links);
 is_deeply(\@outlinks, \@links, "de/serialize works");
 diag $site->serialize_links;
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => "blog.amusewiki.org");
+
+$mech->get_ok('/', "Crash 1.22 fixed");
+
