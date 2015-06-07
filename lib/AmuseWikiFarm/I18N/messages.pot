@@ -23,7 +23,7 @@ msgstr ""
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:168
+#: root/src/bookbuilder/index.tt:169
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
@@ -47,7 +47,7 @@ msgstr ""
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr ""
 
-#: root/src/admin/edit.tt:497
+#: root/src/admin/edit.tt:507
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
@@ -63,7 +63,7 @@ msgstr ""
 msgid "A nice title"
 msgstr ""
 
-#: root/src/admin/edit.tt:232 root/src/text.tt:131 root/src/text.tt:132
+#: root/src/admin/edit.tt:232 root/src/text.tt:140 root/src/text.tt:141
 msgid "A4 imposed PDF"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:175
+#: root/src/bookbuilder/index.tt:176
 msgid "Add a cover image (PNG or JPG)"
 msgstr ""
 
@@ -103,11 +103,11 @@ msgstr ""
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr ""
 
-#: root/src/admin/edit.tt:536
+#: root/src/admin/edit.tt:546
 msgid "Add paginator for text listing when the number of texts is greater than (integer)"
 msgstr ""
 
-#: root/src/text.tt:213
+#: root/src/text.tt:222
 msgid "Add this text to the bookbuilder"
 msgstr ""
 
@@ -165,11 +165,11 @@ msgstr ""
 msgid "Attached images"
 msgstr ""
 
-#: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:69 root/src/search/index.tt:28 root/src/text.tt:50
+#: root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:69 root/src/search/index.tt:28 root/src/text.tt:59
 msgid "Author"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:46 root/src/layout.tt:159 root/src/layout.tt:404 root/src/text.tt:52
+#: lib/AmuseWikiFarm/Controller/Category.pm:78 root/src/edit/edit.tt:46 root/src/layout.tt:159 root/src/layout.tt:404 root/src/text.tt:61
 msgid "Authors"
 msgstr ""
 
@@ -193,11 +193,11 @@ msgstr ""
 msgid "Bare HTML, needed by the application"
 msgstr ""
 
-#: root/src/admin/edit.tt:345 root/src/bookbuilder/index.tt:154
+#: root/src/admin/edit.tt:345 root/src/bookbuilder/index.tt:155
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:356
+#: root/src/bookbuilder/index.tt:357
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -219,7 +219,7 @@ msgstr ""
 msgid "Bookbuilder page limit (integer)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:393
+#: root/src/bookbuilder/index.tt:394
 msgid "Build it"
 msgstr ""
 
@@ -269,11 +269,11 @@ msgstr ""
 msgid "Cheatsheet for the markup"
 msgstr ""
 
-#: root/src/admin/edit.tt:308 root/src/bookbuilder/index.tt:124
+#: root/src/admin/edit.tt:308 root/src/bookbuilder/index.tt:125
 msgid "Choose a paper format"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:52
+#: root/src/bookbuilder/index.tt:53
 msgid "Clear the book list"
 msgstr ""
 
@@ -301,11 +301,11 @@ msgstr ""
 msgid "Convert to archive markup"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:650
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:652
 msgid "Couldn't add the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:930
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:933
 msgid "Couldn't automatically generate the uri!"
 msgstr ""
 
@@ -353,7 +353,7 @@ msgstr ""
 msgid "Created new text"
 msgstr ""
 
-#: root/src/edit/edit.tt:53 root/src/publish/pending.tt:19 root/src/text.tt:65
+#: root/src/edit/edit.tt:53 root/src/publish/pending.tt:19 root/src/text.tt:74
 msgid "Date"
 msgstr ""
 
@@ -365,7 +365,7 @@ msgstr ""
 msgid "Deferred/Deleted texts"
 msgstr ""
 
-#: root/src/admin/jobs.tt:62 root/src/admin/show_users.tt:28 root/src/admin/show_users.tt:9 root/src/bookbuilder/index.tt:38 root/src/console/alias_display.tt:126
+#: root/src/admin/jobs.tt:62 root/src/admin/show_users.tt:28 root/src/admin/show_users.tt:9 root/src/bookbuilder/index.tt:39 root/src/console/alias_display.tt:126
 msgid "Delete"
 msgstr ""
 
@@ -399,7 +399,7 @@ msgstr ""
 msgid "Displaying"
 msgstr ""
 
-#: root/src/admin/edit.tt:325 root/src/bookbuilder/index.tt:138
+#: root/src/admin/edit.tt:325 root/src/bookbuilder/index.tt:139
 msgid "Division factor"
 msgstr ""
 
@@ -411,7 +411,7 @@ msgstr ""
 msgid "Double bars"
 msgstr ""
 
-#: root/src/text.tt:115
+#: root/src/text.tt:124
 msgid "Downloads"
 msgstr ""
 
@@ -419,7 +419,7 @@ msgstr ""
 msgid "EPUB"
 msgstr ""
 
-#: root/src/text.tt:149 root/src/text.tt:150
+#: root/src/text.tt:158 root/src/text.tt:159
 msgid "EPUB (for mobile devices)"
 msgstr ""
 
@@ -436,7 +436,7 @@ msgstr ""
 msgid "Edit site configuration"
 msgstr ""
 
-#: root/src/text.tt:201
+#: root/src/text.tt:210
 msgid "Edit this text"
 msgstr ""
 
@@ -477,7 +477,7 @@ msgstr ""
 msgid "Errors"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:297
+#: root/src/bookbuilder/index.tt:298
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
@@ -496,7 +496,7 @@ msgstr ""
 msgid "File uploaded!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:386
+#: root/src/bookbuilder/index.tt:387
 msgid "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 
@@ -520,11 +520,11 @@ msgstr ""
 msgid "Fixed category list"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:374 root/src/bookbuilder/schemas.tt:37
+#: root/src/bookbuilder/index.tt:375 root/src/bookbuilder/schemas.tt:37
 msgid "Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:153 root/src/bookbuilder/fonts.tt:4
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:155 root/src/bookbuilder/fonts.tt:4
 msgid "Font preview"
 msgstr ""
 
@@ -545,7 +545,7 @@ msgstr ""
 msgid "For texts from the internet use"
 msgstr ""
 
-#: root/src/admin/edit.tt:429 root/src/bookbuilder/index.tt:231
+#: root/src/admin/edit.tt:429 root/src/bookbuilder/index.tt:232
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 
@@ -571,7 +571,7 @@ msgstr ""
 msgid "Formats"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Library.pm:69
+#: lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:21
 msgid "Full list of texts"
 msgstr ""
 
@@ -591,7 +591,7 @@ msgstr ""
 msgid "HTML"
 msgstr ""
 
-#: root/src/admin/edit.tt:479
+#: root/src/admin/edit.tt:489
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
@@ -618,7 +618,7 @@ msgstr ""
 msgid "Hide options"
 msgstr ""
 
-#: root/src/admin/edit.tt:326 root/src/bookbuilder/index.tt:140
+#: root/src/admin/edit.tt:326 root/src/bookbuilder/index.tt:141
 msgid "Higher division factor means narrower margins"
 msgstr ""
 
@@ -630,7 +630,7 @@ msgstr ""
 msgid "I am human"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:239
+#: root/src/bookbuilder/index.tt:240
 msgid "I want an imposed (ready to print) PDF"
 msgstr ""
 
@@ -642,7 +642,7 @@ msgstr ""
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:245
+#: root/src/bookbuilder/index.tt:246
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
@@ -664,7 +664,7 @@ msgstr ""
 msgid "Images:"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:159 root/src/bookbuilder/schemas.tt:3
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:161 root/src/bookbuilder/schemas.tt:3
 msgid "Imposition schemas"
 msgstr ""
 
@@ -735,7 +735,7 @@ msgid ""
 "        step, where you can also insert images."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:100
+#: root/src/bookbuilder/index.tt:101
 msgid "Keep in mind that some character may be missing in the required font."
 msgstr ""
 
@@ -762,7 +762,7 @@ msgstr ""
 msgid "Last updated"
 msgstr ""
 
-#: root/src/text.tt:293
+#: root/src/text.tt:302
 msgid "Latest entries"
 msgstr ""
 
@@ -770,7 +770,7 @@ msgstr ""
 msgid "Leave it blank if you want it published right away."
 msgstr ""
 
-#: root/src/admin/edit.tt:243 root/src/text.tt:140 root/src/text.tt:141
+#: root/src/admin/edit.tt:243 root/src/text.tt:149 root/src/text.tt:150
 msgid "Letter imposed PDF"
 msgstr ""
 
@@ -862,7 +862,7 @@ msgstr ""
 msgid "Missing alias"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:101
+#: root/src/bookbuilder/index.tt:102
 msgid "Missing character will be reported"
 msgstr ""
 
@@ -886,11 +886,11 @@ msgstr ""
 msgid "More"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:34
+#: root/src/bookbuilder/index.tt:35
 msgid "Move down"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:31
+#: root/src/bookbuilder/index.tt:32
 msgid "Move up"
 msgstr ""
 
@@ -906,7 +906,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:224
+#: root/src/bookbuilder/index.tt:225
 msgid "Never generate a table of content"
 msgstr ""
 
@@ -934,19 +934,19 @@ msgstr ""
 msgid "No result found!"
 msgstr ""
 
-#: root/src/category-details.tt:70 root/src/library.tt:72
+#: root/src/category-details.tt:70 root/src/library.tt:75
 msgid "No text found!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:484
+#: root/src/bookbuilder/index.tt:485
 msgid "No text was added yet"
 msgstr ""
 
-#: root/src/edit/edit.tt:74 root/src/edit/newtext.tt:184 root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:102
+#: root/src/edit/edit.tt:74 root/src/edit/newtext.tt:184 root/src/edit/revs.tt:17 root/src/search/index.tt:68 root/src/text.tt:111
 msgid "Notes"
 msgstr ""
 
-#: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:58
+#: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:59
 msgid "Nothing to see here, so far"
 msgstr ""
 
@@ -958,11 +958,11 @@ msgstr ""
 msgid "Notify to"
 msgstr ""
 
-#: root/src/admin/edit.tt:524
+#: root/src/admin/edit.tt:534
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 
-#: root/src/admin/edit.tt:513
+#: root/src/admin/edit.tt:523
 msgid "Number of latest entries to display on the special pages (an integer)"
 msgstr ""
 
@@ -1009,22 +1009,22 @@ msgstr ""
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:213
+#: lib/AmuseWikiFarm/Controller/Root.pm:219
 msgid "Page not found!"
 msgstr ""
 
-#: root/src/admin/edit.tt:381 root/src/bookbuilder/index.tt:209
+#: root/src/admin/edit.tt:381 root/src/bookbuilder/index.tt:210
 msgid "Page where to start a chapter"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:336
+#: root/src/bookbuilder/index.tt:337
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:255
+#: root/src/bookbuilder/index.tt:256
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1095,7 +1095,7 @@ msgstr ""
 msgid "Please do not use higher levels (part or chapter) for short articles with sections."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:67
+#: root/src/bookbuilder/index.tt:68
 msgid "Please give a name to the collection."
 msgstr ""
 
@@ -1165,11 +1165,11 @@ msgstr ""
 msgid "Please select"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:82 root/src/bookbuilder/index.tt:98
+#: root/src/bookbuilder/index.tt:83 root/src/bookbuilder/index.tt:99
 msgid "Please select the desired fonts"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:274 root/src/bookbuilder/index.tt:311
+#: root/src/bookbuilder/index.tt:275 root/src/bookbuilder/index.tt:312
 msgid "Please select the signature size:"
 msgstr ""
 
@@ -1201,7 +1201,7 @@ msgstr ""
 msgid "Private"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:78
+#: root/src/bookbuilder/index.tt:79
 msgid "Produce an EPUB instead of a PDF"
 msgstr ""
 
@@ -1209,8 +1209,8 @@ msgstr ""
 msgid "Produced"
 msgstr ""
 
-#: root/src/console/unpublished.tt:14
-msgid "Pubdate"
+#: root/src/console/unpublished.tt:14 root/src/text.tt:32
+msgid "Publication date"
 msgstr ""
 
 #: root/src/edit/newtext.tt:219
@@ -1225,7 +1225,7 @@ msgstr ""
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 
-#: root/src/console/unpublished.tt:15 root/src/console/unpublished.tt:46 root/src/publish/pending.tt:21
+#: root/src/console/unpublished.tt:15 root/src/console/unpublished.tt:47 root/src/publish/pending.tt:21
 msgid "Purge"
 msgstr ""
 
@@ -1248,7 +1248,7 @@ msgstr ""
 msgid "Queue"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:645
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:647
 msgid "Quota exceeded, too many pages"
 msgstr ""
 
@@ -1296,7 +1296,7 @@ msgstr ""
 msgid "Remotes"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:183
+#: root/src/bookbuilder/index.tt:184
 msgid "Remove cover image"
 msgstr ""
 
@@ -1433,7 +1433,7 @@ msgstr ""
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
-#: root/src/edit/edit.tt:67 root/src/edit/newtext.tt:132 root/src/search/index.tt:58 root/src/text.tt:93
+#: root/src/edit/edit.tt:67 root/src/edit/newtext.tt:132 root/src/search/index.tt:58 root/src/text.tt:102
 msgid "Source"
 msgstr ""
 
@@ -1441,7 +1441,7 @@ msgstr ""
 msgid "Source files"
 msgstr ""
 
-#: root/src/text.tt:183 root/src/text.tt:184
+#: root/src/text.tt:192 root/src/text.tt:193
 msgid "Source files with attachments"
 msgstr ""
 
@@ -1453,7 +1453,7 @@ msgstr ""
 msgid "Special blocks"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Library.pm:86
+#: lib/AmuseWikiFarm/Controller/Special.pm:24
 msgid "Special pages"
 msgstr ""
 
@@ -1461,7 +1461,7 @@ msgstr ""
 msgid "Stale editing"
 msgstr ""
 
-#: root/src/text.tt:158 root/src/text.tt:159
+#: root/src/text.tt:167 root/src/text.tt:168
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
@@ -1481,7 +1481,7 @@ msgstr ""
 msgid "Subsubsection or description item"
 msgstr ""
 
-#: root/src/edit/edit.tt:39 root/src/edit/newtext.tt:50 root/src/text.tt:39
+#: root/src/edit/edit.tt:39 root/src/edit/newtext.tt:50 root/src/text.tt:48
 msgid "Subtitle"
 msgstr ""
 
@@ -1491,7 +1491,7 @@ msgid ""
 "  redirection in place, and will be listed here"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:938
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:941
 msgid "Such an uri already exists"
 msgstr ""
 
@@ -1545,7 +1545,7 @@ msgstr ""
 msgid "The logo has the site name on itself"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:68
+#: root/src/bookbuilder/index.tt:69
 msgid "The name is always required, but used only if there are multiple texts."
 msgstr ""
 
@@ -1581,7 +1581,7 @@ msgstr ""
 msgid "The user will have the same your level of access"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:283 root/src/bookbuilder/index.tt:320
+#: root/src/bookbuilder/index.tt:284 root/src/bookbuilder/index.tt:321
 msgid "The whole book in as single signature"
 msgstr ""
 
@@ -1632,11 +1632,15 @@ msgstr ""
 msgid "This text does not exist"
 msgstr ""
 
+#: root/src/text.tt:34
+msgid "This text is not published yet"
+msgstr ""
+
 #: root/src/edit/newtext.tt:223
 msgid "Time is optional."
 msgstr ""
 
-#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:33 root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:31
+#: root/src/console/unpublished.tt:11 root/src/edit/edit.tt:33 root/src/edit/newtext.tt:36 root/src/search/index.tt:18 root/src/text.tt:41
 msgid "Title"
 msgstr ""
 
@@ -1682,15 +1686,15 @@ msgstr ""
 msgid "Toggle the table of contents"
 msgstr ""
 
-#: root/src/search/index.tt:48 root/src/text.tt:76
+#: root/src/search/index.tt:48 root/src/text.tt:85
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:75 root/src/edit/edit.tt:514 root/src/edit/edit.tt:60 root/src/edit/newtext.tt:104 root/src/layout.tt:165 root/src/layout.tt:179 root/src/layout.tt:409 root/src/text.tt:78
+#: lib/AmuseWikiFarm/Controller/Category.pm:75 root/src/edit/edit.tt:514 root/src/edit/edit.tt:60 root/src/edit/newtext.tt:104 root/src/layout.tt:165 root/src/layout.tt:179 root/src/layout.tt:409 root/src/text.tt:87
 msgid "Topics"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:46
+#: root/src/bookbuilder/index.tt:47
 msgid "Total pages"
 msgstr ""
 
@@ -1698,11 +1702,11 @@ msgstr ""
 msgid "Triple bars"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:500
+#: root/src/bookbuilder/index.tt:501
 msgid "Try a random text if unsure"
 msgstr ""
 
-#: root/src/admin/edit.tt:418 root/src/bookbuilder/index.tt:204
+#: root/src/admin/edit.tt:418 root/src/bookbuilder/index.tt:205
 msgid "Two side layout"
 msgstr ""
 
@@ -1737,7 +1741,7 @@ msgstr ""
 msgid "Unsupported file type %1"
 msgstr ""
 
-#: root/src/admin/edit.tt:553 root/src/admin/show_user_details.tt:70 root/src/bookbuilder/index.tt:396 root/src/category-details-edit.tt:27 root/src/user/edit.tt:39
+#: root/src/admin/edit.tt:563 root/src/admin/show_user_details.tt:70 root/src/bookbuilder/index.tt:397 root/src/category-details-edit.tt:27 root/src/user/edit.tt:39
 msgid "Update"
 msgstr ""
 
@@ -1757,6 +1761,10 @@ msgstr ""
 msgid "Url"
 msgstr ""
 
+#: root/src/admin/edit.tt:462
+msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
+msgstr ""
+
 #: root/src/admin/edit.tt:176
 msgid "Use SSL for authenticated users"
 msgstr ""
@@ -1766,7 +1774,7 @@ msgid "Use it in the body as"
 msgstr ""
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:281 root/src/bookbuilder/index.tt:318
+#: root/src/bookbuilder/index.tt:282 root/src/bookbuilder/index.tt:319
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
@@ -1809,7 +1817,7 @@ msgstr ""
 msgid "Verbatim block"
 msgstr ""
 
-#: root/src/admin/edit.tt:451 root/src/text.tt:192 root/src/text.tt:193
+#: root/src/admin/edit.tt:451 root/src/text.tt:201 root/src/text.tt:202
 msgid "View history"
 msgstr ""
 
@@ -1817,7 +1825,7 @@ msgstr ""
 msgid "Virtual hosts"
 msgstr ""
 
-#: root/src/admin/edit.tt:461
+#: root/src/admin/edit.tt:471
 msgid "Virtual hosts, one per line"
 msgstr ""
 
@@ -1825,11 +1833,11 @@ msgstr ""
 msgid "Where does this text come from?"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:189
+#: root/src/bookbuilder/index.tt:190
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:489
+#: root/src/bookbuilder/index.tt:490
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -1844,7 +1852,7 @@ msgstr ""
 msgid "Wrong username or password"
 msgstr ""
 
-#: root/src/text.tt:167 root/src/text.tt:168
+#: root/src/text.tt:176 root/src/text.tt:177
 msgid "XeLaTeX source"
 msgstr ""
 
@@ -1868,7 +1876,7 @@ msgstr ""
 msgid "You are logged in now!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:494
+#: root/src/bookbuilder/index.tt:495
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
@@ -2022,7 +2030,7 @@ msgstr ""
 msgid "mandatory"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:84
+#: root/src/bookbuilder/index.tt:85
 msgid "no font embedding"
 msgstr ""
 
@@ -2046,11 +2054,11 @@ msgstr ""
 msgid "pending"
 msgstr ""
 
-#: root/src/text.tt:122 root/src/text.tt:123
+#: root/src/text.tt:131 root/src/text.tt:132
 msgid "plain PDF"
 msgstr ""
 
-#: root/src/text.tt:175 root/src/text.tt:176
+#: root/src/text.tt:184 root/src/text.tt:185
 msgid "plain text source"
 msgstr ""
 
