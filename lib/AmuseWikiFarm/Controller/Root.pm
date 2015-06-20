@@ -308,10 +308,14 @@ sub catch_all :Chained('/site') :PathPart('') Args {
                    ->search($query)->first) {
                 $fallback = $cat->full_uri;
             }
+            elsif (my $red = $site->redirections
+                   ->search($query)->first) {
+                $fallback = $red->full_dest_uri;
+            }
         }
     }
     if ($fallback) {
-        $c->response->redirect($fallback);
+        $c->response->redirect($c->uri_for($fallback));
         $c->detach();
     }
     else {

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 33;
+use Test::More tests => 47;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -143,6 +143,8 @@ diag "Text is $uri";
 foreach my $alias (@text_aliases) {
     $mech->get_ok("/library/$alias");
     is $mech->uri->path, $uri, "/library/$alias points to $uri";
+    $mech->get_ok("/$alias");
+    is $mech->uri->path, $uri, "/$alias points to $uri";
 }
 
 
@@ -151,6 +153,8 @@ $uri = "/category/topic/topic-1";
 foreach my $alias (@topic_aliases) {
     $mech->get_ok("/category/topic/$alias");
     is $mech->uri->path, $uri, "/category/topic/$alias points to $uri";
+    $mech->get_ok("/$alias");
+    is $mech->uri->path, $uri, "/$alias points to $uri";
 }
 
 $uri = "/category/author/pluto";
@@ -158,6 +162,8 @@ $uri = "/category/author/pluto";
 foreach my $alias (@author_aliases) {
     $mech->get_ok("/category/author/$alias");
     is $mech->uri->path, $uri, "/category/author/$alias points to $uri";
+    $mech->get_ok("/$alias");
+    is $mech->uri->path, $uri, "/$alias points to $uri";
 }
 
 $alias = $site->redirections->find({ uri => 'pluto-2', type => 'author' });
