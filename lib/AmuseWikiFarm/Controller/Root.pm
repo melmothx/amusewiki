@@ -3,6 +3,7 @@ use Moose;
 use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller' }
 
+use AmuseWikiFarm::Utils::Amuse qw//;
 #
 # Sets the actions in this controller to be registered with no prefix
 # so they function identically to actions created in MyApp.pm
@@ -293,8 +294,29 @@ sub index :Chained('/site') :PathPart('') :Args(0) {
 }
 
 sub catch_all :Chained('/site') :PathPart('') Args {
-    my ($self, $c) = @_;
-    $c->detach('not_found');
+    my ($self, $c, $try) = @_;
+    my $fallback;
+    if ($try) {
+        my $try_uri = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($try);
+        my $query = { uri => $try_uri };
+        if (my $site = $c->stash->{site}) {
+            if (my $text = $site->titles->published_all
+                ->search($query)->first) {
+                $fallback = $text->full_uri;
+            }
+            elsif (my $cat = $site->categories->active_only
+                   ->search($query)->first) {
+                $fallback = $cat->full_uri;
+            }
+        }
+    }
+    if ($fallback) {
+        $c->response->redirect($fallback);
+        $c->detach();
+    }
+    else {
+        $c->detach('not_found');
+    }
 }
 
 =head2 end

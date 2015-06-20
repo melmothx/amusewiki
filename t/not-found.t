@@ -1,7 +1,7 @@
 #!perl
 use strict;
 use warnings;
-use Test::More tests => 12;
+use Test::More tests => 20;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -27,7 +27,14 @@ is ($mech->uri->path, '/special/index');
 $mech->get('/aljkjsdflkk');
 is $mech->status, '404';
 $mech->content_like($expected);
-
+$mech->get_ok('/Do  This By Yourself');
+is ($mech->uri->path, '/library/do-this-by-yourself');
+$mech->get_ok('/ InDex ');
+is ($mech->uri->path, '/special/index');
+$mech->get_ok('/ZMaRco');
+is ($mech->uri->path, '/category/author/zmarco');
+$mech->get_ok('/ ZiMbA ');
+is ($mech->uri->path, '/category/topic/zimba');
 
 my $site_id =  '0not0';
 my $site = create_site($schema, $site_id);
