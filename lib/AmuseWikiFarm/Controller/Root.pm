@@ -1,7 +1,6 @@
 package AmuseWikiFarm::Controller::Root;
 use Moose;
 use namespace::autoclean;
-use File::Spec::Functions qw/catfile/;
 BEGIN { extends 'Catalyst::Controller' }
 
 #
@@ -198,8 +197,6 @@ sub not_found :Private {
     $c->stash(please_index => 0);
     $c->response->status(404);
     $c->log->debug("In the not_found!");
-
-
     # last chance: look into the redirections if we have a type and an uri,
     # set in C::Library or C::Category
     if (my $site = $c->stash->{site}) {
@@ -295,14 +292,8 @@ sub index :Chained('/site') :PathPart('') :Args(0) {
     $c->res->redirect($target);
 }
 
-=head2 default
-
-Standard 404 error page
-
-=cut
-
-sub default :Private {
-    my ( $self, $c ) = @_;
+sub catch_all :Chained('/site') :PathPart('') Args {
+    my ($self, $c) = @_;
     $c->detach('not_found');
 }
 

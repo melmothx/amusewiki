@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 147;
+use Test::More tests => 148;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -181,6 +181,7 @@ is $site->lexicon_translate(hr => 'blablabla'), undef;
 
 $mech->get_ok('/set-language?lang=it');
 $mech->get_ok('/');
+is $mech->uri->path, '/special/index-it';
 $mech->content_contains('This is the it index');
 
 my ($uri_suffixed) = $site->create_new_text({
