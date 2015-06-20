@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 64;
+use Test::More tests => 65;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Date::Parse qw/str2time/;
@@ -54,6 +54,9 @@ is(muse_naming_algo("čćžšđČĆŽŠĐ âÂāĀêÊîÎôÔûÛ"),
 is(muse_naming_algo("ĘęŁłŃńŚśŹźŻż ĘęŁłŃńŚśŹźŻż "),
    "eellnnsszzzz-eellnnsszzzz",
    "testing polish chars");
+
+is (muse_naming_algo('ą ę ć ń ś ż ź ó ł Ą Ę Ć Ń Ś Ż Ź Ó Ł'),
+    'a-e-c-n-s-z-z-o-l-a-e-c-n-s-z-z-o-l', "polish ok");
 
 is(muse_naming_algo("ѓЃèÈѕЅѝЍjJљЉњЊќЌџЏјЈѐЀ"),
    "djdjeedzdziijjljljnjnjkjkjdzhdzhjjee",

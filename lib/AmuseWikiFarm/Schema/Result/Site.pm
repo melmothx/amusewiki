@@ -745,6 +745,7 @@ sub known_langs {
             nl => 'Nederlands',
             de => 'Deutsch',
             sv => 'Svenska',
+            pl => 'Polski',
            };
 }
 

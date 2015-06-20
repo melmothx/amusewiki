@@ -403,7 +403,10 @@ sub transliteration_table  {
     'û' => 'u' , 'Û' => 'u',
     'ā' => 'a' , 'Ā' => 'a',
 
+   #The only Polish letters which are different are: ą ę ć ń ś ż ź ó and
+   # ł.
    # polish, from http://en.wikipedia.org/wiki/Polish_alphabet
+   'ą' => 'a',  'Ą' => 'a',
    'Ę' => 'e', 	'ę' => 'e',
    'Ł' => 'l',  'ł' => 'l',
    'Ń' => 'n', 	'ń' => 'n',
