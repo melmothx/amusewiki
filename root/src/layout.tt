@@ -97,7 +97,7 @@
           </button>
           <span>
           [%- IF site.has_site_file('navlogo.png') -%]
-          <a class="amw-navlogo hidden-sm" href="[% c.uri_for('/') %]">
+          <a class="amw-navlogo" href="[% c.uri_for('/') %]">
             <img src="[% c.uri_for_action('/sitefiles/local_files',
                       [ site.id, 'navlogo.png' ]) %]"
                  title="[% site.sitename | html %]"
@@ -105,21 +105,11 @@
                  alt="[% site.sitename | html %]" />
           </a>
           [% ELSE %]
-          <a class="navbar-brand hidden-sm" href="[% c.uri_for('/') %]"
+          <a class="navbar-brand" href="[% c.uri_for('/') %]"
              title="[% site.sitename | html %]">
-            <small>[% site.sitename %]</small>
+            <small>[%  site.sitename | html %]</small>
           </a>
           [%- END -%]
-          <a class="navbar-brand visible-sm-inline" href="[% c.uri_for('/') %]"
-             title="[% site.sitename | html %]">
-            [% IF site.has_site_file('logo.png') %]
-            <img alt="[% site.sitename | html %]"
-                 src="[% c.uri_for_action('/sitefiles/local_files', [ site.id, 'logo.png' ]) %]"
-                 class="amw-logo-img"/>
-            [% ELSE %]
-            <span class="glyphicon glyphicon-home"></span>
-            [% END %]
-          </a>
           </span>
         </div>
         <div class="navbar-collapse collapse">
@@ -155,10 +145,10 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('texts by authors, title, topic...') %]"
                  data-toggle="dropdown">
+                <span class="glyphicon glyphicon-heart"></span>
                 <span class="hidden-sm">
                   [% site.catalog_label || loc('Catalog') %]
                 </span>
-                <span class="visible-sm-inline glyphicon glyphicon-star"></span>
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
@@ -205,30 +195,6 @@
                 [% END %]
               </ul>
             </li>
-            [% IF site.multilanguage %]
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle"
-                 title="[% loc('Language selection') %]"
-                 data-toggle="dropdown">
-                [% loc('Language') %]
-                <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-left">
-                [% FOREACH lang IN site.multilanguage_list %]
-                <li [% IF current_locale_code == lang.code -%]
-                    class="active"
-                    [%- END %]
-                    id="select-lang-[% lang.code %]">
-                  <a href="[% c.uri_for_action('/user/language',
-                           { 'lang' => lang.code, goto => c.request.path }) | html%]">
-                    [% lang.label %]
-                  </a>
-                </li>
-                [% END %]
-              </ul>
-            </li>
-            [% END %]
-
             [% IF navigation %]
 
             [%- # begin project -%]
@@ -237,10 +203,10 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
-                <span class="hidden-sm">
+                <span class="glyphicon glyphicon-plus"></span>
+                <span class="visible-lg-inline visible-xs-inline">
                   [% site.specials_label || loc('More') %]
                 </span>
-                <span class="visible-sm-inline glyphicon glyphicon-plus"></span>
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
@@ -259,7 +225,10 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Related projects') %]"
                  data-toggle="dropdown">
-                [% site.sitegroup_label || loc('Other languages') %]
+                <span class="glyphicon glyphicon-th"></span>
+                <span class="hidden-sm">
+                  [% site.sitegroup_label || loc('Other languages') %]
+                </span>
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
@@ -273,21 +242,51 @@
             [% END %]
 
             [% END %]
+
+            [% IF site.multilanguage %]
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle"
+                 title="[% loc('Language selection') %]"
+                 data-toggle="dropdown">
+                <span class="glyphicon glyphicon-globe"></span>
+                <span class="visible-xs-inline">
+                  [% loc('Language selection') %]
+                </span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-left">
+                [% FOREACH lang IN site.multilanguage_list %]
+                <li [% IF current_locale_code == lang.code -%]
+                    class="active"
+                    [%- END %]
+                    id="select-lang-[% lang.code %]">
+                  <a href="[% c.uri_for_action('/user/language',
+                           { 'lang' => lang.code, goto => c.request.path }) | html%]">
+                    [% lang.label %]
+                  </a>
+                </li>
+                [% END %]
+              </ul>
+            </li>
+            [% END %]
+
             [%- # this menu is reserved for logged in users -%]
             [% IF c.user_exists %]
             <li class="dropdown">
               <a href="#"
                  class="dropdown-toggle"
+                 title="[% c.user.get('username') | html %]"
                  data-toggle="dropdown">
-                <span class="hidden-sm">
-                  [% c.user.get('username') %]
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="visible-xs-inline">
+                  [% c.user.get('username') | html %]
                 </span>
-                <span class="visible-sm-inline glyphicon glyphicon-user"
-                      title="[% c.user.get('username') | html %]"
-                      ></span>
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
+                <li role="presentation" class="dropdown-header hidden-xs">
+                  [% c.user.get('username') %]
+                </li>
                 <li>
                   <a href="[% c.uri_for_action('/edit/newtext', ['special']) %]">
                     [% loc('Create a new special page') %]
@@ -368,13 +367,20 @@
             [% END %]
             [%- # the menu for logged in ends here -%]
 
-            <li[% IF nav == 'bookbuilder' %] class="active"[% END %]>
-              <a href="[% c.uri_for('/bookbuilder') %]">
+            <li [% IF nav == 'bookbuilder' %] class="active" [% END %]>
+              <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
+                <span class="glyphicon glyphicon-book"></span>
                 <span class="hidden-sm">
                   [% loc('Bookbuilder') %]
                 </span>
-                <span class="visible-sm-inline glyphicon glyphicon-book"
-                      title="[% loc('Bookbuilder') %]"></span>
+              </a>
+            </li>
+            <li>
+              <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
+                <span class="glyphicon glyphicon-random"></span>
+                <span class="visible-lg-inline visible-xs-inline">
+                  [% loc('Random') %]
+                </span>
               </a>
             </li>
           </ul>
