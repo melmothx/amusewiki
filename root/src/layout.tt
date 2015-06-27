@@ -109,15 +109,6 @@
             <small>[% site.sitename %]</small>
           </a>
           [%- END -%]
-          <a class="amw-navlogo hidden-when-no-toc" href="#"
-             data-toggle="modal"
-             style="display:none"
-             title="[% loc('Toggle the table of contents') %]"
-             data-target="#myModal">
-            <img src="[% c.uri_for('/static/images/toc.png') %]"
-                 alt="[% loc('Toggle the table of contents') %]"
-                 class="amw-navlogo-img" id="amw-toc-toggler"/>
-          </a>
           </span>
         </div>
         <div class="navbar-collapse collapse">
@@ -139,6 +130,14 @@
             </form>
           </div>
           <ul class="nav navbar-nav navbar-right">
+            <li class="hidden-when-no-toc" style="display:none">
+              <a class="amw-navlogo" href="#"
+                 data-toggle="modal"
+                 title="[% loc('Toggle the table of contents') %]"
+                 data-target="#myModal">
+                <span class="glyphicon glyphicon-list"></span>
+              </a>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
                  title="[% loc('texts by authors, title, topic...') %]"
