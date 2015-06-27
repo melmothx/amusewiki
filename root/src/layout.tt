@@ -61,11 +61,11 @@
 
     [%# base css for amuse texts %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amuse.css') %]" />
+          href="[% c.uri_for('/static/css/amuse.css', { v => 1 }) %]" />
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 15 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 16 }) %]" />
 
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
 
@@ -97,26 +97,36 @@
           </button>
           <span>
           [%- IF site.has_site_file('navlogo.png') -%]
-          <a class="amw-navlogo" href="[% c.uri_for('/') %]">
+          <a class="amw-navlogo hidden-sm" href="[% c.uri_for('/') %]">
             <img src="[% c.uri_for_action('/sitefiles/local_files',
                       [ site.id, 'navlogo.png' ]) %]"
-                 title="[% site.sitename %]"
+                 title="[% site.sitename | html %]"
                  class="amw-navlogo-img"
-                 alt="[% site.sitename %]" />
+                 alt="[% site.sitename | html %]" />
           </a>
           [% ELSE %]
-          <a class="navbar-brand" href="[% c.uri_for('/') %]">
+          <a class="navbar-brand hidden-sm" href="[% c.uri_for('/') %]"
+             title="[% site.sitename | html %]">
             <small>[% site.sitename %]</small>
           </a>
           [%- END -%]
+          <a class="navbar-brand visible-sm-inline" href="[% c.uri_for('/') %]"
+             title="[% site.sitename | html %]">
+            [% IF site.has_site_file('logo.png') %]
+            <img alt="[% site.sitename | html %]"
+                 src="[% c.uri_for_action('/sitefiles/local_files', [ site.id, 'logo.png' ]) %]"
+                 class="amw-logo-img"/>
+            [% ELSE %]
+            <span class="glyphicon glyphicon-home"></span>
+            [% END %]
+          </a>
           </span>
         </div>
         <div class="navbar-collapse collapse">
-          <div class="nav navbar-nav navbar-right"
-               style="padding-left: 5px; padding-right: 0px; margin-right: 0px;">
-            <form class="navbar-form navbar-input-group"
-                  method="get" role="search"
-                  id="formsearchbox" action="[% c.uri_for('/search') %]">
+          <form class="navbar-form navbar-right"
+                method="get" role="search"
+                id="formsearchbox" action="[% c.uri_for('/search') %]">
+            <div class="form-group">
               <div class="input-group">
 		        <input type="text" class="form-control"
                        placeholder="[% loc('Search') %]"
@@ -127,25 +137,31 @@
                   </button>
                 </div>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
           <ul class="nav navbar-nav navbar-right">
             <li class="hidden-when-no-toc" style="display:none">
               <a class="amw-navlogo" href="#"
                  data-toggle="modal"
-                 title="[% loc('Toggle the table of contents') %]"
+                 title="[% loc('Table of contents') %]"
                  data-target="#myModal">
                 <span class="glyphicon glyphicon-list"></span>
+                <span class=" visible-xs-inline">
+                  [% loc('Table of contents') %]
+                </span>
               </a>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle"
                  title="[% loc('texts by authors, title, topic...') %]"
                  data-toggle="dropdown">
-                [% site.catalog_label || loc('Catalog') %]
+                <span class="hidden-sm">
+                  [% site.catalog_label || loc('Catalog') %]
+                </span>
+                <span class="visible-sm-inline glyphicon glyphicon-star"></span>
                 <b class="caret"></b>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu dropdown-menu-left">
 	            <li[% IF nav == 'titles' %] class="active" [% END %]>
                   <a href="[% c.uri_for('/library') %]"
 		             title="[% loc('texts sorted by title') %]">
@@ -194,17 +210,17 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Language selection') %]"
                  data-toggle="dropdown">
-                [% loc('Language selection') %]
+                [% loc('Language') %]
                 <b class="caret"></b>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH lang IN site.multilanguage_list %]
                 <li [% IF current_locale_code == lang.code -%]
                     class="active"
                     [%- END %]
                     id="select-lang-[% lang.code %]">
                   <a href="[% c.uri_for_action('/user/language',
-                           { 'lang' => lang.code, goto => c.request.path }) %]">
+                           { 'lang' => lang.code, goto => c.request.path }) | html%]">
                     [% lang.label %]
                   </a>
                 </li>
@@ -221,10 +237,13 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
-                [% site.specials_label || loc('More') %]
+                <span class="hidden-sm">
+                  [% site.specials_label || loc('More') %]
+                </span>
+                <span class="visible-sm-inline glyphicon glyphicon-plus"></span>
                 <b class="caret"></b>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH link IN navigation.specials %]
                 <li[% IF link.active %] class="active"[% END %]>
                   <a href="[% link.uri %]">[% link.name %]</a>
@@ -243,7 +262,7 @@
                 [% site.sitegroup_label || loc('Other languages') %]
                 <b class="caret"></b>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH link IN navigation.projects %]
                 <li>
                   <a href="[% link.canonical_url %]">[% link.sitename || link.canonical %]</a>
@@ -260,10 +279,15 @@
               <a href="#"
                  class="dropdown-toggle"
                  data-toggle="dropdown">
-                [% c.user.get('username') %]
+                <span class="hidden-sm">
+                  [% c.user.get('username') %]
+                </span>
+                <span class="visible-sm-inline glyphicon glyphicon-user"
+                      title="[% c.user.get('username') | html %]"
+                      ></span>
                 <b class="caret"></b>
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu dropdown-menu-left">
                 <li>
                   <a href="[% c.uri_for_action('/edit/newtext', ['special']) %]">
                     [% loc('Create a new special page') %]
@@ -346,7 +370,11 @@
 
             <li[% IF nav == 'bookbuilder' %] class="active"[% END %]>
               <a href="[% c.uri_for('/bookbuilder') %]">
-                [% loc('Bookbuilder') %]
+                <span class="hidden-sm">
+                  [% loc('Bookbuilder') %]
+                </span>
+                <span class="visible-sm-inline glyphicon glyphicon-book"
+                      title="[% loc('Bookbuilder') %]"></span>
               </a>
             </li>
           </ul>

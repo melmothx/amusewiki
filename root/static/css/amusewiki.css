@@ -77,6 +77,11 @@ img.amw-navlogo-img {
     height: 50px;
 }
 
+img.amw-logo-img {
+    height: 25px;
+    padding: 0px;
+}
+
 a.amw-navlogo:hover {
     text-decoration: none;
 }
