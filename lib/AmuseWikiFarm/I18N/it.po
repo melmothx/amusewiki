@@ -50,7 +50,8 @@ msgid ""
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
 "Lista di link e titolo da inserire nella barra di navigazione. Uno per\n"
-"linea, prima l'URL e poi il nome, separato da uno spazio, ad esempio \"http://www.dominio.tld Collegamento di test\""
+"linea, prima l'URL e poi il nome, separato da uno spazio, ad esempio "
+"\"http://www.dominio.tld Collegamento di test\""
 
 #. (site.canonical_url)
 msgid "A new revision has been created at %1"
@@ -1426,9 +1427,6 @@ msgstr "Per riprendere la modifica, puoi visitare il seguente URL"
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Per vedere le modifiche introdotte, puoi visitare il seguente URL"
 
-msgid "Toggle the table of contents"
-msgstr "Mostra/nascondi il sommario"
-
 msgid "Topic"
 msgstr "Argomento"
 
@@ -1826,6 +1824,9 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Toggle the table of contents"
+#~ msgstr "Mostra/nascondi il sommario"
 
 #~ msgid "Pubdate"
 #~ msgstr "Data di pubblicazione"

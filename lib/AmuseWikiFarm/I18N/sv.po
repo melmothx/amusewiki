@@ -1400,9 +1400,6 @@ msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 "För att granska de introducerade ändringarna, kan du besöka följande URL"
 
-msgid "Toggle the table of contents"
-msgstr "Visa innehållsförteckningen"
-
 msgid "Topic"
 msgstr "Ämne"
 
@@ -1793,6 +1790,9 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Toggle the table of contents"
+#~ msgstr "Visa innehållsförteckningen"
 
 #~ msgid "Pubdate"
 #~ msgstr "Pubdatum"

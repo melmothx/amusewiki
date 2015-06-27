@@ -1406,9 +1406,6 @@ msgstr "Para continuar editando, puedes visitar la siguiente URL"
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Para ver los cambios introducidos, puedes visitar la siguiente URL"
 
-msgid "Toggle the table of contents"
-msgstr "Plegar índice de contenidos"
-
 msgid "Topic"
 msgstr "Tema"
 
@@ -1803,6 +1800,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "Toggle the table of contents"
+#~ msgstr "Plegar índice de contenidos"
 
 #~ msgid "Pubdate"
 #~ msgstr "Fecha de publicación"

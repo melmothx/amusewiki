@@ -1003,8 +1003,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 #: root/src/edit/edit.tt:113 root/src/edit/edit.tt:114
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
@@ -1511,12 +1511,8 @@ msgstr ""
 msgid "Supported directive in the header"
 msgstr ""
 
-#: root/src/text.tt:10
+#: root/src/layout.tt:136 root/src/layout.tt:140 root/src/text.tt:10
 msgid "Table of Contents"
-msgstr ""
-
-#: root/src/layout.tt:136 root/src/layout.tt:140
-msgid "Table of contents"
 msgstr ""
 
 #: root/src/edit/edit.tt:294 root/src/edit/edit.tt:477
@@ -1656,8 +1652,8 @@ msgstr ""
 msgid "Titles"
 msgstr ""
 
-#. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
+#. (c.uri_for_action("/publish/pending"))
 #: root/src/email/commit.tt:14 root/src/email/commit.tt:15
 msgid "To apply the changes, you can visit %1"
 msgstr ""
@@ -1883,8 +1879,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
+#. (c.uri_for_action("/user/create"))
 #: root/src/email/newuser.tt:11
 msgid "You can create a peer at %1"
 msgstr ""
@@ -1905,8 +1901,8 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
+#. (c.uri_for_action("/user/edit", [ user.id ]))
 #: root/src/email/newuser.tt:8 root/src/email/newuser.tt:9
 msgid "You should change your password right away at %1"
 msgstr ""

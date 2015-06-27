@@ -1352,9 +1352,6 @@ msgstr ""
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 
-msgid "Toggle the table of contents"
-msgstr ""
-
 msgid "Topic"
 msgstr "Thema"
 

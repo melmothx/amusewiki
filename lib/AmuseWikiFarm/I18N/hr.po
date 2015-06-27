@@ -1391,9 +1391,6 @@ msgstr "Za nastavak uređivanja, možeš ići na ovaj URL"
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Za pogledati razlike, možeš ići na ovaj URL"
 
-msgid "Toggle the table of contents"
-msgstr "Pokaži/sakrij sadržaj"
-
 msgid "Topic"
 msgstr "Tema"
 
@@ -1783,6 +1780,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Toggle the table of contents"
+#~ msgstr "Pokaži/sakrij sadržaj"
 
 #~ msgid "Pubdate"
 #~ msgstr "Datum objavljivanja"

@@ -1372,9 +1372,6 @@ msgstr ""
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 
-msgid "Toggle the table of contents"
-msgstr "Sisällysluettelo näkyviin/pois"
-
 msgid "Topic"
 msgstr "Aihe"
 
@@ -1763,6 +1760,9 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "Toggle the table of contents"
+#~ msgstr "Sisällysluettelo näkyviin/pois"
 
 #~ msgid "Pubdate"
 #~ msgstr "Julkaisuajankohta"
