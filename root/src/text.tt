@@ -108,7 +108,7 @@
     [% IF text.notes %]
     <div id="preamblenotes">
       <span id="preamblenotes-label">
-        <strong id="preamblenotes-label">[% loc('Notes') %]:</strong>
+        <strong>[% loc('Notes') %]:</strong>
       </span>
       [% text.notes %]
     </div>
