@@ -2,22 +2,22 @@
 <h2>[% page_title | html %]</h2>
 <div class="row" style="padding-bottom: 3px">
   <div class="col-xs-6">
-    <a href="?sorting=desc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-chevron-down">
+    <a href="?sorting=asc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-sort-by-alphabet">
       </span>
     </a>
-    <a href="?sorting=asc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-chevron-up">
+    <a href="?sorting=desc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-sort-by-alphabet-alt">
       </span>
     </a>
   </div>
   <div class="col-xs-6 right">
-    <a href="?sorting=count-desc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-chevron-down">
+    <a href="?sorting=count-asc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-sort-by-order">
       </span>
     </a>
-    <a href="?sorting=count-asc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-chevron-up">
+    <a href="?sorting=count-desc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-sort-by-order-alt">
       </span>
     </a>
   </div>
@@ -36,22 +36,22 @@
 </div>
 <div class="row" style="padding-top: 3px">
   <div class="col-xs-6">
-    <a href="?sorting=desc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-chevron-up">
+    <a href="?sorting=asc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-sort-by-alphabet">
       </span>
     </a>
-    <a href="?sorting=asc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-chevron-down">
+    <a href="?sorting=desc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-sort-by-alphabet-alt">
       </span>
     </a>
   </div>
   <div class="col-xs-6 right">
-    <a href="?sorting=count-desc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-chevron-up">
+    <a href="?sorting=count-asc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-sort-by-order">
       </span>
     </a>
-    <a href="?sorting=count-asc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-chevron-down">
+    <a href="?sorting=count-desc" class="btn btn-default btn-xs">
+      <span class="glyphicon glyphicon-sort-by-order-alt">
       </span>
     </a>
   </div>
