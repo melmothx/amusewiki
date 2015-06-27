@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.25 2015-06-27
+
+ - Layout fix release. No code changes.
+ - Upgraded to Bootstrap 3.3.5 (latest), including CSS, JS, Glyphicons
+ - Leveraged the glyphicons for the ToC toggler and navbar items
+ - Improved navbar responsiveness
+
+
 1.24 2015-06-20
 
  - Added polish language support (no translation in for now). For this
