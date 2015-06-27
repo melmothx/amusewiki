@@ -133,11 +133,11 @@
             <li class="hidden-when-no-toc" style="display:none">
               <a class="amw-navlogo" href="#"
                  data-toggle="modal"
-                 title="[% loc('Table of contents') %]"
+                 title="[% loc('Table of Contents') %]"
                  data-target="#myModal">
                 <span class="glyphicon glyphicon-list"></span>
                 <span class=" visible-xs-inline">
-                  [% loc('Table of contents') %]
+                  [% loc('Table of Contents') %]
                 </span>
               </a>
             </li>
@@ -383,6 +383,7 @@
                 </span>
               </a>
             </li>
+            <li role="separator" class="divider"></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
