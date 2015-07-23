@@ -75,7 +75,7 @@ my $working_copy = Git::Wrapper->new($working_copy_dir);
 
 $working_copy->init;
 $working_copy->remote(add => origin => $remotedir);
-$working_copy->pull(origin => 'master');
+$working_copy->pull(qw/origin master/);
 my ($wlog) = $working_copy->log;
 is ($wlog->message, $rlog->message, "Pulling worked: " . $rlog->message);
 
@@ -92,7 +92,7 @@ write_file($newfile,
 ok (-f $newfile, "$newfile written");
 $working_copy->add($newfile);
 $working_copy->commit({ message => "Work at home" });
-$working_copy->push;
+$working_copy->push(qw/origin master/);
 
 ($rlog) = $remote->log;
 
@@ -128,7 +128,7 @@ write_file($secondfile,
 $working_copy->add($newfile);
 $working_copy->add($secondfile);
 $working_copy->commit({ message => "Second commit, two files" });
-$working_copy->push;
+$working_copy->push(qw/origin master/);
 
 $site->repo_git_pull;
 $site->update_db_from_tree;
@@ -149,7 +149,7 @@ foreach my $f (qw/a-test a-test-2/) {
 $working_copy->rm($secondfile);
 $working_copy->commit({ message => "Removed second file" });
 
-$working_copy->push;
+$working_copy->push(qw/origin master/);
 
 $site->repo_git_pull;
 $site->update_db_from_tree;
