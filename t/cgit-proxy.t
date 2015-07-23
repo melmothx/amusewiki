@@ -50,8 +50,9 @@ sub uri_correct {
 
 SKIP: {
     skip "CGIT proxy is disabled", 1 if $proxy->disabled;
-    my $html = $proxy->get_html([], { s => 'desc' });
+    my $html = $proxy->get([], { s => 'desc' })->html;
     like $html, qr/Name.*Description.*Idle/,
       "found content";
+    ok !$proxy->get->disposition, "No disposition found";
 };
 

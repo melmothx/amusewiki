@@ -2,11 +2,11 @@ package AmuseWikiFarm::Archive::CgitProxy;
 
 use strict;
 use warnings;
+use Moose;
+use namespace::autoclean;
 use URI;
 use HTTP::Tiny;
-use Encode qw//;
-use Moose;
-
+use AmuseWikiFarm::Archive::CgitProxy::Response;
 
 has port => (is => 'ro',
              isa => 'Int',
@@ -65,19 +65,15 @@ sub create_uri {
     return $uri->as_string;
 }
 
-sub get_html {
+sub get {
     my ($self, $args, $parms) = @_;
     my $uri = $self->create_uri($args, $parms);
-    my $res = $self->ua->get($uri);
-    if ($res->{success} && $res->{content}) {
-        my $content;
-        eval { $content = Encode::decode('UTF-8', $res->{content}) };
-        $content ? return $content : return $res->{content};
+    my $res =
+      AmuseWikiFarm::Archive::CgitProxy::Response->new($self->ua->get($uri));
+    unless ($res->success) {
+        warn join(" ", $res->url, $res->status, $res->reason);
     }
-    else {
-        warn "$uri: $res->{status} $res->{reason}\n";
-        return '';
-    }
+    return $res;
 }
 
 __PACKAGE__->meta->make_immutable;
