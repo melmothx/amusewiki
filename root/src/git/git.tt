@@ -1,5 +1,14 @@
 
-<h2>[% loc('Archive history') %]</h2>
-
+<h2>[% loc('Archive history') %]
+[% IF text %]
+  <small><a href="[% c.uri_for(text.full_uri) %]">
+      [% IF text.author %]
+      [% text.author %] —
+      [% END %]
+      [% text.title %]
+    </a>
+  </small>
+[% END %]
+</h2>
 
 [% cgit_body %]

@@ -41,6 +41,17 @@ sub git :Chained('/site') :Args {
         $c->detach('/not_found');
         return;
     }
+    my $text;
+    if (my @muse = grep { /[a-z0-9]\.muse$/ } @args) {
+        my $file = pop @muse;
+        $file =~ s/\.muse$//;
+        my $f_class = 'text';
+        if (grep { $_ eq 'specials' } @args) {
+            $f_class = 'special';
+        }
+        $text = $site->titles->search({uri => $file, f_class => $f_class })->first;
+    }
+
 
     my %params = %{ $c->request->params };
     my $res = $cgit->get([ @args ], { %params });
@@ -60,6 +71,7 @@ sub git :Chained('/site') :Args {
         }
         elsif (my $html = $res->html) {
             $c->stash(cgit_body => $html,
+                      text => $text,
                       cgit_page => 1);
         }
         else {
