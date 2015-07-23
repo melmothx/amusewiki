@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 21;
+use Test::More tests => 26;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -41,6 +41,7 @@ foreach my $text ({
                    author => "Nemò",
                    textbody => "<p>àààà</p><p>čččččč</p>",
                    lang => 'hr',
+                   type => 'special',
                   },
                   {
                    title => "Ciao parappappaà",
@@ -53,7 +54,8 @@ foreach my $text ({
                    textbody => "<p>111111111 àààà</p><p>xxxxxxxx čččččč 3333333</p>",
                    lang => 'de',
                   }) {
-    my ($revision, $error) =  $site->create_new_text($text, 'text');
+    my $type = delete $text->{type} || 'text';
+    my ($revision, $error) =  $site->create_new_text($text, $type);
     ok $revision->id, "Found revision";
     $revision->edit({
                      fix_links => 1,
@@ -64,15 +66,22 @@ foreach my $text ({
     my $uri = $revision->publish_text;
     diag "Published $uri";
     $mech->get_ok($uri);
-    $mech->follow_link(url_regex => qr{/git/});
+    if ($type eq 'special') {
+        my $special_path = $uri;
+        $special_path =~ s/special/specials/;
+        $mech->get_ok("/git/0gitz0/log" . $special_path . '.muse');
+    }
+    else  {
+        ok($mech->follow_link(url_regex => qr{/git/}), "link ok");
+    }
     diag $mech->uri->path;
     $mech->content_contains($text->{title}, "Found the title");
-    $mech->follow_link(text => 'tree');
+    ok($mech->follow_link(text => 'tree'), "link_ok");
     diag $mech->uri->path;
     my $body_re = $text->{textbody};
     $body_re =~ s!</?p>!.*!g;
     $mech->content_like(qr{$body_re}s);
-    $mech->follow_link(text => 'plain');
+    ok($mech->follow_link(text => 'plain'), "link ok");
     diag $mech->uri->path;
     $mech->content_like(qr{$body_re}s);
 }

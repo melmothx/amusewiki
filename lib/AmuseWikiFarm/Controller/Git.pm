@@ -67,6 +67,8 @@ sub git :Chained('/site') :Args {
             if (my $expires = $res->expires) {
                 $c->response->header('Expires', $expires);
             }
+            $c->clear_encoding;
+            $c->response->content_length(length($res->content));
             $c->response->body($res->content);
         }
         elsif (my $html = $res->html) {
