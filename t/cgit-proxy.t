@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use AmuseWikiFarm::Archive::CgitProxy;
-use Test::More tests => 22;
+use Test::More tests => 23;
 use Data::Dumper;
 use URI;
 
