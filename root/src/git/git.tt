@@ -1,0 +1,5 @@
+
+<h2>[% loc('Archive history') %]</h2>
+
+
+[% cgit_body %]
