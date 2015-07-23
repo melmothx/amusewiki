@@ -34,6 +34,14 @@ sub git :Chained('/site') :Args {
         $c->detach('/not_found');
         return;
     }
+    unless (@args) {
+        push @args, $site->id;
+    }
+    if ($args[0] ne $site->id) {
+        $c->detach('/not_found');
+        return;
+    }
+
     my %params = %{ $c->request->params };
     my $res = $cgit->get([ @args ], { %params });
     if ($res->success) {

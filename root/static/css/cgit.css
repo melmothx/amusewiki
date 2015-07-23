@@ -8,18 +8,11 @@ div#cgit table#header {
 }
 
 div#cgit table#header td.logo {
-	width: 96px;
-	vertical-align: top;
+    display: none;
 }
 
 div#cgit table#header td.main {
-	font-size: 250%;
-	padding-left: 10px;
-	white-space: nowrap;
-}
-
-div#cgit table#header td.main a {
-	color: #000;
+    display:none;
 }
 
 div#cgit table#header td.form {
