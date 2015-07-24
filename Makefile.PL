@@ -64,6 +64,8 @@ requires 'Email::Valid';
 requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor' => '0.10';
 
+requires 'HTTP::Tiny';
+
 # our own dogfood
 requires 'Text::Amuse' => '0.33';
 requires 'PDF::Imposition' => '0.14';

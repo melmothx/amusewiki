@@ -66,15 +66,19 @@
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/css/amusewiki.css', { v => 16 }) %]" />
-
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
+
+    [%- IF cgit_page %]
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/css/cgit.css', { v => 1 }) %]" />
+    [%- END %]
 
     [%- IF site.has_site_file('local.css') -%]
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for_action('/sitefiles/local_files',
                                     [ site.id, 'local.css']) %]" />
-    [%- END -%]
-    [%- IF site.has_site_file('local.js') -%]
+    [%- END %]
+    [%- IF site.has_site_file('local.js') %]
     <script type="text/javascript"
             src="[% c.uri_for_action('/sitefiles/local_files',
                                     [ site.id, 'local.js']) %]">

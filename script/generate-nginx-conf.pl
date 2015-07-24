@@ -31,9 +31,11 @@ my $amw_home = getcwd;
 
 if (-f $cgit_path) {
     $cgit = <<"EOF";
-
+server {
+    listen 127.0.0.1:9015;
+    server_name localhost;
     location /git/ {
-        access_log /var/log/nginx/amusewiki.log $logformat;
+        root $amw_home/root;
         fastcgi_split_path_info ^/git()(.*);
         fastcgi_param   PATH_INFO       \$fastcgi_path_info;
         fastcgi_param   SCRIPT_FILENAME \$document_root/git/cgit.cgi;
@@ -41,18 +43,20 @@ if (-f $cgit_path) {
         include fastcgi_params;
         fastcgi_pass    unix:/var/run/fcgiwrap.socket;
     }
-
+}
 EOF
 }
 
-print_server_stanza($hosts);
+print_server_stanza($cgit, $hosts);
 warn "Please install a key and a certificate for your (canonical) hosts at "
   . "/etc/nginx/ssl/amusewiki.key and /etc/nginx/ssl/amusewiki.cert\n";
 warn "You can use the script script/generate-ssl-certs.pl [--wildcards]\n";
 
 sub print_server_stanza {
-    my ($server_names) = @_;
+    my ($cgit, $server_names) = @_;
     print <<"EOF";
+$cgit
+
 server {
     listen 80;
     listen 443 ssl;
@@ -70,8 +74,14 @@ server {
     rewrite ^/pdfs/letter_imposed/(.*)_letter_imposed\.pdf /library/\$1.lt.pdf permanent;
     rewrite ^/print/(.*)\.html /library/\$1.html permanent;
     rewrite ^/epub/(.*)\.epub /library/\$1.epub permanent;
+    rewrite ^/topics/(.*)\.html /category/topic/\$1 permanent;
+    rewrite ^/authors/(.*)\.html /category/author/\$1 permanent;
     # END LEGACY STUFF
 
+    # deny direct access to the cgi file
+    location /git/cgit.cgi {
+        deny all;
+    }
     location /src/ {
         deny all;
     }
@@ -90,14 +100,13 @@ server {
         internal;
         alias $amw_home/staging/;
     }
-$cgit
     location / {
         try_files \$uri \@proxy;
         expires max;
     }
     location \@proxy {
         access_log /var/log/nginx/amusewiki.log $logformat;
-        include /etc/nginx/fastcgi_params;
+        include fastcgi_params;
         fastcgi_param SCRIPT_NAME '';
         fastcgi_param PATH_INFO   \$fastcgi_script_name;
         fastcgi_param HTTP_X_SENDFILE_TYPE X-Accel-Redirect;

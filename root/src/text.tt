@@ -196,7 +196,7 @@
       [% END %]
       [% IF (cgit_link = text.recent_changes_uri) %]
       <span id="filehistory">
-        <a href="[% c.uri_for(cgit_link) %]" rel="nofollow">
+        <a href="[% c.uri_for(cgit_link, { showmsg => 1 }) %]" rel="nofollow">
           <img src="[% c.uri_for('/static/images/diff.png') %]"
                alt="[% loc('View history') %]"
                title="[% loc('View history') %]"
