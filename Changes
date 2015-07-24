@@ -15,9 +15,10 @@ The configuration upgrade can be performed with
 
  script/install-cgit.pl --reconfigure
 
-If you want to upgrade cgit as well, you can execute
+If you want to upgrade cgit as well, you can execute the script
+without argument.
 
-  script/install-cgit.pl --reconfigure
+  script/install-cgit.pl
 
 Notes: install libssl-dev if you're getting the error about missing
 openssl/ssl.h during compilation.
@@ -26,7 +27,8 @@ Due to the new setup (with cgit listening only to localhost), you need to regene
 
   script/generate-nginx-conf.pl > /tmp/amusewiki
 
-And install /tmp/amusewiki in the nginx configuration directory.
+Install /tmp/amusewiki in the nginx configuration directory and
+reload nginx.
 
 1.25 2015-06-27
 
