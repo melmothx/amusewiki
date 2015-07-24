@@ -38,6 +38,9 @@ sub process {
     Plack::Util::set_io_path($fh, $file);
     # or
     # my $fh = IO::File::WithPath->new($file, 'r');
+    if ($type eq 'text/plain') {
+        $type .= '; charset=UTF-8';
+    }
     $c->response->headers->content_type($type);
     $c->response->headers->content_length(-s $file);
     $c->response->headers->last_modified((stat($file))[9]);

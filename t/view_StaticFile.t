@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 371;
+use Test::More tests => 373;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{CATALYST_DEBUG} = 0;
@@ -44,6 +44,9 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 foreach my $get (sort keys %files) {
     $mech->get_ok($get);
     my $type = $mech->response->content_type;
+    if ($type eq 'text/plain') {
+        is $mech->response->content_type_charset, 'UTF-8', "encoding correct";
+    }
     is $type, $files{$get}, "$get has type $files{$get}";
     ok (!$mech->response->header('ETag'), "Etag not present");
     ok ($mech->response->header('Last-Modified'),
