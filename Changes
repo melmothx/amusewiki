@@ -21,6 +21,12 @@ If you want to upgrade cgit as well, you can execute
 Notes: install libssl-dev if you're getting the error about missing
 openssl/ssl.h during compilation.
 
+Due to the new setup (with cgit listening only to localhost), you need to regenerate the nginx configuration with
+
+  script/generate-nginx-conf.pl > /tmp/amusewiki
+
+And install /tmp/amusewiki in the nginx configuration directory.
+
 1.25 2015-06-27
 
  - Layout fix release. No code changes.
