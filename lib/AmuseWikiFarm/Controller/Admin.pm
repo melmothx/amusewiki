@@ -75,7 +75,7 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
     elsif ($params{create_site} && $params{canonical}) {
         # here we accept 0 as prefix as well, but we warned
         if ($params{create_site} =~ m/^([0-9a-z]{2,16})$/ and
-            $params{canonical}   =~ m/^[0-9a-z]+(\.[0-9a-z]+){2,4}$/) {
+            $params{canonical}   =~ m/^[0-9a-z]+(\.[0-9a-z]+){1,4}$/) {
             $id = $params{create_site};
             if ($c->model('DB::Site')->find($id)) {
                 $c->flash(error_msg => $c->loc('Site already exists'));

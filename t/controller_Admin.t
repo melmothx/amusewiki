@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 43;
+use Test::More tests => 58;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -98,55 +98,63 @@ $mech->content_lacks('<a href="http://www.amusewiki.org">WWW</a>');
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my $site_id = '0xcreate0';
+foreach my $sitespec ({
+                       id => '0xcreate0',
+                       canonical => '0xcreate0.amusewiki.org',
+                      },
+                      {
+                       id => 'de',
+                       canonical => 'mygermanlib.org',
+                      }) {
+    my $site_id = $sitespec->{id};
 
-if (my $site = $schema->resultset('Site')->find($site_id)) {
-    diag "Deleting existing site $site_id";
-    $site->delete;
+    if (my $site = $schema->resultset('Site')->find($site_id)) {
+        diag "Deleting existing site $site_id";
+        $site->delete;
+    }
+
+
+
+    $mech->get_ok('/admin/sites');
+    $mech->submit_form(form_id => 'creation-site-form',
+                       fields => {
+                                  create_site => $site_id,
+                                  canonical => $sitespec->{canonical},
+                                 });
+
+    is $mech->uri->path, "/admin/sites/edit/$site_id", "Path is fine";
+
+    $mech->content_contains("$site_id</h2>");
+
+    ok($mech->form_with_fields(qw/mode locale/), "Found form") or diag $mech->content;
+
+    $mech->submit_form(with_fields => {
+                                       locale => 'en',
+                                       mail_notify => 'me@amusewiki.org',
+                                       mail_from => 'noreply@amusewiki.org',
+                                      },
+                       button => 'edit_site');
+
+    is $mech->uri->path, "/admin/sites/edit/$site_id";
+    $mech->content_lacks(q{id="error_message"});
+
+    $mech->get_ok('/admin/sites');
+
+    $mech->content_contains('noreply@amusewiki.org', "Found the mail")
+      or diag $mech->content;
+    $mech->content_contains('me@amusewiki.org', "Found the mail (2)");
+
+    $mech->get_ok("/admin/sites/edit/$site_id");
+
+    $mech->content_contains('noreply@amusewiki.org', "Found the mail");
+    $mech->content_contains('me@amusewiki.org', "Found the mail (2)");
+
+    my $created = $schema->resultset('Site')->find($site_id);
+    ok( $created, "Site created");
+
+    my $created_root = $created->repo_root;
+    ok (-d $created_root, "Repo root created");
+    ok ($created->git, "Created site has a git");
+    $created->delete;
+    remove_tree($created_root);
 }
-
-
-
-$mech->get_ok('/admin/sites');
-
-$mech->submit_form(form_id => 'creation-site-form',
-                   fields => {
-                              create_site => $site_id,
-                              canonical => "$site_id.amusewiki.org",
-                             });
-
-is $mech->uri->path, "/admin/sites/edit/$site_id", "Path is fine";
-
-$mech->content_contains("$site_id</h2>");
-
-ok($mech->form_with_fields(qw/mode locale/), "Found form") or diag $mech->content;
-
-$mech->submit_form(with_fields => {
-                                   locale => 'en',
-                                   mail_notify => 'me@amusewiki.org',
-                                   mail_from => 'noreply@amusewiki.org',
-                                  },
-                   button => 'edit_site');
-
-is $mech->uri->path, "/admin/sites/edit/$site_id";
-$mech->content_lacks(q{id="error_message"});
-
-$mech->get_ok('/admin/sites');
-
-$mech->content_contains('noreply@amusewiki.org', "Found the mail")
-  or diag $mech->content;
-$mech->content_contains('me@amusewiki.org', "Found the mail (2)");
-
-$mech->get_ok("/admin/sites/edit/$site_id");
-
-$mech->content_contains('noreply@amusewiki.org', "Found the mail");
-$mech->content_contains('me@amusewiki.org', "Found the mail (2)");
-
-my $created = $schema->resultset('Site')->find($site_id);
-ok( $created, "Site created");
-
-my $created_root = $created->repo_root;
-ok (-d $created_root, "Repo root created");
-ok ($created->git, "Created site has a git");
-$created->delete;
-remove_tree($created_root);
