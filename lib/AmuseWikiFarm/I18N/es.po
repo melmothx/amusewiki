@@ -141,6 +141,9 @@ msgstr ""
 "      es necesario, pero puede servir cuando un título tiene la letra 'ñ' \n"
 "      en su título."
 
+msgid "Archive history"
+msgstr ""
+
 msgid "Are you sure?"
 msgstr "¿Estás segura/o?"
 

@@ -127,6 +127,9 @@ msgid ""
 "      not needed"
 msgstr ""
 
+msgid "Archive history"
+msgstr ""
+
 msgid "Are you sure?"
 msgstr ""
 

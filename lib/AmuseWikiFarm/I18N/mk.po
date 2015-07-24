@@ -139,6 +139,9 @@ msgstr ""
 "се придржуваш до овој принцип: автор, име, наслов, јазик, евентуален број,\n"
 " на пр.\"errico-malatesta-anarchy-2\". Инаку тоа не е потребно."
 
+msgid "Archive history"
+msgstr ""
+
 msgid "Are you sure?"
 msgstr "Сигурно?"
 

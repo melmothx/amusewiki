@@ -139,6 +139,9 @@ msgstr ""
 "для устранения неоднозначности, например: errico-malatesta-anarchy-2. "
 "Пожалуйста помните, что обычно в этом нет необходимости"
 
+msgid "Archive history"
+msgstr ""
+
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 

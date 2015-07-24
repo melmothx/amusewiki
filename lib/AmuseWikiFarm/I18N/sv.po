@@ -141,6 +141,9 @@ msgstr ""
 "språk, eventuell diambiguering, t.ex.errico-malatesta-anarchy-2. Vanligtvis "
 "behövs det dock inte"
 
+msgid "Archive history"
+msgstr ""
+
 msgid "Are you sure?"
 msgstr "Är du säker?"
 

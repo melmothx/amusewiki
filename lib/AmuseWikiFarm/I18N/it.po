@@ -144,6 +144,9 @@ msgstr ""
 "codice lingua ed eventualmente un numero per disambiguare. Normalmente\n"
 "ciò non è richiesto."
 
+msgid "Archive history"
+msgstr ""
+
 msgid "Are you sure?"
 msgstr "Sicuro?"
 

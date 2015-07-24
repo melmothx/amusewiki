@@ -141,6 +141,9 @@ msgstr ""
 " z.B. errico-malatesta-anarchy-2. Beachte bitte, dass\n"
 " das normalerweise nicht notwendig ist."
 
+msgid "Archive history"
+msgstr ""
+
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
 

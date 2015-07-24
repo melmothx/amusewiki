@@ -136,6 +136,9 @@ msgstr ""
 "      nimi, otsikko, kieli, versionumero. Esim. \n"
 "      bob-black-eroon-tyosta-2. Yleensä tätä ei tarvitse erikseen tehdä"
 
+msgid "Archive history"
+msgstr ""
+
 msgid "Are you sure?"
 msgstr "Oletko varma?"
 
