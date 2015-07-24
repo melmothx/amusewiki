@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 26;
+use Test::More;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -26,15 +26,21 @@ use AmuseWiki::Tests qw/create_site/;
 my $site_id = '0gitz0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
-ok ($site);
-
-ok ($site->repo_is_under_git, "db knows about git");
 $site->cgit_integration(1);
 $site->update({ cgit_integration => 1 });
 
 my $mech = Test::WWW::Mechanize::Catalyst
   ->new(catalyst_app => 'AmuseWikiFarm',
         host => $site->id . '.amusewiki.org');
+
+$mech->get('/git');
+if ($mech->success) {
+    plan tests => 24;
+}
+else {
+    plan skip_all => '/git url is disabled';
+    exit;
+}
 
 foreach my $text ({
                    title => "Zdravo Hello àààà",
