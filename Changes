@@ -4,11 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.30 UNRELEASED
+1.30 2015-07-24
 
  - Integrated cgit into the layout.
  - Optional upgrade to cgit latest release (0.11.2)
  - Unified the installation scripts install-cgit.sh and generate-cgit-repolist.pl
+ - Fixed bug in site creation hostname validation
 
 The configuration upgrade can be performed with
 
