@@ -454,7 +454,6 @@ div#cgit table.diff {
 
 div#cgit table.diff td {
 	font-family: monospace;
-	white-space: pre;
 }
 
 div#cgit table.diff td div.head {
@@ -685,7 +684,6 @@ div#cgit table.ssdiff {
 div#cgit table.ssdiff td {
 	font-size: 75%;
 	font-family: monospace;
-	white-space: pre;
 	padding: 1px 4px 1px 4px;
 	border-left: solid 1px #aaa;
 	border-right: solid 1px #aaa;
@@ -776,3 +774,14 @@ div#cgit table.ssdiff td.space {
 div#cgit table.ssdiff td.space div {
 	min-height: 3em;
 }
+
+pre {
+    white-space: pre-wrap;       /* CSS 3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+
+
