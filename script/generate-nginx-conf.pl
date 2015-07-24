@@ -67,15 +67,15 @@ server {
 
     # LEGACY STUFF
     rewrite ^/lib/(.*)\$ /library/\$1 permanent;
-    rewrite ^/HTML/(.*)\.html\$ /library/\$1 permanent;
-    rewrite ^/pdfs/a4/(.*)_a4\.pdf /library/\$1.pdf permanent;
-    rewrite ^/pdfs/letter/(.*)_letter\.pdf /library/\$1.pdf permanent;
-    rewrite ^/pdfs/a4_imposed/(.*)_a4_imposed\.pdf /library/\$1.a4.pdf permanent;
-    rewrite ^/pdfs/letter_imposed/(.*)_letter_imposed\.pdf /library/\$1.lt.pdf permanent;
-    rewrite ^/print/(.*)\.html /library/\$1.html permanent;
-    rewrite ^/epub/(.*)\.epub /library/\$1.epub permanent;
-    rewrite ^/topics/(.*)\.html /category/topic/\$1 permanent;
-    rewrite ^/authors/(.*)\.html /category/author/\$1 permanent;
+    rewrite ^/HTML/(.*)\\.html\$ /library/\$1 permanent;
+    rewrite ^/pdfs/a4/(.*)_a4\\.pdf /library/\$1.pdf permanent;
+    rewrite ^/pdfs/letter/(.*)_letter\\.pdf /library/\$1.pdf permanent;
+    rewrite ^/pdfs/a4_imposed/(.*)_a4_imposed\\.pdf /library/\$1.a4.pdf permanent;
+    rewrite ^/pdfs/letter_imposed/(.*)_letter_imposed\\.pdf /library/\$1.lt.pdf permanent;
+    rewrite ^/print/(.*)\\.html /library/\$1.html permanent;
+    rewrite ^/epub/(.*)\\.epub /library/\$1.epub permanent;
+    rewrite ^/topics/(.*)\\.html /category/topic/\$1 permanent;
+    rewrite ^/authors/(.*)\\.html /category/author/\$1 permanent;
     # END LEGACY STUFF
 
     # deny direct access to the cgi file
