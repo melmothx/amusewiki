@@ -4,6 +4,23 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.30 UNRELEASED
+
+ - Integrated cgit into the layout.
+ - Optional upgrade to cgit latest release (0.11.2)
+ - Unified the installation scripts install-cgit.sh and generate-cgit-repolist.pl
+
+The configuration upgrade can be performed with
+
+ script/install-cgit.pl --reconfigure
+
+If you want to upgrade cgit as well, you can execute
+
+  script/install-cgit.pl --reconfigure
+
+Notes: install libssl-dev if you're getting the error about missing
+openssl/ssl.h during compilation.
+
 1.25 2015-06-27
 
  - Layout fix release. No code changes.
