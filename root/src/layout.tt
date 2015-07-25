@@ -70,7 +70,7 @@
 
     [%- IF cgit_page %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/cgit.css', { v => 2 }) %]" />
+          href="[% c.uri_for('/static/css/cgit.css', { v => 3 }) %]" />
     [%- END %]
 
     [%- IF site.has_site_file('local.css') -%]
