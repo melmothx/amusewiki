@@ -150,7 +150,7 @@ execute:
 
  ./script/generate-nginx-conf.pl
 
-which will print out a suitable configuration for nginx.
+which will generate a suitable configuration for nginx.
 
 After the webserver is configured, you can now start the app with
 
