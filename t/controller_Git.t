@@ -33,8 +33,8 @@ my $mech = Test::WWW::Mechanize::Catalyst
   ->new(catalyst_app => 'AmuseWikiFarm',
         host => $site->id . '.amusewiki.org');
 
-$mech->get('/git');
-if ($mech->success) {
+$mech->get('git/0gitz0');
+if ($mech->success and $mech->content !~ m/No repositories found/) {
     plan tests => 24;
 }
 else {
