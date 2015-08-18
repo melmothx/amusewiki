@@ -12,6 +12,7 @@ use File::Temp;
 
 my ($logformat, $help, $ssl_key, $secure_only, $cgit_port);
 my $nginx_root = '/etc/nginx';
+my $amwbase = 'amusewiki';
 my $default_key = "ssl/amusewiki.key";
 my $default_crt = "ssl/amusewiki.crt";
 
@@ -21,6 +22,7 @@ GetOptions ('log-format=s' => \$logformat,
             'nginx-root=s' => \$nginx_root,
             'secure-only' => \$secure_only,
             'cgit-port=i' => \$cgit_port,
+            'basename=s' => \$amwbase,
            ) or die;
 
 if ($ssl_key) {
@@ -35,11 +37,11 @@ if ($help) {
 Usage: $0 [ options ]
 
 Create the nginx configuration for amusewiki. The output consists of
-two files: "amusewiki_include" and "amusewiki". The first must be
+two files: "${amwbase}_include" and "${amwbase}". The first must be
 installed in the root of the nginx configuration directory, usually
 /etc/nginx. This is the include with the common configuration.
 
-The second, "amusewiki", is the virtual host configuration, where
+The second, "${amwbase}", is the virtual host configuration, where
 we set the server names and the SSL certificates.
 
 Options:
@@ -47,6 +49,13 @@ Options:
  --help
 
  Print this message and exit
+
+ --basename <instance name>
+
+ Defaults to amusewiki, and if you don't need multiple instances (like
+ devel and production), you don't need to set this. This variable sets
+ the name of the included files and of the configuration file, so if
+ you have multiple instances they will not clash. See also --cgit-port.
 
  --log-format <combined>
 
@@ -172,7 +181,7 @@ server {
 EOF
 }
 
-my $conf_file = catfile($output_dir, 'amusewiki');
+my $conf_file = catfile($output_dir, $amwbase);
 open (my $fhc, '>:encoding(UTF-8)', $conf_file) or die "Cannot open $conf_file $!";
 print $fhc $cgit;
 foreach my $site (@sites) {
@@ -180,7 +189,7 @@ foreach my $site (@sites) {
 }
 close $fhc;
 
-my $include_file = catfile($output_dir, 'amusewiki_include');
+my $include_file = catfile($output_dir, "${amwbase}_include");
 open (my $fh, '>:encoding(UTF-8)', $include_file) or die $!;
 print $fh <<"INCLUDE";
     root $amw_home/root;
@@ -255,8 +264,8 @@ INCLUDE
 
 close $fh;
 
-my $conf_target = catfile($nginx_root, qw/sites-enabled amusewiki/);
-my $include_target = catfile($nginx_root, 'amusewiki_include');
+my $conf_target = catfile($nginx_root, 'sites-enabled', $amwbase);
+my $include_target = catfile($nginx_root, "${amwbase}_include");
 print <<"HELP";
 please execute the following command as root
 
@@ -300,7 +309,7 @@ DEFAULT
     if ($logformat) {
         $out .= "    access_log /var/log/nginx/$canonical.log $logformat;\n";
     }
-    $out .= "    include amusewiki_include;\n";
+    $out .= "    include ${amwbase}_include;\n";
     my $stanza = "server {\n$out\n}\n";
     if ($redirect_to_secure) {
         $stanza .= <<"REDIRECT";
