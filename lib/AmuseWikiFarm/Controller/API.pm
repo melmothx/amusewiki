@@ -47,6 +47,66 @@ sub autocompletion :Chained('api') :Args(1) {
     }
 }
 
+sub ckeditor :Chained('api') :Args(0) {
+    my ($self, $c) = @_;
+    my $lang = $c->stash->{current_locale_code} || 'en';
+    my $config = {
+                  language => $lang,
+                  toolbar => 'AmuseWiki',
+                  toolbar_AmuseWiki => [
+                                        {
+                                         name => 'document',
+                                         items => [ 'Source'],
+                                        },
+                                        {
+                                         name =>  'clipboard',
+                                         items  =>  [
+                                                     'Cut',
+                                                     'Copy',
+                                                     'Paste',
+                                                     'PasteText',
+                                                     'PasteFromWord',
+                                                     '-',
+                                                     'Undo',
+                                                     'Redo'
+                                                    ],
+                                        },
+                                        {
+                                         name =>  'editing',
+                                         items  =>  [
+                                                      'Find',
+                                                      'Replace',
+                                                      '-',
+                                                      'SelectAll',
+                                                     ],
+                                        },
+                                        {
+                                         name =>  'basicstyles',
+                                         items  =>  [
+                                                     'Bold',
+                                                     'Italic',
+                                                     '-',
+                                                     'RemoveFormat'
+                                                    ],
+                                        },
+                                        {
+                                         name => 'paragraph',
+                                         items  => [
+                                                    'NumberedList',
+                                                    'BulletedList',
+                                                    '-',
+                                                    'Blockquote',
+                                                   ],
+                                        },
+                                        {
+                                         name =>  'styles',
+                                         items  => [ 'Format'],
+                                        }
+                                       ],
+                 };
+    $c->response->content_type('application/json; charset=UTF-8');
+    $c->response->body(encode_json($config));
+}
 
 =head1 AUTHOR
 

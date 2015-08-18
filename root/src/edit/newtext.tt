@@ -2,29 +2,6 @@
 
 <script src="[% c.uri_for('/static/js/ckeditor/ckeditor.js') %]"></script>
 <script src="[% c.uri_for('/static/js/ckeditor/adapters/jquery.js') %]"></script>
-<script type="text/javascript">
-var ckconfiguration = {
-    'language' : '[% current_locale_code %]',
-    'toolbar': 'AmuseWiki',
-    'toolbar_AmuseWiki': [
-	    { 'name': 'document', 'items' : [ 'Source'] },
-	    { 'name': 'clipboard',
-	      'items' : 
-	      [ 'Cut','Copy','Paste','PasteText',
-		    'PasteFromWord','-','Undo','Redo' ] },
-	    { 'name': 'editing',
-	      'items' : [ 'Find','Replace','-','SelectAll' ] },
-	    { 'name': 'basicstyles',
-          'items' : [
-		      'Bold','Italic',
-		      '-','RemoveFormat' ] },
-	    { 'name': 'paragraph',
-	      'items' : [ 'NumberedList','BulletedList','-','Blockquote', ] },
-	    { 'name': 'styles',
-          'items' : [ 'Format'] }
-    ]
-};
-</script>
 
 [% form_action %]
 
@@ -258,9 +235,18 @@ var ckconfiguration = {
 </form>
 
 <script type="text/javascript">
-  $('#textbody').ckeditor(ckconfiguration);
-  ckconfiguration.height = 100;
-  $('#notes').ckeditor(ckconfiguration);
+  $(document).ready(function() {
+      $.ajax({
+          url: "[% c.uri_for_action('/api/ckeditor') %]",
+      }).done(function(data) {
+          $('#textbody').ckeditor(data);
+          data.height = 100;
+          $('#notes').ckeditor(data);
+      }).fail(function() {
+          $('#textbody').ckeditor();
+          $('#notes').ckeditor({ height: 100 });
+      });
+  });
 </script>
 
 [% IF f_class == 'text' %]
