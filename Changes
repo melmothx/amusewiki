@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.32 2015-08-18
+
+ - Completely removed fcgi_params from cgit nginx setup.
+ - Moved ckeditor configuration into a route
+ - Use CDN for ckeditor if not locally installed.
+
 1.31 2015-08-18
 
  - Refactored the nginx config generator

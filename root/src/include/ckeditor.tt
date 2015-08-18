@@ -1,0 +1,7 @@
+[% IF c.model('AMWConfig').ckeditor_use_cdn %]
+   <script src="//cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+   <script src="//cdn.ckeditor.com/4.4.3/standard/adapters/jquery.js"></script>
+[% ELSE %]
+   <script src="[% c.uri_for('/static/js/ckeditor/ckeditor.js') %]"></script>
+   <script src="[% c.uri_for('/static/js/ckeditor/adapters/jquery.js') %]"></script>
+[% END %]

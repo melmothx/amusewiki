@@ -1,7 +1,6 @@
 [% # -*- mode: html -*- %]
 
-<script src="[% c.uri_for('/static/js/ckeditor/ckeditor.js') %]"></script>
-<script src="[% c.uri_for('/static/js/ckeditor/adapters/jquery.js') %]"></script>
+[% INCLUDE 'include/ckeditor.tt' %]
 
 <div class="center">
   <h3>[% loc('HTML/Word Importer') %]</h3>

@@ -92,7 +92,7 @@ use Catalyst
 
 extends 'Catalyst';
 
-our $VERSION = '1.31';
+our $VERSION = '1.32';
 
 # Configure the application.
 #
@@ -166,6 +166,13 @@ __PACKAGE__->config(
         storage => __PACKAGE__->path_to(qw/opt cache fastmmap/),
     },
 );
+
+__PACKAGE__->config({
+    'Model::AMWConfig' => {
+        ckeditor_use_cdn => (! -f __PACKAGE__->path_to(qw/root static js
+                                                    ckeditor ckeditor.js/))
+       }
+   });
 
 # Start the application
 __PACKAGE__->setup();

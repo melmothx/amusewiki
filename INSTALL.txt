@@ -85,6 +85,9 @@ webfonts subdirectories with the fonts.
 Go into the webfonts directory and run ./populate-webfonts.pl from
 there.
 
+CKEditor is not shipped with amusewiki. By default it will use the
+CDN. If you prefer to use a local copy you can install it as follows.
+
 In ./root/static/js download and unpack ckeditor:
 
 e.g. 
@@ -111,8 +114,8 @@ If you run under nginx, run:
 
  ./script/generate-nginx-conf.pl
 
-This will generate a suitable nginx configuration and print it to the
-standard output.
+This will generate a suitable nginx configuration and print the (copy
+and paste) installation instructions.
 
 I usually do some nginx tweaks:
 
