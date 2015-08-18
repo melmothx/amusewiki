@@ -10,7 +10,7 @@ use Cwd;
 use Getopt::Long;
 use File::Temp;
 
-my ($logformat, $help, $ssl_key, $secure_only);
+my ($logformat, $help, $ssl_key, $secure_only, $cgit_port);
 my $nginx_root = '/etc/nginx';
 my $default_key = "ssl/amusewiki.key";
 my $default_crt = "ssl/amusewiki.crt";
@@ -20,6 +20,7 @@ GetOptions ('log-format=s' => \$logformat,
             'ssl-key=s' => \$ssl_key,
             'nginx-root=s' => \$nginx_root,
             'secure-only' => \$secure_only,
+            'cgit-port=i' => \$cgit_port,
            ) or die;
 
 if ($ssl_key) {
@@ -27,8 +28,6 @@ if ($ssl_key) {
         die catfile($nginx_root, 'ssl', $ssl_key) . " doesn't exist\n";
     }
 }
-
-
 
 if ($help) {
     print <<"HELP";
@@ -88,6 +87,16 @@ Options:
  If this option is passed, redirect the http sites to https if there
  is a matching certificate for this site.
 
+ --cgit-port <port number>
+
+ By default, cgit will listen to localhost on port 9015. If you want
+ to change this, pass the port number and then set in the file
+ amusewikifarm_local.conf (create it if it doesn't exist) this stanza:
+
+ <Model::CgitProxy>
+    port <port number>
+ </Model::CgitProxy>
+
 HELP
     exit 2;
 }
@@ -106,18 +115,29 @@ my $output_dir = File::Temp->newdir(CLEANUP => 0,
                                     TEMPLATE => 'nginx-amusewiki-XXXXXXXX')
   ->dirname;
 
-print "Files saved in $output_dir\n";
-
-
-
 # globals
 my $cgit = "### cgit is not installed ###\n";
 my $cgit_path = catfile(qw/root git cgit.cgi/);
 
 if (-f $cgit_path) {
+    if ($cgit_port) {
+        my $local_conf = catfile($amw_home, "amusewikifarm_local.conf");
+        print "You specified a custom port for cgit.\nPlease add the following stanza to the file $local_conf:\n";
+        print <<CONF
+
+<Model::CgitProxy>
+    port $cgit_port
+</Model::CgitProxy>
+
+CONF
+    }
+    else {
+        $cgit_port = 9015;
+    }
+
     $cgit = <<"EOF";
 server {
-    listen 127.0.0.1:9015;
+    listen 127.0.0.1:$cgit_port;
     server_name localhost;
     location /git/ {
         root $amw_home/root;

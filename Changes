@@ -7,8 +7,18 @@ dedicated tree.
 1.32 2015-08-18
 
  - Completely removed fcgi_params from cgit nginx setup.
+ - Allow the setting of the port for the cgit server
  - Moved ckeditor configuration into a route
  - Use CDN for ckeditor if not locally installed.
+
+The fcgi_params reference was removed from the nginx configuration. If
+you want to upgrade, execute:
+
+  script/generate-nginx-conf.pl
+
+And install the generated file as explained in the output (meant to be
+cut and pasted as root).
+
 
 1.31 2015-08-18
 
