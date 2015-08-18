@@ -83,6 +83,11 @@ Options:
 
  Defaults to /etc/nginx
 
+ --secure-only
+
+ If this option is passed, redirect the http sites to https if there
+ is a matching certificate for this site.
+
 HELP
     exit 2;
 }
