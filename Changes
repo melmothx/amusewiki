@@ -4,6 +4,24 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.31 2015-08-18
+
+ - Refactored the nginx config generator
+ - CSS fix for cgit
+ - declare the encoding when serving static text files
+ - updated translations: de
+
+The new nginx configuration setup has a stanza for each site, to make
+room for different SSL certificates. The common configuration was
+moved to an included file.
+
+To upgrade the configuration, execute
+
+  script/generate-nginx-conf.pl
+
+And install the generated file as explained in the output (meant to be
+cut and pasted as root).
+
 1.30 2015-07-24
 
  - Integrated cgit into the layout.
