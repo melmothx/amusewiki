@@ -4,7 +4,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 9;
+use Test::More tests => 11;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -69,5 +69,18 @@ is (scalar(@{$export->{users}}), 2, "2 users imported");
 my @users_found = $new->users;
 is(scalar(@users_found), 3, "Found 3 users");
 
+my $test_user = $schema->resultset('User')->update_or_create({ username => 'palmiro', password => 'pp' });
 
+push @{$export->{users}}, { username => 'palmiro', password => 'pp' };
+$new = $schema->resultset('Site')->deserialize_site(dclone($export));
+my %site_users = map { $_->username => 1 } $new->users;
+ok (!$site_users{palmiro}, "palmiro not found");
+is_deeply(\%site_users, {
+                         pippuozzu => 1,
+                         xxx1xxx => 1,
+                         punzo => 1,
+                        }, "users found");
+
+
+$test_user->delete;
 $new->delete;
