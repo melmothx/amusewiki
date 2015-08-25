@@ -48,7 +48,7 @@ foreach my $check (qw/vhosts site_options categories redirections site_links/) {
     ok(scalar @{$export->{$check}}, "$check has something");
 }
 
-print Dumper($export);
+# print Dumper($export);
 
 # print Dumper($schema->resultset('Site')->find('0blog0')->serialize_site);
 
@@ -64,10 +64,10 @@ is_deeply($new->serialize_site, $export, "Reinserting the site works as well");
 $new->add_to_users({ username => 'pippuozzu', password => 'xx' });
 $new = $schema->resultset('Site')->deserialize_site(dclone($export));
 
-diag Dumper($new->serialize_site);
-
+# diag Dumper($new->serialize_site);
+is (scalar(@{$export->{users}}), 2, "2 users imported");
 my @users_found = $new->users;
 is(scalar(@users_found), 3, "Found 3 users");
-is (scalar(@{$new->serialize_site->{users}}), 2, "2 imported");
+
 
 $new->delete;

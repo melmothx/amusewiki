@@ -41,21 +41,28 @@ sub deserialize_site {
             }
         }
     }
+    my @add = $site->users;
     foreach my $user (@users) {
         my $roles = delete $user->{roles};
         # search it.
-        my @add;
         if (my $exists = $self->result_source->schema->resultset('User')->find({ username => $user->{username} })) {
-            push @add, $exists;
+            if (grep { $_->username eq $user->{username} } @add) {
+                print "User $user->{username} already in\n";
+            }
+            else {
+                print $exists->username . " already exists, not adding it to the site\n";
+                # push @add, $exists;
+            }
         }
         else {
             my $newuser = $self->result_source->schema->resultset('User')->create($user);
+            print "Creating new user $user->{username}\n";
             $newuser->set_password_hash($user->{password});
             $newuser->set_roles($roles);
             push @add, $newuser;
         }
     }
-    $site->set_users(\@users);
+    $site->set_users(\@add);
     $site->discard_changes;
     return $site;
 }
