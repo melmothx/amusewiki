@@ -4,7 +4,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 7;
+use Test::More tests => 9;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -60,5 +60,14 @@ $site->delete;
 
 $new = $schema->resultset('Site')->deserialize_site(dclone($export));
 is_deeply($new->serialize_site, $export, "Reinserting the site works as well");
+
+$new->add_to_users({ username => 'pippuozzu', password => 'xx' });
+$new = $schema->resultset('Site')->deserialize_site(dclone($export));
+
+diag Dumper($new->serialize_site);
+
+my @users_found = $new->users;
+is(scalar(@users_found), 3, "Found 3 users");
+is (scalar(@{$new->serialize_site->{users}}), 2, "2 imported");
 
 $new->delete;
