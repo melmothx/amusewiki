@@ -2276,6 +2276,64 @@ sub use_luatex {
     $self->get_option('use_luatex') ? 1 : 0;
 }
 
+=head2 serialize_site
+
+Return an hashref with the serialized site, with options, virtual
+host, etc. so you can call the resultset
+L<AmuseWikiFarm::Schema::ResultSet::Site> C<deserialize_site> call on
+this to clone a site.
+
+=cut
+
+sub serialize_site {
+    my ($self) = @_;
+    my %data =  $self->get_columns;
+
+    foreach my $method (qw/vhosts site_options site_links categories redirections/) {
+        my @records;
+      ROWS:
+        foreach my $row ($self->$method) {
+            # we store the categories only if we have descriptions attached
+            my %row_data = $row->get_columns;
+
+            # clean the numeric ids
+            delete $row_data{site_id};
+            delete $row_data{id};
+
+            if ($method eq 'categories') {
+                my @descriptions;
+                foreach my $desc ($row->category_descriptions) {
+                    my %hashref = $desc->get_columns;
+                    delete $hashref{category_description_id};
+                    delete $hashref{category_id};
+                    push @descriptions, \%hashref;
+                }
+                if (@descriptions) {
+                    $row_data{category_descriptions} = \@descriptions;
+                }
+            }
+            push @records, \%row_data;
+        }
+        $data{$method} = \@records;
+    }
+    # then the users
+    my @users;
+    foreach my $user ($self->users) {
+        my %user_data = $user->get_columns;
+        delete $user_data{id};
+        my @roles;
+        foreach my $role ($user->roles) {
+            my %role_data = $role->get_columns;
+            delete $role_data{id};
+            push @roles, \%role_data;
+        }
+        $user_data{roles} = \@roles;
+        push @users, \%user_data;
+    }
+    $data{users} = \@users;
+    return \%data;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

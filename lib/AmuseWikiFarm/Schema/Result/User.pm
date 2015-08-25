@@ -232,6 +232,23 @@ sub site_list {
     return \@out;
 }
 
+=head2 set_password_hash($hash)
+
+Set the raw value of the password field bypassing the hashing. If you
+store random data here you will end up with broken users, so it's only
+useful when migrating records across instances.
+
+=cut
+
+sub set_password_hash {
+    my ($self, $value) = @_;
+    die "Missing value" unless $value;
+    $self->store_column(password => $value);
+    $self->make_column_dirty('password');
+    $self->update;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;
