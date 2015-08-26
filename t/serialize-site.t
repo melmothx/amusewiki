@@ -4,7 +4,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 11;
+use Test::More tests => 12;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -47,6 +47,9 @@ my $export = $site->serialize_site;
 foreach my $check (qw/vhosts site_options categories redirections site_links/) {
     ok(scalar @{$export->{$check}}, "$check has something");
 }
+
+ok ($export->{categories}->[0]->{category_descriptions}, "Found category description");
+
 
 # print Dumper($export);
 
