@@ -18,7 +18,9 @@ Execute "perl Makefile.PL" and install the dependencies if it complains.
 Execute make
 
 
-Answer yes to install the modules with cpan.
+Answer yes to install the modules with cpan. Also, depending on the
+database you are going to use, you need the relevant driver, like
+lidbd-pg-perl for debian (or install it from CPAN).
 
 Create a database for the application. E.g., for mysql:
 
@@ -117,6 +119,12 @@ If you run under nginx, run:
 This will generate a suitable nginx configuration and print the (copy
 and paste) installation instructions.
 
+If nginx complains about missing certificates, executes:
+
+ ./script/generate-ssl-certs.pl
+
+and copy them to the target destination as per instructions.
+
 I usually do some nginx tweaks:
 
 In the http { } stanza in nginx.conf:
@@ -163,7 +171,8 @@ Start the service
 
   service git-daemon start
 
-Link the repositories in /var/cache/git (as per package documentation)
+Link the repositories in /var/cache/git (as per package documentation.
+Note that in debian jessie it was moved to /var/lib/cache).
 
 Something like this should do:
 
@@ -186,6 +195,9 @@ Install fcgiwrap:
 Execute:
 
   ./script/install-cgit.pl
+
+If it fails probably means you're missing dependencies (notably,
+libssl-dev).
 
 And then refresh the nginx setup with
 

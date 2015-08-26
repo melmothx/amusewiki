@@ -5,7 +5,7 @@ apt-get install screen irssi vim-nox curl git build-essential rsync \
 nginx postfix libxapian-dev unzip fontconfig postgresql \
 postgresql-client libpq-dev imagemagick graphicsmagick cpanminus \
 liblocal-lib-perl shared-mime-info fcgiwrap mutt ntpdate \
-git-daemon-sysvinit
+git-daemon-sysvinit libssl-dev
 
 Create an amuse user. log into it.
 
