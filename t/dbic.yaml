@@ -6,4 +6,4 @@ amuse:
   AutoCommit: 1
   RaiseError: 1
   sqlite_unicode: 1
-
+  quote_names: 1
