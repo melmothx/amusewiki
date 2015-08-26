@@ -62,7 +62,7 @@ sub import {
     if ($directory) {
         opendir (my $dh, $directory) or die $!;
         push @files, map { File::Spec->catfile($directory, $_) }
-          grep { /\.ya?ml?/ && -f File::Spec->catfile($directory, $_) }
+          grep { /\.ya?ml$/ && -f File::Spec->catfile($directory, $_) }
           readdir $dh;
         closedir $dh;
     }
