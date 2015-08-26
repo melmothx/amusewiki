@@ -37,7 +37,8 @@ Login as root.
  create user amuse with password 'XXXX';
  create database amuse owner amuse;
 
-Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the credentials.
+Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
+credentials, and chmod it to 600.
 
 Install TeXlive.
 
