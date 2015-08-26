@@ -4,6 +4,4 @@ amuse:
   password: 'xxxxxxx'
   AutoCommit: 1
   RaiseError: 1
-  quote_char: '"'
-  name_sep: '.'
-
+  quote_names: 1
