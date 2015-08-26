@@ -108,7 +108,13 @@ system(@cmd) == 0 or die $!;
 
 system(qw/openssl x509 -text -noout -in/, $certout) == 0 or die $!;
 
-print "Output left in $output_dir\n";
+print <<"OUT";
+Please execute as root
+
+ mkdir -p /etc/nginx/ssl
+ cp $output_dir/amusewiki.* /etc/nginx/ssl
+ chmod 600 /etc/nginx/ssl/amusewiki.key
+OUT
 
 sub populate_alternates {
     my ($file, @hostnames) = @_;
