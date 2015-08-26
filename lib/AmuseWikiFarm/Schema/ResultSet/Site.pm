@@ -17,6 +17,7 @@ Create the site and set the various options passed, and return it.
 
 sub deserialize_site {
     my ($self, $hashref) = @_;
+    my $guard = $self->result_source->schema->txn_scope_guard;
     die "Missing input" unless $hashref;
     my %external;
     foreach my $method (qw/vhosts site_options site_links categories redirections/) {
@@ -63,6 +64,7 @@ sub deserialize_site {
         }
     }
     $site->set_users(\@add);
+    $guard->commit;
     $site->discard_changes;
     return $site;
 }
