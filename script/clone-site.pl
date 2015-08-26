@@ -8,6 +8,15 @@ use lib "$Bin/../lib";
 use AmuseWikiFarm::Schema;
 use File::Temp;
 use YAML qw/LoadFile DumpFile/;
+use Getopt::Long;
+
+my $directory;
+
+GetOptions('directory=s' => \$directory) or die;
+
+if ($directory) {
+    die "$directory is not a directory" unless -d $directory;
+}
 
 my ($action, @args) = @ARGV;
 
@@ -37,15 +46,31 @@ Exporting site configurations to files:
 When exporting, the files will be left in temporary directory. Without
 arguments, all the sites will be exported.
 
+Options:
+
+ --directory /path/to/dir
+
+Accepted both by export and by import. On export, dump the files
+there. On import, import all the YAML file from the specified
+directory.
+
 HELP
 }
 
 sub import {
     my (@files) = @_;
+    if ($directory) {
+        opendir (my $dh, $directory) or die $!;
+        push @files, map { File::Spec->catfile($directory, $_) }
+          grep { /\.ya?ml?/ && -f File::Spec->catfile($directory, $_) }
+          readdir $dh;
+        closedir $dh;
+    }
     foreach my $file (@files) {
         my $conf;
         eval { $conf = LoadFile($file) };
         if ($conf) {
+            print "Importing $file\n";
             $schema->resultset('Site')->deserialize_site($conf);
         }
         else {
@@ -58,13 +83,15 @@ sub export {
     unless (@ids) {
         @ids =  map { $_->id } $schema->resultset('Site')->all;
     }
-    my $dir = File::Temp->newdir(CLEANUP => 0);
-    my $dirname = $dir->dirname;
-    print "Using directory $dirname for output\n";
+    unless ($directory) {
+        my $dir = File::Temp->newdir(CLEANUP => 0);
+        $directory = $dir->dirname;
+    }
+    print "Using directory $directory for output\n";
     foreach my $code (@ids) {
         my $site = $schema->resultset('Site')->find($code);
         if ($site) {
-            my $file = File::Spec->catfile($dirname, $code . '.yaml');
+            my $file = File::Spec->catfile($directory, $code . '.yaml');
             my $conf = $site->serialize_site;
             DumpFile($file, $conf);
             print "Exported site $code to $file\n";
