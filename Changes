@@ -4,7 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.34 2015-08-26
+
+ - Documentation fixes after walk through installation
+
 1.33 2015-08-26
+
  - Bump up dependency to use EBook::EPUB::Lite
  - Suggest to use quote_names in the db connection settings
 
