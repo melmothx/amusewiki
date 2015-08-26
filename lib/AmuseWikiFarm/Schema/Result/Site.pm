@@ -2291,7 +2291,7 @@ sub serialize_site {
 
     foreach my $method (qw/vhosts site_options site_links categories redirections/) {
         my @records;
-      ROWS:
+      ROW:
         foreach my $row ($self->$method) {
             # we store the categories only if we have descriptions attached
             my %row_data = $row->get_columns;
@@ -2310,6 +2310,10 @@ sub serialize_site {
                 }
                 if (@descriptions) {
                     $row_data{category_descriptions} = \@descriptions;
+                }
+                else {
+                    # skip the categories without descriptions
+                    next ROW;
                 }
             }
             push @records, \%row_data;
