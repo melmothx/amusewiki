@@ -4,7 +4,7 @@ use warnings;
 use FindBin qw/$Bin/;
 use lib "$Bin/../lib";
 use AmuseWikiFarm::Schema;
-use File::Slurp;
+use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use File::Spec;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
