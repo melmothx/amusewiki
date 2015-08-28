@@ -150,3 +150,7 @@ blockquote {
     color: green;
 }
 
+.amw-paging-anchor {
+    font-family: monospace;
+    font-weight: bold;
+}

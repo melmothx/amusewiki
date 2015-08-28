@@ -33,7 +33,7 @@
 <ul class="pagination" id="alphabetical-pager">
   [% FOREACH anchor IN pager %]
   <li>
-    <a href="#paging-sep-[% anchor.anchor_id %]">[% anchor.anchor_name %]</a>
+    <a class="amw-paging-anchor" href="#paging-sep-[% anchor.anchor_id %]">[% anchor.anchor_name %]</a>
   </li>
   [% END %]
 </ul>
