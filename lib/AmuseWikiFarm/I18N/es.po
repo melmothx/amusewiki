@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2015-06-07 12:12+0200\n"
+"PO-Revision-Date: 2015-09-29 16:42-0300\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -50,6 +50,10 @@ msgid ""
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"Una lista de enlaces y etiquetas para insertar\n"
+"            en la barra superior. Uno por línea, primero la url\n"
+"            separado por un espacio, ej.: \"http://prueba.me Sitio de prueba"
+"\""
 
 #. (site.canonical_url)
 msgid "A new revision has been created at %1"
@@ -59,7 +63,7 @@ msgid "A nice title"
 msgstr "Un título"
 
 msgid "A4 imposed PDF"
-msgstr "PDF A4 para empaste"
+msgstr "PDF A4 para cuadernillo"
 
 msgid "A4 paper"
 msgstr "Tamaño A4"
@@ -68,7 +72,7 @@ msgid "A5 paper"
 msgstr "Tamaño A5"
 
 msgid "A6 paper (also suitable for e-readers)"
-msgstr "Tamaño A6 (útil también para lectores de libros electrónico)"
+msgstr "Tamaño A6 (útil también para lectores de libros electrónicos)"
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
@@ -78,7 +82,7 @@ msgid "Action"
 msgstr "Acción"
 
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Agregar una imagen de portada (PNG o JPG)"
@@ -87,12 +91,14 @@ msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Agregar un adjunto (PNG, JPG or PDF"
 
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
+msgstr "Agregar espacios sin saltos donde sea apropiado para el idioma"
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
 msgstr ""
+"Agregar enumeración de páginas para textos listados cuando el número de "
+"textos es mayor a (integer)"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Agrega este texto al creador de libros"
@@ -122,7 +128,7 @@ msgid "All sites"
 msgstr "Todos los sitios"
 
 msgid "All users"
-msgstr ""
+msgstr "Todas las usuarias"
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -142,7 +148,7 @@ msgstr ""
 "      en su título."
 
 msgid "Archive history"
-msgstr ""
+msgstr "Historial de archivo"
 
 msgid "Are you sure?"
 msgstr "¿Estás segura/o?"
@@ -175,7 +181,7 @@ msgid "Bare HTML, needed by the application"
 msgstr "HTML desnudo (bare), necesitado por la aplicación"
 
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr "Corrección para empaste en milímetros (margen interno adicional)"
+msgstr "Corrección en milímetros para cuadernillos (margen interno adicional)"
 
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
@@ -197,7 +203,7 @@ msgid "Bookbuilder page limit (integer)"
 msgstr "Límite de páginas del credaor de libro (número entero)"
 
 msgid "Build it"
-msgstr "Créalo"
+msgstr "Crear"
 
 msgid "Bulleted List"
 msgstr "Lista con viñetas"
@@ -218,7 +224,7 @@ msgid "Changes applied"
 msgstr "Cambios aplicados"
 
 msgid "Changes committed, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "Cambios aplicados, ¡gracias! Ahora están a la espera de ser publicados"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
@@ -238,7 +244,7 @@ msgid "Choose a paper format"
 msgstr "Elige un formato para el papel"
 
 msgid "Clear the book list"
-msgstr "Limpia la lista del libro"
+msgstr "Limpia la lista de libros"
 
 msgid "Click on the images to get the sample PDF"
 msgstr "Clickea en las imágenes para obtener un PDF de muestra"
@@ -256,13 +262,13 @@ msgid "Computing of differences took"
 msgstr "Calculando las diferencias"
 
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "Convertir al marcado del archivo"
 
 msgid "Couldn't add the text"
 msgstr "No se pudo agregar el texto"
 
 msgid "Couldn't automatically generate the uri!"
-msgstr ""
+msgstr "¡No se pudo generar automáticamente la URI!"
 
 msgid "Couldn't build that"
 msgstr "No se pudo crear eso"
@@ -277,7 +283,7 @@ msgid "Create a new special page"
 msgstr "Crear una nueva página especial"
 
 msgid "Create a new user"
-msgstr ""
+msgstr "Crear una nueva usuaria"
 
 msgid "Create a topic alias"
 msgstr "Crear un nuevo alias de temas"
@@ -400,6 +406,10 @@ msgid ""
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"Exactamente como 2up, pero las hojas están dispuestas\n"
+"        para ser cortadas horizontalmente primero y luego apilarlas.\n"
+"        De esta forma puedes imprimir, por ejemplo, cuadernillos A6\n"
+"        en hojas A4."
 
 msgid "Example"
 msgstr "Ejemplo"
@@ -413,10 +423,11 @@ msgstr "¡Archivo subido!"
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
-"Llena con páginas en blanco antes de si la encuadernación no está completa."
+"Llena con páginas en blanco antes de la última página si la encuadernación "
+"no está completa."
 
 msgid "Filters"
-msgstr ""
+msgstr "Filtros"
 
 msgid "First Author and Second Author"
 msgstr "Primer/a autor/a y segundo/a autor/a"
@@ -425,7 +436,7 @@ msgid "First Author, Second Author"
 msgstr "Primer/a autor/a, segundo/a autor/a"
 
 msgid "Fix typography (smart quotes)"
-msgstr "Crregir tipografía"
+msgstr "Corregir tipografía"
 
 msgid "Fixed category list"
 msgstr "Lista de categorías corregida"
@@ -434,6 +445,8 @@ msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
+"Encuadernación fija de 8 páginas, para ser cortadas horizontalmente, "
+"dobladas individualmente y juntarlas todas en un cuadernillo."
 
 msgid "Font preview"
 msgstr "Previsualización de la tipografía"
@@ -449,6 +462,9 @@ msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
 "in the body (%4), ignoring changes"
 msgstr ""
+"Notas a pie de página no calzan: se encontraron %1 notas a pie de página "
+"(%2) y se encontraron %3 referencias de notas a pie de página en el cuerpo "
+"(%4), ignorando cambios"
 
 msgid "For texts from the internet use"
 msgstr "Para textos extraídos desde internet usa"
@@ -496,9 +512,12 @@ msgid ""
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
+"HTML para agregar en cada página especial, insertado palabra por\n"
+"            palabra, por lo que tienes la posibilidad de echar todo a\n"
+"            perder ahora, así que sé cuidadosa/o"
 
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "Importador de HTML/Word"
 
 msgid "Half Letter paper"
 msgstr "Tamaño media carta"
@@ -522,7 +541,7 @@ msgid "I am human"
 msgstr "Soy una persona"
 
 msgid "I want an imposed (ready to print) PDF"
-msgstr "Quiero un PDF para empaste (listo para imprimir)"
+msgstr "Quiero un PDF en cuadernillo (listo para imprimir)"
 
 msgid "Id"
 msgstr "Id"
@@ -534,7 +553,8 @@ msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
-"Si seleccionaste que quieres para empastar, selecciona un tipo de empaste"
+"Si seleccionaste que quieres para empastar, selecciona un tipo de "
+"encuadernación"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -554,7 +574,7 @@ msgid "Images:"
 msgstr "Imágenes"
 
 msgid "Imposition schemas"
-msgstr "Tipos de empaste"
+msgstr "Tipos de encuadernación"
 
 msgid "In both case you will get a reverse indentation."
 msgstr "En ambos casos obtendrás una indentación inversa."
@@ -599,7 +619,7 @@ msgid "Jobs"
 msgstr "Trabajos"
 
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Jobs esperando antes que el tuyo:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr "Empaqueta 2 páginas lógicas consecutivas en solo una física"
@@ -621,7 +641,7 @@ msgstr ""
 msgid "Keep in mind that some character may be missing in the required font."
 msgstr ""
 "Ten en cuenta que algunos caracteres pueden no estar presentes en la "
-"tipografía requerida."
+"tipografía elegida."
 
 msgid ""
 "Keep in mind that unusually\n"
@@ -651,7 +671,7 @@ msgid "Leave it blank if you want it published right away."
 msgstr "Déjalo en blanco si lo quieres publicar así."
 
 msgid "Letter imposed PDF"
-msgstr "PDF tamaño carta para empaste"
+msgstr "PDF tamaño carta para cuadernillo"
 
 msgid "Letter paper"
 msgstr "Hoja tamaño carta"
@@ -693,7 +713,7 @@ msgid "Mail from"
 msgstr "Correo electrónico desde"
 
 msgid "Main canonical hostname, without protocol"
-msgstr ""
+msgstr "Nombre de host canónico principal, sin protocolo"
 
 msgid "Main font"
 msgstr "Tipografía principal"
@@ -768,7 +788,7 @@ msgid "Nice title"
 msgstr "Título"
 
 msgid "No"
-msgstr ""
+msgstr "No"
 
 msgid "No result found!"
 msgstr "¡No se encontró resultado!"
@@ -792,10 +812,12 @@ msgid "Notify to"
 msgstr "Notificar a"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+msgstr "Número de últimas publicaciones para mostrar en el RSS (un entero)"
 
 msgid "Number of latest entries to display on the special pages (an integer)"
 msgstr ""
+"Numero de últimas publicaciones para mostrar en las páginas especiales (un "
+"entero)"
 
 msgid "Numeric List"
 msgstr "Lista enumerada"
@@ -841,7 +863,7 @@ msgid "Page not found!"
 msgstr "¡Página no encontrada!"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Página donde comienza un capítulo"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -850,7 +872,7 @@ msgid ""
 msgstr ""
 "Las páginas no están reordenadas. La primera hoja\n"
 "        contiene las páginas 1 y 2, la segunda 3 y 4 y así sucesivamente,\n"
-"        lado por lado. Esto no significa que es para empaste."
+"        lado por lado. Esto no significa que sea para cuadernillos."
 
 msgid ""
 "Pages are reordered, in one or more groups\n"
@@ -926,6 +948,10 @@ msgid ""
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Por favor danos un nombre de usuario. *No* debe ser una dirección de correo "
+"electrónico.\n"
+"        Solo un seudónimo para identificar que cuando hay múltiples textos\n"
+"        subidos provienen de la misma persona."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -933,6 +959,10 @@ msgid ""
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"Por favor ten en cuenta que los filtros son específicos\n"
+"              de ciertas lenguas y pueden (o no) estar disponibles para\n"
+"              la lengua del texto. Si no están disponibles, deja el texto\n"
+"              como está."
 
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
@@ -957,10 +987,11 @@ msgid ""
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
 msgstr ""
-"Por favor ten en cuenta que las opciones de corrección para empaste\n"
-"  y doble página siguen esta lógica: si tienes algún formato para empaste,\n"
+"Por favor ten en cuenta que las opciones de corrección para encuadernación\n"
+"  y doble página siguen esta lógica: si tienes algún formato para "
+"encuadernación,\n"
 "  son ignorados para el PDF normal, pero aplicados para los PDFs para "
-"empaste.\n"
+"encuadernación.\n"
 "  Si tienes solo un PDF, las correcciones se le aplican a ese."
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
@@ -994,7 +1025,7 @@ msgid "Please select"
 msgstr "Selecciona, por favor"
 
 msgid "Please select the desired fonts"
-msgstr "Por favo selecciona las tipografías deseadas"
+msgstr "Por favor selecciona las tipografías deseadas"
 
 msgid "Please select the signature size:"
 msgstr "Por favor, selecciona el tamaño de la encuadernación:"
@@ -1018,10 +1049,10 @@ msgid "Priority"
 msgstr "Prioridad"
 
 msgid "Private"
-msgstr ""
+msgstr "Privado"
 
 msgid "Produce an EPUB instead of a PDF"
-msgstr ""
+msgstr "Produce un EPUB en vez de un PDF"
 
 msgid "Produced"
 msgstr "Producido"
@@ -1066,7 +1097,7 @@ msgid "Quotes"
 msgstr "Citas"
 
 msgid "RSS feed"
-msgstr "Feed RSS"
+msgstr "RSS"
 
 msgid "Random"
 msgstr "Aleatorio"
@@ -1081,6 +1112,15 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"Reordenar las notas a pie de página, corrigiendo la \n"
+"              enumeración considerando solo el orden en que fueron\n"
+"              insertadas. Por favor deja esto sin seleccionar si no sabes\n"
+"              lo que esto significa. Esta opción puede ser destructiva,\n"
+"              por favor úsala con precaución y revisa el resultado. En\n"
+"              caso de que encuentres problemas, por favor envía el\n"
+"              resultado reportándolos en el mensaje. Este procedimiento\n"
+"              trata de ser seguro e ignorará el cambio si faltan notas a\n"
+"              pie de página o son muchas."
 
 msgid "Reason"
 msgstr "Razón"
@@ -1098,7 +1138,7 @@ msgid "Remotes"
 msgstr "Remotes"
 
 msgid "Remove cover image"
-msgstr ""
+msgstr "Eliminar imagen de portada"
 
 msgid "Repeat email"
 msgstr "Repetir correo electrónico"
@@ -1129,7 +1169,7 @@ msgid "Revision for %1 has been deleted"
 msgstr "La revisión para %1 ha sido borrada"
 
 msgid "Roles"
-msgstr ""
+msgstr "Roles"
 
 msgid "Search"
 msgstr "Búsqueda"
@@ -1201,6 +1241,7 @@ msgstr "Se encontraron algunas revisiones en curso"
 
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
+"Disculpa, hay muchos trabajos pendientes, ¡intenta más tarde por favor!"
 
 msgid "Source"
 msgstr "Fuente"
@@ -1249,10 +1290,10 @@ msgstr ""
 "  redirección en su lugar, y será listado aquí"
 
 msgid "Such an uri already exists"
-msgstr ""
+msgstr "Ya existe esa URI"
 
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "¡Esa/e usuaria/o ya existe!"
 
 msgid "Such username already exists"
 msgstr "Ese nombre de usuaria/o ya existe"
@@ -1276,7 +1317,7 @@ msgid "TeX"
 msgstr "TeX"
 
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Texto formateado con marcado"
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
@@ -1371,7 +1412,7 @@ msgid "This text does not exist"
 msgstr "Este texto no existe"
 
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Este texto aún no ha sido publicado"
 
 msgid "Time is optional."
 msgstr "El tiempo es opcional."
@@ -1383,12 +1424,12 @@ msgid "Title for sorting"
 msgstr "Título para ordenar"
 
 msgid "Titles"
-msgstr "Títulos"
+msgstr "Textos"
 
 #. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
 msgid "To apply the changes, you can visit %1"
-msgstr "Para aplicar los camvios, puedes visitar %1"
+msgstr "Para aplicar los cambios, puedes visitar %1"
 
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr "Para mostrar los PDFs, cambia o agrega lo siguiente en el encabezado"
@@ -1425,7 +1466,7 @@ msgid "Try a random text if unsure"
 msgstr "Intenta con un texto aleatorio si no estás segura/o"
 
 msgid "Two side layout"
-msgstr "Diagramación para dos lados"
+msgstr "Diagramación para ambos lados de la hoja"
 
 msgid "URI"
 msgstr "URI"
@@ -1440,6 +1481,8 @@ msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
 msgstr ""
+"Eliminar sin condiciones todos los saltos de línea invisibles\n"
+"                en el texto"
 
 msgid "Unique ID for the text"
 msgstr "ID único para el texto"
@@ -1449,7 +1492,7 @@ msgstr "Textos no publicados"
 
 #. ($mime)
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Tipo de archivo %1 no soportado"
 
 msgid "Update"
 msgstr "Actualizar"
@@ -1458,7 +1501,7 @@ msgid "Update account info"
 msgstr "Actualizar información de la cuenta"
 
 msgid "Update category description"
-msgstr ""
+msgstr "Actualizar descripción de categoría"
 
 msgid "Upload"
 msgstr "Subir"
@@ -1467,17 +1510,18 @@ msgid "Url"
 msgstr "Url"
 
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
+msgstr "Usar LuaLaTeX en vez de XeLaTeX (más lento)"
 
 msgid "Use SSL for authenticated users"
-msgstr ""
+msgstr "Usar SSL para usuarias/os autenticadas/os"
 
 msgid "Use it in the body as"
 msgstr "Usarlo en el cuerpo como"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
-msgstr "Cuando sea para empaste, usar cuadernillos de %1 páginas cada uno"
+msgstr ""
+"Cuando sea para encuadernación, usar cuadernillos de %1 páginas cada uno"
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
@@ -1492,11 +1536,11 @@ msgstr "¡Se creó la/el usuaria/o %1!"
 
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr ""
+msgstr "Usuaria/o %1 borrada/o"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr ""
+msgstr "Usuaria/o %1 actualizada/o"
 
 msgid "User created"
 msgstr "Usuaria/o creado"
@@ -1510,7 +1554,7 @@ msgstr ""
 "mayúsculas"
 
 msgid "Users"
-msgstr ""
+msgstr "Usuarios"
 
 msgid "Verbatim block"
 msgstr "Bloque de código"
@@ -1553,7 +1597,7 @@ msgid "Year"
 msgstr "Año"
 
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 msgid "You already proved you are human"
 msgstr "Ya probaste que eres una persona"
@@ -1639,7 +1683,7 @@ msgid "about, links..."
 msgstr "acerca de, enlaces..."
 
 msgid "any"
-msgstr ""
+msgstr "cualquiera"
 
 msgid "automatically generated if not present, using author and title"
 msgstr "generado automáticamente si no se ocupa, usando autor/a y título"
@@ -1693,13 +1737,13 @@ msgstr ""
 "por ejemplo mi-autora-mi-titulo-1"
 
 msgid "left"
-msgstr ""
+msgstr "izquierda"
 
 msgid "mandatory"
 msgstr "obligatorio"
 
 msgid "no font embedding"
-msgstr ""
+msgstr "sin incrustación de tipografía"
 
 msgid "numbered item"
 msgstr "ítem numerado"
@@ -1735,7 +1779,7 @@ msgid "revision"
 msgstr "revisión"
 
 msgid "right"
-msgstr ""
+msgstr "derecha"
 
 msgid "strong emphasis"
 msgstr "énfasis fuerte"
