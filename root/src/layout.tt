@@ -156,13 +156,15 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
-	            <li[% IF nav == 'titles' %] class="active" [% END %]>
+	            <li[% IF nav == 'titles' %] class="active" [% END %]
+                      id="amw-nav-bar-titles">
                   <a href="[% c.uri_for('/library') %]"
 		             title="[% loc('texts sorted by title') %]">
                     [% loc('Titles') %]
                   </a>
                 </li>
-                <li[% IF nav == 'author' %] class="active" [% END %]>
+                <li[% IF nav == 'author' %] class="active" [% END %]
+                      id="amw-nav-bar-authors">
                   <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
 		             title="[% loc('texts sorted by author') %]">
                     [% loc('Authors') %]
