@@ -99,6 +99,16 @@ cd root/static/js/
 wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%204.4.3/ckeditor_4.4.3_standard.zip
 unzip ckeditor_4.4.3_standard.zip
 
+The same is true for jquery validate. The files are looked up in
+root/static/js/validate/dist. If not present, amusewiki will use the
+CDN. However, given that we're talking about validation, you are
+strongly encouraged to download the files locally.
+
+mkdir -p root/static/js/validate
+cd root/static/js/validate
+wget http://jqueryvalidation.org/files/jquery-validation-1.14.0.zip
+unzip jquery-validation-1.14.0.zip
+
 If you use logos in your pdfs, put them under in texmf (e.g
 $HOME/texmf/tex/generic/amusewiki/data) and run mktexlsr)
 

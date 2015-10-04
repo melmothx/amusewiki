@@ -170,7 +170,11 @@ __PACKAGE__->config(
 __PACKAGE__->config({
     'Model::AMWConfig' => {
         ckeditor_use_cdn => (! -f __PACKAGE__->path_to(qw/root static js
-                                                    ckeditor ckeditor.js/))
+                                                          ckeditor ckeditor.js/)),
+        validate_use_cdn => (! -f __PACKAGE__->path_to(qw/root static js
+                                                          validate
+                                                          dist
+                                                          jquery.validate.js/)),
        }
    });
 

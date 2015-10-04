@@ -1,6 +1,7 @@
 [% # -*- mode:html -*- %]
 
 [% INCLUDE 'include/markitup.tt' %]
+[% INCLUDE 'include/validate.tt' %]
 
 [% IF editing_warnings %]
 <div id="editing-warnings" class="alert alert-danger">
@@ -543,10 +544,6 @@
   </div>
 </div>
 
-
-<script type="text/javascript"
-        src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
-</script>
 <script type="text/javascript">
 $.validator.addMethod("muse", function (value, element) {
     var re = new RegExp("^#title +", "m");

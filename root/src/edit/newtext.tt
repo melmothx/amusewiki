@@ -1,6 +1,7 @@
 [% # -*- mode: html -*- %]
 
 [% INCLUDE 'include/ckeditor.tt' %]
+[% INCLUDE 'include/validate.tt' %]
 
 [% form_action %]
 
@@ -215,9 +216,6 @@
         [% loc('Prepare this text for the archiving') %]
       </button>
     </div>
-    <script type="text/javascript"
-            src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
-    </script>
     <script type="text/javascript">
       $(document).ready(function(){
         $("#ckform").validate({

@@ -29,6 +29,9 @@ it under the same terms as Perl itself.
 has ckeditor_use_cdn => ( is => 'ro',
                           isa => 'Bool');
 
+has validate_use_cdn => ( is => 'ro',
+                           isa => 'Bool');
+
 __PACKAGE__->meta->make_immutable;
 
 1;

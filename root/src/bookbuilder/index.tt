@@ -400,9 +400,8 @@
   </div>
 </form>
 
-<script type="text/javascript"
-        src="[% c.uri_for('/static/js/jquery.validate.min.js') %]">
-</script>
+[% INCLUDE 'include/validate.tt' %]
+
 <script type="text/javascript">
   function show_opening() {
       if ($('#twoside').is(":checked")) {
