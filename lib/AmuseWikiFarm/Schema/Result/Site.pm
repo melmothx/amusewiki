@@ -2007,7 +2007,9 @@ sub update_from_params {
     }
 
     # this is totally arbitrary
-    foreach my $option (qw/html_special_page_bottom use_luatex/) {
+    foreach my $option (qw/html_special_page_bottom use_luatex
+                           do_not_enforce_commit_message
+                          /) {
         my $value = delete $params->{$option} || '';
         push @options, {
                         option_name => $option,
@@ -2275,6 +2277,12 @@ sub use_luatex {
     my ($self) = @_;
     $self->get_option('use_luatex') ? 1 : 0;
 }
+
+sub do_not_enforce_commit_message {
+    my ($self) = @_;
+    $self->get_option('do_not_enforce_commit_message') ? 1 : 0;
+}
+
 
 =head2 serialize_site
 

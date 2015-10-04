@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 9;
+use Test::More tests => 11;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -21,6 +21,7 @@ my %tests = (
              paginate_archive_after => 23,
              html_special_page_bottom => '<script>alert("hello")</script>',
              use_luatex => 1,
+             do_not_enforce_commit_message => 1,
             );
 
 foreach my $opt (keys %tests) {
@@ -42,6 +43,6 @@ foreach my $opt (keys %tests) {
 }
 is $site->html_special_page_bottom, $tests{html_special_page_bottom};
 ok $site->use_luatex, "Use luatex";
-
+ok $site->do_not_enforce_commit_message, "Do not enforce commit message";
 ok !$site->get_option('lakjsdfl');
 
