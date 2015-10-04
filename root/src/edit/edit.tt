@@ -263,8 +263,11 @@
     </div>
     [% UNLESS locked_editing %]
     <p>
-      <button type="submit" class="btn btn-default" name="preview" value="preview">[% loc('Preview') %]</button>
-      <button type="submit" class="btn btn-default" name="commit"  value="commit">[% loc('Commit')  %]</button>
+      <button type="submit" class="btn btn-default" name="preview"
+              value="preview" id="amw-edit-form-preview-button">
+        [% loc('Preview') %]</button>
+    <button type="submit" class="btn btn-default" id="amw-edit-form-commit-button"
+            name="commit"  value="commit">[% loc('Commit')  %]</button>
     </p>
     [% END %]
   </div>
@@ -557,6 +560,17 @@ $(document).ready(function(){
             message: "required",
             email: "email",
         }
+    });
+    [% # http://stackoverflow.com/questions/24450524/jquery-validation-plugin-with-two-submit-buttons %]
+    $("button#amw-edit-form-commit-button").click(function() {
+        console.log("On commit add");
+        $("#rev-message").rules('add', "required");
+        $("#museform").submit();
+    });
+    $("button#amw-edit-form-preview-button").click(function() {
+        console.log("On preview just submit");
+        $("#rev-message").rules('remove');
+        $("#museform").submit();
     });
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });
 });
