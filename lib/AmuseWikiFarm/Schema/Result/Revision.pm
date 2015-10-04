@@ -296,6 +296,10 @@ sub _write_commit_file {
     my $file = $self->git_msg_file;
     write_file($file, "$title\n");
     if (my $body = $self->message) {
+        # if by chance we pulled in ^M and \0, unclear if it happens
+        # or git clear that up for us. Anyway, will not do any harm.
+        # Hopefully.
+        $body =~ s/[\0\r]//gs;
         append_file($file, "\n$body\n");
     }
     return $file;

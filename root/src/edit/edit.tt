@@ -557,21 +557,23 @@ $(document).ready(function(){
         rules: {
             body: "required muse",
             username: "required",
+            [%- UNLESS site.do_not_enforce_commit_message %]
             message: "required",
+            [%- END %]
             email: "email",
         }
     });
+    [% UNLESS site.do_not_enforce_commit_message %]
     [% # http://stackoverflow.com/questions/24450524/jquery-validation-plugin-with-two-submit-buttons %]
     $("button#amw-edit-form-commit-button").click(function() {
-        console.log("On commit add");
         $("#rev-message").rules('add', "required");
         $("#museform").submit();
     });
     $("button#amw-edit-form-preview-button").click(function() {
-        console.log("On preview just submit");
         $("#rev-message").rules('remove');
         $("#museform").submit();
     });
+    [% END %]
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });
 });
 </script>

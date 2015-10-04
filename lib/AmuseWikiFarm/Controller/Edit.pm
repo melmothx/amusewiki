@@ -268,7 +268,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
         $revision->update;
 
         $c->log->debug("Handling the thing");
-        if (exists $params->{body}) {
+        if ($params->{body}) {
             if (my $error = $revision->edit($params)) {
                 my $errmsg;
                 if (ref($error) and ref($error) eq 'HASH') {
@@ -308,17 +308,16 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 (index($params->{body}, '#title ') >= 0)) {
 
                 # append the message to the existing one
-                my $rev_message = $params->{message} || '';
-                $rev_message =~ s/\r//g;
+                my $rev_message = $params->{message} || '<no message>';
                 my $wrapper = Text::Wrapper->new(columns => 72);
                 my $message = $revision->message || '';
                 $message .= "\n\n * " . DateTime->now->datetime . "\n" .
-                  $wrapper->wrap($params->{message}) . "\n";
+                  $wrapper->wrap($rev_message) . "\n";
 
                 # possibly fake, we don't care
                 my $reported_username = $params->{username} || 'anonymous';
                 $message .= "\n-- \n" . $reported_username . "\n\n";
-
+                $message =~ s/[\r\0]//gs;
                 $revision->commit_version($message);
 
                 # assert to have a fresh copy
