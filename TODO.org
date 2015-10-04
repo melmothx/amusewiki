@@ -18,7 +18,12 @@ This needs a refactoring when the parsing is done in context.
   CLOSED: [2015-03-22 dom 09:09]
 * DONE Properly document lexicon.json
   CLOSED: [2015-04-08 mer 12:00]
-* TODO When activating an user, send a mail
+* DONE When activating an user, send a mail
+  CLOSED: [2015-10-04 dom 16:06]
+
+  Not needed, actually. When admin is operating, it should be silent
+  as it is.
+
 * DONE Add descriptions to categories
   CLOSED: [2015-05-14 gio 15:31]
 
@@ -32,5 +37,13 @@ the major blog engines. So maybe it should be stored in the db, and in
 a public directory.
 
 Same goes with the teaser, probably.
+
+
+* TODO Set the author of the commit.
+
+  - This needs adding a column to the revision table. The author
+    should be just the username (sanitized) and the site canonical
+    name. Like anon@amusewiki.org Totally bogus but will give a better
+    overlook when looking at the history.
 
 
