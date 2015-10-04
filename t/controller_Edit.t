@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 37;
+use Test::More tests => 43;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -135,3 +135,16 @@ $mech->set_fields(title => "custom timestamp",
                   pubdate => $date);
 $mech->click;
 $mech->content_contains("#pubdate 2014-11-11") or diag $mech->content;
+
+diag "Testing the js validation";
+$mech->content_contains(q[$("#rev-message").rules('add', "required");]);
+$mech->content_contains(q[message: "required",]);
+my $editing = $mech->uri->path;
+$mech->get_ok("/admin/sites/edit/$site_id/");
+$mech->submit_form(with_fields => {
+                                   do_not_enforce_commit_message => 'on',
+                                  },
+                   button => 'edit_site');
+$mech->get_ok($editing);
+$mech->content_lacks(q[$("#rev-message").rules('add', "required");]);
+$mech->content_lacks(q[message: "required",]);
