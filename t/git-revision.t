@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 21;
+use Test::More tests => 23;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -23,7 +23,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
 my $archive_git = $site->git;
 
-ok ($site);
+ok ($site, "Created $site_id");
 
 my ($log) = $archive_git->log;
 
@@ -57,7 +57,7 @@ like $revision->starting_file_body, qr/\Q$expected_starting\E/,
 
 like $revision->muse_body, qr/\Q$expected\E/, "Correctly filtered";
 
-$revision->commit_version;
+$revision->commit_version("\rGar\0ba\0ge\r\nGar\rba\0ge\0\0Garbage");
 
 my $uri = $revision->publish_text;
 
@@ -66,6 +66,15 @@ ok($uri, "Publish revision returned the uri") and diag "Found $uri";
 my @logs = $archive_git->log;
 
 ok ((@logs == 4), "Found 4 commits");
+{
+    local $Data::Dumper::Useqq = 1;
+    diag Dumper(\@logs);
+}
+my @garbage = grep { $_->message =~ m/Garbage.*Garbage.*Garbage/s } @logs;
+ok ((@garbage == 3), "Found 3 commits with the garbage string");
+# testing \0 is not needed, git would die anyway and not commit that
+@garbage = grep { $_->message =~ m/[\r\0]/s } @logs;
+ok (!@garbage, "No commit with \\r or \\0 inside, filter worked");
 
 like $logs[0]->message, qr/Published revision \d+/, "Log message matches";
 
