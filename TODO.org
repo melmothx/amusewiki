@@ -57,4 +57,9 @@ applying the sql files.
 Explain and document from start to finish the interface (for non-tech
 people).
 
+* TODO Support solr as an alternative to xapian?
+
+Replacing it is out of question, because xapian is pretty
+straightforward to setup (no user interaction needed) and fast. And
+it's not a +100Mb tarball.
 
