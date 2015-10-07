@@ -31,19 +31,30 @@ Db only, probably.
 
 * TODO covers/decorative text image 
 
-This kind of images kind of defeat the purpose of this engine, if we
-store the crap in the git. But still, this is a common feature of all
-the major blog engines. So maybe it should be stored in the db, and in
-a public directory.
-
-Same goes with the teaser, probably.
-
+This should leverage the header. Like #coverimage and #teaser. It add
+noise, but better then scattering info around. Not liking that so
+much, but still this way we keep the crap in the self-contained git.
 
 * TODO Set the author of the commit.
 
-  - This needs adding a column to the revision table. The author
-    should be just the username (sanitized) and the site canonical
-    name. Like anon@amusewiki.org Totally bogus but will give a better
-    overlook when looking at the history.
+This needs adding a column to the revision table. The author should be
+just the username (sanitized) and the site canonical name. Like
+anon@amusewiki.org Totally bogus but will give a better overlook when
+looking at the history.
+
+* TODO Adding git remotes in the interface.
+* TODO Slides (waiting for Text::Amuse::Compile)
+** TODO show the format in the page, if present
+** TODO add the option to enable that in the admin
+** TODO add support to the bookbuilder, with selection of fonts and style
+* TODO DeployHandler for the DB upgrades
+
+This way pulling and restarting should do the trick without manually
+applying the sql files.
+
+* TODO Detailed AmuseWiki manual
+
+Explain and document from start to finish the interface (for non-tech
+people).
 
 
