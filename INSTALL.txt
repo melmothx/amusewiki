@@ -219,6 +219,6 @@ should be good.
 
 Later, the configuration for cgit can be refreshed with:
 
-  ./script/install-cgit.pl --reconfigure --gitpath /var/cache/git/ \
+  ./script/install-cgit.pl --reconfigure \
     --hostname amusewiki.org
 

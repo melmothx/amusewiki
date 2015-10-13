@@ -13,12 +13,10 @@ use Getopt::Long;
 
 binmode STDOUT, ":encoding(utf-8)";
 
-my $gitpath = '/var/cache/git/';
 my $cgitversion = 'v0.11.2';
 my ($hostname, $reinstall, $reconfigure, $help);
 
 GetOptions(
-           'gitpath=s'  => \$gitpath,
            'hostname=s' => \$hostname,
            'cgit-version=s' => \$cgitversion,
            'reconfigure' => \$reconfigure,
@@ -43,10 +41,6 @@ Options:
 
  Skip the download and compile step, and just reconfigure cgitrc with
  the values from the database (i.e., sites with cgi integration set)
-
- --gitpath </path/to/git/archives/>
-
- Path to the git repo root. By default is /var/cache/git.
 
  --hostname <git.mysite.org>
 
@@ -163,7 +157,8 @@ CONFIG
 
     foreach my $site ($schema->resultset('Site')->all) {
         next unless $site->cgit_integration;
-        my $path = File::Spec->rel2abs(catfile($gitpath,  $site->id . ".git"));
+        my $path = File::Spec->rel2abs(catdir($amw_home, 'repo',
+                                              $site->id, ".git"));
         unless (-d $path) {
             warn "Repo $path not found!, skipping\n";
             next;
@@ -177,6 +172,7 @@ CONFIG
               ".git\n";
             print $fh "\n\n";
         }
+        print "Exported " . $site->id . " into cgit\n";
     }
     close $fh;
 }

@@ -12,6 +12,7 @@ dedicated tree.
    (default: enforce, can be set in the admin) (GH #2)
  - Removed from the repo jquery validation, use CDN if not installed
  - Localized the jquery validation messages
+ - Fixed script install-cgit.pl
 
 The jquery validation scripts are no longer shipped. If not present,
 amusewiki will use the CDN, but PLEASE install them locally on upgrade:
@@ -20,6 +21,12 @@ amusewiki will use the CDN, but PLEASE install them locally on upgrade:
  cd root/static/js/validate
  wget http://jqueryvalidation.org/files/jquery-validation-1.14.0.zip
  unzip jquery-validation-1.14.0.zip
+
+Please reconfigure cgit to pick up the correct paths. Now you're not
+required any more to symlink the repo in /var/cache/git if you don't
+need the git:// cloning.
+
+ ./script/install-cgit.pl --reconfigure
 
 1.34 2015-08-26
 
