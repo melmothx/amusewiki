@@ -7,14 +7,32 @@ use warnings;
 use Test::More;
 use File::Spec::Functions qw/catfile catdir/;
 use File::Copy::Recursive qw/dircopy/;
-use File::Path qw/remove_tree/;
+use File::Path qw/remove_tree make_path/;
+use File::Copy qw/copy/;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::Cache;
 
-plan tests => 13;
+plan tests => 11;
+
+my $texmfhome = `kpsewhich -var-value TEXMFHOME`;
+chomp $texmfhome;
+my $texmffiledir = catdir($texmfhome, qw/tex generic amusewiki data/);
+
+foreach my $pdflogo (qw/logo-yu.pdf logo-en.pdf/) {
+    unless (system(kpsewhich => $pdflogo) == 0) {
+        diag "$pdflogo not found, installing it into into $texmffiledir";
+        make_path($texmffiledir, { verbose => 1 }) unless -d $texmffiledir;
+        my $src = catfile(qw/t texmf-files/, $pdflogo);
+        copy($src, $texmffiledir);
+        system('mktexlsr');
+        unless (system(kpsewhich => $pdflogo) == 0) {
+            die "Couldn't find or install $pdflogo into TEXMFHOME, please report this issue\n";
+        }
+    }
+}
 
 if (-f 'test.db') {
     unlink 'test.db' or die $!;
@@ -46,13 +64,6 @@ $mr_root->add_to_roles($root_role);
 
 ok($mr_root->id);
 
-foreach my $pdflogo (qw/logo-yu.pdf logo-en.pdf/) {
-    my $exit_code = system(kpsewhich => $pdflogo);
-    is $exit_code, 0, "$pdflogo found can proceed"
-      or die "No $pdflogo found by kpsewhich, needed by tests, "
-        . "please install it into texmf kpsewhich $pdflogo."
-          . "The files can be found in t/texmf-files\n";
-}
 
 my %repos = ('0blog0' => {
                           id => '0blog0',
