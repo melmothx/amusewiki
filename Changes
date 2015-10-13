@@ -7,9 +7,9 @@ dedicated tree.
 1.35 UNRELEASED
 
  - Updated i18n: spanish
- - Do not validate the commit message on preview
+ - Do not validate the commit message on preview (GH #2)
  - New option to trigger the validation on commit message
-   (default: enforce, can be set in the admin)
+   (default: enforce, can be set in the admin) (GH #2)
  - Removed from the repo jquery validation, use CDN if not installed
  - Localized the jquery validation messages
 
