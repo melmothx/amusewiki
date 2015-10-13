@@ -26,7 +26,8 @@ foreach my $pdflogo (qw/logo-yu.pdf logo-en.pdf/) {
         diag "$pdflogo not found, installing it into into $texmffiledir";
         make_path($texmffiledir, { verbose => 1 }) unless -d $texmffiledir;
         my $src = catfile(qw/t texmf-files/, $pdflogo);
-        copy($src, $texmffiledir);
+        copy($src, $texmffiledir)
+          or die "Failed to copy $src into $texmffiledir $!";
         system('mktexlsr');
         unless (system(kpsewhich => $pdflogo) == 0) {
             die "Couldn't find or install $pdflogo into TEXMFHOME, please report this issue\n";
