@@ -721,7 +721,16 @@ sub compile_options {
 sub available_formats {
     my $self = shift;
     my %formats;
-    foreach my $f (qw/tex pdf a4_pdf lt_pdf html bare_html epub zip/) {
+    foreach my $f (qw/tex
+                      pdf
+                      a4_pdf
+                      lt_pdf
+                      html
+                      bare_html
+                      epub
+                      zip
+                      sl_pdf
+                     /) {
         $formats{$f} = $self->$f;
     }
     return %formats;
