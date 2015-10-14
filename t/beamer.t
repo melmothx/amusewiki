@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 2;
+use Test::More tests => 8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -41,8 +41,17 @@ foreach my $muse ('slides.muse', 'slides-s-no.muse') {
     copy(catfile(qw/t files/, $muse), $destination)
       or die "Cannot t/files/$muse into $destination $!";
 }
+$site->git->add($destination);
+$site->git->commit({ message => "Added files" });
 $site->update_db_from_tree;
 ok (-f catfile($destination, 'slides.sl.pdf'), "Slides created");
 ok (! -f catfile($destination, 'slides-s-no.sl.pdf'),
     "Slides not created if #slides no");
+$mech->get_ok('/library/slides');
+$mech->content_contains('Slides (PDF)');
+$mech->get_ok('/library/slides-s-no');
+$mech->content_lacks('Slides (PDF)');
+$mech->get_ok('/library/slides.sl.pdf');
 
+$mech->get('/library/slides-s-no.sl.pdf');
+is ($mech->status, '404', "slides for slides-s-no not found");

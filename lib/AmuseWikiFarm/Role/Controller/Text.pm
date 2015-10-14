@@ -22,6 +22,7 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
                   (
                       a4\.pdf |
                       lt\.pdf |
+                      sl\.pdf |
                       pdf     |
                       html    |
                       tex     |

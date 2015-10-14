@@ -1217,7 +1217,7 @@ sub index_file {
 
 
     my $fields = $self->title_fields;
-
+    delete $details->{slides}; # not needed
     foreach my $col (keys %$details) {
         my $db_col = lc($col);
         if (exists $fields->{$db_col}) {

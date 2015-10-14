@@ -151,6 +151,15 @@
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
+      [% IF site.sl_pdf && text.check_if_file_exists('sl.pdf') %]
+      <span id="downloadslides">
+        <a href="[% basename %].sl.pdf">
+	      <img src="[% c.uri_for('/static/images/slides.png') %]"
+                 alt="[% loc('Slides (PDF)') %]"
+	           title="[% loc('Slides (PDF)') %]"
+               class="pdfmyicons" /></a>
+      </span>
+      [% END %]
       [% IF site.epub && text.check_if_file_exists('epub') %]
       <span id="downloadepub">
         <a href="[% basename %].epub">
