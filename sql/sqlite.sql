@@ -55,6 +55,7 @@ CREATE TABLE site (
        pdf       INTEGER(1) NOT NULL DEFAULT 1,
        a4_pdf    INTEGER(1) NOT NULL DEFAULT 1,
        lt_pdf    INTEGER(1) NOT NULL DEFAULT 1,
+       sl_pdf    INTEGER(1) NOT NULL DEFAULT 0,
        html      INTEGER(1) NOT NULL DEFAULT 1,
        bare_html INTEGER(1) NOT NULL DEFAULT 1,
        epub      INTEGER(1) NOT NULL DEFAULT 1,
