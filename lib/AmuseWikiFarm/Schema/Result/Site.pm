@@ -1843,6 +1843,7 @@ sub update_from_params {
     # first round: booleans. Here there is not much to do. If it's set, 1,
     # otherwise 0
     my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
+                       sl_pdf
                        logo_with_sitename
                        cgit_integration
                        secure_site

@@ -29,6 +29,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
 $site->update({ sl_pdf => 1,
                 cgit_integration => 1,
+                secure_site => 0,
               });
 my $mech = Test::WWW::Mechanize::Catalyst
   ->new(catalyst_app => 'AmuseWikiFarm',
