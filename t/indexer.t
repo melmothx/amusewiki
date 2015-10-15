@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 65;
+use Test::More tests => 66;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Date::Parse qw/str2time/;
@@ -32,6 +32,7 @@ is(muse_naming_algo("CrimethInc. Политика для тех, кому сли
    "crimethinc-politika-dlya-teh-komu-slishkom-skuchno",
    "checking naming algo 1, with cyrillic");
 
+is(muse_naming_algo(" Ñ test ñ test ñ Ñ "), "n-test-n-test-n-n", "Spanish ok");
 
 is(muse_naming_algo("Боб Блэк Анархия: Вопросы и Ответы"),
    "bob-blek-anarhiya-voprosy-i-otvety",
