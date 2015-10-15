@@ -427,31 +427,21 @@
     </div>
     <div>&nbsp;</div>
     <div id="footer" class="footer center">
-      <a href="[% c.uri_for('/feed') %]" class="feed">
-        [% loc('RSS feed') %]
-      </a>
+      <a href="[% c.uri_for('/feed') %]" class="feed">[% loc('RSS feed') %]</a>
       |
 	  <a href="[% c.uri_for('/random') %]">[% loc('Random') %]</a>
       |
       <a href="[% c.uri_for('/library') %]"
-		 title="[% loc('texts sorted by title') %]">
-        [% loc('Titles') %]
-      </a>
+		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
       |
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
-		 title="[% loc('texts sorted by author') %]">
-        [% loc('Authors') %]
-      </a>
+		 title="[% loc('texts sorted by author') %]">[% loc('Authors') %]</a>
       |
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
-		 title="[% loc('texts sorted by topics') %]">
-        [% loc('Topics') %]
-      </a>
+		 title="[% loc('texts sorted by topics') %]">[% loc('Topics') %]</a>
       [% IF c.user_exists || site.human_can_edit %]
       |
-      <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
-        [% loc('Add to library') %]
-      </a>
+      <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add to library') %]</a>
       [% END %]
     </div>
   </body>
