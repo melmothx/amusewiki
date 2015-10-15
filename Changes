@@ -4,7 +4,7 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.35 UNRELEASED
+1.35 2015-10-15
 
  - Updated i18n: spanish
  - Do not validate the commit message on preview (GH #2)
@@ -13,6 +13,8 @@ dedicated tree.
  - Removed from the repo jquery validation, use CDN if not installed
  - Localized the jquery validation messages
  - Fixed script install-cgit.pl
+ - Fixed missing translitteration of ñ (GH #10)
+ - Fixed trailing space in footer (GH #12)
 
 The jquery validation scripts are no longer shipped. If not present,
 amusewiki will use the CDN, but PLEASE install them locally on upgrade:
