@@ -1,0 +1,87 @@
+#!/usr/bin/env perl
+
+BEGIN {
+    $ENV{DBICDH_DEBUG} = 1;
+}
+
+=pod
+
+There are 3 cases
+
+=over 4
+
+=item New install from install.pl
+
+This is not a problem, version storage is installed right away. We
+have to call prepare_install for each version, though.
+
+=item  Upgrade from versioned schema.
+
+Also not a problem. Should go as expected.
+
+=item Upgrade from old schemas, not versioned.
+
+We have to set manually the schema at version 2, and hope that the
+user applied all the previous sql files.
+
+=back
+
+=cut
+
+
+
+use strict;
+use warnings;
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use AmuseWikiFarm::Schema;
+use DBIx::Class::DeploymentHandler;
+use Getopt::Long;
+use Data::Dumper;
+my ($prepare);
+
+GetOptions(prepare => \$prepare) or die;
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse')
+  or die "Couldn't connect to amuse DB!";
+
+# print $schema->storage->sqlt_type, "\n";
+
+# with sqlite, disable the foreign keys, otherwise copying to
+# temporary tables fail.
+
+if ($schema->storage->sqlt_type eq 'SQLite') {
+    $schema->storage->dbh->do('pragma foreign_keys=off');
+}
+
+my $dh = DBIx::Class::DeploymentHandler->new({
+                                              schema => $schema,
+                                              databases => [qw/SQLite MySQL PostgreSQL/],
+                                              sql_translator_args => { add_drop_table => 0,
+                                                                       quote_identifiers => 1,
+                                                                     },
+                                              script_directory => "$FindBin::Bin/../dbicdh",
+                                              force_overwrite => 1,
+                                             });
+
+# this is not documented because it's for the devels only
+# at each bump we do a prepare step.
+if ($prepare) {
+    $dh->prepare_install;
+    # this happens only to create the version 2, hopefully
+    $dh->prepare_upgrade if $dh->version_storage_is_installed;
+    exit;
+}
+
+unless ($dh->version_storage_is_installed) {
+    print "Version storage is not installed, installing, and setting version to 2\n";
+    $dh->install_version_storage({ version => 2 });
+    $dh->add_database_version({ version => 2 });
+}
+
+if ($dh->schema_version > $dh->database_version) {
+    $dh->upgrade;
+}
+
+# print $dh->database_version . "\n";
+
