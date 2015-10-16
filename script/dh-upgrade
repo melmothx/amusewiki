@@ -15,14 +15,43 @@ There are 3 cases
 This is not a problem, version storage is installed right away. We
 have to call prepare_install for each version, though.
 
+  [DBICDH] [info] installing version 4
+  [DBICDH] [info] deploying version 4
+  [DBICDH] [debug] Running SQL from /home/melmoth/amw/AmuseWikiFarm/script/../dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
+  [DBICDH] [debug] Running SQL from /home/melmoth/amw/AmuseWikiFarm/script/../dbicdh/SQLite/deploy/4/001-auto.sql
+  [DBICDH] [debug] Adding database version 4
+
 =item  Upgrade from versioned schema.
 
-Also not a problem. Should go as expected.
+Also not a problem. Should go as expected. If it doesn't work, it's a bug
 
 =item Upgrade from old schemas, not versioned.
 
 We have to set manually the schema at version 2, and hope that the
 user applied all the previous sql files.
+
+This is what is going to happen, provided that the files are in place:
+
+  $ script/dh-upgrade
+  Version storage is not installed, installing, and setting version to 2
+  [DBICDH] [info] installing_resultsource __VERSION, version 2
+  [DBICDH] [debug] Running SQL from /home/melmoth/amw/AmuseWikiFarm/script/../dbicdh/SQLite/deploy/2/001-auto-__VERSION.sql
+  [DBICDH] [debug] Adding database version 2
+  [DBICDH] [info] backing up
+  [DBICDH] [info] upgrading
+  [DBICDH] [info] upgrade_single_step'ing [
+    2,
+    3
+  ]
+  [DBICDH] [debug] Running SQL from /home/melmoth/amw/AmuseWikiFarm/script/../dbicdh/SQLite/upgrade/2-3/001-auto.sql
+  [DBICDH] [debug] Adding database version 3
+  [DBICDH] [info] upgrade_single_step'ing [
+    3,
+    4
+  ]
+  [DBICDH] [debug] Running SQL from /home/melmoth/amw/AmuseWikiFarm/script/../dbicdh/SQLite/upgrade/3-4/001-auto.sql
+  [DBICDH] [debug] Adding database version 4
+
 
 =back
 
@@ -61,7 +90,8 @@ my $dh = DBIx::Class::DeploymentHandler->new({
                                                                        quote_identifiers => 1,
                                                                      },
                                               script_directory => "$FindBin::Bin/../dbicdh",
-                                              force_overwrite => 1,
+                                              backup_directory => "$FindBin::Bin/../db_backups",
+                                              force_overwrite => $prepare,
                                              });
 
 # this is not documented because it's for the devels only
@@ -80,6 +110,7 @@ unless ($dh->version_storage_is_installed) {
 }
 
 if ($dh->schema_version > $dh->database_version) {
+    $dh->backup;
     $dh->upgrade;
 }
 

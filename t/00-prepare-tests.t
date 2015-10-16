@@ -9,8 +9,12 @@ use File::Spec::Functions qw/catfile catdir/;
 use File::Copy::Recursive qw/dircopy/;
 use File::Path qw/remove_tree make_path/;
 use File::Copy qw/copy/;
+use DBIx::Class::DeploymentHandler;
 
-BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+BEGIN {
+    $ENV{DBIX_CONFIG_DIR} = "t";
+    $ENV{DBICDH_DEBUG} = 1;
+};
 
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::Cache;
@@ -43,7 +47,14 @@ AmuseWikiFarm::Archive::Cache->new->clear_all;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-$schema->deploy;
+DBIx::Class::DeploymentHandler->new({
+                                     schema => $schema,
+                                     databases => [qw/SQLite MySQL PostgreSQL/],
+                                     sql_translator_args => { add_drop_table => 0,
+                                                              quote_identifiers => 1,
+                                                            },
+                                     script_directory => "dbicdh",
+                                    })->install;
 
 ok (-f 'test.db', "test.db created");
 ok($schema, "Schema exists now");

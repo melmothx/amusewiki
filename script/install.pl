@@ -1,9 +1,14 @@
 #!/usr/bin/env perl
 
+BEGIN {
+    $ENV{DBICDH_DEBUG} = 1;
+}
 use strict;
 use warnings;
 use utf8;
-use lib 'lib';
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use DBIx::Class::DeploymentHandler;
 use AmuseWikiFarm::Schema;
 use Data::Dumper;
 use Try::Tiny;
@@ -15,6 +20,15 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 die "Couldn't load the schema! Please check dbic.yaml!\n" unless $schema;
 
+my $dh = DBIx::Class::DeploymentHandler->new({
+                                              schema => $schema,
+                                              databases => [qw/SQLite MySQL PostgreSQL/],
+                                              sql_translator_args => {
+                                                                      add_drop_table => 0,
+                                                                      quote_identifiers => 1,
+                                                                     },
+                                              script_directory => "$FindBin::Bin/../dbicdh",
+                                             });
 # try if we have tables in this db. If so, bail out.
 
 print "BEWARE! I'm going to recreate the database from scratch!\n";
@@ -23,7 +37,7 @@ print qq{Are you sure you want to continue? Please type "YES": };
 my $answer = ask_user();
 
 if ($answer eq 'YES') {
-    $schema->deploy;
+    $dh->install;
 }
 else {
     print "Ok, bailing out\n";

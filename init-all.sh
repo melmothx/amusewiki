@@ -43,6 +43,11 @@ if [ ! -f "$js_dir/ckeditor/ckeditor.js" ]; then
     cd $home_dir
 fi
 
+# perl dependencies. Probably switch to use carton
+
+cpanm --installdeps .
+./script/dh-upgrade
+
 # echo `pwd`
 
 start_all () {
