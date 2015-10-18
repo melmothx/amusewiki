@@ -127,7 +127,7 @@
       <input id="attachment" name="attachment" type="file" />
     </p>
     <p>
-      <button type="submit" name="upload" value="upload" class="btn btn-default">
+      <button type="submit" name="upload" value="upload" class="btn btn-default" id="amw-edit-upload-file">
         [% loc('Upload') %]
       </button>
       <br />
@@ -580,6 +580,10 @@ $(document).ready(function(){
         $("#museform").submit();
     });
     $("button#amw-edit-form-preview-button").click(function() {
+        $("#rev-message").rules('remove');
+        $("#museform").submit();
+    });
+    $("button#amw-edit-upload-file").click(function() {
         $("#rev-message").rules('remove');
         $("#museform").submit();
     });
