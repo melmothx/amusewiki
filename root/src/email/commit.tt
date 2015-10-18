@@ -14,11 +14,15 @@
 [% loc('To apply the changes, you can visit [_1]',
     c.uri_for_action('/publish/pending')) %]
 
-[% loc('The revision has the following messages') %]
-
 [% FOREACH attachment IN revision.attached_files %]
-Attachment: [% c.uri_for_action('/edit/edit', [revision.f_class, revision.title.uri, attachment]) %]
+[%- IF loop.first -%]
+[% loc('Attachments') %]:
 [% END %]
+ - [% c.uri_for_action('/edit/edit', [revision.f_class, revision.title.uri, attachment]) %]
+[% END %]
+
+
+[% loc('The revision has the following messages') %]
 
 [% revision.message %]
 
