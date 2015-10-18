@@ -60,7 +60,7 @@ requires 'XML::FeedPP' => '0.43';
 requires 'Git::Wrapper';
 requires 'Text::Wrapper'; # for revision messages
 requires 'Email::Valid';
-
+requires 'File::Copy::Recursive';
 requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor' => '0.10';
 
