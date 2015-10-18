@@ -40,6 +40,9 @@
           [%- END -%]
           <button class="btn btn-default" type="submit" name="go" value="go">
             [% publish_msg %]
+            [% IF rev.is_deferred %]<br />
+            ([% loc('This text will be deferred to [_1]', rev.is_deferred) %])
+            [% END %]
           </button>
 
         </form>
@@ -63,6 +66,7 @@
         [% rev.message | html %]
       </td>
       <td>
+        [% # this is a bogus value created by HTML import %]
         [% rev.updated.dmy %] [% rev.updated.hms %] [% loc('UTC') %]
       </td>
       [% IF c.user_exists %]

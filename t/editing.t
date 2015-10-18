@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 89;
+use Test::More tests => 99;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -50,8 +50,22 @@ ok -f ($revision->f_full_path_name),
 my $muse = $revision->muse_body;
 
 like $muse, qr/^#author pInco$/m, "Found author";
+is $revision->muse_header->{author}, 'pInco', "author found in the header";
+is $revision->muse_header->{title}, 'Pallino', "title found in the header";
+ok $revision->muse_header->{pubdate}, "found the pubdate"
+  and diag "Revision has pubdate: " . $revision->muse_header->{pubdate};
 like $muse, qr/^#title Pallino$/m, "Found title";
-
+ok !$revision->is_deferred, "text is not deferred";
+is $revision->deferred_pubdate, '', "no deferred pubdate";
+$revision->edit("#title test\n#pubdate 2026-10-11 12:00\n\nBlabla");
+is $revision->is_deferred, "2026-10-11", "text now is deferred";
+is $revision->muse_header->{pubdate}, "2026-10-11 12:00";
+$revision->edit("garbage");
+ok !$revision->is_deferred, "text is not deferred";
+$revision->edit("#pubdate lkasdlfkjalsdf\n\nblabla");
+ok !$revision->is_deferred, "text is not deferred";
+$revision->edit($muse);
+ok !$revision->is_deferred, "text is not deferred";
 
 $revision->title->delete;
 

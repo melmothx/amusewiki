@@ -170,6 +170,8 @@ use DateTime;
 
 use Text::Amuse::Compile::Utils qw/read_file append_file write_file/;
 use File::MimeInfo::Magic qw/mimetype/;
+use Text::Amuse::Functions qw/muse_fast_scan_header/;
+use Date::Parse;
 use Text::Amuse;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
@@ -200,6 +202,28 @@ sub starting_file_body {
     my $self = shift;
     return $self->_read_muse_body($self->starting_file);
 }
+
+sub muse_header {
+    my $self = shift;
+    my $header = eval { muse_fast_scan_header($self->f_full_path_name) };
+    return $header || {};
+}
+
+sub is_deferred {
+    my $self = shift;
+    if (my $str = $self->muse_header->{pubdate}) {
+        my $epoch = eval { str2time($str); };
+        if ($epoch and $epoch > DateTime->now->epoch) {
+            return DateTime->from_epoch(epoch => $epoch)->ymd;
+        }
+    }
+    return;
+}
+
+sub deferred_pubdate {
+    return shift->is_deferred || '';
+}
+
 
 sub _read_muse_body {
     my ($self, $file) = @_;

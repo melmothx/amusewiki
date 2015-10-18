@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 75;
+use Test::More tests => 77;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -88,6 +88,12 @@ MUSE
     }
     $mech->click('commit');
     $mech->content_contains('Changes committed') or diag $mech->response->content;
+    if ($spec->{status} eq 'deferred') {
+        $mech->content_like(qr/This text will be deferred to \Q$pubdate_re\E/);
+    }
+    else {
+        $mech->content_unlike(qr/This text will be deferred to \Q$pubdate_re\E/);
+    }
     ok($mech->form_name('publish'));
     $mech->click;
     diag "waiting 10 seconds for compilation, should be enough";
