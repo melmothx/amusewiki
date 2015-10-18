@@ -224,6 +224,10 @@ sub deferred_pubdate {
     return shift->is_deferred || '';
 }
 
+sub is_deletion {
+    return shift->muse_header->{DELETED} || '';
+}
+
 
 sub _read_muse_body {
     my ($self, $file) = @_;

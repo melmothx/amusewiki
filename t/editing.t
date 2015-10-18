@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 99;
+use Test::More tests => 100;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -64,6 +64,8 @@ $revision->edit("garbage");
 ok !$revision->is_deferred, "text is not deferred";
 $revision->edit("#pubdate lkasdlfkjalsdf\n\nblabla");
 ok !$revision->is_deferred, "text is not deferred";
+$revision->edit("#title lkasdlfkjalsdf\n#DELETED nuked\n\nblabla");
+ok $revision->is_deletion, "text is deleted";
 $revision->edit($muse);
 ok !$revision->is_deferred, "text is not deferred";
 

@@ -40,7 +40,9 @@
           [%- END -%]
           <button class="btn btn-default" type="submit" name="go" value="go">
             [% publish_msg %]
-            [% IF rev.is_deferred %]<br />
+            [% IF rev.is_deletion %]<br />
+            ([% loc('this text will be unpublished') %])
+            [% ELSIF rev.is_deferred %]<br />
             ([% loc('This text will be deferred to [_1]', rev.is_deferred) %])
             [% END %]
           </button>

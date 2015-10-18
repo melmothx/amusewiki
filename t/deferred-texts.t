@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 77;
+use Test::More tests => 79;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -90,9 +90,11 @@ MUSE
     $mech->content_contains('Changes committed') or diag $mech->response->content;
     if ($spec->{status} eq 'deferred') {
         $mech->content_like(qr/This text will be deferred to \Q$pubdate_re\E/);
+        $mech->content_lacks('this text will be unpublished');
     }
     else {
         $mech->content_unlike(qr/This text will be deferred to \Q$pubdate_re\E/);
+        $mech->content_contains('this text will be unpublished');
     }
     ok($mech->form_name('publish'));
     $mech->click;
