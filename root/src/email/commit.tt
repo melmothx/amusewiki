@@ -16,5 +16,9 @@
 
 [% loc('The revision has the following messages') %]
 
+[% FOREACH attachment IN revision.attached_files %]
+Attachment: [% c.uri_for_action('/edit/edit', [revision.f_class, revision.title.uri, attachment]) %]
+[% END %]
+
 [% revision.message %]
 
