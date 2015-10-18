@@ -13,6 +13,7 @@
   <table class="table table-striped table-condensed table-bordered">
     <tr>
       <th>[% loc('Revision') %]</th>
+      <th>[% loc('Attachments') %]</th>
       <th>[% loc('Action')   %]</th>
       <th>[% loc('Changes')  %]</th>
       <th>[% loc('Message')  %]</th>
@@ -27,6 +28,12 @@
         <a href="[% c.uri_for_action('/edit/edit', [rev.f_class, rev.title.uri, rev.id]) %]">
           [% rev.title.full_uri %]
         </a>
+      </td>
+      <td>
+        [% FOREACH attachment IN rev.attached_files %]
+        <a href="[% c.uri_for_action('/edit/edit', [rev.f_class, rev.title.uri, attachment]) %]">[% attachment %]</a> <br />
+        [% END %]
+        </ul>
       </td>
       <td>
         [% IF rev.pending %]
