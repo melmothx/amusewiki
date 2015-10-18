@@ -10,6 +10,7 @@ name 'AmuseWikiFarm';
 all_from 'lib/AmuseWikiFarm.pm';
 
 requires 'Catalyst::Runtime' => '5.90093';
+requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Session';
 requires 'Catalyst::Plugin::Session::Store::FastMmap';
