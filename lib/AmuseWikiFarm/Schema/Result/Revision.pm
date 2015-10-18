@@ -870,6 +870,25 @@ sub purge_working_tree {
     }
 }
 
+=head2 is_new_text
+
+Return true if the text is a new addition or not.
+
+=cut
+
+sub is_new_text {
+    die "Unimplemented";
+}
+
+=head2 has_modifications
+
+Return true if the revision has some actual change (or is new).
+
+=cut
+
+sub has_modifications {
+    die "Unimplemented";
+}
 
 
 __PACKAGE__->meta->make_immutable;
