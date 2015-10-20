@@ -49,8 +49,11 @@ sub root :Chained('/site') :PathPart('publish') :CaptureArgs(0) {
     unless ($c->user_exists) {
         $search->{session_id} = $c->sessionid;
     }
-    my $revs = $site->revisions->search($search,
-                                        { order_by => { -desc => 'updated' } });
+    my $revs = $site->revisions
+      ->search($search,
+               { order_by => { -desc => 'updated' },
+                 prefetch => [qw/title/],
+               });
     $c->stash(revisions => $revs);
 }
 
