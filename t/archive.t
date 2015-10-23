@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 56;
+use Test::More tests => 88;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -244,5 +244,68 @@ eval { $site->compile_and_index_files([$other]) };
 $exception = $@;
 like $exception, qr/valid path/, "Found $exception";
 
+#  - =#SORTauthors= 
+#
+#  If not provided, this default to =#author=. It’s a list
+#  separated by semicolons or commas with the various authors. While
+#  =#author= affects the display only, this one is used to index the
+#  document.
+
+my @tests = (
+             {
+              indexed_first_author => 'Pallino',
+              author_count => 1,
+              muse => "#author Anon\n#sortauthors Pallino\n#title Blabla\n\nBlabla\n",
+              test_name => "sortauthors present",
+             },
+             {
+              indexed_first_author => 'Pallino',
+              author_count => 1,
+              test_name => "authors and author present",
+              muse => "#author Anon\n#authors Pallino\n#title Blabla\n\nBlabla\n",
+             },
+             {
+              author_count => 1,
+              muse => "#author Anon\n#title Blabla\n\nBlabla\n",
+              indexed_first_author => 'Anon',
+              test_name => "author is anon, no sortauthors found",
+             },
+             {
+              author_count => 0,
+              muse => "#author Anon\n#authors -\n#title Blabla\n\nBlabla\n",
+             },
+             {
+              indexed_first_author => 'Pallino',
+              author_count => 1,
+              test_name => "authors and author",
+              muse => "#author Anon\n#authors Pallino\n#title Blabla\n\nBlabla\n",
+             },
+             {
+              author_count => 0,
+              test_name => "removed authors",
+              muse => "#title Blabla\n\nBlabla\n",
+             },
+            );
+# here there are two bugs. The first is that authors should take
+# preference over 
+
+for (1..2) {
+    foreach my $test (@tests) {
+        write_file($dummy_file, $test->{muse});
+        $site->index_file($dummy_file);
+        $title = $schema->resultset('Title')->find({ uri => 'dummy-text',
+                                                     site_id => $id });
+        ok ($title, "title found");
+        if ($test->{author_count}) {
+            is $title->authors->first->name, $test->{indexed_first_author},
+              "Author is $test->{indexed_first_author}";
+        }
+        foreach my $author ($title->authors->all) {
+            diag "Author is " . $author->name;
+        }
+        is ($title->authors->count, $test->{author_count}, $test->{test_name});
+    }
+}
 
 
+unlink $dummy_file or die $!;

@@ -74,7 +74,7 @@ sub muse_file_info {
     }
 
     # normalize and use author as default if missing
-    unless ($details->{sortauthors}) {
+    unless (scalar(grep { /^(sort)?authors$/ } keys %$details)) {
         $details->{sortauthors} = $details->{author};
     }
 
