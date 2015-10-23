@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 88;
+use Test::More tests => 112;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -257,33 +257,51 @@ my @tests = (
               author_count => 1,
               muse => "#author Anon\n#sortauthors Pallino\n#title Blabla\n\nBlabla\n",
               test_name => "sortauthors present",
+              display_author => 'Anon',
              },
              {
               indexed_first_author => 'Pallino',
               author_count => 1,
               test_name => "authors and author present",
               muse => "#author Anon\n#authors Pallino\n#title Blabla\n\nBlabla\n",
+              display_author => 'Anon',
              },
              {
               author_count => 1,
               muse => "#author Anon\n#title Blabla\n\nBlabla\n",
               indexed_first_author => 'Anon',
               test_name => "author is anon, no sortauthors found",
+              display_author => 'Anon',
              },
              {
               author_count => 0,
-              muse => "#author Anon\n#authors -\n#title Blabla\n\nBlabla\n",
+              muse => "#author Anonx\n#authors -\n#title Blabla\n\nBlabla\n",
+              display_author => 'Anonx',
              },
              {
               indexed_first_author => 'Pallino',
               author_count => 1,
               test_name => "authors and author",
               muse => "#author Anon\n#authors Pallino\n#title Blabla\n\nBlabla\n",
+              display_author => 'Anon',
+             },
+             {
+              author_count => 0,
+              test_name => "display pippo, but no real authors",
+              muse => "#title Blabla\n#sortauthors\n#author pippo\n\nBlabla\n",
+              display_author => 'pippo',
              },
              {
               author_count => 0,
               test_name => "removed authors",
               muse => "#title Blabla\n\nBlabla\n",
+              display_author => '',
+             },
+             {
+              author_count => 0,
+              test_name => "display pippo, but no real authors",
+              muse => "#title Blabla\n#authors -\n#author pippo\n\nBlabla\n",
+              display_author => 'pippo',
              },
             );
 # here there are two bugs. The first is that authors should take
@@ -291,6 +309,7 @@ my @tests = (
 
 for (1..2) {
     foreach my $test (@tests) {
+        diag $test->{test_name};
         write_file($dummy_file, $test->{muse});
         $site->index_file($dummy_file);
         $title = $schema->resultset('Title')->find({ uri => 'dummy-text',
@@ -304,6 +323,8 @@ for (1..2) {
             diag "Author is " . $author->name;
         }
         is ($title->authors->count, $test->{author_count}, $test->{test_name});
+        is ($title->author, $test->{display_author}, "Author display is ok");
+
     }
 }
 
