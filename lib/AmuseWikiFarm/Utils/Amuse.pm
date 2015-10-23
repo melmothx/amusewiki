@@ -74,8 +74,11 @@ sub muse_file_info {
     }
 
     # normalize and use author as default if missing
-    unless (scalar(grep { /^(sort)?authors$/ } keys %$details)) {
-        $details->{sortauthors} = $details->{author};
+    if (exists $details->{author} and
+        defined $details->{author}) {
+        unless (scalar(grep { /^(sort)?authors$/ } keys %$details)) {
+            $details->{sortauthors} = $details->{author};
+        }
     }
 
     my @categories;
@@ -136,9 +139,12 @@ sub muse_file_info {
     # unless we pass them to update_or_create (because the removed
     # directive is not listed).
 
-    # author, title, topics are already handled
-    foreach my $mandatory (qw/subtitle lang date notes source uid attach/) {
-        unless (exists $details->{$mandatory}) {
+    # title and topics are already handled
+    foreach my $mandatory (qw/subtitle lang date notes 
+                              author
+                              source uid attach/) {
+        unless (exists $details->{$mandatory} and
+                defined $details->{$mandatory}) {
             $details->{$mandatory} = '';
         }
     }
