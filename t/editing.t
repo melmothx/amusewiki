@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 100;
+use Test::More tests => 108;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -48,6 +48,11 @@ ok -f ($revision->f_full_path_name),
   "Text stored in " . $revision->f_full_path_name;
 
 my $muse = $revision->muse_body;
+
+ok($revision->is_new_text, "Text is new")
+  or die $revision->title->uri . " is not new?";
+ok($revision->has_modifications, "Text has of course modifications")
+  or die Dumper({ $revision->title->get_columns });
 
 like $muse, qr/^#author pInco$/m, "Found author";
 is $revision->muse_header->{author}, 'pInco', "author found in the header";
@@ -213,12 +218,6 @@ ok $revision->publish_text, "Text is published now";
 
 ok !$revision->publish_text, "Can't publish an already published revision";
 
-
-
-
-
-
-
 %todo = (
          jpg => 'jpg',
          png => 'png',
@@ -263,12 +262,21 @@ my $published_rev = $site->revisions->find($rev_id);
 ok $published_rev->published, "Revision is published"
   or diag $published_rev->status;
 
+my $new_rev = $testtext->new_revision;
+ok (!$new_rev->is_new_text, "Text is not new");
+ok (!$new_rev->has_modifications, "Text has *not* been modified");
+my $current_body = $new_rev->muse_body;
+$new_rev->edit($current_body);
+ok (!$new_rev->has_modifications, "Text has not been modified");
+$new_rev->edit($current_body . "\n");
+ok ($new_rev->has_modifications, "Text *has* been modified");
+ok (!$new_rev->is_new_text, "But text is not new");
 
 $testtext->delete;
 
 my $purge_rev = $site->revisions->find($rev_id);
 
 ok(!$purge_rev, "Revision $rev_id purged");
-
+ok(!$site->revisions->find($new_rev->id), "Pending revision purged as well");
 # $revision->title->delete;
 
