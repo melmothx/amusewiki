@@ -51,6 +51,7 @@ requires 'DBIx::Class::InflateColumn::DateTime';
 requires 'DBIx::Class::Schema::Config';
 requires 'DBIx::Class::Helper::ResultSet::Random';
 requires 'DBIx::Class::PassphraseColumn';
+requires 'DBIx::Class::DeploymentHandler';
 requires 'Catalyst::Plugin::I18N';
 requires 'DateTime';
 requires 'Date::Parse';
