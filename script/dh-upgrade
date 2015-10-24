@@ -109,9 +109,14 @@ unless ($dh->version_storage_is_installed) {
     $dh->add_database_version({ version => 2 });
 }
 
+print "Checking if database is up-to-date: ";
 if ($dh->schema_version > $dh->database_version) {
+    print "NO, upgrading\n";
     $dh->backup;
     $dh->upgrade;
+}
+else {
+    print "YES\n";
 }
 
 # print $dh->database_version . "\n";
