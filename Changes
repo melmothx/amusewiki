@@ -4,6 +4,30 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.40 2015-10-24
+
+  - Handle DB upgrades automatically (with DeploymentHandler)
+  - Check installation on js on startup
+  - Documentation fixes  (GH #8)
+  - Improved admin revision display (GH #9)
+  - Fixed translitteration (GH #10)
+  - Fixed footer (GH #12)
+  - List attachments in the revision descriptions (GH #13)
+  - Fixed bug with author-related fields (GH #15)
+
+IMPORTANT NOTICE. From this version the code itself is taking care of
+dependency upgrades and db upgrades. If you are upgrading from a
+version greater or equal to 1.20, there is nothing for you to do,
+other than the usual upgrade routine:
+
+ ./init-all.sh stop
+ git pull
+ ./init-all.sh start
+
+If by chance you are upgrading from an earlier version, please be sure
+to apply all the the intermediate sql files in the "sql" directory.
+
+
 1.35 2015-10-15
 
  - Updated i18n: spanish
