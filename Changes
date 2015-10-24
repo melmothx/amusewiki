@@ -10,8 +10,6 @@ dedicated tree.
   - Check installation on js on startup
   - Documentation fixes  (GH #8)
   - Improved admin revision display (GH #9)
-  - Fixed translitteration (GH #10)
-  - Fixed footer (GH #12)
   - List attachments in the revision descriptions (GH #13)
   - Fixed bug with author-related fields (GH #15)
 
