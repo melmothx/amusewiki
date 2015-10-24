@@ -123,6 +123,7 @@ my $expected = {
                 date => '',
                 attach => '',
                 uid => '',
+                author => '',
                 subtitle => '',
                 notes => '',
                 f_class => 'text',
