@@ -51,10 +51,10 @@ $mech->content_contains('Created new text');
     for my $admin ('/publish/pending', '/publish/all') {
         $mech->get_ok($admin);
         $mech->content_lacks('Show differences in other tab');
-        $mech->content_contains('No editing in the working copy');
+        $mech->content_contains('No editing yet!');
     }
     $mech->get_ok($diff_uri);
-    $mech->content_contains('No changes to show');
+    $mech->content_contains('No editing yet!');
     $mech->content_contains('This text is new');
     $mech->content_lacks('diff_match_patch.js');
     diag "Back to $editing_uri";
@@ -65,7 +65,7 @@ $mech->content_contains('Created new text');
     $mech->content_contains('Show differences in other tab');
 
     $mech->get_ok($diff_uri);
-    $mech->content_lacks('No changes to show');
+    $mech->content_lacks('No editing yet!');
     $mech->content_contains('This text is new');
     $mech->content_contains('diff_match_patch.js');
 
@@ -73,7 +73,7 @@ $mech->content_contains('Created new text');
     for my $admin ('/publish/pending', '/publish/all') {
         $mech->get_ok($admin);
         $mech->content_contains('Show differences in other tab');
-        $mech->content_lacks('No editing in the working copy');
+        $mech->content_lacks('No editing yet!');
     }
     $mech->get_ok($editing_uri);
 }

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 113;
+use Test::More tests => 119;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -11,6 +11,7 @@ use File::Spec;
 use AmuseWikiFarm::Schema;
 use Data::Dumper;
 use File::Copy;
+use DateTime;
 use File::Path qw/make_path/;
 
 use lib File::Spec->catdir(qw/t lib/);
@@ -282,6 +283,37 @@ $testtext->delete;
 my $purge_rev = $site->revisions->find($rev_id);
 
 ok(!$purge_rev, "Revision $rev_id purged");
+
+eval { $site->revisions->search(undef, {
+                                        prefetch => [qw/title/]
+                                       })
+         ->pending->first };
+ok (!$@);
+
+eval { $site->revisions->search(undef, {
+                                        prefetch => [qw/title/]
+                                       })
+         ->not_published->first };
+
+ok (!$@);
+
+eval { $site->revisions->search(undef, {
+                                        prefetch => [qw/title/]
+                                       })
+         ->publisher_older_than(DateTime->now)->first };
+ok (!$@);
+
+eval { $site->revisions->pending->first };
+ok (!$@);
+
+eval { $site->revisions->not_published->first };
+ok (!$@);
+
+eval { $site->revisions->publisher_older_than(DateTime->now)->first };
+ok (!$@);
+
+
+
 ok(!$site->revisions->find($new_rev->id), "Pending revision purged as well");
 # $revision->title->delete;
 
