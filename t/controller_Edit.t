@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 43;
+use Test::More tests => 67;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -43,6 +43,41 @@ $mech->set_fields(author => 'pippo',
 $mech->click;
 
 $mech->content_contains('Created new text');
+
+{
+    $mech->content_lacks('Show differences in other tab');
+    my $editing_uri = $mech->uri;
+    my $diff_uri = $mech->uri . '/diff';
+    for my $admin ('/publish/pending', '/publish/all') {
+        $mech->get_ok($admin);
+        $mech->content_lacks('Show differences in other tab');
+        $mech->content_contains('No editing in the working copy');
+    }
+    $mech->get_ok($diff_uri);
+    $mech->content_contains('No changes to show');
+    $mech->content_contains('This text is new');
+    $mech->content_lacks('diff_match_patch.js');
+    diag "Back to $editing_uri";
+    $mech->get_ok($editing_uri);
+    $mech->form_id('museform');
+    $mech->field(body => "#title Title\n#lang en");
+    $mech->click('preview');
+    $mech->content_contains('Show differences in other tab');
+
+    $mech->get_ok($diff_uri);
+    $mech->content_lacks('No changes to show');
+    $mech->content_contains('This text is new');
+    $mech->content_contains('diff_match_patch.js');
+
+
+    for my $admin ('/publish/pending', '/publish/all') {
+        $mech->get_ok($admin);
+        $mech->content_contains('Show differences in other tab');
+        $mech->content_lacks('No editing in the working copy');
+    }
+    $mech->get_ok($editing_uri);
+}
+
 
 diag "In " . $mech->response->base->path;
 
