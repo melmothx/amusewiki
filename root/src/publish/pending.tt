@@ -21,7 +21,7 @@
       <th>[% loc('Purge')    %]</th>
       [% END %]
     </tr>
-    [% FOREACH rev IN revisions.all %]
+    [% FOREACH rev IN revisions %]
     <tr>
       <td>
         <a href="[% c.uri_for_action('/edit/edit', [rev.f_class, rev.title.uri, rev.id]) %]">

@@ -72,11 +72,13 @@ sub pending :Chained('root') :PathPart('pending') :Args(0) {
     my $revisions = delete $c->stash->{revisions};
     my $revs = $revisions->search({ 'me.status' => 'pending' });
     $c->stash(page_title => $c->loc('Pending revisions'));
-    $c->stash(revisions => $revs);
+    $c->stash(revisions => [ $revs->all ]);
 };
 
 sub all :Chained('root') :PathPart('all') :Args(0) {
     my ($self, $c) = @_;
+    my $revs = delete $c->stash->{revisions};
+    $c->stash(revisions => [ $revs->all ]);
     $c->stash(page_title => $c->loc('All revisions'));
     $c->stash(template => 'publish/pending.tt');
 }
