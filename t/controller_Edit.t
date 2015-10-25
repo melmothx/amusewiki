@@ -51,7 +51,7 @@ $mech->content_contains('Created new text');
     for my $admin ('/publish/pending', '/publish/all') {
         $mech->get_ok($admin);
         $mech->content_lacks('Show differences in other tab');
-        $mech->content_contains('No editing yet!');
+        $mech->content_contains('class="new-text-marker"');
     }
     $mech->get_ok($diff_uri);
     $mech->content_contains('No editing yet!');

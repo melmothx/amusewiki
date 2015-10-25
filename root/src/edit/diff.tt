@@ -1,5 +1,24 @@
 [% # -*- mode:html -*- %]
 
+<h2>
+  [% loc('Changes for [_1]', revision.title.uri) %]
+  ([% loc('revision') %] #[% revision.id %])
+  [% IF revision.is_new_text %]
+  <small>
+    <span class="label label-default">[% loc('This text is new') %]</span>
+  </small>
+  [% END %]
+  <small>
+    <a href="[% editing_uri %]"><span class="glyphicon glyphicon-share-alt"></span></a>
+  </small>
+</h2>
+
+<div class="row">
+  &nbsp;
+</div>
+
+[% IF revision.has_local_modifications %]
+
 <!--
 Source at
 [% c.uri_for('/static/js/diff/diff_match_patch_uncompressed.js') %]
@@ -9,10 +28,8 @@ Source at
         src="[% c.uri_for('/static/js/diff/diff_match_patch.js') %]">
 </script>
 
-<h2>
-  [% loc('Changes for [_1]', revision.title.uri) %]
-  ([% loc('revision') %] #[% revision.id %])
-</h2>
+
+
 
 <div class="row">
   <div class="col-md-6">
@@ -45,3 +62,11 @@ Source at
 <script type="text/javascript"
         src="[% c.uri_for('/static/js/amw-diff.js') %]">
 </script>
+
+[% ELSE %]
+
+<div class="well">
+  <div>[% c.loc('No editing yet!') %]</div>
+</div>
+
+[% END %]
