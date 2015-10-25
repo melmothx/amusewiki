@@ -70,7 +70,15 @@ Show all revisions.
 sub pending :Chained('root') :PathPart('pending') :Args(0) {
     my ($self, $c) = @_;
     my $revisions = delete $c->stash->{revisions};
-    my $revs = $revisions->search({ 'me.status' => 'pending' });
+    my $revs = $revisions->search([
+                                   {
+                                    'me.status' => 'pending'
+                                   },
+                                   {
+                                    'me.status' => 'editing',
+                                    'title.status' => 'editing'
+                                   }
+                                  ]);
     $c->stash(page_title => $c->loc('Pending revisions'));
     $c->stash(revisions => [ $revs->all ]);
 };
