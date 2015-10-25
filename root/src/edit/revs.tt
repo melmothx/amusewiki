@@ -44,10 +44,14 @@
     [% END %]
     </td>
     <td>
+      [% IF rev.has_local_modifications %]
     <a href="[% c.uri_for_action('/edit/diff', [rev.f_class, rev.title.uri, rev.id]) %]"
        target="_blank">
       [% loc('Show differences in other tab') %]
     </a>
+      [% ELSE %]
+      [% loc('No editing yet!') %]
+      [% END %]
     </td>
   </tr>
   [% END %] 
