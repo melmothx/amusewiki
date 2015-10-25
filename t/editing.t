@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 108;
+use Test::More tests => 113;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -53,6 +53,7 @@ ok($revision->is_new_text, "Text is new")
   or die $revision->title->uri . " is not new?";
 ok($revision->has_modifications, "Text has of course modifications")
   or die Dumper({ $revision->title->get_columns });
+ok(!$revision->has_local_modifications, "But no local modifications");
 
 like $muse, qr/^#author pInco$/m, "Found author";
 is $revision->muse_header->{author}, 'pInco', "author found in the header";
@@ -63,6 +64,7 @@ like $muse, qr/^#title Pallino$/m, "Found title";
 ok !$revision->is_deferred, "text is not deferred";
 is $revision->deferred_pubdate, '', "no deferred pubdate";
 $revision->edit("#title test\n#pubdate 2026-10-11 12:00\n\nBlabla");
+ok($revision->has_local_modifications, "Locally modified");
 is $revision->is_deferred, "2026-10-11", "text now is deferred";
 is $revision->muse_header->{pubdate}, "2026-10-11 12:00";
 $revision->edit("garbage");
@@ -265,11 +267,14 @@ ok $published_rev->published, "Revision is published"
 my $new_rev = $testtext->new_revision;
 ok (!$new_rev->is_new_text, "Text is not new");
 ok (!$new_rev->has_modifications, "Text has *not* been modified");
+ok (!$new_rev->has_local_modifications, "Text has *not* been modified locally");
 my $current_body = $new_rev->muse_body;
 $new_rev->edit($current_body);
 ok (!$new_rev->has_modifications, "Text has not been modified");
+ok (!$new_rev->has_local_modifications, "Text has *not* been modified locally");
 $new_rev->edit($current_body . "\n");
 ok ($new_rev->has_modifications, "Text *has* been modified");
+ok ($new_rev->has_local_modifications, "Text *has* been modified locally");
 ok (!$new_rev->is_new_text, "But text is not new");
 
 $testtext->delete;

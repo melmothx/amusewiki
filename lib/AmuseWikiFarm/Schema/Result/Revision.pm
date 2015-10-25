@@ -670,6 +670,17 @@ Calling this method will trigger the SHA1 checksum on the
 original_file and the target file. If they don't match, it means that
 the revision would overwrite something.
 
+=head2 has_modifications
+
+Return true if the working file and the master copy differ or the
+master copy doesn't exist. A new text with just the import will return
+true here.
+
+=head2 has_local_modifications
+
+Return true if the revision has seen actual work. A new text with just
+the import will return false here.
+
 =cut
 
 sub _shasums_are_equal {
@@ -713,6 +724,13 @@ sub has_modifications {
         # no destination? The text has modifications.
         return 1;
     }
+}
+
+sub has_local_modifications {
+    my $self = shift;
+    my $source = $self->starting_file;
+    my $destination = $self->f_full_path_name;
+    return !$self->_shasums_are_equal($source, $destination);
 }
 
 =head2 editing_ongoing
