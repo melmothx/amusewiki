@@ -23,9 +23,11 @@
        style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
     <h2>
       <small>[% loc('Preview') %]</small>
+      [% IF revision.has_local_modifications %]
       <button type="button" id="goto-diff" class="btn btn-default">
         [% loc('Show differences in other tab') %]
       </button>
+      [% END %]
     </h2>
     <p>[% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]</p>
     <div id="preamble-container" class="well">

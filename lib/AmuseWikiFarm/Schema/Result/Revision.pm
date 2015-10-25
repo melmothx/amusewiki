@@ -670,7 +670,28 @@ Calling this method will trigger the SHA1 checksum on the
 original_file and the target file. If they don't match, it means that
 the revision would overwrite something.
 
+=head2 has_modifications
+
+Return true if the working file and the master copy differ or the
+master copy doesn't exist. A new text with just the import will return
+true here.
+
+=head2 has_local_modifications
+
+Return true if the revision has seen actual work. A new text with just
+the import will return false here.
+
 =cut
+
+sub _shasums_are_equal {
+    my ($self, $src, $dst) = @_;
+    die "Missing source and destination" unless ($src && $dst);
+    die "$src is not a file" unless -f $src;
+    die "$dst is not a file" unless -f $dst;
+    my $src_sha = Digest::SHA->new('SHA-1')->addfile($src);
+    my $dst_sha = Digest::SHA->new('SHA-1')->addfile($dst);
+    return $src_sha->hexdigest eq $dst_sha->hexdigest;
+}
 
 sub can_be_merged {
     my $self = shift;
@@ -682,14 +703,34 @@ sub can_be_merged {
     die "No starting file, this is a bug"  unless ($source and -f $source);
 
     if ($destination and -f $destination) {
-        my $src_sha = Digest::SHA->new('SHA-1')->addfile($source);
-        my $dst_sha = Digest::SHA->new('SHA-1')->addfile($destination);
-        return $src_sha->hexdigest eq $dst_sha->hexdigest;
+        return $self->_shasums_are_equal($source, $destination);
     }
     else {
         # no destination? nothing to do, will merge cleanly
         return 1;
     }
+}
+
+sub has_modifications {
+    my $self = shift;
+    my $destination = $self->title->f_full_path_name;
+    my $source = $self->f_full_path_name;
+    die "Revision without muse, this is a bug"  unless ($source and -f $source);
+    if ($destination and -f $destination) {
+        # differ? then there are modifications
+        return !$self->_shasums_are_equal($source, $destination);
+    }
+    else {
+        # no destination? The text has modifications.
+        return 1;
+    }
+}
+
+sub has_local_modifications {
+    my $self = shift;
+    my $source = $self->starting_file;
+    my $destination = $self->f_full_path_name;
+    return !$self->_shasums_are_equal($source, $destination);
 }
 
 =head2 editing_ongoing
@@ -870,7 +911,17 @@ sub purge_working_tree {
     }
 }
 
+=head2 is_new_text
 
+Return true if the text is a new addition or not. This maps to
+$self->title->muse_file_exists_in_tree.
+
+=cut
+
+sub is_new_text {
+    my $self = shift;
+    return !$self->title->muse_file_exists_in_tree;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

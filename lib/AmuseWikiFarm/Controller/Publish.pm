@@ -49,8 +49,11 @@ sub root :Chained('/site') :PathPart('publish') :CaptureArgs(0) {
     unless ($c->user_exists) {
         $search->{session_id} = $c->sessionid;
     }
-    my $revs = $site->revisions->search($search,
-                                        { order_by => { -desc => 'updated' } });
+    my $revs = $site->revisions
+      ->search($search,
+               { order_by => { -desc => 'updated' },
+                 prefetch => [qw/title/],
+               });
     $c->stash(revisions => $revs);
 }
 
@@ -67,13 +70,23 @@ Show all revisions.
 sub pending :Chained('root') :PathPart('pending') :Args(0) {
     my ($self, $c) = @_;
     my $revisions = delete $c->stash->{revisions};
-    my $revs = $revisions->search({ status => 'pending' });
+    my $revs = $revisions->search([
+                                   {
+                                    'me.status' => 'pending'
+                                   },
+                                   {
+                                    'me.status' => 'editing',
+                                    'title.status' => 'editing'
+                                   }
+                                  ]);
     $c->stash(page_title => $c->loc('Pending revisions'));
-    $c->stash(revisions => $revs);
+    $c->stash(revisions => [ $revs->all ]);
 };
 
 sub all :Chained('root') :PathPart('all') :Args(0) {
     my ($self, $c) = @_;
+    my $revs = delete $c->stash->{revisions};
+    $c->stash(revisions => [ $revs->all ]);
     $c->stash(page_title => $c->loc('All revisions'));
     $c->stash(template => 'publish/pending.tt');
 }

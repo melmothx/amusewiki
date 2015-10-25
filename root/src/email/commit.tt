@@ -3,6 +3,8 @@
 
 [% loc("If the committer provided a mail, it's listed in the mail's CC field") %]
 
+[% IF revision.is_new_text %][% loc('This text is new') %].[% END %]
+
 [% loc('To resume the editing you can visit the following URL') %]:
 
 [% c.uri_for_action('/edit/edit', [ revision.f_class, revision.title.uri, revision.id ]) %]

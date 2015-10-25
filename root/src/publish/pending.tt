@@ -14,17 +14,17 @@
     <tr>
       <th>[% loc('Revision') %]</th>
       <th>[% loc('Attachments') %]</th>
-      <th>[% loc('Action')   %]</th>
+      <th colspan="2" style="text-align:center">[% loc('Action')   %]</th>
       <th>[% loc('Changes')  %]</th>
       <th>[% loc('Message')  %]</th>
       <th>[% loc('Date')     %]</th>
-      [% IF c.user_exists %]
-      <th>[% loc('Purge')    %]</th>
-      [% END %]
     </tr>
-    [% FOREACH rev IN revisions.all %]
+    [% FOREACH rev IN revisions %]
     <tr>
       <td>
+        [% IF rev.is_new_text %]
+        <span class="label label-default">[% loc('New') %]</span>
+        [% END %]
         <a href="[% c.uri_for_action('/edit/edit', [rev.f_class, rev.title.uri, rev.id]) %]">
           [% rev.title.full_uri %]
         </a>
@@ -35,7 +35,7 @@
         [% END %]
         </ul>
       </td>
-      <td>
+      <td style="text-align:center">
         [% IF rev.pending %]
         <form method="post" name="publish"
               action="[% c.uri_for_action('/publish/publish') %]">
@@ -65,11 +65,32 @@
         [% loc(rev.status) %]
         [% END %]
       </td>
+      [% IF c.user_exists %]
+      <td style="text-align:center">
+        <form method="post" name="deletion"
+              onsubmit="return confirm('[% htjsloc('Are you sure?') %]');"
+              action="[% c.uri_for_action('/publish/purge') %]">
+          <input type="hidden" name="target" value="[% rev.id %]" />
+          <button class="btn btn-danger" type="submit" name="delete"
+                  value="delete" title="[% rev.title.full_uri %] #[% rev.id %]">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </form>
+      </td>
+      [% END %]
       <td>
+        <div>
+        [% IF rev.has_local_modifications %]
         <a href="[% c.uri_for_action('/edit/diff', [rev.f_class, rev.title.uri, rev.id]) %]"
            target="_blank">
           [% loc('Show differences in other tab') %]
         </a>
+        [% ELSIF rev.is_new_text %]
+        <span class="new-text-marker">[% loc('Created new text') %]</span>
+        [% ELSE %]
+        [% loc('No editing yet!') %]
+        [% END %]
+        </div>
       </td>
       <td>
         [% rev.message | html %]
@@ -78,19 +99,6 @@
         [% # this is a bogus value created by HTML import %]
         [% rev.updated.dmy %] [% rev.updated.hms %] [% loc('UTC') %]
       </td>
-      [% IF c.user_exists %]
-      <td>
-        <form method="post" name="deletion"
-              onsubmit="return confirm('[% htjsloc('Are you sure?') %]');"
-              action="[% c.uri_for_action('/publish/purge') %]">
-          <input type="hidden" name="target" value="[% rev.id %]" />
-          <button class="btn btn-danger" type="submit" name="delete"
-                  value="delete">
-            [% loc('Erase this revision') %]
-          </button>
-        </form>
-      </td>
-      [% END %]
     </tr>
     [% END %]
   </table>
