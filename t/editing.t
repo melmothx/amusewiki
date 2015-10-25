@@ -288,29 +288,29 @@ eval { $site->revisions->search(undef, {
                                         prefetch => [qw/title/]
                                        })
          ->pending->first };
-ok (!$@);
+ok (!$@) or diag $@;
 
 eval { $site->revisions->search(undef, {
                                         prefetch => [qw/title/]
                                        })
          ->not_published->first };
 
-ok (!$@);
+ok (!$@) or diag $@;;
 
 eval { $site->revisions->search(undef, {
                                         prefetch => [qw/title/]
                                        })
-         ->publisher_older_than(DateTime->now)->first };
-ok (!$@);
+         ->published_older_than(DateTime->now)->first };
+ok (!$@) or diag $@;;
 
 eval { $site->revisions->pending->first };
-ok (!$@);
+ok (!$@) or diag $@;;
 
 eval { $site->revisions->not_published->first };
-ok (!$@);
+ok (!$@) or diag $@;;
 
-eval { $site->revisions->publisher_older_than(DateTime->now)->first };
-ok (!$@);
+eval { $site->revisions->published_older_than(DateTime->now)->first };
+ok (!$@) or diag $@;;
 
 
 
