@@ -13,7 +13,7 @@ Return a list of pending revisions
 =cut
 
 sub pending {
-    return shift->search({ status => 'pending' },
+    return shift->search({ 'me.status' => 'pending' },
                          { order_by => { -desc => 'updated' }});
 }
 
@@ -24,7 +24,7 @@ Return a list of revisions not yet published
 =cut
 
 sub not_published {
-    return shift->search({ status => { '!=' => 'published'  } },
+    return shift->search({ 'me.status' => { '!=' => 'published'  } },
                          { order_by => { -desc => 'updated' } });
 }
 
@@ -42,7 +42,7 @@ sub published_older_than {
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($time);
     return $self->search({
-                          status => 'published',
+                          'me.status' => 'published',
                           updated => { '<' => $format_time },
                          });
 }
