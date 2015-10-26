@@ -180,27 +180,33 @@ sub revs :Chained('text') :PathPart('') :Args(0) {
     # old abandoned and not cleaned up revisions.
     my @revs = grep { $_->can_be_merged } $text->revisions->not_published;
 
-    # no existing revision or explicit request by posting: create new
-    # but only if can spawn one.
-    if ($text->can_spawn_revision and
-        (!@revs || $c->request->params->{create})) {
-        $c->log->debug("Creating a new revision");
-        my $revision = $text->new_revision;
-        # on creation, set the session id
-        $revision->session_id($c->sessionid);
-        $revision->update;
-        $c->log->debug("Set session in for " . $revision->id);
-        my $location = $c->uri_for_action('/edit/edit', [
-                                                         $revision->f_class,
-                                                         $uri,
-                                                         $revision->id
-                                                        ]);
-        $c->response->redirect($location);
-        $c->detach();
-        return;
+    log_debug { "Got revisions: " . scalar(@revs) };
+    if ($text->can_spawn_revision) {
+        my $revision;
+        if (!@revs || $c->request->params->{create}) {
+            $revision = $text->new_revision;
+            log_debug { "Creating a new revision" . $revision->id };
+        }
+        elsif (@revs == 1 and
+               !$revs[0]->has_local_modifications and
+               !$revs[0]->editing_ongoing) {
+            $revision = $revs[0];
+            log_debug { "Reusing stale revision " . $revision->id };
+        }
+        if ($revision) {
+            $revision->update({ session_id => $c->sessionid });
+            my $location = $c->uri_for_action('/edit/edit', [
+                                                             $revision->f_class,
+                                                             $uri,
+                                                             $revision->id
+                                                            ]);
+            log_debug { "Redirecting to $location" };
+            $c->response->redirect($location);
+            $c->detach();
+            return;
+        }
     }
-
-    # we can't decide ourself, so we list the revs
+    log_debug { "We can't decide which revisions to pick!" };
     $c->stash(revisions => \@revs) if @revs;
 }
 

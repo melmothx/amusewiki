@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 67;
+use Test::More tests => 80;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -17,15 +17,14 @@ binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
 binmode $builder->todo_output,    ":utf8";
 
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0edit1';
 my $site = create_site($schema, $site_id);
 ok ($site);
+$site->update({ secure_site => 0 });
 my $host = $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
-
 $mech->get_ok('/action/text/new');
 ok($mech->form_id('login-form'), "Found the login-form");
 $mech->set_fields(username => 'root',
@@ -183,3 +182,44 @@ $mech->submit_form(with_fields => {
 $mech->get_ok($editing);
 $mech->content_lacks(q[$("#rev-message").rules('add', "required");]);
 $mech->content_lacks(q[message: "required",]);
+
+# $mech->get_ok('/action/text/new');
+
+my $revision = $site->revisions->first;
+$revision->commit_version;
+$revision->publish_text;
+my $text = $revision->title;
+my $uri = $revision->title->full_uri;
+$mech->get_ok($uri, "$uri is ok");
+$mech->get_ok($uri . "/edit");
+diag "Creating a revision";
+diag $mech->uri;
+my $edit_uri = $mech->uri->path;
+
+diag "Try to create a new revision";
+$mech->get_ok($uri . "/edit");
+$mech->content_contains('at your own peril');
+$mech->content_contains('This revision is being actively edited');
+is ($text->revisions->not_published->count, 1,
+    "Found the revision");
+my $active = $text->revisions->not_published->first;
+
+diag "Updating timestamp";
+$active->update({ updated => DateTime->now->subtract(hours => 2) });
+diag $active->id . " " . $active->updated;
+$mech->get_ok($uri . "/edit");
+is $mech->uri->path, $edit_uri,
+  "One empty revision got redirected to the the original editing";
+$mech->content_lacks('at your own peril');
+$mech->content_lacks('Created new text');
+
+
+
+diag "Updating timestamp";
+$active->update({ updated => DateTime->now->subtract(minutes => 58) });
+diag $active->id . " " . $active->updated;
+$mech->get_ok($uri . "/edit");
+diag $mech->uri;
+$mech->content_contains('at your own peril');
+$mech->content_contains('This revision is being actively edited');
+

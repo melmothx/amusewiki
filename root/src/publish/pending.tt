@@ -122,5 +122,10 @@
     published. Otherwise deleting it you'll lose the unpublished changes") %]
   </p>
 </div>
+[% ELSE %]
+
+<div class="well">
+  <p>[% loc("No revisions to show") %]</p>
+</div>
         
 [% END %]
