@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.41 2015-10-26
+
+ - New logging system: Log::Contextual + Log:Log4perl
+ - Avoid useless question on revision selection screen
+
 1.40 2015-10-24
 
   - Handle DB upgrades automatically (with DeploymentHandler)
