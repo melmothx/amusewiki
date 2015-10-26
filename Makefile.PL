@@ -65,7 +65,8 @@ requires 'Email::Valid';
 requires 'File::Copy::Recursive';
 requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor' => '0.10';
-
+requires 'Log::Contextual';
+requires 'Log::Log4perl';
 requires 'HTTP::Tiny';
 
 # our own dogfood
