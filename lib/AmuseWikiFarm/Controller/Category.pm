@@ -6,6 +6,8 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Category - Catalyst Controller
@@ -139,7 +141,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
                   category_canonical_name => $canonical,
                   category_description => $category_description,
                   category => $cat);
-        # $c->log->debug($category_description . ' for ' . $current_locale);
+        log_debug { $category_description . ' for ' . $current_locale };
         # Prepare the links for multisite, if needed
         my $multi = {
                          cat_uri_all => $c->uri_for_action('/category/single_category_display',

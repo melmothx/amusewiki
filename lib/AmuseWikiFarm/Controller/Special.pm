@@ -5,11 +5,13 @@ with qw/AmuseWikiFarm::Role::Controller::Text
 
 use namespace::autoclean;
 
+use AmuseWikiFarm::Log::Contextual;
+
 BEGIN { extends 'Catalyst::Controller'; }
 
 sub base :Chained('/site_robot_index') :PathPart('special') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    $c->log->debug('stashing f_class');
+    log_debug { 'stashing f_class' };
     my $titles = $c->stash->{site}->titles;
     my $rs;
     if ($c->user_exists) {

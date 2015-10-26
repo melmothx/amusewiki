@@ -4,6 +4,8 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller' }
 
 use AmuseWikiFarm::Utils::Amuse qw//;
+use AmuseWikiFarm::Log::Contextual;
+
 #
 # Sets the actions in this controller to be registered with no prefix
 # so they function identically to actions created in MyApp.pm
@@ -75,14 +77,14 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
             # strategy to avoid splitting the results.
             my $uri = $c->request->uri->clone;
             $uri->host($site->canonical);
-            # $c->log->debug("Redirecting to " . $uri->as_string);
+            # log_debug { "Redirecting to " . $uri->as_string };
             # place a permanent redirect
             $c->response->redirect($uri->as_string, 301);
             $c->detach();
             return;
         }
         else {
-            $c->log->warn("$host not found in vhosts");
+            log_warn { "$host not found in vhosts" };
         }
     }
     unless ($site) {
@@ -90,8 +92,8 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
         return;
     }
 
-    $c->log->debug("Site ID for $host is " . $site->id
-                   . ", with locale " . $site->locale);
+    log_debug { "Site ID for $host is " . $site->id
+                   . ", with locale " . $site->locale };
 
     my $session_site_id = $c->session->{site_id};
 
@@ -100,9 +102,9 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     if ($session_site_id) {
         if ($session_site_id ne $site->id) {
             my $sid = $site->id;
-            $c->log->error("Session stealing from " . $c->req->address
+            log_error { "Session stealing from " . $c->req->address
                            . " $sid is not $session_site_id on "
-                           . localtime());
+                           . localtime() };
             $c->delete_session;
             $c->detach('/not_permitted');
         }
@@ -134,14 +136,14 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     my $locale = $site->locale || 'en';
     # in case something weird happened
     unless ($site->known_langs->{$locale}) {
-        $c->log->warn("$locale is not recognized");
+        log_warn { "$locale is not recognized" };
         $locale = 'en';
     }
 
     if ($site->multilanguage) {
         if (my $user_locale = $c->session->{user_locale}) {
             if (my $language = $site->known_langs->{$user_locale}) {
-                $c->log->debug("Language is $language");
+                log_debug { "Language is $language" };
                 # validated by now
                 $locale = $user_locale;
             }
@@ -197,7 +199,7 @@ sub not_found :Private {
     my ($self, $c) = @_;
     $c->stash(please_index => 0);
     $c->response->status(404);
-    $c->log->debug("In the not_found!");
+    log_debug { "In the not_found!" };
     # last chance: look into the redirections if we have a type and an uri,
     # set in C::Library or C::Category
     if (my $site = $c->stash->{site}) {
@@ -214,6 +216,7 @@ sub not_found :Private {
             }
         }
     }
+    log_info { $c->request->path . " not found" };
     $c->stash(error_msg => $c->loc("Page not found!"));
     $c->stash(template => "error.tt");
 }
@@ -221,7 +224,7 @@ sub not_found :Private {
 sub not_permitted :Private {
     my ($self, $c) = @_;
     $c->response->status(403);
-    $c->log->error("Access denied");
+    log_error { "Access denied" };
     $c->response->body("Access denied");
     return;
 }

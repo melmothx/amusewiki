@@ -6,6 +6,8 @@ use base 'Log::Contextual';
 use Log::Log4perl;
 use File::Spec;
 
+# note: if you cange engine, please change the engine in
+# AmuseWikiFarm.pm as well.
 my $conf;
 if (-f 'log4perl.local.conf') {
     $conf = 'log4perl.local.conf';

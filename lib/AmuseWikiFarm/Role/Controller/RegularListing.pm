@@ -3,9 +3,11 @@ use MooseX::MethodAttributes::Role;
 
 requires qw/pre_base/;
 
+use AmuseWikiFarm::Log::Contextual;
+
 sub base :Chained('pre_base') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    $c->log->debug('in regular listing base');
+    log_debug { 'in regular listing base' };
     # if the user is logged in, give him access to deferred as well
     my $titles = $c->stash->{site}->titles;
     my $rs;

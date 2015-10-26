@@ -18,6 +18,8 @@ use MooseX::NonMoose;
 use MooseX::MarkAsMethods autoclean => 1;
 extends 'DBIx::Class::Core';
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 COMPONENTS LOADED
 
 =over 4
@@ -736,14 +738,15 @@ sub has_local_modifications {
 =head2 editing_ongoing
 
 Check if the revision is being actively edited and permit the hijaking
-of abandoned one. I guess 15 minutes of lock is good enough.
+of abandoned one. Lock time is 60 minutes.
 
 =cut
 
 sub editing_ongoing {
     my $self = shift;
     return unless $self->editing;
-    if (((time() - $self->updated->epoch) / 60) < 15) {
+    log_debug { "Revision " . $self->id . " was updated on " . $self->updated };
+    if (((time() - $self->updated->epoch) / 60) < 60) {
         return 1;
     }
     else {

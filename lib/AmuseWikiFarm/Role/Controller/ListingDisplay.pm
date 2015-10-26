@@ -3,9 +3,11 @@ use MooseX::MethodAttributes::Role;
 
 requires qw/base/;
 
+use AmuseWikiFarm::Log::Contextual;
+
 sub listing :Chained('base') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    $c->log->debug("In listing");
+    log_debug { "In listing" };
     my $rs = delete $c->stash->{texts_rs};
     # these should be cached if the user doesn't exist
     my $cache = $c->model('Cache',

@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Admin - Catalyst Controller
@@ -92,7 +94,7 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
                 $site = $c->model('DB::Site')->create($site_creation);
                 $site->initialize_git;
                 my $edit_link = $c->uri_for_action('/admin/edit', $id);
-                $c->log->info("Created site $id, redirecting to $edit_link");
+                log_info { "Created site $id, redirecting to $edit_link" };
                 $c->response->redirect($edit_link);
                 $c->detach();
                 return;
@@ -179,7 +181,7 @@ sub create_user :Chained('root') :PathPart('newuser') :Args(0) {
     elsif (@errors) {
         $c->flash(error_msg => join("\n", map { $c->loc($_) } @errors));
     }
-    $c->log->warn("Validation failed");
+    log_warn { "Validation failed" };
     $c->response->redirect($home);
 }
 
@@ -207,10 +209,10 @@ sub user_details :Chained('users') :PathPart('') :CaptureArgs(1) {
             $c->stash(user => $user);
             return;
         }
-        $c->log->warn("User $id not found");
+        log_warn { "User $id not found" };
     }
     else {
-        $c->log->warn("Garbage passed as id: $id");
+        log_warn { "Garbage passed as id: $id" };
     }
     $c->detach('/not_found');
 }
@@ -283,7 +285,7 @@ sub edit_user_details :Chained('user_details') :PathPart('edit') :Args(0){
 sub delete_user :Chained('user_details') :PathPart('delete') :Args(0) {
     my ($self, $c) = @_;
     if ($c->request->body_params->{delete}) {
-        $c->log->info("Deleting user " . $c->stash->{user}->username);
+        log_info { "Deleting user " . $c->stash->{user}->username };
         $c->flash(status_msg => $c->loc("User [_1] deleted", $c->stash->{user}->username));
         $c->stash->{user}->delete;
     }
