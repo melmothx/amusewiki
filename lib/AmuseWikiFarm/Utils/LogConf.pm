@@ -24,12 +24,6 @@ CONF
             last;
         }
     }
-    if ($existing) {
-        print "Using conf $existing\n";
-    }
-    else {
-        print "Using dummy conf\n";
-    }
     return $existing || \$dummy;
 }
 
