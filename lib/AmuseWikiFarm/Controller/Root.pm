@@ -224,7 +224,7 @@ sub not_found :Private {
 sub not_permitted :Private {
     my ($self, $c) = @_;
     $c->response->status(403);
-    log_error { "Access denied" };
+    log_warn { "Access denied to " . $c->request->uri };
     $c->response->body("Access denied");
     return;
 }
