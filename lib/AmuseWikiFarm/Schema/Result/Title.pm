@@ -358,6 +358,7 @@ use File::Spec;
 use Text::Amuse::Compile::Utils qw/read_file/;
 use DateTime;
 use File::Copy qw/copy/;
+use AmuseWikiFarm::Log::Contextual;
 
 =head2 listing
 

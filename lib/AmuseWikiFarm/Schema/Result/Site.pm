@@ -635,6 +635,7 @@ use AmuseWikiFarm::Archive::BookBuilder;
 use JSON ();
 use Text::Amuse::Compile::Utils ();
 use AmuseWikiFarm::Archive::Cache;
+use AmuseWikiFarm::Log::Contextual;
 
 =head2 repo_root_rel
 

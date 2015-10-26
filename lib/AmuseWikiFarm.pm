@@ -186,7 +186,8 @@ my $log4perl_conf = 'log4perl.conf';
 if (-f 'log4perl.local.conf') {
     $log4perl_conf = 'log4perl.local.conf';
 }
-__PACKAGE__->log(Log::Log4perl::Catalyst->new($log4perl_conf));
+
+__PACKAGE__->log(Log::Log4perl::Catalyst->new($log4perl_conf, watch_delay => 60));
 
 
 # Start the application
