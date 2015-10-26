@@ -9,12 +9,14 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
 sub pre_base :Chained('/site_robot_index') :PathPart('archive') :CaptureArgs(0) {}
 
 sub archive_by_lang :Chained('base') :PathPart('') :Args(1) {
     my ($self, $c, $lang) = @_;
     my $rs = delete $c->stash->{texts_rs};
-    $c->log->debug("In $lang");
+    log_debug { "In $lang" };
     if (my $label = $c->stash->{site}->known_langs->{$lang}) {
         my $resultset = $rs->search({ lang => $lang });
         my $cache = $c->model('Cache',

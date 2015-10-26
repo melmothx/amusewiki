@@ -10,6 +10,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 use DateTime;
 use Text::Wrapper;
 use Email::Valid;
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -248,7 +249,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
     if ($revision->editing_ongoing and
         $revision->session_id      and
         $revision->session_id ne $c->sessionid) {
-        $c->log->debug($revision->session_id . ' ne ' . $c->sessionid);
+        log_debug { $revision->session_id . ' ne ' . $c->sessionid };
         $c->stash->{editing_warnings} =
           $c->loc("This revision is being edited by someone else!");
         $c->stash(locked_editing => 1);
@@ -267,7 +268,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
         $revision->session_id($c->sessionid);
         $revision->update;
 
-        $c->log->debug("Handling the thing");
+        log_debug { "Handling the thing" };
         if ($params->{body}) {
             if (my $error = $revision->edit($params)) {
                 my $errmsg;
@@ -289,7 +290,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
         # handle the uploads, if any
         foreach my $upload ($c->request->upload('attachment')) {
 
-            $c->log->debug($upload->tempname . ' => '. $upload->size );
+            log_debug { $upload->tempname . ' => '. $upload->size  };
             $c->log->debug("Exists!") if -f $upload->tempname;
 
             if (my $error = $revision->add_attachment($upload->tempname)) {
@@ -333,13 +334,13 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                                 subject => $revision->title->uri,
                                 template => 'commit.tt',
                                );
-                    $c->log->warn("Sending mail from $mail_from to $mail_to");
+                    log_info { "Sending mail from $mail_from to $mail_to" };
                     if (my $cc = Email::Valid->address($params->{email})) {
                         $mail{cc} = $cc;
-                        $c->log->warn("Adding CC: $cc");
+                        log_info { "Adding CC: $cc" };
                     }
                     elsif (my $mail = $params->{email}) {
-                        $c->log->warn("Invalid mail $mail provided, ignoring");
+                        log_warn { "Invalid mail $mail provided, ignoring" };
                     }
                     $c->stash(email => \%mail);
                     $c->forward($c->view('Email::Template'));
@@ -366,10 +367,10 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
 
 sub attachments :Private {
     my ($self, $c, $path) = @_;
-    $c->log->debug("Handling attachment: $path");
+    log_debug { "Handling attachment: $path" };
     # first, see if we have something global
     if (my $attach = $c->stash->{site}->attachments->by_uri($path)) {
-        $c->log->debug("Found attachment $path");
+        log_debug { "Found attachment $path" };
         $c->stash(serve_static_file => $attach->f_full_path_name);
         $c->detach($c->view('StaticFile'));
     }

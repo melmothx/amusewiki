@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Uploads - Catalyst Controller
@@ -79,14 +81,14 @@ sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
 
     my $src = $srcfile->f_full_path_name;
     unless ($src && -f $src) {
-        $c->log->error("Expected $src file does not exists");
+        log_error { "Expected $src file does not exists" };
         $c->detach('/not_found');
         return;
     }
 
     my $output = $c->path_to(@basedir, $thumb);
 
-    $c->log->warn("Generating thumbnail from $src to $output");
+    log_warn { "Generating thumbnail from $src to $output" };
     $self->generate_thumbnail_from_to($src, $output);
     if (-f $output) {
         my $fh = IO::File->new($output, 'r');

@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::BookBuilder - Catalyst Controller
@@ -52,7 +54,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
         $bb->import_from_params(%params);
         unless ($params{removecover}) {
             foreach my $upload ($c->request->upload('coverimage')) {
-                $c->log->debug("Adding file: " . $upload->tempname . ' => '. $upload->size );
+                log_debug { "Adding file: " . $upload->tempname . ' => '. $upload->size  };
                 $bb->add_file($upload->tempname);
             }
         }
@@ -69,7 +71,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
             return;
         }
 
-        $c->log->debug("Putting the job in the queue now");
+        log_debug { "Putting the job in the queue now" };
 
         if (my $job = $c->stash->{site}->jobs->bookbuilder_add($bb->serialize)) {
             $c->res->redirect($c->uri_for_action('/tasks/display', [$job->id]));
@@ -84,7 +86,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
 sub edit :Chained('root') :PathPart('edit') :Args(0) {
     my ($self, $c) = @_;
     if (my $index = $c->request->params->{textindex}) {
-        $c->log->debug("Operating on $index");
+        log_debug { "Operating on $index" };
         if ($c->request->params->{moveup}) {
             $c->stash->{bb}->move_up($index);
         }
@@ -105,7 +107,7 @@ sub clear :Chained('root') :PathPart('clear') :Args(0) {
     my ($self, $c) = @_;
     if ($c->request->params->{clear}) {
         # override with a shiny new thing
-        $c->log->debug('Resetting bookbuilder in the session');
+        log_debug { 'Resetting bookbuilder in the session' };
         $c->session->{bookbuilder} = {};
     }
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
@@ -121,7 +123,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
         $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
     }
     elsif (my $err = $bb->error) {
-        $c->log->warn("$err for $text");
+        log_warn { "$err for $text" };
         $c->flash->{error_msg} = $c->loc($bb->error);
     }
     $c->response->redirect($referrer);

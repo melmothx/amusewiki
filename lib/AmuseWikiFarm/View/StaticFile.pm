@@ -5,12 +5,14 @@ use namespace::autoclean;
 extends 'Catalyst::View';
 
 use Plack::Util;
+use AmuseWikiFarm::Log::Contextual;
 
 sub process {
     my ($self, $c) = @_;
     my $file = $c->stash->{serve_static_file};
+    log_debug { "Serving $file" };
     unless ($file and -f $file) {
-        $c->log->error("$file is not a file!");
+        log_error { "$file is not a file!" };
         return;
     }
     my $mime = {

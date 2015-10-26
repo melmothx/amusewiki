@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Feed - Catalyst Controller
@@ -90,7 +92,7 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
             if (-f $epub_local_file) {
                 my $epub_url = $c->uri_for_action('/library/text',
                                                   [ $text->uri . '.epub' ]);
-                $c->log->debug("EPUB path = $epub_local_file");
+                log_debug { "EPUB path = $epub_local_file" };
                 $item->set('enclosure@url' => $epub_url);
                 $item->set('enclosure@type' => 'application/epub+zip');
                 $item->set('enclosure@length' => -s $epub_local_file);

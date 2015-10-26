@@ -9,6 +9,7 @@ use namespace::autoclean;
 
 use Search::Xapian (':all');
 use File::Spec;
+use AmuseWikiFarm::Log::Contextual;
 
 has code => (is => 'ro',
              required => 1,
@@ -196,8 +197,13 @@ sub index_text {
             $database->replace_document_by_term($qterm, $doc);
         };
     }
-    warn $@ if $@;
-    $@ ? return : return 1;
+    if ($@) {
+        log_warn { $@ } ;
+        return;
+    }
+    else {
+        return 1;
+    }
 }
 
 =head2 search($query_string, $page);

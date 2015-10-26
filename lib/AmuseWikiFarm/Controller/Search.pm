@@ -22,6 +22,7 @@ Catalyst Controller.
 =cut
 
 use JSON qw/to_json/;
+use AmuseWikiFarm::Log::Contextual;
 
 sub index :Chained('/site') :PathPart('search') :Args(0) {
     my ( $self, $c ) = @_;
@@ -101,7 +102,7 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
 
 
 
-    $c->log->debug("$last_thing, $matches, " . scalar(@results));
+    log_debug { "$last_thing, $matches, " . scalar(@results) };
 
     if ($matches > $paging  && $last_thing < $matches) {
         $c->stash(next_page => $c->uri_for($c->action, { page => $page + 1,

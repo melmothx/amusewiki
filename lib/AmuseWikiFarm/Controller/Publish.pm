@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Publish - Catalyst Controller
@@ -24,6 +26,7 @@ Stash the available revisions, depending on the site mode.
 sub root :Chained('/site') :PathPart('publish') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
+    log_debug { "User exists" };
     if (!$c->user_exists) {
         if ($site->human_can_publish) {
             # send to human if not so
@@ -55,6 +58,7 @@ sub root :Chained('/site') :PathPart('publish') :CaptureArgs(0) {
                  prefetch => [qw/title/],
                });
     $c->stash(revisions => $revs);
+    log_debug { "Found " . $revs->count  . " Revisions" };
 }
 
 =head2 pending
@@ -101,15 +105,15 @@ Method to publish the texts.
 sub validate_revision :Chained('root') :PathPart('') CaptureArgs(0) {
     my ($self, $c) = @_;
     if (my $revid = $c->request->params->{target}) {
-        $c->log->debug("Found publish parameter, validating");
+        log_debug { "Found publish parameter, validating" };
 
         # revisions should be already stashed
         if (my $revs = $c->stash->{revisions}) {
-            $c->log->debug("Found revision in stash");
+            log_debug { "Found revision in stash" };
 
             # search that revision id
             if (my $found = $revs->find($revid)) {
-                $c->log->debug("Found $revid!");
+                log_debug { "Found $revid!" };
                 $c->stash(target_revision => $found);
                 return;
             }
@@ -133,7 +137,7 @@ sub publish :Chained('validate_revision') :PathPart('publish') :Args(0) {
         }
 
         if ($rev->pending) {
-            $c->log->debug($rev->id . " is pending, processing!");
+            log_debug { $rev->id . " is pending, processing!" };
             my $job = $c->stash->{site}->jobs->publish_add($rev);
             $c->res->redirect($c->uri_for_action('/tasks/display',
                                                  [$job->id]));
