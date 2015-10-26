@@ -666,8 +666,8 @@ sub new_revision {
         } readdir($dh);
         closedir $dh;
         foreach my $clean (@cleanup) {
-            warn "Removing $clean in $target_dir\n";
-            unlink File::Spec->catfile($target_dir, $clean) or warn $!;
+            log_warn { "Removing $clean in $target_dir\n" };
+            unlink File::Spec->catfile($target_dir, $clean) or log_warn { "Cannot remove $target_dir/$clean $!" };
         }
     }
     else {

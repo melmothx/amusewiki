@@ -45,7 +45,7 @@ install in the session the key C<i_am_human>.
 =cut
 
 use Email::Valid;
-
+use AmuseWikiFarm::Log::Contextual;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
 sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
@@ -210,11 +210,11 @@ sub create :Chained('user') :Args(0) {
                         subject => $c->loc('User created'),
                         template => 'newuser.tt'
                        );
-            $c->log->warn("Sending mail from $mail_from to " . $user->email);
+            log_info { "Sending mail from $mail_from to " . $user->email };
             if (my $usercc = $c->user->get('email')) {
                 if (my $cc = Email::Valid->address($usercc)) {
                     $mail{cc} = $cc;
-                    $c->log->warn("Adding CC: $cc");
+                    log_info { "Adding CC: $cc" };
                 }
             }
             $c->stash(
@@ -243,7 +243,7 @@ sub edit :Chained('user') :Args(1) {
     my $users = $c->model('DB::User');
     my $user = $users->find($id);
     unless ($user) {
-        $c->log->warn("User $id not found!");
+        log_info { "User $id not found!" };
         $c->detach('/not_found');
         return;
     }

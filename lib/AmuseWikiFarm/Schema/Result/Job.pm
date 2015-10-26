@@ -162,6 +162,7 @@ use DateTime;
 use JSON qw/to_json
             from_json/;
 use AmuseWikiFarm::Archive::BookBuilder;
+use AmuseWikiFarm::Log::Contextual;
 
 has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
@@ -290,8 +291,8 @@ sub make_room_for_logs {
     my $logfile = $self->log_file;
     if (-f $logfile) {
         my $oldfile = $self->old_log_file;
-        warn "$logfile exists, renaming to $oldfile\n";
-        move($logfile, $oldfile) or warn "WTF?";
+        log_warn { "$logfile exists, renaming to $oldfile" };
+        move($logfile, $oldfile) or log_warn { "cannot move $logfile to $oldfile $!" };
     }
 }
 
@@ -424,7 +425,7 @@ sub dispatch_job_purge {
     die "No user!" unless $user;
     my $path = $text->f_full_path_name;
     my $uri = $text->full_uri;
-    warn "Removing $path\n";
+    log_warn { "Removing $path, job purged" };
     if (my $git = $site->git) {
         $git->rm($path);
         $git->commit({ message => "$uri deleted by $user" });
@@ -548,7 +549,7 @@ after delete => sub {
     my @leftovers = $self->produced_files;
     foreach my $file (@leftovers) {
         warn "Unlinking $file after job removal\n";
-        unlink $file or warn "Cannot unlink $file $!";
+        unlink $file or log_warn { "Cannot unlink $file $!" };
     }
 };
 

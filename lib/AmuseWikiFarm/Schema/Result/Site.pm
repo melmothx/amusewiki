@@ -1370,7 +1370,7 @@ sub _build_lexicon {
             return $hashref;
         }
         elsif ($@) {
-            warn $@;
+            log_fatal { $@ };
         }
     }
     return undef;
@@ -1610,7 +1610,7 @@ sub update_db_from_tree {
             }
         }
         else {
-            warn "$purge was not present in the db!";
+            log_warn { "$purge was not present in the db!" };
         }
     }
     my @files = (sort @{ $todo->{new} }, @{ $todo->{changed} });

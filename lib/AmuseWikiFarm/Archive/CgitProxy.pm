@@ -7,6 +7,7 @@ use namespace::autoclean;
 use URI;
 use HTTP::Tiny;
 use AmuseWikiFarm::Archive::CgitProxy::Response;
+use AmuseWikiFarm::Log::Contextual;
 
 has port => (is => 'ro',
              isa => 'Int',
@@ -71,7 +72,7 @@ sub get {
     my $res =
       AmuseWikiFarm::Archive::CgitProxy::Response->new($self->ua->get($uri));
     unless ($res->success) {
-        warn join(" ", $res->url, $res->status, $res->reason);
+        log_warn { join(" ", $res->url, $res->status, $res->reason) };
     }
     return $res;
 }

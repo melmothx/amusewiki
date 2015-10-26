@@ -18,8 +18,6 @@ use MooseX::NonMoose;
 use MooseX::MarkAsMethods autoclean => 1;
 extends 'DBIx::Class::Core';
 
-use AmuseWikiFarm::Log::Contextual;
-
 =head1 COMPONENTS LOADED
 
 =over 4
@@ -180,6 +178,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_attachment_basename_for
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor;
+use AmuseWikiFarm::Log::Contextual;
 
 =head2 muse_body
 
@@ -873,7 +872,7 @@ sub delete {
     my $site = $self->site;
     foreach my $file ($self->attached_files_paths) {
         if (my $att_row = $site->attachments->find_file($file)) {
-            warn "Deleting $file from db";
+            log_info { "Deleting $file from db" };
             $att_row->delete;
         }
     }
@@ -884,7 +883,7 @@ sub delete {
     }
     else {
         # this will bring down this row with it
-        warn "Purging " . $title->uri . " from db";
+        log_info { "Purging " . $title->uri . " from db" };
         return $title->delete;
     }
 }
@@ -899,18 +898,18 @@ sub purge_working_tree {
         foreach my $file (@files) {
             my $path = File::Spec->catfile($working_tree, $file);
             if (-f $path) {
-                print "Removing $path\n";
-                unlink $path or warn "Couldn't unlink $path $!";
+                log_info { "Removing $path" };
+                unlink $path or log_warn { "Couldn't unlink $path $!" };
             }
             else {
-                warn "Found strange file in $working_tree: $path\n";
+                log_warn { "Found strange file in $working_tree: $path" };
             }
         }
-        print "Removing $working_tree\n";
+        log_info {  "Removing $working_tree" };
         rmdir $working_tree or warn "Error removing $working_tree: $!";
     }
     else {
-        warn "$working_tree is not a directory!";
+        log_fatal { "$working_tree is not a directory!" };
     }
 }
 

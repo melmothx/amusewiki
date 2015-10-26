@@ -21,6 +21,7 @@ use Text::Amuse::Compile;
 use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
 use Text::Amuse::Compile::Webfonts;
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -602,7 +603,7 @@ sub add_file {
             unlink $oldcoverfile;
         }
         else {
-            warn "$oldcoverfile was set but now is empty!";
+            log_warn { "$oldcoverfile was set but now is empty!" };
         }
     }
     # find a random name
@@ -755,7 +756,7 @@ sub import_from_params {
             $self->$method($params{$method})
         } catch {
             my $error = $_;
-            warn $error->message;
+            log_warn { $error->message };
         };
     }
     if ($params{removecover}) {
@@ -896,7 +897,7 @@ sub compile {
     foreach my $text (@$textlist) {
         my $title = $self->site->titles->text_by_uri($text);
         unless ($title) {
-            warn "Couldn't find $text\n";
+            log_warn  { "Couldn't find $text\n" };
             next;
         }
         push @texts, $text;
@@ -940,7 +941,7 @@ sub compile {
         my $zipfile = $archives{$archive};
         my $zip = Archive::Zip->new;
         unless ($zip->read($zipfile) == AZ_OK) {
-            warn "Couldn't read $zipfile";
+            log_warn { "Couldn't read $zipfile" };
             next;
         }
         $zip->extractTree($archive, $basedir);
