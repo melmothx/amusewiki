@@ -63,6 +63,12 @@ __PACKAGE__->table("category_description");
   is_nullable: 0
   size: 3
 
+=head2 last_modified_by
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 category_id
 
   data_type: 'integer'
@@ -80,6 +86,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "lang",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
+  "last_modified_by",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "category_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
@@ -130,8 +138,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-10 12:13:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5pJt+ZvGSOwmkoBzpooIGQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 10:33:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:S0sEYoJBlIcDAH1HaDDyIw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

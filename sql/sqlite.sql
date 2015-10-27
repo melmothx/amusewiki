@@ -66,7 +66,11 @@ CREATE TABLE site (
        division INTEGER NOT NULL DEFAULT '12',
        bcor VARCHAR(16) NOT NULL DEFAULT '0mm',
        fontsize INTEGER NOT NULL DEFAULT '10',
-       mainfont VARCHAR(255) NOT NULL DEFAULT 'Linux Libertine O',
+       mainfont VARCHAR(255) NOT NULL DEFAULT 'CMU Serif',
+       sansfont VARCHAR(255) NOT NULL DEFAULT 'CMU Sans Serif',
+       monofont VARCHAR(255) NOT NULL DEFAULT 'CMU Typewriter Text',
+       beamertheme VARCHAR(255) NOT NULL DEFAULT 'default',
+       beamercolortheme VARCHAR(255) NOT NULL DEFAULT 'dove',
        nocoverpage INTEGER(1) NOT NULL DEFAULT 0,
        logo_with_sitename INTEGER(1) NOT NULL DEFAULT 0,
        opening VARCHAR(16) NOT NULL DEFAULT 'any',
@@ -88,6 +92,7 @@ CREATE TABLE users (
        username VARCHAR(255) NOT NULL,
        password VARCHAR(255) NOT NULL,
        email    VARCHAR(255),
+       created_by VARCHAR(255),
        active   INTEGER(1) NOT NULL DEFAULT 1
 );
 
@@ -185,6 +190,8 @@ CREATE TABLE title (
         uri         VARCHAR(255) NOT NULL,
         deleted     TEXT NOT NULL DEFAULT '',
 
+        slides      INTEGER(1) NOT NULL DEFAULT 0,
+
         sorting_pos INTEGER NOT NULL DEFAULT 0,
         site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
@@ -230,6 +237,7 @@ CREATE TABLE category_description (
        muse_body TEXT,
        html_body TEXT,
        lang VARCHAR(3) NOT NULL DEFAULT 'en',
+       last_modified_by VARCHAR(255),
        category_id INTEGER NOT NULL
                    REFERENCES category(id) ON DELETE CASCADE ON UPDATE CASCADE
 );

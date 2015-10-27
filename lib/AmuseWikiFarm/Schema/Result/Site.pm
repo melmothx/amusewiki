@@ -276,7 +276,35 @@ __PACKAGE__->table("site");
 =head2 mainfont
 
   data_type: 'varchar'
-  default_value: 'Linux Libertine O'
+  default_value: 'CMU Serif'
+  is_nullable: 0
+  size: 255
+
+=head2 sansfont
+
+  data_type: 'varchar'
+  default_value: 'CMU Sans Serif'
+  is_nullable: 0
+  size: 255
+
+=head2 monofont
+
+  data_type: 'varchar'
+  default_value: 'CMU Typewriter Text'
+  is_nullable: 0
+  size: 255
+
+=head2 beamertheme
+
+  data_type: 'varchar'
+  default_value: 'default'
+  is_nullable: 0
+  size: 255
+
+=head2 beamercolortheme
+
+  data_type: 'varchar'
+  default_value: 'dove'
   is_nullable: 0
   size: 255
 
@@ -394,7 +422,35 @@ __PACKAGE__->add_columns(
   "mainfont",
   {
     data_type => "varchar",
-    default_value => "Linux Libertine O",
+    default_value => "CMU Serif",
+    is_nullable => 0,
+    size => 255,
+  },
+  "sansfont",
+  {
+    data_type => "varchar",
+    default_value => "CMU Sans Serif",
+    is_nullable => 0,
+    size => 255,
+  },
+  "monofont",
+  {
+    data_type => "varchar",
+    default_value => "CMU Typewriter Text",
+    is_nullable => 0,
+    size => 255,
+  },
+  "beamertheme",
+  {
+    data_type => "varchar",
+    default_value => "default",
+    is_nullable => 0,
+    size => 255,
+  },
+  "beamercolortheme",
+  {
+    data_type => "varchar",
+    default_value => "dove",
     is_nullable => 0,
     size => 255,
   },
@@ -602,8 +658,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-14 09:50:27
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:g+MdaBYzy0pIESctmPxCUg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 09:40:04
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FhaRWU6Xz2DLSg99QDzqEg
 
 =head2 other_sites
 
