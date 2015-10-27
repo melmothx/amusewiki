@@ -7,6 +7,7 @@ use Data::Dumper;
 use File::Spec;
 use File::Basename;
 use Text::Amuse::Functions qw/muse_fast_scan_header/;
+use Text::Amuse::Compile::MuseHeader;
 use HTML::Entities qw/decode_entities encode_entities/;
 use Encode;
 use Digest::MD5 qw/md5_hex/;
@@ -53,7 +54,8 @@ if the files are not in the right path, the indexing is skipped.
 sub muse_file_info {
     my ($file, $root) = @_;
     die "$file not found!" unless -f $file;
-    my $details = _parse_muse_file($file, $root);
+
+    my $details = muse_parse_file_path($file, $root);
     return unless $details;
 
     if ($details->{f_suffix} ne '.muse') {
@@ -63,6 +65,18 @@ sub muse_file_info {
 
     $details->{uri} = $details->{f_name};
 
+    my $header = Text::Amuse::Compile::MuseHeader
+      ->new(muse_fast_scan_header($details->{f_full_path_name}, 'html'));
+
+    $details->{lang} = $header->language;
+    $details->{slides} = $header->wants_slides;
+
+    my %parsed_header = %{ $header->header };
+    foreach my $directive (keys %parsed_header) {
+        unless (exists $details->{$directive}) {
+            $details->{$directive} = $parsed_header{$directive};
+        }
+    }
 
 
     unless (exists $details->{title} and
@@ -291,42 +305,7 @@ sub _parse_muse_file {
         warn "$file couldn't be parsed by muse_fast_scan_header\n";
         return;
     }
-
-    # language treatment
-    if (my $lang_orig = $directives->{lang}) {
-        if ($lang_orig =~ m/([a-z]{2,3})/) {
-            my $lang = $1;
-            if ($lang_orig ne $lang) {
-                warn qq[Language "$lang_orig" found, using $lang instead\n];
-            }
-            $directives->{lang} = $lang;
-        }
-        else {
-            warn qq[Garbage $lang_orig found in #lang, using "en" instead\n];
-            $directives->{lang} = 'en';
-        }
-    }
-    else {
-        warn "No language found, assuming english\n";
-        $directives->{lang} = 'en';
-    }
-
-
     my %lowered;
-    foreach my $k (keys %$directives) {
-        my $lck = lc($k);
-        if (exists $lowered{$lck}) {
-            warn "Overwriting $lck, directives are case insensitive!\n";
-        }
-        $lowered{$lck} = $directives->{$k};
-    }
-
-    # just to be sure, check that the keys have not an underscore
-
-    foreach my $k (keys %lowered) {
-        die "Got $k directive with underscore in $file" unless index($k, '_') < 0;
-    }
-
     # we don't get clashes with the parsing of the muse file because
     # directives have not underscors in them
 

@@ -129,6 +129,7 @@ my $expected = {
                 subtitle => '',
                 notes => '',
                 f_class => 'text',
+                slides => 0,
                };
 
 
