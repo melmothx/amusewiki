@@ -736,10 +736,6 @@ sub repo_root {
 
 Options to feed the Text::Amuse::Compile object.
 
-=head2 compile_extra_options
-
-Options to feed the extra key of the Text::Amuse::Compile object.
-
 =head2 available_formats
 
 Return a list of format => enable pairs.
@@ -763,7 +759,9 @@ sub compile_options {
     foreach my $ext (qw/siteslogan logo nocoverpage
                         sitename opening
                         papersize division fontsize
-                        bcor mainfont twoside/) {
+                        bcor mainfont sansfont monofont
+                        beamertheme beamercolortheme
+                        twoside/) {
         $opts{extra}{$ext} = $self->$ext;
     }
     # if the logo has the sitename in it, skip it.
@@ -771,6 +769,7 @@ sub compile_options {
         $opts{extra}{sitename} = '';
     }
     $opts{extra}{site} = $self->canonical;
+    Dlog_debug { "options are $_" } (\%opts);
     return %opts;
 }
 
@@ -785,6 +784,7 @@ sub available_formats {
                       bare_html
                       epub
                       zip
+                      sl_tex
                       sl_pdf
                      /) {
         $formats{$f} = $self->$f;
@@ -2358,6 +2358,9 @@ sub do_not_enforce_commit_message {
     $self->get_option('do_not_enforce_commit_message') ? 1 : 0;
 }
 
+sub sl_tex {
+    return shift->sl_pdf;
+}
 
 =head2 serialize_site
 

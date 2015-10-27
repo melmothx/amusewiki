@@ -21,6 +21,6 @@ sub arg_default_logger {
     return Log::Log4perl->get_logger($package);
 }
 
-sub default_import { qw(:log ) }
+sub default_import { qw(:log :dlog) }
 
 1;

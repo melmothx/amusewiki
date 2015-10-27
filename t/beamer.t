@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 8;
+use Test::More tests => 14;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -27,10 +27,16 @@ use AmuseWiki::Tests qw/create_site/;
 my $site_id = '0beamer0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
+ok !$site->sl_tex, "No sl.tex";
 $site->update({ sl_pdf => 1,
                 cgit_integration => 1,
                 secure_site => 0,
+                sansfont => 'Iwona',
+                beamertheme => 'Madrid',
+                beamercolortheme => 'wolverine',
               });
+ok $site->sl_tex;
+
 my $mech = Test::WWW::Mechanize::Catalyst
   ->new(catalyst_app => 'AmuseWikiFarm',
         host => $site->id . '.amusewiki.org');
@@ -45,14 +51,21 @@ foreach my $muse ('slides.muse', 'slides-s-no.muse') {
 $site->git->add($destination);
 $site->git->commit({ message => "Added files" });
 $site->update_db_from_tree;
+ok (-f catfile($destination, 'slides.sl.tex'), "Slides sources created");
 ok (-f catfile($destination, 'slides.sl.pdf'), "Slides created");
 ok (! -f catfile($destination, 'slides-s-no.sl.pdf'),
     "Slides not created if #slides no");
+my $tex_body = read_file(catfile($destination, 'slides.sl.tex'));
+like($tex_body, qr{Iwona}, "Found the sans font");
+like($tex_body, qr{wolverine}, "Found the beamer color theme");
+like($tex_body, qr{Madrid}, "Found the beamer theme");
 $mech->get_ok('/library/slides');
 $mech->content_contains('Slides (PDF)');
 $mech->get_ok('/library/slides-s-no');
 $mech->content_lacks('Slides (PDF)');
 $mech->get_ok('/library/slides.sl.pdf');
-
+$mech->get_ok('/library/slides.sl.tex');
 $mech->get('/library/slides-s-no.sl.pdf');
+is ($mech->status, '404', "slides for slides-s-no not found");
+$mech->get('/library/slides-s-no.sl.tex');
 is ($mech->status, '404', "slides for slides-s-no not found");
