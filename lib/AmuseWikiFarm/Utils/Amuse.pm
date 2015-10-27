@@ -395,6 +395,8 @@ sub transliteration_table  {
    'ä' => 'a', 'Ä' => 'a',
    'Å' => 'a', 'å' => 'a',
    'ö' => 'o', 'Ö' => 'o',
+   # german
+   'ß' => 'ss',
    # other northen
    'ø' => 'o',  'õ' => 'o', 
    'Ø' => 'o',  'Õ' => 'o', 

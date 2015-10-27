@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 66;
+use Test::More tests => 67;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Date::Parse qw/str2time/;
@@ -43,6 +43,8 @@ is(muse_naming_algo(" Ò Purzel, my òààà\n\n\n"),
 
 is(muse_naming_algo("g.c."), "g-c",
    "Testing not printable");
+
+is(muse_naming_algo("Straße Straße"), "strasse-strasse");
 
 is(muse_naming_algo("äÄÅåöÖøõØÕäÄÅåöÖøõØÕ"),
    'aaaaooooooaaaaoooooo',
