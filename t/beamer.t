@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 14;
+use Test::More tests => 17;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -32,6 +32,7 @@ $site->update({ sl_pdf => 1,
                 cgit_integration => 1,
                 secure_site => 0,
                 sansfont => 'Iwona',
+                monofont => 'DejaVu Sans Mono',
                 beamertheme => 'Madrid',
                 beamercolortheme => 'wolverine',
               });
@@ -59,6 +60,7 @@ my $tex_body = read_file(catfile($destination, 'slides.sl.tex'));
 like($tex_body, qr{Iwona}, "Found the sans font");
 like($tex_body, qr{wolverine}, "Found the beamer color theme");
 like($tex_body, qr{Madrid}, "Found the beamer theme");
+like($tex_body, qr{DejaVu Sans Mono}, "Found the font");
 $mech->get_ok('/library/slides');
 $mech->content_contains('Slides (PDF)');
 $mech->get_ok('/library/slides-s-no');
