@@ -162,7 +162,7 @@ sub create :Chained('user') :Args(0) {
     if ($params{create}) {
         # check if all the fields are in place
         my %to_validate;
-        $c->log->debug("Validating");
+        log_debug { "Validating the paramaters" };
         my $missing = 0;
         foreach my $f (qw/username password passwordrepeat
                           email emailrepeat/) {
@@ -170,6 +170,7 @@ sub create :Chained('user') :Args(0) {
                 $to_validate{$f} = $params{$f};
             }
             else {
+                log_debug { $f . " is missing in the params" };
                 $missing++;
             }
         }
