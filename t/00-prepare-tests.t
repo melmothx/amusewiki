@@ -115,7 +115,6 @@ my %repos = ('0blog0' => {
                           division => '12',
                           bcor => '0mm',
                           fontsize => 10,
-                          mainfont => '',
                           twoside => 1,
                           canonical => 'test.amusewiki.org',
                          },
