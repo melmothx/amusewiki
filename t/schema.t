@@ -29,7 +29,8 @@ is_deeply \%formats, {
                       'lt_pdf' => 0,
                       'tex' => 1,
                       'a4_pdf' => 0,
-                      'epub' => 1
+                      'epub' => 1,
+                      'sl_pdf' => 0,
                      };
 
 my %exts = $site->available_text_exts;
@@ -42,7 +43,8 @@ is_deeply \%exts, {
                    '.lt.pdf' => 0,
                    '.tex' => 1,
                    '.a4.pdf' => 0,
-                   '.epub' => 1
+                   '.epub' => 1,
+                   '.sl.pdf' => 0,
                   };
 
 my $test = $site->titles->random_text;
