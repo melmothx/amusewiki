@@ -407,7 +407,7 @@
       </label>
       <div class="col-sm-10">
         <select name="mainfont" id="mainfont" class="form-control">
-          [% FOREACH font IN bb.all_fonts %]
+          [% FOREACH font IN bb.all_main_fonts %]
           <option value="[% font.name %]"
                   [% IF esite.mainfont == font.name %]selected="selected"[% END %]>
             [% font.desc %]
@@ -416,6 +416,39 @@
         </select>
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% loc('Sans font') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="sansfont" id="sansfont" class="form-control">
+          [% FOREACH font IN bb.all_sans_fonts %]
+          <option value="[% font.name %]"
+                  [% IF esite.sansfont == font.name %]selected="selected"[% END %]>
+            [% font.desc %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% loc('Mono font') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="monofont" id="monofont" class="form-control">
+          [% FOREACH font IN bb.all_mono_fonts %]
+          <option value="[% font.name %]"
+                  [% IF esite.monofont == font.name %]selected="selected"[% END %]>
+            [% font.desc %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">

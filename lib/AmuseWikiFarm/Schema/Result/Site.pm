@@ -2014,12 +2014,15 @@ sub update_from_params {
         push @errors, "Wrong papersize!";
     }
 
-    my $mainfont = delete $params->{mainfont};
-    if ($mainfont && $bb->available_fonts->{$mainfont}) {
-        $self->mainfont($mainfont);
-    }
-    else {
-        push @errors, "Wrong font!";
+    foreach my $fontfamily (qw/mainfont sansfont monofont/) {
+        my $font = delete $params->{$fontfamily};
+        if ($font && $bb->available_fonts->{$font}) {
+            $self->$fontfamily($font);
+        }
+        else {
+            $font ||= "NONE";
+            push @errors, "Wrong $fontfamily $font!";
+        }
     }
 
     my $bcor = delete $params->{bcor};

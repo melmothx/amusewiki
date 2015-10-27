@@ -21,6 +21,7 @@ use Text::Amuse::Compile;
 use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
 use Text::Amuse::Compile::Webfonts;
+use Text::Amuse::Compile::TemplateOptions;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -420,65 +421,27 @@ of the font. This is used for validation.
 =cut
 
 sub all_fonts {
-    my @fonts = ({
-                  name => 'Linux Libertine O',
-                  desc => 'Linux Libertine'
-                 },
-                 {
-                  name => 'CMU Serif',
-                  desc => 'Computer Modern',
-                 },
-                 {
-                  name => 'TeX Gyre Termes',
-                  desc => 'TeX Gyre Termes (Times)',
-                 },
-                 {
-                  name => 'TeX Gyre Pagella',
-                  desc => 'TeX Gyre Pagella (Palatino)',
-                 },
-                 {
-                  name => 'TeX Gyre Schola',
-                  desc => 'TeX Gyre Schola (Century)',
-                 },
-                 {
-                  name => 'TeX Gyre Bonum',
-                  desc => 'TeX Gyre Bonum (Bookman)',
-                 },
-                 {
-                  name => 'TeX Gyre Heros',
-                  desc => 'TeX Gyre Heros (Helvetica)',
-                 },
-                 {
-                  name => 'TeX Gyre Adventor',
-                  desc => 'TeX Gyre Adventor (Avant Garde Gothic)',
-                 },
-                 {
-                  name => 'Iwona',
-                  desc => 'Iwona',
-                 },
-                 {
-                  name => 'Antykwa Poltawskiego',
-                  desc => 'Antykwa Półtawskiego',
-                 },
-                 {
-                  name => 'Antykwa Torunska',
-                  desc => 'Antykwa Toruńska',
-                 },
-                 {
-                  name => 'Charis SIL',
-                  desc => 'Charis SIL (Bitstream Charter)',
-                 },
-                 {
-                  name => 'PT Serif',
-                  desc => 'Paratype (cyrillic)',
-                 },
-                 {
-                  name => 'PT Sans',
-                  desc => 'PT Sans (cyrillic)',
-                 },
-                );
+    my @fonts = (Text::Amuse::Compile::TemplateOptions->all_fonts);
     return \@fonts;
 }
+
+sub all_main_fonts {
+    my @fonts = (Text::Amuse::Compile::TemplateOptions->serif_fonts,
+                 Text::Amuse::Compile::TemplateOptions->sans_fonts);
+    return \@fonts;
+}
+
+sub all_sans_fonts {
+    my @fonts = Text::Amuse::Compile::TemplateOptions->sans_fonts;
+    return \@fonts;
+}
+
+sub all_mono_fonts {
+    my @fonts = Text::Amuse::Compile::TemplateOptions->mono_fonts;
+    return \@fonts;
+}
+
+
 
 sub mainfont_values {
     my $list = __PACKAGE__->all_fonts;
