@@ -99,7 +99,11 @@ my $dh = DBIx::Class::DeploymentHandler->new({
 if ($prepare) {
     $dh->prepare_install;
     # this happens only to create the version 2, hopefully
-    $dh->prepare_upgrade if $dh->version_storage_is_installed;
+    unless ($dh->version_storage_is_installed) {
+        $dh->install_version_storage({ version => $dh->schema_version });
+        $dh->add_database_version({ version => $dh->schema_version - 1});
+    }
+    $dh->prepare_upgrade;
     exit;
 }
 
