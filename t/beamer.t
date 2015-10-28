@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 38;
+use Test::More tests => 45;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -121,12 +121,17 @@ my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
                                                   });
 $bb->format('slides');
 ok($bb->add_text('slides'), "added slides.muse");
+ok($bb->can_generate_slides, "a single file is ok");
+ok($bb->add_text('slides'), "added again slides.muse");
+ok(!$bb->can_generate_slides, "two files don't produce slides");
+$bb->delete_text(1);
+ok($bb->can_generate_slides, "a single file is ok");
+$bb->delete_all;
+ok($bb->add_text('slides-s-no'), "added slides-s-no");
+ok(!$bb->can_generate_slides, "a file which has not the the slides set, doesn't give slides");
+$bb->delete_all;
+ok($bb->add_text('slides'), "added slides.muse");
 $bb->compile;
 foreach my $f ($bb->produced_files) {
     ok (-f $f, "$f exists") and unlink $f;
 }
-
-
-
-
-

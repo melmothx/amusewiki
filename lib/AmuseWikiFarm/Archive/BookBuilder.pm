@@ -1081,7 +1081,13 @@ sub available_webfonts {
 
 sub can_generate_slides {
     my $self = shift;
-    return 1;
+    my @texts = @{$self->texts};
+    if (@texts == 1 and $self->site) {
+        if (my $text = $self->site->titles->text_by_uri($texts[0])) {
+            return $text->slides;
+        }
+    }
+    return 0;
 }
 
 __PACKAGE__->meta->make_immutable;
