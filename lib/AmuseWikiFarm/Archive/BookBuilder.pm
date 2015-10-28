@@ -431,6 +431,11 @@ sub all_main_fonts {
     return \@fonts;
 }
 
+sub all_serif_fonts {
+    my @fonts = Text::Amuse::Compile::TemplateOptions->serif_fonts;
+    return \@fonts;
+}
+
 sub all_sans_fonts {
     my @fonts = Text::Amuse::Compile::TemplateOptions->sans_fonts;
     return \@fonts;
@@ -441,7 +446,7 @@ sub all_mono_fonts {
     return \@fonts;
 }
 
-sub mainfont_values {
+sub all_fonts_values {
     my $list = __PACKAGE__->all_fonts;
     my @values = map { $_->{name} } @$list;
     return \@values;
@@ -457,13 +462,21 @@ sub available_fonts {
 }
 
 
-enum(MainFontType => __PACKAGE__->mainfont_values );
+enum(FontType => __PACKAGE__->all_fonts_values );
 
 has mainfont => (
                  is => 'rw',
-                 isa => 'MainFontType',
-                 default => sub { 'Linux Libertine O' },
+                 isa => 'FontType',
+                 default => sub { __PACKAGE__->all_serif_fonts->[0]->{name} },
                 );
+
+has monofont => (is => 'rw',
+                 isa => 'FontType',
+                 default => sub { __PACKAGE__->all_mono_fonts->[0]->{name} });
+
+has sansfont => (is => 'rw',
+                 isa => 'FontType',
+                 default => sub { __PACKAGE__->all_sans_fonts->[0]->{name} });
 
 =head2 coverwidth
 
@@ -756,6 +769,10 @@ sub _main_methods {
               epub
               epubfont
               mainfont
+              sansfont
+              monofont
+              beamercolortheme
+              beamertheme
               fontsize
               coverfile
               papersize
@@ -794,6 +811,10 @@ sub as_job {
                                     fontsize    => $self->fontsize,
                                     bcor        => $self->bcor . 'mm',
                                     mainfont    => $self->mainfont,
+                                    sansfont    => $self->sansfont,
+                                    monofont    => $self->monofont,
+                                    beamertheme => $self->beamertheme,
+                                    beamercolortheme => $self->beamercolortheme,
                                     coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                     opening     => $self->opening,
                                     cover       => $self->coverfile,
