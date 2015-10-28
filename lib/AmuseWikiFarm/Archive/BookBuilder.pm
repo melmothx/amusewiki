@@ -849,7 +849,7 @@ sub as_job {
                                     cover       => $self->coverfile,
                                    };
     }
-    if (!$self->epub && $self->imposed) {
+    if (!$self->epub && !$self->slides && $self->imposed) {
         $job->{imposer_options} = {
                                    signature => $self->signature,
                                    schema    => $self->schema,
@@ -872,7 +872,15 @@ sub produced_filename {
 
 sub _produced_file_extension {
     my $self = shift;
-    $self->epub ? return 'epub' :  return 'pdf';
+    if ($self->epub) {
+        return 'epub';
+    }
+    elsif ($self->slides) {
+        return 'sl.pdf';
+    }
+    else {
+        return 'pdf';
+    }
 }
 
 sub sources_filename {
@@ -945,12 +953,14 @@ sub compile {
     my %compiler_args = (
                          logger => $logger,
                          extra => $template_opts,
-                         pdf => !$self->epub,
+                         pdf => $self->pdf,
                          # the following is required to avoid the
                          # laziness of the compiler to recycle the
                          # existing .tex when there is only one text,
                          # so options will be ingnored.
-                         tex => !$self->epub,
+                         tex => $self->pdf,
+                         sl_tex => $self->slides,
+                         sl_pdf => $self->slides,
                          epub => $self->epub,
                         );
     foreach my $setting (qw/luatex/) {
@@ -965,7 +975,7 @@ sub compile {
             }
         }
     }
-
+    Dlog_debug { "compiler args are $_" } \%compiler_args;
     Dlog_debug { "archives: $_" } \%archives;
     # extract the archives
 
@@ -1004,7 +1014,7 @@ sub compile {
     die "$outfile not produced!\n" unless (-f $outfile);
 
     # imposing needed?
-    if (!$self->epub and
+    if (!$self->epub and !$self->slides and
         $data->{imposer_options} and
         %{$data->{imposer_options}}) {
 

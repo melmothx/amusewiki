@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 35;
+use Test::More tests => 38;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -23,6 +23,7 @@ use Text::Amuse::Compile::Utils qw/write_file read_file append_file/;
 use Data::Dumper;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
+use AmuseWikiFarm::Archive::BookBuilder;
 
 my $site_id = '0beamer0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -112,6 +113,20 @@ $mech->set_fields(author => 'pippo',
 $mech->click;
 $mech->content_contains('Created new text');
 $mech->content_contains("#slides yes\n");
+
+my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
+                                                   dbic => $schema,
+                                                   site_id => $site_id,
+                                                   job_id => 999966,
+                                                  });
+$bb->format('slides');
+ok($bb->add_text('slides'), "added slides.muse");
+$bb->compile;
+foreach my $f ($bb->produced_files) {
+    ok (-f $f, "$f exists") and unlink $f;
+}
+
+
 
 
 
