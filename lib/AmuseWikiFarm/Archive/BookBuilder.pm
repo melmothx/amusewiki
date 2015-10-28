@@ -441,8 +441,6 @@ sub all_mono_fonts {
     return \@fonts;
 }
 
-
-
 sub mainfont_values {
     my $list = __PACKAGE__->all_fonts;
     my @values = map { $_->{name} } @$list;
@@ -534,6 +532,27 @@ has opening => (
                 isa => 'OpeningType',
                 default => sub { 'any' },
                );
+
+
+sub beamer_themes_values {
+    return [ Text::Amuse::Compile::TemplateOptions->beamer_themes ];
+}
+
+enum(BeamerTheme => __PACKAGE__->beamer_themes_values);
+
+sub beamer_color_themes_values {
+    return [ Text::Amuse::Compile::TemplateOptions->beamer_colorthemes ];
+}
+
+enum(BeamerColorTheme => __PACKAGE__->beamer_color_themes_values);
+
+has beamertheme => (is => 'rw',
+                    isa => 'BeamerTheme',
+                    default => sub { 'default' });
+
+has beamercolortheme => (is => 'rw',
+                         isa => 'BeamerColorTheme',
+                         default => sub { 'dove' });
 
 
 =head2 add_file($filepath)

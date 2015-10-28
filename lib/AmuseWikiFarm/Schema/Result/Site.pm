@@ -1891,6 +1891,7 @@ If the params is valid, perform an update, otherwise return the error.
 
 sub update_from_params {
     my ($self, $params) = @_;
+    Dlog_debug { "options are $_" } ($params);
     my @errors;
     # allwoing to set bare_html, we get the chance to the sloppy admin
     # to break the app, but hey...
@@ -2024,6 +2025,28 @@ sub update_from_params {
             push @errors, "Wrong $fontfamily $font!";
         }
     }
+    if (my $beamertheme = delete $params->{beamertheme} || '') {
+        my %avail = map { $_ => 1 } @{ $bb->beamer_themes_values };
+        Dlog_debug { "available beamer theme $_ and $beamertheme" } \%avail;
+        if ($avail{$beamertheme}) {
+            $self->beamertheme($beamertheme);
+        }
+        else {
+            push @errors, "Wrong Beamer theme: $beamertheme";
+        }
+    }
+    if (my $beamercolortheme = delete $params->{beamercolortheme} || '') {
+        my %avail = map { $_ => 1 } @{ $bb->beamer_color_themes_values };
+        Dlog_debug { "available beamer color theme $_ and $beamercolortheme" }
+          \%avail;
+        if ($avail{$beamercolortheme}) {
+            $self->beamercolortheme($beamercolortheme);
+        }
+        else {
+            push @errors, "Wrong Beamer Color theme: $beamercolortheme";
+        }
+    }
+
 
     my $bcor = delete $params->{bcor};
     if ($bcor && $bcor =~ m/^([0-9]+mm)$/) {

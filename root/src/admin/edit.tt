@@ -17,6 +17,14 @@
   only the standalone PDF, they are applied to it.') %]
 </p>
 
+<p>
+  [% loc('The Beamer selections are relevant only if you activate the
+  slides output.') %]
+  <a href="https://www.hartwork.org/beamer-theme-matrix/">
+    [% loc('Preview') %].
+  </a>
+</p>
+
 <div style="margin-top: 30px">
   <form method="post" class="form-horizontal" role="form"
         onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
@@ -448,6 +456,40 @@
         </select>
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% loc('Beamer theme') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="beamertheme" id="beamertheme" class="form-control">
+          [% FOREACH beamertheme IN bb.beamer_themes_values %]
+          <option value="[% beamertheme %]"
+                  [% IF esite.beamertheme == beamertheme %]selected="selected"[% END %]>
+            [% beamertheme %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% loc('Beamer color theme') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="beamercolortheme" id="beamercolortheme" class="form-control">
+          [% FOREACH beamercolortheme IN bb.beamer_color_themes_values %]
+          <option value="[% beamercolortheme %]"
+                  [% IF esite.beamercolortheme == beamercolortheme %]selected="selected"[% END %]>
+            [% beamercolortheme %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
 
 
     <div class="form-group">
