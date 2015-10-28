@@ -2,20 +2,26 @@
 
 set -e
 
-for font in 'Linux Libertine O'    \
-            'Charis SIL'           \
-            'CMU Serif'            \
+for font in 'CMU Serif'            \
+            'Linux Libertine O'    \
             'TeX Gyre Termes'      \
             'TeX Gyre Pagella'     \
             'TeX Gyre Schola'      \
             'TeX Gyre Bonum'       \
+            'Antykwa Poltawskiego' \
+            'Antykwa Torunska'     \
+            'Charis SIL'           \
+            'PT Serif'             \
+            'CMU Sans Serif'       \
             'TeX Gyre Heros'       \
             'TeX Gyre Adventor'    \
             'Iwona'                \
-            'Antykwa Poltawskiego' \
-            'Antykwa Torunska'     \
-            'PT Serif' \
-            'PT Sans'; do
+            'Linux Biolinum O'     \
+            'DejaVu Sans'          \
+            'PT Sans'              \
+            'CMU Typewriter Text'  \
+            'DejaVu Sans Mono'     \
+            'TeX Gyre Cursor'; do
     muse-compile.pl --extra papersize=a5 --extra division=15 \
         --extra sitename="$font" \
         --extra nocoverpage=1 \
