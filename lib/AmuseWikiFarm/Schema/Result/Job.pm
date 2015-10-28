@@ -292,7 +292,7 @@ sub make_room_for_logs {
     if (-f $logfile) {
         my $oldfile = $self->old_log_file;
         log_warn { "$logfile exists, renaming to $oldfile" };
-        move($logfile, $oldfile) or log_warn { "cannot move $logfile to $oldfile $!" };
+        move($logfile, $oldfile) or log_error { "cannot move $logfile to $oldfile $!" };
     }
 }
 
@@ -358,6 +358,7 @@ sub dispatch_job {
         if ($@) {
             $self->status('failed');
             $self->errors($@);
+            log_error { $@ };
         }
         else {
             $self->completed(DateTime->now);
@@ -370,7 +371,7 @@ sub dispatch_job {
         $logger->("Job $task finished at " . localtime() . "\n");
     }
     else {
-        warn "No handler found for $task!\n";
+        log_error { "No handler found for $task!" };
         $self->status('failed');
         $self->errors("No handler found for $task!\n");
     }
@@ -528,7 +529,7 @@ sub produced_files {
                 push @out, $abs;
             }
             else {
-                warn "$abs couldn't be found!\n";
+                log_error { "$abs (in produced files) couldn't be found!" };
             }
         }
     }
@@ -548,8 +549,8 @@ after delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;
     foreach my $file (@leftovers) {
-        warn "Unlinking $file after job removal\n";
-        unlink $file or log_warn { "Cannot unlink $file $!" };
+        log_warn { "Unlinking $file after job removal" };
+        unlink $file or log_error { "Cannot unlink $file $!" };
     }
 };
 
