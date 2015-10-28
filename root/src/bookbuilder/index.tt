@@ -71,12 +71,27 @@
     <input type="text" name="title" id="title"
            class="form-control required" value="[% bb.title | html %]"/>
     </p>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="epub" value="1"
-               [% IF bb.epub %] checked="checked" [% END %]
-               id="epub" />
-        <strong>[% loc("Produce an EPUB instead of a PDF") %]</strong>
+
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-default[% IF bb.pdf %] active[% END %]">
+        <input type="radio" name="format" id="pdf-format"
+               autocomplete="off" class="format-radio"
+               value="pdf" [% IF bb.pdf %]checked="checked"[% END %]>
+        [% loc('PDF') %]
+      </label>
+      [% IF site.sl_pdf && bb.can_generate_slides %]
+      <label class="btn btn-default[% IF bb.slides %] active[% END %]"">
+        <input type="radio" name="format" id="slides-format"
+               autocomplete="off" class="format-radio"
+               value="slides" [% IF bb.slides %]checked="checked"[% END %]>
+        [% loc('Slides') %]
+      </label>
+      [% END %]
+      <label class="btn btn-default[% IF bb.epub %] active[% END %]"">
+        <input type="radio" name="format" id="epub-format"
+               autocomplete="off" class="format-radio"
+               value="epub"  [% IF bb.epub %]checked="checked"[% END %]>
+        [% loc('EPUB') %]
       </label>
     </div>
     <div id="epub-options">
@@ -92,23 +107,31 @@
       </select>
     </div>
     <div>&nbsp;</div>
-    <div id="pdf-options">
+    <div id="pdf-common-options">
     <p>
       <label for="mainfont">
         <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
-          [% loc('Please select the desired fonts') %]
+          [% loc('Please select the desired fonts') %].
         </a>
         [% loc('Keep in mind that some character may be missing in the required font.') %]
         [% loc('Missing character will be reported') %].
       </label><br />
-      <select name="mainfont" id="mainfont">
-      [% FOREACH font IN bb.all_fonts %]
-      <option value="[% font.name %]"
-              [% IF font.name == bb.mainfont %]selected="selected"[% END %]>
-        [% font.desc %]
-      </option>
-      [% END %]
-    </select>
+      <select name="mainfont" id="mainfont" class="pdf-option">
+        [% FOREACH font IN bb.all_main_fonts %]
+        <option value="[% font.name %]"
+                [% IF font.name == bb.mainfont %]selected="selected"[% END %]>
+          [% font.desc %]
+        </option>
+        [% END %]
+      </select>
+      <select name="sansfont" id="sansfont" class="slides-option">
+        [% FOREACH font IN bb.all_sans_fonts %]
+        <option value="[% font.name %]"
+                [% IF font.name == bb.sansfont %]selected="selected"[% END %]>
+          [% font.desc %]
+        </option>
+        [% END %]
+      </select>
     @
     <select name="fontsize">
       [% FOREACH size IN bb.fontsize_values %]
@@ -120,6 +143,41 @@
     </select>
     pt
     </p>
+    </div>
+    <div id="slides-options" class="form-group">
+      <div class="row">
+        <label for="beamertheme" class="col-sm-3 control-label text-right">
+          [% loc('Please choose the Beamer theme') %]
+        </label>
+        <div class="col-sm-9">
+          <select name="beamertheme" id="beamertheme" class="form-control">
+            [% FOREACH beamertheme IN bb.beamer_themes_values %]
+            <option [% IF beamertheme == bb.beamertheme %]selected="selected"[% END %]
+                    value="[% beamertheme %]">
+              [% beamertheme %]
+            </option>
+            [% END %]
+          </select>
+        </div>
+      </div>
+      <div>&nbsp;</div>
+      <div class="row">
+        <label for="beamertheme" class="col-sm-3 control-label text-right">
+          [% loc('Please choose the Beamer color theme') %]
+        </label>
+        <div class="col-sm-9">
+          <select name="beamercolortheme" id="beamercolortheme" class="form-control">
+            [% FOREACH beamercolortheme IN bb.beamer_color_themes_values %]
+            <option [% IF beamercolortheme == bb.beamercolortheme %]selected="selected"[% END %]
+                    value="[% beamercolortheme %]">
+              [% beamercolortheme %]
+            </option>
+            [% END %]
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="pdf-options">
     <p>
     <label for="papersize">
     [% loc('Choose a paper format') %]
@@ -390,6 +448,9 @@
     </div>
     </div>
     <div>
+      &nbsp;
+    </div>
+    <div>
       <button type="submit" name="build" value="build" class="btn btn-default">
         [% loc('Build it') %]
       </button>
@@ -441,19 +502,35 @@
           $('.image-options').hide('fast');
       }
   }
-  function show_epub_options() {
-      if ($('#epub').is(":checked")) {
+  function show_format_options() {
+      var current_format = $("form#bbform input[name=format]:checked").val();
+      if (current_format == 'epub') {
+          $('#slides-options').hide('fast');
+          $('#pdf-common-options').hide('fast');
           $('#pdf-options').hide('fast');
           $('#epub-options').show('fast');
       }
       else {
-          $('#pdf-options').show('fast');
+          $('#pdf-common-options').show('fast');
           $('#epub-options').hide('fast');
+          if  (current_format == 'slides') {
+              $('#pdf-options').hide('fast');
+              $('.pdf-option').hide();
+              $('#slides-options').show('fast');
+              $('.slides-option').show();
+          }
+          else {
+              $('#pdf-options').show('fast');
+              $('.pdf-option').show();
+              $('#slides-options').hide('fast');
+              $('.slides-option').hide();
+
+          }
       }
   }
   $(document).ready(function(){
       $("#bbform").validate();
-      show_epub_options();
+      show_format_options();
       show_imposition();
       show_signature();
       show_image_options();
@@ -467,8 +544,8 @@
       $('.choose-schema').click(function() {
           show_signature();
       });
-      $("#epub").click(function() {
-          show_epub_options();
+      $(".format-radio").change(function() {
+          show_format_options();
       });
       $("#coverimage").change(function() {
           if ($(this).val()) {
