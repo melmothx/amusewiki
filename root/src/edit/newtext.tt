@@ -60,7 +60,6 @@
 	     value="[% processed_params.SORTauthors | html %]" />
     </p>
 
-    
     [% IF site.fixed_category_list %]
     <div id="fixed-category-choose">
       <strong>[% loc('Categories') %]</strong>

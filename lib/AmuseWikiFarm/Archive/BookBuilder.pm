@@ -65,6 +65,12 @@ has site => (is => 'ro',
 has job_id => (is => 'ro',
                isa => 'Maybe[Str]');
 
+enum(FormatType => [qw/epub pdf slides/]);
+
+has format => (is => 'rw',
+               isa => "FormatType",
+               default => 'pdf');
+
 sub _build_site {
     my $self = shift;
     if (my $schema = $self->dbic) {
@@ -177,9 +183,32 @@ Build an EPUB instead of a PDF
 
 =cut
 
-has epub => (is => 'rw',
-             isa => 'Bool',
-             default => sub { 0 });
+sub epub {
+    my $self = shift;
+    return $self->format eq 'epub';
+}
+
+sub slides {
+    my $self = shift;
+    if ($self->format eq 'slides' and $self->can_generate_slides) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+# this is the default
+sub pdf {
+    my $self = shift;
+    if ($self->format eq 'pdf' or
+        (!$self->slides && !$self->epub)) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
 
 has epubfont => (
                  is => 'rw',
@@ -766,7 +795,7 @@ sub import_from_params {
 
 sub _main_methods {
     return qw/title
-              epub
+              format
               epubfont
               mainfont
               sansfont
@@ -1040,6 +1069,10 @@ sub available_webfonts {
     return \@fonts;
 }
 
+sub can_generate_slides {
+    my $self = shift;
+    return 1;
+}
 
 __PACKAGE__->meta->make_immutable;
 

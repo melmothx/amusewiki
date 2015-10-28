@@ -80,14 +80,14 @@
         [% loc('PDF') %]
       </label>
       [% IF site.sl_pdf && bb.can_generate_slides %]
-      <label class="btn btn-default[% IF bb.slides %] active[% END %]"">
+      <label class="btn btn-default[% IF bb.slides %] active[% END %]">
         <input type="radio" name="format" id="slides-format"
                autocomplete="off" class="format-radio"
                value="slides" [% IF bb.slides %]checked="checked"[% END %]>
         [% loc('Slides') %]
       </label>
       [% END %]
-      <label class="btn btn-default[% IF bb.epub %] active[% END %]"">
+      <label class="btn btn-default[% IF bb.epub %] active[% END %]">
         <input type="radio" name="format" id="epub-format"
                autocomplete="off" class="format-radio"
                value="epub"  [% IF bb.epub %]checked="checked"[% END %]>
