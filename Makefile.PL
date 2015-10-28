@@ -74,7 +74,7 @@ requires 'HTTP::Tiny';
 # our own dogfood
 requires 'Text::Amuse' => '0.43';
 requires 'PDF::Imposition' => '0.14';
-requires 'Text::Amuse::Compile' => '0.42';
+requires 'Text::Amuse::Compile' => '0.44';
 requires 'Text::Amuse::Preprocessor' => '0.24';
 
 # devel things to be removed at the end of the development cycle
