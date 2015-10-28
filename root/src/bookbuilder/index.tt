@@ -195,7 +195,7 @@
           <label>[% loc('Please setup the Beamer layout') %]</label>
         </div>
         <div class="col-sm-9">
-          <a href="https://www.hartwork.org/beamer-theme-matrix/">
+          <a target="_blank" href="https://www.hartwork.org/beamer-theme-matrix/">
             <strong>[% loc('Here you can find a preview of the Beamer themes and color themes') %]</strong>
           </a>
         </div>
