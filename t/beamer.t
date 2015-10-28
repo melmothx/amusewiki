@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 17;
+use Test::More tests => 35;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -71,3 +71,47 @@ $mech->get('/library/slides-s-no.sl.pdf');
 is ($mech->status, '404', "slides for slides-s-no not found");
 $mech->get('/library/slides-s-no.sl.tex');
 is ($mech->status, '404', "slides for slides-s-no not found");
+
+$mech->get_ok('/login');
+$mech->submit_form(form_id => 'login-form',
+                   fields => { username => 'root',
+                               password => 'root',
+                             },
+                   button => 'submit');
+$mech->get_ok('/action/text/new');
+$mech->content_contains('Produce slides');
+$mech->get_ok("/admin/sites/edit/$site_id");
+$mech->form_id("site-edit-form");
+$mech->untick(sl_pdf => 'on');
+$mech->click("edit_site");
+$mech->content_lacks(q{id="error_message"}) or die $mech->content;
+ok(!$site->discard_changes->sl_pdf, "sl_pdf disabled");
+$mech->get_ok('/action/text/new');
+$mech->content_lacks('Produce slides');
+
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+$mech->set_fields(author => 'pippo',
+                  title => "No slides",
+                  textbody => "\n");
+$mech->click;
+$mech->content_contains('Created new text');
+$mech->content_lacks('#slides');
+
+$mech->get_ok("/admin/sites/edit/$site_id");
+$mech->form_id("site-edit-form");
+$mech->tick(sl_pdf => 'on');
+$mech->click;
+ok($site->discard_changes->sl_pdf, "Slides are active now");
+$mech->get_ok('/action/text/new');
+$mech->content_contains('Produce slides');
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+$mech->tick(slides => 'yes');
+$mech->set_fields(author => 'pippo',
+                  title => "Slides! for pippo",
+                  textbody => "\n");
+$mech->click;
+$mech->content_contains('Created new text');
+$mech->content_contains("#slides yes\n");
+
+
+

@@ -916,7 +916,7 @@ sub compile {
         }
     }
 
-    print Dumper(\%archives);
+    Dlog_debug { "archives: $_" } \%archives;
     # extract the archives
 
     foreach my $archive (keys %archives) {

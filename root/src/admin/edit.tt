@@ -26,7 +26,7 @@
 </p>
 
 <div style="margin-top: 30px">
-  <form method="post" class="form-horizontal" role="form"
+  <form method="post" class="form-horizontal" role="form" id="site-edit-form"
         onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
     <div class="form-group">
       <label for="mode" class="col-sm-2 control-label">
@@ -257,7 +257,7 @@
         <label>
           <input type="checkbox"
                  [% IF esite.sl_pdf %]checked="checked"[% END %]
-                 name="sl_pdf" />
+                 name="sl_pdf" value="on"/>
           [% loc('Slides (PDF)') %]
         </label>
       </div>
