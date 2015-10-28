@@ -6,15 +6,18 @@
 [% loc('Click on the images to get the sample PDF') %]
 </div>
 
-[% FOREACH font IN all_fonts %]
-<div class="center">
-  <h4>[% font.desc %]</h4>
+<div class="row">
+  [% FOREACH font IN all_fonts %]
+  <div class="col-lg-4">
+    <div class="center">
+      <h4>[% font.desc %]</h4>
+    </div>
+    <div class="center" style="height:600px">
+      <a href="[% font.pdf %]">
+        <img src="[% font.thumb %]" width="350px"
+             alt="[% font.name %]" title="[% font.desc %]" />
+      </a>
+    </div>
+  </div>
+  [% END %]
 </div>
-<div class="center">
-  <a href="[% font.pdf %]">
-    <img src="[% font.thumb %]" width="400px"
-         alt="[% font.name %]" title="[% font.desc %]" />
-  </a>
-</div>
-
-[% END %]
