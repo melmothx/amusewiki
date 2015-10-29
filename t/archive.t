@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 112;
+use Test::More tests => 128;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -53,6 +53,7 @@ is_deeply $site->title_fields, {
                              'sorting_pos' => 1,
                              'status' => 1,
                              'f_class' => 1,
+                                slides => 1,
                             }, "the archive knows the title fields";
 
 ok(!$site->index_file);
@@ -294,14 +295,15 @@ my @tests = (
              {
               author_count => 0,
               test_name => "removed authors",
-              muse => "#title Blabla\n\nBlabla\n",
+              muse => "#title Blabla#slides NO\n\nBlabla\n",
               display_author => '',
              },
              {
               author_count => 0,
               test_name => "display pippo, but no real authors",
-              muse => "#title Blabla\n#authors -\n#author pippo\n\nBlabla\n",
+              muse => "#title Blabla\n#authors -\n#author pippo\n#slides yes\n\nBlabla\n",
               display_author => 'pippo',
+              slides => 1,
              },
             );
 # here there are two bugs. The first is that authors should take
@@ -324,6 +326,12 @@ for (1..2) {
         }
         is ($title->authors->count, $test->{author_count}, $test->{test_name});
         is ($title->author, $test->{display_author}, "Author display is ok");
+        if ($test->{slides}) {
+            ok ($title->slides, "Slides required");
+        }
+        else {
+            ok (!$title->slides, "No slides required");
+        }
 
     }
 }

@@ -297,8 +297,12 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
         foreach my $upload ($c->request->upload('attachment')) {
 
             log_debug { $upload->tempname . ' => '. $upload->size  };
-            $c->log->debug("Exists!") if -f $upload->tempname;
-
+            if (-f $upload->tempname) {
+                log_debug { $upload->tempname . ' exists' };
+            }
+            else {
+                log_error { $upload->tempname . ' does not exist' };
+            }
             if (my $error = $revision->add_attachment($upload->tempname)) {
                 $c->flash(error_msg => $c->loc(@$error));
             }

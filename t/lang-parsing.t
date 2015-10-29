@@ -6,7 +6,7 @@ use warnings;
 use File::Spec::Functions qw/catfile catdir/;
 use Data::Dumper;
 
-use Test::More tests => 8;
+use Test::More tests => 4;
 
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -127,18 +127,6 @@ write_file($file, $muse);
 $details = muse_file_info($file, $repo_root);
 
 is ($details->{lang}, 'ru', "Lang correctly set");
-
-
-is scalar(@warns), 3, "3 warns found";
-
-like $warns[0], qr/Language.*found, using .* instead/,
-  "Warning found for cleaning";
-like $warns[1], qr/No language found, assuming english/,
-  "Warning found for no lang";
-like $warns[2], qr/Garbage .* found in #lang, using "en" instead/,
-  "Warning found for garbage";
-
-
 
 unlink $file or die $!;
 

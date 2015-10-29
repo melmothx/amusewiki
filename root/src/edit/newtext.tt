@@ -60,7 +60,6 @@
 	     value="[% processed_params.SORTauthors | html %]" />
     </p>
 
-    
     [% IF site.fixed_category_list %]
     <div id="fixed-category-choose">
       <strong>[% loc('Categories') %]</strong>
@@ -129,6 +128,19 @@
       [% END %]
     </select>
     </p>
+
+    [% IF site.sl_pdf %]
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"
+               [% IF c.req.params.slides %]checked="checked"[% END %]
+               name="slides" value="yes"/>
+        <strong>[% loc('Produce slides.') %]</strong> [% loc('Every
+        section will generate a slide. You need to do proper
+        sectioning for this to work.') %]
+      </label>
+    </div>
+    [% END %]
 
     <h3>[% loc('Main text') %]</h3>
     <div>

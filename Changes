@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.50 UNRELEASED
+
+New fonts were added. To assert that you have all the required fonts
+installed and to have the font preview properly working, please
+execute:
+
+  cd font-preview
+  ./gen.sh
+
 1.41 2015-10-26
 
  - New logging system: Log::Contextual + Log:Log4perl

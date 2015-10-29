@@ -17,8 +17,16 @@
   only the standalone PDF, they are applied to it.') %]
 </p>
 
+<p>
+  [% loc('The Beamer selections are relevant only if you activate the
+  slides output.') %]
+  <a href="https://www.hartwork.org/beamer-theme-matrix/">
+    [% loc('Preview') %].
+  </a>
+</p>
+
 <div style="margin-top: 30px">
-  <form method="post" class="form-horizontal" role="form"
+  <form method="post" class="form-horizontal" role="form" id="site-edit-form"
         onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
     <div class="form-group">
       <label for="mode" class="col-sm-2 control-label">
@@ -244,8 +252,16 @@
         </label>
       </div>
     </div>
-
-
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.sl_pdf %]checked="checked"[% END %]
+                 name="sl_pdf" value="on"/>
+          [% loc('Slides (PDF)') %]
+        </label>
+      </div>
+    </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <label>
@@ -399,7 +415,7 @@
       </label>
       <div class="col-sm-10">
         <select name="mainfont" id="mainfont" class="form-control">
-          [% FOREACH font IN bb.all_fonts %]
+          [% FOREACH font IN bb.all_main_fonts %]
           <option value="[% font.name %]"
                   [% IF esite.mainfont == font.name %]selected="selected"[% END %]>
             [% font.desc %]
@@ -408,6 +424,73 @@
         </select>
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% loc('Sans font') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="sansfont" id="sansfont" class="form-control">
+          [% FOREACH font IN bb.all_sans_fonts %]
+          <option value="[% font.name %]"
+                  [% IF esite.sansfont == font.name %]selected="selected"[% END %]>
+            [% font.desc %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% loc('Mono font') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="monofont" id="monofont" class="form-control">
+          [% FOREACH font IN bb.all_mono_fonts %]
+          <option value="[% font.name %]"
+                  [% IF esite.monofont == font.name %]selected="selected"[% END %]>
+            [% font.desc %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% loc('Beamer theme') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="beamertheme" id="beamertheme" class="form-control">
+          [% FOREACH beamertheme IN bb.beamer_themes_values %]
+          <option value="[% beamertheme %]"
+                  [% IF esite.beamertheme == beamertheme %]selected="selected"[% END %]>
+            [% beamertheme %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="fontsize" class="col-sm-2 control-label">
+        [% loc('Beamer color theme') %]:
+      </label>
+      <div class="col-sm-10">
+        <select name="beamercolortheme" id="beamercolortheme" class="form-control">
+          [% FOREACH beamercolortheme IN bb.beamer_color_themes_values %]
+          <option value="[% beamercolortheme %]"
+                  [% IF esite.beamercolortheme == beamercolortheme %]selected="selected"[% END %]>
+            [% beamercolortheme %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">

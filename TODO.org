@@ -47,7 +47,8 @@ looking at the history.
 ** TODO show the format in the page, if present
 ** TODO add the option to enable that in the admin
 ** TODO add support to the bookbuilder, with selection of fonts and style
-* TODO DeployHandler for the DB upgrades
+* DONE DeployHandler for the DB upgrades
+  CLOSED: [2015-10-27 mar 13:07]
 
 This way pulling and restarting should do the trick without manually
 applying the sql files.

@@ -80,6 +80,10 @@ my %old = map { $_ => ($site->$_ || '') } qw/magic_answer
                                   mode
                                   locale
                                   mainfont
+                                  sansfont
+                                  monofont
+                                  beamertheme
+                                  beamercolortheme
                                   bcor
                                  /;
 
@@ -88,6 +92,9 @@ my $errors = $site->update_from_params({
                                         papersize => 'a4',
                                         bcor => '0mm',
                                         opening => 'right',
+                                        sansfont => 'Iwona',
+                                        beamercolortheme => 'wolverine',
+                                        beamertheme => 'Madrid',
                                        });
 ok(!$errors, "No errors found") or diag $errors;
 is $site->opening, 'right', "Site updated";

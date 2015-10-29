@@ -21,6 +21,7 @@ use Text::Amuse::Compile;
 use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
 use Text::Amuse::Compile::Webfonts;
+use Text::Amuse::Compile::TemplateOptions;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -63,6 +64,12 @@ has site => (is => 'ro',
 
 has job_id => (is => 'ro',
                isa => 'Maybe[Str]');
+
+enum(FormatType => [qw/epub pdf slides/]);
+
+has format => (is => 'rw',
+               isa => "FormatType",
+               default => 'pdf');
 
 sub _build_site {
     my $self = shift;
@@ -176,9 +183,32 @@ Build an EPUB instead of a PDF
 
 =cut
 
-has epub => (is => 'rw',
-             isa => 'Bool',
-             default => sub { 0 });
+sub epub {
+    my $self = shift;
+    return $self->format eq 'epub';
+}
+
+sub slides {
+    my $self = shift;
+    if ($self->format eq 'slides' and $self->can_generate_slides) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+# this is the default
+sub pdf {
+    my $self = shift;
+    if ($self->format eq 'pdf' or
+        (!$self->slides && !$self->epub)) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
 
 has epubfont => (
                  is => 'rw',
@@ -420,67 +450,32 @@ of the font. This is used for validation.
 =cut
 
 sub all_fonts {
-    my @fonts = ({
-                  name => 'Linux Libertine O',
-                  desc => 'Linux Libertine'
-                 },
-                 {
-                  name => 'CMU Serif',
-                  desc => 'Computer Modern',
-                 },
-                 {
-                  name => 'TeX Gyre Termes',
-                  desc => 'TeX Gyre Termes (Times)',
-                 },
-                 {
-                  name => 'TeX Gyre Pagella',
-                  desc => 'TeX Gyre Pagella (Palatino)',
-                 },
-                 {
-                  name => 'TeX Gyre Schola',
-                  desc => 'TeX Gyre Schola (Century)',
-                 },
-                 {
-                  name => 'TeX Gyre Bonum',
-                  desc => 'TeX Gyre Bonum (Bookman)',
-                 },
-                 {
-                  name => 'TeX Gyre Heros',
-                  desc => 'TeX Gyre Heros (Helvetica)',
-                 },
-                 {
-                  name => 'TeX Gyre Adventor',
-                  desc => 'TeX Gyre Adventor (Avant Garde Gothic)',
-                 },
-                 {
-                  name => 'Iwona',
-                  desc => 'Iwona',
-                 },
-                 {
-                  name => 'Antykwa Poltawskiego',
-                  desc => 'Antykwa Półtawskiego',
-                 },
-                 {
-                  name => 'Antykwa Torunska',
-                  desc => 'Antykwa Toruńska',
-                 },
-                 {
-                  name => 'Charis SIL',
-                  desc => 'Charis SIL (Bitstream Charter)',
-                 },
-                 {
-                  name => 'PT Serif',
-                  desc => 'Paratype (cyrillic)',
-                 },
-                 {
-                  name => 'PT Sans',
-                  desc => 'PT Sans (cyrillic)',
-                 },
-                );
+    my @fonts = (Text::Amuse::Compile::TemplateOptions->all_fonts);
     return \@fonts;
 }
 
-sub mainfont_values {
+sub all_main_fonts {
+    my @fonts = (Text::Amuse::Compile::TemplateOptions->serif_fonts,
+                 Text::Amuse::Compile::TemplateOptions->sans_fonts);
+    return \@fonts;
+}
+
+sub all_serif_fonts {
+    my @fonts = Text::Amuse::Compile::TemplateOptions->serif_fonts;
+    return \@fonts;
+}
+
+sub all_sans_fonts {
+    my @fonts = Text::Amuse::Compile::TemplateOptions->sans_fonts;
+    return \@fonts;
+}
+
+sub all_mono_fonts {
+    my @fonts = Text::Amuse::Compile::TemplateOptions->mono_fonts;
+    return \@fonts;
+}
+
+sub all_fonts_values {
     my $list = __PACKAGE__->all_fonts;
     my @values = map { $_->{name} } @$list;
     return \@values;
@@ -496,13 +491,21 @@ sub available_fonts {
 }
 
 
-enum(MainFontType => __PACKAGE__->mainfont_values );
+enum(FontType => __PACKAGE__->all_fonts_values );
 
 has mainfont => (
                  is => 'rw',
-                 isa => 'MainFontType',
-                 default => sub { 'Linux Libertine O' },
+                 isa => 'FontType',
+                 default => sub { __PACKAGE__->all_serif_fonts->[0]->{name} },
                 );
+
+has monofont => (is => 'rw',
+                 isa => 'FontType',
+                 default => sub { __PACKAGE__->all_mono_fonts->[0]->{name} });
+
+has sansfont => (is => 'rw',
+                 isa => 'FontType',
+                 default => sub { __PACKAGE__->all_sans_fonts->[0]->{name} });
 
 =head2 coverwidth
 
@@ -571,6 +574,27 @@ has opening => (
                 isa => 'OpeningType',
                 default => sub { 'any' },
                );
+
+
+sub beamer_themes_values {
+    return [ Text::Amuse::Compile::TemplateOptions->beamer_themes ];
+}
+
+enum(BeamerTheme => __PACKAGE__->beamer_themes_values);
+
+sub beamer_color_themes_values {
+    return [ Text::Amuse::Compile::TemplateOptions->beamer_colorthemes ];
+}
+
+enum(BeamerColorTheme => __PACKAGE__->beamer_color_themes_values);
+
+has beamertheme => (is => 'rw',
+                    isa => 'BeamerTheme',
+                    default => sub { 'default' });
+
+has beamercolortheme => (is => 'rw',
+                         isa => 'BeamerColorTheme',
+                         default => sub { 'dove' });
 
 
 =head2 add_file($filepath)
@@ -771,9 +795,13 @@ sub import_from_params {
 
 sub _main_methods {
     return qw/title
-              epub
+              format
               epubfont
               mainfont
+              sansfont
+              monofont
+              beamercolortheme
+              beamertheme
               fontsize
               coverfile
               papersize
@@ -812,12 +840,16 @@ sub as_job {
                                     fontsize    => $self->fontsize,
                                     bcor        => $self->bcor . 'mm',
                                     mainfont    => $self->mainfont,
+                                    sansfont    => $self->sansfont,
+                                    monofont    => $self->monofont,
+                                    beamertheme => $self->beamertheme,
+                                    beamercolortheme => $self->beamercolortheme,
                                     coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                     opening     => $self->opening,
                                     cover       => $self->coverfile,
                                    };
     }
-    if (!$self->epub && $self->imposed) {
+    if (!$self->epub && !$self->slides && $self->imposed) {
         $job->{imposer_options} = {
                                    signature => $self->signature,
                                    schema    => $self->schema,
@@ -840,7 +872,15 @@ sub produced_filename {
 
 sub _produced_file_extension {
     my $self = shift;
-    $self->epub ? return 'epub' :  return 'pdf';
+    if ($self->epub) {
+        return 'epub';
+    }
+    elsif ($self->slides) {
+        return 'sl.pdf';
+    }
+    else {
+        return 'pdf';
+    }
 }
 
 sub sources_filename {
@@ -913,12 +953,14 @@ sub compile {
     my %compiler_args = (
                          logger => $logger,
                          extra => $template_opts,
-                         pdf => !$self->epub,
+                         pdf => $self->pdf,
                          # the following is required to avoid the
                          # laziness of the compiler to recycle the
                          # existing .tex when there is only one text,
                          # so options will be ingnored.
-                         tex => !$self->epub,
+                         tex => $self->pdf,
+                         sl_tex => $self->slides,
+                         sl_pdf => $self->slides,
                          epub => $self->epub,
                         );
     foreach my $setting (qw/luatex/) {
@@ -933,8 +975,8 @@ sub compile {
             }
         }
     }
-
-    print Dumper(\%archives);
+    Dlog_debug { "compiler args are $_" } \%compiler_args;
+    Dlog_debug { "archives: $_" } \%archives;
     # extract the archives
 
     foreach my $archive (keys %archives) {
@@ -972,7 +1014,7 @@ sub compile {
     die "$outfile not produced!\n" unless (-f $outfile);
 
     # imposing needed?
-    if (!$self->epub and
+    if (!$self->epub and !$self->slides and
         $data->{imposer_options} and
         %{$data->{imposer_options}}) {
 
@@ -1037,6 +1079,16 @@ sub available_webfonts {
     return \@fonts;
 }
 
+sub can_generate_slides {
+    my $self = shift;
+    my @texts = @{$self->texts};
+    if (@texts == 1 and $self->site) {
+        if (my $text = $self->site->titles->text_by_uri($texts[0])) {
+            return $text->slides;
+        }
+    }
+    return 0;
+}
 
 __PACKAGE__->meta->make_immutable;
 

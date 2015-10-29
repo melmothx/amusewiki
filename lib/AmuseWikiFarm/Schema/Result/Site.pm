@@ -205,6 +205,13 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1
 
+=head2 sl_pdf
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 html
 
   data_type: 'integer'
@@ -269,7 +276,35 @@ __PACKAGE__->table("site");
 =head2 mainfont
 
   data_type: 'varchar'
-  default_value: 'Linux Libertine O'
+  default_value: 'CMU Serif'
+  is_nullable: 0
+  size: 255
+
+=head2 sansfont
+
+  data_type: 'varchar'
+  default_value: 'CMU Sans Serif'
+  is_nullable: 0
+  size: 255
+
+=head2 monofont
+
+  data_type: 'varchar'
+  default_value: 'CMU Typewriter Text'
+  is_nullable: 0
+  size: 255
+
+=head2 beamertheme
+
+  data_type: 'varchar'
+  default_value: 'default'
+  is_nullable: 0
+  size: 255
+
+=head2 beamercolortheme
+
+  data_type: 'varchar'
+  default_value: 'dove'
   is_nullable: 0
   size: 255
 
@@ -359,6 +394,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "lt_pdf",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  "sl_pdf",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "html",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "bare_html",
@@ -385,7 +422,35 @@ __PACKAGE__->add_columns(
   "mainfont",
   {
     data_type => "varchar",
-    default_value => "Linux Libertine O",
+    default_value => "CMU Serif",
+    is_nullable => 0,
+    size => 255,
+  },
+  "sansfont",
+  {
+    data_type => "varchar",
+    default_value => "CMU Sans Serif",
+    is_nullable => 0,
+    size => 255,
+  },
+  "monofont",
+  {
+    data_type => "varchar",
+    default_value => "CMU Typewriter Text",
+    is_nullable => 0,
+    size => 255,
+  },
+  "beamertheme",
+  {
+    data_type => "varchar",
+    default_value => "default",
+    is_nullable => 0,
+    size => 255,
+  },
+  "beamercolortheme",
+  {
+    data_type => "varchar",
+    default_value => "dove",
     is_nullable => 0,
     size => 255,
   },
@@ -593,8 +658,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-29 17:26:37
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dWVVsr2mEPd+hqyLaYoc/w
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 09:40:04
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FhaRWU6Xz2DLSg99QDzqEg
 
 =head2 other_sites
 
@@ -671,10 +736,6 @@ sub repo_root {
 
 Options to feed the Text::Amuse::Compile object.
 
-=head2 compile_extra_options
-
-Options to feed the extra key of the Text::Amuse::Compile object.
-
 =head2 available_formats
 
 Return a list of format => enable pairs.
@@ -698,7 +759,9 @@ sub compile_options {
     foreach my $ext (qw/siteslogan logo nocoverpage
                         sitename opening
                         papersize division fontsize
-                        bcor mainfont twoside/) {
+                        bcor mainfont sansfont monofont
+                        beamertheme beamercolortheme
+                        twoside/) {
         $opts{extra}{$ext} = $self->$ext;
     }
     # if the logo has the sitename in it, skip it.
@@ -706,13 +769,24 @@ sub compile_options {
         $opts{extra}{sitename} = '';
     }
     $opts{extra}{site} = $self->canonical;
+    Dlog_debug { "options are $_" } (\%opts);
     return %opts;
 }
 
 sub available_formats {
     my $self = shift;
     my %formats;
-    foreach my $f (qw/tex pdf a4_pdf lt_pdf html bare_html epub zip/) {
+    foreach my $f (qw/tex
+                      pdf
+                      a4_pdf
+                      lt_pdf
+                      html
+                      bare_html
+                      epub
+                      zip
+                      sl_tex
+                      sl_pdf
+                     /) {
         $formats{$f} = $self->$f;
     }
     return %formats;
@@ -1001,6 +1075,7 @@ sub import_text_from_html_params {
 
     foreach my $directive (qw/title subtitle author LISTtitle SORTauthors
                               SORTtopics date uid cat
+                              slides
                               source lang pubdate/) {
 
         $self->_add_directive($fh, $directive, $params->{$directive});
@@ -1199,7 +1274,6 @@ sub index_file {
 
 
     my $fields = $self->title_fields;
-
     foreach my $col (keys %$details) {
         my $db_col = lc($col);
         if (exists $fields->{$db_col}) {
@@ -1818,6 +1892,7 @@ If the params is valid, perform an update, otherwise return the error.
 
 sub update_from_params {
     my ($self, $params) = @_;
+    Dlog_debug { "options are $_" } ($params);
     my @errors;
     # allwoing to set bare_html, we get the chance to the sloppy admin
     # to break the app, but hey...
@@ -1825,6 +1900,7 @@ sub update_from_params {
     # first round: booleans. Here there is not much to do. If it's set, 1,
     # otherwise 0
     my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
+                       sl_pdf
                        logo_with_sitename
                        cgit_integration
                        secure_site
@@ -1940,13 +2016,38 @@ sub update_from_params {
         push @errors, "Wrong papersize!";
     }
 
-    my $mainfont = delete $params->{mainfont};
-    if ($mainfont && $bb->available_fonts->{$mainfont}) {
-        $self->mainfont($mainfont);
+    foreach my $fontfamily (qw/mainfont sansfont monofont/) {
+        my $font = delete $params->{$fontfamily};
+        if ($font && $bb->available_fonts->{$font}) {
+            $self->$fontfamily($font);
+        }
+        else {
+            $font ||= "NONE";
+            push @errors, "Wrong $fontfamily $font!";
+        }
     }
-    else {
-        push @errors, "Wrong font!";
+    if (my $beamertheme = delete $params->{beamertheme} || '') {
+        my %avail = map { $_ => 1 } @{ $bb->beamer_themes_values };
+        Dlog_debug { "available beamer theme $_ and $beamertheme" } \%avail;
+        if ($avail{$beamertheme}) {
+            $self->beamertheme($beamertheme);
+        }
+        else {
+            push @errors, "Wrong Beamer theme: $beamertheme";
+        }
     }
+    if (my $beamercolortheme = delete $params->{beamercolortheme} || '') {
+        my %avail = map { $_ => 1 } @{ $bb->beamer_color_themes_values };
+        Dlog_debug { "available beamer color theme $_ and $beamercolortheme" }
+          \%avail;
+        if ($avail{$beamercolortheme}) {
+            $self->beamercolortheme($beamercolortheme);
+        }
+        else {
+            push @errors, "Wrong Beamer Color theme: $beamercolortheme";
+        }
+    }
+
 
     my $bcor = delete $params->{bcor};
     if ($bcor && $bcor =~ m/^([0-9]+mm)$/) {
@@ -2284,6 +2385,9 @@ sub do_not_enforce_commit_message {
     $self->get_option('do_not_enforce_commit_message') ? 1 : 0;
 }
 
+sub sl_tex {
+    return shift->sl_pdf;
+}
 
 =head2 serialize_site
 

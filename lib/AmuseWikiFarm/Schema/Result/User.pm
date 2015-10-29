@@ -64,6 +64,12 @@ __PACKAGE__->table("users");
   is_nullable: 1
   size: 255
 
+=head2 created_by
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 active
 
   data_type: 'integer'
@@ -81,6 +87,8 @@ __PACKAGE__->add_columns(
   "password",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "email",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "created_by",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "active",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
@@ -165,8 +173,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CJzsHl3EjflCUszD9wVRZw
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 10:30:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mdxcXvPcBaQ/f6aAio814w
 
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt

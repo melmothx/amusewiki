@@ -176,6 +176,13 @@ __PACKAGE__->table("title");
   default_value: (empty string)
   is_nullable: 0
 
+=head2 slides
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 sorting_pos
 
   data_type: 'integer'
@@ -243,6 +250,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "deleted",
   { data_type => "text", default_value => "", is_nullable => 0 },
+  "slides",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
@@ -337,8 +346,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Cl/kZIoP2KFSKMn3aDKpgw
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 10:39:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:YXo2Qg8Y7stNAS98QXiKhg
 
 __PACKAGE__->has_many(
     translations => "AmuseWikiFarm::Schema::Result::Title",

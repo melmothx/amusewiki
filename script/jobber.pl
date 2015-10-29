@@ -12,7 +12,7 @@ use Fcntl qw/:flock/;
 use DateTime;
 use Getopt::Long;
 use lib 'lib';
-
+use AmuseWikiFarm::Log::Contextual;
 use constant AMW_POLLING => $ENV{AMW_POLLING} || 5;
 
 my ($foreground);
@@ -144,7 +144,7 @@ sub main_loop {
                 purge_jobs_and_revisions($schema);
             };
             if ($@) {
-                warn "Errors: $@\n";
+                log_error { "Errors: $@" };
             }
             $count++;
         }
@@ -156,11 +156,10 @@ sub main_loop {
             $count++;
         }
         if (my $job = $queue->dequeue) {
-            print "Starting job on " . localtime() . "\n";
-            print join(" ", "Dispatching", $job->id, $job->status, $job->task),
-              "\n";
+            log_info { "Starting job on " . localtime() };
+            log_info { join(" ", "Dispatching", $job->id, $job->status, $job->task) };
             $job->dispatch_job;
-            print "Job finished on " . localtime() . "\n";
+            log_info { "Job finished on " . localtime() };
         }
         chdir $cwd or die $!;
         flock($lock, LOCK_UN);
@@ -172,15 +171,15 @@ sub main_loop {
 sub check_and_publish_deferred {
     my $schema = shift;
     my $now = DateTime->now;
-    print localtime() . ": checking deferred titles for $now\n";
+    log_info { localtime() . ": checking deferred titles for $now" };
     my $deferred = $schema->resultset('Title')->deferred_to_publish($now);
     while (my $title = $deferred->next) {
         sleep AMW_POLLING;
         my $site = $title->site;
         my $file = $title->f_full_path_name;
-        print "Publishing $file for site " . $site->id . "\n";
+        log_info { "Publishing $file for site " . $site->id };;
         $site->compile_and_index_files([ $file ]);
-        print "Done\n";
+        log_info { "Done publishing $file" };
     }
 }
 
@@ -192,15 +191,15 @@ sub purge_jobs_and_revisions {
     my $old_revs = $schema->resultset('Revision')->published_older_than($reftime);
     while (my $rev = $old_revs->next) {
         die unless $rev->status eq 'published'; # this shouldn't happen
-        print "Removing published revision " . $rev->id . " for site " .
-          $rev->site->id . " and title " . $rev->title->uri . "\n";
+        log_warn { "Removing published revision " . $rev->id . " for site " .
+                     $rev->site->id . " and title " . $rev->title->uri };
         $rev->delete;
     }
     my $old_jobs = $schema->resultset('Job')->completed_older_than($reftime);
     while (my $job = $old_jobs->next) {
         die unless $job->status eq 'completed'; # shouldn't happen
-        print "Removing old job " . $job->id . " for site " . $job->site->id .
-          " and task " . $job->task . "\n";
+        log_warn { "Removing old job " . $job->id . " for site " . $job->site->id .
+                     " and task " . $job->task };
         $job->delete;
     }
 }

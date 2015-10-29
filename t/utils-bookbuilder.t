@@ -184,6 +184,10 @@ my $expected = {
                                        'nocoverpage' => 1,
                                        'notoc' => 1,
                                        'mainfont' => 'CMU Serif',
+                                       sansfont    => 'CMU Sans Serif',
+                                       monofont    => 'CMU Typewriter Text',
+                                       beamertheme => 'default',
+                                       beamercolortheme => 'dove',
                                        'twoside' => 1,
                                        'division' => 14,
                                        'fontsize' => 10,
@@ -276,6 +280,7 @@ is $bb->opening, 'any';
            schema      => '4up',
            cover       => 1,
            opening     => '<em>',
+           format => 'pdf',
           );
 
 $bb->import_from_params(%params);
@@ -314,7 +319,7 @@ is_deeply ($bb->texts,
             'do-this-by-yourself',
            ], "List ok");
 
-$bb->epub(1);
+$bb->format('epub');
 check_file($bb, "epub");
 
 $bb->import_from_params(%params);

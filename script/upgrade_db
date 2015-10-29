@@ -1,24 +1,16 @@
 #!/bin/bash
-rm -v sqlite.db
-rm -rfv xapian/{0blog0,0test0}
-rm -rfv staging
-rm -v log/jobs/*.log
-git checkout -- staging
 
-if [ "$1" == '--cleanup' ]; then
-    rm -rfv repo
-    git checkout -- repo
-fi
-rm test.db
-sqlite3 test.db < sql/sqlite.sql
+rm -f tmp.db
+sqlite3 tmp.db < sql/sqlite.sql
 script/amusewikifarm_create.pl model DB \
     DBIC::Schema AmuseWikiFarm::Schema \
     create=static \
     naming=current use_namespaces=1 \
     components=PassphraseColumn \
-    dbi:SQLite:test.db \
+    dbi:SQLite:tmp.db \
     on_connect_do="PRAGMA foreign_keys = ON"
-script/bootstrap_archive.pl
 
 rm -f lib/AmuseWikiFarm/Model/DB.pm.new
 rm -f t/model_DB.t.new
+rm -f tmp.db
+echo "Now please bump up the Schema version and run dh-upgrade --prepare and dh-upgrade"
