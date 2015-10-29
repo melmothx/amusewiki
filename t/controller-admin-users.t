@@ -5,7 +5,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 56;
+use Test::More tests => 58;
 use Data::Dumper;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
@@ -71,6 +71,7 @@ $mech->get_ok($edit_url);
 diag "Editing $new_username";
 my $userobj = $schema->resultset('User')->find({ username => $new_username });
 ok ($userobj, "$new_username created and found: " . $userobj->id);
+is $userobj->created_by, 'root', "user created by root";
 
 my $default_pass = $userobj->password->hash_hex;
 ok(!$userobj->active, "User is inactive");
@@ -110,6 +111,7 @@ is $mech->uri->path, '/admin/users';
 
 $mech->get_ok('/admin/users');
 
+$mech->content_contains('<span class="user-created-by">root</span>');
 
 foreach my $id (qw/garbage 9999999999/) {
     foreach my $path ("/admin/users/$id",

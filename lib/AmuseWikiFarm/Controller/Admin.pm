@@ -172,6 +172,7 @@ sub create_user :Chained('root') :PathPart('newuser') :Args(0) {
             $c->flash(error_msg => $c->loc("Such an user already exists!"));
         }
         else {
+            $validated->{created_by} = $c->user->get('username');
             my $user = $users->create($validated);
             $c->response->redirect($c->uri_for_action('/admin/show_user_details',
                                                       [ $user->id ]));
