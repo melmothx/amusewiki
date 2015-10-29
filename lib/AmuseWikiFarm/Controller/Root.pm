@@ -103,10 +103,11 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
         if ($session_site_id ne $site->id) {
             my $sid = $site->id;
             log_error { "Session stealing from " . $c->req->address
-                           . " $sid is not $session_site_id on "
-                           . localtime() };
+                          . " requesting " . $c->req->uri
+                          . " $sid is not $session_site_id" };
             $c->delete_session;
             $c->detach('/not_permitted');
+            return;
         }
     }
     else {
