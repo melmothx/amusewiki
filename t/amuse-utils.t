@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 47;
+use Test::More tests => 54;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -12,6 +12,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_filename_is_valid
                                    muse_naming_algo
                                    muse_attachment_basename_for
+                                   clean_username
                                   /;
 
 is_deeply(muse_get_full_path("cacca"), [ "c", "ca", "cacca" ]);
@@ -107,3 +108,11 @@ is (length($test_uri), 95, "$test_uri is shorter than 96 chars");
 ok muse_filename_is_valid($test_uri), "$test_uri is fully valid";
 $test_uri .= 'x';
 ok !muse_filename_is_valid($test_uri), "$test_uri is not valid (by one)";
+
+is (clean_username('marco'), "marco");
+is (clean_username('pallino pinco'), "pallinopinco");
+is (clean_username(), "anon");
+is (clean_username("&%!"), "anon");
+is (clean_username("Алексей"), "aleksei");
+is (clean_username("ljuto"), "ljuto");
+is (clean_username("jogurt a asdf"), "jogurtaasdf");
