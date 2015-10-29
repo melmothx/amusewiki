@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 78;
+use Test::More tests => 81;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -182,6 +182,13 @@ $mech->click;
 $success = check_jobber($mech);
 
 $text = $success->{produced} or die "Can't continue without a text";
+
+{
+    my ($log) = $git->log;
+    ok($log->message) and diag $log->message;
+    is($log->attr->{author}, $git_author, "author set correctly");
+}
+
 
 my $text_file = catfile($site->repo_root,
                         qw/b bc/, "bobi-$title.muse");

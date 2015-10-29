@@ -456,6 +456,8 @@ sub dispatch_job_publish {
     my ($self, $logger) = @_;
     my $id = $self->job_data->{id};
     Dlog_debug { "job data is $_" } $self->job_data;
+    local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+    local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
     # will return the $self->title->full_uri
     return $self->site->revisions->find($id)->publish_text($logger);
 }

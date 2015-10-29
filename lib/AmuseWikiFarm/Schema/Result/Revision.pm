@@ -184,6 +184,7 @@ use Text::Amuse;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
                                    muse_attachment_basename_for
+                                   clean_username
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor;
 use AmuseWikiFarm::Log::Contextual;
@@ -506,10 +507,11 @@ and set the message.
 =cut
 
 sub commit_version {
-    my ($self, $message) = @_;
+    my ($self, $message, $username) = @_;
     $message ||= "No message provided!";
     $self->message($message);
     $self->status('pending');
+    $self->username(clean_username($username));
     $self->update;
 }
 
@@ -808,6 +810,9 @@ sub publish_text {
     # first process the muse file
     die "muse file not found in " . $self->id unless $muse;
 
+    local $ENV{GIT_AUTHOR_NAME}  = $self->author_name;
+    local $ENV{GIT_AUTHOR_EMAIL} = $self->author_mail;
+
     my $git = $self->site->git;
     my $revid = $self->id;
     my $commit_msg_file = $self->git_msg_file;
@@ -932,6 +937,26 @@ sub is_new_text {
     my $self = shift;
     return !$self->title->muse_file_exists_in_tree;
 }
+
+# same as Result::Job
+sub author_username {
+    my $self = shift;
+    return clean_username($self->username);
+}
+sub author_name {
+    my $self = shift;
+    return ucfirst($self->author_username);
+}
+sub author_mail {
+    my $self = shift;
+    my $hostname = 'localhost';
+    if (my $site = $self->site) {
+        $hostname = $site->canonical;
+    }
+    return $self->author_username . '@' . $hostname;
+}
+
+
 
 __PACKAGE__->meta->make_immutable;
 1;

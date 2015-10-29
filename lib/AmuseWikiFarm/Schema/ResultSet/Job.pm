@@ -74,7 +74,7 @@ sub enqueue {
 
 Add a bookbuilder job with the payload.
 
-=head2 publish_add($revision)
+=head2 publish_add($revision, $username)
 
 Schedule the revision object $revision for publishing. As a side
 effect, the status of the revision will be changed to C<processing>.
@@ -91,8 +91,8 @@ sub bookbuilder_add {
 }
 
 sub publish_add {
-    my ($self, $revision) = @_;
-    return $self->enqueue(publish => { id => $revision->id }, 5);
+    my ($self, $revision, $username) = @_;
+    return $self->enqueue(publish => { id => $revision->id }, 5, $username);
 }
 
 sub git_action_add {
