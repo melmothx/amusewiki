@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 59;
+use Test::More tests => 64;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -118,6 +118,11 @@ is (clean_username(""), "anon");
 is (clean_username("&%!"), "anon");
 is (clean_username("Алексей"), "aleksei");
 is (clean_username("ljuto"), "ljuto");
+is (clean_username("ljuto.anon"), "ljuto.anon");
+is (clean_username("m p"), "mp");
+is (clean_username("mp."), "mp");
+is (clean_username("mp.a"), "mp.a");
+is (clean_username(".mp.a"), "mpa");
 is (clean_username("jogurt a asdf"), "jogurtaasdf");
 is (clean_username(("a" x 20) . ("b" x 20)), "a" x 20,
     "username truncated at 20 chars");
