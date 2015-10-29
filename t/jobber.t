@@ -41,6 +41,7 @@ ok($mech->form_id('login-form'), "Found the login-form");
 
 $mech->set_fields(username => 'root',
                   password => 'root');
+my $git_author = "Root <root@" . $host . ">";
 $mech->click;
 
 $mech->content_contains('You are logged in now!');
@@ -204,9 +205,11 @@ $mech->click;
 
 check_jobber($mech);
 
-my ($log) = $git->log;
-
-is $log->message, "$text deleted by root\n", "Deletion found in the git";
+{
+    my ($log) = $git->log;
+    is $log->message, "$text deleted by root\n", "Deletion found in the git";
+    is $log->attr->{author}, $git_author, "author set correctly";
+}
 
 $text_row = $schema->resultset('Title')
   ->single({ f_full_path_name => $text_file });

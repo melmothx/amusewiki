@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
-use Test::More tests => 32;
+use Test::More tests => 51;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -25,6 +25,33 @@ my $othersite = $schema->resultset('Site')->find('0test0');
 my $j = $site->jobs->enqueue(testing => {});
 
 is $j->site->id, '0blog0';
+is $j->username, "anonymous";
+is $j->committer_username, "anonymous";
+is $j->committer_name, "Anonymous";
+is $j->committer_mail, "anonymous\@blog.amusewiki.org";
+{
+    my $jx = $site->jobs->enqueue(testing => {}, 10, "ùàà òò");
+    is $jx->username, "uaaoo";
+    is $jx->committer_username, "uaaoo";
+    is $jx->committer_name, "Uaaoo";
+    is $jx->committer_mail, "uaaoo\@blog.amusewiki.org";
+    $jx->update({ username => undef });
+    is $j->committer_username, "anonymous";
+    is $j->committer_name, "Anonymous";
+    is $j->committer_mail, "anonymous\@blog.amusewiki.org";
+    $jx->update({ username => "    ùàà \n òò \r    " });
+    is ($jx->username,        "    ùàà \n òò \r    ");
+    is $jx->committer_username, "uaaoo";
+    is $jx->committer_name, "Uaaoo";
+    is $jx->committer_mail, "uaaoo\@blog.amusewiki.org";
+    $jx->delete;
+    $jx = $site->jobs->enqueue(testing => {}, 10, "pinco.pallino");
+    is $jx->username, "pinco.pallino";
+    is $jx->committer_username, "pinco.pallino";
+    is $jx->committer_name, "Pinco.pallino";
+    is $jx->committer_mail, "pinco.pallino\@blog.amusewiki.org";
+    $jx->delete;
+}
 
 eval {
     $schema->resultset('Job')->enqueue(testing => {});

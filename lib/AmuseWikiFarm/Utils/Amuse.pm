@@ -808,7 +808,7 @@ sub clean_username {
             }
         }
     }
-    return 'anon';
+    return 'anonymous';
 }
 
 1;

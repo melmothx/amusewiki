@@ -171,6 +171,7 @@ use JSON qw/to_json
             from_json/;
 use AmuseWikiFarm::Archive::BookBuilder;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
 
 has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
@@ -436,6 +437,10 @@ sub dispatch_job_purge {
     my $uri = $text->full_uri;
     log_warn { "Removing $path, job purged" };
     if (my $git = $site->git) {
+        local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+        local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
+        local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
+        local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
         $git->rm($path);
         $git->commit({ message => "$uri deleted by $user" });
     }
@@ -563,6 +568,23 @@ after delete => sub {
     }
 };
 
+# same as Result::Revision
+sub committer_username {
+    my $self = shift;
+    return clean_username($self->username);
+}
+sub committer_name {
+    my $self = shift;
+    return ucfirst($self->committer_username);
+}
+sub committer_mail {
+    my $self = shift;
+    my $hostname = 'localhost';
+    if (my $site = $self->site) {
+        $hostname = $site->canonical;
+    }
+    return $self->committer_username . '@' . $hostname;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

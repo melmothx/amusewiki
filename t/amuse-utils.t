@@ -111,11 +111,11 @@ ok !muse_filename_is_valid($test_uri), "$test_uri is not valid (by one)";
 
 is (clean_username('marco'), "marco");
 is (clean_username('pallino pinco'), "pallinopinco");
-is (clean_username(), "anon");
-is (clean_username(0), "anon");
-is (clean_username(undef), "anon");
-is (clean_username(""), "anon");
-is (clean_username("&%!"), "anon");
+is (clean_username(), "anonymous");
+is (clean_username(0), "anonymous");
+is (clean_username(undef), "anonymous");
+is (clean_username(""), "anonymous");
+is (clean_username("&%!"), "anonymous");
 is (clean_username("Алексей"), "aleksei");
 is (clean_username("ljuto"), "ljuto");
 is (clean_username("ljuto.anon"), "ljuto.anon");

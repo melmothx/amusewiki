@@ -7,6 +7,7 @@ use base 'DBIx::Class::ResultSet';
 
 use DateTime;
 use JSON qw/to_json from_json/;
+use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
 
 =head1 NAME
 
@@ -28,10 +29,10 @@ throwing exceptions everywhere.
 
 Return a hashref with the handled jobs as keys and true as value.
 
-=head2 enqueue($task, $payload, $priority)
+=head2 enqueue($task, $payload, $priority, $username)
 
 Enqueye the task C<$task>, with the payload C<$payload>, at priority
-C<$priority>.
+C<$priority>, with $username as owner.
 
 $payload must be an hashref.
 
@@ -49,7 +50,7 @@ sub handled_jobs_hashref {
 }
 
 sub enqueue {
-    my ($self, $task, $payload, $priority) = @_;
+    my ($self, $task, $payload, $priority, $username) = @_;
 
     # validate
     die "Missing task and/or payload: $task $payload" unless $task && $payload;
@@ -62,6 +63,7 @@ sub enqueue {
                      status  => 'pending',
                      created => DateTime->now,
                      priority => $priority || 10,
+                     username => clean_username($username),
                     };
     my $job = $self->create($insertion)->discard_changes;
     $job->make_room_for_logs;
@@ -99,8 +101,8 @@ sub git_action_add {
 }
 
 sub purge_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(purge => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(purge => $payload, 10, $username);
 }
 
 sub alias_delete_add {

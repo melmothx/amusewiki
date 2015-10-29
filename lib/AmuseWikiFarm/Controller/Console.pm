@@ -120,11 +120,12 @@ sub purge :Chained('unpublished_list') :PathPart('purge') :Args(0) {
             }
         }
         if ($found) {
+            my $username = $c->user->get('username');
             my $payload = {
                            id => $target,
-                           username  => $c->user->get('username'),
+                           username  => $username,
                           };
-            my $job = $c->stash->{site}->jobs->purge_add($payload);
+            my $job = $c->stash->{site}->jobs->purge_add($payload, $username);
             $c->res->redirect($c->uri_for_action('/tasks/display',
                                                  [$job->id]));
             return;
