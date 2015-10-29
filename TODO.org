@@ -43,7 +43,8 @@ anon@amusewiki.org Totally bogus but will give a better overlook when
 looking at the history.
 
 * TODO Adding git remotes in the interface.
-* TODO Slides (waiting for Text::Amuse::Compile)
+* DONE Slides (waiting for Text::Amuse::Compile)
+  CLOSED: [2015-10-29 gio 13:38]
 ** TODO show the format in the page, if present
 ** TODO add the option to enable that in the admin
 ** TODO add support to the bookbuilder, with selection of fonts and style
