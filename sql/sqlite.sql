@@ -131,6 +131,7 @@ CREATE TABLE revision (
        message TEXT,
        status VARCHAR(16) NOT NULL DEFAULT 'editing',
        session_id VARCHAR(255), -- can be null or false
+       username  VARCHAR(255), -- can be null, we don't really care
        updated DATETIME NOT NULL -- internal
 );
 
@@ -145,6 +146,7 @@ CREATE TABLE job (
        completed DATETIME,
        priority  INTEGER,
        produced  VARCHAR(255),
+       username  VARCHAR(255),
        errors    TEXT
 );
 

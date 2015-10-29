@@ -91,6 +91,12 @@ __PACKAGE__->table("job");
   is_nullable: 1
   size: 255
 
+=head2 username
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 errors
 
   data_type: 'text'
@@ -116,6 +122,8 @@ __PACKAGE__->add_columns(
   "priority",
   { data_type => "integer", is_nullable => 1 },
   "produced",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "username",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "errors",
   { data_type => "text", is_nullable => 1 },
@@ -151,8 +159,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0IlAAomj8TvRa7fy8p3i2w
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-29 14:53:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6obDG0IWpjHdWR5+DslaZg
 
 use Cwd;
 use File::Spec;
@@ -442,6 +450,7 @@ sub dispatch_job_purge {
 sub dispatch_job_publish {
     my ($self, $logger) = @_;
     my $id = $self->job_data->{id};
+    Dlog_debug { "job data is $_" } $self->job_data;
     # will return the $self->title->full_uri
     return $self->site->revisions->find($id)->publish_text($logger);
 }
