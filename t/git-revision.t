@@ -80,11 +80,11 @@ ok ((@garbage == 3), "Found 3 commits with the garbage string");
 @garbage = grep { $_->message =~ m/[\r\0]/s } @logs;
 ok (!@garbage, "No commit with \\r or \\0 inside, filter worked");
 
-like $logs[0]->message, qr/Published revision \d+/, "Log message matches";
+like $logs[0]->message, qr/Published: .*\#\d+/, "Log message matches";
 
-like $logs[1]->message, qr/Begin editing no\.\d+/, "Log message ok";
+like $logs[1]->message, qr/Edit: .*\#\d+/, "Log message ok";
 
-like $logs[2]->message, qr/Imported HTML/, "Log for html ok";
+like $logs[2]->message, qr/HTML:.*\#\d+/, "Log for html ok";
 
 
 ($revision, $error) =
@@ -115,7 +115,7 @@ ok ($uri);
 @logs = $archive_git->log;
 
 ok (@logs == 6, "Two new revisions");
-like $logs[0]->message, qr/Begin editing/, "No published found";
+like $logs[0]->message, qr/Edit:.*#\d+/, "No published found";
 
 my $text = $site->titles->find({ f_class => 'text',
                                  uri => 'first-test' });

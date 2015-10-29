@@ -815,6 +815,7 @@ sub publish_text {
 
     my $git = $self->site->git;
     my $revid = $self->id;
+    my $full_uri = $self->title->full_uri;
     my $commit_msg_file = $self->git_msg_file;
     if ($git and -f $self->original_html) {
         die "Original html found, but target exists" if -f $muse;
@@ -822,7 +823,7 @@ sub publish_text {
         copy ($self->original_html, $muse) or die $!;
         $git->add($muse);
 
-        $self->_write_commit_file("Imported HTML revision no.$revid");
+        $self->_write_commit_file('HTML: ' . $full_uri . ' #' . $revid);
         $git->commit({ file => $commit_msg_file });
 
         die "starting muse revision not found!" unless -f $self->starting_file;
@@ -831,7 +832,7 @@ sub publish_text {
         $git->add($muse);
         # this means that the publishing was forced or is a new file
         if ($git->status->get('indexed')) {
-            $self->_write_commit_file("Begin editing no.$revid");
+            $self->_write_commit_file('Edit: ' . $full_uri . ' #' . $revid);
             $git->commit({ file => $commit_msg_file });
         }
     }
@@ -852,7 +853,7 @@ sub publish_text {
     if ($git) {
         if ($git->status->get('indexed')) {
             # could be very well already been stored above
-            $self->_write_commit_file("Published revision $revid");
+            $self->_write_commit_file('Published: ' . $full_uri . ' #' . $revid);
             $git->commit({ file => $commit_msg_file });
         }
     }
@@ -861,7 +862,7 @@ sub publish_text {
     $self->title->discard_changes;
     $self->status('published');
     $self->update;
-    return $self->title->full_uri;
+    return $full_uri;
 }
 
 sub f_class {
