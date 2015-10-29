@@ -45,8 +45,13 @@ prepare_app () {
     fi
 
     # perl dependencies. Probably switch to use carton
+    if diff -q Makefile.PL "Makefile.PL~" 2>/dev/null; then
+        echo "makefile up to date"
+    else
+        cpanm --installdeps .
+        cp Makefile.PL "Makefile.PL~"
+    fi
 
-    cpanm --installdeps .
     ./script/dh-upgrade
 }
 
