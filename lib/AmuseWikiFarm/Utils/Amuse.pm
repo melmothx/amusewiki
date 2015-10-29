@@ -13,6 +13,7 @@ use Encode;
 use Digest::MD5 qw/md5_hex/;
 use DateTime;
 use Date::Parse qw/str2time/;
+use Text::Unidecode qw/unidecode/;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
@@ -21,6 +22,7 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_attachment_basename_for
                     muse_parse_file_path
                     muse_filepath_is_valid
+                    clean_username
                     muse_filename_is_valid/;
 
 =head2 muse_file_info($file, $root)
@@ -792,5 +794,21 @@ sub muse_attachment_basename_for {
     return $base;
 }
 
+sub clean_username {
+    my ($username) = @_;
+    if ($username) {
+        if ($username =~ m/\A([a-z0-9]{1,20}(\.[a-z0-9]{1,20})?)\z/) {
+            return $1;
+        }
+        elsif ($username =~ m/\w/) {
+            my $clean = lc(unidecode($username));
+            $clean =~ s/[^a-z0-9]//g;
+            if ($clean =~ m/([a-z0-9]{1,20})/) {
+                return $1;
+            }
+        }
+    }
+    return 'anonymous';
+}
 
 1;

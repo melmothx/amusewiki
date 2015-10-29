@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 23;
+use Test::More tests => 35;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -57,7 +57,11 @@ like $revision->starting_file_body, qr/\Q$expected_starting\E/,
 
 like $revision->muse_body, qr/\Q$expected\E/, "Correctly filtered";
 
-$revision->commit_version("\rGar\0ba\0ge\r\nGar\rba\0ge\0\0Garbage");
+$revision->commit_version("\rGar\0ba\0ge\r\nGar\rba\0ge\0\0Garbage", "\0\0pinco\0\0");
+
+is $revision->author_username, "pinco";
+is $revision->author_name, "Pinco";
+is $revision->author_mail, "pinco\@0gitz0.amusewiki.org";
 
 my $uri = $revision->publish_text;
 
@@ -76,11 +80,11 @@ ok ((@garbage == 3), "Found 3 commits with the garbage string");
 @garbage = grep { $_->message =~ m/[\r\0]/s } @logs;
 ok (!@garbage, "No commit with \\r or \\0 inside, filter worked");
 
-like $logs[0]->message, qr/Published revision \d+/, "Log message matches";
+like $logs[0]->message, qr/Published: .*\#\d+/, "Log message matches";
 
-like $logs[1]->message, qr/Begin editing no\.\d+/, "Log message ok";
+like $logs[1]->message, qr/Edit: .*\#\d+/, "Log message ok";
 
-like $logs[2]->message, qr/Imported HTML/, "Log for html ok";
+like $logs[2]->message, qr/HTML:.*\#\d+/, "Log for html ok";
 
 
 ($revision, $error) =
@@ -111,7 +115,7 @@ ok ($uri);
 @logs = $archive_git->log;
 
 ok (@logs == 6, "Two new revisions");
-like $logs[0]->message, qr/Begin editing/, "No published found";
+like $logs[0]->message, qr/Edit:.*#\d+/, "No published found";
 
 my $text = $site->titles->find({ f_class => 'text',
                                  uri => 'first-test' });
@@ -129,3 +133,24 @@ $text = $site->titles->find({ f_class => 'text',
 is ($text->recent_changes_uri, '/git/0gitz0/log/f/ft/first-test.muse',
     "URI for cgit is ok");
 
+{
+    my ($revision, $error) = $site->create_new_text({ uri => 'nother-thest',
+                                                      title => 'Hello there!',
+                                                      lang => 'en',
+                                                      textbody => '<p>!</p>'
+                                                    }, 'text');
+    ok ($revision->id, "Found revision");
+    $revision->commit_version("Garbaged", "   ---xxxx---  ");
+    is ($revision->username, 'xxxx');
+    $revision->update({ username => '  xxxx ' });
+    is $revision->author_username, "xxxx";
+    is $revision->author_name, "Xxxx";
+    is $revision->author_mail, "xxxx\@0gitz0.amusewiki.org";
+    my $job = $site->jobs->publish_add($revision => " àààà ");
+    is $job->committer_username, "aaaa";
+    is $job->committer_name, "Aaaa";
+    is $job->committer_mail, "aaaa\@0gitz0.amusewiki.org";
+    $job->dispatch_job;
+    my ($log) = $site->git->log;
+    is $log->attr->{author}, "Xxxx <xxxx\@0gitz0.amusewiki.org>";
+}

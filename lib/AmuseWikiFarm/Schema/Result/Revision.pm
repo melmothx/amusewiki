@@ -82,6 +82,12 @@ __PACKAGE__->table("revision");
   is_nullable: 1
   size: 255
 
+=head2 username
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 updated
 
   data_type: 'datetime'
@@ -108,6 +114,8 @@ __PACKAGE__->add_columns(
     size => 16,
   },
   "session_id",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "username",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "updated",
   { data_type => "datetime", is_nullable => 0 },
@@ -158,8 +166,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rq2unIF87j0anJLmALv8Ag
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-29 14:53:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sK7iPMGpXrTPbSveZiG5oA
 
 # core modules
 use File::Basename qw/fileparse/;
@@ -176,6 +184,7 @@ use Text::Amuse;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_parse_file_path
                                    muse_attachment_basename_for
+                                   clean_username
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor;
 use AmuseWikiFarm::Log::Contextual;
@@ -498,10 +507,11 @@ and set the message.
 =cut
 
 sub commit_version {
-    my ($self, $message) = @_;
+    my ($self, $message, $username) = @_;
     $message ||= "No message provided!";
     $self->message($message);
     $self->status('pending');
+    $self->username(clean_username($username));
     $self->update;
 }
 
@@ -800,8 +810,12 @@ sub publish_text {
     # first process the muse file
     die "muse file not found in " . $self->id unless $muse;
 
+    local $ENV{GIT_AUTHOR_NAME}  = $self->author_name;
+    local $ENV{GIT_AUTHOR_EMAIL} = $self->author_mail;
+
     my $git = $self->site->git;
     my $revid = $self->id;
+    my $full_uri = $self->title->full_uri;
     my $commit_msg_file = $self->git_msg_file;
     if ($git and -f $self->original_html) {
         die "Original html found, but target exists" if -f $muse;
@@ -809,7 +823,7 @@ sub publish_text {
         copy ($self->original_html, $muse) or die $!;
         $git->add($muse);
 
-        $self->_write_commit_file("Imported HTML revision no.$revid");
+        $self->_write_commit_file('HTML: ' . $full_uri . ' #' . $revid);
         $git->commit({ file => $commit_msg_file });
 
         die "starting muse revision not found!" unless -f $self->starting_file;
@@ -818,7 +832,7 @@ sub publish_text {
         $git->add($muse);
         # this means that the publishing was forced or is a new file
         if ($git->status->get('indexed')) {
-            $self->_write_commit_file("Begin editing no.$revid");
+            $self->_write_commit_file('Edit: ' . $full_uri . ' #' . $revid);
             $git->commit({ file => $commit_msg_file });
         }
     }
@@ -839,7 +853,7 @@ sub publish_text {
     if ($git) {
         if ($git->status->get('indexed')) {
             # could be very well already been stored above
-            $self->_write_commit_file("Published revision $revid");
+            $self->_write_commit_file('Published: ' . $full_uri . ' #' . $revid);
             $git->commit({ file => $commit_msg_file });
         }
     }
@@ -848,7 +862,7 @@ sub publish_text {
     $self->title->discard_changes;
     $self->status('published');
     $self->update;
-    return $self->title->full_uri;
+    return $full_uri;
 }
 
 sub f_class {
@@ -924,6 +938,26 @@ sub is_new_text {
     my $self = shift;
     return !$self->title->muse_file_exists_in_tree;
 }
+
+# same as Result::Job
+sub author_username {
+    my $self = shift;
+    return clean_username($self->username);
+}
+sub author_name {
+    my $self = shift;
+    return ucfirst($self->author_username);
+}
+sub author_mail {
+    my $self = shift;
+    my $hostname = 'localhost';
+    if (my $site = $self->site) {
+        $hostname = $site->canonical;
+    }
+    return $self->author_username . '@' . $hostname;
+}
+
+
 
 __PACKAGE__->meta->make_immutable;
 1;

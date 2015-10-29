@@ -11,6 +11,7 @@ use DateTime;
 use Text::Wrapper;
 use Email::Valid;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
 
 =head1 NAME
 
@@ -329,8 +330,15 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 my $reported_username = $params->{username} || 'anonymous';
                 $message .= "\n-- \n" . $reported_username . "\n\n";
                 $message =~ s/[\r\0]//gs;
-                $revision->commit_version($message);
-
+                my $username = clean_username($reported_username);
+                if ($c->user_exists) {
+                    $username = clean_username($c->user->get("username"));
+                }
+                elsif ($reported_username ne 'anonymous') {
+                    # add a prefix, so we know it's not a valid username
+                    $username .= ".anon";
+                }
+                $revision->commit_version($message, $username);
                 # assert to have a fresh copy
                 $revision->discard_changes;
 

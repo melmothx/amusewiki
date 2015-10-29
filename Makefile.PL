@@ -65,6 +65,7 @@ requires 'Email::Valid';
 requires 'File::Copy::Recursive';
 requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor' => '0.10';
+requires 'Text::Unidecode' => '1.22'; # version in jessie
 # loggers
 requires 'Log::Contextual';
 requires 'Log::Log4perl';

@@ -138,7 +138,8 @@ sub publish :Chained('validate_revision') :PathPart('publish') :Args(0) {
 
         if ($rev->pending) {
             log_debug { $rev->id . " is pending, processing!" };
-            my $job = $c->stash->{site}->jobs->publish_add($rev);
+            my $job = $c->stash->{site}->jobs
+              ->publish_add($rev, ($c->user_exists ? $c->user->get("username") : ''));
             $c->res->redirect($c->uri_for_action('/tasks/display',
                                                  [$job->id]));
             return;

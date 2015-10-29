@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 78;
+use Test::More tests => 81;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -41,6 +41,7 @@ ok($mech->form_id('login-form'), "Found the login-form");
 
 $mech->set_fields(username => 'root',
                   password => 'root');
+my $git_author = "Root <root@" . $host . ">";
 $mech->click;
 
 $mech->content_contains('You are logged in now!');
@@ -182,6 +183,13 @@ $success = check_jobber($mech);
 
 $text = $success->{produced} or die "Can't continue without a text";
 
+{
+    my ($log) = $git->log;
+    ok($log->message) and diag $log->message;
+    is($log->attr->{author}, $git_author, "author set correctly");
+}
+
+
 my $text_file = catfile($site->repo_root,
                         qw/b bc/, "bobi-$title.muse");
 
@@ -204,9 +212,11 @@ $mech->click;
 
 check_jobber($mech);
 
-my ($log) = $git->log;
-
-is $log->message, "$text deleted by root\n", "Deletion found in the git";
+{
+    my ($log) = $git->log;
+    is $log->message, "$text deleted by root\n", "Deletion found in the git";
+    is $log->attr->{author}, $git_author, "author set correctly";
+}
 
 $text_row = $schema->resultset('Title')
   ->single({ f_full_path_name => $text_file });

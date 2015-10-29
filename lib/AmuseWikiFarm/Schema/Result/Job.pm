@@ -91,6 +91,12 @@ __PACKAGE__->table("job");
   is_nullable: 1
   size: 255
 
+=head2 username
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 errors
 
   data_type: 'text'
@@ -116,6 +122,8 @@ __PACKAGE__->add_columns(
   "priority",
   { data_type => "integer", is_nullable => 1 },
   "produced",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "username",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "errors",
   { data_type => "text", is_nullable => 1 },
@@ -151,8 +159,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:0IlAAomj8TvRa7fy8p3i2w
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-29 14:53:53
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6obDG0IWpjHdWR5+DslaZg
 
 use Cwd;
 use File::Spec;
@@ -163,6 +171,7 @@ use JSON qw/to_json
             from_json/;
 use AmuseWikiFarm::Archive::BookBuilder;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
 
 has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
@@ -428,6 +437,10 @@ sub dispatch_job_purge {
     my $uri = $text->full_uri;
     log_warn { "Removing $path, job purged" };
     if (my $git = $site->git) {
+        local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+        local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
+        local $ENV{GIT_AUTHOR_NAME}  = $self->committer_name;
+        local $ENV{GIT_AUTHOR_EMAIL} = $self->committer_mail;
         $git->rm($path);
         $git->commit({ message => "$uri deleted by $user" });
     }
@@ -442,6 +455,9 @@ sub dispatch_job_purge {
 sub dispatch_job_publish {
     my ($self, $logger) = @_;
     my $id = $self->job_data->{id};
+    Dlog_debug { "job data is $_" } $self->job_data;
+    local $ENV{GIT_COMMITTER_NAME}  = $self->committer_name;
+    local $ENV{GIT_COMMITTER_EMAIL} = $self->committer_mail;
     # will return the $self->title->full_uri
     return $self->site->revisions->find($id)->publish_text($logger);
 }
@@ -554,6 +570,23 @@ after delete => sub {
     }
 };
 
+# same as Result::Revision
+sub committer_username {
+    my $self = shift;
+    return clean_username($self->username);
+}
+sub committer_name {
+    my $self = shift;
+    return ucfirst($self->committer_username);
+}
+sub committer_mail {
+    my $self = shift;
+    my $hostname = 'localhost';
+    if (my $site = $self->site) {
+        $hostname = $site->canonical;
+    }
+    return $self->committer_username . '@' . $hostname;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;
