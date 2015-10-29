@@ -196,6 +196,9 @@ sub create :Chained('user') :Args(0) {
             $c->flash(error_msg => $c->loc('Such username already exists'));
             return;
         }
+        $insertion{created_by} = $c->user->get('username');
+        Dlog_debug { "user insertion is $_" } \%insertion;
+
         my $user = $users->create(\%insertion);
         $user->set_roles([{ role => 'librarian' }]);
         $c->stash->{site}->add_to_users($user);

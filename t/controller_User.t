@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 81;
+use Test::More tests => 82;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -81,9 +81,7 @@ ok(!$schema->resultset('Revision')->search({
                                             status => 'editing',
                                             title_id => $index_text_id,
                                            })->count,
-   "No index revisions (2)");
-
-diag $mech->content;
+   "No index revisions (2)") or diag $mech->content;
 is $mech->status, '404';
 
 $mech->get('/login');
@@ -288,6 +286,7 @@ $mech->content_contains('User pincuz created!') or diag $mech->content;
 is (scalar(@users), 2, "Now the site has two users");
 
 my $pincuz = $site->users->find({ username => 'pincuz' });
+is $pincuz->created_by, 'pinco', "user pincuz was created by pinco";
 
 is $pincuz->email, $form->{email}, "Mail ok";
 
