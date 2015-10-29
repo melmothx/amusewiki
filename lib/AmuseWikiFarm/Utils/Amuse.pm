@@ -797,7 +797,10 @@ sub muse_attachment_basename_for {
 sub clean_username {
     my ($username) = @_;
     if ($username) {
-        if ($username =~ m/\w/) {
+        if ($username =~ m/\A([a-z0-9]{1,20}(\.[a-z0-9]{1,20})?)\z/) {
+            return $1;
+        }
+        elsif ($username =~ m/\w/) {
             my $clean = lc(unidecode($username));
             $clean =~ s/[^a-z0-9]//g;
             if ($clean =~ m/([a-z0-9]{1,20})/) {
