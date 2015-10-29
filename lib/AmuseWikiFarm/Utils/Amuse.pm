@@ -800,7 +800,7 @@ sub clean_username {
         if ($username =~ m/\w/) {
             my $clean = lc(unidecode($username));
             $clean =~ s/[^a-z0-9]//g;
-            if ($clean =~ m/^([a-z0-9]+)$/) {
+            if ($clean =~ m/([a-z0-9]{1,20})/) {
                 return $1;
             }
         }

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 54;
+use Test::More tests => 59;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -112,7 +112,14 @@ ok !muse_filename_is_valid($test_uri), "$test_uri is not valid (by one)";
 is (clean_username('marco'), "marco");
 is (clean_username('pallino pinco'), "pallinopinco");
 is (clean_username(), "anon");
+is (clean_username(0), "anon");
+is (clean_username(undef), "anon");
+is (clean_username(""), "anon");
 is (clean_username("&%!"), "anon");
 is (clean_username("Алексей"), "aleksei");
 is (clean_username("ljuto"), "ljuto");
 is (clean_username("jogurt a asdf"), "jogurtaasdf");
+is (clean_username(("a" x 20) . ("b" x 20)), "a" x 20,
+    "username truncated at 20 chars");
+is (clean_username(("a!" x 20) . ("b" x 20)), "a" x 20,
+    "username truncated at 20 chars");
