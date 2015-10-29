@@ -215,7 +215,7 @@ sub edit_category_description :Chained('single_category_by_lang') :PathPart('edi
     if ($lang && $c->request->body_params->{update}) {
         if (my $muse = $c->request->body_params->{desc_muse}) {
             $c->stash->{category}->category_descriptions
-              ->update_description($lang, $muse);
+              ->update_description($lang, $muse, $c->user->get('username'));
         }
         my $dest = $c->uri_for_action('/category/single_category_by_lang_display',
                                       [ $c->stash->{f_class},

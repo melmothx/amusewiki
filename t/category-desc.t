@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 118;
+use Test::More tests => 125;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -45,13 +45,24 @@ foreach my $uri ([qw/author pippo/],
     ok ($cat, "Found $full_uri");
     ok ($cat->text_count, "$full_uri has " . $cat->text_count . " texts");
     $cat->category_descriptions->update_description(en => "$full_uri : this is just a *test*");
-    $cat->category_descriptions->update_description(hr => "$full_uri : ovo je samo *test*");
+    {
+        my $desc = $cat->category_descriptions->find({ lang => 'en' });
+        is $desc->last_modified_by, undef, "Last modified by is undef";
+    }
+    $cat->category_descriptions->update_description(hr => "$full_uri : ovo je samo *test*", "pallino");
     my $regexp_en = qr{<p>\s*\Q$full_uri\E : this is just a <em>test</em>\s*</p>}s;
     my $regexp_hr = qr{<p>\s*\Q$full_uri\E : ovo je samo <em>test</em>\s*</p>}s;
-    my $desc = $cat->category_descriptions->find({ lang => 'en' });
-    like $desc->html_body, $regexp_en, "found the HTML description";
-    $desc = $cat->localized_desc('en')->html_body;
-    like $desc, $regexp_en, "localized_desc works";
+    {
+        my $desc = $cat->category_descriptions->find({ lang => 'en' });
+        like $desc->html_body, $regexp_en, "found the HTML description";
+    }
+    {
+        my $desc = $cat->localized_desc('en')->html_body;
+        like $desc, $regexp_en, "localized_desc works";
+        is $cat->localized_desc('en')->last_modified_by, undef, "en author is null";
+    }
+    is $cat->localized_desc('hr')->last_modified_by, "pallino",
+      "hr author is pallino";
     ok !$cat->localized_desc('it'), "No desc for italian";
     $mech->get_ok('/set-language?lang=en');
     $mech->get_ok($cat->full_uri);
@@ -138,6 +149,11 @@ $mech->content_like(qr{<h2>Update category description});
 ok($mech->submit_form(with_fields => { desc_muse => "Pippo *is* a nice author" },
                       button => 'update'));
 is $mech->uri->path, '/category/author/pippo/en', "Redirection ok";
+
+is $site->categories->find({ uri => 'pippo', type => 'author' })
+  ->category_descriptions->find({ lang => 'en' })->last_modified_by, "root",
+  "last modified by root";
+
 
 $mech->get_ok('/category/author/pippo');
 $mech->content_contains('Pippo <em>is</em> a nice author');
