@@ -151,7 +151,7 @@
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
-      [% IF site.sl_pdf && text.check_if_file_exists('sl.pdf') %]
+      [% IF site.sl_pdf && text.slides && text.check_if_file_exists('sl.pdf') %]
       <span id="downloadslides">
         <a href="[% basename %].sl.pdf">
 	      <img src="[% c.uri_for('/static/images/slides.png') %]"
