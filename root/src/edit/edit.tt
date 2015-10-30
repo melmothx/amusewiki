@@ -549,13 +549,34 @@
           date. The date may also be in the future, deferring the
           publication. If this line is not present, the publication
           date will be the time of the publishing, triggering a bump
-          on RSS and special pages at each editing') %]
+          on RSS and special pages at each editing.') %]
         </li>
         <li>
-          <code>DELETED Reason</code> <br /> [% loc('If this line is
+          <code>#DELETED [% loc('Reason') %]</code> <br /> [% loc('If this line is
           present and the reason is set to something, the text will be
           stored in the archive, but will not be published.') %]
         </li>
+        [% IF site.sl_pdf %]
+        <li>
+          <p>
+            <code>#slides ON</code> <br /> [% loc('Also produce slides
+          from the document. Each section, no matter how deep, will
+          produce a slide. The text outside a section is ignored, so
+          if you do not have sections, you will get empty slides. If
+          you want to exclude a section, put a comment in the section
+          body with the string “noslide”.') %]
+          </p>
+          <pre>*** [% loc('Section') %]
+
+[% loc('First slide') %]
+
+*** [% loc('Section') %]
+
+; noslide
+
+[% loc('This section will not produce a slide') %]</pre>
+        </li>
+        [% END %]
       </ul>
       <p>
         <a href="http://www.amusewiki.org/library/manual" target="_blank">
