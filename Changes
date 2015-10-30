@@ -4,7 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.50 UNRELEASED
+1.50 2015-10-30
+
+ - Introduced description lists via new Text::Amuse
+ - Introduced production of slides via new Text::Amuse::Compile
+ - Slides are supported in the bookbuilder as well (single file)
+ - Improved commit versions and crediting in the archive git history
+ - Selection of slides themes and colors in the admin
+ - Selection of mono and sans fonts in the admin
 
 New fonts were added. To assert that you have all the required fonts
 installed and to have the font preview properly working, please
