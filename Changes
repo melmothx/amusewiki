@@ -4,7 +4,7 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.50 2015-10-30
+1.51 2015-10-30
 
  - Introduced description lists via new Text::Amuse
  - Introduced production of slides via new Text::Amuse::Compile
