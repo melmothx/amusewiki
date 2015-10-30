@@ -116,7 +116,8 @@ unless ($dh->version_storage_is_installed) {
 print "Checking if database is up-to-date: ";
 if ($dh->schema_version > $dh->database_version) {
     print "NO, upgrading\n";
-    $dh->backup;
+    # not supported on Pg...
+    # $dh->backup;
     $dh->upgrade;
 }
 else {
