@@ -115,6 +115,11 @@ msgstr "Alias"
 msgid "Alias can't point to itself"
 msgstr "Alias kan inte referera till sig själv"
 
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+
 msgid "All languages"
 msgstr "Alla språk"
 
@@ -125,6 +130,15 @@ msgid "All sites"
 msgstr "Alla sidor"
 
 msgid "All users"
+msgstr ""
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
 msgstr ""
 
 msgid ""
@@ -153,6 +167,9 @@ msgstr "Bifogade PDF:er"
 msgid "Attached images"
 msgstr "Bifogade bilder"
 
+msgid "Attachments"
+msgstr ""
+
 msgid "Author"
 msgstr "Författare"
 
@@ -173,6 +190,12 @@ msgstr "Bad request"
 
 msgid "Bare HTML, needed by the application"
 msgstr "Bare HTML, behövd av applikationen"
+
+msgid "Beamer color theme"
+msgstr ""
+
+msgid "Beamer theme"
+msgstr ""
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Bindningsjustering i millimeter (extra innermarginal)"
@@ -292,6 +315,9 @@ msgstr "Skapa användare och maillösenord"
 msgid "Created"
 msgstr "Skapad"
 
+msgid "Created by"
+msgstr ""
+
 msgid "Created new text"
 msgstr "Ny text skapad"
 
@@ -314,6 +340,14 @@ msgstr ""
 "Att radera en revidering är säkert, om texten har publicerats.Annars innebär "
 "raderingen att de opublicerade förändringarnaförloras"
 
+msgid "Description item"
+msgstr ""
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
+
 msgid "Desired URI"
 msgstr "Önskad URI"
 
@@ -335,6 +369,9 @@ msgstr "Visar"
 
 msgid "Division factor"
 msgstr "Uppdelningsfaktor"
+
+msgid "Do not enforce commit message"
+msgstr ""
 
 msgid "Done"
 msgstr "Klart"
@@ -393,6 +430,12 @@ msgid "Errors"
 msgstr "Fel"
 
 msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+
+msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
@@ -419,6 +462,9 @@ msgstr "Första Författare och Andra Författare"
 
 msgid "First Author, Second Author"
 msgstr "Första Författare, Andra författare"
+
+msgid "First slide"
+msgstr ""
 
 msgid "Fix typography (smart quotes)"
 msgstr "Fixa typografi (smarta citat) "
@@ -507,6 +553,9 @@ msgstr "Rubrik"
 msgid "Headings"
 msgstr "Rubriker"
 
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+
 msgid "Hide options"
 msgstr "Dölj alternativ"
 
@@ -527,6 +576,21 @@ msgstr "Id"
 
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr "Om avsändaren tillhandahöll mail, så är det listat i mailets CC-fält"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Om du efterfrågade ett införande, välj ett införandesystem"
@@ -656,9 +720,6 @@ msgstr "Lista med pausade texter"
 msgid "Lists"
 msgstr "Listor"
 
-msgid "Lists start with a single leading whitespace"
-msgstr "Listor börjar med ett enskilt ledande blanksteg"
-
 msgid "Locale"
 msgstr "Variant"
 
@@ -722,6 +783,9 @@ msgstr "Metod "
 msgid "Moderated wiki"
 msgstr "Modererad wiki"
 
+msgid "Mono font"
+msgstr ""
+
 msgid "More"
 msgstr "Mer"
 
@@ -743,6 +807,9 @@ msgstr "Namn"
 msgid "Never generate a table of content"
 msgstr "Generera aldrig innehållsförteckning"
 
+msgid "New"
+msgstr ""
+
 msgid "New revision"
 msgstr "Ny revidering"
 
@@ -758,8 +825,14 @@ msgstr "Bra titel"
 msgid "No"
 msgstr ""
 
+msgid "No editing yet!"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Inga resultat hittades!"
+
+msgid "No revisions to show"
+msgstr ""
 
 msgid "No text found!"
 msgstr "Ingen text hittades!"
@@ -812,6 +885,9 @@ msgstr "Eller wrappa in det"
 
 msgid "Other languages"
 msgstr "Andra språk"
+
+msgid "PDF"
+msgstr ""
 
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr "PDF logotyp (absolut sökväg eller gör det i texmf)"
@@ -891,6 +967,21 @@ msgstr "Bilder"
 
 msgid "Plain PDF"
 msgstr "Plain PDF"
+
+msgid "Please choose the Beamer color theme"
+msgstr ""
+
+msgid "Please choose the Beamer theme"
+msgstr ""
+
+msgid "Please choose the main font"
+msgstr ""
+
+msgid "Please choose the mono font"
+msgstr ""
+
+msgid "Please choose the sans font"
+msgstr ""
 
 msgid "Please describe shortly what you did"
 msgstr "Lämna gärna en kort beskrivning av vad du gjorde"
@@ -989,11 +1080,19 @@ msgstr "Vänligen välj det önskade typsnittet."
 msgid "Please select the signature size:"
 msgstr "Vänligen välj signaturens storlek:"
 
+msgid "Please setup the Beamer layout"
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Poesi, bibliografier, pjäser, kod"
 
 msgid "Pointing to"
 msgstr "Hänvisar till"
+
+msgid ""
+"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
 
 msgid "Prepare this text for the archiving"
 msgstr "Förbered denna text för arkiveringen"
@@ -1010,7 +1109,7 @@ msgstr "Prioritet"
 msgid "Private"
 msgstr ""
 
-msgid "Produce an EPUB instead of a PDF"
+msgid "Produce slides."
 msgstr ""
 
 msgid "Produced"
@@ -1128,6 +1227,9 @@ msgstr "Revidering för %1 har raderats"
 msgid "Roles"
 msgstr ""
 
+msgid "Sans font"
+msgstr ""
+
 msgid "Search"
 msgstr "Sök"
 
@@ -1181,6 +1283,12 @@ msgstr "Sidslogan"
 
 msgid "Sites"
 msgstr "Sidor"
+
+msgid "Slides"
+msgstr ""
+
+msgid "Slides (PDF)"
+msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
@@ -1271,6 +1379,9 @@ msgstr "Uppgift"
 msgid "TeX"
 msgstr "TeX"
 
+msgid "Term"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1283,6 +1394,11 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Texter"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr "Logotypen innehåller sidnamnet"
@@ -1360,10 +1476,20 @@ msgstr "Denna revidering redigeras aktivt av dig"
 msgid "This revision is being edited by someone else!"
 msgstr "Revideringen redigeras av någon annan!"
 
+msgid "This section will not produce a slide"
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Denna text existerar inte"
 
+msgid "This text is new"
+msgstr ""
+
 msgid "This text is not published yet"
+msgstr ""
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
 msgstr ""
 
 msgid "Time is optional."
@@ -1764,6 +1890,9 @@ msgstr "texter sorterade efter ämnen"
 msgid "the author of the text (as displayed)"
 msgstr "textens författare (såsom det visas)"
 
+msgid "this text will be unpublished"
+msgstr ""
+
 msgid "topic"
 msgstr "ämne"
 
@@ -1793,6 +1922,9 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Lists start with a single leading whitespace"
+#~ msgstr "Listor börjar med ett enskilt ledande blanksteg"
 
 #~ msgid "Toggle the table of contents"
 #~ msgstr "Visa innehållsförteckningen"

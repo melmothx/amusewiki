@@ -118,6 +118,11 @@ msgstr "Alias"
 msgid "Alias can't point to itself"
 msgstr "L'alias non può puntare a se stesso"
 
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+
 msgid "All languages"
 msgstr "Tutte le lingue"
 
@@ -129,6 +134,15 @@ msgstr "Tutti i siti"
 
 msgid "All users"
 msgstr "Tutte le utenze"
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
+msgstr ""
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -156,6 +170,9 @@ msgstr "PDF allegati"
 msgid "Attached images"
 msgstr "Immagini allegate"
 
+msgid "Attachments"
+msgstr ""
+
 msgid "Author"
 msgstr "Autore"
 
@@ -176,6 +193,12 @@ msgstr "Richiesta errata"
 
 msgid "Bare HTML, needed by the application"
 msgstr "HTML nudo, richiesto dall'applicazione"
+
+msgid "Beamer color theme"
+msgstr ""
+
+msgid "Beamer theme"
+msgstr ""
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
@@ -296,6 +319,9 @@ msgstr "Crea un'utenza e invia la password"
 msgid "Created"
 msgstr "Creazione riuscita"
 
+msgid "Created by"
+msgstr ""
+
 msgid "Created new text"
 msgstr "È stato creato un nuovo testo"
 
@@ -318,6 +344,14 @@ msgstr ""
 "Cancellare una revisione che è già stata pubblicata è perfettamente\n"
 "sicuro. Se non è ancora stata pubblicata, cancellandola la revisione\n"
 "andrà persa per sempre."
+
+msgid "Description item"
+msgstr ""
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
 
 msgid "Desired URI"
 msgstr "URI a scelta"
@@ -342,6 +376,9 @@ msgstr "Mostro"
 
 msgid "Division factor"
 msgstr "Fattore di divisione"
+
+msgid "Do not enforce commit message"
+msgstr ""
 
 msgid "Done"
 msgstr "Fatto"
@@ -400,6 +437,12 @@ msgid "Errors"
 msgstr "Errori"
 
 msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+
+msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
@@ -430,6 +473,9 @@ msgstr "Primo Autore e Secondo Autore"
 
 msgid "First Author, Second Author"
 msgstr "Primo Autore, Secondo Autore"
+
+msgid "First slide"
+msgstr ""
 
 msgid "Fix typography (smart quotes)"
 msgstr "Attiva le correzioni tipografiche"
@@ -522,6 +568,9 @@ msgstr "Sezioni"
 msgid "Headings"
 msgstr "Sezione"
 
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+
 msgid "Hide options"
 msgstr "Nascondi le opzioni"
 
@@ -543,6 +592,21 @@ msgstr "Id"
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Se chi ha fatto la modifica ha fornito una mail, è inclusa nella lista CC"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Se vuoi l'impaginazione, scegli uno schema"
@@ -678,9 +742,6 @@ msgstr "Lista dei testi in attesa di approvazione"
 msgid "Lists"
 msgstr "Liste"
 
-msgid "Lists start with a single leading whitespace"
-msgstr "Le liste cominciano con un singolo spazio bianco a inizio riga"
-
 msgid "Locale"
 msgstr "Lingua"
 
@@ -744,6 +805,9 @@ msgstr "Modalità"
 msgid "Moderated wiki"
 msgstr "Wiki moderato"
 
+msgid "Mono font"
+msgstr ""
+
 msgid "More"
 msgstr "Altro"
 
@@ -765,6 +829,9 @@ msgstr "Nome"
 msgid "Never generate a table of content"
 msgstr "Non generare un sommario"
 
+msgid "New"
+msgstr ""
+
 msgid "New revision"
 msgstr "Nuova revisione"
 
@@ -780,8 +847,14 @@ msgstr "Un bel titolo"
 msgid "No"
 msgstr "No"
 
+msgid "No editing yet!"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Nessun risultato trovato!"
+
+msgid "No revisions to show"
+msgstr ""
 
 msgid "No text found!"
 msgstr "Nessun testo trovato"
@@ -834,6 +907,9 @@ msgstr "O racchiudi in"
 
 msgid "Other languages"
 msgstr "Altre lingue"
+
+msgid "PDF"
+msgstr ""
 
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr "Logo in PDF (percorso assoluto o nome del file in texmf)"
@@ -913,6 +989,21 @@ msgstr "Immagine"
 
 msgid "Plain PDF"
 msgstr "PDF semplice"
+
+msgid "Please choose the Beamer color theme"
+msgstr ""
+
+msgid "Please choose the Beamer theme"
+msgstr ""
+
+msgid "Please choose the main font"
+msgstr ""
+
+msgid "Please choose the mono font"
+msgstr ""
+
+msgid "Please choose the sans font"
+msgstr ""
 
 msgid "Please describe shortly what you did"
 msgstr "Per cortesia, descrivi brevemente ciò che hai fatto"
@@ -1015,11 +1106,19 @@ msgstr "Seleziona il carattere desiderato"
 msgid "Please select the signature size:"
 msgstr "Seleziona la dimensione dei fascicoli:"
 
+msgid "Please setup the Beamer layout"
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Poesia, bibliografie, teatro, codice"
 
 msgid "Pointing to"
 msgstr "Che punta a"
+
+msgid ""
+"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
 
 msgid "Prepare this text for the archiving"
 msgstr "Prepara questo testo per l'archivio"
@@ -1036,8 +1135,8 @@ msgstr "Priorità"
 msgid "Private"
 msgstr "Privato"
 
-msgid "Produce an EPUB instead of a PDF"
-msgstr "Crea un EPUB invece di un PDF"
+msgid "Produce slides."
+msgstr ""
 
 msgid "Produced"
 msgstr "Prodotto"
@@ -1153,6 +1252,9 @@ msgstr "La revisione per %1 è stata cancellata"
 msgid "Roles"
 msgstr "Ruoli"
 
+msgid "Sans font"
+msgstr ""
+
 msgid "Search"
 msgstr "Cerca"
 
@@ -1206,6 +1308,12 @@ msgstr "Slogan del sito"
 
 msgid "Sites"
 msgstr "Siti"
+
+msgid "Slides"
+msgstr ""
+
+msgid "Slides (PDF)"
+msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Così siamo sicuri di non inviare le password a gente casuale"
@@ -1297,6 +1405,9 @@ msgstr "Lavoro"
 msgid "TeX"
 msgstr "TeX"
 
+msgid "Term"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr "Testo formattato con il markup"
 
@@ -1309,6 +1420,11 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Testi"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr "Il logo contiene il nome del sito"
@@ -1386,11 +1502,21 @@ msgstr "Questa revisione è in corso di modifica da te medesimo"
 msgid "This revision is being edited by someone else!"
 msgstr "Questa revisione è in corso di modifica da qualcun altro!"
 
+msgid "This section will not produce a slide"
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Questo testo non esiste"
 
+msgid "This text is new"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr "Questo testo ancora non è stato pubblicato"
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
+msgstr ""
 
 msgid "Time is optional."
 msgstr "L'ora è opzionale"
@@ -1798,6 +1924,9 @@ msgstr "testi per argomento"
 msgid "the author of the text (as displayed)"
 msgstr "l'autore del testo (come mostrato)"
 
+msgid "this text will be unpublished"
+msgstr ""
+
 msgid "topic"
 msgstr "argomento"
 
@@ -1827,6 +1956,12 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Lists start with a single leading whitespace"
+#~ msgstr "Le liste cominciano con un singolo spazio bianco a inizio riga"
+
+#~ msgid "Produce an EPUB instead of a PDF"
+#~ msgstr "Crea un EPUB invece di un PDF"
 
 #~ msgid "Toggle the table of contents"
 #~ msgstr "Mostra/nascondi il sommario"

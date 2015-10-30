@@ -106,6 +106,11 @@ msgstr ""
 msgid "Alias can't point to itself"
 msgstr ""
 
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+
 msgid "All languages"
 msgstr ""
 
@@ -116,6 +121,15 @@ msgid "All sites"
 msgstr ""
 
 msgid "All users"
+msgstr ""
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
 msgstr ""
 
 msgid ""
@@ -139,6 +153,9 @@ msgstr ""
 msgid "Attached images"
 msgstr ""
 
+msgid "Attachments"
+msgstr ""
+
 msgid "Author"
 msgstr "Auteur"
 
@@ -158,6 +175,12 @@ msgid "Bad request"
 msgstr ""
 
 msgid "Bare HTML, needed by the application"
+msgstr ""
+
+msgid "Beamer color theme"
+msgstr ""
+
+msgid "Beamer theme"
 msgstr ""
 
 msgid "Binding correction in millimeters (additional inner margin)"
@@ -278,6 +301,9 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
+msgid "Created by"
+msgstr ""
+
 msgid "Created new text"
 msgstr ""
 
@@ -296,6 +322,14 @@ msgstr ""
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+
+msgid "Description item"
+msgstr ""
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
 msgstr ""
 
 msgid "Desired URI"
@@ -318,6 +352,9 @@ msgid "Displaying"
 msgstr ""
 
 msgid "Division factor"
+msgstr ""
+
+msgid "Do not enforce commit message"
 msgstr ""
 
 msgid "Done"
@@ -377,6 +414,12 @@ msgid "Errors"
 msgstr ""
 
 msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+
+msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
@@ -402,6 +445,9 @@ msgid "First Author and Second Author"
 msgstr ""
 
 msgid "First Author, Second Author"
+msgstr ""
+
+msgid "First slide"
 msgstr ""
 
 msgid "Fix typography (smart quotes)"
@@ -486,6 +532,9 @@ msgstr ""
 msgid "Headings"
 msgstr ""
 
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+
 msgid "Hide options"
 msgstr ""
 
@@ -505,6 +554,21 @@ msgid "Id"
 msgstr ""
 
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
+msgstr ""
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
 msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
@@ -624,9 +688,6 @@ msgstr ""
 msgid "Lists"
 msgstr ""
 
-msgid "Lists start with a single leading whitespace"
-msgstr ""
-
 msgid "Locale"
 msgstr ""
 
@@ -690,6 +751,9 @@ msgstr ""
 msgid "Moderated wiki"
 msgstr ""
 
+msgid "Mono font"
+msgstr ""
+
 msgid "More"
 msgstr ""
 
@@ -711,6 +775,9 @@ msgstr ""
 msgid "Never generate a table of content"
 msgstr ""
 
+msgid "New"
+msgstr ""
+
 msgid "New revision"
 msgstr ""
 
@@ -726,7 +793,13 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+msgid "No editing yet!"
+msgstr ""
+
 msgid "No result found!"
+msgstr ""
+
+msgid "No revisions to show"
 msgstr ""
 
 msgid "No text found!"
@@ -774,6 +847,9 @@ msgid "Or wrap it in"
 msgstr ""
 
 msgid "Other languages"
+msgstr ""
+
+msgid "PDF"
 msgstr ""
 
 msgid "PDF logo (absolute path or put it in texmf)"
@@ -843,6 +919,21 @@ msgid "Picture"
 msgstr ""
 
 msgid "Plain PDF"
+msgstr ""
+
+msgid "Please choose the Beamer color theme"
+msgstr ""
+
+msgid "Please choose the Beamer theme"
+msgstr ""
+
+msgid "Please choose the main font"
+msgstr ""
+
+msgid "Please choose the mono font"
+msgstr ""
+
+msgid "Please choose the sans font"
 msgstr ""
 
 msgid "Please describe shortly what you did"
@@ -920,10 +1011,18 @@ msgstr ""
 msgid "Please select the signature size:"
 msgstr ""
 
+msgid "Please setup the Beamer layout"
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code"
 msgstr ""
 
 msgid "Pointing to"
+msgstr ""
+
+msgid ""
+"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 
 msgid "Prepare this text for the archiving"
@@ -941,7 +1040,7 @@ msgstr ""
 msgid "Private"
 msgstr ""
 
-msgid "Produce an EPUB instead of a PDF"
+msgid "Produce slides."
 msgstr ""
 
 msgid "Produced"
@@ -1049,6 +1148,9 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
+msgid "Sans font"
+msgstr ""
+
 msgid "Search"
 msgstr "Recherche"
 
@@ -1101,6 +1203,12 @@ msgid "Site slogan"
 msgstr ""
 
 msgid "Sites"
+msgstr ""
+
+msgid "Slides"
+msgstr ""
+
+msgid "Slides (PDF)"
 msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
@@ -1189,6 +1297,9 @@ msgstr ""
 msgid "TeX"
 msgstr ""
 
+msgid "Term"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1198,6 +1309,11 @@ msgid ""
 msgstr ""
 
 msgid "Texts"
+msgstr ""
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1267,10 +1383,20 @@ msgstr ""
 msgid "This revision is being edited by someone else!"
 msgstr ""
 
+msgid "This section will not produce a slide"
+msgstr ""
+
 msgid "This text does not exist"
 msgstr ""
 
+msgid "This text is new"
+msgstr ""
+
 msgid "This text is not published yet"
+msgstr ""
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
 msgstr ""
 
 msgid "Time is optional."
@@ -1654,6 +1780,9 @@ msgid "texts sorted by topics"
 msgstr ""
 
 msgid "the author of the text (as displayed)"
+msgstr ""
+
+msgid "this text will be unpublished"
 msgstr ""
 
 msgid "topic"

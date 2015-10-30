@@ -114,6 +114,11 @@ msgstr "Alias"
 msgid "Alias can't point to itself"
 msgstr "Ein Alias kann nicht auf sich selbst verweisen"
 
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+
 msgid "All languages"
 msgstr "alle Sprachen"
 
@@ -124,6 +129,15 @@ msgid "All sites"
 msgstr "Alle Seiten"
 
 msgid "All users"
+msgstr ""
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
 msgstr ""
 
 msgid ""
@@ -153,6 +167,9 @@ msgstr "Angehängte PDFs"
 msgid "Attached images"
 msgstr "Angehängte Bilder"
 
+msgid "Attachments"
+msgstr ""
+
 msgid "Author"
 msgstr "AutorIn"
 
@@ -173,6 +190,12 @@ msgstr "Anfrage konnte nicht gefunden werden"
 
 msgid "Bare HTML, needed by the application"
 msgstr "Reines HTML, benötigt für die Anwendung"
+
+msgid "Beamer color theme"
+msgstr ""
+
+msgid "Beamer theme"
+msgstr ""
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Bindungskorrektur in Millimeter (zusätzlich innerer Rand)"
@@ -292,6 +315,9 @@ msgstr "Erstelle BenutzerIn und Mailpasswort"
 msgid "Created"
 msgstr "Erstellt"
 
+msgid "Created by"
+msgstr ""
+
 msgid "Created new text"
 msgstr "Neuer Text erstellt"
 
@@ -313,6 +339,14 @@ msgid ""
 msgstr ""
 "Eine Änderung zu löschen ist sicher, wenn ein Text bereits veröffentlicht "
 "wurde. Andernfalls gehen die unveröffentlichten Veränderungen verloren."
+
+msgid "Description item"
+msgstr ""
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
 
 msgid "Desired URI"
 msgstr "Gewünschter URI"
@@ -337,6 +371,9 @@ msgstr "Anzeige"
 
 msgid "Division factor"
 msgstr "Trennungsfaktor"
+
+msgid "Do not enforce commit message"
+msgstr ""
 
 msgid "Done"
 msgstr "Erledigt"
@@ -395,6 +432,12 @@ msgid "Errors"
 msgstr "Fehler"
 
 msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+
+msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
@@ -421,6 +464,9 @@ msgstr "Erste AutorIn und zweite AutorIn"
 
 msgid "First Author, Second Author"
 msgstr "Erste AutorIn, zweite AutorIn"
+
+msgid "First slide"
+msgstr ""
 
 msgid "Fix typography (smart quotes)"
 msgstr "Typographie richtigstellen"
@@ -506,6 +552,9 @@ msgstr "Überschrift"
 msgid "Headings"
 msgstr "Überschriften"
 
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+
 msgid "Hide options"
 msgstr "Optionen verstecken"
 
@@ -528,6 +577,21 @@ msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Wenn ein Übermittler eine Mail bereitstellt, dann ist diese im CC-Feld der "
 "Mail aufgelistet"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
@@ -666,9 +730,6 @@ msgstr "Liste von Texte im Wartestatus"
 msgid "Lists"
 msgstr "Listen"
 
-msgid "Lists start with a single leading whitespace"
-msgstr "Listen beginnen mit einem einzigen Leerzeichen"
-
 msgid "Locale"
 msgstr "Lokal"
 
@@ -732,6 +793,9 @@ msgstr "Modus"
 msgid "Moderated wiki"
 msgstr "Moderiertes wiki"
 
+msgid "Mono font"
+msgstr ""
+
 msgid "More"
 msgstr "Mehr"
 
@@ -753,6 +817,9 @@ msgstr "Name"
 msgid "Never generate a table of content"
 msgstr ""
 
+msgid "New"
+msgstr ""
+
 msgid "New revision"
 msgstr "Neue Änderung"
 
@@ -768,8 +835,14 @@ msgstr "Netter Titel"
 msgid "No"
 msgstr ""
 
+msgid "No editing yet!"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Kein Resultat!"
+
+msgid "No revisions to show"
+msgstr ""
 
 msgid "No text found!"
 msgstr "Kein Text gefunden!"
@@ -822,6 +895,9 @@ msgstr "Oder wickle es ein"
 
 msgid "Other languages"
 msgstr "Andere Sprachen"
+
+msgid "PDF"
+msgstr ""
 
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr "PDF-Logo (Absoluter Pfad oder setze es in texmf)"
@@ -893,6 +969,21 @@ msgstr "Bild"
 
 msgid "Plain PDF"
 msgstr "Einfaches PDF"
+
+msgid "Please choose the Beamer color theme"
+msgstr ""
+
+msgid "Please choose the Beamer theme"
+msgstr ""
+
+msgid "Please choose the main font"
+msgstr ""
+
+msgid "Please choose the mono font"
+msgstr ""
+
+msgid "Please choose the sans font"
+msgstr ""
 
 msgid "Please describe shortly what you did"
 msgstr "Bitte beschreibe kurz was du getan hast"
@@ -988,11 +1079,19 @@ msgstr "Bitte wähle die gewünschte Schrifft aus"
 msgid "Please select the signature size:"
 msgstr ""
 
+msgid "Please setup the Beamer layout"
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Gedichte, Bibliographien, Stücke, Kodex"
 
 msgid "Pointing to"
 msgstr "verweist auf"
+
+msgid ""
+"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
 
 msgid "Prepare this text for the archiving"
 msgstr "Bereite diesen Text fürs Archivieren vor"
@@ -1009,7 +1108,7 @@ msgstr "Priorität"
 msgid "Private"
 msgstr ""
 
-msgid "Produce an EPUB instead of a PDF"
+msgid "Produce slides."
 msgstr ""
 
 msgid "Produced"
@@ -1119,6 +1218,9 @@ msgstr "Änderung von %1 wurde gelöscht"
 msgid "Roles"
 msgstr ""
 
+msgid "Sans font"
+msgstr ""
+
 msgid "Search"
 msgstr "Suchen"
 
@@ -1173,6 +1275,12 @@ msgstr "Seiten-Slogan"
 
 msgid "Sites"
 msgstr "Seiten"
+
+msgid "Slides"
+msgstr ""
+
+msgid "Slides (PDF)"
+msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
@@ -1264,6 +1372,9 @@ msgstr "Aufgabe"
 msgid "TeX"
 msgstr "TeX"
 
+msgid "Term"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1276,6 +1387,11 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Texte"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr ""
@@ -1355,10 +1471,20 @@ msgstr "Diese Änderung wird aktiv von dir bearbeitet"
 msgid "This revision is being edited by someone else!"
 msgstr "Diese Änderung wird von jemand anderen bearbeitet!"
 
+msgid "This section will not produce a slide"
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Dieser Text existiert nicht"
 
+msgid "This text is new"
+msgstr ""
+
 msgid "This text is not published yet"
+msgstr ""
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
 msgstr ""
 
 msgid "Time is optional."
@@ -1766,6 +1892,9 @@ msgstr "Texte nach Themen sortiert"
 msgid "the author of the text (as displayed)"
 msgstr "die AutorIn des Texts (wie angezeigt)"
 
+msgid "this text will be unpublished"
+msgstr ""
+
 msgid "topic"
 msgstr "Thema"
 
@@ -1795,6 +1924,9 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Lists start with a single leading whitespace"
+#~ msgstr "Listen beginnen mit einem einzigen Leerzeichen"
 
 #~ msgid "Fix typography"
 #~ msgstr "Typographie richtigstellen"

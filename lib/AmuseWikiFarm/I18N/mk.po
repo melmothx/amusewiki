@@ -113,6 +113,11 @@ msgstr "Алијас"
 msgid "Alias can't point to itself"
 msgstr "Алијасот не може да посочува на самиот себе"
 
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+
 msgid "All languages"
 msgstr "Сите јазици"
 
@@ -123,6 +128,15 @@ msgid "All sites"
 msgstr "Сите сајтови"
 
 msgid "All users"
+msgstr ""
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
 msgstr ""
 
 msgid ""
@@ -151,6 +165,9 @@ msgstr "PDF фајлови во прилог"
 msgid "Attached images"
 msgstr "Слики во прилог"
 
+msgid "Attachments"
+msgstr ""
+
 msgid "Author"
 msgstr "Автор"
 
@@ -173,6 +190,12 @@ msgstr "Погрешно барање"
 
 msgid "Bare HTML, needed by the application"
 msgstr "Гол HTML, го бара апликацијата"
+
+msgid "Beamer color theme"
+msgstr ""
+
+msgid "Beamer theme"
+msgstr ""
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Корекција за повезот во милиметри (дополнителна внатрешна маргина)"
@@ -292,6 +315,9 @@ msgstr "Креирај корисник и испрати лозинка"
 msgid "Created"
 msgstr "Креирано"
 
+msgid "Created by"
+msgstr ""
+
 msgid "Created new text"
 msgstr "Креиран е нов текст"
 
@@ -313,6 +339,14 @@ msgid ""
 msgstr ""
 "Сосема е безбедно да се избрише измена која веќе е објавена. Ако не е "
 "објавена, со бришењето измената засекогаш ќе биде изгубена."
+
+msgid "Description item"
+msgstr ""
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
 
 msgid "Desired URI"
 msgstr "URI по желба"
@@ -336,6 +370,9 @@ msgstr "Покажувам"
 
 msgid "Division factor"
 msgstr "Фактор на поделба"
+
+msgid "Do not enforce commit message"
+msgstr ""
 
 msgid "Done"
 msgstr "Готово"
@@ -394,6 +431,12 @@ msgid "Errors"
 msgstr "Грешки"
 
 msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+
+msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
@@ -426,6 +469,9 @@ msgstr "Прв Автор и Втор Автор"
 
 msgid "First Author, Second Author"
 msgstr "Прв Автор, Втор Автор"
+
+msgid "First slide"
+msgstr ""
 
 msgid "Fix typography (smart quotes)"
 msgstr "Типографски исправки"
@@ -515,6 +561,9 @@ msgstr "Заглавие"
 msgid "Headings"
 msgstr "Заглавија"
 
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+
 msgid "Hide options"
 msgstr "Сокриј ги опциите"
 
@@ -536,6 +585,21 @@ msgstr "Id"
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Ако личноста која направила измени навела e-mail, вклучена е во CC листата"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ако сакаш прелом на текстот, избери образец"
@@ -670,10 +734,6 @@ msgstr "Листа на текстови на чекање"
 msgid "Lists"
 msgstr "Листи"
 
-msgid "Lists start with a single leading whitespace"
-msgstr ""
-"Листите започнуваат со едно единствено празно место на почеток од редот"
-
 msgid "Locale"
 msgstr "Јазик"
 
@@ -739,6 +799,9 @@ msgstr "Начин"
 msgid "Moderated wiki"
 msgstr "Модериран wiki"
 
+msgid "Mono font"
+msgstr ""
+
 msgid "More"
 msgstr "Повеќе"
 
@@ -760,6 +823,9 @@ msgstr "Име"
 msgid "Never generate a table of content"
 msgstr "Не генерирај содржина"
 
+msgid "New"
+msgstr ""
+
 msgid "New revision"
 msgstr "Нова измена"
 
@@ -775,8 +841,14 @@ msgstr "Убав наслов"
 msgid "No"
 msgstr ""
 
+msgid "No editing yet!"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Нема резултати!"
+
+msgid "No revisions to show"
+msgstr ""
 
 msgid "No text found!"
 msgstr "Не е пронајден ниту еден текст!"
@@ -829,6 +901,9 @@ msgstr "Или вметни помеѓу"
 
 msgid "Other languages"
 msgstr "Други јазици"
+
+msgid "PDF"
+msgstr ""
 
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr "PDF лого (задолжителна насока или името на текстот во texmf)"
@@ -908,6 +983,21 @@ msgstr "Слика"
 
 msgid "Plain PDF"
 msgstr "Обичен PDF"
+
+msgid "Please choose the Beamer color theme"
+msgstr ""
+
+msgid "Please choose the Beamer theme"
+msgstr ""
+
+msgid "Please choose the main font"
+msgstr ""
+
+msgid "Please choose the mono font"
+msgstr ""
+
+msgid "Please choose the sans font"
+msgstr ""
 
 msgid "Please describe shortly what you did"
 msgstr "Те молам накратко опиши што направи"
@@ -1013,11 +1103,19 @@ msgstr "Избери фонт"
 msgid "Please select the signature size:"
 msgstr "Избери ја големината на табакот"
 
+msgid "Please setup the Beamer layout"
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Поезија, библиографии, драми, код"
 
 msgid "Pointing to"
 msgstr "Поврзува"
+
+msgid ""
+"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
 
 msgid "Prepare this text for the archiving"
 msgstr "Подготви го текстот за архивирање"
@@ -1034,7 +1132,7 @@ msgstr "Приоритет"
 msgid "Private"
 msgstr ""
 
-msgid "Produce an EPUB instead of a PDF"
+msgid "Produce slides."
 msgstr ""
 
 msgid "Produced"
@@ -1153,6 +1251,9 @@ msgstr "Измената за %1 е избришана"
 msgid "Roles"
 msgstr ""
 
+msgid "Sans font"
+msgstr ""
+
 msgid "Search"
 msgstr "Барај"
 
@@ -1206,6 +1307,12 @@ msgstr "Слоган на сајтот"
 
 msgid "Sites"
 msgstr "Сајтови"
+
+msgid "Slides"
+msgstr ""
+
+msgid "Slides (PDF)"
+msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "За да не праќаме лозинки на погрешни личности"
@@ -1295,6 +1402,9 @@ msgstr "Задача"
 msgid "TeX"
 msgstr "TeX"
 
+msgid "Term"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1307,6 +1417,11 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Текстови"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr "Логото го содржи името на сајтот"
@@ -1380,10 +1495,20 @@ msgstr "Оваа измена е во тек од твоја страна"
 msgid "This revision is being edited by someone else!"
 msgstr "Оваа измена е во тек од страна на некој друг!"
 
+msgid "This section will not produce a slide"
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Овој текст не постои"
 
+msgid "This text is new"
+msgstr ""
+
 msgid "This text is not published yet"
+msgstr ""
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
 msgstr ""
 
 msgid "Time is optional."
@@ -1787,6 +1912,9 @@ msgstr "текстови според тема"
 msgid "the author of the text (as displayed)"
 msgstr "автор на текстот (за насловна страница)"
 
+msgid "this text will be unpublished"
+msgstr ""
+
 msgid "topic"
 msgstr "тема"
 
@@ -1815,6 +1943,10 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Lists start with a single leading whitespace"
+#~ msgstr ""
+#~ "Листите започнуваат со едно единствено празно место на почеток од редот"
 
 #~ msgid "Toggle the table of contents"
 #~ msgstr "Покажи ја/сокриј ја содржината"

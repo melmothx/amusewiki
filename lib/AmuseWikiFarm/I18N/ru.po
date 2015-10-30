@@ -113,6 +113,11 @@ msgstr "Псевдоним"
 msgid "Alias can't point to itself"
 msgstr "Псевдоним не может указывать на себя"
 
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+
 msgid "All languages"
 msgstr "Все языки"
 
@@ -123,6 +128,15 @@ msgid "All sites"
 msgstr "Все сайты"
 
 msgid "All users"
+msgstr ""
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
 msgstr ""
 
 msgid ""
@@ -151,6 +165,9 @@ msgstr "Вложенные PDF"
 msgid "Attached images"
 msgstr "Вложенные изображения"
 
+msgid "Attachments"
+msgstr ""
+
 msgid "Author"
 msgstr "Автор"
 
@@ -171,6 +188,12 @@ msgstr "Ошибочный запрос"
 
 msgid "Bare HTML, needed by the application"
 msgstr "Чистый HTML, необходим для приложения"
+
+msgid "Beamer color theme"
+msgstr ""
+
+msgid "Beamer theme"
+msgstr ""
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Учёт ширины переплёта в мм (дополнительные внутренние поля)"
@@ -294,6 +317,9 @@ msgstr "Создать пользователя и пароль для почт�
 msgid "Created"
 msgstr "Создано"
 
+msgid "Created by"
+msgstr ""
+
 msgid "Created new text"
 msgstr "Создать новый текст"
 
@@ -315,6 +341,14 @@ msgid ""
 msgstr ""
 "Удаление правок безопасно, если текст был опубликован. Если нет, то вы "
 "потеряете не сохранённые изменения"
+
+msgid "Description item"
+msgstr ""
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
 
 msgid "Desired URI"
 msgstr "Желаемый URl"
@@ -338,6 +372,9 @@ msgstr "Записей на странице"
 
 msgid "Division factor"
 msgstr "Ширина текстового блока"
+
+msgid "Do not enforce commit message"
+msgstr ""
 
 msgid "Done"
 msgstr "Готово"
@@ -396,6 +433,12 @@ msgid "Errors"
 msgstr "Ошибки"
 
 msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+
+msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
@@ -426,6 +469,9 @@ msgstr "Первый Автор и Второй Автор"
 
 msgid "First Author, Second Author"
 msgstr "Первый Автор, Второй Автор"
+
+msgid "First slide"
+msgstr ""
 
 msgid "Fix typography (smart quotes)"
 msgstr "Исправить типографику (правильные кавычки, тире)"
@@ -513,6 +559,9 @@ msgstr "Заголовок"
 msgid "Headings"
 msgstr "Заголовки"
 
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+
 msgid "Hide options"
 msgstr "Скрыть опции"
 
@@ -533,6 +582,21 @@ msgstr "Id"
 
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr "Если редактор указывает e-mail, то он добавляется в поле CC."
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Если вам нужен спуск полос, выберите схему"
@@ -661,9 +725,6 @@ msgstr "Список текстов в ожидании"
 msgid "Lists"
 msgstr "Списки"
 
-msgid "Lists start with a single leading whitespace"
-msgstr "Список создаётся с помощью пробела перед специальным символом"
-
 msgid "Locale"
 msgstr "Локаль"
 
@@ -727,6 +788,9 @@ msgstr "Режим"
 msgid "Moderated wiki"
 msgstr "Вики модератора"
 
+msgid "Mono font"
+msgstr ""
+
 msgid "More"
 msgstr "Дополнительно"
 
@@ -748,6 +812,9 @@ msgstr "Имя"
 msgid "Never generate a table of content"
 msgstr "Не создавать содержание"
 
+msgid "New"
+msgstr ""
+
 msgid "New revision"
 msgstr "Новая правка"
 
@@ -763,8 +830,14 @@ msgstr "Хорошее название"
 msgid "No"
 msgstr ""
 
+msgid "No editing yet!"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Ничего не найдено!"
+
+msgid "No revisions to show"
+msgstr ""
 
 msgid "No text found!"
 msgstr "Текст не найден!"
@@ -816,6 +889,9 @@ msgstr "Или поместите текст в тег"
 
 msgid "Other languages"
 msgstr "На других языках"
+
+msgid "PDF"
+msgstr ""
 
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr "PDF лого (точный путь или поместите в  texmf)"
@@ -893,6 +969,21 @@ msgstr "Изображение"
 
 msgid "Plain PDF"
 msgstr "Обычный PDF"
+
+msgid "Please choose the Beamer color theme"
+msgstr ""
+
+msgid "Please choose the Beamer theme"
+msgstr ""
+
+msgid "Please choose the main font"
+msgstr ""
+
+msgid "Please choose the mono font"
+msgstr ""
+
+msgid "Please choose the sans font"
+msgstr ""
 
 msgid "Please describe shortly what you did"
 msgstr "Пожалуйста, напишите коротко что вы сделали"
@@ -987,11 +1078,19 @@ msgstr "Пожалуйста выберите понравившийся шри�
 msgid "Please select the signature size:"
 msgstr "Пожалуйста выберите количество страниц в тетрадках"
 
+msgid "Please setup the Beamer layout"
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Поэзия, библиографии, пьесы, код"
 
 msgid "Pointing to"
 msgstr "Указывает на"
+
+msgid ""
+"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
 
 msgid "Prepare this text for the archiving"
 msgstr "Подготовить этот текст к публикации"
@@ -1008,7 +1107,7 @@ msgstr "Приоритет"
 msgid "Private"
 msgstr ""
 
-msgid "Produce an EPUB instead of a PDF"
+msgid "Produce slides."
 msgstr ""
 
 msgid "Produced"
@@ -1124,6 +1223,9 @@ msgstr "Правка для %1 была удалена"
 msgid "Roles"
 msgstr ""
 
+msgid "Sans font"
+msgstr ""
+
 msgid "Search"
 msgstr "Поиск"
 
@@ -1176,6 +1278,12 @@ msgid "Site slogan"
 msgstr ""
 
 msgid "Sites"
+msgstr ""
+
+msgid "Slides"
+msgstr ""
+
+msgid "Slides (PDF)"
 msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
@@ -1266,6 +1374,9 @@ msgstr "Задачи"
 msgid "TeX"
 msgstr "TeX"
 
+msgid "Term"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1278,6 +1389,11 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Тексты"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr "В логотипе имеется название сайта"
@@ -1354,10 +1470,20 @@ msgstr "Правка в процессе редактирования вами"
 msgid "This revision is being edited by someone else!"
 msgstr "Правка редактируется кем-то другим"
 
+msgid "This section will not produce a slide"
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Текст не существует"
 
+msgid "This text is new"
+msgstr ""
+
 msgid "This text is not published yet"
+msgstr ""
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
 msgstr ""
 
 msgid "Time is optional."
@@ -1761,6 +1887,9 @@ msgstr "тексты отсортированы по теме"
 msgid "the author of the text (as displayed)"
 msgstr "Автор текста (как отображается)"
 
+msgid "this text will be unpublished"
+msgstr ""
+
 msgid "topic"
 msgstr "тема"
 
@@ -1788,6 +1917,9 @@ msgstr ""
 "\"Устаревшее редактирование\" означает, что правка была недоделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Lists start with a single leading whitespace"
+#~ msgstr "Список создаётся с помощью пробела перед специальным символом"
 
 #~ msgid "Toggle the table of contents"
 #~ msgstr "Тугл содержание"

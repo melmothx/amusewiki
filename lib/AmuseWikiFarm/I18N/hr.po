@@ -110,6 +110,11 @@ msgstr "Alias"
 msgid "Alias can't point to itself"
 msgstr "Alias ne može povezivati samog sebe"
 
+msgid ""
+"All kind of lists start with one or more leading\n"
+"        whitespace."
+msgstr ""
+
 msgid "All languages"
 msgstr "Svi jezici"
 
@@ -120,6 +125,15 @@ msgid "All sites"
 msgstr "Svi sajtovi"
 
 msgid "All users"
+msgstr ""
+
+msgid ""
+"Also produce slides\n"
+"          from the document. Each section, no matter how deep, will\n"
+"          produce a slide. The text outside a section is ignored, so\n"
+"          if you do not have sections, you will get empty slides. If\n"
+"          you want to exclude a section, put a comment in the section\n"
+"          body with the string “noslide”."
 msgstr ""
 
 msgid ""
@@ -147,6 +161,9 @@ msgstr "PDFovi u privitku"
 msgid "Attached images"
 msgstr "Slike u privitku"
 
+msgid "Attachments"
+msgstr ""
+
 msgid "Author"
 msgstr "Autor"
 
@@ -167,6 +184,12 @@ msgstr "Pogrešan zahtjev"
 
 msgid "Bare HTML, needed by the application"
 msgstr "Goli HTML, zahtjeva ga aplikacija"
+
+msgid "Beamer color theme"
+msgstr ""
+
+msgid "Beamer theme"
+msgstr ""
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Korekcija za uvez u milimetrima (dodatna unutarnja margina)"
@@ -286,6 +309,9 @@ msgstr "Stvori korisnika i pošalji lozinku"
 msgid "Created"
 msgstr "Stvoreno"
 
+msgid "Created by"
+msgstr ""
+
 msgid "Created new text"
 msgstr "Novi tekst stvoren"
 
@@ -307,6 +333,14 @@ msgid ""
 msgstr ""
 "Potpuno je sigurno izbrisati izmjenu koja je već objavljena. Ako nije "
 "objavljena, izmjena će brisanjem biti zauvijek izgubljena"
+
+msgid "Description item"
+msgstr ""
+
+msgid ""
+"Description lists use a double colon to separate the\n"
+"        term and the description."
+msgstr ""
 
 msgid "Desired URI"
 msgstr "URI po želji"
@@ -330,6 +364,9 @@ msgstr "Prikazujem"
 
 msgid "Division factor"
 msgstr "Faktor podijele"
+
+msgid "Do not enforce commit message"
+msgstr ""
 
 msgid "Done"
 msgstr "Gotovo"
@@ -388,6 +425,12 @@ msgid "Errors"
 msgstr "Greške"
 
 msgid ""
+"Every\n"
+"        section will generate a slide. You need to do proper\n"
+"        sectioning for this to work."
+msgstr ""
+
+msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
@@ -419,6 +462,9 @@ msgstr "Prvi Autor i Drugi Autor"
 
 msgid "First Author, Second Author"
 msgstr "Prvi Autor, Drugi Autor"
+
+msgid "First slide"
+msgstr ""
 
 msgid "Fix typography (smart quotes)"
 msgstr "Tipografsko ispravljanje (navodnici i slično)"
@@ -506,6 +552,9 @@ msgstr "Zaglavlje"
 msgid "Headings"
 msgstr "Zaglavlja"
 
+msgid "Here you can find a preview of the Beamer themes and color themes"
+msgstr ""
+
 msgid "Hide options"
 msgstr "Sakrij opcije"
 
@@ -527,6 +576,21 @@ msgstr "Id"
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Ako je osoba koja je napravila izmijene navela mail, uključena je u CC listu"
+
+msgid ""
+"If this line\n"
+"          is present, set the publication date (on this site) to the\n"
+"          date. The date may also be in the future, deferring the\n"
+"          publication. If this line is not present, the publication\n"
+"          date will be the time of the publishing, triggering a bump\n"
+"          on RSS and special pages at each editing."
+msgstr ""
+
+msgid ""
+"If this line is\n"
+"          present and the reason is set to something, the text will be\n"
+"          stored in the archive, but will not be published."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ako želiš prijelom teksta izaberi obrazac"
@@ -658,9 +722,6 @@ msgstr "Popis tekstova na čekanju"
 msgid "Lists"
 msgstr "Popisi"
 
-msgid "Lists start with a single leading whitespace"
-msgstr "Popisi započinju jednim jedinim praznim znakom na početku retka"
-
 msgid "Locale"
 msgstr "Jezik"
 
@@ -724,6 +785,9 @@ msgstr "Način"
 msgid "Moderated wiki"
 msgstr "Moderirani wiki"
 
+msgid "Mono font"
+msgstr ""
+
 msgid "More"
 msgstr "Više"
 
@@ -745,6 +809,9 @@ msgstr "Ime"
 msgid "Never generate a table of content"
 msgstr "Ne generiraj sadržaj"
 
+msgid "New"
+msgstr ""
+
 msgid "New revision"
 msgstr "Nova izmjena"
 
@@ -760,8 +827,14 @@ msgstr "Lijep naslov"
 msgid "No"
 msgstr ""
 
+msgid "No editing yet!"
+msgstr ""
+
 msgid "No result found!"
 msgstr "Nema rezultata!"
+
+msgid "No revisions to show"
+msgstr ""
 
 msgid "No text found!"
 msgstr "Nijedan tekst nije pronađen!"
@@ -813,6 +886,9 @@ msgstr "Ili umetni između"
 
 msgid "Other languages"
 msgstr "Drugi jezici"
+
+msgid "PDF"
+msgstr ""
 
 msgid "PDF logo (absolute path or put it in texmf)"
 msgstr "PDF logo (obavezni smjer ili ime teksta u texmf)"
@@ -890,6 +966,21 @@ msgstr "Slika"
 
 msgid "Plain PDF"
 msgstr "Običan PDF"
+
+msgid "Please choose the Beamer color theme"
+msgstr ""
+
+msgid "Please choose the Beamer theme"
+msgstr ""
+
+msgid "Please choose the main font"
+msgstr ""
+
+msgid "Please choose the mono font"
+msgstr ""
+
+msgid "Please choose the sans font"
+msgstr ""
 
 msgid "Please describe shortly what you did"
 msgstr "Molim, opiši kratko što si učinio"
@@ -989,11 +1080,19 @@ msgstr "Izaberi fontove"
 msgid "Please select the signature size:"
 msgstr "Izaberi veličinu svezaka"
 
+msgid "Please setup the Beamer layout"
+msgstr ""
+
 msgid "Poetry, bibliographies, plays, code"
 msgstr "Poezija, bibliografije, drame, kod"
 
 msgid "Pointing to"
 msgstr "Povezuje"
+
+msgid ""
+"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"        “i.”, “I.”, depending on the list type you need."
+msgstr ""
 
 msgid "Prepare this text for the archiving"
 msgstr "Pripremi ovaj tekst za arhivu"
@@ -1010,7 +1109,7 @@ msgstr "Prioritet"
 msgid "Private"
 msgstr ""
 
-msgid "Produce an EPUB instead of a PDF"
+msgid "Produce slides."
 msgstr ""
 
 msgid "Produced"
@@ -1126,6 +1225,9 @@ msgstr "Izmjena za %1 izbrisana"
 msgid "Roles"
 msgstr ""
 
+msgid "Sans font"
+msgstr ""
+
 msgid "Search"
 msgstr "Traži"
 
@@ -1179,6 +1281,12 @@ msgstr "Slogan sajta"
 
 msgid "Sites"
 msgstr "Sajtovi"
+
+msgid "Slides"
+msgstr ""
+
+msgid "Slides (PDF)"
+msgstr ""
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Tako da ne šaljemo lozinke pogrešnim osobama"
@@ -1268,6 +1376,9 @@ msgstr "Zadatak"
 msgid "TeX"
 msgstr "TeX"
 
+msgid "Term"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1280,6 +1391,11 @@ msgstr ""
 
 msgid "Texts"
 msgstr "Tekstovi"
+
+msgid ""
+"The Beamer selections are relevant only if you activate the\n"
+"  slides output."
+msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr "Logo ima ime sajta na sebi"
@@ -1352,10 +1468,20 @@ msgstr "Ova izmjena je u toku od tvoje strane"
 msgid "This revision is being edited by someone else!"
 msgstr "Ova izmjena je u toku od strane nekog drugog!"
 
+msgid "This section will not produce a slide"
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Ovaj tekst ne postoji"
 
+msgid "This text is new"
+msgstr ""
+
 msgid "This text is not published yet"
+msgstr ""
+
+#. (rev.is_deferred)
+msgid "This text will be deferred to %1"
 msgstr ""
 
 msgid "Time is optional."
@@ -1755,6 +1881,9 @@ msgstr "tekstovi po temi"
 msgid "the author of the text (as displayed)"
 msgstr "autor teksta (za naslovnicu)"
 
+msgid "this text will be unpublished"
+msgstr ""
+
 msgid "topic"
 msgstr "tema"
 
@@ -1783,6 +1912,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Lists start with a single leading whitespace"
+#~ msgstr "Popisi započinju jednim jedinim praznim znakom na početku retka"
 
 #~ msgid "Toggle the table of contents"
 #~ msgstr "Pokaži/sakrij sadržaj"
