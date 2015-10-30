@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.52 2015-10-30
+
+ - Fixed bug due to bad file extension parsing, which was excluding
+   some files after a pulling.
+
 1.51 2015-10-30
 
  - Introduced description lists via new Text::Amuse
