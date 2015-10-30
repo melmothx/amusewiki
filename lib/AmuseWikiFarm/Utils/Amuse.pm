@@ -14,6 +14,7 @@ use Digest::MD5 qw/md5_hex/;
 use DateTime;
 use Date::Parse qw/str2time/;
 use Text::Unidecode qw/unidecode/;
+use AmuseWikiFarm::Log::Contextual;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
@@ -220,7 +221,7 @@ valid only if root is C</etc>.
 =cut
 
 sub _my_suffixes {
-    return (qw/.muse .png .jpeg .jpg .pdf/);
+    return qr{\.(muse|png|jpe?g|pdf)};
 }
 
 
@@ -704,7 +705,9 @@ An attachment to the special page
 sub muse_filepath_is_valid {
     my $relpath = shift;
     return unless $relpath;
+    log_debug { "Scanning $relpath" };
     my ($name, $path, $suffix) = fileparse($relpath, _my_suffixes());
+    log_debug { "$name, $path, $suffix" };
     return unless $suffix && $path;
 
     my @dirs = File::Spec->splitdir($path);
@@ -714,8 +717,9 @@ sub muse_filepath_is_valid {
         pop @dirs;
     }
     return unless @dirs;
+    Dlog_debug { "Dirs are $_" } \@dirs;
     return unless muse_filename_is_valid($name);
-
+    Dlog_debug { "$name is valid" };
     # handle the pdf, which are indexed only if in the 'uploads' directory
     if (@dirs == 1) {
         my $dir = shift @dirs;

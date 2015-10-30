@@ -694,7 +694,6 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Archive::Xapian;
 use Unicode::Collate::Locale;
 use File::Find;
-use File::Basename qw/fileparse/;
 use Data::Dumper;
 use AmuseWikiFarm::Archive::BookBuilder;
 use JSON ();
@@ -1577,6 +1576,7 @@ sub repo_find_changed_files {
                   removed => [],
                  };
     my $in_tree = $self->repo_find_files;
+    Dlog_debug { "Files are $_" } $in_tree;
     my $in_db = $self->repo_find_tracked_files;
     foreach my $file (keys %$in_db) {
         if (exists $in_tree->{$file}) {

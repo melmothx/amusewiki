@@ -66,7 +66,7 @@ sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
         $c->detach('/not_found');
         return;
     }
-    my ($uri) = File::Basename::fileparse($thumb, $ext);
+    my ($uri) = File::Basename::fileparse($thumb, qr{\Q$ext\E});
     my $srcfile = $c->stash->{site}->attachments->pdf_by_uri($uri);
     unless ($srcfile) {
         $c->detach('/not_found');

@@ -257,7 +257,7 @@ sub muse_doc {
 
 sub file_parsing {
     my ($self, $type) = @_;
-    my ($name, $path, $suffix) = fileparse($self->f_full_path_name, '.muse');
+    my ($name, $path, $suffix) = fileparse($self->f_full_path_name, qr{\.muse});
     if ($type eq 'dir') {
         return $path;
     }
@@ -607,7 +607,7 @@ sub destination_paths {
     die "pdf <$pdf_dir> is not a dir" unless $pdf_dir && -d $pdf_dir;
     my %dests;
     foreach my $file ($self->f_full_path_name, $self->attached_files_paths) {
-        my ($basename, $path, $suffix) = fileparse($file, '.pdf');
+        my ($basename, $path, $suffix) = fileparse($file, qr{\.pdf});
         if ($suffix) {
             $dests{$file} = File::Spec->catfile($pdf_dir, $basename . $suffix);
         }

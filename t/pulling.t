@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 35;
+use Test::More tests => 39;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -12,6 +12,7 @@ use File::Path qw/make_path remove_tree/;
 use Text::Amuse::Compile::Utils qw/write_file/;
 use Git::Wrapper;
 use File::Spec::Functions qw/catfile catdir/;
+use File::Copy qw/copy/;
 
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
@@ -86,11 +87,20 @@ diag "Adding a file and pushing";
 make_path(catdir($working_copy_dir, qw/a at/));
 my $newfile = catfile($working_copy_dir, qw/a at a-test.muse/);
 
+copy(catfile(qw/t files shot.png/),
+     catfile($working_copy_dir, qw/a at a-t-pdf.png/)) or die;
+
+copy(catfile(qw/t files shot.png/),
+     catfile($working_copy_dir, qw/a at a-t-pdfx.png/)) or die;
+
+
 write_file($newfile,
            "#title A Test\n#author Pippo\n\nblabla bla\n");
 
 ok (-f $newfile, "$newfile written");
 $working_copy->add($newfile);
+$working_copy->add(catfile($working_copy_dir, qw/a at a-t-pdf.png/));
+$working_copy->add(catfile($working_copy_dir, qw/a at a-t-pdfx.png/));
 $working_copy->commit({ message => "Work at home" });
 $working_copy->push(qw/origin master/);
 
@@ -104,12 +114,16 @@ ok(-f catfile($site->repo_root, qw/a at a-test.zip/), "Found zip");
 ok(-f catfile($site->repo_root, qw/a at a-test.html/), "Found html");
 ok(-f catfile($site->repo_root, qw/a at a-test.tex/), "Found html");
 ok(-f catfile($site->repo_root, qw/a at a-test.bare.html/), "Found bare html");
+ok(-f catfile($site->repo_root, qw/a at a-t-pdf.png/), "Found png");
+ok(-f catfile($site->repo_root, qw/a at a-t-pdfx.png/), "Found png");
 
 my ($gitlog) = $site->git->log;
 
 is $gitlog->message, "Work at home\n", "Pulling in site ok";
 
 my $title = $site->titles->text_by_uri('a-test');
+ok ($site->attachments->by_uri('a-t-pdf.png'), "Found attachment");
+ok ($site->attachments->by_uri('a-t-pdfx.png'), "Found second attachment");
 is ($title->title, "A Test", "Find title in db");
 my $author = $title->authors->first;
 
