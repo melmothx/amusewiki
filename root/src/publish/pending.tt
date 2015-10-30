@@ -14,7 +14,9 @@
     <tr>
       <th>[% loc('Revision') %]</th>
       <th>[% loc('Attachments') %]</th>
-      <th colspan="2" style="text-align:center">[% loc('Action')   %]</th>
+      <th [% IF c.user_exists %]colspan="2"[% END %] style="text-align:center">
+        [% loc('Action')   %]
+      </th>
       <th>[% loc('Changes')  %]</th>
       <th>[% loc('Message')  %]</th>
       <th>[% loc('Date')     %]</th>
@@ -72,7 +74,7 @@
               action="[% c.uri_for_action('/publish/purge') %]">
           <input type="hidden" name="target" value="[% rev.id %]" />
           <button class="btn btn-danger" type="submit" name="delete"
-                  value="delete" title="[% rev.title.full_uri %] #[% rev.id %]">
+                  value="delete" title="[% loc('Erase this revision') %] [% rev.title.full_uri %] #[% rev.id %]">
             <span class="glyphicon glyphicon-trash"></span>
           </button>
         </form>
