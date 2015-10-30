@@ -445,21 +445,28 @@
 
 
       <h4 id="cslists">[% loc('Lists') %]</h4>
-      <em>[% loc('Lists start with a single leading whitespace') %]</em>
-      <ul>
-        <li>
-          <p>
-            <code> - [% loc('unnumbered item') %] 1</code><br />
-            <code> - [% loc('unnumbered item') %] 2</code>
-          </p>
-        </li>
-        <li>
-          <p>
-            <code> 1. [% loc('numbered item') %]</code>  <br />
-            <code> 1. [% loc('numbered item') %]</code>
-          </p>
-        </li>
-      </ul>
+      <p>
+        [% loc('All kind of lists start with one or more leading
+        whitespace.') %]
+      </p>
+      <pre>
+ - [% loc('unnumbered item') %] 1
+ - [% loc('unnumbered item') %] 2
+
+ 1. [% loc('numbered item') %]
+ 1. [% loc('numbered item') %]
+
+ [% loc('Term') %] :: [% loc('Description item') %]
+ [% loc('Term') %] :: [% loc('Description item') %]</pre>
+      
+      <p>
+        [% loc('Description lists use a double colon to separate the
+        term and the description.') %]
+      </p>
+      <p>
+        [% loc('Prefix for numbered lists may be “1.”, “a.”, “A.”,
+        “i.”, “I.”, depending on the list type you need.') %]
+      </p>
       <h4 id="cslinks">[% loc('Links and images') %]</h4>
       <p>[% loc('They have the same syntax (images are actually links)') %]</p>
       <ul>
