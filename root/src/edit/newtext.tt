@@ -171,7 +171,7 @@
     <div>&nbsp;</div>
     <div>
       <p>
-        [% loc('Or provide an HTML file to upload') %]
+        <strong>[% loc('Or provide an HTML file to upload') %]</strong>
       </p>
       <p>
         [% loc('If you have a file in .doc or .odt, you can easily convert it saving it as HTML') %]
