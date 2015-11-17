@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 3;
+use Test::More tests => 5;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -32,6 +32,7 @@ my $site = create_site($schema, '0htmlfile0');
                                                }, 'text');
     ok ($rev, "Revision created");
     like ($rev->muse_body, qr/Примерно до конца/, "File processed");
+    is $site->revisions->count, 1, "Found one revision";
 }
 
 { 
@@ -40,5 +41,6 @@ my $site = create_site($schema, '0htmlfile0');
                                                  fileupload => catfile(qw/t files shot.png/),
                                                }, 'text');
     ok (!$rev, "Revision not created");
+    is $site->revisions->count, 1, "Found one revision";
 }
 
