@@ -286,13 +286,13 @@
         <li><a href="#cspars">[% loc('Paragraphs') %]</a></li>
         <li>
           <a href="#csinline">
-            [% loc('Italics, bold, monospace, linebreaks...') %]
+            [% loc('Italics, bold, monospace and code, linebreaks...') %]
           </a>
         </li>
         <li><a href="#csfootnotes">[% loc('Footnotes') %]</a></li>
         <li>
           <a href="#csspecial">
-            [% loc('Poetry, bibliographies, plays, code') %]
+            [% loc('Poetry, bibliographies, plays, code blocks') %]
           </a>
         </li>
         <li><a href="#cslists">[% loc('Lists') %]</a></li>
