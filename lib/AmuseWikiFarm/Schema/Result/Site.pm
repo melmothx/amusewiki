@@ -1053,13 +1053,7 @@ sub import_text_from_html_params {
         $bogus->{$f} = '';
     }
 
-    # title->can_spawn_revision will return false, so we have to force
-    my $revision = $self->titles->create($bogus)->new_revision('force');
-    my $file = $revision->f_full_path_name;
-    die "full path was not set!" unless $file;
 
-    # save a copy of the html request
-    my $html_copy = File::Spec->catfile($revision->original_html);
     my $body;
     my $error;
     if ($params->{fileupload}) {
@@ -1067,27 +1061,41 @@ sub import_text_from_html_params {
             $body = eval { html_file_to_muse($params->{fileupload}) };
             if ($@) {
                 log_error { "error while converting file upload: " . $@ };
-                $error = 1;
+                # loc('Error converting the upload file. Is it an HTML file?');
+                $error = "Error converting the upload file. Is it an HTML file?";
             }
         }
         else {
             log_error { $params->{fileupload} . " is not a text file!" };
-            $error = 1;
-        }
-        if (defined $body) {
-            copy ($params->{fileupload}, $html_copy) or die $!;
+            # loc('The file uploaded is not an HTML file!');
+            $error = "The file uploaded is not an HTML file!";
         }
     }
     else {
         $params->{textbody} //= "\n";
         $params->{textbody} =~ s/\r//g;
-
         $body = eval { html_to_muse($params->{textbody}) };
         if ($@) {
             log_error { "error while converting HTML: " . $@ };
-            $error = 1;
+            # loc('Error while converting the HTML. Sorry.');
+            $error = "Error while converting the HTML. Sorry.";
         }
-        if (defined $body) {
+    }
+    if ($error) {
+        return undef, $error;
+    }
+
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    # title->can_spawn_revision will return false, so we have to force
+    my $revision = $self->titles->create($bogus)->new_revision('force');
+
+    # save a copy of the html request
+    my $html_copy = $revision->original_html;
+    if (defined $body) {
+        if ($params->{fileupload}) {
+            copy ($params->{fileupload}, $html_copy) or die $!;
+        }
+        else {
             open (my $fhh, '>:encoding(utf-8)', $html_copy)
               or die "Couldn't open $html_copy $!";
             print $fhh $params->{textbody};
@@ -1095,10 +1103,9 @@ sub import_text_from_html_params {
             close $fhh or die $!;
         }
     }
-    if ($error) {
-        # loc('Error while converting HTML to Muse!');
-        return undef, "Error while converting HTML to Muse!";
-    }
+
+    my $file = $revision->f_full_path_name;
+    die "full path was not set!" unless $file;
     # populate the file with the parameters
     open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
 
@@ -1125,6 +1132,7 @@ sub import_text_from_html_params {
     die $revision->starting_file . ' already present'
       if -f $revision->starting_file;;
     copy($file, $revision->starting_file) or die $!;
+    $guard->commit;
     return $revision;
 }
 
