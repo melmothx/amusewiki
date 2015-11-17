@@ -686,7 +686,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_file_info
                                    muse_filepath_is_valid
                                    muse_naming_algo/;
-use Text::Amuse::Preprocessor::HTML qw/html_to_muse/;
+use Text::Amuse::Preprocessor::HTML qw/html_to_muse html_file_to_muse/;
 use Text::Amuse::Compile;
 use Date::Parse;
 use DateTime;
@@ -1060,15 +1060,45 @@ sub import_text_from_html_params {
 
     # save a copy of the html request
     my $html_copy = File::Spec->catfile($revision->original_html);
+    my $body;
+    my $error;
+    if ($params->{fileupload}) {
+        if (-f $params->{fileupload} && -T $params->{fileupload}) {
+            $body = eval { html_file_to_muse($params->{fileupload}) };
+            if ($@) {
+                log_error { "error while converting file upload: " . $@ };
+                $error = 1;
+            }
+        }
+        else {
+            log_error { $params->{fileupload} . " is not a text file!" };
+            $error = 1;
+        }
+        if (defined $body) {
+            copy ($params->{fileupload}, $html_copy) or die $!;
+        }
+    }
+    else {
+        $params->{textbody} //= "\n";
+        $params->{textbody} =~ s/\r//g;
 
-    $params->{textbody} //= "\n";
-    $params->{textbody} =~ s/\r//g;
-    open (my $fhh, '>:encoding(utf-8)', $html_copy)
-      or die "Couldn't open $html_copy $!";
-    print $fhh $params->{textbody};
-    print $fhh "\n";
-    close $fhh or die $!;
-
+        $body = eval { html_to_muse($params->{textbody}) };
+        if ($@) {
+            log_error { "error while converting HTML: " . $@ };
+            $error = 1;
+        }
+        if (defined $body) {
+            open (my $fhh, '>:encoding(utf-8)', $html_copy)
+              or die "Couldn't open $html_copy $!";
+            print $fhh $params->{textbody};
+            print $fhh "\n";
+            close $fhh or die $!;
+        }
+    }
+    if ($error) {
+        # loc('Error while converting HTML to Muse!');
+        return undef, "Error while converting HTML to Muse!";
+    }
     # populate the file with the parameters
     open (my $fh, '>:encoding(utf-8)', $file) or die "Couldn't open $file $!";
 
@@ -1085,7 +1115,6 @@ sub import_text_from_html_params {
     # separator
     print $fh "\n";
 
-    my $body = html_to_muse($params->{textbody});
     if (defined $body) {
         print $fh $body;
     }

@@ -168,6 +168,18 @@
       <textarea id="textbody" name="textbody" cols="80"
                 rows="20">[%- processed_params.textbody | html -%]</textarea>
     </div>
+    <div>&nbsp;</div>
+    <div>
+      <p>
+        [% loc('Or provide an HTML file to upload') %]
+      </p>
+      <p>
+        [% loc('If you have a file in .doc or .odt, you can easily convert it saving it as HTML') %]
+      </p>
+      <p>
+        <input id="texthtmlfile" name="texthtmlfile" type="file" />
+      </p>
+    </div>
     
     [% IF f_class == 'text' %]
     <h3>[% loc('Notes') %]</h3>

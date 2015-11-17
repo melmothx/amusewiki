@@ -92,7 +92,16 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     if ($c->request->params->{go}) {
 
         # create a working copy of the params
-        my $params = { %{$c->request->params} };
+        my $params = { %{$c->request->body_params} };
+        my ($upload) = $c->request->upload('texthtmlfile');
+        if ($upload) {
+            log_debug { $upload->tempname . ' => '. $upload->size  };
+            $params->{fileupload} = $upload->tempname;
+        }
+        else {
+            # delete if set as parameter
+            delete $params->{fileupload};
+        }
 
         if (my $fixed_cats = $site->list_fixed_categories) {
             my @out;
