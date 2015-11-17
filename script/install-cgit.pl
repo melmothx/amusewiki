@@ -54,6 +54,7 @@ Options:
  By default, v0.11.2 is installed. v0.10.2 is known to work as well.
 
 HELP
+    exit 2;
 }
 
 my $amw_home = getcwd();

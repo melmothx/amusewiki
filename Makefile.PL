@@ -76,7 +76,7 @@ requires 'HTTP::Tiny';
 requires 'Text::Amuse' => '0.43';
 requires 'PDF::Imposition' => '0.15';
 requires 'Text::Amuse::Compile' => '0.45';
-requires 'Text::Amuse::Preprocessor' => '0.24';
+requires 'Text::Amuse::Preprocessor' => '0.25';
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
