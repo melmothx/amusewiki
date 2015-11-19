@@ -24,11 +24,6 @@ This class provides the site selection and the theme management.
 
 =head1 METHODS
 
-=head2 auto
-
-Root auto methods sets the site code C<site_id> in the stash, for
-farming purposes, defaulting to C<default>.
-
 Values always stashed for every action:
 
 =over 4
@@ -63,6 +58,7 @@ Locale name
 
 sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    log_debug { $c->request->uri->as_string };
 
     # catch the host. ->uri is an URI object, as per doc.
     my $host = $c->request->uri->host;
@@ -91,29 +87,27 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
         $c->detach('/not_permitted');
         return;
     }
+    my $site_id = $site->id;
+    log_debug { "Site ID for $host is $site_id, with locale " . $site->locale };
+    log_debug { "session id is " . ($c->sessionid || '<none>') };
 
-    log_debug { "Site ID for $host is " . $site->id
-                   . ", with locale " . $site->locale };
-
-    my $session_site_id = $c->session->{site_id};
 
     # this means some fucker reused a cookie from another site to gain
-    # access to this. A bit unlikely, but better now than later.
-    if ($session_site_id) {
-        if ($session_site_id ne $site->id) {
-            my $sid = $site->id;
-            log_error { "Session stealing from " . $c->req->address
-                          . " requesting " . $c->req->uri
-                          . " $sid is not $session_site_id" };
+    # access to this. A bit unlikely, but better now than later. So,
+    # assert that the session belongs to the same site This is very
+    # common with some vintage browser (IE, anyone) and some crappy
+    # robots.
+    if ($c->sessionid) {
+        my $session_site_id = $c->session->{site_id} || '';
+        if ($session_site_id ne $site_id) {
+            Dlog_error {
+                "Session mismatch, <$session_site_id> ne <$site_id>".
+                  " deleting session, requesting " . $_
+              } ($c->session, $c->request);
             $c->delete_session;
-            $c->detach('/not_permitted');
-            return;
+            die "This shouldn't happen" if $c->user_exists;
+            # a this point, this is a bug
         }
-    }
-    else {
-        # new session, apparently
-        $c->delete_session if $c->user_exists;
-        $c->session(site_id => $site->id);
     }
 
     # stash the site object
@@ -137,16 +131,18 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     my $locale = $site->locale || 'en';
     # in case something weird happened
     unless ($site->known_langs->{$locale}) {
-        log_warn { "$locale is not recognized" };
+        log_error { "$locale is not recognized on $site_id " . $c->request->path };
         $locale = 'en';
     }
 
     if ($site->multilanguage) {
-        if (my $user_locale = $c->session->{user_locale}) {
-            if (my $language = $site->known_langs->{$user_locale}) {
-                log_debug { "Language is $language" };
-                # validated by now
-                $locale = $user_locale;
+        if ($c->sessionid) {
+            if (my $user_locale = $c->session->{user_locale}) {
+                if (my $language = $site->known_langs->{$user_locale}) {
+                    log_debug { "Language is $language" };
+                    # validated by now
+                    $locale = $user_locale;
+                }
             }
         }
     }

@@ -86,7 +86,10 @@ sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
             if ($c->authenticate({ username => $username,
                                    password => $password })) {
                 $c->change_session_id;
-                $c->session(i_am_human => 1);
+                $c->session(
+                            i_am_human => 1,
+                            site_id => $site->id,
+                           );
                 $c->flash(status_msg => $c->loc("You are logged in now!"));
                 $c->detach('redirect_after_login');
             }
@@ -106,7 +109,7 @@ sub logout :Chained('/site') :PathPart('logout') :Args(0) {
 
 sub human :Chained('/site') :PathPart('human') :Args(0) {
     my ($self, $c) = @_;
-    if ($c->session->{i_am_human}) {
+    if ($c->sessionid && $c->session->{i_am_human}) {
         # wtf...
         $c->flash(status_msg => $c->loc('You already proved you are human'));
         $c->response->redirect($c->uri_for('/'));
@@ -117,7 +120,10 @@ sub human :Chained('/site') :PathPart('human') :Args(0) {
     if ($c->request->params->{answer}) {
         if ($c->request->params->{answer} eq $c->stash->{site}->magic_answer) {
             # ok, you're a human
-            $c->session(i_am_human => 1);
+            $c->session(
+                        i_am_human => 1,
+                        site_id => $c->stash->{site}->id,
+                       );
             $c->detach('redirect_after_login');
         }
         else {
@@ -134,7 +140,9 @@ sub language :Chained('/site') :PathPart('set-language') :Args(0) {
         if (my $lang = $c->request->params->{lang}) {
             if ($site->known_langs->{$lang}) {
                 $locale = $lang;
-                $c->session(user_locale => $locale);
+                $c->session(user_locale => $locale,
+                            site_id => $site->id,
+                           );
             }
         }
     }

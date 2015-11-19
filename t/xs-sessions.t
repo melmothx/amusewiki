@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 17;
+use Test::More tests => 20;
 use File::Spec::Functions qw/catfile catdir/;
 use Data::Dumper;
 use lib catdir(qw/t lib/);
@@ -54,18 +54,14 @@ $res2 = $mech2->get('/login');
 # print Dumper($res1->request, $res1->headers, $res2->request, $res2->headers);
 
 my $cookie_on_first = $res1->request->header('Cookie');
-diag "Using $cookie_on_first on another site";
+ok !$cookie_on_first, "No cookie set on first request";
 
-$mech2->get('/login', Cookie => $cookie_on_first);
+$mech2->get('/login', Cookie => '');
 
-is $mech2->status, '403', "Trying to use a session from another site fails";
+is $mech2->status, '200', "Trying to use a session from another site is ok as long there is no cookie";
 
-$res2 = $mech2->get('/login');
-$res2 = $mech2->get('/login');
-
-ok ($res2->request->header('Cookie') ne $cookie_on_first,
-    $res2->request->header('Cookie') . " is not $cookie_on_first" );
-
+$res2 = $mech2->get('/login', Cookie => $cookie_on_first);
+ok (!$res2->request->header('Cookie'), "No cookie set yet");
 
 $mech1->get_ok('/login');
 $mech1->submit_form(form_id => 'login-form',
@@ -89,12 +85,14 @@ is ($mech1->response->base->path, '/console/git', "logged in");
 # and try the same trick now that we're logged in
 
 $cookie_on_first = $res1->request->header('Cookie');
+ok ($cookie_on_first, "Got the cookie");
 diag "Using $cookie_on_first on another site";
 
-$mech2->get('/library', Cookie => $cookie_on_first);
-is $mech2->status, '403', "Trying to use a session from another site fails";
-$mech2->get('/library', Cookie => $cookie_on_first);
+$res2 = $mech2->get('/library', Cookie => $cookie_on_first);
+is $mech2->status, '200', "Trying to use a session from another site will reset it";
 $mech2->content_lacks('pinco1');
+ok(!$res2->header('Cookie'), "No cookie returned after stealing");
+$mech2->get('/library', Cookie => $cookie_on_first);
 
 foreach my $mech ($mech1, $mech2) {
     $mech->get('/library');
