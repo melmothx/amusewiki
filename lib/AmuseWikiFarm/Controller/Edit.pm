@@ -43,7 +43,7 @@ sub root :Chained('/site') :PathPart('action') :CaptureArgs(1) {
     if (!$c->user_exists) {
         if ($site->human_can_edit) {
             # but prove it
-            if (!$c->session->{i_am_human}) {
+            unless ($c->sessionid && $c->session->{i_am_human}) {
                 $c->response->redirect($c->uri_for('/human',
                                                    { goto => $c->req->path }));
                 $c->detach();
