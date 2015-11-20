@@ -60,7 +60,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
         ($matches, @results) = $xapian->search($query, $page);
     };
     if ($@) {
-        $c->flash(error_msg => "$@");
+        Dlog_error { "Xapian error: " . $c->request->uri . ": $@ " . $_ } ($c->request->params);
+        $c->stash(xapian_errors => "$@");
     }
 
     foreach my $res (@results) {
