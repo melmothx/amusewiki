@@ -62,21 +62,29 @@ sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
               nav => 'login',
               page_title => $c->loc('Login'),
              );
-    my $username = $c->request->params->{username};
-    my $password = $c->request->params->{password};
+    my $username = $c->request->body_params->{username};
+    my $password = $c->request->body_params->{password};
 
     # check if the is the submit action
-    return unless $c->request->params->{submit};
+    return unless $c->request->body_params->{submit};
+
+    # before flashing, set the session id
+    my $site = $c->stash->{site};
+    log_debug { "setting site id " . $site->id . " in the session" };
+    $c->session(site_id => $site->id);
 
     unless ($username && $password) {
         $c->flash(error_msg => $c->loc("Missing username or password"));
         return;
     }
-    my $site = $c->stash->{site};
+    # force stringification
+    $username .= '';
+    $password .= '';
+
     # get the details from the db before authenticate it.
     # here we have another layer befor hitting the authenticate
 
-    if (my $user = $c->model('DB::User')->find({ username => $username })) {
+    if (my $user = $c->model('DB::User')->find({ username => $username  })) {
 
         # authenticate only if the user is a superuser
         # or if the site id matches the current site id
@@ -86,12 +94,10 @@ sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
             if ($c->authenticate({ username => $username,
                                    password => $password })) {
                 $c->change_session_id;
-                $c->session(
-                            i_am_human => 1,
-                            site_id => $site->id,
-                           );
+                $c->session(i_am_human => 1);
                 $c->flash(status_msg => $c->loc("You are logged in now!"));
                 $c->detach('redirect_after_login');
+                return;
             }
         }
     }
@@ -117,13 +123,18 @@ sub human :Chained('/site') :PathPart('human') :Args(0) {
     }
 
     $c->stash(page_title => $c->loc('Please prove you are a human'));
-    if ($c->request->params->{answer}) {
+    # if no magic answer is provided, do nothing
+    if (!$c->stash->{site}->magic_answer) {
+        log_error { $c->request->uri . " is without a magic answer!" };
+        return;
+    }
+
+    if ($c->request->body_params->{answer}) {
+        # set the site_id before flashing again
+        $c->session(site_id => $c->stash->{site}->id);
         if ($c->request->params->{answer} eq $c->stash->{site}->magic_answer) {
             # ok, you're a human
-            $c->session(
-                        i_am_human => 1,
-                        site_id => $c->stash->{site}->id,
-                       );
+            $c->session(i_am_human => 1);
             $c->detach('redirect_after_login');
         }
         else {
