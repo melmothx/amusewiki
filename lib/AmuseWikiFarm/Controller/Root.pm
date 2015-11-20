@@ -196,7 +196,6 @@ sub site_robot_index :Chained('site') :PathPart('') :CaptureArgs(0) {
 sub not_found :Private {
     my ($self, $c) = @_;
     $c->stash(please_index => 0);
-    $c->response->status(404);
     log_debug { "In the not_found!" };
     # last chance: look into the redirections if we have a type and an uri,
     # set in C::Library or C::Category
@@ -214,7 +213,12 @@ sub not_found :Private {
             }
         }
     }
-    log_info { $c->request->path . " not found" };
+    $c->response->status(404);
+    log_info {
+        $c->request->uri
+          . " not found by " . ($c->request->user_agent || '')
+          . " referred by " . ($c->request->referer || '')
+      };
     $c->stash(error_msg => $c->loc("Page not found!"));
     $c->stash(template => "error.tt");
 }
