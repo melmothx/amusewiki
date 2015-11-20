@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 20;
+use Test::More tests => 27;
 use File::Spec::Functions qw/catfile catdir/;
 use Data::Dumper;
 use lib catdir(qw/t lib/);
@@ -87,12 +87,26 @@ is ($mech1->response->base->path, '/console/git', "logged in");
 $cookie_on_first = $res1->request->header('Cookie');
 ok ($cookie_on_first, "Got the cookie");
 diag "Using $cookie_on_first on another site";
-
-$res2 = $mech2->get('/library', Cookie => $cookie_on_first);
-is $mech2->status, '200', "Trying to use a session from another site will reset it";
+$mech1->get('/console/git', Cookie => $cookie_on_first);
+is ($mech1->uri->path, "/console/git", "Legit user ok");
+$res2 = $mech2->get('/console/git', Cookie => $cookie_on_first);
+is ($mech2->uri->path, "/login", "non-legit user not ok, bounced to login");
 $mech2->content_lacks('pinco1');
 ok(!$res2->header('Cookie'), "No cookie returned after stealing");
 $mech2->get('/library', Cookie => $cookie_on_first);
+
+foreach my $mech ($mech1, $mech2) {
+    $mech->get('/library', Cookie => $cookie_on_first);
+    # we are logged in
+    $mech->content_lacks('pinco1',
+                         "user on the site is now forcibly logged out");
+    $mech->get('/bookbuilder', Cookie => $cookie_on_first);
+    is ($mech->response->base->path, '/human',
+        "logged out and session cleared, is not even recognized as human");
+    $mech->get('/console/git', Cookie => $cookie_on_first);
+    is ($mech->response->base->path, '/login',
+        "logged out and session cleared, can't access git");
+}
 
 foreach my $mech ($mech1, $mech2) {
     $mech->get('/library');

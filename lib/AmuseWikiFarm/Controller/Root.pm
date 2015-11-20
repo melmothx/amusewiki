@@ -102,14 +102,15 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
         if ($session_site_id ne $site_id) {
             Dlog_error {
                 "Session mismatch, <$session_site_id> ne <$site_id>".
-                  " deleting session, requesting " . $_
-              } ($c->session, $c->request);
+                  " deleting session, requesting " . $c->request->uri . " " . $_
+              } ($c->session);
             $c->delete_session;
             die "This shouldn't happen" if $c->user_exists;
             # a this point, this is a bug
         }
     }
 
+    log_debug { "User exists? " .  $c->user_exists };
     # stash the site object
     $c->stash(site => $site);
 

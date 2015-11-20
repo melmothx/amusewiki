@@ -30,7 +30,7 @@ sub root :Chained('/site') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
 
     # check if human
-    if ($c->session->{i_am_human}) {
+    if ($c->sessionid && $c->session->{i_am_human}) {
         $c->stash(nav => 'bookbuilder');
         $c->stash(page_title => $c->loc('Bookbuilder'));
     }
