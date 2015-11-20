@@ -26,7 +26,7 @@ Deny access to not-human
 
 sub root :Chained('/site') :PathPart('tasks') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
-    unless ($c->session->{i_am_human}) {
+    unless ($c->sessionid && $c->session->{i_am_human}) {
         $c->response->redirect($c->uri_for('/human', { goto => $c->req->path }));
         $c->detach();
     }

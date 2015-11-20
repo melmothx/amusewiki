@@ -1,5 +1,11 @@
 [% # -*- mode: html -*- %]
 
+[% IF xapian_errors %]
+<div class="alert alert-warning" id="xapian-errors">
+  [% xapian_errors | html %]
+</div>
+[% END %]
+
 <div>
   <form id="search" method="get" class="form-horizontal" role="form">
     <div class="form-group">

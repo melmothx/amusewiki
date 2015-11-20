@@ -74,17 +74,18 @@ use Catalyst::Runtime 5.80;
 # | 438M |      | 131M |      | 7.9M |      | 1.6M |      | 123M |      |
 # +------+------+------+------+------+------+------+------+------+------'
 
-use Catalyst
+use Catalyst (
   'ConfigLoader',
 #  'Static::Simple',
   'I18N',
   '+CatalystX::AmuseWiki::I18N',
 #  'MemoryUsage',
-  'Authentication',
-  'Authorization::Roles',
   'Session',
   'Session::Store::FastMmap',
-  'Session::State::Cookie';
+  'Session::State::Cookie',
+  'Authentication',
+  'Authorization::Roles',
+);
 
 
 
