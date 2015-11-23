@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.53 2015-11-23
+
+ - Added option to upload an HTML file instead of pasting the body (#22)
+ - Doc fixes (#22)
+ - Hide the filters by default (#23)
+ - Log user agent and referrer on 404 (#24)
+ - Try not to hit the session without a reason (#25)
+
 1.52 2015-10-30
 
  - Fixed bug due to bad file extension parsing, which was excluding
