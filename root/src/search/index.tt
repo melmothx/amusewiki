@@ -18,7 +18,12 @@
       </div>
     </div>
 
+    [% IF c.req.params.title   || c.req.params.author || c.req.params.year || c.req.params.topic ||
+          c.req.params.source || c.req.params.notes  || c.req.params.match_any %]
+        [% SET show_full_options = 1 %]
+    [% END %]
 
+    <div id="full-options" class="collapse[% IF show_full_options %] in[% END %]">
     <div class="form-group more-option">
       <label for="title" class="col-xs-3 control-label">
         [% loc('Title') %]
@@ -84,25 +89,27 @@
         <div class="checkbox">
           <label>
             <input type="checkbox"
-                   [% IF c.request.params.match_any %]checked="checked"[% END %]
+                   [% IF c.req.params.match_any %]checked="checked"[% END %]
                    name="match_any" />
             [% loc('Match any of the fields above') %]
           </label>
         </div>
       </div>
     </div>
+    </div>
+
     <div class="form-group">
       <div class="col-xs-offset-3 col-xs-9">
         <button type="submit" class="btn btn-default">
           [% loc('Full text search') %]
         </button>
         <button type="button" class="btn btn-default toggle-options"
-                id="hide-options">
-          [% loc('Hide options') %]
-        </button>
-        <button type="button" class="btn btn-default toggle-options"
-                id="show-options">
-          [% loc('Show options') %]
+                data-target="#full-options"
+                data-toggle="collapse"
+                aria-expanded="[% IF show_full_options %]true[% ELSE %]false[% END %]"
+                aria-controls="full-options">
+          <span id="hide-options"[% UNLESS show_full_options %] style="display:none"[% END %]>[% loc('Hide options') %]</span>
+          <span id="show-options"[% IF     show_full_options %] style="display:none"[% END %]>[% loc('Show options') %]</span>
         </button>
       </div>
     </div>
@@ -165,21 +172,13 @@
 [% END %]
 
 <script type="text/javascript">
-  $(document).ready(function() {
-      $('.more-option').hide();
-      $('#hide-options').hide();
-      $('#hide-options').click(function() {
-          $('.more-option').hide(700, function() {
-              $('#show-options').show();
-              $('#hide-options').hide();
-          });
-      });
-      $('#show-options').click(function() {
-          $('.more-option').show(700, function() {
-              $('#hide-options').show();
-              $('#show-options').hide();
-          });
-      });
-
+  $('#full-options').on('hidden.bs.collapse', function() {
+    $('#hide-options').hide();
+    $('#show-options').show();
   });
+  $('#full-options').on('shown.bs.collapse', function() {
+    $('#hide-options').show();
+    $('#show-options').hide();
+  });
+
 </script>
