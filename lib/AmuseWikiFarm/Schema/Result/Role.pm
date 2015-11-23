@@ -118,7 +118,5 @@ __PACKAGE__->many_to_many("users", "user_roles", "user");
 # Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yosW2fZGBIEnb9OXdgS23w
 
-
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;
