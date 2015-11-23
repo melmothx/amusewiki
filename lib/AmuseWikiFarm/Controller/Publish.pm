@@ -30,7 +30,7 @@ sub root :Chained('/site') :PathPart('publish') :CaptureArgs(0) {
     if (!$c->user_exists) {
         if ($site->human_can_publish) {
             # send to human if not so
-            if (!$c->session->{i_am_human}) {
+            unless ($c->sessionid && $c->session->{i_am_human}) {
                 $c->response->redirect($c->uri_for('/human',
                                                    { goto => $c->req->path }));
                 $c->detach();
