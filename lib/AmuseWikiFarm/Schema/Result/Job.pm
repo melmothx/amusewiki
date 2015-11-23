@@ -545,7 +545,7 @@ sub produced_files {
                 push @out, $abs;
             }
             else {
-                log_error { "$abs (in produced files) couldn't be found!" };
+                Dlog_error { "$abs (in produced files) couldn't be found in " . $_ } $self->job_data;
             }
         }
     }
