@@ -167,7 +167,26 @@
                 [% IF locked_editing %]readonly="readonly"[% END %]
                 name="body">[%- revision.muse_body | html -%]</textarea>
     </div>
-    <h4>[% loc('Filters') %]</h4>
+    [%- IF (c.req.params.fix_typography || c.req.params.fix_typography || c.req.params.fix_links ||
+            c.req.params.remove_nbsp    || c.req.params.fix_nbsp       || c.req.params.fix_footnotes) -%]
+       [%- SET show_filters = 1 -%]
+    [%- END -%]
+
+    <div>
+      <label role="button"
+         data-target="#filters"
+         data-toggle="collapse"
+         aria-expanded="[% IF show_filters %]true[% ELSE %]false[% END %]"
+         aria-controls="filters">
+        <strong>
+          [% loc('Filters') %]
+          [% loc('(smart quotes, links, footnotes, etc.)') %]
+          <span class="caret"></span>
+        </strong>
+      </label>
+    </div>
+    <div id="filters" class="collapse[% IF show_filters %] in[% END %]" >
+      <div class="well">
     <p>
       [% loc('Please keep in mind that filters are language-specific
               and may or may not be available for the language of the
@@ -231,6 +250,11 @@
               the change if footnotes are missing or are too many.") %]
       </label>
     </div>
+      </div>
+    </div>
+    <!-- end of filters -->
+    <div>&nbsp;</div>
+
     <div>
       <label for="rev-message">
         [% loc('Please describe shortly what you did') %]
