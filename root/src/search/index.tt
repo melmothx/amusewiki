@@ -172,13 +172,14 @@
 [% END %]
 
 <script type="text/javascript">
-  $('#full-options').on('hidden.bs.collapse', function() {
-    $('#hide-options').hide();
-    $('#show-options').show();
-  });
-  $('#full-options').on('shown.bs.collapse', function() {
-    $('#hide-options').show();
-    $('#show-options').hide();
-  });
-
+$(document).ready(function() {
+    $('#full-options').on('hidden.bs.collapse', function() {
+        $('#hide-options').hide();
+        $('#show-options').show();
+    });
+    $('#full-options').on('shown.bs.collapse', function() {
+        $('#hide-options').show();
+        $('#show-options').hide();
+    });
+});
 </script>
