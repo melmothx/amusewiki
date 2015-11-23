@@ -3,7 +3,7 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 24;
+use Test::More tests => 28;
 use DateTime;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
@@ -95,3 +95,24 @@ $job->delete;
 foreach my $file (@leftovers) {
     ok (! -f $file, "$file deleted as expected");
 }
+
+$bb = AmuseWikiFarm::Archive::BookBuilder->new;
+$bb->import_from_params(format => 'epub');
+foreach my $uri (@uris, @uris) {
+    $bb->add_text($uri);
+}
+ok $bb->epub;
+diag Dumper($bb->serialize);
+$job = $site->jobs->bookbuilder_add($bb->serialize);
+diag "job is is " . $job->id;
+my $check = $site->jobs->find($job->id);
+$check->dispatch_job;
+$check = $site->jobs->find($job->id);
+ok ($check, "Job retrieved");
+my $expected = catfile(qw/root custom/, $job->id . '.epub');
+ok (-f $expected, "EPUB created");
+$check->delete;
+ok (! -f $expected, "EPUB cleaned up after record removal");
+
+
+
