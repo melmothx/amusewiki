@@ -19,6 +19,9 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr ""
 
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
 
@@ -407,7 +410,13 @@ msgstr ""
 msgid "Erase this revision"
 msgstr ""
 
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
 msgid "Error sending mail!"
+msgstr ""
+
+msgid "Error while converting the HTML. Sorry."
 msgstr ""
 
 msgid "Errors"
@@ -575,6 +584,11 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
 msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -617,7 +631,7 @@ msgstr ""
 msgid "Italic"
 msgstr ""
 
-msgid "Italics, bold, monospace, linebreaks..."
+msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr ""
 
 msgid "Job deleted"
@@ -843,6 +857,9 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr ""
 
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
 msgid "Or wrap it in"
 msgstr ""
 
@@ -1014,7 +1031,7 @@ msgstr ""
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "Poetry, bibliographies, plays, code"
+msgid "Poetry, bibliographies, plays, code blocks"
 msgstr ""
 
 msgid "Pointing to"
@@ -1314,6 +1331,9 @@ msgstr ""
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
 msgid "The logo has the site name on itself"

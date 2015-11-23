@@ -19,6 +19,9 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 non esiste"
 
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Una o più linee vuote marcano l'inizio di un nuovo paragrafo"
 
@@ -430,8 +433,14 @@ msgstr "Le e-mail non coincidono"
 msgid "Erase this revision"
 msgstr "Cancella questa revisione"
 
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
 msgid "Error sending mail!"
 msgstr "Errore nell'invio dell'e-mail"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr ""
 
 msgid "Errors"
 msgstr "Errori"
@@ -612,6 +621,11 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Se vuoi l'impaginazione, scegli uno schema"
 
 msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -662,8 +676,8 @@ msgstr "Nome utente non valido"
 msgid "Italic"
 msgstr "Corsivo"
 
-msgid "Italics, bold, monospace, linebreaks..."
-msgstr "Corsivo, grassetto, a capo..."
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Lavoro cancellato"
@@ -902,6 +916,9 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "O entra, se possiedi un'utenza"
 
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
 msgid "Or wrap it in"
 msgstr "O racchiudi in"
 
@@ -1109,8 +1126,8 @@ msgstr "Seleziona la dimensione dei fascicoli:"
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "Poetry, bibliographies, plays, code"
-msgstr "Poesia, bibliografie, teatro, codice"
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr ""
 
 msgid "Pointing to"
 msgstr "Che punta a"
@@ -1424,6 +1441,9 @@ msgstr "Testi"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1956,6 +1976,12 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Corsivo, grassetto, a capo..."
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Poesia, bibliografie, teatro, codice"
 
 #~ msgid "Lists start with a single leading whitespace"
 #~ msgstr "Le liste cominciano con un singolo spazio bianco a inizio riga"

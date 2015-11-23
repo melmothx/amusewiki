@@ -19,6 +19,9 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 existerar inte"
 
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "En tom rad (eller flera tomma rader) påbörjar ett nytt stycke."
 
@@ -423,8 +426,14 @@ msgstr "Email matchar inte"
 msgid "Erase this revision"
 msgstr "Radera revideringen"
 
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
 msgid "Error sending mail!"
 msgstr "Fel vid skickande av mail!"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr ""
 
 msgid "Errors"
 msgstr "Fel"
@@ -596,6 +605,11 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Om du efterfrågade ett införande, välj ett införandesystem"
 
 msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -642,8 +656,8 @@ msgstr "Ogiltigt användarnamn"
 msgid "Italic"
 msgstr "Kursiv"
 
-msgid "Italics, bold, monospace, linebreaks..."
-msgstr "Kursiv, fet, monospace, radbrytare..."
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Jobb raderat"
@@ -880,6 +894,9 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "Eller logga in, om du har ett konto."
 
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
 msgid "Or wrap it in"
 msgstr "Eller wrappa in det"
 
@@ -1083,8 +1100,8 @@ msgstr "Vänligen välj signaturens storlek:"
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "Poetry, bibliographies, plays, code"
-msgstr "Poesi, bibliografier, pjäser, kod"
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr ""
 
 msgid "Pointing to"
 msgstr "Hänvisar till"
@@ -1398,6 +1415,9 @@ msgstr "Texter"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1922,6 +1942,12 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Kursiv, fet, monospace, radbrytare..."
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Poesi, bibliografier, pjäser, kod"
 
 #~ msgid "Lists start with a single leading whitespace"
 #~ msgstr "Listor börjar med ett enskilt ledande blanksteg"

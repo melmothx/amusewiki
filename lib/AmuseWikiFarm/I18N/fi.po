@@ -19,6 +19,9 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 ei löydy"
 
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Tyhjä rivi (tai useampi) aloittaa uuden kappaleen."
 
@@ -418,8 +421,14 @@ msgstr "Sähköpostiosoitteet eivät täsmää"
 msgid "Erase this revision"
 msgstr "Poista tämä versio"
 
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
 msgid "Error sending mail!"
 msgstr "Virhe sähköpostin lähetyksessä!"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr ""
 
 msgid "Errors"
 msgstr "Virheet"
@@ -587,6 +596,11 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Jos haluat tulostusvalmiina, valitse malli"
 
 msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr "Kuvien lisäämisen voi tehdä seuraavassa vaiheessa."
@@ -631,8 +645,8 @@ msgstr "Virheellinen käyttäjänimi"
 msgid "Italic"
 msgstr "Kursivoitu"
 
-msgid "Italics, bold, monospace, linebreaks..."
-msgstr "Kursiivi, lihavointi, tasavälit, rivinvaihdot..."
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Työ poistettu"
@@ -874,6 +888,9 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "Kirjaudu, jos sinulla on jo tunnus."
 
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
 msgid "Or wrap it in"
 msgstr "Tai sen voi laittaa tageihin"
 
@@ -1068,8 +1085,8 @@ msgstr "Valitse signaturen koko:"
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "Poetry, bibliographies, plays, code"
-msgstr "Runot, bibliografiat, näytelmät, koodit"
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr ""
 
 msgid "Pointing to"
 msgstr ""
@@ -1375,6 +1392,9 @@ msgstr "Tekstit"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1892,6 +1912,12 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Kursiivi, lihavointi, tasavälit, rivinvaihdot..."
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Runot, bibliografiat, näytelmät, koodit"
 
 #~ msgid "Lists start with a single leading whitespace"
 #~ msgstr "Listat alkavat yhdellä välilyönnillä rivin alussa"

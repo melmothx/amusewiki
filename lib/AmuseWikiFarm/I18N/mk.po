@@ -19,6 +19,9 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 не постои"
 
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Празен ред (или повеќе празни редови) започнуваат нов пасус."
 
@@ -424,8 +427,14 @@ msgstr "E-mail-овите не се поклопуваат"
 msgid "Erase this revision"
 msgstr "Избриши ја измената"
 
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
 msgid "Error sending mail!"
 msgstr "Грешка при праќање на e-mail-от !"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr ""
 
 msgid "Errors"
 msgstr "Грешки"
@@ -605,6 +614,11 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ако сакаш прелом на текстот, избери образец"
 
 msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -652,8 +666,8 @@ msgstr "Погрешно корисничко име"
 msgid "Italic"
 msgstr "Курзив"
 
-msgid "Italics, bold, monospace, linebreaks..."
-msgstr "Курзив, здебелено, нов ред..."
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Задачата е избришана"
@@ -896,6 +910,9 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "Или најави се, доколку имаш сметка."
 
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
 msgid "Or wrap it in"
 msgstr "Или вметни помеѓу"
 
@@ -1106,8 +1123,8 @@ msgstr "Избери ја големината на табакот"
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "Poetry, bibliographies, plays, code"
-msgstr "Поезија, библиографии, драми, код"
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr ""
 
 msgid "Pointing to"
 msgstr "Поврзува"
@@ -1421,6 +1438,9 @@ msgstr "Текстови"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1943,6 +1963,12 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Курзив, здебелено, нов ред..."
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Поезија, библиографии, драми, код"
 
 #~ msgid "Lists start with a single leading whitespace"
 #~ msgstr ""

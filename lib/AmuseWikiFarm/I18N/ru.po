@@ -21,6 +21,9 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 не существует"
 
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
 "Пустая строка (или несколько пустых строк) обозначают начало нового параграфа"
@@ -426,8 +429,14 @@ msgstr "Электронная почта не совпадает"
 msgid "Erase this revision"
 msgstr "Удалить эту правку"
 
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
 msgid "Error sending mail!"
 msgstr "Ошибка при отправке письма"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr ""
 
 msgid "Errors"
 msgstr "Ошибки"
@@ -602,6 +611,11 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Если вам нужен спуск полос, выберите схему"
 
 msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -649,8 +663,8 @@ msgstr "Неправильное имя пользователя"
 msgid "Italic"
 msgstr "Курсив"
 
-msgid "Italics, bold, monospace, linebreaks..."
-msgstr "Курсив, жирный, моноширинный, разрывы строк"
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Задание удалено"
@@ -884,6 +898,9 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "Или войдите, если у вас есть аккаунт"
 
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
 msgid "Or wrap it in"
 msgstr "Или поместите текст в тег"
 
@@ -1081,8 +1098,8 @@ msgstr "Пожалуйста выберите количество страни�
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "Poetry, bibliographies, plays, code"
-msgstr "Поэзия, библиографии, пьесы, код"
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr ""
 
 msgid "Pointing to"
 msgstr "Указывает на"
@@ -1393,6 +1410,9 @@ msgstr "Тексты"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1917,6 +1937,12 @@ msgstr ""
 "\"Устаревшее редактирование\" означает, что правка была недоделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Курсив, жирный, моноширинный, разрывы строк"
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Поэзия, библиографии, пьесы, код"
 
 #~ msgid "Lists start with a single leading whitespace"
 #~ msgstr "Список создаётся с помощью пробела перед специальным символом"

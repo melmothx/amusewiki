@@ -20,6 +20,9 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 ne postoji"
 
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Praznim retkom (ili sa više praznih redaka) započinje novi odlomak"
 
@@ -418,8 +421,14 @@ msgstr "Ne podudaraju se mailovi"
 msgid "Erase this revision"
 msgstr "Izbriši izmjenu"
 
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
 msgid "Error sending mail!"
 msgstr "Greška pri slanju maila!"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr ""
 
 msgid "Errors"
 msgstr "Greške"
@@ -596,6 +605,11 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ako želiš prijelom teksta izaberi obrazac"
 
 msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -642,8 +656,8 @@ msgstr "Ime korisnika nije valjano"
 msgid "Italic"
 msgstr "Kurziv"
 
-msgid "Italics, bold, monospace, linebreaks..."
-msgstr "Kurzivi, podebljano, novi redak..."
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Izbrisani zadatak"
@@ -881,6 +895,9 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "Ili se prijavi, ako imaš račun."
 
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
 msgid "Or wrap it in"
 msgstr "Ili umetni između"
 
@@ -1083,8 +1100,8 @@ msgstr "Izaberi veličinu svezaka"
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "Poetry, bibliographies, plays, code"
-msgstr "Poezija, bibliografije, drame, kod"
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr ""
 
 msgid "Pointing to"
 msgstr "Povezuje"
@@ -1395,6 +1412,9 @@ msgstr "Tekstovi"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1912,6 +1932,12 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Kurzivi, podebljano, novi redak..."
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Poezija, bibliografije, drame, kod"
 
 #~ msgid "Lists start with a single leading whitespace"
 #~ msgstr "Popisi započinju jednim jedinim praznim znakom na početku retka"

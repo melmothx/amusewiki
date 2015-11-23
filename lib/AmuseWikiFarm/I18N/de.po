@@ -20,6 +20,9 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr ""
 
+msgid "(smart quotes, links, footnotes, etc.)"
+msgstr ""
+
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
 "Eine leere Zeile (oder mehrere leere Zeilen) beginnt einen neuen Absatz"
@@ -425,8 +428,14 @@ msgstr "E-mails stimmen nicht überein"
 msgid "Erase this revision"
 msgstr "Lösche diese Änderung"
 
+msgid "Error converting the upload file. Is it an HTML file?"
+msgstr ""
+
 msgid "Error sending mail!"
 msgstr "Fehler beim Sender der Mail!"
+
+msgid "Error while converting the HTML. Sorry."
+msgstr ""
 
 msgid "Errors"
 msgstr "Fehler"
@@ -599,6 +608,11 @@ msgstr ""
 " Broschürendruckschema"
 
 msgid ""
+"If you have a file in .doc or .odt, you can easily convert it saving it as "
+"HTML"
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -648,8 +662,8 @@ msgstr "Untültiger BenutzerInnenname"
 msgid "Italic"
 msgstr "Kursiv"
 
-msgid "Italics, bold, monospace, linebreaks..."
-msgstr "Kursiv, Fett, nichtproportionale Schriftart ,Zeilenumbrüche...."
+msgid "Italics, bold, monospace and code, linebreaks..."
+msgstr ""
 
 msgid "Job deleted"
 msgstr "Auftrag gelöscht"
@@ -890,6 +904,9 @@ msgstr ""
 msgid "Or log in, if you have an account."
 msgstr "Oder melde dich an, falls du einen Account hast."
 
+msgid "Or provide an HTML file to upload"
+msgstr ""
+
 msgid "Or wrap it in"
 msgstr "Oder wickle es ein"
 
@@ -1082,8 +1099,8 @@ msgstr ""
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-msgid "Poetry, bibliographies, plays, code"
-msgstr "Gedichte, Bibliographien, Stücke, Kodex"
+msgid "Poetry, bibliographies, plays, code blocks"
+msgstr ""
 
 msgid "Pointing to"
 msgstr "verweist auf"
@@ -1391,6 +1408,9 @@ msgstr "Texte"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1924,6 +1944,12 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Italics, bold, monospace, linebreaks..."
+#~ msgstr "Kursiv, Fett, nichtproportionale Schriftart ,Zeilenumbrüche...."
+
+#~ msgid "Poetry, bibliographies, plays, code"
+#~ msgstr "Gedichte, Bibliographien, Stücke, Kodex"
 
 #~ msgid "Lists start with a single leading whitespace"
 #~ msgstr "Listen beginnen mit einem einzigen Leerzeichen"
