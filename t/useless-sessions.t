@@ -26,7 +26,7 @@ for (1..3) {
 }
 
 $mech->get('/publish/all');
-is ($mech->uri->path, '/human'), "Not human in '/human' from publish/all";
+is ($mech->uri->path, '/human', "Not human in '/human' from publish/all");
 
 $site->update({ mode => 'modwiki'});
 
