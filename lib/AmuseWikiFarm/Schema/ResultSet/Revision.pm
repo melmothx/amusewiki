@@ -47,4 +47,25 @@ sub published_older_than {
                          });
 }
 
+=head2 as_list
+
+Return an arrayref of the revisions, leaving the uncommitted texts at
+the end.
+
+=cut
+
+sub as_list {
+    my $self = shift;
+    my (@top, @bottom);
+    while (my $rev = $self->next) {
+        if ($rev->status && $rev->status eq 'pending') {
+            push @top, $rev;
+        }
+        else {
+            push @bottom, $rev;
+        }
+    }
+    return [ @top, @bottom ];
+}
+
 1;

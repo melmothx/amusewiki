@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 80;
+use Test::More tests => 88;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -223,3 +223,27 @@ diag $mech->uri;
 $mech->content_contains('at your own peril');
 $mech->content_contains('This revision is being actively edited');
 
+# first we commit one
+$mech->get_ok('/action/text/new');
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+$mech->set_fields(author => 'porchetta',
+                  title => 'formaggino',
+                  textbody => "\nblabla\n");
+$mech->click;
+$mech->content_contains('Created new text') or die $mech->uri;
+$mech->form_id('museform');
+$mech->click('commit');
+
+# then a new, uncommitted
+$mech->get_ok('/action/text/new');
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+$mech->set_fields(author => 'pippo',
+                  title => 'Going to abandon this',
+                  textbody => "\n");
+$mech->click;
+
+$mech->content_contains('Created new text') or die $mech->uri;
+$mech->get('/publish/pending');
+$mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed, then the uncommitted");
+$mech->get('/publish/all');
+$mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed, then the uncommitted");
