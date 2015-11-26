@@ -3,7 +3,7 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 44;
+use Test::More tests => 48;
 use DateTime;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
@@ -56,7 +56,7 @@ isnt $bb->coverfile, $cover, "Cover saved into " . $bb->coverfile;
 is_deeply ($bb->texts, [@uris, @uris], "Texts imported");
 # ok, we're settled
 
-diag Dumper($bb->serialize);
+# diag Dumper($bb->serialize);
 
 # enqueue the job
 my $job = $site->jobs->bookbuilder_add($bb->serialize);
@@ -75,7 +75,7 @@ foreach my $bbfile ($job->bookbuilder->produced_files) {
 }
 my @leftovers = $job->produced_files;
 is (scalar(@leftovers), 4, "Found 4 files to nuke");
-diag "Leftovers: " . Dumper(\@leftovers);
+# diag "Leftovers: " . Dumper(\@leftovers);
 foreach my $file (@leftovers) {
     ok (-f $file, "$file exists");
 }
@@ -105,7 +105,7 @@ $job->dispatch_job;
 
 @leftovers = $job->produced_files;
 is (scalar(@leftovers), 1, "Found 1 file to nuke");
-diag "Leftovers: " . Dumper(\@leftovers);
+# diag "Leftovers: " . Dumper(\@leftovers);
 foreach my $file (@leftovers) {
     ok (-f $file, "$file exists");
 }
@@ -121,7 +121,7 @@ foreach my $uri (@uris, @uris) {
     $bb->add_text($uri);
 }
 ok $bb->epub;
-diag Dumper($bb->serialize);
+# diag Dumper($bb->serialize);
 $job = $site->jobs->bookbuilder_add($bb->serialize);
 diag "job is is " . $job->id;
 my $check = $site->jobs->find($job->id);
@@ -148,5 +148,9 @@ foreach my $file ("$job_id.pdf", "$job_id.epub", "$job_id.sl.pdf", "bookbuilder-
     $mech->get_ok($url);
     $mech_no_auth->get($url);
     is $mech_no_auth->status, '404', "same file ($url) not found on another site";
-    unlink $path or die $!;
+}
+$newjob->delete;
+foreach my $file ("$job_id.pdf", "$job_id.epub", "$job_id.sl.pdf", "bookbuilder-$job_id.zip") {
+    my $path = catfile(bbfiles => $file);
+    ok (! -f $path, "$path deleted");
 }
