@@ -3,13 +3,15 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 30;
+use Test::More tests => 44;
 use DateTime;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::BookBuilder;
+use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
+
 
 my $init = catfile(getcwd(), qw/script jobber.pl/);
 # kill the jobber
@@ -18,6 +20,14 @@ ok(system($init, 'stop') == 0) or die "Couldn't stop the jobber";
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
+
+my $mech = Test::WWW::Mechanize::Catalyst
+  ->new(catalyst_app => 'AmuseWikiFarm',
+        host => "blog.amusewiki.org");
+my $mech_no_auth = Test::WWW::Mechanize::Catalyst
+  ->new(catalyst_app => 'AmuseWikiFarm',
+        host => "test.amusewiki.org");
+
 ok ($site, "Found the site");
 
 # create a bookbuilder job
@@ -57,6 +67,12 @@ $job->dispatch_job;
 is ($job->bookbuilder->as_job->{template_options}->{cover}, $bb->coverfile_path,
   "cover can be retrieved");
 
+foreach my $bbfile ($job->bookbuilder->produced_files) {
+    my $url = '/custom/' . $bbfile;
+    $mech->get_ok($url);
+    $mech_no_auth->get($url);
+    is $mech_no_auth->status, '404', "same file ($url) not found on another site";
+}
 my @leftovers = $job->produced_files;
 is (scalar(@leftovers), 4, "Found 4 files to nuke");
 diag "Leftovers: " . Dumper(\@leftovers);
@@ -119,3 +135,18 @@ my $expected = catfile(bbfiles => , $job->id . '.epub');
 ok (-f $expected, "EPUB created");
 $check->delete;
 ok (! -f $expected, "EPUB cleaned up after record removal");
+
+my $newjob = $site->jobs->bookbuilder_add({});
+my $job_id = $newjob->id;
+diag "Testing files without jobfiles";
+foreach my $file ("$job_id.pdf", "$job_id.epub", "$job_id.sl.pdf", "bookbuilder-$job_id.zip") {
+    my $path = catfile(bbfiles => $file);
+    open (my $fh, ">", $path) or die $!;
+    print $fh "xx";
+    close $fh;
+    my $url = "/custom/$file";
+    $mech->get_ok($url);
+    $mech_no_auth->get($url);
+    is $mech_no_auth->status, '404', "same file ($url) not found on another site";
+    unlink $path or die $!;
+}
