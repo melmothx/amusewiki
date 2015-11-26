@@ -3,7 +3,7 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 29;
+use Test::More tests => 30;
 use DateTime;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
@@ -77,6 +77,9 @@ $job->dispatch_job;
 diag $job->produced;
 is $job->status, 'completed', "Even if the cover is missing, the thing went ok";
 $job->delete;
+
+$bb->coverfile($bb->coverfile_path);
+is ($bb->coverfile, $bb->coverfile_path, "Passing an absolute filename works as well");
 
 $job = $site->jobs->alias_create_add({ src => 'pippo',
                                        dest => 'pluto',

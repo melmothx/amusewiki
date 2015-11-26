@@ -631,6 +631,9 @@ sub add_file {
 sub coverfile_path {
     my $self = shift;
     if (my $cover = $self->coverfile) {
+        if (File::Spec->file_name_is_absolute($cover)) {
+            return $cover;
+        }
         return File::Spec->rel2abs(File::Spec->catfile($self->filedir, $cover));
     }
     else {
