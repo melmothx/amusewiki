@@ -132,7 +132,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
 
 sub cover :Chained('root') :Args(0) {
     my ($self, $c) = @_;
-    if (my $cover = $c->stash->{bb}->coverfile) {
+    if (my $cover = $c->stash->{bb}->coverfile_path) {
         $c->stash(serve_static_file => $cover);
         $c->detach($c->view('StaticFile'));
     }

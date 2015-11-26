@@ -553,15 +553,13 @@ sub dispatch_job_alias_delete {
 sub produced_files {
     my $self = shift;
     my @out = ($self->log_file);
-    if (my $bb = $self->bookbuilder) {
-        foreach my $f ($bb->produced_files) {
-            my $abs = File::Spec->rel2abs($f);
-            if (-f $abs) {
-                push @out, $abs;
-            }
-            else {
-                Dlog_error { "$abs (in produced files) couldn't be found in " . $_ } $self->job_data;
-            }
+    foreach my $file ($self->job_files) {
+        my $path = $file->path;
+        if (-f $path) {
+            push @out, $path;
+        }
+        else {
+            Dlog_error { "$path (in produced files) couldn't be found in " . $_ } $self->job_data;
         }
     }
     return @out;
@@ -571,12 +569,26 @@ sub dispatch_job_bookbuilder {
     my ($self, $logger) = @_;
     my $bb = $self->bookbuilder;
     if (my $file = $bb->compile($logger)) {
+        $self->add_to_job_files({
+                                 filename => $bb->produced_filename,
+                                 slot => 'produced',
+                                });
+        $self->add_to_job_files({
+                                  filename => $bb->sources_filename,
+                                  slot => 'sources',
+                                });
+        if (my $cover = $bb->coverfile) {
+            $self->add_to_job_files({
+                                     filename => $cover,
+                                     slot => 'cover',
+                                    });
+        }
         return '/' . $bb->customdir . '/' . $file;
     }
     return;
 }
 
-after delete => sub {
+before delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;
     foreach my $file (@leftovers) {

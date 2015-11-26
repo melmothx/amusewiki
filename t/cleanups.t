@@ -35,7 +35,7 @@ foreach my $uri (@uris, @uris) {
 my $cover = catfile(qw/t files shot.jpg/);
 ok( -f $cover, "Cover is here");
 $bb->add_file($cover);
-my $should_remove = $bb->coverfile;
+my $should_remove = $bb->coverfile_path;
 ok($should_remove, "Coverfile is $should_remove");
 ok(-f $should_remove, "Coverfile $should_remove exists");
 $bb->add_file($cover);
@@ -54,7 +54,7 @@ my $job = $site->jobs->bookbuilder_add($bb->serialize);
 # dispatch
 $job->dispatch_job;
 
-is ($job->bookbuilder->as_job->{template_options}->{cover}, $bb->coverfile,
+is ($job->bookbuilder->as_job->{template_options}->{cover}, $bb->coverfile_path,
   "cover can be retrieved");
 
 my @leftovers = $job->produced_files;
@@ -71,8 +71,8 @@ foreach my $file (@leftovers) {
 
 $bb->add_file($cover);
 $job = $site->jobs->bookbuilder_add($bb->serialize);
-diag "Unlinking " . $bb->coverfile . " before dispatching";
-unlink $bb->coverfile or die $!;
+diag "Unlinking " . $bb->coverfile_path . " before dispatching";
+unlink $bb->coverfile_path or die $!;
 $job->dispatch_job;
 diag $job->produced;
 is $job->status, 'completed', "Even if the cover is missing, the thing went ok";
@@ -112,10 +112,7 @@ my @files = $check->job_files;
 ok (@files > 0, "Found the job files");
 
 ok ($check, "Job retrieved");
-my $expected = catfile(qw/root custom/, $job->id . '.epub');
+my $expected = catfile(bbfiles => , $job->id . '.epub');
 ok (-f $expected, "EPUB created");
 $check->delete;
 ok (! -f $expected, "EPUB cleaned up after record removal");
-
-
-

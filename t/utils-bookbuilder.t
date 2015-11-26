@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 112;
+use Test::More tests => 113;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -22,6 +22,9 @@ use AmuseWikiFarm::Archive::BookBuilder;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
+ok (-d AmuseWikiFarm::Archive::BookBuilder->customdir, "Found " . AmuseWikiFarm::Archive::BookBuilder->customdir);
+
+
 {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
                                                        dbic => $schema,
@@ -33,7 +36,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
     for (1..2) {
         $bb->add_text('first-test');
-        my $pdffile = File::Spec->catfile($bb->rootdir, $bb->customdir,
+        my $pdffile = File::Spec->catfile($bb->jobdir,
                                           $bb->compile);
         my $pdf = CAM::PDF->new($pdffile);
         my ($font) = ($pdf->getFonts(1));
@@ -343,10 +346,10 @@ sub check_file {
     my ($bb, $msg) = @_;
     my $out = $bb->compile;
     ok ($out, "$msg: $out produced");
-    my $file = File::Spec->catfile($bb->rootdir, $bb->customdir, $out);
+    my $file = File::Spec->catfile($bb->customdir, $out);
     ok (-f $file, "$msg: $out: $file exists");
     foreach my $f ($bb->produced_files) {
-        ok (-f $f, "$msg: $f exists");
+        ok (-f File::Spec->catfile($bb->customdir, $f), "$msg: $f exists");
     }
     # unlink $file or die $1;
 }

@@ -103,7 +103,17 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-11-26 12:38:36
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Yv+XqL4yepoWNn/D2QSNQA
 
+use File::Spec;
+use AmuseWikiFarm::Archive::BookBuilder;
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub basedir {
+    return File::Spec->rel2abs(AmuseWikiFarm::Archive::BookBuilder->filedir);
+}
+
+sub path {
+    my $self = shift;
+    return File::Spec->catfile($self->basedir, $self->filename);
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

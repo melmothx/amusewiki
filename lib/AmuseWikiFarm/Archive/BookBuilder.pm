@@ -91,26 +91,16 @@ Defaults are sane.
 
 =item customdir
 
-default: custom
-
-=item rootdir
-
-default: root
+Alias for filedir.
 
 =back
 
 =cut
 
 
-has customdir => (is => 'ro',
-                  isa => 'Str',
-                  default => sub { 'custom' },
-                 );
-
-has rootdir => (is => 'ro',
-                isa => 'Str',
-                default => sub { 'root' },
-               );
+sub customdir {
+    return shift->filedir;
+}
 
 has webfonts_rootdir => (is => 'ro',
                          isa => 'Str',
@@ -143,8 +133,7 @@ sub _build_webfonts {
 }
 
 sub jobdir {
-    my $self = shift;
-    return File::Spec->catdir($self->rootdir, $self->customdir);
+    return shift->filedir;
 }
 
 =head2 error
@@ -242,15 +231,11 @@ has textlist => (is => 'rw',
 
 =head2 filedir
 
-The directory with BB files. Defaults to C<bbfiles>
+The directory with BB files: C<bbfiles>. It's a constant
 
 =cut
 
-has filedir => (is => 'ro',
-                isa => 'Str',
-                default => sub {
-                    return File::Spec->catdir(getcwd(), 'bbfiles');
-                });
+sub filedir { return 'bbfiles' }
 
 =head2 coverfile
 
@@ -603,6 +588,20 @@ Add a file to be merged into the the options.
 
 =cut
 
+sub remove_cover {
+    my $self = shift;
+    if (my $oldcoverfile = $self->coverfile_path) {
+        if (-f $oldcoverfile) {
+            log_debug { "Removing $oldcoverfile" };
+            unlink $oldcoverfile;
+        }
+        else {
+            log_warn { "$oldcoverfile was set but now is empty!" };
+        }
+        $self->coverfile(undef);
+    }
+}
+
 sub add_file {
     my ($self, $filename) = @_;
     # copy it the filedir
@@ -621,28 +620,28 @@ sub add_file {
     else {
         return;
     }
-    if (my $oldcoverfile = $self->coverfile) {
-        if (-f $oldcoverfile) {
-            # warn "Unlinking $oldcoverfile";
-            unlink $oldcoverfile;
-        }
-        else {
-            log_warn { "$oldcoverfile was set but now is empty!" };
-        }
-    }
+    $self->remove_cover;
     # find a random name
     my $file = $self->_generate_random_name($ext);
-    while (-f $file) {
-        $file = $self->_generate_random_name($ext);
-    }
-    copy $filename, $file or die "Copy $filename => $file failed $!";
     $self->coverfile($file);
+    copy $filename, $self->coverfile_path or die "Copy $filename => $file failed $!";
+
+}
+
+sub coverfile_path {
+    my $self = shift;
+    if (my $cover = $self->coverfile) {
+        return File::Spec->rel2abs(File::Spec->catfile($self->filedir, $cover));
+    }
+    else {
+        return undef;
+    }
 }
 
 sub _generate_random_name {
     my ($self, $ext) = @_;
-    my $basename = 'bb-' . int(rand(1000000)) . $ext;
-    return File::Spec->rel2abs(File::Spec->catfile($self->filedir, $basename));
+    $ext ||= '';
+    return 'bb-' . time() . $$ . int(rand(100000000)) . $ext;
 }
 
 =head2 add_text($text);
@@ -784,12 +783,7 @@ sub import_from_params {
         };
     }
     if ($params{removecover}) {
-        if (my $oldcover = $self->coverfile) {
-            if (-f $oldcover) {
-                unlink $oldcover;
-            }
-        }
-        $self->coverfile(undef);
+        $self->remove_cover;
     }
 }
 
@@ -846,7 +840,7 @@ sub as_job {
                                     beamercolortheme => $self->beamercolortheme,
                                     coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                     opening     => $self->opening,
-                                    cover       => $self->coverfile,
+                                    cover       => $self->coverfile_path,
                                    };
     }
     if (!$self->epub && !$self->slides && $self->imposed) {
@@ -1044,12 +1038,19 @@ sub compile {
     return $self->produced_filename;
 }
 
+=head2 produced_files
+
+filenames of the BB files. They all reside in the bbfiles directory.
+
+=cut
+
+
 sub produced_files {
     my $self = shift;
     my @out;
     foreach my $f ($self->produced_filename,
                    $self->sources_filename) {
-        push @out, File::Spec->catfile($self->rootdir, $self->customdir, $f);
+        push @out, $f;
     }
     if (my $cover = $self->coverfile) {
         push @out, $cover;
