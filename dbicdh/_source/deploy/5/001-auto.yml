@@ -589,9 +589,19 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: job_id
-          order: 2
+          order: 3
           size:
             - 0
+        slot:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: slot
+          order: 2
+          size:
+            - 255
       indices:
         - fields:
             - job_id

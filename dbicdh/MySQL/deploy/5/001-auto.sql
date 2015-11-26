@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Nov 26 12:06:26 2015
+-- Created on Thu Nov 26 12:38:54 2015
 -- 
 ;
 SET foreign_key_checks=0;
@@ -233,6 +233,7 @@ CREATE TABLE `category_description` (
 --
 CREATE TABLE `job_file` (
   `filename` varchar(255) NOT NULL,
+  `slot` varchar(255) NOT NULL DEFAULT '',
   `job_id` integer NOT NULL,
   INDEX `job_file_idx_job_id` (`job_id`),
   PRIMARY KEY (`filename`),

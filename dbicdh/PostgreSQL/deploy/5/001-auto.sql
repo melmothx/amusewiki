@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Nov 26 12:06:27 2015
+-- Created on Thu Nov 26 12:38:54 2015
 -- 
 ;
 --
@@ -247,6 +247,7 @@ CREATE INDEX "category_description_idx_category_id" on "category_description" ("
 --
 CREATE TABLE "job_file" (
   "filename" character varying(255) NOT NULL,
+  "slot" character varying(255) DEFAULT '' NOT NULL,
   "job_id" integer NOT NULL,
   PRIMARY KEY ("filename")
 );
