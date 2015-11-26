@@ -143,6 +143,21 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
+=head2 job_files
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::JobFile>
+
+=cut
+
+__PACKAGE__->has_many(
+  "job_files",
+  "AmuseWikiFarm::Schema::Result::JobFile",
+  { "foreign.job_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -159,8 +174,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-29 14:53:53
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6obDG0IWpjHdWR5+DslaZg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-11-26 12:03:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Ci/Tva3h3S+ZJcxGtelLVA
 
 use Cwd;
 use File::Spec;

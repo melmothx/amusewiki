@@ -3,7 +3,7 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 28;
+use Test::More tests => 29;
 use DateTime;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
@@ -108,6 +108,9 @@ diag "job is is " . $job->id;
 my $check = $site->jobs->find($job->id);
 $check->dispatch_job;
 $check = $site->jobs->find($job->id);
+my @files = $check->job_files;
+ok (@files > 0, "Found the job files");
+
 ok ($check, "Job retrieved");
 my $expected = catfile(qw/root custom/, $job->id . '.epub');
 ok (-f $expected, "EPUB created");

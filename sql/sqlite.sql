@@ -150,6 +150,12 @@ CREATE TABLE job (
        errors    TEXT
 );
 
+CREATE TABLE job_file (
+       filename VARCHAR(255) NOT NULL PRIMARY KEY,
+       job_id INTEGER NOT NULL REFERENCES job(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
 CREATE TABLE title (
         id          INTEGER PRIMARY KEY,
 
