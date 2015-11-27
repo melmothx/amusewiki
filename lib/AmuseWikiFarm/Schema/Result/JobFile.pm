@@ -46,13 +46,6 @@ __PACKAGE__->table("job_file");
   is_nullable: 0
   size: 255
 
-=head2 slot
-
-  data_type: 'varchar'
-  default_value: (empty string)
-  is_nullable: 0
-  size: 255
-
 =head2 job_id
 
   data_type: 'integer'
@@ -64,8 +57,6 @@ __PACKAGE__->table("job_file");
 __PACKAGE__->add_columns(
   "filename",
   { data_type => "varchar", is_nullable => 0, size => 255 },
-  "slot",
-  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "job_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
 );
@@ -100,8 +91,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-11-26 12:38:36
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Yv+XqL4yepoWNn/D2QSNQA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-11-26 12:03:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/xT1/cdgdp8uTg/zVwQDVg
 
 use File::Spec;
 use AmuseWikiFarm::Archive::BookBuilder;

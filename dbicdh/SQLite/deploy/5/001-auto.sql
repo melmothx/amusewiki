@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Thu Nov 26 12:38:53 2015
+-- Created on Thu Nov 26 12:06:26 2015
 -- 
 
 ;
@@ -226,7 +226,6 @@ CREATE UNIQUE INDEX "category_id_lang_unique" ON "category_description" ("catego
 --
 CREATE TABLE "job_file" (
   "filename" varchar(255) NOT NULL,
-  "slot" varchar(255) NOT NULL DEFAULT '',
   "job_id" integer NOT NULL,
   PRIMARY KEY ("filename"),
   FOREIGN KEY ("job_id") REFERENCES "job"("id") ON DELETE CASCADE ON UPDATE CASCADE
