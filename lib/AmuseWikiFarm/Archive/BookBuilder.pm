@@ -843,7 +843,7 @@ sub as_job {
                                     beamercolortheme => $self->beamercolortheme,
                                     coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                     opening     => $self->opening,
-                                    cover       => $self->coverfile_path,
+                                    cover       => $self->coverfile,
                                    };
     }
     if (!$self->epub && !$self->slides && $self->imposed) {
@@ -972,7 +972,6 @@ sub compile {
             }
         }
     }
-    Dlog_debug { "compiler args are $_" } \%compiler_args;
     Dlog_debug { "archives: $_" } \%archives;
     # extract the archives
 
@@ -985,6 +984,20 @@ sub compile {
         }
         $zip->extractTree($archive, $basedir);
     }
+    if (my $coverfile = $self->coverfile_path) {
+        my $coverfile_ok = 0;
+        if (-f $coverfile) {
+            my $coverfile_dest = $makeabs->($self->coverfile);
+            log_debug { "Copying $coverfile to $coverfile_dest" };
+            if (copy($coverfile, $coverfile_dest)) {
+                $coverfile_ok = 1;
+            }
+        }
+        unless ($coverfile_ok) {
+            delete $compiler_args{extra}{cover};
+        }
+    }
+    Dlog_debug { "compiler args are $_" } \%compiler_args;
     my $compiler = Text::Amuse::Compile->new(%compiler_args);
     my $outfile = $makeabs->($self->produced_filename);
 

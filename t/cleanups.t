@@ -62,9 +62,11 @@ is_deeply ($bb->texts, [@uris, @uris], "Texts imported");
 my $job = $site->jobs->bookbuilder_add($bb->serialize);
 
 # dispatch
-$job->dispatch_job;
+$job->dispatch_job or diag $job->logs;
 
-is ($job->bookbuilder->as_job->{template_options}->{cover}, $bb->coverfile_path,
+
+
+is ($job->bookbuilder->as_job->{template_options}->{cover}, $bb->coverfile,
   "cover can be retrieved");
 
 foreach my $bbfile ($job->bookbuilder->produced_files) {
@@ -92,6 +94,7 @@ unlink $bb->coverfile_path or die $!;
 $job->dispatch_job;
 diag $job->produced;
 is $job->status, 'completed', "Even if the cover is missing, the thing went ok";
+diag $job->logs;
 $job->delete;
 
 $bb->coverfile($bb->coverfile_path);
