@@ -44,28 +44,6 @@ sub custom :Chained('root') :PathPart('custom') :Args(1) {
         else {
             log_error { "$file not found in the table" };
         }
-        # LEGACY APPROACH: remove this block in 2016
-        my $job_id;
-        if ($file =~ m/\A([0-9]+)\.(pdf|epub|sl\.pdf)\z/) {
-            $job_id = $1;
-        }
-        elsif ($file =~ m/\Abookbuilder-([0-9]+)\.zip\z/) {
-            $job_id = $1;
-        }
-        if (defined $job_id) {
-            if (my $job = $site->jobs->find($job_id)) {
-                if ($job->task and $job->task eq 'bookbuilder') {
-                    log_debug { "it looks like $file belongs to $job_id" };
-                    my $path = File::Spec->rel2abs(File::Spec->catfile(bbfiles => $file));
-                    log_debug { "Path is $path" };
-                    if (-f $path) {
-                        $c->stash(serve_static_file => $path);
-                        $c->detach($c->view('StaticFile'));
-                        return;
-                    }
-                }
-            }
-        }
     }
     $c->detach('/not_found');
 }

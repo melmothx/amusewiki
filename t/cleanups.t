@@ -6,7 +6,7 @@ use warnings;
 use Test::More tests => 48;
 use DateTime;
 use Cwd;
-use File::Spec::Functions qw/catfile/;
+use File::Spec::Functions qw/catfile catdir/;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::BookBuilder;
 use Test::WWW::Mechanize::Catalyst;
@@ -123,7 +123,7 @@ foreach my $uri (@uris, @uris) {
 ok $bb->epub;
 # diag Dumper($bb->serialize);
 $job = $site->jobs->bookbuilder_add($bb->serialize);
-diag "job is is " . $job->id;
+diag "job id is " . $job->id;
 my $check = $site->jobs->find($job->id);
 $check->dispatch_job;
 $check = $site->jobs->find($job->id);
@@ -138,19 +138,37 @@ ok (! -f $expected, "EPUB cleaned up after record removal");
 
 my $newjob = $site->jobs->bookbuilder_add({});
 my $job_id = $newjob->id;
-diag "Testing files without jobfiles";
-foreach my $file ("$job_id.pdf", "$job_id.epub", "$job_id.sl.pdf", "bookbuilder-$job_id.zip") {
-    my $path = catfile(bbfiles => $file);
+diag "Testing files without jobfiles $job_id";
+@files = ("$job_id.pdf", "$job_id.epub", "$job_id.sl.pdf",
+             "bookbuilder-$job_id.zip");
+
+my $oldcustomdir = catdir(qw/root custom/);
+mkdir $oldcustomdir unless -d $oldcustomdir;
+foreach my $file (@files) {
+    my $path = catfile($oldcustomdir => $file);
     open (my $fh, ">", $path) or die $!;
     print $fh "xx";
     close $fh;
+}
+
+my $upgrade_file = catfile(qw/dbicdh _common upgrade 5-6 002-add-and-move-job-files.pl/);
+if (-f $upgrade_file) {
+    diag "Simulating the upgrade\n";
+    my $upgrade = do $upgrade_file;
+    $upgrade->($schema) if $upgrade;
+}
+
+foreach my $file (@files) {
     my $url = "/custom/$file";
     $mech->get_ok($url);
     $mech_no_auth->get($url);
     is $mech_no_auth->status, '404', "same file ($url) not found on another site";
 }
+
 $newjob->delete;
-foreach my $file ("$job_id.pdf", "$job_id.epub", "$job_id.sl.pdf", "bookbuilder-$job_id.zip") {
+
+foreach my $file (@files) {
     my $path = catfile(bbfiles => $file);
     ok (! -f $path, "$path deleted");
 }
+rmdir $oldcustomdir;

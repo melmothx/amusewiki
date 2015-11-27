@@ -4,8 +4,6 @@ use File::Spec;
 use Data::Dumper;
 sub {
     my $schema = shift;
-    return;
-
     my $targetdir = File::Spec->catdir(qw/root custom/);
     return unless -d $targetdir;
     opendir (my $dh, $targetdir) or die $!;
@@ -14,7 +12,7 @@ sub {
     print Dumper(\@files);
     my $newdir = 'bbfiles';
     die "Missing $newdir" unless -d $newdir;
-    foreach my $file (@files) {
+    foreach my $file (sort @files) {
         my $job_id;
         my $slot;
         if ($file =~ m/\A([0-9]+)\.(pdf|epub|sl\.pdf)\z/) {
@@ -30,11 +28,12 @@ sub {
                 $job->add_to_job_files({ filename => $file,
                                          slot => $slot,
                                        });
+                print "Added $file ($slot) to job $job_id\n";
+                my $src = File::Spec->catfile($targetdir, $file);
+                my $dst = File::Spec->catfile($newdir, $file);
+                print "Moving $src to $dst\n";
+                move($src, $dst) or die $!;
             }
-            my $src = File::Spec->catfile($targetdir, $file);
-            my $dst = File::Spec->catfile($newdir, $file);
-            print "Moving $src to $dst\n";
-            move($src, $dst) or die $!;
         }
     }
 }

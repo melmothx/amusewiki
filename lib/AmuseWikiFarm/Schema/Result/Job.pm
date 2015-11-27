@@ -591,7 +591,6 @@ sub dispatch_job_bookbuilder {
 before delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;
-    # beware the legacy ones...
     foreach my $file (@leftovers) {
         log_warn { "Unlinking $file after job removal" };
         unlink $file or log_error { "Cannot unlink $file $!" };
