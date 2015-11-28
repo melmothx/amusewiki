@@ -133,7 +133,7 @@ foreach my $repo (sort keys %repos) {
     $site->magic_answer('January');
     $site->sitegroup('1');
     $site->update;
-    $site->update_db_from_tree;
+    $site->update_db_from_tree(sub { diag join(' ', @_) });
 }
 
 my $blog = $schema->resultset('Site')->find('0blog0');
