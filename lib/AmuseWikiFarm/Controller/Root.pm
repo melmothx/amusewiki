@@ -100,7 +100,7 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     if ($c->sessionid) {
         my $session_site_id = $c->session->{site_id} || '';
         if ($session_site_id ne $site_id) {
-            Dlog_error {
+            Dlog_info {
                 "Session mismatch, <$session_site_id> ne <$site_id>".
                   " deleting session, requesting " . $c->request->uri . " " . $_
               } ($c->session);
