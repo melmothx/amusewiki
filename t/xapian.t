@@ -33,7 +33,7 @@ my @texts = $schema->resultset('Site')->find('0test0')->titles->published_texts;
 
 
 foreach my $t (@texts) {
-    $xapian->index_text($t);
+    $xapian->index_text($t, sub { });
 }
 
 # drop the object and flush it
