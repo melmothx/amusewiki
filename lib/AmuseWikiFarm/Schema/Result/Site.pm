@@ -1821,6 +1821,43 @@ sub remote_gits_hashref {
     return $out;
 }
 
+sub add_git_remote {
+    my ($self, $name, $url) = @_;
+    my $git = $self->git;
+    return unless $git;
+    log_debug { "Trying to add $name and $url" };
+    my ($valid_name, $valid_url);
+    if ($name =~ m/\A\s*([0-9a-zA-Z]+)\s*\z/) {
+        $valid_name = $1;
+    }
+    my $pathre = qr{(/[0-9a-zA-Z\._-]+)+/?};
+    if ($url =~ m{\A\s*(((git|https?):/)?$pathre)\s*\z}) {
+        $valid_url = $1;
+    }
+    if ($valid_url && $valid_name) {
+        log_info { "Adding $valid_name $valid_url" };
+        $git->remote(add => $valid_name => $valid_url);
+        return $valid_name;
+    }
+    else {
+        log_error { "$name and/or $url are invalid" };
+        return;
+    }
+}
+
+sub remove_git_remote {
+    my ($self, $name) = @_;
+    my $git = $self->git;
+    if ($self->remote_gits_hashref->{$name}) {
+        $git->remote(remove => $name);
+        return 1;
+    }
+    else {
+        return;
+    }
+}
+
+
 =head2 special_list
 
 Return a list where each element is an hashref describing the special

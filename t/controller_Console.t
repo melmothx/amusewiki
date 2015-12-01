@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 21;
+use Test::More tests => 46;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -11,6 +11,7 @@ use File::Temp;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
+use AmuseWikiFarm::Log::Contextual;
 
 unless (eval q{use Test::WWW::Mechanize::Catalyst 0.55; 1}) {
     plan skip_all => 'Test::WWW::Mechanize::Catalyst >= 0.55 required';
@@ -86,7 +87,21 @@ like $mech->uri->path, qr{action/text/edit/deleted-text/[0-9]+$},
 $mech->content_contains('Editing deleted-text');
 $mech->content_contains('#DELETED garbage');
 
+my $orig_hashref = $site->remote_gits_hashref;
+# diag Dumper($orig_hashref);
+foreach my $proto ('', 'https', 'http', 'git') {
+    my $path = '/git/amusewiki.git';
+    my $url = $path;
+    if ($proto) {
+        $url = "$proto://localhost.localdomain.tld" . $path;
+    }
+    my $name = "testremote" . $proto;
+    ok(!$site->add_git_remote($name, "git\@localhost:/$path"), "SSH thing not added $name git\@localhost:/$path");
+    ok(!$site->add_git_remote("$name $name", $url), "Invalid name not added");
+    ok(!$site->add_git_remote($name, $url . ' ' . $url), "Invalid url not added");
+    ok($site->add_git_remote($name, $url), "Added $url $name");
+    ok($site->remote_gits_hashref->{$name}, "$name found in the hashref");
+    ok($site->remove_git_remote($name), "Removed $name");
+}
 
-
-
-
+is_deeply $site->remote_gits_hashref, $orig_hashref;
