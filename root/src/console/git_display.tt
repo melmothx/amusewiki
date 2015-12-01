@@ -1,5 +1,6 @@
 [%# -*- mode: html -*- %]
 [% IF remotes.size %]
+<div>
 <table class="table table-striped">
   <tr>
     <th>
@@ -10,6 +11,9 @@
     </th>
     <th>
       [% loc('Action') %]
+    </th>
+    <th>
+      [% loc('Remove') %]
     </th>
   </tr>
 [% FOREACH remote IN remotes %]
@@ -29,11 +33,84 @@
          </button>
        </form>
      </td>
+     <td>
+       [% IF remote.owner %]
+       <form action="[% c.uri_for_action('console/remove_git_remote') %]"
+             method="POST" role="form" name="git-delete"
+             onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
+         <input type="hidden" name="name" value="[% remote.name | html %]" />
+         <button class="btn btn-danger" type="submit" name="delete"
+                 value="delete" title="[% loc('Delete remote repository [_1]', remote.name) %]">
+           <span class="glyphicon glyphicon-trash"></span>
+         </button>
+       </form>
+       [% END %]
+     </td>
    </tr>
 [% END %]
 </table>
-[% ELSE %]
-
-[% loc('Nothing to see here, so far') %]
-
+</div>
 [% END %]
+
+[% UNLESS user_has_own_remote %]
+<div>
+  <form action="[% c.uri_for_action('console/add_git_remote') %]" method="POST"
+        role="form" class="form-inline">
+    <input type="hidden" name="name" value="[% c.user.get('username') %]" />
+    <div class="form-group">
+      <label for="url" class="control-label">
+        [% loc('URL of the new remote repository
+        HTTP, HTTPS, GIT, or local (just the local path). SSH is not
+        supported.') %]
+      </label>
+      <input type="text" name="url" class="form-control" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">
+        [% loc('Add new remote repository') %]
+      </button>
+    </div>
+  </form>
+</div>
+[% END %]
+
+<div>&nbsp;</div>
+
+<h3>[% loc('How to work with a remote repo') %]</h3>
+
+[% loc('Create an empty repository. Here we refer to its url as <user_repo_url>.') %]
+
+<h4>[% loc('Clone the repo locally and set it up') %]</h4>
+
+<pre>
+  # [% loc('if the repository is exported') %]
+  git clone git://[% site.canonical %]/git/[% site.id %].git
+  # [% loc('or, if you have SSH access to the machine') %]
+  git clone ssh://[% site.canonical %][% site.repo_root %]
+
+  git remote rename origin web
+  git remote add origin &lt;user_repo_url&gt;
+  git push -u origin master
+  git checkout -b upstream -t web/master
+</pre>
+
+<p>
+  [% loc('Add or delete and add again the <user_repo_url> on this page.') %]
+</p>
+
+<h4>[% loc('Workflow') %]</h4>
+
+<pre>
+  git checkout upstream
+  git pull
+  git checkout master
+  git merge upstream
+  # [% loc('edit, commit...') %]
+  git push
+</pre>
+
+<p>
+  [% loc('Then fetch the updates from this page.') %]
+</p>
+
+<a href="https://amusewiki.org/library/offline-editing-via-git">[% loc('See here for the full documentation.')%]</a>

@@ -61,7 +61,12 @@ ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
 $mech->content_contains('logged in now') or diag $mech->content;
 foreach my $link (@norobots) {
     $mech->get($link);
-    $mech->content_contains($meta, "$link has noindex, nofollow");
+    if ($link eq '/console/git' or $link eq '/console/git/action') {
+        is($mech->uri->path, '/special/index', "No git, redirected to /");
+    }
+    else {
+        $mech->content_contains($meta, "$link has noindex, nofollow");
+    }
 }
 
 

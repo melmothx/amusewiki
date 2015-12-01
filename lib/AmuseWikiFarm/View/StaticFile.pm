@@ -13,6 +13,7 @@ sub process {
     log_debug { "Serving $file" };
     unless ($file and -f $file) {
         log_error { "$file is not a file!" };
+        $c->detach('/not_found');
         return;
     }
     my $mime = {
