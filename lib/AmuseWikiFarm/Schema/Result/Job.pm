@@ -495,7 +495,7 @@ sub dispatch_job_git {
     else {
         die "Unhandled action $action!";
     }
-    return '/';
+    return '/console/git';
 }
 
 sub dispatch_job_alias_create {
