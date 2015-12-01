@@ -1828,13 +1828,13 @@ sub add_git_remote {
     log_debug { "Trying to add $name and $url" };
     my ($valid_name, $valid_url);
     if ($name =~ m/\A\s*([0-9a-zA-Z]+)\s*\z/) {
-        $valid_name = $1;
+        $valid_name = lc($1);
     }
     my $pathre = qr{(/[0-9a-zA-Z\._-]+)+/?};
     if ($url =~ m{\A\s*(((git|https?):/)?$pathre)\s*\z}) {
         $valid_url = $1;
     }
-    if ($valid_url && $valid_name) {
+    if ($valid_url && $valid_name && !$self->remote_gits_hashref->{$valid_name}) {
         log_info { "Adding $valid_name $valid_url" };
         $git->remote(add => $valid_name => $valid_url);
         return $valid_name;

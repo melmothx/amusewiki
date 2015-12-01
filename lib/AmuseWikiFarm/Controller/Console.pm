@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Console - Catalyst Controller
@@ -56,6 +58,36 @@ sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
 sub git_display :Chained('git') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(page_title => $c->loc('Git console'));
+}
+
+sub add_git_remote :Chained('git') :PathPart('add') :Args(0) {
+    my ($self, $c) = @_;
+    my $name = $c->request->body_params->{name} || '';
+    my $url = $c->request->body_params->{url} || '';
+    log_debug { "Adding $name => $url" };
+    if ($name && $url) {
+        if ($c->stash->{site}->add_git_remote($name, $url)) {
+            $c->flash(status_msg => $c->loc("Remote repository [_1] added", "$name $url"));
+        }
+        else {
+            $c->flash(error_msg => $c->loc("Failed to add remote repository [_1]", "$name $url"));
+        }
+    }
+    $c->res->redirect($c->uri_for_action('/console/git_display'));
+}
+
+sub remove_git_remote :Chained('git') :PathPart('remove') :Args(0) {
+    my ($self, $c) = @_;
+    my $name = $c->request->body_params->{name};
+    if ($name) {
+        if ($c->stash->{site}->remove_git_remote($name)) {
+            $c->flash(status_msg => $c->loc("Remote repository [_1] removed", $name));
+        }
+        else {
+            $c->flash(error_msg => $c->loc("Failed to remove Remote repository [_1]", $name));
+        }
+    }
+    $c->res->redirect($c->uri_for_action('/console/git_display'));
 }
 
 

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 46;
+use Test::More tests => 59;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -105,3 +105,16 @@ foreach my $proto ('', 'https', 'http', 'git') {
 }
 
 is_deeply $site->remote_gits_hashref, $orig_hashref;
+
+foreach my $remote (keys %{$site->remote_gits_hashref}) {
+    ok($site->remove_git_remote($remote), "Removed $remote");
+}
+$mech->get_ok('/console/git');
+ok($mech->submit_form(with_fields => {name => 'pippo', url => 'https://amusewiki.org/var/git/pippo.git' }), "Added pippo");
+ok($site->remote_gits_hashref->{pippo}, "remote exists");
+ok($mech->submit_form(form_name => "git-delete"), "Removed pippo via GUI");
+ok(!$site->remote_gits_hashref->{pippo}, "pippo removed");
+ok($mech->submit_form(with_fields => {name => 'pippo-ciao', url => 'https://amusewiki.org/var/git/pippo.git' }), "Added pippo");
+ok(!$site->remote_gits_hashref->{pippo}, "faulty name");
+ok($mech->submit_form(with_fields => {name => 'pippo', url => 'git@amusewiki.org/var/git/pippo.git' }), "Added pippo");
+ok(!$site->remote_gits_hashref->{pippo}, "faulty url");
