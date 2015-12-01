@@ -1849,7 +1849,7 @@ sub remove_git_remote {
     my ($self, $name) = @_;
     my $git = $self->git;
     if ($self->remote_gits_hashref->{$name}) {
-        $git->remote(remove => $name);
+        $git->remote(rm => $name);
         return 1;
     }
     else {
