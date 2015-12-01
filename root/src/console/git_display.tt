@@ -34,6 +34,7 @@
        </form>
      </td>
      <td>
+       [% IF remote.owner %]
        <form action="[% c.uri_for_action('console/remove_git_remote') %]"
              method="POST" role="form" name="git-delete"
              onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
@@ -43,6 +44,7 @@
            <span class="glyphicon glyphicon-trash"></span>
          </button>
        </form>
+       [% END %]
      </td>
    </tr>
 [% END %]
@@ -50,33 +52,24 @@
 </div>
 [% END %]
 
+[% UNLESS user_has_own_remote %]
 <div>
   <form action="[% c.uri_for_action('console/add_git_remote') %]" method="POST"
-        role="form">
-    <div class="form-group row">
-      <label for="name" class="control-label col-sm-4">
-        [% loc('Name of the new remote repository, alphanumerical only, without special characters') %]
-      </label>
-      <div class="col-sm-8">
-        <input type="text" name="name" class="form-control" />
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="url" class="control-label col-sm-4">
-        [% loc('URL of the new remote repository. Accepted protocols:
+        role="form" class="form-inline">
+    <input type="hidden" name="name" value="[% c.user.get('username') %]" />
+    <div class="form-group">
+      <label for="url" class="control-label">
+        [% loc('URL of the new remote repository
         HTTP, HTTPS, GIT, or local (just the local path). SSH is not
         supported.') %]
       </label>
-      <div class="col-sm-8">
-        <input type="text" name="url" class="form-control" />
-      </div>
+      <input type="text" name="url" class="form-control" />
     </div>
-    <div class="form-group row">
-      <div class="col-sm-12">
-        <button type="submit" class="btn btn-default">
-          [% loc('Add new remote repository') %]
-        </button>
-      </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">
+        [% loc('Add new remote repository') %]
+      </button>
     </div>
   </form>
 </div>
+[% END %]

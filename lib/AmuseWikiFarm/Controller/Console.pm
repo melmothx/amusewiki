@@ -50,9 +50,26 @@ sub root :Chained('/site') :PathPart('console') :CaptureArgs(0) {
 
 sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    unless ($c->stash->{site}->git) {
+        $c->flash(error_msg => $c->loc("Git is not enabled on this site"));
+        $c->response->redirect($c->uri_for('/'));
+        $c->detach();
+        return;
+    }
     my @remotes = $c->stash->{site}->remote_gits;
-    $c->stash(remotes => \@remotes);
-    $c->stash(repo_validation => $c->stash->{site}->remote_gits_hashref);
+    Dlog_debug { "Remotes are $_" } \@remotes;
+    my $username = $c->user->get('username');
+    die "This shouldn't happen, no username" unless $username;
+    my $found_own = 0;
+    foreach my $remote (@remotes) {
+        if ($remote->{name} eq $username) {
+            $remote->{owner} = 1;
+            $found_own = 1;
+        }
+    }
+    $c->stash(user_has_own_remote => $found_own,
+              remotes => [ grep { $_->{action} && $_->{action} eq 'fetch' } @remotes ],
+              repo_validation => $c->stash->{site}->remote_gits_hashref);
 }
 
 sub git_display :Chained('git') :PathPart('') :Args(0) {
@@ -65,7 +82,7 @@ sub add_git_remote :Chained('git') :PathPart('add') :Args(0) {
     my $name = $c->request->body_params->{name} || '';
     my $url = $c->request->body_params->{url} || '';
     log_debug { "Adding $name => $url" };
-    if ($name && $url) {
+    if ($name and $url and $name eq $c->user->get('username')) {
         if ($c->stash->{site}->add_git_remote($name, $url)) {
             $c->flash(status_msg => $c->loc("Remote repository [_1] added", "$name $url"));
         }
@@ -79,7 +96,7 @@ sub add_git_remote :Chained('git') :PathPart('add') :Args(0) {
 sub remove_git_remote :Chained('git') :PathPart('remove') :Args(0) {
     my ($self, $c) = @_;
     my $name = $c->request->body_params->{name};
-    if ($name) {
+    if ($name and $name eq $c->user->get('username')) {
         if ($c->stash->{site}->remove_git_remote($name)) {
             $c->flash(status_msg => $c->loc("Remote repository [_1] removed", $name));
         }

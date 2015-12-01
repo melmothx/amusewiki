@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 59;
+use Test::More tests => 67;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -110,11 +110,20 @@ foreach my $remote (keys %{$site->remote_gits_hashref}) {
     ok($site->remove_git_remote($remote), "Removed $remote");
 }
 $mech->get_ok('/console/git');
+ok($mech->submit_form(with_fields => {name => 'root', url => 'https://amusewiki.org/var/git/pippo.git' }), "Added root");
+ok($site->remote_gits_hashref->{root}, "remote exists");
+ok($mech->submit_form(form_name => "git-delete"), "Removed root via GUI");
+ok(!$site->remote_gits_hashref->{root}, "root removed");
+
 ok($mech->submit_form(with_fields => {name => 'pippo', url => 'https://amusewiki.org/var/git/pippo.git' }), "Added pippo");
-ok($site->remote_gits_hashref->{pippo}, "remote exists");
-ok($mech->submit_form(form_name => "git-delete"), "Removed pippo via GUI");
-ok(!$site->remote_gits_hashref->{pippo}, "pippo removed");
+ok(!$site->remote_gits_hashref->{pippo}, "remote pippo is not created");
+
+$mech->get_ok('/console/git');
+ok($mech->content_lacks('git-delete'));
 ok($mech->submit_form(with_fields => {name => 'pippo-ciao', url => 'https://amusewiki.org/var/git/pippo.git' }), "Added pippo");
 ok(!$site->remote_gits_hashref->{pippo}, "faulty name");
-ok($mech->submit_form(with_fields => {name => 'pippo', url => 'git@amusewiki.org/var/git/pippo.git' }), "Added pippo");
+
+$mech->get_ok('/console/git');
+ok($mech->content_lacks('git-delete'));
+ok($mech->submit_form(with_fields => {name => 'pippo', url => 'git@amusewiki.org/var/git/pippo.git' }), "Added pippo fails");
 ok(!$site->remote_gits_hashref->{pippo}, "faulty url");
