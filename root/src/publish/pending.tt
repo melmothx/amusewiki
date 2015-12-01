@@ -73,6 +73,7 @@
               onsubmit="return confirm('[% htjsloc('Are you sure?') %]');"
               action="[% c.uri_for_action('/publish/purge') %]">
           <input type="hidden" name="target" value="[% rev.id %]" />
+          <input type="hidden" name="return" value="[% return %]" />
           <button class="btn btn-danger" type="submit" name="delete"
                   value="delete" title="[% loc('Erase this revision') %] [% rev.title.full_uri %] #[% rev.id %]">
             <span class="glyphicon glyphicon-trash"></span>

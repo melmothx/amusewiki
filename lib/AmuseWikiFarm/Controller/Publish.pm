@@ -84,6 +84,7 @@ sub pending :Chained('root') :PathPart('pending') :Args(0) {
                                    }
                                   ]);
     $c->stash(page_title => $c->loc('Pending revisions'));
+    $c->stash(return => 'pending');
     $c->stash(revisions => $revs->as_list );
 };
 
@@ -92,6 +93,7 @@ sub all :Chained('root') :PathPart('all') :Args(0) {
     my $revs = delete $c->stash->{revisions};
     $c->stash(revisions => $revs->as_list );
     $c->stash(page_title => $c->loc('All revisions'));
+    $c->stash(return => 'all');
     $c->stash(template => 'publish/pending.tt');
 }
 
@@ -163,7 +165,15 @@ sub purge :Chained('validate_revision') :PathPart('purge') :Args(0) {
             $rev->delete;
             $c->flash(status_msg => $c->loc('Revision for [_1] has been deleted',
                                             $uri));
-            $c->res->redirect($c->uri_for_action('/publish/all'));
+            my $return;
+            if ($c->request->body_params->{return} and
+                $c->request->body_params->{return} eq 'pending') {
+                $return = $c->uri_for_action('/publish/pending');
+            }
+            else {
+                $return = $c->uri_for_action('/publish/all');
+            }
+            $c->res->redirect($return);
             return;
         }
     }
