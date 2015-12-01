@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.54 2015-12-01
+
+ - Moved the files produced by the bookbuilder into a private directory (#27)
+ - Added UI to add remotes to the repo (#18)
+
 1.53 2015-11-23
 
  - Added option to upload an HTML file instead of pasting the body (#22)
