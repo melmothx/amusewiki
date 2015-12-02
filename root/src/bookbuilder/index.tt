@@ -348,7 +348,15 @@
         [% loc('For texts without a table of content, start text on the very first page') %]
       </label>
     </div>
-
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="headings" value="1" id="headings"
+               [% IF bb.headings %]checked="checked"[% END %]/>
+        [% loc('Generate running headings in the document. Beware that
+        this probably need manual adjustments to the TeX sources for a
+        satisfying output') %]
+      </label>
+    </div>
     <div class="checkbox">
       <label>
         <input type="checkbox" name="imposed" value="1" id="imposed"

@@ -256,6 +256,8 @@ default to false.
 
 =item nocoverpage
 
+=item headings
+
 =item notoc
 
 =item cover
@@ -277,6 +279,12 @@ has nocoverpage => (
                     isa => 'Bool',
                     default => sub { 0 },
                    );
+
+has headings => (
+                 is => 'rw',
+                 isa => 'Bool',
+                 default => sub { 0 },
+                );
 
 has notoc => (
               is => 'rw',
@@ -808,6 +816,7 @@ sub _main_methods {
               twoside
               notoc
               nocoverpage
+              headings
               imposed
               signature
               schema
@@ -831,6 +840,7 @@ sub as_job {
         $job->{template_options} = {
                                     twoside     => $self->twoside,
                                     nocoverpage => $self->nocoverpage,
+                                    headings    => $self->headings,
                                     notoc       => $self->notoc,
                                     papersize   => $self->papersize,
                                     division    => $self->division,
