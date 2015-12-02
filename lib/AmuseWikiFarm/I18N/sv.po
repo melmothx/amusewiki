@@ -90,9 +90,15 @@ msgstr "Lägg till en omslagsbild (PNG eller JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Lägg till en bilaga (PNG, JPG eller PDF)"
 
+msgid "Add new remote repository"
+msgstr ""
+
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr ""
 "Lägg till ett hårt mellanslag där det är lämpligt för det aktuella språket"
+
+msgid "Add or delete and add again the <user_repo_url> on this page."
+msgstr ""
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
@@ -267,6 +273,9 @@ msgstr "Rensa boklistan"
 msgid "Click on the images to get the sample PDF"
 msgstr "Klicka på bilden för att hämta sample PDF"
 
+msgid "Clone the repo locally and set it up"
+msgstr ""
+
 msgid "Close"
 msgstr "Stäng"
 
@@ -309,6 +318,10 @@ msgstr "Skapa ett ämnesalias"
 msgid "Create an author alias"
 msgstr "Skapa ett författaralias"
 
+msgid ""
+"Create an empty repository. Here we refer to its url as <user_repo_url>."
+msgstr ""
+
 msgid "Create new site"
 msgstr "Skapa en ny sida"
 
@@ -335,6 +348,10 @@ msgstr "Uppskjutna/Raderade texter"
 
 msgid "Delete"
 msgstr "Radera"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr ""
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
@@ -456,6 +473,14 @@ msgstr "Exempel"
 msgid "Existing redirections"
 msgstr "Existerande omdirigeringar"
 
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr ""
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Fil uppladdad!"
 
@@ -535,11 +560,20 @@ msgstr "Komplett lista med texter"
 msgid "Full text search"
 msgstr "Fulltext sökning"
 
+msgid ""
+"Generate running headings in the document. Beware that\n"
+"        this probably need manual adjustments to the TeX sources for a\n"
+"        satisfying output"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generisk (passar i A4 och Brev)"
 
 msgid "Git console"
 msgstr "Git-konsol"
+
+msgid "Git is not enabled on this site"
+msgstr ""
 
 msgid "HTML"
 msgstr "HTML"
@@ -573,6 +607,9 @@ msgstr "Högre uppdelningsfaktor innebär mindre marginaler"
 
 msgid "How to choose a password"
 msgstr "Hur du väljer lösenord"
+
+msgid "How to work with a remote repo"
+msgstr ""
 
 msgid "I am human"
 msgstr "Jag är en människa"
@@ -1207,8 +1244,19 @@ msgstr "Omdirigeringar"
 msgid "Related projects"
 msgstr "Relaterade projekt"
 
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr ""
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr ""
+
 msgid "Remotes"
 msgstr "Avlägsnade"
+
+msgid "Remove"
+msgstr ""
 
 msgid "Remove cover image"
 msgstr "Avlägsna omslagsbild"
@@ -1252,6 +1300,9 @@ msgstr "Sök"
 
 msgid "Section"
 msgstr "Sektion"
+
+msgid "See here for the full documentation."
+msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Se manualen för mer detaljer (engelska)"
@@ -1460,6 +1511,9 @@ msgstr "Användare kommer att ha samma tillgångsnivå som du"
 msgid "The whole book in as single signature"
 msgstr "Hela boken som en enskild signatur"
 
+msgid "Then fetch the updates from this page."
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Dessa texter saknar det unika ID:t."
 
@@ -1573,6 +1627,12 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
+msgid ""
+"URL of the new remote repository\n"
+"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+"        supported."
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -1677,6 +1737,9 @@ msgstr ""
 "Med bokskaparen kan du ändra layouten (typsnitt,     dimensioner, papper, "
 "marginaler) av texterna i biblioteket. Du kan     också sammanfoga fler "
 "texter och skapa ditt egna häfte. Prova!"
+
+msgid "Workflow"
+msgstr ""
 
 msgid "Wrong answer!"
 msgstr "Fel svar!"
@@ -1798,6 +1861,9 @@ msgstr "beskrivning"
 msgid "displayed text"
 msgstr "visad text"
 
+msgid "edit, commit..."
+msgstr ""
+
 msgid "editing"
 msgstr "redigering"
 
@@ -1828,6 +1894,9 @@ msgstr ""
 "titel, välj den önskade URI genom att fylla i fältet nedan med författare, "
 "titel och nummer, t.ex. min-förf-min-titel-1"
 
+msgid "if the repository is exported"
+msgstr ""
+
 msgid "left"
 msgstr ""
 
@@ -1845,6 +1914,11 @@ msgstr "valfri, förvalda värden till författaranvisningen"
 
 msgid "or"
 msgstr "eller"
+
+msgid ""
+"or, if you have SSH access to the machine (but do not use the same user as "
+"amusewiki, it should be a read-only repo)"
+msgstr ""
 
 msgid "overstriked"
 msgstr "överstruken"

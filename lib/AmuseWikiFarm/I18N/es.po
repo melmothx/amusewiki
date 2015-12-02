@@ -93,8 +93,14 @@ msgstr "Agregar una imagen de portada (PNG o JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Agregar un adjunto (PNG, JPG or PDF"
 
+msgid "Add new remote repository"
+msgstr ""
+
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Agregar espacios sin saltos donde sea apropiado para el idioma"
+
+msgid "Add or delete and add again the <user_repo_url> on this page."
+msgstr ""
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
@@ -275,6 +281,9 @@ msgstr "Limpia la lista de libros"
 msgid "Click on the images to get the sample PDF"
 msgstr "Clickea en las imágenes para obtener un PDF de muestra"
 
+msgid "Clone the repo locally and set it up"
+msgstr ""
+
 msgid "Close"
 msgstr "Cerrar"
 
@@ -317,6 +326,10 @@ msgstr "Crear un nuevo alias de temas"
 msgid "Create an author alias"
 msgstr "Crear un nuevo alias para autor/a"
 
+msgid ""
+"Create an empty repository. Here we refer to its url as <user_repo_url>."
+msgstr ""
+
 msgid "Create new site"
 msgstr "Crear un nuevo sitio"
 
@@ -343,6 +356,10 @@ msgstr "Textos postpuestos o borrados"
 
 msgid "Delete"
 msgstr "Borrar"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr ""
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
@@ -469,6 +486,14 @@ msgstr "Ejemplo"
 msgid "Existing redirections"
 msgstr "Redirecciones existentes"
 
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr ""
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "¡Archivo subido!"
 
@@ -553,11 +578,20 @@ msgstr "Lista completa de textos"
 msgid "Full text search"
 msgstr "Búsqueda de texto completa"
 
+msgid ""
+"Generate running headings in the document. Beware that\n"
+"        this probably need manual adjustments to the TeX sources for a\n"
+"        satisfying output"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Genérico (para tamaños carta y A4)"
 
 msgid "Git console"
 msgstr "Consola git"
+
+msgid "Git is not enabled on this site"
+msgstr ""
 
 msgid "HTML"
 msgstr "HTML"
@@ -594,6 +628,9 @@ msgstr "Un factor de división más alto significa márgenes más delgados"
 
 msgid "How to choose a password"
 msgstr "Cómo elegir una contraseña"
+
+msgid "How to work with a remote repo"
+msgstr ""
 
 msgid "I am human"
 msgstr "Soy una persona"
@@ -1250,8 +1287,19 @@ msgstr "Redirecciones"
 msgid "Related projects"
 msgstr "Proyectos relacionados"
 
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr ""
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr ""
+
 msgid "Remotes"
 msgstr "Remotes"
+
+msgid "Remove"
+msgstr ""
 
 msgid "Remove cover image"
 msgstr "Eliminar imagen de portada"
@@ -1295,6 +1343,9 @@ msgstr "Búsqueda"
 
 msgid "Section"
 msgstr "Sección"
+
+msgid "See here for the full documentation."
+msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Ver el manual completo para más detalles (en inglés)"
@@ -1505,6 +1556,9 @@ msgstr "La/el usuaria/o tendrá tu mismo nivel de acceso"
 msgid "The whole book in as single signature"
 msgstr "Todo el libro en una sola encuadernación"
 
+msgid "Then fetch the updates from this page."
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Estos textos no tienen el id único."
 
@@ -1620,6 +1674,12 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
+msgid ""
+"URL of the new remote repository\n"
+"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+"        supported."
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -1729,6 +1789,9 @@ msgstr ""
 "Con el creador de libros, puedes cambiar la diagramación (tipografías,\n"
 "    dimensiones, papel, márgenes) de los textos de la biblioteca.\n"
 "    También puedes unir más textos para crear tu propio libro. ¡Inténtalo!"
+
+msgid "Workflow"
+msgstr ""
 
 msgid "Wrong answer!"
 msgstr "¡Respuesta incorrecta!"
@@ -1852,6 +1915,9 @@ msgstr "descripción"
 msgid "displayed text"
 msgstr "texto mostrado"
 
+msgid "edit, commit..."
+msgstr ""
+
 msgid "editing"
 msgstr "editando"
 
@@ -1882,6 +1948,9 @@ msgstr ""
 "URI deseada usando el campo de abajo insertando autor/a, título y un número, "
 "por ejemplo mi-autora-mi-titulo-1"
 
+msgid "if the repository is exported"
+msgstr ""
+
 msgid "left"
 msgstr "izquierda"
 
@@ -1899,6 +1968,11 @@ msgstr "opcional, de forma predeterminada es la directiva del/a autor/a"
 
 msgid "or"
 msgstr "o"
+
+msgid ""
+"or, if you have SSH access to the machine (but do not use the same user as "
+"amusewiki, it should be a read-only repo)"
+msgstr ""
 
 msgid "overstriked"
 msgstr "overstriked"

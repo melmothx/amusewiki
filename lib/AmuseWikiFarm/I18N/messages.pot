@@ -87,7 +87,7 @@ msgstr ""
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 
-#: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:18 root/src/console/alias_display.tt:103 root/src/console/git_display.tt:12 root/src/publish/pending.tt:18
+#: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:18 root/src/console/alias_display.tt:103 root/src/console/git_display.tt:13 root/src/publish/pending.tt:18
 msgid "Action"
 msgstr ""
 
@@ -103,8 +103,16 @@ msgstr ""
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr ""
 
+#: root/src/console/git_display.tt:70
+msgid "Add new remote repository"
+msgstr ""
+
 #: root/src/edit/edit.tt:232
 msgid "Add non-breaking spaces where appropriate for the language"
+msgstr ""
+
+#: root/src/console/git_display.tt:98
+msgid "Add or delete and add again the <user_repo_url> on this page."
 msgstr ""
 
 #: root/src/admin/edit.tt:642
@@ -127,7 +135,7 @@ msgstr ""
 msgid "Alias"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:195
+#: lib/AmuseWikiFarm/Controller/Console.pm:244
 msgid "Alias can't point to itself"
 msgstr ""
 
@@ -141,7 +149,7 @@ msgstr ""
 msgid "All languages"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:94 root/src/layout.tt:315
+#: lib/AmuseWikiFarm/Controller/Publish.pm:95 root/src/layout.tt:315
 msgid "All revisions"
 msgstr ""
 
@@ -213,7 +221,7 @@ msgstr ""
 msgid "Back to the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:146 lib/AmuseWikiFarm/Controller/Console.pm:211
+#: lib/AmuseWikiFarm/Controller/Admin.pm:146 lib/AmuseWikiFarm/Controller/Console.pm:260
 msgid "Bad request"
 msgstr ""
 
@@ -233,7 +241,7 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:473
+#: root/src/bookbuilder/index.tt:481
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -255,7 +263,7 @@ msgstr ""
 msgid "Bookbuilder page limit (integer)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:513
+#: root/src/bookbuilder/index.tt:521
 msgid "Build it"
 msgstr ""
 
@@ -317,6 +325,10 @@ msgstr ""
 msgid "Click on the images to get the sample PDF"
 msgstr ""
 
+#: root/src/console/git_display.tt:83
+msgid "Clone the repo locally and set it up"
+msgstr ""
+
 #: root/src/text.tt:16 root/src/text.tt:8
 msgid "Close"
 msgstr ""
@@ -337,7 +349,7 @@ msgstr ""
 msgid "Convert to archive markup"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:677
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:687
 msgid "Couldn't add the text"
 msgstr ""
 
@@ -373,6 +385,10 @@ msgstr ""
 msgid "Create an author alias"
 msgstr ""
 
+#: root/src/console/git_display.tt:81
+msgid "Create an empty repository. Here we refer to its url as <user_repo_url>."
+msgstr ""
+
 #: root/src/admin/list.tt:86
 msgid "Create new site"
 msgstr ""
@@ -389,7 +405,7 @@ msgstr ""
 msgid "Created by"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:127 root/src/publish/pending.tt:91
+#: lib/AmuseWikiFarm/Controller/Edit.pm:127 root/src/publish/pending.tt:92
 msgid "Created new text"
 msgstr ""
 
@@ -409,7 +425,12 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: root/src/publish/pending.tt:123
+#. (remote.name)
+#: root/src/console/git_display.tt:43
+msgid "Delete remote repository %1"
+msgstr ""
+
+#: root/src/publish/pending.tt:124
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
@@ -519,7 +540,7 @@ msgstr ""
 msgid "Emails do not match"
 msgstr ""
 
-#: root/src/publish/pending.tt:77
+#: root/src/publish/pending.tt:78
 msgid "Erase this revision"
 msgstr ""
 
@@ -546,7 +567,7 @@ msgid ""
 "        sectioning for this to work."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:414
+#: root/src/bookbuilder/index.tt:422
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
@@ -561,11 +582,21 @@ msgstr ""
 msgid "Existing redirections"
 msgstr ""
 
+#. ("$name $url")
+#: lib/AmuseWikiFarm/Controller/Console.pm:90
+msgid "Failed to add remote repository %1"
+msgstr ""
+
+#. ($name)
+#: lib/AmuseWikiFarm/Controller/Console.pm:104
+msgid "Failed to remove Remote repository %1"
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/Edit.pm:320
 msgid "File uploaded!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:503
+#: root/src/bookbuilder/index.tt:511
 msgid "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 
@@ -593,7 +624,7 @@ msgstr ""
 msgid "Fixed category list"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:491 root/src/bookbuilder/schemas.tt:37
+#: root/src/bookbuilder/index.tt:499 root/src/bookbuilder/schemas.tt:37
 msgid "Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together."
 msgstr ""
 
@@ -652,12 +683,23 @@ msgstr ""
 msgid "Full text search"
 msgstr ""
 
+#: root/src/bookbuilder/index.tt:355
+msgid ""
+"Generate running headings in the document. Beware that\n"
+"        this probably need manual adjustments to the TeX sources for a\n"
+"        satisfying output"
+msgstr ""
+
 #: root/src/admin/edit.tt:9
 msgid "Generic (fits in A4 and Letter)"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:58
+#: lib/AmuseWikiFarm/Controller/Console.pm:77
 msgid "Git console"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Controller/Console.pm:54
+msgid "Git is not enabled on this site"
 msgstr ""
 
 #: root/src/admin/edit.tt:271
@@ -703,11 +745,15 @@ msgstr ""
 msgid "How to choose a password"
 msgstr ""
 
+#: root/src/console/git_display.tt:79
+msgid "How to work with a remote repo"
+msgstr ""
+
 #: root/src/user/human.tt:18
 msgid "I am human"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:356
+#: root/src/bookbuilder/index.tt:364
 msgid "I want an imposed (ready to print) PDF"
 msgstr ""
 
@@ -736,7 +782,7 @@ msgid ""
 "          stored in the archive, but will not be published."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:362
+#: root/src/bookbuilder/index.tt:370
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
@@ -780,7 +826,7 @@ msgstr ""
 msgid "Inline elements"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:222 root/src/layout.tt:304
+#: lib/AmuseWikiFarm/Controller/Console.pm:271 root/src/layout.tt:304
 msgid "Internal list of translations"
 msgstr ""
 
@@ -952,7 +998,7 @@ msgstr ""
 msgid "Missing #title header in the text!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:189
+#: lib/AmuseWikiFarm/Controller/Console.pm:238
 msgid "Missing alias"
 msgstr ""
 
@@ -960,7 +1006,7 @@ msgstr ""
 msgid "Missing character will be reported"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:192
+#: lib/AmuseWikiFarm/Controller/Console.pm:241
 msgid "Missing redirection"
 msgstr ""
 
@@ -1032,7 +1078,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: root/src/edit/diff.tt:69 root/src/edit/revs.tt:53 root/src/publish/pending.tt:93
+#: root/src/edit/diff.tt:69 root/src/edit/revs.tt:53 root/src/publish/pending.tt:94
 msgid "No editing yet!"
 msgstr ""
 
@@ -1040,7 +1086,7 @@ msgstr ""
 msgid "No result found!"
 msgstr ""
 
-#: root/src/publish/pending.tt:130
+#: root/src/publish/pending.tt:131
 msgid "No revisions to show"
 msgstr ""
 
@@ -1048,7 +1094,7 @@ msgstr ""
 msgid "No text found!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:615
+#: root/src/bookbuilder/index.tt:623
 msgid "No text was added yet"
 msgstr ""
 
@@ -1056,7 +1102,7 @@ msgstr ""
 msgid "Notes"
 msgstr ""
 
-#: root/src/console/git_display.tt:37 root/src/console/unpublished.tt:59
+#: root/src/console/unpublished.tt:59
 msgid "Nothing to see here, so far"
 msgstr ""
 
@@ -1135,14 +1181,14 @@ msgstr ""
 msgid "Page where to start a chapter"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:453
+#: root/src/bookbuilder/index.tt:461
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:372
+#: root/src/bookbuilder/index.tt:380
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1252,7 +1298,7 @@ msgid ""
 "              is."
 msgstr ""
 
-#: root/src/publish/pending.tt:111
+#: root/src/publish/pending.tt:112
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
 "    as action, it means that the revision has been superseded by\n"
@@ -1307,7 +1353,7 @@ msgstr ""
 msgid "Please select the desired fonts"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:391 root/src/bookbuilder/index.tt:428
+#: root/src/bookbuilder/index.tt:399 root/src/bookbuilder/index.tt:436
 msgid "Please select the signature size:"
 msgstr ""
 
@@ -1396,7 +1442,7 @@ msgstr ""
 msgid "Queue"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:672
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:682
 msgid "Quota exceeded, too many pages"
 msgstr ""
 
@@ -1432,7 +1478,7 @@ msgstr ""
 msgid "Recheck"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:163 root/src/console/alias_display.tt:3 root/src/layout.tt:330
+#: lib/AmuseWikiFarm/Controller/Console.pm:212 root/src/console/alias_display.tt:3 root/src/layout.tt:330
 msgid "Redirections"
 msgstr ""
 
@@ -1440,8 +1486,22 @@ msgstr ""
 msgid "Related projects"
 msgstr ""
 
+#. ("$name $url")
+#: lib/AmuseWikiFarm/Controller/Console.pm:87
+msgid "Remote repository %1 added"
+msgstr ""
+
+#. ($name)
+#: lib/AmuseWikiFarm/Controller/Console.pm:101
+msgid "Remote repository %1 removed"
+msgstr ""
+
 #: root/src/layout.tt:325
 msgid "Remotes"
+msgstr ""
+
+#: root/src/console/git_display.tt:16
+msgid "Remove"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:300
@@ -1456,7 +1516,7 @@ msgstr ""
 msgid "Repeat password"
 msgstr ""
 
-#: root/src/console/git_display.tt:6
+#: root/src/console/git_display.tt:7
 msgid "Repository"
 msgstr ""
 
@@ -1481,7 +1541,7 @@ msgid "Revision"
 msgstr ""
 
 #. ($uri)
-#: lib/AmuseWikiFarm/Controller/Publish.pm:165
+#: lib/AmuseWikiFarm/Controller/Publish.pm:167
 msgid "Revision for %1 has been deleted"
 msgstr ""
 
@@ -1499,6 +1559,10 @@ msgstr ""
 
 #: root/src/edit/edit.tt:341 root/src/edit/edit.tt:593 root/src/edit/edit.tt:597
 msgid "Section"
+msgstr ""
+
+#: root/src/console/git_display.tt:116
+msgid "See here for the full documentation."
 msgstr ""
 
 #: root/src/edit/edit.tt:607
@@ -1521,7 +1585,7 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr ""
 
-#: root/src/edit/edit.tt:28 root/src/edit/revs.tt:50 root/src/publish/pending.tt:88
+#: root/src/edit/edit.tt:28 root/src/edit/revs.tt:50 root/src/publish/pending.tt:89
 msgid "Show differences in other tab"
 msgstr ""
 
@@ -1589,7 +1653,7 @@ msgstr ""
 msgid "Some ongoing revisions were found"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:70 lib/AmuseWikiFarm/Controller/Publish.pm:134
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:70 lib/AmuseWikiFarm/Controller/Publish.pm:136
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
@@ -1755,8 +1819,12 @@ msgstr ""
 msgid "The user will have the same your level of access"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:400 root/src/bookbuilder/index.tt:437
+#: root/src/bookbuilder/index.tt:408 root/src/bookbuilder/index.tt:445
 msgid "The whole book in as single signature"
+msgstr ""
+
+#: root/src/console/git_display.tt:113
+msgid "Then fetch the updates from this page."
 msgstr ""
 
 #: root/src/console/translations.tt:21
@@ -1885,7 +1953,7 @@ msgstr ""
 msgid "Triple bars"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:631
+#: root/src/bookbuilder/index.tt:639
 msgid "Try a random text if unsure"
 msgstr ""
 
@@ -1897,11 +1965,18 @@ msgstr ""
 msgid "URI"
 msgstr ""
 
-#: root/src/console/git_display.tt:9
+#: root/src/console/git_display.tt:10
 msgid "URL"
 msgstr ""
 
-#: root/src/edit/revs.tt:29 root/src/publish/pending.tt:102
+#: root/src/console/git_display.tt:62
+msgid ""
+"URL of the new remote repository\n"
+"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+"        supported."
+msgstr ""
+
+#: root/src/edit/revs.tt:29 root/src/publish/pending.tt:103
 msgid "UTC"
 msgstr ""
 
@@ -1915,7 +1990,7 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:92
+#: lib/AmuseWikiFarm/Controller/Console.pm:141
 msgid "Unpublished texts"
 msgstr ""
 
@@ -1924,7 +1999,7 @@ msgstr ""
 msgid "Unsupported file type %1"
 msgstr ""
 
-#: root/src/admin/edit.tt:659 root/src/admin/show_user_details.tt:70 root/src/bookbuilder/index.tt:516 root/src/category-details-edit.tt:27 root/src/user/edit.tt:39
+#: root/src/admin/edit.tt:659 root/src/admin/show_user_details.tt:70 root/src/bookbuilder/index.tt:524 root/src/category-details-edit.tt:27 root/src/user/edit.tt:39
 msgid "Update"
 msgstr ""
 
@@ -1957,7 +2032,7 @@ msgid "Use it in the body as"
 msgstr ""
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:398 root/src/bookbuilder/index.tt:435
+#: root/src/bookbuilder/index.tt:406 root/src/bookbuilder/index.tt:443
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
@@ -2020,11 +2095,15 @@ msgstr ""
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:620
+#: root/src/bookbuilder/index.tt:628
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+
+#: root/src/console/git_display.tt:101
+msgid "Workflow"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:141
@@ -2059,7 +2138,7 @@ msgstr ""
 msgid "You are logged in now!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:625
+#: root/src/bookbuilder/index.tt:633
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
@@ -2173,6 +2252,10 @@ msgstr ""
 msgid "displayed text"
 msgstr ""
 
+#: root/src/console/git_display.tt:108
+msgid "edit, commit..."
+msgstr ""
+
 #: root/src/publish/pending.tt:3
 msgid "editing"
 msgstr ""
@@ -2205,6 +2288,10 @@ msgstr ""
 msgid "if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1"
 msgstr ""
 
+#: root/src/console/git_display.tt:86
+msgid "if the repository is exported"
+msgstr ""
+
 #: root/src/admin/edit.tt:398
 msgid "left"
 msgstr ""
@@ -2227,6 +2314,10 @@ msgstr ""
 
 #: root/src/edit/edit.tt:389 root/src/edit/edit.tt:395 root/src/edit/edit.tt:401 root/src/edit/edit.tt:407 root/src/edit/edit.tt:446 root/src/edit/edit.tt:501 root/src/edit/edit.tt:506 root/src/edit/edit.tt:97
 msgid "or"
+msgstr ""
+
+#: root/src/console/git_display.tt:88
+msgid "or, if you have SSH access to the machine (but do not use the same user as amusewiki, it should be a read-only repo)"
 msgstr ""
 
 #: root/src/edit/edit.tt:418 root/src/edit/edit.tt:421
@@ -2342,7 +2433,7 @@ msgstr ""
 msgid "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 
-#: root/src/publish/pending.tt:118
+#: root/src/publish/pending.tt:119
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"

@@ -90,8 +90,14 @@ msgstr "Добавить обложку (PNG or JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Добавить вложение (PNG, JPG or PDF)"
 
+msgid "Add new remote repository"
+msgstr ""
+
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Добавить неразрывные пробелы"
+
+msgid "Add or delete and add again the <user_repo_url> on this page."
+msgstr ""
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
@@ -269,6 +275,9 @@ msgstr "Очистить список книг"
 msgid "Click on the images to get the sample PDF"
 msgstr "Нажмите на изображение для получения PDF"
 
+msgid "Clone the repo locally and set it up"
+msgstr ""
+
 msgid "Close"
 msgstr "Закрыть"
 
@@ -311,6 +320,10 @@ msgstr "Создать связь между темами"
 msgid "Create an author alias"
 msgstr "Создать связь между авторами"
 
+msgid ""
+"Create an empty repository. Here we refer to its url as <user_repo_url>."
+msgstr ""
+
 msgid "Create new site"
 msgstr "Создать новый сайт"
 
@@ -337,6 +350,10 @@ msgstr "Отложенные/Удалённые тексты"
 
 msgid "Delete"
 msgstr "Удалить"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr ""
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
@@ -462,6 +479,14 @@ msgstr "Пример"
 msgid "Existing redirections"
 msgstr "Существующее перенаправление"
 
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr ""
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Файл загружен!"
 
@@ -541,11 +566,20 @@ msgstr "Полный список текстов"
 msgid "Full text search"
 msgstr "Полнотекстовый поиск"
 
+msgid ""
+"Generate running headings in the document. Beware that\n"
+"        this probably need manual adjustments to the TeX sources for a\n"
+"        satisfying output"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Универсальный (умещается на A4 и Letter)"
 
 msgid "Git console"
 msgstr "Консоль Git"
+
+msgid "Git is not enabled on this site"
+msgstr ""
 
 msgid "HTML"
 msgstr "HTML"
@@ -579,6 +613,9 @@ msgstr "Чем больше число — тем уже поля"
 
 msgid "How to choose a password"
 msgstr "Как сменить пароль"
+
+msgid "How to work with a remote repo"
+msgstr ""
 
 msgid "I am human"
 msgstr "Я человек"
@@ -1203,7 +1240,18 @@ msgstr "Перенаправление"
 msgid "Related projects"
 msgstr "На других языках"
 
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr ""
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr ""
+
 msgid "Remotes"
+msgstr ""
+
+msgid "Remove"
 msgstr ""
 
 msgid "Remove cover image"
@@ -1248,6 +1296,9 @@ msgstr "Поиск"
 
 msgid "Section"
 msgstr "Раздел"
+
+msgid "See here for the full documentation."
+msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Посмотрите полную инструкцию для уточнения"
@@ -1454,6 +1505,9 @@ msgstr "У пользователя будет такой же доступ ка
 msgid "The whole book in as single signature"
 msgstr "Вся книга - это одна тетрадка"
 
+msgid "Then fetch the updates from this page."
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Эти тексты отсутствуют в уникальном id"
 
@@ -1566,6 +1620,12 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
+msgid ""
+"URL of the new remote repository\n"
+"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+"        supported."
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -1672,6 +1732,9 @@ msgstr ""
 "С помощью конструктора книг вы можете изменить вёрстку текстов из "
 "библиотеки  (шрифт, размер бумаги, поля). Также вы можете создать сборник из "
 "нескольких текстов."
+
+msgid "Workflow"
+msgstr ""
 
 msgid "Wrong answer!"
 msgstr "Неправильный ответ!"
@@ -1796,6 +1859,9 @@ msgstr "описание"
 msgid "displayed text"
 msgstr "отображаемый текст"
 
+msgid "edit, commit..."
+msgstr ""
+
 msgid "editing"
 msgstr "редактирование"
 
@@ -1825,6 +1891,9 @@ msgstr ""
 "если другой текст с этими же автором и названием существует, введите нужный "
 "URI, включающий автора, название и номер, например moi-avtor-moe-nazvanie-1"
 
+msgid "if the repository is exported"
+msgstr ""
+
 msgid "left"
 msgstr ""
 
@@ -1842,6 +1911,11 @@ msgstr "опционально (по указанию автора)"
 
 msgid "or"
 msgstr "или"
+
+msgid ""
+"or, if you have SSH access to the machine (but do not use the same user as "
+"amusewiki, it should be a read-only repo)"
+msgstr ""
 
 msgid "overstriked"
 msgstr "зачёркнутый"

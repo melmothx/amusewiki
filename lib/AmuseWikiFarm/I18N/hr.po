@@ -87,8 +87,14 @@ msgstr "Dodaj sliku za naslovnicu (PNG ili JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Dodaj privitak (PNG, JPG ili PDF)"
 
+msgid "Add new remote repository"
+msgstr ""
+
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Dodaj neodvojivi razmak prikladan jeziku"
+
+msgid "Add or delete and add again the <user_repo_url> on this page."
+msgstr ""
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
@@ -261,6 +267,9 @@ msgstr "Poništi popis tekstova"
 msgid "Click on the images to get the sample PDF"
 msgstr "Klikni na slike za primjer PDF-a"
 
+msgid "Clone the repo locally and set it up"
+msgstr ""
+
 msgid "Close"
 msgstr "Zatvori"
 
@@ -303,6 +312,10 @@ msgstr "Stvori alias za temu"
 msgid "Create an author alias"
 msgstr "Stvori alias za autora"
 
+msgid ""
+"Create an empty repository. Here we refer to its url as <user_repo_url>."
+msgstr ""
+
 msgid "Create new site"
 msgstr "Stvori novi sajt"
 
@@ -329,6 +342,10 @@ msgstr "Odgođeni/izbrisani tekstovi"
 
 msgid "Delete"
 msgstr "Izbriši"
+
+#. (remote.name)
+msgid "Delete remote repository %1"
+msgstr ""
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
@@ -454,6 +471,14 @@ msgstr "Primjer"
 msgid "Existing redirections"
 msgstr "Postojeća preusmjeravanja"
 
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr ""
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Datoteka učitana!"
 
@@ -534,11 +559,20 @@ msgstr "Svi tekstovi"
 msgid "Full text search"
 msgstr "Pretraga čitavog testa"
 
+msgid ""
+"Generate running headings in the document. Beware that\n"
+"        this probably need manual adjustments to the TeX sources for a\n"
+"        satisfying output"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generičan format (može stati i na A4 i na Letter)"
 
 msgid "Git console"
 msgstr "Git konzola"
+
+msgid "Git is not enabled on this site"
+msgstr ""
 
 msgid "HTML"
 msgstr "HTML"
@@ -572,6 +606,9 @@ msgstr "Što je faktor podijele veći to će margine biti uže"
 
 msgid "How to choose a password"
 msgstr "Kako izabrati lozinku"
+
+msgid "How to work with a remote repo"
+msgstr ""
 
 msgid "I am human"
 msgstr "Ja sam ljudsko biće"
@@ -1205,8 +1242,19 @@ msgstr "Preusmjeravanja"
 msgid "Related projects"
 msgstr "Povezani projekti"
 
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr ""
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr ""
+
 msgid "Remotes"
 msgstr "Udaljeni repozitorij"
+
+msgid "Remove"
+msgstr ""
 
 msgid "Remove cover image"
 msgstr "Ukloni naslovnu sliku"
@@ -1250,6 +1298,9 @@ msgstr "Traži"
 
 msgid "Section"
 msgstr "Odjeljak"
+
+msgid "See here for the full documentation."
+msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Vidi priručnik za detalje (na engleskom)"
@@ -1453,6 +1504,9 @@ msgstr "Korisnik će imati tvoju istu razinu pristupa."
 msgid "The whole book in as single signature"
 msgstr "Cijela knjiga u jednom jedinom svesku"
 
+msgid "Then fetch the updates from this page."
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Ovim tekstovima nedostaje jedinstveni id."
 
@@ -1564,6 +1618,12 @@ msgstr "URI"
 msgid "URL"
 msgstr "URL"
 
+msgid ""
+"URL of the new remote repository\n"
+"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+"        supported."
+msgstr ""
+
 msgid "UTC"
 msgstr "UTC"
 
@@ -1669,6 +1729,9 @@ msgid ""
 msgstr ""
 "Možeš promjeniti fontove, dimenzije, papir, margine u tekstovima biblioteke. "
 "Možeš stvoriti vlastitu zbirku za tvoj buklet. Isprobaj!"
+
+msgid "Workflow"
+msgstr ""
 
 msgid "Wrong answer!"
 msgstr "Pogrešan odgovor!"
@@ -1789,6 +1852,9 @@ msgstr "opis"
 msgid "displayed text"
 msgstr "prikazani tekst"
 
+msgid "edit, commit..."
+msgstr ""
+
 msgid "editing"
 msgstr "uređivanje u toku"
 
@@ -1819,6 +1885,9 @@ msgstr ""
 "željeni URI koristeći polje niže, unesi autora, naslov i jedan broj, npr. "
 "moj-autor-moj-naslov-1"
 
+msgid "if the repository is exported"
+msgstr ""
+
 msgid "left"
 msgstr "lijeva"
 
@@ -1836,6 +1905,11 @@ msgstr "neobavezno, ako nedostaje koristit će se polje autora"
 
 msgid "or"
 msgstr "ili"
+
+msgid ""
+"or, if you have SSH access to the machine (but do not use the same user as "
+"amusewiki, it should be a read-only repo)"
+msgstr ""
 
 msgid "overstriked"
 msgstr "izbrisano"

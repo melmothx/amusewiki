@@ -84,7 +84,13 @@ msgstr ""
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr ""
 
+msgid "Add new remote repository"
+msgstr ""
+
 msgid "Add non-breaking spaces where appropriate for the language"
+msgstr ""
+
+msgid "Add or delete and add again the <user_repo_url> on this page."
 msgstr ""
 
 msgid ""
@@ -253,6 +259,9 @@ msgstr ""
 msgid "Click on the images to get the sample PDF"
 msgstr ""
 
+msgid "Clone the repo locally and set it up"
+msgstr ""
+
 msgid "Close"
 msgstr ""
 
@@ -295,6 +304,10 @@ msgstr ""
 msgid "Create an author alias"
 msgstr ""
 
+msgid ""
+"Create an empty repository. Here we refer to its url as <user_repo_url>."
+msgstr ""
+
 msgid "Create new site"
 msgstr ""
 
@@ -320,6 +333,10 @@ msgid "Deferred/Deleted texts"
 msgstr ""
 
 msgid "Delete"
+msgstr ""
+
+#. (remote.name)
+msgid "Delete remote repository %1"
 msgstr ""
 
 msgid ""
@@ -440,6 +457,14 @@ msgstr ""
 msgid "Existing redirections"
 msgstr ""
 
+#. ("$name $url")
+msgid "Failed to add remote repository %1"
+msgstr ""
+
+#. ($name)
+msgid "Failed to remove Remote repository %1"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr ""
 
@@ -514,10 +539,19 @@ msgstr "Liste de tous les textes"
 msgid "Full text search"
 msgstr ""
 
+msgid ""
+"Generate running headings in the document. Beware that\n"
+"        this probably need manual adjustments to the TeX sources for a\n"
+"        satisfying output"
+msgstr ""
+
 msgid "Generic (fits in A4 and Letter)"
 msgstr ""
 
 msgid "Git console"
+msgstr ""
+
+msgid "Git is not enabled on this site"
 msgstr ""
 
 msgid "HTML"
@@ -551,6 +585,9 @@ msgid "Higher division factor means narrower margins"
 msgstr ""
 
 msgid "How to choose a password"
+msgstr ""
+
+msgid "How to work with a remote repo"
 msgstr ""
 
 msgid "I am human"
@@ -1128,7 +1165,18 @@ msgstr ""
 msgid "Related projects"
 msgstr ""
 
+#. ("$name $url")
+msgid "Remote repository %1 added"
+msgstr ""
+
+#. ($name)
+msgid "Remote repository %1 removed"
+msgstr ""
+
 msgid "Remotes"
+msgstr ""
+
+msgid "Remove"
 msgstr ""
 
 msgid "Remove cover image"
@@ -1172,6 +1220,9 @@ msgid "Search"
 msgstr "Recherche"
 
 msgid "Section"
+msgstr ""
+
+msgid "See here for the full documentation."
 msgstr ""
 
 msgid "See the full manual for more details (english)"
@@ -1370,6 +1421,9 @@ msgstr ""
 msgid "The whole book in as single signature"
 msgstr ""
 
+msgid "Then fetch the updates from this page."
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr ""
 
@@ -1479,6 +1533,12 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
+msgid ""
+"URL of the new remote repository\n"
+"        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
+"        supported."
+msgstr ""
+
 msgid "UTC"
 msgstr ""
 
@@ -1576,6 +1636,9 @@ msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
+msgstr ""
+
+msgid "Workflow"
 msgstr ""
 
 msgid "Wrong answer!"
@@ -1693,6 +1756,9 @@ msgstr ""
 msgid "displayed text"
 msgstr ""
 
+msgid "edit, commit..."
+msgstr ""
+
 msgid "editing"
 msgstr ""
 
@@ -1720,6 +1786,9 @@ msgid ""
 "my-author-my-title-1"
 msgstr ""
 
+msgid "if the repository is exported"
+msgstr ""
+
 msgid "left"
 msgstr ""
 
@@ -1736,6 +1805,11 @@ msgid "optional, defaults to the author directive"
 msgstr ""
 
 msgid "or"
+msgstr ""
+
+msgid ""
+"or, if you have SSH access to the machine (but do not use the same user as "
+"amusewiki, it should be a read-only repo)"
 msgstr ""
 
 msgid "overstriked"
