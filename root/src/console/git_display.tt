@@ -85,7 +85,7 @@
 <pre>
   # [% loc('if the repository is exported') %]
   git clone git://[% site.canonical %]/git/[% site.id %].git
-  # [% loc('or, if you have SSH access to the machine') %]
+  # [% loc('or, if you have SSH access to the machine (but do not use the same user as amusewiki, it should be a read-only repo)') %]
   git clone ssh://[% site.canonical %][% site.repo_root %]
 
   git remote rename origin web
