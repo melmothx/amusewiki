@@ -10,7 +10,7 @@
     [% END %]
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename %]" href="[% c.uri_for('/feed') %]" />
-
+    [% IF base_url %]<base href="[% base_url %]" />[% END %]
     <title>
       [%- IF page_title -%]
       [%- page_title | html -%] |

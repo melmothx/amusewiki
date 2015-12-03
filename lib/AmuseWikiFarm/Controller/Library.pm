@@ -8,6 +8,7 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -73,17 +74,17 @@ stash.
 
 sub pre_base :Chained('/site_robot_index') :PathPart('library') :CaptureArgs(0) {}
 
+=head2 bbselect
 
-
-=head2 text
-
-Path: /library/*
-
-Main method to serve the files, mapping them to the real location.
+Display a splat text in a table for selection.
 
 =cut
 
-
+sub bbselect :Chained('match') PathPart('bbselect') :Args(0) {
+    my ($self, $c) = @_;
+    log_debug { "In bbselect" };
+    $c->stash(base_url => $c->uri_for('/library/'));
+}
 
 =encoding utf8
 
