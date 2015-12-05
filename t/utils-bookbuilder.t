@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 113;
+use Test::More tests => 115;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -342,6 +342,18 @@ cleanup($bb->job_id);
 
 ok ($bb->webfonts_rootdir);
 ok ($bb->webfonts) and diag Dumper($bb->webfonts);
+
+$bb = AmuseWikiFarm::Archive::BookBuilder->new({
+                                                dbic => $schema,
+                                                site_id => '0blog0',
+                                                job_id => 999999,
+                                               });
+ok($bb->add_text('first-test:1,pre,post'));
+
+is_deeply ($bb->texts,
+           [ 'first-test:1,pre,post' ]);
+
+
 
 sub check_file {
     my ($bb, $msg) = @_;
