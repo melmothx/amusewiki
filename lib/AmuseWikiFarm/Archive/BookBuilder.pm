@@ -943,13 +943,17 @@ sub compile {
 
     # validate the texts passed looking up the uri in the db
     my @texts;
-    foreach my $text (@$textlist) {
+    Dlog_debug { "Text list is $_" } $textlist;
+    foreach my $filename (@$textlist) {
+        my $fileobj = Text::Amuse::Compile::FileName->new($filename);
+        my $text = $fileobj->name;
+        log_debug { "Checking $text" };
         my $title = $self->site->titles->text_by_uri($text);
         unless ($title) {
             log_warn  { "Couldn't find $text\n" };
             next;
         }
-        push @texts, $text;
+        push @texts, $fileobj;
         if ($archives{$text}) {
             next;
         }
@@ -1015,9 +1019,8 @@ sub compile {
 
     if (@texts == 1) {
         my $basename = shift(@texts);
-        my $fileout   = $makeabs->($basename . '.' . $self->_produced_file_extension);
-        $compiler->compile($makeabs->($basename . '.muse'));
-
+        my $fileout   = $makeabs->($basename->name . '.' . $self->_produced_file_extension);
+        $compiler->compile($makeabs->($basename->name_with_ext_and_fragments));
         if (-f $fileout) {
             move($fileout, $outfile) or die "Couldn't move $fileout to $outfile";
         }
@@ -1025,7 +1028,7 @@ sub compile {
     else {
         my $target = {
                       path => $basedir,
-                      files => \@texts,
+                      files => [ map { $_->name_with_fragments } @texts ],
                       name => $self->job_id,
                       title => $data->{title},
                      };

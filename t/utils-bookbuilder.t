@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 116;
+use Test::More tests => 132;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -20,10 +20,10 @@ use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid muse_naming_algo/;
 use AmuseWikiFarm::Archive::BookBuilder;
 
+my $pdftotext = system('pdftotext', '-v') == 0 ? 1 : 0;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 ok (-d AmuseWikiFarm::Archive::BookBuilder->customdir, "Found " . AmuseWikiFarm::Archive::BookBuilder->customdir);
-
 
 {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
@@ -345,16 +345,58 @@ cleanup($bb->job_id);
 ok ($bb->webfonts_rootdir);
 ok ($bb->webfonts) and diag Dumper($bb->webfonts);
 
-$bb = AmuseWikiFarm::Archive::BookBuilder->new({
-                                                dbic => $schema,
-                                                site_id => '0blog0',
-                                                job_id => 999999,
-                                               });
-ok($bb->add_text('first-test:1,pre,post'));
+{
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
+                                                       dbic => $schema,
+                                                       site_id => '0blog0',
+                                                       job_id => 666666,
+                                                       notoc => 1,
+                                                      });
+    ok($bb->add_text('first-test:1,pre,post'));
+    is_deeply ($bb->texts,
+               [ 'first-test:1,pre,post' ]);
+    my $pdf = check_file($bb, "Partial");
+    my $pdftext = pdf_content($pdf);
+  SKIP: {
+        skip "Missing pdftotext", 3, unless $pdftotext;
+        like $pdftext, qr{second chapter};
+        unlike $pdftext, qr{second chapter.*second chapter}s;
+        unlike $pdftext, qr{first chapter};
+    }
+}
+{
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
+                                                       dbic => $schema,
+                                                       site_id => '0blog0',
+                                                       job_id => 666667,
+                                                       notoc => 1,
+                                                      });
+    ok($bb->add_text('first-test:1,pre,post'));
+    ok($bb->add_text('first-test:1'));
+    is_deeply ($bb->texts,
+               [ 'first-test:1,pre,post',
+                 'first-test:1' ]);
+    my $pdf = check_file($bb, "Partial 2");
+  SKIP: {
+        skip "Missing pdftotext", 2, unless $pdftotext;
+        my $pdftext = pdf_content($pdf);
+        like $pdftext, qr{second chapter.*second chapter}s;
+        unlike $pdftext, qr{first chapter};
+    }
+}
 
-is_deeply ($bb->texts,
-           [ 'first-test:1,pre,post' ]);
-
+sub pdf_content {
+    my $pdf = shift;
+    my $txt = $pdf;
+    $txt =~ s/\.pdf$/.txt/;
+    system(pdftotext => $pdf) == 0 or die 'pdftotext failed $?';
+    local $/ = undef;
+    open (my $fh, '<', $txt) or die "cannot open $txt $!";
+    my $ex = <$fh>;
+    close $fh;
+    unlink $txt;
+    return $ex;
+}
 
 
 sub check_file {
@@ -366,6 +408,7 @@ sub check_file {
     foreach my $f ($bb->produced_files) {
         ok (-f File::Spec->catfile($bb->customdir, $f), "$msg: $f exists");
     }
+    return $file;
     # unlink $file or die $1;
 }
 
