@@ -22,6 +22,7 @@ use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
 use Text::Amuse::Compile::Webfonts;
 use Text::Amuse::Compile::TemplateOptions;
+use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -668,15 +669,16 @@ sub add_text {
     return unless defined $text;
     # cleanup the error
     $self->error(undef);
+    my $filename = Text::Amuse::Compile::FileName->new($text);
     my $to_add;
-    if (muse_filename_is_valid($text)) {
+    if (muse_filename_is_valid($filename->name)) {
         # additional checks if we have the site.
         if (my $site = $self->site) {
-            if (my $title = $site->titles->text_by_uri($text)) {
+            if (my $title = $site->titles->text_by_uri($filename->name)) {
                 my $limit = $site->bb_page_limit;
                 my $total = $self->total_pages_estimated + $title->pages_estimated;
                 if ($total <= $limit) {
-                    $to_add = $text;
+                    $to_add = $filename->name_with_fragments;
                 }
                 else {
                     # loc("Quota exceeded, too many pages")
@@ -690,7 +692,7 @@ sub add_text {
         }
         # no site check
         else {
-            $to_add = $text;
+            $to_add = $filename->name_with_fragments;
         }
     }
     if ($to_add) {

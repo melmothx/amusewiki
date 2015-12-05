@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 115;
+use Test::More tests => 116;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -73,7 +73,7 @@ push @list, 'a' x 96;
 push @list, 'àààà';
 push @list, 'l2()';
 push @list, '1234-';
-push @list, '/etc/passwd';
+push @list, '/etc/passwd-';
 push @list, '1234,1234';
 push @list, '1l239z .-asdf asdf';
 
@@ -91,8 +91,10 @@ ok $@, "Putting undef in textlist raises an exception: " . $@->message;
 $bb->delete_all;
 ok($bb->add_text('my-good-text'));
 ok($bb->add_text('ciao'));
-is_deeply $bb->textlist, [qw/my-good-text ciao/], "Text added correctly";
+ok($bb->add_text('/etc/passwd:1,2,3'));
+is_deeply $bb->textlist, ['my-good-text', 'ciao', 'passwd:1,2,3'], "Texts added correctly";
 
+$bb->delete_text(3);
 $bb->delete_text(1);
 is_deeply $bb->textlist, [qw/ciao/], "Text removed correctly";
 
