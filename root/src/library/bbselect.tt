@@ -35,7 +35,8 @@
 
 
 
-  <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]">
+  <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
+        method="POST">
     <input type="hidden" name="partial" value="1" />
     <table class="table table-striped table-bordered">
       <tr>

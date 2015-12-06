@@ -117,8 +117,35 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
     my ( $self, $c, $text ) = @_;
     my $bb   = $c->stash->{bb};
     my $site = $c->stash->{site};
+    my $params = $c->request->body_params;
+    my $addtext = $text;
+    Dlog_debug { "params: $_" } $params;
+    if ($params->{partial}) {
+        my $selected = $params->{select};
+        my @pieces;
+        if (defined $selected) {
+            if (my $ref = ref($selected)) {
+                if ($ref eq 'ARRAY') {
+                    @pieces = @$selected;
+                }
+            }
+            else {
+                @pieces = ($selected);
+            }
+        }
+        # check
+        if (@pieces) {
+            $addtext .= ':' . join(',', @pieces);
+        }
+        require Text::Amuse::Compile::FileName;
+        my $check = Text::Amuse::Compile::FileName->new($addtext);
+        if ($check->name ne $text) {
+            log_error { "$addtext is invalid!" };
+            $addtext = $text;
+        }
+    }
     my $referrer = $c->uri_for_action('/library/text', [$text]);
-    if ($bb->add_text($text)) {
+    if ($bb->add_text($addtext)) {
         $self->save_session($c);
         $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
     }
