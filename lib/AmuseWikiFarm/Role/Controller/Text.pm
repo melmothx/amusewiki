@@ -83,6 +83,8 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
                 return;
             }
         }
+        $c->stash(page_title => HTML::Entities::decode_entities($text->title));
+
     }
     elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
         log_debug { "Found attachment $canonical$append_ext" };
@@ -106,11 +108,10 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         $c->stash(latest_entries => [ $c->stash->{site}->latest_entries ]);
     }
     my $text = $c->stash->{text} or die "WTF?";
-    $c->stash(
-              template => 'text.tt',
-              text => $text,
-              page_title => HTML::Entities::decode_entities($text->title),
-             );
+
+    # we are in a role, so if we don't set this special/text.tt and
+    # library/text.tt will be searched .
+    $c->stash(template => 'text.tt');
     foreach my $listing (qw/authors topics/) {
         my @list;
         my $categories = $text->$listing;
