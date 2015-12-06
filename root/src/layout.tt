@@ -61,11 +61,11 @@
 
     [%# base css for amuse texts %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amuse.css', { v => 1 }) %]" />
+          href="[% c.uri_for('/static/css/amuse.css', { v => 2 }) %]" />
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 18 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 19 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
 
     [%- IF cgit_page %]

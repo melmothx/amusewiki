@@ -154,3 +154,8 @@ blockquote {
     font-family: monospace;
     font-weight: bold;
 }
+
+.amw-bbselect-cell {
+    vertical-align: middle !important;
+    text-align:center
+}
