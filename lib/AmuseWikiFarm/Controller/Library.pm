@@ -84,6 +84,18 @@ sub bbselect :Chained('match') PathPart('bbselect') :Args(0) {
     my ($self, $c) = @_;
     log_debug { "In bbselect" };
     $c->stash(base_url => $c->uri_for('/library/'));
+    my $text = $c->stash->{text};
+    my $struct = $text->text_html_structure;
+    if (my $select = $c->request->params->{selected}) {
+        my %selected = map { $_ => 1 } split(/-/, $select);
+        Dlog_debug { "selecting $_" } \%selected;
+        foreach my $piece (@$struct) {
+            if ($selected{$piece->{index}}) {
+                $piece->{selected} = 1;
+            }
+        }
+    }
+    $c->stash(text_html_structure => $struct);
 }
 
 =encoding utf8

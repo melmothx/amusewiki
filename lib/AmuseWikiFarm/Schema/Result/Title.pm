@@ -815,7 +815,11 @@ sub text_html_structure {
     my $muse = $self->muse_object;
     my @toc = $muse->raw_html_toc;
     my $index = 0;
-    my @out;
+    my @out = ({
+                index => 'pre',
+                padding => 1,
+                highlevel => 1,
+               });
     while (@toc) {
         my $summary = shift @toc;
         my $data = {
@@ -832,6 +836,13 @@ sub text_html_structure {
         }
         $data->{padding} *= 2;
         push @out, $data;
+    }
+    if ($self->notes || $self->source) {
+        push @out, {
+                    index => 'post',
+                    padding => 1,
+                    highlevel => 1,
+                   };
     }
     return \@out;
 }

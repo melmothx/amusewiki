@@ -4,6 +4,7 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -60,9 +61,17 @@ sub index :Chained('root') :PathPart('') :Args(0) {
         }
         $self->save_session($c);
     }
-
-    my @texts = @{ $bb->texts };
-
+    my @texts;
+    foreach my $text (@{$bb->texts}) {
+        my $filename = Text::Amuse::Compile::FileName->new($text);
+        my $data = {
+                    name => $filename->name,
+                   };
+        if (my @fragments = $filename->fragments) {
+            $data->{partials} = join('-', @fragments);
+        }
+        push @texts, $data;
+    }
     if (@texts and $params{build}) {
         # put a limit on accepting slow jobs
         unless ($c->model('DB::Job')->can_accept_further_jobs) {
@@ -81,6 +90,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
             $c->flash->{error_msg} = $c->loc("Couldn't build that");
         }
     }
+    $c->stash(bb_texts => \@texts);
 }
 
 sub edit :Chained('root') :PathPart('edit') :Args(0) {
@@ -137,7 +147,6 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
         if (@pieces) {
             $addtext .= ':' . join(',', @pieces);
         }
-        require Text::Amuse::Compile::FileName;
         my $check = Text::Amuse::Compile::FileName->new($addtext);
         if ($check->name ne $text) {
             log_error { "$addtext is invalid!" };

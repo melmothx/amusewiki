@@ -1,13 +1,14 @@
 <div id="page">
   <div class="center">
-    [% IF text.author %]
-    <h3 id="text-author">[% text.author %]</h3>
-    [% END %]
-    <h1 id="text-title"><a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a></h1>
-    [% IF text.subtitle %] 
-    <h2 id="text-subtitle">[% text.subtitle %]</h2>
-    [% END %]
+    <h3 id="text-title">
+      [% loc('Add sections to the bookbuilder') %]:
+      <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
+      [% IF text.author %]
+      (<span id="text-author">[% text.author %]</span>)
+      [% END %]
+    </h3>
   </div>
+  <div>&nbsp;</div>
   <div class="well">
     <p>
       [% loc("With complex structures, e.g., a chapter with
@@ -31,19 +32,22 @@
       </button>
     </form>
   </div>
-
-
-
-
+  <div>&nbsp;</div>
   <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
         method="POST">
+    <div class="center">
+      <button type="submit" name="add" value="add" class="btn btn-default"
+              id="amw-submit-partial">
+        [% loc('Add the selected parts to the bookbuilder') %]
+      </button>
+    </div>
     <input type="hidden" name="partial" value="1" />
     <table class="table table-striped table-bordered">
       <tr>
         <th><div class="center">[% loc('Section') %]</div></th>
         <th><div class="center">[% loc('Select') %]</div></th>
       </tr>
-      [% FOREACH piece IN text.text_html_structure %]
+      [% FOREACH piece IN text_html_structure %]
       <tr>
         <td>
           <div style="padding-left: [% piece.padding %]em; margin: 5px;"
@@ -51,6 +55,10 @@
             [% IF piece.highlevel %]<strong>[% END %]
             [% IF piece.title == 'start body' %]
             [% loc('Text body, before any section') %]
+            [% ELSIF piece.index == 'pre' %]
+            [% loc('Title, author, date...') %]
+            [% ELSIF piece.index == 'post' %]
+            [% loc('Source, notes...') %]
             [% ELSE %]
             [% piece.title %]
             [% END %]
@@ -59,6 +67,7 @@
         </td>
         <td class="amw-bbselect-cell">
           <input type="checkbox" name="select"
+                 [% IF piece.selected %]checked="checked"[% END %]
                  value="[% piece.index %]" />
         </td>
       </tr>
