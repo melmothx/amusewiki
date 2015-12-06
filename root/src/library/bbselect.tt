@@ -8,24 +8,57 @@
     <h2 id="text-subtitle">[% text.subtitle %]</h2>
     [% END %]
   </div>
+  <div class="well">
+    <p>
+      [% loc("With complex structures, e.g., a chapter with
+      subsections, selecting only the chapter is likely to select only
+      the chapter's title, so probably you want to select the chapter
+      and all its subsections.") %]
+    </p>
+    <p>
+      [% loc("The text structure is shown below.") %]
+    </p>
+  </div>
+  <div class="center">
+    <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
+          id="book-builder-add-text"
+          name="book-builder-add-text"
+          style="display:inline">
+      <button type="submit" class="btn btn-default"
+              title="[% loc('Select all') %]"
+              id="add-to-bookbuilder">
+        [% loc('Add the whole text') %]
+      </button>
+    </form>
+  </div>
+
+
+
+
   <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]">
     <input type="hidden" name="partial" value="1" />
     <table class="table table-striped table-bordered">
       <tr>
-        <th><div class="center">[% loc('Body') %]</div></th>
+        <th><div class="center">[% loc('Section') %]</div></th>
         <th><div class="center">[% loc('Select') %]</div></th>
       </tr>
-      [% FOREACH piece IN text.as_splat_html %]
+      [% FOREACH piece IN text.text_html_structure %]
       <tr>
         <td>
-          <div style="padding: 5px; margin: 5px"
-               id="text-piece-[% piece.piece_index %]">
-            [% piece.piece_body %]
+          <div style="padding-left: [% piece.padding %]em; margin: 5px;"
+               id="text-piece-[% piece.index %]">
+            [% IF piece.highlevel %]<strong>[% END %]
+            [% IF piece.title == 'start body' %]
+            [% loc('Text body, before any section') %]
+            [% ELSE %]
+            [% piece.title %]
+            [% END %]
+            [% IF piece.highlevel %]</strong>[% END %]
           </div>
         </td>
-        <td style="vertical-align:middle; text-align:center">
+        <td class="amw-bbselect-cell">
           <input type="checkbox" name="select"
-                 value="[% piece.piece_index %]" />
+                 value="[% piece.index %]" />
         </td>
       </tr>
       [% END %]
@@ -33,7 +66,7 @@
     <div class="center">
       <button type="submit" name="add" value="add" class="btn btn-default"
               id="amw-submit-partial">
-        [% loc('Add this text to the bookbuilder') %]
+        [% loc('Add the selected parts to the bookbuilder') %]
       </button>
     </div>
   </form>

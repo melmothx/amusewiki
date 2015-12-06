@@ -236,6 +236,22 @@
           </span>
         </button>
       </form>
+      <form action="[% c.uri_for_action('/library/bbselect', [text.uri]) %]"
+            id="book-builder-add-text-partial"
+            name="book-builder-add-text-partial"
+            style="display:inline">
+        <button type="submit" class="btn btn-default"
+                title="[% loc('Select individual parts for the bookbuilder') %]"
+                id="add-to-bookbuilder-partial">
+          <span class="glyphicon glyphicon-list-alt"
+                style="font-size: 1.5em"></span>
+          <span class="glyphicon glyphicon-plus"
+                style="font-size: 1.5em"></span>
+          <span style="display:none">
+            [% loc('Select individual parts for the bookbuilder') %]
+          </span>
+        </button>
+      </form>
     </div>
   </div>
   </div>

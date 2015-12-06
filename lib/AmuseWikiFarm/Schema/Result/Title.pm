@@ -810,17 +810,28 @@ sub muse_object {
     return Text::Amuse->new(file => $self->f_full_path_name);
 }
 
-sub as_splat_html {
+sub text_html_structure {
     my $self = shift;
-    my @pieces = $self->muse_object->as_splat_html;
-    my @out;
+    my $muse = $self->muse_object;
+    my @toc = $muse->raw_html_toc;
     my $index = 0;
-    while (@pieces) {
-        my $piece = shift @pieces;
-        push @out, {
-                    piece_index => $index++,
-                    piece_body => $piece,
+    my @out;
+    while (@toc) {
+        my $summary = shift @toc;
+        my $data = {
+                    title => $summary->{string},
+                    index => $index++,
+                    toc => $summary->{index},
+                    padding => 1,
                    };
+        if ($summary->{index}) {
+            $data->{padding} += $summary->{level};
+        }
+        if ($data->{toc} && $data->{padding} < 4) {
+            $data->{highlevel} = 1;
+        }
+        $data->{padding} *= 2;
+        push @out, $data;
     }
     return \@out;
 }
