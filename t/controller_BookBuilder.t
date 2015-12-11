@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 101;
+use Test::More tests => 105;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -106,6 +106,9 @@ foreach my $cover (qw/shot.jpg shot.png/) {
             ok ($job, "Found the job $jid");
             $job->dispatch_job;
             ok ($job->produced);
+            ok ($job->job_files->search({ slot => 'cover' })->count,
+                "Found the cover");
+            diag Dumper([$job->produced_files]);
             push @purge, $job;
         }
         else {
@@ -201,7 +204,7 @@ if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
 }
 
 foreach my $purgef (@purge) {
-    diag "Purging " . $purgef->id;
+    diag "Purging " . $purgef->id . ' ' . join (' ', $purgef->produced_files);
     $purgef->delete;
 }
 
