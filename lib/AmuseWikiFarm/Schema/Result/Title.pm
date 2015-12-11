@@ -800,6 +800,7 @@ sub delete {
     # do the deletion
     my $exit = $self->next::method;
     foreach my $cat (@categories) {
+        log_debug { "Updating count update for " . $cat->name };
         $cat->title_count_update;
     }
     return $exit;
