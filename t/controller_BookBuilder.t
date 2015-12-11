@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 118;
+use Test::More tests => 119;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -213,6 +213,8 @@ $mech->content_lacks('do-this-by-yourself/bbselect');
 
 $mech->submit_form(with_fields => {
                                    title => 'x',
+                                   coverimage => File::Spec->catfile(qw/t files
+                                                                        shot.png/),
                                   },
                    button => 'build');
 
@@ -226,7 +228,9 @@ if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
                                            'second-test:pre,1',
                                            'do-this-by-yourself',
                                           ], "List is ok");
-    $job->delete;
+    $job->dispatch_job;
+    ok ($job->job_files->search({ slot => 'cover' })->count, "Found the cover"),
+    push @purge, $job;
 }
 else {
     die $mech->uri->path . "is not a tasks url one";
