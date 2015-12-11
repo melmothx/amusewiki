@@ -1,0 +1,84 @@
+<div id="page">
+  <div class="center">
+    <h3 id="text-title">
+      [% loc('Add sections to the bookbuilder') %]:
+      <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
+      [% IF text.author %]
+      (<span id="text-author">[% text.author %]</span>)
+      [% END %]
+    </h3>
+  </div>
+  <div>&nbsp;</div>
+  <div class="well">
+    <p>
+      [% loc("With complex structures, e.g., a chapter with
+      subsections, selecting only the chapter is likely to select only
+      the chapter's title, so probably you want to select the chapter
+      and all its subsections.") %]
+    </p>
+    <p>
+      [% loc("The text structure is shown below.") %]
+    </p>
+  </div>
+  <div class="center">
+    <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
+          id="book-builder-add-text"
+          name="book-builder-add-text"
+          style="display:inline">
+      <button type="submit" class="btn btn-default"
+              title="[% loc('Select all') %]"
+              id="add-to-bookbuilder">
+        [% loc('Add the whole text') %]
+      </button>
+    </form>
+  </div>
+  <div>&nbsp;</div>
+  <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
+        id="book-builder-add-text-partial"
+        method="POST">
+    <div class="center">
+      <button type="submit" name="add" value="add" class="btn btn-default"
+              id="amw-submit-partial">
+        [% loc('Add the selected parts to the bookbuilder') %]
+      </button>
+    </div>
+    <input type="hidden" name="partial" value="1" />
+    <table class="table table-striped table-bordered">
+      <tr>
+        <th><div class="center">[% loc('Section') %]</div></th>
+        <th><div class="center">[% loc('Select') %]</div></th>
+      </tr>
+      [% FOREACH piece IN text_html_structure %]
+      <tr>
+        <td>
+          <div style="padding-left: [% piece.padding %]em; margin: 5px;"
+               id="text-piece-[% piece.index %]">
+            [% IF piece.highlevel %]<strong>[% END %]
+            [% IF piece.title == 'start body' %]
+            [% loc('Text body, before any section') %]
+            [% ELSIF piece.index == 'pre' %]
+            [% loc('Title, author, date...') %]
+            [% ELSIF piece.index == 'post' %]
+            [% loc('Source, notes...') %]
+            [% ELSE %]
+            [% piece.title %]
+            [% END %]
+            [% IF piece.highlevel %]</strong>[% END %]
+          </div>
+        </td>
+        <td class="amw-bbselect-cell">
+          <input type="checkbox" name="select"
+                 [% IF piece.selected %]checked="checked"[% END %]
+                 value="[% piece.index %]" />
+        </td>
+      </tr>
+      [% END %]
+    </table>
+    <div class="center">
+      <button type="submit" name="add" value="add" class="btn btn-default"
+              id="amw-submit-partial">
+        [% loc('Add the selected parts to the bookbuilder') %]
+      </button>
+    </div>
+  </form>
+</div>

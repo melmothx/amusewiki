@@ -22,6 +22,7 @@ use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
 use Text::Amuse::Compile::Webfonts;
 use Text::Amuse::Compile::TemplateOptions;
+use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -668,15 +669,16 @@ sub add_text {
     return unless defined $text;
     # cleanup the error
     $self->error(undef);
+    my $filename = Text::Amuse::Compile::FileName->new($text);
     my $to_add;
-    if (muse_filename_is_valid($text)) {
+    if (muse_filename_is_valid($filename->name)) {
         # additional checks if we have the site.
         if (my $site = $self->site) {
-            if (my $title = $site->titles->text_by_uri($text)) {
+            if (my $title = $site->titles->text_by_uri($filename->name)) {
                 my $limit = $site->bb_page_limit;
                 my $total = $self->total_pages_estimated + $title->pages_estimated;
                 if ($total <= $limit) {
-                    $to_add = $text;
+                    $to_add = $filename->name_with_fragments;
                 }
                 else {
                     # loc("Quota exceeded, too many pages")
@@ -690,7 +692,7 @@ sub add_text {
         }
         # no site check
         else {
-            $to_add = $text;
+            $to_add = $filename->name_with_fragments;
         }
     }
     if ($to_add) {
@@ -941,13 +943,17 @@ sub compile {
 
     # validate the texts passed looking up the uri in the db
     my @texts;
-    foreach my $text (@$textlist) {
+    Dlog_debug { "Text list is $_" } $textlist;
+    foreach my $filename (@$textlist) {
+        my $fileobj = Text::Amuse::Compile::FileName->new($filename);
+        my $text = $fileobj->name;
+        log_debug { "Checking $text" };
         my $title = $self->site->titles->text_by_uri($text);
         unless ($title) {
             log_warn  { "Couldn't find $text\n" };
             next;
         }
-        push @texts, $text;
+        push @texts, $fileobj;
         if ($archives{$text}) {
             next;
         }
@@ -1013,9 +1019,8 @@ sub compile {
 
     if (@texts == 1) {
         my $basename = shift(@texts);
-        my $fileout   = $makeabs->($basename . '.' . $self->_produced_file_extension);
-        $compiler->compile($makeabs->($basename . '.muse'));
-
+        my $fileout   = $makeabs->($basename->name . '.' . $self->_produced_file_extension);
+        $compiler->compile($makeabs->($basename->name_with_ext_and_fragments));
         if (-f $fileout) {
             move($fileout, $outfile) or die "Couldn't move $fileout to $outfile";
         }
@@ -1023,7 +1028,7 @@ sub compile {
     else {
         my $target = {
                       path => $basedir,
-                      files => \@texts,
+                      files => [ map { $_->name_with_fragments } @texts ],
                       name => $self->job_id,
                       title => $data->{title},
                      };

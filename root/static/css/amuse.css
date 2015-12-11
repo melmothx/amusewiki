@@ -119,22 +119,25 @@ div#tableofcontents{
 
 .toclevel1 {
 	font-weight: bold;
-	font-size:11pt
+	font-size:11pt;
 }	
 
 .toclevel2 {
 	font-weight: bold;
 	font-size: 10pt;
+    padding-left: 10pt;
 }
 
 .toclevel3 {
 	font-weight: normal;
 	font-size: 9pt;
+    padding-left: 20pt;
 }
 
 .toclevel4 {
 	font-weight: normal;
 	font-size: 8pt;
+    padding-left: 30pt;
 }
 
 

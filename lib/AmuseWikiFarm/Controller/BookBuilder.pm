@@ -4,6 +4,7 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -60,9 +61,17 @@ sub index :Chained('root') :PathPart('') :Args(0) {
         }
         $self->save_session($c);
     }
-
-    my @texts = @{ $bb->texts };
-
+    my @texts;
+    foreach my $text (@{$bb->texts}) {
+        my $filename = Text::Amuse::Compile::FileName->new($text);
+        my $data = {
+                    name => $filename->name,
+                   };
+        if (my @fragments = $filename->fragments) {
+            $data->{partials} = join('-', @fragments);
+        }
+        push @texts, $data;
+    }
     if (@texts and $params{build}) {
         # put a limit on accepting slow jobs
         unless ($c->model('DB::Job')->can_accept_further_jobs) {
@@ -81,6 +90,7 @@ sub index :Chained('root') :PathPart('') :Args(0) {
             $c->flash->{error_msg} = $c->loc("Couldn't build that");
         }
     }
+    $c->stash(bb_texts => \@texts);
 }
 
 sub edit :Chained('root') :PathPart('edit') :Args(0) {
@@ -117,8 +127,34 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
     my ( $self, $c, $text ) = @_;
     my $bb   = $c->stash->{bb};
     my $site = $c->stash->{site};
+    my $params = $c->request->body_params;
+    my $addtext = $text;
+    Dlog_debug { "params: $_" } $params;
+    if ($params->{partial}) {
+        my $selected = $params->{select};
+        my @pieces;
+        if (defined $selected) {
+            if (my $ref = ref($selected)) {
+                if ($ref eq 'ARRAY') {
+                    @pieces = @$selected;
+                }
+            }
+            else {
+                @pieces = ($selected);
+            }
+        }
+        # check
+        if (@pieces) {
+            $addtext .= ':' . join(',', @pieces);
+        }
+        my $check = Text::Amuse::Compile::FileName->new($addtext);
+        if ($check->name ne $text) {
+            log_error { "$addtext is invalid!" };
+            $addtext = $text;
+        }
+    }
     my $referrer = $c->uri_for_action('/library/text', [$text]);
-    if ($bb->add_text($text)) {
+    if ($bb->add_text($addtext)) {
         $self->save_session($c);
         $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
     }

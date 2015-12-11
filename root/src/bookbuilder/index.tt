@@ -15,18 +15,24 @@
                                      table-bordered">
     <tr>
       <th>[% loc('URI') %]</th>
+      <th>[% loc('Partial selection') %]</th>
       <th>[% loc('Action') %]</th>
     </tr>
     [% textindex = 1 %]
-    [% FOREACH book IN bb.texts %]
+    [% FOREACH book IN bb_texts %]
     <tr>
       <td>
-        <a href="[% c.uri_for('/library', book) %]">[% book %]</a>
+        <a href="[% c.uri_for_action('/library/text', [book.name] ) %]">[% book.name %]</a>
+      </td>
+      <td>
+        [% IF book.partials %]
+        <a href="[% c.uri_for_action('/library/bbselect', [book.name], { selected => book.partials }) %]">[% loc('Yes') %]</a>
+        [% END %]
       </td>
       <td>
         <form action="[% c.uri_for('/bookbuilder/edit') %]" method="post"
               id="bookbuilder-edit-list-[% textindex %]">
-          <input type="hidden" name="text"      value="[% book  %]" />
+          <input type="hidden" name="text"      value="[% book.name  %]" />
           <input type="hidden" name="textindex" value="[% textindex %]" />
           <button type="submit" name="moveup" value="up" class="btn btn-default">
             [% loc('Move up') %]
@@ -46,9 +52,12 @@
       <td>
         [% loc('Total pages') %]: [% bb.total_pages_estimated %]
       </td>
+      <td></td>
       <td>
         <div id="bb-clear-all">
-          <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
+          <form action="[% c.uri_for('/bookbuilder/clear') %]"
+                id="bb-clear-all-form"
+                method="post">
             <button type="submit" name="clear" value="clear" class="btn btn-default">
               [% loc('Clear the book list') %]
             </button>

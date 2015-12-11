@@ -368,6 +368,7 @@ use Text::Amuse::Compile::Utils qw/read_file/;
 use DateTime;
 use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
+use Text::Amuse;
 
 =head2 listing
 
@@ -802,6 +803,48 @@ sub delete {
         $cat->title_count_update;
     }
     return $exit;
+}
+
+sub muse_object {
+    my $self = shift;
+    return Text::Amuse->new(file => $self->f_full_path_name);
+}
+
+sub text_html_structure {
+    my $self = shift;
+    my $muse = $self->muse_object;
+    my @toc = $muse->raw_html_toc;
+    my $index = 0;
+    my @out = ({
+                index => 'pre',
+                padding => 1,
+                highlevel => 1,
+               });
+    while (@toc) {
+        my $summary = shift @toc;
+        my $data = {
+                    title => $summary->{string},
+                    index => $index++,
+                    toc => $summary->{index},
+                    padding => 1,
+                   };
+        if ($summary->{index}) {
+            $data->{padding} += $summary->{level};
+        }
+        if ($data->{toc} && $data->{padding} < 4) {
+            $data->{highlevel} = 1;
+        }
+        $data->{padding} *= 2;
+        push @out, $data;
+    }
+    if ($self->notes || $self->source) {
+        push @out, {
+                    index => 'post',
+                    padding => 1,
+                    highlevel => 1,
+                   };
+    }
+    return \@out;
 }
 
 __PACKAGE__->meta->make_immutable;
