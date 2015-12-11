@@ -34,6 +34,7 @@
   </div>
   <div>&nbsp;</div>
   <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
+        id="book-builder-add-text-partial"
         method="POST">
     <div class="center">
       <button type="submit" name="add" value="add" class="btn btn-default"

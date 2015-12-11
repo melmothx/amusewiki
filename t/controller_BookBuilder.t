@@ -1,11 +1,17 @@
 use strict;
 use warnings;
-use Test::More tests => 64;
+use Test::More tests => 84;
 use File::Spec;
 use Data::Dumper;
+use File::Spec::Functions qw/catfile/;
+use Cwd;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
+
+my $init = catfile(getcwd(), qw/script jobber.pl/);
+# kill the jobber
+ok(system($init, 'stop') == 0) or die "Couldn't stop the jobber";
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -100,7 +106,70 @@ $mech->submit_form(with_fields => {
 $mech->get('/bookbuilder/cover');
 is $mech->status, '404', "Cover not found with removecover";
 
+
+$mech->get('/bookbuilder');
+$mech->content_lacks('HASH(');
+
+$mech->submit_form(form_id => 'bb-clear-all-form',
+                   button => "clear");
+
+$mech->content_contains('bb-instructions-1.png') or diag $mech->content;
+
+$mech->get('/library/first-test');
+
+$mech->submit_form(form_id => 'book-builder-add-text-partial');
+
+is $mech->uri->path, '/library/first-test/bbselect';
+
+ok($mech->form_id("book-builder-add-text-partial"), "Found form for partials");
+
+my @inputs = $mech->grep_inputs({ type => qr{^checkbox$},
+                                  name => qr{^select$} });
+is (scalar(@inputs), 4, "Found 4 checkboxes");
+
+# pre and post should already be selected
+$mech->tick(select => '0');
+$mech->click;
+is $mech->uri->path, '/library/first-test', "Back to the text";
+$mech->get_ok('/bookbuilder');
+# check the link
+$mech->content_contains('first-test/bbselect?selected=pre-0-post"');
+
+$mech->get_ok('/library/second-test');
+$mech->submit_form(form_id => 'book-builder-add-text-partial');
+ok($mech->form_id("book-builder-add-text-partial"), "Found form for partials");
+@inputs = $mech->grep_inputs({ type => qr{^checkbox$},
+                               name => qr{^select$} });
+is (scalar(@inputs), 3, "Found 3 checkbox");
+$mech->tick(select => '1');
+$mech->click;
+$mech->get_ok('/bookbuilder');
+$mech->content_contains('second-test/bbselect?selected=pre-1"');
+
+$mech->get_ok('/library/do-this-by-yourself');
+$mech->submit_form(form_id => 'book-builder-add-text');
+$mech->get_ok('/bookbuilder');
+$mech->content_contains('/library/do-this-by-yourself');
+$mech->content_lacks('do-this-by-yourself/bbselect');
+
+$mech->submit_form(with_fields => {
+                                   title => 'x',
+                                  },
+                   button => 'build');
+
+if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
+    my $job = $site->jobs->find($1);
+    ok ($job, "Found the job");
+    # diag Dumper($job->job_data);
+    # this is all we need for the compiler to work
+    is_deeply($job->job_data->{textlist}, [
+                                           'first-test:pre,0,post',
+                                           'second-test:pre,1',
+                                           'do-this-by-yourself',
+                                          ], "List is ok");
+    $job->delete;
+}
+
 $site->locale($orig_locale);
 $site->update->discard_changes;
-
 diag "Locale restored to " . $site->locale;
