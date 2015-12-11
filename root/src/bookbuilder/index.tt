@@ -55,7 +55,9 @@
       <td></td>
       <td>
         <div id="bb-clear-all">
-          <form action="[% c.uri_for('/bookbuilder/clear') %]" method="post">
+          <form action="[% c.uri_for('/bookbuilder/clear') %]"
+                id="bb-clear-all-form"
+                method="post">
             <button type="submit" name="clear" value="clear" class="btn btn-default">
               [% loc('Clear the book list') %]
             </button>
