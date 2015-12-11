@@ -109,6 +109,17 @@ the archive's database.
 
 =cut
 
+sub delete_text {
+    my ($self, $text, $logger) = @_;
+    eval {
+        my $qterm = 'Q' . $text->uri;
+        $self->xapian_db->delete_document_by_term($qterm);
+        log_debug { "Removed $qterm from xapian db" };
+    };
+    if ($@ && $logger) {
+        $logger->("couldn't remove text: $@");
+    }
+}
 
 sub index_text {
     my ($self, $title, $logger) = @_;

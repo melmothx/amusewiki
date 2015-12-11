@@ -797,6 +797,7 @@ Delete method is overload to update the category text count.
 sub delete {
     my $self = shift;
     my @categories = $self->categories;
+    $self->site->xapian->delete_text($self);
     # do the deletion
     my $exit = $self->next::method;
     foreach my $cat (@categories) {
