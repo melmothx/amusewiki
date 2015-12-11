@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 84;
+use Test::More tests => 101;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -86,23 +86,53 @@ $mech->get('/bookbuilder/cover');
 is ($mech->status, '404');
 $mech->get('/bookbuilder');
 
+my @purge;
 foreach my $cover (qw/shot.jpg shot.png/) {
+    $mech->get_ok('/bookbuilder');
     my $coverfile = File::Spec->catfile(qw/t files/, $cover);
     my $res = $mech->submit_form(with_fields => {
                                                  coverimage => $coverfile,
                                                 },
                                  button => 'update',
                                 );
-
-    $mech->get_ok('/bookbuilder/cover');
-    $mech->get_ok('/bookbuilder');
+    for (1..2) {
+        $mech->get_ok('/bookbuilder/cover');
+        $mech->get_ok('/bookbuilder');
+        $mech->submit_form(with_fields => { title => $cover },
+                           button => 'build');
+        if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
+            my $jid = $1;
+            my $job = $site->jobs->find($jid);
+            ok ($job, "Found the job $jid");
+            $job->dispatch_job;
+            ok ($job->produced);
+            push @purge, $job;
+        }
+        else {
+            die "No task path . " . $mech->uri->path ;
+        }
+    }
 }
 
+
+$mech->get_ok('/bookbuilder');
 $mech->submit_form(with_fields => {
                                    removecover => 1,
                                   },
-                   button => 'update',
+                   button => 'build',
                   );
+if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
+    my $jid = $1;
+    my $job = $site->jobs->find($jid);
+    ok ($job, "Found the job $jid");
+    $job->dispatch_job;
+    ok ($job->produced);
+    push @purge, $job;
+}
+else {
+    die "No task path . " . $mech->uri->path ;
+}
+
 $mech->get('/bookbuilder/cover');
 is $mech->status, '404', "Cover not found with removecover";
 
@@ -170,6 +200,12 @@ if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
     $job->delete;
 }
 
+foreach my $purgef (@purge) {
+    diag "Purging " . $purgef->id;
+    $purgef->delete;
+}
+
 $site->locale($orig_locale);
 $site->update->discard_changes;
 diag "Locale restored to " . $site->locale;
+
