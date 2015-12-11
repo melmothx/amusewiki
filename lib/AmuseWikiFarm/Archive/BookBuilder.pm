@@ -756,7 +756,15 @@ sub _modify_list {
 }
 
 sub delete_all {
+    # clear the list, the cover and the title, but keep the rest
     shift->textlist([]);
+}
+
+sub clear {
+    my $self = shift;
+    $self->delete_all;
+    $self->title(undef);
+    $self->remove_cover;
 }
 
 =head2 texts

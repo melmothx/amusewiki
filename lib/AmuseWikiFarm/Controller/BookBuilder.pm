@@ -115,8 +115,12 @@ sub edit :Chained('root') :PathPart('edit') :Args(0) {
 
 sub clear :Chained('root') :PathPart('clear') :Args(0) {
     my ($self, $c) = @_;
+    $c->stash->{bb}->clear;
     if ($c->request->params->{clear}) {
-        # override with a shiny new thing
+        $self->save_session($c);
+        log_debug { 'Cleared bookbuilder in the session' };
+    }
+    elsif ($c->request->params->{reset}) {
         log_debug { 'Resetting bookbuilder in the session' };
         $c->session->{bookbuilder} = {};
     }
@@ -154,6 +158,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
         }
     }
     my $referrer = $c->uri_for_action('/library/text', [$text]);
+    log_debug { "Added $addtext" };
     if ($bb->add_text($addtext)) {
         $self->save_session($c);
         $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
@@ -169,6 +174,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
 sub cover :Chained('root') :Args(0) {
     my ($self, $c) = @_;
     if (my $cover = $c->stash->{bb}->coverfile_path) {
+        log_debug { "serving $cover" };
         $c->stash(serve_static_file => $cover);
         $c->detach($c->view('StaticFile'));
     }

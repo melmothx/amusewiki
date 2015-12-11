@@ -569,6 +569,8 @@ sub dispatch_job_bookbuilder {
     my ($self, $logger) = @_;
     my $bb = $self->bookbuilder;
     if (my $file = $bb->compile($logger)) {
+        my $schema = $self->result_source->schema;
+        my $guard = $schema->txn_scope_guard;
         $self->add_to_job_files({
                                  filename => $bb->produced_filename,
                                  slot => 'produced',
@@ -578,11 +580,18 @@ sub dispatch_job_bookbuilder {
                                   slot => 'sources',
                                 });
         if (my $cover = $bb->coverfile) {
+            # we register it here because we usually want to delete
+            # this on job removal. *But*, this file can be reused by
+            # subsequent jobs. So the latest wins and takes it over.
+            if (my $exist = $schema->resultset('JobFile')->find($cover)) {
+                $exist->delete;
+            }
             $self->add_to_job_files({
                                      filename => $cover,
                                      slot => 'cover',
                                     });
         }
+        $guard->commit;
         return '/custom/' . $bb->produced_filename;
     }
     return;
@@ -592,7 +601,7 @@ before delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;
     foreach my $file (@leftovers) {
-        log_warn { "Unlinking $file after job removal" };
+        log_info { "Unlinking $file after job removal" };
         unlink $file or log_error { "Cannot unlink $file $!" };
     }
 };

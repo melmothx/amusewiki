@@ -61,6 +61,9 @@
             <button type="submit" name="clear" value="clear" class="btn btn-default">
               [% loc('Clear the book list') %]
             </button>
+            <button type="submit" name="reset" value="reset" class="btn btn-default">
+              [% loc('Reset all') %]
+            </button>
           </form>
         </div>
       </td>

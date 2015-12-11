@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 84;
+use Test::More tests => 119;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -86,23 +86,56 @@ $mech->get('/bookbuilder/cover');
 is ($mech->status, '404');
 $mech->get('/bookbuilder');
 
+my @purge;
 foreach my $cover (qw/shot.jpg shot.png/) {
+    $mech->get_ok('/bookbuilder');
     my $coverfile = File::Spec->catfile(qw/t files/, $cover);
     my $res = $mech->submit_form(with_fields => {
                                                  coverimage => $coverfile,
                                                 },
                                  button => 'update',
                                 );
-
-    $mech->get_ok('/bookbuilder/cover');
-    $mech->get_ok('/bookbuilder');
+    for (1..2) {
+        $mech->get_ok('/bookbuilder/cover');
+        $mech->get_ok('/bookbuilder');
+        $mech->submit_form(with_fields => { title => $cover },
+                           button => 'build');
+        if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
+            my $jid = $1;
+            my $job = $site->jobs->find($jid);
+            ok ($job, "Found the job $jid");
+            $job->dispatch_job;
+            ok ($job->produced);
+            ok ($job->job_files->search({ slot => 'cover' })->count,
+                "Found the cover");
+            diag Dumper([$job->produced_files]);
+            push @purge, $job;
+        }
+        else {
+            die "No task path . " . $mech->uri->path ;
+        }
+    }
 }
 
+
+$mech->get_ok('/bookbuilder');
 $mech->submit_form(with_fields => {
                                    removecover => 1,
                                   },
-                   button => 'update',
+                   button => 'build',
                   );
+if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
+    my $jid = $1;
+    my $job = $site->jobs->find($jid);
+    ok ($job, "Found the job $jid");
+    $job->dispatch_job;
+    ok ($job->produced);
+    push @purge, $job;
+}
+else {
+    die "No task path . " . $mech->uri->path ;
+}
+
 $mech->get('/bookbuilder/cover');
 is $mech->status, '404', "Cover not found with removecover";
 
@@ -110,10 +143,36 @@ is $mech->status, '404', "Cover not found with removecover";
 $mech->get('/bookbuilder');
 $mech->content_lacks('HASH(');
 
-$mech->submit_form(form_id => 'bb-clear-all-form',
-                   button => "clear");
+foreach my $fmt (qw/pdf epub/) {
+    $mech->get_ok('/bookbuilder/add/first-test');
+    $mech->get('/bookbuilder');
+    $mech->form_id('bbform');
+    $mech->field(format => $fmt);
+    $mech->click('update');
+    $mech->submit_form(form_id => 'bb-clear-all-form',
+                       button => "clear");
+    $mech->get_ok('/bookbuilder/add/first-test');
+    $mech->get('/bookbuilder');
+    $mech->content_like(qr{value="\Q$fmt\E"\s+checked="checked"},
+                       "Settings are the same ($fmt)");
 
-$mech->content_contains('bb-instructions-1.png') or diag $mech->content;
+    $mech->submit_form(form_id => 'bb-clear-all-form',
+                       button => "reset");
+    $mech->content_contains('bb-instructions-1.png') or diag $mech->content;
+
+    $mech->get_ok('/bookbuilder/add/first-test');
+    $mech->get('/bookbuilder');
+    $mech->content_like(qr{value="pdf"\s+checked="checked"},
+                       "Settings are back to factory");
+    $mech->submit_form(form_id => 'bb-clear-all-form',
+                       button => "reset");
+    $mech->content_contains('bb-instructions-1.png') or diag $mech->content;
+
+}
+
+
+
+
 
 $mech->get('/library/first-test');
 
@@ -154,6 +213,8 @@ $mech->content_lacks('do-this-by-yourself/bbselect');
 
 $mech->submit_form(with_fields => {
                                    title => 'x',
+                                   coverimage => File::Spec->catfile(qw/t files
+                                                                        shot.png/),
                                   },
                    button => 'build');
 
@@ -167,9 +228,20 @@ if ($mech->uri->path =~ m{tasks/status/([0-9]+)}) {
                                            'second-test:pre,1',
                                            'do-this-by-yourself',
                                           ], "List is ok");
-    $job->delete;
+    $job->dispatch_job;
+    ok ($job->job_files->search({ slot => 'cover' })->count, "Found the cover"),
+    push @purge, $job;
+}
+else {
+    die $mech->uri->path . "is not a tasks url one";
+}
+
+foreach my $purgef (@purge) {
+    diag "Purging " . $purgef->id . ' ' . join (' ', $purgef->produced_files);
+    $purgef->delete;
 }
 
 $site->locale($orig_locale);
 $site->update->discard_changes;
 diag "Locale restored to " . $site->locale;
+
