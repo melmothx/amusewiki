@@ -6,19 +6,20 @@ set -e
 
 AMWHOME=`pwd`
 TEXMIRROR=ctan.ijs.si/tex-archive
+AMWLOGFILE=`tempfile`
 
 missing='no'
 for command in perl cpanm fc-cache convert gm update-mime-database delve openssl \
-               make gcc wget; do
+               hostname make gcc wget git unzip rsync; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
         echo "YES";
     else
-        if [ $command == 'delve' ]; then
+        if [ $command = 'delve' ]; then
             echo "NO, please install xapian and the devel package"
-        elif [ $command == 'make' ]; then
+        elif [ $command = 'make' ]; then
             echo "NO, please install build essential utils"
-        elif [ $command == 'gm' ]; then
+        elif [ $command = 'gm' ]; then
             echo "NO, please install graphicsmagick"
         else
             echo "NO, please install it"
@@ -26,6 +27,24 @@ for command in perl cpanm fc-cache convert gm update-mime-database delve openssl
         missing='yes'
     fi
 done
+
+if [ "`hostname -d`x" = "x" ]; then
+    echo "I can't determine your domain name with hostname -d, bailing out"
+    exit 2;
+else
+    echo "Your domain is `hostname -d`"
+fi
+
+# even centos is suggested to listen here
+# https://www.howtoforge.com/serving-cgi-scripts-with-nginx-on-centos-6.0-p2
+echo -n "Checking if fcgiwrap is listening: "
+if [ -S /var/run/fcgiwrap.socket ]; then
+    echo "OK";
+else
+    echo "fcgiwrap socket in /var/run/fcgiwrap.socket not found! Needed for cgit";
+    exit 2;
+fi
+
 
 if [ "$missing" != "no" ]; then
     cat <<EOF
@@ -85,6 +104,7 @@ cpanm -q --installdeps .
 # assert we can modify it and patch this stuff
 cpanm -q --reinstall CAM::PDF
 script/patch-cam-pdf.sh
+make
 
 # check if I can access to the db
 
@@ -160,7 +180,25 @@ if [ ! -f "$texbindir/xetex" ]; then
     exit 2;
 fi
 export PATH=$texbindir:$PATH
+
+cat <<EOF >> $AMWLOGFILE
+Please add to your .bashrc (or equivalent):
+
+export PATH=$texbindir:\$PATH
+
+EOF
+
 if [ `which xelatex` !=  "$texbindir/xelatex" ]; then
     echo "Cannnot find xelatex in $texbindir, something went wrong!";
 fi
 
+# install the first site and the first user. No PDF compile
+echo "Bootstrapping the initial site with the documentation"
+
+
+./script/install_amw_site.pl >> $AMWLOGFILE
+
+echo "Installing needed JS"
+./script/install_js.sh
+cat $AMWLOGFILE
+rm $AMWLOGFILE

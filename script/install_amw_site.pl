@@ -108,7 +108,7 @@ unless (-d $repo_root) {
     }
 }
 # compile
-$site->update_db_from_tree;
+$site->update_db_from_tree(sub { });
 
 my $user = $schema->resultset('User')->create({
                                                username => $username,

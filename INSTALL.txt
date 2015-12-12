@@ -6,21 +6,11 @@ Prerequisites:
  - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
  - TeXlive (minimum: texlive 2012)
  - a mime-info database: shared-mime-info on debian
+ - a dedicated system user (with a clean home) which is going to run the site
 
-Unpack the sources and change directory into them.
+Log in as the user you want to run the site.
 
-Install Catalyst
-
- cpanm Module::Install::Catalyst
-
-Execute "perl Makefile.PL" and install the dependencies if it complains.
-
-Execute make
-
-
-Answer yes to install the modules with cpan. Also, depending on the
-database you are going to use, you need the relevant driver, like
-lidbd-pg-perl for debian (or install it from CPAN).
+Unpack the sources (or clone the repo) and change directory into them.
 
 Create a database for the application. E.g., for mysql:
 
@@ -37,33 +27,21 @@ Login as root.
  create user amuse with password 'XXXX';
  create database amuse owner amuse;
 
+For sqlite you just to setup the filename in the dbic.yaml file (it
+doesn't need to exist).
+
 Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
 credentials, and chmod it to 600.
 
-Install TeXlive.
+Execute:
 
-https://www.tug.org/texlive/acquire-netinstall.html
+./script/install.sh
 
-This is a sample configuration of the installer:
-
- <1> TEXDIR:       /home/amuse/texlive/2014
-     support tree: /home/amuse/texlive/2014/texmf-dist
-
- <2> TEXMFLOCAL:     /home/amuse/texlive/texmf-local
- <3> TEXMFSYSVAR:    /home/amuse/texlive/2014/texmf-var
- <4> TEXMFSYSCONFIG: /home/amuse/texlive/2014/texmf-config
-
- <5> TEXMFVAR:       ~/.texlive2014/texmf-var
- <6> TEXMFCONFIG:    ~/.texlive2014/texmf-config
- <7> TEXMFHOME:      ~/texmf
+The script is going to take care of the installation in a
+non-interactive fashion.
 
 
- Add /home/amuse/texlive/2014/texmf-dist/doc/info to INFOPATH.
- Add /home/amuse/texlive/2014/texmf-dist/doc/man to MANPATH
-   (if not dynamically found).
 
- Most importantly, add /home/amuse/texlive/2014/bin/x86_64-linux
- to your PATH for current and future sessions.
 
 The needed fonts are shipped in texlive, under texmf-dist/fonts/, so
 it's usually enough to symlink them into ~/.fonts.
