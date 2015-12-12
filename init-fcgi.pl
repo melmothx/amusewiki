@@ -26,7 +26,7 @@ my $socket = File::Spec->catfile($vardir, 'amw.sock');
 
 die "Don't run as root!" unless $uid && $gid;
 
-my $workers = $ENV{AMW_WORKERS} || 1;
+my $workers = $ENV{AMW_WORKERS} || 3;
 
 Daemon::Control->new({
                       name => "amusewiki-webapp",

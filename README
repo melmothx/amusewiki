@@ -249,7 +249,7 @@ you are missing the required fonts.
 The init script is located at the root directory: "init-all.sh"
 
 To set the number of FCGI workers, set the environment variable
-AMW_WORKERS. Default to 1. E.g.
+AMW_WORKERS. Default to 3. E.g.
 
 AMW_WORKERS=5 ./init-all.sh start
 
