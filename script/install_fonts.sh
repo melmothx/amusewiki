@@ -2,6 +2,8 @@
 
 set -e
 
+echo "Checking and installing missing fonts"
+
 texfontsdir=$HOME/texlive/2015/texmf-dist/fonts
 if [ ! -d $texfontsdir ]; then
     texfontsdir=$HOME/texlive/2014/texmf-dist/fonts

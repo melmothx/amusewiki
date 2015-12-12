@@ -41,32 +41,6 @@ Execute:
 The script is going to take care of the installation in a
 non-interactive fashion.
 
-
-
-
-The needed fonts are shipped in texlive, under texmf-dist/fonts/, so
-it's usually enough to symlink them into ~/.fonts.
-
-Fonts needed: antt  cm-unicode  libertine  paratype  poltawski  tex-gyre iwona droids
-
-The SIL charis font is not shipped by texlive, but it's usually
-packaged by your distro. Or download it at
-http://www.sil.org/resources/software_fonts/charis-sil
-
-Put the fonts into ~/.fonts and execute fc-cache. (You can find more detailed instructions in BUILD-SERVER.txt).
-
-To test if everything is working as expected, go to ./font-preview and
-run ./gen.sh
-
-Disregard the copious output of missing characters, this is fine (as
-we use this to test them).
-
-For the EPUB to have the font bundling, you need to populate the
-webfonts subdirectories with the fonts.
-
-Go into the webfonts directory and run ./populate-webfonts.pl from
-there.
-
 If you use logos in your pdfs, put them under in texmf (e.g
 $HOME/texmf/tex/generic/amusewiki/data) and run mktexlsr)
 
@@ -74,12 +48,6 @@ Assuming your logo is named logo-yu.pdf, check if latex can find it
 with:
 
   kpsewhich logo-yu.pdf
-
-Run the install script, which will take care of creating an initial
-site and root account. Once you login, you will be able to create
-librarian users and sites.
-
- ./script/install.pl
 
 If you run under nginx, run:
 
@@ -156,10 +124,6 @@ amuse@localhost:~/amusewiki/repo$ for i in */.git ; do touch $i/git-daemon-expor
 If you want a "recent change" page, you need to setup cgit and then
 set the checkbox on the "Recent changes" in the site configuration
 panel.
-
-Install fcgiwrap:
-
-  apt-get install fcgiwrap
 
 Execute:
 

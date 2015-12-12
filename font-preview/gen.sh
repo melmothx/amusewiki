@@ -30,6 +30,7 @@ for font in 'CMU Serif'            \
     mv font-preview.pdf $pdf
     png=$(basename $pdf .pdf).png
     convert -density 150 -trim -quality 100 -sharpen 0x1.0 $pdf[1] $png
+    echo "created $pdf and $png"
     mv $pdf $png ../root/static/images/font-preview
 done
 rm -f font-preview.aux font-preview.log font-preview.tex

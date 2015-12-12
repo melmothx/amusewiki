@@ -202,5 +202,15 @@ echo "Installing needed JS"
 ./script/install_js.sh
 ./script/install_fonts.sh
 
+cd $AMWHOME/font-preview
+./gen.sh
+
+cd $AMWHOME/webfonts
+./populate-webfonts.pl
+
+cd $AMWHOME
+./script/install-cgit.pl
+
+
 cat $AMWLOGFILE
 rm $AMWLOGFILE
