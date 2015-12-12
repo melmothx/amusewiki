@@ -210,7 +210,17 @@ cd $AMWHOME/webfonts
 
 cd $AMWHOME
 ./script/install-cgit.pl
+# avoid use of root for this, so fcgi wrap can write here
+chmod 777 $AMWHOME/opt/cache/cgit
 
+cat <<EOF
+Directory for cgit cache is $AMWHOME/opt/cache/cgit
+
+Permissions right now are wide open. Please consider to chown it to
+www-data (or whatever user is running fcgiwrap, and restore it to a
+sensible 755.
+
+EOF
 
 cat $AMWLOGFILE
 rm $AMWLOGFILE
