@@ -123,4 +123,8 @@ Host: "$hostname"
 Site ID: "$site_id"
 Root username: "$username"
 Root password: "$password"
+
+After nginx configuration, you should be able to login at
+http://$hostname/login with the above credential
+
 EOF

@@ -222,5 +222,10 @@ sensible 755.
 
 EOF
 
+echo "Starting up application"
+./init-all.sh start
+
+./script/generate-nginx-conf.pl
+
 cat $AMWLOGFILE
 rm $AMWLOGFILE
