@@ -1,9 +1,6 @@
 #!/bin/bash
 
 target=$(perl -MCAM::PDF -e 'print $INC{"CAM/PDF.pm"};')
-echo $target
-
-ls -lh $target
 chmod 644 $target
 
 cat <<'EOF' | patch $target

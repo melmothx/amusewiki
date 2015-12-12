@@ -76,5 +76,41 @@ fi
 echo "Installing perl modules"
 cpanm -q Log::Dispatch Log::Log4perl Module::Install
 cpanm -q Module::Install::Catalyst
+# notably tests fail
+cpanm -q -n DBD::mysql
+
 cpanm -q --installdeps .
+# assert we can modify it and patch this stuff
+cpanm -q --reinstall CAM::PDF
+script/patch-cam-pdf.sh
+
+# check if I can access to the db
+
+echo -n "Checking DB connection: "
+if perl -I lib -MAmuseWikiFarm::Schema -MData::Dumper\
+        -e 'AmuseWikiFarm::Schema->connect("amuse")->storage->dbh or die'; then
+    echo "OK"
+else
+    cat <<EOF
+
+Create a database for the application. E.g., for mysql:
+
+  mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+  mysql> grant all privileges on amuse.* to amuse@localhost identified by XXX
+
+Or, for postgres:
+
+Login as root.
+
+ su - postgres
+ psql
+ create user amuse with password 'XXXX';
+ create database amuse owner amuse;
+
+Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
+credentials, and chmod it to 600.
+
+EOF
+    exit 2
+fi
 
