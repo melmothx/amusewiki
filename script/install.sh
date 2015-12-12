@@ -200,32 +200,7 @@ echo "Bootstrapping the initial site with the documentation"
 
 echo "Installing needed JS"
 ./script/install_js.sh
-
-for font in 'CMU Serif'            \
-            'Linux Libertine O'    \
-            'Linux Biolinum O'     \
-            'TeX Gyre Termes'      \
-            'TeX Gyre Pagella'     \
-            'TeX Gyre Schola'      \
-            'TeX Gyre Bonum'       \
-            'TeX Gyre Heros'       \
-            'TeX Gyre Adventor'    \
-            'TeX Gyre Cursor'      \
-            'Charis SIL'           \
-            'Antykwa Poltawskiego' \
-            'Antykwa Torunska'     \
-            'Iwona'                \
-            'PT Serif'             \
-            'PT Sans'              \
-            'Droid Serif'          \
-            'DejaVu Sans'          \
-            'DejaVu Sans Mono'; do
-    if fc-list "$font" | grep -q style; then
-        echo "$font installed"
-    else
-        echo "$font NOT installed, installing"
-    fi
-done
+./script/install_fonts.sh
 
 cat $AMWLOGFILE
 rm $AMWLOGFILE
