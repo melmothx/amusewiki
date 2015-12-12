@@ -71,6 +71,7 @@ requires 'Log::Contextual';
 requires 'Log::Log4perl';
 requires 'Log::Dispatch';
 requires 'HTTP::Tiny';
+requires 'Crypt::XkcdPassword';
 
 # our own dogfood
 requires 'Text::Amuse' => '0.54';
