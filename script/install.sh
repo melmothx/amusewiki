@@ -4,9 +4,12 @@
 
 set -e
 
+AMWHOME=`pwd`
+TEXMIRROR=ctan.ijs.si/tex-archive
+
 missing='no'
-for command in perl cpanm fc-cache convert update-mime-database delve openssl \
-               make gcc; do
+for command in perl cpanm fc-cache convert gm update-mime-database delve openssl \
+               make gcc wget; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
         echo "YES";
@@ -15,6 +18,8 @@ for command in perl cpanm fc-cache convert update-mime-database delve openssl \
             echo "NO, please install xapian and the devel package"
         elif [ $command == 'make' ]; then
             echo "NO, please install build essential utils"
+        elif [ $command == 'gm' ]; then
+            echo "NO, please install graphicsmagick"
         else
             echo "NO, please install it"
         fi
@@ -76,9 +81,6 @@ fi
 echo "Installing perl modules"
 cpanm -q Log::Dispatch Log::Log4perl Module::Install
 cpanm -q Module::Install::Catalyst
-# notably tests fail
-cpanm -q -n DBD::mysql
-
 cpanm -q --installdeps .
 # assert we can modify it and patch this stuff
 cpanm -q --reinstall CAM::PDF
@@ -110,7 +112,58 @@ Login as root.
 Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
 credentials, and chmod it to 600.
 
+Please note that if you use mysql you need to install (via package
+manager or cpanm) DBD::mysql, while if you use postgresql you need
+DBD::Pg. These dependencies are not installed automatically by us and
+requires devel packages (libmysqlclient-dev, libpq-dev) to be
+installed.
+
 EOF
     exit 2
 fi
 
+install_texlive () {
+    cd $HOME
+    echo "Installing TeX live 2015 in your home under texlive"
+    # remove all stray files
+    rm -rfv install-tl-*
+    wget -O install-tl-unx.tar.gz \
+         http://$TEXMIRROR/systems/texlive/tlnet/install-tl-unx.tar.gz
+    tar -xzvf install-tl-unx.tar.gz
+    # use shell expansion
+    cd install-tl-201*
+    cat <<EOF >> amw.profile
+selected_scheme scheme-full
+TEXDIR $HOME/texlive/2015
+TEXMFCONFIG ~/.texlive2015/texmf-config
+TEXMFHOME ~/texmf
+TEXMFLOCAL $HOME/texlive/texmf-local
+TEXMFSYSCONFIG $HOME/texlive/2015/texmf-config
+TEXMFSYSVAR $HOME/texlive/2015/texmf-var
+TEXMFVAR ~/.texlive2015/texmf-var
+EOF
+    ./install-tl -repository http://$TEXMIRROR/systems/texlive/tlnet \
+                 -profile amw.profile
+    cd $AMWHOME
+}
+
+echo -n "Checking local installation of TeX live: ";
+installation_need=1
+if which xelatex | grep -q -E "$HOME"; then
+    echo "OK";
+else
+    install_texlive
+fi
+    
+texbindir=`find $HOME/texlive/2015/bin -maxdepth 1 -mindepth 1 -type d | head -1`
+if [ ! -f "$texbindir/xetex" ]; then
+    echo "Something is wrong $texbindir/xetex doesn't exist!";
+    exit 2;
+fi
+export PATH=$texbindir:$PATH
+if which xelatex > /dev/null; then
+    echo "Using `which xelatex`"
+else
+    echo "Cannnot find xelatex, something went wrong!";
+    exit 2
+fi
