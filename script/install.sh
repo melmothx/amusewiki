@@ -148,8 +148,7 @@ EOF
 }
 
 echo -n "Checking local installation of TeX live: ";
-installation_need=1
-if which xelatex | grep -q -E "$HOME"; then
+if [ -d $HOME/texlive/2015/bin ]; then
     echo "OK";
 else
     install_texlive
@@ -161,9 +160,7 @@ if [ ! -f "$texbindir/xetex" ]; then
     exit 2;
 fi
 export PATH=$texbindir:$PATH
-if which xelatex > /dev/null; then
-    echo "Using `which xelatex`"
-else
-    echo "Cannnot find xelatex, something went wrong!";
-    exit 2
+if [ `which xelatex` !=  "$texbindir/xelatex" ]; then
+    echo "Cannnot find xelatex in $texbindir, something went wrong!";
 fi
+
