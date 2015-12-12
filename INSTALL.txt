@@ -6,6 +6,7 @@ Prerequisites:
  - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
  - TeXlive (minimum: texlive 2012)
  - a mime-info database: shared-mime-info on debian
+ - fcgiwrap running and listening to /var/run/fcgiwrap.socket (as in debian)
  - a dedicated system user (with a clean home) which is going to run the site
 
 Log in as the user you want to run the site.
