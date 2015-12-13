@@ -45,6 +45,12 @@ CREATE TABLE site (
        -- cgit integration
        cgit_integration INTEGER(1) NOT NULL DEFAULT 0,
 
+       -- ssl options
+       ssl_key VARCHAR(255),
+       ssl_cert VARCHAR(255),
+       ssl_ca_cert VARCHAR(255),
+       ssl_chained_cert VARCHAR(255),
+
        -- boolean for multilanguage
        multilanguage VARCHAR(255) NOT NULL DEFAULT '',
 

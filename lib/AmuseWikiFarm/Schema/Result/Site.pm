@@ -164,6 +164,30 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1
 
+=head2 ssl_key
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 ssl_cert
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 ssl_ca_cert
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 ssl_chained_cert
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 multilanguage
 
   data_type: 'varchar'
@@ -382,6 +406,14 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "cgit_integration",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  "ssl_key",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "ssl_cert",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "ssl_ca_cert",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "ssl_chained_cert",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "multilanguage",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "bb_page_limit",
@@ -658,8 +690,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 09:40:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FhaRWU6Xz2DLSg99QDzqEg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-13 12:30:04
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6An6T761jG2nOXaA4b4hDQ
 
 =head2 other_sites
 
@@ -2455,6 +2487,20 @@ sub do_not_enforce_commit_message {
     $self->get_option('do_not_enforce_commit_message') ? 1 : 0;
 }
 
+
+
+
+=head2 secure_site_only
+
+This affects only the generation of the nginx conf
+
+=cut
+
+sub secure_site_only {
+    my ($self) = @_;
+    $self->get_option('secure_site_only') ? 1 : 0;
+}
+
 sub sl_tex {
     return shift->sl_pdf;
 }
@@ -2520,6 +2566,40 @@ sub serialize_site {
     $data{users} = \@users;
     return \%data;
 }
+
+=head1 WEBSERVER options
+
+These options only affect the webserver configuration, but we have to
+store them here to fully automate that, without calling the script
+with different options which are not going to cover any case.
+
+They are stored in the C<site> table to enable a more straightforward
+setting from the sql monitor. (Say you have a wildcard cert for all
+the sites, you can just do a single update to set them).
+
+Please note that ssl_cert and ssl_ca_cert are not used anywhere,
+because we don't provide an apache config generator. But if there is
+the need for this, we have already the fields ready.
+
+=head2 ssl_key
+
+Used by both Apache and nginx.
+
+=head2 ssl_cert
+
+Used by Apache.
+
+=head2 ssl_ca_cert
+
+Used by Apache
+
+=head2 ssl_chained_cert
+
+Used by nginx (concatenation of the certificate and the CA
+certificate).
+
+=cut
+
 
 
 __PACKAGE__->meta->make_immutable;
