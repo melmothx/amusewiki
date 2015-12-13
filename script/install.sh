@@ -34,6 +34,7 @@ if [ "`hostname -d`x" = "x" ]; then
 else
     echo "Your domain is `hostname -d`"
 fi
+hostname=amusewiki.`hostname -d`;
 
 # even centos is suggested to listen here
 # https://www.howtoforge.com/serving-cgi-scripts-with-nginx-on-centos-6.0-p2
@@ -196,7 +197,7 @@ fi
 echo "Bootstrapping the initial site with the documentation"
 
 
-./script/install_amw_site.pl >> $AMWLOGFILE
+./script/install_amw_site.pl --hostname "$hostname" >> $AMWLOGFILE
 
 echo "Installing needed JS"
 ./script/install_js.sh
@@ -227,5 +228,22 @@ echo "Starting up application"
 
 ./script/generate-nginx-conf.pl
 
+# create the self-signed cert to use as default
+
+mytmpdir=`mktemp -d 2>/dev/null || mktemp -d -t 'mytmpdir'`
+keyout=$mytmpdir/amusewiki.key
+certout=$mytmpdir/amusewiki.crt
+
+openssl req -new \
+        -newkey rsa:4096 \
+        -days 3650 \
+        -nodes -x509 \
+        -subj  "/CN=$hostname" \
+        -keyout  $keyout \
+        -out     $certout
+
 cat $AMWLOGFILE
 rm $AMWLOGFILE
+
+echo "Please also install $keyout and $certout into /etc/nginx/ssl"
+
