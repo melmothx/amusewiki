@@ -34,6 +34,17 @@ doesn't need to exist).
 Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
 credentials, and chmod it to 600.
 
+Please note that the installation procedure will create a mirror of
+amusewiki.org under the subdomain amusewiki.<your domain>.
+
+For this to work as intended, please check that `hostname -d` gives
+you the real domain name. Fix your /etc/hosts in case. You need your
+ip line looking like this:
+
+66.66.66.66 name.domain.tld name other_names...
+
+Where the first name is the fully qualified one.
+
 Execute:
 
 ./script/install.sh
