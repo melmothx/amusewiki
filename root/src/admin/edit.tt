@@ -78,7 +78,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="magic_question" id="magic_question"
-               class="form-control" value="[% esite.magic_question %]" />
+               class="form-control" value="[% esite.magic_question | html %]" />
       </div>
     </div>
 
@@ -88,7 +88,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="magic_answer" id="magic_answer"
-               class="form-control" value="[% esite.magic_answer %]" />
+               class="form-control" value="[% esite.magic_answer | html %]" />
       </div>
     </div>
 
@@ -98,7 +98,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="fixed_category_list" id="fixed_category_list"
-               class="form-control" value="[% esite.fixed_category_list %]" />
+               class="form-control" value="[% esite.fixed_category_list | html %]" />
       </div>
     </div>
 
@@ -108,7 +108,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="multilanguage" id="multilanguage"
-               class="form-control" value="[% esite.multilanguage %]" />
+               class="form-control" value="[% esite.multilanguage | html %]" />
       </div>
     </div>
 
@@ -120,7 +120,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="sitename" id="sitename"
-               class="form-control" value="[% esite.sitename %]" />
+               class="form-control" value="[% esite.sitename | html %]" />
       </div>
     </div>
 
@@ -130,7 +130,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="siteslogan" id="siteslogan"
-               class="form-control" value="[% esite.siteslogan %]" />
+               class="form-control" value="[% esite.siteslogan | html %]" />
       </div>
     </div>
 
@@ -142,7 +142,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="logo" id="logo"
-               class="form-control" value="[% esite.logo %]" />
+               class="form-control" value="[% esite.logo | html %]" />
       </div>
     </div>
 
@@ -152,7 +152,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="mail_notify" id="mail_notify"
-               class="form-control" value="[% esite.mail_notify %]" />
+               class="form-control" value="[% esite.mail_notify | html %]" />
       </div>
     </div>
 
@@ -162,7 +162,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="mail_from" id="mail_from"
-               class="form-control" value="[% esite.mail_from %]" />
+               class="form-control" value="[% esite.mail_from | html %]" />
       </div>
     </div>
 
@@ -172,7 +172,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="canonical" id="canonical"
-               class="form-control" value="[% esite.canonical %]" />
+               class="form-control" value="[% esite.canonical | html %]" />
       </div>
     </div>
     <div class="form-group">
@@ -191,7 +191,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="sitegroup" id="sitegroup"
-               class="form-control" value="[% esite.sitegroup %]" />
+               class="form-control" value="[% esite.sitegroup | html %]" />
       </div>
     </div>
 
@@ -201,7 +201,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="bb_page_limit" id="bb_page_limit"
-               class="form-control" value="[% esite.bb_page_limit %]" />
+               class="form-control" value="[% esite.bb_page_limit | html %]" />
       </div>
     </div>
 
@@ -312,7 +312,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="ttdir" id="ttdir"
-               class="form-control" value="[% esite.ttdir %]" />
+               class="form-control" value="[% esite.ttdir | html %]" />
       </div>
     </div>
 
@@ -571,7 +571,7 @@
         <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
           [%- SET vhosts = esite.vhosts_rs -%]
           [%- FOREACH vhost IN vhosts.all %]
-          [%- vhost.name +%]
+          [%- vhost.name | html +%]
 
           [%- END -%]</textarea>
         </div>
@@ -621,7 +621,7 @@
       <div class="col-sm-10">
         <input type="text" name="latest_entries" id="latest_entries"
                class="form-control"
-               value="[% esite.get_option('latest_entries') %]" />
+               value="[% esite.get_option('latest_entries') | html %]" />
       </div>
     </div>
 
@@ -633,7 +633,7 @@
         <input type="text" name="latest_entries_for_rss"
                id="latest_entries_for_rss"
                class="form-control"
-               value="[% esite.get_option('latest_entries_for_rss') %]" />
+               value="[% esite.get_option('latest_entries_for_rss') | html %]" />
       </div>
     </div>
 
