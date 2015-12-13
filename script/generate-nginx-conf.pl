@@ -4,13 +4,13 @@ use strict;
 use warnings;
 use utf8;
 use lib 'lib';
-use AmuseWikiFarm::Schema;
+use AmuseWikiFarm;
 use File::Spec::Functions qw/catfile catdir/;
 use Cwd;
 use Getopt::Long;
 use File::Temp;
 
-my ($logformat, $help, $ssl_key, $secure_only, $cgit_port);
+my ($logformat, $help, $ssl_key, $secure_only),
 my $nginx_root = '/etc/nginx';
 my $amwbase = 'amusewiki';
 my $default_key = "ssl/amusewiki.key";
@@ -21,7 +21,6 @@ GetOptions ('log-format=s' => \$logformat,
             'ssl-key=s' => \$ssl_key,
             'nginx-root=s' => \$nginx_root,
             'secure-only' => \$secure_only,
-            'cgit-port=i' => \$cgit_port,
             'basename=s' => \$amwbase,
            ) or die;
 
@@ -55,7 +54,7 @@ Options:
  Defaults to amusewiki, and if you don't need multiple instances (like
  devel and production), you don't need to set this. This variable sets
  the name of the included files and of the configuration file, so if
- you have multiple instances they will not clash. See also --cgit-port.
+ you have multiple instances they will not clash.
 
  --log-format <combined>
 
@@ -114,8 +113,7 @@ unless (-f catfile($amw_home, qw/lib AmuseWikiFarm.pm/)) {
     die "This script must be executed from the root of the application\n";
 }
 
-
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my $schema = AmuseWikiFarm->model('DB');
 
 my @sites = $schema->resultset('Site')->search(undef, { order_by => [qw/id/] })->all;
 
@@ -127,23 +125,8 @@ my $output_dir = File::Temp->newdir(CLEANUP => 0,
 # globals
 my $cgit = "### cgit is not installed ###\n";
 my $cgit_path = catfile(qw/root git cgit.cgi/);
-
+my $cgit_port = AmuseWikiFarm->model('CgitProxy')->port;
 if (-f $cgit_path) {
-    if ($cgit_port) {
-        my $local_conf = catfile($amw_home, "amusewikifarm_local.conf");
-        print "You specified a custom port for cgit.\nPlease add the following stanza to the file $local_conf:\n";
-        print <<CONF
-
-<Model::CgitProxy>
-    port $cgit_port
-</Model::CgitProxy>
-
-CONF
-    }
-    else {
-        $cgit_port = 9015;
-    }
-
     $cgit = <<"EOF";
 server {
     listen 127.0.0.1:$cgit_port;

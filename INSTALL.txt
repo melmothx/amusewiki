@@ -125,6 +125,17 @@ If you want a "recent change" page, you need to setup cgit and then
 set the checkbox on the "Recent changes" in the site configuration
 panel.
 
+By default, cgit is setup in the nginx conf to listen to port 9015.
+You can modify this creating the configuration file
+amusewikifarm_local.conf and specifying the port:
+
+ <Model::CgitProxy>
+     port 9099
+ </Model::CgitProxy>
+
+And refresh the nginx configuration with script/generate-nginx-conf.pl
+
+
 Execute:
 
   ./script/install-cgit.pl
