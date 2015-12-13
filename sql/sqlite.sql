@@ -34,6 +34,7 @@ CREATE TABLE site (
        -- canonical server name
        canonical VARCHAR(255) NOT NULL,
        secure_site INTEGER(1) NOT NULL DEFAULT 0,
+       secure_site_only INTEGER(1) NOT NULL DEFAULT 0,
 
        sitegroup VARCHAR(255) NOT NULL DEFAULT '',
 

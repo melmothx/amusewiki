@@ -132,6 +132,13 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1
 
+=head2 secure_site_only
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 sitegroup
 
   data_type: 'varchar'
@@ -395,6 +402,8 @@ __PACKAGE__->add_columns(
   "canonical",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "secure_site",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  "secure_site_only",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "sitegroup",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
@@ -690,8 +699,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-13 12:30:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:6An6T761jG2nOXaA4b4hDQ
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-13 13:03:33
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wMIfvlZMySoI9d+nXQX+Bw
 
 =head2 other_sites
 
@@ -2487,20 +2496,6 @@ sub do_not_enforce_commit_message {
     $self->get_option('do_not_enforce_commit_message') ? 1 : 0;
 }
 
-
-
-
-=head2 secure_site_only
-
-This affects only the generation of the nginx conf
-
-=cut
-
-sub secure_site_only {
-    my ($self) = @_;
-    $self->get_option('secure_site_only') ? 1 : 0;
-}
-
 sub sl_tex {
     return shift->sl_pdf;
 }
@@ -2598,8 +2593,11 @@ Used by Apache
 Used by nginx (concatenation of the certificate and the CA
 certificate).
 
-=cut
+=head2 secure_site_only
 
+This affects only the generation of the nginx conf
+
+=cut
 
 
 __PACKAGE__->meta->make_immutable;
