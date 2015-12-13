@@ -24,9 +24,9 @@ my $password = Crypt::XkcdPassword->new(words => 'IT')->make_password(5, qr{\A[0
 my $username = "amusewiki";
 
 GetOptions(
-           hostname => \$hostname,
-           username => \$username,
-           password => \$password,
+           'hostname=s' => \$hostname,
+           'username=s' => \$username,
+           'password=s' => \$password,
           ) or die;
 
 # load the db
