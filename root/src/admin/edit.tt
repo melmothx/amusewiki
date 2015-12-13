@@ -176,16 +176,6 @@
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.secure_site %]checked="checked"[% END %]
-                 name="secure_site" />
-          [% loc('Use SSL for authenticated users') %]
-        </label>
-      </div>
-    </div>
-    <div class="form-group">
       <label for="sitegroup" class="col-sm-2 control-label">
         [% loc('Site group') %]
       </label>
@@ -646,12 +636,74 @@
                name="paginate_archive_after"
                id="paginate_archive_after"
                class="form-control"
-               value="[% esite.paginate_archive_after %]" />
+               value="[% esite.paginate_archive_after | html %]" />
+      </div>
+    </div>
+
+    <h3>[% loc('SSL configuration') %]</h3>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.secure_site %]checked="checked"[% END %]
+                 name="secure_site" />
+          [% loc('Use SSL for authenticated users') %]
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.secure_site_only %]checked="checked"[% END %]
+                 name="secure_site_only" />
+          [% loc('The generate webserver configuration will redirect
+          all the HTTP requests to HTTPS') %]
+        </label>
       </div>
     </div>
 
 
+    <p>
+      [% loc('The following values are used verbatim by the webserver config generator.') %]
+    </p>
+    <div class="form-group">
+      <label for="ssl_key" class="col-sm-2 control-label">
+        [% loc('SSL key path') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ssl_key" id="ssl_key"
+               class="form-control" value="[% esite.ssl_key  | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ssl_cert" class="col-sm-2 control-label">
+        [% loc('SSL certificate path (Apache)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ssl_cert" id="ssl_cert"
+               class="form-control" value="[% esite.ssl_cert | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ssl_ca_cert" class="col-sm-2 control-label">
+        [% loc('SSL CA certificate path (Apache)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ssl_ca_cert" id="ssl_ca_cert"
+               class="form-control" value="[% esite.ssl_ca_cert | html %]" />
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label for="ssl_chained_cert" class="col-sm-2 control-label">
+        [% loc('SSL chained certertificate path (Nginx)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ssl_chained_cert" id="ssl_chained_cert"
+               class="form-control" value="[% esite.ssl_chained_cert | html%]" />
+      </div>
+    </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-primary" name="edit_site"

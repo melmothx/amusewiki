@@ -2015,6 +2015,7 @@ sub update_from_params {
                        logo_with_sitename
                        cgit_integration
                        secure_site
+                       secure_site_only
                        twoside nocoverpage/);
     foreach my $boolean (@booleans) {
         if (delete $params->{$boolean}) {
@@ -2029,6 +2030,10 @@ sub update_from_params {
     # the the length.
     my @strings = (qw/magic_answer magic_question fixed_category_list
                       multilanguage
+                      ssl_key
+                      ssl_cert
+                      ssl_ca_cert
+                      ssl_chained_cert
                       sitename siteslogan logo mail_notify mail_from
                       sitegroup ttdir/);
     foreach my $string (@strings) {
