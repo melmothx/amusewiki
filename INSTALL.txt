@@ -60,19 +60,6 @@ with:
 
   kpsewhich logo-yu.pdf
 
-If you run under nginx, run:
-
- ./script/generate-nginx-conf.pl
-
-This will generate a suitable nginx configuration and print the (copy
-and paste) installation instructions.
-
-If nginx complains about missing certificates, executes:
-
- ./script/generate-ssl-certs.pl
-
-and copy them to the target destination as per instructions.
-
 I usually do some nginx tweaks:
 
 In the http { } stanza in nginx.conf:
@@ -88,22 +75,6 @@ And in the type { } stanza in mime.types I add:
 And tweak the text/plain defintion adding "muse"
 
    text/plain	txt muse;
-
-Once webserver is configured, you can start the application.
-
-  ./init-all start
-
-Login as the root account, configure your site, then you can bootstrap
-it.
-
- ./script/bootstrap_archive.pl
-
-If you get this error:
-
- Can't call method "getPageDimensions" on an undefined value at /...
-
-run the script script/patch-cam-pdf.sh
-
 
 OPTIONAL SETUP
 
@@ -132,10 +103,6 @@ And in your repo directory, mark the repository for export:
 
 amuse@localhost:~/amusewiki/repo$ for i in */.git ; do touch $i/git-daemon-export-ok; done
 
-If you want a "recent change" page, you need to setup cgit and then
-set the checkbox on the "Recent changes" in the site configuration
-panel.
-
 By default, cgit is setup in the nginx conf to listen to port 9015.
 You can modify this creating the configuration file
 amusewikifarm_local.conf and specifying the port:
@@ -143,26 +110,4 @@ amusewikifarm_local.conf and specifying the port:
  <Model::CgitProxy>
      port 9099
  </Model::CgitProxy>
-
-And refresh the nginx configuration with script/generate-nginx-conf.pl
-
-
-Execute:
-
-  ./script/install-cgit.pl
-
-If it fails probably means you're missing dependencies (notably,
-libssl-dev).
-
-And then refresh the nginx setup with
-
-   ./script/generate-nginx-conf.pl
-
-If you already have the repository exported in /var/cache/git/, you
-should be good.
-
-Later, the configuration for cgit can be refreshed with:
-
-  ./script/install-cgit.pl --reconfigure \
-    --hostname amusewiki.org
 
