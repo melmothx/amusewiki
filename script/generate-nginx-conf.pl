@@ -115,7 +115,9 @@ unless (-f catfile($amw_home, qw/lib AmuseWikiFarm.pm/)) {
 
 my $schema = AmuseWikiFarm->model('DB');
 
-my @sites = $schema->resultset('Site')->search(undef, { order_by => [qw/id/] })->all;
+my @sites = $schema->resultset('Site')->search(undef, { order_by => [qw/id/],
+                                                        prefetch => 'vhosts'})
+  ->all;
 
 my $output_dir = File::Temp->newdir(CLEANUP => 0,
                                     TMPDIR => 1,
