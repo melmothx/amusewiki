@@ -49,7 +49,7 @@ __PACKAGE__->table("site");
 =head2 mode
 
   data_type: 'varchar'
-  default_value: 'blog'
+  default_value: 'private'
   is_nullable: 0
   size: 16
 
@@ -63,14 +63,14 @@ __PACKAGE__->table("site");
 =head2 magic_question
 
   data_type: 'varchar'
-  default_value: (empty string)
+  default_value: '12 + 4 ='
   is_nullable: 0
   size: 255
 
 =head2 magic_answer
 
   data_type: 'varchar'
-  default_value: (empty string)
+  default_value: 16
   is_nullable: 0
   size: 255
 
@@ -128,7 +128,7 @@ __PACKAGE__->table("site");
 =head2 secure_site
 
   data_type: 'integer'
-  default_value: 0
+  default_value: 1
   is_nullable: 0
   size: 1
 
@@ -167,7 +167,7 @@ __PACKAGE__->table("site");
 =head2 cgit_integration
 
   data_type: 'integer'
-  default_value: 0
+  default_value: 1
   is_nullable: 0
   size: 1
 
@@ -225,14 +225,14 @@ __PACKAGE__->table("site");
 =head2 a4_pdf
 
   data_type: 'integer'
-  default_value: 1
+  default_value: 0
   is_nullable: 0
   size: 1
 
 =head2 lt_pdf
 
   data_type: 'integer'
-  default_value: 1
+  default_value: 0
   is_nullable: 0
   size: 1
 
@@ -375,16 +375,21 @@ __PACKAGE__->add_columns(
   "mode",
   {
     data_type => "varchar",
-    default_value => "blog",
+    default_value => "private",
     is_nullable => 0,
     size => 16,
   },
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "magic_question",
-  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  {
+    data_type => "varchar",
+    default_value => "12 + 4 =",
+    is_nullable => 0,
+    size => 255,
+  },
   "magic_answer",
-  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  { data_type => "varchar", default_value => 16, is_nullable => 0, size => 255 },
   "fixed_category_list",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "sitename",
@@ -402,7 +407,7 @@ __PACKAGE__->add_columns(
   "canonical",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "secure_site",
-  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "secure_site_only",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "sitegroup",
@@ -414,7 +419,7 @@ __PACKAGE__->add_columns(
   "specials_label",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "cgit_integration",
-  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "ssl_key",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "ssl_cert",
@@ -432,9 +437,9 @@ __PACKAGE__->add_columns(
   "pdf",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "a4_pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "lt_pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "sl_pdf",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "html",
@@ -699,8 +704,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-13 13:03:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wMIfvlZMySoI9d+nXQX+Bw
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-13 14:36:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1yz7x1w1Ezmwqu1K+OVwoA
 
 =head2 other_sites
 

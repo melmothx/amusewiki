@@ -14,12 +14,12 @@ CREATE TABLE vhost (
 
 CREATE TABLE site (
        id VARCHAR(16) PRIMARY KEY,
-       mode VARCHAR(16) NOT NULL DEFAULT 'blog',
+       mode VARCHAR(16) NOT NULL DEFAULT 'private',
        locale VARCHAR(3) NOT NULL DEFAULT 'en',
 
        -- TODO: move these things in a setting table, it's too cluttered
-       magic_question VARCHAR(255) NOT NULL DEFAULT '',
-       magic_answer   VARCHAR(255) NOT NULL DEFAULT '',
+       magic_question VARCHAR(255) NOT NULL DEFAULT '12 + 4 =',
+       magic_answer   VARCHAR(255) NOT NULL DEFAULT '16',
 
        -- list of space separated category codes, if you want this feature
        fixed_category_list VARCHAR(255),
@@ -33,7 +33,7 @@ CREATE TABLE site (
 
        -- canonical server name
        canonical VARCHAR(255) NOT NULL,
-       secure_site INTEGER(1) NOT NULL DEFAULT 0,
+       secure_site INTEGER(1) NOT NULL DEFAULT 1,
        secure_site_only INTEGER(1) NOT NULL DEFAULT 0,
 
        sitegroup VARCHAR(255) NOT NULL DEFAULT '',
@@ -44,7 +44,7 @@ CREATE TABLE site (
        specials_label VARCHAR(255),
 
        -- cgit integration
-       cgit_integration INTEGER(1) NOT NULL DEFAULT 0,
+       cgit_integration INTEGER(1) NOT NULL DEFAULT 1,
 
        -- ssl options
        ssl_key VARCHAR(255),
@@ -60,8 +60,8 @@ CREATE TABLE site (
        -- formats
        tex       INTEGER(1) NOT NULL DEFAULT 1,
        pdf       INTEGER(1) NOT NULL DEFAULT 1,
-       a4_pdf    INTEGER(1) NOT NULL DEFAULT 1,
-       lt_pdf    INTEGER(1) NOT NULL DEFAULT 1,
+       a4_pdf    INTEGER(1) NOT NULL DEFAULT 0,
+       lt_pdf    INTEGER(1) NOT NULL DEFAULT 0,
        sl_pdf    INTEGER(1) NOT NULL DEFAULT 0,
        html      INTEGER(1) NOT NULL DEFAULT 1,
        bare_html INTEGER(1) NOT NULL DEFAULT 1,
