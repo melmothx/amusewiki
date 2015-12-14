@@ -99,8 +99,9 @@ EOF
 fi
 
 echo "Installing perl modules"
-cpanm -q Log::Dispatch Log::Log4perl Module::Install
-cpanm -q Module::Install::Catalyst
+cpanm -q Log::Dispatch Log::Log4perl Module::Install Mail::Send \
+      Log::Dispatch::File::Stamped \
+      Module::Install::Catalyst
 cpanm -q --installdeps .
 # assert we can modify it and patch this stuff
 cpanm -q --reinstall CAM::PDF
@@ -223,9 +224,6 @@ sensible 755.
 
 EOF
 
-echo "Starting up application"
-./init-all.sh start
-
 ./script/generate-nginx-conf.pl
 
 # create the self-signed cert to use as default
@@ -247,3 +245,21 @@ rm $AMWLOGFILE
 
 echo "Please also install $keyout and $certout into /etc/nginx/ssl"
 
+cat <<EOF
+
+Setting up logger. Please note that by default, application errors are
+sent to info@amusewiki.org (so bugs can be fixed promptly). This is
+may or may not be what you want, and may have somehow sensitive info
+inside (like session ids).
+
+You are welcome to edit log4perl.local.conf (read the comments) to
+suit your needs.
+
+EOF
+
+cp log4perl.conf log4perl.local.conf
+sed -i "s/localhost/$hostname/" log4perl.local.conf
+sed -i "s/amuse@/`whoami`/" log4perl.local.conf
+
+echo "Starting up application"
+./init-all.sh start
