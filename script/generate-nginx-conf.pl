@@ -14,14 +14,18 @@ my $help;
 my $logformat = $ENV{AMW_LOG_FORMAT} || '';
 my $nginx_root = $ENV{AMW_NGINX_ROOT} || '/etc/nginx';
 my $amwbase = $ENV{AMW_INSTANCE_NAME} || 'amusewiki';
-my $default_key = "ssl/amusewiki.key";
-my $default_crt = "ssl/amusewiki.crt";
 
 GetOptions ('log-format=s' => \$logformat,
             help => \$help,
             'nginx-root=s' => \$nginx_root,
             'basename=s' => \$amwbase,
            ) or die;
+
+die "No basename specified!" unless $amwbase;
+
+my $default_key = catfile(ssl => $amwbase . '.key');
+my $default_crt = catfile(ssl => $amwbase . '.crt');
+
 
 if ($help) {
     print <<"HELP";
@@ -36,8 +40,10 @@ installed in the root of the nginx configuration directory, usually
 The second, "${amwbase}", is the virtual host configuration, where
 we set the server names and the SSL certificates.
 
-We assume to have a self-signed cert named amusewiki.crt with a
-matching amusewiki.key under /etc/nginx/ssl to use as default.
+We assume to have a self-signed cert named ${amwbase}.crt with a
+matching ${amwbase}.key under ${nginx_root}/ssl to use as default.
+
+If not the certificate don't exist, they will be created.
 
 Options:
 
@@ -49,9 +55,10 @@ Options:
 
  Defaults to amusewiki, and if you don't need multiple instances (like
  devel and production), you don't need to set this. This variable sets
- the name of the included files and of the configuration file, so if
- you have multiple instances they will not clash.
- Alternatively, you can set the environment variable AMW_INSTANCE_NAME
+ the name of the included file, of the configuration file and of the
+ ssl certificate and key, so if you have multiple instances they will
+ not clash. Alternatively, you can set the environment variable
+ AMW_INSTANCE_NAME
 
 
  --log-format <combined>
@@ -217,8 +224,32 @@ please execute the following command as root
 cat $include_file > $include_target
 cat $conf_file > $conf_target
 nginx -t && service nginx reload
-
 HELP
+
+my $hostname_for_cert = 'localhost';
+if (@sites) {
+    # pick the first one, it's self-signed anyway
+    $hostname_for_cert = $sites[0]->canonical;
+}
+
+my $installed_key = catfile($nginx_root, $default_key);
+my $installed_crt = catfile($nginx_root, $default_crt);
+
+if (! -f $installed_key) {
+    my $keyout = catfile($output_dir, $amwbase . '.key');
+    my $crtout = catfile($output_dir, $amwbase . '.crt');
+    system(openssl => req => '-new',
+           -newkey => 'rsa:4096',
+           -days => '3650',
+           -nodes => -x509 => -subj => "/CN=$hostname_for_cert",
+           -keyout => $keyout,
+           -out => $crtout);
+    print <<"SSL"
+cp $crtout $installed_crt
+cp $keyout $installed_key
+chmod 600 $installed_key
+SSL
+}
 
 sub insert_server_stanza {
     my ($site) = @_;

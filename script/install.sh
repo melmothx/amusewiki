@@ -226,25 +226,6 @@ EOF
 
 ./script/generate-nginx-conf.pl >> $AMWLOGFILE
 
-# create the self-signed cert to use as default
-
-mytmpdir=`mktemp -d 2>/dev/null || mktemp -d -t 'mytmpdir'`
-keyout=$mytmpdir/amusewiki.key
-certout=$mytmpdir/amusewiki.crt
-
-openssl req -new \
-        -newkey rsa:4096 \
-        -days 3650 \
-        -nodes -x509 \
-        -subj  "/CN=$hostname" \
-        -keyout  $keyout \
-        -out     $certout
-
-cat $AMWLOGFILE
-rm $AMWLOGFILE
-
-echo "Please also install $keyout and $certout into /etc/nginx/ssl"
-
 cat <<EOF
 
 Setting up logger. Please note that by default, application errors are
@@ -260,6 +241,9 @@ EOF
 cp log4perl.conf log4perl.local.conf
 sed -i "s/localhost/$hostname/" log4perl.local.conf
 sed -i "s/amuse@/`whoami`/" log4perl.local.conf
+
+cat $AMWLOGFILE
+rm $AMWLOGFILE
 
 echo "Starting up application"
 ./init-all.sh start
