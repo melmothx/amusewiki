@@ -16,9 +16,7 @@ use Cwd;
 use Getopt::Long;
 use Crypt::XkcdPassword;
 
-my $hostname = `hostname -d` || 'localdomain';
-chomp $hostname;
-$hostname = 'amusewiki.' . $hostname;
+my $hostname;
 my $site_id = 'amw';
 my $password = Crypt::XkcdPassword->new(words => 'IT')->make_password(5, qr{\A[0-9a-zA-Z]{3,}\z});
 my $username = "amusewiki";
@@ -28,6 +26,13 @@ GetOptions(
            'username=s' => \$username,
            'password=s' => \$password,
           ) or die;
+
+unless ($hostname) {
+   $hostname = `hostname -d` || 'localdomain';
+   chomp $hostname;
+   $hostname = 'amusewiki.' . $hostname;
+}
+
 
 # load the db
 
@@ -83,15 +88,7 @@ my $site = $schema->resultset('Site')->create({
                                                id => $site_id,
                                                canonical => $hostname,
                                                sitename => "AmuseWiki documentation",
-                                               secure_site => 0, # otherwise first login will not work
-                                               cgit_integration => 1,
-                                               mode => 'private',
-                                               pdf => 0,
-                                               a4_pdf => 0,
-                                               lt_pdf => 0,
-                                               zip => 1,
-                                               epub => 1,
-                                               tex => 1,
+                                               pdf => 0, # no pdfs for this, speed up
                                               });
 $site->discard_changes;
 my $repo_root = $site->repo_root;
@@ -124,7 +121,7 @@ Site ID: "$site_id"
 Root username: "$username"
 Root password: "$password"
 
-After nginx configuration, you should be able to login at
-http://$hostname/login with the above credential
+You should be able to login at http://$hostname/login with the above
+credentials.
 
 EOF

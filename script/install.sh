@@ -224,7 +224,7 @@ sensible 755.
 
 EOF
 
-./script/generate-nginx-conf.pl
+./script/generate-nginx-conf.pl >> $AMWLOGFILE
 
 # create the self-signed cert to use as default
 
