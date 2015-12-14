@@ -138,11 +138,26 @@
 
     <div class="form-group">
       <label for="logo" class="col-sm-2 control-label">
-        [% loc('PDF logo (absolute path or put it in texmf)') %]
+        [% loc('PDF logo') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="logo" id="logo"
                class="form-control" value="[% esite.logo | html %]" />
+      </div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+          <p>
+            <br>
+            [% loc('The PDF logo value can be either an absolute path
+            or just a filename if you choose to install it in the
+            TeXlive tree. You can do so with the following commands.
+            The last one checks if the file can be found.') %]
+          </p>
+          <pre>mkdir -p `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
+cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data`
+kpsewhich mylogo.pdf</pre>
+        </div>
       </div>
     </div>
 

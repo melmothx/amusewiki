@@ -244,7 +244,7 @@ if (! -f $installed_key) {
            -nodes => -x509 => -subj => "/CN=$hostname_for_cert",
            -keyout => $keyout,
            -out => $crtout);
-    print <<"SSL"
+    print <<"SSL";
 cp $crtout $installed_crt
 cp $keyout $installed_key
 chmod 600 $installed_key

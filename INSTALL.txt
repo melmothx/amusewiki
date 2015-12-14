@@ -1,10 +1,26 @@
+The installation of amusewiki takes time (depending on speed of the
+machine and of the network) and requires about 4Gb of disk space,
+mostly because of the installation of TeXlive. Otherwise the procedure
+is fully automated, so start it, check if it bails out at the
+beginning, forget about it for an hour or two (run it under screen),
+then come back later and finish it up to complete it for the
+operations which require root privileges (notably the webserver
+configuration). The last lines of output is what matters. It will tell
+you about the needed changes to the $PATH for TeXlive, and where to
+login. From there you should be be able to create and configure new
+sites from the admin console under /admin/sites.
+
+The supported and recommended setup is nginx + FCGI. The FCGI setup
+should work with Apache as well, but it's not currently actively
+supported. perldoc Catalyst::Manual::Deployment::Apache::FastCGI
+should help, though.
+
 Prerequisites:
 
- - a database (mysql, pg, sqlite)
+ - a database (mysql, pg, sqlite are supported)
  - a working perl (i.e., you can install modules)
  - fontconfig (install it before installing texlive)
  - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
- - TeXlive (minimum: texlive 2012)
  - a mime-info database: shared-mime-info on debian
  - fcgiwrap running and listening to /var/run/fcgiwrap.socket (as in debian)
  - a dedicated system user (with a clean home) which is going to run the site
@@ -16,7 +32,6 @@ Unpack the sources (or clone the repo) and change directory into them.
 Create a database for the application. E.g., for mysql:
 
   mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-  
   mysql> grant all privileges on amuse.* to amuse@localhost identified by XXX
 
 Or, for postgres:
@@ -28,53 +43,31 @@ Login as root.
  create user amuse with password 'XXXX';
  create database amuse owner amuse;
 
-For sqlite you just to setup the filename in the dbic.yaml file (it
-doesn't need to exist).
+For sqlite no setup is required.
 
 Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
-credentials, and chmod it to 600.
+credentials, and chmod it to 600. (For sqlite is good as it is).
 
 Please note that the installation procedure will create a mirror of
-amusewiki.org under the subdomain amusewiki.<your domain>.
-
-For this to work as intended, please check that `hostname -d` gives
-you the real domain name. Fix your /etc/hosts in case. You need your
-ip line looking like this:
-
-66.66.66.66 name.domain.tld name other_names...
-
-Where the first name is the fully qualified one.
+amusewiki.org under the subdomain amusewiki.<your domain>, where <your
+domain> is the output of `hostname -d`. Nothing you can't change later
+from the admin console, but you need to access it.
 
 Execute:
 
 ./script/install.sh
 
 The script is going to take care of the installation in a
-non-interactive fashion.
+non-interactive fashion, picking resonable defaults.
 
-If you use logos in your pdfs, put them under in texmf (e.g
-$HOME/texmf/tex/generic/amusewiki/data) and run mktexlsr)
+The output is copious, but you need only the last lines. Setting up
+the $PATH is crucial.
 
-Assuming your logo is named logo-yu.pdf, check if latex can find it
-with:
+To start/stop/restart the application:
 
-  kpsewhich logo-yu.pdf
-
-I usually do some nginx tweaks:
-
-In the http { } stanza in nginx.conf:
-
-client_max_body_size 8m;
-log_format hitcount '$server_name $host [$time_local] "$request" $status - $bytes_sent "$http_referer" "$http_user_agent"';
-access_log hitcount;
-
-And in the type { } stanza in mime.types I add:
-
-  application/epub+zip  epub;
-
-And tweak the text/plain defintion adding "muse"
-
-   text/plain	txt muse;
+./init-all start
+./init-all stop
+./init-all restart
 
 OPTIONAL SETUP
 
@@ -90,7 +83,7 @@ Start the service
 
   service git-daemon start
 
-Link the repositories in /var/cache/git (as per package documentation.
+Link the repositories in /var/cache/git (as per package documentation).
 Note that in debian jessie it was moved to /var/lib/cache).
 
 Something like this should do:
@@ -102,12 +95,4 @@ root@localhost:/var/cache/git# for i in ~amuse/amusewiki/repo/*; \
 And in your repo directory, mark the repository for export:
 
 amuse@localhost:~/amusewiki/repo$ for i in */.git ; do touch $i/git-daemon-export-ok; done
-
-By default, cgit is setup in the nginx conf to listen to port 9015.
-You can modify this creating the configuration file
-amusewikifarm_local.conf and specifying the port:
-
- <Model::CgitProxy>
-     port 9099
- </Model::CgitProxy>
 
