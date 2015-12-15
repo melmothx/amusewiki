@@ -63,27 +63,6 @@ non-interactive fashion, picking resonable defaults.
 The output is copious, but you need only the last lines. Setting up
 the $PATH in your bashrc (or equivalent) is crucial.
 
-Some environment variable you may want to use to address multiple
-instance (say one for development and one for production), *before*
-executing the install script:
-
-# nginx log format, default to combined
-export AMW_LOG_FORMAT=combined
-# nginx root, default to Debian setup (/etc/nginx)
-export AMW_NGINX_ROOT=/etc/nginx
-# instance name, for nginx site files and ssl keys
-export AMW_INSTANCE_NAME=amusewiki
-# To set the number of FCGI workers, set the environment variable
-# default to 3. E.g.
-export AMW_WORKERS=5
-
-You should put them in the bashrc as well, so if you need to
-regenerate the webserver configuration when adding sites, you're
-guaranteed to use the same settings.
-
-If you run a Debian machine and you have only one instance running,
-you don't need any of this.
-
 USAGE
 
 To start/stop/restart the application:
@@ -118,4 +97,38 @@ root@localhost:/var/cache/git# for i in ~amuse/amusewiki/repo/*; \
 And in your repo directory, mark the repository for export:
 
 amuse@localhost:~/amusewiki/repo$ for i in */.git ; do touch $i/git-daemon-export-ok; done
+
+
+** MULTIPLE INSTALLATIONS
+
+If you run a Debian machine and you have only one instance running,
+you don't need any of this.
+
+Please note: "multiple instances" doesn't mean "multiple sites". On a
+single instance you can have as many sites as you want.
+
+Some environment variable you may want to use to address multiple
+instance (say one for development and one for production), *before*
+executing the install script:
+
+# nginx log format, default to combined
+export AMW_LOG_FORMAT=combined
+# nginx root, default to Debian setup (/etc/nginx)
+export AMW_NGINX_ROOT=/etc/nginx
+# instance name, for nginx site files and ssl keys
+export AMW_INSTANCE_NAME=amusewiki
+# To set the number of FCGI workers, set the environment variable
+# default to 3. E.g.
+export AMW_WORKERS=5
+
+Also, cgit will need to bind to a different port, so if 9015 is
+already taken, create a  amusewikifarm_local.conf with this content:
+
+<Model::CgitProxy>
+    port 9099
+</Model::CgitProxy>
+
+You should put them in the bashrc as well, so if you need to
+regenerate the webserver configuration when adding sites, you're
+guaranteed to use the same settings.
 
