@@ -71,6 +71,13 @@ To start/stop/restart the application:
   ./init-all stop
   ./init-all restart
 
+To regenerate the nginx configuration after adding a site:
+
+  ./script/generate-nginx-conf.pl
+
+(and read the output).
+
+
 OPTIONAL SETUP
 
 Make the repositories read-only available via git-daemon.
