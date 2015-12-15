@@ -11,7 +11,7 @@ use Getopt::Long;
 use File::Temp;
 
 my $help;
-my $logformat = $ENV{AMW_LOG_FORMAT} || '';
+my $logformat = $ENV{AMW_LOG_FORMAT} || 'combined';
 my $nginx_root = $ENV{AMW_NGINX_ROOT} || '/etc/nginx';
 my $amwbase = $ENV{AMW_INSTANCE_NAME} || 'amusewiki';
 
@@ -218,13 +218,8 @@ close $fh;
 
 my $conf_target = catfile($nginx_root, 'sites-enabled', $amwbase);
 my $include_target = catfile($nginx_root, "${amwbase}_include");
-print <<"HELP";
-please execute the following command as root
+print "please execute the following command as root\n\n";
 
-cat $include_file > $include_target
-cat $conf_file > $conf_target
-nginx -t && service nginx reload
-HELP
 
 my $hostname_for_cert = 'localhost';
 if (@sites) {
@@ -250,6 +245,12 @@ cp $keyout $installed_key
 chmod 600 $installed_key
 SSL
 }
+print <<"HELP";
+cat $include_file > $include_target
+cat $conf_file > $conf_target
+nginx -t && service nginx reload
+HELP
+
 
 sub insert_server_stanza {
     my ($site) = @_;
