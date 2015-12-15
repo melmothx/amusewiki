@@ -70,7 +70,12 @@ requires 'Text::Unidecode' => '1.22'; # version in jessie
 requires 'Log::Contextual';
 requires 'Log::Log4perl';
 requires 'Log::Dispatch';
+requires 'Log::Dispatch::File::Stamped';
+# for the Log::Dispatch::Email::MailSend module
+requires 'Mail::Send';
+
 requires 'HTTP::Tiny';
+requires 'Crypt::XkcdPassword';
 
 # our own dogfood
 requires 'Text::Amuse' => '0.54';

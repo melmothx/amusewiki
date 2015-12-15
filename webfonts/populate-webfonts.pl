@@ -53,7 +53,7 @@ foreach my $font (@fonts) {
     }
 }
 
-print Dumper(\%specs);
+# print Dumper(\%specs);
 
 FONT:
 foreach my $font (keys %specs) {

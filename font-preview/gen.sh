@@ -22,14 +22,17 @@ for font in 'CMU Serif'            \
             'CMU Typewriter Text'  \
             'DejaVu Sans Mono'     \
             'TeX Gyre Cursor'; do
+    rm -f font-preview.{tex,log,pdf}
     muse-compile.pl --extra papersize=a5 --extra division=15 \
         --extra sitename="$font" \
         --extra nocoverpage=1 \
-        --extra fontsize=11 --extra mainfont="$font" --pdf font-preview.muse
+        --extra fontsize=11 --extra mainfont="$font" \
+        --pdf font-preview.muse >/dev/null 2>&1
     pdf=$(echo $font | sed -e 's/ /-/g').pdf
     mv font-preview.pdf $pdf
     png=$(basename $pdf .pdf).png
     convert -density 150 -trim -quality 100 -sharpen 0x1.0 $pdf[1] $png
+    echo "created $pdf and $png"
     mv $pdf $png ../root/static/images/font-preview
 done
 rm -f font-preview.aux font-preview.log font-preview.tex

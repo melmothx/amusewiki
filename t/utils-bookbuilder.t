@@ -356,9 +356,9 @@ ok ($bb->webfonts) and diag Dumper($bb->webfonts);
     is_deeply ($bb->texts,
                [ 'first-test:1,pre,post' ]);
     my $pdf = check_file($bb, "Partial");
-    my $pdftext = pdf_content($pdf);
   SKIP: {
         skip "Missing pdftotext", 3, unless $pdftotext;
+        my $pdftext = pdf_content($pdf);
         like $pdftext, qr{second chapter};
         unlike $pdftext, qr{second chapter.*second chapter}s;
         unlike $pdftext, qr{first chapter};

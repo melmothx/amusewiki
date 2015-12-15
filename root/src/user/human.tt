@@ -9,7 +9,7 @@
 <form name="human" method="post" action="[% c.uri_for('/human') %]">
   <div class="form-group">
     <label for="answer">
-        [% site.magic_question %]
+        [% site.magic_question | html %]
     </label>
     <input class="form-control" type="text" size="20" name="answer" id="answer"/>
     <input type="hidden" name="goto" value="[% c.request.params.goto | html %]" />

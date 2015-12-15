@@ -78,7 +78,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="magic_question" id="magic_question"
-               class="form-control" value="[% esite.magic_question %]" />
+               class="form-control" value="[% esite.magic_question | html %]" />
       </div>
     </div>
 
@@ -88,7 +88,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="magic_answer" id="magic_answer"
-               class="form-control" value="[% esite.magic_answer %]" />
+               class="form-control" value="[% esite.magic_answer | html %]" />
       </div>
     </div>
 
@@ -98,7 +98,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="fixed_category_list" id="fixed_category_list"
-               class="form-control" value="[% esite.fixed_category_list %]" />
+               class="form-control" value="[% esite.fixed_category_list | html %]" />
       </div>
     </div>
 
@@ -108,7 +108,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="multilanguage" id="multilanguage"
-               class="form-control" value="[% esite.multilanguage %]" />
+               class="form-control" value="[% esite.multilanguage | html %]" />
       </div>
     </div>
 
@@ -120,7 +120,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="sitename" id="sitename"
-               class="form-control" value="[% esite.sitename %]" />
+               class="form-control" value="[% esite.sitename | html %]" />
       </div>
     </div>
 
@@ -130,7 +130,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="siteslogan" id="siteslogan"
-               class="form-control" value="[% esite.siteslogan %]" />
+               class="form-control" value="[% esite.siteslogan | html %]" />
       </div>
     </div>
 
@@ -138,11 +138,26 @@
 
     <div class="form-group">
       <label for="logo" class="col-sm-2 control-label">
-        [% loc('PDF logo (absolute path or put it in texmf)') %]
+        [% loc('PDF logo') %]
       </label>
       <div class="col-sm-10">
         <input type="text"  name="logo" id="logo"
-               class="form-control" value="[% esite.logo %]" />
+               class="form-control" value="[% esite.logo | html %]" />
+      </div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+          <p>
+            <br>
+            [% loc('The PDF logo value can be either an absolute path
+            or just a filename if you choose to install it in the
+            TeXlive tree. You can do so with the following commands.
+            The last one checks if the file can be found.') %]
+          </p>
+          <pre>mkdir -p `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
+cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data`
+kpsewhich mylogo.pdf</pre>
+        </div>
       </div>
     </div>
 
@@ -152,7 +167,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="mail_notify" id="mail_notify"
-               class="form-control" value="[% esite.mail_notify %]" />
+               class="form-control" value="[% esite.mail_notify | html %]" />
       </div>
     </div>
 
@@ -162,7 +177,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="mail_from" id="mail_from"
-               class="form-control" value="[% esite.mail_from %]" />
+               class="form-control" value="[% esite.mail_from | html %]" />
       </div>
     </div>
 
@@ -172,17 +187,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="canonical" id="canonical"
-               class="form-control" value="[% esite.canonical %]" />
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.secure_site %]checked="checked"[% END %]
-                 name="secure_site" />
-          [% loc('Use SSL for authenticated users') %]
-        </label>
+               class="form-control" value="[% esite.canonical | html %]" />
       </div>
     </div>
     <div class="form-group">
@@ -191,7 +196,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="sitegroup" id="sitegroup"
-               class="form-control" value="[% esite.sitegroup %]" />
+               class="form-control" value="[% esite.sitegroup | html %]" />
       </div>
     </div>
 
@@ -201,7 +206,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="bb_page_limit" id="bb_page_limit"
-               class="form-control" value="[% esite.bb_page_limit %]" />
+               class="form-control" value="[% esite.bb_page_limit | html %]" />
       </div>
     </div>
 
@@ -312,7 +317,7 @@
       </label>
       <div class="col-sm-10">
         <input type="text"  name="ttdir" id="ttdir"
-               class="form-control" value="[% esite.ttdir %]" />
+               class="form-control" value="[% esite.ttdir | html %]" />
       </div>
     </div>
 
@@ -571,7 +576,7 @@
         <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
           [%- SET vhosts = esite.vhosts_rs -%]
           [%- FOREACH vhost IN vhosts.all %]
-          [%- vhost.name +%]
+          [%- vhost.name | html +%]
 
           [%- END -%]</textarea>
         </div>
@@ -621,7 +626,7 @@
       <div class="col-sm-10">
         <input type="text" name="latest_entries" id="latest_entries"
                class="form-control"
-               value="[% esite.get_option('latest_entries') %]" />
+               value="[% esite.get_option('latest_entries') | html %]" />
       </div>
     </div>
 
@@ -633,7 +638,7 @@
         <input type="text" name="latest_entries_for_rss"
                id="latest_entries_for_rss"
                class="form-control"
-               value="[% esite.get_option('latest_entries_for_rss') %]" />
+               value="[% esite.get_option('latest_entries_for_rss') | html %]" />
       </div>
     </div>
 
@@ -646,12 +651,74 @@
                name="paginate_archive_after"
                id="paginate_archive_after"
                class="form-control"
-               value="[% esite.paginate_archive_after %]" />
+               value="[% esite.paginate_archive_after | html %]" />
+      </div>
+    </div>
+
+    <h3>[% loc('SSL configuration') %]</h3>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.secure_site %]checked="checked"[% END %]
+                 name="secure_site" />
+          [% loc('Use SSL for authenticated users') %]
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.secure_site_only %]checked="checked"[% END %]
+                 name="secure_site_only" />
+          [% loc('The generate webserver configuration will redirect
+          all the HTTP requests to HTTPS') %]
+        </label>
       </div>
     </div>
 
 
+    <p>
+      [% loc('The following values are used verbatim by the webserver config generator.') %]
+    </p>
+    <div class="form-group">
+      <label for="ssl_key" class="col-sm-2 control-label">
+        [% loc('SSL key path') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ssl_key" id="ssl_key"
+               class="form-control" value="[% esite.ssl_key  | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ssl_cert" class="col-sm-2 control-label">
+        [% loc('SSL certificate path (Apache)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ssl_cert" id="ssl_cert"
+               class="form-control" value="[% esite.ssl_cert | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ssl_ca_cert" class="col-sm-2 control-label">
+        [% loc('SSL CA certificate path (Apache)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ssl_ca_cert" id="ssl_ca_cert"
+               class="form-control" value="[% esite.ssl_ca_cert | html %]" />
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label for="ssl_chained_cert" class="col-sm-2 control-label">
+        [% loc('SSL chained certertificate path (Nginx)') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ssl_chained_cert" id="ssl_chained_cert"
+               class="form-control" value="[% esite.ssl_chained_cert | html%]" />
+      </div>
+    </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-primary" name="edit_site"

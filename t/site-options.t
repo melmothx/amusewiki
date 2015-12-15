@@ -85,6 +85,10 @@ my %old = map { $_ => ($site->$_ || '') } qw/magic_answer
                                   beamertheme
                                   beamercolortheme
                                   bcor
+                                  ssl_key
+                                  ssl_cert
+                                  ssl_ca_cert
+                                  ssl_chained_cert
                                  /;
 
 my $errors = $site->update_from_params({

@@ -7,6 +7,11 @@ use AmuseWikiFarm::Archive::CgitProxy;
 use Test::More tests => 23;
 use Data::Dumper;
 use URI;
+use AmuseWikiFarm::Utils::CgitSetup;
+use AmuseWikiFarm::Schema;
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my $cgit = AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema);
+$cgit->configure;
 
 my $proxy = AmuseWikiFarm::Archive::CgitProxy->new;
 

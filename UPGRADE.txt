@@ -1,0 +1,11 @@
+The recommended way is to install the application from git and run it
+from here.
+
+./init-all stop
+git pull
+git checkout v_1.56  # optional
+./init-all start
+
+DB upgrades are managed automatically. If some manual operation is
+required, it will be listed in the Changes file.
+

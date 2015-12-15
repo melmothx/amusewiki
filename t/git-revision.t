@@ -24,6 +24,7 @@ my $site = create_site($schema, $site_id);
 my $archive_git = $site->git;
 
 ok ($site, "Created $site_id");
+$site->update({ cgit_integration => 0 });
 
 my ($log) = $archive_git->log;
 

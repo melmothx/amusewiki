@@ -1,31 +1,37 @@
+The installation of amusewiki takes time (depending on speed of the
+machine and of the network) and requires about 4Gb of disk space,
+mostly because of the installation of TeXlive. Otherwise the procedure
+is fully automated, so start it, check if it bails out at the
+beginning, forget about it for an hour or two (run it under screen),
+then come back later and finish it up to complete it for the
+operations which require root privileges (notably the webserver
+configuration). The last lines of output is what matters. It will tell
+you about the needed changes to the $PATH for TeXlive, and where to
+login. From there you should be be able to create and configure new
+sites from the admin console under /admin/sites.
+
+The supported and recommended setup is nginx + FCGI. The FCGI setup
+should work with Apache as well, but it's not currently actively
+supported. perldoc Catalyst::Manual::Deployment::Apache::FastCGI
+should help, though.
+
 Prerequisites:
 
- - a database (mysql, pg, sqlite)
+ - a database (mysql, pg, sqlite are supported)
  - a working perl (i.e., you can install modules)
  - fontconfig (install it before installing texlive)
  - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
- - TeXlive (minimum: texlive 2012)
  - a mime-info database: shared-mime-info on debian
+ - fcgiwrap running and listening to /var/run/fcgiwrap.socket (as in debian)
+ - a dedicated system user (with a clean home) which is going to run the site
 
-Unpack the sources and change directory into them.
+Log in as the user you want to run the site.
 
-Install Catalyst
-
- cpanm Module::Install::Catalyst
-
-Execute "perl Makefile.PL" and install the dependencies if it complains.
-
-Execute make
-
-
-Answer yes to install the modules with cpan. Also, depending on the
-database you are going to use, you need the relevant driver, like
-lidbd-pg-perl for debian (or install it from CPAN).
+Unpack the sources (or clone the repo) and change directory into them.
 
 Create a database for the application. E.g., for mysql:
 
   mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-  
   mysql> grant all privileges on amuse.* to amuse@localhost identified by XXX
 
 Or, for postgres:
@@ -37,114 +43,39 @@ Login as root.
  create user amuse with password 'XXXX';
  create database amuse owner amuse;
 
+For sqlite no setup is required.
+
 Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
-credentials, and chmod it to 600.
+credentials, and chmod it to 600. (For sqlite is good as it is).
 
-Install TeXlive.
+Please note that the installation procedure will create a mirror of
+amusewiki.org under the subdomain amusewiki.<your domain>, where <your
+domain> is the output of `hostname -d`. Nothing you can't change later
+from the admin console, but you need to access it.
 
-https://www.tug.org/texlive/acquire-netinstall.html
+Execute:
 
-This is a sample configuration of the installer:
+./script/install.sh
 
- <1> TEXDIR:       /home/amuse/texlive/2014
-     support tree: /home/amuse/texlive/2014/texmf-dist
+The script is going to take care of the installation in a
+non-interactive fashion, picking resonable defaults.
 
- <2> TEXMFLOCAL:     /home/amuse/texlive/texmf-local
- <3> TEXMFSYSVAR:    /home/amuse/texlive/2014/texmf-var
- <4> TEXMFSYSCONFIG: /home/amuse/texlive/2014/texmf-config
+The output is copious, but you need only the last lines. Setting up
+the $PATH in your bashrc (or equivalent) is crucial.
 
- <5> TEXMFVAR:       ~/.texlive2014/texmf-var
- <6> TEXMFCONFIG:    ~/.texlive2014/texmf-config
- <7> TEXMFHOME:      ~/texmf
+USAGE
 
-
- Add /home/amuse/texlive/2014/texmf-dist/doc/info to INFOPATH.
- Add /home/amuse/texlive/2014/texmf-dist/doc/man to MANPATH
-   (if not dynamically found).
-
- Most importantly, add /home/amuse/texlive/2014/bin/x86_64-linux
- to your PATH for current and future sessions.
-
-The needed fonts are shipped in texlive, under texmf-dist/fonts/, so
-it's usually enough to symlink them into ~/.fonts.
-
-Fonts needed: antt  cm-unicode  libertine  paratype  poltawski  tex-gyre iwona droids
-
-The SIL charis font is not shipped by texlive, but it's usually
-packaged by your distro. Or download it at
-http://www.sil.org/resources/software_fonts/charis-sil
-
-Put the fonts into ~/.fonts and execute fc-cache. (You can find more detailed instructions in BUILD-SERVER.txt).
-
-To test if everything is working as expected, go to ./font-preview and
-run ./gen.sh
-
-Disregard the copious output of missing characters, this is fine (as
-we use this to test them).
-
-For the EPUB to have the font bundling, you need to populate the
-webfonts subdirectories with the fonts.
-
-Go into the webfonts directory and run ./populate-webfonts.pl from
-there.
-
-If you use logos in your pdfs, put them under in texmf (e.g
-$HOME/texmf/tex/generic/amusewiki/data) and run mktexlsr)
-
-Assuming your logo is named logo-yu.pdf, check if latex can find it
-with:
-
-  kpsewhich logo-yu.pdf
-
-Run the install script, which will take care of creating an initial
-site and root account. Once you login, you will be able to create
-librarian users and sites.
-
- ./script/install.pl
-
-If you run under nginx, run:
-
- ./script/generate-nginx-conf.pl
-
-This will generate a suitable nginx configuration and print the (copy
-and paste) installation instructions.
-
-If nginx complains about missing certificates, executes:
-
- ./script/generate-ssl-certs.pl
-
-and copy them to the target destination as per instructions.
-
-I usually do some nginx tweaks:
-
-In the http { } stanza in nginx.conf:
-
-client_max_body_size 8m;
-log_format hitcount '$server_name $host [$time_local] "$request" $status - $bytes_sent "$http_referer" "$http_user_agent"';
-access_log hitcount;
-
-And in the type { } stanza in mime.types I add:
-
-  application/epub+zip  epub;
-
-And tweak the text/plain defintion adding "muse"
-
-   text/plain	txt muse;
-
-Once webserver is configured, you can start the application.
+To start/stop/restart the application:
 
   ./init-all start
+  ./init-all stop
+  ./init-all restart
 
-Login as the root account, configure your site, then you can bootstrap
-it.
+To regenerate the nginx configuration after adding a site:
 
- ./script/bootstrap_archive.pl
+  ./script/generate-nginx-conf.pl
 
-If you get this error:
-
- Can't call method "getPageDimensions" on an undefined value at /...
-
-run the script script/patch-cam-pdf.sh
+(and read the output).
 
 
 OPTIONAL SETUP
@@ -161,7 +92,7 @@ Start the service
 
   service git-daemon start
 
-Link the repositories in /var/cache/git (as per package documentation.
+Link the repositories in /var/cache/git (as per package documentation).
 Note that in debian jessie it was moved to /var/lib/cache).
 
 Something like this should do:
@@ -174,30 +105,38 @@ And in your repo directory, mark the repository for export:
 
 amuse@localhost:~/amusewiki/repo$ for i in */.git ; do touch $i/git-daemon-export-ok; done
 
-If you want a "recent change" page, you need to setup cgit and then
-set the checkbox on the "Recent changes" in the site configuration
-panel.
 
-Install fcgiwrap:
+** MULTIPLE INSTALLATIONS
 
-  apt-get install fcgiwrap
+If you run a Debian machine and you have only one instance running,
+you don't need any of this.
 
-Execute:
+Please note: "multiple instances" doesn't mean "multiple sites". On a
+single instance you can have as many sites as you want.
 
-  ./script/install-cgit.pl
+Some environment variable you may want to use to address multiple
+instance (say one for development and one for production), *before*
+executing the install script:
 
-If it fails probably means you're missing dependencies (notably,
-libssl-dev).
+# nginx log format, default to combined
+export AMW_LOG_FORMAT=combined
+# nginx root, default to Debian setup (/etc/nginx)
+export AMW_NGINX_ROOT=/etc/nginx
+# instance name, for nginx site files and ssl keys
+export AMW_INSTANCE_NAME=amusewiki
+# To set the number of FCGI workers, set the environment variable
+# default to 3. E.g.
+export AMW_WORKERS=5
 
-And then refresh the nginx setup with
+You should put them in the bashrc as well, so if you need to
+regenerate the webserver configuration when adding sites, you're
+guaranteed to use the same settings.
 
-   ./script/generate-nginx-conf.pl
+Also, cgit will need to bind to a different port, so if 9015 is
+already taken, create a  amusewikifarm_local.conf with this content:
 
-If you already have the repository exported in /var/cache/git/, you
-should be good.
+<Model::CgitProxy>
+    port 9099
+</Model::CgitProxy>
 
-Later, the configuration for cgit can be refreshed with:
-
-  ./script/install-cgit.pl --reconfigure \
-    --hostname amusewiki.org
 

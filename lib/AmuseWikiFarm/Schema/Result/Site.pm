@@ -49,7 +49,7 @@ __PACKAGE__->table("site");
 =head2 mode
 
   data_type: 'varchar'
-  default_value: 'blog'
+  default_value: 'private'
   is_nullable: 0
   size: 16
 
@@ -63,14 +63,14 @@ __PACKAGE__->table("site");
 =head2 magic_question
 
   data_type: 'varchar'
-  default_value: (empty string)
+  default_value: '12 + 4 ='
   is_nullable: 0
   size: 255
 
 =head2 magic_answer
 
   data_type: 'varchar'
-  default_value: (empty string)
+  default_value: 16
   is_nullable: 0
   size: 255
 
@@ -128,6 +128,13 @@ __PACKAGE__->table("site");
 =head2 secure_site
 
   data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+  size: 1
+
+=head2 secure_site_only
+
+  data_type: 'integer'
   default_value: 0
   is_nullable: 0
   size: 1
@@ -160,9 +167,33 @@ __PACKAGE__->table("site");
 =head2 cgit_integration
 
   data_type: 'integer'
-  default_value: 0
+  default_value: 1
   is_nullable: 0
   size: 1
+
+=head2 ssl_key
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 ssl_cert
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 ssl_ca_cert
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 ssl_chained_cert
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
 
 =head2 multilanguage
 
@@ -194,14 +225,14 @@ __PACKAGE__->table("site");
 =head2 a4_pdf
 
   data_type: 'integer'
-  default_value: 1
+  default_value: 0
   is_nullable: 0
   size: 1
 
 =head2 lt_pdf
 
   data_type: 'integer'
-  default_value: 1
+  default_value: 0
   is_nullable: 0
   size: 1
 
@@ -344,16 +375,21 @@ __PACKAGE__->add_columns(
   "mode",
   {
     data_type => "varchar",
-    default_value => "blog",
+    default_value => "private",
     is_nullable => 0,
     size => 16,
   },
   "locale",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "magic_question",
-  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  {
+    data_type => "varchar",
+    default_value => "12 + 4 =",
+    is_nullable => 0,
+    size => 255,
+  },
   "magic_answer",
-  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  { data_type => "varchar", default_value => 16, is_nullable => 0, size => 255 },
   "fixed_category_list",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "sitename",
@@ -371,6 +407,8 @@ __PACKAGE__->add_columns(
   "canonical",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "secure_site",
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  "secure_site_only",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "sitegroup",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
@@ -381,7 +419,15 @@ __PACKAGE__->add_columns(
   "specials_label",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "cgit_integration",
-  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  "ssl_key",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "ssl_cert",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "ssl_ca_cert",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "ssl_chained_cert",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "multilanguage",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "bb_page_limit",
@@ -391,9 +437,9 @@ __PACKAGE__->add_columns(
   "pdf",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "a4_pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "lt_pdf",
-  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "sl_pdf",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "html",
@@ -658,8 +704,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 09:40:04
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FhaRWU6Xz2DLSg99QDzqEg
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-13 14:36:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1yz7x1w1Ezmwqu1K+OVwoA
 
 =head2 other_sites
 
@@ -700,6 +746,7 @@ use JSON ();
 use Text::Amuse::Compile::Utils ();
 use AmuseWikiFarm::Archive::Cache;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::CgitSetup;
 
 =head2 repo_root_rel
 
@@ -1974,6 +2021,7 @@ sub update_from_params {
                        logo_with_sitename
                        cgit_integration
                        secure_site
+                       secure_site_only
                        twoside nocoverpage/);
     foreach my $boolean (@booleans) {
         if (delete $params->{$boolean}) {
@@ -1988,6 +2036,10 @@ sub update_from_params {
     # the the length.
     my @strings = (qw/magic_answer magic_question fixed_category_list
                       multilanguage
+                      ssl_key
+                      ssl_cert
+                      ssl_ca_cert
+                      ssl_chained_cert
                       sitename siteslogan logo mail_notify mail_from
                       sitegroup ttdir/);
     foreach my $string (@strings) {
@@ -2198,8 +2250,8 @@ sub update_from_params {
 
 
     # no error? update the db
-    my $guard = $self->result_source->schema->txn_scope_guard;
     unless (@errors) {
+        my $guard = $self->result_source->schema->txn_scope_guard;
         $self->update;
         if (@vhosts) {
             # delete and reinsert, even if it doesn't feel too right
@@ -2215,12 +2267,19 @@ sub update_from_params {
         foreach my $opt (@options) {
             $self->site_options->update_or_create($opt);
         }
+        $guard->commit;
+        $self->configure_cgit;
     }
-    $guard->commit;
-
     # in any case discard the changes
     $self->discard_changes;
     @errors ? return join("\n", @errors) : return;
+}
+
+sub configure_cgit {
+    my $self = shift;
+    my $schema = $self->result_source->schema;
+    my $cgit = AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema);
+    $cgit->configure;
 }
 
 sub deserialize_links {
@@ -2306,6 +2365,7 @@ sub initialize_git {
     $self->_create_repo_stub;
     $git->add('.');
     $git->commit({ message => 'Initial AMuseWiki setup' });
+    $self->configure_cgit;
     return 1;
 }
 
@@ -2520,6 +2580,43 @@ sub serialize_site {
     $data{users} = \@users;
     return \%data;
 }
+
+=head1 WEBSERVER options
+
+These options only affect the webserver configuration, but we have to
+store them here to fully automate that, without calling the script
+with different options which are not going to cover any case.
+
+They are stored in the C<site> table to enable a more straightforward
+setting from the sql monitor. (Say you have a wildcard cert for all
+the sites, you can just do a single update to set them).
+
+Please note that ssl_cert and ssl_ca_cert are not used anywhere,
+because we don't provide an apache config generator. But if there is
+the need for this, we have already the fields ready.
+
+=head2 ssl_key
+
+Used by both Apache and nginx.
+
+=head2 ssl_cert
+
+Used by Apache.
+
+=head2 ssl_ca_cert
+
+Used by Apache
+
+=head2 ssl_chained_cert
+
+Used by nginx (concatenation of the certificate and the CA
+certificate).
+
+=head2 secure_site_only
+
+This affects only the generation of the nginx conf
+
+=cut
 
 
 __PACKAGE__->meta->make_immutable;
