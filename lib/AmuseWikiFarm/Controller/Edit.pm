@@ -261,6 +261,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;
     my $revision = $c->stash->{revision};
+    $c->stash(load_highlight => $c->stash->{site}->use_js_highlight);
     # while editing, prevent multiple session to write stuff
     if ($revision->editing_ongoing and
         $revision->session_id      and
