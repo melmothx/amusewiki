@@ -2233,6 +2233,7 @@ sub update_from_params {
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
                            do_not_enforce_commit_message
+                           use_js_highlight
                           /) {
         my $value = delete $params->{$option} || '';
         push @options, {
