@@ -111,7 +111,9 @@ sub text :Chained('match') :PathPart('') :Args(0) {
 
     # we are in a role, so if we don't set this special/text.tt and
     # library/text.tt will be searched .
-    $c->stash(template => 'text.tt');
+    $c->stash(template => 'text.tt',
+              load_highlight => $c->stash->{site}->use_js_highlight);
+
     foreach my $listing (qw/authors topics/) {
         my @list;
         my $categories = $text->$listing;

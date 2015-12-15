@@ -1,3 +1,5 @@
+** INSTALLATION
+
 The installation of amusewiki takes time (depending on speed of the
 machine and of the network) and requires about 4Gb of disk space,
 mostly because of the installation of TeXlive. Otherwise the procedure
@@ -78,7 +80,7 @@ To regenerate the nginx configuration after adding a site:
 (and read the output).
 
 
-OPTIONAL SETUP
+** OPTIONAL SETUP
 
 Make the repositories read-only available via git-daemon.
 
@@ -139,4 +141,23 @@ already taken, create a  amusewikifarm_local.conf with this content:
     port 9099
 </Model::CgitProxy>
 
+
+** SYNTAX HIGHLIGHT
+
+We ship a copy of highlight.js (https://highlightjs.org) to get an
+optional syntax highlight for code blocks, with support for the
+following languages: HTML, XML, Python, Bash, JS, Ruby, SQL, Diff,
+JSON, Markdown, Perl, TeX.
+
+If you want/need support for other languages, build your own copy on
+https://highlightjs.org/download/ and install the script in
+
+root/static/js/highlight/highlight.pack.local.js
+
+and the CSS file in
+
+root/static/js/highlight/style.local.css
+
+If these files exist, the application will serve them instead of
+the bundled ones.
 

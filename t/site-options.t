@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 16;
+use Test::More tests => 26;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -12,6 +12,7 @@ use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Data::Dumper;
 use Test::WWW::Mechanize::Catalyst;
+use File::Copy qw(move copy);
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -158,3 +159,53 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $mech->get_ok('/', "Crash 1.22 fixed");
 
+{
+    $site = $schema->resultset('Site')->find('0blog0');
+    $site->site_options->update_or_create({ option_name => 'use_js_highlight',
+                                            option_value => 1 });
+
+    my @jspath = (qw/root static js highlight/);
+    my $main_js =   catfile(@jspath, 'highlight.pack.js');
+    my $main_css =  catfile(@jspath, 'style.css');
+    my $local_js =  catfile(@jspath, 'highlight.pack.local.js');
+    my $local_css = catfile(@jspath, 'style.local.css');
+    my $tmp_js =    catfile(@jspath, 'tmp.js');
+    my $tmp_css =   catfile(@jspath, 'tmp.css');
+
+    is_deeply($site->use_js_highlight,
+              {
+               js => '/static/js/highlight/highlight.pack.js',
+               css => '/static/js/highlight/style.css',
+              }, "Found the correct paths");
+    copy($main_js, $local_js) or die $!;
+    copy($main_css, $local_css) or die $!;
+
+    is_deeply($site->use_js_highlight,
+              {
+               js => '/static/js/highlight/highlight.pack.local.js',
+               css => '/static/js/highlight/style.local.css',
+              });
+
+    unlink $local_js or die $!;
+    unlink $local_css or die $!;
+    move($main_js, $tmp_js) or die $!;
+    move($main_css, $tmp_css) or die $!;
+    is($site->use_js_highlight, 0);
+    move($tmp_js, $main_js) or die $!;
+    move($tmp_css, $main_css) or die $!;
+    is_deeply($site->use_js_highlight,
+              {
+               js => '/static/js/highlight/highlight.pack.js',
+               css => '/static/js/highlight/style.css',
+              });
+    $mech->get_ok('/library/first-test');
+    $mech->content_contains('/static/js/highlight/highlight.pack.js');
+    $mech->content_contains('/static/js/highlight/style.css');
+
+    $site->site_options->update_or_create({ option_name => 'use_js_highlight',
+                                            option_value => 0 });
+    $mech->get_ok('/library/first-test');
+    $mech->content_lacks('/static/js/highlight/highlight.pack.js');
+    $mech->content_lacks('/static/js/highlight/style.css');
+
+}
