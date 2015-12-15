@@ -4,10 +4,18 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.60 UNRELEASED
+
+  - Bookbuilder new feature: partial texts (#14)
+  - Automated installer (#29)
+  - Moved cgit refreshing to module and triggered on conf changes
+  - Fixed BB crash when reusing setup with a cover (#30)
+  - Fixed missing Xapian purging on deletion by git removal (#31)
+
 1.56 2015-12-02
 
- - Handle long author names (via bumped up Text::Amuse::Compile Added
- - headings option to the bookbuilder (buggy, probably impossible to
+ - Handle long author names (via bumped up Text::Amuse::Compile)
+ - Added headings option to the bookbuilder (buggy, probably impossible to
    fix)
  - Updated i18n files
 
