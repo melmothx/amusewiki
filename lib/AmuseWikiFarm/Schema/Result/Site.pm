@@ -746,6 +746,7 @@ use JSON ();
 use Text::Amuse::Compile::Utils ();
 use AmuseWikiFarm::Archive::Cache;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::CgitSetup;
 
 =head2 repo_root_rel
 
@@ -2249,8 +2250,8 @@ sub update_from_params {
 
 
     # no error? update the db
-    my $guard = $self->result_source->schema->txn_scope_guard;
     unless (@errors) {
+        my $guard = $self->result_source->schema->txn_scope_guard;
         $self->update;
         if (@vhosts) {
             # delete and reinsert, even if it doesn't feel too right
@@ -2266,12 +2267,19 @@ sub update_from_params {
         foreach my $opt (@options) {
             $self->site_options->update_or_create($opt);
         }
+        $guard->commit;
+        $self->configure_cgit;
     }
-    $guard->commit;
-
     # in any case discard the changes
     $self->discard_changes;
     @errors ? return join("\n", @errors) : return;
+}
+
+sub configure_cgit {
+    my $self = shift;
+    my $schema = $self->result_source->schema;
+    my $cgit = AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema);
+    $cgit->configure;
 }
 
 sub deserialize_links {
@@ -2357,6 +2365,7 @@ sub initialize_git {
     $self->_create_repo_stub;
     $git->add('.');
     $git->commit({ message => 'Initial AMuseWiki setup' });
+    $self->configure_cgit;
     return 1;
 }
 

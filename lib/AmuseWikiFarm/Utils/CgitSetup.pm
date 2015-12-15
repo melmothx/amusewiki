@@ -135,13 +135,13 @@ CONFIG
         }
         print $fh "repo.url=" . $site->id . "\n";
         print $fh "repo.path=" . $path . "\n";
-        print $fh "repo.desc=" . $site->sitename . "\n";
+        print $fh "repo.desc=" . $site->sitename . "\n" if $site->sitename;
         if (-f catfile($path, 'git-daemon-export-ok')) {
             my $githostname = $hostname || $site->canonical;
             print $fh "repo.clone-url=git://$githostname/git/" . $site->id .
               ".git\n";
-            print $fh "\n\n";
         }
+        print $fh "\n\n";
         log_info { "Exported " . $site->id . " into cgit" };
     }
     close $fh;
