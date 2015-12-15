@@ -256,7 +256,7 @@ EOF
 
 cp log4perl.conf log4perl.local.conf
 sed -i "s/localhost/$hostname/" log4perl.local.conf
-sed -i "s/amuse@/`whoami`/" log4perl.local.conf
+sed -i "s/amuse@/`whoami`@/" log4perl.local.conf
 
 cat $AMWLOGFILE
 rm $AMWLOGFILE
