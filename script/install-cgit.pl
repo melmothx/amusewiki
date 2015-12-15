@@ -10,16 +10,17 @@ use File::Path qw/make_path/;
 use Cwd;
 use Data::Dumper;
 use Getopt::Long;
+use AmuseWikiFarm::Utils::CgitSetup;
 
 binmode STDOUT, ":encoding(utf-8)";
 
 my $cgitversion = 'v0.11.2';
-my ($hostname, $reinstall, $reconfigure, $help);
+my ($hostname, $reinstall, $help);
 
 GetOptions(
            'hostname=s' => \$hostname,
            'cgit-version=s' => \$cgitversion,
-           'reconfigure' => \$reconfigure,
+           'reinstall' => \$reinstall,
            'help' => \$help,
           ) or die;
 
@@ -37,10 +38,10 @@ Options:
 
  Show this help and exit
 
- --reconfigure
+ --reinstall
 
- Skip the download and compile step, and just reconfigure cgitrc with
- the values from the database (i.e., sites with cgi integration set)
+ Normally, cgit is compiled only if the binary is missing. To force
+ the recompiling, use this option.
 
  --hostname <git.mysite.org>
 
@@ -62,32 +63,23 @@ my $applibs = catfile($amw_home, qw/lib AmuseWikiFarm/);
 die "$applibs is not a directory, are we in the application root?"
   unless -d $applibs;
 
-my %paths = (
-             src => catdir($amw_home, qw/opt src/),
-             www => catdir($amw_home, qw/root git/),
-             cgitsrc => catdir($amw_home, qw/opt src cgit/),
-             cgi => catfile($amw_home, qw/root git cgit.cgi/),
-             gitsrc => catdir($amw_home, qw/opt src cgit git/),
-             cache => catdir($amw_home, qw/opt cache cgit/),
-             etc => catdir($amw_home, qw/opt etc/),
-             cgitrc => catfile($amw_home, qw/opt etc cgitrc/),
-             lib => catdir($amw_home, qw/opt usr/),
-           );
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+my $cgitsetup = AmuseWikiFarm::Utils::CgitSetup->new(amw_home => $amw_home,
+                                                     schema => $schema);
 
-foreach my $dir (qw/src cache etc lib/) {
-    make_path($paths{$dir}, { verbose => 1 }) unless -d $paths{$dir};
-}
+
+my %paths = map { $_ => $cgitsetup->$_ } (qw/src www cgitsrc cgi
+                                             gitsrc cache etc cgitrc lib/);
+
+$cgitsetup->create_skeleton;
+
 print Dumper(\%paths);
 
-unless ($reconfigure) {
+if (!$cgitsetup->cgi_exists || $reinstall) {
     compile();
 }
 
-if (! -f $paths{cgitrc} || $reconfigure) {
-    install_conf();
-}
-
-
+$cgitsetup->configure;
 
 sub compile {
     chdir $paths{src} or die $!;
@@ -122,12 +114,6 @@ sub compile {
     } else {
         die "$paths{cgi} was not installed!\n";
     }
-    print <<"CHOWN";
-*******************************************************
-**** Please chown $paths{cache} to www-data ****
-*******************************************************
-CHOWN
-
 }
 
 sub sysexec {
@@ -137,43 +123,3 @@ sub sysexec {
     system(@args) == 0 or die "$cmdline failed $?";
 }
 
-sub install_conf {
-    my $cgitrc = $paths{cgitrc};
-    die "Missing cgitrc location" unless $cgitrc;
-    print "Installing configuration file at $cgitrc\n";
-    open (my $fh, '>:encoding(utf-8)', $cgitrc)
-      or die "Cannot open $cgitrc\n";
-    print $fh "####### automatically generated on " . localtime() . " ######\n\n";
-    print $fh <<'CONFIG';
-virtual-root=/git
-enable-index-owner=0
-robots="noindex, nofollow"
-cache-size=1000
-enable-commit-graph=1
-embedded=1
-
-CONFIG
-    my $schema = AmuseWikiFarm::Schema->connect('amuse');
-    die "Cannot connect to database, please read the doc!" unless $schema;
-
-    foreach my $site ($schema->resultset('Site')->all) {
-        next unless $site->cgit_integration;
-        my $path = File::Spec->rel2abs(catdir($amw_home, 'repo',
-                                              $site->id, ".git"));
-        unless (-d $path) {
-            warn "Repo $path not found!, skipping\n";
-            next;
-        }
-        print $fh "repo.url=" . $site->id . "\n";
-        print $fh "repo.path=" . $path . "\n";
-        print $fh "repo.desc=" . $site->sitename . "\n";
-        if (-f catfile($path, 'git-daemon-export-ok')) {
-            my $githostname = $hostname || $site->canonical;
-            print $fh "repo.clone-url=git://$githostname/git/" . $site->id .
-              ".git\n";
-            print $fh "\n\n";
-        }
-        print "Exported " . $site->id . " into cgit\n";
-    }
-    close $fh;
-}
