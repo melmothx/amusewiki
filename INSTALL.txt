@@ -61,13 +61,36 @@ The script is going to take care of the installation in a
 non-interactive fashion, picking resonable defaults.
 
 The output is copious, but you need only the last lines. Setting up
-the $PATH is crucial.
+the $PATH in your bashrc (or equivalent) is crucial.
+
+Some environment variable you may want to use to address multiple
+instance (say one for development and one for production), *before*
+executing the install script:
+
+# nginx log format, default to combined
+export AMW_LOG_FORMAT=combined
+# nginx root, default to Debian setup (/etc/nginx)
+export AMW_NGINX_ROOT=/etc/nginx
+# instance name, for nginx site files and ssl keys
+export AMW_INSTANCE_NAME=amusewiki
+# To set the number of FCGI workers, set the environment variable
+# default to 3. E.g.
+export AMW_WORKERS=5
+
+You should put them in the bashrc as well, so if you need to
+regenerate the webserver configuration when adding sites, you're
+guaranteed to use the same settings.
+
+If you run a Debian machine and you have only one instance running,
+you don't need any of this.
+
+USAGE
 
 To start/stop/restart the application:
 
-./init-all start
-./init-all stop
-./init-all restart
+  ./init-all start
+  ./init-all stop
+  ./init-all restart
 
 OPTIONAL SETUP
 

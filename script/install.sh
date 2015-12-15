@@ -78,6 +78,47 @@ else
     exit 2
 fi
 
+show_dbic_setup () {
+    cat <<EOF
+
+Please create a database for the application. E.g., for mysql:
+
+  mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+  mysql> grant all privileges on amuse.* to amuse@localhost identified by XXX
+
+Or, for postgres:
+
+Login as root.
+
+ su - postgres
+ psql
+ create user amuse with password 'XXXX';
+ create database amuse owner amuse;
+
+Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
+credentials, and chmod it to 600.
+
+Please note that if you use mysql you need to install (via package
+manager or cpanm) DBD::mysql, while if you use postgresql you need
+DBD::Pg. These dependencies are not installed automatically by us and
+requires devel packages (libmysqlclient-dev, libpq-dev) to be
+installed.
+
+If you want to use sqlite3, just copy dbic.yaml.sqlite.example to
+dbic.yaml. No further setup is required, but it's meant to be only for
+development.
+
+EOF
+    exit 2
+}
+
+if [ -f 'dbic.yaml' ]; then
+    chmod 600 dbic.yaml
+else
+    show_dbic_setup
+fi
+
+
 echo -n "Checking if I can install modules in my home..."
 
 cpanm -q Text::Amuse
@@ -110,38 +151,13 @@ make
 
 # check if I can access to the db
 
+
 echo -n "Checking DB connection: "
 if perl -I lib -MAmuseWikiFarm::Schema -MData::Dumper\
         -e 'AmuseWikiFarm::Schema->connect("amuse")->storage->dbh or die'; then
     echo "OK"
 else
-    cat <<EOF
-
-Create a database for the application. E.g., for mysql:
-
-  mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-  mysql> grant all privileges on amuse.* to amuse@localhost identified by XXX
-
-Or, for postgres:
-
-Login as root.
-
- su - postgres
- psql
- create user amuse with password 'XXXX';
- create database amuse owner amuse;
-
-Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
-credentials, and chmod it to 600.
-
-Please note that if you use mysql you need to install (via package
-manager or cpanm) DBD::mysql, while if you use postgresql you need
-DBD::Pg. These dependencies are not installed automatically by us and
-requires devel packages (libmysqlclient-dev, libpq-dev) to be
-installed.
-
-EOF
-    exit 2
+    show_dbic_setup
 fi
 
 install_texlive () {
