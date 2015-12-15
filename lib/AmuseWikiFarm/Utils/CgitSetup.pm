@@ -130,7 +130,7 @@ CONFIG
         my $path = File::Spec->rel2abs(catdir($self->amw_home, 'repo',
                                               $site->id, ".git"));
         unless (-d $path) {
-            warn "Repo $path not found!, skipping\n";
+            log_debug { "Repo $path not found!, skipping" };
             next;
         }
         print $fh "repo.url=" . $site->id . "\n";
@@ -142,7 +142,7 @@ CONFIG
               ".git\n";
         }
         print $fh "\n\n";
-        log_info { "Exported " . $site->id . " into cgit" };
+        log_debug { "Exported " . $site->id . " into cgit" };
     }
     close $fh;
     if (-f $self->cgitrc) {

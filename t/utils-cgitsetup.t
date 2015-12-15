@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 2;
+use Test::More tests => 3;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
 use AmuseWikiFarm::Utils::CgitSetup;
