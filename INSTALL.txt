@@ -128,6 +128,10 @@ export AMW_INSTANCE_NAME=amusewiki
 # default to 3. E.g.
 export AMW_WORKERS=5
 
+You should put them in the bashrc as well, so if you need to
+regenerate the webserver configuration when adding sites, you're
+guaranteed to use the same settings.
+
 Also, cgit will need to bind to a different port, so if 9015 is
 already taken, create a  amusewikifarm_local.conf with this content:
 
@@ -135,7 +139,4 @@ already taken, create a  amusewikifarm_local.conf with this content:
     port 9099
 </Model::CgitProxy>
 
-You should put them in the bashrc as well, so if you need to
-regenerate the webserver configuration when adding sites, you're
-guaranteed to use the same settings.
 
