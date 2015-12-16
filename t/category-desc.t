@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 125;
+use Test::More tests => 140;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -137,6 +137,9 @@ $mech->get_ok('/set-language?lang=en');
 $mech->get_ok('/authors/pippo');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
 $mech->get_ok('/category/author/pippo/edit');
+is $mech->uri->path, '/login', "Bounced to login";
+$mech->get_ok('/category/author/pippo/delete');
+is $mech->uri->path, '/login', "Bounced to login";
 ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
                       button => 'submit'), "Found login form");
 is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
@@ -207,4 +210,29 @@ $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo">\s*All langu
 $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
 $mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo/it">\s*Italiano});
 $mech->content_contains('No text found!');
+
+$mech->get_ok("/category/author/pippo/en/edit");
+$mech->content_contains("Pippo <em>is</em> a nice author");
+
+$mech->get_ok("/logout");
+$mech->get_ok("/category/author/pippo/en/delete");
+is $mech->uri->path, '/login', "Bounced to login";
+ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
+                      button => 'submit'), "Found login form");
+
+$mech->get_ok("/category/author/pippo/en/delete");
+is $mech->uri->path, "/category/author/pippo/en/edit";
+
+ok $site->categories->find({ uri => 'pippo', type => 'author' })
+  ->category_descriptions->find({ lang => 'en' }), "Found the desc";
+
+$mech->submit_form(form_id => 'category-description-delete',
+                   button => 'delete');
+is $mech->uri->path, "/category/author/pippo/en", "Bounced ok";
+
+ok !$site->categories->find({ uri => 'pippo', type => 'author' })
+  ->category_descriptions->find({ lang => 'en' }), "Desc nuked";
+
+ok $site->categories->find({ uri => 'pippo', type => 'author' }),
+  "Category is still there";
 

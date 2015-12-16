@@ -11,6 +11,7 @@ dedicated tree.
   - Moved cgit refreshing to module and triggered on conf changes
   - Fixed BB crash when reusing setup with a cover (#30)
   - Fixed missing Xapian purging on deletion by git removal (#31)
+  - Added delete button and code for category descriptions (#32)
 
 1.56 2015-12-02
 

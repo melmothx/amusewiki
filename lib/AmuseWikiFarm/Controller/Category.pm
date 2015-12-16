@@ -141,7 +141,6 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
                   category_canonical_name => $canonical,
                   category_description => $category_description,
                   category => $cat);
-        log_debug { ($category_description || '') . ' for ' . $current_locale };
         # Prepare the links for multisite, if needed
         my $multi = {
                          cat_uri_all => $c->uri_for_action('/category/single_category_display',
@@ -170,7 +169,7 @@ sub single_category_display :Chained('single_category') :PathPart('') :Args(0) {
 sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $lang) = @_;
     my $texts = delete $c->stash->{texts};
-    if ($lang eq 'edit') {
+    if ($lang eq 'edit' or $lang eq 'delete') {
         $c->response->redirect($c->uri_for_action('/category/edit_category_description',
                                                   [
                                                    $c->stash->{f_class},
@@ -203,7 +202,7 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
 
 sub single_category_by_lang_display :Chained('single_category_by_lang') :PathPart('') :Args(0) {}
 
-sub edit_category_description :Chained('single_category_by_lang') :PathPart('edit') :Args(0) {
+sub category_editing_auth :Chained('single_category_by_lang') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     unless ($c->user_exists) {
         $c->response->redirect($c->uri_for('/login',
@@ -211,6 +210,10 @@ sub edit_category_description :Chained('single_category_by_lang') :PathPart('edi
         $c->detach;
         return;
     }
+}
+
+sub edit_category_description :Chained('category_editing_auth') :PathPart('edit') :Args(0) {
+    my ($self, $c) = @_;
     my $lang = $c->stash->{category_language};
     if ($lang && $c->request->body_params->{update}) {
         if (my $muse = $c->request->body_params->{desc_muse}) {
@@ -230,6 +233,29 @@ sub edit_category_description :Chained('single_category_by_lang') :PathPart('edi
         $c->stash(template => 'category-details-edit.tt');
     }
 }
+
+sub delete_category_by_lang :Chained('category_editing_auth') :PathPart('delete') :Args(0) {
+    my ($self, $c) = @_;
+    my @args = ($c->stash->{f_class},
+                $c->stash->{category_canonical_name},
+                $c->stash->{category_language});
+    my $action = '/category/single_category_by_lang_display';
+    if ($c->request->body_params->{delete}) {
+        if (my $cat = $c->stash->{category_description}) {
+            log_info { "Deleting description for " . $cat->category->name .
+                         " (" . $cat->lang . ") by " . $c->user->get('username')};
+
+            $cat->delete;
+        }
+    }
+    else {
+        # it's a get, bounce to edit
+        $action = '/category/edit_category_description';
+    }
+    my $ret = $c->uri_for_action($action, \@args);
+    $c->response->redirect($ret);
+}
+
 
 =encoding utf8
 

@@ -7,16 +7,25 @@
     <h2>[% loc('Update category description') %]: [% loc(category.name) %] ([% multilang.filtered %])</h2>
   </div>
 </div>
+[% IF category_description %]
 <div class="row">
-  <div class="col-md-12">
-    [% IF category_description %]
-    <div class="category-description well" style="margin: 18px">
+  <div class="col-md-11">
+    <div class="category-description well" style="margin: 18px 0">
       [% category_description.html_body %]
     </div>
   </div>
+  <div class="col-md-1" style="margin: 18px 0">
+    <form action="[% c.uri_for_action('/category/delete_category_by_lang',
+                  [ f_class, category_canonical_name, category_language ]) %]"
+          id="category-description-delete" method="POST">
+      <button type="submit" class="btn btn-danger" name="delete" value="delete">
+        [% loc('Delete')  %]
+      </button>
+    </form>
+  </div>
 </div>
+[% END %]
 <div class="row">
-  [% END %]
   <form action="" method="POST">
     <div class="col-md-12">
       <textarea rows="20" cols="60" id="maintextarea"
