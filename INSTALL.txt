@@ -1,16 +1,22 @@
 ** INSTALLATION
 
 The installation of amusewiki takes time (depending on speed of the
-machine and of the network) and requires about 4Gb of disk space,
-mostly because of the installation of TeXlive. Otherwise the procedure
-is fully automated, so start it, check if it bails out at the
-beginning, forget about it for an hour or two (run it under screen),
-then come back later and finish it up to complete it for the
-operations which require root privileges (notably the webserver
-configuration). The last lines of output is what matters. It will tell
-you about the needed changes to the $PATH for TeXlive, and where to
-login. From there you should be be able to create and configure new
-sites from the admin console under /admin/sites.
+machine and of the network) and requires about 5Gb of disk space
+because of the full installation of TeXlive. If you're short on disk
+space, don't even start to install (the app will create files at full
+speed anyway, so consider 10Gb for a reasonable start).
+
+On a slow server, it takes 2 hours (mostly spent on installing and
+testing Perl modules, and 20 minutes to download and install the full
+TeXlive 2015), but the procedure is fully automated, so start it,
+check if it bails out at the beginning, forget about it for an hour or
+two (run it under screen), then come back later and finish it up to
+complete it for the operations which require root privileges (notably
+the webserver configuration). The last lines of output is what
+matters. It will tell you about the needed changes to the $PATH for
+TeXlive, and where to login. From there you should be be able to
+create and configure new sites from the admin console under
+/admin/sites. [1]
 
 The supported and recommended setup is nginx + FCGI. The FCGI setup
 should work with Apache as well, but it's not currently actively
@@ -65,7 +71,7 @@ non-interactive fashion, picking resonable defaults.
 The output is copious, but you need only the last lines. Setting up
 the $PATH in your bashrc (or equivalent) is crucial.
 
-USAGE
+** USAGE
 
 To start/stop/restart the application:
 
@@ -160,4 +166,12 @@ root/static/js/highlight/style.local.css
 
 If these files exist, the application will serve them instead of
 the bundled ones.
+
+[1] You can speed up the installation by installing most of the
+required perl modules with your package manager, though. For TeX live
+we check if xetex and xelatex are present in
+$HOME/texlive/2015/bin/<arch> If you feel brave and in great need of
+disk space, you can fool the installer by creating that dir and
+symlinking xetex and xelatex there. But you're on your own if you're
+missing latex pieces, fonts, etc. You have been warned.
 
