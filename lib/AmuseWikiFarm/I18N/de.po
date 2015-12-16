@@ -104,6 +104,15 @@ msgid ""
 "(integer)"
 msgstr ""
 
+msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr ""
+
+msgid "Add the whole text"
+msgstr ""
+
 msgid "Add this text to the bookbuilder"
 msgstr "Füge diesen Text zum Buchbinder hinzu"
 
@@ -953,8 +962,8 @@ msgstr "Andere Sprachen"
 msgid "PDF"
 msgstr ""
 
-msgid "PDF logo (absolute path or put it in texmf)"
-msgstr "PDF-Logo (Absoluter Pfad oder setze es in texmf)"
+msgid "PDF logo"
+msgstr ""
 
 msgid "PDFs cannot be used in the body."
 msgstr "PDFs können im Textkörper nicht verwendet werden."
@@ -996,6 +1005,9 @@ msgstr "Teil"
 
 msgid "Part, for larger books only"
 msgstr "Teil, nur für größere Bücher"
+
+msgid "Partial selection"
+msgstr ""
 
 msgid "Password"
 msgstr "Passwort"
@@ -1261,6 +1273,9 @@ msgstr "Wiederhole das Passwort"
 msgid "Repository"
 msgstr "Magazin"
 
+msgid "Reset all"
+msgstr ""
+
 msgid "Results"
 msgstr "Ergebnisse"
 
@@ -1283,6 +1298,21 @@ msgstr "Änderung von %1 wurde gelöscht"
 msgid "Roles"
 msgstr ""
 
+msgid "SSL CA certificate path (Apache)"
+msgstr ""
+
+msgid "SSL certificate path (Apache)"
+msgstr ""
+
+msgid "SSL chained certertificate path (Nginx)"
+msgstr ""
+
+msgid "SSL configuration"
+msgstr ""
+
+msgid "SSL key path"
+msgstr ""
+
 msgid "Sans font"
 msgstr ""
 
@@ -1297,6 +1327,15 @@ msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Siehe das ganze Handbuch für mehr Details (Englisch)"
+
+msgid "Select"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Select individual parts for the bookbuilder"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Getrennte Textkörperfelder"
@@ -1376,6 +1415,9 @@ msgstr "Quellendatei"
 msgid "Source files with attachments"
 msgstr "Quellendatei mit Anhängen"
 
+msgid "Source, notes..."
+msgstr ""
+
 msgid "Sources"
 msgstr "Quellen"
 
@@ -1443,6 +1485,9 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Text body, before any section"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1461,7 +1506,23 @@ msgid ""
 "  slides output."
 msgstr ""
 
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+
 msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid ""
+"The following values are used verbatim by the webserver config generator."
+msgstr ""
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1480,6 +1541,9 @@ msgstr "Das Passwort wird an die Adresse gemailt werden"
 
 msgid "The revision has the following messages"
 msgstr "Die Änderung beinhaltet die folgenden Nachrichten"
+
+msgid "The text structure is shown below."
+msgstr ""
 
 msgid "The text was added to the bookbuilder"
 msgstr "Der Text wurde dem Buchbinder hinzugefügt"
@@ -1569,6 +1633,9 @@ msgstr "Titel"
 
 msgid "Title for sorting"
 msgstr "Titel für die Sortierung"
+
+msgid "Title, author, date..."
+msgstr ""
 
 msgid "Titles"
 msgstr "Liste aller Texte"
@@ -1663,6 +1730,9 @@ msgstr "Upload"
 msgid "Url"
 msgstr "Url"
 
+msgid "Use JS syntax highlight for code blocks"
+msgstr ""
+
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
@@ -1724,6 +1794,13 @@ msgid "Where does this text come from?"
 msgstr "Woher kommt dieser Text?"
 
 msgid "Width of the cover image in percent of the text block width."
+msgstr ""
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
 msgstr ""
 
 msgid ""
@@ -2018,6 +2095,9 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "PDF logo (absolute path or put it in texmf)"
+#~ msgstr "PDF-Logo (Absoluter Pfad oder setze es in texmf)"
 
 #~ msgid "Italics, bold, monospace, linebreaks..."
 #~ msgstr "Kursiv, Fett, nichtproportionale Schriftart ,Zeilenumbrüche...."

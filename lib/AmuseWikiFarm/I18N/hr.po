@@ -101,6 +101,15 @@ msgid ""
 "(integer)"
 msgstr ""
 
+msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr ""
+
+msgid "Add the whole text"
+msgstr ""
+
 msgid "Add this text to the bookbuilder"
 msgstr "Dodaj ovaj tekst zbirci"
 
@@ -944,8 +953,8 @@ msgstr "Drugi jezici"
 msgid "PDF"
 msgstr ""
 
-msgid "PDF logo (absolute path or put it in texmf)"
-msgstr "PDF logo (obavezni smjer ili ime teksta u texmf)"
+msgid "PDF logo"
+msgstr ""
 
 msgid "PDFs cannot be used in the body."
 msgstr "Nije moguće koristi PDF-ove unutar tekstova."
@@ -993,6 +1002,9 @@ msgstr "Dio"
 
 msgid "Part, for larger books only"
 msgstr "Dio, samo za velike knjige"
+
+msgid "Partial selection"
+msgstr ""
 
 msgid "Password"
 msgstr "Lozinka"
@@ -1268,6 +1280,9 @@ msgstr "Ponovi lozinku"
 msgid "Repository"
 msgstr "Repozitorij"
 
+msgid "Reset all"
+msgstr ""
+
 msgid "Results"
 msgstr "Rezultati"
 
@@ -1290,6 +1305,21 @@ msgstr "Izmjena za %1 izbrisana"
 msgid "Roles"
 msgstr ""
 
+msgid "SSL CA certificate path (Apache)"
+msgstr ""
+
+msgid "SSL certificate path (Apache)"
+msgstr ""
+
+msgid "SSL chained certertificate path (Nginx)"
+msgstr ""
+
+msgid "SSL configuration"
+msgstr ""
+
+msgid "SSL key path"
+msgstr ""
+
 msgid "Sans font"
 msgstr ""
 
@@ -1304,6 +1334,15 @@ msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Vidi priručnik za detalje (na engleskom)"
+
+msgid "Select"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Select individual parts for the bookbuilder"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Odvajaju dijelove tijela"
@@ -1380,6 +1419,9 @@ msgstr "Izvorne datoteke"
 msgid "Source files with attachments"
 msgstr "Izvorne datoteke s privitcima"
 
+msgid "Source, notes..."
+msgstr ""
+
 msgid "Sources"
 msgstr "Izvori"
 
@@ -1447,6 +1489,9 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Text body, before any section"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1465,7 +1510,23 @@ msgid ""
 "  slides output."
 msgstr ""
 
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+
 msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid ""
+"The following values are used verbatim by the webserver config generator."
+msgstr ""
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1482,6 +1543,9 @@ msgstr "Lozinka će biti poslana ovu e-mail adresu"
 
 msgid "The revision has the following messages"
 msgstr "Izmjena sadrži slijedeće poruke"
+
+msgid "The text structure is shown below."
+msgstr ""
 
 msgid "The text was added to the bookbuilder"
 msgstr "Tekst je dodan zbirci"
@@ -1566,6 +1630,9 @@ msgstr "Naslov"
 
 msgid "Title for sorting"
 msgstr "Naslov za abecedni popis"
+
+msgid "Title, author, date..."
+msgstr ""
 
 msgid "Titles"
 msgstr "Naslovi"
@@ -1657,6 +1724,9 @@ msgstr "Učitaj"
 msgid "Url"
 msgstr "URL"
 
+msgid "Use JS syntax highlight for code blocks"
+msgstr ""
+
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
@@ -1721,6 +1791,13 @@ msgstr "Odakle dolazi ovaj tekst?"
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Širina naslovne slike u postotku širine teksta."
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2006,6 +2083,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "PDF logo (absolute path or put it in texmf)"
+#~ msgstr "PDF logo (obavezni smjer ili ime teksta u texmf)"
 
 #~ msgid "Italics, bold, monospace, linebreaks..."
 #~ msgstr "Kurzivi, podebljano, novi redak..."

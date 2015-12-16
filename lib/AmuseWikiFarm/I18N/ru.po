@@ -104,6 +104,15 @@ msgid ""
 "(integer)"
 msgstr ""
 
+msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr ""
+
+msgid "Add the whole text"
+msgstr ""
+
 msgid "Add this text to the bookbuilder"
 msgstr "Добавить этот текст в конструктор книг"
 
@@ -947,8 +956,8 @@ msgstr "На других языках"
 msgid "PDF"
 msgstr ""
 
-msgid "PDF logo (absolute path or put it in texmf)"
-msgstr "PDF лого (точный путь или поместите в  texmf)"
+msgid "PDF logo"
+msgstr ""
 
 msgid "PDFs cannot be used in the body."
 msgstr "PDF не могут быть использованы в теле текста"
@@ -996,6 +1005,9 @@ msgstr "Часть"
 
 msgid "Part, for larger books only"
 msgstr "Часть (только для больших текстов)"
+
+msgid "Partial selection"
+msgstr ""
 
 msgid "Password"
 msgstr "Пароль"
@@ -1266,6 +1278,9 @@ msgstr "Повторите пароль"
 msgid "Repository"
 msgstr "Репозиторий"
 
+msgid "Reset all"
+msgstr ""
+
 msgid "Results"
 msgstr "Результаты"
 
@@ -1288,6 +1303,21 @@ msgstr "Правка для %1 была удалена"
 msgid "Roles"
 msgstr ""
 
+msgid "SSL CA certificate path (Apache)"
+msgstr ""
+
+msgid "SSL certificate path (Apache)"
+msgstr ""
+
+msgid "SSL chained certertificate path (Nginx)"
+msgstr ""
+
+msgid "SSL configuration"
+msgstr ""
+
+msgid "SSL key path"
+msgstr ""
+
 msgid "Sans font"
 msgstr ""
 
@@ -1302,6 +1332,15 @@ msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Посмотрите полную инструкцию для уточнения"
+
+msgid "Select"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Select individual parts for the bookbuilder"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Разделить поля тела сообщения"
@@ -1378,6 +1417,9 @@ msgstr "Исходные файлы"
 msgid "Source files with attachments"
 msgstr "Исходные файлы с вложениями"
 
+msgid "Source, notes..."
+msgstr ""
+
 msgid "Sources"
 msgstr "Исходники"
 
@@ -1445,6 +1487,9 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Text body, before any section"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1463,7 +1508,23 @@ msgid ""
 "  slides output."
 msgstr ""
 
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+
 msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid ""
+"The following values are used verbatim by the webserver config generator."
+msgstr ""
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1480,6 +1541,9 @@ msgstr "Пароль будет отправлен на этот адрес"
 
 msgid "The revision has the following messages"
 msgstr "Для правки есть следующие сообщения"
+
+msgid "The text structure is shown below."
+msgstr ""
 
 msgid "The text was added to the bookbuilder"
 msgstr ""
@@ -1568,6 +1632,9 @@ msgstr "Название"
 
 msgid "Title for sorting"
 msgstr "Название (для сортировки)"
+
+msgid "Title, author, date..."
+msgstr ""
 
 msgid "Titles"
 msgstr "Названия"
@@ -1659,6 +1726,9 @@ msgstr "Загрузить"
 msgid "Url"
 msgstr "Ссылка"
 
+msgid "Use JS syntax highlight for code blocks"
+msgstr ""
+
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
@@ -1723,6 +1793,13 @@ msgstr "Откуда этот текст?"
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Ширина обложки в процентном отношении к блоку."
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2011,6 +2088,9 @@ msgstr ""
 "\"Устаревшее редактирование\" означает, что правка была недоделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "PDF logo (absolute path or put it in texmf)"
+#~ msgstr "PDF лого (точный путь или поместите в  texmf)"
 
 #~ msgid "Italics, bold, monospace, linebreaks..."
 #~ msgstr "Курсив, жирный, моноширинный, разрывы строк"

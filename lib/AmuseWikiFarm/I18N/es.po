@@ -109,6 +109,15 @@ msgstr ""
 "Agregar enumeración de páginas para textos listados cuando el número de "
 "textos es mayor a (integer)"
 
+msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr ""
+
+msgid "Add the whole text"
+msgstr ""
+
 msgid "Add this text to the bookbuilder"
 msgstr "Agrega este texto al creador de libros"
 
@@ -977,8 +986,8 @@ msgstr "Otros idiomas"
 msgid "PDF"
 msgstr ""
 
-msgid "PDF logo (absolute path or put it in texmf)"
-msgstr "Logo en PDF (path absoluto o ponlo en texmf)"
+msgid "PDF logo"
+msgstr ""
 
 msgid "PDFs cannot be used in the body."
 msgstr "No se pueden usar PDFs en el cuerpo."
@@ -1029,6 +1038,9 @@ msgstr "Parte"
 
 msgid "Part, for larger books only"
 msgstr "Parte, solo para grandes libros"
+
+msgid "Partial selection"
+msgstr ""
 
 msgid "Password"
 msgstr "Contraseña"
@@ -1313,6 +1325,9 @@ msgstr "Repetir contraseña"
 msgid "Repository"
 msgstr "Repositorio"
 
+msgid "Reset all"
+msgstr ""
+
 msgid "Results"
 msgstr "Resultados"
 
@@ -1335,6 +1350,21 @@ msgstr "La revisión para %1 ha sido borrada"
 msgid "Roles"
 msgstr "Roles"
 
+msgid "SSL CA certificate path (Apache)"
+msgstr ""
+
+msgid "SSL certificate path (Apache)"
+msgstr ""
+
+msgid "SSL chained certertificate path (Nginx)"
+msgstr ""
+
+msgid "SSL configuration"
+msgstr ""
+
+msgid "SSL key path"
+msgstr ""
+
 msgid "Sans font"
 msgstr ""
 
@@ -1349,6 +1379,15 @@ msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Ver el manual completo para más detalles (en inglés)"
+
+msgid "Select"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Select individual parts for the bookbuilder"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Campos separados del cuerpo"
@@ -1428,6 +1467,9 @@ msgstr "Archivos fuente"
 msgid "Source files with attachments"
 msgstr "Archivos fuentes con adjuntos"
 
+msgid "Source, notes..."
+msgstr ""
+
 msgid "Sources"
 msgstr "Fuentes"
 
@@ -1495,6 +1537,9 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Text body, before any section"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr "Texto formateado con marcado"
 
@@ -1513,7 +1558,23 @@ msgid ""
 "  slides output."
 msgstr ""
 
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+
 msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid ""
+"The following values are used verbatim by the webserver config generator."
+msgstr ""
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1531,6 +1592,9 @@ msgstr "La contraseña será enviada por correo electrónico a esta dirección"
 
 msgid "The revision has the following messages"
 msgstr "La revisión tiene los siguientes mensajes"
+
+msgid "The text structure is shown below."
+msgstr ""
 
 msgid "The text was added to the bookbuilder"
 msgstr "El texto fue agregado al creador de libros"
@@ -1622,6 +1686,9 @@ msgstr "Título"
 
 msgid "Title for sorting"
 msgstr "Título para ordenar"
+
+msgid "Title, author, date..."
+msgstr ""
 
 msgid "Titles"
 msgstr "Textos"
@@ -1715,6 +1782,9 @@ msgstr "Subir"
 msgid "Url"
 msgstr "Url"
 
+msgid "Use JS syntax highlight for code blocks"
+msgstr ""
+
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr "Usar LuaLaTeX en vez de XeLaTeX (más lento)"
 
@@ -1780,6 +1850,13 @@ msgstr "¿De dónde viene este texto?"
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
 "Ancho de la imagen de portada en porcentaje del ancho del bloque de texto."
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2070,6 +2147,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "PDF logo (absolute path or put it in texmf)"
+#~ msgstr "Logo en PDF (path absoluto o ponlo en texmf)"
 
 #~ msgid "Italics, bold, monospace, linebreaks..."
 #~ msgstr "Itálica, negrita, mono espaciada, saltos de línea..."

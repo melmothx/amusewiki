@@ -105,6 +105,15 @@ msgid ""
 "(integer)"
 msgstr ""
 
+msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr ""
+
+msgid "Add the whole text"
+msgstr ""
+
 msgid "Add this text to the bookbuilder"
 msgstr "Lägg till denna text i bokskaparen"
 
@@ -943,8 +952,8 @@ msgstr "Andra språk"
 msgid "PDF"
 msgstr ""
 
-msgid "PDF logo (absolute path or put it in texmf)"
-msgstr "PDF logotyp (absolut sökväg eller gör det i texmf)"
+msgid "PDF logo"
+msgstr ""
 
 msgid "PDFs cannot be used in the body."
 msgstr "PDF:er kan inte användas i brödtexten."
@@ -994,6 +1003,9 @@ msgstr "Del"
 
 msgid "Part, for larger books only"
 msgstr "Del, endast för större böcker"
+
+msgid "Partial selection"
+msgstr ""
 
 msgid "Password"
 msgstr "Lösenord"
@@ -1270,6 +1282,9 @@ msgstr "Upprepa lösenord"
 msgid "Repository"
 msgstr "Förvaring"
 
+msgid "Reset all"
+msgstr ""
+
 msgid "Results"
 msgstr "Resultat"
 
@@ -1292,6 +1307,21 @@ msgstr "Revidering för %1 har raderats"
 msgid "Roles"
 msgstr ""
 
+msgid "SSL CA certificate path (Apache)"
+msgstr ""
+
+msgid "SSL certificate path (Apache)"
+msgstr ""
+
+msgid "SSL chained certertificate path (Nginx)"
+msgstr ""
+
+msgid "SSL configuration"
+msgstr ""
+
+msgid "SSL key path"
+msgstr ""
+
 msgid "Sans font"
 msgstr ""
 
@@ -1306,6 +1336,15 @@ msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Se manualen för mer detaljer (engelska)"
+
+msgid "Select"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Select individual parts for the bookbuilder"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Separera fält för brödtext"
@@ -1383,6 +1422,9 @@ msgstr "Källfiler"
 msgid "Source files with attachments"
 msgstr "Källfiler med bilagor"
 
+msgid "Source, notes..."
+msgstr ""
+
 msgid "Sources"
 msgstr "Källor"
 
@@ -1450,6 +1492,9 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Text body, before any section"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1468,7 +1513,23 @@ msgid ""
 "  slides output."
 msgstr ""
 
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+
 msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid ""
+"The following values are used verbatim by the webserver config generator."
+msgstr ""
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1487,6 +1548,9 @@ msgstr "Lösenordet kommer att mailas till denna adress"
 
 msgid "The revision has the following messages"
 msgstr "Revideringen har följande meddelanden"
+
+msgid "The text structure is shown below."
+msgstr ""
 
 msgid "The text was added to the bookbuilder"
 msgstr "Texten har lagts till i bokskaparen"
@@ -1574,6 +1638,9 @@ msgstr "Titel"
 
 msgid "Title for sorting"
 msgstr "Titel för sortering"
+
+msgid "Title, author, date..."
+msgstr ""
 
 msgid "Titles"
 msgstr "Titlar"
@@ -1666,6 +1733,9 @@ msgstr "Ladda upp"
 msgid "Url"
 msgstr "Url"
 
+msgid "Use JS syntax highlight for code blocks"
+msgstr ""
+
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
@@ -1728,6 +1798,13 @@ msgstr "Vartifrån kommer denna text?"
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Omslagsbildens bredd i procent av textblockets bredd."
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2016,6 +2093,9 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "PDF logo (absolute path or put it in texmf)"
+#~ msgstr "PDF logotyp (absolut sökväg eller gör det i texmf)"
 
 #~ msgid "Italics, bold, monospace, linebreaks..."
 #~ msgstr "Kursiv, fet, monospace, radbrytare..."

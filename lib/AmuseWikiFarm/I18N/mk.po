@@ -104,6 +104,15 @@ msgid ""
 "(integer)"
 msgstr ""
 
+msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the selected parts to the bookbuilder"
+msgstr ""
+
+msgid "Add the whole text"
+msgstr ""
+
 msgid "Add this text to the bookbuilder"
 msgstr "Додади го овој текст на збирката"
 
@@ -959,8 +968,8 @@ msgstr "Други јазици"
 msgid "PDF"
 msgstr ""
 
-msgid "PDF logo (absolute path or put it in texmf)"
-msgstr "PDF лого (задолжителна насока или името на текстот во texmf)"
+msgid "PDF logo"
+msgstr ""
 
 msgid "PDFs cannot be used in the body."
 msgstr "Не е можно да се користат PDF датотеки во самите текстови."
@@ -1010,6 +1019,9 @@ msgstr "Дел"
 
 msgid "Part, for larger books only"
 msgstr "Дел, само за поголеми книги"
+
+msgid "Partial selection"
+msgstr ""
 
 msgid "Password"
 msgstr "Лозинка"
@@ -1294,6 +1306,9 @@ msgstr "Повтори ја лозинката"
 msgid "Repository"
 msgstr "Репозиториум"
 
+msgid "Reset all"
+msgstr ""
+
 msgid "Results"
 msgstr "Резултати"
 
@@ -1316,6 +1331,21 @@ msgstr "Измената за %1 е избришана"
 msgid "Roles"
 msgstr ""
 
+msgid "SSL CA certificate path (Apache)"
+msgstr ""
+
+msgid "SSL certificate path (Apache)"
+msgstr ""
+
+msgid "SSL chained certertificate path (Nginx)"
+msgstr ""
+
+msgid "SSL configuration"
+msgstr ""
+
+msgid "SSL key path"
+msgstr ""
+
 msgid "Sans font"
 msgstr ""
 
@@ -1330,6 +1360,15 @@ msgstr ""
 
 msgid "See the full manual for more details (english)"
 msgstr "Погледни го прирачникот за повеќе детали (на англиски)"
+
+msgid "Select"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Select individual parts for the bookbuilder"
+msgstr ""
 
 msgid "Separate body fields"
 msgstr "Одвојуваат делови од текстот"
@@ -1406,6 +1445,9 @@ msgstr "Изворни датотеки"
 msgid "Source files with attachments"
 msgstr "Изворни датотеки со прилози"
 
+msgid "Source, notes..."
+msgstr ""
+
 msgid "Sources"
 msgstr "Извори"
 
@@ -1473,6 +1515,9 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Text body, before any section"
+msgstr ""
+
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -1491,7 +1536,23 @@ msgid ""
 "  slides output."
 msgstr ""
 
+msgid ""
+"The PDF logo value can be either an absolute path\n"
+"            or just a filename if you choose to install it in the\n"
+"            TeXlive tree. You can do so with the following commands.\n"
+"            The last one checks if the file can be found."
+msgstr ""
+
 msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid ""
+"The following values are used verbatim by the webserver config generator."
+msgstr ""
+
+msgid ""
+"The generate webserver configuration will redirect\n"
+"          all the HTTP requests to HTTPS"
 msgstr ""
 
 msgid "The logo has the site name on itself"
@@ -1508,6 +1569,9 @@ msgstr "Лозинката ќе биде испратена на оваа e-mail
 
 msgid "The revision has the following messages"
 msgstr "Измената ги содржи следните пораки"
+
+msgid "The text structure is shown below."
+msgstr ""
 
 msgid "The text was added to the bookbuilder"
 msgstr "Текстот е додаден на збирката"
@@ -1593,6 +1657,9 @@ msgstr "Наслов"
 
 msgid "Title for sorting"
 msgstr "Наслов за азбучно подредување"
+
+msgid "Title, author, date..."
+msgstr ""
 
 msgid "Titles"
 msgstr "Наслови"
@@ -1687,6 +1754,9 @@ msgstr "Прикачи"
 msgid "Url"
 msgstr "Url"
 
+msgid "Use JS syntax highlight for code blocks"
+msgstr ""
+
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
@@ -1750,6 +1820,13 @@ msgstr "Од каде е овој текст?"
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
 "Ширина на насловната слика процентуално во однос на ширината на текстот."
+
+msgid ""
+"With complex structures, e.g., a chapter with\n"
+"      subsections, selecting only the chapter is likely to select only\n"
+"      the chapter's title, so probably you want to select the chapter\n"
+"      and all its subsections."
+msgstr ""
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2037,6 +2114,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "PDF logo (absolute path or put it in texmf)"
+#~ msgstr "PDF лого (задолжителна насока или името на текстот во texmf)"
 
 #~ msgid "Italics, bold, monospace, linebreaks..."
 #~ msgstr "Курзив, здебелено, нов ред..."
