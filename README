@@ -11,6 +11,12 @@ For requirement and installation, see INSTALL.txt
 
 What follows is an overview of the architecture.
 
+** Testing
+
+DO NOT RUN make test IN THE LIVE DIRECTORY. If you want to run the
+tests, do it in a dedicated checkout, as the tests leaves a lot of
+files behind.
+
 ** Users
 
 We define 4 levels of users.
@@ -62,14 +68,10 @@ Only logged in can access texts and the site.
 This mode restricts access to the text editing to librarians only.
 Humans can still use the bookbuilder.
 
-The test site with id '0empty0' works this way.
-
 *** modwiki
 
 This mode is a "moderated wiki". Humans can add new texts and edit
 them, but approvals and publishing is reserved to the librarians.
-
-The test site '0blog0' works this way.
 
 *** openwiki
 
@@ -79,106 +81,12 @@ it's always possible to revert to a previous one (but could be
 complicated and messy). Use at your own risk, but it could make sense
 as a private wiki or in a LAN.
 
-The test site '0wiki0' works this way.
-
-* Directory structure
-
-** Categories
-
-Normally, topics are free form. This means that the uploader can set
-them to whatever she wants. Sometimes this is not what you want, but
-you want instead a fixed range of categories. The directive to use is
-#cat with a whitespace separated list of categories. Here you should
-use codes instead of their real name.
-
-The full list of the fixed categories supported by the site should go
-in the "fixed_category_list" column of the "site" table. Everything
-else is managed by the code transparently.
-
-To turn the category codes into human-readable strings, you have to
-make use of the lexicon.json file (see the documentation in
-LOCALIZATION.txt).
-
-** themes
-
-The sites can have a theme defined. In this case, the search path of
-TT is extended to root/themes/<theme-name>, where the templates can be
-overridden.
-
-Anyway, this practice is somehow discouraged, because you will have to
-propagate the changes from the default them to the custom ones.
-Leverage CSS/JS as much as you can before going down this road.
-
-** repositories
-
-This is where the texts are stored.
-
-Even if the bootstrapper could look everywhere (it checkes the path
-with the Amuse directory conventions, so in theory it could scan
-multiple archives too, assuming the filename is unique), the
-convention is as follow.
-
-The site ID is the key of everything, given that the whole circus is
-based on that, to serve the right file without leaking in other sites.
-
-The max length of the site ID is 16 characters, and with a minimum of
-2, in the range [0-9a-z] (no special character, no uppercase).
-
-PLEASE NOTE THAT IDS STARTING WITH ZERO (0) ARE USED AND RESERVED FOR
-TESTING. JUST DO NOT ASSIGN IDS WHICH STARTS WITH ZERO.
-
-The directory is "repo", and there reside the git archives, named with
-the site ID.
-
-The shipped test archives are named "test" and "blog" and starting
-from the root of the application, have the following structure.
-
-repo
-├── blog
-│   ├── d
-│   │   └── dt/file.{muse,...}
-│   ├── f
-│   │   └── ft/file.{muse,...}
-│   └── s
-│       └── st/file.{muse,...}
-└── test
-    ├── d
-    │   └── dt/file.{muse,...}
-    ├── f
-    │   └── ft/file.{muse,...}
-    └── s
-        └── st/file.{muse,...}
-
-
-Remote git archives can be pulled (and pushed, if there are enough
-permission -- not likely) from /console for librarians.
-
-The name of the remote have to match the username, so username must
-have sensible values: ASCII only, alphanumeric, no special characters.
-
-** Xapian
-
-The Xapian databases are located in "xapian", with the same schema:
-
-xapian
-├── blog
-└── test
-
-
 ** Email notification
 
 On commit emails are sent to the site.mail address, if any, with the
 committer in CC, if he minded to leave one. If site.mail is not set
 for the site, the whole mailing is skipped, including the notification
 to the committer (as we assume we don't want to spam around).
-
-** MCV
-
-Standard location for Catalyst app:
-
- - lib/AmuseWikiFarm/Model
- - lib/AmuseWikiFarm/View
- - lib/AmuseWikiFarm/Controller
 
 ** Templates and public directory:
 
@@ -190,22 +98,11 @@ Deny the following in the webserver configuration:
  - root/src    template directory.
 
 
-** Special pages
-
-Rendered special pages are stored in the DB. However, a copy for
-editing is stored in specials/<site_id>. The module responsible for
-editing and storing is AmuseWikiFarm::Archive::Special.
-
 ** Local files (favicon.ico, navlogo.png, pagelogo.png, local.css, local.js)
 
 These files may provide an override for cosmetics and features (via
 js) without tampering the code. These files should be placed in the
-repository, under the directory site_files.
-
-The uri which maps to these files is /sitefiles/<site_id>/<file>,
-hence you can get some optimization symlinking the the
-repo/<site_id>/site_files directory to root/sitefiles/<site_id> (so
-the files are served right away by the webserver.
+site repository, under the directory site_files.
 
 The navigation logo (navlogo.png) needs (and it's enforced to) an
 height of 20px.
@@ -214,46 +111,4 @@ If pagelogo.png is present, it will be placed before the latest
 entries on the special pages. The assigned ids are
 "special-pages-logo" for the container and "special-pages-logo-img"
 for the image itself.
-
-** Schema
-
-DBIx::Class schema in lib/AmuseWikiFarm/Schema.pm and its namespace.
-
-SQL scripts in "sql"
-
-** Utils
-
- - lib/AmuseWikiFarm/Utils
-
-** Javascript packages used
-
-The root of the javascript packages and scripts is "root/static/js"
-
-*** JQuery
-
-*** CKeditor
-
-The configuration is done in place using the "best practice". The
-package is not shipped in the source (but could eventually end up in a
-release tarball).
-
-CKeditor should be unpacked in root/static/js/ (hence creating the
-root 'ckeditor'). The default template (edit/create.tt) asks for
-"/static/js/ckeditor/ckeditor.js" and
-"/static/js/ckeditor/adapters/jquery.js".
-
-*** Font preview
-
-Execute the gen.sh script in the font-preview directory. If it fails,
-you are missing the required fonts.
-
-* DEPLOYMENT
-
-The init script is located at the root directory: "init-all.sh"
-
-To set the number of FCGI workers, set the environment variable
-AMW_WORKERS. Default to 3. E.g.
-
-AMW_WORKERS=5 ./init-all.sh start
-
 
