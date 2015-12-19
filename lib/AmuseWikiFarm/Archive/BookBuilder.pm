@@ -1085,7 +1085,7 @@ sub compile {
         $args{file}    =  $outfile;
         $args{outfile} = $makeabs->($self->job_id. '.imp.pdf');
         $args{suffix}  = 'imp';
-        print Dumper(\%args);
+        Dlog_debug { "Args are $_" } \%args;
         my $imposer = PDF::Imposition->new(%args);
         $imposer->impose;
         my $imposed_file = $imposer->outfile;

@@ -248,7 +248,7 @@ sub check_jobber {
     ok($success);
     is $success->{status}, 'completed';
     is $success->{site_id}, $site_id;
-    print Dumper($success);
+    diag Dumper($success);
     return $success;
 }
 
