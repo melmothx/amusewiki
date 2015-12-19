@@ -24,6 +24,8 @@ use Text::Amuse::Compile::Webfonts;
 use Text::Amuse::Compile::TemplateOptions;
 use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
+use IO::Pipe;
+use File::Basename;
 
 =head1 NAME
 
@@ -1021,6 +1023,26 @@ sub compile {
             delete $compiler_args{extra}{cover};
         }
     }
+    if (my $logo = $compiler_args{extra}{logo}) {
+        log_debug {"Logo is $logo"};
+        my $logofile_ok = 0;
+        if (my $logofile = $self->_find_logo($logo)) {
+            my ($basename, $path) = fileparse($logofile);
+            my $dest = $makeabs->($basename);
+            log_debug { "Found logo file $basename as <$logofile>, " .
+                          "copying to $dest" };
+            if (-f $dest or copy($logofile, $dest)) {
+                # this will make the eventual absolute path just filename.pdf
+                $compiler_args{extra}{logo} = $basename;
+                $logofile_ok = 1;
+            }
+        }
+        unless ($logofile_ok) {
+            log_error {"Logo $logo not found, removing"};
+            delete $compiler_args{extra}{logo};
+        }
+    }
+
     Dlog_debug { "compiler args are $_" } \%compiler_args;
     my $compiler = Text::Amuse::Compile->new(%compiler_args);
     my $outfile = $makeabs->($self->produced_filename);
@@ -1136,6 +1158,48 @@ sub can_generate_slides {
         }
     }
     return 0;
+}
+
+sub _find_logo {
+    my ($self, $name) = @_;
+    return unless defined($name) && length($name);
+    my $is_absolute = File::Spec->file_name_is_absolute($name);
+    my $found;
+    foreach my $ext ('', '.pdf', '.png', '.jpeg', '.jpg') {
+        my $file = $name . $ext;
+        if ($is_absolute) {
+            if (-f $file) {
+                $found = $file;
+            }
+        }
+        else {
+            $found = $self->_find_file_texmf($file);
+        }
+        last if $found;
+    }
+    return $found;
+}
+
+sub _find_file_texmf {
+    my ($self, $file) = @_;
+    die unless defined($file) && length($file);
+    my $pipe = IO::Pipe->new;
+    $pipe->reader(kpsewhich => $file);
+    $pipe->autoflush(1);
+    my $path;
+    while (<$pipe>) {
+        chomp;
+        if (/(.*\w.*)/) {
+            $path = $1;
+        }
+    }
+    wait;
+    if (-f $path) {
+        return $path;
+    }
+    else {
+        return undef;
+    }
 }
 
 __PACKAGE__->meta->make_immutable;

@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 144;
+use Test::More tests => 148;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -17,7 +17,7 @@ binmode $builder->failure_output, ":utf8";
 binmode $builder->todo_output,    ":utf8";
 
 use AmuseWikiFarm::Schema;
-
+use File::Basename qw/basename/;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid muse_naming_algo/;
 use AmuseWikiFarm::Archive::BookBuilder;
 
@@ -404,6 +404,12 @@ sub check_file {
     my ($bb, $msg) = @_;
     my $out = $bb->compile;
     ok ($out, "$msg: $out produced");
+    my $check_logo;
+    if (my $site = $bb->site) {
+        if (my $logo = $site->logo) {
+            $check_logo = basename($logo);
+        }
+    }
     my $file = File::Spec->catfile($bb->customdir, $out);
     ok (-f $file, "$msg: $out: $file exists");
     foreach my $f ($bb->produced_files) {
@@ -421,6 +427,12 @@ sub check_file {
             {
                 ok (!scalar(grep { /\.imp.pdf$/ } @files),
                     "No stray imp file found")
+                  or diag Dumper(\@files);
+            }
+            if ($check_logo) {
+                diag "Checking logo";
+                ok (scalar(grep { /\Q$check_logo\E/ } @files),
+                    "Found $check_logo in the source")
                   or diag Dumper(\@files);
             }
         }
