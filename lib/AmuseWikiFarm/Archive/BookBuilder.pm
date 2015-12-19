@@ -1047,7 +1047,7 @@ sub compile {
     my $compiler = Text::Amuse::Compile->new(%compiler_args);
     my $outfile = $makeabs->($self->produced_filename);
 
-    if (@texts == 1) {
+    if (@texts == 1 and !$texts[0]->fragments) {
         my $basename = shift(@texts);
         my $fileout   = $makeabs->($basename->name . '.' . $self->_produced_file_extension);
         $compiler->compile($makeabs->($basename->name_with_ext_and_fragments));
@@ -1194,7 +1194,7 @@ sub _find_file_texmf {
         }
     }
     wait;
-    if (-f $path) {
+    if ($path and -f $path) {
         return $path;
     }
     else {

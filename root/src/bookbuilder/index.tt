@@ -79,6 +79,7 @@
     <label for="title">
       [% loc('Please give a name to the collection.') %]
       [% loc('The name is always required, but used only if there are multiple texts.') %]
+      [% loc('The name is also used as title if there is only one partial text.') %]
     </label>
     <input type="text" name="title" id="title"
            class="form-control required" value="[% bb.title | html %]"/>
