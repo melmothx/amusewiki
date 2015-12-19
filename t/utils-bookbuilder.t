@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 132;
+use Test::More tests => 144;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -9,6 +9,7 @@ use Data::Dumper;
 use JSON qw/to_json from_json/;
 use Try::Tiny;
 use CAM::PDF;
+use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -406,7 +407,23 @@ sub check_file {
     my $file = File::Spec->catfile($bb->customdir, $out);
     ok (-f $file, "$msg: $out: $file exists");
     foreach my $f ($bb->produced_files) {
-        ok (-f File::Spec->catfile($bb->customdir, $f), "$msg: $f exists");
+        my $abs = File::Spec->catfile($bb->customdir, $f);
+        ok (-f $abs, "$msg: $f exists in $abs");
+        if ($f =~ m/(.+)\.zip/) {
+            diag "found the zip $1";
+            my $extractor = Archive::Zip->new($abs);
+            ok ($extractor->read($abs) == AZ_OK, "Zip can be read");
+            my @files = $extractor->memberNames;
+            {
+                ok (scalar(grep { /\.muse$/ } @files), "Found the muse sources")
+                  or diag Dumper(\@files);
+            }
+            {
+                ok (!scalar(grep { /\.imp.pdf$/ } @files),
+                    "No stray imp file found")
+                  or diag Dumper(\@files);
+            }
+        }
     }
     return $file;
     # unlink $file or die $1;

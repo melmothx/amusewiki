@@ -1058,8 +1058,10 @@ sub compile {
         print Dumper(\%args);
         my $imposer = PDF::Imposition->new(%args);
         $imposer->impose;
+        my $imposed_file = $imposer->outfile;
+        undef $imposer;
         # overwrite the original pdf, we can get another one any time
-        copy($imposer->outfile, $outfile) or die "Copy to $outfile failed $!";
+        move($imposed_file, $outfile) or die "Copy to $outfile failed $!";
     }
     copy($outfile, $jobdir) or die "Copy $outfile to $jobdir failed $!";
 
@@ -1068,10 +1070,16 @@ sub compile {
     my $zipname = $self->sources_filename;
     my $ziproot = $zipname;
     $ziproot =~ s/\.zip$//;
+
+    my $zip_full_path = File::Spec->catfile($jobdir,$zipname);
+    if (-f $zip_full_path) {
+        log_warn { "$zip_full_path exists, removing" };
+        unlink $zip_full_path or die "Couldn't remove $zip_full_path";
+    }
+
     $zipdir->addTree($basedir, $ziproot) == AZ_OK
       or $logger->("Failed to produce a zip");
-    $zipdir->writeToFileNamed(File::Spec->catfile($jobdir,
-                                                  $zipname)) == AZ_OK
+    $zipdir->writeToFileNamed($zip_full_path) == AZ_OK
       or $logger->("Failure writing $zipname");
     die "cwd changed. This is a bug" if getcwd() ne $homedir;
     return $self->produced_filename;
