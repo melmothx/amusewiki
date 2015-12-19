@@ -80,7 +80,7 @@ requires 'Crypt::XkcdPassword';
 # our own dogfood
 requires 'Text::Amuse' => '0.54';
 requires 'PDF::Imposition' => '0.15';
-requires 'Text::Amuse::Compile' => '0.50';
+requires 'Text::Amuse::Compile' => '0.51';
 requires 'Text::Amuse::Preprocessor' => '0.25';
 
 # devel things to be removed at the end of the development cycle
