@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 148;
+use Test::More tests => 152;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -402,6 +402,8 @@ sub pdf_content {
 
 sub check_file {
     my ($bb, $msg) = @_;
+    my $total_pages = $bb->total_pages_estimated;
+    ok ($total_pages, "Total pages: $total_pages");
     my $out = $bb->compile;
     ok ($out, "$msg: $out produced");
     my $check_logo;

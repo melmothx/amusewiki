@@ -160,8 +160,16 @@ sub total_pages_estimated {
     if (my $site = $self->site) {
         my $count = 0;
         foreach my $text (@{ $self->texts }) {
-            if (my $title = $site->titles->text_by_uri($text)) {
-                $count += $title->pages_estimated;
+            my $filename = Text::Amuse::Compile::FileName->new($text);
+            if (my $title = $site->titles->text_by_uri($filename->name)) {
+                my $text_pages = $title->pages_estimated;
+                if (my $pieces = scalar($filename->fragments)) {
+                    my $total = scalar(@{$title->text_html_structure});
+                    my $est = int(($text_pages / $total) * $pieces) || 1;
+                    log_debug { "Partial estimate: ($text_pages / $total) * $pieces = $est" };
+                    $text_pages = $est;
+                }
+                $count += $text_pages;
             }
         }
         return $count;
