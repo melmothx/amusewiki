@@ -230,7 +230,7 @@ sub check_jobber {
     ok $task_id;
     diag "Waiting for the jobber to react";
     my $success;
-    for (1..20) {
+    for (1..30) {
         $mech->get("/tasks/status/$task_id/ajax");
         my $ajax = decode_json($mech->response->content);
         if ($ajax->{status} eq 'completed') {
