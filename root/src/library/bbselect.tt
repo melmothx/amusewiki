@@ -67,7 +67,7 @@
           </div>
         </td>
         <td class="amw-bbselect-cell">
-          <input type="checkbox" name="select"
+          <input type="checkbox" name="select" data-bb-level="[% piece.level %]"
                  [% IF piece.selected %]checked="checked"[% END %]
                  value="[% piece.index %]" />
         </td>
@@ -82,3 +82,5 @@
     </div>
   </form>
 </div>
+<script type="text/javascript" src="[% c.uri_for('/static/js/bbselect.js') %]">
+</script>

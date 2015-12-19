@@ -821,6 +821,7 @@ sub text_html_structure {
                 index => 'pre',
                 padding => 1,
                 highlevel => 1,
+                level => 0,
                });
     while (@toc) {
         my $summary = shift @toc;
@@ -829,6 +830,7 @@ sub text_html_structure {
                     index => $index++,
                     toc => $summary->{index},
                     padding => 1,
+                    level => ($summary->{index} ? $summary->{level} : 0),
                    };
         if ($summary->{index}) {
             $data->{padding} += $summary->{level};
@@ -844,6 +846,7 @@ sub text_html_structure {
                     index => 'post',
                     padding => 1,
                     highlevel => 1,
+                    level => 0,
                    };
     }
     return \@out;
