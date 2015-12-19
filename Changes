@@ -8,7 +8,8 @@ dedicated tree.
 
   - Bookbuilder new feature: partial texts (#14)
   - Automated installer (#29)
-  - Moved cgit refreshing to module and triggered on conf changes
+  - Added javascript code highlighter (#1)
+  - Moved cgit refreshing to module and trigger it on conf changes
   - Fixed BB crash when reusing setup with a cover (#30)
   - Fixed missing Xapian purging on deletion by git removal (#31)
   - Added delete button and code for category descriptions (#32)
