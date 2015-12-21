@@ -1535,6 +1535,9 @@ msgstr ""
 msgid "The logo has the site name on itself"
 msgstr "Logotypen innehåller sidnamnet"
 
+msgid "The name is also used as title if there is only one partial text."
+msgstr ""
+
 msgid "The name is always required, but used only if there are multiple texts."
 msgstr ""
 "Namnet är alltid nödvändigt, men används endast när det rör sig om flera "

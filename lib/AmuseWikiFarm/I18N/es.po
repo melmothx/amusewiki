@@ -1580,6 +1580,9 @@ msgstr ""
 msgid "The logo has the site name on itself"
 msgstr "El logo tiene el nombre del sitio en él"
 
+msgid "The name is also used as title if there is only one partial text."
+msgstr ""
+
 msgid "The name is always required, but used only if there are multiple texts."
 msgstr ""
 "El nombre siempre es obligatorio, pero solo se usa si hay múltiples textos."

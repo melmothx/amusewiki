@@ -1512,6 +1512,9 @@ msgstr ""
 msgid "The logo has the site name on itself"
 msgstr "Logossa on jo sivuston nimi"
 
+msgid "The name is also used as title if there is only one partial text."
+msgstr ""
+
 msgid "The name is always required, but used only if there are multiple texts."
 msgstr ""
 "Nimi vaaditaan aina, mutta sitä käytetään vain jos tekstejä on useampi."
