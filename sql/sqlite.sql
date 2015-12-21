@@ -208,6 +208,8 @@ CREATE TABLE title (
 
         slides      INTEGER(1) NOT NULL DEFAULT 0,
 
+        text_structure TEXT NOT NULL DEFAULT '',
+
         sorting_pos INTEGER NOT NULL DEFAULT 0,
         site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
