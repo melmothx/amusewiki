@@ -377,6 +377,7 @@ use DateTime;
 use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
+use JSON qw/to_json from_json/;
 
 =head2 listing
 
@@ -821,6 +822,17 @@ sub muse_object {
 }
 
 sub text_html_structure {
+    my ($self, $force) = @_;
+    if ($force or !$self->text_structure) {
+        my $struct = $self->_retrieve_text_structure;
+        Dlog_debug { "Retriving text structure: $_" } $struct;
+        $self->text_structure(to_json($struct, { ascii => 1, pretty => 1 }));
+        $self->update;
+    }
+    return from_json($self->text_structure);
+}
+
+sub _retrieve_text_structure {
     my $self = shift;
     my $muse = $self->muse_object;
     my @toc = $muse->raw_html_toc;

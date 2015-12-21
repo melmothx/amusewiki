@@ -164,7 +164,7 @@ sub total_pages_estimated {
             if (my $title = $site->titles->text_by_uri($filename->name)) {
                 my $text_pages = $title->pages_estimated;
                 if (my $pieces = scalar($filename->fragments)) {
-                    my $total = scalar(@{$title->text_html_structure});
+                    my $total = scalar(@{$title->text_html_structure}) || 1;
                     my $est = int(($text_pages / $total) * $pieces) || 1;
                     log_debug { "Partial estimate: ($text_pages / $total) * $pieces = $est" };
                     $text_pages = $est;
