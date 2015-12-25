@@ -129,7 +129,7 @@
         <a href="[% basename %].pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-gen.png') %]"
                  alt="[% loc('plain PDF') %]"
-               title="[% loc('plain PDF') %]"
+               title="[% loc('plain PDF') %]" data-toggle="tooltip" data-placement="top"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -138,7 +138,7 @@
         <a href="[% basename %].a4.pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-a4-imposed.png') %]"
 	             alt="[% loc('A4 imposed PDF') %]"
-	           title="[% loc('A4 imposed PDF') %]"
+	           title="[% loc('A4 imposed PDF') %]" data-toggle="tooltip" data-placement="top"
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
@@ -147,7 +147,7 @@
         <a href="[% basename %].lt.pdf" class="pdflinks">
 	      <img src="[% c.uri_for('/static/images/pdf-letter-imposed.png') %]"
 	             alt="[% loc('Letter imposed PDF') %]"
-	           title="[% loc('Letter imposed PDF') %]"
+	           title="[% loc('Letter imposed PDF') %]" data-toggle="tooltip" data-placement="top"
 	           class="pdfmyicons" /></a> 
       </span>
       [% END %]
@@ -156,7 +156,7 @@
         <a href="[% basename %].sl.pdf">
 	      <img src="[% c.uri_for('/static/images/slides.png') %]"
                  alt="[% loc('Slides (PDF)') %]"
-	           title="[% loc('Slides (PDF)') %]"
+	           title="[% loc('Slides (PDF)') %]" data-toggle="tooltip" data-placement="top"
                class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -165,7 +165,7 @@
         <a href="[% basename %].epub">
 	      <img src="[% c.uri_for('/static/images/epub.png') %]"
                  alt="[% loc('EPUB (for mobile devices)') %]"
-	           title="[% loc('EPUB (for mobile devices)') %]"
+	           title="[% loc('EPUB (for mobile devices)') %]" data-toggle="tooltip" data-placement="top"
                class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -174,7 +174,7 @@
         <a href="[% basename %].html">
 	      <img src="[% c.uri_for('/static/images/pf-html.png') %]"
                  alt="[% loc('Standalone HTML (printer-friendly)') %]"
-	           title="[% loc('Standalone HTML (printer-friendly)') %]"
+	           title="[% loc('Standalone HTML (printer-friendly)') %]" data-toggle="tooltip" data-placement="top"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -183,7 +183,7 @@
         <a href="[% basename %].tex">
 	      <img src="[% c.uri_for('/static/images/tex.png') %]"
                  alt="[% loc('XeLaTeX source') %]"
-               title="[% loc('XeLaTeX source') %]"
+               title="[% loc('XeLaTeX source') %]" data-toggle="tooltip" data-placement="top"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -191,7 +191,7 @@
         <a href="[% basename %].muse">
 	      <img src="[% c.uri_for('/static/images/muse.png') %]"
                  alt="[% loc('plain text source') %]"
-               title="[% loc('plain text source') %]"
+               title="[% loc('plain text source') %]" data-toggle="tooltip" data-placement="top"
                class="pdfmyicons" /></a>
       </span>
       [% IF site.zip %]
@@ -199,7 +199,7 @@
         <a href="[% basename %].zip">
 	      <img src="[% c.uri_for('/static/images/zip.png') %]"
                  alt="[% loc('Source files with attachments') %]"
-               title="[% loc('Source files with attachments') %]"
+               title="[% loc('Source files with attachments') %]" data-toggle="tooltip" data-placement="top"
 	           class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -208,7 +208,7 @@
         <a href="[% c.uri_for(cgit_link, { showmsg => 1 }) %]" rel="nofollow">
           <img src="[% c.uri_for('/static/images/diff.png') %]"
                alt="[% loc('View history') %]"
-               title="[% loc('View history') %]"
+               title="[% loc('View history') %]" data-toggle="tooltip" data-placement="top"
                class="pdfmyicons" /></a>
       </span>
       [% END %]
@@ -216,7 +216,7 @@
       <form action="[% c.uri_for(text.full_edit_uri) %]"
             id="text-edit-button" name="text-edit-button" style="display:inline">
         <button type="submit" class="btn btn-default"
-                title="[% loc('Edit this text') %]"
+                title="[% loc('Edit this text') %]" data-toggle="tooltip" data-placement="top"
                 id="edit-button">
           <span class="glyphicon glyphicon-edit" style="font-size: 1.5em"></span>
           <span style="display:none">Edit this text</span>
@@ -228,7 +228,7 @@
             name="book-builder-add-text"
             style="display:inline">
         <button type="submit" class="btn btn-default"
-                title="[% loc('Add this text to the bookbuilder') %]"
+                title="[% loc('Add this text to the bookbuilder') %]" data-toggle="tooltip" data-placement="top"
                 id="add-to-bookbuilder">
           <span class="glyphicon glyphicon-plus" style="font-size: 1.5em"></span>
           <span style="display:none">
@@ -242,7 +242,7 @@
             style="display:inline">
         <input type="hidden" name="selected" value="pre-post" />
         <button type="submit" class="btn btn-default"
-                title="[% loc('Select individual parts for the bookbuilder') %]"
+                title="[% loc('Select individual parts for the bookbuilder') %]" data-toggle="tooltip" data-placement="top"
                 id="add-to-bookbuilder-partial">
           <span class="glyphicon glyphicon-list-alt"
                 style="font-size: 1.5em"></span>
@@ -345,3 +345,6 @@
   </div>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function() $('[data-toggle="tooltip"]').tooltip());
+</script>
