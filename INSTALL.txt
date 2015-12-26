@@ -73,6 +73,11 @@ the $PATH in your bashrc (or equivalent) is crucial.
 
 ** USAGE
 
+To set the number of FCGI workers, set the environment variable
+AMW_WORKERS (defaults to 3).
+
+  export AMW_WORKERS=5
+
 To start/stop/restart the application:
 
   ./init-all start
@@ -116,37 +121,29 @@ amuse@localhost:~/amusewiki/repo$ for i in */.git ; do touch $i/git-daemon-expor
 
 ** MULTIPLE INSTALLATIONS
 
-If you run a Debian machine and you have only one instance running,
-you don't need any of this.
+If you run a Debian machine and you have only one instance running and
+if you have the port 9015 free, you don't need any of this.
 
 Please note: "multiple instances" doesn't mean "multiple sites". On a
 single instance you can have as many sites as you want.
 
-Some environment variable you may want to use to address multiple
-instance (say one for development and one for production), *before*
-executing the install script:
+The interaction between nginx and the application, including cgit, is
+controlled by the Webserver model. You can configure it creating a
+file in the application root named amusewikifarm_local.conf with this
+content (here listed with the defaults).
 
-# nginx log format, default to combined
-export AMW_LOG_FORMAT=combined
-# nginx root, default to Debian setup (/etc/nginx)
-export AMW_NGINX_ROOT=/etc/nginx
-# instance name, for nginx site files and ssl keys
-export AMW_INSTANCE_NAME=amusewiki
-# To set the number of FCGI workers, set the environment variable
-# default to 3. E.g.
-export AMW_WORKERS=5
+<Model::Webserver>
+    # cgit port
+    cgit_port 9015
+    log_format combined
+    nginx_root /etc/nginx
+    instance_name amusewiki
+    fcgiwrap_socket /var/run/fcgiwrap.socket
+</Model::Webserver>
 
-You should put them in the bashrc as well, so if you need to
-regenerate the webserver configuration when adding sites, you're
-guaranteed to use the same settings.
-
-Also, cgit will need to bind to a different port, so if 9015 is
-already taken, create a  amusewikifarm_local.conf with this content:
-
-<Model::CgitProxy>
-    port 9099
-</Model::CgitProxy>
-
+The instance_name is just a string used to create the nginx
+configuration files to avoid conflicts with other installations. So
+you may have one instance named "testing" and the other "live".
 
 ** SYNTAX HIGHLIGHT
 
