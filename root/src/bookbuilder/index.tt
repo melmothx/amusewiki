@@ -75,46 +75,72 @@
 <form action="[% c.uri_for() %]" method="post" id="bbform"
       enctype="multipart/form-data">
   <div class="form-group" id="customtitlepage">
-    <h4>[% loc('Title page information') %]</h4>
-    <p>
-      <label for="title">
-        [% loc('Title') %] ([% loc('mandatory') %])
-      </label>
-      <input type="text" name="title" id="title"
-             class="form-control required" value="[% bb.title | html %]"/>
-    </p>
-    <p>
-      <label for="subtitle">[% loc('Subtitle') %]</label>:
-      <input class="form-control" type="text" name="subtitle" id="subtitle"
-	     maxlength="100"
-	     size="30"
-	     value="[% bb.subtitle | html %]" />
-    </p>
-    <p>
-      <label for="author">[% loc('Author') %]</label>
-      <input class="form-control"
-             type="text" name="author" id="author"
-	         maxlength="100"
-	         value="[% bb.author | html %]" />
-    </p>
-    <p>
-      <label for="date">[% loc('Date of the original publication') %]</label>
-      <input class="form-control" id="date"
-	         size="50"
+    <div class="row">
+      <div class="col-sm-12">
+        <strong>[% loc('You are building a collection. Please provide a title and, optionally, any other information needed for the front cover (author, subtitle, date) and the back cover (source and notes).') %]</strong><br><br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 amw-form-field">
+        <label for="title" class="control-label">
+          [% loc('Title') %] ([% loc('mandatory') %]):
+        </label>
+      </div>
+      <div class="col-sm-9 amw-form-field">
+        <input type="text" name="title" id="title"
+               class="form-control required" value="[% bb.title | html %]"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 amw-form-field">
+        <label for="subtitle" class="control-label">[% loc('Subtitle') %]:</label>
+      </div>
+      <div class="col-sm-9 amw-form-field amw-form-field">
+        <input class="form-control" type="text" name="subtitle" id="subtitle"
+	           maxlength="100"
+	           value="[% bb.subtitle | html %]" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 amw-form-field">
+        <label for="author" class="control-label">[% loc('Author') %]:</label>
+      </div>
+      <div class="col-sm-9 amw-form-field">
+        <input class="form-control"
+               type="text" name="author" id="author"
+	           maxlength="100"
+	           value="[% bb.author | html %]" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 amw-form-field">
+        <label for="date" class="control-label">[% loc('Date') %]:</label>
+      </div>
+      <div class="col-sm-9 amw-form-field">
+        <input class="form-control" id="date"
 	         maxlength="250"
 	         name="date"
 	         value="[% bb.date | html %]" />
-    </p>
-    <p>
-      <label for="source">[% loc('Source') %]</label>
-      <input class="form-control" id="source" size="50" maxlength="250"
-	         name="source" value="[% bb.source | html %]" />
-    </p>
-    <p>
-      <label for="source">[% loc('Notes') %]</label>
-      <input class="form-control" id="source" size="50" maxlength="250"
-	         name="notes" value="[% bb.notes | html %]" />
-    </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 amw-form-field">
+        <label for="source" class="control-label">[% loc('Source') %]:</label>
+      </div>
+      <div class="col-sm-9 amw-form-field">
+        <input class="form-control" id="source" maxlength="250"
+	           name="source" value="[% bb.source | html %]" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 amw-form-field">
+        <label for="notes" class="control-label">[% loc('Notes') %]:</label>
+      </div>
+      <div class="col-sm-9 amw-form-field">
+        <input class="form-control" id="notes" maxlength="250"
+	           name="notes" value="[% bb.notes | html %]" />
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <div class="btn-group" data-toggle="buttons">
