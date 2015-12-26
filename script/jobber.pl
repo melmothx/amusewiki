@@ -171,7 +171,7 @@ sub main_loop {
 sub check_and_publish_deferred {
     my $schema = shift;
     my $now = DateTime->now;
-    log_info { localtime() . ": checking deferred titles for $now" };
+    log_debug { localtime() . ": checking deferred titles for $now" };
     my $deferred = $schema->resultset('Title')->deferred_to_publish($now);
     while (my $title = $deferred->next) {
         sleep AMW_POLLING;
