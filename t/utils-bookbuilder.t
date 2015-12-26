@@ -398,7 +398,7 @@ ok ($bb->webfonts) and diag Dumper($bb->webfonts);
                  'first-test:1' ]);
     my $pdf = check_file($bb, "Partial 2");
   SKIP: {
-        skip "Missing pdftotext", 2, unless $pdftotext;
+        skip "Missing pdftotext", 8, unless $pdftotext;
         my $pdftext = pdf_content($pdf);
         like $pdftext, qr{second chapter.*second chapter}s;
         unlike $pdftext, qr{first chapter};
