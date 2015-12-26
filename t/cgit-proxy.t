@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use AmuseWikiFarm::Archive::CgitProxy;
 use Test::More tests => 23;
 use Data::Dumper;
