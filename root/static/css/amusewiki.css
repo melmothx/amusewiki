@@ -159,3 +159,8 @@ blockquote {
     vertical-align: middle !important;
     text-align:center
 }
+
+.amw-form-field {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

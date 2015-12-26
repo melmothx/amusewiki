@@ -215,9 +215,19 @@ has epubfont => (
                  isa => 'Maybe[Str]',
                 );
 
-=head2 title
+=head2 Virtual meta-info
 
-The title of the collection.
+=head3 title
+
+=head3 subtitle
+
+=head3 author
+
+=head3 date
+
+=head3 notes
+
+=head3 source
 
 =cut
 
@@ -225,6 +235,26 @@ has title => (
               is => 'rw',
               isa => 'Maybe[Str]',
              );
+has subtitle => (
+                 is => 'rw',
+                 isa => 'Maybe[Str]',
+                );
+has author => (
+               is => 'rw',
+               isa => 'Maybe[Str]',
+              );
+has date => (
+             is => 'rw',
+             isa => 'Maybe[Str]',
+            );
+has notes => (
+              is => 'rw',
+              isa => 'Maybe[Str]',
+             );
+has source => (
+               is => 'rw',
+               isa => 'Maybe[Str]',
+              );
 
 
 =head2 textlist
@@ -820,6 +850,11 @@ sub import_from_params {
 
 sub _main_methods {
     return qw/title
+              subtitle
+              author
+              date
+              notes
+              source
               format
               epubfont
               mainfont
@@ -854,7 +889,7 @@ sub as_job {
     my $self = shift;
     my $job = {
                text_list => [ @{$self->texts} ],
-               title => $self->title || 'My collection', # enforce a title
+               $self->_muse_virtual_headers,
               };
     if (!$self->epub) {
         $job->{template_options} = {
@@ -1068,7 +1103,7 @@ sub compile {
                       path => $basedir,
                       files => [ map { $_->name_with_fragments } @texts ],
                       name => $self->job_id,
-                      title => $data->{title},
+                      $self->_muse_virtual_headers,
                      };
         # compile
         $compiler->compile($target);
@@ -1157,11 +1192,38 @@ sub available_webfonts {
     return \@fonts;
 }
 
+=head2 is_collection
+
+Return true if there is only one text and is not a partial.
+
+=cut
+
+sub text_filenames {
+    my $self = shift;
+    my @filenames = map { Text::Amuse::Compile::FileName->new($_) }
+      @{$self->texts};
+    return @filenames;
+}
+
+sub is_collection {
+    my $self = shift;
+    my @texts = $self->text_filenames;
+    if (!@texts) {
+        return 0;
+    }
+    elsif (@texts == 1 and !$texts[0]->fragments) {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
 sub can_generate_slides {
     my $self = shift;
-    my @texts = @{$self->texts};
-    if (@texts == 1 and $self->site) {
-        if (my $text = $self->site->titles->text_by_uri($texts[0])) {
+    my @texts = $self->text_filenames;
+    if (@texts && !$self->is_collection) {
+        if (my $text = $self->site->titles->text_by_uri($texts[0]->name)) {
             return $text->slides;
         }
     }
@@ -1209,6 +1271,21 @@ sub _find_file_texmf {
         return undef;
     }
 }
+
+sub _muse_virtual_headers {
+    my $self = shift;
+    my %header = (
+                  title => $self->title || 'My collection', # enforce a title
+                 );
+    foreach my $field (qw/author subtitle date notes source/) {
+        my $value = $self->$field;
+        if (defined $value) {
+            $header{$field} = $value;
+        }
+    }
+    return %header;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 
