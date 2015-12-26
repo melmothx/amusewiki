@@ -74,16 +74,14 @@
 <div id="bb-compiler-options">
 <form action="[% c.uri_for() %]" method="post" id="bbform"
       enctype="multipart/form-data">
-  <div class="form-group">
+  <div class="form-group" id="customtitlepage">
+    <h4>[% loc('Title page information') %]</h4>
     <p>
-    <label for="title">
-      [% loc('Please give a name to the collection.') %]
-      [% loc('The name is always required, but used only if there are multiple texts.') %]
-      <br>
-      [% loc('The name is also used as title if there is only one partial text.') %]
-    </label>
-    <input type="text" name="title" id="title"
-           class="form-control required" value="[% bb.title | html %]"/>
+      <label for="title">
+        [% loc('Title') %] ([% loc('mandatory') %])
+      </label>
+      <input type="text" name="title" id="title"
+             class="form-control required" value="[% bb.title | html %]"/>
     </p>
     <p>
       <label for="subtitle">[% loc('Subtitle') %]</label>:
@@ -117,6 +115,8 @@
       <input class="form-control" id="source" size="50" maxlength="250"
 	         name="notes" value="[% bb.notes | html %]" />
     </p>
+  </div>
+  <div class="form-group">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-default[% IF bb.pdf %] active[% END %]">
         <input type="radio" name="format" id="pdf-format"
@@ -572,7 +572,20 @@
   </div>
 </form>
 
+[% IF bb.is_collection %]
 [% INCLUDE 'include/validate.tt' %]
+<script type="text/javascript">
+$(document).ready(function(){
+   $("#bbform").validate();
+});
+</script>
+[% ELSE %]
+<script type="text/javascript">
+$(document).ready(function(){
+   $("#customtitlepage").hide();
+});
+</script>
+[% END %]
 
 <script type="text/javascript">
   function show_opening() {
@@ -636,7 +649,6 @@
       }
   }
   $(document).ready(function(){
-      $("#bbform").validate();
       show_format_options();
       show_imposition();
       show_signature();

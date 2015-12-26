@@ -1192,11 +1192,38 @@ sub available_webfonts {
     return \@fonts;
 }
 
+=head2 is_collection
+
+Return true if there is only one text and is not a partial.
+
+=cut
+
+sub text_filenames {
+    my $self = shift;
+    my @filenames = map { Text::Amuse::Compile::FileName->new($_) }
+      @{$self->texts};
+    return @filenames;
+}
+
+sub is_collection {
+    my $self = shift;
+    my @texts = $self->text_filenames;
+    if (!@texts) {
+        return 0;
+    }
+    elsif (@texts == 1 and !$texts[0]->fragments) {
+        return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
 sub can_generate_slides {
     my $self = shift;
-    my @texts = @{$self->texts};
-    if (@texts == 1 and $self->site) {
-        if (my $text = $self->site->titles->text_by_uri($texts[0])) {
+    my @texts = $self->text_filenames;
+    if (@texts && !$self->is_collection) {
+        if (my $text = $self->site->titles->text_by_uri($texts[0]->name)) {
             return $text->slides;
         }
     }
