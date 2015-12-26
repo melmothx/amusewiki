@@ -39,3 +39,4 @@ current_version_is*.txt
 webfonts/*/*
 log4perl.local.conf
 log/amw.log
+ssl/*
