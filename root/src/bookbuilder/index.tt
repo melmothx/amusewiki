@@ -85,7 +85,38 @@
     <input type="text" name="title" id="title"
            class="form-control required" value="[% bb.title | html %]"/>
     </p>
-
+    <p>
+      <label for="subtitle">[% loc('Subtitle') %]</label>:
+      <input class="form-control" type="text" name="subtitle" id="subtitle"
+	     maxlength="100"
+	     size="30"
+	     value="[% bb.subtitle | html %]" />
+    </p>
+    <p>
+      <label for="author">[% loc('Author') %]</label>
+      <input class="form-control"
+             type="text" name="author" id="author"
+	         maxlength="100"
+	         value="[% bb.author | html %]" />
+    </p>
+    <p>
+      <label for="date">[% loc('Date of the original publication') %]</label>
+      <input class="form-control" id="date"
+	         size="50"
+	         maxlength="250"
+	         name="date"
+	         value="[% bb.date | html %]" />
+    </p>
+    <p>
+      <label for="source">[% loc('Source') %]</label>
+      <input class="form-control" id="source" size="50" maxlength="250"
+	         name="source" value="[% bb.source | html %]" />
+    </p>
+    <p>
+      <label for="source">[% loc('Notes') %]</label>
+      <input class="form-control" id="source" size="50" maxlength="250"
+	         name="notes" value="[% bb.notes | html %]" />
+    </p>
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-default[% IF bb.pdf %] active[% END %]">
         <input type="radio" name="format" id="pdf-format"
