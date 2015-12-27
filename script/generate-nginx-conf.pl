@@ -15,6 +15,7 @@ my @sites = $schema->resultset('Site')->search(undef, { order_by => [qw/id/],
 my $confgenerator = AmuseWikiFarm->model('Webserver');
 if (my $out = $confgenerator->generate_nginx_config(@sites)) {
     print "# please execute as root:\n";
+    print $out;
 }
 else {
     print "# no action required, nginx configuration is up-to-date\n";

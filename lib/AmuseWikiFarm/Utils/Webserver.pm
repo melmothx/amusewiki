@@ -45,7 +45,17 @@ sub _build_cgit_proxy {
 
 has ssl_directory => (is => 'ro',
                       isa => 'Str',
-                      default => sub { 'ssl' });
+                      lazy => 1,
+                      builder => '_build_ssl_directory');
+
+sub _build_ssl_directory {
+    my $self = shift;
+    my $ssl_dir = File::Spec->catdir($self->app_directory, 'ssl');
+    unless (-d $ssl_dir) {
+        mkdir $ssl_dir or die "Cannot create $ssl_dir $!";
+    }
+    return $ssl_dir;
+}
 
 has app_directory => (is => 'ro',
                       isa => 'Str',
@@ -73,14 +83,12 @@ has ssl_default_cert => (is => 'ro',
 
 sub _build_ssl_default_cert {
     my $self = shift;
-    return File::Spec->catfile($self->app_directory,
-                               $self->ssl_directory,
+    return File::Spec->catfile($self->ssl_directory,
                                $self->instance_name . '.crt');
 }
 sub _build_ssl_default_key {
     my $self = shift;
-    return File::Spec->catfile($self->app_directory,
-                               $self->ssl_directory,
+    return File::Spec->catfile($self->ssl_directory,
                                $self->instance_name . '.key');
 }
 
@@ -106,6 +114,24 @@ sub generate_nginx_config {
     my $cgit_path = File::Spec->catfile(qw/root git cgit.cgi/);
     my $amw_home = $self->app_directory;
     my $webserver_root = $self->webserver_root;
+
+    # generate the ssl default cert if missing
+    if (! -f $self->ssl_default_cert and
+        ! -f $self->ssl_default_key) {
+        my $hostname_for_cert = $sites[0]->canonical;
+        unless (-d $self->ssl_directory) {
+            mkdir $self->ssl_directory
+              or die "Cannot create " . $self->ssl_directory . " $!";
+        }
+        system(openssl => req => '-new',
+               -newkey => 'rsa:4096',
+               -days => '3650',
+               -nodes => -x509 => -subj => "/CN=$hostname_for_cert",
+               -keyout => $self->ssl_default_key,
+               -out => $self->ssl_default_cert) == 0
+                 or log_error { "Couldn't generate the ssl certs!" };
+        chmod 0600, $self->ssl_default_key;
+    }
 
     my $cgit = "### cgit is not installed ###\n";
     if (-f $cgit_path) {
@@ -233,23 +259,6 @@ EOF
 INCLUDE
 
     close $fh;
-    # generate the ssl default cert if missing
-    if (! -f $self->ssl_default_cert and
-        ! -f $self->ssl_default_key) {
-        my $hostname_for_cert = $sites[0]->canonical;
-        unless (-d $self->ssl_directory) {
-            mkdir $self->ssl_directory
-              or die "Cannot create " . $self->ssl_directory . " $!";
-        }
-        system(openssl => req => '-new',
-               -newkey => 'rsa:4096',
-               -days => '3650',
-               -nodes => -x509 => -subj => "/CN=$hostname_for_cert",
-               -keyout => $self->ssl_default_key,
-               -out => $self->ssl_default_cert) == 0
-                 or log_error { "Couldn't generate the ssl certs!" };
-        chmod 0644, $self->ssl_default_key;
-    }
     my $nginx_root = $self->nginx_root;
     my $conf_target = File::Spec->catfile($nginx_root, 'sites-enabled',
                                           $self->instance_name);
