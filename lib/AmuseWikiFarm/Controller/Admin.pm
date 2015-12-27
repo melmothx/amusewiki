@@ -112,6 +112,12 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
         return;
     }
     $site->discard_changes;
+    # check if the webserver needs a refresh
+    my @all_sites = $c->model('DB::Site')->search(undef, { order_by => [qw/id/],
+                                                           prefetch => 'vhosts' })->all;
+    if (my $refresh = $c->model('Webserver')->generate_nginx_config(@all_sites)) {
+        $c->stash(exec_as_root => $refresh);
+    }
     $c->stash(esite => $site);
 }
 

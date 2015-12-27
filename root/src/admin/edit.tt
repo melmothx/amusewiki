@@ -8,6 +8,15 @@
 [%# loc('Quarter Letter paper'); %]
 [%# loc('Generic (fits in A4 and Letter)') %]
 
+[% IF exec_as_root %]
+<div class="alert alert-warning">
+  <p>
+    [% loc('The webserver needs a new configuration. Please execute in a root shell the following commands:') %]<br><br>
+  </p>
+  <pre><code>[% exec_as_root | html %]</code></pre>
+</div>
+[% END %]
+
 <h2>[% loc('Edit site [_1]', esite.id) %]</h2>
 
 <p>

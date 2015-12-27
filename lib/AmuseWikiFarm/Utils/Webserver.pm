@@ -268,13 +268,22 @@ INCLUDE
     # check if the file differs
     my $directions = '';
     if ($self->_slurp($include_file) ne $self->_slurp($include_target)) {
+        $directions .= "diff -Nu $include_target $include_file\n";
         $directions .= "cat $include_file > $include_target\n";
     }
     if ($self->_slurp($conf_target) ne $self->_slurp($conf_file)) {
+        $directions .= "diff -Nu $conf_target $conf_file\n";
         $directions .= "cat $conf_file > $conf_target\n";
     }
     if ($directions) {
         $directions .= "nginx -t && service nginx reload\n";
+    }
+    else {
+        # cleanup, not needed
+        log_debug { "Config is up-to-date, cleaning up $output_dir" };
+        unlink $include_file or log_warn { "Cannot remove $include_file $!" };
+        unlink $conf_file or log_warn { "Cannot remove $conf_file $!" };
+        rmdir $output_dir or log_warn { "Cannot remove $output_dir $!" };
     }
     return $directions;
 }
