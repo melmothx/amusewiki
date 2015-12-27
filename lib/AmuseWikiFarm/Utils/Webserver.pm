@@ -9,7 +9,8 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Archive::CgitProxy;
 use File::Spec;
 use File::Temp ();
-use File::Copy qw(move);
+use File::Copy qw(copy move);
+use DateTime;
 use Cwd;
 
 has cgit_port => (is => 'ro',
@@ -381,6 +382,7 @@ sub update_letsencrypt_cronjob {
         open (my $fh, '>:encoding(UTF-8)', $out) or die "Cannot open $out $!";
         print $fh $script;
         close $fh;
+        copy ($script_path, $script_path . '.' . DateTime->now->strftime('%F-%H-%M-%S'));
         move ($out, $script_path) or log_error { "Cannot move $out to $script_path" };
     }
 }
