@@ -317,23 +317,29 @@ sub _insert_server_stanza {
     }
 
     my $out = '';
-    if ($site->secure_site_only) {
-        $redirect_to_secure = 1;
-    }
-    else {
+    unless ($site->secure_site_only) {
         $out .= "    listen 80;\n";
     }
-    $out .= "    listen 443 ssl;\n";
-    $out .= "    ssl_certificate_key $site_key;\n";
-    $out .= "    ssl_certificate     $site_crt;\n";
+
+    if ($site->secure_site || $site->secure_site_only) {
+        $out .= "    listen 443 ssl;\n";
+        $out .= "    ssl_certificate_key $site_key;\n";
+        $out .= "    ssl_certificate     $site_crt;\n";
+    }
+
     $out .= "    server_name $hosts;\n";
+
     if (my $logformat = $self->log_format) {
         my $logpath = File::Spec->catfile($self->nginx_log_dir, $canonical . '.log');
         $out .= "    access_log $logpath $logformat;\n";
     }
+
+    # the common config
     $out .= "    include ${amwbase}_include;\n";
+
     my $stanza = "server {\n$out\n}\n";
-    if ($redirect_to_secure) {
+
+    if ($site->secure_site_only) {
         $stanza .= <<"REDIRECT";
 server {
     listen 80;
