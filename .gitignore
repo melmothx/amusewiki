@@ -40,3 +40,4 @@ webfonts/*/*
 log4perl.local.conf
 log/amw.log
 ssl/*
+cronjobs/*

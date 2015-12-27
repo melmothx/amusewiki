@@ -105,7 +105,8 @@ catalyst_ignore('bootstrap-amw');
 catalyst_ignore('current_version_is_.*txt');
 catalyst_ignore('dbic.yaml');
 catalyst_ignore('log');
-
+catalyst_ignore('cronjobs');
+catalyst_ignore('ssl');
 catalyst;
 
 install_script glob('script/*.pl');
