@@ -13,6 +13,15 @@ dedicated tree.
   - Fixed BB crash when reusing setup with a cover (#30)
   - Fixed missing Xapian purging on deletion by git removal (#31)
   - Added delete button and code for category descriptions (#32)
+  - Hold the webserver configuration in a model
+  - Added let's encrypt support via simp_le
+
+Model::CgitProxy is gone and is replaced by Model::Webserver. If you
+have in your config a <Model::CgitProxy> stanza with the port, please
+replace it with cgit_port in a <Model::Webserver> stanza.
+
+If you want to start using the let's encrypt certificates for SSL,
+look at the LET'S ENCRYPT section in the INSTALL.txt document.
 
 1.56 2015-12-02
 

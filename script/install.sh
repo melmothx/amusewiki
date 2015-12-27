@@ -258,6 +258,11 @@ cp log4perl.conf log4perl.local.conf
 sed -i "s/localhost/$hostname/" log4perl.local.conf
 sed -i "s/amuse@/`whoami`@/" log4perl.local.conf
 
+if git clone https://github.com/kuba/simp_le opt/simp_le; then
+    echo "Let's encrypt client has been downloaded into `pwd`/opt/simp_le"
+    echo "See the amusewiki INSTALL.txt and https://github.com/kuba/simp_le to finish the installation"
+fi
+
 cat $AMWLOGFILE
 rm $AMWLOGFILE
 

@@ -146,24 +146,6 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 255
 
-=head2 sitegroup_label
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 255
-
-=head2 catalog_label
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 255
-
-=head2 specials_label
-
-  data_type: 'varchar'
-  is_nullable: 1
-  size: 255
-
 =head2 cgit_integration
 
   data_type: 'integer'
@@ -201,6 +183,13 @@ __PACKAGE__->table("site");
   default_value: (empty string)
   is_nullable: 0
   size: 255
+
+=head2 active
+
+  data_type: 'integer'
+  default_value: 1
+  is_nullable: 0
+  size: 1
 
 =head2 bb_page_limit
 
@@ -412,12 +401,6 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "sitegroup",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
-  "sitegroup_label",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
-  "catalog_label",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
-  "specials_label",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
   "cgit_integration",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "ssl_key",
@@ -430,6 +413,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "multilanguage",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "active",
+  { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "bb_page_limit",
   { data_type => "integer", default_value => 1000, is_nullable => 0 },
   "tex",
@@ -704,8 +689,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-13 14:36:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1yz7x1w1Ezmwqu1K+OVwoA
+# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-27 15:53:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QAUGbtCTZjKvlyaaYrPuPg
 
 =head2 other_sites
 
@@ -2023,6 +2008,7 @@ sub update_from_params {
                        logo_with_sitename
                        cgit_integration
                        secure_site
+                       active
                        secure_site_only
                        twoside nocoverpage/);
     foreach my $boolean (@booleans) {
@@ -2430,7 +2416,7 @@ sub canonical_url {
 
 sub canonical_url_secure {
     my $self = shift;
-    if ($self->secure_site) {
+    if ($self->secure_site || $self->secure_site_only) {
         return 'https://' . $self->canonical;
     }
     else {

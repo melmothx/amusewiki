@@ -29,7 +29,7 @@ sub git :Chained('/site') :Args {
         $c->detach('/not_found');
         return;
     }
-    my $cgit = $c->model('CgitProxy');
+    my $cgit = $c->model('Webserver')->cgit_proxy;
     if ($cgit->disabled) {
         $c->detach('/not_found');
         return;

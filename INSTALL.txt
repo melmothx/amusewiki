@@ -73,6 +73,11 @@ the $PATH in your bashrc (or equivalent) is crucial.
 
 ** USAGE
 
+To set the number of FCGI workers, set the environment variable
+AMW_WORKERS (defaults to 3).
+
+  export AMW_WORKERS=5
+
 To start/stop/restart the application:
 
   ./init-all start
@@ -113,40 +118,66 @@ And in your repo directory, mark the repository for export:
 
 amuse@localhost:~/amusewiki/repo$ for i in */.git ; do touch $i/git-daemon-export-ok; done
 
+** LET'S ENCRYPT
+
+By default, during the installation a self-signed certificate is
+created. This should be good enough to get you started.
+
+You can set the path to the key and certificate in the admin console,
+if you already have them.
+
+Alternatively you can try Let's encrypt. The installation script
+should have installed a suitable client
+(https://github.com/kuba/simp_le) under the "opt" application
+directory. If you are upgrading, do:
+
+  git clone https://github.com/kuba/simp_le opt/simp_le
+
+You have to complete the installation (either if you're upgrading or
+if it's a fresh install).
+
+  cd opt/simp_le
+  su -c './bootstrap.sh' # or just install the deps manually
+  ./venv.sh
+  cd ../..
+  ./script/generate-nginx-conf.pl
+
+The script cronjobs/le.sh is created and refreshed automatically when
+you edit the sites.
+
+If you want to use that, keep the fields for key and certs empty in
+the console and add an entry like this to the *root* cronjob (so it
+runs le.sh as amuse, but reload nginx when needed):
+
+37 3 * * * su -c /path-to-amusewiki/cronjobs/le.sh amuse && echo "reloading nginx" && service nginx reload
+
+
 
 ** MULTIPLE INSTALLATIONS
 
-If you run a Debian machine and you have only one instance running,
-you don't need any of this.
+If you run a Debian machine and you have only one instance running and
+if you have the port 9015 free, you don't need any of this.
 
 Please note: "multiple instances" doesn't mean "multiple sites". On a
 single instance you can have as many sites as you want.
 
-Some environment variable you may want to use to address multiple
-instance (say one for development and one for production), *before*
-executing the install script:
+The interaction between nginx and the application, including cgit, is
+controlled by the Webserver model. You can configure it creating a
+file in the application root named amusewikifarm_local.conf with this
+content (here listed with the defaults).
 
-# nginx log format, default to combined
-export AMW_LOG_FORMAT=combined
-# nginx root, default to Debian setup (/etc/nginx)
-export AMW_NGINX_ROOT=/etc/nginx
-# instance name, for nginx site files and ssl keys
-export AMW_INSTANCE_NAME=amusewiki
-# To set the number of FCGI workers, set the environment variable
-# default to 3. E.g.
-export AMW_WORKERS=5
+<Model::Webserver>
+    # cgit port
+    cgit_port 9015
+    log_format combined
+    nginx_root /etc/nginx
+    instance_name amusewiki
+    fcgiwrap_socket /var/run/fcgiwrap.socket
+</Model::Webserver>
 
-You should put them in the bashrc as well, so if you need to
-regenerate the webserver configuration when adding sites, you're
-guaranteed to use the same settings.
-
-Also, cgit will need to bind to a different port, so if 9015 is
-already taken, create a  amusewikifarm_local.conf with this content:
-
-<Model::CgitProxy>
-    port 9099
-</Model::CgitProxy>
-
+The instance_name is just a string used to create the nginx
+configuration files to avoid conflicts with other installations. So
+you may have one instance named "testing" and the other "live".
 
 ** SYNTAX HIGHLIGHT
 

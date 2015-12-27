@@ -6,6 +6,19 @@ use warnings;
 use base 'DBIx::Class::ResultSet';
 use Data::Dumper;
 
+=head2 active_only
+
+Return the active sites, ordered by id and with vhosts prefetched.
+
+=cut
+
+sub active_only {
+    my ($self) = @_;
+    return $self->search({ active => 1 },
+                         { order_by => [qw/id/],
+                           prefetch => 'vhosts' });
+}
+
 =head2 deserialize_site(\%data)
 
 Input is supposed to be the hashref returned by

@@ -11,6 +11,7 @@
   <table class="table table-striped table-condensed table-bordered">
     <tr>
       <th>[% loc('Id') %]</th>
+      <th>[% loc('Active') %]</th>
       <th>[% loc('Site group') %]</th>
       <th>[% loc('Mode') %]</th>
       <th>[% loc('Locale') %]</th>
@@ -26,6 +27,9 @@
         <a href="[% c.uri_for_action('/admin/edit', obj.id ) %]">
           [% obj.id %]
         </a>
+      </td>
+      <td>
+        [% IF obj.active %]<span class="glyphicon glyphicon-ok"></span>[% END %]
       </td>
       <td>
         [% obj.sitegroup %]

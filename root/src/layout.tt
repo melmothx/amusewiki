@@ -163,8 +163,8 @@
                  title="[% loc('texts by authors, title, topic...') %]"
                  data-toggle="dropdown">
                 <span class="glyphicon glyphicon-heart"></span>
-                <span class="hidden-sm">
-                  [% site.catalog_label || loc('Catalog') %]
+                <span class="hidden-sm" id="amw-catalog-label">
+                  [% loc('Catalog') %]
                 </span>
                 <b class="caret"></b>
               </a>
@@ -223,8 +223,8 @@
                  title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
                 <span class="glyphicon glyphicon-plus"></span>
-                <span class="visible-lg-inline visible-xs-inline">
-                  [% site.specials_label || loc('More') %]
+                <span class="visible-lg-inline visible-xs-inline" id="awm-special-label">
+                  [% loc('More') %]
                 </span>
                 <b class="caret"></b>
               </a>
@@ -245,8 +245,8 @@
                  title="[% loc('Related projects') %]"
                  data-toggle="dropdown">
                 <span class="glyphicon glyphicon-th"></span>
-                <span class="hidden-sm">
-                  [% site.sitegroup_label || loc('Other languages') %]
+                <span class="hidden-sm" id="amw-sitegroup-label">
+                  [% loc('Other languages') %]
                 </span>
                 <b class="caret"></b>
               </a>

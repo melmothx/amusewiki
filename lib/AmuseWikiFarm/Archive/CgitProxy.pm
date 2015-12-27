@@ -11,7 +11,7 @@ use AmuseWikiFarm::Log::Contextual;
 
 has port => (is => 'ro',
              isa => 'Int',
-             default => '9015',
+             default => sub { '9015' },
             );
 
 has host => (is => 'ro',
@@ -39,7 +39,9 @@ sub _build_disabled {
     my $self = shift;
     my $test_uri = $self->create_uri;
     my $res = $self->ua->get($test_uri);
-    return !$res->{success};
+    my $disabled = !$res->{success};
+    log_warn { "Cgit is disabled" } if $disabled;
+    return $disabled;
 }
 
 sub get_base_uri {
