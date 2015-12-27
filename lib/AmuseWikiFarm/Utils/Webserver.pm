@@ -9,6 +9,7 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Archive::CgitProxy;
 use File::Spec;
 use File::Temp ();
+use File::Copy qw(move);
 use Cwd;
 
 has cgit_port => (is => 'ro',
@@ -56,6 +57,7 @@ sub _build_ssl_directory {
     my $self = shift;
     my $ssl_dir = File::Spec->catdir($self->app_directory, 'ssl');
     unless (-d $ssl_dir) {
+        log_info { "Creating $ssl_dir" };
         mkdir $ssl_dir or die "Cannot create $ssl_dir $!";
     }
     return $ssl_dir;
@@ -106,6 +108,21 @@ sub _build_webserver_root {
     return File::Spec->catdir($self->app_directory, 'root');
 }
 
+sub cronjobs_path {
+    my $self = shift;
+    my $dir = File::Spec->catdir($self->app_directory, 'cronjobs');
+    unless (-d $dir) {
+        log_info { "Creating $dir" };
+        mkdir $dir or die "Cannot create $dir $!";
+    }
+    return $dir;
+}
+
+sub letsencrypt_cronjob_path {
+    my $self = shift;
+    return File::Spec->catfile($self->cronjobs_path, 'le.sh');
+}
+
 sub generate_nginx_config {
     my ($self, @sites) = @_;
     return unless @sites;
@@ -124,6 +141,7 @@ sub generate_nginx_config {
         ! -f $self->ssl_default_key) {
         my $hostname_for_cert = $sites[0]->canonical;
         unless (-d $self->ssl_directory) {
+            log_info { "Creating " . $self->ssl_directory };
             mkdir $self->ssl_directory
               or die "Cannot create " . $self->ssl_directory . " $!";
         }
@@ -350,6 +368,21 @@ REDIRECT
     }
     $stanza .= "\n";
     return $stanza;
+}
+
+sub update_letsencrypt_cronjob {
+    my ($self, @sites) = @_;
+    my $script_path = $self->letsencrypt_cronjob_path;
+    my $tmpdir = File::Temp->newdir;
+    my $out = File::Spec->catfile($tmpdir, 'le.sh');
+    my $script = $self->generate_letsencrypt_cronjob(@sites);
+    if ($self->_slurp($script_path) ne $script) {
+        log_info { "Updating $script_path" };
+        open (my $fh, '>:encoding(UTF-8)', $out) or die "Cannot open $out $!";
+        print $fh $script;
+        close $fh;
+        move ($out, $script_path) or log_error { "Cannot move $out to $script_path" };
+    }
 }
 
 sub generate_letsencrypt_cronjob {

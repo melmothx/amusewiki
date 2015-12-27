@@ -63,13 +63,16 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
     my %params = %{ $c->request->body_parameters };
     my $site;
     my $listing_url = $c->uri_for_action('/admin/list');
-
+    my $check_config;
     if ($id) {
         if ($site = $c->model('DB::Site')->find($id)) {
             if (delete $params{edit_site}) {
                 if (my $err = $site->update_from_params(\%params)) {
                     # probably the error will never get localized...
                     $c->flash(error_msg => $c->loc($err));
+                }
+                else {
+                    $check_config = 1;
                 }
             }
         }
@@ -112,11 +115,18 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
         return;
     }
     $site->discard_changes;
-    # check if the webserver needs a refresh
-    my @all_sites = $c->model('DB::Site')->active_only->all;
-    if (my $refresh = $c->model('Webserver')->generate_nginx_config(@all_sites)) {
-        $c->stash(exec_as_root => $refresh);
+
+    # if the site was edited, check and update the configs
+    if ($check_config) {
+        # check if the webserver needs a refresh
+        my @all_sites = $c->model('DB::Site')->active_only->all;
+        my $config_generator = $c->model('Webserver');
+        if (my $refresh = $config_generator->generate_nginx_config(@all_sites)) {
+            $c->stash(exec_as_root => $refresh);
+        }
+        $config_generator->update_letsencrypt_cronjob(@all_sites);
     }
+
     $c->stash(esite => $site);
 }
 
