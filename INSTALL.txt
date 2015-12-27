@@ -26,7 +26,7 @@ should help, though.
 Prerequisites:
 
  - a database (mysql, pg, sqlite are supported)
- - a working perl (i.e., you can install modules)
+ - a working perl (i.e., you can install modules with cpanm without warnings)
  - fontconfig (install it before installing texlive)
  - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
  - a mime-info database: shared-mime-info on debian
@@ -34,6 +34,14 @@ Prerequisites:
  - a dedicated system user (with a clean home) which is going to run the site
 
 Log in as the user you want to run the site.
+
+If you have a system wide perl, to install modules in your home you
+should install local::lib (liblocal-lib-perl on Debian) and add to
+.bashrc:
+
+ eval `perl -Mlocal::lib`
+
+Logout and login again.
 
 Unpack the sources (or clone the repo) and change directory into them.
 
@@ -60,6 +68,9 @@ Please note that the installation procedure will create a mirror of
 amusewiki.org under the subdomain amusewiki.<your domain>, where <your
 domain> is the output of `hostname -d`. Nothing you can't change later
 from the admin console, but you need to access it.
+
+If you have multiple amusewiki instance on the same machine, see below
+before proceeding (you probably want to tweak the configuration)
 
 Execute:
 
