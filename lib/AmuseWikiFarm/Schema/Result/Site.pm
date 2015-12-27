@@ -2008,6 +2008,7 @@ sub update_from_params {
                        logo_with_sitename
                        cgit_integration
                        secure_site
+                       active
                        secure_site_only
                        twoside nocoverpage/);
     foreach my $boolean (@booleans) {

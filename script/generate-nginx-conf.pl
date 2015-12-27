@@ -8,9 +8,7 @@ use AmuseWikiFarm;
 
 my $schema = AmuseWikiFarm->model('DB');
 
-my @sites = $schema->resultset('Site')->search(undef, { order_by => [qw/id/],
-                                                        prefetch => 'vhosts'})
-  ->all;
+my @sites = $schema->resultset('Site')->active_only->all;
 
 my $confgenerator = AmuseWikiFarm->model('Webserver');
 if (my $out = $confgenerator->generate_nginx_config(@sites)) {
