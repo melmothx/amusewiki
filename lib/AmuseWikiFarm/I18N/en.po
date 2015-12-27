@@ -159,6 +159,9 @@ msgid ""
 "      not needed"
 msgstr ""
 
+msgid "Apache is not currently supported"
+msgstr ""
+
 msgid "Archive history"
 msgstr ""
 
@@ -608,6 +611,17 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 
@@ -921,8 +935,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -1011,9 +1025,6 @@ msgstr ""
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
-msgstr ""
-
-msgid "Please give a name to the collection."
 msgstr ""
 
 msgid ""
@@ -1439,8 +1450,7 @@ msgstr ""
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
-msgid ""
-"The following values are used verbatim by the webserver config generator."
+msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 
 msgid ""
@@ -1449,12 +1459,6 @@ msgid ""
 msgstr ""
 
 msgid "The logo has the site name on itself"
-msgstr ""
-
-msgid "The name is also used as title if there is only one partial text."
-msgstr ""
-
-msgid "The name is always required, but used only if there are multiple texts."
 msgstr ""
 
 msgid "The optional subtitle"
@@ -1485,6 +1489,11 @@ msgstr ""
 msgid "The user will have the same your level of access"
 msgstr ""
 
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+
 msgid "The whole book in as single signature"
 msgstr ""
 
@@ -1495,6 +1504,11 @@ msgid "These texts are missing the unique id."
 msgstr ""
 
 msgid "They have the same syntax (images are actually links)"
+msgstr ""
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
 msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
@@ -1555,8 +1569,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Titles"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1742,6 +1756,12 @@ msgstr ""
 msgid "You are already logged in"
 msgstr ""
 
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+
 msgid "You are logged in now!"
 msgstr ""
 
@@ -1751,8 +1771,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1769,8 +1789,8 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr ""
 
@@ -1810,6 +1830,9 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr ""
 
 msgid "about, links..."
+msgstr ""
+
+msgid "affects only the frontend webserver configuration"
 msgstr ""
 
 msgid "any"

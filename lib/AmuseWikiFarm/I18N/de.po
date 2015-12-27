@@ -173,6 +173,9 @@ msgstr ""
 " z.B. errico-malatesta-anarchy-2. Beachte bitte, dass\n"
 " das normalerweise nicht notwendig ist."
 
+msgid "Apache is not currently supported"
+msgstr ""
+
 msgid "Archive history"
 msgstr ""
 
@@ -628,6 +631,17 @@ msgstr "Ich will ein druckfertiges PDF"
 msgid "Id"
 msgstr "ID"
 
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Wenn ein Übermittler eine Mail bereitstellt, dann ist diese im CC-Feld der "
@@ -968,8 +982,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDFs können im Textkörper nicht verwendet werden."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "Nicht in der %1 Anweisung aufgelistete PDFs werden gespeichert aber "
@@ -1063,9 +1077,6 @@ msgid ""
 msgstr ""
 "Verwende bitte keine höheren Ebenen (Teil oder Kapitel) für kurze Texte mit "
 "Sektionen."
-
-msgid "Please give a name to the collection."
-msgstr "Bitte gib der Auswahl einen Namen."
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
@@ -1516,8 +1527,7 @@ msgstr ""
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
-msgid ""
-"The following values are used verbatim by the webserver config generator."
+msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 
 msgid ""
@@ -1527,14 +1537,6 @@ msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr ""
-
-msgid "The name is also used as title if there is only one partial text."
-msgstr ""
-
-msgid "The name is always required, but used only if there are multiple texts."
-msgstr ""
-"Der Name wird immer benötigt, wird jedoch nur verwendet wenn es mehrer Texte "
-"gibt."
 
 msgid "The optional subtitle"
 msgstr "Die optionalen Untertitel"
@@ -1569,6 +1571,11 @@ msgstr "Der Titel des Dokuments. Die einzig verpflichtende Anweisung. "
 msgid "The user will have the same your level of access"
 msgstr "Die Benutzerin wird die selben Zugangsrechte haben wie du."
 
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+
 msgid "The whole book in as single signature"
 msgstr ""
 
@@ -1580,6 +1587,11 @@ msgstr "Diesen Texten fehlt die einzigartige ID."
 
 msgid "They have the same syntax (images are actually links)"
 msgstr "Sie haben dieselbe Syntax (Bilder sind eigentlich Links)"
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
@@ -1643,8 +1655,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Liste aller Texte"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr "Um Änderungen anzuwenden gehe auf %1"
 
@@ -1840,6 +1852,12 @@ msgstr "Du hast bereits bestätigt, dass du ein Mensch bist"
 msgid "You are already logged in"
 msgstr "Du bist bereits angemeldet!"
 
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+
 msgid "You are logged in now!"
 msgstr "Du bist jetzt angemeldet!"
 
@@ -1852,8 +1870,8 @@ msgstr ""
 " du auf “Plus”-Symbol neben den Downloads klickst.\n"
 " Du kannst später Texte hinzufügen und entfernen."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr "Du kannst einen Peer erstellen unter %1"
 
@@ -1873,8 +1891,8 @@ msgid "You may want to resume the editing of one of them"
 msgstr ""
 "Du willst vielleicht mit der Bearbeitung von einem von ihnen fortfahren"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Du solltest dein Passwort sofort verändern unter %1"
 
@@ -1917,6 +1935,9 @@ msgstr "ZIP-Archiv mit Quellen, vom Buchbinder benötigt"
 
 msgid "about, links..."
 msgstr "Über, Links, ..."
+
+msgid "affects only the frontend webserver configuration"
+msgstr ""
 
 msgid "any"
 msgstr ""
@@ -2098,6 +2119,15 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Please give a name to the collection."
+#~ msgstr "Bitte gib der Auswahl einen Namen."
+
+#~ msgid ""
+#~ "The name is always required, but used only if there are multiple texts."
+#~ msgstr ""
+#~ "Der Name wird immer benötigt, wird jedoch nur verwendet wenn es mehrer "
+#~ "Texte gibt."
 
 #~ msgid "PDF logo (absolute path or put it in texmf)"
 #~ msgstr "PDF-Logo (Absoluter Pfad oder setze es in texmf)"

@@ -168,6 +168,9 @@ msgstr ""
 "      nimi, otsikko, kieli, versionumero. Esim. \n"
 "      bob-black-eroon-tyosta-2. Yleensä tätä ei tarvitse erikseen tehdä"
 
+msgid "Apache is not currently supported"
+msgstr ""
+
 msgid "Archive history"
 msgstr ""
 
@@ -620,6 +623,17 @@ msgstr "Haluan tulostusvalmiin PDF:n"
 msgid "Id"
 msgstr "Tunniste"
 
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr "Jos lähettäjä antoi sähköpostiosoitteen, se näkyy CC-kentässä"
 
@@ -952,8 +966,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -1055,9 +1069,6 @@ msgid ""
 "sections."
 msgstr ""
 "Älä käytä korkeampia tasoja (osia tai lukuja) lyhyiden tekstien kohdalla."
-
-msgid "Please give a name to the collection."
-msgstr "Anna kokoelmalle nimi."
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
@@ -1500,8 +1511,7 @@ msgstr ""
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
-msgid ""
-"The following values are used verbatim by the webserver config generator."
+msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 
 msgid ""
@@ -1511,13 +1521,6 @@ msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr "Logossa on jo sivuston nimi"
-
-msgid "The name is also used as title if there is only one partial text."
-msgstr ""
-
-msgid "The name is always required, but used only if there are multiple texts."
-msgstr ""
-"Nimi vaaditaan aina, mutta sitä käytetään vain jos tekstejä on useampi."
 
 msgid "The optional subtitle"
 msgstr "Vaihtoehtoinen alaotsikko"
@@ -1547,6 +1550,11 @@ msgstr "Tekstin otsikko. Ainoa pakollinen."
 msgid "The user will have the same your level of access"
 msgstr ""
 
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+
 msgid "The whole book in as single signature"
 msgstr "Koko kirja yhtenä signaturena"
 
@@ -1558,6 +1566,11 @@ msgstr "Näistä teksteistä puuttuu yksilöivä tunniste."
 
 msgid "They have the same syntax (images are actually links)"
 msgstr "Syntaksi on sama (kuvat ovat itse asiassa linkkejä)"
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
@@ -1621,8 +1634,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Tekstit"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1815,6 +1828,12 @@ msgstr "Osoitit jo olevasi ihminen"
 msgid "You are already logged in"
 msgstr "Olet jo kirjautunut "
 
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+
 msgid "You are logged in now!"
 msgstr "Olet kirjautunut!"
 
@@ -1827,8 +1846,8 @@ msgstr ""
 "    \"plus\"-kuvaketta tekstin latausvaihtoehtojen vieressä. Voit lisätä\n"
 "    ja poistaa tekstejä myöhemmin."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1845,8 +1864,8 @@ msgstr "Olet kirjautunut ulos"
 msgid "You may want to resume the editing of one of them"
 msgstr "Saatat haluta jatkaa muokkausta"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Sinun tulisi vaihtaa salasanasi heti osoitteessa %1"
 
@@ -1888,6 +1907,9 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "Kirjantekijän tarvitsema ZIP arkisto, josta löytyy lähteet"
 
 msgid "about, links..."
+msgstr ""
+
+msgid "affects only the frontend webserver configuration"
 msgstr ""
 
 msgid "any"
@@ -2066,6 +2088,14 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "Please give a name to the collection."
+#~ msgstr "Anna kokoelmalle nimi."
+
+#~ msgid ""
+#~ "The name is always required, but used only if there are multiple texts."
+#~ msgstr ""
+#~ "Nimi vaaditaan aina, mutta sitä käytetään vain jos tekstejä on useampi."
 
 #~ msgid "Italics, bold, monospace, linebreaks..."
 #~ msgstr "Kursiivi, lihavointi, tasavälit, rivinvaihdot..."

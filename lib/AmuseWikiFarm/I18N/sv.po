@@ -173,6 +173,9 @@ msgstr ""
 "språk, eventuell diambiguering, t.ex.errico-malatesta-anarchy-2. Vanligtvis "
 "behövs det dock inte"
 
+msgid "Apache is not currently supported"
+msgstr ""
+
 msgid "Archive history"
 msgstr ""
 
@@ -629,6 +632,17 @@ msgstr "Jag vill ha en imposed (redo att trycka) PDF"
 msgid "Id"
 msgstr "Id"
 
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr "Om avsändaren tillhandahöll mail, så är det listat i mailets CC-fält"
 
@@ -958,8 +972,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDF:er kan inte användas i brödtexten."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF är inte listad i %1 direktiv kommer att lagras men ignoreras"
 
@@ -1061,9 +1075,6 @@ msgid ""
 msgstr ""
 "Vänligen använd inte högre nivåer (delar eller kapitel) för korta artiklar "
 "med sektioner."
-
-msgid "Please give a name to the collection."
-msgstr "Namnge gärna din samling."
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
@@ -1523,8 +1534,7 @@ msgstr ""
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
-msgid ""
-"The following values are used verbatim by the webserver config generator."
+msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 
 msgid ""
@@ -1534,14 +1544,6 @@ msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr "Logotypen innehåller sidnamnet"
-
-msgid "The name is also used as title if there is only one partial text."
-msgstr ""
-
-msgid "The name is always required, but used only if there are multiple texts."
-msgstr ""
-"Namnet är alltid nödvändigt, men används endast när det rör sig om flera "
-"texter."
 
 msgid "The optional subtitle"
 msgstr "Den valfria undertexten"
@@ -1575,6 +1577,11 @@ msgstr "Dokumentets tiel. Den enda obligatoriska anvisningen. "
 msgid "The user will have the same your level of access"
 msgstr "Användare kommer att ha samma tillgångsnivå som du"
 
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+
 msgid "The whole book in as single signature"
 msgstr "Hela boken som en enskild signatur"
 
@@ -1586,6 +1593,11 @@ msgstr "Dessa texter saknar det unika ID:t."
 
 msgid "They have the same syntax (images are actually links)"
 msgstr "De har samma syntax (bilder är faktiskt länkar)"
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Anvisningen vill ha en lista med filnamn separerad med blanksteg."
@@ -1648,8 +1660,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Titlar"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr "För att verkställa ändringarna, kan du besöka %1"
 
@@ -1842,6 +1854,12 @@ msgstr "Du har redan bevisat att du är en människa"
 msgid "You are already logged in"
 msgstr "Du är redan inloggad"
 
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+
 msgid "You are logged in now!"
 msgstr "Nu är du inloggad!"
 
@@ -1854,8 +1872,8 @@ msgstr ""
 "\" bredvid nedladdnings-ikonerna på varje texts       sida. Du kan lägga "
 "till eller ta bort texterna senare."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr "Du kan skapa en peer vid %1"
 
@@ -1872,8 +1890,8 @@ msgstr "Du är nu utloggad"
 msgid "You may want to resume the editing of one of them"
 msgstr "Du bör överväga att återgå till redigeringen av en av dem"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Du bör ändra ditt lösenord på direkten %1"
 
@@ -1916,6 +1934,9 @@ msgstr "ZIParkiv med källor, nödvändig för bokskaparen"
 
 msgid "about, links..."
 msgstr "om, länkar..."
+
+msgid "affects only the frontend webserver configuration"
+msgstr ""
 
 msgid "any"
 msgstr ""
@@ -2096,6 +2117,15 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Please give a name to the collection."
+#~ msgstr "Namnge gärna din samling."
+
+#~ msgid ""
+#~ "The name is always required, but used only if there are multiple texts."
+#~ msgstr ""
+#~ "Namnet är alltid nödvändigt, men används endast när det rör sig om flera "
+#~ "texter."
 
 #~ msgid "PDF logo (absolute path or put it in texmf)"
 #~ msgstr "PDF logotyp (absolut sökväg eller gör det i texmf)"

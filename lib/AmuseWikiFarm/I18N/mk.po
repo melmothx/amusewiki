@@ -171,6 +171,9 @@ msgstr ""
 "се придржуваш до овој принцип: автор, име, наслов, јазик, евентуален број,\n"
 " на пр.\"errico-malatesta-anarchy-2\". Инаку тоа не е потребно."
 
+msgid "Apache is not currently supported"
+msgstr ""
+
 msgid "Archive history"
 msgstr ""
 
@@ -637,6 +640,17 @@ msgstr "Сакам PDF подготвен за печатење"
 msgid "Id"
 msgstr "Id"
 
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
+msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Ако личноста која направила измени навела e-mail, вклучена е во CC листата"
@@ -974,8 +988,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "Не е можно да се користат PDF датотеки во самите текстови."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "PDF датотеките кои не се на листата %1 ќе бидат зачувани, но игнорирани."
@@ -1077,9 +1091,6 @@ msgid ""
 msgstr ""
 "Заради подобра прегледност, не користи повисоки нивоа (дел или поглавје)\n"
 " за кратки текстови, туку оддели."
-
-msgid "Please give a name to the collection."
-msgstr "Наслови ја збирката."
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
@@ -1546,8 +1557,7 @@ msgstr ""
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
-msgid ""
-"The following values are used verbatim by the webserver config generator."
+msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 
 msgid ""
@@ -1557,12 +1567,6 @@ msgstr ""
 
 msgid "The logo has the site name on itself"
 msgstr "Логото го содржи името на сајтот"
-
-msgid "The name is also used as title if there is only one partial text."
-msgstr ""
-
-msgid "The name is always required, but used only if there are multiple texts."
-msgstr "Името е задолжително, но се користи само за збирки со повеќе текстови."
 
 msgid "The optional subtitle"
 msgstr "Поднаслов (не е задолжителен)"
@@ -1594,6 +1598,11 @@ msgstr "Наслов на документот. Единственото зад�
 msgid "The user will have the same your level of access"
 msgstr "Корисникот ќе има исто ниво на пристап како и ти"
 
+msgid ""
+"The webserver needs to be reconfigured. Please execute in a root shell the "
+"following commands:"
+msgstr ""
+
 msgid "The whole book in as single signature"
 msgstr "Целата книга во еден единствен табак"
 
@@ -1605,6 +1614,11 @@ msgstr "На овие текстови им недостига единстве�
 
 msgid "They have the same syntax (images are actually links)"
 msgstr "Ја имаат истата синтакса (сликите всушност се само линкови)"
+
+msgid ""
+"They should be paths relative to the webserver configuration root or "
+"absolute paths (recommended)."
+msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Ова поле бара листа на имињата на датотеки одвоени со празно место."
@@ -1667,8 +1681,8 @@ msgstr ""
 msgid "Titles"
 msgstr "Наслови"
 
-#. (c.uri_for_action('/publish/pending')
 #. (c.uri_for_action("/publish/pending"))
+#. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
 msgstr "За да ја објавиш измената, оди на %1"
 
@@ -1864,6 +1878,12 @@ msgstr "Веќе докажа дека си човек"
 msgid "You are already logged in"
 msgstr "Веќе си пријавен"
 
+msgid ""
+"You are building a collection. Please provide a title and, optionally, any "
+"other information needed for the front cover (author, subtitle, date) and "
+"the back cover (source and notes)."
+msgstr ""
+
 msgid "You are logged in now!"
 msgstr "Сега си пријавен!"
 
@@ -1875,8 +1895,8 @@ msgstr ""
 "Кликни на иконата \"Плус\", покрај преземања, кај секој од текстовите за да "
 "го додадеш на својата збирка. Подоцна можеш да додадеш или избришеш текстови."
 
-#. (c.uri_for_action('/user/create')
 #. (c.uri_for_action("/user/create"))
+#. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
 msgstr "Можеш да создадеш сметка на %1"
 
@@ -1894,8 +1914,8 @@ msgstr "Одјавен си"
 msgid "You may want to resume the editing of one of them"
 msgstr "Можеш да се вратиш на една од измените во тек"
 
-#. (c.uri_for_action('/user/edit', [ user.id ])
 #. (c.uri_for_action("/user/edit", [ user.id ]))
+#. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
 msgstr "Треба веднаш да ја промениш својата лозинка на %1"
 
@@ -1938,6 +1958,9 @@ msgstr "ZIP архивата со извор, потребна за создав
 
 msgid "about, links..."
 msgstr "за проектот, линкови..."
+
+msgid "affects only the frontend webserver configuration"
+msgstr ""
 
 msgid "any"
 msgstr "која било"
@@ -2117,6 +2140,14 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Please give a name to the collection."
+#~ msgstr "Наслови ја збирката."
+
+#~ msgid ""
+#~ "The name is always required, but used only if there are multiple texts."
+#~ msgstr ""
+#~ "Името е задолжително, но се користи само за збирки со повеќе текстови."
 
 #~ msgid "PDF logo (absolute path or put it in texmf)"
 #~ msgstr "PDF лого (задолжителна насока или името на текстот во texmf)"
