@@ -84,6 +84,16 @@ sub _build_ssl_default_key {
                                $self->instance_name . '.key');
 }
 
+has webserver_root => (is => 'ro',
+                       isa => 'Str',
+                       lazy => 1,
+                       builder => '_build_webserver_root');
+
+sub _build_webserver_root {
+    my $self = shift;
+    return File::Spec->catdir($self->app_directory, 'root');
+}
+
 sub generate_nginx_config {
     my ($self, @sites) = @_;
     return unless @sites;
@@ -95,6 +105,7 @@ sub generate_nginx_config {
     my $fcgiwrap_socket = $self->fcgiwrap_socket;
     my $cgit_path = File::Spec->catfile(qw/root git cgit.cgi/);
     my $amw_home = $self->app_directory;
+    my $webserver_root = $self->webserver_root;
 
     my $cgit = "### cgit is not installed ###\n";
     if (-f $cgit_path) {
@@ -103,7 +114,7 @@ server {
     listen 127.0.0.1:$cgit_port;
     server_name localhost;
     location /git/ {
-        root $amw_home/root;
+        root $webserver_root;
         fastcgi_split_path_info ^/git()(.*);
         fastcgi_param   PATH_INFO       \$fastcgi_path_info;
         fastcgi_param   SCRIPT_FILENAME \$document_root/git/cgit.cgi;
@@ -151,7 +162,7 @@ EOF
       or die "Cannot open $include_file $!";
 
     print $fh <<"INCLUDE";
-    root $amw_home/root;
+    root $webserver_root;
 
     # LEGACY STUFF
     rewrite ^/lib/(.*)\$ /library/\$1 permanent;
