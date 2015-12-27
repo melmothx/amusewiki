@@ -11,7 +11,7 @@
 [% IF exec_as_root %]
 <div class="alert alert-warning">
   <p>
-    [% loc('The webserver needs a new configuration. Please execute in a root shell the following commands:') %]<br><br>
+    [% loc('The webserver needs to be reconfigured. Please execute in a root shell the following commands:') %]<br><br>
   </p>
   <pre><code>[% exec_as_root | html %]</code></pre>
 </div>
