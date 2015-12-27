@@ -690,15 +690,35 @@ kpsewhich mylogo.pdf</pre>
 
 
     <p>
-      [% loc('The following values are used verbatim by the webserver config generator.') %]
+      [% loc('The following values are used to generate the webserver configuration.') %]<br>
+      [% loc('They should be paths relative to the webserver configuration root or absolute paths (recommended).') %]
     </p>
     <div class="form-group">
       <label for="ssl_key" class="col-sm-2 control-label">
         [% loc('SSL key path') %]
       </label>
       <div class="col-sm-10">
+        <p>
         <input type="text"  name="ssl_key" id="ssl_key"
                class="form-control" value="[% esite.ssl_key  | html %]" />
+        </p>
+        <p>
+          [% loc('If not set [_1] will be looked up from the application directory.', 'ssl/' _ esite.canonical _ '/key.pem') %]
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="ssl_chained_cert" class="col-sm-2 control-label">
+        [% loc('SSL chained certertificate path (Nginx)') %]
+      </label>
+      <div class="col-sm-10">
+        <p>
+        <input type="text"  name="ssl_chained_cert" id="ssl_chained_cert"
+               class="form-control" value="[% esite.ssl_chained_cert | html%]" />
+        </p>
+        <p>
+          [% loc('If not set [_1] will be looked up from the application directory.', 'ssl/' _ esite.canonical _ '/fullchain.pem') %]
+        </p>
       </div>
     </div>
     <div class="form-group">
@@ -706,8 +726,13 @@ kpsewhich mylogo.pdf</pre>
         [% loc('SSL certificate path (Apache)') %]
       </label>
       <div class="col-sm-10">
+        <p>
         <input type="text"  name="ssl_cert" id="ssl_cert"
                class="form-control" value="[% esite.ssl_cert | html %]" />
+        </p>
+        <p>
+          [% loc('If not set [_1] will be looked up from the application directory.', 'ssl/' _ esite.canonical _ '/cert.pem') %]
+        </p>
       </div>
     </div>
     <div class="form-group">
@@ -715,20 +740,16 @@ kpsewhich mylogo.pdf</pre>
         [% loc('SSL CA certificate path (Apache)') %]
       </label>
       <div class="col-sm-10">
+        <p>
         <input type="text"  name="ssl_ca_cert" id="ssl_ca_cert"
                class="form-control" value="[% esite.ssl_ca_cert | html %]" />
+        </p>
+        <p>
+          [% loc('If not set [_1] will be looked up from the application directory.', 'ssl/' _ esite.canonical _ '/chain.pem') %]
+        </p>
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="ssl_chained_cert" class="col-sm-2 control-label">
-        [% loc('SSL chained certertificate path (Nginx)') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="ssl_chained_cert" id="ssl_chained_cert"
-               class="form-control" value="[% esite.ssl_chained_cert | html%]" />
-      </div>
-    </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-primary" name="edit_site"

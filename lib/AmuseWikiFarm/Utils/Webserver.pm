@@ -288,6 +288,14 @@ sub _insert_server_stanza {
     my $redirect_to_secure;
     my $default_key = $self->ssl_default_key;
     my $default_crt = $self->ssl_default_cert;
+
+    # look if the user set this in the db or we have let's encrypt material,
+    # or we have a pair in ssl/<domain>/{key.pem,fullchain.pem}
+    my $site_key = $site->ssl_key ? File::Spec->rel2abs($site->ssl_key, $self->nginx_root)
+      : File::Spec->catfile($self->ssl_directory, $canonical, 'key.pem');
+    my $site_crt = $site->ssl_chained_cert ? File::Spec->rel2abs($site->ssl_chained_cert, $self->nginx_root)
+      : File::Spec->catfile($self->ssl_directory, $canonical,'fullchain.pem');
+
     my $amwbase = $self->instance_name;
     $out = <<"DEFAULT";
     listen 80;
@@ -296,20 +304,20 @@ sub _insert_server_stanza {
     ssl_certificate     $default_crt;
 DEFAULT
 
-    if (my $ssl_key = $site->ssl_key) {
-        if (my $ca_cert = $site->ssl_chained_cert) {
-            $out = '';
-            if ($site->secure_site_only) {
-                $redirect_to_secure = 1;
-            }
-            else {
-                $out .= "    listen 80;\n";
-            }
-            $out .= "    listen 443 ssl;\n";
-            $out .= "    ssl_certificate     $ca_cert;\n";
-            $out .= "    ssl_certificate_key $ssl_key;\n";
+    # check in ssl
+    if (-f $site_key and -f $site_crt) {
+        $out = '';
+        if ($site->secure_site_only) {
+            $redirect_to_secure = 1;
         }
+        else {
+            $out .= "    listen 80;\n";
+        }
+        $out .= "    listen 443 ssl;\n";
+        $out .= "    ssl_certificate_key $site_key;\n";
+        $out .= "    ssl_certificate     $site_crt;\n";
     }
+
     $out .= "    server_name $hosts;\n";
     if (my $logformat = $self->log_format) {
         $out .= "    access_log /var/log/nginx/$canonical.log $logformat;\n";
