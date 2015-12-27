@@ -24,6 +24,10 @@ has nginx_root => (is => 'ro',
                    isa => 'Str',
                    default => sub { '/etc/nginx' });
 
+has nginx_log_dir => (is => 'ro',
+                      isa => 'Str',
+                      default => sub { '/var/log/nginx' });
+
 has instance_name => (is => 'ro',
                       isa => 'Str',
                       default => sub { 'amusewiki' });
@@ -293,7 +297,6 @@ sub _insert_server_stanza {
     my $canonical = $site->canonical;
     my @vhosts = $site->alternate_hostnames;
     my $hosts = join("\n" . (" " x 16),  $canonical, @vhosts);
-    my $out = '';
     my $redirect_to_secure;
     my $default_key = $self->ssl_default_key;
     my $default_crt = $self->ssl_default_cert;
@@ -306,30 +309,27 @@ sub _insert_server_stanza {
       : File::Spec->catfile($self->ssl_directory, $canonical,'fullchain.pem');
 
     my $amwbase = $self->instance_name;
-    $out = <<"DEFAULT";
-    listen 80;
-    listen 443 ssl;
-    ssl_certificate_key $default_key;
-    ssl_certificate     $default_crt;
-DEFAULT
 
-    # check in ssl
-    if (-f $site_key and -f $site_crt) {
-        $out = '';
-        if ($site->secure_site_only) {
-            $redirect_to_secure = 1;
-        }
-        else {
-            $out .= "    listen 80;\n";
-        }
-        $out .= "    listen 443 ssl;\n";
-        $out .= "    ssl_certificate_key $site_key;\n";
-        $out .= "    ssl_certificate     $site_crt;\n";
+    unless (-f $site_key and -f $site_crt) {
+        # we checked and created these above
+        $site_key = $default_key;
+        $site_crt = $default_crt;
     }
 
+    my $out = '';
+    if ($site->secure_site_only) {
+        $redirect_to_secure = 1;
+    }
+    else {
+        $out .= "    listen 80;\n";
+    }
+    $out .= "    listen 443 ssl;\n";
+    $out .= "    ssl_certificate_key $site_key;\n";
+    $out .= "    ssl_certificate     $site_crt;\n";
     $out .= "    server_name $hosts;\n";
     if (my $logformat = $self->log_format) {
-        $out .= "    access_log /var/log/nginx/$canonical.log $logformat;\n";
+        my $logpath = File::Spec->catfile($self->nginx_log_dir, $canonical . '.log');
+        $out .= "    access_log $logpath $logformat;\n";
     }
     $out .= "    include ${amwbase}_include;\n";
     my $stanza = "server {\n$out\n}\n";

@@ -700,7 +700,8 @@ kpsewhich mylogo.pdf</pre>
 
     <p>
       [% loc('The following values are used to generate the webserver configuration.') %]<br>
-      [% loc('They should be paths relative to the webserver configuration root or absolute paths (recommended).') %]
+      [% loc('They should be paths relative to the webserver configuration root or absolute paths (recommended).') %]<br>
+      [% loc('Apache is not currently supported') %]
     </p>
     <div class="form-group">
       <label for="ssl_key" class="col-sm-2 control-label">
@@ -730,7 +731,7 @@ kpsewhich mylogo.pdf</pre>
         </p>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none">
       <label for="ssl_cert" class="col-sm-2 control-label">
         [% loc('SSL certificate path (Apache)') %]
       </label>
@@ -744,7 +745,7 @@ kpsewhich mylogo.pdf</pre>
         </p>
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="display:none">
       <label for="ssl_ca_cert" class="col-sm-2 control-label">
         [% loc('SSL CA certificate path (Apache)') %]
       </label>
