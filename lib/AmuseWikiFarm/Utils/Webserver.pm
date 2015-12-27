@@ -384,6 +384,7 @@ sub update_letsencrypt_cronjob {
         close $fh;
         copy ($script_path, $script_path . '.' . DateTime->now->strftime('%F-%H-%M-%S'));
         move ($out, $script_path) or log_error { "Cannot move $out to $script_path" };
+        chmod 0755, $script_path;
     }
 }
 
