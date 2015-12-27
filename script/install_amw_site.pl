@@ -16,7 +16,7 @@ use Cwd;
 use Getopt::Long;
 use Crypt::XkcdPassword;
 
-my $hostname;
+my ($hostname, $mail_notify);
 my $site_id = 'amw';
 my $password = Crypt::XkcdPassword->new(words => 'IT')->make_password(5, qr{\A[0-9a-zA-Z]{3,}\z});
 my $username = "amusewiki";
@@ -25,6 +25,7 @@ GetOptions(
            'hostname=s' => \$hostname,
            'username=s' => \$username,
            'password=s' => \$password,
+           'email=s' => \$mail_notify,
           ) or die;
 
 unless ($hostname) {
@@ -89,6 +90,7 @@ my $site = $schema->resultset('Site')->create({
                                                canonical => $hostname,
                                                sitename => "AmuseWiki documentation",
                                                pdf => 0, # no pdfs for this, speed up
+                                               mail_notify => $mail_notify || '',
                                               });
 $site->discard_changes;
 my $repo_root = $site->repo_root;

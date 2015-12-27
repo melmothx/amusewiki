@@ -214,7 +214,7 @@ fi
 echo "Bootstrapping the initial site with the documentation"
 
 
-./script/install_amw_site.pl --hostname "$hostname" >> $AMWLOGFILE
+./script/install_amw_site.pl --hostname "$hostname" --email "`whoami`@$hostname">> $AMWLOGFILE
 
 echo "Installing needed JS"
 ./script/install_js.sh
