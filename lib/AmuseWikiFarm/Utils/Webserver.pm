@@ -352,6 +352,60 @@ REDIRECT
     return $stanza;
 }
 
+sub generate_letsencrypt_cronjob {
+    my ($self, @sites) = @_;
+    my $exe_path = File::Spec->catdir($self->app_directory, qw/opt simp_le venv bin/);
+    my $ssl_dir = $self->ssl_directory;
+
+    my $script =<<"EOF";
+#!/bin/bash
+set -e
+export PATH=$exe_path:\$PATH
+reload=0
+if [ \$UID = 0 ]; then
+    exit 2
+fi
+
+EOF
+    foreach my $site (@sites) {
+        next unless $site->active;
+        next unless $site->secure_site || $site->secure_site_only;
+        if (my $mail = $site->mail_notify) {
+            my @vhosts = ($site->canonical);
+            push @vhosts, map { $_->name } $site->vhosts->all;
+            my @command = (qw/simp_le -f key.pem -f fullchain.pem -f account_key.json/);
+            push @command, '--email', $mail;
+            push @command, '--default_root', $self->webserver_root;
+            push @command, map { -d => $_ } @vhosts;
+            my $command = join (' ', @command);
+            my $local_ssl_dir = File::Spec->catdir($ssl_dir, $vhosts[0]);
+            $script .= <<"EOF";
+# $vhosts[0]
+mkdir -p $local_ssl_dir;
+cd $local_ssl_dir;
+if $command; then
+    ((reload=reload+1))
+fi
+
+EOF
+        }
+        else {
+            log_warn { $site->id . " has no mail notify!" };
+        }
+    }
+
+    $script .= <<"EOF";
+cd $ssl_dir
+chmod 600 */key.pem
+if [ \$reload -gt 0 ];then
+    exit 0
+else
+    exit 1
+fi
+EOF
+    return $script;
+}
+
 sub _slurp {
     my ($self, $file) = @_;
     die "Bad usage" unless $file;
@@ -362,8 +416,6 @@ sub _slurp {
     close $fh;
     return $content;
 }
-
-
 
 __PACKAGE__->meta->make_immutable;
 
