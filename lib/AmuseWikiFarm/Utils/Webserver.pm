@@ -405,6 +405,8 @@ EOF
     foreach my $site (@sites) {
         next unless $site->active;
         next unless $site->secure_site || $site->secure_site_only;
+        # skip sites with the ssl config explicitely set.
+        next if $site->ssl_key;
         if (my $mail = $site->mail_notify) {
             my @vhosts = ($site->canonical);
             push @vhosts, map { $_->name } $site->vhosts->all;
