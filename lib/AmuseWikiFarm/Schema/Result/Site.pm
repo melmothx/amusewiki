@@ -2416,7 +2416,7 @@ sub canonical_url {
 
 sub canonical_url_secure {
     my $self = shift;
-    if ($self->secure_site) {
+    if ($self->secure_site || $self->secure_site_only) {
         return 'https://' . $self->canonical;
     }
     else {
