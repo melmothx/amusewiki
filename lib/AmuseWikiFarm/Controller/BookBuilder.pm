@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
+use URI;
 
 =head1 NAME
 
@@ -36,7 +37,14 @@ sub root :Chained('/site') :PathPart('bookbuilder') :CaptureArgs(0) {
         $c->stash(page_title => $c->loc('Bookbuilder'));
     }
     else {
-        $c->response->redirect($c->uri_for('/human', { goto => $c->req->path }));
+        my $path = $c->req->path;
+        my $params = $c->req->params;
+        my $uri = URI->new($path);
+        $uri->query_form($params);
+        my $goto = $uri->as_string;
+        my $redirect = $c->uri_for('/human', { goto => $goto });
+        Dlog_debug { "path is $path, params are $_, final is $goto, redirect to $redirect)" } $params;
+        $c->response->redirect($redirect);
         $c->detach();
         return;
     }
@@ -131,7 +139,7 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
     my ( $self, $c, $text ) = @_;
     my $bb   = $c->stash->{bb};
     my $site = $c->stash->{site};
-    my $params = $c->request->body_params;
+    my $params = $c->request->params;
     my $addtext = $text;
     Dlog_debug { "params: $_" } $params;
     if ($params->{partial}) {

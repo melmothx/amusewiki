@@ -45,6 +45,8 @@ install in the session the key C<i_am_human>.
 =cut
 
 use Email::Valid;
+use URI;
+use URI::QueryParam;
 use AmuseWikiFarm::Log::Contextual;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
@@ -304,7 +306,11 @@ sub redirect_after_login :Private {
     if ($path !~ m!^/!) {
         $path = "/$path";
     }
-    $c->response->redirect($c->uri_for($path));
+    my $uri = URI->new($path);
+    my $redirect = $c->uri_for($uri->path, $uri->query_form_hash);
+    Dlog_debug { "Redirecting $path to " . $uri->path . " " . $_
+                   . " => " . $redirect } $uri->query_form_hash;
+    $c->response->redirect($redirect);
 }
 
 
