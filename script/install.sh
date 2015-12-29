@@ -38,13 +38,15 @@ hostname=amusewiki.`hostname -d`;
 
 # even centos is suggested to listen here
 # https://www.howtoforge.com/serving-cgi-scripts-with-nginx-on-centos-6.0-p2
-echo -n "Checking if fcgiwrap is listening: "
-if [ -S /var/run/fcgiwrap.socket ]; then
-    echo "OK";
-else
-    echo "fcgiwrap socket in /var/run/fcgiwrap.socket not found! Needed for cgit";
-    exit 2;
-fi
+
+# This actually can be configured later.
+# echo -n "Checking if fcgiwrap is listening: "
+# if [ -S /var/run/fcgiwrap.socket ]; then
+#     echo "OK";
+# else
+#     echo "fcgiwrap socket in /var/run/fcgiwrap.socket not found! Needed for cgit";
+#     exit 2;
+# fi
 
 
 if [ "$missing" != "no" ]; then

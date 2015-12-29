@@ -26,12 +26,17 @@ should help, though.
 Prerequisites:
 
  - a database (mysql, pg, sqlite are supported)
- - a working perl (i.e., you can install modules with cpanm without warnings)
+ - a working perl (i.e., you can install modules with cpanm without
+   warnings). Usually this means you have to install liblocal-lib-perl
+   and cpanminus in Debian (or you install perl in your home).
  - fontconfig (install it before installing texlive)
  - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
  - a mime-info database: shared-mime-info on debian
  - fcgiwrap running and listening to /var/run/fcgiwrap.socket (as in debian)
  - a dedicated system user (with a clean home) which is going to run the site
+ - SSL binaries and development libraries (openssl and libssl-dev)
+ - Xapian libraries and development files (xapian-tools libxapian-dev)
+ - commonly used utilities: unzip, wget, git, rsync
 
 Log in as the user you want to run the site.
 
