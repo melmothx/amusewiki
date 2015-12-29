@@ -110,6 +110,8 @@ If you want to use sqlite3, just copy dbic.yaml.sqlite.example to
 dbic.yaml. No further setup is required, but it's meant to be only for
 development.
 
+ABORTING INSTALLATION (you need to setup the database).
+
 EOF
     exit 2
 }
