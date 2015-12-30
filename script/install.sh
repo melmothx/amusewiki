@@ -121,6 +121,10 @@ TEXMFLOCAL $HOME/texlive/texmf-local
 TEXMFSYSCONFIG $HOME/texlive/2015/texmf-config
 TEXMFSYSVAR $HOME/texlive/2015/texmf-var
 TEXMFVAR ~/.texlive2015/texmf-var
+option_desktop_integration 0
+option_doc 0
+option_menu_integration 0
+option_src 0
 EOF
     ./install-tl -repository http://$TEXMIRROR/systems/texlive/tlnet \
                  -profile amw.profile
