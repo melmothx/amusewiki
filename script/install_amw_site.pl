@@ -98,6 +98,7 @@ my $repo_root = $site->repo_root;
 unless (-d $repo_root) {
     if (system(git => clone => "git://amusewiki.org/git/amw.git" => $site->repo_root) == 0) {
         print "Repository with the official documentation has been created at " . $site->repo_root . "\n";
+        $site->configure_cgit;
     }
     elsif ($site->initialize_git) {
         print "An stub repository has been created at " . $site->repo_root . "\n";
