@@ -10,7 +10,7 @@ AMWLOGFILE=`tempfile`
 
 missing='no'
 for command in perl cpanm fc-cache convert gm update-mime-database delve openssl \
-               hostname make gcc wget git unzip rsync; do
+               make gcc wget git unzip rsync; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
         echo "YES";
@@ -27,14 +27,6 @@ for command in perl cpanm fc-cache convert gm update-mime-database delve openssl
         missing='yes'
     fi
 done
-
-if [ "`hostname -d`x" = "x" ]; then
-    echo "I can't determine your domain name with hostname -d, bailing out"
-    exit 2;
-else
-    echo "Your domain is `hostname -d`"
-fi
-hostname=amusewiki.`hostname -d`;
 
 # even centos is suggested to listen here
 # https://www.howtoforge.com/serving-cgi-scripts-with-nginx-on-centos-6.0-p2
@@ -80,49 +72,6 @@ else
     exit 2
 fi
 
-show_dbic_setup () {
-    cat <<EOF
-
-Please create a database for the application. E.g., for mysql:
-
-  mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-  mysql> grant all privileges on amuse.* to amuse@localhost identified by XXX
-
-Or, for postgres:
-
-Login as root.
-
- su - postgres
- psql
- create user amuse with password 'XXXX';
- create database amuse owner amuse;
-
-Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
-credentials, and chmod it to 600.
-
-Please note that if you use mysql you need to install (via package
-manager or cpanm) DBD::mysql, while if you use postgresql you need
-DBD::Pg. These dependencies are not installed automatically by us and
-requires devel packages (libmysqlclient-dev, libpq-dev) to be
-installed.
-
-If you want to use sqlite3, just copy dbic.yaml.sqlite.example to
-dbic.yaml. No further setup is required, but it's meant to be only for
-development.
-
-ABORTING INSTALLATION (you need to setup the database).
-
-EOF
-    exit 2
-}
-
-if [ -f 'dbic.yaml' ]; then
-    chmod 600 dbic.yaml
-else
-    show_dbic_setup
-fi
-
-
 echo -n "Checking if I can install modules in my home..."
 
 cpanm -q Text::Amuse
@@ -152,17 +101,6 @@ cpanm -q --installdeps .
 cpanm -q --reinstall CAM::PDF
 script/patch-cam-pdf.sh
 make
-
-# check if I can access to the db
-
-
-echo -n "Checking DB connection: "
-if perl -I lib -MAmuseWikiFarm::Schema -MData::Dumper\
-        -e 'AmuseWikiFarm::Schema->connect("amuse")->storage->dbh or die'; then
-    echo "OK"
-else
-    show_dbic_setup
-fi
 
 install_texlive () {
     cd $HOME
@@ -203,22 +141,10 @@ if [ ! -f "$texbindir/xetex" ]; then
 fi
 export PATH=$texbindir:$PATH
 
-cat <<EOF >> $AMWLOGFILE
-Please add to your .bashrc (or equivalent):
 
-export PATH=$texbindir:\$PATH
-
-EOF
-
-if [ `which xelatex` !=  "$texbindir/xelatex" ]; then
-    echo "Cannnot find xelatex in $texbindir, something went wrong!";
+if [ `which xetex` !=  "$texbindir/xetex" ]; then
+    echo "Cannnot find xetex in $texbindir, something went wrong!";
 fi
-
-# install the first site and the first user. No PDF compile
-echo "Bootstrapping the initial site with the documentation"
-
-
-./script/install_amw_site.pl --hostname "$hostname" --email "`whoami`@$hostname">> $AMWLOGFILE
 
 echo "Installing needed JS"
 ./script/install_js.sh
@@ -233,31 +159,16 @@ cd $AMWHOME/webfonts
 cd $AMWHOME
 ./script/install-cgit.pl
 
-./script/generate-nginx-conf.pl >> $AMWLOGFILE
-
-cat <<EOF
-
-Setting up logger. Please note that by default, application errors are
-sent to info@amusewiki.org (so bugs can be fixed promptly). This is
-may or may not be what you want, and may have somehow sensitive info
-inside (like session ids).
-
-You are welcome to edit log4perl.local.conf (read the comments) to
-suit your needs.
-
-EOF
-
-cp log4perl.conf log4perl.local.conf
-sed -i "s/localhost/$hostname/" log4perl.local.conf
-sed -i "s/amuse@/`whoami`@/" log4perl.local.conf
-
-if git clone https://github.com/kuba/simp_le opt/simp_le; then
-    echo "Let's encrypt client has been downloaded into `pwd`/opt/simp_le"
-    echo "See the amusewiki INSTALL.txt and https://github.com/kuba/simp_le to finish the installation"
+if [ ! -d "opt/simp_le" ]; then
+    if git clone https://github.com/kuba/simp_le opt/simp_le; then
+        echo "Let's encrypt client has been downloaded into `pwd`/opt/simp_le"
+        echo "See the amusewiki INSTALL.txt and https://github.com/kuba/simp_le to finish the installation"
+    fi
 fi
 
-cat $AMWLOGFILE
-rm $AMWLOGFILE
+cat <<EOF
+Please add to your .bashrc (or equivalent):
 
-echo "Starting up application"
-./init-all.sh start
+export PATH=$texbindir:\$PATH
+
+EOF

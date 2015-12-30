@@ -50,6 +50,19 @@ Logout and login again.
 
 Unpack the sources (or clone the repo) and change directory into them.
 
+Install the prerequisites and complete the installation with:
+
+ ./script/install.sh
+
+The script is going to take care of the installation in a
+non-interactive fashion, picking resonable defaults.
+
+The output is copious, but you need only the last lines. Setting up
+the $PATH as shown in the script output in your bashrc (or equivalent)
+is crucial.
+
+** CONFIGURE THE INITIAL SITE
+
 Create a database for the application. E.g., for mysql:
 
   mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
@@ -69,23 +82,18 @@ For sqlite no setup is required.
 Copy dbic.yaml.<dbtype>.example to dbic.yaml and adjust the
 credentials, and chmod it to 600. (For sqlite is good as it is).
 
-Please note that the installation procedure will create a mirror of
-amusewiki.org under the subdomain amusewiki.<your domain>, where <your
-domain> is the output of `hostname -d`. Nothing you can't change later
-from the admin console, but you need to access it.
-
 If you have multiple amusewiki instance on the same machine, see below
 before proceeding (you probably want to tweak the configuration)
 
-Execute:
+Configure the initial site with:
 
-./script/install.sh
+ ./script/configure.sh [ hostname ]
 
-The script is going to take care of the installation in a
-non-interactive fashion, picking resonable defaults.
-
-The output is copious, but you need only the last lines. Setting up
-the $PATH in your bashrc (or equivalent) is crucial.
+Please note that the installation procedure will create a mirror of
+amusewiki.org under the subdomain amusewiki.<your domain>, where <your
+domain> is the output of `hostname -d`. Nothing you can't change later
+from the admin console, but you need to access it. You can pass the
+desired hostname as first argument to the configure script.
 
 ** USAGE
 

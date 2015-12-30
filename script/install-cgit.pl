@@ -14,7 +14,7 @@ use AmuseWikiFarm::Utils::CgitSetup;
 binmode STDOUT, ":encoding(utf-8)";
 
 my $cgitversion = 'v0.11.2';
-my ($hostname, $reinstall, $help);
+my ($reinstall, $help);
 
 GetOptions(
            'cgit-version=s' => \$cgitversion,
