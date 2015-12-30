@@ -373,6 +373,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                     $c->stash(email => \%mail);
                     $c->forward($c->view('Email::Template'));
                     if (scalar(@{ $c->error })) {
+                        $c->error(0);
                         $c->flash(error_msg => $c->loc('Error sending mail!'));
                     }
                 }

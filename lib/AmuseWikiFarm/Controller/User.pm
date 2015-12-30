@@ -248,6 +248,7 @@ sub create :Chained('user') :Args(0) {
                      );
             $c->forward($c->view('Email::Template'));
             if (scalar(@{ $c->error })) {
+                $c->error(0);
                 $c->flash(error_msg => $c->loc('Error sending mail!'));
             }
             else {
