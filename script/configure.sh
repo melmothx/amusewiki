@@ -87,7 +87,11 @@ sed -i "s/amuse@/`whoami`@/" log4perl.local.conf
 # install the first site and the first user. No PDF compile
 echo "Bootstrapping the initial site with the documentation"
 
+echo "#####################################################"
+echo
 ./script/generate-nginx-conf.pl
+echo "#####################################################"
+echo
 
 echo "Starting up application"
 ./init-all.sh start
