@@ -205,6 +205,22 @@ The instance_name is just a string used to create the nginx
 configuration files to avoid conflicts with other installations. So
 you may have one instance named "testing" and the other "live".
 
+** MAIL WITH SMTP
+
+Add this stanza to amusewikifarm_local.conf
+
+<View::Email::Template>
+ # these are Email::Sender::Simple options
+ <sender>
+  mailer SMTP
+  <mailer_args>
+    host     => 'my.smtp.host, # defaults to localhost
+    sasl_username => 'mail',
+    sasl_password => 'blabla',
+  </mailer_args>
+ </sender>
+</View::Email::Template>
+
 ** SYNTAX HIGHLIGHT
 
 We ship a copy of highlight.js (https://highlightjs.org) to get an
@@ -223,6 +239,8 @@ root/static/js/highlight/style.local.css
 
 If these files exist, the application will serve them instead of
 the bundled ones.
+
+You need to enable the option in the admin interface to activate it.
 
 [1] You can speed up the installation by installing most of the
 required perl modules with your package manager, though. For TeX live
