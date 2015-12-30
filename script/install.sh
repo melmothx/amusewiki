@@ -166,7 +166,7 @@ cd $AMWHOME
 if [ ! -d "opt/simp_le" ]; then
     if git clone https://github.com/kuba/simp_le opt/simp_le; then
         echo "Let's encrypt client has been downloaded into `pwd`/opt/simp_le"
-        echo "See the amusewiki INSTALL.txt and https://github.com/kuba/simp_le to finish the installation"
+        echo "See the amusewiki INSTALL.txt and https://github.com/kuba/simp_le to finish the installation if you want to use Let's encrypt to manage the SSL certificates."
     fi
 fi
 
