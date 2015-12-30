@@ -4,7 +4,7 @@ set -e
 
 hostname=$1
 
-if [ "x$hostname" = "x"]; then
+if [ "x$hostname" = "x" ]; then
     if [ "`hostname -d`x" = "x" ]; then
         echo "I can't determine your domain name with hostname -d, bailing out"
         exit 2;
