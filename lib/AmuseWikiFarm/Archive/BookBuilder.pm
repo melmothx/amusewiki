@@ -321,9 +321,15 @@ has nocoverpage => (
                     default => sub { 0 },
                    );
 
+sub all_headings {
+    return Text::Amuse::Compile::TemplateOptions->all_headings;
+}
+
+enum(HeadingsType => [ map { $_->{name} } __PACKAGE__->all_headings ]);
+
 has headings => (
                  is => 'rw',
-                 isa => 'Bool',
+                 isa => 'HeadingsType',
                  default => sub { 0 },
                 );
 
@@ -378,6 +384,9 @@ sub papersizes {
                  a4 => 'A4 paper',
                  a5 => 'A5 paper',
                  a6 => 'A6 paper (also suitable for e-readers)',
+                 b4 => 'B4',
+                 b5 => 'B5',
+                 b6 => 'B6',
                  letter => 'Letter paper',
                  '5.5in:8.5in' => 'Half Letter paper',
                  '4.25in:5.5in' => 'Quarter Letter paper',
@@ -386,7 +395,7 @@ sub papersizes {
 }
 
 sub papersize_values {
-    return [qw/generic a4 a5 a6 letter 5.5in:8.5in 4.25in:5.5in/]
+    return [qw/generic a4 a5 a6 b4 b5 b6 letter 5.5in:8.5in 4.25in:5.5in/]
 }
 
 sub papersize_values_as_hashref {
