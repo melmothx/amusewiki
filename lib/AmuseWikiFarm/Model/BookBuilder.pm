@@ -22,6 +22,8 @@ sub prepare_arguments {
     if (my $site = $c->stash->{site}) {
         $constructor{site} = $site;
     }
+    # this switched from boolean to string
+    $constructor{headings} ||= 0;
     return \%constructor;
 }
 
