@@ -375,26 +375,19 @@
         </div>
       </div>
     </div>
-    <div class="form-group pdf-option">
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="headings" class="control-label">
-          [% loc('Running headings') %]
-          </label>
-        </div>
-        <div class="col-sm-9">
-          <select name="headings" id="headings" class="form-control">
-            [% FOREACH heading IN bb.all_headings %]
-            [% IF heading.desc %]
-            <option value="[% heading.name %]"
-                    [% IF heading.name == bb.headings %]selected="selected"[% END %]>
-              [% heading.desc %]
-            </option>
-            [% END %]
-            [% END %]
-          </select>
-        </div>
-      </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="notoc" value="1" id="notoc"
+               [% IF bb.notoc %]checked="checked"[% END %]/>
+        [% loc('Never generate a table of content') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
+               [% IF bb.nocoverpage %]checked="checked"[% END %]/>
+        [% loc('For texts without a table of content, start text on the very first page') %]
+      </label>
     </div>
     <div class="checkbox pdf-option">
       <label>
@@ -422,7 +415,29 @@
         </div>
       </div>
     </div>
+    <div class="form-group pdf-option">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="headings" class="control-label">
+          [% loc('Running headings') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <select name="headings" id="headings" class="form-control">
+            [% FOREACH heading IN bb.all_headings %]
+            [% IF heading.desc %]
+            <option value="[% heading.name %]"
+                    [% IF heading.name == bb.headings %]selected="selected"[% END %]>
+              [% heading.desc %]
+            </option>
+            [% END %]
+            [% END %]
+          </select>
+        </div>
+      </div>
+    </div>
     <div>
+      <h4>[% loc('Cover image (optional)') %]</h4>
       [% IF bb.coverfile %]
       <div id="coverfile-is-present">
       [% loc('A cover image was already added, but you can replace it uploading
@@ -464,20 +479,7 @@
         </div>
       </div>
     </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="notoc" value="1" id="notoc"
-               [% IF bb.notoc %]checked="checked"[% END %]/>
-        [% loc('Never generate a table of content') %]
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
-               [% IF bb.nocoverpage %]checked="checked"[% END %]/>
-        [% loc('For texts without a table of content, start text on the very first page') %]
-      </label>
-    </div>
+    <h4>[% loc('Imposition schemas') %]</h4>
     <div class="checkbox">
       <label>
         <input type="checkbox" name="imposed" value="1" id="imposed"
