@@ -165,8 +165,14 @@
         [% loc('EPUB') %]
       </label>
     </div>
-    <div class="epub-option">
-      <label for="epubfont">[% loc('Please select the desired fonts') %]</label>
+    <div class="epub-option form-group">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="epubfont" class="control-label">
+            [% loc('Please select the desired fonts') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
       <select name="epubfont" id="epubfont" class="form-control">
         <option value="">[% loc('no font embedding') %]</option>
         [% FOREACH webfont IN bb.available_webfonts %]
@@ -176,6 +182,8 @@
         </option>
         [% END %]
       </select>
+        </div>
+      </div>
     </div>
     <div>&nbsp;</div>
     <div class="row pdf-common-option">
@@ -249,7 +257,7 @@
           Please choose the font size
         </label>
         <div class="col-sm-9">
-          <select name="fontsize" class="form-control">
+          <select name="fontsize" id="fontsize" class="form-control">
             [% FOREACH size IN bb.fontsize_values %]
             <option value="[% size %]"
                     [% IF size == bb.fontsize %]selected="selected"[% END %]>
@@ -307,10 +315,14 @@
       </div>
     </div>
     <div class="pdf-option">
-    <p>
-    <label for="papersize">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="papersize" class="control-label">
     [% loc('Choose a paper format') %]
-    </label>
+          </label>
+        </div>
+        <div class="col-sm-9">
     <select name="papersize" id="papersize" class="form-control">
       [% SET mypapers = bb.papersizes %]
       [% FOREACH paper IN bb.papersize_values %]
@@ -320,13 +332,19 @@
       </option>
       [% END %]
     </select>
-    </p>
-    <p>
+        </div>
+      </div>
+    </div>
+    <div class="form-group pdf-option">
+      <div class="row">
+        <div class="col-sm-3">
       <label for="division">
       [% loc('Division factor') %]
       </label>
       ([% loc('Higher division factor means narrower margins') %])
 
+        </div>
+        <div class="col-sm-9">
       <select name="division" id="division" class="form-control">
         [% FOREACH division IN bb.divs_values %]
         <option value="[% division %]"
@@ -335,12 +353,17 @@
         </option>
         [% END %]
       </select>
-    </p>
-
-    <p>
+        </div>
+      </div>
+    </div>
+    <div class="form-group pdf-option">
+      <div class="row">
+        <div class="col-sm-3">
       <label for="bcor">
         [% loc('Binding correction in millimeters (additional inner margin)') %]:
       </label>
+        </div>
+        <div class="col-sm-9">
     <select name="bcor" id="bcor" class="form-control">
       [% FOREACH bcor IN bb.bcor_values %]
       <option value="[% bcor %]"
@@ -349,14 +372,64 @@
       </option>
       [% END %]
     </select>
-    </p>
+        </div>
+      </div>
+    </div>
+    <div class="form-group pdf-option">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="headings" class="control-label">
+          [% loc('Running headings') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <select name="headings" id="headings" class="form-control">
+            [% FOREACH heading IN bb.all_headings %]
+            [% IF heading.desc %]
+            <option value="[% heading.name %]"
+                    [% IF heading.name == bb.headings %]selected="selected"[% END %]>
+              [% heading.desc %]
+            </option>
+            [% END %]
+            [% END %]
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="checkbox pdf-option">
+      <label>
+        <input type="checkbox" name="twoside" value="1" id="twoside"
+               [% IF bb.twoside %]checked="checked"[% END %]/>
+        <strong>[% loc('Two side layout') %]</strong>
+      </label>
+    </div>
+    <div id="choose-opening" class="form-group">
+      <div class="row">
+        <div class="col-sm-3">
+      <label for="opening">
+        [% loc('Page where to start a chapter') %]
+      </label>
+        </div>
+        <div class="col-sm-9">
+      <select id="opening" class="form-control" name="opening">
+        [% FOREACH opening IN bb.opening_values %]
+        <option value="[% opening %]"
+                [% IF bb.opening == opening %]selected="selected"[% END %]>
+          [% loc(opening) %]
+        </option>
+        [% END %]
+      </select>
+        </div>
+      </div>
+    </div>
     <div>
       [% IF bb.coverfile %]
       <div id="coverfile-is-present">
       [% loc('A cover image was already added, but you can replace it uploading
               a new one.') %]
       <br />
-        <img src="[% c.uri_for('/bookbuilder/cover') | html %]" width="100px"/>
+      <img src="[% c.uri_for('/bookbuilder/cover') | html %]" width="100"
+           alt="bookbuilder cover" />
       </div>
       [% END %]
       <label for="coverimage">
@@ -373,9 +446,13 @@
     </div>
 
     <div class="image-options">
+      <div class="row">
+        <div class="col-sm-3">
       <label for="coverwidth">
         [% loc("Width of the cover image in percent of the text block width.") %]
       </label>
+        </div>
+        <div class="col-sm-9">
       <select id="coverwidth" class="form-control" name="coverwidth">
         [% FOREACH coverw IN bb.coverwidths %]
         <option value="[% coverw %]"
@@ -384,26 +461,8 @@
         </option>
         [% END %]
       </select>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="twoside" value="1" id="twoside"
-               [% IF bb.twoside %]checked="checked"[% END %]/>
-        [% loc('Two side layout') %]
-      </label>
-    </div>
-    <div id="choose-opening">
-      <label for="opening">
-        [% loc('Page where to start a chapter') %]
-      </label>
-      <select id="opening" class="form-control" name="opening">
-        [% FOREACH opening IN bb.opening_values %]
-        <option value="[% opening %]"
-                [% IF bb.opening == opening %]selected="selected"[% END %]>
-          [% loc(opening) %]
-        </option>
-        [% END %]
-      </select>
+        </div>
+      </div>
     </div>
     <div class="checkbox">
       <label>
@@ -417,15 +476,6 @@
         <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
                [% IF bb.nocoverpage %]checked="checked"[% END %]/>
         [% loc('For texts without a table of content, start text on the very first page') %]
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="headings" value="1" id="headings"
-               [% IF bb.headings %]checked="checked"[% END %]/>
-        [% loc('Generate running headings in the document. Beware that
-        this probably need manual adjustments to the TeX sources for a
-        satisfying output') %]
       </label>
     </div>
     <div class="checkbox">
@@ -466,9 +516,13 @@
       </div>
     </div>
     <div class="checkbox" id="signature-explanation">
+      <div class="row">
+        <div class="col-sm-3">
       <label for="signature">
         <strong>[% loc('Please select the signature size:') %]</strong>
       </label>
+        </div>
+        <div class="col-sm-9">
       <select id="signature" class="form-control" name="signature">
         [% FOREACH sign IN bb.signature_values %]
         <option value="[% sign %]"
@@ -483,6 +537,8 @@
         </option>
         [% END %]
       </select>
+        </div>
+      </div>
     </div>
     <div class="radio">
       <label>
@@ -503,9 +559,13 @@
       </div>
     </div>
     <div class="checkbox" id="signature-explanation-4up">
+      <div class="row">
+        <div class="col-sm-3">
       <label for="signature_4up">
         <strong>[% loc('Please select the signature size:') %]</strong>
       </label>
+        </div>
+        <div class="col-sm-9">
       <select id="signature_4up" class="form-control" name="signature_4up">
         [% FOREACH sign IN bb.signature_values_4up %]
         <option value="[% sign %]"
@@ -520,6 +580,8 @@
         </option>
         [% END %]
       </select>
+        </div>
+      </div>
     </div>
 
     <div class="radio">
