@@ -902,7 +902,14 @@ sub as_job {
                text_list => [ @{$self->texts} ],
                $self->_muse_virtual_headers,
               };
-    if (!$self->epub) {
+    log_debug { "Cover is " . $self->coverfile };
+    if ($self->epub) {
+        $job->{template_options} = {
+                                    cover       => $self->coverfile,
+                                    coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
+                                   };
+    }
+    else {
         $job->{template_options} = {
                                     twoside     => $self->twoside,
                                     nocoverpage => $self->nocoverpage,
@@ -1064,6 +1071,7 @@ sub compile {
         }
         $zip->extractTree($archive, $basedir);
     }
+    Dlog_debug { "Compiler args are: $_" } \%compiler_args;
     if (my $coverfile = $self->coverfile_path) {
         my $coverfile_ok = 0;
         if (-f $coverfile) {
@@ -1072,7 +1080,11 @@ sub compile {
             if (copy($coverfile, $coverfile_dest)) {
                 $coverfile_ok = 1;
             }
+            else {
+                log_error { "Failed to copy $coverfile to $coverfile_dest" };
+            }
         }
+        log_debug { "$coverfile is ok? $coverfile_ok" };
         unless ($coverfile_ok) {
             delete $compiler_args{extra}{cover};
         }
