@@ -435,6 +435,8 @@
         </div>
       </div>
     </div>
+    </div>
+    <div class="not-slides">
     <div>
       <h4>[% loc('Cover image (optional)') %]</h4>
       [% IF bb.coverfile %]
@@ -478,6 +480,8 @@
         </div>
       </div>
     </div>
+    </div>
+    <div class="pdf-option">
     <h4>[% loc('Imposition schemas') %]</h4>
     <div class="checkbox">
       <label>
@@ -735,6 +739,12 @@ $(document).ready(function(){
               $('.slides-option').hide();
 
           }
+      }
+      if (current_format == 'slides') {
+          $('.not-slides').hide();
+      }
+      else {
+          $('.not-slides').show();
       }
   }
   $(document).ready(function(){
