@@ -384,7 +384,7 @@ sub papersizes {
                  a4 => 'A4',
                  a5 => 'A5',
                  a6 => 'A6',
-                 '88mm:115mm' => '6in E-reader',
+                 '88mm:115mm' => '6" E-reader',
                  b4 => 'B4',
                  b5 => 'B5',
                  b6 => 'B6',

@@ -340,9 +340,8 @@
         <div class="col-sm-3">
       <label for="division">
       [% loc('Division factor') %]
+      ([% loc('Higher division factor means narrower margins') %]):
       </label>
-      ([% loc('Higher division factor means narrower margins') %])
-
         </div>
         <div class="col-sm-9">
       <select name="division" id="division" class="form-control">
