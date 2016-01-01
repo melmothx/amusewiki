@@ -902,7 +902,7 @@ sub as_job {
                text_list => [ @{$self->texts} ],
                $self->_muse_virtual_headers,
               };
-    log_debug { "Cover is " . $self->coverfile };
+    log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
     if ($self->epub) {
         $job->{template_options} = {
                                     cover       => $self->coverfile,

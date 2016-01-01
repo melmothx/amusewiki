@@ -201,7 +201,7 @@ my $expected = {
                                        'papersize' => 'a4',
                                        'cover' => undef,
                                        opening => 'right',
-                                       headings => undef,
+                                       headings => 0,
                                       },
                 'title' => 'Pippuzzo *va* in **montagna**'
                };
