@@ -398,6 +398,11 @@ sub papersize_values {
                88mm:115mm/]
 }
 
+sub papersizes_in_mm {
+    return [ 0, (80..300) ];
+}
+
+
 sub papersize_values_as_hashref {
     my $list = __PACKAGE__->papersize_values;
     my %pairs = map { $_ => 1 } @$list;

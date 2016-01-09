@@ -334,6 +334,30 @@
     </select>
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <strong>[% loc('Or set the size yourself (and ignore the option above)') %]:</strong>
+        </div>
+        <div class="col-sm-2">
+          [% loc('Width:') %]
+          <select name="paper_width">
+            [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+            <option value="[% page_custom_size %]"[% IF bb.paper_width == page_custom_size %] selected="selected"[% END %]>
+              [% page_custom_size %] mm</option>
+            [% END %]
+          </select>
+        </div>
+        <div class="col-sm-2">
+          [% loc('Height:') %]
+          <select name="paper_height">
+            [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+            <option value="[% page_custom_size %]"[% IF bb.paper_height == page_custom_size %] selected="selected"[% END %]>
+              [% page_custom_size %] mm</option>
+            [% END %]
+          </select>
+        </div>
+      </div>
+
     </div>
     <div class="form-group pdf-option">
       <div class="row">
@@ -639,6 +663,84 @@
       <div>
         <img src="[% c.uri_for('/static/images/schema-preview/1x4x2.png') %]"
              alt="1x4x2cutfoldbind" />
+      </div>
+    </div>
+
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="1x8x2"
+               class="choose-schema"
+               [% IF bb.schema == '1x8x2' %]checked="checked"[% END %] />
+        <strong>1x8x2</strong>:
+        [% loc("Fixed 16 pages signatures on a single sheet, with triple folding.") %]
+        <a href="https://metacpan.org/pod/PDF::Imposition::Schema1x8x2">
+          [% loc("See here for more details.") %]
+        </a>
+      </label>
+    </div>
+
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="ea4x4"
+               class="choose-schema"
+               [% IF bb.schema == 'ea4x4' %]checked="checked"[% END %] />
+        <strong>EA-4x4</strong>:
+        [% loc("Fixed 16 pages signatures on 2 sheets, with double individual folding.") %]
+        <a href="https://metacpan.org/pod/PDF::Imposition::Schemaea4x4">
+          [% loc("See here for more details.") %]
+        </a>
+      </label>
+    </div>
+
+
+    <div class="checkbox">
+      <label for="crop_marks">
+        <input type="checkbox" name="crop_marks" value="1" id="crop_marks"
+               [% IF bb.crop_marks %]checked="checked"[% END %]/>
+        [% loc('Add crop marks to the PDF') %]
+      </label>
+    </div>
+    <div id="cropmarks-paper-options">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="crop_papersize">
+            <strong>[% loc('Please select the size of each page including the crop marks, before the imposing.') %]</strong>
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <select id="crop_papersize" class="form-control" name="crop_papersize">
+            [% SET mypapers = bb.papersizes %]
+            [% FOREACH paper IN bb.papersize_values %]
+            <option value="[% paper %]"
+              [% IF paper == bb.crop_papersize %]selected="selected"[% END %]>
+              [% loc(mypapers.$paper) %]
+            </option>
+            [% END %]
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <strong>[% loc('Or set the size yourself (and ignore the option above)') %]:</strong>
+        </div>
+        <div class="col-sm-2">
+          [% loc('Width:') %]
+          <select name="crop_paper_width">
+            [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+            <option value="[% page_custom_size %]"[% IF bb.crop_paper_width == page_custom_size %] selected="selected"[% END %]>
+              [% page_custom_size %] mm</option>
+            [% END %]
+          </select>
+        </div>
+        <div class="col-sm-2">
+          [% loc('Height:') %]
+          <select name="crop_paper_height">
+            [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+            <option value="[% page_custom_size %]"[% IF bb.crop_paper_height == page_custom_size %] selected="selected"[% END %]>
+              [% page_custom_size %] mm</option>
+            [% END %]
+          </select>
+        </div>
       </div>
     </div>
 
