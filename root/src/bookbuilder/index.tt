@@ -821,6 +821,14 @@ $(document).ready(function(){
           $('.image-options').hide('fast');
       }
   }
+  function show_crop_options() {
+      if ($("#crop_marks").is(":checked")) {
+          $('#cropmarks-paper-options').show('fast');
+      }
+      else {
+          $('#cropmarks-paper-options').hide('fast');
+      }
+  }
   function show_format_options() {
       var current_format = $("form#bbform input[name=format]:checked").val();
       if (current_format == 'epub') {
@@ -855,12 +863,18 @@ $(document).ready(function(){
       show_signature();
       show_image_options();
       show_opening();
+      show_crop_options();
       $('#imposed').click(function() {
           show_imposition();
       });
       $('#twoside').click(function() {
           show_opening();
       });
+      $('#crop_marks').click(function() {
+          show_crop_options();
+      });
+
+
       $('.choose-schema').click(function() {
           show_signature();
       });
