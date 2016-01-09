@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 164;
+use Test::More tests => 177;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -407,6 +407,30 @@ ok ($bb->webfonts) and diag Dumper($bb->webfonts);
             like $pdftext, qr{\Q$titlepage_value\E}, "Found $titlepage_value";
         }
     }
+}
+
+{
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
+                                                       dbic => $schema,
+                                                       site_id => '0blog0',
+                                                       job_id => 666699,
+                                                       imposed => 1,
+                                                       schema => '2up',
+                                                       signature => 0,
+                                                       papersize => 'b6',
+                                                       crop_papersize => 'a5',
+                                                       crop_marks => 1,
+                                                      });
+    ok($bb->add_text('first-test'));
+    my $pdf = check_file($bb, "cropmarks");
+  SKIP: {
+        skip "Missing pdftotext", 3, unless $pdftotext;
+        my $pdftext = pdf_content($pdf);
+        like $pdftext, qr{666699\.pdf}, "Found marker";
+        like $pdftext, qr{Pg\s+0008}, "Found page marker";
+        like $pdftext, qr{page 4 \#1/4}, "Found signature marker";
+    }
+
 }
 
 sub pdf_content {
