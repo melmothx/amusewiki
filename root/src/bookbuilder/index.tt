@@ -758,6 +758,24 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="crop_paper_thickness">
+            [% loc("Paper thickness (0.10 should be appropriate for common 80g/m2 paper)") %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <select id="crop_paper_thickness" class="form-control"
+                  name="crop_paper_thickness">
+            [% FOREACH thickness IN bb.paper_thickness_values %]
+            <option value="[% thickness %]"
+                    [% IF thickness == bb.crop_paper_thickness %]selected="selected"[% END %]>
+              [% thickness %]
+            </option>
+            [% END %]
+          </select>
+        </div>
+      </div>
     </div>
 
     <div class="checkbox">
