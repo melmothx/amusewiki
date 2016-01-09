@@ -520,7 +520,7 @@
              alt="2up" />
       </div>
     </div>
-    <div class="checkbox" id="signature-explanation">
+    <div id="signature-explanation">
       <div class="row">
         <div class="col-sm-3">
       <label for="signature">
@@ -563,7 +563,7 @@
              alt="4up" />
       </div>
     </div>
-    <div class="checkbox" id="signature-explanation-4up">
+    <div id="signature-explanation-4up">
       <div class="row">
         <div class="col-sm-3">
       <label for="signature_4up">
