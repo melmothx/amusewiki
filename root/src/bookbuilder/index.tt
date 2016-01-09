@@ -340,19 +340,31 @@
         </div>
         <div class="col-sm-2">
           [% loc('Width:') %]
-          <select name="paper_width">
+          <select name="paper_width" id="logical-paper-width"
+                  class="logical-paper-select">
             [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
             <option value="[% page_custom_size %]"[% IF bb.paper_width == page_custom_size %] selected="selected"[% END %]>
-              [% page_custom_size %] mm</option>
+              [% IF page_custom_size %]
+              [% page_custom_size %] mm
+              [% ELSE %]
+              [% loc('Not set') %]
+              [% END %]
+            </option>
             [% END %]
           </select>
         </div>
         <div class="col-sm-2">
           [% loc('Height:') %]
-          <select name="paper_height">
+          <select name="paper_height" id="logical-paper-height"
+                  class="logical-paper-select">
             [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
             <option value="[% page_custom_size %]"[% IF bb.paper_height == page_custom_size %] selected="selected"[% END %]>
-              [% page_custom_size %] mm</option>
+              [% IF page_custom_size %]
+              [% page_custom_size %] mm
+              [% ELSE %]
+              [% loc('Not set') %]
+              [% END %]
+            </option>
             [% END %]
           </select>
         </div>
@@ -725,19 +737,31 @@
         </div>
         <div class="col-sm-2">
           [% loc('Width:') %]
-          <select name="crop_paper_width">
+          <select name="crop_paper_width" id="crop-paper-width"
+                  class="crop-paper-select">
             [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
             <option value="[% page_custom_size %]"[% IF bb.crop_paper_width == page_custom_size %] selected="selected"[% END %]>
-              [% page_custom_size %] mm</option>
+              [% IF page_custom_size %]
+              [% page_custom_size %] mm
+              [% ELSE %]
+              [% loc('Not set') %]
+              [% END %]
+            </option>
             [% END %]
           </select>
         </div>
         <div class="col-sm-2">
           [% loc('Height:') %]
-          <select name="crop_paper_height">
+          <select name="crop_paper_height" id="crop-paper-height"
+                  class="crop-paper-select">
             [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
             <option value="[% page_custom_size %]"[% IF bb.crop_paper_height == page_custom_size %] selected="selected"[% END %]>
-              [% page_custom_size %] mm</option>
+              [% IF page_custom_size %]
+              [% page_custom_size %] mm
+              [% ELSE %]
+              [% loc('Not set') %]
+              [% END %]
+            </option>
             [% END %]
           </select>
         </div>

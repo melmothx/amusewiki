@@ -72,6 +72,38 @@ function show_format_options() {
         $('.not-slides').show();
     }
 }
+
+function handle_papersize(prefix) {
+    var hid = '#' + prefix + '-paper-height';
+    var wid = '#' + prefix + '-paper-width';
+    var height = $(hid).val();
+    var width  = $(wid).val();
+    if ((height === "0") || (width === "0")) {
+        $(hid).val("0");
+        $(wid).val("0");
+    }
+    show_hide_standard_papersizes(prefix);
+}
+
+function show_hide_standard_papersizes(prefix) {
+    var hid = '#' + prefix + '-paper-height';
+    var wid = '#' + prefix + '-paper-width';
+    var standard = '#papersize';
+    if (prefix == "crop") {
+        standard = '#crop_papersize';
+    }
+    var height = $(hid).val();
+    var width  = $(wid).val();
+    if (height && width && (height != "0") && (width != "0")) {
+        $(standard).hide('fast');
+    }
+    else {
+        $(standard).show('fast');
+    }
+}
+
+
+
 $(document).ready(function(){
     show_format_options();
     show_imposition();
@@ -79,6 +111,8 @@ $(document).ready(function(){
     show_image_options();
     show_opening();
     show_crop_options();
+    handle_papersize('crop');
+    handle_papersize('logical');
     $('#imposed').click(function() {
         show_imposition();
     });
@@ -88,8 +122,6 @@ $(document).ready(function(){
     $('#crop_marks').click(function() {
         show_crop_options();
     });
-
-
     $('.choose-schema').click(function() {
         show_signature();
     });
@@ -99,6 +131,22 @@ $(document).ready(function(){
     $("#coverimage").change(function() {
         if ($(this).val()) {
             $('.image-options').show('fast');
+        }
+    });
+    $(".crop-paper-select").change(function() {
+        if ($(this).val() === "0") {
+            handle_papersize('crop');
+        }
+        else {
+            show_hide_standard_papersizes('crop');
+        }
+    });
+    $(".logical-paper-select").change(function() {
+        if ($(this).val() === "0") {
+            handle_papersize('logical');
+        }
+        else {
+            show_hide_standard_papersizes('logical');
         }
     });
 });
