@@ -359,11 +359,7 @@ Beware that these are hardcoded in the template.
 
 =cut
 
-sub schema_values {
-    return [qw/2up 2x4x2 2side 1x4x2cutfoldbind 4up/]
-}
-
-enum(SchemaType => __PACKAGE__->schema_values);
+enum(SchemaType => [ PDF::Imposition->available_schemas ]);
 
 has schema => (
                is => 'rw',
@@ -381,10 +377,12 @@ sub papersizes {
     my $self = shift;
     my %paper = (
                  generic => 'Generic (fits in A4 and Letter)',
+                 a3 => 'A3',
                  a4 => 'A4',
                  a5 => 'A5',
                  a6 => 'A6',
                  '88mm:115mm' => '6" E-reader',
+                 b3 => 'B3',
                  b4 => 'B4',
                  b5 => 'B5',
                  b6 => 'B6',
@@ -396,9 +394,14 @@ sub papersizes {
 }
 
 sub papersize_values {
-    return [qw/generic a4 a5 a6 b4 b5 b6 letter 5.5in:8.5in 4.25in:5.5in
+    return [qw/generic a3 a4 a5 a6 b3 b4 b5 b6 letter 5.5in:8.5in 4.25in:5.5in
                88mm:115mm/]
 }
+
+sub papersizes_in_mm {
+    return [ 0, (80..300) ];
+}
+
 
 sub papersize_values_as_hashref {
     my $list = __PACKAGE__->papersize_values;
@@ -414,6 +417,98 @@ has papersize => (
                   isa => 'PaperType',
                   default => sub { 'generic' },
                  );
+
+
+=head papersize
+
+=head2 paper_width
+
+=head2 paper_height
+
+=head2 crop_marks
+
+=head2 crop_papersize
+
+=head2 crop_paper_width
+
+=head2 crop_paper_height
+
+=head2 crop_paper_thickness
+
+=cut
+
+sub paper_thickness_values {
+    my $thick = 0.04;
+    my @values = ('0mm');
+    while ($thick <= 0.3) {
+        $thick += 0.01;
+        push @values, sprintf('%.2fmm', $thick);
+    }
+    return @values;
+}
+
+enum (PaperThickness => [ __PACKAGE__->paper_thickness_values ]);
+
+has crop_paper_thickness => (
+                             is => 'rw',
+                             isa => 'PaperThickness',
+                             default => sub { '0.10mm' },
+                            );
+
+has crop_marks => (
+                   is => 'rw',
+                   isa => 'Bool',
+                   default => sub { 0 },
+                  );
+
+has paper_width => (
+                    is => 'rw',
+                    isa => 'Int',
+                    default => sub { 0 },
+                   );
+
+has paper_height => (
+                     is => 'rw',
+                     isa => 'Int',
+                     default => sub { 0 },
+                    );
+
+has crop_papersize => (
+                       is => 'rw',
+                       isa => 'PaperType',
+                       default => sub { 'a4' },
+                      );
+
+has crop_paper_width => (
+                         is => 'rw',
+                         isa => 'Int',
+                         default => sub { 0 },
+                        );
+
+has crop_paper_height => (
+                          is => 'rw',
+                          isa => 'Int',
+                          default => sub { 0 },
+                         );
+
+sub computed_papersize {
+    my $self = shift;
+    if ($self->paper_width && $self->paper_height) {
+        return $self->paper_width . 'mm:' . $self->paper_height . 'mm';
+    }
+    else {
+        $self->papersize;
+    }
+}
+sub computed_crop_papersize {
+    my $self = shift;
+    if ($self->crop_paper_width && $self->crop_paper_height) {
+        return $self->crop_paper_width . 'mm:' . $self->crop_paper_height . 'mm';
+    }
+    else {
+        $self->crop_papersize;
+    }
+}
 
 =head2 division
 
@@ -875,7 +970,6 @@ sub _main_methods {
               beamertheme
               fontsize
               coverfile
-              papersize
               division
               bcor
               coverwidth
@@ -887,6 +981,14 @@ sub _main_methods {
               signature
               schema
               opening
+              paper_width
+              paper_height
+              papersize
+              crop_marks
+              crop_papersize
+              crop_paper_width
+              crop_paper_height
+              crop_paper_thickness
               cover/;
 }
 
@@ -915,7 +1017,7 @@ sub as_job {
                                     nocoverpage => $self->nocoverpage,
                                     headings    => $self->headings,
                                     notoc       => $self->notoc,
-                                    papersize   => $self->papersize,
+                                    papersize   => $self->computed_papersize,
                                     division    => $self->division,
                                     fontsize    => $self->fontsize,
                                     bcor        => $self->bcor . 'mm',
@@ -935,6 +1037,11 @@ sub as_job {
                                    schema    => $self->schema,
                                    cover     => $self->cover,
                                   };
+        if ($self->crop_marks) {
+            $job->{imposer_options}->{paper} = $self->computed_crop_papersize;
+            $job->{imposer_options}->{paper_thickness} =
+              $self->crop_paper_thickness;
+        }
     }
     return $job;
 }
