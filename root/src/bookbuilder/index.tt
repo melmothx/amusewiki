@@ -320,9 +320,11 @@
         <div class="col-sm-3">
           <label for="papersize" class="control-label">
     [% loc('Choose a paper format') %]
+          ([% loc('if you want to use a custom size, you need to set both width and height') %])
           </label>
         </div>
         <div class="col-sm-9">
+          <div>
     <select name="papersize" id="papersize" class="form-control">
       [% SET mypapers = bb.papersizes %]
       [% FOREACH paper IN bb.papersize_values %]
@@ -332,13 +334,8 @@
       </option>
       [% END %]
     </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <strong>[% loc('Or set the size yourself (and ignore the option above)') %]:</strong>
-        </div>
-        <div class="col-sm-2">
+          </div>
+          <div style="margin-top: 5px">
           [% loc('Width:') %]
           <select name="paper_width" id="logical-paper-width"
                   class="logical-paper-select">
@@ -347,13 +344,11 @@
               [% IF page_custom_size %]
               [% page_custom_size %] mm
               [% ELSE %]
-              [% loc('Not set') %]
+              [% loc('Standard') %]
               [% END %]
             </option>
             [% END %]
           </select>
-        </div>
-        <div class="col-sm-2">
           [% loc('Height:') %]
           <select name="paper_height" id="logical-paper-height"
                   class="logical-paper-select">
@@ -362,14 +357,14 @@
               [% IF page_custom_size %]
               [% page_custom_size %] mm
               [% ELSE %]
-              [% loc('Not set') %]
+              [% loc('Standard') %]
               [% END %]
             </option>
             [% END %]
           </select>
+          </div>
         </div>
       </div>
-
     </div>
     <div class="form-group pdf-option">
       <div class="row">
@@ -716,10 +711,13 @@
       <div class="row">
         <div class="col-sm-3">
           <label for="crop_papersize">
-            <strong>[% loc('Please select the size of each page including the crop marks, before the imposing.') %]</strong>
+            <strong>[% loc('Please select the size of each page including the crop marks, before the imposing') %]</strong>
+            ([% loc('if you want to use a custom size, you need to set both width and height') %])
+
           </label>
         </div>
         <div class="col-sm-9">
+          <div>
           <select id="crop_papersize" class="form-control" name="crop_papersize">
             [% SET mypapers = bb.papersizes %]
             [% FOREACH paper IN bb.papersize_values %]
@@ -729,13 +727,8 @@
             </option>
             [% END %]
           </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <strong>[% loc('Or set the size yourself (and ignore the option above)') %]:</strong>
-        </div>
-        <div class="col-sm-2">
+          </div>
+          <div style="margin-top: 5px">
           [% loc('Width:') %]
           <select name="crop_paper_width" id="crop-paper-width"
                   class="crop-paper-select">
@@ -744,13 +737,11 @@
               [% IF page_custom_size %]
               [% page_custom_size %] mm
               [% ELSE %]
-              [% loc('Not set') %]
+              [% loc('Standard') %]
               [% END %]
             </option>
             [% END %]
           </select>
-        </div>
-        <div class="col-sm-2">
           [% loc('Height:') %]
           <select name="crop_paper_height" id="crop-paper-height"
                   class="crop-paper-select">
@@ -759,11 +750,12 @@
               [% IF page_custom_size %]
               [% page_custom_size %] mm
               [% ELSE %]
-              [% loc('Not set') %]
+              [% loc('Standard') %]
               [% END %]
             </option>
             [% END %]
           </select>
+          </div>
         </div>
       </div>
     </div>
