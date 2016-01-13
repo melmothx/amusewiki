@@ -87,6 +87,9 @@ msgstr "Dodaj sliku za naslovnicu (PNG ili JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Dodaj privitak (PNG, JPG ili PDF)"
 
+msgid "Add crop marks to the PDF"
+msgstr ""
+
 msgid "Add new remote repository"
 msgstr ""
 
@@ -306,6 +309,9 @@ msgstr "Nemoguće automatski generirati jedan URI za ovaj tekst"
 msgid "Couldn't build that"
 msgstr "Ne mogu stvoriti zbirku"
 
+msgid "Cover image (optional)"
+msgstr ""
+
 msgid "Create"
 msgstr "Stvori"
 
@@ -515,6 +521,12 @@ msgstr ""
 msgid "Fix typography (smart quotes)"
 msgstr "Tipografsko ispravljanje (navodnici i slično)"
 
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+
 msgid "Fixed category list"
 msgstr "Nepromjenjiv popis kategorija"
 
@@ -571,12 +583,6 @@ msgstr "Svi tekstovi"
 msgid "Full text search"
 msgstr "Pretraga čitavog testa"
 
-msgid ""
-"Generate running headings in the document. Beware that\n"
-"        this probably need manual adjustments to the TeX sources for a\n"
-"        satisfying output"
-msgstr ""
-
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generičan format (može stati i na A4 i na Letter)"
 
@@ -606,6 +612,9 @@ msgstr "Zaglavlje"
 
 msgid "Headings"
 msgstr "Zaglavlja"
+
+msgid "Height:"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1008,6 +1017,9 @@ msgstr ""
 "itd.), ili cijeli tekst u jedan svezak, ili neka veličina koji sustav\n"
 "izračuna da bi smanjio broji bijelih stranica koje treba dodati."
 
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Odlomci"
 
@@ -1156,6 +1168,11 @@ msgstr "Izaberi fontove"
 
 msgid "Please select the signature size:"
 msgstr "Izaberi veličinu svezaka"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
 
 msgid "Please setup the Beamer layout"
 msgstr ""
@@ -1316,6 +1333,9 @@ msgstr "Izmjena za %1 izbrisana"
 msgid "Roles"
 msgstr ""
 
+msgid "Running headings"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr ""
 
@@ -1339,6 +1359,9 @@ msgstr "Traži"
 
 msgid "Section"
 msgstr "Odjeljak"
+
+msgid "See here for more details."
+msgstr ""
 
 msgid "See here for the full documentation."
 msgstr ""
@@ -1447,6 +1470,9 @@ msgstr "Napuštena izmjena"
 
 msgid "Standalone HTML (printer-friendly)"
 msgstr "Potpuni HTML (za štampu)"
+
+msgid "Standard"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Statična stranica bez javascripta"
@@ -1809,6 +1835,9 @@ msgstr "Odakle dolazi ovaj tekst?"
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Širina naslovne slike u postotku širine teksta."
 
+msgid "Width:"
+msgstr ""
+
 msgid ""
 "With complex structures, e.g., a chapter with\n"
 "      subsections, selecting only the chapter is likely to select only\n"
@@ -1989,6 +2018,9 @@ msgstr ""
 "moj-autor-moj-naslov-1"
 
 msgid "if the repository is exported"
+msgstr ""
+
+msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 
 msgid "left"

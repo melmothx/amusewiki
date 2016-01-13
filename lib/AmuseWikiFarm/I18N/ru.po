@@ -90,6 +90,9 @@ msgstr "Добавить обложку (PNG or JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Добавить вложение (PNG, JPG or PDF)"
 
+msgid "Add crop marks to the PDF"
+msgstr ""
+
 msgid "Add new remote repository"
 msgstr ""
 
@@ -314,6 +317,9 @@ msgstr "Невозможно автоматически создать URI"
 msgid "Couldn't build that"
 msgstr "Нельзя создать это"
 
+msgid "Cover image (optional)"
+msgstr ""
+
 msgid "Create"
 msgstr "Создать"
 
@@ -522,6 +528,12 @@ msgstr ""
 msgid "Fix typography (smart quotes)"
 msgstr "Исправить типографику (правильные кавычки, тире)"
 
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+
 msgid "Fixed category list"
 msgstr "Исправленный список категорий"
 
@@ -578,12 +590,6 @@ msgstr "Полный список текстов"
 msgid "Full text search"
 msgstr "Полнотекстовый поиск"
 
-msgid ""
-"Generate running headings in the document. Beware that\n"
-"        this probably need manual adjustments to the TeX sources for a\n"
-"        satisfying output"
-msgstr ""
-
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Универсальный (умещается на A4 и Letter)"
 
@@ -613,6 +619,9 @@ msgstr "Заголовок"
 
 msgid "Headings"
 msgstr "Заголовки"
+
+msgid "Height:"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1011,6 +1020,9 @@ msgstr ""
 "фиксированное (4,8,16 и т.д.) или оптимальное, чтобы уменьшить количество "
 "пустых страниц. Также всю книгу можно поместить в одну тетрадку."
 
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Параграфы"
 
@@ -1154,6 +1166,11 @@ msgstr "Пожалуйста выберите понравившийся шри�
 
 msgid "Please select the signature size:"
 msgstr "Пожалуйста выберите количество страниц в тетрадках"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
 
 msgid "Please setup the Beamer layout"
 msgstr ""
@@ -1314,6 +1331,9 @@ msgstr "Правка для %1 была удалена"
 msgid "Roles"
 msgstr ""
 
+msgid "Running headings"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr ""
 
@@ -1337,6 +1357,9 @@ msgstr "Поиск"
 
 msgid "Section"
 msgstr "Раздел"
+
+msgid "See here for more details."
+msgstr ""
 
 msgid "See here for the full documentation."
 msgstr ""
@@ -1445,6 +1468,9 @@ msgstr "Устаревшие редакции"
 
 msgid "Standalone HTML (printer-friendly)"
 msgstr "HTML (подходит для печати)"
+
+msgid "Standard"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Статическая страница без javascript"
@@ -1811,6 +1837,9 @@ msgstr "Откуда этот текст?"
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Ширина обложки в процентном отношении к блоку."
 
+msgid "Width:"
+msgstr ""
+
 msgid ""
 "With complex structures, e.g., a chapter with\n"
 "      subsections, selecting only the chapter is likely to select only\n"
@@ -1995,6 +2024,9 @@ msgstr ""
 "URI, включающий автора, название и номер, например moi-avtor-moe-nazvanie-1"
 
 msgid "if the repository is exported"
+msgstr ""
+
+msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 
 msgid "left"

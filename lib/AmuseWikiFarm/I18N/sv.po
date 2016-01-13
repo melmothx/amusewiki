@@ -90,6 +90,9 @@ msgstr "Lägg till en omslagsbild (PNG eller JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Lägg till en bilaga (PNG, JPG eller PDF)"
 
+msgid "Add crop marks to the PDF"
+msgstr ""
+
 msgid "Add new remote repository"
 msgstr ""
 
@@ -312,6 +315,9 @@ msgstr "Det gick inte att automatiskt generera uri!"
 msgid "Couldn't build that"
 msgstr "Det gick inte att bygga det"
 
+msgid "Cover image (optional)"
+msgstr ""
+
 msgid "Create"
 msgstr "Skapa"
 
@@ -515,6 +521,12 @@ msgstr ""
 msgid "Fix typography (smart quotes)"
 msgstr "Fixa typografi (smarta citat) "
 
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+
 msgid "Fixed category list"
 msgstr "Fixad kategorilista"
 
@@ -572,12 +584,6 @@ msgstr "Komplett lista med texter"
 msgid "Full text search"
 msgstr "Fulltext sökning"
 
-msgid ""
-"Generate running headings in the document. Beware that\n"
-"        this probably need manual adjustments to the TeX sources for a\n"
-"        satisfying output"
-msgstr ""
-
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generisk (passar i A4 och Brev)"
 
@@ -607,6 +613,9 @@ msgstr "Rubrik"
 
 msgid "Headings"
 msgstr "Rubriker"
+
+msgid "Height:"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1009,6 +1018,9 @@ msgstr ""
 "etc.),                   hela boken i en enskild signatur eller en optimerad "
 "storlek                    för att minska antalet tomma sidor. "
 
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Stycken"
 
@@ -1156,6 +1168,11 @@ msgstr "Vänligen välj det önskade typsnittet."
 
 msgid "Please select the signature size:"
 msgstr "Vänligen välj signaturens storlek:"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
 
 msgid "Please setup the Beamer layout"
 msgstr ""
@@ -1318,6 +1335,9 @@ msgstr "Revidering för %1 har raderats"
 msgid "Roles"
 msgstr ""
 
+msgid "Running headings"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr ""
 
@@ -1341,6 +1361,9 @@ msgstr "Sök"
 
 msgid "Section"
 msgstr "Sektion"
+
+msgid "See here for more details."
+msgstr ""
 
 msgid "See here for the full documentation."
 msgstr ""
@@ -1450,6 +1473,9 @@ msgstr "Förlegad redigering"
 
 msgid "Standalone HTML (printer-friendly)"
 msgstr "Fristående HTML (utskriftsvänlig)"
+
+msgid "Standard"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Statisk sida utan javascript"
@@ -1814,6 +1840,9 @@ msgstr "Vartifrån kommer denna text?"
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Omslagsbildens bredd i procent av textblockets bredd."
 
+msgid "Width:"
+msgstr ""
+
 msgid ""
 "With complex structures, e.g., a chapter with\n"
 "      subsections, selecting only the chapter is likely to select only\n"
@@ -1996,6 +2025,9 @@ msgstr ""
 "titel och nummer, t.ex. min-förf-min-titel-1"
 
 msgid "if the repository is exported"
+msgstr ""
+
+msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 
 msgid "left"

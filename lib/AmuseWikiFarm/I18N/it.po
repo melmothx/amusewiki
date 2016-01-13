@@ -91,6 +91,9 @@ msgstr "Aggiungi un'immagine di copertina (PNG o JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Aggiungi un allegato (PNG, JPG o PDF)"
 
+msgid "Add crop marks to the PDF"
+msgstr ""
+
 msgid "Add new remote repository"
 msgstr ""
 
@@ -316,6 +319,9 @@ msgstr "Impossibile generare un URI automaticamente"
 msgid "Couldn't build that"
 msgstr "Errore nella compilazione del testo"
 
+msgid "Cover image (optional)"
+msgstr ""
+
 msgid "Create"
 msgstr "Crea"
 
@@ -526,6 +532,12 @@ msgstr ""
 msgid "Fix typography (smart quotes)"
 msgstr "Attiva le correzioni tipografiche"
 
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+
 msgid "Fixed category list"
 msgstr "Lista fissa delle categorie"
 
@@ -584,12 +596,6 @@ msgstr "Lista completa dei testi"
 msgid "Full text search"
 msgstr "Ricerca a tutto testo"
 
-msgid ""
-"Generate running headings in the document. Beware that\n"
-"        this probably need manual adjustments to the TeX sources for a\n"
-"        satisfying output"
-msgstr ""
-
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Formato generico (adatto per A4 e Letter)"
 
@@ -622,6 +628,9 @@ msgstr "Sezioni"
 
 msgid "Headings"
 msgstr "Sezione"
+
+msgid "Height:"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1031,6 +1040,9 @@ msgstr ""
 "(che non si può conoscere in anticipo) per ridurre il numero di pagine\n"
 "necessarie a completare l'ultimo fascicolo."
 
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Paragrafi"
 
@@ -1182,6 +1194,11 @@ msgstr "Seleziona il carattere desiderato"
 
 msgid "Please select the signature size:"
 msgstr "Seleziona la dimensione dei fascicoli:"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
 
 msgid "Please setup the Beamer layout"
 msgstr ""
@@ -1343,6 +1360,9 @@ msgstr "La revisione per %1 è stata cancellata"
 msgid "Roles"
 msgstr "Ruoli"
 
+msgid "Running headings"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr ""
 
@@ -1366,6 +1386,9 @@ msgstr "Cerca"
 
 msgid "Section"
 msgstr "Sezione"
+
+msgid "See here for more details."
+msgstr ""
 
 msgid "See here for the full documentation."
 msgstr ""
@@ -1476,6 +1499,9 @@ msgstr "Modifica in corso abbandonata"
 
 msgid "Standalone HTML (printer-friendly)"
 msgstr "HTML completo (per la stampa)"
+
+msgid "Standard"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Pagina statica senza javascript"
@@ -1848,6 +1874,9 @@ msgstr ""
 "Larghezza dell'immagine di copertina in percentuale della larghezza del "
 "corpo del testo."
 
+msgid "Width:"
+msgstr ""
+
 msgid ""
 "With complex structures, e.g., a chapter with\n"
 "      subsections, selecting only the chapter is likely to select only\n"
@@ -2032,6 +2061,9 @@ msgstr ""
 "titolo e un numero, ad esempio “autore-titlo-1”"
 
 msgid "if the repository is exported"
+msgstr ""
+
+msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 
 msgid "left"

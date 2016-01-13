@@ -93,6 +93,9 @@ msgstr "Agregar una imagen de portada (PNG o JPG)"
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Agregar un adjunto (PNG, JPG or PDF"
 
+msgid "Add crop marks to the PDF"
+msgstr ""
+
 msgid "Add new remote repository"
 msgstr "Agregar nuevo repositorio remoto"
 
@@ -166,7 +169,7 @@ msgstr ""
 "También producir diapositivas\n"
 "          a partir del documento. Cada sección, no importa cuan larga\n"
 "          sea, producirá una diapositiva. El texto fuera de una sección\n"
-"	   es ignorado, así que si no quieres tener secciones, obtendrás\n"
+"\t   es ignorado, así que si no quieres tener secciones, obtendrás\n"
 "          diapositivas vacías. Si quieres excluir una sección, pon un\n"
 "          comentario en el cuerpo de la sección con la palabra “noslide”."
 
@@ -327,6 +330,9 @@ msgstr "¡No se pudo generar automáticamente la URI!"
 
 msgid "Couldn't build that"
 msgstr "No se pudo crear eso"
+
+msgid "Cover image (optional)"
+msgstr ""
 
 msgid "Create"
 msgstr "Crear"
@@ -544,6 +550,12 @@ msgstr "Primera diapositiva"
 msgid "Fix typography (smart quotes)"
 msgstr "Corregir tipografía"
 
+msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
+msgstr ""
+
+msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
+msgstr ""
+
 msgid "Fixed category list"
 msgstr "Lista de categorías corregida"
 
@@ -604,15 +616,6 @@ msgstr "Lista completa de textos"
 msgid "Full text search"
 msgstr "Búsqueda de texto completa"
 
-msgid ""
-"Generate running headings in the document. Beware that\n"
-"        this probably need manual adjustments to the TeX sources for a\n"
-"        satisfying output"
-msgstr ""
-"Generar encabezados en el documento. Ten cuidado\n"
-"        que esto probablemente necesite ajustes manuales en las fuentes\n"
-"        TeX para una salida satisfactoria"
-
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Genérico (para tamaños carta y A4)"
 
@@ -645,6 +648,9 @@ msgstr "Encabezado"
 
 msgid "Headings"
 msgstr "Títulos"
+
+msgid "Height:"
+msgstr ""
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1074,6 +1080,9 @@ msgstr ""
 "        todo el libro con un solo tipo de encuadernación, o un tamaño\n"
 "        optimizado para reducir el número de páginas en blanco."
 
+msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
+msgstr ""
+
 msgid "Paragraphs"
 msgstr "Párrafos"
 
@@ -1227,6 +1236,11 @@ msgstr "Por favor selecciona las tipografías deseadas"
 
 msgid "Please select the signature size:"
 msgstr "Por favor, selecciona el tamaño de la encuadernación:"
+
+msgid ""
+"Please select the size of each page including the crop marks, before the "
+"imposing"
+msgstr ""
 
 msgid "Please setup the Beamer layout"
 msgstr "Por favor configura la plantilla de Beamer"
@@ -1393,6 +1407,9 @@ msgstr "La revisión para %1 ha sido borrada"
 msgid "Roles"
 msgstr "Roles"
 
+msgid "Running headings"
+msgstr ""
+
 msgid "SSL CA certificate path (Apache)"
 msgstr "Path de certificado SSL CA (Apache)"
 
@@ -1416,6 +1433,9 @@ msgstr "Búsqueda"
 
 msgid "Section"
 msgstr "Sección"
+
+msgid "See here for more details."
+msgstr ""
 
 msgid "See here for the full documentation."
 msgstr "Ver aquí la documentación completa."
@@ -1528,6 +1548,9 @@ msgstr "Edición abandonada"
 msgid "Standalone HTML (printer-friendly)"
 msgstr "HTML puro (bueno para imprimir)"
 
+msgid "Standard"
+msgstr ""
+
 msgid "Static page without javascript"
 msgstr "Página estática sin javascript"
 
@@ -1618,7 +1641,9 @@ msgid "The file uploaded is not an HTML file!"
 msgstr "¡El archivo subido no es un archivo HTML!"
 
 msgid "The following values are used to generate the webserver configuration."
-msgstr "Los siguientes valores son usados para generar la configuración del servidor web."
+msgstr ""
+"Los siguientes valores son usados para generar la configuración del servidor "
+"web."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
@@ -1686,8 +1711,8 @@ msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
 msgstr ""
-"Deberías ser rutas relativas a la configuración root del servidor web "
-"o rutas absolutas (recomendado)."
+"Deberías ser rutas relativas a la configuración root del servidor web o "
+"rutas absolutas (recomendado)."
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
@@ -1914,6 +1939,9 @@ msgid "Width of the cover image in percent of the text block width."
 msgstr ""
 "Ancho de la imagen de portada en porcentaje del ancho del bloque de texto."
 
+msgid "Width:"
+msgstr ""
+
 msgid ""
 "With complex structures, e.g., a chapter with\n"
 "      subsections, selecting only the chapter is likely to select only\n"
@@ -1964,8 +1992,8 @@ msgid ""
 "the back cover (source and notes)."
 msgstr ""
 "Estas creando una colección. Por favor provee un título y, opcionalmente, "
-"cualquier otra información necesaria para la portada (autor/a, subtítulo, fecha) "
-"y la contraportada (fuente y notas)."
+"cualquier otra información necesaria para la portada (autor/a, subtítulo, "
+"fecha) y la contraportada (fuente y notas)."
 
 msgid "You are logged in now!"
 msgstr "¡Ahora ya iniciaste sesión!"
@@ -2107,6 +2135,9 @@ msgstr ""
 msgid "if the repository is exported"
 msgstr "si el repositorio es exportado"
 
+msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+
 msgid "left"
 msgstr "izquierda"
 
@@ -2228,6 +2259,15 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid ""
+#~ "Generate running headings in the document. Beware that\n"
+#~ "        this probably need manual adjustments to the TeX sources for a\n"
+#~ "        satisfying output"
+#~ msgstr ""
+#~ "Generar encabezados en el documento. Ten cuidado\n"
+#~ "        que esto probablemente necesite ajustes manuales en las fuentes\n"
+#~ "        TeX para una salida satisfactoria"
 
 #~ msgid "Please give a name to the collection."
 #~ msgstr "Por favor ponle un nombre a la colección."
