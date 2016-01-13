@@ -15,6 +15,10 @@ dedicated tree.
   - Added delete button and code for category descriptions (#32)
   - Hold the webserver configuration in a model
   - Added let's encrypt support via simp_le
+  - Bookbuilder new feature: running headers
+  - Bookbuilder new feature: cropmarks
+  - New imposition schemas in the Bookbuilder
+  - Daemon optimization with fork to keep the memory low
 
 Model::CgitProxy is gone and is replaced by Model::Webserver. If you
 have in your config a <Model::CgitProxy> stanza with the port, please
