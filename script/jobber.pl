@@ -64,6 +64,7 @@ sub p_stop {
     # get the pid
     if (-f $pidfile) {
         open (my $fh, '<', $pidfile) or die $!;
+        print "Waiting to get a lock on $pidfile...\n";
         flock($fh, LOCK_EX);
         my $pid = <$fh>;
         flock($fh, LOCK_UN) or die "Cannot unlock $pidfile $!";
@@ -128,7 +129,6 @@ sub main_loop {
     my $queue = $schema->resultset('Job');
     my $count = 0;
     while (1) {
-        print "sleeping...\n" if $foreground;
         sleep AMW_POLLING;
         # assert we are in the right directoy
         chdir $cwd or die $!;
@@ -139,12 +139,23 @@ sub main_loop {
         print $lock $$;
         # do it
         if ($count == 0) {
-            eval {
-                check_and_publish_deferred($schema);
-                purge_jobs_and_revisions($schema);
-            };
-            if ($@) {
-                log_error { "Errors: $@" };
+            if (my $jobpid = fork()) {
+                log_debug { "Forked pid $jobpid" };
+                my $ex_job_pid = wait;
+                log_debug { "Pid exited $ex_job_pid" };
+            }
+            elsif (defined $jobpid) {
+                eval {
+                    check_and_publish_deferred($schema);
+                    purge_jobs_and_revisions($schema);
+                };
+                if ($@) {
+                    log_error { "Errors: $@" };
+                }
+                exit;
+            }
+            else {
+                die "Couldn't fork!";
             }
             $count++;
         }
@@ -158,7 +169,18 @@ sub main_loop {
         if (my $job = $queue->dequeue) {
             log_info { "Starting job on " . localtime() };
             log_info { join(" ", "Dispatching", $job->id, $job->status, $job->task) };
-            $job->dispatch_job;
+            if (my $jobpid = fork()) {
+                log_info { "Job forked as $jobpid" };
+                my $ex_job_pid = wait;
+                log_info { "Job $ex_job_pid exited" };
+            }
+            elsif (defined $jobpid) {
+                $job->dispatch_job;
+                exit;
+            }
+            else {
+                die "Couldn't fork!";
+            }
             log_info { "Job finished on " . localtime() };
         }
         chdir $cwd or die $!;
