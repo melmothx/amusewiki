@@ -1246,6 +1246,7 @@ sub compile {
         $data->{imposer_options} and
         %{$data->{imposer_options}}) {
 
+        $logger->("* Imposing the PDF\n");
         my %args = %{$data->{imposer_options}};
         $args{file}    =  $outfile;
         $args{outfile} = $makeabs->($self->job_id. '.imp.pdf');
