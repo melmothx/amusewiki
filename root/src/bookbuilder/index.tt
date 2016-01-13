@@ -684,6 +684,12 @@
           [% loc("See here for more details.") %]
         </a>
       </label>
+      <div class="schema-preview">
+        <img src="[% c.uri_for('/static/images/schema-preview/1x8x2-1.png') %]"
+             alt="1x8x2" />
+        <img src="[% c.uri_for('/static/images/schema-preview/1x8x2-2.png') %]"
+             alt="1x8x2" />
+      </div>
     </div>
 
     <div class="radio">
@@ -697,6 +703,13 @@
           [% loc("See here for more details.") %]
         </a>
       </label>
+      <div class="schema-preview">
+        <img src="[% c.uri_for('/static/images/schema-preview/ea4x4-1.png') %]"
+             alt="ea4x4" />
+        <img src="[% c.uri_for('/static/images/schema-preview/ea4x4-2.png') %]"
+             alt="ea4x4" />
+      </div>
+
     </div>
 
 
