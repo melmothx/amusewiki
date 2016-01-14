@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2015-10-25 14:59+0100\n"
+"PO-Revision-Date: 2016-01-14 18:09+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -20,7 +20,7 @@ msgid "%1 doesn't exist"
 msgstr "%1 non esiste"
 
 msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+msgstr "virgolette tipografiche, collegamenti, note a piè di pagina, ecc."
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Una o più linee vuote marcano l'inizio di un nuovo paragrafo"
@@ -92,10 +92,10 @@ msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Aggiungi un allegato (PNG, JPG o PDF)"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Aggiungi gli indicatori di ritaglio"
 
 msgid "Add new remote repository"
-msgstr ""
+msgstr "Aggiungi un archivio remoto"
 
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr ""
@@ -103,7 +103,7 @@ msgstr ""
 "appropriato per il linguaggio"
 
 msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
+msgstr "Aggiungi oppure rimovi e aggiungi nuovamente <user_repo_url> in questa pagina."
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
@@ -113,13 +113,13 @@ msgstr ""
 "(intero)"
 
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "Aggiungi le sezioni all'impaginatore"
 
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "Aggiungi le parti selezionate all'impaginatore"
 
 msgid "Add the whole text"
-msgstr ""
+msgstr "Aggiungi tutto il testo"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Aggiungi questo testo all'impaginatore"
@@ -142,7 +142,7 @@ msgstr "L'alias non può puntare a se stesso"
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
-msgstr ""
+msgstr "Tutte le liste cominciano con uno o più spazi iniziali."
 
 msgid "All languages"
 msgstr "Tutte le lingue"
@@ -164,6 +164,11 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"Crea diapositive. Ogni sezione, a prescindere dal suo livello, genera\n"
+"una diapositiva. Il materiale che non appartiene a nessuna sezione è\n"
+"ignorato, quindi senza sezioni il risultato sarà vuoto. Se si vuole\n"
+"escludere una sezione bisogna inserire un commento (una linea che\n"
+"comincia con un punto e virgola) con la parola chiave “noslide”."
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -180,10 +185,10 @@ msgstr ""
 "ciò non è richiesto."
 
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "Apache non è supportato al momento"
 
 msgid "Archive history"
-msgstr ""
+msgstr "Storico dell'archivio"
 
 msgid "Are you sure?"
 msgstr "Sicuro?"
@@ -195,7 +200,7 @@ msgid "Attached images"
 msgstr "Immagini allegate"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Allegati"
 
 msgid "Author"
 msgstr "Autore"
@@ -219,10 +224,10 @@ msgid "Bare HTML, needed by the application"
 msgstr "HTML nudo, richiesto dall'applicazione"
 
 msgid "Beamer color theme"
-msgstr ""
+msgstr "Tema del colore delle diapositive"
 
 msgid "Beamer theme"
-msgstr ""
+msgstr "Tema delle diapositive"
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
@@ -293,7 +298,7 @@ msgid "Click on the images to get the sample PDF"
 msgstr "Clicca sulle immagini per avere un PDF di esempio"
 
 msgid "Clone the repo locally and set it up"
-msgstr ""
+msgstr "Clona il repositorio in locale e configuralo"
 
 msgid "Close"
 msgstr "Chiudi"
@@ -320,7 +325,7 @@ msgid "Couldn't build that"
 msgstr "Errore nella compilazione del testo"
 
 msgid "Cover image (optional)"
-msgstr ""
+msgstr "Immagine di frontespizio (opzionale)"
 
 msgid "Create"
 msgstr "Crea"
@@ -342,7 +347,7 @@ msgstr "Crea un alias per un autore"
 
 msgid ""
 "Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr ""
+msgstr "Crea un repositorio vuoto. In questa pagina ci si riferisce al suo URL come <user_repo_url>"
 
 msgid "Create new site"
 msgstr "Crea un nuovo sito"
@@ -354,7 +359,7 @@ msgid "Created"
 msgstr "Creazione riuscita"
 
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 msgid "Created new text"
 msgstr "È stato creato un nuovo testo"
@@ -373,7 +378,7 @@ msgstr "Cancella"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
-msgstr ""
+msgstr "Il repo remoto %1 è stato rimosso"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
@@ -384,12 +389,12 @@ msgstr ""
 "andrà persa per sempre."
 
 msgid "Description item"
-msgstr ""
+msgstr "Descrizione"
 
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
-msgstr ""
+msgstr "Le descrizioni fanno uso di un doppio due punti per separare il termine dal corpo della descrizione"
 
 msgid "Desired URI"
 msgstr "URI a scelta"
@@ -416,7 +421,7 @@ msgid "Division factor"
 msgstr "Fattore di divisione"
 
 msgid "Do not enforce commit message"
-msgstr ""
+msgstr "Rendi il messaggio del salvataggio facoltativo"
 
 msgid "Done"
 msgstr "Fatto"
@@ -469,13 +474,13 @@ msgid "Erase this revision"
 msgstr "Cancella questa revisione"
 
 msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+msgstr "Errore nella conversione del file caricato. Si tratta di un file HTML?"
 
 msgid "Error sending mail!"
 msgstr "Errore nell'invio dell'e-mail"
 
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "Errore nella conversione dell'HTML. Siamo spiacenti."
 
 msgid "Errors"
 msgstr "Errori"
@@ -484,7 +489,7 @@ msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
-msgstr ""
+msgstr "Ogni sezione genera una diapositiva. Hai bisogno di un'appropriata suddivisione in sezioni perché funzioni."
 
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
@@ -502,11 +507,11 @@ msgstr "Redirezioni esistenti"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
-msgstr ""
+msgstr "Errore nell'aggiungere il repo remoto %1"
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
-msgstr ""
+msgstr "Errore nel rimuovere il repo remoto %1"
 
 msgid "File uploaded!"
 msgstr "File caricato!"
@@ -527,16 +532,16 @@ msgid "First Author, Second Author"
 msgstr "Primo Autore, Secondo Autore"
 
 msgid "First slide"
-msgstr ""
+msgstr "Prima diapositiva"
 
 msgid "Fix typography (smart quotes)"
 msgstr "Attiva le correzioni tipografiche"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr ""
+msgstr "Segnature di 16 pagine su due fogli, con doppia piegatura individuale."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "Segnature di 16 pagine su un singolo foglio, con triplice piegatura."
 
 msgid "Fixed category list"
 msgstr "Lista fissa delle categorie"
@@ -603,7 +608,7 @@ msgid "Git console"
 msgstr "Console git"
 
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "Git non è abilitato in questo sito"
 
 msgid "HTML"
 msgstr "HTML"
@@ -630,10 +635,10 @@ msgid "Headings"
 msgstr "Sezione"
 
 msgid "Height:"
-msgstr ""
+msgstr "Altezza:"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr ""
+msgstr "Qui puoi trovare un'anteprima dei temi e dei colori delle diapositive"
 
 msgid "Hide options"
 msgstr "Nascondi le opzioni"
@@ -645,7 +650,7 @@ msgid "How to choose a password"
 msgstr "Come scegliere una password"
 
 msgid "How to work with a remote repo"
-msgstr ""
+msgstr "Come lavorare su un archivio remoto"
 
 msgid "I am human"
 msgstr "Sono umano"
@@ -665,7 +670,7 @@ msgstr "Id"
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
-msgstr ""
+msgstr "Se non impostato, %1 sarà cercato nella directory dell'applicazione."
 
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
@@ -679,12 +684,21 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"Se questa line è presente, imposta la data di pubblicazione (su questo\n"
+"sito) alla data specificata. La data può essere anche nel futuro, con\n"
+"l'effetto di rimandare la pubblicazione. Se questa linea non è\n"
+"presente, la data di pubblicazione andrà a coincidere con la data\n"
+"dell'ultima modifica. Ad ogni modifica il testo andrà a in cima agli\n"
+"RSS e in cima alla lista delle ultime pubblicazioni sulle pagine\n"
+"speciali."
 
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"Se questa linea è presente e specifica un motivo, il testo sarà\n"
+"archiviato, ma non pubblicato."
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Se vuoi l'impaginazione, scegli uno schema"
@@ -692,7 +706,7 @@ msgstr "Se vuoi l'impaginazione, scegli uno schema"
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
-msgstr ""
+msgstr "Se hai un file .doc o .odt, puoi facilmente convertirlo salvandolo come HTML"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -746,7 +760,7 @@ msgid "Italic"
 msgstr "Corsivo"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
+msgstr "Corsivo, grassetto, codice, interruzioni di linea..."
 
 msgid "Job deleted"
 msgstr "Lavoro cancellato"
@@ -889,7 +903,7 @@ msgid "Moderated wiki"
 msgstr "Wiki moderato"
 
 msgid "Mono font"
-msgstr ""
+msgstr "Caratteri monospazio"
 
 msgid "More"
 msgstr "Altro"
@@ -913,7 +927,7 @@ msgid "Never generate a table of content"
 msgstr "Non generare un sommario"
 
 msgid "New"
-msgstr ""
+msgstr "Nuovo"
 
 msgid "New revision"
 msgstr "Nuova revisione"
@@ -931,13 +945,13 @@ msgid "No"
 msgstr "No"
 
 msgid "No editing yet!"
-msgstr ""
+msgstr "Nessuna modifica apportata!"
 
 msgid "No result found!"
 msgstr "Nessun risultato trovato!"
 
 msgid "No revisions to show"
-msgstr ""
+msgstr "Nessuna revisione da mostrare"
 
 msgid "No text found!"
 msgstr "Nessun testo trovato"
@@ -986,7 +1000,7 @@ msgid "Or log in, if you have an account."
 msgstr "O entra, se possiedi un'utenza"
 
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "Oppure caricare un file HTML"
 
 msgid "Or wrap it in"
 msgstr "O racchiudi in"
@@ -995,10 +1009,10 @@ msgid "Other languages"
 msgstr "Altre lingue"
 
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 msgid "PDF logo"
-msgstr ""
+msgstr "Logo PDF"
 
 msgid "PDFs cannot be used in the body."
 msgstr "I PDF non possono essere usati all'interno del testo."
@@ -1041,7 +1055,7 @@ msgstr ""
 "necessarie a completare l'ultimo fascicolo."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
+msgstr "Spessore della carta (0.10 dovrebbe essere corretto per la normale carta 80g/m2)"
 
 msgid "Paragraphs"
 msgstr "Paragrafi"
@@ -1053,7 +1067,7 @@ msgid "Part, for larger books only"
 msgstr "Parte, solo per libri con un elevato numero di pagine"
 
 msgid "Partial selection"
-msgstr ""
+msgstr "Selezione parziale"
 
 msgid "Password"
 msgstr "Password"
@@ -1083,19 +1097,19 @@ msgid "Plain PDF"
 msgstr "PDF semplice"
 
 msgid "Please choose the Beamer color theme"
-msgstr ""
+msgstr "Scegli il tema del colore per le diapositive"
 
 msgid "Please choose the Beamer theme"
-msgstr ""
+msgstr "Scegli il tema delle diapositive"
 
 msgid "Please choose the main font"
-msgstr ""
+msgstr "Seleziona il carattere principale"
 
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "Selezione il carattere monospazio"
 
 msgid "Please choose the sans font"
-msgstr ""
+msgstr "Seleziona il carattere senza grazie"
 
 msgid "Please describe shortly what you did"
 msgstr "Per cortesia, descrivi brevemente ciò che hai fatto"
@@ -1198,13 +1212,13 @@ msgstr "Seleziona la dimensione dei fascicoli:"
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
-msgstr ""
+msgstr "Seleziona la dimensione di ciascuna pagina inclusi gli indicatori di ritaglio, prima dell'imposizione"
 
 msgid "Please setup the Beamer layout"
-msgstr ""
+msgstr "Seleziona lo stile delle diapositive"
 
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Poesia, bibliografie, pezzi teatrali, blocchi di codice"
 
 msgid "Pointing to"
 msgstr "Che punta a"
@@ -1212,7 +1226,7 @@ msgstr "Che punta a"
 msgid ""
 "Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
-msgstr ""
+msgstr "Il prefisso delle liste numerate può essere \"1.\", \"a.\", \"A.\", \"i.\", \"I.\", a seconda del tipo richiesto."
 
 msgid "Prepare this text for the archiving"
 msgstr "Prepara questo testo per l'archivio"
@@ -1230,7 +1244,7 @@ msgid "Private"
 msgstr "Privato"
 
 msgid "Produce slides."
-msgstr ""
+msgstr "Crea diapositive."
 
 msgid "Produced"
 msgstr "Prodotto"
@@ -1311,17 +1325,17 @@ msgstr "Progetti correlati"
 
 #. ("$name $url")
 msgid "Remote repository %1 added"
-msgstr ""
+msgstr "Aggiunto il repositorio remoto %1"
 
 #. ($name)
 msgid "Remote repository %1 removed"
-msgstr ""
+msgstr "Rimosso il repositorio remoto %1"
 
 msgid "Remotes"
 msgstr "Archivi remoti"
 
 msgid "Remove"
-msgstr ""
+msgstr "Rimuovi"
 
 msgid "Remove cover image"
 msgstr "Rimuovi immagine di copertina"
@@ -1336,7 +1350,7 @@ msgid "Repository"
 msgstr "Repository"
 
 msgid "Reset all"
-msgstr ""
+msgstr "Ricomincia da capo"
 
 msgid "Results"
 msgstr "Risultati"
@@ -1361,25 +1375,25 @@ msgid "Roles"
 msgstr "Ruoli"
 
 msgid "Running headings"
-msgstr ""
+msgstr "Testatine"
 
 msgid "SSL CA certificate path (Apache)"
-msgstr ""
+msgstr "Percorso del file certificato SSL CA (Apache)"
 
 msgid "SSL certificate path (Apache)"
-msgstr ""
+msgstr "Percorso del certificato SSL (Apache)"
 
 msgid "SSL chained certertificate path (Nginx)"
-msgstr ""
+msgstr "Percorso del certificato combinato (Nginx)"
 
 msgid "SSL configuration"
-msgstr ""
+msgstr "Configurazione SSL"
 
 msgid "SSL key path"
-msgstr ""
+msgstr "Percorso della chiave SSL"
 
 msgid "Sans font"
-msgstr ""
+msgstr "Font senza grazie"
 
 msgid "Search"
 msgstr "Cerca"
@@ -1388,22 +1402,22 @@ msgid "Section"
 msgstr "Sezione"
 
 msgid "See here for more details."
-msgstr ""
+msgstr "Vedi qui per ulteriori informazioni."
 
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Vedi qui per la documentazione completa"
 
 msgid "See the full manual for more details (english)"
 msgstr "Vedi il manuale completo per maggiori dettagli (in inglese)"
 
 msgid "Select"
-msgstr ""
+msgstr "Seleziona"
 
 msgid "Select all"
-msgstr ""
+msgstr "Seleziona tutto"
 
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "Seleziona singole parti per l'impaginatore"
 
 msgid "Separate body fields"
 msgstr "Separano i campi del corpo"
@@ -1451,10 +1465,10 @@ msgid "Sites"
 msgstr "Siti"
 
 msgid "Slides"
-msgstr ""
+msgstr "Diapositive"
 
 msgid "Slides (PDF)"
-msgstr ""
+msgstr "Diapositive (PDF)"
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr "Così siamo sicuri di non inviare le password a gente casuale"
@@ -1483,10 +1497,10 @@ msgid "Source files with attachments"
 msgstr "File sorgenti con allegati"
 
 msgid "Source, notes..."
-msgstr ""
+msgstr "Fonti, note"
 
 msgid "Sources"
-msgstr "Sorgenti"
+msgstr "Fonti"
 
 msgid "Special blocks"
 msgstr "Blocchi speciali"
@@ -1501,7 +1515,7 @@ msgid "Standalone HTML (printer-friendly)"
 msgstr "HTML completo (per la stampa)"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 msgid "Static page without javascript"
 msgstr "Pagina statica senza javascript"
@@ -1553,10 +1567,10 @@ msgid "TeX"
 msgstr "TeX"
 
 msgid "Term"
-msgstr ""
+msgstr "Termine"
 
 msgid "Text body, before any section"
-msgstr ""
+msgstr "Corpo del testo, prima di ogni sezione"
 
 msgid "Text formatted with markup"
 msgstr "Testo formattato con il markup"
@@ -1574,7 +1588,7 @@ msgstr "Testi"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
-msgstr ""
+msgstr "Le selezioni relative a Beamer hanno valore solo se l'opzione diapositive è attivata."
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -1582,17 +1596,21 @@ msgid ""
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
 msgstr ""
+"Il logo PDF può essere sia un percorso assoluto, oppure solo il nome\n"
+"del file se è installato correttamente in TeXlive. Puoi farlo\n"
+"eseguendo i seguenti comandi. L'ultimo comando controlla se il file\n"
+"può essere trovato."
 
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "Il file caricato non è un file HTML!"
 
 msgid "The following values are used to generate the webserver configuration."
-msgstr ""
+msgstr "I seguenti valori sono usati per generare la configurazione del server web."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
-msgstr ""
+msgstr "La configurazione del webserver instrada tutte le richieste HTTP su HTTPS"
 
 msgid "The logo has the site name on itself"
 msgstr "Il logo contiene il nome del sito"
@@ -1607,7 +1625,7 @@ msgid "The revision has the following messages"
 msgstr "La revisione contiene i seguenti messaggi"
 
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "La struttura del testo è mostrata qui sotto."
 
 msgid "The text was added to the bookbuilder"
 msgstr "Il testo è stato aggiunto all'impaginatore"
@@ -1632,13 +1650,13 @@ msgstr "L'utenza avrà lo stesso tuo livello di accesso"
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
-msgstr ""
+msgstr "Il server web ha bisogno di essere riconfigurato. Esegui in una shell di root i seguenti comandi:"
 
 msgid "The whole book in as single signature"
 msgstr "L'intero libro in un unico fascicolo"
 
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "Poi recupera gli aggiornamenti da questa pagina."
 
 msgid "These texts are missing the unique id."
 msgstr "Questi testi sono senza identificativo."
@@ -1649,7 +1667,7 @@ msgstr "Hanno la stessa sintassi (le immagini sono in realtà collegamenti)"
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
-msgstr ""
+msgstr "Devono essere percorsi di file relativi alla radice della configurazione del server web o percorsi assoluti(raccomandato)"
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
@@ -1684,20 +1702,20 @@ msgid "This revision is being edited by someone else!"
 msgstr "Questa revisione è in corso di modifica da qualcun altro!"
 
 msgid "This section will not produce a slide"
-msgstr ""
+msgstr "Questa sezione non produrrà diapositive"
 
 msgid "This text does not exist"
 msgstr "Questo testo non esiste"
 
 msgid "This text is new"
-msgstr ""
+msgstr "Questo testo è nuovo"
 
 msgid "This text is not published yet"
 msgstr "Questo testo ancora non è stato pubblicato"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Questo testo verrà pubblicato solo in data %1"
 
 msgid "Time is optional."
 msgstr "L'ora è opzionale"
@@ -1709,7 +1727,7 @@ msgid "Title for sorting"
 msgstr "Titolo da usare per l'ordinamento alfabetico"
 
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Titolo, autore, data..."
 
 msgid "Titles"
 msgstr "Titoli"
@@ -1768,7 +1786,7 @@ msgid ""
 "URL of the new remote repository\n"
 "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
 "        supported."
-msgstr ""
+msgstr "URL del nuovo repositorio remoto, HTTP, HTTPS, GIT o locale (specificando solo il percorso locale). SSH non è supportato."
 
 msgid "UTC"
 msgstr "UTC"
@@ -1806,7 +1824,7 @@ msgid "Url"
 msgstr "URL"
 
 msgid "Use JS syntax highlight for code blocks"
-msgstr ""
+msgstr "Usa l'evidenziatore di sintassi javascript per i blocchi di codice"
 
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr "Usa LuaLaTeX (molto più lento) al posto di XeLaTeX (default)"
@@ -1875,7 +1893,7 @@ msgstr ""
 "corpo del testo."
 
 msgid "Width:"
-msgstr ""
+msgstr "Larghezza:"
 
 msgid ""
 "With complex structures, e.g., a chapter with\n"
@@ -1883,6 +1901,10 @@ msgid ""
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"Nel caso di strutture complesse, ad esempio un capitolo con\n"
+"sottosezioni, selezionando solo il capitolo si avrà solo il titolo,\n"
+"quindi con tutta probabilità vorrai selezionare il capitolo e tutte le\n"
+"sue sottosezioni."
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -1894,7 +1916,7 @@ msgstr ""
 "testi per creare il tuo opuscolo. Non ti resta che provare!"
 
 msgid "Workflow"
-msgstr ""
+msgstr "Procedura"
 
 msgid "Wrong answer!"
 msgstr "Risposta errata!"
@@ -1921,7 +1943,7 @@ msgid ""
 "You are building a collection. Please provide a title and, optionally, any "
 "other information needed for the front cover (author, subtitle, date) and "
 "the back cover (source and notes)."
-msgstr ""
+msgstr "Stai producendo una collezione. Specifica un titolo e, in via opzionale, ogni altra informazione per il frontespizio (autore, sottotitolo, data) e per l'ultima pagina (fonti e note)."
 
 msgid "You are logged in now!"
 msgstr "Hai effettuato l'accesso!"
@@ -2001,7 +2023,7 @@ msgid "about, links..."
 msgstr "informazioni, link..."
 
 msgid "affects only the frontend webserver configuration"
-msgstr ""
+msgstr "ha effetto solo sulla configurazione automatica del server web"
 
 msgid "any"
 msgstr "qualsiasi"
@@ -2028,7 +2050,7 @@ msgid "displayed text"
 msgstr "testo mostrato"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "modifica, salva..."
 
 msgid "editing"
 msgstr "modifica in corso"
@@ -2061,10 +2083,10 @@ msgstr ""
 "titolo e un numero, ad esempio “autore-titlo-1”"
 
 msgid "if the repository is exported"
-msgstr ""
+msgstr "se il repositorio è esportato"
 
 msgid "if you want to use a custom size, you need to set both width and height"
-msgstr ""
+msgstr "se vuoi usare una dimensione arbitraria, devi specificare sia la larghezza che l'altezza"
 
 msgid "left"
 msgstr "sinistra"
@@ -2087,7 +2109,7 @@ msgstr "o"
 msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
-msgstr ""
+msgstr "oppure, se hai accesso SSH alla macchina (ma non usare la stessa utenza di amusewiki, è consigliabile che sia un repositorio in sola lettura per l'applicazione)"
 
 msgid "overstriked"
 msgstr "cancellato"
@@ -2154,7 +2176,7 @@ msgid "the author of the text (as displayed)"
 msgstr "l'autore del testo (come mostrato)"
 
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "questo testo verrà rimosso dai testi pubblicati"
 
 msgid "topic"
 msgstr "argomento"
