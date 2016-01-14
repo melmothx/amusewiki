@@ -1019,6 +1019,9 @@ msgstr ""
 msgid "Please choose the Beamer theme"
 msgstr ""
 
+msgid "Please choose the font size"
+msgstr ""
+
 msgid "Please choose the main font"
 msgstr ""
 
@@ -1265,7 +1268,7 @@ msgstr ""
 msgid "SSL certificate path (Apache)"
 msgstr ""
 
-msgid "SSL chained certertificate path (Nginx)"
+msgid "SSL chained certificate path (Nginx)"
 msgstr ""
 
 msgid "SSL configuration"

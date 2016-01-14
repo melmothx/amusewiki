@@ -254,7 +254,7 @@
     <div class="form-group pdf-common-option">
       <div class="row">
         <label for="fontsize" class="col-sm-3 control-label">
-          Please choose the font size
+          [% loc('Please choose the font size') %]
         </label>
         <div class="col-sm-9">
           <select name="fontsize" id="fontsize" class="form-control">

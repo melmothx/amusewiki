@@ -1128,6 +1128,9 @@ msgstr "Por favor elige el tema de color de Beamer"
 msgid "Please choose the Beamer theme"
 msgstr "Por favor elige el tema de Beamer"
 
+msgid "Please choose the font size"
+msgstr ""
+
 msgid "Please choose the main font"
 msgstr "Por favor elige la tipografía principal"
 
@@ -1416,8 +1419,8 @@ msgstr "Path de certificado SSL CA (Apache)"
 msgid "SSL certificate path (Apache)"
 msgstr "Path de certificado SSL (Apache)"
 
-msgid "SSL chained certertificate path (Nginx)"
-msgstr "Path certificado encadenado SSL (Nginx)"
+msgid "SSL chained certificate path (Nginx)"
+msgstr ""
 
 msgid "SSL configuration"
 msgstr "Configuración SSL"
@@ -2259,6 +2262,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "SSL chained certertificate path (Nginx)"
+#~ msgstr "Path certificado encadenado SSL (Nginx)"
 
 #~ msgid ""
 #~ "Generate running headings in the document. Beware that\n"
