@@ -41,3 +41,10 @@ log4perl.local.conf
 log/amw.log
 ssl/*
 cronjobs/*
+log/*
+amusewikifarm_local.conf
+design/*
+ext-src/*
+AmuseWikiFarm-*.tar.gz
+MANIFEST.bak
+

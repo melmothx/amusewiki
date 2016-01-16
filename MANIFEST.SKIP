@@ -1,0 +1,23 @@
+# Top-level filter (only include the following...)
+^(?!(?:script|examples|lib|bin|inc|t|xt|maint|sql|root|dbicdh)/|(?:(?:Makefile|Build)\.PL|README|MANIFEST|Changes|META\.(?:yml|json))$)
+
+# Avoid temp and backup files.
+~$
+\.tmp$
+\.old$
+\.bak$
+\..*?\.sw[po]$
+\#$
+\b\.#
+
+# Avoid patch remnants
+\.orig$
+\.rej$
+
+root/static/js/ckeditor/.*
+root/git/.*
+root/static/cgit/.*
+root/static/js/validate/(demo|src|lib)/.*
+root/static/.*\.zip$
+root/static/js/validate/test/.*
+root/uploads/.*

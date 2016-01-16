@@ -7,6 +7,7 @@ use Module::Install::Catalyst; # Complain loudly if you don't have
                                # 'make dist' to create a standalone tarball.
 
 name 'AmuseWikiFarm';
+license 'perl';
 all_from 'lib/AmuseWikiFarm.pm';
 
 requires 'Catalyst::Runtime' => '5.90093';
@@ -94,19 +95,22 @@ test_requires 'Test::More' => '0.88';
 test_requires 'CAM::PDF';
 
 # locations where we store the stuff
-catalyst_ignore('repo');
-catalyst_ignore('xapian');
-catalyst_ignore('staging');
-catalyst_ignore('opt');
-catalyst_ignore('bbfiles');
-catalyst_ignore('var');
-catalyst_ignore('design');
-catalyst_ignore('bootstrap-amw');
-catalyst_ignore('current_version_is_.*txt');
-catalyst_ignore('dbic.yaml');
-catalyst_ignore('log');
-catalyst_ignore('cronjobs');
-catalyst_ignore('ssl');
+catalyst_ignore('repo',
+                'xapian',
+                'staging',
+                'opt',
+                'bbfiles',
+                'var',
+                'design',
+                'bootstrap-amw',
+                'current_version_is_.*txt',
+                'dbic.yaml',
+                'log',
+                'cronjobs',
+                'amusewikifarm_local.conf',
+                'ext-src',
+                'webfonts',
+                'ssl');
 catalyst;
 
 install_script glob('script/*.pl');
