@@ -2,6 +2,9 @@ package AmuseWikiFarm::Controller::Git;
 use Moose;
 use namespace::autoclean;
 
+use AmuseWikiFarm::Log::Contextual;
+use Encode qw/decode/;
+
 BEGIN { extends 'Catalyst::Controller'; }
 
 =encoding utf8
@@ -67,9 +70,15 @@ sub git :Chained('/site') :Args {
             if (my $expires = $res->expires) {
                 $c->response->header('Expires', $expires);
             }
-            $c->clear_encoding;
-            $c->response->content_length(length($res->content));
-            $c->response->body($res->content);
+            # work around a catalyst bug encoding the stuff again to
+            # support older versions.
+            if ($res->content_type =~ m{text/\w+\; charset=utf-8}i) {
+                $c->response->body(decode('UTF-8', $res->content));
+            }
+            else {
+                $c->response->content_length(length($res->content));
+                $c->response->body($res->content);
+            }
         }
         elsif (my $html = $res->html) {
             $c->stash(cgit_body => $html,

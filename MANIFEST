@@ -538,6 +538,7 @@ script/amusewikifarm_fastcgi.pl
 script/amusewikifarm_server.pl
 script/amusewikifarm_test.pl
 script/bootstrap_archive.pl
+script/cgit.psgi
 script/cleanup-tests.sh
 script/clone-site.pl
 script/configure.sh

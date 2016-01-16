@@ -10,7 +10,7 @@ name 'AmuseWikiFarm';
 license 'perl';
 all_from 'lib/AmuseWikiFarm.pm';
 
-requires 'Catalyst::Runtime' => '5.90093';
+requires 'Catalyst::Runtime' => '5.90075';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Session';
