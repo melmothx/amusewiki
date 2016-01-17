@@ -47,4 +47,5 @@ design/*
 ext-src/*
 AmuseWikiFarm-*.tar.gz
 MANIFEST.bak
+.amusewiki.jobber.lock
 

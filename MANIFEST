@@ -534,6 +534,7 @@ root/static/js/validate/package.json
 root/static/js/validate/README.md
 root/themes/test-theme/layout.tt
 root/themes/test-theme/library.tt
+script/amusewiki-jobber
 script/amusewiki-upgrade-db
 script/amusewikifarm_cgi.pl
 script/amusewikifarm_create.pl

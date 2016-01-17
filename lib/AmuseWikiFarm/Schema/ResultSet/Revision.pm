@@ -4,7 +4,8 @@ use utf8;
 use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
-
+use AmuseWikiFarm::Log::Contextual;
+use DateTime;
 
 =head2 pending
 
@@ -45,6 +46,20 @@ sub published_older_than {
                           'me.status' => 'published',
                           updated => { '<' => $format_time },
                          });
+}
+
+sub purge_old_revisions {
+    my $self = shift;
+    my $reftime = DateTime->now;
+    # after one month, delete the revisions and jobs
+    $reftime->subtract(months => 1);
+    my $old_revs = $self->published_older_than($reftime);
+    while (my $rev = $old_revs->next) {
+        die unless $rev->status eq 'published'; # this shouldn't happen
+        log_warn { "Removing published revision " . $rev->id . " for site " .
+                     $rev->site->id . " and title " . $rev->title->uri };
+        $rev->delete;
+    }
 }
 
 =head2 as_list

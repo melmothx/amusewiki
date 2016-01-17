@@ -8,6 +8,7 @@ use base 'DBIx::Class::ResultSet';
 use DateTime;
 use JSON qw/to_json from_json/;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -184,7 +185,19 @@ sub completed_older_than {
                          });
 }
 
-
+sub purge_old_jobs {
+    my $self = shift;
+    my $reftime = DateTime->now;
+    # after one month, delete the revisions and jobs
+    $reftime->subtract(months => 1);
+    my $old_jobs = $self->completed_older_than($reftime);
+    while (my $job = $old_jobs->next) {
+        die unless $job->status eq 'completed'; # shouldn't happen
+        log_warn { "Removing old job " . $job->id . " for site " . $job->site->id .
+                     " and task " . $job->task };
+        $job->delete;
+    }
+}
 
 
 1;
