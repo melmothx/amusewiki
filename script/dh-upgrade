@@ -4,7 +4,29 @@ BEGIN {
     $ENV{DBICDH_DEBUG} = 1;
 }
 
-=pod
+=head1 NAME
+
+amusewiki-upgrade-db
+
+=head1 SYNOPSIS
+
+  amusewiki-upgrade-db [ --ddl /path/to/dbicdh ]
+
+By default, look into the current directory for C<dbicdh>.
+
+Upgrade the amusewiki database if needed.
+
+=head1 Development option
+
+=over 4
+
+=item --prepare
+
+Prepare the DDLs in the C<ddl> path.
+
+=back
+
+=head1 Procedure
 
 There are 3 cases
 
@@ -57,8 +79,6 @@ This is what is going to happen, provided that the files are in place:
 
 =cut
 
-
-
 use strict;
 use warnings;
 use FindBin;
@@ -67,9 +87,21 @@ use AmuseWikiFarm::Schema;
 use DBIx::Class::DeploymentHandler;
 use Getopt::Long;
 use Data::Dumper;
+use Pod::Usage;
 my ($prepare);
 
-GetOptions(prepare => \$prepare) or die;
+my $script_directory = 'dbicdh';
+my $help;
+
+GetOptions(prepare => \$prepare,
+           ddl => \$script_directory,
+           help => \$help,
+          ) or die;
+
+if ($help) {
+    pod2usage();
+}
+
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse')
   or die "Couldn't connect to amuse DB!";
@@ -89,8 +121,7 @@ my $dh = DBIx::Class::DeploymentHandler->new({
                                               sql_translator_args => { add_drop_table => 0,
                                                                        quote_identifiers => 1,
                                                                      },
-                                              script_directory => "$FindBin::Bin/../dbicdh",
-                                              backup_directory => "$FindBin::Bin/../db_backups",
+                                              script_directory => $script_directory,
                                               force_overwrite => $prepare,
                                              });
 
