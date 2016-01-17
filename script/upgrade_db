@@ -13,4 +13,4 @@ script/amusewikifarm_create.pl model DB \
 rm -f lib/AmuseWikiFarm/Model/DB.pm.new
 rm -f t/model_DB.t.new
 rm -f tmp.db
-echo "Now please bump up the Schema version and run dh-upgrade --prepare and dh-upgrade"
+echo "Now please bump up the Schema version and run amusewiki-upgrade-db --prepare and amusewiki-upgrade-db"
