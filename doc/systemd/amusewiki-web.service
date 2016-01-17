@@ -1,0 +1,14 @@
+[Unit]
+Description=Amusewiki web server
+After=nss-user-lookup.target
+
+[Service]
+WorkingDirectory=/var/lib/amusewiki
+User=amusewiki
+Group=amusewiki
+ExecStart=/usr/bin/plackup -s FCGI --listen /var/run/amusewiki.socket --nproc 5 psgi/amusewiki.psgi
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

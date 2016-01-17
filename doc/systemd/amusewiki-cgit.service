@@ -3,10 +3,10 @@ Description=Amusewiki CGIT server
 After=nss-user-lookup.target
 
 [Service]
-WorkingDirectory=/home/melmoth/amw/AmuseWikiFarm
+WorkingDirectory=/var/lib/amusewiki
 User=www-data
 Group=www-data
-ExecStart=/usr/bin/plackup --path /git --port 7015 --host 127.0.0.1 script/cgit.psgi
+ExecStart=/usr/bin/plackup --path /git --port 7015 --host 127.0.0.1 psgi/amusewiki-cgit.psgi
 Restart=always
 
 [Install]
