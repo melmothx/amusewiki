@@ -209,6 +209,8 @@ lib/CatalystX/AmuseWiki/I18N.pm
 Makefile.PL
 MANIFEST
 META.yml
+psgi/amusewiki-cgit.psgi
+psgi/amusewiki.psgi
 README
 root/docs/logo.png
 root/docs/manual.a4.pdf
@@ -532,6 +534,7 @@ root/static/js/validate/package.json
 root/static/js/validate/README.md
 root/themes/test-theme/layout.tt
 root/themes/test-theme/library.tt
+script/amusewiki-upgrade-db
 script/amusewikifarm_cgi.pl
 script/amusewikifarm_create.pl
 script/amusewikifarm_fastcgi.pl
@@ -542,7 +545,6 @@ script/cgit.psgi
 script/cleanup-tests.sh
 script/clone-site.pl
 script/configure.sh
-script/dh-upgrade
 script/generate-nginx-conf.pl
 script/install-cgit.pl
 script/install.sh
