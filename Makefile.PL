@@ -113,6 +113,6 @@ catalyst_ignore('repo',
                 'ssl');
 catalyst;
 
-install_script glob('script/*.pl');
+install_script glob('script/amusewiki-*');
 auto_install;
 WriteAll;
