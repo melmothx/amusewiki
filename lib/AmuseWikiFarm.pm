@@ -95,6 +95,7 @@ our $VERSION = '1.592';
 
 use Log::Log4perl::Catalyst;
 use AmuseWikiFarm::Utils::LogConf;
+use File::Spec;
 
 # Configure the application.
 #
@@ -165,7 +166,7 @@ __PACKAGE__->config(
         verify_user_agent => 1,
         cache_size => '100m',
         unlink_on_exit => 0,
-        storage => __PACKAGE__->path_to(qw/opt cache fastmmap/),
+        storage => File::Spec->rel2abs(File::Spec->catfile(qw/opt cache fastmmap/)),
     },
 );
 
