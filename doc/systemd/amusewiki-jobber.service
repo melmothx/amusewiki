@@ -1,0 +1,14 @@
+[Unit]
+Description=Amusewiki jobber
+After=nss-user-lookup.target
+
+[Service]
+WorkingDirectory=/var/lib/amusewiki
+User=amusewiki
+Group=amusewiki
+ExecStart=/usr/bin/amusewiki-jobber
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
