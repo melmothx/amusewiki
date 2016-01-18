@@ -78,6 +78,16 @@ sub _build_app_directory {
     return $cwd;
 }
 
+has fcgi_socket => (is => 'ro',
+                    isa => 'Str',
+                    lazy => 1,
+                    builder => '_build_fcgi_socket');
+
+sub _build_fcgi_socket {
+    my $self = shift;
+    return File::Spec->catfile($self->app_directory, 'var', 'amw.sock');
+}
+
 has ssl_default_key => (is => 'ro',
                         isa => 'Str',
                         lazy => 1,
@@ -204,6 +214,8 @@ EOF
     }
     close $fhc;
 
+    my $fcgi_socket = $self->fcgi_socket;
+
     my $include_file = File::Spec->catfile($output_dir,
                                            $self->instance_name . '_include');
 
@@ -277,7 +289,7 @@ EOF
 
         fastcgi_param HTTP_X_SENDFILE_TYPE X-Accel-Redirect;
         fastcgi_param HTTP_X_ACCEL_MAPPING $amw_home=/private;
-        fastcgi_pass  unix:$amw_home/var/amw.sock;
+        fastcgi_pass  unix:$fcgi_socket;
     }
 INCLUDE
 

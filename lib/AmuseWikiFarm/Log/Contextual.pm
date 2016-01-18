@@ -7,7 +7,7 @@ use Log::Log4perl;
 use File::Spec;
 use AmuseWikiFarm::Utils::LogConf;
 
-# note: if you cange engine, please change the engine in
+# note: if you change engine, please change the engine in
 # AmuseWikiFarm.pm as well.
 
 if (!Log::Log4perl->initialized) {
