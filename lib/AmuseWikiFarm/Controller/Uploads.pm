@@ -27,6 +27,7 @@ Start of chaing with /uploads/<site_id> and validate the site id.
 
 use File::Basename ();
 use File::Path ();
+use File::Spec;
 use IO::File;
 
 sub root :Chained('/site') :PathPart('uploads') :CaptureArgs(1) {
@@ -72,23 +73,20 @@ sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
         $c->detach('/not_found');
         return;
     }
-    my @basedir = ('root', 'uploads', $c->stash->{site}->id,
-                     'thumbnails');
-    my $dir = $c->path_to(@basedir)->stringify;
-    unless (-d $dir) {
-        File::Path::make_path($dir);
-    }
+    my $thumbdir = File::Spec->rel2abs(File::Spec->catdir('thumbnails',
+                                                           $c->stash->{site}->id));
 
+    unless (-d $thumbdir) {
+        File::Path::make_path($thumbdir);
+    }
     my $src = $srcfile->f_full_path_name;
     unless ($src && -f $src) {
         log_error { "Expected $src file does not exists" };
         $c->detach('/not_found');
         return;
     }
-
-    my $output = $c->path_to(@basedir, $thumb);
-
-    log_warn { "Generating thumbnail from $src to $output" };
+    my $output = File::Spec->catfile($thumbdir, $thumb);
+    log_debug { "Checking $output against $src" };
     $self->generate_thumbnail_from_to($src, $output);
     if (-f $output) {
         my $fh = IO::File->new($output, 'r');
@@ -108,6 +106,7 @@ sub generate_thumbnail_from_to :Private {
     die unless ($src && $out);
     return unless (-f $src);
     return if (-f $out and ((stat($src))[9]) < (stat($out))[9]);
+    log_info { "Generating thumbnail from $src to $out" };
     system(qw/gm convert -thumbnail 300x/, $src . '[0]', $out);
 }
 

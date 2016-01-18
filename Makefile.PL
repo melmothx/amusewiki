@@ -109,6 +109,7 @@ catalyst_ignore('repo',
                 'cronjobs',
                 'amusewikifarm_local.conf',
                 'ext-src',
+                'thumbnails',
                 'webfonts',
                 'ssl');
 catalyst;

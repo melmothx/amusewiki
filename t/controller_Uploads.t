@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 10;
+use Test::More tests => 16;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -29,8 +29,7 @@ is_deeply($rev->attached_pdfs, [ $expected ]);
 $rev->commit_version;
 $rev->publish_text;
 
-my $thumb = catfile(qw/root uploads/, $site_id, "thumbnails",
-                    "$expected.thumb.png");
+my $thumb = catfile('thumbnails', $site_id, "$expected.thumb.png");
 
 if (-f $thumb) {
     unlink $thumb or die $!;
@@ -42,7 +41,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $mech->get_ok("/uploads/$site_id/$expected");
 $mech->get_ok("/uploads/$site_id/thumbnails/$expected.thumb.png");
 
-ok (-f catfile(qw/root uploads/, $site_id, thumbnails => "$expected.thumb.png"));
+ok (-f $thumb, "$thumb exists");
 my $stat = (stat($thumb))[9];
 sleep 2;
 $mech->get_ok("/uploads/$site_id/thumbnails/$expected.thumb.png");
@@ -52,3 +51,17 @@ $mech->get_ok("/library/hello");
 $mech->content_contains(qq{/uploads/$site_id/$expected"});
 $mech->content_contains(qq{/uploads/$site_id/thumbnails/$expected.thumb.png"});
 
+# touch the pdf
+ok (-f $thumb, "$thumb exists");
+my $stat = (stat($thumb))[9];
+sleep 2;
+$mech->get_ok("/uploads/$site_id/thumbnails/$expected.thumb.png");
+is ($stat, (stat($thumb))[9], "File has been cached correctly");
+
+my $srcfile = $site->attachments->pdf_by_uri($expected)->f_full_path_name;;
+ok(-f $srcfile, "Found $srcfile");
+my $atime = my $mtime = time();
+utime $atime, $mtime, $srcfile;
+$mech->get_ok("/uploads/$site_id/thumbnails/$expected.thumb.png");
+
+ok((stat($thumb))[9] > $stat, "Thumb $thumb regenerated");
