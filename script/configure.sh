@@ -82,7 +82,7 @@ cp log4perl.conf log4perl.local.conf
 sed -i "s/localhost/$hostname/" log4perl.local.conf
 sed -i "s/amuse@/`whoami`@/" log4perl.local.conf
 
-./script/install_amw_site.pl --hostname "$hostname" --email "`whoami`@$hostname"
+./script/amusewiki-create-doc-site --hostname "$hostname" --email "`whoami`@$hostname"
 
 # install the first site and the first user. No PDF compile
 echo "Bootstrapping the initial site with the documentation"

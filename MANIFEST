@@ -534,6 +534,7 @@ root/static/js/validate/package.json
 root/static/js/validate/README.md
 root/themes/test-theme/layout.tt
 root/themes/test-theme/library.tt
+script/amusewiki-create-doc-site
 script/amusewiki-jobber
 script/amusewiki-upgrade-db
 script/amusewikifarm_cgi.pl
@@ -548,7 +549,6 @@ script/configure.sh
 script/generate-nginx-conf.pl
 script/install-cgit.pl
 script/install.sh
-script/install_amw_site.pl
 script/install_fonts.sh
 script/install_js.sh
 script/jobber.pl

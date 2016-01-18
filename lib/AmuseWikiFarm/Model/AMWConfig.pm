@@ -27,10 +27,12 @@ it under the same terms as Perl itself.
 =cut
 
 has ckeditor_use_cdn => ( is => 'ro',
+                          default => sub { 0 },
                           isa => 'Bool');
 
 has validate_use_cdn => ( is => 'ro',
-                           isa => 'Bool');
+                          default => sub { 0 },
+                          isa => 'Bool');
 
 __PACKAGE__->meta->make_immutable;
 
