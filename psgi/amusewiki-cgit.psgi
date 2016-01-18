@@ -6,9 +6,7 @@ use warnings;
 use FindBin qw/$Bin/;
 use Plack::App::WrapCGI;
 use File::Spec;
-my $cgitrc = File::Spec->canonpath("$Bin/../opt/etc/cgitrc");
-print $cgitrc, "\n";
-
+my $cgitrc = File::Spec->rel2abs(File::Spec->catfile(qw/opt etc cgitrc/));
 die "No cgitrc found" unless -f $cgitrc;
 
 %ENV = (

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+chown amusewiki:amusewiki /var/lib/amusewiki
+dbic_file=/var/lib/amusewiki/dbic.yaml
+if [ ! -f $dbic_file ]; then
+    cp /usr/share/perl5/AmuseWikiFarm/dbic.yaml.sqlite.example $dbic_file;
+    chown amusewiki:amusewiki $dbic_file;
+    chmod 600 $dbic_file;
+    su -c 'cd /var/lib/amusewiki; amusewiki-create-doc-site' amusewiki
+fi
+
+# refresh the configuration
+su -c 'cd /var/lib/amusewiki; amusewiki-generate-nginx-conf' amusewiki
+
+#DEBHELPER#
+

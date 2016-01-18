@@ -65,7 +65,9 @@ has cache => (is => 'ro',
               builder => '_build_cache');
 
 sub _build_cache {
-    catdir(shift->amw_home, qw/opt cache cgit/);
+    my $cache = catdir(shift->amw_home, qw/opt cache cgit/);
+    make_path($cache) unless -d $cache;
+    return $cache;
 }
 
 has etc => (is => 'ro',
@@ -74,7 +76,9 @@ has etc => (is => 'ro',
             builder => '_build_etc');
 
 sub _build_etc {
-    catdir(shift->amw_home, qw/opt etc/);
+    my $etc = catdir(shift->amw_home, qw/opt etc/);
+    make_path($etc) unless -d $etc;
+    return $etc;
 }
 
 has cgitrc => (is => 'ro',
@@ -115,15 +119,17 @@ sub configure {
     binmode $fh, ':encoding(utf-8)';
     my $schema = $self->schema;
     die "Missing schema, can't configure" unless $schema;
+    my $cache_root = $self->cache;
     print $fh "####### automatically generated on " . localtime() . " ######\n\n";
     print $fh <<'CONFIG';
 virtual-root=/git
 enable-index-owner=0
 robots="noindex, nofollow"
 cache-size=1000
+cache-root=$cache_root
 enable-commit-graph=1
 embedded=1
-
+logo=/git/cgit.png
 CONFIG
     foreach my $site ($schema->resultset('Site')->all) {
         next unless $site->cgit_integration;
@@ -149,7 +155,7 @@ CONFIG
         copy($self->cgitrc, $self->cgitrc . "." . time());
     }
     chmod 0644, $fh->filename;
-    move($fh->filename, $self->cgitrc);
+    move($fh->filename, $self->cgitrc) or log_error { "Cannot install " . $self->cgitrc . " $!" };
 }
 
 sub cgi_exists {

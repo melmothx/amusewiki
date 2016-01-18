@@ -89,7 +89,7 @@ echo "Bootstrapping the initial site with the documentation"
 
 echo "#####################################################"
 echo
-./script/generate-nginx-conf.pl
+./script/amusewiki-generate-nginx-conf
 echo "#####################################################"
 echo
 

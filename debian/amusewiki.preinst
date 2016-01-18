@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+getent passwd amusewiki > /dev/null || \
+    adduser --system --home /var/lib/amusewiki --shell /bin/bash \
+            --gecos 'AmuseWiki' --group amusewiki
+
+mkdir -p /var/lib/amusewiki/
+chown amusewiki:amusewiki /var/lib/amusewiki/

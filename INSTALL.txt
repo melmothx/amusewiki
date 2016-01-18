@@ -110,7 +110,7 @@ To start/stop/restart the application:
 
 To regenerate the nginx configuration after adding a site:
 
-  ./script/generate-nginx-conf.pl
+  ./script/amusewiki-generate-nginx-conf
 
 (and read the output).
 
@@ -164,7 +164,7 @@ if it's a fresh install).
   su -c './bootstrap.sh' # or just install the deps manually
   ./venv.sh
   cd ../..
-  ./script/generate-nginx-conf.pl
+  ./script/amusewiki-generate-nginx-conf
 
 The script cronjobs/le.sh is created and refreshed automatically when
 you edit the sites. Please note that the address of the mail address

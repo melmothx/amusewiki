@@ -1,7 +1,7 @@
 Source: amusewiki
 Section: perl
 Priority: optional
-Maintainer: packager <melmothx@gmail.com>
+Maintainer: melmothX <melmothx@gmail.com>
 Build-Depends: debhelper (>= 9), dh-systemd
 Build-Depends-Indep: libcam-pdf-perl,
  libcatalyst-action-renderview-perl,
@@ -64,7 +64,7 @@ Build-Depends-Indep: libcam-pdf-perl,
  libxml-feedpp-perl (>= 0.43),
  perl (>= 5.15.2)
 Standards-Version: 3.9.6
-Homepage: https://metacpan.org/release/AmuseWikiFarm
+Homepage: https://amusewiki.org
 
 Package: amusewiki
 Architecture: all
@@ -127,8 +127,7 @@ Depends: ${misc:Depends}, ${perl:Depends},
  libtext-wrapper-perl,
  libtimedate-perl,
  libxml-feedpp-perl (>= 0.43),
- perl (>= 5.13.9)
-Description: Catalyst based application
- (no description was found)
- .
- This description was automagically extracted from the module by dh-make-perl.
+ perl (>= 5.13.9),
+ cgit,
+ texlive-full, fonts-cmu, fonts-texgyre
+Description: AmuseWiki, a library-oriented wiki engine

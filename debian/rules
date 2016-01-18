@@ -1,9 +1,13 @@
 #!/usr/bin/make -f
+PACKAGE = $(shell dh_listpackages)
+TMP     = $(CURDIR)/debian/$(PACKAGE)
 
 %:
 	dh $@ --with systemd
 
 override_dh_systemd_enable:
-	dh_systemd_enable --name=amusewiki-cgit
-	dh_systemd_enable --name=amusewiki-web
-	dh_systemd_enable --name=amusewiki-jobber
+	install -d $(TMP)/lib/systemd/system
+	install -p -m644 $(CURDIR)/debian/amusewiki-cgit.service $(TMP)/lib/systemd/system/
+	install -p -m644 $(CURDIR)/debian/amusewiki-web.service $(TMP)/lib/systemd/system/
+	install -p -m644 $(CURDIR)/debian/amusewiki-jobber.service $(TMP)/lib/systemd/system/
+	dh_systemd_enable

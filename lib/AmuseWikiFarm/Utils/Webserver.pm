@@ -74,7 +74,7 @@ sub _build_app_directory {
     # check against myself
     my $cwd = getcwd;
     die "Application started from the wrong directory!"
-      unless (-f File::Spec->catfile($cwd, qw/lib AmuseWikiFarm Utils Webserver.pm/));
+      unless (-d 'repo' && -f 'dbic.yaml');
     return $cwd;
 }
 
@@ -156,7 +156,7 @@ sub generate_nginx_config {
         chmod 0600, $self->ssl_default_key;
     }
 
-    my $cgit = "### cgit is not installed ###\n";
+    my $cgit = "### cgit is not installed locally ###\n";
     if (-f $cgit_path) {
         $cgit = <<"EOF";
 server {
