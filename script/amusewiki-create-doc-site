@@ -6,10 +6,10 @@ BEGIN {
 use strict;
 use warnings;
 use utf8;
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use lib 'lib';
 use DBIx::Class::DeploymentHandler;
 use AmuseWikiFarm::Schema;
+use AmuseWikiFarm;
 use Data::Dumper;
 use Try::Tiny;
 use Cwd;
@@ -48,10 +48,17 @@ my $dh = DBIx::Class::DeploymentHandler->new({
                                                                       add_drop_table => 0,
                                                                       quote_identifiers => 1,
                                                                      },
-                                              script_directory => "$FindBin::Bin/../dbicdh",
+                                              script_directory => AmuseWikiFarm->path_to('dbicdh')->stringify,
                                              });
 
 $dh->install;
+
+# create the needed directories
+foreach my $dir (qw/repo opt xapian bbfiles cronjobs opt ssl staging/) {
+     unless (-d $dir) {
+        mkdir $dir or die "Cannot create $dir!";
+    }
+}
 
 if (my @sites = $schema->resultset('Site')->all) {
     die "There are already sites in this database, aborting\n";
@@ -89,6 +96,7 @@ my $site = $schema->resultset('Site')->create({
                                                id => $site_id,
                                                canonical => $hostname,
                                                sitename => "AmuseWiki documentation",
+                                               secure_site => 0,
                                                pdf => 0, # no pdfs for this, speed up
                                                mail_notify => $mail_notify || '',
                                               });

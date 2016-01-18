@@ -10,9 +10,7 @@ amusewiki-upgrade-db
 
 =head1 SYNOPSIS
 
-  amusewiki-upgrade-db [ --ddl /path/to/dbicdh ]
-
-By default, look into the current directory for C<dbicdh>.
+  amusewiki-upgrade-db
 
 Upgrade the amusewiki database if needed.
 
@@ -81,8 +79,8 @@ This is what is going to happen, provided that the files are in place:
 
 use strict;
 use warnings;
-use FindBin;
-use lib "$FindBin::Bin/../lib";
+use lib 'lib';
+use AmuseWikiFarm;
 use AmuseWikiFarm::Schema;
 use DBIx::Class::DeploymentHandler;
 use Getopt::Long;
@@ -90,11 +88,9 @@ use Data::Dumper;
 use Pod::Usage;
 my ($prepare);
 
-my $script_directory = 'dbicdh';
 my $help;
 
 GetOptions(prepare => \$prepare,
-           ddl => \$script_directory,
            help => \$help,
           ) or die;
 
@@ -121,7 +117,7 @@ my $dh = DBIx::Class::DeploymentHandler->new({
                                               sql_translator_args => { add_drop_table => 0,
                                                                        quote_identifiers => 1,
                                                                      },
-                                              script_directory => $script_directory,
+                                              script_directory => AmuseWikiFarm->path_to('dbicdh')->stringify,
                                               force_overwrite => $prepare,
                                              });
 

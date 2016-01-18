@@ -30,7 +30,7 @@ prepare_app () {
         cp Makefile.PL "Makefile.PL~"
     fi
 
-    perl -I lib ./script/amusewiki-upgrade-db
+    ./script/amusewiki-upgrade-db
 }
 
 # echo `pwd`
