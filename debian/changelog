@@ -1,3 +1,9 @@
+amusewiki (1.592-2) unstable; urgency=medium
+
+  * Fixed missing dependencies with --no-install-recommends
+
+ -- Marco Pessotto <melmothx@gmail.com>  Tue, 19 Jan 2016 21:17:49 +0100
+
 amusewiki (1.592-1) unstable; urgency=low
 
   * Initial Release.
