@@ -239,6 +239,18 @@ EOF
     # END LEGACY STUFF
 
     # deny direct access to the cgi file
+INCLUDE
+
+    # debian ships ckeditor
+    if (-f '/usr/share/javascript/ckeditor/ckeditor.js') {
+        print $fh <<'INCLUDE';
+    location /static/js/ckeditor/ {
+        alias /usr/share/javascript/ckeditor/;
+    }
+INCLUDE
+    }
+
+    print $fh <<"INCLUDE";
     location /git/cgit.cgi {
         deny all;
     }
