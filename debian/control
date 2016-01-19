@@ -129,5 +129,8 @@ Depends: ${misc:Depends}, ${perl:Depends},
  libxml-feedpp-perl (>= 0.43),
  perl (>= 5.13.9),
  cgit,
- texlive-full, fonts-cmu, fonts-texgyre, fonts-sil-charis, ckeditor
+ texlive-full, fonts-cmu, fonts-texgyre, fonts-sil-charis, ckeditor,
+ fonts-antykwa-poltawskiego, fonts-antykwa-torunska, fonts-nowacki,
+ fonts-droid, fonts-dejavu, fonts-linuxlibertine, fonts-sil-charis,
+ fonts-paratype
 Description: AmuseWiki, a library-oriented wiki engine
