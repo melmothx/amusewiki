@@ -26,7 +26,7 @@ for font in 'CMU Serif'            \
             'CMU Typewriter Text'  \
             'DejaVu Sans Mono'     \
             'TeX Gyre Cursor'; do
-    rm -f font-preview.{tex,log,pdf}
+    rm -f font-preview.aux font-preview.tex font-preview.log
     pdf=$(echo $font | sed -e 's/ /-/g').pdf
     if [ ! -f "../root/static/images/font-preview/$pdf" ]; then
 
@@ -41,7 +41,7 @@ for font in 'CMU Serif'            \
     convert -density 150 -trim -quality 100 -sharpen 0x1.0 $pdf[1] $png
     echo "created $pdf and $png"
     mv $pdf $png ../root/static/images/font-preview
-    rm -f font-preview.{aux,tex,log}
+    rm -f font-preview.aux font-preview.tex font-preview.log
     fi
 done
 
