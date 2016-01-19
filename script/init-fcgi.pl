@@ -5,15 +5,9 @@ use strict;
 use Daemon::Control;
 use File::Basename;
 use File::Spec;
-
-my $script = $0;
-
-my $fullpath = File::Spec->rel2abs($script);
-
-my ($name, $basedir, $suffix) = fileparse($fullpath);
-
-my $program = File::Spec->catfile($basedir, qw/script amusewikifarm_fastcgi.pl/);
-
+use Cwd;
+my $basedir = getcwd();
+my $program = File::Spec->catfile($basedir, "script", "amusewikifarm_fastcgi.pl");
 my $vardir = File::Spec->catdir($basedir, 'var');
 unless (-d $vardir) {
     mkdir $vardir or die $!;

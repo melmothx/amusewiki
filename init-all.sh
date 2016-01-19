@@ -41,14 +41,14 @@ start_all () {
     amw_version=`perl -I lib -MAmuseWikiFarm -e 'print $AmuseWikiFarm::VERSION'`
     touch current_version_is_$amw_version.txt
     rm -rfv var/cache/*
-	./init-fcgi.pl start
+	./script/init-fcgi.pl start
     ./script/jobber.pl start
     sleep 5
 }
 
 stop_all () {
     ./script/jobber.pl stop
-	./init-fcgi.pl stop
+	./script/init-fcgi.pl stop
 }
 
 case $1 in
