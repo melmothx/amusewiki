@@ -7,6 +7,18 @@ use File::Copy;
 use File::Spec;
 use Data::Dumper;
 use File::Basename;
+use File::Path qw/make_path/;
+use Cwd;
+my $dir = $ARGV[0];
+if ($dir) {
+    unless (-d $dir) {
+        make_path($dir) or die "Cannot create $dir $!";
+    }
+    chdir $dir or die "Cannot enter $dir";
+}
+else {
+    $dir = getcwd;
+}
 
 my @styles = (qw/bold italic regular bolditalic/);
 
@@ -42,7 +54,7 @@ foreach my $font (@fonts) {
             my $style = lc($3);
             $style =~ s/\s//g;
             next unless $name eq $font;
-            print "$file $name $style\n";
+            # print "$file $name $style\n";
             if ($specs{$name}{$style}) {
                 warn "Duplicated font! $file $name $style\n";
             }
@@ -79,3 +91,4 @@ foreach my $font (keys %specs) {
     }
 }
 
+print "webfonts directory created in $dir\n";

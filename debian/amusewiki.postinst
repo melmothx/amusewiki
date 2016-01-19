@@ -2,15 +2,20 @@
 
 chown amusewiki:amusewiki /var/lib/amusewiki
 dbic_file=/var/lib/amusewiki/dbic.yaml
+webfonts_dir=/var/lib/amusewiki/webfonts
 if [ ! -f $dbic_file ]; then
     cp /usr/share/perl5/AmuseWikiFarm/dbic.yaml.sqlite.example $dbic_file;
     chown amusewiki:amusewiki $dbic_file;
     chmod 600 $dbic_file;
     su -c 'cd /var/lib/amusewiki; amusewiki-create-doc-site' amusewiki
 fi
-
 # refresh the configuration
-su -c 'cd /var/lib/amusewiki; amusewiki-generate-nginx-conf' amusewiki
+
+if [ ! -d $webfonts_dir ]; then
+    su -c 'amusewiki-populate-webfonts /var/lib/amusewiki/webfonts' amusewiki
+fi
+
+su -c 'cd /var/lib/amusewiki; amusewiki-upgrade-db; amusewiki-generate-nginx-conf' amusewiki
 
 #DEBHELPER#
 
