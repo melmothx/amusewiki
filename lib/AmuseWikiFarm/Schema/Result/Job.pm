@@ -291,8 +291,12 @@ Ensure that the file doesn't exit yet.
 
 sub log_dir {
     my $dir = File::Spec->catdir(qw/log jobs/);
-    # guaranteed to exist by log/jobs/README.txt
-    die "We're in the wrong directory: " . getcwd()  unless -d $dir;
+    unless (-d $dir) {
+        unless (-d 'log') {
+            mkdir 'log' or die "Cannot create log dir! $!";
+        }
+        mkdir $dir or die "Cannot create  $dir $!";
+    }
     return File::Spec->rel2abs($dir);
 }
 
