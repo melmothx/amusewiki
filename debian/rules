@@ -12,3 +12,7 @@ override_dh_systemd_enable:
 	install -p -m644 $(CURDIR)/debian/amusewiki-jobber.service $(TMP)/lib/systemd/system/
 	cat $(CURDIR)/debian/amusewiki-debian-config.conf > $(TMP)/usr/share/perl5/AmuseWikiFarm/amusewikifarm.conf
 	dh_systemd_enable
+
+override_dh_testdir
+	$(CURDIR)/font-preview-gen.sh
+	dh_testdir

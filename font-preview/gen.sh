@@ -1,6 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
+
+cd $(dirname $(basename $0));
+
+mkdir -p ../root/static/images/font-preview
 
 for font in 'CMU Serif'            \
             'Linux Libertine O'    \
@@ -34,5 +38,6 @@ for font in 'CMU Serif'            \
     convert -density 150 -trim -quality 100 -sharpen 0x1.0 $pdf[1] $png
     echo "created $pdf and $png"
     mv $pdf $png ../root/static/images/font-preview
+    rm -f font-preview.{aux,tex,log}
 done
-rm -f font-preview.aux font-preview.log font-preview.tex
+
