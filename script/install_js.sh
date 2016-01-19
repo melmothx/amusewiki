@@ -17,8 +17,10 @@ if  [ ! -f "$js_validate_dir/dist/jquery.validate.js" ]; then
 fi
 
 if [ ! -f "$js_dir/ckeditor/ckeditor.js" ]; then
-    cd $js_dir
-    wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%20$ckeditor_version/$ckeditor_zip
-    unzip $ckeditor_zip
-    cd $home_dir
+    if [ ! -f "/usr/share/javascript/ckeditor/ckeditor.js" ]; then
+        cd $js_dir
+        wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%20$ckeditor_version/$ckeditor_zip
+        unzip $ckeditor_zip
+        cd $home_dir
+    fi
 fi
