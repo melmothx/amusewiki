@@ -17,7 +17,5 @@
 root/static/js/ckeditor/.*
 root/git/.*
 root/static/cgit/.*
-root/static/js/validate/(demo|src|lib)/.*
 root/static/.*\.zip$
-root/static/js/validate/test/.*
 root/uploads/.*
