@@ -107,20 +107,6 @@ dbicdh/SQLite/upgrade/6-7/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
 dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
-inc/File/Copy/Recursive.pm
-inc/Module/AutoInstall.pm
-inc/Module/Install.pm
-inc/Module/Install/AutoInstall.pm
-inc/Module/Install/Base.pm
-inc/Module/Install/Can.pm
-inc/Module/Install/Catalyst.pm
-inc/Module/Install/Fetch.pm
-inc/Module/Install/Include.pm
-inc/Module/Install/Makefile.pm
-inc/Module/Install/Metadata.pm
-inc/Module/Install/Scripts.pm
-inc/Module/Install/Win32.pm
-inc/Module/Install/WriteAll.pm
 lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
 lib/AmuseWikiFarm/Archive/Cache.pm
@@ -208,7 +194,6 @@ lib/AmuseWikiFarm/View/TT.pm
 lib/CatalystX/AmuseWiki/I18N.pm
 Makefile.PL
 MANIFEST
-META.yml
 psgi/amusewiki-cgit.psgi
 psgi/amusewiki.psgi
 README
@@ -534,6 +519,7 @@ root/themes/test-theme/library.tt
 script/amusewiki-create-doc-site
 script/amusewiki-generate-nginx-conf
 script/amusewiki-jobber
+script/amusewiki-populate-webfonts
 script/amusewiki-upgrade-db
 script/amusewikifarm_cgi.pl
 script/amusewikifarm_create.pl
