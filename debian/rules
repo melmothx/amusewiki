@@ -14,5 +14,5 @@ override_dh_systemd_enable:
 	dh_systemd_enable
 
 override_dh_testdir:
-	$(CURDIR)/font-preview-gen.sh
+	$(CURDIR)/font-preview/gen.sh
 	dh_testdir
