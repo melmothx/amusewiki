@@ -54,7 +54,7 @@ my $dh = DBIx::Class::DeploymentHandler->new({
 $dh->install;
 
 # create the needed directories
-foreach my $dir (qw/repo opt xapian bbfiles cronjobs opt ssl staging/) {
+foreach my $dir (qw/repo opt xapian bbfiles cronjobs opt ssl staging log/) {
      unless (-d $dir) {
         mkdir $dir or die "Cannot create $dir!";
     }
