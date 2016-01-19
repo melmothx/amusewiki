@@ -384,7 +384,6 @@ root/static/js/jquery-1.11.1.js
 root/static/js/jquery-1.11.1.min.js
 root/static/js/jquery-ui-1.10.4.custom.js
 root/static/js/jquery-ui-1.10.4.custom.min.js
-root/static/js/jquery.validate.min.js
 root/static/js/markitup/jquery.markitup.js
 root/static/js/markitup/sets/muse/images/bold.png
 root/static/js/markitup/sets/muse/images/code.png
@@ -529,12 +528,11 @@ root/static/js/validate/dist/localization/methods_nl.js
 root/static/js/validate/dist/localization/methods_nl.min.js
 root/static/js/validate/dist/localization/methods_pt.js
 root/static/js/validate/dist/localization/methods_pt.min.js
-root/static/js/validate/Gruntfile.js
-root/static/js/validate/package.json
-root/static/js/validate/README.md
+root/static/js/validate/dist/README.md
 root/themes/test-theme/layout.tt
 root/themes/test-theme/library.tt
 script/amusewiki-create-doc-site
+script/amusewiki-generate-nginx-conf
 script/amusewiki-jobber
 script/amusewiki-upgrade-db
 script/amusewikifarm_cgi.pl
@@ -546,7 +544,6 @@ script/bootstrap_archive.pl
 script/cleanup-tests.sh
 script/clone-site.pl
 script/configure.sh
-script/generate-nginx-conf.pl
 script/install-cgit.pl
 script/install.sh
 script/install_fonts.sh
