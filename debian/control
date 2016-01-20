@@ -69,6 +69,7 @@ Homepage: https://amusewiki.org
 Package: amusewiki
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends},
+ adduser,
  libcatalyst-action-renderview-perl,
  libcatalyst-authentication-store-dbix-class-perl,
  libcatalyst-model-adaptor-perl (>= 0.10),
