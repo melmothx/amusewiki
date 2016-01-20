@@ -9,6 +9,23 @@ use Data::Dumper;
 use File::Basename;
 use File::Path qw/make_path/;
 use Cwd;
+
+=pod
+
+=head1 NAME
+
+amusewiki-populate-webfonts [ directory ]
+
+=head1 SYNOPSIS
+
+Create the configuration files and store the fonts needed by
+Text::Amuse::Compile for embedding fonts into the EPUB files.
+
+amusewiki needs this for the font-embedding feature. The directory
+needs to be C<webfonts> in the application root.
+
+=cut
+
 my $dir = $ARGV[0];
 if ($dir) {
     unless (-d $dir) {

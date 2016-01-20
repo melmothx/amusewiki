@@ -11,6 +11,22 @@ use Fcntl qw/:flock/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
 
+=pod
+
+=head1 NAME
+
+amusewiki-jobber
+
+=head1 SYNOPSIS
+
+Daemon which takes care of all the slow amusewiki's operations. Needs
+to be launched from the application's root, where the repo are located.
+
+It stays in the foreground, but each job is managed in a double fork
+(so killing it doesn't kill the grandchild).
+
+=cut
+
 nice(19);
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $count = -1;
