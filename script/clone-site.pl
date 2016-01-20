@@ -9,6 +9,7 @@ use AmuseWikiFarm::Schema;
 use File::Temp;
 use YAML qw/LoadFile DumpFile/;
 use Getopt::Long;
+use Pod::Usage;
 
 my $directory;
 
@@ -26,36 +27,47 @@ my %actions = (
               );
 
 unless ($action && $actions{$action}) {
-    show_help();
+    pod2usage;
     exit 2;
 }
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 $actions{$action}->(@args);
 
-sub show_help {
-    print <<"HELP";
-Importing configurations from files:
+=pod
 
- $0 import [ file1.yml , file2.yml, ... ]
+=encoding utf8
 
-Exporting site configurations to files:
+=head1 NAME
 
- $0 export [ id1, id2, id3, .... ]
+amusewiki-clone-site
+
+=head1 SYNOPSIS
+
+Importing configuration, users, links, categories from files:
+
+ amusewiki-clone-site import [ file1.yml , file2.yml, ... ]
+
+Exporting the same to files:
+
+ amusewiki-clone-site export [ id1, id2, id3, .... ]
 
 When exporting, the files will be left in temporary directory. Without
 arguments, all the sites will be exported.
 
-Options:
+=head2 OPTIONS
 
- --directory /path/to/dir
+=over 4
+
+=item --directory /path/to/dir
 
 Accepted both by export and by import. On export, dump the files
 there. On import, import all the YAML file from the specified
 directory.
 
-HELP
-}
+=back
+
+=cut
 
 sub import {
     my (@files) = @_;
