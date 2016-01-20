@@ -15,8 +15,9 @@ use Try::Tiny;
 use Cwd;
 use Getopt::Long;
 use Crypt::XkcdPassword;
+use Pod::Usage;
 
-my ($hostname, $mail_notify);
+my ($hostname, $mail_notify, $help);
 my $site_id = 'amw';
 my $password = Crypt::XkcdPassword->new(words => 'IT')->make_password(5, qr{\A[0-9a-zA-Z]{3,}\z});
 my $username = "amusewiki";
@@ -26,7 +27,59 @@ GetOptions(
            'username=s' => \$username,
            'password=s' => \$password,
            'email=s' => \$mail_notify,
+           help => \$help,
           ) or die;
+
+=head1 NAME
+
+amusewiki-create-doc-site
+
+=head1 SYNOPSIS
+
+  amusewiki-create-doc-site
+
+Try to clone the repository of amusewiki.org, creating an initial site
+with with documentation and a root user as well, so you are able to
+login and create new sites/users from there.
+
+It needs to be called from the application root directory, from where
+both the web-server and the jobber should start.
+
+It creates all the needed directories, but it needs to be able to
+connect to the database. This means that you need to have dbic.yaml in
+the current directory, or in ~/.dbic.yaml with the C<amuse> stanza
+with the database settings.
+
+=head2 OPTIONS
+
+=over 4
+
+=item --hostname
+
+Defaults to C<amusewiki.`hostname -d`>
+
+=item --username
+
+The root user. Its name defaults to amusewiki
+
+=item --password
+
+The root user's password. Automatically generated if not provided.
+
+=item --email
+
+Optional (without it, no notification are sent on this site)
+
+=back
+
+=cut
+
+if ($help) {
+    pod2usage;
+    exit 2;
+}
+
+
 
 unless ($hostname) {
    $hostname = `hostname -d` || 'localdomain';
