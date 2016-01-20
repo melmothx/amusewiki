@@ -122,6 +122,7 @@ catalyst_ignore('repo',
                 'stock_files',
                 'font-preview',
                 'db_backups',
+                '.*\.lock',
                 'ssl');
 catalyst;
 
