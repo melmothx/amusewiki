@@ -12,7 +12,21 @@ my @sites = $schema->resultset('Site')->active_only->all;
 
 my $confgenerator = AmuseWikiFarm->model('Webserver');
 
-print "# Updating let's encrypt cronjob " . $confgenerator->letsencrypt_cronjob_path . "\n";
+=pod
+
+=head1 NAME
+
+amusewiki-generate-nginx-conf
+
+=head1 SYNOPSIS
+
+Generate a suitable nginx configuration and prints the activation
+commands.
+
+=cut
+
+# hidden feature until simp_le doesn't enter debian in some way
+# print "# Updating let's encrypt cronjob " . $confgenerator->letsencrypt_cronjob_path . "\n";
 $confgenerator->update_letsencrypt_cronjob(@sites);
 
 
