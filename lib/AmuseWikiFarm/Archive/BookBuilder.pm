@@ -293,6 +293,8 @@ has coverfile => (is => 'rw',
 Mostly documented in L<Text::Amuse::Compile::Templates>. All of them
 default to false.
 
+=over 4
+
 =item twoside
 
 =item nocoverpage
@@ -306,6 +308,8 @@ default to false.
 =item imposed
 
 If the imposition pass is required.
+
+=back
 
 =cut
 
@@ -419,7 +423,7 @@ has papersize => (
                  );
 
 
-=head papersize
+=head2 papersize
 
 =head2 paper_width
 

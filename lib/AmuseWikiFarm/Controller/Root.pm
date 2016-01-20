@@ -50,8 +50,6 @@ Locale name
 
 (Present only if there are related sites or special pages).
 
-=item
-
 =back
 
 =cut

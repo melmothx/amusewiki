@@ -421,7 +421,7 @@ sub diff :Chained('get_revision') :PathPart('diff') :Args(0) {
 }
 
 
-=Head1 AUTHOR
+=head1 AUTHOR
 
 Marco,,,
 

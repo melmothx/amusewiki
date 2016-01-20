@@ -73,6 +73,8 @@ pagebreak:
 
   amusewiki-bootstrap-archive --recompile
 
+=back
+
 =cut
 
 # be nice
