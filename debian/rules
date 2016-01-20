@@ -20,8 +20,9 @@ override_dh_testdir:
 override_dh_auto_build:
 	dh_auto_build --max-parallel=1
 
-# fix shebang
+# fix shebang and remove the use 'lib' stuff
 override_dh_auto_install:
 	dh_auto_install
 	cat $(CURDIR)/debian/amusewiki-debian-config.conf > $(TMP)/usr/share/perl5/AmuseWikiFarm/amusewikifarm.conf
 	sed -i '1s,^#!.*perl,#!/usr/bin/perl,' $(TMP)/usr/bin/amusewiki-*
+	sed -i "/^use lib 'lib';/s/^/# /" $(TMP)/usr/bin/amusewiki-*
