@@ -7,6 +7,26 @@ use lib 'lib';
 use AmuseWikiFarm::Schema;
 use Crypt::XkcdPassword;
 
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-reset-password
+
+=head1 SYNOPSIS
+
+Usage: amusewiki-reset-password <username> [<password>]
+
+Reset the password of an arbitrary user. The password is optional and
+will be generated automatically if not provided.
+
+You need to have dbic.yaml in the current directory, or in
+~/.dbic.yaml with the C<amuse> stanza with the settings.
+
+=cut
+
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my ($username, $password) = @ARGV;
