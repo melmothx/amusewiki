@@ -66,22 +66,6 @@ else
     show_dbic_setup
 fi
 
-cat <<EOF
-
-Setting up logger. Please note that by default, application errors are
-sent to info@amusewiki.org (so bugs can be fixed promptly). This is
-may or may not be what you want, and may have somehow sensitive info
-inside (like session ids).
-
-You are welcome to edit log4perl.local.conf (read the comments) to
-suit your needs.
-
-EOF
-
-cp log4perl.conf log4perl.local.conf
-sed -i "s/localhost/$hostname/" log4perl.local.conf
-sed -i "s/amuse@/`whoami`@/" log4perl.local.conf
-
 ./script/amusewiki-create-doc-site --hostname "$hostname" --email "`whoami`@$hostname"
 
 # install the first site and the first user. No PDF compile
