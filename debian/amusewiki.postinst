@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 chown amusewiki:amusewiki /var/lib/amusewiki
 dbic_file=/var/lib/amusewiki/dbic.yaml
 webfonts_dir=/var/lib/amusewiki/webfonts

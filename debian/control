@@ -137,4 +137,9 @@ Depends: ${misc:Depends}, ${perl:Depends},
  texlive-base, texlive-latex-base, texlive-latex-recommended, texlive-latex-extra,
  texlive-generic-recommended, texlive-fonts-recommended,
  texlive-luatex, texlive-xetex, texlive-lang-all
-Description: AmuseWiki, a library-oriented wiki engine
+Description: library-oriented wiki engine, publishing and authoring platform
+ Features: Multi-site engine, user-friendly markup borrowed from Emacs
+ Muse, importing of HTML documents preserving most of the logical
+ markup, wide range of output formats, including high-quality PDF (via
+ LaTeX) and EPUB, automatic generation of PDF for printing, collection
+ creation and PDF reformatting, Git backend.
