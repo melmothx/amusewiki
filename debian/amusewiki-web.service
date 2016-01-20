@@ -6,7 +6,7 @@ After=nss-user-lookup.target
 WorkingDirectory=/var/lib/amusewiki
 User=amusewiki
 Group=amusewiki
-ExecStart=/usr/bin/plackup -s FCGI --listen /var/lib/amusewiki/amusewiki.socket --nproc 5 /usr/share/perl5/AmuseWikiFarm/psgi/amusewiki.psgi
+ExecStart=/usr/bin/plackup -s FCGI --listen /var/lib/amusewiki/amusewiki.socket --nproc 3 /usr/share/perl5/AmuseWikiFarm/psgi/amusewiki.psgi
 Restart=always
 
 [Install]
