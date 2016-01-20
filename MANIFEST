@@ -516,6 +516,7 @@ root/static/js/validate/dist/README.md
 root/themes/test-theme/layout.tt
 root/themes/test-theme/library.tt
 script/amusewiki-bootstrap-archive
+script/amusewiki-clone-site
 script/amusewiki-create-doc-site
 script/amusewiki-generate-nginx-conf
 script/amusewiki-jobber
@@ -528,7 +529,6 @@ script/amusewikifarm_fastcgi.pl
 script/amusewikifarm_server.pl
 script/amusewikifarm_test.pl
 script/cleanup-tests.sh
-script/clone-site.pl
 script/configure.sh
 script/init-fcgi.pl
 script/install-cgit.pl

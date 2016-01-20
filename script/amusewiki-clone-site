@@ -3,8 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use FindBin qw/$Bin/;
-use lib "$Bin/../lib";
+use lib 'lib';
 use AmuseWikiFarm::Schema;
 use File::Temp;
 use YAML qw/LoadFile DumpFile/;
