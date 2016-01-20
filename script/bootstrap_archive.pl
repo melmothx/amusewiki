@@ -3,16 +3,15 @@
 use strict;
 use warnings;
 use Cwd;
-use FindBin qw/$Bin/;
+use lib 'lib';
 use File::Basename;
 use File::Find;
 use File::Spec::Functions qw/catdir/;
 use Data::Dumper;
-
-use lib "$Bin/../lib";
 use AmuseWikiFarm::Schema;
 use POSIX qw/nice/;
 use Getopt::Long;
+use Pod::Usage;
 
 my ($refresh, $recompile, $help);
 
@@ -22,37 +21,59 @@ GetOptions (refresh => \$refresh,
            ) or die;
 
 if ($help) {
-    print <<"HELP";
+    pod2usage;
+    exit 2;
+}
 
-Usage: $0 [ --refresh | --recompile | --help ] [ <site-id>, <site-id-2>, ... ]
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-bootstrap-archive
+
+=head1 SYNOPSIS
+
+Usage: amusewiki-bootstrap-archive [ --refresh | --recompile | --help ] [ <site-id>, <site-id-2>, ... ]
 
 The list of site ids is optional. If not passed, all the sites will be built.
 
-With --help option, print this help and exit.
+You need to be in the root directory of the application, i.e. where
+'repo' is located.
+
+=head2 OPTIONS
 
 Without any option, bootstrap the text database and the build the
 files which need compilation.
 
-With --refresh option, same as above, but checking for outdated files
-in the database first. You can save a lot of I/O.
+=over 4
 
-With --recompile, the DB is just ignored, only the outdated files are
+=item --help
+
+Print this help and exit.
+
+=item --refresh
+
+Same as without options, but checking for outdated files in the
+database first. You can save a lot of I/O.
+
+=item --recompile
+
+The database is just ignored, only the outdated files are
 built. Handy if you want to force the rebuilding of some files.
 
 The better strategy to force a rebuilding is to set the timestamp of
 the .tex file in the past. Example to rebuild all the texts with a
 pagebreak:
 
-for i in \$(grep -l ' \\(\\* *\\)\\{5\\}' */*/*.muse); do
-    touch --date="2013-01-01" \$(echo \$i | sed -e 's/\\.muse\$/.tex/')
-done
+  for i in $(grep -l ' \(\* *\)\{5\}' */*/*.muse); do
+      touch --date="2013-01-01" $(echo $i | sed -e 's/\.muse$/.tex/')
+  done
 
-$0 --recompile
+  amusewiki-bootstrap-archive --recompile
 
-HELP
-    exit 2;
-}
-
+=cut
 
 # be nice
 nice(19);
@@ -62,16 +83,15 @@ binmode STDERR, ':encoding(UTF-8)';
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-print "DB loaded, starting up\n";
+die "No repo directory found in the current directory. Are you in the application home?\n"
+  unless -d 'repo';
 
 my @codes;
-foreach my $s ($schema->resultset('Site')->all) {
-    print $s->id . " " . $s->canonical_url . "\n";
-    push @codes, $s->id;
-}
-
 if (@ARGV) {
     @codes = @ARGV;
+}
+else {
+    @codes = map { $_->id } $schema->resultset('Site')->all;
 }
 
 foreach my $code (@codes) {
