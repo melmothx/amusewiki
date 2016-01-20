@@ -529,6 +529,7 @@ script/bootstrap_archive.pl
 script/cleanup-tests.sh
 script/clone-site.pl
 script/configure.sh
+script/init-fcgi.pl
 script/install-cgit.pl
 script/install.sh
 script/install_fonts.sh
