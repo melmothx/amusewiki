@@ -520,6 +520,7 @@ script/amusewiki-create-doc-site
 script/amusewiki-generate-nginx-conf
 script/amusewiki-jobber
 script/amusewiki-populate-webfonts
+script/amusewiki-reset-password
 script/amusewiki-upgrade-db
 script/amusewikifarm_cgi.pl
 script/amusewikifarm_create.pl
@@ -536,7 +537,6 @@ script/install_fonts.sh
 script/install_js.sh
 script/jobber.pl
 script/patch-cam-pdf.sh
-script/reset_password.pl
 script/sync-remote-archive.pl
 script/test-dbic-upgrade-script.pl
 script/upgrade-to-secure-sites.pl
