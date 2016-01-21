@@ -192,6 +192,7 @@ lib/AmuseWikiFarm/View/HTML.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
 lib/AmuseWikiFarm/View/TT.pm
 lib/CatalystX/AmuseWiki/I18N.pm
+LOCALIZATION.txt
 Makefile.PL
 MANIFEST
 psgi/amusewiki-cgit.psgi

@@ -9,8 +9,6 @@ archiving of texts.
 
 For requirement and installation, see INSTALL.txt
 
-What follows is an overview of the architecture.
-
 ** Testing
 
 DO NOT RUN make test IN THE LIVE DIRECTORY. If you want to run the
@@ -111,4 +109,120 @@ If pagelogo.png is present, it will be placed before the latest
 entries on the special pages. The assigned ids are
 "special-pages-logo" for the container and "special-pages-logo-img"
 for the image itself.
+
+** CONFIGURATION FILE
+
+If amusewiki was installed with a package, the location is
+/usr/share/perl5/AmuseWikiFarm/amusewikifarm.conf, otherwise is in the
+application root.
+
+Further configuration can be done creating a file called
+amusewikifarm_local.conf in the same directory of the provided one, if
+needed.
+
+If amusewiki was installed with a package, the webserver root is
+/usr/share/perl5/AmuseWikiFarm/root/, otherwise is "./root" in the
+application directory.
+
+** LET'S ENCRYPT
+
+By default, during the installation a self-signed certificate is
+created. This should be good enough to get you started.
+
+You can set the path to the key and certificate in the admin console,
+if you already have them.
+
+Alternatively you can try Let's encrypt. The installation script
+should have installed a suitable client
+(https://github.com/kuba/simp_le) under the "opt" application
+directory. If not so, in the application home do:
+
+  git clone https://github.com/kuba/simp_le opt/simp_le
+
+You have to complete the installation (either if you're upgrading or
+if it's a fresh install).
+
+  $ cd opt/simp_le
+  $ su -c './bootstrap.sh' # or just install the deps manually
+  $ ./venv.sh
+  $ cd ../..
+  ./script/amusewiki-generate-nginx-conf
+  # or, if installed system-wide
+  $ amusewiki-generate-nginx-conf 
+
+The script cronjobs/le.sh is created and refreshed automatically when
+you edit the sites. Please note that the address of the mail address
+for notification is used as reference mail for let's encrypt, and it's
+skipped if none is provided.
+
+If you want to use that, keep the fields for key and certs empty in
+the console and add an entry like this to the *root* cronjob (so it
+runs le.sh as amuse, but reload nginx when needed):
+
+  37 3 * * * su -c /path-to-amusewiki/cronjobs/le.sh amusewiki && nginx -t && service nginx reload
+
+** MAIL WITH SMTP
+
+Add this stanza to amusewikifarm_local.conf:
+
+<View::Email::Template>
+ # these are Email::Sender::Simple options
+ <sender>
+  mailer SMTP
+  <mailer_args>
+    host     => 'my.smtp.host, # defaults to localhost
+    sasl_username => 'mail',
+    sasl_password => 'blabla',
+  </mailer_args>
+ </sender>
+</View::Email::Template>
+
+** SYNTAX HIGHLIGHT
+
+We ship a copy of highlight.js (https://highlightjs.org) to get an
+optional syntax highlight for code blocks, with support for the
+following languages: HTML, XML, Python, Bash, JS, Ruby, SQL, Diff,
+JSON, Markdown, Perl, TeX.
+
+If you want/need support for other languages, build your own copy on
+https://highlightjs.org/download/ and install the script in
+
+root/static/js/highlight/highlight.pack.local.js
+
+and the CSS file in
+
+root/static/js/highlight/style.local.css
+
+If these files exist, the application will serve them instead of
+the bundled ones.
+
+You need to enable the option in the admin interface to activate it.
+
+
+** EXPOSE THE GIT REPOSITORY WITH GIT-DAEMON
+
+Make the repositories read-only available via git-daemon.
+
+  apt-get install git-daemon-sysvinit
+
+Change /etc/default/git-daemon to read:
+
+  GIT_DAEMON_ENABLE=true
+
+Start the service
+
+  service git-daemon start
+
+Link the repositories in /var/cache/git (as per package documentation).
+Note that in debian jessie it was moved to /var/lib/cache).
+
+Something like this should do, assuming the application root is /var/lib/amusewiki
+
+ root@localhost:/var/cache/git# for i in /var/lib/amusewiki/repo/*; \
+     do if [ -d "$i/.git" ]; then echo $(basename $i); \
+     ln -s $i/.git $(basename $i).git ; fi ; done
+
+And in your application directory, mark the repository for export:
+
+  $ for i in repo/*/.git ; do touch $i/git-daemon-export-ok; done
 
