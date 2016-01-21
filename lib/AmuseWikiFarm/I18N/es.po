@@ -94,7 +94,7 @@ msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Agregar un adjunto (PNG, JPG or PDF"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Agregar marcas de corte al PDF"
 
 msgid "Add new remote repository"
 msgstr "Agregar nuevo repositorio remoto"
@@ -332,7 +332,7 @@ msgid "Couldn't build that"
 msgstr "No se pudo crear eso"
 
 msgid "Cover image (optional)"
-msgstr ""
+msgstr "Imagen de portada (opcional)"
 
 msgid "Create"
 msgstr "Crear"
@@ -552,9 +552,10 @@ msgstr "Corregir tipografía"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
 msgstr ""
+"Encuadernación ajustada a 16 páginas en 2 hojas, con doble doblez individual."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "Encuadernación ajustada a 16 páginas en una sola hoja, con triple doblez."
 
 msgid "Fixed category list"
 msgstr "Lista de categorías corregida"
@@ -650,7 +651,7 @@ msgid "Headings"
 msgstr "Títulos"
 
 msgid "Height:"
-msgstr ""
+msgstr "Alto:"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
@@ -1082,6 +1083,8 @@ msgstr ""
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
+"Espesor del papel (0.10 debería ser apropiado para papel común de "
+"        80gr/m2)"
 
 msgid "Paragraphs"
 msgstr "Párrafos"
@@ -1129,7 +1132,7 @@ msgid "Please choose the Beamer theme"
 msgstr "Por favor elige el tema de Beamer"
 
 msgid "Please choose the font size"
-msgstr ""
+msgstr "Elige el tamaño de la letra, por favor"
 
 msgid "Please choose the main font"
 msgstr "Por favor elige la tipografía principal"
@@ -1244,6 +1247,8 @@ msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
 msgstr ""
+"Por favor selecciona el tamaño de cada página incluyendo las marcas de "
+"corte, antes del encuadernado"
 
 msgid "Please setup the Beamer layout"
 msgstr "Por favor configura la plantilla de Beamer"
@@ -1411,16 +1416,16 @@ msgid "Roles"
 msgstr "Roles"
 
 msgid "Running headings"
-msgstr ""
+msgstr "Encabezados"
 
 msgid "SSL CA certificate path (Apache)"
-msgstr "Path de certificado SSL CA (Apache)"
+msgstr "Ruta de certificado SSL CA (Apache)"
 
 msgid "SSL certificate path (Apache)"
-msgstr "Path de certificado SSL (Apache)"
+msgstr "Ruta de certificado SSL (Apache)"
 
 msgid "SSL chained certificate path (Nginx)"
-msgstr ""
+msgstr "Ruta de certificado SSL (Nginx)"
 
 msgid "SSL configuration"
 msgstr "Configuración SSL"
@@ -1438,7 +1443,7 @@ msgid "Section"
 msgstr "Sección"
 
 msgid "See here for more details."
-msgstr ""
+msgstr "Ver aquí para más detalles."
 
 msgid "See here for the full documentation."
 msgstr "Ver aquí la documentación completa."
@@ -1552,7 +1557,7 @@ msgid "Standalone HTML (printer-friendly)"
 msgstr "HTML puro (bueno para imprimir)"
 
 msgid "Standard"
-msgstr ""
+msgstr "Estándar"
 
 msgid "Static page without javascript"
 msgstr "Página estática sin javascript"
@@ -1943,7 +1948,7 @@ msgstr ""
 "Ancho de la imagen de portada en porcentaje del ancho del bloque de texto."
 
 msgid "Width:"
-msgstr ""
+msgstr "Ancho:"
 
 msgid ""
 "With complex structures, e.g., a chapter with\n"
@@ -2140,6 +2145,8 @@ msgstr "si el repositorio es exportado"
 
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
+"si quieres usar un tamaño personalizado, necesitas ajustar tanto el "
+"ancho como el alto"
 
 msgid "left"
 msgstr "izquierda"
