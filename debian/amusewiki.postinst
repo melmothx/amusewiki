@@ -7,7 +7,7 @@ set -e
 dbic_file=/var/lib/amusewiki/dbic.yaml
 
 if [ ! -f $dbic_file ]; then
-    cp /usr/share/perl5/AmuseWikiFarm/dbic.yaml.sqlite.example $dbic_file;
+    cp /usr/share/doc/amusewiki/dbic.yaml.sqlite.example $dbic_file;
     chown amusewiki:amusewiki $dbic_file;
     chmod 600 $dbic_file;
 fi
@@ -20,8 +20,9 @@ fi
 # refresh the configuration
 if [ ! -d "/var/lib/amusewiki/opt/cache/cgit" ]; then
     su -c 'mkdir -p /var/lib/amusewiki/opt/cache/cgit' amusewiki
-    chown www-data:www-data /var/lib/amusewiki/opt/cache/cgit
 fi
+# assert that cgit can write into its own cache
+chown www-data:www-data /var/lib/amusewiki/opt/cache/cgit
 
 if [ ! -d "/var/lib/amusewiki/webfonts" ]; then
     su -c 'amusewiki-populate-webfonts /var/lib/amusewiki/webfonts' amusewiki

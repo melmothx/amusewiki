@@ -15,8 +15,11 @@ my $directory;
 GetOptions('directory=s' => \$directory) or die;
 
 if ($directory) {
-    die "$directory is not a directory" unless -d $directory;
+    unless (-d $directory) {
+        mkdir $directory or die "Cannot create $directory $!";
+    }
 }
+die "$directory is not a directory" unless -d $directory;
 
 my ($action, @args) = @ARGV;
 

@@ -121,7 +121,7 @@ sub configure {
     die "Missing schema, can't configure" unless $schema;
     my $cache_root = $self->cache;
     print $fh "####### automatically generated on " . localtime() . " ######\n\n";
-    print $fh <<'CONFIG';
+    print $fh <<"CONFIG";
 virtual-root=/git
 enable-index-owner=0
 robots="noindex, nofollow"

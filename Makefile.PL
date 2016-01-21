@@ -124,6 +124,7 @@ catalyst_ignore('repo',
                 'font-preview',
                 'db_backups',
                 '.*\.lock',
+                '.*\.example',
                 'ssl');
 catalyst;
 

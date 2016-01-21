@@ -176,6 +176,7 @@ my $user = $schema->resultset('User')->create({
                                                password => $password,
                                               });
 $user->set_roles([{ role => 'root' }]);
+$site->add_to_users($user);
 
 print <<"EOF";
 Summary of the initial setup:
