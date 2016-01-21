@@ -62,7 +62,15 @@ Build-Depends-Indep: libcam-pdf-perl,
  libtext-wrapper-perl,
  libtimedate-perl,
  libxml-feedpp-perl (>= 0.43),
- perl (>= 5.15.2)
+ perl (>= 5.15.2),
+ git, fontconfig,
+ fonts-cmu, fonts-texgyre, fonts-sil-charis,
+ fonts-antykwa-poltawskiego, fonts-antykwa-torunska, fonts-nowacki,
+ fonts-droid, fonts-dejavu, fonts-linuxlibertine, fonts-sil-charis,
+ fonts-paratype, lmodern, fonts-lmodern,
+ texlive-base, texlive-latex-base, texlive-latex-recommended, texlive-latex-extra,
+ texlive-generic-recommended, texlive-fonts-recommended,
+ texlive-luatex, texlive-xetex, texlive-lang-all
 Standards-Version: 3.9.6
 Homepage: https://amusewiki.org
 
