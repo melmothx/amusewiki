@@ -269,15 +269,6 @@ root/static/images/add-to-book.png
 root/static/images/ajax-loader.gif
 root/static/images/bb-instructions-1.png
 root/static/images/bb-instructions-2.png
-root/static/images/btn_120x50_built.png
-root/static/images/btn_120x50_built_shadow.png
-root/static/images/btn_120x50_powered.png
-root/static/images/btn_120x50_powered_shadow.png
-root/static/images/btn_88x31_built.png
-root/static/images/btn_88x31_built_shadow.png
-root/static/images/btn_88x31_powered.png
-root/static/images/btn_88x31_powered_shadow.png
-root/static/images/catalyst_logo.png
 root/static/images/diff.png
 root/static/images/epub.png
 root/static/images/feed-icon-14x14.png
@@ -327,7 +318,6 @@ root/static/images/pdf-a4-imposed.png
 root/static/images/pdf-gen.png
 root/static/images/pdf-letter-imposed.png
 root/static/images/pf-html.png
-root/static/images/revcit.png
 root/static/images/schema-preview/1x4x2.png
 root/static/images/schema-preview/1x4x2cutfoldbind.png
 root/static/images/schema-preview/1x8x2-1.png
@@ -346,9 +336,7 @@ root/static/images/schema-preview/4up_2.png
 root/static/images/schema-preview/ea4x4-1.png
 root/static/images/schema-preview/ea4x4-2.png
 root/static/images/slides.png
-root/static/images/tal-banner-vec.png
 root/static/images/tex.png
-root/static/images/titlebanner.png
 root/static/images/toc.png
 root/static/images/zip.png
 root/static/js/amuse.js
