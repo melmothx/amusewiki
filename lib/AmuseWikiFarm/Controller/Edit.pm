@@ -423,7 +423,7 @@ sub diff :Chained('get_revision') :PathPart('diff') :Args(0) {
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

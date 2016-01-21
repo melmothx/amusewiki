@@ -14,7 +14,7 @@ use Unicode::Collate::Locale;
 
 =head1 NAME
 
-AmuseWikiFarm::Archive::Cache
+AmuseWikiFarm::Archive::Cache - amusewiki cache model
 
 =head1 SYNOPSIS
 

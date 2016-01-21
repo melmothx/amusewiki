@@ -114,7 +114,7 @@ sub generate_thumbnail_from_to :Private {
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

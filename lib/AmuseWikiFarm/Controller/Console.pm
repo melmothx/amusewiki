@@ -279,7 +279,7 @@ sub translations :Chained('root') :PathPart('translations') :Args(0) {
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

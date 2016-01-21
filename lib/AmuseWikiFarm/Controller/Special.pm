@@ -30,9 +30,13 @@ sub base :Chained('/site_robot_index') :PathPart('special') :CaptureArgs(0) {
 
 =encoding utf8
 
+=head1 NAME
+
+AmuseWikiFarm::Controller::Special - amusewiki specials routes
+
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

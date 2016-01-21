@@ -11,6 +11,12 @@ use Search::Xapian (':all');
 use File::Spec;
 use AmuseWikiFarm::Log::Contextual;
 
+=head1 NAME
+
+AmuseWikiFarm::Archive::Xapian - amusewiki Xapian model
+
+=cut
+
 has code => (is => 'ro',
              required => 1,
              isa => 'Str');

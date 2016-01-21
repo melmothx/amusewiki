@@ -53,7 +53,7 @@ sub custom :Chained('root') :PathPart('custom') :Args(1) {
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

@@ -261,7 +261,7 @@ sub delete_category_by_lang :Chained('category_editing_auth') :PathPart('delete'
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

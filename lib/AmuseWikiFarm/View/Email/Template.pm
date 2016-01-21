@@ -24,7 +24,7 @@ View for sending template-generated email from AmuseWikiFarm.
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 SEE ALSO
 

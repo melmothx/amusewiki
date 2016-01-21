@@ -97,7 +97,7 @@ sub git :Chained('/site') :Args {
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

@@ -211,7 +211,7 @@ L<AmuseWikiFarm::Controller::Root>, L<Catalyst>
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

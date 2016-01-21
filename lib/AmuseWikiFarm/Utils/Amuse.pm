@@ -26,6 +26,10 @@ our @EXPORT_OK = qw/muse_file_info
                     clean_username
                     muse_filename_is_valid/;
 
+=head1 NAME
+
+AmuseWikiFarm::Utils::Amuse - amusewiki utilities
+
 =head2 muse_file_info($file, $root)
 
 Scan the header of the file $file, considering its root $root, and

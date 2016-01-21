@@ -316,7 +316,7 @@ sub delete_user :Chained('user_details') :PathPart('delete') :Args(0) {
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

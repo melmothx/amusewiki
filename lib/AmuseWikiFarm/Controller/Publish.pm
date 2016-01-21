@@ -183,7 +183,7 @@ sub purge :Chained('validate_revision') :PathPart('purge') :Args(0) {
 
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 

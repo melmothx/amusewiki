@@ -45,9 +45,13 @@ sub archive_by_lang :Chained('base') :PathPart('') :Args(1) {
 
 =encoding utf8
 
+=head1 NAME
+
+AmuseWikiFarm::Controller::Archive - amusewiki archive routes
+
 =head1 AUTHOR
 
-Marco,,,
+Marco Pessotto <melmothx@gmail.com>
 
 =head1 LICENSE
 
