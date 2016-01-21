@@ -15,7 +15,7 @@ use AmuseWikiFarm::Schema;
 
 =head1 NAME
 
-amusewiki-jobber
+amusewiki-jobber - amusewiki job daemon
 
 =head1 SYNOPSIS
 

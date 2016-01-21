@@ -32,7 +32,7 @@ GetOptions(
 
 =head1 NAME
 
-amusewiki-create-doc-site
+amusewiki-create-doc-site - create an amusewiki sample site and archive
 
 =head1 SYNOPSIS
 

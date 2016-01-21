@@ -31,7 +31,7 @@ if ($help) {
 
 =head1 NAME
 
-amusewiki-bootstrap-archive
+amusewiki-bootstrap-archive - bootstrap amusewiki archives
 
 =head1 SYNOPSIS
 

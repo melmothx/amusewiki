@@ -6,7 +6,7 @@ BEGIN {
 
 =head1 NAME
 
-amusewiki-upgrade-db
+amusewiki-upgrade-db - automatic db upgrade for amusewiki
 
 =head1 SYNOPSIS
 

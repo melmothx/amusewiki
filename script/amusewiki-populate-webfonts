@@ -14,15 +14,21 @@ use Cwd;
 
 =head1 NAME
 
-amusewiki-populate-webfonts [ directory ]
+amusewiki-populate-webfonts - amusewiki helper for EPUB font embedding
+
 
 =head1 SYNOPSIS
+
+ amusewiki-populate-webfonts [ directory ]
+
 
 Create the configuration files and store the fonts needed by
 Text::Amuse::Compile for embedding fonts into the EPUB files.
 
 amusewiki needs this for the font-embedding feature. The directory
 needs to be C<webfonts> in the application root.
+
+This script is meant to be used when creating an app directory.
 
 =cut
 

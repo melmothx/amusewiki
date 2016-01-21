@@ -1,22 +1,14 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: https://metacpan.org/release/AmuseWikiFarm
-Upstream-Contact: Marco,,,
-Upstream-Name: AmuseWikiFarm
-DISCLAIMER: This copyright info was automatically extracted 
- from the perl module. It may not be accurate, so you better 
- check the module sources in order to ensure the module for its 
- inclusion in Debian or for general legal information. Please, 
- if licensing information is incorrectly generated, file a bug 
- on dh-make-perl.
- NOTE: Don't forget to remove this disclaimer once you are happy
- with this file.
+Source: https://github.com/melmothx/amusewiki/releases
+Upstream-Contact: Marco Pessotto <melmothx@gmail.com>
+Upstream-Name: amusewiki
 
 Files: *
-Copyright: Marco,,,
+Copyright: 2016, Marco Pessotto <melmothx@gmail.com>
 License: Artistic or GPL-1+
 
 Files: debian/*
-Copyright: 2016, packager <melmothx@gmail.com>
+Copyright: 2016, Marco Pessotto <melmothx@gmail.com>
 License: Artistic or GPL-1+
 
 License: Artistic

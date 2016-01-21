@@ -16,7 +16,7 @@ my $confgenerator = AmuseWikiFarm->model('Webserver');
 
 =head1 NAME
 
-amusewiki-generate-nginx-conf
+amusewiki-generate-nginx-conf - generate nginx configuration files for amusewiki
 
 =head1 SYNOPSIS
 

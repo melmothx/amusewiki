@@ -39,7 +39,7 @@ $actions{$action}->(@args);
 
 =head1 NAME
 
-amusewiki-clone-site
+amusewiki-clone-site - clone amusewiki sites
 
 =head1 SYNOPSIS
 
