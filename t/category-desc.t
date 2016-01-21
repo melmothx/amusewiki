@@ -128,7 +128,9 @@ $mech->content_contains('/category/topic/the-cat');
 foreach my $page ('/library/the-text', '/authors', '/topics',
                   '/authors/pippo', '/topics/the-cat') {
     $mech->get_ok($page);
-    my @links = grep { $_->url !~ /\/static\//}  $mech->find_all_links;
+    my $site_url = $site->canonical;
+    my @links = grep { $_->url !~ /\Q$site_url\E\/(static|git)\//}
+      $mech->find_all_links;
     $mech->links_ok(\@links);
     ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 }
