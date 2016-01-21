@@ -23,11 +23,6 @@ $site->update({ multilanguage => 'hr en es',
 
 use_ok 'AmuseWikiFarm::Model::AMWConfig';
 
-my $existing = File::Spec->catdir(qw/root static js ckeditor/);
-my $backup = File::Spec->catdir(qw/root static js ckeditor-old/);
-
-my $ckeditor_is_local = -d $existing;
-
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
@@ -41,12 +36,10 @@ $mech->submit_form(form_id => 'login-form',
 
 foreach my $path ('/utils/import', '/action/text/new') {
     $mech->get_ok($path);
-    if ($ckeditor_is_local) {
-        $mech->content_contains($site->canonical . '/static/js/ckeditor/ckeditor.js', "local js found in $path");
-    }
-    else {
-        $mech->content_contains('cdn.ckeditor.com/4.4.3/standard/ckeditor.js', "cdn js found in $path");
-    }
+    # the default configuration is to have them static. You turn the
+    # cdn with a local config. Deprecated.  So...
+    $mech->content_contains($site->canonical . '/static/js/ckeditor/ckeditor.js',
+                            "local js found in $path");
 }
 
 $mech->get('/action/text/new');
