@@ -18,8 +18,9 @@ if ($directory) {
     unless (-d $directory) {
         mkdir $directory or die "Cannot create $directory $!";
     }
+    die "$directory is not a directory" unless -d $directory;
 }
-die "$directory is not a directory" unless -d $directory;
+
 
 my ($action, @args) = @ARGV;
 

@@ -61,7 +61,7 @@ sub deserialize_site {
         # search it.
         if (my $exists = $self->result_source->schema->resultset('User')->find({ username => $user->{username} })) {
             if (grep { $_->username eq $user->{username} } @add) {
-                print "User $user->{username} already in\n";
+                print "User $user->{username} already present and belongs to the site\n";
             }
             else {
                 print $exists->username . " already exists, not adding it to the site\n";

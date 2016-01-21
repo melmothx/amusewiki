@@ -1,0 +1,85 @@
+The packaged amusewiki is mainatained upstream and is fully supported.
+
+At installation time, a sample site is installed and a root user is
+created. Credentials and activation instructions for nginx are printed
+on the screen.
+
+The package creates an user, amusewiki, which owns the repositories
+and runs the application. Its home is located at /var/lib/amusewiki.
+
+The package installs some amusewiki-* executables. They are all meant
+to be run by amusewiki in its home.
+
+No administration task is usually required, so you can safely ignore
+them if you don't have to, with two exceptions: amusewiki-clone-site
+(see the manpage) for backups and amusewiki-reset-password for
+resetting user passwords from the command line (say you lost the root
+user's password...). The site's root user is called "amusewiki". When
+you log into the site for the first time, go to /admin/sites to create
+a real site, and look at the entries on the top bar to see what you
+can do from the web console (all the administration is supposed to be
+run from there).
+
+amusewiki starts 3 daemons from systemd: amusewiki-jobber,
+amusewiki-cgit and amusewiki-web. If you want to change their
+configuration, you can override the unit files from
+/lib/systemd/system/amusewiki* copying them into /etc/systemd/system
+and editing them.
+
+Supported databases are sqlite, postgresql and mysql.
+
+By default amusewiki uses an sqlite database. This is not recommended
+in production.
+
+* HOW TO CHANGE THE DATABASE.
+
+Stop the application.
+
+# systemctl stop amusewiki-*
+
+Login as amusewiki.
+
+# su - amusewiki
+
+Export the current sites:
+
+$ pwd # should be /var/lib/amusewiki
+$ amusewiki-clone-site export --directory backup
+
+There are two example configuration files at:
+
+/usr/share/doc/amusewiki/dbic.yaml.mysql.example  (mysql)
+/usr/share/doc/amusewiki/dbic.yaml.pg.example     (postgres)
+
+Copy the one you want to use into /var/lib/amusewiki/dbic.yaml,
+overwriting the existing one (which is just a copy of
+/usr/share/doc/amusewiki/dbic.yaml.sqlite.example).
+
+Create a database
+
+For postgresql:
+
+ su - postgres
+ psql
+ create user amuse with password 'XXXX';
+ create database amuse owner amuse;
+
+For mysql:
+
+  mysql> create database amuse DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+  mysql> grant all privileges on amuse.* to amuse@localhost identified by 'XXX';
+
+Adjust the new dbic.yaml with database name, username and password.
+
+Recreate the initial site and the first amusewiki root user, reimport
+the existing settings and users, and reindex the archive.
+
+$ amusewiki-create-doc-site
+$ amusewiki-clone-site import backup/*
+$ amusewiki-bootstrap-archive
+
+Restart the app.
+
+# systemctl start amusewiki-*
+
+ -- Marco <melmothx@gmail.com>, Thu, 21 Jan 2016 18:41:31 +0100
