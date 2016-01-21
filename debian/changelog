@@ -1,3 +1,9 @@
+amusewiki (1.592-3) unstable; urgency=medium
+
+  * Rearranged documentation and tracked upstream
+
+ -- Marco Pessotto <melmothx@gmail.com>  Wed, 20 Jan 2016 21:46:18 +0100
+
 amusewiki (1.592-2) unstable; urgency=medium
 
   * Fixed missing dependencies with --no-install-recommends
