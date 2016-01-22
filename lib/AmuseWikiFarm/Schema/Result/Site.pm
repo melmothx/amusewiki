@@ -1329,7 +1329,7 @@ sub compile_and_index_files {
     $logger->("Updated $changed records in " . (time() - $time) . " seconds\n");
     # clear the cache
     $self->cache->clear_site_cache;
-    $logger->("Cache cleared");
+    $logger->("Cache cleared\n");
 }
 
 
