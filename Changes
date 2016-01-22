@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.601 2016-01-22
+
+  - Optimization for sorting of titles and categories
+
 1.60 2016-01-22
 
   - Bookbuilder new feature: partial texts (#14)

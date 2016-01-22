@@ -59,6 +59,9 @@ EOF
     chown amusewiki:amusewiki /var/lib/amusewiki/log4perl.conf
 fi
 
+# remove the site cache
+
+rm -rfv /var/lib/amusewiki/var/cache
 
 # upgrade the db, if needed
 su -c 'cd /var/lib/amusewiki; amusewiki-upgrade-db; amusewiki-generate-nginx-conf' amusewiki
