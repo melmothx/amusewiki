@@ -1462,7 +1462,7 @@ sub index_file {
     }
 
     my $name = $title->uri;
-    $title->update_text_status;
+    $title->update_text_status($logger);
 
     # before setting them, update or create. This way, the latest
     # update will overwrite older one in case an error which maps to

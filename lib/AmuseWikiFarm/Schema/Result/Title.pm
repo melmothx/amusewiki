@@ -478,7 +478,7 @@ deleted column and the pubdate and update the status column.
 =cut
 
 sub update_text_status {
-    my $self = shift;
+    my ($self, $logger) = @_;
     my $old_status = $self->status;
     if ($self->deleted) {
         $self->status('deleted');
@@ -490,7 +490,13 @@ sub update_text_status {
         $self->status('published');
     }
     if ($self->is_changed) {
-        warn "Changing status from $old_status to " . $self->status . "\n";
+        my $msg = "Changing " . $self->uri . " status from $old_status to " . $self->status . "\n";
+        if ($logger) {
+            $logger->($msg);
+        }
+        else {
+            warn $msg;
+        }
         $self->update;
     }
     $self->_check_status_file if $self->is_published;
