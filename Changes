@@ -4,7 +4,7 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.60 UNRELEASED
+1.60 2016-01-22
 
   - Bookbuilder new feature: partial texts (#14)
   - Automated installer (#29)
@@ -20,6 +20,10 @@ dedicated tree.
   - Bookbuilder new feature: custom paper size
   - New imposition schemas in the Bookbuilder
   - Daemon optimization with fork to keep the memory low
+  - Prepared sources for debian packaging
+
+Due to scripts renaming, please stop the application *before*
+upgrading. Now the end-user scripts have an "amusewiki-" prefix.
 
 Model::CgitProxy is gone and is replaced by Model::Webserver. If you
 have in your config a <Model::CgitProxy> stanza with the port, please
