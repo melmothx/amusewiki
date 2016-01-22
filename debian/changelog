@@ -1,3 +1,9 @@
+amusewiki (1.60-1) unstable; urgency=medium
+
+  * New release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Fri, 22 Jan 2016 10:18:29 +0100
+
 amusewiki (1.592-3) unstable; urgency=medium
 
   * Rearranged documentation and tracked upstream
