@@ -1204,35 +1204,63 @@ collation for the current locale.
 Collation on the fly would have been too slow, or would depend on the
 (possibly crappy) collation of the database engine, if any.
 
+Return the number of updates (both titles and categories);
+
 =cut
 
 sub collation_index {
     my $self = shift;
     my $collator = Unicode::Collate::Locale->new(locale => $self->locale);
-
+    my $changes = 0;
+    my $ttime = time();
     my @texts = sort {
         # warn $a->id . ' <=>  ' . $b->id;
         $collator->cmp($a->list_title, $b->list_title)
-    } $self->titles;
+    } $self->titles->search(undef, { order_by => 'sorting_pos',
+                                     columns => [qw/id sorting_pos list_title/] })->all;
+
+    log_debug { "Sorting texts done in " . (time() - $ttime) . " seconds" };
+    $ttime = time();
+
+    # at least on sqlite, wrapping in a transaction drammatically
+    # speeds things up because it doesn't hit the disk
+    my $guard = $self->result_source->schema->txn_scope_guard;
 
     my $i = 1;
-    foreach my $t (@texts) {
-        $t->sorting_pos($i++);
-        $t->update if $t->is_changed;
+    foreach my $title (@texts) {
+        if ($title->sorting_pos != $i) {
+            $title->update({ sorting_pos => $i });
+            $changes++;
+        }
+        $i++;
     }
+    log_debug { "Update texts done in " . (time() - $ttime) . " seconds" };
+    $ttime = time();
 
     # and then sort the categories
     my @categories = sort {
         # warn $a->id . ' <=> ' . $b->id;
         $collator->cmp($a->name, $b->name)
-    } $self->categories;
+    } $self->categories->search(undef, { order_by => 'sorting_pos',
+                                         columns => [qw/id sorting_pos name/] })->all;
+
+    log_debug { "Sorting categories done in " . (time() - $ttime) . " seconds" };
+    $ttime = time();
 
     $i = 1;
     foreach my $cat (@categories) {
-        $cat->sorting_pos($i++);
-        $cat->update if $cat->is_changed;
+        if ($cat->sorting_pos != $i) {
+            $cat->update({ sorting_pos => $i });
+            $changes++;
+        }
+        $i++;
     }
 
+    # close the transaction
+    $guard->commit;
+
+    log_debug { "Update categories done in " . (time() - $ttime) . " seconds" };
+    return $changes;
 }
 
 =head2 cache
@@ -1289,10 +1317,16 @@ sub compile_and_index_files {
         }
         $self->index_file($file, $logger);
     }
-    $self->collation_index;
+    $logger->("Updating title and category sorting\n");
+    my $time = time();
+    my $changed = $self->collation_index;
+    $logger->("Updated $changed records in " . (time() - $time) . " seconds\n");
+    $time = time();
     $self->static_indexes_generator->generate;
+    $logger->("Updated $changed records in " . (time() - $time) . " seconds\n");
     # clear the cache
     $self->cache->clear_site_cache;
+    $logger->("Cache cleared");
 }
 
 
