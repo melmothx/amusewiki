@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 79;
+use Test::More tests => 82;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -14,6 +14,8 @@ use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 use File::Find;
+use Text::Amuse::Compile::Utils qw/read_file write_file/;
+use DateTime;
 
 diag "(Re)starting the jobber";
 
@@ -185,3 +187,33 @@ is ($site->titles->published_texts->count, 0);
 is ($site->titles->published_specials->count, 0);
 is ($site->titles->published_or_deferred_texts
     ->single({ uri => 'pippo-deferred-text' })->status, 'deferred');
+
+# cheat to test the jobber.
+
+{
+    my $deferred = $site->titles->published_or_deferred_texts->first;
+    my $file = $deferred->f_full_path_name;
+    ok (-f $file, "$file exists");
+
+    my $now = DateTime->now;
+    $now->subtract(days => 1);
+
+    $deferred->pubdate($now);
+    $deferred->update;
+    $schema->resultset('Title')->publish_deferred;
+    $deferred->discard_changes;
+
+    is ($deferred->status, 'deferred', "Without changing the file, it's still deferred");
+
+    my $content = read_file($file);
+    $content =~ s/^\#pubdate.*$//m;
+    write_file($file, $content);
+    diag $deferred->pubdate;
+
+    $deferred->pubdate($now);
+    $deferred->update;
+    $schema->resultset('Title')->publish_deferred;
+    $deferred->discard_changes;
+
+    is ($deferred->status, 'published');
+}

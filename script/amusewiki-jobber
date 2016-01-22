@@ -58,6 +58,7 @@ while (1) {
     }
     if (my $pid = fork()) {
         wait;
+        print "Detached new job\n";
         log_debug { "Child $pid exited, looping again\n" };
     }
     elsif (defined $pid) {

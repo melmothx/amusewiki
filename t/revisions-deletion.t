@@ -139,6 +139,6 @@ my $old_published_revisions =
 is $old_published_revisions->count, 1,
   "Found the revision older than $datetime";
 
-$old_published_revisions->first->delete;
+$schema->resultset('Revision')->purge_old_revisions;
 
 ok (! -d $rev->working_dir, "Working directory deleted") or diag $rev->working_dir;

@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 81;
+use Test::More tests => 97;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -222,6 +222,26 @@ $text_row = $schema->resultset('Title')
 ok (!$text_row, "$text_file not found");
 ok (! -f $text_file, "$text_file is no more");
 
+system($init, 'stop');
+
+{
+    my $now = DateTime->now;
+    $now->subtract(days => 32);
+    my $completed = $site->jobs->search({ status => 'completed' });
+    my @leftovers = map { $_->produced_files } $completed->all;
+    diag Dumper(\@leftovers);
+    ok ($completed->count, "Found jobs: " . $completed);
+    foreach my $leftover (@leftovers) {
+        ok (-f $leftover, "$leftover exists");
+    }
+    $site->jobs->search({ status => 'completed' })->update({ completed => $now });
+    $site->jobs->purge_old_jobs;
+    foreach my $leftover (@leftovers) {
+        ok (! -f $leftover, "$leftover purged");
+    }
+    ok (!$site->jobs->search({ status => 'completed' })->count, "No completed jobs found, all purged");
+}
+
 sub check_jobber {
     my $mech = shift;
     like $mech->response->base->path, qr{^/tasks/status/}, "Location for tasks ok";
@@ -251,4 +271,3 @@ sub check_jobber {
     diag Dumper($success);
     return $success;
 }
-
