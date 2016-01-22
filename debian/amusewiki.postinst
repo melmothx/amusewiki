@@ -61,7 +61,7 @@ fi
 
 # remove the site cache
 
-rm -rfv /var/lib/amusewiki/var/cache
+su -c "rm -rfv /var/lib/amusewiki/var/cache" amusewiki
 
 # upgrade the db, if needed
 su -c 'cd /var/lib/amusewiki; amusewiki-upgrade-db; amusewiki-generate-nginx-conf' amusewiki
