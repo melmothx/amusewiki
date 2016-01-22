@@ -606,6 +606,7 @@ t/canonical-urls.t
 t/category-desc.t
 t/cgit-proxy.t
 t/cleanups.t
+t/collation-index.t
 t/conflicts.t
 t/controller-admin-users.t
 t/controller_Admin.t

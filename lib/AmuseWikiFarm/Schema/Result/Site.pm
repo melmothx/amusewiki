@@ -1293,6 +1293,9 @@ sub compile_and_index_files {
     if ($logger) {
         $compiler->logger($logger);
     }
+    else {
+        $logger = sub { warn $_[0] };
+    }
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
