@@ -52,7 +52,10 @@ while (1) {
     else {
         $count++;
     }
-    my $job = $schema->resultset('Job')->dequeue;
+    my $job = eval { $schema->resultset('Job')->dequeue };
+    if ($@) {
+        log_error { "Errors on dequeu: $@" };
+    }
     unless ($job or $count == 0) {
         next;
     }
@@ -86,7 +89,7 @@ while (1) {
         open (my $lock, '>', $pidfile) or die "Can't open pidfile $!";
         flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
         print $lock $$;
-
+        $schema->resultset('Job')->fail_stale_jobs;
         if ($count == 0) {
             log_info { "Checking deferred titles, old jobs and revisions" };
             eval {
@@ -99,7 +102,12 @@ while (1) {
             }
             log_info { "Done checking deferred titles, old jobs and revisions" };
         }
-        $job->dispatch_job if $job;
+        if ($job) {
+            eval { $job->dispatch_job };
+            if ($@) {
+                log_error { "Errors: $@" };
+            }
+        }
         log_info { "job $$ finished, exiting" };
         flock($lock, LOCK_UN);
         close $lock;
@@ -113,10 +121,3 @@ while (1) {
 }
     
 
-sub wait_for_the_lock {
-    open (my $lock, '>', $pidfile) or die "Can't open pidfile $!";
-    flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
-    print $lock $$;
-    flock($lock, LOCK_UN);
-    close $lock;
-}
