@@ -118,17 +118,12 @@ sub alias_create_add {
 
 =head2 dequeue
 
-Extract the first pending job, sorted by priority and timestamp.
+Return the first pending job, sorted by priority and timestamp, if any.
 
 =cut
 
 sub dequeue {
-    my $self = shift;
-    my $job = $self->pending->first;
-    return unless $job;
-    $job->status('taken');
-    $job->update;
-    return $job;
+    return shift->pending->first;
 }
 
 =head2 fetch_job_by_id_json($id)

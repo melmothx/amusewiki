@@ -15,6 +15,8 @@ use JSON qw/from_json/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
+# clear
+$schema->resultset('Job')->delete;
 
 my $init = catfile(getcwd(), qw/script jobber.pl/);
 # kill the jobber
@@ -69,10 +71,10 @@ my $id = $highpriority->id;
 ok($id, "Id is $id");
 
 my $job = $site->jobs->dequeue;
-
+$job->dispatch_job;
 ok($job);
 is($job->id, $id);
-is($job->status, 'taken');
+is($job->status, 'completed');
 ok($job->log_file, "Found log file " . $job->log_file);
 like $job->log_file, qr/\.log$/;
 
@@ -85,12 +87,12 @@ my $struct = from_json($json);
 
 is_deeply($struct->{payload},  { this  => 0, test => 'òć' });
 is $struct->{task}, 'testing';
-is $struct->{status}, 'taken';
+is $struct->{status}, 'completed';
 is $struct->{site_id}, '0blog0';
 is $struct->{priority}, 5;
 is $struct->{id}, $id;
 
-print Dumper($struct);
+# print Dumper($struct);
 
 my $low_id = $othersite->jobs->enqueue(testing => { this => 1, test => 1  },
                                        10);
@@ -103,11 +105,12 @@ is $low_priority->{position}, 2, "At third position with base 0";
 
 while (my $j = $site->jobs->dequeue) {
     diag "Got stale job " . $j->id;
+    $j->dispatch_job;
 }
 
 is ($othersite->jobs->pending->first->as_hashref->{position}, 0);
 
-ok($othersite->jobs->dequeue);
+ok($othersite->jobs->dequeue->dispatch_job);
 
 my @jobs = $schema->resultset('Job')->pending;
 ok(!@jobs, "No more pending jobs");

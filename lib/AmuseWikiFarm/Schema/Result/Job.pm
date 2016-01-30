@@ -367,6 +367,7 @@ trigger a job.
 
 sub dispatch_job {
     my $self = shift;
+    $self->update({ status => 'taken' });
     my $task = $self->task;
     my $handlers = $self->result_source->resultset->handled_jobs_hashref;
     if ($handlers->{$task}) {
@@ -552,6 +553,12 @@ sub dispatch_job_alias_delete {
         }
     }
     return '/console/alias';
+}
+
+sub dispatch_job_testing {
+    my ($self, $logger) = @_;
+    log_debug { "Dispatching fake testing job" };
+    return;
 }
 
 sub produced_files {
