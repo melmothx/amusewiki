@@ -39,3 +39,7 @@ AmuseWikiFarm-*.tar.gz
 MANIFEST.bak
 .amusewiki.jobber.lock
 thumbnails/*
+debian/files
+debian/amusewiki/*
+debian/amusewiki*.debhelper*
+debian/amusewiki.substvars
