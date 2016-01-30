@@ -1,0 +1,2277 @@
+---
+schema:
+  procedures: {}
+  tables:
+    attachment:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - uri
+            - site_id
+          match_type: ''
+          name: uri_site_id_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: attachment_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+      fields:
+        f_archive_rel_path:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_archive_rel_path
+          order: 4
+          size:
+            - 32
+        f_class:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_class
+          order: 9
+          size:
+            - 16
+        f_full_path_name:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_full_path_name
+          order: 7
+          size:
+            - 0
+        f_name:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_name
+          order: 3
+          size:
+            - 255
+        f_path:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_path
+          order: 2
+          size:
+            - 0
+        f_suffix:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_suffix
+          order: 8
+          size:
+            - 16
+        f_timestamp:
+          data_type: datetime
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_timestamp
+          order: 5
+          size:
+            - 0
+        f_timestamp_epoch:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_timestamp_epoch
+          order: 6
+          size:
+            - 0
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: site_id
+          order: 11
+          size:
+            - 16
+        uri:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: uri
+          order: 10
+          size:
+            - 255
+      indices:
+        - fields:
+            - site_id
+          name: attachment_idx_site_id
+          options: []
+          type: NORMAL
+      name: attachment
+      options: []
+      order: 4
+    category:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - uri
+            - site_id
+            - type
+          match_type: ''
+          name: uri_site_id_type_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: category_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+      fields:
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        name:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: name
+          order: 2
+          size:
+            - 0
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: site_id
+          order: 7
+          size:
+            - 16
+        sorting_pos:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: sorting_pos
+          order: 5
+          size:
+            - 0
+        text_count:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: text_count
+          order: 6
+          size:
+            - 0
+        type:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: type
+          order: 4
+          size:
+            - 16
+        uri:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: uri
+          order: 3
+          size:
+            - 255
+      indices:
+        - fields:
+            - site_id
+          name: category_idx_site_id
+          options: []
+          type: NORMAL
+      name: category
+      options: []
+      order: 5
+    category_description:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - category_description_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - category_id
+            - lang
+          match_type: ''
+          name: category_id_lang_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+        - deferrable: 0
+          expression: ''
+          fields:
+            - category_id
+          match_type: ''
+          name: category_description_fk_category_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: category
+          type: FOREIGN KEY
+      fields:
+        category_description_id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: category_description_id
+          order: 1
+          size:
+            - 0
+        category_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: category_id
+          order: 6
+          size:
+            - 0
+        html_body:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: html_body
+          order: 3
+          size:
+            - 0
+        lang:
+          data_type: varchar
+          default_value: en
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: lang
+          order: 4
+          size:
+            - 3
+        last_modified_by:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: last_modified_by
+          order: 5
+          size:
+            - 255
+        muse_body:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: muse_body
+          order: 2
+          size:
+            - 0
+      indices:
+        - fields:
+            - category_id
+          name: category_description_idx_category_id
+          options: []
+          type: NORMAL
+      name: category_description
+      options: []
+      order: 12
+    job:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: job_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+      fields:
+        completed:
+          data_type: datetime
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: completed
+          order: 7
+          size:
+            - 0
+        created:
+          data_type: datetime
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: created
+          order: 6
+          size:
+            - 0
+        errors:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: errors
+          order: 11
+          size:
+            - 0
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        payload:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: payload
+          order: 4
+          size:
+            - 0
+        priority:
+          data_type: integer
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: priority
+          order: 8
+          size:
+            - 0
+        produced:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: produced
+          order: 9
+          size:
+            - 255
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: site_id
+          order: 2
+          size:
+            - 16
+        status:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: status
+          order: 5
+          size:
+            - 32
+        task:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: task
+          order: 3
+          size:
+            - 32
+        username:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: username
+          order: 10
+          size:
+            - 255
+      indices:
+        - fields:
+            - site_id
+          name: job_idx_site_id
+          options: []
+          type: NORMAL
+      name: job
+      options: []
+      order: 6
+    job_file:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - filename
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - job_id
+          match_type: ''
+          name: job_file_fk_job_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: job
+          type: FOREIGN KEY
+      fields:
+        filename:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: filename
+          order: 1
+          size:
+            - 255
+        job_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: job_id
+          order: 3
+          size:
+            - 0
+        slot:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: slot
+          order: 2
+          size:
+            - 255
+      indices:
+        - fields:
+            - job_id
+          name: job_file_idx_job_id
+          options: []
+          type: NORMAL
+      name: job_file
+      options: []
+      order: 13
+    redirection:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - uri
+            - type
+            - site_id
+          match_type: ''
+          name: uri_type_site_id_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: redirection_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+      fields:
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        redirect:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: redirect
+          order: 4
+          size:
+            - 255
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: site_id
+          order: 5
+          size:
+            - 16
+        type:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: type
+          order: 3
+          size:
+            - 16
+        uri:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: uri
+          order: 2
+          size:
+            - 255
+      indices:
+        - fields:
+            - site_id
+          name: redirection_idx_site_id
+          options: []
+          type: NORMAL
+      name: redirection
+      options: []
+      order: 7
+    revision:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: revision_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - title_id
+          match_type: ''
+          name: revision_fk_title_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: title
+          type: FOREIGN KEY
+      fields:
+        f_full_path_name:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: f_full_path_name
+          order: 4
+          size:
+            - 0
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        message:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: message
+          order: 5
+          size:
+            - 0
+        session_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: session_id
+          order: 7
+          size:
+            - 255
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: site_id
+          order: 2
+          size:
+            - 16
+        status:
+          data_type: varchar
+          default_value: editing
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: status
+          order: 6
+          size:
+            - 16
+        title_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: title_id
+          order: 3
+          size:
+            - 0
+        updated:
+          data_type: datetime
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: updated
+          order: 9
+          size:
+            - 0
+        username:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: username
+          order: 8
+          size:
+            - 255
+      indices:
+        - fields:
+            - site_id
+          name: revision_idx_site_id
+          options: []
+          type: NORMAL
+        - fields:
+            - title_id
+          name: revision_idx_title_id
+          options: []
+          type: NORMAL
+      name: revision
+      options: []
+      order: 14
+    roles:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - role
+          match_type: ''
+          name: role_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+      fields:
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        role:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 1
+          name: role
+          order: 2
+          size:
+            - 128
+      indices: []
+      name: roles
+      options: []
+      order: 1
+    site:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - canonical
+          match_type: ''
+          name: canonical_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+      fields:
+        a4_pdf:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: a4_pdf
+          order: 27
+          size:
+            - 1
+        active:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: active
+          order: 23
+          size:
+            - 1
+        bare_html:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: bare_html
+          order: 31
+          size:
+            - 1
+        bb_page_limit:
+          data_type: integer
+          default_value: 1000
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: bb_page_limit
+          order: 24
+          size:
+            - 0
+        bcor:
+          data_type: varchar
+          default_value: 0mm
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: bcor
+          order: 37
+          size:
+            - 16
+        beamercolortheme:
+          data_type: varchar
+          default_value: dove
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: beamercolortheme
+          order: 43
+          size:
+            - 255
+        beamertheme:
+          data_type: varchar
+          default_value: default
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: beamertheme
+          order: 42
+          size:
+            - 255
+        canonical:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: canonical
+          order: 13
+          size:
+            - 255
+        cgit_integration:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: cgit_integration
+          order: 17
+          size:
+            - 1
+        division:
+          data_type: integer
+          default_value: 12
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: division
+          order: 36
+          size:
+            - 0
+        epub:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: epub
+          order: 32
+          size:
+            - 1
+        fixed_category_list:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: fixed_category_list
+          order: 6
+          size:
+            - 255
+        fontsize:
+          data_type: integer
+          default_value: 10
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: fontsize
+          order: 38
+          size:
+            - 0
+        html:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: html
+          order: 30
+          size:
+            - 1
+        id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 16
+        locale:
+          data_type: varchar
+          default_value: en
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: locale
+          order: 3
+          size:
+            - 3
+        logo:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: logo
+          order: 10
+          size:
+            - 255
+        logo_with_sitename:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: logo_with_sitename
+          order: 45
+          size:
+            - 1
+        lt_pdf:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: lt_pdf
+          order: 28
+          size:
+            - 1
+        magic_answer:
+          data_type: varchar
+          default_value: 16
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: magic_answer
+          order: 5
+          size:
+            - 255
+        magic_question:
+          data_type: varchar
+          default_value: 12 + 4 =
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: magic_question
+          order: 4
+          size:
+            - 255
+        mail_from:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: mail_from
+          order: 12
+          size:
+            - 255
+        mail_notify:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: mail_notify
+          order: 11
+          size:
+            - 255
+        mainfont:
+          data_type: varchar
+          default_value: CMU Serif
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: mainfont
+          order: 39
+          size:
+            - 255
+        mode:
+          data_type: varchar
+          default_value: private
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: mode
+          order: 2
+          size:
+            - 16
+        monofont:
+          data_type: varchar
+          default_value: CMU Typewriter Text
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: monofont
+          order: 41
+          size:
+            - 255
+        multilanguage:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: multilanguage
+          order: 22
+          size:
+            - 255
+        nocoverpage:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: nocoverpage
+          order: 44
+          size:
+            - 1
+        opening:
+          data_type: varchar
+          default_value: any
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: opening
+          order: 46
+          size:
+            - 16
+        papersize:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: papersize
+          order: 35
+          size:
+            - 64
+        pdf:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: pdf
+          order: 26
+          size:
+            - 1
+        sansfont:
+          data_type: varchar
+          default_value: CMU Sans Serif
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: sansfont
+          order: 40
+          size:
+            - 255
+        secure_site:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: secure_site
+          order: 14
+          size:
+            - 1
+        secure_site_only:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: secure_site_only
+          order: 15
+          size:
+            - 1
+        sitegroup:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: sitegroup
+          order: 16
+          size:
+            - 255
+        sitename:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: sitename
+          order: 7
+          size:
+            - 255
+        siteslogan:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: siteslogan
+          order: 8
+          size:
+            - 255
+        sl_pdf:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: sl_pdf
+          order: 29
+          size:
+            - 1
+        ssl_ca_cert:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: ssl_ca_cert
+          order: 20
+          size:
+            - 255
+        ssl_cert:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: ssl_cert
+          order: 19
+          size:
+            - 255
+        ssl_chained_cert:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: ssl_chained_cert
+          order: 21
+          size:
+            - 255
+        ssl_key:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: ssl_key
+          order: 18
+          size:
+            - 255
+        tex:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: tex
+          order: 25
+          size:
+            - 1
+        theme:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: theme
+          order: 9
+          size:
+            - 32
+        ttdir:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: ttdir
+          order: 34
+          size:
+            - 255
+        twoside:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: twoside
+          order: 47
+          size:
+            - 1
+        zip:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: zip
+          order: 33
+          size:
+            - 1
+      indices: []
+      name: site
+      options: []
+      order: 2
+    site_link:
+      constraints:
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: site_link_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+      fields:
+        label:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: label
+          order: 2
+          size:
+            - 255
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: site_id
+          order: 4
+          size:
+            - 16
+        sorting_pos:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: sorting_pos
+          order: 3
+          size:
+            - 0
+        url:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: url
+          order: 1
+          size:
+            - 255
+      indices:
+        - fields:
+            - site_id
+          name: site_link_idx_site_id
+          options: []
+          type: NORMAL
+      name: site_link
+      options: []
+      order: 8
+    site_options:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - site_id
+            - option_name
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: site_options_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+      fields:
+        option_name:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: option_name
+          order: 2
+          size:
+            - 64
+        option_value:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: option_value
+          order: 3
+          size:
+            - 0
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: site_id
+          order: 1
+          size:
+            - 16
+      indices:
+        - fields:
+            - site_id
+          name: site_options_idx_site_id
+          options: []
+          type: NORMAL
+      name: site_options
+      options: []
+      order: 9
+    title:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - uri
+            - f_class
+            - site_id
+          match_type: ''
+          name: uri_f_class_site_id_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: title_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+      fields:
+        attach:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: attach
+          order: 11
+          size:
+            - 0
+        author:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: author
+          order: 9
+          size:
+            - 0
+        date:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: date
+          order: 5
+          size:
+            - 0
+        deleted:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: deleted
+          order: 23
+          size:
+            - 0
+        f_archive_rel_path:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_archive_rel_path
+          order: 16
+          size:
+            - 32
+        f_class:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: f_class
+          order: 21
+          size:
+            - 16
+        f_full_path_name:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_full_path_name
+          order: 19
+          size:
+            - 0
+        f_name:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_name
+          order: 15
+          size:
+            - 255
+        f_path:
+          data_type: text
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_path
+          order: 14
+          size:
+            - 0
+        f_suffix:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_suffix
+          order: 20
+          size:
+            - 16
+        f_timestamp:
+          data_type: datetime
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_timestamp
+          order: 17
+          size:
+            - 0
+        f_timestamp_epoch:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: f_timestamp_epoch
+          order: 18
+          size:
+            - 0
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        lang:
+          data_type: varchar
+          default_value: en
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: lang
+          order: 4
+          size:
+            - 3
+        list_title:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: list_title
+          order: 8
+          size:
+            - 0
+        notes:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: notes
+          order: 6
+          size:
+            - 0
+        pubdate:
+          data_type: datetime
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: pubdate
+          order: 12
+          size:
+            - 0
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: site_id
+          order: 27
+          size:
+            - 16
+        slides:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: slides
+          order: 24
+          size:
+            - 1
+        sorting_pos:
+          data_type: integer
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: sorting_pos
+          order: 26
+          size:
+            - 0
+        source:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: source
+          order: 7
+          size:
+            - 0
+        status:
+          data_type: varchar
+          default_value: unpublished
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: status
+          order: 13
+          size:
+            - 16
+        subtitle:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: subtitle
+          order: 3
+          size:
+            - 0
+        text_structure:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: text_structure
+          order: 25
+          size:
+            - 0
+        title:
+          data_type: text
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: title
+          order: 2
+          size:
+            - 0
+        uid:
+          data_type: varchar
+          default_value: ''
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: uid
+          order: 10
+          size:
+            - 255
+        uri:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: uri
+          order: 22
+          size:
+            - 255
+      indices:
+        - fields:
+            - site_id
+          name: title_idx_site_id
+          options: []
+          type: NORMAL
+      name: title
+      options: []
+      order: 10
+    title_category:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - title_id
+            - category_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - category_id
+          match_type: ''
+          name: title_category_fk_category_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: category
+          type: FOREIGN KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - title_id
+          match_type: ''
+          name: title_category_fk_title_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: title
+          type: FOREIGN KEY
+      fields:
+        category_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: category_id
+          order: 2
+          size:
+            - 0
+        title_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: title_id
+          order: 1
+          size:
+            - 0
+      indices:
+        - fields:
+            - category_id
+          name: title_category_idx_category_id
+          options: []
+          type: NORMAL
+        - fields:
+            - title_id
+          name: title_category_idx_title_id
+          options: []
+          type: NORMAL
+      name: title_category
+      options: []
+      order: 17
+    user_role:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - user_id
+            - role_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - role_id
+          match_type: ''
+          name: user_role_fk_role_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: roles
+          type: FOREIGN KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - user_id
+          match_type: ''
+          name: user_role_fk_user_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: users
+          type: FOREIGN KEY
+      fields:
+        role_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: role_id
+          order: 2
+          size:
+            - 0
+        user_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: user_id
+          order: 1
+          size:
+            - 0
+      indices:
+        - fields:
+            - role_id
+          name: user_role_idx_role_id
+          options: []
+          type: NORMAL
+        - fields:
+            - user_id
+          name: user_role_idx_user_id
+          options: []
+          type: NORMAL
+      name: user_role
+      options: []
+      order: 15
+    user_site:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - user_id
+            - site_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: user_site_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - user_id
+          match_type: ''
+          name: user_site_fk_user_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: users
+          type: FOREIGN KEY
+      fields:
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: site_id
+          order: 2
+          size:
+            - 16
+        user_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: user_id
+          order: 1
+          size:
+            - 0
+      indices:
+        - fields:
+            - site_id
+          name: user_site_idx_site_id
+          options: []
+          type: NORMAL
+        - fields:
+            - user_id
+          name: user_site_idx_user_id
+          options: []
+          type: NORMAL
+      name: user_site
+      options: []
+      order: 16
+    users:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - username
+          match_type: ''
+          name: username_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+      fields:
+        active:
+          data_type: integer
+          default_value: 1
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: active
+          order: 6
+          size:
+            - 1
+        created_by:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: created_by
+          order: 5
+          size:
+            - 255
+        email:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: email
+          order: 4
+          size:
+            - 255
+        id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        password:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: password
+          order: 3
+          size:
+            - 255
+        username:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: username
+          order: 2
+          size:
+            - 255
+      indices: []
+      name: users
+      options: []
+      order: 3
+    vhost:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - name
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 0
+          expression: ''
+          fields:
+            - site_id
+          match_type: ''
+          name: vhost_fk_site_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - id
+          reference_table: site
+          type: FOREIGN KEY
+      fields:
+        name:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: name
+          order: 1
+          size:
+            - 255
+        site_id:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: site_id
+          order: 2
+          size:
+            - 16
+      indices:
+        - fields:
+            - site_id
+          name: vhost_idx_site_id
+          options: []
+          type: NORMAL
+      name: vhost
+      options: []
+      order: 11
+  triggers: {}
+  views: {}
+translator:
+  add_drop_table: 0
+  filename: ~
+  no_comments: 0
+  parser_args:
+    sources:
+      - Attachment
+      - Category
+      - CategoryDescription
+      - Job
+      - JobFile
+      - Redirection
+      - Revision
+      - Role
+      - Site
+      - SiteLink
+      - SiteOption
+      - Title
+      - TitleCategory
+      - User
+      - UserRole
+      - UserSite
+      - Vhost
+  parser_type: SQL::Translator::Parser::DBIx::Class
+  producer_args: {}
+  producer_type: SQL::Translator::Producer::YAML
+  show_warnings: 0
+  trace: 0
+  version: 0.11020
