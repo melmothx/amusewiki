@@ -203,7 +203,9 @@ for stale jobs (due, e.g. to a crash, or db connection failing, etc.).
 
 sub fail_stale_jobs {
     my $self = shift;
-    $self->search({ status => 'taken' })->update({ status => 'failed' });
+    $self->search({ status => 'taken' })
+      ->update({ status => 'failed',
+                 errors => "Job aborted, please try again" });
 }
 
 1;
