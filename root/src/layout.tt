@@ -54,11 +54,11 @@
     [%- END -%]
 
     [% IF load_highlight %]
-    <link rel="stylesheet" href="[% c.uri_for(load_highlight.css) %]" />
-    <script type="text/javascript" src="[% c.uri_for(load_highlight.js) %]">
-    </script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
+          hljs.configure([% load_highlight %]);
           $('pre.example').each(function(i, block) {
               hljs.highlightBlock(block);
           });

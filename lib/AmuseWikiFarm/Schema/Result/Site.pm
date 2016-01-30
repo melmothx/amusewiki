@@ -2542,43 +2542,18 @@ sub do_not_enforce_commit_message {
 }
 
 sub use_js_highlight {
-    my ($self) = @_;
-    my ($out, $css, $js);
-    if ($self->get_option('use_js_highlight')) {
-        log_debug { "Option js highlight is set" };
-        my @hlpath = (qw/root static js highlight/);
-        foreach my $try_js (qw/highlight.pack.local.js
-                               highlight.pack.js/) {
-            if (-f File::Spec->catfile(@hlpath, $try_js)) {
-                $js = $try_js;
-                last;
-            }
-        }
-        foreach my $try_css (qw/style.local.css
-                                style.css/) {
-            if (-f File::Spec->catfile(@hlpath, $try_css)) {
-                $css = $try_css;
-                last;
-            }
-        }
-        if ($js && $css) {
-            log_debug { "Found $js and $css" };
-            $hlpath[0] = '';
-            return {
-                    js => join('/', @hlpath, $js),
-                    css => join('/', @hlpath, $css),
-                   };
-        }
-        else {
-            log_debug { "Missing js or css" };
-        }
+    my ($self, $force) = @_;
+    if (my $langs = $self->use_js_highlight_value || $force ) {
+        my @true_langs = grep { /\A[a-z]+\z/ } split(/\s+/, $langs);
+        return JSON::to_json({ languages => \@true_langs });
     }
-    else {
-        log_debug { "No use_js_highlight option set" };
-    }
-    return 0;
+    return;
 }
 
+sub use_js_highlight_value {
+    my $self = shift;
+    return $self->get_option('use_js_highlight');
+}
 
 sub sl_tex {
     return shift->sl_pdf;

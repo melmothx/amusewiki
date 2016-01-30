@@ -128,6 +128,8 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
     }
 
     $c->stash(esite => $site);
+    # force the loading
+    $c->stash(load_highlight => $site->use_js_highlight(1));
 }
 
 sub get_jobs :Chained('root') :PathPart('jobs') :CaptureArgs(0) {

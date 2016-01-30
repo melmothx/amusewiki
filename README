@@ -177,28 +177,6 @@ Add this stanza to amusewikifarm_local.conf:
  </sender>
 </View::Email::Template>
 
-** SYNTAX HIGHLIGHT
-
-We ship a copy of highlight.js (https://highlightjs.org) to get an
-optional syntax highlight for code blocks, with support for the
-following languages: HTML, XML, Python, Bash, JS, Ruby, SQL, Diff,
-JSON, Markdown, Perl, TeX.
-
-If you want/need support for other languages, build your own copy on
-https://highlightjs.org/download/ and install the script in
-
-root/static/js/highlight/highlight.pack.local.js
-
-and the CSS file in
-
-root/static/js/highlight/style.local.css
-
-If these files exist, the application will serve them instead of
-the bundled ones.
-
-You need to enable the option in the admin interface to activate it.
-
-
 ** EXPOSE THE GIT REPOSITORY WITH GIT-DAEMON
 
 Make the repositories read-only available via git-daemon.
