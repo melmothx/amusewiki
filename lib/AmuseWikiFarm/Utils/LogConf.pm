@@ -7,7 +7,7 @@ use File::Spec;
 
 sub init_args {
     my $dummy =<<'CONF';
-log4perl.logger=DEBUG, Screen
+log4perl.logger=INFO, Screen
 log4perl.appender.Screen=Log::Dispatch::Screen
 log4perl.appender.Screen.layout=Log::Log4perl::Layout::PatternLayout
 log4perl.appender.Screen.layout.ConversionPattern=%d %p - %c - %F{1}:%L - %m%n
