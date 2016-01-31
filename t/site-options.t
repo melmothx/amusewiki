@@ -162,9 +162,9 @@ $mech->get_ok('/', "Crash 1.22 fixed");
 {
     $site = $schema->resultset('Site')->find('0blog0');
     $site->site_options->update_or_create({ option_name => 'use_js_highlight',
-                                            option_value => 'perl' });
-    is $site->get_option('use_js_highlight'), 'perl';
-    is $site->use_js_highlight_value, 'perl';
-    is $site->use_js_highlight, '{"languages":["perl"]}';
+                                            option_value => 'perl tex' });
+    is $site->get_option('use_js_highlight'), 'perl tex';
+    is $site->use_js_highlight_value, 'perl tex';
+    is $site->use_js_highlight, '{"languages":["perl","tex"]}';
 
 }
