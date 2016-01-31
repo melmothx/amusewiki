@@ -14,12 +14,69 @@ use DateTime;
 use Cwd;
 
 has ckeditor_use_cdn => ( is => 'ro',
-                          default => sub { 0 },
-                          isa => 'Bool');
+                          lazy => 1,
+                          isa => 'Bool',
+                          builder => '_build_ckeditor_use_cdn',
+                        );
+
+has ckeditor_location => (
+                          is => 'ro',
+                          default => sub {
+                              my $system_wide = '/usr/share/javascript/ckeditor';
+                              my $local = File::Spec->rel2abs(File::Spec->catdir(qw/root static js ckeditor/));
+                              if (-d $local) {
+                                  return $local;
+                              }
+                              elsif (-d $system_wide) {
+                                  return $system_wide;
+                              }
+                              else {
+                                  return '';
+                              }
+                          },
+                          isa => 'Str');
+
+sub _build_ckeditor_use_cdn {
+    my $self = shift;
+    if (my $location = $self->ckeditor_location) {
+        if (-d $location) {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 has highlight_use_cdn => (is => 'ro',
-                          default => sub { 0 },
-                          isa => 'Bool');
+                          lazy => 1,
+                          isa => 'Bool',
+                          builder => '_build_highlight_use_cdn',
+                         );
+
+has highlight_location => (is => 'ro',
+                           default => sub {
+                               my $system_wide = '/usr/share/javascript/highlight.js';
+                               my $local = File::Spec->rel2abs(File::Spec->catdir(qw/root static js highlight/));
+                               if (-d $local) {
+                                   return $local;
+                               }
+                               elsif (-d $system_wide) {
+                                   return $system_wide;
+                               }
+                               else {
+                                   return '';
+                               }
+                           },
+                           isa => 'Str');
+
+sub _build_highlight_use_cdn {
+    my $self = shift;
+    if (my $location = $self->highlight_location) {
+        if (-d $location) {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 has cgit_port => (is => 'ro',
                   isa => 'Int',
@@ -249,13 +306,19 @@ EOF
     # deny direct access to the cgi file
 INCLUDE
 
-    # debian ships ckeditor
-    if (-f '/usr/share/javascript/ckeditor/ckeditor.js') {
-        print $fh <<'INCLUDE';
-    location /static/js/ckeditor/ {
-        alias /usr/share/javascript/ckeditor/;
+    foreach my $cdn_or_local (qw/ckeditor highlight/) {
+        my $method = $cdn_or_local . '_location';
+        my $use_cdn = $cdn_or_local . '_use_cdn';
+        unless ($self->$use_cdn) {
+            if (my $location = $self->$method) {
+                $location =~ s!/*\z!/!;
+                print $fh <<"INCLUDE";
+    location /static/js/$cdn_or_local/ {
+        alias $location;
     }
 INCLUDE
+            }
+        }
     }
 
     print $fh <<"INCLUDE";
