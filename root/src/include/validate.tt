@@ -1,13 +1,5 @@
 [%# -*- mode: html -*- %]
-[% IF c.model('Webserver').validate_use_cdn %]
-<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-[% IF current_locale_code != 'en' %]
-<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/localization/messages_[% current_locale_code %].js"></script>
-[% END %]
-[% ELSE %]
 <script src="[% c.uri_for('/static/js/validate/dist/jquery.validate.min.js') %]"></script>
-[%# if ther is no language, let it fail %]
 [% IF current_locale_code != 'en' %]
 <script src="[% c.uri_for('/static/js/validate/dist/localization/messages_' _ current_locale_code _ '.js') %]"></script>
-[% END %]
 [% END %]
