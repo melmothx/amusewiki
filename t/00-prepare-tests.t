@@ -94,10 +94,16 @@ my %repos = ('0blog0' => {
                           mainfont => 'Charis SIL',
                           twoside => 1,
                           canonical => 'blog.amusewiki.org',
+                          secure_site => 0,
                           site_options => [{
                                             option_name => 'paginate_archive_after',
                                             option_value => 1,
-                                           }],
+                                           },
+                                           {
+                                            option_name => 'use_js_highlight',
+                                            option_value => 'perl bash',
+                                           },
+                                          ],
                          },
              '0test0' => {
                           id => '0test0',

@@ -10,3 +10,15 @@ This is another test.
 <right>
 This is at right
 </right>
+
+<example>
+print "Hello there"
+</example>
+
+<example>
+#!/bin/sh
+
+if [ $0 = "x" ]; then
+    echo "hello"
+fi
+</example>
