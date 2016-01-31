@@ -2547,7 +2547,7 @@ sub use_js_highlight {
         my @true_langs = grep { /\A[a-z]+\z/ } split(/\s+/, $langs);
         return JSON::to_json({ languages => \@true_langs });
     }
-    return;
+    return '';
 }
 
 sub use_js_highlight_value {
