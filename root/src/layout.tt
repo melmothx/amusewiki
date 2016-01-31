@@ -54,8 +54,13 @@
     [%- END -%]
 
     [% IF load_highlight %]
+    [% IF c.model('Webserver').highlight_use_cdn %]
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
+    [% ELSE %]
+    <link rel="stylesheet" href="[% c.uri_for('/static/js/highlight/styles/default.css') %]">
+    <script src="[% c.uri_for('/static/js/highlight/highlight.min.js') %]"></script>
+    [% END %]
     <script type="text/javascript">
       $(document).ready(function() {
           hljs.configure([% load_highlight %]);
