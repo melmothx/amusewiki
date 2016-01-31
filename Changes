@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.602 2016-01-31
+
+  - Added option to the admin for hightlight.js configuration (select
+    the languages you are interested in).
+  - Fix to avoid jobber's crash when the db connection goes away in
+    the wrong moment.
+
 1.601 2016-01-22
 
   - Optimization for sorting of titles and categories
