@@ -21,7 +21,7 @@ $site->update({ multilanguage => 'hr en es',
                 locale => 'hr',
               });
 
-use_ok 'AmuseWikiFarm::Model::AMWConfig';
+use_ok 'AmuseWikiFarm::Model::Webserver';
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);

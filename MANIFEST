@@ -1,9 +1,12 @@
 Changes
+dbicdh/_common/upgrade/11-12/002-set-highlithjs-option.pl
 dbicdh/_common/upgrade/5-6/002-add-and-move-job-files.pl
 dbicdh/_source/deploy/10/001-auto-__VERSION.yml
 dbicdh/_source/deploy/10/001-auto.yml
 dbicdh/_source/deploy/11/001-auto-__VERSION.yml
 dbicdh/_source/deploy/11/001-auto.yml
+dbicdh/_source/deploy/12/001-auto-__VERSION.yml
+dbicdh/_source/deploy/12/001-auto.yml
 dbicdh/_source/deploy/2/001-auto-__VERSION.yml
 dbicdh/_source/deploy/2/001-auto.yml
 dbicdh/_source/deploy/3/001-auto-__VERSION.yml
@@ -24,6 +27,8 @@ dbicdh/MySQL/deploy/10/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/10/001-auto.sql
 dbicdh/MySQL/deploy/11/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/11/001-auto.sql
+dbicdh/MySQL/deploy/12/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/12/001-auto.sql
 dbicdh/MySQL/deploy/2/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/2/001-auto.sql
 dbicdh/MySQL/deploy/3/001-auto-__VERSION.sql
@@ -41,6 +46,7 @@ dbicdh/MySQL/deploy/8/001-auto.sql
 dbicdh/MySQL/deploy/9/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/9/001-auto.sql
 dbicdh/MySQL/upgrade/10-11/001-auto.sql
+dbicdh/MySQL/upgrade/11-12/001-auto.sql
 dbicdh/MySQL/upgrade/2-3/001-auto.sql
 dbicdh/MySQL/upgrade/3-4/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
@@ -53,6 +59,8 @@ dbicdh/PostgreSQL/deploy/10/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/10/001-auto.sql
 dbicdh/PostgreSQL/deploy/11/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/11/001-auto.sql
+dbicdh/PostgreSQL/deploy/12/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/12/001-auto.sql
 dbicdh/PostgreSQL/deploy/2/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/2/001-auto.sql
 dbicdh/PostgreSQL/deploy/3/001-auto-__VERSION.sql
@@ -70,6 +78,7 @@ dbicdh/PostgreSQL/deploy/8/001-auto.sql
 dbicdh/PostgreSQL/deploy/9/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/9/001-auto.sql
 dbicdh/PostgreSQL/upgrade/10-11/001-auto.sql
+dbicdh/PostgreSQL/upgrade/11-12/001-auto.sql
 dbicdh/PostgreSQL/upgrade/2-3/001-auto.sql
 dbicdh/PostgreSQL/upgrade/3-4/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
@@ -82,6 +91,8 @@ dbicdh/SQLite/deploy/10/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/10/001-auto.sql
 dbicdh/SQLite/deploy/11/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/11/001-auto.sql
+dbicdh/SQLite/deploy/12/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/12/001-auto.sql
 dbicdh/SQLite/deploy/2/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/2/001-auto.sql
 dbicdh/SQLite/deploy/3/001-auto-__VERSION.sql
@@ -99,6 +110,7 @@ dbicdh/SQLite/deploy/8/001-auto.sql
 dbicdh/SQLite/deploy/9/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/9/001-auto.sql
 dbicdh/SQLite/upgrade/10-11/001-auto.sql
+dbicdh/SQLite/upgrade/11-12/001-auto.sql
 dbicdh/SQLite/upgrade/2-3/001-auto.sql
 dbicdh/SQLite/upgrade/3-4/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
@@ -148,7 +160,6 @@ lib/AmuseWikiFarm/I18N/pl.po
 lib/AmuseWikiFarm/I18N/ru.po
 lib/AmuseWikiFarm/I18N/sv.po
 lib/AmuseWikiFarm/Log/Contextual.pm
-lib/AmuseWikiFarm/Model/AMWConfig.pm
 lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/Cache.pm
 lib/AmuseWikiFarm/Model/DB.pm
@@ -643,8 +654,8 @@ t/lang-parsing.t
 t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/model-user.t
-t/model_AMWConfig.t
 t/model_DB.t
+t/model_Webserver.t
 t/multilang.t
 t/not-found.t
 t/not/parsable/ciao.muse

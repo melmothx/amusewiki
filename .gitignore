@@ -16,6 +16,7 @@ bbfiles/*
 dbic.yaml
 !t/dbic.yaml
 root/static/images/font-preview/*
+root/static/js/ckeditor/*
 opt/*
 staging/*
 !staging/README.txt

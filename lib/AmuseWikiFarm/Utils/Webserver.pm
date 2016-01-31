@@ -13,6 +13,14 @@ use File::Copy qw(copy move);
 use DateTime;
 use Cwd;
 
+has ckeditor_use_cdn => ( is => 'ro',
+                          default => sub { 0 },
+                          isa => 'Bool');
+
+has validate_use_cdn => ( is => 'ro',
+                          default => sub { 0 },
+                          isa => 'Bool');
+
 has cgit_port => (is => 'ro',
                   isa => 'Int',
                   default => sub { '9015' },
