@@ -91,7 +91,7 @@ use Catalyst (
 
 extends 'Catalyst';
 
-our $VERSION = '1.601';
+our $VERSION = '1.602';
 
 use Log::Log4perl::Catalyst;
 use AmuseWikiFarm::Utils::LogConf;
