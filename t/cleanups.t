@@ -3,7 +3,7 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 48;
+use Test::More tests => 47;
 use DateTime;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
@@ -14,8 +14,8 @@ use Data::Dumper;
 
 
 my $init = catfile(getcwd(), qw/script jobber.pl/);
-# kill the jobber
-ok(system($init, 'stop') == 0) or die "Couldn't stop the jobber";
+# kill the jobber if running
+system($init, 'stop');
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
