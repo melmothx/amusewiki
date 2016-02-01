@@ -63,15 +63,15 @@
                   [% loc('Private') %]
           </option>
           <option value="modwiki"
-                  [%- IF esite.mode == 'modwiki' %]selected="selected"[% END %]>
+                  [% IF esite.mode == 'modwiki' %]selected="selected"[% END %]>
                   [% loc('Moderated wiki') %]
           </option>
           <option value="blog"
-                  [%- IF esite.mode == 'blog' %]selected="selected"[% END %]>
+                  [% IF esite.mode == 'blog' %]selected="selected"[% END %]>
             [% loc('Blog') %]
           </option>
           <option value="openwiki"
-                  [%- IF esite.mode == 'openwiki' %]selected="selected"[% END %]>
+                  [% IF esite.mode == 'openwiki' %]selected="selected"[% END %]>
             [% loc('Open wiki') %]
           </option>
         </select>
