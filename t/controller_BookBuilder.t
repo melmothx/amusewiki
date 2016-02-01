@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 119;
+use Test::More tests => 118;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -11,7 +11,7 @@ use AmuseWikiFarm::Schema;
 
 my $init = catfile(getcwd(), qw/script jobber.pl/);
 # kill the jobber
-ok(system($init, 'stop') == 0) or die "Couldn't stop the jobber";
+system($init, 'stop');
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 

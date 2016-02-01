@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
-use Test::More tests => 51;
+use Test::More tests => 50;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -20,7 +20,7 @@ $schema->resultset('Job')->delete;
 
 my $init = catfile(getcwd(), qw/script jobber.pl/);
 # kill the jobber
-ok(system($init, 'stop') == 0);
+system($init, 'stop');
 
 my $othersite = $schema->resultset('Site')->find('0test0');
 

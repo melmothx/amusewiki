@@ -13,11 +13,12 @@ use AmuseWikiFarm::Schema;
 
 my $init = catfile(getcwd(), qw/script jobber.pl/);
 
-ok(system($init, 'stop') == 0);
+system($init, 'stop');
 
 # cleanup
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+ok ($schema);
 foreach my $job ($schema->resultset('Job')->all) {
     $job->delete;
 }
