@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.603 2016-02-01
+
+  - Minor bugfixes (triggered by different setups)
+
 1.602 2016-01-31
 
   - Added option to the admin for hightlight.js configuration (select
