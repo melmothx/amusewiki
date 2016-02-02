@@ -228,7 +228,7 @@ sub purge_old_jobs {
     }
 }
 
-=head2 fail_state_jobs
+=head2 fail_stale_jobs
 
 Meant to be called by the jobber before dispatching a new job: check
 for stale jobs (due, e.g. to a crash, or db connection failing, etc.).

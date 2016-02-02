@@ -8,6 +8,12 @@ use base 'DBIx::Class::ResultSet';
 use Email::Valid;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
+=head1 NAME
+
+AmuseWikiFarm::Schema::ResultSet::User - Users resultset
+
+=head1 METHODS
+
 =head2 validate_params(%params)
 
 Return a validated hashrefs with these params: username, email,

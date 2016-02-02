@@ -5,6 +5,15 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
+=head1 NAME
+
+AmuseWikiFarm::Schema::ResultSet::Title - Title resultset
+
+=head1 METHODS
+
+=cut
+
+
 __PACKAGE__->load_components('Helper::ResultSet::Random');
 
 use DateTime;
@@ -12,7 +21,27 @@ use AmuseWikiFarm::Log::Contextual;
 
 =head2 published_all
 
-All records in Title with the status set to 'published'
+RS with status set to C<published>, sorted by title.
+
+=head2 published_or_deferred_all
+
+RS with status C<published> or C<deferred>, sorted by title.
+
+=head2 sorted_by_title
+
+Order the RS by C<sorting_pos> and C<title>
+
+=head2 specials_only
+
+=head2 status_is_published
+
+RS with status C<published>
+
+=head2 status_is_published_or_deferred
+
+RS with status C<published> or C<deferred>
+
+=head2 texts_only
 
 =cut
 
@@ -51,6 +80,10 @@ sub sorted_by_title {
 Result set with published titles (deleted set to empty string and
 publication date in the past.
 
+=head2 published_or_deferred_texts
+
+Same as above, but including deferred texts.
+
 =cut
 
 sub published_texts {
@@ -66,6 +99,10 @@ sub published_or_deferred_texts {
 
 Resultset with published special pages, with the same criteria of
 C<published_texts>.
+
+=head2 published_or_deferred_specials
+
+Same as above, but including deferred special pages..
 
 =cut
 
