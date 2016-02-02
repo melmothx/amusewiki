@@ -106,6 +106,19 @@ __PACKAGE__->belongs_to(
 use File::Spec;
 use AmuseWikiFarm::Archive::BookBuilder;
 
+=head1 METHODS
+
+=head2 basedir
+
+Calls C<filedir> on L<AmuseWikiFarm::Archive::BookBuilder> and return
+the absolute path.
+
+=head2 path
+
+Use C<basedir> to provide the absolute path for C<filename>.
+
+=cut
+
 sub basedir {
     return File::Spec->rel2abs(AmuseWikiFarm::Archive::BookBuilder->filedir);
 }

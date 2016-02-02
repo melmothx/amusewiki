@@ -13,6 +13,115 @@ use File::Copy qw(copy move);
 use DateTime;
 use Cwd;
 
+=head1 NAME
+
+AmuseWikiFarm::Utils::Webserver - Amusewiki integration with the frontend webserver
+
+=head1 SYNOPSIS
+
+The settings can be modified in the amusewikifarm_local.conf file.
+
+E.g.
+
+  <Model::Webserver>
+      ## cgit port
+      cgit_port 7015
+      ## nginx log format
+      log_format combined
+      ## nginx root
+      nginx_root /etc/nginx
+      ## string to identify this installation
+      instance_name amusewikidebian
+      webserver_root /usr/share/perl5/AmuseWikiFarm/root
+      fcgi_socket /var/lib/amusewiki/amusewiki.socket
+  </Model::Webserver>
+
+=head1 ACCESSORS
+
+=head2 ckeditor_location
+
+Default to C</usr/share/javascript/ckeditor> or
+C<root/static/js/ckeditor>. If the directory it's not found, it will
+use the CDN.
+
+=head2 highlight_location
+
+Default to C</usr/share/javascript/highlight.js> or
+C<root/static/js/highlight>. If the directory it's not found, it will
+use the CDN.
+
+=head2 cgit_port
+
+Defaults to C<9015>
+
+=head2 log_format
+
+Defaults to C<combined>
+
+=head2 nginx_root
+
+Defaults to C</etc/nginx>
+
+=head2 nginx_log_dir
+
+Defaults to C</var/log/nginx>
+
+=head2 instance_name
+
+Defaults to C<amusewiki>. This affects the filenames of the produced
+nginx configuration files.
+
+=head2 fcgiwrap_socket
+
+Defaults to '/var/run/fcgiwrap.socket'. Needed for cgit if cgit is
+going to be run by the webserver. Debian package instead install a
+Plack service which runs C<amusewiki-cgit.psgi>.
+
+=head2 app_directory
+
+This is the current directory from which the application is started.
+The presence of C<dbic.yaml> and the C<repo> directory is checked.
+
+=head2 ssl_directory
+
+The directory where the certificates and the key should be stored.
+Default to C<ssl> under the application directory.
+
+=head2 fcgi_socket
+
+Defaults to C<var/amw.sock> under the application directory.
+
+=head2 webserver_root
+
+Defaults to C<root> under the application directory. In Debian, this
+is C</usr/share/perl5/AmuseWikiFarm/root> and it's read-only.
+
+=head2 cronjobs_path
+
+Always return C<cronjobs> under the application directory.
+
+=head2 letsencrypt_cronjob_path
+
+Always return C<cronjobs/le.sh> under the application directory.
+
+=head1 METHODS
+
+=head2 generate_nginx_config
+
+Generate the files in a temporary directory and return a string with
+the commands to be run by root to install them.
+
+=head2 update_letsencrypt_cronjob
+
+Update the Let's Encrypt cronjob
+
+=head2 generate_letsencrypt_cronjob
+
+Generate the cronjob in a temporary location.
+
+=cut
+
+
 has ckeditor_use_cdn => ( is => 'ro',
                           lazy => 1,
                           isa => 'Bool',
