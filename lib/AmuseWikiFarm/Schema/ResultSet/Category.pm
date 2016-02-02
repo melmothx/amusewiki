@@ -5,9 +5,15 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
+=head1 NAME
+
+AmuseWikiFarm::Schema::ResultSet::Category - Category resultset
+
+=head1 METHODS
+
 =head2 by_type($type)
 
-Return the sorted categories of a given type
+Return the sorted categories of a given type.
 
 =cut
 

@@ -12,13 +12,12 @@ use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::ResultSet::Job
+AmuseWikiFarm::Schema::ResultSet::Job - Job resultset
 
 =head1 SYNOPSIS
 
 This resultset has a couple of convenience methods to enqueu and
-retrieve jobs (formerly located at AmuseWikiFarm::Archive::Queue, now
-dismissed.
+retrieve jobs.
 
 All the methods here assume that this class was created with
 $site->jobs, hence picking up the site_id. Otherwise it will start
@@ -77,8 +76,7 @@ Add a bookbuilder job with the payload.
 
 =head2 publish_add($revision, $username)
 
-Schedule the revision object $revision for publishing. As a side
-effect, the status of the revision will be changed to C<processing>.
+Schedule the revision object $revision for publishing.
 
 The payload will be
 
@@ -95,6 +93,24 @@ sub publish_add {
     my ($self, $revision, $username) = @_;
     return $self->enqueue(publish => { id => $revision->id }, 5, $username);
 }
+
+=head2 git_action_add($payload)
+
+Enqueue a git action.
+
+=head2 purge_add($payload, $username)
+
+Enqueue a purging action.
+
+=head2 alias_create_add($payload)
+
+Enqueue an alias creation action.
+
+=head2 alias_delete_add($payload)
+
+Enqueue an alias deletion action.
+
+=cut
 
 sub git_action_add {
     my ($self, $payload) = @_;
@@ -119,6 +135,11 @@ sub alias_create_add {
 =head2 dequeue
 
 Return the first pending job, sorted by priority and timestamp, if any.
+
+=head2 pending
+
+Return a resultset for C<status> equal to C<pending>, sorted by
+priority and created.
 
 =cut
 
@@ -151,6 +172,12 @@ sub pending {
                          });
 }
 
+=head2 can_accept_further_jobs
+
+Return true if the number of pending jobs is lesser than 50.
+
+=cut
+
 sub can_accept_further_jobs {
     my $self = shift;
     my $total_pending = $self->pending->count;
@@ -179,6 +206,13 @@ sub completed_older_than {
                           completed => { '<' => $format_time },
                          });
 }
+
+=head2 purge_old_jobs
+
+Find all completed jobs older than 1 months and call C<delete> on each
+of them, so attached files are removed correctly.
+
+=cut
 
 sub purge_old_jobs {
     my $self = shift;

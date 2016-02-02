@@ -5,8 +5,13 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
+=head1 NAME
 
-=head2 by_uri
+AmuseWikiFarm::Schema::ResultSet::Attachment - attachment resultset
+
+=head1 METHODS
+
+=head2 by_uri($uri)
 
 Find an attachment by uri
 
@@ -17,7 +22,7 @@ sub by_uri {
     return $self->single({ uri => $uri });
 }
 
-=head2 pdf_by_uri
+=head2 pdf_by_uri($uri)
 
 As above, but assert the class is C<upload_pdf>
 
