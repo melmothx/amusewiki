@@ -1326,7 +1326,7 @@ sub compile_and_index_files {
     $logger->("Updated $changed records in " . (time() - $time) . " seconds\n");
     $time = time();
     $self->static_indexes_generator->generate;
-    $logger->("Updated $changed records in " . (time() - $time) . " seconds\n");
+    $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
     # clear the cache
     $self->cache->clear_site_cache;
     $logger->("Cache cleared\n");
@@ -2424,8 +2424,8 @@ sub static_indexes_generator {
     my $self = shift;
     require AmuseWikiFarm::Archive::StaticIndexes;
     my $texts = $self->titles->published_texts;
-    my $authors = $self->categories->active_only_by_type('author');
-    my $topics  = $self->categories->active_only_by_type('topic');
+    my $authors = $self->categories->active_only_by_type_no_site('author');
+    my $topics  = $self->categories->active_only_by_type_no_site('topic');
     my $generator = AmuseWikiFarm::Archive::StaticIndexes
       ->new(
             texts => $texts,

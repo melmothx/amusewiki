@@ -109,7 +109,7 @@ sub category_template {
 <li>
   <h4 id="cat-[% cat.uri %]">[% cat.name %]</h4>
   <ul>
-    [% FOREACH text IN cat.published_titles %]
+    [% FOREACH text IN cat.sorted_titles %]
     <li>
       <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
     </li>
@@ -172,9 +172,9 @@ sub list_template {
       [% END %]
 
     </div>
-    [%- IF text.authors %]
+    [%- IF text.sorted_categories('author') %]
     <ul style="list-style-type: none">
-      [% FOREACH author IN text.authors %]
+      [% FOREACH author IN text.sorted_categories('author') %]
       <li style="display: inline">
         <a href="./authors.html#cat-[% author.uri %]">[% author.name %]</a>
       </li>
@@ -182,9 +182,9 @@ sub list_template {
     </ul>
     [% END %]
 
-    [% IF text.topics %]
+    [% IF text.sorted_categories('topic') %]
     <ul style="list-style-type: none">
-      [% FOREACH topic IN text.topics %]
+      [% FOREACH topic IN text.sorted_categories('topic') %]
       <li style="display: inline">
         <a href="./topics.html#cat-[% topic.uri %]">[% topic.name %]</a>
       </li>
@@ -262,7 +262,28 @@ sub create_titles {
     my $self = shift;
     return unless $self->texts;
     my $out;
-    my $list = [ $self->texts->all ];
+    my $list = [ $self->texts->search(undef,
+                                      {
+                                       collapse => 1,
+                                       join => { title_categories => 'category' },
+                                       order_by => [qw/me.sorting_pos me.title/],
+                                       columns => [qw/me.uri
+                                                      me.title
+                                                      me.f_archive_rel_path
+                                                      me.author
+                                                      me.lang
+                                                      me.sorting_pos
+                                                     /],
+                                       '+columns' => {
+                                                      'title_categories.title_id' => 'title_categories.title_id',
+                                                      'title_categories.category_id' => 'title_categories.category_id',
+                                                      'title_categories.category.uri' => 'category.uri',
+                                                      'title_categories.category.type' => 'category.type',
+                                                      'title_categories.category.name' => 'category.name',
+                                                      'title_categories.category.sorting_pos' => 'category.sorting_pos',
+                                                     }
+                                      }
+                                     )->all ];
     $self->tt->process($self->list_template,
                        {
                         list => $list,
@@ -273,17 +294,36 @@ sub create_titles {
                                    
 }
 
+sub _join_spec {
+    return {
+            collapse => 1,
+            join => { title_categories => 'title' },
+            order_by => [qw/me.sorting_pos me.name/],
+            columns => [qw/me.uri
+                           me.name
+                          /],
+            '+columns' => {
+                           'title_categories.title_id' => 'title_categories.title_id',
+                           'title_categories.category_id' => 'title_categories.category_id',
+                           'title_categories.title.uri' => 'title.uri',
+                           'title_categories.title.status' => 'title.status',
+                           'title_categories.title.sorting_pos' => 'title.sorting_pos',
+                           'title_categories.title.title' => 'title.title',
+                          }
+           };
+}
+
 sub create_topics {
     my $self = shift;
     return unless $self->topics;
-    my $list = [ $self->topics->all ];
+    my $list = [ $self->topics->search(undef, $self->_join_spec)->all ];
     return $self->create_category_listing($list);
 }
 
 sub create_authors {
     my $self = shift;
     return unless $self->authors;
-    my $list = [ $self->authors->all ];
+    my $list = [ $self->authors->search(undef, $self->_join_spec)->all ];
     return $self->create_category_listing($list);
 }
 

@@ -44,6 +44,14 @@ sub active_only_by_type {
                          });
 }
 
+sub active_only_by_type_no_site {
+    my ($self, $type) = @_;
+    return $self->search({
+                          type => $type,
+                          text_count => { '>' => 0 },
+                         });
+}
+
 =head2 by_type_and_uri($type, $uri)
 
 Return the category which corresponds to type and uri
