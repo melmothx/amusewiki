@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Redirection;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Redirection
+AmuseWikiFarm::Schema::Result::Redirection - Redirections
 
 =cut
 
@@ -134,8 +134,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3kHGaJh8DTxA7hPBlktx8Q
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:oOqLBUGVbVYF4jUcLWlohw
 
 =head1 REDIRECTIONS
 

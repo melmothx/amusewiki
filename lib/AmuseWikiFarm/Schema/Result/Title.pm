@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Title;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Title
+AmuseWikiFarm::Schema::Result::Title - Texts metadata
 
 =cut
 
@@ -354,8 +354,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-21 10:43:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UiPXR67xeiogJ3+Oe3lhLg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uxsQ/gYpgxMzvo6EvwP7bA
 
 __PACKAGE__->has_many(
     translations => "AmuseWikiFarm::Schema::Result::Title",

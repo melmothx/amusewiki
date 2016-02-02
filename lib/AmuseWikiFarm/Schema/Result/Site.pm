@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Site;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Site
+AmuseWikiFarm::Schema::Result::Site - Site definitions
 
 =cut
 
@@ -689,8 +689,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-12-27 15:53:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QAUGbtCTZjKvlyaaYrPuPg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:40:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5YN/WXXFXST4maaEQCw1XA
 
 =head2 other_sites
 

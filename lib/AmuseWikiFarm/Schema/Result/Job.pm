@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Job;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Job
+AmuseWikiFarm::Schema::Result::Job - Queue for jobs
 
 =cut
 
@@ -174,8 +174,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-11-26 12:03:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Ci/Tva3h3S+ZJcxGtelLVA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:z+PYOIN/jkotu1Gh4xEO/Q
 
 use Cwd;
 use File::Spec;

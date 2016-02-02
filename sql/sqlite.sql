@@ -285,3 +285,38 @@ CREATE TABLE site_link (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+CREATE TABLE table_comments (
+       table_name  VARCHAR(255),
+       comment_text TEXT
+);
+
+CREATE TABLE column_comments (
+       table_name  VARCHAR(255),
+       column_name VARCHAR(255),
+       comment_text TEXT
+);
+
+INSERT INTO table_comments (table_name, comment_text)
+       values
+         ('vhost', 'Virtual hosts definitions'),
+         ('table_comments', 'Table comments, used internally'),
+         ('column_comments', 'Column comments, used internally'),
+         ('site', 'Site definitions'),
+         ('site_options', 'Site options'),
+         ('users', 'User definitions'),
+         ('roles', 'Role definitions'),
+         ('user_site', 'Linking table between users and sites'),
+         ('user_role', 'Linking table between users and roles'),
+         ('revision', 'Text revisions'),
+         ('job', 'Queue for jobs'),
+         ('job_file', 'Files produced by a job'),
+         ('title', 'Texts metadata'),
+         ('redirection', 'Redirections'),
+         ('title_category', 'Linking table between texts and categories'),
+         ('category', 'Text categories'),
+         ('category_description', 'Category descriptions'),
+         ('attachment', 'Attachment to texts'),
+         ('site_link', 'Site links');
+
+

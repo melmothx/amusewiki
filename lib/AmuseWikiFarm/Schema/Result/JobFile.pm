@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::JobFile;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::JobFile
+AmuseWikiFarm::Schema::Result::JobFile - Files produced by a job
 
 =cut
 
@@ -100,8 +100,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-11-27 16:51:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:L5rjVm5ryPJTFiny7b7Rbw
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:KqzTsx/hymb0dOG5MHTobg
 
 use File::Spec;
 use AmuseWikiFarm::Archive::BookBuilder;

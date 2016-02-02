@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::CategoryDescription;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::CategoryDescription
+AmuseWikiFarm::Schema::Result::CategoryDescription - Category descriptions
 
 =cut
 
@@ -138,8 +138,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 10:33:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:S0sEYoJBlIcDAH1HaDDyIw
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ezfbtRPtioNrNJtjeQA4qA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Role;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Role
+AmuseWikiFarm::Schema::Result::Role - Role definitions
 
 =cut
 
@@ -115,8 +115,8 @@ Composing rels: L</user_roles> -> user
 __PACKAGE__->many_to_many("users", "user_roles", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:yosW2fZGBIEnb9OXdgS23w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:BaJzZWTV6o+AFqUQDcpcxw
 
 __PACKAGE__->meta->make_immutable;
 1;

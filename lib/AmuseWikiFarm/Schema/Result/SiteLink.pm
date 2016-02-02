@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::SiteLink;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::SiteLink
+AmuseWikiFarm::Schema::Result::SiteLink - Site links
 
 =cut
 
@@ -96,8 +96,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-29 17:26:38
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+lfb0ORkT5Dj61IcPowC/Q
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:KtsQDxR4CsrE7co0gIqdVw
 
 __PACKAGE__->meta->make_immutable;
 1;

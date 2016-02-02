@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::User;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::User
+AmuseWikiFarm::Schema::Result::User - User definitions
 
 =cut
 
@@ -173,8 +173,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-27 10:30:45
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mdxcXvPcBaQ/f6aAio814w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C0NwNswvfMRqiEL8XcfC0A
 
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt

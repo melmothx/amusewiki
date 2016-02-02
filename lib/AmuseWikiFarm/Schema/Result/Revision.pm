@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Revision;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Revision
+AmuseWikiFarm::Schema::Result::Revision - Text revisions
 
 =cut
 
@@ -166,8 +166,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-10-29 14:53:53
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sK7iPMGpXrTPbSveZiG5oA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dTInt285+hAhoGKaTTIcZQ
 
 # core modules
 use File::Basename qw/fileparse/;

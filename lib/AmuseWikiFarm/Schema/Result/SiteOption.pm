@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::SiteOption;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::SiteOption
+AmuseWikiFarm::Schema::Result::SiteOption - Site options
 
 =cut
 
@@ -101,8 +101,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-29 17:41:32
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3FumUn+M7oAPS0tLl8wgoQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mJ9EVRKv9O6WeB4dKGWmpw
 
 
 __PACKAGE__->meta->make_immutable;

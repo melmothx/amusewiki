@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Vhost;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Vhost
+AmuseWikiFarm::Schema::Result::Vhost - Virtual hosts definitions
 
 =cut
 
@@ -92,8 +92,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:fNVDKC4BOrdLRqcXSTudCA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:40:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:E7iRdNBLpoM/YR1UlZH5Gw
 
 
 __PACKAGE__->meta->make_immutable;

@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::UserRole;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::UserRole
+AmuseWikiFarm::Schema::Result::UserRole - Linking table between users and roles
 
 =cut
 
@@ -108,8 +108,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FusGez0auGklmuoxw5qSHQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:LKJfWE4zNwcQMmnHscnMvQ
 
 
 __PACKAGE__->meta->make_immutable;

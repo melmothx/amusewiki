@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::Category;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::Category
+AmuseWikiFarm::Schema::Result::Category - Text categories
 
 =cut
 
@@ -189,8 +189,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2015-04-10 12:13:47
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:pQBKjf+/vU2XCfhZiDPGxA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WK5yasfLy54R12+uMimr6A
 
 =head2 title_count_update
 

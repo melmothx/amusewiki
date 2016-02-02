@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::TitleCategory;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::TitleCategory
+AmuseWikiFarm::Schema::Result::TitleCategory - Linking table between texts and categories
 
 =cut
 
@@ -108,8 +108,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-07-29 14:43:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OQ9aN0yKMGlmco2JhDmZEw
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:HHoo0rYHoPPdVxND+XdTnA
 
 
 __PACKAGE__->meta->make_immutable;

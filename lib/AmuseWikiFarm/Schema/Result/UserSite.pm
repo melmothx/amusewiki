@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::UserSite;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::UserSite
+AmuseWikiFarm::Schema::Result::UserSite - Linking table between users and sites
 
 =cut
 
@@ -109,8 +109,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07040 @ 2014-08-11 10:20:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:BhF8TcE2tm3t7BnIcHxrlQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:WzhRlbgfc9BT4rv/RLKsnA
 
 
 __PACKAGE__->meta->make_immutable;
