@@ -194,6 +194,28 @@ __PACKAGE__->add_columns(
     },
 );
 
+=head2 available_roles
+
+Return C<librarian> and C<root>
+
+=head2 available_sites
+
+Return a list of hashrefs, where each of them has 3 keys, C<id> with
+the site id, C<sitename> and C<canonical>.
+
+=head2 role_list
+
+Return an arrayref of hashrefs, where each of them has 2 keys, C<role>
+with the role name, and active set to true if the user has that role.
+
+=head2 site_list
+
+Same result as C<available_sites>, but as an arrayref and with an
+additional key C<active> set to true when the user belongs to the
+site.
+
+=cut
+
 sub available_roles {
     return qw/librarian root/;
 }
