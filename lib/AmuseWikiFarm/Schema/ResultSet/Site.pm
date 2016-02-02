@@ -6,6 +6,12 @@ use warnings;
 use base 'DBIx::Class::ResultSet';
 use Data::Dumper;
 
+=head1 NAME
+
+AmuseWikiFarm::Schema::ResultSet::Site - Site resultset
+
+=head1 METHODS
+
 =head2 active_only
 
 Return the active sites, ordered by id and with vhosts prefetched.
