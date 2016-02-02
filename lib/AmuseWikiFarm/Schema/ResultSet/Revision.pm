@@ -7,9 +7,16 @@ use base 'DBIx::Class::ResultSet';
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
 
+=head1 NAME
+
+AmuseWikiFarm::Schema::ResultSet::Revision - Revision resultset
+
+=head1 METHODS
+
 =head2 pending
 
-Return a list of pending revisions
+Return a resultset of pending revisions, sorted by update date
+descending.
 
 =cut
 
@@ -20,7 +27,8 @@ sub pending {
 
 =head2 not_published
 
-Return a list of revisions not yet published
+Return a resultset of revisions not yet published, sorted by update
+date, descending.
 
 =cut
 
@@ -47,6 +55,13 @@ sub published_older_than {
                           updated => { '<' => $format_time },
                          });
 }
+
+=head2 purge_old_revisions
+
+Find the published revisions older than a month and call C<delete> on
+each of them to have the associated files purged correctly.
+
+=cut
 
 sub purge_old_revisions {
     my $self = shift;
