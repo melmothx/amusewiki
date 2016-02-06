@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 32;
+use Test::More tests => 29;
 use DateTime;
 
 
@@ -37,10 +37,6 @@ foreach my $method (map { $_ . '_file' } @targets) {
         unlink $file or die "Cannot remove $file $!";
     }
     push @files, $file;
-}
-
-foreach my $method (map { 'create_' . $_ } @targets) {
-    ok ($indexes->$method, "$method returns something");
 }
 
 $indexes->generate;
