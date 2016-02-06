@@ -8,6 +8,7 @@ use Moose;
 use namespace::autoclean;
 
 use File::Spec;
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -172,9 +173,9 @@ sub list_template {
       [% END %]
 
     </div>
-    [%- IF text.sorted_categories('author') %]
+    [%- IF text.sorted_authors %]
     <ul style="list-style-type: none">
-      [% FOREACH author IN text.sorted_categories('author') %]
+      [% FOREACH author IN text.sorted_authors %]
       <li style="display: inline">
         <a href="./authors.html#cat-[% author.uri %]">[% author.name %]</a>
       </li>
@@ -182,9 +183,9 @@ sub list_template {
     </ul>
     [% END %]
 
-    [% IF text.sorted_categories('topic') %]
+    [% IF text.sorted_topics %]
     <ul style="list-style-type: none">
-      [% FOREACH topic IN text.sorted_categories('topic') %]
+      [% FOREACH topic IN text.sorted_topics %]
       <li style="display: inline">
         <a href="./topics.html#cat-[% topic.uri %]">[% topic.name %]</a>
       </li>
@@ -248,6 +249,7 @@ sub generate {
                                         css     => $css,
                                        },
                );
+    log_debug { "Inner templates done" };
     foreach my $file (keys %todo) {
         next unless $todo{$file}{content};
         $self->tt->process($self->outer_template,
@@ -262,8 +264,11 @@ sub create_titles {
     my $self = shift;
     return unless $self->texts;
     my $out;
-    my $list = [ $self->texts->search(undef,
+    my $time = time();
+    log_debug { "Creating titles" };
+    my @texts = $self->texts->search(undef,
                                       {
+                                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
                                        collapse => 1,
                                        join => { title_categories => 'category' },
                                        order_by => [qw/me.sorting_pos me.title/],
@@ -282,14 +287,44 @@ sub create_titles {
                                                       'title_categories.category.name' => 'category.name',
                                                       'title_categories.category.sorting_pos' => 'category.sorting_pos',
                                                      }
-                                      }
-                                     )->all ];
+                                      })->all;
+    foreach my $title (@texts) {
+        # same as Title::in_tree_uri
+        my $relpath = $title->{f_archive_rel_path};
+        $relpath =~ s![^a-z0-9]!/!g;
+        $title->{in_tree_uri} = join('/', '.', $relpath, $title->{uri});
+        my (@authors, @topics);
+        if ($title->{title_categories}) {
+            my @sorted = sort {
+                $a->{category}->{sorting_pos} <=> $b->{category}->{sorting_pos}
+            } @{$title->{title_categories}};
+            while (@sorted) {
+                my $cat = shift @sorted;
+                if ($cat->{category}->{type} eq 'topic') {
+                    push @topics, $cat->{category};
+                }
+                elsif ($cat->{category}->{type} eq 'author') {
+                    push @authors, $cat->{category};
+                }
+            }
+        }
+        if (@authors) {
+            $title->{sorted_authors} = \@authors;
+        }
+        if (@topics) {
+            $title->{sorted_topics} = \@topics;
+        }
+    }
+    #    print Dumper($list);
+
+    log_debug { "List created in " . (time() - $time) . " seconds" };
     $self->tt->process($self->list_template,
                        {
-                        list => $list,
+                        list => \@texts,
                         formats => $self->formats,
                        },
                        \$out) or die $self->tt->error;
+    log_debug { "Titles done" };
     return $out;
                                    
 }
@@ -316,25 +351,33 @@ sub _join_spec {
 sub create_topics {
     my $self = shift;
     return unless $self->topics;
+    my $time = time();
+    log_debug { "Creating topics list" };
     my $list = [ $self->topics->search(undef, $self->_join_spec)->all ];
+    log_debug { "Done creating topics list in " . (time() - $time) . "seconds" };
     return $self->create_category_listing($list);
 }
 
 sub create_authors {
     my $self = shift;
     return unless $self->authors;
+    my $time = time();
+    log_debug { "Creating author list" };
     my $list = [ $self->authors->search(undef, $self->_join_spec)->all ];
+    log_debug { "Done creating author list in " . (time() - $time) . "seconds" };
     return $self->create_category_listing($list);
 }
 
 sub create_category_listing {
     my ($self, $list) = @_;
     my $out;
+    log_debug { "Start processing the category list" };
     $self->tt->process($self->category_template,
                        {
                         list => $list,
                        },
                        \$out) or die $self->tt->error;
+    log_debug { "Done $list" };
     return $out;
 }
 
