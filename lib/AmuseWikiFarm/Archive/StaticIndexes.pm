@@ -8,6 +8,7 @@ use Moose;
 use namespace::autoclean;
 
 use File::Spec;
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -74,6 +75,20 @@ has templates => (
                       require Text::Amuse::Compile::Templates;
                       return Text::Amuse::Compile::Templates->new;
                   });
+has css => (is => 'ro',
+            lazy => 1,
+            isa => 'Str',
+            builder => '_build_css');
+
+sub _build_css {
+    my $self = shift;
+    my $out = '';
+    $self->tt->process($self->templates->css,
+                       { html => 1 },
+                       \$out) or die $self->tt->error;
+    return $out;
+}
+
 has lang => (
              is => 'ro',
              isa => 'Str',
@@ -104,12 +119,28 @@ sub titles_file {
 
 sub category_template {
     my $template = <<'TEMPLATE';
-<ol>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="[% lang %]" lang="[% lang %]">
+<head>
+  <meta http-equiv="Content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>[% title %]</title>
+  <style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+[% css %]
+  /*]]>*/-->
+    </style>
+</head>
+<body>
+ <div id="page">
+   <h3>[% title %]</h3>
+   <ol>
 [% FOREACH cat IN list %]
 <li>
   <h4 id="cat-[% cat.uri %]">[% cat.name %]</h4>
   <ul>
-    [% FOREACH text IN cat.published_titles %]
+    [% FOREACH text IN cat.sorted_titles %]
     <li>
       <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
     </li>
@@ -118,12 +149,32 @@ sub category_template {
 </li>
 [% END %]
 </ol>
+
+ </div>
+</body>
+</html>
 TEMPLATE
     return \$template;
 }
 
 sub list_template {
     my $template = <<'TEMPLATE';
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="[% lang %]" lang="[% lang %]">
+<head>
+  <meta http-equiv="Content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>[% title %]</title>
+  <style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+[% css %]
+  /*]]>*/-->
+    </style>
+</head>
+<body>
+ <div id="page">
+   <h3>[% title %]</h3>
 <ol>
   [% FOREACH text IN list %]
   <li>
@@ -172,9 +223,9 @@ sub list_template {
       [% END %]
 
     </div>
-    [%- IF text.authors %]
+    [%- IF text.sorted_authors %]
     <ul style="list-style-type: none">
-      [% FOREACH author IN text.authors %]
+      [% FOREACH author IN text.sorted_authors %]
       <li style="display: inline">
         <a href="./authors.html#cat-[% author.uri %]">[% author.name %]</a>
       </li>
@@ -182,9 +233,9 @@ sub list_template {
     </ul>
     [% END %]
 
-    [% IF text.topics %]
+    [% IF text.sorted_topics %]
     <ul style="list-style-type: none">
-      [% FOREACH topic IN text.topics %]
+      [% FOREACH topic IN text.sorted_topics %]
       <li style="display: inline">
         <a href="./topics.html#cat-[% topic.uri %]">[% topic.name %]</a>
       </li>
@@ -194,30 +245,6 @@ sub list_template {
   </li>
   [% END %]
 </ol>
-TEMPLATE
-    return \$template;
-}
-
-sub outer_template {
-    # require content, css, lang
-    my $template = <<'TEMPLATE';
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="[% lang %]" lang="[% lang %]">
-<head>
-  <meta http-equiv="Content-type" content="application/xhtml+xml; charset=UTF-8" />
-  <title>[% title %]</title>
-  <style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-[% css %]
-  /*]]>*/-->
-    </style>
-</head>
-<body>
- <div id="page">
-   <h3>[% title %]</h3>
-   [% content %]
  </div>
 </body>
 </html>
@@ -230,27 +257,33 @@ sub generate {
     my $css = $self->css;
     my %todo = (
                 $self->titles_file  => {
-                                        content => $self->create_titles || '',
+                                        list => $self->create_titles,
                                         title   => 'Titles',
                                         lang    => $self->lang,
                                         css     => $css,
+                                        template => $self->list_template,
+                                        formats => $self->formats,
                                        },
                 $self->topics_file  => {
-                                        content => $self->create_topics || '',
+                                        list => $self->create_category_list($self->topics),
                                         title   => 'Topics',
                                         lang    => $self->lang,
                                         css     => $css,
+                                        template => $self->category_template,
+                                        formats => $self->formats,
                                        },
                 $self->authors_file  => {
-                                        content => $self->create_authors || '',
+                                        list => $self->create_category_list($self->authors),
                                         title   => 'Authors',
                                         lang    => $self->lang,
                                         css     => $css,
+                                        template => $self->category_template,
+                                        formats => $self->formats,
                                        },
                );
     foreach my $file (keys %todo) {
-        next unless $todo{$file}{content};
-        $self->tt->process($self->outer_template,
+        next unless $todo{$file}{list} && @{$todo{$file}{list}};
+        $self->tt->process($todo{$file}{template},
                            $todo{$file},
                            $file,
                            { binmode => ':encoding(UTF-8)' })
@@ -262,49 +295,98 @@ sub create_titles {
     my $self = shift;
     return unless $self->texts;
     my $out;
-    my $list = [ $self->texts->all ];
-    $self->tt->process($self->list_template,
-                       {
-                        list => $list,
-                        formats => $self->formats,
-                       },
-                       \$out) or die $self->tt->error;
-    return $out;
-                                   
+    my $time = time();
+    log_debug { "Creating titles" };
+    my @texts = $self->texts->search(undef,
+                                      {
+                                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                                       collapse => 1,
+                                       join => { title_categories => 'category' },
+                                       order_by => [qw/me.sorting_pos me.title/],
+                                       columns => [qw/me.uri
+                                                      me.title
+                                                      me.f_archive_rel_path
+                                                      me.author
+                                                      me.lang
+                                                      me.sorting_pos
+                                                     /],
+                                       '+columns' => {
+                                                      'title_categories.title_id' => 'title_categories.title_id',
+                                                      'title_categories.category_id' => 'title_categories.category_id',
+                                                      'title_categories.category.uri' => 'category.uri',
+                                                      'title_categories.category.type' => 'category.type',
+                                                      'title_categories.category.name' => 'category.name',
+                                                      'title_categories.category.sorting_pos' => 'category.sorting_pos',
+                                                     }
+                                      })->all;
+    foreach my $title (@texts) {
+        # same as Title::in_tree_uri
+        my $relpath = $title->{f_archive_rel_path};
+        $relpath =~ s![^a-z0-9]!/!g;
+        $title->{in_tree_uri} = join('/', '.', $relpath, $title->{uri});
+        my (@authors, @topics);
+        if ($title->{title_categories}) {
+            my @sorted = sort {
+                $a->{category}->{sorting_pos} <=> $b->{category}->{sorting_pos}
+            } @{$title->{title_categories}};
+            while (@sorted) {
+                my $cat = shift @sorted;
+                if ($cat->{category}->{type} eq 'topic') {
+                    push @topics, $cat->{category};
+                }
+                elsif ($cat->{category}->{type} eq 'author') {
+                    push @authors, $cat->{category};
+                }
+            }
+        }
+        if (@authors) {
+            $title->{sorted_authors} = \@authors;
+        }
+        if (@topics) {
+            $title->{sorted_topics} = \@topics;
+        }
+    }
+    log_debug { "Created titles in " . (time() - $time) . " seconds" };
+    return \@texts;
 }
 
-sub create_topics {
-    my $self = shift;
-    return unless $self->topics;
-    my $list = [ $self->topics->all ];
-    return $self->create_category_listing($list);
-}
-
-sub create_authors {
-    my $self = shift;
-    return unless $self->authors;
-    my $list = [ $self->authors->all ];
-    return $self->create_category_listing($list);
-}
-
-sub create_category_listing {
-    my ($self, $list) = @_;
-    my $out;
-    $self->tt->process($self->category_template,
-                       {
-                        list => $list,
-                       },
-                       \$out) or die $self->tt->error;
-    return $out;
-}
-
-sub css {
-    my $self = shift;
-    my $out = '';
-    $self->tt->process($self->templates->css,
-                       { html => 1 },
-                       \$out) or die $self->tt->error;
-    return $out;
+sub create_category_list {
+    my ($self, $rs) = @_;
+    my $time = time();
+    log_debug { "Creating category listing" };
+    my @cats = $rs->search(undef, {
+            result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+            collapse => 1,
+            join => { title_categories => 'title' },
+            order_by => [qw/me.sorting_pos me.name/],
+            columns => [qw/me.uri
+                           me.name
+                          /],
+            '+columns' => {
+                           'title_categories.title_id' => 'title_categories.title_id',
+                           'title_categories.category_id' => 'title_categories.category_id',
+                           'title_categories.title.uri' => 'title.uri',
+                           'title_categories.title.status' => 'title.status',
+                           'title_categories.title.sorting_pos' => 'title.sorting_pos',
+                           'title_categories.title.title' => 'title.title',
+                          }
+    })->all;
+    foreach my $cat (@cats) {
+        if ($cat->{title_categories}) {
+            my @titles;
+            my @sorted = sort {
+                $a->{title}->{sorting_pos} <=> $b->{title}->{sorting_pos}
+            } @{delete $cat->{title_categories}};
+            foreach my $title (@sorted) {
+                push @titles, $title->{title};
+            }
+            if (@titles) {
+                $cat->{sorted_titles} = \@titles;
+            }
+        }
+    }
+    log_debug { "Created category listing in " . (time() - $time) . " seconds" };
+    return \@cats;
 }
 
 

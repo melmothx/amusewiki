@@ -878,5 +878,21 @@ sub _retrieve_text_structure {
     return \@out;
 }
 
+=head2 sorted_categories($type)
+
+Return a sorted list of categories where the type is argument.
+
+To be used when prefetching the categories, when the query already was
+executed.
+
+=cut
+
+sub sorted_categories {
+    my ($self, $type) = @_;
+    return sort { $a->sorting_pos <=> $b->sorting_pos }
+      grep { $_->type eq $type } $self->categories->all;
+}
+
 __PACKAGE__->meta->make_immutable;
+
 1;

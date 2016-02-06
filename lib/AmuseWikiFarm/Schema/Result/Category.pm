@@ -233,5 +233,21 @@ sub localized_desc {
     return;
 }
 
+=head2 sorted_titles
+
+Return a sorted list of published texts.
+
+To be used when prefetching the titles, when the query already was
+executed.
+
+
+=cut
+
+sub sorted_titles {
+    my $self = shift;
+    return sort { $a->sorting_pos <=> $b->sorting_pos }
+      grep { $_->status eq 'published' } $self->titles->all;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
