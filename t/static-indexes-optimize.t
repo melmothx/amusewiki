@@ -76,10 +76,10 @@ my $time = time();
 my $generator = $xsite->static_indexes_generator;
 $generator->generate;
 diag "Done in " . (time() - $time) . " seconds";
-foreach my $file (qw/authors.html titles.html topics.html/) {
+foreach my $file (qw/titles.html authors.html  topics.html/) {
     my $got = read_file(catfile(qw/repo 0stressidx0/, $file));
     my $exp = read_file(catfile(qw/t static-indexes-expected/, $file));
-    eq_or_diff $got, $exp;
+    eq_or_diff $got, $exp, $file;
 }
 
 

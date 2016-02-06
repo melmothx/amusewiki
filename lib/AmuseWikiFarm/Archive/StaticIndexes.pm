@@ -329,8 +329,10 @@ sub create_titles {
                                    
 }
 
-sub _join_spec {
-    return {
+sub create_category_list {
+    my ($self, $rs) = @_;
+    my @cats = $rs->search(undef, {
+            result_class => 'DBIx::Class::ResultClass::HashRefInflator',
             collapse => 1,
             join => { title_categories => 'title' },
             order_by => [qw/me.sorting_pos me.name/],
@@ -345,7 +347,22 @@ sub _join_spec {
                            'title_categories.title.sorting_pos' => 'title.sorting_pos',
                            'title_categories.title.title' => 'title.title',
                           }
-           };
+    })->all;
+    foreach my $cat (@cats) {
+        if ($cat->{title_categories}) {
+            my @titles;
+            my @sorted = sort {
+                $a->{title}->{sorting_pos} <=> $b->{title}->{sorting_pos}
+            } @{delete $cat->{title_categories}};
+            foreach my $title (@sorted) {
+                push @titles, $title->{title};
+            }
+            if (@titles) {
+                $cat->{sorted_titles} = \@titles;
+            }
+        }
+    }
+    return \@cats;
 }
 
 sub create_topics {
@@ -353,8 +370,8 @@ sub create_topics {
     return unless $self->topics;
     my $time = time();
     log_debug { "Creating topics list" };
-    my $list = [ $self->topics->search(undef, $self->_join_spec)->all ];
-    log_debug { "Done creating topics list in " . (time() - $time) . "seconds" };
+    my $list = $self->create_category_list($self->topics);
+    log_debug { "Done creating topics list in " . (time() - $time) . " seconds" };
     return $self->create_category_listing($list);
 }
 
@@ -363,8 +380,8 @@ sub create_authors {
     return unless $self->authors;
     my $time = time();
     log_debug { "Creating author list" };
-    my $list = [ $self->authors->search(undef, $self->_join_spec)->all ];
-    log_debug { "Done creating author list in " . (time() - $time) . "seconds" };
+    my $list = $self->create_category_list($self->authors);
+    log_debug { "Done creating author list in " . (time() - $time) . " seconds" };
     return $self->create_category_listing($list);
 }
 
