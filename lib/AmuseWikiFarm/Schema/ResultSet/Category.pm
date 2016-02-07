@@ -76,7 +76,7 @@ sub active_only {
 
 =head2 listing_tokens
 
-Use HRI to pull the data and select only some colons.
+Use HRI to pull the data and select only some columns.
 
 =cut
 

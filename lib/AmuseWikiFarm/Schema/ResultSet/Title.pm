@@ -233,4 +233,92 @@ sub publish_deferred {
     }
 }
 
+=head2 listing_tokens($lang)
+
+Use HRI to pull the data and select only some columns.
+
+Return an hashref with 3 keys: C<texts> with the list of texts and
+separators, C<text_count> with the total number of texts, and C<pager>
+with an arrayref with the first letter. This is language specific, so
+you need to pass lang (defaulting to english).
+
+=cut
+
+sub listing_tokens {
+    my ($self, $lang) = @_;
+    my @list = $self->search(undef,
+                             {
+                              columns => [qw/author title uri lang f_class status list_title/],
+                              result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                             })->all;
+    foreach my $row (@list) {
+        my $status = delete $row->{status};
+        unless ($status && $status eq 'published') {
+            $row->{is_deferred} = 1;
+        }
+        $row->{list_title} ||= $row->{title};
+        if ($row->{list_title} =~ m/(\w)/) {
+            $row->{first_char} = uc($1);
+        }
+        my $class = delete $row->{f_class};
+        my $uri = delete $row->{uri};
+        if ($class eq 'text') {
+            $row->{full_uri} = "/library/$uri";
+        }
+        elsif ($class eq 'special') {
+            $row->{full_uri} = "/special/$uri";
+        }
+        else {
+            Dlog_warn { "$_ has unsupported f_class $class" };
+        }
+    }
+
+    my $collator = Unicode::Collate::Locale->new(locale => $lang || 'en',
+                                                 level => 1);
+    my @dummy = (0..9, 'A'..'Z');
+    my (%map, @list_with_separators, @paging);
+    my $current = '';
+    my $counter = 0;
+    my $grand_total = scalar(@list);
+    while (@list) {
+        my $item = shift @list;
+        if (defined $item->{first_char}) {
+            unless (defined $map{$item->{first_char}}) {
+              REPLACEL:
+                foreach my $letter (@dummy) {
+                    if ($collator->eq($item->{first_char}, $letter)) {
+                        $map{$item->{first_char}} = $letter;
+                        last REPLACEL;
+                    }
+                }
+                unless (defined $map{$item->{first_char}}) {
+                    $map{$item->{first_char}} = $item->{first_char};
+                }
+            }
+            $item->{first_char} = $map{$item->{first_char}};
+
+            # assert we didn't screw up
+            die "This shouldn't happen, replacement not found"
+              unless defined $item->{first_char};
+
+            if ($current ne $item->{first_char}) {
+                $counter++;
+                $current = $item->{first_char};
+                push @paging, {
+                               anchor_name => $item->{first_char},
+                               anchor_id => $counter,
+                              };
+                push @list_with_separators, {
+                                             anchor_name => $item->{first_char},
+                                             anchor_id => $counter,
+                                            };
+            }
+        }
+        push @list_with_separators, $item;
+    }
+    return { texts => \@list_with_separators,
+             text_count => $grand_total,
+             pager => \@paging };
+}
+
 1;
