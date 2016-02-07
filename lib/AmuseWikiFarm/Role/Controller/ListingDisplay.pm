@@ -19,6 +19,7 @@ sub listing :Chained('base') :PathPart('') :Args(0) {
                           resultset => $rs,
                           no_caching => !!$c->user_exists,
                          );
+    log_debug { "Found " . $cache->text_count . " texts" };
     $c->stash(texts => $cache->texts,
               pager => $cache->pager,
               text_count => $cache->text_count,
