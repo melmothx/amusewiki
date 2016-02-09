@@ -170,6 +170,7 @@ lib/AmuseWikiFarm/I18N/pl.po
 lib/AmuseWikiFarm/I18N/ru.po
 lib/AmuseWikiFarm/I18N/sv.po
 lib/AmuseWikiFarm/Log/Contextual.pm
+lib/AmuseWikiFarm/Log/Contextual/App.pm
 lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Feed.pm
@@ -207,7 +208,6 @@ lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
-lib/AmuseWikiFarm/Utils/LogConf.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Email/Template.pm
 lib/AmuseWikiFarm/View/HTML.pm
