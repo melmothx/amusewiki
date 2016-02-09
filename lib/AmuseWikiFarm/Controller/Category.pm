@@ -93,30 +93,22 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
 
 sub category_list_display :Chained('category') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $site_id = $c->stash->{site}->id;
-    my $rs = delete $c->stash->{categories_rs};
-    my $cache = $c->model('Cache',
-                          site_id => $site_id,
-                          type => 'category',
-                          subtype => $c->stash->{f_class},
-                          lang => $c->stash->{current_locale_code},
-                          resultset => $rs);
-
-    # this should be safe.
-    my @list = @{ $cache->texts };
-
+    my $row_sorting = [qw/sorting_pos name/];
     if (my $sorting = $c->req->params->{sorting}) {
         if ($sorting eq 'count-desc') {
-            @list = sort { $b->{text_count} <=> $a->{text_count} } @list;
+            $row_sorting = { -desc => [ text_count => @$row_sorting] };
         }
         elsif ($sorting eq 'count-asc') {
-            @list = sort { $a->{text_count} <=> $b->{text_count} } @list;
+            $row_sorting = { -asc => [ text_count => @$row_sorting] };
         }
         elsif ($sorting eq 'desc') {
-            @list = reverse @list;
+            $row_sorting = { -desc => [ @$row_sorting ]};
         }
     }
-    $c->stash(list => \@list,
+    my $list = $c->stash->{categories_rs}->search(undef, { order_by => $row_sorting })->listing_tokens;
+    Dlog_debug { "List is $_" } $list;
+
+    $c->stash(list => $list,
               template => 'category.tt');
 }
 

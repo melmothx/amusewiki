@@ -18,21 +18,10 @@ sub archive_by_lang :Chained('base') :PathPart('') :Args(1) {
     my $rs = delete $c->stash->{texts_rs};
     log_debug { "In $lang" };
     if (my $label = $c->stash->{site}->known_langs->{$lang}) {
-        my $resultset = $rs->search({ lang => $lang });
-        my $cache = $c->model('Cache',
-                              site_id => $c->stash->{site}->id,
-                              type => 'library',
-                              subtype => $c->stash->{f_class},
-                              # here we use the language of the filtering
-                              by_lang => 1,
-                              lang => $lang,
-                              resultset => $resultset,
-                              no_caching => !!$c->user_exists,
-                             );
-        $c->stash(texts => $cache->texts,
-                  pager => $cache->pager,
-                  text_count => $cache->text_count,
-                  show_pager => $c->stash->{site}->pagination_needed($cache->text_count),
+        my $results = $rs->search({ lang => $lang })->listing_tokens($lang);
+        Dlog_debug { "Listing tokens are $_" } $results;
+        $c->stash(%$results,
+                  show_pager => $c->stash->{site}->pagination_needed($results->{text_count}),
                   multilang => {
                                 filter_lang => $lang,
                                 filter_label => $label,

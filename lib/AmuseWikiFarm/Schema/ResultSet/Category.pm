@@ -39,8 +39,6 @@ sub active_only_by_type {
                          },
                          {
                           order_by => [qw/sorting_pos name/],
-                          join => 'site',
-                          prefetch => 'site',
                          });
 }
 
@@ -74,6 +72,24 @@ Filter the categories which have text_count > 0
 
 sub active_only {
     return shift->search({ text_count => { '>' => 0 }});
+}
+
+=head2 listing_tokens
+
+Use HRI to pull the data and select only some columns.
+
+=cut
+
+sub listing_tokens {
+    my $self = shift;
+    my @all = $self->search(undef, {
+                                    columns => [qw/type uri name text_count/],
+                                    result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                                   });
+    foreach my $row (@all) {
+        $row->{full_uri} = join('/', '', 'category', $row->{type}, $row->{uri});
+    }
+    return \@all;
 }
 
 1;

@@ -729,7 +729,6 @@ use Data::Dumper;
 use AmuseWikiFarm::Archive::BookBuilder;
 use JSON ();
 use Text::Amuse::Compile::Utils ();
-use AmuseWikiFarm::Archive::Cache;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
 
@@ -1263,18 +1262,6 @@ sub collation_index {
     return $changes;
 }
 
-=head2 cache
-
-Return a AmuseWikiFarm::Archive::Cache object with the site_id set.
-Handy to clear it.
-
-=cut
-
-sub cache {
-    my $self = shift;
-    return AmuseWikiFarm::Archive::Cache->new(site_id => $self->id);
-}
-
 =head2 index_file($path_to_file)
 
 Add the file to the DB and Xapian databases, first parsing it with
@@ -1327,9 +1314,6 @@ sub compile_and_index_files {
     $time = time();
     $self->static_indexes_generator->generate;
     $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
-    # clear the cache
-    $self->cache->clear_site_cache;
-    $logger->("Cache cleared\n");
 }
 
 

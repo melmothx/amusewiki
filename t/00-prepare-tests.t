@@ -17,7 +17,6 @@ BEGIN {
 };
 
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm::Archive::Cache;
 
 plan tests => 11;
 
@@ -42,8 +41,6 @@ foreach my $pdflogo (qw/logo-yu.pdf logo-en.pdf/) {
 if (-f 'test.db') {
     unlink 'test.db' or die $!;
 }
-
-AmuseWikiFarm::Archive::Cache->new->clear_all;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
