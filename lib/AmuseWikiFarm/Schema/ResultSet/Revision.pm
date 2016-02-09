@@ -71,7 +71,7 @@ sub purge_old_revisions {
     my $old_revs = $self->published_older_than($reftime);
     while (my $rev = $old_revs->next) {
         die unless $rev->status eq 'published'; # this shouldn't happen
-        log_warn { "Removing published revision " . $rev->id . " for site " .
+        log_info { "Removing published revision " . $rev->id . " for site " .
                      $rev->site->id . " and title " . $rev->title->uri };
         $rev->delete;
     }

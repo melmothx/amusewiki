@@ -37,12 +37,6 @@ sub custom :Chained('root') :PathPart('custom') :Args(1) {
                 $c->detach($c->view('StaticFile'));
                 return;
             }
-            else {
-                log_error { "$file doesn't belong to $site_id" };
-            }
-        }
-        else {
-            log_error { "$file not found in the table" };
         }
     }
     $c->detach('/not_found');
