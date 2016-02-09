@@ -258,7 +258,8 @@ sub listing_tokens {
         }
         $row->{list_title} ||= $row->{title};
         if ($row->{list_title} =~ m/(\w)/) {
-            $row->{first_char} = uc($1);
+            $row->{first_char} = $1;
+            $row->{first_char} = uc($row->{first_char});
         }
         my $class = delete $row->{f_class};
         my $uri = delete $row->{uri};
