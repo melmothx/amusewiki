@@ -132,7 +132,6 @@ dbicdh/SQLite/upgrade/8-9/001-auto.sql
 dbicdh/SQLite/upgrade/9-10/001-auto.sql
 lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
-lib/AmuseWikiFarm/Archive/Cache.pm
 lib/AmuseWikiFarm/Archive/CgitProxy.pm
 lib/AmuseWikiFarm/Archive/CgitProxy/Response.pm
 lib/AmuseWikiFarm/Archive/StaticIndexes.pm
@@ -172,7 +171,6 @@ lib/AmuseWikiFarm/I18N/ru.po
 lib/AmuseWikiFarm/I18N/sv.po
 lib/AmuseWikiFarm/Log/Contextual.pm
 lib/AmuseWikiFarm/Model/BookBuilder.pm
-lib/AmuseWikiFarm/Model/Cache.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Feed.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
