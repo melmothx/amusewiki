@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.605 2016-02-09
+
+ - Removed the cache for the listing. Optimized sql to compensate.
+ - Simplified the logger code.
+ - Optimized the static index generator to speed-up publishing.
+
 1.604 2016-02-02
 
  - Added some documentation
