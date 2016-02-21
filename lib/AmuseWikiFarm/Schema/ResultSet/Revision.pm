@@ -21,8 +21,10 @@ descending.
 =cut
 
 sub pending {
-    return shift->search({ 'me.status' => 'pending' },
-                         { order_by => { -desc => 'updated' }});
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => 'pending' },
+                         { order_by => { -desc => "$me.updated" }});
 }
 
 =head2 not_published
@@ -33,8 +35,10 @@ date, descending.
 =cut
 
 sub not_published {
-    return shift->search({ 'me.status' => { '!=' => 'published'  } },
-                         { order_by => { -desc => 'updated' } });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => { '!=' => 'published'  } },
+                         { order_by => { -desc => "$me.updated" } });
 }
 
 
@@ -50,9 +54,10 @@ sub published_older_than {
     die unless $time && $time->isa('DateTime');
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($time);
+    my $me = $self->current_source_alias;
     return $self->search({
-                          'me.status' => 'published',
-                          updated => { '<' => $format_time },
+                          "$me.status" => 'published',
+                          "$me.updated" => { '<' => $format_time },
                          });
 }
 
