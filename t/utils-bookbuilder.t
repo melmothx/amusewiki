@@ -348,6 +348,9 @@ foreach my $k (keys %titlepage) {
 ok (!$bb->epub);
 # readd
 $bb->delete_text(3);
+
+$bb->site->update({ bb_page_limit => 10 });
+
 foreach my $text(qw/first-test do-this-by-yourself/) {
     ok ($bb->add_text($text), "Added $text again") or diag $bb->error;
 }
@@ -360,6 +363,8 @@ cleanup($bb->job_id);
 
 ok ($bb->webfonts_rootdir);
 ok ($bb->webfonts) and diag Dumper($bb->webfonts);
+
+$bb->site->update({ bb_page_limit => 5 });
 
 {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
