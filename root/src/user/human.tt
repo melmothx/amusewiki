@@ -6,7 +6,7 @@
 
 <p>[% loc('You can do so answering a simple question.') %]</p>
 
-<form name="human" method="post" action="[% c.uri_for('/human') %]">
+<form id="prove-human-form" name="human" method="post" action="[% c.uri_for('/human') %]">
   <div class="form-group">
     <label for="answer">
         [% site.magic_question | html %]
@@ -18,6 +18,16 @@
     [% loc('I am human') %]
   </button>
 </form>
+
+<script type="text/javascript">
+    if (location.hash) {
+        $('<input />')
+            .attr('type', 'hidden')
+            .attr('name', 'fragment')
+            .attr('value', location.hash).appendTo('#prove-human-form');
+    }
+</script>
+
 
 <h3 class="h3">[% loc('Or log in, if you have an account.') %]</h3>
 

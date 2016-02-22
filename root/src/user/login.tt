@@ -17,3 +17,12 @@
     [% loc('Log in') %]
   </button>
 </form>
+
+<script type="text/javascript">
+    if (location.hash) {
+        $('<input />')
+            .attr('type', 'hidden')
+            .attr('name', 'fragment')
+            .attr('value', location.hash).appendTo('#login-form');
+    }
+</script>

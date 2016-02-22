@@ -307,8 +307,14 @@ sub redirect_after_login :Private {
     if ($path !~ m!^/!) {
         $path = "/$path";
     }
+    Dlog_debug { "Form is $_" } $c->request->params;
     my $uri = URI->new($path);
     my $redirect = $c->uri_for($uri->path, $uri->query_form_hash);
+    if (my $fragment = $c->request->params->{fragment}) {
+        if ($fragment =~ m/\A(#[0-9A-Za-z-]+)\z/) {
+            $redirect .= $1;
+        }
+    }
     Dlog_debug { "Redirecting $path to " . $uri->path . " " . $_
                    . " => " . $redirect } $uri->query_form_hash;
     $c->response->redirect($redirect);
