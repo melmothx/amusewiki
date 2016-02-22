@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 118;
+use Test::More tests => 125;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -16,6 +16,7 @@ system($init, 'stop');
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
+$site->update({ bb_page_limit => 5 });
 my $orig_locale = $site->locale;
 # set it to english for testing purposes.
 $site->locale('en');
@@ -184,7 +185,7 @@ ok($mech->form_id("book-builder-add-text-partial"), "Found form for partials");
 
 my @inputs = $mech->grep_inputs({ type => qr{^checkbox$},
                                   name => qr{^select$} });
-is (scalar(@inputs), 4, "Found 4 checkboxes");
+is (scalar(@inputs), 14, "Found 14 checkboxes");
 
 # pre and post should already be selected
 $mech->tick(select => '0');
@@ -241,7 +242,29 @@ foreach my $purgef (@purge) {
     $purgef->delete;
 }
 
+# new instance
+$mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => 'blog.amusewiki.org');
+$site->update({ bb_page_limit => 1 });
+$mech->get_ok('/library/first-test');
+
+$mech->get_ok('/bookbuilder/add/first-test');
+$mech->form_with_fields('answer');
+$mech->field(answer => 'January');
+$mech->click;
+$mech->content_contains("Quota exceeded",  "Quota hit adding the whole text");
+
+$mech->submit_form(form_id => 'book-builder-add-text-partial');
+ok($mech->form_id("book-builder-add-text-partial"), "Found form for partials");
+$mech->tick(select => '1');
+$mech->click;
+$mech->get_ok('/bookbuilder');
+$mech->content_lacks("Quota exceeded");
+$mech->content_contains('first-test/bbselect?selected=pre-1-post"');
+
 $site->locale($orig_locale);
 $site->update->discard_changes;
+# restore
+$site->update({ bb_page_limit => 5 });
 diag "Locale restored to " . $site->locale;
 

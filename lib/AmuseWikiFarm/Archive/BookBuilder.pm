@@ -157,22 +157,27 @@ current page estimation.
 
 sub total_pages_estimated {
     my $self = shift;
+    my $count = 0;
+    foreach my $text (@{ $self->texts }) {
+        $count += $self->pages_estimated_for_text($text);
+    }
+    return $count;
+}
+
+sub pages_estimated_for_text {
+    my ($self, $text) = @_;
+    my $filename = Text::Amuse::Compile::FileName->new($text);
     if (my $site = $self->site) {
-        my $count = 0;
-        foreach my $text (@{ $self->texts }) {
-            my $filename = Text::Amuse::Compile::FileName->new($text);
-            if (my $title = $site->titles->text_by_uri($filename->name)) {
-                my $text_pages = $title->pages_estimated;
-                if (my $pieces = scalar($filename->fragments)) {
-                    my $total = scalar(@{$title->text_html_structure}) || 1;
-                    my $est = int(($text_pages / $total) * $pieces) || 1;
-                    log_debug { "Partial estimate: ($text_pages / $total) * $pieces = $est" };
-                    $text_pages = $est;
-                }
-                $count += $text_pages;
+        if (my $title = $site->titles->text_by_uri($filename->name)) {
+            my $text_pages = $title->pages_estimated;
+            if (my $pieces = scalar($filename->fragments)) {
+                my $total = scalar(@{$title->text_html_structure}) || 1;
+                my $est = int(($text_pages / $total) * $pieces) || 1;
+                log_debug { "Partial estimate: ($text_pages / $total) * $pieces = $est" };
+                $text_pages = $est;
             }
+            return $text_pages || 0;
         }
-        return $count;
     }
     return 0;
 }
@@ -826,7 +831,7 @@ sub add_text {
         if (my $site = $self->site) {
             if (my $title = $site->titles->text_by_uri($filename->name)) {
                 my $limit = $site->bb_page_limit;
-                my $total = $self->total_pages_estimated + $title->pages_estimated;
+                my $total = $self->total_pages_estimated + $self->pages_estimated_for_text($text);
                 if ($total <= $limit) {
                     $to_add = $filename->name_with_fragments;
                 }
