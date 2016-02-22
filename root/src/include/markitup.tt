@@ -48,12 +48,40 @@ $(document).ready(function() {
 
 	        {name:'[% jsloc("Picture") %]',
              key:'P',
-             replaceWith:'[[[![[% jsloc("Image url")%]]!]][[![[% jsloc("description")%]]!]]]' },
-
+             replaceWith: function(h) {
+                 var muse_link = '';
+                 var muse_label = '';
+                 var out = '';
+                 muse_link = prompt("[% jsloc("Image url") %]", "image.png");
+                 muse_label = prompt("[% jsloc("description") %]", "");
+                 if (muse_link && muse_label) {
+                     out = '[[' + muse_link + '][' + muse_label + ']]';
+                 }
+                 else {
+                     if (muse_link) {
+                         out = '[[' + muse_link + ']]';
+                     }
+                 }
+                 return out;
+             }},
 	        {name:'[% jsloc("Link") %]',
              key:'L',
-             replaceWith:'[[[![[% jsloc("Url") %]:!:http://]!]][[![[% jsloc("Display url as") %]:]!]]]' },
-
+             replaceWith: function(h) {
+                 var muse_link = '';
+                 var muse_label = '';
+                 var out = '';
+                 muse_link = prompt("[% jsloc("Url") %]", "http://");
+                 muse_label = prompt("[% jsloc("Display url as") %]", "");
+                 if (muse_link && muse_label) {
+                     out = '[[' + muse_link + '][' + muse_label + ']]';
+                 }
+                 else {
+                     if (muse_link) {
+                         out = '[[' + muse_link + ']]';
+                     }
+                 }
+                 return out;
+             }},
 	        {name:'[% jsloc("Quotes") %]',
              multiline:true,
              openBlockWith:'\n<quote>\n',
