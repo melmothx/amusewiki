@@ -19,11 +19,6 @@ $(document).ready(function(){
         $("div#thework").addClass("col-md-12");
     }
 });
-$(document).ready(function(){$(window).trigger('hashchange')});
-
-var shiftWindow = function() { scrollBy(0, -100) };
-if (location.hash) shiftWindow();
-window.addEventListener("hashchange", shiftWindow);
 
 $(document).ready(function() {
     $(".footnotebody").click(function() {

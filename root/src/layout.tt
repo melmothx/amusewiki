@@ -102,10 +102,14 @@
                                     [ site.id, 'local.js']) %]">
     </script>
     [%- END -%]
-
+    <script type="text/javascript">
+      var shiftWindow = function() { scrollBy(0, -50) };
+      window.addEventListener("hashchange", shiftWindow);
+      function amw_load_page() { if (window.location.hash) { shiftWindow(); } };
+    </script>
 
   </head>
-  <body>
+  <body onload="amw_load_page()">
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
