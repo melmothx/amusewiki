@@ -356,6 +356,11 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1
 
+=head2 last_updated
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -498,6 +503,8 @@ __PACKAGE__->add_columns(
   },
   "twoside",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  "last_updated",
+  { data_type => "datetime", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -689,8 +696,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:40:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5YN/WXXFXST4maaEQCw1XA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-03-01 09:18:14
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:G66RLSrNM6pDqwzcyecwYw
 
 =head2 other_sites
 
