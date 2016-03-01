@@ -127,48 +127,9 @@ sub titles :Chained('root') :PathPart('titles') :Args {
     }
 
     while (my $title = $titles->next) {
-        next unless $title->check_if_file_exists('epub');
-
-        # mandatory: id, updated , title
-        my $entry = XML::Atom::Entry->new;
-
-        # Following Atom [RFC4287] Section 4.2.6, the content of an
-        # "atom:id" identifying an OPDS Catalog Entry MUST NOT change
-        # when the OPDS Catalog Entry is "relocated, migrated,
-        # syndicated, republished, exported, or imported" and "MUST be
-        # created in a way that assures uniqueness."
-        # .... go figure
-
-        my $dc = XML::Atom::Namespace->new(dc => 'http://purl.org/dc/elements/1.1/');
-        $entry->set($dc, 'language', $title->lang);
-        foreach ($title->authors) {
-            my $author = XML::Atom::Person->new;
-            $author->name($_->name);
-            $author->uri($c->uri_for($_->full_uri));
-            $entry->add_author($author);
+        if (my $entry = $title->opds_entry) {
+            $feed->add_entry($entry);
         }
-        $entry->title($title->title);
-
-        $entry->id($c->uri_for($title->full_uri));
-        $entry->updated($title->pubdate);
-
-
-        my @desc;
-        foreach my $method (qw/author title subtitle date notes source/) {
-            my $string = $title->$method;
-            if (length($string)) {
-                push @desc,
-                  '<h4>' . $c->loc(ucfirst($method)) . '</h4><div>' . $string . '</div>';
-            }
-        }
-        $entry->content(join("\n", @desc));
-
-        my $link = XML::Atom::Link->new;
-        $link->rel('http://opds-spec.org/acquisition/open-access');
-        $link->href($c->uri_for($title->full_uri) . '.epub');
-        $link->type('application/epub+zip');
-        $entry->add_link($link);
-        $feed->add_entry($entry);
     }
     $c->detach($c->view('Atom'));
 }

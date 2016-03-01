@@ -378,6 +378,10 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use JSON qw/to_json from_json/;
+use XML::Atom;
+use XML::Atom::Entry;
+use XML::Atom::Link;
+use XML::Atom::Person;
 
 =head2 listing
 
@@ -891,6 +895,51 @@ sub sorted_categories {
     my ($self, $type) = @_;
     return sort { $a->sorting_pos <=> $b->sorting_pos }
       grep { $_->type eq $type } $self->categories->all;
+}
+
+sub opds_entry {
+    my ($self, $prefix) = @_;
+    $prefix ||= '';
+    return unless $self->check_if_file_exists('epub');
+    my $entry = XML::Atom::Entry->new;
+    my $dc = XML::Atom::Namespace->new(dc => 'http://purl.org/dc/elements/1.1/');
+    $entry->set($dc, 'language', $self->lang);
+    # save the query and make it simple, those applications are
+    # crappy anyway
+    if (my $author = $self->author) {
+        my $author_obj = XML::Atom::Person->new;
+        $author_obj->name($self->_clean_html($author));
+        $entry->add_author($author_obj);
+    }
+    $entry->title($self->_clean_html($self->title));
+    $entry->id($prefix . $self->full_uri);
+    $entry->updated($self->pubdate);
+    my @desc;
+    foreach my $method (qw/author title subtitle date notes source/) {
+        my $string = $self->$method;
+        if (length($string)) {
+            push @desc, '<div>' . $string . '</div>';
+        }
+    }
+    $entry->content(join("\n", @desc));
+    my $link = XML::Atom::Link->new;
+    $link->rel('http://opds-spec.org/acquisition/open-access');
+    $link->href($prefix . $self->full_uri . '.epub');
+    $link->type('application/epub+zip');
+    $entry->add_link($link);
+    return $entry;
+}
+
+sub _clean_html {
+    my ($self, $string) = @_;
+    return "" unless defined $string;
+    $string =~ s/<.+?>//g;
+    $string =~ s/&lt;/</g;
+    $string =~ s/&gt;/>/g;
+    $string =~ s/&quot;/"/g;
+    $string =~ s/&#x27;/'/g;
+    $string =~ s/&amp;/&/g;
+    return $string;
 }
 
 __PACKAGE__->meta->make_immutable;
