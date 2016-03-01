@@ -24,13 +24,12 @@ Catalyst Controller.
 =cut
 
 use XML::Atom;
+$XML::Atom::DefaultVersion = '1.0';
 use XML::Atom::Feed;
 use XML::Atom::Link;
 use XML::Atom::Entry;
 use XML::Atom::Person;
 use DateTime;
-$XML::Atom::DefaultVersion = '1.0';
-
 
 sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
     my ($self, $c) = @_;
@@ -95,8 +94,7 @@ sub start :Chained('root') :PathPart('') :Args(0) {
         $item->add_link($link);
         $feed->add_entry($item);
     }
-    $c->response->content_type($feed->content_type);
-    $c->response->body($feed->as_xml);
+    $c->detach($c->view('Atom'));
 }
 
 sub titles :Chained('root') :PathPart('titles') :Args {
@@ -172,8 +170,7 @@ sub titles :Chained('root') :PathPart('titles') :Args {
         $entry->add_link($link);
         $feed->add_entry($entry);
     }
-    $c->response->content_type($feed->content_type);
-    $c->response->body($feed->as_xml);
+    $c->detach($c->view('Atom'));
 }
 
 sub topics :Chained('root') :PathPart('topics') :Args {
