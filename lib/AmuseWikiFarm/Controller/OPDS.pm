@@ -24,6 +24,7 @@ Catalyst Controller.
 =cut
 
 use XML::Atom;
+use XML::Atom::Feed;
 use XML::Atom::Link;
 use XML::Atom::Entry;
 use XML::Atom::Person;
@@ -32,36 +33,37 @@ $XML::Atom::DefaultVersion = '1.0';
 
 
 sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
-    
-}
-
-sub start :Chained('root') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $feed = XML::Atom::Feed->new;
-    my $self_link = $c->uri_for_action('/opds/start');
-    $feed->id($self_link);
-    $feed->title('OPDS');
-    {
-        my $link = XML::Atom::Link->new;
-        $link->type('application/atom+xml;profile=opds-catalog;kind=navigation');
-        $link->rel('self');
-        $link->href($self_link);
-        # $feed->set('xmlnsdc' => "http://purl.org/dc/terms/" );
-        $feed->add_link($link);
-    }
-    {
-        my $link = XML::Atom::Link->new;
-        $link->type('application/atom+xml;profile=opds-catalog;kind=navigation');
-        $link->rel('start');
-        $link->href($self_link);
-        # $feed->set('xmlnsdc' => "http://purl.org/dc/terms/" );
-        $feed->add_link($link);
-    }
-    $feed->updated(DateTime->now);
+
+    my $link = XML::Atom::Link->new;
+    $link->type('application/atom+xml;profile=opds-catalog;kind=navigation');
+    $link->rel('start');
+    $link->href($c->uri_for_action('/opds/start'));
+    $feed->add_link($link);
+
     my $generator = XML::Atom::Person->new;
     $generator->name('amusewiki');
     $generator->uri('http://amusewiki.org');
     $feed->author($generator);
+
+    $c->stash(feed => $feed);
+}
+
+sub start :Chained('root') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $feed = $c->stash->{feed};
+    my $self_link = $c->request->uri;
+    $feed->id($self_link);
+    $feed->title('OPDS');
+
+    my $link = XML::Atom::Link->new;
+    $link->type('application/atom+xml;profile=opds-catalog;kind=navigation');
+    $link->rel('self');
+    $link->href($self_link);
+    $feed->add_link($link);
+
+    $feed->updated(DateTime->now);
     foreach my $entry ({
                         link => $c->uri_for_action('/opds/titles'),
                         title => $c->loc('Titles'),
@@ -85,8 +87,8 @@ sub start :Chained('root') :PathPart('') :Args(0) {
         $item->updated(DateTime->now);
         my $link = XML::Atom::Link->new;
         $link->rel('subsection');
-        $link->href($item->{link});
-        $link->type("application/atom+xml;profile=opds-catalog;kind=acquisition");
+        $link->href($entry->{link});
+        $link->type("application/atom+xml;profile=opds-catalog;kind=navigation");
         $item->add_link($link);
         $feed->add_entry($item);
     }
