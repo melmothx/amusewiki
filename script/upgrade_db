@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 rm -f tmp.db
 sqlite3 tmp.db < sql/sqlite.sql
 script/amusewikifarm_create.pl model DB \
