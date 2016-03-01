@@ -583,9 +583,9 @@ An Acquisition Feed listing OPDS Catalog Entries from the "Unpopular Publication
 Entry in the Navigation Feed above:
 
 <?xml version="1.0" encoding="UTF-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom";
-      xmlns:dc="http://purl.org/dc/terms/";
-      xmlns:opds="http://opds-spec.org/2010/catalog";>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:opds="http://opds-spec.org/2010/catalog">
   <id>urn:uuid:433a5d6a-0b8c-4933-af65-4ca4f02763eb</id>
 
   <link rel="related"
@@ -618,15 +618,15 @@ Entry in the Navigation Feed above:
     </author>
     <dc:language>en</dc:language>
     <dc:issued>1917</dc:issued>
-    <category scheme="http://www.bisg.org/standards/bisac_subject/index.html";
+    <category scheme="http://www.bisg.org/standards/bisac_subject/index.html"
               term="FIC020000"
               label="FICTION / Men's Adventure"/>
     <summary>The story of the son of the Bob and the gallant part he played in
       the lives of a man and a woman.</summary>
-    <link rel="http://opds-spec.org/image";
+    <link rel="http://opds-spec.org/image"
           href="/covers/4561.lrg.png"
           type="image/png"/>
-    <link rel="http://opds-spec.org/image/thumbnail";
+    <link rel="http://opds-spec.org/image/thumbnail"
           href="/covers/4561.thmb.gif"
           type="image/gif"/>
 
@@ -635,10 +635,10 @@ Entry in the Navigation Feed above:
           type="application/atom+xml;type=entry;profile=opds-catalog"
           title="Complete Catalog Entry for Bob, Son of Bob"/>
 
-    <link rel="http://opds-spec.org/acquisition";
+    <link rel="http://opds-spec.org/acquisition"
           href="/content/free/4561.epub"
           type="application/epub+zip"/>
-    <link rel="http://opds-spec.org/acquisition";
+    <link rel="http://opds-spec.org/acquisition"
           href="/content/free/4561.mobi"
           type="application/x-mobipocket-ebook"/>
   </entry>
@@ -666,11 +666,11 @@ Entry in the Navigation Feed above:
     <dc:issued>2009-10-01</dc:issued>
     <content type="text">The definitive reference for the web-curious
       philatelist.</content>
-    <link rel="http://opds-spec.org/image";
+    <link rel="http://opds-spec.org/image"
           href="/covers/11241.lrg.jpg"
           type="image/jpeg"/>
 
-    <link rel="http://opds-spec.org/acquisition/buy";
+    <link rel="http://opds-spec.org/acquisition/buy"
           href="/content/buy/11241.epub"
           type="application/epub+zip">
       <opds:price currencycode="USD">18.99</opds:price>
