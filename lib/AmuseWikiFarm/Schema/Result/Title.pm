@@ -378,10 +378,6 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use JSON qw/to_json from_json/;
-use XML::Atom;
-use XML::Atom::Entry;
-use XML::Atom::Link;
-use XML::Atom::Person;
 
 =head2 listing
 
@@ -898,22 +894,16 @@ sub sorted_categories {
 }
 
 sub opds_entry {
-    my ($self, $prefix) = @_;
-    $prefix ||= '';
+    my ($self) = @_;
     return unless $self->check_if_file_exists('epub');
-    my $entry = XML::Atom::Entry->new;
-    my $dc = XML::Atom::Namespace->new(dc => 'http://purl.org/dc/elements/1.1/');
-    $entry->set($dc, 'language', $self->lang);
-    # save the query and make it simple, those applications are
-    # crappy anyway
-    if (my $author = $self->author) {
-        my $author_obj = XML::Atom::Person->new;
-        $author_obj->name($self->_clean_html($author));
-        $entry->add_author($author_obj);
-    }
-    $entry->title($self->_clean_html($self->title));
-    $entry->id($prefix . $self->full_uri);
-    $entry->updated($self->pubdate);
+    my %out = (
+               updated => $self->pubdate,
+               title => $self->_clean_html($self->title),
+               author => $self->_clean_html($self->author || ''),
+               full_uri => $self->full_uri,
+               epub => $self->full_uri . '.epub',
+               lang => $self->lang || 'en',
+              );
     my @desc;
     foreach my $method (qw/author title subtitle date notes source/) {
         my $string = $self->$method;
@@ -921,13 +911,8 @@ sub opds_entry {
             push @desc, '<div>' . $string . '</div>';
         }
     }
-    $entry->content(join("\n", @desc));
-    my $link = XML::Atom::Link->new;
-    $link->rel('http://opds-spec.org/acquisition/open-access');
-    $link->href($prefix . $self->full_uri . '.epub');
-    $link->type('application/epub+zip');
-    $entry->add_link($link);
-    return $entry;
+    $out{content} = join("\n", @desc);
+    return \%out;
 }
 
 sub _clean_html {

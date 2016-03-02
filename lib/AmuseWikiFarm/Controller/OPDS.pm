@@ -125,10 +125,10 @@ sub titles :Chained('root') :PathPart('titles') :Args {
         $link->type("application/atom+xml;profile=opds-catalog;kind=$kind");
         $feed->add_link($link);
     }
-
+    my $prefix = $c->uri_for('/');
     while (my $title = $titles->next) {
         if (my $entry = $title->opds_entry) {
-            $feed->add_entry($entry);
+            $feed->add_entry($self->_create_title_entry($prefix, $entry));
         }
     }
     $c->detach($c->view('Atom'));
@@ -141,6 +141,34 @@ sub topics :Chained('root') :PathPart('topics') :Args {
 sub authors :Chained('root') :PathPart('authors') :Args {
     my ($self, $c) = @_;
 }
+
+sub _create_title_entry {
+    my ($self, $prefix, $data) = @_;
+    # data expects an hashref with title, updated, full_uri, epub, lang, author, content
+    Dlog_debug { "Data for title entry is $_" } $data;
+    $prefix ||= '';
+    my $entry = XML::Atom::Entry->new;
+    $entry->id($prefix . $data->{full_uri});
+    $entry->title($data->{title});
+    $entry->updated($data->{updated});
+    my $dc = XML::Atom::Namespace->new(dc => 'http://purl.org/dc/elements/1.1/');
+    $entry->set($dc, 'language', $data->{lang});
+    # save the query and make it simple, those applications are
+    # crappy anyway
+    if (my $author = $data->{author}) {
+        my $author_obj = XML::Atom::Person->new;
+        $author_obj->name($author);
+        $entry->add_author($author_obj);
+    }
+    $entry->content($data->{content});
+    my $link = XML::Atom::Link->new;
+    $link->rel('http://opds-spec.org/acquisition/open-access');
+    $link->href($prefix . $data->{epub});
+    $link->type('application/epub+zip');
+    $entry->add_link($link);
+    return $entry;
+}
+
 
 =encoding utf8
 
