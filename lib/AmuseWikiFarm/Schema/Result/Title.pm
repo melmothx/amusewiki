@@ -378,6 +378,7 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use JSON qw/to_json from_json/;
+use HTML::Entities qw/decode_entities/;
 
 =head2 listing
 
@@ -919,12 +920,7 @@ sub _clean_html {
     my ($self, $string) = @_;
     return "" unless defined $string;
     $string =~ s/<.+?>//g;
-    $string =~ s/&lt;/</g;
-    $string =~ s/&gt;/>/g;
-    $string =~ s/&quot;/"/g;
-    $string =~ s/&#x27;/'/g;
-    $string =~ s/&amp;/&/g;
-    return $string;
+    return decode_entities($string);
 }
 
 __PACKAGE__->meta->make_immutable;
