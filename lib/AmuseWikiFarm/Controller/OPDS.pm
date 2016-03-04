@@ -110,7 +110,6 @@ sub topics :Chained('all_topics') :PathPart('') :Args(0) {
                                  )
     }
     $c->detach($c->view('Atom'));
-
 }
 
 sub topic :Chained('all_topics') :PathPart('') :Args(1) {
@@ -137,14 +136,58 @@ sub topic :Chained('all_topics') :PathPart('') :Args(1) {
     }
 }
 
-
-sub all_authors :Chained('root') :PathPart('authors') {
+# and same stuff here
+sub all_authors :Chained('root') :PathPart('authors') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $authors = $c->stash->{site}->categories->active_only_by_type('author');
+    $c->stash(feed_rs => $authors);
+    my $feed = $c->model('OPDS');
+    $feed->add_to_navigations(
+                              rel => 'self',
+                              href => '/opds/authors',
+                              title => $c->loc('Authors'),
+                              description => $c->loc('texts sorted by author'),
+                             );
 }
 
-sub authors :Chained('all_authors') :PathPart('authors') :Args {
+sub authors :Chained('all_authors') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
+    my $authors = $c->stash->{feed_rs};
+    my $feed = $c->model('OPDS');
+    while (my $author = $authors->next) {
+        $feed->add_to_navigations(
+                                  href => '/opds/authors/' . $author->uri,
+                                  title => $author->name,
+                                  acquisition => 1,
+                                 );
+    }
     $c->detach($c->view('Atom'));
 }
+
+sub author :Chained('all_authors') :PathPart('') :Args(1) {
+    my ($self, $c, $uri) = @_;
+    my $authors = $c->stash->{feed_rs};
+    if (my $author = $authors->find({ uri => $uri })) {
+        my $feed = $c->model('OPDS');
+        $feed->add_to_navigations(
+                                  rel => 'self',
+                                  href => "/opds/authors/$uri",
+                                  title => $c->loc($author->name),
+                                  acquisition => 1,
+                                 );
+        my $titles = $author->titles->published_texts;
+        while (my $title = $titles->next) {
+            if (my $entry = $title->opds_entry) {
+                $feed->add_to_acquisitions(%$entry);
+            }
+        }
+        $c->detach($c->view('Atom'));
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
+
 
 =encoding utf8
 
