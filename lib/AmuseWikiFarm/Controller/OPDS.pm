@@ -31,13 +31,12 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
     $prefix =~ s!/$!!;
     $feed->prefix($prefix);
     my %start = (
-                 rel => 'self',
                  title => $c->stash->{site}->sitename,
                  href => '/opds',
                  updated => $c->stash->{site}->last_updated,
                 );
     # populate the feed with the root
-    $feed->add_to_navigations(%start);
+    $feed->add_to_navigations_new_level(%start);
     $start{rel} = 'start';
     $feed->add_to_navigations(%start);
     foreach my $entry ({
@@ -70,8 +69,7 @@ sub titles :Chained('root') :PathPart('titles') :Args {
     $page ||= 1;
     my $feed = $c->model('OPDS');
     my $titles = $c->stash->{site}->titles->published_texts;
-    $feed->add_to_navigations(
-                              rel => 'self',
+    $feed->add_to_navigations_new_level(
                               href => '/opds/titles',
                               title => $c->loc('Titles'),
                               description => $c->loc('texts sorted by title'),
@@ -90,8 +88,7 @@ sub all_topics :Chained('root') :PathPart('topics') :CaptureArgs(0) {
     my $topics = $c->stash->{site}->categories->active_only_by_type('topic');
     $c->stash(feed_rs => $topics);
     my $feed = $c->model('OPDS');
-    $feed->add_to_navigations(
-                              rel => 'self',
+    $feed->add_to_navigations_new_level(
                               href => '/opds/topics',
                               title => $c->loc('Topics'),
                               description => $c->loc('texts sorted by topics'),
@@ -117,8 +114,7 @@ sub topic :Chained('all_topics') :PathPart('') :Args(1) {
     my $topics = $c->stash->{feed_rs};
     if (my $topic = $topics->find({ uri => $uri })) {
         my $feed = $c->model('OPDS');
-        $feed->add_to_navigations(
-                                  rel => 'self',
+        $feed->add_to_navigations_new_level(
                                   href => "/opds/topics/$uri",
                                   title => $c->loc($topic->name),
                                   acquisition => 1,
@@ -142,8 +138,7 @@ sub all_authors :Chained('root') :PathPart('authors') :CaptureArgs(0) {
     my $authors = $c->stash->{site}->categories->active_only_by_type('author');
     $c->stash(feed_rs => $authors);
     my $feed = $c->model('OPDS');
-    $feed->add_to_navigations(
-                              rel => 'self',
+    $feed->add_to_navigations_new_level(
                               href => '/opds/authors',
                               title => $c->loc('Authors'),
                               description => $c->loc('texts sorted by author'),
@@ -169,8 +164,7 @@ sub author :Chained('all_authors') :PathPart('') :Args(1) {
     my $authors = $c->stash->{feed_rs};
     if (my $author = $authors->find({ uri => $uri })) {
         my $feed = $c->model('OPDS');
-        $feed->add_to_navigations(
-                                  rel => 'self',
+        $feed->add_to_navigations_new_level(
                                   href => "/opds/authors/$uri",
                                   title => $c->loc($author->name),
                                   acquisition => 1,
