@@ -909,13 +909,15 @@ sub opds_entry {
                files => [ $self->full_uri . '.epub' ],
               );
     my @desc;
-    foreach my $method (qw/author title subtitle date notes source/) {
+    foreach my $method (qw/notes source/) {
         my $string = $self->$method;
         if (length($string)) {
             push @desc, '<div>' . $string . '</div>';
         }
     }
-    $out{description} = join("\n", @desc);
+    if (@desc) {
+        $out{description} = join("\n", @desc);
+    }
     return \%out;
 }
 
