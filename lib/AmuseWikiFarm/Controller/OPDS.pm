@@ -30,10 +30,11 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
     my $prefix = $c->uri_for('/')->as_string;
     $prefix =~ s!/$!!;
     $feed->prefix($prefix);
+    $feed->updated($c->stash->{site}->last_updated);
+
     my %start = (
                  title => $c->stash->{site}->sitename,
                  href => '/opds',
-                 updated => $c->stash->{site}->last_updated,
                 );
     # populate the feed with the root
     $feed->add_to_navigations_new_level(%start);
