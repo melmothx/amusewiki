@@ -898,12 +898,15 @@ sub opds_entry {
     my ($self) = @_;
     return unless $self->check_if_file_exists('epub');
     my %out = (
-               updated => $self->pubdate,
                title => $self->_clean_html($self->title),
-               author => $self->_clean_html($self->author || ''),
-               full_uri => $self->full_uri,
+               href => $self->full_uri,
+               authors => [ map { +{ name => $_->name, uri => $_->full_uri } } $self->authors->all ],
                epub => $self->full_uri . '.epub',
-               lang => $self->lang || 'en',
+               language => $self->lang || 'en',
+               issued => $self->date || '',
+               updated => $self->pubdate,
+               summary => $self->_clean_html($self->subtitle || ''),
+               files => [ $self->full_uri . '.epub' ],
               );
     my @desc;
     foreach my $method (qw/author title subtitle date notes source/) {
@@ -912,7 +915,7 @@ sub opds_entry {
             push @desc, '<div>' . $string . '</div>';
         }
     }
-    $out{content} = join("\n", @desc);
+    $out{description} = join("\n", @desc);
     return \%out;
 }
 
