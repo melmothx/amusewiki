@@ -67,15 +67,37 @@ sub start :Chained('root') :PathPart('') :Args(0) {
 
 sub titles :Chained('root') :PathPart('titles') :Args {
     my ($self, $c, $page) = @_;
-    $page ||= 1;
+    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+        $page = 1;
+    }
     my $feed = $c->model('OPDS');
-    my $titles = $c->stash->{site}->titles->published_texts;
+    my $titles = $c->stash->{site}->titles->published_texts
+      ->search(undef, { page => $page, rows => 10 });
+    my $pager = $titles->pager;
     $feed->add_to_navigations_new_level(
-                              href => '/opds/titles',
+                              href => '/opds/titles/' . $pager->current_page,
                               title => $c->loc('Titles'),
                               description => $c->loc('texts sorted by title'),
                               acquisition => 1,
                              );
+    if ($pager->total_entries > $pager->entries_per_page) {
+        log_debug { "Adding pagination for page " . $pager->current_page };
+        foreach my $ref (qw/first last next previous/) {
+            my $pager_method = $ref . '_page';
+            if (my $linked_page = $pager->$pager_method) {
+                log_debug { "$ref is $linked_page" };
+                $feed->add_to_navigations(
+                                          rel => $ref,
+                                          href => "/opds/titles/$linked_page",
+                                          description => $c->loc('texts sorted by title'),
+                                          acquisition => 1,
+                                         );
+            }
+            else {
+                log_debug { "$ref has no page" };
+            }
+        }
+    }
     while (my $title = $titles->next) {
         if (my $entry = $title->opds_entry) {
             $feed->add_to_acquisitions(%$entry);
