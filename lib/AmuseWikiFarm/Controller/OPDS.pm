@@ -72,7 +72,7 @@ sub titles :Chained('root') :PathPart('titles') :Args {
     }
     my $feed = $c->model('OPDS');
     my $titles = $c->stash->{site}->titles->published_texts
-      ->search(undef, { page => $page, rows => 10 });
+      ->search(undef, { page => $page, rows => 5 });
     my $pager = $titles->pager;
     $feed->add_to_navigations_new_level(
                               href => '/opds/titles/' . $pager->current_page,
@@ -80,24 +80,7 @@ sub titles :Chained('root') :PathPart('titles') :Args {
                               description => $c->loc('texts sorted by title'),
                               acquisition => 1,
                              );
-    if ($pager->total_entries > $pager->entries_per_page) {
-        log_debug { "Adding pagination for page " . $pager->current_page };
-        foreach my $ref (qw/first last next previous/) {
-            my $pager_method = $ref . '_page';
-            if (my $linked_page = $pager->$pager_method) {
-                log_debug { "$ref is $linked_page" };
-                $feed->add_to_navigations(
-                                          rel => $ref,
-                                          href => "/opds/titles/$linked_page",
-                                          description => $c->loc('texts sorted by title'),
-                                          acquisition => 1,
-                                         );
-            }
-            else {
-                log_debug { "$ref has no page" };
-            }
-        }
-    }
+    $self->add_pagination($feed, $pager, "/opds/titles/", $c->loc('texts sorted by title'));
     while (my $title = $titles->next) {
         if (my $entry = $title->opds_entry) {
             $feed->add_to_acquisitions(%$entry);
@@ -132,17 +115,24 @@ sub topics :Chained('all_topics') :PathPart('') :Args(0) {
     $c->detach($c->view('Atom'));
 }
 
-sub topic :Chained('all_topics') :PathPart('') :Args(1) {
-    my ($self, $c, $uri) = @_;
+sub topic :Chained('all_topics') :PathPart('') :Args {
+    my ($self, $c, $uri, $page) = @_;
+    die "shouldn't happen" unless $uri;
+    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+        $page = 1;
+    }
     my $topics = $c->stash->{feed_rs};
     if (my $topic = $topics->find({ uri => $uri })) {
         my $feed = $c->model('OPDS');
         $feed->add_to_navigations_new_level(
-                                  href => "/opds/topics/$uri",
+                                  href => "/opds/topics/$uri/$page",
                                   title => $c->loc($topic->name),
                                   acquisition => 1,
                                  );
-        my $titles = $topic->titles->published_texts;
+        my $titles = $topic->titles->published_texts
+          ->search(undef, { page => $page, rows => 5 });
+        my $pager = $titles->pager;
+        $self->add_pagination($feed, $pager, "/opds/topics/$uri/", $c->loc($topic->name));
         while (my $title = $titles->next) {
             if (my $entry = $title->opds_entry) {
                 $feed->add_to_acquisitions(%$entry);
@@ -182,17 +172,24 @@ sub authors :Chained('all_authors') :PathPart('') :Args(0) {
     $c->detach($c->view('Atom'));
 }
 
-sub author :Chained('all_authors') :PathPart('') :Args(1) {
-    my ($self, $c, $uri) = @_;
+sub author :Chained('all_authors') :PathPart('') :Args {
+    my ($self, $c, $uri, $page) = @_;
+    die "shouldn't happen" unless $uri;
+    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+        $page = 1;
+    }
     my $authors = $c->stash->{feed_rs};
     if (my $author = $authors->find({ uri => $uri })) {
         my $feed = $c->model('OPDS');
         $feed->add_to_navigations_new_level(
-                                  href => "/opds/authors/$uri",
-                                  title => $c->loc($author->name),
+                                  href => "/opds/authors/$uri/$page",
+                                  title => $author->name,
                                   acquisition => 1,
                                  );
-        my $titles = $author->titles->published_texts;
+        my $titles = $author->titles->published_texts
+          ->search(undef, { rows => 5, page => $page });
+        my $pager = $titles->pager;
+        $self->add_pagination($feed, $pager, "/opds/authors/$uri/", $author->name);
         while (my $title = $titles->next) {
             if (my $entry = $title->opds_entry) {
                 $feed->add_to_acquisitions(%$entry);
@@ -205,6 +202,28 @@ sub author :Chained('all_authors') :PathPart('') :Args(1) {
     }
 }
 
+sub add_pagination :Private {
+    my ($self, $feed, $pager, $url_prefix, $desc) = @_;
+    die "Bad usage: @_" unless $feed && $pager && $url_prefix && $desc;
+    if ($pager->total_entries > $pager->entries_per_page) {
+        log_debug { "Adding pagination for page " . $pager->current_page };
+        foreach my $ref (qw/first last next previous/) {
+            my $pager_method = $ref . '_page';
+            if (my $linked_page = $pager->$pager_method) {
+                log_debug { "$ref is $linked_page" };
+                $feed->add_to_navigations(
+                                          rel => $ref,
+                                          href => $url_prefix . $linked_page,
+                                          description => $desc,
+                                          acquisition => 1,
+                                         );
+            }
+            else {
+                log_debug { "$ref has no page" };
+            }
+        }
+    }
+}
 
 =encoding utf8
 
