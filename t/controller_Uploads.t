@@ -53,7 +53,7 @@ $mech->content_contains(qq{/uploads/$site_id/thumbnails/$expected.thumb.png"});
 
 # touch the pdf
 ok (-f $thumb, "$thumb exists");
-my $stat = (stat($thumb))[9];
+$stat = (stat($thumb))[9];
 sleep 2;
 $mech->get_ok("/uploads/$site_id/thumbnails/$expected.thumb.png");
 is ($stat, (stat($thumb))[9], "File has been cached correctly");
