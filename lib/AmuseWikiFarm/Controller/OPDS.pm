@@ -58,7 +58,8 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
                        },
                        {
                         href => '/opds/new',
-                        title => $c->loc('Latest entries'),
+                        title => $c->loc('New'),
+                        description => $c->loc('Latest entries'),
                         rel => 'new',
                         acquisition => 1,
                        },
