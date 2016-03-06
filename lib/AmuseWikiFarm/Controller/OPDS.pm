@@ -140,7 +140,7 @@ sub topic :Chained('all_topics') :PathPart('') :Args {
     if (my $topic = $topics->find({ uri => $uri })) {
         my $feed = $c->model('OPDS');
         my $titles = $topic->titles->published_texts;
-        if ($self->populate_acquistions($feed, "/opds/topics/$uri", $c->loc($topic->name), $titles, $page)) {
+        if ($self->populate_acquistions($feed, "/opds/topics/$uri/", $c->loc($topic->name), $titles, $page)) {
             $c->detach($c->view('Atom'));
             return;
         }
@@ -182,7 +182,7 @@ sub author :Chained('all_authors') :PathPart('') :Args {
     if (my $author = $authors->find({ uri => $uri })) {
         my $feed = $c->model('OPDS');
         my $titles = $author->titles->published_texts;
-        if ($self->populate_acquistions($feed, "/opds/authors/$uri", $author->name, $titles, $page)) {
+        if ($self->populate_acquistions($feed, "/opds/authors/$uri/", $author->name, $titles, $page)) {
             $c->detach($c->view('Atom'));
         }
     }
