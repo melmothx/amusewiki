@@ -30,6 +30,19 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
     my $prefix = $c->uri_for('/')->as_string;
     $prefix =~ s!/$!!;
     $feed->prefix($prefix);
+
+    # add the favicon
+    my %decorations = (
+                       icon => 'favicon.ico',
+                       logo => 'navlogo.png',
+                      );
+    foreach my $decoration (sort keys %decorations) {
+        if ($c->stash->{site}->has_site_file($decorations{$decoration})) {
+            $feed->$decoration($c->uri_for_action('/sitefiles/local_files',
+                                                  [ $c->stash->{site}->id,
+                                                    $decorations{$decoration} ])->path);
+        }
+    }
     $feed->updated($c->stash->{site}->last_updated);
 
     my %start = (
