@@ -13,17 +13,40 @@ binmode STDOUT, ":encoding(utf-8)";
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
 use Test::Differences;
+use DateTime;
+use File::Spec::Functions qw/catfile catdir/;
+use File::Copy::Recursive qw/dircopy/;
+use File::Path qw/remove_tree make_path/;
+use File::Copy qw/copy/;
 
-my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                               host => 'blog.amusewiki.org');
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $site = $schema->resultset('Site')->find('0blog0');
-$site->update({ last_updated => DateTime->new(year => 2016, month => 3, day => 5)});
-$site->titles->published_texts->update({ pubdate => DateTime->new(year => 2016, month => 3, day => 5)});
-my $cats = $site->categories->active_only;
+my $id = '0opds0';
+my $src = catdir(qw/t test-repos/, $id);
+my $dest = catdir(repo => $id);
+unless (-d $dest) {
+    dircopy($src, $dest); 
+}
+my $site = $schema->resultset('Site')->update_or_create({
+                                               id => $id,
+                                               locale => 'en',
+                                               mode => 'blog',
+                                               sitename => 'OPDS test',
+                                               siteslogan => 'Test',
+                                               a4_pdf => 0,
+                                               pdf => 0,
+                                               lt_pdf => 0,
+                                               canonical => "$id.amusewiki.org",
+                                              })->discard_changes;
+$site->update_db_from_tree(sub { diag join(' ', @_) });
+
+$site->update({ last_updated => DateTime->new(year => 2016, month => 3, day => 1) });
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
 
 my @urls;
+my $cats = $site->categories->active_only;
 while (my $cat = $cats->next) {
     push @urls, { url => '/opds/' . $cat->type . 's/' . $cat->uri,
                   contains => $cat->name,
@@ -54,51 +77,51 @@ $mech->get('/opds');
 my $expected =<< 'ATOM';
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://blog.amusewiki.org/opds</id>
-  <link rel="self" href="http://blog.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
-  <link rel="start" href="http://blog.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
-  <title>A moderated wiki</title>
-  <updated>2016-03-05T00:00:00Z</updated>
-  <icon>http://blog.amusewiki.org/favicon.ico</icon>
+  <id>http://0opds0.amusewiki.org/opds</id>
+  <link rel="self" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
+  <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
+  <title>OPDS test</title>
+  <updated>2016-03-01T00:00:00Z</updated>
+  <icon>http://0opds0.amusewiki.org/favicon.ico</icon>
   <author>
-    <name>A moderated wiki</name>
-    <uri>http://blog.amusewiki.org</uri>
+    <name>OPDS test</name>
+    <uri>http://0opds0.amusewiki.org</uri>
   </author>
   <entry>
-    <title>Novo</title>
-    <id>http://blog.amusewiki.org/opds/new</id>
+    <title>New</title>
+    <id>http://0opds0.amusewiki.org/opds/new</id>
     <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">Poslednji unosi</div>
+      <div xmlns="http://www.w3.org/1999/xhtml">Latest entries</div>
     </content>
-    <updated>2016-03-05T00:00:00Z</updated>
-    <link rel="http://opds-spec.org/sort/new" href="http://blog.amusewiki.org/opds/new" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+    <updated>2016-03-01T00:00:00Z</updated>
+    <link rel="http://opds-spec.org/sort/new" href="http://0opds0.amusewiki.org/opds/new" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
   </entry>
   <entry>
-    <title>Naslovi</title>
-    <id>http://blog.amusewiki.org/opds/titles</id>
+    <title>Titles</title>
+    <id>http://0opds0.amusewiki.org/opds/titles</id>
     <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">tekstovi po naslovu</div>
+      <div xmlns="http://www.w3.org/1999/xhtml">texts sorted by title</div>
     </content>
-    <updated>2016-03-05T00:00:00Z</updated>
-    <link rel="subsection" href="http://blog.amusewiki.org/opds/titles" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Naslovi"/>
+    <updated>2016-03-01T00:00:00Z</updated>
+    <link rel="subsection" href="http://0opds0.amusewiki.org/opds/titles" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Titles"/>
   </entry>
   <entry>
-    <title>Teme</title>
-    <id>http://blog.amusewiki.org/opds/topics</id>
+    <title>Topics</title>
+    <id>http://0opds0.amusewiki.org/opds/topics</id>
     <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">tekstovi po temi</div>
+      <div xmlns="http://www.w3.org/1999/xhtml">texts sorted by topic</div>
     </content>
-    <updated>2016-03-05T00:00:00Z</updated>
-    <link rel="subsection" href="http://blog.amusewiki.org/opds/topics" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Teme"/>
+    <updated>2016-03-01T00:00:00Z</updated>
+    <link rel="subsection" href="http://0opds0.amusewiki.org/opds/topics" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Topics"/>
   </entry>
   <entry>
-    <title>Autori</title>
-    <id>http://blog.amusewiki.org/opds/authors</id>
+    <title>Authors</title>
+    <id>http://0opds0.amusewiki.org/opds/authors</id>
     <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml">tekstovi po autoru</div>
+      <div xmlns="http://www.w3.org/1999/xhtml">texts sorted by author</div>
     </content>
-    <updated>2016-03-05T00:00:00Z</updated>
-    <link rel="subsection" href="http://blog.amusewiki.org/opds/authors" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Autori"/>
+    <updated>2016-03-01T00:00:00Z</updated>
+    <link rel="subsection" href="http://0opds0.amusewiki.org/opds/authors" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Authors"/>
   </entry>
 </feed>
 ATOM
@@ -109,122 +132,101 @@ $mech->get('opds/titles');
 $expected =<< 'ATOM';
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://blog.amusewiki.org/opds/titles/1</id>
-  <link rel="self" href="http://blog.amusewiki.org/opds/titles/1" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
-  <link rel="start" href="http://blog.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
-  <link rel="up" href="http://blog.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
-  <title>Naslovi</title>
-  <updated>2016-03-05T00:00:00Z</updated>
-  <icon>http://blog.amusewiki.org/favicon.ico</icon>
+  <id>http://0opds0.amusewiki.org/opds/titles/1</id>
+  <link rel="self" href="http://0opds0.amusewiki.org/opds/titles/1" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+  <link rel="first" href="http://0opds0.amusewiki.org/opds/titles/1" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+  <link rel="last" href="http://0opds0.amusewiki.org/opds/titles/5" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+  <link rel="next" href="http://0opds0.amusewiki.org/opds/titles/2" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+  <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
+  <link rel="up" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
+  <title>Titles</title>
+  <updated>2016-03-01T00:00:00Z</updated>
+  <icon>http://0opds0.amusewiki.org/favicon.ico</icon>
   <author>
-    <name>A moderated wiki</name>
-    <uri>http://blog.amusewiki.org</uri>
+    <name>OPDS test</name>
+    <uri>http://0opds0.amusewiki.org</uri>
   </author>
-  <fh:complete xmlns:fh="http://purl.org/syndication/history/1.0"></fh:complete>
   <entry>
-    <id>http://blog.amusewiki.org/library/first-test</id>
-    <title>My first test</title>
-    <updated>2016-03-05T00:00:00Z</updated>
+    <id>http://0opds0.amusewiki.org/library/title-entry-10</id>
+    <title>Title 10</title>
+    <updated>2016-01-10T00:00:00Z</updated>
     <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
     <author>
-      <name>Cikla</name>
-      <uri>http://blog.amusewiki.org/category/author/cikla</uri>
+      <name>A1 10</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a1-10</uri>
     </author>
     <author>
-      <name>CPegulaX</name>
-      <uri>http://blog.amusewiki.org/category/author/cpegulax</uri>
+      <name>A2 10</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a2-10</uri>
     </author>
-    <author>
-      <name>Ćao</name>
-      <uri>http://blog.amusewiki.org/category/author/cao</uri>
-    </author>
-    <author>
-      <name>ćPegula</name>
-      <uri>http://blog.amusewiki.org/category/author/cpegula</uri>
-    </author>
-    <author>
-      <name>ZMario</name>
-      <uri>http://blog.amusewiki.org/category/author/zmario</uri>
-    </author>
-    <author>
-      <name>ŽMarco</name>
-      <uri>http://blog.amusewiki.org/category/author/zmarco</uri>
-    </author>
-    <summary>Test subtitle</summary>
-    <content type="xhtml">
-      <div xmlns="http://www.w3.org/1999/xhtml"><div>Note: This is just a test, however.</div>
-<div>Source: My own work</div></div>
-    </content>
-    <link rel="http://opds-spec.org/acquisition" href="http://blog.amusewiki.org/library/first-test.epub" type="application/epub+zip"/>
+    <summary>Subtitle 10</summary>
+    <link rel="http://opds-spec.org/acquisition" href="http://0opds0.amusewiki.org/library/title-entry-10.epub" type="application/epub+zip"/>
   </entry>
   <entry>
-    <id>http://blog.amusewiki.org/library/second-test</id>
-    <title>Zu A Second test</title>
-    <updated>2016-03-05T00:00:00Z</updated>
+    <id>http://0opds0.amusewiki.org/library/title-entry-11</id>
+    <title>Title 11</title>
+    <updated>2016-01-11T00:00:00Z</updated>
     <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
     <author>
-      <name>Ciao</name>
-      <uri>http://blog.amusewiki.org/category/author/ciao</uri>
+      <name>A1 11</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a1-11</uri>
     </author>
     <author>
-      <name>Cikla</name>
-      <uri>http://blog.amusewiki.org/category/author/cikla</uri>
+      <name>A2 11</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a2-11</uri>
     </author>
-    <author>
-      <name>CPegulaX</name>
-      <uri>http://blog.amusewiki.org/category/author/cpegulax</uri>
-    </author>
-    <author>
-      <name>Ćao</name>
-      <uri>http://blog.amusewiki.org/category/author/cao</uri>
-    </author>
-    <author>
-      <name>ćPegula</name>
-      <uri>http://blog.amusewiki.org/category/author/cpegula</uri>
-    </author>
-    <author>
-      <name>More</name>
-      <uri>http://blog.amusewiki.org/category/author/more</uri>
-    </author>
-    <author>
-      <name>ZMario</name>
-      <uri>http://blog.amusewiki.org/category/author/zmario</uri>
-    </author>
-    <author>
-      <name>ŽMarco</name>
-      <uri>http://blog.amusewiki.org/category/author/zmarco</uri>
-    </author>
-    <link rel="http://opds-spec.org/acquisition" href="http://blog.amusewiki.org/library/second-test.epub" type="application/epub+zip"/>
+    <summary>Subtitle 11</summary>
+    <link rel="http://opds-spec.org/acquisition" href="http://0opds0.amusewiki.org/library/title-entry-11.epub" type="application/epub+zip"/>
   </entry>
   <entry>
-    <id>http://blog.amusewiki.org/library/do-this-by-yourself</id>
-    <title>Ža Third test</title>
-    <updated>2016-03-05T00:00:00Z</updated>
+    <id>http://0opds0.amusewiki.org/library/title-entry-12</id>
+    <title>Title 12</title>
+    <updated>2016-01-12T00:00:00Z</updated>
     <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
     <author>
-      <name>Ciao</name>
-      <uri>http://blog.amusewiki.org/category/author/ciao</uri>
+      <name>A1 12</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a1-12</uri>
     </author>
     <author>
-      <name>Cikla</name>
-      <uri>http://blog.amusewiki.org/category/author/cikla</uri>
+      <name>A2 12</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a2-12</uri>
+    </author>
+    <summary>Subtitle 12</summary>
+    <link rel="http://opds-spec.org/acquisition" href="http://0opds0.amusewiki.org/library/title-entry-12.epub" type="application/epub+zip"/>
+  </entry>
+  <entry>
+    <id>http://0opds0.amusewiki.org/library/title-entry-13</id>
+    <title>Title 13</title>
+    <updated>2016-01-13T00:00:00Z</updated>
+    <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
+    <author>
+      <name>A1 13</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a1-13</uri>
     </author>
     <author>
-      <name>Ćao</name>
-      <uri>http://blog.amusewiki.org/category/author/cao</uri>
+      <name>A2 13</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a2-13</uri>
+    </author>
+    <summary>Subtitle 13</summary>
+    <link rel="http://opds-spec.org/acquisition" href="http://0opds0.amusewiki.org/library/title-entry-13.epub" type="application/epub+zip"/>
+  </entry>
+  <entry>
+    <id>http://0opds0.amusewiki.org/library/title-entry-14</id>
+    <title>Title 14</title>
+    <updated>2016-01-14T00:00:00Z</updated>
+    <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
+    <author>
+      <name>A1 14</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a1-14</uri>
     </author>
     <author>
-      <name>ćPegula</name>
-      <uri>http://blog.amusewiki.org/category/author/cpegula</uri>
+      <name>A2 14</name>
+      <uri>http://0opds0.amusewiki.org/category/author/a2-14</uri>
     </author>
-    <author>
-      <name>More</name>
-      <uri>http://blog.amusewiki.org/category/author/more</uri>
-    </author>
-    <link rel="http://opds-spec.org/acquisition" href="http://blog.amusewiki.org/library/do-this-by-yourself.epub" type="application/epub+zip"/>
+    <summary>Subtitle 14</summary>
+    <link rel="http://opds-spec.org/acquisition" href="http://0opds0.amusewiki.org/library/title-entry-14.epub" type="application/epub+zip"/>
   </entry>
 </feed>
 ATOM
 eq_or_diff($mech->content, $expected, "titles ok");
-
 done_testing;

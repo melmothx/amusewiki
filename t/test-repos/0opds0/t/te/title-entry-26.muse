@@ -1,0 +1,8 @@
+#title Title 26
+#author author 26
+#SORTauthors A1 26, A2 26
+#pubdate 2016-01-26
+#subtitle Subtitle 26
+#lang en
+
+body

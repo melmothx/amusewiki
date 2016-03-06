@@ -1,0 +1,8 @@
+#title Title 10
+#author author 10
+#SORTauthors A1 10, A2 10
+#pubdate 2016-01-10
+#subtitle Subtitle 10
+#lang en
+
+body

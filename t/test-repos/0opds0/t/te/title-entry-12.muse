@@ -1,0 +1,8 @@
+#title Title 12
+#author author 12
+#SORTauthors A1 12, A2 12
+#pubdate 2016-01-12
+#subtitle Subtitle 12
+#lang en
+
+body
