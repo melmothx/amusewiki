@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More;
+use Test::More tests => 280;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -229,4 +229,4 @@ $expected =<< 'ATOM';
 </feed>
 ATOM
 eq_or_diff($mech->content, $expected, "titles ok");
-done_testing;
+
