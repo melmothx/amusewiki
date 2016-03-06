@@ -61,6 +61,7 @@ requires 'DateTime::Format::MySQL';
 requires 'DateTime::Format::Pg';
 requires 'XML::FeedPP' => '0.43';
 requires 'XML::Atom' => '0.41'; # 2011...
+requires 'XML::OPDS' => '0.02';
 requires 'Git::Wrapper';
 requires 'Text::Wrapper'; # for revision messages
 requires 'Email::Valid';
