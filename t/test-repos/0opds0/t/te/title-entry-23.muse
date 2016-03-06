@@ -1,0 +1,8 @@
+#title Title 23
+#author author 23
+#SORTauthors A1 23, A2 23
+#pubdate 2016-01-23
+#subtitle Subtitle 23
+#lang en
+
+body

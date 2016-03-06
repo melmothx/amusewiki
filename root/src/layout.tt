@@ -10,6 +10,8 @@
     [% END %]
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename | html %]" href="[% c.uri_for('/feed') %]" />
+    <link rel="related" type="application/atom+xml;profile=opds-catalog;kind=navigation"
+          href="[% c.uri_for_action('/opds/start') %]" title="[% loc('OPDS') %]"/>
     [% IF base_url %]<base href="[% base_url %]" />[% END %]
     <title>
       [%- IF page_title -%]
@@ -466,6 +468,8 @@
       [% IF c.user_exists || site.human_can_edit %]
       |
       <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add to library') %]</a>
+      |
+      <a href="[% c.uri_for_action('/opds/start') %]">[% loc('OPDS') %]</a>
       [% END %]
     </div>
   </body>

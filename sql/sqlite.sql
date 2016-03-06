@@ -80,7 +80,8 @@ CREATE TABLE site (
        nocoverpage INTEGER(1) NOT NULL DEFAULT 0,
        logo_with_sitename INTEGER(1) NOT NULL DEFAULT 0,
        opening VARCHAR(16) NOT NULL DEFAULT 'any',
-       twoside INTEGER(1) NOT NULL DEFAULT 0
+       twoside INTEGER(1) NOT NULL DEFAULT 0,
+       last_updated DATETIME
 );
 
 CREATE UNIQUE INDEX unique_site_canonical ON site (canonical);

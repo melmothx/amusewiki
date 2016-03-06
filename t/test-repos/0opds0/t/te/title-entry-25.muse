@@ -1,0 +1,8 @@
+#title Title 25
+#author author 25
+#SORTauthors A1 25, A2 25
+#pubdate 2016-01-25
+#subtitle Subtitle 25
+#lang en
+
+body

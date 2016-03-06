@@ -1,0 +1,8 @@
+#title Title 31
+#author author 31
+#SORTauthors A1 31, A2 31
+#pubdate 2016-01-31
+#subtitle Subtitle 31
+#lang en
+
+body

@@ -378,6 +378,7 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use JSON qw/to_json from_json/;
+use HTML::Entities qw/decode_entities/;
 
 =head2 listing
 
@@ -891,6 +892,40 @@ sub sorted_categories {
     my ($self, $type) = @_;
     return sort { $a->sorting_pos <=> $b->sorting_pos }
       grep { $_->type eq $type } $self->categories->all;
+}
+
+sub opds_entry {
+    my ($self) = @_;
+    return unless $self->check_if_file_exists('epub');
+    my %out = (
+               title => $self->_clean_html($self->title),
+               href => $self->full_uri,
+               authors => [ map { +{ name => $_->name, uri => $_->full_uri } } $self->authors->all ],
+               epub => $self->full_uri . '.epub',
+               language => $self->lang || 'en',
+               issued => $self->date || '',
+               updated => $self->pubdate,
+               summary => $self->_clean_html($self->subtitle || ''),
+               files => [ $self->full_uri . '.epub' ],
+              );
+    my @desc;
+    foreach my $method (qw/notes source/) {
+        my $string = $self->$method;
+        if (length($string)) {
+            push @desc, '<div>' . $string . '</div>';
+        }
+    }
+    if (@desc) {
+        $out{description} = join("\n", @desc);
+    }
+    return \%out;
+}
+
+sub _clean_html {
+    my ($self, $string) = @_;
+    return "" unless defined $string;
+    $string =~ s/<.+?>//g;
+    return decode_entities($string);
 }
 
 __PACKAGE__->meta->make_immutable;

@@ -1,0 +1,8 @@
+#title Title 24
+#author author 24
+#SORTauthors A1 24, A2 24
+#pubdate 2016-01-24
+#subtitle Subtitle 24
+#lang en
+
+body

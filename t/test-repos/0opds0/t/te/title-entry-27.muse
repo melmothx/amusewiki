@@ -1,0 +1,8 @@
+#title Title 27
+#author author 27
+#SORTauthors A1 27, A2 27
+#pubdate 2016-01-27
+#subtitle Subtitle 27
+#lang en
+
+body
