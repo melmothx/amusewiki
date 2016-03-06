@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 280;
+use Test::More tests => 281;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -128,7 +128,10 @@ ATOM
 unified_diff;
 eq_or_diff ($mech->content, $expected, "Root ok");
 
-$mech->get('opds/titles');
+$mech->get('/opds/authors');
+$mech->content_lacks('http://opds-spec.org/sort/new') or diag $mech->content;
+
+$mech->get('/opds/titles');
 $expected =<< 'ATOM';
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">

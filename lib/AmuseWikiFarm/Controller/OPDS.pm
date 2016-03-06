@@ -106,8 +106,15 @@ sub new_entries :Chained('root') :PathPart('new') :Args {
     }
 }
 
+sub clean_root :Chained('root') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $feed = $c->model('OPDS');
+    # remove the new from leaves navigations
+    my @navs = grep { $_->rel ne 'new' } @{$feed->navigations};
+    $feed->navigations(\@navs);
+}
 
-sub all_topics :Chained('root') :PathPart('topics') :CaptureArgs(0) {
+sub all_topics :Chained('clean_root') :PathPart('topics') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $topics = $c->stash->{site}->categories->active_only_by_type('topic');
     $c->stash(feed_rs => $topics);
@@ -149,7 +156,7 @@ sub topic :Chained('all_topics') :PathPart('') :Args {
 }
 
 # and same stuff here
-sub all_authors :Chained('root') :PathPart('authors') :CaptureArgs(0) {
+sub all_authors :Chained('clean_root') :PathPart('authors') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $authors = $c->stash->{site}->categories->active_only_by_type('author');
     $c->stash(feed_rs => $authors);
