@@ -1,3 +1,9 @@
+amusewiki (1.700-3) unstable; urgency=medium
+
+  * New release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 06 Mar 2016 18:03:48 +0100
+
 amusewiki (1.606-2) unstable; urgency=medium
 
   * Fixed dependencies for the wrapper cgit service
