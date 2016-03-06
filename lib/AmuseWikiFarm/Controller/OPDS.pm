@@ -32,19 +32,12 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
     $feed->prefix($prefix);
 
     # add the favicon
-    my %decorations = (
-                       icon => 'favicon.ico',
-                       logo => 'navlogo.png',
-                      );
-    foreach my $decoration (sort keys %decorations) {
-        if ($c->stash->{site}->has_site_file($decorations{$decoration})) {
-            $feed->$decoration($c->uri_for_action('/sitefiles/local_files',
-                                                  [ $c->stash->{site}->id,
-                                                    $decorations{$decoration} ])->path);
-        }
+    if ($c->stash->{site}->has_site_file('favicon.ico')) {
+        $feed->icon('/favicon.ico');
     }
     $feed->updated($c->stash->{site}->last_updated);
-
+    $feed->author($c->stash->{site}->sitename);
+    $feed->author_uri($prefix);
     my %start = (
                  title => $c->stash->{site}->sitename,
                  href => '/opds',
