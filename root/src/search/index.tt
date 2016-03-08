@@ -147,6 +147,7 @@
   [% END %]
 </div>
 
+[% IF previous_page || next_page %]
 <ul class="pager">
   [% IF previous_page %]
   <li>
@@ -159,7 +160,9 @@
     <a href="[% next_page %]">[% loc("Next") %]</a>
   </li>
   [% END %]
-</div>
+</ul>
+[% END %]
+
 [% ELSIF built_query %]
 <div>
   <p>
