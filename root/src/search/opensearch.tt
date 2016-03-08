@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- See http://www.opensearch.org/Specifications/OpenSearch/1.1 -->
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>[% site.canonical | html %]</ShortName>
+  <Description>[% site.sitename | html %]</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <OutputEncoding>UTF-8</OutputEncoding>
+  <AdultContent>false</AdultContent>
+  [% FOREACH lang IN site.supported_locales %]<Language>[% lang %]</Language>[% END %]
+  <SyndicationRight>[% IF site.is_private %]limited[% ELSE %]open[% END %]</SyndicationRight>
+  [% IF site.has_site_file('favicon.ico')- %]<Image type="image/x-icon">[% c.uri_for_action('/favicon') %]</Image>[% END %]
+  <Url type="text/html" template="[% c.uri_for_action('/search/index') %]?query={searchTerms}" />
+</OpenSearchDescription>

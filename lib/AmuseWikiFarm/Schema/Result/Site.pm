@@ -1598,6 +1598,20 @@ sub multilanguage_list {
     }
 }
 
+sub supported_locales {
+    my ($self) = @_;
+    my $check = $self->known_langs;
+    my @all = map { $_->{code} } @{ $self->multilanguage_list || [] };
+    push @all, $self->locale;
+    my %out;
+    foreach my $lang (@all) {
+        if ($check->{$lang}) {
+            $out{$lang}++;
+        }
+    }
+    return sort keys %out;
+}
+
 =head1 SCANNING
 
 =head2 repo_find_files

@@ -24,6 +24,12 @@ Catalyst Controller.
 use JSON qw/to_json/;
 use AmuseWikiFarm::Log::Contextual;
 
+sub opensearch :Chained('/site') :PathPart('opensearch.xml') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(no_wrapper => 1);
+    $c->res->content_type('application/xml');
+}
+
 sub index :Chained('/site') :PathPart('search') :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};

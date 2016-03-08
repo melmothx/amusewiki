@@ -279,6 +279,7 @@ root/src/library/bbselect.tt
 root/src/macros.tt
 root/src/publish/pending.tt
 root/src/search/index.tt
+root/src/search/opensearch.tt
 root/src/special/display.tt
 root/src/tasks/display.tt
 root/src/text.tt

@@ -8,6 +8,9 @@
           href="[% c.uri_for_action('/sitefiles/local_files',
                                     [ site.id, 'favicon.ico']) %]" />
     [% END %]
+    <link rel="search" href="[% c.uri_for_action('/search/opensearch') %]"
+          type="application/opensearchdescription+xml"
+          title="[% site.sitename | html %]">
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename | html %]" href="[% c.uri_for('/feed') %]" />
     <link rel="related" type="application/atom+xml;profile=opds-catalog;kind=navigation"
