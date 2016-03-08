@@ -338,6 +338,9 @@
       </li>
       [% END %]
     </ul>
+    <ul class="pager">
+      <li><a href="[% c.uri_for_action('/latest/index') %]">[% loc('More') %]</a>
+    </ul>
   </div>
   [% END %]
   </div>

@@ -218,6 +218,12 @@
                   </a>
                 </li>
                 [% END %]
+                <li[% IF nav == 'latest' %] class="active"[% END %]>
+                  <a href="[% c.uri_for_action('/latest/index') %]"
+		             title="[% loc('Latest entries') %]">
+                    [% loc('Latest entries') %]
+                  </a>
+                </li>
                 [% IF c.user_exists || site.human_can_edit %]
                 <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
@@ -468,6 +474,8 @@
       |
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		 title="[% loc('texts sorted by topics') %]">[% loc('Topics') %]</a>
+      |
+      <a href="[% c.uri_for_action('/latest/index') %]">[% loc('Latest entries') %]</a>
       |
       <a href="[% c.uri_for_action('/opds/start') %]">[% loc('OPDS') %]</a>
       [% IF c.user_exists || site.human_can_edit %]

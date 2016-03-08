@@ -158,6 +158,7 @@ lib/AmuseWikiFarm/Controller/Custom.pm
 lib/AmuseWikiFarm/Controller/Edit.pm
 lib/AmuseWikiFarm/Controller/Feed.pm
 lib/AmuseWikiFarm/Controller/Git.pm
+lib/AmuseWikiFarm/Controller/Latest.pm
 lib/AmuseWikiFarm/Controller/Library.pm
 lib/AmuseWikiFarm/Controller/OPDS.pm
 lib/AmuseWikiFarm/Controller/Publish.pm
@@ -273,6 +274,7 @@ root/src/git/git.tt
 root/src/include/ckeditor.tt
 root/src/include/markitup.tt
 root/src/include/validate.tt
+root/src/latest/index.tt
 root/src/layout.tt
 root/src/library.tt
 root/src/library/bbselect.tt
@@ -652,6 +654,7 @@ t/controller_Console.t
 t/controller_Edit.t
 t/controller_Feed.t
 t/controller_Git.t
+t/controller_Latest.t
 t/controller_Library.t
 t/controller_OPDS.t
 t/controller_Publish.t

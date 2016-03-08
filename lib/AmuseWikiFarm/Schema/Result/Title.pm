@@ -379,6 +379,7 @@ use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use JSON qw/to_json from_json/;
 use HTML::Entities qw/decode_entities/;
+use DateTime;
 
 =head2 listing
 
@@ -926,6 +927,13 @@ sub _clean_html {
     return "" unless defined $string;
     $string =~ s/<.+?>//g;
     return decode_entities($string);
+}
+
+sub pubdate_locale {
+    my ($self, $locale) = @_;
+    $locale ||= 'en';
+    my $dt = DateTime->from_object(object => $self->pubdate, locale => $locale);
+    return $dt->format_cldr($dt->locale->date_format_medium);
 }
 
 __PACKAGE__->meta->make_immutable;

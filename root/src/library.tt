@@ -1,5 +1,5 @@
 [% # -*- mode: html -*- %]
-<h2>[% page_title %]
+<h2>[% page_title | html %]
   [%- IF multilang.filter_label -%]
   <small>[% multilang.filter_label %]</small>
   [%- END -%]

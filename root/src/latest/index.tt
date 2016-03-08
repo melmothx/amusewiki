@@ -1,0 +1,31 @@
+<h2>[% page_title | html %]</h2>
+
+<div>&nbsp;</div>
+
+[% IF texts.size %]
+
+<div class="list-group">
+  [% FOREACH text IN texts %]
+  <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
+    <strong>[% text.title %]</strong>
+    [%- IF text.author %] — [% text.author -%][% END -%]    
+    [% IF text.is_deferred %]
+    <span class="glyphicon glyphicon-time"></span>
+    [% END %]
+    <span class="pull-right clearfix">
+      [% text.pubdate_locale(current_locale_code) %]
+    </span>
+  </a>
+  [% END %]
+</div>
+[% END %]
+
+[% IF pager.size > 1 %]
+<ul class="pagination">
+  [% FOREACH page IN pager %]
+  <li [%IF page.active %]class="active"[% END %]>
+    <a href="[% page.uri %]">[% page.label %]</a>
+  </li>
+  [% END %]
+</ul>
+[% END %]
