@@ -8,6 +8,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Paginator;
 
 =head1 NAME
 
@@ -38,103 +39,19 @@ sub index :Chained('base') :PathPart('') :Args {
                                                 {
                                                  order_by => { -desc => 'pubdate' },
                                                  page => $page,
-                                                 rows => 20,
+                                                 rows => 10,
                                                 });
     my $pager = $results->pager;
     my $format_link = sub {
         return $c->uri_for_action('/latest/index', $_[0]);
     };
     my @res = $results->all;
-    $c->stash(pager => $self->create_pager($pager, $format_link),
+    $c->stash(pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
               nav => 'latest',
               page_title => $c->loc('Latest entries'),
               texts => \@res);
 }
 
-sub create_pager {
-    my ($self, $pager, $sub) = @_;
-    my @pages;
-    my %done;
-    my $current = $pager->current_page;
-    my $first = $pager->first_page;
-    my $last = $pager->last_page;
-
-    foreach my $spec ({
-                       label => "«««",
-                       page => $pager->previous_page,
-                      },
-                      {
-                       page => $first
-                      },
-                      {
-                       page => $first + 1,
-                      },
-                      {
-                       page => $first + 2,
-                      },
-                      {
-                       page => $first + 3,
-                      },
-                      {
-                       page => $current - 3,
-                      },
-                      {
-                       page => $current - 2,
-                      },
-                      {
-                       page => $current - 1,
-                      },
-                      {
-                       page => $current,
-                      },
-                      {
-                       page => $current + 1,
-                      },
-                      {
-                       page => $current + 2,
-                      },
-                      {
-                       page => $current + 3,
-                      },
-                      {
-                       page => $last -3,
-                      },
-                      {
-                       page => $last -2,
-                      },
-                      {
-                       page => $last -1,
-                      },
-                      {
-                       page => $last,
-                      },
-                      {
-                       label => "»»»",
-                       page => $pager->next_page,
-                      }) {
-        my $page = $spec->{page};
-        if ($page && $page >= $first && $page <= $last) {
-            unless ($spec->{label}) {
-                if ($done{$page}) {
-                    next;
-                }
-                else {
-                    $done{$page} = 1;
-                }
-            }
-            my %out = (
-                       uri => $sub->($page),
-                       label => $spec->{label} || $page,
-                      );
-            if ($page == $current) {
-                $out{active} = 1;
-            }
-            push @pages, \%out;
-        }
-    }
-    Dlog_debug { "$_" } \@pages;
-    return \@pages;
-}
 
 =encoding utf8
 

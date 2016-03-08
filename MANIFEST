@@ -223,6 +223,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
+lib/AmuseWikiFarm/Utils/Paginator.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
 lib/AmuseWikiFarm/View/Email/Template.pm
@@ -778,6 +779,7 @@ t/useless-sessions.t
 t/users.t
 t/utils-bookbuilder.t
 t/utils-cgitsetup.t
+t/utils-paginator.t
 t/view_Email-Template.t
 t/view_HTML.t
 t/view_StaticFile.t
