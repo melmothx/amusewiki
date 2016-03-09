@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 15;
+use Test::More tests => 16;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
 binmode $builder->failure_output, ":encoding(utf8)";
@@ -48,3 +48,6 @@ foreach my $lang (sort keys (%{ $site->known_langs })) {
 
 $mech->get_ok('/latest');
 $mech->get_ok('/latest/2');
+# check
+$mech->get_ok('/opds');
+

@@ -5,6 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use DateTime;
 
 =head1 NAME
 
@@ -35,7 +36,7 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
     if ($c->stash->{site}->has_site_file('favicon.ico')) {
         $feed->icon('/favicon.ico');
     }
-    $feed->updated($c->stash->{site}->last_updated);
+    $feed->updated($c->stash->{site}->last_updated || DateTime->now);
     $feed->author($c->stash->{site}->sitename);
     $feed->author_uri($prefix);
     my %start = (
