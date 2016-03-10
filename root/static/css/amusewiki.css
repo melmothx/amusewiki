@@ -15,10 +15,11 @@ html, body {
 
 .footer {
   position: relative;
-  margin-top: -50px; /* negative value of footer height */
-  height: 50px;
+  margin-top: -70px; /* negative value of footer height */
+  height: 70px;
   clear:both;
-  padding-top:20px;
+  padding-top:15px;
+  background-color: #efefef;
 }
 
 body {
@@ -61,15 +62,8 @@ div.float_image_r {
 
 .feed {
     margin-left: 3px;
+    margin-right: 3px;
     padding: 0 0 0 19px;
-    background: url("../images/feed-icon-14x14.png") no-repeat 0 50%;
-}
-
-div#footer {
-    margin-top: 50px;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    background-color: #efefef;
 }
 
 img.amw-navlogo-img {

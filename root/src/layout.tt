@@ -88,7 +88,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 20 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 21 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
 
     [%- IF cgit_page %]
@@ -458,13 +458,15 @@
       <div id="widepage">
         [% content %]
       </div>
+      <div>&nbsp;</div>
+      <div>&nbsp;</div>
     </div>
     </div>
-    <div>&nbsp;</div>
-    <div id="footer" class="footer center">
-      <a href="[% c.uri_for('/feed') %]" class="feed">[% loc('RSS feed') %]</a>
+    <div id="footer">
+      <div class="footer center">
+      <a href="[% c.uri_for('/feed') %]" class="feed" ><img src="[% c.uri_for('/static/images/feed-icon-14x14.png') %]" title="[% loc('RSS feed') %]" alt="[% loc('RSS feed') %]" /></a>
       |
-	  <a href="[% c.uri_for('/random') %]">[% loc('Random') %]</a>
+      <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]"><span class="glyphicon glyphicon-random"></span></a>
       |
       <a href="[% c.uri_for('/library') %]"
 		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
@@ -482,6 +484,7 @@
       |
       <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add to library') %]</a>
       [% END %]
+      </div>
     </div>
   </body>
 </html>
