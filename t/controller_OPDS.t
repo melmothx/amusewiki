@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 282;
+use Test::More tests => 288;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -236,3 +236,31 @@ ATOM
 eq_or_diff($mech->content, $expected, "titles ok");
 
 $mech->get_ok('/opensearch.xml');
+
+$mech->get_ok('/opds/search?query=a*');
+$mech->content_contains(q{"http://0opds0.amusewiki.org/opds/search?query=a*&amp;page=2"});
+$mech->get_ok('/opds/search?query=<>+OR+a*');
+$mech->content_contains(q{"http://0opds0.amusewiki.org/opds/search?query=%3C%3E+OR+a*&amp;page=1"});
+
+$mech->get_ok('/opds/search?query=OR+OR+OR+OR');
+
+$expected =<<'XML';
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://0opds0.amusewiki.org/opds/search?query=OR+OR+OR+OR&amp;page=1</id>
+  <link rel="self" href="http://0opds0.amusewiki.org/opds/search?query=OR+OR+OR+OR&amp;page=1" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Search results"/>
+  <link rel="search" href="http://0opds0.amusewiki.org/opensearch.xml" type="application/opensearchdescription+xml" title="Search"/>
+  <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
+  <link rel="up" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
+  <title>Search results</title>
+  <updated>2016-03-01T00:00:00Z</updated>
+  <icon>http://0opds0.amusewiki.org/favicon.ico</icon>
+  <author>
+    <name>OPDS test</name>
+    <uri>http://0opds0.amusewiki.org</uri>
+  </author>
+</feed>
+XML
+
+eq_or_diff($mech->content, $expected, "search ok");
+diag $mech->content;

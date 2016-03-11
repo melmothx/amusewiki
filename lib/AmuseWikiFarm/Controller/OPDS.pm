@@ -207,9 +207,9 @@ sub search :Chained('clean_root') :PathPart('search') :Args(0) {
     my $feed = $c->model('OPDS');
     my $site = $c->stash->{site};
     my $xapian = $site->xapian;
-    my $query = $c->request->params->{query};
+    my $query = $c->request->params->{query} // '';
     my $page = $self->validate_page($c->request->params->{page});
-    my $base = $c->uri_for($c->action, { query => $query }) . '&page=';
+    my $base = $c->uri_for($c->action, { query => $query })->path_query . '&page=';
     $feed->add_to_navigations_new_level(
                                         href => $base . $page,
                                         title => $c->loc('Search results'),
