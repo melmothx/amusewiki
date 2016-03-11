@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 19;
+use Test::More tests => 18;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Catalyst::Test 'AmuseWikiFarm';
@@ -42,13 +42,6 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
     $mech->content_contains('<Description>' . $site->sitename . '</Description>');
     is_deeply([$site->supported_locales], [qw/de en hr/]);
     $mech->get_ok('/opensearch.xml');
-    is ($mech->uri->path, '/login');
-    $mech->submit_form(form_id => 'login-form',
-                       fields => { username => 'root',
-                                   password => 'root',
-                                 },
-                       button => 'submit');
-    diag $mech->content;
     $mech->content_contains('<SyndicationRight>limited</SyndicationRight>');
     foreach my $lang ($site->supported_locales) {
         $mech->content_contains("<Language>$lang</Language>");
