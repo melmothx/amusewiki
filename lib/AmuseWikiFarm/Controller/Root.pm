@@ -284,10 +284,41 @@ ROBOTS
     if (!$site or $site->is_private) {
         $robots = "User-agent: *\nDisallow: /\n";
     }
+    else {
+        $robots .= "Sitemap: " . $c->uri_for_action('/sitemap_txt') . "\n";
+    }
     $c->response->content_type('text/plain');
     $c->response->body($robots);
 }
 
+sub sitemap_txt :Chained('/site') :PathPart('sitemap.txt') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my @urls;
+    my $base = $site->canonical_url_secure;
+    foreach my $root ('library',
+                      'opds',
+                      'feed',
+                      'category/topic',
+                      'category/author') {
+        push @urls, $base . '/' . $root;
+    }
+    my $texts = $site->titles->published_all
+      ->search(undef, { order_by => [qw/f_class sorting_pos/] })->listing_tokens_plain;
+    my $categories = $site->categories->active_only
+      ->search(undef, { order_by => [qw/type sorting_pos/] })->listing_tokens;
+    while (@$texts) {
+        my $text = shift @$texts;
+        push @urls, $base . $text->{full_uri};
+    }
+    while (@$categories) {
+        my $cat = shift @$categories;
+        push @urls, $base . $cat->{full_uri};
+    }
+    push @urls, '';
+    $c->response->content_type('text/plain');
+    $c->response->body(join("\n", @urls));
+}
 
 =head2 index
 

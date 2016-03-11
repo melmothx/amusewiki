@@ -244,8 +244,8 @@ you need to pass lang (defaulting to english).
 
 =cut
 
-sub listing_tokens {
-    my ($self, $lang) = @_;
+sub listing_tokens_plain {
+    my $self = shift;
     my @list = $self->search(undef,
                              {
                               columns => [qw/author title uri lang f_class status list_title/],
@@ -273,16 +273,21 @@ sub listing_tokens {
             Dlog_warn { "$_ has unsupported f_class $class" };
         }
     }
+    return \@list;
+}
 
+sub listing_tokens {
+    my ($self, $lang) = @_;
+    my $list = $self->listing_tokens_plain;
     my $collator = Unicode::Collate::Locale->new(locale => $lang || 'en',
                                                  level => 1);
     my @dummy = (0..9, 'A'..'Z');
     my (%map, @list_with_separators, @paging);
     my $current = '';
     my $counter = 0;
-    my $grand_total = scalar(@list);
-    while (@list) {
-        my $item = shift @list;
+    my $grand_total = scalar(@$list);
+    while (@$list) {
+        my $item = shift @$list;
         if (defined $item->{first_char}) {
             unless (defined $map{$item->{first_char}}) {
               REPLACEL:

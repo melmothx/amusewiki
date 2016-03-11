@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 52;
+use Test::More tests => 54;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -30,7 +30,7 @@ write_file(catfile($site->repo_root, 'site_files', 'test.txt'), "Hello\n");
 $mech->get_ok('/login');
 
 foreach my $path (qw/library topics authors bookbuilder search special
-                     opds
+                     opds sitemap.txt
                      feed rss.xml random human/) {
     $mech->get_ok("/$path");
     is $mech->uri->path, '/login', "/$path is redirected at login";
