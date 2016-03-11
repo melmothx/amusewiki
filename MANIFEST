@@ -274,6 +274,7 @@ root/src/error.tt
 root/src/git/git.tt
 root/src/include/ckeditor.tt
 root/src/include/markitup.tt
+root/src/include/pagination.tt
 root/src/include/validate.tt
 root/src/latest/index.tt
 root/src/layout.tt

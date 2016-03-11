@@ -9,6 +9,7 @@ use namespace::autoclean;
 
 use Search::Xapian (':all');
 use File::Spec;
+use Data::Page;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -47,7 +48,7 @@ has xapian_indexer => (
 has page => (
              is => 'rw',
              isa => 'Int',
-             default => sub { return 50 },
+             default => sub { return 10 },
             );
 
 sub xapian_dir {
@@ -232,7 +233,8 @@ and a list of matches, each being an hashref with the following keys:
 
 sub search {
     my ($self, $query_string, $page) = @_;
-    return 0 unless $query_string;
+    my $pager = Data::Page->new;
+    return $pager unless $query_string;
 
     my $database = Search::Xapian::Database->new($self->xapian_dir);
 
@@ -263,14 +265,14 @@ sub search {
     # paging
     my $pagesize = $self->page;
     # be sure to have a number
-    $page ||= 1;
+    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+        $page = 1;
+    }
     my $start = ($page - 1) * $pagesize;
     my $mset = $enquire->get_mset($start, $pagesize, $pagesize);
-    my $msize = $mset->size;
-    if ($msize == 0) {
-        return 0;
-    }
-    my $totaldocs = $mset->get_matches_estimated();
+    $pager->total_entries($mset->get_matches_estimated);
+    $pager->entries_per_page($pagesize);
+    $pager->current_page($page);
     my @results;
     foreach my $m ($mset->items) {
         my $founddoc = {};
@@ -279,7 +281,7 @@ sub search {
         $founddoc->{pagename} = $m->get_document->get_data;
         push @results, $founddoc;
     }
-    return $totaldocs, @results;
+    return $pager, @results;
 }
 
 =over 4

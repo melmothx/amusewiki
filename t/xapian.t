@@ -10,7 +10,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 20;
+use Test::More tests => 24;
 use Data::Dumper;
 use File::Path qw/make_path/;
 
@@ -41,7 +41,8 @@ ok (-d $xapian_dir, "$xapian_dir exists");
 
 for my $term ('XXXX', 'bla') {
     my ($total, @results) = $site->xapian->search(qq{"$term"});
-    is($total, 1, "one result, of course");
+    is($total->last, 1, "one result, of course");
+    is($total->first, 1, "one result, of course");
     ok(@results == 1, "Found 1 result with $term");
     is $results[0]{pagename}, "test", "Found the doc";
 }
@@ -59,7 +60,8 @@ is $site->categories->first->text_count, 0, "1 category, but empty";
 
 for my $term ('XXXX', 'bla') {
     my ($total, @results) = $site->xapian->search(qq{"$term"});
-    is($total, 0, "one result after deletion");
+    is($total->last, 0, "one result after deletion");
+    is($total->first, 0, "one result after deletion");
     ok(@results == 0, "Found 0 result with $term");
 }
 eval { $site->xapian->xapian_db->delete_document_by_term("Qtest") };

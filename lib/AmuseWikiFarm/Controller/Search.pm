@@ -23,6 +23,8 @@ Catalyst Controller.
 
 use JSON qw/to_json/;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Paginator;
+use Data::Page;
 
 sub opensearch :Chained('/site') :PathPart('opensearch.xml') :Args(0) {
     my ($self, $c) = @_;
@@ -41,6 +43,7 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     my %params = %{ $c->req->params };
     if (delete $params{complex_query}) {
         delete $params{fmt};
+        delete $params{page};
         my $match_any = delete $params{match_any};
         my @tokens = (delete $params{query});
         foreach my $k (keys %params) {
@@ -61,13 +64,14 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
         $page = $1;
     }
 
-    my ($matches, @results);
+    my ($pager, @results);
     eval {
-        ($matches, @results) = $xapian->search($query, $page);
+        ($pager, @results) = $xapian->search($query, $page);
     };
     if ($@) {
         Dlog_error { "Xapian error: " . $c->request->uri . ": $@ " . $_ } ($c->request->params);
         $c->stash(xapian_errors => "$@");
+        $pager = Data::Page->new;
     }
 
     foreach my $res (@results) {
@@ -90,36 +94,13 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
         $c->detach();
         return;
     }
-
-    my $paging = $xapian->page;
-
-    my $last_thing = (($page - 1) * $paging) + scalar(@results);
-
-    my $range;
-    if (@results) {
-        $range = $results[0]->{rank} . '-' . $results[$#results]->{rank};
-    }
-
-    $c->stash( matches => $matches,
-               range => $range,
+    my $format_link = sub {
+        return $c->uri_for($c->action, { page => $_[0], query => $query });
+    };
+    $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
                built_query => $query,
                page_title => $c->loc('Search'),
                results => \@results );
-
-
-
-
-    log_debug { "$last_thing, $matches, " . scalar(@results) };
-
-    if ($matches > $paging  && $last_thing < $matches) {
-        $c->stash(next_page => $c->uri_for($c->action, { page => $page + 1,
-                                                         query => $query }));
-    }
-
-    if ($page > 1) {
-        $c->stash(previous_page => $c->uri_for($c->action, { page => $page - 1,
-                                                             query => $query }));
-    }
 }
 
 

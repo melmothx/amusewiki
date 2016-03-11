@@ -118,24 +118,13 @@
 </div>
 
 
-[% IF matches %]
-<div class="center">
-  <h2 id="results">[% loc('Results') %]</h2>
-</div>
-<div class="well">
-  <p>
-    [% loc("Query was") %]: [% built_query | html %]
-  </p>
-  <p>
-  [% loc("Results found") %]: [% matches %]
-  </p>
-  <p>
-  [% loc("Displaying") %] [% range %]
-  </p>
-</div>
+[% IF results.size %]
+
+<h3 id="results">[% built_query | html %]</h3>
 
 <div class="list-group">
   [% FOREACH res IN results %]
+  [% IF res.text %]
   <div class="amw-listing-item">
   <a href="[% c.uri_for(res.text.full_uri) %]"
      class="list-group-item clearfix">[% res.text.title %]
@@ -145,23 +134,10 @@
   </a>
   </div>
   [% END %]
+  [% END %]
 </div>
 
-[% IF previous_page || next_page %]
-<ul class="pager">
-  [% IF previous_page %]
-  <li>
-    <a href="[% previous_page %]">[% loc("Previous") %]</a>
-  </li>
-  [% END %]
-
-  [% IF next_page %]
-  <li>
-    <a href="[% next_page %]">[% loc("Next") %]</a>
-  </li>
-  [% END %]
-</ul>
-[% END %]
+[% INCLUDE 'include/pagination.tt' %]
 
 [% ELSIF built_query %]
 <div>

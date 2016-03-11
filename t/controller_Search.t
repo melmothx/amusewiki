@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 17;
+use Test::More tests => 19;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Catalyst::Test 'AmuseWikiFarm';
@@ -14,6 +14,13 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
+{
+    $mech->get_ok('/search?query=');
+}
+
+{
+    $mech->get_ok('/search?query=asdfasdfasdf+OR+OR+OR');
+}
 
 {
     $mech->get_ok('/search?query=a');
