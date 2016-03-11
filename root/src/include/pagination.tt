@@ -1,0 +1,13 @@
+[% IF pager.size > 1 %]
+<ul class="pagination">
+  [% FOREACH page IN pager %]
+  <li [% IF page.active %]class="active"[% END -%]>
+    [% IF page.uri %]
+    <a href="[% page.uri %]">[% page.label %]</a>
+    [% ELSE %]
+    <a href="#" class="disabled">[% page.label %]</a>
+    [% END %]
+  </li>
+  [% END %]
+</ul>
+[% END %]
