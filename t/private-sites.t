@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 50;
+use Test::More tests => 52;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -61,4 +61,5 @@ foreach my $path (qw[library category/topic category/author bookbuilder search s
     is $mech->uri->path, "/$path", "/$path is retrieved correctly";
 }
 
-
+$mech->get_ok("/robots.txt");
+is $mech->content, "User-agent: *\nDisallow: /\n", "robots.txt ok, disallow everything";

@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 54;
+use Test::More tests => 56;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -78,3 +78,5 @@ foreach my $link (@yesrobots) {
 
 $site->locale('hr');
 $site->update;
+$mech->get_ok('/robots.txt');
+$mech->content_contains('/git');

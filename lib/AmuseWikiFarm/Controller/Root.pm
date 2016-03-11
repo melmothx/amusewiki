@@ -270,6 +270,25 @@ sub favicon :Chained('/site') :PathPart('favicon.ico') :Args(0) {
                 ['favicon.ico']);
 }
 
+sub robots_txt :Chained('/site_no_auth') :PathPart('robots.txt') :Args(0) {
+    my ($self, $c) = @_;
+    my $robots = <<'ROBOTS';
+User-agent: *
+Disallow: /edit/
+Disallow: /bookbuilder/
+Disallow: /bookbuilder
+Disallow: /search
+Disallow: /git/
+ROBOTS
+    my $site = $c->stash->{site};
+    if (!$site or $site->is_private) {
+        $robots = "User-agent: *\nDisallow: /\n";
+    }
+    $c->response->content_type('text/plain');
+    $c->response->body($robots);
+}
+
+
 =head2 index
 
 The root page (/) points to /library/ if there is no special/index
