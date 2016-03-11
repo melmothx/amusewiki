@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 288;
+use Test::More tests => 293;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -263,4 +263,32 @@ $expected =<<'XML';
 XML
 
 eq_or_diff($mech->content, $expected, "search ok");
-diag $mech->content;
+
+$mech->get_ok('/opds/search?query=<author>');
+$expected = <<'XML';
+  <opensearch:totalResults xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">22</opensearch:totalResults>
+  <opensearch:startIndex xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">1</opensearch:startIndex>
+  <opensearch:itemsPerPage xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">10</opensearch:itemsPerPage>
+XML
+
+$mech->content_contains('searchTerms="%3Cauthor%3E"', "search terms escaped");
+$mech->content_contains($expected, "opensearch ok");
+$mech->get_ok(q{/opds/search?query="'<>});
+$expected = <<'XML';
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>http://0opds0.amusewiki.org/opds/search?query=%22'%3C%3E&amp;page=1</id>
+  <link rel="self" href="http://0opds0.amusewiki.org/opds/search?query=%22'%3C%3E&amp;page=1" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Search results"/>
+  <link rel="search" href="http://0opds0.amusewiki.org/opensearch.xml" type="application/opensearchdescription+xml" title="Search"/>
+  <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
+  <link rel="up" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
+  <title>Search results</title>
+  <updated>2016-03-01T00:00:00Z</updated>
+  <icon>http://0opds0.amusewiki.org/favicon.ico</icon>
+  <author>
+    <name>OPDS test</name>
+    <uri>http://0opds0.amusewiki.org</uri>
+  </author>
+</feed>
+XML
+eq_or_diff($mech->content, $expected, "search with no results ok");

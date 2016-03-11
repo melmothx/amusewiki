@@ -219,6 +219,8 @@ sub search :Chained('clean_root') :PathPart('search') :Args(0) {
     if ($query) {
         my ($pager, @results) = eval { $xapian->search($query, $page) };
         if ($pager && @results) {
+            $feed->search_result_pager($pager);
+            $feed->search_result_terms($query);
             $self->add_pager($feed, $pager, $base, $c->loc('Search results'));
             foreach my $res (@results) {
                 if (my $title = $site->titles->text_by_uri($res->{pagename})) {
