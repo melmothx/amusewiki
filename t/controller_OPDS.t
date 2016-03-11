@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 281;
+use Test::More tests => 282;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -78,8 +78,9 @@ my $expected =<< 'ATOM';
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://0opds0.amusewiki.org/opds</id>
-  <link rel="self" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
-  <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
+  <link rel="self" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
+  <link rel="search" href="http://0opds0.amusewiki.org/opensearch.xml" type="application/opensearchdescription+xml" title="Search"/>
+  <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
   <title>OPDS test</title>
   <updated>2016-03-01T00:00:00Z</updated>
   <icon>http://0opds0.amusewiki.org/favicon.ico</icon>
@@ -94,7 +95,7 @@ my $expected =<< 'ATOM';
       <div xmlns="http://www.w3.org/1999/xhtml">Latest entries</div>
     </content>
     <updated>2016-03-01T00:00:00Z</updated>
-    <link rel="http://opds-spec.org/sort/new" href="http://0opds0.amusewiki.org/opds/new" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+    <link rel="http://opds-spec.org/sort/new" href="http://0opds0.amusewiki.org/opds/new" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="New"/>
   </entry>
   <entry>
     <title>Titles</title>
@@ -136,12 +137,13 @@ $expected =<< 'ATOM';
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://0opds0.amusewiki.org/opds/titles/1</id>
-  <link rel="self" href="http://0opds0.amusewiki.org/opds/titles/1" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
+  <link rel="self" href="http://0opds0.amusewiki.org/opds/titles/1" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Titles"/>
   <link rel="first" href="http://0opds0.amusewiki.org/opds/titles/1" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
   <link rel="last" href="http://0opds0.amusewiki.org/opds/titles/5" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
   <link rel="next" href="http://0opds0.amusewiki.org/opds/titles/2" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
-  <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
-  <link rel="up" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation"/>
+  <link rel="search" href="http://0opds0.amusewiki.org/opensearch.xml" type="application/opensearchdescription+xml" title="Search"/>
+  <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
+  <link rel="up" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
   <title>Titles</title>
   <updated>2016-03-01T00:00:00Z</updated>
   <icon>http://0opds0.amusewiki.org/favicon.ico</icon>
@@ -233,3 +235,4 @@ $expected =<< 'ATOM';
 ATOM
 eq_or_diff($mech->content, $expected, "titles ok");
 
+$mech->get_ok('/opensearch.xml');

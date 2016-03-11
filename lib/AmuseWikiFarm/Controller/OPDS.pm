@@ -70,6 +70,11 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
                         rel => 'new',
                         acquisition => 1,
                        },
+                       {
+                        href => $c->uri_for_action('/search/opensearch')->path,
+                        title => $c->loc('Search'),
+                        rel => 'search',
+                       },
                       ) {
         $feed->add_to_navigations(%$entry);
     }
@@ -197,16 +202,38 @@ sub author :Chained('all_authors') :PathPart('') :Args {
     $c->detach('/not_found');
 }
 
-sub populate_acquistions :Private {
-    my ($self, $feed, $base, $description, $rs, $page) = @_;
-    die unless ($feed && $base && $description && $rs);
-    my $titles = $rs->search(undef, { page => $self->validate_page($page), rows => 5 });
-    my $pager = $titles->pager;
+sub search :Chained('clean_root') :PathPart('search') :Args(0) {
+    my ($self, $c) = @_;
+    my $feed = $c->model('OPDS');
+    my $site = $c->stash->{site};
+    my $xapian = $site->xapian;
+    my $query = $c->request->params->{query};
+    my $page = $self->validate_page($c->request->params->{page});
+    my $base = $c->uri_for($c->action, { query => $query }) . '&page=';
     $feed->add_to_navigations_new_level(
-                                        href => $base . $pager->current_page,
-                                        title => $description,
-                                        acquisition => 1,
+                                        href => $base . $page,
+                                        title => $c->loc('Search results'),
+                                        description => $c->loc('texts sorted by author'),
                                        );
+
+    if ($query) {
+        my ($pager, @results) = eval { $xapian->search($query, $page) };
+        if ($pager && @results) {
+            $self->add_pager($feed, $pager, $base, $c->loc('Search results'));
+            foreach my $res (@results) {
+                if (my $title = $site->titles->text_by_uri($res->{pagename})) {
+                    if (my $entry = $title->opds_entry) {
+                        $feed->add_to_acquisitions(%$entry);
+                    }
+                }
+            }
+        }
+    }
+    $c->detach($c->view('Atom'));
+}
+
+sub add_pager :Private {
+    my ($self, $feed, $pager, $base, $description) = @_;
     if ($pager->current_page > $pager->last_page) {
         return;
     }
@@ -228,6 +255,20 @@ sub populate_acquistions :Private {
             }
         }
     }
+}
+
+sub populate_acquistions :Private {
+    my ($self, $feed, $base, $description, $rs, $page) = @_;
+    die unless ($feed && $base && $description && $rs);
+    # this is a dbic search
+    my $titles = $rs->search(undef, { page => $self->validate_page($page), rows => 5 });
+    my $pager = $titles->pager;
+    $feed->add_to_navigations_new_level(
+                                        href => $base . $pager->current_page,
+                                        title => $description,
+                                        acquisition => 1,
+                                       );
+    $self->add_pager($feed, $pager, $base, $description);
     my $return = 0;
     while (my $title = $titles->next) {
         if (my $entry = $title->opds_entry) {
