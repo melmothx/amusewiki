@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 293;
+use Test::More tests => 296;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -79,6 +79,7 @@ my $expected =<< 'ATOM';
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://0opds0.amusewiki.org/opds</id>
   <link rel="self" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
+  <link rel="http://opds-spec.org/crawlable" href="http://0opds0.amusewiki.org/opds/crawlable" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Titles"/>
   <link rel="search" href="http://0opds0.amusewiki.org/opensearch.xml" type="application/opensearchdescription+xml" title="Search"/>
   <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
   <title>OPDS test</title>
@@ -138,6 +139,7 @@ $expected =<< 'ATOM';
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://0opds0.amusewiki.org/opds/titles/1</id>
   <link rel="self" href="http://0opds0.amusewiki.org/opds/titles/1" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Titles"/>
+  <link rel="http://opds-spec.org/crawlable" href="http://0opds0.amusewiki.org/opds/crawlable" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Titles"/>
   <link rel="first" href="http://0opds0.amusewiki.org/opds/titles/1" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
   <link rel="last" href="http://0opds0.amusewiki.org/opds/titles/5" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
   <link rel="next" href="http://0opds0.amusewiki.org/opds/titles/2" type="application/atom+xml;profile=opds-catalog;kind=acquisition"/>
@@ -248,7 +250,8 @@ $expected =<<'XML';
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://0opds0.amusewiki.org/opds/search?query=OR+OR+OR+OR&amp;page=1</id>
-  <link rel="self" href="http://0opds0.amusewiki.org/opds/search?query=OR+OR+OR+OR&amp;page=1" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Search results"/>
+  <link rel="self" href="http://0opds0.amusewiki.org/opds/search?query=OR+OR+OR+OR&amp;page=1" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Search results"/>
+  <link rel="http://opds-spec.org/crawlable" href="http://0opds0.amusewiki.org/opds/crawlable" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Titles"/>
   <link rel="search" href="http://0opds0.amusewiki.org/opensearch.xml" type="application/opensearchdescription+xml" title="Search"/>
   <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
   <link rel="up" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
@@ -273,12 +276,15 @@ XML
 
 $mech->content_contains('searchTerms="%3Cauthor%3E"', "search terms escaped");
 $mech->content_contains($expected, "opensearch ok");
+$mech->content_contains(q{<link rel="self" href="http://0opds0.amusewiki.org/opds/search?query=%3Cauthor%3E&amp;page=1" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Search results"/>},
+                        "self ok");
 $mech->get_ok(q{/opds/search?query="'<>});
 $expected = <<'XML';
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://0opds0.amusewiki.org/opds/search?query=%22'%3C%3E&amp;page=1</id>
-  <link rel="self" href="http://0opds0.amusewiki.org/opds/search?query=%22'%3C%3E&amp;page=1" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="Search results"/>
+  <link rel="self" href="http://0opds0.amusewiki.org/opds/search?query=%22'%3C%3E&amp;page=1" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Search results"/>
+  <link rel="http://opds-spec.org/crawlable" href="http://0opds0.amusewiki.org/opds/crawlable" type="application/atom+xml;profile=opds-catalog;kind=acquisition" title="Titles"/>
   <link rel="search" href="http://0opds0.amusewiki.org/opensearch.xml" type="application/opensearchdescription+xml" title="Search"/>
   <link rel="start" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
   <link rel="up" href="http://0opds0.amusewiki.org/opds" type="application/atom+xml;profile=opds-catalog;kind=navigation" title="OPDS test"/>
@@ -291,4 +297,10 @@ $expected = <<'XML';
   </author>
 </feed>
 XML
+
 eq_or_diff($mech->content, $expected, "search with no results ok");
+
+$mech->get_ok(q{/opds/crawlable});
+$mech->content_contains(q{<link rel="self" href="http://0opds0.amusewiki.org/opds/crawlable" type="application/atom+xml;profile=opds-catalog;kind=acquisition"})
+  or diag $mech->content;
+

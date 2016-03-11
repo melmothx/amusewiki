@@ -71,6 +71,13 @@ sub root :Chained('/site') :PathPart('opds') :CaptureArgs(0) {
                         acquisition => 1,
                        },
                        {
+                        href => '/opds/crawlable',
+                        title => $c->loc('Titles'),
+                        description => 'Crawlable full catalog for robots',
+                        rel => 'crawlable',
+                        acquisition => 1,
+                       },
+                       {
                         href => $c->uri_for_action('/search/opensearch')->path,
                         title => $c->loc('Search'),
                         rel => 'search',
@@ -211,11 +218,11 @@ sub search :Chained('clean_root') :PathPart('search') :Args(0) {
     my $page = $self->validate_page($c->request->params->{page});
     my $base = $c->uri_for($c->action, { query => $query })->path_query . '&page=';
     $feed->add_to_navigations_new_level(
+                                        acquisition => 1,
                                         href => $base . $page,
                                         title => $c->loc('Search results'),
                                         description => $c->loc('texts sorted by author'),
                                        );
-
     if ($query) {
         my ($pager, @results) = eval { $xapian->search($query, $page) };
         if ($pager && @results) {
@@ -229,6 +236,25 @@ sub search :Chained('clean_root') :PathPart('search') :Args(0) {
                     }
                 }
             }
+        }
+    }
+    $c->detach($c->view('Atom'));
+}
+
+sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
+    my ($self, $c) = @_;
+    my $feed = $c->model('OPDS');
+    my $site = $c->stash->{site};
+    $feed->add_to_navigations_new_level(
+                                        acquisition => 1,
+                                        href => '/opds/crawlable',
+                                        title => $c->loc('Titles'),
+                                        description => $c->loc('texts sorted by title'),
+                                       );
+    my $texts = $site->titles->published_texts->sorted_by_title;
+    while (my $text = $texts->next) {
+        if (my $entry = $text->opds_entry) {
+            $feed->add_to_acquisitions(%$entry);
         }
     }
     $c->detach($c->view('Atom'));
