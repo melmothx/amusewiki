@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 16;
+use Test::More tests => 26;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
 binmode $builder->failure_output, ":encoding(utf8)";
@@ -47,7 +47,19 @@ foreach my $lang (sort keys (%{ $site->known_langs })) {
 
 
 $mech->get_ok('/latest');
+$mech->get_ok('/latest/1');
+$mech->content_contains('Dec 27, 2015');
+$mech->content_contains('Dec 18, 2015');
 $mech->get_ok('/latest/2');
+$mech->content_contains('Dec 17, 2015');
+$mech->content_contains('Dec 8, 2015');
+# pagination
+$mech->content_contains('/latest/33');
+$mech->content_contains('/latest/4');
+$mech->content_contains('/latest/1');
 # check
+$mech->get_ok('/latest/33');
+$mech->content_contains('Jan 1, 2015');
+
 $mech->get_ok('/opds');
 
