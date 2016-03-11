@@ -248,7 +248,6 @@ root/docs/manual.muse
 root/docs/manual.pdf
 root/docs/manual.tex
 root/docs/manual.zip
-root/robots.txt
 root/src/admin/edit.tt
 root/src/admin/jobs.tt
 root/src/admin/list.tt
