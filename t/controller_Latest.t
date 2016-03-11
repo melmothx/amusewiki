@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 26;
+use Test::More tests => 28;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
 binmode $builder->failure_output, ":encoding(utf8)";
@@ -60,6 +60,10 @@ $mech->content_contains('/latest/1');
 # check
 $mech->get_ok('/latest/33');
 $mech->content_contains('Jan 1, 2015');
+my @links = grep { $_->url !~ /\/(static|git)\//}
+  $mech->find_all_links;
+$mech->links_ok(\@links);
+ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 
 $mech->get_ok('/opds');
 
