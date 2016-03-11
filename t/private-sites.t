@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 42;
+use Test::More tests => 50;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -30,6 +30,7 @@ write_file(catfile($site->repo_root, 'site_files', 'test.txt'), "Hello\n");
 $mech->get_ok('/login');
 
 foreach my $path (qw/library topics authors bookbuilder search special
+                     opds
                      feed rss.xml random human/) {
     $mech->get_ok("/$path");
     is $mech->uri->path, '/login', "/$path is redirected at login";
@@ -37,6 +38,11 @@ foreach my $path (qw/library topics authors bookbuilder search special
 
 $mech->get_ok('/sitefiles/0private0/test.txt');
 is $mech->response->content, "Hello\n", "Sitefile retrieved";
+
+foreach my $open (qw/login opensearch.xml/) {
+    $mech->get_ok("/$open");
+    is $mech->uri->path, "/$open";
+}
 
 $site->update_or_create_user({ username => 'marcolino',
                                password => 'marcolino', }, "librarian");
@@ -49,6 +55,7 @@ $mech->click;
 is $mech->uri->path, '/library', "Loaded library ok";
 
 foreach my $path (qw[library category/topic category/author bookbuilder search special
+                     opds
                      feed rss.xml]) {
     $mech->get_ok("/$path");
     is $mech->uri->path, "/$path", "/$path is retrieved correctly";

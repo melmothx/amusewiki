@@ -26,7 +26,7 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paginator;
 use Data::Page;
 
-sub opensearch :Chained('/site') :PathPart('opensearch.xml') :Args(0) {
+sub opensearch :Chained('/site_no_auth') :PathPart('opensearch.xml') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(no_wrapper => 1);
     $c->res->content_type('application/xml');
