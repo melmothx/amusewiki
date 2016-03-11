@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.704 2016-03-11
+
+ - Added dynamic robots.txt
+ - Added sitemap.txt
+
 1.703 2016-03-11
 
  - Added /opds/search
