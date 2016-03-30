@@ -1,0 +1,69 @@
+#!perl
+
+use strict;
+use warnings;
+use AmuseWikiFarm::Archive::Lexicon;
+use Test::More tests => 28;
+use Path::Tiny;
+use Data::Dumper;
+eval q{use Test::Memory::Cycle;};
+my $no_cycle = 0;
+if ($@) {
+    my $no_cycle = 1;
+}
+
+my $path = path(qw/lib AmuseWikiFarm I18N/);
+my $model = AmuseWikiFarm::Archive::Lexicon->new(
+                                                 system_wide_po_dir => "$path",
+                                                 repo_dir => "repo",
+                                                );
+ok($model);
+for (1..2) {
+    {
+        my $l = $model->localizer('it');
+        is $l->loc('Active'), "Attivo";
+        is $l->loc("[_1] doesn't exist", "Pippo"), "Pippo non esiste";
+    }
+    {
+        my $l = $model->localizer('en');
+        is $l->loc('Active'), "Active";
+        is $l->loc("[_1] doesn't exist", "Pippo"), "Pippo doesn't exist";
+    }
+}
+
+
+my $additional = path(qw/repo 0blog0 locales/);
+$additional->mkpath unless $additional->exists;
+my $po_chunck = <<PO;
+msgid "%1 doesn't exist"
+msgstr "%1 proprio non esiste"
+
+PO
+path($additional, 'it.po')->spew($po_chunck);
+
+for (1..2) {
+    {
+        my $l = $model->localizer('it', '0blog0');
+        is $l->loc("[_1] doesn't exist", "Pippo"), "Pippo proprio non esiste";
+        is $l->loc('Active'), "Attivo";
+        is $l->loc('asdfasdfasdf'), 'asdfasdfasdf';
+    }
+    {
+        my $l = $model->localizer('it');
+        is $l->loc("[_1] doesn't exist", "Pippo"), "Pippo non esiste";
+        is $l->loc('Active'), "Attivo";
+        is $l->loc('asdfasdfasdf'), 'asdfasdfasdf';
+        is $l->loc('Active'), 'Attivo';
+    }
+    {
+        my $l = $model->localizer('xx', '0blog0');
+        is $l->loc("[_1] doesn't exist", "Pippo"), "Pippo doesn't exist";
+        is $l->loc('Active'), "Active";
+    }
+}
+SKIP: {
+    skip "No Test::Memory::Cycle", 1 if $no_cycle;
+    memory_cycle_ok($model, "Model is memory cycle free");
+}
+
+diag Dumper($model);

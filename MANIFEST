@@ -146,6 +146,7 @@ lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
 lib/AmuseWikiFarm/Archive/CgitProxy.pm
 lib/AmuseWikiFarm/Archive/CgitProxy/Response.pm
+lib/AmuseWikiFarm/Archive/Lexicon.pm
 lib/AmuseWikiFarm/Archive/StaticIndexes.pm
 lib/AmuseWikiFarm/Archive/Xapian.pm
 lib/AmuseWikiFarm/Controller/Admin.pm
@@ -680,6 +681,7 @@ t/html-upload.t
 t/indexer.t
 t/jobber.t
 t/lang-parsing.t
+t/lexicon-2.t
 t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/model-user.t
