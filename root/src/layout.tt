@@ -166,7 +166,7 @@
                  data-toggle="modal"
                  title="[% loc('Table of Contents') %]"
                  data-target="#myModal">
-                <span class="glyphicon glyphicon-list"></span>
+                <span class="glyphicon glyphicon-list text-primary"></span>
                 <span class=" visible-xs-inline">
                   [% loc('Table of Contents') %]
                 </span>
