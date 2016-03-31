@@ -21,20 +21,40 @@ use warnings;
 use Moo;
 use Types::Standard qw/Maybe Object/;
 use Try::Tiny;
+use HTML::Entities qw/encode_entities decode_entities/;
 
 has global => (is => 'ro', isa => Object);
 has site => (is => 'ro', isa => Maybe[Object]);
 
 sub loc {
-    my ($self, @args) = @_;
+    my ($self, $key, @args) = @_;
+    return '' unless defined($key) && length($key);
+    if (@args == 1) {
+        if (defined $args[0]) {
+            if (ref($args[0]) eq 'ARRAY') {
+                my $arrayref = shift @args;
+                @args = @$arrayref;
+            }
+        }
+        else {
+            @args = ();
+        }
+    }
+    # in case html is passed:
+    $key = decode_entities($key);
     my $out;
     if (my $site = $self->site) {
-        try { $out = $site->maketext(@args) } catch { $out = undef };
+        try { $out = $site->maketext($key, @args) } catch { $out = undef };
     }
     unless (defined $out) {
-        $out = $self->global->maketext(@args);
+        $out = $self->global->maketext($key, @args);
     }
     return $out;
+}
+
+sub loc_html {
+    my $self = shift;
+    return encode_entities($self->loc(@_), q{<>&"'});
 }
 
 package AmuseWikiFarm::Archive::Lexicon;
