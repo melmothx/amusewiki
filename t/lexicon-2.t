@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use AmuseWikiFarm::Archive::Lexicon;
-use Test::More tests => 28;
+use Test::More tests => 38;
 use Path::Tiny;
 use Data::Dumper;
 eval q{use Test::Memory::Cycle;};
@@ -36,7 +36,7 @@ my $additional = path(qw/repo 0blog0 locales/);
 $additional->mkpath unless $additional->exists;
 my $po_chunck = <<PO;
 msgid "%1 doesn't exist"
-msgstr "%1 proprio non esiste"
+msgstr "%1 'proprio' non <esiste>"
 
 PO
 path($additional, 'it.po')->spew($po_chunck);
@@ -44,9 +44,16 @@ path($additional, 'it.po')->spew($po_chunck);
 for (1..2) {
     {
         my $l = $model->localizer('it', '0blog0');
-        is $l->loc("[_1] doesn't exist", "Pippo"), "Pippo proprio non esiste";
+        is $l->loc("[_1] doesn't exist", "Pippo"), "Pippo 'proprio' non <esiste>";
+        is $l->loc_html("[_1] doesn&apos;t exist", "Pippo"), "Pippo &#39;proprio&#39; non &lt;esiste&gt;";
         is $l->loc('Active'), "Attivo";
         is $l->loc('asdfasdfasdf'), 'asdfasdfasdf';
+        my $verbatim = q{"&'<>"&'<>};
+        my $escaped = "&quot;&amp;&#39;&lt;&gt;&quot;&amp;&#39;&lt;&gt;";
+        is $l->loc($verbatim), $verbatim, "loc($verbatim) is $verbatim (nothing changes)";
+        is $l->loc($escaped), $verbatim, "loc($escaped) is $verbatim (unescaped)";
+        is $l->loc_html($verbatim), $escaped, "loc_html($verbatim) is $escaped (escaped)";
+        is $l->loc_html($escaped), $escaped, "loc_html($escaped) is $escaped (nothing changes)";
     }
     {
         my $l = $model->localizer('it');
