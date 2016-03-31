@@ -94,6 +94,7 @@ requires 'File::MimeInfo';
 requires 'Moo';
 requires 'Path::Tiny';
 requires 'Locale::Maketext::Lexicon';
+requires 'Locale::PO';
 
 test_requires 'Test::More' => '0.88';
 test_requires 'CAM::PDF';
