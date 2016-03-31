@@ -1,0 +1,7 @@
+[% loc('<hello \there>') %]
+[% loc('<hello \\"\'there>') | escape_js %]
+[% lh.loc('<hello>') %]
+[% lh.loc_html('<hello>') %]
+[% c.loc('<hello>') %]
+[% c.loc_html('<hello>') %]
+[% loc('<hello>') %]

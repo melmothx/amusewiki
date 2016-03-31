@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 16;
+use Test::More tests => 18;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -83,3 +83,14 @@ $mech->content_contains(q{<h2>&quot;'topic'&quot;});
 
 $mech->get_ok('/library/a-test');
 $mech->content_contains(q{<title> &quot;'hello'&quot; | </title>});
+$mech->get_ok('/debug_loc');
+my $expected = <<'TXT';
+&lt;hello \there&gt;
+&lt;hello \\&quot;&#39;there&gt;
+<hello>
+&lt;hello&gt;
+<hello>
+&lt;hello&gt;
+&lt;hello&gt;
+TXT
+is $mech->content, $expected, "Localization methods appears ok";
