@@ -53,7 +53,6 @@ requires 'DBIx::Class::Schema::Config';
 requires 'DBIx::Class::Helper::ResultSet::Random';
 requires 'DBIx::Class::PassphraseColumn';
 requires 'DBIx::Class::DeploymentHandler';
-requires 'Catalyst::Plugin::I18N';
 requires 'DateTime';
 requires 'Date::Parse';
 requires 'DateTime::Format::SQLite';
@@ -92,6 +91,9 @@ requires 'Text::Amuse::Preprocessor' => '0.25';
 # requires 'DBIx::Class::Schema::Loader';
 requires 'MooseX::MarkAsMethods';
 requires 'File::MimeInfo';
+requires 'Moo';
+requires 'Path::Tiny';
+requires 'Locale::Maketext::Lexicon';
 
 test_requires 'Test::More' => '0.88';
 test_requires 'CAM::PDF';
