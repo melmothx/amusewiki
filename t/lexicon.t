@@ -54,7 +54,6 @@ is ($site->lexicon_translate(it => '&lt;test&gt;'), undef);
 is ($site->lexicon_translate(it => 'test [_1] [_2] [_3]', qw/uno due tre/),
     "uno due tre prova \" ć100");
 
-use AmuseWikiFarm::Utils::LexiconMigration;
 my $temp = Path::Tiny->tempdir;
 foreach my $po (AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, $temp)) {
     diag "$po";
