@@ -4,21 +4,30 @@ use Moose::Role;
 use namespace::autoclean;
 
 use HTML::Entities qw/encode_entities decode_entities/;
+use AmuseWikiFarm::Log::Contextual;
 
-around loc => sub {
-    my ($orig, $c, $key, @args) = @_;
-    # we never call c.loc directly, so we unescape the string first
-    $key = decode_entities($key);
-
-    if (my $site = $c->stash->{site}) {
-        if (my $lang = $c->stash->{current_locale_code}) {
-            my $translated = $site->lexicon_translate($lang, $key, @args);
-            if (defined($translated)) {
-                return $translated;
-            }
-        }
+sub loc {
+    my ($c, $key, @args) = @_;
+    return '' unless defined $key;
+    if (@args == 1 and $args[0] and (ref($args[0]) eq 'ARRAY')) {
+        my $arrayref = shift @args;
+        @args = @$arrayref;
     }
-    return $c->$orig($key, @args);
+    # we never serve c.loc directly, so we unescape the string first
+    $key = decode_entities($key);
+    if (my $lh = $c->stash->{lh}) {
+        return $lh->loc($key, @args);
+    }
+    else {
+        Dlog_error { "Cannot find lh in the stash: $_" } $c;
+        return $key;
+    }
 };
+
+sub set_language {
+    my ($c, @args) = @_;
+    $c->stash(lh => $c->model('Lexicon')->localizer(@args));
+}
+
 
 1;

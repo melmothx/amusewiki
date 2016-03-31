@@ -50,7 +50,7 @@ has loaded => (is => 'ro', isa => HashRef[HashRef[Object]], default => sub { +{}
 has globals => (is => 'ro', isa => HashRef[Object], default => sub { +{} });
 
 sub localizer {
-    my ($self, $lang, $repo, $recursive) = @_;
+    my ($self, $lang, $repo) = @_;
     $repo ||= 'amw';
     $lang ||= 'en';
     if (my $handler = $self->loaded->{$repo}->{$lang}) {
