@@ -16,15 +16,36 @@ making sure you're aligned to the latest master branch.
 
 You can override the UI translations and provide them for the
 categories as well (if your site is multilingual or if you use codes
-instead of strings) storing the relevant po files into the "locales"
-directory in the site repository (e.g. repo/amw/locales/hr.po).
+instead of strings) storing the relevant po files into the
+"site_files/locales" directory in the site repository (e.g.
+repo/amw/site_files/locales/hr.po).
 
 ** Legacy lexicon.json
 
-Before version 1.8, the way to override the translation was using a
-JSON file in the site_files/lexicon.json file.
+Before version 1.8, the only way to override the translation was using
+a JSON file in the site_files/lexicon.json file.
 
-The format was as follows (plain JSON):
+Internally, the application will se only the PO files. However,
+depending on your needs and preferences, you may find less complicated
+to continue to use this file instead of the po files.
+
+On application restart, these files are read and PO file produced (or
+when you call amusewiki-upgrade-lexicon against the repo directory.
+
+So, you have two alternative ways:
+
+ - leave the po files uncommitted in the git repo, and continue as
+   before (keeping in mind that you need to manually restart the app
+   or call amusewiki-upgrade-lexicon to produce the po files when you
+   update it).
+
+ - commit the po files in the git and remove lexicon.json, banishing
+   it.
+
+Mixing the two approaches will just lead to confusion, git conflicts,
+and so on.
+
+The format is as follows (plain JSON):
 
   {
      "term" : {
@@ -41,7 +62,7 @@ The format was as follows (plain JSON):
 
 The JSON must be correct, otherwise you will not get any translation
 out of that. You can use arguments for translations with the [_1],
-[_2] syntax (while the po files use %1, %2, etc.).
+[_2] syntax or the gettext syntax (%1, %2, etc.).
 
 Strings are expected to be unescaped (html-wise).
 
@@ -56,8 +77,8 @@ perl -MJSON -MData::Dumper \
 You can create the po files out of those files with the script
 amusewiki-upgrade-lexicon. E.g.
 
-script/amusewiki-upgrade-lexicon repo/*
+ script/amusewiki-upgrade-lexicon repo/*
 
-Which will parse the lexicon.json files and dump the po files. Beware
-that the committing is left to you.
+Which will parse the lexicon.json files and dump the po files, merging
+them if already existing. No git operation is performed.
 

@@ -48,7 +48,7 @@ foreach my $dir (@ARGV) {
     next unless -d $path;
 
     my $lexicon = path($path, qw/site_files lexicon.json/);
-    my $locales = path($path, 'locales');
+    my $locales = path($path, qw/site_files locales/);
     if (-f $lexicon) {
         my $json = eval { JSON::from_json($lexicon->slurp_utf8) };
         if ($json) {

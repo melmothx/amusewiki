@@ -87,7 +87,7 @@ sub localizer {
         $self->globals->{$lang} = $global;
     }
     my $site;
-    my $local = path($self->repo_dir, $repo, locales => "$lang.po");
+    my $local = path($self->repo_dir, $repo, site_files => locales => "$lang.po");
     my $local_ts = 0;
     if (-f $local) {
         my $internal = "i_amw_${repo}_${lang}";

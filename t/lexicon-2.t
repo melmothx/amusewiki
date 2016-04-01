@@ -32,7 +32,7 @@ for (1..2) {
 }
 
 
-my $additional = path(qw/repo 0blog0 locales/);
+my $additional = path(qw/repo 0blog0 site_files locales/);
 $additional->mkpath unless $additional->exists;
 my $po_chunck = <<PO;
 msgid "%1 doesn't exist"
