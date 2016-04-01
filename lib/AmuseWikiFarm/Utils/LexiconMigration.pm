@@ -6,15 +6,24 @@ use Locale::PO;
 use Path::Tiny;
 use DateTime;
 use DateTime::Format::Strptime;
+use Data::Dumper;
 sub convert {
-    my ($lexicon, $repo_dir, $force) = @_;
+    my ($lexicon, $repo_dir) = @_;
+    return unless $lexicon;
     my %lex;
-    if ($lexicon) {
-        foreach my $k (keys %$lexicon) {
-            if (my $entries = $lexicon->{$k}) {
-                foreach my $lang (keys %$entries) {
-                    $lex{$lang}{$k} = $entries->{$lang};
-                }
+    my %templates;
+    foreach my $k (keys %$lexicon) {
+        my $key = _filter($k);
+        next unless length($k);
+        my $empty_po = Locale::PO->new(-msgid => $key, -msgstr => '');
+        $templates{$empty_po->msgid} = $empty_po;
+        if (my $entries = $lexicon->{$k}) {
+          LANG:
+            foreach my $lang (keys %$entries) {
+                next LANG unless length($entries->{$lang});
+                my $po = Locale::PO->new(-msgid => $key,
+                                         -msgstr => _filter($entries->{$lang}));
+                $lex{$lang}{$po->msgid} = $po;
             }
         }
     }
@@ -33,17 +42,23 @@ sub convert {
             }
             my $out = path($repo_dir, $lang . '.po')->stringify;
             if (-f $out) {
-                if ($force) {
-                    warn "Overwriting $out\n";
-                }
-                else {
-                    next LANGUAGE;
+                my $existing;
+                $existing = Locale::PO->load_file_asarray("$out", 'utf8');
+                foreach my $po (@$existing) {
+                    if (length(Locale::PO->dequote($po->msgstr))) {
+                        # preserve
+                        $lex{$lang}{$po->msgid} ||= $po;
+                    }
                 }
             }
-            push @created, $out;
-            my @po;
-            push @po, Locale::PO->new(-msgid => '',
-                                      -msgstr => "Project-Id-Version: AmuseWiki Local 0.01\n"
+            # now we hold the ones form lexicon.json in $lex{$lang}
+            # and $existing here and we can fallback to the template.
+
+            # now we have to merge them all.
+
+            # and add the header if missing
+            $lex{$lang}{'""'} ||= Locale::PO->new(-msgid => '',
+                                       -msgstr => "Project-Id-Version: AmuseWiki Local 0.01\n"
                                       . "PO-Revision-Date: $now\n"
                                       . "Language: $lang\n"
                                       . "Last-Translator: Nobody <amuse\@localhost>\n"
@@ -51,12 +66,9 @@ sub convert {
                                       . "MIME-Version: 1.0\n"
                                       . "Content-Type: text/plain; charset=UTF-8\n"
                                       . "Content-Transfer-Encoding: 8bit\n");
-            foreach my $k (keys %{$lex{$lang}}) {
-                my $po_entry = Locale::PO->new(-msgid => _filter($k),
-                                               -msgstr => _filter($lex{$lang}{$k}));
-                push @po, $po_entry;
-            }
-            Locale::PO->save_file_fromarray($out, \@po, "utf8");
+            print Dumper($lex{$lang});
+            my %out = (%templates, %{$lex{$lang}});
+            Locale::PO->save_file_fromhash($out, \%out, "utf8");
         }
     }
     return @created;

@@ -20,7 +20,7 @@ amusewiki-upgrade-lexicon - Convert the legacy site_files/lexicon.json to po fil
 
 =head1 SYNOPSIS
 
-Usage: amusewiki-bootstrap-archive [ --help --force ] repo1, [ repo2, repo3 ]
+Usage: amusewiki-bootstrap-archive [ --help ] repo1, [ repo2, repo3 ]
 
 Usually you would do:
 
@@ -28,15 +28,15 @@ Usually you would do:
 
 from the application home.
 
-With the --force option, override existing po files. This should be
-used if you prefer to use lexicon.json as your source to create po
-files (deprecated).
+If the target po file exist, it will be merged with the entries from
+lexicon.json, which will take precendece (otherwise you shouldn't use
+this script at all).
 
 =cut
 
-my ($force, $help);
+my ($help);
 
-GetOptions(force => \$force, help => \$help) or die;
+GetOptions(help => \$help) or die;
 
 if ($help) {
     pod2usage;
@@ -52,7 +52,7 @@ foreach my $dir (@ARGV) {
     if (-f $lexicon) {
         my $json = eval { JSON::from_json($lexicon->slurp_utf8) };
         if ($json) {
-            if (my @generated = AmuseWikiFarm::Utils::LexiconMigration::convert($json, "$locales", $force)) {
+            if (my @generated = AmuseWikiFarm::Utils::LexiconMigration::convert($json, "$locales")) {
                 print "Created the following file from $lexicon:\n" . join("\n", @generated) . "\n";
                 print "Please commit the result in $path and remove $lexicon\n\n";
             }
