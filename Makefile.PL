@@ -58,6 +58,7 @@ requires 'Date::Parse';
 requires 'DateTime::Format::SQLite';
 requires 'DateTime::Format::MySQL';
 requires 'DateTime::Format::Pg';
+requires 'DateTime::Format::Strptime';
 requires 'XML::FeedPP' => '0.43';
 requires 'XML::Atom' => '0.41'; # 2011...
 requires 'XML::OPDS' => '0.05';

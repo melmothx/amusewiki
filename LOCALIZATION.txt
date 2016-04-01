@@ -12,14 +12,19 @@ translations, please send the updated .po file to me
 (melmothx@gmail.com) or fork the amusewiki repo and do a pull request,
 making sure you're aligned to the latest master branch.
 
-** Local lexicon.json
+** Local PO files
 
 You can override the UI translations and provide them for the
-categories (if your site is multilingual or if you use codes instead
-of strings) using the local file
-repo/<site_id>/site_files/lexicon.json.
+categories as well (if your site is multilingual or if you use codes
+instead of strings) storing the relevant po files into the "locales"
+directory in the site repository (e.g. repo/amw/locales/hr.po).
 
-The format is as follows (plain JSON):
+** Legacy lexicon.json
+
+Before version 1.8, the way to override the translation was using a
+JSON file in the site_files/lexicon.json file.
+
+The format was as follows (plain JSON):
 
   {
      "term" : {
@@ -36,10 +41,9 @@ The format is as follows (plain JSON):
 
 The JSON must be correct, otherwise you will not get any translation
 out of that. You can use arguments for translations with the [_1],
-[_2] syntax.
+[_2] syntax (while the po files use %1, %2, etc.).
 
-Strings are expected to be unescaped (html-wise). The HTML is escaped
-back when passed to the template.
+Strings are expected to be unescaped (html-wise).
 
 To validate the lexicon file prior to upload, use this (somehow
 longish) one-liner:
@@ -49,6 +53,11 @@ perl -MJSON -MData::Dumper \
          $/ = undef; my $json = <$fh>;
             print Data::Dumper::Dumper(JSON::from_json($json));'
 
-If you see the dump of the data structures (an hashref of hashrefs),
-you're good. Otherwise fix the json and retry.
+You can create the po files out of those files with the script
+amusewiki-upgrade-lexicon. E.g.
+
+script/amusewiki-upgrade-lexicon repo/*
+
+Which will parse the lexicon.json files and dump the po files. Beware
+that the committing is left to you.
 

@@ -225,6 +225,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
+lib/AmuseWikiFarm/Utils/LexiconMigration.pm
 lib/AmuseWikiFarm/Utils/Paginator.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
@@ -265,6 +266,7 @@ root/src/console/alias_display.tt
 root/src/console/git_display.tt
 root/src/console/translations.tt
 root/src/console/unpublished.tt
+root/src/debug_loc.tt
 root/src/edit/diff.tt
 root/src/edit/edit.tt
 root/src/edit/newtext.tt
@@ -552,6 +554,7 @@ script/amusewiki-jobber
 script/amusewiki-populate-webfonts
 script/amusewiki-reset-password
 script/amusewiki-upgrade-db
+script/amusewiki-upgrade-lexicon
 script/amusewikifarm_cgi.pl
 script/amusewikifarm_create.pl
 script/amusewikifarm_fastcgi.pl

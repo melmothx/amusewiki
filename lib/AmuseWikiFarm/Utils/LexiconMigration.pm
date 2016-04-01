@@ -5,9 +5,9 @@ use warnings;
 use Locale::PO;
 use Path::Tiny;
 use DateTime;
-use DateTime::Format::RFC3339;
+use DateTime::Format::Strptime;
 sub convert {
-    my ($lexicon, $repo_dir) = @_;
+    my ($lexicon, $repo_dir, $force) = @_;
     my %lex;
     if ($lexicon) {
         foreach my $k (keys %$lexicon) {
@@ -21,9 +21,25 @@ sub convert {
     my @created;
     if ($repo_dir) {
         mkdir $repo_dir unless -d $repo_dir;
-        my $now = DateTime::Format::RFC3339->new->format_datetime(DateTime->now);
+        my $now = DateTime::Format::Strptime->new(pattern => '%T %R%z')->format_datetime(DateTime->now);
+      LANGUAGE:
         foreach my $lang (keys %lex) {
+            if ($lang =~ m/\A([a-z]+)\z/) {
+                $lang = $1;
+            }
+            else {
+                warn "$lang doesn't look like a language";
+                next LANGUAGE;
+            }
             my $out = path($repo_dir, $lang . '.po')->stringify;
+            if (-f $out) {
+                if ($force) {
+                    warn "Overwriting $out\n";
+                }
+                else {
+                    next LANGUAGE;
+                }
+            }
             push @created, $out;
             my @po;
             push @po, Locale::PO->new(-msgid => '',

@@ -1,0 +1,64 @@
+#!/usr/bin/env perl
+
+use utf8;
+use strict;
+use warnings;
+use lib 'lib';
+use Path::Tiny;
+use AmuseWikiFarm::Utils::LexiconMigration;
+use JSON;
+use Getopt::Long;
+use Pod::Usage;
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-upgrade-lexicon - Convert the legacy site_files/lexicon.json to po files.
+
+=head1 SYNOPSIS
+
+Usage: amusewiki-bootstrap-archive [ --help --force ] repo1, [ repo2, repo3 ]
+
+Usually you would do:
+
+ amusewiki-bootstrap-archive repo/*
+
+from the application home.
+
+With the --force option, override existing po files. This should be
+used if you prefer to use lexicon.json as your source to create po
+files (deprecated).
+
+=cut
+
+my ($force, $help);
+
+GetOptions(force => \$force, help => \$help) or die;
+
+if ($help) {
+    pod2usage;
+    exit 2;
+}
+
+foreach my $dir (@ARGV) {
+    my $path = path($dir)->absolute;
+    next unless -d $path;
+
+    my $lexicon = path($path, qw/site_files lexicon.json/);
+    my $locales = path($path, 'locales');
+    if (-f $lexicon) {
+        my $json = eval { JSON::from_json($lexicon->slurp_utf8) };
+        if ($json) {
+            if (my @generated = AmuseWikiFarm::Utils::LexiconMigration::convert($json, "$locales", $force)) {
+                print "Created the following file from $lexicon:\n" . join("\n", @generated) . "\n";
+                print "Please commit the result in $path and remove $lexicon\n\n";
+            }
+        }
+        else {
+            warn "Invalid json found\n";
+        }
+    }
+}
