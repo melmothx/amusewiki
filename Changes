@@ -4,6 +4,20 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.800 UNRELEASED
+
+ - Decoupled the localization framework from the application
+
+The new way to provide local translations is via local .po files in
+the "locales" directory in each site repository. PO files are best
+suited than the previous JSON file.
+
+On server restart, the existing lexicon.json will be converted to PO
+files, but the result will be left in the git trees uncommitted. A
+message is printed out anyway. You are recommended to commit the
+result after stopping the application if you want to expose the po
+files to the git (as you should).
+
 1.704 2016-03-11
 
  - Added dynamic robots.txt

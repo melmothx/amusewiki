@@ -38,9 +38,25 @@ Just call:
 
   $c->stash->{lh}->loc($key, @args)
 
+The result is NOT HTML safe.
+
 =head2 loc_html($key, @args);
 
   $c->stash->{lh}->loc_html($key, @args)
+
+The result is HTML safe.
+
+=head1 TEMPLATE METHODS
+
+Whenever you see a bare [% loc('string') %] in the template, you are
+actually calling C<loc_html> because of the macro installed in
+root/src/macros.tt.
+
+If you need an unescaped translation, you can call
+
+ [% lh.loc('string', args) %]
+
+(where args is an arrayref or a list).
 
 =cut
 

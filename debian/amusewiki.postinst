@@ -28,6 +28,8 @@ if [ ! -d "/var/lib/amusewiki/webfonts" ]; then
     su -c 'amusewiki-populate-webfonts /var/lib/amusewiki/webfonts' amusewiki
 fi
 
+su -c 'amusewiki-upgrade-lexicon /var/lib/amusewiki/repo/*' amusewiki
+
 # install the log4perl file, if missing
 if [ ! -f "/var/lib/amusewiki/log4perl.conf" ]; then
     cat <<'EOF' > /var/lib/amusewiki/log4perl.conf
