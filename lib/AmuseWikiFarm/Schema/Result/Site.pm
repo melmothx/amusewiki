@@ -1524,6 +1524,11 @@ sub list_fixed_categories {
     }
 }
 
+sub locales_dir {
+    my $self = shift;
+    return File::Spec->catdir($self->repo_root, 'locales');
+}
+
 sub lexicon_file {
     my $self = shift;
     return File::Spec->catfile($self->path_for_site_files, "lexicon.json");
