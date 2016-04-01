@@ -615,7 +615,7 @@
 $.validator.addMethod("muse", function (value, element) {
     var re = new RegExp("^#title +", "m");
     return this.optional(element) || re.test(value);
-}, "[% jsloc('Missing #title header in the text!') %]");
+}, "[% loc('Missing #title header in the text!') | escape_js %]");
 $(document).ready(function(){
     $("#museform").validate({
         rules: {

@@ -9,51 +9,51 @@ $(document).ready(function() {
 	    previewParserPath:	'',
 	    onShiftEnter:		{keepDefault:false, openWith:'\n\n'},
 	    markupSet: [
-	        {name:'[% jsloc("Heading") %] 1 ([% jsloc("Part, for larger books only") %])',
+	        {name:'[% loc("Heading") | escape_js %] 1 ([% loc("Part, for larger books only") | escape_js %])',
 	         key:'1',
-             placeHolder:'[% jsloc("Your part here...") %]',
+             placeHolder:'[% loc("Your part here...") | escape_js %]',
 	         openWith:'\n* '},
 
-	        {name:'[% jsloc("Heading") %] 2 ([% jsloc("Chapter, only for chapter divisions in books") %])',
+	        {name:'[% loc("Heading") | escape_js %] 2 ([% loc("Chapter, only for chapter divisions in books") | escape_js %])',
 	         key:'2',
-	         placeHolder:'[% jsloc("Your chapter here...") %]',
+	         placeHolder:'[% loc("Your chapter here...") | escape_js %]',
 	         openWith:'\n** ' },
 
-	        {name:'[% jsloc("Heading") %] 3 ([% jsloc("generic sectioning, good for articles") %])',
+	        {name:'[% loc("Heading") | escape_js %] 3 ([% loc("generic sectioning, good for articles") | escape_js %])',
              key:'3',
              openWith:'\n*** ',
-             placeHolder:'[% jsloc("Your section here...") %]' },
+             placeHolder:'[% loc("Your section here...") | escape_js %]' },
 
-	        {name:'[% jsloc("Heading") %] 4 ([% jsloc("subsection") %])',
+	        {name:'[% loc("Heading") | escape_js %] 4 ([% loc("subsection") | escape_js %])',
              key:'4',
              openWith:'\n**** ',
-             placeHolder:'[% jsloc("Your subsection here...") %]' },
+             placeHolder:'[% loc("Your subsection here...") | escape_js %]' },
 
-	        {name:'[% jsloc("Heading") %] 5 ([% jsloc("sub-sub-section") %])',
+	        {name:'[% loc("Heading") | escape_js %] 5 ([% loc("sub-sub-section") | escape_js %])',
              key:'5',
              openWith:'\n***** ',
-             placeHolder:'[% jsloc("Your sub-sub-section (or description heading) here...") %]' },
+             placeHolder:'[% loc("Your sub-sub-section (or description heading) here...") | escape_js %]' },
 
-	        {name:'[% jsloc("Italic") %]',
+	        {name:'[% loc("Italic") | escape_js %]',
              key:'I', openWith:' *', closeWith:'* '},
 
-	        {name:'[% jsloc("Bold") %]',
+	        {name:'[% loc("Bold") | escape_js %]',
              key:'B', openWith:' **', closeWith:'** '},
 
-	        {name:'[% jsloc("Bulleted List") %]',
+	        {name:'[% loc("Bulleted List") | escape_js %]',
              openWith:'\n - ' },
 
-	        {name:'[% jsloc("Numeric List") %]',
+	        {name:'[% loc("Numeric List") | escape_js %]',
              openWith:'\n 1. ' },
 
-	        {name:'[% jsloc("Picture") %]',
+	        {name:'[% loc("Picture") | escape_js %]',
              key:'P',
              replaceWith: function(h) {
                  var muse_link = '';
                  var muse_label = '';
                  var out = '';
-                 muse_link = prompt("[% jsloc("Image url") %]", "image.png");
-                 muse_label = prompt("[% jsloc("description") %]", "");
+                 muse_link = prompt("[% loc("Image url") | escape_js %]", "image.png");
+                 muse_label = prompt("[% loc("description") | escape_js %]", "");
                  if (muse_link && muse_label) {
                      out = '[[' + muse_link + '][' + muse_label + ']]';
                  }
@@ -64,14 +64,14 @@ $(document).ready(function() {
                  }
                  return out;
              }},
-	        {name:'[% jsloc("Link") %]',
+	        {name:'[% loc("Link") | escape_js %]',
              key:'L',
              replaceWith: function(h) {
                  var muse_link = '';
                  var muse_label = '';
                  var out = '';
-                 muse_link = prompt("[% jsloc("Url") %]", "http://");
-                 muse_label = prompt("[% jsloc("Display url as") %]", "");
+                 muse_link = prompt("[% loc("Url") | escape_js %]", "http://");
+                 muse_label = prompt("[% loc("Display url as") | escape_js %]", "");
                  if (muse_link && muse_label) {
                      out = '[[' + muse_link + '][' + muse_label + ']]';
                  }
@@ -82,12 +82,12 @@ $(document).ready(function() {
                  }
                  return out;
              }},
-	        {name:'[% jsloc("Quotes") %]',
+	        {name:'[% loc("Quotes") | escape_js %]',
              multiline:true,
              openBlockWith:'\n<quote>\n',
              closeBlockWith:'\n</quote>\n'},
 
-	        {name:'[% jsloc("Verbatim block") %]',
+	        {name:'[% loc("Verbatim block") | escape_js %]',
              multiline:true,
              openBlockWith:'\n<example>\n',
              closeBlockWith:'\n</example>\n'},
