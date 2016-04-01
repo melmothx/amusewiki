@@ -40,7 +40,7 @@
     <td>
       [% IF text.deleted %]
       <form name="purge" action="[% c.uri_for_action('/console/purge') %]"
-            onsubmit="return confirm('[% htjsloc('Are you sure?') %]');"
+            onsubmit="return amw_confirm()"
             method="post">
         <input type="hidden" name="purge" value="[% text.id %]"/>
         <button type="submit" class="btn btn-danger">

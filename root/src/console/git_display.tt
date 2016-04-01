@@ -37,7 +37,7 @@
        [% IF remote.owner %]
        <form action="[% c.uri_for_action('console/remove_git_remote') %]"
              method="POST" role="form" name="git-delete"
-             onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
+             onsubmit="return amw_confirm()">
          <input type="hidden" name="name" value="[% remote.name | html %]" />
          <button class="btn btn-danger" type="submit" name="delete"
                  value="delete" title="[% loc('Delete remote repository [_1]', remote.name) %]">

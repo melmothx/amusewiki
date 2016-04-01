@@ -120,7 +120,7 @@ Text...
       <form id="alias-delete-[% alias.id %]"
             method="POST"
             action="[% c.uri_for_action('/console/alias_delete') %]"
-            onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
+            onsubmit="return amw_confirm()">
         <input type="hidden" name="delete" value="[% alias.id %]" />
         <button type="submit" class="btn btn-danger">
           [% loc('Delete') %]

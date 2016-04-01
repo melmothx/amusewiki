@@ -27,7 +27,7 @@
         <form method="post" class="form-horizontal" role="form"
               id="delete-user-form-[% user.id %]"
               action="[% c.uri_for_action('admin/delete_user', [ user.id ]) %]"
-              onsubmit="return confirm('[% htjsloc('Are you sure?') %]');">
+              onsubmit="return amw_confirm()">
           <button type="submit" name="delete" value="delete" class="btn btn-danger">
             [% loc('Delete') %]
           </button>
