@@ -1,86 +1,61 @@
-package AmuseWikiFarm::Archive::Lexicon::Handles;
-
-use utf8;
-use strict;
-use warnings;
-use base 'Locale::Maketext';
-use Locale::Maketext::Lexicon;
-sub import_po_file {
-    my ($self, $lang, $path, $fallback) = @_;
-    Locale::Maketext::Lexicon->import({ $lang => [ Gettext => $path ],
-                                        _auto => $fallback,
-                                        _decode => 1 });
-}
-
-package AmuseWikiFarm::Archive::Lexicon::Site;
-
-use utf8;
-use strict;
-use warnings;
-
-use Moo;
-use Types::Standard qw/Maybe Object Int Str InstanceOf/;
-use Try::Tiny;
-use Path::Tiny;
-use HTML::Entities qw/encode_entities decode_entities/;
-
-has global => (is => 'ro', isa => Object);
-has site => (is => 'ro', isa => Maybe[Object]);
-has local_file => (is => 'ro', isa => InstanceOf[qw/Path::Tiny/], required => 1);
-has local_file_timestamp => (is => 'ro', isa => Int, default => 0);
-
-sub is_obsolete {
-    my $self = shift;
-    if (my $po = $self->local_file) {
-        if (-f $po and $po->stat->mtime > $self->local_file_timestamp) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-sub loc {
-    my ($self, $key, @args) = @_;
-    return '' unless defined($key) && length($key);
-    if (@args == 1) {
-        if (defined $args[0]) {
-            if (ref($args[0]) eq 'ARRAY') {
-                my $arrayref = shift @args;
-                @args = @$arrayref;
-            }
-        }
-        else {
-            @args = ();
-        }
-    }
-    # in case html is passed:
-    $key = decode_entities($key);
-    my $out;
-    if (my $site = $self->site) {
-        try { $out = $site->maketext($key, @args) } catch { $out = undef };
-    }
-    unless (defined $out) {
-        $out = $self->global->maketext($key, @args);
-    }
-    return $out;
-}
-
-sub loc_html {
-    my $self = shift;
-    return encode_entities($self->loc(@_), q{<>&"'});
-}
-
 package AmuseWikiFarm::Archive::Lexicon;
 
 use Moo;
-use Types::Standard qw/Str HashRef Object Int/;
+use Types::Standard qw/Str HashRef/;
 use Path::Tiny;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Archive::Lexicon::Site;
+use AmuseWikiFarm::Archive::Lexicon::Handles;
 
 has system_wide_po_dir => (is => 'ro', isa => Str, required => 1);
 has repo_dir => (is => 'ro', isa => Str, required => 1);
-has loaded => (is => 'ro', isa => HashRef[HashRef[Object]], default => sub { +{} });
-has globals => (is => 'ro', isa => HashRef[Object], default => sub { +{} });
+
+=head1 NAME
+
+AmuseWikiFarm::Archive::Lexicon - I18N for AmuseWiki
+
+=head1 SYNOPSIS
+
+ my $i18n = AmuseWikiFarm::Archive::Lexicon->new(system_wide_po_dir => 'lib/AmuseWikiFarm/I18N',
+                                                 repo_dir => 'repo');
+ my $lh = $i18n->localizer(hr => amw);
+ print $lh->loc('Test');
+ print $lh->loc_html('Test');
+
+=head1 DESCRIPTION
+
+This model is used to manage the localization handles. The object
+should be created passing the path to the global po files, and the
+site repos root. When you ask for a localizer, you pass the language
+and the repo id, resulting in an
+L<AmuseWikiFarm::Archive::Lexicon::Site> object upon which you can
+call C<loc> and L<loc_html>.
+
+=head1 CONSTRUCTORS
+
+=head2 system_wide_po_dir
+
+=head2 repo_dir
+
+=head1 METHODS
+
+=head2 localizer($lang, $repo_id)
+
+=head1 AUTHOR
+
+Marco Pessotto
+
+=head1 LICENSE
+
+This library is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
+
+
+has loaded => (is => 'ro', isa => HashRef, default => sub { +{} });
+has globals => (is => 'ro', isa => HashRef, default => sub { +{} });
 
 sub localizer {
     my ($self, $lang, $repo) = @_;

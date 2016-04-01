@@ -147,6 +147,8 @@ lib/AmuseWikiFarm/Archive/BookBuilder.pm
 lib/AmuseWikiFarm/Archive/CgitProxy.pm
 lib/AmuseWikiFarm/Archive/CgitProxy/Response.pm
 lib/AmuseWikiFarm/Archive/Lexicon.pm
+lib/AmuseWikiFarm/Archive/Lexicon/Handles.pm
+lib/AmuseWikiFarm/Archive/Lexicon/Site.pm
 lib/AmuseWikiFarm/Archive/StaticIndexes.pm
 lib/AmuseWikiFarm/Archive/Xapian.pm
 lib/AmuseWikiFarm/Controller/Admin.pm
