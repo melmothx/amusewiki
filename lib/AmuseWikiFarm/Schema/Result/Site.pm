@@ -1556,31 +1556,6 @@ sub _build_lexicon {
     return undef;
 }
 
-sub lexicon_translate {
-    my ($self, $lang, $term, @args) = @_;
-    return undef unless $lang && $term;
-    if (my $lexicon = $self->lexicon) {
-        if (exists $lexicon->{$term} and
-            exists $lexicon->{$term}->{$lang} and
-            defined $lexicon->{$term}->{$lang}) {
-            my $string = $lexicon->{$term}->{$lang};
-            # and interpolate the args
-            if ($string =~ m/\[_[0-9]\]/) {
-                foreach my $i (0 .. $#args) {
-                    if (defined $args[$i]) {
-                        my $index = $i + 1;
-                        $string =~ s/\[_$index\]/$args[$i]/ge;
-                    }
-                }
-                # and remove the non-existent
-                $string =~ s/\[_[0-9]\]//g;
-            }
-            return $string;
-        }
-    }
-    return undef;
-}
-
 sub multilanguage_list {
     my ($self) = @_;
     my $list = $self->multilanguage;
