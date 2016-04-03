@@ -53,12 +53,12 @@ requires 'DBIx::Class::Schema::Config';
 requires 'DBIx::Class::Helper::ResultSet::Random';
 requires 'DBIx::Class::PassphraseColumn';
 requires 'DBIx::Class::DeploymentHandler';
-requires 'Catalyst::Plugin::I18N';
 requires 'DateTime';
 requires 'Date::Parse';
 requires 'DateTime::Format::SQLite';
 requires 'DateTime::Format::MySQL';
 requires 'DateTime::Format::Pg';
+requires 'DateTime::Format::Strptime';
 requires 'XML::FeedPP' => '0.43';
 requires 'XML::Atom' => '0.41'; # 2011...
 requires 'XML::OPDS' => '0.05';
@@ -92,6 +92,10 @@ requires 'Text::Amuse::Preprocessor' => '0.25';
 # requires 'DBIx::Class::Schema::Loader';
 requires 'MooseX::MarkAsMethods';
 requires 'File::MimeInfo';
+requires 'Moo';
+requires 'Path::Tiny';
+requires 'Locale::Maketext::Lexicon';
+requires 'Locale::PO';
 
 test_requires 'Test::More' => '0.88';
 test_requires 'CAM::PDF';

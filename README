@@ -110,6 +110,10 @@ entries on the special pages. The assigned ids are
 "special-pages-logo" for the container and "special-pages-logo-img"
 for the image itself.
 
+** Local PO files
+
+See LOCALIZATION.txt
+
 ** CONFIGURATION FILE
 
 If amusewiki was installed with a package, the location is

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 148;
+use Test::More tests => 151;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -14,6 +14,9 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
+use AmuseWikiFarm::Archive::Lexicon;
+use AmuseWikiFarm::Utils::LexiconMigration;
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0multi0';
@@ -176,8 +179,24 @@ copy(catfile(qw/t atr-lexicon.json/), $site->lexicon_file);
 
 ok $site->lexicon;
 
-is $site->lexicon_translate(hr => 'geo'), 'Geografija kontrole';
-is $site->lexicon_translate(hr => 'blablabla'), undef;
+{
+    AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, $site->locales_dir);
+    my $model = AmuseWikiFarm::Archive::Lexicon
+      ->new(
+            system_wide_po_dir => path(qw/lib AmuseWikiFarm I18N/)->absolute->stringify,
+            repo_dir => path("repo")->absolute->stringify,
+           );
+    my $lh = $model->localizer(hr => $site->id);
+    is $lh->loc('geo'), 'Geografija kontrole';
+    is $lh->loc('nociv'), 'Štetnosti i okolica';
+    is $lh->loc('blablabla'), 'blablabla';
+    $lh = $model->localizer(de => $site->id);
+    is $lh->loc('spec'), 'Spezifische Kämpfe';
+    $lh = $model->localizer(it => $site->id);
+    is $lh->loc('nociv'), 'Nocività e dintorni';
+
+}
+
 
 $mech->get_ok('/set-language?lang=it');
 $mech->get_ok('/');

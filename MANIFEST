@@ -146,6 +146,9 @@ lib/AmuseWikiFarm.pm
 lib/AmuseWikiFarm/Archive/BookBuilder.pm
 lib/AmuseWikiFarm/Archive/CgitProxy.pm
 lib/AmuseWikiFarm/Archive/CgitProxy/Response.pm
+lib/AmuseWikiFarm/Archive/Lexicon.pm
+lib/AmuseWikiFarm/Archive/Lexicon/Handles.pm
+lib/AmuseWikiFarm/Archive/Lexicon/Site.pm
 lib/AmuseWikiFarm/Archive/StaticIndexes.pm
 lib/AmuseWikiFarm/Archive/Xapian.pm
 lib/AmuseWikiFarm/Controller/Admin.pm
@@ -188,6 +191,7 @@ lib/AmuseWikiFarm/Log/Contextual/App.pm
 lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Feed.pm
+lib/AmuseWikiFarm/Model/Lexicon.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
 lib/AmuseWikiFarm/Role/Controller/ListingDisplay.pm
@@ -223,6 +227,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
+lib/AmuseWikiFarm/Utils/LexiconMigration.pm
 lib/AmuseWikiFarm/Utils/Paginator.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
@@ -248,6 +253,7 @@ root/docs/manual.muse
 root/docs/manual.pdf
 root/docs/manual.tex
 root/docs/manual.zip
+root/src/admin/debug_loc.tt
 root/src/admin/edit.tt
 root/src/admin/jobs.tt
 root/src/admin/list.tt
@@ -550,6 +556,7 @@ script/amusewiki-jobber
 script/amusewiki-populate-webfonts
 script/amusewiki-reset-password
 script/amusewiki-upgrade-db
+script/amusewiki-upgrade-lexicon
 script/amusewikifarm_cgi.pl
 script/amusewikifarm_create.pl
 script/amusewikifarm_fastcgi.pl
@@ -680,6 +687,8 @@ t/html-upload.t
 t/indexer.t
 t/jobber.t
 t/lang-parsing.t
+t/lexicon-2.t
+t/lexicon-migration.t
 t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/model-user.t

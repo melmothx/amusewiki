@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 16;
+use Test::More tests => 19;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -15,6 +15,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
+use AmuseWikiFarm::Utils::LexiconMigration;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -53,33 +54,55 @@ copy(catfile(qw/t entities.json/), $site->lexicon_file) or die $!;
 
 ok $site->lexicon;
 print Dumper($site->lexicon);
-
+AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, $site->locales_dir);
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
 $mech->get_ok('/set-language?lang=hr');
 $mech->content_contains('Geografija kontrole');
-$mech->content_lacks('&amp;quot; i\' &amp;lt;državni&amp;gt; &amp;amp;');
-$mech->content_contains(q{Ratovi&quot; i' &lt;državni&gt; &amp; terorizam});
+$mech->content_lacks('&amp;quot; i&#39; &amp;lt;državni&amp;gt; &amp;amp;');
+$mech->content_contains(q{Ratovi&quot; i&#39; &lt;državni&gt; &amp; terorizam});
 
 $mech->get_ok('/topics');
-$mech->content_like(qr/class="list-group-item\ clearfix".*Ratovi&quot;\ i'\s*
+$mech->content_like(qr/class="list-group-item\ clearfix".*Ratovi&quot;\ i&\#39;\s*
                        &lt;državni&gt;\ &amp;\ terorizam/sx,
                     "Topics escaped in listing") or diag $mech->content;
 $mech->content_like(qr/class="list-group-item\ clearfix"
                        .*
-                       <strong>&quot;'topic'&quot;\s*<\/strong>/sx,
+                       <strong>&quot;&\#39;topic&\#39;&quot;\s*<\/strong>/sx,
                     "Found the topic in list correctly escaped");
 
 
 $mech->get_ok('/topics/war');
 $mech->content_contains(q{<title>Ratovi&quot; i'  &amp; terorizam | </title>});
-$mech->content_contains(q{<h2>Ratovi&quot; i' &lt;državni&gt; &amp; terorizam});
+$mech->content_contains(q{<h2>Ratovi&quot; i&#39; &lt;državni&gt; &amp; terorizam}) or diag $mech->content;
 
 $mech->get_ok('/topics/topic');
-$mech->content_like(qr/<title>&quot;'topic'&quot;/);
-$mech->content_contains(q{<h2>&quot;'topic'&quot;});
+# title is escaped with | html, so "'" is preserved
+$mech->content_like(qr/<title>&quot;'topic'&quot;/) or diag $mech->content;
+$mech->content_contains(q{<h2>&quot;&#39;topic&#39;&quot;});
 
 $mech->get_ok('/library/a-test');
 $mech->content_contains(q{<title> &quot;'hello'&quot; | </title>});
+
+# login as root and try the debug_loc
+$mech->get_ok('/login');
+
+$mech->submit_form(with_fields => { username => 'root',
+                                    password => 'root',
+                                  },
+                   button => 'submit',
+                  );
+
+$mech->get_ok('/admin/debug_loc');
+my $expected = <<'TXT';
+&lt;hello \there&gt;
+&lt;hello \\&quot;&#39;there&gt;
+<hello>
+&lt;hello&gt;
+<hello>
+&lt;hello&gt;
+&lt;hello&gt;
+TXT
+is $mech->content, $expected, "Localization methods appears ok";

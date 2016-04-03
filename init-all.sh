@@ -31,6 +31,7 @@ prepare_app () {
     fi
 
     ./script/amusewiki-upgrade-db
+    ./script/amusewiki-upgrade-lexicon repo/*
 }
 
 # echo `pwd`

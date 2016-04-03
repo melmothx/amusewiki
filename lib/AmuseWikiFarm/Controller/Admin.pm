@@ -43,6 +43,11 @@ sub debug_site_id :Chained('root') :Args(0) {
                            ));
 }
 
+sub debug_loc :Chained('root') :Args(0) {
+    my ($self, $c) = @_;
+    $c->response->content_type('text/plain');
+    $c->stash(no_wrapper => 1);
+}
 
 sub sites :Chained('root') :CaptureArgs(0) {
     my ($self, $c) = @_;

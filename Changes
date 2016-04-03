@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.800 UNRELEASED
+
+ - Decoupled the localization framework from the application
+
+The upgrade should be transparent, but please see LOCALIZATION.txt for
+details.
+
 1.704 2016-03-11
 
  - Added dynamic robots.txt

@@ -149,9 +149,7 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
               current_locale_name => $site->known_langs->{$locale},
              );
     # set the localization
-    $c->languages([ $locale ]);
-
-
+    $c->set_language($locale, $site_id);
 
     my @related = $site->other_sites;
     my @specials = $site->special_list;
