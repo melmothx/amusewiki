@@ -69,6 +69,7 @@ sub convert {
             # print Dumper($lex{$lang});
             my %out = (%templates, %{$lex{$lang}});
             Locale::PO->save_file_fromhash($out, \%out, "utf8");
+            push @created, $out;
         }
     }
     return @created;

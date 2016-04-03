@@ -2,7 +2,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 64;
+use Test::More tests => 67;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
 binmode $builder->failure_output, ":encoding(utf-8)";
@@ -136,7 +136,11 @@ $lexicon->{test} = {
                     it => '',
                    };
 sleep 1;
-AmuseWikiFarm::Utils::LexiconMigration::convert($lexicon, "$temp");
+my @files = AmuseWikiFarm::Utils::LexiconMigration::convert($lexicon, "$temp");
+ok (@files == 2);
+foreach my $f (@files) {
+    ok (-f $f, "$f exists");
+}
 {
     my $po = path($temp, 'it.po');
     my $content = $po->slurp_utf8;
