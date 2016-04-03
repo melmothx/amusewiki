@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 18;
+use Test::More tests => 19;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -85,7 +85,17 @@ $mech->content_contains(q{<h2>&quot;&#39;topic&#39;&quot;});
 
 $mech->get_ok('/library/a-test');
 $mech->content_contains(q{<title> &quot;'hello'&quot; | </title>});
-$mech->get_ok('/debug_loc');
+
+# login as root and try the debug_loc
+$mech->get_ok('/login');
+
+$mech->submit_form(with_fields => { username => 'root',
+                                    password => 'root',
+                                  },
+                   button => 'submit',
+                  );
+
+$mech->get_ok('/admin/debug_loc');
 my $expected = <<'TXT';
 &lt;hello \there&gt;
 &lt;hello \\&quot;&#39;there&gt;

@@ -239,12 +239,6 @@ sub redirect_to_secure :Private {
     }
 }
 
-sub debug_loc :Chained('/site_no_auth') :Args(0) {
-    my ($self, $c) = @_;
-    $c->response->content_type('text/plain');
-    $c->stash(no_wrapper => 1);
-}
-
 =head2 random
 
 Path: /random

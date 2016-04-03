@@ -253,6 +253,7 @@ root/docs/manual.muse
 root/docs/manual.pdf
 root/docs/manual.tex
 root/docs/manual.zip
+root/src/admin/debug_loc.tt
 root/src/admin/edit.tt
 root/src/admin/jobs.tt
 root/src/admin/list.tt
@@ -268,7 +269,6 @@ root/src/console/alias_display.tt
 root/src/console/git_display.tt
 root/src/console/translations.tt
 root/src/console/unpublished.tt
-root/src/debug_loc.tt
 root/src/edit/diff.tt
 root/src/edit/edit.tt
 root/src/edit/newtext.tt
@@ -688,6 +688,7 @@ t/indexer.t
 t/jobber.t
 t/lang-parsing.t
 t/lexicon-2.t
+t/lexicon-migration.t
 t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/model-user.t
