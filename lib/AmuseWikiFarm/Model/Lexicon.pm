@@ -12,10 +12,11 @@ __PACKAGE__->config(
 
 sub prepare_arguments {
     my ($self, $app) = @_;
-    my $path = path('repo')->absolute;
+    my $repo_path = path('repo')->absolute;
+    my $inst_path = path(__FILE__)->parent->parent->child('I18N')->realpath;
     my %opts = (
-                system_wide_po_dir => $app->path_to(qw/lib AmuseWikiFarm I18N/)->stringify,
-                repo_dir => $path->stringify,
+                system_wide_po_dir => "$repo_path",
+                repo_dir => "$inst_path",
                );
     Dlog_debug { "Loading lexicon with $_" } \%opts;
     return \%opts;
