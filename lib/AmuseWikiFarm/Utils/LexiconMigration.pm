@@ -66,7 +66,7 @@ sub convert {
                                       . "MIME-Version: 1.0\n"
                                       . "Content-Type: text/plain; charset=UTF-8\n"
                                       . "Content-Transfer-Encoding: 8bit\n");
-            print Dumper($lex{$lang});
+            # print Dumper($lex{$lang});
             my %out = (%templates, %{$lex{$lang}});
             Locale::PO->save_file_fromhash($out, \%out, "utf8");
         }

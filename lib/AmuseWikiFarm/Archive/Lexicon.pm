@@ -64,11 +64,12 @@ sub localizer {
     die "Bad repo name" unless $repo =~ m/\A[a-z0-9]+\z/;
     die "Bad lang name" unless $lang =~ m/\A[a-z0-9]+\z/;
     if (my $handler = $self->loaded->{$repo}->{$lang}) {
-        log_debug { "$lang for $repo has already been loaded" };
+        Dlog_debug { "$lang for $repo has already been loaded: $_" } $handler;;
         if ($handler->is_obsolete) {
             log_debug { "However, $lang for $repo is obsolete" };
         }
         else {
+            log_debug { "Handle is not obsolete" };
             return $handler;
         }
     }
