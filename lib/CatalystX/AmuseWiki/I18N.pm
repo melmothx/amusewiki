@@ -7,11 +7,9 @@ use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
-CatalystX::AmuseWiki::I18N;
+CatalystX::AmuseWiki::I18N - amusewiki replacement for Catalyst::Plugin::I18N
 
 =head1 DESCRIPTION
-
-This is a replacement for Catalyst::Plugin::I18N.
 
 Please note that this plugin doesn't do anything. I came to the
 (unbelievable!) conclusion that whenever you use a plugin which isn't

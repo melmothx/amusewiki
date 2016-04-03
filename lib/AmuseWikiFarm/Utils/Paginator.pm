@@ -4,6 +4,9 @@ use utf8;
 use strict;
 use warnings;
 
+=head1 NAME
+
+AmuseWikiFarm::Utils::Paginator - amusewiki paginator routine
 
 =head2 create_pager($pager, $sub)
 
