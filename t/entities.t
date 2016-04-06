@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 19;
+use Test::More tests => 20;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -94,7 +94,7 @@ $mech->submit_form(with_fields => { username => 'root',
                                   },
                    button => 'submit',
                   );
-
+$mech->get_ok('/set-language?lang=hr');
 $mech->get_ok('/admin/debug_loc');
 my $expected = <<'TXT';
 &lt;hello \there&gt;
@@ -104,5 +104,17 @@ my $expected = <<'TXT';
 <hello>
 &lt;hello&gt;
 &lt;hello&gt;
+Neusklađene fusnote: pronađeno &lt;a&gt; fusnota (&lt;&amp;&gt;) i pronađeno &lt;&quot;&gt; fusnota
+u tekstu (&lt;&#39;&gt;), zanemarivši izmjene. 
+Neusklađene fusnote: pronađeno &lt;a&gt; fusnota () i pronađeno  fusnota
+u tekstu (), zanemarivši izmjene. 
+Neusklađene fusnote: pronađeno <a> fusnota (<&>) i pronađeno <"> fusnota
+u tekstu (<'>), zanemarivši izmjene. 
+Neusklađene fusnote: pronađeno <a> fusnota (<&>) i pronađeno <"> fusnota
+u tekstu (<'>), zanemarivši izmjene. 
+Neusklađene fusnote: pronađeno <a> fusnota (<&>) i pronađeno <"> fusnota
+u tekstu (<'>), zanemarivši izmjene. 
+Neusklađene fusnote: pronađeno <a> fusnota (<&>) i pronađeno <"> fusnota
+u tekstu (<'>), zanemarivši izmjene. 
 TXT
 is $mech->content, $expected, "Localization methods appears ok";

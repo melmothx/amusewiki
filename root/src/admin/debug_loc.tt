@@ -5,3 +5,15 @@
 [% c.loc('<hello>') %]
 [% c.loc_html('<hello>') %]
 [% loc('<hello>') %]
+[% loc('Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes',
+   ['<a>', '<&>', '<">', "<'>"]) %]
+[% loc('Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes',
+   '<a>', '<&>', '<">', "<'>") %]
+[% c.loc('Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes',
+   ['<a>', '<&>', '<">', "<'>"]) %]
+[% c.loc('Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes',
+   '<a>', '<&>', '<">', "<'>") %]
+[% lh.loc('Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes',
+   ['<a>', '<&>', '<">', "<'>"]) %]
+[% lh.loc('Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes',
+   '<a>', '<&>', '<">', "<'>") %]
