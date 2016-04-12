@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-25 15:31+0200\n"
+"PO-Revision-Date: 2016-04-12 19:32+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -14,135 +14,152 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
-msgstr ""
+msgstr "%1 n'existe pas"
 
 msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+msgstr "(guillemets, liens, notes de bas de page, etc.)"
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
+"Une ligne vide (ou plusieurs lignes vides) entame un nouveau paragraphe."
 
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"Une image de couverture était déjà ajoutée, mais vous pouvez la remplacer en "
+"téléchargeant une nouvelle."
 
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"Une note de bas de page est une ligne qui commence par un nombre entre "
+"crochets, sans espaces antérieurs."
 
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "Une ligne qui commence par 2 espaces ou plus est une citation."
 
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
+msgstr "Une ligne qui commence par 20 espaces ou plus est alignée à droite."
 
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "Une ligne qui commence par des 6 espaces ou plus est centrée."
 
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"Une liste des liens et des étiquettes à insérer dans la barre du haut. Une "
+"par ligne, avec d'abord l'URL, puis l'étiquette, séparés par un espace, par "
+"exemple « http://test.me Site d'essai »"
 
 #. (site.canonical_url)
 msgid "A new revision has been created at %1"
-msgstr ""
+msgstr "Une nouvelle version a été créée à %1"
 
 msgid "A nice title"
-msgstr ""
+msgstr "Un titre sympa"
 
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "PDF A4 imposé"
 
 msgid "A4 paper"
-msgstr ""
+msgstr "papier A4"
 
 msgid "A5 paper"
-msgstr ""
+msgstr "papier A5"
 
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "papier A6 (également convenable pour e-readers)"
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
+"Édition en progrès abandonnée, prenez la liberté de vérifier la diff et "
+"reprendre"
 
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
+# Actif ou Active
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Ajouter une image de couverture (PNG ou JPG)"
 
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr ""
+msgstr "Ajouter une pièce jointe (PNG, JPG ou PDF)"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Ajouter des marques de rognage au PDF"
 
 msgid "Add new remote repository"
-msgstr ""
+msgstr "Ajouter un nouveau dépôt distant"
 
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr ""
+"Ajouter des espaces insécables là où c'est approprié au niveau de la langue"
 
 msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
+msgstr "Ajouter ou supprimer le <user_repo_url> de cette page."
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
 msgstr ""
+"Ajouter la pagination pour la liste de textes quand le nombre de textes est "
+"supérieur à (nombre)"
 
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "Ajouter des sections au générateur de livres"
 
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "Ajouter les parties sélectionnées au générateur de livres."
 
 msgid "Add the whole text"
-msgstr ""
+msgstr "Ajouter le texte entier"
 
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Ajouter ce texte au générateur de livres"
 
 msgid "Add to library"
-msgstr ""
+msgstr "Ajouter à la bibliothèque"
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
 msgstr ""
+"Informations supplémentaires (date complète, titre original, "
+"traduc·teurs·trices, crédits, etc)."
 
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "L'alias ne peut pas se référer à lui-même"
 
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
-msgstr ""
+msgstr "Toutes sortes de listes commencent avec un ou plusieurs espaces."
 
 msgid "All languages"
-msgstr ""
+msgstr "Toutes langues"
 
 msgid "All revisions"
-msgstr ""
+msgstr "Toutes versions"
 
 msgid "All sites"
-msgstr ""
+msgstr "Tous sites"
 
 msgid "All users"
-msgstr ""
+msgstr "Tous utilisateurs"
 
 msgid ""
 "Also produce slides\n"
@@ -152,6 +169,11 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"Produire aussi des diapositives du document. Chaque section, qu'importe sa "
+"profondeurs, produira une diapo. Le texte hors d'une section est ignoré, "
+"donc si vous n'avez pas de sections, vous aurez des diapos vides. Si vous "
+"souhaitez exclure une section, mettez-y un commentaire avec la chaîne de "
+"caractères \"noslide\"."
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -161,24 +183,30 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"Un URI est une chaîne de caractères qui identifie de manière unique le texte "
+"dans l'archive,. En théorie, ça pourrait être n'importe quoi, mais si vous "
+"souhaitez le définir vous-même, veuillez vous en tenir à la convention: "
+"auteurs, nom, titre, langue, éventuellement un chiffre pour cas d'homonymie, "
+"par exemple errico-malatesta-anarchisme-2. Veuillez remarquer que cela n'est "
+"pas habituellement requis."
 
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "Apache n'est pas actuellement pris en charge"
 
 msgid "Archive history"
-msgstr ""
+msgstr "Historique des archives"
 
 msgid "Are you sure?"
-msgstr ""
+msgstr "Êtes-vous sûr·e?"
 
 msgid "Attached PDFs"
-msgstr ""
+msgstr "PDFs joints"
 
 msgid "Attached images"
-msgstr ""
+msgstr "Images jointes"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Pièces jointes"
 
 msgid "Author"
 msgstr "Auteur"
@@ -187,438 +215,465 @@ msgid "Authors"
 msgstr "Auteurs"
 
 msgid "Authors for indexing"
-msgstr ""
+msgstr "Authors pour indexation"
 
 msgid "Available category tags for header"
-msgstr ""
+msgstr "Étiquettes de catégorie disponibles pour titre"
 
 msgid "Back to the text"
-msgstr ""
+msgstr "Retour au texte"
 
 msgid "Bad request"
-msgstr ""
+msgstr "Mauvaise requête"
 
 msgid "Bare HTML, needed by the application"
-msgstr ""
+msgstr "HTML brut, requis par l'application"
 
 msgid "Beamer color theme"
-msgstr ""
+msgstr "Thème de couleur Beamer"
 
 msgid "Beamer theme"
-msgstr ""
+msgstr "Thème Beamer"
 
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "Correction de liaison en millimètres (marge intérieure supplémentaire)"
 
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "Blocs de 16 pages à être pliées deux fois puis reliées ensemble."
 
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 msgid "Bold"
-msgstr ""
+msgstr "Caractères Gras"
 
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Générateur de livres"
 
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Limite de pages du générateur de livres"
 
 msgid "Build it"
-msgstr ""
+msgstr "Le construire"
 
 msgid "Bulleted List"
-msgstr ""
+msgstr "Liste à puces"
 
 msgid "Canonical name"
-msgstr ""
+msgstr "Nom canonique"
 
 msgid "Catalog"
-msgstr ""
+msgstr "Catalogue"
 
 msgid "Categories"
-msgstr ""
+msgstr "Catégories"
 
 msgid "Changes"
-msgstr ""
+msgstr "Modifications"
 
 msgid "Changes applied"
-msgstr ""
+msgstr "Modifications appliquées"
 
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr ""
+"Modifications commises, merci! Elles attendent maintenant leur publication"
 
 #. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
 msgid "Changes for %1"
-msgstr ""
+msgstr "Changements pour %1"
 
 msgid "Chapter"
-msgstr ""
+msgstr "Chapitre"
 
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Chapitre, seulement pour des divisions de chapitre dans des livres"
 
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Antisèche pour le balisage"
 
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Choisissez un format papier"
 
 msgid "Clear the book list"
-msgstr ""
+msgstr "Vider la liste de livres"
 
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Cliquez sur les images pour obtenir le PDF échantillon"
 
 msgid "Clone the repo locally and set it up"
-msgstr ""
+msgstr "Cloner le dépôt localement et le mettre en place"
 
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 msgid "Commit"
-msgstr ""
+msgstr "Commettre"
 
 msgid "Completed"
-msgstr ""
+msgstr "Complété"
 
 msgid "Computing of differences took"
-msgstr ""
+msgstr "Computation de différences prit"
 
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "Convertir en balisage d'archive"
 
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Impossibilité d'ajouter le texte"
 
 msgid "Couldn't automatically generate the uri!"
-msgstr ""
+msgstr "Impossibilité de générer l'URI!"
 
 msgid "Couldn't build that"
-msgstr ""
+msgstr "Impossibilité de construire cela"
 
 msgid "Cover image (optional)"
-msgstr ""
+msgstr "Image de couverture (optionnelle)"
 
 msgid "Create"
-msgstr ""
+msgstr "Créer"
 
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Créer un nouveau libraire"
 
 msgid "Create a new special page"
-msgstr ""
+msgstr "Créer une nouvelle page"
 
 msgid "Create a new user"
-msgstr ""
+msgstr "Créer un nouvel utilisateur"
 
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Créer un nouvel alias de sujet"
 
 msgid "Create an author alias"
-msgstr ""
+msgstr "Créer un alias d'auteur"
 
 msgid ""
 "Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr ""
+msgstr "Créer un dépôt vide. On se réfère ici à son URL comme <user_repo_url>."
 
 msgid "Create new site"
-msgstr ""
+msgstr "Créer un nouveau site"
 
 msgid "Create user and mail password"
-msgstr ""
+msgstr "Créer un utilisateur et envoyer le mot de passe par mail"
 
 msgid "Created"
-msgstr ""
+msgstr "Créé"
 
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 msgid "Created new text"
-msgstr ""
+msgstr "Nouveau texte créé"
 
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Date de publication originale"
 
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Textes différés/supprimés"
 
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
-msgstr ""
+msgstr "Supprimer le dépôt distant %1"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"Supprimer une version est sans risque si un texte a été publié. Sinon en le "
+"supprimant vous perdrez les pages non publiées."
 
 msgid "Description item"
-msgstr ""
+msgstr "Article de description"
 
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
 msgstr ""
+"Les listes de description utilisent un double deux-points pour séparer le "
+"terme et la description."
 
 msgid "Desired URI"
-msgstr ""
+msgstr "URI désiré"
 
 msgid "Destination"
-msgstr ""
+msgstr "Destination"
 
 msgid "Differences"
-msgstr ""
+msgstr "Différences"
 
 msgid ""
 "Directory with templates. Do not set it unless you know what you are doing"
 msgstr ""
+"Répertoire avec modèles. Ne le réglez pas si vous ne savez pas ce que vous "
+"faites"
 
 msgid "Display url as"
-msgstr ""
+msgstr "Afficher l'url comme"
 
 msgid "Displaying"
-msgstr ""
+msgstr "Affichant"
 
 msgid "Division factor"
-msgstr ""
+msgstr "Facteur de division"
 
 msgid "Do not enforce commit message"
-msgstr ""
+msgstr "Ne pas appliquer le message de validation"
 
 msgid "Done"
-msgstr ""
+msgstr "Fait"
 
 msgid "Double bars"
-msgstr ""
+msgstr "Double barre"
 
 msgid "Downloads"
-msgstr ""
+msgstr "Téléchargements"
 
 msgid "EPUB"
-msgstr ""
+msgstr "EPUB"
 
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "EPUB (pour appareils mobiles)"
 
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #. (esite.id)
 msgid "Edit site %1"
-msgstr ""
+msgstr "Modifier site %1"
 
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Modifier configuration de site"
 
 msgid "Edit this text"
-msgstr ""
+msgstr "Modifier ce texte"
 
 #. (user.username)
 msgid "Edit user %1"
-msgstr ""
+msgstr "Modifier utilisateur %1"
 
 msgid "Editing"
-msgstr ""
+msgstr "Modifications en cours"
 
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 msgid "Email sent!"
-msgstr ""
+msgstr "Email envoyé!"
 
 msgid "Email updated"
-msgstr ""
+msgstr "Email mis à jour"
 
 msgid "Emails do not match"
-msgstr ""
+msgstr "Emails ne correspondent pas"
 
 msgid "Erase this revision"
-msgstr ""
+msgstr "Effacer cette version"
 
 msgid "Error converting the upload file. Is it an HTML file?"
 msgstr ""
+"Erreur en convertissant le fichier de téléchargement. Est-ce un fichier HTML?"
 
 msgid "Error sending mail!"
-msgstr ""
+msgstr "Erreur en envoyant l'email!"
 
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "Erreur en convertissant l'HTML. Désolé."
 
 msgid "Errors"
-msgstr ""
+msgstr "Erreurs"
 
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
 msgstr ""
+"Chaque section générera une diapositive. Vous devez faire du sectionnement "
+"propre pour que ça fonctionne."
 
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"Exactement comme 2up, mais les feuilles sont destinées à être coupées "
+"horizontalement d'abord puis empilées les unes sur les autres. Ainsi vous "
+"pouvez imprimer, par exemple, des livrets A6 avec des feuilles A4."
 
 msgid "Example"
-msgstr ""
+msgstr "Exemple"
 
 msgid "Existing redirections"
-msgstr ""
+msgstr "Redirections existantes"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
-msgstr ""
+msgstr "Échec à l'ajout du dépôt distant %1"
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
-msgstr ""
+msgstr "Échec à l'ajout du dépôt distant %1"
 
 msgid "File uploaded!"
-msgstr ""
+msgstr "Fichier téléchargé!"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
+"Combler avec des pages blanches avant la dernière page si la griffe n'est "
+"pas pleine."
 
 msgid "Filters"
-msgstr ""
+msgstr "Flitres"
 
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "Premier Auteur et Second Auteur"
 
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "Premier Auteur, Second Auteur"
 
 msgid "First slide"
-msgstr ""
+msgstr "Première diapositive"
 
 msgid "Fix typography (smart quotes)"
-msgstr ""
+msgstr "Corriger la typographie (guillemets)"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
 msgstr ""
+"Corrigé 16 griffes de page sur 2 feuilles, avec pliage individuel double."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "Corrigé 16 griffes de page sur 2 feuilles, avec pliage triple."
 
 msgid "Fixed category list"
-msgstr ""
+msgstr "Corrigé la liste de catégories"
 
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
+"Corrigé les griffes de 8 pages, destinées à être coupées horizontalement, "
+"pliage individuel, reliure double."
 
 msgid "Font preview"
-msgstr ""
+msgstr "Aperçu de police"
 
 msgid "Font size"
-msgstr ""
+msgstr "Taille de police"
 
 msgid "Footnotes"
-msgstr ""
+msgstr "Notes de bas de page"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
 "in the body (%4), ignoring changes"
 msgstr ""
+"Discordance des notes de bas de page: trouvé %1 notes de bas de page (%2) et "
+"trouvé %3 références de note de bas de page dans le corps de texte (%4), "
+"modifications ignorées"
 
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "Pour les textes d'internet utiliser"
 
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
+"Pour les textes sans table des matières, commencer le texte sur la toute "
+"première page"
 
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
 msgstr ""
+"Pour les redirections de sujets et d'auteurs, vous pouvez les créer ici"
 
 msgid "Force a line break."
-msgstr ""
+msgstr "Forcer un saut de ligne."
 
 msgid "Force publishing"
-msgstr ""
+msgstr "Forcer la publication"
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr ""
+msgstr "Format: aaaa-mm-jj hh:mm, par exemple"
 
 msgid "Formats"
-msgstr ""
+msgstr "Formats"
 
 msgid "Full list of texts"
 msgstr "Liste de tous les textes"
 
 msgid "Full text search"
-msgstr ""
+msgstr "Recherche dans tout le texte"
 
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Générique (rentre dans formats A4 et Lettre)"
 
 msgid "Git console"
-msgstr ""
+msgstr "Console Git"
 
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "Git n'est pas activé sur ce site"
 
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
+"HTML à ajouter à chaque page spéciale, inséré tel quel, vous avez des "
+"chances de tout mettre en pagaille, donc soyez vigilants"
 
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "Importateur HTML/Word"
 
 msgid "Half Letter paper"
-msgstr ""
+msgstr "Papier Demi-Lettre"
 
 msgid "Heading"
-msgstr ""
+msgstr "Titre"
 
 msgid "Headings"
-msgstr ""
+msgstr "Titres"
 
 msgid "Height:"
-msgstr ""
+msgstr "Hauteur:"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
+"Ici vous pouvez trouver une aperçu des thèmes Beamer et des thèmes couleur"
 
 msgid "Hide options"
-msgstr ""
+msgstr "Cacher les options"
 
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Un facteur de division plus élevé crée des marges plus étroites"
 
 msgid "How to choose a password"
-msgstr ""
+msgstr "Comment choisir un mot de passe"
 
 msgid "How to work with a remote repo"
-msgstr ""
+msgstr "Comment travailler avec un dépôt distant"
 
 msgid "I am human"
-msgstr ""
+msgstr "Je suis humain·e"
 
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "Je veux un PDF imposé (prêt pour impression)"
 
 msgid "Id"
-msgstr ""
+msgstr "ID"
 
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
@@ -629,10 +684,11 @@ msgstr ""
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
-msgstr ""
+msgstr "Si non définit %1 sera cherché dans le répertoire d'applications."
 
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
 msgstr ""
+"Si le commetteur a fourni un email, c'est répertorié dans le champ CC du mail"
 
 msgid ""
 "If this line\n"
@@ -642,81 +698,98 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"Si cette ligne est présente, réglez la date de publication (sur ce site) à "
+"la date. La date peut aussi être dans le futur, déférant la publication. Si "
+"cette ligne n'est pas présente, la date de publication sera le temps de "
+"publication, entraînant un saut sur le RSS et des pages spéciales à chaque "
+"modification."
 
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"Si cette ligne est présente et la raison est définie, le texte sera stocké "
+"dans l'archive, mais ne sera pas publié."
 
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "Si vous avez demandé l'imposition, choisissez un schéma d'imposition"
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
+"Si vous avez un fichier en .doc ou .odt, vous pouvez aisément le convertir "
+"en l'enregistrant comme HTML."
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"Le téléchargement d'images peut être fait à l'étape suivante, à laquelle "
+"vous pourrez également passer en revue et générer un aperçu du "
+"téléchargement."
 
 msgid "Image url"
-msgstr ""
+msgstr "Url de l'image"
 
 msgid "Images not used in the text are stored, but will be ignored."
 msgstr ""
+"Les images non utilisées dans le texte sont stockées, mais seront ignorées."
 
 msgid "Images:"
-msgstr ""
+msgstr "Images:"
 
 msgid "Imposition schemas"
-msgstr ""
+msgstr "Schémas d'imposition"
 
 msgid "In both case you will get a reverse indentation."
-msgstr ""
+msgstr "Dans les deux cas vous recevrez une indentation en sens inverse"
 
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
 msgstr ""
+"Dans le texte, un nombre entre crochets est interprété comme référence de "
+"note de bas de page, si une telle note existe."
 
 msgid "Inline elements"
-msgstr ""
+msgstr "Éléments inline"
 
 msgid "Internal list of translations"
-msgstr ""
+msgstr "Liste interne de traductions"
 
 msgid "Invalid email"
-msgstr ""
+msgstr "Email invalide"
 
 msgid "Invalid name"
-msgstr ""
+msgstr "Nom invalide"
 
 msgid "Invalid username"
-msgstr ""
+msgstr "Nom d'utilisateur invalide"
 
 msgid "Italic"
-msgstr ""
+msgstr "Italique"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr ""
+"Caractères italiques, gras, police pour le texte à espacement fixe et pour "
+"le code, sauts de ligne..."
 
 msgid "Job deleted"
-msgstr ""
+msgstr "Tâche supprimée"
 
 msgid "Job not found"
-msgstr ""
+msgstr "Tâche non trouvée"
 
 msgid "Jobs"
-msgstr ""
+msgstr "Tâches"
 
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Tâches en attente avant la vôtre:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr ""
+msgstr "Tasse seulement 2 pages logiques consécutives sur une page physique."
 
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
@@ -725,195 +798,207 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Rappelez-vous que je nettoie le texte et vous le rends avec le balisage "
+"utilisé sur ce site. C'est à vous de le vérifier et de le télécharger "
+"finalement. Certains balisages rarement utilisés seront perdus en route. "
+"Veuillez vérifier l'aperçu à l'étape suivante, où vous pourrez également "
+"insérer des images."
 
 msgid "Keep in mind that some character may be missing in the required font."
 msgstr ""
+"Rappelez-vous que certains caractères pourraient manquer à la police requise."
 
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Rappelez-vous que le formatage complexe sera dépouillé. Il n'est possible "
+"d'ajouter des tables et des images qu'à l'étape suivante."
 
 msgid "Language"
-msgstr ""
+msgstr "Langage"
 
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Langage code du document (2 ou 3 lettres)."
 
 msgid "Language selection"
-msgstr "Choisissez la langue"
+msgstr "Choix de langue"
 
 msgid "Last updated"
-msgstr ""
+msgstr "Mis à jour pour la dernière fois"
 
 msgid "Latest entries"
-msgstr ""
+msgstr "Dernières entrées"
 
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "Laissez vide si vous souhaitez le publier de suite."
 
 msgid "Letter imposed PDF"
-msgstr ""
+msgstr "PDF Lettre imposée"
 
 msgid "Letter paper"
-msgstr ""
+msgstr "Papier-lettre"
 
 msgid "Link"
-msgstr ""
+msgstr "Lien"
 
 msgid "Links and images"
-msgstr ""
+msgstr "Liens et images"
 
 msgid "List of texts on hold"
-msgstr ""
+msgstr "Listes de textes en attente"
 
 msgid "Lists"
-msgstr ""
+msgstr "Listes"
 
 msgid "Locale"
-msgstr ""
+msgstr "Lieu"
 
 msgid "Log in"
-msgstr ""
+msgstr "Se connecter"
 
 msgid "Login"
-msgstr ""
+msgstr "Connexion"
 
 msgid "Logout"
-msgstr ""
+msgstr "Déconnexion"
 
 msgid "Magic answer"
-msgstr ""
+msgstr "Réponse magique"
 
 msgid "Magic question"
-msgstr ""
+msgstr "Question magique"
 
 msgid "Mail from"
-msgstr ""
+msgstr "Mail de"
 
 msgid "Main canonical hostname, without protocol"
-msgstr ""
+msgstr "Nom d'hôte principal canonique, sans protocole"
 
 msgid "Main font"
-msgstr ""
+msgstr "Police principale"
 
 msgid "Main text"
-msgstr ""
+msgstr "Texte principal"
 
 msgid "Make a link clickable"
-msgstr ""
+msgstr "Rendre un lien cliquable"
 
 msgid "Make all links active"
-msgstr ""
+msgstr "Rendre tous liens actifs"
 
 msgid "Match any of the fields above"
-msgstr ""
+msgstr "Faire correspondre avec un des champs ci-dessus"
 
 msgid "Message"
-msgstr ""
+msgstr "Message"
 
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "Titre #titre manquant"
 
 msgid "Missing alias"
-msgstr ""
+msgstr "Alias manquant"
 
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "Caractère manquant sera signalé"
 
 msgid "Missing redirection"
-msgstr ""
+msgstr "Redirection manquante"
 
 msgid "Missing username or password"
-msgstr ""
+msgstr "Nom d'utilisateur ou mot de passe manquant(s)"
 
 msgid "Mode"
-msgstr ""
+msgstr "Mode"
 
 msgid "Moderated wiki"
-msgstr ""
+msgstr "Wiki modéré"
 
 msgid "Mono font"
-msgstr ""
+msgstr "Police pour espacement fixe"
 
 msgid "More"
-msgstr ""
+msgstr "Plus"
 
 msgid "Move down"
-msgstr ""
+msgstr "Descendre"
 
 msgid "Move up"
-msgstr ""
+msgstr "Monter"
 
 msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
+msgstr "Multilingue: liste des espaces séparant les codes de langue"
 
 msgid "My description"
-msgstr ""
+msgstr "Ma description"
 
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Ne jamais générer un sommaire"
 
 msgid "New"
-msgstr ""
+msgstr "Nouveau"
 
 msgid "New revision"
-msgstr ""
+msgstr "Nouvelle version"
 
 msgid "New site id"
-msgstr ""
+msgstr "Nouvel ID de site"
 
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
 msgid "Nice title"
-msgstr ""
+msgstr "Titre sympa"
 
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 msgid "No editing yet!"
-msgstr ""
+msgstr "Pas encore de modifications!"
 
 msgid "No result found!"
-msgstr ""
+msgstr "Aucun résultat trouvé!"
 
 msgid "No revisions to show"
-msgstr ""
+msgstr "Aucune version à montrer"
 
 msgid "No text found!"
-msgstr ""
+msgstr "Aucun texte trouvé!"
 
 msgid "No text was added yet"
-msgstr ""
+msgstr "Aucun texte n'a encore été ajouté"
 
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "Rien à voir ici, pour l'instant"
 
 msgid "Notify mail: blank field will disable them"
-msgstr ""
+msgstr "Notifications par e-mail: laisser le champ vide les désactivera"
 
 msgid "Notify to"
-msgstr ""
+msgstr "Notifier"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
+"Nombre d'entrées récentes à afficher sur le flux RSS (un nombre entier)"
 
 msgid "Number of latest entries to display on the special pages (an integer)"
 msgstr ""
+"Nombre d'entrées récentes à afficher sur les pages spéciales (un nombre "
+"entier)"
 
+# ou "liste numérotée"
 msgid "Numeric List"
-msgstr ""
+msgstr "Liste numérique"
 
 msgid "Open wiki"
-msgstr ""
+msgstr "Wiki ouvert"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -922,44 +1007,53 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
+"Ou créez une nouvelle version, à vos propres risques et périls. Avoir de "
+"multiple versions concurrentes veut dire que, si quelqu'un ne s'en occupe "
+"pas, une seule sera choisie. Vous pouvez procéder, ou réessayer plus tard, "
+"ou, mieux encore, contacter les bibliothécaires avant de procéder, afin "
+"d'éviter les pertes d'efforts."
 
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "Ou se connecter, si vous avez un compte."
 
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "Ou fournir un fichier HTML à télécharger."
 
 msgid "Or wrap it in"
-msgstr ""
+msgstr "Ou l'envelopper"
 
 msgid "Other languages"
-msgstr ""
+msgstr "Autres langues"
 
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 msgid "PDF logo"
-msgstr ""
+msgstr "Logo PDF"
 
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "Les PDFs ne peuvent pas être utilisés dans le corps de texte."
 
 #. ("#ATTACH")
 #. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
+"Les PDFs non répertoriés dans la directive %1 seront stockés mais ignorés."
 
 msgid "Page not found!"
-msgstr ""
+msgstr "Page non trouvée!"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Page à laquelle commencer un chapitre"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Les pages ne sont pas ordonnées. La première feuille contient les pages 1 et "
+"2, la deuxième les pages 3 et 4, et ainsi de suite, côte à côte. Le tout "
+"n'est pas sensé être plié."
 
 msgid ""
 "Pages are reordered, in one or more groups\n"
@@ -970,83 +1064,96 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Les pages sont réorganisées, en un ou plusieurs groupes (griffes), puis "
+"pliées en deux. Si vous avez plus de signatures, vous devrez les relier "
+"comme un livre. Avec cette option, vous souhaiterez peut-être décider la "
+"taille des signatures. Elle peut être fixe (4,8,16, etc.), ou le livre "
+"entier en une seule signature, ou une taille optimisée pour réduire le "
+"nombre de pages blanches."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
+"Épaisseur du papier (0.10 devrait convenir à du papier standard 80g/m2)"
 
 msgid "Paragraphs"
-msgstr ""
+msgstr "Paragraphes"
 
 msgid "Part"
-msgstr ""
+msgstr "Partie"
 
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "Partie, uniquement pour des livres plus conséquents"
 
 msgid "Partial selection"
-msgstr ""
+msgstr "Sélection partielle"
 
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 msgid "Password too short"
-msgstr ""
+msgstr "Mot de passe trop court"
 
 msgid "Password updated"
-msgstr ""
+msgstr "Mot de passe mis à jour"
 
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "Mot de passe, minimum 8 caractères."
 
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Les mots de passe ne correspondent pas"
 
 msgid "Payload"
-msgstr ""
+msgstr "Charge"
 
 msgid "Pending revisions"
-msgstr ""
+msgstr "Versions en attente"
 
 msgid "Picture"
-msgstr ""
+msgstr "Image"
 
 msgid "Plain PDF"
-msgstr ""
+msgstr "PDF brut"
 
 msgid "Please choose the Beamer color theme"
-msgstr ""
+msgstr "Veuillez choisir le thème de couleurs Beamer"
 
 msgid "Please choose the Beamer theme"
-msgstr ""
+msgstr "Veuillez choisir le thème Beamer"
 
 msgid "Please choose the font size"
-msgstr ""
+msgstr "Veuillez choisir la taille de la police"
 
 msgid "Please choose the main font"
-msgstr ""
+msgstr "Veuillez choisir la police principale"
 
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "Veuillez choisir la police des caractères à espacement fixe"
 
 msgid "Please choose the sans font"
 msgstr ""
+"Veuillez choisir la police des caractères sans empattements (sans serif)"
 
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Veuillez décrire brièvement ce que vous avez fait"
 
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "Veillez à ne pas utiliser un mot de passe important ou précieux."
 
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
 msgstr ""
+"Veuillez ne pas utiliser les niveaux de titre élevés (partie ou chapitre) "
+"pour de courts articles à sections."
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Veuillez fournir un nom d'utilisateur. Ce ne doit *pas* être une adresse "
+"email. Juste un nom de fantaisie, pour que l'on puisse savoir que de "
+"différents téléchargements proviennent de la même personne."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1054,6 +1161,9 @@ msgid ""
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"Veuillez garder en tête que les filtres sont spécifiques à la langue et "
+"pourraient ne pas être disponibles pour la langue du texte. Si non "
+"disponibles, ils laisseront le texte tel quel."
 
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
@@ -1062,9 +1172,15 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"Veuillez garder en tête que si vous voyez apparaître l'action \"Forcer la "
+"publication\", cela signifie que la version a été remplacée par une "
+"nouvelle, donc en publiant celle-ci, vous annuleriez une précédente. Essayez "
+"d'éviter cela, à moins que vous sachiez ce que vous faites."
 
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
+"Veuillez laisser un email si vous souhaitez être contacté·e à propos de "
+"cette modification"
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1072,118 +1188,136 @@ msgid ""
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
 msgstr ""
+"Veuillez remarquer que les options de correction bilatérale et de correction "
+"de reliure suivent cette logique: si vous avez un format imposé, elles sont "
+"ignorées pour le PDF autonome mais appliquées pour les PDFs imposés. Si vous "
+"n'avez que le PDF autonome, elles lui sont appliquées."
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
+"Veuillez remarquer que les balises d'enveloppement doivent être placées "
+"seules, sur une ligne à part."
 
 msgid ""
 "Please note that you have to upload them first and\n"
 "          use the name the form provides. Images are always renamed by\n"
 "          us."
 msgstr ""
+"Veuillez remarquer que vous devez les télécharger d'abord et utiliser le nom "
+"que le formulaire fournit. Les images sont toujours renommées."
 
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"Veuillez remarquer que vous souhaitez peut-être coller depuis un document "
+"Word/OpenOffice/LibreOffice/HTML en utilisant le bouton \"coller depuis word"
+"\". Ceci est sensé préserver la mise en forme."
 
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Veuillez prouvez que vous êtes bien un·e humain·e"
 
 msgid "Please reload your page"
-msgstr ""
+msgstr "Veuillez recharger votre page"
 
 msgid "Please select"
-msgstr ""
+msgstr "Veuillez sélectionner"
 
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Veuillez choisir les polices désirées"
 
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Veuillez choisir la taille de griffe:"
 
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
 msgstr ""
+"Veuillez choisir la taille de chaque page en comptant les traits de coupe, "
+"avant l'imposition"
 
 msgid "Please setup the Beamer layout"
-msgstr ""
+msgstr "Veuillez configurer la mise en page Beamer"
 
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Poésie, bibliographies, pièces de théâtre, blocs de code"
 
 msgid "Pointing to"
-msgstr ""
+msgstr "Se référant à"
 
 msgid ""
 "Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"Les préfixes pour listes numérotées peuvent être  “1.”, “a.”, “A.”,“i.”, "
+"“I.”, selon le type de liste dont vous avez besoin."
 
 msgid "Prepare this text for the archiving"
-msgstr ""
+msgstr "Préparer ce texte pour l'archivage"
 
 msgid "Preview"
-msgstr ""
+msgstr "Aperçu"
 
 msgid "Previous"
-msgstr ""
+msgstr "Précédent"
 
 msgid "Priority"
-msgstr ""
+msgstr "Priorité"
 
 msgid "Private"
-msgstr ""
+msgstr "Privé"
 
 msgid "Produce slides."
-msgstr ""
+msgstr "Produire des diapositives."
 
 msgid "Produced"
-msgstr ""
+msgstr "Produit"
 
 msgid "Publication date"
-msgstr ""
+msgstr "Date de publication"
 
 msgid "Publication date on this site."
-msgstr ""
+msgstr "Date de publication sur ce site."
 
 msgid "Publish"
-msgstr ""
+msgstr "Publier"
 
 msgid "Published in *A nice book*, published by My House, 2014"
-msgstr ""
+msgstr "Publié dans *Un livre sympa*, publié par Ma Maison d'Édition, 2014"
 
 msgid "Purge"
-msgstr ""
+msgstr "Purger"
 
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Entrez ici les informations supplémentaires (titre original, "
+"traduc·teurs·trices, crédits, etc). Les notes de bas de page vont dans le "
+"corps de texte."
 
 msgid "Quarter Letter paper"
-msgstr ""
+msgstr "Papier Quart-de-Lettre"
 
 msgid "Query was"
-msgstr ""
+msgstr "La requête était"
 
 msgid "Queue"
-msgstr ""
+msgstr "File d'attente"
 
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Quota dépassé, trop de pages"
 
 msgid "Quotes"
-msgstr ""
+msgstr "Citations"
 
 msgid "RSS feed"
-msgstr ""
+msgstr "Flux RSS"
 
 msgid "Random"
-msgstr ""
+msgstr "Aléatoire"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1195,279 +1329,295 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"Réarranger les notes de bas de page, en corrigeant la numérotation, "
+"considérant seulement l'ordre dans lequel ils ont été insérés. Veuillez ne "
+"pas cocher si vous ne savez pas ce que cela veut dire. Cette option pourrait "
+"s'avérer destructrice, veuillez donc utiliser avec prudence et vérifier les "
+"résultats. Si vous rencontrez des problèmes, veuillez commettre le résultat "
+"en les signalant dans le message. Cette procédure se veut sûre et ignorera "
+"les modifications si des notes de bas de page sont manquantes ou en trop."
 
 msgid "Reason"
-msgstr ""
+msgstr "Motif"
 
 msgid "Recheck"
-msgstr ""
+msgstr "Re-vérifier"
 
 msgid "Redirections"
-msgstr ""
+msgstr "Redirections"
 
 msgid "Related projects"
-msgstr ""
+msgstr "Projets apparentés"
 
 #. ("$name $url")
 msgid "Remote repository %1 added"
-msgstr ""
+msgstr "Dépôt distant %1 ajouté"
 
 #. ($name)
 msgid "Remote repository %1 removed"
-msgstr ""
+msgstr "Dépôt distant %1 retiré"
 
 msgid "Remotes"
-msgstr ""
+msgstr "Dépôts distants"
 
 msgid "Remove"
-msgstr ""
+msgstr "Retirer"
 
 msgid "Remove cover image"
-msgstr ""
+msgstr "Enlever l'image de couverture"
 
 msgid "Repeat email"
-msgstr ""
+msgstr "Répéter l'email"
 
 msgid "Repeat password"
-msgstr ""
+msgstr "Répéter le mot de passe"
 
 msgid "Repository"
-msgstr ""
+msgstr "Dépôt"
 
 msgid "Reset all"
-msgstr ""
+msgstr "Tout réinitialiser"
 
 msgid "Results"
-msgstr ""
+msgstr "Résultats"
 
 msgid "Results found"
-msgstr ""
+msgstr "Résultats trouvés"
 
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "Consultés le DATE de URL"
 
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "Consultés le 8 Mars 2012 de"
 
 msgid "Revision"
-msgstr ""
+msgstr "Version"
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "La version pour %1 a été supprimée"
 
 msgid "Roles"
-msgstr ""
+msgstr "Rôles"
 
 msgid "Running headings"
-msgstr ""
+msgstr "En-têtes de pages"
 
 msgid "SSL CA certificate path (Apache)"
-msgstr ""
+msgstr "Chemin de certificat SSL CA (Apache)"
 
 msgid "SSL certificate path (Apache)"
-msgstr ""
+msgstr "Chemin de certificat SSL"
 
 msgid "SSL chained certificate path (Nginx)"
-msgstr ""
+msgstr "Chemin de chaîne de certificats SSL (Nginx)"
 
 msgid "SSL configuration"
-msgstr ""
+msgstr "Configuration SSL"
 
 msgid "SSL key path"
-msgstr ""
+msgstr "Chemin de clé SSL"
 
 msgid "Sans font"
-msgstr ""
+msgstr "Police sans empattements (sans serif)"
 
 msgid "Search"
 msgstr "Recherche"
 
 msgid "Section"
-msgstr ""
+msgstr "Section"
 
 msgid "See here for more details."
-msgstr ""
+msgstr "Voir ici pour plus de détails."
 
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Voir ici pour la documentation complète."
 
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Voir le manuel complet pour plus de détails (en anglais)"
 
 msgid "Select"
-msgstr ""
+msgstr "Sélectionner"
 
 msgid "Select all"
-msgstr ""
+msgstr "Tout sélectionner"
 
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "Sélectionner les parties individuelles pour le générateur de livres"
 
 msgid "Separate body fields"
-msgstr ""
+msgstr "Séparer les champs de corps de texte"
 
 msgid "Separate footer fields"
-msgstr ""
+msgstr "Séparer les champs de pied de page"
 
 msgid "Separate header fields"
-msgstr ""
+msgstr "Séparer les champs de titre"
 
 msgid "Set a date in the future if you want it deferred."
-msgstr ""
+msgstr "Définir une date future si vous souhaitez le différer."
 
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Afficher les différences dans un autre onglet"
 
 msgid "Show options"
-msgstr ""
+msgstr "Afficher les options"
 
 msgid "Single bars"
-msgstr ""
+msgstr "Barres simples"
 
 msgid "Site already exists"
-msgstr ""
+msgstr "Le site existe déjà"
 
 msgid "Site group"
-msgstr ""
+msgstr "Groupe du site"
 
 msgid "Site id"
-msgstr ""
+msgstr "ID du site"
 
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "Email du site (Du champ)"
 
 msgid "Site mode"
-msgstr ""
+msgstr "Mode du site"
 
 msgid "Site name"
-msgstr ""
+msgstr "Nom du site"
 
 msgid "Site slogan"
-msgstr ""
+msgstr "Slogan du site"
 
 msgid "Sites"
-msgstr ""
+msgstr "Sites"
 
 msgid "Slides"
-msgstr ""
+msgstr "Diapositives"
 
 msgid "Slides (PDF)"
-msgstr ""
+msgstr "Diapositives (PDF)"
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
+"Pour que nous puissions nous assurer de ne pas envoyer des mots de passes à "
+"n'importe qui"
 
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Certains champs sont vides, tous sont requis"
 
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Certains champs sont trop longs"
 
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Certaines version en cours on été trouvées"
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "Désolé, trop de tâches déjà en attente, veuillez réessayer plus tard!"
 
 msgid "Source"
-msgstr ""
+msgstr "Source"
 
 msgid "Source files"
-msgstr ""
+msgstr "Fichiers source"
 
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Fichiers source avec pièces jointes"
 
 msgid "Source, notes..."
-msgstr ""
+msgstr "Source, notes..."
 
 msgid "Sources"
-msgstr ""
+msgstr "Sources"
 
 msgid "Special blocks"
-msgstr ""
+msgstr "Blocs spéciaux"
 
 msgid "Special pages"
-msgstr ""
+msgstr "Pages spéciales"
 
 msgid "Stale editing"
-msgstr ""
+msgstr "Modification périmée"
 
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "HTML autonome (imprimable)"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Page statique sans javascript"
 
 msgid "Status"
-msgstr ""
+msgstr "Statut"
 
 msgid "Subsection"
-msgstr ""
+msgstr "Sous-section"
 
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "Sous-sous-section ou élément de description"
 
 msgid "Subtitle"
-msgstr ""
+msgstr "Sous-titre"
 
+# (EN) such *a* header ?
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
+"Un tel titre publiera le texte et mettra en place une redirection, qui sera "
+"répertoriée ici"
 
 msgid "Such an uri already exists"
-msgstr ""
+msgstr "Un tel URI existe déjà"
 
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "Un tel utilisateur existe déjà!"
 
 msgid "Such username already exists"
-msgstr ""
+msgstr "Un tel nom d'utilisateur existe déjà!"
 
 msgid "Summary"
-msgstr ""
+msgstr "Résumé"
 
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "Directive prise en charge dans le titre"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "Sommaire"
 
 msgid "Tables"
-msgstr ""
+msgstr "Tableaux"
 
 msgid "Task"
-msgstr ""
+msgstr "Tâche"
 
 msgid "TeX"
-msgstr ""
+msgstr "TeX"
 
 msgid "Term"
-msgstr ""
+msgstr "Terme"
 
 msgid "Text body, before any section"
-msgstr ""
+msgstr "Corps de texte, avant toute section"
 
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Texte formaté avec balisage"
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
+"Les redirections de texte sont définies dans texte lui-même, en utilisant le "
+"titre DELETED avec cette syntaxe"
 
 msgid "Texts"
-msgstr ""
+msgstr "Textes"
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
 msgstr ""
+"Les sélections Beamer sont seulement applicables si vous activez la sortie "
+"de diapositives."
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -1475,281 +1625,325 @@ msgid ""
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
 msgstr ""
+"La valeur de logo PDF peut soit être un chemin absolu, soit juste un nom de "
+"fichier si vous choisissez de l'installer dans l'arborescence TeXlive. Vous "
+"pouvez ce faire grâce aux commandes suivantes. La dernière vérifie si le "
+"fichier peut être trouvé."
 
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "The fichier téléchargé n'est pas un fichier HTML!"
 
 msgid "The following values are used to generate the webserver configuration."
 msgstr ""
+"Les valeurs suivantes sont utilisées pour générer la configuration du "
+"serveur web."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
 msgstr ""
+"La génération de configuration du serveur web redirigera toutes les requêtes "
+"HTTP en HTTPS"
 
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "Le logo contient le nom de site"
 
 msgid "The optional subtitle"
-msgstr ""
+msgstr "Le sous-titre optionnel"
 
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "Le mot de passe sera envoyé à cette adresse email"
 
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "La version a les messages suivants"
 
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "La structure de texte est affichée ci-dessous"
 
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "Le texte a été ajouté au générateur de livres"
 
+# (EN) strip the article, if any ____???
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr ""
+"Le titre du document, à des fins de tri. Utile si vous vous souhaitez "
+"dépouiller l'article. Un texte intitulé \"Un titre sympa\" pourrait avoir ce "
+"champ défini comme \"Titre Sympa\", et serait donc répertorié sous N au lieu "
+"de A."
 
 msgid "The title of the document. The only mandatory directive."
-msgstr ""
+msgstr "Le titre du document. La seule directive obligatoire."
 
+# (EN) the same *as* your level of access ?
 msgid "The user will have the same your level of access"
-msgstr ""
+msgstr "L'utilisateur aura le même niveau d'accès que vous"
 
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
 msgstr ""
+"Le serveur web doit être reconfiguré. Veuillez exécuter les commandes "
+"suivantes dans une interface système racine:"
 
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Le livre entier en une seule griffe"
 
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "Puis aller chercher les mises à jour depuis cette page."
 
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "Il manque l'ID unique de ces textes."
 
 msgid "They have the same syntax (images are actually links)"
-msgstr ""
+msgstr "Ils ont la même syntaxe (les images sont en fait des liens)"
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
 msgstr ""
+"Il doit s'agir de chemins relatifs à la racine de la configuration du "
+"serveur web, ou de chemins absolus (recommandé)."
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
+"Cette directive nécessite une liste de noms de fichiers séparés avec des "
+"espaces."
 
 msgid "This field is required"
-msgstr ""
+msgstr "Ce champ est requis"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"Ceci est un éditeur de texte WYSIWYG. Si vous préférez utiliser l'éditeur à "
+"syntaxe wiki, laissez le texte tel quel, remplissez les champs requis ci-"
+"dessus et faites l'édition à l'étape suivante."
 
 msgid "This is the caption"
-msgstr ""
+msgstr "Ceci est la légende"
 
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Cette version est déjà publiée, modifications ignorées"
 
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Cette version est en cours d'édition active"
 
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "Cette version est en cours d'édition active par vous-même"
 
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Cette version est en cours d'édition par quelqu'un d'autre!"
 
 msgid "This section will not produce a slide"
-msgstr ""
+msgstr "Cette section ne produira pas de diapositive"
 
 msgid "This text does not exist"
-msgstr ""
+msgstr "Ce texte n'existe pas"
 
 msgid "This text is new"
-msgstr ""
+msgstr "Ce texte est nouveau"
 
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Ce texte n'est pas encore publié"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Ce texte sera différé à %1"
 
 msgid "Time is optional."
-msgstr ""
+msgstr "L'heure est optionelle."
 
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 msgid "Title for sorting"
-msgstr ""
+msgstr "Titre de tri"
 
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Tritre, auteur, date..."
 
 msgid "Titles"
-msgstr ""
+msgstr "Titres"
 
 #. (c.uri_for_action("/publish/pending"))
 #. (c.uri_for_action('/publish/pending')
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "Pour appliquer les modifications, vous pouvez visiter %1"
 
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
+"Pour afficher les PDFs, définissez ou ajoutez la chaîne de caractères "
+"suivante au titre:"
 
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
+"Pour préserver les espacements et sauts de lignes, encadrez les paragraphes "
+"avec"
 
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "Pour formater rapidement les bibliographies, encadrez-les dans"
 
 msgid "To quickly format plays, use"
-msgstr ""
+msgstr "Pour formater rapidement les pièces de théâtre, utilisez"
 
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "Pour reprendre l'édition vous pouvez visiter l'URL suivant"
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
+"Pour voir les modifications apportées, vous pouvez visiter l'URL suivant"
 
 msgid "Topic"
-msgstr ""
+msgstr "Sujet"
 
 msgid "Topics"
 msgstr "Sujets"
 
 msgid "Total pages"
-msgstr ""
+msgstr "Nombre total de pages"
 
 msgid "Triple bars"
-msgstr ""
+msgstr "Barres triples"
 
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Essayez un texte au hasard si vous n'êtes pas sûr·e"
 
+# Mise en page recto-verso ?
 msgid "Two side layout"
-msgstr ""
+msgstr "Mise en page sur deux faces"
 
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgid ""
 "URL of the new remote repository\n"
 "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
 "        supported."
 msgstr ""
+"URL du nouveau dépôt distant HTTP, HTTPS, GIT, ou local (juste le chemin "
+"local). SSH n'est pas pris en charge."
 
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
 msgstr ""
+"Supprimer inconditionnellement tous les espaces insécables invisibles du "
+"texte"
 
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "ID unique pour le texte"
 
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Textes non publiés"
 
 #. ($mime)
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Type de fichier %1 non pris en charge"
 
 msgid "Update"
-msgstr ""
+msgstr "Mettre à jour"
 
 msgid "Update account info"
-msgstr ""
+msgstr "Mettre à jour les informations de compte"
 
 msgid "Update category description"
-msgstr ""
+msgstr "Mettre à jour la description de catégorie"
 
+# WARNING:
+# download (n.) = téléchargement
+# upload (n.) = téléchargement
+# to download (v.) = télécharger
+# to upload (v.) = télécharger
 msgid "Upload"
-msgstr ""
+msgstr "Télécharger"
 
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 msgid "Use JS syntax highlight for code blocks"
-msgstr ""
+msgstr "Utiliser la coloration syntaxique JS pour les blocs de code"
 
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
+msgstr "Utiliser LuaLaTeX au lieu de XeLaTeX (plus lent)"
 
 msgid "Use SSL for authenticated users"
-msgstr ""
+msgstr "Utiliser SSL pour les utilisateurs authentifiés"
 
 msgid "Use it in the body as"
-msgstr ""
+msgstr "Utiliser dans le corps de texte comme"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
-msgstr ""
+msgstr "Utiliser des griffes optimisées avec %1 pages chacune"
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
 msgstr ""
+"Utile pour les notes de bas de page ou dans les titres du document, où vous "
+"ne pouvez pas insérer une ligne vide pour marquer un nouveau paragraphe."
 
 #. ($user->username)
 msgid "User %1 created!"
-msgstr ""
+msgstr "Utilisateur %1 créé!"
 
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr ""
+msgstr "Utilisateur %1 supprimé!"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr ""
+msgstr "Utilisateur %1 mis à jour!"
 
 msgid "User created"
-msgstr ""
+msgstr "Utilisateur créé"
 
 msgid "Username"
-msgstr ""
+msgstr "Nom d'utilisateur"
 
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
+"Nom d'utilisateur, caractères alphanumériques seulement, pas de caractères "
+"spéciaux ni majuscules"
 
 msgid "Users"
-msgstr ""
+msgstr "Utilisateurs"
 
 msgid "Verbatim block"
-msgstr ""
+msgstr "Bloc verbatim"
 
 msgid "View history"
-msgstr ""
+msgstr "Voir l'historique"
 
 msgid "Virtual hosts"
-msgstr ""
+msgstr "Hôtes virtuels"
 
 msgid "Virtual hosts, one per line"
-msgstr ""
+msgstr "Hôtes virtuels, un par ligne"
 
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "D'où provient ce texte?"
 
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
+"Largeur de l'image de couverture en pourcentage de la largeur du bloc de "
+"texte"
 
 msgid "Width:"
-msgstr ""
+msgstr "Largeur:"
 
 msgid ""
 "With complex structures, e.g., a chapter with\n"
@@ -1757,287 +1951,317 @@ msgid ""
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"Avec des structures complexes, par exemple un chapitre avec sous-sections, "
+"seulement sélectionner le chapitre risque de seulement sélectionner le titre "
+"de chapitre, donc vous devriez probablement sélectionner le chapitre et "
+"toutes ses sous-sections."
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"Avec le générateur de livres vous pouvez change la mise en page (police, "
+"dimensions, papier, marges) du texte dans la bibliothèque. Vous pouvez "
+"également fusionner des textes afin de créer votre livret. Essayez-le!"
 
 msgid "Workflow"
-msgstr ""
+msgstr "Flux de travaux"
 
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Réponse incorrecte!"
 
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Nom d'utilisateur ou mot de passe incorrect"
 
 msgid "XeLaTeX source"
-msgstr ""
+msgstr "Source XeLaTeX"
 
 msgid "Year"
-msgstr ""
+msgstr "Année"
 
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 msgid "You already proved you are human"
-msgstr ""
+msgstr "Vous avez déjà prouvez que vous étiez un·e humain·e"
 
 msgid "You are already logged in"
-msgstr ""
+msgstr "Vous êtes déjà connecté·e"
 
 msgid ""
 "You are building a collection. Please provide a title and, optionally, any "
 "other information needed for the front cover (author, subtitle, date) and "
 "the back cover (source and notes)."
 msgstr ""
+"Vous générez une collection. Veuillez fournir un titre et, facultativement, "
+"toute autre information requise pour la première de couverture (auteur, sous-"
+"titre, date) et la quatrième de couverture (source et notes)."
 
 msgid "You are logged in now!"
-msgstr ""
+msgstr "Vous êtes maintenant connecté·e!"
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Vous pouvez ajouter des textes au générateur de livres en cliquant sur "
+"l'icône \"plus\" près des téléchargements de chaque texte. Vous pouvez "
+"ajouter et retirer des textes plus tard."
 
 #. (c.uri_for_action("/user/create"))
 #. (c.uri_for_action('/user/create')
 msgid "You can create a peer at %1"
-msgstr ""
+msgstr "Vous pouvez créer un pair à %1"
 
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Vous pouvez ce faire en répondant à une question simple."
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
+"Vous ne pouvez pas créer de nouvelle version car le texte n'a pas encore été "
+"publié"
 
 msgid "You have logged out"
-msgstr ""
+msgstr "Vous vous êtes déconnecté·e"
 
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "Vous souhaitez peut-être reprendre l'édition de l'un d'entre eux"
 
 #. (c.uri_for_action("/user/edit", [ user.id ]))
 #. (c.uri_for_action('/user/edit', [ user.id ])
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Vous devriez changer votre mot de passe immédiatement à %1"
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
 "Commit"
 msgstr ""
+"Vos modifications ont été enregistrées et peuvent être vérifiées chaque fois "
+"que vous faites Aperçu ou Commettre"
 
 msgid "Your chapter here..."
-msgstr ""
+msgstr "Votre chapitre ici..."
 
 msgid "Your file is ready"
-msgstr ""
+msgstr "Votre fichier est prêt"
 
 msgid "Your part here..."
-msgstr ""
+msgstr "Votre partie ici..."
 
 #. (password)
 msgid "Your password is %1."
-msgstr ""
+msgstr "Votre mot de passe est %1."
 
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "Votre sous-sous-section (ou en-tête de description) ici..."
 
 msgid "Your subsection here..."
-msgstr ""
+msgstr "Votre sous-section ici..."
 
 #. (site.canonical_url_secure)
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Votre utilisateur à %1 a été créé."
 
 #. (user.username)
 msgid "Your username is %1."
-msgstr ""
+msgstr "Votre nom d'utilisateur est %1."
 
 msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr ""
+msgstr "Archive ZIP avec sources, requis par le générateur de livres"
 
 msgid "about, links..."
-msgstr ""
+msgstr "présentation, liens..."
 
 msgid "affects only the frontend webserver configuration"
-msgstr ""
+msgstr "n'affecte que la configuration du serveur web frontal"
 
 msgid "any"
-msgstr ""
+msgstr "quelconque"
 
 msgid "automatically generated if not present, using author and title"
 msgstr ""
+"généré automatiquement si non présent, à partir de l'auteur et du titre"
 
 msgid "code and monospace"
-msgstr ""
+msgstr "code et caractères à espacement fixe"
 
 msgid "comma or semicolon separated list"
-msgstr ""
+msgstr "liste séparée par virgules ou deux-points"
 
 msgid "completed"
-msgstr ""
+msgstr "complété"
 
 msgid "conflict"
-msgstr ""
+msgstr "conflic"
 
 msgid "description"
-msgstr ""
+msgstr "description"
 
 msgid "displayed text"
-msgstr ""
+msgstr "texte affiché"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "modifier, commettre..."
 
 msgid "editing"
-msgstr ""
+msgstr "modification"
 
 msgid "emphasis"
-msgstr ""
+msgstr "emphase"
 
 msgid "failed"
-msgstr ""
+msgstr "échoué"
 
 msgid "for code, monospaced"
-msgstr ""
+msgstr "pour le code, l'espacement fixe"
 
 msgid "for display"
-msgstr ""
+msgstr "pour l'affichage"
 
 msgid "for poetry"
-msgstr ""
+msgstr "pour la poésie"
 
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "sectionnement générique, bon pour les articles"
 
 msgid ""
 "if by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
+"si par hasard il existe un autre texte avec le même auteur et le même titre, "
+"choisissez l'URI désiré en utilisant le champ ci-dessous en insérant auteur, "
+"titre et un chiffre, par exemple mon-auteur-mon-titre-1"
 
 msgid "if the repository is exported"
-msgstr ""
+msgstr "si le dépôt est exporté"
 
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
+"si vous souhaitez utiliser une taille personnalisée, vous devez définir et "
+"la largeur et la hauteur"
 
 msgid "left"
-msgstr ""
+msgstr "gauche"
 
 msgid "mandatory"
-msgstr ""
+msgstr "obligatoire"
 
 msgid "no font embedding"
-msgstr ""
+msgstr "pas d'incorporation des polices"
 
 msgid "numbered item"
-msgstr ""
+msgstr "élément numéroté"
 
 msgid "optional, defaults to the author directive"
-msgstr ""
+msgstr "facultatif, prend par défaut la valeur de la directive auteur"
 
 msgid "or"
-msgstr ""
+msgstr "ou"
 
 msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
 msgstr ""
+"ou, si vous avez un accès SSH à la machine (mais n'utilisez pas le même "
+"utilisateur que amusewiki, ce doit être un dépôt en lecture seule)"
 
 msgid "overstriked"
-msgstr ""
+msgstr "réécrit"
 
 msgid "pending"
-msgstr ""
+msgstr "en attente"
 
 msgid "plain PDF"
-msgstr ""
+msgstr "PDF brut"
 
 msgid "plain text source"
-msgstr ""
+msgstr "texte brut source"
 
 msgid "processing"
-msgstr ""
+msgstr "en cours de traitement"
 
 msgid "published"
-msgstr ""
+msgstr "publié"
 
 msgid "relevant"
-msgstr ""
+msgstr "pertinent"
 
 msgid "revision"
-msgstr ""
+msgstr "version"
 
 msgid "right"
-msgstr ""
+msgstr "droite"
 
 msgid "strong emphasis"
-msgstr ""
+msgstr "emphase forte"
 
 msgid "sub-sub-section"
-msgstr ""
+msgstr "sous-sous-section"
 
 msgid "subscript"
-msgstr ""
+msgstr "indice"
 
 msgid "subsection"
-msgstr ""
+msgstr "sous-section"
 
 msgid "superscript"
-msgstr ""
+msgstr "exposant"
 
 msgid "taken"
-msgstr ""
+msgstr "pris"
 
 #. (args)
 msgid "text"
-msgstr ""
+msgstr "texte"
 
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "textes par auteurs, titre, sujet..."
 
 msgid "texts sorted by author"
-msgstr "Textes par auteur"
+msgstr "textes triés par auteur"
 
 msgid "texts sorted by title"
-msgstr ""
+msgstr "textes triés par titre"
 
 msgid "texts sorted by topics"
-msgstr ""
+msgstr "textes triés par sujet"
 
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "l'auteur du texte (tel qu'il est affiché)"
 
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "ce texte sera dépublié"
 
 msgid "topic"
-msgstr ""
+msgstr "sujet"
 
 msgid "unnumbered item"
-msgstr ""
+msgstr "élément non numéroté"
 
 msgid "very strong emphasis"
-msgstr ""
+msgstr "emphase très forte"
 
 msgid "with description"
-msgstr ""
+msgstr "avec description"
 
 msgid "without description"
-msgstr ""
+msgstr "sans description"
 
 msgid ""
 "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
+"vous souhaitez peut-être retirer le premier mot du titre s'il s'agit de \"Un"
+"\", \"Le\", etc"
 
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"\"Modification périmée\" signifie qua la version a été abandonnée en cours "
+"d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaite la "
+"reprendre au moment de modifier un texte."
