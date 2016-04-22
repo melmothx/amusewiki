@@ -357,31 +357,44 @@
         </li>
         <li>
           [% loc('A line which starts with 2 or more whitespaces is a quotation.') %]
-          ([% loc('Or wrap it in') %] <code>
-	        &lt;quote&gt;&lt;/quote&gt;
-	      </code>
-          )
+          ([% loc('Or wrap it in') %] <code>&lt;quote&gt;&lt;/quote&gt;</code>)
         </li>
         <li>[% loc('A line which starts with 6 or more whitespaces is centered.') %]
-          ([% loc('Or wrap it in') %] <code>
-	        &lt;center&gt;&lt;/center&gt;
-	      </code>
-          )
+          ([% loc('Or wrap it in') %] <code>&lt;center&gt;&lt;/center&gt;</code>)
         </li>
         <li>
           [% loc('A line which starts with 20 or more whitespaces is right-aligned.') %]
-          ([% loc('Or wrap it in') %] <code>
-	        &lt;right&gt;&lt;/right&gt;
-	      </code>
-          )
+          ([% loc('Or wrap it in') %] <code>&lt;right&gt;&lt;/right&gt;</code>)
         </li>
       </ul>
       <p>
         <strong>
           [% loc('Please note that wrapping tags must be placed on a line by themselves.') %]
         </strong>
-      </p>
+        <pre>
+  [% loc('Text formatted with markup') %]
 
+[% loc('or') %]
+
+&lt;quote&gt;
+[% loc('Text formatted with markup') %]
+&lt;/quote&gt;</pre>
+        <pre>
+           [% loc('Text formatted with markup') %]
+
+[% loc('or') %]
+
+&lt;center&gt;
+[% loc('Text formatted with markup') %]
+&lt;/center&gt;</pre>
+        <pre>
+                                                     [% loc('Text formatted with markup') %]
+
+[% loc('or') %]
+
+&lt;right&gt;
+[% loc('Text formatted with markup') %]
+&lt;/right&gt;</pre>
       <h4 id="csinline">[% loc('Inline elements') %]</h4>
       <ul>
         <li>
@@ -440,25 +453,15 @@
       <h4 id="csspecial">[% loc('Special blocks') %]</h4>
       <p>
         [% loc('To preserve the whitespaces and line breakings, wrap the paragraphs with') %]
-        <code>
-          &lt;verse&gt; &lt;/verse&gt;
-        </code>
-        ([% loc('for poetry') %]) [% loc('or') %] <code>
-          &lt;example&gt;
-          &lt;/example&gt;
-        </code>
-        ([% loc('for code, monospaced') %])</p>
-      <p>
-        [% loc('To quickly format bibliographies wrap them in') %]
-        <code>
-          &lt;biblio&gt;
-          &lt;/biblio&gt;
-        </code>.
+        <code>&lt;verse&gt; &lt;/verse&gt;</code> [% loc('for poetry') %]
+        [% loc('or') %] <code>&lt;example&gt; &lt;/example&gt;</code>
+        [% loc('or') %] <code>{{{ }}}</code> [% loc('for code, monospaced') %].
       </p>
       <p>
-        [% loc('To quickly format plays, use') %] <code>
-          &lt;play&gt;
-          &lt;/play&gt;</code>.
+        [% loc('To quickly format bibliographies wrap them in') %]
+        <code>&lt;biblio&gt; &lt;/biblio&gt;</code>.
+        [% loc('To quickly format plays, use') %]
+        <code>&lt;play&gt; &lt;/play&gt;</code>.
         [% loc('In both case you will get a reverse indentation.') %]
       </p>
       <p>
@@ -466,8 +469,38 @@
           [% loc('Please note that wrapping tags must be placed on a line by themselves.') %]
         </strong>
       </p>
+        <pre>&lt;verse&gt;
+Per me si va ne la città dolente,
+per me si va ne l'etterno dolore,
+per me si va tra la perduta gente.
+&lt;/verse&gt;
 
+&lt;example&gt;
+if ($code) {
+    run()
+}
+&lt;/example&gt;
 
+{{{
+if ($code) {
+    run()
+}
+}}}
+
+&lt;biblio&gt;
+Dante Alighieri, *Inferno*, 2001
+
+Dante Alighieri, *Purgatorio*, 2001
+&lt;/biblio&gt;
+
+&lt;play&gt;
+**Pol.** Ophelia, walke you heere. Gracious so please ye
+We will bestow our selues: Reade on this booke,
+
+**King.** Oh ‘tis true:
+How smart a lash that speech doth giue my Conscience?
+&lt;/play&gt;
+</pre>
       <h4 id="cslists">[% loc('Lists') %]</h4>
       <p><strong>
         [% loc('All kind of lists start with one or more leading
