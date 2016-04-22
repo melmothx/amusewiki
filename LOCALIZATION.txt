@@ -25,7 +25,7 @@ repo/amw/site_files/locales/hr.po).
 Before version 1.8, the only way to override the translation was using
 a JSON file in the site_files/lexicon.json file.
 
-Internally, the application will se only the PO files. However,
+Internally, the application will see only the PO files. However,
 depending on your needs and preferences, you may find less complicated
 to continue to use this file instead of the po files.
 
@@ -81,4 +81,19 @@ amusewiki-upgrade-lexicon. E.g.
 
 Which will parse the lexicon.json files and dump the po files, merging
 them if already existing. No git operation is performed.
+
+** Hacking
+
+*** Adding a new language (developer-only)
+
+Go to lib/AmuseWikiFarm/I18N and run (for example to add swedish)
+
+ msginit --input=messages.pot --output=sv.po --locale=sv
+
+Add the language code and the language string to the
+AmuseWikiFarm::Schema::Result::Site::known_langs method.
+
+Add the language code to the script/upgrade_i18n script.
+
+Add the babel name to Text::Amuse::_language_mapping if missing.
 
