@@ -1,3 +1,9 @@
+amusewiki (1.801-1) unstable; urgency=medium
+
+  * New minor release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Fri, 22 Apr 2016 18:53:31 +0200
+
 amusewiki (1.800-2) unstable; urgency=medium
 
   * Fixed deps
