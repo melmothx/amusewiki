@@ -1,0 +1,87 @@
+<h2>[% loc('[_1] on mobile', site.full_name) %]</h2>
+
+<p>
+  [% loc('This site does not provide a dedicated mobile application.') %]
+</p>
+<p>
+  [% loc('However, you can browse, search, download and read the texts
+  from mobile reading applications which support the so-called OPDS
+  protocol.') %]
+</p>
+<p>
+  <strong>
+    [% loc('The OPDS address for this site is:') %]
+    <code>
+      <a href="[% c.uri_for_action('/opds/start') %]">
+        [% c.uri_for_action('/opds/start') %]
+      </a>
+    </code>
+  </strong>
+    
+</p>
+
+<p>
+  [% loc('Tested applications, in this order of preference') %]:
+  <ul>
+    <li>
+      <a href="https://fbreader.org/">
+        FBreader
+      </a>
+    </li>
+    <li>
+      <a href="http://www.aldiko.com/">
+        Aldiko
+      </a>
+    </li>
+    <li>
+      <a href="https://play.google.com/store/apps/details?id=com.flyersoft.moonreader">
+        Moon+ reader
+      </a>
+    </li>
+  </ul>
+</p>
+
+<h3>[% loc('Procedure') %]</h3>
+
+<p>
+  [% loc('In this example, we use FBreader, but the procedure is
+  pretty much the same for all applications. All you have to do is to
+  add [_1] to the network libraries.', c.uri_for_action('/opds/start')) %]
+</p>
+<div>
+  &nbsp;
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-1.png') %]" alt="FBReader-1" />
+    <p>[% loc('Find the network library menu, or equivalent.') %]</p>
+  </div>
+  <div class="col-sm-4">
+    <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-2.png') %]" alt="FBReader-2" />
+    <p>[% loc('Network library listing screen.') %]</p>
+  </div>
+  <div class="col-sm-4">
+    <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-3.png') %]" alt="FBReader-3" />
+    <p>[% loc('Find the add catalogue  menu.') %]</p>
+  </div>
+</div>
+<div><br /></div>
+<div class="row">
+  <div class="col-sm-4">
+
+    <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-4.png') %]" alt="FBReader-4" />
+    <p>[% loc('Add the OPDS URL') %]<br />
+      <code>[% c.uri_for_action('/opds/start') %]</code>
+    </p>
+  </div>
+  <div class="col-sm-4">
+
+    <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-5.png') %]" alt="FBReader-5" />
+    <p>[% loc('Confirm') %]</p>
+  </div>
+  <div class="col-sm-4">
+
+    <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-6.png') %]" alt="FBReader-6" />
+    <p>[% loc('Done') %]</p>
+  </div>
+</div>

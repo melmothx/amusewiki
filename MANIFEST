@@ -161,6 +161,7 @@ lib/AmuseWikiFarm/Controller/Custom.pm
 lib/AmuseWikiFarm/Controller/Edit.pm
 lib/AmuseWikiFarm/Controller/Feed.pm
 lib/AmuseWikiFarm/Controller/Git.pm
+lib/AmuseWikiFarm/Controller/Help.pm
 lib/AmuseWikiFarm/Controller/Latest.pm
 lib/AmuseWikiFarm/Controller/Library.pm
 lib/AmuseWikiFarm/Controller/OPDS.pm
@@ -277,6 +278,7 @@ root/src/email/commit.tt
 root/src/email/newuser.tt
 root/src/error.tt
 root/src/git/git.tt
+root/src/help/opds.tt
 root/src/include/ckeditor.tt
 root/src/include/markitup.tt
 root/src/include/pagination.tt
@@ -362,6 +364,12 @@ root/static/images/font-preview/TeX-Gyre-Schola.png
 root/static/images/font-preview/TeX-Gyre-Termes.pdf
 root/static/images/font-preview/TeX-Gyre-Termes.png
 root/static/images/muse.png
+root/static/images/opds-1.png
+root/static/images/opds-2.png
+root/static/images/opds-3.png
+root/static/images/opds-4.png
+root/static/images/opds-5.png
+root/static/images/opds-6.png
 root/static/images/pdf-a4-imposed.png
 root/static/images/pdf-gen.png
 root/static/images/pdf-letter-imposed.png
@@ -662,6 +670,7 @@ t/controller_Console.t
 t/controller_Edit.t
 t/controller_Feed.t
 t/controller_Git.t
+t/controller_Help.t
 t/controller_Latest.t
 t/controller_Library.t
 t/controller_OPDS.t

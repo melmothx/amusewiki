@@ -2461,6 +2461,10 @@ sub alternate_hostnames {
     return map { $_->name } $self->vhosts;
 }
 
+sub full_name {
+    my $self = shift;
+    return $self->sitename || $self->canonical;
+}
 
 =head2 latest_entries
 

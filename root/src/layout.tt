@@ -88,7 +88,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 21 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 22 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
     <script type="text/javascript">
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -220,6 +220,7 @@
                   </a>
                 </li>
                 [% END %]
+                <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'latest' %] class="active"[% END %]>
                   <a href="[% c.uri_for_action('/latest/index') %]"
 		             title="[% loc('Latest entries') %]">
@@ -417,6 +418,14 @@
               </a>
             </li>
             <li>
+              <a href="[% c.uri_for('/help/opds') %]" title="[% loc('Mobile') %]">
+                <span class="glyphicon glyphicon-phone"></span>
+                <span class="visible-xs-inline">
+                  [% loc('Mobile applications') %]
+                </span>
+              </a>
+            </li>
+            <li>
               <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
                 <span class="glyphicon glyphicon-random"></span>
                 <span class="visible-lg-inline visible-xs-inline">
@@ -481,7 +490,7 @@
       |
       <a href="[% c.uri_for_action('/latest/index') %]">[% loc('Latest entries') %]</a>
       |
-      <a href="[% c.uri_for_action('/opds/start') %]">[% loc('OPDS') %]</a>
+      <a href="[% c.uri_for_action('/help/opds') %]">[% loc('Mobile') %]</a>
       [% IF c.user_exists || site.human_can_edit %]
       |
       <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add to library') %]</a>
