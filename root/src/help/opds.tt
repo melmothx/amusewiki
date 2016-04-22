@@ -1,3 +1,8 @@
+[% IF site.is_private %]
+<p>
+  [% loc('This site is private and mobile applications cannot access the OPDS.') %]
+</p>
+[% ELSE %]
 <h2>[% loc('[_1] on mobile', site.full_name) %]</h2>
 
 <p>
@@ -85,3 +90,4 @@
     <p>[% loc('Done') %]</p>
   </div>
 </div>
+[% END %]
