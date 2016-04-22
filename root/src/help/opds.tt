@@ -6,7 +6,8 @@
 <h2>[% loc('[_1] on mobile', site.full_name) %]</h2>
 
 <p>
-  [% loc('This site does not provide a dedicated mobile application.') %]
+  [% loc('Even if this site has a responsive, mobile-friendly layout,
+  it does not provide a dedicated mobile application.') %]
 </p>
 <p>
   [% loc('However, you can browse, search, download and read the texts
@@ -59,15 +60,24 @@
 <div class="row">
   <div class="col-sm-4">
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-1.png') %]" alt="FBReader-1" />
-    <p>[% loc('Find the network library menu, or equivalent.') %]</p>
+    <p>
+      <strong>1.</strong>
+      [% loc('Find the network library menu, or equivalent.') %]
+    </p>
   </div>
   <div class="col-sm-4">
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-2.png') %]" alt="FBReader-2" />
-    <p>[% loc('Network library listing screen.') %]</p>
+    <p>
+      <strong>2.</strong>
+      [% loc('Network library listing screen.') %]
+    </p>
   </div>
   <div class="col-sm-4">
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-3.png') %]" alt="FBReader-3" />
-    <p>[% loc('Find the add catalogue  menu.') %]</p>
+    <p>
+      <strong>3.</strong>
+      [% loc('Find the add catalogue  menu.') %]
+    </p>
   </div>
 </div>
 <div><br /></div>
@@ -75,19 +85,27 @@
   <div class="col-sm-4">
 
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-4.png') %]" alt="FBReader-4" />
-    <p>[% loc('Add the OPDS URL') %]<br />
+    <p>
+      <strong>4.</strong>
+      [% loc('Add the OPDS URL') %]<br />
       <code>[% c.uri_for_action('/opds/start') %]</code>
     </p>
   </div>
   <div class="col-sm-4">
 
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-5.png') %]" alt="FBReader-5" />
-    <p>[% loc('Confirm') %]</p>
+    <p>
+      <strong>5.</strong>
+      [% loc('Confirm') %]
+    </p>
   </div>
   <div class="col-sm-4">
 
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-6.png') %]" alt="FBReader-6" />
-    <p>[% loc('Done') %]</p>
+    <p>
+      <strong>6.</strong>
+      [% loc('Done') %]
+    </p>
   </div>
 </div>
 [% END %]
