@@ -9,7 +9,7 @@ use Data::Dumper;
 eval q{use Test::Memory::Cycle;};
 my $no_cycle = 0;
 if ($@) {
-    my $no_cycle = 1;
+    $no_cycle = 1;
 }
 
 my $path = path(qw/lib AmuseWikiFarm I18N/);
