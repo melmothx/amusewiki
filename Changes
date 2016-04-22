@@ -4,9 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.800 UNRELEASED
+1.800 2016-04-22
 
  - Decoupled the localization framework from the application
+ - Completed translations: fr and mk.
+ - Updated depencencies Text::Amuse and Text::Amuse::Preprocessor
 
 The upgrade should be transparent, but please see LOCALIZATION.txt for
 details.

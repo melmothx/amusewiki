@@ -81,10 +81,10 @@ requires 'HTTP::Tiny';
 requires 'Crypt::XkcdPassword';
 
 # our own dogfood
-requires 'Text::Amuse' => '0.54';
+requires 'Text::Amuse' => '0.60';
 requires 'PDF::Imposition' => '0.21';
 requires 'Text::Amuse::Compile' => '0.55';
-requires 'Text::Amuse::Preprocessor' => '0.25';
+requires 'Text::Amuse::Preprocessor' => '0.29';
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
