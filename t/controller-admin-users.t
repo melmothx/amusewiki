@@ -33,7 +33,7 @@ foreach my $path ('/admin/users',
                   '/admin/users/1/delete',
                   '/admin/users/1/edit') {
     $mech->get($path);
-    is ($mech->status, 403);
+    is ($mech->uri->path, '/login');
 }
 $mech->get_ok('/login');
 $mech->submit_form(form_id => 'login-form',
@@ -129,7 +129,7 @@ foreach my $path ('/admin/users',
                   '/admin/users/1/delete',
                   '/admin/users/1/edit') {
     $mech->get($path);
-    is ($mech->status, 403);
+    is ($mech->uri->path, '/login');
 }
 
 # after login with the new user, we should be denied

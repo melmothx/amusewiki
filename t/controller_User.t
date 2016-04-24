@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 82;
+use Test::More tests => 86;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -183,15 +183,13 @@ like $mech->uri, qr{/login}, "Bounced to login";
 like $mech->content, qr{You have logged out}, "status message correct";
 
 $mech->get('/user/create');
-is $mech->status, '403', "Not logged in can't access /user/";
+is $mech->uri->path, '/login', "Not logged in can't access /user/ and bounce to login";
 
 # let pinco create a new fellow librarian
 
 my @users = $site->users;
 
 is (scalar(@users), 1, "Found 1 user");
-
-$mech->get('/login');
 
 $mech->submit_form(with_fields =>  {
                                     username => 'pinco',
@@ -328,7 +326,18 @@ $mech->follow_link(text_regex => qr/Update account info/);
 is ($mech->uri->path, '/user/edit/' . $pincuz->id,
     "Landed on " . $mech->uri->path);
 
-
+{
+    my $edit_path = $mech->uri->path;
+    $mech->get_ok( '/logout' );
+    $mech->get_ok($edit_path);
+    is $mech->uri->path, '/login';
+    $mech->submit_form(with_fields =>  {
+                                        username => $pincuz->username,
+                                        password => $form->{password},
+                                       },
+                       button => 'submit');
+    is $mech->uri->path, $edit_path;
+}
 
 $mech->submit_form(button => 'update',
                    with_fields => {

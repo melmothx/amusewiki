@@ -188,6 +188,15 @@ sub site_robot_index :Chained('site') :PathPart('') :CaptureArgs(0) {
     $c->stash(please_index => 1);
 }
 
+sub site_user_required :Chained('site') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    unless ($c->user_exists) {
+        log_warn { "Tried to access " . $c->req->path . " without user, redirecting" };
+        $c->response->redirect($c->uri_for('/login',
+                                           { goto => $c->req->path }));
+        $c->detach();
+    }
+}
 
 sub not_found :Private {
     my ($self, $c) = @_;

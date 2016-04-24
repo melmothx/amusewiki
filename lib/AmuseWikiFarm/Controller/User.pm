@@ -169,9 +169,10 @@ sub language :Chained('/site') :PathPart('set-language') :Args(0) {
     $c->response->redirect($c->uri_for($goto));
 }
 
-sub user :Chained('/site') :CaptureArgs(0) {
+sub user :Chained('/site_user_required') :CaptureArgs(0) {
     my ($self, $c) = @_;
     unless ($c->user_exists) {
+        log_error { $c->request->uri . " accessed without user, shouldn't happen!" };
         $c->detach('/not_permitted');
     }
 }

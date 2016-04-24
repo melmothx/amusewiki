@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 58;
+use Test::More tests => 56;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -22,10 +22,8 @@ my %hosts = (
 foreach my $host (keys %hosts) {
     my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                    host => $host);
-    $mech->get('/admin/debug_site_id');
-    ok (!$mech->success, "Not a success");
-    is ($mech->status, 403);
-    $mech->get_ok('/login');
+    $mech->get_ok('/admin/debug_site_id');
+    is ($mech->uri->path, '/login');
     $mech->content_contains('name="password"');
     $mech->content_contains('name="username"');
     $mech->submit_form(form_id => 'login-form',
@@ -33,7 +31,7 @@ foreach my $host (keys %hosts) {
                                    password => 'root',
                                  },
                        button => 'submit');
-    $mech->get_ok('/admin/debug_site_id');
+    is ($mech->uri->path, '/admin/debug_site_id');
     $mech->content_is($hosts{$host}{id} . ' ' . $hosts{$host}{locale}) or
       print $mech->content;
 }
