@@ -208,6 +208,7 @@ sub create :Chained('user') :Args(0) {
             %insertion = %$insert;
         }
         else {
+            Dlog_debug { "error: insert and errors: $_" } [ $insert, @errors ];
             $c->flash(error_msg => join ("\n", map { $c->loc($_) } @errors));
             return;
         }
@@ -215,6 +216,7 @@ sub create :Chained('user') :Args(0) {
 
         # at this point we should be good, if the user doesn't exist
         if ($users->find({ username => $insertion{username} })) {
+            log_debug { "User already exists" };
             $c->flash(error_msg => $c->loc('Such username already exists'));
             return;
         }
