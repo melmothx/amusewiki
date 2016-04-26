@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 25;
+use Test::More tests => 37;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -46,7 +46,10 @@ ok($mailer->transport);
 my $site_id = '0mail0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
-$site->update({ mail_from => 'root@amusewiki.org', locale => 'hr' });
+$site->update({ mail_from => 'root@amusewiki.org',
+                locale => 'hr',
+                mail_notify => 'notifications@amusewiki.org',
+              });
 
 my $user = $site->update_or_create_user({
                                          username => 'mailer',
@@ -99,11 +102,30 @@ $mech->submit_form(with_fields => {
                    button => 'create',
                   );
 
+$mech->get_ok('/action/text/new');
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+$mech->set_fields(author => 'pippo',
+                  title => 'My test',
+                  textbody => "Hello world\n");
+$mech->click;
+$mech->form_id('museform');
+$mech->click("commit");
+
+$mech->get_ok('/action/text/new');
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+$mech->set_fields(author => 'pippo',
+                  title => 'My test, 2',
+                  textbody => "Hello world again\n");
+$mech->click;
+$mech->form_id('museform');
+$mech->set_fields(email => 'uploader@amusewiki.org');
+$mech->click("commit");
+
 
 
 {
     my @mails = Email::Sender::Simple->default_transport->deliveries;
-    is scalar(@mails), 3, "3 mails sent";
+    is scalar(@mails), 5, "mails sent";
     if (@mails and my $sent = shift @mails) {
         ok ($sent, "Email sent") and diag $sent->{email}->as_string;
         my $body = $sent->{email}->as_string;
@@ -130,6 +152,22 @@ $mech->submit_form(with_fields => {
         like $body, qr{newmailer.*pazzXXXXXXXXXXXXX}s, "Email body has username and pass";
         unlike $body, qr{cc: pallino\@amusewiki.org}i;
         is_deeply $sent->{successes}, ['newmailer@amusewiki.org' ];
+    }
+    if (@mails and my $sent = shift @mails) {
+        ok ($sent, "The application sent the mail");
+        my $body = $sent->{email}->as_string;
+        ok ($body);
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/};
+        unlike $body, qr{cc: uploader\@amusewiki.org}i;
+        diag $body;
+    }
+    if (@mails and my $sent = shift @mails) {
+        ok ($sent, "The application sent the mail");
+        my $body = $sent->{email}->as_string;
+        ok ($body);
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/};
+        like $body, qr{cc: uploader\@amusewiki.org}i;
+        diag $body;
     }
 
 }
