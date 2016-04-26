@@ -1,10 +1,14 @@
 #!/bin/sh
 
+filelist=`tempfile`
+
+find ./lib -type f -iname "*.pm" | grep -v debug_loc > $filelist
+find ./root/src -type f -iname "*.tt" | grep -v debug_loc >> $filelist
+find ./mkits -type f >> $filelist
+cat $filelist
+
 xgettext.pl -P perl=* -P tt2=* \
-    --output=lib/AmuseWikiFarm/I18N/messages.pot \
-    --directory=root/src/ \
-    --directory=lib/AmuseWikiFarm/ \
-    --directory=mkits/
+    --output=lib/AmuseWikiFarm/I18N/messages.pot -f $filelist
 
 for i in hr fi es mk ru it de fr nl en sv pl; do
     msgmerge --no-fuzzy-matching --update --no-location \
