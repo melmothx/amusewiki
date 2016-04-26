@@ -3,7 +3,8 @@
 xgettext.pl -P perl=* -P tt2=* \
     --output=lib/AmuseWikiFarm/I18N/messages.pot \
     --directory=root/src/ \
-    --directory=lib/AmuseWikiFarm/
+    --directory=lib/AmuseWikiFarm/ \
+    --directory=mkits/
 
 for i in hr fi es mk ru it de fr nl en sv pl; do
     msgmerge --no-fuzzy-matching --update --no-location \

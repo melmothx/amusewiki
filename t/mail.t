@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 37;
+use Test::More tests => 41;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -140,6 +140,7 @@ $mech->click("commit");
         ok ($body);
         diag $body;
         like $body, qr{cc: pallino\@amusewiki.org}i;
+        like $body, qr{subject: User created}i;
         like $body, qr{newmailer.*pazzXXXXXXXXXXXXX}s, "Email body has username and pass";
         is_deeply $sent->{successes}, ['newmailer@amusewiki.org',
                                        'pallino@amusewiki.org' ];
@@ -149,6 +150,7 @@ $mech->click("commit");
         my $body = $sent->{email}->as_string;
         ok ($body);
         diag $body;
+        like $body, qr{subject: User created}i;
         like $body, qr{newmailer.*pazzXXXXXXXXXXXXX}s, "Email body has username and pass";
         unlike $body, qr{cc: pallino\@amusewiki.org}i;
         is_deeply $sent->{successes}, ['newmailer@amusewiki.org' ];
@@ -157,6 +159,7 @@ $mech->click("commit");
         ok ($sent, "The application sent the mail");
         my $body = $sent->{email}->as_string;
         ok ($body);
+        like $body, qr{subject: pippo-my-test}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/};
         unlike $body, qr{cc: uploader\@amusewiki.org}i;
         diag $body;
@@ -165,6 +168,7 @@ $mech->click("commit");
         ok ($sent, "The application sent the mail");
         my $body = $sent->{email}->as_string;
         ok ($body);
+        like $body, qr{subject: pippo-my-test-2}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/};
         like $body, qr{cc: uploader\@amusewiki.org}i;
         diag $body;

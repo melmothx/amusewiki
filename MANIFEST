@@ -232,10 +232,8 @@ lib/AmuseWikiFarm/Utils/LexiconMigration.pm
 lib/AmuseWikiFarm/Utils/Paginator.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
-lib/AmuseWikiFarm/View/Email/Template.pm
 lib/AmuseWikiFarm/View/HTML.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
-lib/AmuseWikiFarm/View/TT.pm
 lib/CatalystX/AmuseWiki/I18N.pm
 LOCALIZATION.txt
 Makefile.PL
@@ -274,8 +272,6 @@ root/src/edit/diff.tt
 root/src/edit/edit.tt
 root/src/edit/newtext.tt
 root/src/edit/revs.tt
-root/src/email/commit.tt
-root/src/email/newuser.tt
 root/src/error.tt
 root/src/git/git.tt
 root/src/help/opds.tt

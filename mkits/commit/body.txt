@@ -1,0 +1,27 @@
+[% lh.loc('A new revision has been created at [_1]', home) %]
+
+[% lh.loc("If the committer provided a mail, it's listed in the mail's CC field") %]
+
+[% IF revision_is_new %][% lh.loc('This text is new') %].[% END %]
+
+[% lh.loc('To resume the editing you can visit the following URL') %]:
+
+[% resume_url %]
+
+[% lh.loc('To view the changes introduced, you can visit the following URL') %]:
+
+[% diff_url %]
+
+[% lh.loc('To apply the changes, you can visit [_1]', pending_url) %]
+
+[% FOREACH attachment IN attachments %]
+[%- IF loop.first -%]
+[% lh.loc('Attachments') %]:
+[% END %]
+ - [% attachment %]
+[% END %]
+
+[% lh.loc('The revision has the following messages') %]
+
+[% messages %]
+

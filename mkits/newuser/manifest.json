@@ -1,0 +1,11 @@
+{
+    "renderer": "TT",
+    "header": [
+        { "From": "[% from %]" },
+        { "To": "[% to %]" },
+        { "Cc": "[% cc %]" },
+        { "Subject": "[% lh.loc('User created') %]" }
+    ],
+    "type": "text/plain",
+    "path": "body.txt"
+}

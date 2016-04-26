@@ -237,7 +237,6 @@ sub create :Chained('user') :Args(0) {
                         to => $user->email,
                         cc => '',
                         from => $mail_from,
-                        subject => $c->stash->{lh}->loc('User created'),
                         home => $c->uri_for('/'),
                         username  => $user->username,
                         password => $insertion{password},
