@@ -1,6 +1,6 @@
 #!/bin/sh
 
-filelist=`tempfile`
+filelist=`mktemp`
 
 find ./lib -type f -iname "*.pm" | grep -v debug_loc > $filelist
 find ./root/src -type f -iname "*.tt" | grep -v debug_loc >> $filelist
