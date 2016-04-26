@@ -19,3 +19,4 @@ root/git/.*
 root/static/cgit/.*
 root/static/.*\.zip$
 root/uploads/.*
+Maildir/*
