@@ -19,6 +19,11 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 non esiste"
 
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "virgolette tipografiche, collegamenti, note a piè di pagina, ecc."
 
@@ -56,7 +61,7 @@ msgstr ""
 "linea, prima l'URL e poi il nome, separato da uno spazio, ad esempio "
 "\"http://www.dominio.tld Collegamento di test\""
 
-#. (site.canonical_url)
+#. (home)
 msgid "A new revision has been created at %1"
 msgstr "È stata creata una nuova revisione sul sito %1"
 
@@ -116,6 +121,9 @@ msgstr ""
 
 msgid "Add sections to the bookbuilder"
 msgstr "Aggiungi le sezioni all'impaginatore"
+
+msgid "Add the OPDS URL"
+msgstr ""
 
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Aggiungi le parti selezionate all'impaginatore"
@@ -276,8 +284,8 @@ msgstr "Modifiche applicate"
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr "Cambiamenti effettuati, ora sono in attesa di pubblicazione"
 
-#. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Modifiche per %1"
 
@@ -313,6 +321,9 @@ msgstr "Completato"
 
 msgid "Computing of differences took"
 msgstr "Il calcolo delle differenze ha impiegato"
+
+msgid "Confirm"
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr "Converti nel markup dell'archivio"
@@ -420,9 +431,6 @@ msgstr ""
 msgid "Display url as"
 msgstr "Mostra l'URL come"
 
-msgid "Displaying"
-msgstr "Mostro"
-
 msgid "Division factor"
 msgstr "Fattore di divisione"
 
@@ -492,6 +500,11 @@ msgid "Errors"
 msgstr "Errori"
 
 msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+
+msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
@@ -526,10 +539,18 @@ msgstr "File caricato!"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
-msgstr "Riempi con pagine bianche prima dell'ultima pagina se la segnatura non è completa"
+msgstr ""
+"Riempi con pagine bianche prima dell'ultima pagina se la segnatura non è "
+"completa"
 
 msgid "Filters"
 msgstr "Filtri"
+
+msgid "Find the add catalogue menu."
+msgstr ""
+
+msgid "Find the network library menu, or equivalent."
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Primo Autore e Secondo Autore"
@@ -658,6 +679,12 @@ msgstr "Come scegliere una password"
 msgid "How to work with a remote repo"
 msgstr "Come lavorare su un archivio remoto"
 
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+
 msgid "I am human"
 msgstr "Sono umano"
 
@@ -667,14 +694,14 @@ msgstr "Voglio un PDF pronto per la stampa"
 msgid "Id"
 msgstr "Id"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Se non impostato, %1 sarà cercato nella directory dell'applicazione."
 
@@ -748,6 +775,14 @@ msgstr ""
 "Nel testo, un numero tra parentesi quadre è interpretato come un\n"
 "riferimento a una nota a piè di pagina, se tale nota esiste."
 
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
+
 msgid "Inline elements"
 msgstr "Elementi per la riga"
 
@@ -818,6 +853,9 @@ msgstr "Codice lingua del documento (2 o 3 lettere)"
 
 msgid "Language selection"
 msgstr "Selezione lingua"
+
+msgid "Languages supported"
+msgstr ""
 
 msgid "Last updated"
 msgstr "Ultima modifica"
@@ -903,6 +941,12 @@ msgstr "Redirezione mancante"
 msgid "Missing username or password"
 msgstr "Nome utente o password mancante"
 
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile applications"
+msgstr ""
+
 msgid "Mode"
 msgstr "Modalità"
 
@@ -930,6 +974,9 @@ msgstr "La mia descrizione"
 msgid "Name"
 msgstr "Nome"
 
+msgid "Network library listing screen."
+msgstr ""
+
 msgid "Never generate a table of content"
 msgstr "Non generare un sommario"
 
@@ -941,9 +988,6 @@ msgstr "Nuova revisione"
 
 msgid "New site id"
 msgstr "Nuovo ID sito"
-
-msgid "Next"
-msgstr "Prossimo"
 
 msgid "Nice title"
 msgstr "Un bel titolo"
@@ -987,6 +1031,9 @@ msgstr "Numero di testi da mostrare nelle pagine speciali (numero intero)"
 msgid "Numeric List"
 msgstr "Lista numerata"
 
+msgid "OPDS"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Wiki aperto"
 
@@ -1024,8 +1071,8 @@ msgstr "Logo PDF"
 msgid "PDFs cannot be used in the body."
 msgstr "I PDF non possono essere usati all'interno del testo."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "I PDF non elencatine nella direttiva %1 saranno salvati ma ignorati."
 
@@ -1251,14 +1298,14 @@ msgstr "Prepara questo testo per l'archivio"
 msgid "Preview"
 msgstr "Anteprima"
 
-msgid "Previous"
-msgstr "Precedente"
-
 msgid "Priority"
 msgstr "Priorità"
 
 msgid "Private"
 msgstr "Privato"
+
+msgid "Procedure"
+msgstr ""
 
 msgid "Produce slides."
 msgstr "Crea diapositive."
@@ -1369,12 +1416,6 @@ msgstr "Repository"
 msgid "Reset all"
 msgstr "Ricomincia da capo"
 
-msgid "Results"
-msgstr "Risultati"
-
-msgid "Results found"
-msgstr "Risultati trovati"
-
 msgid "Retrieved on DATE from URL"
 msgstr "Consultato il giorno DATA su URL"
 
@@ -1414,6 +1455,9 @@ msgstr "Font senza grazie"
 
 msgid "Search"
 msgstr "Cerca"
+
+msgid "Search results"
+msgstr ""
 
 msgid "Section"
 msgstr "Sezione"
@@ -1525,6 +1569,9 @@ msgstr "Blocchi speciali"
 msgid "Special pages"
 msgstr "Pagine speciali"
 
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Modifica in corso abbandonata"
 
@@ -1586,6 +1633,12 @@ msgstr "TeX"
 msgid "Term"
 msgstr "Termine"
 
+msgid "Test"
+msgstr ""
+
+msgid "Tested applications, in this order of preference"
+msgstr ""
+
 msgid "Text body, before any section"
 msgstr "Corpo del testo, prima di ogni sezione"
 
@@ -1608,6 +1661,9 @@ msgid ""
 msgstr ""
 "Le selezioni relative a Beamer hanno valore solo se l'opzione diapositive è "
 "attivata."
+
+msgid "The OPDS address for this site is:"
+msgstr ""
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -1729,6 +1785,9 @@ msgstr "Questa revisione è in corso di modifica da qualcun altro!"
 msgid "This section will not produce a slide"
 msgstr "Questa sezione non produrrà diapositive"
 
+msgid "This site is private and mobile applications cannot access the OPDS."
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Questo testo non esiste"
 
@@ -1757,8 +1816,7 @@ msgstr "Titolo, autore, data..."
 msgid "Titles"
 msgstr "Titoli"
 
-#. (c.uri_for_action("/publish/pending"))
-#. (c.uri_for_action('/publish/pending')
+#. (pending_url)
 msgid "To apply the changes, you can visit %1"
 msgstr "Per applicare le modifiche, puoi visitare %1"
 
@@ -1987,8 +2045,7 @@ msgstr ""
 "segno più nella sezione dei download di ciascun testo. In seguito\n"
 "potrai aggiungere o rimuovere altri testi."
 
-#. (c.uri_for_action("/user/create"))
-#. (c.uri_for_action('/user/create')
+#. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Puoi creare un'utenza su %1"
 
@@ -2007,8 +2064,7 @@ msgstr "Sei uscito"
 msgid "You may want to resume the editing of one of them"
 msgstr "Potresti riprendere una delle modifiche in corso"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
-#. (c.uri_for_action('/user/edit', [ user.id ])
+#. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Dovresti cambiare subito la tua password a %1"
 
@@ -2032,17 +2088,20 @@ msgstr "La tua parte..."
 msgid "Your password is %1."
 msgstr "La tua password è %1."
 
+msgid "Your section here..."
+msgstr ""
+
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "La tua sotto-sotto-sezione (o inizio di una descrizione)..."
 
 msgid "Your subsection here..."
 msgstr "La tua sottosezione..."
 
-#. (site.canonical_url_secure)
+#. (home)
 msgid "Your user at %1 has been created."
 msgstr "Il tuo utente su %1 è stato creato."
 
-#. (user.username)
+#. (username)
 msgid "Your username is %1."
 msgstr "Il tuo nome utente è %1."
 
@@ -2173,6 +2232,10 @@ msgstr "revisione"
 msgid "right"
 msgstr "destra"
 
+#. (args)
+msgid "string"
+msgstr ""
+
 msgid "strong emphasis"
 msgstr "forte enfasi"
 
@@ -2190,10 +2253,6 @@ msgstr "esponente"
 
 msgid "taken"
 msgstr "preso"
-
-#. (args)
-msgid "text"
-msgstr "testo"
 
 msgid "texts by authors, title, topic..."
 msgstr "testi per autore, titolo, argomento"
@@ -2242,6 +2301,24 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Displaying"
+#~ msgstr "Mostro"
+
+#~ msgid "Next"
+#~ msgstr "Prossimo"
+
+#~ msgid "Previous"
+#~ msgstr "Precedente"
+
+#~ msgid "Results"
+#~ msgstr "Risultati"
+
+#~ msgid "Results found"
+#~ msgstr "Risultati trovati"
+
+#~ msgid "text"
+#~ msgstr "testo"
 
 #~ msgid "SSL chained certertificate path (Nginx)"
 #~ msgstr "Percorso del certificato combinato (Nginx)"

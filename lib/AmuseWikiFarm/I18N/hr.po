@@ -20,6 +20,11 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 ne postoji"
 
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(navodnici, poveznice, fusnote itd.)"
 
@@ -56,7 +61,7 @@ msgstr ""
 "retku, najprije URL i poslije naslov, odvojenih razmakom, npr.\n"
 "\"http://test.me Test sajt\""
 
-#. (site.canonical_url)
+#. (home)
 msgid "A new revision has been created at %1"
 msgstr "Nova izmjena stvorena na %1"
 
@@ -111,6 +116,9 @@ msgstr ""
 
 msgid "Add sections to the bookbuilder"
 msgstr "Dodaj dijelove tekstova zbirci"
+
+msgid "Add the OPDS URL"
+msgstr ""
 
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Dodaj označene dijelove zbirci"
@@ -269,8 +277,8 @@ msgstr "Unesene izmjene"
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr "Izmjene izvršene, hvala, sad su na čekanju"
 
-#. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Izmjene za %1"
 
@@ -307,6 +315,9 @@ msgstr "Gotovo"
 msgid "Computing of differences took"
 msgstr "Za izračunavanje razlika bilo je potrebno"
 
+msgid "Confirm"
+msgstr ""
+
 msgid "Convert to archive markup"
 msgstr "Pretvori u format koji se koristi u arhivu"
 
@@ -342,7 +353,8 @@ msgstr "Stvori alias za autora"
 
 msgid ""
 "Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr "Stvori novi repozitorij. Ovdje spominjemo njegov URL kao <user_repo_url>."
+msgstr ""
+"Stvori novi repozitorij. Ovdje spominjemo njegov URL kao <user_repo_url>."
 
 msgid "Create new site"
 msgstr "Stvori novi sajt"
@@ -408,9 +420,6 @@ msgstr ""
 
 msgid "Display url as"
 msgstr "Pokaži URL kao"
-
-msgid "Displaying"
-msgstr "Prikazujem"
 
 msgid "Division factor"
 msgstr "Faktor podijele"
@@ -481,6 +490,11 @@ msgid "Errors"
 msgstr "Greške"
 
 msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+
+msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
@@ -522,6 +536,12 @@ msgstr ""
 
 msgid "Filters"
 msgstr "Filteri"
+
+msgid "Find the add catalogue menu."
+msgstr ""
+
+msgid "Find the network library menu, or equivalent."
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Prvi Autor i Drugi Autor"
@@ -647,6 +667,12 @@ msgstr "Kako izabrati lozinku"
 msgid "How to work with a remote repo"
 msgstr "Kako upravljati udaljenim repozitorijima"
 
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+
 msgid "I am human"
 msgstr "Ja sam ljudsko biće"
 
@@ -656,14 +682,14 @@ msgstr "Želim PDF spreman za štampu"
 msgid "Id"
 msgstr "Id"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ako je prazno, koristit će se %1 iz direktorija aplikacije."
 
@@ -730,6 +756,14 @@ msgid ""
 msgstr ""
 "U tekstu se broj unutar uglatih zagrada interpretira kao fusnota, ako "
 "fusnota postoji"
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
 
 msgid "Inline elements"
 msgstr "Elementi po retku"
@@ -801,6 +835,9 @@ msgstr "Kod jezika teksta (2 ili 3 slova)"
 
 msgid "Language selection"
 msgstr "Izaberi jezik"
+
+msgid "Languages supported"
+msgstr ""
 
 msgid "Last updated"
 msgstr "Posljednja izmjena"
@@ -886,6 +923,12 @@ msgstr "Nedostaje preusmjeravanje"
 msgid "Missing username or password"
 msgstr "Nedostaje korisničko ime i lozinka"
 
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile applications"
+msgstr ""
+
 msgid "Mode"
 msgstr "Način"
 
@@ -913,6 +956,9 @@ msgstr "Moj opis"
 msgid "Name"
 msgstr "Ime"
 
+msgid "Network library listing screen."
+msgstr ""
+
 msgid "Never generate a table of content"
 msgstr "Ne generiraj sadržaj"
 
@@ -924,9 +970,6 @@ msgstr "Nova izmjena"
 
 msgid "New site id"
 msgstr "Novi id sajta"
-
-msgid "Next"
-msgstr "Iduće"
 
 msgid "Nice title"
 msgstr "Lijep naslov"
@@ -970,6 +1013,9 @@ msgstr "Broj tekstova na specijalnim stranicama"
 msgid "Numeric List"
 msgstr "Brojčan popis"
 
+msgid "OPDS"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Otvoreni wiki"
 
@@ -1006,8 +1052,8 @@ msgstr "PDF logo"
 msgid "PDFs cannot be used in the body."
 msgstr "Nije moguće koristi PDF-ove unutar tekstova."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF-ovi koji nisu na popisu %1 polja bit će pohranjeni ali zanemareni."
 
@@ -1042,7 +1088,8 @@ msgstr ""
 "izračuna da bi smanjio broji bijelih stranica koje treba dodati."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr "Debljina papira (0.10 trebalo bi biti dovoljno za uobičajen papir 80g/m2)"
+msgstr ""
+"Debljina papira (0.10 trebalo bi biti dovoljno za uobičajen papir 80g/m2)"
 
 msgid "Paragraphs"
 msgstr "Odlomci"
@@ -1216,7 +1263,8 @@ msgid ""
 "Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
-"Prefiksi za brojčane liste su \"1.\", \"a.\", \"A.\", \"i.\", \"I\", ovisno o\n"
+"Prefiksi za brojčane liste su \"1.\", \"a.\", \"A.\", \"i.\", \"I\", ovisno "
+"o\n"
 "vrsti liste."
 
 msgid "Prepare this text for the archiving"
@@ -1225,14 +1273,14 @@ msgstr "Pripremi ovaj tekst za arhivu"
 msgid "Preview"
 msgstr "Pregled"
 
-msgid "Previous"
-msgstr "Prethodno"
-
 msgid "Priority"
 msgstr "Prioritet"
 
 msgid "Private"
 msgstr "Privatno"
+
+msgid "Procedure"
+msgstr ""
 
 msgid "Produce slides."
 msgstr "Slajdovi."
@@ -1342,12 +1390,6 @@ msgstr "Repozitorij"
 msgid "Reset all"
 msgstr "Poništi sve"
 
-msgid "Results"
-msgstr "Rezultati"
-
-msgid "Results found"
-msgstr "Pronađeno"
-
 msgid "Retrieved on DATE from URL"
 msgstr "Pronađeno DANA na URL-u"
 
@@ -1387,6 +1429,9 @@ msgstr "Font bez serifa"
 
 msgid "Search"
 msgstr "Traži"
+
+msgid "Search results"
+msgstr ""
 
 msgid "Section"
 msgstr "Odjeljak"
@@ -1496,6 +1541,9 @@ msgstr "Posebni dijelovi"
 msgid "Special pages"
 msgstr "Posebne stranice"
 
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Napuštena izmjena"
 
@@ -1557,6 +1605,12 @@ msgstr "TeX"
 msgid "Term"
 msgstr "Pojam"
 
+msgid "Test"
+msgstr ""
+
+msgid "Tested applications, in this order of preference"
+msgstr ""
+
 msgid "Text body, before any section"
 msgstr "Tekst koji ne pripada nijednom dijelu"
 
@@ -1579,6 +1633,9 @@ msgid ""
 msgstr ""
 "Opcije koje se tiču slajdova nisu relevantne ako slajdovi su\n"
 "onemogućeni."
+
+msgid "The OPDS address for this site is:"
+msgstr ""
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -1637,7 +1694,9 @@ msgstr "Korisnik će imati tvoju istu razinu pristupa."
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
-msgstr "Treba se ponovo podesiti webserver. Izvedi slijedeće komade kao root korisnik:"
+msgstr ""
+"Treba se ponovo podesiti webserver. Izvedi slijedeće komade kao root "
+"korisnik:"
 
 msgid "The whole book in as single signature"
 msgstr "Cijela knjiga u jednom jedinom svesku"
@@ -1690,6 +1749,9 @@ msgstr "Ova izmjena je u toku od strane nekog drugog!"
 msgid "This section will not produce a slide"
 msgstr "Ovaj odjeljak neće proizvoditi slajd"
 
+msgid "This site is private and mobile applications cannot access the OPDS."
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Ovaj tekst ne postoji"
 
@@ -1718,8 +1780,7 @@ msgstr "Naslov, autor, datum..."
 msgid "Titles"
 msgstr "Naslovi"
 
-#. (c.uri_for_action("/publish/pending"))
-#. (c.uri_for_action('/publish/pending')
+#. (pending_url)
 msgid "To apply the changes, you can visit %1"
 msgstr "Da bi objavio izmjenu, idi na %1"
 
@@ -1770,7 +1831,8 @@ msgid ""
 "URL of the new remote repository\n"
 "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
 "        supported."
-msgstr "URL udaljenog repozitorija (HTTP, HTTPS, GIT ili direktorij, ali ne SSH)."
+msgstr ""
+"URL udaljenog repozitorija (HTTP, HTTPS, GIT ili direktorij, ali ne SSH)."
 
 msgid "UTC"
 msgstr "UTC"
@@ -1938,8 +2000,7 @@ msgstr ""
 "Klikni na “Plus”, pored preuzimanja, kod svakog teksta da bi ga dodao svojoj "
 "zbirci. Kasnije možeš dodati i izbrisati tekstove."
 
-#. (c.uri_for_action("/user/create"))
-#. (c.uri_for_action('/user/create')
+#. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Možeš stvoriti račun na %1"
 
@@ -1956,8 +2017,7 @@ msgstr "Odjavljen si"
 msgid "You may want to resume the editing of one of them"
 msgstr "Možeš se vratiti jednoj od izmjena u toku"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
-#. (c.uri_for_action('/user/edit', [ user.id ])
+#. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Trebao bi promjeniti svoju lozinku sada na %1"
 
@@ -1981,17 +2041,20 @@ msgstr "Tvoj dio..."
 msgid "Your password is %1."
 msgstr "Tvoja lozinka je %1."
 
+msgid "Your section here..."
+msgstr ""
+
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Tvoj podpododjeljak (ili zaglavlje opisa)..."
 
 msgid "Your subsection here..."
 msgstr "Tvoj pododjeljak..."
 
-#. (site.canonical_url_secure)
+#. (home)
 msgid "Your user at %1 has been created."
 msgstr "Tvoj korisnik je stvoren na %1."
 
-#. (user.username)
+#. (username)
 msgid "Your username is %1."
 msgstr "Tvoje korisničko ime je %1."
 
@@ -2088,7 +2151,8 @@ msgstr "ili"
 msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
-msgstr "Ili, ako imaš SSH pristup mašini (nemoj koristiti istog korisnika aplikacije)"
+msgstr ""
+"Ili, ako imaš SSH pristup mašini (nemoj koristiti istog korisnika aplikacije)"
 
 msgid "overstriked"
 msgstr "izbrisano"
@@ -2117,6 +2181,10 @@ msgstr "izmjena"
 msgid "right"
 msgstr "desna"
 
+#. (args)
+msgid "string"
+msgstr ""
+
 msgid "strong emphasis"
 msgstr "istaknuto i podebljano"
 
@@ -2134,10 +2202,6 @@ msgstr "eksponent"
 
 msgid "taken"
 msgstr "u toku"
-
-#. (args)
-msgid "text"
-msgstr "tekst"
 
 msgid "texts by authors, title, topic..."
 msgstr "tekstovi po autoru, naslovu, temi..."
@@ -2185,6 +2249,24 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Displaying"
+#~ msgstr "Prikazujem"
+
+#~ msgid "Next"
+#~ msgstr "Iduće"
+
+#~ msgid "Previous"
+#~ msgstr "Prethodno"
+
+#~ msgid "Results"
+#~ msgstr "Rezultati"
+
+#~ msgid "Results found"
+#~ msgstr "Pronađeno"
+
+#~ msgid "text"
+#~ msgstr "tekst"
 
 #~ msgid "Please give a name to the collection."
 #~ msgstr "Naslovi zbirku."

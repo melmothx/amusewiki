@@ -19,6 +19,11 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 existerar inte"
 
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr ""
 
@@ -54,7 +59,7 @@ msgid ""
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
 
-#. (site.canonical_url)
+#. (home)
 msgid "A new revision has been created at %1"
 msgstr "En ny revidering har skapats till 1%"
 
@@ -109,6 +114,9 @@ msgid ""
 msgstr ""
 
 msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the OPDS URL"
 msgstr ""
 
 msgid "Add the selected parts to the bookbuilder"
@@ -265,8 +273,8 @@ msgstr "Ändrigar utförda"
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr "Ändringar skickade, tack! Nu väntar de på att publiceras "
 
-#. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Ändringar till %1"
 
@@ -302,6 +310,9 @@ msgstr "Genomförd"
 
 msgid "Computing of differences took"
 msgstr "Beräknandet av skillnader tog"
+
+msgid "Confirm"
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr ""
@@ -402,9 +413,6 @@ msgstr "Mallkatalog. Ordna inte denna om du inte vet vad du gör"
 msgid "Display url as"
 msgstr "Visa url som"
 
-msgid "Displaying"
-msgstr "Visar"
-
 msgid "Division factor"
 msgstr "Uppdelningsfaktor"
 
@@ -474,6 +482,11 @@ msgid "Errors"
 msgstr "Fel"
 
 msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+
+msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
@@ -508,6 +521,12 @@ msgstr "Fyll med blanksteg innan den sista sidan om signaturen inte är full."
 
 msgid "Filters"
 msgstr "Filter"
+
+msgid "Find the add catalogue menu."
+msgstr ""
+
+msgid "Find the network library menu, or equivalent."
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Första Författare och Andra Författare"
@@ -632,6 +651,12 @@ msgstr "Hur du väljer lösenord"
 msgid "How to work with a remote repo"
 msgstr ""
 
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+
 msgid "I am human"
 msgstr "Jag är en människa"
 
@@ -641,14 +666,14 @@ msgstr "Jag vill ha en imposed (redo att trycka) PDF"
 msgid "Id"
 msgstr "Id"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -706,6 +731,14 @@ msgid ""
 msgstr ""
 "I texten tolkas en siffra inom parentes som en fotnotsreferens,om sådan "
 "fotnot existerar. "
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
 
 msgid "Inline elements"
 msgstr "Infogade element"
@@ -775,6 +808,9 @@ msgstr "Dokumentets språkkod (2 eller 3 bokstäver)."
 
 msgid "Language selection"
 msgstr "Val av språk"
+
+msgid "Languages supported"
+msgstr ""
 
 msgid "Last updated"
 msgstr "Senaste uppdaterad"
@@ -860,6 +896,12 @@ msgstr "Omdirigering saknas"
 msgid "Missing username or password"
 msgstr "Användarnamn och lösenord saknas"
 
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile applications"
+msgstr ""
+
 msgid "Mode"
 msgstr "Metod "
 
@@ -887,6 +929,9 @@ msgstr "Min beskrivning"
 msgid "Name"
 msgstr "Namn"
 
+msgid "Network library listing screen."
+msgstr ""
+
 msgid "Never generate a table of content"
 msgstr "Generera aldrig innehållsförteckning"
 
@@ -898,9 +943,6 @@ msgstr "Ny revidering"
 
 msgid "New site id"
 msgstr "Ny sid-id"
-
-msgid "Next"
-msgstr "Nästa"
 
 msgid "Nice title"
 msgstr "Bra titel"
@@ -944,6 +986,9 @@ msgstr ""
 msgid "Numeric List"
 msgstr "Numerisk lista"
 
+msgid "OPDS"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Öppen wiki"
 
@@ -981,8 +1026,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDF:er kan inte användas i brödtexten."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF är inte listad i %1 direktiv kommer att lagras men ignoreras"
 
@@ -1197,13 +1242,13 @@ msgstr "Förbered denna text för arkiveringen"
 msgid "Preview"
 msgstr "Förhandsvisa"
 
-msgid "Previous"
-msgstr "Förra"
-
 msgid "Priority"
 msgstr "Prioritet"
 
 msgid "Private"
+msgstr ""
+
+msgid "Procedure"
 msgstr ""
 
 msgid "Produce slides."
@@ -1316,12 +1361,6 @@ msgstr "Förvaring"
 msgid "Reset all"
 msgstr ""
 
-msgid "Results"
-msgstr "Resultat"
-
-msgid "Results found"
-msgstr "Resultat funna"
-
 msgid "Retrieved on DATE from URL"
 msgstr "Mottogs den DATUM från URL"
 
@@ -1361,6 +1400,9 @@ msgstr ""
 
 msgid "Search"
 msgstr "Sök"
+
+msgid "Search results"
+msgstr ""
 
 msgid "Section"
 msgstr "Sektion"
@@ -1471,6 +1513,9 @@ msgstr "Specialblock"
 msgid "Special pages"
 msgstr "Specialsidor"
 
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Förlegad redigering"
 
@@ -1532,6 +1577,12 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Test"
+msgstr ""
+
+msgid "Tested applications, in this order of preference"
+msgstr ""
+
 msgid "Text body, before any section"
 msgstr ""
 
@@ -1551,6 +1602,9 @@ msgstr "Texter"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The OPDS address for this site is:"
 msgstr ""
 
 msgid ""
@@ -1661,6 +1715,9 @@ msgstr "Revideringen redigeras av någon annan!"
 msgid "This section will not produce a slide"
 msgstr ""
 
+msgid "This site is private and mobile applications cannot access the OPDS."
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Denna text existerar inte"
 
@@ -1689,8 +1746,7 @@ msgstr ""
 msgid "Titles"
 msgstr "Titlar"
 
-#. (c.uri_for_action("/publish/pending"))
-#. (c.uri_for_action('/publish/pending')
+#. (pending_url)
 msgid "To apply the changes, you can visit %1"
 msgstr "För att verkställa ändringarna, kan du besöka %1"
 
@@ -1904,8 +1960,7 @@ msgstr ""
 "\" bredvid nedladdnings-ikonerna på varje texts       sida. Du kan lägga "
 "till eller ta bort texterna senare."
 
-#. (c.uri_for_action("/user/create"))
-#. (c.uri_for_action('/user/create')
+#. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Du kan skapa en peer vid %1"
 
@@ -1922,8 +1977,7 @@ msgstr "Du är nu utloggad"
 msgid "You may want to resume the editing of one of them"
 msgstr "Du bör överväga att återgå till redigeringen av en av dem"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
-#. (c.uri_for_action('/user/edit', [ user.id ])
+#. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Du bör ändra ditt lösenord på direkten %1"
 
@@ -1947,17 +2001,20 @@ msgstr "Din del här..."
 msgid "Your password is %1."
 msgstr "Ditt lösenord är %1"
 
+msgid "Your section here..."
+msgstr ""
+
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Din under-underavdelning (eller beskrivande rubrik) här..."
 
 msgid "Your subsection here..."
 msgstr "Din underavdelning här..."
 
-#. (site.canonical_url_secure)
+#. (home)
 msgid "Your user at %1 has been created."
 msgstr "Din användare har skapats till %1"
 
-#. (user.username)
+#. (username)
 msgid "Your username is %1."
 msgstr "Ditt användarnamn är %1"
 
@@ -2083,6 +2140,10 @@ msgstr "revidering"
 msgid "right"
 msgstr ""
 
+#. (args)
+msgid "string"
+msgstr ""
+
 msgid "strong emphasis"
 msgstr "stor tonvikt"
 
@@ -2100,10 +2161,6 @@ msgstr "exponentläge"
 
 msgid "taken"
 msgstr "tagen"
-
-#. (args)
-msgid "text"
-msgstr "text"
 
 msgid "texts by authors, title, topic..."
 msgstr "text efter författare, titel, ämne..."
@@ -2152,6 +2209,24 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Displaying"
+#~ msgstr "Visar"
+
+#~ msgid "Next"
+#~ msgstr "Nästa"
+
+#~ msgid "Previous"
+#~ msgstr "Förra"
+
+#~ msgid "Results"
+#~ msgstr "Resultat"
+
+#~ msgid "Results found"
+#~ msgstr "Resultat funna"
+
+#~ msgid "text"
+#~ msgstr "text"
 
 #~ msgid "Please give a name to the collection."
 #~ msgstr "Namnge gärna din samling."

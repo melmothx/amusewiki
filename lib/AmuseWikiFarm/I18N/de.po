@@ -20,6 +20,11 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr ""
 
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr ""
 
@@ -54,7 +59,7 @@ msgid ""
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
 
-#. (site.canonical_url)
+#. (home)
 msgid "A new revision has been created at %1"
 msgstr "Eine neue Änderung wurde erstellt unter %1"
 
@@ -108,6 +113,9 @@ msgid ""
 msgstr ""
 
 msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the OPDS URL"
 msgstr ""
 
 msgid "Add the selected parts to the bookbuilder"
@@ -265,8 +273,8 @@ msgstr "Veränderungen angewandt"
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr ""
 
-#. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Veränderungen für %1"
 
@@ -302,6 +310,9 @@ msgstr "Abgeschlossen"
 
 msgid "Computing of differences took"
 msgstr "Berechnen der Unterschiede dauerte"
+
+msgid "Confirm"
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr ""
@@ -404,9 +415,6 @@ msgstr ""
 msgid "Display url as"
 msgstr "url anzeigen als"
 
-msgid "Displaying"
-msgstr "Anzeige"
-
 msgid "Division factor"
 msgstr "Trennungsfaktor"
 
@@ -476,6 +484,11 @@ msgid "Errors"
 msgstr "Fehler"
 
 msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+
+msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
@@ -509,6 +522,12 @@ msgid ""
 msgstr ""
 
 msgid "Filters"
+msgstr ""
+
+msgid "Find the add catalogue menu."
+msgstr ""
+
+msgid "Find the network library menu, or equivalent."
 msgstr ""
 
 msgid "First Author and Second Author"
@@ -631,6 +650,12 @@ msgstr "Wie man ein Password auswählt"
 msgid "How to work with a remote repo"
 msgstr ""
 
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+
 msgid "I am human"
 msgstr "Ich bin ein Mensch"
 
@@ -640,14 +665,14 @@ msgstr "Ich will ein druckfertiges PDF"
 msgid "Id"
 msgstr "ID"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -712,6 +737,14 @@ msgstr ""
 "Im Text wird eine Nummer innerhalb von eckigen Klammern\n"
 " als Fußnotenreferenz interpretiert, wenn eine solche\n"
 " Fußnote existiert.  "
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
 
 msgid "Inline elements"
 msgstr "Inline-Elemente"
@@ -785,6 +818,9 @@ msgstr "Sprachencode des Dokuments (2 oder 3 Buchstaben)."
 
 msgid "Language selection"
 msgstr "Wähle deine Sprache"
+
+msgid "Languages supported"
+msgstr ""
 
 msgid "Last updated"
 msgstr "Zuletzt aktualisiert"
@@ -870,6 +906,12 @@ msgstr "Fehlende Umleitung"
 msgid "Missing username or password"
 msgstr "Fehlender BenutzerInnename oder Passwort"
 
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile applications"
+msgstr ""
+
 msgid "Mode"
 msgstr "Modus"
 
@@ -897,6 +939,9 @@ msgstr "Meine Beschreibung"
 msgid "Name"
 msgstr "Name"
 
+msgid "Network library listing screen."
+msgstr ""
+
 msgid "Never generate a table of content"
 msgstr ""
 
@@ -908,9 +953,6 @@ msgstr "Neue Änderung"
 
 msgid "New site id"
 msgstr "Neue Seitenid"
-
-msgid "Next"
-msgstr "Nächste"
 
 msgid "Nice title"
 msgstr "Netter Titel"
@@ -954,6 +996,9 @@ msgstr ""
 msgid "Numeric List"
 msgstr "Nummerische Liste"
 
+msgid "OPDS"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Offenes wiki"
 
@@ -991,8 +1036,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDFs können im Textkörper nicht verwendet werden."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "Nicht in der %1 Anweisung aufgelistete PDFs werden gespeichert aber "
@@ -1196,13 +1241,13 @@ msgstr "Bereite diesen Text fürs Archivieren vor"
 msgid "Preview"
 msgstr "Vorschau"
 
-msgid "Previous"
-msgstr "Vorherige"
-
 msgid "Priority"
 msgstr "Priorität"
 
 msgid "Private"
+msgstr ""
+
+msgid "Procedure"
 msgstr ""
 
 msgid "Produce slides."
@@ -1307,12 +1352,6 @@ msgstr "Magazin"
 msgid "Reset all"
 msgstr ""
 
-msgid "Results"
-msgstr "Ergebnisse"
-
-msgid "Results found"
-msgstr "gefundene Ergebnisse"
-
 msgid "Retrieved on DATE from URL"
 msgstr "Entnommen am DATUM von URL"
 
@@ -1352,6 +1391,9 @@ msgstr ""
 
 msgid "Search"
 msgstr "Suchen"
+
+msgid "Search results"
+msgstr ""
 
 msgid "Section"
 msgstr "Sektion"
@@ -1464,6 +1506,9 @@ msgstr "Spezialblöcke"
 msgid "Special pages"
 msgstr "Spezialseiten"
 
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Eingeschlafene Bearbeitung"
 
@@ -1525,6 +1570,12 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Test"
+msgstr ""
+
+msgid "Tested applications, in this order of preference"
+msgstr ""
+
 msgid "Text body, before any section"
 msgstr ""
 
@@ -1544,6 +1595,9 @@ msgstr "Texte"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The OPDS address for this site is:"
 msgstr ""
 
 msgid ""
@@ -1656,6 +1710,9 @@ msgstr "Diese Änderung wird von jemand anderen bearbeitet!"
 msgid "This section will not produce a slide"
 msgstr ""
 
+msgid "This site is private and mobile applications cannot access the OPDS."
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Dieser Text existiert nicht"
 
@@ -1684,8 +1741,7 @@ msgstr ""
 msgid "Titles"
 msgstr "Liste aller Texte"
 
-#. (c.uri_for_action("/publish/pending"))
-#. (c.uri_for_action('/publish/pending')
+#. (pending_url)
 msgid "To apply the changes, you can visit %1"
 msgstr "Um Änderungen anzuwenden gehe auf %1"
 
@@ -1902,8 +1958,7 @@ msgstr ""
 " du auf “Plus”-Symbol neben den Downloads klickst.\n"
 " Du kannst später Texte hinzufügen und entfernen."
 
-#. (c.uri_for_action("/user/create"))
-#. (c.uri_for_action('/user/create')
+#. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Du kannst einen Peer erstellen unter %1"
 
@@ -1923,8 +1978,7 @@ msgid "You may want to resume the editing of one of them"
 msgstr ""
 "Du willst vielleicht mit der Bearbeitung von einem von ihnen fortfahren"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
-#. (c.uri_for_action('/user/edit', [ user.id ])
+#. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Du solltest dein Passwort sofort verändern unter %1"
 
@@ -1948,17 +2002,20 @@ msgstr "Dein Teil hier..."
 msgid "Your password is %1."
 msgstr "Dein Passwort ist %1"
 
+msgid "Your section here..."
+msgstr ""
+
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Deine Unter-Unter-Sektion (oder beschreibende Überschrift)..."
 
 msgid "Your subsection here..."
 msgstr "Deine Unterabteilung"
 
-#. (site.canonical_url_secure)
+#. (home)
 msgid "Your user at %1 has been created."
 msgstr "Deine BenutzerIn bei %1 wurde erstellt. "
 
-#. (user.username)
+#. (username)
 msgid "Your username is %1."
 msgstr "Dein BenutzerInnen-Name ist %1"
 
@@ -2085,6 +2142,10 @@ msgstr "Änderung"
 msgid "right"
 msgstr ""
 
+#. (args)
+msgid "string"
+msgstr ""
+
 msgid "strong emphasis"
 msgstr "starke Hervorhebung"
 
@@ -2102,10 +2163,6 @@ msgstr "hochgestellt"
 
 msgid "taken"
 msgstr "vergeben"
-
-#. (args)
-msgid "text"
-msgstr "Text"
 
 msgid "texts by authors, title, topic..."
 msgstr ""
@@ -2154,6 +2211,24 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Displaying"
+#~ msgstr "Anzeige"
+
+#~ msgid "Next"
+#~ msgstr "Nächste"
+
+#~ msgid "Previous"
+#~ msgstr "Vorherige"
+
+#~ msgid "Results"
+#~ msgstr "Ergebnisse"
+
+#~ msgid "Results found"
+#~ msgstr "gefundene Ergebnisse"
+
+#~ msgid "text"
+#~ msgstr "Text"
 
 #~ msgid "Please give a name to the collection."
 #~ msgstr "Bitte gib der Auswahl einen Namen."

@@ -19,6 +19,11 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 не постои"
 
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(наводници, линкови, фусноти, инт.)"
 
@@ -59,7 +64,7 @@ msgstr ""
 " ред, најпрвин URL, потоа насловот, одвоени со празно место, нпр.\n"
 " \"http://test.me Тест сајт\""
 
-#. (site.canonical_url)
+#. (home)
 msgid "A new revision has been created at %1"
 msgstr "Нова измена создадена на %1"
 
@@ -117,6 +122,9 @@ msgstr ""
 
 msgid "Add sections to the bookbuilder"
 msgstr "Додади делови од текстови на збирката"
+
+msgid "Add the OPDS URL"
+msgstr ""
 
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Додади ги означените делови на збирката"
@@ -281,8 +289,8 @@ msgstr "Внесени измени"
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr "Измените се извршени, сега се на чекање"
 
-#. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Измени за %1"
 
@@ -318,6 +326,9 @@ msgstr "Готово"
 
 msgid "Computing of differences took"
 msgstr "За пресметување на разликите беше потребно"
+
+msgid "Confirm"
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr "Претвори во формат кој се користи во архивата"
@@ -423,9 +434,6 @@ msgstr ""
 msgid "Display url as"
 msgstr "Покажи го URL kako"
 
-msgid "Displaying"
-msgstr "Покажувам"
-
 msgid "Division factor"
 msgstr "Фактор на поделба"
 
@@ -495,6 +503,11 @@ msgid "Errors"
 msgstr "Грешки"
 
 msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+
+msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
@@ -537,6 +550,12 @@ msgstr ""
 
 msgid "Filters"
 msgstr "Филтри"
+
+msgid "Find the add catalogue menu."
+msgstr ""
+
+msgid "Find the network library menu, or equivalent."
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Прв Автор и Втор Автор"
@@ -664,6 +683,12 @@ msgstr "Како да избереш лозинка"
 msgid "How to work with a remote repo"
 msgstr "Како да управуваш со оддалечен репозиториум"
 
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+
 msgid "I am human"
 msgstr "Јас сум човек"
 
@@ -673,14 +698,14 @@ msgstr "Сакам PDF подготвен за печатење"
 msgid "Id"
 msgstr "Id"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ако е празно, ќе се користи %1 од директориумот на апликацијата."
 
@@ -749,6 +774,14 @@ msgid ""
 msgstr ""
 "Во текстот бројката во средни загради се толкува како фуснота, доколку таа "
 "фуснота постои ."
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
 
 msgid "Inline elements"
 msgstr "Елементи по линија"
@@ -822,6 +855,9 @@ msgstr "Код на јазикот на текстот (2 или три букв
 
 msgid "Language selection"
 msgstr "Избери јазик"
+
+msgid "Languages supported"
+msgstr ""
 
 msgid "Last updated"
 msgstr "Последна измена"
@@ -909,6 +945,12 @@ msgstr "Недостига пренасочување"
 msgid "Missing username or password"
 msgstr "Недостига корисничко име или лозинка"
 
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile applications"
+msgstr ""
+
 msgid "Mode"
 msgstr "Начин"
 
@@ -936,6 +978,9 @@ msgstr "Мој опис"
 msgid "Name"
 msgstr "Име"
 
+msgid "Network library listing screen."
+msgstr ""
+
 msgid "Never generate a table of content"
 msgstr "Не генерирај содржина"
 
@@ -947,9 +992,6 @@ msgstr "Нова измена"
 
 msgid "New site id"
 msgstr "Нов id на сајтот"
-
-msgid "Next"
-msgstr "Следно"
 
 msgid "Nice title"
 msgstr "Убав наслов"
@@ -994,6 +1036,9 @@ msgstr ""
 msgid "Numeric List"
 msgstr "Нумерирана листа"
 
+msgid "OPDS"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Отворен wiki"
 
@@ -1030,8 +1075,8 @@ msgstr "PDF лого"
 msgid "PDFs cannot be used in the body."
 msgstr "Не е можно да се користат PDF датотеки во самите текстови."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "PDF датотеките кои не се на листата %1 ќе бидат зачувани, но игнорирани."
@@ -1261,14 +1306,14 @@ msgstr "Подготви го текстот за архивирање"
 msgid "Preview"
 msgstr "Преглед"
 
-msgid "Previous"
-msgstr "Претходно"
-
 msgid "Priority"
 msgstr "Приоритет"
 
 msgid "Private"
 msgstr "Приватно"
+
+msgid "Procedure"
+msgstr ""
 
 msgid "Produce slides."
 msgstr "Слајдови"
@@ -1381,12 +1426,6 @@ msgstr "Репозиториум"
 msgid "Reset all"
 msgstr "Поништи сè"
 
-msgid "Results"
-msgstr "Резултати"
-
-msgid "Results found"
-msgstr "Пронајдено"
-
 msgid "Retrieved on DATE from URL"
 msgstr "Пронајдено на ДАТУМ на URL"
 
@@ -1426,6 +1465,9 @@ msgstr "Фонт без сериф"
 
 msgid "Search"
 msgstr "Барај"
+
+msgid "Search results"
+msgstr ""
 
 msgid "Section"
 msgstr "Оддел"
@@ -1535,6 +1577,9 @@ msgstr "Посебни делови"
 msgid "Special pages"
 msgstr "Посебни страници"
 
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Напуштена измена"
 
@@ -1596,6 +1641,12 @@ msgstr "TeX"
 msgid "Term"
 msgstr "Поим"
 
+msgid "Test"
+msgstr ""
+
+msgid "Tested applications, in this order of preference"
+msgstr ""
+
 msgid "Text body, before any section"
 msgstr "Текст кој не припаѓа на ниеден дел"
 
@@ -1618,6 +1669,9 @@ msgid ""
 msgstr ""
 "Опциите кои се однесуваат на слајдовите не се релевантни ако слајдовите се\n"
 " оневозможени."
+
+msgid "The OPDS address for this site is:"
+msgstr ""
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -1735,6 +1789,9 @@ msgstr "Оваа измена е во тек од страна на некој �
 msgid "This section will not produce a slide"
 msgstr "Овој оддел нема да создаде слајд"
 
+msgid "This site is private and mobile applications cannot access the OPDS."
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Овој текст не постои"
 
@@ -1763,8 +1820,7 @@ msgstr "Наслов, автор, датум..."
 msgid "Titles"
 msgstr "Наслови"
 
-#. (c.uri_for_action("/publish/pending"))
-#. (c.uri_for_action('/publish/pending')
+#. (pending_url)
 msgid "To apply the changes, you can visit %1"
 msgstr "За да ја објавиш измената, оди на %1"
 
@@ -1988,8 +2044,7 @@ msgstr ""
 "Кликни на иконата \"Плус\", покрај преземања, кај секој од текстовите за да "
 "го додадеш на својата збирка. Подоцна можеш да додадеш или избришеш текстови."
 
-#. (c.uri_for_action("/user/create"))
-#. (c.uri_for_action('/user/create')
+#. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Можеш да создадеш сметка на %1"
 
@@ -2007,8 +2062,7 @@ msgstr "Одјавен си"
 msgid "You may want to resume the editing of one of them"
 msgstr "Можеш да се вратиш на една од измените во тек"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
-#. (c.uri_for_action('/user/edit', [ user.id ])
+#. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Треба веднаш да ја промениш својата лозинка на %1"
 
@@ -2032,17 +2086,20 @@ msgstr "Твојот дел"
 msgid "Your password is %1."
 msgstr "Твојата лозинка е %1."
 
+msgid "Your section here..."
+msgstr ""
+
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Твојот подпододдел (или опис на заглавието)..."
 
 msgid "Your subsection here..."
 msgstr "Твојот пододдел"
 
-#. (site.canonical_url_secure)
+#. (home)
 msgid "Your user at %1 has been created."
 msgstr "Твојот корисник е креиран на %1."
 
-#. (user.username)
+#. (username)
 msgid "Your username is %1."
 msgstr "Твоето корисничко име е %1."
 
@@ -2170,6 +2227,10 @@ msgstr "измена"
 msgid "right"
 msgstr "десно"
 
+#. (args)
+msgid "string"
+msgstr ""
+
 msgid "strong emphasis"
 msgstr "истакнато и здебелено"
 
@@ -2187,10 +2248,6 @@ msgstr "експонент"
 
 msgid "taken"
 msgstr "во тек"
-
-#. (args)
-msgid "text"
-msgstr "текст"
 
 msgid "texts by authors, title, topic..."
 msgstr "текстови според автор, наслов, тема..."
@@ -2238,6 +2295,24 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Displaying"
+#~ msgstr "Покажувам"
+
+#~ msgid "Next"
+#~ msgstr "Следно"
+
+#~ msgid "Previous"
+#~ msgstr "Претходно"
+
+#~ msgid "Results"
+#~ msgstr "Резултати"
+
+#~ msgid "Results found"
+#~ msgstr "Пронајдено"
+
+#~ msgid "text"
+#~ msgstr "текст"
 
 #~ msgid "Please give a name to the collection."
 #~ msgstr "Наслови ја збирката."

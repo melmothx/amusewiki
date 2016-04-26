@@ -19,6 +19,11 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr ""
 
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr ""
 
@@ -50,7 +55,7 @@ msgid ""
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
 
-#. (site.canonical_url)
+#. (home)
 msgid "A new revision has been created at %1"
 msgstr ""
 
@@ -102,6 +107,9 @@ msgid ""
 msgstr ""
 
 msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the OPDS URL"
 msgstr ""
 
 msgid "Add the selected parts to the bookbuilder"
@@ -251,8 +259,8 @@ msgstr ""
 msgid "Changes committed, thanks! They are now waiting to be published"
 msgstr ""
 
-#. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr ""
 
@@ -287,6 +295,9 @@ msgid "Completed"
 msgstr ""
 
 msgid "Computing of differences took"
+msgstr ""
+
+msgid "Confirm"
 msgstr ""
 
 msgid "Convert to archive markup"
@@ -386,9 +397,6 @@ msgstr ""
 msgid "Display url as"
 msgstr ""
 
-msgid "Displaying"
-msgstr ""
-
 msgid "Division factor"
 msgstr ""
 
@@ -458,6 +466,11 @@ msgid "Errors"
 msgstr ""
 
 msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+
+msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
@@ -491,6 +504,12 @@ msgid ""
 msgstr ""
 
 msgid "Filters"
+msgstr ""
+
+msgid "Find the add catalogue menu."
+msgstr ""
+
+msgid "Find the network library menu, or equivalent."
 msgstr ""
 
 msgid "First Author and Second Author"
@@ -611,6 +630,12 @@ msgstr ""
 msgid "How to work with a remote repo"
 msgstr ""
 
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+
 msgid "I am human"
 msgstr ""
 
@@ -620,14 +645,14 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -680,6 +705,14 @@ msgstr ""
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
+msgstr ""
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
 msgstr ""
 
 msgid "Inline elements"
@@ -742,6 +775,9 @@ msgid "Language code of the document (2 or 3 letters). "
 msgstr ""
 
 msgid "Language selection"
+msgstr ""
+
+msgid "Languages supported"
 msgstr ""
 
 msgid "Last updated"
@@ -828,6 +864,12 @@ msgstr ""
 msgid "Missing username or password"
 msgstr ""
 
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile applications"
+msgstr ""
+
 msgid "Mode"
 msgstr ""
 
@@ -855,6 +897,9 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+msgid "Network library listing screen."
+msgstr ""
+
 msgid "Never generate a table of content"
 msgstr ""
 
@@ -865,9 +910,6 @@ msgid "New revision"
 msgstr ""
 
 msgid "New site id"
-msgstr ""
-
-msgid "Next"
 msgstr ""
 
 msgid "Nice title"
@@ -912,6 +954,9 @@ msgstr ""
 msgid "Numeric List"
 msgstr ""
 
+msgid "OPDS"
+msgstr ""
+
 msgid "Open wiki"
 msgstr ""
 
@@ -944,8 +989,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -1128,13 +1173,13 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-msgid "Previous"
-msgstr ""
-
 msgid "Priority"
 msgstr ""
 
 msgid "Private"
+msgstr ""
+
+msgid "Procedure"
 msgstr ""
 
 msgid "Produce slides."
@@ -1237,12 +1282,6 @@ msgstr ""
 msgid "Reset all"
 msgstr ""
 
-msgid "Results"
-msgstr ""
-
-msgid "Results found"
-msgstr ""
-
 msgid "Retrieved on DATE from URL"
 msgstr ""
 
@@ -1281,6 +1320,9 @@ msgid "Sans font"
 msgstr ""
 
 msgid "Search"
+msgstr ""
+
+msgid "Search results"
 msgstr ""
 
 msgid "Section"
@@ -1391,6 +1433,9 @@ msgstr ""
 msgid "Special pages"
 msgstr ""
 
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+
 msgid "Stale editing"
 msgstr ""
 
@@ -1450,6 +1495,12 @@ msgstr ""
 msgid "Term"
 msgstr ""
 
+msgid "Test"
+msgstr ""
+
+msgid "Tested applications, in this order of preference"
+msgstr ""
+
 msgid "Text body, before any section"
 msgstr ""
 
@@ -1467,6 +1518,9 @@ msgstr ""
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The OPDS address for this site is:"
 msgstr ""
 
 msgid ""
@@ -1570,6 +1624,9 @@ msgstr ""
 msgid "This section will not produce a slide"
 msgstr ""
 
+msgid "This site is private and mobile applications cannot access the OPDS."
+msgstr ""
+
 msgid "This text does not exist"
 msgstr ""
 
@@ -1598,8 +1655,7 @@ msgstr ""
 msgid "Titles"
 msgstr "Titles"
 
-#. (c.uri_for_action("/publish/pending"))
-#. (c.uri_for_action('/publish/pending')
+#. (pending_url)
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -1803,8 +1859,7 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 
-#. (c.uri_for_action("/user/create"))
-#. (c.uri_for_action('/user/create')
+#. (create_url)
 msgid "You can create a peer at %1"
 msgstr ""
 
@@ -1821,8 +1876,7 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
-#. (c.uri_for_action('/user/edit', [ user.id ])
+#. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr ""
 
@@ -1844,17 +1898,20 @@ msgstr ""
 msgid "Your password is %1."
 msgstr ""
 
+msgid "Your section here..."
+msgstr ""
+
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr ""
 
 msgid "Your subsection here..."
 msgstr ""
 
-#. (site.canonical_url_secure)
+#. (home)
 msgid "Your user at %1 has been created."
 msgstr ""
 
-#. (user.username)
+#. (username)
 msgid "Your username is %1."
 msgstr ""
 
@@ -1977,6 +2034,10 @@ msgstr ""
 msgid "right"
 msgstr ""
 
+#. (args)
+msgid "string"
+msgstr ""
+
 msgid "strong emphasis"
 msgstr ""
 
@@ -1993,10 +2054,6 @@ msgid "superscript"
 msgstr ""
 
 msgid "taken"
-msgstr ""
-
-#. (args)
-msgid "text"
 msgstr ""
 
 msgid "texts by authors, title, topic..."

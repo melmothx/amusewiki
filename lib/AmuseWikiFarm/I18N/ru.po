@@ -21,6 +21,11 @@ msgstr ""
 msgid "%1 doesn't exist"
 msgstr "%1 не существует"
 
+#. ($c->stash->{site}->full_name)
+#. (site.full_name)
+msgid "%1 on mobile"
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr ""
 
@@ -55,7 +60,7 @@ msgid ""
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
 
-#. (site.canonical_url)
+#. (home)
 msgid "A new revision has been created at %1"
 msgstr "Новая редакция была создана в %1"
 
@@ -108,6 +113,9 @@ msgid ""
 msgstr ""
 
 msgid "Add sections to the bookbuilder"
+msgstr ""
+
+msgid "Add the OPDS URL"
 msgstr ""
 
 msgid "Add the selected parts to the bookbuilder"
@@ -267,8 +275,8 @@ msgstr ""
 "Изменения внесены, спасибо! После того, как администрация проверит\n"
 "текст,вы сможете увидеть изменения на сайте."
 
-#. (revision.title.uri)
 #. ($c->stash->{revision}->title->uri)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Изменения для %1"
 
@@ -304,6 +312,9 @@ msgstr "Завершено"
 
 msgid "Computing of differences took"
 msgstr "Вычисление различий заняло"
+
+msgid "Confirm"
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr ""
@@ -405,9 +416,6 @@ msgstr ""
 msgid "Display url as"
 msgstr "Отобразить url как"
 
-msgid "Displaying"
-msgstr "Записей на странице"
-
 msgid "Division factor"
 msgstr "Ширина текстового блока"
 
@@ -477,6 +485,11 @@ msgid "Errors"
 msgstr "Ошибки"
 
 msgid ""
+"Even if this site has a responsive, mobile-friendly layout,\n"
+"  it does not provide a dedicated mobile application."
+msgstr ""
+
+msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
@@ -515,6 +528,12 @@ msgstr ""
 
 msgid "Filters"
 msgstr "Опции"
+
+msgid "Find the add catalogue menu."
+msgstr ""
+
+msgid "Find the network library menu, or equivalent."
+msgstr ""
 
 msgid "First Author and Second Author"
 msgstr "Первый Автор и Второй Автор"
@@ -638,6 +657,12 @@ msgstr "Как сменить пароль"
 msgid "How to work with a remote repo"
 msgstr ""
 
+msgid ""
+"However, you can browse, search, download and read the texts\n"
+"  from mobile reading applications which support the so-called OPDS\n"
+"  protocol."
+msgstr ""
+
 msgid "I am human"
 msgstr "Я человек"
 
@@ -647,14 +672,14 @@ msgstr "Сделать спуск полос (готовый к печати PDF
 msgid "Id"
 msgstr "Id"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -713,6 +738,14 @@ msgid ""
 msgstr ""
 "В тексте номер в квадратных скобках воспринимается как\n"
 " номер сноски, если сноска существует. "
+
+#. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
+msgid ""
+"In this example, we use FBreader, but the procedure is\n"
+"  pretty much the same for all applications. All you have to do is to\n"
+"  add %1 to the network libraries."
+msgstr ""
 
 msgid "Inline elements"
 msgstr "Символьные стили"
@@ -780,6 +813,9 @@ msgstr "Код языка документа (2 или 3 буквы)"
 
 msgid "Language selection"
 msgstr "Язык интерфейса"
+
+msgid "Languages supported"
+msgstr ""
 
 msgid "Last updated"
 msgstr "Последние обновления"
@@ -865,6 +901,12 @@ msgstr "Отсутствующие перенаправления"
 msgid "Missing username or password"
 msgstr "Отсутствует имя пользователя или пароль"
 
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile applications"
+msgstr ""
+
 msgid "Mode"
 msgstr "Режим"
 
@@ -892,6 +934,9 @@ msgstr "Моё описание"
 msgid "Name"
 msgstr "Имя"
 
+msgid "Network library listing screen."
+msgstr ""
+
 msgid "Never generate a table of content"
 msgstr "Не создавать содержание"
 
@@ -903,9 +948,6 @@ msgstr "Новая правка"
 
 msgid "New site id"
 msgstr "Новый id сайта"
-
-msgid "Next"
-msgstr "Следующая"
 
 msgid "Nice title"
 msgstr "Хорошее название"
@@ -949,6 +991,9 @@ msgstr ""
 msgid "Numeric List"
 msgstr "Список с нумерацией"
 
+msgid "OPDS"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Открытая вики"
 
@@ -985,8 +1030,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDF не могут быть использованы в теле текста"
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF не прописанные в %1 будут сохранены но проигнорированы"
 
@@ -1195,13 +1240,13 @@ msgstr "Подготовить этот текст к публикации"
 msgid "Preview"
 msgstr "Предпросмотр"
 
-msgid "Previous"
-msgstr "Предыдущий"
-
 msgid "Priority"
 msgstr "Приоритет"
 
 msgid "Private"
+msgstr ""
+
+msgid "Procedure"
 msgstr ""
 
 msgid "Produce slides."
@@ -1312,12 +1357,6 @@ msgstr "Репозиторий"
 msgid "Reset all"
 msgstr ""
 
-msgid "Results"
-msgstr "Результаты"
-
-msgid "Results found"
-msgstr "Записей найдено"
-
 msgid "Retrieved on DATE from URL"
 msgstr "Скопировано ДАТА c ССЫЛКА"
 
@@ -1357,6 +1396,9 @@ msgstr ""
 
 msgid "Search"
 msgstr "Поиск"
+
+msgid "Search results"
+msgstr ""
 
 msgid "Section"
 msgstr "Раздел"
@@ -1466,6 +1508,9 @@ msgstr "Специальные блоки"
 msgid "Special pages"
 msgstr "Специальные страницы"
 
+msgid "Specify a whitespace-separated list of languages to activate it."
+msgstr ""
+
 msgid "Stale editing"
 msgstr "Устаревшие редакции"
 
@@ -1527,6 +1572,12 @@ msgstr "TeX"
 msgid "Term"
 msgstr ""
 
+msgid "Test"
+msgstr ""
+
+msgid "Tested applications, in this order of preference"
+msgstr ""
+
 msgid "Text body, before any section"
 msgstr ""
 
@@ -1546,6 +1597,9 @@ msgstr "Тексты"
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
+msgstr ""
+
+msgid "The OPDS address for this site is:"
 msgstr ""
 
 msgid ""
@@ -1657,6 +1711,9 @@ msgstr "Правка редактируется кем-то другим"
 msgid "This section will not produce a slide"
 msgstr ""
 
+msgid "This site is private and mobile applications cannot access the OPDS."
+msgstr ""
+
 msgid "This text does not exist"
 msgstr "Текст не существует"
 
@@ -1685,8 +1742,7 @@ msgstr ""
 msgid "Titles"
 msgstr "Названия"
 
-#. (c.uri_for_action("/publish/pending"))
-#. (c.uri_for_action('/publish/pending')
+#. (pending_url)
 msgid "To apply the changes, you can visit %1"
 msgstr "Для применения изменений вы можете посетить %1"
 
@@ -1901,8 +1957,7 @@ msgstr ""
 "\" (находится рядом с ссылками на скачивание). Вы сможете добавить или "
 "удалить текст позже."
 
-#. (c.uri_for_action("/user/create"))
-#. (c.uri_for_action('/user/create')
+#. (create_url)
 msgid "You can create a peer at %1"
 msgstr "Вы можете создать аналог в %1"
 
@@ -1920,8 +1975,7 @@ msgstr "Вы вышли"
 msgid "You may want to resume the editing of one of them"
 msgstr "Возможно вы захотите продолжить редактирование одной из них"
 
-#. (c.uri_for_action("/user/edit", [ user.id ]))
-#. (c.uri_for_action('/user/edit', [ user.id ])
+#. (edit_url)
 msgid "You should change your password right away at %1"
 msgstr "Вы должны сразу изменить свой пароль на %1"
 
@@ -1945,17 +1999,20 @@ msgstr "Ваша часть здесь"
 msgid "Your password is %1."
 msgstr "Ваш пароль %1"
 
+msgid "Your section here..."
+msgstr ""
+
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Ваш подзаголовок третьего уровня здесь"
 
 msgid "Your subsection here..."
 msgstr "Ваш подзаголовк здесь"
 
-#. (site.canonical_url_secure)
+#. (home)
 msgid "Your user at %1 has been created."
 msgstr "Ваш пользователь в %1 был создан"
 
-#. (user.username)
+#. (username)
 msgid "Your username is %1."
 msgstr "Ваше имя пользователя %1"
 
@@ -2082,6 +2139,10 @@ msgstr "правка"
 msgid "right"
 msgstr ""
 
+#. (args)
+msgid "string"
+msgstr ""
+
 msgid "strong emphasis"
 msgstr "жирный"
 
@@ -2099,10 +2160,6 @@ msgstr "надстрочный"
 
 msgid "taken"
 msgstr "обработка"
-
-#. (args)
-msgid "text"
-msgstr "текст"
 
 msgid "texts by authors, title, topic..."
 msgstr "тексты по автору, названию, теме"
@@ -2149,6 +2206,24 @@ msgstr ""
 "\"Устаревшее редактирование\" означает, что правка была недоделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Displaying"
+#~ msgstr "Записей на странице"
+
+#~ msgid "Next"
+#~ msgstr "Следующая"
+
+#~ msgid "Previous"
+#~ msgstr "Предыдущий"
+
+#~ msgid "Results"
+#~ msgstr "Результаты"
+
+#~ msgid "Results found"
+#~ msgstr "Записей найдено"
+
+#~ msgid "text"
+#~ msgstr "текст"
 
 #~ msgid "Please give a name to the collection."
 #~ msgstr "Пожалуйста, дайте название сборнику."
