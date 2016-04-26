@@ -47,7 +47,7 @@ my $site_id = '0mail0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
 $site->update({ mail_from => 'root@amusewiki.org',
-                locale => 'hr',
+                locale => 'en',
                 mail_notify => 'notifications@amusewiki.org',
               });
 

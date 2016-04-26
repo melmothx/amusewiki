@@ -37,7 +37,7 @@ sub _build_transport {
         $class = "Email::Sender::Transport::$class";
     }
     load $class;
-    log_info { "Loading $class as transport" };
+    Dlog_info { "Loading $class as transport with $_" } $self->mailer_args;
     return $class->new($self->mailer_args);
 }
 
@@ -45,19 +45,17 @@ sub _build_transport {
 sub send_mail {
     my ($self, $mkit, $tokens) = @_;
     die "Missing arguments to sendmail!" unless $mkit && $tokens;
-    foreach my $mandatory (qw/from to cc subject/) {
-        die "Missing mandatory string $mandatory" unless defined $tokens->{$mandatory};
-    }
     my $path = path($self->mkit_location, $mkit);
     log_debug { "Using $path for mkit" };
     my $ok;
     try {
         my $kit = Email::MIME::Kit->new({ source => "$path" });
         my $email = $kit->assemble($tokens);
-        unless ($tokens->{cc}) {
+        if (defined $tokens->{cc} && !$tokens->{cc}) {
             $email->header_set('cc');
         }
         sendmail($email, { transport => $self->transport });
+        log_info { "Email sent with $mkit" };
         $ok = 1;
     } catch {
         my $error = $_;
