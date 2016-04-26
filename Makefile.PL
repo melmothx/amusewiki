@@ -75,6 +75,7 @@ requires 'Log::Dispatch';
 requires 'Log::Dispatch::File::Stamped';
 # for the Log::Dispatch::Email::MailSend module
 requires 'Mail::Send';
+requires 'Email::Sender';
 requires 'Email::MIME::Kit' => '3';
 requires 'Email::MIME::Kit::Renderer::TT' => '1.001';
 
