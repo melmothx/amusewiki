@@ -355,27 +355,36 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 my $mail_to =   $c->stash->{site}->mail_notify;
                 my $mail_from = $c->stash->{site}->mail_from;
                 if ($mail_to && $mail_from) {
-                    my $subject = $revision->title->uri;
+                    my $uri = $revision->title->uri;
+                    my @url_args = ($revision->f_class, $uri, $revision->id);
+                    my @file_urls;
+                    if (my $files = $revision->attached_files) {
+                        foreach my $file (@$files) {
+                            push @file_urls,
+                              $c->uri_for_action('/edit/edit', [ $revision->f_class,
+                                                                 $uri, $file ]);
+                        }
+                    }
+                    Dlog_debug { "Files are $_ " } \@file_urls;
                     my %mail = (
+                                lh => $c->stash->{lh},
                                 to => $mail_to,
                                 from => $mail_from,
-                                subject => $revision->title->uri,
-                                template => 'commit.tt',
+                                subject => $uri,
+                                cc => '',
+                                revision_is_new => $revision->is_new_text || 0,
+                                home => $c->uri_for('/'),
+                                resume_url => $c->uri_for_action('/edit/edit', [ @url_args ]),
+                                diff_url   => $c->uri_for_action('/edit/diff', [ @url_args ]),
+                                pending_url => $c->uri_for_action('/publish/pending'),
+                                attachments => \@file_urls,
+                                messages => $revision->message,
                                );
-                    log_info { "Sending mail from $mail_from to $mail_to" };
                     if (my $cc = Email::Valid->address($params->{email})) {
                         $mail{cc} = $cc;
-                        log_info { "Adding CC: $cc" };
                     }
-                    elsif (my $mail = $params->{email}) {
-                        log_warn { "Invalid mail $mail provided, ignoring" };
-                    }
-                    $c->stash(email => \%mail);
-                    $c->forward($c->view('Email::Template'));
-                    if (scalar(@{ $c->error })) {
-                        $c->error(0);
-                        $c->flash(error_msg => $c->loc('Error sending mail!'));
-                    }
+                    log_info { "Sending mail from $mail_from to $mail_to" };
+                    $c->model('Mailer')->send_mail(commit => \%mail);
                 }
                 $c->flash(status_msg => $c->loc("Changes committed, thanks! They are now waiting to be published"));
                 if ($c->user_exists || $c->stash->{site}->human_can_publish ) {

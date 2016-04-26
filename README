@@ -169,17 +169,15 @@ runs le.sh as amuse, but reload nginx when needed):
 
 Add this stanza to amusewikifarm_local.conf:
 
-<View::Email::Template>
- # these are Email::Sender::Simple options
- <sender>
+<Model::Mailer>
   mailer SMTP
+ # these are Email::Sender::Transport::$mailer options
   <mailer_args>
     host     => 'my.smtp.host, # defaults to localhost
     sasl_username => 'mail',
     sasl_password => 'blabla',
   </mailer_args>
- </sender>
-</View::Email::Template>
+</Model::Mailer>
 
 ** EXPOSE THE GIT REPOSITORY WITH GIT-DAEMON
 

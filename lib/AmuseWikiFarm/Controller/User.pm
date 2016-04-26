@@ -208,6 +208,7 @@ sub create :Chained('user') :Args(0) {
             %insertion = %$insert;
         }
         else {
+            Dlog_debug { "error: insert and errors: $_" } [ $insert, @errors ];
             $c->flash(error_msg => join ("\n", map { $c->loc($_) } @errors));
             return;
         }
@@ -215,6 +216,7 @@ sub create :Chained('user') :Args(0) {
 
         # at this point we should be good, if the user doesn't exist
         if ($users->find({ username => $insertion{username} })) {
+            log_debug { "User already exists" };
             $c->flash(error_msg => $c->loc('Such username already exists'));
             return;
         }
@@ -231,29 +233,26 @@ sub create :Chained('user') :Args(0) {
 
         if (my $mail_from = $c->stash->{site}->mail_from) {
             my %mail = (
+                        lh => $c->stash->{lh},
                         to => $user->email,
+                        cc => '',
                         from => $mail_from,
-                        subject => $c->loc('User created'),
-                        template => 'newuser.tt'
+                        home => $c->uri_for('/'),
+                        username  => $user->username,
+                        password => $insertion{password},
+                        create_url => $c->uri_for_action('/user/create'),
+                        edit_url => $c->uri_for_action('/user/edit', [ $user->id ]),
                        );
-            log_info { "Sending mail from $mail_from to " . $user->email };
             if (my $usercc = $c->user->get('email')) {
                 if (my $cc = Email::Valid->address($usercc)) {
                     $mail{cc} = $cc;
-                    log_info { "Adding CC: $cc" };
                 }
             }
-            $c->stash(
-                      email => \%mail,
-                      password => $insertion{password},
-                     );
-            $c->forward($c->view('Email::Template'));
-            if (scalar(@{ $c->error })) {
-                $c->error(0);
-                $c->flash(error_msg => $c->loc('Error sending mail!'));
+            if ($c->model('Mailer')->send_mail(newuser => \%mail)) {
+                $c->flash->{status_msg} .= "\n" . $c->loc('Email sent!');
             }
             else {
-                $c->flash->{status_msg} .= "\n" . $c->loc('Email sent!');
+                $c->flash(error_msg => $c->loc('Error sending mail!'));
             }
         }
         $c->response->redirect($c->uri_for('/'));

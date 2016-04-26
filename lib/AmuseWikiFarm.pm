@@ -125,16 +125,10 @@ __PACKAGE__->config(
        },
    );
 
-# like above, but without the wrapper, so you get no layout with this.
-# Used for sending email and such.
+__PACKAGE__->config('Model::Mailer' => {
+    mkit_location => __PACKAGE__->path_to('mkits')->stringify,
+});
 
-__PACKAGE__->config(
-    'View::TT' => {
-        INCLUDE_PATH => [
-            __PACKAGE__->path_to('root', 'src'),
-           ],
-       },
-   );
 
 # Configure SimpleDB Authentication
 __PACKAGE__->config(

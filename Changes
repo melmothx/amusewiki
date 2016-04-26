@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.802 UNRELEASED
+
+ - Decoupled mail sending from the application [INTERNAL]
+
+If you used to customize the mailer arguments, please update the
+configuration as per README.
+
 1.801 2016-04-22
 
  - Added /help/opds to explain what to do with the OPDS link

@@ -1,0 +1,15 @@
+
+[% lh.loc("Your user at [_1] has been created.", home) %]
+
+[% lh.loc("Your username is [_1].", username) %]
+
+[% lh.loc("Your password is [_1].", password) %]
+
+[% lh.loc("You should change your password right away at [_1]", edit_url) %]
+
+[% lh.loc("You can create a peer at [_1]", create_url) %]
+
+
+
+
+
