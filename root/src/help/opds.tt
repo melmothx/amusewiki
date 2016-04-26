@@ -76,7 +76,7 @@
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-3.png') %]" alt="FBReader-3" />
     <p>
       <strong>3.</strong>
-      [% loc('Find the add catalogue  menu.') %]
+      [% loc('Find the add catalogue menu.') %]
     </p>
   </div>
 </div>
