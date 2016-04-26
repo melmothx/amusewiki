@@ -125,6 +125,11 @@ __PACKAGE__->config(
        },
    );
 
+__PACKAGE__->config('Model::Mailer' => {
+    mkit_location => __PACKAGE__->path_to('mkits')->stringify,
+});
+
+
 # Configure SimpleDB Authentication
 __PACKAGE__->config(
     'Plugin::Authentication' => {

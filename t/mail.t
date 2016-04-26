@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 41;
+use Test::More tests => 42;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -118,7 +118,8 @@ $mech->set_fields(author => 'pippo',
                   textbody => "Hello world again\n");
 $mech->click;
 $mech->form_id('museform');
-$mech->set_fields(email => 'uploader@amusewiki.org');
+$mech->set_fields(email => 'uploader@amusewiki.org',
+                  attachment => 't/files/shot.png');
 $mech->click("commit");
 
 
@@ -171,6 +172,8 @@ $mech->click("commit");
         like $body, qr{subject: pippo-my-test-2}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/};
         like $body, qr{cc: uploader\@amusewiki.org}i;
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/p-m-pi},
+          "Found attachment";
         diag $body;
     }
 

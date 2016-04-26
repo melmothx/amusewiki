@@ -360,10 +360,12 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                     my @file_urls;
                     if (my $files = $revision->attached_files) {
                         foreach my $file (@$files) {
-                            push @file_urls, $c->uri_for_action('/edit/edit', [ @url_args,
-                                                                                $file ]);
+                            push @file_urls,
+                              $c->uri_for_action('/edit/edit', [ $revision->f_class,
+                                                                 $uri, $file ]);
                         }
                     }
+                    Dlog_debug { "Files are $_ " } \@file_urls;
                     my %mail = (
                                 lh => $c->stash->{lh},
                                 to => $mail_to,

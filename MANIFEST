@@ -193,6 +193,7 @@ lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Feed.pm
 lib/AmuseWikiFarm/Model/Lexicon.pm
+lib/AmuseWikiFarm/Model/Mailer.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
 lib/AmuseWikiFarm/Role/Controller/ListingDisplay.pm
@@ -229,6 +230,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
 lib/AmuseWikiFarm/Utils/LexiconMigration.pm
+lib/AmuseWikiFarm/Utils/Mailer.pm
 lib/AmuseWikiFarm/Utils/Paginator.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
@@ -696,6 +698,9 @@ t/lexicon-2.t
 t/lexicon-migration.t
 t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
+t/mail.t
+t/mkits/test/body.txt
+t/mkits/test/manifest.json
 t/model-user.t
 t/model_DB.t
 t/model_Webserver.t
@@ -795,7 +800,6 @@ t/users.t
 t/utils-bookbuilder.t
 t/utils-cgitsetup.t
 t/utils-paginator.t
-t/view_Email-Template.t
 t/view_HTML.t
 t/view_StaticFile.t
 t/view_TT.t
