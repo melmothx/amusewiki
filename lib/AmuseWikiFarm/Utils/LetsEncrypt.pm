@@ -188,9 +188,10 @@ sub process {
         if ($self->fetch and -f $self->fullchain) {
             my $backup = path($self->directory, $self->now_string);
             $backup->mkpath;
-            path(self->live_key)->copy("$backup");
-            path(self->live_csr)->copy("$backup");
-            path(self->live_fullchain)->copy("$backup");
+            foreach my $file ($self->live_key, $self->live_csr, $self->live_fullchain) {
+                my $path = path($file);
+                $path->copy("backup") if $path->exists;
+            }
             # replace key and cert. we have: fullchain.pem, key.pem,
             # account_key.pem account_key.pem shouldn't change if it
             # exists. this tries to be atomic, but there is a slight
