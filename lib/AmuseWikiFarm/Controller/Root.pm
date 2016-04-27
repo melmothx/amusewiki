@@ -78,7 +78,7 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
             return;
         }
         else {
-            log_warn { "$host not found in vhosts" };
+            log_info { "$host not found in vhosts" };
         }
     }
     unless ($site) {
