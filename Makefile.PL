@@ -81,6 +81,9 @@ requires 'Email::MIME::Kit::Renderer::TT' => '1.001';
 
 requires 'HTTP::Tiny';
 requires 'Crypt::XkcdPassword';
+# let's encrypt
+requires 'Crypt::OpenSSL::X509';
+requires 'Protocol::ACME';
 
 # our own dogfood
 requires 'Text::Amuse' => '0.60';

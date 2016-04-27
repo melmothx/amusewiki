@@ -229,6 +229,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
+lib/AmuseWikiFarm/Utils/LetsEncrypt.pm
 lib/AmuseWikiFarm/Utils/LexiconMigration.pm
 lib/AmuseWikiFarm/Utils/Mailer.pm
 lib/AmuseWikiFarm/Utils/Paginator.pm
@@ -694,6 +695,7 @@ t/html-upload.t
 t/indexer.t
 t/jobber.t
 t/lang-parsing.t
+t/letsencrypt.t
 t/lexicon-2.t
 t/lexicon-migration.t
 t/lexicon.t
