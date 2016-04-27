@@ -251,8 +251,10 @@ sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
                                         title => $c->loc('Titles'),
                                         description => $c->loc('texts sorted by title'),
                                        );
-    my $texts = $site->titles->published_texts->sorted_by_title;
-    while (my $text = $texts->next) {
+    my @texts = $site->titles->published_texts->sorted_by_title
+      ->search(undef, { prefetch => { title_categories => 'category' }})->all;
+    while (@texts) {
+        my $text = shift @texts;
         if (my $entry = $text->opds_entry) {
             $feed->add_to_acquisitions(%$entry);
         }

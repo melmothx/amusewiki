@@ -70,9 +70,10 @@ sub status_is_published_or_deferred {
 }
 
 sub sorted_by_title {
-    return shift->search(undef,
-                         { order_by => [qw/sorting_pos
-                                           title/] });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search(undef,
+                         { order_by => ["$me.sorting_pos", "$me.title"]});
 }
 
 =head2 published_texts

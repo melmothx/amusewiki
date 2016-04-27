@@ -901,7 +901,8 @@ sub opds_entry {
     my %out = (
                title => $self->_clean_html($self->title),
                href => $self->full_uri,
-               authors => [ map { +{ name => $_->name, uri => $_->full_uri } } $self->authors->all ],
+               authors => [ map { +{ name => $_->name, uri => $_->full_uri } }
+                            grep { $_->type eq 'author' } $self->categories->all ],
                epub => $self->full_uri . '.epub',
                language => $self->lang || 'en',
                issued => $self->date || '',
