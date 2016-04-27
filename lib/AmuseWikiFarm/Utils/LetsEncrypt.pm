@@ -196,9 +196,11 @@ sub process {
             # account_key.pem account_key.pem shouldn't change if it
             # exists. this tries to be atomic, but there is a slight
             # race condition. We'll have to live with this
-            path($self->key)->move($self->live_key);
-            path($self->fullchain)->move($self->live_fullchain);
-            path($self->csr)->move($self->live_csr);
+            foreach my $method (qw/key fullchain csr/) {
+                my $live = "live_$method";
+                # spew is atomic
+                path($self->$live)->spew(path($self->$method)->slurp);
+            }
         }
         # and that's it I think.
     }
