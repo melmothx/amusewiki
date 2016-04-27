@@ -157,7 +157,9 @@ sub fetch {
 
 sub _convert_to_pem  {
     my ($self, $der) = @_;
-    my $pem = Crypt::OpenSSL::X509->new_from_string($der, 'DER')->as_string('PEM');
+    my $pem = Crypt::OpenSSL::X509
+      ->new_from_string($der, Crypt::OpenSSL::X509::FORMAT_ASN1)
+      ->as_string(Crypt::OpenSSL::X509::FORMAT_PEM);
     return $pem;
 }
 
