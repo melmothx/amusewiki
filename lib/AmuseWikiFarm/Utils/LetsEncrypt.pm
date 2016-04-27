@@ -190,7 +190,7 @@ sub process {
             $backup->mkpath;
             foreach my $file ($self->live_key, $self->live_csr, $self->live_fullchain) {
                 my $path = path($file);
-                $path->copy("backup") if $path->exists;
+                $path->copy("$backup") if $path->exists;
             }
             # replace key and cert. we have: fullchain.pem, key.pem,
             # account_key.pem account_key.pem shouldn't change if it
