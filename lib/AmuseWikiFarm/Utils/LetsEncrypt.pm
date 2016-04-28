@@ -32,7 +32,7 @@ sub _build_account_key {
     unless (-f $file) {
         system(openssl => genrsa => -out => "$file", "2048") == 0
           or die "Cannot create $file!";
-        chmod 0600, $file;
+        $file->chmod(0600);
     }
     # this is not a Path::Tiny because it's a fixed one
     return "$file";
@@ -137,8 +137,8 @@ sub make_csr {
             -keyout => $self->key->stringify,
             -out  => $self->csr->stringify,
             -config => "$config") == 0 or die "Failed to create cert";
-    chmod 0600, $self->csr->stringify;
-    chmod 0600, $self->key->stringify;
+    $self->csr->chmod(0600);
+    $self->key->chmod(0600);
 }
 
 sub _openssl_config_body {
@@ -237,6 +237,7 @@ sub _backup_and_install {
         $self->$live->copy("$backup") if $self->$live->exists;
         # spew is atomic
         $self->$live->spew($self->$method->slurp);
+        $self->$live->chmod(0600);
     }
 }
 
