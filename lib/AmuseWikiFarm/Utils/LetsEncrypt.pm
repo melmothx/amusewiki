@@ -223,9 +223,6 @@ sub process {
             return 1;
         }
     }
-    else {
-        warn "Let's encrypt failed\n";
-    }
     return;
 }
 
