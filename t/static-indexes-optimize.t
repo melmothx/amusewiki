@@ -12,8 +12,9 @@ use Data::Dumper;
 use DateTime;
 use File::Spec::Functions qw/catfile/;
 use File::Basename;
-use Test::More tests => 3;
+use Test::More tests => 4;
 use Test::Differences;
+use Test::WWW::Mechanize::Catalyst;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 # stress test
@@ -81,5 +82,14 @@ foreach my $file (qw/titles.html authors.html  topics.html/) {
     my $exp = read_file(catfile(qw/t static-indexes-expected/, $file));
     eq_or_diff $got, $exp, $file;
 }
+{
+    $xsite->update({ mode => 'modwiki' });
+    my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                   host => $xsite->canonical);
 
-
+    # used to be 30+ seconds
+    $time = time();
+    $mech->get_ok('/opds/crawlable');
+    diag $mech->content;
+    diag "Request in " . (time() - $time) . " seconds";
+}
