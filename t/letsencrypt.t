@@ -57,6 +57,33 @@ SorAlTmTwsW3G3WinKBtd0YRRBQnOdosjvx+7GeTky4l3FsQqtLJYonRYRAI8qAb
 OBabfWz7k5OGIod2RNkken1/toky79+i9jY7v1sEHwy8Fe4BT35viww7Umjb3gnZ
 5bV44QPWpaAl9qQNB2Bsj7eNL8yEAnQ8cBuNq9zZ7Gip26TFmhhfaO0=
 -----END CERTIFICATE-----
+-----BEGIN CERTIFICATE-----
+MIIEqTCCApGgAwIBAgIRAIvhKg5ZRO08VGQx8JdhT+QwDQYJKoZIhvcNAQELBQAw
+GjEYMBYGA1UEAwwPRmFrZSBMRSBSb290IFgxMB4XDTE2MDMyMzIyNTkwNFoXDTM2
+MDMyMzIyNTkwNFowIjEgMB4GA1UEAwwXRmFrZSBMRSBJbnRlcm1lZGlhdGUgWDEw
+ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDtWKySDn7rWZc5ggjz3ZB0
+8jO4xti3uzINfD5sQ7Lj7hzetUT+wQob+iXSZkhnvx+IvdbXF5/yt8aWPpUKnPym
+oLxsYiI5gQBLxNDzIec0OIaflWqAr29m7J8+NNtApEN8nZFnf3bhehZW7AxmS1m0
+ZnSsdHw0Fw+bgixPg2MQ9k9oefFeqa+7Kqdlz5bbrUYV2volxhDFtnI4Mh8BiWCN
+xDH1Hizq+GKCcHsinDZWurCqder/afJBnQs+SBSL6MVApHt+d35zjBD92fO2Je56
+dhMfzCgOKXeJ340WhW3TjD1zqLZXeaCyUNRnfOmWZV8nEhtHOFbUCU7r/KkjMZO9
+AgMBAAGjgeEwgd4wDgYDVR0PAQH/BAQDAgGGMBIGA1UdEwEB/wQIMAYBAf8CAQAw
+HQYDVR0OBBYEFMDMA0a5WCDMXHJw8+EuyyCm9Wg6MHgGCCsGAQUFBwEBBGwwajAz
+BggrBgEFBQcwAYYnaHR0cDovL29jc3Auc3RnLWludC14MS5sZXRzZW5jcnlwdC5v
+cmcvMDMGCCsGAQUFBzAChidodHRwOi8vY2VydC5zdGctaW50LXgxLmxldHNlbmNy
+eXB0Lm9yZy8wHwYDVR0jBBgwFoAUwSZ0pIpEoOb6ICjYXCOaRYgYeeAwDQYJKoZI
+hvcNAQELBQADggIBAHODDwZVaO5EqEYoVvEPPzaZas5BNVRHUAdc+xNg4oKACBAW
+o3mnX1tKr9lsWSDxLrCE7y+mdRq37PKzapEaL1q8KYXgzI1Ua7JeyOvCs4IMmhSZ
+HLSJMFgAv77nD28kB6teMlJI+NxmvD5cmsDl+1C2D862DFuiy3R/80c++ZIqfWg3
+CvsQmwx0bategh3cT8mPwQEdRW0LpgomT37kSxZSGn9TzPXQ+NSvD/CpEF0mVQWM
+09aiOE3QWg8BpdzxpbbmEhtWv4MNU1U3iyYNjaPzqD1J3R/7IjJmsNbDY5XKoqIB
+AeHPisSzP8CdCwQpJC8rBDefUfrbYqvhWuCff+amrUe01nvp9jtWefwUWWSwcjEg
+xYwz2vt6TgLNw5wBWk854x6yc323se/Wp7u7F9lguCRIUMPVH9MfBzR1wyUfpbZa
+eFVPFkHQsKv5ydKNQlk8fO97xXhpK4yueMNLnjbWEDKnEvJtCsbqlQm3XHWvqhz9
+B/V1c95n8Z9Av2uVZ5HvZKnA9OXi4WF1ES6hkiFzom/exWxBxd+skh6yJuX1edpX
+L5TSN5XTa5OPONWh3AQfz7/0aenJNhyPJ4687pwQpGir4ctvT1k3enSRNqO6Vwxv
+0BB50f7tpC0k/XzGyQyCVXo6jjDv1057VbZTUB+Y7BzXvcm7aglHPA71K3nW
+-----END CERTIFICATE-----
 CERT
 
 foreach my $method (qw/csr key cert chain fullchain/) {
@@ -65,14 +92,14 @@ foreach my $method (qw/csr key cert chain fullchain/) {
         $le->$method->spew('blabla');
     }
 }
-$le->live_cert->spew($fake_cert);
+$le->live_fullchain->spew($fake_cert);
 ok($le->live_cert_names_ok, "All the names are in");
 ok $le->live_cert_object->extensions_by_oid->{"2.5.29.17"}->to_string, "Found SAN";
 diag $le->live_cert_object->extensions_by_oid->{"2.5.29.17"}->to_string;
 diag $le->live_cert_object->subject;
 diag "Installing empty certs";
 $le->_backup_and_install;
-$le->live_cert->spew($fake_cert);
+$le->live_fullchain->spew($fake_cert);
 ok (path($le->directory)->child($le->now_string)->exists, "Found the backup directory");
 
 ok (defined $le->live_cert_is_valid, "Checked cert: " . $le->live_cert_is_valid);

@@ -244,7 +244,8 @@ sub _backup_and_install {
 
 sub live_cert_object {
     my $self = shift;
-    my $cert = $self->live_cert;
+    # we check the fullchain because the existing setup created only them
+    my $cert = $self->live_fullchain;
     my $obj;
     if (-f $cert) {
         try {
