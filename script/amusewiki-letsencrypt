@@ -69,7 +69,7 @@ foreach my $site (@sites) {
         }
         if ($le->live_cert_is_valid) {
             print "Cert is valid for $canonical\n" if $verbose;
-            print $canonical . ': ' $le->live_cert_object->notAfter . "\n";
+            print $canonical . ': ' . $le->live_cert_object->notAfter . "\n";
         }
         elsif ($check_only) {
             print "Certificate missing or invalid for $canonical\n";
