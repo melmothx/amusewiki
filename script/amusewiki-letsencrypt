@@ -60,6 +60,13 @@ foreach my $site (@sites) {
                 names => [ $site->all_site_hostnames ],
                 staging => $staging,
                );
+        print "Running self-check\n" if $verbose;
+        if ($le->self_check) {
+            print "looks good\n" if $verbose;
+        }
+        else {
+            print "Self-check failed\n";
+        }
         if ($le->live_cert_is_valid) {
             print "Cert is valid for $canonical\n" if $verbose;
         }

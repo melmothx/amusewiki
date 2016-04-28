@@ -10,6 +10,7 @@ use Protocol::ACME::Challenge::LocalFile;
 use Crypt::OpenSSL::X509;
 use DateTime;
 use Try::Tiny;
+use Data::Dumper;
 
 has staging => (is => 'ro', isa => Bool, default => 1);
 
@@ -126,7 +127,6 @@ sub _build_host {
         return $self->live_host;
     }
 }
-
 
 sub make_csr {
     my $self = shift;
@@ -313,13 +313,13 @@ sub self_check {
     my $failed = 0;
     foreach my $name (@{ $self->names }) {
         my $filename = $name . $now;
-        $filename =~ s/^[a-z0-9]//g;
+        $filename =~ s/[^a-z0-9]//g;
         my $check_file = path($location, $filename);
         $check_file->spew('OK');
         my $response = HTTP::Tiny->new
           ->get('http://' . $name . '.well-known/acme-challenge/' . $filename);
         unless ($response->{success}) {
-            warn "$name couldn't be verified\n";
+            warn "$name couldn't be verified: " . Dumper($response);
             $failed++;
         }
         $check_file->remove;
