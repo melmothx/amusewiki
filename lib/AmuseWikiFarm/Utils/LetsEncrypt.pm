@@ -1,6 +1,6 @@
 package AmuseWikiFarm::Utils::LetsEncrypt;
 
-# logic blatantly stolen from https://github.com/oetiker/AcmeFetch
+# logic and code blatantly stolen from https://github.com/oetiker/AcmeFetch.
 
 use Moo;
 use Types::Standard qw/Bool ArrayRef Str Object/;
@@ -220,12 +220,13 @@ sub process {
         if ($self->fetch and -f $self->fullchain) {
             $self->_backup_and_install;
             # create an hidded directory
+            return 1;
         }
-        # and that's it I think.
     }
     else {
         warn "Let's encrypt failed\n";
     }
+    return;
 }
 
 sub _backup_and_install {
@@ -239,6 +240,69 @@ sub _backup_and_install {
         $self->$live->spew($self->$method->slurp);
         $self->$live->chmod(0600);
     }
+}
+
+sub live_cert_object {
+    my $self = shift;
+    my $cert = $self->live_cert;
+    my $obj;
+    if (-f $cert) {
+        try {
+            $obj = Crypt::OpenSSL::X509->new_from_file($cert->stringify);
+        } catch {
+            warn "$_";
+            $obj = undef
+        };
+    }
+    return $obj;
+}
+
+sub live_cert_names_ok {
+    my $self = shift;
+    my $ok;
+    if (my $x509 = $self->live_cert_object) {
+        try {
+            my %dns;
+            if ($x509->subject =~ m{CN=([^,/\s]+)}) {
+                $dns{$1} = 1;
+            }
+            if (my $san = $x509->extensions_by_oid->{"2.5.29.17"}) {
+                map { /DNS:([^\s]+)/ and $dns{$1} = 1 } split(/\s*,\s*/, $san->to_string);
+            }
+            my $missing = 0;
+            foreach my $name (@{$self->names}) {
+                unless ($dns{$name}) {
+                    warn "Missing $name";
+                    $missing++;
+                }
+            }
+            $ok = !$missing;
+        } catch {
+            warn $_;
+            $ok = 0;
+        }
+    }
+    return $ok;
+}
+
+sub live_cert_expiration_ok {
+    my $self = shift;
+    if (my $x509 = $self->live_cert_object) {
+        if ($x509->checkend(60 * 60 * 24 * 30)) {
+            return 0;
+        }
+        else {
+            return 1;
+        }
+    }
+}
+
+sub live_cert_is_valid {
+    my $self = shift;
+    if ($self->live_cert_names_ok && $self->live_cert_expiration_ok) {
+        return 1;
+    }
+    return 0;
 }
 
 1;
