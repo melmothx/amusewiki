@@ -88,8 +88,9 @@ foreach my $file (qw/titles.html authors.html  topics.html/) {
                                                    host => $xsite->canonical);
 
     # used to be 30+ seconds
+    diag "Requesting /opds/crawlable";
     $time = time();
     $mech->get_ok('/opds/crawlable');
-    diag $mech->content;
+    # diag $mech->content;
     diag "Request in " . (time() - $time) . " seconds";
 }

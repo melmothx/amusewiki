@@ -24,6 +24,7 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_parse_file_path
                     muse_filepath_is_valid
                     clean_username
+                    clean_html
                     muse_filename_is_valid/;
 
 =head1 NAME
@@ -817,6 +818,13 @@ sub clean_username {
         }
     }
     return 'anonymous';
+}
+
+sub clean_html {
+    my ($string) = @_;
+    return "" unless defined $string;
+    $string =~ s/<.+?>//g;
+    return decode_entities($string);
 }
 
 1;

@@ -24,6 +24,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $id = '0opds0';
 my $src = catdir(qw/t test-repos/, $id);
 my $dest = catdir(repo => $id);
+remove_tree($dest);
 unless (-d $dest) {
     dircopy($src, $dest); 
 }
@@ -656,7 +657,7 @@ $expected = <<'XML';
   </entry>
   <entry>
     <id>http://0opds0.amusewiki.org/library/title-entry-31</id>
-    <title>Title 31</title>
+    <title>Title 31 &amp; test</title>
     <updated>2016-01-31T00:00:00Z</updated>
     <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
     <author>
@@ -667,7 +668,7 @@ $expected = <<'XML';
       <name>A2 31</name>
       <uri>http://0opds0.amusewiki.org/category/author/a2-31</uri>
     </author>
-    <summary>Subtitle 31</summary>
+    <summary>Subtitle &amp; 31</summary>
     <link rel="http://opds-spec.org/acquisition" href="http://0opds0.amusewiki.org/library/title-entry-31.epub" type="application/epub+zip"/>
   </entry>
 </feed>

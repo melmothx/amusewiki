@@ -1,8 +1,10 @@
-#title Title 31
+#title Title 31 & <em>test</em>
 #author author 31
 #SORTauthors A1 31, A2 31
 #pubdate 2016-01-31
-#subtitle Subtitle 31
+#subtitle Subtitle & <em>31</em>
 #lang en
+#notes Notes
+#source Source
 
 body

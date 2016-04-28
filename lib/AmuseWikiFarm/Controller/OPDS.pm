@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
 use DateTime;
+use AmuseWikiFarm::Utils::Amuse qw/clean_html/;
 
 =head1 NAME
 
@@ -251,14 +252,69 @@ sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
                                         title => $c->loc('Titles'),
                                         description => $c->loc('texts sorted by title'),
                                        );
+    # This is as much optimized as it can get. The bottleneck now is
+    # in the XML generation, and there is nothing to do, I think.
+    my $time = my $now = time();
     my @texts = $site->titles->published_texts->sorted_by_title
-      ->search(undef, { prefetch => { title_categories => 'category' }})->all;
+      ->search(undef,
+               {
+                result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                collapse => 1,
+                join => { title_categories => 'category' },
+                columns => [qw/me.uri
+                               me.title
+                               me.lang
+                               me.date
+                               me.pubdate
+                               me.subtitle
+                              /],,
+                '+columns' => {
+                               'title_categories.title_id' => 'title_categories.title_id',
+                               'title_categories.category_id' => 'title_categories.category_id',
+                               'title_categories.category.uri' => 'category.uri',
+                               'title_categories.category.type' => 'category.type',
+                               'title_categories.category.name' => 'category.name',
+                              }
+               })->all;
+    my $dt_parser = $c->model('DB')->storage->datetime_parser;
+    # Dlog_debug { "texts: $_" } [ \@texts, $c->model('DB')->storage->datetime_parser ];
+    log_debug { $now = time();
+                my $elapsed = $now - $time;
+                $time = $now;
+                "query done in $elapsed seconds" };
     while (@texts) {
         my $text = shift @texts;
-        if (my $entry = $text->opds_entry) {
-            $feed->add_to_acquisitions(%$entry);
+        my %entry = (
+                     title => clean_html($text->{title}),
+                     href => '/library/' . $text->{uri},
+                     epub => '/library/' . $text->{uri} . '.epub',
+                     language => $text->{lang} || 'en',
+                     issued => $text->{date} || '',
+                     summary => clean_html($text->{subtitle}),
+                     files => [ '/library/' . $text->{uri} . '.epub', ],
+                    );
+        if ($text->{pubdate}) {
+            $entry{updated} = $dt_parser->parse_datetime($text->{pubdate});
         }
+        if (my $cats = $text->{title_categories}) {
+            foreach my $cat (@$cats) {
+                if (my $category = $cat->{category}) {
+                    if ($category->{type} eq 'author') {
+                        $entry{authors} ||= [];
+                        push @{$entry{authors}}, {
+                                                  name => $category->{name},
+                                                  uri => '/category/author/' . $category->{uri},
+                                                 };
+                    }
+                }
+            }
+        }
+        $feed->add_to_acquisitions(%entry);
     }
+    log_debug { $now = time();
+                my $elapsed = $now - $time;
+                $time = $now;
+                "parsing done in $elapsed seconds" };
     $c->detach($c->view('Atom'));
 }
 
