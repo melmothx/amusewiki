@@ -43,7 +43,7 @@ if ($help) {
 my @sites = $schema->resultset('Site')->search({ active => 1,
                                                  ssl_key => [undef, ''] })->all;
 
-my $got;
+my $got = 0;
 
 foreach my $site (@sites) {
     # skip the sites with an explicit key installed
@@ -69,6 +69,7 @@ foreach my $site (@sites) {
         }
         if ($le->live_cert_is_valid) {
             print "Cert is valid for $canonical\n" if $verbose;
+            print $canonical . ': ' $le->live_cert_object->notAfter . "\n";
         }
         elsif ($check_only) {
             print "Certificate missing or invalid for $canonical\n";
@@ -82,3 +83,5 @@ foreach my $site (@sites) {
         }
     }
 }
+
+print "Certificates installed: $got\n";
