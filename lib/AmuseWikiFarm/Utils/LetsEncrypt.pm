@@ -34,52 +34,81 @@ sub _build_account_key {
           or die "Cannot create $file!";
         chmod 0600, $file;
     }
+    # this is not a Path::Tiny because it's a fixed one
     return "$file";
 }
 
 has now_string => (is => 'ro', default => sub { my $now = DateTime->now;
                                                 return '.' . $now->ymd . '-' . $now->epoch });
 
-has csr => (is => 'lazy', isa => Str);
+has csr => (is => 'lazy', isa => Object);
 
 sub _build_csr {
     my $self = shift;
-    return path($self->working_directory, 'csr.pem')->stringify;
+    return path($self->working_directory, 'csr.pem');
 }
 
-has key => (is => 'lazy', isa => Str);
+has key => (is => 'lazy', isa => Object);
 
 sub _build_key {
     my $self = shift;
-    return path($self->working_directory, 'key.pem')->stringify;
+    return path($self->working_directory, 'key.pem');
 }
 
-has fullchain => (is => 'lazy', isa => Str);
+has cert => (is => 'lazy', isa => Object);
+
+sub _build_cert {
+    my $self = shift;
+    return path($self->working_directory, 'cert.pem');
+}
+
+has chain => (is => 'lazy', isa => Object);
+
+sub _build_chain {
+    my $self = shift;
+    return path($self->working_directory, 'chain.pem');
+}
+
+has fullchain => (is => 'lazy', isa => Object);
 
 sub _build_fullchain {
     my $self = shift;
-    return path($self->working_directory, 'fullchain.pem')->stringify;
+    return path($self->working_directory, 'fullchain.pem');
 }
 
-has live_csr => (is => 'lazy', isa => Str);
+has live_csr => (is => 'lazy', isa => Object);
 
 sub _build_live_csr {
     my $self = shift;
-    return path($self->directory, 'csr.pem')->stringify;
+    return path($self->directory, 'csr.pem');
 }
 
-has live_key => (is => 'lazy', isa => Str);
+has live_key => (is => 'lazy', isa => Object);
 
 sub _build_live_key {
     my $self = shift;
-    return path($self->directory, 'key.pem')->stringify;
+    return path($self->directory, 'key.pem');
 }
 
-has live_fullchain => (is => 'lazy', isa => Str);
+has live_cert => (is => 'lazy', isa => Object);
+
+sub _build_live_cert {
+    my $self = shift;
+    return path($self->directory, 'cert.pem');
+}
+
+has live_chain => (is => 'lazy', isa => Object);
+
+sub _build_live_chain {
+    my $self = shift;
+    return path($self->directory, 'chain.pem');
+}
+
+has live_fullchain => (is => 'lazy', isa => Object);
 
 sub _build_live_fullchain {
     my $self = shift;
-    return path($self->directory, 'fullchain.pem')->stringify;
+    return path($self->directory, 'fullchain.pem');
 }
 
 sub staging_host { 'acme-staging.api.letsencrypt.org' };
@@ -105,11 +134,11 @@ sub make_csr {
     $config->spew($self->_openssl_config_body);
     system (qw(openssl req -nodes -newkey rsa:2048 -batch -reqexts SAN -outform PEM
                -keyform PEM),
-            -keyout => $self->key,
-            -out  => $self->csr,
+            -keyout => $self->key->stringify,
+            -out  => $self->csr->stringify,
             -config => "$config") == 0 or die "Failed to create cert";
-    chmod 0600, $self->csr;
-    chmod 0600, $self->key;
+    chmod 0600, $self->csr->stringify;
+    chmod 0600, $self->key->stringify;
 }
 
 sub _openssl_config_body {
@@ -164,10 +193,13 @@ sub fetch {
             $acme->check_challenge;
             $acme->cleanup_challenge($challenge);
         }
-        my $der = $acme->sign($self->csr);
-        my $chain_der = $acme->chain;
-        path($self->fullchain)->spew($self->_convert_to_pem($der),
-                                     $self->_convert_to_pem($chain_der));
+        my $der = $acme->sign($self->csr->stringify);
+        my $chain = $acme->chain;
+        my $der_pem = $self->_convert_to_pem($der);
+        my $chain_pem = $self->_convert_to_pem($chain);
+        $self->fullchain->spew($der_pem, $chain_pem);
+        $self->cert->spew($der_pem);
+        $self->chain->spew($chain_pem);
         $ok = 1;
     } catch { warn "Certificate fetching failed with $_" };
     return $ok;
@@ -186,21 +218,8 @@ sub process {
     $self->make_csr;
     if (-f $self->key and -f $self->csr) {
         if ($self->fetch and -f $self->fullchain) {
-            my $backup = path($self->directory, $self->now_string);
-            $backup->mkpath;
-            foreach my $file ($self->live_key, $self->live_csr, $self->live_fullchain) {
-                my $path = path($file);
-                $path->copy("$backup") if $path->exists;
-            }
-            # replace key and cert. we have: fullchain.pem, key.pem,
-            # account_key.pem account_key.pem shouldn't change if it
-            # exists. this tries to be atomic, but there is a slight
-            # race condition. We'll have to live with this
-            foreach my $method (qw/key fullchain csr/) {
-                my $live = "live_$method";
-                # spew is atomic
-                path($self->$live)->spew(path($self->$method)->slurp);
-            }
+            $self->_backup_and_install;
+            # create an hidded directory
         }
         # and that's it I think.
     }
@@ -209,5 +228,16 @@ sub process {
     }
 }
 
+sub _backup_and_install {
+    my $self = shift;
+    my $backup = path($self->directory, $self->now_string);
+    $backup->mkpath;
+    foreach my $method (qw/key csr cert chain fullchain/) {
+        my $live = "live_" . $method;
+        $self->$live->copy("$backup") if $self->$live->exists;
+        # spew is atomic
+        $self->$live->spew($self->$method->slurp);
+    }
+}
 
 1;
