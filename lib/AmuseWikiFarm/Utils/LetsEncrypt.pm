@@ -317,7 +317,7 @@ sub self_check {
         my $check_file = path($location, $filename);
         $check_file->spew('OK');
         my $response = HTTP::Tiny->new
-          ->get('http://' . $name . '.well-known/acme-challenge/' . $filename);
+          ->get('http://' . $name . '/.well-known/acme-challenge/' . $filename);
         unless ($response->{success}) {
             warn "$name couldn't be verified: " . Dumper($response);
             $failed++;
