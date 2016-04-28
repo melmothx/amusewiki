@@ -215,6 +215,7 @@ sub _convert_to_pem  {
 
 sub process {
     my $self = shift;
+    return unless $self->self_check;
     $self->make_csr;
     if (-f $self->key and -f $self->csr) {
         if ($self->fetch and -f $self->fullchain) {
@@ -301,6 +302,29 @@ sub live_cert_is_valid {
         return 1;
     }
     return 0;
+}
+
+sub self_check {
+    my $self = shift;
+    # this is naive check, but better than nothing
+    my $location = path($self->root, '.well-known', 'acme-challenge');
+    $location->mkpath;
+    my $now = time();
+    my $failed = 0;
+    foreach my $name (@{ $self->names }) {
+        my $filename = $name . $now;
+        $filename =~ s/^[a-z0-9]//g;
+        my $check_file = path($location, $filename);
+        $check_file->spew('OK');
+        my $response = HTTP::Tiny->new
+          ->get('http://' . $name . '.well-known/acme-challenge/' . $filename);
+        unless ($response->{success}) {
+            warn "$name couldn't be verified\n";
+            $failed++;
+        }
+        $check_file->remove;
+    }
+    return !$failed;
 }
 
 1;
