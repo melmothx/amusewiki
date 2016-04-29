@@ -129,7 +129,6 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
         if (my $refresh = $config_generator->generate_nginx_config(@all_sites)) {
             $c->stash(exec_as_root => $refresh);
         }
-        $config_generator->update_letsencrypt_cronjob(@all_sites);
     }
 
     $c->stash(esite => $site);
