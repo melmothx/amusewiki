@@ -47,6 +47,7 @@ CREATE TABLE site (
        ssl_cert VARCHAR(255),
        ssl_ca_cert VARCHAR(255),
        ssl_chained_cert VARCHAR(255),
+       acme_certificate INTEGER(1) NOT NULL DEFAULT 0,
 
        -- boolean for multilanguage
        multilanguage VARCHAR(255) NOT NULL DEFAULT '',
