@@ -267,7 +267,7 @@ sub _build_app_directory {
     # check against myself
     my $cwd = getcwd;
     die "Application started from the wrong directory: $cwd!"
-      unless (-d 'repo' && -f 'dbic.yaml');
+      unless (-d 'repo' && -d 'xapian');
     return $cwd;
 }
 
