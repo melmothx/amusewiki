@@ -136,9 +136,19 @@ created. This should be good enough to get you started.
 You can set the path to the key and certificate in the admin console,
 if you already have them.
 
-If the key and the certificate is not set, you can try the
-amusewiki-letsencrypt script, which will try to fetch the certificates
-from Let's Encrypt.
+If you don't have the certificate, you can request a free, valid, and
+hassle-free certificate from Let's Encrypt, turning on the option in
+the admin console.
+
+Once enabled, the LE certificates will be checked by the amusewiki
+daemon once a day, and renewed automatically if needed (a month before
+the expiration). The problem is that you still have to reload the
+webserver for the new certificates to pick up. If the logger is
+sending you mail, you should see the warning.
+
+Anyway, the debian package installs a cronjob in /etc/cron.daily to
+reload nginx once a day to avoid the need to login and reload
+manually. You should do the same. See debian/amusewiki.cron.daily
 
 
 ** MAIL WITH SMTP
