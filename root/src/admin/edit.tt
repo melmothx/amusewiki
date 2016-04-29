@@ -696,24 +696,36 @@ kpsewhich mylogo.pdf</pre>
 
     <h3>[% loc('SSL configuration') %]</h3>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.secure_site %]checked="checked"[% END %]
-                 name="secure_site" />
-          [% loc('Use SSL for authenticated users') %]
-        </label>
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-10">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.secure_site %]checked="checked"[% END %]
+                   name="secure_site" />
+            [% loc('Use SSL for authenticated users') %]
+          </label>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.secure_site_only %]checked="checked"[% END %]
-                 name="secure_site_only" />
-          [% loc('The generate webserver configuration will redirect
-          all the HTTP requests to HTTPS') %]
-        </label>
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-10">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.secure_site_only %]checked="checked"[% END %]
+                   name="secure_site_only" />
+            [% loc('The generate webserver configuration will redirect
+            all the HTTP requests to HTTPS') %]
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-10">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.acme_certificate %]checked="checked"[% END %]
+                   name="acme_certificate" />
+            [% loc("Automatically request and renew SSL certificates from Let's Encrypt") %]
+          </label>
+        </div>
       </div>
     </div>
 

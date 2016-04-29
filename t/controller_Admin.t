@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 56;
+use Test::More tests => 62;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -120,6 +120,10 @@ foreach my $sitespec ({
                                   canonical => $sitespec->{canonical},
                                  });
 
+    my $created = $schema->resultset('Site')->find($site_id);
+    ok( $created, "Site created");
+
+    ok(!$created->acme_certificate, "Default is false for acme cert");
     is $mech->uri->path, "/admin/sites/edit/$site_id", "Path is fine";
 
     $mech->content_contains("$site_id</h2>");
@@ -130,12 +134,13 @@ foreach my $sitespec ({
                                        locale => 'en',
                                        mail_notify => 'me@amusewiki.org',
                                        mail_from => 'noreply@amusewiki.org',
+                                       acme_certificate => 1,
                                       },
                        button => 'edit_site');
 
     is $mech->uri->path, "/admin/sites/edit/$site_id";
     $mech->content_lacks(q{id="error_message"});
-
+    is $mech->status, '200', "Request ok";
     $mech->get_ok('/admin/sites');
 
     $mech->content_contains('noreply@amusewiki.org', "Found the mail")
@@ -146,10 +151,8 @@ foreach my $sitespec ({
 
     $mech->content_contains('noreply@amusewiki.org', "Found the mail");
     $mech->content_contains('me@amusewiki.org', "Found the mail (2)");
-
-    my $created = $schema->resultset('Site')->find($site_id);
-    ok( $created, "Site created");
-
+    $created->discard_changes;
+    ok( $created->acme_certificate, "Option picked up");
     my $created_root = $created->repo_root;
     ok (-d $created_root, "Repo root created");
     ok ($created->git, "Created site has a git");
