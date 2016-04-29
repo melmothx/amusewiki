@@ -25,17 +25,8 @@ commands.
 
 =cut
 
-# hidden feature until simp_le doesn't enter debian in some way
-# print "# Updating let's encrypt cronjob " . $confgenerator->letsencrypt_cronjob_path . "\n";
-$confgenerator->update_letsencrypt_cronjob(@sites);
-
 
 if (my $out = $confgenerator->generate_nginx_config(@sites)) {
     print "# please execute as root:\n";
     print $out;
 }
-else {
-    print "# no action required, nginx configuration is up-to-date\n";
-}
-
-

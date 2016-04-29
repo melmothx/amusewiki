@@ -238,6 +238,21 @@ sub _build_ssl_directory {
     return $ssl_dir;
 }
 
+has acme_root => (is => 'ro',
+                  isa => 'Str',
+                  lazy => 1,
+                  builder => '_build_acme_root');
+
+sub _build_acme_root {
+    my $self = shift;
+    my $acme_dir = File::Spec->catdir($self->ssl_directory, 'ACME_ROOT');
+    unless (-d $acme_dir) {
+        log_info { "Creating $acme_dir" };
+        mkdir $acme_dir or die "Cannot create $acme_dir $!";
+    }
+    return $acme_dir;
+}
+
 has app_directory => (is => 'ro',
                       isa => 'Str',
                       lazy => 1,
@@ -429,8 +444,11 @@ INCLUDE
             }
         }
     }
-
+    my $acme_root = $self->acme_root or die "No acme root?";
     print $fh <<"INCLUDE";
+    location /.well-known/acme-challenge/ {
+        root $acme_root;
+    }
     location /git/cgit.cgi {
         deny all;
     }
@@ -577,79 +595,6 @@ REDIRECT
     }
     $stanza .= "\n";
     return $stanza;
-}
-
-sub update_letsencrypt_cronjob {
-    my ($self, @sites) = @_;
-    my $script_path = $self->letsencrypt_cronjob_path;
-    my $tmpdir = File::Temp->newdir;
-    my $out = File::Spec->catfile($tmpdir, 'le.sh');
-    my $script = $self->generate_letsencrypt_cronjob(@sites);
-    if ($self->_slurp($script_path) ne $script) {
-        log_info { "Updating $script_path" };
-        open (my $fh, '>:encoding(UTF-8)', $out) or die "Cannot open $out $!";
-        print $fh $script;
-        close $fh;
-        copy ($script_path, $script_path . '.' . DateTime->now->strftime('%F-%H-%M-%S'));
-        move ($out, $script_path) or log_error { "Cannot move $out to $script_path" };
-        chmod 0755, $script_path;
-    }
-}
-
-sub generate_letsencrypt_cronjob {
-    my ($self, @sites) = @_;
-    my $exe_path = File::Spec->catdir($self->app_directory, qw/opt simp_le venv bin/);
-    my $ssl_dir = $self->ssl_directory;
-
-    my $script =<<"EOF";
-#!/bin/bash
-set -e
-export PATH=$exe_path:\$PATH
-reload=0
-if [ \$UID = 0 ]; then
-    exit 2
-fi
-
-EOF
-    foreach my $site (@sites) {
-        next unless $site->active;
-        next unless $site->secure_site || $site->secure_site_only;
-        # skip sites with the ssl config explicitely set.
-        next if $site->ssl_key;
-        if (my $mail = $site->mail_notify) {
-            my @vhosts = ($site->canonical);
-            push @vhosts, map { $_->name } $site->vhosts->all;
-            my @command = (qw/simp_le -f key.pem -f fullchain.pem -f account_key.json/);
-            push @command, '--email', $mail;
-            push @command, '--default_root', $self->webserver_root;
-            push @command, map { -d => $_ } @vhosts;
-            my $command = join (' ', @command);
-            my $local_ssl_dir = File::Spec->catdir($ssl_dir, $vhosts[0]);
-            $script .= <<"EOF";
-# $vhosts[0]
-mkdir -p $local_ssl_dir;
-cd $local_ssl_dir;
-if $command; then
-    ((reload=reload+1))
-fi
-
-EOF
-        }
-        else {
-            log_warn { $site->id . " has no mail notify!" };
-        }
-    }
-
-    $script .= <<"EOF";
-cd $ssl_dir
-chmod 600 */key.pem
-if [ \$reload -gt 0 ];then
-    exit 0
-else
-    exit 1
-fi
-EOF
-    return $script;
 }
 
 sub _slurp {
