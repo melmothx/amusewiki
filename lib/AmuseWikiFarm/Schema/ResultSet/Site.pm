@@ -5,6 +5,8 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 use Data::Dumper;
+use AmuseWikiFarm::Log::Contextual;
+use Path::Tiny;
 
 =head1 NAME
 
@@ -20,9 +22,84 @@ Return the active sites, ordered by id and with vhosts prefetched.
 
 sub active_only {
     my ($self) = @_;
-    return $self->search({ active => 1 },
-                         { order_by => [qw/id/],
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.active" => 1 },
+                         { order_by => [ "$me.id" ],
                            prefetch => 'vhosts' });
+}
+
+=head2 with_acme_cert
+
+Return the sites with acme_certificate set to 1
+
+=cut
+
+sub with_acme_cert {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.acme_certificate" => 1 });
+}
+
+=head2 check_and_update_acme_certificates($update, $verbose)
+
+Check and update the acme certificates. If a true argument is passed,
+the update is performed, otherwise just the check is done.
+
+=cut
+
+sub check_and_update_acme_certificates {
+    my ($self, $update, $verbose) = @_;
+    my @sites = $self->active_only->with_acme_cert->all;
+    my $got = 0;
+    log_debug { "Got " . scalar(@sites) . " sites with acme" };
+    if (@sites) {
+        require AmuseWikiFarm::Utils::LetsEncrypt;
+        my $root = path(qw/ssl ACME_ROOT/);
+        $root->mkpath unless $root->exists;
+        foreach my $site (@sites) {
+            if (my $canonical = $site->canonical) {
+                log_debug {  "Checking $canonical" };
+                my $directory = path('ssl', $canonical);
+                $directory->mkpath unless $directory->exists;
+                my $le = AmuseWikiFarm::Utils::LetsEncrypt
+                  ->new(directory => "$directory",
+                        root => "$root",
+                        mailto => $site->mail_notify || 'root@' . $canonical,
+                        names => [ $site->all_site_hostnames ],
+                        staging => 0);
+                if ($le->live_cert_is_valid) {
+                    log_info { $canonical . ' expires on ' . $le->live_cert_object->notAfter  };
+                    if ($verbose) {
+                        print $canonical . ' expires on ' . $le->live_cert_object->notAfter . "\n";
+                    }
+                }
+                elsif ($le->self_check) {
+                    log_info { "$canonical needs new certificate (and self-check looks good)!" };
+                    print "$canonical needs new certificate (and self-check looks good)!\n" if $verbose;
+                    if ($update) {
+                        print "Requiring certificate for $canonical\n" if $verbose;
+                        if ($le->process) {
+                            warn "$canonical has new cert, please reload the webserver\n" if $verbose;
+                            log_warn { "Retrieved new certificate for $canonical, please reload the webserver" };
+                            $got++;
+                        }
+                        else {
+                            warn "Failed to get certificate for $canonical\n" if $verbose;
+                            Dlog_error { "Couldn't retrieve cert $_ " } $le;
+                        }
+                    }
+                }
+                else {
+                    log_error { "Self-check failed for $canonical and cert is not valid!" };
+                    warn "Self-check failed for $canonical and cert is not valid!\n" if $verbose;
+                }
+            }
+            else {
+                log_error { "Missing canonical (?) in " . $site->id };
+            }
+        }
+    }
+    return $got;
 }
 
 =head2 deserialize_site(\%data)

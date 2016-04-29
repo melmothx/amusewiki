@@ -319,7 +319,7 @@ sub self_check {
         my $response = HTTP::Tiny->new
           ->get('http://' . $name . '/.well-known/acme-challenge/' . $filename);
         unless ($response->{success}) {
-            warn "$name couldn't be verified: " . Dumper($response);
+            warn "$name couldn't be self-verified: " . Dumper($response);
             $failed++;
         }
         $check_file->remove;

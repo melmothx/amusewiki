@@ -31,6 +31,7 @@ nice(19);
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $count = -1;
 my $pidfile = '.amusewiki.jobber.lock';
+my $daily = 0;
 
 while (1) {
     sleep AMW_POLLING;
@@ -89,6 +90,22 @@ while (1) {
         open (my $lock, '>', $pidfile) or die "Can't open pidfile $!";
         flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
         print $lock $$;
+
+        my $now = time();
+        if (($now - $daily) > (60 * 60 * 24)) {
+            log_info { "Daily job initialized" };
+            $daily = $now;
+            eval {
+                # for now install the loop, but with updates disabled
+                $schema->resultset('Site')->check_and_update_acme_certificates(0);
+            };
+            if ($@) {
+                log_error { "Errors: $@" };
+            }
+            log_info { "Daily job finished" };
+        }
+
+
         $schema->resultset('Job')->fail_stale_jobs;
         if ($count == 0) {
             log_info { "Checking deferred titles, old jobs and revisions" };

@@ -177,6 +177,13 @@ __PACKAGE__->table("site");
   is_nullable: 1
   size: 255
 
+=head2 acme_certificate
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 multilanguage
 
   data_type: 'varchar'
@@ -416,6 +423,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "ssl_chained_cert",
   { data_type => "varchar", is_nullable => 1, size => 255 },
+  "acme_certificate",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "multilanguage",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "active",
@@ -696,8 +705,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-03-01 09:18:14
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:G66RLSrNM6pDqwzcyecwYw
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-04-29 11:47:18
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:aCt6iFhlfMFmNs60/R6L1A
 
 =head2 other_sites
 

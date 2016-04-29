@@ -223,6 +223,8 @@ sub _build_cgit_proxy {
     return AmuseWikiFarm::Archive::CgitProxy->new(port => $self->cgit_port);
 }
 
+### BEWARE IF YOU CHANGE THIS. CHECK AmuseWikiFarm::Schema::ResultSet::Site;
+
 has ssl_directory => (is => 'ro',
                       isa => 'Str',
                       lazy => 1,
@@ -237,6 +239,8 @@ sub _build_ssl_directory {
     }
     return $ssl_dir;
 }
+
+### BEWARE IF YOU CHANGE THIS. CHECK AmuseWikiFarm::Schema::ResultSet::Site;
 
 has acme_root => (is => 'ro',
                   isa => 'Str',
