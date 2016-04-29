@@ -3,14 +3,12 @@
 use strict;
 use warnings;
 use lib 'lib';
-use AmuseWikiFarm;
-use AmuseWikiFarm::Utils::LetsEncrypt;
+use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catdir/;
 use Getopt::Long;
 use Pod::Usage;
 
-my $schema = AmuseWikiFarm->model('DB');
-my $confgenerator = AmuseWikiFarm->model('Webserver');
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 =pod
 
@@ -20,18 +18,16 @@ amusewiki-letsencrypt - get SSL certificates from Let's encrypt
 
 =head1 SYNOPSIS
 
-amusewiki-letsencrypt [--check-only | --staging | --verbose | --help ]
+amusewiki-letsencrypt [ --check-only --help ]
+
+Update the acme certificates.
 
 =cut
 
-my $staging = 0;
 my $check_only = 0;
-my $verbose = 0;
 my $help = 0;
 
 GetOptions("check-only" => \$check_only,
-           "staging" => \$staging,
-           "verbose" => \$verbose,
            "help" => \$help,
           ) or die;
 
@@ -40,48 +36,6 @@ if ($help) {
     exit 2;
 }
 
-my @sites = $schema->resultset('Site')->search({ active => 1,
-                                                 ssl_key => [undef, ''] })->all;
+my $updates = $schema->resultset('Site')->check_and_update_acme_certificates(!$check_only, 1);
 
-my $got = 0;
-
-foreach my $site (@sites) {
-    # skip the sites with an explicit key installed
-    if (my $canonical = $site->canonical) {
-        my $dir = catdir($confgenerator->ssl_directory, $canonical);
-        unless (-d $dir) {
-            mkdir $dir or die "Cannot create $dir";
-        }
-        my $le = AmuseWikiFarm::Utils::LetsEncrypt
-          ->new(
-                directory => $dir,
-                root => $confgenerator->acme_root,
-                mailto => $site->mail_notify || 'root@' . $canonical,
-                names => [ $site->all_site_hostnames ],
-                staging => $staging,
-               );
-        print "Running self-check\n" if $verbose;
-        if ($le->self_check) {
-            print "looks good\n" if $verbose;
-        }
-        else {
-            print "Self-check failed\n";
-        }
-        if ($le->live_cert_is_valid) {
-            print "Cert is valid for $canonical\n" if $verbose;
-            print $canonical . ': ' . $le->live_cert_object->notAfter . "\n";
-        }
-        elsif ($check_only) {
-            print "Certificate missing or invalid for $canonical\n";
-        }
-        else {
-            print "Requiring certificate\n";
-            if ($staging) {
-                print "Beware, asking the staging site, the certificate will be fake\n";
-            }
-            $got++ if $le->process;
-        }
-    }
-}
-
-print "Certificates installed: $got\n";
+print "Certificates installed: $updates\n";
