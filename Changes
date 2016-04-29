@@ -4,7 +4,7 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.802 UNRELEASED
+1.802 2016-04-29
 
  - Decoupled mail sending from the application [INTERNAL]
  - Optimized /opds/crawlable
@@ -12,6 +12,8 @@ dedicated tree.
 
 If you used to customize the mailer arguments, please update the
 configuration as per README.
+
+This is a beta release.
 
 1.801 2016-04-22
 
