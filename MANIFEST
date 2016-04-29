@@ -816,7 +816,6 @@ t/utils-cgitsetup.t
 t/utils-paginator.t
 t/view_HTML.t
 t/view_StaticFile.t
-t/view_TT.t
 t/xapian.t
 t/xs-sessions.t
 t/zz-finish-tests.t
