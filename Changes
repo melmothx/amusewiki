@@ -7,6 +7,8 @@ dedicated tree.
 1.802 UNRELEASED
 
  - Decoupled mail sending from the application [INTERNAL]
+ - Optimized /opds/crawlable
+ - Removed simp_le from the stack and use Protocol::ACME instead
 
 If you used to customize the mailer arguments, please update the
 configuration as per README.
