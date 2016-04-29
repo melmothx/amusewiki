@@ -266,7 +266,7 @@ sub _build_app_directory {
     my $self = shift;
     # check against myself
     my $cwd = getcwd;
-    die "Application started from the wrong directory!"
+    die "Application started from the wrong directory: $cwd!"
       unless (-d 'repo' && -f 'dbic.yaml');
     return $cwd;
 }
