@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.803 2016-04-29
+
+ - Plugged Protocol::ACME into the jobber
+ - Added debian cronjob
+ - Updated documentation
+ - DB dump and admin option for Let's Encrypt
+
+This is another beta
+
 1.802 2016-04-29
 
  - Decoupled mail sending from the application [INTERNAL]
