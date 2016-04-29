@@ -88,6 +88,9 @@ sub check_and_update_acme_certificates {
                             Dlog_error { "Couldn't retrieve cert $_ " } $le;
                         }
                     }
+                    else {
+                        log_warn { "$canonical needs a new certificate, update was disabled!" };
+                    }
                 }
                 else {
                     log_error { "Self-check failed for $canonical and cert is not valid!" };
