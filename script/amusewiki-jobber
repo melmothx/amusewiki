@@ -96,8 +96,7 @@ while (1) {
             log_info { "Daily job initialized" };
             $daily = $now;
             eval {
-                # for now install the loop, but with updates disabled
-                $schema->resultset('Site')->check_and_update_acme_certificates(0);
+                $schema->resultset('Site')->check_and_update_acme_certificates(1);
             };
             if ($@) {
                 log_error { "Errors: $@" };
