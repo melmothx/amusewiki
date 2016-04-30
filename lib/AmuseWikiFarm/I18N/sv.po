@@ -211,6 +211,9 @@ msgstr "Författare (flera)"
 msgid "Authors for indexing"
 msgstr "Författare för indexering"
 
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
 msgid "Available category tags for header"
 msgstr "Tillgängliga kategori-taggar för header"
 

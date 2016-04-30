@@ -209,6 +209,9 @@ msgstr "Авторы"
 msgid "Authors for indexing"
 msgstr "Авторы (для индексации)"
 
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
 msgid "Available category tags for header"
 msgstr "Доступные категории тегов для заголовка"
 

@@ -206,6 +206,9 @@ msgstr "Kirjoittajat"
 msgid "Authors for indexing"
 msgstr "Kirjoittajat hakemistoa varten"
 
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
 msgid "Available category tags for header"
 msgstr "Käytössä olevat kategoriatagit"
 

@@ -224,6 +224,9 @@ msgstr "Auteurs"
 msgid "Authors for indexing"
 msgstr "Auteurs pour indexation"
 
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
 msgid "Available category tags for header"
 msgstr "Étiquettes de catégorie disponibles pour le titre"
 

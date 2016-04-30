@@ -227,6 +227,9 @@ msgstr ""
 "Автори за индексирање - во заграда наведи го и изворното писмо - пр.: \"Џон "
 "Зерзан (John Zerzan)\""
 
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
 msgid "Available category tags for header"
 msgstr "Расположиви ознаки за категории за заглавието"
 

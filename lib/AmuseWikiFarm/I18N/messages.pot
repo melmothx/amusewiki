@@ -207,7 +207,7 @@ msgid ""
 "      not needed"
 msgstr ""
 
-#: root/src/admin/edit.tt:724
+#: root/src/admin/edit.tt:736
 msgid "Apache is not currently supported"
 msgstr ""
 
@@ -235,12 +235,16 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:80 lib/AmuseWikiFarm/Controller/OPDS.pm:179 lib/AmuseWikiFarm/Controller/OPDS.pm:63 root/src/edit/edit.tt:49 root/src/layout.tt:199 root/src/layout.tt:488 root/src/text.tt:61
+#: lib/AmuseWikiFarm/Controller/Category.pm:80 lib/AmuseWikiFarm/Controller/OPDS.pm:180 lib/AmuseWikiFarm/Controller/OPDS.pm:64 root/src/edit/edit.tt:49 root/src/layout.tt:199 root/src/layout.tt:488 root/src/text.tt:61
 msgid "Authors"
 msgstr ""
 
 #: root/src/edit/edit.tt:568 root/src/edit/newtext.tt:55
 msgid "Authors for indexing"
+msgstr ""
+
+#: root/src/admin/edit.tt:726
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
 
 #: root/src/edit/edit.tt:143
@@ -251,7 +255,7 @@ msgstr ""
 msgid "Back to the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:168 lib/AmuseWikiFarm/Controller/Console.pm:260
+#: lib/AmuseWikiFarm/Controller/Admin.pm:167 lib/AmuseWikiFarm/Controller/Console.pm:260
 msgid "Bad request"
 msgstr ""
 
@@ -387,7 +391,7 @@ msgstr ""
 msgid "Couldn't add the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1046
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1055
 msgid "Couldn't automatically generate the uri!"
 msgstr ""
 
@@ -578,7 +582,7 @@ msgstr ""
 msgid "Erase this revision"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1102
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1111
 msgid "Error converting the upload file. Is it an HTML file?"
 msgstr ""
 
@@ -586,7 +590,7 @@ msgstr ""
 msgid "Error sending mail!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1118
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1127
 msgid "Error while converting the HTML. Sorry."
 msgstr ""
 
@@ -829,7 +833,7 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
-#: root/src/admin/edit.tt:736 root/src/admin/edit.tt:750 root/src/admin/edit.tt:764 root/src/admin/edit.tt:778
+#: root/src/admin/edit.tt:748 root/src/admin/edit.tt:762 root/src/admin/edit.tt:776 root/src/admin/edit.tt:790
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -931,15 +935,15 @@ msgstr ""
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:161
+#: lib/AmuseWikiFarm/Controller/Admin.pm:160
 msgid "Job deleted"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:164
+#: lib/AmuseWikiFarm/Controller/Admin.pm:163
 msgid "Job not found"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:146 root/src/layout.tt:398
+#: lib/AmuseWikiFarm/Controller/Admin.pm:145 root/src/layout.tt:398
 msgid "Jobs"
 msgstr ""
 
@@ -991,7 +995,7 @@ msgstr ""
 msgid "Last updated"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Latest.pm:51 lib/AmuseWikiFarm/Controller/OPDS.pm:114 lib/AmuseWikiFarm/Controller/OPDS.pm:69 root/src/layout.tt:226 root/src/layout.tt:227 root/src/layout.tt:493 root/src/text.tt:330
+#: lib/AmuseWikiFarm/Controller/Latest.pm:51 lib/AmuseWikiFarm/Controller/OPDS.pm:115 lib/AmuseWikiFarm/Controller/OPDS.pm:70 root/src/layout.tt:226 root/src/layout.tt:227 root/src/layout.tt:493 root/src/text.tt:330
 msgid "Latest entries"
 msgstr ""
 
@@ -1151,7 +1155,7 @@ msgstr ""
 msgid "Never generate a table of content"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:68 root/src/publish/pending.tt:28
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:69 root/src/publish/pending.tt:28
 msgid "New"
 msgstr ""
 
@@ -1658,15 +1662,15 @@ msgstr ""
 msgid "Running headings"
 msgstr ""
 
-#: root/src/admin/edit.tt:770
+#: root/src/admin/edit.tt:782
 msgid "SSL CA certificate path (Apache)"
 msgstr ""
 
-#: root/src/admin/edit.tt:756
+#: root/src/admin/edit.tt:768
 msgid "SSL certificate path (Apache)"
 msgstr ""
 
-#: root/src/admin/edit.tt:742
+#: root/src/admin/edit.tt:754
 msgid "SSL chained certificate path (Nginx)"
 msgstr ""
 
@@ -1674,7 +1678,7 @@ msgstr ""
 msgid "SSL configuration"
 msgstr ""
 
-#: root/src/admin/edit.tt:728
+#: root/src/admin/edit.tt:740
 msgid "SSL key path"
 msgstr ""
 
@@ -1682,11 +1686,11 @@ msgstr ""
 msgid "Sans font"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:82 lib/AmuseWikiFarm/Controller/Search.pm:102 root/src/layout.tt:155
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:83 lib/AmuseWikiFarm/Controller/Search.pm:102 root/src/layout.tt:155
 msgid "Search"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:223 lib/AmuseWikiFarm/Controller/OPDS.pm:231
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:224 lib/AmuseWikiFarm/Controller/OPDS.pm:232
 msgid "Search results"
 msgstr ""
 
@@ -1876,11 +1880,11 @@ msgid ""
 "  redirection in place, and will be listed here"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1054
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1063
 msgid "Such an uri already exists"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:194
+#: lib/AmuseWikiFarm/Controller/Admin.pm:193
 msgid "Such an user already exists!"
 msgstr ""
 
@@ -1960,15 +1964,15 @@ msgid ""
 "            The last one checks if the file can be found."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1108
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1117
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
-#: root/src/admin/edit.tt:722
+#: root/src/admin/edit.tt:734
 msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 
-#: root/src/admin/edit.tt:714
+#: root/src/admin/edit.tt:715
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
@@ -2034,7 +2038,7 @@ msgstr ""
 msgid "They have the same syntax (images are actually links)"
 msgstr ""
 
-#: root/src/admin/edit.tt:723
+#: root/src/admin/edit.tt:735
 msgid "They should be paths relative to the webserver configuration root or absolute paths (recommended)."
 msgstr ""
 
@@ -2114,7 +2118,7 @@ msgstr ""
 msgid "Title, author, date..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:251 lib/AmuseWikiFarm/Controller/OPDS.pm:52 lib/AmuseWikiFarm/Controller/OPDS.pm:75 lib/AmuseWikiFarm/Controller/OPDS.pm:99 root/src/layout.tt:192 root/src/layout.tt:485
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:100 lib/AmuseWikiFarm/Controller/OPDS.pm:252 lib/AmuseWikiFarm/Controller/OPDS.pm:53 lib/AmuseWikiFarm/Controller/OPDS.pm:76 root/src/layout.tt:192 root/src/layout.tt:485
 msgid "Titles"
 msgstr ""
 
@@ -2151,7 +2155,7 @@ msgstr ""
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:77 lib/AmuseWikiFarm/Controller/OPDS.pm:137 lib/AmuseWikiFarm/Controller/OPDS.pm:58 root/src/edit/edit.tt:584 root/src/edit/edit.tt:63 root/src/edit/newtext.tt:80 root/src/layout.tt:205 root/src/layout.tt:219 root/src/layout.tt:491 root/src/text.tt:87
+#: lib/AmuseWikiFarm/Controller/Category.pm:77 lib/AmuseWikiFarm/Controller/OPDS.pm:138 lib/AmuseWikiFarm/Controller/OPDS.pm:59 root/src/edit/edit.tt:584 root/src/edit/edit.tt:63 root/src/edit/newtext.tt:80 root/src/layout.tt:205 root/src/layout.tt:219 root/src/layout.tt:491 root/src/text.tt:87
 msgid "Topics"
 msgstr ""
 
@@ -2209,7 +2213,7 @@ msgstr ""
 msgid "Unsupported file type %1"
 msgstr ""
 
-#: root/src/admin/edit.tt:787 root/src/admin/show_user_details.tt:70 root/src/bookbuilder/index.tt:811 root/src/category-details-edit.tt:36 root/src/user/edit.tt:39
+#: root/src/admin/edit.tt:799 root/src/admin/show_user_details.tt:70 root/src/bookbuilder/index.tt:811 root/src/category-details-edit.tt:36 root/src/user/edit.tt:39
 msgid "Update"
 msgstr ""
 
@@ -2237,7 +2241,7 @@ msgstr ""
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
-#: root/src/admin/edit.tt:704
+#: root/src/admin/edit.tt:705
 msgid "Use SSL for authenticated users"
 msgstr ""
 
@@ -2260,12 +2264,12 @@ msgid "User %1 created!"
 msgstr ""
 
 #. ($c->stash->{user}->username)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:312
+#: lib/AmuseWikiFarm/Controller/Admin.pm:311
 msgid "User %1 deleted"
 msgstr ""
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:296
+#: lib/AmuseWikiFarm/Controller/Admin.pm:295
 msgid "User %1 updated"
 msgstr ""
 
@@ -2281,7 +2285,7 @@ msgstr ""
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:219 root/src/layout.tt:383
+#: lib/AmuseWikiFarm/Controller/Admin.pm:218 root/src/layout.tt:383
 msgid "Users"
 msgstr ""
 
@@ -2629,15 +2633,15 @@ msgstr ""
 msgid "texts by authors, title, topic..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:180 lib/AmuseWikiFarm/Controller/OPDS.pm:224 lib/AmuseWikiFarm/Controller/OPDS.pm:64 root/src/layout.tt:198 root/src/layout.tt:488
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:181 lib/AmuseWikiFarm/Controller/OPDS.pm:225 lib/AmuseWikiFarm/Controller/OPDS.pm:65 root/src/layout.tt:198 root/src/layout.tt:488
 msgid "texts sorted by author"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:252 lib/AmuseWikiFarm/Controller/OPDS.pm:53 root/src/layout.tt:191 root/src/layout.tt:485
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:253 lib/AmuseWikiFarm/Controller/OPDS.pm:54 root/src/layout.tt:191 root/src/layout.tt:485
 msgid "texts sorted by title"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:138 lib/AmuseWikiFarm/Controller/OPDS.pm:59 root/src/layout.tt:218 root/src/layout.tt:491
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:139 lib/AmuseWikiFarm/Controller/OPDS.pm:60 root/src/layout.tt:218 root/src/layout.tt:491
 msgid "texts sorted by topics"
 msgstr ""
 

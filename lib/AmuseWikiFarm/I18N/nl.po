@@ -197,6 +197,9 @@ msgstr ""
 msgid "Authors for indexing"
 msgstr ""
 
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr ""
+
 msgid "Available category tags for header"
 msgstr ""
 

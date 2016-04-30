@@ -713,7 +713,7 @@ kpsewhich mylogo.pdf</pre>
                    [% IF esite.secure_site_only %]checked="checked"[% END %]
                    name="secure_site_only" />
             [% loc('The generate webserver configuration will redirect
-            all the HTTP requests to HTTPS') %]
+          all the HTTP requests to HTTPS') %]
           </label>
         </div>
       </div>
