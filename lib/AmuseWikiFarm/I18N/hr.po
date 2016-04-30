@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-04-04 18:50+0200\n"
+"PO-Revision-Date: 2016-04-30 16:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -23,7 +23,7 @@ msgstr "%1 ne postoji"
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 za mobitele"
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(navodnici, poveznice, fusnote itd.)"
@@ -118,7 +118,7 @@ msgid "Add sections to the bookbuilder"
 msgstr "Dodaj dijelove tekstova zbirci"
 
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Dodaj URL OPDS-a"
 
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Dodaj označene dijelove zbirci"
@@ -216,7 +216,7 @@ msgid "Authors for indexing"
 msgstr "Autori za indeksiranje"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "Automatski zahtijevaj i obnovi SSL certifikate koristeći Let's Encrypt"
 
 msgid "Available category tags for header"
 msgstr "Raspoložive kategorijske oznake za zaglavlje"
@@ -319,7 +319,7 @@ msgid "Computing of differences took"
 msgstr "Za izračunavanje razlika bilo je potrebno"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrdi"
 
 msgid "Convert to archive markup"
 msgstr "Pretvori u format koji se koristi u arhivu"
@@ -495,7 +495,7 @@ msgstr "Greške"
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
-msgstr ""
+msgstr "Iako sajt prikladan je za mobitele, ne nudi svoju aplikaciju."
 
 msgid ""
 "Every\n"
@@ -541,10 +541,10 @@ msgid "Filters"
 msgstr "Filteri"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Pronađi menu za nove kataloge."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Pronađi menu za mrežne biblioteke (ili slično)."
 
 msgid "First Author and Second Author"
 msgstr "Prvi Autor i Drugi Autor"
@@ -674,7 +674,7 @@ msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
-msgstr ""
+msgstr "Ipak možeš neposredno prelistati, pretražiti, skidati i čitati tekstove aplikacijama koje podržavaju OPDS protokol."
 
 msgid "I am human"
 msgstr "Ja sam ljudsko biće"
@@ -767,6 +767,8 @@ msgid ""
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
 msgstr ""
+"U ovom primjeru koristi se FBreader, ali procedura je više-manje ista\n"
+"za sve aplikacije. Trebaš samo dodati %1 mrežnim bibliotekama."
 
 msgid "Inline elements"
 msgstr "Elementi po retku"
@@ -840,7 +842,7 @@ msgid "Language selection"
 msgstr "Izaberi jezik"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "Jezici koji se podržavaju"
 
 msgid "Last updated"
 msgstr "Posljednja izmjena"
@@ -927,10 +929,10 @@ msgid "Missing username or password"
 msgstr "Nedostaje korisničko ime i lozinka"
 
 msgid "Mobile"
-msgstr ""
+msgstr "Mobile"
 
 msgid "Mobile applications"
-msgstr ""
+msgstr "Aplikacije za mobitele"
 
 msgid "Mode"
 msgstr "Način"
@@ -960,7 +962,7 @@ msgid "Name"
 msgstr "Ime"
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Stranica s popisom mrežnih arhiva."
 
 msgid "Never generate a table of content"
 msgstr "Ne generiraj sadržaj"
@@ -1017,7 +1019,7 @@ msgid "Numeric List"
 msgstr "Brojčan popis"
 
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS"
 
 msgid "Open wiki"
 msgstr "Otvoreni wiki"
@@ -1283,7 +1285,7 @@ msgid "Private"
 msgstr "Privatno"
 
 msgid "Procedure"
-msgstr ""
+msgstr "Procedura"
 
 msgid "Produce slides."
 msgstr "Slajdovi."
@@ -1434,7 +1436,7 @@ msgid "Search"
 msgstr "Traži"
 
 msgid "Search results"
-msgstr ""
+msgstr "Rezultati pretraživanja"
 
 msgid "Section"
 msgstr "Odjeljak"
@@ -1545,7 +1547,7 @@ msgid "Special pages"
 msgstr "Posebne stranice"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "Za aktivaciju dodaj popis jezika odvojenih razmakom."
 
 msgid "Stale editing"
 msgstr "Napuštena izmjena"
@@ -1609,10 +1611,10 @@ msgid "Term"
 msgstr "Pojam"
 
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Testirane aplikacije"
 
 msgid "Text body, before any section"
 msgstr "Tekst koji ne pripada nijednom dijelu"
@@ -1638,7 +1640,7 @@ msgstr ""
 "onemogućeni."
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "Adresa OPDS-a ovog sajta je: "
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -1753,7 +1755,7 @@ msgid "This section will not produce a slide"
 msgstr "Ovaj odjeljak neće proizvoditi slajd"
 
 msgid "This site is private and mobile applications cannot access the OPDS."
-msgstr ""
+msgstr "Ovaj sajt je privatan i mobiteli ne mogu pristupiti OPDS-u."
 
 msgid "This text does not exist"
 msgstr "Ovaj tekst ne postoji"
@@ -2045,7 +2047,7 @@ msgid "Your password is %1."
 msgstr "Tvoja lozinka je %1."
 
 msgid "Your section here..."
-msgstr ""
+msgstr "Odjeljak..."
 
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Tvoj podpododjeljak (ili zaglavlje opisa)..."
@@ -2186,7 +2188,7 @@ msgstr "desna"
 
 #. (args)
 msgid "string"
-msgstr ""
+msgstr "rečenica"
 
 msgid "strong emphasis"
 msgstr "istaknuto i podebljano"
