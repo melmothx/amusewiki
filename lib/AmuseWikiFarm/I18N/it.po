@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-04-30 16:29+0200\n"
+"PO-Revision-Date: 2016-04-30 16:34+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -220,6 +220,9 @@ msgstr "Autori"
 
 msgid "Authors for indexing"
 msgstr "Autori indicizzati"
+
+msgid "Automatically request and renew SSL certificates from Let's Encrypt"
+msgstr "Richiedi e rinnova automaticamente i certificati SSL per mezzo di Let's Encrypt"
 
 msgid "Available category tags for header"
 msgstr "Codici categoria disponibili per l'intestazione"
