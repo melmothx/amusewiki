@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-04-12 22:21+0200\n"
+"PO-Revision-Date: 2016-04-30 16:29+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -22,7 +22,7 @@ msgstr "%1 non esiste"
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 sul cellulare"
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "virgolette tipografiche, collegamenti, note a piè di pagina, ecc."
@@ -123,7 +123,7 @@ msgid "Add sections to the bookbuilder"
 msgstr "Aggiungi le sezioni all'impaginatore"
 
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Aggiungi l'URL dell'OPDS"
 
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Aggiungi le parti selezionate all'impaginatore"
@@ -323,7 +323,7 @@ msgid "Computing of differences took"
 msgstr "Il calcolo delle differenze ha impiegato"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Conferma"
 
 msgid "Convert to archive markup"
 msgstr "Converti nel markup dell'archivio"
@@ -503,6 +503,8 @@ msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"Pur essendo adatto ai dispositivi portatili, questo sito non offre\n"
+"un'applicazione per smartphone e simili dispositivi."
 
 msgid ""
 "Every\n"
@@ -547,10 +549,10 @@ msgid "Filters"
 msgstr "Filtri"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Trova il menù per aggiungere il catalogo."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Trova il menù per le biblioteche online (o equivalente)."
 
 msgid "First Author and Second Author"
 msgstr "Primo Autore e Secondo Autore"
@@ -684,6 +686,9 @@ msgid ""
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"È comunque possibile navigare, cercare, scaricare e leggere i testi\n"
+"offerti direttamente nelle applicazioni che supportano il protocollo\n"
+"OPDS."
 
 msgid "I am human"
 msgstr "Sono umano"
@@ -782,6 +787,9 @@ msgid ""
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
 msgstr ""
+"In questo esempio viene usato FBreader, ma la procedura è grosso modo\n"
+"la stessa per tutte le applicazioni. Basta solo aggiungere %1 alle\n"
+"biblioteche online."
 
 msgid "Inline elements"
 msgstr "Elementi per la riga"
@@ -855,7 +863,7 @@ msgid "Language selection"
 msgstr "Selezione lingua"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "Lingue supportate"
 
 msgid "Last updated"
 msgstr "Ultima modifica"
@@ -942,10 +950,10 @@ msgid "Missing username or password"
 msgstr "Nome utente o password mancante"
 
 msgid "Mobile"
-msgstr ""
+msgstr "Mobile"
 
 msgid "Mobile applications"
-msgstr ""
+msgstr "Applicazioni per cellulari"
 
 msgid "Mode"
 msgstr "Modalità"
@@ -975,7 +983,7 @@ msgid "Name"
 msgstr "Nome"
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Schermata con l'elenco delle biblioteche online."
 
 msgid "Never generate a table of content"
 msgstr "Non generare un sommario"
@@ -1032,7 +1040,7 @@ msgid "Numeric List"
 msgstr "Lista numerata"
 
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS"
 
 msgid "Open wiki"
 msgstr "Wiki aperto"
@@ -1305,7 +1313,7 @@ msgid "Private"
 msgstr "Privato"
 
 msgid "Procedure"
-msgstr ""
+msgstr "Procedura"
 
 msgid "Produce slides."
 msgstr "Crea diapositive."
@@ -1457,7 +1465,7 @@ msgid "Search"
 msgstr "Cerca"
 
 msgid "Search results"
-msgstr ""
+msgstr "Risultati della ricerca"
 
 msgid "Section"
 msgstr "Sezione"
@@ -1570,7 +1578,7 @@ msgid "Special pages"
 msgstr "Pagine speciali"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "Specifica una lista di lingue separate da uno spazio bianco per l'attivazione."
 
 msgid "Stale editing"
 msgstr "Modifica in corso abbandonata"
@@ -1634,10 +1642,10 @@ msgid "Term"
 msgstr "Termine"
 
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Applicazioni funzionanti, in questo ordine di preferenza"
 
 msgid "Text body, before any section"
 msgstr "Corpo del testo, prima di ogni sezione"
@@ -1663,7 +1671,7 @@ msgstr ""
 "attivata."
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "L'indirizzo OPDS per questo sito è:"
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -1786,7 +1794,7 @@ msgid "This section will not produce a slide"
 msgstr "Questa sezione non produrrà diapositive"
 
 msgid "This site is private and mobile applications cannot access the OPDS."
-msgstr ""
+msgstr "Questo sito è privato e le applicazioni mobili non sono in grado di accedere all'OPDS."
 
 msgid "This text does not exist"
 msgstr "Questo testo non esiste"
@@ -2089,7 +2097,7 @@ msgid "Your password is %1."
 msgstr "La tua password è %1."
 
 msgid "Your section here..."
-msgstr ""
+msgstr "Sezione..."
 
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "La tua sotto-sotto-sezione (o inizio di una descrizione)..."
@@ -2234,7 +2242,7 @@ msgstr "destra"
 
 #. (args)
 msgid "string"
-msgstr ""
+msgstr "frase"
 
 msgid "strong emphasis"
 msgstr "forte enfasi"
