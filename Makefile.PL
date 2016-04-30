@@ -83,7 +83,7 @@ requires 'HTTP::Tiny';
 requires 'Crypt::XkcdPassword';
 # let's encrypt
 requires 'Crypt::OpenSSL::X509';
-requires 'Protocol::ACME';
+requires 'Protocol::ACME' => '0.12';
 
 # our own dogfood
 requires 'Text::Amuse' => '0.60';
