@@ -53,11 +53,21 @@ while (1) {
     else {
         $count++;
     }
+    my $now = time();
+    my $daily_job;
+    if (($now - $daily) > (60 * 60 * 24)) {
+        $daily = $now;
+        log_debug { "Setting daily job" };
+        $daily_job = 1;
+    }
+    else {
+        log_debug { "too early: " . ($now - $daily) . " seconds since last daily job" };
+    }
     my $job = eval { $schema->resultset('Job')->dequeue };
     if ($@) {
         log_error { "Errors on dequeu: $@" };
     }
-    unless ($job or $count == 0) {
+    unless ($daily_job or $job or $count == 0) {
         next;
     }
     if (my $pid = fork()) {
@@ -91,10 +101,8 @@ while (1) {
         flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
         print $lock $$;
 
-        my $now = time();
-        if (($now - $daily) > (60 * 60 * 24)) {
+        if ($daily_job) {
             log_info { "Daily job initialized" };
-            $daily = $now;
             eval {
                 $schema->resultset('Site')->check_and_update_acme_certificates(1);
             };
@@ -103,8 +111,6 @@ while (1) {
             }
             log_info { "Daily job finished" };
         }
-
-
         $schema->resultset('Job')->fail_stale_jobs;
         if ($count == 0) {
             log_info { "Checking deferred titles, old jobs and revisions" };
