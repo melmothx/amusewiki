@@ -150,6 +150,25 @@ Anyway, the debian package installs a cronjob in /etc/cron.daily to
 reload nginx once a day to avoid the need to login and reload
 manually. You should do the same. See debian/amusewiki.cron.daily
 
+Procedure to create a site with SSL certificates using Let's Encrypt:
+
+First, login in the admin and create the site.
+
+Reload the webserver as per instructions.
+
+  # this will print out the instruction to update the webserver conf
+  script/amusewiki-generate-nginx-conf
+
+  # update the nginx config as per instructions given by the above command.
+
+  # this will fetch the certificates
+  script/amusewiki-letsencrypt
+
+  # Refresh the configuration to actually use the certificates.
+  script/amusewiki-generate-nginx-conf 
+
+In the past, a setup with simp_le was suggested. Please remove
+existing cronjobs if you used it.
 
 ** MAIL WITH SMTP
 
