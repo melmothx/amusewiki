@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';    
 };
 
-use Test::More tests => 8;
+use Test::More tests => 18;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -27,9 +27,11 @@ $site->update({
                mail_from => 'root@amusewiki.org',
                locale => 'en',
                mail_notify => 'notifications@amusewiki.org',
+               mode => 'private',
               });
 # root login and creates a user
-$mech->get_ok('/login');
+$mech->get_ok('/library');
+is $mech->uri->path, '/login';
 $mech->submit_form(with_fields =>  {
                                     username => 'root',
                                     password => 'root',
@@ -62,6 +64,16 @@ $user->roles->find({ role => 'librarian' });
 
 $mech->get_ok('/logout');
 $mech->get_ok('/login');
-$mech->content_contains('/user/reset-password');
-$mech->get_ok('/user/reset-password');
+$mech->content_contains('/reset-password');
+
+# even if the mail doesn't exist, we print out the very same message
+foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org') {
+    $mech->get_ok('/reset-password');
+    $mech->content_contains('placeholder="example@domain.tld"');
+    $mech->submit_form(with_fields => { email => $try });
+    $mech->content_contains("alert-success reset-request-sent");
+    is $mech->uri->path, "/reset-password", "Path is /reset-password";
+    $mech->content_lacks('placeholder="example@domain.tld"');
+}
+
 

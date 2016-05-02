@@ -7,6 +7,7 @@ use base 'DBIx::Class::ResultSet';
 
 use Email::Valid;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -124,5 +125,18 @@ sub validate_params {
         return \%validated;
     }
 }
+
+sub get_reset_token {
+    my ($self, $host, $email) = @_;
+    log_info { "Reset token requested for $email at $host" };
+    return;
+}
+
+sub reset_password {
+    my ($self, $host, $email, $token) = @_;
+    log_info { "Reset password requested for $email at $host with token $token" };
+    return;
+}
+
 
 1;

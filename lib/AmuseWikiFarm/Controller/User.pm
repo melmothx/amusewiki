@@ -50,16 +50,18 @@ use URI::QueryParam;
 use AmuseWikiFarm::Log::Contextual;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
-sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
+sub secure_no_user :Chained('/site_no_auth') :PathPart('') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
     if ($c->user_exists) {
         $c->flash(status_msg => $c->loc("You are already logged in"));
         $c->response->redirect($c->uri_for('/'));
         return;
     }
-
     $c->forward('/redirect_to_secure');
+}
 
+sub login :Chained('secure_no_user') :PathPart('login') :Args(0) {
+    my ( $self, $c ) = @_;
     $c->stash(
               nav => 'login',
               page_title => $c->loc('Login'),
@@ -104,6 +106,49 @@ sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
         }
     }
     $c->flash(error_msg => $c->loc("Wrong username or password"));
+}
+
+sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(
+              page_title => $c->loc('Reset password'),
+             );
+    my $params = $c->request->body_params;
+    if ($params->{submit} && $params->{email}) {
+        my $host = $c->request->uri->host;
+        if (my $token = $c->model('DB::User')->get_reset_token($c->request->uri->host,
+                                                               $params->{email})) {
+            $c->model('Mailer')->send_mail(resetpassword => {
+                                                             lh => $c->stash->{lh},
+                                                             to => $params->{email},
+                                                             from => 'noreply@' . $host,
+                                                             reset_token => $token,
+                                                             host => $host,
+                                                            });
+        }
+        else {
+            log_warn {
+                "$params->{email} at $host requested a reset token, but validation failed!"
+            };
+        }
+    }
+}
+
+sub reset_password_confirm :Chained('secure_no_user') :PathPart('reset-password') :Args(2) {
+    my ($self, $c, $email, $token) = @_;
+    if ($email and
+        $token and
+        $email =~ m/@/ and
+        $token =~ m/\w/ ) {
+        if (my $password = $c->model('DB::User')->reset_password($c->request->uri->host,
+                                                                 $email, $token)) {
+            $c->stash(password => $password);
+        }
+    }
+    else {
+        log_error { $c->request->uri . " accessed without mail and token shouldn't happen!" };
+        $c->detach('/not_permitted');
+    }
 }
 
 sub logout :Chained('/site') :PathPart('logout') :Args(0) {
