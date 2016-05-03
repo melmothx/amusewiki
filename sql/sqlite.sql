@@ -101,7 +101,9 @@ CREATE TABLE users (
        password VARCHAR(255) NOT NULL,
        email    VARCHAR(255),
        created_by VARCHAR(255),
-       active   INTEGER(1) NOT NULL DEFAULT 1
+       active   INTEGER(1) NOT NULL DEFAULT 1,
+       reset_token TEXT NULL,
+       reset_until INTEGER NULL
 );
 
 CREATE UNIQUE INDEX unique_username ON users (username);
