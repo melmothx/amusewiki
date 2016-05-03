@@ -2560,6 +2560,17 @@ sub sl_tex {
     return shift->sl_pdf;
 }
 
+sub mail_from_default {
+    my $self = shift;
+    if (my $mail = $self->mail_from) {
+        return $mail;
+    }
+    else {
+        return 'noreply@' . $self->canonical;
+    }
+}
+
+
 =head2 serialize_site
 
 Return an hashref with the serialized site, with options, virtual

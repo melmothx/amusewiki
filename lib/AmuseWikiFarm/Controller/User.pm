@@ -114,35 +114,35 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
               page_title => $c->loc('Reset password'),
              );
     my $params = $c->request->body_params;
-    if ($params->{submit} && $params->{email}) {
-        my $host = $c->request->uri->host;
-        if (my $token = $c->model('DB::User')->get_reset_token($c->request->uri->host,
-                                                               $params->{email})) {
+    if ($params->{submit} && $params->{email} && $params->{email} =~ m/\w/) {
+        my $site = $c->stash->{site};
+        foreach my $user ($site->users->set_reset_token($params->{email})) {
+            my $dt = DateTime->from_epoch(epoch => $user->reset_until,
+                                          locale => $c->stash->{current_locale_code});
+            my $valid_until = $dt->format_cldr($dt->locale->date_format_long);
+            my $url = $c->uri_for_action('/user/reset_password_confirm',
+                                         [ $user->username, $user->reset_token ]);
             $c->model('Mailer')->send_mail(resetpassword => {
                                                              lh => $c->stash->{lh},
-                                                             to => $params->{email},
-                                                             from => 'noreply@' . $host,
-                                                             reset_token => $token,
-                                                             host => $host,
+                                                             to => $user->email,
+                                                             from => $site->mail_from_default,
+                                                             reset_url => $url,
+                                                             host => $site->canonical,
+                                                             valid => $valid_until,
                                                             });
-        }
-        else {
-            log_warn {
-                "$params->{email} at $host requested a reset token, but validation failed!"
-            };
         }
     }
 }
 
 sub reset_password_confirm :Chained('secure_no_user') :PathPart('reset-password') :Args(2) {
-    my ($self, $c, $email, $token) = @_;
-    if ($email and
+    my ($self, $c, $username, $token) = @_;
+    if ($username and
         $token and
-        $email =~ m/@/ and
+        $username =~ m/\w/ and
         $token =~ m/\w/ ) {
-        if (my $password = $c->model('DB::User')->reset_password($c->request->uri->host,
-                                                                 $email, $token)) {
-            $c->stash(password => $password);
+        if (my $password = $c->stash->{site}->users->reset_password($username, $token)) {
+            $c->stash(password => $password,
+                      username => $username);
         }
     }
     else {

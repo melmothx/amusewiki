@@ -8,6 +8,8 @@ use base 'DBIx::Class::ResultSet';
 use Email::Valid;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 use AmuseWikiFarm::Log::Contextual;
+use Bytes::Random::Secure; # who knows how much is really secure, but hey
+use Crypt::XkcdPassword;
 
 =head1 NAME
 
@@ -126,15 +128,44 @@ sub validate_params {
     }
 }
 
-sub get_reset_token {
-    my ($self, $host, $email) = @_;
-    log_info { "Reset token requested for $email at $host" };
-    return;
+sub set_reset_token {
+    my ($self, $email) = @_;
+    log_info { "Reset token requested for $email" };
+    my @out;
+    if ($email and $email =~ m/\w/) {
+        my $users = $self->search({ email => $email });
+        my $random = Bytes::Random::Secure->new(NonBlocking => 1);
+        while (my $user = $users->next) {
+            my $now = time();
+            if (!$user->reset_token or $user->reset_until < $now) {
+                $user->update({
+                               reset_token => $random->bytes_hex(32),
+                               reset_until => $now + (60 * 60),
+                              });
+                push @out, $user;
+            }
+        }
+    }
+    return @out;
 }
 
 sub reset_password {
-    my ($self, $host, $email, $token) = @_;
-    log_info { "Reset password requested for $email at $host with token $token" };
+    my ($self, $username, $token) = @_;
+    log_info { "Reset password requested for $username with token $token" };
+    if (my $user = $self->find({ username => $username })) {
+        my $now = time();
+        if ($user->reset_token and
+            $user->reset_until and
+            $user->reset_until < $now) {
+            my $password = Crypt::XkcdPassword->new(words => 'IT')
+              ->make_password(5, qr{\A[0-9a-zA-Z]{3,}\z});
+            $user->password($password);
+            $user->reset_token(undef);
+            $user->reset_until(undef);
+            $user->update;
+            return $password;
+        }
+    }
     return;
 }
 

@@ -76,4 +76,33 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org') {
     $mech->content_lacks('placeholder="example@domain.tld"');
 }
 
+$schema->resultset('User')->search({ username => { -like => 'pallinox%' }})->delete;
+
+for (1..3) {
+    my $user = $schema->resultset('User')->create({ username => "pallinox$_",
+                                                    password => "pallino",
+                                                    email => 'pallino@amusewiki.org' });
+    $site->add_to_users($user);
+}
+{
+    my @users = $site->users->set_reset_token('pallino@amusewiki.org');
+    is scalar(@users), 3, "Found 3 users";
+    foreach my $user (@users) {
+        ok($user->reset_token) and diag $user->reset_token;
+    }
+    my @repeat = $site->users->set_reset_token('pallino@amusewiki.org');
+    ok (!@repeat, "no users got repeating the request");
+    foreach my $user (@users) {
+        my $new_password = $site->users->reset_password($user->username,
+                                                        $user->reset_token);
+        ok ($new_password) and diag "New password is $new_password";
+    }
+    @users = $site->users->search({ email => 'pallino@amusewiki.org' });
+    foreach my $user (@users) {
+        ok !$user->reset_token, "Token cleared for " . $user->username;
+        ok !$user->reset_until, "Timestamp cleared for " . $user->username;
+    }
+}
+
+is ($site->users->count, 4);
 
