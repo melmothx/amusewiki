@@ -138,6 +138,7 @@ sub set_reset_token {
         while (my $user = $users->next) {
             my $now = time();
             if (!$user->reset_token or $user->reset_until < $now) {
+                log_info { "Setting reset token to " . $user->username };
                 $user->update({
                                reset_token => $random->bytes_hex(32),
                                reset_until => $now + (60 * 60),
@@ -151,15 +152,21 @@ sub set_reset_token {
 
 sub reset_password {
     my ($self, $username, $token) = @_;
+    return unless $username && $token;
     log_info { "Reset password requested for $username with token $token" };
-    if (my $user = $self->find({ username => $username })) {
+    if (my $user = $self->search({
+                                  username => $username,
+                                  reset_token => $token,
+                                  reset_until => { '!=' => undef },
+                                 })->first) {
         my $now = time();
-        if ($user->reset_token and
-            $user->reset_until and
-            $user->reset_until < $now) {
-            my $password = Crypt::XkcdPassword->new(words => 'IT')
-              ->make_password(5, qr{\A[0-9a-zA-Z]{3,}\z});
-            $user->password($password);
+        log_info { "User $username found, trying to update password if " .
+                     $user->reset_until . " > $now" };
+
+        if ($user->reset_until > $now) {
+            my $password = 'reset' .
+              Bytes::Random::Secure->new(NonBlocking => 1)->bytes_hex(32);
+            $user->password("reset" . $password);
             $user->reset_token(undef);
             $user->reset_until(undef);
             $user->update;

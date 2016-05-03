@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';    
 };
 
-use Test::More tests => 18;
+use Test::More tests => 41;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -70,11 +70,29 @@ $mech->content_contains('/reset-password');
 foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org') {
     $mech->get_ok('/reset-password');
     $mech->content_contains('placeholder="example@domain.tld"');
-    $mech->submit_form(with_fields => { email => $try });
+    $mech->submit_form(with_fields => { email => $try },
+                       button => 'submit',
+                      );
     $mech->content_contains("alert-success reset-request-sent");
     is $mech->uri->path, "/reset-password", "Path is /reset-password";
     $mech->content_lacks('placeholder="example@domain.tld"');
 }
+{
+    my @mails = Email::Sender::Simple->default_transport->deliveries;
+    is scalar(@mails), 2, "Found 2 mails";
+    my ($link) = $mails[1]{email}->get_body =~ m{(https://.*?)\s*$}m;
+    diag $mails[1]{email}->get_body;
+    diag $mails[1]{email}->get_header("Subject");
+    like $mails[1]{email}->get_header("Subject"), qr/Password reset for/;
+    ok $link, "Found reset link" and diag $link;
+    $mech->get_ok($link);
+    is $mech->uri . '' , $link;
+    my ($new_password) = $mech->content =~ m{The new password for sloppy is (.+)</span>};
+    ok ($new_password, "Found the new password");
+    $mech->get($link);
+    is $mech->status, '403', "Access denied with token consumed";
+}
+
 
 $schema->resultset('User')->search({ username => { -like => 'pallinox%' }})->delete;
 
@@ -91,6 +109,7 @@ for (1..3) {
         ok($user->reset_token) and diag $user->reset_token;
     }
     my @repeat = $site->users->set_reset_token('pallino@amusewiki.org');
+    sleep 1;
     ok (!@repeat, "no users got repeating the request");
     foreach my $user (@users) {
         my $new_password = $site->users->reset_password($user->username,

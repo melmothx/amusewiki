@@ -117,9 +117,10 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
     if ($params->{submit} && $params->{email} && $params->{email} =~ m/\w/) {
         my $site = $c->stash->{site};
         foreach my $user ($site->users->set_reset_token($params->{email})) {
+            log_info { "Set reset token for " . $user->username };
             my $dt = DateTime->from_epoch(epoch => $user->reset_until,
                                           locale => $c->stash->{current_locale_code});
-            my $valid_until = $dt->format_cldr($dt->locale->date_format_long);
+            my $valid_until = $dt->format_cldr($dt->locale->datetime_format_long);
             my $url = $c->uri_for_action('/user/reset_password_confirm',
                                          [ $user->username, $user->reset_token ]);
             $c->model('Mailer')->send_mail(resetpassword => {
@@ -129,6 +130,7 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
                                                              reset_url => $url,
                                                              host => $site->canonical,
                                                              valid => $valid_until,
+                                                             username => $user->username,
                                                             });
         }
     }
@@ -143,6 +145,10 @@ sub reset_password_confirm :Chained('secure_no_user') :PathPart('reset-password'
         if (my $password = $c->stash->{site}->users->reset_password($username, $token)) {
             $c->stash(password => $password,
                       username => $username);
+        }
+        else {
+            log_warn { $c->request->uri . " accessed with invalid mail and token" };
+            $c->detach('/not_permitted');
         }
     }
     else {
