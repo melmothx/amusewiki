@@ -2026,6 +2026,67 @@ If the params is valid, perform an update, otherwise return the error.
 
 =cut
 
+sub update_from_params_restricted {
+    my ($self, $params) = @_;
+    return unless $params;
+    my %fixed_values = (
+                        active            => 'value',
+
+                        logo              => 'value',
+
+                        canonical         => 'value',
+                        sitegroup         => 'value',
+
+                        tex               => 'value',
+                        html              => 'value',
+                        bare_html         => 'value',
+                        epub              => 'value',
+                        zip               => 'value',
+                        ttdir             => 'value',
+
+                        use_luatex               => 'option',
+
+                        vhosts            => 'delete',
+                        html_special_page_bottom => 'option',
+
+
+                        secure_site       => 'value',
+                        secure_site_only  => 'value',
+                        acme_certificate  => 'value',
+                        ssl_key           => 'value',
+                        ssl_chained_cert  => 'value',
+                        ssl_cert          => 'value',
+                        ssl_ca_cert       => 'value',
+
+                       );
+    my $abort;
+    foreach my $value (keys %fixed_values) {
+        if (exists $params->{$value}) {
+            log_error { "Restricted update passed a fixed value, $value, aborting" };
+            $abort++;
+        }
+        my $type = $fixed_values{$value};
+        if ($type eq 'value') {
+            $params->{$value} = $self->$value;
+        }
+        elsif ($type eq 'option') {
+            $params->{$value} = $self->get_option($value);
+        }
+        elsif ($type eq 'delete') {
+            delete $params->{$value};
+        }
+        else {
+            die "$type is wrong";
+        }
+    }
+    if ($abort) {
+        return;
+    }
+    else {
+        return $self->update_from_params($params);
+    }
+}
+
 
 sub update_from_params {
     my ($self, $params) = @_;
