@@ -2275,8 +2275,14 @@ sub update_from_params {
     # no error? update the db
     unless (@errors) {
         my $guard = $self->result_source->schema->txn_scope_guard;
+        Dlog_info { "Updating site settings $_ " } +{ $self->get_dirty_columns };
         $self->update;
         if (@vhosts) {
+            Dlog_info { "Updating vhosts to $_" }
+              +{
+                to => \@vhosts,
+                from => [ map { $_->name } $self->vhosts ],
+               };
             # delete and reinsert, even if it doesn't feel too right
             $self->vhosts->delete;
             foreach my $vhost (@vhosts) {
@@ -2284,9 +2290,25 @@ sub update_from_params {
             }
         }
         $self->site_links->delete;
+        Dlog_info { "Updating links to $_" }
+          +{
+            from => [ map { +{ url => $_->url,
+                               label => $_->label,
+                               sorting_pos => $_->sorting_pos
+                             } } $self->site_links ],
+            to => \@site_links,
+           };
         foreach my $link (@site_links) {
             $self->site_links->create($link);
         }
+        Dlog_info { "Updating options to $_" }
+          +{
+            from => [ map { +{
+                              option_name => $_->option_name,
+                              option_value => $_->option_value
+                             } } $self->site_options ],
+            to => \@options,
+           };
         foreach my $opt (@options) {
             $self->site_options->update_or_create($opt);
         }
