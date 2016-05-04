@@ -3,7 +3,8 @@ Section: perl
 Priority: optional
 Maintainer: melmothX <melmothx@gmail.com>
 Build-Depends: debhelper (>= 9), dh-systemd
-Build-Depends-Indep: libcam-pdf-perl,
+Build-Depends-Indep: libbytes-random-secure-perl,
+ libcam-pdf-perl,
  libcatalyst-action-renderview-perl,
  libcatalyst-authentication-store-dbix-class-perl,
  libcatalyst-model-adaptor-perl (>= 0.10),
@@ -91,6 +92,7 @@ Package: amusewiki
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends},
  adduser,
+ libbytes-random-secure-perl,
  libcatalyst-action-renderview-perl,
  libcatalyst-authentication-store-dbix-class-perl,
  libcatalyst-model-adaptor-perl (>= 0.10),

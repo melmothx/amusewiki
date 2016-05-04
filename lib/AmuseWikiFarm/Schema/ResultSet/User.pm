@@ -9,7 +9,6 @@ use Email::Valid;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 use AmuseWikiFarm::Log::Contextual;
 use Bytes::Random::Secure; # who knows how much is really secure, but hey
-use Crypt::XkcdPassword;
 
 =head1 NAME
 
