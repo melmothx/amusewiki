@@ -17,7 +17,7 @@ files behind.
 
 ** Users
 
-We define 4 levels of users.
+We define 5 levels of users.
 
 *** root permissions
 
@@ -27,6 +27,13 @@ etc.. The same login works for all the sites. Given that being able to
 access the templates means being able to inject code, this role should
 be reserved to people that know what they are doing and have a shell
 access.
+
+*** admin permissions
+
+They can change a subset of site settings (notably, the ones which
+don't require restarting the webserver or shell access) in addition to
+the librarian permissions (see below). Only a root user can promote an
+user to admin. Users they create are always librarians.
 
 *** librarian permissions
 
