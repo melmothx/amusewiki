@@ -870,6 +870,12 @@ sub known_langs {
            };
 }
 
+sub known_langs_as_string {
+    my $self = shift;
+    my $langs = $self->known_langs;
+    return join(' ', sort keys %$langs);
+}
+
 sub path_for_specials {
     my $self = shift;
     my $target = File::Spec->catdir($self->repo_root, 'specials');
