@@ -5,4 +5,4 @@
 
 [% lh.loc('Otherwise, please just ignore this mail.') %]
 
-[% lh.loc('The link is valid until [_1]', valid) %]
+[% lh.loc('The link is valid until [_1] (one hour from now)', valid) %]

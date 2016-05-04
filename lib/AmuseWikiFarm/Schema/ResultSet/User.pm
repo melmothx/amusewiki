@@ -133,20 +133,33 @@ sub set_reset_token {
     log_info { "Reset token requested for $email" };
     my @out;
     if ($email and $email =~ m/\w/) {
+        my $valid = Email::Valid->address($email);
+        if (!$valid or $valid ne $email) {
+            log_warn { "Reset token asked for invalid address $email" };
+            return;
+        }
         my $users = $self->search({ email => $email });
         my $random = Bytes::Random::Secure->new(NonBlocking => 1);
+        # return all the users with the given mail
         while (my $user = $users->next) {
             my $now = time();
-            if (!$user->reset_token or $user->reset_until < $now) {
-                log_info { "Setting reset token to " . $user->username };
-                $user->update({
-                               reset_token => $random->bytes_hex(32),
-                               reset_until => $now + (60 * 60),
-                              });
-                push @out, $user;
+            my $token = $random->bytes_hex(32);
+            if ($token and length($token) > 10) {
+                if (!$user->reset_token or $user->reset_until < $now) {
+                    log_info { "Setting reset token to " . $user->username };
+                    $user->update({
+                                   reset_token => $token,
+                                   reset_until => $now + (60 * 60),
+                                  });
+                    push @out, $user;
+                }
             }
         }
     }
+    if (@out) {
+        log_warn { "Reset token set for " . join(' ', map { $_->username } @out) } ;
+    }
+
     return @out;
 }
 
@@ -164,13 +177,15 @@ sub reset_password {
                      $user->reset_until . " > $now" };
 
         if ($user->reset_until > $now) {
-            my $password = 'reset' .
-              Bytes::Random::Secure->new(NonBlocking => 1)->bytes_hex(32);
-            $user->password($password);
-            $user->reset_token(undef);
-            $user->reset_until(undef);
-            $user->update;
-            return $password;
+            my $token = Bytes::Random::Secure->new(NonBlocking => 1)->bytes_hex(32);
+            if ($token and length($token) > 10) {
+                my $password = 'reset' . $token;
+                $user->password($password);
+                $user->reset_token(undef);
+                $user->reset_until(undef);
+                $user->update;
+                return $password;
+            }
         }
     }
     return;

@@ -64,6 +64,7 @@ my $mr_root = $schema->resultset('User')
   ->create({
             username => 'root',
             password => 'root',
+            email => 'root@amusewiki.org',
            })->discard_changes;
 
 my $root_role = $schema->resultset('Role')->create({ role => 'root' });

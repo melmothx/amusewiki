@@ -97,6 +97,7 @@ sub login :Chained('secure_no_user') :PathPart('login') :Args(0) {
 
             if ($c->authenticate({ username => $username,
                                    password => $password })) {
+                log_debug { "User $username successfully authenticated" };
                 $c->change_session_id;
                 $c->session(i_am_human => 1);
                 $c->flash(status_msg => $c->loc("You are logged in now!"));
@@ -358,7 +359,6 @@ sub redirect_after_login :Private {
     if ($path !~ m!^/!) {
         $path = "/$path";
     }
-    Dlog_debug { "Form is $_" } $c->request->params;
     my $uri = URI->new($path);
     my $redirect = $c->uri_for($uri->path, $uri->query_form_hash);
     if (my $fragment = $c->request->params->{fragment}) {
