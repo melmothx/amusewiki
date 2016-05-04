@@ -377,6 +377,13 @@
                   </a>
                 </li>
                 [%# and these are for root %]
+                [% IF c.check_user_roles('admin') %]
+                <li>
+                  <a href="[% c.uri_for_action('/user/site_config') %]">
+                    [% loc('Edit site configuration') %]
+                  </a>
+                </li>
+                [% END %]
                 [% IF c.check_user_roles('root') %]
                 <li>
                   <a href="[% c.uri_for_action('/admin/show_users') %]">

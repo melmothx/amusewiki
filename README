@@ -17,6 +17,11 @@ files behind.
 
 ** Users
 
+Permission are globals and if the same user can login on different
+sites, it will have the same role. If you trust the user on one site,
+but not on another, then create another user with a different
+username.
+
 We define 5 levels of users.
 
 *** root permissions
@@ -26,7 +31,7 @@ important, they can create new sites, change settings, add themes,
 etc.. The same login works for all the sites. Given that being able to
 access the templates means being able to inject code, this role should
 be reserved to people that know what they are doing and have a shell
-access.
+access. They don't need to belong to a particular site.
 
 *** admin permissions
 

@@ -231,7 +231,7 @@ site.
 =cut
 
 sub available_roles {
-    return qw/librarian root/;
+    return qw/librarian admin root/;
 }
 
 sub role_list {

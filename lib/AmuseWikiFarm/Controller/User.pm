@@ -353,6 +353,26 @@ sub edit :Chained('user') :Args(1) {
     $c->stash(user => $user);
 }
 
+sub site_config :Chained('user') :PathPart('site') {
+    my ($self, $c) = @_;
+    unless ($c->check_user_roles('admin')) {
+        $c->detach('/not_permitted');
+        return;
+    }
+    my $site = $c->stash->{site};
+    my $esite = $c->model('DB::Site')->find($site->id);
+    my %params = %{ $c->request->body_parameters };
+    if (delete $params{edit_site}) {
+        if (my $err = $esite->update_from_params_restricted(\%params)) {
+            $c->flash(error_msg => $c->loc($err));
+        }
+    }
+    $c->stash(template => 'admin/edit.tt',
+              load_highlight => $site->use_js_highlight(1),
+              esite => $esite,
+              restricted => 1);
+}
+
 sub redirect_after_login :Private {
     my ($self, $c) = @_;
     my $path = $c->request->params->{goto} || '/';

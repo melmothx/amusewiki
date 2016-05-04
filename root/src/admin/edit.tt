@@ -1,5 +1,4 @@
 [%# -*- mode:html -*- %]
-
 [%# loc('A4 paper'); %]
 [%# loc('A5 paper'); %]
 [%# loc('A6 paper (also suitable for e-readers)'); %]
@@ -7,7 +6,6 @@
 [%# loc('Half Letter paper'); %]
 [%# loc('Quarter Letter paper'); %]
 [%# loc('Generic (fits in A4 and Letter)') %]
-
 [% IF exec_as_root %]
 <div class="alert alert-warning">
   <p>
@@ -37,6 +35,7 @@
 <div style="margin-top: 30px">
   <form method="post" class="form-horizontal" role="form" id="site-edit-form"
         onsubmit="return amw_confirm()">
+    [% UNLESS restricted %]
     <div class="form-group">
       <div class="row">
         <div class="col-sm-offset-2 col-sm-10">
@@ -50,7 +49,7 @@
         </div>
       </div>
     </div>
-
+    [% END %]
 
     <div class="form-group">
       <label for="mode" class="col-sm-2 control-label">
@@ -160,6 +159,7 @@
 
     [% # theme is skipped, not sure it is actually a good idea %]
 
+    [% UNLESS restricted %]
     <div class="form-group">
       <label for="logo" class="col-sm-2 control-label">
         [% loc('PDF logo') %]
@@ -184,6 +184,7 @@ kpsewhich mylogo.pdf</pre>
         </div>
       </div>
     </div>
+    [% END %]
 
     <div class="form-group">
       <label for="mail_notify" class="col-sm-2 control-label">
@@ -205,6 +206,7 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
+    [% UNLESS restricted %]
     <div class="form-group">
       <label for="canonical" class="col-sm-2 control-label">
         [% loc('Main canonical hostname, without protocol') %]
@@ -223,6 +225,7 @@ kpsewhich mylogo.pdf</pre>
                class="form-control" value="[% esite.sitegroup | html %]" />
       </div>
     </div>
+    [% END %]
 
     <div class="form-group">
       <label for="bb_page_limit" class="col-sm-2 control-label">
@@ -238,6 +241,7 @@ kpsewhich mylogo.pdf</pre>
       <h4>[% loc('Formats') %]</h4>
     </div>
 
+    [% UNLESS restricted %]
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <label>
@@ -248,6 +252,7 @@ kpsewhich mylogo.pdf</pre>
         </label>
       </div>
     </div>
+    [% END %]
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
@@ -291,6 +296,8 @@ kpsewhich mylogo.pdf</pre>
         </label>
       </div>
     </div>
+
+    [% UNLESS restricted %]
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <label>
@@ -345,6 +352,7 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
+    [% END %]
 
     [% # pick these options from the bookbuilder %]
     [% SET bb = c.model('BookBuilder') %]
@@ -565,6 +573,7 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
+    [% UNLESS restricted %]
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <label>
@@ -575,6 +584,7 @@ kpsewhich mylogo.pdf</pre>
         </label>
       </div>
     </div>
+    [% END %]
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
@@ -603,7 +613,7 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
-
+    [% UNLESS restricted %]
     <div class="form-group">
       <div class="row">
         <div class="col-sm-3">
@@ -639,6 +649,7 @@ kpsewhich mylogo.pdf</pre>
         </div>
       </div>
     </div>
+    [% END %]
 
     <div class="form-group">
       <div class="row">
@@ -694,6 +705,7 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
+    [% UNLESS restricted %]
     <h3>[% loc('SSL configuration') %]</h3>
     <div class="form-group">
       <div class="row">
@@ -728,8 +740,6 @@ kpsewhich mylogo.pdf</pre>
         </div>
       </div>
     </div>
-
-
     <p>
       [% loc('The following values are used to generate the webserver configuration.') %]<br>
       [% loc('They should be paths relative to the webserver configuration root or absolute paths (recommended).') %]<br>
@@ -791,6 +801,7 @@ kpsewhich mylogo.pdf</pre>
         </p>
       </div>
     </div>
+    [% END %]
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
