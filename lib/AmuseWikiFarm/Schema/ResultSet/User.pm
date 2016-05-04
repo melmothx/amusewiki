@@ -166,7 +166,7 @@ sub reset_password {
         if ($user->reset_until > $now) {
             my $password = 'reset' .
               Bytes::Random::Secure->new(NonBlocking => 1)->bytes_hex(32);
-            $user->password("reset" . $password);
+            $user->password($password);
             $user->reset_token(undef);
             $user->reset_until(undef);
             $user->update;
