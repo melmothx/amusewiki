@@ -363,7 +363,9 @@ sub site_config :Chained('user') :PathPart('site') {
     my $esite = $c->model('DB::Site')->find($site->id);
     my %params = %{ $c->request->body_parameters };
     if (delete $params{edit_site}) {
+        Dlog_debug { "Doing the update on $_" } \%params;
         if (my $err = $esite->update_from_params_restricted(\%params)) {
+            log_debug { "Error! $err" };
             $c->flash(error_msg => $c->loc($err));
         }
     }
