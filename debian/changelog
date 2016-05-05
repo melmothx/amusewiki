@@ -1,8 +1,9 @@
 amusewiki (1.811-3) unstable; urgency=medium
 
-  * Doc and cgit plackup fix
+  * Doc and cgit plackup fix.
+  * Fixed nginx reconfigure script
 
- -- Marco Pessotto <melmothx@gmail.com>  Thu, 05 May 2016 19:54:55 +0200
+ -- Marco Pessotto <melmothx@gmail.com>  Thu, 05 May 2016 19:59:33 +0200
 
 amusewiki (1.811-2) unstable; urgency=medium
 
