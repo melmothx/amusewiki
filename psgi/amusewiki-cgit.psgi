@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 
-use FindBin qw/$Bin/;
 use Plack::App::WrapCGI;
 use File::Spec;
 my $cgitrc = File::Spec->rel2abs(File::Spec->catfile(qw/opt etc cgitrc/));
