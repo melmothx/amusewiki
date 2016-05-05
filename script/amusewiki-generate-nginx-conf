@@ -5,6 +5,7 @@ use warnings;
 use utf8;
 use lib 'lib';
 use AmuseWikiFarm;
+use AmuseWikiFarm::Utils::CgitSetup;
 
 my $schema = AmuseWikiFarm->model('DB');
 
@@ -21,7 +22,7 @@ amusewiki-generate-nginx-conf - generate nginx configuration files for amusewiki
 =head1 SYNOPSIS
 
 Generate a suitable nginx configuration and prints the activation
-commands.
+commands and refresh the cgit configuration.
 
 =cut
 
@@ -30,3 +31,4 @@ if (my $out = $confgenerator->generate_nginx_config(@sites)) {
     print "# please execute as root:\n";
     print $out;
 }
+AmuseWikiFarm::Utils::CgitSetup->new(schema => $schema)->configure;
