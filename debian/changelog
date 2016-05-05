@@ -1,3 +1,9 @@
+amusewiki (1.811-2) unstable; urgency=medium
+
+  * Set the plackup environment to deployment
+
+ -- Marco Pessotto <melmothx@gmail.com>  Thu, 05 May 2016 14:15:01 +0200
+
 amusewiki (1.811-1) unstable; urgency=medium
 
   * New minor release
