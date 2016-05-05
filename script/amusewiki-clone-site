@@ -10,9 +10,9 @@ use YAML qw/LoadFile DumpFile/;
 use Getopt::Long;
 use Pod::Usage;
 
-my $directory;
+my ($directory, $help);
 
-GetOptions('directory=s' => \$directory) or die;
+GetOptions('directory=s' => \$directory, help => \$help) or die;
 
 if ($directory) {
     unless (-d $directory) {
@@ -29,7 +29,7 @@ my %actions = (
                export => \&export,
               );
 
-unless ($action && $actions{$action}) {
+if ($help or !$action or !$actions{$action}) {
     pod2usage;
     exit 2;
 }
