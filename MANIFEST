@@ -824,6 +824,7 @@ t/texmf-files/logo-en.pdf
 t/texmf-files/logo-yu.pdf
 t/update-or-create.t
 t/useless-sessions.t
+t/user-admin.t
 t/users.t
 t/utils-bookbuilder.t
 t/utils-cgitsetup.t
