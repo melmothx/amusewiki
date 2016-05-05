@@ -31,7 +31,7 @@ Supported databases are sqlite, postgresql and mysql.
 By default amusewiki uses an sqlite database. This is not recommended
 in production.
 
-* HOW TO CHANGE THE DATABASE.
+* HOW TO CHANGE THE DATABASE ENGINE
 
 Stop the application.
 
@@ -82,4 +82,102 @@ Restart the app.
 
 # systemctl start amusewiki-*
 
- -- Marco <melmothx@gmail.com>, Thu, 21 Jan 2016 21:26:07 +0100
+* HOW TO MIGRATE FROM A PLAIN INSTALLATION TO A PACKAGED INSTALLATION
+
+Here we assume to have a plain installation in /home/amuse/amusewiki
+(user: amuse) and we are going to install the debian package, keeping
+the same database engine (postgresql).
+
+The operation is a bit tricky but it's totally doable.
+
+One solution is to bootstrap the sites again, using the same procedure
+of the site switching. In case of large archives, this is not the best
+solution (even if viable).
+
+** As existing user "amuse"
+
+Stop the application, dump the db, change the path in it, do a backup copy.
+
+  cd $HOME/amusewiki
+  ./init-all.sh stop
+  pg_dump amuse > amuse-$(date -I).sql
+  # this is hacky, but will do.
+  sed -e 's,/home/amuse/amusewiki,/var/lib/amusewiki,g' amuse-2016-05-05.sql > $HOME/amuse-migrated.sql
+  crontab -l
+
+Remove existing cronjobs, if any.
+
+Do a backup of the whole directory, as root is going to move the files.
+
+** As root
+
+Remove existing nginx settings and cronjobs, install the package, stop
+the services, move the files, chown everything to the new user.
+
+ rm /etc/nginx/sites-enabled/amusewiki
+ rm /etc/nginx/amusewiki_include
+ apt-get install --no-install-recommends amusewiki
+ systemctl status amusewiki-*
+ systemctl stop amusewiki-*
+ systemctl status amusewiki-*
+ cd /var/lib/amusewiki
+ mkdir orig
+ for i in bbfiles log repo ssl staging xapian; do mv $i orig; mv /home/amuse/amusewiki/$i . ; chown -R amusewiki:amusewiki $i ; done
+
+Create a database for amusewiki as above:
+
+ su - postgres
+ psql
+ create user amusewiki with password 'XXXX';
+ create database amusewiki owner amusewiki;
+
+And create a a new dbic.yaml file in /var/lib/amusewiki as described
+in the above section.
+
+** As amusewiki
+
+Load the db and check that everything is fine
+
+ psql amusewiki < ~amuse/amuse-migrated.sql
+ amusewiki-bootstrap-archive --refresh
+ cp /home/amuse/amusewiki/log4perl.local.conf .
+
+If you have local tex files:
+
+ mkdir -p texmf/tex/generic/amusewiki/data
+ cp /home/amuse/texlive/texmf-local/tex/generic/amusewiki/data/* texmf/tex/generic/amusewiki/data
+ texhash ~/texmf
+
+Regenerate the nginx conf:
+
+ amusewiki-generate-nginx-conf
+
+*** As root again
+
+Execute the output from amusewiki's amusewiki-generate-nginx-conf to
+reload the webserver and start the services:
+
+ apt-get install libdbd-pg-perl
+ diff -Nu /etc/nginx/amusewikidebian_include /tmp/nginx-amusewiki-57xuuxvE/amusewikidebian_include
+ cat /tmp/nginx-amusewiki-57xuuxvE/amusewikidebian_include > /etc/nginx/amusewikidebian_include
+ diff -Nu /etc/nginx/sites-enabled/amusewikidebian /tmp/nginx-amusewiki-57xuuxvE/amusewikidebian
+ cat /tmp/nginx-amusewiki-57xuuxvE/amusewikidebian > /etc/nginx/sites-enabled/amusewikidebian
+ nginx -t && service nginx reload
+ systemctl start amusewiki-*
+ systemctl status amusewiki-*
+
+If you had the git-daemon enabled:
+
+ cd /var/lib/git
+ for i in /var/lib/amusewiki/repo/*; do if [ -d "$i/.git" ]; then echo $(basename $i); rm  $(basename $i).git ; ln -s $i/.git $(basename $i).git ; fi ; done
+ service git-daemon restart
+
+If you want to tweak the amusewiki conf:
+
+ cp /usr/share/perl5/AmuseWikiFarm/amusewikifarm.conf /usr/share/perl5/AmuseWikiFarm/amusewikifarm_local.conf
+ vim /usr/share/perl5/AmuseWikiFarm/amusewikifarm_local.conf
+
+If something goes wrong, you can revert to the bootstrapping tecnique
+described above.
+
+ -- Marco Pessotto <melmothx@gmail.com>, Thu,  5 May 2016 16:43:40 +0200
