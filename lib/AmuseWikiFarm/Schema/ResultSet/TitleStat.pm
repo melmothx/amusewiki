@@ -53,6 +53,7 @@ sub delete_old {
     my $me = $self->current_source_alias;
     my $dtf = $self->result_source->schema->storage->datetime_parser;
     my $since = DateTime->now->subtract(days => 7);
+    log_info { "Removing stats older than $since" };
     $self->search({ "$me.accessed" => { '<' => $dtf->format_datetime($since) } })->delete;
 }
 
