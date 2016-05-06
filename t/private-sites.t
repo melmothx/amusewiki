@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 54;
+use Test::More tests => 58;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -31,7 +31,7 @@ $mech->get_ok('/login');
 
 foreach my $path (qw/library topics authors bookbuilder search special
                      opds sitemap.txt
-                     feed rss.xml random human/) {
+                     feed rss.xml random human/, '/stats/popular') {
     $mech->get_ok("/$path");
     is $mech->uri->path, '/login', "/$path is redirected at login";
 }
@@ -56,7 +56,7 @@ is $mech->uri->path, '/library', "Loaded library ok";
 
 foreach my $path (qw[library category/topic category/author bookbuilder search special
                      opds
-                     feed rss.xml]) {
+                     feed rss.xml stats/popular]) {
     $mech->get_ok("/$path");
     is $mech->uri->path, "/$path", "/$path is retrieved correctly";
 }

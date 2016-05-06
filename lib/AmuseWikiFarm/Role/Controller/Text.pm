@@ -80,14 +80,15 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
                             if (!$check->robot) {
                                 log_debug { "Checking if this is the first download" };
                                 # in case this is the first access, set the site_id
-                                $c->session(site_id => $site->id);
-                                my $register = 1;
+                                $c->session->{site_id} ||= $site->id;
                                 my $identifier = $text->full_uri;
+                                # Dlog_debug { "Session is $_" } $c->session;
                                 unless ($c->session->{downloaded}->{$identifier}) {
                                     log_debug { "Inserting $identifier => $user_agent " };
                                     $text->insert_stat_record($identifier => $user_agent);
                                     $c->session->{downloaded}->{$identifier} = 1;
                                 }
+                                # Dlog_debug { "Session is $_" } $c->session;
                             }
                         }
                     }

@@ -13,7 +13,7 @@
   [% END %]
 </div>
 [% ELSE %]
-[% loc('Not enough data') %]
+[% loc('Nothing to see here, so far') %]
 [% END %]
 
 [% INCLUDE 'include/pagination.tt' %]

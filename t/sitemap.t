@@ -18,6 +18,8 @@ my @links = grep { /\w/ } split(/\n/, $mech->content);
 print Dumper(\@links);
 foreach my $link (@links) {
     $mech->get_ok($link);
+    my $path = $mech->uri->path;
+    like $link, qr{\Q$path\E$}, "$path is fine";
 }
 
 done_testing;
