@@ -2674,6 +2674,10 @@ sub mail_from_default {
     }
 }
 
+sub popular_titles {
+    my ($self, $page) = @_;
+    return $self->title_stats->popular_texts($page);
+}
 
 =head2 serialize_site
 
