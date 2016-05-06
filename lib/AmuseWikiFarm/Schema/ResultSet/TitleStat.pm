@@ -31,6 +31,7 @@ sub popular_texts {
     my $since = DateTime->now->subtract(days => 7);
     return $self->search({
                           'title.f_class' => 'text',
+                          'title.status' => 'published',
                           "$me.accessed" => { '>' => $dtf->format_datetime($since) },
                          },
                          {
