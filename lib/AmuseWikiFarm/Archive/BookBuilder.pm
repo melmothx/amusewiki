@@ -834,6 +834,7 @@ sub add_text {
                 my $total = $self->total_pages_estimated + $self->pages_estimated_for_text($text);
                 if ($total <= $limit) {
                     $to_add = $filename->name_with_fragments;
+                    $title->insert_stat_record($title->full_uri, "Bookbuilder add");
                 }
                 else {
                     # loc("Quota exceeded, too many pages")

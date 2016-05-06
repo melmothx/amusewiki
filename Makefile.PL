@@ -86,6 +86,8 @@ requires 'Bytes::Random::Secure';
 requires 'Crypt::OpenSSL::X509';
 requires 'Protocol::ACME' => '0.12';
 
+requires 'HTTP::BrowserDetect';
+
 # our own dogfood
 requires 'Text::Amuse' => '0.60';
 requires 'PDF::Imposition' => '0.21';

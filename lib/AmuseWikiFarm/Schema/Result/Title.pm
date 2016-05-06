@@ -558,6 +558,11 @@ sub is_published {
     return shift->status eq 'published';
 }
 
+sub is_regular {
+    return shift->f_class eq 'text';
+}
+
+
 sub is_deferred {
     return shift->status eq 'deferred';
 }
@@ -950,6 +955,21 @@ sub pubdate_locale {
     $locale ||= 'en';
     my $dt = DateTime->from_object(object => $self->pubdate, locale => $locale);
     return $dt->format_cldr($dt->locale->date_format_medium);
+}
+
+sub insert_stat_record {
+    my ($self, @args) = @_;
+    my $now = DateTime->now;
+    my $site_id = $self->site_id;
+    my $notes = '';
+    if (@args) {
+        $notes = join(' ', @args);
+    }
+    $self->add_to_title_stats({
+                               site_id => $site_id,
+                               accessed => $now,
+                               notes => $notes,
+                              });
 }
 
 __PACKAGE__->meta->make_immutable;

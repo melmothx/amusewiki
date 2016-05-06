@@ -4,7 +4,7 @@ requires qw/base/;
 
 use AmuseWikiFarm::Utils::Amuse qw//;
 use HTML::Entities qw//;
-
+use HTTP::BrowserDetect;
 use AmuseWikiFarm::Log::Contextual;
 
 sub match :Chained('base') PathPart('') :CaptureArgs(1) {
@@ -72,6 +72,26 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
             log_debug { "Got $canonical $ext => " . $text->title };
             my $served_file = $text->filepath_for_ext($ext);
             if (-f $served_file) {
+                if ($text->is_regular) {
+                    if (!$c->user_exists) {
+                        if (my $user_agent = $c->request->user_agent) {
+                            my $check = HTTP::BrowserDetect->new($user_agent);
+                            log_debug { "Found agent " . $check->user_agent };
+                            if (!$check->robot) {
+                                log_debug { "Checking if this is the first download" };
+                                # in case this is the first access, set the site_id
+                                $c->session(site_id => $site->id);
+                                my $register = 1;
+                                my $identifier = $text->full_uri;
+                                unless ($c->session->{downloaded}->{$identifier}) {
+                                    log_debug { "Inserting $identifier => $user_agent " };
+                                    $text->insert_stat_record($identifier => $user_agent);
+                                    $c->session->{downloaded}->{$identifier} = 1;
+                                }
+                            }
+                        }
+                    }
+                }
                 $c->stash(serve_static_file => $served_file);
                 $c->detach($c->view('StaticFile'));
                 return;
