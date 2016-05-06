@@ -1,7 +1,7 @@
 #!perl
 use strict;
 use warnings;
-use Test::More tests => 22;
+use Test::More tests => 23;
 use Data::Dumper;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
@@ -17,6 +17,8 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
 $site->update({ mode => 'openwiki'});
+
+$mech->get_ok('/');
 
 for (1..3) {
     foreach my $path ('/', '/library', '/category/author', '/category/topic', '/login', '/human', '/publish/all') {
