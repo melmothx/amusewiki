@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 58;
+use Test::More tests => 183;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -12,6 +12,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Text::Amuse::Compile::Utils qw/write_file/;
+use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -27,14 +28,13 @@ ok -d $site->repo_root;
 mkdir catdir($site->repo_root, 'site_files');
 write_file(catfile($site->repo_root, 'site_files', 'test.txt'), "Hello\n");
 
+my @uris = (qw[library category/topic category/author bookbuilder search special
+                     opds help/opds sitemap.txt
+                     feed rss.xml stats/popular]);
+
 $mech->get_ok('/login');
 
-foreach my $path (qw/library topics authors bookbuilder search special
-                     opds sitemap.txt
-                     feed rss.xml random human/, '/stats/popular') {
-    $mech->get_ok("/$path");
-    is $mech->uri->path, '/login', "/$path is redirected at login";
-}
+check_denied('before login');
 
 $mech->get_ok('/sitefiles/0private0/test.txt');
 is $mech->response->content, "Hello\n", "Sitefile retrieved";
@@ -45,21 +45,56 @@ foreach my $open (qw/login opensearch.xml/) {
 }
 
 $site->update_or_create_user({ username => 'marcolino',
+                               active => 1,
                                password => 'marcolino', }, "librarian");
 
 $mech->get_ok('/login');
-$mech->form_with_fields('username');
+ok $mech->form_with_fields('username');
 $mech->set_fields(username => 'marcolino',
                   password => 'marcolino');
 $mech->click;
 is $mech->uri->path, '/library', "Loaded library ok";
 
-foreach my $path (qw[library category/topic category/author bookbuilder search special
-                     opds
-                     feed rss.xml stats/popular]) {
-    $mech->get_ok("/$path");
-    is $mech->uri->path, "/$path", "/$path is retrieved correctly";
-}
+check_pass("After login");
 
 $mech->get_ok("/robots.txt");
 is $mech->content, "User-agent: *\nDisallow: /\n", "robots.txt ok, disallow everything";
+
+$mech->get_ok("/logout");
+
+check_denied('after logout');
+
+$mech->credentials(qw/marcolino marcolino/);
+
+check_pass('with http auth');
+
+$site->set_users([]);
+
+check_denied('after user deletion');
+
+my $user = $schema->resultset('User')->find({ username => 'marcolino'});
+ok($user, "User still exists");
+
+$site->set_users([$user]);
+
+check_pass('after adding user to site');
+
+$user->update({ active => 0 });
+
+check_denied('after setting inactive to 0');
+
+sub check_denied {
+    my $note = shift;
+    foreach my $path (@uris) {
+        $mech->get("/$path");
+        is $mech->status, '401', "401 on $path $note";
+        $mech->content_is('Authorization required.', "$path $note");
+    }
+}
+sub check_pass {
+    my $note = shift;
+    foreach my $path (@uris) {
+        $mech->get_ok("/$path", "$path $note is 200");
+        is $mech->uri->path, "/$path", "$path is retrieved correctly $note";
+    }
+}

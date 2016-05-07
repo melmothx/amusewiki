@@ -30,7 +30,7 @@ $site->update({
                mode => 'private',
               });
 # root login and creates a user
-$mech->get_ok('/library');
+$mech->get_ok('/');
 is $mech->uri->path, '/login';
 $mech->submit_form(with_fields =>  {
                                     username => 'root',
@@ -115,7 +115,9 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
                        button => 'submit');
     is $mech->uri->path, '/login', "Couldn't login with new password";
     $mech->get('/reset-password/sloppy/');
-    is $mech->uri->path, '/login'; # doesn't exist
+    # the catchall route is plugged into the auth, so we never get a
+    # 404 before a 401. Which is a good thing, probably
+    is $mech->status, '401';
     foreach my $fake ('%20', 0, 'asldfasd', 'asdfasdfasdf') {
         $mech->get("/reset-password/sloppy/$fake");
         is $mech->status, '403', "Access denied on " . $mech->uri->path;

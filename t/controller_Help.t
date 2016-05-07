@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 5;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -22,10 +22,4 @@ my $site = $schema->resultset('Site')->find({ canonical => 'blog.amusewiki.org' 
     $mech->content_contains('opds-1.png');
     $mech->follow_link_ok({ url_regex => qr{/opds$} });
     is $mech->uri->path, '/opds';
-    my $old_mode = $site->mode;
-    $site->update({ mode => 'private' });
-    $mech->get_ok('/help/opds');
-    $mech->content_lacks('opds-1.png');
-    $mech->content_lacks('/help/opds');
-    $site->update({ mode => $old_mode });
 }

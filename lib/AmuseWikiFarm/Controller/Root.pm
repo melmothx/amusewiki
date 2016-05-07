@@ -186,9 +186,34 @@ sub secure_no_user :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
 
 sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    if ($c->stash->{site}->is_private and !$c->user_exists) {
-        $c->response->redirect($c->uri_for('/login',
-                                           { goto => $c->req->path }));
+    my $site = $c->stash->{site};
+    if ($site->is_private and !$c->user_exists) {
+        if ($site->permit_http_auth) {
+            $self->redirect_to_secure($c);
+            log_debug { "Trying HTTP Basic auth" };
+            my ($username, $password) = $c->req->headers->authorization_basic;
+            Dlog_debug { "Found these creds $_" } +{ user => $username, pass => $password };
+            if ($username && $password) {
+                if (my $user = $site->users->find({ username => $username })) {
+                    if ($user->active && $user->check_password($password)) {
+                        log_info { "$username found and authenticated" };
+                        # unclear if we want to authenticate as well in the app.
+                        return;
+                    }
+                }
+            }
+            # still here? then issue a 401. Please note that the user must belong to the site.
+            $c->response->status(401);
+            $c->response->content_type('text/plain');
+            $c->response->headers
+              ->push_header('WWW-Authenticate' => qq{Basic realm="} . $site->canonical . '"');
+            $c->response->body('Authorization required.');
+            $c->detach();
+        }
+        else {
+            $c->response->redirect($c->uri_for('/login',
+                                               { goto => $c->req->path }));
+        }
         $c->detach();
     }
 }
@@ -343,22 +368,23 @@ The root page (/) points to /library/ if there is no special/index
 
 =cut
 
-sub index :Chained('/site') :PathPart('') :Args(0) {
+sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
     # check if we have a special page named index
     my $nav = $c->stash->{navigation};
-    my $target;
+    # default
+    my $target = $c->uri_for_action('/library/listing');
     my $site = $c->stash->{site};
     my $locale = $c->stash->{current_locale_code} || $site->locale;
-    if ($site->multilanguage and
+    if ($site->is_private and !$c->user_exists) {
+        $target = $c->uri_for_action('/user/login');
+    }
+    elsif ($site->multilanguage and
         (my $locindex = $site->titles->special_by_uri('index-' . $locale))) {
         $target = $c->uri_for($locindex->full_uri);
     }
     elsif (my $index = $site->titles->special_by_uri('index')) {
         $target = $c->uri_for($index->full_uri);
-    }
-    else {
-        $target = $c->uri_for_action('/library/listing');
     }
     $c->res->redirect($target);
 }
