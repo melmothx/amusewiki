@@ -16,6 +16,8 @@ dbicdh/_source/deploy/15/001-auto-__VERSION.yml
 dbicdh/_source/deploy/15/001-auto.yml
 dbicdh/_source/deploy/16/001-auto-__VERSION.yml
 dbicdh/_source/deploy/16/001-auto.yml
+dbicdh/_source/deploy/17/001-auto-__VERSION.yml
+dbicdh/_source/deploy/17/001-auto.yml
 dbicdh/_source/deploy/2/001-auto-__VERSION.yml
 dbicdh/_source/deploy/2/001-auto.yml
 dbicdh/_source/deploy/3/001-auto-__VERSION.yml
@@ -46,6 +48,8 @@ dbicdh/MySQL/deploy/15/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/15/001-auto.sql
 dbicdh/MySQL/deploy/16/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/16/001-auto.sql
+dbicdh/MySQL/deploy/17/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/17/001-auto.sql
 dbicdh/MySQL/deploy/2/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/2/001-auto.sql
 dbicdh/MySQL/deploy/3/001-auto-__VERSION.sql
@@ -68,6 +72,7 @@ dbicdh/MySQL/upgrade/12-13/001-auto.sql
 dbicdh/MySQL/upgrade/13-14/001-auto.sql
 dbicdh/MySQL/upgrade/14-15/001-auto.sql
 dbicdh/MySQL/upgrade/15-16/001-auto.sql
+dbicdh/MySQL/upgrade/16-17/001-auto.sql
 dbicdh/MySQL/upgrade/2-3/001-auto.sql
 dbicdh/MySQL/upgrade/3-4/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
@@ -90,6 +95,8 @@ dbicdh/PostgreSQL/deploy/15/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/15/001-auto.sql
 dbicdh/PostgreSQL/deploy/16/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/16/001-auto.sql
+dbicdh/PostgreSQL/deploy/17/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/17/001-auto.sql
 dbicdh/PostgreSQL/deploy/2/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/2/001-auto.sql
 dbicdh/PostgreSQL/deploy/3/001-auto-__VERSION.sql
@@ -112,6 +119,7 @@ dbicdh/PostgreSQL/upgrade/12-13/001-auto.sql
 dbicdh/PostgreSQL/upgrade/13-14/001-auto.sql
 dbicdh/PostgreSQL/upgrade/14-15/001-auto.sql
 dbicdh/PostgreSQL/upgrade/15-16/001-auto.sql
+dbicdh/PostgreSQL/upgrade/16-17/001-auto.sql
 dbicdh/PostgreSQL/upgrade/2-3/001-auto.sql
 dbicdh/PostgreSQL/upgrade/3-4/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
@@ -134,6 +142,8 @@ dbicdh/SQLite/deploy/15/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/15/001-auto.sql
 dbicdh/SQLite/deploy/16/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/16/001-auto.sql
+dbicdh/SQLite/deploy/17/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/17/001-auto.sql
 dbicdh/SQLite/deploy/2/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/2/001-auto.sql
 dbicdh/SQLite/deploy/3/001-auto-__VERSION.sql
@@ -156,6 +166,7 @@ dbicdh/SQLite/upgrade/12-13/001-auto.sql
 dbicdh/SQLite/upgrade/13-14/001-auto.sql
 dbicdh/SQLite/upgrade/14-15/001-auto.sql
 dbicdh/SQLite/upgrade/15-16/001-auto.sql
+dbicdh/SQLite/upgrade/16-17/001-auto.sql
 dbicdh/SQLite/upgrade/2-3/001-auto.sql
 dbicdh/SQLite/upgrade/3-4/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
@@ -192,6 +203,7 @@ lib/AmuseWikiFarm/Controller/Root.pm
 lib/AmuseWikiFarm/Controller/Search.pm
 lib/AmuseWikiFarm/Controller/SiteFiles.pm
 lib/AmuseWikiFarm/Controller/Special.pm
+lib/AmuseWikiFarm/Controller/Stats.pm
 lib/AmuseWikiFarm/Controller/Tasks.pm
 lib/AmuseWikiFarm/Controller/Uploads.pm
 lib/AmuseWikiFarm/Controller/User.pm
@@ -237,6 +249,7 @@ lib/AmuseWikiFarm/Schema/Result/SiteOption.pm
 lib/AmuseWikiFarm/Schema/Result/TableComment.pm
 lib/AmuseWikiFarm/Schema/Result/Title.pm
 lib/AmuseWikiFarm/Schema/Result/TitleCategory.pm
+lib/AmuseWikiFarm/Schema/Result/TitleStat.pm
 lib/AmuseWikiFarm/Schema/Result/User.pm
 lib/AmuseWikiFarm/Schema/Result/UserRole.pm
 lib/AmuseWikiFarm/Schema/Result/UserSite.pm
@@ -248,6 +261,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Job.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Revision.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Site.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
+lib/AmuseWikiFarm/Schema/ResultSet/TitleStat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
@@ -313,6 +327,7 @@ root/src/publish/pending.tt
 root/src/search/index.tt
 root/src/search/opensearch.tt
 root/src/special/display.tt
+root/src/stats/popular.tt
 root/src/tasks/display.tt
 root/src/text.tt
 root/src/user/create.tt
@@ -701,6 +716,7 @@ t/controller_OPDS.t
 t/controller_Publish.t
 t/controller_Search.t
 t/controller_Special.t
+t/controller_Stats.t
 t/controller_Uploads.t
 t/controller_User.t
 t/controller_Utils.t
