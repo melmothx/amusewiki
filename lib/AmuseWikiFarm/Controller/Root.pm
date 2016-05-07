@@ -123,7 +123,7 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     # force ssl for authenticated users
     if ($c->user_exists) {
         unless ($c->request->secure) {
-            $c->forward('/redirect_to_secure');
+            $self->redirect_to_secure($c);
         }
     }
 
@@ -172,6 +172,16 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
         $c->stash(navigation => $nav_hash);
     }
     return 1;
+}
+
+sub secure_no_user :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
+    my ( $self, $c ) = @_;
+    if ($c->user_exists) {
+        $c->flash(status_msg => $c->loc("You are already logged in"));
+        $c->response->redirect($c->uri_for('/'));
+        return;
+    }
+    $self->redirect_to_secure($c);
 }
 
 sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {

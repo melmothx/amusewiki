@@ -50,17 +50,7 @@ use URI::QueryParam;
 use AmuseWikiFarm::Log::Contextual;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
-sub secure_no_user :Chained('/site_no_auth') :PathPart('') :CaptureArgs(0) {
-    my ( $self, $c ) = @_;
-    if ($c->user_exists) {
-        $c->flash(status_msg => $c->loc("You are already logged in"));
-        $c->response->redirect($c->uri_for('/'));
-        return;
-    }
-    $c->forward('/redirect_to_secure');
-}
-
-sub login :Chained('secure_no_user') :PathPart('login') :Args(0) {
+sub login :Chained('/secure_no_user') :PathPart('login') :Args(0) {
     my ( $self, $c ) = @_;
     $c->stash(
               nav => 'login',
@@ -109,7 +99,7 @@ sub login :Chained('secure_no_user') :PathPart('login') :Args(0) {
     $c->flash(error_msg => $c->loc("Wrong username or password"));
 }
 
-sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(0) {
+sub reset_password :Chained('/secure_no_user') :PathPart('reset-password') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(
               page_title => $c->loc('Reset password'),
@@ -137,7 +127,7 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
     }
 }
 
-sub reset_password_confirm :Chained('secure_no_user') :PathPart('reset-password') :Args(2) {
+sub reset_password_confirm :Chained('/secure_no_user') :PathPart('reset-password') :Args(2) {
     my ($self, $c, $username, $token) = @_;
     if ($username and
         $token and
