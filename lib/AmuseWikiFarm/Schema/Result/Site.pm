@@ -2679,11 +2679,6 @@ sub popular_titles {
     return $self->title_stats->popular_texts($page);
 }
 
-sub permit_http_auth {
-    return 1;
-}
-
-
 =head2 serialize_site
 
 Return an hashref with the serialized site, with options, virtual

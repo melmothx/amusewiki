@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 183;
+use Test::More tests => 232;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -82,6 +82,32 @@ check_pass('after adding user to site');
 $user->update({ active => 0 });
 
 check_denied('after setting inactive to 0');
+
+$user->update({ active => 1 });
+
+{
+    my $human = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                    agent => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36",
+                                                    max_redirect => 0,
+                                                    host => "0private0.amusewiki.org");
+
+    foreach my $path (@uris) {
+        $human->get("/$path");
+        is $human->status, '302';
+        diag $human->response->headers->header('Location');
+        like $human->response->headers->header('Location'), qr{0private0\.amusewiki\.org/login}, "Redirected to login";
+    }
+    $human->get("/login");
+    ok $human->form_with_fields('username');
+    $human->set_fields(username => 'marcolino',
+                      password => 'marcolino');
+    $human->click;
+    foreach my $path (@uris) {
+        $human->get_ok("/$path");
+        is $human->uri->path, "/$path", "$path is retrieved correctly after the login";
+    }
+}
+
 
 sub check_denied {
     my $note = shift;
