@@ -164,6 +164,11 @@ sub total_pages_estimated {
     return $count;
 }
 
+sub total_texts {
+    my $self = shift;
+    return scalar @{ $self->texts };
+}
+
 sub pages_estimated_for_text {
     my ($self, $text) = @_;
     my $filename = Text::Amuse::Compile::FileName->new($text);

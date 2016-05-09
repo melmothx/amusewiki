@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 177;
+use Test::More tests => 180;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -94,6 +94,8 @@ ok($bb->add_text('my-good-text'));
 ok($bb->add_text('ciao'));
 ok($bb->add_text('/etc/passwd:1,2,3'));
 is_deeply $bb->textlist, ['my-good-text', 'ciao', 'passwd:1,2,3'], "Texts added correctly";
+
+is $bb->total_texts, 3;
 
 $bb->delete_text(3);
 $bb->delete_text(1);
@@ -376,6 +378,7 @@ $bb->site->update({ bb_page_limit => 5 });
     ok($bb->add_text('first-test:1,pre,post'));
     is_deeply ($bb->texts,
                [ 'first-test:1,pre,post' ]);
+    is $bb->total_texts, 1;
     my $pdf = check_file($bb, "Partial");
   SKIP: {
         skip "Missing pdftotext", 3, unless $pdftotext;
@@ -401,6 +404,7 @@ $bb->site->update({ bb_page_limit => 5 });
     is_deeply ($bb->texts,
                [ 'first-test:1,pre,post',
                  'first-test:1' ]);
+    is $bb->total_texts, 2;
     my $pdf = check_file($bb, "Partial 2");
   SKIP: {
         skip "Missing pdftotext", 8, unless $pdftotext;
