@@ -4,7 +4,6 @@ requires qw/base/;
 
 use AmuseWikiFarm::Utils::Amuse qw//;
 use HTML::Entities qw//;
-use HTTP::BrowserDetect;
 use AmuseWikiFarm::Log::Contextual;
 
 sub match :Chained('base') PathPart('') :CaptureArgs(1) {
@@ -74,10 +73,9 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
             if (-f $served_file) {
                 if ($text->is_regular) {
                     if (!$c->user_exists) {
-                        if (my $user_agent = $c->request->user_agent) {
-                            my $check = HTTP::BrowserDetect->new($user_agent);
-                            log_debug { "Found agent " . $check->user_agent };
-                            if (!$check->robot) {
+                        if (my $user_agent = $c->stash->{amw_user_agent}) {
+                            log_debug { "Found agent " . $user_agent->user_agent };
+                            if ($user_agent->browser_string) {
                                 log_debug { "Checking if this is the first download" };
                                 # in case this is the first access, set the site_id
                                 $c->session->{site_id} ||= $site->id;

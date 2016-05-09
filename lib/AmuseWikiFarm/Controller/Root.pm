@@ -5,6 +5,7 @@ BEGIN { extends 'Catalyst::Controller' }
 
 use AmuseWikiFarm::Utils::Amuse qw//;
 use AmuseWikiFarm::Log::Contextual;
+use HTTP::BrowserDetect;
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -57,6 +58,8 @@ Locale name
 sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     log_debug { $c->request->uri->as_string };
+
+    $c->stash(amw_user_agent => HTTP::BrowserDetect->new($c->request->user_agent || ''));
 
     # catch the host. ->uri is an URI object, as per doc.
     my $host = $c->request->uri->host;
