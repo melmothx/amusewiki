@@ -79,7 +79,7 @@ sub login :Chained('/secure_no_user') :PathPart('login') :Args(0) {
     # here we have another layer befor hitting the authenticate
 
     if (my $user = $c->model('DB::User')->find({ username => $username  })) {
-
+        log_debug { "User $username found" };
         # authenticate only if the user is a superuser
         # or if the site id matches the current site id
         if (($user->sites->find($site->id) or
@@ -95,6 +95,7 @@ sub login :Chained('/secure_no_user') :PathPart('login') :Args(0) {
                 return;
             }
         }
+        log_info { "User $username not authorized" };
     }
     $c->flash(error_msg => $c->loc("Wrong username or password"));
 }

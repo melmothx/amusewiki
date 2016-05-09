@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 19;
+use Test::More tests => 26;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -43,7 +43,7 @@ diag $mech->uri->path;
 $mech->get_ok('/user/create');
 is $mech->uri->path, '/user/create';
 $mech->get('/user/site');
-is $mech->status, '403';
+is $mech->status, '403', "status for " . $mech->uri . " is 403";
 $user->add_to_roles({ role => 'admin' });
 logout_and_login();
 $mech->get_ok('/user/site');
@@ -80,6 +80,27 @@ $mech->submit_form(with_fields => {
 $site->discard_changes;
 is ($site->magic_answer, '???', "Site updated");
 is ($site->magic_question, 'Guess what', "Site updated");
+
+
+my $other = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                max_redirect => 0,
+                                                host => 'blog.amusewiki.org');
+
+$other->get_ok('/library');
+$other->get('/user/site');
+is ($other->status, '302');
+like $other->response->headers->header('Location'), qr{/login};
+$other->get_ok('/login');
+$other->submit_form(form_id => 'login-form',
+                    fields => { username => 'myadmin',
+                                password => 'maypass',
+                              },
+                    button => 'submit');
+is $other->uri->path, '/login';
+$other->get('/user/site');
+is $other->status, '302';
+like $other->response->headers->header('Location'), qr{/login};
+# admin can't login on other sites
 
 
 sub logout_and_login {
