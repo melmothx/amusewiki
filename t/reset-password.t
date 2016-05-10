@@ -81,8 +81,15 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
 {
     my @mails = Email::Sender::Simple->default_transport->deliveries;
     is scalar(@mails), 2, "Found 2 mails";
-    my ($link) = $mails[1]{email}->get_body =~ m{(https://.*?)\s*$}m;
-    diag $mails[1]{email}->get_body;
+#     3.008     2014-12-27 18:36:19-05:00 America/New_York
+#         - make results of get_body be the same on Email::{Simple,MIME}
+#         - ...but this method is a mess, so maybe avoid using Abstract for body
+    #           work
+    my $email_body = $mails[1]{email}->get_body;
+    # blah.
+    $email_body =~ s/=\r?\n//gs;
+    my ($link) = $email_body =~ m{(https://.*?)\s*$}m;
+    diag $email_body;
     diag $mails[1]{email}->get_header("Subject");
     like $mails[1]{email}->get_header("Subject"), qr/Password reset for/;
     ok $link, "Found reset link" and diag $link;
