@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use base 'Catalyst::Model::Factory::PerRequest';
 
+use AmuseWikiFarm::Log::Contextual;
+
 __PACKAGE__->config(
     class => 'AmuseWikiFarm::Archive::BookBuilder',
 );
@@ -14,17 +16,18 @@ sub prepare_arguments {
     # passed directly, hence any modification done in it, will be
     # reflected in the session. At some point, we could pass a copy
     # here instead, but it seems to work as expected...
-    my $args = $c->session->{bookbuilder} || {};
-    my %constructor = (
-        %$args,
-        dbic => $c->model('DB'),
-       );
+    my %args;
+    if ($c->sessionid && $c->session->{bookbuilder}) {
+        %args = %{ $c->session->{bookbuilder} };
+    }
+    Dlog_debug { "Bookbuilder loading with $_" } \%args;
+    $args{dbic} = $c->model('DB');
     if (my $site = $c->stash->{site}) {
-        $constructor{site} = $site;
+        $args{site} = $site;
     }
     # this switched from boolean to string
-    $constructor{headings} ||= 0;
-    return \%constructor;
+    $args{headings} ||= 0;
+    return \%args;
 }
 
 

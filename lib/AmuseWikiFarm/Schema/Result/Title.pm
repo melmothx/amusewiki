@@ -343,6 +343,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 title_stats
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TitleStat>
+
+=cut
+
+__PACKAGE__->has_many(
+  "title_stats",
+  "AmuseWikiFarm::Schema::Result::TitleStat",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 categories
 
 Type: many_to_many
@@ -354,8 +369,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uxsQ/gYpgxMzvo6EvwP7bA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-06 10:04:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FT20w1zat/1quXGg5X/OYw
 
 __PACKAGE__->has_many(
     translations => "AmuseWikiFarm::Schema::Result::Title",
@@ -542,6 +557,11 @@ sub _check_status_file {
 sub is_published {
     return shift->status eq 'published';
 }
+
+sub is_regular {
+    return shift->f_class eq 'text';
+}
+
 
 sub is_deferred {
     return shift->status eq 'deferred';
@@ -935,6 +955,21 @@ sub pubdate_locale {
     $locale ||= 'en';
     my $dt = DateTime->from_object(object => $self->pubdate, locale => $locale);
     return $dt->format_cldr($dt->locale->date_format_medium);
+}
+
+sub insert_stat_record {
+    my ($self, @args) = @_;
+    my $now = DateTime->now;
+    my $site_id = $self->site_id;
+    my $notes = '';
+    if (@args) {
+        $notes = join(' ', @args);
+    }
+    $self->add_to_title_stats({
+                               site_id => $site_id,
+                               accessed => $now,
+                               notes => $notes,
+                              });
 }
 
 __PACKAGE__->meta->make_immutable;

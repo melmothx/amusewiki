@@ -109,6 +109,12 @@ while (1) {
             if ($@) {
                 log_error { "Errors: $@" };
             }
+            eval {
+                $schema->resultset('TitleStat')->delete_old;
+            };
+            if ($@) {
+                log_error { "Errors: $@" };
+            }
             log_info { "Daily job finished" };
         }
         $schema->resultset('Job')->fail_stale_jobs;

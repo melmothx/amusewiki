@@ -1,0 +1,19 @@
+<h2>[% page_title | html %]</h2>
+
+<div>&nbsp;</div>
+
+[% IF texts.size %]
+<div class="list-group">
+  [% FOREACH text IN texts %]
+  <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
+    <strong>[% text.title %]</strong>
+    [%- IF text.author %] — [% text.author -%][% END -%]    
+    <span style="display:none">[% text.get_column('popular') %]</span>
+  </a>
+  [% END %]
+</div>
+[% ELSE %]
+[% loc('Nothing to see here, so far') %]
+[% END %]
+
+[% INCLUDE 'include/pagination.tt' %]

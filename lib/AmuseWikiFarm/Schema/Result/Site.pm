@@ -649,6 +649,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 title_stats
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TitleStat>
+
+=cut
+
+__PACKAGE__->has_many(
+  "title_stats",
+  "AmuseWikiFarm::Schema::Result::TitleStat",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 titles
 
 Type: has_many
@@ -705,8 +720,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-04-29 11:47:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:aCt6iFhlfMFmNs60/R6L1A
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-06 10:04:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tubBmbLiu3V94WGDt0BNyA
 
 =head2 other_sites
 
@@ -868,6 +883,12 @@ sub known_langs {
             sv => 'Svenska',
             pl => 'Polski',
            };
+}
+
+sub known_langs_as_string {
+    my $self = shift;
+    my $langs = $self->known_langs;
+    return join(' ', sort keys %$langs);
 }
 
 sub path_for_specials {
@@ -2026,6 +2047,67 @@ If the params is valid, perform an update, otherwise return the error.
 
 =cut
 
+sub update_from_params_restricted {
+    my ($self, $params) = @_;
+    return unless $params;
+    my %fixed_values = (
+                        active            => 'value',
+
+                        logo              => 'value',
+
+                        canonical         => 'value',
+                        sitegroup         => 'value',
+
+                        tex               => 'value',
+                        html              => 'value',
+                        bare_html         => 'value',
+                        epub              => 'value',
+                        zip               => 'value',
+                        ttdir             => 'value',
+
+                        use_luatex               => 'option',
+
+                        vhosts            => 'delete',
+                        html_special_page_bottom => 'option',
+
+
+                        secure_site       => 'value',
+                        secure_site_only  => 'value',
+                        acme_certificate  => 'value',
+                        ssl_key           => 'value',
+                        ssl_chained_cert  => 'value',
+                        ssl_cert          => 'value',
+                        ssl_ca_cert       => 'value',
+
+                       );
+    my $abort;
+    foreach my $value (keys %fixed_values) {
+        if (exists $params->{$value}) {
+            log_error { "Restricted update passed a fixed value, $value, aborting" };
+            $abort++;
+        }
+        my $type = $fixed_values{$value};
+        if ($type eq 'value') {
+            $params->{$value} = $self->$value;
+        }
+        elsif ($type eq 'option') {
+            $params->{$value} = $self->get_option($value);
+        }
+        elsif ($type eq 'delete') {
+            delete $params->{$value};
+        }
+        else {
+            die "$type is wrong";
+        }
+    }
+    if ($abort) {
+        return;
+    }
+    else {
+        return $self->update_from_params($params);
+    }
+}
+
 
 sub update_from_params {
     my ($self, $params) = @_;
@@ -2275,8 +2357,14 @@ sub update_from_params {
     # no error? update the db
     unless (@errors) {
         my $guard = $self->result_source->schema->txn_scope_guard;
+        Dlog_info { "Updating site settings $_ " } +{ $self->get_dirty_columns };
         $self->update;
         if (@vhosts) {
+            Dlog_info { "Updating vhosts to $_" }
+              +{
+                to => \@vhosts,
+                from => [ map { $_->name } $self->vhosts ],
+               };
             # delete and reinsert, even if it doesn't feel too right
             $self->vhosts->delete;
             foreach my $vhost (@vhosts) {
@@ -2284,9 +2372,25 @@ sub update_from_params {
             }
         }
         $self->site_links->delete;
+        Dlog_info { "Updating links to $_" }
+          +{
+            from => [ map { +{ url => $_->url,
+                               label => $_->label,
+                               sorting_pos => $_->sorting_pos
+                             } } $self->site_links ],
+            to => \@site_links,
+           };
         foreach my $link (@site_links) {
             $self->site_links->create($link);
         }
+        Dlog_info { "Updating options to $_" }
+          +{
+            from => [ map { +{
+                              option_name => $_->option_name,
+                              option_value => $_->option_value
+                             } } $self->site_options ],
+            to => \@options,
+           };
         foreach my $opt (@options) {
             $self->site_options->update_or_create($opt);
         }
@@ -2558,6 +2662,21 @@ sub use_js_highlight_value {
 
 sub sl_tex {
     return shift->sl_pdf;
+}
+
+sub mail_from_default {
+    my $self = shift;
+    if (my $mail = $self->mail_from) {
+        return $mail;
+    }
+    else {
+        return 'noreply@' . $self->canonical;
+    }
+}
+
+sub popular_titles {
+    my ($self, $page) = @_;
+    return $self->title_stats->popular_texts($page);
 }
 
 =head2 serialize_site

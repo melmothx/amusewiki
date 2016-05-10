@@ -1,0 +1,8 @@
+[% lh.loc('Someone, probably you, has requested a password reset for [_1] at [_2].',
+   username, host) %]
+
+[% lh.loc('If you want to proceed, please visit the following url: [_1]', reset_url) %]
+
+[% lh.loc('Otherwise, please just ignore this mail.') %]
+
+[% lh.loc('The link is valid until [_1] (one hour from now)', valid) %]

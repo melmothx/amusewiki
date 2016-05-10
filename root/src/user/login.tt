@@ -18,6 +18,14 @@
   </button>
 </form>
 
+<div>&nbsp;</div>
+
+<div>
+  <a href="[% c.uri_for_action('/user/reset_password') %]">[% loc('Lost your password?') %]</a>
+</div>
+
+
+
 <script type="text/javascript">
     if (location.hash) {
         $('<input />')

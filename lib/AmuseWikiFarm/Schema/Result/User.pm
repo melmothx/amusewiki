@@ -77,6 +77,16 @@ __PACKAGE__->table("users");
   is_nullable: 0
   size: 1
 
+=head2 reset_token
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 reset_until
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -92,6 +102,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "active",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  "reset_token",
+  { data_type => "text", is_nullable => 1 },
+  "reset_until",
+  { data_type => "integer", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -173,8 +187,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C0NwNswvfMRqiEL8XcfC0A
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-03 16:57:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jB5EH1TzCAtuZoFzoMH6FA
 
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt
@@ -217,7 +231,7 @@ site.
 =cut
 
 sub available_roles {
-    return qw/librarian root/;
+    return qw/librarian admin root/;
 }
 
 sub role_list {

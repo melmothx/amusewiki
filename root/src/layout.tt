@@ -377,6 +377,13 @@
                   </a>
                 </li>
                 [%# and these are for root %]
+                [% IF c.check_user_roles('admin') %]
+                <li>
+                  <a href="[% c.uri_for_action('/user/site_config') %]">
+                    [% loc('Edit site configuration') %]
+                  </a>
+                </li>
+                [% END %]
                 [% IF c.check_user_roles('root') %]
                 <li>
                   <a href="[% c.uri_for_action('/admin/show_users') %]">
@@ -411,10 +418,14 @@
 
             <li [% IF nav == 'bookbuilder' %] class="active" [% END %]>
               <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
-                <span class="glyphicon glyphicon-book"></span>
+                [% SET bb_count_texts = c.model('BookBuilder').total_texts %]
+                <span class="glyphicon glyphicon-book [% IF bb_count_texts %]text-primary[% END %]"></span>
                 <span class="hidden-sm">
                   [% loc('Bookbuilder') %]
                 </span>
+                [% IF bb_count_texts %]
+                <strong>([% bb_count_texts %])</strong>
+                [% END %]
               </a>
             </li>
             [% UNLESS site.is_private %]

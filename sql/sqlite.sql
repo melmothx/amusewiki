@@ -101,7 +101,9 @@ CREATE TABLE users (
        password VARCHAR(255) NOT NULL,
        email    VARCHAR(255),
        created_by VARCHAR(255),
-       active   INTEGER(1) NOT NULL DEFAULT 1
+       active   INTEGER(1) NOT NULL DEFAULT 1,
+       reset_token TEXT NULL,
+       reset_until INTEGER NULL
 );
 
 CREATE UNIQUE INDEX unique_username ON users (username);
@@ -288,6 +290,17 @@ CREATE TABLE site_link (
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+CREATE TABLE title_stat (
+       title_stat_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       title_id INTEGER NOT NULL REFERENCES title(id)
+                                 ON DELETE CASCADE ON UPDATE CASCADE,
+       accessed DATETIME NOT NULL,
+       notes TEXT
+);
+
+
 CREATE TABLE table_comments (
        table_name  VARCHAR(255),
        comment_text TEXT
@@ -319,6 +332,7 @@ INSERT INTO table_comments (table_name, comment_text)
          ('category', 'Text categories'),
          ('category_description', 'Category descriptions'),
          ('attachment', 'Attachment to texts'),
-         ('site_link', 'Site links');
+         ('site_link', 'Site links'),
+         ('title_stat', 'Usage statistics');
 
 

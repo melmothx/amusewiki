@@ -50,16 +50,8 @@ use URI::QueryParam;
 use AmuseWikiFarm::Log::Contextual;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
-sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
+sub login :Chained('/secure_no_user') :PathPart('login') :Args(0) {
     my ( $self, $c ) = @_;
-    if ($c->user_exists) {
-        $c->flash(status_msg => $c->loc("You are already logged in"));
-        $c->response->redirect($c->uri_for('/'));
-        return;
-    }
-
-    $c->forward('/redirect_to_secure');
-
     $c->stash(
               nav => 'login',
               page_title => $c->loc('Login'),
@@ -87,7 +79,7 @@ sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
     # here we have another layer befor hitting the authenticate
 
     if (my $user = $c->model('DB::User')->find({ username => $username  })) {
-
+        log_debug { "User $username found" };
         # authenticate only if the user is a superuser
         # or if the site id matches the current site id
         if (($user->sites->find($site->id) or
@@ -95,6 +87,7 @@ sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
 
             if ($c->authenticate({ username => $username,
                                    password => $password })) {
+                log_debug { "User $username successfully authenticated" };
                 $c->change_session_id;
                 $c->session(i_am_human => 1);
                 $c->flash(status_msg => $c->loc("You are logged in now!"));
@@ -102,8 +95,58 @@ sub login :Chained('/site_no_auth') :PathPart('login') :Args(0) {
                 return;
             }
         }
+        log_info { "User $username not authorized" };
     }
     $c->flash(error_msg => $c->loc("Wrong username or password"));
+}
+
+sub reset_password :Chained('/secure_no_user') :PathPart('reset-password') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(
+              page_title => $c->loc('Reset password'),
+             );
+    my $params = $c->request->body_params;
+    if ($params->{submit} && $params->{email} && $params->{email} =~ m/\w/) {
+        my $site = $c->stash->{site};
+        foreach my $user ($site->users->set_reset_token($params->{email})) {
+            log_info { "Set reset token for " . $user->username };
+            my $dt = DateTime->from_epoch(epoch => $user->reset_until,
+                                          locale => $c->stash->{current_locale_code});
+            my $valid_until = $dt->format_cldr($dt->locale->datetime_format_long);
+            my $url = $c->uri_for_action('/user/reset_password_confirm',
+                                         [ $user->username, $user->reset_token ]);
+            $c->model('Mailer')->send_mail(resetpassword => {
+                                                             lh => $c->stash->{lh},
+                                                             to => $user->email,
+                                                             from => $site->mail_from_default,
+                                                             reset_url => $url,
+                                                             host => $site->canonical,
+                                                             valid => $valid_until,
+                                                             username => $user->username,
+                                                            });
+        }
+    }
+}
+
+sub reset_password_confirm :Chained('/secure_no_user') :PathPart('reset-password') :Args(2) {
+    my ($self, $c, $username, $token) = @_;
+    if ($username and
+        $token and
+        $username =~ m/\w/ and
+        $token =~ m/\w/ ) {
+        if (my $password = $c->stash->{site}->users->reset_password($username, $token)) {
+            $c->stash(password => $password,
+                      username => $username);
+        }
+        else {
+            log_warn { $c->request->uri . " accessed with invalid mail and token" };
+            $c->detach('/not_permitted');
+        }
+    }
+    else {
+        log_error { $c->request->uri . " accessed without mail and token shouldn't happen!" };
+        $c->detach('/not_permitted');
+    }
 }
 
 sub logout :Chained('/site') :PathPart('logout') :Args(0) {
@@ -301,13 +344,34 @@ sub edit :Chained('user') :Args(1) {
     $c->stash(user => $user);
 }
 
+sub site_config :Chained('user') :PathPart('site') {
+    my ($self, $c) = @_;
+    unless ($c->check_user_roles('admin')) {
+        $c->detach('/not_permitted');
+        return;
+    }
+    my $site = $c->stash->{site};
+    my $esite = $c->model('DB::Site')->find($site->id);
+    my %params = %{ $c->request->body_parameters };
+    if (delete $params{edit_site}) {
+        Dlog_debug { "Doing the update on $_" } \%params;
+        if (my $err = $esite->update_from_params_restricted(\%params)) {
+            log_debug { "Error! $err" };
+            $c->flash(error_msg => $c->loc($err));
+        }
+    }
+    $c->stash(template => 'admin/edit.tt',
+              load_highlight => $site->use_js_highlight(1),
+              esite => $esite,
+              restricted => 1);
+}
+
 sub redirect_after_login :Private {
     my ($self, $c) = @_;
     my $path = $c->request->params->{goto} || '/';
     if ($path !~ m!^/!) {
         $path = "/$path";
     }
-    Dlog_debug { "Form is $_" } $c->request->params;
     my $uri = URI->new($path);
     my $redirect = $c->uri_for($uri->path, $uri->query_form_hash);
     if (my $fragment = $c->request->params->{fragment}) {

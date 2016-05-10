@@ -1,0 +1,10 @@
+{
+    "renderer": "TT",
+    "header": [
+        { "From": "[% from %]" },
+        { "To": "[% to %]" },
+        { "Subject": "[% lh.loc('Password reset for [_1]', host) %]" }
+    ],
+    "type": "text/plain",
+    "path": "body.txt"
+}

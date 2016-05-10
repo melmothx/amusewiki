@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 15;
+use Test::More tests => 18;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -42,7 +42,11 @@ is $mech->uri->scheme, 'https', "Authenticated can't get a plain page";
 $mech->get_ok('/logout');
 $mech->get_ok("http://$site_id.amusewiki.org");
 is $mech->uri->scheme, 'http', "Non authenticated can get a plain page";
-$mech->get_ok("http://$site_id.amusewiki.org/login");
-is $mech->uri->scheme, 'https', "Login is ssl again";
 
+foreach my $uri (qw/login reset-password/) {
+    $mech->get_ok("http://$site_id.amusewiki.org/$uri");
+    is $mech->uri->scheme, 'https', "Login is ssl again";
+}
+$mech->get("http://$site_id.amusewiki.org/reset-password/prova/prova");
+is $mech->uri->scheme, 'https', "reset-password is ssl again";
 

@@ -164,6 +164,11 @@ sub total_pages_estimated {
     return $count;
 }
 
+sub total_texts {
+    my $self = shift;
+    return scalar @{ $self->texts };
+}
+
 sub pages_estimated_for_text {
     my ($self, $text) = @_;
     my $filename = Text::Amuse::Compile::FileName->new($text);
@@ -834,6 +839,7 @@ sub add_text {
                 my $total = $self->total_pages_estimated + $self->pages_estimated_for_text($text);
                 if ($total <= $limit) {
                     $to_add = $filename->name_with_fragments;
+                    $title->insert_stat_record($title->full_uri, "Bookbuilder add");
                 }
                 else {
                     # loc("Quota exceeded, too many pages")

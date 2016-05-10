@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 11;
+use Test::More tests => 61;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -46,3 +46,86 @@ ok $site->use_luatex, "Use luatex";
 ok $site->do_not_enforce_commit_message, "Do not enforce commit message";
 ok !$site->get_option('lakjsdfl');
 
+$site->update({
+               ssl_key => '',
+               ssl_cert => '',
+               ssl_ca_cert => '',
+               ssl_chained_cert => '',
+               logo => '',
+               papersize => 'a4',
+               opening => 'right',
+              });
+$site->discard_changes;
+
+
+my %old = map { $_ => ($site->$_ || '') } qw/magic_answer
+                                             magic_question
+                                             fixed_category_list
+                                             multilanguage
+                                             opening
+                                             sitename
+                                             siteslogan
+                                             logo
+                                             mail_notify
+                                             mail_from
+                                             sitegroup
+                                             ttdir
+                                             canonical
+                                             division
+                                             fontsize
+                                             bb_page_limit
+                                             papersize
+                                             mode
+                                             locale
+                                             mainfont
+                                             sansfont
+                                             monofont
+                                             beamertheme
+                                             beamercolortheme
+                                             bcor
+                                             ssl_key
+                                             ssl_cert
+                                             ssl_ca_cert
+                                             ssl_chained_cert
+                                            /;
+
+
+my @restricted = (qw/active
+                     logo
+                     canonical
+                     sitegroup
+                     tex
+                     html
+                     bare_html
+                     epub
+                     zip
+                     ttdir
+                     use_luatex
+                     vhosts
+                     html_special_page_bottom
+                     secure_site
+                     secure_site_only
+                     acme_certificate
+                     ssl_key
+                     ssl_chained_cert
+                     ssl_cert
+                     ssl_ca_cert/);
+
+my $original = $site->serialize_site;
+foreach my $rest (@restricted) {
+    my $error = $site->update_from_params_restricted({ %old, $rest => 1 });
+    ok(!$error) or diag $error;
+    is_deeply $site->serialize_site, $original, "No changes";
+}
+diag Dumper(\%old);
+
+foreach my $rest (@restricted) {
+    delete $old{$rest};
+}
+
+foreach my $good (qw/pdf a4_pdf lt_pdf logo_with_sitename cgit_integration/) {
+    $site->update({ $good => 0 });
+    my $error = $site->update_from_params_restricted({ %old, $good => 1 });
+    ok !$error or diag $error;
+    is $site->$good, 1;
+}

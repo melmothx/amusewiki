@@ -96,6 +96,10 @@ is_deeply $userobj->role_list, [
                                  active => 1,
                                 },
                                 {
+                                 role => 'admin',
+                                 active => undef,
+                                },
+                                {
                                  role => 'root',
                                  active => undef,
                                 }

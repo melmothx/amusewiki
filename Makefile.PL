@@ -81,14 +81,17 @@ requires 'Email::MIME::Kit::Renderer::TT' => '1.001';
 
 requires 'HTTP::Tiny';
 requires 'Crypt::XkcdPassword';
+requires 'Bytes::Random::Secure';
 # let's encrypt
 requires 'Crypt::OpenSSL::X509';
 requires 'Protocol::ACME' => '0.12';
 
+requires 'HTTP::BrowserDetect';
+
 # our own dogfood
-requires 'Text::Amuse' => '0.60';
+requires 'Text::Amuse' => '0.61';
 requires 'PDF::Imposition' => '0.21';
-requires 'Text::Amuse::Compile' => '0.55';
+requires 'Text::Amuse::Compile' => '0.56';
 requires 'Text::Amuse::Preprocessor' => '0.29';
 
 # devel things to be removed at the end of the development cycle
