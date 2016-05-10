@@ -223,3 +223,13 @@ And in your application directory, mark the repository for export:
 
   $ for i in repo/*/.git ; do touch $i/git-daemon-export-ok; done
 
+** PASSWORD RECOVERY
+
+Password recovery is email-based. Now, if the user is without a mail
+or the user is not assigned to the site where the request is done
+(notably, root users don't need to be assigned to a site), the request
+is void.
+
+To avoid disclosing who is a user and who is not on the site, the
+reset password page doesn't say if the request was OK or not.
+
