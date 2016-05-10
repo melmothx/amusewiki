@@ -35,6 +35,7 @@ sub popular_texts {
                           "$me.accessed" => { '>' => $dtf->format_datetime($since) },
                          },
                          {
+                          columns => [],
                           prefetch => [qw/title/],
                           '+select' => [{
                                          count => 'title.id',
