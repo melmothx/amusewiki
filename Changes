@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.821 2016-05-10
+
+ - Fixed crash with Pg on stats (#51)
+ - Fixed user agent stat collecting
+
 1.820 2016-05-10
 
  - Added reset password by mail (#48)
