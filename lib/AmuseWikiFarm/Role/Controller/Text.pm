@@ -83,7 +83,7 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
                                 # Dlog_debug { "Session is $_" } $c->session;
                                 unless ($c->session->{downloaded}->{$identifier}) {
                                     log_debug { "Inserting $identifier => $user_agent " };
-                                    $text->insert_stat_record($identifier => $user_agent);
+                                    $text->insert_stat_record($identifier => $user_agent->user_agent);
                                     $c->session->{downloaded}->{$identifier} = 1;
                                 }
                                 # Dlog_debug { "Session is $_" } $c->session;
