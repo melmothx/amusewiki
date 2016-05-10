@@ -11,7 +11,7 @@ dedicated tree.
  - Added experimental popular sorting (#44)
  - Add HTTP auth for robots on private sites (#50)
  - UI improvements (number of texts pending on the bookbuilder)
- - Updated translations: fr
+ - Updated translations: fr, it, hr
  - Updated documentation
 
 1.811 2016-05-01
