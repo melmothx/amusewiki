@@ -4,12 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.820 UNRELEASED
+1.820 2016-05-10
 
  - Added reset password by mail (#48)
  - Added admin role which is able to set most of the site settings (#49)
  - Added experimental popular sorting (#44)
  - Add HTTP auth for robots on private sites (#50)
+ - UI improvements (number of texts pending on the bookbuilder)
+ - Updated translations: fr
+ - Updated documentation
 
 1.811 2016-05-01
 
