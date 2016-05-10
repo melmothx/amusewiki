@@ -233,3 +233,9 @@ is void.
 To avoid disclosing who is a user and who is not on the site, the
 reset password page doesn't say if the request was OK or not.
 
+** POPULAR SORTING
+
+This feature is still experimental and there is no linking to it. Link
+is /stats/popular.
+
+
