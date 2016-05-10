@@ -712,6 +712,10 @@ msgid ""
 "HTML"
 msgstr ""
 
+#. (reset_url)
+msgid "If you want to proceed, please visit the following url: %1"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -859,6 +863,9 @@ msgstr "Имя пользователя"
 msgid "Logout"
 msgstr "Выход"
 
+msgid "Lost your password?"
+msgstr ""
+
 msgid "Magic answer"
 msgstr "Магический ответ"
 
@@ -985,6 +992,9 @@ msgstr "Оповещающие сообщения (оставьте поле п�
 msgid "Notify to"
 msgstr "Оповестить"
 
+msgid "Now you can proceed to login."
+msgstr ""
+
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 
@@ -1023,6 +1033,9 @@ msgstr "Или поместите текст в тег"
 
 msgid "Other languages"
 msgstr "На других языках"
+
+msgid "Otherwise, please just ignore this mail."
+msgstr ""
 
 msgid "PDF"
 msgstr ""
@@ -1086,6 +1099,10 @@ msgstr ""
 msgid "Password"
 msgstr "Пароль"
 
+#. (host)
+msgid "Password reset for %1"
+msgstr ""
+
 msgid "Password too short"
 msgstr "Пароль слишком короткий"
 
@@ -1109,6 +1126,11 @@ msgstr "Изображение"
 
 msgid "Plain PDF"
 msgstr "Обычный PDF"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr ""
@@ -1231,6 +1253,9 @@ msgstr ""
 
 msgid "Pointing to"
 msgstr "Указывает на"
+
+msgid "Popular texts"
+msgstr ""
 
 msgid ""
 "Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
@@ -1360,6 +1385,9 @@ msgstr "Репозиторий"
 msgid "Reset all"
 msgstr ""
 
+msgid "Reset password"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Скопировано ДАТА c ССЫЛКА"
 
@@ -1486,6 +1514,10 @@ msgstr "Некоторые поля очень длинные"
 
 msgid "Some ongoing revisions were found"
 msgstr "Некоторые незаконченные правки были найдены"
+
+#. (username, host)
+msgid "Someone, probably you, has requested a password reset for %1 at %2."
+msgstr ""
 
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
@@ -1623,8 +1655,16 @@ msgid ""
 "          all the HTTP requests to HTTPS"
 msgstr ""
 
+#. (valid)
+msgid "The link is valid until %1 (one hour from now)"
+msgstr ""
+
 msgid "The logo has the site name on itself"
 msgstr "В логотипе имеется название сайта"
+
+#. (username)
+msgid "The new password for %1 is:"
+msgstr ""
 
 msgid "The optional subtitle"
 msgstr "Опциональный подзаголовок"
@@ -1655,9 +1695,6 @@ msgstr ""
 
 msgid "The title of the document. The only mandatory directive."
 msgstr "Название текста. Обязательно для указания."
-
-msgid "The user will have the same your level of access"
-msgstr "У пользователя будет такой же доступ как и у вас"
 
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
@@ -1992,6 +2029,9 @@ msgstr ""
 msgid "Your chapter here..."
 msgstr "Ваша глава здесь"
 
+msgid "Your email"
+msgstr ""
+
 msgid "Your file is ready"
 msgstr "Ваш файл готов"
 
@@ -2209,6 +2249,9 @@ msgstr ""
 "\"Устаревшее редактирование\" означает, что правка была недоделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "The user will have the same your level of access"
+#~ msgstr "У пользователя будет такой же доступ как и у вас"
 
 #~ msgid "Displaying"
 #~ msgstr "Записей на странице"

@@ -760,6 +760,10 @@ msgstr ""
 "Si tienes un archivo .doc o .odt, puedes convertirlo fácilmente guardándolo "
 "como HTML"
 
+#. (reset_url)
+msgid "If you want to proceed, please visit the following url: %1"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -915,6 +919,9 @@ msgstr "Iniciar sesión"
 msgid "Logout"
 msgstr "Cerrar sesión"
 
+msgid "Lost your password?"
+msgstr ""
+
 msgid "Magic answer"
 msgstr "Respuesta mágica"
 
@@ -1041,6 +1048,9 @@ msgstr "Correo electrónico de notificación: campo en blanco lo deshabilitará"
 msgid "Notify to"
 msgstr "Notificar a"
 
+msgid "Now you can proceed to login."
+msgstr ""
+
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Número de últimas publicaciones para mostrar en el RSS (un entero)"
 
@@ -1082,6 +1092,9 @@ msgstr "O termínalo"
 
 msgid "Other languages"
 msgstr "Otros idiomas"
+
+msgid "Otherwise, please just ignore this mail."
+msgstr ""
 
 msgid "PDF"
 msgstr "PDF"
@@ -1150,6 +1163,10 @@ msgstr "Selección parcial"
 msgid "Password"
 msgstr "Contraseña"
 
+#. (host)
+msgid "Password reset for %1"
+msgstr ""
+
 msgid "Password too short"
 msgstr "Contraseña demasiado corta"
 
@@ -1173,6 +1190,11 @@ msgstr "Imagen"
 
 msgid "Plain PDF"
 msgstr "PDF plano"
+
+msgid ""
+"Please check your inbox, we tried to deliver a mail to the address you "
+"specified with a password reset link"
+msgstr ""
 
 msgid "Please choose the Beamer color theme"
 msgstr "Por favor elige el tema de color de Beamer"
@@ -1308,6 +1330,9 @@ msgstr "Poesía, bibliografías, diálogos, bloques de código"
 msgid "Pointing to"
 msgstr "Apuntando a"
 
+msgid "Popular texts"
+msgstr ""
+
 msgid ""
 "Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
@@ -1442,6 +1467,9 @@ msgstr "Repositorio"
 msgid "Reset all"
 msgstr "Reiniciar todo"
 
+msgid "Reset password"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Recuperado el XX de MMMMM desde URL"
 
@@ -1570,6 +1598,10 @@ msgstr "Algunos campos son demasiado largos"
 
 msgid "Some ongoing revisions were found"
 msgstr "Se encontraron algunas revisiones en curso"
+
+#. (username, host)
+msgid "Someone, probably you, has requested a password reset for %1 at %2."
+msgstr ""
 
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
@@ -1718,8 +1750,16 @@ msgstr ""
 "El generador de configuración de servidor web redireccionará\n"
 "          todas las peticiones HTTP a HTTPS"
 
+#. (valid)
+msgid "The link is valid until %1 (one hour from now)"
+msgstr ""
+
 msgid "The logo has the site name on itself"
 msgstr "El logo tiene el nombre del sitio en él"
+
+#. (username)
+msgid "The new password for %1 is:"
+msgstr ""
 
 msgid "The optional subtitle"
 msgstr "El subtítulo opcional"
@@ -1750,9 +1790,6 @@ msgstr ""
 
 msgid "The title of the document. The only mandatory directive."
 msgstr "El título del documento. La única directiva obligatoria."
-
-msgid "The user will have the same your level of access"
-msgstr "La/el usuaria/o tendrá tu mismo nivel de acceso"
 
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
@@ -2108,6 +2145,9 @@ msgstr ""
 msgid "Your chapter here..."
 msgstr "Tu capítulo aquí..."
 
+msgid "Your email"
+msgstr ""
+
 msgid "Your file is ready"
 msgstr "Tu archivo está listo"
 
@@ -2330,6 +2370,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "The user will have the same your level of access"
+#~ msgstr "La/el usuaria/o tendrá tu mismo nivel de acceso"
 
 #~ msgid "Displaying"
 #~ msgstr "Mostrando"
