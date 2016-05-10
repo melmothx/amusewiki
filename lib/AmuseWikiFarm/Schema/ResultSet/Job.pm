@@ -222,7 +222,7 @@ sub purge_old_jobs {
     my $old_jobs = $self->completed_older_than($reftime);
     while (my $job = $old_jobs->next) {
         die unless $job->status eq 'completed'; # shouldn't happen
-        log_warn { "Removing old job " . $job->id . " for site " . $job->site->id .
+        log_info { "Removing old job " . $job->id . " for site " . $job->site->id .
                      " and task " . $job->task };
         $job->delete;
     }
