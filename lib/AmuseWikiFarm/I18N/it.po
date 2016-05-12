@@ -1186,7 +1186,9 @@ msgstr "PDF semplice"
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
-msgstr "Controlla la tua mail, abbiamo cercato di inviare una mail all'indirizzo che hai specificato con un link per reimpostare la password"
+msgstr ""
+"Controlla la tua mail, abbiamo cercato di inviare una mail all'indirizzo che "
+"hai specificato con un link per reimpostare la password"
 
 msgid "Please choose the Beamer color theme"
 msgstr "Scegli il tema del colore per le diapositive"
@@ -1586,7 +1588,9 @@ msgstr "Sono state trovate delle revisioni in corso"
 
 #. (username, host)
 msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr "Qualcuno, probabilmente tu, ha richiesto la reimpostazione della password per %1 su %2."
+msgstr ""
+"Qualcuno, probabilmente tu, ha richiesto la reimpostazione della password "
+"per %1 su %2."
 
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
