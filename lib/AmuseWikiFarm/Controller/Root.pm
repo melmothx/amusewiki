@@ -192,7 +192,8 @@ sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
     my $site = $c->stash->{site};
     if ($site->is_private and !$c->user_exists) {
         # humans will get the login box, robots and unknown a 401
-        if (!$c->stash->{amw_user_agent}->browser_string) {
+        my $ua = $c->stash->{amw_user_agent};
+        if (!$ua->browser_string || $ua->robot) {
             $self->redirect_to_secure($c);
             log_debug { "Trying HTTP Basic auth" };
             my ($username, $password) = $c->req->headers->authorization_basic;

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 232;
+use Test::More tests => 256;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -108,6 +108,19 @@ $user->update({ active => 1 });
     }
 }
 
+{
+    my $robot = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                    agent => 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+                                                    host => "0private0.amusewiki.org");
+    foreach my $path (@uris) {
+        $robot->get("/$path");
+        is $robot->status, '401';
+    }
+    $robot->credentials(qw/marcolino marcolino/);
+    foreach my $path (@uris) {
+        $robot->get_ok("/$path");
+    }
+}
 
 sub check_denied {
     my $note = shift;
