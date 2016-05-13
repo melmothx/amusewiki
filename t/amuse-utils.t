@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 64;
+use Test::More tests => 66;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -108,6 +108,13 @@ is (length($test_uri), 95, "$test_uri is shorter than 96 chars");
 ok muse_filename_is_valid($test_uri), "$test_uri is fully valid";
 $test_uri .= 'x';
 ok !muse_filename_is_valid($test_uri), "$test_uri is not valid (by one)";
+
+{
+    my $pt = 'cedilha (ç), accent (á, é, í, ó, ú), accent (â, ê, ô), tilde (ã, õ), accent (à)';
+    my $uc = 'CEDILHA (Ç), ACCENT (Á, É, Í, Ó, Ú), ACCENT (Â, Ê, Ô), TILDE (Ã, Õ), ACCENT (À)';
+    is muse_naming_algo($pt), 'cedilha-c-accent-a-e-i-o-u-accent-a-e-o-tilde-a-o-accent-a';
+    is muse_naming_algo($uc), 'cedilha-c-accent-a-e-i-o-u-accent-a-e-o-tilde-a-o-accent-a';
+}
 
 is (clean_username('marco'), "marco");
 is (clean_username('pallino pinco'), "pallinopinco");

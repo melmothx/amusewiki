@@ -882,6 +882,7 @@ sub known_langs {
             de => 'Deutsch',
             sv => 'Svenska',
             pl => 'Polski',
+            pt => 'Português',
            };
 }
 
