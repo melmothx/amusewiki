@@ -64,7 +64,12 @@ __PACKAGE__->table("title_stat");
   data_type: 'datetime'
   is_nullable: 0
 
-=head2 notes
+=head2 user_agent
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 type
 
   data_type: 'text'
   is_nullable: 1
@@ -80,7 +85,9 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "accessed",
   { data_type => "datetime", is_nullable => 0 },
-  "notes",
+  "user_agent",
+  { data_type => "text", is_nullable => 1 },
+  "type",
   { data_type => "text", is_nullable => 1 },
 );
 
@@ -129,8 +136,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-06 10:04:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:utoiskpjQd8Xg2KPtgPo8Q
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-13 18:09:46
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:I5Cryk3qDMhPWYs4DXovMg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
