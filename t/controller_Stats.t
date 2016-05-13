@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 33;
+use Test::More tests => 38;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -87,13 +87,14 @@ foreach my $uri (keys %titles) {
 }
 is $schema->resultset('TitleStat')->count, scalar(keys %titles) * 2, "BB added at second access";
 
-my $robot = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                                agent => 'Googlebot/2.1 (+http://www.google.com/bot.html)',
-                                                host => $site->canonical);
-
-$robot->get_ok('/');
-foreach my $uri (keys %titles) {
-    $robot->get_ok($uri . '.epub');
+foreach my $ua ('Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+                'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)') {
+    my $robot = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                    agent => $ua,
+                                                    host => $site->canonical);
+    $robot->get_ok('/');
+    foreach my $uri (keys %titles) {
+        $robot->get_ok($uri . '.epub');
+    }
+    is $schema->resultset('TitleStat')->count, scalar(keys %titles) * 2, "Nothing added from $ua";
 }
-is $schema->resultset('TitleStat')->count, scalar(keys %titles) * 2, "Nothing added from bots";
-
