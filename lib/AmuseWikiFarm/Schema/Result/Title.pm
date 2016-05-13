@@ -958,17 +958,14 @@ sub pubdate_locale {
 }
 
 sub insert_stat_record {
-    my ($self, @args) = @_;
+    my ($self, $type, $user_agent) = @_;
     my $now = DateTime->now;
     my $site_id = $self->site_id;
-    my $notes = '';
-    if (@args) {
-        $notes = join(' ', @args);
-    }
     $self->add_to_title_stats({
                                site_id => $site_id,
                                accessed => $now,
-                               notes => $notes,
+                               type => $type || '',
+                               user_agent => $user_agent || '',
                               });
 }
 

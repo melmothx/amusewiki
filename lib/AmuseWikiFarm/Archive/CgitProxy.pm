@@ -74,7 +74,7 @@ sub get {
     my $res =
       AmuseWikiFarm::Archive::CgitProxy::Response->new($self->ua->get($uri));
     unless ($res->success) {
-        log_warn { join(" ", $res->url, $res->status, $res->reason) };
+        log_info { join(" ", $res->url, $res->status, $res->reason) };
     }
     return $res;
 }

@@ -297,7 +297,8 @@ CREATE TABLE title_stat (
        title_id INTEGER NOT NULL REFERENCES title(id)
                                  ON DELETE CASCADE ON UPDATE CASCADE,
        accessed DATETIME NOT NULL,
-       notes TEXT
+       user_agent TEXT,
+       type TEXT
 );
 
 

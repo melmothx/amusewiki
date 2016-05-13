@@ -126,7 +126,8 @@
     <div id="downloadformats-list">
       [% IF site.pdf && text.check_if_file_exists('pdf') %]
       <span id="pdfgeneric">
-        <a href="[% basename %].pdf" class="pdflinks">
+        <a href="[% basename %].pdf" class="pdflinks amw-register-stat"
+           data-amw-register-stat-type="pdf">
 	      <img src="[% c.uri_for('/static/images/pdf-gen.png') %]"
                  alt="[% loc('plain PDF') %]"
                title="[% loc('plain PDF') %]" data-toggle="tooltip" data-placement="top"
@@ -135,7 +136,8 @@
       [% END %]
       [% IF site.a4_pdf && text.check_if_file_exists('a4.pdf') %]
       <span id="pdfa4imp">
-        <a href="[% basename %].a4.pdf" class="pdflinks">
+        <a href="[% basename %].a4.pdf" class="pdflinks amw-register-stat"
+           data-amw-register-stat-type="a4-pdf">
 	      <img src="[% c.uri_for('/static/images/pdf-a4-imposed.png') %]"
 	             alt="[% loc('A4 imposed PDF') %]"
 	           title="[% loc('A4 imposed PDF') %]" data-toggle="tooltip" data-placement="top"
@@ -144,7 +146,8 @@
       [% END %]
       [% IF site.lt_pdf && text.check_if_file_exists('lt.pdf') %]
       <span id="letterimp">
-        <a href="[% basename %].lt.pdf" class="pdflinks">
+        <a href="[% basename %].lt.pdf" class="pdflinks amw-register-stat"
+           data-amw-register-stat-type="lt-pdf">
 	      <img src="[% c.uri_for('/static/images/pdf-letter-imposed.png') %]"
 	             alt="[% loc('Letter imposed PDF') %]"
 	           title="[% loc('Letter imposed PDF') %]" data-toggle="tooltip" data-placement="top"
@@ -153,7 +156,8 @@
       [% END %]
       [% IF site.sl_pdf && text.slides && text.check_if_file_exists('sl.pdf') %]
       <span id="downloadslides">
-        <a href="[% basename %].sl.pdf">
+        <a href="[% basename %].sl.pdf" class="amw-register-stat"
+           data-amw-register-stat-type="slides">
 	      <img src="[% c.uri_for('/static/images/slides.png') %]"
                  alt="[% loc('Slides (PDF)') %]"
 	           title="[% loc('Slides (PDF)') %]" data-toggle="tooltip" data-placement="top"
@@ -162,7 +166,8 @@
       [% END %]
       [% IF site.epub && text.check_if_file_exists('epub') %]
       <span id="downloadepub">
-        <a href="[% basename %].epub">
+        <a href="[% basename %].epub" class="amw-register-stat"
+           data-amw-register-stat-type="epub">
 	      <img src="[% c.uri_for('/static/images/epub.png') %]"
                  alt="[% loc('EPUB (for mobile devices)') %]"
 	           title="[% loc('EPUB (for mobile devices)') %]" data-toggle="tooltip" data-placement="top"
@@ -171,7 +176,8 @@
       [% END %]
       [% IF site.html && text.check_if_file_exists('html') %]
       <span id="downloadhtml">
-        <a href="[% basename %].html">
+        <a href="[% basename %].html" class="amw-register-stat"
+           data-amw-register-stat-type="html">
 	      <img src="[% c.uri_for('/static/images/pf-html.png') %]"
                  alt="[% loc('Standalone HTML (printer-friendly)') %]"
 	           title="[% loc('Standalone HTML (printer-friendly)') %]" data-toggle="tooltip" data-placement="top"
@@ -227,8 +233,11 @@
             id="book-builder-add-text"
             name="book-builder-add-text"
             style="display:inline">
-        <button type="submit" class="btn btn-default"
-                title="[% loc('Add this text to the bookbuilder') %]" data-toggle="tooltip" data-placement="top"
+        <button type="submit" class="btn btn-default amw-register-stat"
+                title="[% loc('Add this text to the bookbuilder') %]"
+                data-toggle="tooltip"
+                data-placement="top"
+                data-amw-register-stat-type="bookbuilder"
                 id="add-to-bookbuilder">
           <span class="glyphicon glyphicon-plus" style="font-size: 1.5em"></span>
           <span style="display:none">
@@ -241,8 +250,10 @@
             name="book-builder-add-text-partial"
             style="display:inline">
         <input type="hidden" name="selected" value="pre-post" />
-        <button type="submit" class="btn btn-default"
-                title="[% loc('Select individual parts for the bookbuilder') %]" data-toggle="tooltip" data-placement="top"
+        <button type="submit" class="btn btn-default amw-register-stat"
+                data-amw-register-stat-type="bookbuilder"
+                title="[% loc('Select individual parts for the bookbuilder') %]"
+                data-toggle="tooltip" data-placement="top"
                 id="add-to-bookbuilder-partial">
           <span class="glyphicon glyphicon-list-alt"
                 style="font-size: 1.5em"></span>
@@ -351,3 +362,20 @@
 <script type="text/javascript">
 $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });
 </script>
+
+[% IF text.f_class == 'text' %]
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.amw-register-stat').click(function() {
+            $.ajax({
+                type: 'POST',
+                data: {
+                    id: [% text.id %],
+                    type: $(this).data('amw-register-stat-type'),
+                },
+                url: '[% c.uri_for_action("/stats/register") %]',
+            });
+        });
+    });
+</script>
+[% END %]
