@@ -25,6 +25,30 @@ Catalyst Controller.
 
 sub stats :Chained('/site_robot_index') :CaptureArgs(0) {}
 
+sub register :Chained('stats') :Args(0) {
+    my ($self, $c) = @_;
+    my $params = $c->request->body_params;
+    my $ua = $c->stash->{amw_user_agent};
+    my $site = $c->stash->{site};
+    Dlog_debug { "Params for registering download are $_" } $params;
+    my $body = 'Text not found';
+    if ($params->{id} && $params->{type}) {
+        if ($ua->browser_string && !$ua->robot) {
+            log_debug { "User is not a robot: " . $ua->user_agent };
+            if ($params->{id} =~ m/\A([1-9][0-9]*)\z/) {
+                my $id = $1;
+                if (my $text = $site->titles->published_texts->find($id)) {
+                    log_debug { "Registering download for " . $text->uri };
+                    $text->insert_stat_record($params->{type} . '',
+                                              $ua->user_agent);
+                    $body = 'OK';
+                }
+            }
+        }
+    }
+    $c->response->body($body);
+}
+
 sub popular :Chained('stats') :Args {
     my ($self, $c, $page) = @_;
     my $results = $c->stash->{site}->popular_titles($page);

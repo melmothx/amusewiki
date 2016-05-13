@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 38;
+use Test::More tests => 51;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -37,14 +37,17 @@ foreach my $title ($site->titles->published_texts) {
                                    });
     }
     $guard->commit;
-    $titles{$title->full_uri} = $total;
+    $titles{$title->full_uri} = {
+                                 count => $total,
+                                 id => $title->id,
+                                };
 }
 diag Dumper(\%titles);
 $schema->resultset('TitleStat')->delete_old;
 
 $mech->get_ok('/stats/popular');
 foreach my $uri (keys %titles) {
-    my $count = $titles{$uri};
+    my $count = $titles{$uri}->{count};
     $mech->content_like(qr{\Q$uri\E.*?>\Q$count\E<}s);
 }
 
@@ -52,38 +55,43 @@ $schema->resultset('TitleStat')->search({})->delete;
 foreach my $uri (keys %titles) {
     $mech->get_ok($uri);
 }
-is $schema->resultset('TitleStat')->count, 0;
+is $schema->resultset('TitleStat')->count, 0, "No stats so far";
 
 # this is puzzling. Without this innocent request, we're losing the
 # session. Looks like a mech bug, but who knows?
-$mech->get_ok('/');
-diag $mech->uri;
 
 foreach my $uri (keys %titles) {
-    $mech->get_ok($uri . '.html');
-    ok($mech->response->header('Set-Cookie'), "Cookie set on " . $mech->uri->path);
-    diag "request with cookie:" . $mech->response->request->header('Cookie');
-    diag $mech->response->header('Set-Cookie');
+    $mech->post('/stats/register',  {
+                                     id => $titles{$uri}->{id},
+                                     type => 'download',
+                                    });
+    is $mech->status, '200';
+    ok(!$mech->response->header('Set-Cookie'), "Cookie not set on " . $mech->uri->path);
+    $mech->content_is('OK');
 }
 
 is $schema->resultset('TitleStat')->count, scalar(keys %titles), "First access added records";
 
-foreach my $uri (keys %titles) {
-    $mech->get_ok($uri . '.epub');
-    ok $mech->response->request->header('Cookie'), "Cookie sent";
-    diag "request with cookie:" . $mech->response->request->header('Cookie');
-    diag $mech->response->header('Set-Cookie');
+foreach my $rand (999 .. 1001) {
+    foreach my $type (qw/download bookbuilder/) {
+        $mech->post('/stats/register',  {
+                                         id => $rand,
+                                         type => $type,
+                                        });
+        is $mech->status, '200';
+        ok(!$mech->response->header('Set-Cookie'), "Cookie not set on " . $mech->uri->path);
+        $mech->content_is('Text not found');
+    }
 }
-is $schema->resultset('TitleStat')->count, scalar(keys %titles), "Nothing added at second access";
-
-$mech->get_ok('/bookbuilder/');
-$mech->form_with_fields('answer');
-$mech->field(answer => 'January');
-$mech->click;
+is $schema->resultset('TitleStat')->count, scalar(keys %titles),
+  "Non-existent ids add no record";
 
 foreach my $uri (keys %titles) {
-    $uri =~ s/library/bookbuilder\/add/;
-    $mech->get_ok("$uri");
+    $mech->post('/stats/register',  {
+                                     id => $titles{$uri}->{id},
+                                     type => 'bookbuilder',
+                                    });
+    is $mech->status, '200';
 }
 is $schema->resultset('TitleStat')->count, scalar(keys %titles) * 2, "BB added at second access";
 
@@ -94,7 +102,11 @@ foreach my $ua ('Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X) AppleWebK
                                                     host => $site->canonical);
     $robot->get_ok('/');
     foreach my $uri (keys %titles) {
-        $robot->get_ok($uri . '.epub');
+        $robot->post('/stats/register',  {
+                                          id => $titles{$uri}->{id},
+                                          type => 'bookbuilder',
+                                         });
+        is $robot->status, '200';
     }
     is $schema->resultset('TitleStat')->count, scalar(keys %titles) * 2, "Nothing added from $ua";
 }
