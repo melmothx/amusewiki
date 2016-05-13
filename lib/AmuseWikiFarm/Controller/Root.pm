@@ -99,6 +99,18 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     # common with some vintage browser (IE, anyone) and some crappy
     # robots.
     if ($c->sessionid) {
+        if (my $download = $c->session->{downloaded}) {
+            eval {
+                if (keys(%$download) > 50) {
+                    Dlog_warn { "Large download in session $_ resetting" } $download;
+                    $c->session->{downloaded} = {};
+                }
+                else {
+                    Dlog_debug { "Found download $_" } $download;
+                }
+            };
+            log_error { $@ } if $@;
+        }
         my $session_site_id = $c->session->{site_id} || '';
         if ($session_site_id ne $site_id) {
             Dlog_info {
