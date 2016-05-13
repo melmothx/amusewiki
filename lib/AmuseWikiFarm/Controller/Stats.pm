@@ -27,7 +27,6 @@ sub stats :Chained('/site_robot_index') :CaptureArgs(0) {}
 
 sub popular :Chained('stats') :Args {
     my ($self, $c, $page) = @_;
-    log_debug { "requested /stats/popular/ $page" };
     my $results = $c->stash->{site}->popular_titles($page);
     my $pager = $results->pager;
     my $format_link = sub {

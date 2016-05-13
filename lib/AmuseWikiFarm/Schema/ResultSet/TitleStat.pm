@@ -43,7 +43,10 @@ sub popular_texts {
                                         }],
                           '+as' => [qw/title.popular/],
                           group_by => [qw/title.id/],
-                          order_by => { -desc => 'countpopular' },
+                          order_by => [
+                                       { -desc => 'countpopular' },
+                                       { -asc => 'title.sorting_pos' },
+                                      ],
                           page => $page,
                           rows => 10,
                          });
