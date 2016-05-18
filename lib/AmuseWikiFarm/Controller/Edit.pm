@@ -337,18 +337,17 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                   $wrapper->wrap($rev_message) . "\n";
 
                 # possibly fake, we don't care
-                my $reported_username = $params->{username} || 'anonymous';
+                my $reported_username = clean_username($params->{username});
                 $message .= "\n-- \n" . $reported_username . "\n\n";
                 $message =~ s/[\r\0]//gs;
-                my $username = clean_username($reported_username);
                 if ($c->user_exists) {
-                    $username = clean_username($c->user->get("username"));
+                    $reported_username = clean_username($c->user->get("username"));
                 }
                 elsif ($reported_username ne 'anonymous') {
                     # add a prefix, so we know it's not a valid username
-                    $username .= ".anon";
+                    $reported_username .= ".anon";
                 }
-                $revision->commit_version($message, $username);
+                $revision->commit_version($message, $reported_username);
                 # assert to have a fresh copy
                 $revision->discard_changes;
 

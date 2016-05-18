@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 88;
+use Test::More tests => 95;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -247,3 +247,23 @@ $mech->get('/publish/pending');
 $mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed, then the uncommitted");
 $mech->get('/publish/all');
 $mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed, then the uncommitted");
+
+{
+    $site->update({ mode => 'openwiki' });
+    $mech->get_ok('/logout');
+    $mech->get_ok('/action/text/new');
+    ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+    $mech->set_fields(author => 'porchetta',
+                      title => 'formaggino-xxx',
+                      textbody => "\nblabla\n");
+    $mech->click;
+    $mech->content_contains('Created new text') or die $mech->uri;
+    my ($rev_id) = $mech->uri =~ m/\/([0-9]+)$/;
+    ok ($rev_id);
+    $mech->form_id('museform');
+    $mech->set_fields(username => "pal \rlino pin \0co");
+    $mech->click('commit');
+    my $revision = $site->revisions->find($rev_id);
+    is $revision->username, 'pallinopinco.anon';
+    like $revision->message, qr{\s+pallinopinco\s+}s;
+}
