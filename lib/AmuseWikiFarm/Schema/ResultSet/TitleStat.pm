@@ -28,7 +28,7 @@ sub popular_texts {
     }
     my $me = $self->current_source_alias;
     my $dtf = $self->result_source->schema->storage->datetime_parser;
-    my $since = DateTime->now->subtract(days => 7);
+    my $since = DateTime->now->subtract(days => 30);
     return $self->search({
                           'title.f_class' => 'text',
                           'title.status' => 'published',
@@ -56,7 +56,7 @@ sub delete_old {
     my $self = shift;
     my $me = $self->current_source_alias;
     my $dtf = $self->result_source->schema->storage->datetime_parser;
-    my $since = DateTime->now->subtract(days => 7);
+    my $since = DateTime->now->subtract(days => 30);
     log_info { "Removing stats older than $since" };
     $self->search({ "$me.accessed" => { '<' => $dtf->format_datetime($since) } })->delete;
 }
