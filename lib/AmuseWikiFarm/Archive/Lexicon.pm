@@ -82,7 +82,7 @@ sub localizer {
             AmuseWikiFarm::Archive::Lexicon::Handles->import_po_file($lang, $po, 1);
         }
         else {
-            log_error { "$po not found for $lang" };
+            log_error { "$po not found for $repo $lang" };
         }
         $global = AmuseWikiFarm::Archive::Lexicon::Handles->get_handle($lang);
         $self->globals->{$lang} = $global;

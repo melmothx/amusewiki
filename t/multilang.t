@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 151;
+use Test::More tests => 190;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -237,3 +237,19 @@ ok (!$error, "No error") or diag $error;
 is $rev->title->uri, 'i-have-set-the-uri-it',
   "No lang suffix appended when the uri is set";
 
+foreach my $lang (sort keys %{ $site->known_langs }) {
+    $mech->get_ok("/set-language?lang=$lang");
+    if ($lang eq 'sr') {
+        $mech->content_contains(qq{<html lang="hr"});
+    }
+    else {
+        $mech->content_contains(qq{<html lang="$lang"});
+    }
+}
+$mech->get_ok("/set-language?lang=en");
+foreach my $lang (qw/alksd als jp lad/) {
+    $mech->get_ok("/set-language?lang=$lang");
+    $mech->content_contains('This is the en index');
+}
+$mech->get_ok("/set-language?lang=sr");
+$mech->content_contains("Napravi zbirku") or diag $mech->content;

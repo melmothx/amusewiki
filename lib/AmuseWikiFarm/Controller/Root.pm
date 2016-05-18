@@ -141,7 +141,7 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
         if ($c->sessionid) {
             if (my $user_locale = $c->session->{user_locale}) {
                 if (my $language = $site->known_langs->{$user_locale}) {
-                    log_debug { "Language is $language" };
+                    log_debug { "User language is $language" };
                     # validated by now
                     $locale = $user_locale;
                 }
