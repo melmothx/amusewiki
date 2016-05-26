@@ -338,7 +338,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
 
                 # possibly fake, we don't care
                 my $reported_username = clean_username($params->{username});
-                $message .= "\n-- \n" . $reported_username . "\n\n";
+                $message .= "\n-- " . $reported_username . "\n\n";
                 $message =~ s/[\r\0]//gs;
                 if ($c->user_exists) {
                     $reported_username = clean_username($c->user->get("username"));
