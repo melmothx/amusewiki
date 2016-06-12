@@ -1,3 +1,9 @@
+amusewiki (1.826-2) unstable; urgency=medium
+
+  * Support 0-downtime upgrades using the debian package
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 12 Jun 2016 21:27:00 +0200
+
 amusewiki (1.826-1) unstable; urgency=medium
 
   * New minor release
