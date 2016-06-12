@@ -75,4 +75,8 @@ if [ -f /var/lib/amusewiki/amw.tmp.pid ]; then
     # kill as amusewiki to avoid killing random processes as root with stale files etc.
     sleep 30
     su -c "kill `cat /var/lib/amusewiki/amw.tmp.pid`" amusewiki
+    sleep 2
+    if [ -f /var/lib/amusewiki/amw.tmp.pid ]; then
+        rm -vf /var/lib/amusewiki/amw.tmp.pid
+    fi
 fi
