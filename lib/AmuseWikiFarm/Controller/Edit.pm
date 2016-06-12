@@ -126,10 +126,26 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
             $revision->update;
             $c->flash(status_msg => $c->loc("Created new text"));
             $c->flash(error_msg => $c->loc('Not finished yet! Please have a look at the text and then click on "[_1]" to finalize your submission!', $c->loc('Commit')));
-            # eventually here shit a mail
+
             my $uri = $revision->title->uri;
             my $id  = $revision->id;
             my $location = $c->uri_for_action('/edit/edit', [$f_class, $uri, $id]);
+
+            # Notify
+            my $mail_to =   $c->stash->{site}->mail_notify;
+            my $mail_from = $c->stash->{site}->mail_from;
+            if ($mail_to && $mail_from) {
+                my %mail = (
+                            lh => $c->stash->{lh},
+                            to => $mail_to,
+                            from => $mail_from,
+                            subject => $uri,
+                            home => $c->uri_for('/'),
+                            location => $location,
+                           );
+                log_info { "Sending mail from $mail_from to $mail_to for new $uri" };
+                $c->model('Mailer')->send_mail(newtext => \%mail);
+            }
             $c->response->redirect($location);
         }
         else {
@@ -334,7 +350,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 my $rev_message = $params->{message} || '<no message>';
                 my $wrapper = Text::Wrapper->new(columns => 72);
                 my $message = $revision->message || '';
-                $message .= "\n\n * " . DateTime->now->datetime . "\n" .
+                $message .= "\n\n * " . DateTime->now->datetime . "\n\n" .
                   $wrapper->wrap($rev_message) . "\n";
 
                 # possibly fake, we don't care

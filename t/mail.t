@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 42;
+use Test::More tests => 52;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -126,7 +126,7 @@ $mech->click("commit");
 
 {
     my @mails = Email::Sender::Simple->default_transport->deliveries;
-    is scalar(@mails), 5, "mails sent";
+    is scalar(@mails), 7, "mails sent" or die Dumper(\@mails);
     if (@mails and my $sent = shift @mails) {
         ok ($sent, "Email sent") and diag $sent->{email}->as_string;
         my $body = $sent->{email}->as_string;
@@ -157,12 +157,32 @@ $mech->click("commit");
         is_deeply $sent->{successes}, ['newmailer@amusewiki.org' ];
     }
     if (@mails and my $sent = shift @mails) {
+        ok ($sent, "The application sent the mail on new text");
+        my $body = $sent->{email}->as_string;
+        ok ($body);
+        $body =~ s/=\r?\n//g;
+        like $body, qr{subject: pippo-my-test}i;
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/};
+        like $body, qr{needs to finalize the upload}i;
+        diag $body;
+    }
+    if (@mails and my $sent = shift @mails) {
         ok ($sent, "The application sent the mail");
         my $body = $sent->{email}->as_string;
         ok ($body);
         like $body, qr{subject: pippo-my-test}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/};
         unlike $body, qr{cc: uploader\@amusewiki.org}i;
+        diag $body;
+    }
+    if (@mails and my $sent = shift @mails) {
+        ok ($sent, "The application sent the mail on new text");
+        my $body = $sent->{email}->as_string;
+        ok ($body);
+        $body =~ s/=\r?\n//g;
+        like $body, qr{subject: pippo-my-test-2}i;
+        like $body, qr{needs to finalize the upload}i;
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/};
         diag $body;
     }
     if (@mails and my $sent = shift @mails) {
