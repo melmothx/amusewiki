@@ -1,8 +1,3 @@
-[% IF site.is_private %]
-<p>
-  [% loc('This site is private and mobile applications cannot access the OPDS.') %]
-</p>
-[% ELSE %]
 <h2>[% loc('[_1] on mobile', site.full_name) %]</h2>
 
 <p>
@@ -46,6 +41,15 @@
     </li>
   </ul>
 </p>
+
+[% IF site.is_private %]
+<p>
+  <strong>
+  [% loc('This site is private and mobile applications should ask for your username and
+  password to access the OPDS.') %]
+  </strong>
+</p>
+[% END %]
 
 <h3>[% loc('Procedure') %]</h3>
 
@@ -108,4 +112,4 @@
     </p>
   </div>
 </div>
-[% END %]
+

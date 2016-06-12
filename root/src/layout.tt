@@ -428,7 +428,6 @@
                 [% END %]
               </a>
             </li>
-            [% UNLESS site.is_private %]
             <li>
               <a href="[% c.uri_for('/help/opds') %]" title="[% loc('Mobile') %]">
                 <span class="glyphicon glyphicon-phone"></span>
@@ -437,7 +436,6 @@
                 </span>
               </a>
             </li>
-            [% END %]
             <li>
               <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
                 <span class="glyphicon glyphicon-random"></span>
@@ -503,10 +501,8 @@
 		 title="[% loc('texts sorted by topics') %]">[% loc('Topics') %]</a>
       |
       <a href="[% c.uri_for_action('/latest/index') %]">[% loc('Latest entries') %]</a>
-      [% UNLESS site.is_private %]
       |
       <a href="[% c.uri_for_action('/help/opds') %]">[% loc('Mobile') %]</a>
-      [% END %]
       [% IF c.user_exists || site.human_can_edit %]
       |
       <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add to library') %]</a>
