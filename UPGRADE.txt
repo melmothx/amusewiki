@@ -4,9 +4,16 @@ package.
 
 If you installed from git and are running the app in the tree:
 
-./init-all stop
+# start a temporary process to serve the requests until we do the upgrade
+./script/amusewikifarm_fastcgi.pl -l var/amw.sock -n 3 2>/dev/null >/dev/null &
+temp_pid=$!
+sleep 10
+./init-all.sh stop
 git pull
-./init-all start
+./init-all.sh start
+sleep 10
+# kill the old
+kill $temp_pid
 
 DB upgrades are managed automatically. If some manual operation is
 required, it will be listed in the Changes file.
