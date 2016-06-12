@@ -1,5 +1,5 @@
 # Top-level filter (only include the following...)
-^(?!(?:script|examples|lib|bin|t|xt|maint|sql|root|dbicdh|psgi)/|(?:(?:Makefile|Build)\.PL|README|MANIFEST|LOCALIZATION\.txt|Changes)$)
+^(?!(?:script|examples|lib|bin|t|xt|maint|sql|root|dbicdh|psgi|mkits)/|(?:(?:Makefile|Build)\.PL|README|MANIFEST|LOCALIZATION\.txt|Changes)$)
 
 # Avoid temp and backup files.
 ~$

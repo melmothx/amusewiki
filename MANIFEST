@@ -290,6 +290,14 @@ lib/CatalystX/AmuseWiki/I18N.pm
 LOCALIZATION.txt
 Makefile.PL
 MANIFEST
+mkits/commit/body.txt
+mkits/commit/manifest.json
+mkits/newtext/body.txt
+mkits/newtext/manifest.json
+mkits/newuser/body.txt
+mkits/newuser/manifest.json
+mkits/resetpassword/body.txt
+mkits/resetpassword/manifest.json
 psgi/amusewiki-cgit.psgi
 psgi/amusewiki.psgi
 README
