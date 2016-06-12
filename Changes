@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.825 2016-06-12
+
+ - Added warning when the uploading process is not finished yet.
+ - Added notification when a new text is created.
+ - Updated help on OPDS for private sites.
+
 1.824 2016-05-18
 
  - Minor adjustments
