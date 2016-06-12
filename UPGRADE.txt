@@ -4,20 +4,34 @@ package.
 
 If you installed from git and are running the app in the tree:
 
-# start a temporary process to serve the requests until we do the upgrade
-./script/amusewikifarm_fastcgi.pl -l var/amw.sock -n 3 2>/dev/null >/dev/null &
-temp_pid=$!
-sleep 10
 ./init-all.sh stop
 git pull
 ./init-all.sh start
-sleep 10
-# kill the old
-kill $temp_pid
-
-The same procedure is provided in the script upgrade-from-git.sh,
-shipped in the root of the distribution.
 
 DB upgrades are managed automatically. If some manual operation is
 required, it will be listed in the Changes file.
 
+This is the suggested script to do a 0-downtime upgrade. We don't ship
+it in the distribution because it looks fragile to run a shell script
+which potentially could change itself.
+
+#!/bin/sh
+
+set -e
+
+./script/amusewikifarm_fastcgi.pl -l var/amw.sock -n 3 2>/dev/null >/dev/null &
+temp_pid=$!
+echo "Started copy of the application with pid $temp_pid. If this script exits prematurely, please kill it yourself"
+echo "Waiting for the backup app to come up"
+sleep 20
+echo "Stopping the app"
+./init-all.sh stop
+git pull
+echo "Starting the app"
+./init-all.sh start
+echo "Waiting for the new app to come up"
+sleep 20
+# kill the old
+echo "Stopping the backup app $temp_pid"
+kill $temp_pid
+echo "All done, no errors"
