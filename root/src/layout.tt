@@ -470,6 +470,7 @@
       [% END %]
       [% IF c.flash.error_msg %]
       <div class="alert alert-warning" id="error_message">
+        <span class="glyphicon glyphicon-warning-sign"></span>
         [% c.flash.error_msg | html %]
       </div>
       [% END %]

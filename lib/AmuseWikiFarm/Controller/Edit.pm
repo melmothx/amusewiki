@@ -125,7 +125,8 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
             $revision->session_id($c->sessionid);
             $revision->update;
             $c->flash(status_msg => $c->loc("Created new text"));
-
+            $c->flash(error_msg => $c->loc('Not finished yet! Please have a look at the text and then click on "[_1]" to finalize your submission!', $c->loc('Commit')));
+            # eventually here shit a mail
             my $uri = $revision->title->uri;
             my $id  = $revision->id;
             my $location = $c->uri_for_action('/edit/edit', [$f_class, $uri, $id]);
