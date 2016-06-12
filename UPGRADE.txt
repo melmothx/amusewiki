@@ -15,6 +15,9 @@ sleep 10
 # kill the old
 kill $temp_pid
 
+The same procedure is provided in the script upgrade-from-git.sh,
+shipped in the root of the distribution.
+
 DB upgrades are managed automatically. If some manual operation is
 required, it will be listed in the Changes file.
 
