@@ -65,6 +65,10 @@ msgstr ""
 msgid "A new revision has been created at %1"
 msgstr "È stata creata una nuova revisione sul sito %1"
 
+#. (location)
+msgid "A new text has been created at %1"
+msgstr ""
+
 msgid "A nice title"
 msgstr "Un bel titolo"
 
@@ -1030,6 +1034,12 @@ msgstr "Nessun testo trovato"
 msgid "No text was added yet"
 msgstr "Nessun testo è stato ancora aggiunto"
 
+#. ($c->loc('Commit')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+
 msgid "Notes"
 msgstr "Note"
 
@@ -1826,6 +1836,14 @@ msgstr ""
 msgid "This is the caption"
 msgstr "Questa è la didascalia"
 
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+
 msgid "This revision is already published, ignoring changes"
 msgstr "Questa revisione è già stata pubblicata, le modifiche saranno ignorate"
 
@@ -1841,10 +1859,11 @@ msgstr "Questa revisione è in corso di modifica da qualcun altro!"
 msgid "This section will not produce a slide"
 msgstr "Questa sezione non produrrà diapositive"
 
-msgid "This site is private and mobile applications cannot access the OPDS."
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
 msgstr ""
-"Questo sito è privato e le applicazioni mobili non sono in grado di accedere "
-"all'OPDS."
 
 msgid "This text does not exist"
 msgstr "Questo testo non esiste"
@@ -2362,6 +2381,11 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "This site is private and mobile applications cannot access the OPDS."
+#~ msgstr ""
+#~ "Questo sito è privato e le applicazioni mobili non sono in grado di "
+#~ "accedere all'OPDS."
 
 #~ msgid "The user will have the same your level of access"
 #~ msgstr "L'utenza avrà lo stesso tuo livello di accesso"

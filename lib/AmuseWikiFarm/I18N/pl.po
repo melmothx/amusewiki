@@ -60,6 +60,10 @@ msgstr ""
 msgid "A new revision has been created at %1"
 msgstr ""
 
+#. (location)
+msgid "A new text has been created at %1"
+msgstr ""
+
 msgid "A nice title"
 msgstr ""
 
@@ -944,6 +948,12 @@ msgstr ""
 msgid "No text was added yet"
 msgstr ""
 
+#. ($c->loc('Commit')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+
 msgid "Notes"
 msgstr ""
 
@@ -1650,6 +1660,14 @@ msgstr ""
 msgid "This is the caption"
 msgstr ""
 
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+
 msgid "This revision is already published, ignoring changes"
 msgstr ""
 
@@ -1665,7 +1683,10 @@ msgstr ""
 msgid "This section will not produce a slide"
 msgstr ""
 
-msgid "This site is private and mobile applications cannot access the OPDS."
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
 msgstr ""
 
 msgid "This text does not exist"

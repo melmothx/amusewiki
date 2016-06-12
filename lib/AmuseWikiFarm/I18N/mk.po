@@ -68,6 +68,10 @@ msgstr ""
 msgid "A new revision has been created at %1"
 msgstr "Нова измена создадена на %1"
 
+#. (location)
+msgid "A new text has been created at %1"
+msgstr ""
+
 msgid "A nice title"
 msgstr "Убав наслов"
 
@@ -1024,6 +1028,12 @@ msgstr "Не е пронајден ниту еден текст!"
 msgid "No text was added yet"
 msgstr "Сѐ уште не е додаден ниту еден текст"
 
+#. ($c->loc('Commit')
+msgid ""
+"Not finished yet! Please have a look at the text and then click on \"%1\" to "
+"finalize your submission!"
+msgstr ""
+
 msgid "Notes"
 msgstr "Забелешки"
 
@@ -1814,6 +1824,14 @@ msgstr ""
 msgid "This is the caption"
 msgstr "Ова е описот"
 
+msgid ""
+"This mail has been sent to notify you about a new text\n"
+"creation, even if the uploading is not completed yet and the user\n"
+"still needs to finalize the upload. Another mail should follow soon.\n"
+"If this doesn't happen, it means that the uploading has been abandoned\n"
+"and you may want to check it out."
+msgstr ""
+
 msgid "This revision is already published, ignoring changes"
 msgstr "Оваа измена веќе е објавена, понатамошните измени ќе бидат игнорирани"
 
@@ -1829,7 +1847,10 @@ msgstr "Оваа измена е во тек од страна на некој �
 msgid "This section will not produce a slide"
 msgstr "Овој оддел нема да создаде слајд"
 
-msgid "This site is private and mobile applications cannot access the OPDS."
+msgid ""
+"This site is private and mobile applications should ask for your username "
+"and\n"
+"  password to access the OPDS."
 msgstr ""
 
 msgid "This text does not exist"
