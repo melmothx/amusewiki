@@ -4,7 +4,7 @@ set -e
 
 if [ "$1" = "upgrade" ]; then
     echo "Starting temporary amusewiki webapp before running the upgrade"
-    echo "and waiting 20 seconds for the app to come up..."
+    echo "and waiting 30 seconds for the app to come up..."
     su -c "cd /var/lib/amusewiki && plackup -s FCGI --listen /var/lib/amusewiki/amusewiki.socket --nproc 5 -E deployment /usr/share/perl5/AmuseWikiFarm/psgi/amusewiki.psgi --pid /var/lib/amusewiki/amw.tmp.pid --daemonize" amusewiki && \
         sleep 30 && \
         echo "Temporary amusewiki is up, proceeding"
