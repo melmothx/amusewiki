@@ -55,6 +55,8 @@ is_deeply $site->title_fields, {
                              'f_class' => 1,
                                 slides => 1,
                                 text_structure => 1,
+                                cover => 1,
+                                teaser => 1,
                             }, "the archive knows the title fields";
 
 ok(!$site->index_file);
