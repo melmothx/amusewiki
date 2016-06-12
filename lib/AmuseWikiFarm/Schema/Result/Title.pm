@@ -189,6 +189,19 @@ __PACKAGE__->table("title");
   default_value: (empty string)
   is_nullable: 0
 
+=head2 cover
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 255
+
+=head2 teaser
+
+  data_type: 'text'
+  default_value: (empty string)
+  is_nullable: 0
+
 =head2 sorting_pos
 
   data_type: 'integer'
@@ -259,6 +272,10 @@ __PACKAGE__->add_columns(
   "slides",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "text_structure",
+  { data_type => "text", default_value => "", is_nullable => 0 },
+  "cover",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
+  "teaser",
   { data_type => "text", default_value => "", is_nullable => 0 },
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
@@ -369,8 +386,8 @@ Composing rels: L</title_categories> -> category
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-06 10:04:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FT20w1zat/1quXGg5X/OYw
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-12 13:51:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kztYga/ZSUahBHWf7wANNQ
 
 __PACKAGE__->has_many(
     translations => "AmuseWikiFarm::Schema::Result::Title",

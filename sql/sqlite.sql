@@ -213,6 +213,9 @@ CREATE TABLE title (
 
         text_structure TEXT NOT NULL DEFAULT '',
 
+        cover VARCHAR(255) NOT NULL DEFAULT '',
+        teaser TEXT NOT NULL DEFAULT '',
+
         sorting_pos INTEGER NOT NULL DEFAULT 0,
         site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
