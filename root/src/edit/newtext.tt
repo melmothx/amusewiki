@@ -194,6 +194,21 @@
                 rows="5">[%- processed_params.notes | html %]</textarea>
     </div>
     [% END %]
+
+    [% IF blog_style %]
+    [% IF f_class == 'text' %]
+    <h3>[% loc('Teaser') %]</h3>
+    <div>
+      [% loc('The text to show on the homepage preview') %]
+    </div>
+    <div>&nbsp;</div>
+    <div>
+      <textarea id="teaser" name="teaser" cols="80"
+                rows="10">[%- processed_params.teaser | html %]</textarea>
+    </div>
+    [% END %]
+    [% END %]
+
     <div>
       <br /><br />
     <p id="choose-uri">
@@ -263,9 +278,11 @@
           $('#textbody').ckeditor(data);
           data.height = 100;
           $('#notes').ckeditor(data);
+          $('#teaser').ckeditor(data);
       }).fail(function() {
           $('#textbody').ckeditor();
           $('#notes').ckeditor({ height: 100 });
+          $('#teaser').ckeditor({ height: 100 });
       });
   });
 </script>

@@ -114,6 +114,7 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     log_debug { "User exists? " .  $c->user_exists };
     # stash the site object
     $c->stash(site => $site);
+    $c->stash(blog_style => $site->blog_style);
 
     # always stash the login uri, at some point it could be needed by
     # the layout
