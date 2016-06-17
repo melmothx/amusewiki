@@ -55,6 +55,9 @@ CREATE TABLE site (
        -- need a webserver entry?
        active INTEGER(1) NOT NULL DEFAULT 1,
 
+       -- blog style?
+       blog_style INTEGER(1) NOT NULL DEFAULT 0,
+
        -- book builder page limit
        bb_page_limit INTEGER NOT NULL DEFAULT 1000,
        -- formats

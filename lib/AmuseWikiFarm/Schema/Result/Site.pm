@@ -198,6 +198,13 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1
 
+=head2 blog_style
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 bb_page_limit
 
   data_type: 'integer'
@@ -429,6 +436,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "active",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  "blog_style",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "bb_page_limit",
   { data_type => "integer", default_value => 1000, is_nullable => 0 },
   "tex",
@@ -720,8 +729,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-06 10:04:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tubBmbLiu3V94WGDt0BNyA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-17 17:00:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:b5WjrZz7LvBTcREhehAUmg
 
 =head2 other_sites
 
