@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 7;
+use Test::More tests => 8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -20,8 +20,6 @@ my $site = create_site($schema, '0fancy0');
 $site->update({
                secure_site => 0,
                blog_style => 1,
-               pdf => 1,
-               epub => 1,
               });
 
 my ($revision) = $site
@@ -50,11 +48,27 @@ is $text->uri, 'my-test', "Found the text";
 is $text->cover, $attached, "Cover found ($attached)";
 is $text->teaser, "this is <code>the</code> <em>teaser</em>", "Found the teaser";
 
+my $orig_body = $body;
 $body =~ s!^\#cover .*$!#cover <script>hello()</script>!m;
 my $rev = $text->new_revision;
 $rev->edit($body);
 $rev->commit_version;
 $rev->publish_text;
 diag $rev->muse_body;
+$site->update({
+               pdf => 1,
+               epub => 1,
+              });
+
 $text->discard_changes;
 is $text->cover, '', "cover field nuked with garbage";
+
+
+
+$rev = $text->new_revision;
+$rev->edit($orig_body);
+$rev->commit_version;
+$rev->publish_text;
+diag $rev->muse_body;
+$text->discard_changes;
+is $text->cover, $attached, "cover field restored";
