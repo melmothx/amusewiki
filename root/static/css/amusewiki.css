@@ -162,3 +162,12 @@ blockquote {
 img.amw-fbreader {
     width: 200px;
 }
+
+img#text-cover-img {
+    max-width: 250px;
+    padding: 10px;
+    margin: 3px;
+}
+div#text-cover-img-container {
+    float:right;
+}

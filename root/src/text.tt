@@ -278,6 +278,11 @@
     [% END %]
   </div>
   <div id="htmltextbody">
+    [% IF text.valid_cover %]
+    <div id="text-cover-img-container">
+      <img id="text-cover-img" src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
+    </div>
+    [% END %]
     [% text.html_body %]
   </div>
 
@@ -298,6 +303,9 @@
   [%-   END -%]
   [%- END -%]
 
+  <div class="col-xs-12">
+    <div id="text-optional-footer"></div>
+  </div>
 
   [% SET translations = text.translations_rs %]
   [% IF translations.count %]
@@ -378,5 +386,13 @@ $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });
             });
         });
     });
+</script>
+[% END %]
+
+[% IF blog_style %]
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("div#preamble-container").remove().appendTo("#text-optional-footer");
+  });
 </script>
 [% END %]

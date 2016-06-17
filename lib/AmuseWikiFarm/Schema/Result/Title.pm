@@ -412,6 +412,7 @@ use Text::Amuse;
 use JSON qw/to_json from_json/;
 use HTML::Entities qw/decode_entities/;
 use DateTime;
+use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid/;
 
 =head2 listing
 
@@ -984,6 +985,11 @@ sub insert_stat_record {
                                type => $type || '',
                                user_agent => $user_agent || '',
                               });
+}
+
+sub valid_cover {
+    my $self = shift;
+    return cover_filename_is_valid($self->cover);
 }
 
 __PACKAGE__->meta->make_immutable;
