@@ -2140,6 +2140,7 @@ sub update_from_params {
                        cgit_integration
                        secure_site
                        active
+                       blog_style
                        acme_certificate
                        secure_site_only
                        twoside nocoverpage/);

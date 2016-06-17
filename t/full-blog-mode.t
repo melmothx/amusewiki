@@ -17,6 +17,12 @@ use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0fancy0');
+$site->update({
+               secure_site => 0,
+               blog_style => 1,
+               pdf => 1,
+               epub => 1,
+              });
 
 my ($revision) = $site
   ->create_new_text({
