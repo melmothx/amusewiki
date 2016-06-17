@@ -747,6 +747,7 @@ use Cwd;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_file_info
                                    muse_filepath_is_valid
+                                   cover_filename_is_valid
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor::HTML qw/html_to_muse html_file_to_muse/;
 use Text::Amuse::Compile;
@@ -1186,7 +1187,9 @@ sub import_text_from_html_params {
         $self->_add_directive($fh, $directive, $params->{$directive});
     }
     # add the notes
-    $self->_add_directive($fh, notes => html_to_muse($params->{notes}));
+    foreach my $field (qw/notes teaser/) {
+        $self->_add_directive($fh, $field => html_to_muse($params->{$field}));
+    }
 
     # separator
     print $fh "\n";
@@ -1409,6 +1412,9 @@ sub index_file {
             $insertion{$db_col} = delete $details->{$col};
         }
     }
+
+    delete $details->{coverwidth};
+    $insertion{cover} = cover_filename_is_valid($insertion{cover});
 
     # this is needed because we insert it from title, and DBIC can't
     # infer the site_id from there (even if it should, but hey).
