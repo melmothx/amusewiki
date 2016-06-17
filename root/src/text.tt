@@ -303,9 +303,8 @@
   [%-   END -%]
   [%- END -%]
 
-  <div class="col-xs-12">
-    <div id="text-optional-footer"></div>
-  </div>
+  <div class="clearfix"></div>
+  <div id="text-optional-footer"></div>
 
   [% SET translations = text.translations_rs %]
   [% IF translations.count %]
