@@ -171,3 +171,7 @@ img#text-cover-img {
 div#text-cover-img-container {
     float:right;
 }
+
+img.pdfmyicons {
+    margin-bottom: 10px;
+}

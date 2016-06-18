@@ -7,6 +7,8 @@
 [% END %]
 
 <div>
+  [% # form-horizontal doesn't need .row %]
+
   <form id="search" method="get" class="form-horizontal" role="form">
     <div class="form-group">
       <label for="query" class="col-xs-3 control-label">

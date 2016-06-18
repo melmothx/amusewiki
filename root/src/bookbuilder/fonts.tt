@@ -8,7 +8,7 @@
 
 <div class="row">
   [% FOREACH font IN all_fonts %]
-  <div class="col-lg-4">
+  <div class="col-lg-6">
     <div class="center">
       <h4>[% font.desc %]</h4>
     </div>

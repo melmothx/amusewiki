@@ -451,8 +451,9 @@
     <div id="wrap">
     <div id="main" class="container clear-top">
       <div class="row">
-        <div class="col-md-1 col-lg-2"></div>
-        <div class="col-md-10 col-lg-8">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
 [% IF c.sessionid %]
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
@@ -475,14 +476,15 @@
       [%- # all rendered, clear this -%]
       [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
 [% END %]
+          <div id="widepage">
+            [% content %]
+          </div>
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
         </div>
-        <div class="col-md-1 col-lg-2"></div>
+        <div class="col-sm-2">
+        </div>
       </div>
-      <div id="widepage">
-        [% content %]
-      </div>
-      <div>&nbsp;</div>
-      <div>&nbsp;</div>
     </div>
     </div>
     <div id="footer">
