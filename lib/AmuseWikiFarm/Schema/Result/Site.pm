@@ -2649,9 +2649,17 @@ sub get_option {
 }
 
 sub html_special_page_bottom {
-    my ($self) = @_;
-    return $self->get_option('html_special_page_bottom') || '';
+    return shift->get_option('html_special_page_bottom') || '';
 }
+
+sub left_sidebar_html {
+    return shift->get_option('left_sidebar_html') || '';
+}
+
+sub right_sidebar_html {
+    return shift->get_option('right_sidebar_html') || '';
+}
+
 
 sub use_luatex {
     my ($self) = @_;

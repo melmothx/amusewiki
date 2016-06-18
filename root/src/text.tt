@@ -19,6 +19,14 @@
     </div>
   </div>
 </div>
+
+[% # if we have the sidebars, we're cool, otherwise we have to shrink it %]
+[% UNLESS left_sidebar_html || right_sidebar_html %]
+<div class="row">
+  <div class="col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
+[% END %]
+
+
 <div id="page">
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
@@ -364,6 +372,11 @@
   </div>
   [% END %]
 </div>
+
+[% UNLESS left_sidebar_html || right_sidebar_html %]
+  </div>
+</div>
+[% END %]
 
 <script type="text/javascript">
 $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });

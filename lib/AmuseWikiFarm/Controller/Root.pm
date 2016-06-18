@@ -116,6 +116,25 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     $c->stash(site => $site);
     $c->stash(blog_style => $site->blog_style);
 
+    # layout adjustments
+    my $columns = 12;
+    my $left_column = $site->left_sidebar_html;
+    my $right_column = $site->right_sidebar_html;
+    if ($left_column || $right_column) {
+        my $wide = 4;
+        # enlarge the column if we have only one sidebar
+        if ($left_column && $right_column) {
+            $wide = 2;
+        }
+        $c->stash(left_sidebar_html => $left_column,
+                  right_sidebar_html => $right_column,
+                  left_sidebar_cols => ($left_column ? $wide : 0),
+                  right_sidebar_cols => ($right_column ? $wide : 0),
+                 );
+        $columns = 8;
+    }
+    $c->stash(main_body_cols => $columns);
+
     # always stash the login uri, at some point it could be needed by
     # the layout
     my $login_uri = $c->uri_for_action('/user/login');

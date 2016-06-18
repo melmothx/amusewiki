@@ -451,9 +451,7 @@
     <div id="wrap">
     <div id="main" class="container clear-top">
       <div class="row">
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-8">
+        <div class="col-sm-[% main_body_cols || 12 %][% IF left_sidebar_cols %] col-sm-push-[% left_sidebar_cols %][% END %]">
 [% IF c.sessionid %]
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
@@ -482,8 +480,20 @@
           <div>&nbsp;</div>
           <div>&nbsp;</div>
         </div>
-        <div class="col-sm-2">
+        [% IF left_sidebar_html %]
+        <div class="col-sm-[% left_sidebar_cols %] col-sm-pull-[% main_body_cols %]">
+          [% left_sidebar_html %]
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
         </div>
+        [% END %]
+        [% IF right_sidebar_html %]
+        <div class="col-sm-[% right_sidebar_cols %]">
+          [% right_sidebar_html %]
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+        </div>
+        [% END %]
       </div>
     </div>
     </div>
