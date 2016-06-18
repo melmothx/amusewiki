@@ -763,8 +763,8 @@ catalyst app url, instead of calling uri_for with 2 or 3 arguments
 =cut
 
 sub full_uri {
-    my $self = shift;
-    my $uri = $self->uri;
+    my ($self, $uri) = @_;
+    $uri ||= $self->uri;
     my $class = $self->f_class;
     if ($class eq 'special') {
         return '/special/' . $uri;
@@ -781,6 +781,15 @@ sub full_edit_uri {
     my $self = shift;
     return $self->full_uri . '/edit';
 }
+
+sub cover_uri {
+    my $self = shift;
+    if (my $uri = $self->valid_cover) {
+        return $self->full_uri($uri);
+    }
+    return;
+}
+
 
 =head2 Attached pdf (#ATTACH directive)
 

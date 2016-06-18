@@ -1,0 +1,36 @@
+[% # -*- mode: html -*- %]
+
+[% FOREACH text IN texts %]
+<div class="panel panel-default">
+  <div class="panel-body">
+    [% IF text.cover_uri %]
+    <div class="text-cover-img-mini-container">
+      <a href="[% c.uri_for(text.full_uri) %]">
+        <img src="[% c.uri_for(text.cover_uri) %]"
+             alt="[% text.valid_cover %]"
+             class="text-cover-img-mini img-thumbnail" />
+      </a>
+    </div>
+    [% END %]
+    <div>
+      <h3 class="amw-latest-listing-item-title">
+        <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
+        [%- IF text.author %] — <small>[% text.author -%]</small>[% END -%]    
+      </h3>
+      [% IF text.teaser %]
+      [% text.teaser %]
+      [% END %]
+    </div>
+    <div class="clearfix"></div>
+    <div class="amw-latest-listing-item-date">
+      <small>[% text.pubdate_locale(current_locale_code) %]</small>
+      [% IF text.is_deferred %]
+      <span class="glyphicon glyphicon-time"></span>
+      [% END %]
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+[% END %]
+
+[% INCLUDE 'include/pagination.tt' %]

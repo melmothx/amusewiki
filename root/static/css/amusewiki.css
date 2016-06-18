@@ -168,10 +168,25 @@ img#text-cover-img {
     padding: 10px;
     margin: 3px;
 }
+
+img.text-cover-img-mini {
+    max-width: 150px;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+div.text-cover-img-mini-container {
+    float:right;
+}
+
 div#text-cover-img-container {
     float:right;
 }
 
 img.pdfmyicons {
     margin-bottom: 10px;
+}
+
+div.amw-latest-listing-item-date {
+    float: left;
 }

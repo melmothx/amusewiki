@@ -398,7 +398,7 @@ sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
     # check if we have a special page named index
     my $nav = $c->stash->{navigation};
     # default
-    my $target = $c->uri_for_action('/library/listing');
+    my $target = $c->uri_for_action('/latest/index');
     my $site = $c->stash->{site};
     my $locale = $c->stash->{current_locale_code} || $site->locale;
     if ($site->is_private and !$c->user_exists) {
