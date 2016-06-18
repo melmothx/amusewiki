@@ -20,6 +20,7 @@ my $site = create_site($schema, '0fancy0');
 $site->update({
                secure_site => 0,
                blog_style => 1,
+               sitename => "My new blog",
               });
 
 my ($revision) = $site
@@ -72,3 +73,62 @@ $rev->publish_text;
 diag $rev->muse_body;
 $text->discard_changes;
 is $text->cover, $attached, "cover field restored";
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
+$mech->get_ok('/');
+is $mech->uri->path, '/latest', "Redirected to /latest";
+$mech->content_lacks('Authors');
+$mech->content_lacks('Topics');
+
+$site->update({
+               pdf => 0,
+              });
+
+
+add_text({
+          title => 'A second entry',
+          teaser => '<p> This is going to be a long <b>trip</b>',
+          author => 'Pippo',
+          lang => 'en',
+          textbody => '<p>hello there</p>',
+          teaser => '<p>this</p><p>is =another= <em>teaser</em></p>',
+         });
+$mech->get_ok('/');
+$mech->content_lacks('Topics');
+$mech->content_like(qr/Authors.*Authors/s);
+
+add_text({
+          title => 'A third entry',
+          teaser => '<p> This is going to be a long <b>trip</b>',
+          author => 'Pippo',
+          subtitle => 'With a subtitle',
+          lang => 'en',
+          textbody => '<p>hello there</p>',
+          teaser => '<p>this</p><p>is =another= <em>teaser</em></p>',
+          SORTtopics => 'blabla',
+         });
+$mech->get_ok('/');
+$mech->content_like(qr/Topics.*Topics/s);
+$mech->content_like(qr/Authors.*Authors/s);
+
+
+$site->update({
+               pdf => 1,
+              });
+
+
+
+sub add_text {
+    my $args = shift;
+    my ($rev) = $site->create_new_text($args, 'text');
+    my $body = $rev->muse_body;
+    $rev->add_attachment(catfile(qw/t files shot.png/));
+    my @files = @{$rev->attached_files};
+    my $attached = $files[0];
+    $body = "#cover $attached\n#coverwidth 0.5\n" . $body;
+    $rev->edit($body);
+    $rev->commit_version;
+    $rev->publish_text;
+}

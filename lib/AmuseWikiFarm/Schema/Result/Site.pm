@@ -1638,6 +1638,29 @@ sub supported_locales {
     return sort keys %out;
 }
 
+has is_without_authors => (is => 'ro',
+                           isa => 'Bool',
+                           lazy => 1,
+                           builder => '_build_is_without_authors');
+
+sub _build_is_without_authors {
+    my $self = shift;
+    return !$self->categories->authors_count;
+}
+
+has is_without_topics => (is => 'ro',
+                          isa => 'Bool',
+                          lazy => 1,
+                          builder => '_build_is_without_topics');
+
+sub _build_is_without_topics {
+    my $self = shift;
+    return !$self->categories->topics_count;
+}
+
+
+
+
 =head1 SCANNING
 
 =head2 repo_find_files

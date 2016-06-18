@@ -192,6 +192,7 @@
                     [% loc('Titles') %]
                   </a>
                 </li>
+                [% UNLESS site.is_without_authors %]
                 <li[% IF nav == 'author' %] class="active" [% END %]
                       id="amw-nav-bar-authors">
                   <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
@@ -199,6 +200,7 @@
                     [% loc('Authors') %]
                   </a>
                 </li>
+                [% END %]
                 [% IF site.fixed_category_list %]
                 <li role="presentation" class="divider"></li>
                 <li role="presentation" class="dropdown-header">
@@ -213,12 +215,14 @@
                 </li>
                 [%     END  %]
                 [% ELSE %]
+                    [% UNLESS site.is_without_topics %]
 	            <li[% IF nav == 'topic' %] class="active" [% END %]>
                   <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		             title="[% loc('texts sorted by topics') %]">
                     [% loc('Topics') %]
                   </a>
                 </li>
+                    [% END %]
                 [% END %]
                 <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'latest' %] class="active"[% END %]>
@@ -505,12 +509,16 @@
       |
       <a href="[% c.uri_for('/library') %]"
 		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
+      [% UNLESS site.is_without_authors %]
       |
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
 		 title="[% loc('texts sorted by author') %]">[% loc('Authors') %]</a>
+      [% END %]
+      [% UNLESS site.is_without_topics %]
       |
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		 title="[% loc('texts sorted by topics') %]">[% loc('Topics') %]</a>
+      [% END %]
       |
       <a href="[% c.uri_for_action('/latest/index') %]">[% loc('Latest entries') %]</a>
       |
