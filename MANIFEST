@@ -25,6 +25,8 @@ dbicdh/_source/deploy/19/001-auto-__VERSION.yml
 dbicdh/_source/deploy/19/001-auto.yml
 dbicdh/_source/deploy/2/001-auto-__VERSION.yml
 dbicdh/_source/deploy/2/001-auto.yml
+dbicdh/_source/deploy/20/001-auto-__VERSION.yml
+dbicdh/_source/deploy/20/001-auto.yml
 dbicdh/_source/deploy/3/001-auto-__VERSION.yml
 dbicdh/_source/deploy/3/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
@@ -61,6 +63,8 @@ dbicdh/MySQL/deploy/19/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/19/001-auto.sql
 dbicdh/MySQL/deploy/2/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/2/001-auto.sql
+dbicdh/MySQL/deploy/20/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/20/001-auto.sql
 dbicdh/MySQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/3/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
@@ -84,6 +88,7 @@ dbicdh/MySQL/upgrade/15-16/001-auto.sql
 dbicdh/MySQL/upgrade/16-17/001-auto.sql
 dbicdh/MySQL/upgrade/17-18/001-auto.sql
 dbicdh/MySQL/upgrade/18-19/001-auto.sql
+dbicdh/MySQL/upgrade/19-20/001-auto.sql
 dbicdh/MySQL/upgrade/2-3/001-auto.sql
 dbicdh/MySQL/upgrade/3-4/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
@@ -114,6 +119,8 @@ dbicdh/PostgreSQL/deploy/19/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/19/001-auto.sql
 dbicdh/PostgreSQL/deploy/2/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/2/001-auto.sql
+dbicdh/PostgreSQL/deploy/20/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/20/001-auto.sql
 dbicdh/PostgreSQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/3/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
@@ -137,6 +144,7 @@ dbicdh/PostgreSQL/upgrade/15-16/001-auto.sql
 dbicdh/PostgreSQL/upgrade/16-17/001-auto.sql
 dbicdh/PostgreSQL/upgrade/17-18/001-auto.sql
 dbicdh/PostgreSQL/upgrade/18-19/001-auto.sql
+dbicdh/PostgreSQL/upgrade/19-20/001-auto.sql
 dbicdh/PostgreSQL/upgrade/2-3/001-auto.sql
 dbicdh/PostgreSQL/upgrade/3-4/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
@@ -167,6 +175,8 @@ dbicdh/SQLite/deploy/19/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/19/001-auto.sql
 dbicdh/SQLite/deploy/2/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/2/001-auto.sql
+dbicdh/SQLite/deploy/20/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/20/001-auto.sql
 dbicdh/SQLite/deploy/3/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/3/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
@@ -190,6 +200,7 @@ dbicdh/SQLite/upgrade/15-16/001-auto.sql
 dbicdh/SQLite/upgrade/16-17/001-auto.sql
 dbicdh/SQLite/upgrade/17-18/001-auto.sql
 dbicdh/SQLite/upgrade/18-19/001-auto.sql
+dbicdh/SQLite/upgrade/19-20/001-auto.sql
 dbicdh/SQLite/upgrade/2-3/001-auto.sql
 dbicdh/SQLite/upgrade/3-4/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
@@ -350,6 +361,7 @@ root/src/include/ckeditor.tt
 root/src/include/markitup.tt
 root/src/include/pagination.tt
 root/src/include/validate.tt
+root/src/latest/extended.tt
 root/src/latest/index.tt
 root/src/layout.tt
 root/src/library.tt
@@ -764,6 +776,7 @@ t/files/shot.png
 t/files/slides-s-no.muse
 t/files/slides.muse
 t/files/upload.html
+t/full-blog-mode.t
 t/git-revision.t
 t/html-upload.t
 t/indexer.t
