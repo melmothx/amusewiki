@@ -2107,8 +2107,6 @@ sub update_from_params_restricted {
                         use_luatex               => 'option',
 
                         vhosts            => 'delete',
-                        html_special_page_bottom => 'option',
-
 
                         secure_site       => 'value',
                         secure_site_only  => 'value',
@@ -2376,6 +2374,8 @@ sub update_from_params {
 
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
+                           right_sidebar_html
+                           left_sidebar_html
                            do_not_enforce_commit_message
                            use_js_highlight
                           /) {

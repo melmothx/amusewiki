@@ -648,6 +648,8 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
+    [% END %]
+
     <div class="form-group">
       <div class="row">
         <div class="col-sm-3">
@@ -665,7 +667,38 @@ kpsewhich mylogo.pdf</pre>
         </div>
       </div>
     </div>
-    [% END %]
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="left_sidebar_html" class="control-label">
+            [% loc('HTML to insert into the left sidebar') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="left_sidebar_html"
+                    id="left_sidebar_html"
+                    class="form-control">
+            [%- esite.left_sidebar_html | html -%]</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="right_sidebar_html" class="control-label">
+            [% loc('HTML to insert into the right sidebar') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="right_sidebar_html"
+                    id="right_sidebar_html"
+                    class="form-control">
+            [%- esite.right_sidebar_html | html -%]</textarea>
+        </div>
+      </div>
+    </div>
 
     <div class="form-group">
       <div class="row">
