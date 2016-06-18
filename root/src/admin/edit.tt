@@ -194,7 +194,8 @@
             The last one checks if the file can be found.') %]
           </p>
           <pre>mkdir -p `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
-cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data`
+cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
+texhash `kpsewhich -var-value TEXMFHOME`
 kpsewhich mylogo.pdf</pre>
         </div>
       </div>
