@@ -14,7 +14,7 @@
     [% END %]
     <div>
       <h3 class="amw-latest-listing-item-title">
-        [%- IF text.author %]<small>[% text.author -%]</small><br>[% END -%]
+        [%- IF text.author %]<small>[% text.author -%]</small><br />[% END -%]
         <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
         [% IF text.subtitle %]<small>[% text.subtitle -%]</small>[% END -%]
       </h3>
@@ -24,6 +24,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="amw-latest-listing-item-date">
+      <br />
       <small>[% text.pubdate_locale(current_locale_code) %]</small>
       [% IF text.is_deferred %]
       <span class="glyphicon glyphicon-time"></span>

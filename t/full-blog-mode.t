@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 18;
+use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -113,10 +113,52 @@ $mech->get_ok('/');
 $mech->content_like(qr/Topics.*Topics/s);
 $mech->content_like(qr/Authors.*Authors/s);
 
+$mech->content_lacks('class="pagination"');
+
+foreach my $num (1..10) {
+    add_text({
+              title => "Another one... $num",
+              teaser => ("This buffer is for notes you don't want to save, and
+for Lisp evaluation. If you want to create a file, visit that file
+with C-x C-f, then enter the text in that file's own buffer. " x $num ),
+              lang => 'en',
+              subtitle => ("Sub " x $num),
+              textbody => "Nothing interesting",
+             });
+}
+
+$mech->get_ok('/latest');
+$mech->content_contains('class="pagination"');
+$mech->content_contains('/latest/2');
+
+$mech->get_ok('/latest/2');
+$mech->content_contains('A second entry');
 
 $site->update({
                pdf => 1,
               });
+
+$mech->content_contains('amw-main-layout-column');
+$mech->content_lacks('amw-left-sidebar-column');
+$mech->content_lacks('amw-right-sidebar-column');
+
+$site->add_to_site_options({ option_name => 'left_sidebar_html',
+                             option_value => '<strong>Left bar</strong>',
+                           });
+
+$mech->get_ok('/');
+$mech->content_contains('amw-left-sidebar-column');
+$mech->content_contains('<strong>Left bar</strong>');
+
+$site->add_to_site_options({ option_name => 'right_sidebar_html',
+                             option_value => '<strong>Right bar</strong>',
+                           });
+
+
+$mech->get_ok('/');
+$mech->content_contains('amw-right-sidebar-column');
+$mech->content_contains('<strong>Right bar</strong>');
+
 
 
 

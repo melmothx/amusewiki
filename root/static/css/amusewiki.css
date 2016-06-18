@@ -172,11 +172,12 @@ img#text-cover-img {
 img.text-cover-img-mini {
     max-width: 150px;
     padding: 10px;
-    margin-right: 10px;
 }
 
 div.text-cover-img-mini-container {
     float:right;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
 div#text-cover-img-container {
