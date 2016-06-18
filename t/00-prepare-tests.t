@@ -31,7 +31,7 @@ foreach my $pdflogo (qw/logo-yu.pdf logo-en.pdf/) {
         my $src = catfile(qw/t texmf-files/, $pdflogo);
         copy($src, $texmffiledir)
           or die "Failed to copy $src into $texmffiledir $!";
-        system('mktexlsr');
+        system(texhash => $texmfhome);
         unless (system(kpsewhich => $pdflogo) == 0) {
             die "Couldn't find or install $pdflogo into TEXMFHOME, please report this issue\n";
         }
