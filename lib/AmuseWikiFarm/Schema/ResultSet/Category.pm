@@ -5,6 +5,8 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
+__PACKAGE__->load_components('Helper::ResultSet::Random');
+
 =head1 NAME
 
 AmuseWikiFarm::Schema::ResultSet::Category - Category resultset

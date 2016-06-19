@@ -1,0 +1,10 @@
+[% # -*- mode: html -*- %]
+
+<div id="amw-embed-cloud">
+  [% FOREACH cat IN cloud_categories %]
+  <div class="amw-cloud-element amw-cloud-element-level-[% cat.cloud_level %]">
+    <a href="[% cat.full_uri %]">[% cat.name %] <span class="amw-cloud-element-texts">([% cat.text_count %])</span></a>
+  </div>
+  [% END %]
+  <div class="clearfix"></div>
+</div>

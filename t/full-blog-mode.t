@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 33;
+use Test::More tests => 40;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -159,8 +159,30 @@ $mech->get_ok('/');
 $mech->content_contains('amw-right-sidebar-column');
 $mech->content_contains('<strong>Right bar</strong>');
 
+diag "Testing tag cloud";
 
+my $guard = $schema->txn_scope_guard;
+foreach my $num (1..100) {
+    foreach my $type (qw/topic author/) {
+        $site->add_to_categories({
+                                  name => "test $type $num",
+                                  uri => "test-$type-$num",
+                                  type => $type,
+                                  text_count => $num,
+                                  sorting_pos => $num,
+                                 })
+    }
+}
+$guard->commit;
 
+$mech->get_ok('/cloud');
+$mech->content_contains('>test topic 1 <');
+$mech->content_contains('>test topic 100 <');
+$mech->content_contains('>test author 1 <');
+$mech->content_contains('>test author 100 <');
+my @links = grep { $_->url =~ m/\/category\// } $mech->find_all_links;
+$mech->links_ok(\@links);
+ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 
 sub add_text {
     my $args = shift;
