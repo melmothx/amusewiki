@@ -27,7 +27,7 @@ CREATE TABLE site (
        sitename VARCHAR(255) NOT NULL DEFAULT '',
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
        theme VARCHAR(32) NOT NULL DEFAULT '',
-       logo VARCHAR(255), -- could be a path, so keep it at 255
+       logo VARCHAR(255) NOT NULL DEFAULT '', -- could be a path, so keep it at 255
        mail_notify VARCHAR(255),
        mail_from   VARCHAR(255),
 
@@ -43,10 +43,10 @@ CREATE TABLE site (
        cgit_integration INTEGER(1) NOT NULL DEFAULT 1,
 
        -- ssl options
-       ssl_key VARCHAR(255),
-       ssl_cert VARCHAR(255),
-       ssl_ca_cert VARCHAR(255),
-       ssl_chained_cert VARCHAR(255),
+       ssl_key VARCHAR(255) NOT NULL DEFAULT '',
+       ssl_cert VARCHAR(255) NOT NULL DEFAULT '',
+       ssl_ca_cert VARCHAR(255) NOT NULL DEFAULT '',
+       ssl_chained_cert VARCHAR(255) NOT NULL DEFAULT '',
        acme_certificate INTEGER(1) NOT NULL DEFAULT 0,
 
        -- boolean for multilanguage

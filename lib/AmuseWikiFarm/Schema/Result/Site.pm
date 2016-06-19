@@ -104,7 +104,8 @@ __PACKAGE__->table("site");
 =head2 logo
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 mail_notify
@@ -156,25 +157,29 @@ __PACKAGE__->table("site");
 =head2 ssl_key
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 ssl_cert
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 ssl_ca_cert
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 ssl_chained_cert
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 acme_certificate
@@ -407,7 +412,7 @@ __PACKAGE__->add_columns(
   "theme",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 32 },
   "logo",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "mail_notify",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "mail_from",
@@ -423,13 +428,13 @@ __PACKAGE__->add_columns(
   "cgit_integration",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "ssl_key",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "ssl_cert",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "ssl_ca_cert",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "ssl_chained_cert",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "acme_certificate",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "multilanguage",
@@ -729,8 +734,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-17 17:00:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:b5WjrZz7LvBTcREhehAUmg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-19 13:01:41
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QtRajoLOe1qBuLPxJPY3gg
 
 =head2 other_sites
 
