@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 59;
+use Test::More tests => 61;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -14,6 +14,7 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Text::Amuse::Compile::Utils qw/write_file/;
 use Data::Dumper;
+use File::Copy (qw/copy/);
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0fancy0');
@@ -207,6 +208,12 @@ $mech->content_lacks('>test author 60 <');
 $mech->content_contains('>test author 61 <');
 $mech->content_contains('>test author 100 <');
 $mech->content_lacks('My new blog');
+
+copy(catfile(qw/t files widebanner.png/),
+     catfile($site->path_for_site_files));
+$mech->get_ok('/');
+$mech->content_contains('widebanner.png');
+
 
 
 sub add_text {

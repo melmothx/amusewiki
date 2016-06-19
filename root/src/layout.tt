@@ -454,6 +454,21 @@
     </div>
     <div id="wrap">
     <div id="main" class="container clear-top">
+      [% IF site.has_site_file('widebanner.png') %]
+      <div class="row">
+        <div class="col-12-sm hidden-xs">
+          <a class="amw-wide-banner" href="[% c.uri_for('/') %]">
+            <img src="[% c.uri_for_action('/sitefiles/local_files',
+                      [ site.id, 'widebanner.png' ]) %]"
+                 title="[% site.sitename | html %]"
+                 class="amw-wide-banner-img img-responsive"
+                 alt="[% site.sitename | html %]" />
+          </a>
+        </div>
+        <div>&nbsp;
+        </div>
+      </div>
+      [% END %]
       <div class="row">
         <div id="amw-main-layout-column"
              class="col-sm-[% main_body_cols || 12 %][% IF left_sidebar_cols %] col-sm-push-[% left_sidebar_cols %][% END %]">
