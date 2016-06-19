@@ -151,8 +151,11 @@ $mech->content_contains('amw-left-sidebar-column');
 $mech->content_contains('<strong>Left bar</strong>');
 
 $site->add_to_site_options({ option_name => 'right_sidebar_html',
-                             option_value => '<strong>Right bar</strong>',
-                           });
+                             option_value => '<strong>Right bar</strong>
+<div id="amw-cloud-embedded-sidebar"></div>
+<script type="text/javascript">
+$(document).ready(function() { $("#amw-cloud-embedded-sidebar").load("/cloud/limit/0/bare") });
+</script>'});
 
 
 $mech->get_ok('/');
