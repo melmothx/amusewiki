@@ -9,6 +9,7 @@ use Types::Standard qw/Maybe Object Int Str InstanceOf/;
 use Try::Tiny;
 use Path::Tiny;
 use HTML::Entities qw/encode_entities decode_entities/;
+use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
 
@@ -74,6 +75,11 @@ sub loc {
     }
     # in case html is passed:
     $key = decode_entities($key);
+    if ($key =~ m/[\[\]]/) {
+        $key =~ s/\[(?!_[1-9]\])/~[/g;
+        $key =~ s/(?<!\[_[1-9])\]/~]/g;
+    }
+    log_debug { "Translating $key" };
     my $out;
     if (my $site = $self->site) {
         try { $out = $site->maketext($key, @args) } catch { $out = undef };
@@ -81,6 +87,7 @@ sub loc {
     unless (defined $out) {
         $out = $self->global->maketext($key, @args);
     }
+    log_debug { "Returning <$out> from <$key>" };
     return $out;
 }
 

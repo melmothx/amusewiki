@@ -752,6 +752,7 @@ t/controller_Stats.t
 t/controller_Uploads.t
 t/controller_User.t
 t/controller_Utils.t
+t/crash-on-loc.t
 t/dbic.yaml
 t/deferred-texts.t
 t/editing.t
