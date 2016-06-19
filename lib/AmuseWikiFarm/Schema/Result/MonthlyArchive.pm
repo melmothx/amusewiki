@@ -154,12 +154,18 @@ __PACKAGE__->many_to_many("titles", "text_months", "title");
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-19 17:46:08
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bERU8NYi5/7djUm2R9IdHg
 
-sub localized_name {
+sub datetime {
     my ($self, $locale) = @_;
     $locale ||= 'en';
     my $dt = DateTime->new(year => $self->year,
                            month => $self->month,
                            locale => $locale);
+    return $dt;
+}
+
+sub localized_name {
+    my ($self, $locale) = @_;
+    my $dt = $self->datetime($locale);
     return $dt->format_cldr($dt->locale->format_for('yMMMM'));
 }
 

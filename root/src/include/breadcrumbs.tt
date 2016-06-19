@@ -1,0 +1,16 @@
+[% IF breadcrumbs %]
+<div class="amw-breadcrumbs">
+  <ol class="breadcrumb">
+    [% FOREACH breadcrumb IN breadcrumbs %]
+    <li[% IF loop.last %] class="active"[% END %]>
+      [% IF loop.last %]
+      [% breadcrumb.label %]
+      [% ELSE %]
+      <a href="[% breadcrumb.uri  %]">
+        [% breadcrumb.label %]
+      </a>
+      [% END %]
+    </li>
+    [% END %]
+</div>
+[% END %]

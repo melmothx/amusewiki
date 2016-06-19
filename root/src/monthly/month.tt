@@ -1,9 +1,5 @@
 [% # -*- mode: html -*- %]
 
-<div class="center">
-  <div class="page-header">
-    <h1>[% month_name %]</h1>
-  </div>
-</div>
+[% INCLUDE 'include/breadcrumbs.tt' %]
 
 [% INCLUDE 'include/posts.tt' %]

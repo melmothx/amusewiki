@@ -1,10 +1,16 @@
 [% # -*- mode: html -*- %]
 
-[% FOREACH archive IN monthly_archives_list  %]
-<ul>
-  <li><a href="[% c.uri_for_action('/monthly/month', [archive.year,archive.month]) %]">
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
+<div id="monthly-archive-list" class="list-group">
+  [% WHILE (archive = monthly_archives.next) %]
+  <div class="amw-listing-item">
+    <a href="[% c.uri_for_action('/monthly/month', [archive.year,archive.month]) %]"
+       class="list-group-item clearfix">
       [% archive.localized_name(current_locale_code) %]
+      <span class="badge">[% archive.text_months_rs.count %]</span>
     </a>
-  </li>
-</ul>
-[% END %]
+  </div>
+  [% END %]
+</div>
+

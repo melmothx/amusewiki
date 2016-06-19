@@ -22,6 +22,7 @@ $site->update({
                secure_site => 0,
                blog_style => 1,
                sitename => "My new blog",
+               multilanguage => 'en it hr de',
               });
 
 my ($revision) = $site
@@ -149,7 +150,7 @@ $site->add_to_site_options({ option_name => 'left_sidebar_html',
                              option_value => '<strong>Left bar</strong>
 <div id="amw-monthly-embedded-sidebar"></div>
 <script type="text/javascript">
-$(document).ready(function() { $("#amw-monthly-embedded-sidebar").load("/monthly/bare") });
+$(document).ready(function() { $("#amw-monthly-embedded-sidebar").load("/monthly?bare=1") });
 </script>'});
 
 $mech->get_ok('/');
