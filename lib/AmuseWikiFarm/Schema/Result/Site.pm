@@ -2809,6 +2809,25 @@ sub serialize_site {
     return \%data;
 }
 
+sub populate_monthly_archives {
+    my $self = shift;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    # clear all
+    $self->monthly_archives->delete;
+    my $texts = $self->titles->published_texts->search({}, { columns => [qw/id pubdate/] });
+    while (my $text = $texts->next) {
+        if (my $pubdate = $text->pubdate) {
+            my $month = $self->monthly_archives->find_or_create({
+                                                                 month => $pubdate->month,
+                                                                 year => $pubdate->year,
+                                                                });
+            $month->add_to_titles($text);
+        }
+    }
+    $guard->commit;
+}
+
+
 =head1 WEBSERVER options
 
 These options only affect the webserver configuration, but we have to

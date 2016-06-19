@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 61;
+use Test::More tests => 62;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -95,6 +95,7 @@ add_text({
           lang => 'en',
           textbody => '<p>hello there</p>',
           teaser => '<p>this</p><p>is =another= <em>teaser</em></p>',
+          pubdate => "2013-01-01",
          });
 $mech->get_ok('/');
 $mech->content_lacks('Topics');
@@ -125,6 +126,7 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
               lang => 'en',
               subtitle => ("Sub " x $num),
               textbody => "Nothing interesting",
+              pubdate => DateTime->new(year => 2015, month => $num)->iso8601,
              });
 }
 
@@ -144,8 +146,11 @@ $mech->content_lacks('amw-left-sidebar-column');
 $mech->content_lacks('amw-right-sidebar-column');
 
 $site->add_to_site_options({ option_name => 'left_sidebar_html',
-                             option_value => '<strong>Left bar</strong>',
-                           });
+                             option_value => '<strong>Left bar</strong>
+<div id="amw-monthly-embedded-sidebar"></div>
+<script type="text/javascript">
+$(document).ready(function() { $("#amw-monthly-embedded-sidebar").load("/monthly/bare") });
+</script>'});
 
 $mech->get_ok('/');
 $mech->content_contains('amw-left-sidebar-column');
@@ -214,7 +219,12 @@ copy(catfile(qw/t files widebanner.png/),
 $mech->get_ok('/');
 $mech->content_contains('widebanner.png');
 
+for (1..2) {
+    $site->populate_monthly_archives;
+}
 
+my $archive = $site->monthly_archives->find({ year => 2015, month => 5 });
+ok ($archive->titles->count, "Found the archives");
 
 sub add_text {
     my $args = shift;

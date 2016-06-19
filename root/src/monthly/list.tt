@@ -1,0 +1,10 @@
+[% # -*- mode: html -*- %]
+
+[% FOREACH archive IN monthly_archives_list  %]
+<ul>
+  <li><a href="[% c.uri_for_action('/monthly/month', [archive.year,archive.month]) %]">
+      [% archive.localized_name(current_locale_code) %]
+    </a>
+  </li>
+</ul>
+[% END %]
