@@ -457,13 +457,15 @@
       [% IF site.has_site_file('widebanner.png') %]
       <div class="row">
         <div class="col-12-sm hidden-xs">
-          <a class="amw-wide-banner" href="[% c.uri_for('/') %]">
-            <img src="[% c.uri_for_action('/sitefiles/local_files',
-                      [ site.id, 'widebanner.png' ]) %]"
-                 title="[% site.sitename | html %]"
-                 class="amw-wide-banner-img img-responsive"
-                 alt="[% site.sitename | html %]" />
-          </a>
+          <div class="amw-wide-banner-container">
+            <a class="amw-wide-banner" href="[% c.uri_for('/') %]">
+              <img src="[% c.uri_for_action('/sitefiles/local_files',
+                        [ site.id, 'widebanner.png' ]) %]"
+                   title="[% site.sitename | html %]"
+                   class="amw-wide-banner-img img-responsive"
+                   alt="[% site.sitename | html %]" />
+            </a>
+          </div>
         </div>
         <div>&nbsp;
         </div>
