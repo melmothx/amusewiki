@@ -74,7 +74,7 @@ $mech1->submit_form(form_id => 'login-form',
                     fields => { username => 'pinco1', password => 'pallino1' },
                     button => 'submit');
 
-is ($mech1->response->base->path, '/library', "logged in");
+is ($mech1->response->base->path, '/latest', "logged in");
 
 $res1 = $mech1->get('/library');
 # we are logged in

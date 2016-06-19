@@ -53,7 +53,7 @@ ok $mech->form_with_fields('username');
 $mech->set_fields(username => 'marcolino',
                   password => 'marcolino');
 $mech->click;
-is $mech->uri->path, '/library', "Loaded library ok";
+is $mech->uri->path, '/latest', "Loaded library ok";
 
 check_pass("After login");
 

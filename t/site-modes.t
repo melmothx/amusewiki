@@ -80,7 +80,7 @@ $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 common_tests($mech);
 diag "common tests done";
 open_new($mech);
-is $mech->uri->path, '/library', "After submitting to new + revision, I'm at homepage";
+is $mech->uri->path, '/latest', "After submitting to new + revision, I'm at homepage";
 closed_publish($mech);
 
 diag "checking the open site";

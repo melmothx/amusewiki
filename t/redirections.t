@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 47;
+use Test::More tests => 48;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -131,7 +131,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
 $mech->get_ok('/');
-
+$mech->get_ok('/library');
 $mech->content_contains('Full list of texts');
 $mech->content_contains('/library/a-test-pippo');
 ok($mech->follow_link( text_regex => qr/a test/ ));
