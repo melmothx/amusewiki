@@ -319,6 +319,25 @@ CREATE TABLE column_comments (
        comment_text TEXT
 );
 
+CREATE TABLE monthly_archive (
+       monthly_archive_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       "site_id" VARCHAR(16) NOT NULL REFERENCES site(id)
+                           ON DELETE CASCADE ON UPDATE CASCADE,
+       "month" INTEGER(2) NOT NULL,
+       "year"  INTEGER(4) NOT NULL
+);
+
+CREATE UNIQUE INDEX unique_site_month ON monthly_archive ("site_id", "month", "year");
+
+CREATE TABLE text_month (
+       title_id INTEGER NOT NULL REFERENCES title(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       monthly_archive_id INTEGER NOT NULL REFERENCES monthly_archive(monthly_archive_id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (title_id, monthly_archive_id)
+);
+
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),

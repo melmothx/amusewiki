@@ -603,6 +603,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 monthly_archives
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::MonthlyArchive>
+
+=cut
+
+__PACKAGE__->has_many(
+  "monthly_archives",
+  "AmuseWikiFarm::Schema::Result::MonthlyArchive",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 redirections
 
 Type: has_many
@@ -734,8 +749,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-19 13:01:41
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QtRajoLOe1qBuLPxJPY3gg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-19 17:46:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gUI+uf6XKol7Ncub+gPDSw
 
 =head2 other_sites
 
