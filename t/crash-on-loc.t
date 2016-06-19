@@ -12,6 +12,8 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
+use Path::Tiny;
+use AmuseWikiFarm::Archive::Lexicon;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -29,5 +31,18 @@ my $uri = $rev->publish_text;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 $mech->get_ok('/library/crashy');
+$mech->content_contains('[asdf]');
 $mech->get_ok('/category/topic');
+$mech->content_contains('[asdf]');
 $mech->get_ok('/category/topic/my-stuff-asdf');
+$mech->content_contains('[asdf]');
+
+my $path = path(qw/lib AmuseWikiFarm I18N/);
+my $model = AmuseWikiFarm::Archive::Lexicon->new(
+                                                 system_wide_po_dir => "$path",
+                                                 repo_dir => "repo",
+                                                );
+my @strings = ('[hello]', '%hullo', "I ate [quant,_1,rhubarb pie].");
+foreach my $string (@strings) {
+    is $string, $model->localizer->loc($string);
+}
