@@ -73,4 +73,4 @@ SKIP: {
     memory_cycle_ok($model, "Model is memory cycle free");
 }
 
-diag Dumper($model);
+# diag Dumper($model);

@@ -76,6 +76,7 @@ sub loc {
     # in case html is passed:
     $key = decode_entities($key);
     if ($key =~ m/[\[\]]/) {
+        $key =~ s/~/~~/g; # escape the tilde
         $key =~ s/\[(?!_[1-9]\])/~[/g;
         $key =~ s/(?<!\[_[1-9])\]/~]/g;
     }

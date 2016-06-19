@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 9;
+use Test::More tests => 19;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -42,7 +42,12 @@ my $model = AmuseWikiFarm::Archive::Lexicon->new(
                                                  system_wide_po_dir => "$path",
                                                  repo_dir => "repo",
                                                 );
-my @strings = ('[hello]', '%hullo', "I ate [quant,_1,rhubarb pie].");
+my @strings = ('[hello]', '%hullo', "I ate [quant,_1,rhubarb pie].",
+               "~[hullo~]", "~ ~", "~[~ hullo ~]~ [hullo]", "[garbage] [garbage]",
+               "~[garbage~] ~[garbage~]",
+               "~~[garbage~~] ~~[garbage~~]",
+               "[", "~home", "~]", "~[",
+              );
 foreach my $string (@strings) {
-    is $string, $model->localizer->loc($string);
+    is $string, $model->localizer->loc($string), "$string pass ok";
 }
