@@ -255,6 +255,7 @@ lib/AmuseWikiFarm/Controller/Git.pm
 lib/AmuseWikiFarm/Controller/Help.pm
 lib/AmuseWikiFarm/Controller/Latest.pm
 lib/AmuseWikiFarm/Controller/Library.pm
+lib/AmuseWikiFarm/Controller/Monthly.pm
 lib/AmuseWikiFarm/Controller/OPDS.pm
 lib/AmuseWikiFarm/Controller/Publish.pm
 lib/AmuseWikiFarm/Controller/Root.pm
@@ -387,6 +388,7 @@ root/src/help/opds.tt
 root/src/include/ckeditor.tt
 root/src/include/markitup.tt
 root/src/include/pagination.tt
+root/src/include/posts.tt
 root/src/include/validate.tt
 root/src/latest/extended.tt
 root/src/latest/index.tt
@@ -394,6 +396,8 @@ root/src/layout.tt
 root/src/library.tt
 root/src/library/bbselect.tt
 root/src/macros.tt
+root/src/monthly/list.tt
+root/src/monthly/month.tt
 root/src/publish/pending.tt
 root/src/search/index.tt
 root/src/search/opensearch.tt
