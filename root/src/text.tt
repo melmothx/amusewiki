@@ -230,7 +230,7 @@
                 title="[% loc('Edit this text') %]" data-toggle="tooltip" data-placement="top"
                 id="edit-button">
           <span class="glyphicon glyphicon-edit" style="font-size: 1.5em"></span>
-          <span style="display:none">Edit this text</span>
+          <span style="display:none">[% loc('Edit this text') %]</span>
         </button>
       </form>
       [% END %]
