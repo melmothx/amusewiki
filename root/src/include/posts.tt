@@ -28,6 +28,11 @@
       [% IF text.is_deferred %]
       <span class="glyphicon glyphicon-time"></span>
       [% END %]
+      <span class="pull-right">
+        <a href="[% c.uri_for(text.full_uri) %]">
+          [% loc('Read the whole text...') %]
+        </a>
+      </span>
     </div>
     <div class="clearfix"></div>
   </div>
