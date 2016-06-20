@@ -279,6 +279,11 @@ sub not_found :Private {
         }
     }
     $c->response->status(404);
+    if ($c->request->path =~ m/\.(jpe?g|png|pdf)\z/) {
+        $c->stash(serve_static_file => $c->path_to(qw/root static images not-found.png/)->stringify);
+        $c->detach($c->view('StaticFile'));
+        return;
+    }
     log_info {
         $c->request->uri
           . " not found by " . ($c->request->user_agent || '')

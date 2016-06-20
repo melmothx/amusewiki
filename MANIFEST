@@ -385,6 +385,7 @@ root/src/edit/revs.tt
 root/src/error.tt
 root/src/git/git.tt
 root/src/help/opds.tt
+root/src/include/breadcrumbs.tt
 root/src/include/ckeditor.tt
 root/src/include/markitup.tt
 root/src/include/pagination.tt
@@ -477,6 +478,7 @@ root/static/images/font-preview/TeX-Gyre-Schola.png
 root/static/images/font-preview/TeX-Gyre-Termes.pdf
 root/static/images/font-preview/TeX-Gyre-Termes.png
 root/static/images/muse.png
+root/static/images/not-found.png
 root/static/images/opds-1.png
 root/static/images/opds-2.png
 root/static/images/opds-3.png
