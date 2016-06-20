@@ -1384,6 +1384,9 @@ sub compile_and_index_files {
     $time = time();
     $self->static_indexes_generator->generate;
     $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
+    $time = time();
+    $self->populate_monthly_archives;
+    $logger->("Updated monthly archives in " . (time() - $time) . " seconds\n");
     my $now = DateTime->now;
     $self->update({ last_updated => $now })
 }
