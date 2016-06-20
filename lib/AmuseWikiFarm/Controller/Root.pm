@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller' }
 use AmuseWikiFarm::Utils::Amuse qw//;
 use AmuseWikiFarm::Log::Contextual;
 use HTTP::BrowserDetect;
+use IO::File;
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -280,8 +281,15 @@ sub not_found :Private {
     }
     $c->response->status(404);
     if ($c->request->path =~ m/\.(jpe?g|png|pdf)\z/) {
-        $c->stash(serve_static_file => $c->path_to(qw/root static images not-found.png/)->stringify);
-        $c->detach($c->view('StaticFile'));
+        my $replacement = $c->path_to(qw/root static images not-found.png/)->stringify;
+        if (-f $replacement) {
+            my $fh = IO::File->new($replacement, 'r');
+            $c->response->headers->content_type('image/png');
+            $c->response->body($fh);
+        }
+        else {
+            $c->response->body('Not found');
+        }
         return;
     }
     log_info {
