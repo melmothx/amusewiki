@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 64;
+use Test::More tests => 88;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -120,10 +120,24 @@ $mech->content_like(qr/Authors.*Authors/s);
 
 $mech->content_lacks('class="pagination"');
 
+add_text({
+          title => 'About',
+          teaser => 'ABOUT TEASER',
+          author => 'Pippo',
+          lang => 'en',
+          textbody => '<p>hello there about body</p>',
+         }, 'special');
+$mech->get_ok('/feed');
+$mech->content_contains("ABOUT TEASER");
+$mech->content_lacks("hello there about body");
+$mech->get_ok('/');
+
+
+
 foreach my $num (1..10) {
     add_text({
               title => "Another one... $num",
-              teaser => ("This buffer is for notes you don't want to save, and
+              teaser => ("Teaser $num. This buffer is for notes you don't want to save, and
 for Lisp evaluation. If you want to create a file, visit that file
 with C-x C-f, then enter the text in that file's own buffer. " x $num ),
               lang => 'en',
@@ -131,6 +145,8 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
               textbody => "Nothing interesting",
               pubdate => DateTime->new(year => 2015, month => $num)->iso8601,
              });
+    $mech->get_ok('/feed');
+    $mech->content_contains("Teaser $num.");
 }
 
 $mech->get_ok('/latest');
@@ -230,8 +246,9 @@ my $archive = $site->monthly_archives->find({ year => 2015, month => 5 });
 ok ($archive->titles->count, "Found the archives");
 
 sub add_text {
-    my $args = shift;
-    my ($rev) = $site->create_new_text($args, 'text');
+    my ($args, $type) = @_;
+    $type ||= 'text';
+    my ($rev) = $site->create_new_text($args, $type);
     my $body = $rev->muse_body;
     $rev->add_attachment(catfile(qw/t files shot.png/));
     my @files = @{$rev->attached_files};
