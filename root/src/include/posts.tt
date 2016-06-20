@@ -28,7 +28,7 @@
       [% IF text.is_deferred %]
       <span class="glyphicon glyphicon-time"></span>
       [% END %]
-      <span class="pull-right">
+      <span class="amw-read-more-link pull-right">
         <a href="[% c.uri_for(text.full_uri) %]">
           [% loc('Read the whole text...') %]
         </a>
