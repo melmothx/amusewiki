@@ -78,6 +78,20 @@
           [% text.notes %]
         </p>
         [% END %]
+
+        [% IF text.teaser  %]
+        <p id="teaser-preview">
+          <strong>[% loc('Teaser') %]:</strong>
+          [% text.teaser %]
+        </p>
+        [% END %]
+        [% IF text.cover %]
+        <p id="text-preview-cover">
+          <strong>[% loc('Teaser image') %]:</strong><br>
+          <img src="[% text.cover %]" alt="[% text.cover %]" class="img-responsive img-thumbnail"/>
+        </p>
+        [% END %]
+
       </div>
     </div>
 
@@ -90,14 +104,37 @@
 [% SET attachments = revision.attached_images %]
 [% IF attachments.size %]
 <h3>[% loc('Attached images') %]</h3>
-<ul>
+  <div class="alert alert-warning">
+    <span class="glyphicon glyphicon-warning-sign"></span> [% loc('You
+    have attached one or more images. This is not enough! To make them
+    appear, you have to place somewhere in the body or in the header,
+    depending on their purpose. See the examples below.') %]
+  </div>
   [% FOREACH attach IN attachments %]
-  <li><code>[% attach %]</code><br>
-    [% loc('Use it in the body as') %] <code>[[[%- attach -%]]]</code>
-    [% loc('or') %] <code>[[[%- attach -%]][<em>[% loc ('My description') %]</em>]]</code>
-  </li>
+  <div>
+    <img src="[% attach %]" alt="attachment" class="img-responsive img-thumbnail"  />
+  </div>
+  <ul>
+    <li>[% loc('Place it in the body without description:') %]<br>
+      <code>[[[%- attach -%]]]</code>
+    </li>
+    <li>[% loc('Place it in the body with a description:') %]<br>
+      <code>[[[%- attach -%]][<em>[% loc ('My description') %]</em>]]</code>
+    </li>
+    [% IF blog_style %]
+    <li>[% loc('Use it as a teaser image adding to the header this line:') %]<br>
+      <code>#cover [%- attach -%]</code>
+    </li>
+    <li>[% loc('If you use it as a teaser image, the image will also
+      be placed on the first page of the PDF. You can set its width
+      adding the following line to the header, where the value is the
+      text width ratio. 1 is the full text width, 0.5 is half, and so
+      on') %]<br>
+      <code>#coverwidth 0.25</code>
+    </li>
+    [% END %]
+  </ul>
   [% END %]
-</ul>
 <p>
   [% loc('Images not used in the text are stored, but will be ignored.') %]
 </p>
