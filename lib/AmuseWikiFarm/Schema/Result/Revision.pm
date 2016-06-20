@@ -957,7 +957,17 @@ sub author_mail {
     return $self->author_username . '@' . $hostname;
 }
 
-
+sub document_html_headers {
+    my $self = shift;
+    my $header = $self->muse_doc->header_as_html;
+    Dlog_debug { "Header is $_" } $header;
+    if ($header->{cover}) {
+        unless ($header->{cover} =~ m/\A[0-9a-z]+([0-9a-z-][0-9a-z]+)*\.(jpe?g|png)\z/) {
+            $header->{cover} = 'file_not_found.png';
+        }
+    }
+    return $header;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

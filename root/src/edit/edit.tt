@@ -17,7 +17,7 @@
 
 <div class="row">
 
-  [%- SET text = revision.muse_doc.header_as_html -%]
+  [%- SET text = revision.document_html_headers -%]
 
   <div id="page" class="col-md-5 col-md-push-7"
        style="border-bottom: 2px solid #bbb; margin-bottom: 20px">

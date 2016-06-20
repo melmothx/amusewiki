@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 62;
+use Test::More tests => 64;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -55,6 +55,7 @@ my $orig_body = $body;
 $body =~ s!^\#cover .*$!#cover <script>hello()</script>!m;
 my $rev = $text->new_revision;
 $rev->edit($body);
+is $rev->document_html_headers->{cover}, 'file_not_found.png';
 $rev->commit_version;
 $rev->publish_text;
 diag $rev->muse_body;
@@ -71,6 +72,7 @@ is $text->cover, '', "cover field nuked with garbage";
 $rev = $text->new_revision;
 $rev->edit($orig_body);
 $rev->commit_version;
+is $rev->document_html_headers->{cover}, $attached;
 $rev->publish_text;
 diag $rev->muse_body;
 $text->discard_changes;
