@@ -1026,6 +1026,13 @@ sub valid_cover {
     return cover_filename_is_valid($self->cover);
 }
 
+sub monthly_archive {
+    # it's a many to many, but someone should explain to me why it
+    # would belong to more of them.
+    return shift->monthly_archives->first;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;

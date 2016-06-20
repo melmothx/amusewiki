@@ -82,6 +82,21 @@
     </div>
     [% END %]
 
+    [% # if it's not a blog style site, this has no interest whatsoever? %]
+    [% IF blog_style %]
+    [% SET text_monthly_archive = text.monthly_archive %]
+    [% IF text_monthly_archive %]
+    <div id="text-monthly-archive-link">
+      <span id="text-monthly-archive-link-label">
+        <strong>[% loc('Publication date') %]:</strong>
+      </span>
+      <a href="[% c.uri_for_action('/monthly/month', [text_monthly_archive.year,text_monthly_archive.month]) %]">
+        [% text.pubdate_locale(current_locale_code) || text_monthly_archive.localized_name(current_locale_code) %]
+      </a>
+    </div>
+    [% END %]
+    [% END %]
+
     [% IF text_topics.size %]
     <div id="topics">
       <span id="preamble-topics-label">
