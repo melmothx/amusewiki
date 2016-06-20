@@ -123,7 +123,8 @@ entries on the special pages. The assigned ids are
 for the image itself.
 
 If widebanner.png is present, then it's used to place a banner below
-the navbar (which is fixed).
+the navbar (which is fixed). It should have a width of 1170px for
+optimal results.
 
 ** Local PO files
 
