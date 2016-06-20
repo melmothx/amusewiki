@@ -21,6 +21,62 @@
 
   <div id="page" class="col-md-5 col-md-push-7"
        style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
+[% SET attachments = revision.attached_images %]
+[% IF attachments.size %]
+<h3>[% loc('Attached images') %]</h3>
+  <div class="alert alert-warning">
+    <span class="glyphicon glyphicon-warning-sign"></span> [% loc('You
+    have attached one or more images. This is not enough! To make them
+    appear, you have to place somewhere in the body or in the header,
+    depending on their purpose. See the examples below.') %]
+  </div>
+  [% FOREACH attach IN attachments %]
+  <div>
+    <img src="[% attach %]" alt="attachment" class="img-responsive img-thumbnail"  />
+  </div>
+  <ul>
+    <li>[% loc('Place it in the body without description:') %]<br>
+      <code>[[[%- attach -%]]]</code>
+    </li>
+    <li>[% loc('Place it in the body with a description:') %]<br>
+      <code>[[[%- attach -%]][<em>[% loc ('My description') %]</em>]]</code>
+    </li>
+    [% IF blog_style %]
+    <li>[% loc('Use it as a teaser image adding to the header this line:') %]<br>
+      <code>#cover [%- attach -%]</code>
+    </li>
+    <li>[% loc('If you use it as a teaser image, the image will also
+      be placed on the first page of the PDF. You can set its width
+      adding the following line to the header, where the value is the
+      text width ratio. 1 is the full text width, 0.5 is half, and so
+      on') %]<br>
+      <code>#coverwidth 0.25</code>
+    </li>
+    [% END %]
+  </ul>
+  [% END %]
+<p>
+  [% loc('Images not used in the text are stored, but will be ignored.') %]
+</p>
+[% END %]
+
+[% IF revision.attached_pdfs_string %]
+<h3>[% loc('Attached PDFs') %]</h3>
+<p>
+  [% loc('To display the PDFs, set or append the following string in the header') %]:
+</p>
+<blockquote>
+  <code>[% revision.attached_pdfs_string | html %]</code>
+</blockquote>
+<p>
+  [% loc('This directive wants a whitespace separated list of filenames.') %]<br/>
+  [% loc('PDFs not listed in the [_1] directive will be stored but ignored.',
+         '#ATTACH') %]<br />
+  [% loc('PDFs cannot be used in the body.') %]
+</p>
+[% END %]
+
+
     <h2>
       <small>[% loc('Preview') %]</small>
       [% IF revision.has_local_modifications %]
@@ -101,60 +157,6 @@
   </div>
 
   <div class="col-md-7 col-md-pull-5">
-[% SET attachments = revision.attached_images %]
-[% IF attachments.size %]
-<h3>[% loc('Attached images') %]</h3>
-  <div class="alert alert-warning">
-    <span class="glyphicon glyphicon-warning-sign"></span> [% loc('You
-    have attached one or more images. This is not enough! To make them
-    appear, you have to place somewhere in the body or in the header,
-    depending on their purpose. See the examples below.') %]
-  </div>
-  [% FOREACH attach IN attachments %]
-  <div>
-    <img src="[% attach %]" alt="attachment" class="img-responsive img-thumbnail"  />
-  </div>
-  <ul>
-    <li>[% loc('Place it in the body without description:') %]<br>
-      <code>[[[%- attach -%]]]</code>
-    </li>
-    <li>[% loc('Place it in the body with a description:') %]<br>
-      <code>[[[%- attach -%]][<em>[% loc ('My description') %]</em>]]</code>
-    </li>
-    [% IF blog_style %]
-    <li>[% loc('Use it as a teaser image adding to the header this line:') %]<br>
-      <code>#cover [%- attach -%]</code>
-    </li>
-    <li>[% loc('If you use it as a teaser image, the image will also
-      be placed on the first page of the PDF. You can set its width
-      adding the following line to the header, where the value is the
-      text width ratio. 1 is the full text width, 0.5 is half, and so
-      on') %]<br>
-      <code>#coverwidth 0.25</code>
-    </li>
-    [% END %]
-  </ul>
-  [% END %]
-<p>
-  [% loc('Images not used in the text are stored, but will be ignored.') %]
-</p>
-[% END %]
-
-[% IF revision.attached_pdfs_string %]
-<h3>[% loc('Attached PDFs') %]</h3>
-<p>
-  [% loc('To display the PDFs, set or append the following string in the header') %]:
-</p>
-<blockquote>
-  <code>[% revision.attached_pdfs_string | html %]</code>
-</blockquote>
-<p>
-  [% loc('This directive wants a whitespace separated list of filenames.') %]<br/>
-  [% loc('PDFs not listed in the [_1] directive will be stored but ignored.',
-         '#ATTACH') %]<br />
-  [% loc('PDFs cannot be used in the body.') %]
-</p>
-[% END %]
 
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
