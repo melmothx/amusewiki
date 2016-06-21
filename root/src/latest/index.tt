@@ -2,10 +2,9 @@
 
 <div>&nbsp;</div>
 
-[% IF texts.size %]
-
+[% IF texts.count %]
 <div class="list-group">
-  [% FOREACH text IN texts %]
+  [% WHILE (text = texts.next) %]
   <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
     <strong>[% text.title %]</strong>
     [%- IF text.author %] — [% text.author -%][% END -%]    

@@ -1,5 +1,5 @@
-[% IF texts %]
-[% FOREACH text IN texts %]
+[% IF texts.count %]
+[% WHILE (text = texts.next) %]
 <div class="panel panel-default">
   <div class="panel-body">
     [% IF text.cover_uri %]

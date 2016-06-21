@@ -69,13 +69,13 @@ sub month :Chained('year') :PathPart('') :Args(1) {
         return;
     }
     if (my $arch = $c->stash->{monthly_archives}->find({ month => $month })) {
-        my @texts = $arch->titles->published_texts
+        my $texts = $arch->titles->published_texts
         ->search(undef, {
                          order_by => { -desc => 'pubdate' },
                         });
         $c->stash(month_name => $arch->localized_name($c->stash->{current_locale_code}),
                   template => 'monthly/month.tt',
-                  texts => \@texts);
+                  texts => $texts);
         push @{$c->stash->{breadcrumbs}},
           { uri => $c->uri_for_action('/monthly/month', [ $arch->year,
                                                           $arch->month,

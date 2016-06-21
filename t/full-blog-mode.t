@@ -143,6 +143,7 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
               lang => 'en',
               subtitle => ("Sub " x $num),
               textbody => "Nothing interesting",
+              SORTtopics => "first topic, second topic",
               pubdate => DateTime->new(year => 2015, month => $num)->iso8601,
              });
     $mech->get_ok('/feed');
