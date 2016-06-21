@@ -180,7 +180,7 @@
                  data-toggle="dropdown">
                 <span class="glyphicon glyphicon-heart"></span>
                 <span class="hidden-sm" id="amw-catalog-label">
-                  [% loc('Catalog') %]
+                  [% loc('Archive') %]
                 </span>
                 <b class="caret"></b>
               </a>
