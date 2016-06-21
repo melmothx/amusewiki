@@ -4,6 +4,9 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Cloud - Catalyst Controller
@@ -23,48 +26,39 @@ Catalyst Controller.
 
 sub base :Chained('/site_robot_index') :PathPart('cloud') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    my $cats = $site->categories->active_only->rand(1000);
-    my @out;
-    while (my $cat = $cats->next) {
-        my $details = {
-                       name => $cat->name,
-                       full_uri => $c->uri_for($cat->full_uri),
-                       text_count => $cat->text_count,
-                       type => $cat->type,
-                      };
-        $details->{cloud_level} = int($details->{text_count} / 5);
-        if ($details->{cloud_level} > 20) {
-            $details->{cloud_level} = 20;
+    my $max = 1000;
+    if (my $query_max = $c->request->query_params->{max}) {
+        if ($query_max =~ m/\A([1-9][0-9]*)\z/) {
+            $max = $1;
         }
-        push @out, $details;
     }
-    $c->stash(cloud_categories => \@out);
-    $c->stash(template => 'cloud/show.tt');
-}
-
-sub show :Chained('base') :PathPart('') :Args(0) {
-}
-
-sub limit :Chained('base') :CaptureArgs(1) {
-    my ($self, $c, $limit) = @_;
-    # filter out
-    unless ($limit && $limit =~ m/\A[1-9][0-9]*\z/) {
-        $limit = 0;
+    if ($c->request->query_params->{bare}) {
+        $c->stash->{no_wrapper} = 1;
     }
-    my @out = grep { $_->{text_count} > $limit } @{$c->stash->{cloud_categories}};
-    $c->stash(cloud_categories => \@out);
+    my $limit = 0;
+    if (my $query_limit = $c->request->query_params->{limit}) {
+        if ($query_limit =~ m/\A([1-9][0-9]*)\z/) {
+            $limit = $1;
+        }
+    }
+    log_debug { "Computing cloud with min texts $limit and max result $max" };
+
+    my $cats = $c->stash->{site}->categories->min_texts($limit)->rand($max);
+    $c->stash(cloud_categories => $cats,
+              template => 'cloud/show.tt');
 }
 
-sub limit_display :Chained('limit') :PathPart('') :Args(0) {}
+sub show :Chained('base') :PathPart('') :Args(0) {}
 
-sub bare :Chained('limit') :Args(0) {
+sub authors :Chained('base') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash->{no_wrapper} = 1;
+    $c->stash->{cloud_categories} = $c->stash->{cloud_categories}->authors_only;
 }
 
-
-
+sub topics :Chained('base') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash->{cloud_categories} = $c->stash->{cloud_categories}->topics_only;
+}
 
 =encoding utf8
 

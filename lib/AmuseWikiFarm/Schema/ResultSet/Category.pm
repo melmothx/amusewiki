@@ -76,6 +76,21 @@ sub active_only {
     return shift->search({ text_count => { '>' => 0 }});
 }
 
+=head2 min_texts($integer)
+
+=cut
+
+sub min_texts {
+    my ($self, $num) = @_;
+    my $me = $self->current_source_alias;
+    my $limit = 0;
+    if ($num and $num =~ m/\A([1-9][0-9]*)\z/) {
+        $limit = $num - 1;
+    }
+    return $self->search({ "$me.text_count" => { '>' => $limit }});
+}
+
+
 =head2 listing_tokens
 
 Use HRI to pull the data and select only some columns.
@@ -116,6 +131,13 @@ sub topics_count {
     return $self->active_only_by_type('topic')->count;
 }
 
+sub topics_only {
+    return shift->search({ type => 'topic' });
+}
+
+sub authors_only {
+    return shift->search({ type => 'author' });
+}
 
 1;
 

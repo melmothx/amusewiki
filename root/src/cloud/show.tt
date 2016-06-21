@@ -1,11 +1,14 @@
 [% # -*- mode: html -*- %]
 
 <div id="amw-embed-cloud">
-  [% FOREACH cat IN cloud_categories %]
+  [% WHILE (cat = cloud_categories.next) %]
   <div class="amw-cloud-element amw-cloud-element-type-[% cat.type %]
               amw-cloud-element-level-[% cat.cloud_level %]">
     <span class="label label-default" style="display: inline-block">
-      <a class="amw-cloud-href" href="[% cat.full_uri %]">[% cat.name %] ([% cat.text_count %])</a>
+      <a class="amw-cloud-href" href="[% c.uri_for(cat.full_uri) %]">
+        <span class="amw-cloud-element-label">[% cat.name %]</span>
+        <span class="amw-cloud-element-text-count">([% cat.text_count %])</span>
+      </a>
     </span>
   </div>
   [% END %]

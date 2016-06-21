@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 88;
+use Test::More tests => 95;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -191,7 +191,7 @@ $site->add_to_site_options({ option_name => 'right_sidebar_html',
                              option_value => '<strong>Right bar</strong>
 <div id="amw-cloud-embedded-sidebar"></div>
 <script type="text/javascript">
-$(document).ready(function() { $("#amw-cloud-embedded-sidebar").load("/cloud/limit/0/bare") });
+$(document).ready(function() { $("#amw-cloud-embedded-sidebar").load("/cloud?limit=0&bare=1") });
 </script>'});
 
 
@@ -216,34 +216,41 @@ foreach my $num (1..100) {
 $guard->commit;
 
 $mech->get_ok('/cloud');
-$mech->content_contains('>test topic 1 ');
-$mech->content_contains('>test topic 100 ');
-$mech->content_contains('>test author 1 ');
-$mech->content_contains('>test author 100 ');
+$mech->content_contains('>test topic 1<');
+$mech->content_contains('>test topic 100<');
+$mech->content_contains('>test author 1<');
+$mech->content_contains('>test author 100<');
 my @links = grep { $_->url =~ m/\/category\// } $mech->find_all_links;
 $mech->links_ok(\@links);
 ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 
-$mech->get_ok('/cloud/limit/60');
-$mech->content_lacks('>test topic 1 ');
-$mech->content_lacks('>test topic 60 ');
-$mech->content_contains('>test topic 61 ');
-$mech->content_contains('>test topic 100 ');
-$mech->content_lacks('>test author 1 ');
-$mech->content_lacks('>test author 60 ');
-$mech->content_contains('>test author 61 ');
-$mech->content_contains('>test author 100 ');
+$mech->get_ok('/cloud?limit=60');
+$mech->content_lacks('>test topic 1<');
+$mech->content_lacks('>test topic 59<');
+$mech->content_contains('>test topic 60<');
+$mech->content_contains('>test topic 100<');
+$mech->content_lacks('>test author 1<');
+$mech->content_lacks('>test author 59<');
+$mech->content_contains('>test author 61<');
+$mech->content_contains('>test author 100<');
 
-$mech->get_ok('/cloud/limit/60/bare');
-$mech->content_lacks('>test topic 1 ');
-$mech->content_lacks('>test topic 60 ');
-$mech->content_contains('>test topic 61 ');
-$mech->content_contains('>test topic 100 ');
-$mech->content_lacks('>test author 1 ');
-$mech->content_lacks('>test author 60 ');
-$mech->content_contains('>test author 61 ');
-$mech->content_contains('>test author 100 ');
+$mech->get_ok('/cloud?limit=60&bare=1');
+$mech->content_lacks('>test topic 1<');
+$mech->content_lacks('>test topic 59<');
+$mech->content_contains('>test topic 60<');
+$mech->content_contains('>test topic 100<');
+$mech->content_lacks('>test author 1<');
+$mech->content_lacks('>test author 59<');
+$mech->content_contains('>test author 60<');
+$mech->content_contains('>test author 100<');
 $mech->content_lacks('My new blog');
+
+$mech->get_ok('/cloud/authors');
+$mech->content_contains('>test author 55<');
+$mech->content_lacks('>test topic 55<');
+$mech->get_ok('/cloud/topics');
+$mech->content_contains('>test topic 55<');
+$mech->content_lacks('>test author 55<');
 
 copy(catfile(qw/t files widebanner.png/),
      catfile($site->path_for_site_files));
