@@ -1,4 +1,5 @@
 [% IF texts.count %]
+<div class="amw-post-inner-listing">
 <div class="list-group">
   [% WHILE (text = texts.next) %]
   <div class="amw-listing-item">
@@ -58,6 +59,7 @@
   [% END %]
   </div>
 [% END %]
+</div>
 </div>
 [% ELSE %]
 <p>

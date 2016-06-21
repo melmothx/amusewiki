@@ -1,4 +1,6 @@
-<h2 id="amw-latest-entries-title">[% page_title | html %]</h2>
+<div class="page-header" id="amw-latest-entries-title">
+  <h1>[% page_title | html %]</h1>
+</div>
 
 [% INCLUDE 'include/posts.tt' %]
 [% INCLUDE 'include/pagination.tt' %]
