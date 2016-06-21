@@ -429,6 +429,7 @@ root/static/fonts/glyphicons-halflings-regular.ttf
 root/static/fonts/glyphicons-halflings-regular.woff
 root/static/fonts/glyphicons-halflings-regular.woff2
 root/static/images/add-to-book.png
+root/static/images/ajax-loader-circular.gif
 root/static/images/ajax-loader.gif
 root/static/images/bb-instructions-1.png
 root/static/images/bb-instructions-2.png
