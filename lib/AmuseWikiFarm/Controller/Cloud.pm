@@ -31,6 +31,7 @@ sub base :Chained('/site_robot_index') :PathPart('cloud') :CaptureArgs(0) {
                        name => $cat->name,
                        full_uri => $c->uri_for($cat->full_uri),
                        text_count => $cat->text_count,
+                       type => $cat->type,
                       };
         $details->{cloud_level} = int($details->{text_count} / 5);
         if ($details->{cloud_level} > 20) {
