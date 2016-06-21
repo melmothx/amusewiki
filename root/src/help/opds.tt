@@ -1,4 +1,6 @@
-<h2>[% loc('[_1] on mobile', site.full_name) %]</h2>
+<div class="page-header">
+  <h1>[% loc('[_1] on mobile', site.full_name) %]</h1>
+</div>
 
 <p>
   [% loc('Even if this site has a responsive, mobile-friendly layout,

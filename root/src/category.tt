@@ -1,5 +1,8 @@
 [% # -*- mode: html -*- %]
-<h2>[% page_title | html %]</h2>
+<div class="page-header">
+  <h1>[% page_title | html %]</h1>
+</div>
+
 <div class="row" style="padding-bottom: 3px">
   <div class="col-xs-6">
     <a href="?sorting=asc" class="btn btn-default btn-xs">
