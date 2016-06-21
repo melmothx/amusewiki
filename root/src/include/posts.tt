@@ -1,6 +1,7 @@
 [% IF texts.count %]
 <div class="list-group">
   [% WHILE (text = texts.next) %]
+  <div class="amw-listing-item">
   [% IF text.teaser || text.cover_uri %]
   <div class="list-group-item clearfix">
     [% IF text.cover_uri %]
@@ -48,6 +49,7 @@
     </span>
   </a>
   [% END %]
+  </div>
 [% END %]
 </div>
 [% END %]
