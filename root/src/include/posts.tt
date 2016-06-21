@@ -18,6 +18,10 @@
         [%- IF text.author %]<small>[% text.author -%]</small><br />[% END -%]
         <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
         [% IF text.subtitle %]<small>[% text.subtitle -%]</small>[% END -%]
+        [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
+        <small>[[% text.lang %]]</small>
+        [%- END -%]
+
       </h3>
       [% IF text.teaser %]
       [% text.teaser %]
@@ -41,6 +45,9 @@
   <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
     <strong>[% text.title %]</strong>
     [%- IF text.author %] — [% text.author -%][% END -%]
+    [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
+    [[% text.lang %]]
+    [%- END -%]
     [% IF text.is_deferred %]
     <span class="glyphicon glyphicon-time"></span>
     [% END %]
@@ -52,4 +59,8 @@
   </div>
 [% END %]
 </div>
+[% ELSE %]
+<p>
+  [% loc('No text found!') %]
+</p>
 [% END %]
