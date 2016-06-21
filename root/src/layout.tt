@@ -531,29 +531,46 @@
     </div>
     <div id="footer">
       <div class="footer center">
+        <span id="amw-footer-link-feeds">
       <a href="[% c.uri_for('/feed') %]" class="feed" ><img src="[% c.uri_for('/static/images/feed-icon-14x14.png') %]" title="[% loc('RSS feed') %]" alt="[% loc('RSS feed') %]" /></a>
-      |
+        </span>
+        <span id="amw-footer-link-feeds-sep">|</span>
+        <span id="amw-footer-link-random">
       <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]"><span class="glyphicon glyphicon-random"></span></a>
-      |
+        </span>
+        <span id="amw-footer-link-random-sep">|</span>
+        <span id="amw-footer-link-library">
       <a href="[% c.uri_for('/library') %]"
 		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
+        </span>
+
       [% UNLESS site.is_without_authors %]
-      |
+        <span id="amw-footer-link-authors-sep">|</span>
+        <span id="amw-footer-link-authors">
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
 		 title="[% loc('texts sorted by author') %]">[% loc('Authors') %]</a>
+        </span>
       [% END %]
       [% UNLESS site.is_without_topics %]
-      |
+        <span id="amw-footer-link-topics-sep">|</span>
+        <span id="amw-footer-link-topics">
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		 title="[% loc('texts sorted by topics') %]">[% loc('Topics') %]</a>
+        </span>
       [% END %]
-      |
+        <span id="amw-footer-link-latest-sep">|</span>
+        <span id="amw-footer-link-latest">
       <a href="[% c.uri_for_action('/latest/index') %]">[% loc('Latest entries') %]</a>
-      |
+        </span>
+        <span id="amw-footer-link-opds-sep">|</span>
+        <span id="amw-footer-link-opds">
       <a href="[% c.uri_for_action('/help/opds') %]">[% loc('Mobile') %]</a>
+        </span>
       [% IF c.user_exists || site.human_can_edit %]
-      |
+        <span id="amw-footer-link-newtext">
+        <span id="amw-footer-link-newtext-sep">|</span>
       <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add a new text') %]</a>
+        </span>
       [% END %]
       </div>
     </div>
