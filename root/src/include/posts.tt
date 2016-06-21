@@ -1,7 +1,8 @@
 [% IF texts.count %]
-[% WHILE (text = texts.next) %]
-<div class="panel panel-default">
-  <div class="panel-body">
+<div class="list-group">
+  [% WHILE (text = texts.next) %]
+  [% IF text.teaser || text.cover_uri %]
+  <div class="list-group-item clearfix">
     [% IF text.cover_uri %]
     <div class="text-cover-img-mini-container">
       <a href="[% c.uri_for(text.full_uri) %]">
@@ -34,8 +35,19 @@
         </a>
       </span>
     </div>
-    <div class="clearfix"></div>
   </div>
-</div>
+  [% ELSE %]
+  <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
+    <strong>[% text.title %]</strong>
+    [%- IF text.author %] — [% text.author -%][% END -%]
+    [% IF text.is_deferred %]
+    <span class="glyphicon glyphicon-time"></span>
+    [% END %]
+    <span class="pull-right clearfix">
+      [% text.pubdate_locale(current_locale_code) %]
+    </span>
+  </a>
+  [% END %]
 [% END %]
+</div>
 [% END %]

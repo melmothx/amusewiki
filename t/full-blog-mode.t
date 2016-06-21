@@ -150,6 +150,17 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
     $mech->content_contains("Teaser $num.");
 }
 
+add_text({
+          title => 'No teaser, no cover',
+          author => 'Pippo',
+          lang => 'en',
+          textbody => '<p>hello there</p>',
+          pubdate => "2011-01-01",
+         }, text => 1);
+
+$mech->get_ok('/');
+
+
 $mech->get_ok('/latest');
 $mech->content_contains('class="pagination"');
 $mech->content_contains('/latest/2');
@@ -247,15 +258,17 @@ my $archive = $site->monthly_archives->find({ year => 2015, month => 5 });
 ok ($archive->titles->count, "Found the archives");
 
 sub add_text {
-    my ($args, $type) = @_;
+    my ($args, $type, $no_cover) = @_;
     $type ||= 'text';
     my ($rev) = $site->create_new_text($args, $type);
-    my $body = $rev->muse_body;
-    $rev->add_attachment(catfile(qw/t files shot.png/));
-    my @files = @{$rev->attached_files};
-    my $attached = $files[0];
-    $body = "#cover $attached\n#coverwidth 0.5\n" . $body;
-    $rev->edit($body);
+    unless ($no_cover) {
+        my $body = $rev->muse_body;
+        $rev->add_attachment(catfile(qw/t files shot.png/));
+        my @files = @{$rev->attached_files};
+        my $attached = $files[0];
+        $body = "#cover $attached\n#coverwidth 0.5\n" . $body;
+        $rev->edit($body);
+    }
     $rev->commit_version;
     $rev->publish_text;
 }

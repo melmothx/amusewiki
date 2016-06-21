@@ -1,22 +1,4 @@
-<h2>[% page_title | html %]</h2>
+<h2 id="amw-latest-entries-title">[% page_title | html %]</h2>
 
-<div>&nbsp;</div>
-
-[% IF texts.count %]
-<div class="list-group">
-  [% WHILE (text = texts.next) %]
-  <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
-    <strong>[% text.title %]</strong>
-    [%- IF text.author %] — [% text.author -%][% END -%]    
-    [% IF text.is_deferred %]
-    <span class="glyphicon glyphicon-time"></span>
-    [% END %]
-    <span class="pull-right clearfix">
-      [% text.pubdate_locale(current_locale_code) %]
-    </span>
-  </a>
-  [% END %]
-</div>
-[% END %]
-
+[% INCLUDE 'include/posts.tt' %]
 [% INCLUDE 'include/pagination.tt' %]

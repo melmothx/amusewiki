@@ -1,2 +1,0 @@
-[% INCLUDE 'include/posts.tt' %]
-[% INCLUDE 'include/pagination.tt' %]

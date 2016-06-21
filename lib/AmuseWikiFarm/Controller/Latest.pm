@@ -49,9 +49,6 @@ sub index :Chained('base') :PathPart('') :Args {
               nav => 'latest',
               page_title => $c->loc('Latest entries'),
               texts => $results);
-    if ($c->stash->{blog_style}) {
-        $c->stash(template => 'latest/extended.tt');
-    }
 }
 
 

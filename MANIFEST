@@ -391,7 +391,6 @@ root/src/include/markitup.tt
 root/src/include/pagination.tt
 root/src/include/posts.tt
 root/src/include/validate.tt
-root/src/latest/extended.tt
 root/src/latest/index.tt
 root/src/layout.tt
 root/src/library.tt
