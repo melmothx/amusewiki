@@ -243,7 +243,7 @@
                 <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
                   <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
-                    [% loc('Add to library') %]
+                    [% loc('Add a new text') %]
                   </a>
                 </li>
                 [% END %]
@@ -553,7 +553,7 @@
       <a href="[% c.uri_for_action('/help/opds') %]">[% loc('Mobile') %]</a>
       [% IF c.user_exists || site.human_can_edit %]
       |
-      <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add to library') %]</a>
+      <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add a new text') %]</a>
       [% END %]
       </div>
     </div>

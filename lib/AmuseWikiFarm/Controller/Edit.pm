@@ -82,7 +82,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
 
     $c->stash(
               nav => 'add-to-library',
-              page_title => $c->loc('Add to library'),
+              page_title => $c->loc('Add a new text'),
              );
 
     my $site    = $c->stash->{site};
