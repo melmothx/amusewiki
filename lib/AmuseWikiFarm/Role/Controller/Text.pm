@@ -103,9 +103,6 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
 sub text :Chained('match') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     log_debug { "In text" };
-    if ($c->stash->{f_class} eq 'special') {
-        $c->stash(latest_entries => [ $c->stash->{site}->latest_entries ]);
-    }
     my $text = $c->stash->{text} or die "WTF?";
 
     # we are in a role, so if we don't set this special/text.tt and

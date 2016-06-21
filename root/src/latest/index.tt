@@ -2,5 +2,7 @@
   <h1>[% page_title | html %]</h1>
 </div>
 
+<div class="amw-listing-page-body">
 [% INCLUDE 'include/posts.tt' %]
 [% INCLUDE 'include/pagination.tt' %]
+</div>

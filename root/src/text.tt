@@ -373,18 +373,15 @@
     <h1><small>[% loc('Latest entries') %]</small></h1>
   </div>
   <div class="well">
-    <ul class="latest-entries">
-      [% FOREACH entry IN latest_entries %]
-      <li>
-        <a href="[% c.uri_for(entry.full_uri) %]">
-          [% entry.title %]</a> [% IF entry.author %] — [% entry.author %][% END %]
-      </li>
-      [% END %]
-    </ul>
-    <ul class="pager">
-      <li><a href="[% c.uri_for_action('/latest/index') %]">[% loc('More') %]</a>
-    </ul>
+    <div id="amw-latest-entries-special-page">
+      <div class="center">
+        <img src="[% c.uri_for('/static/images/ajax-loader-circular.gif') %]" alt="Loading" />
+      </div>
+    </div>
   </div>
+  <script type="text/javascript">
+    $(document).ready(function() { $("#amw-latest-entries-special-page").load("/latest?bare=1 .amw-listing-page-body") });
+  </script>
   [% END %]
 </div>
 
