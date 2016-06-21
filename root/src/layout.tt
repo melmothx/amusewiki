@@ -231,6 +231,14 @@
                     [% loc('Latest entries') %]
                   </a>
                 </li>
+
+                <li[% IF nav == 'monthly' %] class="active"[% END %]>
+                  <a href="[% c.uri_for_action('/monthly/list') %]"
+		             title="[% loc('Archive by month') %]">
+                    [% loc('Archive by month') %]
+                  </a>
+                </li>
+
                 [% IF c.user_exists || site.human_can_edit %]
                 <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'add-to-library' %] class="active"[% END %]>

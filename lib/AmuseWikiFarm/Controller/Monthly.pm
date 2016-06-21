@@ -35,6 +35,8 @@ sub base :Chained('/site_robot_index') :PathPart('monthly') :CaptureArgs(0) {
                });
     $c->stash(monthly_archives => $archives,
               template => 'monthly/list.tt',
+              page_title => $c->loc('Archive by month'),
+              nav => 'monthly',
               breadcrumbs => [{
                                uri => $c->uri_for_action('/monthly/list'),
                                label => $c->loc('Archive by month'),
@@ -58,6 +60,7 @@ sub year :Chained('base') :PathPart('') :CaptureArgs(1) {
        uri => $c->uri_for_action('/monthly/year_display', [ $year ]),
        label => $year,
       };
+    $c->stash->{page_title} .= " ($year)";
 }
 
 sub year_display :Chained('year') :PathPart('') :Args(0) {}
@@ -73,7 +76,9 @@ sub month :Chained('year') :PathPart('') :Args(1) {
         ->search(undef, {
                          order_by => { -desc => 'pubdate' },
                         });
-        $c->stash(month_name => $arch->localized_name($c->stash->{current_locale_code}),
+        my $month_name = $arch->localized_name($c->stash->{current_locale_code});
+        $c->stash(month_name => $month_name,
+                  page_title => $month_name,
                   template => 'monthly/month.tt',
                   texts => $texts);
         push @{$c->stash->{breadcrumbs}},
@@ -84,7 +89,7 @@ sub month :Chained('year') :PathPart('') :Args(1) {
           };
         return;
     }
-        $c->detach('/not_found');
+    $c->detach('/not_found');
 }
 
 
