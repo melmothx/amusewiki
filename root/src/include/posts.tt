@@ -1,3 +1,4 @@
+<div class="amw-post-listing-container">
 [% IF texts.count %]
 <div class="amw-post-inner-listing">
 <div class="list-group">
@@ -62,7 +63,8 @@
 </div>
 </div>
 [% ELSE %]
-<p>
+<div class="alert alert-warning">
   [% loc('No text found!') %]
-</p>
+</div>
 [% END %]
+</div>

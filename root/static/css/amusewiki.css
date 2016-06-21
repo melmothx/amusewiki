@@ -231,3 +231,7 @@ div.amw-cloud-element {
     color: white;
     text-decoration: none;
 }
+
+div.amw-post-listing-container {
+    margin-top: 10px;
+}
