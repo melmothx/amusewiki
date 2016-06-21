@@ -1,6 +1,7 @@
 [%- # -*- mode: html -*- -%]
 
-<h2>[% loc(category.name) %]
+<div class="page-header">
+<h1>[% loc(category.name) %]
   [%- IF multilang -%]
   [%- IF multilang.active -%]
   [%- IF multilang.filtered -%]
@@ -15,7 +16,8 @@
     <span class="glyphicon glyphicon-edit"></span>
   </a>
   [% END %]
-</h2>
+</h1>
+</div>
 
 [% IF category_description %]
 <div class="category-description well" style="margin-top: 18px">
