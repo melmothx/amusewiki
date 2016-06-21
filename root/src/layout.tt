@@ -440,7 +440,7 @@
                 [% END %]
               </a>
             </li>
-            <li>
+            <li id="amw-navbar-opds-link">
               <a href="[% c.uri_for('/help/opds') %]" title="[% loc('Mobile') %]">
                 <span class="glyphicon glyphicon-phone"></span>
                 <span class="visible-xs-inline">
@@ -448,7 +448,7 @@
                 </span>
               </a>
             </li>
-            <li>
+            <li id="amw-navbar-opds-random">
               <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
                 <span class="glyphicon glyphicon-random"></span>
                 <span class="visible-lg-inline visible-xs-inline">
