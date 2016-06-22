@@ -36,6 +36,17 @@
 <div style="margin-top: 30px">
   <form method="post" class="form-horizontal" role="form" id="site-edit-form"
         onsubmit="return amw_confirm()">
+
+    <div class="form-group">
+      <div class="col-sm-offset-5 col-sm-7">
+        <button type="submit" class="btn btn-primary" name="edit_site"
+                value="update">
+          [% loc('Update') %]
+        </button>
+      </div>
+    </div>
+
+
     [% UNLESS restricted %]
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
