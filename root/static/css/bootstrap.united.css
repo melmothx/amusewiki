@@ -989,3 +989,5 @@ button.close{padding:0;cursor:pointer;background:transparent;border:0;-webkit-ap
 .footer{background-color:#dd4814}
 .footer a{color:#fff}
 .amw-cloud-href,.amw-cloud-href:hover{color:#fff}
+p.tableofcontentline a{color:#333}
+.error,.mandatory{color:#df382c}

@@ -39,10 +39,6 @@ p.tableofcontentline {
     text-indent: -1em;
 }
 
-p.tableofcontentline a{
-    color: black;
-}
-
 div#htmltextbody {
     margin-top: 40px;
 }
@@ -53,10 +49,6 @@ div.float_image_r,div.float_image_l {
 
 div.float_image_r {
     margin-left: 12px;
-}
-
-.error, .mandatory {
-    color: #8b0000;
 }
 
 .feed {

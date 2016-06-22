@@ -1039,3 +1039,5 @@ button.close{padding:0;cursor:pointer;background:transparent;border:0;-webkit-ap
 .footer{background-color:#f8f8f8}
 .footer a{color:#777}
 .amw-cloud-href,.amw-cloud-href:hover{color:#fff}
+p.tableofcontentline a{color:#333}
+.error,.mandatory{color:#d9534f}

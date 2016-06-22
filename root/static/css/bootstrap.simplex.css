@@ -1008,3 +1008,5 @@ label{font-weight:normal}
 .footer{background-color:#fff}
 .footer a{color:#777}
 .amw-cloud-href,.amw-cloud-href:hover{color:#fff}
+p.tableofcontentline a{color:#777}
+.error,.mandatory{color:#d9831f}

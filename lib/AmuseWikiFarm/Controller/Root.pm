@@ -486,8 +486,7 @@ sub end : ActionClass('RenderView') {
             $columns = 8;
         }
         $c->stash(
-                  bootstrap_css => $c->uri_for("/static/css/bootstrap.$theme.css",
-                                               { v => 1 }),
+                  bootstrap_css => "/static/css/bootstrap.$theme.css",
                   main_body_cols => $columns,
                   top_layout_html => $site->top_layout_html,
                   bottom_layout_html => $site->bottom_layout_html,

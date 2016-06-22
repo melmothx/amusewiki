@@ -1057,3 +1057,5 @@ a.list-group-item-danger.active:hover,a.list-group-item-danger.active:focus{back
 .footer{background-color:#f8f8f8}
 .footer a{color:#999}
 .amw-cloud-href,.amw-cloud-href:hover{color:#fff}
+p.tableofcontentline a{color:#555}
+.error,.mandatory{color:#ff4136}

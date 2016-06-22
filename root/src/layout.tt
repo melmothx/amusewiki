@@ -35,7 +35,7 @@
             src="[% c.uri_for('/static/js/jquery-1.11.1.min.js') %]">
     </script>
     <link rel="stylesheet"
-          href="[% IF bootstrap_css %][% bootstrap_css %][% ELSE %][% c.uri_for('/static/css/bootstrap.css') %][% END %]" />
+          href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 2 }) %]" />
 
     <!-- Latest compiled and minified JavaScript -->
     <script type="text/javascript"
@@ -89,7 +89,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 25 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 26 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
     <script type="text/javascript">
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
