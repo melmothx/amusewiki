@@ -700,6 +700,64 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>[% loc('Useful HTML snippets') %]</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>[% loc('Full tag cloud') %]</h5>
+        <pre class="example">
+&lt;div id=&quot;amw-cloud-embedded-sidebar&quot;&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#amw-cloud-embedded-sidebar&quot;)
+    .load(&quot;/cloud?limit=0&amp;bare=1&quot;);
+});
+&lt;/script&gt;
+</pre>
+      </div>
+      <div class="col-md-6">
+        <h5>[% loc('Tag cloud with authors') %]</h5>
+        <pre class="example">
+&lt;div id=&quot;amw-cloud-embedded-authors&quot;&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#amw-cloud-embedded-authors&quot;)
+    .load(&quot;/cloud/authors?bare=1&quot;);
+});
+&lt;/script&gt;</pre>
+      </div>
+      <div class="col-md-6">
+        <h5>[% loc('Tag cloud with topics') %]</h5>
+        <pre class="example">
+&lt;div id=&quot;amw-cloud-embedded-topics&quot;&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#amw-cloud-embedded-topics&quot;)
+    .load(&quot;/cloud/topics?bare=1&quot;);
+});
+&lt;/script&gt;</pre>
+      </div>
+      <div class="col-md-6">
+        <h5>Archives</h5>
+        <pre class="example">
+&lt;div id=&quot;amw-monthly-embedded-sidebar&quot;&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#amw-monthly-embedded-sidebar&quot;)
+    .load(&quot;/monthly?bare=1&quot;);
+});
+&lt;/script&gt;</pre>
+      </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+
     <div class="form-group">
       <div class="row">
         <div class="col-sm-3">
