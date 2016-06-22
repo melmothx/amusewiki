@@ -415,6 +415,7 @@ $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });
 <script type="text/javascript">
   $(document).ready(function() {
       $("div#preamble-container").remove().appendTo("#text-optional-footer");
+      $('[data-toggle="tooltip"]').tooltip();
   });
 </script>
 [% END %]
