@@ -659,30 +659,59 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
+      <div class="col-sm-3">
+        <label for="top_layout_html" class="control-label">
+          [% loc('HTML to insert on the top of the layout, behind the navigation bar and below the banner') %]
+        </label>
+      </div>
+      <div class="col-sm-9">
+        <textarea rows="5" name="top_layout_html"
+                  id="top_layout_html"
+                  class="form-control">
+          [%- esite.top_layout_html | html -%]</textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-3">
+        <label for="bottom_layout_html" class="control-label">
+          [% loc('HTML to insert on the bottom of the layout, above the footer') %]
+        </label>
+      </div>
+      <div class="col-sm-9">
+        <textarea rows="5" name="bottom_layout_html"
+                  id="bottom_layout_html"
+                  class="form-control">
+          [%- esite.bottom_layout_html | html -%]</textarea>
+      </div>
+    </div>
+
+
+    <div class="form-group">
         <div class="col-sm-3">
-          <label for="left_sidebar_html" class="control-label">
+          <label for="left_layout_html" class="control-label">
             [% loc('HTML to insert into the left sidebar') %]
           </label>
         </div>
         <div class="col-sm-9">
-          <textarea rows="5" name="left_sidebar_html"
-                    id="left_sidebar_html"
+          <textarea rows="5" name="left_layout_html"
+                    id="left_layout_html"
                     class="form-control">
-            [%- esite.left_sidebar_html | html -%]</textarea>
+            [%- esite.left_layout_html | html -%]</textarea>
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-3">
-          <label for="right_sidebar_html" class="control-label">
+          <label for="right_layout_html" class="control-label">
             [% loc('HTML to insert into the right sidebar') %]
           </label>
         </div>
         <div class="col-sm-9">
-          <textarea rows="5" name="right_sidebar_html"
-                    id="right_sidebar_html"
+          <textarea rows="5" name="right_layout_html"
+                    id="right_layout_html"
                     class="form-control">
-            [%- esite.right_sidebar_html | html -%]</textarea>
+            [%- esite.right_layout_html | html -%]</textarea>
         </div>
     </div>
 
@@ -697,7 +726,7 @@ kpsewhich mylogo.pdf</pre>
 &lt;script type=&quot;text/javascript&quot;&gt;
 $(document).ready(function() {
     $(&quot;#amw-cloud-embedded-sidebar&quot;)
-    .load(&quot;/cloud?limit=0&amp;bare=1&quot;);
+    .load(&quot;/cloud?limit=0&amp;bare=1&amp;max=10&quot;);
 });
 &lt;/script&gt;
 </pre>

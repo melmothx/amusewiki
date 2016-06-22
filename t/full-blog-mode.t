@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 95;
+use Test::More tests => 99;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -173,31 +173,46 @@ $site->update({
               });
 
 $mech->content_contains('amw-main-layout-column');
-$mech->content_lacks('amw-left-sidebar-column');
-$mech->content_lacks('amw-right-sidebar-column');
 
-$site->add_to_site_options({ option_name => 'left_sidebar_html',
-                             option_value => '<strong>Left bar</strong>
-<div id="amw-monthly-embedded-sidebar"></div>
+my %snippets = (
+                bottom => '<div id="amw-cloud-embedded-sidebar"></div>
 <script type="text/javascript">
-$(document).ready(function() { $("#amw-monthly-embedded-sidebar").load("/monthly?bare=1") });
-</script>'});
-
-$mech->get_ok('/');
-$mech->content_contains('amw-left-sidebar-column');
-$mech->content_contains('<strong>Left bar</strong>');
-
-$site->add_to_site_options({ option_name => 'right_sidebar_html',
-                             option_value => '<strong>Right bar</strong>
-<div id="amw-cloud-embedded-sidebar"></div>
+$(document).ready(function() {
+    $("#amw-cloud-embedded-sidebar").load("/cloud?limit=0&bare=1");
+});
+</script>
+',
+                right => '<div id="amw-cloud-embedded-authors"></div>
 <script type="text/javascript">
-$(document).ready(function() { $("#amw-cloud-embedded-sidebar").load("/cloud?limit=0&bare=1") });
-</script>'});
+$(document).ready(function() {
+    $("#amw-cloud-embedded-authors").load("/cloud/authors?bare=1&max=10");
+});
+</script>
+',
+                top => '<div id="amw-cloud-embedded-topics"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#amw-cloud-embedded-topics").load("/cloud/topics?bare=1&max=10");
+});
+</script>
+',
+                left => '<div id="amw-monthly-embedded-sidebar"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#amw-monthly-embedded-sidebar").load("/monthly?bare=1");
+});
+</script>
+',
+               );
 
-
-$mech->get_ok('/');
-$mech->content_contains('amw-right-sidebar-column');
-$mech->content_contains('<strong>Right bar</strong>');
+foreach my $element (qw/left right top bottom/) {
+    my $html = '<strong>Layout element' . uc($element) . '</strong>' . $snippets{$element};
+    $mech->content_lacks($html);
+    $site->add_to_site_options({ option_name => "${element}_layout_html",
+                                 option_value => $html });
+    $mech->get_ok('/');
+    $mech->content_contains($html);
+}
 
 diag "Testing tag cloud";
 

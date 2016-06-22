@@ -479,9 +479,19 @@
         </div>
       </div>
       [% END %]
+      [% IF top_layout_html %]
+      <div class="row" id="amw-top-layout-row">
+        <div class="col-12-xs">
+          [% top_layout_html %]
+        </div>
+      </div>
+      [% END %]
+
+
       <div class="row">
         <div id="amw-main-layout-column"
-             class="col-sm-[% main_body_cols || 12 %][% IF left_sidebar_cols %] col-sm-push-[% left_sidebar_cols %][% END %]">
+             class="col-sm-[% main_body_cols || 12 %][% IF left_layout_cols %] col-sm-push-[% left_layout_cols %][% END %]">
+
 [% IF c.sessionid %]
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
@@ -504,31 +514,42 @@
       [%- # all rendered, clear this -%]
       [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
 [% END %]
+
           <div id="widepage">
             [% content %]
           </div>
           <div>&nbsp;</div>
           <div>&nbsp;</div>
         </div>
-        [% IF left_sidebar_html %]
-        <div id="amw-left-sidebar-column"
-             class="col-sm-[% left_sidebar_cols %] col-sm-pull-[% main_body_cols %]">
-          [% left_sidebar_html %]
+        [% IF left_layout_html %]
+        <div id="amw-left-layout-column"
+             class="col-sm-[% left_layout_cols %] col-sm-pull-[% main_body_cols %]">
+          [% left_layout_html %]
           <div>&nbsp;</div>
           <div>&nbsp;</div>
         </div>
         [% END %]
-        [% IF right_sidebar_html %]
-        <div id="amw-right-sidebar-column"
-             class="col-sm-[% right_sidebar_cols %]">
-          [% right_sidebar_html %]
+        [% IF right_layout_html %]
+        <div id="amw-right-layout-column"
+             class="col-sm-[% right_layout_cols %]">
+          [% right_layout_html %]
           <div>&nbsp;</div>
           <div>&nbsp;</div>
         </div>
         [% END %]
       </div>
-    </div>
-    </div>
+      <!-- end of row  -->
+      [% IF bottom_layout_html %]
+      <div class="row">
+        <div class="col-xs-12" id="amw-bottom-layout-row">
+          [% bottom_layout_html %]
+        </div>
+      </div>
+      [% END %]
+      <div class="clearfix">&nbsp;</div>
+      <div class="clearfix">&nbsp;</div>
+    </div><!-- end of main -->
+    </div><!-- end of wrap -->
     <div id="footer">
       <div class="footer center">
         <span id="amw-footer-link-feeds">

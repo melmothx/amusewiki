@@ -2397,8 +2397,10 @@ sub update_from_params {
 
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
-                           right_sidebar_html
-                           left_sidebar_html
+                           left_layout_html
+                           right_layout_html
+                           top_layout_html
+                           bottom_layout_html
                            do_not_enforce_commit_message
                            use_js_highlight
                           /) {
@@ -2698,13 +2700,22 @@ sub html_special_page_bottom {
     return shift->get_option('html_special_page_bottom') || '';
 }
 
-sub left_sidebar_html {
-    return shift->get_option('left_sidebar_html') || '';
+sub left_layout_html {
+    return shift->get_option('left_layout_html') || '';
 }
 
-sub right_sidebar_html {
-    return shift->get_option('right_sidebar_html') || '';
+sub right_layout_html {
+    return shift->get_option('right_layout_html') || '';
 }
+
+sub top_layout_html {
+    return shift->get_option('top_layout_html') || '';
+}
+
+sub bottom_layout_html {
+    return shift->get_option('bottom_layout_html') || '';
+}
+
 
 
 sub use_luatex {
