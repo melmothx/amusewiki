@@ -2845,18 +2845,18 @@ sub populate_monthly_archives {
 sub bootstrap_themes {
     my $self = shift;
     my @themes = (qw/amusewiki
+                     amusecosmo
+                     amusejournal
+
                      cerulean
                      cosmo
                      cyborg
-
                      darkly
                      flatly
                      journal
-
                      lumen
                      readable
                      simplex
-
                      slate
                      spacelab
                      united
