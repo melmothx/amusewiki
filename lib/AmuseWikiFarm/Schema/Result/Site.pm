@@ -2859,6 +2859,7 @@ sub bootstrap_themes {
 
                      slate
                      spacelab
+                     united
                     /);
     return @themes;
 }
