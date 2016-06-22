@@ -16,3 +16,4 @@ for theme in cerulean cosmo cyborg darkly default flatly journal lumen paper rea
 EOF
     lessc -x amw-theme.less ../root/static/css/bootstrap.$theme.css || echo "Cannot generate $theme"
 done
+rm -f amw-theme.less
