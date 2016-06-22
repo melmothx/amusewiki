@@ -19,7 +19,6 @@ html, body {
   height: 70px;
   clear:both;
   padding-top:15px;
-  background-color: #efefef;
 }
 
 body {
@@ -228,7 +227,6 @@ div.amw-cloud-element {
 */
 
 .amw-cloud-href, .amw-cloud-href:hover {
-    color: white;
     text-decoration: none;
 }
 
