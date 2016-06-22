@@ -38,7 +38,6 @@
         onsubmit="return amw_confirm()">
     [% UNLESS restricted %]
     <div class="form-group">
-      <div class="row">
         <div class="col-sm-offset-2 col-sm-10">
           <label>
             <input type="checkbox"
@@ -48,7 +47,6 @@
             ([% loc('affects only the frontend webserver configuration') %])
           </label>
         </div>
-      </div>
     </div>
     [% END %]
 
@@ -78,7 +76,6 @@
       </div>
     </div>
     <div class="form-group">
-      <div class="row">
         <div class="col-sm-offset-2 col-sm-10">
           <label>
             <input type="checkbox"
@@ -87,7 +84,6 @@
             [% loc('Activate the blog-style look and feel') %]
           </label>
         </div>
-      </div>
     </div>
     <div class="form-group">
       <label for="locale" class="col-sm-2 control-label">
@@ -183,7 +179,6 @@
         <input type="text"  name="logo" id="logo"
                class="form-control" value="[% esite.logo | html %]" />
       </div>
-      <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-10">
           <p>
@@ -198,7 +193,6 @@ cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
 texhash `kpsewhich -var-value TEXMFHOME`
 kpsewhich mylogo.pdf</pre>
         </div>
-      </div>
     </div>
     [% END %]
 
@@ -631,7 +625,6 @@ kpsewhich mylogo.pdf</pre>
 
     [% UNLESS restricted %]
     <div class="form-group">
-      <div class="row">
         <div class="col-sm-3">
           <label for="vhosts" class="control-label">
             [% loc('Virtual hosts, one per line') %]
@@ -645,13 +638,11 @@ kpsewhich mylogo.pdf</pre>
 
           [%- END -%]</textarea>
         </div>
-      </div>
     </div>
 
     [% END %]
 
     <div class="form-group">
-      <div class="row">
         <div class="col-sm-3">
           <label for="html_special_page_bottom" class="control-label">
             [% loc('HTML to append to each special page, inserted
@@ -665,11 +656,9 @@ kpsewhich mylogo.pdf</pre>
                     class="form-control">
             [%- esite.html_special_page_bottom | html -%]</textarea>
         </div>
-      </div>
     </div>
 
     <div class="form-group">
-      <div class="row">
         <div class="col-sm-3">
           <label for="left_sidebar_html" class="control-label">
             [% loc('HTML to insert into the left sidebar') %]
@@ -681,11 +670,9 @@ kpsewhich mylogo.pdf</pre>
                     class="form-control">
             [%- esite.left_sidebar_html | html -%]</textarea>
         </div>
-      </div>
     </div>
 
     <div class="form-group">
-      <div class="row">
         <div class="col-sm-3">
           <label for="right_sidebar_html" class="control-label">
             [% loc('HTML to insert into the right sidebar') %]
@@ -697,15 +684,11 @@ kpsewhich mylogo.pdf</pre>
                     class="form-control">
             [%- esite.right_sidebar_html | html -%]</textarea>
         </div>
-      </div>
     </div>
 
-    <div class="row">
       <div class="col-sm-12">
         <h4>[% loc('Useful HTML snippets') %]</h4>
       </div>
-    </div>
-    <div class="row">
       <div class="col-md-6">
         <h5>[% loc('Full tag cloud') %]</h5>
         <pre class="example">
@@ -755,11 +738,9 @@ $(document).ready(function() {
 });
 &lt;/script&gt;</pre>
       </div>
-    </div>
-    <div class="clearfix">&nbsp;</div>
 
+    <div class="clearfix">&nbsp;</div>
     <div class="form-group">
-      <div class="row">
         <div class="col-sm-3">
           <label for="site_links" class="control-label">
             [% loc('A list of links and labels to insert into the top
@@ -772,7 +753,6 @@ $(document).ready(function() {
                     class="form-control">
             [%- esite.serialize_links | html -%]</textarea>
         </div>
-      </div>
     </div>
 
 
@@ -815,7 +795,6 @@ $(document).ready(function() {
     [% UNLESS restricted %]
     <h3>[% loc('SSL configuration') %]</h3>
     <div class="form-group">
-      <div class="row">
         <div class="col-sm-offset-2 col-sm-10">
           <label>
             <input type="checkbox"
@@ -824,8 +803,6 @@ $(document).ready(function() {
             [% loc('Use SSL for authenticated users') %]
           </label>
         </div>
-      </div>
-      <div class="row">
         <div class="col-sm-offset-2 col-sm-10">
           <label>
             <input type="checkbox"
@@ -835,8 +812,6 @@ $(document).ready(function() {
           all the HTTP requests to HTTPS') %]
           </label>
         </div>
-      </div>
-      <div class="row">
         <div class="col-sm-offset-2 col-sm-10">
           <label>
             <input type="checkbox"
@@ -845,7 +820,6 @@ $(document).ready(function() {
             [% loc("Automatically request and renew SSL certificates from Let's Encrypt") %]
           </label>
         </div>
-      </div>
     </div>
     <p>
       [% loc('The following values are used to generate the webserver configuration.') %]<br>
