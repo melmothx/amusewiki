@@ -1,3 +1,6 @@
 [submodule "bootstrap-amw/bootstrap"]
 	path = bootstrap-amw/bootstrap
 	url = https://github.com/twbs/bootstrap.git
+[submodule "bootstrap-amw/bootswatch"]
+	path = bootstrap-amw/bootswatch
+	url = https://github.com/thomaspark/bootswatch.git
