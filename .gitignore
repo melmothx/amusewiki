@@ -26,7 +26,6 @@ log/jobs/*.log
 *.db
 var/*
 !var/.exists
-bootstrap-amw/bootstrap/*
 current_version_is*.txt
 webfonts/*/*
 log4perl.local.conf

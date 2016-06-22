@@ -1,12 +1,5 @@
 /* Text::Amuse base CSS */
 
-html,body {
-	margin:0;
-	padding:0;
-	border: none;
- 	background: transparent;
-	font-size: 10pt;
-}
 /* override bootstrap */
 blockquote {
     font-size: 10pt;
@@ -34,21 +27,9 @@ sup, sub {
     margin: 24px 48px;
 }
 
-/*
-table, th, td {
-    border: solid 1px black;
-    border-collapse: collapse;
-}
-td, th {
-    padding: 2px 5px;
-}
-*/
-
 hr {
     margin: 24px 0;
-    color: #000;
     height: 1px;
-    background-color: #000;
 }
 
 table {

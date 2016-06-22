@@ -1,5 +1,4 @@
-To generate the minified css, clone the bootstrap repo in this repo,
-then execute ./generate.sh from this directory.
+To generate the minified css execute ./generate.sh from this directory.
 
 
 

@@ -2201,6 +2201,7 @@ sub update_from_params {
     # the the length.
     my @strings = (qw/magic_answer magic_question fixed_category_list
                       multilanguage
+                      theme
                       ssl_key
                       ssl_cert
                       ssl_ca_cert
@@ -2841,6 +2842,46 @@ sub populate_monthly_archives {
     $guard->commit;
 }
 
+sub bootstrap_themes {
+    my $self = shift;
+    my @themes = (qw/amusewiki
+                     cerulean
+                     cosmo
+                     cyborg
+
+                     darkly
+                     flatly
+                     journal
+
+                     lumen
+                     readable
+                     simplex
+
+                     slate
+                     spacelab
+                    /);
+    return @themes;
+}
+
+sub bootstrap_theme {
+    my $self = shift;
+    my $theme = $self->theme || 'amusewiki';
+    my %avail = map { $_ => 1 } $self->bootstrap_themes;
+    if ($avail{$theme}) {
+        return $theme;
+    }
+    else {
+        log_error { "Theme $theme not found! for site " . $self->canonical };
+        return 'amusewiki';
+    }
+}
+
+sub bootstrap_theme_list {
+    my $self = shift;
+    my @themes = map { +{ name => $_, label => ucfirst($_) } } $self->bootstrap_themes;
+    Dlog_debug { "Themes are $_" } \@themes;
+    return @themes;
+}
 
 =head1 WEBSERVER options
 

@@ -468,6 +468,7 @@ sub end : ActionClass('RenderView') {
     unless ($c->stash->{no_wrapper}) {
         log_debug { "Doing the layout fixes" };
         # layout adjustments
+        my $theme = $site->bootstrap_theme;
         my $columns = 12;
         my $left_column = $site->left_layout_html;
         my $right_column = $site->right_layout_html;
@@ -485,15 +486,12 @@ sub end : ActionClass('RenderView') {
             $columns = 8;
         }
         $c->stash(
+                  bootstrap_css => $c->uri_for("/static/css/bootstrap.$theme.css",
+                                               { v => 1 }),
                   main_body_cols => $columns,
                   top_layout_html => $site->top_layout_html,
                   bottom_layout_html => $site->bottom_layout_html,
                  );
-    }
-    if (my $theme = $site->theme) {
-        die "Bad theme name!" unless $theme =~ m/^\w[\w-]+\w$/s;
-        $c->stash->{additional_template_paths} =
-          [$c->path_to(root => themes => $theme)];
     }
 }
 
