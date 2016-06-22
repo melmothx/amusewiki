@@ -433,7 +433,7 @@
               <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
                 [% SET bb_count_texts = c.model('BookBuilder').total_texts %]
                 <span class="glyphicon glyphicon-book [% IF bb_count_texts %]text-primary[% END %]"></span>
-                <span class="visible-lg-inline visible-xs-inline">
+                <span class="hidden-sm">
                   [% loc('Bookbuilder') %]
                 </span>
                 [% IF bb_count_texts %]
