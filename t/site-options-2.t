@@ -87,6 +87,7 @@ my %old = map { $_ => ($site->$_ || '') } qw/magic_answer
                                              ssl_cert
                                              ssl_ca_cert
                                              ssl_chained_cert
+                                             theme
                                             /;
 
 
