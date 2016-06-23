@@ -687,6 +687,17 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     [% END %]
+    <fieldset>
+      <legend>[% loc('Layout') %]</legend>
+
+    <div class="form-group">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary pull-right" name="edit_site"
+                value="update">
+          [% loc('Update') %]
+        </button>
+      </div>
+    </div>
 
     <div class="form-group">
         <div class="col-sm-3">
@@ -814,6 +825,8 @@ $(document).ready(function() {
 &lt;/script&gt;</pre>
       </div>
 
+    </fieldset>
+
     <div class="clearfix">&nbsp;</div>
     <div class="form-group">
         <div class="col-sm-3">
@@ -868,7 +881,19 @@ $(document).ready(function() {
     </div>
 
     [% UNLESS restricted %]
-    <h3>[% loc('SSL configuration') %]</h3>
+    <fieldset>
+      <legend>[% loc('SSL configuration') %]</legend>
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary pull-right" name="edit_site"
+                  value="update">
+            [% loc('Update') %]
+          </button>
+        </div>
+      </div>
+
+
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <label>
@@ -958,15 +983,19 @@ $(document).ready(function() {
       </div>
     </div>
     [% END %]
-
+    </fieldset>
+    <hr />
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary" name="edit_site"
-                value="update">
-          [% loc('Update') %]
-        </button>
+      <div class="col-sm-12">
+        <div class="center">
+          <button type="submit" class="btn btn-primary" name="edit_site"
+                  value="update">
+            [% loc('Update') %]
+          </button>
+        </div>
       </div>
     </div>
+    <hr />
   </form>
 </div>
 
