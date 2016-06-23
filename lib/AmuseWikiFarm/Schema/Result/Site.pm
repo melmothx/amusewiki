@@ -2406,6 +2406,9 @@ sub update_from_params {
                            use_js_highlight
                           /) {
         my $value = delete $params->{$option} || '';
+        # clean it up from leading and trailing spaces
+        $value =~ s/\A\s*//s;
+        $value =~ s/\s*\z//s;
         push @options, {
                         option_name => $option,
                         option_value => $value,
