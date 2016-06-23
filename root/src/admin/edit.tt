@@ -25,6 +25,179 @@
 <div style="margin-top: 30px">
   <form method="post" class="form-horizontal" role="form" id="site-edit-form"
         onsubmit="return amw_confirm()">
+
+    [% UNLESS restricted %]
+    <fieldset>
+      <legend>[% loc('Restricted configuration variables') %]</legend>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary pull-right" name="edit_site"
+                  value="update">
+            [% loc('Update') %]
+          </button>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label for="canonical" class="col-sm-6 control-label">
+        [% loc('Main canonical hostname, without protocol') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="canonical" id="canonical"
+               class="form-control" value="[% esite.canonical | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+          <label for="vhosts" class="control-label">
+            [% loc('Virtual hosts, one per line') %]
+        </label>
+        </div>
+        <div class="col-sm-9">
+        <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
+          [%- SET vhosts = esite.vhosts_rs -%]
+          [%- FOREACH vhost IN vhosts.all %]
+          [%- vhost.name | html +%]
+
+          [%- END -%]</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sitegroup" class="col-sm-6 control-label">
+        [% loc('Site group') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="sitegroup" id="sitegroup"
+               class="form-control" value="[% esite.sitegroup | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.active %]checked="checked"[% END %]
+                   name="active" />
+            [% loc('Active') %]
+            ([% loc('affects only the frontend webserver configuration') %])
+          </label>
+        </div>
+    </div>
+    </fieldset>
+    <fieldset>
+      <legend>[% loc('Restricted format options') %]</legend>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-primary pull-right" name="edit_site"
+                  value="update">
+            [% loc('Update') %]
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.tex %]checked="checked"[% END %]
+                   name="tex" />
+            [% loc('TeX') %]
+          </label>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.html %]checked="checked"[% END %]
+                 name="html" />
+          [% loc('HTML') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.bare_html %]checked="checked"[% END %]
+                 name="bare_html" />
+          [% loc('Bare HTML, needed by the application') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.epub %]checked="checked"[% END %]
+                 name="epub" />
+          [% loc('EPUB') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.zip %]checked="checked"[% END %]
+                 name="zip" />
+          [% loc('ZIP archive with sources, needed by the bookbuilder') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="ttdir" class="col-sm-2 control-label">
+        [% loc('Directory with templates. Do not set it unless you know what you are doing') %]
+      </label>
+      <div class="col-sm-10">
+        <input type="text"  name="ttdir" id="ttdir"
+               class="form-control" value="[% esite.ttdir | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="logo" class="col-sm-6 control-label">
+        [% loc('PDF logo') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="logo" id="logo"
+               class="form-control" value="[% esite.logo | html %]" />
+      </div>
+        <div class="col-sm-12">
+            <p>
+            [% loc('The PDF logo value can be either an absolute path
+            or just a filename if you choose to install it in the
+            TeXlive tree. You can do so with the following commands.
+            The last one checks if the file can be found.') %]
+            </p>
+            <pre>mkdir -p `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
+              cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
+              texhash `kpsewhich -var-value TEXMFHOME`
+              kpsewhich mylogo.pdf</pre>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.use_luatex %]checked="checked"[% END %]
+                 name="use_luatex" />
+          [% loc('Use LuaLaTeX instead of XeLaTeX (slower)') %]
+        </label>
+      </div>
+    </div>
+
+    [% END %]
+
+
+
+
     <fieldset>
       <legend>[% loc('General configuration') %]
       </legend>
@@ -36,20 +209,6 @@
         </button>
       </div>
     </div>
-
-    [% UNLESS restricted %]
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <label>
-            <input type="checkbox"
-                   [% IF esite.active %]checked="checked"[% END %]
-                   name="active" />
-            [% loc('Active') %]
-            ([% loc('affects only the frontend webserver configuration') %])
-          </label>
-        </div>
-    </div>
-    [% END %]
 
     <div class="form-group">
       <label for="mode" class="col-sm-2 control-label">
@@ -189,32 +348,6 @@
       </div>
     </div>
 
-    [% UNLESS restricted %]
-    <div class="form-group">
-      <label for="logo" class="col-sm-2 control-label">
-        [% loc('PDF logo') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="logo" id="logo"
-               class="form-control" value="[% esite.logo | html %]" />
-      </div>
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
-          <p>
-            <br>
-            [% loc('The PDF logo value can be either an absolute path
-            or just a filename if you choose to install it in the
-            TeXlive tree. You can do so with the following commands.
-            The last one checks if the file can be found.') %]
-          </p>
-          <pre>mkdir -p `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
-cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
-texhash `kpsewhich -var-value TEXMFHOME`
-kpsewhich mylogo.pdf</pre>
-        </div>
-    </div>
-    [% END %]
-
     <div class="form-group">
       <label for="mail_notify" class="col-sm-2 control-label">
         [% loc('Notify mail: blank field will disable them') %]
@@ -234,27 +367,6 @@ kpsewhich mylogo.pdf</pre>
                class="form-control email" value="[% esite.mail_from | html %]" />
       </div>
     </div>
-
-    [% UNLESS restricted %]
-    <div class="form-group">
-      <label for="canonical" class="col-sm-2 control-label">
-        [% loc('Main canonical hostname, without protocol') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="canonical" id="canonical"
-               class="form-control" value="[% esite.canonical | html %]" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="sitegroup" class="col-sm-2 control-label">
-        [% loc('Site group') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="sitegroup" id="sitegroup"
-               class="form-control" value="[% esite.sitegroup | html %]" />
-      </div>
-    </div>
-    [% END %]
 
     <div class="form-group">
       <label for="bb_page_limit" class="col-sm-2 control-label">
@@ -277,19 +389,6 @@ kpsewhich mylogo.pdf</pre>
         </button>
       </div>
     </div>
-
-    [% UNLESS restricted %]
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.tex %]checked="checked"[% END %]
-                 name="tex" />
-          [% loc('TeX') %]
-        </label>
-      </div>
-    </div>
-    [% END %]
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
@@ -333,63 +432,6 @@ kpsewhich mylogo.pdf</pre>
         </label>
       </div>
     </div>
-
-    [% UNLESS restricted %]
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.html %]checked="checked"[% END %]
-                 name="html" />
-          [% loc('HTML') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.bare_html %]checked="checked"[% END %]
-                 name="bare_html" />
-          [% loc('Bare HTML, needed by the application') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.epub %]checked="checked"[% END %]
-                 name="epub" />
-          [% loc('EPUB') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.zip %]checked="checked"[% END %]
-                 name="zip" />
-          [% loc('ZIP archive with sources, needed by the bookbuilder') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="ttdir" class="col-sm-2 control-label">
-        [% loc('Directory with templates. Do not set it unless you know what you are doing') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="ttdir" id="ttdir"
-               class="form-control" value="[% esite.ttdir | html %]" />
-      </div>
-    </div>
-
-    [% END %]
 
     [% # pick these options from the bookbuilder %]
     [% SET bb = c.model('BookBuilder') %]
@@ -629,19 +671,6 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
-    [% UNLESS restricted %]
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.use_luatex %]checked="checked"[% END %]
-                 name="use_luatex" />
-          [% loc('Use LuaLaTeX instead of XeLaTeX (slower)') %]
-        </label>
-      </div>
-    </div>
-    [% END %]
-
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <label>
@@ -670,21 +699,6 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     [% UNLESS restricted %]
-    <div class="form-group">
-        <div class="col-sm-3">
-          <label for="vhosts" class="control-label">
-            [% loc('Virtual hosts, one per line') %]
-        </label>
-        </div>
-        <div class="col-sm-9">
-        <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
-          [%- SET vhosts = esite.vhosts_rs -%]
-          [%- FOREACH vhost IN vhosts.all %]
-          [%- vhost.name | html +%]
-
-          [%- END -%]</textarea>
-        </div>
-    </div>
 
     [% END %]
     <fieldset>
