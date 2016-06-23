@@ -23,20 +23,21 @@
 </div>
 
 <div style="margin-top: 30px">
-  <form method="post" class="form-horizontal" role="form" id="site-edit-form"
+  <form method="post" class="form-horizontal"
+        id="site-edit-form"
         onsubmit="return amw_confirm()">
 
     [% UNLESS restricted %]
     <fieldset>
-      <legend>[% loc('Restricted configuration variables') %]</legend>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary pull-right" name="edit_site"
-                  value="update">
-            [% loc('Update') %]
-          </button>
-        </div>
-      </div>
+      <legend role="button"
+              data-target="#restricted-vars"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="restricted-vars">
+         [% loc('Restricted configuration variables') %]
+         <span class="caret"></span>
+      </legend>
+      <div id="restricted-vars" class="collapse">
 
     <div class="form-group">
       <label for="canonical" class="col-sm-3 control-label">
@@ -84,17 +85,18 @@
           </label>
         </div>
     </div>
+      </div>
     </fieldset>
     <fieldset>
-      <legend>[% loc('Restricted format options') %]</legend>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary pull-right" name="edit_site"
-                  value="update">
-            [% loc('Update') %]
-          </button>
-        </div>
-      </div>
+      <legend role="button"
+              data-target="#restricted-formats"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="restricted-formats">
+        [% loc('Restricted format options') %]
+         <span class="caret"></span>
+      </legend>
+      <div id="restricted-formats" class="collapse">
 
       <div class="form-group">
         <div class="col-sm-offset-6 col-sm-6">
@@ -205,24 +207,20 @@ kpsewhich mylogo.pdf
 </pre>
         </div>
     </div>
-
+      </div>
+    </fieldset>
     [% END %]
 
-
-
-
     <fieldset>
-      <legend>[% loc('General configuration') %]
+      <legend role="button"
+              data-target="#awm-config-general"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="awm-config-general">
+        [% loc('General configuration') %]
+        <span class="caret"></span>
       </legend>
-    <div class="form-group">
-      <div class="col-sm-12">
-        <button type="submit" class="btn btn-primary pull-right" name="edit_site"
-                value="update">
-          [% loc('Update') %]
-        </button>
-      </div>
-    </div>
-
+      <div id="awm-config-general" class="collapse">
     <div class="form-group">
       <label for="sitename" class="col-sm-6 control-label">
         [% loc('Site name') %]
@@ -290,7 +288,7 @@ kpsewhich mylogo.pdf
         [% loc('Locale') %]
       </label>
       <div class="col-sm-6">
-        <select name="locale" id="lang" class="form-control">
+        <select id="locale" name="locale" id="lang" class="form-control">
           [% known_langs = esite.known_langs %]
           [% SET current_language = esite.locale %]
           [% FOREACH lang IN known_langs.keys.sort %]
@@ -423,19 +421,70 @@ kpsewhich mylogo.pdf
         </div>
       </div>
     </div>
-
-    </fieldset>
-    <fieldset>
-      <legend>[% loc('Formats') %]</legend>
-
     <div class="form-group">
-      <div class="col-sm-12">
-        <button type="submit" class="btn btn-primary pull-right" name="edit_site"
-                value="update">
-          [% loc('Update') %]
-        </button>
+        <div class="col-sm-3">
+          <label for="site_links" class="control-label">
+            [% loc('A list of links and labels to insert into the top
+            bar. One per line, first the url, then the label,
+            separated by a space, e.g. "http://test.me Test site"') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="site_links" id="site_links"
+                    class="form-control">
+            [%- esite.serialize_links | html -%]</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="latest_entries" class="col-sm-3 control-label">
+        [% loc('Number of latest entries to display on the special pages (an integer)') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="latest_entries" id="latest_entries"
+               class="form-control digits"
+               value="[% esite.get_option('latest_entries') | html %]" />
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="latest_entries" class="col-sm-3 control-label">
+        [% loc('Number of latest entries to display on the RSS (an integer)') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="latest_entries_for_rss"
+               id="latest_entries_for_rss"
+               class="form-control digits"
+               value="[% esite.get_option('latest_entries_for_rss') | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="paginate_archive_after" class="col-sm-3 control-label">
+        [% loc('Add paginator for text listing when the number of texts is greater than (integer)') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text"
+               name="paginate_archive_after"
+               id="paginate_archive_after"
+               class="form-control digits"
+               value="[% esite.paginate_archive_after | html %]" />
+      </div>
+    </div>
+
+
+
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend role="button"
+              data-target="#amw-config-formats"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="amw-config-formats">
+        [% loc('Formats') %]
+        <span class="caret"></span>
+      </legend>
+      <div id="amw-config-formats" class="collapse">
 
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-6">
@@ -695,22 +744,21 @@ kpsewhich mylogo.pdf
         </p>
       </div>
     </div>
+      </div>
     </fieldset>
     [% UNLESS restricted %]
 
     [% END %]
     <fieldset>
-      <legend>[% loc('Layout') %]</legend>
-
-    <div class="form-group">
-      <div class="col-sm-12">
-        <button type="submit" class="btn btn-primary pull-right" name="edit_site"
-                value="update">
-          [% loc('Update') %]
-        </button>
-      </div>
-    </div>
-
+      <legend role="button"
+              data-target="#amw-config-layout"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="amw-config-layout">
+        [% loc('Layout') %]
+        <span class="caret"></span>
+      </legend>
+      <div id="amw-config-layout" class="collapse">
     <div class="form-group">
         <div class="col-sm-3">
           <label for="html_special_page_bottom" class="control-label">
@@ -836,74 +884,20 @@ $(document).ready(function() {
 });
 &lt;/script&gt;</pre>
       </div>
-
+      </div>
     </fieldset>
-
-    <div class="clearfix">&nbsp;</div>
-    <div class="form-group">
-        <div class="col-sm-3">
-          <label for="site_links" class="control-label">
-            [% loc('A list of links and labels to insert into the top
-            bar. One per line, first the url, then the label,
-            separated by a space, e.g. "http://test.me Test site"') %]
-          </label>
-        </div>
-        <div class="col-sm-9">
-          <textarea rows="5" name="site_links" id="site_links"
-                    class="form-control">
-            [%- esite.serialize_links | html -%]</textarea>
-        </div>
-    </div>
-
-
-    <div class="form-group">
-      <label for="latest_entries" class="col-sm-3 control-label">
-        [% loc('Number of latest entries to display on the special pages (an integer)') %]
-      </label>
-      <div class="col-sm-9">
-        <input type="text" name="latest_entries" id="latest_entries"
-               class="form-control digits"
-               value="[% esite.get_option('latest_entries') | html %]" />
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="latest_entries" class="col-sm-3 control-label">
-        [% loc('Number of latest entries to display on the RSS (an integer)') %]
-      </label>
-      <div class="col-sm-9">
-        <input type="text" name="latest_entries_for_rss"
-               id="latest_entries_for_rss"
-               class="form-control digits"
-               value="[% esite.get_option('latest_entries_for_rss') | html %]" />
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="paginate_archive_after" class="col-sm-3 control-label">
-        [% loc('Add paginator for text listing when the number of texts is greater than (integer)') %]
-      </label>
-      <div class="col-sm-9">
-        <input type="text"
-               name="paginate_archive_after"
-               id="paginate_archive_after"
-               class="form-control digits"
-               value="[% esite.paginate_archive_after | html %]" />
-      </div>
-    </div>
 
     [% UNLESS restricted %]
     <fieldset>
-      <legend>[% loc('SSL configuration') %]</legend>
-
-      <div class="form-group">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary pull-right" name="edit_site"
-                  value="update">
-            [% loc('Update') %]
-          </button>
-        </div>
-      </div>
+      <legend role="button"
+              data-target="#restricted-ssl"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="restricted-ssl">
+        [% loc('SSL configuration') %]
+         <span class="caret"></span>
+      </legend>
+      <div id="restricted-ssl" class="collapse">
 
 
     <div class="form-group">
@@ -998,8 +992,9 @@ $(document).ready(function() {
         </p>
       </div>
     </div>
-    [% END %]
+      </div>
     </fieldset>
+    [% END %]
     <hr />
     <div class="form-group">
       <div class="col-sm-12">
