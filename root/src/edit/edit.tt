@@ -9,9 +9,9 @@
 </div>
 [% END %]
 
-<div class="row" style="margin-bottom: 20px">
-  <div class="col-md-12 center">
-    <h2>[% loc('Editing') %] [% revision.title.uri %]</h2>
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Editing') %] [% revision.title.uri %]</h1>
   </div>
 </div>
 
