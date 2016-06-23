@@ -199,7 +199,7 @@ sub open_new {
     my $mech = shift;
     $mech->get_ok('/');
     $mech->content_contains('/action/text/new') or diag $mech->response->decoded_content;
-    $mech->follow_link_ok( { text_regex => qr/Add to library/}, "Going on new");
+    $mech->follow_link_ok( { text_regex => qr/Add a new text/}, "Going on new");
     is $mech->uri->path, '/action/text/new';
     $mech->submit_form(
                        form_id => 'ckform',

@@ -109,7 +109,7 @@ my %repos = ('0blog0' => {
                           mode => 'blog',
                           sitename => 'A test blog',
                           siteslogan => 'only a test',
-                          theme => 'test-theme',
+                          theme => 'amusejournal',
                           bb_page_limit => 10,
                           logo => 'logo-en',
                           a4_pdf => 0,
