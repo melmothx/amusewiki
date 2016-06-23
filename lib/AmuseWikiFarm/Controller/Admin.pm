@@ -131,9 +131,7 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
         }
     }
 
-    # unclear why we have to restash the site, though.
-    $c->stash(esite => $site, site => $site);
-    # force the loading
+    $c->stash(esite => $site);
     $c->stash(load_highlight => $site->use_js_highlight(1));
 }
 
