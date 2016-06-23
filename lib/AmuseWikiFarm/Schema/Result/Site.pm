@@ -2116,6 +2116,7 @@ sub update_from_params_restricted {
                         active            => 'value',
 
                         logo              => 'value',
+                        logo_with_sitename => 'value',
 
                         canonical         => 'value',
                         sitegroup         => 'value',
