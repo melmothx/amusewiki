@@ -80,7 +80,7 @@ is $site->repo_root($tmp), File::Spec->catdir($tmp, qw/repo 0blog0/);
 is $site->repo_root(0), File::Spec->catdir(getcwd(), 0, qw/repo 0blog0/);
 
 
-my @users = $site->users;
+my @users = $site->users->search({ username => { -like => 'user%' }});
 
 ok ((@users == 3), "3 users named user* found");
 

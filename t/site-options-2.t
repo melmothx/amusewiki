@@ -93,6 +93,7 @@ my %old = map { $_ => ($site->$_ || '') } qw/magic_answer
 
 my @restricted = (qw/active
                      logo
+                     logo_with_sitename
                      canonical
                      sitegroup
                      tex
@@ -124,9 +125,9 @@ foreach my $rest (@restricted) {
     delete $old{$rest};
 }
 
-foreach my $good (qw/pdf a4_pdf lt_pdf logo_with_sitename cgit_integration/) {
+foreach my $good (qw/pdf a4_pdf lt_pdf cgit_integration/) {
     $site->update({ $good => 0 });
     my $error = $site->update_from_params_restricted({ %old, $good => 1 });
     ok !$error or diag $error;
-    is $site->$good, 1;
+    is $site->$good, 1, "$good is 1";
 }
