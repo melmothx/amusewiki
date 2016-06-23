@@ -161,3 +161,9 @@ foreach my $i (1..3) {
     $user->add_to_sites($blog);
     ok($user->id, "Found " . $user->id);
 }
+
+$schema->resultset('User')->create({ username => 'marcomarco',
+                                     password => 'marcomarco',
+                                     user_roles => [ { role => { role => 'admin' } } ] })
+  ->add_to_sites($blog);
+
