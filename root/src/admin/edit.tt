@@ -16,36 +16,26 @@
 </div>
 [% END %]
 
-<h2>[% loc('Edit site [_1]', esite.id) %]</h2>
-
-<p>
-  [% loc('Please note that the twoside and binding correction options follow
-  this logic: if you have some imposed format, they are ignored for
-  the standalone PDF but applied for the imposed ones. If you have
-  only the standalone PDF, they are applied to it.') %]
-</p>
-
-<p>
-  [% loc('The Beamer selections are relevant only if you activate the
-  slides output.') %]
-  <a href="https://www.hartwork.org/beamer-theme-matrix/">
-    [% loc('Preview') %].
-  </a>
-</p>
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Edit site [_1]', esite.id) %]</h1>
+  </div>
+</div>
 
 <div style="margin-top: 30px">
   <form method="post" class="form-horizontal" role="form" id="site-edit-form"
         onsubmit="return amw_confirm()">
-
+    <fieldset>
+      <legend>[% loc('General configuration') %]
+      </legend>
     <div class="form-group">
-      <div class="col-sm-offset-5 col-sm-7">
-        <button type="submit" class="btn btn-primary" name="edit_site"
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary pull-right" name="edit_site"
                 value="update">
           [% loc('Update') %]
         </button>
       </div>
     </div>
-
 
     [% UNLESS restricted %]
     <div class="form-group">
@@ -275,9 +265,17 @@ kpsewhich mylogo.pdf</pre>
                class="form-control digits" value="[% esite.bb_page_limit | html %]" />
       </div>
     </div>
+    </fieldset>
+    <fieldset>
+      <legend>[% loc('Formats') %]</legend>
 
-    <div class="col-sm-offset-2 col-sm-10">
-      <h4>[% loc('Formats') %]</h4>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-primary pull-right" name="edit_site"
+                value="update">
+          [% loc('Update') %]
+        </button>
+      </div>
     </div>
 
     [% UNLESS restricted %]
@@ -601,6 +599,25 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
+    <div class="col-sm-12">
+      <div class="well">
+        <p>
+          [% loc('Please note that the twoside and binding correction options follow
+          this logic: if you have some imposed format, they are ignored for
+          the standalone PDF but applied for the imposed ones. If you have
+          only the standalone PDF, they are applied to it.') %]
+        </p>
+
+        <p>
+          [% loc('The Beamer selections are relevant only if you activate the
+          slides output.') %]
+          <a href="https://www.hartwork.org/beamer-theme-matrix/">
+            [% loc('Preview') %].
+          </a>
+        </p>
+      </div>
+    </div>
+    </fieldset>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <label>
