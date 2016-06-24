@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 48;
+use Test::More tests => 60;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -171,4 +171,17 @@ $alias = $site->redirections->find({ uri => 'pluto-2', type => 'author' });
 my @linked = $alias->linked_texts;
 is (scalar(@linked), 1, "Found one text");
 ok ($alias->can_safe_delete, "Alias can be deleted safely");
+
+$site->add_to_legacy_links({ legacy_path => 'bla/bla/200', new_path => 'library' });
+$site->add_to_legacy_links({ legacy_path => 'bla/bla/xxx', new_path => 'search' });
+$site->add_to_legacy_links({ legacy_path => 'bla/bla/undef', new_path => '' });
+for my $trailing ('', '/') {
+    $mech->get_ok('/bla/bla/200' . $trailing);
+    is $mech->uri->path, '/library';
+    $mech->get_ok('/bla/bla/xxx' . $trailing);
+    is $mech->uri->path, '/search';
+    $mech->get_ok('/bla/bla/undef' . $trailing);
+    is $mech->uri->path, '/latest';
+}
+
 

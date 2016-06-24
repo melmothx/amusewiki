@@ -260,6 +260,24 @@ sub not_found :Private {
                 }
             }
         }
+
+        # look into the legacy paths
+        if (my $path = $c->request->path) {
+            # beware that here we can't really prevent circular
+            # redirections, unless we add a param or so. Or use the
+            # session. Mah! Anyway, at some point the browser will get
+            # tired of cycling.
+
+            # remove trailing slash
+            $path =~ s!/*$!!;
+            if (my $replacement = $site->legacy_links->find({ legacy_path => $path })) {
+                my $new_path = $replacement->new_path;
+                $new_path =~ s!^/!!;
+                $c->response->redirect($c->uri_for("/$new_path"), 301);
+                $c->detach();
+                return;
+            }
+        }
     }
     $c->response->status(404);
     if ($c->request->path =~ m/\.(jpe?g|png|pdf)\z/) {
