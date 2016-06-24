@@ -337,6 +337,13 @@ CREATE TABLE text_month (
        PRIMARY KEY (title_id, monthly_archive_id)
 );
 
+CREATE TABLE legacy_link (
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       legacy_path VARCHAR(255) NOT NULL,
+       new_path VARCHAR(255) NOT NULL,
+       PRIMARY KEY (site_id, legacy_path)
+);
 
 INSERT INTO table_comments (table_name, comment_text)
        values
@@ -361,4 +368,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('site_link', 'Site links'),
          ('text_month', 'Linking table between texts and monthly archives'),
          ('monthly_archive', 'Monthly archives'),
+         ('legacy_link', 'Handle old paths for migrated sites'),
          ('title_stat', 'Usage statistics');

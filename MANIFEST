@@ -300,6 +300,7 @@ lib/AmuseWikiFarm/Schema/Result/CategoryDescription.pm
 lib/AmuseWikiFarm/Schema/Result/ColumnComment.pm
 lib/AmuseWikiFarm/Schema/Result/Job.pm
 lib/AmuseWikiFarm/Schema/Result/JobFile.pm
+lib/AmuseWikiFarm/Schema/Result/LegacyLink.pm
 lib/AmuseWikiFarm/Schema/Result/MonthlyArchive.pm
 lib/AmuseWikiFarm/Schema/Result/Redirection.pm
 lib/AmuseWikiFarm/Schema/Result/Revision.pm
