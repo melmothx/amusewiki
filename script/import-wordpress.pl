@@ -127,7 +127,7 @@ sub clean_inline {
     my $string = shift;
     return '' unless defined $string;
     $string =~ s/\s+/ /g;
-    $string =~ s!</?(quote|center|right)>!!;
+    $string =~ s!</?(quote|center|right)>!!g;
     return $string;
 }
 
