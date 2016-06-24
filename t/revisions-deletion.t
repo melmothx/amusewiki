@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 39;
+use Test::More tests => 48;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -45,7 +45,9 @@ diag $rev->id;
 ok (-d $rev->working_dir, "Found working directory: " . $rev->working_dir);
 
 foreach my $att (@attach) {
-    is $rev->add_attachment($att), undef, "$att uploaded";
+    my $out = $rev->add_attachment($att);
+    is $out->{error}, undef, "$att uploaded";
+    ok $out->{attachment}, "Attachment $out->{attachment}";
 }
 $rev->commit_version;
 
@@ -86,7 +88,9 @@ diag "New revision";
                                         }, 'text');
 
 foreach my $att (@attach) {
-    is $rev->add_attachment($att), undef, "$att uploaded";
+    my $out = $rev->add_attachment($att);
+    is $out->{error}, undef, "$att uploaded";
+    ok $out->{attachment}, "Attachment $out->{attachment}";
 }
 $rev->commit_version;
 $rev->publish_text;
@@ -119,7 +123,9 @@ ok (! -d $rev->working_dir, "Working directory deleted");
 ok(!$error, "No error") or die $error;
 
 foreach my $att (@attach) {
-    is $rev->add_attachment($att), undef, "$att uploaded";
+    my $out = $rev->add_attachment($att);
+    is $out->{error}, undef, "$att uploaded";
+    ok $out->{attachment}, "Attachment $out->{attachment}";
 }
 $rev->commit_version;
 $rev->publish_text;

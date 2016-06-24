@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 119;
+use Test::More tests => 122;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -173,7 +173,9 @@ foreach my $att (qw/png jpg pdf/) {
     my $obfuscated = File::Spec->catfile(t => files => 'xx' . $att . 'grbgd');
     copy ($attachment, $obfuscated);
     ok (-f $obfuscated);
-    is $revision->add_attachment($obfuscated), undef, "Attachment successful";
+    my $out = $revision->add_attachment($obfuscated);
+    is $out->{error}, undef, "Attachment successful";
+    ok $out->{attachment}, "Attached file with name $out->{attachment}";
     unlink $obfuscated;
 }
 

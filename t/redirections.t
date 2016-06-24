@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 60;
+use Test::More tests => 56;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -172,16 +172,26 @@ my @linked = $alias->linked_texts;
 is (scalar(@linked), 1, "Found one text");
 ok ($alias->can_safe_delete, "Alias can be deleted safely");
 
-$site->add_to_legacy_links({ legacy_path => 'bla/bla/200', new_path => 'library' });
-$site->add_to_legacy_links({ legacy_path => 'bla/bla/xxx', new_path => 'search' });
-$site->add_to_legacy_links({ legacy_path => 'bla/bla/undef', new_path => '' });
-for my $trailing ('', '/') {
-    $mech->get_ok('/bla/bla/200' . $trailing);
-    is $mech->uri->path, '/library';
-    $mech->get_ok('/bla/bla/xxx' . $trailing);
-    is $mech->uri->path, '/search';
-    $mech->get_ok('/bla/bla/undef' . $trailing);
-    is $mech->uri->path, '/latest';
+foreach my $legacy ({
+                     from => '/bla/bla/200',
+                     to => '/library',
+                    },
+                    {
+                     from => '/blax/',
+                     to => '/search',
+                    },
+                    {
+                     from => '/x?p=10',
+                     to => '/login',
+                    },
+                    {
+                     from => '/?page=topics',
+                     to => '/category/topic',
+                    }) {
+    $site->add_to_legacy_links({ legacy_path => $legacy->{from},
+                                 new_path => $legacy->{to} });
+    $mech->get_ok($legacy->{from});
+    is $mech->uri->path_query, $legacy->{to}, "$legacy->{from} redirected to $legacy->{to}";
 }
 
 
