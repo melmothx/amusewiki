@@ -24,6 +24,9 @@ my $wd = File::Temp->newdir;
 
 my $feeder = XML::RSS::LibXML->new;
 $feeder->parsefile($file);
+my $language = $feeder->{channel}->{language};
+die "No language found" unless $language;
+
 $site->legacy_links->delete;
 my @feeds = $feeder->items;
 POST:
@@ -31,7 +34,7 @@ foreach my $entry (@feeds) {
     my $meta = $entry->{wp};
     if ($meta and $meta->{post_type} and $meta->{post_type} eq 'post') {
         my %out;
-        $out{lang} = $feeder->{language};
+        $out{lang} = $language;
         my $body = $entry->{content}->{encoded};
         next POST unless $body;
         $out{html} = $body;
@@ -123,7 +126,7 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "-v4",
+                                             uri => "wp-" . $import_id++ . "-v5",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
