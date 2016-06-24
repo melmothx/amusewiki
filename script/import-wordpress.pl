@@ -84,9 +84,9 @@ foreach my $entry (@feeds) {
         }
         unless ($out{teaser}) {
             $out{teaser} = $out{body};
-            if (length($out{teaser}) > 1000) {
+            if (length($out{teaser}) > 800) {
                 $out{teaser} = substr $out{teaser}, 0, 2000;
-                $out{teaser} =~ s/\s+\S+\z//;
+                $out{teaser} =~ s/\n[^\n]+\z//;
             }
             $out{teaser} =~ s/\n\n/ <br> /g;
             $out{teaser} .= '...';
@@ -136,7 +136,7 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "-vx3",
+                                             uri => "wp-" . $import_id++ . "-vx6",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
