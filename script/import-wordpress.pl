@@ -21,6 +21,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find($site_id) or die "cannot find site $site_id";
 my $import_id = 1;
 my $wd = File::Temp->newdir;
+$site->update({ pdf => 0 });
 
 my $feeder = XML::RSS::LibXML->new;
 $feeder->parsefile($file);
@@ -85,6 +86,7 @@ foreach my $entry (@feeds) {
                 $out{teaser} = substr $out{teaser}, 0, 2000;
                 $out{teaser} =~ s/\w+\z/.../;
             }
+            $out{teaser} =~ s/\n\n/ <br> /g;
         }
         $out{title} = $entry->{title};
         if (my $categories = $entry->{category}) {
