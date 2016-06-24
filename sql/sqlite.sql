@@ -359,6 +359,6 @@ INSERT INTO table_comments (table_name, comment_text)
          ('category_description', 'Category descriptions'),
          ('attachment', 'Attachment to texts'),
          ('site_link', 'Site links'),
+         ('text_month', 'Linking table between texts and monthly archives'),
+         ('monthly_archive', 'Monthly archives'),
          ('title_stat', 'Usage statistics');
-
-

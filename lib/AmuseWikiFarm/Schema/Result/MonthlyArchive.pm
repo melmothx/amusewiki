@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::MonthlyArchive;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::MonthlyArchive
+AmuseWikiFarm::Schema::Result::MonthlyArchive - Monthly archives
 
 =cut
 
@@ -151,8 +151,8 @@ Composing rels: L</text_months> -> title
 __PACKAGE__->many_to_many("titles", "text_months", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-19 17:46:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bERU8NYi5/7djUm2R9IdHg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-24 07:40:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FfeDvxd89VFYSBT3v4dfpA
 
 sub datetime {
     my ($self, $locale) = @_;

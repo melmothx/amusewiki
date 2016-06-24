@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::TextMonth;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::TextMonth
+AmuseWikiFarm::Schema::Result::TextMonth - Linking table between texts and monthly archives
 
 =cut
 
@@ -108,8 +108,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-19 17:46:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OTl/GZ4/Snqw2U9a5euh5w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-24 07:40:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:RtwXtlQ/TGrHodcQy9OloA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
