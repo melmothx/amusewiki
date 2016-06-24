@@ -84,7 +84,7 @@ foreach my $entry (@feeds) {
             $out{teaser} = $out{body};
             if (length($out{teaser}) > 2000) {
                 $out{teaser} = substr $out{teaser}, 0, 2000;
-                $out{teaser} =~ s/\w+\z/.../;
+                $out{teaser} =~ s/\s+\S+\z/.../;
             }
             $out{teaser} =~ s/\n\n/ <br> /g;
         }
