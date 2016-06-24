@@ -12,9 +12,11 @@ $Data::Dumper::Sortkeys =1;
 use XML::RSS::LibXML;
 use Text::Amuse::Preprocessor::HTML qw/html_to_muse/;
 use File::Temp;
+use LWP::UserAgent;
 use File::Spec;
 binmode STDOUT, ':encoding(UTF-8)';
 
+my $ua = LWP::UserAgent->new;
 my ($site_id, $file, $hostname) = @ARGV;
 die unless $site_id && $file;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -133,7 +135,7 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "-vx2",
+                                             uri => "wp-" . $import_id++ . "-vx3",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
@@ -154,12 +156,23 @@ sub add_text {
         }
     }
     my @body;
+    my $muse = $text->{body};
+    my @pdfs;
+    $muse =~ s!
+           \[\[
+           (https?://\Q$hostname\E/[^\]]*?\.(pdf|png|jpe?g))\]
+           (\[.*?\])?
+           \]!attach_to_text($revision, $1, $3, \@pdfs)!gex;
+
     foreach my $f (qw/title pubdate topics teaser cover lang/) {
         if (my $v = clean_inline($text->{$f})) {
             push @body, "#$f $v";
         }
     }
-    push @body, "\n", $text->{body}, "\n";
+    if (@pdfs) {
+        push @body, "#ATTACH " . join(' ', @pdfs);
+    }
+    push @body, "\n", $muse, "\n";
     $revision->edit(join("\n", @body));
     $revision->commit_version;
     my $new_uri = $revision->publish_text;
@@ -170,4 +183,30 @@ sub add_text {
                                     new_path => $new_uri,
                                    });
     }
+}
+
+sub attach_to_text {
+    my ($rev, $url, $desc, $pdfs) = @_;
+    $desc ||= '';
+    die unless $rev && $url;
+    print "Replacing $url $desc\n";
+    my $tmp = File::Temp->newdir;
+    my $local = File::Spec->catfile($tmp, 'downloaded');
+    $ua->mirror($url, $local);
+    unless (-f $local) {
+        warn "FAILED to download $url";
+        return $desc;
+    }
+    my $got = $rev->add_attachment($local);
+    if ($got->{error}) {
+        print Dumper($got);
+        warn "FAILED to add $local file";
+        return $desc;
+    }
+    die unless $got->{attachment};
+    if ($got->{attachment} =~ m/\.pdf$/) {
+        push @$pdfs, $got->{attachment};
+        $got->{attachment} = '#amw-attached-pdfs';
+    }
+    return "\n\n[[" . $got->{attachment} . "]$desc]\n\n";
 }
