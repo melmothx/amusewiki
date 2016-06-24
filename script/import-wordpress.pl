@@ -123,7 +123,7 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "-v2",
+                                             uri => "wp-" . $import_id++ . "-v3",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
@@ -139,7 +139,7 @@ sub add_text {
         }
     }
     my @body;
-    foreach my $f (qw/title pubdate topics teaser cover/) {
+    foreach my $f (qw/title pubdate topics teaser cover lang/) {
         if (my $v = clean_inline($text->{$f})) {
             push @body, "#$f $v";
         }
