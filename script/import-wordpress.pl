@@ -89,7 +89,7 @@ foreach my $entry (@feeds) {
             unless (ref($cats)) {
                 $cats = [ $cats ];
             }
-            if (my $topics = join '; ', @{$entry->{category}}) {
+            if (my $topics = join '; ', @$cats) {
                 $out{topics} = $topics;
             }
         }
