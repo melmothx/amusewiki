@@ -60,25 +60,32 @@ foreach my $entry (@feeds) {
         }
         $out{body} = wp_html_to_muse($body);
         next POST unless $out{body};
-        $out{body} =~ s!<center>\s*</center>!!gs;
+
+        # garbage anyway at this pont
+        $out{body} =~ s!</?(center|right)>!!g;
         if ($out{body} =~ m{\A
                             \s*
-                            (?:<center>\s*)?
                             \[\[
                             (https?://\Q$hostname\E/[^\]]*?)
                             \]\]
-                            (?:\s*</center>)?
                             \s*
                             (.*)
                             \z}sx) {
             $out{cover} = $1;
             $out{body} = $2;
         }
-        $out{teaser} ||= $out{body};
-        $out{teaser} = clean_inline($out{teaser});
-        $out{title} = clean_inline($entry->{title});
-        if (my $topics = clean_inline(join '; ', @{$entry->{category}})) {
-            $out{topics} = $topics;
+        unless ($out{teaser}) {
+            $out{teaser} = $out{body};
+            if (length($out{teaser}) > 2000) {
+                $out{teaser} = substr $out{teaser}, 0, 2000;
+                $out{teaser} =~ s/\w+\z/.../;
+            }
+        }
+        $out{title} = $entry->{title};
+        if ($entry->{category}) {
+            if (my $topics = join '; ', @{$entry->{category}}) {
+                $out{topics} = $topics;
+            }
         }
         # download, resize, convert, purify, all in one
         # system covert -resize 300x300 $out{cover} out.png
@@ -101,7 +108,7 @@ sub clean_inline {
     my $string = shift;
     return '' unless defined $string;
     $string =~ s/\s+/ /g;
-    $string =~ s!</?(center|right)>!!;
+    $string =~ s!</?(quote|center|right)>!!;
     return $string;
 }
 
@@ -110,7 +117,7 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "x",
+                                             uri => "wp-" . $import_id++ . "-post",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
@@ -135,4 +142,10 @@ sub add_text {
     $revision->commit_version;
     my $new_uri = $revision->publish_text;
     print "New uri is $new_uri\n";
+    foreach my $old (@{$text->{legacy_links}}) {
+        $site->add_to_legacy_links({
+                                    legacy_path => $old,
+                                    new_path => $new_uri,
+                                   });
+    }
 }
