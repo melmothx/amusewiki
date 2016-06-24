@@ -87,13 +87,18 @@ foreach my $entry (@feeds) {
             }
         }
         $out{title} = $entry->{title};
-        if ($entry->{category}) {
-            my $cats = $entry->{category};
-            unless (ref($cats)) {
-                $cats = [ $cats ];
+        if (my $categories = $entry->{category}) {
+            my @cats;
+            if (ref($categories) eq 'ARRAY') {
+                foreach my $cat (@$categories) {
+                    push @cats, "$cat";
+                }
             }
-            if (my $topics = join '; ', @$cats) {
-                $out{topics} = $topics;
+            else {
+                push @cats, "$categories";
+            }
+            if (@cats) {
+                $out{topics} = join('; ', @cats);
             }
         }
         # download, resize, convert, purify, all in one
@@ -126,7 +131,7 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "-v5",
+                                             uri => "wp-" . $import_id++ . "-vx1",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
