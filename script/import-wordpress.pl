@@ -84,11 +84,12 @@ foreach my $entry (@feeds) {
         }
         unless ($out{teaser}) {
             $out{teaser} = $out{body};
-            if (length($out{teaser}) > 2000) {
+            if (length($out{teaser}) > 1000) {
                 $out{teaser} = substr $out{teaser}, 0, 2000;
-                $out{teaser} =~ s/\s+\S+\z/.../;
+                $out{teaser} =~ s/\s+\S+\z//;
             }
             $out{teaser} =~ s/\n\n/ <br> /g;
+            $out{teaser} .= '...';
         }
         $out{title} = $entry->{title};
         if (my $categories = $entry->{category}) {
