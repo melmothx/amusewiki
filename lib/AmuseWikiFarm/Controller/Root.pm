@@ -260,23 +260,12 @@ sub not_found :Private {
                 }
             }
         }
-
-        # look into the legacy paths
-        if (my $path = $c->request->path) {
-            # beware that here we can't really prevent circular
-            # redirections, unless we add a param or so. Or use the
-            # session. Mah! Anyway, at some point the browser will get
-            # tired of cycling.
-
-            # remove trailing slash
-            $path =~ s!/*$!!;
-            if (my $replacement = $site->legacy_links->find({ legacy_path => $path })) {
-                my $new_path = $replacement->new_path;
-                $new_path =~ s!^/!!;
-                $c->response->redirect($c->uri_for("/$new_path"), 301);
-                $c->detach();
-                return;
-            }
+        if (my $replacement = $c->stash->{site}->legacy_links
+            ->find({ legacy_path => $c->request->uri->path_query })) {
+            my $new_path = $replacement->new_path;
+            $c->response->redirect($c->uri_for($new_path), 301);
+            $c->detach();
+            return;
         }
     }
     $c->response->status(404);
@@ -410,6 +399,19 @@ sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
     # check if we have a special page named index
     my $nav = $c->stash->{navigation};
+    # see if we have something
+    my $path = $c->request->uri->path_query;
+    if ($path ne '/') {
+        log_debug { "Checking the legacy paths for $path" };
+        if (my $replacement = $c->stash->{site}->legacy_links
+            ->find({ legacy_path => $path })) {
+            my $new_path = $replacement->new_path;
+            $c->response->redirect($c->uri_for($new_path), 301);
+            $c->detach();
+            return;
+        }
+    }
+
     # default
     my $target = $c->uri_for_action('/latest/index');
     my $site = $c->stash->{site};
