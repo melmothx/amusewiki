@@ -140,8 +140,13 @@ sub add_text {
         my $target = File::Spec->catfile($wd, 'out.png');
         if (system(convert => -resize => '300x300',
                    URI->new($cover)->canonical, $target) == 0) {
-            $revision->add_attachment($target);
-            $text->{cover} = ${$revision->attached_files}[0];
+            if (my $cover_uri = $revision->add_attachment($target)->{attachment}) {
+                $text->{cover} = $cover_uri;
+            }
+            else {
+                warn "Failed to upload the cover!\n";
+                delete $text->{cover};
+            }
         }
         else {
             warn "Fetching $cover failed!";

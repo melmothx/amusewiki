@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 58;
+use Test::More tests => 64;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -66,19 +66,21 @@ sub test_revision {
     $rev = $rev->title->new_revision;
     # upload the files
     foreach my $att (@attach) {
-        is $rev->add_attachment($att), undef, "$att uploaded";
+        my $out = $rev->add_attachment($att);
+        is $out->{error}, undef, "$att uploaded";
+        ok $out->{attachment}, "Attachment $out->{attachment}";
     }
 
     # invalid scenario: non-existent
     my $does_not_exist = 'lasdlflasdflasd';
-    is_deeply ($rev->add_attachment($does_not_exist),
+    is_deeply ($rev->add_attachment($does_not_exist)->{error},
                [ "[_1] doesn't exist", $does_not_exist ],
                "Error on not existing file ok");
 
     # and wrong mime type
     my $garbage = File::Temp->new(SUFFIX => '.txt');
     print $garbage "blabalbabla\n";
-    is_deeply ($rev->add_attachment($garbage->filename),
+    is_deeply ($rev->add_attachment($garbage->filename)->{error},
                ["Unsupported file type [_1]", "text/plain"]);
 
     # print Dumper($rev->attached_images, $rev->attached_files, $rev->attached_pdfs);

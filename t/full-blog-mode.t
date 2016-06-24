@@ -37,10 +37,9 @@ my ($revision) = $site
 my $body = $revision->muse_body;
 like $body, qr{\#notes <strong>notes</strong>}, "Found the notes";
 like $body, qr{\#teaser this is =the= <em>teaser</em>}, "Found the teaser";
-$revision->add_attachment(catfile(qw/t files shot.png/));
 
-my @files = @{$revision->attached_files};
-my $attached = $files[0];
+
+my $attached = $revision->add_attachment(catfile(qw/t files shot.png/))->{attachment};
 ok ($attached, "Attached file $attached");
 $body = "#cover $attached\n#coverwidth 0.5\n" . $body;
 $revision->edit($body);
@@ -285,9 +284,7 @@ sub add_text {
     my ($rev) = $site->create_new_text($args, $type);
     unless ($no_cover) {
         my $body = $rev->muse_body;
-        $rev->add_attachment(catfile(qw/t files shot.png/));
-        my @files = @{$rev->attached_files};
-        my $attached = $files[0];
+        my $attached = $rev->add_attachment(catfile(qw/t files shot.png/))->{attachment};
         $body = "#cover $attached\n#coverwidth 0.5\n" . $body;
         $rev->edit($body);
     }
