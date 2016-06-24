@@ -123,7 +123,7 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "-v3",
+                                             uri => "wp-" . $import_id++ . "-v4",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
