@@ -24,12 +24,14 @@ my $wd = File::Temp->newdir;
 
 my $feeder = XML::RSS::LibXML->new;
 $feeder->parsefile($file);
+$site->legacy_links->delete;
 my @feeds = $feeder->items;
 POST:
 foreach my $entry (@feeds) {
     my $meta = $entry->{wp};
     if ($meta and $meta->{post_type} and $meta->{post_type} eq 'post') {
         my %out;
+        $out{lang} = $feeder->{language};
         my $body = $entry->{content}->{encoded};
         next POST unless $body;
         $out{html} = $body;
@@ -83,6 +85,10 @@ foreach my $entry (@feeds) {
         }
         $out{title} = $entry->{title};
         if ($entry->{category}) {
+            my $cats = $entry->{category};
+            unless (ref($cats)) {
+                $cats = [ $cats ];
+            }
             if (my $topics = join '; ', @{$entry->{category}}) {
                 $out{topics} = $topics;
             }
@@ -117,12 +123,13 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "-post",
+                                             uri => "wp-" . $import_id++ . "-v2",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
         my $target = File::Spec->catfile($wd, 'out.png');
-        if (system(convert => -resize => '300x300', $cover, $target) == 0) {
+        if (system(convert => -resize => '300x300',
+                   URI->new($cover)->canonical, $target) == 0) {
             $revision->add_attachment($target);
             $text->{cover} = ${$revision->attached_files}[0];
         }
