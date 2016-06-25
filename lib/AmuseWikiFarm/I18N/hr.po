@@ -90,11 +90,17 @@ msgstr "Napuštena izmjena u toku, slobodno provjeri razlike i preuzmi"
 msgid "Action"
 msgstr "Akcija"
 
+msgid "Activate the blog-style look and feel"
+msgstr ""
+
 msgid "Active"
 msgstr "Aktivno"
 
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Dodaj sliku za naslovnicu (PNG ili JPG)"
+
+msgid "Add a new text"
+msgstr ""
 
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Dodaj privitak (PNG, JPG ili PDF)"
@@ -132,9 +138,6 @@ msgstr "Dodaj cijeli tekst"
 
 msgid "Add this text to the bookbuilder"
 msgstr "Dodaj ovaj tekst zbirci"
-
-msgid "Add to library"
-msgstr "Dodaj biblioteci"
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -194,6 +197,12 @@ msgstr ""
 
 msgid "Apache is not currently supported"
 msgstr "Trenutno Apache se ne podržava"
+
+msgid "Archive"
+msgstr ""
+
+msgid "Archive by month"
+msgstr ""
 
 msgid "Archive history"
 msgstr "Povijest arhiva"
@@ -266,11 +275,11 @@ msgstr "Stvori"
 msgid "Bulleted List"
 msgstr "Običan popis"
 
+msgid "CSS Theme"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Glavno osnovno ime"
-
-msgid "Catalog"
-msgstr "Katalog"
 
 msgid "Categories"
 msgstr "Teme"
@@ -621,8 +630,14 @@ msgstr "Formati"
 msgid "Full list of texts"
 msgstr "Svi tekstovi"
 
+msgid "Full tag cloud"
+msgstr ""
+
 msgid "Full text search"
 msgstr "Pretraga čitavog testa"
+
+msgid "General configuration"
+msgstr ""
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generičan format (može stati i na A4 i na Letter)"
@@ -643,6 +658,20 @@ msgid ""
 msgstr ""
 "Dodaj sljedeći HTML kod svakoj posebnoj stranici (/special/*), bez\n"
 "ikakve promjene (pazi što radiš)."
+
+msgid "HTML to insert into the left sidebar"
+msgstr ""
+
+msgid "HTML to insert into the right sidebar"
+msgstr ""
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr ""
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
+msgstr ""
 
 msgid "HTML/Word Importer"
 msgstr "Pretvori HTML/Word u wiki format"
@@ -691,14 +720,14 @@ msgstr "Želim PDF spreman za štampu"
 msgid "Id"
 msgstr "Id"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ako je prazno, koristit će se %1 iz direktorija aplikacije."
 
@@ -737,6 +766,14 @@ msgstr ""
 "Ako imaš .doc ili .odt datoteku, možeš pretvoriti je u HTML spremajući\n"
 "je kao HTML."
 
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
+msgstr ""
+
 #. (reset_url)
 msgid "If you want to proceed, please visit the following url: %1"
 msgstr "Ako želiš nastaviti, idi na ovu adresu: %1"
@@ -770,8 +807,8 @@ msgstr ""
 "U tekstu se broj unutar uglatih zagrada interpretira kao fusnota, ako "
 "fusnota postoji"
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -859,6 +896,9 @@ msgstr "Posljednja izmjena"
 
 msgid "Latest entries"
 msgstr "Poslednji unosi"
+
+msgid "Layout"
+msgstr ""
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Ostavi prazno ako želiš odmah objaviti."
@@ -989,6 +1029,12 @@ msgstr "Nova izmjena"
 msgid "New site id"
 msgstr "Novi id sajta"
 
+msgid "Newer texts"
+msgstr ""
+
+msgid "Next"
+msgstr "Iduće"
+
 msgid "Nice title"
 msgstr "Lijep naslov"
 
@@ -1043,6 +1089,9 @@ msgstr "Brojčan popis"
 msgid "OPDS"
 msgstr "OPDS"
 
+msgid "Older texts"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Otvoreni wiki"
 
@@ -1082,8 +1131,8 @@ msgstr "PDF logo"
 msgid "PDFs cannot be used in the body."
 msgstr "Nije moguće koristi PDF-ove unutar tekstova."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF-ovi koji nisu na popisu %1 polja bit će pohranjeni ali zanemareni."
 
@@ -1160,6 +1209,12 @@ msgstr "Izmjene na čekanju"
 
 msgid "Picture"
 msgstr "Slika"
+
+msgid "Place it in the body with a description:"
+msgstr ""
+
+msgid "Place it in the body without description:"
+msgstr ""
 
 msgid "Plain PDF"
 msgstr "Običan PDF"
@@ -1317,6 +1372,9 @@ msgstr "Pripremi ovaj tekst za arhivu"
 msgid "Preview"
 msgstr "Pregled"
 
+msgid "Previous"
+msgstr "Prethodno"
+
 msgid "Priority"
 msgstr "Prioritet"
 
@@ -1375,6 +1433,9 @@ msgstr "RSS feed"
 
 msgid "Random"
 msgstr "Slučajna stranica"
+
+msgid "Read the whole text..."
+msgstr ""
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1436,6 +1497,12 @@ msgstr "Poništi sve"
 
 msgid "Reset password"
 msgstr "Ponovo postavi lozinku"
+
+msgid "Restricted configuration variables"
+msgstr ""
+
+msgid "Restricted format options"
+msgstr ""
 
 msgid "Retrieved on DATE from URL"
 msgstr "Pronađeno DANA na URL-u"
@@ -1647,11 +1714,23 @@ msgstr "Sadržaj"
 msgid "Tables"
 msgstr "Tablice"
 
+msgid "Tag cloud with authors"
+msgstr ""
+
+msgid "Tag cloud with topics"
+msgstr ""
+
 msgid "Task"
 msgstr "Zadatak"
 
 msgid "TeX"
 msgstr "TeX"
+
+msgid "Teaser"
+msgstr ""
+
+msgid "Teaser image"
+msgstr ""
 
 msgid "Term"
 msgstr "Pojam"
@@ -1731,6 +1810,9 @@ msgstr "Izmjena sadrži slijedeće poruke"
 
 msgid "The text structure is shown below."
 msgstr "Struktura teksta je pokazana dolje."
+
+msgid "The text to show on the homepage preview"
+msgstr ""
 
 msgid "The text was added to the bookbuilder"
 msgstr "Tekst je dodan zbirci"
@@ -1949,13 +2031,16 @@ msgstr "Koristi LuaLaTeX umjesto XeLaTeXa (sporije)"
 msgid "Use SSL for authenticated users"
 msgstr "Koristi SSL za ovlaštene korisnike"
 
-msgid "Use it in the body as"
-msgstr "Koristi je u tekstu kao"
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 "Kod prijeloma teksta koristi optimizirane sveske sa %1 stranica za svaki."
+
+msgid "Useful HTML snippets"
+msgstr ""
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
@@ -2046,6 +2131,13 @@ msgstr "Godina"
 
 msgid "Yes"
 msgstr "Da"
+
+msgid ""
+"You\n"
+"    have attached one or more images. This is not enough! To make them\n"
+"    appear, you have to place somewhere in the body or in the header,\n"
+"    depending on their purpose. See the examples below."
+msgstr ""
 
 msgid "You already proved you are human"
 msgstr "Već si dokazao da si ljudsko biće"
@@ -2326,6 +2418,15 @@ msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
 
+#~ msgid "Add to library"
+#~ msgstr "Dodaj biblioteci"
+
+#~ msgid "Catalog"
+#~ msgstr "Katalog"
+
+#~ msgid "Use it in the body as"
+#~ msgstr "Koristi je u tekstu kao"
+
 #~ msgid "This site is private and mobile applications cannot access the OPDS."
 #~ msgstr "Ovaj sajt je privatan i mobiteli ne mogu pristupiti OPDS-u."
 
@@ -2334,12 +2435,6 @@ msgstr ""
 
 #~ msgid "Displaying"
 #~ msgstr "Prikazujem"
-
-#~ msgid "Next"
-#~ msgstr "Iduće"
-
-#~ msgid "Previous"
-#~ msgstr "Prethodno"
 
 #~ msgid "Results"
 #~ msgstr "Rezultati"

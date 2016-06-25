@@ -90,11 +90,17 @@ msgstr ""
 msgid "Action"
 msgstr "Aktion"
 
+msgid "Activate the blog-style look and feel"
+msgstr ""
+
 msgid "Active"
 msgstr ""
 
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Titelbild hinzufügen (PNG oder JPG)"
+
+msgid "Add a new text"
+msgstr ""
 
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Anhang hinzufügen (PNG, JPG oder PDF)"
@@ -130,9 +136,6 @@ msgstr ""
 
 msgid "Add this text to the bookbuilder"
 msgstr "Füge diesen Text zum Buchbinder hinzu"
-
-msgid "Add to library"
-msgstr "Zur Bibliothek hinzufügen"
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -189,6 +192,12 @@ msgstr ""
 " das normalerweise nicht notwendig ist."
 
 msgid "Apache is not currently supported"
+msgstr ""
+
+msgid "Archive"
+msgstr ""
+
+msgid "Archive by month"
 msgstr ""
 
 msgid "Archive history"
@@ -262,11 +271,11 @@ msgstr "Binden"
 msgid "Bulleted List"
 msgstr "Aufzählung"
 
+msgid "CSS Theme"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Kanonischer Name"
-
-msgid "Catalog"
-msgstr "Katalog"
 
 msgid "Categories"
 msgstr "Kategorien"
@@ -606,8 +615,14 @@ msgstr "Formate"
 msgid "Full list of texts"
 msgstr "Liste aller Texte"
 
+msgid "Full tag cloud"
+msgstr ""
+
 msgid "Full text search"
 msgstr "Volltextsuche"
+
+msgid "General configuration"
+msgstr ""
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr ""
@@ -625,6 +640,20 @@ msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
+msgstr ""
+
+msgid "HTML to insert into the left sidebar"
+msgstr ""
+
+msgid "HTML to insert into the right sidebar"
+msgstr ""
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr ""
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
 msgstr ""
 
 msgid "HTML/Word Importer"
@@ -672,14 +701,14 @@ msgstr "Ich will ein druckfertiges PDF"
 msgid "Id"
 msgstr "ID"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -711,6 +740,14 @@ msgstr ""
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
+msgstr ""
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
 msgstr ""
 
 #. (reset_url)
@@ -749,8 +786,8 @@ msgstr ""
 " als Fußnotenreferenz interpretiert, wenn eine solche\n"
 " Fußnote existiert.  "
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -838,6 +875,9 @@ msgstr "Zuletzt aktualisiert"
 
 msgid "Latest entries"
 msgstr "Letzte Einträge"
+
+msgid "Layout"
+msgstr ""
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Lass es leer, wenn du es gleich veröffentlichen willst."
@@ -968,6 +1008,12 @@ msgstr "Neue Änderung"
 msgid "New site id"
 msgstr "Neue Seitenid"
 
+msgid "Newer texts"
+msgstr ""
+
+msgid "Next"
+msgstr "Nächste"
+
 msgid "Nice title"
 msgstr "Netter Titel"
 
@@ -1022,6 +1068,9 @@ msgstr "Nummerische Liste"
 msgid "OPDS"
 msgstr ""
 
+msgid "Older texts"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Offenes wiki"
 
@@ -1062,8 +1111,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDFs können im Textkörper nicht verwendet werden."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "Nicht in der %1 Anweisung aufgelistete PDFs werden gespeichert aber "
@@ -1133,6 +1182,12 @@ msgstr "Laufende Änderungen"
 
 msgid "Picture"
 msgstr "Bild"
+
+msgid "Place it in the body with a description:"
+msgstr ""
+
+msgid "Place it in the body without description:"
+msgstr ""
 
 msgid "Plain PDF"
 msgstr "Einfaches PDF"
@@ -1279,6 +1334,9 @@ msgstr "Bereite diesen Text fürs Archivieren vor"
 msgid "Preview"
 msgstr "Vorschau"
 
+msgid "Previous"
+msgstr "Vorherige"
+
 msgid "Priority"
 msgstr "Priorität"
 
@@ -1338,6 +1396,9 @@ msgstr "RSS feed"
 msgid "Random"
 msgstr "Zufälliger Text"
 
+msgid "Read the whole text..."
+msgstr ""
+
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -1391,6 +1452,12 @@ msgid "Reset all"
 msgstr ""
 
 msgid "Reset password"
+msgstr ""
+
+msgid "Restricted configuration variables"
+msgstr ""
+
+msgid "Restricted format options"
 msgstr ""
 
 msgid "Retrieved on DATE from URL"
@@ -1606,11 +1673,23 @@ msgstr "Inhaltsverzeichnis"
 msgid "Tables"
 msgstr "Tabellen"
 
+msgid "Tag cloud with authors"
+msgstr ""
+
+msgid "Tag cloud with topics"
+msgstr ""
+
 msgid "Task"
 msgstr "Aufgabe"
 
 msgid "TeX"
 msgstr "TeX"
+
+msgid "Teaser"
+msgstr ""
+
+msgid "Teaser image"
+msgstr ""
 
 msgid "Term"
 msgstr ""
@@ -1684,6 +1763,9 @@ msgid "The revision has the following messages"
 msgstr "Die Änderung beinhaltet die folgenden Nachrichten"
 
 msgid "The text structure is shown below."
+msgstr ""
+
+msgid "The text to show on the homepage preview"
 msgstr ""
 
 msgid "The text was added to the bookbuilder"
@@ -1900,11 +1982,14 @@ msgstr ""
 msgid "Use SSL for authenticated users"
 msgstr ""
 
-msgid "Use it in the body as"
-msgstr "Verwende es im Textkörper als"
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
+msgstr ""
+
+msgid "Useful HTML snippets"
 msgstr ""
 
 msgid ""
@@ -1993,6 +2078,13 @@ msgid "Year"
 msgstr "Jahr"
 
 msgid "Yes"
+msgstr ""
+
+msgid ""
+"You\n"
+"    have attached one or more images. This is not enough! To make them\n"
+"    appear, you have to place somewhere in the body or in the header,\n"
+"    depending on their purpose. See the examples below."
 msgstr ""
 
 msgid "You already proved you are human"
@@ -2276,17 +2368,20 @@ msgstr ""
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
 
+#~ msgid "Add to library"
+#~ msgstr "Zur Bibliothek hinzufügen"
+
+#~ msgid "Catalog"
+#~ msgstr "Katalog"
+
+#~ msgid "Use it in the body as"
+#~ msgstr "Verwende es im Textkörper als"
+
 #~ msgid "The user will have the same your level of access"
 #~ msgstr "Die Benutzerin wird die selben Zugangsrechte haben wie du."
 
 #~ msgid "Displaying"
 #~ msgstr "Anzeige"
-
-#~ msgid "Next"
-#~ msgstr "Nächste"
-
-#~ msgid "Previous"
-#~ msgstr "Vorherige"
 
 #~ msgid "Results"
 #~ msgstr "Ergebnisse"

@@ -90,11 +90,17 @@ msgstr ""
 msgid "Action"
 msgstr "Handling"
 
+msgid "Activate the blog-style look and feel"
+msgstr ""
+
 msgid "Active"
 msgstr ""
 
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Lägg till en omslagsbild (PNG eller JPG)"
+
+msgid "Add a new text"
+msgstr ""
 
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Lägg till en bilaga (PNG, JPG eller PDF)"
@@ -131,9 +137,6 @@ msgstr ""
 
 msgid "Add this text to the bookbuilder"
 msgstr "Lägg till denna text i bokskaparen"
-
-msgid "Add to library"
-msgstr "Lägg till i bibliotek"
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -189,6 +192,12 @@ msgstr ""
 "behövs det dock inte"
 
 msgid "Apache is not currently supported"
+msgstr ""
+
+msgid "Archive"
+msgstr ""
+
+msgid "Archive by month"
 msgstr ""
 
 msgid "Archive history"
@@ -262,11 +271,11 @@ msgstr "Skapa den"
 msgid "Bulleted List"
 msgstr "Punktlista"
 
+msgid "CSS Theme"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "CNAME"
-
-msgid "Catalog"
-msgstr "Katalog"
 
 msgid "Categories"
 msgstr "Kategorier"
@@ -607,8 +616,14 @@ msgstr "Format"
 msgid "Full list of texts"
 msgstr "Komplett lista med texter"
 
+msgid "Full tag cloud"
+msgstr ""
+
 msgid "Full text search"
 msgstr "Fulltext sökning"
+
+msgid "General configuration"
+msgstr ""
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generisk (passar i A4 och Brev)"
@@ -626,6 +641,20 @@ msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
+msgstr ""
+
+msgid "HTML to insert into the left sidebar"
+msgstr ""
+
+msgid "HTML to insert into the right sidebar"
+msgstr ""
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr ""
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
 msgstr ""
 
 msgid "HTML/Word Importer"
@@ -673,14 +702,14 @@ msgstr "Jag vill ha en imposed (redo att trycka) PDF"
 msgid "Id"
 msgstr "Id"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -708,6 +737,14 @@ msgstr "Om du efterfrågade ett införande, välj ett införandesystem"
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
+msgstr ""
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
 msgstr ""
 
 #. (reset_url)
@@ -743,8 +780,8 @@ msgstr ""
 "I texten tolkas en siffra inom parentes som en fotnotsreferens,om sådan "
 "fotnot existerar. "
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -828,6 +865,9 @@ msgstr "Senaste uppdaterad"
 
 msgid "Latest entries"
 msgstr "Senaste anteckning"
+
+msgid "Layout"
+msgstr ""
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Lämna fältet tomt om du vill publicera direkt."
@@ -958,6 +998,12 @@ msgstr "Ny revidering"
 msgid "New site id"
 msgstr "Ny sid-id"
 
+msgid "Newer texts"
+msgstr ""
+
+msgid "Next"
+msgstr "Nästa"
+
 msgid "Nice title"
 msgstr "Bra titel"
 
@@ -1012,6 +1058,9 @@ msgstr "Numerisk lista"
 msgid "OPDS"
 msgstr ""
 
+msgid "Older texts"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Öppen wiki"
 
@@ -1052,8 +1101,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDF:er kan inte användas i brödtexten."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF är inte listad i %1 direktiv kommer att lagras men ignoreras"
 
@@ -1131,6 +1180,12 @@ msgstr "Väntande revideringar"
 
 msgid "Picture"
 msgstr "Bilder"
+
+msgid "Place it in the body with a description:"
+msgstr ""
+
+msgid "Place it in the body without description:"
+msgstr ""
 
 msgid "Plain PDF"
 msgstr "Plain PDF"
@@ -1280,6 +1335,9 @@ msgstr "Förbered denna text för arkiveringen"
 msgid "Preview"
 msgstr "Förhandsvisa"
 
+msgid "Previous"
+msgstr "Förra"
+
 msgid "Priority"
 msgstr "Prioritet"
 
@@ -1338,6 +1396,9 @@ msgstr "RSS feed"
 
 msgid "Random"
 msgstr "Slumpmässigt"
+
+msgid "Read the whole text..."
+msgstr ""
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1400,6 +1461,12 @@ msgid "Reset all"
 msgstr ""
 
 msgid "Reset password"
+msgstr ""
+
+msgid "Restricted configuration variables"
+msgstr ""
+
+msgid "Restricted format options"
 msgstr ""
 
 msgid "Retrieved on DATE from URL"
@@ -1613,11 +1680,23 @@ msgstr "Innehållsförteckning"
 msgid "Tables"
 msgstr "Tabeller"
 
+msgid "Tag cloud with authors"
+msgstr ""
+
+msgid "Tag cloud with topics"
+msgstr ""
+
 msgid "Task"
 msgstr "Uppgift"
 
 msgid "TeX"
 msgstr "TeX"
+
+msgid "Teaser"
+msgstr ""
+
+msgid "Teaser image"
+msgstr ""
 
 msgid "Term"
 msgstr ""
@@ -1691,6 +1770,9 @@ msgid "The revision has the following messages"
 msgstr "Revideringen har följande meddelanden"
 
 msgid "The text structure is shown below."
+msgstr ""
+
+msgid "The text to show on the homepage preview"
 msgstr ""
 
 msgid "The text was added to the bookbuilder"
@@ -1903,12 +1985,15 @@ msgstr ""
 msgid "Use SSL for authenticated users"
 msgstr "Använd SSL för verifierade användare"
 
-msgid "Use it in the body as"
-msgstr "Använd i brödtexten som"
+msgid "Use it as a teaser image adding to the header this line:"
+msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Använd optimerade signaturer med %1 sidor vardera"
+
+msgid "Useful HTML snippets"
+msgstr ""
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
@@ -1995,6 +2080,13 @@ msgid "Year"
 msgstr "År"
 
 msgid "Yes"
+msgstr ""
+
+msgid ""
+"You\n"
+"    have attached one or more images. This is not enough! To make them\n"
+"    appear, you have to place somewhere in the body or in the header,\n"
+"    depending on their purpose. See the examples below."
 msgstr ""
 
 msgid "You already proved you are human"
@@ -2274,17 +2366,20 @@ msgstr ""
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
 
+#~ msgid "Add to library"
+#~ msgstr "Lägg till i bibliotek"
+
+#~ msgid "Catalog"
+#~ msgstr "Katalog"
+
+#~ msgid "Use it in the body as"
+#~ msgstr "Använd i brödtexten som"
+
 #~ msgid "The user will have the same your level of access"
 #~ msgstr "Användare kommer att ha samma tillgångsnivå som du"
 
 #~ msgid "Displaying"
 #~ msgstr "Visar"
-
-#~ msgid "Next"
-#~ msgstr "Nästa"
-
-#~ msgid "Previous"
-#~ msgstr "Förra"
 
 #~ msgid "Results"
 #~ msgstr "Resultat"

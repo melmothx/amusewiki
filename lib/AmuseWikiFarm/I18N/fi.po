@@ -88,11 +88,17 @@ msgstr "Keskeytynyt muokkaus käynnissä, kannattaa tarkistaa erot ja lopputulos
 msgid "Action"
 msgstr "Mitä tehdään"
 
+msgid "Activate the blog-style look and feel"
+msgstr ""
+
 msgid "Active"
 msgstr ""
 
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Lisää kansikuva (PNG tai JPG)"
+
+msgid "Add a new text"
+msgstr ""
 
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Lisää liitetiedosto (PNG, JPG tai PDF)"
@@ -128,9 +134,6 @@ msgstr ""
 
 msgid "Add this text to the bookbuilder"
 msgstr "Lisää kirjantekijään"
-
-msgid "Add to library"
-msgstr "Lisää kirjastoon"
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
@@ -184,6 +187,12 @@ msgstr ""
 "      bob-black-eroon-tyosta-2. Yleensä tätä ei tarvitse erikseen tehdä"
 
 msgid "Apache is not currently supported"
+msgstr ""
+
+msgid "Archive"
+msgstr ""
+
+msgid "Archive by month"
 msgstr ""
 
 msgid "Archive history"
@@ -257,11 +266,11 @@ msgstr "Tee kirja"
 msgid "Bulleted List"
 msgstr "Luettelo"
 
+msgid "CSS Theme"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Kanoninen nimi"
-
-msgid "Catalog"
-msgstr "Kokoelma"
 
 msgid "Categories"
 msgstr "Kategoriat"
@@ -598,8 +607,14 @@ msgstr ""
 msgid "Full list of texts"
 msgstr "Kaikki tekstit"
 
+msgid "Full tag cloud"
+msgstr ""
+
 msgid "Full text search"
 msgstr "Hae kokotekstillä"
+
+msgid "General configuration"
+msgstr ""
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Yleinen (sopii kokoihin A4 ja Letter)"
@@ -617,6 +632,20 @@ msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
+msgstr ""
+
+msgid "HTML to insert into the left sidebar"
+msgstr ""
+
+msgid "HTML to insert into the right sidebar"
+msgstr ""
+
+msgid "HTML to insert on the bottom of the layout, above the footer"
+msgstr ""
+
+msgid ""
+"HTML to insert on the top of the layout, behind the navigation bar and below "
+"the banner"
 msgstr ""
 
 msgid "HTML/Word Importer"
@@ -664,14 +693,14 @@ msgstr "Haluan tulostusvalmiin PDF:n"
 msgid "Id"
 msgstr "Tunniste"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -699,6 +728,14 @@ msgstr "Jos haluat tulostusvalmiina, valitse malli"
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
+msgstr ""
+
+msgid ""
+"If you use it as a teaser image, the image will also\n"
+"      be placed on the first page of the PDF. You can set its width\n"
+"      adding the following line to the header, where the value is the\n"
+"      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
+"      on"
 msgstr ""
 
 #. (reset_url)
@@ -732,8 +769,8 @@ msgstr ""
 "Tekstin sisällä hakasulkeissa oleva numero tulkitaan\n"
 "         loppuviitteeksi, mikäli lopussa on vastaava viite."
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -821,6 +858,9 @@ msgstr "Viimeksi päivitetty"
 
 msgid "Latest entries"
 msgstr "Viimeisimmät lisäykset"
+
+msgid "Layout"
+msgstr ""
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Jätä tyhjäksi, jos haluat julkaisun heti."
@@ -951,6 +991,12 @@ msgstr "Uusi versio"
 msgid "New site id"
 msgstr "Uusi tunnus"
 
+msgid "Newer texts"
+msgstr ""
+
+msgid "Next"
+msgstr "Seuraava"
+
 msgid "Nice title"
 msgstr "Otsikko"
 
@@ -1005,6 +1051,9 @@ msgstr "Numerolista"
 msgid "OPDS"
 msgstr ""
 
+msgid "Older texts"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Avoin wiki"
 
@@ -1046,8 +1095,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -1126,6 +1175,12 @@ msgstr "Odottamassa olevat versiot"
 
 msgid "Picture"
 msgstr "Kuva"
+
+msgid "Place it in the body with a description:"
+msgstr ""
+
+msgid "Place it in the body without description:"
+msgstr ""
 
 msgid "Plain PDF"
 msgstr "Puhdas PDF"
@@ -1265,6 +1320,9 @@ msgstr "Valmistele teksti arkistointia varten"
 msgid "Preview"
 msgstr "Esikatselu"
 
+msgid "Previous"
+msgstr "Edellinen"
+
 msgid "Priority"
 msgstr "Tärkeysjärjestys"
 
@@ -1325,6 +1383,9 @@ msgstr "RSS syöte"
 msgid "Random"
 msgstr "Sattumanvarainen"
 
+msgid "Read the whole text..."
+msgstr ""
+
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -1378,6 +1439,12 @@ msgid "Reset all"
 msgstr ""
 
 msgid "Reset password"
+msgstr ""
+
+msgid "Restricted configuration variables"
+msgstr ""
+
+msgid "Restricted format options"
 msgstr ""
 
 msgid "Retrieved on DATE from URL"
@@ -1590,10 +1657,22 @@ msgstr "Sisällysluettelo"
 msgid "Tables"
 msgstr "Taulukot"
 
+msgid "Tag cloud with authors"
+msgstr ""
+
+msgid "Tag cloud with topics"
+msgstr ""
+
 msgid "Task"
 msgstr "Tehtävä"
 
 msgid "TeX"
+msgstr ""
+
+msgid "Teaser"
+msgstr ""
+
+msgid "Teaser image"
 msgstr ""
 
 msgid "Term"
@@ -1668,6 +1747,9 @@ msgid "The revision has the following messages"
 msgstr "Versiossa on seuraavat viestit"
 
 msgid "The text structure is shown below."
+msgstr ""
+
+msgid "The text to show on the homepage preview"
 msgstr ""
 
 msgid "The text was added to the bookbuilder"
@@ -1876,12 +1958,15 @@ msgstr ""
 msgid "Use SSL for authenticated users"
 msgstr ""
 
-msgid "Use it in the body as"
+msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Käytä optimoitua signaturea, joissa on %1 sivua kussakin. "
+
+msgid "Useful HTML snippets"
+msgstr ""
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
@@ -1969,6 +2054,13 @@ msgid "Year"
 msgstr "Vuosi"
 
 msgid "Yes"
+msgstr ""
+
+msgid ""
+"You\n"
+"    have attached one or more images. This is not enough! To make them\n"
+"    appear, you have to place somewhere in the body or in the header,\n"
+"    depending on their purpose. See the examples below."
 msgstr ""
 
 msgid "You already proved you are human"
@@ -2245,14 +2337,14 @@ msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
 
+#~ msgid "Add to library"
+#~ msgstr "Lisää kirjastoon"
+
+#~ msgid "Catalog"
+#~ msgstr "Kokoelma"
+
 #~ msgid "Displaying"
 #~ msgstr "Näytetään"
-
-#~ msgid "Next"
-#~ msgstr "Seuraava"
-
-#~ msgid "Previous"
-#~ msgstr "Edellinen"
 
 #~ msgid "Results"
 #~ msgstr "Tulokset"
