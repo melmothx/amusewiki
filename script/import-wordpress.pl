@@ -137,7 +137,7 @@ sub add_text {
     die unless $text;
     my ($revision) = $site->create_new_text({
                                              title => $text->{title},
-                                             uri => "wp-" . $import_id++ . "-vx7",
+                                             uri => "wp-" . $import_id++ . "-import",
                                              textbody => $text->{html},
                                             }, 'text');
     if (my $cover = $text->{cover}) {
