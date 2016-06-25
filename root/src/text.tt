@@ -389,7 +389,8 @@
     </div>
     [% IF text_prev_uri %]
     <div id="text-prev-post-link">
-      <a href="[% c.uri_for(text_prev_uri) %]">
+      <a href="[% c.uri_for(text_prev_uri) %]" title="[% loc('Previous') %]"
+         data-toggle="tooltip" data-placement="top">
         <span class="glyphicon glyphicon-chevron-left hidden-xs"></span>
         <span class="btn btn-default visible-xs">[% loc("Older texts") %]</span>
       </a>
@@ -403,7 +404,8 @@
     <div class="hidden-xs">
     </div>
     <div id="text-next-post-link">
-      <a href="[% c.uri_for(text_next_uri) %]">
+      <a href="[% c.uri_for(text_next_uri) %]" title="[% loc('Next') %]"
+         data-toggle="tooltip" data-placement="top">
         <span class="glyphicon glyphicon-chevron-right hidden-xs"></span>
         <span class="btn btn-default visible-xs">[% loc("Newer texts") %]</span>
       </a>
