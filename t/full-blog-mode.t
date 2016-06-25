@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 99;
+use Test::More tests => 124;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -271,12 +271,59 @@ copy(catfile(qw/t files widebanner.png/),
 $mech->get_ok('/');
 $mech->content_contains('widebanner.png');
 
-for (1..2) {
-    $site->populate_monthly_archives;
+my $deleted_text;
+for my $month (1,2) {
+    $mech->get_ok('/monthly');
+    $mech->content_contains("monthly-list-item-2015-$month");
+    my $archive = $site->monthly_archives->find({ year => 2015, month => $month });
+    ok($archive, "Found month");
+    foreach my $text ($archive->titles) {
+        ok($text, "Updating text setting the deletion");
+        my $rev = $text->new_revision;
+        $rev->edit("#DELETED nuked\n" . $rev->muse_body);
+        $rev->commit_version;
+        $rev->publish_text;
+        $deleted_text = $text;
+    }
+    $archive = $site->monthly_archives->find({ year => 2015, month => $month });
+    is $archive->text_months->count, 0, "Count reset";
+    $mech->get_ok('/monthly');
+    $mech->content_lacks("monthly-list-item-2015-$month");
+    $mech->get_ok("/monthly/2015/$month");
+    $mech->content_contains("No text found!");
 }
 
-my $archive = $site->monthly_archives->find({ year => 2015, month => 5 });
-ok ($archive->titles->count, "Found the archives");
+for my $delete (0,0,1) {
+    my $text = $deleted_text->discard_changes;
+    my $rev = $text->new_revision;
+    if ($delete) {
+        $rev->edit("#DELETED nuked\n" . $rev->muse_body);
+    }
+    else {
+        my $body = $rev->muse_body;
+        $body =~ s/#DELETED.*?\n//g;
+        $rev->edit($body);
+    }
+    $rev->commit_version;
+    $rev->publish_text;
+    $text->discard_changes;
+    my $pubdate = $text->pubdate;
+    $mech->get_ok("/monthly/" . $pubdate->year . '/' . $pubdate->month);
+    if ($delete) {
+        $mech->content_contains("No text found!");
+    }
+    else {
+        $mech->content_contains($text->title);
+    }
+}
+
+for (1..2) {
+    $site->populate_monthly_archives;
+    my $archive = $site->monthly_archives->find({ year => 2015, month => 5 });
+    ok ($archive->titles->count, "Found the archives");
+}
+
+
 
 sub add_text {
     my ($args, $type, $no_cover) = @_;
