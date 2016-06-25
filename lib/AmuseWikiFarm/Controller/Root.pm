@@ -157,26 +157,6 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     # set the localization
     $c->set_language($locale, $site_id);
 
-    my @related = $site->other_sites;
-    my @specials = $site->special_list;
-    for my $sp (@specials) {
-        my $uri = $sp->{uri};
-        $sp->{special_uri} = $uri;
-        $sp->{uri} = $sp->{full_url} || $c->uri_for_action('/special/text', [ $uri ]);
-        $sp->{active} = ($c->request->uri eq $sp->{uri});
-    }
-
-    # let's assume related will return self, and special index
-    if (@related || @specials) {
-        my $nav_hash = {};
-        if (@related) {
-            $nav_hash->{projects} = \@related;
-        }
-        if (@specials) {
-            $nav_hash->{specials} = \@specials;
-        }
-        $c->stash(navigation => $nav_hash);
-    }
     return 1;
 }
 
@@ -487,6 +467,27 @@ sub end : ActionClass('RenderView') {
 
     unless ($c->stash->{no_wrapper}) {
         log_debug { "Doing the layout fixes" };
+
+        my @related = $site->other_sites;
+        my @specials = $site->special_list;
+        for my $sp (@specials) {
+            my $uri = $sp->{uri};
+            $sp->{special_uri} = $uri;
+            $sp->{uri} = $sp->{full_url} || $c->uri_for_action('/special/text', [ $uri ]);
+            $sp->{active} = ($c->request->uri eq $sp->{uri});
+        }
+
+        # let's assume related will return self, and special index
+        if (@related || @specials) {
+            my $nav_hash = {};
+            if (@related) {
+                $nav_hash->{projects} = \@related;
+            }
+            if (@specials) {
+                $nav_hash->{specials} = \@specials;
+            }
+            $c->stash(navigation => $nav_hash);
+        }
         # layout adjustments
         my $theme = $site->bootstrap_theme;
         my $columns = 12;
