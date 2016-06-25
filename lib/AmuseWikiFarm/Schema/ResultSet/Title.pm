@@ -335,4 +335,26 @@ sub listing_tokens {
              pager => \@paging };
 }
 
+sub older_than {
+    my ($self, $dt) = @_;
+    $dt ||= DateTime->now;
+    my $format_time = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime($dt);
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.pubdate" => { '<' => $format_time } },
+                         { order_by => { -desc => "$me.pubdate" } });
+}
+
+sub newer_than {
+    my ($self, $dt) = @_;
+    $dt ||= DateTime->now;
+    my $format_time = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime($dt);
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.pubdate" => { '>' => $format_time } },
+                         { order_by => { -asc => "$me.pubdate" } });
+
+}
+
+
 1;

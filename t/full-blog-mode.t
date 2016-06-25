@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 124;
+use Test::More tests => 127;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -291,6 +291,13 @@ for my $month (1,2) {
     $mech->content_lacks("monthly-list-item-2015-$month");
     $mech->get_ok("/monthly/2015/$month");
     $mech->content_contains("No text found!");
+}
+
+if (my $month = $site->monthly_archives->find({ year => 2015, month => 5 })) {
+    is $month->titles->count, 1;
+    my $title = $month->titles->first;
+    is $title->newer_text->pubdate->month, 6;
+    is $title->older_text->pubdate->month, 4;
 }
 
 for my $delete (0,0,1) {

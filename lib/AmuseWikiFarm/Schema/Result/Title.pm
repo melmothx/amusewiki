@@ -414,6 +414,13 @@ __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-19 17:46:08
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JeDniHUg7Z0/nAIubSLQ5g
 
+=head2 translations
+
+Resultset with the same Title class with the same C<uid> in the
+header, excluding the caller.
+
+=cut
+
 __PACKAGE__->has_many(
     translations => "AmuseWikiFarm::Schema::Result::Title",
     sub {
@@ -427,6 +434,24 @@ __PACKAGE__->has_many(
     { cascade_copy => 0, cascade_delete => 0 },
    );
 
+
+=head2 sibling_texts
+
+Resultset with the same Title class with same C<site_id>, same
+C<f_class> (C<text> or C<special> and same C<status>.
+
+=cut
+
+__PACKAGE__->has_many(sibling_texts => "AmuseWikiFarm::Schema::Result::Title",
+                      sub {
+                          my $args = shift;
+                          return {
+                                  "$args->{foreign_alias}.site_id" => {-ident => "$args->{self_alias}.site_id" },
+                                  "$args->{foreign_alias}.f_class" => {-ident => "$args->{self_alias}.f_class" },
+                                  "$args->{foreign_alias}.status"  => {-ident => "$args->{self_alias}.status"  },
+                                 };
+                      },
+                      { cascade_copy => 0, cascade_delete => 0 });
 
 use File::Spec;
 use Text::Amuse::Compile::Utils qw/read_file/;
@@ -1032,6 +1057,23 @@ sub monthly_archive {
     return shift->monthly_archives->first;
 }
 
+sub newer_texts {
+    my $self = shift;
+    return $self->sibling_texts->newer_than($self->pubdate);
+}
+
+sub older_texts {
+    my $self = shift;
+    return $self->sibling_texts->older_than($self->pubdate);
+}
+
+sub newer_text {
+    return shift->newer_texts->search(undef, { rows => 1 })->first;
+}
+
+sub older_text {
+    return shift->older_texts->search(undef, { rows => 1 })->first;
+}
 
 __PACKAGE__->meta->make_immutable;
 

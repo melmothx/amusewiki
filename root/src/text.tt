@@ -21,10 +21,8 @@
 </div>
 
 [% # if we have the sidebars, we're cool, otherwise we have to shrink it %]
-[% UNLESS left_sidebar_html || right_sidebar_html %]
 <div class="row">
-  <div class="col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
-[% END %]
+  <div class="col-sm-10 col-sm-push-1">
 
 
 <div id="page">
@@ -385,10 +383,34 @@
   [% END %]
 </div>
 
-[% UNLESS left_sidebar_html || right_sidebar_html %]
+  </div>
+  <div class="col-sm-pull-10 col-sm-1">
+    <div class="hidden-xs" style="height: 100px">
+    </div>
+    [% IF text_prev_uri %]
+    <div id="text-prev-post-link">
+      <a href="[% c.uri_for(text_prev_uri) %]">
+        <span class="glyphicon glyphicon-chevron-left hidden-xs"></span>
+        <span class="btn btn-default visible-xs">[% loc("Older texts") %]</span>
+      </a>
+    </div>
+    [% END %]
+  </div>
+  <div class="col-sm-1">
+    <div class="hidden-xs" style="height: 100px">
+    </div>
+    [% IF text_next_uri %]
+    <div class="hidden-xs">
+    </div>
+    <div id="text-next-post-link">
+      <a href="[% c.uri_for(text_next_uri) %]">
+        <span class="glyphicon glyphicon-chevron-right hidden-xs"></span>
+        <span class="btn btn-default visible-xs">[% loc("Newer texts") %]</span>
+      </a>
+    </div>
+    [% END %]
   </div>
 </div>
-[% END %]
 
 <script type="text/javascript">
 $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });

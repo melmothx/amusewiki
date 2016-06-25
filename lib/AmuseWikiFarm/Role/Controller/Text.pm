@@ -121,6 +121,14 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         }
         $c->stash("text_$listing" => \@list);
     }
+    if ($c->stash->{blog_style}) {
+        if (my $next_text = $text->newer_text) {
+            $c->stash(text_next_uri => $next_text->full_uri);
+        }
+        if (my $prev_text = $text->older_text) {
+            $c->stash(text_prev_uri => $prev_text->full_uri);
+        }
+    }
 }
 
 sub edit :Chained('match') PathPart('edit') :Args(0) {
