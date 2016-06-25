@@ -4,6 +4,22 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.900 UNRELEASED
+
+ - New blog mode, which can be activated in the admin console, per
+   site. The blog mode changes the behaviour of the site giving it a
+   time-centric display of texts.
+ - Flexible tag cloud which can be embedded via ajax
+ - Free form HTML layout elements (top, bottom, left, right)
+ - Support for teasers and decorative images
+ - Monthly archives which can be embedded via ajax
+ - Legacy links support
+ - Revamped and reorganized admin console
+ - Attached images preview in the edit screen
+ - Selectable CSS themes
+ - Wordpress import script
+ - Minor layout adjustments
+
 1.828 2016-06-19
 
  - Fixed crash on loc() when square brackets are supplied.
