@@ -16,30 +16,66 @@
 </div>
 [% END %]
 
-<h2>[% loc('Edit site [_1]', esite.id) %]</h2>
-
-<p>
-  [% loc('Please note that the twoside and binding correction options follow
-  this logic: if you have some imposed format, they are ignored for
-  the standalone PDF but applied for the imposed ones. If you have
-  only the standalone PDF, they are applied to it.') %]
-</p>
-
-<p>
-  [% loc('The Beamer selections are relevant only if you activate the
-  slides output.') %]
-  <a href="https://www.hartwork.org/beamer-theme-matrix/">
-    [% loc('Preview') %].
-  </a>
-</p>
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Edit site [_1]', esite.id) %]</h1>
+  </div>
+</div>
 
 <div style="margin-top: 30px">
-  <form method="post" class="form-horizontal" role="form" id="site-edit-form"
+  <form method="post" class="form-horizontal"
+        id="site-edit-form"
         onsubmit="return amw_confirm()">
+
     [% UNLESS restricted %]
+    <fieldset>
+      <legend role="button"
+              data-target="#restricted-vars"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="restricted-vars">
+         [% loc('Restricted configuration variables') %]
+         <span class="caret"></span>
+      </legend>
+      <div id="restricted-vars" class="collapse">
+
     <div class="form-group">
-      <div class="row">
-        <div class="col-sm-offset-2 col-sm-10">
+      <label for="canonical" class="col-sm-3 control-label">
+        [% loc('Main canonical hostname, without protocol') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text"  name="canonical" id="canonical"
+               class="form-control" value="[% esite.canonical | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+          <label for="vhosts" class="control-label">
+            [% loc('Virtual hosts, one per line') %]
+        </label>
+        </div>
+        <div class="col-sm-9">
+        <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
+          [%- SET vhosts = esite.vhosts_rs -%]
+          [%- FOREACH vhost IN vhosts.all %]
+          [%- vhost.name | html +%]
+
+          [%- END -%]</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="sitegroup" class="col-sm-3 control-label">
+        [% loc('Site group') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text"  name="sitegroup" id="sitegroup"
+               class="form-control" value="[% esite.sitegroup | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
           <label>
             <input type="checkbox"
                    [% IF esite.active %]checked="checked"[% END %]
@@ -48,15 +84,158 @@
             ([% loc('affects only the frontend webserver configuration') %])
           </label>
         </div>
+    </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend role="button"
+              data-target="#restricted-formats"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="restricted-formats">
+        [% loc('Restricted format options') %]
+         <span class="caret"></span>
+      </legend>
+      <div id="restricted-formats" class="collapse">
+
+      <div class="form-group">
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.tex %]checked="checked"[% END %]
+                   name="tex" />
+            [% loc('TeX') %]
+          </label>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.html %]checked="checked"[% END %]
+                 name="html" />
+          [% loc('HTML') %]
+        </label>
       </div>
     </div>
-    [% END %]
 
     <div class="form-group">
-      <label for="mode" class="col-sm-2 control-label">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.bare_html %]checked="checked"[% END %]
+                 name="bare_html" />
+          [% loc('Bare HTML, needed by the application') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.epub %]checked="checked"[% END %]
+                 name="epub" />
+          [% loc('EPUB') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.zip %]checked="checked"[% END %]
+                 name="zip" />
+          [% loc('ZIP archive with sources, needed by the bookbuilder') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="ttdir" class="col-sm-6 control-label">
+        [% loc('Directory with templates. Do not set it unless you know what you are doing') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="ttdir" id="ttdir"
+               class="form-control" value="[% esite.ttdir | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.use_luatex %]checked="checked"[% END %]
+                 name="use_luatex" />
+          [% loc('Use LuaLaTeX instead of XeLaTeX (slower)') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.logo_with_sitename %]checked="checked"[% END %]
+                 name="logo_with_sitename" />
+          [% loc('The logo has the site name on itself') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="logo" class="col-sm-6 control-label">
+        [% loc('PDF logo') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="logo" id="logo"
+               class="form-control" value="[% esite.logo | html %]" />
+      </div>
+        <div class="col-sm-12">
+            <p>
+            [% loc('The PDF logo value can be either an absolute path
+            or just a filename if you choose to install it in the
+            TeXlive tree. You can do so with the following commands.
+            The last one checks if the file can be found.') %]
+            </p>
+            <pre>
+mkdir -p `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
+cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
+texhash `kpsewhich -var-value TEXMFHOME`
+kpsewhich mylogo.pdf
+</pre>
+        </div>
+    </div>
+      </div>
+    </fieldset>
+    [% END %]
+
+    <fieldset>
+      <legend role="button"
+              data-target="#awm-config-general"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="awm-config-general">
+        [% loc('General configuration') %]
+        <span class="caret"></span>
+      </legend>
+      <div id="awm-config-general" class="collapse">
+    <div class="form-group">
+      <label for="sitename" class="col-sm-6 control-label">
+        [% loc('Site name') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="sitename" id="sitename"
+               class="form-control" value="[% esite.sitename | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mode" class="col-sm-6 control-label">
         [% loc('Site mode') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="mode" id="mode" class="form-control">
           <option value="private"
                   [% IF esite.mode == 'private' %]selected="selected"[% END %]>
@@ -77,13 +256,39 @@
         </select>
       </div>
     </div>
+    <div class="form-group">
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.blog_style %]checked="checked"[% END %]
+                   name="blog_style" />
+            [% loc('Activate the blog-style look and feel') %]
+          </label>
+        </div>
+    </div>
 
     <div class="form-group">
-      <label for="locale" class="col-sm-2 control-label">
+      <label for="theme" class="col-sm-6 control-label">
+        [% loc('CSS Theme') %]
+      </label>
+      <div class="col-sm-6">
+        <select name="theme" id="theme" class="form-control">
+          [% FOREACH theme IN site.bootstrap_theme_list %]
+          <option value="[% theme.name %]"
+                  [% IF esite.bootstrap_theme == theme.name %]selected="selected"[% END %]>
+            [% theme.label %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="locale" class="col-sm-6 control-label">
         [% loc('Locale') %]
       </label>
-      <div class="col-sm-10">
-        <select name="locale" id="lang" class="form-control">
+      <div class="col-sm-6">
+        <select id="locale" name="locale" id="lang" class="form-control">
           [% known_langs = esite.known_langs %]
           [% SET current_language = esite.locale %]
           [% FOREACH lang IN known_langs.keys.sort %]
@@ -97,40 +302,10 @@
     </div>
 
     <div class="form-group">
-      <label for="magic_question" class="col-sm-2 control-label">
-        [% loc('Magic question') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="magic_question" id="magic_question"
-               class="form-control required" value="[% esite.magic_question | html %]" />
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="magic_answer" class="col-sm-2 control-label">
-        [% loc('Magic answer') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="magic_answer" id="magic_answer"
-               class="form-control required" value="[% esite.magic_answer | html %]" />
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="fixed_category_list" class="col-sm-2 control-label">
-        [% loc('Fixed category list') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="fixed_category_list" id="fixed_category_list"
-               class="form-control" value="[% esite.fixed_category_list | html %]" />
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="multilanguage" class="col-sm-2 control-label">
+      <label for="multilanguage" class="col-sm-6 control-label">
         [% loc('Multilanguage: list of whitespace separated language codes') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <input type="text"  name="multilanguage" id="multilanguage"
                class="form-control" value="[% esite.multilanguage | html %]" />
         <div>
@@ -139,127 +314,180 @@
       </div>
     </div>
 
-
-
     <div class="form-group">
-      <label for="sitename" class="col-sm-2 control-label">
-        [% loc('Site name') %]
+      <label for="magic_question" class="col-sm-6 control-label">
+        [% loc('Magic question') %]
       </label>
-      <div class="col-sm-10">
-        <input type="text"  name="sitename" id="sitename"
-               class="form-control" value="[% esite.sitename | html %]" />
+      <div class="col-sm-6">
+        <input type="text"  name="magic_question" id="magic_question"
+               class="form-control required" value="[% esite.magic_question | html %]" />
       </div>
     </div>
 
     <div class="form-group">
-      <label for="siteslogan" class="col-sm-2 control-label">
+      <label for="magic_answer" class="col-sm-6 control-label">
+        [% loc('Magic answer') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="magic_answer" id="magic_answer"
+               class="form-control required" value="[% esite.magic_answer | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="fixed_category_list" class="col-sm-6 control-label">
+        [% loc('Fixed category list') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"  name="fixed_category_list" id="fixed_category_list"
+               class="form-control" value="[% esite.fixed_category_list | html %]" />
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="siteslogan" class="col-sm-6 control-label">
         [% loc('Site slogan') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <input type="text"  name="siteslogan" id="siteslogan"
                class="form-control" value="[% esite.siteslogan | html %]" />
       </div>
     </div>
 
-    [% # theme is skipped, not sure it is actually a good idea %]
-
-    [% UNLESS restricted %]
     <div class="form-group">
-      <label for="logo" class="col-sm-2 control-label">
-        [% loc('PDF logo') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="logo" id="logo"
-               class="form-control" value="[% esite.logo | html %]" />
-      </div>
-      <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
-          <p>
-            <br>
-            [% loc('The PDF logo value can be either an absolute path
-            or just a filename if you choose to install it in the
-            TeXlive tree. You can do so with the following commands.
-            The last one checks if the file can be found.') %]
-          </p>
-          <pre>mkdir -p `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data
-cp mylogo.pdf `kpsewhich -var-value TEXMFHOME`/tex/generic/amusewiki/data`
-kpsewhich mylogo.pdf</pre>
-        </div>
-      </div>
-    </div>
-    [% END %]
-
-    <div class="form-group">
-      <label for="mail_notify" class="col-sm-2 control-label">
+      <label for="mail_notify" class="col-sm-6 control-label">
         [% loc('Notify mail: blank field will disable them') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <input type="text"  name="mail_notify" id="mail_notify"
                class="form-control email" value="[% esite.mail_notify | html %]" />
       </div>
     </div>
 
     <div class="form-group">
-      <label for="mail_from" class="col-sm-2 control-label">
+      <label for="mail_from" class="col-sm-6 control-label">
         [% loc('Site mail (From field)') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <input type="text"  name="mail_from" id="mail_from"
                class="form-control email" value="[% esite.mail_from | html %]" />
       </div>
     </div>
 
-    [% UNLESS restricted %]
     <div class="form-group">
-      <label for="canonical" class="col-sm-2 control-label">
-        [% loc('Main canonical hostname, without protocol') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="canonical" id="canonical"
-               class="form-control" value="[% esite.canonical | html %]" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="sitegroup" class="col-sm-2 control-label">
-        [% loc('Site group') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="sitegroup" id="sitegroup"
-               class="form-control" value="[% esite.sitegroup | html %]" />
-      </div>
-    </div>
-    [% END %]
-
-    <div class="form-group">
-      <label for="bb_page_limit" class="col-sm-2 control-label">
+      <label for="bb_page_limit" class="col-sm-6 control-label">
         [% loc('Bookbuilder page limit (integer)') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <input type="text"  name="bb_page_limit" id="bb_page_limit"
                class="form-control digits" value="[% esite.bb_page_limit | html %]" />
       </div>
     </div>
-
-    <div class="col-sm-offset-2 col-sm-10">
-      <h4>[% loc('Formats') %]</h4>
-    </div>
-
-    [% UNLESS restricted %]
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-6 col-sm-6">
         <label>
           <input type="checkbox"
-                 [% IF esite.tex %]checked="checked"[% END %]
-                 name="tex" />
-          [% loc('TeX') %]
+                 [% IF esite.cgit_integration %]checked="checked"[% END %]
+                 name="cgit_integration" />
+          [% loc('View history') %] (CGIT)
         </label>
       </div>
     </div>
-    [% END %]
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.do_not_enforce_commit_message %]checked="checked"[% END %]
+                 name="do_not_enforce_commit_message" />
+          [% loc('Do not enforce commit message') %]
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-6 control-label">
+          [% loc('Use JS syntax highlight for code blocks') %].
+      </label>
+      <div class="col-sm-6">
+        <input type="text"
+               class="form-control"
+               value="[% esite.use_js_highlight_value | html %]"
+               name="use_js_highlight" />
+        <div>
+          [% loc('Specify a whitespace-separated list of languages to activate it.') %]
+          [% loc('Languages supported') %]: <code id="highlight-js-languages"></code>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3">
+          <label for="site_links" class="control-label">
+            [% loc('A list of links and labels to insert into the top
+            bar. One per line, first the url, then the label,
+            separated by a space, e.g. "http://test.me Test site"') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="site_links" id="site_links"
+                    class="form-control">
+            [%- esite.serialize_links | html -%]</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="latest_entries" class="col-sm-3 control-label">
+        [% loc('Number of latest entries to display on the special pages (an integer)') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="latest_entries" id="latest_entries"
+               class="form-control digits"
+               value="[% esite.get_option('latest_entries') | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="latest_entries" class="col-sm-3 control-label">
+        [% loc('Number of latest entries to display on the RSS (an integer)') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="latest_entries_for_rss"
+               id="latest_entries_for_rss"
+               class="form-control digits"
+               value="[% esite.get_option('latest_entries_for_rss') | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="paginate_archive_after" class="col-sm-3 control-label">
+        [% loc('Add paginator for text listing when the number of texts is greater than (integer)') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text"
+               name="paginate_archive_after"
+               id="paginate_archive_after"
+               class="form-control digits"
+               value="[% esite.paginate_archive_after | html %]" />
+      </div>
+    </div>
+
+
+
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend role="button"
+              data-target="#amw-config-formats"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="amw-config-formats">
+        [% loc('Formats') %]
+        <span class="caret"></span>
+      </legend>
+      <div id="amw-config-formats" class="collapse">
+
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
         <label>
           <input type="checkbox"
                  [% IF esite.pdf %]checked="checked"[% END %]
@@ -270,7 +498,7 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-6 col-sm-6">
         <label>
           <input type="checkbox"
                  [% IF esite.a4_pdf %]checked="checked"[% END %]
@@ -281,7 +509,7 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-6 col-sm-6">
         <label>
           <input type="checkbox"
                  [% IF esite.lt_pdf %]checked="checked"[% END %]
@@ -291,7 +519,7 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-6 col-sm-6">
         <label>
           <input type="checkbox"
                  [% IF esite.sl_pdf %]checked="checked"[% END %]
@@ -301,70 +529,13 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
-    [% UNLESS restricted %]
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.html %]checked="checked"[% END %]
-                 name="html" />
-          [% loc('HTML') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.bare_html %]checked="checked"[% END %]
-                 name="bare_html" />
-          [% loc('Bare HTML, needed by the application') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.epub %]checked="checked"[% END %]
-                 name="epub" />
-          [% loc('EPUB') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.zip %]checked="checked"[% END %]
-                 name="zip" />
-          [% loc('ZIP archive with sources, needed by the bookbuilder') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="ttdir" class="col-sm-2 control-label">
-        [% loc('Directory with templates. Do not set it unless you know what you are doing') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"  name="ttdir" id="ttdir"
-               class="form-control" value="[% esite.ttdir | html %]" />
-      </div>
-    </div>
-
-    [% END %]
-
     [% # pick these options from the bookbuilder %]
     [% SET bb = c.model('BookBuilder') %]
     <div class="form-group">
-      <label for="papersize" class="col-sm-2 control-label">
+      <label for="papersize" class="col-sm-6 control-label">
         [% loc('Choose a paper format') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="papersize" id="papersize" class="form-control">
           [% SET mypapers = bb.papersizes %]
           [% FOREACH paper IN bb.papersize_values %]
@@ -378,11 +549,11 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <label for="division" class="col-sm-2 control-label">
+      <label for="division" class="col-sm-6 control-label">
         [% loc('Division factor') %]
         ([% loc('Higher division factor means narrower margins') %])
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="division" id="division" class="form-control">
           [% SET mydiv = 9 %]
           [% WHILE 16 > mydiv %]
@@ -398,10 +569,10 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <label for="bcor" class="col-sm-2 control-label">
+      <label for="bcor" class="col-sm-6 control-label">
         [% loc('Binding correction in millimeters (additional inner margin)') %]:
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="bcor" id="bcor" class="form-control">
           [% bcor_counter = 0 %]
           [% WHILE bcor_counter < 40 %]
@@ -418,10 +589,10 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <label for="fontsize" class="col-sm-2 control-label">
+      <label for="fontsize" class="col-sm-6 control-label">
         [% loc('Font size') %]:
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="fontsize" id="fontsize" class="form-control">
           [% FOREACH size IN bb.fontsize_values %]
           <option value="[% size %]"
@@ -434,11 +605,11 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <label for="opening" class="col-sm-2 control-label">
+      <label for="opening" class="col-sm-6 control-label">
         [% loc('Page where to start a chapter') %]:
         [% # loc('right'); loc('any'); loc('left') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="opening" id="opening" class="form-control">
           [% FOREACH opening IN bb.opening_values %]
           <option value="[% opening %]"
@@ -451,10 +622,10 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <label for="fontsize" class="col-sm-2 control-label">
+      <label for="fontsize" class="col-sm-6 control-label">
         [% loc('Main font') %]:
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="mainfont" id="mainfont" class="form-control">
           [% FOREACH font IN bb.all_main_fonts %]
           <option value="[% font.name %]"
@@ -467,10 +638,10 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <label for="fontsize" class="col-sm-2 control-label">
+      <label for="fontsize" class="col-sm-6 control-label">
         [% loc('Sans font') %]:
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="sansfont" id="sansfont" class="form-control">
           [% FOREACH font IN bb.all_sans_fonts %]
           <option value="[% font.name %]"
@@ -483,10 +654,10 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <label for="fontsize" class="col-sm-2 control-label">
+      <label for="fontsize" class="col-sm-6 control-label">
         [% loc('Mono font') %]:
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="monofont" id="monofont" class="form-control">
           [% FOREACH font IN bb.all_mono_fonts %]
           <option value="[% font.name %]"
@@ -499,10 +670,10 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <label for="fontsize" class="col-sm-2 control-label">
+      <label for="fontsize" class="col-sm-6 control-label">
         [% loc('Beamer theme') %]:
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="beamertheme" id="beamertheme" class="form-control">
           [% FOREACH beamertheme IN bb.beamer_themes_values %]
           <option value="[% beamertheme %]"
@@ -516,10 +687,10 @@ kpsewhich mylogo.pdf</pre>
 
 
     <div class="form-group">
-      <label for="fontsize" class="col-sm-2 control-label">
+      <label for="fontsize" class="col-sm-6 control-label">
         [% loc('Beamer color theme') %]:
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <select name="beamercolortheme" id="beamercolortheme" class="form-control">
           [% FOREACH beamercolortheme IN bb.beamer_color_themes_values %]
           <option value="[% beamercolortheme %]"
@@ -534,7 +705,7 @@ kpsewhich mylogo.pdf</pre>
 
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-6 col-sm-6">
         <label>
           <input type="checkbox"
                  [% IF esite.twoside %]checked="checked"[% END %]
@@ -545,7 +716,7 @@ kpsewhich mylogo.pdf</pre>
     </div>
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-6 col-sm-6">
         <label>
           <input type="checkbox"
                  [% IF esite.nocoverpage %]checked="checked"[% END %]
@@ -555,89 +726,40 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
 
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.logo_with_sitename %]checked="checked"[% END %]
-                 name="logo_with_sitename" />
-          [% loc('The logo has the site name on itself') %]
-        </label>
+    <div class="col-sm-offset-6 col-sm-6">
+      <div class="well">
+        <p>
+          [% loc('Please note that the twoside and binding correction options follow
+          this logic: if you have some imposed format, they are ignored for
+          the standalone PDF but applied for the imposed ones. If you have
+          only the standalone PDF, they are applied to it.') %]
+        </p>
+
+        <p>
+          [% loc('The Beamer selections are relevant only if you activate the
+          slides output.') %]
+          <a href="https://www.hartwork.org/beamer-theme-matrix/">
+            [% loc('Preview') %].
+          </a>
+        </p>
       </div>
     </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.cgit_integration %]checked="checked"[% END %]
-                 name="cgit_integration" />
-          [% loc('View history') %] (CGIT)
-        </label>
       </div>
-    </div>
-
+    </fieldset>
     [% UNLESS restricted %]
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.use_luatex %]checked="checked"[% END %]
-                 name="use_luatex" />
-          [% loc('Use LuaLaTeX instead of XeLaTeX (slower)') %]
-        </label>
-      </div>
-    </div>
+
     [% END %]
-
+    <fieldset>
+      <legend role="button"
+              data-target="#amw-config-layout"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="amw-config-layout">
+        [% loc('Layout') %]
+        <span class="caret"></span>
+      </legend>
+      <div id="amw-config-layout" class="collapse">
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.do_not_enforce_commit_message %]checked="checked"[% END %]
-                 name="do_not_enforce_commit_message" />
-          [% loc('Do not enforce commit message') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-sm-2 control-label">
-          [% loc('Use JS syntax highlight for code blocks') %].
-      </label>
-      <div class="col-sm-10">
-        <input type="text"
-               class="form-control"
-               value="[% esite.use_js_highlight_value | html %]"
-               name="use_js_highlight" />
-        <div>
-          [% loc('Specify a whitespace-separated list of languages to activate it.') %]
-          [% loc('Languages supported') %]: <code id="highlight-js-languages"></code>
-        </div>
-      </div>
-    </div>
-
-    [% UNLESS restricted %]
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="vhosts" class="control-label">
-            [% loc('Virtual hosts, one per line') %]
-        </label>
-        </div>
-        <div class="col-sm-9">
-        <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
-          [%- SET vhosts = esite.vhosts_rs -%]
-          [%- FOREACH vhost IN vhosts.all %]
-          [%- vhost.name | html +%]
-
-          [%- END -%]</textarea>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="row">
         <div class="col-sm-3">
           <label for="html_special_page_bottom" class="control-label">
             [% loc('HTML to append to each special page, inserted
@@ -651,69 +773,135 @@ kpsewhich mylogo.pdf</pre>
                     class="form-control">
             [%- esite.html_special_page_bottom | html -%]</textarea>
         </div>
-      </div>
     </div>
-    [% END %]
 
     <div class="form-group">
-      <div class="row">
+      <div class="col-sm-3">
+        <label for="top_layout_html" class="control-label">
+          [% loc('HTML to insert on the top of the layout, behind the navigation bar and below the banner') %]
+        </label>
+      </div>
+      <div class="col-sm-9">
+        <textarea rows="5" name="top_layout_html"
+                  id="top_layout_html"
+                  class="form-control">
+          [%- esite.top_layout_html | html -%]</textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-3">
+        <label for="bottom_layout_html" class="control-label">
+          [% loc('HTML to insert on the bottom of the layout, above the footer') %]
+        </label>
+      </div>
+      <div class="col-sm-9">
+        <textarea rows="5" name="bottom_layout_html"
+                  id="bottom_layout_html"
+                  class="form-control">
+          [%- esite.bottom_layout_html | html -%]</textarea>
+      </div>
+    </div>
+
+
+    <div class="form-group">
         <div class="col-sm-3">
-          <label for="site_links" class="control-label">
-            [% loc('A list of links and labels to insert into the top
-            bar. One per line, first the url, then the label,
-            separated by a space, e.g. "http://test.me Test site"') %]
+          <label for="left_layout_html" class="control-label">
+            [% loc('HTML to insert into the left sidebar') %]
           </label>
         </div>
         <div class="col-sm-9">
-          <textarea rows="5" name="site_links" id="site_links"
+          <textarea rows="5" name="left_layout_html"
+                    id="left_layout_html"
                     class="form-control">
-            [%- esite.serialize_links | html -%]</textarea>
+            [%- esite.left_layout_html | html -%]</textarea>
         </div>
-      </div>
-    </div>
-
-
-    <div class="form-group">
-      <label for="latest_entries" class="col-sm-2 control-label">
-        [% loc('Number of latest entries to display on the special pages (an integer)') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text" name="latest_entries" id="latest_entries"
-               class="form-control digits"
-               value="[% esite.get_option('latest_entries') | html %]" />
-      </div>
     </div>
 
     <div class="form-group">
-      <label for="latest_entries" class="col-sm-2 control-label">
-        [% loc('Number of latest entries to display on the RSS (an integer)') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text" name="latest_entries_for_rss"
-               id="latest_entries_for_rss"
-               class="form-control digits"
-               value="[% esite.get_option('latest_entries_for_rss') | html %]" />
-      </div>
+        <div class="col-sm-3">
+          <label for="right_layout_html" class="control-label">
+            [% loc('HTML to insert into the right sidebar') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="right_layout_html"
+                    id="right_layout_html"
+                    class="form-control">
+            [%- esite.right_layout_html | html -%]</textarea>
+        </div>
     </div>
 
-    <div class="form-group">
-      <label for="paginate_archive_after" class="col-sm-2 control-label">
-        [% loc('Add paginator for text listing when the number of texts is greater than (integer)') %]
-      </label>
-      <div class="col-sm-10">
-        <input type="text"
-               name="paginate_archive_after"
-               id="paginate_archive_after"
-               class="form-control digits"
-               value="[% esite.paginate_archive_after | html %]" />
+      <div class="col-sm-12">
+        <h4>[% loc('Useful HTML snippets') %]</h4>
       </div>
-    </div>
+      <div class="col-md-6">
+        <h5>[% loc('Full tag cloud') %]</h5>
+        <pre class="example">
+&lt;div id=&quot;amw-cloud-embedded-sidebar&quot;&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#amw-cloud-embedded-sidebar&quot;)
+    .load(&quot;/cloud?limit=0&amp;bare=1&amp;max=10&quot;);
+});
+&lt;/script&gt;
+</pre>
+      </div>
+      <div class="col-md-6">
+        <h5>[% loc('Tag cloud with authors') %]</h5>
+        <pre class="example">
+&lt;div id=&quot;amw-cloud-embedded-authors&quot;&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#amw-cloud-embedded-authors&quot;)
+    .load(&quot;/cloud/authors?bare=1&quot;);
+});
+&lt;/script&gt;</pre>
+      </div>
+      <div class="col-md-6">
+        <h5>[% loc('Tag cloud with topics') %]</h5>
+        <pre class="example">
+&lt;div id=&quot;amw-cloud-embedded-topics&quot;&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#amw-cloud-embedded-topics&quot;)
+    .load(&quot;/cloud/topics?bare=1&quot;);
+});
+&lt;/script&gt;</pre>
+      </div>
+      <div class="col-md-6">
+        <h5>Archives</h5>
+        <pre class="example">
+&lt;div id=&quot;amw-monthly-embedded-sidebar&quot;&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $(&quot;#amw-monthly-embedded-sidebar&quot;)
+    .load(&quot;/monthly?bare=1&quot;);
+});
+&lt;/script&gt;</pre>
+      </div>
+      </div>
+    </fieldset>
 
     [% UNLESS restricted %]
-    <h3>[% loc('SSL configuration') %]</h3>
+    <fieldset>
+      <legend role="button"
+              data-target="#restricted-ssl"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="restricted-ssl">
+        [% loc('SSL configuration') %]
+         <span class="caret"></span>
+      </legend>
+      <div id="restricted-ssl" class="collapse">
+
+
     <div class="form-group">
-      <div class="row">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-12">
           <label>
             <input type="checkbox"
                    [% IF esite.secure_site %]checked="checked"[% END %]
@@ -721,9 +909,7 @@ kpsewhich mylogo.pdf</pre>
             [% loc('Use SSL for authenticated users') %]
           </label>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-12">
           <label>
             <input type="checkbox"
                    [% IF esite.secure_site_only %]checked="checked"[% END %]
@@ -732,9 +918,7 @@ kpsewhich mylogo.pdf</pre>
           all the HTTP requests to HTTPS') %]
           </label>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-12">
           <label>
             <input type="checkbox"
                    [% IF esite.acme_certificate %]checked="checked"[% END %]
@@ -742,13 +926,16 @@ kpsewhich mylogo.pdf</pre>
             [% loc("Automatically request and renew SSL certificates from Let's Encrypt") %]
           </label>
         </div>
-      </div>
     </div>
+    <div class="row">
+      <div class="col-sm-12">
     <p>
       [% loc('The following values are used to generate the webserver configuration.') %]<br>
       [% loc('They should be paths relative to the webserver configuration root or absolute paths (recommended).') %]<br>
       [% loc('Apache is not currently supported') %]
     </p>
+      </div>
+    </div>
     <div class="form-group">
       <label for="ssl_key" class="col-sm-2 control-label">
         [% loc('SSL key path') %]
@@ -778,10 +965,10 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
     <div class="form-group" style="display:none">
-      <label for="ssl_cert" class="col-sm-2 control-label">
+      <label for="ssl_cert" class="col-sm-6 control-label">
         [% loc('SSL certificate path (Apache)') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <p>
         <input type="text"  name="ssl_cert" id="ssl_cert"
                class="form-control" value="[% esite.ssl_cert | html %]" />
@@ -792,10 +979,10 @@ kpsewhich mylogo.pdf</pre>
       </div>
     </div>
     <div class="form-group" style="display:none">
-      <label for="ssl_ca_cert" class="col-sm-2 control-label">
+      <label for="ssl_ca_cert" class="col-sm-6 control-label">
         [% loc('SSL CA certificate path (Apache)') %]
       </label>
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <p>
         <input type="text"  name="ssl_ca_cert" id="ssl_ca_cert"
                class="form-control" value="[% esite.ssl_ca_cert | html %]" />
@@ -805,16 +992,21 @@ kpsewhich mylogo.pdf</pre>
         </p>
       </div>
     </div>
+      </div>
+    </fieldset>
     [% END %]
-
+    <hr />
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary" name="edit_site"
-                value="update">
-          [% loc('Update') %]
-        </button>
+      <div class="col-sm-12">
+        <div class="center">
+          <button type="submit" class="btn btn-primary" name="edit_site"
+                  value="update">
+            [% loc('Update') %]
+          </button>
+        </div>
       </div>
     </div>
+    <hr />
   </form>
 </div>
 

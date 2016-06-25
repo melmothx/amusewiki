@@ -45,11 +45,13 @@ sub index :Chained('base') :PathPart('') :Args {
     my $format_link = sub {
         return $c->uri_for_action('/latest/index', $_[0]);
     };
-    my @res = $results->all;
     $c->stash(pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
               nav => 'latest',
               page_title => $c->loc('Latest entries'),
-              texts => \@res);
+              texts => $results);
+    if ($c->request->query_params->{bare}) {
+        $c->stash(no_wrapper => 1);
+    }
 }
 
 

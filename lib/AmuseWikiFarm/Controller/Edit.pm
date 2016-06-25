@@ -82,7 +82,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
 
     $c->stash(
               nav => 'add-to-library',
-              page_title => $c->loc('Add to library'),
+              page_title => $c->loc('Add a new text'),
              );
 
     my $site    = $c->stash->{site};
@@ -331,10 +331,12 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
             else {
                 log_error { $upload->tempname . ' does not exist' };
             }
-            if (my $error = $revision->add_attachment($upload->tempname)) {
+            my $outcome = $revision->add_attachment($upload->tempname);
+            if (my $error = $outcome->{error}) {
                 $c->flash(error_msg => $c->loc(@$error));
             }
             else {
+                log_info { "Attached $outcome->{attachment}" };
                 $c->flash(status_msg => $c->loc("File uploaded!"));
             }
         }

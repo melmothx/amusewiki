@@ -345,6 +345,21 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 text_months
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TextMonth>
+
+=cut
+
+__PACKAGE__->has_many(
+  "text_months",
+  "AmuseWikiFarm::Schema::Result::TextMonth",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 title_categories
 
 Type: has_many
@@ -385,9 +400,26 @@ Composing rels: L</title_categories> -> category
 
 __PACKAGE__->many_to_many("categories", "title_categories", "category");
 
+=head2 monthly_archives
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-12 13:51:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:kztYga/ZSUahBHWf7wANNQ
+Type: many_to_many
+
+Composing rels: L</text_months> -> monthly_archive
+
+=cut
+
+__PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-19 17:46:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JeDniHUg7Z0/nAIubSLQ5g
+
+=head2 translations
+
+Resultset with the same Title class with the same C<uid> in the
+header, excluding the caller.
+
+=cut
 
 __PACKAGE__->has_many(
     translations => "AmuseWikiFarm::Schema::Result::Title",
@@ -403,6 +435,24 @@ __PACKAGE__->has_many(
    );
 
 
+=head2 sibling_texts
+
+Resultset with the same Title class with same C<site_id>, same
+C<f_class> (C<text> or C<special> and same C<status>.
+
+=cut
+
+__PACKAGE__->has_many(sibling_texts => "AmuseWikiFarm::Schema::Result::Title",
+                      sub {
+                          my $args = shift;
+                          return {
+                                  "$args->{foreign_alias}.site_id" => {-ident => "$args->{self_alias}.site_id" },
+                                  "$args->{foreign_alias}.f_class" => {-ident => "$args->{self_alias}.f_class" },
+                                  "$args->{foreign_alias}.status"  => {-ident => "$args->{self_alias}.status"  },
+                                 };
+                      },
+                      { cascade_copy => 0, cascade_delete => 0 });
+
 use File::Spec;
 use Text::Amuse::Compile::Utils qw/read_file/;
 use DateTime;
@@ -412,6 +462,7 @@ use Text::Amuse;
 use JSON qw/to_json from_json/;
 use HTML::Entities qw/decode_entities/;
 use DateTime;
+use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid/;
 
 =head2 listing
 
@@ -762,8 +813,8 @@ catalyst app url, instead of calling uri_for with 2 or 3 arguments
 =cut
 
 sub full_uri {
-    my $self = shift;
-    my $uri = $self->uri;
+    my ($self, $uri) = @_;
+    $uri ||= $self->uri;
     my $class = $self->f_class;
     if ($class eq 'special') {
         return '/special/' . $uri;
@@ -780,6 +831,15 @@ sub full_edit_uri {
     my $self = shift;
     return $self->full_uri . '/edit';
 }
+
+sub cover_uri {
+    my $self = shift;
+    if (my $uri = $self->valid_cover) {
+        return $self->full_uri($uri);
+    }
+    return;
+}
+
 
 =head2 Attached pdf (#ATTACH directive)
 
@@ -984,6 +1044,35 @@ sub insert_stat_record {
                                type => $type || '',
                                user_agent => $user_agent || '',
                               });
+}
+
+sub valid_cover {
+    my $self = shift;
+    return cover_filename_is_valid($self->cover);
+}
+
+sub monthly_archive {
+    # it's a many to many, but someone should explain to me why it
+    # would belong to more of them.
+    return shift->monthly_archives->first;
+}
+
+sub newer_texts {
+    my $self = shift;
+    return $self->sibling_texts->newer_than($self->pubdate);
+}
+
+sub older_texts {
+    my $self = shift;
+    return $self->sibling_texts->older_than($self->pubdate);
+}
+
+sub newer_text {
+    return shift->newer_texts->search(undef, { rows => 1 })->first;
+}
+
+sub older_text {
+    return shift->older_texts->search(undef, { rows => 1 })->first;
 }
 
 __PACKAGE__->meta->make_immutable;

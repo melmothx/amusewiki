@@ -112,7 +112,7 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
                                         password => $new_password,
                                        },
                        button => 'submit');
-    is $mech->uri->path, '/library', "Login ok with new password";
+    is $mech->uri->path, '/latest', "Login ok with new password";
     $mech->get_ok('/logout');
     $mech->get_ok('/login');
     $mech->submit_form(with_fields =>  {

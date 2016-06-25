@@ -25,6 +25,7 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_filepath_is_valid
                     clean_username
                     clean_html
+                    cover_filename_is_valid
                     muse_filename_is_valid/;
 
 =head1 NAME
@@ -818,6 +819,19 @@ sub clean_username {
         }
     }
     return 'anonymous';
+}
+
+sub cover_filename_is_valid {
+    my ($name) = @_;
+    return '' unless $name;
+    if ($name =~ m/\A(.*)(\.(png|jpe?g))\z/) {
+        my $base = $1;
+        my $ext = $2;
+        if (my $cleaned = muse_filename_is_valid($base)) {
+            return $cleaned . $ext;
+        }
+    }
+    return '';
 }
 
 sub clean_html {

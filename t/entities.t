@@ -76,12 +76,12 @@ $mech->content_like(qr/class="list-group-item\ clearfix"
 
 $mech->get_ok('/topics/war');
 $mech->content_contains(q{<title>Ratovi&quot; i'  &amp; terorizam | </title>});
-$mech->content_contains(q{<h2>Ratovi&quot; i&#39; &lt;državni&gt; &amp; terorizam}) or diag $mech->content;
+$mech->content_contains(q{<h1>Ratovi&quot; i&#39; &lt;državni&gt; &amp; terorizam}) or diag $mech->content;
 
 $mech->get_ok('/topics/topic');
 # title is escaped with | html, so "'" is preserved
 $mech->content_like(qr/<title>&quot;'topic'&quot;/) or diag $mech->content;
-$mech->content_contains(q{<h2>&quot;&#39;topic&#39;&quot;});
+$mech->content_contains(q{<h1>&quot;&#39;topic&#39;&quot;});
 
 $mech->get_ok('/library/a-test');
 $mech->content_contains(q{<title> &quot;'hello'&quot; | </title>});

@@ -80,7 +80,7 @@ $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 common_tests($mech);
 diag "common tests done";
 open_new($mech);
-is $mech->uri->path, '/library', "After submitting to new + revision, I'm at homepage";
+is $mech->uri->path, '/latest', "After submitting to new + revision, I'm at homepage";
 closed_publish($mech);
 
 diag "checking the open site";
@@ -199,7 +199,7 @@ sub open_new {
     my $mech = shift;
     $mech->get_ok('/');
     $mech->content_contains('/action/text/new') or diag $mech->response->decoded_content;
-    $mech->follow_link_ok( { text_regex => qr/Add to library/}, "Going on new");
+    $mech->follow_link_ok( { text_regex => qr/Add a new text/}, "Going on new");
     is $mech->uri->path, '/action/text/new';
     $mech->submit_form(
                        form_id => 'ckform',

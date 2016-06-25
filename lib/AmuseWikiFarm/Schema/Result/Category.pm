@@ -249,5 +249,17 @@ sub sorted_titles {
       grep { $_->status eq 'published' } $self->titles->all;
 }
 
+sub cloud_level {
+    my $self = shift;
+    my $level = int($self->text_count / 5);
+    if ($level > 20) {
+        return 20;
+    }
+    else {
+        return $level;
+    }
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

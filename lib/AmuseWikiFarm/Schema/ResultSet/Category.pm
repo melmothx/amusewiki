@@ -5,6 +5,8 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
+__PACKAGE__->load_components('Helper::ResultSet::Random');
+
 =head1 NAME
 
 AmuseWikiFarm::Schema::ResultSet::Category - Category resultset
@@ -74,6 +76,21 @@ sub active_only {
     return shift->search({ text_count => { '>' => 0 }});
 }
 
+=head2 min_texts($integer)
+
+=cut
+
+sub min_texts {
+    my ($self, $num) = @_;
+    my $me = $self->current_source_alias;
+    my $limit = 0;
+    if ($num and $num =~ m/\A([1-9][0-9]*)\z/) {
+        $limit = $num - 1;
+    }
+    return $self->search({ "$me.text_count" => { '>' => $limit }});
+}
+
+
 =head2 listing_tokens
 
 Use HRI to pull the data and select only some columns.
@@ -90,6 +107,36 @@ sub listing_tokens {
         $row->{full_uri} = join('/', '', 'category', $row->{type}, $row->{uri});
     }
     return \@all;
+}
+
+=head2 authors_count
+
+Return the number of active authors
+
+=cut
+
+sub authors_count {
+    my $self = shift;
+    return $self->active_only_by_type('author')->count;
+}
+
+=head2 topics_count
+
+Return the number of active topics
+
+=cut
+
+sub topics_count {
+    my $self = shift;
+    return $self->active_only_by_type('topic')->count;
+}
+
+sub topics_only {
+    return shift->search({ type => 'topic' });
+}
+
+sub authors_only {
+    return shift->search({ type => 'author' });
 }
 
 1;

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 140;
+use Test::More tests => 142;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -137,6 +137,7 @@ foreach my $page ('/library/the-text', '/authors', '/topics',
 
 $mech->get_ok('/set-language?lang=en');
 $mech->get_ok('/authors/pippo');
+$mech->content_lacks('glyphicon-edit');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
 $mech->get_ok('/category/author/pippo/edit');
 is $mech->uri->path, '/login', "Bounced to login";
@@ -148,6 +149,7 @@ is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
 
 $mech->get_ok('/authors/pippo');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
+$mech->content_contains('glyphicon-edit');
 $mech->get_ok('/category/author/pippo/edit');
 is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
 $mech->content_like(qr{<h2>Update category description});

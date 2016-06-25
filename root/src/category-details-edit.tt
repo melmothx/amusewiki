@@ -9,12 +9,12 @@
 </div>
 [% IF category_description %]
 <div class="row">
-  <div class="col-md-11">
+  <div class="col-md-10">
     <div class="category-description well" style="margin: 18px 0">
       [% category_description.html_body %]
     </div>
   </div>
-  <div class="col-md-1" style="margin: 18px 0">
+  <div class="col-md-2" style="margin: 18px 0">
     <form action="[% c.uri_for_action('/category/delete_category_by_lang',
                   [ f_class, category_canonical_name, category_language ]) %]"
           id="category-description-delete" method="POST">

@@ -1,0 +1,70 @@
+<div class="amw-post-listing-container">
+[% IF texts.count %]
+<div class="amw-post-inner-listing">
+<div class="list-group">
+  [% WHILE (text = texts.next) %]
+  <div class="amw-listing-item">
+  [% IF text.teaser || text.cover_uri %]
+  <div class="list-group-item clearfix">
+    [% IF text.cover_uri %]
+    <div class="text-cover-img-mini-container">
+      <a href="[% c.uri_for(text.full_uri) %]">
+        <img src="[% c.uri_for(text.cover_uri) %]"
+             alt="[% text.valid_cover %]"
+             class="text-cover-img-mini img-thumbnail" />
+      </a>
+    </div>
+    [% END %]
+    <div>
+      <h3 class="amw-latest-listing-item-title">
+        [%- IF text.author %]<small>[% text.author -%]</small><br />[% END -%]
+        <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
+        [% IF text.subtitle %]<small>[% text.subtitle -%]</small>[% END -%]
+        [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
+        <small>[[% text.lang %]]</small>
+        [%- END -%]
+
+      </h3>
+      [% IF text.teaser %]
+      [% text.teaser %]
+      [% END %]
+    </div>
+    <div class="clearfix"></div>
+    <div class="amw-latest-listing-item-date">
+      <br />
+      <small>[% text.pubdate_locale(current_locale_code) %]</small>
+      [% IF text.is_deferred %]
+      <span class="glyphicon glyphicon-time"></span>
+      [% END %]
+      <span class="amw-read-more-link pull-right">
+        <a href="[% c.uri_for(text.full_uri) %]">
+          [% loc('Read the whole text...') %]
+        </a>
+      </span>
+    </div>
+  </div>
+  [% ELSE %]
+  <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
+    <strong>[% text.title %]</strong>
+    [%- IF text.author %] — [% text.author -%][% END -%]
+    [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
+    [[% text.lang %]]
+    [%- END -%]
+    [% IF text.is_deferred %]
+    <span class="glyphicon glyphicon-time"></span>
+    [% END %]
+    <span class="pull-right clearfix">
+      [% text.pubdate_locale(current_locale_code) %]
+    </span>
+  </a>
+  [% END %]
+  </div>
+[% END %]
+</div>
+</div>
+[% ELSE %]
+<div class="alert alert-warning">
+  [% loc('No text found!') %]
+</div>
+[% END %]
+</div>

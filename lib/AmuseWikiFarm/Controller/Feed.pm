@@ -71,7 +71,7 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
         $item->guid(undef, isPermaLink => 1);
 
         if ($text->f_class eq 'special') {
-            my $body = $text->html_body;
+            my $body = $text->teaser || $text->html_body;
             $item->description($body);
             next;
         }
@@ -82,6 +82,9 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
                 push @lines,
                   '<strong>' . $c->loc(ucfirst($method)) . '</strong>: ' . $string;
             }
+        }
+        if (my $teaser = $text->teaser) {
+            push @lines, '<div>' . $teaser . '</div>';
         }
         $item->description('<div>' . join('<br>', @lines) . '</div>');
 

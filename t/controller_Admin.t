@@ -126,7 +126,7 @@ foreach my $sitespec ({
     ok(!$created->acme_certificate, "Default is false for acme cert");
     is $mech->uri->path, "/admin/sites/edit/$site_id", "Path is fine";
 
-    $mech->content_contains("$site_id</h2>");
+    $mech->content_contains(" $site_id</h1>");
 
     ok($mech->form_with_fields(qw/mode locale/), "Found form") or diag $mech->content;
 

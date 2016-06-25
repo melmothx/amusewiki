@@ -1,3 +1,4 @@
+[% IF pager %]
 [% IF pager.size > 1 %]
 <ul class="pagination">
   [% FOREACH page IN pager %]
@@ -10,4 +11,5 @@
   </li>
   [% END %]
 </ul>
+[% END %]
 [% END %]

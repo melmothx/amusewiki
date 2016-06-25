@@ -19,7 +19,6 @@ html, body {
   height: 70px;
   clear:both;
   padding-top:15px;
-  background-color: #efefef;
 }
 
 body {
@@ -40,10 +39,6 @@ p.tableofcontentline {
     text-indent: -1em;
 }
 
-p.tableofcontentline a{
-    color: black;
-}
-
 div#htmltextbody {
     margin-top: 40px;
 }
@@ -54,10 +49,6 @@ div.float_image_r,div.float_image_l {
 
 div.float_image_r {
     margin-left: 12px;
-}
-
-.error, .mandatory {
-    color: #8b0000;
 }
 
 .feed {
@@ -162,3 +153,81 @@ blockquote {
 img.amw-fbreader {
     width: 200px;
 }
+
+img#text-cover-img {
+    max-width: 250px;
+    padding: 10px;
+    margin: 3px;
+}
+
+img.text-cover-img-mini {
+    max-width: 150px;
+    padding: 10px;
+}
+
+div.text-cover-img-mini-container {
+    float:right;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+div#text-cover-img-container {
+    float:right;
+}
+
+img.pdfmyicons {
+    margin-bottom: 10px;
+}
+
+div.amw-latest-listing-item-date {
+    display: inline;
+}
+
+div.amw-cloud-element {
+    display: inline-block;
+    margin: 3px;
+}
+
+.amw-cloud-element-level-0 {
+    font-size: 10pt;
+}
+
+.amw-cloud-element-level-1, .amw-cloud-element-level-2, .amw-cloud-element-level-3,
+.amw-cloud-element-level-4, .amw-cloud-element-level-5 {
+    font-size: 11pt;
+}
+
+.amw-cloud-element-level-6, .amw-cloud-element-level-7, .amw-cloud-element-level-8,
+.amw-cloud-element-level-9, .amw-cloud-element-level-10 {
+    font-size: 12pt;
+}
+
+.amw-cloud-element-level-11, .amw-cloud-element-level-12, .amw-cloud-element-level-13,
+.amw-cloud-element-level-14, .amw-cloud-element-level-15 {
+    font-size: 13pt;
+}
+
+.amw-cloud-element-level-16, .amw-cloud-element-level-17, .amw-cloud-element-level-18,
+.amw-cloud-element-level-19, .amw-cloud-element-level-20 {
+    font-size: 14pt;
+}
+
+/*
+.amw-cloud-element-texts {
+    display: none;
+}
+*/
+
+.amw-cloud-href, .amw-cloud-href:hover {
+    text-decoration: none;
+}
+
+div.amw-post-listing-container {
+    margin-top: 10px;
+}
+
+div#text-next-post-link span.glyphicon,
+div#text-prev-post-link span.glyphicon {
+    font-size: 20px;
+}
+

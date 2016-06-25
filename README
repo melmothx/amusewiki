@@ -108,7 +108,7 @@ Deny the following in the webserver configuration:
  - root/src    template directory.
 
 
-** Local files (favicon.ico, navlogo.png, pagelogo.png, local.css, local.js)
+** Local files (favicon.ico, navlogo.png, pagelogo.png, widebanner.png, local.css, local.js)
 
 These files may provide an override for cosmetics and features (via
 js) without tampering the code. These files should be placed in the
@@ -121,6 +121,10 @@ If pagelogo.png is present, it will be placed before the latest
 entries on the special pages. The assigned ids are
 "special-pages-logo" for the container and "special-pages-logo-img"
 for the image itself.
+
+If widebanner.png is present, then it's used to place a banner below
+the navbar (which is fixed). It should have a width of 1170px for
+optimal results.
 
 ** Local PO files
 

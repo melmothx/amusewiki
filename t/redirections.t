@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 47;
+use Test::More tests => 56;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -131,7 +131,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
 $mech->get_ok('/');
-
+$mech->get_ok('/library');
 $mech->content_contains('Full list of texts');
 $mech->content_contains('/library/a-test-pippo');
 ok($mech->follow_link( text_regex => qr/a test/ ));
@@ -171,4 +171,27 @@ $alias = $site->redirections->find({ uri => 'pluto-2', type => 'author' });
 my @linked = $alias->linked_texts;
 is (scalar(@linked), 1, "Found one text");
 ok ($alias->can_safe_delete, "Alias can be deleted safely");
+
+foreach my $legacy ({
+                     from => '/bla/bla/200',
+                     to => '/library',
+                    },
+                    {
+                     from => '/blax/',
+                     to => '/search',
+                    },
+                    {
+                     from => '/x?p=10',
+                     to => '/login',
+                    },
+                    {
+                     from => '/?page=topics',
+                     to => '/category/topic',
+                    }) {
+    $site->add_to_legacy_links({ legacy_path => $legacy->{from},
+                                 new_path => $legacy->{to} });
+    $mech->get_ok($legacy->{from});
+    is $mech->uri->path_query, $legacy->{to}, "$legacy->{from} redirected to $legacy->{to}";
+}
+
 

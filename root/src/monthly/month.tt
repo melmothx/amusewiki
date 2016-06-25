@@ -1,0 +1,5 @@
+[% # -*- mode: html -*- %]
+
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
+[% INCLUDE 'include/posts.tt' %]

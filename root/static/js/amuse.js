@@ -15,9 +15,6 @@ $(document).ready(function(){
         $("div.table-of-contents").clone().appendTo("#pop-up-toc");
         $("div.table-of-contents").addClass("well well-lg");
     }
-    else {
-        $("div#thework").addClass("col-md-12");
-    }
 });
 
 $(document).ready(function() {

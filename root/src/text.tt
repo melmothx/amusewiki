@@ -19,10 +19,13 @@
     </div>
   </div>
 </div>
-<div class="row" id="page">
-  <div class="col-md-1 col-lg-2">
-  </div>
-  <div class="col-md-10 col-lg-8">
+
+[% # if we have the sidebars, we're cool, otherwise we have to shrink it %]
+<div class="row">
+  <div class="col-sm-10 col-sm-push-1">
+
+
+<div id="page">
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   <div id="preamble">
@@ -75,6 +78,21 @@
       </span>
       [% text.date %]
     </div>
+    [% END %]
+
+    [% # if it's not a blog style site, this has no interest whatsoever? %]
+    [% IF blog_style %]
+    [% SET text_monthly_archive = text.monthly_archive %]
+    [% IF text_monthly_archive %]
+    <div id="text-monthly-archive-link">
+      <span id="text-monthly-archive-link-label">
+        <strong>[% loc('Publication date') %]:</strong>
+      </span>
+      <a href="[% c.uri_for_action('/monthly/month', [text_monthly_archive.year,text_monthly_archive.month]) %]">
+        [% text.pubdate_locale(current_locale_code) || text_monthly_archive.localized_name(current_locale_code) %]
+      </a>
+    </div>
+    [% END %]
     [% END %]
 
     [% IF text_topics.size %]
@@ -225,7 +243,7 @@
                 title="[% loc('Edit this text') %]" data-toggle="tooltip" data-placement="top"
                 id="edit-button">
           <span class="glyphicon glyphicon-edit" style="font-size: 1.5em"></span>
-          <span style="display:none">Edit this text</span>
+          <span style="display:none">[% loc('Edit this text') %]</span>
         </button>
       </form>
       [% END %]
@@ -269,21 +287,30 @@
   </div>
   [% END %]
   <div class="center">
-    [% IF text.author %]
-    <h3 id="text-author">[% text.author %]</h3>
-    [% END %]
-    <h1 id="text-title">[% text.title %]</h1>
-    [% IF text.subtitle %] 
-    <h2 id="text-subtitle">[% text.subtitle %]</h2>
-    [% END %]
+    <div class="page-header">
+      [% IF text.author %]
+      <h3 id="text-author">[% text.author %]</h3>
+      [% END %]
+      <h1 id="text-title">[% text.title %]
+        [% IF text.subtitle %]
+        <br>
+        <small id="text-subtitle">[% text.subtitle %]</small>
+        [% END %]
+      </h1>
+    </div>
   </div>
   <div id="htmltextbody">
+    [% IF text.valid_cover %]
+    <div id="text-cover-img-container">
+      <img id="text-cover-img" src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
+    </div>
+    [% END %]
     [% text.html_body %]
   </div>
 
   [%- IF text.attached_pdfs -%]
   [%-   FOREACH att IN text.attached_pdfs -%]
-  <div class="center" style="margin: 80px 0">
+  <div id="amw-attached-pdfs" class="center" style="margin: 80px 0">
     <p>
       <strong> * * * * * </strong>
     </p>
@@ -298,6 +325,8 @@
   [%-   END -%]
   [%- END -%]
 
+  <div class="clearfix"></div>
+  <div id="text-optional-footer"></div>
 
   [% SET translations = text.translations_rs %]
   [% IF translations.count %]
@@ -342,21 +371,44 @@
     <h1><small>[% loc('Latest entries') %]</small></h1>
   </div>
   <div class="well">
-    <ul class="latest-entries">
-      [% FOREACH entry IN latest_entries %]
-      <li>
-        <a href="[% c.uri_for(entry.full_uri) %]">
-          [% entry.title %]</a> [% IF entry.author %] — [% entry.author %][% END %]
-      </li>
-      [% END %]
-    </ul>
-    <ul class="pager">
-      <li><a href="[% c.uri_for_action('/latest/index') %]">[% loc('More') %]</a>
-    </ul>
+    <div id="amw-latest-entries-special-page">
+      <div class="center">
+        <img src="[% c.uri_for('/static/images/ajax-loader-circular.gif') %]" alt="Loading" />
+      </div>
+    </div>
   </div>
+  <script type="text/javascript">
+    $(document).ready(function() { $("#amw-latest-entries-special-page").load("/latest?bare=1 .amw-listing-page-body") });
+  </script>
   [% END %]
+</div>
+
   </div>
-  <div class="col-md-1 col-lg-2">
+  <div class="col-sm-pull-10 col-sm-1">
+    <div class="hidden-xs" style="height: 100px">
+    </div>
+    [% IF text_prev_uri %]
+    <div id="text-prev-post-link">
+      <a href="[% c.uri_for(text_prev_uri) %]">
+        <span class="glyphicon glyphicon-chevron-left hidden-xs"></span>
+        <span class="btn btn-default visible-xs">[% loc("Older texts") %]</span>
+      </a>
+    </div>
+    [% END %]
+  </div>
+  <div class="col-sm-1">
+    <div class="hidden-xs" style="height: 100px">
+    </div>
+    [% IF text_next_uri %]
+    <div class="hidden-xs">
+    </div>
+    <div id="text-next-post-link">
+      <a href="[% c.uri_for(text_next_uri) %]">
+        <span class="glyphicon glyphicon-chevron-right hidden-xs"></span>
+        <span class="btn btn-default visible-xs">[% loc("Newer texts") %]</span>
+      </a>
+    </div>
+    [% END %]
   </div>
 </div>
 
@@ -378,5 +430,14 @@ $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });
             });
         });
     });
+</script>
+[% END %]
+
+[% IF blog_style %]
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("div#preamble-container").remove().appendTo("#text-optional-footer");
+      $('[data-toggle="tooltip"]').tooltip();
+  });
 </script>
 [% END %]

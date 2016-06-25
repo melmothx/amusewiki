@@ -31,7 +31,7 @@ foreach my $pdflogo (qw/logo-yu.pdf logo-en.pdf/) {
         my $src = catfile(qw/t texmf-files/, $pdflogo);
         copy($src, $texmffiledir)
           or die "Failed to copy $src into $texmffiledir $!";
-        system('mktexlsr');
+        system(texhash => $texmfhome);
         unless (system(kpsewhich => $pdflogo) == 0) {
             die "Couldn't find or install $pdflogo into TEXMFHOME, please report this issue\n";
         }
@@ -109,7 +109,7 @@ my %repos = ('0blog0' => {
                           mode => 'blog',
                           sitename => 'A test blog',
                           siteslogan => 'only a test',
-                          theme => 'test-theme',
+                          theme => 'amusejournal',
                           bb_page_limit => 10,
                           logo => 'logo-en',
                           a4_pdf => 0,
@@ -161,3 +161,9 @@ foreach my $i (1..3) {
     $user->add_to_sites($blog);
     ok($user->id, "Found " . $user->id);
 }
+
+$schema->resultset('User')->create({ username => 'marcomarco',
+                                     password => 'marcomarco',
+                                     user_roles => [ { role => { role => 'admin' } } ] })
+  ->add_to_sites($blog);
+

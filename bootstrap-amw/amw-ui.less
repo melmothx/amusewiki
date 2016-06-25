@@ -1,8 +1,3 @@
-@import "bootstrap/less/bootstrap.less";
-@import "bootstrap/less/theme.less";
-@brand-primary: #8b0000;
-@nav-link-padding: 10px 6px;
-/* @grid-float-breakpoint: 940px; */
 .ui-helper-hidden-accessible {
     display: none;
 }
@@ -57,3 +52,27 @@
     -moz-border-radius: 0px;
     background-image: none;
 }
+
+.footer {
+    background-color: @navbar-default-bg;
+}
+
+.footer a {
+    color: @navbar-default-link-color;
+}
+
+
+.amw-cloud-href,
+.amw-cloud-href:hover {
+    color:@label-color;
+}
+
+p.tableofcontentline a{
+    color: @text-color;
+}
+
+.error, .mandatory {
+    color: @brand-danger;
+}
+
+@nav-link-padding: 10px 6px;

@@ -104,7 +104,8 @@ __PACKAGE__->table("site");
 =head2 logo
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 mail_notify
@@ -156,25 +157,29 @@ __PACKAGE__->table("site");
 =head2 ssl_key
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 ssl_cert
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 ssl_ca_cert
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 ssl_chained_cert
 
   data_type: 'varchar'
-  is_nullable: 1
+  default_value: (empty string)
+  is_nullable: 0
   size: 255
 
 =head2 acme_certificate
@@ -195,6 +200,13 @@ __PACKAGE__->table("site");
 
   data_type: 'integer'
   default_value: 1
+  is_nullable: 0
+  size: 1
+
+=head2 blog_style
+
+  data_type: 'integer'
+  default_value: 0
   is_nullable: 0
   size: 1
 
@@ -400,7 +412,7 @@ __PACKAGE__->add_columns(
   "theme",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 32 },
   "logo",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "mail_notify",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "mail_from",
@@ -416,19 +428,21 @@ __PACKAGE__->add_columns(
   "cgit_integration",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "ssl_key",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "ssl_cert",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "ssl_ca_cert",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "ssl_chained_cert",
-  { data_type => "varchar", is_nullable => 1, size => 255 },
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "acme_certificate",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "multilanguage",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "active",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
+  "blog_style",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "bb_page_limit",
   { data_type => "integer", default_value => 1000, is_nullable => 0 },
   "tex",
@@ -589,6 +603,36 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 legacy_links
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::LegacyLink>
+
+=cut
+
+__PACKAGE__->has_many(
+  "legacy_links",
+  "AmuseWikiFarm::Schema::Result::LegacyLink",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 monthly_archives
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::MonthlyArchive>
+
+=cut
+
+__PACKAGE__->has_many(
+  "monthly_archives",
+  "AmuseWikiFarm::Schema::Result::MonthlyArchive",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 redirections
 
 Type: has_many
@@ -720,8 +764,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-06 10:04:20
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:tubBmbLiu3V94WGDt0BNyA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-24 07:40:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sp1wCQEcqW1Xqp758+9JGA
 
 =head2 other_sites
 
@@ -747,6 +791,7 @@ use Cwd;
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_file_info
                                    muse_filepath_is_valid
+                                   cover_filename_is_valid
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor::HTML qw/html_to_muse html_file_to_muse/;
 use Text::Amuse::Compile;
@@ -1186,7 +1231,9 @@ sub import_text_from_html_params {
         $self->_add_directive($fh, $directive, $params->{$directive});
     }
     # add the notes
-    $self->_add_directive($fh, notes => html_to_muse($params->{notes}));
+    foreach my $field (qw/notes teaser/) {
+        $self->_add_directive($fh, $field => html_to_muse($params->{$field}));
+    }
 
     # separator
     print $fh "\n";
@@ -1410,6 +1457,9 @@ sub index_file {
         }
     }
 
+    delete $details->{coverwidth};
+    $insertion{cover} = cover_filename_is_valid($insertion{cover});
+
     # this is needed because we insert it from title, and DBIC can't
     # infer the site_id from there (even if it should, but hey).
     my @parsed_cats;
@@ -1523,6 +1573,20 @@ sub index_file {
         $self->xapian->index_text($title, $logger);
         # and update the text structure
         $title->text_html_structure(1);
+        # and add or remove from the archives
+        my $pubdate = $title->pubdate;
+        my @months;
+        # populate
+        if ($title->is_published) {
+            if (my $pubdate = $title->pubdate) {
+                push @months, {
+                               site_id => $self->id,
+                               month => $pubdate->month,
+                               year => $pubdate->year,
+                              };
+            }
+        }
+        $title->set_monthly_archives(\@months);
     }
     return $file;
 }
@@ -1622,6 +1686,29 @@ sub supported_locales {
     }
     return sort keys %out;
 }
+
+has is_without_authors => (is => 'ro',
+                           isa => 'Bool',
+                           lazy => 1,
+                           builder => '_build_is_without_authors');
+
+sub _build_is_without_authors {
+    my $self = shift;
+    return !$self->categories->authors_count;
+}
+
+has is_without_topics => (is => 'ro',
+                          isa => 'Bool',
+                          lazy => 1,
+                          builder => '_build_is_without_topics');
+
+sub _build_is_without_topics {
+    my $self = shift;
+    return !$self->categories->topics_count;
+}
+
+
+
 
 =head1 SCANNING
 
@@ -2055,6 +2142,7 @@ sub update_from_params_restricted {
                         active            => 'value',
 
                         logo              => 'value',
+                        logo_with_sitename => 'value',
 
                         canonical         => 'value',
                         sitegroup         => 'value',
@@ -2069,8 +2157,6 @@ sub update_from_params_restricted {
                         use_luatex               => 'option',
 
                         vhosts            => 'delete',
-                        html_special_page_bottom => 'option',
-
 
                         secure_site       => 'value',
                         secure_site_only  => 'value',
@@ -2125,6 +2211,7 @@ sub update_from_params {
                        cgit_integration
                        secure_site
                        active
+                       blog_style
                        acme_certificate
                        secure_site_only
                        twoside nocoverpage/);
@@ -2141,6 +2228,7 @@ sub update_from_params {
     # the the length.
     my @strings = (qw/magic_answer magic_question fixed_category_list
                       multilanguage
+                      theme
                       ssl_key
                       ssl_cert
                       ssl_ca_cert
@@ -2337,10 +2425,17 @@ sub update_from_params {
 
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
+                           left_layout_html
+                           right_layout_html
+                           top_layout_html
+                           bottom_layout_html
                            do_not_enforce_commit_message
                            use_js_highlight
                           /) {
         my $value = delete $params->{$option} || '';
+        # clean it up from leading and trailing spaces
+        $value =~ s/\A\s*//s;
+        $value =~ s/\s*\z//s;
         push @options, {
                         option_name => $option,
                         option_value => $value,
@@ -2633,9 +2728,26 @@ sub get_option {
 }
 
 sub html_special_page_bottom {
-    my ($self) = @_;
-    return $self->get_option('html_special_page_bottom') || '';
+    return shift->get_option('html_special_page_bottom') || '';
 }
+
+sub left_layout_html {
+    return shift->get_option('left_layout_html') || '';
+}
+
+sub right_layout_html {
+    return shift->get_option('right_layout_html') || '';
+}
+
+sub top_layout_html {
+    return shift->get_option('top_layout_html') || '';
+}
+
+sub bottom_layout_html {
+    return shift->get_option('bottom_layout_html') || '';
+}
+
+
 
 sub use_luatex {
     my ($self) = @_;
@@ -2740,6 +2852,66 @@ sub serialize_site {
     }
     $data{users} = \@users;
     return \%data;
+}
+
+sub populate_monthly_archives {
+    my $self = shift;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    # clear all
+    $self->monthly_archives->delete;
+    my $texts = $self->titles->published_texts->search({}, { columns => [qw/id pubdate/] });
+    while (my $text = $texts->next) {
+        if (my $pubdate = $text->pubdate) {
+            my $month = $self->monthly_archives->find_or_create({
+                                                                 month => $pubdate->month,
+                                                                 year => $pubdate->year,
+                                                                });
+            $month->add_to_titles($text);
+        }
+    }
+    $guard->commit;
+}
+
+sub bootstrap_themes {
+    my $self = shift;
+    my @themes = (qw/amusewiki
+                     amusecosmo
+                     amusejournal
+
+                     cerulean
+                     cosmo
+                     cyborg
+                     darkly
+                     flatly
+                     journal
+                     lumen
+                     readable
+                     simplex
+                     slate
+                     spacelab
+                     united
+                    /);
+    return @themes;
+}
+
+sub bootstrap_theme {
+    my $self = shift;
+    my $theme = $self->theme || 'amusewiki';
+    my %avail = map { $_ => 1 } $self->bootstrap_themes;
+    if ($avail{$theme}) {
+        return $theme;
+    }
+    else {
+        log_error { "Theme $theme not found! for site " . $self->canonical };
+        return 'amusewiki';
+    }
+}
+
+sub bootstrap_theme_list {
+    my $self = shift;
+    my @themes = map { +{ name => $_, label => ucfirst($_) } } $self->bootstrap_themes;
+    Dlog_debug { "Themes are $_" } \@themes;
+    return @themes;
 }
 
 =head1 WEBSERVER options

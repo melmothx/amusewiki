@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller' }
 use AmuseWikiFarm::Utils::Amuse qw//;
 use AmuseWikiFarm::Log::Contextual;
 use HTTP::BrowserDetect;
+use IO::File;
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -114,6 +115,8 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     log_debug { "User exists? " .  $c->user_exists };
     # stash the site object
     $c->stash(site => $site);
+    $c->stash(blog_style => $site->blog_style);
+
 
     # always stash the login uri, at some point it could be needed by
     # the layout
@@ -154,26 +157,6 @@ sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
     # set the localization
     $c->set_language($locale, $site_id);
 
-    my @related = $site->other_sites;
-    my @specials = $site->special_list;
-    for my $sp (@specials) {
-        my $uri = $sp->{uri};
-        $sp->{special_uri} = $uri;
-        $sp->{uri} = $sp->{full_url} || $c->uri_for_action('/special/text', [ $uri ]);
-        $sp->{active} = ($c->request->uri eq $sp->{uri});
-    }
-
-    # let's assume related will return self, and special index
-    if (@related || @specials) {
-        my $nav_hash = {};
-        if (@related) {
-            $nav_hash->{projects} = \@related;
-        }
-        if (@specials) {
-            $nav_hash->{specials} = \@specials;
-        }
-        $c->stash(navigation => $nav_hash);
-    }
     return 1;
 }
 
@@ -257,8 +240,27 @@ sub not_found :Private {
                 }
             }
         }
+        if (my $replacement = $c->stash->{site}->legacy_links
+            ->find({ legacy_path => $c->request->uri->path_query })) {
+            my $new_path = $replacement->new_path;
+            $c->response->redirect($c->uri_for($new_path), 301);
+            $c->detach();
+            return;
+        }
     }
     $c->response->status(404);
+    if ($c->request->path =~ m/\.(jpe?g|png|pdf)\z/) {
+        my $replacement = $c->path_to(qw/root static images not-found.png/)->stringify;
+        if (-f $replacement) {
+            my $fh = IO::File->new($replacement, 'r');
+            $c->response->headers->content_type('image/png');
+            $c->response->body($fh);
+        }
+        else {
+            $c->response->body('Not found');
+        }
+        return;
+    }
     log_info {
         $c->request->uri
           . " not found by " . ($c->request->user_agent || '')
@@ -377,8 +379,21 @@ sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
     # check if we have a special page named index
     my $nav = $c->stash->{navigation};
+    # see if we have something
+    my $path = $c->request->uri->path_query;
+    if ($path ne '/') {
+        log_debug { "Checking the legacy paths for $path" };
+        if (my $replacement = $c->stash->{site}->legacy_links
+            ->find({ legacy_path => $path })) {
+            my $new_path = $replacement->new_path;
+            $c->response->redirect($c->uri_for($new_path), 301);
+            $c->detach();
+            return;
+        }
+    }
+
     # default
-    my $target = $c->uri_for_action('/library/listing');
+    my $target = $c->uri_for_action('/latest/index');
     my $site = $c->stash->{site};
     my $locale = $c->stash->{current_locale_code} || $site->locale;
     if ($site->is_private and !$c->user_exists) {
@@ -450,10 +465,53 @@ sub end : ActionClass('RenderView') {
     my $site = $c->stash->{site};
     return unless $site;
 
-    if (my $theme = $site->theme) {
-        die "Bad theme name!" unless $theme =~ m/^\w[\w-]+\w$/s;
-        $c->stash->{additional_template_paths} =
-          [$c->path_to(root => themes => $theme)];
+    unless ($c->stash->{no_wrapper}) {
+        log_debug { "Doing the layout fixes" };
+
+        my @related = $site->other_sites;
+        my @specials = $site->special_list;
+        for my $sp (@specials) {
+            my $uri = $sp->{uri};
+            $sp->{special_uri} = $uri;
+            $sp->{uri} = $sp->{full_url} || $c->uri_for_action('/special/text', [ $uri ]);
+            $sp->{active} = ($c->request->uri eq $sp->{uri});
+        }
+
+        # let's assume related will return self, and special index
+        if (@related || @specials) {
+            my $nav_hash = {};
+            if (@related) {
+                $nav_hash->{projects} = \@related;
+            }
+            if (@specials) {
+                $nav_hash->{specials} = \@specials;
+            }
+            $c->stash(navigation => $nav_hash);
+        }
+        # layout adjustments
+        my $theme = $site->bootstrap_theme;
+        my $columns = 12;
+        my $left_column = $site->left_layout_html;
+        my $right_column = $site->right_layout_html;
+        if ($left_column || $right_column) {
+            my $wide = 4;
+            # enlarge the column if we have only one sidebar
+            if ($left_column && $right_column) {
+                $wide = 2;
+            }
+            $c->stash(left_layout_html => $left_column,
+                      right_layout_html => $right_column,
+                      left_layout_cols => ($left_column ? $wide : 0),
+                      right_layout_cols => ($right_column ? $wide : 0),
+                     );
+            $columns = 8;
+        }
+        $c->stash(
+                  bootstrap_css => "/static/css/bootstrap.$theme.css",
+                  main_body_cols => $columns,
+                  top_layout_html => $site->top_layout_html,
+                  bottom_layout_html => $site->bottom_layout_html,
+                 );
     }
 }
 

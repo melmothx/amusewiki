@@ -123,6 +123,12 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
             return;
         }
         my $texts = $cat->titles->published_texts;
+        # if it's a blog, the alphabetica entry is not so important,
+        # and we give precedence to latest first.
+        if ($c->stash->{blog_style}) {
+            $texts = $texts->sort_by_pubdate_desc;
+        }
+
         my $current_locale = $c->stash->{current_locale_code};
         my $category_description = $cat->localized_desc($current_locale);
         # the unescaping happens when calling $c->loc

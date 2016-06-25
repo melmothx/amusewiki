@@ -1,11 +1,12 @@
 [% # -*- mode: html -*- %]
-<h2>[% page_title | html %]
+<div class="page-header">
+<h1>[% page_title | html %]
   [%- IF multilang.filter_label -%]
   <small>[% multilang.filter_label %]</small>
   [%- END -%]
   <small>([% text_count %])</small>
-</h2>
-<div><br /></div>
+</h1>
+</div>
 
 [%- IF site.multilanguage     -%]
 <div style="margin: 0 0 30px 0">

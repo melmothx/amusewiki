@@ -76,6 +76,13 @@ sub sorted_by_title {
                          { order_by => ["$me.sorting_pos", "$me.title"]});
 }
 
+sub sort_by_pubdate_desc {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search(undef, { order_by => { -desc => ["$me.pubdate"] } });
+}
+
+
 =head2 published_texts
 
 Result set with published titles (deleted set to empty string and
@@ -175,10 +182,10 @@ sub latest {
     my ($self, $items) = @_;
     $items ||= 50;
     die "Bad usage, a number is required" unless $items =~ m/^[1-9][0-9]*$/s;
-    return $self->published_texts->search({}, {
-                                               rows => $items,
-                                               order_by => { -desc => [qw/pubdate/] },
-                                              });
+    return $self->published_texts->sort_by_pubdate_desc
+      ->search(undef, {
+                       rows => $items,
+                      });
 }
 
 =head1 Admin-related queries
@@ -327,5 +334,27 @@ sub listing_tokens {
              text_count => $grand_total,
              pager => \@paging };
 }
+
+sub older_than {
+    my ($self, $dt) = @_;
+    $dt ||= DateTime->now;
+    my $format_time = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime($dt);
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.pubdate" => { '<' => $format_time } },
+                         { order_by => { -desc => "$me.pubdate" } });
+}
+
+sub newer_than {
+    my ($self, $dt) = @_;
+    $dt ||= DateTime->now;
+    my $format_time = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime($dt);
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.pubdate" => { '>' => $format_time } },
+                         { order_by => { -asc => "$me.pubdate" } });
+
+}
+
 
 1;

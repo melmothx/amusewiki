@@ -1,4 +1,6 @@
-<h2>[% loc('[_1] on mobile', site.full_name) %]</h2>
+<div class="page-header">
+  <h1>[% loc('[_1] on mobile', site.full_name) %]</h1>
+</div>
 
 <p>
   [% loc('Even if this site has a responsive, mobile-friendly layout,
@@ -62,21 +64,21 @@
   &nbsp;
 </div>
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-6 col-lg-4">
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-1.png') %]" alt="FBReader-1" />
     <p>
       <strong>1.</strong>
       [% loc('Find the network library menu, or equivalent.') %]
     </p>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-6 col-lg-4">
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-2.png') %]" alt="FBReader-2" />
     <p>
       <strong>2.</strong>
       [% loc('Network library listing screen.') %]
     </p>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-6 col-lg-4">
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-3.png') %]" alt="FBReader-3" />
     <p>
       <strong>3.</strong>
@@ -86,7 +88,7 @@
 </div>
 <div><br /></div>
 <div class="row">
-  <div class="col-sm-4">
+  <div class="col-sm-6 col-lg-4">
 
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-4.png') %]" alt="FBReader-4" />
     <p>
@@ -95,7 +97,7 @@
       <code>[% c.uri_for_action('/opds/start') %]</code>
     </p>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-6 col-lg-4">
 
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-5.png') %]" alt="FBReader-5" />
     <p>
@@ -103,7 +105,7 @@
       [% loc('Confirm') %]
     </p>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-6 col-lg-4">
 
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-6.png') %]" alt="FBReader-6" />
     <p>

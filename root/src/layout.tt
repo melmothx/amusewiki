@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content="AmuseWiki" />
     [% IF site.has_site_file('favicon.ico') %]
     <link rel="shortcut icon"
           href="[% c.uri_for_action('/sitefiles/local_files',
@@ -34,7 +35,7 @@
             src="[% c.uri_for('/static/js/jquery-1.11.1.min.js') %]">
     </script>
     <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/bootstrap.css', { v => 4 }) %]" />
+          href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 3 }) %]" />
 
     <!-- Latest compiled and minified JavaScript -->
     <script type="text/javascript"
@@ -84,11 +85,11 @@
 
     [%# base css for amuse texts %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amuse.css', { v => 2 }) %]" />
+          href="[% c.uri_for('/static/css/amuse.css', { v => 3 }) %]" />
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 22 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 27 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 1 }) %]"></script>
     <script type="text/javascript">
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -180,7 +181,7 @@
                  data-toggle="dropdown">
                 <span class="glyphicon glyphicon-heart"></span>
                 <span class="hidden-sm" id="amw-catalog-label">
-                  [% loc('Catalog') %]
+                  [% loc('Archive') %]
                 </span>
                 <b class="caret"></b>
               </a>
@@ -192,6 +193,7 @@
                     [% loc('Titles') %]
                   </a>
                 </li>
+                [% UNLESS site.is_without_authors %]
                 <li[% IF nav == 'author' %] class="active" [% END %]
                       id="amw-nav-bar-authors">
                   <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
@@ -199,6 +201,7 @@
                     [% loc('Authors') %]
                   </a>
                 </li>
+                [% END %]
                 [% IF site.fixed_category_list %]
                 <li role="presentation" class="divider"></li>
                 <li role="presentation" class="dropdown-header">
@@ -213,12 +216,14 @@
                 </li>
                 [%     END  %]
                 [% ELSE %]
+                    [% UNLESS site.is_without_topics %]
 	            <li[% IF nav == 'topic' %] class="active" [% END %]>
                   <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		             title="[% loc('texts sorted by topics') %]">
                     [% loc('Topics') %]
                   </a>
                 </li>
+                    [% END %]
                 [% END %]
                 <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'latest' %] class="active"[% END %]>
@@ -227,11 +232,19 @@
                     [% loc('Latest entries') %]
                   </a>
                 </li>
+
+                <li[% IF nav == 'monthly' %] class="active"[% END %]>
+                  <a href="[% c.uri_for_action('/monthly/list') %]"
+		             title="[% loc('Archive by month') %]">
+                    [% loc('Archive by month') %]
+                  </a>
+                </li>
+
                 [% IF c.user_exists || site.human_can_edit %]
                 <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
                   <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">
-                    [% loc('Add to library') %]
+                    [% loc('Add a new text') %]
                   </a>
                 </li>
                 [% END %]
@@ -428,7 +441,7 @@
                 [% END %]
               </a>
             </li>
-            <li>
+            <li id="amw-navbar-opds-link">
               <a href="[% c.uri_for('/help/opds') %]" title="[% loc('Mobile') %]">
                 <span class="glyphicon glyphicon-phone"></span>
                 <span class="visible-xs-inline">
@@ -436,7 +449,7 @@
                 </span>
               </a>
             </li>
-            <li>
+            <li id="amw-navbar-opds-random">
               <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
                 <span class="glyphicon glyphicon-random"></span>
                 <span class="visible-lg-inline visible-xs-inline">
@@ -450,9 +463,36 @@
     </div>
     <div id="wrap">
     <div id="main" class="container clear-top">
+      [% IF site.has_site_file('widebanner.png') %]
       <div class="row">
-        <div class="col-md-1 col-lg-2"></div>
-        <div class="col-md-10 col-lg-8">
+        <div class="col-12-sm hidden-xs">
+          <div class="amw-wide-banner-container">
+            <a class="amw-wide-banner" href="[% c.uri_for('/') %]">
+              <img src="[% c.uri_for_action('/sitefiles/local_files',
+                        [ site.id, 'widebanner.png' ]) %]"
+                   title="[% site.sitename | html %]"
+                   class="amw-wide-banner-img img-responsive"
+                   alt="[% site.sitename | html %]" />
+            </a>
+          </div>
+        </div>
+        <div>&nbsp;
+        </div>
+      </div>
+      [% END %]
+      [% IF top_layout_html %]
+      <div class="row" id="amw-top-layout-row">
+        <div class="col-12-xs">
+          [% top_layout_html %]
+        </div>
+      </div>
+      [% END %]
+
+
+      <div class="row">
+        <div id="amw-main-layout-column"
+             class="col-sm-[% main_body_cols || 12 %][% IF left_layout_cols %] col-sm-push-[% left_layout_cols %][% END %]">
+
 [% IF c.sessionid %]
       [% IF c.flash.status_msg %]
       <div class="alert alert-success" id="status_message">
@@ -475,37 +515,88 @@
       [%- # all rendered, clear this -%]
       [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
 [% END %]
+
+          <div id="widepage">
+            [% content %]
+          </div>
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
         </div>
-        <div class="col-md-1 col-lg-2"></div>
+        [% IF left_layout_html %]
+        <div id="amw-left-layout-column"
+             class="col-sm-[% left_layout_cols %] col-sm-pull-[% main_body_cols %]">
+          [% left_layout_html %]
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+        </div>
+        [% END %]
+        [% IF right_layout_html %]
+        <div id="amw-right-layout-column"
+             class="col-sm-[% right_layout_cols %]">
+          [% right_layout_html %]
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+        </div>
+        [% END %]
       </div>
-      <div id="widepage">
-        [% content %]
+      <!-- end of row  -->
+      [% IF bottom_layout_html %]
+      <div class="row">
+        <div class="col-xs-12" id="amw-bottom-layout-row">
+          [% bottom_layout_html %]
+        </div>
       </div>
-      <div>&nbsp;</div>
-      <div>&nbsp;</div>
-    </div>
-    </div>
+      [% END %]
+      <div class="clearfix">&nbsp;</div>
+      <div class="clearfix">&nbsp;</div>
+    </div><!-- end of main -->
+    </div><!-- end of wrap -->
     <div id="footer">
       <div class="footer center">
-      <a href="[% c.uri_for('/feed') %]" class="feed" ><img src="[% c.uri_for('/static/images/feed-icon-14x14.png') %]" title="[% loc('RSS feed') %]" alt="[% loc('RSS feed') %]" /></a>
-      |
-      <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]"><span class="glyphicon glyphicon-random"></span></a>
-      |
+        <span id="amw-footer-link-random">
+          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
+            <span class="glyphicon glyphicon-random" style="padding-right:3px"></span>
+          </a>
+        </span>
+        <span id="amw-footer-link-random-sep">|</span>
+        <span id="amw-footer-link-feeds">
+          <a href="[% c.uri_for('/feed') %]">
+            [% loc('RSS feed') %]
+          </a>
+        </span>
+        <span id="amw-footer-link-feeds-sep">|</span>
+        <span id="amw-footer-link-library">
       <a href="[% c.uri_for('/library') %]"
 		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
-      |
+        </span>
+
+      [% UNLESS site.is_without_authors %]
+        <span id="amw-footer-link-authors-sep">|</span>
+        <span id="amw-footer-link-authors">
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
 		 title="[% loc('texts sorted by author') %]">[% loc('Authors') %]</a>
-      |
+        </span>
+      [% END %]
+      [% UNLESS site.is_without_topics %]
+        <span id="amw-footer-link-topics-sep">|</span>
+        <span id="amw-footer-link-topics">
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		 title="[% loc('texts sorted by topics') %]">[% loc('Topics') %]</a>
-      |
+        </span>
+      [% END %]
+        <span id="amw-footer-link-latest-sep">|</span>
+        <span id="amw-footer-link-latest">
       <a href="[% c.uri_for_action('/latest/index') %]">[% loc('Latest entries') %]</a>
-      |
+        </span>
+        <span id="amw-footer-link-opds-sep">|</span>
+        <span id="amw-footer-link-opds">
       <a href="[% c.uri_for_action('/help/opds') %]">[% loc('Mobile') %]</a>
+        </span>
       [% IF c.user_exists || site.human_can_edit %]
-      |
-      <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add to library') %]</a>
+        <span id="amw-footer-link-newtext">
+        <span id="amw-footer-link-newtext-sep">|</span>
+      <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add a new text') %]</a>
+        </span>
       [% END %]
       </div>
     </div>

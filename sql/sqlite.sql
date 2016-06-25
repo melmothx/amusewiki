@@ -27,7 +27,7 @@ CREATE TABLE site (
        sitename VARCHAR(255) NOT NULL DEFAULT '',
        siteslogan VARCHAR(255) NOT NULL DEFAULT '',
        theme VARCHAR(32) NOT NULL DEFAULT '',
-       logo VARCHAR(255), -- could be a path, so keep it at 255
+       logo VARCHAR(255) NOT NULL DEFAULT '', -- could be a path, so keep it at 255
        mail_notify VARCHAR(255),
        mail_from   VARCHAR(255),
 
@@ -43,10 +43,10 @@ CREATE TABLE site (
        cgit_integration INTEGER(1) NOT NULL DEFAULT 1,
 
        -- ssl options
-       ssl_key VARCHAR(255),
-       ssl_cert VARCHAR(255),
-       ssl_ca_cert VARCHAR(255),
-       ssl_chained_cert VARCHAR(255),
+       ssl_key VARCHAR(255) NOT NULL DEFAULT '',
+       ssl_cert VARCHAR(255) NOT NULL DEFAULT '',
+       ssl_ca_cert VARCHAR(255) NOT NULL DEFAULT '',
+       ssl_chained_cert VARCHAR(255) NOT NULL DEFAULT '',
        acme_certificate INTEGER(1) NOT NULL DEFAULT 0,
 
        -- boolean for multilanguage
@@ -54,6 +54,9 @@ CREATE TABLE site (
 
        -- need a webserver entry?
        active INTEGER(1) NOT NULL DEFAULT 1,
+
+       -- blog style?
+       blog_style INTEGER(1) NOT NULL DEFAULT 0,
 
        -- book builder page limit
        bb_page_limit INTEGER NOT NULL DEFAULT 1000,
@@ -316,6 +319,32 @@ CREATE TABLE column_comments (
        comment_text TEXT
 );
 
+CREATE TABLE monthly_archive (
+       monthly_archive_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       "site_id" VARCHAR(16) NOT NULL REFERENCES site(id)
+                           ON DELETE CASCADE ON UPDATE CASCADE,
+       "month" INTEGER(2) NOT NULL,
+       "year"  INTEGER(4) NOT NULL
+);
+
+CREATE UNIQUE INDEX unique_site_month ON monthly_archive ("site_id", "month", "year");
+
+CREATE TABLE text_month (
+       title_id INTEGER NOT NULL REFERENCES title(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       monthly_archive_id INTEGER NOT NULL REFERENCES monthly_archive(monthly_archive_id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (title_id, monthly_archive_id)
+);
+
+CREATE TABLE legacy_link (
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       legacy_path VARCHAR(255) NOT NULL,
+       new_path VARCHAR(255) NOT NULL,
+       PRIMARY KEY (site_id, legacy_path)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -337,6 +366,7 @@ INSERT INTO table_comments (table_name, comment_text)
          ('category_description', 'Category descriptions'),
          ('attachment', 'Attachment to texts'),
          ('site_link', 'Site links'),
+         ('text_month', 'Linking table between texts and monthly archives'),
+         ('monthly_archive', 'Monthly archives'),
+         ('legacy_link', 'Handle old paths for migrated sites'),
          ('title_stat', 'Usage statistics');
-
-
