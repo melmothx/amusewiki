@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 256;
+use Test::More tests => 296;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -29,6 +29,7 @@ mkdir catdir($site->repo_root, 'site_files');
 write_file(catfile($site->repo_root, 'site_files', 'test.txt'), "Hello\n");
 
 my @uris = (qw[library category/topic category/author bookbuilder search special
+               cloud monthly
                      opds help/opds sitemap.txt
                      feed rss.xml stats/popular]);
 
