@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-06-12 14:09+0200\n"
+"PO-Revision-Date: 2016-06-25 21:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -91,7 +91,7 @@ msgid "Action"
 msgstr "Akcija"
 
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Aktiviraj blog stil"
 
 msgid "Active"
 msgstr "Aktivno"
@@ -100,7 +100,7 @@ msgid "Add a cover image (PNG or JPG)"
 msgstr "Dodaj sliku za naslovnicu (PNG ili JPG)"
 
 msgid "Add a new text"
-msgstr ""
+msgstr "Dodaj novi tekst"
 
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Dodaj privitak (PNG, JPG ili PDF)"
@@ -199,10 +199,10 @@ msgid "Apache is not currently supported"
 msgstr "Trenutno Apache se ne podržava"
 
 msgid "Archive"
-msgstr ""
+msgstr "Arhiva"
 
 msgid "Archive by month"
-msgstr ""
+msgstr "Arhiva po mjesecima"
 
 msgid "Archive history"
 msgstr "Povijest arhiva"
@@ -276,7 +276,7 @@ msgid "Bulleted List"
 msgstr "Običan popis"
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "Tema CSS-a"
 
 msgid "Canonical name"
 msgstr "Glavno osnovno ime"
@@ -631,13 +631,13 @@ msgid "Full list of texts"
 msgstr "Svi tekstovi"
 
 msgid "Full tag cloud"
-msgstr ""
+msgstr "Tag cloud s temama i autorima"
 
 msgid "Full text search"
 msgstr "Pretraga čitavog testa"
 
 msgid "General configuration"
-msgstr ""
+msgstr "Opća konfiguracija"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Generičan format (može stati i na A4 i na Letter)"
@@ -660,18 +660,18 @@ msgstr ""
 "ikakve promjene (pazi što radiš)."
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML za lijevu stranu svake stranice"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML za desnu stranu svake stranice"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "HTML za dno svake stranice, iznad podnožja"
 
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
-msgstr ""
+msgstr "HTML za gornji dio stranice, ispod menua i bannera"
 
 msgid "HTML/Word Importer"
 msgstr "Pretvori HTML/Word u wiki format"
@@ -773,6 +773,10 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Ako je koristiš kao sliku za naslovnica, slika će se pojaviti i na\n"
+"naslovnici PDF-a. Možeš mijenjati njenu širinu dodajući slijedeći\n"
+"redak zaglavlju, gdje vrijednost može biti između 0 i 1. 1 znači\n"
+"širinu teksta, 0.5 pola toga itd."
 
 #. (reset_url)
 msgid "If you want to proceed, please visit the following url: %1"
@@ -898,7 +902,7 @@ msgid "Latest entries"
 msgstr "Poslednji unosi"
 
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Ostavi prazno ako želiš odmah objaviti."
@@ -1030,7 +1034,7 @@ msgid "New site id"
 msgstr "Novi id sajta"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "Noviji tekstovi"
 
 msgid "Next"
 msgstr "Iduće"
@@ -1090,7 +1094,7 @@ msgid "OPDS"
 msgstr "OPDS"
 
 msgid "Older texts"
-msgstr ""
+msgstr "Stariji tekstovi"
 
 msgid "Open wiki"
 msgstr "Otvoreni wiki"
@@ -1211,10 +1215,10 @@ msgid "Picture"
 msgstr "Slika"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Stavi je u tekst s opisom"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Stavi je u tekst bez opisa"
 
 msgid "Plain PDF"
 msgstr "Običan PDF"
@@ -1435,7 +1439,7 @@ msgid "Random"
 msgstr "Slučajna stranica"
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Pročitaj cijeli tekst..."
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1499,10 +1503,10 @@ msgid "Reset password"
 msgstr "Ponovo postavi lozinku"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Ograničena konfiguracija"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "Ograničene opcije za fajlove"
 
 msgid "Retrieved on DATE from URL"
 msgstr "Pronađeno DANA na URL-u"
@@ -1715,10 +1719,10 @@ msgid "Tables"
 msgstr "Tablice"
 
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Tag cloud s autorima"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Tag cloud s temama"
 
 msgid "Task"
 msgstr "Zadatak"
@@ -1727,10 +1731,10 @@ msgid "TeX"
 msgstr "TeX"
 
 msgid "Teaser"
-msgstr ""
+msgstr "Pregled"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "Sliku za pregled"
 
 msgid "Term"
 msgstr "Pojam"
@@ -1812,7 +1816,7 @@ msgid "The text structure is shown below."
 msgstr "Struktura teksta je pokazana dolje."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "Tekst za pregled i naslovnice sajta"
 
 msgid "The text was added to the bookbuilder"
 msgstr "Tekst je dodan zbirci"
@@ -2032,7 +2036,7 @@ msgid "Use SSL for authenticated users"
 msgstr "Koristi SSL za ovlaštene korisnike"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
+msgstr "Koristi je kao sliku za pregled dodajući slijedeći redak zaglavlju:"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2040,7 +2044,7 @@ msgstr ""
 "Kod prijeloma teksta koristi optimizirane sveske sa %1 stranica za svaki."
 
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Korisni dijelovi HTML koda"
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
@@ -2138,6 +2142,9 @@ msgid ""
 "    appear, you have to place somewhere in the body or in the header,\n"
 "    depending on their purpose. See the examples below."
 msgstr ""
+"Dodala/dodao si jednu ili više slika, ali procedura nije još dovršena.\n"
+"Da bi se pojavile u tekstu, moraš ih koristiti ili u samom tekstu ili\n"
+"u zaglavlju. Vidi primjere malo dolje."
 
 msgid "You already proved you are human"
 msgstr "Već si dokazao da si ljudsko biće"
