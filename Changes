@@ -4,7 +4,7 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-1.900 UNRELEASED
+1.900 2016-06-25
 
  - New blog mode, which can be activated in the admin console, per
    site. The blog mode changes the behaviour of the site giving it a
