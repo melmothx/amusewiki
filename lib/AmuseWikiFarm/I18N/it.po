@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-06-20 12:43+0200\n"
+"PO-Revision-Date: 2016-06-25 20:52+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -22,7 +22,7 @@ msgstr "%1 non esiste"
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr "%1 sul cellulare"
+msgstr "%1 su dispositivi mobili"
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "virgolette tipografiche, collegamenti, note a piè di pagina, ecc."
@@ -92,7 +92,7 @@ msgid "Action"
 msgstr "Azione"
 
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Attiva lo stile blog"
 
 msgid "Active"
 msgstr "Attivo"
@@ -101,7 +101,7 @@ msgid "Add a cover image (PNG or JPG)"
 msgstr "Aggiungi un'immagine di copertina (PNG o JPG)"
 
 msgid "Add a new text"
-msgstr ""
+msgstr "Aggiungi un nuovo testo"
 
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Aggiungi un allegato (PNG, JPG o PDF)"
@@ -205,10 +205,10 @@ msgid "Apache is not currently supported"
 msgstr "Apache non è supportato al momento"
 
 msgid "Archive"
-msgstr ""
+msgstr "Archivio"
 
 msgid "Archive by month"
-msgstr ""
+msgstr "Archivio per mese"
 
 msgid "Archive history"
 msgstr "Storico dell'archivio"
@@ -285,7 +285,7 @@ msgid "Bulleted List"
 msgstr "Lista puntata"
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "Tema CSS"
 
 msgid "Canonical name"
 msgstr "Nome canonico"
@@ -646,13 +646,13 @@ msgid "Full list of texts"
 msgstr "Lista completa dei testi"
 
 msgid "Full tag cloud"
-msgstr ""
+msgstr "Nuvola dei tag completa"
 
 msgid "Full text search"
 msgstr "Ricerca a tutto testo"
 
 msgid "General configuration"
-msgstr ""
+msgstr "Configurazione generale"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Formato generico (adatto per A4 e Letter)"
@@ -676,18 +676,20 @@ msgstr ""
 "qualsiasi cosa (codice, script, ecc.)"
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "Codice HTML da inserire nella colonna di sinistra"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "Codice HTML da inserire nella colonna di destra"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "Codice HTML da inserire in fondo a ogni pagina, prima del piedino"
 
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
 msgstr ""
+"Codice HTML da inserire in testa ad ogni pagina, sotto alla barra di\n"
+"navigazione e sotto il banner (se presente)"
 
 msgid "HTML/Word Importer"
 msgstr "Importatore HTML/Word"
@@ -792,6 +794,10 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Se la usi come immagine di anteprima, l'immagine sarà inclusa anche\n"
+"nella prima pagine del PDF. Puoi impostare la sua larghezza, con un\n"
+"valore compreso tra 0 e 1, dove 1 è la larghezza piena del testo, 0.5\n"
+"metà e così via."
 
 #. (reset_url)
 msgid "If you want to proceed, please visit the following url: %1"
@@ -922,7 +928,7 @@ msgid "Latest entries"
 msgstr "Ultimi testi pubblicati"
 
 msgid "Layout"
-msgstr ""
+msgstr "Impaginazione"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Lascia in bianco se vuoi che sia pubblicato subito."
@@ -1054,7 +1060,7 @@ msgid "New site id"
 msgstr "Nuovo ID sito"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "Testi più recenti"
 
 msgid "Next"
 msgstr "Prossimo"
@@ -1116,7 +1122,7 @@ msgid "OPDS"
 msgstr "OPDS"
 
 msgid "Older texts"
-msgstr ""
+msgstr "Testi più vecchi"
 
 msgid "Open wiki"
 msgstr "Wiki aperto"
@@ -1242,10 +1248,10 @@ msgid "Picture"
 msgstr "Immagine"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Collocala nel corpo del testo con una descrizione:"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Collocala nel corpo del testo senza alcuna descrizione:"
 
 msgid "Plain PDF"
 msgstr "PDF semplice"
@@ -1468,7 +1474,7 @@ msgid "Random"
 msgstr "Pagina casuale"
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Leggi il testo completo..."
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1533,10 +1539,10 @@ msgid "Reset password"
 msgstr "Reimposta la password"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Variabili di configurazione protette"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "Opzioni dei formati protette"
 
 msgid "Retrieved on DATE from URL"
 msgstr "Consultato il giorno DATA su URL"
@@ -1755,10 +1761,10 @@ msgid "Tables"
 msgstr "Tabelle"
 
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Nuvola dei tag con gli autori"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Nuvola dei tag con gli argomenti"
 
 msgid "Task"
 msgstr "Lavoro"
@@ -1767,10 +1773,10 @@ msgid "TeX"
 msgstr "TeX"
 
 msgid "Teaser"
-msgstr ""
+msgstr "Anteprima"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "Immagine d'anteprima"
 
 msgid "Term"
 msgstr "Termine"
@@ -1855,7 +1861,7 @@ msgid "The text structure is shown below."
 msgstr "La struttura del testo è mostrata qui sotto."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "Testo da mostrare nell'anteprima della prima pagina"
 
 msgid "The text was added to the bookbuilder"
 msgstr "Il testo è stato aggiunto all'impaginatore"
@@ -2086,14 +2092,14 @@ msgid "Use SSL for authenticated users"
 msgstr "Usa SSL per gli utenti loggati"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
+msgstr "Usala come immagine d'anteprima aggiungendo alle intestazioni questa linea:"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Durante l'impaginazione, usa blocchi ottimizzati di %s pagine ciascuno"
 
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Frammenti HTML utili"
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
@@ -2195,6 +2201,10 @@ msgid ""
 "    appear, you have to place somewhere in the body or in the header,\n"
 "    depending on their purpose. See the examples below."
 msgstr ""
+"Hai allegato una o più immagini. La procedura non è ancora completa!\n"
+"Affinché appaiano nel testo, devi inserirle o nel corpo del testo o\n"
+"nell'intestazione, a seconda dell'uso che ne vuoi fare. Vedi gli\n"
+"esempi qui sotto."
 
 msgid "You already proved you are human"
 msgstr "Hai già dimostrato di essere un umano"
