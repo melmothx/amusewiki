@@ -20,6 +20,11 @@ dedicated tree.
  - Wordpress import script
  - Minor layout adjustments
 
+Please note that due to changes of the layout, you're going to suffer
+some downtime during the upgrade (hence the major version bump). There
+is a set of database changes, but they are going to be handle
+automatically and without surprises.
+
 1.828 2016-06-19
 
  - Fixed crash on loc() when square brackets are supplied.
