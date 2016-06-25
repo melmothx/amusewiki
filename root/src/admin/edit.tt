@@ -730,14 +730,14 @@ kpsewhich mylogo.pdf
       <div class="well">
         <p>
           [% loc('Please note that the twoside and binding correction options follow
-          this logic: if you have some imposed format, they are ignored for
-          the standalone PDF but applied for the imposed ones. If you have
-          only the standalone PDF, they are applied to it.') %]
+  this logic: if you have some imposed format, they are ignored for
+  the standalone PDF but applied for the imposed ones. If you have
+  only the standalone PDF, they are applied to it.') %]
         </p>
 
         <p>
           [% loc('The Beamer selections are relevant only if you activate the
-          slides output.') %]
+  slides output.') %]
           <a href="https://www.hartwork.org/beamer-theme-matrix/">
             [% loc('Preview') %].
           </a>
