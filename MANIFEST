@@ -3,6 +3,7 @@ dbicdh/_common/upgrade/11-12/002-set-highlithjs-option.pl
 dbicdh/_common/upgrade/13-14/set_site_last_updated.pl
 dbicdh/_common/upgrade/17-18/002-clear-stats.pl
 dbicdh/_common/upgrade/20-21/000-fix-sites.pl
+dbicdh/_common/upgrade/23-24/002-populate-monthly-archives.pl
 dbicdh/_common/upgrade/5-6/002-add-and-move-job-files.pl
 dbicdh/_source/deploy/10/001-auto-__VERSION.yml
 dbicdh/_source/deploy/10/001-auto.yml
@@ -32,6 +33,10 @@ dbicdh/_source/deploy/21/001-auto-__VERSION.yml
 dbicdh/_source/deploy/21/001-auto.yml
 dbicdh/_source/deploy/22/001-auto-__VERSION.yml
 dbicdh/_source/deploy/22/001-auto.yml
+dbicdh/_source/deploy/23/001-auto-__VERSION.yml
+dbicdh/_source/deploy/23/001-auto.yml
+dbicdh/_source/deploy/24/001-auto-__VERSION.yml
+dbicdh/_source/deploy/24/001-auto.yml
 dbicdh/_source/deploy/3/001-auto-__VERSION.yml
 dbicdh/_source/deploy/3/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
@@ -74,6 +79,10 @@ dbicdh/MySQL/deploy/21/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/21/001-auto.sql
 dbicdh/MySQL/deploy/22/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/22/001-auto.sql
+dbicdh/MySQL/deploy/23/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/23/001-auto.sql
+dbicdh/MySQL/deploy/24/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/24/001-auto.sql
 dbicdh/MySQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/3/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
@@ -101,6 +110,8 @@ dbicdh/MySQL/upgrade/19-20/001-auto.sql
 dbicdh/MySQL/upgrade/2-3/001-auto.sql
 dbicdh/MySQL/upgrade/20-21/001-auto.sql
 dbicdh/MySQL/upgrade/21-22/001-auto.sql
+dbicdh/MySQL/upgrade/22-23/001-auto.sql
+dbicdh/MySQL/upgrade/23-24/001-auto.sql
 dbicdh/MySQL/upgrade/3-4/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
@@ -136,6 +147,10 @@ dbicdh/PostgreSQL/deploy/21/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/21/001-auto.sql
 dbicdh/PostgreSQL/deploy/22/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/22/001-auto.sql
+dbicdh/PostgreSQL/deploy/23/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/23/001-auto.sql
+dbicdh/PostgreSQL/deploy/24/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/24/001-auto.sql
 dbicdh/PostgreSQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/3/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
@@ -163,6 +178,8 @@ dbicdh/PostgreSQL/upgrade/19-20/001-auto.sql
 dbicdh/PostgreSQL/upgrade/2-3/001-auto.sql
 dbicdh/PostgreSQL/upgrade/20-21/001-auto.sql
 dbicdh/PostgreSQL/upgrade/21-22/001-auto.sql
+dbicdh/PostgreSQL/upgrade/22-23/001-auto.sql
+dbicdh/PostgreSQL/upgrade/23-24/001-auto.sql
 dbicdh/PostgreSQL/upgrade/3-4/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
@@ -198,6 +215,10 @@ dbicdh/SQLite/deploy/21/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/21/001-auto.sql
 dbicdh/SQLite/deploy/22/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/22/001-auto.sql
+dbicdh/SQLite/deploy/23/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/23/001-auto.sql
+dbicdh/SQLite/deploy/24/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/24/001-auto.sql
 dbicdh/SQLite/deploy/3/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/3/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
@@ -225,6 +246,8 @@ dbicdh/SQLite/upgrade/19-20/001-auto.sql
 dbicdh/SQLite/upgrade/2-3/001-auto.sql
 dbicdh/SQLite/upgrade/20-21/001-auto.sql
 dbicdh/SQLite/upgrade/21-22/001-auto.sql
+dbicdh/SQLite/upgrade/22-23/001-auto.sql
+dbicdh/SQLite/upgrade/23-24/001-auto.sql
 dbicdh/SQLite/upgrade/3-4/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
@@ -704,6 +727,7 @@ script/amusewikifarm_server.pl
 script/amusewikifarm_test.pl
 script/cleanup-tests.sh
 script/configure.sh
+script/import-wordpress.pl
 script/init-fcgi.pl
 script/install-cgit.pl
 script/install.sh
