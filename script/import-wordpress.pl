@@ -87,9 +87,10 @@ foreach my $entry (@feeds) {
             if (length($out{teaser}) > 800) {
                 $out{teaser} = substr $out{teaser}, 0, 2000;
                 $out{teaser} =~ s/\n\n[^\n]+\z//;
+                # truncated
+                $out{teaser} .= '<br>...';
             }
             $out{teaser} =~ s/\n\n/ <br> /g;
-            $out{teaser} .= '...';
         }
         $out{title} = $entry->{title};
         if (my $categories = $entry->{category}) {
