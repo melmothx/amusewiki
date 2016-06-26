@@ -26,10 +26,12 @@ Catalyst Controller.
 
 sub base :Chained('/site_robot_index') :PathPart('cloud') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    my $max = 1000;
+    my $max = 500;
     if (my $query_max = $c->request->query_params->{max}) {
         if ($query_max =~ m/\A([1-9][0-9]*)\z/) {
-            $max = $1;
+            if ($query_max < $max) {
+                $max = $query_max;
+            }
         }
     }
     if ($c->request->query_params->{bare}) {
