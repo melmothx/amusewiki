@@ -32,7 +32,7 @@
 
 [% IF show_pager %]
 <ul class="pagination" id="alphabetical-pager">
-  [% FOREACH anchor IN pager %]
+  [% FOREACH anchor IN label_pager %]
   <li>
     <a class="amw-paging-anchor" href="#paging-sep-[% anchor.anchor_id %]">[% anchor.anchor_name %]</a>
   </li>

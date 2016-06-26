@@ -332,7 +332,7 @@ sub listing_tokens {
     }
     return { texts => \@list_with_separators,
              text_count => $grand_total,
-             pager => \@paging };
+             label_pager => \@paging };
 }
 
 sub older_than {
