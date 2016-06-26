@@ -233,12 +233,14 @@
                   </a>
                 </li>
 
+                [% IF blog_style %]
                 <li[% IF nav == 'monthly' %] class="active"[% END %]>
                   <a href="[% c.uri_for_action('/monthly/list') %]"
 		             title="[% loc('Archive by month') %]">
                     [% loc('Archive by month') %]
                   </a>
                 </li>
+                [% END %]
 
                 [% IF c.user_exists || site.human_can_edit %]
                 <li role="presentation" class="divider"></li>
