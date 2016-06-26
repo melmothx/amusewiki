@@ -1,3 +1,9 @@
+amusewiki (1.900-2) unstable; urgency=medium
+
+  * Include two commits ahead of 1.900
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 26 Jun 2016 09:41:53 +0200
+
 amusewiki (1.900-1) unstable; urgency=medium
 
   * New major release (blog-style branch)
