@@ -3,10 +3,12 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 4;
+use Test::More tests => 14;
 use AmuseWikiFarm::Utils::Paginator;
 use Data::Dumper;
 use Data::Page;
+
+# test with 1 and 0 items
 
 my $pager = Data::Page->new;
 $pager->total_entries(40);
@@ -19,7 +21,7 @@ my $sub = sub {
 
 my $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
 
-is_deeply($pages, [
+is_deeply($pages->items, [
                    {
                     'label' => 1,
                     'active' => 1,
@@ -50,11 +52,14 @@ is_deeply($pages, [
                    }
                   ]);
 
+is $pages->prev_url, undef;
+is $pages->next_url, '/latest/2';
+
 $pager->current_page(8);
 
 $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
 
-is_deeply($pages, 
+is_deeply($pages->items,
           [
            {
             'label' => "\x{ab}\x{ab}\x{ab}",
@@ -111,13 +116,13 @@ is_deeply($pages,
 
 
 
-          
+
 
 $pager->current_page(9);
 
 $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
 
-is_deeply($pages, 
+is_deeply($pages->items,
           [
            {
             'label' => "\x{ab}\x{ab}\x{ab}",
@@ -172,10 +177,13 @@ is_deeply($pages,
            }
           ]) or diag Dumper($pages);
 
+is $pages->next_url, '/latest/10';
+is $pages->prev_url, '/latest/8';
+
 $pager->current_page(14);
 
 $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
-is_deeply($pages, 
+is_deeply($pages->items,
           [
            {
             'label' => "\x{ab}\x{ab}\x{ab}",
@@ -206,3 +214,28 @@ is_deeply($pages,
             active => 1,
            },
           ]) or diag Dumper($pages);
+
+is  $pages->prev_url, '/latest/13';
+is  $pages->next_url, undef;
+
+
+{
+    my $pager = Data::Page->new;
+    $pager->total_entries(1);
+    $pager->entries_per_page(10);
+    $pager->current_page(1);
+    $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
+    is $pages->next_url, undef;
+    is $pages->prev_url, undef;
+
+}
+
+{
+    my $pager = Data::Page->new;
+    $pager->total_entries(0);
+    $pager->entries_per_page(10);
+    $pager->current_page(1);
+    $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
+    is $pages->next_url, undef;
+    is $pages->prev_url, undef;
+}

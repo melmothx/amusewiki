@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 29;
+use Test::More tests => 35;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
 binmode $builder->failure_output, ":encoding(utf8)";
@@ -48,9 +48,13 @@ foreach my $lang (sort keys (%{ $site->known_langs })) {
 
 $mech->get_ok('/latest');
 $mech->get_ok('/latest/1');
+$mech->content_contains(q{rel="next"});
+$mech->content_lacks(q{rel="prev"});
 $mech->content_contains('Dec 27, 2015');
 $mech->content_contains('Dec 18, 2015');
 $mech->get_ok('/latest/2');
+$mech->content_contains(q{rel="next" href="http://0latest0.amusewiki.org/latest/3"});
+$mech->content_contains(q{rel="prev" href="http://0latest0.amusewiki.org/latest/1"});
 $mech->content_contains('Dec 17, 2015');
 $mech->content_contains('Dec 8, 2015');
 # pagination
@@ -60,6 +64,9 @@ $mech->content_contains('/latest/1');
 # check
 $mech->get_ok('/latest/33');
 $mech->content_contains('Jan 1, 2015');
+$mech->content_lacks(q{rel="next"});
+$mech->content_contains(q{rel="prev"});
+
 my @links = grep { $_->url !~ /\/(static|git)\//}
   $mech->find_all_links;
 $mech->links_ok(\@links);

@@ -5,7 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
-
+use AmuseWikiFarm::Utils::Paginator;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -73,11 +73,13 @@ sub legacy_category :Private {
 
 sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
     my ($self, $c, $type) = @_;
+    my $name;
     if ($type eq 'topic') {
-        $c->stash(page_title => $c->loc('Topics'));
+        $name = $c->loc('Topics');
+
     }
     elsif ($type eq 'author') {
-        $c->stash(page_title => $c->loc('Authors'));
+        $name = $c->loc('Authors');
     }
     else {
         $c->detach('/not_found');
@@ -85,9 +87,17 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
     }
     my $rs = $c->stash->{site}->categories->active_only_by_type($type);
     $c->stash(
+              page_title => $name,
               nav => $type,
               categories_rs => $rs,
               f_class => $type,
+              breadcrumbs  => [
+                               {
+                                uri => $c->uri_for_action('/category/category_list_display',
+                                                          [ $type ]),
+                                label => $name,
+                               }
+                              ],
              );
 }
 
@@ -122,11 +132,18 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
             $c->detach();
             return;
         }
-        my $texts = $cat->titles->published_texts;
+        my $page = $c->request->query_params->{page};
+        unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+            $page = 1;
+        }
+        my $texts = $cat->titles->published_texts->search(undef, { rows => 10, page => $page });
         # if it's a blog, the alphabetica entry is not so important,
         # and we give precedence to latest first.
         if ($c->stash->{blog_style}) {
             $texts = $texts->sort_by_pubdate_desc;
+        }
+        else {
+            $c->stash(listing_item_hide_dates => 1);
         }
 
         my $current_locale = $c->stash->{current_locale_code};
@@ -154,6 +171,13 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
                          active => $c->stash->{site}->multilanguage ? 1 : 0,
                         };
         $c->stash(multilang => $multi);
+
+        push @{$c->stash->{breadcrumbs}},
+          {
+           uri => $c->uri_for_action('/category/single_category_display',
+                                     [ $c->stash->{f_class}, $uri ]),
+           label => $c->loc($cat->name),
+          };
     }
     else {
         $c->stash(uri => $canonical);
@@ -162,7 +186,17 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
 }
 
 
-sub single_category_display :Chained('single_category') :PathPart('') :Args(0) {}
+sub single_category_display :Chained('single_category') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $pager = $c->stash->{texts}->pager;
+    my @args = ($c->stash->{f_class},
+                $c->stash->{category_canonical_name});
+    my $format_link = sub {
+        return $c->uri_for_action('/category/single_category_display',
+                                  \@args, { page => $_[0] });
+    };
+    $c->stash(pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link));
+}
 
 sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $lang) = @_;
@@ -174,6 +208,7 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
                                                    $c->stash->{category_canonical_name},
                                                    $c->stash->{current_locale_code},
                                                   ]));
+        $c->detach();
         return;
     }
     elsif (my $category_lang = $c->stash->{site}->known_langs->{$lang}) {
@@ -198,7 +233,19 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
     }
 }
 
-sub single_category_by_lang_display :Chained('single_category_by_lang') :PathPart('') :Args(0) {}
+sub single_category_by_lang_display :Chained('single_category_by_lang') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $pager = $c->stash->{texts}->pager;
+    my @args = ($c->stash->{f_class},
+                $c->stash->{category_canonical_name},
+                $c->stash->{category_language});
+
+    my $format_link = sub {
+        return $c->uri_for_action('/category/single_category_by_lang_display',
+                                  \@args, { page => $_[0] });
+    };
+    $c->stash(pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link));
+}
 
 sub category_editing_auth :Chained('single_category_by_lang') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;

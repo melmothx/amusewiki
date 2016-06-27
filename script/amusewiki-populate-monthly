@@ -1,0 +1,46 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use lib 'lib';
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-populate-monthly - refresh the monthly archives
+
+=head1 SYNOPSIS
+
+ amusewiki-bootstrap-archive [ <site-id>, <site-id-2>, ... ]
+
+=cut
+
+
+use Getopt::Long;
+use Pod::Usage;
+use AmuseWikiFarm::Schema;
+
+my ($help);
+GetOptions (
+            help => \$help,
+           ) or die;
+
+if ($help || !@ARGV) {
+    pod2usage;
+    exit 2;
+}
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+foreach my $code (@ARGV) {
+    my $site = $schema->resultset('Site')->find($code);
+    if ($site) {
+        print "Processing $code\n";
+        $site->populate_monthly_archives;
+    }
+    else {
+        warn "$code not found in sites\n";
+    }
+}

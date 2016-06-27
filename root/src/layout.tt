@@ -14,7 +14,7 @@
           title="[% site.sitename | html %]">
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename | html %]" href="[% c.uri_for('/feed') %]" />
-    <link rel="related" type="application/atom+xml;profile=opds-catalog;kind=navigation"
+    <link rel="alternate" type="application/atom+xml;profile=opds-catalog;kind=navigation"
           href="[% c.uri_for_action('/opds/start') %]" title="[% loc('OPDS') %]"/>
     [% IF base_url %]<base href="[% base_url %]" />[% END %]
     <title>
@@ -25,6 +25,15 @@
     [%- UNLESS please_index -%]
     <meta name="robots" content="noindex,nofollow" />
     [%- END -%]
+
+    [% IF pager %]
+    [% IF pager.next_url %]
+    <link rel="next" href="[% pager.next_url %]" />
+    [% END %]
+    [% IF pager.prev_url %]
+    <link rel="prev" href="[% pager.prev_url %]" />
+    [% END %]
+    [% END %]
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

@@ -1,5 +1,7 @@
 package AmuseWikiFarm::Archive::Lexicon;
 
+use strict;
+use warnings;
 use Moo;
 use Types::Standard qw/Str HashRef/;
 use Path::Tiny;

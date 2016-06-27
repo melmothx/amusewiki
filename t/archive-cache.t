@@ -71,7 +71,7 @@ ok (!$collator->eq('Ž', 'Z'), "and Ć and C for croatian are not the same") or 
 
 my $returned = create_list('en');
 
-is_deeply($returned->{pager},
+is_deeply($returned->{label_pager},
           [
            {
             'anchor_name' => 'A',
@@ -96,7 +96,7 @@ $returned = create_list('hr');
 is_deeply($returned,
           {
            text_count => 11,
-           'pager' => [
+           'label_pager' => [
                         {
                           'anchor_name' => 'A',
                           'anchor_id' => 1

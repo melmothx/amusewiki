@@ -1,5 +1,7 @@
 [%- # -*- mode: html -*- -%]
 
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
 <div class="page-header">
 <h1>[% loc(category.name) %]
   [%- IF multilang -%]
@@ -56,3 +58,4 @@
 [%- END -%]
 
 [% INCLUDE 'include/posts.tt' %]
+[% INCLUDE 'include/pagination.tt' %]

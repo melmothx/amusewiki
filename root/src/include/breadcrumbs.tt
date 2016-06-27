@@ -4,10 +4,10 @@
     [% FOREACH breadcrumb IN breadcrumbs %]
     <li[% IF loop.last %] class="active"[% END %]>
       [% IF loop.last %]
-      [% breadcrumb.label %]
+      [% breadcrumb.label | html %]
       [% ELSE %]
       <a href="[% breadcrumb.uri  %]">
-        [% breadcrumb.label %]
+        [% breadcrumb.label | html %]
       </a>
       [% END %]
     </li>
