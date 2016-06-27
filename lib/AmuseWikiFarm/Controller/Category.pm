@@ -191,6 +191,7 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
                                                    $c->stash->{category_canonical_name},
                                                    $c->stash->{current_locale_code},
                                                   ]));
+        $c->detach();
         return;
     }
     elsif (my $category_lang = $c->stash->{site}->known_langs->{$lang}) {
