@@ -71,14 +71,27 @@ sub month :Chained('year') :PathPart('') :Args(1) {
         $c->detach('/not_found');
         return;
     }
+    my $page = $c->request->query_params->{page};
+    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+        $page = 1;
+    }
     if (my $arch = $c->stash->{monthly_archives}->find({ month => $month })) {
         my $texts = $arch->titles->published_texts
         ->search(undef, {
                          order_by => { -desc => 'pubdate' },
+                         page => $page,
+                         rows => 10,
                         });
+        my $pager = $texts->pager;
+        my $format_link = sub {
+            return $c->uri_for_action('/monthly/month', [ $arch->year,
+                                                          $arch->month ], { page => $_[0] });
+        };
         my $month_name = $arch->localized_name($c->stash->{current_locale_code});
         $c->stash(month_name => $month_name,
                   page_title => $month_name,
+                  pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager,
+                                                                         $format_link),
                   template => 'monthly/month.tt',
                   texts => $texts);
         push @{$c->stash->{breadcrumbs}},
