@@ -1,3 +1,9 @@
+amusewiki (1.901-1) unstable; urgency=medium
+
+  * Nw minor release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Mon, 27 Jun 2016 14:59:38 +0200
+
 amusewiki (1.900-2) unstable; urgency=medium
 
   * Include two commits ahead of 1.900

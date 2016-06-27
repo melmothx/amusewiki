@@ -355,6 +355,7 @@ lib/AmuseWikiFarm/Utils/LetsEncrypt.pm
 lib/AmuseWikiFarm/Utils/LexiconMigration.pm
 lib/AmuseWikiFarm/Utils/Mailer.pm
 lib/AmuseWikiFarm/Utils/Paginator.pm
+lib/AmuseWikiFarm/Utils/Paginator/Object.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
 lib/AmuseWikiFarm/View/HTML.pm
@@ -716,6 +717,7 @@ script/amusewiki-create-doc-site
 script/amusewiki-generate-nginx-conf
 script/amusewiki-jobber
 script/amusewiki-letsencrypt
+script/amusewiki-populate-monthly
 script/amusewiki-populate-webfonts
 script/amusewiki-reset-password
 script/amusewiki-upgrade-db
