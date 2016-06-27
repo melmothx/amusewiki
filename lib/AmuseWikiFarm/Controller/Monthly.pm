@@ -83,9 +83,9 @@ sub month :Chained('year') :PathPart('') :Args(1) {
                          rows => 10,
                         });
         my $pager = $texts->pager;
+        my @uri_args = ($arch->year, $arch->month);
         my $format_link = sub {
-            return $c->uri_for_action('/monthly/month', [ $arch->year,
-                                                          $arch->month ], { page => $_[0] });
+            return $c->uri_for_action('/monthly/month', \@uri_args, { page => $_[0] });
         };
         my $month_name = $arch->localized_name($c->stash->{current_locale_code});
         $c->stash(month_name => $month_name,
