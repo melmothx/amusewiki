@@ -73,11 +73,13 @@ sub legacy_category :Private {
 
 sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
     my ($self, $c, $type) = @_;
+    my $name;
     if ($type eq 'topic') {
-        $c->stash(page_title => $c->loc('Topics'));
+        $name = $c->loc('Topics');
+
     }
     elsif ($type eq 'author') {
-        $c->stash(page_title => $c->loc('Authors'));
+        $name = $c->loc('Authors');
     }
     else {
         $c->detach('/not_found');
@@ -85,9 +87,17 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
     }
     my $rs = $c->stash->{site}->categories->active_only_by_type($type);
     $c->stash(
+              page_title => $name,
               nav => $type,
               categories_rs => $rs,
               f_class => $type,
+              breadcrumbs  => [
+                               {
+                                uri => $c->uri_for_action('/category/category_list_display',
+                                                          [ $type ]),
+                                label => $name,
+                               }
+                              ],
              );
 }
 
@@ -161,6 +171,13 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
                          active => $c->stash->{site}->multilanguage ? 1 : 0,
                         };
         $c->stash(multilang => $multi);
+
+        push @{$c->stash->{breadcrumbs}},
+          {
+           uri => $c->uri_for_action('/category/single_category_display',
+                                     [ $c->stash->{f_class}, $uri ]),
+           label => $c->loc($cat->name),
+          };
     }
     else {
         $c->stash(uri => $canonical);

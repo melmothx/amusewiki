@@ -1,4 +1,7 @@
 [% # -*- mode: html -*- %]
+
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
 <div class="page-header">
   <h1>[% page_title | html %]</h1>
 </div>
@@ -59,5 +62,4 @@
     </a>
   </div>
 </div>
-
 
