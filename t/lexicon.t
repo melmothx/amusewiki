@@ -63,6 +63,8 @@ write_file($site->lexicon_file, to_json({
                                          'test [_1] [_2] [_3]' => { it => '[_1] [_2] [_3] prova " ć100' },
                                         }));
 
+$site->update_db_from_tree(sub { diag @_ });
+diag "Upgraded?";
 my $temp = Path::Tiny->tempdir;
 foreach my $po (AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, $locales_dir)) {
     diag "$po";

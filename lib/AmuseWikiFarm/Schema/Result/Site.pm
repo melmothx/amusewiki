@@ -807,6 +807,7 @@ use JSON ();
 use Text::Amuse::Compile::Utils ();
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
+use AmuseWikiFarm::Utils::LexiconMigration;
 
 =head2 repo_root_rel
 
@@ -1887,7 +1888,7 @@ L<Text::Amuse::Compile> if present.
 sub update_db_from_tree {
     my ($self, $logger) = @_;
     my $todo = $self->repo_find_changed_files;
-
+    $logger ||= sub { warn $_[0] };
     # first delete
     foreach my $purge (@{ $todo->{removed} }) {
         if (my $found = $self->find_file_by_path($purge)) {
@@ -1899,6 +1900,17 @@ sub update_db_from_tree {
     }
     my @files = (sort @{ $todo->{new} }, @{ $todo->{changed} });
     $self->compile_and_index_files(\@files, $logger);
+    eval {
+        if (my @generated =
+            AmuseWikiFarm::Utils::LexiconMigration::convert($self->lexicon,
+                                                            $self->locales_dir)) {
+            $logger->("Updated the following file from lexicon file:\n"
+                      . join("\n", @generated) . "\n");
+        }
+    };
+    if ($@) {
+        $logger->("Exception migrating lexicon to PO: $@");
+    }
 }
 
 
