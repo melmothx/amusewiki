@@ -2668,7 +2668,7 @@ sub all_site_hostnames {
 
 sub alternate_hostnames {
     my $self = shift;
-    return map { $_->name } $self->vhosts;
+    return sort map { $_->name } $self->vhosts;
 }
 
 sub full_name {
