@@ -20,6 +20,9 @@ second must be a coderef, which will be called as
 
 =cut
 
+use AmuseWikiFarm::Utils::Paginator::Object;
+use AmuseWikiFarm::Log::Contextual;
+
 sub create_pager {
     my ($pager, $sub) = @_;
     my @pages;
@@ -27,6 +30,16 @@ sub create_pager {
     my $current = $pager->current_page;
     my $first = $pager->first_page;
     my $last = $pager->last_page;
+
+    my %args = (current_url => $current,
+                next_url => $pager->next_page,
+                prev_url => $pager->previous_page);
+    foreach my $k (keys %args) {
+        if (defined $args{$k}) {
+            $args{$k} = $sub->($args{$k}) . '';
+        }
+    }
+    Dlog_debug { "args: $_ "} \%args;
 
     my $expected = 1;
     foreach my $spec ({
@@ -78,7 +91,7 @@ sub create_pager {
                 }
             }
             my %out = (
-                       uri => $sub->($page),
+                       uri => $sub->($page) . '',
                        label => $spec->{label} || $page,
                       );
             if ($page == $current) {
@@ -88,7 +101,8 @@ sub create_pager {
             push @pages, \%out;
         }
     }
-    return \@pages;
+    return AmuseWikiFarm::Utils::Paginator::Object->new(items => \@pages,
+                                                        %args);
 }
 
 1;    
