@@ -132,6 +132,9 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
         if ($c->stash->{blog_style}) {
             $texts = $texts->sort_by_pubdate_desc;
         }
+        else {
+            $c->stash(listing_item_hide_dates => 1);
+        }
 
         my $current_locale = $c->stash->{current_locale_code};
         my $category_description = $cat->localized_desc($current_locale);
