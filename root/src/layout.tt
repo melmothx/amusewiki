@@ -14,7 +14,7 @@
           title="[% site.sitename | html %]">
     <link rel="alternate" type="application/rss+xml"
           title="[% site.sitename | html %]" href="[% c.uri_for('/feed') %]" />
-    <link rel="related" type="application/atom+xml;profile=opds-catalog;kind=navigation"
+    <link rel="alternate" type="application/atom+xml;profile=opds-catalog;kind=navigation"
           href="[% c.uri_for_action('/opds/start') %]" title="[% loc('OPDS') %]"/>
     [% IF base_url %]<base href="[% base_url %]" />[% END %]
     <title>
