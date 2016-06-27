@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 127;
+use Test::More tests => 149;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -119,22 +119,24 @@ $mech->content_like(qr/Authors.*Authors/s);
 
 $mech->content_lacks('class="pagination"');
 
-add_text({
-          title => 'About',
-          teaser => 'ABOUT TEASER',
-          author => 'Pippo',
-          lang => 'en',
-          textbody => '<p>hello there about body</p>',
-         }, 'special');
-$mech->get_ok('/feed');
-$mech->content_contains("ABOUT TEASER");
-$mech->content_lacks("hello there about body");
-$mech->get_ok('/');
-
-
+{
+    my $new_uri = add_text({
+                            title => 'About',
+                            teaser => 'ABOUT TEASER',
+                            author => 'Pippo',
+                            lang => 'en',
+                            textbody => '<p>hello there about body</p>',
+                           }, 'special');
+    $mech->get_ok('/feed');
+    $mech->content_contains("ABOUT TEASER");
+    $mech->content_lacks("hello there about body");
+    $mech->get_ok('/');
+    $mech->get_ok($new_uri);
+    $mech->content_lacks('chevron');
+}
 
 foreach my $num (1..10) {
-    add_text({
+    my $new_uri = add_text({
               title => "Another one... $num",
               teaser => ("Teaser $num. This buffer is for notes you don't want to save, and
 for Lisp evaluation. If you want to create a file, visit that file
@@ -147,6 +149,8 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
              });
     $mech->get_ok('/feed');
     $mech->content_contains("Teaser $num.");
+    $mech->get_ok($new_uri);
+    $mech->content_contains('chevron');
 }
 
 add_text({

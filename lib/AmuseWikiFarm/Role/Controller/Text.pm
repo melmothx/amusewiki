@@ -121,7 +121,7 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         }
         $c->stash("text_$listing" => \@list);
     }
-    if ($c->stash->{blog_style}) {
+    if ($c->stash->{blog_style} && $text->is_regular) {
         if (my $next_text = $text->newer_text) {
             $c->stash(text_next_uri => $next_text->full_uri);
         }
