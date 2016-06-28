@@ -89,17 +89,8 @@ sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
     my $output = File::Spec->catfile($thumbdir, $thumb);
     log_debug { "Checking $output against $src" };
     $self->generate_thumbnail_from_to($src, $output);
-    if (-f $output) {
-        my $fh = IO::File->new($output, 'r');
-        $c->response->body($fh);
-        $c->response->headers->content_type('image/png');
-        $c->response->headers->content_length(-s $output);
-        $c->response->headers->last_modified((stat($output))[9]);
-    }
-    else {
-        $c->detach('/not_found');
-        return;
-    }
+    $c->stash(serve_static_file => $output);
+    $c->detach($c->view('StaticFile'));
 }
 
 sub generate_thumbnail_from_to :Private {

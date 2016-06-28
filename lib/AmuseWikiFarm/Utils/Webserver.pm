@@ -474,6 +474,10 @@ INCLUDE
         internal;
         alias $amw_home/staging/;
     }
+    location /private/thumbnails/ {
+        internal;
+        alias $amw_home/thumbnails/;
+    }
     location / {
         try_files \$uri \@proxy;
         expires max;
