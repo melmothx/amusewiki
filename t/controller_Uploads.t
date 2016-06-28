@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 29;
+use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -27,15 +27,23 @@ $rev->edit("#ATTACH $expected\n" . $rev->muse_body);
 is $expected, "h-o-hello-1.pdf", "$expected is h-o-hello-1.pdf";
 is_deeply($rev->attached_pdfs, [ $expected ]);
 my $png_att = $rev->add_attachment($png)->{attachment};
+$rev->edit("#cover $png_att\n" . $rev->muse_body);
 is ($png_att, "h-o-hello-1.png");
 
 $rev->commit_version;
 $rev->publish_text;
 
+my $text = $rev->title->discard_changes;
+is ($text->cover_uri, '/library/h-o-hello-1.png');
+is ($text->cover_thumbnail_uri, '/uploads/0sf1/thumbnails/h-o-hello-1.png.thumb.png');
+
+
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
 $mech->get_ok("/uploads/$site_id/$expected");
+$mech->get_ok($text->cover_thumbnail_uri);
+$mech->get_ok($text->cover_uri);
 $mech->get_ok("/library/hello");
 $mech->content_contains(qq{/uploads/$site_id/$expected"});
 $mech->content_contains(qq{/uploads/$site_id/thumbnails/$expected.thumb.png"});

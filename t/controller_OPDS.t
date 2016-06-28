@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 296;
+use Test::More tests => 301;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -675,3 +675,8 @@ $expected = <<'XML';
 XML
 eq_or_diff $mech->content, $expected, "Crawlable ok";
 
+$mech->get_ok('/opds/new');
+$mech->content_contains('<link rel="http://opds-spec.org/image/thumbnail" href="http://0opds0.amusewiki.org/uploads/0opds0/thumbnails/t-e-test.png.thumb.png" type="image/png"/>');
+$mech->content_contains('<link rel="http://opds-spec.org/image" href="http://0opds0.amusewiki.org/library/t-e-test.png" type="image/png"/>');
+$mech->get_ok('/library/t-e-test.png');
+$mech->get_ok('/uploads/0opds0/thumbnails/t-e-test.png.thumb.png');

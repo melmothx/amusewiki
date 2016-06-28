@@ -6,5 +6,6 @@
 #lang en
 #notes Notes
 #source Source
+#cover t-e-test.png
 
 body

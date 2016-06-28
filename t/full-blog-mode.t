@@ -81,6 +81,10 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
 $mech->get_ok('/');
+
+$mech->get_ok('/opds/new');
+
+
 is $mech->uri->path, '/latest', "Redirected to /latest";
 $mech->content_lacks('Authors');
 $mech->content_lacks('Topics');

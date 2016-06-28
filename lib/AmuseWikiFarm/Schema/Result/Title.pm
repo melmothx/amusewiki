@@ -840,6 +840,14 @@ sub cover_uri {
     return;
 }
 
+sub cover_thumbnail_uri {
+    my $self = shift;
+    if (my $uri = $self->valid_cover) {
+        return '/uploads/' . $self->site_id . '/thumbnails/' . $uri . '.thumb.png';
+    }
+}
+
+
 
 =head2 Attached pdf (#ATTACH directive)
 
@@ -1014,7 +1022,7 @@ sub opds_entry {
 
     if (my $image = $self->cover_uri) {
         $out{image} = $image;
-        $out{thumbnail} = $image;
+        $out{thumbnail} = $self->cover_thumbnail_uri;
     }
     foreach my $method (qw/notes source/) {
         my $string = $self->$method;
