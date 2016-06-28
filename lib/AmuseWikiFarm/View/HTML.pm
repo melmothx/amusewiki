@@ -4,9 +4,12 @@ use namespace::autoclean;
 
 extends 'Catalyst::View::TT';
 
+use AmuseWikiFarm::Log::Contextual;
 use Template::Filters;
 
 $Template::Filters::FILTERS->{escape_js} = \&escape_js_string;
+
+
 
 sub escape_js_string {
     my $s = shift;
@@ -21,6 +24,61 @@ __PACKAGE__->config(
     PRE_PROCESS => 'macros.tt',
     render_die => 1,
 );
+
+before process => sub {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    return unless $site;
+    unless ($c->stash->{no_wrapper}) {
+        log_debug { "Doing the layout fixes" };
+
+        my @related = $site->other_sites;
+        my @specials = $site->special_list;
+        for my $sp (@specials) {
+            my $uri = $sp->{uri};
+            $sp->{special_uri} = $uri;
+            $sp->{uri} = $sp->{full_url} || $c->uri_for_action('/special/text', [ $uri ]);
+            $sp->{active} = ($c->request->uri eq $sp->{uri});
+        }
+
+        # let's assume related will return self, and special index
+        if (@related || @specials) {
+            my $nav_hash = {};
+            if (@related) {
+                $nav_hash->{projects} = \@related;
+            }
+            if (@specials) {
+                $nav_hash->{specials} = \@specials;
+            }
+            $c->stash(navigation => $nav_hash);
+        }
+        # layout adjustments
+        my $theme = $site->bootstrap_theme;
+        my $columns = 12;
+        my $left_column = $site->left_layout_html;
+        my $right_column = $site->right_layout_html;
+        if ($left_column || $right_column) {
+            my $wide = 4;
+            # enlarge the column if we have only one sidebar
+            if ($left_column && $right_column) {
+                $wide = 2;
+            }
+            $c->stash(left_layout_html => $left_column,
+                      right_layout_html => $right_column,
+                      left_layout_cols => ($left_column ? $wide : 0),
+                      right_layout_cols => ($right_column ? $wide : 0),
+                     );
+            $columns = 8;
+        }
+        $c->stash(
+                  bootstrap_css => "/static/css/bootstrap.$theme.css",
+                  main_body_cols => $columns,
+                  top_layout_html => $site->top_layout_html,
+                  bottom_layout_html => $site->bottom_layout_html,
+                 );
+    }
+};
+
 
 =head1 NAME
 
