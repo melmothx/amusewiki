@@ -1008,6 +1008,14 @@ sub opds_entry {
                files => [ $self->full_uri . '.epub' ],
               );
     my @desc;
+    if (my $teaser = $self->teaser) {
+        push @desc, '<div>'. $self->teaser . '</div><div><br></div>';
+    }
+
+    if (my $image = $self->cover_uri) {
+        $out{image} = $image;
+        $out{thumbnail} = $image;
+    }
     foreach my $method (qw/notes source/) {
         my $string = $self->$method;
         if (length($string)) {
