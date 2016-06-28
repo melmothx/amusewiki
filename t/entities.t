@@ -47,11 +47,9 @@ Hello there
 MUSE
 
 write_file(catfile($root, qw/a at a-test.muse/), $muse);
-
-$site->update_db_from_tree;
-
 copy(catfile(qw/t entities.json/), $site->lexicon_file) or die $!;
 
+$site->update_db_from_tree;
 ok $site->lexicon;
 print Dumper($site->lexicon);
 AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, $site->locales_dir);
