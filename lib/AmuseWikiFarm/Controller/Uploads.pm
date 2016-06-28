@@ -63,12 +63,13 @@ sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
     my ($self, $c, $thumb) = @_;
     my $ext = '.thumb.png';
     # paranoid check
-    unless ($thumb =~ m/^[0-9a-z][0-9a-z-]*[0-9a-z]\.pdf\Q$ext\E$/s) {
+    unless ($thumb =~ m/^[0-9a-z][0-9a-z-]*[0-9a-z]\.(pdf|png|jpe?g)\Q$ext\E$/s) {
+        log_debug { $thumb . " is not a good name" };
         $c->detach('/not_found');
         return;
     }
     my ($uri) = File::Basename::fileparse($thumb, qr{\Q$ext\E});
-    my $srcfile = $c->stash->{site}->attachments->pdf_by_uri($uri);
+    my $srcfile = $c->stash->{site}->attachments->by_uri($uri);
     unless ($srcfile) {
         $c->detach('/not_found');
         return;
@@ -107,7 +108,15 @@ sub generate_thumbnail_from_to :Private {
     return unless (-f $src);
     return if (-f $out and ((stat($src))[9]) < (stat($out))[9]);
     log_info { "Generating thumbnail from $src to $out" };
-    system(qw/gm convert -thumbnail 300x/, $src . '[0]', $out);
+    my @exec = (qw/gm convert -thumbnail/);
+    if ($src =~ m/\.pdf$/) {
+        push @exec, '300x', $src . '[0]', $out;
+    }
+    else {
+        push @exec, '36x', -quality => 50, $src, $out;
+    }
+    Dlog_info { "Executing $_" } \@exec;
+    system(@exec);
 }
 
 =encoding utf8
