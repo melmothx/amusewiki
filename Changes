@@ -4,6 +4,16 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.902 2016-06-28
+
+ - Minor optimization and layout fixes
+ - Added teaser, image and thumbnails to the OPDS entries
+ - Serve thumbnails with XSendfile if available
+
+This change, even if minor, require an update to the webserver
+configuration, so be sure to execute
+script/amusewiki-generate-nginx-conf and follow the instructions.
+
 1.901 2016-06-27
 
  - Paginate the listing of texts under categories and add breadcrumbs there
