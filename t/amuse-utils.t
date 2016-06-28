@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 66;
+use Test::More tests => 82;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -70,6 +70,14 @@ my @valid = (
              [qw/s st second-test.muse/],
              [qw/f ft first-test.muse/],
              [qw/d dt deleted-text.muse/],
+             [qw/v v1 version-1.muse/],
+             [qw/w w1 wp1.muse/],
+             [qw/w w1 wpi-1.muse/],
+             [qw/w w1 wpi-1-1.muse/],
+             [qw/w wa wa-a.muse/],
+             [qw/w wa wpi-a.muse/],
+             [qw/w wb wpi-b.muse/],
+             [qw/w wb wpi-b-c.muse/],
             );
 my @invalid = (
                [qw/a as anonymous.pdf/],
@@ -82,6 +90,14 @@ my @invalid = (
                [qw/hello world ciao.muse/],
                [qw/a b t tt test.muse/],
                [qw/.git ar prova.jpg/],
+               [qw/w wi wpi-.muse/],
+               [qw/w wb wpi-b-.muse/],
+               [qw/w wb wpi-b-c-.muse/],
+               [qw/w wb Wpi-B-C.muse/],
+               [qw/w wb Wpi-B_C.muse/],
+               [qw/w wi w_i.muse/],
+               [qw/w wi wpi-b-c.muse/],
+               [qw/a wb wpi-b-c.muse/],
               );
 
 foreach my $v (@valid) {

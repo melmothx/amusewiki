@@ -264,7 +264,7 @@ sub muse_parse_file_path {
     }
 
     unless (muse_filename_is_valid($name)) {
-        # warn "$file has not a sane name!";
+        log_debug { "$file has not a sane name!" };
         return;
     }
 
@@ -773,13 +773,20 @@ sub muse_filepath_is_valid {
             #  warn "$relpath in the wrong path!\n";
         }
     }
-    elsif ($name =~ m/^([0-9a-z])[0-9a-z]*-([0-9a-z])[0-9a-z-]*[0-9a-z]$/s) {
+    elsif ($name =~ m/\A
+                      ([0-9a-z]) # first letter
+                      [0-9a-z]* # optional letters of first word
+                      - # hyphen
+                      ([0-9a-z]) # first letter of second word
+                      [0-9a-z]* # optional letters of second word
+                      ([0-9a-z-][0-9a-z]+)* # optional other words
+                      \z/sx) {
         if ($dirs[0] eq $1 and $dirs[1] eq "$1$2") {
             return $ret_value;
         }
     }
     # catch all and return false
-    # warn "Checking of $relpath failed\n";
+    log_debug { "Checking of $relpath failed" };
     return;
 }
 
