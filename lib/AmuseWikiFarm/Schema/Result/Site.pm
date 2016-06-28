@@ -1888,7 +1888,7 @@ L<Text::Amuse::Compile> if present.
 sub update_db_from_tree {
     my ($self, $logger) = @_;
     my $todo = $self->repo_find_changed_files;
-    $logger ||= sub { warn $_[0] };
+    $logger ||= sub { print @_ };
     # first delete
     foreach my $purge (@{ $todo->{removed} }) {
         if (my $found = $self->find_file_by_path($purge)) {

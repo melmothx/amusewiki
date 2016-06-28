@@ -41,7 +41,9 @@ $text_path = catfile($text_path, "a-test.muse");
 
 write_file($text_path, $body);
 
+diag "Updating from tree";
 $site->update_db_from_tree;
+diag "done";
 
 my $enrico = $site->categories->find({
                                       uri => 'enrico-arrigoni',
