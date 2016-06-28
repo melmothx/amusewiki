@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 149;
+use Test::More tests => 154;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -80,11 +80,13 @@ is $text->cover, $attached, "cover field restored";
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
-$mech->get_ok('/');
-
 $mech->get_ok('/opds/new');
+$mech->content_contains($text->cover_uri);
+$mech->content_contains($text->cover_thumbnail_uri);
+$mech->get_ok($text->cover_uri);
+$mech->get_ok($text->cover_thumbnail_uri);
 
-
+$mech->get_ok('/');
 is $mech->uri->path, '/latest', "Redirected to /latest";
 $mech->content_lacks('Authors');
 $mech->content_lacks('Topics');
