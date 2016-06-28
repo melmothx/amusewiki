@@ -927,6 +927,7 @@ t/test-repos/0blog0/specials/prova.muse
 t/test-repos/0blog0/uploads/a-t-myfile.pdf
 t/test-repos/0opds0/site_files/favicon.ico
 t/test-repos/0opds0/site_files/navlogo.png
+t/test-repos/0opds0/t/te/t-e-test.png
 t/test-repos/0opds0/t/te/title-entry-10.muse
 t/test-repos/0opds0/t/te/title-entry-11.muse
 t/test-repos/0opds0/t/te/title-entry-12.muse
