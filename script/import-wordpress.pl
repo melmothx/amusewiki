@@ -43,7 +43,7 @@ foreach my $entry (@feeds) {
         $out{html} = $body;
         my $date = $entry->{pubDate};
         if ($date =~ m{\w -0001 \d}) {
-            print "Ignoring post with date $date";
+            print "Ignoring post with date $date\n";
             next POST;
         }
         else {
