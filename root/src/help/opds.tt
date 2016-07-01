@@ -85,9 +85,6 @@
       [% loc('Find the add catalogue menu.') %]
     </p>
   </div>
-</div>
-<div><br /></div>
-<div class="row">
   <div class="col-sm-6 col-lg-4">
 
     <img class="amw-fbreader" src="[% c.uri_for('/static/images/opds-4.png') %]" alt="FBReader-4" />
