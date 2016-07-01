@@ -18,7 +18,7 @@ binmode STDOUT, ':encoding(UTF-8)';
 
 my $ua = LWP::UserAgent->new;
 my ($site_id, $file, $hostname) = @ARGV;
-die unless $site_id && $file;
+die "3 arguments required: site_id, xml_file, hostname" unless $site_id && $file && $hostname;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find($site_id) or die "cannot find site $site_id";
 my $import_id = 1;
