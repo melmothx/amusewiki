@@ -2607,25 +2607,53 @@ sub initialize_git {
 sub _create_repo_stub {
     my $self = shift;
     my $root = $self->repo_root;
-    my $stock_dir = 'stock_files';
-    die "In the wrong dir!" unless -d $stock_dir;
-    copy (File::Spec->catfile($stock_dir, 'dot-gitignore'),
-          File::Spec->catfile($root, '.gitignore'))
-      or die "Couldn't import the .gitignore: $!";
-
+    my $gitignore =<<'GITIGNORE';
+?/??/*.pdf
+?/??/*.a4.pdf
+?/??/*.lt.pdf
+?/??/*.epub
+?/??/*.html
+?/??/*.tex
+?/??/*.log
+?/??/*.tuc
+?/??/*.aux
+?/??/*.toc
+?/??/*.ok
+?/??/*.zip
+?/??/*.status
+specials/*.pdf
+specials/*.a4.pdf
+specials/*.lt.pdf
+specials/*.epub
+specials/*.html
+specials/*.tex
+specials/*.log
+specials/*.tuc
+specials/*.aux
+specials/*.toc
+specials/*.ok
+specials/*.zip
+specials/*.status
+*~
+GITIGNORE
+    my $stub = "/* Empty by default, for local changes */\n";
+    my $gitignore_path = File::Spec->catfile($root, '.gitignore');
+    my $local_js_path = File::Spec->catfile($self->path_for_site_files, 'local.js');
+    my $local_css_path = File::Spec->catfile($self->path_for_site_files, 'local.css');
     # create stub dirs
     foreach my $dir (qw/site_files specials uploads/) {
         my $target = File::Spec->catdir($root, $dir);
         mkdir $target or die "Couldn't create $target: $!";
     }
-    foreach my $file (qw/local.css local.js favicon.ico navlogo.png
-                         pagelogo.png/) {
-        my $source = File::Spec->catfile($stock_dir, $file);
-        my $target = File::Spec->catfile($root, 'site_files', $file);
-        if (-f $source) {
-            copy ($source, $target)
-              or die "Couldn't import $file into site_files, $!";
-        }
+    my %stubs = (
+                 $gitignore_path => $gitignore,
+                 $local_js_path => $stub,
+                 $local_css_path => $stub,
+                );
+    foreach my $file (keys %stubs) {
+        open (my $fh, '>:encoding(UTF-8)', $file) or die "Couldn't open $file $!";
+        print $fh $stubs{$file};
+        close $fh or die $!;
     }
 }
 

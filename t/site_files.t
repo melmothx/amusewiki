@@ -5,10 +5,10 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 24;
+use Test::More tests => 27;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
-use Text::Amuse::Compile::Utils qw/write_file/;
+use Text::Amuse::Compile::Utils qw/write_file read_file/;
 use Data::Dumper;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
@@ -19,8 +19,10 @@ my $site_id = '0sf2';
 my $site = create_site($schema, $site_id);
 
 ok(-f catfile($site->repo_root, '.gitignore'), "gitignore was created");
-
 ok ($site->git, "Git was initialized with ->initialize_git");
+like (read_file(catfile($site->repo_root, '.gitignore')),
+      qr{\?/\?\?/\*\.pdf});
+
 
 ok(!$site->logo_with_sitename, "By default, the logo has not a sitename");
 
@@ -72,6 +74,7 @@ foreach my $localf (@localfiles) {
     my $uri = "/sitefiles/$site_id/$localf";
     $mech->content_contains(qq{$localf"});
     $mech->get_ok($uri);
+    $mech->content_contains('Empty by default');
 }
 
 # delete and recheck
