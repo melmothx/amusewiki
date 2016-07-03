@@ -8,6 +8,10 @@ texfontsdir=$HOME/texlive/2015/texmf-dist/fonts
 if [ ! -d $texfontsdir ]; then
     texfontsdir=$HOME/texlive/2014/texmf-dist/fonts
 fi
+# freebsd
+if [ ! -d $texfontsdir ]; then
+    texfontsdir=/usr/local/share/texmf-dist/fonts
+fi
 if [ ! -d $texfontsdir ]; then
     echo "Couldn't find $texfontsdir";
     exit 2;
