@@ -6,7 +6,6 @@ set -e
 
 AMWHOME=`pwd`
 TEXMIRROR=ctan.ijs.si/tex-archive
-AMWLOGFILE=`tempfile`
 
 missing='no'
 for command in perl cpanm fc-cache convert gm update-mime-database delve openssl \
