@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.904 2016-07-04
+
+ - Added documentation for FreeBSD (and tested on this OS)
+ - Fixed some portability issues in the helper scripts
+
 1.903 2016-07-01
 
  - Fixed crash on site creation with debian package (#56)
