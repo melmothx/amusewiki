@@ -17,11 +17,12 @@ TeXlive 2015), but the procedure is fully automated, so start it,
 check if it bails out at the beginning, forget about it for an hour or
 two (run it under screen), then come back later and finish it up to
 complete it for the operations which require root privileges (notably
-the webserver configuration). The last lines of output is what
-matters. It will tell you about the needed changes to the $PATH for
-TeXlive, and where to login. From there you should be be able to
-create and configure new sites from the admin console under
-/admin/sites. [1]
+the webserver configuration).
+
+You can speed up the process installing the available modules and
+texlive from the OS repositories, which is the suggested approch
+because this way the security fixes are delegated to the standard
+tools.
 
 The supported and recommended setup is nginx + FCGI. The FCGI setup
 should work with Apache as well, but it's not currently actively
@@ -42,6 +43,8 @@ Prerequisites:
  - SSL binaries and development libraries (openssl and libssl-dev)
  - Xapian libraries and development files (xapian-tools libxapian-dev)
  - commonly used utilities: unzip, wget, git, rsync
+ - TeXlive full > 2012, either from system repo (recommended) or from
+   https://www.tug.org/texlive/
 
 Log in as the user you want to run the site.
 
@@ -51,20 +54,18 @@ should install local::lib (liblocal-lib-perl on Debian) and add to
 
  eval `perl -Mlocal::lib`
 
+If you installed Tex live from the installer, tweak the shell rc file
+to include the binaries in the PATH.
+
 Logout and login again.
 
 Unpack the sources (or clone the repo) and change directory into them.
 
 Install the prerequisites and complete the installation with:
 
+Complete the installation with:
+
  ./script/install.sh
-
-The script is going to take care of the installation in a
-non-interactive fashion, picking resonable defaults.
-
-The output is copious, but you need only the last lines. Setting up
-the $PATH as shown in the script output in your bashrc (or equivalent)
-is crucial.
 
 ** CONFIGURE THE INITIAL SITE
 
@@ -159,77 +160,80 @@ missing latex pieces, fonts, etc. You have been warned.
 
 ** FreeBSD
 
-pkg install perl5 p5-App-cpanminus git texlive-full-20150521 p5-Catalyst-Runtime \
-    p5-Catalyst-Devel cgit p5-local-lib ImageMagick \
-    GraphicsMagick p5-Catalyst-Runtime shared-mime-info xapian-core xapian-bindings \
-    p5-Search-Xapian nginx unzip rsync wget p5-Daemon-Control bash \
+pkg install perl5 p5-App-cpanminus git texlive-full-20150521 \
+    cgit ImageMagick \
+    GraphicsMagick shared-mime-info xapian-core xapian-bindings \
+    nginx fcgiwrap unzip rsync wget bash \
     p5-Module-Install \
-p5-DBIx-Class p5-DBIx-Class-Schema-Loader p5-DBIx-Class-PassphraseColumn \
-p5-DBIx-Class-DeploymentHandler p5-DBIx-Class-Helpers p5-DBIx-Class-Schema-Config \
-p5-DateTime-Format-SQLite p5-DateTime-Format-RFC3339 p5-DateTime-Format-MySQL  \
-p5-DateTime-Format-Pg \
-p5-FCGI p5-FCGI-ProcManager p5-Unicode-Collate p5-DBD-SQLite \
-p5-MIME-Types \
-p5-Locale-Maketext-Lexicon p5-Locale-PO p5-File-MimeInfo \
-p5-Protocol-ACME \
-p5-CAM-PDF                    \
-p5-Test-Differences                       \
-p5-Catalyst-Runtime                       \
-p5-Catalyst-Plugin-ConfigLoader           \
-p5-Catalyst-Plugin-Authentication         \
-p5-Catalyst-Plugin-Session                \
-p5-Catalyst-Plugin-Session-Store-FastMmap \
-p5-Catalyst-Plugin-Session-State-Cookie   \
-p5-Catalyst-Plugin-Authorization-Roles    \
-p5-Catalyst-View-TT                       \
-p5-Catalyst-Action-RenderView             \
-p5-Moose                                  \
-p5-namespace-autoclean                    \
-p5-Test-WWW-Mechanize-Catalyst            \
-p5-Term-Size-Any                          \
-p5-MIME-Types                             \
-p5-FCGI                                   \
-p5-FCGI-ProcManager                       \
-p5-Unicode-Collate                        \
-p5-DBIx-Class                             \
-p5-DBD-SQLite                             \
-p5-Daemon-Control                         \
-p5-MooseX-NonMoose                        \
-p5-JSON                                   \
-p5-JSON-XS                                \
-p5-DBIx-Class-Schema-Loader               \
-p5-SQL-Translator                         \
-p5-DBIx-Class-Schema-Config               \
-p5-DBIx-Class-PassphraseColumn            \
-p5-DateTime                               \
-p5-DateTime-Format-SQLite                 \
-p5-DateTime-Format-MySQL                  \
-p5-DateTime-Format-Pg                     \
-p5-DateTime-Format-Strptime               \
-p5-XML-FeedPP                             \
-p5-XML-Atom                               \
-p5-Git-Wrapper                            \
-p5-Text-Wrapper                           \
-p5-Email-Valid                            \
-p5-File-Copy-Recursive                    \
-p5-Search-Xapian                          \
-p5-Catalyst-Model-Adaptor                 \
-p5-Text-Unidecode                         \
-p5-Log-Contextual                         \
-p5-Log-Log4perl                           \
-p5-Log-Dispatch                           \
-p5-Log-Dispatch-File-Stamped              \
-p5-Email-Sender                           \
-p5-HTTP-Tiny            \
-p5-MooseX-MarkAsMethods \
-p5-PDF-API2 \
-p5-Bytes-Random-Secure \
-p5-Crypt-OpenSSL-X509 \
-p5-HTTP-BrowserDetect \
-p5-Type-Tiny \
-p5-Archive-Zip \
-p5-Template-Tiny \
-p5-Catalyst-Model-DBIC-Schema
+    p5-local-lib \
+    p5-Catalyst-Devel \
+    p5-DBIx-Class p5-DBIx-Class-Schema-Loader p5-DBIx-Class-PassphraseColumn \
+    p5-DBIx-Class-DeploymentHandler p5-DBIx-Class-Helpers p5-DBIx-Class-Schema-Config \
+    p5-DateTime-Format-SQLite p5-DateTime-Format-RFC3339 p5-DateTime-Format-MySQL  \
+    p5-DateTime-Format-Pg \
+    p5-FCGI p5-FCGI-ProcManager p5-Unicode-Collate p5-DBD-SQLite \
+    p5-MIME-Types \
+    p5-Locale-Maketext-Lexicon p5-Locale-PO p5-File-MimeInfo \
+    p5-Protocol-ACME \
+    p5-CAM-PDF                    \
+    p5-Test-Differences                       \
+    p5-Catalyst-Runtime                       \
+    p5-Catalyst-Plugin-ConfigLoader           \
+    p5-Catalyst-Plugin-Authentication         \
+    p5-Catalyst-Plugin-Session                \
+    p5-Catalyst-Plugin-Session-Store-FastMmap \
+    p5-Catalyst-Plugin-Session-State-Cookie   \
+    p5-Catalyst-Plugin-Authorization-Roles    \
+    p5-Catalyst-View-TT                       \
+    p5-Catalyst-Action-RenderView             \
+    p5-Moose                                  \
+    p5-namespace-autoclean                    \
+    p5-Test-WWW-Mechanize-Catalyst            \
+    p5-Term-Size-Any                          \
+    p5-MIME-Types                             \
+    p5-FCGI                                   \
+    p5-FCGI-ProcManager                       \
+    p5-Unicode-Collate                        \
+    p5-DBIx-Class                             \
+    p5-DBD-SQLite                             \
+    p5-Daemon-Control                         \
+    p5-MooseX-NonMoose                        \
+    p5-JSON                                   \
+    p5-JSON-XS                                \
+    p5-DBIx-Class-Schema-Loader               \
+    p5-SQL-Translator                         \
+    p5-DBIx-Class-Schema-Config               \
+    p5-DBIx-Class-PassphraseColumn            \
+    p5-DBIx-Class-InflateColumn-Authen-Passphrase \
+    p5-DateTime                               \
+    p5-DateTime-Format-SQLite                 \
+    p5-DateTime-Format-MySQL                  \
+    p5-DateTime-Format-Pg                     \
+    p5-DateTime-Format-Strptime               \
+    p5-XML-FeedPP                             \
+    p5-XML-Atom                               \
+    p5-Git-Wrapper                            \
+    p5-Text-Wrapper                           \
+    p5-Email-Valid                            \
+    p5-File-Copy-Recursive                    \
+    p5-Search-Xapian                          \
+    p5-Catalyst-Model-Adaptor                 \
+    p5-Text-Unidecode                         \
+    p5-Log-Contextual                         \
+    p5-Log-Log4perl                           \
+    p5-Log-Dispatch                           \
+    p5-Log-Dispatch-File-Stamped              \
+    p5-Email-Sender                           \
+    p5-HTTP-Tiny            \
+    p5-MooseX-MarkAsMethods \
+    p5-PDF-API2 \
+    p5-Bytes-Random-Secure \
+    p5-Crypt-OpenSSL-X509 \
+    p5-HTTP-BrowserDetect \
+    p5-Type-Tiny \
+    p5-Archive-Zip \
+    p5-Template-Tiny \
+    p5-Catalyst-Model-DBIC-Schema
 
 [root@freebsd ~]# adduser 
 Username: amusewiki
@@ -258,10 +262,40 @@ adduser: INFO: Successfully added (amusewiki) to the user database.
 Add another user? (yes/no): no
 Goodbye!
 
+Add to rc.conf
+
+nginx_enable=YES
+fcgiwrap_enable=YES
+fcgiwrap_user=www
+fcgiwrap_socket="unix:/var/run/fcgiwrap/socket"
+
+# create an include sites-enabled directory for nginx and log dir
+mkdir /usr/local/etc/nginx/sites-enabled
+mkdir /var/log/nginx/
+# and add an include directive in nginx.conf inside the http { } stanza, at the end.
+# include /usr/local/etc/nginx/sites-enabled/*;
+vi /usr/local/etc/nginx/nginx.conf
+
+
+And start the services
+
+service nginx start
+service fcgiwrap start
 
 su - amusewiki
 git clone https://github.com/melmothx/amusewiki.git
 cd amusewiki
 eval `perl -Mlocal::lib`
 ./script/install.sh
+# create the config
+cat << EOF > amusewikifarm_local.conf
+<Model::Webserver>
+    nginx_root /usr/local/etc/nginx
+    fcgiwrap_socket /var/run/fcgiwrap/socket
+</Model::Webserver>
+EOF
 
+Then decide to which hostname you want to serve this and run
+./script/configure.sh amw.localdomain
+
+Take note of the credentials, and follow the instructions.
