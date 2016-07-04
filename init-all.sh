@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 cd `dirname $0`
 
-if [ "$1" == "" ]; then
+if [ "$1" = "" ]; then
     echo "Usage: $0 [ start | stop | restart | reboot ]"
     exit 2
 fi
