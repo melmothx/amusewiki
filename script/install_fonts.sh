@@ -4,7 +4,11 @@ set -e
 
 echo "Checking and installing missing fonts"
 
-texfontsdir=$HOME/texlive/2015/texmf-dist/fonts
+texfontsdir=$HOME/texlive/2016/texmf-dist/fonts
+
+if [ ! -d $texfontsdir ]; then
+    texfontsdir=$HOME/texlive/2015/texmf-dist/fonts
+fi
 if [ ! -d $texfontsdir ]; then
     texfontsdir=$HOME/texlive/2014/texmf-dist/fonts
 fi
@@ -12,6 +16,13 @@ fi
 if [ ! -d $texfontsdir ]; then
     texfontsdir=/usr/local/share/texmf-dist/fonts
 fi
+# debian, but they move stuff around
+
+if [ ! -d $texfontsdir ]; then
+    texfontsdir=/usr/share/texmf/fonts
+fi
+
+
 if [ ! -d $texfontsdir ]; then
     echo "Couldn't find $texfontsdir";
     exit 2;

@@ -160,7 +160,7 @@ missing latex pieces, fonts, etc. You have been warned.
 ** FreeBSD
 
 pkg install perl5 p5-App-cpanminus git texlive-full-20150521 p5-Catalyst-Runtime \
-    p5-Catalyst-Devel cgit p5-local-lib \
+    p5-Catalyst-Devel cgit p5-local-lib ImageMagick \
     GraphicsMagick p5-Catalyst-Runtime shared-mime-info xapian-core xapian-bindings \
     p5-Search-Xapian nginx unzip rsync wget p5-Daemon-Control bash \
     p5-Module-Install \
@@ -263,8 +263,5 @@ su - amusewiki
 git clone https://github.com/melmothx/amusewiki.git
 cd amusewiki
 eval `perl -Mlocal::lib`
-cpanm --installdeps .
-./script/install_fonts.sh
-cd font-preview
-./gen.sh
+./script/install.sh
 

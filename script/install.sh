@@ -22,24 +22,11 @@ for command in perl cpanm fc-cache convert gm update-mime-database delve openssl
         elif [ $command = 'gm' ]; then
             echo "NO, please install graphicsmagick"
         else
-            echo "NO, please install it"
+            echo "NO, please install $command"
         fi
         missing='yes'
     fi
 done
-
-# even centos is suggested to listen here
-# https://www.howtoforge.com/serving-cgi-scripts-with-nginx-on-centos-6.0-p2
-
-# This actually can be configured later.
-# echo -n "Checking if fcgiwrap is listening: "
-# if [ -S /var/run/fcgiwrap.socket ]; then
-#     echo "OK";
-# else
-#     echo "fcgiwrap socket in /var/run/fcgiwrap.socket not found! Needed for cgit";
-#     exit 2;
-# fi
-
 
 if [ "$missing" != "no" ]; then
     cat <<EOF
@@ -49,34 +36,17 @@ Missing core utilities, cannot proceed. Please install them:
  - fontconfig (install it before installing texlive)
  - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
  - a mime-info database: shared-mime-info on debian
+ - openssl
+ - general utils: wget, git, unzip, rsync
 EOF
-    exit 2
-fi
-
-echo -n "Checking header files for ssl: ";
-
-check_headers () {
-    output=`tempfile`
-    cat <<'EOF'  | gcc -o $output -xc -
-#include <stdio.h>
-#include <openssl/sha.h>
-#include <openssl/ssl.h>
-main() { printf("Hello World"); }
-EOF
-}
-
-if check_headers; then
-    echo "OK";
-else
-    echo "NO, please install libssl-dev (or openssl-devel)";
     exit 2
 fi
 
 echo -n "Checking if I can install modules in my home..."
 
-cpanm -q Text::Amuse
+cpanm -q Text::Amuse::Compile
 
-if which muse-quick.pl > /dev/null; then
+if which muse-compile.pl > /dev/null; then
     echo "OK, I can install Perl5 modules"
 else
     cat <<"EOF"
@@ -97,9 +67,6 @@ cpanm -q Log::Dispatch Log::Log4perl Module::Install Mail::Send \
       Log::Dispatch::File::Stamped \
       Module::Install::Catalyst
 cpanm -q --installdeps .
-# assert we can modify it and patch this stuff
-cpanm -q --reinstall CAM::PDF
-script/patch-cam-pdf.sh
 make
 
 install_texlive () {
@@ -131,23 +98,14 @@ EOF
     cd $AMWHOME
 }
 
-echo -n "Checking local installation of TeX live: ";
-if [ -d $HOME/texlive/2015/bin ]; then
+echo -n "Checking installation of TeX live: ";
+if which xelatex > /dev/null; then
     echo "OK";
 else
-    install_texlive
-fi
-    
-texbindir=`find $HOME/texlive/2015/bin -maxdepth 1 -mindepth 1 -type d | head -1`
-if [ ! -f "$texbindir/xetex" ]; then
-    echo "Something is wrong $texbindir/xetex doesn't exist!";
+    echo "TeXlive is packaged for a lot of OSes and you're suggested"
+    echo "to install it (in its full variant) from the repository."
+    echo "Otherwise see https://www.tug.org/texlive/"
     exit 2;
-fi
-export PATH=$texbindir:$PATH
-
-
-if [ `which xetex` !=  "$texbindir/xetex" ]; then
-    echo "Cannnot find xetex in $texbindir, something went wrong!";
 fi
 
 echo "Installing needed JS"
