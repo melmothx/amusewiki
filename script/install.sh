@@ -114,6 +114,7 @@ echo "Installing needed JS"
 cd $AMWHOME/font-preview
 ./gen.sh
 
+cd $AMWHOME
 ./script/amusewiki-populate-webfonts $AMWHOME/webfonts
 
 cd $AMWHOME
