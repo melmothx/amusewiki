@@ -8,14 +8,14 @@ AMWHOME=`pwd`
 TEXMIRROR=ctan.ijs.si/tex-archive
 
 missing='no'
-for command in perl cpanm fc-cache convert gm update-mime-database delve openssl \
+for command in perl cpanm fc-cache convert gm update-mime-database xapian-check openssl \
                make gcc wget git unzip rsync; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
         echo "YES";
     else
-        if [ $command = 'delve' ]; then
-            echo "NO, please install xapian and the devel package"
+        if [ $command = 'xapian-check' ]; then
+            echo "NO, please install xapian and its utils"
         elif [ $command = 'make' ]; then
             echo "NO, please install build essential utils"
         elif [ $command = 'gm' ]; then
