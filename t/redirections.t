@@ -3,7 +3,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 56;
+use Test::More tests => 58;
+use Data::Dumper;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -194,4 +195,9 @@ foreach my $legacy ({
     is $mech->uri->path_query, $legacy->{to}, "$legacy->{from} redirected to $legacy->{to}";
 }
 
-
+my $dump = $site->serialize_site;
+diag Dumper($dump);
+$site->legacy_links->delete;
+my $new = $schema->resultset('Site')->deserialize_site($dump);
+ok $new->legacy_links->count, "Restored legacy links";
+ok $new->redirections->count, "Restored redirections";

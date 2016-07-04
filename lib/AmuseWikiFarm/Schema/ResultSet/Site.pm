@@ -120,7 +120,8 @@ sub deserialize_site {
     my $guard = $self->result_source->schema->txn_scope_guard;
     die "Missing input" unless $hashref;
     my %external;
-    foreach my $method (qw/vhosts site_options site_links categories redirections/) {
+    foreach my $method (qw/vhosts site_options legacy_links
+                           site_links categories redirections/) {
         $external{$method} = delete $hashref->{$method} || [];
     }
     my @users = @{ delete $hashref->{users} || [] };

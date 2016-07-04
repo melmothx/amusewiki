@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';    
 };
 
-use Test::More tests => 94;
+use Test::More tests => 95;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -103,6 +103,7 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
     is $mech->uri . '' , $link;
     my ($new_password) = $mech->content =~ m{<span class="new-password"><code>(.+)</code>};
     ok ($new_password, "Found the new password $new_password");
+    $mech->content_contains('<span class="user-username"><code>sloppy</code></span>');
     $mech->get($link);
     is $mech->status, '403', "Access denied with token consumed" or diag $mech->content;
     $mech->get_ok('/');

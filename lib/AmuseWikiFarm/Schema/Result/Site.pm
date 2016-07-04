@@ -2845,7 +2845,9 @@ sub serialize_site {
     my ($self) = @_;
     my %data =  $self->get_columns;
 
-    foreach my $method (qw/vhosts site_options site_links categories redirections/) {
+    foreach my $method (qw/vhosts site_options site_links
+                           legacy_links
+                           categories redirections/) {
         my @records;
       ROW:
         foreach my $row ($self->$method) {
