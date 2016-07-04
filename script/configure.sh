@@ -7,6 +7,7 @@ hostname=$1
 if [ "x$hostname" = "x" ]; then
     if [ "`hostname -d`x" = "x" ]; then
         echo "I can't determine your domain name with hostname -d, bailing out"
+        echo "Please pass the desired hostname as argument"
         exit 2;
     else
         hostname=amusewiki.`hostname -d`;

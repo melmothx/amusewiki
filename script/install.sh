@@ -120,9 +120,3 @@ cd $AMWHOME
 cd $AMWHOME
 ./script/install-cgit.pl
 
-cat <<EOF
-Please add to your .bashrc (or equivalent):
-
-export PATH=$texbindir:\$PATH
-
-EOF
