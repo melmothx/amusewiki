@@ -13,7 +13,7 @@ use AmuseWikiFarm::Utils::CgitSetup;
 
 binmode STDOUT, ":encoding(utf-8)";
 
-my $cgitversion = 'v0.11.2';
+my $cgitversion = 'v0.12';
 my ($reinstall, $help);
 
 GetOptions(
@@ -62,6 +62,36 @@ my %paths = map { $_ => $cgitsetup->$_ } (qw/src www cgitsrc cgi
 $cgitsetup->create_skeleton;
 
 print Dumper(\%paths);
+
+# check for system-wide cgit in known locations (debian and freebsd)
+
+if (!$cgitsetup->cgi_exists) {
+    my $system_wide_location;
+    my @locations = ('/usr/lib/cgit/cgit.cgi',
+                     '/usr/local/www/cgit/cgit.cgi');
+
+    foreach my $loc (@locations) {
+        if (-f $loc and -x $loc ) {
+            $system_wide_location = $loc;
+            last;
+        }
+    }
+    if ($system_wide_location) {
+        mkdir $cgitsetup->www unless -d $cgitsetup->www;
+        open (my $fh, '>', $cgitsetup->cgi) or die "Cannot open " . $cgitsetup->cgi;
+        my $rcfile = $cgitsetup->cgitrc;
+        print $fh <<"CGI";
+#!/bin/sh
+
+CGIT_CONFIG=$rcfile $system_wide_location "\$\@"
+CGI
+        close $fh;
+        chmod 0755, $cgitsetup->cgi;
+        print "Wrapper installed in " . $cgitsetup->cgi . ", exiting now\n";
+        exit;
+    }
+}
+
 
 if (!$cgitsetup->cgi_exists || $reinstall) {
     compile();
