@@ -50,6 +50,7 @@ requires 'SQL::Translator';
 requires 'DBIx::Class::InflateColumn::DateTime';
 requires 'DBIx::Class::Schema::Config';
 requires 'DBIx::Class::Helper::ResultSet::Random';
+requires 'DBIx::Class::InflateColumn::Authen::Passphrase';
 requires 'DBIx::Class::PassphraseColumn';
 requires 'DBIx::Class::DeploymentHandler';
 requires 'DateTime';
