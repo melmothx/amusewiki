@@ -53,8 +53,10 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
 
     foreach my $text (@specials, @texts) {
         my $link;
+        my $pubdate_epoch = $text->pubdate->epoch;
         if ($text->f_class eq 'text') {
-            $link = $c->uri_for_action('/library/text', [$text->uri]);
+            $link = $c->uri_for_action('/library/text', [$text->uri],
+                                       { v => $pubdate_epoch });
         }
         else {
             # to fool the scrapers, set the permalink for specials
@@ -67,7 +69,7 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
         # here we must force stringification
         my $item = $feed->add_item("$link");
         $item->title($text->title);
-        $item->pubDate($text->pubdate->epoch);
+        $item->pubDate($pubdate_epoch);
         $item->guid(undef, isPermaLink => 1);
 
         if ($text->f_class eq 'special') {

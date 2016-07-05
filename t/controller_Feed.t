@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 16;
+use Test::More tests => 20;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use utf8;
@@ -27,5 +27,7 @@ foreach my $path ('/feed', '/rss.xml') {
     like $content, qr/Marco &amp;amp; C./;
     like $content, qr/isPermaLink="true"/;
     like $content, qr[library/first-test.epub];
+    like $content, qr{library/second-test\?v=\d+};
+    like $content, qr{special/index\?v=\d+};
 }
 
