@@ -905,6 +905,7 @@ t/site-options-2.t
 t/site-options.t
 t/site_files.t
 t/sitemap.t
+t/sorting.t
 t/static-indexes-expected/authors.html
 t/static-indexes-expected/titles.html
 t/static-indexes-expected/topics.html
