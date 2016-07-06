@@ -79,7 +79,10 @@ sub sorted_by_title {
 sub sort_by_pubdate_desc {
     my $self = shift;
     my $me = $self->current_source_alias;
-    return $self->search(undef, { order_by => { -desc => ["$me.pubdate"] } });
+    return $self->search(undef, { order_by => [
+                                               { -desc => "$me.pubdate" },
+                                               { -desc => "$me.title" },
+                                              ] });
 }
 
 
@@ -342,7 +345,8 @@ sub older_than {
       ->format_datetime($dt);
     my $me = $self->current_source_alias;
     return $self->search({ "$me.pubdate" => { '<' => $format_time } },
-                         { order_by => { -desc => "$me.pubdate" } });
+                         { order_by => [{ -desc => "$me.pubdate" },
+                                        { -desc => "$me.title" } ]});
 }
 
 sub newer_than {
@@ -352,8 +356,8 @@ sub newer_than {
       ->format_datetime($dt);
     my $me = $self->current_source_alias;
     return $self->search({ "$me.pubdate" => { '>' => $format_time } },
-                         { order_by => { -asc => "$me.pubdate" } });
-
+                         { order_by => [{ -asc => "$me.pubdate" },
+                                        { -desc => "$me.title" }] });
 }
 
 

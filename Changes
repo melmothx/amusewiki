@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.905 2016-07-06
+
+ - Fixed bug on pagination where pubdate is always the same (unclear if affecting
+   only Pg or it's a wider issue). Hotfix.
+
 1.904 2016-07-04
 
  - Added documentation for FreeBSD (and tested on this OS)
