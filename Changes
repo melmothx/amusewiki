@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.906 2016-07-06
+
+ - Fixed pagination ordering when pubdate is exaclty the same (+ tests)
+
 1.905 2016-07-06
 
  - Fixed bug on pagination where pubdate is always the same (unclear if affecting
