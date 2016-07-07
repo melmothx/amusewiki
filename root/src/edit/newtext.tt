@@ -18,7 +18,7 @@
         <span class="glyphicon glyphicon-share-alt"></span>
       </a>
       <input class="form-control" type="text" name="title"
-	     maxlength="100" id="title"
+	     maxlength="250" id="title"
 	     size="30"
 	     value="[% processed_params.title | html %]" />
     </p>
@@ -26,7 +26,7 @@
     <p>
       <label for="subtitle">[% loc('Subtitle') %]</label>:
       <input class="form-control" type="text" name="subtitle" id="subtitle"
-	     maxlength="100"
+	     maxlength="250"
 	     size="30"
 	     value="[% processed_params.subtitle | html %]" />
     </p>
@@ -37,7 +37,7 @@
       <label for="LISTtitle">[% loc('Title for sorting') %]</label>
       ([% loc('you may want to strip the leading “A”, “An”, “The”, and so on from the title') %]):
       <input class="form-control" type="text" name="LISTtitle" id="LISTtitle"
-	     maxlength="100" size="30"
+	     maxlength="250" size="30"
 	     value="[% processed_params.LISTtitle | html %]" />
     </p>
 
@@ -47,7 +47,7 @@
       ([% loc('for display') %]):
       <input class="form-control amwautocomplete"
              type="text" name="author" id="author"
-	         maxlength="100"
+	         maxlength="250"
 	         value="[% processed_params.author | html %]" />
     </p>
 
