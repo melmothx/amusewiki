@@ -431,6 +431,11 @@
                 </li>
                 [% END %]
                 <li>
+                  <a href="[% c.uri_for_action('/help/faq') %]">
+                    [% loc("Maintainer's FAQ") %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for('/logout') %]">
                     [% loc('Logout') %]
                   </a>

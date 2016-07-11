@@ -409,6 +409,7 @@ root/src/edit/newtext.tt
 root/src/edit/revs.tt
 root/src/error.tt
 root/src/git/git.tt
+root/src/help/faq.tt
 root/src/help/opds.tt
 root/src/include/breadcrumbs.tt
 root/src/include/ckeditor.tt
