@@ -2,19 +2,29 @@
   <h1>[% loc("Maintainer's FAQ") %]</h1>
 </div>
 
-<h3>[% loc('How do I create a special page?') %]</h3>
+<div class="table-of-contents">
+  <p class="tableofcontentline toclevel3"><a href="#toc1">[% loc('How do I create a special page?') %]</a></p>
+  <p class="tableofcontentline toclevel3"><a href="#toc2">[% loc('How do I modify a special page?') %]</a></p>
+  <p class="tableofcontentline toclevel3"><a href="#toc3">[% loc('How do I create a landing page?') %]</a></p>
+  <p class="tableofcontentline toclevel3"><a href="#toc4">[% loc('How do I delete a text?') %]</a></p>
+  <p class="tableofcontentline toclevel3"><a href="#toc5">[% loc('How do I purge a text?') %]</a></p>
+  <p class="tableofcontentline toclevel3"><a href="#toc6">[% loc('How do I redirect to another page?') %]</a></p>
+</div>
+
+
+<h4 id="toc1">[% loc('How do I create a special page?') %]</h4>
 <p>
 [% loc('Look into the account’s menu, there is an entry for that.') %]
 </p>
 
-<h3>[% loc('How do I modify a special page?') %]</h3>
+<h4 id="toc2">[% loc('How do I modify a special page?') %]</h4>
 <p>
 [% loc('It works the same as for regular page, but the link is hidden. Just
 append "/edit" to the url of the page.') %]
 </p>
 
 
-<h3>[% loc('How do I create a landing page?') %]</h3>
+<h4 id="toc3">[% loc('How do I create a landing page?') %]</h4>
 <p>
 [% loc("The page /special/index is twice special. It is assumed to be the
 default page to visit when loading the site’s root.") %]
@@ -31,7 +41,7 @@ the uri "index".') %]
   URI "index", a dash, and the locale code.') %]
 </p>
 
-<h3>[% loc('How do I delete a text?') %]</h3>
+<h4 id="toc4">[% loc('How do I delete a text?') %]</h4>
 
 
 <p>
@@ -52,7 +62,7 @@ etc.) is irrelevant.') %]
 [% loc('Then approve the change as it would be a normal publishing.') %]
 </p>
 
-<h3>[% loc('How do I purge a text?') %]</h3>
+<h4 id="toc5">[% loc('How do I purge a text?') %]</h4>
 
 
 <p>
@@ -70,7 +80,7 @@ etc.) is irrelevant.') %]
 </a>
 </p>
 
-<h3>[% loc('How do I redirect to another page?') %]</h3>
+<h4 id="toc6">[% loc('How do I redirect to another page?') %]</h4>
 
 
 <p>
