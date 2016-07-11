@@ -2,7 +2,7 @@
   <h1>[% loc("Maintainer's FAQ") %]</h1>
 </div>
 
-<div class="table-of-contents">
+<div class="well">
   <p class="tableofcontentline toclevel3"><a href="#toc1">[% loc('How do I create a special page?') %]</a></p>
   <p class="tableofcontentline toclevel3"><a href="#toc2">[% loc('How do I modify a special page?') %]</a></p>
   <p class="tableofcontentline toclevel3"><a href="#toc3">[% loc('How do I create a landing page?') %]</a></p>
