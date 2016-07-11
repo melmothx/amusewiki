@@ -30,15 +30,21 @@ sub root :Chained('/site') :PathPart('help') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
 
-sub opds :Chained('root') :PathPart('opds') :Args(0) {
+sub opds :Chained('root') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(page_title => $c->loc('[_1] on mobile', $c->stash->{site}->full_name));
 }
 
-sub faq :Chained('root') :PathPart('faq') :Args(0) {
+sub faq :Chained('root') :Args(0) {
     my ($self, $c) = @_;
     $c->stash(page_title => $c->loc("Maintainer's faq"));
 }
+
+sub irc :Chained('root') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(page_title => $c->loc("Real time help"));
+}
+
 
 =encoding utf8
 

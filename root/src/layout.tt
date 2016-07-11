@@ -436,6 +436,11 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/help/irc') %]">
+                    [% loc('Real time help') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for('/logout') %]">
                     [% loc('Logout') %]
                   </a>
