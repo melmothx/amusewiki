@@ -393,8 +393,9 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                                 cc => '',
                                 revision_is_new => $revision->is_new_text || 0,
                                 home => $c->uri_for('/'),
-                                resume_url => $c->uri_for_action('/edit/edit', [ @url_args ]),
-                                diff_url   => $c->uri_for_action('/edit/diff', [ @url_args ]),
+                                resume_url =>  $c->stash->{editing_uri},
+                                diff_url   =>  $c->stash->{diffing_uri},
+                                preview_url => $c->stash->{preview_uri},
                                 pending_url => $c->uri_for_action('/publish/pending'),
                                 attachments => \@file_urls,
                                 messages => $revision->message,
@@ -456,7 +457,14 @@ Path: /action/edit/<my-text>/<rev-id>/preview
 
 sub preview :Chained('get_revision') :PathPart('preview') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash->{no_wrapper} = 1;
+    if ($c->request->query_params->{bare}) {
+        $c->stash->{no_wrapper} = 1;
+    }
+}
+
+sub preview_attachment :Chained('get_revision') :PathPart('') Args(1) {
+    my ($self, $c, $attach) = @_;
+    $c->detach(attachments => [ $attach ]);
 }
 
 

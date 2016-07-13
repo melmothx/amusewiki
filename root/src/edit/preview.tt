@@ -1,3 +1,9 @@
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Preview') %]: [% revision.title.uri %]</h1>
+  </div>
+</div>
+<div id="amw-text-preview-page">
 [%- SET text = revision.document_html_headers -%]
     <div id="preamble-container" class="well">
       <div id="preamble">
@@ -67,4 +73,5 @@
     <div id="htmltextbody">
       [% revision.muse_doc.as_html %]
     </div>
-  </div>
+</div>
+<hr />

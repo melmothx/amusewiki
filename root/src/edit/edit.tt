@@ -650,7 +650,7 @@ $(document).ready(function(){
     });
     [% END %]
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });
-    $('#amw-text-edit-preview-box').load("[% preview_uri %]");
+    $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page");
 });
 </script>
 

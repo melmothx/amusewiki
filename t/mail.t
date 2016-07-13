@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 52;
+use Test::More tests => 54;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -171,7 +171,9 @@ $mech->click("commit");
         my $body = $sent->{email}->as_string;
         ok ($body);
         like $body, qr{subject: pippo-my-test}i;
-        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/};
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/[0-9]+/diff};
+        like $body, qr{Preview};
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/[0-9]+/preview};
         unlike $body, qr{cc: uploader\@amusewiki.org}i;
         diag $body;
     }
