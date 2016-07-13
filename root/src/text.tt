@@ -438,6 +438,7 @@ $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });
 [% IF site.text_infobox_at_the_bottom %]
 <script type="text/javascript">
   $(document).ready(function() {
+      $("#text-optional-footer").append("<br /><hr /><br />");
       $("div#preamble-container").remove().appendTo("#text-optional-footer");
       $('[data-toggle="tooltip"]').tooltip();
   });
