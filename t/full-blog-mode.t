@@ -25,12 +25,15 @@ $site->update({
                multilanguage => 'en it hr de',
               });
 
+$site->site_options->create({ option_name => 'text_infobox_at_the_bottom',
+                              option_value => 1 });
+
 my ($revision) = $site
   ->create_new_text({
                      title => 'My new blog post!',
                      uri => 'my-test',
                      lang => 'en',
-                     textbody => '<p>hello there</p>',
+                     textbody => '<h3>1</h3><p>hello there</p><h3>2</h3><h3>3</h3>',
                      teaser => '<p>this</p><p>is =the= <em>teaser</em></p>',
                      notes => '<b>notes</b>',
                     }, 'text');

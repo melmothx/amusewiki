@@ -2806,6 +2806,9 @@ sub pagination_size {
     return shift->get_option('pagination_size') || 10;
 }
 
+sub text_infobox_at_the_bottom {
+    return shift->get_option('text_infobox_at_the_bottom') || '';
+}
 
 sub use_luatex {
     my ($self) = @_;
