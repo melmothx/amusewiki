@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-06-25 21:12+0200\n"
+"PO-Revision-Date: 2016-07-13 00:31-0400\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -22,7 +22,7 @@ msgstr "%1 no existe"
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 en móvil"
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(citas inteligentes, enlaces, notas a pie de página, etc.)"
@@ -69,7 +69,7 @@ msgstr "Se ha creado una nueva revisión en %1"
 
 #. (location)
 msgid "A new text has been created at %1"
-msgstr ""
+msgstr "Se ha creado un nuevo texto en %1"
 
 msgid "A nice title"
 msgstr "Un título"
@@ -94,7 +94,7 @@ msgid "Action"
 msgstr "Acción"
 
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Activar la apariencia estilo blog"
 
 msgid "Active"
 msgstr "Activo"
@@ -131,7 +131,7 @@ msgid "Add sections to the bookbuilder"
 msgstr "Agregar secciones al creador de libros"
 
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Agregar URL del OPDS"
 
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Agregar las partes seleccionadas al creador de libros"
@@ -212,7 +212,7 @@ msgid "Archive"
 msgstr "Catálogo"
 
 msgid "Archive by month"
-msgstr ""
+msgstr "Archivo por mes"
 
 msgid "Archive history"
 msgstr "Historial de archivo"
@@ -239,7 +239,7 @@ msgid "Authors for indexing"
 msgstr "Autores para indexar"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "Solicitar y renovar automáticamente certificados SSL de Let's Encrypt"
 
 msgid "Available category tags for header"
 msgstr "Etiquetas de categorías disponibles para el encabezado"
@@ -288,7 +288,7 @@ msgid "Bulleted List"
 msgstr "Lista con viñetas"
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "Tema CSS"
 
 msgid "Canonical name"
 msgstr "Nombre canónico"
@@ -344,7 +344,7 @@ msgid "Computing of differences took"
 msgstr "Calculando las diferencias"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 msgid "Convert to archive markup"
 msgstr "Convertir al marcado del archivo"
@@ -521,6 +521,9 @@ msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"Si bien este sitio tiene un diseño responsivo, amigable para\n"
+"  dispositivos móviles, no provee una aplicación dedicada para\n"
+"  esos dispositivos."
 
 msgid ""
 "Every\n"
@@ -568,10 +571,10 @@ msgid "Filters"
 msgstr "Filtros"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Buscar el menú de agregar catálogo."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Buscar el menú de biblioteca en red o equivalente."
 
 msgid "First Author and Second Author"
 msgstr "Primer/a autor/a y segundo/a autor/a"
@@ -651,13 +654,13 @@ msgid "Full list of texts"
 msgstr "Lista completa de textos"
 
 msgid "Full tag cloud"
-msgstr ""
+msgstr "Nube de etiquetas completa"
 
 msgid "Full text search"
 msgstr "Búsqueda de texto completa"
 
 msgid "General configuration"
-msgstr ""
+msgstr "Configuración general"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Genérico (para tamaños carta y A4)"
@@ -681,18 +684,20 @@ msgstr ""
 "            perder ahora, así que sé cuidadosa/o"
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML a insertar en la barra lateral izquierda"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML a insertar en la barra lateral derecha"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "HTML a insertar al final de la página, arriba del footer"
 
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
 msgstr ""
+"HTML a insertar al inicio de la página, antes de la barra de navegación y\n"
+"abajo del banner"
 
 msgid "HTML/Word Importer"
 msgstr "Importador de HTML/Word"
@@ -731,6 +736,9 @@ msgid ""
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"Sin embargo, puedes navegar, buscar, descargar y leer los textos\n"
+"  desde aplicaciones para móviles que soporten el protocolo llamado\n"
+"  OPDS."
 
 msgid "I am human"
 msgstr "Soy una persona"
@@ -800,10 +808,15 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Si la usas como una imagen de muestra, la imagen también\n"
+"       se ubicará en la primera página del PDF. Puedes establecer su\n"
+"       ancho agregando la siguiente línea al header, donde el valor es\n"
+"       la razón entre texto y ancho. 1 es todo el ancho del texto, 0.5\n"
+"       es la mitad, y así sucesivamente"
 
 #. (reset_url)
 msgid "If you want to proceed, please visit the following url: %1"
-msgstr ""
+msgstr "Si quieres proceder, por favor visita la siguiente url: %1"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -844,6 +857,9 @@ msgid ""
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
 msgstr ""
+"En este ejemplo, usamos FBreader, pero el procedimiento es\n"
+"  casi el mismo para todas las aplicaciones. Todo lo que tienes que hacer\n"
+"  es agregar %1 a las bibliotecas en red."
 
 msgid "Inline elements"
 msgstr "Elementos en línea"
@@ -919,7 +935,7 @@ msgid "Language selection"
 msgstr "Selección de idioma"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "Idiomas soportados"
 
 msgid "Last updated"
 msgstr "Últimos actualizados"
@@ -928,7 +944,7 @@ msgid "Latest entries"
 msgstr "Últimas publicaciones"
 
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Déjalo en blanco si lo quieres publicar así."
@@ -964,7 +980,7 @@ msgid "Logout"
 msgstr "Cerrar sesión"
 
 msgid "Lost your password?"
-msgstr ""
+msgstr "¿Olvidaste tu contraseña?"
 
 msgid "Magic answer"
 msgstr "Respuesta mágica"
@@ -1012,10 +1028,10 @@ msgid "Missing username or password"
 msgstr "Falta nombre de usuaria/o o contraseña"
 
 msgid "Mobile"
-msgstr ""
+msgstr "Móvil"
 
 msgid "Mobile applications"
-msgstr ""
+msgstr "Aplicaciones móviles"
 
 msgid "Mode"
 msgstr "Modo"
@@ -1045,7 +1061,7 @@ msgid "Name"
 msgstr "Nombre"
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Pantalla mostrando biblioteca en red."
 
 msgid "Never generate a table of content"
 msgstr "Nunca generar un índice de contenidos"
@@ -1060,7 +1076,7 @@ msgid "New site id"
 msgstr "Nuevo id de sitio"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "Textos más recientes"
 
 msgid "Next"
 msgstr "Siguiente"
@@ -1091,6 +1107,8 @@ msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr ""
+"¡Sin terminar! ¡Por favor revisa el texto y luego clickea en \\\"%1\\\" para\n"
+"finalizar tu envío!"
 
 msgid "Notes"
 msgstr "Notas"
@@ -1105,7 +1123,7 @@ msgid "Notify to"
 msgstr "Notificar a"
 
 msgid "Now you can proceed to login."
-msgstr ""
+msgstr "Ahora puedes identificarte."
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Número de últimas publicaciones para mostrar en el RSS (un entero)"
@@ -1119,10 +1137,10 @@ msgid "Numeric List"
 msgstr "Lista enumerada"
 
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS"
 
 msgid "Older texts"
-msgstr ""
+msgstr "Textos más antiguos"
 
 msgid "Open wiki"
 msgstr "Wiki abierta"
@@ -1153,7 +1171,7 @@ msgid "Other languages"
 msgstr "Otros idiomas"
 
 msgid "Otherwise, please just ignore this mail."
-msgstr ""
+msgstr "En caso contrario, por favor ignora este mail."
 
 msgid "PDF"
 msgstr "PDF"
@@ -1224,7 +1242,7 @@ msgstr "Contraseña"
 
 #. (host)
 msgid "Password reset for %1"
-msgstr ""
+msgstr "Reestablecimiento de contraseña para %1"
 
 msgid "Password too short"
 msgstr "Contraseña demasiado corta"
@@ -1248,10 +1266,10 @@ msgid "Picture"
 msgstr "Imagen"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Ubicarlo en el cuerpo con una descripción:"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Ubicarlo en el cuerpo sin una descripción:"
 
 msgid "Plain PDF"
 msgstr "PDF plano"
@@ -1260,6 +1278,8 @@ msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr ""
+"Por favor revisa tu bandeja de entrada. Tratamos de enviarte un mail a la\n"
+"dirección especificada con un enlace para reestablecimiento de la contraseña"
 
 msgid "Please choose the Beamer color theme"
 msgstr "Por favor elige el tema de color de Beamer"
@@ -1396,7 +1416,7 @@ msgid "Pointing to"
 msgstr "Apuntando a"
 
 msgid "Popular texts"
-msgstr ""
+msgstr "Textos populares"
 
 msgid ""
 "Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
@@ -1421,7 +1441,7 @@ msgid "Private"
 msgstr "Privado"
 
 msgid "Procedure"
-msgstr ""
+msgstr "Procedimiento"
 
 msgid "Produce slides."
 msgstr "Producir diapositivas"
@@ -1475,7 +1495,7 @@ msgid "Random"
 msgstr "Aleatorio"
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Leer todo el texto..."
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1539,13 +1559,13 @@ msgid "Reset all"
 msgstr "Reiniciar todo"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Reestablecer contraseña"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Variables de configuración restringidas"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "Opciones de formato restringidas"
 
 msgid "Retrieved on DATE from URL"
 msgstr "Recuperado el XX de MMMMM desde URL"
@@ -1588,7 +1608,7 @@ msgid "Search"
 msgstr "Búsqueda"
 
 msgid "Search results"
-msgstr ""
+msgstr "Resultados de búsqueda"
 
 msgid "Section"
 msgstr "Sección"
@@ -1678,7 +1698,7 @@ msgstr "Se encontraron algunas revisiones en curso"
 
 #. (username, host)
 msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
+msgstr "Alguien, probablemente tú, ha solicitado un reestablecimiento de contraseña para %1 en %2."
 
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
@@ -1706,7 +1726,7 @@ msgid "Special pages"
 msgstr "Páginas especiales"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "Especifica una lista separada por espacios de los idiomas a activar."
 
 msgid "Stale editing"
 msgstr "Edición abandonada"
@@ -1761,10 +1781,10 @@ msgid "Tables"
 msgstr "Tablas"
 
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Nube de etiquetas con autores"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Nube de etiquetas con temas"
 
 msgid "Task"
 msgstr "Tarea"
@@ -1773,19 +1793,19 @@ msgid "TeX"
 msgstr "TeX"
 
 msgid "Teaser"
-msgstr ""
+msgstr "Muestra"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "Imagen de muestra"
 
 msgid "Term"
 msgstr "Término"
 
 msgid "Test"
-msgstr ""
+msgstr "Prueba"
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Aplicaciones probadas, en este orden de preferencia"
 
 msgid "Text body, before any section"
 msgstr "Texto del cuerpo, antes de cualquier sección"
@@ -1811,7 +1831,7 @@ msgstr ""
 "  la salida de diapositivas."
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "La dirección OPDS para este sitio es:"
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -1841,14 +1861,14 @@ msgstr ""
 
 #. (valid)
 msgid "The link is valid until %1 (one hour from now)"
-msgstr ""
+msgstr "El enlace es válido hasta %1 (una hora desde ahora)"
 
 msgid "The logo has the site name on itself"
 msgstr "El logo tiene el nombre del sitio en él"
 
 #. (username)
 msgid "The new password for %1 is:"
-msgstr ""
+msgstr "La nueva contraseña para %1 es:"
 
 msgid "The optional subtitle"
 msgstr "El subtítulo opcional"
@@ -1863,7 +1883,7 @@ msgid "The text structure is shown below."
 msgstr "La estructura del texto se muestra abajo."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "El texto para mostrar en la previsualización del home"
 
 msgid "The text was added to the bookbuilder"
 msgstr "El texto fue agregado al creador de libros"
@@ -1937,6 +1957,10 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"Este mail ha sido enviado para notificarte sobre la creación de un\n"
+"nuevo texto, incluso si el envío no está completo todavía y la/el usuaria/o\n"
+"necesita finalizar el envío. Otro mail debería llegar pronto. Si esto\n"
+"no ocurre, significa que el envío ha sido abandonado y querrás revisar."
 
 msgid "This revision is already published, ignoring changes"
 msgstr "Esta revisión ya ha sido publicada, ignorando los cambios"
@@ -1958,6 +1982,8 @@ msgid ""
 "and\n"
 "  password to access the OPDS."
 msgstr ""
+"Este sitio es privado y las aplicaciones móviles te deberían solicitar tu\n"
+"nombre de usuario y contraseña para acceder al OPDS."
 
 msgid "This text does not exist"
 msgstr "Este texto no existe"
@@ -2088,7 +2114,7 @@ msgid "Use SSL for authenticated users"
 msgstr "Usar SSL para usuarias/os autenticadas/os"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
+msgstr "Usarla como una imagen de muestra agregando al header esta línea:"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2096,7 +2122,7 @@ msgstr ""
 "Cuando sea para encuadernación, usar cuadernillos de %1 páginas cada uno"
 
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Snippets HTML útiles"
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
@@ -2197,6 +2223,10 @@ msgid ""
 "    appear, you have to place somewhere in the body or in the header,\n"
 "    depending on their purpose. See the examples below."
 msgstr ""
+"Tú\n"
+"    has adjuntado una o más imágenes. ¡Esto no es suficiente! Para hacerlas\n"
+"    visibles, debes insertar en alguna parte del cuerpo del texto o en el,\n"
+"    header, dependiendo de tu propósito. Mira ejemplos más abajo."
 
 msgid "You already proved you are human"
 msgstr "Ya probaste que eres una persona"
@@ -2259,7 +2289,7 @@ msgid "Your chapter here..."
 msgstr "Tu capítulo aquí..."
 
 msgid "Your email"
-msgstr ""
+msgstr "Tu email"
 
 msgid "Your file is ready"
 msgstr "Tu archivo está listo"
@@ -2272,7 +2302,7 @@ msgid "Your password is %1."
 msgstr "Tu contraseña es %1"
 
 msgid "Your section here..."
-msgstr ""
+msgstr "Tu sección aquí..."
 
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Tu sub-sub-sección (o título de descripción) aquí..."
@@ -2416,7 +2446,7 @@ msgstr "derecha"
 
 #. (args)
 msgid "string"
-msgstr ""
+msgstr "string"
 
 msgid "strong emphasis"
 msgstr "énfasis fuerte"
