@@ -13,7 +13,7 @@ $(document).ready(function(){
     if ($("div.table-of-contents").length > 0) {
         $(".hidden-when-no-toc").show();
         $("div.table-of-contents").clone().appendTo("#pop-up-toc");
-        $("div.table-of-contents").addClass("well well-lg");
+        $("div.table-of-contents").addClass("well well-lg clearfix");
     }
 });
 
