@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 95;
+use Test::More tests => 97;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -47,6 +47,7 @@ $mech->content_contains('Created new text');
     $mech->content_lacks('Show differences in other tab');
     my $editing_uri = $mech->uri;
     my $diff_uri = $mech->uri . '/diff';
+    my $preview_uri = $mech->uri . '/preview';
     for my $admin ('/publish/pending', '/publish/all') {
         $mech->get_ok($admin);
         $mech->content_lacks('Show differences in other tab');
@@ -59,7 +60,7 @@ $mech->content_contains('Created new text');
     diag "Back to $editing_uri";
     $mech->get_ok($editing_uri);
     $mech->form_id('museform');
-    $mech->field(body => "#title Title\n#lang en");
+    $mech->field(body => "#title My *Title*\n#lang en");
     $mech->click('preview');
     $mech->content_contains('Show differences in other tab');
 
@@ -68,6 +69,8 @@ $mech->content_contains('Created new text');
     $mech->content_contains('This text is new');
     $mech->content_contains('diff_match_patch.js');
 
+    $mech->get_ok($preview_uri);
+    $mech->content_contains("My <em>Title</em>");
 
     for my $admin ('/publish/pending', '/publish/all') {
         $mech->get_ok($admin);
