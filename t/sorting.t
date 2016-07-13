@@ -39,6 +39,7 @@ for my $num (10..40) {
                           f_timestamp => $date->epoch,
                           f_full_path_name => '',
                           f_suffix => ".muse",
+                          sorting_pos => $num,
                          });
 }
 
