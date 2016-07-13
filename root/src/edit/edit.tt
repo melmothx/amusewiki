@@ -18,6 +18,37 @@
 <div class="row">
   <div id="page" class="col-md-5 col-md-push-7"
        style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">[% loc('Preview') %]</h3>
+  </div>
+  <div class="panel-body amw-fixed-panel-edit">
+    <div id="amw-text-edit-preview-box">
+      <div class="center">
+        <img src="[% c.uri_for('/static/images/ajax-loader-circular.gif') %]" alt="Loading" />
+      </div>
+    </div>
+    <hr />
+    <div>
+      [% IF revision.has_local_modifications %]
+      <div class="center">
+        <button type="button" id="goto-diff" class="btn btn-default">
+          [% loc('Show differences in other tab') %]
+        </button>
+        <br />&nbsp;
+      </div>
+      [% END %]
+      <div>
+        <p>
+          [% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 [% SET attachments = revision.attached_images %]
 [% IF attachments.size %]
 <div class="panel panel-default">
@@ -85,32 +116,6 @@
 
 
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">[% loc('Preview') %]</h3>
-  </div>
-  <div class="panel-body">
-    <div id="amw-text-edit-preview-box">
-      <img src="[% c.uri_for('/static/images/ajax-loader-circular.gif') %]" alt="Loading" />
-    </div>
-    <hr />
-    <div>
-      [% IF revision.has_local_modifications %]
-      <div class="center">
-        <button type="button" id="goto-diff" class="btn btn-default">
-          [% loc('Show differences in other tab') %]
-        </button>
-        <br />&nbsp;
-      </div>
-      [% END %]
-      <div>
-        <p>
-          [% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
 
   </div>
   <div class="col-md-7 col-md-pull-5">
