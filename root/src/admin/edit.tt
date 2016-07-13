@@ -265,6 +265,14 @@ kpsewhich mylogo.pdf
             [% loc('Activate the blog-style look and feel') %]
           </label>
         </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.text_infobox_at_the_bottom %]checked="checked"[% END %]
+                   name="text_infobox_at_the_bottom" />
+            [% loc('Show the text infobox at the bottom of the texts') %]
+          </label>
+        </div>
     </div>
 
     <div class="form-group">
@@ -437,12 +445,12 @@ kpsewhich mylogo.pdf
     </div>
     <div class="form-group">
       <label for="latest_entries" class="col-sm-3 control-label">
-        [% loc('Number of latest entries to display on the special pages (an integer)') %]
+        [% loc('Number of results to show on paginated pages (an integer)') %]
       </label>
       <div class="col-sm-9">
-        <input type="text" name="latest_entries" id="latest_entries"
+        <input type="text" name="pagination_size" id="pagination_size"
                class="form-control digits"
-               value="[% esite.get_option('latest_entries') | html %]" />
+               value="[% esite.pagination_size | html %]" />
       </div>
     </div>
 
@@ -454,7 +462,7 @@ kpsewhich mylogo.pdf
         <input type="text" name="latest_entries_for_rss"
                id="latest_entries_for_rss"
                class="form-control digits"
-               value="[% esite.get_option('latest_entries_for_rss') | html %]" />
+               value="[% esite.latest_entries_for_rss | html %]" />
       </div>
     </div>
 

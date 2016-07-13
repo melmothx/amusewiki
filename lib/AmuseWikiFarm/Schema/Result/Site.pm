@@ -2434,7 +2434,7 @@ sub update_from_params {
     # these are numerics
     foreach my $option (qw/latest_entries_for_rss
                            paginate_archive_after
-                           latest_entries/) {
+                           pagination_size/) {
         my $value = 0;
         if (my $set_to = delete $params->{$option}) {
             if ($set_to =~ m/([1-9][0-9]*)/) {
@@ -2457,6 +2457,7 @@ sub update_from_params {
                            top_layout_html
                            bottom_layout_html
                            do_not_enforce_commit_message
+                           text_infobox_at_the_bottom
                            use_js_highlight
                           /) {
         my $value = delete $params->{$option} || '';
@@ -2731,37 +2732,17 @@ sub full_name {
     return $self->sitename || $self->canonical;
 }
 
-=head2 latest_entries
-
-Return the published texts (as a list of
-L<AmuseWikiFarm::Schema::Result::Title> objects or
-L<AmuseWikiFarm::Schema::ResultSet::Title>) sorted by publication
-date. Because of L<AmuseWikiFarm::Schema::ResultSet::Title>, this will
-default to max 50 entries. Use the C<latest_entries> setting to alter
-this number.
-
-=head2 latest_entries_for_rss
-
-As above, but using the setting C<latest_entries_for_rss>.
-
-=cut
-
-sub latest_entries {
-    return shift->_latest_entries_routine('latest_entries');
+sub latest_entries_for_rss_rs {
+    my $self = shift;
+    return $self->titles->latest($self->latest_entries_for_rss);
 }
 
 sub latest_entries_for_rss {
-    return shift->_latest_entries_routine('latest_entries_for_rss');
-}
-
-sub _latest_entries_routine {
-    my ($self, $lookup) = @_;
-    return $self->titles->latest($self->get_option($lookup));
+    return shift->get_option('latest_entries_for_rss') || 25;
 }
 
 sub paginate_archive_after {
-    my $self = shift;
-    return $self->get_option('paginate_archive_after') || 25;
+    return shift->get_option('paginate_archive_after') || 25;
 }
 
 sub pagination_needed {
