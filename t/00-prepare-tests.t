@@ -18,6 +18,8 @@ BEGIN {
 
 use AmuseWikiFarm::Schema;
 
+diag "Using DBIC $DBIx::Class::VERSION\n";
+
 plan tests => 11;
 
 my $texmfhome = `kpsewhich -var-value TEXMFHOME`;

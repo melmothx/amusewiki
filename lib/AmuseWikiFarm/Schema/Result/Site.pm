@@ -1708,7 +1708,22 @@ sub _build_is_without_topics {
     return !$self->categories->topics_count;
 }
 
+has options_hr => (
+                   is => 'ro',
+                   isa => 'HashRef[Str]',
+                   lazy => 1,
+                   builder => '_build_options_hr',
+                  );
 
+sub _build_options_hr {
+    my $self = shift;
+    my $options = $self->site_options;
+    my %opts;
+    while (my $option = $options->next) {
+        $opts{$option->option_name} = $option->option_value;
+    }
+    return \%opts;
+}
 
 
 =head1 SCANNING
@@ -2759,11 +2774,11 @@ sub pagination_needed {
 
 sub get_option {
     my ($self, $lookup) = @_;
-    if (my $setting = $self->site_options->find({ option_name => $lookup })) {
-        return $setting->option_value;
+    if ($lookup) {
+        return $self->options_hr->{$lookup};
     }
     else {
-        return;
+        return undef;
     }
 }
 
