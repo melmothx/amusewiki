@@ -266,6 +266,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
                   revision => $revision,
                   editing_uri => $c->uri_for_action('/edit/edit', [@args]),
                   diffing_uri => $c->uri_for_action('/edit/diff', [@args]),
+                  preview_uri => $c->uri_for_action('/edit/preview', [@args]),
                  );
     }
     else {
@@ -445,6 +446,17 @@ sub diff :Chained('get_revision') :PathPart('diff') :Args(0) {
     my ($self, $c) = @_;
     $c->stash->{page_title} =
       $c->loc('Changes for [_1]', $c->stash->{revision}->title->uri);
+}
+
+=head2 preview
+
+Path: /action/edit/<my-text>/<rev-id>/preview
+
+=cut
+
+sub preview :Chained('get_revision') :PathPart('preview') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash->{no_wrapper} = 1;
 }
 
 

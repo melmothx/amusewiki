@@ -1,0 +1,70 @@
+[%- SET text = revision.document_html_headers -%]
+    <div id="preamble-container" class="well">
+      <div id="preamble">
+        <p id="texttitle">
+          <strong>[% loc('Title') %]:</strong>
+          [% text.title %]
+        </p>
+
+        [% IF text.subtitle %]
+        <p id="textsubtitle">
+          <strong>[% loc('Subtitle') %]:</strong>
+          [% text.subtitle %]
+        </p>
+        [% END %]
+
+        [% IF (text.SORTauthors || text.author) %]
+        <p id="authors">
+          <strong>[% loc('Authors') %]:</strong>
+          [% text.SORTauthors || text.author %]
+        </p>
+        [% END %]
+
+        [% IF text.date %]
+        <p id="textdate">
+          <strong>[% loc('Date') %]:</strong>
+          [% text.date %]
+        </p>
+        [% END %]
+
+        [% IF text.SORTtopics %]
+        <p id="topics">
+          <strong>[% loc('Topics') %]:</strong>
+          [% text.SORTtopics %]
+        </p>
+        [% END %]
+
+        [% IF text.source %]
+        <p id="preamblesrc">
+          <strong>[% loc('Source') %]:</strong>
+          [% text.source %]
+        </p>
+        [% END %]
+
+        [% IF text.notes %]
+        <p id="preamblenotes">
+          <strong>[% loc('Notes') %]:</strong>
+          [% text.notes %]
+        </p>
+        [% END %]
+
+        [% IF text.teaser  %]
+        <p id="teaser-preview">
+          <strong>[% loc('Teaser') %]:</strong>
+          [% text.teaser %]
+        </p>
+        [% END %]
+        [% IF text.cover %]
+        <p id="text-preview-cover">
+          <strong>[% loc('Teaser image') %]:</strong><br>
+          <img src="[% text.cover %]" alt="[% text.cover %]" class="img-responsive img-thumbnail"/>
+        </p>
+        [% END %]
+
+      </div>
+    </div>
+
+    <div id="htmltextbody">
+      [% revision.muse_doc.as_html %]
+    </div>
+  </div>
