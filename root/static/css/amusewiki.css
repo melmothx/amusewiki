@@ -231,3 +231,8 @@ div#text-prev-post-link span.glyphicon {
     font-size: 20px;
 }
 
+.amw-fixed-panel-edit {
+    max-height: 400px;
+    width: 100%;
+    overflow-y: scroll;
+}

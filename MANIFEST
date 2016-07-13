@@ -406,6 +406,7 @@ root/src/console/unpublished.tt
 root/src/edit/diff.tt
 root/src/edit/edit.tt
 root/src/edit/newtext.tt
+root/src/edit/preview.tt
 root/src/edit/revs.tt
 root/src/error.tt
 root/src/git/git.tt

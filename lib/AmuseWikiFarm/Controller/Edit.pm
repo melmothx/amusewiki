@@ -266,6 +266,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
                   revision => $revision,
                   editing_uri => $c->uri_for_action('/edit/edit', [@args]),
                   diffing_uri => $c->uri_for_action('/edit/diff', [@args]),
+                  preview_uri => $c->uri_for_action('/edit/preview', [@args]),
                  );
     }
     else {
@@ -392,8 +393,9 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                                 cc => '',
                                 revision_is_new => $revision->is_new_text || 0,
                                 home => $c->uri_for('/'),
-                                resume_url => $c->uri_for_action('/edit/edit', [ @url_args ]),
-                                diff_url   => $c->uri_for_action('/edit/diff', [ @url_args ]),
+                                resume_url =>  $c->stash->{editing_uri},
+                                diff_url   =>  $c->stash->{diffing_uri},
+                                preview_url => $c->stash->{preview_uri},
                                 pending_url => $c->uri_for_action('/publish/pending'),
                                 attachments => \@file_urls,
                                 messages => $revision->message,
@@ -445,6 +447,24 @@ sub diff :Chained('get_revision') :PathPart('diff') :Args(0) {
     my ($self, $c) = @_;
     $c->stash->{page_title} =
       $c->loc('Changes for [_1]', $c->stash->{revision}->title->uri);
+}
+
+=head2 preview
+
+Path: /action/edit/<my-text>/<rev-id>/preview
+
+=cut
+
+sub preview :Chained('get_revision') :PathPart('preview') :Args(0) {
+    my ($self, $c) = @_;
+    if ($c->request->query_params->{bare}) {
+        $c->stash->{no_wrapper} = 1;
+    }
+}
+
+sub preview_attachment :Chained('get_revision') :PathPart('') Args(1) {
+    my ($self, $c, $attach) = @_;
+    $c->detach(attachments => [ $attach ]);
 }
 
 

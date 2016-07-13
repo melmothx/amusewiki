@@ -16,14 +16,46 @@
 </div>
 
 <div class="row">
-
-  [%- SET text = revision.document_html_headers -%]
-
   <div id="page" class="col-md-5 col-md-push-7"
        style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">[% loc('Preview') %]</h3>
+  </div>
+  <div class="panel-body amw-fixed-panel-edit">
+    <div id="amw-text-edit-preview-box">
+      <div class="center">
+        <img src="[% c.uri_for('/static/images/ajax-loader-circular.gif') %]" alt="Loading" />
+      </div>
+    </div>
+    <hr />
+    <div>
+      [% IF revision.has_local_modifications %]
+      <div class="center">
+        <button type="button" id="goto-diff" class="btn btn-default">
+          [% loc('Show differences in other tab') %]
+        </button>
+        <br />&nbsp;
+      </div>
+      [% END %]
+      <div>
+        <p>
+          [% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 [% SET attachments = revision.attached_images %]
 [% IF attachments.size %]
-<h3>[% loc('Attached images') %]</h3>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">[% loc('Attached images') %]</h3>
+  </div>
+  <div class="panel-body">
   <div class="alert alert-warning">
     <span class="glyphicon glyphicon-warning-sign"></span> [% loc('You
     have attached one or more images. This is not enough! To make them
@@ -41,7 +73,6 @@
     <li>[% loc('Place it in the body with a description:') %]<br>
       <code>[[[%- attach -%]][<em>[% loc ('My description') %]</em>]]</code>
     </li>
-    [% IF blog_style %]
     <li>[% loc('Use it as a teaser image adding to the header this line:') %]<br>
       <code>#cover [%- attach -%]</code>
     </li>
@@ -52,110 +83,41 @@
       on') %]<br>
       <code>#coverwidth 0.25</code>
     </li>
-    [% END %]
   </ul>
   [% END %]
-<p>
-  [% loc('Images not used in the text are stored, but will be ignored.') %]
-</p>
+  <p>
+    [% loc('Images not used in the text are stored, but will be ignored.') %]
+  </p>
+  </div>
+</div>
+
 [% END %]
 
 [% IF revision.attached_pdfs_string %]
-<h3>[% loc('Attached PDFs') %]</h3>
-<p>
-  [% loc('To display the PDFs, set or append the following string in the header') %]:
-</p>
-<blockquote>
-  <code>[% revision.attached_pdfs_string | html %]</code>
-</blockquote>
-<p>
-  [% loc('This directive wants a whitespace separated list of filenames.') %]<br/>
-  [% loc('PDFs not listed in the [_1] directive will be stored but ignored.',
-         '#ATTACH') %]<br />
-  [% loc('PDFs cannot be used in the body.') %]
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">[% loc('Attached PDFs') %]</h3>
+  </div>
+  <div class="panel-body">
+    <div class="alert alert-warning">
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      [% loc('To display the PDFs, set or append the following string in the header') %]:<br />
+      <code>[% revision.attached_pdfs_string | html %]</code>
+    </div>
+    <div>
+      [% loc('This directive wants a whitespace separated list of filenames.') %]<br/>
+      [% loc('PDFs not listed in the [_1] directive will be stored but ignored.',
+      '#ATTACH') %]<br />
+      [% loc('PDFs cannot be used in the body.') %]
+    </div>
+  </div>
+</div>
 [% END %]
 
 
-    <h2>
-      <small>[% loc('Preview') %]</small>
-      [% IF revision.has_local_modifications %]
-      <button type="button" id="goto-diff" class="btn btn-default">
-        [% loc('Show differences in other tab') %]
-      </button>
-      [% END %]
-    </h2>
-    <p>[% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]</p>
-    <div id="preamble-container" class="well">
-      <div id="preamble">
-        <p id="texttitle">
-          <strong>[% loc('Title') %]:</strong>
-          [% text.title %]
-        </p>
 
-        [% IF text.subtitle %]
-        <p id="textsubtitle">
-          <strong>[% loc('Subtitle') %]:</strong>
-          [% text.subtitle %]
-        </p>
-        [% END %]
 
-        [% IF (text.SORTauthors || text.author) %]
-        <p id="authors">
-          <strong>[% loc('Authors') %]:</strong>
-          [% text.SORTauthors || text.author %]
-        </p>
-        [% END %]
-
-        [% IF text.date %]
-        <p id="textdate">
-          <strong>[% loc('Date') %]:</strong>
-          [% text.date %]
-        </p>
-        [% END %]
-
-        [% IF text.SORTtopics %]
-        <p id="topics">
-          <strong>[% loc('Topics') %]:</strong>
-          [% text.SORTtopics %]
-        </p>
-        [% END %]
-
-        [% IF text.source %]
-        <p id="preamblesrc">
-          <strong>[% loc('Source') %]:</strong>
-          [% text.source %]
-        </p>
-        [% END %]
-
-        [% IF text.notes %]
-        <p id="preamblenotes">
-          <strong>[% loc('Notes') %]:</strong>
-          [% text.notes %]
-        </p>
-        [% END %]
-
-        [% IF text.teaser  %]
-        <p id="teaser-preview">
-          <strong>[% loc('Teaser') %]:</strong>
-          [% text.teaser %]
-        </p>
-        [% END %]
-        [% IF text.cover %]
-        <p id="text-preview-cover">
-          <strong>[% loc('Teaser image') %]:</strong><br>
-          <img src="[% text.cover %]" alt="[% text.cover %]" class="img-responsive img-thumbnail"/>
-        </p>
-        [% END %]
-
-      </div>
-    </div>
-
-    <div id="htmltextbody">
-      [% revision.muse_doc.as_html %]
-    </div>
   </div>
-
   <div class="col-md-7 col-md-pull-5">
 
 <div id="museform-container">
@@ -298,7 +260,7 @@
       <label for="rev-message">
         [% loc('Please describe shortly what you did') %]
       </label>
-      <textarea rows="5" cols="72" id="rev-message"
+      <textarea rows="2" cols="72" id="rev-message"
                 [% IF locked_editing %]readonly="readonly"[% END %]
                 name="message" class="form-control">
 [%- c.req.params.message | html -%]</textarea>
@@ -715,6 +677,7 @@ $(document).ready(function(){
     });
     [% END %]
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });
+    $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page");
 });
 </script>
 

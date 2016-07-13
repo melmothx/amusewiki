@@ -35,6 +35,8 @@ my $setting = $total - 1;
 $site->site_options->update_or_create({ option_name => 'latest_entries',
                                         option_value => $setting });
 
+# refetch the site
+$site = $schema->resultset('Site')->find('0blog0');
 @existing = $site->latest_entries;
 is scalar(@existing), $setting,
   "Now latest entries drop to $setting";
@@ -45,6 +47,9 @@ is scalar(@rss_existing), $total,
 
 $site->site_options->update_or_create({ option_name => 'latest_entries_for_rss',
                                         option_value => $setting });
+
+# refetch the site
+$site = $schema->resultset('Site')->find('0blog0');
 
 @rss_existing = $site->latest_entries_for_rss;
 is scalar(@rss_existing), $setting,

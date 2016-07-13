@@ -1708,7 +1708,22 @@ sub _build_is_without_topics {
     return !$self->categories->topics_count;
 }
 
+has options_hr => (
+                   is => 'ro',
+                   isa => 'HashRef[Str]',
+                   lazy => 1,
+                   builder => '_build_options_hr',
+                  );
 
+sub _build_options_hr {
+    my $self = shift;
+    my $options = $self->site_options;
+    my %opts;
+    while (my $option = $options->next) {
+        $opts{$option->option_name} = $option->option_value;
+    }
+    return \%opts;
+}
 
 
 =head1 SCANNING
@@ -2759,11 +2774,11 @@ sub pagination_needed {
 
 sub get_option {
     my ($self, $lookup) = @_;
-    if (my $setting = $self->site_options->find({ option_name => $lookup })) {
-        return $setting->option_value;
+    if ($lookup) {
+        return $self->options_hr->{$lookup};
     }
     else {
-        return;
+        return undef;
     }
 }
 
@@ -2787,7 +2802,13 @@ sub bottom_layout_html {
     return shift->get_option('bottom_layout_html') || '';
 }
 
+sub pagination_size {
+    return shift->get_option('pagination_size') || 10;
+}
 
+sub text_infobox_at_the_bottom {
+    return shift->get_option('text_infobox_at_the_bottom') || '';
+}
 
 sub use_luatex {
     my ($self) = @_;
@@ -2829,7 +2850,7 @@ sub mail_from_default {
 
 sub popular_titles {
     my ($self, $page) = @_;
-    return $self->title_stats->popular_texts($page);
+    return $self->title_stats->popular_texts($page, $self->pagination_size);
 }
 
 =head2 serialize_site

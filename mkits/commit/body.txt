@@ -16,6 +16,10 @@
 
 [% diff_url %]
 
+[% lh.loc('Preview') %]:
+
+[% preview_url %]
+
 [% lh.loc('To apply the changes, you can visit [_1]', pending_url) %]
 
 [% FOREACH attachment IN attachments %]

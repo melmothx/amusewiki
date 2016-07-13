@@ -67,6 +67,7 @@ sub year_display :Chained('year') :PathPart('') :Args(0) {}
 
 sub month :Chained('year') :PathPart('') :Args(1) {
     my ($self, $c, $month) = @_;
+    my $site = $c->stash->{site};
     unless ($month and $month =~ m/\A[0-9]+\z/) {
         $c->detach('/not_found');
         return;
@@ -80,7 +81,7 @@ sub month :Chained('year') :PathPart('') :Args(1) {
         ->search(undef, {
                          order_by => { -desc => 'pubdate' },
                          page => $page,
-                         rows => 10,
+                         rows => $site->pagination_size,
                         });
         my $pager = $texts->pager;
         my @uri_args = ($arch->year, $arch->month);

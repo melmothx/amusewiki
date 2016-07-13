@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 154;
+use Test::More tests => 175;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -25,12 +25,15 @@ $site->update({
                multilanguage => 'en it hr de',
               });
 
+$site->site_options->create({ option_name => 'text_infobox_at_the_bottom',
+                              option_value => 1 });
+
 my ($revision) = $site
   ->create_new_text({
                      title => 'My new blog post!',
                      uri => 'my-test',
                      lang => 'en',
-                     textbody => '<p>hello there</p>',
+                     textbody => '<h3>1</h3><p>hello there</p><h3>2</h3><h3>3</h3>',
                      teaser => '<p>this</p><p>is =the= <em>teaser</em></p>',
                      notes => '<b>notes</b>',
                     }, 'text');
@@ -78,6 +81,7 @@ $text->discard_changes;
 is $text->cover, $attached, "cover field restored";
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               agent => 'Mozilla/5.0 (X11; Linux x86_64; rv:38.0) Gecko/20100101 Firefox/38.0 Iceweasel/38.8.0',
                                                host => $site->canonical);
 
 $mech->get_ok('/opds/new');
@@ -164,8 +168,17 @@ add_text({
           author => 'Pippo',
           lang => 'en',
           textbody => '<p>hello there</p>',
-          pubdate => "2011-01-01",
+          pubdate => "2011-01-01 14:00",
          }, text => 1);
+
+add_text({
+          title => 'Baf!',
+          author => 'Pippo',
+          lang => 'en',
+          textbody => '<p>hello there</p>',
+          pubdate => "2011-01-01 14:00",
+         }, text => 1);
+
 
 $mech->get_ok('/');
 
@@ -177,10 +190,56 @@ $mech->content_contains('/latest/2');
 $mech->get_ok('/latest/2');
 $mech->content_contains('A second entry');
 
+# check the pagination
+{
+    foreach my $text ($site->titles->published_texts->all) {
+        $mech->post('/stats/register' => {
+                                          id => $text->id,
+                                          type => "download",
+                                         });
+    }
+    sleep 1;
+    $mech->get('/stats/popular');
+    $mech->content_contains('class="pagination"');
+    $mech->content_contains('/stats/popular/2');
+
+    my $opt = $site->site_options->find_or_create({ option_name => 'pagination_size' });
+    $opt->update({ option_value => 25 });
+
+    $mech->get_ok('/latest');
+    $mech->content_lacks('class="pagination"');
+    $mech->content_lacks('/latest/2');
+
+
+    $mech->get_ok('/stats/popular');
+    $mech->content_lacks('class="pagination"');
+    $mech->content_lacks('/stats/popular/2');
+
+    $opt->update({ option_value => 1 });
+
+    $mech->get_ok('/category/author/pippo');
+    $mech->content_contains('class="pagination"');
+    $mech->content_contains('/category/author/pippo?page=2');
+
+    $mech->get_ok('/monthly/2011/1');
+    $mech->content_contains('class="pagination"');
+    $mech->content_contains('/monthly/2011/1?page=2');
+
+    $opt->update({ option_value => 10 });
+
+    $mech->get_ok('/category/author/pippo');
+    $mech->content_lacks('class="pagination"');
+    $mech->content_lacks('/category/author/pippo?page=2');
+
+    $mech->get_ok('/monthly/2011/1');
+    $mech->content_lacks('class="pagination"');
+    $mech->content_lacks('/monthly/2011/1?page=2');
+}
+
 $site->update({
                pdf => 1,
               });
-
+$mech->get_ok('/');
 $mech->content_contains('amw-main-layout-column');
 
 my %snippets = (

@@ -35,11 +35,12 @@ sub index :Chained('base') :PathPart('') :Args {
     unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
         $page = 1;
     }
+    my $site = $c->stash->{site};
     my $results = $c->stash->{texts_rs}->search(undef,
                                                 {
                                                  order_by => { -desc => 'pubdate' },
                                                  page => $page,
-                                                 rows => 10,
+                                                 rows => $site->pagination_size,
                                                 });
     my $pager = $results->pager;
     my $format_link = sub {

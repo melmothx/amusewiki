@@ -22,9 +22,12 @@ use AmuseWikiFarm::Log::Contextual;
 =cut
 
 sub popular_texts {
-    my ($self, $page) = @_;
+    my ($self, $page, $items) = @_;
     unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
         $page = 1;
+    }
+    unless ($items and $items =~ m/\A[1-9][0-9]*\z/) {
+        $items = 10;
     }
     my $me = $self->current_source_alias;
     my $dtf = $self->result_source->schema->storage->datetime_parser;
@@ -48,7 +51,7 @@ sub popular_texts {
                                        { -asc => 'title.sorting_pos' },
                                       ],
                           page => $page,
-                          rows => 10,
+                          rows => $items,
                          });
 }
 
