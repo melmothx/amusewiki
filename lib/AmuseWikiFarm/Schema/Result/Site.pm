@@ -2802,6 +2802,9 @@ sub bottom_layout_html {
     return shift->get_option('bottom_layout_html') || '';
 }
 
+sub pagination_size {
+    return shift->get_option('pagination_size') || 10;
+}
 
 
 sub use_luatex {
@@ -2844,7 +2847,7 @@ sub mail_from_default {
 
 sub popular_titles {
     my ($self, $page) = @_;
-    return $self->title_stats->popular_texts($page);
+    return $self->title_stats->popular_texts($page, $self->pagination_size);
 }
 
 =head2 serialize_site

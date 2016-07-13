@@ -126,6 +126,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     my $canonical = muse_naming_algo($uri);
     my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
+    my $site = $c->stash->{site};
     if ($cat) {
         if ($cat->uri ne $uri) {
             $c->response->redirect($c->uri_for($cat->full_uri));
@@ -136,7 +137,9 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
         unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
             $page = 1;
         }
-        my $texts = $cat->titles->published_texts->search(undef, { rows => 10, page => $page });
+        my $texts = $cat->titles->published_texts
+          ->search(undef, { rows => $site->pagination_size,
+                            page => $page });
         # if it's a blog, the alphabetica entry is not so important,
         # and we give precedence to latest first.
         if ($c->stash->{blog_style}) {
@@ -168,7 +171,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
                                                             ]),
                          cat_lang_name => $c->stash->{current_locale_name},
                          default_lang_code => $current_locale,
-                         active => $c->stash->{site}->multilanguage ? 1 : 0,
+                         active => $site->multilanguage ? 1 : 0,
                         };
         $c->stash(multilang => $multi);
 
