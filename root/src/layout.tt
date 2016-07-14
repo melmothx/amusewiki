@@ -258,6 +258,11 @@
                     [% loc('Add a new text') %]
                   </a>
                 </li>
+                <li id="amw-irc-channel-menu-entry">
+                  <a href="[% c.uri_for_action('/help/irc') %]">
+                    [% loc('Real time help') %]
+                  </a>
+                </li>
                 [% END %]
               </ul>
             </li>
@@ -433,11 +438,6 @@
                 <li>
                   <a href="[% c.uri_for_action('/help/faq') %]">
                     [% loc("Maintainer's FAQ") %]
-                  </a>
-                </li>
-                <li>
-                  <a href="[% c.uri_for_action('/help/irc') %]">
-                    [% loc('Real time help') %]
                   </a>
                 </li>
                 <li>

@@ -2458,6 +2458,7 @@ sub update_from_params {
                            bottom_layout_html
                            do_not_enforce_commit_message
                            text_infobox_at_the_bottom
+                           freenode_irc_channel
                            use_js_highlight
                           /) {
         my $value = delete $params->{$option} || '';
@@ -2743,6 +2744,10 @@ sub latest_entries_for_rss {
 
 sub paginate_archive_after {
     return shift->get_option('paginate_archive_after') || 25;
+}
+
+sub freenode_irc_channel {
+    return shift->get_option('freenode_irc_channel') || '#amusewiki';
 }
 
 sub pagination_needed {

@@ -444,7 +444,18 @@ kpsewhich mylogo.pdf
         </div>
     </div>
     <div class="form-group">
-      <label for="latest_entries" class="col-sm-3 control-label">
+      <label for="freenode_irc_channel" class="col-sm-3 control-label">
+        [% loc('IRC channel on freenode') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="freenode_irc_channel" id="freenode_irc_channel"
+               class="form-control"
+               value="[% esite.freenode_irc_channel | html %]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pagination_size" class="col-sm-3 control-label">
         [% loc('Number of results to show on paginated pages (an integer)') %]
       </label>
       <div class="col-sm-9">
