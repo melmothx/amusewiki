@@ -32,7 +32,9 @@ sub root :Chained('/site_user_required') :PathPart('admin') :CaptureArgs(0) {
     my ($self, $c) = @_;
     unless ($c->user_exists && $c->check_user_roles('root')) {
         $c->detach('/not_permitted');
+        return;
     }
+    $c->stash(full_page_no_side_columns => 1);
 }
 
 sub debug_site_id :Chained('root') :Args(0) {

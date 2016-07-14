@@ -55,20 +55,22 @@ before process => sub {
         # layout adjustments
         my $theme = $site->bootstrap_theme;
         my $columns = 12;
-        my $left_column = $site->left_layout_html;
-        my $right_column = $site->right_layout_html;
-        if ($left_column || $right_column) {
-            my $wide = 4;
-            # enlarge the column if we have only one sidebar
-            if ($left_column && $right_column) {
-                $wide = 2;
+        unless ($c->stash->{full_page_no_side_columns}) {
+            my $left_column = $site->left_layout_html;
+            my $right_column = $site->right_layout_html;
+            if ($left_column || $right_column) {
+                my $wide = 4;
+                # enlarge the column if we have only one sidebar
+                if ($left_column && $right_column) {
+                    $wide = 2;
+                }
+                $c->stash(left_layout_html => $left_column,
+                          right_layout_html => $right_column,
+                          left_layout_cols => ($left_column ? $wide : 0),
+                          right_layout_cols => ($right_column ? $wide : 0),
+                         );
+                $columns = 8;
             }
-            $c->stash(left_layout_html => $left_column,
-                      right_layout_html => $right_column,
-                      left_layout_cols => ($left_column ? $wide : 0),
-                      right_layout_cols => ($right_column ? $wide : 0),
-                     );
-            $columns = 8;
         }
         $c->stash(
                   bootstrap_css => "/static/css/bootstrap.$theme.css",

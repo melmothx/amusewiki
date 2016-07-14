@@ -75,6 +75,7 @@ sub root :Chained('/site') :PathPart('action') :CaptureArgs(1) {
             $c->detach();
         }
     }
+    $c->stash(full_page_no_side_columns => 1);
 }
 
 sub newtext :Chained('root') :PathPart('new') :Args(0) {

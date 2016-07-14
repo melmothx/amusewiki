@@ -52,6 +52,7 @@ sub root :Chained('/site') :PathPart('bookbuilder') :CaptureArgs(0) {
     # initialize the BookBuilder object. It will pick up the session
     my $bb = $c->model('BookBuilder');
     $c->stash(bb => $bb);
+    $c->stash(full_page_no_side_columns => 1);
 }
 
 sub index :Chained('root') :PathPart('') :Args(0) {

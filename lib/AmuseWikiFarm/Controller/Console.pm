@@ -45,7 +45,9 @@ sub root :Chained('/site') :PathPart('console') :CaptureArgs(0) {
     else {
         $c->response->redirect($c->uri_for('/login', { goto => $c->req->path }));
         $c->detach();
+        return;
     }
+    $c->stash(full_page_no_side_columns => 1);
 }
 
 sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {

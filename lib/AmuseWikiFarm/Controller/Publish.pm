@@ -58,6 +58,7 @@ sub root :Chained('/site') :PathPart('publish') :CaptureArgs(0) {
                  prefetch => [qw/title/],
                });
     $c->stash(revisions => $revs);
+    $c->stash(full_page_no_side_columns => 1);
     log_debug { "Found " . $revs->count  . " Revisions" };
 }
 
