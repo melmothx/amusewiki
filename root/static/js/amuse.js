@@ -20,16 +20,12 @@ $(document).ready(function(){
 $(document).ready(function() {
     $(".footnotebody").click(function() {
         var source = $(this).attr('id');
-        console.log(source);
         var target = source.replace(/fn/, '#fn_back');
-        console.log(target);
         $(target).effect("highlight", {}, 10000);
     });
     $(".footnote").click(function() {
         var source = $(this).attr('id');
-        console.log(source);
         var target = source.replace(/fn_back/, '#fn');
-        console.log(target);
         $(target).effect("highlight", {}, 10000);
     });
 });
