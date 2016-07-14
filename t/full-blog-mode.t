@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 193;
+use Test::More tests => 192;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -439,7 +439,6 @@ MUSE
     $mech->get_ok($extimg_uri);
     my $script = '/static/js/amw-extimg.js';
     $mech->content_lacks($script);
-    $mech->get_ok($script);
     $site->add_to_site_options({ option_name => "turn_links_to_images_into_images",
                                  option_value => "on" });
     $mech->get_ok($extimg_uri);
