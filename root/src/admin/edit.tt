@@ -273,6 +273,14 @@ kpsewhich mylogo.pdf
             [% loc('Show the text infobox at the bottom of the texts') %]
           </label>
         </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.turn_links_to_images_into_images %]checked="checked"[% END %]
+                   name="turn_links_to_images_into_images" />
+            [% loc('Turn links to images into images') %]
+          </label>
+        </div>
     </div>
 
     <div class="form-group">

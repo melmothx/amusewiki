@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 188;
+use Test::More tests => 193;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -407,7 +407,44 @@ for (1..2) {
     ok ($archive->titles->count, "Found the archives");
 }
 
-
+{
+    my $body = <<'MUSE';
+<p>
+ <a href="https://amusewiki.org/static/images/ajax-loader-circular.gif">gif secure</a>
+</p>
+<p>
+ <a href="http://amusewiki.org/static/images/ajax-loader-circular.gif">gif</a>
+</p>
+<p>
+ <a href="https://amusewiki.org/sitefiles/amw/navlogo.png">png secure</a>
+</p>
+<p>
+ <a href="http://amusewiki.org/sitefiles/amw/navlogo.png">png</a>
+</p>
+<p>
+ <a href="https://amusewiki.org">site</a>
+</p>
+<p>
+ <a href="https://amusewiki.org/sitefiles/amw/navlogo.jpg">jpg secure</a>
+</p>
+<p>
+ <a href="http://amusewiki.org/sitefiles/amw/navlogo.jpg">jpg secure</a>
+</p>
+MUSE
+    my $extimg_uri = add_text({
+                               title => "External images",
+                               lang => "en",
+                               textbody => $body,
+                              }, text => 1);
+    $mech->get_ok($extimg_uri);
+    my $script = '/static/js/amw-extimg.js';
+    $mech->content_lacks($script);
+    $mech->get_ok($script);
+    $site->add_to_site_options({ option_name => "turn_links_to_images_into_images",
+                                 option_value => "on" });
+    $mech->get_ok($extimg_uri);
+    $mech->content_contains($script);
+}
 
 sub add_text {
     my ($args, $type, $no_cover) = @_;

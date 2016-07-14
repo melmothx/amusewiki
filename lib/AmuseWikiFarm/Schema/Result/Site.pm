@@ -2459,6 +2459,7 @@ sub update_from_params {
                            do_not_enforce_commit_message
                            text_infobox_at_the_bottom
                            freenode_irc_channel
+                           turn_links_to_images_into_images
                            use_js_highlight
                           /) {
         my $value = delete $params->{$option} || '';
@@ -2748,6 +2749,10 @@ sub paginate_archive_after {
 
 sub freenode_irc_channel {
     return shift->get_option('freenode_irc_channel') || '#amusewiki';
+}
+
+sub turn_links_to_images_into_images {
+    return shift->get_option('turn_links_to_images_into_images') || '';
 }
 
 sub pagination_needed {
