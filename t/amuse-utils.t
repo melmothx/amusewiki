@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 82;
+use Test::More tests => 91;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -13,6 +13,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_naming_algo
                                    muse_attachment_basename_for
                                    clean_username
+                                   amw_meta_stripper
                                   /;
 
 is_deeply(muse_get_full_path("cacca"), [ "c", "ca", "cacca" ]);
@@ -151,3 +152,13 @@ is (clean_username(("a" x 20) . ("b" x 20)), "a" x 20,
     "username truncated at 20 chars");
 is (clean_username(("a!" x 20) . ("b" x 20)), "a" x 20,
     "username truncated at 20 chars");
+is (amw_meta_stripper(), '');
+is (amw_meta_stripper('<em>My title</em>'), "My title");
+is (amw_meta_stripper(' <em>My title</em> '), "My title");
+is (amw_meta_stripper('<em>My title> >>"<'), "My title");
+is (amw_meta_stripper('"<em>My title> >>"<'), "My title");
+is (amw_meta_stripper('\'<em>My title> >>"<\''), "'My title '");
+is (amw_meta_stripper('12345 678 ' x 16), ('12345 678 ' x 15) . '12345...');
+is (amw_meta_stripper('12345 678 ' x 15), ('12345 678 ' x 14) . '12345 678');
+is (amw_meta_stripper(('12345 678 ' x 15) . 'lkajsdalksdjflkakasdklf'),
+    ('12345 678 ' x 14) . '12345 678...');

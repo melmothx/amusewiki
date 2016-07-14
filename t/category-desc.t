@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 142;
+use Test::More tests => 145;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -194,6 +194,7 @@ $site->update({ multilanguage => '' });
 
 $mech->get_ok('/category/author/pippo');
 $mech->content_contains('Pippo <em>is</em> a nice author');
+$mech->content_contains('<meta name="description" content="Pippo is a nice author"');
 $mech->content_unlike(qr{<a href=.*?/category/author/pippo">\s*Tutte le lingue});
 $mech->content_unlike(qr{<a href=.*?/category/author/pippo/en">\s*English});
 $mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
@@ -203,6 +204,7 @@ is $mech->uri->path, '/category/author/pippo/en/edit', "Default edit goes into l
 
 $mech->get_ok('/category/author/pippo/en');
 $mech->content_contains('Pippo <em>is</em> a nice author');
+$mech->content_contains('<meta name="description" content="Pippo is a nice author"');
 $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo">\s*All languages});
 $mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
 $mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
@@ -210,6 +212,8 @@ $mech->content_lacks('No text found!');
 
 $mech->get_ok('/category/author/pippo/it');
 $mech->content_lacks('Pippo <em>is</em> a nice author');
+# here we inherited the english desc
+$mech->content_contains('<meta name="description" content="Pippo is a nice author"');
 $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo">\s*All languages});
 $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
 $mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo/it">\s*Italiano});

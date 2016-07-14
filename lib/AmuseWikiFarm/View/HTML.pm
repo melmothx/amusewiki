@@ -6,6 +6,7 @@ extends 'Catalyst::View::TT';
 
 use AmuseWikiFarm::Log::Contextual;
 use Template::Filters;
+use AmuseWikiFarm::Utils::Amuse qw/amw_meta_stripper/;
 
 $Template::Filters::FILTERS->{escape_js} = \&escape_js_string;
 
@@ -71,6 +72,9 @@ before process => sub {
                          );
                 $columns = 8;
             }
+        }
+        if (my $meta_desc = $c->stash->{meta_description}) {
+            $c->stash(meta_description => amw_meta_stripper($meta_desc));
         }
         $c->stash(
                   bootstrap_css => "/static/css/bootstrap.$theme.css",

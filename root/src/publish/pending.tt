@@ -7,7 +7,7 @@
 [%- # loc('published')  -%]
 
 [% IF revisions.size %]
-<h3>[% page_title %]</h3>
+<h3>[% page_title | html %]</h3>
 
 <div class="table-responsive">
   <table class="table table-striped table-condensed table-bordered">

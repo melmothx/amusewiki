@@ -25,6 +25,7 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_filepath_is_valid
                     clean_username
                     clean_html
+                    amw_meta_stripper
                     cover_filename_is_valid
                     muse_filename_is_valid/;
 
@@ -847,5 +848,28 @@ sub clean_html {
     $string =~ s/<.+?>//g;
     return decode_entities($string);
 }
+
+sub amw_meta_stripper {
+    my ($string) = @_;
+    my $meta_desc = clean_html($string);
+    # strip the tags
+    # strip quotes and <>
+    $meta_desc =~ s/[<>"]//g;
+    # inline
+    $meta_desc =~ s/\s+/ /g;
+    $meta_desc =~ s/\A\s+//g;
+    $meta_desc =~ s/\s+\z//g;
+    # cut at 160
+    if (length($meta_desc) > 157) {
+        $meta_desc = substr($meta_desc, 0, 157);
+        # cut at the last space
+        $meta_desc =~ s/\s+\S*\z//s;
+        if ($meta_desc) {
+            $meta_desc .= '...';
+        }
+    }
+    return $meta_desc;
+}
+
 
 1;

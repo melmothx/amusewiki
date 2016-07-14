@@ -129,6 +129,20 @@ sub text :Chained('match') :PathPart('') :Args(0) {
             $c->stash(text_prev_uri => $prev_text->full_uri);
         }
     }
+    my $meta_desc = '';
+    if (my $teaser = $text->teaser) {
+        $meta_desc = $teaser;
+    }
+    else {
+      TEXTFIELD:
+        foreach my $method (qw/author title subtitle date notes/) {
+            if (my $info = $text->$method) {
+                $meta_desc .= $info . " ";
+            }
+            last TEXTFIELD if length($meta_desc) > 160;
+        }
+    }
+    $c->stash(meta_description => $meta_desc);
 }
 
 sub edit :Chained('match') PathPart('edit') :Args(0) {

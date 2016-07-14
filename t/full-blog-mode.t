@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 175;
+use Test::More tests => 188;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -142,6 +142,7 @@ $mech->content_lacks('class="pagination"');
     $mech->content_lacks("hello there about body");
     $mech->get_ok('/');
     $mech->get_ok($new_uri);
+    $mech->content_contains('<meta name="description" content="ABOUT TEASER"');
     $mech->content_lacks('chevron');
 }
 
@@ -161,15 +162,22 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
     $mech->content_contains("Teaser $num.");
     $mech->get_ok($new_uri);
     $mech->content_contains('chevron');
+    $mech->content_contains(qq{<meta name="description" content="Teaser $num.});
 }
 
-add_text({
-          title => 'No teaser, no cover',
-          author => 'Pippo',
-          lang => 'en',
-          textbody => '<p>hello there</p>',
-          pubdate => "2011-01-01 14:00",
-         }, text => 1);
+{
+    my $new_uri = add_text({
+                            title => 'No teaser, no cover',
+                            author => 'Pippo',
+                            lang => 'en',
+                            date => '1940',
+                            textbody => '<p>hello there</p>',
+                            pubdate => "2011-01-01 14:00",
+                            notes => 'Some *notes*',
+                           }, text => 1);
+    $mech->get_ok($new_uri);
+    $mech->content_contains(qq{<meta name="description" content="Pippo No teaser, no cover 1940 Some notes "});
+}
 
 add_text({
           title => 'Baf!',

@@ -158,6 +158,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
                   texts => $texts,
                   category_canonical_name => $canonical,
                   category_description => $category_description,
+                  meta_description => ( $category_description ? $category_description->html_body : $page_title),
                   category => $cat);
         # Prepare the links for multisite, if needed
         my $multi = {
@@ -222,6 +223,10 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
                   category_language => $lang,
                   category_description => $category_description,
                  );
+
+        if ($category_description) {
+            $c->stash(meta_description => $category_description->html_body);
+        }
         $c->stash->{multilang}->{filtered} = $category_lang;
         $c->stash->{multilang}->{code} = $lang;
         $c->stash->{multilang}->{active} = 1;
