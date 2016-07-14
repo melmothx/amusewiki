@@ -278,7 +278,7 @@ kpsewhich mylogo.pdf
             <input type="checkbox"
                    [% IF esite.turn_links_to_images_into_images %]checked="checked"[% END %]
                    name="turn_links_to_images_into_images" />
-            [% loc('Turn links to images into images') %]
+            [% loc('Turn links to images into images (affects site display only, static formats have the link)') %]
           </label>
         </div>
     </div>
