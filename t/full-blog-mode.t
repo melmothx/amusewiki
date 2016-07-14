@@ -176,7 +176,7 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
                             notes => 'Some *notes*',
                            }, text => 1);
     $mech->get_ok($new_uri);
-    $mech->content_contains(qq{<meta name="description" content="Pippo No teaser, no cover 1940 Some notes "});
+    $mech->content_contains(qq{<meta name="description" content="Pippo No teaser, no cover 1940 Some notes"});
 }
 
 add_text({
