@@ -56,7 +56,14 @@ Locale name
 
 =cut
 
-sub site_no_auth :Chained('/') :PathPart('') :CaptureArgs(0) {
+sub check_unicode_errors :Chained('/') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    if ($c->stash->{BAD_UNICODE_DATA}) {
+        $c->detach('/bad_request');
+    }
+}
+
+sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     log_debug { $c->request->uri->as_string };
 
@@ -219,6 +226,13 @@ sub site_user_required :Chained('site') :PathPart('') :CaptureArgs(0) {
                                            { goto => $c->req->path }));
         $c->detach();
     }
+}
+
+sub bad_request :Private {
+    my ($self, $c) = @_;
+    $c->response->content_type('text/plain');
+    $c->response->body('Bad Unicode data');
+    $c->response->status(400);
 }
 
 sub not_found :Private {
