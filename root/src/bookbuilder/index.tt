@@ -835,6 +835,88 @@ $(document).ready(function(){
 </script>
 [% END %]
 </div>
+
+
+[% IF c.user_exists %]
+<div id="bb-profiles">
+  [% IF bb_profiles %]
+  <div class="table-responsive">
+    <table id="bb-profiles-table" class="table table-striped
+                                         table-condensed
+                                         table-bordered">
+      <tr>
+        <th class="text-center">[% loc('Name') %]</th>
+        <th class="text-center">[% loc('Load') %]</th>
+        <th class="text-center">[% loc('Rename to') %]</th>
+        <th class="text-center">[% loc('Update to current settings') %]</th>
+        <th class="text-center">[% loc('Delete') %]</th>
+      </tr>
+      [% FOREACH profile IN bb_profiles %]
+      <tr>
+        <form action="[% c.uri_for_action('/bookbuilder/profile', [profile.id]) %]"
+              method="POST">
+          <td class="text-center">
+            [% profile.name | html %]
+          </td>
+          <td class="text-center">
+            <button type="submit" name="profile_load" value="profile_load"
+                    class="btn btn-default">
+              <span class="glyphicon glyphicon-floppy-open"></span>
+            </button>
+          </td>
+          <td class="text-center">
+            <div class="input-group">
+              <input type="text" name="profile_name" class="form-control"/>
+              <span class="input-group-btn">
+                <button type="submit" name="profile_rename" value="profile_rename"
+                        class="btn btn-default">
+                  <span class="glyphicon glyphicon-floppy-save"></span>
+                </button>
+              </span>
+            </div>
+          </td>
+          <td class="text-center">
+            <button type="submit" name="profile_update" value="profile_update"
+                    class="btn btn-default">
+              <span class="glyphicon glyphicon-floppy-save"></span>
+            </button>
+          </td>
+          <td class="text-center">
+            <button type="submit" name="profile_delete" value="profile_delete"
+                    class="btn btn-default">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </td>
+        </form>
+      </tr>
+      [% END %]
+    </table>
+  </div>
+  [% END %]
+  <div>
+    <form action="[% c.uri_for_action('/bookbuilder/create_profile') %]" method="POST">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="input-group">
+            <input type="text" class="form-control"
+                   name="profile_name"
+                   placeholder="[% loc('Save the current settings with a name') %]" />
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit" name="create_profile" value="1">
+                <span class="glyphicon glyphicon-floppy-save"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div>
+  <hr />
+</div>
+[% END %]
+
 <script type="text/javascript" src="[% c.uri_for('/static/js/bookbuilder.js') %]"></script>
 [% ELSE %]
 

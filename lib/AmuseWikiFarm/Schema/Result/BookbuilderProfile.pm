@@ -128,6 +128,19 @@ sub bookbuilder_arguments {
     };
 }
 
+sub update_profile_from_bb {
+    my ($self, $bb) = @_;
+    my $data = $bb->serialize_profile;
+    $self->update({ profile_data => $serializer->encode($data) });
+}
+
+sub rename_profile {
+    my ($self, $name) = @_;
+    if (defined($name)) {
+        $self->update({ profile_name => $name . ''});
+    }
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;

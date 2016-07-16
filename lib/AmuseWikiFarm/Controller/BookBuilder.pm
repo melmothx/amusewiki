@@ -7,6 +7,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
 use URI;
+use Try::Tiny;
 
 =head1 NAME
 
@@ -52,6 +53,20 @@ sub root :Chained('/site') :PathPart('bookbuilder') :CaptureArgs(0) {
     # initialize the BookBuilder object. It will pick up the session
     my $bb = $c->model('BookBuilder');
     $c->stash(bb => $bb);
+    if ($c->user_exists) {
+        if (my $user = $c->user->get_object) {
+            $c->stash(user_object => $user);
+            my $profiles = $user->bookbuilder_profiles->search(undef);
+            my @bbprofiles;
+            while (my $profile = $profiles->next) {
+                push @bbprofiles, { name => $profile->profile_name,
+                                    id => $profile->bookbuilder_profile_id };
+            }
+            if (@bbprofiles) {
+                $c->stash(bb_profiles => \@bbprofiles);
+            }
+        }
+    }
     $c->stash(full_page_no_side_columns => 1);
 }
 
@@ -190,6 +205,59 @@ sub cover :Chained('root') :Args(0) {
     else {
         $c->detach('/not_found');
     }
+}
+
+sub profile :Chained('root') :Args(1) {
+    my ($self, $c, $profile_id) = @_;
+    my $redirect = $c->uri_for_action('/bookbuilder/index');
+    my $bbprofile_sec = $c->uri_for_action('/bookbuilder/index'). '#bb-profiles';
+    if (my $user = $c->stash->{user_object}) {
+        if ($profile_id =~ m/\A[0-9]+\z/) {
+            if (my $profile = $user->bookbuilder_profiles->find($profile_id)) {
+                log_info { "Found $profile_id" };
+                my $params = $c->request->body_parameters;
+                if ($params->{profile_delete}) {
+                    log_info { "Deleting $profile_id" };
+                    $profile->delete;
+                    $c->response->redirect($bbprofile_sec);
+                    return;
+                }
+                if (length($params->{profile_name})) {
+                    $profile->rename_profile($params->{profile_name});
+                    $redirect = $bbprofile_sec;
+                }
+                my $pname = $profile->profile_name;
+                if ($params->{profile_update}) {
+                    $profile->update_profile_from_bb($c->stash->{bb});
+                    $c->flash(status_msg => $c->loc("Saved [_1] configuration",
+                                                    $pname));
+                }
+                if ($params->{profile_load}) {
+                    my $existing = $c->stash->{bb}->serialize;
+                    my $new = $profile->bookbuilder_arguments;
+                    $c->session->{bookbuilder} = { %$existing, %$new };
+                    $c->flash(status_msg => $c->loc("Loaded [_1] configuration", $pname));
+                }
+            }
+        }
+    }
+    $c->response->redirect($redirect);
+}
+
+sub create_profile :Chained('root') :Args(0) :PathPart('create-profile') {
+    my ($self, $c, $profile_id) = @_;
+    if (my $user = $c->stash->{user_object}) {
+        if ($c->request->body_parameters->{create_profile}) {
+            try {
+                $user->add_bb_profile($c->request->body_parameters->{profile_name},
+                                      $c->stash->{bb});
+            } catch {
+                my $error = $_;
+                log_error { "Failed to create profile: $error" };
+            };
+        }
+    }
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index') . '#bb-profiles');
 }
 
 sub fonts :Chained('root') :PathPart('fonts') :Args(0) {

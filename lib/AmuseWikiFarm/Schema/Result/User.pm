@@ -324,9 +324,19 @@ sub add_bb_profile {
     my ($self, $name, $bb) = @_;
     my $profile = $bb->serialize_profile;
     return $self->add_to_bookbuilder_profiles({
-                                               profile_name => $name || 'No name',
+                                               profile_name => ($name || 'No name') . '',
                                                profile_data => $serializer->encode($profile),
                                               });
+}
+
+sub update_bb_profile {
+    my ($self, $id, $bb) = @_;
+    if (my $profile = $self->bookbuilder_profiles->find($id)) {
+        my $data = $bb->serialize_profile;
+        $profile->update({ profile_data => $data });
+        return $profile;
+    }
+    return;
 }
 
 __PACKAGE__->meta->make_immutable;
