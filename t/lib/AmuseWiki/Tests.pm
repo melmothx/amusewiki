@@ -55,7 +55,6 @@ sub check_jobber_result {
     my ($task_id) = $task_path =~ m{^/tasks/status/(.*)};
     die unless $task_id;
     my $success;
-    print "Waiting for the job to complete\n";
     for (1..30) {
         $mech->get("/tasks/status/$task_id/ajax");
         my $ajax = decode_json($mech->response->content);
@@ -64,10 +63,9 @@ sub check_jobber_result {
             last;
         }
         elsif ($ajax->{status} eq 'failed') {
-            print $ajax->{errors};
+            die $ajax->{errors};
             return;
         }
-        print "Nothing yet...$ajax->{status}\n";
         sleep 1;
     }
     return $success;
