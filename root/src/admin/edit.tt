@@ -154,7 +154,9 @@
 
     <div class="form-group">
       <label for="ttdir" class="col-sm-6 control-label">
-        [% loc('Directory with templates. Do not set it unless you know what you are doing') %]
+        [% loc('Directory with templates in the site repositoy, e.g.
+        "templates" (ASCII only). Do not set it unless you know
+        exactly what you are doing') %]
       </label>
       <div class="col-sm-6">
         <input type="text"  name="ttdir" id="ttdir"
