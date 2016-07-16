@@ -37,7 +37,7 @@ sub opds :Chained('root') :Args(0) {
 
 sub faq :Chained('root') :Args(0) {
     my ($self, $c) = @_;
-    $c->stash(page_title => $c->loc("Maintainer's faq"));
+    $c->stash(page_title => $c->loc("Maintainer's FAQ"));
 }
 
 sub irc :Chained('root') :Args(0) {
