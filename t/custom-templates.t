@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 35;
+use Test::More tests => 41;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -92,24 +92,37 @@ for my $use_ttdir (0..1) {
 }
     
 # now let's try the bookbuilder
-foreach my $fmt (qw/pdf epub/) {
-    $mech->get_ok('/bookbuilder');
-    $mech->submit_form(with_fields => {
-                                       title => 'x',
-                                       format => $fmt,
-                                      },
-                       button => 'build');
-    my $res = check_jobber_result($mech);
-    diag Dumper($res);
-    if ($fmt eq 'epub') {
-        $mech->get_ok($res->{produced_uri});
-        my $css = get_epub_css_from_url($mech);
-        like $css, qr{This is a custom template};
-    }
-    elsif ($fmt eq 'pdf') {
-        $mech->get_ok($res->{sources});
-        my $tex = get_tex_from_sources($mech);
-        like $tex, qr{\% this is a custom template};
+for my $use_ttdir (0..1) {
+    $site->update({ ttdir => ($use_ttdir ? "custom-templates" : '') });
+    foreach my $fmt (qw/pdf epub/) {
+        $mech->get_ok('/bookbuilder');
+        $mech->submit_form(with_fields => {
+                                           title => 'x',
+                                           format => $fmt,
+                                          },
+                           button => 'build');
+        my $res = check_jobber_result($mech);
+        diag Dumper($res);
+        if ($fmt eq 'epub') {
+            $mech->get_ok($res->{produced_uri});
+            my $css = get_epub_css_from_url($mech);
+            if ($use_ttdir) {
+                like $css, qr{This is a custom template}, "Found CSS with custom string";
+            }
+            else {
+                unlike $css, qr{This is a custom template}, "Found vanilla CSS";
+            }
+        }
+        elsif ($fmt eq 'pdf') {
+            $mech->get_ok($res->{sources});
+            my $tex = get_tex_from_sources($mech);
+            if ($use_ttdir) {
+                like $tex, qr{\% this is a custom template}, "Found TeX with custom string";
+            }
+            else {
+                unlike $tex, qr{\% this is a custom template}, "Found vanilla";
+            }
+        }
     }
 }
 
