@@ -1,0 +1,307 @@
+\documentclass[DIV=[% safe_options.division %],%
+               BCOR=[% safe_options.bcor %],%
+               headinclude=[% IF safe_options.headings %]true[% ELSE %]false[% END %],%
+               footinclude=false,[% IF safe_options.opening %]open=[% safe_options.opening %],[% END %]%
+               fontsize=[% safe_options.fontsize %]pt,%
+               [% safe_options.paging %],%
+               paper=[% safe_options.papersize %]]%
+               {[% safe_options.class %]}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainfont{[% safe_options.mainfont %]}
+% these are not used but prevents XeTeX to barf
+\setsansfont[Scale=MatchLowercase]{[% safe_options.sansfont %]}
+\setmonofont[Scale=MatchLowercase]{[% safe_options.monofont %]}
+\setmainlanguage{[% safe_options.lang %]}
+[% safe_options.mainlanguage_script %]
+
+[% IF safe_options.other_languages %]
+\setotherlanguages{[% safe_options.other_languages %]}
+[% END %]
+[% IF safe_options.other_languages_additional %]
+[% safe_options.other_languages_additional %]
+[% END %]
+
+[% IF safe_options.mainlanguage_toc_name %]
+\renewcaptionname{[% safe_options.lang %]}{\contentsname}{[% safe_options.mainlanguage_toc_name %]}
+[% END %]
+
+% global style
+[% IF safe_options.headings %]
+\setlength{\headsep}{\baselineskip}
+\usepackage{scrlayer-scrpage}
+\pagestyle{scrheadings}
+  [% IF safe_options.twoside %]
+    [% IF safe_options.headings.title_subtitle %]
+    \lehead{\pagemark}
+    \rohead{\pagemark}
+    \rehead{[% doc.header_as_latex.title %]}
+    \lohead{[% doc.header_as_latex.subtitle %]}
+    [% END %]
+    [% IF safe_options.headings.author_title %]
+    \lehead{\pagemark}
+    \rohead{\pagemark}
+    \rehead{[% doc.header_as_latex.author %]}
+    \lohead{[% doc.header_as_latex.title %]}
+    [% END %]
+    [% IF safe_options.headings.section_subsection %]
+    \automark[subsection]{section}
+    \ohead[]{\pagemark}
+    \ihead[]{\headmark}
+    [% END %]
+    [% IF safe_options.headings.chapter_section %]
+    \automark[section]{chapter}
+    \ohead[]{\pagemark}
+    \ihead[]{\headmark}
+    [% END %]
+    [% IF safe_options.headings.title_chapter %]
+    \automark[chapter]{chapter}
+    \lehead{\pagemark}
+    \rohead{\pagemark}
+    \rehead{[% doc.header_as_latex.title %]}
+    \lohead{\headmark}
+    [% END %]
+    [% IF safe_options.headings.title_section %]
+    \automark[section]{section}
+    \lehead{\pagemark}
+    \rohead{\pagemark}
+    \rehead{[% doc.header_as_latex.title %]}
+    \lohead{\headmark}
+    [% END %]
+    \chead[]{}
+    \ifoot[]{}
+    \cfoot[]{}
+    \ofoot[]{}
+  [% ELSE %]
+    [% IF safe_options.headings.title_subtitle %]
+    \chead{[% doc.header_as_latex.title %]}
+    [% END %]
+    [% IF safe_options.headings.author_title %]
+    \chead{[% doc.header_as_latex.title %]}
+    [% END %]
+    [% IF safe_options.headings.section_subsection %]
+    \automark[section]{section}
+    \chead[]{\headmark}
+    [% END %]
+    [% IF safe_options.headings.chapter_section %]
+    \automark[chapter]{chapter}
+    \chead[]{\headmark}
+    [% END %]
+    [% IF safe_options.headings.title_chapter %]
+    \automark[chapter]{chapter}
+    \chead[]{\headmark}
+    [% END %]
+    [% IF safe_options.headings.title_section %]
+    \automark[section]{section}
+    \chead[]{\headmark}
+    [% END %]
+    \ihead[]{}
+    \ohead[]{}
+    \ifoot[]{}
+    \cfoot[\pagemark]{\pagemark}
+    \ofoot[]{}
+  [% END %]
+[% ELSE %]
+\pagestyle{plain}
+[% END %]
+
+
+
+\usepackage{microtype} % you need an *updated* texlive 2012, but harmless
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{verbatim}
+% http://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+\PassOptionsToPackage{hyphens}{url}\usepackage[hyperfootnotes=false,hidelinks,breaklinks=true]{hyperref}
+\usepackage{bookmark}
+\usepackage[stable]{footmisc}
+\usepackage{enumerate}
+\usepackage{tabularx}
+\usepackage[normalem]{ulem}
+\usepackage{wrapfig}
+\usepackage{indentfirst}
+% remove the numbering
+\setcounter{secnumdepth}{-2}
+
+% remove labels from the captions
+\renewcommand*{\captionformat}{}
+\renewcommand*{\figureformat}{}
+\renewcommand*{\tableformat}{}
+\KOMAoption{captions}{belowfigure,nooneline}
+\addtokomafont{caption}{\centering}
+
+% avoid breakage on multiple <br><br> and avoid the next [] to be eaten
+\newcommand*{\forcelinebreak}{\strut\\*{}}
+
+\newcommand*{\hairline}{%
+  \bigskip%
+  \noindent \hrulefill%
+  \bigskip%
+}
+
+% reverse indentation for biblio and play
+
+\newenvironment*{amusebiblio}{
+  \leftskip=\parindent
+  \parindent=-\parindent
+  \smallskip
+  \indent
+}{\smallskip}
+
+\newenvironment*{amuseplay}{
+  \leftskip=\parindent
+  \parindent=-\parindent
+  \smallskip
+  \indent
+}{\smallskip}
+
+\newcommand*{\Slash}{\slash\hspace{0pt}}
+
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{descriptionlabel}{\rmfamily}
+% forbid widows/orphans
+\frenchspacing
+\sloppy
+\clubpenalty=10000
+\widowpenalty=10000
+% http://tex.stackexchange.com/questions/304802/how-not-to-hyphenate-the-last-word-of-a-paragraph
+\finalhyphendemerits=10000
+
+% given that we said footinclude=false, this should be safe
+\setlength{\footskip}{2\baselineskip}
+
+\title{[% doc.header_as_latex.title %]}
+\date{[% doc.header_as_latex.date %]}
+\author{[% doc.header_as_latex.author %]}
+\subtitle{[% doc.header_as_latex.subtitle %]}
+
+\begin{document}
+[% IF doc.hyphenation %]
+\hyphenation{ [% doc.hyphenation %] }
+[% END %]
+
+%%% this is a custom template
+
+
+[% IF safe_options.nocoverpage %]
+\thispagestyle{empty}
+[% ELSE %]
+  \begin{titlepage}
+[% END %]
+  \strut\vskip 2em
+  \begin{center}
+[% IF doc.wants_preamble %]
+  {\usekomafont{title}{\huge [% doc.header_as_latex.title %]\par}}%
+  \vskip 1em
+  [% IF doc.header_defined.subtitle %]
+  {\usekomafont{subtitle}{[% doc.header_as_latex.subtitle %]\par}}%
+  [% END %]
+  \vskip 2em
+  [% IF doc.header_defined.author %]
+  {\usekomafont{author}{[% doc.header_as_latex.author %]\par}}%
+  [% END %]
+  \vskip 1.5em
+[% ELSE %]
+\strut
+[% END %]
+[% UNLESS safe_options.nocoverpage %]
+   [% IF safe_options.cover %]
+      \vskip 3em
+      \includegraphics[keepaspectratio=true,height=0.5\textheight,width=[% safe_options.coverwidth %]\textwidth]{[% safe_options.cover %]}
+   [% END %]
+   \vfill
+[% END %]
+[% IF doc.wants_preamble %]
+  [% IF doc.header_defined.date %]
+  {\usekomafont{date}{[% doc.header_as_latex.date %]\par}}%
+  [% ELSE %]
+    \strut\par
+  [% END %]
+[% ELSE %]
+\strut
+[% END %]
+  \end{center}
+[% IF safe_options.nocoverpage %]
+  \vskip 3em
+  \par
+[% ELSE %]
+  \end{titlepage}
+\cleardoublepage
+[% END %]
+
+[% IF safe_options.wants_toc %]
+\tableofcontents
+% start a new right-handed page
+\cleardoublepage
+[% END %]
+
+[% doc.as_latex %]
+
+\clearpage
+
+[% IF safe_options.twoside %]
+% if we are on an odd page, add another one, otherwise when imposing
+% the page would be odd on an even one.
+\ifthispageodd{\strut\thispagestyle{empty}\clearpage}{}
+[% END %]
+
+% new page for the colophon
+
+\thispagestyle{empty}
+
+\begin{center}
+[% IF safe_options.sitename %]
+[% safe_options.sitename %]
+[% END %]
+
+[% IF safe_options.siteslogan %]
+\smallskip
+[% safe_options.siteslogan %]
+[% END %]
+
+[% IF safe_options.logo %]
+\bigskip
+\includegraphics[width=0.25\textwidth]{[% safe_options.logo %]}
+\bigskip
+[% ELSE %]
+\strut
+[% END %]
+\end{center}
+
+\strut
+
+\vfill
+
+\begin{center}
+
+[% IF doc.wants_preamble %]
+[% doc.header_as_latex.author     %]
+
+[% doc.header_as_latex.title      %]
+
+[% doc.header_as_latex.subtitle   %]
+
+[% doc.header_as_latex.date       %]
+[% ELSE %]
+\strut
+[% END %]
+
+\bigskip
+
+[% IF doc.wants_postamble %]
+[% doc.header_as_latex.source     %]
+
+[% doc.header_as_latex.notes      %]
+[% ELSE %]
+\strut
+[% END %]
+
+[% IF safe_options.site %]
+\bigskip
+\textbf{[% safe_options.site %]}
+[% END %]
+
+\end{center}
+
+\end{document}
+
