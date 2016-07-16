@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 27;
+use Test::More tests => 35;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -63,6 +63,9 @@ for my $use_ttdir (0..1) {
         my $res = check_jobber_result($mech);
         diag Dumper($res);
         my $base = $res->{produced_uri};
+        my $bb_add = $base;
+        $bb_add =~ s/library/bookbuilder\/add/;
+        $mech->get_ok($bb_add);
         $mech->get_ok($base);
         foreach my $ext ('.tex', '.html') {
             $mech->get_ok($base . $ext);
@@ -73,12 +76,8 @@ for my $use_ttdir (0..1) {
                 $mech->content_lacks('this is a custom template');
             }
         }
-        my $zipper = Archive::Zip->new;
         $mech->get_ok($base . '.epub');
-        my $epub = $mech->content;
-        open my $dh, "+<", \$epub;
-        $zipper->readFromFileHandle($dh);
-        my $css = $zipper->contents('OPS/stylesheet.css');
+        my $css = get_epub_css_from_url($mech);
         if ($use_ttdir) {
             like $css, qr{This is a custom template};
         }
@@ -92,8 +91,46 @@ for my $use_ttdir (0..1) {
     }
 }
     
-    
-
+# now let's try the bookbuilder
+foreach my $fmt (qw/pdf epub/) {
+    $mech->get_ok('/bookbuilder');
+    $mech->submit_form(with_fields => {
+                                       title => 'x',
+                                       format => $fmt,
+                                      },
+                       button => 'build');
+    my $res = check_jobber_result($mech);
+    diag Dumper($res);
+    if ($fmt eq 'epub') {
+        $mech->get_ok($res->{produced_uri});
+        my $css = get_epub_css_from_url($mech);
+        like $css, qr{This is a custom template};
+    }
+    elsif ($fmt eq 'pdf') {
+        $mech->get_ok($res->{sources});
+        my $tex = get_tex_from_sources($mech);
+        like $tex, qr{\% this is a custom template};
+    }
+}
 
 system($init, 'stop');
 
+sub get_epub_css_from_url {
+    my $mech = shift;
+    my $epub = $mech->content;
+    open my $dh, "+<", \$epub;
+    my $zipper = Archive::Zip->new;
+    $zipper->readFromFileHandle($dh);
+    my $css = $zipper->contents('OPS/stylesheet.css');
+    return $css;
+}
+sub get_tex_from_sources {
+    my $mech = shift;
+    my $zip = $mech->content;
+    open my $dh, "+<", \$zip;
+    my $zipper = Archive::Zip->new;
+    $zipper->readFromFileHandle($dh);
+    my ($srctex) = $zipper->membersMatching(qr{/[0-9]+\.tex});
+    my $tex = $zipper->contents($srctex->fileName);
+    return $tex;
+}
