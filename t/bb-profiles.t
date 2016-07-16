@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 16;
+use Test::More tests => 18;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -40,6 +40,8 @@ foreach my $name (qw/profiler1 profiler2/) {
         is $user->bookbuilder_profiles->count, 1, "Found 1 profile";
         my $data = $user->bookbuilder_profiles->find($pid)->bookbuilder_arguments;
         is $data->{title}, $bb_title;
+        $found->update({ profile_data => 'alsdkfjlaskdjf'});
+        is_deeply $found->bookbuilder_arguments, {}, "No args on random data";
     }
 }
 

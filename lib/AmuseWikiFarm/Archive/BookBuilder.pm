@@ -1331,6 +1331,20 @@ sub serialize {
     return \%args;
 }
 
+sub serialize_profile {
+    my $self = shift;
+    my %exclusions = (
+                      coverfile => 1, # this will  get removed
+                      coverwidth => 1,  # see above
+                     );
+    my %args;
+    foreach my $method ($self->_main_methods) {
+        $args{$method} = $self->$method unless $exclusions{$method};
+    }
+    return \%args;
+}
+
+
 sub available_webfonts {
     my $self = shift;
     my @fonts = sort keys %{ $self->webfonts };

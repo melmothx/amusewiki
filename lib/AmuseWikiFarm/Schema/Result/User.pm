@@ -223,6 +223,12 @@ __PACKAGE__->add_columns(
     },
 );
 
+use JSON::MaybeXS;
+use AmuseWikiFarm::Log::Contextual;
+
+# unclear if it's fork safe. I assume so.
+my $serializer = JSON::MaybeXS->new(ascii => 1, pretty => 1);
+
 =head2 available_roles
 
 Return C<librarian> and C<root>
@@ -307,6 +313,21 @@ sub set_password_hash {
     $self->update;
 }
 
+=head2 add_bb_profile($name, $bb)
+
+Call serialize_profile on the second argument and save it in the
+database with the first argument as name and return the new profile.
+
+=cut
+
+sub add_bb_profile {
+    my ($self, $name, $bb) = @_;
+    my $profile = $bb->serialize_profile;
+    return $self->add_to_bookbuilder_profiles({
+                                               profile_name => $name || 'No name',
+                                               profile_data => $serializer->encode($profile),
+                                              });
+}
 
 __PACKAGE__->meta->make_immutable;
 
