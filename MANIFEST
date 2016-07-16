@@ -844,6 +844,10 @@ t/controller_Uploads.t
 t/controller_User.t
 t/controller_Utils.t
 t/crash-on-loc.t
+t/custom-templates.t
+t/custom-templates/css.tt
+t/custom-templates/html.tt
+t/custom-templates/latex.tt
 t/dbic.yaml
 t/deferred-texts.t
 t/editing.t

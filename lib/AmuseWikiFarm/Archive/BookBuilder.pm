@@ -1168,7 +1168,7 @@ sub compile {
                          sl_pdf => $self->slides,
                          epub => $self->epub,
                         );
-    foreach my $setting (qw/luatex/) {
+    foreach my $setting (qw/luatex ttdir/) {
         if ($compile_opts{$setting}) {
             $compiler_args{$setting} = $compile_opts{$setting};
         }

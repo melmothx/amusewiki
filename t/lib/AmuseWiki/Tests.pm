@@ -6,9 +6,10 @@ use File::Spec::Functions qw/catfile catdir/;
 use File::Path qw/make_path remove_tree/;
 use Text::Amuse::Compile::Utils qw/write_file/;
 use Git::Wrapper;
+use JSON qw/decode_json/;
 
 our @ISA = qw(Exporter);
-our @EXPORT_OK = qw/create_site/;
+our @EXPORT_OK = qw/create_site check_jobber_result/;
 
 =head2 create_site($schema, $id)
 
@@ -47,5 +48,28 @@ sub create_site {
     $site->initialize_git;
     return $site;
 }
+
+sub check_jobber_result {
+    my $mech = shift;
+    my $task_path = $mech->response->base->path;
+    my ($task_id) = $task_path =~ m{^/tasks/status/(.*)};
+    die unless $task_id;
+    my $success;
+    for (1..30) {
+        $mech->get("/tasks/status/$task_id/ajax");
+        my $ajax = decode_json($mech->response->content);
+        if ($ajax->{status} eq 'completed') {
+            $success = $ajax;
+            last;
+        }
+        elsif ($ajax->{status} eq 'failed') {
+            die $ajax->{errors};
+            return;
+        }
+        sleep 1;
+    }
+    return $success;
+}
+
 
 1;

@@ -853,6 +853,21 @@ As above, but instead of the compiler options, list the extensions.
 
 =cut
 
+sub valid_ttdir {
+    my $self = shift;
+    if (my $ttdir = $self->ttdir) {
+        # sane names only please
+        if ($ttdir =~ m/\A[0-9a-zA-Z][0-9a-zA-Z_-]*[0-9a-zA-Z]\z/) {
+            my $full_path = File::Spec->catdir($self->repo_root, $ttdir);
+            if (-d $full_path) {
+                return $full_path;
+            }
+        }
+    }
+    return;
+}
+
+
 sub compile_options {
     my $self = shift;
     my %opts = $self->available_formats;
@@ -860,7 +875,7 @@ sub compile_options {
         $opts{luatex} = 1;
     }
 
-    if (my $dir = $self->ttdir) {
+    if (my $dir = $self->valid_ttdir) {
         $opts{ttdir} = $dir;
     }
     foreach my $ext (qw/siteslogan logo nocoverpage
