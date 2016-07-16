@@ -10,9 +10,8 @@ use File::Spec::Functions qw/catdir catfile/;
 use File::Temp;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site check_jobber_result/;
 use Test::WWW::Mechanize::Catalyst;
-use JSON qw/decode_json/;
 use Data::Dumper;
 
 diag "(Re)starting the jobber";
@@ -242,32 +241,16 @@ system($init, 'stop');
     ok (!$site->jobs->search({ status => 'completed' })->count, "No completed jobs found, all purged");
 }
 
+
 sub check_jobber {
     my $mech = shift;
-    like $mech->response->base->path, qr{^/tasks/status/}, "Location for tasks ok";
-    my $task_path = $mech->response->base->path;
-    my ($task_id) = $task_path =~ m{^/tasks/status/(.*)};
-    ok $task_id;
-    diag "Waiting for the jobber to react";
-    my $success;
-    for (1..30) {
-        $mech->get("/tasks/status/$task_id/ajax");
-        my $ajax = decode_json($mech->response->content);
-        if ($ajax->{status} eq 'completed') {
-            $success = $ajax;
-            last;
-        }
-        elsif ($ajax->{status} eq 'failed') {
-            diag "Job failed!\n";
-            diag $ajax->{errors};
-            return;
-        }
-        diag "Nothing yet...$ajax->{status}";
-        sleep 1;
-    }
-    ok($success);
-    is $success->{status}, 'completed';
-    is $success->{site_id}, $site_id;
-    diag Dumper($success);
-    return $success;
+    my $tasks_id;
+    my ($task_id) = $mech->response->base->path =~ m{^/tasks/status/(.*)};
+    ok ($task_id, "Location path is ok");
+    my $res = check_jobber_result($mech);
+    ok ($res) or die Dumper($res);
+    is $res->{status}, 'completed';
+    is $res->{site_id}, $site_id;
+    ok $res->{produced_uri}, "Found an uri";
+    return $res;
 }
