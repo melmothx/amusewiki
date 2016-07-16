@@ -454,14 +454,20 @@
         </div>
         <div class="col-sm-9">
           <select name="headings" id="headings" class="form-control">
-            [% FOREACH heading IN bb.all_headings %]
-            [% IF heading.desc %]
-            <option value="[% heading.name %]"
-                    [% IF heading.name == bb.headings %]selected="selected"[% END %]>
+            [%- # loc('None')                                                     -%]
+            [%- # loc('Title and subtitle. If one side document: title.')         -%]
+            [%- # loc('Author and title. If one side document: title.')           -%]
+            [%- # loc('Chapter and section. If one side document: chapter.')      -%]
+            [%- # loc('Section and subsection. If one side document: section.')   -%]
+            [%- # loc('Title and chapter. If one side document: chapter.')        -%]
+            [%- # loc('Title and section.  If one side document: section.')       -%]
+            [%- FOREACH heading IN bb.all_headings %]
+            [%- IF heading.desc %]
+            <option value="[% heading.name %]"[% IF heading.name == bb.headings %] selected="selected"[% END %]>
               [% heading.desc %]
             </option>
-            [% END %]
-            [% END %]
+            [%- END %]
+            [%- END %]
           </select>
         </div>
       </div>
