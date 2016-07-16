@@ -966,6 +966,7 @@ t/test-repos/0test0/s/st/second-test.muse
 t/test-repos/0test0/specials/index.muse
 t/texmf-files/logo-en.pdf
 t/texmf-files/logo-yu.pdf
+t/unicode-exception-old-cat.t
 t/update-or-create.t
 t/useless-sessions.t
 t/user-admin.t
