@@ -136,6 +136,21 @@ __PACKAGE__->add_unique_constraint("username_unique", ["username"]);
 
 =head1 RELATIONS
 
+=head2 bookbuilder_profiles
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::BookbuilderProfile>
+
+=cut
+
+__PACKAGE__->has_many(
+  "bookbuilder_profiles",
+  "AmuseWikiFarm::Schema::Result::BookbuilderProfile",
+  { "foreign.user_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 user_roles
 
 Type: has_many
@@ -187,8 +202,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-03 16:57:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jB5EH1TzCAtuZoFzoMH6FA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-07-16 17:19:49
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:f23ZuQlLYuYVRQ9f3BsZzA
 
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt
