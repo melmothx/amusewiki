@@ -76,7 +76,7 @@ etc.) is irrelevant.') %]
   [% loc('After the approval of the
   change, it will appear under [_1]. There is a big red
   button for each deleted text, and you can proceed with the purging.',
-  c.uri_for_action('/console/unpublished').path) %];
+  c.uri_for_action('/console/unpublished').path) %]
 </a>
 </p>
 
