@@ -26,7 +26,7 @@ Render the template help/opds.tt
 
 =cut
 
-sub root :Chained('/site') :PathPart('help') :CaptureArgs(0) {
+sub root :Chained('/site_robot_index') :PathPart('help') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
 
