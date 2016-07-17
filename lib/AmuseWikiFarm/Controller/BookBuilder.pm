@@ -212,7 +212,9 @@ sub profile :Chained('root') :Args(1) {
     my $redirect = $c->uri_for_action('/bookbuilder/index');
     my $bbprofile_sec = $c->uri_for_action('/bookbuilder/index'). '#bb-profiles';
     if (my $user = $c->stash->{user_object}) {
+        log_debug { "User found " . $user->username };
         if ($profile_id =~ m/\A[0-9]+\z/) {
+            log_debug { "Profile is valid $profile_id" };
             if (my $profile = $user->bookbuilder_profiles->find($profile_id)) {
                 log_info { "Found $profile_id" };
                 my $params = $c->request->body_parameters;
@@ -223,11 +225,13 @@ sub profile :Chained('root') :Args(1) {
                     return;
                 }
                 if (length($params->{profile_name})) {
+                    log_debug { "Renaming profile $profile_id" };
                     $profile->rename_profile($params->{profile_name});
                     $redirect = $bbprofile_sec;
                 }
                 my $pname = $profile->profile_name;
                 if ($params->{profile_update}) {
+                    log_debug { "Saving profile $profile_id" };
                     $profile->update_profile_from_bb($c->stash->{bb});
                     $c->flash(status_msg => $c->loc('Saved "[_1]" configuration',
                                                     $pname));
@@ -239,10 +243,13 @@ sub profile :Chained('root') :Args(1) {
                     $c->flash(status_msg => $c->loc('Loaded "[_1]" configuration',
                                                     $pname));
                 }
+                $c->response->redirect($redirect);
+                return;
             }
         }
     }
-    $c->response->redirect($redirect);
+    log_debug { "Falling back to 404" };
+    $c->detach('/not_found');
 }
 
 sub create_profile :Chained('root') :Args(0) :PathPart('create-profile') {

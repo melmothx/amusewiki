@@ -866,7 +866,7 @@ $(document).ready(function(){
       [% FOREACH profile IN bb_profiles %]
       <tr>
         <form action="[% c.uri_for_action('/bookbuilder/profile', [profile.id]) %]"
-              method="POST">
+              method="POST" id="bb-profile-operation-[% profile.id %]">
           <td class="text-center">
             [% profile.name | html %]
           </td>
@@ -906,7 +906,8 @@ $(document).ready(function(){
   </div>
   [% END %]
   <div>
-    <form action="[% c.uri_for_action('/bookbuilder/create_profile') %]" method="POST">
+    <form action="[% c.uri_for_action('/bookbuilder/create_profile') %]"
+          method="POST" id="bb-create-profile-form">
       <div class="row">
         <div class="col-lg-6">
           <div class="input-group">
