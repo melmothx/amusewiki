@@ -229,14 +229,15 @@ sub profile :Chained('root') :Args(1) {
                 my $pname = $profile->profile_name;
                 if ($params->{profile_update}) {
                     $profile->update_profile_from_bb($c->stash->{bb});
-                    $c->flash(status_msg => $c->loc("Saved [_1] configuration",
+                    $c->flash(status_msg => $c->loc('Saved "[_1]" configuration',
                                                     $pname));
                 }
                 if ($params->{profile_load}) {
                     my $existing = $c->stash->{bb}->serialize;
                     my $new = $profile->bookbuilder_arguments;
                     $c->session->{bookbuilder} = { %$existing, %$new };
-                    $c->flash(status_msg => $c->loc("Loaded [_1] configuration", $pname));
+                    $c->flash(status_msg => $c->loc('Loaded "[_1]" configuration',
+                                                    $pname));
                 }
             }
         }

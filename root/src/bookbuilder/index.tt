@@ -839,6 +839,18 @@ $(document).ready(function(){
 
 [% IF c.user_exists %]
 <div id="bb-profiles">
+  <h3>[% loc('Option templates') %]</h3>
+  <div class="alert alert-warning" id="bb-profiles-instructions">
+    <span class="glyphicon glyphicon-warning-sign"></span>
+    [% loc('To save or update the templates, you need first to save
+    the options with the "[_1]" button', loc('Update')) %].
+  </div>
+  <div id="bb-profiles-forms">
+    <div>
+      [% loc('Here you can save or load your templates. The text list
+      and the cover image are excluded by the saved settings. You can
+      use this to save paper/fonts/imposition and other options.') %]
+    </div>
   [% IF bb_profiles %]
   <div class="table-responsive">
     <table id="bb-profiles-table" class="table table-striped
@@ -911,6 +923,7 @@ $(document).ready(function(){
       </div>
     </form>
   </div>
+  </div>
 </div>
 <div>
   <hr />
@@ -957,6 +970,5 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
-
-
 [% END %]
+
