@@ -136,6 +136,21 @@ __PACKAGE__->add_unique_constraint("username_unique", ["username"]);
 
 =head1 RELATIONS
 
+=head2 bookbuilder_profiles
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::BookbuilderProfile>
+
+=cut
+
+__PACKAGE__->has_many(
+  "bookbuilder_profiles",
+  "AmuseWikiFarm::Schema::Result::BookbuilderProfile",
+  { "foreign.user_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 user_roles
 
 Type: has_many
@@ -187,8 +202,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-05-03 16:57:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jB5EH1TzCAtuZoFzoMH6FA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-07-16 17:19:49
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:f23ZuQlLYuYVRQ9f3BsZzA
 
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt
@@ -207,6 +222,12 @@ __PACKAGE__->add_columns(
         passphrase_check_method => 'check_password',
     },
 );
+
+use JSON::MaybeXS;
+use AmuseWikiFarm::Log::Contextual;
+
+# unclear if it's fork safe. I assume so.
+my $serializer = JSON::MaybeXS->new(ascii => 1, pretty => 1);
 
 =head2 available_roles
 
@@ -292,6 +313,31 @@ sub set_password_hash {
     $self->update;
 }
 
+=head2 add_bb_profile($name, $bb)
+
+Call serialize_profile on the second argument and save it in the
+database with the first argument as name and return the new profile.
+
+=cut
+
+sub add_bb_profile {
+    my ($self, $name, $bb) = @_;
+    my $profile = $bb->serialize_profile;
+    return $self->add_to_bookbuilder_profiles({
+                                               profile_name => ($name || 'No name') . '',
+                                               profile_data => $serializer->encode($profile),
+                                              });
+}
+
+sub update_bb_profile {
+    my ($self, $id, $bb) = @_;
+    if (my $profile = $self->bookbuilder_profiles->find($id)) {
+        my $data = $bb->serialize_profile;
+        $profile->update({ profile_data => $data });
+        return $profile;
+    }
+    return;
+}
 
 __PACKAGE__->meta->make_immutable;
 

@@ -149,5 +149,10 @@ $(document).ready(function(){
             show_hide_standard_papersizes('logical');
         }
     });
+    $("#bb-profiles-instructions").hide();
+    $("form#bbform :input").change(function() {
+        $("#bb-profiles-instructions").show();
+        $("#bb-profiles-forms").hide();
+    });
 });
 

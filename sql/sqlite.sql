@@ -133,6 +133,13 @@ CREATE TABLE user_role (
         PRIMARY KEY (user_id, role_id)
 );
 
+CREATE TABLE bookbuilder_profile (
+       bookbuilder_profile_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       user_id INTEGER NOT NULL REFERENCES users(id)
+                       ON DELETE CASCADE ON UPDATE CASCADE,
+       profile_name VARCHAR(255) NOT NULL,
+       profile_data TEXT NOT NULL
+);
 
 CREATE TABLE revision (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -369,4 +376,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('text_month', 'Linking table between texts and monthly archives'),
          ('monthly_archive', 'Monthly archives'),
          ('legacy_link', 'Handle old paths for migrated sites'),
+         ('bookbuilder_profile', 'Bookbuilder profiles'),
          ('title_stat', 'Usage statistics');

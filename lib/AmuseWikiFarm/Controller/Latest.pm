@@ -31,10 +31,10 @@ sub pre_base :Chained('/site_robot_index') :PathPart('latest') :CaptureArgs(0) {
 
 sub index :Chained('base') :PathPart('') :Args {
     my ($self, $c, $page) = @_;
-    log_debug { "requested /latest/ $page" };
     unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
         $page = 1;
     }
+    log_debug { "requested /latest/ $page" };
     my $site = $c->stash->{site};
     my $results = $c->stash->{texts_rs}->search(undef,
                                                 {
