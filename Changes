@@ -11,7 +11,7 @@ dedicated tree.
  - Added localized /help/faq from documentation
  - Added /help/irc with livechat for users which can edit the pages
    (by default, points to #amusewiki on freenode).
- - I18N update: es, it
+ - I18N update: es, it, hr
  - Make the pagination configurable (GH #62)
  - Move the infobox to the bottom only if configured so for blog-styled
  - Editing page: various layout fixes (uses ajax for speedup) (GH #60)
