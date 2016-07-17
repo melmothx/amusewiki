@@ -140,6 +140,14 @@ msgid ""
 "etc)."
 msgstr "Lisätietoja (päivämäärä, alkuperäinen otsikko, kääntäjät jne.)."
 
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -212,6 +220,9 @@ msgstr ""
 
 msgid "Author"
 msgstr "Kirjoittaja"
+
+msgid "Author and title. If one side document: title."
+msgstr ""
 
 msgid "Authors"
 msgstr "Kirjoittajat"
@@ -289,8 +300,17 @@ msgstr "Muutokset tehty, kiitos! Ne odottavat nyt julkaisua"
 msgid "Changes for %1"
 msgstr "Tekstin %1 muutokset"
 
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+
 msgid "Chapter"
 msgstr "Luku"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr ""
 
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Luku, vain kirjan eri lukuihin"
@@ -418,8 +438,10 @@ msgid "Differences"
 msgstr "Eroavaisuudet"
 
 msgid ""
-"Directory with templates. Do not set it unless you know what you are doing"
-msgstr "Pohjamallien hakemisto. Älä aseta, jos et tiedä mitä teet"
+"Directory with templates in the site repositoy, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
 
 msgid "Display url as"
 msgstr "Osoitteen näyttömuoto"
@@ -454,6 +476,9 @@ msgstr ""
 
 msgid "Edit site configuration"
 msgstr "Muokkaa sivuston asetuksia"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
 
 msgid "Edit this text"
 msgstr "Muokkaa tätä tekstiä"
@@ -547,6 +572,9 @@ msgid "First Author, Second Author"
 msgstr "Ensimmäinen kirjoittaja, toinen kirjoittaja"
 
 msgid "First slide"
+msgstr ""
+
+msgid "First you have to unpublish it via #DELETED."
 msgstr ""
 
 msgid "Fix typography (smart quotes)"
@@ -666,11 +694,35 @@ msgstr ""
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
 
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+
 msgid "Hide options"
 msgstr "Piilota lisävaihtoehdot"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Korkeampi jakaja tarkoittaa kapeampia marginaaleja"
+
+msgid "How do I create a landing page?"
+msgstr ""
+
+msgid "How do I create a special page?"
+msgstr ""
+
+msgid "How do I delete a text?"
+msgstr ""
+
+msgid "How do I modify a special page?"
+msgstr ""
+
+msgid "How do I purge a text?"
+msgstr ""
+
+msgid "How do I redirect to another page?"
+msgstr ""
 
 msgid "How to choose a password"
 msgstr "Kuinka valita salasana"
@@ -690,17 +742,20 @@ msgstr "Olen ihminen"
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Haluan tulostusvalmiin PDF:n"
 
+msgid "IRC channel on freenode"
+msgstr ""
+
 msgid "Id"
 msgstr "Tunniste"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -743,6 +798,17 @@ msgid "If you want to proceed, please visit the following url: %1"
 msgstr ""
 
 msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr "Kuvien lisäämisen voi tehdä seuraavassa vaiheessa."
@@ -769,8 +835,8 @@ msgstr ""
 "Tekstin sisällä hakasulkeissa oleva numero tulkitaan\n"
 "         loppuviitteeksi, mikäli lopussa on vastaava viite."
 
-#. (c.uri_for_action("/opds/start"))
 #. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -791,6 +857,11 @@ msgstr "Virheellinen nimi"
 
 msgid "Invalid username"
 msgstr "Virheellinen käyttäjänimi"
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
 
 msgid "Italic"
 msgstr "Kursivoitu"
@@ -883,6 +954,13 @@ msgstr "Odottamassa olevat tekstit"
 msgid "Lists"
 msgstr "Listat"
 
+msgid "Load"
+msgstr ""
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr ""
+
 msgid "Locale"
 msgstr ""
 
@@ -894,6 +972,9 @@ msgstr "Kirjaudu"
 
 msgid "Logout"
 msgstr "Kirjaudu ulos"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr ""
 
 msgid "Lost your password?"
 msgstr ""
@@ -915,6 +996,9 @@ msgstr "Pääfontti"
 
 msgid "Main text"
 msgstr "Pääteksti"
+
+msgid "Maintainer's FAQ"
+msgstr ""
 
 msgid "Make a link clickable"
 msgstr "Tee linkistä klikattava"
@@ -1018,6 +1102,9 @@ msgstr "Tekstiä ei löytynyt!"
 msgid "No text was added yet"
 msgstr "Ei vielä yhtään tekstiä."
 
+msgid "None"
+msgstr ""
+
 #. ($c->loc('Commit')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1042,7 +1129,7 @@ msgstr ""
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 
-msgid "Number of latest entries to display on the special pages (an integer)"
+msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
 msgid "Numeric List"
@@ -1056,6 +1143,9 @@ msgstr ""
 
 msgid "Open wiki"
 msgstr "Avoin wiki"
+
+msgid "Option templates"
+msgstr ""
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1095,8 +1185,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr ""
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
@@ -1277,6 +1367,12 @@ msgstr ""
 "        tekstinkäsittelyohjelmasta käyttämällä \"paste from word\" -nappia.\n"
 "        näin muotoilujen pitäisi säilyä. "
 
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+
 msgid "Please prove you are a human"
 msgstr "Todista, että olet ihminen"
 
@@ -1355,6 +1451,10 @@ msgid "Purge"
 msgstr "Poista"
 
 msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr ""
+
+msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
@@ -1386,6 +1486,9 @@ msgstr "Sattumanvarainen"
 msgid "Read the whole text..."
 msgstr ""
 
+msgid "Real time help"
+msgstr ""
+
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -1399,6 +1502,9 @@ msgstr ""
 
 msgid "Reason"
 msgstr "Syy"
+
+msgid "Reason for deletion"
+msgstr ""
 
 msgid "Recheck"
 msgstr "Tarkista uudelleen"
@@ -1425,6 +1531,9 @@ msgstr ""
 
 msgid "Remove cover image"
 msgstr "Poista kansikuva"
+
+msgid "Rename to"
+msgstr ""
 
 msgid "Repeat email"
 msgstr "Toista sähköpostiosoite"
@@ -1484,6 +1593,13 @@ msgstr ""
 msgid "Sans font"
 msgstr ""
 
+msgid "Save the current settings with a name"
+msgstr ""
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr ""
+
 msgid "Search"
 msgstr "Hae"
 
@@ -1492,6 +1608,9 @@ msgstr ""
 
 msgid "Section"
 msgstr "Osio"
+
+msgid "Section and subsection. If one side document: section."
+msgstr ""
 
 msgid "See here for more details."
 msgstr ""
@@ -1528,6 +1647,9 @@ msgstr "Näytä erot toisessa välilehdessä"
 
 msgid "Show options"
 msgstr "Näytä lisävaihtoehdot"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Yksittäinen putki"
@@ -1733,12 +1855,13 @@ msgstr ""
 msgid "The logo has the site name on itself"
 msgstr "Logossa on jo sivuston nimi"
 
-#. (username)
-msgid "The new password for %1 is:"
-msgstr ""
-
 msgid "The optional subtitle"
 msgstr "Vaihtoehtoinen alaotsikko"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Salasana lähetetään tähän osoitteeseen"
@@ -1772,6 +1895,9 @@ msgstr ""
 
 msgid "The whole book in as single signature"
 msgstr "Koko kirja yhtenä signaturena"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr ""
 
 msgid "Then fetch the updates from this page."
 msgstr ""
@@ -1854,6 +1980,15 @@ msgstr "Aika on valinnainen"
 msgid "Title"
 msgstr "Otsikko"
 
+msgid "Title and chapter. If one side document: chapter."
+msgstr ""
+
+msgid "Title and section.  If one side document: section."
+msgstr ""
+
+msgid "Title and subtitle. If one side document: title."
+msgstr ""
+
 msgid "Title for sorting"
 msgstr "Otsikko lajittelua varten"
 
@@ -1883,6 +2018,13 @@ msgstr "Näytelmät saa muotoiltua nopeasti laittamalla ympärille tagit"
 msgid "To resume the editing you can visit the following URL"
 msgstr ""
 
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 
@@ -1900,6 +2042,11 @@ msgstr "Kolme putkea"
 
 msgid "Try a random text if unsure"
 msgstr "Jos et ole varma, kokeile satunnaista tekstiä"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
 
 msgid "Two side layout"
 msgstr "Kaksipuoleinen taitto"
@@ -1941,6 +2088,9 @@ msgid "Update account info"
 msgstr "Päivitä käyttäjätietoja"
 
 msgid "Update category description"
+msgstr ""
+
+msgid "Update to current settings"
 msgstr ""
 
 msgid "Upload"
@@ -2061,6 +2211,12 @@ msgid ""
 "    have attached one or more images. This is not enough! To make them\n"
 "    appear, you have to place somewhere in the body or in the header,\n"
 "    depending on their purpose. See the examples below."
+msgstr ""
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
 msgstr ""
 
 msgid "You already proved you are human"
@@ -2226,6 +2382,9 @@ msgstr ""
 msgid "mandatory"
 msgstr "pakollinen"
 
+msgid "new-example-uri"
+msgstr ""
+
 msgid "no font embedding"
 msgstr ""
 
@@ -2336,6 +2495,10 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid ""
+#~ "Directory with templates. Do not set it unless you know what you are doing"
+#~ msgstr "Pohjamallien hakemisto. Älä aseta, jos et tiedä mitä teet"
 
 #~ msgid "Add to library"
 #~ msgstr "Lisää kirjastoon"

@@ -150,6 +150,14 @@ msgid ""
 msgstr ""
 "Informazioni aggiuntive (data completa, titolo originale, traduttori, ecc.)"
 
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -227,6 +235,9 @@ msgstr "Allegati"
 
 msgid "Author"
 msgstr "Autore"
+
+msgid "Author and title. If one side document: title."
+msgstr ""
 
 msgid "Authors"
 msgstr "Autori"
@@ -307,8 +318,17 @@ msgstr "Cambiamenti effettuati, ora sono in attesa di pubblicazione"
 msgid "Changes for %1"
 msgstr "Modifiche per %1"
 
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+
 msgid "Chapter"
 msgstr "Capitolo"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr ""
 
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Capitolo, da usare esclusivamente per i capitoli di un libro"
@@ -441,10 +461,10 @@ msgid "Differences"
 msgstr "Differenze"
 
 msgid ""
-"Directory with templates. Do not set it unless you know what you are doing"
+"Directory with templates in the site repositoy, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
 msgstr ""
-"Directory con i modelli. Lascia in bianco a meno che tu non sappia "
-"esattamente cosa stai facendo"
 
 msgid "Display url as"
 msgstr "Mostra l'URL come"
@@ -479,6 +499,9 @@ msgstr "Modifica il sito %1"
 
 msgid "Edit site configuration"
 msgstr "Modifica la configurazione del sito"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
 
 msgid "Edit this text"
 msgstr "Modifica questo testo"
@@ -580,6 +603,9 @@ msgstr "Primo Autore, Secondo Autore"
 
 msgid "First slide"
 msgstr "Prima diapositiva"
+
+msgid "First you have to unpublish it via #DELETED."
+msgstr ""
 
 msgid "Fix typography (smart quotes)"
 msgstr "Attiva le correzioni tipografiche"
@@ -709,11 +735,35 @@ msgstr "Altezza:"
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr "Qui puoi trovare un'anteprima dei temi e dei colori delle diapositive"
 
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+
 msgid "Hide options"
 msgstr "Nascondi le opzioni"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Un fattore di divisione più alto implica margini più stretti"
+
+msgid "How do I create a landing page?"
+msgstr ""
+
+msgid "How do I create a special page?"
+msgstr ""
+
+msgid "How do I delete a text?"
+msgstr ""
+
+msgid "How do I modify a special page?"
+msgstr ""
+
+msgid "How do I purge a text?"
+msgstr ""
+
+msgid "How do I redirect to another page?"
+msgstr ""
 
 msgid "How to choose a password"
 msgstr "Come scegliere una password"
@@ -736,17 +786,20 @@ msgstr "Sono umano"
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Voglio un PDF pronto per la stampa"
 
+msgid "IRC channel on freenode"
+msgstr ""
+
 msgid "Id"
 msgstr "Id"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Se non impostato, %1 sarà cercato nella directory dell'applicazione."
 
@@ -804,6 +857,17 @@ msgid "If you want to proceed, please visit the following url: %1"
 msgstr "Se vuoi procedere, visita questo indirizzo: %1"
 
 msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -836,8 +900,8 @@ msgstr ""
 "Nel testo, un numero tra parentesi quadre è interpretato come un\n"
 "riferimento a una nota a piè di pagina, se tale nota esiste."
 
-#. (c.uri_for_action("/opds/start"))
 #. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -861,6 +925,11 @@ msgstr "Nome non valido"
 
 msgid "Invalid username"
 msgstr "Nome utente non valido"
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
 
 msgid "Italic"
 msgstr "Corsivo"
@@ -951,6 +1020,13 @@ msgstr "Lista dei testi in attesa di approvazione"
 msgid "Lists"
 msgstr "Liste"
 
+msgid "Load"
+msgstr ""
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr ""
+
 msgid "Locale"
 msgstr "Lingua"
 
@@ -962,6 +1038,9 @@ msgstr "Entra"
 
 msgid "Logout"
 msgstr "Esci"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr ""
 
 msgid "Lost your password?"
 msgstr "Hai perso la password?"
@@ -983,6 +1062,9 @@ msgstr "Carattere principale"
 
 msgid "Main text"
 msgstr "Corpo del testo"
+
+msgid "Maintainer's FAQ"
+msgstr ""
 
 msgid "Make a link clickable"
 msgstr "Rendi un collegamento cliccabile"
@@ -1086,6 +1168,9 @@ msgstr "Nessun testo trovato"
 msgid "No text was added yet"
 msgstr "Nessun testo è stato ancora aggiunto"
 
+msgid "None"
+msgstr ""
+
 #. ($c->loc('Commit')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1112,8 +1197,8 @@ msgstr "Adesso puoi procedere al login."
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Numero di testi da mostrare nel feed RSS (numero intero)"
 
-msgid "Number of latest entries to display on the special pages (an integer)"
-msgstr "Numero di testi da mostrare nelle pagine speciali (numero intero)"
+msgid "Number of results to show on paginated pages (an integer)"
+msgstr ""
 
 msgid "Numeric List"
 msgstr "Lista numerata"
@@ -1126,6 +1211,9 @@ msgstr "Testi più vecchi"
 
 msgid "Open wiki"
 msgstr "Wiki aperto"
+
+msgid "Option templates"
+msgstr ""
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1164,8 +1252,8 @@ msgstr "Logo PDF"
 msgid "PDFs cannot be used in the body."
 msgstr "I PDF non possono essere usati all'interno del testo."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "I PDF non elencatine nella direttiva %1 saranno salvati ma ignorati."
 
@@ -1364,6 +1452,12 @@ msgstr ""
 "Word/OpenOffice/LibreOffice/HTML usando il pulsante “incolla da word”,\n"
 "e la formattazione verrà mantenuta."
 
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+
 msgid "Please prove you are a human"
 msgstr "Dimostra di essere un umano"
 
@@ -1445,6 +1539,10 @@ msgid "Purge"
 msgstr "Purga"
 
 msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr ""
+
+msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
@@ -1476,6 +1574,9 @@ msgstr "Pagina casuale"
 msgid "Read the whole text..."
 msgstr "Leggi il testo completo..."
 
+msgid "Real time help"
+msgstr ""
+
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -1496,6 +1597,9 @@ msgstr ""
 
 msgid "Reason"
 msgstr "Motivo"
+
+msgid "Reason for deletion"
+msgstr ""
 
 msgid "Recheck"
 msgstr "Ricontrolla"
@@ -1522,6 +1626,9 @@ msgstr "Rimuovi"
 
 msgid "Remove cover image"
 msgstr "Rimuovi immagine di copertina"
+
+msgid "Rename to"
+msgstr ""
 
 msgid "Repeat email"
 msgstr "Ripeti la mail"
@@ -1581,6 +1688,13 @@ msgstr "Percorso della chiave SSL"
 msgid "Sans font"
 msgstr "Font senza grazie"
 
+msgid "Save the current settings with a name"
+msgstr ""
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr ""
+
 msgid "Search"
 msgstr "Cerca"
 
@@ -1589,6 +1703,9 @@ msgstr "Risultati della ricerca"
 
 msgid "Section"
 msgstr "Sezione"
+
+msgid "Section and subsection. If one side document: section."
+msgstr ""
 
 msgid "See here for more details."
 msgstr "Vedi qui per ulteriori informazioni."
@@ -1625,6 +1742,9 @@ msgstr "Mostra le differenze in un'altra finestra"
 
 msgid "Show options"
 msgstr "Mostra le opzioni"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Le barre singole"
@@ -1844,12 +1964,13 @@ msgstr "Il link è valido fino a %1 (un'ora a partire da adesso)"
 msgid "The logo has the site name on itself"
 msgstr "Il logo contiene il nome del sito"
 
-#. (username)
-msgid "The new password for %1 is:"
-msgstr "La nuova password per %1 è:"
-
 msgid "The optional subtitle"
 msgstr "Il sottotitolo opzionale"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "La password sarà inviata a questo indirizzo"
@@ -1889,6 +2010,9 @@ msgstr ""
 
 msgid "The whole book in as single signature"
 msgstr "L'intero libro in un'unica segnatura"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr ""
 
 msgid "Then fetch the updates from this page."
 msgstr "Poi recupera gli aggiornamenti da questa pagina."
@@ -1981,6 +2105,15 @@ msgstr "L'ora è opzionale"
 msgid "Title"
 msgstr "Titolo"
 
+msgid "Title and chapter. If one side document: chapter."
+msgstr ""
+
+msgid "Title and section.  If one side document: section."
+msgstr ""
+
+msgid "Title and subtitle. If one side document: title."
+msgstr ""
+
 msgid "Title for sorting"
 msgstr "Titolo da usare per l'ordinamento alfabetico"
 
@@ -2012,6 +2145,13 @@ msgstr "Per formattare pezzi teatrali, usa"
 msgid "To resume the editing you can visit the following URL"
 msgstr "Per riprendere la modifica, puoi visitare il seguente URL"
 
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Per vedere le modifiche introdotte, puoi visitare il seguente URL"
 
@@ -2029,6 +2169,11 @@ msgstr "Triple barre"
 
 msgid "Try a random text if unsure"
 msgstr "Prova con un testo casuale, se in dubbio"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
 
 msgid "Two side layout"
 msgstr "Impaginazione fronte-retro"
@@ -2076,6 +2221,9 @@ msgstr "Aggiorna le informazioni relative all'utenza"
 msgid "Update category description"
 msgstr "Aggiornamento della descrizione della categoria"
 
+msgid "Update to current settings"
+msgstr ""
+
 msgid "Upload"
 msgstr "Carica"
 
@@ -2092,7 +2240,8 @@ msgid "Use SSL for authenticated users"
 msgstr "Usa SSL per gli utenti loggati"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr "Usala come immagine d'anteprima aggiungendo alle intestazioni questa linea:"
+msgstr ""
+"Usala come immagine d'anteprima aggiungendo alle intestazioni questa linea:"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2205,6 +2354,12 @@ msgstr ""
 "Affinché appaiano nel testo, devi inserirle o nel corpo del testo o\n"
 "nell'intestazione, a seconda dell'uso che ne vuoi fare. Vedi gli\n"
 "esempi qui sotto."
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
+msgstr ""
 
 msgid "You already proved you are human"
 msgstr "Hai già dimostrato di essere un umano"
@@ -2376,6 +2531,9 @@ msgstr "sinistra"
 msgid "mandatory"
 msgstr "obbligatorio"
 
+msgid "new-example-uri"
+msgstr ""
+
 msgid "no font embedding"
 msgstr "Non incorporare i font"
 
@@ -2492,6 +2650,19 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid ""
+#~ "Directory with templates. Do not set it unless you know what you are doing"
+#~ msgstr ""
+#~ "Directory con i modelli. Lascia in bianco a meno che tu non sappia "
+#~ "esattamente cosa stai facendo"
+
+#~ msgid ""
+#~ "Number of latest entries to display on the special pages (an integer)"
+#~ msgstr "Numero di testi da mostrare nelle pagine speciali (numero intero)"
+
+#~ msgid "The new password for %1 is:"
+#~ msgstr "La nuova password per %1 è:"
 
 #~ msgid "Add to library"
 #~ msgstr "Aggiungi un nuovo testo alla biblioteca"

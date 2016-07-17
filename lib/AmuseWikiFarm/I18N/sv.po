@@ -145,6 +145,14 @@ msgstr ""
 "Ytterligare information (fullständigt datum, originaltitel, översättare, "
 "tillägnanden, etc.)"
 
+#. (c.uri_for_action('/console/unpublished')
+#. (c.uri_for_action("/console/unpublished").path)
+msgid ""
+"After the approval of the\n"
+"  change, it will appear under %1. There is a big red\n"
+"  button for each deleted text, and you can proceed with the purging."
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -217,6 +225,9 @@ msgstr ""
 
 msgid "Author"
 msgstr "Författare"
+
+msgid "Author and title. If one side document: title."
+msgstr ""
 
 msgid "Authors"
 msgstr "Författare (flera)"
@@ -294,8 +305,17 @@ msgstr "Ändringar skickade, tack! Nu väntar de på att publiceras "
 msgid "Changes for %1"
 msgstr "Ändringar till %1"
 
+msgid ""
+"Changing urls is a poor practice. Anyway, if you know what you’re\n"
+"doing, you can delete an existing text and point to another adding a\n"
+"#DELETED directive in the text header with a special syntax:"
+msgstr ""
+
 msgid "Chapter"
 msgstr "Kapitel"
+
+msgid "Chapter and section. If one side document: chapter."
+msgstr ""
 
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Kapitel, endast för kapitelindelning i böcker"
@@ -423,8 +443,10 @@ msgid "Differences"
 msgstr "Skillnader"
 
 msgid ""
-"Directory with templates. Do not set it unless you know what you are doing"
-msgstr "Mallkatalog. Ordna inte denna om du inte vet vad du gör"
+"Directory with templates in the site repositoy, e.g.\n"
+"        \"templates\" (ASCII only). Do not set it unless you know\n"
+"        exactly what you are doing"
+msgstr ""
 
 msgid "Display url as"
 msgstr "Visa url som"
@@ -459,6 +481,9 @@ msgstr "Redigera sida %1"
 
 msgid "Edit site configuration"
 msgstr "Redigera sidkonfiguration"
+
+msgid "Edit the text you want to unpublish and add this line to the header:"
+msgstr ""
 
 msgid "Edit this text"
 msgstr "Redigera denna text"
@@ -551,6 +576,9 @@ msgid "First Author, Second Author"
 msgstr "Första Författare, Andra författare"
 
 msgid "First slide"
+msgstr ""
+
+msgid "First you have to unpublish it via #DELETED."
 msgstr ""
 
 msgid "Fix typography (smart quotes)"
@@ -675,11 +703,35 @@ msgstr ""
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
 
+msgid ""
+"Here you can save or load your templates. The text list\n"
+"      and the cover image are excluded by the saved settings. You can\n"
+"      use this to save paper/fonts/imposition and other options."
+msgstr ""
+
 msgid "Hide options"
 msgstr "Dölj alternativ"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Högre uppdelningsfaktor innebär mindre marginaler"
+
+msgid "How do I create a landing page?"
+msgstr ""
+
+msgid "How do I create a special page?"
+msgstr ""
+
+msgid "How do I delete a text?"
+msgstr ""
+
+msgid "How do I modify a special page?"
+msgstr ""
+
+msgid "How do I purge a text?"
+msgstr ""
+
+msgid "How do I redirect to another page?"
+msgstr ""
 
 msgid "How to choose a password"
 msgstr "Hur du väljer lösenord"
@@ -699,17 +751,20 @@ msgstr "Jag är en människa"
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Jag vill ha en imposed (redo att trycka) PDF"
 
+msgid "IRC channel on freenode"
+msgstr ""
+
 msgid "Id"
 msgstr "Id"
 
-#. ("ssl/' _ esite.canonical _ '/key.pem")
-#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
-#. ("ssl/' _ esite.canonical _ '/cert.pem")
-#. ("ssl/' _ esite.canonical _ '/chain.pem")
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
 #. ('ssl/' _ esite.canonical _ '/cert.pem')
 #. ('ssl/' _ esite.canonical _ '/chain.pem')
+#. ("ssl/' _ esite.canonical _ '/key.pem")
+#. ("ssl/' _ esite.canonical _ '/fullchain.pem")
+#. ("ssl/' _ esite.canonical _ '/cert.pem")
+#. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -752,6 +807,17 @@ msgid "If you want to proceed, please visit the following url: %1"
 msgstr ""
 
 msgid ""
+"If your site doesn’t have that, just create a special page and assign\n"
+"the uri \"index\"."
+msgstr ""
+
+msgid ""
+"If your site is multilanguage, you can create a language-specific\n"
+"  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
+"  URI \"index\", a dash, and the locale code."
+msgstr ""
+
+msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
@@ -780,8 +846,8 @@ msgstr ""
 "I texten tolkas en siffra inom parentes som en fotnotsreferens,om sådan "
 "fotnot existerar. "
 
-#. (c.uri_for_action("/opds/start"))
 #. (c.uri_for_action('/opds/start')
+#. (c.uri_for_action("/opds/start"))
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -802,6 +868,11 @@ msgstr "Ogiltigt namn"
 
 msgid "Invalid username"
 msgstr "Ogiltigt användarnamn"
+
+msgid ""
+"It works the same as for regular page, but the link is hidden. Just\n"
+"append \"/edit\" to the url of the page."
+msgstr ""
 
 msgid "Italic"
 msgstr "Kursiv"
@@ -890,6 +961,13 @@ msgstr "Lista med pausade texter"
 msgid "Lists"
 msgstr "Listor"
 
+msgid "Load"
+msgstr ""
+
+#. ($pname)
+msgid "Loaded \"%1\" configuration"
+msgstr ""
+
 msgid "Locale"
 msgstr "Variant"
 
@@ -901,6 +979,9 @@ msgstr "Inloggning"
 
 msgid "Logout"
 msgstr "Utloggning"
+
+msgid "Look into the account’s menu, there is an entry for that."
+msgstr ""
 
 msgid "Lost your password?"
 msgstr ""
@@ -922,6 +1003,9 @@ msgstr "Huvudtypsnitt"
 
 msgid "Main text"
 msgstr "Huvudtext"
+
+msgid "Maintainer's FAQ"
+msgstr ""
 
 msgid "Make a link clickable"
 msgstr "Gör en länk klickbar"
@@ -1025,6 +1109,9 @@ msgstr "Ingen text hittades!"
 msgid "No text was added yet"
 msgstr "Ingen text har ännu lagts till"
 
+msgid "None"
+msgstr ""
+
 #. ($c->loc('Commit')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
@@ -1049,7 +1136,7 @@ msgstr ""
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 
-msgid "Number of latest entries to display on the special pages (an integer)"
+msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
 msgid "Numeric List"
@@ -1063,6 +1150,9 @@ msgstr ""
 
 msgid "Open wiki"
 msgstr "Öppen wiki"
+
+msgid "Option templates"
+msgstr ""
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1101,8 +1191,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDF:er kan inte användas i brödtexten."
 
-#. ("#ATTACH")
 #. ('#ATTACH')
+#. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF är inte listad i %1 direktiv kommer att lagras men ignoreras"
 
@@ -1292,6 +1382,12 @@ msgstr ""
 "OpenOffice/LibreOffice/HTML-dokument genom att använda        \"klistra in "
 "från word\"-knappen. Detta ska bevara kodningen."
 
+msgid ""
+"Please note: without any prefix, protocol or hostname, just\n"
+"  the bare page name as shown above. External redirecting is not\n"
+"  supported."
+msgstr ""
+
 msgid "Please prove you are a human"
 msgstr "Vänligen bevisa att du är en människa"
 
@@ -1369,6 +1465,10 @@ msgid "Purge"
 msgstr "Rensa"
 
 msgid ""
+"Purging means removing it completely from the archive, not just hiding it."
+msgstr ""
+
+msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
@@ -1400,6 +1500,9 @@ msgstr "Slumpmässigt"
 msgid "Read the whole text..."
 msgstr ""
 
+msgid "Real time help"
+msgstr ""
+
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -1421,6 +1524,9 @@ msgstr ""
 
 msgid "Reason"
 msgstr "Orsak"
+
+msgid "Reason for deletion"
+msgstr ""
 
 msgid "Recheck"
 msgstr "Recheck"
@@ -1447,6 +1553,9 @@ msgstr ""
 
 msgid "Remove cover image"
 msgstr "Avlägsna omslagsbild"
+
+msgid "Rename to"
+msgstr ""
 
 msgid "Repeat email"
 msgstr "Upprepa mailadress"
@@ -1506,6 +1615,13 @@ msgstr ""
 msgid "Sans font"
 msgstr ""
 
+msgid "Save the current settings with a name"
+msgstr ""
+
+#. ($pname)
+msgid "Saved \"%1\" configuration"
+msgstr ""
+
 msgid "Search"
 msgstr "Sök"
 
@@ -1514,6 +1630,9 @@ msgstr ""
 
 msgid "Section"
 msgstr "Sektion"
+
+msgid "Section and subsection. If one side document: section."
+msgstr ""
 
 msgid "See here for more details."
 msgstr ""
@@ -1550,6 +1669,9 @@ msgstr "Visa skillnader i en annan flik"
 
 msgid "Show options"
 msgstr "Visa alternativ"
+
+msgid "Show the text infobox at the bottom of the texts"
+msgstr ""
 
 msgid "Single bars"
 msgstr "Enkla staplar"
@@ -1756,12 +1878,13 @@ msgstr ""
 msgid "The logo has the site name on itself"
 msgstr "Logotypen innehåller sidnamnet"
 
-#. (username)
-msgid "The new password for %1 is:"
-msgstr ""
-
 msgid "The optional subtitle"
 msgstr "Den valfria undertexten"
+
+msgid ""
+"The page /special/index is twice special. It is assumed to be the\n"
+"default page to visit when loading the site’s root."
+msgstr ""
 
 msgid "The password will be mailed at this address"
 msgstr "Lösenordet kommer att mailas till denna adress"
@@ -1799,6 +1922,9 @@ msgstr ""
 
 msgid "The whole book in as single signature"
 msgstr "Hela boken som en enskild signatur"
+
+msgid "Then approve the change as it would be a normal publishing."
+msgstr ""
 
 msgid "Then fetch the updates from this page."
 msgstr ""
@@ -1880,6 +2006,15 @@ msgstr "Tid är valfritt."
 msgid "Title"
 msgstr "Titel"
 
+msgid "Title and chapter. If one side document: chapter."
+msgstr ""
+
+msgid "Title and section.  If one side document: section."
+msgstr ""
+
+msgid "Title and subtitle. If one side document: title."
+msgstr ""
+
 msgid "Title for sorting"
 msgstr "Titel för sortering"
 
@@ -1909,6 +2044,13 @@ msgstr "För att snabbt formatera pjäser, använd"
 msgid "To resume the editing you can visit the following URL"
 msgstr "För att återgå till redigeringen kan du besöka denna URL"
 
+#. (loc('Update')
+#. (loc("Update"))
+msgid ""
+"To save or update the templates, you need first to save\n"
+"    the options with the \"%1\" button"
+msgstr ""
+
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 "För att granska de introducerade ändringarna, kan du besöka följande URL"
@@ -1927,6 +2069,11 @@ msgstr "Tredubbla staplar"
 
 msgid "Try a random text if unsure"
 msgstr "Prova en slumpmässig text om du är osäker"
+
+msgid ""
+"Turn links to images into images (affects site display only, static formats "
+"have the link)"
+msgstr ""
 
 msgid "Two side layout"
 msgstr "Tvåsidig layout"
@@ -1968,6 +2115,9 @@ msgid "Update account info"
 msgstr "Updatera kontoinformation"
 
 msgid "Update category description"
+msgstr ""
+
+msgid "Update to current settings"
 msgstr ""
 
 msgid "Upload"
@@ -2087,6 +2237,12 @@ msgid ""
 "    have attached one or more images. This is not enough! To make them\n"
 "    appear, you have to place somewhere in the body or in the header,\n"
 "    depending on their purpose. See the examples below."
+msgstr ""
+
+msgid ""
+"You MUST specify a reason, otherwise the line will have no effect.\n"
+"The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
+"etc.) is irrelevant."
 msgstr ""
 
 msgid "You already proved you are human"
@@ -2252,6 +2408,9 @@ msgstr ""
 msgid "mandatory"
 msgstr "obligatorisk"
 
+msgid "new-example-uri"
+msgstr ""
+
 msgid "no font embedding"
 msgstr ""
 
@@ -2365,6 +2524,10 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid ""
+#~ "Directory with templates. Do not set it unless you know what you are doing"
+#~ msgstr "Mallkatalog. Ordna inte denna om du inte vet vad du gör"
 
 #~ msgid "Add to library"
 #~ msgstr "Lägg till i bibliotek"
