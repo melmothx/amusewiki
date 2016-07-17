@@ -464,7 +464,7 @@
             [%- FOREACH heading IN bb.all_headings %]
             [%- IF heading.desc %]
             <option value="[% heading.name %]"[% IF heading.name == bb.headings %] selected="selected"[% END %]>
-              [% heading.desc %]
+              [% loc(heading.desc) %]
             </option>
             [%- END %]
             [%- END %]
