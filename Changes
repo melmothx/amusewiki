@@ -16,7 +16,7 @@ dedicated tree.
  - Move the infobox to the bottom only if configured so for blog-styled
  - Editing page: various layout fixes (uses ajax for speedup) (GH #60)
  - Handle the unicode exceptions grafully (it was spamming errors on bad requests) (GH #65)
- - Added meta description to categories and texts
+ - Added meta description to categories and texts (GH #58)
  - Added option to turn links to images into actual images (GH #53)
  - Tested and adjusted custom template support (GH #64)
  - Added profiles for BB (GH #61) (experimental, but working, probably
