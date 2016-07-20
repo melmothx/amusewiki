@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-07-13 00:31-0400\n"
+"PO-Revision-Date: 2016-07-20 00:38-0400\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -22,7 +22,7 @@ msgstr "%1 no existe"
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr "%1 en móvil"
+msgstr "%1 en dispositivos móviles"
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(citas inteligentes, enlaces, notas a pie de página, etc.)"
@@ -106,7 +106,7 @@ msgid "Add a new text"
 msgstr "Agrega a la biblioteca"
 
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr "Agregar un adjunto (PNG, JPG or PDF"
+msgstr "Agregar un adjunto (PNG, JPG or PDF)"
 
 msgid "Add crop marks to the PDF"
 msgstr "Agregar marcas de corte al PDF"
@@ -155,6 +155,9 @@ msgid ""
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"Luego de la aprobación del\n"
+"  cambio, aparecerá en %1. Hay un botón grande rojo debajo\n"
+"  de cada texto borrado, donde puedes purgarlo."
 
 msgid "Alias"
 msgstr "Alias"
@@ -241,7 +244,7 @@ msgid "Author"
 msgstr "Autor/a"
 
 msgid "Author and title. If one side document: title."
-msgstr ""
+msgstr "Autor y título. Si es un documento de un lado: título."
 
 msgid "Authors"
 msgstr "Autores"
@@ -326,12 +329,15 @@ msgid ""
 "doing, you can delete an existing text and point to another adding a\n"
 "#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"Cambiar las urls es una mala práctica. De todas formas, si sabes lo que\n"
+"estás habiendo, puedes borrar un texto existente y apuntarlo a otro\n"
+"añadiendo la directiva #DELETED en el encabezado con una sintaxis especial:"
 
 msgid "Chapter"
 msgstr "Capítulo"
 
 msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+msgstr "Capítulo y sección. Si es documento de un lado: capítulo."
 
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Capítulo, solo para divisiones de capítulos en libros"
@@ -466,6 +472,9 @@ msgid ""
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
+"Directorio con plantillas en el repositorio del sitio, por ejemplo\n"
+"         \\\"templates\\\" (solo ASCII). No lo ajustes a menos que sepas\n"
+"         exactamente lo que estás haciendo"
 
 msgid "Display url as"
 msgstr "Mostrar dirección url como"
@@ -502,7 +511,7 @@ msgid "Edit site configuration"
 msgstr "Editar configuración del sitio"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr ""
+msgstr "Edita el texto que quieras despublicar y agrega esta línea al encabezado:"
 
 msgid "Edit this text"
 msgstr "Edita este texto"
@@ -610,7 +619,7 @@ msgid "First slide"
 msgstr "Primera diapositiva"
 
 msgid "First you have to unpublish it via #DELETED."
-msgstr ""
+msgstr "Primero debes despublicarlo a través de #DELETED."
 
 msgid "Fix typography (smart quotes)"
 msgstr "Corregir tipografía"
@@ -751,6 +760,10 @@ msgid ""
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
+"Aquí puedes guardar o cargar tus plantillas. La lista de textos\n"
+"       y la imagen de portada se excluyen de las opciones guardads. Puedes\n"
+"       usar esto para guardar opciones de papel, tipografías, imposición\n"
+"       y otras opciones."
 
 msgid "Hide options"
 msgstr "Ocultar opciones"
@@ -759,22 +772,22 @@ msgid "Higher division factor means narrower margins"
 msgstr "Un factor de división más alto significa márgenes más delgados"
 
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "¿Cómo creo una página de aterrizaje?"
 
 msgid "How do I create a special page?"
-msgstr ""
+msgstr "¿Cómo modifico una página especial?"
 
 msgid "How do I delete a text?"
-msgstr ""
+msgstr "¿Cómo elimino un texto?"
 
 msgid "How do I modify a special page?"
-msgstr ""
+msgstr "¿Cómo modifico una página especial?"
 
 msgid "How do I purge a text?"
-msgstr ""
+msgstr "¿Cómo purgo un texto?"
 
 msgid "How do I redirect to another page?"
-msgstr ""
+msgstr "¿Cómo redirijo hacia otra página?"
 
 msgid "How to choose a password"
 msgstr "Cómo elegir una contraseña"
@@ -798,7 +811,7 @@ msgid "I want an imposed (ready to print) PDF"
 msgstr "Quiero un PDF en cuadernillo (listo para imprimir)"
 
 msgid "IRC channel on freenode"
-msgstr ""
+msgstr "Canal IRC en freenode"
 
 msgid "Id"
 msgstr "Id"
@@ -876,12 +889,17 @@ msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
 msgstr ""
+"Si tu sitio no tiene eso, basta con crear una página especial y asignar\n"
+"la uri \"index\".\""
 
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
+"Si tu sitio es multilenguaje, puedes crear una página de aterrizaje\n"
+"  específica para cada lengua, por ejemplo \"/special/index-it\", o sea,\n"
+"  la URI \"index\", un guión, y el código de localización."
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -945,6 +963,8 @@ msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
+"Funciona igual que una página normal, pero el enlace está escondido.\n"
+"Basta con agregar \"/edit\" a la url de la página."
 
 msgid "Italic"
 msgstr "Itálica"
@@ -953,16 +973,16 @@ msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Cursivas, negrita, monoespaciado y código, saltos de línea..."
 
 msgid "Job deleted"
-msgstr "Trabajo borrado"
+msgstr "Proceso borrado"
 
 msgid "Job not found"
-msgstr "Trabajo no encontrado"
+msgstr "Proceso no encontrado"
 
 msgid "Jobs"
-msgstr "Trabajos"
+msgstr "Procesos"
 
 msgid "Jobs waiting before yours:"
-msgstr "Jobs esperando antes que el tuyo:"
+msgstr "Procesos esperando antes que el tuyo:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr "Empaqueta 2 páginas lógicas consecutivas en solo una física"
@@ -1038,11 +1058,11 @@ msgid "Lists"
 msgstr "Listas"
 
 msgid "Load"
-msgstr ""
+msgstr "Cargar"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
-msgstr ""
+msgstr "Cargada la configuración \"%1\""
 
 msgid "Locale"
 msgstr "Local"
@@ -1057,7 +1077,7 @@ msgid "Logout"
 msgstr "Cerrar sesión"
 
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "Mira en el menú de la cuenta, hay una entrada para eso."
 
 msgid "Lost your password?"
 msgstr "¿Olvidaste tu contraseña?"
@@ -1081,7 +1101,7 @@ msgid "Main text"
 msgstr "Texto principal"
 
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "Preguntas frecuentes para mantenedores"
 
 msgid "Make a link clickable"
 msgstr "Hacer un link clickeable"
@@ -1186,7 +1206,7 @@ msgid "No text was added yet"
 msgstr "No se ha agregado un texto todavía"
 
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #. ($c->loc('Commit')
 msgid ""
@@ -1216,7 +1236,7 @@ msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Número de últimas publicaciones para mostrar en el RSS (un entero)"
 
 msgid "Number of results to show on paginated pages (an integer)"
-msgstr ""
+msgstr "Número de resultados a mostrar en páginas con paginación (un entero)"
 
 msgid "Numeric List"
 msgstr "Lista enumerada"
@@ -1231,7 +1251,7 @@ msgid "Open wiki"
 msgstr "Wiki abierta"
 
 msgid "Option templates"
-msgstr ""
+msgstr "Opciones de plantillas"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1477,6 +1497,9 @@ msgid ""
 "  the bare page name as shown above. External redirecting is not\n"
 "  supported."
 msgstr ""
+"Por favor ten presente: sin ningún prefijo, protocolo o hostname,\n"
+"  solo se muestra el nombre de la página puro como se muestra más\n"
+"  arriba. No se soporta redireccionamiento externo."
 
 msgid "Please prove you are a human"
 msgstr "Por favor prueba que eres una persona"
@@ -1560,7 +1583,7 @@ msgstr "Purge"
 
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
-msgstr ""
+msgstr "Purgar significa eliminar por completo del archivo, no solo esconderlo."
 
 msgid ""
 "Put additional information here (original\n"
@@ -1596,7 +1619,7 @@ msgid "Read the whole text..."
 msgstr "Leer todo el texto..."
 
 msgid "Real time help"
-msgstr ""
+msgstr "Ayuda en tiempo real"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1622,7 +1645,7 @@ msgid "Reason"
 msgstr "Razón"
 
 msgid "Reason for deletion"
-msgstr ""
+msgstr "Razón de eliminación"
 
 msgid "Recheck"
 msgstr "Volver a revisar"
@@ -1651,7 +1674,7 @@ msgid "Remove cover image"
 msgstr "Eliminar imagen de portada"
 
 msgid "Rename to"
-msgstr ""
+msgstr "Renombrar a"
 
 msgid "Repeat email"
 msgstr "Repetir correo electrónico"
@@ -1712,11 +1735,11 @@ msgid "Sans font"
 msgstr "Tipografía sans"
 
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "Guardar las opciones actuales con un nombre"
 
 #. ($pname)
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "Guardada la configuración \"%1\""
 
 msgid "Search"
 msgstr "Búsqueda"
@@ -1728,7 +1751,7 @@ msgid "Section"
 msgstr "Sección"
 
 msgid "Section and subsection. If one side document: section."
-msgstr ""
+msgstr "Sección y subsección. Si es documento de un lado: sección."
 
 msgid "See here for more details."
 msgstr "Ver aquí para más detalles."
@@ -1767,7 +1790,7 @@ msgid "Show options"
 msgstr "Mostrar opciones"
 
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "Mostrar la baja de información de texto al final de los textos"
 
 msgid "Single bars"
 msgstr "Barras simples"
@@ -1823,8 +1846,7 @@ msgstr ""
 "para %1 en %2."
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
-"Disculpa, hay muchos trabajos pendientes, ¡intenta más tarde por favor!"
+msgstr "Disculpa, hay muchos procesos pendientes, ¡intenta más tarde por favor!"
 
 msgid "Source"
 msgstr "Fuente"
@@ -1995,6 +2017,8 @@ msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
 msgstr ""
+"La página /special/index es doblemente especial. Se asume que es la\n"
+"página predeterminada para visitar cuando se carga la raíz del sitio."
 
 msgid "The password will be mailed at this address"
 msgstr "La contraseña será enviada por correo electrónico a esta dirección"
@@ -2037,7 +2061,7 @@ msgid "The whole book in as single signature"
 msgstr "Todo el libro en un solo cuadernillo"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "Luego aprueba el cambio como si fuera una publicación normal."
 
 msgid "Then fetch the updates from this page."
 msgstr "Luego toma las actualizaciones desde esta página."
@@ -2131,13 +2155,13 @@ msgid "Title"
 msgstr "Título"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "Título y capítulo. Si es un documento de un lado: capítulo."
 
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "Título y capítulo. Si es un documento de un lado: sección."
 
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "Título y capítulo. Si es un documento de un lado: título."
 
 msgid "Title for sorting"
 msgstr "Título para ordenar"
@@ -2174,6 +2198,8 @@ msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
 msgstr ""
+"Para guardar o actualizar las plantillas, primero necesitas guardar\n"
+"    las opciones con el botón \"%1\""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Para ver los cambios introducidos, puedes visitar la siguiente URL"
@@ -2197,6 +2223,8 @@ msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
 msgstr ""
+"Cambiar enlaces a imágenes en imágenes (afecta solo la muestra en el sitio, los\n"
+"formatos estáticos tienen el enlace)"
 
 msgid "Two side layout"
 msgstr "Diagramación para ambos lados de la hoja"
@@ -2246,7 +2274,7 @@ msgid "Update category description"
 msgstr "Actualizar descripción de categoría"
 
 msgid "Update to current settings"
-msgstr ""
+msgstr "Actualizar a opciones actuales"
 
 msgid "Upload"
 msgstr "Subir"
@@ -2383,6 +2411,9 @@ msgid ""
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
+"DEBES especificar una razón, de otra forma, la línea no tendrá efecto.\n"
+"El orden de las líneas del encabezado (donde está \"#title\", \"#lang\",\n"
+"etc.) es irrelevante."
 
 msgid "You already proved you are human"
 msgstr "Ya probaste que eres una persona"
@@ -2555,7 +2586,7 @@ msgid "mandatory"
 msgstr "obligatorio"
 
 msgid "new-example-uri"
-msgstr ""
+msgstr "uri-ejemplo-nuevo"
 
 msgid "no font embedding"
 msgstr "sin incrustación de tipografía"
@@ -2626,16 +2657,16 @@ msgid "taken"
 msgstr "tomado"
 
 msgid "texts by authors, title, topic..."
-msgstr "textos ordenados por autora/o, título, tema..."
+msgstr "Textos ordenados por autora/o, título, tema..."
 
 msgid "texts sorted by author"
-msgstr "textos ordenados por autor/a"
+msgstr "Textos ordenados por autor/a"
 
 msgid "texts sorted by title"
-msgstr "textos ordenador por título"
+msgstr "Textos ordenados por título"
 
 msgid "texts sorted by topics"
-msgstr "textos ordenados por temas"
+msgstr "Textos ordenados por temas"
 
 msgid "the author of the text (as displayed)"
 msgstr "el/la autor/a del texto (como es mostrado)"
