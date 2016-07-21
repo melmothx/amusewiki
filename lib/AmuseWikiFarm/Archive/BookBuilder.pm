@@ -561,7 +561,7 @@ The font size in point, from 9 to 12.
 
 
 sub fontsize_values {
-    return [ 9..12 ];
+    return [ Text::Amuse::Compile::TemplateOptions->all_fontsizes ];
 }
 
 enum(FontSizeType => __PACKAGE__->fontsize_values);
