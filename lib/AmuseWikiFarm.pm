@@ -173,7 +173,7 @@ sub handle_unicode_encoding_exception {
     my ($c, $debug) = @_;
     Dlog_info {
         "Handled unicode exception $_"
-    } [ $debug, $c->request->uri->as_string ];
+    } [ $debug, $c->request->env ];
     # here we stash this flag, and first thing we check it in the root
     # controller. This is a bit suboptimal, and not so nice, but it
     # appears to be the safest way without patching Catalyst.
