@@ -1009,6 +1009,7 @@ sub _main_methods {
               crop_paper_width
               crop_paper_height
               crop_paper_thickness
+              unbranded
               cover/;
 }
 

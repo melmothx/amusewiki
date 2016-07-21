@@ -414,6 +414,13 @@
     </div>
     <div class="checkbox">
       <label>
+        <input type="checkbox" name="unbranded" value="1" id="unbranded"
+               [% IF bb.unbranded %]checked="checked"[% END %]/>
+        [% loc('Unbranded PDF (hide site name, logo, etc.)') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
         <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
                [% IF bb.nocoverpage %]checked="checked"[% END %]/>
         [% loc('For texts without a table of content, start text on the very first page') %]
