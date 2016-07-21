@@ -360,6 +360,12 @@ has cover => (
               default => sub { 1 },
              );
 
+has unbranded => (
+                  is => 'rw',
+                  isa => 'Bool',
+                  default => sub { 0 },
+                 );
+
 has imposed => (
                 is => 'rw',
                 isa => 'Bool',
@@ -1210,6 +1216,13 @@ sub compile {
             delete $compiler_args{extra}{cover};
         }
     }
+    if ($self->unbranded) {
+        foreach my $brand (qw/logo site sitename siteslogan/) {
+            my $gone = delete $compiler_args{extra}{$brand};
+            log_debug { "Deleting $brand ($gone) from extra, unbranded pdf" };
+        }
+    }
+
     if (my $logo = $compiler_args{extra}{logo}) {
         log_debug {"Logo is $logo"};
         my $logofile_ok = 0;
