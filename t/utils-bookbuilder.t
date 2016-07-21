@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 180;
+use Test::More tests => 218;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -442,6 +442,34 @@ $bb->site->update({ bb_page_limit => 5 });
 
 }
 
+
+{
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
+                                                       dbic => $schema,
+                                                       site_id => '0blog0',
+                                                       job_id => 666791,
+                                                       imposed => 1,
+                                                       schema => '2up',
+                                                       signature => 0,
+                                                       papersize => 'b6',
+                                                       crop_papersize => 'a5',
+                                                       crop_marks => 1,
+                                                       unbranded => 1,
+                                                      });
+    ok($bb->add_text('first-test'));
+    my $pdf = check_file($bb, "unbranded");
+  SKIP: {
+        skip "Missing pdftotext", 3, unless $pdftotext;
+        my $pdftext = pdf_content($pdf);
+        like $pdftext, qr{666791\.pdf}, "Found marker";
+        like $pdftext, qr{Pg\s+0008}, "Found page marker";
+        like $pdftext, qr{page 4 \#1/4}, "Found signature marker";
+    }
+
+}
+
+
+
 sub pdf_content {
     my $pdf = shift;
     my $txt = $pdf;
@@ -489,9 +517,44 @@ sub check_file {
             }
             if ($check_logo) {
                 diag "Checking logo";
-                ok (scalar(grep { /\Q$check_logo\E/ } @files),
-                    "Found $check_logo in the source")
-                  or diag Dumper(\@files);
+                my @logos = grep { /\Q$check_logo\E/ } @files;
+                if ($bb->unbranded) {
+                    ok (!scalar(@logos),  "Not expected $check_logo in the source");
+                }
+                else {
+                    ok (scalar(@logos),  "Found $check_logo in the source");
+                }
+                if ($bb->format eq 'pdf') {
+                    my $produced = $bb->job_id . '.tex';
+                    my $tex;
+                    if ($bb->is_collection) {
+                        # tex rewritten
+                        ($tex) = $extractor->membersMatching(qr{\Q$produced\E$});
+                    }
+                    else {
+                        # one and only
+                        ($tex) = $extractor->membersMatching(qr{\.tex$});
+                    }
+                    ok ($tex, "Found the tex source in the zip") or diag Dumper(\@files);
+                    my $tex_body = $extractor->contents($tex->fileName);
+                    my $site_name = $bb->site->canonical;
+                    foreach my $search ($check_logo,
+                                        $bb->site->canonical,
+                                        $bb->site->sitename,
+                                        $bb->site->siteslogan) {
+                        if ($search) {
+                            diag "Checking $search in $tex";
+                            if ($bb->unbranded) {
+                                unlike $tex_body, qr{\Q$search\E},
+                                  "$search not found in unbranded";
+                            }
+                            else {
+                                like $tex_body, qr{\Q$search\E},
+                                  "$search found in unbranded";
+                            }
+                        }
+                    }
+                }
             }
         }
     }
