@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.911 2016-07-22
+
+ - Added albanian support
+ - New fonts dimensions in the bookbuilder: 13 and 14pt
+ - New bookbuilder option: unbranded PDF
+
 1.910 2016-07-18
 
  - Fixed pagination sorting with same date

@@ -1,3 +1,9 @@
+amusewiki (1.911-1) unstable; urgency=medium
+
+  * New minor release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Fri, 22 Jul 2016 17:28:43 +0200
+
 amusewiki (1.910-2) unstable; urgency=medium
 
   * Bumped up prerequisites
