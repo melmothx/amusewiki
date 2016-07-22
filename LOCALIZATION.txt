@@ -97,3 +97,7 @@ Add the language code to the script/upgrade_i18n script.
 
 Add the babel name to Text::Amuse::_language_mapping if missing.
 
+Tests which have a plan depending on the number of supported languages:
+
+ - t/controller_Latest.t
+ - t/multilang.t
