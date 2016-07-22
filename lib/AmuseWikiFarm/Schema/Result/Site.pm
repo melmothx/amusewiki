@@ -941,6 +941,7 @@ sub known_langs {
             fr => 'Français',
             nl => 'Nederlands',
             de => 'Deutsch',
+            sq => 'Shqip',
             sv => 'Svenska',
             pl => 'Polski',
             pt => 'Português',

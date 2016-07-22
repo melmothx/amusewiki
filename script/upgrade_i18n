@@ -10,7 +10,7 @@ cat $filelist
 xgettext.pl -P perl=* -P tt2=* \
     --output=lib/AmuseWikiFarm/I18N/messages.pot -f $filelist
 
-for i in hr fi es mk ru it de fr nl en sv pl pt; do
+for i in hr fi es mk ru it de fr nl en sq sv pl pt; do
     msgmerge --no-fuzzy-matching --update --no-location \
              lib/AmuseWikiFarm/I18N/$i.po \
              lib/AmuseWikiFarm/I18N/messages.pot
