@@ -124,6 +124,7 @@
     [%- IF site.turn_links_to_images_into_images %]
     <script src="[% c.uri_for('/static/js/amw-extimg.js', { v => 1 }) %]"></script>
     [%- END -%]
+    <script src="[% c.uri_for('/static/js/amw-footnotes.js', { v => 1 }) %]"></script>
     <script type="text/javascript">
       var shiftWindow = function() { scrollBy(0, -50) };
       window.addEventListener("hashchange", shiftWindow);

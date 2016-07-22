@@ -569,6 +569,7 @@ root/static/images/zip.png
 root/static/js/amuse.js
 root/static/js/amw-diff.js
 root/static/js/amw-extimg.js
+root/static/js/amw-footnotes.js
 root/static/js/bbselect.js
 root/static/js/bookbuilder.js
 root/static/js/bootstrap.js
