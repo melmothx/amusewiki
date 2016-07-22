@@ -511,7 +511,8 @@ msgid "Edit site configuration"
 msgstr "Editar configuración del sitio"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr "Edita el texto que quieras despublicar y agrega esta línea al encabezado:"
+msgstr ""
+"Edita el texto que quieras despublicar y agrega esta línea al encabezado:"
 
 msgid "Edit this text"
 msgstr "Edita este texto"
@@ -1583,7 +1584,8 @@ msgstr "Purge"
 
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
-msgstr "Purgar significa eliminar por completo del archivo, no solo esconderlo."
+msgstr ""
+"Purgar significa eliminar por completo del archivo, no solo esconderlo."
 
 msgid ""
 "Put additional information here (original\n"
@@ -1846,7 +1848,8 @@ msgstr ""
 "para %1 en %2."
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr "Disculpa, hay muchos procesos pendientes, ¡intenta más tarde por favor!"
+msgstr ""
+"Disculpa, hay muchos procesos pendientes, ¡intenta más tarde por favor!"
 
 msgid "Source"
 msgstr "Fuente"
@@ -2223,7 +2226,8 @@ msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
 msgstr ""
-"Cambiar enlaces a imágenes en imágenes (afecta solo la muestra en el sitio, los\n"
+"Cambiar enlaces a imágenes en imágenes (afecta solo la muestra en el sitio, "
+"los\n"
 "formatos estáticos tienen el enlace)"
 
 msgid "Two side layout"
@@ -2246,6 +2250,9 @@ msgstr ""
 
 msgid "UTC"
 msgstr "UTC"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr ""
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"

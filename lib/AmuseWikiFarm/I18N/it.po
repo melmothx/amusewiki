@@ -156,7 +156,9 @@ msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
-msgstr "Dopo l'approvazione dei cambiamenti, apparirà sotto %1. Per ogni testo rimosso c'è un bottone rosso, con il quale è possibile purgare il testo."
+msgstr ""
+"Dopo l'approvazione dei cambiamenti, apparirà sotto %1. Per ogni testo "
+"rimosso c'è un bottone rosso, con il quale è possibile purgare il testo."
 
 msgid "Alias"
 msgstr "Alias"
@@ -2041,7 +2043,9 @@ msgid "The whole book in as single signature"
 msgstr "L'intero libro in un'unica segnatura"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr "Poi approva la revisione come se fosse una normale procedura di pubblicazione."
+msgstr ""
+"Poi approva la revisione come se fosse una normale procedura di "
+"pubblicazione."
 
 msgid "Then fetch the updates from this page."
 msgstr "Poi recupera gli aggiornamenti da questa pagina."
@@ -2227,6 +2231,9 @@ msgstr ""
 
 msgid "UTC"
 msgstr "UTC"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr ""
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"

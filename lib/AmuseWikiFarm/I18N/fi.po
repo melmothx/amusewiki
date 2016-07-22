@@ -2066,6 +2066,9 @@ msgstr ""
 msgid "UTC"
 msgstr ""
 
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr ""
+
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"

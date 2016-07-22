@@ -33,7 +33,7 @@ msgstr ""
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:481
+#: root/src/bookbuilder/index.tt:488
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
@@ -110,7 +110,7 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:489
+#: root/src/bookbuilder/index.tt:496
 msgid "Add a cover image (PNG or JPG)"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgstr ""
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:726
+#: root/src/bookbuilder/index.tt:733
 msgid "Add crop marks to the PDF"
 msgstr ""
 
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:459
+#: root/src/bookbuilder/index.tt:466
 msgid "Author and title. If one side document: title."
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:656
+#: root/src/bookbuilder/index.tt:663
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -327,7 +327,7 @@ msgstr ""
 msgid "Bookbuilder page limit (integer)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:814
+#: root/src/bookbuilder/index.tt:821
 msgid "Build it"
 msgstr ""
 
@@ -376,7 +376,7 @@ msgstr ""
 msgid "Chapter"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:460
+#: root/src/bookbuilder/index.tt:467
 msgid "Chapter and section. If one side document: chapter."
 msgstr ""
 
@@ -428,7 +428,7 @@ msgstr ""
 msgid "Convert to archive markup"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:849
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:855
 msgid "Couldn't add the text"
 msgstr ""
 
@@ -440,7 +440,7 @@ msgstr ""
 msgid "Couldn't build that"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:478
+#: root/src/bookbuilder/index.tt:485
 msgid "Cover image (optional)"
 msgstr ""
 
@@ -504,7 +504,7 @@ msgstr ""
 msgid "Deferred/Deleted texts"
 msgstr ""
 
-#: root/src/admin/jobs.tt:62 root/src/admin/show_users.tt:10 root/src/admin/show_users.tt:32 root/src/bookbuilder/index.tt:45 root/src/bookbuilder/index.tt:864 root/src/category-details-edit.tt:22 root/src/console/alias_display.tt:126
+#: root/src/admin/jobs.tt:62 root/src/admin/show_users.tt:10 root/src/admin/show_users.tt:32 root/src/bookbuilder/index.tt:45 root/src/bookbuilder/index.tt:871 root/src/category-details-edit.tt:22 root/src/console/alias_display.tt:126
 msgid "Delete"
 msgstr ""
 
@@ -659,7 +659,7 @@ msgid ""
 "        sectioning for this to work."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:591
+#: root/src/bookbuilder/index.tt:598
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
@@ -688,7 +688,7 @@ msgstr ""
 msgid "File uploaded!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:804
+#: root/src/bookbuilder/index.tt:811
 msgid "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 
@@ -724,11 +724,11 @@ msgstr ""
 msgid "Fix typography (smart quotes)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:707
+#: root/src/bookbuilder/index.tt:714
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:688
+#: root/src/bookbuilder/index.tt:695
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr ""
 
@@ -736,7 +736,7 @@ msgstr ""
 msgid "Fixed category list"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:674 root/src/bookbuilder/schemas.tt:37
+#: root/src/bookbuilder/index.tt:681 root/src/bookbuilder/schemas.tt:37
 msgid "Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together."
 msgstr ""
 
@@ -761,7 +761,7 @@ msgstr ""
 msgid "For texts from the internet use"
 msgstr ""
 
-#: root/src/admin/edit.tt:753 root/src/bookbuilder/index.tt:419
+#: root/src/admin/edit.tt:753 root/src/bookbuilder/index.tt:426
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 
@@ -858,7 +858,7 @@ msgstr ""
 msgid "Headings"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:352 root/src/bookbuilder/index.tt:764
+#: root/src/bookbuilder/index.tt:352 root/src/bookbuilder/index.tt:771
 msgid "Height:"
 msgstr ""
 
@@ -866,7 +866,7 @@ msgstr ""
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:850
+#: root/src/bookbuilder/index.tt:857
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
@@ -924,7 +924,7 @@ msgstr ""
 msgid "I am human"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:527
+#: root/src/bookbuilder/index.tt:534
 msgid "I want an imposed (ready to print) PDF"
 msgstr ""
 
@@ -969,7 +969,7 @@ msgid ""
 "          stored in the archive, but will not be published."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:533
+#: root/src/bookbuilder/index.tt:540
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
@@ -1022,7 +1022,7 @@ msgstr ""
 msgid "Images:"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:290 root/src/bookbuilder/index.tt:522 root/src/bookbuilder/schemas.tt:3
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:290 root/src/bookbuilder/index.tt:529 root/src/bookbuilder/schemas.tt:3
 msgid "Imposition schemas"
 msgstr ""
 
@@ -1175,7 +1175,7 @@ msgstr ""
 msgid "Lists"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:861
+#: root/src/bookbuilder/index.tt:868
 msgid "Load"
 msgstr ""
 
@@ -1312,7 +1312,7 @@ msgstr ""
 msgid "My description"
 msgstr ""
 
-#: root/src/admin/list.tt:18 root/src/bookbuilder/index.tt:860
+#: root/src/admin/list.tt:18 root/src/bookbuilder/index.tt:867
 msgid "Name"
 msgstr ""
 
@@ -1368,11 +1368,11 @@ msgstr ""
 msgid "No text found!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:938
+#: root/src/bookbuilder/index.tt:945
 msgid "No text was added yet"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:457
+#: root/src/bookbuilder/index.tt:464
 msgid "None"
 msgstr ""
 
@@ -1425,7 +1425,7 @@ msgstr ""
 msgid "Open wiki"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:842
+#: root/src/bookbuilder/index.tt:849
 msgid "Option templates"
 msgstr ""
 
@@ -1480,18 +1480,18 @@ msgstr ""
 msgid "Page not found!"
 msgstr ""
 
-#: root/src/admin/edit.tt:638 root/src/bookbuilder/index.tt:433
+#: root/src/admin/edit.tt:638 root/src/bookbuilder/index.tt:440
 msgid "Page where to start a chapter"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:636
+#: root/src/bookbuilder/index.tt:643
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:543
+#: root/src/bookbuilder/index.tt:550
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1502,7 +1502,7 @@ msgid ""
 "        reduce the number of blank pages."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:783
+#: root/src/bookbuilder/index.tt:790
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
 
@@ -1688,11 +1688,11 @@ msgstr ""
 msgid "Please select the desired fonts"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:564 root/src/bookbuilder/index.tt:607
+#: root/src/bookbuilder/index.tt:571 root/src/bookbuilder/index.tt:614
 msgid "Please select the signature size:"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:733
+#: root/src/bookbuilder/index.tt:740
 msgid "Please select the size of each page including the crop marks, before the imposing"
 msgstr ""
 
@@ -1793,7 +1793,7 @@ msgstr ""
 msgid "Queue"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:844
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:850
 msgid "Quota exceeded, too many pages"
 msgstr ""
 
@@ -1867,11 +1867,11 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:497
+#: root/src/bookbuilder/index.tt:504
 msgid "Remove cover image"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:862
+#: root/src/bookbuilder/index.tt:869
 msgid "Rename to"
 msgstr ""
 
@@ -1924,7 +1924,7 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:452
+#: root/src/bookbuilder/index.tt:459
 msgid "Running headings"
 msgstr ""
 
@@ -1952,7 +1952,7 @@ msgstr ""
 msgid "Sans font"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:916
+#: root/src/bookbuilder/index.tt:923
 msgid "Save the current settings with a name"
 msgstr ""
 
@@ -1973,11 +1973,11 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:461
+#: root/src/bookbuilder/index.tt:468
 msgid "Section and subsection. If one side document: section."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:690 root/src/bookbuilder/index.tt:709
+#: root/src/bookbuilder/index.tt:697 root/src/bookbuilder/index.tt:716
 msgid "See here for more details."
 msgstr ""
 
@@ -2138,7 +2138,7 @@ msgstr ""
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:347 root/src/bookbuilder/index.tt:360 root/src/bookbuilder/index.tt:759 root/src/bookbuilder/index.tt:772
+#: root/src/bookbuilder/index.tt:347 root/src/bookbuilder/index.tt:360 root/src/bookbuilder/index.tt:766 root/src/bookbuilder/index.tt:779
 msgid "Standard"
 msgstr ""
 
@@ -2337,7 +2337,7 @@ msgstr ""
 msgid "The webserver needs to be reconfigured. Please execute in a root shell the following commands:"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:575 root/src/bookbuilder/index.tt:618
+#: root/src/bookbuilder/index.tt:582 root/src/bookbuilder/index.tt:625
 msgid "The whole book in as single signature"
 msgstr ""
 
@@ -2440,15 +2440,15 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:462
+#: root/src/bookbuilder/index.tt:469
 msgid "Title and chapter. If one side document: chapter."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:463
+#: root/src/bookbuilder/index.tt:470
 msgid "Title and section.  If one side document: section."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:458
+#: root/src/bookbuilder/index.tt:465
 msgid "Title and subtitle. If one side document: title."
 msgstr ""
 
@@ -2491,7 +2491,7 @@ msgstr ""
 
 #. (loc('Update')
 #. (loc("Update"))
-#: root/src/bookbuilder/index.tt:845
+#: root/src/bookbuilder/index.tt:852
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -2517,7 +2517,7 @@ msgstr ""
 msgid "Triple bars"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:954
+#: root/src/bookbuilder/index.tt:961
 msgid "Try a random text if unsure"
 msgstr ""
 
@@ -2525,7 +2525,7 @@ msgstr ""
 msgid "Turn links to images into images (affects site display only, static formats have the link)"
 msgstr ""
 
-#: root/src/admin/edit.tt:742 root/src/bookbuilder/index.tt:426
+#: root/src/admin/edit.tt:742 root/src/bookbuilder/index.tt:433
 msgid "Two side layout"
 msgstr ""
 
@@ -2548,6 +2548,10 @@ msgstr ""
 msgid "UTC"
 msgstr ""
 
+#: root/src/bookbuilder/index.tt:419
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr ""
+
 #: root/src/edit/edit.tt:222
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
@@ -2567,7 +2571,7 @@ msgstr ""
 msgid "Unsupported file type %1"
 msgstr ""
 
-#: root/src/admin/edit.tt:1033 root/src/admin/show_user_details.tt:70 root/src/bookbuilder/index.tt:817 root/src/bookbuilder/index.tt:845 root/src/category-details-edit.tt:36 root/src/user/edit.tt:39
+#: root/src/admin/edit.tt:1033 root/src/admin/show_user_details.tt:70 root/src/bookbuilder/index.tt:824 root/src/bookbuilder/index.tt:852 root/src/category-details-edit.tt:36 root/src/user/edit.tt:39
 msgid "Update"
 msgstr ""
 
@@ -2579,7 +2583,7 @@ msgstr ""
 msgid "Update category description"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:863
+#: root/src/bookbuilder/index.tt:870
 msgid "Update to current settings"
 msgstr ""
 
@@ -2608,7 +2612,7 @@ msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:573 root/src/bookbuilder/index.tt:616
+#: root/src/bookbuilder/index.tt:580 root/src/bookbuilder/index.tt:623
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
@@ -2671,11 +2675,11 @@ msgstr ""
 msgid "Where does this text come from?"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:505
+#: root/src/bookbuilder/index.tt:512
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:339 root/src/bookbuilder/index.tt:751
+#: root/src/bookbuilder/index.tt:339 root/src/bookbuilder/index.tt:758
 msgid "Width:"
 msgstr ""
 
@@ -2687,7 +2691,7 @@ msgid ""
 "      and all its subsections."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:943
+#: root/src/bookbuilder/index.tt:950
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -2749,7 +2753,7 @@ msgstr ""
 msgid "You are logged in now!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:948
+#: root/src/bookbuilder/index.tt:955
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
@@ -2913,7 +2917,7 @@ msgstr ""
 msgid "if the repository is exported"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:323 root/src/bookbuilder/index.tt:734
+#: root/src/bookbuilder/index.tt:323 root/src/bookbuilder/index.tt:741
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 

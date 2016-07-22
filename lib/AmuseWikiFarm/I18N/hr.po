@@ -498,7 +498,8 @@ msgid "Edit site configuration"
 msgstr "Uredi konfiguraciju sajta"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr "Izmijeni tekst koji želiš otkloniti i dodaj slijedeći redak u zaglavlju:"
+msgstr ""
+"Izmijeni tekst koji želiš otkloniti i dodaj slijedeći redak u zaglavlju:"
 
 msgid "Edit this text"
 msgstr "Uredi ovaj tekst"
@@ -2124,7 +2125,8 @@ msgstr "Za nastavak uređivanja, možeš ići na ovaj URL"
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
-msgstr "Za radnju s obrascima je najprije potrebno spremiti opcije gumbom \"%1\""
+msgstr ""
+"Za radnju s obrascima je najprije potrebno spremiti opcije gumbom \"%1\""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Za pogledati razlike, možeš ići na ovaj URL"
@@ -2167,6 +2169,9 @@ msgstr ""
 
 msgid "UTC"
 msgstr "UTC"
+
+msgid "Unbranded PDF (hide site name, logo, etc.)"
+msgstr ""
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
