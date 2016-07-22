@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.912 2016-07-22
+
+ - Added js to show the footnotes in the text
+
 1.911 2016-07-22
 
  - Added albanian support
