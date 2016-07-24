@@ -150,6 +150,12 @@ $mech->get_ok('/', "Crash 1.22 fixed");
                                             option_value => 'perl tex' });
     is $site->get_option('use_js_highlight'), 'perl tex';
     is $site->use_js_highlight_value, 'perl tex';
-    is $site->use_js_highlight, '{"languages":["perl","tex"]}';
-
+    like $site->use_js_highlight, qr{\A
+                                     \s*\{
+                                     \s*"languages"\s*:
+                                     \s*\[\s*"perl",\s*
+                                     "tex"
+                                     \s*\]
+                                     \s*\}
+                                     \s*\z}sx;
 }
