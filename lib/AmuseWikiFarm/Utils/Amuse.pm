@@ -14,6 +14,8 @@ use Digest::MD5 qw/md5_hex/;
 use DateTime;
 use Date::Parse qw/str2time/;
 use Text::Unidecode qw/unidecode/;
+use JSON::MaybeXS ();
+use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 
 our @ISA = qw(Exporter);
@@ -25,6 +27,8 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_filepath_is_valid
                     clean_username
                     clean_html
+                    to_json
+                    from_json
                     amw_meta_stripper
                     cover_filename_is_valid
                     muse_filename_is_valid/;
@@ -871,5 +875,28 @@ sub amw_meta_stripper {
     return $meta_desc;
 }
 
+sub to_json {
+    my ($data) = @_;
+    my $json;
+    try {
+        $json = JSON::MaybeXS->new(ascii => 1, pretty => 1)->encode($data);
+    } catch {
+        my $error = $_;
+        Dlog_error { "$error: Failed to encode into json $_" } $data;
+    };
+    return $json;
+}
+
+sub from_json {
+    my ($json) = @_;
+    my $data;
+    try {
+        $data = JSON::MaybeXS->new->decode($json);
+    } catch {
+        my $error = $_;
+        log_error { "$error: Failed to decode json $json" };
+    };
+    return $data;
+}
 
 1;
