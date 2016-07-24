@@ -372,6 +372,7 @@ lib/AmuseWikiFarm/Utils/Paginator/Object.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
 lib/AmuseWikiFarm/View/HTML.pm
+lib/AmuseWikiFarm/View/JSON.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
 lib/CatalystX/AmuseWiki/I18N.pm
 LOCALIZATION.txt
@@ -992,6 +993,7 @@ t/user-admin.t
 t/users.t
 t/utils-bookbuilder.t
 t/utils-cgitsetup.t
+t/utils-json.t
 t/utils-paginator.t
 t/view_HTML.t
 t/view_StaticFile.t

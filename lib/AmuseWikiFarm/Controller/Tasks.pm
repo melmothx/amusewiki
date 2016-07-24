@@ -4,8 +4,6 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
-use JSON qw/to_json/;
-
 =head1 NAME
 
 AmuseWikiFarm::Controller::Tasks - Catalyst Controller
@@ -69,9 +67,8 @@ sub display :Chained('status') :PathPart('') :Args(0) {
 
 sub ajax :Chained('status') :PathPart('ajax') :Args(0) {
     my ($self, $c, $job) = @_;
-    $c->res->content_type('application/json');
-    $c->response->body(to_json($c->stash->{job}, { ascii => 1,
-                                                   pretty => 1 }));
+    $c->stash(json => delete($c->stash->{job}));
+    $c->detach($c->view('JSON'));
 }
 
 

@@ -6,8 +6,7 @@ use warnings;
 use base 'DBIx::Class::ResultSet';
 
 use DateTime;
-use JSON qw/to_json from_json/;
-use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
+use AmuseWikiFarm::Utils::Amuse qw/clean_username to_json/;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -59,7 +58,7 @@ sub enqueue {
 
     my $insertion = {
                      task    => $task,
-                     payload => to_json($payload, { pretty => 1 }),
+                     payload => to_json($payload),
                      status  => 'pending',
                      created => DateTime->now,
                      priority => $priority || 10,

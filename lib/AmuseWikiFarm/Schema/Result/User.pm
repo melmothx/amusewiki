@@ -223,11 +223,8 @@ __PACKAGE__->add_columns(
     },
 );
 
-use JSON::MaybeXS;
 use AmuseWikiFarm::Log::Contextual;
-
-# unclear if it's fork safe. I assume so.
-my $serializer = JSON::MaybeXS->new(ascii => 1, pretty => 1);
+use AmuseWikiFarm::Utils::Amuse ();
 
 =head2 available_roles
 
@@ -322,10 +319,10 @@ database with the first argument as name and return the new profile.
 
 sub add_bb_profile {
     my ($self, $name, $bb) = @_;
-    my $profile = $bb->serialize_profile;
+    my $json = AmuseWikiFarm::Utils::Amuse::to_json($bb->serialize_profile);
     return $self->add_to_bookbuilder_profiles({
                                                profile_name => ($name || 'No name') . '',
-                                               profile_data => $serializer->encode($profile),
+                                               profile_data => $json,
                                               });
 }
 

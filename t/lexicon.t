@@ -19,8 +19,8 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
 use Path::Tiny;
-use JSON;
 use Data::Dumper;
+use AmuseWikiFarm::Utils::Amuse qw/to_json/;
 use AmuseWikiFarm::Utils::LexiconMigration;
 use AmuseWikiFarm::Archive::Lexicon;
 

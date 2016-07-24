@@ -21,7 +21,6 @@ Catalyst Controller.
 
 =cut
 
-use JSON qw/to_json/;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paginator;
 use Data::Page;
@@ -88,10 +87,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
                              url => $c->uri_for($txt->full_uri)->as_string,
                             };
         }
-        $c->res->content_type('application/json');
-        $c->response->body(to_json(\@unrolled, { ascii => 1,
-                                                 pretty => 1 }));
-        $c->detach();
+        $c->stash(json => \@unrolled);
+        $c->detach($c->view('JSON'));
         return;
     }
     my $format_link = sub {

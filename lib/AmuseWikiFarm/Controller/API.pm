@@ -22,8 +22,6 @@ Catalyst Controller.
 
 =cut
 
-use JSON qw/encode_json/;
-
 sub api :Chained('/site') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
@@ -39,8 +37,8 @@ sub autocompletion :Chained('api') :Args(1) {
         while (my $row = $result->next) {
             push @list, $row->name;
         }
-        $c->response->content_type('application/json; charset=UTF-8');
-        $c->response->body(encode_json(\@list));
+        $c->stash(json => \@list);
+        $c->detach($c->view('JSON'));
     }
     else {
         $c->detach('/not_found');
@@ -104,8 +102,8 @@ sub ckeditor :Chained('api') :Args(0) {
                                         }
                                        ],
                  };
-    $c->response->content_type('application/json; charset=UTF-8');
-    $c->response->body(encode_json($config));
+    $c->stash(json => $config);
+    $c->detach($c->view('JSON'));
 }
 
 =head1 AUTHOR

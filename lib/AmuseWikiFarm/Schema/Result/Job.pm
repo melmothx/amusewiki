@@ -182,11 +182,10 @@ use File::Spec;
 use File::Copy qw/copy move/;
 use Text::Amuse::Compile::Utils qw/read_file append_file/;
 use DateTime;
-use JSON qw/to_json
-            from_json/;
 use AmuseWikiFarm::Archive::BookBuilder;
 use AmuseWikiFarm::Log::Contextual;
-use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
+use AmuseWikiFarm::Utils::Amuse qw/clean_username to_json
+                                   from_json/;
 
 has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
@@ -269,7 +268,7 @@ sub as_hashref {
 
 sub as_json {
     my $self = shift;
-    return to_json($self->as_hashref, { ascii => 1, pretty => 1 } );
+    return to_json($self->as_hashref);
 }
 
 =head2 log_file
