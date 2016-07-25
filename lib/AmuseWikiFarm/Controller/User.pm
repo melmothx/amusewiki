@@ -194,10 +194,6 @@ sub language :Chained('/site') :PathPart('set-language') :Args(0) {
     if ($site->multilanguage) {
         my $locale = $site->locale;
         if (my $lang = $c->request->params->{lang}) {
-            # handle the alias
-            if ($lang eq 'sr') {
-                $lang = 'hr';
-            }
             if ($site->known_langs->{$lang}) {
                 $locale = $lang;
                 $c->session(user_locale => $locale,
