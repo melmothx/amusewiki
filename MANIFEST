@@ -882,6 +882,7 @@ t/html-upload.t
 t/indexer.t
 t/jobber.t
 t/lang-parsing.t
+t/lang-sr.t
 t/letsencrypt.t
 t/lexicon-2.t
 t/lexicon-migration.t
