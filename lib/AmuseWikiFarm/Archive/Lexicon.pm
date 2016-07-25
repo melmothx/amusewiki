@@ -75,19 +75,23 @@ sub localizer {
             return $handler;
         }
     }
-    my $global = $self->globals->{$lang};
-    unless ($global) {
+    my $global;
+    if (my $handler = $self->globals->{$lang}) {
+        $global = $handler;
+    }
+    else {
         my $po = path($self->system_wide_po_dir, "$lang.po")->stringify;
         if (-f $po) {
             log_debug { "Loading $po file for $lang" };
             # these are actual languages
             AmuseWikiFarm::Archive::Lexicon::Handles->import_po_file($lang, $po, 1);
+            $global = AmuseWikiFarm::Archive::Lexicon::Handles->get_handle($lang);
+            $self->globals->{$lang} = $global;
         }
         else {
             log_error { "$po not found for $repo $lang" };
+            die "Couldn't load global $po!";
         }
-        $global = AmuseWikiFarm::Archive::Lexicon::Handles->get_handle($lang);
-        $self->globals->{$lang} = $global;
     }
     my $site;
     my $local = path($self->repo_dir, $repo, site_files => locales => "$lang.po");
