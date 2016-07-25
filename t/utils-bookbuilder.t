@@ -6,7 +6,6 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
 # use Test::Memory::Cycle;
-use JSON qw/to_json from_json/;
 use Try::Tiny;
 use CAM::PDF;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
@@ -18,7 +17,7 @@ binmode $builder->todo_output,    ":utf8";
 
 use AmuseWikiFarm::Schema;
 use File::Basename qw/basename/;
-use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid muse_naming_algo/;
+use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid muse_naming_algo to_json from_json/;
 use AmuseWikiFarm::Archive::BookBuilder;
 
 my $pdftotext = system('pdftotext', '-v') == 0 ? 1 : 0;
@@ -326,7 +325,7 @@ is_deeply ($bb->texts,
             'first-test',
             'second-test',
             'do-this-by-yourself',
-           ], "List ok");
+           ], "List ok") or die Dumper($bb->texts);
 
 $bb->format('epub');
 check_file($bb, "epub");

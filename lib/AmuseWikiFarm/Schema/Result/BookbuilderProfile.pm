@@ -109,16 +109,13 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-07-16 17:22:19
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JD9wxBFreACKLJfVdrRErg
 
-use JSON::MaybeXS;
 use AmuseWikiFarm::Log::Contextual;
-
-# unclear if it's fork safe. I assume so.
-my $serializer = JSON::MaybeXS->new(ascii => 1, pretty => 1);
+use AmuseWikiFarm::Utils::Amuse ();
 
 sub bookbuilder_arguments {
     my $self = shift;
     my $json = $self->profile_data;
-    my $data = eval { $serializer->decode($json) };
+    my $data = AmuseWikiFarm::Utils::Amuse::from_json($json);
     if ($data) {
         return $data;
     }
@@ -131,7 +128,7 @@ sub bookbuilder_arguments {
 sub update_profile_from_bb {
     my ($self, $bb) = @_;
     my $data = $bb->serialize_profile;
-    $self->update({ profile_data => $serializer->encode($data) });
+    $self->update({ profile_data => AmuseWikiFarm::Utils::Amuse::to_json($data) });
 }
 
 sub rename_profile {

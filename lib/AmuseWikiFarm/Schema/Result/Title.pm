@@ -459,10 +459,9 @@ use DateTime;
 use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
-use JSON qw/to_json from_json/;
 use HTML::Entities qw/decode_entities/;
 use DateTime;
-use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid/;
+use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
 
 =head2 listing
 
@@ -939,7 +938,7 @@ sub text_html_structure {
     if ($force or !$self->text_structure) {
         my $struct = $self->_retrieve_text_structure;
         Dlog_debug { "Retriving text structure: $_" } $struct;
-        $self->text_structure(to_json($struct, { ascii => 1, pretty => 1 }));
+        $self->text_structure(to_json($struct));
         $self->update;
     }
     return from_json($self->text_structure);

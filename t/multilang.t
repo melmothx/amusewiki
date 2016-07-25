@@ -239,12 +239,7 @@ is $rev->title->uri, 'i-have-set-the-uri-it',
 
 foreach my $lang (sort keys %{ $site->known_langs }) {
     $mech->get_ok("/set-language?lang=$lang");
-    if ($lang eq 'sr') {
-        $mech->content_contains(qq{<html lang="hr"});
-    }
-    else {
-        $mech->content_contains(qq{<html lang="$lang"});
-    }
+    $mech->content_contains(qq{<html lang="$lang"});
 }
 $mech->get_ok("/set-language?lang=en");
 foreach my $lang (qw/alksd als jp lad/) {
@@ -252,4 +247,4 @@ foreach my $lang (qw/alksd als jp lad/) {
     $mech->content_contains('This is the en index');
 }
 $mech->get_ok("/set-language?lang=sr");
-$mech->content_contains("Napravi zbirku") or diag $mech->content;
+$mech->content_lacks("Napravi zbirku") or diag $mech->content;

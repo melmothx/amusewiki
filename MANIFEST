@@ -315,6 +315,7 @@ lib/AmuseWikiFarm/I18N/pl.po
 lib/AmuseWikiFarm/I18N/pt.po
 lib/AmuseWikiFarm/I18N/ru.po
 lib/AmuseWikiFarm/I18N/sq.po
+lib/AmuseWikiFarm/I18N/sr.po
 lib/AmuseWikiFarm/I18N/sv.po
 lib/AmuseWikiFarm/Log/Contextual.pm
 lib/AmuseWikiFarm/Log/Contextual/App.pm
@@ -372,6 +373,7 @@ lib/AmuseWikiFarm/Utils/Paginator/Object.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
 lib/AmuseWikiFarm/View/HTML.pm
+lib/AmuseWikiFarm/View/JSON.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
 lib/CatalystX/AmuseWiki/I18N.pm
 LOCALIZATION.txt
@@ -881,6 +883,7 @@ t/html-upload.t
 t/indexer.t
 t/jobber.t
 t/lang-parsing.t
+t/lang-sr.t
 t/letsencrypt.t
 t/lexicon-2.t
 t/lexicon-migration.t
@@ -992,6 +995,7 @@ t/user-admin.t
 t/users.t
 t/utils-bookbuilder.t
 t/utils-cgitsetup.t
+t/utils-json.t
 t/utils-paginator.t
 t/view_HTML.t
 t/view_StaticFile.t

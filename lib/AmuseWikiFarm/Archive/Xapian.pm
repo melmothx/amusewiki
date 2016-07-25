@@ -118,13 +118,21 @@ the archive's database.
 
 sub delete_text {
     my ($self, $text, $logger) = @_;
+    if ($text) {
+        $self->delete_text_by_uri($text->uri, $logger);
+    }
+}
+sub delete_text_by_uri {
+    my ($self, $uri, $logger) = @_;
+    return unless $uri;
     eval {
-        my $qterm = 'Q' . $text->uri;
+        my $qterm = 'Q' . $uri;
         $self->xapian_db->delete_document_by_term($qterm);
         log_debug { "Removed $qterm from xapian db" };
     };
-    if ($@ && $logger) {
-        $logger->("couldn't remove text: $@");
+    if ($@) {
+        log_debug { "Cannot remove Removed $uri from xapian db: $@" };
+        $logger->("couldn't remove text: $@") if $logger;
     }
 }
 

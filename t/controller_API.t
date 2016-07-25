@@ -5,7 +5,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use Test::More tests => 20;
 
 use Test::WWW::Mechanize::Catalyst;
-use JSON qw/from_json/;
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use Data::Dumper;
 
 use AmuseWikiFarm::Schema;

@@ -21,7 +21,6 @@ Catalyst Controller.
 
 =cut
 
-use JSON qw/to_json/;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paginator;
 use Data::Page;
@@ -76,22 +75,28 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
 
     foreach my $res (@results) {
         $res->{text} = $site->titles->text_by_uri($res->{pagename});
+        unless ($res->{text}) {
+            log_error {
+                "Search returned $res->{pagename} but not present, removing during " .
+                  $c->request->uri;
+            };
+            eval { $xapian->delete_text_by_uri($res->{pagename}) };
+        }
     }
 
     if ($c->req->params->{fmt} and $c->req->params->{fmt} eq 'json') {
         my @unrolled;
         foreach my $res (@results) {
-            my $txt = $res->{text};
-            push @unrolled, {
-                             title => $txt->title,
-                             author => $txt->author,
-                             url => $c->uri_for($txt->full_uri)->as_string,
-                            };
+            if (my $txt = $res->{text}) {
+                push @unrolled, {
+                                 title => $txt->title,
+                                 author => $txt->author,
+                                 url => $c->uri_for($txt->full_uri)->as_string,
+                                };
+            }
         }
-        $c->res->content_type('application/json');
-        $c->response->body(to_json(\@unrolled, { ascii => 1,
-                                                 pretty => 1 }));
-        $c->detach();
+        $c->stash(json => \@unrolled);
+        $c->detach($c->view('JSON'));
         return;
     }
     my $format_link = sub {

@@ -803,7 +803,6 @@ use Unicode::Collate::Locale;
 use File::Find;
 use Data::Dumper;
 use AmuseWikiFarm::Archive::BookBuilder;
-use JSON ();
 use Text::Amuse::Compile::Utils ();
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
@@ -1656,8 +1655,7 @@ sub _build_lexicon {
     my $file = $self->lexicon_file;
     if (-f $file) {
         my $json = Text::Amuse::Compile::Utils::read_file($file);
-        my $hashref;
-        eval { $hashref = JSON::from_json($json) };
+        my $hashref = AmuseWikiFarm::Utils::Amuse::from_json($json);
         if ($hashref and ref($hashref) eq 'HASH') {
             return $hashref;
         }
@@ -2831,7 +2829,7 @@ sub use_js_highlight {
     my ($self, $force) = @_;
     if (my $langs = $self->use_js_highlight_value || $force ) {
         my @true_langs = grep { /\A[a-z]+\z/ } split(/\s+/, $langs);
-        return JSON::to_json({ languages => \@true_langs });
+        return AmuseWikiFarm::Utils::Amuse::to_json({ languages => \@true_langs });
     }
     return '';
 }

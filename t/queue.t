@@ -11,7 +11,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use Data::Dumper;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
-use JSON qw/from_json/;
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');

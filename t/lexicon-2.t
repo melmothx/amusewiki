@@ -63,9 +63,10 @@ for (1..2) {
         is $l->loc('Active'), 'Attivo';
     }
     {
-        my $l = $model->localizer('xx', '0blog0');
-        is $l->loc("[_1] doesn't exist", "Pippo"), "Pippo doesn't exist";
-        is $l->loc('Active'), "Active";
+        # loading this means the code is buggy.
+        my $l = eval { $model->localizer('xx', '0blog0') };
+        ok (!$l, "Couldn't load xx language");
+        ok $@, "Exception raised";
     }
 }
 SKIP: {

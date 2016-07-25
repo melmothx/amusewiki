@@ -5,8 +5,8 @@ use warnings;
 use File::Spec::Functions qw/catfile catdir/;
 use File::Path qw/make_path remove_tree/;
 use Text::Amuse::Compile::Utils qw/write_file/;
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use Git::Wrapper;
-use JSON qw/decode_json/;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/create_site check_jobber_result/;
@@ -57,7 +57,7 @@ sub check_jobber_result {
     my $success;
     for (1..30) {
         $mech->get("/tasks/status/$task_id/ajax");
-        my $ajax = decode_json($mech->response->content);
+        my $ajax = from_json($mech->response->content);
         if ($ajax->{status} eq 'completed') {
             $success = $ajax;
             last;
