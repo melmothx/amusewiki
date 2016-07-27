@@ -1,219 +1,180 @@
-# AmuseWiki i18n
-# This file is distributed under the same license as the AmuseWiki package.
-# Marco Pessotto <melmothx@gmail.com>, 2014.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: AmuseWiki 0.01\n"
+"Project-Id-Version: libraria-anarkiste\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-07-22 11:16+0200\n"
-"Last-Translator: Marco <melmothx@gmail.com>\n"
+"PO-Revision-Date: 2016-07-27 08:30+0200\n"
+"Last-Translator: ArbenSadiku <arben.sadiku@autistici.org>\n"
 "Language-Team: Albanian\n"
+"Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sq\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Crowdin-Project: libraria-anarkiste\n"
+"X-Crowdin-Language: sq\n"
+"X-Crowdin-File: sq.po\n"
 
 #. ($filename)
-#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:536
 msgid "%1 doesn't exist"
-msgstr ""
+msgstr "%1 nuk ekziston"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
-#: lib/AmuseWikiFarm/Controller/Help.pm:35 root/src/help/opds.tt:2
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 në pajisje mobile"
 
-#: root/src/edit/edit.tt:184
 msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+msgstr "(smart quotes, linqe, fusnota, etj.)"
 
-#: root/src/edit/edit.tt:357
 msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
+msgstr "Një rresht i zbrazët (ose më shumë ) krijon  një paragraf të ri."
 
-#: root/src/bookbuilder/index.tt:488
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"Një imazh për kopertinë tashmë është futur, por mund ta zëvendësoni\n"
+"           duke ngarkuar një të re."
 
-#: root/src/edit/edit.tt:447
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"Fusnota është një rresht që fillon me një numër në mes të\n"
+"           kllapave, pa hapësirë fillestare."
 
-#: root/src/edit/edit.tt:360
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "Një rresht që fillon me 2 apo më shumë hapësira është një citat."
 
-#: root/src/edit/edit.tt:367
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
+msgstr "Një rresht që fillon me 20 ose më shumë hapësira është i renditur në të djathtë."
 
-#: root/src/edit/edit.tt:363
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "Një rresht që fillon me 6 ose më shumë hapësira është i renditur në qendër."
 
-#: root/src/admin/edit.tt:445
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"Një listë e linqeve dhe emërtimeve për tu futur\n"
+"             në shiritin e epërm. Një për rresht, së pari url\n"
+"             pastaj emërtimi i ndarrë me një hapësirë, psh. \"http://test.me Test site\""
 
 #. (home)
-#: mkits/commit/body.txt:1
 msgid "A new revision has been created at %1"
-msgstr ""
+msgstr "Një përpunim i ri është krijuar në %1"
 
 #. (location)
-#: mkits/newtext/body.txt:1
 msgid "A new text has been created at %1"
-msgstr ""
+msgstr "Një teskt i ri është krijuar në %1"
 
-#: root/src/edit/edit.tt:558
 msgid "A nice title"
-msgstr ""
+msgstr "Një titull i  mirë"
 
-#: root/src/admin/edit.tt:535 root/src/text.tt:160 root/src/text.tt:161
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "A4 PDF i imponuar"
 
-#: root/src/admin/edit.tt:2
 msgid "A4 paper"
-msgstr ""
+msgstr "Letër A4"
 
-#: root/src/admin/edit.tt:3
 msgid "A5 paper"
-msgstr ""
+msgstr "Letër A5"
 
-#: root/src/admin/edit.tt:4
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "Letër A6 (gjithashtu e përshtatshme për lexues elektronik, e-readers)"
 
-#: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr ""
+msgstr "Ndryshim në progres u braktis, ndihuni të lirë të kontrolloni diff dhe të vazhdoni"
 
-#: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:19
-#: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:13
-#: root/src/publish/pending.tt:18
 msgid "Action"
-msgstr ""
+msgstr "Veprim"
 
-#: root/src/admin/edit.tt:267
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Aktivizo dukjen e stilit blog"
 
-#: root/src/admin/edit.tt:83 root/src/admin/list.tt:14
-#: root/src/admin/show_user_details.tt:38 root/src/admin/show_users.tt:12
 msgid "Active"
-msgstr ""
+msgstr "Aktive"
 
-#: root/src/bookbuilder/index.tt:496
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Shto imazh të kopertinës (PNG ose JPG)"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:86 root/src/layout.tt:263
-#: root/src/layout.tt:624
 msgid "Add a new text"
-msgstr ""
+msgstr "Shto tekstin e ri"
 
-#: root/src/edit/edit.tt:128
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr ""
+msgstr "Shto një attachment (PNG, JPG or PDF)"
 
-#: root/src/bookbuilder/index.tt:733
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Shto shenjat prerëse në PDF"
 
-#: root/src/console/git_display.tt:70
 msgid "Add new remote repository"
 msgstr ""
 
-#: root/src/edit/edit.tt:233
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
+msgstr "Shto hapësira të pa-ndërpera ku është e përshtatshme për gjuhën"
 
-#: root/src/console/git_display.tt:98
 msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
+msgstr "Shto ose fshij dhe përsëri shto <user_repo_url> në këtë faqe."
 
-#: root/src/admin/edit.tt:492
-msgid ""
-"Add paginator for text listing when the number of texts is greater than "
-"(integer)"
-msgstr ""
+msgid "Add paginator for text listing when the number of texts is greater than (integer)"
+msgstr "Shto numëruesin e faqeve për listën e teksteve kur numri i teksteve është më i madh se (integer)"
 
-#: root/src/library/bbselect.tt:4
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "Shto seksione në përpiluesin e librit"
 
-#: root/src/help/opds.tt:93
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Shto OPDS URL"
 
-#: root/src/library/bbselect.tt:42 root/src/library/bbselect.tt:80
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "Shto pjesët e zgjedhura në përpiluesin e librit"
 
-#: root/src/library/bbselect.tt:31
 msgid "Add the whole text"
-msgstr ""
+msgstr "Shto të gjithë tekstin"
 
-#: root/src/text.tt:255 root/src/text.tt:262
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Shto këtë tekst në përpilues të librit"
 
-#: root/src/edit/edit.tt:594
-msgid ""
-"Additional information (full date, original title, translators, credits, "
-"etc)."
-msgstr ""
+msgid "Additional information (full date, original title, translators, credits, etc)."
+msgstr "Informatat shtesë (data e plotë, titulli origjinal, përkthyesit, pjesëmarrësit etj.)"
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
-#: root/src/help/faq.tt:76 root/src/help/faq.tt:77
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"Pas aprovimit të\n"
+" ndryshimit, do të shfaqet nën %1. Aty është një\n"
+" buton i kuq i kadh për secilin tekst të fshirë dhe ti mund të vazdhosh me spastrim."
 
-#: root/src/console/alias_display.tt:35 root/src/console/alias_display.tt:67
 msgid "Alias"
-msgstr ""
+msgstr "Pseudonim"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:246
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "Pseudonimi nuk mund të tregoj tek vetvetja"
 
-#: root/src/edit/edit.tt:507
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
 msgstr ""
+"Të gjitha llojet e listave fillojn me një apo më\n"
+"      shumë hapësira."
 
-#: root/src/category-details.tt:35 root/src/library.tt:16
 msgid "All languages"
-msgstr ""
+msgstr "Të gjitha gjuhët"
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:96 root/src/layout.tt:385
 msgid "All revisions"
-msgstr ""
+msgstr "Të gjitha përpunimet"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:64
 msgid "All sites"
-msgstr ""
+msgstr "Të gjitha faqet"
 
-#: root/src/admin/show_users.tt:3
 msgid "All users"
-msgstr ""
+msgstr "Të gjithë përdoruesit"
 
-#: root/src/edit/edit.tt:620
 msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
@@ -222,8 +183,13 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"Gjithashtu krijo slide-e\n"
+"       prej dokumentit. Secili seksion, nuk ka rëndësi sa fellë, do të\n"
+"       krijoj një slide.  Teksti jasht seksionit injorohet, kështu që\n"
+"       nëse nuk ke seksione do të marrësh slide të zbrazët. Nëse\n"
+"       dëshiron të përjashtosh një seksion, vendos një koment në trup\n"
+"       të seksionit me stringun “noslide”."
 
-#: root/src/edit/newtext.tt:220
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"
@@ -232,742 +198,581 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"URI është një string që në mënyrë unike e identifikon\n"
+"      një tekst në arkivë. Në teori mund të jetë gjithçka, po nëse ti dëshiron\n"
+"      ta vendosësh vetë, ju lutemi përmbajuni marrëveshjes: emri i autorit,\n"
+"      titulli, gjuha, numri eventual, psh.\n"
+"      errico-malatesta-anarchy-2. Ju lutemi keni parasysh që zakonisht\n"
+"      kjo nuk është e nevojshme"
 
-#: root/src/admin/edit.tt:964
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "\"Apache\" nuk është i përkahur "
 
-#: root/src/layout.tt:198
 msgid "Archive"
-msgstr ""
+msgstr "Arkiva"
 
-#: lib/AmuseWikiFarm/Controller/Monthly.pm:38
-#: lib/AmuseWikiFarm/Controller/Monthly.pm:42 root/src/layout.tt:253
-#: root/src/layout.tt:254
 msgid "Archive by month"
-msgstr ""
+msgstr "Arkiva sipas muajve"
 
-#: root/src/git/git.tt:2
 msgid "Archive history"
-msgstr ""
+msgstr "Historia e arkivës"
 
-#: root/src/layout.tt:106
 msgid "Are you sure?"
-msgstr ""
+msgstr "A jeni të sigurtë?"
 
-#: root/src/edit/edit.tt:99
 msgid "Attached PDFs"
-msgstr ""
+msgstr "PDF-ët e bashkangjitur"
 
-#: root/src/edit/edit.tt:56
 msgid "Attached images"
-msgstr ""
+msgstr "Fotot e bashkangjitura"
 
-#: mkits/commit/body.txt:27 root/src/publish/pending.tt:16
 msgid "Attachments"
-msgstr ""
+msgstr "Dokumentet e bashkangjitura"
 
-#: root/src/bookbuilder/index.tt:106 root/src/console/unpublished.tt:10
-#: root/src/edit/newtext.tt:46 root/src/search/index.tt:41 root/src/text.tt:62
 msgid "Author"
-msgstr ""
+msgstr "Autori/ja"
 
-#: root/src/bookbuilder/index.tt:466
 msgid "Author and title. If one side document: title."
-msgstr ""
+msgstr "Autori/ja dhe titulli. Nëse teksti i dokumentit është i vendosur vetëm në njërën anë: titulli."
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:82
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:180
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:64 root/src/edit/preview.tt:24
-#: root/src/layout.tt:215 root/src/layout.tt:603 root/src/text.tt:64
 msgid "Authors"
-msgstr ""
+msgstr "Autorët"
 
-#: root/src/edit/edit.tt:569 root/src/edit/newtext.tt:55
 msgid "Authors for indexing"
-msgstr ""
+msgstr "Autorët për indeksim"
 
-#: root/src/admin/edit.tt:955
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "Automatikisht kërko dhe ripërtri çertifikatën SSL nga \"Let's Encrypt\""
 
-#: root/src/edit/edit.tt:144
 msgid "Available category tags for header"
-msgstr ""
+msgstr "Etiketat e kategorive në dispozicion për "
 
-#: root/src/bookbuilder/index.tt:6
 msgid "Back to the text"
-msgstr ""
+msgstr "Ktheju tek teksti"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:168
-#: lib/AmuseWikiFarm/Controller/Console.pm:262
 msgid "Bad request"
-msgstr ""
+msgstr "Kërkesë e keqe"
 
-#: root/src/admin/edit.tt:128
 msgid "Bare HTML, needed by the application"
-msgstr ""
+msgstr "HTML i pastër kërkohet nga aplikacioni"
 
-#: root/src/admin/edit.tt:720
 msgid "Beamer color theme"
 msgstr ""
 
-#: root/src/admin/edit.tt:703
 msgid "Beamer theme"
 msgstr ""
 
-#: root/src/admin/edit.tt:602 root/src/bookbuilder/index.tt:393
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "Madhësia e hapësirës për lidhjen e librit (kufitë e brendshëm shtesë)"
 
-#: root/src/bookbuilder/index.tt:663
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
+"Blloqe prej 16 faqesh për tu paluar dy here dhe për tu\n"
+"            lidhur bashkë."
 
-#: root/src/admin/edit.tt:252
 msgid "Blog"
-msgstr ""
+msgstr "Blogu"
 
-#: root/src/include/markitup.tt:40
 msgid "Bold"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:38 root/src/layout.tt:459
-#: root/src/layout.tt:463
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Përpiluesi i librit"
 
-#: root/src/admin/edit.tt:398
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Limiti i faqeve të përpiluesit të librit (integjer)"
 
-#: root/src/bookbuilder/index.tt:821
 msgid "Build it"
-msgstr ""
+msgstr "Krijoje "
 
-#: root/src/include/markitup.tt:43
 msgid "Bulleted List"
-msgstr ""
+msgstr "Lista e renditur"
 
-#: root/src/admin/edit.tt:290
 msgid "CSS Theme"
 msgstr ""
 
-#: root/src/admin/list.tt:21
 msgid "Canonical name"
-msgstr ""
+msgstr "Emër kanonik"
 
-#: root/src/edit/newtext.tt:65
 msgid "Categories"
-msgstr ""
+msgstr "Kategoritë"
 
-#: root/src/publish/pending.tt:20
 msgid "Changes"
-msgstr ""
+msgstr "Ndryshimet"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:56
 msgid "Changes applied"
-msgstr ""
+msgstr "Ndryshimet u aplikuan"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:410
 msgid "Changes committed, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "Ndryshimet janë lejuar. Ju faleminderit! Tani pritni që ato të publikohen"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:450 root/src/edit/diff.tt:4
 msgid "Changes for %1"
-msgstr ""
+msgstr "Ndryshime për %1"
 
-#: root/src/help/faq.tt:87
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
 "doing, you can delete an existing text and point to another adding a\n"
 "#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"Ndërrimi i URL nuk është praktikë e mirë. Por nëse je në dijeni se\n"
+"çfarë je duke bërë, mundesh të fshishë një tekst ekzistues dhe të\n"
+"dhe të tregosh tek një tjetër duke shtuar direktivën #DELETED në kokën e teksit me një sintaksë speciale:"
 
-#: root/src/edit/edit.tt:339
 msgid "Chapter"
-msgstr ""
+msgstr "Kapitulli"
 
-#: root/src/bookbuilder/index.tt:467
 msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+msgstr "Kapitulli dhe seksioni. Nëse dokument një-anësor: kapitull."
 
-#: root/src/include/markitup.tt:17
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Kapitull, vetëm për ndarje  në libra"
 
-#: root/src/edit/edit.tt:156 root/src/edit/edit.tt:306
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Cheatsheet për markup"
 
-#: root/src/admin/edit.tt:565 root/src/bookbuilder/index.tt:322
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Zgjidh formatin e letrës"
 
-#: root/src/bookbuilder/index.tt:62
 msgid "Clear the book list"
-msgstr ""
+msgstr "Pastro listën e librave"
 
-#: root/src/bookbuilder/fonts.tt:6
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Kliko në imazhin që ta shkarkosh mostrën e PDF-it"
 
-#: root/src/console/git_display.tt:83
 msgid "Clone the repo locally and set it up"
 msgstr ""
 
-#: root/src/text.tt:16 root/src/text.tt:8
 msgid "Close"
-msgstr ""
+msgstr "Mbyll"
 
-#: root/src/edit/edit.tt:298
 msgid "Commit"
-msgstr ""
+msgstr "Lejo"
 
-#: root/src/admin/jobs.tt:14
 msgid "Completed"
-msgstr ""
+msgstr "E përfunduar"
 
-#: root/src/edit/diff.tt:58
 msgid "Computing of differences took"
-msgstr ""
+msgstr "Llogaritja e dallimeve mori"
 
-#: root/src/help/opds.tt:102
 msgid "Confirm"
-msgstr ""
+msgstr "Konfirmo"
 
-#: root/src/utils/import.tt:18
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "Konverto në markup arkivë "
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:855
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Teksti nuk mundi të shtohej"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1138
 msgid "Couldn't automatically generate the uri!"
-msgstr ""
+msgstr "URL nuk mundi të gjenerohej automatikisht!"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:114
 msgid "Couldn't build that"
-msgstr ""
+msgstr "Nuk mundi të krijoj atë"
 
-#: root/src/bookbuilder/index.tt:485
 msgid "Cover image (optional)"
-msgstr ""
+msgstr "Imazhi i kopertinës (opcionale)"
 
-#: root/src/console/alias_display.tt:54 root/src/console/alias_display.tt:86
 msgid "Create"
-msgstr ""
+msgstr "Krijo"
 
-#: root/src/layout.tt:405 root/src/user/create.tt:4
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Krijo një bibliotekar të ri"
 
-#: root/src/layout.tt:368
 msgid "Create a new special page"
-msgstr ""
+msgstr "Krijo ne faqe të re speciale"
 
-#: root/src/admin/show_users.tt:61 root/src/admin/show_users.tt:75
 msgid "Create a new user"
-msgstr ""
+msgstr "Krijo një përdorues të ri."
 
-#: root/src/console/alias_display.tt:59
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Krijo një pseudonim të temës"
 
-#: root/src/console/alias_display.tt:27
 msgid "Create an author alias"
+msgstr "Krijo një pseudonim të autorit"
+
+msgid "Create an empty repository. Here we refer to its url as <user_repo_url>."
 msgstr ""
 
-#: root/src/console/git_display.tt:81
-msgid ""
-"Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr ""
-
-#: root/src/admin/list.tt:90
 msgid "Create new site"
-msgstr ""
+msgstr "Krijo faqën e re"
 
-#: root/src/user/create.tt:50
 msgid "Create user and mail password"
-msgstr ""
+msgstr "Krijo fjalëkalimën e përdoruesit dhe email-it"
 
-#: root/src/admin/jobs.tt:13
 msgid "Created"
-msgstr ""
+msgstr "E krijuar"
 
-#: root/src/admin/show_users.tt:9
 msgid "Created by"
-msgstr ""
+msgstr "E krijuar nga"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:128 root/src/publish/pending.tt:92
 msgid "Created new text"
-msgstr ""
+msgstr "Teksti i ri u krijua"
 
-#: root/src/bookbuilder/index.tt:117 root/src/edit/preview.tt:31
-#: root/src/publish/pending.tt:22 root/src/text.tt:77
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
-#: root/src/edit/edit.tt:589 root/src/edit/newtext.tt:100
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Data e origjinale e botimit"
 
-#: root/src/layout.tt:390
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Tekstet e shtyra/fshira"
 
-#: root/src/admin/jobs.tt:62 root/src/admin/show_users.tt:10
-#: root/src/admin/show_users.tt:32 root/src/bookbuilder/index.tt:45
-#: root/src/bookbuilder/index.tt:871 root/src/category-details-edit.tt:22
-#: root/src/console/alias_display.tt:126
 msgid "Delete"
-msgstr ""
+msgstr "Fshij"
 
 #. (remote.name)
-#: root/src/console/git_display.tt:43
 msgid "Delete remote repository %1"
 msgstr ""
 
-#: root/src/publish/pending.tt:124
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"Fshirja e një përpunimi është e sigurt nëse një\n"
+" tekst është publikuar. Përndryshe me fshirjen e tij do të humbni të gjitha ndryshimet e papublikuara"
 
-#: root/src/edit/edit.tt:517 root/src/edit/edit.tt:518
 msgid "Description item"
-msgstr ""
+msgstr "Përshkrimi i artikullit"
 
-#: root/src/edit/edit.tt:521
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
 msgstr ""
+"Listat përshkruese përdorin dy pikat për të ndarë \n"
+"      termet dhe përshkrimet."
 
-#: root/src/edit/newtext.tt:215
 msgid "Desired URI"
-msgstr ""
+msgstr "URI e dëshiruar"
 
-#: root/src/console/alias_display.tt:100
 msgid "Destination"
-msgstr ""
+msgstr "Destinacioni"
 
-#: root/src/edit/revs.tt:18
 msgid "Differences"
-msgstr ""
+msgstr "Dallimet"
 
-#: root/src/admin/edit.tt:157
 msgid ""
 "Directory with templates in the site repositoy, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
 
-#: root/src/include/markitup.tt:74
 msgid "Display url as"
-msgstr ""
+msgstr "Paraqit url saktësisht sikur"
 
-#: root/src/admin/edit.tt:582 root/src/bookbuilder/index.tt:373
 msgid "Division factor"
-msgstr ""
+msgstr "Faktori i ndarjes"
 
-#: root/src/admin/edit.tt:422
 msgid "Do not enforce commit message"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:57 root/src/help/opds.tt:110
 msgid "Done"
-msgstr ""
+msgstr "E përfunduar"
 
-#: root/src/edit/edit.tt:551
 msgid "Double bars"
-msgstr ""
+msgstr "Shirita të dyfisht"
 
-#: root/src/text.tt:142
 msgid "Downloads"
-msgstr ""
+msgstr "Shkarkimet"
 
-#: root/src/admin/edit.tt:139 root/src/bookbuilder/index.tt:165
 msgid "EPUB"
 msgstr ""
 
-#: root/src/text.tt:190 root/src/text.tt:191
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "EPUB (për telefona mobil)"
 
-#: root/src/console/alias_display.tt:134 root/src/console/translations.tt:33
 msgid "Edit"
-msgstr ""
+msgstr "Ndrysho"
 
 #. (esite.id)
-#: root/src/admin/edit.tt:21
 msgid "Edit site %1"
-msgstr ""
+msgstr "Redakto faqen 1%"
 
-#: root/src/layout.tt:417 root/src/layout.tt:434
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Redakto konfigurimin e faqes"
 
-#: root/src/help/faq.tt:48
 msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr ""
+msgstr "Redakto tekstin që dëshiron "
 
-#: root/src/text.tt:243 root/src/text.tt:246
 msgid "Edit this text"
-msgstr ""
+msgstr "Redakto këtë tekst"
 
 #. (user.username)
-#: root/src/admin/show_user_details.tt:6 root/src/user/edit.tt:3
 msgid "Edit user %1"
-msgstr ""
+msgstr "Redakto shfytëzuesin %1"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:180 root/src/edit/edit.tt:14
-#: root/src/edit/revs.tt:3
 msgid "Editing"
-msgstr ""
+msgstr "Duke redaktuar"
 
-#: root/src/admin/show_user_details.tt:27 root/src/admin/show_users.tt:11
-#: root/src/user/create.tt:35 root/src/user/edit.tt:26
 msgid "Email"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/User.pm:299
 msgid "Email sent!"
-msgstr ""
+msgstr "Emaili është dërguar"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:336
 msgid "Email updated"
-msgstr ""
+msgstr "Email është përditësuar"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:113
 msgid "Emails do not match"
-msgstr ""
+msgstr "Email-at nuk pëputhen"
 
-#: root/src/publish/pending.tt:78
 msgid "Erase this revision"
-msgstr ""
+msgstr "Fshije këtë përmirësim"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1194
 msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+msgstr "Gabim gjatë konvertimit të dokumentit të ngarkuar. A ështe dokumentu HTML?"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:302
 msgid "Error sending mail!"
-msgstr ""
+msgstr "Gabim përgjat dërgimit të email-it!"
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1210
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "Gabim gjatë konvertimit te HTML-së. Na falni."
 
-#: root/src/admin/jobs.tt:17
 msgid "Errors"
-msgstr ""
+msgstr "Gabime"
 
-#: root/src/help/opds.tt:6
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"Edhe pse kjo faqe ka një dizajn të përshtatshëm\n"
+" për pajisje mobile, faqja nuk ofron një aplikacion mobil."
 
-#: root/src/edit/newtext.tt:138
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
 msgstr ""
+"Çdo\n"
+"      seksion do të gjenerojë një slide. Ju duhet të bëni seksionimin\n"
+"      e duhur që kjo të funksionojë."
 
-#: root/src/bookbuilder/index.tt:598
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"Saktësisht sikur 2up por fletët janë menduar të\n"
+"      prehen horizontalisht së pari dhe pastaj të vendosen njëra mbi tjetrën.\n"
+"      Në këtë mënyrë ju mund të printoni psh. A6 broshura në A4."
 
-#: root/src/edit/edit.tt:444 root/src/edit/edit.tt:450
 msgid "Example"
-msgstr ""
+msgstr "Shembull"
 
-#: root/src/console/alias_display.tt:91
 msgid "Existing redirections"
-msgstr ""
+msgstr "Ridrejtime ekzistuese"
 
 #. ("$name $url")
-#: lib/AmuseWikiFarm/Controller/Console.pm:92
 msgid "Failed to add remote repository %1"
 msgstr ""
 
 #. ($name)
-#: lib/AmuseWikiFarm/Controller/Console.pm:106
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:342
 msgid "File uploaded!"
-msgstr ""
+msgstr "Dokumenti është ngarkuar!"
 
-#: root/src/bookbuilder/index.tt:811
-msgid ""
-"Fill with blank pages before the last page if the signature is not full."
-msgstr ""
+msgid "Fill with blank pages before the last page if the signature is not full."
+msgstr "Mbush me faqe të zbrazëta para faqes së fundit nëse nënshkrimi nuk është plot. "
 
-#: root/src/edit/edit.tt:183
 msgid "Filters"
-msgstr ""
+msgstr "Filterët"
 
-#: root/src/help/opds.tt:85
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Gjej menynë për shtuarje të katalogut."
 
-#: root/src/help/opds.tt:71
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Gej menynë e rrjetit të librarisë, ose ekuivalentin."
 
-#: root/src/edit/edit.tt:562
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "Autorët parësor dhe dytësor"
 
-#: root/src/edit/edit.tt:567
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "Autori i parë, autori i dytë"
 
-#: root/src/edit/edit.tt:629
 msgid "First slide"
-msgstr ""
+msgstr "Slide-i i parë"
 
-#: root/src/help/faq.tt:73
 msgid "First you have to unpublish it via #DELETED."
-msgstr ""
+msgstr "Së pari duhet ta largosh nga botimi nëpërmjet #DELETED"
 
-#: root/src/edit/edit.tt:203
 msgid "Fix typography (smart quotes)"
-msgstr ""
+msgstr "Ndreqe tipografinë (smart quotes)"
 
-#: root/src/bookbuilder/index.tt:714
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:695
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr ""
 
-#: root/src/admin/edit.tt:357
 msgid "Fixed category list"
+msgstr "Lista e kategorive u rregullua"
+
+msgid "Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:681 root/src/bookbuilder/schemas.tt:37
-msgid ""
-"Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
-"and bound together."
-msgstr ""
-
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:284
-#: root/src/bookbuilder/fonts.tt:4
 msgid "Font preview"
-msgstr ""
+msgstr "Inspektim i fontit"
 
-#: root/src/admin/edit.tt:622
 msgid "Font size"
-msgstr ""
+msgstr "Madhësia e fontit"
 
-#: root/src/edit/edit.tt:317 root/src/edit/edit.tt:439
 msgid "Footnotes"
-msgstr ""
+msgstr "Fusnota"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
-#: lib/AmuseWikiFarm/Controller/Edit.pm:316
-msgid ""
-"Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes"
-msgstr ""
+msgid "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references in the body (%4), ignoring changes"
+msgstr "Mospërputhje në fusnotë: janë gjet %1 fusnota (%2) dhe janë gjet %3 referenca të fusnotës në trup (%4), injorohen ndryshimet"
 
-#: root/src/edit/newtext.tt:110
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "Për tekstet e huazuara nga interneti"
 
-#: root/src/admin/edit.tt:753 root/src/bookbuilder/index.tt:426
 msgid "For texts without a table of content, start text on the very first page"
-msgstr ""
+msgstr "Për tekste pa tabelë përmbajtëse, fillo tekstin që në faqen e parë"
 
-#: root/src/console/alias_display.tt:23
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
-msgstr ""
+msgstr "Për tema dhe ridrejtime të autorëve, mund ti krijoni ato këtu"
 
-#: root/src/edit/edit.tt:427
 msgid "Force a line break."
-msgstr ""
+msgstr "Shkëput rreshtin."
 
-#: root/src/publish/pending.tt:48
 msgid "Force publishing"
-msgstr ""
+msgstr "Publikim i sforcuar"
 
-#: root/src/edit/newtext.tt:240
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr ""
+msgstr "Formati: yyyy-mm-dd  hh:mm, p.sh."
 
-#: root/src/admin/edit.tt:513
 msgid "Formats"
-msgstr ""
+msgstr "Formatët:"
 
-#: lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:23
 msgid "Full list of texts"
-msgstr ""
+msgstr "Lista e plotë e teksteve"
 
-#: root/src/admin/edit.tt:868
 msgid "Full tag cloud"
 msgstr ""
 
-#: root/src/search/index.tt:106 root/src/search/index.tt:15
 msgid "Full text search"
-msgstr ""
+msgstr "Kërkim me tekst të plotë"
 
-#: root/src/admin/edit.tt:222
 msgid "General configuration"
-msgstr ""
+msgstr "Konfigurimi i përgjithshëm"
 
-#: root/src/admin/edit.tt:8
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Gjenerike (i përshtatet formatit A4 dhe A4 horizonatle - Letter)"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:79
 msgid "Git console"
-msgstr ""
+msgstr "Konsola Git"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:56
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "Git nuk është i mundësuar në këtë faqe"
 
-#: root/src/admin/edit.tt:117
 msgid "HTML"
 msgstr ""
 
-#: root/src/admin/edit.tt:794
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
+"HTML-i të bashkangjitet secilës faqe speciale, e shtuar \n"
+"ashtu siç është, tani ke mundesi me prishë çdo gjë, pranaj \n"
+"ke kujdes"
 
-#: root/src/admin/edit.tt:839
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML-i të vendoset në shiritin në të majtë"
 
-#: root/src/admin/edit.tt:853
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML-i të vendoset në shiritin në të djathë"
 
-#: root/src/admin/edit.tt:824
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "Të vendoset HTMLi në fund të siperfaqës, përmbi footer"
 
-#: root/src/admin/edit.tt:810
-msgid ""
-"HTML to insert on the top of the layout, behind the navigation bar and below "
-"the banner"
-msgstr ""
+msgid "HTML to insert on the top of the layout, behind the navigation bar and below the banner"
+msgstr "Të vendoset HTMLi në fund të siperfaqës, përmbrapa hapësirës së navigimit dhe nën baner"
 
-#: root/src/edit/edit.tt:162 root/src/utils/import.tt:6
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "Importuesi i HTML/Word"
 
-#: root/src/admin/edit.tt:6
 msgid "Half Letter paper"
-msgstr ""
+msgstr "Gjysma e formatit A4 horizontal"
 
-#: root/src/include/markitup.tt:12 root/src/include/markitup.tt:17
-#: root/src/include/markitup.tt:22 root/src/include/markitup.tt:27
-#: root/src/include/markitup.tt:32
 msgid "Heading"
-msgstr ""
+msgstr "Kryetitulli"
 
-#: root/src/edit/edit.tt:310 root/src/edit/edit.tt:333
 msgid "Headings"
-msgstr ""
+msgstr "Kryetitujt"
 
-#: root/src/bookbuilder/index.tt:352 root/src/bookbuilder/index.tt:771
 msgid "Height:"
-msgstr ""
+msgstr "Lartësia:"
 
-#: root/src/bookbuilder/index.tt:278
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr ""
+msgstr "Këtu mund ta shihni dizajnin e Beamer dhe ngjyrave."
 
-#: root/src/bookbuilder/index.tt:857
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
+"Këtu mund ta ruash apo ta hapësh template-in tuaj. Lista e teksit\n"
+"si dhe photografia e kopertinës nuk përfshihen nga procesi i ruajtjes. Këtë mund ta\n"
+"shfrytëzosh për të ruajtur formatin/letren/fontin si dhe opcionet tjera."
 
-#: root/src/search/index.tt:113
 msgid "Hide options"
-msgstr ""
+msgstr "Fsheh zgjedhjet"
 
-#: root/src/admin/edit.tt:583 root/src/bookbuilder/index.tt:374
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Faktori më i lartë i ndarjes dmth. margjinat më të ngushta"
 
-#: root/src/help/faq.tt:27 root/src/help/faq.tt:8
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "Si ta krijoj faqën kryesore (ballinën)"
 
-#: root/src/help/faq.tt:15 root/src/help/faq.tt:6
 msgid "How do I create a special page?"
-msgstr ""
+msgstr "Si ta krijoj faqën speciale?"
 
-#: root/src/help/faq.tt:44 root/src/help/faq.tt:9
 msgid "How do I delete a text?"
-msgstr ""
+msgstr "Si ta fshij një tekst?"
 
-#: root/src/help/faq.tt:20 root/src/help/faq.tt:7
 msgid "How do I modify a special page?"
-msgstr ""
+msgstr "Si ta ndryshoj faqën speciale?"
 
-#: root/src/help/faq.tt:10 root/src/help/faq.tt:65
 msgid "How do I purge a text?"
-msgstr ""
+msgstr "Si ta fshij me rrënjë një tekst?"
 
-#: root/src/help/faq.tt:11 root/src/help/faq.tt:83
 msgid "How do I redirect to another page?"
-msgstr ""
+msgstr "Si të kërcej në faqe tjetër"
 
-#: root/src/user/create.tt:57 root/src/user/edit.tt:45
 msgid "How to choose a password"
-msgstr ""
+msgstr "Si ta zgjedh fjalëkalimin?"
 
-#: root/src/console/git_display.tt:79
 msgid "How to work with a remote repo"
 msgstr ""
 
-#: root/src/help/opds.tt:10
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"Mirëpo, ju mund të shfletoni, kërkoni, shkarkoni dhe lexoni tekstet\n"
+"nga aplikacionet e telefonit mobil që e perkrahin protokolin e ashtuquajtur\n"
+"OPDS"
 
-#: root/src/user/human.tt:18
 msgid "I am human"
-msgstr ""
+msgstr "Unë jam njeri"
 
-#: root/src/bookbuilder/index.tt:534
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "E dëshiroj PDF-in e imponuar (të gatshëm për print)"
 
-#: root/src/admin/edit.tt:458
 msgid "IRC channel on freenode"
-msgstr ""
+msgstr "Kanali IRC në freenode"
 
-#: root/src/admin/jobs.tt:8 root/src/admin/list.tt:13
 msgid "Id"
-msgstr ""
+msgstr "ID"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -977,16 +782,12 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
-#: root/src/admin/edit.tt:1006 root/src/admin/edit.tt:1020
-#: root/src/admin/edit.tt:978 root/src/admin/edit.tt:992
 msgid "If not set %1 will be looked up from the application directory."
-msgstr ""
+msgstr "Nëse nuk është vendosur %1 do të merret nga udhëzuesi i aplikacionit"
 
-#: mkits/commit/body.txt:7
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
-msgstr ""
+msgstr "Nëse personi e ka shkruar email-in, do të jetë i vendosur në fushën CC"
 
-#: root/src/edit/edit.tt:605
 msgid ""
 "If this line\n"
 "          is present, set the publication date (on this site) to the\n"
@@ -995,25 +796,29 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"Nëse ky rresht \n"
+"        është i pranishëm, vendose datën e publikimit (në këtë faqe) me këtë\n"
+"        datë. Data mund të jetë në të ardhmen, duke e shtyer publikimin. \n"
+"        Nëse ky rresht nuk është present, data e publikimit do të jetë \n"
+" \n"
+"        koha e publikimit, duke shkaktuar një çrregullim në RSS \n"
+"        dhe në faqe të veçanta në çdo redaktim. "
 
-#: root/src/edit/edit.tt:613
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"Nëse ky rresht\n"
+"egziston dhe \"arsyeja\" ka ndonje vlere, teksti do te ruhet në\n"
+"akrive por nuk do te publikohet."
 
-#: root/src/bookbuilder/index.tt:540
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "Nëse e keni kërkuar imponimin, zgjidheni skemën e imponimit"
 
-#: root/src/edit/newtext.tt:177
-msgid ""
-"If you have a file in .doc or .odt, you can easily convert it saving it as "
-"HTML"
-msgstr ""
+msgid "If you have a file in .doc or .odt, you can easily convert it saving it as HTML"
+msgstr "Nese e keni dokumentin në formatin .doc ose .odt, ju mund ta konvertoni lehtë duke e ruajtur si HTML"
 
-#: root/src/edit/edit.tt:79
 msgid ""
 "If you use it as a teaser image, the image will also\n"
 "      be placed on the first page of the PDF. You can set its width\n"
@@ -1023,120 +828,105 @@ msgid ""
 msgstr ""
 
 #. (reset_url)
-#: mkits/resetpassword/body.txt:4
 msgid "If you want to proceed, please visit the following url: %1"
-msgstr ""
+msgstr "Nëse dëshironi të vazhdoni, ju lutem vizitoni linkun në vazhdim: %1"
 
-#: root/src/help/faq.tt:34
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
 msgstr ""
+"Nëse faqja jote nuk e ka atë, vetëm krijo një faqe të posaçkme dhe\n"
+"përcaktoja uri \"index-in\"."
 
-#: root/src/help/faq.tt:39
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
+"Nëse kjo faqe ka më shumë se një gjuhë, ju mund të krijoni\n"
+"faqe fillerstare, p.sh. \"\"/special/index-it\", qe do te thotë \n"
+"\"Indexi\" i URI, vizë lidhëse dhe kodi \"locale\"."
 
-#: root/src/edit/newtext.tt:158
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"Ngarkimi i imazhit mund të bëhet në hapin e ardhshëm ku\n"
+"mundeni ta kontrolloni atë."
 
-#: root/src/include/markitup.tt:55
 msgid "Image url"
-msgstr ""
+msgstr "Linku i imazhit"
 
-#: root/src/edit/edit.tt:89
 msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
+msgstr "Imazhet e papërdoruna në tekst janë ruajtur mirëpo do të injorohen"
 
-#: root/src/edit/edit.tt:539
 msgid "Images:"
-msgstr ""
+msgstr "Imazhet"
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:290
-#: root/src/bookbuilder/index.tt:529 root/src/bookbuilder/schemas.tt:3
 msgid "Imposition schemas"
-msgstr ""
+msgstr "Skemat e imponimit"
 
-#: root/src/edit/edit.tt:466
 msgid "In both case you will get a reverse indentation."
 msgstr ""
 
-#: root/src/edit/edit.tt:442
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
 msgstr ""
+"Numri brenda kllapave të mesme në tekst interpretohet si\n"
+"fusnotë, nëse ezgiston një fusnote e tillë."
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
-#: root/src/help/opds.tt:59
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
-msgstr ""
+msgstr "Në këtë shembull, ne e përdorim FBreader-in, mirëpo procedura është pak a shumë e njëjtë për të gjitha aplikacionet. E gjitha që duhet ta bëni është ta shtoni %1 në rrjetin e librarive."
 
-#: root/src/edit/edit.tt:399
 msgid "Inline elements"
-msgstr ""
+msgstr "Elementet në rresht "
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:273 root/src/layout.tt:374
 msgid "Internal list of translations"
-msgstr ""
+msgstr "Lista e brendshme e përkthimeve"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:81
 msgid "Invalid email"
-msgstr ""
+msgstr "Email i pavlefshëm"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:114
 msgid "Invalid name"
-msgstr ""
+msgstr "Emëri i pavlefshëm"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:71 root/src/user/create.tt:66
 msgid "Invalid username"
-msgstr ""
+msgstr "Përdoruesi i pavlefshëm"
 
-#: root/src/help/faq.tt:22
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
+"Punon njëjtë si një faqe e zakonshme mirëpo linku është i fshehur. Vetëm\n"
+"shtojani \"/edit\" në url-në e faqës."
 
-#: root/src/include/markitup.tt:37
 msgid "Italic"
 msgstr ""
 
-#: root/src/edit/edit.tt:314
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
+msgstr "Italic, bold, monospace dhe kodi, thyerje e rreshtit..."
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:161
 msgid "Job deleted"
-msgstr ""
+msgstr "Puna është fshirë"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:164
 msgid "Job not found"
-msgstr ""
+msgstr "Puna nuk është gjetur"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:146 root/src/layout.tt:439
 msgid "Jobs"
-msgstr ""
+msgstr "Punët"
 
-#: root/src/tasks/display.tt:13 root/src/tasks/display.tt:72
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Punët që janë në rend para punës tënde: "
 
-#: root/src/bookbuilder/schemas.tt:24
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr ""
 
-#: root/src/edit/newtext.tt:247
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
 "        back to you in the markup used on this site. It’s up to you to\n"
@@ -1144,338 +934,258 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Ta keni parasysh se unë jam duke e përpunuar dhe \n"
+"pastruar tekstin dhe ta kthej atë me markup-at e \n"
+"nënvizuara. Është e juaja tani që ta kontrolloni dhe ta \n"
+"ngarkoni në sajt. Disa nga përmirësimet e nënvizuara që \n"
+"përdoren rrallë do të humben përgjatë procesit. Ju lutem që \n"
+"kur të vini tek hapi tjetër, ta rishikoni tekstin dhe po ashtu mund ti vendosni imazhet aty."
 
-#: root/src/bookbuilder/index.tt:197
 msgid "Keep in mind that some character may be missing in the required font."
-msgstr ""
+msgstr "Keni parasysh se disa simbole mund të mungojnë në fontin e kërkuar"
 
-#: root/src/edit/newtext.tt:162
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Keni kujdes sepse zakonisht\n"
+"formatimi i ndërlikuar do të largohet. Vetëm në hapin\n"
+"e ardhshëm vendosja e imazheve dhe tabelave është e mundur."
 
-#: root/src/edit/newtext.tt:119
 msgid "Language"
-msgstr ""
+msgstr "Gjuha"
 
-#: root/src/edit/edit.tt:602
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Kodi i gjuhës në të cilën është shrkuajtur dokumenti (2 apo 3 shkronja)"
 
-#: root/src/layout.tt:325 root/src/layout.tt:329
 msgid "Language selection"
-msgstr ""
+msgstr "Përzgjedhja e gjuhës"
 
-#: root/src/admin/edit.tt:438
 msgid "Languages supported"
-msgstr ""
+msgstr "Gjuhët e përkrahura"
 
-#: root/src/edit/revs.tt:16
 msgid "Last updated"
-msgstr ""
+msgstr "E përditësuar për here të fundit"
 
-#: lib/AmuseWikiFarm/Controller/Latest.pm:51
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:115
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:70 root/src/layout.tt:245
-#: root/src/layout.tt:246 root/src/layout.tt:615 root/src/text.tt:371
 msgid "Latest entries"
-msgstr ""
+msgstr "Tekstet e fundit"
 
-#: root/src/admin/edit.tt:787
 msgid "Layout"
-msgstr ""
+msgstr "Renditja"
 
-#: root/src/edit/newtext.tt:236
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "(lejeni të zbrazët nëse dëshironi ta publikoni menjëherë)"
 
-#: root/src/admin/edit.tt:546 root/src/text.tt:170 root/src/text.tt:171
 msgid "Letter imposed PDF"
 msgstr ""
 
-#: root/src/admin/edit.tt:5
 msgid "Letter paper"
 msgstr ""
 
-#: root/src/include/markitup.tt:67
 msgid "Link"
-msgstr ""
+msgstr "Linku"
 
-#: root/src/edit/edit.tt:324 root/src/edit/edit.tt:528
 msgid "Links and images"
-msgstr ""
+msgstr "Linqet dhe imazhet"
 
-#: root/src/console/unpublished.tt:3
 msgid "List of texts on hold"
 msgstr ""
 
-#: root/src/edit/edit.tt:323 root/src/edit/edit.tt:505
 msgid "Lists"
-msgstr ""
+msgstr "Listat"
 
-#: root/src/bookbuilder/index.tt:868
 msgid "Load"
 msgstr ""
 
 #. ($pname)
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:244
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
-#: root/src/admin/edit.tt:306 root/src/admin/list.tt:17
 msgid "Locale"
 msgstr ""
 
-#: root/src/user/login.tt:17
 msgid "Log in"
-msgstr ""
+msgstr "Kyçu"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:57
 msgid "Login"
-msgstr ""
+msgstr "Kyçja"
 
-#: root/src/layout.tt:450
 msgid "Logout"
-msgstr ""
+msgstr "Shkyçu"
 
-#: root/src/help/faq.tt:17
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "Shiko në menynë e llogarisë! Tashmë egziston një shenim për këtë."
 
-#: root/src/user/login.tt:24
 msgid "Lost your password?"
-msgstr ""
+msgstr "E ke humbur fjalëkalimin?"
 
-#: root/src/admin/edit.tt:347
 msgid "Magic answer"
-msgstr ""
+msgstr "Përgjigja magjike"
 
-#: root/src/admin/edit.tt:337
 msgid "Magic question"
-msgstr ""
+msgstr "Pyetja magjike"
 
-#: root/src/admin/list.tt:19
 msgid "Mail from"
-msgstr ""
+msgstr "Email nga"
 
-#: root/src/admin/edit.tt:44 root/src/admin/list.tt:84
 msgid "Main canonical hostname, without protocol"
 msgstr ""
 
-#: root/src/admin/edit.tt:655
 msgid "Main font"
-msgstr ""
+msgstr "Fonti kryesor"
 
-#: root/src/edit/newtext.tt:145
 msgid "Main text"
-msgstr ""
+msgstr "Teksti kryesor"
 
-#: lib/AmuseWikiFarm/Controller/Help.pm:40 root/src/help/faq.tt:2
-#: root/src/layout.tt:445
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "Pyetjet e shpeshta për mir"
 
-#: root/src/edit/edit.tt:532
 msgid "Make a link clickable"
-msgstr ""
+msgstr "Mundëso linkun që të klikohet"
 
-#: root/src/edit/edit.tt:212
 msgid "Make all links active"
-msgstr ""
+msgstr "Shëndërroi të gjitha linqet në linqe aktive"
 
-#: root/src/search/index.tt:96
 msgid "Match any of the fields above"
 msgstr ""
 
-#: root/src/publish/pending.tt:21
 msgid "Message"
-msgstr ""
+msgstr "Porosi"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:421 root/src/edit/edit.tt:652
 msgid "Missing #title header in the text!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:240
 msgid "Missing alias"
-msgstr ""
+msgstr "Mungon pseudonimi"
 
-#: root/src/bookbuilder/index.tt:198
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "(karakterët mangu do të raportohen)"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:243
 msgid "Missing redirection"
-msgstr ""
+msgstr "Mungon ridrejtimi"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:71
 msgid "Missing username or password"
-msgstr ""
+msgstr "Mungon emir i përoduresit si dhe fjalëkalimi"
 
-#: root/src/layout.tt:471 root/src/layout.tt:619
 msgid "Mobile"
-msgstr ""
+msgstr "Për pajisje mobile"
 
-#: root/src/layout.tt:474
 msgid "Mobile applications"
-msgstr ""
+msgstr "Aplikacinet për mjetet mobile"
 
-#: root/src/admin/list.tt:16
 msgid "Mode"
-msgstr ""
+msgstr "Forma"
 
-#: root/src/admin/edit.tt:248
 msgid "Moderated wiki"
-msgstr ""
+msgstr "Wiki i moderuar"
 
-#: root/src/admin/edit.tt:687
 msgid "Mono font"
 msgstr ""
 
-#: root/src/layout.tt:284
 msgid "More"
-msgstr ""
+msgstr "Më shumë"
 
-#: root/src/bookbuilder/index.tt:41
 msgid "Move down"
-msgstr ""
+msgstr "Lëviz poshtë"
 
-#: root/src/bookbuilder/index.tt:38
 msgid "Move up"
-msgstr ""
+msgstr "Lëviz lartë"
 
-#: root/src/admin/edit.tt:324
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr ""
 
-#: root/src/edit/edit.tt:74
 msgid "My description"
-msgstr ""
+msgstr "Përshkrimi im"
 
-#: root/src/admin/list.tt:18 root/src/bookbuilder/index.tt:867
 msgid "Name"
-msgstr ""
+msgstr "Emri"
 
-#: root/src/help/opds.tt:78
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Ekrani i listimit të rrjetit të bibliotekës."
 
-#: root/src/bookbuilder/index.tt:412
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Asnjëher mos gjenero tabelën e përmbajtjes"
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:69 root/src/publish/pending.tt:28
 msgid "New"
-msgstr ""
+msgstr "E re"
 
-#: root/src/edit/revs.tt:71
 msgid "New revision"
-msgstr ""
+msgstr "Përpunim i ri"
 
-#: root/src/admin/list.tt:78
 msgid "New site id"
-msgstr ""
+msgstr "ID e re e faqes"
 
-#: root/src/text.tt:410
 msgid "Newer texts"
-msgstr ""
+msgstr "Tekste më të reja"
 
-#: root/src/text.tt:407
 msgid "Next"
-msgstr ""
+msgstr "Vazhdo"
 
-#: root/src/edit/edit.tt:574
 msgid "Nice title"
-msgstr ""
+msgstr "Titull i mirë"
 
-#: root/src/admin/show_users.tt:41
 msgid "No"
-msgstr ""
+msgstr "Jo"
 
-#: root/src/edit/diff.tt:69 root/src/edit/revs.tt:53
-#: root/src/publish/pending.tt:94
 msgid "No editing yet!"
-msgstr ""
+msgstr "Ska redaktim për tani!"
 
-#: root/src/search/index.tt:147
 msgid "No result found!"
-msgstr ""
+msgstr "Nuk ka rezultat!"
 
-#: root/src/publish/pending.tt:131
 msgid "No revisions to show"
-msgstr ""
+msgstr "Nuk ka përpunime për të shfaqur"
 
-#: root/src/include/posts.tt:69 root/src/library.tt:76
 msgid "No text found!"
-msgstr ""
+msgstr "Nuk u gjetën tekste!"
 
-#: root/src/bookbuilder/index.tt:945
 msgid "No text was added yet"
-msgstr ""
+msgstr "Asnjë tekst nuk është futur deri më tani"
 
-#: root/src/bookbuilder/index.tt:464
 msgid "None"
-msgstr ""
+msgstr "Asnjë"
 
 #. ($c->loc('Commit')
-#: lib/AmuseWikiFarm/Controller/Edit.pm:129
-msgid ""
-"Not finished yet! Please have a look at the text and then click on \"%1\" to "
-"finalize your submission!"
-msgstr ""
+msgid "Not finished yet! Please have a look at the text and then click on \"%1\" to finalize your submission!"
+msgstr "Nuk ka përfunduar ende! Të lutem rishiko tekstin dhe pastaj kliko në \"%1\" për ta finalizuar krijimin!"
 
-#: root/src/bookbuilder/index.tt:137 root/src/edit/newtext.tt:185
-#: root/src/edit/preview.tt:52 root/src/edit/revs.tt:17
-#: root/src/search/index.tt:81 root/src/text.tt:129
 msgid "Notes"
-msgstr ""
+msgstr "Shënime"
 
-#: root/src/console/unpublished.tt:59 root/src/stats/popular.tt:16
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "Asgjë deri më tani"
 
-#: root/src/admin/edit.tt:378
 msgid "Notify mail: blank field will disable them"
-msgstr ""
+msgstr "Mail informues: fusha e zbrazët do ti pamundësoj ato"
 
-#: root/src/admin/list.tt:20
 msgid "Notify to"
-msgstr ""
+msgstr "Njofto  te"
 
-#: root/src/user/reset_password_confirm.tt:14
 msgid "Now you can proceed to login."
-msgstr ""
+msgstr "Mund të vazhdosh kyçu"
 
-#: root/src/admin/edit.tt:480
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+msgstr "Numri i shënimeve të fundit për ti shfaqur në RSS (integjer)"
 
-#: root/src/admin/edit.tt:469
 msgid "Number of results to show on paginated pages (an integer)"
-msgstr ""
+msgstr "Numri i rezultateve për ti shfaqur në faqe të numëruara (integjer)"
 
-#: root/src/include/markitup.tt:46
 msgid "Numeric List"
-msgstr ""
+msgstr "Lista Numerike"
 
-#: root/src/layout.tt:28
 msgid "OPDS"
 msgstr ""
 
-#: root/src/text.tt:395
 msgid "Older texts"
-msgstr ""
+msgstr "Tekstet më të vjetra"
 
-#: root/src/admin/edit.tt:256
 msgid "Open wiki"
-msgstr ""
+msgstr "Hape wikin"
 
-#: root/src/bookbuilder/index.tt:849
 msgid "Option templates"
-msgstr ""
+msgstr "Shabllonat opcional"
 
-#: root/src/edit/revs.tt:63
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
 "          concurrent revisions means that, unless someone takes care\n"
@@ -1483,62 +1193,55 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
+"Ose krijo një përpunim tjetër, duke marr rrezikun përsipër. Duke pasur\n"
+"       disa përpunime njëkohësisht, vetëm njëra do të zgjedhet. Ju mund të\n"
+"       vazhdoni os provoni më vonë, ose edhe më mirë mund të kontaktoni\n"
+"       librarianët para se të vazhdoni."
 
-#: root/src/user/human.tt:32
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "Apo kyçy nëse je i regjistruar"
 
-#: root/src/edit/newtext.tt:174
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "Ose ngarko një document HTML ."
 
-#: root/src/edit/edit.tt:361 root/src/edit/edit.tt:364
-#: root/src/edit/edit.tt:368
 msgid "Or wrap it in"
-msgstr ""
+msgstr "Ose shtoje brenda"
 
-#: root/src/layout.tt:306
 msgid "Other languages"
-msgstr ""
+msgstr "Gjuhët tjera"
 
-#: mkits/resetpassword/body.txt:6
 msgid "Otherwise, please just ignore this mail."
-msgstr ""
+msgstr "Përndryshe, të lutem vetëm injoro këtë mail."
 
-#: root/src/bookbuilder/index.tt:151
 msgid "PDF"
 msgstr ""
 
-#: root/src/admin/edit.tt:191
 msgid "PDF logo"
-msgstr ""
+msgstr "PDF llogo"
 
-#: root/src/edit/edit.tt:111
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "PDF-at nuk mund të përdoren në trup."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
-#: root/src/edit/edit.tt:109 root/src/edit/edit.tt:110
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
-msgstr ""
+msgstr "PDF-at e pa listuar në direktivën %1 do të ruhen por do të injorohen."
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:283
 msgid "Page not found!"
-msgstr ""
+msgstr "Faqja nuk është gjetur!"
 
-#: root/src/admin/edit.tt:638 root/src/bookbuilder/index.tt:440
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Faqja në të cilën fillon kapitulli"
 
-#: root/src/bookbuilder/index.tt:643
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Faqet nuk janë të rënditura siç duhet. Sipëfaqja e pare\n"
+"përmban faqet 1 dhe 2, e dyta faqet 3 dhe 4 dhe kështu me radhë.\n"
+"Kjo radhitje nuk është e përshtatshme për palosje."
 
-#: root/src/bookbuilder/index.tt:550
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1549,138 +1252,108 @@ msgid ""
 "        reduce the number of blank pages."
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:790
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
+msgstr "Trashësia e letrës (0.10 duhet të jetë e përshtatshme për letrën e zakonshme 80g/m2)"
 
-#: root/src/edit/edit.tt:311 root/src/edit/edit.tt:355
 msgid "Paragraphs"
-msgstr ""
+msgstr "Paragrafet"
 
-#: root/src/edit/edit.tt:336
 msgid "Part"
-msgstr ""
+msgstr "Pjesa"
 
-#: root/src/include/markitup.tt:12
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "Pjesa, vetëm për librat më të më mëdhenjë"
 
-#: root/src/bookbuilder/index.tt:18
 msgid "Partial selection"
-msgstr ""
+msgstr "Zgjedhje e pjesëshme"
 
-#: root/src/user/login.tt:12 root/src/user/login.tt:14
-#: root/src/user/reset_password_confirm.tt:7
 msgid "Password"
-msgstr ""
+msgstr "Fjalëkalimi"
 
 #. (host)
-#: mkits/resetpassword/manifest.json:6
 msgid "Password reset for %1"
-msgstr ""
+msgstr "Fjalëkalimi i ri i krijuar për 1%"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:95 root/src/user/create.tt:70
 msgid "Password too short"
-msgstr ""
+msgstr "Fjalëkalimi është shumë i shkurtë"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:330
 msgid "Password updated"
-msgstr ""
+msgstr "Fjalëkalimi u rifreskua"
 
-#: root/src/admin/show_user_details.tt:12 root/src/user/create.tt:20
-#: root/src/user/edit.tt:11
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "Fjalëkalimi duhet ti ketë së paku 8 karaktere"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:100
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Fjalëkalimet nuk përshtaten"
 
-#: root/src/admin/jobs.tt:11
 msgid "Payload"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Publish.pm:87 root/src/layout.tt:380
 msgid "Pending revisions"
-msgstr ""
+msgstr "Përpunimet në pritje"
 
-#: root/src/include/markitup.tt:49
 msgid "Picture"
-msgstr ""
+msgstr "Foto"
 
-#: root/src/edit/edit.tt:73
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Vendose në trup me një përshkrim:"
 
-#: root/src/edit/edit.tt:70
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Vendose në trup pa përshkrim:"
 
-#: root/src/admin/edit.tt:524
 msgid "Plain PDF"
-msgstr ""
+msgstr "PDF i pastër"
 
-#: root/src/user/reset_password.tt:5
-msgid ""
-"Please check your inbox, we tried to deliver a mail to the address you "
-"specified with a password reset link"
-msgstr ""
+msgid "Please check your inbox, we tried to deliver a mail to the address you specified with a password reset link"
+msgstr "Të lutem shiko inbox-in tend. Kemi provuar ta dërgojmë një email me një link për resetim të fjalëkalimit në email adresën që e ke paraqitur."
 
-#: root/src/bookbuilder/index.tt:303
 msgid "Please choose the Beamer color theme"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:286
 msgid "Please choose the Beamer theme"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:257
 msgid "Please choose the font size"
-msgstr ""
+msgstr "Ju lutem zgjedheni madhësinë e fontit"
 
-#: root/src/bookbuilder/index.tt:205
 msgid "Please choose the main font"
-msgstr ""
+msgstr "Ju lutem zgjedheni fontin kryesor"
 
-#: root/src/bookbuilder/index.tt:240
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "Ju lutem zgjedheni mono fontin"
 
-#: root/src/bookbuilder/index.tt:222
 msgid "Please choose the sans font"
-msgstr ""
+msgstr "Ju lutem zgjedheni sans fontin"
 
-#: root/src/edit/edit.tt:261
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Ju lutem përshkruani shkurt atë që keni bërë"
 
-#: root/src/admin/show_user_details.tt:13 root/src/user/create.tt:21
-#: root/src/user/edit.tt:12
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "Ju lutem mos përdorni fjalëkalim me vlerë."
 
-#: root/src/edit/edit.tt:352
-msgid ""
-"Please do not use higher levels (part or chapter) for short articles with "
-"sections."
-msgstr ""
+msgid "Please do not use higher levels (part or chapter) for short articles with sections."
+msgstr "Ju lutem mos përdorni nivele më të larta (pjesë të kapitullit) për artikuj të shkurtë me seksione."
 
-#: root/src/edit/edit.tt:285
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Ju lutem na jepni një emër shfrytëzuesi. Nuk duhet të jetë email adresë.\n"
+"     Thjesh një emër i trilluar, në mënyrë që mund ta dijmë se ngarkime \n"
+"      të shumëfishta vijnë nga i njëjti person. "
 
-#: root/src/edit/edit.tt:192
 msgid ""
 "Please keep in mind that filters are language-specific\n"
 "              and may or may not be available for the language of the\n"
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"Ju lutem keni parasysh që filterat janë specifik për gjuhë\n"
+"           dhe munden të jenë ose jo në dispozicion për gjuhën e\n"
+"           tekstit. Nëse nuk është në dispozicion, teksti do të\n"
+"          mbetet si është."
 
-#: root/src/publish/pending.tt:112
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
 "    as action, it means that the revision has been superseded by\n"
@@ -1688,12 +1361,15 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"Ju lutem keni parasysh kur shihni \"Publikim I sforcuar\"\n"
+" si veorim, do të thotë që përpunimi është zëvendësuar prej\n"
+" një tjetri, kështu që publikuar këtë do të riktheni atë paraprak.\n"
+" Mundohuni që të shmangni këtë situatë, përveq nëse dini se\n"
+" çfarë po bëni."
 
-#: root/src/edit/edit.tt:271
 msgid "Please leave a mail if you want to be contacted about this change"
-msgstr ""
+msgstr "Ju lutem leni një email nëse dëshironi të ju kontaktojm për këtë ndryshim"
 
-#: root/src/admin/edit.tt:761
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
 "  this logic: if you have some imposed format, they are ignored for\n"
@@ -1701,183 +1377,152 @@ msgid ""
 "  only the standalone PDF, they are applied to it."
 msgstr ""
 
-#: root/src/edit/edit.tt:373 root/src/edit/edit.tt:470
 msgid "Please note that wrapping tags must be placed on a line by themselves."
-msgstr ""
+msgstr "Keni kujdes që tags të mbledhura duhen të vendosen në një rresht veçmas. "
 
-#: root/src/edit/edit.tt:543
 msgid ""
 "Please note that you have to upload them first and\n"
 "          use the name the form provides. Images are always renamed by\n"
 "          us."
 msgstr ""
+"Ju lutem keni parasysh që duhet ti ngarkoni së pari dhe\n"
+"       të përdorni emrin që forma e ofron. Imazhet janë gjithmonë të\n"
+"      riemëruara nga ne."
 
-#: root/src/edit/newtext.tt:147
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"Keni kujdes që është më mirë që ta kopijoni tekstin\n"
+" nga WordI/OpenOfice/LibreOffice/HTML duke përdorur butonin \"paste\n"
+" from word\". Kjo bëhet në mënyrë që të ruhet markup-at."
 
-#: root/src/help/faq.tt:97
 msgid ""
 "Please note: without any prefix, protocol or hostname, just\n"
 "  the bare page name as shown above. External redirecting is not\n"
 "  supported."
 msgstr ""
+"Ju ltem keni parasysh: pa ndonjë prefiks, protokol ose emër të bartësit\n"
+"  vetëm emri i thjeshtë i faqes sikur më lartë. Ridrjetimi i jashtëm\n"
+"  nuk është i përkrahur."
 
-#: lib/AmuseWikiFarm/Controller/User.pm:170 root/src/user/human.tt:5
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Ju lutem vërtetoni që jeni njeri"
 
-#: root/src/tasks/display.tt:45
 msgid "Please reload your page"
-msgstr ""
+msgstr "Të lutem rifresko faqën"
 
-#: root/src/console/alias_display.tt:37 root/src/console/alias_display.tt:46
-#: root/src/console/alias_display.tt:69 root/src/console/alias_display.tt:78
 msgid "Please select"
-msgstr ""
+msgstr "Të lutem zgjidh"
 
-#: root/src/bookbuilder/index.tt:172 root/src/bookbuilder/index.tt:192
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Të lutem zgjidh fontin e dëshiruar"
 
-#: root/src/bookbuilder/index.tt:571 root/src/bookbuilder/index.tt:614
 msgid "Please select the signature size:"
+msgstr "Të lutem zgjidh madhësinë e nënshkrimit"
+
+msgid "Please select the size of each page including the crop marks, before the imposing"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:740
-msgid ""
-"Please select the size of each page including the crop marks, before the "
-"imposing"
-msgstr ""
-
-#: root/src/bookbuilder/index.tt:274
 msgid "Please setup the Beamer layout"
 msgstr ""
 
-#: root/src/edit/edit.tt:320
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Poezi, referencat, shfaqet, bloqet e kodit"
 
-#: root/src/console/alias_display.tt:44 root/src/console/alias_display.tt:76
 msgid "Pointing to"
-msgstr ""
+msgstr "Aludon në"
 
-#: lib/AmuseWikiFarm/Controller/Stats.pm:65
 msgid "Popular texts"
-msgstr ""
+msgstr "Tekste të kërkuara"
 
-#: root/src/edit/edit.tt:525
 msgid ""
 "Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"Prefiks për listat e numëruara mund të jetë “1.”, “a.”,\n"
+" \n"
+"       “A.”,“i.”, “I.”, varësisht prej tipit të listës që të nevojitet."
 
-#: root/src/edit/newtext.tt:255
 msgid "Prepare this text for the archiving"
-msgstr ""
+msgstr "Përgatit këtë tekst për arkivim"
 
-#: mkits/commit/body.txt:19 root/src/admin/edit.tt:771
-#: root/src/edit/edit.tt:24 root/src/edit/edit.tt:296
-#: root/src/edit/preview.tt:3
 msgid "Preview"
-msgstr ""
+msgstr "Inspekto"
 
-#: root/src/text.tt:392
 msgid "Previous"
-msgstr ""
+msgstr "Paraprake"
 
-#: root/src/admin/jobs.tt:15
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
 
-#: root/src/admin/edit.tt:244
 msgid "Private"
 msgstr ""
 
-#: root/src/help/opds.tt:56
 msgid "Procedure"
-msgstr ""
+msgstr "Procedura"
 
-#: root/src/edit/newtext.tt:138
 msgid "Produce slides."
-msgstr ""
+msgstr "Krijo slide"
 
-#: root/src/admin/jobs.tt:16
 msgid "Produced"
-msgstr ""
+msgstr "Krijuar"
 
-#: root/src/console/unpublished.tt:14 root/src/text.tt:35 root/src/text.tt:89
 msgid "Publication date"
-msgstr ""
+msgstr "Data e publikimit"
 
-#: root/src/edit/newtext.tt:235
 msgid "Publication date on this site."
-msgstr ""
+msgstr "Data e publikimit në këtë faqe"
 
-#: root/src/publish/pending.tt:46
 msgid "Publish"
-msgstr ""
+msgstr "Publiko"
 
-#: root/src/edit/edit.tt:592
 msgid "Published in *A nice book*, published by My House, 2014"
-msgstr ""
+msgstr "E publikuar në *Një libër i mire*, e publikuar nga Shtëpia Ime, 2014"
 
-#: root/src/console/unpublished.tt:15 root/src/console/unpublished.tt:47
 msgid "Purge"
-msgstr ""
+msgstr "Spastro"
 
-#: root/src/help/faq.tt:69
-msgid ""
-"Purging means removing it completely from the archive, not just hiding it."
-msgstr ""
+msgid "Purging means removing it completely from the archive, not just hiding it."
+msgstr "Spastrim do të thotë fshirjen komplete nga arkiva, jo vetëm fshehjen."
 
-#: root/src/edit/newtext.tt:187
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Vendos këtu informata shtesë (titulli\n"
+"\t origjinal, përkthyesit, meritat, etj.). Fusnotat shkojnë\n"
+"\t në trup."
 
-#: root/src/admin/edit.tt:7
 msgid "Quarter Letter paper"
 msgstr ""
 
-#: root/src/search/index.tt:150
 msgid "Query was"
-msgstr ""
+msgstr "Pyetja ishte"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:62
 msgid "Queue"
-msgstr ""
+msgstr "Rradhë"
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:850
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Limiti është tejkaluar! Janë vendosur shumë faqe."
 
-#: root/src/include/markitup.tt:85
 msgid "Quotes"
-msgstr ""
+msgstr "Citatet"
 
-#: root/src/layout.tt:590
 msgid "RSS feed"
 msgstr ""
 
-#: root/src/layout.tt:479 root/src/layout.tt:482 root/src/layout.tt:583
 msgid "Random"
-msgstr ""
+msgstr "Tekst i rëndomtë"
 
-#: root/src/include/posts.tt:41
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Lexo tekstin e plotë..."
 
-#: lib/AmuseWikiFarm/Controller/Help.pm:45 root/src/layout.tt:268
 msgid "Real time help"
-msgstr ""
+msgstr "Përgjigje e shpejtë"
 
-#: root/src/edit/edit.tt:244
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -1888,456 +1533,343 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"Rendit fusnotat përsëri duke ndryshuar\n"
+" numërin rendor sipas renditjes që janë future.\n"
+"Ju lutem mos e zgjedhni këtë mundësi nëse nuk\n"
+"jeni të sigurtë se çfarë do të thotë kjo. Kjo mundësi\n"
+"mund të jetë shumë problematike prandaj përdoreni\n"
+"me kujdes dhe verifikoni rezultatet. Në rast se keni \n"
+"hasur në problem, ju lutem ti raportoni rezultatet \n"
+"përmes porosisë. Procedura gjithnjë tenton që të jetë\n"
+"e sigurtë dhe si rrjedhojë do të injoroj ndryshimin nëse\n"
+"mungojnë apo ka shumë fusnota."
 
-#: root/src/console/unpublished.tt:13 root/src/edit/edit.tt:613
 msgid "Reason"
-msgstr ""
+msgstr "Arsyeja"
 
-#: root/src/help/faq.tt:52
 msgid "Reason for deletion"
-msgstr ""
+msgstr "Arësyeja e fshirjes?"
 
-#: root/src/edit/diff.tt:50
 msgid "Recheck"
-msgstr ""
+msgstr "Rishiko"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:214
-#: root/src/console/alias_display.tt:3 root/src/layout.tt:400
 msgid "Redirections"
 msgstr ""
 
-#: root/src/layout.tt:302
 msgid "Related projects"
 msgstr ""
 
 #. ("$name $url")
-#: lib/AmuseWikiFarm/Controller/Console.pm:89
 msgid "Remote repository %1 added"
 msgstr ""
 
 #. ($name)
-#: lib/AmuseWikiFarm/Controller/Console.pm:103
 msgid "Remote repository %1 removed"
 msgstr ""
 
-#: root/src/layout.tt:395
 msgid "Remotes"
 msgstr ""
 
-#: root/src/console/git_display.tt:16
 msgid "Remove"
-msgstr ""
+msgstr "Largo"
 
-#: root/src/bookbuilder/index.tt:504
 msgid "Remove cover image"
-msgstr ""
+msgstr "Largo imazhin e kopertinës"
 
-#: root/src/bookbuilder/index.tt:869
 msgid "Rename to"
-msgstr ""
+msgstr "Ndërro emërtimin"
 
-#: root/src/user/create.tt:43 root/src/user/edit.tt:33
 msgid "Repeat email"
-msgstr ""
+msgstr "Përsëriteni email-in"
 
-#: root/src/admin/show_user_details.tt:20 root/src/user/create.tt:28
-#: root/src/user/edit.tt:19
 msgid "Repeat password"
-msgstr ""
+msgstr "Përsëriteni fjalëkalimin"
 
-#: root/src/console/git_display.tt:7
 msgid "Repository"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:65
 msgid "Reset all"
-msgstr ""
+msgstr "Rivendosi të gjitha"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:106 root/src/user/reset_password.tt:18
 msgid "Reset password"
-msgstr ""
+msgstr "Rivendos fjalëkalimin"
 
-#: root/src/admin/edit.tt:37
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Ndryshoret e kufizuara të parametrave"
 
-#: root/src/admin/edit.tt:96
 msgid "Restricted format options"
-msgstr ""
+msgstr "Zgjedhjet e kufizuara të formatizmit"
 
-#: root/src/edit/newtext.tt:111
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "E marrë me (datën) nga URL"
 
-#: root/src/edit/edit.tt:597
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "E marrë me 8 Mars, 2012 nga"
 
-#: root/src/publish/pending.tt:15
 msgid "Revision"
-msgstr ""
+msgstr "Përpunimi"
 
 #. ($uri)
-#: lib/AmuseWikiFarm/Controller/Publish.pm:168
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "Përpunimi për 1% është fshirë"
 
-#: root/src/admin/show_user_details.tt:42 root/src/admin/show_users.tt:13
 msgid "Roles"
-msgstr ""
+msgstr "Rrolet"
 
-#: root/src/bookbuilder/index.tt:459
 msgid "Running headings"
 msgstr ""
 
-#: root/src/admin/edit.tt:1012
 msgid "SSL CA certificate path (Apache)"
 msgstr ""
 
-#: root/src/admin/edit.tt:998
 msgid "SSL certificate path (Apache)"
 msgstr ""
 
-#: root/src/admin/edit.tt:984
 msgid "SSL chained certificate path (Nginx)"
 msgstr ""
 
-#: root/src/admin/edit.tt:926
 msgid "SSL configuration"
-msgstr ""
+msgstr "Parametrat e SLL"
 
-#: root/src/admin/edit.tt:970
 msgid "SSL key path"
 msgstr ""
 
-#: root/src/admin/edit.tt:671
 msgid "Sans font"
-msgstr ""
+msgstr "Fonti Sans"
 
-#: root/src/bookbuilder/index.tt:923
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "Përditëso konfigurimin aktual"
 
 #. ($pname)
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:237
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "Konfigurimi \"%1\" është ruajtur"
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:83
-#: lib/AmuseWikiFarm/Controller/Search.pm:102 root/src/layout.tt:170
 msgid "Search"
-msgstr ""
+msgstr "Kërko"
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:224
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:232
 msgid "Search results"
-msgstr ""
+msgstr "Rezultatet e kërkimit"
 
-#: root/src/edit/edit.tt:342 root/src/edit/edit.tt:627
-#: root/src/edit/edit.tt:631 root/src/library/bbselect.tt:48
 msgid "Section"
-msgstr ""
+msgstr "Seksioni"
 
-#: root/src/bookbuilder/index.tt:468
 msgid "Section and subsection. If one side document: section."
-msgstr ""
+msgstr "Seksioni dhe nënseksioni. Nëse dokumenti është vetëm në një anë: seksion."
 
-#: root/src/bookbuilder/index.tt:697 root/src/bookbuilder/index.tt:716
 msgid "See here for more details."
-msgstr ""
+msgstr "Shiko këtu për më shumë detale."
 
-#: root/src/console/git_display.tt:116
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Shih këtu për dokuentacionin e plotë."
 
-#: root/src/edit/edit.tt:641
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Shih udhëzuesin e plotë për më shumë detaje (anglisht)"
 
-#: root/src/library/bbselect.tt:49
 msgid "Select"
-msgstr ""
+msgstr "Zgjedh"
 
-#: root/src/library/bbselect.tt:29
 msgid "Select all"
-msgstr ""
+msgstr "Zgjedhi të gjitha"
 
-#: root/src/text.tt:273 root/src/text.tt:281
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "Zgjedh pjesët e veçanta për krijuesin e librit."
 
-#: root/src/edit/edit.tt:552
 msgid "Separate body fields"
-msgstr ""
+msgstr "Fushat e ndara të trupit të dokumentit "
 
-#: root/src/edit/edit.tt:550
 msgid "Separate footer fields"
-msgstr ""
+msgstr "Ndaji fushat "
 
-#: root/src/edit/edit.tt:551
 msgid "Separate header fields"
-msgstr ""
+msgstr "Fushat e ndara të pjesës së sipërme të dokumentit "
 
-#: root/src/edit/newtext.tt:238
 msgid "Set a date in the future if you want it deferred."
-msgstr ""
+msgstr "Cakto një datë të ardhshme nëse dëshiron që ta bësh këtë më vonë"
 
-#: root/src/edit/edit.tt:37 root/src/edit/revs.tt:50
-#: root/src/publish/pending.tt:89
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Tregoji dallimet në tab-in e ri"
 
-#: root/src/search/index.tt:114
 msgid "Show options"
-msgstr ""
+msgstr "Tego opcionet"
 
-#: root/src/admin/edit.tt:275
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "Trego kutinë informative të tekstit në fund të teksteve"
 
-#: root/src/edit/edit.tt:552
 msgid "Single bars"
-msgstr ""
+msgstr "Shiritat e veçantë"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:93
 msgid "Site already exists"
-msgstr ""
+msgstr "Kjo faqe tashmë egziston"
 
-#: root/src/admin/edit.tt:69 root/src/admin/list.tt:15
 msgid "Site group"
-msgstr ""
+msgstr "Grupi i faqës"
 
-#: root/src/admin/jobs.tt:9
 msgid "Site id"
-msgstr ""
+msgstr "ID e faqës"
 
-#: root/src/admin/edit.tt:388
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "Email-i i faqës"
 
-#: root/src/admin/edit.tt:238
 msgid "Site mode"
-msgstr ""
+msgstr "Formati i faqës"
 
-#: root/src/admin/edit.tt:228
 msgid "Site name"
-msgstr ""
+msgstr "Emri i faqës"
 
-#: root/src/admin/edit.tt:368
 msgid "Site slogan"
-msgstr ""
+msgstr "Slogani i faqës"
 
-#: root/src/admin/show_user_details.tt:54 root/src/admin/show_users.tt:14
-#: root/src/layout.tt:429
 msgid "Sites"
-msgstr ""
+msgstr "Faqet"
 
-#: root/src/bookbuilder/index.tt:158
 msgid "Slides"
 msgstr ""
 
-#: root/src/admin/edit.tt:556 root/src/text.tt:180 root/src/text.tt:181
 msgid "Slides (PDF)"
 msgstr ""
 
-#: root/src/user/create.tt:45
 msgid "So we can be sure we are not mailing passwords to random people"
-msgstr ""
+msgstr "në mënjyrë që t'jemi të sigurtë që nuk jemi duke e dërguar fjalëkalimin tek njerëzit rëndom"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:247
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Disa nga fushat nuk janë plotësuar! Të gjitha nevoiten të plotësohen"
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:58
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Disa nga fushat janë shumë të gjata"
 
-#: root/src/edit/revs.tt:9
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Janë gjetur disa përpunime që janë në proces"
 
 #. (username, host)
-#: mkits/resetpassword/body.txt:2
 msgid "Someone, probably you, has requested a password reset for %1 at %2."
-msgstr ""
+msgstr "Dikush, sipas të gjitha gjasave ju, keni kërkuar ndërrimin e fjalëkalimit për  %1 në %2."
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:103
-#: lib/AmuseWikiFarm/Controller/Publish.pm:137
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "Kërkojmë falje, mirëpo një numër i madh i punëve është në pritje. Ju lutem provoni më vonë!"
 
-#: root/src/bookbuilder/index.tt:128 root/src/edit/newtext.tt:108
-#: root/src/edit/preview.tt:45 root/src/search/index.tt:71
-#: root/src/text.tt:120
 msgid "Source"
-msgstr ""
+msgstr "Referenca"
 
-#: root/src/tasks/display.tt:26 root/src/tasks/display.tt:53
 msgid "Source files"
-msgstr ""
+msgstr "Dokumentet bazë"
 
-#: root/src/text.tt:225 root/src/text.tt:226
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Dokumentet bazë dhe dokumentet e bashkangjitura"
 
-#: root/src/library/bbselect.tt:62
 msgid "Source, notes..."
-msgstr ""
+msgstr "Burimi, shënimet..."
 
-#: root/src/tasks/display.tt:81 root/src/tasks/display.tt:96
 msgid "Sources"
-msgstr ""
+msgstr "Burimet"
 
-#: root/src/edit/edit.tt:454
 msgid "Special blocks"
-msgstr ""
+msgstr "Blloqet e veçanta"
 
-#: lib/AmuseWikiFarm/Controller/Special.pm:26
 msgid "Special pages"
-msgstr ""
+msgstr "Faqet e posaçme"
 
-#: root/src/admin/edit.tt:437
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 
-#: root/src/publish/pending.tt:65
 msgid "Stale editing"
 msgstr ""
 
-#: root/src/text.tt:200 root/src/text.tt:201
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "Faqja HTML (e përshtatshme për printim)"
 
-#: root/src/bookbuilder/index.tt:347 root/src/bookbuilder/index.tt:360
-#: root/src/bookbuilder/index.tt:766 root/src/bookbuilder/index.tt:779
 msgid "Standard"
 msgstr ""
 
-#: root/src/tasks/display.tt:109
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Faqja statike pa javascript"
 
-#: root/src/admin/jobs.tt:12 root/src/console/unpublished.tt:12
-#: root/src/tasks/display.tt:10 root/src/tasks/display.tt:45
-#: root/src/tasks/display.tt:67
 msgid "Status"
-msgstr ""
+msgstr "Statusi"
 
-#: root/src/edit/edit.tt:345
 msgid "Subsection"
-msgstr ""
+msgstr "Nënseksioni"
 
-#: root/src/edit/edit.tt:348
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "Nënseksioni apo përshkrimi i artikulit"
 
-#: root/src/bookbuilder/index.tt:96 root/src/edit/newtext.tt:27
-#: root/src/edit/preview.tt:17 root/src/text.tt:51
 msgid "Subtitle"
-msgstr ""
+msgstr "Nëntitulli"
 
-#: root/src/console/alias_display.tt:18
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1146
 msgid "Such an uri already exists"
-msgstr ""
+msgstr "URI i tillë egziston"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:194
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "Egziston një përdorues me këtë emër!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:267
 msgid "Such username already exists"
-msgstr ""
+msgstr "Egziston një përdorues me këtë emër!"
 
-#: root/src/edit/edit.tt:308
 msgid "Summary"
-msgstr ""
+msgstr "Përmbledhja"
 
-#: root/src/edit/edit.tt:328 root/src/edit/edit.tt:555
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "Direktiva mbështetëse e pjesës së sipërme të dokumentit"
 
-#: root/src/layout.tt:184 root/src/layout.tt:188 root/src/text.tt:10
 msgid "Table of Contents"
-msgstr ""
+msgstr "Përmbajtja"
 
-#: root/src/edit/edit.tt:325 root/src/edit/edit.tt:548
 msgid "Tables"
-msgstr ""
+msgstr "Tabelat"
 
-#: root/src/admin/edit.tt:881
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Tag cloud me autorët"
 
-#: root/src/admin/edit.tt:893
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Tag cloud me temat"
 
-#: root/src/admin/jobs.tt:10
 msgid "Task"
-msgstr ""
+msgstr "Detyra"
 
-#: root/src/admin/edit.tt:107
 msgid "TeX"
 msgstr ""
 
-#: root/src/edit/newtext.tt:200 root/src/edit/preview.tt:59
 msgid "Teaser"
 msgstr ""
 
-#: root/src/edit/preview.tt:65
 msgid "Teaser image"
 msgstr ""
 
-#: root/src/edit/edit.tt:517 root/src/edit/edit.tt:518
 msgid "Term"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/Lexicon.pm:24
 msgid "Test"
-msgstr ""
+msgstr "Test "
 
-#: root/src/help/opds.tt:27
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Aplikacionet e testuara"
 
-#: root/src/library/bbselect.tt:58
 msgid "Text body, before any section"
-msgstr ""
+msgstr "Trupi i tekstit i vendosur para cilit do seksion"
 
-#: root/src/edit/edit.tt:376 root/src/edit/edit.tt:381
-#: root/src/edit/edit.tt:384 root/src/edit/edit.tt:389
-#: root/src/edit/edit.tt:392 root/src/edit/edit.tt:397
-#: root/src/utils/import.tt:25
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Teksti i formatuar me përmirësime"
 
-#: root/src/console/alias_display.tt:6
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
 
-#: root/src/console/translations.tt:12
 msgid "Texts"
-msgstr ""
+msgstr "Tekstet"
 
-#: root/src/admin/edit.tt:768
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
 msgstr ""
 
-#: root/src/help/opds.tt:16
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "Adresa OPDS për këtë faqe është:"
 
-#: root/src/admin/edit.tt:199
 msgid ""
 "The PDF logo value can be either an absolute path\n"
 "            or just a filename if you choose to install it in the\n"
@@ -2345,123 +1877,104 @@ msgid ""
 "            The last one checks if the file can be found."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1200
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "Dokumenti i ngarkuar nuk është dokument HTML!"
 
-#: root/src/admin/edit.tt:962
 msgid "The following values are used to generate the webserver configuration."
-msgstr ""
+msgstr "Vlerat në vazhdim pëdoren për të krijuar parametrat e webserverit."
 
-#: root/src/admin/edit.tt:946
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
 msgstr ""
+"Parametrat e krijuar të webserverit do ti ridrejtoj \n"
+"të gjitha kërkesat për HTTP në HTTPS"
 
 #. (valid)
-#: mkits/resetpassword/body.txt:8
 msgid "The link is valid until %1 (one hour from now)"
-msgstr ""
+msgstr "Adresa është valide deri %1 (nj%1 orë nga tani)"
 
-#: root/src/admin/edit.tt:184
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "Llogo-ja ka emër të uebfaqës në të"
 
-#: root/src/edit/edit.tt:581
 msgid "The optional subtitle"
-msgstr ""
+msgstr "Nëntitulli sekondar"
 
-#: root/src/help/faq.tt:29
 msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
 msgstr ""
 
-#: root/src/user/create.tt:37
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "Fjalëkalimi do të dërgohet në këtë email adresë"
 
-#: mkits/commit/body.txt:3
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "Përpunimi ka marrë komentet në vazhdim"
 
-#: root/src/library/bbselect.tt:20
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "Struktura e tekstit është treguar më poshtë"
 
-#: root/src/edit/newtext.tt:202
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "Teksti që tregohet në faqën e parë"
 
-#: root/src/layout.tt:528
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "Teksti është shtuar në krijuesin e librit"
 
-#: root/src/edit/edit.tt:574 root/src/edit/edit.tt:575
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr ""
+"Titulli i dokumentit (për klasifikim). E përshtatshme\n"
+"nëse dëshiron të largosh fjalët lidhëse, nyjet etj.\n"
+"Psh. teksti me titull \"E kuqja\" mund të shëndrrohet\n"
+"në vetëm \"Kuqja\" dhe do të jetë e listuar në kategorinë\n"
+"e emrave me K, e jo me E."
 
-#: root/src/edit/edit.tt:559
 msgid "The title of the document. The only mandatory directive."
+msgstr "Titulli i dokumentit. E vetmja gjë që patjetër duhet plotësuar."
+
+msgid "The webserver needs to be reconfigured. Please execute in a root shell the following commands:"
 msgstr ""
 
-#: root/src/admin/edit.tt:13
-msgid ""
-"The webserver needs to be reconfigured. Please execute in a root shell the "
-"following commands:"
-msgstr ""
-
-#: root/src/bookbuilder/index.tt:582 root/src/bookbuilder/index.tt:625
 msgid "The whole book in as single signature"
 msgstr ""
 
-#: root/src/help/faq.tt:62
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "Atëhere aprovoni ndryshimet shtu siç do të ishte teksti përfundimtar i gatshëm për botim."
 
-#: root/src/console/git_display.tt:113
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "Pastaj merrini përditësimet nga kjo faqe."
 
-#: root/src/console/translations.tt:21
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "Ketyre teksteve iu mungon ID e veçantë."
 
-#: root/src/edit/edit.tt:529
 msgid "They have the same syntax (images are actually links)"
+msgstr "E kanë të njëjtën sintaksë (imazhet në të vërtetë janë linqe)"
+
+msgid "They should be paths relative to the webserver configuration root or absolute paths (recommended)."
 msgstr ""
 
-#: root/src/admin/edit.tt:963
-msgid ""
-"They should be paths relative to the webserver configuration root or "
-"absolute paths (recommended)."
-msgstr ""
-
-#: root/src/edit/edit.tt:108
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
 
-#: root/src/edit/newtext.tt:265
 msgid "This field is required"
-msgstr ""
+msgstr "Kjo fushë duhet plotësuar"
 
-#: root/src/edit/newtext.tt:153
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"Ky është përpunuesi WYSIWYS. Nëse dëshironi\n"
+"që ta përdorni sintaksën që ngjason në Wiki, atëhere lejeni \n"
+"ashtu siç është, mbushini fushat që kërkohen më lartë,\n"
+"dhe shtyjeni përpunimin deri në hapin e ardhshëm."
 
-#: root/src/edit/edit.tt:553
 msgid "This is the caption"
-msgstr ""
+msgstr "Kjo është fjalë/fjali përshkruese"
 
-#: mkits/newtext/body.txt:3
 msgid ""
 "This mail has been sent to notify you about a new text\n"
 "creation, even if the uploading is not completed yet and the user\n"
@@ -2469,363 +1982,279 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"Ky email është dërguar që t''ju njoftoj për krijimin e\n"
+"një teksti të ri edhe pse ngarkimi i tijë ndoshta ende nuk ka përfunduar\n"
+"dhe përdoruese ende duhet ta finalizoj atë. Një email tjetër duhet të vijë\n"
+"së shpejti. Nëse kjo nuk ndodh, kjo mund të thot se ngarkimi nuk është\n"
+"finalizuar dhe ju ndoshta do të duhet të shikoni se për se bëhet fjalë."
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:295
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Teksti i rishikuar tanimë është publikuar duke mos i përfillë ndryshimet"
 
-#: root/src/edit/revs.tt:37
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Teksti është duke u përpunuar në mënyrë aktive"
 
-#: root/src/edit/revs.tt:35
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "Teksti është duke u përpunuar në mënyrë aktive nga ju"
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:290
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Teksti është duke u përpunuar nga dikush tjetër!"
 
-#: root/src/edit/edit.tt:635
 msgid "This section will not produce a slide"
 msgstr ""
 
-#: root/src/help/opds.tt:50
 msgid ""
-"This site is private and mobile applications should ask for your username "
-"and\n"
+"This site is private and mobile applications should ask for your username and\n"
 "  password to access the OPDS."
 msgstr ""
+"Kjo faqe është private prandaj aplikacionet mobile duhet të kërkojnë emrin\n"
+"e përdoruesit dhe fjalëkalimin që të kenë qasje në OPDS."
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:185
 msgid "This text does not exist"
-msgstr ""
+msgstr "Ky tekst nuk egziston"
 
-#: mkits/commit/body.txt:9 root/src/edit/diff.tt:8
 msgid "This text is new"
-msgstr ""
+msgstr "Ky është tekst i ri"
 
-#: root/src/text.tt:37
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Ky tekst nuk është publikuar ende"
 
 #. (rev.is_deferred)
-#: root/src/publish/pending.tt:55
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Ky tekst është shtyrë për %1"
 
-#: root/src/edit/newtext.tt:239
 msgid "Time is optional."
-msgstr ""
+msgstr ". Koha nuk ështe e detyrueshme. "
 
-#: root/src/bookbuilder/index.tt:86 root/src/console/unpublished.tt:11
-#: root/src/edit/newtext.tt:13 root/src/edit/preview.tt:11
-#: root/src/search/index.tt:31 root/src/text.tt:44
 msgid "Title"
-msgstr ""
+msgstr "Titulli"
 
-#: root/src/bookbuilder/index.tt:469
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "Titulli dhe kapitulli. Nëse teksti i dokumentit është i vendosur vetëm në njërën anë: kapitulli."
 
-#: root/src/bookbuilder/index.tt:470
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "Titulli dhe seksioni. Nëse teksti i dokumentit është i vendosur vetëm në njërën anë: seksioni."
 
-#: root/src/bookbuilder/index.tt:465
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "Titulli dhe nëntitulli: Nëse teksti i dokumentit është i vendosur vetëm në njërën anë: titulli."
 
-#: root/src/edit/newtext.tt:37
 msgid "Title for sorting"
-msgstr ""
+msgstr "Titujt për klasifikim"
 
-#: root/src/library/bbselect.tt:60
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Tituli, autori, data..."
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:100
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:252
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:53
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:76 root/src/layout.tt:207
-#: root/src/layout.tt:596
 msgid "Titles"
-msgstr ""
+msgstr "Titujt"
 
 #. (pending_url)
-#: mkits/commit/body.txt:23
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "Për ti vendosur ndryshimet, ju mund të vizitoni %1"
 
-#: root/src/edit/edit.tt:104
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
 
-#: root/src/edit/edit.tt:456
-msgid ""
-"To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
+msgid "To preserve the whitespaces and line breakings, wrap the paragraphs with"
+msgstr "Për të ruajtur hapësirat e bardha dhe thyerjet e rreshtit, grumbulloni paragrafet me "
 
-#: root/src/edit/edit.tt:462
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "Për formatim të shpejtë të referencave, përmbledhini "
 
-#: root/src/edit/edit.tt:464
 msgid "To quickly format plays, use"
 msgstr ""
 
-#: mkits/commit/body.txt:11
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "Për të vazhduar ndryshimin e teksti, ju mund ta vizitoni linkun në vazhdim:"
 
 #. (loc('Update')
 #. (loc("Update"))
-#: root/src/bookbuilder/index.tt:852
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
 msgstr ""
+"Që ta ruani dhe përditësuar dizajnin, së pari duheni \n"
+"ti ruani opcionet me pullën \"%1\""
 
-#: mkits/commit/body.txt:15
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "Për ti ruajtur ndryshimet e bëra, ju lutem klikoni linkun në vazhdim"
 
-#: root/src/search/index.tt:61 root/src/text.tt:103
 msgid "Topic"
-msgstr ""
+msgstr "Tema"
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:78
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:138
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:59 root/src/edit/edit.tt:585
-#: root/src/edit/newtext.tt:80 root/src/edit/preview.tt:38
-#: root/src/layout.tt:222 root/src/layout.tt:237 root/src/layout.tt:610
-#: root/src/text.tt:105
 msgid "Topics"
-msgstr ""
+msgstr "Temat"
 
-#: root/src/bookbuilder/index.tt:53
 msgid "Total pages"
-msgstr ""
+msgstr "Numri i përgjithshëm i faqeve"
 
-#: root/src/edit/edit.tt:550
 msgid "Triple bars"
-msgstr ""
+msgstr "Shirirta të trefishtë"
 
-#: root/src/bookbuilder/index.tt:961
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Provoje një tekst të rëndomtë nëse nuk jeni të sigurtë."
 
-#: root/src/admin/edit.tt:283
-msgid ""
-"Turn links to images into images (affects site display only, static formats "
-"have the link)"
-msgstr ""
+msgid "Turn links to images into images (affects site display only, static formats have the link)"
+msgstr "Shëndërro linqet në imazhe (ndikon vetëm në paraqitjen e faqës, formatët static tashmë kan link)"
 
-#: root/src/admin/edit.tt:742 root/src/bookbuilder/index.tt:433
 msgid "Two side layout"
-msgstr ""
+msgstr "Renditja në të dyja anët"
 
-#: root/src/bookbuilder/index.tt:17 root/src/console/alias_display.tt:97
-#: root/src/console/unpublished.tt:9 root/src/edit/revs.tt:15
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
-#: root/src/console/git_display.tt:10
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
-#: root/src/console/git_display.tt:62
 msgid ""
 "URL of the new remote repository\n"
 "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
 "        supported."
 msgstr ""
 
-#: root/src/edit/revs.tt:29 root/src/publish/pending.tt:103
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
-#: root/src/bookbuilder/index.tt:419
-msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
-
-#: root/src/edit/edit.tt:222
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
 msgstr ""
+"Pa kushte largoji të gjitha hapsirat e pa-ndërprera\n"
+" të padukshme në tekst"
 
-#: root/src/edit/newtext.tt:93
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "ID unike per tekst"
 
-#: lib/AmuseWikiFarm/Controller/Console.pm:143
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Tekst i papublikuar"
 
 #. ($mime)
-#: lib/AmuseWikiFarm/Schema/Result/Revision.pm:555
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Tip i dokumentit i pasuportuar %1"
 
-#: root/src/admin/edit.tt:1033 root/src/admin/show_user_details.tt:70
-#: root/src/bookbuilder/index.tt:824 root/src/bookbuilder/index.tt:852
-#: root/src/category-details-edit.tt:36 root/src/user/edit.tt:39
 msgid "Update"
-msgstr ""
+msgstr "Përditëso"
 
-#: root/src/layout.tt:410
 msgid "Update account info"
-msgstr ""
+msgstr "Përditëso të dhënat e llogarisë"
 
-#: root/src/category-details-edit.tt:7 root/src/category-details.tt:16
 msgid "Update category description"
-msgstr ""
+msgstr "Përditëso përshkrimin e kategorisë"
 
-#: root/src/bookbuilder/index.tt:870
 msgid "Update to current settings"
-msgstr ""
+msgstr "Përditëso parametrat aktuale"
 
-#: root/src/edit/edit.tt:134
 msgid "Upload"
-msgstr ""
+msgstr "Ngarko"
 
-#: root/src/include/markitup.tt:73
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
-#: root/src/admin/edit.tt:429
 msgid "Use JS syntax highlight for code blocks"
 msgstr ""
 
-#: root/src/admin/edit.tt:173
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr ""
 
-#: root/src/admin/edit.tt:938
 msgid "Use SSL for authenticated users"
 msgstr ""
 
-#: root/src/edit/edit.tt:76
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 
 #. (sign)
-#: root/src/bookbuilder/index.tt:580 root/src/bookbuilder/index.tt:623
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
-#: root/src/admin/edit.tt:865
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Përdor copa të HTML"
 
-#: root/src/edit/edit.tt:428
-msgid ""
-"Useful for footnotes or in the headers of the document, where you cannot put "
-"a blank line to mark a new paragraph."
-msgstr ""
+msgid "Useful for footnotes or in the headers of the document, where you cannot put a blank line to mark a new paragraph."
+msgstr "E dobishme për fusnota dhe pjesën e lartë të dokumentit ku nuk mund të vendosni një rresht të zbrazët për të shenjuar paragraf të ri. "
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/User.pm:278
 msgid "User %1 created!"
-msgstr ""
+msgstr "Shfrytëzuesi %1 u krijua!"
 
 #. ($c->stash->{user}->username)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:312
 msgid "User %1 deleted"
-msgstr ""
+msgstr "Shfrytëzuesi %1 u fshi"
 
 #. ($user->username)
-#: lib/AmuseWikiFarm/Controller/Admin.pm:296
 msgid "User %1 updated"
-msgstr ""
+msgstr "Shfrytëzuesi %1 u përditësua"
 
-#: mkits/newuser/manifest.json:7
 msgid "User created"
-msgstr ""
+msgstr "Shfrytëzuesi u krijua"
 
-#: root/src/admin/show_users.tt:69 root/src/admin/show_users.tt:8
-#: root/src/user/login.tt:6 root/src/user/login.tt:8
-#: root/src/user/reset_password_confirm.tt:3
 msgid "Username"
-msgstr ""
+msgstr "Emri i shfytëzuesit"
 
-#: root/src/user/create.tt:13
 msgid "Username, alphanumerical only, no special characters, no uppercase"
-msgstr ""
+msgstr "Emri i shfytëzuesit, vetëm shkronja dhe numra, jo karaktere speciale, jo shkronja të mëdha"
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:219 root/src/layout.tt:424
 msgid "Users"
-msgstr ""
+msgstr "Shfrytëzuesit"
 
-#: root/src/include/markitup.tt:90
 msgid "Verbatim block"
-msgstr ""
+msgstr "Bllok tekstual"
 
-#: root/src/admin/edit.tt:411 root/src/text.tt:234 root/src/text.tt:235
 msgid "View history"
-msgstr ""
+msgstr "Shiko historinë"
 
-#: root/src/admin/list.tt:22
 msgid "Virtual hosts"
 msgstr ""
 
-#: root/src/admin/edit.tt:54
 msgid "Virtual hosts, one per line"
 msgstr ""
 
-#: root/src/edit/edit.tt:598
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "Prej nga vjen ky tekst?"
 
-#: root/src/bookbuilder/index.tt:512
 msgid "Width of the cover image in percent of the text block width."
-msgstr ""
+msgstr "Gjerësia e imazhit të kopertinës në përqindje gjerësisë së bllokut të tekstit."
 
-#: root/src/bookbuilder/index.tt:339 root/src/bookbuilder/index.tt:758
 msgid "Width:"
-msgstr ""
+msgstr "Gjerësia:"
 
-#: root/src/library/bbselect.tt:14
 msgid ""
 "With complex structures, e.g., a chapter with\n"
 "      subsections, selecting only the chapter is likely to select only\n"
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"Me struktura komplekse, psh. një kapitull me\n"
+"    nënseksione, zgjedhja vetëm e kapitullit sipas të gjitha gjasave\n"
+"    do ta zgjedh vetëm titullin e kapitullit, kështu që ju duhet të\n"
+"    zgjedhni kapitullin dhe të gjitha nënseksionet."
 
-#: root/src/bookbuilder/index.tt:950
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"Me përpiluesin e librit, ju mund ta ndrroni pamjen (fontin,\n"
+"dimenzionet, letrën, margjinat) e tekstit të shtuar në librari. Gjithashtu\n"
+"mundeni ti bashkoni më shumë tekste në mënyrë që të krijoni broshurë.\n"
+"Vetëm provojeni!"
 
-#: root/src/console/git_display.tt:101
 msgid "Workflow"
-msgstr ""
+msgstr "Rrjedha e punës"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:186
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Përgjigje e gabuar!"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:100
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Emri i shfrytëzuesit ose fjalëkalimi gabim"
 
-#: root/src/text.tt:209 root/src/text.tt:210
 msgid "XeLaTeX source"
 msgstr ""
 
-#: root/src/search/index.tt:51
 msgid "Year"
-msgstr ""
+msgstr "Viti"
 
-#: root/src/admin/show_users.tt:39 root/src/bookbuilder/index.tt:29
 msgid "Yes"
-msgstr ""
+msgstr "Po"
 
-#: root/src/edit/edit.tt:60
 msgid ""
 "You\n"
 "    have attached one or more images. This is not enough! To make them\n"
@@ -2833,372 +2262,277 @@ msgid ""
 "    depending on their purpose. See the examples below."
 msgstr ""
 
-#: root/src/help/faq.tt:56
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
+"Ju DUHENI ta theksoni arsyen, përndryshe rreshti nuk do të ketë efekt.\n"
+"Renditja e rreshtave të "
 
-#: lib/AmuseWikiFarm/Controller/User.pm:165
 msgid "You already proved you are human"
-msgstr ""
+msgstr "Ju tashmë e keni dëshmuar që jeni njeri"
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:173
 msgid "You are already logged in"
-msgstr ""
+msgstr "Ju jeni të kyçur"
 
-#: root/src/bookbuilder/index.tt:80
-msgid ""
-"You are building a collection. Please provide a title and, optionally, any "
-"other information needed for the front cover (author, subtitle, date) and "
-"the back cover (source and notes)."
-msgstr ""
+msgid "You are building a collection. Please provide a title and, optionally, any other information needed for the front cover (author, subtitle, date) and the back cover (source and notes)."
+msgstr "Ju jeni duke e krijuar një koleksion. Ju lutem ta shkruani titullin dhe mundësisht, çfarëdo informate tjetër të nevojshme për ballinë (emri i autorit/ës, nëntitulli, data) si dhe për faqën e fundit (referencat dhe shënimet)"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:93
 msgid "You are logged in now!"
-msgstr ""
+msgstr "Ju tani jeni të kyçur!"
 
-#: root/src/bookbuilder/index.tt:955
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Mund të shtoni tekste në përpiluesin e librit duke klikuar\n"
+" në ikonën “plus” afër shkarkimeve te çdo teksti. Mund të shtoni\n"
+" dhe të hiqni tekste më vonë."
 
 #. (create_url)
-#: mkits/newuser/body.txt:10
 msgid "You can create a peer at %1"
 msgstr ""
 
-#: root/src/user/human.tt:7
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Mund ta bëni këtë duke u përgjigjur në një pyetje të thjeshtë."
 
-#: root/src/edit/revs.tt:77
-msgid ""
-"You can't create a new revision because the text has not been published yet"
-msgstr ""
+msgid "You can't create a new revision because the text has not been published yet"
+msgstr "Ju nuk mund të bëni një përpunim të ri të tekstit sepse nuk është ende i publikuar"
 
-#: lib/AmuseWikiFarm/Controller/User.pm:156
 msgid "You have logged out"
-msgstr ""
+msgstr "Jeni çkyqur"
 
-#: root/src/edit/revs.tt:10
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "Mund të dëshironi të vazhdoni me ndryshimin e njërit prej tyre"
 
 #. (edit_url)
-#: mkits/newuser/body.txt:8
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Duhet të ndryshoni fjalëkalimin menjëherë tek %1"
 
-#: root/src/edit/edit.tt:44
-msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Commit"
-msgstr ""
+msgid "Your changes are saved and can be checked every time you hit Preview or Commit"
+msgstr "Ndryshimet tuaja janë ruajtur dhe mund të kontrollohen në çdo kohë duke shtypur Inspekto ose Lejo"
 
-#: root/src/include/markitup.tt:19
 msgid "Your chapter here..."
-msgstr ""
+msgstr "Kapitulli juaj këtu..."
 
-#: root/src/user/reset_password.tt:13
 msgid "Your email"
-msgstr ""
+msgstr "Email-i juaj"
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:55
 msgid "Your file is ready"
-msgstr ""
+msgstr "Dokumenti juaj është gati"
 
-#: root/src/include/markitup.tt:14
 msgid "Your part here..."
-msgstr ""
+msgstr "Pjesa juaj këtu..."
 
 #. (password)
-#: mkits/newuser/body.txt:6
 msgid "Your password is %1."
-msgstr ""
+msgstr "Fjalëkalimi juaj është %1."
 
-#: root/src/include/markitup.tt:25
 msgid "Your section here..."
-msgstr ""
+msgstr "Sekcioni juaj këtu..."
 
-#: root/src/include/markitup.tt:35
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "Nën-nën-seksioni juaj (ose titulli i përshkrimit) këtu..."
 
-#: root/src/include/markitup.tt:30
 msgid "Your subsection here..."
-msgstr ""
+msgstr "Nënseksioni juaj këtu..."
 
 #. (home)
-#: mkits/newuser/body.txt:2
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Shfrytëzuesi juaj tek %1 është krijuar."
 
 #. (username)
-#: mkits/newuser/body.txt:4
 msgid "Your username is %1."
-msgstr ""
+msgstr "Emri i shfrytëzuesit është %1."
 
-#: root/src/admin/edit.tt:150
 msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr ""
+msgstr "ZIP arkiva me burime të nevojshme për krijuesin e librit."
 
-#: root/src/layout.tt:280
 msgid "about, links..."
-msgstr ""
+msgstr "rreth, linqe..."
 
-#: root/src/admin/edit.tt:84
 msgid "affects only the frontend webserver configuration"
 msgstr ""
 
-#: root/src/admin/edit.tt:639
 msgid "any"
-msgstr ""
+msgstr "cilido"
 
-#: root/src/edit/newtext.tt:216
 msgid "automatically generated if not present, using author and title"
-msgstr ""
+msgstr "gjenerohet automatikisht nëse nuk është prezente duke përdorur autorin dhe titullin"
 
-#: root/src/edit/edit.tt:421 root/src/edit/edit.tt:422
-#: root/src/edit/edit.tt:424
 msgid "code and monospace"
-msgstr ""
+msgstr "Kodi dhe monospace"
 
-#: root/src/edit/edit.tt:570 root/src/edit/edit.tt:585
-#: root/src/edit/newtext.tt:56 root/src/edit/newtext.tt:81
 msgid "comma or semicolon separated list"
-msgstr ""
+msgstr "listë e ndarë me presje ose pikëpresje"
 
-#: root/src/tasks/display.tt:4
 msgid "completed"
-msgstr ""
+msgstr "i kompletuar"
 
-#: root/src/publish/pending.tt:6
 msgid "conflict"
-msgstr ""
+msgstr "konflikt"
 
-#: root/src/include/markitup.tt:56
 msgid "description"
-msgstr ""
+msgstr "përshkrim"
 
-#: root/src/edit/edit.tt:533 root/src/edit/edit.tt:540
 msgid "displayed text"
-msgstr ""
+msgstr "teskt i shfaqur"
 
-#: root/src/console/git_display.tt:108
 msgid "edit, commit..."
-msgstr ""
+msgstr "përmirëso, lejo..."
 
-#: root/src/publish/pending.tt:3
 msgid "editing"
-msgstr ""
+msgstr "duke ndryshuar"
 
-#: root/src/edit/edit.tt:403 root/src/edit/edit.tt:405
 msgid "emphasis"
-msgstr ""
+msgstr "theks"
 
-#: root/src/tasks/display.tt:5
 msgid "failed"
-msgstr ""
+msgstr "dështoj"
 
-#: root/src/edit/edit.tt:459
 msgid "for code, monospaced"
-msgstr ""
+msgstr "për kod, monospaced"
 
-#: root/src/edit/newtext.tt:47
 msgid "for display"
-msgstr ""
+msgstr "siç dëshironi të shfaqet"
 
-#: root/src/edit/edit.tt:457
 msgid "for poetry"
-msgstr ""
+msgstr "për poezi"
 
-#: root/src/include/markitup.tt:22
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "seksionim gjenerik, e mirë për artikuj"
 
-#: root/src/edit/newtext.tt:16
-msgid ""
-"if by chance another text with the same author and title exists, choose the "
-"desired URI using the field below inserting author, title and a number, e.g. "
-"my-author-my-title-1"
-msgstr ""
+msgid "if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1"
+msgstr "nëse ekziston një tekst tjetër, me autor dhe titull të njejtë, zgjedhe URI-në e dëshiruar duke plotësuar fushën më poshtë me autorin, titullin dhe numrin, p.sh autori-im-titulli-im-1"
 
-#: root/src/console/git_display.tt:86
 msgid "if the repository is exported"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:323 root/src/bookbuilder/index.tt:741
 msgid "if you want to use a custom size, you need to set both width and height"
-msgstr ""
+msgstr "nëse dëshiron të përdorësh një madhësi të ndryshme, duhet të vendosësh lartësinë dhe gjerësinë"
 
-#: root/src/admin/edit.tt:639
 msgid "left"
-msgstr ""
+msgstr "majtas"
 
-#: root/src/bookbuilder/index.tt:86 root/src/edit/newtext.tt:14
 msgid "mandatory"
-msgstr ""
+msgstr "e detyrueshme"
 
-#: root/src/help/faq.tt:93
 msgid "new-example-uri"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:177
 msgid "no font embedding"
 msgstr ""
 
-#: root/src/edit/edit.tt:514 root/src/edit/edit.tt:515
 msgid "numbered item"
-msgstr ""
+msgstr "element i numëruar"
 
-#: root/src/edit/edit.tt:571
 msgid "optional, defaults to the author directive"
-msgstr ""
+msgstr "opcionale, e parazgjedhur direktiva e autorit"
 
-#: root/src/edit/edit.tt:378 root/src/edit/edit.tt:386
-#: root/src/edit/edit.tt:394 root/src/edit/edit.tt:403
-#: root/src/edit/edit.tt:409 root/src/edit/edit.tt:415
-#: root/src/edit/edit.tt:421 root/src/edit/edit.tt:458
-#: root/src/edit/edit.tt:459 root/src/edit/edit.tt:535
-#: root/src/edit/edit.tt:540
 msgid "or"
+msgstr "ose"
+
+msgid "or, if you have SSH access to the machine (but do not use the same user as amusewiki, it should be a read-only repo)"
 msgstr ""
 
-#: root/src/console/git_display.tt:88
-msgid ""
-"or, if you have SSH access to the machine (but do not use the same user as "
-"amusewiki, it should be a read-only repo)"
-msgstr ""
-
-#: root/src/edit/edit.tt:432 root/src/edit/edit.tt:435
 msgid "overstriked"
 msgstr ""
 
-#: root/src/publish/pending.tt:4 root/src/tasks/display.tt:2
 msgid "pending"
-msgstr ""
+msgstr "në pritje"
 
-#: root/src/text.tt:150 root/src/text.tt:151
 msgid "plain PDF"
-msgstr ""
+msgstr "PDF i thjeshtë"
 
-#: root/src/text.tt:217 root/src/text.tt:218
 msgid "plain text source"
-msgstr ""
+msgstr "burimi i tekstit"
 
-#: root/src/publish/pending.tt:5
 msgid "processing"
-msgstr ""
+msgstr "duke procesuar"
 
-#: root/src/publish/pending.tt:7
 msgid "published"
-msgstr ""
+msgstr "i publikuar"
 
-#: root/src/search/index.tt:134
 msgid "relevant"
-msgstr ""
+msgstr "relevante"
 
-#: root/src/edit/diff.tt:5
 msgid "revision"
-msgstr ""
+msgstr "përpunim"
 
-#: root/src/admin/edit.tt:639
 msgid "right"
-msgstr ""
+msgstr "djathtë"
 
 #. (args)
-#: lib/CatalystX/AmuseWiki/I18N.pm:49 lib/CatalystX/AmuseWiki/I18N.pm:55
 msgid "string"
-msgstr ""
+msgstr "string"
 
-#: root/src/edit/edit.tt:409 root/src/edit/edit.tt:411
 msgid "strong emphasis"
-msgstr ""
+msgstr "theks i fortë"
 
-#: root/src/include/markitup.tt:32
 msgid "sub-sub-section"
-msgstr ""
+msgstr "nën-nën-seksion"
 
-#: root/src/edit/edit.tt:430 root/src/edit/edit.tt:433
 msgid "subscript"
-msgstr ""
+msgstr "subscript"
 
-#: root/src/include/markitup.tt:27
 msgid "subsection"
-msgstr ""
+msgstr "nënseksion"
 
-#: root/src/edit/edit.tt:431 root/src/edit/edit.tt:434
 msgid "superscript"
-msgstr ""
+msgstr "superscript"
 
-#: root/src/tasks/display.tt:3
 msgid "taken"
-msgstr ""
+msgstr "i zënë"
 
-#: root/src/layout.tt:194
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "tekste sipas autorit, titullit, temës..."
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:181
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:225
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:65 root/src/layout.tt:214
-#: root/src/layout.tt:603
 msgid "texts sorted by author"
-msgstr ""
+msgstr "tekstet e renditura sipas autorit"
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:253
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:54 root/src/layout.tt:206
-#: root/src/layout.tt:596
 msgid "texts sorted by title"
-msgstr ""
+msgstr "tekstet e renditura sipas titullit"
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:139
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:60 root/src/layout.tt:236
-#: root/src/layout.tt:610
 msgid "texts sorted by topics"
-msgstr ""
+msgstr "tekstet e renditura sipas temës"
 
-#: root/src/edit/edit.tt:563
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "autori i tekstit (ashtu siç është i paraqitur)"
 
-#: root/src/publish/pending.tt:53
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "ky tekst nuk do të largohet nga publikimi"
 
-#: root/src/edit/edit.tt:584
 msgid "topic"
-msgstr ""
+msgstr "tema"
 
-#: root/src/edit/edit.tt:511 root/src/edit/edit.tt:512
 msgid "unnumbered item"
-msgstr ""
+msgstr "artikull i panumëruar"
 
-#: root/src/edit/edit.tt:415 root/src/edit/edit.tt:416
-#: root/src/edit/edit.tt:418
 msgid "very strong emphasis"
-msgstr ""
+msgstr "theks shumë të fortë"
 
-#: root/src/edit/edit.tt:534
 msgid "with description"
-msgstr ""
+msgstr "me përshkrim"
 
-#: root/src/edit/edit.tt:536
 msgid "without description"
-msgstr ""
+msgstr "pa përshkrim"
 
-#: root/src/edit/newtext.tt:38
-msgid ""
-"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr ""
+msgid "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr "Nëse dëshironi, ju mund të largoni parafjalët, fjalët lidhëse e të tjera, nga titulli."
 
-#: root/src/publish/pending.tt:119
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
+" gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
+" me ndryshimin e tekstit."
+
+#~ msgid "RSS"
+#~ msgstr "RSS"
+
+#~ msgid "syndicate"
+#~ msgstr "syndicate"
