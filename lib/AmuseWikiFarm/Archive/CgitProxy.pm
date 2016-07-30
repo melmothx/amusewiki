@@ -39,9 +39,13 @@ sub _build_disabled {
     my $self = shift;
     my $test_uri = $self->create_uri;
     my $res = $self->ua->get($test_uri);
-    my $disabled = !$res->{success};
-    log_warn { "Cgit is disabled" } if $disabled;
-    return $disabled;
+    if ($res->{success}) {
+        return 0;
+    }
+    else {
+        Dlog_warn { "Cgit is disabled: $_" } $res;
+        return 1;
+    }
 }
 
 sub get_base_uri {
