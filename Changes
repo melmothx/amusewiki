@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.915 2016-07-30
+
+ - I18N updates: fr, sq
+
 1.914 2016-07-26
 
  - Internal minor refactoring for JSON serializer
