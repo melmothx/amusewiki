@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-07-24 07:55+0200\n"
+"PO-Revision-Date: 2016-07-29 14:08-0400\n"
 "Last-Translator: ben <headchestorfoot@gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -875,7 +875,7 @@ msgstr ""
 
 #. (reset_url)
 msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Si vous souhaitez continuer, veuillez visiter l'url suivante :"
+msgstr "Si vous souhaitez continuer, veuillez visiter l'url suivante : %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
