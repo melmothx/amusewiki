@@ -16,7 +16,7 @@
 </div>
 
 <div class="row">
-  <div id="page" class="col-md-5 col-md-push-7"
+  <div id="page" class="col-sm-5 col-sm-push-7"
        style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
 
 <div class="panel panel-default">
@@ -118,7 +118,7 @@
 
 
   </div>
-  <div class="col-md-7 col-md-pull-5">
+  <div class="col-sm-7 col-sm-pull-5">
 
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
