@@ -318,9 +318,25 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                 else {
                     $errmsg = $c->loc($error);
                 }
-                $c->flash(error_msg => $errmsg);
+                if ($params->{ajax}) {
+                    $c->stash->{json} = { error_msg => $errmsg };
+                    Dlog_debug { "ajax request: $_" } $c->stash->{json};
+                    $c->detach($c->view('JSON'));
+                }
+                else {
+                    $c->flash(error_msg => $errmsg);
+                }
                 return;
             }
+        }
+        if ($params->{ajax}) {
+            $c->stash->{json} = {
+                                 status_msg => 'OK',
+                                 preview_uri => $c->stash->{preview_uri}->as_string,
+                                };
+            $c->detach($c->view('JSON'));
+            Dlog_debug { "ajax request: $_" } $c->stash->{json};
+            return;
         }
 
         # handle the uploads, if any

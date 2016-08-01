@@ -21,7 +21,15 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">[% loc('Preview') %]</h3>
+    <h3 class="panel-title">[% loc('Preview') %]
+      <button type="button" id="amw-edit-form-ajax-button" class="pull-right">
+        [% loc('Update') %]
+      </button>
+    </h3>
+  </div>
+  <div id="amw-edit-ajax-warnings-container" class="panel-body" style="display:none">
+    <div id="amw-edit-ajax-warnings" class="alert alert-warning">
+    </div>
   </div>
   <div class="panel-body amw-fixed-panel-edit">
     <div id="amw-text-edit-preview-box">
@@ -680,5 +688,4 @@ $(document).ready(function(){
     $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page");
 });
 </script>
-
-  <!-- end of the preamble -->
+<script type="text/javascript" src="[% c.uri_for('/static/js/amw-ajax-edit.js') %]"></script>
