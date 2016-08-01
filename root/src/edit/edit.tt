@@ -21,7 +21,13 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">[% loc('Preview') %]</h3>
+    <h3 class="panel-title">
+        [% loc('Preview') %]
+        <a href="[% preview_uri %]" target="_blank"
+           title="[% loc('Show preview in other tab') %]">
+          <span class="glyphicon glyphicon-share-alt"></span>
+        </a>
+    </h3>
   </div>
   <div class="panel-body amw-fixed-panel-edit">
     <div id="amw-text-edit-preview-box">
