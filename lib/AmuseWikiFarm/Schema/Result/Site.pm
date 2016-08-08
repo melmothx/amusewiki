@@ -807,6 +807,7 @@ use Text::Amuse::Compile::Utils ();
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
 use AmuseWikiFarm::Utils::LexiconMigration;
+use Regexp::Common qw/net/;
 
 =head2 repo_root_rel
 
@@ -2295,20 +2296,13 @@ sub update_from_params {
     }
 
     if ($params->{canonical} and
-        $params->{canonical} =~ m/^
-                                  [0-9a-z]
-                                  [0-9a-z-]*
-                                  [0-9a-z]
-                                  (\.
-                                      [0-9a-z]
-                                      [0-9a-z-]*
-                                      [0-9a-z]
-                                  ){1,3}
-                                  $/x) {
+        $params->{canonical} =~ m/\A$RE{net}{domain}{-nospace}{-rfc1101}\z/) {
         my $canonical = delete $params->{canonical};
         $self->canonical($canonical);
     }
     else {
+        log_error { ($params->{canonical} || '') . "doesn't match"
+                      . $RE{net}{domain}{-nospace}{-rfc1101} };
         push @errors, "Canonical is mandatory";
     }
 

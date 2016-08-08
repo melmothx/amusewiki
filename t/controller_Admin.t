@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 62;
+use Test::More tests => 101;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -97,8 +97,32 @@ $mech->content_lacks('<a href="http://www.amusewiki.org">WWW</a>');
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 foreach my $sitespec ({
+                       create_site => 'alsdflkj laksjdflkaksd asdfasdf',
+                       canonical => 'my.site.org',
+                      },
+                      {
+                       create_site => '0invalid0',
+                       canonical => 'my site.org',
+                      },
+                      {
+                       create_site => 'thisisinvalidbecauseitsverylong',
+                       canonical => 'my.site-wiki.org',
+                      }) {
+    $mech->get_ok('/admin/sites');
+    $mech->submit_form(form_id => 'creation-site-form',
+                       fields => $sitespec);
+    ok(!$schema->resultset('Site')->find($sitespec->{create_site}), "name is invalid");
+    ok(!$mech->form_with_fields(qw/mode locale/), "Form not found");
+    ok($mech->content_contains('error_message'), "Found the error message");
+}
+
+foreach my $sitespec ({
                        id => '0xcreate0',
                        canonical => '0xcreate0.amusewiki.org',
+                      },
+                      {
+                       id => '0withdash0',
+                       canonical => '0withdash0-wiki.org',
                       },
                       {
                        id => 'de',
@@ -119,7 +143,7 @@ foreach my $sitespec ({
                                   create_site => $site_id,
                                   canonical => $sitespec->{canonical},
                                  });
-
+    ok($mech->content_lacks('error_message'));
     my $created = $schema->resultset('Site')->find($site_id);
     ok( $created, "Site created");
 

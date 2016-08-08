@@ -65,6 +65,7 @@ requires 'XML::OPDS' => '0.05';
 requires 'Git::Wrapper';
 requires 'Text::Wrapper'; # for revision messages
 requires 'Email::Valid';
+requires 'Regexp::Common';
 requires 'File::Copy::Recursive';
 requires 'Search::Xapian';
 requires 'Catalyst::Model::Adaptor' => '0.10';

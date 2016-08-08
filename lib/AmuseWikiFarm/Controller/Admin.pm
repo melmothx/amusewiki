@@ -5,6 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use Regexp::Common qw/net/;
 
 =head1 NAME
 
@@ -86,8 +87,8 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
     }
     elsif ($params{create_site} && $params{canonical}) {
         # here we accept 0 as prefix as well, but we warned
-        if ($params{create_site} =~ m/^([0-9a-z]{2,16})$/ and
-            $params{canonical}   =~ m/^[0-9a-z]+(\.[0-9a-z]+){1,4}$/) {
+        if ($params{create_site} =~ m/\A([0-9a-z]{2,16})\z/ and
+            $params{canonical}   =~ m/\A$RE{net}{domain}{-nospace}{-rfc1101}\z/) {
             $id = $params{create_site};
             if ($c->model('DB::Site')->find($id)) {
                 $c->flash(error_msg => $c->loc('Site already exists'));
@@ -111,6 +112,8 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
             }
         }
         else {
+            log_error { $params{canonical} . " doesn't match " .
+                          $RE{net}{domain}{-nospace}{-rfc1101} };
             $c->flash(error_msg => $c->loc('Invalid name'));
             $c->response->redirect($listing_url);
             $c->detach();
