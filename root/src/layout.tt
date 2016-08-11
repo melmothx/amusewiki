@@ -581,15 +581,11 @@
     <div id="footer">
       <div class="footer center">
         <span id="amw-footer-link-random">
-          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
-            <span class="glyphicon glyphicon-random" style="padding-right:3px"></span>
-          </a>
+          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]"><span class="glyphicon glyphicon-random" style="padding-right:3px"></span></a>
         </span>
         <span id="amw-footer-link-random-sep">|</span>
         <span id="amw-footer-link-feeds">
-          <a href="[% c.uri_for('/feed') %]">
-            [% loc('RSS feed') %]
-          </a>
+          <a href="[% c.uri_for('/feed') %]">[% loc('RSS feed') %]</a>
         </span>
         <span id="amw-footer-link-feeds-sep">|</span>
         <span id="amw-footer-link-library">
