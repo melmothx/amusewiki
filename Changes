@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.916 2016-08-13
+
+ - I18N updates: es hr mk
+
 1.915 2016-07-30
 
  - I18N updates: fr, sq
