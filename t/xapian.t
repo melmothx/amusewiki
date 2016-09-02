@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 
+use utf8;
 use strict;
 use warnings;
 
@@ -13,6 +14,13 @@ use AmuseWikiFarm::Schema;
 use Test::More tests => 24;
 use Data::Dumper;
 use File::Path qw/make_path/;
+
+my $builder = Test::More->builder;
+binmode $builder->output,         ":encoding(utf-8)";
+binmode $builder->failure_output, ":encoding(utf-8)";
+binmode $builder->todo_output,    ":encoding(utf-8)";
+binmode STDOUT, ":encoding(utf-8)";
+
 
 my $site_id = '0xapian0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -66,6 +74,13 @@ for my $term ('XXXX', 'bla') {
 }
 eval { $site->xapian->xapian_db->delete_document_by_term("Qtest") };
 ok !$@, "No exception deleting an already deleted doc";
+
+write_file($target, "#title XXXX#lang fr\n#SORTtopics prova\n\nBla bla État\n");
+$site->update_db_from_tree;
+foreach my $term ("état", "etat", "ÉTAT", "ETAT") {
+    my ($total, @results) = $site->xapian->search($term);
+    is $total->total_entries, 1, "Found one record searching for $term";
+}
 
 
 
