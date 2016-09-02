@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 33;
+use Test::More tests => 34;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Catalyst::Test 'AmuseWikiFarm';
@@ -59,9 +59,11 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
     my $uri = 'this-uri-doesnt-exist';
     {
         my $xapian = $schema->resultset('Site')->find('0blog0')->xapian;
+        ok $xapian->xapian_stemmer('asdfasdf'), "Unknown language return a none stemmer";
         my $db = $xapian->xapian_db;
-        my $indexer = $xapian->xapian_indexer;
+        my $indexer = Search::Xapian::TermGenerator->new();
         my $doc = Search::Xapian::Document->new();
+        $indexer->set_stemmer($xapian->xapian_stemmer);
         $indexer->set_document($doc);
         $doc->set_data($uri);
         $doc->add_term('Q' . $uri);

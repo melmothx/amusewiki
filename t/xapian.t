@@ -118,12 +118,12 @@ write_file($target, $russian);
 $site->update_db_from_tree;
 foreach my $term ('умеренными', '1887', 'ravno', 'protiv', 'ИЗГНАНИЕМ',
                   'kofiero', 'малатеста') {
-    my ($total, @results) = $site->xapian->search($term);
+    my ($total, @results) = $site->xapian->search($term, 1, 'ru');
     is $total->total_entries, 1, "Found one record searching for $term";
 }
 foreach my $term ('xxxумеренными', 'x1887x', 'xravnox', 'xprotivx', 'xxИЗГНАНИЕМxx',
                   'xkofierox', 'xмалатестаx') {
-    my ($total, @results) = $site->xapian->search($term);
+    my ($total, @results) = $site->xapian->search($term, 1, 'ru');
     is $total->total_entries, 0, "Found no record searching for $term";
 }
 

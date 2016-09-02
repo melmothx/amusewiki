@@ -41,12 +41,6 @@ has xapian_db => (is => 'ro',
                   lazy => 1,
                   builder => '_build_xapian_db');
 
-has xapian_indexer => (
-                       is => 'ro',
-                       isa => 'Object',
-                       lazy => 1,
-                       builder => '_build_xapian_indexer');
-
 has page => (
              is => 'rw',
              isa => 'Int',
@@ -73,17 +67,9 @@ sub _build_xapian_db {
     return Search::Xapian::WritableDatabase->new($db, DB_CREATE_OR_OPEN);
 }
 
-sub _build_xapian_indexer {
-    my $self = shift;
-    my $indexer = Search::Xapian::TermGenerator->new();
-    # set it by default with the locale stemmer, if available
-    $indexer->set_stemmer($self->xapian_stemmer);
-    return $indexer;
-}
-
 sub xapian_stemmer {
-    my $self = shift;
-    my $locale = $self->locale;
+    my ($self, $locale) = @_;
+    $locale ||= $self->locale;
     # from http://xapian.org/docs/apidoc/html/classXapian_1_1Stem.html
     my %stemmers = (
                     da => 'danish',
@@ -103,6 +89,7 @@ sub xapian_stemmer {
                     tr => 'turkish',
                    );
     if ($locale && $stemmers{$locale}) {
+        log_debug { "Creating stemmer with $stemmers{$locale}" };
         return Search::Xapian::Stem->new($stemmers{$locale});
     }
     else {
@@ -146,7 +133,8 @@ sub index_text {
     # stolen from the example full-indexer.pl in Search::Xapian
     # get and create
     my $database = $self->xapian_db;
-    my $indexer = $self->xapian_indexer;
+    my $indexer = Search::Xapian::TermGenerator->new();
+    $indexer->set_stemmer($self->xapian_stemmer($title->lang));
 
     my $qterm = 'Q' . $title->uri;
     my $exit = 1;
@@ -261,7 +249,7 @@ and a list of matches, each being an hashref with the following keys:
 =cut
 
 sub search {
-    my ($self, $query_string, $page) = @_;
+    my ($self, $query_string, $page, $locale) = @_;
     my $pager = Data::Page->new;
     return $pager unless $query_string;
 
@@ -271,7 +259,7 @@ sub search {
     my $qp = Search::Xapian::QueryParser->new($database);
 
     # lot of room here for optimization and fun
-    $qp->set_stemmer($self->xapian_stemmer);
+    $qp->set_stemmer($self->xapian_stemmer($locale));
     $qp->set_stemming_strategy(STEM_SOME);
     $qp->set_default_op(OP_AND);
     $qp->add_prefix(author => 'A');
