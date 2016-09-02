@@ -6,7 +6,7 @@ use warnings;
 use Data::Dumper;
 use File::Spec;
 use File::Basename;
-use Text::Amuse::Functions qw/muse_fast_scan_header/;
+use Text::Amuse::Functions qw/muse_fast_scan_header muse_format_line/;
 use Text::Amuse::Compile::MuseHeader;
 use HTML::Entities qw/decode_entities encode_entities/;
 use Encode;
@@ -80,7 +80,7 @@ sub muse_file_info {
     $details->{uri} = $details->{f_name};
 
     my $header = Text::Amuse::Compile::MuseHeader
-      ->new(muse_fast_scan_header($details->{f_full_path_name}, 'html'));
+      ->new(muse_fast_scan_header($details->{f_full_path_name}));
 
     $details->{lang} = $header->language;
     $details->{slides} = $header->wants_slides;
@@ -88,7 +88,7 @@ sub muse_file_info {
     my %parsed_header = %{ $header->header };
     foreach my $directive (keys %parsed_header) {
         unless (exists $details->{$directive}) {
-            $details->{$directive} = $parsed_header{$directive};
+            $details->{$directive} = muse_format_line(html => $parsed_header{$directive});
         }
     }
 
@@ -108,36 +108,14 @@ sub muse_file_info {
             $details->{sortauthors} = $details->{author};
         }
     }
-
-    my @categories;
-
-    foreach my $category (sort keys %$details) {
-        if ($category =~ m/^(sort)?(author|topic)s$/) {
-            my $type = $2;
-            if (my $string = delete $details->{$category}) {
-                if (my @cats = _parse_topic_or_author($type, $string)) {
-                    push @categories, @cats;
-                }
-            }
-        }
+    my @cats;
+    push @cats, map { _parse_topic_or_author(author => $_) } $header->authors_as_html_list;
+    push @cats, map { _parse_topic_or_author(topic  => $_) } $header->topics_as_html_list;
+    @cats = grep { $_ } @cats;
+    if (@cats) {
+        $details->{parsed_categories} = \@cats;
     }
-    if (my $fixed_categories = delete $details->{cat}) {
-        my @cats = split(/[\s;,]+/, $fixed_categories);
-        foreach my $cat (@cats) {
-            my $catcode = muse_naming_algo($cat);
-            push @categories, {
-                               type => 'topic',
-                               uri => $catcode,
-                               name => $catcode,
-                              };
-        }
-    }
-
-
-
-    if (@categories) {
-        $details->{parsed_categories} = \@categories;
-    }
+    delete $details->{$_} for qw/sortauthors sorttopics cat authors topics/;
 
     # handle the pubdate field
 
@@ -612,38 +590,24 @@ sub muse_get_full_path {
 }
 
 sub _parse_topic_or_author {
+    # use the MuseHeader class here instead with new Text::Amuse::Compile
     my ($type, $string) = @_;
     return unless $type && $string;
-    # given that we asked for HTML in _parse_muse_file, first we strip
-    # the tags.
+    # given that we get the HTML, first we strip the tags.
     $string =~ s/<.*?>//g;
     unless ($string) {
-        warn "It looks like we stripped too much from $string";
+        log_warn { "It looks like we stripped too much from $string" };
         return;
     }
     # then we decode the entities
     $string = decode_entities($string);
-    
-    # now we decide where to split
-    my $splitchar = ',';
-    if (index($string, ';') >= 0) {
-        $splitchar = ';'
-    }
-   
-    my @list = split(/\s*\Q$splitchar\E\s*/, $string);
-    my @out;
-    foreach my $el (@list) {
-        # no word, nothing to do
-        if ($el =~ m/\w/) {
-            my $uri = muse_naming_algo($el);
-            push @out, {
-                        name => encode_entities($el, q{<>&"'}),
-                        uri => $uri,
-                        type => $type,
-                       }
-        }
-    }
-    @out ? return @out : return;
+    log_debug { "Parsing $string" };
+    my $uri = muse_naming_algo($string);
+    return {
+            name => encode_entities($string, q{<>&"'}),
+            uri => $uri,
+            type => $type,
+           };
 }
 
 =head2 muse_filename_valid($uri)

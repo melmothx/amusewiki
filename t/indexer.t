@@ -108,7 +108,7 @@ my $expected = {
                                          'uri' => 'emile'
                                         },
                                         {
-                                         'name' => "ècole",
+                                         'name' => "&lt;&quot;&#39;\x{e8}cole&amp;&gt;",
                                          'type' => 'topic',
                                          'uri' => 'ecole'
                                         },
@@ -244,16 +244,6 @@ MUSE
     $info = muse_file_info($testfile, $reporoot);
     is_deeply ($info->{parsed_categories}, [
                                             {
-                                             name => '3third',
-                                             type => 'topic',
-                                             uri => '3third',
-                                            },
-                                            {
-                                             name => '4forth',
-                                             type => 'topic',
-                                             uri => '4forth',
-                                            },
-                                            {
                                              name => '1first',
                                              type => 'topic',
                                              uri => '1first',
@@ -262,6 +252,16 @@ MUSE
                                              name => '2second',
                                              type => 'topic',
                                              uri => '2second',
+                                            },
+                                            {
+                                             name => '3third',
+                                             type => 'topic',
+                                             uri => '3third',
+                                            },
+                                            {
+                                             name => '4forth',
+                                             type => 'topic',
+                                             uri => '4forth',
                                             },
                                            ], "topics merged ok")
       or diag Dumper($info, $content);
