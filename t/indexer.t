@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 67;
+use Test::More tests => 68;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Date::Parse qw/str2time/;
@@ -301,5 +301,24 @@ MUSE
                                            ], "authors ok")
       or diag Dumper($info, $content);
 }
+
+{
+    my $body =<<'MUSE';
+#title Test
+#author <miao>
+
+x
+MUSE
+    write_file($testfile, $body);
+    $info = muse_file_info($testfile, $reporoot);
+    is_deeply ($info->{parsed_categories}, [
+                                            {
+                                             name => '&lt;miao&gt;',
+                                             type => 'author',
+                                             uri => 'miao',
+                                            },
+                                           ], "author ok");
+}
+
 
 unlink $testfile or die "Couldn't remove $testfile $!";

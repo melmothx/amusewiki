@@ -101,15 +101,15 @@ sub muse_file_info {
         $details->{deleted} ||= "Missing title";
     }
 
-    # normalize and use author as default if missing
-    if (exists $details->{author} and
-        defined $details->{author}) {
-        unless (scalar(grep { /^(sort)?authors$/ } keys %$details)) {
-            $details->{sortauthors} = $details->{author};
-        }
-    }
     my @cats;
-    push @cats, map { _parse_topic_or_author(author => $_) } $header->authors_as_html_list;
+    if (my @authors = $header->authors_as_html_list) {
+        push @cats, map { _parse_topic_or_author(author => $_) }
+          $header->authors_as_html_list;
+    }
+    # use author as default if missing
+    elsif ($details->{author}) {
+        push @cats, _parse_topic_or_author(author => $details->{author});
+    }
     push @cats, map { _parse_topic_or_author(topic  => $_) } $header->topics_as_html_list;
     @cats = grep { $_ } @cats;
     if (@cats) {
