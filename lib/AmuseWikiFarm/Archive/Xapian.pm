@@ -11,6 +11,8 @@ use Search::Xapian (':all');
 use File::Spec;
 use Data::Page;
 use AmuseWikiFarm::Log::Contextual;
+use Text::Unidecode ();
+use Try::Tiny;
 
 =head1 NAME
 
@@ -147,7 +149,7 @@ sub index_text {
     my $indexer = $self->xapian_indexer;
 
     my $qterm = 'Q' . $title->uri;
-
+    my $exit = 1;
     if (!$title->is_published) {
         $logger->("Deleting " . $title->uri . " from Xapian db\n");
         eval {
@@ -156,7 +158,7 @@ sub index_text {
     }
     else {
         $logger->("Updating " . $title->uri . " in Xapian db\n");
-        eval {
+        try {
             my $doc = Search::Xapian::Document->new();
             $indexer->set_document($doc);
 
@@ -212,24 +214,43 @@ sub index_text {
             my $filepath = $title->f_full_path_name;
             open (my $fh, '<:encoding(UTF-8)', $filepath)
               or die "Couldn't open $filepath: $!";
+            # slurp by paragraph
+            local $/ = "\n\n";
             while (my $line = <$fh>) {
                 chomp $line;
-                $line =~ s/^\#\w+//g; # delete the directives
+                $line =~ s/^\#\w+//gm; # delete the directives
                 $line =~ s/<.+?>//g; # delete the tags.
-                $indexer->index_text($line) if $line =~ /\S/;
+                if ($line =~ /\S/) {
+                    $indexer->index_text($line);
+                    # don't abort here. We index each line twice, once
+                    # with the real string, once with the ascii
+                    # representation.
+
+                    # This technique is borrowed from elastic search,
+                    # which suggests to index the text twice, once
+                    # with the ascii representation, once with the
+                    # real string.
+
+                    # This way we have a match for both case.
+                    try {
+                        $indexer->index_text(Text::Unidecode::unidecode($line));
+                        log_debug { Text::Unidecode::unidecode($line) };
+                    } catch {
+                        my $error = $_;
+                        log_warn { "Cannot unidecode $line: $_" } ;
+                    };
+                }
             }
             close $fh;
             # Add or the replace the document to the database.
             $database->replace_document_by_term($qterm, $doc);
+        } catch {
+            my $error = $_;
+            log_warn { "$error indexing $qterm" } ;
+            $exit = 0;
         };
     }
-    if ($@) {
-        log_warn { $@ } ;
-        return;
-    }
-    else {
-        return 1;
-    }
+    return $exit;
 }
 
 =head2 search($query_string, $page);
