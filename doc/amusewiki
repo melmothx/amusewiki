@@ -16,7 +16,14 @@ EOF
     for exe in /usr/bin/amusewiki-*; do
         echo $exe | sed -e 's!/usr/bin/amusewiki-!amusewiki !'
     done
-    echo 'See amusewiki <action> --help for help for each command'
+    echo "amusewiki shell"
+    echo
+    echo "The shell subcommand will start a shell with the amusewiki user"
+    echo
+    echo 'See man amusewiki-<action> for usage of each command'
+    echo 'or run amusewiki <action> --help'
+    echo 'Other useful commands:'
+    echo 'systemctl [ status | start | stop | restart ] [ amusewiki-* | amusewiki-web | amusewiki-jobber | amusewiki-cgit ]'
 	exit 1
 }
 
@@ -27,6 +34,10 @@ fi
 
 action=$1
 shift
+if [ "x$action" = "xshell" ]; then
+    exec su - amusewiki
+    exit
+fi
 
 if [ ! -x "/usr/bin/amusewiki-$action" ]; then
     echo "Unknown action $action"

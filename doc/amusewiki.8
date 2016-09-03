@@ -1,0 +1,29 @@
+.TH amusewiki 8
+
+.SH NAME
+amusewiki \- Run amusewiki commands as root
+
+.SH SYNOPSIS
+\fBamusewiki\fP [\fIcommand\fP] [\fIargs...\fP]
+
+.SH DESCRIPTION
+\fBamusewiki\fP is a wiki and publishing platform which normally runs
+as an unprivileged process. Running maintenance scripts as root is
+considered bad practice and the execution of the scripts is prevented.
+.PP
+This command (which is just a wrapper) permits to run the executables
+with the correct user in the correct directory. The actual executable
+called will be \fBamusewiki-<command>\fP. See its manpage for usage.
+.PP
+\fBamusewiki shell\fP will invoke a shell as user amusewiki.
+.PP
+When executed without arguments, it will show the available commands.
+.PP
+.SH PROJECT WEBSITE
+https://amusewiki.org
+.SH AUTHOR
+Marco Pessotto <melmothx@gmail.com>
+
+
+
+
