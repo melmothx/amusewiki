@@ -1,0 +1,15 @@
+# amusewiki completion -*- shell-script -*-
+
+_amusewiki_commands() {
+    amusewiki | sed -ne '/^amusewiki/s/^amusewiki //p' | sort
+}
+
+_amusewiki() {
+    local cur
+    cur=${COMP_WORDS[COMP_CWORD]}
+    if [ $COMP_CWORD -eq 1 ]; then
+        COMPREPLY=( $( compgen -W "$(_amusewiki_commands)" $cur ) )
+    fi
+}
+
+complete -F _amusewiki amusewiki

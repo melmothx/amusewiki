@@ -1,2 +1,2 @@
 doc/amusewiki usr/sbin
-
+doc/amusewiki_completions etc/bash_completion.d
