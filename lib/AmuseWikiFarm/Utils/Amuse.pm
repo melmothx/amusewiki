@@ -102,11 +102,19 @@ sub muse_file_info {
     }
 
     my @cats;
-    if (my @authors = $header->authors_as_html_list) {
-        push @cats, map { _parse_topic_or_author(author => $_) }
-          $header->authors_as_html_list;
+    if (exists $details->{authors} or
+        exists $details->{sortauthors}) {
+        if (my @authors = $header->authors_as_html_list) {
+            push @cats, map { _parse_topic_or_author(author => $_) }
+              $header->authors_as_html_list;
+        }
     }
-    # use author as default if missing
+
+    # use author as default if there is no #authors. Please note that
+    # #(sort)authors could be empty or with a - in it. In this case
+    # we fall into the case above and don't resort to Author. Tests
+    # are in archive.t
+
     elsif ($details->{author}) {
         push @cats, _parse_topic_or_author(author => $details->{author});
     }
@@ -595,7 +603,7 @@ sub _parse_topic_or_author {
     return unless $type && $string;
     # given that we get the HTML, first we strip the tags.
     $string =~ s/<.*?>//g;
-    unless ($string) {
+    unless ($string =~ /\w/) {
         log_warn { "It looks like we stripped too much from $string" };
         return;
     }
