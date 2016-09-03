@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 128;
+use Test::More tests => 136;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -293,6 +293,12 @@ my @tests = (
               author_count => 0,
               test_name => "display pippo, but no real authors",
               muse => "#title Blabla\n#sortauthors\n#author pippo\n\nBlabla\n",
+              display_author => 'pippo',
+             },
+             {
+              author_count => 0,
+              test_name => "display pippo, authors with dash",
+              muse => "#title Blabla\n#SORTauthors -\n#author pippo\n\nBlabla\n",
               display_author => 'pippo',
              },
              {

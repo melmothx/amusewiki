@@ -65,7 +65,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
 
     my ($pager, @results);
     eval {
-        ($pager, @results) = $xapian->search($query, $page);
+        ($pager, @results) = $xapian->search($query, $page,
+                                             $c->stash->{current_locale_code});
     };
     if ($@) {
         Dlog_error { "Xapian error: " . $c->request->uri . ": $@ " . $_ } ($c->request->params);

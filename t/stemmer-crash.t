@@ -16,6 +16,6 @@ foreach my $code (@codes) {
     my $xapian = AmuseWikiFarm::Archive::Xapian->new(code => $code,
                                                      locale => $code,
                                                      basedir => $dir->dirname);
-    ok ($xapian->xapian_indexer, "$code is ok");
+    ok ($xapian->xapian_stemmer, "$code is ok");
 }
 

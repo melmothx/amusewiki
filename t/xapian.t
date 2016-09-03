@@ -1,5 +1,6 @@
 #!/usr/bin/env perl
 
+use utf8;
 use strict;
 use warnings;
 
@@ -10,9 +11,16 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 24;
+use Test::More tests => 42;
 use Data::Dumper;
 use File::Path qw/make_path/;
+
+my $builder = Test::More->builder;
+binmode $builder->output,         ":encoding(utf-8)";
+binmode $builder->failure_output, ":encoding(utf-8)";
+binmode $builder->todo_output,    ":encoding(utf-8)";
+binmode STDOUT, ":encoding(utf-8)";
+
 
 my $site_id = '0xapian0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -67,6 +75,57 @@ for my $term ('XXXX', 'bla') {
 eval { $site->xapian->xapian_db->delete_document_by_term("Qtest") };
 ok !$@, "No exception deleting an already deleted doc";
 
+write_file($target, "#title XXXX#lang fr\n#SORTtopics prova\n\nBla bla État\n");
+$site->update_db_from_tree;
+foreach my $term ("état", "etat", "ÉTAT", "ETAT") {
+    my ($total, @results) = $site->xapian->search($term);
+    is $total->total_entries, 1, "Found one record searching for $term";
+}
+
+my $russian =<<MUSE;
+#title Russian
+#lang ru
+
+ Среди множества героических натур, отдавших свои силы и жизнь на
+ служение анархизму, одной из самых благородных, чистых и
+ самоотверженных представляется нам фигура итальянского анархиста
+ Малатесты.
+
+Даже в той среде, где слово обыкновенно никогда не расходится с делом,
+Малатеста пользуется совершенно исключительной любовью и уважением.
+Эти чувства являются достойным венцом его апостольской проповеди и
+самоотверженной жизни.
+
+Никакие преследования, никакие гонения не могли остановить Малатесты,
+когда он выступал на служение своей любимой идее. Всевозможные кары со
+стороны разных правительств градом сыпались на голову Малатесты, а он
+неуклонно шел вперед, веря в лучшие времена, в торжество конечной
+эмансипации человеческой личности.
+
+Малатеста — героическая натура, не выносящая никаких компромиссов,
+равно вступающая в борьбу с либеральными парламентами, судом и
+печатью, как и с умеренными социалистами, предпочитающими сомнительные
+союзы неудержному и непримиримому движению вперед.
+
+В этом отношении особенно замечателен ожесточенный поход, открытый им
+против социалистов совместно с сотоварищем и другом Кофиеро после
+позорного Лондонского конгресса 1887 г., закончившегося изгнанием
+анархистов.
+
+MUSE
+
+write_file($target, $russian);
+$site->update_db_from_tree;
+foreach my $term ('умеренными', '1887', 'ravno', 'protiv', 'ИЗГНАНИЕМ',
+                  'kofiero', 'малатеста') {
+    my ($total, @results) = $site->xapian->search($term, 1, 'ru');
+    is $total->total_entries, 1, "Found one record searching for $term";
+}
+foreach my $term ('xxxумеренными', 'x1887x', 'xravnox', 'xprotivx', 'xxИЗГНАНИЕМxx',
+                  'xkofierox', 'xмалатестаx') {
+    my ($total, @results) = $site->xapian->search($term, 1, 'ru');
+    is $total->total_entries, 0, "Found no record searching for $term";
+}
 
 
 

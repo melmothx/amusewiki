@@ -11,6 +11,8 @@ use Search::Xapian (':all');
 use File::Spec;
 use Data::Page;
 use AmuseWikiFarm::Log::Contextual;
+use Text::Unidecode ();
+use Try::Tiny;
 
 =head1 NAME
 
@@ -39,12 +41,6 @@ has xapian_db => (is => 'ro',
                   lazy => 1,
                   builder => '_build_xapian_db');
 
-has xapian_indexer => (
-                       is => 'ro',
-                       isa => 'Object',
-                       lazy => 1,
-                       builder => '_build_xapian_indexer');
-
 has page => (
              is => 'rw',
              isa => 'Int',
@@ -71,17 +67,9 @@ sub _build_xapian_db {
     return Search::Xapian::WritableDatabase->new($db, DB_CREATE_OR_OPEN);
 }
 
-sub _build_xapian_indexer {
-    my $self = shift;
-    my $indexer = Search::Xapian::TermGenerator->new();
-    # set it by default with the locale stemmer, if available
-    $indexer->set_stemmer($self->xapian_stemmer);
-    return $indexer;
-}
-
 sub xapian_stemmer {
-    my $self = shift;
-    my $locale = $self->locale;
+    my ($self, $locale) = @_;
+    $locale ||= $self->locale;
     # from http://xapian.org/docs/apidoc/html/classXapian_1_1Stem.html
     my %stemmers = (
                     da => 'danish',
@@ -101,6 +89,7 @@ sub xapian_stemmer {
                     tr => 'turkish',
                    );
     if ($locale && $stemmers{$locale}) {
+        log_debug { "Creating stemmer with $stemmers{$locale}" };
         return Search::Xapian::Stem->new($stemmers{$locale});
     }
     else {
@@ -144,10 +133,11 @@ sub index_text {
     # stolen from the example full-indexer.pl in Search::Xapian
     # get and create
     my $database = $self->xapian_db;
-    my $indexer = $self->xapian_indexer;
+    my $indexer = Search::Xapian::TermGenerator->new();
+    $indexer->set_stemmer($self->xapian_stemmer($title->lang));
 
     my $qterm = 'Q' . $title->uri;
-
+    my $exit = 1;
     if (!$title->is_published) {
         $logger->("Deleting " . $title->uri . " from Xapian db\n");
         eval {
@@ -156,7 +146,7 @@ sub index_text {
     }
     else {
         $logger->("Updating " . $title->uri . " in Xapian db\n");
-        eval {
+        try {
             my $doc = Search::Xapian::Document->new();
             $indexer->set_document($doc);
 
@@ -212,24 +202,43 @@ sub index_text {
             my $filepath = $title->f_full_path_name;
             open (my $fh, '<:encoding(UTF-8)', $filepath)
               or die "Couldn't open $filepath: $!";
+            # slurp by paragraph
+            local $/ = "\n\n";
             while (my $line = <$fh>) {
                 chomp $line;
-                $line =~ s/^\#\w+//g; # delete the directives
+                $line =~ s/^\#\w+//gm; # delete the directives
                 $line =~ s/<.+?>//g; # delete the tags.
-                $indexer->index_text($line) if $line =~ /\S/;
+                if ($line =~ /\S/) {
+                    $indexer->index_text($line);
+                    # don't abort here. We index each line twice, once
+                    # with the real string, once with the ascii
+                    # representation.
+
+                    # This technique is borrowed from elastic search,
+                    # which suggests to index the text twice, once
+                    # with the ascii representation, once with the
+                    # real string.
+
+                    # This way we have a match for both case.
+                    try {
+                        $indexer->index_text(Text::Unidecode::unidecode($line));
+                        log_debug { Text::Unidecode::unidecode($line) };
+                    } catch {
+                        my $error = $_;
+                        log_warn { "Cannot unidecode $line: $_" } ;
+                    };
+                }
             }
             close $fh;
             # Add or the replace the document to the database.
             $database->replace_document_by_term($qterm, $doc);
+        } catch {
+            my $error = $_;
+            log_warn { "$error indexing $qterm" } ;
+            $exit = 0;
         };
     }
-    if ($@) {
-        log_warn { $@ } ;
-        return;
-    }
-    else {
-        return 1;
-    }
+    return $exit;
 }
 
 =head2 search($query_string, $page);
@@ -240,7 +249,7 @@ and a list of matches, each being an hashref with the following keys:
 =cut
 
 sub search {
-    my ($self, $query_string, $page) = @_;
+    my ($self, $query_string, $page, $locale) = @_;
     my $pager = Data::Page->new;
     return $pager unless $query_string;
 
@@ -250,7 +259,7 @@ sub search {
     my $qp = Search::Xapian::QueryParser->new($database);
 
     # lot of room here for optimization and fun
-    $qp->set_stemmer($self->xapian_stemmer);
+    $qp->set_stemmer($self->xapian_stemmer($locale));
     $qp->set_stemming_strategy(STEM_SOME);
     $qp->set_default_op(OP_AND);
     $qp->add_prefix(author => 'A');
