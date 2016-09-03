@@ -26,6 +26,9 @@ configuration, you can override the unit files from
 /lib/systemd/system/amusewiki* copying them into /etc/systemd/system
 and editing them.
 
+The configuration file for the web application is installed in
+/etc/amusewiki.conf
+
 Supported databases are sqlite, postgresql and mysql.
 
 By default amusewiki uses an sqlite database. This is not recommended
@@ -172,12 +175,7 @@ If you had the git-daemon enabled:
  for i in /var/lib/amusewiki/repo/*; do if [ -d "$i/.git" ]; then echo $(basename $i); rm  $(basename $i).git ; ln -s $i/.git $(basename $i).git ; fi ; done
  service git-daemon restart
 
-If you want to tweak the amusewiki conf:
-
- cp /usr/share/perl5/AmuseWikiFarm/amusewikifarm.conf /usr/share/perl5/AmuseWikiFarm/amusewikifarm_local.conf
- vim /usr/share/perl5/AmuseWikiFarm/amusewikifarm_local.conf
-
 If something goes wrong, you can revert to the bootstrapping tecnique
 described above.
 
- -- Marco Pessotto <melmothx@gmail.com>, Thu,  5 May 2016 16:43:40 +0200
+ -- Marco Pessotto <melmothx@gmail.com>, Sat,  3 Sep 2016 15:44:32 +0200
