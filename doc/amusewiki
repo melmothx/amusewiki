@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+
+# This is a wrapper meant to be installed into /usr/sbin for debian
+# packages, so root can run the scripts safely.
+
+get_help () {
+    cat <<EOF
+Usage: amusewiki action [ argument1, argument2]
+
+Run the amusewiki scripts as user amusewiki in the correct directory.
+
+Available commands:
+EOF
+    for exe in /usr/bin/amusewiki-*; do
+        echo $exe | sed -e 's!/usr/bin/amusewiki-!amusewiki !'
+    done
+    echo 'See amusewiki <action> --help for help for each command'
+	exit 1
+}
+
+
+if [ "$#" == "0" ]; then
+    get_help;
+fi
+
+action=$1
+shift
+
+if [ ! -x "/usr/bin/amusewiki-$action" ]; then
+    echo "Unknown action $action"
+    echo
+    get_help;
+fi
+
+cd /var/lib/amusewiki
+sudo -u amusewiki -- amusewiki-$action "$@"

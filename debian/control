@@ -94,6 +94,7 @@ Package: amusewiki
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends},
  adduser,
+ sudo,
  libbytes-random-secure-perl,
  libcatalyst-action-renderview-perl,
  libcatalyst-authentication-store-dbix-class-perl,
