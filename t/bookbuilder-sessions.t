@@ -2,7 +2,7 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 33;
+use Test::More tests => 36;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -19,7 +19,11 @@ my $mech1 = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my $mech2 = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                 host => $site->canonical);
 
-for my $mech ($mech1, $mech2) {
+my $mech3 = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                host => 'test.amusewiki.org');
+
+
+for my $mech ($mech1, $mech2, $mech3) {
     $mech->get_ok('/bookbuilder/');
     $mech->content_contains("test if the user is a human");
     $mech->form_with_fields('answer');
@@ -88,3 +92,8 @@ for my $invalid ('X' . $sid1, $sid1 . 'X', "invalid", 0) {
                              "warning msg with $invalid");
 }
 $site->update({locale => $old_locale});
+
+$mech3->submit_form(with_fields => { token => $sid1 });
+$mech3->content_contains('Unable to load the bookbuilder session',
+                         "warning msg when loading the session from another site");
+
