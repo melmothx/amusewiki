@@ -141,6 +141,15 @@ CREATE TABLE bookbuilder_profile (
        profile_data TEXT NOT NULL
 );
 
+CREATE TABLE bookbuilder_session (
+       bookbuilder_session_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       token VARCHAR(16) NOT NULL,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       bb_data TEXT NOT NULL DEFAULT '{}',
+       last_updated DATETIME NOT NULL -- internal
+);
+
 CREATE TABLE revision (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
