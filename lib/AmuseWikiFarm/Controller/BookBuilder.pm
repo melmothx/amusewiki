@@ -292,11 +292,16 @@ sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
 
 sub load :Chained('root') :Args(0) {
     my ( $self, $c ) = @_;
+    my $ok;
     if (my $token = $c->request->body_parameters->{token}) {
-        if (my $bb = $c->stash->{bb}->load_from_token($token)) {
+        if (my $bb = $c->stash->{bb}->load_from_token($token . '')) {
             $c->stash(bb => $bb);
             $self->save_session($c);
+            $ok = 1;
         }
+    }
+    unless ($ok) {
+        $c->flash->{error_msg} = $c->loc('Unable to load the bookbuilder session');
     }
     $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
 }

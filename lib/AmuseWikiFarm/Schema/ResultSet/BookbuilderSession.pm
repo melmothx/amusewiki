@@ -24,7 +24,7 @@ Return undef if the row doesn't exist.
 sub from_token {
     my ($self, $token) = @_;
     return unless $token;
-    if ($token =~ m/([0-9A-Z]+)-([0-9]+)/) {
+    if ($token =~ m/\A\s*([0-9A-Z]+)-([0-9]+)\s*\z/) {
         my $tk = $1;
         my $id = $2;
         my $me = $self->current_source_alias;
