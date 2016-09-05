@@ -116,6 +116,7 @@ MUSE
 
 write_file($target, $russian);
 $site->update_db_from_tree;
+$site->xapian_reindex_all;
 foreach my $term ('умеренными', '1887', 'ravno', 'protiv', 'ИЗГНАНИЕМ',
                   'kofiero', 'малатеста') {
     my ($total, @results) = $site->xapian->search($term, 1, 'ru');

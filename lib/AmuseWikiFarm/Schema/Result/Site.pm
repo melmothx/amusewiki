@@ -2976,6 +2976,16 @@ sub bootstrap_theme_list {
     return @themes;
 }
 
+sub xapian_reindex_all {
+    my $self = shift;
+    my $xapian = $self->xapian;
+    my @titles = $self->titles->texts_only;
+    my $logger = sub { print join(" ", @_) };
+    foreach my $title (@titles) {
+        $xapian->index_text($title, $logger);
+    }
+}
+
 =head1 WEBSERVER options
 
 These options only affect the webserver configuration, but we have to

@@ -15,11 +15,12 @@ use POSIX qw/nice/;
 use Getopt::Long;
 use Pod::Usage;
 
-my ($refresh, $recompile, $help);
+my ($refresh, $recompile, $help, $xapian);
 
 GetOptions (refresh => \$refresh,
             recompile => \$recompile,
             help => \$help,
+            xapian => \$xapian,
            ) or die;
 
 if ($help) {
@@ -37,7 +38,7 @@ amusewiki-bootstrap-archive - bootstrap amusewiki archives
 
 =head1 SYNOPSIS
 
-Usage: amusewiki-bootstrap-archive [ --refresh | --recompile | --help ] [ <site-id>, <site-id-2>, ... ]
+Usage: amusewiki-bootstrap-archive [ --refresh | --recompile | --xapian | --help ] [ <site-id>, <site-id-2>, ... ]
 
 The list of site ids is optional. If not passed, all the sites will be built.
 
@@ -59,6 +60,11 @@ Print this help and exit.
 
 Same as without options, but checking for outdated files in the
 database first. You can save a lot of I/O.
+
+=item --xapian
+
+Do not perform any compilation or db operation, but only reindex the
+xapian database.
 
 =item --recompile
 
@@ -121,6 +127,9 @@ foreach my $code (@codes) {
                 $compiler->compile($f);
             }
         }
+    }
+    elsif ($xapian) {
+        $site->xapian_reindex_all;
     }
     # without, do a full import
     else {
