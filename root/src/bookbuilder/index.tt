@@ -854,9 +854,11 @@ $(document).ready(function(){
   </div>
   <div id="bb-profiles-forms">
     <div>
+      <p>
       [% loc('Here you can save or load your templates. The text list
       and the cover image are excluded by the saved settings. You can
       use this to save paper/fonts/imposition and other options.') %]
+      </p>
     </div>
   [% IF bb_profiles %]
   <div class="table-responsive">
