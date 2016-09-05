@@ -980,3 +980,9 @@ $(document).ready(function(){
 </div>
 [% END %]
 
+[% IF bb.token %]
+<div class="bb-token">
+  [% loc('Your current bookbuilder token is:') %]
+  <strong><code><span class="bb-token-id">[% bb.token %]</span></code></strong>
+</div>
+[% END %]

@@ -293,7 +293,9 @@ sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->session->{bookbuilder} = $c->stash->{bb}->serialize;
-    Dlog_debug { "bb saved: $_" } $c->stash->{bb}->serialize;
+    Dlog_debug { "bb saved: $_" } $c->session->{bookbuilder};
+    # save the bb state in the db
+    $c->session->{bookbuilder_token} = $c->stash->{bb}->save_session;
 }
 
 =encoding utf8

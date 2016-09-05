@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::BookbuilderSession;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::BookbuilderSession
+AmuseWikiFarm::Schema::Result::BookbuilderSession - Bookbuilder sessions
 
 =cut
 
@@ -115,10 +115,13 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-09-05 13:01:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:InSKAyBUXbvHCmXNmdCRHw
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-09-05 13:29:48
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:z55B0A6xBWXktneH7OctLw
 
+sub full_token {
+    my $self = shift;
+    return $self->token . '-' . $self->bookbuilder_session_id;
+}
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

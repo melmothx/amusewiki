@@ -386,4 +386,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('monthly_archive', 'Monthly archives'),
          ('legacy_link', 'Handle old paths for migrated sites'),
          ('bookbuilder_profile', 'Bookbuilder profiles'),
+         ('bookbuilder_session', 'Bookbuilder sessions'),
          ('title_stat', 'Usage statistics');
