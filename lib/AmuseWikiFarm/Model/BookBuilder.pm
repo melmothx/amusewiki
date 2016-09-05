@@ -17,8 +17,13 @@ sub prepare_arguments {
     # reflected in the session. At some point, we could pass a copy
     # here instead, but it seems to work as expected...
     my %args;
-    if ($c->sessionid && $c->session->{bookbuilder}) {
-        %args = %{ $c->session->{bookbuilder} };
+    if ($c->sessionid) {
+        if (my $data = $c->session->{bookbuilder}) {
+            %args = %$data;
+        }
+        if (my $token = $c->session->{bookbuilder_token}) {
+            $args{token} = $token;
+        }
     }
     Dlog_debug { "Bookbuilder loading with $_" } \%args;
     $args{dbic} = $c->model('DB');

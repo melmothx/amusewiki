@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 218;
+use Test::More tests => 225;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -31,6 +31,17 @@ ok (-d AmuseWikiFarm::Archive::BookBuilder->customdir, "Found " . AmuseWikiFarm:
                                                        site_id => '0blog0',
                                                        job_id => 999998,
                                                       });
+    my $token = $bb->generate_token;
+    my $json = $bb->serialize_json;
+    ok($token, "Token generated") and diag $token;
+    ok($json, "json ok") and diag $json;
+    ok !$bb->token;
+    my $got_token = $bb->save_session;
+    ok $bb->token, "Token generated";
+    my $session = $bb->site->bookbuilder_sessions->from_token($bb->token);
+    is $bb->token,  $session->token . '-' . $session->bookbuilder_session_id;
+    is_deeply(from_json($session->bb_data), $bb->serialize);
+    is_deeply(from_json($json), $bb->serialize, "json serialization is ok");
     cleanup($bb->job_id);
     $bb->mainfont('TeX Gyre Pagella');
 

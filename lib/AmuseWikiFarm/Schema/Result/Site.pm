@@ -573,6 +573,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 bookbuilder_sessions
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::BookbuilderSession>
+
+=cut
+
+__PACKAGE__->has_many(
+  "bookbuilder_sessions",
+  "AmuseWikiFarm::Schema::Result::BookbuilderSession",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 categories
 
 Type: has_many
@@ -764,8 +779,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-24 07:40:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sp1wCQEcqW1Xqp758+9JGA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-09-05 13:01:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:S1c9AT+9y7/kE0ftGhMibQ
 
 =head2 other_sites
 

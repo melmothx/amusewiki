@@ -290,10 +290,28 @@ sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
     $c->stash(page_title => $c->loc('Imposition schemas'));
 }
 
+sub load :Chained('root') :Args(0) {
+    my ( $self, $c ) = @_;
+    my $ok;
+    if (my $token = $c->request->body_parameters->{token}) {
+        if (my $bb = $c->stash->{bb}->load_from_token($token . '')) {
+            $c->stash(bb => $bb);
+            $self->save_session($c);
+            $ok = 1;
+        }
+    }
+    unless ($ok) {
+        $c->flash->{error_msg} = $c->loc('Unable to load the bookbuilder session');
+    }
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
+}
+
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->session->{bookbuilder} = $c->stash->{bb}->serialize;
-    Dlog_debug { "bb saved: $_" } $c->stash->{bb}->serialize;
+    Dlog_debug { "bb saved: $_" } $c->session->{bookbuilder};
+    # save the bb state in the db
+    $c->session->{bookbuilder_token} = $c->stash->{bb}->save_session;
 }
 
 =encoding utf8

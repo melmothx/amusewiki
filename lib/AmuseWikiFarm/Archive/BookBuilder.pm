@@ -10,6 +10,7 @@ use namespace::autoclean;
 
 use Cwd;
 use Data::Dumper;
+use DateTime;
 use File::Spec;
 use File::Temp;
 use File::Copy qw/copy move/;
@@ -19,11 +20,12 @@ use Try::Tiny;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 use Text::Amuse::Compile;
 use PDF::Imposition;
-use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid/;
+use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid to_json from_json/;
 use Text::Amuse::Compile::Webfonts;
 use Text::Amuse::Compile::TemplateOptions;
 use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
+use Bytes::Random::Secure;
 use IO::Pipe;
 use File::Basename;
 
@@ -72,7 +74,62 @@ enum(FormatType => [qw/epub pdf slides/]);
 
 has format => (is => 'rw',
                isa => "FormatType",
-               default => 'pdf');
+               default => sub { 'pdf' });
+
+has token => (is => 'rw',
+              isa => 'Str',
+              default => sub { '' });
+
+sub load_from_token {
+    my ($self, $token) = @_;
+    if (my $row = $self->site->bookbuilder_sessions->from_token($token)) {
+        my $data = from_json($row->bb_data);
+        my %args = (%$data,
+                    site => $self->site,
+                    token => $self->token,
+                    dbic => $self->dbic,
+                   );
+        my $bb = __PACKAGE__->new(%args);
+        # add the current texts
+        Dlog_debug { "Current text list: $_" } $bb->texts;
+        foreach my $text (@{$self->texts}) {
+            $bb->add_text($text);
+        }
+        # readd the cover to avoid sharing it with another session
+        if (my $cover = $bb->coverfile_path) {
+            $bb->coverfile(undef);
+            $bb->add_file($cover);
+        }
+        Dlog_debug { "Current text list after restoring: $_" } $bb->texts;
+        return $bb;
+    }
+    return;
+}
+
+sub save_session {
+    my $self = shift;
+    my %insert = (
+                  bb_data => $self->serialize_json,
+                  last_updated => DateTime->now,
+                 );
+    my $row = $self->site->bookbuilder_sessions->from_token($self->token);
+    if ($row) {
+        $row->update(\%insert);
+    }
+    else {
+        $insert{token} = $self->generate_token;
+        $row = $self->site->bookbuilder_sessions->create(\%insert);
+        $row->discard_changes;
+        $self->token($row->full_token);
+    }
+    die "This is a bug, token mismatch" if $row->full_token ne $self->token;
+    return $row->full_token;
+}
+
+sub generate_token {
+    return Bytes::Random::Secure->new(NonBlocking => 1)
+      ->string_from('AABCDEEFGHLMNPQRSTUUVWYZ123456789', 6);
+}
 
 sub _build_site {
     my $self = shift;
@@ -1345,6 +1402,11 @@ sub serialize {
     return \%args;
 }
 
+sub serialize_json {
+    my $self = shift;
+    return to_json($self->serialize);
+}
+
 sub serialize_profile {
     my $self = shift;
     my %exclusions = (
@@ -1458,7 +1520,6 @@ sub _muse_virtual_headers {
     }
     return %header;
 }
-
 
 __PACKAGE__->meta->make_immutable;
 

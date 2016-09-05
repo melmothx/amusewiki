@@ -854,9 +854,11 @@ $(document).ready(function(){
   </div>
   <div id="bb-profiles-forms">
     <div>
+      <p>
       [% loc('Here you can save or load your templates. The text list
       and the cover image are excluded by the saved settings. You can
       use this to save paper/fonts/imposition and other options.') %]
+      </p>
     </div>
   [% IF bb_profiles %]
   <div class="table-responsive">
@@ -980,3 +982,51 @@ $(document).ready(function(){
 </div>
 [% END %]
 
+<div>
+  <hr />
+</div>
+
+<h3>[% loc('Session sharing') %]</h3>
+
+<div class="bb-token">
+  [% IF bb.token %]
+  <p>
+    [% loc('Your current bookbuilder token is:') %]
+    <strong><code><span class="bb-token-id">[% bb.token %]</span></code></strong>
+  </p>
+  <p>
+    [% loc('Using this token, you can load the bookbuilder settings
+    and the text list from another computer, or share it with someone
+    else. Just write it down and then load it from another computer
+    using the following form.') %]
+  </p>
+  [% ELSE %]
+  <p>
+    [% loc('When you start a bookbuilder session, at the end of the
+    bookbuilder page you can see a token for sharing the session. You
+    can load it here from another device to resume what you were
+    doing.') %]
+  </p>
+  [% END %]
+</div>
+
+
+<div class="bb-load-session">
+  <form action="[% c.uri_for_action('/bookbuilder/load') %]" method="POST"
+        id="bb-load-session-form">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="input-group">
+          <input type="text" class="form-control"
+                 name="token"
+                 placeholder="[% loc('Load another session by token') %]" />
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" name="load" value="1">
+              <span class="glyphicon glyphicon-floppy-open"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
