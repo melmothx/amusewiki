@@ -290,6 +290,17 @@ sub schemas :Chained('root') :PathPart('schemas') :Args(0) {
     $c->stash(page_title => $c->loc('Imposition schemas'));
 }
 
+sub load :Chained('root') :Args(0) {
+    my ( $self, $c ) = @_;
+    if (my $token = $c->request->body_parameters->{token}) {
+        if (my $bb = $c->stash->{bb}->load_from_token($token)) {
+            $c->stash(bb => $bb);
+            $self->save_session($c);
+        }
+    }
+    $c->response->redirect($c->uri_for_action('/bookbuilder/index'));
+}
+
 sub save_session :Private {
     my ( $self, $c ) = @_;
     $c->session->{bookbuilder} = $c->stash->{bb}->serialize;

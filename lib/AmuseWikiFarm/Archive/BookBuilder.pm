@@ -20,7 +20,7 @@ use Try::Tiny;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 use Text::Amuse::Compile;
 use PDF::Imposition;
-use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid to_json/;
+use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid to_json from_json/;
 use Text::Amuse::Compile::Webfonts;
 use Text::Amuse::Compile::TemplateOptions;
 use Text::Amuse::Compile::FileName;
@@ -79,6 +79,32 @@ has format => (is => 'rw',
 has token => (is => 'rw',
               isa => 'Str',
               default => sub { '' });
+
+sub load_from_token {
+    my ($self, $token) = @_;
+    if (my $row = $self->site->bookbuilder_sessions->from_token($token)) {
+        my $data = from_json($row->bb_data);
+        my %args = (%$data,
+                    site => $self->site,
+                    token => $self->token,
+                    dbic => $self->dbic,
+                   );
+        my $bb = __PACKAGE__->new(%args);
+        # add the current texts
+        Dlog_debug { "Current text list: $_" } $bb->texts;
+        foreach my $text (@{$self->texts}) {
+            $bb->add_text($text);
+        }
+        # readd the cover to avoid sharing it with another session
+        if (my $cover = $bb->coverfile_path) {
+            $bb->coverfile(undef);
+            $bb->add_file($cover);
+        }
+        Dlog_debug { "Current text list after restoring: $_" } $bb->texts;
+        return $bb;
+    }
+    return;
+}
 
 sub save_session {
     my $self = shift;
