@@ -1018,6 +1018,9 @@ msgstr "Popisi"
 msgid "Load"
 msgstr "Koristi"
 
+msgid "Load another session by token"
+msgstr ""
+
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Koristeći \"%1\" konfiguraciju"
@@ -1724,6 +1727,9 @@ msgstr "Odvajaju dijelove podnožja"
 msgid "Separate header fields"
 msgstr "Odvajaju dijelove zaglavlja"
 
+msgid "Session sharing"
+msgstr ""
+
 msgid "Set a date in the future if you want it deferred."
 msgstr "Stavi budući datum ako želiš odgoditi objavljivanje."
 
@@ -1732,6 +1738,9 @@ msgstr "Pokaži razlike u drugom prozoru"
 
 msgid "Show options"
 msgstr "Pokaži opcije"
+
+msgid "Show preview in other tab"
+msgstr ""
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Prikaži informacije o tekstu na dnu stranice"
@@ -2170,6 +2179,9 @@ msgstr ""
 msgid "UTC"
 msgstr "UTC"
 
+msgid "Unable to load the bookbuilder session"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "Anonimni PDF, bez imena sajta i bez loga"
 
@@ -2259,6 +2271,13 @@ msgstr ""
 msgid "Users"
 msgstr "Korisnici"
 
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+
 msgid "Verbatim block"
 msgstr "Predformatirani dio"
 
@@ -2270,6 +2289,13 @@ msgstr "Virtualni hostovi"
 
 msgid "Virtual hosts, one per line"
 msgstr "Virtualni hostovi, po jedan za redak"
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "Odakle dolazi ovaj tekst?"
@@ -2391,6 +2417,9 @@ msgstr ""
 
 msgid "Your chapter here..."
 msgstr "Tvoje poglavlje..."
+
+msgid "Your current bookbuilder token is:"
+msgstr ""
 
 msgid "Your email"
 msgstr "Tvoj mail"

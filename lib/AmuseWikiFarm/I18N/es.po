@@ -1061,6 +1061,9 @@ msgstr "Listas"
 msgid "Load"
 msgstr "Cargar"
 
+msgid "Load another session by token"
+msgstr ""
+
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
 msgstr "Cargada la configuración \"%1\""
@@ -1781,6 +1784,9 @@ msgstr "Campos separados del footer"
 msgid "Separate header fields"
 msgstr "Campos separados del encabezado"
 
+msgid "Session sharing"
+msgstr ""
+
 msgid "Set a date in the future if you want it deferred."
 msgstr "Establecer una fecha en el futuro si quieres descartarlo."
 
@@ -1789,6 +1795,9 @@ msgstr "Mostrar diferencias en otra pestaña"
 
 msgid "Show options"
 msgstr "Mostrar opciones"
+
+msgid "Show preview in other tab"
+msgstr ""
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Mostrar la baja de información de texto al final de los textos"
@@ -2250,6 +2259,9 @@ msgstr ""
 msgid "UTC"
 msgstr "UTC"
 
+msgid "Unable to load the bookbuilder session"
+msgstr ""
+
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "PDF sin marca (esconder nombre del sitio, logo, etc.)"
 
@@ -2341,6 +2353,13 @@ msgstr ""
 msgid "Users"
 msgstr "Usuarios"
 
+msgid ""
+"Using this token, you can load the bookbuilder settings\n"
+"    and the text list from another computer, or share it with someone\n"
+"    else. Just write it down and then load it from another computer\n"
+"    using the following form."
+msgstr ""
+
 msgid "Verbatim block"
 msgstr "Bloque de código"
 
@@ -2352,6 +2371,13 @@ msgstr "Virtual hosts"
 
 msgid "Virtual hosts, one per line"
 msgstr "Virtual hosts, uno por línea"
+
+msgid ""
+"When you start a bookbuilder session, at the end of the\n"
+"    bookbuilder page you can see a token for sharing the session. You\n"
+"    can load it here from another device to resume what you were\n"
+"    doing."
+msgstr ""
 
 msgid "Where does this text come from?"
 msgstr "¿De dónde viene este texto?"
@@ -2480,6 +2506,9 @@ msgstr ""
 
 msgid "Your chapter here..."
 msgstr "Tu capítulo aquí..."
+
+msgid "Your current bookbuilder token is:"
+msgstr ""
 
 msgid "Your email"
 msgstr "Tu email"
