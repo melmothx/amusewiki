@@ -62,7 +62,6 @@ __PACKAGE__->table("bookbuilder_session");
 =head2 bb_data
 
   data_type: 'text'
-  default_value: '{}'
   is_nullable: 0
 
 =head2 last_updated
@@ -80,7 +79,7 @@ __PACKAGE__->add_columns(
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "bb_data",
-  { data_type => "text", default_value => "{}", is_nullable => 0 },
+  { data_type => "text", is_nullable => 0 },
   "last_updated",
   { data_type => "datetime", is_nullable => 0 },
 );
@@ -115,8 +114,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-09-05 13:29:48
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:z55B0A6xBWXktneH7OctLw
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-09-11 18:22:20
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:vm9YOm+3equ5soX9VlATTg
 
 sub full_token {
     my $self = shift;

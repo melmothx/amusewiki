@@ -8,7 +8,7 @@ CREATE TABLE "bookbuilder_session" (
   "bookbuilder_session_id" serial NOT NULL,
   "token" character varying(16) NOT NULL,
   "site_id" character varying(16) NOT NULL,
-  "bb_data" text DEFAULT '{}' NOT NULL,
+  "bb_data" text NOT NULL,
   "last_updated" timestamp NOT NULL,
   PRIMARY KEY ("bookbuilder_session_id")
 );
