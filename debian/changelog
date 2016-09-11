@@ -1,3 +1,9 @@
+amusewiki (1.920-1) unstable; urgency=medium
+
+  * New release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 11 Sep 2016 12:51:39 +0200
+
 amusewiki (1.916-2) unstable; urgency=medium
 
   * Repackaged for updated deps
