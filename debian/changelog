@@ -1,3 +1,9 @@
+amusewiki (1.920-2) unstable; urgency=medium
+
+  * Upgraded I18N
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 11 Sep 2016 13:55:12 +0200
+
 amusewiki (1.920-1) unstable; urgency=medium
 
   * New release
