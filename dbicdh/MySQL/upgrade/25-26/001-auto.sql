@@ -11,7 +11,7 @@ CREATE TABLE `bookbuilder_session` (
   `bookbuilder_session_id` integer NOT NULL auto_increment,
   `token` varchar(16) NOT NULL,
   `site_id` varchar(16) NOT NULL,
-  `bb_data` text NOT NULL DEFAULT '{}',
+  `bb_data` text NOT NULL,
   `last_updated` datetime NOT NULL,
   INDEX `bookbuilder_session_idx_site_id` (`site_id`),
   PRIMARY KEY (`bookbuilder_session_id`),

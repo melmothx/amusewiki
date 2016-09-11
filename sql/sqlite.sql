@@ -146,7 +146,7 @@ CREATE TABLE bookbuilder_session (
        token VARCHAR(16) NOT NULL,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
-       bb_data TEXT NOT NULL DEFAULT '{}',
+       bb_data TEXT NOT NULL,
        last_updated DATETIME NOT NULL -- internal
 );
 

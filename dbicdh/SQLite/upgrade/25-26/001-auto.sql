@@ -8,7 +8,7 @@ CREATE TABLE bookbuilder_session (
   bookbuilder_session_id INTEGER PRIMARY KEY NOT NULL,
   token varchar(16) NOT NULL,
   site_id varchar(16) NOT NULL,
-  bb_data text NOT NULL DEFAULT '{}',
+  bb_data text NOT NULL,
   last_updated datetime NOT NULL,
   FOREIGN KEY (site_id) REFERENCES site(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
