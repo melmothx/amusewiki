@@ -1,3 +1,9 @@
+amusewiki (1.920-3) unstable; urgency=medium
+
+  * Pick latest master to avoid crash
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 11 Sep 2016 18:35:20 +0200
+
 amusewiki (1.920-2) unstable; urgency=medium
 
   * Upgraded I18N
