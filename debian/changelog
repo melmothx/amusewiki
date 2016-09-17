@@ -1,3 +1,9 @@
+amusewiki (1.920-4) unstable; urgency=medium
+
+  * Pick lastest master with GH#77 patch
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 17 Sep 2016 16:45:25 +0200
+
 amusewiki (1.920-3) unstable; urgency=medium
 
   * Pick latest master to avoid crash
