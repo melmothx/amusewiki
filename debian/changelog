@@ -1,3 +1,9 @@
+amusewiki (1.920-5) unstable; urgency=medium
+
+  * Fixed failing tests, repackage
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 17 Sep 2016 18:40:13 +0200
+
 amusewiki (1.920-4) unstable; urgency=medium
 
   * Pick lastest master with GH#77 patch
