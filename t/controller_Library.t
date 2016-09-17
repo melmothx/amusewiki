@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 21;
+use Test::More tests => 44;
+use Date::Parse qw/str2time/;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -28,10 +29,21 @@ unlike $res->decoded_content, qr{bootstrap\.amusewiki\.css}, "found layout templ
 
 $res = request('/library/second-test', $host);
 ok($res->is_success($res));
+ok($res->header('last-modified'), "Found the last modified header");
+like $res->header('last-modified'), qr{20\d\d \d\d:\d\d:\d\d}, "Last modified header seems fine";
+my $base_time = str2time($res->header('last-modified'));
+diag $res->header('last-modified');
+ok $base_time, "Timestamp ok";
 
 foreach my $ext (qw/pdf epub tex muse zip/) {
     $res = request('/library/second-test.' . $ext, $host);
     ok($res->is_success);
+    ok($res->header('last-modified'), "Found the last modified header");
+    diag 'second-test.' . $ext . " has " . $res->header('last-modified');
+    like $res->header('last-modified'), qr{20\d\d \d\d:\d\d:\d\d}, "Last modified header seems fine";
+    my $file_timestamp = str2time($res->header('last-modified'));
+    ok ($file_timestamp, "timestamp ok");
+    ok ($file_timestamp >= $base_time, "Generated file has correct timestamp");
 }
 
 $res = request('/library/second-test.lt.pdf', $host);

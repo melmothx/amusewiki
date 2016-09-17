@@ -143,6 +143,7 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         }
     }
     $c->stash(meta_description => $meta_desc);
+    $c->response->headers->last_modified($text->f_timestamp_epoch || time());
 }
 
 sub edit :Chained('match') PathPart('edit') :Args(0) {
