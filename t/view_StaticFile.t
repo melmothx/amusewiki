@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 373;
+use Test::More tests => 424;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{CATALYST_DEBUG} = 0;
@@ -48,34 +48,51 @@ foreach my $get (sort keys %files) {
         is $mech->response->content_type_charset, 'UTF-8', "encoding correct";
     }
     is $type, $files{$get}, "$get has type $files{$get}";
-    ok (!$mech->response->header('ETag'), "Etag not present");
+    ok ($mech->response->header('ETag'), "Etag not present");
     ok ($mech->response->header('Last-Modified'),
         "Last-Modified present: " . $mech->response->header('Last-Modified'));
 }
 
-foreach my $get ('/special/index', '/feed', '/library/first-test') {
+foreach my $get ('/feed', '/library') {
     $mech->get_ok($get);
     ok ($mech->response->header('ETag'), "Etag is present: " . $mech->response->header('ETag')) or
       diag Dumper($mech->response->headers);
-    ok (!$mech->response->header('Last-Modified'), "Last-Modified not present") or
+    ok (!$mech->response->header('Last-Modified'), "Last-Modified not present in $get") or
+      diag Dumper($mech->response->headers);
+}
+
+
+foreach my $get ('/special/index', '/library/first-test') {
+    $mech->get_ok($get);
+    ok ($mech->response->header('ETag'), "Etag is present: " . $mech->response->header('ETag')) or
+      diag Dumper($mech->response->headers);
+    ok ($mech->response->header('Last-Modified'), "Last-Modified present in $get") or
       diag Dumper($mech->response->headers);
 }
 
 
 # emulate X-SendFile
-
 foreach my $h (qw/X-Sendfile X-Lighttpd-Send-File X-Accel-Redirect/) {
     if ($h eq 'X-Accel-Redirect') {
         $mech->add_header('X-Accel-Mapping' => getcwd() . '=' . '/private');
     }
+    my %etags;
     $mech->add_header('X-Sendfile-Type' => $h);
     foreach my $get (sort keys %files) {
         $mech->get_ok($get);
         my $type = $mech->response->content_type;
-        ok($mech->response->header($h), "Found $h header!: " . $mech->response->header($h));
+        ok($mech->response->header($h), "Found $h header in $get!: " . $mech->response->header($h));
         is $type, $files{$get}, "Content-type is correct ($files{$get})";
         # these things has no etag
-        ok (!$mech->response->header('ETag'), "Etag not present");
+        my $etag = $mech->response->header('ETag');
+        ok ($etag, "Etag present");
+        if ($get =~ qr{/special/(i-x-myfile\.png|a-t-myfile\.pdf)}) {
+            is ($etags{$etag}, '/library/' . $1, "Same file, same etag");
+        } else {
+            ok (!$etags{$etag}, "Etag $etag was not yet used yet ($get)")
+              or diag "Etag is the same as $etags{$etag}";
+        }
+        $etags{$etag} = $get;
         ok ($mech->response->header('Last-Modified'),
             "Last-Modified present: " . $mech->response->header('Last-Modified'));
         is $mech->response->content, '', "Empty body for $get";
