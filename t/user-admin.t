@@ -15,17 +15,6 @@ use Data::Dumper;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0admins0');
 
-# if root has not visited the form, these will be undef and prevent
-# the update. Unclear if bug or feature. Both?
-
-$site->update({
-               ssl_key => '',
-               ssl_cert => '',
-               ssl_ca_cert => '',
-               ssl_chained_cert => '',
-               logo => '',
-              });
-
 use Test::WWW::Mechanize::Catalyst;
 
 # TODO: remove the host, this should be accessible anywhere

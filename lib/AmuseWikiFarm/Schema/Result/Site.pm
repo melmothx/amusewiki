@@ -2198,7 +2198,7 @@ sub update_from_params_restricted {
     my %fixed_values = (
                         active            => 'value',
 
-                        logo              => 'value',
+                        logo              => 'value_or_empty',
                         logo_with_sitename => 'value',
 
                         canonical         => 'value',
@@ -2218,10 +2218,10 @@ sub update_from_params_restricted {
                         secure_site       => 'value',
                         secure_site_only  => 'value',
                         acme_certificate  => 'value',
-                        ssl_key           => 'value',
-                        ssl_chained_cert  => 'value',
-                        ssl_cert          => 'value',
-                        ssl_ca_cert       => 'value',
+                        ssl_key           => 'value_or_empty',
+                        ssl_chained_cert  => 'value_or_empty',
+                        ssl_cert          => 'value_or_empty',
+                        ssl_ca_cert       => 'value_or_empty',
 
                        );
     my $abort;
@@ -2233,6 +2233,9 @@ sub update_from_params_restricted {
         my $type = $fixed_values{$value};
         if ($type eq 'value') {
             $params->{$value} = $self->$value;
+        }
+        elsif ($type eq 'value_or_empty') {
+            $params->{$value} = $self->$value || '';
         }
         elsif ($type eq 'option') {
             $params->{$value} = $self->get_option($value);
