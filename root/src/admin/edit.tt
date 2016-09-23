@@ -467,11 +467,56 @@ kpsewhich mylogo.pdf
     <div class="form-group">
       <label for="pagination_size" class="col-sm-3 control-label">
         [% loc('Number of results to show on paginated pages (an integer)') %]
+        <strong>([% loc('Generic') %])</strong>
       </label>
       <div class="col-sm-9">
         <input type="text" name="pagination_size" id="pagination_size"
                class="form-control digits"
                value="[% esite.pagination_size | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pagination_size_search" class="col-sm-3 control-label">
+        [% loc('Number of results to show on paginated pages (an integer)') %]
+        <strong>([% loc('Search') %])</strong>
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="pagination_size_search" id="pagination_size_search"
+               class="form-control digits"
+               value="[% esite.pagination_size_search | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pagination_size_monthly" class="col-sm-3 control-label">
+        [% loc('Number of results to show on paginated pages (an integer)') %]
+        <strong>([% loc('Archive by month') %])</strong>
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="pagination_size_monthly" id="pagination_size_monthly"
+               class="form-control digits"
+               value="[% esite.pagination_size_monthly | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pagination_size_latest" class="col-sm-3 control-label">
+        [% loc('Number of results to show on paginated pages (an integer)') %]
+        <strong>([% loc('Latest') %])</strong>
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="pagination_size_latest" id="pagination_size_latest"
+               class="form-control digits"
+               value="[% esite.pagination_size_latest | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pagination_size_category" class="col-sm-3 control-label">
+        [% loc('Number of results to show on paginated pages (an integer)') %]
+        <strong>([% loc('Authors and topics listing') %])</strong>
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="pagination_size_category" id="pagination_size_category"
+               class="form-control digits"
+               value="[% esite.pagination_size_category | html %]" />
       </div>
     </div>
 
