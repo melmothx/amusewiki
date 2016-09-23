@@ -38,7 +38,7 @@ $mech->submit_form(form_id => 'login-form',
 $mech->get('/action/text/new');
 $mech->content_contains("localization/messages_hr.js");
 diag "Changing language user interface";
-$mech->get('/set-language?lang=en&goto=action/text/new');
+$mech->get('/action/text/new?__language=en');
 $mech->content_lacks("localization/messages_en.js");
 $mech->content_lacks("localization/messages_hr.js");
 $mech->content_lacks("localization/messages");

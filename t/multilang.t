@@ -144,7 +144,7 @@ ok(!@sites, "No related sites found");
 
 $mech->get('/topics/geo');
 $mech->content_contains('/category/topic/geo/en');
-$mech->get_ok('/set-language?lang=it&goto=%2Ftopics%2Fgeo');
+$mech->get_ok('/topics/geo?__language=it');
 $mech->content_contains('/category/topic/geo/it');
 $mech->content_contains('<html lang="it">');
 
@@ -198,7 +198,7 @@ ok $site->lexicon;
 }
 
 
-$mech->get_ok('/set-language?lang=it');
+$mech->get_ok('/?__language=it');
 $mech->get_ok('/');
 is $mech->uri->path, '/special/index-it';
 $mech->content_contains('This is the it index');
@@ -219,11 +219,11 @@ my ($rev, $error) = $site->create_new_text({
 
 ok(!$rev, "no revision created");
 is $error, "Couldn't generate the uri!", "Error found";
-$mech->get_ok('/set-language?lang=hr');
+$mech->get_ok('/?__language=hr');
 $mech->content_contains('<html lang="hr">');
 $mech->get_ok('/action/text/new');
 $mech->content_like(qr/class="active"\s*id="select-lang-hr"/s);
-$mech->get_ok('/set-language?lang=it');
+$mech->get_ok('/?__language=it');
 $mech->get_ok('/action/text/new');
 $mech->content_like(qr/class="active"\s*id="select-lang-it"/s);
 
@@ -238,13 +238,13 @@ is $rev->title->uri, 'i-have-set-the-uri-it',
   "No lang suffix appended when the uri is set";
 
 foreach my $lang (sort keys %{ $site->known_langs }) {
-    $mech->get_ok("/set-language?lang=$lang");
+    $mech->get_ok("/?__language=$lang");
     $mech->content_contains(qq{<html lang="$lang"});
 }
-$mech->get_ok("/set-language?lang=en");
+$mech->get_ok("/?__language=en");
 foreach my $lang (qw/alksd als jp lad/) {
-    $mech->get_ok("/set-language?lang=$lang");
+    $mech->get_ok("/?__language=$lang");
     $mech->content_contains('This is the en index');
 }
-$mech->get_ok("/set-language?lang=sr");
+$mech->get_ok("/?__language=sr");
 $mech->content_lacks("Napravi zbirku") or diag $mech->content;
