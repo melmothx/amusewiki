@@ -57,7 +57,7 @@ $site->update;
     my $text;
     for (1..5) {
         $mech->get($url);
-        $mech->content_contains('set-language');
+        $mech->content_contains('__language');
         $etag ||= $mech->response->header('ETag');
         is ($etag, $mech->response->header('ETag'));
         $mech->get($url, 'If-None-Match' => $etag);
