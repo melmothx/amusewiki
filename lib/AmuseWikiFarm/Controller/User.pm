@@ -188,30 +188,6 @@ sub human :Chained('/site') :PathPart('human') :Args(0) {
     }
 }
 
-sub language :Chained('/site') :PathPart('set-language') :Args(0) {
-    my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    if ($site->multilanguage) {
-        my $locale = $site->locale;
-        if (my $lang = $c->request->params->{lang}) {
-            if ($site->known_langs->{$lang}) {
-                $locale = $lang;
-                $c->session(user_locale => $locale,
-                            site_id => $site->id,
-                           );
-            }
-        }
-    }
-    my $goto = '/';
-    # when reloading the page, go to / if we are in an /special/index page
-    if (my $path = $c->request->params->{goto}) {
-        if ($path !~ m%^special/index%) {
-            $goto .= $path;
-        }
-    }
-    $c->response->redirect($c->uri_for($goto));
-}
-
 sub user :Chained('/site_user_required') :CaptureArgs(0) {
     my ($self, $c) = @_;
     unless ($c->user_exists) {

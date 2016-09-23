@@ -31,6 +31,7 @@ prepare_app () {
     fi
 
     ./script/amusewiki-upgrade-db
+    ./script/amusewiki-generate-nginx-conf
     ./script/amusewiki-upgrade-lexicon repo/*
 }
 

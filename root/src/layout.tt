@@ -337,8 +337,7 @@
                     class="active"
                     [%- END %]
                     id="select-lang-[% lang.code %]">
-                  <a href="[% c.uri_for_action('/user/language',
-                           { 'lang' => lang.code, goto => c.request.path }) | html%]">
+                  <a href="?__language=[% lang.code %]">
                     [% lang.label %]
                   </a>
                 </li>

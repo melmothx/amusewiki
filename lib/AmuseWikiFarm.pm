@@ -150,7 +150,7 @@ __PACKAGE__->config(
         'ConditionalGET',
         ETag => {
             check_last_modified_header => 0,
-            cache_control => [ 'must-revalidate', 'max-age=3600' ],
+            cache_control => [ 'no-cache' ],
             file_etag => [qw/inode mtime size/],
         },
        ],
