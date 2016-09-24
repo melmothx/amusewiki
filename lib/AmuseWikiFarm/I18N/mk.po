@@ -248,6 +248,9 @@ msgstr "Автор и наслов. За едностран прелом: нас
 msgid "Authors"
 msgstr "Автори"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr ""
 "Автори за индексирање - во заграда наведи го и изворното писмо - пр.: \"Џон "

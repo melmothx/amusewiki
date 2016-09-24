@@ -230,6 +230,9 @@ msgstr ""
 msgid "Authors"
 msgstr "Авторы"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr "Авторы (для индексации)"
 

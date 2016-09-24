@@ -256,6 +256,9 @@ msgstr ""
 msgid "Authors"
 msgstr "Autorët"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr "Autorët për indeksim"
 

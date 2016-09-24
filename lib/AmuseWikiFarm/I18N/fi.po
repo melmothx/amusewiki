@@ -227,6 +227,9 @@ msgstr ""
 msgid "Authors"
 msgstr "Kirjoittajat"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr "Kirjoittajat hakemistoa varten"
 

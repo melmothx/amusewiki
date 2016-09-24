@@ -232,6 +232,9 @@ msgstr ""
 msgid "Authors"
 msgstr "Författare (flera)"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr "Författare för indexering"
 

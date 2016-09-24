@@ -249,6 +249,9 @@ msgstr "Autor y título. Si es un documento de un lado: título."
 msgid "Authors"
 msgstr "Autores"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr "Autores para indexar"
 

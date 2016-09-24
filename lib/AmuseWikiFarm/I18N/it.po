@@ -244,6 +244,9 @@ msgstr "Autore e titolo. Se a facciata singola: titolo."
 msgid "Authors"
 msgstr "Autori"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr "Autori indicizzati"
 

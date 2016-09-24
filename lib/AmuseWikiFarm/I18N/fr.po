@@ -247,6 +247,9 @@ msgstr "Auteur·e et titre. Si document unilatéral: titre."
 msgid "Authors"
 msgstr "Auteur·e·s"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr "Auteur·e·s pour indexation"
 

@@ -238,6 +238,9 @@ msgstr "Autor i naslov. Za jednostrani prijelom: naslov."
 msgid "Authors"
 msgstr "Autori"
 
+msgid "Authors and topics listing"
+msgstr ""
+
 msgid "Authors for indexing"
 msgstr "Autori za indeksiranje"
 
