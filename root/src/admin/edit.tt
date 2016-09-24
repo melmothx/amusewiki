@@ -467,7 +467,6 @@ kpsewhich mylogo.pdf
     <div class="form-group">
       <label for="pagination_size" class="col-sm-3 control-label">
         [% loc('Number of results to show on paginated pages (an integer)') %]
-        <strong>([% loc('Generic') %])</strong>
       </label>
       <div class="col-sm-9">
         <input type="text" name="pagination_size" id="pagination_size"
@@ -500,7 +499,7 @@ kpsewhich mylogo.pdf
     <div class="form-group">
       <label for="pagination_size_latest" class="col-sm-3 control-label">
         [% loc('Number of results to show on paginated pages (an integer)') %]
-        <strong>([% loc('Latest') %])</strong>
+        <strong>([% loc('Latest entries') %])</strong>
       </label>
       <div class="col-sm-9">
         <input type="text" name="pagination_size_latest" id="pagination_size_latest"
