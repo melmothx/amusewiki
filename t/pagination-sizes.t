@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 18;
+use Test::More tests => 45;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -52,24 +52,47 @@ fill_site($site);
 
 $site->discard_changes;
 foreach my $method (keys %pages) {
-    is $site->$method, $pages{$method};
+    is $site->$method, $pages{$method}, "$method set ok";
 }
+$mech->get_ok('/stats/popular');
+is count_items($mech), $pages{pagination_size};
 $mech->get_ok('/latest');
-is count_items($mech), 4;
+is count_items($mech), $pages{pagination_size_latest};
 $mech->get_ok('/search?query=exist');
 my $now = DateTime->now;
-is count_items($mech), 5;
+is count_items($mech), $pages{pagination_size_search};
 $mech->get_ok('/monthly/' . $now->year . '/'. $now->month);
-is count_items($mech), 6;
+is count_items($mech), $pages{pagination_size_monthly};
+
 foreach my $cat ($site->categories) {
     $mech->get_ok($cat->full_uri);
-    is count_items($mech), 7;
+    is count_items($mech), $pages{pagination_size_category};
 }
 
-          
+$mech->get_ok('/user/site');
+$mech->submit_form(with_fields => {
+                                   pagination_size => 100,
+                                   pagination_size_latest => 100,
+                                   pagination_size_search => 100,
+                                   pagination_size_monthly => 100,
+                                   pagination_size_category => 100,
+                                  },
+                   button => 'edit_site');
+
+foreach my $url ('/stats/popular',
+                 '/latest',
+                 '/search?query=exist',
+                 '/monthly/' . $now->year . '/'. $now->month,
+                 (map { $_->full_uri } $site->categories)) {
+    $mech->get_ok($url);
+    $mech->content_contains('amw-listing-item');
+    $mech->content_lacks('class="pagination"');
+}
+
 sub count_items {
     my $mech = shift;
     my $content = $mech->content;
+    $mech->content_contains('class="pagination"');
     my $count = 0;
     $count++ while $content =~ m/amw-listing-item/g;
     return $count;

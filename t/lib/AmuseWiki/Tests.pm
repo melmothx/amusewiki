@@ -8,6 +8,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use Git::Wrapper;
 use Search::Xapian;
+use DateTime;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/create_site check_jobber_result fill_site/;
@@ -102,6 +103,10 @@ sub fill_site {
                                         month => $title->pubdate->month,
                                         year => $title->pubdate->year,
                                       }]);
+        $title->add_to_title_stats({
+                                    site_id => $site->id,
+                                    accessed => DateTime->now,
+                                   });
         my $xapian = $site->xapian;
         my $db = $xapian->xapian_db;
         my $indexer = Search::Xapian::TermGenerator->new();

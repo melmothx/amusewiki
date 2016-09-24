@@ -1308,6 +1308,7 @@ sub xapian {
     my $self = shift;
     return AmuseWikiFarm::Archive::Xapian->new(
                                                code => $self->id,
+                                               page => $self->pagination_size_search,
                                                locale => $self->locale,
                                               );
 }

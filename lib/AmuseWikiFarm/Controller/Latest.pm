@@ -40,7 +40,7 @@ sub index :Chained('base') :PathPart('') :Args {
                                                 {
                                                  order_by => { -desc => 'pubdate' },
                                                  page => $page,
-                                                 rows => $site->pagination_size,
+                                                 rows => $site->pagination_size_latest,
                                                 });
     my $pager = $results->pager;
     my $format_link = sub {
