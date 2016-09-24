@@ -5,11 +5,13 @@
 [% IF texts.size %]
 <div class="list-group">
   [% FOREACH text IN texts %]
-  <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
-    <strong>[% text.title %]</strong>
-    [%- IF text.author %] — [% text.author -%][% END -%]    
-    <span class="badge">[% text.get_column('popular') %]</span>
-  </a>
+  <div class="amw-listing-item">
+    <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
+      <strong>[% text.title %]</strong>
+      [%- IF text.author %] — [% text.author -%][% END -%]    
+      <span class="badge">[% text.get_column('popular') %]</span>
+    </a>
+  </div>
   [% END %]
 </div>
 [% ELSE %]
