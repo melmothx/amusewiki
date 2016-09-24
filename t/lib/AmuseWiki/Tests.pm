@@ -7,9 +7,11 @@ use File::Path qw/make_path remove_tree/;
 use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use Git::Wrapper;
+use Search::Xapian;
+use DateTime;
 
 our @ISA = qw(Exporter);
-our @EXPORT_OK = qw/create_site check_jobber_result/;
+our @EXPORT_OK = qw/create_site check_jobber_result fill_site/;
 
 =head2 create_site($schema, $id)
 
@@ -71,5 +73,54 @@ sub check_jobber_result {
     return $success;
 }
 
+sub fill_site {
+    my $site = shift;
+    my $topic = $site->categories->topics_only->create({
+                                                        name => 'Topic',
+                                                        uri => 'topic',
+                                                       });
+    my $author = $site->categories->authors_only->create({
+                                                          name => 'Author',
+                                                          uri => 'author',
+                                                         });
+    foreach my $id (1..20) {
+        my $uri = "a-title-$id-test";
+        my $title = $site->titles->create({
+                                           title => "A test $uri",
+                                           uri => $uri,
+                                           pubdate => DateTime->now,
+                                           f_path => $uri,
+                                           f_name => $uri,
+                                           f_archive_rel_path => "a/t",
+                                           f_timestamp => 0,
+                                           f_full_path_name => $uri,
+                                           f_suffix => "muse",
+                                           f_class => 'text',
+                                           status => 'published',
+                                          });
+        $title->set_categories([ $topic, $author ]);
+        $title->set_monthly_archives([{ site_id => $site->id,
+                                        month => $title->pubdate->month,
+                                        year => $title->pubdate->year,
+                                      }]);
+        $title->add_to_title_stats({
+                                    site_id => $site->id,
+                                    accessed => DateTime->now,
+                                   });
+        my $xapian = $site->xapian;
+        my $db = $xapian->xapian_db;
+        my $indexer = Search::Xapian::TermGenerator->new();
+        my $doc = Search::Xapian::Document->new();
+        $indexer->set_stemmer($xapian->xapian_stemmer);
+        $indexer->set_document($doc);
+        $doc->set_data($uri);
+        $doc->add_term('Q' . $uri);
+        $indexer->index_text($uri, 1, 'S');
+        $indexer->increase_termpos();
+        $indexer->index_text("this uri doesn't exist a abc cdf");
+        $db->replace_document_by_term('Q' . $uri, $doc);
+    }
+    $_->title_count_update for ($author, $topic);
+}
 
 1;

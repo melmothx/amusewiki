@@ -57,7 +57,7 @@ AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, $site->locales_d
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
-$mech->get_ok('/set-language?lang=hr');
+$mech->get_ok('/?__language=hr');
 $mech->content_contains('Geografija kontrole');
 $mech->content_lacks('&amp;quot; i&#39; &amp;lt;državni&amp;gt; &amp;amp;');
 $mech->content_contains(q{Ratovi&quot; i&#39; &lt;državni&gt; &amp; terorizam});
@@ -92,7 +92,7 @@ $mech->submit_form(with_fields => { username => 'root',
                                   },
                    button => 'submit',
                   );
-$mech->get_ok('/set-language?lang=hr');
+$mech->get_ok('/?__language=hr');
 $mech->get_ok('/admin/debug_loc');
 my $expected = <<'TXT';
 &lt;hello \there&gt;

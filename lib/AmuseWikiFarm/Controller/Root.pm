@@ -147,7 +147,14 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
         $locale = 'en';
     }
 
-    if ($site->multilanguage) {
+    if (my $set_language = $c->request->query_params->{__language}) {
+        if ($site->known_langs->{$set_language}) {
+            $c->session(user_locale => $set_language . '',
+                        site_id => $site->id,
+                       );
+        }
+    }
+
         if ($c->sessionid) {
             if (my $user_locale = $c->session->{user_locale}) {
                 if (my $language = $site->known_langs->{$user_locale}) {
@@ -157,7 +164,7 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
                 }
             }
         }
-    }
+
     $c->stash(current_locale_code => $locale,
               current_locale_name => $site->known_langs->{$locale},
              );

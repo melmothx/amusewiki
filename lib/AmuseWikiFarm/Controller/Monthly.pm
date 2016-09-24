@@ -81,7 +81,7 @@ sub month :Chained('year') :PathPart('') :Args(1) {
         ->search(undef, {
                          order_by => { -desc => 'pubdate' },
                          page => $page,
-                         rows => $site->pagination_size,
+                         rows => $site->pagination_size_monthly,
                         });
         my $pager = $texts->pager;
         my @uri_args = ($arch->year, $arch->month);

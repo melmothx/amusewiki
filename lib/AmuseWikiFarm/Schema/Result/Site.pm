@@ -1308,6 +1308,7 @@ sub xapian {
     my $self = shift;
     return AmuseWikiFarm::Archive::Xapian->new(
                                                code => $self->id,
+                                               page => $self->pagination_size_search,
                                                locale => $self->locale,
                                               );
 }
@@ -2198,7 +2199,7 @@ sub update_from_params_restricted {
     my %fixed_values = (
                         active            => 'value',
 
-                        logo              => 'value',
+                        logo              => 'value_or_empty',
                         logo_with_sitename => 'value',
 
                         canonical         => 'value',
@@ -2218,10 +2219,10 @@ sub update_from_params_restricted {
                         secure_site       => 'value',
                         secure_site_only  => 'value',
                         acme_certificate  => 'value',
-                        ssl_key           => 'value',
-                        ssl_chained_cert  => 'value',
-                        ssl_cert          => 'value',
-                        ssl_ca_cert       => 'value',
+                        ssl_key           => 'value_or_empty',
+                        ssl_chained_cert  => 'value_or_empty',
+                        ssl_cert          => 'value_or_empty',
+                        ssl_ca_cert       => 'value_or_empty',
 
                        );
     my $abort;
@@ -2233,6 +2234,9 @@ sub update_from_params_restricted {
         my $type = $fixed_values{$value};
         if ($type eq 'value') {
             $params->{$value} = $self->$value;
+        }
+        elsif ($type eq 'value_or_empty') {
+            $params->{$value} = $self->$value || '';
         }
         elsif ($type eq 'option') {
             $params->{$value} = $self->get_option($value);
@@ -2457,7 +2461,12 @@ sub update_from_params {
     # these are numerics
     foreach my $option (qw/latest_entries_for_rss
                            paginate_archive_after
-                           pagination_size/) {
+                           pagination_size
+                           pagination_size_search
+                           pagination_size_monthly
+                           pagination_size_latest
+                           pagination_size_category
+                          /) {
         my $value = 0;
         if (my $set_to = delete $params->{$option}) {
             if ($set_to =~ m/([1-9][0-9]*)/) {
@@ -2818,6 +2827,26 @@ sub bottom_layout_html {
 
 sub pagination_size {
     return shift->get_option('pagination_size') || 10;
+}
+
+sub pagination_size_latest {
+    my $self = shift;
+    return $self->get_option('pagination_size_latest') || $self->pagination_size;
+}
+
+sub pagination_size_category {
+    my $self = shift;
+    return $self->get_option('pagination_size_category') || $self->pagination_size;
+}
+
+sub pagination_size_search {
+    my $self = shift;
+    return $self->get_option('pagination_size_search') || $self->pagination_size;
+}
+
+sub pagination_size_monthly {
+    my $self = shift;
+    return $self->get_option('pagination_size_monthly') || $self->pagination_size;
 }
 
 sub text_infobox_at_the_bottom {

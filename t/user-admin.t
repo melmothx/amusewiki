@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 26;
+use Test::More tests => 31;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -14,17 +14,6 @@ use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0admins0');
-
-# if root has not visited the form, these will be undef and prevent
-# the update. Unclear if bug or feature. Both?
-
-$site->update({
-               ssl_key => '',
-               ssl_cert => '',
-               ssl_ca_cert => '',
-               ssl_chained_cert => '',
-               logo => '',
-              });
 
 use Test::WWW::Mechanize::Catalyst;
 
@@ -57,7 +46,6 @@ isnt ($site->magic_answer, '???');
 isnt ($site->magic_question, 'Guess what');
 isnt ($site->canonical, 'garbage');
 diag $mech->uri->path;
-
 # no button
 
 $mech->post($mech->uri->as_string, {
@@ -75,11 +63,21 @@ diag $mech->uri->path;
 $mech->submit_form(with_fields => {
                                    magic_question => 'Guess what',
                                    magic_answer => '???',
+                                   pagination_size => 24,
+                                   pagination_size_latest => 25,
+                                   pagination_size_search => 26,
+                                   pagination_size_monthly => 27,
+                                   pagination_size_category => 28,
                                   },
                    button => 'edit_site');
-$site->discard_changes;
+$site = $schema->resultset('Site')->find($site->id);
 is ($site->magic_answer, '???', "Site updated");
 is ($site->magic_question, 'Guess what', "Site updated");
+is ($site->pagination_size, 24, "pagination latest ok");
+is ($site->pagination_size_latest, 25, "pagination latest ok");
+is ($site->pagination_size_search, 26, "pagination search ok");
+is ($site->pagination_size_monthly, 27, "pagination monthly ok");
+is ($site->pagination_size_category, 28, "pagination category ok");
 
 
 my $other = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',

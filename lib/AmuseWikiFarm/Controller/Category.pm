@@ -138,7 +138,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
             $page = 1;
         }
         my $texts = $cat->titles->published_texts
-          ->search(undef, { rows => $site->pagination_size,
+          ->search(undef, { rows => $site->pagination_size_category,
                             page => $page });
         # if it's a blog, the alphabetica entry is not so important,
         # and we give precedence to latest first.

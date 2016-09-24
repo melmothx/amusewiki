@@ -64,14 +64,14 @@ foreach my $uri ([qw/author pippo/],
     is $cat->localized_desc('hr')->last_modified_by, "pallino",
       "hr author is pallino";
     ok !$cat->localized_desc('it'), "No desc for italian";
-    $mech->get_ok('/set-language?lang=en');
+    $mech->get_ok('/?__language=en');
     $mech->get_ok($cat->full_uri);
     $mech->content_like($regexp_en, "found the HTML description");
-    $mech->get_ok('/set-language?lang=it');
+    $mech->get_ok('/?__language=it');
     $mech->get_ok($cat->full_uri);
     $mech->content_unlike($regexp_en, "HTML description");
     $mech->content_unlike($regexp_hr, "HTML description");
-    $mech->get_ok('/set-language?lang=hr');
+    $mech->get_ok('/?__language=hr');
     $mech->get_ok($cat->full_uri);
     $mech->content_like($regexp_hr, "HTML description");
     $mech->content_unlike($regexp_en, "HTML description");
@@ -135,7 +135,7 @@ foreach my $page ('/library/the-text', '/authors', '/topics',
     ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 }
 
-$mech->get_ok('/set-language?lang=en');
+$mech->get_ok('/?__language=en');
 $mech->get_ok('/authors/pippo');
 $mech->content_lacks('glyphicon-edit');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
@@ -168,7 +168,7 @@ $mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pi
 $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
 $mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
 
-$mech->get_ok('/set-language?lang=it&goto=category%2Fauthor%2Fpippo"');
+$mech->get_ok('/category/author/pippo?__language=it');
 $mech->content_lacks('Pippo <em>is</em> a nice author', "No description, language changed");
 $mech->content_like(qr{<li\s+class="active"\s*>\s*
                        <a\s+href=".*?/category/author/pippo">\s*
@@ -192,7 +192,7 @@ is $mech->uri->path, '/category/author/pippo/it/edit', "Default edit goes into c
 
 $site->update({ multilanguage => '' });
 
-$mech->get_ok('/category/author/pippo');
+$mech->get_ok('/category/author/pippo?__language=en');
 $mech->content_contains('Pippo <em>is</em> a nice author');
 $mech->content_contains('<meta name="description" content="Pippo is a nice author"');
 $mech->content_unlike(qr{<a href=.*?/category/author/pippo">\s*Tutte le lingue});

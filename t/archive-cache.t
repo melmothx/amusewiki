@@ -38,8 +38,8 @@ foreach my $path ('/library', '/topics', '/authors', '/archive', '/archive/hr') 
     # we have to ignore these links with the params, as hash
     # randomization will make the test fail for no reason.
     diag "Ignoring: " . Dumper([grep { /set-language/ } split /\n/, $mech->content]);
-    is_deeply ([grep { $_ !~ /set-language/ } split /\n/, $mech->content],
-               [grep { $_ !~ /set-language/ } split /\n/, $content],
+    is_deeply ([split /\n/, $mech->content],
+               [split /\n/, $content],
                "$path is the same after the first request");
 }
 
