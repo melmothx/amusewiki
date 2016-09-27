@@ -1,5 +1,6 @@
 package AmuseWikiFarm::Controller::Root;
 use Moose;
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller' }
 
@@ -65,7 +66,7 @@ sub check_unicode_errors :Chained('/') :PathPart('') :CaptureArgs(0) {
 
 sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    log_debug { $c->request->uri->as_string };
+    log_debug { "Starting request " . $c->request->uri->as_string };
 
     $c->stash(amw_user_agent => HTTP::BrowserDetect->new($c->request->user_agent || ''));
 
@@ -123,15 +124,6 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     # stash the site object
     $c->stash(site => $site);
     $c->stash(blog_style => $site->blog_style);
-
-
-    # always stash the login uri, at some point it could be needed by
-    # the layout
-    my $login_uri = $c->uri_for_action('/user/login');
-    if ($site->secure_site || $site->secure_site_only) {
-        $login_uri->scheme('https');
-    }
-    $c->stash(user_login_uri => $login_uri);
 
     # force ssl for authenticated users
     if ($c->user_exists) {
@@ -213,8 +205,7 @@ sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
             $c->detach();
         }
         else {
-            $c->response->redirect($c->uri_for('/login',
-                                               { goto => $c->req->path }));
+            $self->check_login($c);
         }
         $c->detach();
     }
@@ -227,12 +218,12 @@ sub site_robot_index :Chained('site') :PathPart('') :CaptureArgs(0) {
 
 sub site_user_required :Chained('site') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    unless ($c->user_exists) {
-        log_warn { "Tried to access " . $c->req->path . " without user, redirecting" };
-        $c->response->redirect($c->uri_for('/login',
-                                           { goto => $c->req->path }));
-        $c->detach();
-    }
+    $self->check_login($c);
+}
+
+sub site_human_required :Chained('site') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $self->check_human($c);
 }
 
 sub bad_request :Private {
@@ -417,10 +408,8 @@ sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
     my $target = $c->uri_for_action('/latest/index');
     my $site = $c->stash->{site};
     my $locale = $c->stash->{current_locale_code} || $site->locale;
-    if ($site->is_private and !$c->user_exists) {
-        $target = $c->uri_for_action('/user/login');
-    }
-    elsif ($site->multilanguage and
+    $self->check_login($c) if $site->is_private;
+    if ($site->multilanguage and
         (my $locindex = $site->titles->special_by_uri('index-' . $locale))) {
         $target = $c->uri_for($locindex->full_uri);
     }

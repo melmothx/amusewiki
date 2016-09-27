@@ -1,5 +1,6 @@
 package AmuseWikiFarm::Controller::Category;
 use Moose;
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -257,11 +258,11 @@ sub single_category_by_lang_display :Chained('single_category_by_lang') :PathPar
 
 sub category_editing_auth :Chained('single_category_by_lang') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    unless ($c->user_exists) {
-        $c->response->redirect($c->uri_for('/login',
-                                           { goto => $c->req->path }));
-        $c->detach;
-        return;
+    if ($self->check_login($c)) {
+        return 1;
+    }
+    else {
+        die "Unreachable";
     }
 }
 

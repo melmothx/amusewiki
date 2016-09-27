@@ -1,19 +1,18 @@
 [% # -*- mode: html -*- %]
  
 <!-- Login form -->
-<form id="login-form" method="post" action="[% user_login_uri %]">
+<form id="login-form" method="post" action="">
   <div class="form-group">
     <label for="username">[% loc('Username') %]:</label>
-    <input type="text" name="username" id="username"
+    <input type="text" name="__auth_user" id="username"
            class="form-control" placeholder="[% loc('Username') %]" />
-    <input type="hidden" name="goto" value="[% c.request.params.goto | html %]" />
   </div>
   <div class="form-group">
     <label for="password">[% loc('Password') %]:</label>
-    <input type="password" name="password" id="password"
+    <input type="password" name="__auth_pass" id="password"
            class="form-control" placeholder="[% loc('Password') %]" />
   </div>
-  <button type="submit" class="btn btn-default" name="submit" value="go">
+  <button type="submit" class="btn btn-default">
     [% loc('Log in') %]
   </button>
 </form>
@@ -23,14 +22,3 @@
 <div>
   <a href="[% c.uri_for_action('/user/reset_password') %]">[% loc('Lost your password?') %]</a>
 </div>
-
-
-
-<script type="text/javascript">
-    if (location.hash) {
-        $('<input />')
-            .attr('type', 'hidden')
-            .attr('name', 'fragment')
-            .attr('value', location.hash).appendTo('#login-form');
-    }
-</script>

@@ -22,12 +22,8 @@ Deny access to not-human
 
 =cut
 
-sub root :Chained('/site') :PathPart('tasks') :CaptureArgs(0) {
+sub root :Chained('/site_human_required') :PathPart('tasks') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
-    unless ($c->sessionid && $c->session->{i_am_human}) {
-        $c->response->redirect($c->uri_for('/human', { goto => $c->req->path }));
-        $c->detach();
-    }
 }
 
 sub status :Chained('root') :CaptureArgs(1) {

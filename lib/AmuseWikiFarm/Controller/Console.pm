@@ -37,17 +37,10 @@ Posting here will trigger the action
 
 =cut
 
-sub root :Chained('/site') :PathPart('console') :CaptureArgs(0) {
+sub root :Chained('/site_user_required') :PathPart('console') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    if ($c->user_exists) {
-        $c->stash(nav => 'console');
-    }
-    else {
-        $c->response->redirect($c->uri_for('/login', { goto => $c->req->path }));
-        $c->detach();
-        return;
-    }
-    $c->stash(full_page_no_side_columns => 1);
+    $c->stash(full_page_no_side_columns => 1,
+              nav => 'console');
 }
 
 sub git :Chained('root') :PathPart('git') :CaptureArgs(0) {
