@@ -74,11 +74,9 @@ $mech->get('/library/slides-s-no.sl.tex');
 is ($mech->status, '404', "slides for slides-s-no not found");
 
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'root',
-                               password => 'root',
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => 'root',
+                                    __auth_pass => 'root',
+                                  });
 $mech->get_ok('/action/text/new');
 $mech->content_contains('Produce slides');
 $mech->get_ok("/admin/sites/edit/$site_id");

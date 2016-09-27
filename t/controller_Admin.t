@@ -22,15 +22,11 @@ my %hosts = (
 foreach my $host (keys %hosts) {
     my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                    host => $host);
-    $mech->get_ok('/admin/debug_site_id');
-    is ($mech->uri->path, '/login');
-    $mech->content_contains('name="password"');
-    $mech->content_contains('name="username"');
-    $mech->submit_form(form_id => 'login-form',
-                       fields => { username => 'root',
-                                   password => 'root',
-                                 },
-                       button => 'submit');
+    $mech->get('/admin/debug_site_id');
+    is $mech->status, 403;
+    $mech->submit_form(with_fields => { __auth_user => 'root',
+                                        __auth_pass => 'root',
+                                  });
     is ($mech->uri->path, '/admin/debug_site_id');
     $mech->content_is($hosts{$host}{id} . ' ' . $hosts{$host}{locale}) or
       print $mech->content;
