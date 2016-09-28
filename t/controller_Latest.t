@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use Test::More tests => 36;
+use Data::Dumper;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
 binmode $builder->failure_output, ":encoding(utf8)";
@@ -67,9 +68,10 @@ $mech->content_contains('Jan 1, 2015');
 $mech->content_lacks(q{rel="next"});
 $mech->content_contains(q{rel="prev"});
 
-my @links = grep { $_->url !~ /\/(static|git)\//}
+my @links = grep { $_->url =~ m{/(latest|library)} }
   $mech->find_all_links;
 $mech->links_ok(\@links);
+# diag Dumper(\@links);
 ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 
 $mech->get_ok('/opds');
