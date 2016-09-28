@@ -32,11 +32,10 @@ my $host = $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
 
-$mech->get_ok('/action/text/new');
-ok($mech->form_id('login-form'), "Found the login-form");
-$mech->set_fields(username => 'root',
-                  password => 'root');
-$mech->click;
+$mech->get_ok('/');
+$mech->get('/action/text/new');
+is $mech->status, 403;
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->content_contains('You are logged in now!');
 $mech->get_ok('/action/text/new');
 
@@ -136,9 +135,7 @@ is $mech->status, '404', "deferred not found";
 
 $mech->get_ok('/login');
 ok($mech->form_id('login-form'), "Found the login-form");
-$mech->set_fields(username => 'root',
-                  password => 'root');
-$mech->click;
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->content_contains('You are logged in now!');
 
 foreach my $path (qw{/library /archive archive/en}) {
