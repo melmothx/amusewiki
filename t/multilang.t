@@ -153,11 +153,7 @@ $site->fixed_category_list("geo lines war");
 $site->update->discard_changes;
 
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'root',
-                               password => 'root',
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->get_ok('/action/text/new');
 ok($mech->form_with_fields(qw/uid title textbody/));
 foreach my $cat (@{$site->list_fixed_categories}) {

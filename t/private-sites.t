@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 316;
+use Test::More tests => 331;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -50,10 +50,7 @@ $site->update_or_create_user({ username => 'marcolino',
                                password => 'marcolino', }, "librarian");
 
 $mech->get_ok('/login');
-ok $mech->form_with_fields('username');
-$mech->set_fields(username => 'marcolino',
-                  password => 'marcolino');
-$mech->click;
+$mech->submit_form(with_fields => { __auth_user => 'marcolino', __auth_pass => 'marcolino' });
 is $mech->uri->path, '/latest', "Loaded library ok";
 
 check_pass("After login");
@@ -61,7 +58,9 @@ check_pass("After login");
 $mech->get_ok("/robots.txt");
 is $mech->content, "User-agent: *\nDisallow: /\n", "robots.txt ok, disallow everything";
 
-$mech->get_ok("/logout");
+$mech->get("/logout");
+is $mech->uri->path, "/";
+$mech->content_contains('login-form');
 
 check_denied('after logout');
 
@@ -89,20 +88,18 @@ $user->update({ active => 1 });
 {
     my $human = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                     agent => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36",
-                                                    max_redirect => 0,
                                                     host => "0private0.amusewiki.org");
-
+    $human->get('/');
     foreach my $path (@uris) {
         $human->get("/$path");
-        is $human->status, '302';
-        diag $human->response->headers->header('Location');
-        like $human->response->headers->header('Location'), qr{0private0\.amusewiki\.org/login}, "Redirected to login";
+        is $human->status, 403;
+        $human->content_contains('__auth_user');
+        is $human->uri->path, "/$path";
     }
+    $human->get('/');
     $human->get("/login");
-    ok $human->form_with_fields('username');
-    $human->set_fields(username => 'marcolino',
-                      password => 'marcolino');
-    $human->click;
+    $human->submit_form(with_fields => { __auth_user => 'marcolino', __auth_pass => 'marcolino' });
+    $human->get_ok('/');
     foreach my $path (@uris) {
         $human->get_ok("/$path");
         is $human->uri->path, "/$path", "$path is retrieved correctly after the login";

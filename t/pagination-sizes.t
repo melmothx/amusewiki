@@ -30,11 +30,7 @@ $schema->resultset('User')->create({ username => $user,
                                      user_roles => [ { role => { role => 'admin' } } ] });
 
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => $user,
-                               password => $pass,
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => $user, __auth_pass => $pass });
 $mech->get_ok('/user/site');
 $mech->content_contains('pagination_size');
 my %pages = (

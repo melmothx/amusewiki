@@ -68,11 +68,12 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     my $site    = $c->stash->{site};
     my $f_class = $c->stash->{f_class} or die;
     # if there was a posting, process it
-
+    Dlog_debug { "In the newtext route $_" } $c->request->body_params;
     if ($c->request->params->{go}) {
 
         # create a working copy of the params
         my $params = { %{$c->request->body_params} };
+        Dlog_debug { "Params are $_" } $params;
         my ($upload) = $c->request->upload('texthtmlfile');
         if ($upload) {
             log_debug { $upload->tempname . ' => '. $upload->size  };
@@ -132,6 +133,9 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
             $c->stash(processed_params => $params);
             $c->flash(error_msg => $c->loc($error));
         }
+    }
+    else {
+        log_debug { "Nothing to do, rendering form" };
     }
 }
 

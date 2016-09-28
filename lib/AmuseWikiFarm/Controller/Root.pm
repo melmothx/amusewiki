@@ -191,6 +191,7 @@ sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
                 if (my $user = $site->users->find({ username => $username })) {
                     if ($user->active && $user->check_password($password)) {
                         log_info { "$username found and authenticated" };
+                        $c->session(i_am_human => 1);
                         # unclear if we want to authenticate as well in the app.
                         return;
                     }
