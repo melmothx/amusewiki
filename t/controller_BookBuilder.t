@@ -27,16 +27,16 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
 
 
-$mech->get_ok('/bookbuilder/');
+$mech->get('/bookbuilder/');
+is $mech->status, 403;
 
 
-$mech->get_ok('/bookbuilder/add/alsdflasdf');
+$mech->get('/bookbuilder/add/alsdflasdf');
+is $mech->status, 403;
 
 $mech->content_contains("test if the user is a human");
 
-$mech->form_with_fields('answer');
-$mech->field(answer => 'January');
-$mech->click;
+$mech->submit_form(with_fields => { __auth_human => 'January' });
 is ($mech->status, '404', "bogus text not found: " . $mech->status);
 is $mech->uri->path, '/library/alsdflasdf';
 $mech->content_contains("Couldn't add the text");
@@ -248,10 +248,9 @@ $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $site->update({ bb_page_limit => 1 });
 $mech->get_ok('/library/first-test');
 
-$mech->get_ok('/bookbuilder/add/first-test');
-$mech->form_with_fields('answer');
-$mech->field(answer => 'January');
-$mech->click;
+$mech->get('/bookbuilder/add/first-test');
+is $mech->status, 403;
+$mech->submit_form(with_fields => { __auth_human => 'January' });
 $mech->content_contains("Quota exceeded",  "Quota hit adding the whole text");
 
 $mech->submit_form(form_id => 'book-builder-add-text-partial');
