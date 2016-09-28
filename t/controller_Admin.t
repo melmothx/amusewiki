@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 101;
+use Test::More tests => 95;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -18,8 +18,10 @@ my %hosts = (
                                      }
             );
 
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 foreach my $host (keys %hosts) {
+    $schema->resultset('Site')->find($hosts{$host}{id})->update({ locale => $hosts{$host}{locale} });
     my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                    host => $host);
     $mech->get('/admin/debug_site_id');
@@ -39,11 +41,7 @@ diag "Regular users can't access admin";
 
 $mech->get('/logout');
 $mech->get('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'user1',
-                               password => 'pass',
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => 'user1', __auth_pass => 'pass' });
 $mech->get('/');
 $mech->content_contains("/logout");
 $mech->get('/admin/debug_site_id');
@@ -52,12 +50,7 @@ is ($mech->status, 403);
 
 $mech->get('/logout');
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'root',
-                               password => 'root',
-                             },
-                   button => 'submit');
-
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->get_ok('/admin/sites/edit/0blog0');
 
 my $html_injection = q{<script>alert('hullo')</script>};
@@ -89,8 +82,6 @@ $mech->content_lacks($html_injection, "HTML wiped");
 $mech->content_lacks('<a href="http://sandbox.amusewiki.org">Sandbox</a>');
 $mech->content_lacks('<a href="http://www.amusewiki.org">WWW</a>');
 
-
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 foreach my $sitespec ({
                        create_site => 'alsdflkj laksjdflkaksd asdfasdf',
