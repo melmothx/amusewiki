@@ -30,8 +30,8 @@ is $mech->uri->scheme, 'https', "/login redirects to secure site";
 
 # login then
 
-ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
-                      button => 'submit'), "Found the form");
+ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
+   "Found the form");
 
 is $mech->uri->scheme, 'https', 'still in https';
 
