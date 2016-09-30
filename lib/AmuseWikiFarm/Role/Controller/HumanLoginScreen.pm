@@ -40,6 +40,17 @@ sub try_to_authenticate :Private {
         }
         $c->flash(error_msg => $c->loc("Wrong username or password"));
     }
+    my @carry_on;
+    foreach my $name (keys %params) {
+        next if $name =~ m/^__/;
+        if (ref($params{$name})) {
+            push @carry_on, map { +{ name => $name, value => $_ } } @{$params{$name}};
+        }
+        else {
+            push @carry_on, { name => $name, value => $params{$name} };
+        }
+    }
+    $c->stash(inherit_params => \@carry_on) if @carry_on;
     return 0;
 }
 

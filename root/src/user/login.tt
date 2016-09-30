@@ -2,6 +2,11 @@
  
 <!-- Login form -->
 <form id="login-form" method="post" action="">
+  [% IF inherit_params %]
+  [% FOREACH inherit_param IN inherit_params %]
+  <input type="hidden" name="[% inherit_param.name | html %]" value="[% inherit_param.value | html %]" />
+  [% END %]
+  [% END %]
   <div class="form-group">
     <label for="username">[% loc('Username') %]:</label>
     <input type="text" name="__auth_user" id="username"
