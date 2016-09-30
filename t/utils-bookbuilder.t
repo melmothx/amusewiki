@@ -321,8 +321,10 @@ $bb = AmuseWikiFarm::Archive::BookBuilder->new({
 is ($bb->site_id, '0blog0', "Object ok");
 is ($bb->site->id, '0blog0', "site built");
 
+my @check_added;
 foreach my $text ($bb->site->titles->published_texts) {
     ok ($bb->add_text($text->uri), "Added " . $text->uri);
+    push @check_added, $text->uri;
     ok (!$bb->error, "No error found") or diag $bb->error;
 }
 ok (!$bb->add_text('this-does-not-exists'));
@@ -331,12 +333,7 @@ ok ($bb->error, "Found error: " . $bb->error);
 ok ($bb->total_pages_estimated,
     "Found page estimated: " . $bb->total_pages_estimated);
 
-is_deeply ($bb->texts,
-           [
-            'first-test',
-            'second-test',
-            'do-this-by-yourself',
-           ], "List ok") or die Dumper($bb->texts);
+is_deeply ($bb->texts, \@check_added, "List ok");
 
 $bb->format('epub');
 check_file($bb, "epub");
