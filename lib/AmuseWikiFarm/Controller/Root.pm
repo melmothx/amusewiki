@@ -206,7 +206,8 @@ sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
             $c->detach();
         }
         else {
-            $self->check_login($c);
+            log_debug { 'checking login' };
+            return 1 if $self->check_login($c);
         }
         $c->detach();
     }
