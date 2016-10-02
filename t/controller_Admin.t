@@ -1,8 +1,9 @@
 use strict;
 use warnings;
-use Test::More tests => 101;
+use Test::More tests => 113;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
+use Data::Dumper;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
 use File::Path qw/remove_tree/;
@@ -18,6 +19,7 @@ my %hosts = (
                                      }
             );
 
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 foreach my $host (keys %hosts) {
     my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
@@ -33,9 +35,23 @@ foreach my $host (keys %hosts) {
                        button => 'submit');
     is ($mech->uri->path, '/admin/debug_site_id');
     $mech->content_is($hosts{$host}{id} . ' ' . $hosts{$host}{locale}) or
-      print $mech->content;
+      diag $mech->content;
+    my $site = $schema->resultset('Site')->find($hosts{$host}{id});
+    for (1..50) {
+        $site->jobs->enqueue(testing => { this => 1, test => 1  });
+    }
+    $mech->get_ok("/admin/jobs/show?field=status&search=pending");
+    my $content = $mech->content;
+    my $matches = () = $content =~ m/testing.*?pending/gs;
+    ok ($matches, "Found $matches matches of jobs");
+    is $matches, 10, "Found paginated result";
+    $mech->content_contains('class="pagination"');
+    my @links = grep { $_->url =~ m{/admin/jobs/} } $mech->find_all_links;
+    $mech->links_ok(\@links);
+    ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
+    diag Dumper([ map { $_->url } @links ]);
+    $site->jobs->delete;
 }
-
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
 
@@ -93,8 +109,6 @@ $mech->content_lacks($html_injection, "HTML wiped");
 $mech->content_lacks('<a href="http://sandbox.amusewiki.org">Sandbox</a>');
 $mech->content_lacks('<a href="http://www.amusewiki.org">WWW</a>');
 
-
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 foreach my $sitespec ({
                        create_site => 'alsdflkj laksjdflkaksd asdfasdf',
