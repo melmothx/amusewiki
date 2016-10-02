@@ -3,7 +3,8 @@
 <h2>[% page_title | html %]</h2>
 
 <div>
-  <form id="search_jobs" method="get" class="form-horizontal" role="form">
+  <form id="search_jobs" method="get" action="[% c.uri_for_action('/admin/jobs') %]"
+        class="form-horizontal" role="form">
     <div class="form-group">
       <div class="col-sm-2">
         <select name="field" class="form-control">
