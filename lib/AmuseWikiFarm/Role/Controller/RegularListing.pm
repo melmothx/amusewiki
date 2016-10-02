@@ -1,4 +1,8 @@
 package AmuseWikiFarm::Role::Controller::RegularListing;
+
+use strict;
+use warnings;
+
 use MooseX::MethodAttributes::Role;
 
 requires qw/pre_base/;

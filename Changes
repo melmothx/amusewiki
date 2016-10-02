@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.922 2016-10-02
+
+ - Bumped Text::Amuse::Compile to get better output on merged files
+ - Added pagination, sorting and filtering to /admin/jobs/show
+
+The interface is not stable yet, but works. Needs some real life
+testing to be consolidated.
+
 1.921 2016-09-24
 
  - Fixed headers for cache control

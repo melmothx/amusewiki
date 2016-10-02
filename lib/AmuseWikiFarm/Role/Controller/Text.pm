@@ -1,4 +1,8 @@
 package AmuseWikiFarm::Role::Controller::Text;
+
+use strict;
+use warnings;
+
 use MooseX::MethodAttributes::Role;
 requires qw/base/;
 
