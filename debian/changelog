@@ -1,3 +1,9 @@
+amusewiki (1.922-2) unstable; urgency=medium
+
+  * Bump prerequisites of Text::Amuse
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 09 Oct 2016 12:08:46 +0200
+
 amusewiki (1.922-1) unstable; urgency=medium
 
   * New minor release

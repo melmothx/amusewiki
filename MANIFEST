@@ -312,6 +312,7 @@ lib/AmuseWikiFarm/Controller/Tasks.pm
 lib/AmuseWikiFarm/Controller/Uploads.pm
 lib/AmuseWikiFarm/Controller/User.pm
 lib/AmuseWikiFarm/Controller/Utils.pm
+lib/AmuseWikiFarm/I18N/da.po
 lib/AmuseWikiFarm/I18N/de.po
 lib/AmuseWikiFarm/I18N/en.po
 lib/AmuseWikiFarm/I18N/es.po
@@ -330,6 +331,7 @@ lib/AmuseWikiFarm/I18N/sr.po
 lib/AmuseWikiFarm/I18N/sv.po
 lib/AmuseWikiFarm/Log/Contextual.pm
 lib/AmuseWikiFarm/Log/Contextual/App.pm
+lib/AmuseWikiFarm/Middleware/ConditionalGET.pm
 lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Feed.pm
@@ -853,6 +855,7 @@ t/category-desc.t
 t/cgit-proxy.t
 t/cleanups.t
 t/collation-index.t
+t/conditional-get.t
 t/conflicts.t
 t/controller-admin-users.t
 t/controller_Admin.t
@@ -903,6 +906,7 @@ t/lexicon-2.t
 t/lexicon-migration.t
 t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
+t/links-in-headings.t
 t/mail.t
 t/mkits/test/body.txt
 t/mkits/test/manifest.json
@@ -913,6 +917,7 @@ t/multilang.t
 t/not-found.t
 t/not/parsable/ciao.muse
 t/other-sites.t
+t/pagination-sizes.t
 t/private-sites.t
 t/pulling.t
 t/queue.t
