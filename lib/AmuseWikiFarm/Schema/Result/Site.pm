@@ -960,6 +960,7 @@ sub known_langs {
             sv => 'Svenska',
             pl => 'Polski',
             pt => 'Português',
+            da => 'Dansk',
            };
 }
 
