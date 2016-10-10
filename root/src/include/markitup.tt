@@ -53,6 +53,9 @@ $(document).ready(function() {
                  var muse_label = '';
                  var out = '';
                  muse_link = prompt("[% loc("Image url") | escape_js %]", "image.png");
+                 if (!muse_link) {
+                     return;
+                 }
                  muse_label = prompt("[% loc("description") | escape_js %]", "");
                  if (muse_link && muse_label) {
                      out = '[[' + muse_link + '][' + muse_label + ']]';
@@ -71,6 +74,9 @@ $(document).ready(function() {
                  var muse_label = '';
                  var out = '';
                  muse_link = prompt("[% loc("Url") | escape_js %]", "http://");
+                 if (!muse_link) {
+                     return;
+                 }
                  muse_label = prompt("[% loc("Display url as") | escape_js %]", "");
                  if (muse_link && muse_label) {
                      out = '[[' + muse_link + '][' + muse_label + ']]';
