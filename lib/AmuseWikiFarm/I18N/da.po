@@ -6,174 +6,187 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-10-04 08:56+0200\n"
-"Last-Translator: Marco <melmothx@gmail.com>\n"
+"PO-Revision-Date: 2016-10-10 21:30+0200\n"
+"Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #. ($filename)
 #: lib/AmuseWikiFarm/Schema/Result/Revision.pm:536
 msgid "%1 doesn't exist"
-msgstr ""
+msgstr "%1 findes ikke"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 #: lib/AmuseWikiFarm/Controller/Help.pm:35 root/src/help/opds.tt:2
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 på mobil"
 
 #: root/src/edit/edit.tt:190
 msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+msgstr "(smarte citater, links, fodnoter, etc.)"
 
 #: root/src/edit/edit.tt:363
 msgid "A blank line (or more blank lines) starts a new paragraph."
-msgstr ""
+msgstr "En tom linje (eller flere tomme linjer) begynder et nyt afsnit."
 
 #: root/src/bookbuilder/index.tt:488
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"Et omslagsbillede er allerede blevet tilføjet, men du kan erstatte det ved "
+"at uploade\n"
+"              et nyt."
 
 #: root/src/edit/edit.tt:453
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"En fodnote er en linje som begynder med et tal mellem kantede\n"
+"          parenteser (klammer), uden indledende mellemrum."
 
 #: root/src/edit/edit.tt:366
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "En linje som begynder med 2 eller flere mellemrum er et citat."
 
 #: root/src/edit/edit.tt:373
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
+msgstr "En linje som begynder med 20 eller flere mellemrum er højrejusteret."
 
 #: root/src/edit/edit.tt:369
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "En linje som begynder med 6 eller flere mellemrum er centreret."
 
 #: root/src/admin/edit.tt:445
+#, fuzzy
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
-msgstr ""
+msgstr "En liste bestående af links og"
 
 #. (home)
 #: mkits/commit/body.txt:1
 msgid "A new revision has been created at %1"
-msgstr ""
+msgstr "En ny revision er blevet skabt på %1"
 
 #. (location)
 #: mkits/newtext/body.txt:1
 msgid "A new text has been created at %1"
-msgstr ""
+msgstr "En ny tekst er blevet skabt på %1"
 
 #: root/src/edit/edit.tt:564
 msgid "A nice title"
-msgstr ""
+msgstr "En god titel"
 
 #: root/src/admin/edit.tt:579 root/src/text.tt:160 root/src/text.tt:161
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "A4 udskudt (imposeret) PDF"
 
 #: root/src/admin/edit.tt:2
 msgid "A4 paper"
-msgstr ""
+msgstr "A4 papir"
 
 #: root/src/admin/edit.tt:3
 msgid "A5 paper"
-msgstr ""
+msgstr "A5 papir"
 
 #: root/src/admin/edit.tt:4
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "A6 papir (også egnet til e-læsere)"
 
 #: root/src/edit/revs.tt:41
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
+"Forlod redigeringen under forløbet, vær så god at tjekke forskellen og "
+"fortsætte"
 
 #: root/src/admin/jobs.tt:18 root/src/bookbuilder/index.tt:19
 #: root/src/console/alias_display.tt:103 root/src/console/git_display.tt:13
 #: root/src/publish/pending.tt:18
 msgid "Action"
-msgstr ""
+msgstr "Handling"
 
 #: root/src/admin/edit.tt:267
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Aktiver blog-lignende udseende og stil "
 
 #: root/src/admin/edit.tt:83 root/src/admin/list.tt:14
 #: root/src/admin/show_user_details.tt:38 root/src/admin/show_users.tt:12
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: root/src/bookbuilder/index.tt:496
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Tilføj et omslagsbillede (PNG eller JPG)"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:86 root/src/layout.tt:264
 #: root/src/layout.tt:620
 msgid "Add a new text"
-msgstr ""
+msgstr "Tilføj en ny tekst"
 
 #: root/src/edit/edit.tt:134
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr ""
+msgstr "Tilføj en vedhæftet fil (PNG, JPG eller PDF)"
 
 #: root/src/bookbuilder/index.tt:733
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Tilføj skæremærker til PDF'en"
 
 #: root/src/console/git_display.tt:70
 msgid "Add new remote repository"
-msgstr ""
+msgstr "Tilføj nyt fjernt arkiv"
 
 #: root/src/edit/edit.tt:239
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
+msgstr "Tilføj hårde mellemrum hvor det er passende for sproget"
 
 #: root/src/console/git_display.tt:98
 msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
+msgstr "Tilføj eller slet og tilføj igen <user_repo_url> på denne side."
 
 #: root/src/admin/edit.tt:536
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
 msgstr ""
+"Tilføj sideinddeling til tekstlisten når antallet tekster er større end "
+"(helt tal)"
 
 #: root/src/library/bbselect.tt:4
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "Tilføj sektioner til bogbyggeren"
 
 #: root/src/help/opds.tt:93
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Tilføj OPDS URL'en"
 
 #: root/src/library/bbselect.tt:42 root/src/library/bbselect.tt:80
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "Tilføj de valgte dele til bogbyggeren"
 
 #: root/src/library/bbselect.tt:31
 msgid "Add the whole text"
-msgstr ""
+msgstr "Tilføj hele teksten"
 
 #: root/src/text.tt:255 root/src/text.tt:262
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Tilføj denne tekst til bogbyggeren"
 
 #: root/src/edit/edit.tt:600
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
 msgstr ""
+"Yderligere information (komplet dato, originaltitel, oversættere, "
+"bidragydere, etc.)."
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
@@ -183,10 +196,14 @@ msgid ""
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"Efter bekræftelse af\n"
+"  ændringen, vil den dukke op under %1. Der en stor rød\n"
+"  knap for hver slettet tekst, og du kan fortsætte med den fuldstændige "
+"fjernelse."
 
 #: root/src/console/alias_display.tt:35 root/src/console/alias_display.tt:67
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:246
 msgid "Alias can't point to itself"
@@ -197,22 +214,24 @@ msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
 msgstr ""
+"Alle slags lister begynder med et eller flere indledende\n"
+"        mellemrum."
 
 #: root/src/category-details.tt:35 root/src/library.tt:16
 msgid "All languages"
-msgstr ""
+msgstr "Alle sprog"
 
 #: lib/AmuseWikiFarm/Controller/Publish.pm:96 root/src/layout.tt:385
 msgid "All revisions"
-msgstr ""
+msgstr "Alle revisioner"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:65
 msgid "All sites"
-msgstr ""
+msgstr "Alle sider"
 
 #: root/src/admin/show_users.tt:3
 msgid "All users"
-msgstr ""
+msgstr "Alle brugere"
 
 #: root/src/edit/edit.tt:626
 msgid ""
@@ -233,85 +252,92 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"En URI er en streng som unikt identificerer teksten\n"
+"      i arkivet. I teorien kunne det være hvad som helst, men hvis du selv\n"
+"      vil indstille den, så hold dig venligst til konventionen: "
+"forfatternavn,\n"
+"      titel, sprog, eventuelt et nummer for at præcisere, f.eks.\n"
+"      errico-malatesta-anarki-2. Læg venligst mærke til at det normalt\n"
+"      ikke er nødvendigt."
 
 #: root/src/admin/edit.tt:1008
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "Apache er ikke understøttet i øjeblikket"
 
 #: root/src/layout.tt:199
 msgid "Archive"
-msgstr ""
+msgstr "Arkiver"
 
 #: lib/AmuseWikiFarm/Controller/Monthly.pm:38
 #: lib/AmuseWikiFarm/Controller/Monthly.pm:42 root/src/admin/edit.tt:491
 #: root/src/layout.tt:254 root/src/layout.tt:255
 msgid "Archive by month"
-msgstr ""
+msgstr "Arkiver efter måned"
 
 #: root/src/git/git.tt:2
 msgid "Archive history"
-msgstr ""
+msgstr "Arkivhistorie"
 
 #: root/src/layout.tt:106
 msgid "Are you sure?"
-msgstr ""
+msgstr "Er du sikker?"
 
 #: root/src/edit/edit.tt:105
 msgid "Attached PDFs"
-msgstr ""
+msgstr "Vedhæftede PDF'er"
 
 #: root/src/edit/edit.tt:62
 msgid "Attached images"
-msgstr ""
+msgstr "Vedhæftede billeder"
 
 #: mkits/commit/body.txt:27 root/src/publish/pending.tt:16
 msgid "Attachments"
-msgstr ""
+msgstr "Vedhæftede filer"
 
 #: root/src/bookbuilder/index.tt:106 root/src/console/unpublished.tt:10
 #: root/src/edit/newtext.tt:46 root/src/search/index.tt:41 root/src/text.tt:62
 msgid "Author"
-msgstr ""
+msgstr "Forfatter"
 
 #: root/src/bookbuilder/index.tt:466
 msgid "Author and title. If one side document: title."
-msgstr ""
+msgstr "Forfatter og titel. Hvis en-sides dokument: titel."
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:82
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:180
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:64 root/src/edit/preview.tt:24
 #: root/src/layout.tt:216 root/src/layout.tt:599 root/src/text.tt:64
 msgid "Authors"
-msgstr ""
+msgstr "Forfattere"
 
 #: root/src/admin/edit.tt:513
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Forfatter og emneliste"
 
 #: root/src/edit/edit.tt:575 root/src/edit/newtext.tt:55
 msgid "Authors for indexing"
-msgstr ""
+msgstr "Forfattere for indeksering"
 
 #: root/src/admin/edit.tt:999
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "Anmod om og forny automatisk SSL certifikater fra Let's Encrypt"
 
 #: root/src/edit/edit.tt:150
 msgid "Available category tags for header"
-msgstr ""
+msgstr "Tilgængelige kategori tags for sidehovedet"
 
 #: root/src/bookbuilder/index.tt:6
 msgid "Back to the text"
-msgstr ""
+msgstr "Tilbage til teksten"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:171
 #: lib/AmuseWikiFarm/Controller/Console.pm:262
 msgid "Bad request"
-msgstr ""
+msgstr "Mangelfuld forespørgsel"
 
 #: root/src/admin/edit.tt:128
 msgid "Bare HTML, needed by the application"
-msgstr ""
+msgstr "Ren HTML, behøves af programmet"
 
 #: root/src/admin/edit.tt:764
 msgid "Beamer color theme"
@@ -323,42 +349,44 @@ msgstr ""
 
 #: root/src/admin/edit.tt:646 root/src/bookbuilder/index.tt:393
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "Bindings justeringer i millimeter (ekstra indermargen)"
 
 #: root/src/bookbuilder/index.tt:663
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
+"Blokke bestående af 16 side som foldes dobbelt og bindes\n"
+"                sammen"
 
 #: root/src/admin/edit.tt:252
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: root/src/include/markitup.tt:40
 msgid "Bold"
-msgstr ""
+msgstr "Fed"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:38 root/src/layout.tt:459
 #: root/src/layout.tt:463
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Bogbygger"
 
 #: root/src/admin/edit.tt:398
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Bogbyggerens sidebegrænsning (helt tal)"
 
 #: root/src/bookbuilder/index.tt:821
 msgid "Build it"
-msgstr ""
+msgstr "Byg den"
 
 #: root/src/include/markitup.tt:43
 msgid "Bulleted List"
-msgstr ""
+msgstr "Punkttegns liste"
 
 #: root/src/admin/edit.tt:290
 msgid "CSS Theme"
-msgstr ""
+msgstr "CSS Tema"
 
 #: root/src/admin/list.tt:21
 msgid "Canonical name"
@@ -366,25 +394,25 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:65
 msgid "Categories"
-msgstr ""
+msgstr "Kategorier"
 
 #: root/src/publish/pending.tt:20
 msgid "Changes"
-msgstr ""
+msgstr "Ændringer"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:54
 msgid "Changes applied"
-msgstr ""
+msgstr "Ændringer udført"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:410
 msgid "Changes committed, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "Ændringerne blev sendt, tak! De venter nu på at blive publiceret"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 #: lib/AmuseWikiFarm/Controller/Edit.pm:450 root/src/edit/diff.tt:4
 msgid "Changes for %1"
-msgstr ""
+msgstr "Ændringer for %1"
 
 #: root/src/help/faq.tt:87
 msgid ""
@@ -392,180 +420,188 @@ msgid ""
 "doing, you can delete an existing text and point to another adding a\n"
 "#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"At ændre URL'er er dårlig stil. Men hvis du ved hvad du\n"
+"laver, kan du slette en eksisterende tekst og henvise til en anden ved at "
+"tilføje et\n"
+"#DELETED direktiv i tekst sidehovedet med en speciel syntaks:"
 
 #: root/src/edit/edit.tt:345
 msgid "Chapter"
-msgstr ""
+msgstr "Kapitel"
 
 #: root/src/bookbuilder/index.tt:467
 msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+msgstr "Kapitel og sektion. Hvis en-sides dokument: kapitel."
 
 #: root/src/include/markitup.tt:17
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Kapitel, kun for kapitelinddeling i bøger"
 
 #: root/src/edit/edit.tt:162 root/src/edit/edit.tt:312
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Hurtig manual for opmærkningen"
 
 #: root/src/admin/edit.tt:609 root/src/bookbuilder/index.tt:322
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Vælg papirformat"
 
 #: root/src/bookbuilder/index.tt:62
 msgid "Clear the book list"
-msgstr ""
+msgstr "Tøm boglisten"
 
 #: root/src/bookbuilder/fonts.tt:6
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Klik på billederne for at se prøve-PDF'en"
 
 #: root/src/console/git_display.tt:83
 msgid "Clone the repo locally and set it up"
-msgstr ""
+msgstr "Klon arkivet lokalt og sæt det op"
 
 #: root/src/text.tt:16 root/src/text.tt:8
 msgid "Close"
-msgstr ""
+msgstr "Luk"
 
 #: root/src/edit/edit.tt:304
 msgid "Commit"
-msgstr ""
+msgstr "Send"
 
 #: root/src/admin/jobs.tt:14
 msgid "Completed"
-msgstr ""
+msgstr "Færdig"
 
 #: root/src/edit/diff.tt:58
 msgid "Computing of differences took"
-msgstr ""
+msgstr "Beregning af forskelle tog"
 
 #: root/src/help/opds.tt:102
 msgid "Confirm"
-msgstr ""
+msgstr "Godkend"
 
 #: root/src/utils/import.tt:18
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "Konverter til arkivets opmærkning"
 
 #: lib/AmuseWikiFarm/Archive/BookBuilder.pm:912
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Kunne ikke tilføje teksten"
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1154
 msgid "Couldn't automatically generate the uri!"
-msgstr ""
+msgstr "Kunne ikke automatisk generere URI'en!"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:114
 msgid "Couldn't build that"
-msgstr ""
+msgstr "Kunne ikke bygge den"
 
 #: root/src/bookbuilder/index.tt:485
 msgid "Cover image (optional)"
-msgstr ""
+msgstr "Omslagsbillede (valgfrit)"
 
 #: root/src/console/alias_display.tt:54 root/src/console/alias_display.tt:86
 msgid "Create"
-msgstr ""
+msgstr "Skab"
 
 #: root/src/layout.tt:405 root/src/user/create.tt:4
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Skab en ny bibliotekar"
 
 #: root/src/layout.tt:368
 msgid "Create a new special page"
-msgstr ""
+msgstr "Skab en ny specialside"
 
 #: root/src/admin/show_users.tt:61 root/src/admin/show_users.tt:75
 msgid "Create a new user"
-msgstr ""
+msgstr "Skab en ny bruger"
 
 #: root/src/console/alias_display.tt:59
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Skab et emnepseudonym"
 
 #: root/src/console/alias_display.tt:27
 msgid "Create an author alias"
-msgstr ""
+msgstr "Skab et forfatterpseudonym"
 
 #: root/src/console/git_display.tt:81
 msgid ""
 "Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr ""
+msgstr "Skab et tomt arkiv. Her henviser vi til dets URL som <user_repo_url>."
 
 #: root/src/admin/list.tt:90
 msgid "Create new site"
-msgstr ""
+msgstr "Skab en ny side"
 
 #: root/src/user/create.tt:50
 msgid "Create user and mail password"
-msgstr ""
+msgstr "Skab bruger og send kodeord"
 
 #: root/src/admin/jobs.tt:13
 msgid "Created"
-msgstr ""
+msgstr "Skabt"
 
 #: root/src/admin/show_users.tt:9
 msgid "Created by"
-msgstr ""
+msgstr "Skabt af"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:128 root/src/publish/pending.tt:92
 msgid "Created new text"
-msgstr ""
+msgstr "Skabte ny tekst"
 
 #: root/src/bookbuilder/index.tt:117 root/src/edit/preview.tt:31
 #: root/src/publish/pending.tt:22 root/src/text.tt:77
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: root/src/edit/edit.tt:595 root/src/edit/newtext.tt:100
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Oprindelig publiceringsdato"
 
 #: root/src/layout.tt:390
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Udsatte/Slettede tekster"
 
 #: root/src/admin/jobs.tt:62 root/src/admin/show_users.tt:10
 #: root/src/admin/show_users.tt:32 root/src/bookbuilder/index.tt:45
 #: root/src/bookbuilder/index.tt:873 root/src/category-details-edit.tt:22
 #: root/src/console/alias_display.tt:126
 msgid "Delete"
-msgstr ""
+msgstr "Slet"
 
 #. (remote.name)
 #: root/src/console/git_display.tt:43
 msgid "Delete remote repository %1"
-msgstr ""
+msgstr "Slet det fjerne arkiv %1"
 
 #: root/src/publish/pending.tt:124
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"Det er sikkert at slette en revision hvis en tekst er blevet\n"
+"    publiceret. Hvis ikke mister du de ændringer som ikke er publiceret "
 
 #: root/src/edit/edit.tt:523 root/src/edit/edit.tt:524
 msgid "Description item"
-msgstr ""
+msgstr "Beskrivende element"
 
 #: root/src/edit/edit.tt:527
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
 msgstr ""
+"Beskrivende lister bruger dobbelt kolon for at separere\n"
+"        begrebet og beskrivelsen."
 
 #: root/src/edit/newtext.tt:215
 msgid "Desired URI"
-msgstr ""
+msgstr "Den ønskede URI"
 
 #: root/src/console/alias_display.tt:100
 msgid "Destination"
-msgstr ""
+msgstr "Destination"
 
 #: root/src/edit/revs.tt:18
 msgid "Differences"
-msgstr ""
+msgstr "Forskelle"
 
 #: root/src/admin/edit.tt:157
 msgid ""
@@ -576,116 +612,123 @@ msgstr ""
 
 #: root/src/include/markitup.tt:74
 msgid "Display url as"
-msgstr ""
+msgstr "Vis URL som"
 
 #: root/src/admin/edit.tt:626 root/src/bookbuilder/index.tt:373
 msgid "Division factor"
-msgstr ""
+msgstr "Divisor"
 
 #: root/src/admin/edit.tt:422
+#, fuzzy
 msgid "Do not enforce commit message"
-msgstr ""
+msgstr "Gennemtving ikke "
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:55 root/src/help/opds.tt:110
 msgid "Done"
-msgstr ""
+msgstr "Færdig"
 
 #: root/src/edit/edit.tt:557
 msgid "Double bars"
-msgstr ""
+msgstr "Dobbelte barer"
 
 #: root/src/text.tt:142
 msgid "Downloads"
-msgstr ""
+msgstr "Downloads"
 
 #: root/src/admin/edit.tt:139 root/src/bookbuilder/index.tt:165
 msgid "EPUB"
-msgstr ""
+msgstr "EPUB"
 
 #: root/src/text.tt:190 root/src/text.tt:191
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "EPUB (til mobiler)"
 
 #: root/src/console/alias_display.tt:134 root/src/console/translations.tt:33
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
 #. (esite.id)
 #: root/src/admin/edit.tt:21
 msgid "Edit site %1"
-msgstr ""
+msgstr "Rediger siden %1"
 
 #: root/src/layout.tt:417 root/src/layout.tt:434
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Rediger sidekonfigurationen"
 
 #: root/src/help/faq.tt:48
 msgid "Edit the text you want to unpublish and add this line to the header:"
 msgstr ""
+"Rediger teksten som du vil afpublicere og tilføj denne linje til sidehovedet:"
 
 #: root/src/text.tt:243 root/src/text.tt:246
 msgid "Edit this text"
-msgstr ""
+msgstr "Rediger denne tekst"
 
 #. (user.username)
 #: root/src/admin/show_user_details.tt:6 root/src/user/edit.tt:3
 msgid "Edit user %1"
-msgstr ""
+msgstr "Rediger brugeren %1"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:180 root/src/edit/edit.tt:14
 #: root/src/edit/revs.tt:3
 msgid "Editing"
-msgstr ""
+msgstr "Redigering"
 
 #: root/src/admin/show_user_details.tt:27 root/src/admin/show_users.tt:11
 #: root/src/user/create.tt:35 root/src/user/edit.tt:26
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:271
 msgid "Email sent!"
-msgstr ""
+msgstr "E-mail blev sendt!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:308
 msgid "Email updated"
-msgstr ""
+msgstr "E-mail opdateret"
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:113
 msgid "Emails do not match"
-msgstr ""
+msgstr "E-mails matcher ikke"
 
 #: root/src/publish/pending.tt:78
 msgid "Erase this revision"
-msgstr ""
+msgstr "Slet denne revision"
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1210
 msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+msgstr "Fejl ved konvertering af den uploadede fil. Er det en HTML fil?"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:274
 msgid "Error sending mail!"
-msgstr ""
+msgstr "Fejl ved sending af mail!"
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1226
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "Fejl under konverteringen af HTML. Undskyld."
 
 #: root/src/admin/jobs.tt:17
 msgid "Errors"
-msgstr ""
+msgstr "Fejl"
 
 #: root/src/help/opds.tt:6
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"Selv om denne side har et mobilvenligt layout,\n"
+"  leverer den ikke nogen app specielt for til mobiler."
 
 #: root/src/edit/newtext.tt:138
+#, fuzzy
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
 msgstr ""
+"Hver\n"
+"        sektion generer "
 
 #: root/src/bookbuilder/index.tt:598
 msgid ""
@@ -693,53 +736,57 @@ msgid ""
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"Præcis som 2up, men det er meningen at arkene skæres\n"
+"        horisontalt først og så stables på hinanden. På den måde\n"
+"        kan du printe f.eks. A6 pamfletter på A4 papir."
 
 #: root/src/edit/edit.tt:450 root/src/edit/edit.tt:456
 msgid "Example"
-msgstr ""
+msgstr "Eksempel"
 
 #: root/src/console/alias_display.tt:91
 msgid "Existing redirections"
-msgstr ""
+msgstr "Eksisterende omdirigeringer"
 
 #. ("$name $url")
 #: lib/AmuseWikiFarm/Controller/Console.pm:92
 msgid "Failed to add remote repository %1"
-msgstr ""
+msgstr "Tilføjelsen af det fjerne arkiv %1 mislykkedes"
 
 #. ($name)
 #: lib/AmuseWikiFarm/Controller/Console.pm:106
 msgid "Failed to remove Remote repository %1"
-msgstr ""
+msgstr "Sletningen af det fjerne arkiv %1 mislykkedes"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:342
 msgid "File uploaded!"
-msgstr ""
+msgstr "Fil uploadet!"
 
 #: root/src/bookbuilder/index.tt:811
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
+"Fyld med tomme sider inden den sidste side hvis trykarket ikke er fyldt."
 
 #: root/src/edit/edit.tt:189
 msgid "Filters"
-msgstr ""
+msgstr "Filtre"
 
 #: root/src/help/opds.tt:85
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Find menuen for at tilføje kataloger."
 
 #: root/src/help/opds.tt:71
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Find netværkets biblioteksmenu, eller tilsvarende."
 
 #: root/src/edit/edit.tt:568
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "Første Forfatter og Anden Forfatter"
 
 #: root/src/edit/edit.tt:573
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "Første Forfatter, Anden Forfatter"
 
 #: root/src/edit/edit.tt:635
 msgid "First slide"
@@ -747,42 +794,44 @@ msgstr ""
 
 #: root/src/help/faq.tt:73
 msgid "First you have to unpublish it via #DELETED."
-msgstr ""
+msgstr "Du er nødt til først at afpublicere den via #DELETED."
 
 #: root/src/edit/edit.tt:209
 msgid "Fix typography (smart quotes)"
-msgstr ""
+msgstr "Orden typografien (smarte citater)"
 
 #: root/src/bookbuilder/index.tt:714
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr ""
+msgstr "Ordnede 16 sides trykark på 2 ark, med dobbelt individuel foldning."
 
 #: root/src/bookbuilder/index.tt:695
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "Ordnede 16 siders trykark på et ark, med tredobbelt foldning."
 
 #: root/src/admin/edit.tt:357
 msgid "Fixed category list"
-msgstr ""
+msgstr "Ordnede kategorilisten"
 
 #: root/src/bookbuilder/index.tt:681 root/src/bookbuilder/schemas.tt:37
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
+"Ordnede 8 siders trykark, som skal skæres horisontalt, foldes individuelt og "
+"bindes sammen."
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:284
 #: root/src/bookbuilder/fonts.tt:4
 msgid "Font preview"
-msgstr ""
+msgstr "Forhåndsvisning af skrifttypen"
 
 #: root/src/admin/edit.tt:666
 msgid "Font size"
-msgstr ""
+msgstr "Skriftstørrelse"
 
 #: root/src/edit/edit.tt:323 root/src/edit/edit.tt:445
 msgid "Footnotes"
-msgstr ""
+msgstr "Fodnoter"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 #: lib/AmuseWikiFarm/Controller/Edit.pm:316
@@ -790,68 +839,71 @@ msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
 "in the body (%4), ignoring changes"
 msgstr ""
+"Fodnoterne stemmer ikke overens: fandt %1 fodnoter (%2) og fandt %3 fodnote "
+"henvisninger i brødteksten (%4), ignorerer ændringer"
 
 #: root/src/edit/newtext.tt:110
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "Ved tekster fra internettet anvend"
 
 #: root/src/admin/edit.tt:797 root/src/bookbuilder/index.tt:426
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
+"Ved tekster uden indholdsfortegnelse, begynd teksten på den allerførste side"
 
 #: root/src/console/alias_display.tt:23
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
-msgstr ""
+msgstr "Du kan skabe emne og forfatter omdirigeringer her"
 
 #: root/src/edit/edit.tt:433
 msgid "Force a line break."
-msgstr ""
+msgstr "Tving et linjeskift."
 
 #: root/src/publish/pending.tt:48
 msgid "Force publishing"
-msgstr ""
+msgstr "Tving publicering"
 
 #: root/src/edit/newtext.tt:240
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr ""
+msgstr "Format: dd-mm-åååå hh:mm, f.eks."
 
 #: root/src/admin/edit.tt:557
 msgid "Formats"
-msgstr ""
+msgstr "Formater"
 
 #: lib/AmuseWikiFarm/Role/Controller/RegularListing.pm:23
 msgid "Full list of texts"
-msgstr ""
+msgstr "Fuldstændig tekstliste"
 
 #: root/src/admin/edit.tt:912
 msgid "Full tag cloud"
-msgstr ""
+msgstr "Hele tagskyen"
 
 #: root/src/search/index.tt:106 root/src/search/index.tt:15
 msgid "Full text search"
-msgstr ""
+msgstr "Fuld tekst søgning"
 
 #: root/src/admin/edit.tt:222
 msgid "General configuration"
-msgstr ""
+msgstr "Generel konfiguration"
 
 #: root/src/admin/edit.tt:8
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Generel (passer på A4 og Letter)"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:79
 msgid "Git console"
-msgstr ""
+msgstr "Git konsol"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:56
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "Git er ikke aktiveret på denne side"
 
 #: root/src/admin/edit.tt:117
 msgid "HTML"
-msgstr ""
+msgstr "HTML"
 
 #: root/src/admin/edit.tt:838
 msgid ""
@@ -862,43 +914,45 @@ msgstr ""
 
 #: root/src/admin/edit.tt:883
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML til at indsætte i den venstre sidebar"
 
 #: root/src/admin/edit.tt:897
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML til at indsætte i den højre sidebar"
 
 #: root/src/admin/edit.tt:868
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "HTML til at indsætte i bunden af layoutet, over sidefoden"
 
 #: root/src/admin/edit.tt:854
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
 msgstr ""
+"HTML til at indsætte i toppen af layoutet, bag navigationsbaren og under "
+"banneret"
 
 #: root/src/edit/edit.tt:168 root/src/utils/import.tt:6
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "HTML/Word Importer"
 
 #: root/src/admin/edit.tt:6
 msgid "Half Letter paper"
-msgstr ""
+msgstr "Halvt Letter papir"
 
 #: root/src/include/markitup.tt:12 root/src/include/markitup.tt:17
 #: root/src/include/markitup.tt:22 root/src/include/markitup.tt:27
 #: root/src/include/markitup.tt:32
 msgid "Heading"
-msgstr ""
+msgstr "Overskrift"
 
 #: root/src/edit/edit.tt:316 root/src/edit/edit.tt:339
 msgid "Headings"
-msgstr ""
+msgstr "Overskrifter"
 
 #: root/src/bookbuilder/index.tt:352 root/src/bookbuilder/index.tt:771
 msgid "Height:"
-msgstr ""
+msgstr "Højde:"
 
 #: root/src/bookbuilder/index.tt:278
 msgid "Here you can find a preview of the Beamer themes and color themes"
@@ -910,46 +964,51 @@ msgid ""
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
+"Her kan du gemme eller indlæse dine skabeloner. Tekstlisten\n"
+"      og omslagsbilledet bliver ikke gemt med indstillingerne. Du kan\n"
+"      bruge dette til at gemme papir/skrifttype/udskydning og andre "
+"valgmuligheder."
 
 #: root/src/search/index.tt:113
 msgid "Hide options"
-msgstr ""
+msgstr "Skjul valgmuligheder"
 
 #: root/src/admin/edit.tt:627 root/src/bookbuilder/index.tt:374
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Højere divisor betyder smallere margener"
 
 #: root/src/help/faq.tt:27 root/src/help/faq.tt:8
+#, fuzzy
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "Hvordan skaber jeg en "
 
 #: root/src/help/faq.tt:15 root/src/help/faq.tt:6
 msgid "How do I create a special page?"
-msgstr ""
+msgstr "Hvordan skaber jeg en specialside?"
 
 #: root/src/help/faq.tt:44 root/src/help/faq.tt:9
 msgid "How do I delete a text?"
-msgstr ""
+msgstr "Hvordan sletter jeg en tekst?"
 
 #: root/src/help/faq.tt:20 root/src/help/faq.tt:7
 msgid "How do I modify a special page?"
-msgstr ""
+msgstr "Hvordan ændrer jeg en specialside?"
 
 #: root/src/help/faq.tt:10 root/src/help/faq.tt:65
 msgid "How do I purge a text?"
-msgstr ""
+msgstr "Hvordan sletter jeg en tekst fuldstændigt?"
 
 #: root/src/help/faq.tt:11 root/src/help/faq.tt:83
 msgid "How do I redirect to another page?"
-msgstr ""
+msgstr "Hvordan omdirigerer jeg til en anden side?"
 
 #: root/src/user/create.tt:57 root/src/user/edit.tt:45
 msgid "How to choose a password"
-msgstr ""
+msgstr "Hvordan man vælger et kodeord"
 
 #: root/src/console/git_display.tt:79
 msgid "How to work with a remote repo"
-msgstr ""
+msgstr "Hvordan man arbejder med at fjernarkiv"
 
 #: root/src/help/opds.tt:10
 msgid ""
@@ -957,22 +1016,25 @@ msgid ""
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"Men du kan browse, søge, downloade og læse teksterne\n"
+"  fra mobile læse apper som understøtter den såkaldte OPDS\n"
+"  protokol."
 
 #: root/src/user/human.tt:18
 msgid "I am human"
-msgstr ""
+msgstr "Jeg er menneske"
 
 #: root/src/bookbuilder/index.tt:534
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "Jeg vil have en udskudt (klar til at printe) PDF"
 
 #: root/src/admin/edit.tt:458
 msgid "IRC channel on freenode"
-msgstr ""
+msgstr "IRC kanal på freenode"
 
 #: root/src/admin/jobs.tt:8 root/src/admin/list.tt:13
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -989,7 +1051,7 @@ msgstr ""
 
 #: mkits/commit/body.txt:7
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
-msgstr ""
+msgstr "Hvis udføreren gav en mail, er den listed i mailens CC felt"
 
 #: root/src/edit/edit.tt:611
 msgid ""
@@ -1000,6 +1062,13 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"Hvis denne linje\n"
+"          er tilstede, så sæt publikationsdatoen (på denne side) til den\n"
+"          dato. Datoen kan også være i fremtiden, hvilket udskyder\n"
+"          publiceringen. Hvis denne linje ikke er tilstede, vil "
+"publikationsdatoen\n"
+"          være den samme som publiceringen, hvilket aktiverer et bump\n"
+"          på RSS og specielle sider ved hver redigering."
 
 #: root/src/edit/edit.tt:619
 msgid ""
@@ -1007,16 +1076,21 @@ msgid ""
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"Hvis denne linje er\n"
+"          tilstede og der er angivet en årsag, vil teksten blive\n"
+"          opbevaret i arkivet, men ikke publiceres."
 
 #: root/src/bookbuilder/index.tt:540
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "Hvis du bad om udskydning, så vælg et udskydningsskema"
 
 #: root/src/edit/newtext.tt:177
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
+"Hvis du har en fil i .doc eller .odt format, så kan du enkelt konvertere den "
+"ved at gemme den som HTML"
 
 #: root/src/edit/edit.tt:85
 msgid ""
@@ -1026,11 +1100,17 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Hvis du bruger det som et teaser billede, vil det også\n"
+"      blive placeret på PDF'ens første side. Du kan bestemme bredden\n"
+"      ved at tilføje følgende linje til headeren, hvor tallet er\n"
+"      tekstbreddens ratio. 1 er hele tekstens bredde, 0,5 er halve bredden, "
+"og så\n"
+"      videre"
 
 #. (reset_url)
 #: mkits/resetpassword/body.txt:4
 msgid "If you want to proceed, please visit the following url: %1"
-msgstr ""
+msgstr "Hvis du ønsker at fortsætte, så besøg venligst denne URL: %1"
 
 #: root/src/help/faq.tt:34
 msgid ""
@@ -1050,33 +1130,37 @@ msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"Upload af billeder kan gøres på næste trin, når du kan\n"
+"        undersøge og forhåndsvise uploaden."
 
 #: root/src/include/markitup.tt:55
 msgid "Image url"
-msgstr ""
+msgstr "Billedets URL"
 
 #: root/src/edit/edit.tt:95
 msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
+msgstr "Billeder som ikke bruges i teksten bliver gemt, men bliver ignoreret."
 
 #: root/src/edit/edit.tt:545
 msgid "Images:"
-msgstr ""
+msgstr "Billeder:"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:290
 #: root/src/bookbuilder/index.tt:529 root/src/bookbuilder/schemas.tt:3
 msgid "Imposition schemas"
-msgstr ""
+msgstr "Udskydningsskemaer"
 
 #: root/src/edit/edit.tt:472
 msgid "In both case you will get a reverse indentation."
-msgstr ""
+msgstr "I begge tilfælde får du en omvendt indrykning."
 
 #: root/src/edit/edit.tt:448
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
 msgstr ""
+"I teksten fortolkes et tal i klammer som en\n"
+"          fodnotehenvisning, hvis en sådan fodnote findes."
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
@@ -1093,53 +1177,56 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:273 root/src/layout.tt:374
 msgid "Internal list of translations"
-msgstr ""
+msgstr "Intern liste over oversættelser"
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:81
 msgid "Invalid email"
-msgstr ""
+msgstr "Ugyldig e-mail"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:117
 msgid "Invalid name"
-msgstr ""
+msgstr "Ugyldigt navn"
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:71 root/src/user/create.tt:66
 msgid "Invalid username"
-msgstr ""
+msgstr "Ugyldigt brugernavn"
 
 #: root/src/help/faq.tt:22
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
+"Det virker på samme måde som for en almindelig side, men linket er gemt. "
+"Bare\n"
+"tilføj \"/edit\" til sidens URL."
 
 #: root/src/include/markitup.tt:37
 msgid "Italic"
-msgstr ""
+msgstr "Kursiv"
 
 #: root/src/edit/edit.tt:320
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
+msgstr "Kursiv, fed, monospatieret og kode, linjeskift..."
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:164
 msgid "Job deleted"
-msgstr ""
+msgstr "Job slettet"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:167
 msgid "Job not found"
-msgstr ""
+msgstr "Fandt ikke jobbet"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:149 root/src/layout.tt:439
 msgid "Jobs"
-msgstr ""
+msgstr "Job"
 
 #: root/src/tasks/display.tt:13 root/src/tasks/display.tt:72
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Job som venter inden dit:"
 
 #: root/src/bookbuilder/schemas.tt:24
 msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr ""
+msgstr "Sammenstuver bare 2 på hinanden følgende sider på en fysisk side."
 
 #: root/src/edit/newtext.tt:247
 msgid ""
@@ -1149,10 +1236,16 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Husk venligst at jeg renser teksten og giver den\n"
+"        tilbage til dig i den opmærkning som bruges på denne side. Det er op "
+"til dig\n"
+"        at tjekke den og til sidst uploade den. Sjældent anvendt opmærkning\n"
+"        går tabt i processen. Tjek venligst forhåndsvisningen på næste\n"
+"        trin, hvor du også kan indsætte billeder."
 
 #: root/src/bookbuilder/index.tt:197
 msgid "Keep in mind that some character may be missing in the required font."
-msgstr ""
+msgstr "Husk at nogle tegn kan mangle i den påkrævede skrifttype."
 
 #: root/src/edit/newtext.tt:162
 msgid ""
@@ -1160,26 +1253,29 @@ msgid ""
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Husk at ualmindelig\n"
+"        kompleks formatering bliver fjernet. På næste trin er det\n"
+"        muligt at tilføje tabeller og billeder."
 
 #: root/src/edit/newtext.tt:119
 msgid "Language"
-msgstr ""
+msgstr "Sprog"
 
 #: root/src/edit/edit.tt:608
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Dokumentets sprogkode (2 eller 3 bogstaver)."
 
 #: root/src/layout.tt:326 root/src/layout.tt:330
 msgid "Language selection"
-msgstr ""
+msgstr "Sprogudvalg"
 
 #: root/src/admin/edit.tt:438
 msgid "Languages supported"
-msgstr ""
+msgstr "Understøttede sprog"
 
 #: root/src/edit/revs.tt:16
 msgid "Last updated"
-msgstr ""
+msgstr "Sidst opdateret"
 
 #: lib/AmuseWikiFarm/Controller/Latest.pm:51
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:115
@@ -1187,88 +1283,89 @@ msgstr ""
 #: root/src/layout.tt:246 root/src/layout.tt:247 root/src/layout.tt:611
 #: root/src/text.tt:371
 msgid "Latest entries"
-msgstr ""
+msgstr "Seneste optegnelser"
 
 #: root/src/admin/edit.tt:831
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: root/src/edit/newtext.tt:236
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "Lad det være blankt hvis du ønsker at det publiceres med det samme."
 
 #: root/src/admin/edit.tt:590 root/src/text.tt:170 root/src/text.tt:171
 msgid "Letter imposed PDF"
-msgstr ""
+msgstr "Letter udskudt PDF"
 
 #: root/src/admin/edit.tt:5
 msgid "Letter paper"
-msgstr ""
+msgstr "Letter papir"
 
 #: root/src/include/markitup.tt:67
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 #: root/src/edit/edit.tt:330 root/src/edit/edit.tt:534
 msgid "Links and images"
-msgstr ""
+msgstr "Links og billeder"
 
 #: root/src/console/unpublished.tt:3
 msgid "List of texts on hold"
-msgstr ""
+msgstr "Liste over tekster i bero"
 
 #: root/src/edit/edit.tt:329 root/src/edit/edit.tt:511
 msgid "Lists"
-msgstr ""
+msgstr "Lister"
 
 #: root/src/bookbuilder/index.tt:870
 msgid "Load"
-msgstr ""
+msgstr "Indlæs"
 
 #: root/src/bookbuilder/index.tt:1022
+#, fuzzy
 msgid "Load another session by token"
-msgstr ""
+msgstr "Indlæs en anden session "
 
 #. ($pname)
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:244
 msgid "Loaded \"%1\" configuration"
-msgstr ""
+msgstr "Indlæste \"%1\" konfiguration"
 
 #: root/src/admin/edit.tt:306 root/src/admin/list.tt:17
 msgid "Locale"
-msgstr ""
+msgstr "Lokalisering"
 
 #: root/src/user/login.tt:17
 msgid "Log in"
-msgstr ""
+msgstr "Log ind"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:57
 msgid "Login"
-msgstr ""
+msgstr "Indlogning"
 
 #: root/src/layout.tt:450
 msgid "Logout"
-msgstr ""
+msgstr "Log ud"
 
 #: root/src/help/faq.tt:17
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "Kig i kontoens menu, der er en optegnelse for det."
 
 #: root/src/user/login.tt:24
 msgid "Lost your password?"
-msgstr ""
+msgstr "Har du glemt dit kodeord?"
 
 #: root/src/admin/edit.tt:347
 msgid "Magic answer"
-msgstr ""
+msgstr "Magisk svar"
 
 #: root/src/admin/edit.tt:337
 msgid "Magic question"
-msgstr ""
+msgstr "Magisk spørgsmål"
 
 #: root/src/admin/list.tt:19
 msgid "Mail from"
-msgstr ""
+msgstr "Mail fra"
 
 #: root/src/admin/edit.tt:44 root/src/admin/list.tt:84
 msgid "Main canonical hostname, without protocol"
@@ -1276,96 +1373,96 @@ msgstr ""
 
 #: root/src/admin/edit.tt:699
 msgid "Main font"
-msgstr ""
+msgstr "Hovedsagelig skrifttype"
 
 #: root/src/edit/newtext.tt:145
 msgid "Main text"
-msgstr ""
+msgstr "Hovedsagelig tekst"
 
 #: lib/AmuseWikiFarm/Controller/Help.pm:40 root/src/help/faq.tt:2
 #: root/src/layout.tt:445
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "Vedligeholderens FAQ"
 
 #: root/src/edit/edit.tt:538
 msgid "Make a link clickable"
-msgstr ""
+msgstr "Gør det muligt at klikke på et link"
 
 #: root/src/edit/edit.tt:218
 msgid "Make all links active"
-msgstr ""
+msgstr "Gør alle link aktive"
 
 #: root/src/search/index.tt:96
 msgid "Match any of the fields above"
-msgstr ""
+msgstr "Match hvilket som helst af felterne overfor"
 
 #: root/src/publish/pending.tt:21
 msgid "Message"
-msgstr ""
+msgstr "Besked"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:421 root/src/edit/edit.tt:658
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "Manglende #title overskrift i teksten!"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:240
 msgid "Missing alias"
-msgstr ""
+msgstr "Manglende alias"
 
 #: root/src/bookbuilder/index.tt:198
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "Manglende tegn vil blive rapporteret"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:243
 msgid "Missing redirection"
-msgstr ""
+msgstr "Manglende omdirigering"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:71
 msgid "Missing username or password"
-msgstr ""
+msgstr "Manglende brugernavn eller kodeord"
 
 #: root/src/layout.tt:471 root/src/layout.tt:615
 msgid "Mobile"
-msgstr ""
+msgstr "Mobil"
 
 #: root/src/layout.tt:474
 msgid "Mobile applications"
-msgstr ""
+msgstr "Mobil apper"
 
 #: root/src/admin/list.tt:16
 msgid "Mode"
-msgstr ""
+msgstr "Indstilling"
 
 #: root/src/admin/edit.tt:248
 msgid "Moderated wiki"
-msgstr ""
+msgstr "Modereret wiki"
 
 #: root/src/admin/edit.tt:731
 msgid "Mono font"
-msgstr ""
+msgstr "Monospatieret skrifttype"
 
 #: root/src/layout.tt:285
 msgid "More"
-msgstr ""
+msgstr "Mere"
 
 #: root/src/bookbuilder/index.tt:41
 msgid "Move down"
-msgstr ""
+msgstr "Flyt ned"
 
 #: root/src/bookbuilder/index.tt:38
 msgid "Move up"
-msgstr ""
+msgstr "Flyt op"
 
 #: root/src/admin/edit.tt:324
 msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
+msgstr "Flersproget: liste med sprogkoder separeret med mellemrum"
 
 #: root/src/edit/edit.tt:80
 msgid "My description"
-msgstr ""
+msgstr "Min beskrivelse"
 
 #: root/src/admin/list.tt:18 root/src/bookbuilder/index.tt:869
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: root/src/help/opds.tt:78
 msgid "Network library listing screen."
@@ -1373,60 +1470,60 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:412
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Generer aldrig en indholdsfortegnelse"
 
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:69 root/src/publish/pending.tt:28
 msgid "New"
-msgstr ""
+msgstr "Ny"
 
 #: root/src/edit/revs.tt:71
 msgid "New revision"
-msgstr ""
+msgstr "Ny revision"
 
 #: root/src/admin/list.tt:78
 msgid "New site id"
-msgstr ""
+msgstr "Ny side ID"
 
 #: root/src/text.tt:410
 msgid "Newer texts"
-msgstr ""
+msgstr "Nyere tekster"
 
 #: root/src/text.tt:407
 msgid "Next"
-msgstr ""
+msgstr "Næste"
 
 #: root/src/edit/edit.tt:580
 msgid "Nice title"
-msgstr ""
+msgstr "God titel"
 
 #: root/src/admin/show_users.tt:41
 msgid "No"
-msgstr ""
+msgstr "Nej"
 
 #: root/src/edit/diff.tt:69 root/src/edit/revs.tt:53
 #: root/src/publish/pending.tt:94
 msgid "No editing yet!"
-msgstr ""
+msgstr "Endnu ingen redigering!"
 
 #: root/src/search/index.tt:147
 msgid "No result found!"
-msgstr ""
+msgstr "Intet resultat fundet!"
 
 #: root/src/publish/pending.tt:131
 msgid "No revisions to show"
-msgstr ""
+msgstr "Ingen revisioner at vise"
 
 #: root/src/include/posts.tt:69 root/src/library.tt:76
 msgid "No text found!"
-msgstr ""
+msgstr "Ingen tekst fundet!"
 
 #: root/src/bookbuilder/index.tt:947
 msgid "No text was added yet"
-msgstr ""
+msgstr "Ingen tekst blev tilføjet endnu"
 
 #: root/src/bookbuilder/index.tt:464
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #. ($c->loc('Commit')
 #: lib/AmuseWikiFarm/Controller/Edit.pm:129
@@ -1434,114 +1531,118 @@ msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr ""
+"Ikke færdig endnu! Tag venligst et kig på teksten og click så på \"%1\" for "
+"at afslutte din indsendelse!"
 
 #: root/src/bookbuilder/index.tt:137 root/src/edit/newtext.tt:185
 #: root/src/edit/preview.tt:52 root/src/edit/revs.tt:17
 #: root/src/search/index.tt:81 root/src/text.tt:129
 msgid "Notes"
-msgstr ""
+msgstr "Noter"
 
 #: root/src/console/unpublished.tt:59 root/src/stats/popular.tt:18
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "Intet at se her indtil videre"
 
 #: root/src/admin/edit.tt:378
 msgid "Notify mail: blank field will disable them"
-msgstr ""
+msgstr "Meddelelses mail: et tomt felt deaktiverer dem"
 
 #: root/src/admin/list.tt:20
 msgid "Notify to"
-msgstr ""
+msgstr "Meddel til"
 
 #: root/src/user/reset_password_confirm.tt:14
 msgid "Now you can proceed to login."
-msgstr ""
+msgstr "Nu kan du fortsætte til indlogning."
 
 #: root/src/admin/edit.tt:524
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+msgstr "Antal seneste tilføjelser at vise på RSS'en (helt tal)"
 
 #: root/src/admin/edit.tt:469 root/src/admin/edit.tt:479
 #: root/src/admin/edit.tt:490 root/src/admin/edit.tt:501
 #: root/src/admin/edit.tt:512
 msgid "Number of results to show on paginated pages (an integer)"
-msgstr ""
+msgstr "Antal resultater at vise på nummererede sider (et helt tal)"
 
 #: root/src/include/markitup.tt:46
 msgid "Numeric List"
-msgstr ""
+msgstr "Numerisk Liste"
 
 #: root/src/layout.tt:28
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS"
 
 #: root/src/text.tt:395
 msgid "Older texts"
-msgstr ""
+msgstr "Ældre tekster"
 
 #: root/src/admin/edit.tt:256
 msgid "Open wiki"
-msgstr ""
+msgstr "Åben wiki"
 
 #: root/src/bookbuilder/index.tt:849
 msgid "Option templates"
-msgstr ""
+msgstr "Valgmuligheds skabeloner"
 
 #: root/src/edit/revs.tt:63
+#, fuzzy
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
 "          concurrent revisions means that, unless someone takes care\n"
 "          of it, only one will be chosen. You can go ahead, or retry\n"
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
-msgstr ""
+msgstr "Eller skab en ny revision på eget ansvar. "
 
 #: root/src/user/human.tt:32
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "Eller log ind, hvis du har en konto."
 
 #: root/src/edit/newtext.tt:174
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "Eller giv en HTML fil til upload"
 
 #: root/src/edit/edit.tt:367 root/src/edit/edit.tt:370
 #: root/src/edit/edit.tt:374
 msgid "Or wrap it in"
-msgstr ""
+msgstr "Eller pak det ind"
 
 #: root/src/layout.tt:307
 msgid "Other languages"
-msgstr ""
+msgstr "Andre sprog"
 
 #: mkits/resetpassword/body.txt:6
 msgid "Otherwise, please just ignore this mail."
-msgstr ""
+msgstr "Hvis ikke, så ignorer venligst denne e-mail."
 
 #: root/src/bookbuilder/index.tt:151
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 #: root/src/admin/edit.tt:191
 msgid "PDF logo"
-msgstr ""
+msgstr "PDF logo"
 
 #: root/src/edit/edit.tt:117
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "PDF'er kan ikke bruges i brødteksten."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
 #: root/src/edit/edit.tt:115 root/src/edit/edit.tt:116
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
+"PDF'er som ikke er fortegnet i %1 direktivet bliver opbevaret men ignoreret."
 
 #: lib/AmuseWikiFarm/Controller/Root.pm:290
 msgid "Page not found!"
-msgstr ""
+msgstr "Siden findes ikke!"
 
 #: root/src/admin/edit.tt:682 root/src/bookbuilder/index.tt:440
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Side hvor et kapitel skal begynde"
 
 #: root/src/bookbuilder/index.tt:643
 msgid ""
@@ -1549,6 +1650,9 @@ msgid ""
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Siderne bliver ikke omorganiseret. Det første ark indeholder\n"
+"        side 1 og 2, det andet side 3 og 4, og så videre, side ved side.\n"
+"        Det er ikke meningen at de skal foldes."
 
 #: root/src/bookbuilder/index.tt:550
 msgid ""
@@ -1560,53 +1664,60 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Siderne bliver omorganiseret i en eller flere grupper\n"
+"        (trykark) og foldet sammen. Hvis du har flere\n"
+"        trykark, er du nødt til at binde dem sammen som en bog.\n"
+"        Med denne valgmulighed vil du måske ønske at bestemme størrelsen\n"
+"        på trykarkene. Det kan være en fastsat værdi (4, 8, 16, etc.), hele\n"
+"        bogen på et enkelt trykark, eller en optimeret størrelse som\n"
+"        reducerer antallet af tomme sider."
 
 #: root/src/bookbuilder/index.tt:790
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
+msgstr "Papirtykkelse (0.10 burde være passende for almindeligt 80g/m2 papir)"
 
 #: root/src/edit/edit.tt:317 root/src/edit/edit.tt:361
 msgid "Paragraphs"
-msgstr ""
+msgstr "Afsnit"
 
 #: root/src/edit/edit.tt:342
 msgid "Part"
-msgstr ""
+msgstr "Del"
 
 #: root/src/include/markitup.tt:12
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "Del, kun for større bøger"
 
 #: root/src/bookbuilder/index.tt:18
 msgid "Partial selection"
-msgstr ""
+msgstr "Delvist udvalg"
 
 #: root/src/user/login.tt:12 root/src/user/login.tt:14
 #: root/src/user/reset_password_confirm.tt:7
 msgid "Password"
-msgstr ""
+msgstr "Kodeord"
 
 #. (host)
 #: mkits/resetpassword/manifest.json:6
 msgid "Password reset for %1"
-msgstr ""
+msgstr "Kodeord nulstillet for %1"
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:95 root/src/user/create.tt:70
 msgid "Password too short"
-msgstr ""
+msgstr "Kodeordet er for kort"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:302
 msgid "Password updated"
-msgstr ""
+msgstr "Kodeord opdateret"
 
 #: root/src/admin/show_user_details.tt:12 root/src/user/create.tt:20
 #: root/src/user/edit.tt:11
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "Kodeord, mindst 8 tegn."
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:100
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Kodeordene stemmer ikke"
 
 #: root/src/admin/jobs.tt:11
 msgid "Payload"
@@ -1614,29 +1725,31 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Publish.pm:87 root/src/layout.tt:380
 msgid "Pending revisions"
-msgstr ""
+msgstr "Afventende revisioner"
 
 #: root/src/include/markitup.tt:49
 msgid "Picture"
-msgstr ""
+msgstr "Billede"
 
 #: root/src/edit/edit.tt:79
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Placer det i brødteksten med en beskrivelse:"
 
 #: root/src/edit/edit.tt:76
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Placer det i brødteksten uden en beskrivelse:"
 
 #: root/src/admin/edit.tt:568
 msgid "Plain PDF"
-msgstr ""
+msgstr "Enkel PDF"
 
 #: root/src/user/reset_password.tt:5
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr ""
+"Check venligst din indbakke, vi forsøgte at levere en mail til den "
+"specificerede adresse med et link til at nulstille kodeordet"
 
 #: root/src/bookbuilder/index.tt:303
 msgid "Please choose the Beamer color theme"
@@ -1648,34 +1761,36 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:257
 msgid "Please choose the font size"
-msgstr ""
+msgstr "Vælg venligst skriftstørrelsen"
 
 #: root/src/bookbuilder/index.tt:205
 msgid "Please choose the main font"
-msgstr ""
+msgstr "Vælg venligst den hovedsagelige skrifttype"
 
 #: root/src/bookbuilder/index.tt:240
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "Vælg venligst den monospatierede skrifttype"
 
 #: root/src/bookbuilder/index.tt:222
 msgid "Please choose the sans font"
-msgstr ""
+msgstr "Vælg venligst den groteske (sans-serif) skrifttype"
 
 #: root/src/edit/edit.tt:267
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Beskriv venligst kort hvad du gjorde"
 
 #: root/src/admin/show_user_details.tt:13 root/src/user/create.tt:21
 #: root/src/user/edit.tt:12
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "Anvend venligst ikke et vigtigt kodeord."
 
 #: root/src/edit/edit.tt:358
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
 msgstr ""
+"Brug venligst ikke højere niveauer (del eller kapitel) til kortere artikler "
+"med sektioner."
 
 #: root/src/edit/edit.tt:291
 msgid ""
@@ -1683,6 +1798,9 @@ msgid ""
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Giv os venligst et brugernavn. Det skal *ikke* være en mail-adresse.\n"
+"        Bare et fancy navn, så vi ved at forskellige uploads kommer\n"
+"        fra samme person."
 
 #: root/src/edit/edit.tt:198
 msgid ""
@@ -1700,10 +1818,17 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"Husk venligst at hvis du ser »Gennemtving publicering«\n"
+"    som valgmulighed, så betyder det at revisionen er blevet overflødiggjort "
+"af\n"
+"    en anden, så hvis du publicerer denne bliver resultatet at du\n"
+"    fjerner den forrige. Prøv at undgå det med mindre du ved hvad du gør."
 
 #: root/src/edit/edit.tt:277
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
+"Efterlad venligst en mail-adresse hvis du vil kontaktes vedrørende denne "
+"ændring"
 
 #: root/src/admin/edit.tt:805
 msgid ""
@@ -1712,6 +1837,12 @@ msgid ""
 "  the standalone PDF but applied for the imposed ones. If you have\n"
 "  only the standalone PDF, they are applied to it."
 msgstr ""
+"Vær venligst opmærksom på at tosides og bindingsjusterings mulighederne "
+"følger\n"
+"  denne logik: hvis du har en form for udskudt format, bliver de ignoreret "
+"på\n"
+"  standalone PDF'en, men anvendt på de udskudte. Hvis du kun\n"
+"  har standalone PDF'en, så anvendes de på den."
 
 #: root/src/edit/edit.tt:379 root/src/edit/edit.tt:476
 msgid "Please note that wrapping tags must be placed on a line by themselves."
@@ -1723,6 +1854,9 @@ msgid ""
 "          use the name the form provides. Images are always renamed by\n"
 "          us."
 msgstr ""
+"Bemærk venligst at du er nødt til at uploade dem først og\n"
+"          bruge navnet som formularen giver. Billeder bliver altid omdøbt\n"
+"          af os."
 
 #: root/src/edit/newtext.tt:147
 msgid ""
@@ -1730,6 +1864,9 @@ msgid ""
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
+"Vær venligst opmærksom på at du måske vil indsætte fra et\n"
+"        Word/OpenOffice/LibreOffice/HTML dokument med »indsæt fra\n"
+"        word« knappen. Det burde bevare opmærkningen."
 
 #: root/src/help/faq.tt:97
 msgid ""
@@ -1740,30 +1877,32 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:170 root/src/user/human.tt:5
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Bevis venligst at du er et menneske"
 
 #: root/src/tasks/display.tt:45
 msgid "Please reload your page"
-msgstr ""
+msgstr "Genindlæs venligst din side"
 
 #: root/src/console/alias_display.tt:37 root/src/console/alias_display.tt:46
 #: root/src/console/alias_display.tt:69 root/src/console/alias_display.tt:78
 msgid "Please select"
-msgstr ""
+msgstr "Vælg venligst"
 
 #: root/src/bookbuilder/index.tt:172 root/src/bookbuilder/index.tt:192
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Vælg venligst de ønskede skrifttyper"
 
 #: root/src/bookbuilder/index.tt:571 root/src/bookbuilder/index.tt:614
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Vælg venligst trykarkets størrelse:"
 
 #: root/src/bookbuilder/index.tt:740
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
 msgstr ""
+"Vælg venligst størrelsen på hver side, inklusiv skæremærker, inden "
+"udskydningen"
 
 #: root/src/bookbuilder/index.tt:274
 msgid "Please setup the Beamer layout"
@@ -1771,47 +1910,49 @@ msgstr ""
 
 #: root/src/edit/edit.tt:326
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Poesi, bibliografier, skuespil, kodeblokke"
 
 #: root/src/console/alias_display.tt:44 root/src/console/alias_display.tt:76
 msgid "Pointing to"
-msgstr ""
+msgstr "Henviser til"
 
 #: lib/AmuseWikiFarm/Controller/Stats.pm:65
 msgid "Popular texts"
-msgstr ""
+msgstr "Populære tekster"
 
 #: root/src/edit/edit.tt:531
 msgid ""
 "Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"Præfix for nummererede lister kan være »1.«, »a.«, »A.«,\n"
+"        »i.«, »I.«, afhængig af hvilken form for liste du behøver."
 
 #: root/src/edit/newtext.tt:255
 msgid "Prepare this text for the archiving"
-msgstr ""
+msgstr "Klargør denne tekst for arkivering"
 
 #: mkits/commit/body.txt:19 root/src/admin/edit.tt:815
 #: root/src/edit/edit.tt:25 root/src/edit/edit.tt:302
 #: root/src/edit/preview.tt:3
 msgid "Preview"
-msgstr ""
+msgstr "Forhåndsvisning"
 
 #: root/src/text.tt:392
 msgid "Previous"
-msgstr ""
+msgstr "Forrige"
 
 #: root/src/admin/jobs.tt:15
 msgid "Priority"
-msgstr ""
+msgstr "Prioritet"
 
 #: root/src/admin/edit.tt:244
 msgid "Private"
-msgstr ""
+msgstr "Privat"
 
 #: root/src/help/opds.tt:56
 msgid "Procedure"
-msgstr ""
+msgstr "Procedure"
 
 #: root/src/edit/newtext.tt:138
 msgid "Produce slides."
@@ -1819,32 +1960,34 @@ msgstr ""
 
 #: root/src/admin/jobs.tt:16
 msgid "Produced"
-msgstr ""
+msgstr "Produceret"
 
 #: root/src/console/unpublished.tt:14 root/src/text.tt:35 root/src/text.tt:89
 msgid "Publication date"
-msgstr ""
+msgstr "Publiceringsdato"
 
 #: root/src/edit/newtext.tt:235
 msgid "Publication date on this site."
-msgstr ""
+msgstr "Publiceringsdato på denne side."
 
 #: root/src/publish/pending.tt:46
 msgid "Publish"
-msgstr ""
+msgstr "Publicer"
 
 #: root/src/edit/edit.tt:598
 msgid "Published in *A nice book*, published by My House, 2014"
-msgstr ""
+msgstr "Publiceret i *A nice book*, publiceret af My House, 2014"
 
 #: root/src/console/unpublished.tt:15 root/src/console/unpublished.tt:47
 msgid "Purge"
-msgstr ""
+msgstr "Slet fuldstændigt"
 
 #: root/src/help/faq.tt:69
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
 msgstr ""
+"Slette fuldstændigt betyder at den fjernes fra arkivet og ikke bare bliver "
+"gemt bort."
 
 #: root/src/edit/newtext.tt:187
 msgid ""
@@ -1852,42 +1995,45 @@ msgid ""
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Put ekstra information her (original\n"
+"\t  titel, oversættere, bidragydere, etc.). Fodnoter får plads\n"
+"\t  i brødteksten."
 
 #: root/src/admin/edit.tt:7
 msgid "Quarter Letter paper"
-msgstr ""
+msgstr "Kvart Letter papir"
 
 #: root/src/search/index.tt:150
 msgid "Query was"
-msgstr ""
+msgstr "Forespørgselen blev"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:60
 msgid "Queue"
-msgstr ""
+msgstr "Kø"
 
 #: lib/AmuseWikiFarm/Archive/BookBuilder.pm:907
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Kvote overskredet, for mange sider"
 
 #: root/src/include/markitup.tt:85
 msgid "Quotes"
-msgstr ""
+msgstr "Citater"
 
 #: root/src/layout.tt:587
 msgid "RSS feed"
-msgstr ""
+msgstr "RSS-feed"
 
 #: root/src/layout.tt:479 root/src/layout.tt:482 root/src/layout.tt:583
 msgid "Random"
-msgstr ""
+msgstr "Tilfældig"
 
 #: root/src/include/posts.tt:41
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Læs hele teksten..."
 
 #: lib/AmuseWikiFarm/Controller/Help.pm:45 root/src/layout.tt:269
 msgid "Real time help"
-msgstr ""
+msgstr "Real time hjælp"
 
 #: root/src/edit/edit.tt:250
 msgid ""
@@ -1900,258 +2046,267 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"Omorganiser fodnoterne og fiks nummereringen,\n"
+"              men tag kun hensyn til den rækkefølge de blev indsat i.\n"
+"              Lad være uafkrydset hvis du ikke ved hvad det betyder.\n"
+"              Denne valgmulighed kan være ødelæggende, så brug den venligst\n"
+"              med forsigtighed og tjek resultatet. Hvis du støder på "
+"problemer,\n"
+"              så indsend venligst resultatet og rapporter dem i beskeden.\n"
+"              Proceduren forsøger at være sikker, og ignorerer\n"
+"              ændringerne hvis fodnoter mangler eller der er for mange."
 
 #: root/src/console/unpublished.tt:13 root/src/edit/edit.tt:619
 msgid "Reason"
-msgstr ""
+msgstr "Årsag"
 
 #: root/src/help/faq.tt:52
 msgid "Reason for deletion"
-msgstr ""
+msgstr "Årsag til sletning"
 
 #: root/src/edit/diff.tt:50
 msgid "Recheck"
-msgstr ""
+msgstr "Tjek igen"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:214
 #: root/src/console/alias_display.tt:3 root/src/layout.tt:400
 msgid "Redirections"
-msgstr ""
+msgstr "Omdirigeringer"
 
 #: root/src/layout.tt:303
 msgid "Related projects"
-msgstr ""
+msgstr "Beslægtede projekter"
 
 #. ("$name $url")
 #: lib/AmuseWikiFarm/Controller/Console.pm:89
 msgid "Remote repository %1 added"
-msgstr ""
+msgstr "Fjernarkivet %1 tilføjet"
 
 #. ($name)
 #: lib/AmuseWikiFarm/Controller/Console.pm:103
 msgid "Remote repository %1 removed"
-msgstr ""
+msgstr "Fjernarkivet %1 fjernet"
 
 #: root/src/layout.tt:395
 msgid "Remotes"
-msgstr ""
+msgstr "Fjerne"
 
 #: root/src/console/git_display.tt:16
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
 #: root/src/bookbuilder/index.tt:504
 msgid "Remove cover image"
-msgstr ""
+msgstr "Fjern omslagsbillede"
 
 #: root/src/bookbuilder/index.tt:871
 msgid "Rename to"
-msgstr ""
+msgstr "Omdøb til"
 
 #: root/src/user/create.tt:43 root/src/user/edit.tt:33
 msgid "Repeat email"
-msgstr ""
+msgstr "Gentag e-mail"
 
 #: root/src/admin/show_user_details.tt:20 root/src/user/create.tt:28
 #: root/src/user/edit.tt:19
 msgid "Repeat password"
-msgstr ""
+msgstr "Gentag kodeord"
 
 #: root/src/console/git_display.tt:7
 msgid "Repository"
-msgstr ""
+msgstr "Arkiv"
 
 #: root/src/bookbuilder/index.tt:65
 msgid "Reset all"
-msgstr ""
+msgstr "Nulstil alt"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:106 root/src/user/reset_password.tt:18
 msgid "Reset password"
-msgstr ""
+msgstr "Nulstil kodeord"
 
 #: root/src/admin/edit.tt:37
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Begrænsede variabler for konfiguration"
 
 #: root/src/admin/edit.tt:96
 msgid "Restricted format options"
-msgstr ""
+msgstr "Begrænsede format muligheder"
 
 #: root/src/edit/newtext.tt:111
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "Hentet DATO fra URL"
 
 #: root/src/edit/edit.tt:603
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "Hentet den 8. marts, 2012 fra"
 
 #: root/src/publish/pending.tt:15
 msgid "Revision"
-msgstr ""
+msgstr "Revisioner"
 
 #. ($uri)
 #: lib/AmuseWikiFarm/Controller/Publish.pm:168
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "Revision af %1 er blevet slettet"
 
 #: root/src/admin/show_user_details.tt:42 root/src/admin/show_users.tt:13
 msgid "Roles"
-msgstr ""
+msgstr "Roller"
 
 #: root/src/bookbuilder/index.tt:459
 msgid "Running headings"
-msgstr ""
+msgstr "Løbende sidehoveder"
 
 #: root/src/admin/edit.tt:1056
 msgid "SSL CA certificate path (Apache)"
-msgstr ""
+msgstr "SSL CA certifikat sti (Apache)"
 
 #: root/src/admin/edit.tt:1042
 msgid "SSL certificate path (Apache)"
-msgstr ""
+msgstr "SSL certifikat sti (Apache)"
 
 #: root/src/admin/edit.tt:1028
 msgid "SSL chained certificate path (Nginx)"
-msgstr ""
+msgstr "SSL lænket certifikat sti (Nginx)"
 
 #: root/src/admin/edit.tt:970
 msgid "SSL configuration"
-msgstr ""
+msgstr "SSL konfiguration"
 
 #: root/src/admin/edit.tt:1014
 msgid "SSL key path"
-msgstr ""
+msgstr "SSL nøgle sti"
 
 #: root/src/admin/edit.tt:715
 msgid "Sans font"
-msgstr ""
+msgstr "Grotesk (sans-serif) skrifttype"
 
 #: root/src/bookbuilder/index.tt:925
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "Gem de nuværende indstillinger med et navn"
 
 #. ($pname)
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:237
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "Gemte \"%1\" konfiguration"
 
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:83
 #: lib/AmuseWikiFarm/Controller/Search.pm:108 root/src/admin/edit.tt:480
 #: root/src/layout.tt:171
 msgid "Search"
-msgstr ""
+msgstr "Søg"
 
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:224
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:232
 msgid "Search results"
-msgstr ""
+msgstr "Søgeresultater"
 
 #: root/src/edit/edit.tt:348 root/src/edit/edit.tt:633
 #: root/src/edit/edit.tt:637 root/src/library/bbselect.tt:48
 msgid "Section"
-msgstr ""
+msgstr "Sektion"
 
 #: root/src/bookbuilder/index.tt:468
 msgid "Section and subsection. If one side document: section."
-msgstr ""
+msgstr "Sektion og undersektion. Hvis en-sides dokument: sektion."
 
 #: root/src/bookbuilder/index.tt:697 root/src/bookbuilder/index.tt:716
 msgid "See here for more details."
-msgstr ""
+msgstr "Se her for at få flere detaljer."
 
 #: root/src/console/git_display.tt:116
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Se her for den komplette dokumentation."
 
 #: root/src/edit/edit.tt:647
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Se den komplette manual for flere detaljer (på engelsk)"
 
 #: root/src/library/bbselect.tt:49
 msgid "Select"
-msgstr ""
+msgstr "Vælg"
 
 #: root/src/library/bbselect.tt:29
 msgid "Select all"
-msgstr ""
+msgstr "Vælg alt"
 
 #: root/src/text.tt:273 root/src/text.tt:281
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "Vælg enkelte dele til bogbyggeren"
 
 #: root/src/edit/edit.tt:558
 msgid "Separate body fields"
-msgstr ""
+msgstr "Separate brødtekst felter"
 
 #: root/src/edit/edit.tt:556
 msgid "Separate footer fields"
-msgstr ""
+msgstr "Separate sidefods felter"
 
 #: root/src/edit/edit.tt:557
 msgid "Separate header fields"
-msgstr ""
+msgstr "Separate overskrift felter"
 
 #: root/src/bookbuilder/index.tt:989
 msgid "Session sharing"
-msgstr ""
+msgstr "Sessions deling"
 
 #: root/src/edit/newtext.tt:238
 msgid "Set a date in the future if you want it deferred."
-msgstr ""
+msgstr "Sæt en dato i fremtiden hvis du vil forsinke den."
 
 #: root/src/edit/edit.tt:43 root/src/edit/revs.tt:50
 #: root/src/publish/pending.tt:89
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Vis forskelle på en anden browsertab"
 
 #: root/src/search/index.tt:114
 msgid "Show options"
-msgstr ""
+msgstr "Vis valgmuligheder"
 
 #: root/src/edit/edit.tt:27
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Forhåndsvisning på en anden browsertab"
 
 #: root/src/admin/edit.tt:275
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "Vis tekstens infoboks ved tekstens afslutning"
 
 #: root/src/edit/edit.tt:558
 msgid "Single bars"
-msgstr ""
+msgstr "Enkelte barer"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:94
 msgid "Site already exists"
-msgstr ""
+msgstr "Siden eksisterer allerede"
 
 #: root/src/admin/edit.tt:69 root/src/admin/list.tt:15
 msgid "Site group"
-msgstr ""
+msgstr "Side gruppe"
 
 #: root/src/admin/jobs.tt:9
 msgid "Site id"
-msgstr ""
+msgstr "Side ID"
 
 #: root/src/admin/edit.tt:388
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "Side mail (Fra felt)"
 
 #: root/src/admin/edit.tt:238
 msgid "Site mode"
-msgstr ""
+msgstr "Side indstilling"
 
 #: root/src/admin/edit.tt:228
 msgid "Site name"
-msgstr ""
+msgstr "Side navn"
 
 #: root/src/admin/edit.tt:368
 msgid "Site slogan"
-msgstr ""
+msgstr "Side slogan"
 
 #: root/src/admin/show_user_details.tt:54 root/src/admin/show_users.tt:14
 #: root/src/layout.tt:429
 msgid "Sites"
-msgstr ""
+msgstr "Sider"
 
 #: root/src/bookbuilder/index.tt:158
 msgid "Slides"
@@ -2164,98 +2319,101 @@ msgstr ""
 #: root/src/user/create.tt:45
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
+"Så vi kan være sikre på at vi ikke sender kodeord til tilfældige mennesker"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:219
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Nogle felter mangler, alle kræves"
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/User.pm:58
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Nogle felter er for lange"
 
 #: root/src/edit/revs.tt:9
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Nogle igangværende revisioner blev fundet"
 
 #. (username, host)
 #: mkits/resetpassword/body.txt:2
 msgid "Someone, probably you, has requested a password reset for %1 at %2."
 msgstr ""
+"Nogen, sandsynligvis dig, har anmodet om at nulstille kodeordet for %1 på %2."
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:103
 #: lib/AmuseWikiFarm/Controller/Publish.pm:137
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "Undskyld, for mange ventende opgaver, prøv venligst senere!"
 
 #: root/src/bookbuilder/index.tt:128 root/src/edit/newtext.tt:108
 #: root/src/edit/preview.tt:45 root/src/search/index.tt:71
 #: root/src/text.tt:120
 msgid "Source"
-msgstr ""
+msgstr "Kilde"
 
 #: root/src/tasks/display.tt:26 root/src/tasks/display.tt:53
 msgid "Source files"
-msgstr ""
+msgstr "Kilde filer"
 
 #: root/src/text.tt:225 root/src/text.tt:226
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Kiler filer med vedhæftede filer"
 
 #: root/src/library/bbselect.tt:62
 msgid "Source, notes..."
-msgstr ""
+msgstr "Kilde, notater..."
 
 #: root/src/tasks/display.tt:81 root/src/tasks/display.tt:96
 msgid "Sources"
-msgstr ""
+msgstr "Kilder"
 
 #: root/src/edit/edit.tt:460
 msgid "Special blocks"
-msgstr ""
+msgstr "Specielle blokke"
 
 #: lib/AmuseWikiFarm/Controller/Special.pm:26
 msgid "Special pages"
-msgstr ""
+msgstr "Specielle sider"
 
 #: root/src/admin/edit.tt:437
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
+"Specificer en liste over sprog separeret med mellemrum for at aktivere det."
 
 #: root/src/publish/pending.tt:65
 msgid "Stale editing"
-msgstr ""
+msgstr "Gammel redigering"
 
 #: root/src/text.tt:200 root/src/text.tt:201
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "Standalone HTML (printervenlig)"
 
 #: root/src/bookbuilder/index.tt:347 root/src/bookbuilder/index.tt:360
 #: root/src/bookbuilder/index.tt:766 root/src/bookbuilder/index.tt:779
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #: root/src/tasks/display.tt:109
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Statisk side uden javaskript"
 
 #: root/src/admin/jobs.tt:12 root/src/console/unpublished.tt:12
 #: root/src/tasks/display.tt:10 root/src/tasks/display.tt:45
 #: root/src/tasks/display.tt:67
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: root/src/edit/edit.tt:351
 msgid "Subsection"
-msgstr ""
+msgstr "Undersektion"
 
 #: root/src/edit/edit.tt:354
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "Under-undersektion eller beskrivende element"
 
 #: root/src/bookbuilder/index.tt:96 root/src/edit/newtext.tt:27
 #: root/src/edit/preview.tt:17 root/src/text.tt:51
 msgid "Subtitle"
-msgstr ""
+msgstr "Undertitel"
 
 #: root/src/console/alias_display.tt:18
 msgid ""
@@ -2265,63 +2423,63 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1162
 msgid "Such an uri already exists"
-msgstr ""
+msgstr "En sådan URI eksisterer allerede"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:197
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "En sådan bruger eksisterer allerede!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:239
 msgid "Such username already exists"
-msgstr ""
+msgstr "Et sådant brugernavn eksisterer allerede"
 
 #: root/src/edit/edit.tt:314
 msgid "Summary"
-msgstr ""
+msgstr "Sammenfatning"
 
 #: root/src/edit/edit.tt:334 root/src/edit/edit.tt:561
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "Understøttet direktiv i sidehovedet"
 
 #: root/src/layout.tt:185 root/src/layout.tt:189 root/src/text.tt:10
 msgid "Table of Contents"
-msgstr ""
+msgstr "Indholdsfortegnelse"
 
 #: root/src/edit/edit.tt:331 root/src/edit/edit.tt:554
 msgid "Tables"
-msgstr ""
+msgstr "Tabeller"
 
 #: root/src/admin/edit.tt:925
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Tagsky med forfattere"
 
 #: root/src/admin/edit.tt:937
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Tagsky med emner"
 
 #: root/src/admin/jobs.tt:10
 msgid "Task"
-msgstr ""
+msgstr "Opgave"
 
 #: root/src/admin/edit.tt:107
 msgid "TeX"
-msgstr ""
+msgstr "TeX"
 
 #: root/src/edit/newtext.tt:200 root/src/edit/preview.tt:59
 msgid "Teaser"
-msgstr ""
+msgstr "Teaser"
 
 #: root/src/edit/preview.tt:65
 msgid "Teaser image"
-msgstr ""
+msgstr "Teaser billede"
 
 #: root/src/edit/edit.tt:523 root/src/edit/edit.tt:524
 msgid "Term"
-msgstr ""
+msgstr "Begreb"
 
 #: lib/AmuseWikiFarm/Archive/Lexicon.pm:24
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: root/src/help/opds.tt:27
 msgid "Tested applications, in this order of preference"
@@ -2329,14 +2487,14 @@ msgstr ""
 
 #: root/src/library/bbselect.tt:58
 msgid "Text body, before any section"
-msgstr ""
+msgstr "Brødtekst, før nogen sektion"
 
 #: root/src/edit/edit.tt:382 root/src/edit/edit.tt:387
 #: root/src/edit/edit.tt:390 root/src/edit/edit.tt:395
 #: root/src/edit/edit.tt:398 root/src/edit/edit.tt:403
 #: root/src/utils/import.tt:25
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Tekst formateret med opmærkning"
 
 #: root/src/console/alias_display.tt:6
 msgid ""
@@ -2346,7 +2504,7 @@ msgstr ""
 
 #: root/src/console/translations.tt:12
 msgid "Texts"
-msgstr ""
+msgstr "Tekster"
 
 #: root/src/admin/edit.tt:812
 msgid ""
@@ -2356,7 +2514,7 @@ msgstr ""
 
 #: root/src/help/opds.tt:16
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "OPDS adressen for denne side er:"
 
 #: root/src/admin/edit.tt:199
 msgid ""
@@ -2368,11 +2526,11 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1216
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "Den uploadede fil er ikke en HTML fil!"
 
 #: root/src/admin/edit.tt:1006
 msgid "The following values are used to generate the webserver configuration."
-msgstr ""
+msgstr "De følgende værdier bruges til at generere webserverens konfiguration."
 
 #: root/src/admin/edit.tt:990
 msgid ""
@@ -2383,15 +2541,15 @@ msgstr ""
 #. (valid)
 #: mkits/resetpassword/body.txt:8
 msgid "The link is valid until %1 (one hour from now)"
-msgstr ""
+msgstr "Linket er gyldigt indtil %1 (en time fra nu)"
 
 #: root/src/admin/edit.tt:184
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "Logoet har sidenavnet på sig selv"
 
 #: root/src/edit/edit.tt:587
 msgid "The optional subtitle"
-msgstr ""
+msgstr "Den valgfrie undertitel"
 
 #: root/src/help/faq.tt:29
 msgid ""
@@ -2401,23 +2559,23 @@ msgstr ""
 
 #: root/src/user/create.tt:37
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "Kodeordet vil blive sendt til denne mailadresse"
 
 #: mkits/commit/body.txt:3
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "Revisionen har følgende beskeder"
 
 #: root/src/library/bbselect.tt:20
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "Tekststrukturen er vist herunder."
 
 #: root/src/edit/newtext.tt:202
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "Teksten som vises på hjemmesidens forhåndsvisning"
 
 #: root/src/layout.tt:528
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "Teksten blev tilføjet til bogbyggeren"
 
 #: root/src/edit/edit.tt:580 root/src/edit/edit.tt:581
 msgid ""
@@ -2429,7 +2587,7 @@ msgstr ""
 
 #: root/src/edit/edit.tt:565
 msgid "The title of the document. The only mandatory directive."
-msgstr ""
+msgstr "Dokumentets titel. Det eneste obligatoriske direktiv."
 
 #: root/src/admin/edit.tt:13
 msgid ""
@@ -2439,23 +2597,23 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:582 root/src/bookbuilder/index.tt:625
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Hele bogen på et enkelt trykark"
 
 #: root/src/help/faq.tt:62
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "Godkend så ændringen ligesom hvis det var en normal publicering."
 
 #: root/src/console/git_display.tt:113
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "Hent så opdateringerne på denne side. "
 
 #: root/src/console/translations.tt:21
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "Disse tekster mangler den unikke ID."
 
 #: root/src/edit/edit.tt:535
 msgid "They have the same syntax (images are actually links)"
-msgstr ""
+msgstr "De har samme syntaks (billeder er i virkeligheden links)"
 
 #: root/src/admin/edit.tt:1007
 msgid ""
@@ -2469,7 +2627,7 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:265
 msgid "This field is required"
-msgstr ""
+msgstr "Dette felt er påkrævet"
 
 #: root/src/edit/newtext.tt:153
 msgid ""
@@ -2477,10 +2635,15 @@ msgid ""
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"Dette er en WYSIWYG (What You See Is What You Get) editor. Hvis du "
+"foretrækker at bruge\n"
+"        den wiki-lignende syntaks, så lad den være som den er, udfyld de "
+"obligatoriske felter\n"
+"        ovenfor og vent med redigering til næste trin."
 
 #: root/src/edit/edit.tt:559
 msgid "This is the caption"
-msgstr ""
+msgstr "Dette er billedteksten"
 
 #: mkits/newtext/body.txt:3
 msgid ""
@@ -2490,22 +2653,27 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"Denne mail er blevet sendt for at gøre dig opmærksom på en ny tekst\n"
+"skabelse, selv om uploadingen ikke er færdig og brugeren\n"
+"stadig behøver at færdiggøre den. Endnu en mail burde komme snart.\n"
+"Hvis det ikke sker, betyder det at uploadingen blev opgivet\n"
+"og du burde måske tjekke det ud."
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:295
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Denne revision er allerede publiceret, ignorerer ændringerne"
 
 #: root/src/edit/revs.tt:37
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Denne revision blive aktivt redigeret"
 
 #: root/src/edit/revs.tt:35
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "Denne revision bliver aktivt redigeret af dig"
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:290
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Denne revision bliver redigeret af en anden!"
 
 #: root/src/edit/edit.tt:641
 msgid "This section will not produce a slide"
@@ -2517,53 +2685,55 @@ msgid ""
 "and\n"
 "  password to access the OPDS."
 msgstr ""
+"Denne side er privat og mobilapper burde bede om et brugernavn og\n"
+"  kodeord for at få adgang til OPDS'en."
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:185
 msgid "This text does not exist"
-msgstr ""
+msgstr "Denne tekst findes ikke"
 
 #: mkits/commit/body.txt:9 root/src/edit/diff.tt:8
 msgid "This text is new"
-msgstr ""
+msgstr "Denne tekst er ny"
 
 #: root/src/text.tt:37
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Denne tekst er ikke publiceret endnu"
 
 #. (rev.is_deferred)
 #: root/src/publish/pending.tt:55
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Denne tekst vi blive forsinket til %1"
 
 #: root/src/edit/newtext.tt:239
 msgid "Time is optional."
-msgstr ""
+msgstr "Tidspunkt er valgfrit."
 
 #: root/src/bookbuilder/index.tt:86 root/src/console/unpublished.tt:11
 #: root/src/edit/newtext.tt:13 root/src/edit/preview.tt:11
 #: root/src/search/index.tt:31 root/src/text.tt:44
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: root/src/bookbuilder/index.tt:469
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "Titel og kapitel. Hvis en-sides dokument: kapitel."
 
 #: root/src/bookbuilder/index.tt:470
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "Titel og sektion. Hvis en-sides dokument: sektion."
 
 #: root/src/bookbuilder/index.tt:465
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "Titel og undertitel. Hvis en-sides dokument: titel."
 
 #: root/src/edit/newtext.tt:37
 msgid "Title for sorting"
-msgstr ""
+msgstr "Titel for sortering"
 
 #: root/src/library/bbselect.tt:60
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Titel, forfatter, dato..."
 
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:100
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:252
@@ -2571,12 +2741,12 @@ msgstr ""
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:76 root/src/layout.tt:208
 #: root/src/layout.tt:592
 msgid "Titles"
-msgstr ""
+msgstr "Titler"
 
 #. (pending_url)
 #: mkits/commit/body.txt:23
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "For at aktivere ændringerne kan du besøge %1"
 
 #: root/src/edit/edit.tt:110
 msgid "To display the PDFs, set or append the following string in the header"
@@ -2593,11 +2763,11 @@ msgstr ""
 
 #: root/src/edit/edit.tt:470
 msgid "To quickly format plays, use"
-msgstr ""
+msgstr "For at hurtigt formatere skuespil, anvend"
 
 #: mkits/commit/body.txt:11
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "For at genoptage redigeringen kan du besøge den følgende URL"
 
 #. (loc('Update')
 #. (loc("Update"))
@@ -2609,11 +2779,11 @@ msgstr ""
 
 #: mkits/commit/body.txt:15
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "For at se de indføjede ændringer kan du besøge følgende URL"
 
 #: root/src/search/index.tt:61 root/src/text.tt:103
 msgid "Topic"
-msgstr ""
+msgstr "Emne"
 
 #: lib/AmuseWikiFarm/Controller/Category.pm:78
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:138
@@ -2622,19 +2792,19 @@ msgstr ""
 #: root/src/layout.tt:223 root/src/layout.tt:238 root/src/layout.tt:606
 #: root/src/text.tt:105
 msgid "Topics"
-msgstr ""
+msgstr "Emner"
 
 #: root/src/bookbuilder/index.tt:53
 msgid "Total pages"
-msgstr ""
+msgstr "Totalt sideantal"
 
 #: root/src/edit/edit.tt:556
 msgid "Triple bars"
-msgstr ""
+msgstr "Tredobbelte barer"
 
 #: root/src/bookbuilder/index.tt:963
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Prøv en tilfældig tekst hvis du er usikker"
 
 #: root/src/admin/edit.tt:283
 msgid ""
@@ -2644,16 +2814,16 @@ msgstr ""
 
 #: root/src/admin/edit.tt:786 root/src/bookbuilder/index.tt:433
 msgid "Two side layout"
-msgstr ""
+msgstr "Tosides layout"
 
 #: root/src/bookbuilder/index.tt:17 root/src/console/alias_display.tt:97
 #: root/src/console/unpublished.tt:9 root/src/edit/revs.tt:15
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 #: root/src/console/git_display.tt:10
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: root/src/console/git_display.tt:62
 msgid ""
@@ -2664,15 +2834,15 @@ msgstr ""
 
 #: root/src/edit/revs.tt:29 root/src/publish/pending.tt:103
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:304
 msgid "Unable to load the bookbuilder session"
-msgstr ""
+msgstr "Ikke i stand til at indlæse bogbygger sessionen"
 
 #: root/src/bookbuilder/index.tt:419
 msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
+msgstr "Ustemplet PDF (gem hjemmesidenavn, logo, etc.)"
 
 #: root/src/edit/edit.tt:228
 msgid ""
@@ -2682,42 +2852,42 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:93
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "Unik ID for teksten"
 
 #: lib/AmuseWikiFarm/Controller/Console.pm:143
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Ikke-publicerede tekster"
 
 #. ($mime)
 #: lib/AmuseWikiFarm/Schema/Result/Revision.pm:555
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Ikke understøttet filtype %1"
 
 #: root/src/admin/edit.tt:1077 root/src/admin/show_user_details.tt:70
 #: root/src/bookbuilder/index.tt:824 root/src/bookbuilder/index.tt:852
 #: root/src/category-details-edit.tt:36 root/src/user/edit.tt:39
 msgid "Update"
-msgstr ""
+msgstr "Opdater"
 
 #: root/src/layout.tt:410
 msgid "Update account info"
-msgstr ""
+msgstr "Opdater kontoinfo"
 
 #: root/src/category-details-edit.tt:7 root/src/category-details.tt:16
 msgid "Update category description"
-msgstr ""
+msgstr "Opdater kategoribeskrivelse"
 
 #: root/src/bookbuilder/index.tt:872
 msgid "Update to current settings"
-msgstr ""
+msgstr "Opdater til nuværende indstillinger"
 
 #: root/src/edit/edit.tt:140
 msgid "Upload"
-msgstr ""
+msgstr "Upload"
 
 #: root/src/include/markitup.tt:73
 msgid "Url"
-msgstr ""
+msgstr "Url"
 
 #: root/src/admin/edit.tt:429
 msgid "Use JS syntax highlight for code blocks"
@@ -2725,11 +2895,11 @@ msgstr ""
 
 #: root/src/admin/edit.tt:173
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
+msgstr "Brug LuaLaTeX i stedet for XeLaTeX (langsommere)"
 
 #: root/src/admin/edit.tt:982
 msgid "Use SSL for authenticated users"
-msgstr ""
+msgstr "Brug SSL for a verificerede brugere"
 
 #: root/src/edit/edit.tt:82
 msgid "Use it as a teaser image adding to the header this line:"
@@ -2738,50 +2908,53 @@ msgstr ""
 #. (sign)
 #: root/src/bookbuilder/index.tt:580 root/src/bookbuilder/index.tt:623
 msgid "Use optimized signatures with %1 pages each"
-msgstr ""
+msgstr "Brug optimerede trykark med %1 sider hver"
 
 #: root/src/admin/edit.tt:909
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Brugbare HTML stumper"
 
 #: root/src/edit/edit.tt:434
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
 msgstr ""
+"Praktisk til fodnoter eller i dokumentets sidehoved, hvor du ikke kan putte "
+"en tom linje for at markere et nyt afsnit."
 
 #. ($user->username)
 #: lib/AmuseWikiFarm/Controller/User.pm:250
 msgid "User %1 created!"
-msgstr ""
+msgstr "Brugeren %1 er skabt!"
 
 #. ($c->stash->{user}->username)
 #: lib/AmuseWikiFarm/Controller/Admin.pm:315
 msgid "User %1 deleted"
-msgstr ""
+msgstr "Brugeren %1 er slettet"
 
 #. ($user->username)
 #: lib/AmuseWikiFarm/Controller/Admin.pm:299
 msgid "User %1 updated"
-msgstr ""
+msgstr "Brugeren %1 er opdateret"
 
 #: mkits/newuser/manifest.json:7
 msgid "User created"
-msgstr ""
+msgstr "Bruger skabt"
 
 #: root/src/admin/show_users.tt:69 root/src/admin/show_users.tt:8
 #: root/src/user/login.tt:6 root/src/user/login.tt:8
 #: root/src/user/reset_password_confirm.tt:3
 msgid "Username"
-msgstr ""
+msgstr "Brugernavn"
 
 #: root/src/user/create.tt:13
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
+"Brugernavn, kun alfanumerisk, ingen specielle symboler, ingen store bogstaver"
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:222 root/src/layout.tt:424
 msgid "Users"
-msgstr ""
+msgstr "Brugere"
 
 #: root/src/bookbuilder/index.tt:998
 msgid ""
@@ -2793,19 +2966,19 @@ msgstr ""
 
 #: root/src/include/markitup.tt:90
 msgid "Verbatim block"
-msgstr ""
+msgstr "Ordret blok"
 
 #: root/src/admin/edit.tt:411 root/src/text.tt:234 root/src/text.tt:235
 msgid "View history"
-msgstr ""
+msgstr "Se historik"
 
 #: root/src/admin/list.tt:22
 msgid "Virtual hosts"
-msgstr ""
+msgstr "Virtuelle værter"
 
 #: root/src/admin/edit.tt:54
 msgid "Virtual hosts, one per line"
-msgstr ""
+msgstr "Virtuelle værter, en per linje"
 
 #: root/src/bookbuilder/index.tt:1005
 msgid ""
@@ -2817,15 +2990,15 @@ msgstr ""
 
 #: root/src/edit/edit.tt:604
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "Hvor kommer denne tekst fra?"
 
 #: root/src/bookbuilder/index.tt:512
 msgid "Width of the cover image in percent of the text block width."
-msgstr ""
+msgstr "Omslagsbilledets bredde i procent af tekstblokkens bredde."
 
 #: root/src/bookbuilder/index.tt:339 root/src/bookbuilder/index.tt:758
 msgid "Width:"
-msgstr ""
+msgstr "Bredde:"
 
 #: root/src/library/bbselect.tt:14
 msgid ""
@@ -2841,30 +3014,33 @@ msgid ""
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"Med bogbyggeren kan du ændre layoutet (skrifttyper,\n"
+"    størrelser, papir, margener) på teksterne i biblioteket. Du kan\n"
+"    også sammensætte flere tekster og lave din egen pamflet. Bare prøv!"
 
 #: root/src/console/git_display.tt:101
 msgid "Workflow"
-msgstr ""
+msgstr "Arbejdsgang"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:186
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Forkert svar!"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:100
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Forkert brugernavn eller kodeord"
 
 #: root/src/text.tt:209 root/src/text.tt:210
 msgid "XeLaTeX source"
-msgstr ""
+msgstr "XeLaTeX kilde"
 
 #: root/src/search/index.tt:51
 msgid "Year"
-msgstr ""
+msgstr "År"
 
 #: root/src/admin/show_users.tt:39 root/src/bookbuilder/index.tt:29
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: root/src/edit/edit.tt:66
 msgid ""
@@ -2873,6 +3049,11 @@ msgid ""
 "    appear, you have to place somewhere in the body or in the header,\n"
 "    depending on their purpose. See the examples below."
 msgstr ""
+"Du\n"
+"    har vedhæftet et eller flere billeder. Det er ikke nok! For at de skal\n"
+"    vises er du nødt til at placere dem et sted i teksten eller "
+"sidehovedet,\n"
+"    afhængigt af deres formål. Se eksemplerne nedenfor."
 
 #: root/src/help/faq.tt:56
 msgid ""
@@ -2883,11 +3064,11 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:165
 msgid "You already proved you are human"
-msgstr ""
+msgstr "Du har allerede bevist at du er et menneske"
 
 #: lib/AmuseWikiFarm/Controller/Root.pm:180
 msgid "You are already logged in"
-msgstr ""
+msgstr "Du er allerede logget ind"
 
 #: root/src/bookbuilder/index.tt:80
 msgid ""
@@ -2895,10 +3076,13 @@ msgid ""
 "other information needed for the front cover (author, subtitle, date) and "
 "the back cover (source and notes)."
 msgstr ""
+"Du bygger en samling. Giv venligst en titel og, valgfrit, anden information "
+"som kan behøves til forsiden (forfatter, undertitel, dato) og bagsiden "
+"(kilde og noter)."
 
 #: lib/AmuseWikiFarm/Controller/User.pm:93
 msgid "You are logged in now!"
-msgstr ""
+msgstr "Du er logget ind nu!"
 
 #: root/src/bookbuilder/index.tt:957
 msgid ""
@@ -2906,6 +3090,9 @@ msgid ""
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Du kan tilføje tekster til bogbyggeren ved at klikke på\n"
+"    »plus« ikonet tæt på hver teksts downloadmuligheder. Du kan tilføje og\n"
+"    fjerne teksterne senere."
 
 #. (create_url)
 #: mkits/newuser/body.txt:10
@@ -2914,35 +3101,39 @@ msgstr ""
 
 #: root/src/user/human.tt:7
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Det kan du gøre ved at svare på et simpelt spørgsmål."
 
 #: root/src/edit/revs.tt:77
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
+"Du kan ikke skabe en ny revision fordi teksten ikke er blevet publiceret "
+"endnu"
 
 #: lib/AmuseWikiFarm/Controller/User.pm:156
 msgid "You have logged out"
-msgstr ""
+msgstr "Du har logget ud"
 
 #: root/src/edit/revs.tt:10
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "Du vil måske fortsætte redigeringen af en af dem"
 
 #. (edit_url)
 #: mkits/newuser/body.txt:8
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Du bør skifte dit kodeord med det samme på %1"
 
 #: root/src/edit/edit.tt:50
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
 "Commit"
 msgstr ""
+"Dine ændringer er  gemt og kan tjekkes hver gang du trykker på "
+"Forhåndsvisning eller Send"
 
 #: root/src/include/markitup.tt:19
 msgid "Your chapter here..."
-msgstr ""
+msgstr "Dit kapitel her..."
 
 #: root/src/bookbuilder/index.tt:994
 msgid "Your current bookbuilder token is:"
@@ -2950,50 +3141,50 @@ msgstr ""
 
 #: root/src/user/reset_password.tt:13
 msgid "Your email"
-msgstr ""
+msgstr "Din e-mail"
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:53
 msgid "Your file is ready"
-msgstr ""
+msgstr "Din fil er klar"
 
 #: root/src/include/markitup.tt:14
 msgid "Your part here..."
-msgstr ""
+msgstr "Din del her..."
 
 #. (password)
 #: mkits/newuser/body.txt:6
 msgid "Your password is %1."
-msgstr ""
+msgstr "Dit kodeord er %1"
 
 #: root/src/include/markitup.tt:25
 msgid "Your section here..."
-msgstr ""
+msgstr "Din sektion her..."
 
 #: root/src/include/markitup.tt:35
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "Din under-undersektion (eller beskrivende overskrift) her..."
 
 #: root/src/include/markitup.tt:30
 msgid "Your subsection here..."
-msgstr ""
+msgstr "Din undersektion her..."
 
 #. (home)
 #: mkits/newuser/body.txt:2
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Din bruger på %1 er blevet skabt."
 
 #. (username)
 #: mkits/newuser/body.txt:4
 msgid "Your username is %1."
-msgstr ""
+msgstr "Dit brugernavn er %1"
 
 #: root/src/admin/edit.tt:150
 msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr ""
+msgstr "ZIP arkiv med kilder, behøves af bogbyggeren"
 
 #: root/src/layout.tt:281
 msgid "about, links..."
-msgstr ""
+msgstr "om, links"
 
 #: root/src/admin/edit.tt:84
 msgid "affects only the frontend webserver configuration"
@@ -3001,69 +3192,69 @@ msgstr ""
 
 #: root/src/admin/edit.tt:683
 msgid "any"
-msgstr ""
+msgstr "enhver"
 
 #: root/src/edit/newtext.tt:216
 msgid "automatically generated if not present, using author and title"
-msgstr ""
+msgstr "automatisk genereret hvis ikke tilstede, anvender forfatter og titel"
 
 #: root/src/edit/edit.tt:427 root/src/edit/edit.tt:428
 #: root/src/edit/edit.tt:430
 msgid "code and monospace"
-msgstr ""
+msgstr "kode og monospatieret"
 
 #: root/src/edit/edit.tt:576 root/src/edit/edit.tt:591
 #: root/src/edit/newtext.tt:56 root/src/edit/newtext.tt:81
 msgid "comma or semicolon separated list"
-msgstr ""
+msgstr "liste separeret af komma eller semikolon"
 
 #: root/src/tasks/display.tt:4
 msgid "completed"
-msgstr ""
+msgstr "færdig"
 
 #: root/src/publish/pending.tt:6
 msgid "conflict"
-msgstr ""
+msgstr "konflikt"
 
 #: root/src/include/markitup.tt:56
 msgid "description"
-msgstr ""
+msgstr "beskrivelse"
 
 #: root/src/edit/edit.tt:539 root/src/edit/edit.tt:546
 msgid "displayed text"
-msgstr ""
+msgstr "fremvist tekst"
 
 #: root/src/console/git_display.tt:108
 msgid "edit, commit..."
-msgstr ""
+msgstr "rediger, indsend..."
 
 #: root/src/publish/pending.tt:3
 msgid "editing"
-msgstr ""
+msgstr "redigerer"
 
 #: root/src/edit/edit.tt:409 root/src/edit/edit.tt:411
 msgid "emphasis"
-msgstr ""
+msgstr "fremhævelse"
 
 #: root/src/tasks/display.tt:5
 msgid "failed"
-msgstr ""
+msgstr "slog fejl"
 
 #: root/src/edit/edit.tt:465
 msgid "for code, monospaced"
-msgstr ""
+msgstr "til kode, monospatieret"
 
 #: root/src/edit/newtext.tt:47
 msgid "for display"
-msgstr ""
+msgstr "til skærm"
 
 #: root/src/edit/edit.tt:463
 msgid "for poetry"
-msgstr ""
+msgstr "til poesi"
 
 #: root/src/include/markitup.tt:22
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "generel sektionering, passer til artikler"
 
 #: root/src/edit/newtext.tt:16
 msgid ""
@@ -3071,34 +3262,39 @@ msgid ""
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
+"hvis der tilfældigvis eksisterer en anden tekst med samme forfatter og "
+"titel, så vælg den ønskede URI i feltet nedenfor ved at indsætte forfatter, "
+"titel og et nummer,f.eks. min-forfatter-min-titel-1"
 
 #: root/src/console/git_display.tt:86
 msgid "if the repository is exported"
-msgstr ""
+msgstr "hvis arkivet er eksporteret"
 
 #: root/src/bookbuilder/index.tt:323 root/src/bookbuilder/index.tt:741
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
+"hvis du vil anvende en tilpasset størrelse er du nødt til at fastsætte både "
+"bredde og højde"
 
 #: root/src/admin/edit.tt:683
 msgid "left"
-msgstr ""
+msgstr "venstre"
 
 #: root/src/bookbuilder/index.tt:86 root/src/edit/newtext.tt:14
 msgid "mandatory"
-msgstr ""
+msgstr "obligatorisk"
 
 #: root/src/help/faq.tt:93
 msgid "new-example-uri"
-msgstr ""
+msgstr "ny-eksempel-uri"
 
 #: root/src/bookbuilder/index.tt:177
 msgid "no font embedding"
-msgstr ""
+msgstr "ingen skrifttype indlejring"
 
 #: root/src/edit/edit.tt:520 root/src/edit/edit.tt:521
 msgid "numbered item"
-msgstr ""
+msgstr "nummereret element"
 
 #: root/src/edit/edit.tt:577
 msgid "optional, defaults to the author directive"
@@ -3111,7 +3307,7 @@ msgstr ""
 #: root/src/edit/edit.tt:465 root/src/edit/edit.tt:541
 #: root/src/edit/edit.tt:546
 msgid "or"
-msgstr ""
+msgstr "eller"
 
 #: root/src/console/git_display.tt:88
 msgid ""
@@ -3121,125 +3317,127 @@ msgstr ""
 
 #: root/src/edit/edit.tt:438 root/src/edit/edit.tt:441
 msgid "overstriked"
-msgstr ""
+msgstr "overskrevet"
 
 #: root/src/publish/pending.tt:4 root/src/tasks/display.tt:2
 msgid "pending"
-msgstr ""
+msgstr "afventende"
 
 #: root/src/text.tt:150 root/src/text.tt:151
 msgid "plain PDF"
-msgstr ""
+msgstr "enkel PDF"
 
 #: root/src/text.tt:217 root/src/text.tt:218
 msgid "plain text source"
-msgstr ""
+msgstr "enkel tekst kilde"
 
 #: root/src/publish/pending.tt:5
 msgid "processing"
-msgstr ""
+msgstr "behandler"
 
 #: root/src/publish/pending.tt:7
 msgid "published"
-msgstr ""
+msgstr "publiceret"
 
 #: root/src/search/index.tt:134
 msgid "relevant"
-msgstr ""
+msgstr "relevant"
 
 #: root/src/edit/diff.tt:5
 msgid "revision"
-msgstr ""
+msgstr "revision"
 
 #: root/src/admin/edit.tt:683
 msgid "right"
-msgstr ""
+msgstr "højre"
 
 #. (args)
 #: lib/CatalystX/AmuseWiki/I18N.pm:49 lib/CatalystX/AmuseWiki/I18N.pm:55
 msgid "string"
-msgstr ""
+msgstr "streng"
 
 #: root/src/edit/edit.tt:415 root/src/edit/edit.tt:417
 msgid "strong emphasis"
-msgstr ""
+msgstr "stærk fremhævelse"
 
 #: root/src/include/markitup.tt:32
 msgid "sub-sub-section"
-msgstr ""
+msgstr "under-undersektion"
 
 #: root/src/edit/edit.tt:436 root/src/edit/edit.tt:439
 msgid "subscript"
-msgstr ""
+msgstr "sænket skrift"
 
 #: root/src/include/markitup.tt:27
 msgid "subsection"
-msgstr ""
+msgstr "undersektion"
 
 #: root/src/edit/edit.tt:437 root/src/edit/edit.tt:440
 msgid "superscript"
-msgstr ""
+msgstr "hævet skrift"
 
 #: root/src/tasks/display.tt:3
 msgid "taken"
-msgstr ""
+msgstr "taget"
 
 #: root/src/layout.tt:195
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "tekster sorteret efter forfattere, titel, emne..."
 
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:181
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:225
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:65 root/src/layout.tt:215
 #: root/src/layout.tt:599
 msgid "texts sorted by author"
-msgstr ""
+msgstr "tekster sorteret efter forfatter"
 
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:253
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:54 root/src/layout.tt:207
 #: root/src/layout.tt:592
 msgid "texts sorted by title"
-msgstr ""
+msgstr "tekster sorteret efter titel"
 
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:139
 #: lib/AmuseWikiFarm/Controller/OPDS.pm:60 root/src/layout.tt:237
 #: root/src/layout.tt:606
 msgid "texts sorted by topics"
-msgstr ""
+msgstr "tekster sorteret efter emner"
 
 #: root/src/edit/edit.tt:569
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "tekstens forfatter (som vist)"
 
 #: root/src/publish/pending.tt:53
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "denne tekst vil blive afpubliceret"
 
 #: root/src/edit/edit.tt:590
 msgid "topic"
-msgstr ""
+msgstr "emne"
 
 #: root/src/edit/edit.tt:517 root/src/edit/edit.tt:518
 msgid "unnumbered item"
-msgstr ""
+msgstr "unummereret element"
 
 #: root/src/edit/edit.tt:421 root/src/edit/edit.tt:422
 #: root/src/edit/edit.tt:424
 msgid "very strong emphasis"
-msgstr ""
+msgstr "meget stærk fremhævelse"
 
 #: root/src/edit/edit.tt:540
 msgid "with description"
-msgstr ""
+msgstr "med beskrivelse"
 
 #: root/src/edit/edit.tt:542
 msgid "without description"
-msgstr ""
+msgstr "uden beskrivelse"
 
 #: root/src/edit/newtext.tt:38
 msgid ""
 "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
+"du ønsker måske at fjerne det indledende »En«, »Et«, »Den«, og så videre fra "
+"titlen"
 
 #: root/src/publish/pending.tt:119
 msgid ""
@@ -3247,3 +3445,7 @@ msgid ""
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"»Gammel redigering« betyder at revisionen blev opgivet\n"
+"    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
+"til\n"
+"    at samle den op under redigeringen af en tekst."
