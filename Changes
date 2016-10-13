@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.923 2016-10-13
+
+ - Added danish i18n
+ - Bumped Text::Amuse to avoid failing LaTeX runs when hyperlinks are
+   placed in headings
+
 1.922 2016-10-02
 
  - Bumped Text::Amuse::Compile to get better output on merged files
