@@ -129,9 +129,8 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $mech->get_ok('/human');
 $mech->submit_form(
                    with_fields => {
-                                   answer => 'January',
+                                   __auth_human => 'January',
                                   },
-                   button => 'submit',
                   );
 $mech->get_ok('/random');
 $mech->submit_form(form_id => 'book-builder-add-text');

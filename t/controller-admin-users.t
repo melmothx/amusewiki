@@ -26,21 +26,19 @@ if (my $user = $schema->resultset('User')->find({ username => $new_username })) 
     $user->delete;
 }
 
-
+$mech->get_ok('/');
 # TODO: provide a login path for root users
 foreach my $path ('/admin/users',
                   '/admin/users/1',
                   '/admin/users/1/delete',
                   '/admin/users/1/edit') {
     $mech->get($path);
-    is ($mech->uri->path, '/login');
+    is ($mech->status, 403);
 }
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'root',
-                               password => 'root',
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => 'root',
+                                    __auth_pass => 'root',
+                                  });
 $mech->get_ok('/admin/users');
 
 foreach my $bad_username ('root', '1', 'abc' x 250,
@@ -133,16 +131,14 @@ foreach my $path ('/admin/users',
                   '/admin/users/1/delete',
                   '/admin/users/1/edit') {
     $mech->get($path);
-    is ($mech->uri->path, '/login');
+    is ($mech->status, 403);
 }
 
 # after login with the new user, we should be denied
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => $new_username,
-                               password => $new_password,
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => $new_username,
+                                    __auth_pass => $new_password,
+                                  });
 $mech->content_lacks('login-form');
 isnt $mech->uri->path, '/login', "Login appears ok";
 
@@ -158,13 +154,11 @@ foreach my $path ('/admin/users',
 # login again.
 
 $mech->get_ok('/logout');
-$mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'root',
-                               password => 'root',
-                             },
-                   button => 'submit');
-$mech->get_ok('/admin/users');
+$mech->get('/admin/users');
+is $mech->status, 403;
+$mech->submit_form(with_fields => { __auth_user => 'root',
+                                    __auth_pass => 'root',
+                                  });
 $mech->submit_form(form_id => 'delete-user-form-' . $userobj->id,
                    button => 'delete');
 $mech->content_contains('id="status_message">');
@@ -173,10 +167,8 @@ ok (!$schema->resultset('User')->find({ username => $new_username }),
 
 $mech->get_ok('/logout');
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => $new_username,
-                               password => $new_password,
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => $new_username,
+                                    __auth_pass => $new_password,
+                                  });
 $mech->content_contains('login-form');
 is $mech->uri->path, '/login', "Still at login";

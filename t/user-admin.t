@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 31;
+use Test::More tests => 28;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -21,8 +21,9 @@ use Test::WWW::Mechanize::Catalyst;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
-$mech->get_ok('/user/site');
-is ($mech->uri->path, '/login', "Bounced to login");
+$mech->get_ok('/'); # warm up
+$mech->get('/user/site');
+is ($mech->status, 403, "Bounced to login");
 $schema->resultset('User')->search({ username => 'myadmin' })->delete;
 my $user = $schema->resultset('User')->create({ username => 'myadmin', password => 'maypass',
                                                 user_roles => [ { role => { role => 'librarian' } } ] });
@@ -86,28 +87,19 @@ my $other = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $other->get_ok('/library');
 $other->get('/user/site');
-is ($other->status, '302');
-like $other->response->headers->header('Location'), qr{/login};
-$other->get_ok('/login');
-$other->submit_form(form_id => 'login-form',
-                    fields => { username => 'myadmin',
-                                password => 'maypass',
-                              },
-                    button => 'submit');
-is $other->uri->path, '/login';
-$other->get('/user/site');
-is $other->status, '302';
-like $other->response->headers->header('Location'), qr{/login};
-# admin can't login on other sites
+is $other->status, 403;
+$other->submit_form(with_fields => { __auth_user => 'myadmin',
+                                     __auth_pass => 'maypass',
+                                   });
+is $other->uri->path, '/user/site';
+is $other->status, 403, "admin can't login on other sites";
 
 
 sub logout_and_login {
     $mech->get_ok('/logout');
     $mech->get_ok('/login');
-    $mech->submit_form(form_id => 'login-form',
-                       fields => { username => 'myadmin',
-                                   password => 'maypass',
-                                 },
-                       button => 'submit');
+    $mech->submit_form(with_fields => { __auth_user => 'myadmin',
+                                        __auth_pass => 'maypass',
+                                 });
 }
 

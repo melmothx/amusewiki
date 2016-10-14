@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use utf8;
 use Moose;
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -35,28 +36,10 @@ The main route to create a new text from scratch
 
 =cut
 
-sub root :Chained('/site') :PathPart('action') :CaptureArgs(1) {
+sub root :Chained('/site_human_required') :PathPart('action') :CaptureArgs(1) {
     my ($self, $c, $f_class) = @_;
 
     my $site = $c->stash->{site};
-    # librarians can always edit
-    if (!$c->user_exists) {
-        if ($site->human_can_edit) {
-            # but prove it
-            unless ($c->sessionid && $c->session->{i_am_human}) {
-                $c->response->redirect($c->uri_for('/human',
-                                                   { goto => $c->req->path }));
-                $c->detach();
-                return;
-            }
-        }
-        else {
-            $c->response->redirect($c->uri_for('/login',
-                                               { goto => $c->req->path }));
-            $c->detach();
-            return;
-        }
-    }
 
     # validate
     if ($f_class eq 'text' or $f_class eq 'special') {
@@ -68,12 +51,8 @@ sub root :Chained('/site') :PathPart('action') :CaptureArgs(1) {
     }
 
     # but only users can edit special pages
-    if ($f_class eq 'special') {
-        unless ($c->user_exists) {
-            $c->response->redirect($c->uri_for('/login',
-                                              { goto => $c->req->path }));
-            $c->detach();
-        }
+    if ($f_class eq 'special' or !$site->human_can_edit) {
+        die "Unreachable" unless $self->check_login($c);
     }
     $c->stash(full_page_no_side_columns => 1);
 }
@@ -89,11 +68,12 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     my $site    = $c->stash->{site};
     my $f_class = $c->stash->{f_class} or die;
     # if there was a posting, process it
-
+    Dlog_debug { "In the newtext route $_" } $c->request->body_params;
     if ($c->request->params->{go}) {
 
         # create a working copy of the params
         my $params = { %{$c->request->body_params} };
+        Dlog_debug { "Params are $_" } $params;
         my ($upload) = $c->request->upload('texthtmlfile');
         if ($upload) {
             log_debug { $upload->tempname . ' => '. $upload->size  };
@@ -154,6 +134,9 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
             $c->flash(error_msg => $c->loc($error));
         }
     }
+    else {
+        log_debug { "Nothing to do, rendering form" };
+    }
 }
 
 sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
@@ -166,13 +149,7 @@ sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
                                                });
 
     # but only users can edit special pages
-    if ($f_class eq 'special') {
-        unless ($c->user_exists) {
-            $c->response->redirect($c->uri_for('/login',
-                                               { goto => $c->req->path }));
-            $c->detach();
-        }
-    }
+    $self->check_login($c) if $f_class eq 'special';
 
     if ($text) {
         $c->stash(

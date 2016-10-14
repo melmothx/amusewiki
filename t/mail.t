@@ -64,11 +64,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'mailer',
-                               password => 'pallino',
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => 'mailer', __auth_pass => 'pallino' });
 $mech->get_ok('/user/create');
 
 $schema->resultset('User')->search({ username => 'newmailer' })->delete;
@@ -85,11 +81,7 @@ $mech->submit_form(with_fields => {
 $mech->get_ok('/logout');
 $user->update({ email => '' });
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'mailer',
-                               password => 'pallino',
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => 'mailer', __auth_pass => 'pallino' });
 $mech->get_ok('/user/create');
 $schema->resultset('User')->search({ username => 'newmailer' })->delete;
 $mech->submit_form(with_fields => {

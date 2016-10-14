@@ -28,13 +28,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'root',
-                               password => 'root',
-                             },
-                   button => 'submit');
-
-
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->get('/action/text/new');
 $mech->content_contains("localization/messages_hr.js");
 diag "Changing language user interface";

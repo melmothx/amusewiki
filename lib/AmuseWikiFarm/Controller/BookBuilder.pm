@@ -29,26 +29,11 @@ Deny access to not-human
 
 =cut
 
-sub root :Chained('/site') :PathPart('bookbuilder') :CaptureArgs(0) {
+sub root :Chained('/site_human_required') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
 
-    # check if human
-    if ($c->sessionid && $c->session->{i_am_human}) {
-        $c->stash(nav => 'bookbuilder');
-        $c->stash(page_title => $c->loc('Bookbuilder'));
-    }
-    else {
-        my $path = $c->req->path;
-        my $params = $c->req->params;
-        my $uri = URI->new($path);
-        $uri->query_form($params);
-        my $goto = $uri->as_string;
-        my $redirect = $c->uri_for('/human', { goto => $goto });
-        Dlog_debug { "path is $path, params are $_, final is $goto, redirect to $redirect)" } $params;
-        $c->response->redirect($redirect);
-        $c->detach();
-        return;
-    }
+    $c->stash(nav => 'bookbuilder',
+              page_title => $c->loc('Bookbuilder'));
 
     # initialize the BookBuilder object. It will pick up the session
     my $bb = $c->model('BookBuilder');

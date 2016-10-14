@@ -1,5 +1,7 @@
 package AmuseWikiFarm::Controller::User;
 use Moose;
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
+
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -51,53 +53,13 @@ use AmuseWikiFarm::Log::Contextual;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
 sub login :Chained('/secure_no_user') :PathPart('login') :Args(0) {
-    my ( $self, $c ) = @_;
-    $c->stash(
-              nav => 'login',
-              page_title => $c->loc('Login'),
-             );
-    my $username = $c->request->body_params->{username};
-    my $password = $c->request->body_params->{password};
-
-    # check if the is the submit action
-    return unless $c->request->body_params->{submit};
-
-    # before flashing, set the session id
-    my $site = $c->stash->{site};
-    log_debug { "setting site id " . $site->id . " in the session" };
-    $c->session(site_id => $site->id);
-
-    unless ($username && $password) {
-        $c->flash(error_msg => $c->loc("Missing username or password"));
-        return;
+    my ($self, $c) = @_;
+    if ($self->check_login($c)) {
+        $c->response->redirect($c->uri_for('/'));
     }
-    # force stringification
-    $username .= '';
-    $password .= '';
-
-    # get the details from the db before authenticate it.
-    # here we have another layer befor hitting the authenticate
-
-    if (my $user = $c->model('DB::User')->find({ username => $username  })) {
-        log_debug { "User $username found" };
-        # authenticate only if the user is a superuser
-        # or if the site id matches the current site id
-        if (($user->sites->find($site->id) or
-             $user->roles->find({ role => 'root' })) and $user->active) {
-
-            if ($c->authenticate({ username => $username,
-                                   password => $password })) {
-                log_debug { "User $username successfully authenticated" };
-                $c->change_session_id;
-                $c->session(i_am_human => 1);
-                $c->flash(status_msg => $c->loc("You are logged in now!"));
-                $c->detach('redirect_after_login');
-                return;
-            }
-        }
-        log_info { "User $username not authorized" };
+    else {
+        die "Unreachable";
     }
-    $c->flash(error_msg => $c->loc("Wrong username or password"));
 }
 
 sub reset_password :Chained('/secure_no_user') :PathPart('reset-password') :Args(0) {
@@ -155,45 +117,19 @@ sub logout :Chained('/site') :PathPart('logout') :Args(0) {
         $c->logout;
         $c->flash(status_msg => $c->loc('You have logged out'));
     }
-    $c->response->redirect($c->uri_for('/login'));
+    $c->response->redirect($c->uri_for('/'));
 }
 
 sub human :Chained('/site') :PathPart('human') :Args(0) {
     my ($self, $c) = @_;
-    if ($c->sessionid && $c->session->{i_am_human}) {
-        # wtf...
-        $c->flash(status_msg => $c->loc('You already proved you are human'));
+    if ($self->check_human($c)) {
         $c->response->redirect($c->uri_for('/'));
-        return;
-    }
-
-    $c->stash(page_title => $c->loc('Please prove you are a human'));
-    # if no magic answer is provided, do nothing
-    if (!$c->stash->{site}->magic_answer) {
-        log_error { $c->request->uri . " is without a magic answer!" };
-        return;
-    }
-
-    if ($c->request->body_params->{answer}) {
-        # set the site_id before flashing again
-        $c->session(site_id => $c->stash->{site}->id);
-        if ($c->request->params->{answer} eq $c->stash->{site}->magic_answer) {
-            # ok, you're a human
-            $c->session(i_am_human => 1);
-            $c->detach('redirect_after_login');
-        }
-        else {
-            $c->flash(error_msg => $c->loc('Wrong answer!'));
-        }
     }
 }
 
 sub user :Chained('/site_user_required') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    unless ($c->user_exists) {
-        log_error { $c->request->uri . " accessed without user, shouldn't happen!" };
-        $c->detach('/not_permitted');
-    }
+    $self->check_login($c);
 }
 
 sub create :Chained('user') :Args(0) {
@@ -340,24 +276,6 @@ sub site_config :Chained('user') :PathPart('site') {
               load_highlight => $site->use_js_highlight(1),
               esite => $esite,
               restricted => 1);
-}
-
-sub redirect_after_login :Private {
-    my ($self, $c) = @_;
-    my $path = $c->request->params->{goto} || '/';
-    if ($path !~ m!^/!) {
-        $path = "/$path";
-    }
-    my $uri = URI->new($path);
-    my $redirect = $c->uri_for($uri->path, $uri->query_form_hash);
-    if (my $fragment = $c->request->params->{fragment}) {
-        if ($fragment =~ m/\A(#[0-9A-Za-z-]+)\z/) {
-            $redirect .= $1;
-        }
-    }
-    Dlog_debug { "Redirecting $path to " . $uri->path . " " . $_
-                   . " => " . $redirect } $uri->query_form_hash;
-    $c->response->redirect($redirect);
 }
 
 

@@ -86,12 +86,7 @@ $mech->content_contains(q{<title> &quot;'hello'&quot; | </title>});
 
 # login as root and try the debug_loc
 $mech->get_ok('/login');
-
-$mech->submit_form(with_fields => { username => 'root',
-                                    password => 'root',
-                                  },
-                   button => 'submit',
-                  );
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->get_ok('/?__language=hr');
 $mech->get_ok('/admin/debug_loc');
 my $expected = <<'TXT';

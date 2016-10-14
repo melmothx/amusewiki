@@ -35,11 +35,12 @@ my $mechtwo = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm
 
 my $created;
 foreach my $mech ($mechone, $mechtwo) {
-    $mech->get_ok('/human');
-    ok($mech->form_with_fields('answer'));
-    $mech->field(answer => 'Hu?');
+    $mech->get_ok('/');
+    $mech->get('/action/text/new');
+    ok($mech->form_with_fields('__auth_human'));
+    $mech->field(__auth_human => 'Hu?');
     $mech->click;
-    $mech->get_ok('/action/text/new');
+    is $mech->status, 200;
     ok($mech->form_with_fields('title'));
     $mech->field('title' => 'hello');
     $mech->click;
