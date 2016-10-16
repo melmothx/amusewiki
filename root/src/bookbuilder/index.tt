@@ -165,6 +165,7 @@
         [% loc('EPUB') %]
       </label>
     </div>
+    <div>&nbsp;</div>
     <div class="row">
       <div class="col-sm-3">
         <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
@@ -178,6 +179,7 @@
         </p>
       </div>
     </div>
+    <div>&nbsp;</div>
     <div class="form-group">
       <div class="row">
         <label for="mainfont" class="col-sm-3 control-label">
@@ -249,7 +251,7 @@
     </div>
     <div class="epub-option checkbox">
       <label>
-        <input type="checkbox" name="" id="" value="1"
+        <input type="checkbox" name="epub_embed_fonts" id="epub_embed_fonts" value="1"
                [% IF bb.epub_embed_fonts %]checked="checked"[% END %] />
         [% loc('Embed fonts in the EPUB file') %]
       </label>

@@ -79,6 +79,10 @@ has token => (is => 'rw',
               isa => 'Str',
               default => sub { '' });
 
+has epub_embed_fonts => (is => 'rw',
+                         isa => "Bool",
+                         default => sub { 1 });
+
 sub load_from_token {
     my ($self, $token) = @_;
     if (my $row = $self->site->bookbuilder_sessions->from_token($token)) {
@@ -245,11 +249,6 @@ sub pdf {
         return 0;
     }
 }
-
-has epubfont => (
-                 is => 'rw',
-                 isa => 'Maybe[Str]',
-                );
 
 =head2 Virtual meta-info
 
@@ -1008,7 +1007,7 @@ sub _main_methods {
               notes
               source
               format
-              epubfont
+              epub_embed_fonts
               mainfont
               sansfont
               monofont
@@ -1200,6 +1199,7 @@ sub compile {
                          sl_tex => $self->slides,
                          sl_pdf => $self->slides,
                          epub => $self->epub,
+                         epub_embed_fonts => $self->epub_embed_fonts,
                         );
     foreach my $setting (qw/luatex ttdir/) {
         if ($compile_opts{$setting}) {
