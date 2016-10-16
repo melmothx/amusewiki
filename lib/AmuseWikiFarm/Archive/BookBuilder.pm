@@ -1049,16 +1049,7 @@ sub as_job {
     my $job = {
                text_list => [ @{$self->texts} ],
                $self->_muse_virtual_headers,
-              };
-    log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
-    if ($self->epub) {
-        $job->{template_options} = {
-                                    cover       => $self->coverfile,
-                                    coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
-                                   };
-    }
-    else {
-        $job->{template_options} = {
+               template_options => {
                                     twoside     => $self->twoside,
                                     nocoverpage => $self->nocoverpage,
                                     headings    => $self->headings,
@@ -1075,8 +1066,9 @@ sub as_job {
                                     coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                     opening     => $self->opening,
                                     cover       => $self->coverfile,
-                                   };
-    }
+                                   },
+              };
+    log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
     if (!$self->epub && !$self->slides && $self->imposed) {
         $job->{imposer_options} = {
                                    signature => $self->signature,
