@@ -21,7 +21,6 @@ use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 use Text::Amuse::Compile;
 use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid to_json from_json/;
-use Text::Amuse::Compile::Webfonts;
 use Text::Amuse::Compile::TemplateOptions;
 use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
@@ -160,36 +159,6 @@ Alias for filedir.
 
 sub customdir {
     return shift->filedir;
-}
-
-has webfonts_rootdir => (is => 'ro',
-                         isa => 'Str',
-                         default => sub { 'webfonts' });
-
-has webfonts => (is => 'ro',
-                 isa => 'HashRef[Str]',
-                 lazy => 1,
-                 builder => '_build_webfonts');
-
-sub _build_webfonts {
-    my $self = shift;
-    my $dir = $self->webfonts_rootdir;
-    my %out;
-    if ($dir and -d $dir) {
-        opendir (my $dh, $dir) or die "Can't opendir $dir $!";
-        my @fontdirs = grep { /^\w+$/ } readdir $dh;
-        closedir $dh;
-        foreach my $fontdir (@fontdirs) {
-            my $path = File::Spec->catdir($dir, $fontdir);
-            if (-d $path) {
-                if (my $wf = Text::Amuse::Compile::Webfonts
-                    ->new(webfontsdir => $path)) {
-                    $out{$wf->family} = $wf->srcdir;
-                }
-            }
-        }
-    }
-    return \%out;
 }
 
 sub jobdir {
@@ -1237,13 +1206,6 @@ sub compile {
             $compiler_args{$setting} = $compile_opts{$setting};
         }
     }
-    if ($self->epub) {
-        if (my $epubfont = $self->epubfont) {
-            if (my $directory = $self->webfonts->{$epubfont}) {
-                $compiler_args{webfontsdir} = $directory;
-            }
-        }
-    }
     Dlog_debug { "archives: $_" } \%archives;
     # extract the archives
 
@@ -1418,13 +1380,6 @@ sub serialize_profile {
         $args{$method} = $self->$method unless $exclusions{$method};
     }
     return \%args;
-}
-
-
-sub available_webfonts {
-    my $self = shift;
-    my @fonts = sort keys %{ $self->webfonts };
-    return \@fonts;
 }
 
 =head2 is_collection
