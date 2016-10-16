@@ -22,11 +22,13 @@ use Text::Amuse::Compile;
 use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid to_json from_json/;
 use Text::Amuse::Compile::TemplateOptions;
+use Text::Amuse::Compile::Fonts;
 use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
 use Bytes::Random::Secure;
 use IO::Pipe;
 use File::Basename;
+use Types::Standard qw/StrMatch/;
 
 =head1 NAME
 
@@ -634,63 +636,56 @@ of the font. This is used for validation.
 
 =cut
 
-sub all_fonts {
-    my @fonts = (Text::Amuse::Compile::TemplateOptions->all_fonts);
-    return \@fonts;
+has fonts => (is => 'ro', lazy => 1, isa => 'Object', builder => '_build_fonts',
+              handles => [qw/all_fonts serif_fonts mono_fonts sans_fonts/],
+             );
+
+sub _build_fonts {
+    my $self = shift;
+    return Text::Amuse::Compile::Fonts->new($self->site->fontspec_file);
 }
 
 sub all_main_fonts {
-    my @fonts = (Text::Amuse::Compile::TemplateOptions->serif_fonts,
-                 Text::Amuse::Compile::TemplateOptions->sans_fonts);
-    return \@fonts;
+    my $self = shift;
+    return [ $self->serif_fonts, $self->sans_fonts ];
 }
 
 sub all_serif_fonts {
-    my @fonts = Text::Amuse::Compile::TemplateOptions->serif_fonts;
-    return \@fonts;
+    return [ shift->serif_fonts ]
 }
 
 sub all_sans_fonts {
-    my @fonts = Text::Amuse::Compile::TemplateOptions->sans_fonts;
-    return \@fonts;
+    return [ shift->sans_fonts ]
 }
 
 sub all_mono_fonts {
-    my @fonts = Text::Amuse::Compile::TemplateOptions->mono_fonts;
-    return \@fonts;
+    return [ shift->mono_fonts ]
 }
 
 sub all_fonts_values {
-    my $list = __PACKAGE__->all_fonts;
-    my @values = map { $_->{name} } @$list;
-    return \@values;
+    my $self = shift;
+    return [ map { $_->name } $self->all_fonts ];
 }
 
 sub available_fonts {
-    my %fonts = ();
-    foreach my $font (@{ __PACKAGE__->all_fonts }) {
-        my $name = $font->{name};
-        $fonts{$name} = $name;
-    }
+    my $self = shift;
+    my %fonts = map { $_->name => $_->name } $self->all_fonts;
     return \%fonts;
 }
 
 
-enum(FontType => __PACKAGE__->all_fonts_values );
-
 has mainfont => (
                  is => 'rw',
-                 isa => 'FontType',
-                 default => sub { __PACKAGE__->all_serif_fonts->[0]->{name} },
+                 isa => StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ],
                 );
-
-has monofont => (is => 'rw',
-                 isa => 'FontType',
-                 default => sub { __PACKAGE__->all_mono_fonts->[0]->{name} });
-
-has sansfont => (is => 'rw',
-                 isa => 'FontType',
-                 default => sub { __PACKAGE__->all_sans_fonts->[0]->{name} });
+has monofont => (
+                 is => 'rw',
+                 isa => StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ],
+                );
+has sansfont => (
+                 is => 'rw',
+                 isa => StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ],
+                );
 
 =head2 coverwidth
 
@@ -1193,7 +1188,7 @@ sub compile {
                          epub => $self->epub,
                          epub_embed_fonts => $self->epub_embed_fonts,
                         );
-    foreach my $setting (qw/luatex ttdir/) {
+    foreach my $setting (qw/luatex ttdir fontspec/) {
         if ($compile_opts{$setting}) {
             $compiler_args{$setting} = $compile_opts{$setting};
         }
