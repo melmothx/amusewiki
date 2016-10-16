@@ -4,13 +4,6 @@ BEGIN { die "Do not run this as root" unless $>; }
 
 use strict;
 use warnings;
-use IO::Pipe;
-use File::Copy;
-use File::Spec;
-use Data::Dumper;
-use File::Basename;
-use File::Path qw/make_path/;
-use Cwd;
 
 =pod
 
@@ -21,99 +14,16 @@ amusewiki-populate-webfonts - amusewiki helper for EPUB font embedding
 
 =head1 SYNOPSIS
 
- amusewiki-populate-webfonts [ directory ]
+ amusewiki-populate-webfonts
 
+Create the configuration file with font definitions.
 
-Create the configuration files and store the fonts needed by
-Text::Amuse::Compile for embedding fonts into the EPUB files.
-
-amusewiki needs this for the font-embedding feature. The directory
-needs to be C<webfonts> in the application root.
+It just calls C<muse-create-font-file.pl fontspec.json>
 
 This script is meant to be used when creating an app directory.
 
 =cut
 
-my $dir = $ARGV[0];
-if ($dir) {
-    unless (-d $dir) {
-        make_path($dir) or die "Cannot create $dir $!";
-    }
-    chdir $dir or die "Cannot enter $dir";
-}
-else {
-    $dir = getcwd;
-}
+system(qw/muse-create-font-file.pl fontspec.json/);
 
-my @styles = (qw/bold italic regular bolditalic/);
 
-my @fonts = (
-             'Linux Libertine O',
-             'Charis SIL',
-             'CMU Serif',
-             'TeX Gyre Termes',
-             'TeX Gyre Pagella',
-             'TeX Gyre Schola',
-             'TeX Gyre Bonum',
-             'TeX Gyre Heros',
-             'TeX Gyre Adventor',
-             'Iwona',
-             'Antykwa Poltawskiego',
-             'Antykwa Torunska',
-             'PT Serif',
-             'PT Sans',
-             'Droid Serif',
-            );
-
-my %specs;
-
-foreach my $font (@fonts) {
-    my $pipe = IO::Pipe->new;
-    $pipe->reader('fc-list', $font);
-    $pipe->autoflush(1);
-    while (<$pipe>) {
-        chomp;
-        if (m/(.+?)\s*:\s*(.+?)\s*:\s*style=(Bold|Italic|Regular|Bold Italic)$/) {
-            my $file = $1;
-            my $name = $2;
-            my $style = lc($3);
-            $style =~ s/\s//g;
-            next unless $name eq $font;
-            # print "$file $name $style\n";
-            if ($specs{$name}{$style}) {
-                warn "Duplicated font! $file $name $style\n";
-            }
-            else {
-                $specs{$name}{$style} = $file;
-            }
-        }
-    }
-}
-
-# print Dumper(\%specs);
-
-FONT:
-foreach my $font (keys %specs) {
-    # check if we have all the for
-    foreach my $need (@styles) {
-        next FONT unless $specs{$font}{$need};
-    }
-    # write out and copy
-    for my $dimension (qw/9 10/) {
-        my $dirname = $font . $dimension;
-        $dirname = lc($dirname);
-        $dirname =~ s/\s+//g;
-        mkdir $dirname unless -d $dirname;
-        my $specfile = File::Spec->catfile($dirname, 'spec.txt');
-        open (my $fh, '>', $specfile) or die "Cannot open $specfile $!";
-        print $fh "family $font ${dimension}pt\nsize $dimension\n";
-        foreach my $style (@styles) {
-            print $fh $style . ' ' . basename($specs{$font}{$style}) . "\n";
-            copy($specs{$font}{$style}, $dirname)
-              or die "Cannot copy $specs{$font}{$style} to $dirname $!";
-        }
-        close $fh;
-    }
-}
-
-print "webfonts directory created in $dir\n";
