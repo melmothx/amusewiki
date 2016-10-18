@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 130;
+use Test::More tests => 129;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -50,8 +50,7 @@ $mech->content_contains("Page not found!");
 $mech->get_ok('/bookbuilder/fonts');
 {
     my @links = grep { $_->url =~ m/font-preview/ } $mech->find_all_links;
-    ok (scalar @links, "Found links");
-    $mech->links_ok([ @links ], "Found and tested " . scalar(@links) . " links");
+    ok (scalar @links, "Found font-preview links");
 }
 
 $mech->get_ok('/bookbuilder/add/first-test');
