@@ -5,7 +5,6 @@ use strict;
 use warnings;
 
 use Moose;
-use Moose::Util::TypeConstraints qw/enum/;
 use namespace::autoclean;
 
 use Cwd;
@@ -28,7 +27,7 @@ use AmuseWikiFarm::Log::Contextual;
 use Bytes::Random::Secure;
 use IO::Pipe;
 use File::Basename;
-use Types::Standard qw/StrMatch/;
+use Types::Standard qw/StrMatch Maybe Enum/;
 
 =head1 NAME
 
@@ -71,10 +70,8 @@ has site => (is => 'ro',
 has job_id => (is => 'ro',
                isa => 'Maybe[Str]');
 
-enum(FormatType => [qw/epub pdf slides/]);
-
 has format => (is => 'rw',
-               isa => "FormatType",
+               isa => Enum[qw/epub pdf slides/],
                default => sub { 'pdf' });
 
 has token => (is => 'rw',
@@ -366,11 +363,9 @@ sub all_headings {
     return Text::Amuse::Compile::TemplateOptions->all_headings;
 }
 
-enum(HeadingsType => [ map { $_->{name} } __PACKAGE__->all_headings ]);
-
 has headings => (
                  is => 'rw',
-                 isa => 'HeadingsType',
+                 isa => Enum[map { $_->{name} } __PACKAGE__->all_headings ],
                  default => sub { 0 },
                 );
 
@@ -406,11 +401,9 @@ Beware that these are hardcoded in the template.
 
 =cut
 
-enum(SchemaType => [ PDF::Imposition->available_schemas ]);
-
 has schema => (
                is => 'rw',
-               isa => 'SchemaType',
+               isa => Enum[ PDF::Imposition->available_schemas ],
                default => sub { '2up' },
               );
 
@@ -456,12 +449,9 @@ sub papersize_values_as_hashref {
     return \%pairs;
 }
 
-
-enum(PaperType  => __PACKAGE__->papersize_values);
-
 has papersize => (
                   is => 'rw',
-                  isa => 'PaperType',
+                  isa => Enum[@{__PACKAGE__->papersize_values}],
                   default => sub { 'generic' },
                  );
 
@@ -494,11 +484,9 @@ sub paper_thickness_values {
     return @values;
 }
 
-enum (PaperThickness => [ __PACKAGE__->paper_thickness_values ]);
-
 has crop_paper_thickness => (
                              is => 'rw',
-                             isa => 'PaperThickness',
+                             isa => Enum[ __PACKAGE__->paper_thickness_values ],
                              default => sub { '0.10mm' },
                             );
 
@@ -522,7 +510,7 @@ has paper_height => (
 
 has crop_papersize => (
                        is => 'rw',
-                       isa => 'PaperType',
+                       isa => Enum[@{__PACKAGE__->papersize_values}],
                        default => sub { 'a4' },
                       );
 
@@ -567,8 +555,6 @@ sub divs_values {
     return [ 9..15 ];
 }
 
-enum(DivsType => __PACKAGE__->divs_values );
-
 sub page_divs {
     my %divs =  map { $_ => $_ } @{ __PACKAGE__->divs_values };
     return \%divs;
@@ -576,7 +562,7 @@ sub page_divs {
 
 has division => (
                  is => 'rw',
-                 isa => 'DivsType',
+                 isa => Enum[ @{__PACKAGE__->divs_values} ],
                  default => sub { '12' },
                 );
 
@@ -591,11 +577,9 @@ sub fontsize_values {
     return [ Text::Amuse::Compile::TemplateOptions->all_fontsizes ];
 }
 
-enum(FontSizeType => __PACKAGE__->fontsize_values);
-
 has fontsize => (
                  is => 'rw',
-                 isa => 'FontSizeType',
+                 isa => Enum[ @{__PACKAGE__->fontsize_values} ],
                  default => sub { '10' },
                 );
 
@@ -609,11 +593,9 @@ sub bcor_values {
     return [0..30];
 }
 
-enum(BindingCorrectionType => __PACKAGE__->bcor_values );
-
 has bcor => (
              is => 'rw',
-             isa => 'BindingCorrectionType',
+             isa => Enum[ @{__PACKAGE__->bcor_values} ],
              default => sub { '0' },
             );
 
@@ -703,11 +685,9 @@ sub coverwidths {
     return \@values;
 }
 
-enum(CoverWidthType => __PACKAGE__->coverwidths);
-
 has coverwidth => (
                    is => 'rw',
-                   isa => 'CoverWidthType',
+                   isa => Enum[ @{__PACKAGE__->coverwidths} ],
                    default => sub { '100' },
                   );
 
@@ -734,11 +714,9 @@ sub signature_values_4up {
 
 
 
-enum(SignatureType => __PACKAGE__->signature_values);
-
 has signature => (
                    is => 'rw',
-                   isa => 'SignatureType',
+                   isa => Enum[ @{__PACKAGE__->signature_values} ],
                    default => sub { '0' },
                  );
 
@@ -747,11 +725,9 @@ sub opening_values {
     return [qw/any right/];
 }
 
-enum(OpeningType => __PACKAGE__->opening_values);
-
 has opening => (
                 is => 'rw',
-                isa => 'OpeningType',
+                isa => Enum[ @{__PACKAGE__->opening_values} ],
                 default => sub { 'any' },
                );
 
@@ -760,20 +736,16 @@ sub beamer_themes_values {
     return [ Text::Amuse::Compile::TemplateOptions->beamer_themes ];
 }
 
-enum(BeamerTheme => __PACKAGE__->beamer_themes_values);
+has beamertheme => (is => 'rw',
+                    isa => Enum[ @{__PACKAGE__->beamer_themes_values} ],
+                    default => sub { 'default' });
 
 sub beamer_color_themes_values {
     return [ Text::Amuse::Compile::TemplateOptions->beamer_colorthemes ];
 }
 
-enum(BeamerColorTheme => __PACKAGE__->beamer_color_themes_values);
-
-has beamertheme => (is => 'rw',
-                    isa => 'BeamerTheme',
-                    default => sub { 'default' });
-
 has beamercolortheme => (is => 'rw',
-                         isa => 'BeamerColorTheme',
+                         isa => Enum[ @{__PACKAGE__->beamer_color_themes_values} ],
                          default => sub { 'dove' });
 
 
