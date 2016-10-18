@@ -22,6 +22,8 @@ diag "Using DBIC $DBIx::Class::VERSION\n";
 
 plan tests => 11;
 
+system('script/amusewiki-populate-webfonts') == 0 or die;
+
 my $texmfhome = `kpsewhich -var-value TEXMFHOME`;
 chomp $texmfhome;
 my $texmffiledir = catdir($texmfhome, qw/tex generic amusewiki data/);

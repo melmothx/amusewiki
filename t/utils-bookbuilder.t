@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 226;
+use Test::More tests => 227;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -217,8 +217,8 @@ my $expected = {
                                        'nocoverpage' => 1,
                                        'notoc' => 1,
                                        'mainfont' => 'CMU Serif',
-                                       sansfont    => 'CMU Sans Serif',
-                                       monofont    => 'CMU Typewriter Text',
+                                       sansfont    => undef,
+                                       monofont    => undef,
                                        beamertheme => 'default',
                                        beamercolortheme => 'dove',
                                        'twoside' => 1,
@@ -321,9 +321,10 @@ $bb->import_from_params(%params);
 is $bb->signature, 16, "Signature_4up picked up with 4up schema";
 is $bb->opening, 'any', "Opening set to any because of invalid input";
 
+is $bb->mainfont, 'CMU Serif';
 $bb->import_from_params();
 is $bb->imposed, undef, "imposed nulled out with empty params";
-is $bb->mainfont, 'CMU Serif', "mainfont kept with empty params";
+is $bb->mainfont, undef, "mainfont undef with empty params";
 is $bb->notoc, undef, "notoc set to undef";
 is $bb->twoside, undef, "twoside set to undef";
 

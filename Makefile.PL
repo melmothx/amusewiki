@@ -144,6 +144,7 @@ catalyst_ignore('repo',
                 'db_backups',
                 '.*\.lock',
                 '.*\.example',
+                'fontspec.json',
                 'ssl');
 catalyst;
 

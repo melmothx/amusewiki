@@ -2405,6 +2405,7 @@ sub update_from_params {
 
     foreach my $fontfamily (qw/mainfont sansfont monofont/) {
         my $font = delete $params->{$fontfamily};
+        Dlog_debug { "Available fonts $_" }  $bb->available_fonts;
         if ($font && $bb->available_fonts->{$font}) {
             $self->$fontfamily($font);
         }
