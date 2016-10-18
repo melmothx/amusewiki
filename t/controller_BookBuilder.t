@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 125;
+use Test::More tests => 129;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -17,17 +17,15 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
 $site->update({ bb_page_limit => 5 });
-my $orig_locale = $site->locale;
-# set it to english for testing purposes.
-$site->locale('en');
-$site->update;
 
 use Test::WWW::Mechanize::Catalyst;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
 
 
-$mech->get('/bookbuilder/');
+$mech->get_ok('/?__language=en');
+# set it to english for testing purposes.
+$mech->get('/bookbuilder');
 is $mech->status, 403;
 
 
@@ -48,6 +46,12 @@ $mech->get('/bookbuilder/add/alsdflasdf');
 is ($mech->status, '404', "bogus text not found: " . $mech->status);
 $mech->content_contains("Couldn't add the text");
 $mech->content_contains("Page not found!");
+
+$mech->get_ok('/bookbuilder/fonts');
+{
+    my @links = grep { $_->url =~ m/font-preview/ } $mech->find_all_links;
+    ok (scalar @links, "Found font-preview links");
+}
 
 $mech->get_ok('/bookbuilder/add/first-test');
 is $mech->uri->path, '/library/first-test';
@@ -245,6 +249,7 @@ foreach my $purgef (@purge) {
 # new instance
 $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
+$mech->get_ok('/?__language=en');
 $site->update({ bb_page_limit => 1 });
 $mech->get_ok('/library/first-test');
 
@@ -261,9 +266,7 @@ $mech->get_ok('/bookbuilder');
 $mech->content_lacks("Quota exceeded");
 $mech->content_contains('first-test/bbselect?selected=pre-1-post"');
 
-$site->locale($orig_locale);
-$site->update->discard_changes;
 # restore
 $site->update({ bb_page_limit => 5 });
-diag "Locale restored to " . $site->locale;
+
 

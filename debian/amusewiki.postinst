@@ -14,7 +14,7 @@ fi
 
 
 if [ ! -d "/var/lib/amusewiki/repo/amw" ]; then
-    su -c 'cd /var/lib/amusewiki; amusewiki-create-doc-site' amusewiki
+    amusewiki create-doc-site
 fi
 
 # refresh the configuration
@@ -24,11 +24,12 @@ fi
 # assert that cgit can write into its own cache
 chown www-data:www-data /var/lib/amusewiki/opt/cache/cgit
 
-if [ ! -d "/var/lib/amusewiki/webfonts" ]; then
-    su -c 'amusewiki-populate-webfonts /var/lib/amusewiki/webfonts' amusewiki
+if [ ! -d "/var/lib/amusewiki/fontspec.json" ]; then
+    echo "Creating a new fontspec.json file"
+    amusewiki populate-webfonts
 fi
 
-su -c 'amusewiki-upgrade-lexicon /var/lib/amusewiki/repo/*' amusewiki
+amusewiki upgrade-lexicon /var/lib/amusewiki/repo/*
 
 # install the log4perl file, if missing
 if [ ! -f "/var/lib/amusewiki/log4perl.conf" ]; then
@@ -66,7 +67,8 @@ fi
 su -c "rm -rfv /var/lib/amusewiki/var/cache" amusewiki
 
 # upgrade the db, if needed
-su -c 'cd /var/lib/amusewiki; amusewiki-upgrade-db; amusewiki-generate-nginx-conf' amusewiki
+amusewiki upgrade-db
+amusewiki generate-nginx-conf
 
 #DEBHELPER#
 

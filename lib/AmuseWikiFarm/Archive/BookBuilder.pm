@@ -5,7 +5,6 @@ use strict;
 use warnings;
 
 use Moose;
-use Moose::Util::TypeConstraints qw/enum/;
 use namespace::autoclean;
 
 use Cwd;
@@ -21,13 +20,14 @@ use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 use Text::Amuse::Compile;
 use PDF::Imposition;
 use AmuseWikiFarm::Utils::Amuse qw/muse_filename_is_valid to_json from_json/;
-use Text::Amuse::Compile::Webfonts;
 use Text::Amuse::Compile::TemplateOptions;
+use Text::Amuse::Compile::Fonts;
 use Text::Amuse::Compile::FileName;
 use AmuseWikiFarm::Log::Contextual;
 use Bytes::Random::Secure;
 use IO::Pipe;
 use File::Basename;
+use Types::Standard qw/StrMatch Maybe Enum/;
 
 =head1 NAME
 
@@ -70,15 +70,17 @@ has site => (is => 'ro',
 has job_id => (is => 'ro',
                isa => 'Maybe[Str]');
 
-enum(FormatType => [qw/epub pdf slides/]);
-
 has format => (is => 'rw',
-               isa => "FormatType",
+               isa => Enum[qw/epub pdf slides/],
                default => sub { 'pdf' });
 
 has token => (is => 'rw',
               isa => 'Str',
               default => sub { '' });
+
+has epub_embed_fonts => (is => 'rw',
+                         isa => "Bool",
+                         default => sub { 1 });
 
 sub load_from_token {
     my ($self, $token) = @_;
@@ -160,36 +162,6 @@ Alias for filedir.
 
 sub customdir {
     return shift->filedir;
-}
-
-has webfonts_rootdir => (is => 'ro',
-                         isa => 'Str',
-                         default => sub { 'webfonts' });
-
-has webfonts => (is => 'ro',
-                 isa => 'HashRef[Str]',
-                 lazy => 1,
-                 builder => '_build_webfonts');
-
-sub _build_webfonts {
-    my $self = shift;
-    my $dir = $self->webfonts_rootdir;
-    my %out;
-    if ($dir and -d $dir) {
-        opendir (my $dh, $dir) or die "Can't opendir $dir $!";
-        my @fontdirs = grep { /^\w+$/ } readdir $dh;
-        closedir $dh;
-        foreach my $fontdir (@fontdirs) {
-            my $path = File::Spec->catdir($dir, $fontdir);
-            if (-d $path) {
-                if (my $wf = Text::Amuse::Compile::Webfonts
-                    ->new(webfontsdir => $path)) {
-                    $out{$wf->family} = $wf->srcdir;
-                }
-            }
-        }
-    }
-    return \%out;
 }
 
 sub jobdir {
@@ -276,11 +248,6 @@ sub pdf {
         return 0;
     }
 }
-
-has epubfont => (
-                 is => 'rw',
-                 isa => 'Maybe[Str]',
-                );
 
 =head2 Virtual meta-info
 
@@ -396,11 +363,9 @@ sub all_headings {
     return Text::Amuse::Compile::TemplateOptions->all_headings;
 }
 
-enum(HeadingsType => [ map { $_->{name} } __PACKAGE__->all_headings ]);
-
 has headings => (
                  is => 'rw',
-                 isa => 'HeadingsType',
+                 isa => Enum[map { $_->{name} } __PACKAGE__->all_headings ],
                  default => sub { 0 },
                 );
 
@@ -436,11 +401,9 @@ Beware that these are hardcoded in the template.
 
 =cut
 
-enum(SchemaType => [ PDF::Imposition->available_schemas ]);
-
 has schema => (
                is => 'rw',
-               isa => 'SchemaType',
+               isa => Enum[ PDF::Imposition->available_schemas ],
                default => sub { '2up' },
               );
 
@@ -486,12 +449,9 @@ sub papersize_values_as_hashref {
     return \%pairs;
 }
 
-
-enum(PaperType  => __PACKAGE__->papersize_values);
-
 has papersize => (
                   is => 'rw',
-                  isa => 'PaperType',
+                  isa => Enum[@{__PACKAGE__->papersize_values}],
                   default => sub { 'generic' },
                  );
 
@@ -524,11 +484,9 @@ sub paper_thickness_values {
     return @values;
 }
 
-enum (PaperThickness => [ __PACKAGE__->paper_thickness_values ]);
-
 has crop_paper_thickness => (
                              is => 'rw',
-                             isa => 'PaperThickness',
+                             isa => Enum[ __PACKAGE__->paper_thickness_values ],
                              default => sub { '0.10mm' },
                             );
 
@@ -552,7 +510,7 @@ has paper_height => (
 
 has crop_papersize => (
                        is => 'rw',
-                       isa => 'PaperType',
+                       isa => Enum[@{__PACKAGE__->papersize_values}],
                        default => sub { 'a4' },
                       );
 
@@ -597,8 +555,6 @@ sub divs_values {
     return [ 9..15 ];
 }
 
-enum(DivsType => __PACKAGE__->divs_values );
-
 sub page_divs {
     my %divs =  map { $_ => $_ } @{ __PACKAGE__->divs_values };
     return \%divs;
@@ -606,7 +562,7 @@ sub page_divs {
 
 has division => (
                  is => 'rw',
-                 isa => 'DivsType',
+                 isa => Enum[ @{__PACKAGE__->divs_values} ],
                  default => sub { '12' },
                 );
 
@@ -621,11 +577,9 @@ sub fontsize_values {
     return [ Text::Amuse::Compile::TemplateOptions->all_fontsizes ];
 }
 
-enum(FontSizeType => __PACKAGE__->fontsize_values);
-
 has fontsize => (
                  is => 'rw',
-                 isa => 'FontSizeType',
+                 isa => Enum[ @{__PACKAGE__->fontsize_values} ],
                  default => sub { '10' },
                 );
 
@@ -639,11 +593,9 @@ sub bcor_values {
     return [0..30];
 }
 
-enum(BindingCorrectionType => __PACKAGE__->bcor_values );
-
 has bcor => (
              is => 'rw',
-             isa => 'BindingCorrectionType',
+             isa => Enum[ @{__PACKAGE__->bcor_values} ],
              default => sub { '0' },
             );
 
@@ -666,63 +618,61 @@ of the font. This is used for validation.
 
 =cut
 
+has fonts => (is => 'ro', lazy => 1, isa => 'Object', builder => '_build_fonts',
+              handles => [qw/serif_fonts mono_fonts sans_fonts/],
+             );
+
+sub _build_fonts {
+    my $self = shift;
+    return Text::Amuse::Compile::Fonts->new($self->site->fontspec_file);
+}
+
 sub all_fonts {
-    my @fonts = (Text::Amuse::Compile::TemplateOptions->all_fonts);
-    return \@fonts;
+    my $self = shift;
+    return [ $self->fonts->all_fonts ];
 }
 
 sub all_main_fonts {
-    my @fonts = (Text::Amuse::Compile::TemplateOptions->serif_fonts,
-                 Text::Amuse::Compile::TemplateOptions->sans_fonts);
-    return \@fonts;
+    my $self = shift;
+    return [ $self->serif_fonts, $self->sans_fonts ];
 }
 
 sub all_serif_fonts {
-    my @fonts = Text::Amuse::Compile::TemplateOptions->serif_fonts;
-    return \@fonts;
+    return [ shift->serif_fonts ]
 }
 
 sub all_sans_fonts {
-    my @fonts = Text::Amuse::Compile::TemplateOptions->sans_fonts;
-    return \@fonts;
+    return [ shift->sans_fonts ]
 }
 
 sub all_mono_fonts {
-    my @fonts = Text::Amuse::Compile::TemplateOptions->mono_fonts;
-    return \@fonts;
+    return [ shift->mono_fonts ]
 }
 
 sub all_fonts_values {
-    my $list = __PACKAGE__->all_fonts;
-    my @values = map { $_->{name} } @$list;
-    return \@values;
+    my $self = shift;
+    return [ map { $_->name } $self->fonts->all_fonts ];
 }
 
 sub available_fonts {
-    my %fonts = ();
-    foreach my $font (@{ __PACKAGE__->all_fonts }) {
-        my $name = $font->{name};
-        $fonts{$name} = $name;
-    }
+    my $self = shift;
+    my %fonts = map { $_->name => $_->name } $self->fonts->all_fonts;
     return \%fonts;
 }
 
 
-enum(FontType => __PACKAGE__->all_fonts_values );
-
 has mainfont => (
                  is => 'rw',
-                 isa => 'FontType',
-                 default => sub { __PACKAGE__->all_serif_fonts->[0]->{name} },
+                 isa => Maybe[StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ]],
                 );
-
-has monofont => (is => 'rw',
-                 isa => 'FontType',
-                 default => sub { __PACKAGE__->all_mono_fonts->[0]->{name} });
-
-has sansfont => (is => 'rw',
-                 isa => 'FontType',
-                 default => sub { __PACKAGE__->all_sans_fonts->[0]->{name} });
+has monofont => (
+                 is => 'rw',
+                 isa => Maybe[StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ]],
+                );
+has sansfont => (
+                 is => 'rw',
+                 isa => Maybe[StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ]],
+                );
 
 =head2 coverwidth
 
@@ -740,11 +690,9 @@ sub coverwidths {
     return \@values;
 }
 
-enum(CoverWidthType => __PACKAGE__->coverwidths);
-
 has coverwidth => (
                    is => 'rw',
-                   isa => 'CoverWidthType',
+                   isa => Enum[ @{__PACKAGE__->coverwidths} ],
                    default => sub { '100' },
                   );
 
@@ -771,11 +719,9 @@ sub signature_values_4up {
 
 
 
-enum(SignatureType => __PACKAGE__->signature_values);
-
 has signature => (
                    is => 'rw',
-                   isa => 'SignatureType',
+                   isa => Enum[ @{__PACKAGE__->signature_values} ],
                    default => sub { '0' },
                  );
 
@@ -784,11 +730,9 @@ sub opening_values {
     return [qw/any right/];
 }
 
-enum(OpeningType => __PACKAGE__->opening_values);
-
 has opening => (
                 is => 'rw',
-                isa => 'OpeningType',
+                isa => Enum[ @{__PACKAGE__->opening_values} ],
                 default => sub { 'any' },
                );
 
@@ -797,20 +741,16 @@ sub beamer_themes_values {
     return [ Text::Amuse::Compile::TemplateOptions->beamer_themes ];
 }
 
-enum(BeamerTheme => __PACKAGE__->beamer_themes_values);
+has beamertheme => (is => 'rw',
+                    isa => Enum[ @{__PACKAGE__->beamer_themes_values} ],
+                    default => sub { 'default' });
 
 sub beamer_color_themes_values {
     return [ Text::Amuse::Compile::TemplateOptions->beamer_colorthemes ];
 }
 
-enum(BeamerColorTheme => __PACKAGE__->beamer_color_themes_values);
-
-has beamertheme => (is => 'rw',
-                    isa => 'BeamerTheme',
-                    default => sub { 'default' });
-
 has beamercolortheme => (is => 'rw',
-                         isa => 'BeamerColorTheme',
+                         isa => Enum[ @{__PACKAGE__->beamer_color_themes_values} ],
                          default => sub { 'dove' });
 
 
@@ -1039,7 +979,7 @@ sub _main_methods {
               notes
               source
               format
-              epubfont
+              epub_embed_fonts
               mainfont
               sansfont
               monofont
@@ -1081,16 +1021,7 @@ sub as_job {
     my $job = {
                text_list => [ @{$self->texts} ],
                $self->_muse_virtual_headers,
-              };
-    log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
-    if ($self->epub) {
-        $job->{template_options} = {
-                                    cover       => $self->coverfile,
-                                    coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
-                                   };
-    }
-    else {
-        $job->{template_options} = {
+               template_options => {
                                     twoside     => $self->twoside,
                                     nocoverpage => $self->nocoverpage,
                                     headings    => $self->headings,
@@ -1107,8 +1038,9 @@ sub as_job {
                                     coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                     opening     => $self->opening,
                                     cover       => $self->coverfile,
-                                   };
-    }
+                                   },
+              };
+    log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
     if (!$self->epub && !$self->slides && $self->imposed) {
         $job->{imposer_options} = {
                                    signature => $self->signature,
@@ -1231,17 +1163,11 @@ sub compile {
                          sl_tex => $self->slides,
                          sl_pdf => $self->slides,
                          epub => $self->epub,
+                         epub_embed_fonts => $self->epub_embed_fonts,
                         );
-    foreach my $setting (qw/luatex ttdir/) {
+    foreach my $setting (qw/luatex ttdir fontspec/) {
         if ($compile_opts{$setting}) {
             $compiler_args{$setting} = $compile_opts{$setting};
-        }
-    }
-    if ($self->epub) {
-        if (my $epubfont = $self->epubfont) {
-            if (my $directory = $self->webfonts->{$epubfont}) {
-                $compiler_args{webfontsdir} = $directory;
-            }
         }
     }
     Dlog_debug { "archives: $_" } \%archives;
@@ -1418,13 +1344,6 @@ sub serialize_profile {
         $args{$method} = $self->$method unless $exclusions{$method};
     }
     return \%args;
-}
-
-
-sub available_webfonts {
-    my $self = shift;
-    my @fonts = sort keys %{ $self->webfonts };
-    return \@fonts;
 }
 
 =head2 is_collection

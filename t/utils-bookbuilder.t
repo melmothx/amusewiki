@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 225;
+use Test::More tests => 227;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -45,16 +45,31 @@ ok (-d AmuseWikiFarm::Archive::BookBuilder->customdir, "Found " . AmuseWikiFarm:
     cleanup($bb->job_id);
     $bb->mainfont('TeX Gyre Pagella');
 
-    for (1..2) {
+    for my $format (qw/pdf pdf epub/) {
+        $bb->format($format);
         $bb->add_text('first-test');
-        my $pdffile = File::Spec->catfile($bb->jobdir,
+        if ($format eq 'pdf') {
+            my $pdffile = File::Spec->catfile($bb->jobdir,
                                           $bb->compile);
-        my $pdf = CAM::PDF->new($pdffile);
-        my ($font) = ($pdf->getFonts(1));
-        ok $font->{BaseFont}->{value},
-          "Found font name: $font->{BaseFont}->{value}";
+            my $pdf = CAM::PDF->new($pdffile);
+            my ($font) = ($pdf->getFonts(1));
+            ok $font->{BaseFont}->{value},
+              "Found font name: $font->{BaseFont}->{value}";
+            like $font->{BaseFont}->{value}, qr/Pagella/, "Font is correct";
+        }
+        elsif ($format eq 'epub') {
+            my $epub = File::Spec->catfile($bb->jobdir,
+                                           $bb->compile);
+            ok (-f $epub);
+            my $tmpdir = File::Temp->newdir(CLEANUP => 1);
+            my $zip = Archive::Zip->new;
+            die "Couldn't read $epub" if $zip->read($epub) != AZ_OK;
+            $zip->extractTree('OPS', $tmpdir->dirname) == AZ_OK
+              or die "Couldn't extract $epub OPS into " . $tmpdir->dirname ;
+            my @files = grep { /\.(otf|ttf)$/ } $zip->memberNames;
+            ok (@files, "Found embedded files");
+        }
         like $bb->mainfont, qr/Pagella/;
-        like $font->{BaseFont}->{value}, qr/Pagella/, "Font is correct";
     }
 }
 
@@ -202,8 +217,8 @@ my $expected = {
                                        'nocoverpage' => 1,
                                        'notoc' => 1,
                                        'mainfont' => 'CMU Serif',
-                                       sansfont    => 'CMU Sans Serif',
-                                       monofont    => 'CMU Typewriter Text',
+                                       sansfont    => undef,
+                                       monofont    => undef,
                                        beamertheme => 'default',
                                        beamercolortheme => 'dove',
                                        'twoside' => 1,
@@ -306,9 +321,10 @@ $bb->import_from_params(%params);
 is $bb->signature, 16, "Signature_4up picked up with 4up schema";
 is $bb->opening, 'any', "Opening set to any because of invalid input";
 
+is $bb->mainfont, 'CMU Serif';
 $bb->import_from_params();
 is $bb->imposed, undef, "imposed nulled out with empty params";
-is $bb->mainfont, 'CMU Serif', "mainfont kept with empty params";
+is $bb->mainfont, undef, "mainfont undef with empty params";
 is $bb->notoc, undef, "notoc set to undef";
 is $bb->twoside, undef, "twoside set to undef";
 
@@ -369,9 +385,6 @@ $bb->signature(0);
 $bb->cover(1);
 check_file($bb, "imposed one");
 cleanup($bb->job_id);
-
-ok ($bb->webfonts_rootdir);
-ok ($bb->webfonts) and diag Dumper($bb->webfonts);
 
 $bb->site->update({ bb_page_limit => 5 });
 

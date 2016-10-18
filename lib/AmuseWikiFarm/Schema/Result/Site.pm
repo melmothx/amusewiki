@@ -889,6 +889,8 @@ sub compile_options {
     if ($self->use_luatex) {
         $opts{luatex} = 1;
     }
+    $opts{epub_embed_fonts} = 0;
+    $opts{fontspec} = $self->fontspec_file;
 
     if (my $dir = $self->valid_ttdir) {
         $opts{ttdir} = $dir;
@@ -1019,6 +1021,22 @@ sub has_site_file {
         return;
     }
 }
+
+sub fontspec_file {
+    my $self = shift;
+    my $filename = 'fontspec.json';
+    if (my $file = $self->has_site_file($filename)) {
+        return $file;
+    }
+    # search the current dir for fontspec.json
+    elsif (-f $filename) {
+        return File::Spec->rel2abs($filename);
+    }
+    else {
+        return undef;
+    }
+}
+
 
 =head2 repo_is_under_git
 
@@ -2375,8 +2393,7 @@ sub update_from_params {
 
 
     # for papersize and fonts, we ask the bookbuilder
-    # TODO: just use the class.
-    my $bb = AmuseWikiFarm::Archive::BookBuilder->new;
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new(site => $self) ;
 
     my $ppsize = delete $params->{papersize};
     if ($ppsize && $bb->papersize_values_as_hashref->{$ppsize}) {
@@ -2388,6 +2405,7 @@ sub update_from_params {
 
     foreach my $fontfamily (qw/mainfont sansfont monofont/) {
         my $font = delete $params->{$fontfamily};
+        Dlog_debug { "Available fonts $_" }  $bb->available_fonts;
         if ($font && $bb->available_fonts->{$font}) {
             $self->$fontfamily($font);
         }
@@ -2440,7 +2458,9 @@ sub update_from_params {
     else {
         push @errors, "Invalid opening!";
     }
-
+    # unclear if it's enough to prevent a memory cycle. Probably it
+    # is, as $bb goes away, which references $self.
+    undef $bb;
 
     my @vhosts;
     # ignore missing vhosts

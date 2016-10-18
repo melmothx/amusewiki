@@ -165,41 +165,22 @@
         [% loc('EPUB') %]
       </label>
     </div>
-    <div class="epub-option form-group">
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="epubfont" class="control-label">
-            [% loc('Please select the desired fonts') %]
-          </label>
-        </div>
-        <div class="col-sm-9">
-      <select name="epubfont" id="epubfont" class="form-control">
-        <option value="">[% loc('no font embedding') %]</option>
-        [% FOREACH webfont IN bb.available_webfonts %]
-        <option [% IF webfont == bb.epubfont %] selected="selected" [% END %]
-                value="[% webfont %]">
-          [% webfont %]
-        </option>
-        [% END %]
-      </select>
-        </div>
-      </div>
-    </div>
     <div>&nbsp;</div>
-    <div class="row pdf-common-option">
+    <div class="row">
       <div class="col-sm-3">
         <a target="_blank" href="[% c.uri_for_action('/bookbuilder/fonts') %]">
           <strong>[% loc('Please select the desired fonts') %]</strong>
         </a>
       </div>
       <div class="col-sm-9">
-        <p>
+        <p class="pdf-option">
         [% loc('Keep in mind that some character may be missing in the required font.') %]
         [% loc('Missing character will be reported') %].
         </p>
       </div>
     </div>
-    <div class="form-group pdf-option">
+    <div>&nbsp;</div>
+    <div class="form-group">
       <div class="row">
         <label for="mainfont" class="col-sm-3 control-label">
           [% loc('Please choose the main font') %]
@@ -251,7 +232,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group pdf-common-option">
+    <div class="form-group">
       <div class="row">
         <label for="fontsize" class="col-sm-3 control-label">
           [% loc('Please choose the font size') %]
@@ -267,6 +248,13 @@
           </select>
         </div>
       </div>
+    </div>
+    <div class="epub-option checkbox">
+      <label>
+        <input type="checkbox" name="epub_embed_fonts" id="epub_embed_fonts" value="1"
+               [% IF bb.epub_embed_fonts %]checked="checked"[% END %] />
+        [% loc('Embed fonts in the EPUB file') %]
+      </label>
     </div>
     <div class="form-group slides-option">
       <div class="row">
