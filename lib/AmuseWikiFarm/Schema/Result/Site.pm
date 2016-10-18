@@ -889,7 +889,7 @@ sub compile_options {
     if ($self->use_luatex) {
         $opts{luatex} = 1;
     }
-
+    $opts{epub_embed_fonts} = 0;
     $opts{fontspec} = $self->fontspec_file;
 
     if (my $dir = $self->valid_ttdir) {

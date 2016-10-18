@@ -1,8 +1,9 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 44;
+use Test::More tests => 49;
 use Date::Parse qw/str2time/;
+use Data::Dumper;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -44,6 +45,13 @@ foreach my $ext (qw/pdf epub tex muse zip/) {
     my $file_timestamp = str2time($res->header('last-modified'));
     ok ($file_timestamp, "timestamp ok");
     ok ($file_timestamp >= $base_time, "Generated file has correct timestamp");
+    my $content_length = $res->header('content-length');
+    if ($ext eq 'pdf') {
+        ok ( $content_length > 5000, "Content length $content_length is sensible for $ext");
+    }
+    else {
+        ok ( $content_length < 5000, "Content length $content_length is sensible for $ext");
+    }
 }
 
 $res = request('/library/second-test.lt.pdf', $host);
