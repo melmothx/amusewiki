@@ -115,7 +115,7 @@ cd $AMWHOME/font-preview
 ./gen.sh
 
 cd $AMWHOME
-./script/amusewiki-populate-webfonts $AMWHOME/webfonts
+./script/amusewiki-populate-webfonts
 
 cd $AMWHOME
 ./script/install-cgit.pl

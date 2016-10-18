@@ -24,6 +24,8 @@ This script is meant to be used when creating an app directory.
 
 =cut
 
-system(qw/muse-create-font-file.pl fontspec.json/);
+unless (-f 'fontspec.json') {
+    system(qw/muse-create-font-file.pl fontspec.json/) == 0 or die $!;
+}
 
 
