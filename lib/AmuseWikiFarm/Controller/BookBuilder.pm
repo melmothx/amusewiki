@@ -258,13 +258,22 @@ sub fonts :Chained('root') :PathPart('fonts') :Args(0) {
     my $all_fonts = $c->stash->{bb}->all_fonts;
     my @out;
     foreach my $font (@$all_fonts) {
-        my %myfont = %$font;
+        my %myfont = (
+                      name => $font->name,
+                      desc => $font->desc,
+                     );
         my $name = $myfont{name};
         $name =~ s/ /-/g;
         my $path = "/static/images/font-preview/";
-        $myfont{thumb} = $c->uri_for($path . $name . '.png');
-        $myfont{pdf}   = $c->uri_for($path . $name . '.pdf');
-        push @out, \%myfont;
+        my $pdf = $c->path_to(File::Spec->catfile(qw/root static images font-preview/, $name . '.pdf'));
+        if (-f $pdf) {
+            $myfont{thumb} = $c->uri_for($path . $name . '.png');
+            $myfont{pdf}   = $c->uri_for($path . $name . '.pdf');
+            push @out, \%myfont;
+        }
+        else {
+            log_error { "Couldn't find $pdf" };
+        }
     }
     $c->stash(page_title => $c->loc('Font preview'),
               all_fonts => \@out);
