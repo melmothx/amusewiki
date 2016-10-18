@@ -619,12 +619,17 @@ of the font. This is used for validation.
 =cut
 
 has fonts => (is => 'ro', lazy => 1, isa => 'Object', builder => '_build_fonts',
-              handles => [qw/all_fonts serif_fonts mono_fonts sans_fonts/],
+              handles => [qw/serif_fonts mono_fonts sans_fonts/],
              );
 
 sub _build_fonts {
     my $self = shift;
     return Text::Amuse::Compile::Fonts->new($self->site->fontspec_file);
+}
+
+sub all_fonts {
+    my $self = shift;
+    return [ $self->fonts->all_fonts ];
 }
 
 sub all_main_fonts {
@@ -646,27 +651,27 @@ sub all_mono_fonts {
 
 sub all_fonts_values {
     my $self = shift;
-    return [ map { $_->name } $self->all_fonts ];
+    return [ map { $_->name } $self->fonts->all_fonts ];
 }
 
 sub available_fonts {
     my $self = shift;
-    my %fonts = map { $_->name => $_->name } $self->all_fonts;
+    my %fonts = map { $_->name => $_->name } $self->fonts->all_fonts;
     return \%fonts;
 }
 
 
 has mainfont => (
                  is => 'rw',
-                 isa => StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ],
+                 isa => Maybe[StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ]],
                 );
 has monofont => (
                  is => 'rw',
-                 isa => StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ],
+                 isa => Maybe[StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ]],
                 );
 has sansfont => (
                  is => 'rw',
-                 isa => StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ],
+                 isa => Maybe[StrMatch[ qr{\A[a-zA-Z0-9 ]+\z} ]],
                 );
 
 =head2 coverwidth
