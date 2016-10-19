@@ -26,11 +26,11 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $mech->get_ok('/?__language=en');
 # set it to english for testing purposes.
 $mech->get('/bookbuilder');
-is $mech->status, 403;
+is $mech->status, 401;
 
 
 $mech->get('/bookbuilder/add/alsdflasdf');
-is $mech->status, 403;
+is $mech->status, 401;
 
 $mech->content_contains("test if the user is a human");
 
@@ -254,7 +254,7 @@ $site->update({ bb_page_limit => 1 });
 $mech->get_ok('/library/first-test');
 
 $mech->get('/bookbuilder/add/first-test');
-is $mech->status, 403;
+is $mech->status, 401;
 $mech->submit_form(with_fields => { __auth_human => 'January' });
 $mech->content_contains("Quota exceeded",  "Quota hit adding the whole text");
 

@@ -23,7 +23,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $mech->get_ok('/'); # warm up
 $mech->get('/user/site');
-is ($mech->status, 403, "Bounced to login");
+is ($mech->status, 401, "Bounced to login");
 $schema->resultset('User')->search({ username => 'myadmin' })->delete;
 my $user = $schema->resultset('User')->create({ username => 'myadmin', password => 'maypass',
                                                 user_roles => [ { role => { role => 'librarian' } } ] });
@@ -33,7 +33,7 @@ diag $mech->uri->path;
 $mech->get_ok('/user/create');
 is $mech->uri->path, '/user/create';
 $mech->get('/user/site');
-is $mech->status, '403', "status for " . $mech->uri . " is 403";
+is $mech->status, '403', "status for " . $mech->uri . " is 403 (permission denied)";
 $user->add_to_roles({ role => 'admin' });
 logout_and_login();
 $mech->get_ok('/user/site');
@@ -87,12 +87,12 @@ my $other = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $other->get_ok('/library');
 $other->get('/user/site');
-is $other->status, 403;
+is $other->status, 401;
 $other->submit_form(with_fields => { __auth_user => 'myadmin',
                                      __auth_pass => 'maypass',
                                    });
 is $other->uri->path, '/user/site';
-is $other->status, 403, "admin can't login on other sites";
+is $other->status, 401, "admin can't login on other sites";
 
 
 sub logout_and_login {

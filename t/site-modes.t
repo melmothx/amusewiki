@@ -160,7 +160,7 @@ sub common_tests {
     my $mech = shift;
     $mech->get_ok('/');
     $mech->get('/bookbuilder');
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->content_contains("test if the user is a human");
     $mech->submit_form(
                        with_fields => {
@@ -173,7 +173,7 @@ sub common_tests {
     is ($mech->status, '404', "Page alsdflasdf not found");
     $mech->content_contains("Couldn't add the text");
     $mech->get('/action/special/new');
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->content_contains('__auth_pass');
 }
 
@@ -183,7 +183,7 @@ sub closed_new {
     $mech->content_lacks('/action/text/new"');
     diag "Checking /action/text/new";
     $mech->get('/action/text/new');
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->content_contains('__auth_pass');
 }
 
@@ -191,7 +191,7 @@ sub closed_publish {
     my $mech = shift;
     diag "Checking pending";
     $mech->get('/publish/pending');
-    is $mech->status, 403, "Trying to get publish bounces to login too";
+    is $mech->status, 401, "Trying to get publish bounces to login too";
     $mech->content_contains('__auth_pass');
 }
 

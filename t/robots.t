@@ -49,7 +49,7 @@ my @yesrobots = (
 my $meta = '<meta name="robots" content="noindex,nofollow" />';
 $mech->get_ok('/');
 $mech->get('/tasks/status/1/ajax');
-is $mech->status, 403;
+is $mech->status, 401;
 
 foreach my $link ('/login', '/human', @norobots) {
     $mech->get($link);

@@ -29,7 +29,7 @@ $site->update({
                                                host => "$site_id.amusewiki.org");
     $mech->get_ok('/');
     $mech->get('/bookbuilder');
-    is $mech->status, 403;
+    is $mech->status, 401;
     is ($mech->uri->path, '/bookbuilder');
     $mech->submit_form(with_fields => {
                                        __auth_human => 'x',
@@ -44,7 +44,7 @@ $site->update({
 
     $mech->get_ok('/');
     $mech->get('/action/text/new');
-    is ($mech->status, 403);
+    is ($mech->status, 401);
     $mech->submit_form(with_fields => {
                                        __auth_human => 'x',
                                       });
@@ -52,7 +52,7 @@ $site->update({
     $mech->content_lacks('__auth_human');
 
     $mech->get('/action/special/new');
-    is ($mech->status, 403);
+    is ($mech->status, 401);
     $mech->submit_form(with_fields => {
                                        __auth_user => 'root',
                                        __auth_pass => 'root',
@@ -80,7 +80,7 @@ $site->update({
     ok($mech->form_id("book-builder-add-text-partial"), "Selected form for partials");
     $mech->tick(select => 1);
     $mech->click;
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->content_like(qr{type="hidden" name="select" value="1".*type="hidden" name="select" value="1"}s);
     $mech->submit_form(with_fields => {
                                        __auth_human => 'x',
@@ -99,7 +99,7 @@ $site->update({
     ok($mech->form_id("book-builder-add-text-partial"), "Selected form for partials");
     $mech->tick(select => 'pre');
     $mech->click;
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->content_like(qr{type="hidden" name="select" value="pre".*type="hidden" name="select" value="pre"}s);
     $mech->submit_form(with_fields => {
                                        __auth_user => 'root',
@@ -117,7 +117,7 @@ $site->update({
 
     $mech->get_ok('/');
     $mech->get('/library/the-text/edit');
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->content_contains(q{__auth_human});
     $mech->submit_form(with_fields => {
                                        __auth_human => 'x',
@@ -131,7 +131,7 @@ $site->update({
                                                    host => $site->canonical);
     $mech->get_ok('/');
     $mech->get('/category/topic/the-cat/edit');
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->submit_form(with_fields => {
                                        __auth_user => 'root',
                                        __auth_pass => 'root',

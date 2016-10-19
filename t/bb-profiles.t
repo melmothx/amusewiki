@@ -67,7 +67,7 @@ $site->add_to_titles({
                      });
 
 $mech->get('/bookbuilder/add/my-dummy-text');
-is $mech->status, 403;
+is $mech->status, 401;
 $mech->submit_form(form_id => 'login-form',
                    fields => { __auth_user => 'profiler1',
                                __auth_pass => 'profiler1',

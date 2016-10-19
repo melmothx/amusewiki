@@ -71,7 +71,7 @@ diag "Using $cookie_on_first on another site";
 $mech1->get('/console/git', Cookie => $cookie_on_first);
 is ($mech1->uri->path, "/console/git", "Legit user ok");
 $res2 = $mech2->get('/console/git', Cookie => $cookie_on_first);
-is $mech2->status, 403;
+is $mech2->status, 401;
 $mech2->content_lacks('pinco1');
 ok(!$res2->header('Cookie'), "No cookie returned after stealing");
 $mech2->get('/library', Cookie => $cookie_on_first);
@@ -82,10 +82,10 @@ foreach my $mech ($mech1, $mech2) {
     $mech->content_lacks('pinco1',
                          "user on the site is now forcibly logged out");
     $mech->get('/bookbuilder', Cookie => $cookie_on_first);
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->content_contains('__auth_human');
     $mech->get('/console/git', Cookie => $cookie_on_first);
-    is $mech->status, 403, "logged out and session cleared, can't access git";
+    is $mech->status, 401, "logged out and session cleared, can't access git";
 }
 
 foreach my $mech ($mech1, $mech2) {
@@ -94,9 +94,9 @@ foreach my $mech ($mech1, $mech2) {
     $mech->content_lacks('pinco1',
                          "user on the site is now forcibly logged out");
     $mech->get('/bookbuilder');
-    is $mech->status, 403,
+    is $mech->status, 401,
         "logged out and session cleared, is not even recognized as human";
     $mech->get('/console/git');
-    is $mech->status, 403,
+    is $mech->status, 401,
         "logged out and session cleared, can't access git";
 }

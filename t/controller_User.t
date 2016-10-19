@@ -64,7 +64,7 @@ $mech->content_lacks('/action/special/edit/index', "No link to admin");
 $mech->get('/special/index/edit');
 
 is $mech->response->base->path, '/action/special/edit/index';
-is $mech->status, 403;
+is $mech->status, 401;
 
 ok(!$schema->resultset('Revision')->search({
                                             site_id => '0user0',
@@ -129,7 +129,7 @@ ok(!$schema->resultset('Revision')->search({
    "No index revisions(3)");
 
 $mech->get('/action/special/edit/index');
-is $mech->status, 403;
+is $mech->status, 401;
 
 $mech->content_lacks('textarea', "No textarea found for not logged-in");
 
@@ -163,7 +163,7 @@ $mech->get_ok( '/logout' );
 like $mech->content, qr{You have logged out}, "status message correct";
 
 $mech->get('/user/create');
-is $mech->status, 403;
+is $mech->status, 401;
 $mech->content_contains('__auth_user');
 $mech->content_lacks('__auth_human');
 
@@ -295,7 +295,8 @@ die "Test are broken" if $userid < 4;
 
 foreach my $i (1..3) {
     $mech->get("/user/edit/$i");
-    is $mech->status, "403", "librarian can't access other editing";
+    # 403 permission denied, auth will not help
+    is $mech->status, 403, "a librarian can't access other user editing";
 }
 
 $mech->get('/');
@@ -309,7 +310,7 @@ is ($mech->uri->path, '/user/edit/' . $pincuz->id,
     my $edit_path = $mech->uri->path;
     $mech->get_ok( '/logout' );
     $mech->get($edit_path);
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->submit_form(with_fields =>  {
                                         __auth_user => $pincuz->username,
                                         __auth_pass => $form->{password},

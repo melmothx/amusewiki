@@ -34,7 +34,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $mech->get_ok('/');
 $mech->get('/action/text/new');
-is $mech->status, 403;
+is $mech->status, 401;
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->content_contains('You are logged in now!');
 $mech->get_ok('/action/text/new');

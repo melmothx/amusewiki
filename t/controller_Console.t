@@ -48,12 +48,12 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
 $mech->get('/console/git');
-is $mech->status, 403, "Denied access to not logged in";
+is $mech->status, 401, "Denied access to not logged in";
 $mech->content_lacks('__auth_human');
 $mech->content_contains('__auth_pass');
 
 $mech->get('/console/unpublished');
-is $mech->status, 403, "Denied access to not logged in";
+is $mech->status, 401, "Denied access to not logged in";
 $mech->content_lacks('__auth_human');
 $mech->content_contains('__auth_pass');
 
@@ -70,7 +70,7 @@ $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                             host => "$site_id.amusewiki.org");
 
 $mech->get('/console/unpublished');
-is $mech->status, 403;
+is $mech->status, 401;
 ok($mech->form_id('login-form'), "Found the login-form");
 
 $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});

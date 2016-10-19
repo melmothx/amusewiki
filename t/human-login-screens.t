@@ -32,7 +32,7 @@ foreach my $mode (qw/private blog modwiki openwiki/) {
                 host => $site->canonical);
         if ($mode eq 'private') {
             $mech->get($url);
-            is $mech->status, 403;
+            is $mech->status, 401;
             $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'x' });
             $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
             is $mech->status, 200, "$url is fine";

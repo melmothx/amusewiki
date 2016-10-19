@@ -33,7 +33,8 @@ foreach my $path ('/admin/users',
                   '/admin/users/1/delete',
                   '/admin/users/1/edit') {
     $mech->get($path);
-    is ($mech->status, 403);
+    # 401 because logged out
+    is ($mech->status, 401);
 }
 $mech->get_ok('/login');
 $mech->submit_form(with_fields => { __auth_user => 'root',
@@ -131,7 +132,8 @@ foreach my $path ('/admin/users',
                   '/admin/users/1/delete',
                   '/admin/users/1/edit') {
     $mech->get($path);
-    is ($mech->status, 403);
+    # 401 because logged out
+    is ($mech->status, 401);
 }
 
 # after login with the new user, we should be denied
@@ -147,7 +149,7 @@ foreach my $path ('/admin/users',
                   '/admin/users/1/delete',
                   '/admin/users/1/edit') {
     $mech->get($path);
-    is ($mech->status, 403);
+    is ($mech->status, 403, '403 because logged in, but with not enough privileges');
 }
 
 # logout and and login again with root, delete the user and try to
@@ -155,7 +157,7 @@ foreach my $path ('/admin/users',
 
 $mech->get_ok('/logout');
 $mech->get('/admin/users');
-is $mech->status, 403;
+is $mech->status, 401;
 $mech->submit_form(with_fields => { __auth_user => 'root',
                                     __auth_pass => 'root',
                                   });

@@ -31,7 +31,7 @@ $site->update({
               });
 # root login and creates a user
 $mech->get('/');
-is $mech->status, 403;
+is $mech->status, 401;
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 if (my $user = $schema->resultset('User')->find({ username => 'sloppy' })) {
     $user->delete;
@@ -59,7 +59,7 @@ $user->roles->find({ role => 'librarian' });
 
 $mech->get('/logout');
 is $mech->uri->path, '/';
-is $mech->status, 403;
+is $mech->status, 401;
 $mech->content_contains('__auth_user');
 $mech->get_ok('/login');
 $mech->content_contains('/reset-password');
@@ -95,7 +95,7 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
     my $wrong_link = $link;
     $wrong_link =~ s/sloppy/root/;
     $mech->get($wrong_link);
-    is $mech->status, '403';
+    is $mech->status, '403', 'Permission denied on $wrong_link (other user)';
 
     $mech->get_ok($link);
     is $mech->uri . '' , $link;
@@ -105,12 +105,12 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
     $mech->get($link);
     is $mech->status, '403', "Access denied with token consumed" or diag $mech->content;
     $mech->get('/');
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->submit_form(with_fields => { __auth_user => 'sloppy', __auth_pass => $new_password });
     is $mech->uri->path, '/latest', "Login ok with new password";
     $mech->get('/logout');
     is $mech->uri->path, '/';
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->get_ok('/login');
     $mech->submit_form(with_fields => { __auth_user => 'sloppy', __auth_pass => 'sloppy1234' });
     is $mech->uri->path, '/login', "Couldn't login with new password";
@@ -120,7 +120,7 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
     is $mech->status, '401';
     foreach my $fake ('%20', 0, 'asldfasd', 'asdfasdfasdf') {
         $mech->get("/reset-password/sloppy/$fake");
-        is $mech->status, '403', "Access denied on " . $mech->uri->path;
+        is $mech->status, 403, "Access denied on " . $mech->uri->path;
     }
 }
 

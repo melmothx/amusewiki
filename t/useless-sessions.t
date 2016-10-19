@@ -31,7 +31,7 @@ for (1..3) {
     my $res = $mech->get('/login');
     ok($res->header('Set-Cookie'), "Cookie set on login");
     $mech->get('/publish/all');
-    is $mech->status, 403;
+    is $mech->status, 401;
 }
 
 $site->update({ mode => 'modwiki'});

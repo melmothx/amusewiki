@@ -27,7 +27,7 @@ foreach my $host (keys %hosts) {
                                                    host => $host);
     $mech->get_ok('/');
     $mech->get('/admin/debug_site_id');
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->submit_form(with_fields => { __auth_user => 'root',
                                         __auth_pass => 'root',
                                   });
@@ -62,7 +62,7 @@ $mech->get('/');
 $mech->content_contains("/logout");
 $mech->get('/admin/debug_site_id');
 ok (!$mech->success, "Not a success");
-is ($mech->status, 403);
+is ($mech->status, 403, "403 because it's logged in, but not an admin");
 
 $mech->get('/logout');
 $mech->get_ok('/login');

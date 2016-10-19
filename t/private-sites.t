@@ -92,7 +92,7 @@ $user->update({ active => 1 });
     $human->get('/');
     foreach my $path (@uris) {
         $human->get("/$path");
-        is $human->status, 403;
+        is $human->status, 401;
         $human->content_contains('__auth_user');
         is $human->uri->path, "/$path";
     }
@@ -125,7 +125,7 @@ sub check_denied {
     foreach my $path (@uris) {
         $mech->get("/$path");
         is $mech->status, '401', "401 on $path $note";
-        $mech->content_is('Authorization required.', "$path $note");
+        $mech->content_contains('login-form');
     }
 }
 sub check_pass {

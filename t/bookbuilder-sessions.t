@@ -27,7 +27,7 @@ for my $mech ($mech1, $mech2, $mech3) {
     # we need to hit the root, otherwise session is not picked up. Mah!
     $mech->get_ok('/');
     $mech->get('/bookbuilder');
-    is $mech->status, 403;
+    is $mech->status, 401;
     $mech->content_contains("test if the user is a human");
     $mech->submit_form(with_fields => {'__auth_human' => 'January' });
     $mech->get_ok('/bookbuilder');

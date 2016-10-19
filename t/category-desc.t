@@ -135,18 +135,18 @@ foreach my $page ('/library/the-text', '/authors', '/topics',
     ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 }
 $mech->get('/bookbuilder');
-is $mech->status, 403;
+is $mech->status, 401;
 
 $mech->get_ok('/?__language=en');
 $mech->get_ok('/authors/pippo');
 $mech->content_lacks('glyphicon-edit');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
 $mech->get('/category/author/pippo/edit');
-is $mech->status, 403, "Bounced to login";
+is $mech->status, 401, "Bounced to login";
 $mech->content_contains('__auth_user');
 $mech->content_lacks('__auth_human');
 $mech->get('/category/author/pippo/delete');
-is $mech->status, 403, "Bounced to login";
+is $mech->status, 401, "Bounced to login";
 $mech->content_lacks('__auth_human');
 ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
    "Found login form");
@@ -229,7 +229,7 @@ $mech->content_contains("Pippo <em>is</em> a nice author");
 
 $mech->get_ok("/logout");
 $mech->get("/category/author/pippo/en/delete");
-is $mech->status, 403, "Bounced to login";
+is $mech->status, 401, "Bounced to login";
 ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
    "Found login form");
 

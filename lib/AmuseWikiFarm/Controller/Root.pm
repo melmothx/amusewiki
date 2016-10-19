@@ -166,6 +166,7 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     return 1;
 }
 
+# used by /login and /reset_password
 sub secure_no_user :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
     if ($c->user_exists) {
@@ -178,39 +179,7 @@ sub secure_no_user :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
 
 sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    if ($site->is_private and !$c->user_exists) {
-        # humans will get the login box, robots and unknown a 401
-        my $ua = $c->stash->{amw_user_agent};
-        if (!$ua->browser_string || $ua->robot) {
-            $self->redirect_to_secure($c);
-            log_debug { "Trying HTTP Basic auth" };
-            my ($username, $password) = $c->req->headers->authorization_basic;
-            Dlog_debug { "Found these creds $_" } +{ user => $username, pass => $password };
-            if ($username && $password) {
-                if (my $user = $site->users->find({ username => $username })) {
-                    if ($user->active && $user->check_password($password)) {
-                        log_info { "$username found and authenticated" };
-                        $c->session(i_am_human => 1);
-                        # unclear if we want to authenticate as well in the app.
-                        return;
-                    }
-                }
-            }
-            # still here? then issue a 401. Please note that the user must belong to the site.
-            $c->response->status(401);
-            $c->response->content_type('text/plain');
-            $c->response->headers
-              ->push_header('WWW-Authenticate' => qq{Basic realm="} . $site->canonical . '"');
-            $c->response->body('Authorization required.');
-            $c->detach();
-        }
-        else {
-            log_debug { 'checking login' };
-            return 1 if $self->check_login($c);
-        }
-        $c->detach();
-    }
+    $self->check_login($c) if $c->stash->{site}->is_private;
 }
 
 sub site_robot_index :Chained('site') :PathPart('') :CaptureArgs(0) {
@@ -389,11 +358,9 @@ The root page (/) points to /library/ if there is no special/index
 
 =cut
 
-sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
+sub index :Chained('/site') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
-    # check if we have a special page named index
-    my $nav = $c->stash->{navigation};
-    # see if we have something
+    # handle legacy paths if there are arguments
     my $path = $c->request->uri->path_query;
     if ($path ne '/') {
         log_debug { "Checking the legacy paths for $path" };
@@ -405,12 +372,10 @@ sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
             return;
         }
     }
-
     # default
     my $target = $c->uri_for_action('/latest/index');
     my $site = $c->stash->{site};
     my $locale = $c->stash->{current_locale_code} || $site->locale;
-    $self->check_login($c) if $site->is_private;
     if ($site->multilanguage and
         (my $locindex = $site->titles->special_by_uri('index-' . $locale))) {
         $target = $c->uri_for($locindex->full_uri);
