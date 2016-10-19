@@ -256,7 +256,7 @@ sub edit :Chained('user') :Args(1) {
     $c->stash(user => $user);
 }
 
-sub site_config :Chained('user') :PathPart('site') {
+sub site_config :Chained('user') :PathPart('site') :Args(0) {
     my ($self, $c) = @_;
     unless ($c->check_user_roles('admin')) {
         $c->detach('/not_permitted');
