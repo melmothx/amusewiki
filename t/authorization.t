@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 22;
+use Test::More tests => 756; # test spamming
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
@@ -51,13 +51,13 @@ my $admin = $site->update_or_create_user({ username => "test-admin",
 
 
 # urls are collected from the debug below
-my @open_for_all = ('/login/',
+my @open_for_all = ('/login',
                     '/human',
                     '/favicon.ico',
-                    "/logout",
                     "/reset-password",
                     "/reset-password/asdf/asdf",
                     "/robots.txt",
+                    "/opensearch.xml",
                     "/sitefiles/" . $site->id . "/favicon.ico",
                    );
 my @open_if_public = ('/api/autocompletion/topic',
@@ -100,7 +100,6 @@ my @open_if_public = ('/api/autocompletion/topic',
                       "/random",
                       "/rss.xml",
                       "/search",
-                      "/opensearch.xml",
                       "/sitemap.txt",
                       "/stats/popular",
                       "/stats/register",
@@ -168,7 +167,52 @@ my @root_only = ('/admin/newuser',
                  '/admin/users',
                 );
 
+foreach my $mode (qw/private blog modwiki openwiki/) {
+    $site->update({ mode => $mode });
+    if ($site->mode eq 'private') {
+        my $mech = fresh_mech();
+        for (1,2) {
+            check_get_ok($mech, @open_for_all);
+            check_auth_needed($mech,
+                              @open_if_public, @human_only, @publishing,
+                              @user_only, @admin_only, @root_only);
+            $mech->get_ok('/login');
+            ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }) or die;
+            $mech->get_ok('/') or die;
+            # login then
+            check_get_ok($mech, @open_if_public, @human_only,
+                         @user_only, @admin_only, @root_only);
+            $mech->get('/logout');
+        }
+    }
+}
 
+sub fresh_mech {
+    my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                   host => $site->canonical);
+    $mech->get('/');
+    return $mech;
+}
+
+sub check_auth_needed {
+    my ($mech, @paths) = @_;
+    foreach my $path (@paths) {
+        $mech->get($path);
+        is $mech->status, 401, "$path is 401";
+        $mech->content_contains('__auth', "auth form found in $path");
+    }
+}
+
+sub check_get_ok {
+    my ($mech, @paths) = @_;
+    foreach my $path (@paths) {
+        $mech->get($path);
+        like $mech->status, qr{(200|404|403)}, "Acceptable status for $path? " . $mech->status;
+        unless ($path eq '/login' or $path eq '/human') {
+            $mech->content_lacks('__auth', "auth form not found in $path");
+        }
+    }
+}
 
 
 
