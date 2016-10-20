@@ -51,9 +51,8 @@ sub root :Chained('/site_human_required') :PathPart('action') :CaptureArgs(1) {
     }
 
     # but only users can edit special pages
-    if ($f_class eq 'special' or !$site->human_can_edit) {
-        die "Unreachable" unless $self->check_login($c);
-    }
+    $self->check_login($c) if ($f_class eq 'special' or !$site->human_can_edit);
+
     $c->stash(full_page_no_side_columns => 1);
 }
 
@@ -152,12 +151,14 @@ sub text :Chained('root') :PathPart('edit') :CaptureArgs(1) {
     $self->check_login($c) if $f_class eq 'special';
 
     if ($text) {
+        log_debug { "Text $uri $f_class found and stashed" };
         $c->stash(
                   text_to_edit => $text,
                   page_title => $c->loc('Editing') . ' ' . $text->uri,
                  );
     }
     else {
+        log_debug { "Text $uri $f_class was not found" };
         my $newuri = $c->uri_for_action('/edit/newtext', [$c->stash->{f_class}]);
         $c->flash(error_msg => $c->loc('This text does not exist'));
         $c->response->redirect($newuri);
@@ -240,6 +241,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
         my @args = ($revision->f_class,
                     $revision->title->uri,
                     $revision->id);
+        log_debug { "Found the revision " . $revision->id };
         $c->stash(
                   revision => $revision,
                   editing_uri => $c->uri_for_action('/edit/edit', [@args]),
@@ -435,6 +437,7 @@ Path: /action/edit/<my-text>/<rev-id>/preview
 
 sub preview :Chained('get_revision') :PathPart('preview') :Args(0) {
     my ($self, $c) = @_;
+    log_debug { "Rendering preview" };
     if ($c->request->query_params->{bare}) {
         $c->stash->{no_wrapper} = 1;
     }
