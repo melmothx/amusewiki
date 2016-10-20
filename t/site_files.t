@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 27;
+use Test::More tests => 61;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -44,9 +44,13 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my $basedir = $site->path_for_site_files;
 like $basedir, qr/\Q$site_id\E.\Qsite_files\E/ or die $basedir;
 
-my @good = ("test.txt");
-my @bad = (".tryme.torrent", "test me.exe", "hullo_therer.ciao");
-
+my @good = (qw/test.txt test.torrent test.ico
+               test.jpg test.jpeg test.gif test.png
+               test.ttf test.woff test.otf
+               test.js test.css
+              /);
+my @bad = (".tryme.torrent", "test me.exe", "hullo_therer.ciao", "lexicon.json",
+           "fontspec.json", "file.exe", "adsf.");
 
 foreach my $file (@good, @bad) {
     my $testfile = catfile($basedir, $file);
