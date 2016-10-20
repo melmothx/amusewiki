@@ -296,7 +296,7 @@ sub rss_xml :Chained('/site') :PathPart('rss.xml') :Args(0) {
     $c->detach('/feed/index');
 }
 
-sub favicon :Chained('/site') :PathPart('favicon.ico') :Args(0) {
+sub favicon :Chained('/site_no_auth') :PathPart('favicon.ico') :Args(0) {
     my ($self, $c) = @_;
     $c->detach('/sitefiles/local_files',
                 ['favicon.ico']);
