@@ -13,11 +13,12 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 756; # test spamming
+use Test::More tests => 2237; # test spamming
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
 
+$site->update({ magic_answer => 16, magic_question => '12+4' });
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
@@ -85,6 +86,7 @@ my @open_if_public = ('/api/autocompletion/topic',
                       '/library/$text/edit',
                       "/library",
                       "/library/$text",
+                      "/library/$text/bbselect",
                       "/monthly",
                       "/monthly/2016/1",
                       "/monthly/2016",
@@ -100,6 +102,8 @@ my @open_if_public = ('/api/autocompletion/topic',
                       "/random",
                       "/rss.xml",
                       "/search",
+                      "/special",
+                      "/special/$special",
                       "/sitemap.txt",
                       "/stats/popular",
                       "/stats/register",
@@ -118,18 +122,21 @@ my @human_only = (
                   '/bookbuilder/load',
                   '/bookbuilder/profile/1',
                   '/bookbuilder/schemas',
-                  "/library/$text/bbselect",
                   # job number
                   "/tasks/status/1/ajax",
                   "/tasks/status/1",
                  );
-my @publishing = (
+
+my @editing = (
                   "/action/text/edit/$text/1/diff",
                   "/action/text/edit/$text/1",
                   "/action/text/new",
                   "/action/text/edit/$text/1/preview",
                   "/action/text/edit/$text/1/prova.png",
-                  "/action/text/edit/$text",
+                  "/action/text/edit/$text");
+
+my @publishing = (
+
                   "/publish/all",
                   "/publish/pending",
                   "/publish/publish",
@@ -145,8 +152,6 @@ my @user_only = (
                  '/console/translations',
                  '/console/unpublished',
                  "/special/$special/edit",
-                 "/special",
-                 "/special/$special",
                  "/user/create",
                  "/user/edit/" . $user->id,
                 );
@@ -167,23 +172,61 @@ my @root_only = ('/admin/newuser',
                  '/admin/users',
                 );
 
+# TODO: do not serve files without checking if they are symlinks
+
+# TODO: Provide routes for favicon, local.js, local.css and don't
+# serve them directly
+
 foreach my $mode (qw/private blog modwiki openwiki/) {
     $site->update({ mode => $mode });
     if ($site->mode eq 'private') {
         my $mech = fresh_mech();
-        for (1,2) {
+        for my $i (1,2) {
             check_get_ok($mech, @open_for_all);
             check_auth_needed($mech,
-                              @open_if_public, @human_only, @publishing,
+                              @open_if_public, @human_only, @editing, @publishing,
                               @user_only, @admin_only, @root_only);
             $mech->get_ok('/login');
             ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }) or die;
             $mech->get_ok('/') or die;
             # login then
-            check_get_ok($mech, @open_if_public, @human_only,
+            check_get_ok($mech, @open_if_public, @human_only, @editing, @publishing,
                          @user_only, @admin_only, @root_only);
             $mech->get('/logout');
         }
+    }
+    else {
+        my $mech = fresh_mech();
+        check_get_ok($mech, @open_for_all, @open_if_public);
+        check_auth_needed($mech,
+                          @human_only, @editing, @publishing,
+                          @user_only, @admin_only, @root_only);
+        $mech->get_ok('/human');
+        $mech->content_contains('__auth_user');
+        ok $mech->submit_form(with_fields => { __auth_human => 16 });
+        check_get_ok($mech, @open_for_all, @open_if_public, @human_only);
+
+        diag "Testing publishing for mode $mode";
+        if ($mode eq 'openwiki') {
+            check_get_ok($mech, @publishing, @editing);
+        }
+        elsif ($mode eq 'modwiki') {
+            check_get_ok($mech, @editing);
+            check_auth_needed($mech, @publishing);
+        }
+        elsif ($mode eq 'blog') {
+            check_auth_needed($mech, @publishing, @editing);
+        }
+        else {
+            die;
+        }
+        check_auth_needed($mech,
+                          @user_only, @admin_only, @root_only);
+        $mech->get_ok('/login');
+        ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }) or die;
+        check_get_ok($mech, @publishing, @editing,
+                     @user_only, @admin_only, @root_only);
+        $mech->get('/logout');
     }
 }
 
@@ -198,8 +241,8 @@ sub check_auth_needed {
     my ($mech, @paths) = @_;
     foreach my $path (@paths) {
         $mech->get($path);
-        is $mech->status, 401, "$path is 401";
-        $mech->content_contains('__auth', "auth form found in $path");
+        is $mech->status, 401, "$path is 401" or die;
+        $mech->content_contains('__auth', "auth form found in $path") or die;
     }
 }
 
@@ -207,9 +250,10 @@ sub check_get_ok {
     my ($mech, @paths) = @_;
     foreach my $path (@paths) {
         $mech->get($path);
-        like $mech->status, qr{(200|404|403)}, "Acceptable status for $path? " . $mech->status;
+        like ($mech->status, qr{(200|404|403)}, "Acceptable status for $path? " . $mech->status)
+          or die;
         unless ($path eq '/login' or $path eq '/human') {
-            $mech->content_lacks('__auth', "auth form not found in $path");
+            $mech->content_lacks('__auth', "auth form not found in $path") or die;
         }
     }
 }
