@@ -844,6 +844,7 @@ t/amuse-utils.t
 t/archive-cache.t
 t/archive.t
 t/atr-lexicon.json
+t/authentication.t
 t/author-update.t
 t/bb-profiles.t
 t/beamer.t
@@ -895,6 +896,7 @@ t/files/slides-s-no.muse
 t/files/slides.muse
 t/files/upload.html
 t/files/widebanner.png
+t/fontspec-json.t
 t/full-blog-mode.t
 t/git-revision.t
 t/html-upload.t
@@ -960,6 +962,7 @@ t/static-indexes-optimize.t
 t/static-indexes.t
 t/status_file.t
 t/stemmer-crash.t
+t/symlink-serving.t
 t/test-repos/0blog0/d/dt/deleted-text-in-the-future.muse
 t/test-repos/0blog0/d/dt/deleted-text.muse
 t/test-repos/0blog0/d/dt/do-this-by-yourself.muse
