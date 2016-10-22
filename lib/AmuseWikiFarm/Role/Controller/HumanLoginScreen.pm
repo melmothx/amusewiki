@@ -9,7 +9,7 @@ use AmuseWikiFarm::Log::Contextual;
 sub get_secure_uri {
     my ($self, $c) = @_;
     my $uri = $c->request->uri->clone;
-    $uri->scheme('https');
+    $uri->scheme('https') if $c->stash->{site}->https_available;
     return $uri;
 }
 

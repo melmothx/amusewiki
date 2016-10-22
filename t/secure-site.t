@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 39;
+use Test::More tests => 40;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -75,7 +75,8 @@ diag session($mech);
 $site->update({ secure_site => 0});
 $mech->get("http://$site_id.amusewiki.org/admin/sites");
 is $mech->status, 401;
-$mech->content_contains(qq{action="https://$site_id.amusewiki.org/admin/sites"});
+$mech->content_contains(qq{action="http://$site_id.amusewiki.org/admin/sites"});
+$mech->content_lacks(qq{action="https://$site_id.amusewiki.org/admin/sites"});
 $mech->post("http://$site_id.amusewiki.org/admin/sites", {__auth_user => 'root', __auth_pass => 'root' });
 is $mech->status, 200;
 $mech->content_lacks('login-form');
