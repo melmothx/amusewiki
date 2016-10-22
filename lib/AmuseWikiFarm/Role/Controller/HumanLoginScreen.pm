@@ -6,6 +6,23 @@ use warnings;
 use MooseX::MethodAttributes::Role;
 use AmuseWikiFarm::Log::Contextual;
 
+sub get_secure_uri {
+    my ($self, $c) = @_;
+    my $uri = $c->request->uri->clone;
+    $uri->scheme('https');
+    return $uri;
+}
+
+sub redirect_to_secure :Private {
+    my ($self, $c) = @_;
+    return if $c->request->secure;
+    my $site = $c->stash->{site};
+    if ($site->secure_site || $site->secure_site_only) {
+        $c->response->redirect($self->get_secure_uri($c));
+        $c->detach();
+    }
+}
+
 sub check_site_id_in_session :Private {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};

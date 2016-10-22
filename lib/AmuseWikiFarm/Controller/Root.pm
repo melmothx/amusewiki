@@ -126,11 +126,7 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     $c->stash(blog_style => $site->blog_style);
 
     # force ssl for authenticated users
-    if ($c->user_exists) {
-        unless ($c->request->secure) {
-            $self->redirect_to_secure($c);
-        }
-    }
+    $self->redirect_to_secure($c) if $c->user_exists;
 
     my $locale = $site->locale || 'en';
     # in case something weird happened
@@ -164,17 +160,6 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     $c->set_language($locale, $site_id);
 
     return 1;
-}
-
-# used by /login and /reset_password
-sub secure_no_user :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
-    my ( $self, $c ) = @_;
-    if ($c->user_exists) {
-        $c->flash(status_msg => $c->loc("You are already logged in"));
-        $c->response->redirect($c->uri_for('/'));
-        return;
-    }
-    $self->redirect_to_secure($c);
 }
 
 sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
@@ -259,18 +244,6 @@ sub not_permitted :Private {
     log_info { "Access denied to " . $c->request->uri };
     $c->response->body("Access denied");
     return;
-}
-
-sub redirect_to_secure :Private {
-    my ($self, $c) = @_;
-    return if $c->request->secure;
-    my $site = $c->stash->{site};
-    if ($site->secure_site || $site->secure_site_only) {
-        my $uri = $c->request->uri->clone;
-        $uri->scheme('https');
-        $c->response->redirect($uri);
-        $c->detach();
-    }
 }
 
 =head2 random
