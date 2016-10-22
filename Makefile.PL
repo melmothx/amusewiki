@@ -91,10 +91,10 @@ requires 'Protocol::ACME' => '0.12';
 requires 'HTTP::BrowserDetect';
 
 # our own dogfood
-requires 'Text::Amuse' => '0.75';
+requires 'Text::Amuse' => '0.76';
 requires 'PDF::Imposition' => '0.21';
-requires 'Text::Amuse::Compile' => '0.85';
-requires 'Text::Amuse::Preprocessor' => '0.33';
+requires 'Text::Amuse::Compile' => '0.86';
+requires 'Text::Amuse::Preprocessor' => '0.35';
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
