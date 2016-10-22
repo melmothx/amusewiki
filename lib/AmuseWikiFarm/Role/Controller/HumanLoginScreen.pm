@@ -15,9 +15,22 @@ sub get_secure_uri {
 
 sub redirect_to_secure :Private {
     my ($self, $c) = @_;
-    return if $c->request->secure;
+    if ($c->request->secure) {
+        if ($c->sessionid && $c->session->{switched_to_ssl}) {
+            delete $c->session->{switched_to_ssl};
+            Dlog_info {
+                $c->request->uri . " has session " . $c->sessionid
+                  . " but requested an insecure uri: $_, changing session id now"
+              } $c->session;
+            $c->change_session_id;
+        }
+        return;
+    }
     my $site = $c->stash->{site};
     if ($site->secure_site || $site->secure_site_only) {
+        if ($c->sessionid) {
+            $c->session(switched_to_ssl => 1);
+        }
         $c->response->redirect($self->get_secure_uri($c));
         $c->detach();
     }
