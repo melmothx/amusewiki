@@ -6,7 +6,7 @@
 
 <p>[% loc('You can do so answering a simple question.') %]</p>
 
-<form id="prove-human-form" name="human" method="post" action="">
+<form id="prove-human-form" name="human" method="post" action="[% login_target_action | html %]">
   [% IF inherit_params %]
   [% FOREACH inherit_param IN inherit_params %]
   <input type="hidden" name="[% inherit_param.name | html %]" value="[% inherit_param.value | html %]" />

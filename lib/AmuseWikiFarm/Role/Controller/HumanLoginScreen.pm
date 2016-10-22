@@ -76,7 +76,16 @@ sub try_to_authenticate :Private {
     if ($username && $password) {
         $username .= '';
         $password .= '';
-        if (my $user = $c->model('DB::User')->find({ username => $username  })) {
+        my $ssl_warning;
+        if ($site->https_available && !$c->request->secure ) {
+            log_warn {
+                $c->request->uri
+                  . ": $username is providing auth details, but over a plain connection"
+                  . " login denied ";
+                $ssl_warning = $c->loc("You sent credentials over an unencrypted connection. Please switch to HTTPS, login, and change your password right away. This shouldn't happen.");
+              };
+        }
+        elsif (my $user = $c->model('DB::User')->find({ username => $username  })) {
             log_debug { "User $username found" };
             # authenticate only if the user is a superuser
             # or if the site id matches the current site id
@@ -103,7 +112,7 @@ sub try_to_authenticate :Private {
         else {
             log_info { "Unknown user $username" };
         }
-        $c->flash(error_msg => $c->loc("Wrong username or password"));
+        $c->flash( error_msg => $ssl_warning || $c->loc("Wrong username or password") );
     }
     my @carry_on;
     foreach my $name (keys %params) {
@@ -116,6 +125,7 @@ sub try_to_authenticate :Private {
         }
     }
     $c->stash(inherit_params => \@carry_on) if @carry_on;
+    $c->stash(login_target_action => $self->get_secure_uri($c));
     return 0;
 }
 

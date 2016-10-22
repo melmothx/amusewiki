@@ -2755,17 +2755,21 @@ sub static_indexes_generator {
 }
 
 sub canonical_url {
+    return shift->canonical_url_secure;
+}
+
+sub https_available {
     my $self = shift;
-    return 'http://' . $self->canonical;
+    return $self->secure_site || $self->secure_site_only;
 }
 
 sub canonical_url_secure {
     my $self = shift;
-    if ($self->secure_site || $self->secure_site_only) {
+    if ($self->https_available) {
         return 'https://' . $self->canonical;
     }
     else {
-        return $self->canonical_url;
+        return 'http://' . $self->canonical;
     }
 }
 

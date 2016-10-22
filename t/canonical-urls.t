@@ -66,7 +66,7 @@ is $site->canonical_url_secure, 'http://blablabla.amusewiki.org', "Url ok";
 
 $site->update({ secure_site => 1 });
 
-is $site->canonical_url, 'http://blablabla.amusewiki.org', "Url ok with https";
+is $site->canonical_url, 'https://blablabla.amusewiki.org', "Url ok with https";
 is $site->canonical_url_secure, 'https://blablabla.amusewiki.org', "Url ok";
 
 $site->add_to_vhosts({ name => 'example.amusewiki.org' });

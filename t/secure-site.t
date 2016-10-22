@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 26;
+use Test::More tests => 39;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -70,8 +70,36 @@ $mech->get("http://$site_id.amusewiki.org/reset-password/prova/prova");
 is $mech->uri->scheme, 'https', "reset-password is ssl again";
 isnt session($mech), $current_session, "Sessionid changed after redirect";
 $current_session = session($mech);
-
 diag session($mech);
+
+$site->update({ secure_site => 0});
+$mech->get("http://$site_id.amusewiki.org/admin/sites");
+is $mech->status, 401;
+$mech->content_contains(qq{action="https://$site_id.amusewiki.org/admin/sites"});
+$mech->post("http://$site_id.amusewiki.org/admin/sites", {__auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, 200;
+$mech->content_lacks('login-form');
+$mech->get('/logout');
+
+$site->update({ secure_site => 1});
+$mech->get("http://$site_id.amusewiki.org/admin/sites");
+is $mech->status, 401;
+$mech->content_contains(qq{action="https://$site_id.amusewiki.org/admin/sites"});
+$mech->post("http://$site_id.amusewiki.org/admin/sites", {__auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, 401;
+$mech->content_contains('credentials over an unencrypted connection');
+$mech->content_contains('login-form');
+$mech->post("https://$site_id.amusewiki.org/admin/sites", {__auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, 200;
+$mech->content_lacks('login-form');
+$mech->get('/logout');
+
+$site->update({ mode => 'private' });
+$mech->get("http://$site_id.amusewiki.org/search?query=my<damned>query");
+ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
+   "Found the form");
+$mech->content_contains('my&lt;damned&gt;query') or diag $mech->content;
+
 
 sub session {
     my $mech = shift;
