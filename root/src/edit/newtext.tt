@@ -15,7 +15,7 @@
       </label>:
       [% loc('if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %]
       <a href="#choose-uri">
-        <span class="glyphicon glyphicon-share-alt"></span>
+        <span class="fa fa-share"></span>
       </a>
       <input class="form-control" type="text" name="title"
 	     maxlength="250" id="title"

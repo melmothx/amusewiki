@@ -29,7 +29,7 @@
         </a>
       </td>
       <td>
-        [% IF obj.active %]<span class="glyphicon glyphicon-ok"></span>[% END %]
+        [% IF obj.active %]<span class="fa fa-check"></span>[% END %]
       </td>
       <td>
         [% obj.sitegroup %]

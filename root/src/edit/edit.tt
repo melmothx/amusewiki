@@ -25,7 +25,7 @@
         [% loc('Preview') %]
         <a href="[% preview_uri %]" target="_blank"
            title="[% loc('Show preview in other tab') %]">
-          <span class="glyphicon glyphicon-share-alt"></span>
+          <span class="fa fa-share"></span>
         </a>
     </h3>
   </div>
@@ -63,7 +63,7 @@
   </div>
   <div class="panel-body">
   <div class="alert alert-warning">
-    <span class="glyphicon glyphicon-warning-sign"></span> [% loc('You
+    <span class="fa fa-warning"></span> [% loc('You
     have attached one or more images. This is not enough! To make them
     appear, you have to place somewhere in the body or in the header,
     depending on their purpose. See the examples below.') %]
@@ -106,7 +106,7 @@
   </div>
   <div class="panel-body">
     <div class="alert alert-warning">
-      <span class="glyphicon glyphicon-warning-sign"></span>
+      <span class="fa fa-warning"></span>
       [% loc('To display the PDFs, set or append the following string in the header') %]:<br />
       <code>[% revision.attached_pdfs_string | html %]</code>
     </div>
@@ -158,13 +158,13 @@
 
     <div>
       <a href="#cheatsheet">
-        <span class="glyphicon glyphicon-hand-right"></span>
+        <span class="fa fa-hand-o-right"></span>
         [% loc('Cheatsheet for the markup') %]
       </a>
     </div>
     <div>
       <a href="[% c.uri_for_action('utils/import') %]" target="_blank">
-        <span class="glyphicon glyphicon-hand-right"></span>
+        <span class="fa fa-hand-o-right"></span>
         [% loc('HTML/Word Importer') %]
       </a>
     </div>

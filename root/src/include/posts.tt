@@ -34,7 +34,7 @@
       <br />
       <small>[% text.pubdate_locale(current_locale_code) %]</small>
       [% IF text.is_deferred %]
-      <span class="glyphicon glyphicon-time"></span>
+      <span class="fa fa-clock-o"></span>
       [% END %]
       <span class="amw-read-more-link pull-right">
         <a href="[% c.uri_for(text.full_uri) %]">
@@ -51,7 +51,7 @@
     <span class="amw-latest-listing-item-language">[[% text.lang %]]</span>
     [%- END -%]
     [% IF text.is_deferred %]
-    <span class="glyphicon glyphicon-time"></span>
+    <span class="fa fa-clock-o"></span>
     [% END %]
     [% UNLESS listing_item_hide_dates %]
     <span class="pull-right clearfix">

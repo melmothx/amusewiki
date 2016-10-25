@@ -9,21 +9,21 @@
 <div class="row" style="padding-bottom: 3px">
   <div class="col-xs-6">
     <a href="?sorting=asc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-sort-by-alphabet">
+      <span class="fa fa-sort-alpha-asc">
       </span>
     </a>
     <a href="?sorting=desc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-sort-by-alphabet-alt">
+      <span class="fa fa-sort-alpha-desc">
       </span>
     </a>
   </div>
   <div class="col-xs-6 right">
     <a href="?sorting=count-asc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-sort-by-order">
+      <span class="fa fa-sort-amount-asc">
       </span>
     </a>
     <a href="?sorting=count-desc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-sort-by-order-alt">
+      <span class="fa fa-sort-amount-desc">
       </span>
     </a>
   </div>
@@ -43,21 +43,21 @@
 <div class="row" style="padding-top: 3px">
   <div class="col-xs-6">
     <a href="?sorting=asc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-sort-by-alphabet">
+      <span class="fa fa-sort-alpha-asc">
       </span>
     </a>
     <a href="?sorting=desc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-sort-by-alphabet-alt">
+      <span class="fa fa-sort-alpha-desc">
       </span>
     </a>
   </div>
   <div class="col-xs-6 right">
     <a href="?sorting=count-asc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-sort-by-order">
+      <span class="fa fa-sort-amount-asc">
       </span>
     </a>
     <a href="?sorting=count-desc" class="btn btn-default btn-xs">
-      <span class="glyphicon glyphicon-sort-by-order-alt">
+      <span class="fa fa-sort-amount-desc">
       </span>
     </a>
   </div>

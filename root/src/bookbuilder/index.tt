@@ -836,7 +836,7 @@ $(document).ready(function(){
 <div id="bb-profiles">
   <h3>[% loc('Option templates') %]</h3>
   <div class="alert alert-warning" id="bb-profiles-instructions">
-    <span class="glyphicon glyphicon-warning-sign"></span>
+    <span class="fa fa-warning"></span>
     [% loc('To save or update the templates, you need first to save
     the options with the "[_1]" button', loc('Update')) %].
   </div>
@@ -870,7 +870,7 @@ $(document).ready(function(){
           <td class="text-center">
             <button type="submit" name="profile_load" value="profile_load"
                     class="btn btn-default">
-              <span class="glyphicon glyphicon-floppy-open"></span>
+              <span class="fa fa-folder-open-o"></span>
             </button>
           </td>
           <td class="text-center">
@@ -879,7 +879,7 @@ $(document).ready(function(){
               <span class="input-group-btn">
                 <button type="submit" name="profile_rename" value="profile_rename"
                         class="btn btn-default">
-                  <span class="glyphicon glyphicon-floppy-save"></span>
+                  <span class="fa fa-floppy-o"></span>
                 </button>
               </span>
             </div>
@@ -887,13 +887,13 @@ $(document).ready(function(){
           <td class="text-center">
             <button type="submit" name="profile_update" value="profile_update"
                     class="btn btn-default">
-              <span class="glyphicon glyphicon-floppy-save"></span>
+              <span class="fa fa-floppy-o"></span>
             </button>
           </td>
           <td class="text-center">
             <button type="submit" name="profile_delete" value="profile_delete"
                     class="btn btn-default">
-              <span class="glyphicon glyphicon-trash"></span>
+              <span class="fa fa-trash"></span>
             </button>
           </td>
         </form>
@@ -913,7 +913,7 @@ $(document).ready(function(){
                    placeholder="[% loc('Save the current settings with a name') %]" />
             <span class="input-group-btn">
               <button class="btn btn-default" type="submit" name="create_profile" value="1">
-                <span class="glyphicon glyphicon-floppy-save"></span>
+                <span class="fa fa-floppy-o"></span>
               </button>
             </span>
           </div>
@@ -1010,7 +1010,7 @@ $(document).ready(function(){
                  placeholder="[% loc('Load another session by token') %]" />
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit" name="load" value="1">
-              <span class="glyphicon glyphicon-floppy-open"></span>
+              <span class="fa fa-folder-open-o"></span>
             </button>
           </span>
         </div>
