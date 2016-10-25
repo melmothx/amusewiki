@@ -226,6 +226,8 @@ div.amw-post-listing-container {
     margin-top: 10px;
 }
 
+div#text-next-post-link span.fa,
+div#text-prev-post-link span.fa,
 div#text-next-post-link span.glyphicon,
 div#text-prev-post-link span.glyphicon {
     font-size: 20px;

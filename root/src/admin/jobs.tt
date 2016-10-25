@@ -37,14 +37,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Id') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'id', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>
@@ -52,14 +52,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Site id') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'site_id', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>
@@ -67,14 +67,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Task') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'task', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>
@@ -85,14 +85,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Status') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'status', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>
@@ -100,14 +100,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Created') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'created', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>
@@ -115,14 +115,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Completed') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'completed', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>
@@ -130,14 +130,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Priority') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'priority', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>
@@ -145,14 +145,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Produced') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'produced', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>
@@ -160,14 +160,14 @@
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-down"></span>
+          <span class="fa fa-arrow-down"></span>
         </a>
         [% loc('Errors') %]
         <a href="[% c.uri_for_action('/admin/jobs', 'errors', 'asc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
                  }) | html %]">
-          <span class="glyphicon glyphicon-arrow-up"></span>
+          <span class="fa fa-arrow-up"></span>
         </a>
       </th>
       <th>

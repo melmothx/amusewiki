@@ -33,7 +33,7 @@
     <div>
       <span id="pubdate-label">
         <strong>[% loc('Publication date') %]:</strong>
-        <span class="glyphicon glyphicon-time"
+        <span class="fa fa-clock-o"
               title="[% loc('This text is not published yet') %]"></span>
         [% text.pubdate %]
       </span>
@@ -242,7 +242,7 @@
         <button type="submit" class="btn btn-default"
                 title="[% loc('Edit this text') %]" data-toggle="tooltip" data-placement="top"
                 id="edit-button">
-          <span class="glyphicon glyphicon-edit" style="font-size: 1.5em"></span>
+          <span class="fa fa-edit" style="font-size: 1.5em"></span>
           <span style="display:none">[% loc('Edit this text') %]</span>
         </button>
       </form>
@@ -257,7 +257,7 @@
                 data-placement="top"
                 data-amw-register-stat-type="bookbuilder"
                 id="add-to-bookbuilder">
-          <span class="glyphicon glyphicon-plus" style="font-size: 1.5em"></span>
+          <span class="fa fa-plus" style="font-size: 1.5em"></span>
           <span style="display:none">
             [% loc('Add this text to the bookbuilder') %]
           </span>
@@ -273,9 +273,9 @@
                 title="[% loc('Select individual parts for the bookbuilder') %]"
                 data-toggle="tooltip" data-placement="top"
                 id="add-to-bookbuilder-partial">
-          <span class="glyphicon glyphicon-list-alt"
+          <span class="fa fa-list-alt"
                 style="font-size: 1.5em"></span>
-          <span class="glyphicon glyphicon-plus"
+          <span class="fa fa-plus"
                 style="font-size: 1.5em"></span>
           <span style="display:none">
             [% loc('Select individual parts for the bookbuilder') %]
@@ -391,7 +391,7 @@
     <div id="text-prev-post-link">
       <a href="[% c.uri_for(text_prev_uri) %]" title="[% loc('Previous') %]"
          data-toggle="tooltip" data-placement="top">
-        <span class="glyphicon glyphicon-chevron-left hidden-xs"></span>
+        <span class="fa fa-chevron-left hidden-xs"></span>
         <span class="btn btn-default visible-xs">[% loc("Older texts") %]</span>
       </a>
     </div>
@@ -406,7 +406,7 @@
     <div id="text-next-post-link">
       <a href="[% c.uri_for(text_next_uri) %]" title="[% loc('Next') %]"
          data-toggle="tooltip" data-placement="top">
-        <span class="glyphicon glyphicon-chevron-right hidden-xs"></span>
+        <span class="fa fa-chevron-right hidden-xs"></span>
         <span class="btn btn-default visible-xs">[% loc("Newer texts") %]</span>
       </a>
     </div>
