@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # cp bootstrap/dist/fonts/* ../root/static/fonts
+cp Font-Awesome/css/* ../root/static/css
+cp Font-Awesome/fonts/* ../root/static/fonts
 cp bootstrap/dist/js/bootstrap* ../root/static/js
 lessc -x amusewiki.less ../root/static/css/bootstrap.css
 for theme in amusecosmo amusewiki amusejournal; do
