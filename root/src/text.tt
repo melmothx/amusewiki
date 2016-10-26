@@ -373,7 +373,8 @@
   <div class="well">
     <div id="amw-latest-entries-special-page">
       <div class="center">
-        <img src="[% c.uri_for('/static/images/ajax-loader-circular.gif') %]" alt="Loading" />
+        <span class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></span>
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
   </div>

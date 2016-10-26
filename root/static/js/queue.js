@@ -5,7 +5,7 @@ $(document).ready(function() {
 function update_status(url, reloaded) {
     $.getJSON(url, function(data) {
         if (!reloaded) {
-            $('#waiting').show();
+            $('.waiting-for-job').show();
         }
         $('pre#job-logs').text(data.logs);
         $('.bbstatusstring').text(data.status_loc);
@@ -22,7 +22,7 @@ function update_status(url, reloaded) {
             setTimeout(funct, 1000);
         }
         else {
-            $('#waiting').hide();
+            $('.waiting-for-job').hide();
         }
         if (data.position) {
             $('#task-lane').show();
