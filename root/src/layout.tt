@@ -46,11 +46,11 @@
             src="[% c.uri_for('/static/js/jquery-1.11.1.min.js') %]">
     </script>
     <link rel="stylesheet"
-          href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 3 }) %]" />
+          href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 4 }) %]" />
 
     <!-- Latest compiled and minified JavaScript -->
     <script type="text/javascript"
-            src="[% c.uri_for('/static/js/bootstrap.min.js', { v => 4 }) %]">
+            src="[% c.uri_for('/static/js/bootstrap.min.js', { v => 5 }) %]">
     </script>
 
     <link rel="stylesheet"
