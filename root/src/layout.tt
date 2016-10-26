@@ -175,7 +175,7 @@
                        name="query" value=""/>
                 <div class="input-group-btn">
                   <button type="submit" class="btn btn-primary">
-                    <span class="fa fa-search"></span>
+                    <span class="fa fa-search fw"></span>
                   </button>
                 </div>
               </div>
@@ -187,7 +187,7 @@
                  data-toggle="modal"
                  title="[% loc('Table of Contents') %]"
                  data-target="#myModal">
-                <span class="fa fa-list text-primary"></span>
+                <span class="fa fa-list text-primary fw"></span>
                 <span class=" visible-xs-inline">
                   [% loc('Table of Contents') %]
                 </span>
@@ -197,7 +197,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('texts by authors, title, topic...') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-heart"></span>
+                <span class="fa fa-heart fw"></span>
                 <span class="hidden-sm" id="amw-catalog-label">
                   [% loc('Archive') %]
                 </span>
@@ -283,7 +283,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-plus"></span>
+                <span class="fa fa-plus fw"></span>
                 <span class="visible-lg-inline visible-xs-inline" id="awm-special-label">
                   [% loc('More') %]
                 </span>
@@ -305,7 +305,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Related projects') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-th"></span>
+                <span class="fa fa-th fw"></span>
                 <span class="hidden-sm" id="amw-sitegroup-label">
                   [% loc('Other languages') %]
                 </span>
@@ -328,7 +328,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Language selection') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-globe"></span>
+                <span class="fa fa-globe fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Language selection') %]
                 </span>
@@ -356,7 +356,7 @@
                  class="dropdown-toggle"
                  title="[% c.user.get('username') | html %]"
                  data-toggle="dropdown">
-                <span class="fa fa-user"></span>
+                <span class="fa fa-user fw"></span>
                 <span class="visible-xs-inline">
                   [% c.user.get('username') | html %]
                 </span>
@@ -461,7 +461,7 @@
             <li [% IF nav == 'bookbuilder' %] class="active" [% END %]>
               <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
                 [% SET bb_count_texts = c.model('BookBuilder').total_texts %]
-                <span class="fa fa-book [% IF bb_count_texts %]text-primary[% END %]"></span>
+                <span class="fa fa-book [% IF bb_count_texts %]text-primary[% END %] fw"></span>
                 <span class="hidden-sm">
                   [% loc('Bookbuilder') %]
                 </span>
@@ -472,7 +472,7 @@
             </li>
             <li id="amw-navbar-opds-link">
               <a href="[% c.uri_for('/help/opds') %]" title="[% loc('Mobile') %]">
-                <span class="fa fa-mobile"></span>
+                <span class="fa fa-tablet fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Mobile applications') %]
                 </span>
@@ -480,7 +480,7 @@
             </li>
             <li id="amw-navbar-opds-random">
               <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
-                <span class="fa fa-random"></span>
+                <span class="fa fa-random fw"></span>
                 <span class="visible-lg-inline visible-xs-inline">
                   [% loc('Random') %]
                 </span>
@@ -537,7 +537,7 @@
       [% END %]
       [% IF c.flash.error_msg %]
       <div class="alert alert-warning" id="error_message">
-        <span class="fa fa-exclamation-triangle"></span>
+        <span class="fa fa-exclamation-triangle fw"></span>
         [% c.flash.error_msg | html %]
       </div>
       [% END %]
@@ -583,7 +583,7 @@
     <div id="footer">
       <div class="footer center">
         <span id="amw-footer-link-random">
-          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]"><span class="fa fa-random" style="padding-right:3px"></span></a>
+          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]"><span class="fa fa-random fw" style="padding-right:3px"></span></a>
         </span>
         <span id="amw-footer-link-random-sep">|</span>
         <span id="amw-footer-link-feeds">

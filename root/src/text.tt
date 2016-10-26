@@ -157,7 +157,7 @@
       <span id="pdfa4imp">
         <a href="[% basename %].a4.pdf" class="pdflinks amw-register-stat"
            data-amw-register-stat-type="a4-pdf">
-          <span class="fa fa-file-pdf-o fa-2x fa-border fw"
+          <span class="fa fa-columns fa-2x fa-border fw"
                 aria-hidden="true"
                 title="[% loc('A4 imposed PDF') %]"
                 data-toggle="tooltip" data-placement="top"
@@ -168,7 +168,7 @@
       <span id="letterimp">
         <a href="[% basename %].lt.pdf" class="pdflinks amw-register-stat"
            data-amw-register-stat-type="lt-pdf">
-          <span class="fa fa-file-pdf-o fa-2x fa-border fw"
+          <span class="fa fa-columns fa-2x fa-border fw"
                 aria-hidden="true"
                 title="[% loc('Letter imposed PDF') %]"
                 data-toggle="tooltip" data-placement="top"
@@ -190,7 +190,7 @@
       <span id="downloadepub">
         <a href="[% basename %].epub" class="amw-register-stat"
            data-amw-register-stat-type="epub">
-          <span class="fa fa-mobile fa-2x fa-border fw"
+          <span class="fa fa-tablet fa-2x fa-border fw"
                 aria-hidden="true"
                 title="[% loc('EPUB (for mobile devices)') %]"
                 data-toggle="tooltip" data-placement="top"
