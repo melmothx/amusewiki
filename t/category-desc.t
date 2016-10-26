@@ -139,7 +139,7 @@ is $mech->status, 401;
 
 $mech->get_ok('/?__language=en');
 $mech->get_ok('/authors/pippo');
-$mech->content_lacks('glyphicon-edit');
+$mech->content_lacks('amw-category-description-edit-button');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
 $mech->get('/category/author/pippo/edit');
 is $mech->status, 401, "Bounced to login";
@@ -154,7 +154,7 @@ is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
 
 $mech->get_ok('/authors/pippo');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
-$mech->content_contains('glyphicon-edit');
+$mech->content_contains('amw-category-description-edit-button');
 $mech->get_ok('/category/author/pippo/edit');
 is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
 $mech->content_like(qr{<h2>Update category description});
