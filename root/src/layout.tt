@@ -488,7 +488,7 @@
       </div>
     </div>
     <div id="wrap">
-    <div id="main" class="container clear-top">
+    <div id="main" class="container[% IF full_page_no_side_columns %]-fluid[% END %] clear-top">
       [% IF site.has_site_file('widebanner.png') %]
       <div class="row">
         <div class="col-12-sm hidden-xs">
