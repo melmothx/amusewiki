@@ -74,7 +74,7 @@ $site->update({
     my $uri = $revision->publish_text;
     diag $uri;
     $mech->get_ok($uri);
-    ok($mech->submit_form(form_id => 'book-builder-add-text-partial'));
+    ok($mech->follow_link(url_regex => qr{/library/the-text/bbselect}));
     is ($mech->uri->path, '/library/the-text/bbselect');
     $mech->content_contains(q{value="1"});
     ok($mech->form_id("book-builder-add-text-partial"), "Selected form for partials");

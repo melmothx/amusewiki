@@ -117,9 +117,11 @@ $mech->get('/');
 $mech->content_contains($title);
 $mech->get_ok($text);
 $mech->content_contains(q{<h3 id="text-author">pippo</h3>});
-ok($mech->form_id('book-builder-add-text'));
-$mech->click;
-
+{
+    my $uri = $text;
+    $uri =~ s/\/library\///;
+    ok($mech->follow_link(url_regex => qr{/bookbuilder/add/\Q$uri}));
+}
 $mech->content_contains("The text was added to the bookbuilder");
 is ($mech->uri->path, $text);
 $mech->get_ok("/bookbuilder");

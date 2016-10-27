@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 129;
+use Test::More tests => 133;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -181,7 +181,7 @@ foreach my $fmt (qw/pdf epub/) {
 
 $mech->get('/library/first-test');
 
-$mech->submit_form(form_id => 'book-builder-add-text-partial');
+ok($mech->follow_link(url_regex => qr{/library/first-test/bbselect}));
 
 is $mech->uri->path, '/library/first-test/bbselect';
 
@@ -200,7 +200,7 @@ $mech->get_ok('/bookbuilder');
 $mech->content_contains('first-test/bbselect?selected=pre-0-post"');
 
 $mech->get_ok('/library/second-test');
-$mech->submit_form(form_id => 'book-builder-add-text-partial');
+ok($mech->follow_link(url_regex => qr{/library/second-test/bbselect}));
 ok($mech->form_id("book-builder-add-text-partial"), "Found form for partials");
 @inputs = $mech->grep_inputs({ type => qr{^checkbox$},
                                name => qr{^select$} });
@@ -211,7 +211,7 @@ $mech->get_ok('/bookbuilder');
 $mech->content_contains('second-test/bbselect?selected=pre-1"');
 
 $mech->get_ok('/library/do-this-by-yourself');
-$mech->submit_form(form_id => 'book-builder-add-text');
+ok($mech->follow_link(url_regex => qr{/bookbuilder/add/do-this-by-yourself}));
 $mech->get_ok('/bookbuilder');
 $mech->content_contains('/library/do-this-by-yourself');
 $mech->content_lacks('do-this-by-yourself/bbselect');
@@ -258,7 +258,7 @@ is $mech->status, 401;
 $mech->submit_form(with_fields => { __auth_human => 'January' });
 $mech->content_contains("Quota exceeded",  "Quota hit adding the whole text");
 
-$mech->submit_form(form_id => 'book-builder-add-text-partial');
+ok($mech->follow_link(url_regex => qr{/library/first-test/bbselect}));
 ok($mech->form_id("book-builder-add-text-partial"), "Found form for partials");
 $mech->tick(select => '1');
 $mech->click;
