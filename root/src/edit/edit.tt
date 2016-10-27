@@ -16,8 +16,7 @@
 </div>
 
 <div class="row">
-  <div id="page" class="col-sm-6 col-sm-push-6"
-       style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
+  <div id="page" class="col-sm-6 col-sm-push-6">
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -126,7 +125,13 @@
 
   </div>
   <div class="col-sm-6 col-sm-pull-6">
-
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          [% loc('Editing') %]
+        </h3>
+      </div>
+      <div class="panel-body">
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
   <div class="form-group">
@@ -308,10 +313,16 @@
   </div>
 </form>
 </div>
+    </div>
+    </div>
 
-    <div id="cheatsheet" style="border: solid 1px #bbb; padding: 5px;">
-      <h3>[% loc('Cheatsheet for the markup') %]</h3>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">[% loc('Cheatsheet for the markup') %]</h3>
+      </div>
+      <div class="panel-body">
 
+    <div id="cheatsheet">
       <h4>[% loc('Summary') %]</h4>
       <ul id="cssummary">
         <li><a href="#csheads">[% loc('Headings') %]</a></li>
@@ -649,6 +660,8 @@ How smart a lash that speech doth giue my Conscience?
         </a>
       </p>
     </div>
+    </div>
+    </div> <!-- end of panel -->
   </div>
 </div>
 
