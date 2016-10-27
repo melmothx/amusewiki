@@ -34,6 +34,10 @@ div#preamble {
     padding-bottom: 20px;
 }
 
+div.preview-preamble {
+    padding-bottom: 0px !important;
+}
+
 p.tableofcontentline {
     margin: 0px 1em;
     text-indent: -1em;
