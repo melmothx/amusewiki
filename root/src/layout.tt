@@ -201,7 +201,7 @@
                 <span class="hidden-sm" id="amw-catalog-label">
                   [% loc('Archive') %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
 	            <li[% IF nav == 'titles' %] class="active" [% END %]
@@ -287,7 +287,7 @@
                 <span class="visible-lg-inline visible-xs-inline" id="awm-special-label">
                   [% loc('More') %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH link IN navigation.specials %]
@@ -309,7 +309,7 @@
                 <span class="hidden-sm" id="amw-sitegroup-label">
                   [% loc('Other languages') %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH link IN navigation.projects %]
@@ -332,7 +332,7 @@
                 <span class="visible-xs-inline">
                   [% loc('Language selection') %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH lang IN site.multilanguage_list %]
@@ -360,7 +360,7 @@
                 <span class="visible-xs-inline">
                   [% c.user.get('username') | html %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 <li role="presentation" class="dropdown-header hidden-xs">
@@ -462,7 +462,7 @@
               <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
                 [% SET bb_count_texts = c.model('BookBuilder').total_texts %]
                 <span class="fa fa-book [% IF bb_count_texts %]text-primary[% END %] fw"></span>
-                <span class="hidden-sm">
+                <span class="visible-lg-inline visible-xs-inline">
                   [% loc('Bookbuilder') %]
                 </span>
                 [% IF bb_count_texts %]
