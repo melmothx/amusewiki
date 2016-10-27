@@ -4,9 +4,10 @@
   </div>
 </div>
 <div id="amw-text-preview-page">
+
 [%- SET text = revision.document_html_headers -%]
     <div id="preamble-container" class="well">
-      <div id="preamble">
+      <div id="preamble" class="preview-preamble" >
         <p id="texttitle">
           <strong>[% loc('Title') %]:</strong>
           [% text.title %]
@@ -66,12 +67,18 @@
           <img src="[% text.cover %]" alt="[% text.cover %]" class="img-responsive img-thumbnail"/>
         </p>
         [% END %]
-
       </div>
     </div>
 
+    [% SET muse_doc = revision.muse_doc %]
+    [% IF muse_doc.toc_as_html %]
+    <div class="well">
+    [% muse_doc.toc_as_html %]
+    </div>
+    [% END %]
+
     <div id="htmltextbody">
-      [% revision.muse_doc.as_html %]
+      [% muse_doc.as_html %]
     </div>
 </div>
 <hr />
