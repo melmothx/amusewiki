@@ -242,3 +242,16 @@ div#text-prev-post-link span.glyphicon {
     width: 100%;
     overflow-y: scroll;
 }
+
+.amw-spacer-20 {
+    margin:0;
+    padding:0;
+    height: 20px;
+}
+
+.amw-spacer-50 {
+    margin:0;
+    padding:0;
+    height: 50px;
+}
+

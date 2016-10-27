@@ -103,7 +103,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 29 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 30 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 2 }) %]"></script>
     <script type="text/javascript">
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -478,10 +478,18 @@
                 </span>
               </a>
             </li>
+            <li id="amw-navbar-feed-link">
+              <a href="[% c.uri_for('/feed') %]" title="[% loc('RSS feed') %]">
+                <span class="fa fa-rss fw"></span>
+                <span class="visible-xs-inline">
+                  [% loc('RSS feed') %]
+                </span>
+              </a>
+            </li>
             <li id="amw-navbar-opds-random">
               <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
                 <span class="fa fa-random fw"></span>
-                <span class="visible-lg-inline visible-xs-inline">
+                <span class="visible-xs-inline">
                   [% loc('Random') %]
                 </span>
               </a>
@@ -583,7 +591,7 @@
     <div id="footer">
       <div class="footer center">
         <span id="amw-footer-link-random">
-          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]"><span class="fa fa-random fw" style="padding-right:3px"></span></a>
+          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">[% loc('Random') %]</a>
         </span>
         <span id="amw-footer-link-random-sep">|</span>
         <span id="amw-footer-link-feeds">
