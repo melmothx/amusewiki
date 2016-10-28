@@ -966,7 +966,7 @@ $(document).ready(function() {
               data-toggle="collapse"
               aria-expanded="false"
               aria-controls="restricted-ssl">
-        [% loc('Editing screen layout options') %]
+        [% loc('Edit screen layout options') %]
          <span class="caret"></span>
       </legend>
       <div id="user-editing-options" class="collapse">

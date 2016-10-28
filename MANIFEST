@@ -41,6 +41,8 @@ dbicdh/_source/deploy/25/001-auto-__VERSION.yml
 dbicdh/_source/deploy/25/001-auto.yml
 dbicdh/_source/deploy/26/001-auto-__VERSION.yml
 dbicdh/_source/deploy/26/001-auto.yml
+dbicdh/_source/deploy/27/001-auto-__VERSION.yml
+dbicdh/_source/deploy/27/001-auto.yml
 dbicdh/_source/deploy/3/001-auto-__VERSION.yml
 dbicdh/_source/deploy/3/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
@@ -91,6 +93,8 @@ dbicdh/MySQL/deploy/25/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/25/001-auto.sql
 dbicdh/MySQL/deploy/26/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/26/001-auto.sql
+dbicdh/MySQL/deploy/27/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/27/001-auto.sql
 dbicdh/MySQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/3/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
@@ -122,6 +126,7 @@ dbicdh/MySQL/upgrade/22-23/001-auto.sql
 dbicdh/MySQL/upgrade/23-24/001-auto.sql
 dbicdh/MySQL/upgrade/24-25/001-auto.sql
 dbicdh/MySQL/upgrade/25-26/001-auto.sql
+dbicdh/MySQL/upgrade/26-27/001-auto.sql
 dbicdh/MySQL/upgrade/3-4/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
@@ -165,6 +170,8 @@ dbicdh/PostgreSQL/deploy/25/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/25/001-auto.sql
 dbicdh/PostgreSQL/deploy/26/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/26/001-auto.sql
+dbicdh/PostgreSQL/deploy/27/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/27/001-auto.sql
 dbicdh/PostgreSQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/3/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
@@ -196,6 +203,7 @@ dbicdh/PostgreSQL/upgrade/22-23/001-auto.sql
 dbicdh/PostgreSQL/upgrade/23-24/001-auto.sql
 dbicdh/PostgreSQL/upgrade/24-25/001-auto.sql
 dbicdh/PostgreSQL/upgrade/25-26/001-auto.sql
+dbicdh/PostgreSQL/upgrade/26-27/001-auto.sql
 dbicdh/PostgreSQL/upgrade/3-4/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
@@ -239,6 +247,8 @@ dbicdh/SQLite/deploy/25/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/25/001-auto.sql
 dbicdh/SQLite/deploy/26/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/26/001-auto.sql
+dbicdh/SQLite/deploy/27/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/27/001-auto.sql
 dbicdh/SQLite/deploy/3/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/3/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
@@ -270,6 +280,7 @@ dbicdh/SQLite/upgrade/22-23/001-auto.sql
 dbicdh/SQLite/upgrade/23-24/001-auto.sql
 dbicdh/SQLite/upgrade/24-25/001-auto.sql
 dbicdh/SQLite/upgrade/25-26/001-auto.sql
+dbicdh/SQLite/upgrade/26-27/001-auto.sql
 dbicdh/SQLite/upgrade/3-4/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
@@ -446,6 +457,7 @@ root/src/help/irc.tt
 root/src/help/opds.tt
 root/src/include/breadcrumbs.tt
 root/src/include/ckeditor.tt
+root/src/include/editing-options.tt
 root/src/include/markitup.tt
 root/src/include/pagination.tt
 root/src/include/posts.tt
@@ -466,6 +478,7 @@ root/src/tasks/display.tt
 root/src/text.tt
 root/src/user/create.tt
 root/src/user/edit.tt
+root/src/user/edit_options.tt
 root/src/user/human.tt
 root/src/user/login.tt
 root/src/user/reset_password.tt
@@ -895,6 +908,7 @@ t/custom-templates/html.tt
 t/custom-templates/latex.tt
 t/dbic.yaml
 t/deferred-texts.t
+t/editing-options.t
 t/editing.t
 t/entities.json
 t/entities.t
