@@ -103,7 +103,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 30 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 31 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 2 }) %]"></script>
     <script type="text/javascript">
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -411,6 +411,11 @@
                 <li>
                   <a href="[% c.uri_for_action('/user/edit', [c.user.get('id')]) %]">
                     [% loc('Update account info') %]
+                  </a>
+                </li>
+                <li>
+                  <a href="[% c.uri_for_action('/user/edit_options', [c.user.get('id')]) %]">
+                    [% loc('Edit screen layout options') %]
                   </a>
                 </li>
                 [%# and these are for root %]

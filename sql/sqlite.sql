@@ -105,6 +105,10 @@ CREATE TABLE users (
        email    VARCHAR(255),
        created_by VARCHAR(255),
        active   INTEGER(1) NOT NULL DEFAULT 1,
+       edit_option_preview_box_height INTEGER NOT NULL DEFAULT 500,
+       edit_option_show_filters INTEGER(1) NOT NULL DEFAULT 1,
+       edit_option_show_cheatsheet INTEGER(1) NOT NULL DEFAULT 1,
+       edit_option_page_left_bs_columns INTEGER DEFAULT 6,
        reset_token TEXT NULL,
        reset_until INTEGER NULL
 );

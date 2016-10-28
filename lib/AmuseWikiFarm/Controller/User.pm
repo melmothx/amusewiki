@@ -49,6 +49,7 @@ install in the session the key C<i_am_human>.
 use Email::Valid;
 use URI;
 use URI::QueryParam;
+use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 use constant { MAXLENGTH => 255, MINPASSWORD => 7 };
 
@@ -226,21 +227,27 @@ sub create :Chained('user') :Args(0) {
     }
 }
 
-sub edit :Chained('user') :Args(1) {
+sub get_user :Chained('user') :PathPart('edit') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
     unless ($c->user->get('id') eq $id or
             $c->check_user_roles(qw/root/)) {
         $c->detach('/not_permitted');
         return;
     }
-    my $users = $c->model('DB::User');
-    my $user = $users->find($id);
+    my $user = $c->model('DB::User')->find($id);
     unless ($user) {
         log_info { "User $id not found!" };
         $c->detach('/not_found');
         return;
     }
-    my %params = %{ $c->request->params };
+    $c->stash(user => $user);
+}
+
+
+sub edit :Chained('get_user') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $user = $c->stash->{user} or die;
+    my %params = %{ $c->request->body_params };
     if ($params{update}) {
         my %validate;
         my @msgs;
@@ -255,7 +262,7 @@ sub edit :Chained('user') :Args(1) {
             $validate{email} = $params{email};
             push @msgs, $c->loc("Email updated");
         }
-        my ($validated, @errors) = $users->validate_params(%validate);
+        my ($validated, @errors) = $c->model('DB::User')->validate_params(%validate);
         if ($validated and %$validated) {
             $user->update($validated);
             $user->discard_changes;
@@ -265,7 +272,28 @@ sub edit :Chained('user') :Args(1) {
             $c->flash(error_msg => join("\n", map { $c->loc($_) } @errors));
         }
     }
-    $c->stash(user => $user);
+}
+
+sub edit_options :Chained('get_user') :PathPart('options') :Args(0) {
+    my ($self, $c) = @_;
+    my $user = $c->stash->{user} or die;
+    my %params = %{ $c->request->body_params };
+    # cheap validation, these are all numeric and enforced in the db
+    if (delete $params{update}) {
+        my %update = map { $_ => $params{$_} || 0 } (qw/edit_option_preview_box_height
+                                                        edit_option_page_left_bs_columns
+                                                        edit_option_show_filters
+                                                        edit_option_show_cheatsheet/);
+        try {
+            $user->update(\%update);
+            $c->flash(status_msg => $c->loc('User [_1] updated', $user->username));
+        } catch {
+            my $error = $_;
+            # this shouldn't normally happen, so say "errors" and notify the admin
+            Dlog_error { "Failure updating " . $user->username . "with params $_" } \%params;
+            $c->flash(error_msg => $c->loc('Errors'));
+        };
+    }
 }
 
 sub site_config :Chained('user') :PathPart('site') :Args(0) {

@@ -2514,6 +2514,10 @@ sub update_from_params {
                            freenode_irc_channel
                            turn_links_to_images_into_images
                            use_js_highlight
+                           edit_option_page_left_bs_columns
+                           edit_option_show_cheatsheet
+                           edit_option_show_filters
+                           edit_option_preview_box_height
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3090,8 +3094,65 @@ certificate).
 
 This affects only the generation of the nginx conf
 
+=head1 EDITING OPTIONS
+
+Stored in the site_options table and wrapped here. Compare with User
+class.
+
+=over 4
+
+=item edit_option_preview_box_height
+
+=item edit_option_show_filters
+
+=item edit_option_show_cheatsheet
+
+=item edit_option_page_left_bs_columns
+
+=back
+
 =cut
 
+
+sub edit_option_preview_box_height {
+    my $self = shift;
+    my $value = $self->get_option('edit_option_preview_box_height');
+    if (defined $value and
+        $value =~ m/\A[1-9][0-9]*\z/) {
+        return $value;
+    }
+    return 500;
+}
+
+sub edit_option_show_filters {
+    my $self = shift;
+    my $value = $self->get_option('edit_option_show_filters');
+    if (defined $value) {
+        $value ? return 1 : return 0;
+    }
+    else {
+        return 1;
+    }
+}
+sub edit_option_show_cheatsheet {
+    my $self = shift;
+    my $value = $self->get_option('edit_option_show_cheatsheet');
+    if (defined $value) {
+        $value ? return 1 : return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
+sub edit_option_page_left_bs_columns {
+    my $self = shift;
+    my $value = $self->get_option('edit_option_page_left_bs_columns');
+    if (defined $value and $value =~ m/\A[1-9][0-9]*\z/) {
+        return $value;
+    }
+    return 6;
+}
 
 __PACKAGE__->meta->make_immutable;
 
