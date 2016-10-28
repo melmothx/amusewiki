@@ -326,9 +326,7 @@
 
   [% SET translations = text.translations_rs %]
   [% IF translations.count %]
-  <div style="heigth:10px">&nbsp;
-    &nbsp;
-  </div>
+  <div class="amw-spacer-50"></div>
   <div id="translations" class="well well-sm">
     <ul>
       [% WHILE (translation = translations.next) %]
@@ -359,10 +357,7 @@
          id="special-pages-logo-img" />
   </div>
   [% END %]
-
-  <div style="heigth:10px">&nbsp;
-    &nbsp;
-  </div>
+  <div class="amw-spacer-20"></div>
   <div class="center">
     <h1><small>[% loc('Latest entries') %]</small></h1>
   </div>
