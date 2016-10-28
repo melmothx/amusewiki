@@ -18,7 +18,7 @@ my $site = create_site($schema, '0editingopts0');
 my $user = $schema->resultset('User')->update_or_create({
                                                          username => 'u' . $site->id,
                                                          password => 'u' . $site->id,
-                                                        });
+                                                        })->discard_changes;
 my %defaults = (
                 edit_option_preview_box_height =>  500,
                 edit_option_show_filters =>  1,
