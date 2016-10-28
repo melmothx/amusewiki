@@ -16,7 +16,8 @@
 </div>
 
 <div class="row">
-  <div id="page" class="col-sm-6 col-sm-push-6">
+  <div id="page" class="col-sm-[% edit_option_page_right_bs_columns %]
+                        col-sm-push-[% edit_option_page_left_bs_columns %]">
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -28,14 +29,17 @@
         </a>
     </h3>
   </div>
-  <div class="panel-body amw-fixed-panel-edit">
+  <div class="panel-body amw-fixed-panel-edit"
+       [% IF edit_option_preview_box_height %]style="max-height: [% edit_option_preview_box_height %]px;"[% END %]>
     <div id="amw-text-edit-preview-box">
       <div class="center">
         <span class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></span>
         <span class="sr-only">Loading...</span>
       </div>
     </div>
-    <hr />
+  </div>
+  <hr />
+  <div class="panel-body">
     <div>
       [% IF revision.has_local_modifications %]
       <div class="center">
@@ -124,7 +128,8 @@
 
 
   </div>
-  <div class="col-sm-6 col-sm-pull-6">
+  <div class="col-sm-[% edit_option_page_left_bs_columns %]
+              col-sm-pull-[% edit_option_page_right_bs_columns %]">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
@@ -180,6 +185,7 @@
                 [% IF locked_editing %]readonly="readonly"[% END %]
                 name="body">[%- revision.muse_body | html -%]</textarea>
     </div>
+    [% SET show_filters = edit_option_show_filters %]
     [%- IF (c.req.params.fix_typography || c.req.params.fix_typography || c.req.params.fix_links ||
             c.req.params.remove_nbsp    || c.req.params.fix_nbsp       || c.req.params.fix_footnotes) -%]
        [%- SET show_filters = 1 -%]
@@ -318,9 +324,15 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">[% loc('Cheatsheet for the markup') %]</h3>
+        <h3 class="panel-title"
+            role="button"
+            data-target="#cheatsheet-panel"
+            data-toggle="collapse"
+            aria-expanded="[% IF edit_option_show_cheatsheet %]true[% ELSE %]false[% END %]"
+            aria-controls="cheatsheet-panel"
+            >[% loc('Cheatsheet for the markup') %]</h3>
       </div>
-      <div class="panel-body">
+      <div class="panel-body collapse[% IF edit_option_show_cheatsheet %] in[% END %]" id="cheatsheet-panel">
 
     <div id="cheatsheet">
       <h4>[% loc('Summary') %]</h4>
