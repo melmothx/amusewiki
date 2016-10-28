@@ -960,6 +960,22 @@ $(document).ready(function() {
       </div>
     </fieldset>
 
+    <fieldset>
+      <legend role="button"
+              data-target="#user-editing-options"
+              data-toggle="collapse"
+              aria-expanded="false"
+              aria-controls="restricted-ssl">
+        [% loc('Editing screen layout options') %]
+         <span class="caret"></span>
+      </legend>
+      <div id="user-editing-options" class="collapse">
+        [% SET editobject = esite %]
+        [% INCLUDE 'include/editing-options.tt' %]
+        [% SET editobject = 0 %]
+      </div>
+    </fieldset>
+
     [% UNLESS restricted %]
     <fieldset>
       <legend role="button"
