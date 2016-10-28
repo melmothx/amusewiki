@@ -77,7 +77,7 @@ __PACKAGE__->table("users");
   is_nullable: 0
   size: 1
 
-=head2 edit_option_preview_box_heigth
+=head2 edit_option_preview_box_height
 
   data_type: 'integer'
   default_value: 500
@@ -128,7 +128,7 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "active",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
-  "edit_option_preview_box_heigth",
+  "edit_option_preview_box_height",
   { data_type => "integer", default_value => 500, is_nullable => 0 },
   "edit_option_show_filters",
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
@@ -236,8 +236,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-10-28 14:21:27
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:qbvr6/ILkyNwwog3i2h2HQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-10-28 15:02:58
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UI589B1dzfma9JThZIQjJg
 
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt

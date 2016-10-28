@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Fri Oct 28 14:24:35 2016
+-- Created on Fri Oct 28 15:03:23 2016
 -- 
 ;
 SET foreign_key_checks=0;
@@ -95,7 +95,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NULL,
   `created_by` varchar(255) NULL,
   `active` integer(1) NOT NULL DEFAULT 1,
-  `edit_option_preview_box_heigth` integer NOT NULL DEFAULT 500,
+  `edit_option_preview_box_height` integer NOT NULL DEFAULT 500,
   `edit_option_show_filters` integer(1) NOT NULL DEFAULT 1,
   `edit_option_show_cheatsheet` integer(1) NOT NULL DEFAULT 1,
   `edit_option_page_left_bs_columns` integer NULL DEFAULT 6,

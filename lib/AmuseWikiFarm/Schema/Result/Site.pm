@@ -3097,7 +3097,7 @@ class.
 
 =over 4
 
-=item edit_option_preview_box_heigth
+=item edit_option_preview_box_height
 
 =item edit_option_show_filters
 
@@ -3110,9 +3110,9 @@ class.
 =cut
 
 
-sub edit_option_preview_box_heigth {
+sub edit_option_preview_box_height {
     my $self = shift;
-    my $value = $self->get_option('edit_option_preview_box_heigth');
+    my $value = $self->get_option('edit_option_preview_box_height');
     if (defined $value and
         $value =~ m/\A[1-9][0-9]*\z/) {
         return $value;

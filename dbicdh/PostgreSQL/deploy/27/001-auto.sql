@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Fri Oct 28 14:24:35 2016
+-- Created on Fri Oct 28 15:03:23 2016
 -- 
 ;
 --
@@ -102,7 +102,7 @@ CREATE TABLE "users" (
   "email" character varying(255),
   "created_by" character varying(255),
   "active" smallint DEFAULT 1 NOT NULL,
-  "edit_option_preview_box_heigth" integer DEFAULT 500 NOT NULL,
+  "edit_option_preview_box_height" integer DEFAULT 500 NOT NULL,
   "edit_option_show_filters" smallint DEFAULT 1 NOT NULL,
   "edit_option_show_cheatsheet" smallint DEFAULT 1 NOT NULL,
   "edit_option_page_left_bs_columns" integer DEFAULT 6,

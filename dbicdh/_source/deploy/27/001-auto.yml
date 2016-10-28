@@ -2784,13 +2784,13 @@ schema:
           order: 10
           size:
             - 0
-        edit_option_preview_box_heigth:
+        edit_option_preview_box_height:
           data_type: integer
           default_value: 500
           is_nullable: 0
           is_primary_key: 0
           is_unique: 0
-          name: edit_option_preview_box_heigth
+          name: edit_option_preview_box_height
           order: 7
           size:
             - 0

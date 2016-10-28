@@ -20,7 +20,7 @@ my $user = $schema->resultset('User')->update_or_create({
                                                          password => 'u' . $site->id,
                                                         });
 my %defaults = (
-                edit_option_preview_box_heigth =>  500,
+                edit_option_preview_box_height =>  500,
                 edit_option_show_filters =>  1,
                 edit_option_show_cheatsheet =>  1,
                 edit_option_page_left_bs_columns => 6,

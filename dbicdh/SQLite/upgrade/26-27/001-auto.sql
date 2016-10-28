@@ -4,7 +4,7 @@
 BEGIN;
 
 ;
-ALTER TABLE users ADD COLUMN edit_option_preview_box_heigth integer NOT NULL DEFAULT 500;
+ALTER TABLE users ADD COLUMN edit_option_preview_box_height integer NOT NULL DEFAULT 500;
 
 ;
 ALTER TABLE users ADD COLUMN edit_option_show_filters integer(1) NOT NULL DEFAULT 1;

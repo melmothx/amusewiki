@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Fri Oct 28 14:24:34 2016
+-- Created on Fri Oct 28 15:03:22 2016
 -- 
 
 ;
@@ -95,7 +95,7 @@ CREATE TABLE "users" (
   "email" varchar(255),
   "created_by" varchar(255),
   "active" integer(1) NOT NULL DEFAULT 1,
-  "edit_option_preview_box_heigth" integer NOT NULL DEFAULT 500,
+  "edit_option_preview_box_height" integer NOT NULL DEFAULT 500,
   "edit_option_show_filters" integer(1) NOT NULL DEFAULT 1,
   "edit_option_show_cheatsheet" integer(1) NOT NULL DEFAULT 1,
   "edit_option_page_left_bs_columns" integer DEFAULT 6,
