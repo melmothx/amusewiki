@@ -138,7 +138,7 @@
 
 
   </div>
-  <div class="col-sm-[% edit_option_page_left_bs_columns %]
+  <div id="edit-page-left-panels" class="col-sm-[% edit_option_page_left_bs_columns %]
               col-sm-pull-[% edit_option_page_right_bs_columns %]">
     <div class="panel panel-default">
       <div class="panel-heading">

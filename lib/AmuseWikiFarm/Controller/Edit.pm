@@ -68,7 +68,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     my $f_class = $c->stash->{f_class} or die;
     # if there was a posting, process it
     Dlog_debug { "In the newtext route $_" } $c->request->body_params;
-    if ($c->request->params->{go}) {
+    if ($c->request->body_params->{go}) {
 
         # create a working copy of the params
         my $params = { %{$c->request->body_params} };
