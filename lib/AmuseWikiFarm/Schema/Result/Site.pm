@@ -2514,6 +2514,10 @@ sub update_from_params {
                            freenode_irc_channel
                            turn_links_to_images_into_images
                            use_js_highlight
+                           edit_option_page_left_bs_columns
+                           edit_option_show_cheatsheet
+                           edit_option_show_filters
+                           edit_option_preview_box_height
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces

@@ -49,6 +49,7 @@
     <label>
       <input type="checkbox"
              [% IF editobject.edit_option_show_filters %]checked="checked"[% END %]
+             value="1"
              name="edit_option_show_filters" />
       [% loc('Show filters') %]
     </label>
@@ -57,6 +58,7 @@
     <label>
       <input type="checkbox"
              [% IF editobject.edit_option_show_cheatsheet %]checked="checked"[% END %]
+             value="1"
              name="edit_option_show_cheatsheet" />
       [% loc('Show cheatsheet') %]
     </label>
