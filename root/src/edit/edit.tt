@@ -11,7 +11,17 @@
 
 <div class="center">
   <div class="page-header">
-    <h1>[% loc('Editing') %] [% revision.title.uri %]</h1>
+    <h1>[% loc('Editing') %] [% revision.title.uri %]
+      [% IF c.user_exists %]
+      <a href="[% c.uri_for_action('/user/edit_options', [c.user.get('id')]) %]"
+         target="_blank"
+         class="pull-right">
+        <small>
+          <span class="fa fa-wrench"></span>
+        </small>
+      </a>
+      [% END %]
+    </h1>
   </div>
 </div>
 
@@ -197,10 +207,10 @@
          data-toggle="collapse"
          aria-expanded="[% IF show_filters %]true[% ELSE %]false[% END %]"
          aria-controls="filters">
+        <span class="fa fa-caret-square-o-down"></span>
         <strong>
           [% loc('Filters') %]
           [% loc('(smart quotes, links, footnotes, etc.)') %]
-          <span class="caret"></span>
         </strong>
       </label>
     </div>
@@ -330,7 +340,9 @@
             data-toggle="collapse"
             aria-expanded="[% IF edit_option_show_cheatsheet %]true[% ELSE %]false[% END %]"
             aria-controls="cheatsheet-panel"
-            >[% loc('Cheatsheet for the markup') %]</h3>
+            >[% loc('Cheatsheet for the markup') %]
+          <span class="fa fa-caret-square-o-down pull-right"></span>
+        </h3>
       </div>
       <div class="panel-body collapse[% IF edit_option_show_cheatsheet %] in[% END %]" id="cheatsheet-panel">
 

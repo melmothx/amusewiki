@@ -413,6 +413,11 @@
                     [% loc('Update account info') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/user/edit_options', [c.user.get('id')]) %]">
+                    [% loc('Edit screen layout options') %]
+                  </a>
+                </li>
                 [%# and these are for root %]
                 [% IF c.check_user_roles('admin') %]
                 <li>
