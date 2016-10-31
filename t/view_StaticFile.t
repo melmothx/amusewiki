@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 424;
+use Test::More tests => 474;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{CATALYST_DEBUG} = 0;
@@ -18,7 +18,8 @@ my %files = (
              '/special/a-t-myfile.pdf' => 'application/pdf',
              '/library/i-x-myfile.png' => 'image/png',
              '/library/a-t-myfile.pdf' => 'application/pdf',
-
+             '/a-t-myfile.pdf' => 'application/pdf',
+             '/i-x-myfile.png' => 'image/png',
             );
 
 my %exts = (
@@ -83,19 +84,18 @@ foreach my $h (qw/X-Sendfile X-Lighttpd-Send-File X-Accel-Redirect/) {
         my $type = $mech->response->content_type;
         ok($mech->response->header($h), "Found $h header in $get!: " . $mech->response->header($h));
         is $type, $files{$get}, "Content-type is correct ($files{$get})";
-        # these things has no etag
         my $etag = $mech->response->header('ETag');
         ok ($etag, "Etag present");
-        if ($get =~ qr{/special/(i-x-myfile\.png|a-t-myfile\.pdf)}) {
-            is ($etags{$etag}, '/library/' . $1, "Same file, same etag");
+        if ($get =~ qr{/(special|library)/(i-x-myfile\.png|a-t-myfile\.pdf)}) {
+            is ($etags{$etag}, '/' . $2, "Same file, same etag") or diag Dumper(\%etags, [ sort keys %files ]);
         } else {
             ok (!$etags{$etag}, "Etag $etag was not yet used yet ($get)")
-              or diag "Etag is the same as $etags{$etag}";
+              or diag "Etag is the same as $etags{$etag}" . Dumper(\%etags, [ sort keys %files ]);
+            $etags{$etag} = $get;
         }
-        $etags{$etag} = $get;
         ok ($mech->response->header('Last-Modified'),
             "Last-Modified present: " . $mech->response->header('Last-Modified'));
-        is $mech->response->content, '', "Empty body for $get";
+        ok ($mech->response->content eq '', "Empty body for $get");
     }
 }
 
