@@ -7,7 +7,7 @@ use strict;
 use warnings;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 8;
+use Test::More tests => 12;
 use Data::Dumper;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::BookBuilder;
