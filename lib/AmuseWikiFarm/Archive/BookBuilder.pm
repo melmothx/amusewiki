@@ -1188,15 +1188,18 @@ sub compile {
         if (-f $coverfile) {
             my $coverfile_dest = $makeabs->($self->coverfile);
             log_debug { "Copying $coverfile to $coverfile_dest" };
-            if (copy($coverfile, $coverfile_dest)) {
+            if (copy($coverfile, $coverfile_dest) and -f $coverfile_dest) {
                 $coverfile_ok = 1;
             }
             else {
                 log_error { "Failed to copy $coverfile to $coverfile_dest" };
             }
         }
-        log_debug { "$coverfile is ok? $coverfile_ok" };
-        unless ($coverfile_ok) {
+        if ($coverfile_ok) {
+            $logger->("* Using uploaded image on the cover page $coverfile\n");
+        }
+        else {
+            $logger->("Cover image provided vanished, ignoring it\n");
             delete $compiler_args{extra}{cover};
         }
     }

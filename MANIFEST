@@ -935,6 +935,7 @@ t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/links-in-headings.t
 t/mail.t
+t/missing-image-crash-81.t
 t/mkits/test/body.txt
 t/mkits/test/manifest.json
 t/model-user.t
