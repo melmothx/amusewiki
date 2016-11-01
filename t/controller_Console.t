@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 67;
+use Test::More tests => 69;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -47,12 +47,15 @@ foreach my $r (qw/marco pippo pluto/) {
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
-$mech->get_ok('/console/git');
-is $mech->response->base->path, '/login', "Denied access to not logged in";
+$mech->get('/console/git');
+is $mech->status, 401, "Denied access to not logged in";
+$mech->content_lacks('__auth_human');
+$mech->content_contains('__auth_pass');
 
-$mech->get_ok('/console/unpublished');
-is $mech->response->base->path, '/login', "Denied access to not logged in";
-
+$mech->get('/console/unpublished');
+is $mech->status, 401, "Denied access to not logged in";
+$mech->content_lacks('__auth_human');
+$mech->content_contains('__auth_pass');
 
 # create an unpublished text.
 
@@ -66,13 +69,11 @@ ok $rev->publish_text;
 $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                             host => "$site_id.amusewiki.org");
 
-$mech->get_ok('/console/unpublished');
-
+$mech->get('/console/unpublished');
+is $mech->status, 401;
 ok($mech->form_id('login-form'), "Found the login-form");
 
-$mech->set_fields(username => 'root',
-                  password => 'root');
-$mech->click;
+$mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});
 $mech->content_contains('You are logged in now!');
 
 $mech->content_contains('/library/deleted-text');

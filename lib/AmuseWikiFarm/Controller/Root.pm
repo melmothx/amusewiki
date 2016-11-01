@@ -1,5 +1,6 @@
 package AmuseWikiFarm::Controller::Root;
 use Moose;
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller' }
 
@@ -65,7 +66,7 @@ sub check_unicode_errors :Chained('/') :PathPart('') :CaptureArgs(0) {
 
 sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    log_debug { $c->request->uri->as_string };
+    log_debug { "Starting request " . $c->request->uri->as_string };
 
     $c->stash(amw_user_agent => HTTP::BrowserDetect->new($c->request->user_agent || ''));
 
@@ -124,21 +125,8 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     $c->stash(site => $site);
     $c->stash(blog_style => $site->blog_style);
 
-
-    # always stash the login uri, at some point it could be needed by
-    # the layout
-    my $login_uri = $c->uri_for_action('/user/login');
-    if ($site->secure_site || $site->secure_site_only) {
-        $login_uri->scheme('https');
-    }
-    $c->stash(user_login_uri => $login_uri);
-
     # force ssl for authenticated users
-    if ($c->user_exists) {
-        unless ($c->request->secure) {
-            $self->redirect_to_secure($c);
-        }
-    }
+    $self->redirect_to_secure($c) if $c->user_exists;
 
     my $locale = $site->locale || 'en';
     # in case something weird happened
@@ -174,50 +162,9 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     return 1;
 }
 
-sub secure_no_user :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
-    my ( $self, $c ) = @_;
-    if ($c->user_exists) {
-        $c->flash(status_msg => $c->loc("You are already logged in"));
-        $c->response->redirect($c->uri_for('/'));
-        return;
-    }
-    $self->redirect_to_secure($c);
-}
-
 sub site :Chained('site_no_auth') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    if ($site->is_private and !$c->user_exists) {
-        # humans will get the login box, robots and unknown a 401
-        my $ua = $c->stash->{amw_user_agent};
-        if (!$ua->browser_string || $ua->robot) {
-            $self->redirect_to_secure($c);
-            log_debug { "Trying HTTP Basic auth" };
-            my ($username, $password) = $c->req->headers->authorization_basic;
-            Dlog_debug { "Found these creds $_" } +{ user => $username, pass => $password };
-            if ($username && $password) {
-                if (my $user = $site->users->find({ username => $username })) {
-                    if ($user->active && $user->check_password($password)) {
-                        log_info { "$username found and authenticated" };
-                        # unclear if we want to authenticate as well in the app.
-                        return;
-                    }
-                }
-            }
-            # still here? then issue a 401. Please note that the user must belong to the site.
-            $c->response->status(401);
-            $c->response->content_type('text/plain');
-            $c->response->headers
-              ->push_header('WWW-Authenticate' => qq{Basic realm="} . $site->canonical . '"');
-            $c->response->body('Authorization required.');
-            $c->detach();
-        }
-        else {
-            $c->response->redirect($c->uri_for('/login',
-                                               { goto => $c->req->path }));
-        }
-        $c->detach();
-    }
+    $self->check_login($c) if $c->stash->{site}->is_private;
 }
 
 sub site_robot_index :Chained('site') :PathPart('') :CaptureArgs(0) {
@@ -227,12 +174,12 @@ sub site_robot_index :Chained('site') :PathPart('') :CaptureArgs(0) {
 
 sub site_user_required :Chained('site') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    unless ($c->user_exists) {
-        log_warn { "Tried to access " . $c->req->path . " without user, redirecting" };
-        $c->response->redirect($c->uri_for('/login',
-                                           { goto => $c->req->path }));
-        $c->detach();
-    }
+    $self->check_login($c);
+}
+
+sub site_human_required :Chained('site') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $self->check_human($c);
 }
 
 sub bad_request :Private {
@@ -299,18 +246,6 @@ sub not_permitted :Private {
     return;
 }
 
-sub redirect_to_secure :Private {
-    my ($self, $c) = @_;
-    return if $c->request->secure;
-    my $site = $c->stash->{site};
-    if ($site->secure_site || $site->secure_site_only) {
-        my $uri = $c->request->uri->clone;
-        $uri->scheme('https');
-        $c->response->redirect($uri);
-        $c->detach();
-    }
-}
-
 =head2 random
 
 Path: /random
@@ -334,7 +269,7 @@ sub rss_xml :Chained('/site') :PathPart('rss.xml') :Args(0) {
     $c->detach('/feed/index');
 }
 
-sub favicon :Chained('/site') :PathPart('favicon.ico') :Args(0) {
+sub favicon :Chained('/site_no_auth') :PathPart('favicon.ico') :Args(0) {
     my ($self, $c) = @_;
     $c->detach('/sitefiles/local_files',
                 ['favicon.ico']);
@@ -396,11 +331,9 @@ The root page (/) points to /library/ if there is no special/index
 
 =cut
 
-sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
+sub index :Chained('/site') :PathPart('') :Args(0) {
     my ( $self, $c ) = @_;
-    # check if we have a special page named index
-    my $nav = $c->stash->{navigation};
-    # see if we have something
+    # handle legacy paths if there are arguments
     my $path = $c->request->uri->path_query;
     if ($path ne '/') {
         log_debug { "Checking the legacy paths for $path" };
@@ -412,15 +345,11 @@ sub index :Chained('/site_no_auth') :PathPart('') :Args(0) {
             return;
         }
     }
-
     # default
     my $target = $c->uri_for_action('/latest/index');
     my $site = $c->stash->{site};
     my $locale = $c->stash->{current_locale_code} || $site->locale;
-    if ($site->is_private and !$c->user_exists) {
-        $target = $c->uri_for_action('/user/login');
-    }
-    elsif ($site->multilanguage and
+    if ($site->multilanguage and
         (my $locindex = $site->titles->special_by_uri('index-' . $locale))) {
         $target = $c->uri_for($locindex->full_uri);
     }
@@ -434,9 +363,20 @@ sub catch_all :Chained('/site') :PathPart('') Args {
     my ($self, $c, $try) = @_;
     my $fallback;
     if ($try) {
-        my $try_uri = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($try);
-        my $query = { uri => $try_uri };
         if (my $site = $c->stash->{site}) {
+            # EXPERIMENTAL, unsure if there are conflicts. On the
+            # other hand, static files have '/static/' prefix, and the
+            # uris here have the suffix, which is mangled by the
+            # naming_algo, so looks fine.
+            if ($try =~ m/\.(jpe?g|png|pdf)\z/) {
+                if (my $att = $site->attachments->by_uri($try)) {
+                    $c->stash(serve_static_file => $att->f_full_path_name);
+                    $c->detach($c->view('StaticFile'));
+                    return;
+                }
+            }
+            my $try_uri = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($try);
+            my $query = { uri => $try_uri };
             if (my $text = $site->titles->published_all
                 ->search($query)->first) {
                 $fallback = $text->full_uri;

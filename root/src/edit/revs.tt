@@ -59,18 +59,21 @@
 [% END %]
 
 [% IF text_to_edit.can_spawn_revision %]
-
+<div>
 [% loc("Or create a new revision, at your own peril. Having multiple
           concurrent revisions means that, unless someone takes care
           of it, only one will be chosen. You can go ahead, or retry
           later, or, better, contact the librarians before proceeding,
           to avoid wasting energies.") %]
-
+</div>
+<div class="amw-spacer-20"></div>
+<div class="center">
 <form method="post">
   <button type="submit" name="create" value="create" class="btn btn-primary">
     [% loc('New revision') %]
   </button>
 </form>
+</div>
 
 [% ELSE %]
 

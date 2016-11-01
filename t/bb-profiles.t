@@ -66,13 +66,14 @@ $site->add_to_titles({
                       sorting_pos => 1,
                      });
 
-$mech->get('/login');
+$mech->get('/bookbuilder/add/my-dummy-text');
+is $mech->status, 401;
 $mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'profiler1',
-                               password => 'profiler1',
-                             },
-                   button => 'submit');
-$mech->get_ok('/bookbuilder/add/my-dummy-text');
+                   fields => { __auth_user => 'profiler1',
+                               __auth_pass => 'profiler1',
+                             });
+diag $mech->uri;
+diag Dumper($mech->response->headers);
 $mech->get_ok('/bookbuilder');
 $mech->content_contains("/library/my-dummy-text");
 $mech->content_like(qr{/bookbuilder/profile/\d+\"});

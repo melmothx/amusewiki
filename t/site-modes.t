@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 104;
+use Test::More tests => 89;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Path qw/make_path remove_tree/;
@@ -109,30 +109,27 @@ sub check_after_login {
     $user->update if $user->is_changed;
     $mech->get_ok('/login');
 
-    $mech->form_with_fields('username');
+    $mech->form_with_fields('__auth_user');
     $mech->click;
-    $mech->content_contains("Missing username or password");
 
-    $mech->form_with_fields('username');
-    $mech->field(username => 'root');
+    $mech->form_with_fields('__auth_user');
+    $mech->field(__auth_user => 'root');
     $mech->click;
-    $mech->content_contains("Missing username or password");
 
-    $mech->form_with_fields('username');
-    $mech->set_fields(username => '',
-                      password => 'xxx');
+    $mech->form_with_fields('__auth_user');
+    $mech->set_fields(__auth_user => '',
+                      __auth_pass => 'xxx');
     $mech->click;
-    $mech->content_contains("Missing username or password");
 
-    $mech->form_with_fields('username');
-    $mech->set_fields(username => $user->username,
-                      password => 'xxx');
+    $mech->form_with_fields('__auth_user');
+    $mech->set_fields(__auth_user => $user->username,
+                      __auth_pass => 'xxx');
     $mech->click;
     $mech->content_contains("Wrong username or password");
 
-    $mech->form_with_fields('username');
-    $mech->set_fields(username => $user->username,
-                      password => $passwords{$user->username});
+    $mech->form_with_fields('__auth_user');
+    $mech->set_fields(__auth_user => $user->username,
+                      __auth_pass => $passwords{$user->username});
     $mech->click;
     if ($active) {
         diag "user is active";
@@ -150,9 +147,9 @@ sub failing_login {
     my ($mech, $user) = @_;
     diag "Checking if " . $user->username . " belonging to another site can login";
     $mech->get_ok('/login');
-    $mech->form_with_fields('username');
-    $mech->set_fields(username => $user->username,
-                      password => $passwords{$user->username});
+    $mech->form_with_fields('__auth_user');
+    $mech->set_fields(__auth_user => $user->username,
+                      __auth_pass => $passwords{$user->username});
     $mech->click;
     $mech->content_contains("Wrong username or password")
       or diag $mech->content;
@@ -162,21 +159,22 @@ sub failing_login {
 sub common_tests {
     my $mech = shift;
     $mech->get_ok('/');
-    $mech->get_ok('/bookbuilder');
+    $mech->get('/bookbuilder');
+    is $mech->status, 401;
     $mech->content_contains("test if the user is a human");
     $mech->submit_form(
                        with_fields => {
-                                       answer => 'January',
+                                       __auth_human => 'January',
                                       },
-                       button => 'submit',
                       );
     diag "Check if the bookbuilder works";
     is ($mech->uri->path, '/bookbuilder');
     $mech->get('/bookbuilder/add/alsdflasdf');
     is ($mech->status, '404', "Page alsdflasdf not found");
     $mech->content_contains("Couldn't add the text");
-    $mech->get_ok('/action/special/new');
-    is $mech->uri->path, '/login';
+    $mech->get('/action/special/new');
+    is $mech->status, 401;
+    $mech->content_contains('__auth_pass');
 }
 
 sub closed_new {
@@ -185,14 +183,16 @@ sub closed_new {
     $mech->content_lacks('/action/text/new"');
     diag "Checking /action/text/new";
     $mech->get('/action/text/new');
-    is $mech->uri->path, '/login', "Bounced to login";
+    is $mech->status, 401;
+    $mech->content_contains('__auth_pass');
 }
 
 sub closed_publish {
     my $mech = shift;
     diag "Checking pending";
     $mech->get('/publish/pending');
-    is $mech->uri->path, '/login', "Trying to get publish bounces to login too";
+    is $mech->status, 401, "Trying to get publish bounces to login too";
+    $mech->content_contains('__auth_pass');
 }
 
 sub open_new {

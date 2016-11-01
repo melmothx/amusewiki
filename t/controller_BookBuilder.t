@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 125;
+use Test::More tests => 133;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
@@ -17,26 +17,24 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
 $site->update({ bb_page_limit => 5 });
-my $orig_locale = $site->locale;
-# set it to english for testing purposes.
-$site->locale('en');
-$site->update;
 
 use Test::WWW::Mechanize::Catalyst;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
 
 
-$mech->get_ok('/bookbuilder/');
+$mech->get_ok('/?__language=en');
+# set it to english for testing purposes.
+$mech->get('/bookbuilder');
+is $mech->status, 401;
 
 
-$mech->get_ok('/bookbuilder/add/alsdflasdf');
+$mech->get('/bookbuilder/add/alsdflasdf');
+is $mech->status, 401;
 
 $mech->content_contains("test if the user is a human");
 
-$mech->form_with_fields('answer');
-$mech->field(answer => 'January');
-$mech->click;
+$mech->submit_form(with_fields => { __auth_human => 'January' });
 is ($mech->status, '404', "bogus text not found: " . $mech->status);
 is $mech->uri->path, '/library/alsdflasdf';
 $mech->content_contains("Couldn't add the text");
@@ -48,6 +46,12 @@ $mech->get('/bookbuilder/add/alsdflasdf');
 is ($mech->status, '404', "bogus text not found: " . $mech->status);
 $mech->content_contains("Couldn't add the text");
 $mech->content_contains("Page not found!");
+
+$mech->get_ok('/bookbuilder/fonts');
+{
+    my @links = grep { $_->url =~ m/font-preview/ } $mech->find_all_links;
+    ok (scalar @links, "Found font-preview links");
+}
 
 $mech->get_ok('/bookbuilder/add/first-test');
 is $mech->uri->path, '/library/first-test';
@@ -177,7 +181,7 @@ foreach my $fmt (qw/pdf epub/) {
 
 $mech->get('/library/first-test');
 
-$mech->submit_form(form_id => 'book-builder-add-text-partial');
+ok($mech->follow_link(url_regex => qr{/library/first-test/bbselect}));
 
 is $mech->uri->path, '/library/first-test/bbselect';
 
@@ -196,7 +200,7 @@ $mech->get_ok('/bookbuilder');
 $mech->content_contains('first-test/bbselect?selected=pre-0-post"');
 
 $mech->get_ok('/library/second-test');
-$mech->submit_form(form_id => 'book-builder-add-text-partial');
+ok($mech->follow_link(url_regex => qr{/library/second-test/bbselect}));
 ok($mech->form_id("book-builder-add-text-partial"), "Found form for partials");
 @inputs = $mech->grep_inputs({ type => qr{^checkbox$},
                                name => qr{^select$} });
@@ -207,7 +211,7 @@ $mech->get_ok('/bookbuilder');
 $mech->content_contains('second-test/bbselect?selected=pre-1"');
 
 $mech->get_ok('/library/do-this-by-yourself');
-$mech->submit_form(form_id => 'book-builder-add-text');
+ok($mech->follow_link(url_regex => qr{/bookbuilder/add/do-this-by-yourself}));
 $mech->get_ok('/bookbuilder');
 $mech->content_contains('/library/do-this-by-yourself');
 $mech->content_lacks('do-this-by-yourself/bbselect');
@@ -245,16 +249,16 @@ foreach my $purgef (@purge) {
 # new instance
 $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
+$mech->get_ok('/?__language=en');
 $site->update({ bb_page_limit => 1 });
 $mech->get_ok('/library/first-test');
 
-$mech->get_ok('/bookbuilder/add/first-test');
-$mech->form_with_fields('answer');
-$mech->field(answer => 'January');
-$mech->click;
+$mech->get('/bookbuilder/add/first-test');
+is $mech->status, 401;
+$mech->submit_form(with_fields => { __auth_human => 'January' });
 $mech->content_contains("Quota exceeded",  "Quota hit adding the whole text");
 
-$mech->submit_form(form_id => 'book-builder-add-text-partial');
+ok($mech->follow_link(url_regex => qr{/library/first-test/bbselect}));
 ok($mech->form_id("book-builder-add-text-partial"), "Found form for partials");
 $mech->tick(select => '1');
 $mech->click;
@@ -262,9 +266,7 @@ $mech->get_ok('/bookbuilder');
 $mech->content_lacks("Quota exceeded");
 $mech->content_contains('first-test/bbselect?selected=pre-1-post"');
 
-$site->locale($orig_locale);
-$site->update->discard_changes;
 # restore
 $site->update({ bb_page_limit => 5 });
-diag "Locale restored to " . $site->locale;
+
 

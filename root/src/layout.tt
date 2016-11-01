@@ -46,12 +46,15 @@
             src="[% c.uri_for('/static/js/jquery-1.11.1.min.js') %]">
     </script>
     <link rel="stylesheet"
-          href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 3 }) %]" />
+          href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 4 }) %]" />
 
     <!-- Latest compiled and minified JavaScript -->
     <script type="text/javascript"
-            src="[% c.uri_for('/static/js/bootstrap.min.js', { v => 4 }) %]">
+            src="[% c.uri_for('/static/js/bootstrap.min.js', { v => 5 }) %]">
     </script>
+
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/font-awesome.min.css', { v => 3 }) %]" />
 
     <!-- jquery-ui for the highlight effect everywhere and autocompletion
          source in [% c.uri_for('/static/js/jquery-ui-1.10.4.custom.js') %] -->
@@ -100,7 +103,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 29 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 31 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 2 }) %]"></script>
     <script type="text/javascript">
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -172,7 +175,7 @@
                        name="query" value=""/>
                 <div class="input-group-btn">
                   <button type="submit" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="fa fa-search fw"></span>
                   </button>
                 </div>
               </div>
@@ -184,7 +187,7 @@
                  data-toggle="modal"
                  title="[% loc('Table of Contents') %]"
                  data-target="#myModal">
-                <span class="glyphicon glyphicon-list text-primary"></span>
+                <span class="fa fa-list text-primary fw"></span>
                 <span class=" visible-xs-inline">
                   [% loc('Table of Contents') %]
                 </span>
@@ -194,11 +197,11 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('texts by authors, title, topic...') %]"
                  data-toggle="dropdown">
-                <span class="glyphicon glyphicon-heart"></span>
+                <span class="fa fa-heart fw"></span>
                 <span class="hidden-sm" id="amw-catalog-label">
                   [% loc('Archive') %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
 	            <li[% IF nav == 'titles' %] class="active" [% END %]
@@ -280,11 +283,11 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
-                <span class="glyphicon glyphicon-plus"></span>
+                <span class="fa fa-plus fw"></span>
                 <span class="visible-lg-inline visible-xs-inline" id="awm-special-label">
                   [% loc('More') %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH link IN navigation.specials %]
@@ -302,11 +305,11 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Related projects') %]"
                  data-toggle="dropdown">
-                <span class="glyphicon glyphicon-th"></span>
+                <span class="fa fa-th fw"></span>
                 <span class="hidden-sm" id="amw-sitegroup-label">
                   [% loc('Other languages') %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH link IN navigation.projects %]
@@ -325,11 +328,11 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Language selection') %]"
                  data-toggle="dropdown">
-                <span class="glyphicon glyphicon-globe"></span>
+                <span class="fa fa-globe fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Language selection') %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH lang IN site.multilanguage_list %]
@@ -353,11 +356,11 @@
                  class="dropdown-toggle"
                  title="[% c.user.get('username') | html %]"
                  data-toggle="dropdown">
-                <span class="glyphicon glyphicon-user"></span>
+                <span class="fa fa-user fw"></span>
                 <span class="visible-xs-inline">
                   [% c.user.get('username') | html %]
                 </span>
-                <b class="caret"></b>
+                <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 <li role="presentation" class="dropdown-header hidden-xs">
@@ -410,6 +413,11 @@
                     [% loc('Update account info') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/user/edit_options', [c.user.get('id')]) %]">
+                    [% loc('Edit screen layout options') %]
+                  </a>
+                </li>
                 [%# and these are for root %]
                 [% IF c.check_user_roles('admin') %]
                 <li>
@@ -458,8 +466,8 @@
             <li [% IF nav == 'bookbuilder' %] class="active" [% END %]>
               <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
                 [% SET bb_count_texts = c.model('BookBuilder').total_texts %]
-                <span class="glyphicon glyphicon-book [% IF bb_count_texts %]text-primary[% END %]"></span>
-                <span class="hidden-sm">
+                <span class="fa fa-book [% IF bb_count_texts %]text-primary[% END %] fw"></span>
+                <span class="visible-lg-inline visible-xs-inline">
                   [% loc('Bookbuilder') %]
                 </span>
                 [% IF bb_count_texts %]
@@ -469,16 +477,24 @@
             </li>
             <li id="amw-navbar-opds-link">
               <a href="[% c.uri_for('/help/opds') %]" title="[% loc('Mobile') %]">
-                <span class="glyphicon glyphicon-phone"></span>
+                <span class="fa fa-tablet fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Mobile applications') %]
                 </span>
               </a>
             </li>
+            <li id="amw-navbar-feed-link">
+              <a href="[% c.uri_for('/feed') %]" title="[% loc('RSS feed') %]">
+                <span class="fa fa-rss fw"></span>
+                <span class="visible-xs-inline">
+                  [% loc('RSS feed') %]
+                </span>
+              </a>
+            </li>
             <li id="amw-navbar-opds-random">
               <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
-                <span class="glyphicon glyphicon-random"></span>
-                <span class="visible-lg-inline visible-xs-inline">
+                <span class="fa fa-random fw"></span>
+                <span class="visible-xs-inline">
                   [% loc('Random') %]
                 </span>
               </a>
@@ -534,7 +550,7 @@
       [% END %]
       [% IF c.flash.error_msg %]
       <div class="alert alert-warning" id="error_message">
-        <span class="glyphicon glyphicon-warning-sign"></span>
+        <span class="fa fa-exclamation-triangle fw"></span>
         [% c.flash.error_msg | html %]
       </div>
       [% END %]
@@ -580,7 +596,7 @@
     <div id="footer">
       <div class="footer center">
         <span id="amw-footer-link-random">
-          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]"><span class="glyphicon glyphicon-random" style="padding-right:3px"></span></a>
+          <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">[% loc('Random') %]</a>
         </span>
         <span id="amw-footer-link-random-sep">|</span>
         <span id="amw-footer-link-feeds">

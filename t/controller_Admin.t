@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 113;
+use Test::More tests => 109;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -22,17 +22,15 @@ my %hosts = (
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 foreach my $host (keys %hosts) {
+    $schema->resultset('Site')->find($hosts{$host}{id})->update({ locale => $hosts{$host}{locale} });
     my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                    host => $host);
-    $mech->get_ok('/admin/debug_site_id');
-    is ($mech->uri->path, '/login');
-    $mech->content_contains('name="password"');
-    $mech->content_contains('name="username"');
-    $mech->submit_form(form_id => 'login-form',
-                       fields => { username => 'root',
-                                   password => 'root',
-                                 },
-                       button => 'submit');
+    $mech->get_ok('/');
+    $mech->get('/admin/debug_site_id');
+    is $mech->status, 401;
+    $mech->submit_form(with_fields => { __auth_user => 'root',
+                                        __auth_pass => 'root',
+                                  });
     is ($mech->uri->path, '/admin/debug_site_id');
     $mech->content_is($hosts{$host}{id} . ' ' . $hosts{$host}{locale}) or
       diag $mech->content;
@@ -59,25 +57,16 @@ diag "Regular users can't access admin";
 
 $mech->get('/logout');
 $mech->get('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'user1',
-                               password => 'pass',
-                             },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => 'user1', __auth_pass => 'pass' });
 $mech->get('/');
 $mech->content_contains("/logout");
 $mech->get('/admin/debug_site_id');
 ok (!$mech->success, "Not a success");
-is ($mech->status, 403);
+is ($mech->status, 403, "403 because it's logged in, but not an admin");
 
 $mech->get('/logout');
 $mech->get_ok('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'root',
-                               password => 'root',
-                             },
-                   button => 'submit');
-
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->get_ok('/admin/sites/edit/0blog0');
 
 my $html_injection = q{<script>alert('hullo')</script>};

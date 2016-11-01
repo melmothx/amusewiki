@@ -33,6 +33,7 @@ prepare_app () {
     ./script/amusewiki-upgrade-db
     ./script/amusewiki-generate-nginx-conf
     ./script/amusewiki-upgrade-lexicon repo/*
+    ./script/amusewiki-populate-webfonts
 }
 
 # echo `pwd`

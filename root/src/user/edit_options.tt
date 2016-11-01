@@ -1,0 +1,24 @@
+[%# -*- mode:html -*- %]
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Edit user [_1]', user.username) %]
+      <small>[% loc('Edit screen layout options') %]</small></h1>
+  </div>
+</div>
+<form method="post" class="form-horizontal" id="user-edit-options">
+  <fieldset>
+[% SET editobject = user %]
+[% INCLUDE 'include/editing-options.tt' %]
+[% SET editobject = 0 %]
+  </fieldset>
+  <div class="form-group">
+    <div class="col-sm-6">
+      <div class="center">
+        <button type="submit" class="btn btn-primary" name="update"
+                value="update">
+          [% loc('Update') %]
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

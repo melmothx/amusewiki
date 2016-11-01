@@ -8,7 +8,7 @@ BEGIN {
     $ENV{EMAIL_SENDER_TRANSPORT} = 'Test';    
 };
 
-use Test::More tests => 95;
+use Test::More tests => 96;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -30,14 +30,9 @@ $site->update({
                mode => 'private',
               });
 # root login and creates a user
-$mech->get_ok('/');
-is $mech->uri->path, '/login';
-$mech->submit_form(with_fields =>  {
-                                    username => 'root',
-                                    password => 'root',
-                                   },
-                   button => 'submit');
-
+$mech->get('/');
+is $mech->status, 401;
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 if (my $user = $schema->resultset('User')->find({ username => 'sloppy' })) {
     $user->delete;
 }
@@ -62,7 +57,10 @@ $user->roles->find({ role => 'librarian' });
     like $mails[0]{email}->as_string, qr/sloppy1234/;
 }
 
-$mech->get_ok('/logout');
+$mech->get('/logout');
+is $mech->uri->path, '/';
+is $mech->status, 401;
+$mech->content_contains('__auth_user');
 $mech->get_ok('/login');
 $mech->content_contains('/reset-password');
 
@@ -97,7 +95,7 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
     my $wrong_link = $link;
     $wrong_link =~ s/sloppy/root/;
     $mech->get($wrong_link);
-    is $mech->status, '403';
+    is $mech->status, '403', 'Permission denied on $wrong_link (other user)';
 
     $mech->get_ok($link);
     is $mech->uri . '' , $link;
@@ -106,21 +104,15 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
     $mech->content_contains('<span class="user-username"><code>sloppy</code></span>');
     $mech->get($link);
     is $mech->status, '403', "Access denied with token consumed" or diag $mech->content;
-    $mech->get_ok('/');
-    is $mech->uri->path, '/login';
-    $mech->submit_form(with_fields =>  {
-                                        username => 'sloppy',
-                                        password => $new_password,
-                                       },
-                       button => 'submit');
+    $mech->get('/');
+    is $mech->status, 401;
+    $mech->submit_form(with_fields => { __auth_user => 'sloppy', __auth_pass => $new_password });
     is $mech->uri->path, '/latest', "Login ok with new password";
-    $mech->get_ok('/logout');
+    $mech->get('/logout');
+    is $mech->uri->path, '/';
+    is $mech->status, 401;
     $mech->get_ok('/login');
-    $mech->submit_form(with_fields =>  {
-                                        username => 'sloppy',
-                                        password => 'sloppy1234',
-                                       },
-                       button => 'submit');
+    $mech->submit_form(with_fields => { __auth_user => 'sloppy', __auth_pass => 'sloppy1234' });
     is $mech->uri->path, '/login', "Couldn't login with new password";
     $mech->get('/reset-password/sloppy/');
     # the catchall route is plugged into the auth, so we never get a
@@ -128,7 +120,7 @@ foreach my $try ('sloppy@amusewiki.org', 'sloppyxxxxx@amusewiki.org',
     is $mech->status, '401';
     foreach my $fake ('%20', 0, 'asldfasd', 'asdfasdfasdf') {
         $mech->get("/reset-password/sloppy/$fake");
-        is $mech->status, '403', "Access denied on " . $mech->uri->path;
+        is $mech->status, 403, "Access denied on " . $mech->uri->path;
     }
 }
 

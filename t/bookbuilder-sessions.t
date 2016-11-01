@@ -2,13 +2,14 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 36;
+use Test::More tests => 42;
 use File::Spec;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile/;
 use Cwd;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
+
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -22,13 +23,14 @@ my $mech2 = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my $mech3 = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                 host => 'test.amusewiki.org');
 
-
 for my $mech ($mech1, $mech2, $mech3) {
-    $mech->get_ok('/bookbuilder/');
+    # we need to hit the root, otherwise session is not picked up. Mah!
+    $mech->get_ok('/');
+    $mech->get('/bookbuilder');
+    is $mech->status, 401;
     $mech->content_contains("test if the user is a human");
-    $mech->form_with_fields('answer');
-    $mech->field(answer => 'January');
-    $mech->click;
+    $mech->submit_form(with_fields => {'__auth_human' => 'January' });
+    $mech->get_ok('/bookbuilder');
 }
 
 $mech1->get_ok('/bookbuilder/add/first-test');

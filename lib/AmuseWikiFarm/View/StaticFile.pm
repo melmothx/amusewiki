@@ -11,8 +11,8 @@ sub process {
     my ($self, $c) = @_;
     my $file = $c->stash->{serve_static_file};
     log_debug { "Serving $file" };
-    unless ($file and -f $file) {
-        log_error { "$file is not a file!" };
+    unless ($file and -f $file and ! -l $file) {
+        log_error { "$file is not a file! (symlink maybe)" };
         $c->response->status(404);
         $c->response->body('Not found');
         return;

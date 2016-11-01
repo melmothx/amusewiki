@@ -33,18 +33,13 @@ $site->update({
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
-
-$mech->get_ok('/action/text/new');
-
-ok($mech->form_id('login-form'), "Found the login-form");
-
-$mech->set_fields(username => 'root',
-                  password => 'root');
-my $git_author = "Root <root@" . $site->canonical . ">";
-$mech->click;
-
+$mech->get_ok('/');
+$mech->get('/action/text/new');
+is $mech->status, 401;
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->content_contains('You are logged in now!');
 
+my $git_author = "Root <root@" . $site->canonical . ">";
 for my $use_ttdir (0..1) {
     $mech->get_ok('/action/text/new');
     diag "Uploading a text";

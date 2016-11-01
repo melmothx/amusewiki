@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 97;
+use Test::More tests => 98;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -34,20 +34,18 @@ my $testdir = File::Temp->newdir(CLEANUP => 1);
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
 
-$mech->get_ok('/action/text/new');
-
-ok($mech->form_id('login-form'), "Found the login-form");
-
-$mech->set_fields(username => 'root',
-                  password => 'root');
-my $git_author = "Root <root@" . $host . ">";
-$mech->click;
-
+$mech->get_ok('/');
+$mech->get('/action/text/new');
+is $mech->status, 401;
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->content_contains('You are logged in now!');
-
+my $git_author = "Root <root@" . $host . ">";
 
 diag "Uploading a text";
 my $title = 'ciccia ' . int(rand(1000));
+
+# without this it looks like mech can't upload. Mah!
+$mech->get_ok('/action/text/new');
 ok($mech->form_id('ckform'), "Found the form for uploading stuff");
 $mech->set_fields(author => 'pippo',
                   title => $title,
@@ -119,9 +117,11 @@ $mech->get('/');
 $mech->content_contains($title);
 $mech->get_ok($text);
 $mech->content_contains(q{<h3 id="text-author">pippo</h3>});
-ok($mech->form_id('book-builder-add-text'));
-$mech->click;
-
+{
+    my $uri = $text;
+    $uri =~ s/\/library\///;
+    ok($mech->follow_link(url_regex => qr{/bookbuilder/add/\Q$uri}));
+}
 $mech->content_contains("The text was added to the bookbuilder");
 is ($mech->uri->path, $text);
 $mech->get_ok("/bookbuilder");

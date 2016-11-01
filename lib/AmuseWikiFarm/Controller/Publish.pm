@@ -1,5 +1,6 @@
 package AmuseWikiFarm::Controller::Publish;
 use Moose;
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -23,28 +24,10 @@ Stash the available revisions, depending on the site mode.
 
 =cut
 
-sub root :Chained('/site') :PathPart('publish') :CaptureArgs(0) {
+sub root :Chained('/site_human_required') :PathPart('publish') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
-    log_debug { "User exists" };
-    if (!$c->user_exists) {
-        if ($site->human_can_publish) {
-            # send to human if not so
-            unless ($c->sessionid && $c->session->{i_am_human}) {
-                $c->response->redirect($c->uri_for('/human',
-                                                   { goto => $c->req->path }));
-                $c->detach();
-                return
-            }
-        }
-        else {
-            # send to login, we need the user
-            $c->response->redirect($c->uri_for('/login',
-                                               { goto => $c->req->path }));
-            $c->detach();
-            return
-        }
-    }
+    $self->check_login($c) unless $site->human_can_publish;
 
     my $search = {};
     # if it's a librarian, we show all the pending revisions

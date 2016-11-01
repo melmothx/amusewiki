@@ -41,7 +41,7 @@
          <input type="hidden" name="name" value="[% remote.name | html %]" />
          <button class="btn btn-danger" type="submit" name="delete"
                  value="delete" title="[% loc('Delete remote repository [_1]', remote.name) %]">
-           <span class="glyphicon glyphicon-trash"></span>
+           <span class="fa fa-trash"></span>
          </button>
        </form>
        [% END %]

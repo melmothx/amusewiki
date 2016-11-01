@@ -29,26 +29,11 @@ Deny access to not-human
 
 =cut
 
-sub root :Chained('/site') :PathPart('bookbuilder') :CaptureArgs(0) {
+sub root :Chained('/site_human_required') :PathPart('bookbuilder') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
 
-    # check if human
-    if ($c->sessionid && $c->session->{i_am_human}) {
-        $c->stash(nav => 'bookbuilder');
-        $c->stash(page_title => $c->loc('Bookbuilder'));
-    }
-    else {
-        my $path = $c->req->path;
-        my $params = $c->req->params;
-        my $uri = URI->new($path);
-        $uri->query_form($params);
-        my $goto = $uri->as_string;
-        my $redirect = $c->uri_for('/human', { goto => $goto });
-        Dlog_debug { "path is $path, params are $_, final is $goto, redirect to $redirect)" } $params;
-        $c->response->redirect($redirect);
-        $c->detach();
-        return;
-    }
+    $c->stash(nav => 'bookbuilder',
+              page_title => $c->loc('Bookbuilder'));
 
     # initialize the BookBuilder object. It will pick up the session
     my $bb = $c->model('BookBuilder');
@@ -273,13 +258,22 @@ sub fonts :Chained('root') :PathPart('fonts') :Args(0) {
     my $all_fonts = $c->stash->{bb}->all_fonts;
     my @out;
     foreach my $font (@$all_fonts) {
-        my %myfont = %$font;
+        my %myfont = (
+                      name => $font->name,
+                      desc => $font->desc,
+                     );
         my $name = $myfont{name};
         $name =~ s/ /-/g;
         my $path = "/static/images/font-preview/";
-        $myfont{thumb} = $c->uri_for($path . $name . '.png');
-        $myfont{pdf}   = $c->uri_for($path . $name . '.pdf');
-        push @out, \%myfont;
+        my $pdf = $c->path_to(File::Spec->catfile(qw/root static images font-preview/, $name . '.pdf'));
+        if (-f $pdf) {
+            $myfont{thumb} = $c->uri_for($path . $name . '.png');
+            $myfont{pdf}   = $c->uri_for($path . $name . '.pdf');
+            push @out, \%myfont;
+        }
+        else {
+            log_error { "Couldn't find $pdf" };
+        }
     }
     $c->stash(page_title => $c->loc('Font preview'),
               all_fonts => \@out);

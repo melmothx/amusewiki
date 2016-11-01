@@ -230,13 +230,27 @@ div.amw-post-listing-container {
     margin-top: 10px;
 }
 
+div#text-next-post-link span.fa,
+div#text-prev-post-link span.fa,
 div#text-next-post-link span.glyphicon,
 div#text-prev-post-link span.glyphicon {
     font-size: 20px;
 }
 
 .amw-fixed-panel-edit {
-    max-height: 400px;
     width: 100%;
     overflow-y: scroll;
 }
+
+.amw-spacer-20 {
+    margin:0;
+    padding:0;
+    height: 20px;
+}
+
+.amw-spacer-50 {
+    margin:0;
+    padding:0;
+    height: 50px;
+}
+

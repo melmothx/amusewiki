@@ -41,6 +41,8 @@ dbicdh/_source/deploy/25/001-auto-__VERSION.yml
 dbicdh/_source/deploy/25/001-auto.yml
 dbicdh/_source/deploy/26/001-auto-__VERSION.yml
 dbicdh/_source/deploy/26/001-auto.yml
+dbicdh/_source/deploy/27/001-auto-__VERSION.yml
+dbicdh/_source/deploy/27/001-auto.yml
 dbicdh/_source/deploy/3/001-auto-__VERSION.yml
 dbicdh/_source/deploy/3/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
@@ -91,6 +93,8 @@ dbicdh/MySQL/deploy/25/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/25/001-auto.sql
 dbicdh/MySQL/deploy/26/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/26/001-auto.sql
+dbicdh/MySQL/deploy/27/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/27/001-auto.sql
 dbicdh/MySQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/3/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
@@ -122,6 +126,7 @@ dbicdh/MySQL/upgrade/22-23/001-auto.sql
 dbicdh/MySQL/upgrade/23-24/001-auto.sql
 dbicdh/MySQL/upgrade/24-25/001-auto.sql
 dbicdh/MySQL/upgrade/25-26/001-auto.sql
+dbicdh/MySQL/upgrade/26-27/001-auto.sql
 dbicdh/MySQL/upgrade/3-4/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
@@ -165,6 +170,8 @@ dbicdh/PostgreSQL/deploy/25/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/25/001-auto.sql
 dbicdh/PostgreSQL/deploy/26/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/26/001-auto.sql
+dbicdh/PostgreSQL/deploy/27/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/27/001-auto.sql
 dbicdh/PostgreSQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/3/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
@@ -196,6 +203,7 @@ dbicdh/PostgreSQL/upgrade/22-23/001-auto.sql
 dbicdh/PostgreSQL/upgrade/23-24/001-auto.sql
 dbicdh/PostgreSQL/upgrade/24-25/001-auto.sql
 dbicdh/PostgreSQL/upgrade/25-26/001-auto.sql
+dbicdh/PostgreSQL/upgrade/26-27/001-auto.sql
 dbicdh/PostgreSQL/upgrade/3-4/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
@@ -239,6 +247,8 @@ dbicdh/SQLite/deploy/25/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/25/001-auto.sql
 dbicdh/SQLite/deploy/26/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/26/001-auto.sql
+dbicdh/SQLite/deploy/27/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/27/001-auto.sql
 dbicdh/SQLite/deploy/3/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/3/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
@@ -270,6 +280,7 @@ dbicdh/SQLite/upgrade/22-23/001-auto.sql
 dbicdh/SQLite/upgrade/23-24/001-auto.sql
 dbicdh/SQLite/upgrade/24-25/001-auto.sql
 dbicdh/SQLite/upgrade/25-26/001-auto.sql
+dbicdh/SQLite/upgrade/26-27/001-auto.sql
 dbicdh/SQLite/upgrade/3-4/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
@@ -339,6 +350,7 @@ lib/AmuseWikiFarm/Model/Lexicon.pm
 lib/AmuseWikiFarm/Model/Mailer.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
+lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm
 lib/AmuseWikiFarm/Role/Controller/ListingDisplay.pm
 lib/AmuseWikiFarm/Role/Controller/RegularListing.pm
 lib/AmuseWikiFarm/Role/Controller/Text.pm
@@ -445,6 +457,7 @@ root/src/help/irc.tt
 root/src/help/opds.tt
 root/src/include/breadcrumbs.tt
 root/src/include/ckeditor.tt
+root/src/include/editing-options.tt
 root/src/include/markitup.tt
 root/src/include/pagination.tt
 root/src/include/posts.tt
@@ -465,6 +478,7 @@ root/src/tasks/display.tt
 root/src/text.tt
 root/src/user/create.tt
 root/src/user/edit.tt
+root/src/user/edit_options.tt
 root/src/user/human.tt
 root/src/user/login.tt
 root/src/user/reset_password.tt
@@ -490,12 +504,21 @@ root/static/css/bootstrap.slate.css
 root/static/css/bootstrap.spacelab.css
 root/static/css/bootstrap.united.css
 root/static/css/cgit.css
+root/static/css/font-awesome.css
+root/static/css/font-awesome.css.map
+root/static/css/font-awesome.min.css
 root/static/css/images/bg-soft.png
 root/static/css/select2/select2-bootstrap.css
 root/static/css/select2/select2-spinner.gif
 root/static/css/select2/select2.css
 root/static/css/select2/select2.png
 root/static/css/select2/select2x2.png
+root/static/fonts/fontawesome-webfont.eot
+root/static/fonts/fontawesome-webfont.svg
+root/static/fonts/fontawesome-webfont.ttf
+root/static/fonts/fontawesome-webfont.woff
+root/static/fonts/fontawesome-webfont.woff2
+root/static/fonts/FontAwesome.otf
 root/static/fonts/glyphicons-halflings-regular.eot
 root/static/fonts/glyphicons-halflings-regular.svg
 root/static/fonts/glyphicons-halflings-regular.ttf
@@ -843,6 +866,7 @@ t/amuse-utils.t
 t/archive-cache.t
 t/archive.t
 t/atr-lexicon.json
+t/authentication.t
 t/author-update.t
 t/bb-profiles.t
 t/beamer.t
@@ -884,6 +908,7 @@ t/custom-templates/html.tt
 t/custom-templates/latex.tt
 t/dbic.yaml
 t/deferred-texts.t
+t/editing-options.t
 t/editing.t
 t/entities.json
 t/entities.t
@@ -894,9 +919,11 @@ t/files/slides-s-no.muse
 t/files/slides.muse
 t/files/upload.html
 t/files/widebanner.png
+t/fontspec-json.t
 t/full-blog-mode.t
 t/git-revision.t
 t/html-upload.t
+t/human-login-screens.t
 t/indexer.t
 t/jobber.t
 t/lang-parsing.t
@@ -908,6 +935,7 @@ t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/links-in-headings.t
 t/mail.t
+t/missing-image-crash-81.t
 t/mkits/test/body.txt
 t/mkits/test/manifest.json
 t/model-user.t
@@ -958,6 +986,7 @@ t/static-indexes-optimize.t
 t/static-indexes.t
 t/status_file.t
 t/stemmer-crash.t
+t/symlink-serving.t
 t/test-repos/0blog0/d/dt/deleted-text-in-the-future.muse
 t/test-repos/0blog0/d/dt/deleted-text.muse
 t/test-repos/0blog0/d/dt/do-this-by-yourself.muse

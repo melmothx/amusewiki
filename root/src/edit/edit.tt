@@ -11,13 +11,23 @@
 
 <div class="center">
   <div class="page-header">
-    <h1>[% loc('Editing') %] [% revision.title.uri %]</h1>
+    <h1>[% loc('Editing') %] [% revision.title.uri %]
+      [% IF c.user_exists %]
+      <a href="[% c.uri_for_action('/user/edit_options', [c.user.get('id')]) %]"
+         target="_blank"
+         class="pull-right">
+        <small>
+          <span class="fa fa-wrench"></span>
+        </small>
+      </a>
+      [% END %]
+    </h1>
   </div>
 </div>
 
 <div class="row">
-  <div id="page" class="col-sm-5 col-sm-push-7"
-       style="border-bottom: 2px solid #bbb; margin-bottom: 20px">
+  <div id="page" class="col-sm-[% edit_option_page_right_bs_columns %]
+                        col-sm-push-[% edit_option_page_left_bs_columns %]">
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -25,17 +35,21 @@
         [% loc('Preview') %]
         <a href="[% preview_uri %]" target="_blank"
            title="[% loc('Show preview in other tab') %]">
-          <span class="glyphicon glyphicon-share-alt"></span>
+          <span class="fa fa-arrows-alt"></span>
         </a>
     </h3>
   </div>
-  <div class="panel-body amw-fixed-panel-edit">
+  <div class="panel-body amw-fixed-panel-edit"
+       [% IF edit_option_preview_box_height %]style="max-height: [% edit_option_preview_box_height %]px;"[% END %]>
     <div id="amw-text-edit-preview-box">
       <div class="center">
-        <img src="[% c.uri_for('/static/images/ajax-loader-circular.gif') %]" alt="Loading" />
+        <span class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></span>
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
-    <hr />
+  </div>
+  <hr />
+  <div class="panel-body">
     <div>
       [% IF revision.has_local_modifications %]
       <div class="center">
@@ -63,7 +77,7 @@
   </div>
   <div class="panel-body">
   <div class="alert alert-warning">
-    <span class="glyphicon glyphicon-warning-sign"></span> [% loc('You
+    <span class="fa fa-warning"></span> [% loc('You
     have attached one or more images. This is not enough! To make them
     appear, you have to place somewhere in the body or in the header,
     depending on their purpose. See the examples below.') %]
@@ -106,7 +120,7 @@
   </div>
   <div class="panel-body">
     <div class="alert alert-warning">
-      <span class="glyphicon glyphicon-warning-sign"></span>
+      <span class="fa fa-warning"></span>
       [% loc('To display the PDFs, set or append the following string in the header') %]:<br />
       <code>[% revision.attached_pdfs_string | html %]</code>
     </div>
@@ -124,8 +138,15 @@
 
 
   </div>
-  <div class="col-sm-7 col-sm-pull-5">
-
+  <div id="edit-page-left-panels" class="col-sm-[% edit_option_page_left_bs_columns %]
+              col-sm-pull-[% edit_option_page_right_bs_columns %]">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          [% loc('Editing') %]
+        </h3>
+      </div>
+      <div class="panel-body">
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
   <div class="form-group">
@@ -158,13 +179,13 @@
 
     <div>
       <a href="#cheatsheet">
-        <span class="glyphicon glyphicon-hand-right"></span>
+        <span class="fa fa-hand-o-right"></span>
         [% loc('Cheatsheet for the markup') %]
       </a>
     </div>
     <div>
       <a href="[% c.uri_for_action('utils/import') %]" target="_blank">
-        <span class="glyphicon glyphicon-hand-right"></span>
+        <span class="fa fa-hand-o-right"></span>
         [% loc('HTML/Word Importer') %]
       </a>
     </div>
@@ -174,6 +195,7 @@
                 [% IF locked_editing %]readonly="readonly"[% END %]
                 name="body">[%- revision.muse_body | html -%]</textarea>
     </div>
+    [% SET show_filters = edit_option_show_filters %]
     [%- IF (c.req.params.fix_typography || c.req.params.fix_typography || c.req.params.fix_links ||
             c.req.params.remove_nbsp    || c.req.params.fix_nbsp       || c.req.params.fix_footnotes) -%]
        [%- SET show_filters = 1 -%]
@@ -185,10 +207,10 @@
          data-toggle="collapse"
          aria-expanded="[% IF show_filters %]true[% ELSE %]false[% END %]"
          aria-controls="filters">
+        <span class="fa fa-caret-square-o-down"></span>
         <strong>
           [% loc('Filters') %]
           [% loc('(smart quotes, links, footnotes, etc.)') %]
-          <span class="caret"></span>
         </strong>
       </label>
     </div>
@@ -307,10 +329,24 @@
   </div>
 </form>
 </div>
+    </div>
+    </div>
 
-    <div id="cheatsheet" style="border: solid 1px #bbb; padding: 5px;">
-      <h3>[% loc('Cheatsheet for the markup') %]</h3>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"
+            role="button"
+            data-target="#cheatsheet-panel"
+            data-toggle="collapse"
+            aria-expanded="[% IF edit_option_show_cheatsheet %]true[% ELSE %]false[% END %]"
+            aria-controls="cheatsheet-panel"
+            >[% loc('Cheatsheet for the markup') %]
+          <span class="fa fa-caret-square-o-down pull-right"></span>
+        </h3>
+      </div>
+      <div class="panel-body collapse[% IF edit_option_show_cheatsheet %] in[% END %]" id="cheatsheet-panel">
 
+    <div id="cheatsheet">
       <h4>[% loc('Summary') %]</h4>
       <ul id="cssummary">
         <li><a href="#csheads">[% loc('Headings') %]</a></li>
@@ -648,6 +684,8 @@ How smart a lash that speech doth giue my Conscience?
         </a>
       </p>
     </div>
+    </div>
+    </div> <!-- end of panel -->
   </div>
 </div>
 

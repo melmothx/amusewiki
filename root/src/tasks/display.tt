@@ -64,8 +64,9 @@
 <div>
   <div class="center">
     <strong>
-      [% loc('Status') %]: <span class="bbstatusstring"></span><br />
-      <img id="waiting" src="[% c.uri_for('/static/images/ajax-loader.gif') %]" />
+      <span class="waiting-for-job fa fa-cog fa-spin fa-fw" aria-hidden="true"></span>
+      [% loc('Status') %]: <span class="bbstatusstring"></span>
+      <span class="waiting-for-job fa fa-cog fa-spin fa-fw" aria-hidden="true"></span>
     </strong>
   </div>
   <div class="center" id="task-lane">

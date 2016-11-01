@@ -9,7 +9,7 @@
   </small>
   [% END %]
   <small>
-    <a href="[% editing_uri %]"><span class="glyphicon glyphicon-share-alt"></span></a>
+    <a href="[% editing_uri %]"><span class="fa fa-arrow-circle-left"></span></a>
   </small>
 </h2>
 

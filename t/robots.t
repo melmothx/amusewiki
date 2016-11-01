@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 62;
+use Test::More tests => 60;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -29,7 +29,6 @@ my @norobots = (
                 '/publish/publish',
                 '/tasks/status/1',
                 '/admin/pending',
-                '/logout',
                 '/search',
                 '/blabla',
                );
@@ -48,9 +47,9 @@ my @yesrobots = (
                  '/special/index',
                 );
 my $meta = '<meta name="robots" content="noindex,nofollow" />';
-
-$mech->get_ok('/tasks/status/1/ajax');
-is $mech->uri->path, '/human';
+$mech->get_ok('/');
+$mech->get('/tasks/status/1/ajax');
+is $mech->status, 401;
 
 foreach my $link ('/login', '/human', @norobots) {
     $mech->get($link);
@@ -58,8 +57,7 @@ foreach my $link ('/login', '/human', @norobots) {
 }
 $mech->get('/human');
 
-ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
-                      button => 'submit'));
+ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }));
 
 $mech->content_contains('logged in now') or diag $mech->content;
 foreach my $link (@norobots) {

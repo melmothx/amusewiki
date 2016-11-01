@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
-use Test::More tests => 50;
+use Test::More tests => 51;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -129,12 +129,11 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $mech->get_ok('/human');
 $mech->submit_form(
                    with_fields => {
-                                   answer => 'January',
+                                   __auth_human => 'January',
                                   },
-                   button => 'submit',
                   );
 $mech->get_ok('/random');
-$mech->submit_form(form_id => 'book-builder-add-text');
+ok($mech->follow_link(url_regex => qr{/bookbuilder/add/.+}));
 $mech->get_ok('/bookbuilder');
 $mech->form_with_fields('signature');
 $mech->field(title => 'test');

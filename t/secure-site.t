@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 18;
+use Test::More tests => 40;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -23,22 +23,38 @@ $site->update({ secure_site => 1});
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
 
-$mech->get_ok('/');
+$mech->get_ok('/?__language=en'); # set the lang to get a cookie
 is $mech->uri->scheme, 'http', "Getting the root leads to a plain site";
+diag session($mech);
+my $current_session = session($mech);
+ok $current_session, "Got a session on plain";
 $mech->get_ok('/login');
 is $mech->uri->scheme, 'https', "/login redirects to secure site";
+isnt session($mech), $current_session, "Sessionid changed after redirect";
+$current_session = session($mech);
 
 # login then
 
-ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
-                      button => 'submit'), "Found the form");
+ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
+   "Found the form");
 
 is $mech->uri->scheme, 'https', 'still in https';
+isnt session($mech), $current_session, "Sessionid changed after login";
+$current_session = session($mech);
+
 
 $mech->get_ok("http://$site_id.amusewiki.org/admin/sites");
+diag session($mech);
 is $mech->uri->scheme, 'https', 'still in https despite being asked a plain one';
+isnt session($mech), $current_session, "Sessionid changed after redirect";
+$current_session = session($mech);
+
 $mech->get_ok("http://$site_id.amusewiki.org/");
+diag session($mech);
 is $mech->uri->scheme, 'https', "Authenticated can't get a plain page";
+isnt session($mech), $current_session, "Sessionid changed after redirect";
+$current_session = session($mech);
+
 $mech->get_ok('/logout');
 $mech->get_ok("http://$site_id.amusewiki.org");
 is $mech->uri->scheme, 'http', "Non authenticated can get a plain page";
@@ -46,7 +62,48 @@ is $mech->uri->scheme, 'http', "Non authenticated can get a plain page";
 foreach my $uri (qw/login reset-password/) {
     $mech->get_ok("http://$site_id.amusewiki.org/$uri");
     is $mech->uri->scheme, 'https', "Login is ssl again";
+    diag session($mech);
+    isnt session($mech), $current_session, "Sessionid changed after redirect";
+    $current_session = session($mech);
 }
 $mech->get("http://$site_id.amusewiki.org/reset-password/prova/prova");
 is $mech->uri->scheme, 'https', "reset-password is ssl again";
+isnt session($mech), $current_session, "Sessionid changed after redirect";
+$current_session = session($mech);
+diag session($mech);
 
+$site->update({ secure_site => 0});
+$mech->get("http://$site_id.amusewiki.org/admin/sites");
+is $mech->status, 401;
+$mech->content_contains(qq{action="http://$site_id.amusewiki.org/admin/sites"});
+$mech->content_lacks(qq{action="https://$site_id.amusewiki.org/admin/sites"});
+$mech->post("http://$site_id.amusewiki.org/admin/sites", {__auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, 200;
+$mech->content_lacks('login-form');
+$mech->get('/logout');
+
+$site->update({ secure_site => 1});
+$mech->get("http://$site_id.amusewiki.org/admin/sites");
+is $mech->status, 401;
+$mech->content_contains(qq{action="https://$site_id.amusewiki.org/admin/sites"});
+$mech->post("http://$site_id.amusewiki.org/admin/sites", {__auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, 401;
+$mech->content_contains('credentials over an unencrypted connection');
+$mech->content_contains('login-form');
+$mech->post("https://$site_id.amusewiki.org/admin/sites", {__auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, 200;
+$mech->content_lacks('login-form');
+$mech->get('/logout');
+
+$site->update({ mode => 'private' });
+$mech->get("http://$site_id.amusewiki.org/search?query=my<damned>query");
+ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
+   "Found the form");
+$mech->content_contains('my&lt;damned&gt;query') or diag $mech->content;
+
+
+sub session {
+    my $mech = shift;
+    my ($session) = $mech->response->header('Set-Cookie') =~ m/session=(.*?);/;
+    return $session;
+}

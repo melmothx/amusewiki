@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 86;
+use Test::More tests => 88;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -41,6 +41,8 @@ ok($rev);
 $rev->commit_version;
 $rev->publish_text;
 
+$schema->resultset('User')->search({username => [qw/pinco pincuz/] })->delete;
+
 my $user = $site->update_or_create_user({
                                          username => 'pinco',
                                          password => 'pallino',
@@ -61,9 +63,8 @@ $mech->content_lacks('/action/special/edit/index', "No link to admin");
 
 $mech->get('/special/index/edit');
 
-is $mech->response->base->path, '/login', "Bounced to human page";
-
-$mech->get('/action/special/edit/index');
+is $mech->response->base->path, '/action/special/edit/index';
+is $mech->status, 401;
 
 ok(!$schema->resultset('Revision')->search({
                                             site_id => '0user0',
@@ -71,8 +72,6 @@ ok(!$schema->resultset('Revision')->search({
                                             title_id => $index_text_id,
                                            })->count,
    "No index revision (1)");
-
-is $mech->response->base->path, '/login', "Bounced to login page";
 
 $mech->get('/special/pippo/edit');
 
@@ -85,10 +84,7 @@ ok(!$schema->resultset('Revision')->search({
 is $mech->status, '404';
 
 $mech->get('/login');
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'pallino' },
-                   button => 'submit');
-
+$mech->submit_form(with_fields => { __auth_user => 'pallino' });
 is $mech->response->base->path, '/login', "No authorized, still on login";
 
 ok(!$schema->resultset('Revision')->search({
@@ -98,10 +94,7 @@ ok(!$schema->resultset('Revision')->search({
    "No index revisions(2a)");
 
 
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'pinco', password => 'pallino' },
-                   button => 'submit');
-
+$mech->submit_form(with_fields => { __auth_user => 'pinco', __auth_pass => 'pallino' });
 $mech->content_contains(q{/logout"}, "Page contains the logout link");
 diag $mech->uri;
 
@@ -124,10 +117,7 @@ $user_active->update;
 $mech->get_ok('/login');
 $mech->content_contains('login-form');
 
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'pinco', password => 'pallino' },
-                   button => 'submit');
-
+$mech->submit_form(with_fields => { __auth_user => 'pinco', __auth_pass => 'pallino' });
 is $mech->response->base->path, '/login',
   "No authorized, still on login because not active";
 $mech->content_contains('login-form');
@@ -138,7 +128,8 @@ ok(!$schema->resultset('Revision')->search({
                                            })->count,
    "No index revisions(3)");
 
-$mech->get_ok('/action/special/edit/index');
+$mech->get('/action/special/edit/index');
+is $mech->status, 401;
 
 $mech->content_lacks('textarea', "No textarea found for not logged-in");
 
@@ -147,22 +138,13 @@ $user_active->update;
 
 $mech->get_ok('/login');
 $mech->content_contains('login-form');
-
-$mech->submit_form(form_id => 'login-form',
-                   fields => { username => 'pinco', password => 'pallino' },
-                   button => 'submit');
-
+$mech->submit_form(with_fields => { __auth_user => 'pinco', __auth_pass => 'pallino' });
 $mech->content_contains(q{/logout"}, "Page contains the logout link");
 
 $othermech->get_ok('/login');
-$othermech->content_contains('name="password"');
-$othermech->content_contains('name="username"');
-$othermech->submit_form(form_id => 'login-form',
-                        fields => {
-                                   username => 'pinco',
-                                   password => 'pallino',
-                                  },
-                        button => 'submit');
+$othermech->content_contains('name="__auth_pass"');
+$othermech->content_contains('name="__auth_user"');
+$othermech->submit_form(with_fields => { __auth_user => 'pinco', __auth_pass => 'pallino' });
 $othermech->content_contains('Wrong username or password',
                              "Can't login in other site");
 
@@ -178,12 +160,12 @@ is $mech->uri->path, '/action/text/new';
 
 
 $mech->get_ok( '/logout' );
-
-like $mech->uri, qr{/login}, "Bounced to login";
 like $mech->content, qr{You have logged out}, "status message correct";
 
 $mech->get('/user/create');
-is $mech->uri->path, '/login', "Not logged in can't access /user/ and bounce to login";
+is $mech->status, 401;
+$mech->content_contains('__auth_user');
+$mech->content_lacks('__auth_human');
 
 # let pinco create a new fellow librarian
 
@@ -191,11 +173,7 @@ my @users = $site->users;
 
 is (scalar(@users), 1, "Found 1 user");
 
-$mech->submit_form(with_fields =>  {
-                                    username => 'pinco',
-                                    password => 'pallino',
-                                   },
-                   button => 'submit');
+$mech->submit_form(with_fields => { __auth_user => 'pinco', __auth_pass => 'pallino' });
 
 $mech->content_contains('You are logged in') or diag $mech->content;
 
@@ -296,17 +274,18 @@ is $pincuz->roles->first->role, 'librarian', "Found role librarian";
 
 
 $mech->get_ok( '/logout' );
-
-like $mech->uri, qr{/login}, "Bounced to login";
 like $mech->content, qr{You have logged out}, "status message correct";
+$mech->get_ok('/login');
+$mech->content_contains('__auth_user');
+$mech->content_lacks('__auth_human');
+
 
 # now, pincuz log in and updates its info
 
 $mech->submit_form(with_fields =>  {
-                                    username => $pincuz->username,
-                                    password => $form->{password},
-                                   },
-                   button => 'submit');
+                                    __auth_user => $pincuz->username,
+                                    __auth_pass => $form->{password},
+                                   });
 
 $mech->content_contains('You are logged in') or diag $mech->content;
 
@@ -316,7 +295,8 @@ die "Test are broken" if $userid < 4;
 
 foreach my $i (1..3) {
     $mech->get("/user/edit/$i");
-    is $mech->status, "403", "librarian can't access other editing";
+    # 403 permission denied, auth will not help
+    is $mech->status, 403, "a librarian can't access other user editing";
 }
 
 $mech->get('/');
@@ -329,13 +309,12 @@ is ($mech->uri->path, '/user/edit/' . $pincuz->id,
 {
     my $edit_path = $mech->uri->path;
     $mech->get_ok( '/logout' );
-    $mech->get_ok($edit_path);
-    is $mech->uri->path, '/login';
+    $mech->get($edit_path);
+    is $mech->status, 401;
     $mech->submit_form(with_fields =>  {
-                                        username => $pincuz->username,
-                                        password => $form->{password},
-                                       },
-                       button => 'submit');
+                                        __auth_user => $pincuz->username,
+                                        __auth_pass => $form->{password},
+                                       });
     is $mech->uri->path, $edit_path;
 }
 

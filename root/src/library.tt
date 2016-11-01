@@ -51,7 +51,7 @@
 <h3 id="paging-sep-[% text.anchor_id %]">
   [% text.anchor_name %]
     <a href="#alphabetical-pager" style="color:black">
-      <small><span class="glyphicon glyphicon-circle-arrow-up"></span></small>
+      <small><span class="fa fa-circle-arrow-up"></span></small>
     </a>
 </h3>
 <div class="list-group">
@@ -63,7 +63,7 @@
       [%- IF text.author %] — [% text.author -%][% END -%]
       [%- IF site.multilanguage -%] <small>[[% text.lang %]]</small>[% END -%]
       [% IF text.is_deferred %]
-      <span class="glyphicon glyphicon-time"></span>
+      <span class="fa fa-clock-o"></span>
       [% END %]
     </a>
   </div>

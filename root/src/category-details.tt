@@ -13,9 +13,10 @@
   [%- END -%]
   [% IF c.user_exists %]
   <a href="[% c.uri_for_action('/category/edit_category_description', [category.type, category.uri, current_locale_code ]) %]"
+     id="amw-category-description-edit-button"
      title="[% loc('Update category description') %]"
      class="btn btn-default pull-right" role="button">
-    <span class="glyphicon glyphicon-edit"></span>
+    <span class="fa fa-edit"></span>
   </a>
   [% END %]
 </h1>

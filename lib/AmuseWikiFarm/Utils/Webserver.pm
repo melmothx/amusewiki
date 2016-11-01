@@ -547,7 +547,6 @@ sub _insert_server_stanza {
     my $canonical = $site->canonical;
     my @vhosts = $site->alternate_hostnames;
     my $hosts = join("\n" . (" " x 16),  $canonical, @vhosts);
-    my $redirect_to_secure;
     my $default_key = $self->ssl_default_key;
     my $default_crt = $self->ssl_default_cert;
 

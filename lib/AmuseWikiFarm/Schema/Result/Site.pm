@@ -889,6 +889,8 @@ sub compile_options {
     if ($self->use_luatex) {
         $opts{luatex} = 1;
     }
+    $opts{epub_embed_fonts} = 0;
+    $opts{fontspec} = $self->fontspec_file;
 
     if (my $dir = $self->valid_ttdir) {
         $opts{ttdir} = $dir;
@@ -1019,6 +1021,22 @@ sub has_site_file {
         return;
     }
 }
+
+sub fontspec_file {
+    my $self = shift;
+    my $filename = 'fontspec.json';
+    if (my $file = $self->has_site_file($filename)) {
+        return $file;
+    }
+    # search the current dir for fontspec.json
+    elsif (-f $filename) {
+        return File::Spec->rel2abs($filename);
+    }
+    else {
+        return undef;
+    }
+}
+
 
 =head2 repo_is_under_git
 
@@ -2375,8 +2393,7 @@ sub update_from_params {
 
 
     # for papersize and fonts, we ask the bookbuilder
-    # TODO: just use the class.
-    my $bb = AmuseWikiFarm::Archive::BookBuilder->new;
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new(site => $self) ;
 
     my $ppsize = delete $params->{papersize};
     if ($ppsize && $bb->papersize_values_as_hashref->{$ppsize}) {
@@ -2388,6 +2405,7 @@ sub update_from_params {
 
     foreach my $fontfamily (qw/mainfont sansfont monofont/) {
         my $font = delete $params->{$fontfamily};
+        Dlog_debug { "Available fonts $_" }  $bb->available_fonts;
         if ($font && $bb->available_fonts->{$font}) {
             $self->$fontfamily($font);
         }
@@ -2440,7 +2458,9 @@ sub update_from_params {
     else {
         push @errors, "Invalid opening!";
     }
-
+    # unclear if it's enough to prevent a memory cycle. Probably it
+    # is, as $bb goes away, which references $self.
+    undef $bb;
 
     my @vhosts;
     # ignore missing vhosts
@@ -2494,6 +2514,10 @@ sub update_from_params {
                            freenode_irc_channel
                            turn_links_to_images_into_images
                            use_js_highlight
+                           edit_option_page_left_bs_columns
+                           edit_option_show_cheatsheet
+                           edit_option_show_filters
+                           edit_option_preview_box_height
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -2735,17 +2759,21 @@ sub static_indexes_generator {
 }
 
 sub canonical_url {
+    return shift->canonical_url_secure;
+}
+
+sub https_available {
     my $self = shift;
-    return 'http://' . $self->canonical;
+    return $self->secure_site || $self->secure_site_only;
 }
 
 sub canonical_url_secure {
     my $self = shift;
-    if ($self->secure_site || $self->secure_site_only) {
+    if ($self->https_available) {
         return 'https://' . $self->canonical;
     }
     else {
-        return $self->canonical_url;
+        return 'http://' . $self->canonical;
     }
 }
 
@@ -3066,8 +3094,65 @@ certificate).
 
 This affects only the generation of the nginx conf
 
+=head1 EDITING OPTIONS
+
+Stored in the site_options table and wrapped here. Compare with User
+class.
+
+=over 4
+
+=item edit_option_preview_box_height
+
+=item edit_option_show_filters
+
+=item edit_option_show_cheatsheet
+
+=item edit_option_page_left_bs_columns
+
+=back
+
 =cut
 
+
+sub edit_option_preview_box_height {
+    my $self = shift;
+    my $value = $self->get_option('edit_option_preview_box_height');
+    if (defined $value and
+        $value =~ m/\A[1-9][0-9]*\z/) {
+        return $value;
+    }
+    return 500;
+}
+
+sub edit_option_show_filters {
+    my $self = shift;
+    my $value = $self->get_option('edit_option_show_filters');
+    if (defined $value) {
+        $value ? return 1 : return 0;
+    }
+    else {
+        return 1;
+    }
+}
+sub edit_option_show_cheatsheet {
+    my $self = shift;
+    my $value = $self->get_option('edit_option_show_cheatsheet');
+    if (defined $value) {
+        $value ? return 1 : return 0;
+    }
+    else {
+        return 1;
+    }
+}
+
+sub edit_option_page_left_bs_columns {
+    my $self = shift;
+    my $value = $self->get_option('edit_option_page_left_bs_columns');
+    if (defined $value and $value =~ m/\A[1-9][0-9]*\z/) {
+        return $value;
+    }
+    return 6;
+}
 
 __PACKAGE__->meta->make_immutable;
 

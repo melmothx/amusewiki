@@ -21,7 +21,7 @@ my $host = $site_id . '.amusewiki.org';
 
 my $res = request('/', { host => 'pincopallino.org' });
 
-is $res->code, '403', "Access forbidded against non-existent host";
+is $res->code, '403', "Access forbidden against non-existent host";
 
 my $site = create_site($schema, $site_id);
 
@@ -33,7 +33,7 @@ is $res->code, '200', "After site creation, site can be accessed"
 $site->update({ canonical => 'blablabla.amusewiki.org' });
 $res = request('/', { host => $host });
 
-is $res->code, '403', "Access forbidded after canonical change";
+is $res->code, '403', "Access forbidden after canonical change";
 
 # then add the original host to the vhost
 
@@ -66,7 +66,7 @@ is $site->canonical_url_secure, 'http://blablabla.amusewiki.org', "Url ok";
 
 $site->update({ secure_site => 1 });
 
-is $site->canonical_url, 'http://blablabla.amusewiki.org', "Url ok with https";
+is $site->canonical_url, 'https://blablabla.amusewiki.org', "Url ok with https";
 is $site->canonical_url_secure, 'https://blablabla.amusewiki.org', "Url ok";
 
 $site->add_to_vhosts({ name => 'example.amusewiki.org' });

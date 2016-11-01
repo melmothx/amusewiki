@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 30;
+use Test::More tests => 31;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -25,12 +25,11 @@ $site->update({ secure_site => 0 });
 my $host = $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
-
-$mech->get_ok('/action/text/new');
+$mech->get_ok('/');
+$mech->get('/action/text/new');
+is $mech->status, 401;
 ok($mech->form_id('login-form'), "Found the login-form");
-$mech->set_fields(username => 'root',
-                  password => 'root');
-$mech->click;
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->content_contains('You are logged in now!');
 
 foreach my $console ('/publish/pending', '/publish/all') {

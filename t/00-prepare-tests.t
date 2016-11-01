@@ -10,6 +10,7 @@ use File::Copy::Recursive qw/dircopy/;
 use File::Path qw/remove_tree make_path/;
 use File::Copy qw/copy/;
 use DBIx::Class::DeploymentHandler;
+use Text::Amuse::Compile::Utils qw/read_file write_file/;
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
@@ -20,7 +21,9 @@ use AmuseWikiFarm::Schema;
 
 diag "Using DBIC $DBIx::Class::VERSION\n";
 
-plan tests => 11;
+plan tests => 14;
+
+system('script/amusewiki-populate-webfonts') == 0 or die;
 
 my $texmfhome = `kpsewhich -var-value TEXMFHOME`;
 chomp $texmfhome;
@@ -91,7 +94,7 @@ my %repos = ('0blog0' => {
                           division => '9',
                           bcor => '1cm',
                           fontsize => 12,
-                          mainfont => 'Charis SIL',
+                          mainfont => 'Linux Libertine O',
                           twoside => 1,
                           canonical => 'blog.amusewiki.org',
                           secure_site => 0,
@@ -140,6 +143,12 @@ foreach my $repo (sort keys %repos) {
     $site->sitegroup('1');
     $site->update;
     $site->update_db_from_tree(sub { diag join(' ', @_) });
+    if (my $mainfont = $repos{$repo}{mainfont}) {
+        foreach my $text ($site->titles->published_texts) {
+            my $html = read_file($text->filepath_for_ext('html'));
+            like $html, qr{\Q$mainfont\E};
+        }
+    }
 }
 
 my $blog = $schema->resultset('Site')->find('0blog0');

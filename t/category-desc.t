@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 145;
+use Test::More tests => 146;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -129,27 +129,32 @@ foreach my $page ('/library/the-text', '/authors', '/topics',
                   '/authors/pippo', '/topics/the-cat') {
     $mech->get_ok($page);
     my $site_url = $site->canonical;
-    my @links = grep { $_->url !~ /\Q$site_url\E\/(static|git)\//}
+    my @links = grep { $_->url !~ /\Q$site_url\E\/(static|git|bookbuilder)/}
       $mech->find_all_links;
     $mech->links_ok(\@links);
     ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 }
+$mech->get('/bookbuilder');
+is $mech->status, 401;
 
 $mech->get_ok('/?__language=en');
 $mech->get_ok('/authors/pippo');
-$mech->content_lacks('glyphicon-edit');
+$mech->content_lacks('amw-category-description-edit-button');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
-$mech->get_ok('/category/author/pippo/edit');
-is $mech->uri->path, '/login', "Bounced to login";
-$mech->get_ok('/category/author/pippo/delete');
-is $mech->uri->path, '/login', "Bounced to login";
-ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
-                      button => 'submit'), "Found login form");
+$mech->get('/category/author/pippo/edit');
+is $mech->status, 401, "Bounced to login";
+$mech->content_contains('__auth_user');
+$mech->content_lacks('__auth_human');
+$mech->get('/category/author/pippo/delete');
+is $mech->status, 401, "Bounced to login";
+$mech->content_lacks('__auth_human');
+ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
+   "Found login form");
 is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
 
 $mech->get_ok('/authors/pippo');
 is $mech->uri->path, '/category/author/pippo', "Redirection ok";
-$mech->content_contains('glyphicon-edit');
+$mech->content_contains('amw-category-description-edit-button');
 $mech->get_ok('/category/author/pippo/edit');
 is $mech->uri->path, '/category/author/pippo/en/edit', "Redirection ok";
 $mech->content_like(qr{<h2>Update category description});
@@ -223,10 +228,10 @@ $mech->get_ok("/category/author/pippo/en/edit");
 $mech->content_contains("Pippo <em>is</em> a nice author");
 
 $mech->get_ok("/logout");
-$mech->get_ok("/category/author/pippo/en/delete");
-is $mech->uri->path, '/login', "Bounced to login";
-ok($mech->submit_form(with_fields => {username => 'root', password => 'root' },
-                      button => 'submit'), "Found login form");
+$mech->get("/category/author/pippo/en/delete");
+is $mech->status, 401, "Bounced to login";
+ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
+   "Found login form");
 
 $mech->get_ok("/category/author/pippo/en/delete");
 is $mech->uri->path, "/category/author/pippo/en/edit";

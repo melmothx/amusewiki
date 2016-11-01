@@ -33,7 +33,7 @@
     <div>
       <span id="pubdate-label">
         <strong>[% loc('Publication date') %]:</strong>
-        <span class="glyphicon glyphicon-time"
+        <span class="fa fa-clock-o"
               title="[% loc('This text is not published yet') %]"></span>
         [% text.pubdate %]
       </span>
@@ -146,142 +146,138 @@
       <span id="pdfgeneric">
         <a href="[% basename %].pdf" class="pdflinks amw-register-stat"
            data-amw-register-stat-type="pdf">
-	      <img src="[% c.uri_for('/static/images/pdf-gen.png') %]"
-                 alt="[% loc('plain PDF') %]"
-               title="[% loc('plain PDF') %]" data-toggle="tooltip" data-placement="top"
-	           class="pdfmyicons" /></a>
+          <span class="fa fa-file-pdf-o fa-2x fa-border fw"
+                aria-hidden="true"
+                title="[% loc('plain PDF') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only">[% loc('plain PDF') %]</span></a>
       </span>
       [% END %]
       [% IF site.a4_pdf && text.check_if_file_exists('a4.pdf') %]
       <span id="pdfa4imp">
         <a href="[% basename %].a4.pdf" class="pdflinks amw-register-stat"
            data-amw-register-stat-type="a4-pdf">
-	      <img src="[% c.uri_for('/static/images/pdf-a4-imposed.png') %]"
-	             alt="[% loc('A4 imposed PDF') %]"
-	           title="[% loc('A4 imposed PDF') %]" data-toggle="tooltip" data-placement="top"
-	           class="pdfmyicons" /></a> 
+          <span class="fa fa-columns fa-2x fa-border fa-flip-vertical fw"
+                aria-hidden="true"
+                title="[% loc('A4 imposed PDF') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only">[% loc('A4 imposed PDF') %]</span></a>
       </span>
       [% END %]
       [% IF site.lt_pdf && text.check_if_file_exists('lt.pdf') %]
       <span id="letterimp">
         <a href="[% basename %].lt.pdf" class="pdflinks amw-register-stat"
            data-amw-register-stat-type="lt-pdf">
-	      <img src="[% c.uri_for('/static/images/pdf-letter-imposed.png') %]"
-	             alt="[% loc('Letter imposed PDF') %]"
-	           title="[% loc('Letter imposed PDF') %]" data-toggle="tooltip" data-placement="top"
-	           class="pdfmyicons" /></a> 
+          <span class="fa fa-columns fa-2x fa-border fa-flip-vertical fw"
+                aria-hidden="true"
+                title="[% loc('Letter imposed PDF') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only">[% loc('Letter imposed PDF') %]</span></a>
       </span>
       [% END %]
       [% IF site.sl_pdf && text.slides && text.check_if_file_exists('sl.pdf') %]
       <span id="downloadslides">
         <a href="[% basename %].sl.pdf" class="amw-register-stat"
            data-amw-register-stat-type="slides">
-	      <img src="[% c.uri_for('/static/images/slides.png') %]"
-                 alt="[% loc('Slides (PDF)') %]"
-	           title="[% loc('Slides (PDF)') %]" data-toggle="tooltip" data-placement="top"
-               class="pdfmyicons" /></a>
+          <span class="fa fa-file-powerpoint-o fa-2x fa-border fw"
+                aria-hidden="true"
+                title="[% loc('Slides (PDF)') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only">[% loc('Slides (PDF)') %]</span></a>
       </span>
       [% END %]
       [% IF site.epub && text.check_if_file_exists('epub') %]
       <span id="downloadepub">
         <a href="[% basename %].epub" class="amw-register-stat"
            data-amw-register-stat-type="epub">
-	      <img src="[% c.uri_for('/static/images/epub.png') %]"
-                 alt="[% loc('EPUB (for mobile devices)') %]"
-	           title="[% loc('EPUB (for mobile devices)') %]" data-toggle="tooltip" data-placement="top"
-               class="pdfmyicons" /></a>
+          <span class="fa fa-tablet fa-2x fa-border fw"
+                aria-hidden="true"
+                title="[% loc('EPUB (for mobile devices)') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only">[% loc('EPUB (for mobile devices)') %]</span></a>
       </span>
       [% END %]
       [% IF site.html && text.check_if_file_exists('html') %]
       <span id="downloadhtml">
         <a href="[% basename %].html" class="amw-register-stat"
            data-amw-register-stat-type="html">
-	      <img src="[% c.uri_for('/static/images/pf-html.png') %]"
-                 alt="[% loc('Standalone HTML (printer-friendly)') %]"
-	           title="[% loc('Standalone HTML (printer-friendly)') %]" data-toggle="tooltip" data-placement="top"
-	           class="pdfmyicons" /></a>
+          <span class="fa fa-border fa-2x fa-print"
+                aria-hidden="true"
+                title="[% loc('Standalone HTML (printer-friendly)') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only">[% loc('Standalone HTML (printer-friendly)') %]</span></a>
       </span>
       [% END %]
       [% IF site.tex && text.check_if_file_exists('tex') %]
       <span id="downloadtex">
         <a href="[% basename %].tex">
-	      <img src="[% c.uri_for('/static/images/tex.png') %]"
-                 alt="[% loc('XeLaTeX source') %]"
-               title="[% loc('XeLaTeX source') %]" data-toggle="tooltip" data-placement="top"
-	           class="pdfmyicons" /></a>
+          <span class="fa fa-file-code-o fa-2x fa-border fw"
+                aria-hidden="true"
+                data-toggle="tooltip" data-placement="top"
+                title="[% loc('XeLaTeX source') %]"
+                ></span><span class="sr-only" >[% loc('XeLaTeX source') %]</span></a>
       </span>
       [% END %]
       <span id="downloadsrc">
         <a href="[% basename %].muse">
-	      <img src="[% c.uri_for('/static/images/muse.png') %]"
-                 alt="[% loc('plain text source') %]"
-               title="[% loc('plain text source') %]" data-toggle="tooltip" data-placement="top"
-               class="pdfmyicons" /></a>
+          <span class="fa fa-file-text-o fa-2x fa-border fw"
+                aria-hidden="true"
+                title="[% loc('plain text source') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only" >[% loc('plain text source') %]</span></a>
       </span>
       [% IF site.zip %]
       <span id="downloadzip">
         <a href="[% basename %].zip">
-	      <img src="[% c.uri_for('/static/images/zip.png') %]"
-                 alt="[% loc('Source files with attachments') %]"
-               title="[% loc('Source files with attachments') %]" data-toggle="tooltip" data-placement="top"
-	           class="pdfmyicons" /></a>
+          <span class="fa fa-file-archive-o fa-2x fa-border fw"
+                aria-hidden="true"
+                title="[% loc('Source files with attachments') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only" >[% loc('Source files with attachments') %]</span></a>
       </span>
       [% END %]
       [% IF (cgit_link = text.recent_changes_uri) %]
       <span id="filehistory">
         <a href="[% c.uri_for(cgit_link, { showmsg => 1 }) %]" rel="nofollow">
-          <img src="[% c.uri_for('/static/images/diff.png') %]"
-               alt="[% loc('View history') %]"
-               title="[% loc('View history') %]" data-toggle="tooltip" data-placement="top"
-               class="pdfmyicons" /></a>
+          <span class="fa fa-history fa-2x fa-border fw"
+                aria-hidden="true"
+                title="[% loc('View history') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only" >[% loc('View history') %]</span></a>
       </span>
       [% END %]
       [% IF c.user_exists || site.human_can_edit %]
-      <form action="[% c.uri_for(text.full_edit_uri) %]"
-            id="text-edit-button" name="text-edit-button" style="display:inline">
-        <button type="submit" class="btn btn-default"
-                title="[% loc('Edit this text') %]" data-toggle="tooltip" data-placement="top"
-                id="edit-button">
-          <span class="glyphicon glyphicon-edit" style="font-size: 1.5em"></span>
-          <span style="display:none">[% loc('Edit this text') %]</span>
-        </button>
-      </form>
+      <span id="text-edit-button">
+        <a href="[% c.uri_for(text.full_edit_uri) %]">
+          <span class="fa fa-edit fa-2x fa-border fw"
+                aria-hidden="true"
+                title="[% loc('Edit this text') %]"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only" >[% loc('Edit this text') %]</span></a>
+      </span>
       [% END %]
-      <form action="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
-            id="book-builder-add-text"
-            name="book-builder-add-text"
-            style="display:inline">
-        <button type="submit" class="btn btn-default amw-register-stat"
+      <span id="book-builder-add-text">
+        <a href="[% c.uri_for_action('/bookbuilder/add', text.uri) %]"
+           id="add-to-bookbuilder"
+           class="amw-register-stat"
+           data-amw-register-stat-type="bookbuilder">
+          <span class="fa fa-book fa-2x fa-border fw"
+                aria-hidden="true"
                 title="[% loc('Add this text to the bookbuilder') %]"
-                data-toggle="tooltip"
-                data-placement="top"
-                data-amw-register-stat-type="bookbuilder"
-                id="add-to-bookbuilder">
-          <span class="glyphicon glyphicon-plus" style="font-size: 1.5em"></span>
-          <span style="display:none">
-            [% loc('Add this text to the bookbuilder') %]
-          </span>
-        </button>
-      </form>
-      <form action="[% c.uri_for_action('/library/bbselect', [text.uri]) %]"
-            id="book-builder-add-text-partial"
-            name="book-builder-add-text-partial"
-            style="display:inline">
-        <input type="hidden" name="selected" value="pre-post" />
-        <button type="submit" class="btn btn-default amw-register-stat"
-                data-amw-register-stat-type="bookbuilder"
+                data-toggle="tooltip" data-placement="top"
+                ></span><span class="sr-only" >[% loc('Add this text to the bookbuilder') %]</span></a>
+      </span>
+      <span id="book-builder-add-text-partial">
+        <a href="[% c.uri_for_action('/library/bbselect', [text.uri], { selected => 'pre-post' }) %]"
+           class="amw-register-stat"
+           id="add-to-bookbuilder-partial"
+           data-amw-register-stat-type="bookbuilder">
+          <span class="fa fa-list-alt fa-2x fa-border fw"
+                aria-hidden="true"
                 title="[% loc('Select individual parts for the bookbuilder') %]"
                 data-toggle="tooltip" data-placement="top"
-                id="add-to-bookbuilder-partial">
-          <span class="glyphicon glyphicon-list-alt"
-                style="font-size: 1.5em"></span>
-          <span class="glyphicon glyphicon-plus"
-                style="font-size: 1.5em"></span>
-          <span style="display:none">
-            [% loc('Select individual parts for the bookbuilder') %]
-          </span>
-        </button>
-      </form>
+                ></span><span class="sr-only" >[% loc('Select individual parts for the bookbuilder') %]</span></a>
+      </span>
     </div>
   </div>
   </div>
@@ -330,9 +326,7 @@
 
   [% SET translations = text.translations_rs %]
   [% IF translations.count %]
-  <div style="heigth:10px">&nbsp;
-    &nbsp;
-  </div>
+  <div class="amw-spacer-50"></div>
   <div id="translations" class="well well-sm">
     <ul>
       [% WHILE (translation = translations.next) %]
@@ -363,17 +357,15 @@
          id="special-pages-logo-img" />
   </div>
   [% END %]
-
-  <div style="heigth:10px">&nbsp;
-    &nbsp;
-  </div>
+  <div class="amw-spacer-20"></div>
   <div class="center">
     <h1><small>[% loc('Latest entries') %]</small></h1>
   </div>
   <div class="well">
     <div id="amw-latest-entries-special-page">
       <div class="center">
-        <img src="[% c.uri_for('/static/images/ajax-loader-circular.gif') %]" alt="Loading" />
+        <span class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></span>
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
   </div>
@@ -391,7 +383,7 @@
     <div id="text-prev-post-link">
       <a href="[% c.uri_for(text_prev_uri) %]" title="[% loc('Previous') %]"
          data-toggle="tooltip" data-placement="top">
-        <span class="glyphicon glyphicon-chevron-left hidden-xs"></span>
+        <span class="fa fa-chevron-left hidden-xs"></span>
         <span class="btn btn-default visible-xs">[% loc("Older texts") %]</span>
       </a>
     </div>
@@ -406,7 +398,7 @@
     <div id="text-next-post-link">
       <a href="[% c.uri_for(text_next_uri) %]" title="[% loc('Next') %]"
          data-toggle="tooltip" data-placement="top">
-        <span class="glyphicon glyphicon-chevron-right hidden-xs"></span>
+        <span class="fa fa-chevron-right hidden-xs"></span>
         <span class="btn btn-default visible-xs">[% loc("Newer texts") %]</span>
       </a>
     </div>
