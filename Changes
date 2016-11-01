@@ -4,6 +4,19 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.990 2016-11-01
+
+ - Implement authorization without redirect #67
+ - Permit customization of fonts (globally and per site) #57
+ - Replaced font-awesome with glyphicons
+ - Added customization for edit screen
+
+The "webfonts" directory is now obsoleted and can be removed. It's
+been replaced by the fontspec.json file which should have been created
+automatically on restart.
+
+This release is a public beta (but production ready) for AmuseWiki 2.0.
+
 1.923 2016-10-13
 
  - Added danish i18n
