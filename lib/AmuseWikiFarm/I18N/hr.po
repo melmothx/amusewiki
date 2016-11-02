@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-08-06 10:33+0200\n"
+"PO-Revision-Date: 2016-11-02 12:16+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -239,7 +239,7 @@ msgid "Authors"
 msgstr "Autori"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Popisi autora i tema"
 
 msgid "Authors for indexing"
 msgstr "Autori za indeksiranje"
@@ -353,7 +353,7 @@ msgstr "Zatvori"
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
-msgstr ""
+msgstr "Širina lijeve strane stranice za uređivanje tekstova"
 
 msgid "Commit"
 msgstr "Spremi"
@@ -499,7 +499,7 @@ msgid "Edit"
 msgstr "Uredi"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Postavke za uređivanje tekstova"
 
 #. (esite.id)
 msgid "Edit site %1"
@@ -535,7 +535,7 @@ msgid "Emails do not match"
 msgstr "Ne podudaraju se mailovi"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Uključi fontove u EPUB datoteku"
 
 msgid "Erase this revision"
 msgstr "Izbriši izmjenu"
@@ -1033,7 +1033,7 @@ msgid "Load"
 msgstr "Koristi"
 
 msgid "Load another session by token"
-msgstr ""
+msgstr "Učitaj drugu sesiju kodom"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
@@ -1506,7 +1506,7 @@ msgid "Preview"
 msgstr "Pregled"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Visina pregledavanja (u pikselima)"
 
 msgid "Previous"
 msgstr "Prethodno"
@@ -1739,25 +1739,25 @@ msgid "Separate header fields"
 msgstr "Odvajaju dijelove zaglavlja"
 
 msgid "Session sharing"
-msgstr ""
+msgstr "Dijeli sesiju"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Stavi budući datum ako želiš odgoditi objavljivanje."
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Pokaži sažetak za oblikovanje teksta"
 
 msgid "Show differences in other tab"
 msgstr "Pokaži razlike u drugom prozoru"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Pokaži filtere"
 
 msgid "Show options"
 msgstr "Pokaži opcije"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Pokaži pregled u drugom prozoru"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Prikaži informacije o tekstu na dnu stranice"
@@ -2197,7 +2197,7 @@ msgid "UTC"
 msgstr "UTC"
 
 msgid "Unable to load the bookbuilder session"
-msgstr ""
+msgstr "Očitovanje sesije nije uspjelo"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "Anonimni PDF, bez imena sajta i bez loga"
@@ -2211,7 +2211,7 @@ msgid "Unique ID for the text"
 msgstr "Jedinstveni ID za tekst"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Neograničeno"
 
 msgid "Unpublished texts"
 msgstr "Neobjavljeni tekstovi"
@@ -2297,6 +2297,9 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Koristeći ovaj kod, možeš učitati postavke i popis tekstova koje se\n"
+"sad nalaze u zbirci na drugom kompjuteru ili dijeliti ih s drugom\n"
+"osobom. Dovoljno je ga prepisati u slijedećem formularu."
 
 msgid "Verbatim block"
 msgstr "Predformatirani dio"
@@ -2316,6 +2319,9 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"Kad počinješ sastaviti jednu zbirku, na kraju stranice zbirke bit će\n"
+"jedan kôd za dijeljenje sesije. Možeš ga učitati s drugog kompjutera i\n"
+"tamo nastaviti."
 
 msgid "Where does this text come from?"
 msgstr "Odakle dolazi ovaj tekst?"
@@ -2425,6 +2431,8 @@ msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
+"Lozinka je bila poslana koristeći nesigurnu vezu. Koristi HTTP,\n"
+"prijavi se i odmah promijeni lozinku. To se nije trebalo desiti."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2441,7 +2449,7 @@ msgid "Your chapter here..."
 msgstr "Tvoje poglavlje..."
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Kôd tvoje zbirke je:"
 
 msgid "Your email"
 msgstr "Tvoj mail"
