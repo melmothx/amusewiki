@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.991 2016-11-02
+
+ - Upgraded I18N files (it and hr)
+
 1.990 2016-11-01
 
  - Implement authorization without redirect #67
