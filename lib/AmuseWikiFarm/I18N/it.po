@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-09-11 13:54+0200\n"
+"PO-Revision-Date: 2016-11-02 12:01+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -245,7 +245,7 @@ msgid "Authors"
 msgstr "Autori"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Liste degli autori e degli argomenti"
 
 msgid "Authors for indexing"
 msgstr "Autori indicizzati"
@@ -364,6 +364,8 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
+"Numero di colonne (12 in totale) da usare per la parte sinistra della\n"
+"schermata per la modifica dei testi"
 
 msgid "Commit"
 msgstr "Salva"
@@ -511,7 +513,7 @@ msgid "Edit"
 msgstr "Modifica"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Modifica le impostazioni del layout della pagina di modifica dei testi"
 
 #. (esite.id)
 msgid "Edit site %1"
@@ -548,7 +550,7 @@ msgid "Emails do not match"
 msgstr "Le e-mail non coincidono"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Includi i font nel file EPUB"
 
 msgid "Erase this revision"
 msgstr "Cancella questa revisione"
@@ -1543,7 +1545,7 @@ msgid "Preview"
 msgstr "Anteprima"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Altezza in pixel dell'area di anteprima"
 
 msgid "Previous"
 msgstr "Precedente"
@@ -1783,13 +1785,13 @@ msgid "Set a date in the future if you want it deferred."
 msgstr "Imposta una data nel futuro se vuoi rimandare la pubblicazione."
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Mostra la documentazione del markup"
 
 msgid "Show differences in other tab"
 msgstr "Mostra le differenze in un'altra finestra"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Mostra i filtri disponibili"
 
 msgid "Show options"
 msgstr "Mostra le opzioni"
@@ -2275,7 +2277,7 @@ msgid "Unique ID for the text"
 msgstr "Identificativo del testo"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Illimitato"
 
 msgid "Unpublished texts"
 msgstr "Testi non pubblicati"
@@ -2503,6 +2505,9 @@ msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
+"Hai inviato le credenziali per mezzo di una connessione non sicura.\n"
+"Per cortesia, passa ad HTTPS, esegui il login e cambia la password.\n"
+"Tale situazione non dovrebbe accadere."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
