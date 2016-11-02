@@ -341,6 +341,11 @@ msgstr ""
 msgid "Close"
 msgstr "Schließen"
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr "Übertragen"
 
@@ -478,6 +483,9 @@ msgstr "EPUB (für mobile Geräte)"
 msgid "Edit"
 msgstr "Bearbeiten"
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr "Seite bearbeiten %1"
@@ -509,6 +517,9 @@ msgstr "E-mail aktualisiert"
 
 msgid "Emails do not match"
 msgstr "E-mails stimmen nicht überein"
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Lösche diese Änderung"
@@ -1045,9 +1056,6 @@ msgstr "Fehlendes Zeichen wird gemeldet"
 msgid "Missing redirection"
 msgstr "Fehlende Umleitung"
 
-msgid "Missing username or password"
-msgstr "Fehlender BenutzerInnename oder Passwort"
-
 msgid "Mobile"
 msgstr ""
 
@@ -1428,11 +1436,11 @@ msgid ""
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 
-msgid "Prepare this text for the archiving"
-msgstr "Bereite diesen Text fürs Archivieren vor"
-
 msgid "Preview"
 msgstr "Vorschau"
+
+msgid "Preview box height in pixel"
+msgstr ""
 
 msgid "Previous"
 msgstr "Vorherige"
@@ -1663,8 +1671,14 @@ msgid "Set a date in the future if you want it deferred."
 msgstr ""
 "Wähle ein Datum in der Zukunft wenn du es verzögert veröffentlichen willst."
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
 msgstr "Zeige Unterschiede in anderem Tab"
+
+msgid "Show filters"
+msgstr ""
 
 msgid "Show options"
 msgstr "Zeige Optionen"
@@ -2114,6 +2128,9 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Einzigartige ID für den Text"
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr "Unveröffentlichte Texte"
 
@@ -2273,9 +2290,6 @@ msgid ""
 "etc.) is irrelevant."
 msgstr ""
 
-msgid "You already proved you are human"
-msgstr "Du hast bereits bestätigt, dass du ein Mensch bist"
-
 msgid "You are already logged in"
 msgstr "Du bist bereits angemeldet!"
 
@@ -2316,6 +2330,11 @@ msgstr "Du hast dich abgemeldet"
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 "Du willst vielleicht mit der Bearbeitung von einem von ihnen fortfahren"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2446,9 +2465,6 @@ msgstr "Pflichtfeld"
 msgid "new-example-uri"
 msgstr ""
 
-msgid "no font embedding"
-msgstr ""
-
 msgid "numbered item"
 msgstr "nummerierter Gegenstand"
 
@@ -2559,6 +2575,15 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Missing username or password"
+#~ msgstr "Fehlender BenutzerInnename oder Passwort"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Bereite diesen Text fürs Archivieren vor"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Du hast bereits bestätigt, dass du ein Mensch bist"
 
 #~ msgid ""
 #~ "Directory with templates. Do not set it unless you know what you are doing"

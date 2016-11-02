@@ -360,6 +360,11 @@ msgstr "Clona il repositorio in locale e configuralo"
 msgid "Close"
 msgstr "Chiudi"
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr "Salva"
 
@@ -505,6 +510,9 @@ msgstr "EPUB (per dispositivi portatili)"
 msgid "Edit"
 msgstr "Modifica"
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr "Modifica il sito %1"
@@ -538,6 +546,9 @@ msgstr "e-mail aggiornata"
 
 msgid "Emails do not match"
 msgstr "Le e-mail non coincidono"
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Cancella questa revisione"
@@ -1119,9 +1130,6 @@ msgstr "I caratteri mancanti verranno mostrati"
 msgid "Missing redirection"
 msgstr "Redirezione mancante"
 
-msgid "Missing username or password"
-msgstr "Nome utente o password mancante"
-
 msgid "Mobile"
 msgstr "Mobile"
 
@@ -1531,11 +1539,11 @@ msgstr ""
 "Il prefisso delle liste numerate può essere \"1.\", \"a.\", \"A.\", \"i.\", "
 "\"I.\", a seconda del tipo richiesto."
 
-msgid "Prepare this text for the archiving"
-msgstr "Prepara questo testo per l'archivio"
-
 msgid "Preview"
 msgstr "Anteprima"
+
+msgid "Preview box height in pixel"
+msgstr ""
 
 msgid "Previous"
 msgstr "Precedente"
@@ -1774,8 +1782,14 @@ msgstr "Condivisione"
 msgid "Set a date in the future if you want it deferred."
 msgstr "Imposta una data nel futuro se vuoi rimandare la pubblicazione."
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
 msgstr "Mostra le differenze in un'altra finestra"
+
+msgid "Show filters"
+msgstr ""
 
 msgid "Show options"
 msgstr "Mostra le opzioni"
@@ -2260,6 +2274,9 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Identificativo del testo"
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr "Testi non pubblicati"
 
@@ -2439,9 +2456,6 @@ msgstr ""
 "DEVI specificare una ragione, altrimenti non sortirà alcun effetto.\n"
 "L'ordine delle impostazioni (\"#title\", \"#lang\", ecc.) è irrilevante."
 
-msgid "You already proved you are human"
-msgstr "Hai già dimostrato di essere un umano"
-
 msgid "You are already logged in"
 msgstr "Hai già effettuato l'accesso"
 
@@ -2484,6 +2498,11 @@ msgstr "Sei uscito"
 
 msgid "You may want to resume the editing of one of them"
 msgstr "Potresti riprendere una delle modifiche in corso"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2615,9 +2634,6 @@ msgstr "obbligatorio"
 msgid "new-example-uri"
 msgstr "nuovo-uri-di-esempio"
 
-msgid "no font embedding"
-msgstr "Non incorporare i font"
-
 msgid "numbered item"
 msgstr "elemento numerato"
 
@@ -2731,6 +2747,18 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Missing username or password"
+#~ msgstr "Nome utente o password mancante"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Prepara questo testo per l'archivio"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Hai già dimostrato di essere un umano"
+
+#~ msgid "no font embedding"
+#~ msgstr "Non incorporare i font"
 
 #~ msgid ""
 #~ "Directory with templates. Do not set it unless you know what you are doing"

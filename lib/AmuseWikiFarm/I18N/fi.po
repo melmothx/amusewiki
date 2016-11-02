@@ -336,6 +336,11 @@ msgstr ""
 msgid "Close"
 msgstr "Sulje"
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr "Tee muutokset"
 
@@ -473,6 +478,9 @@ msgstr "EPUB (mobiililaitteille)"
 msgid "Edit"
 msgstr "Muokkaa"
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr ""
@@ -504,6 +512,9 @@ msgstr "Sähköposti päivitetty"
 
 msgid "Emails do not match"
 msgstr "Sähköpostiosoitteet eivät täsmää"
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Poista tämä versio"
@@ -1030,9 +1041,6 @@ msgstr "Puuttuvista merkeistä kyllä kerrotaan"
 msgid "Missing redirection"
 msgstr "Uudelleenohjaus puuttuu"
 
-msgid "Missing username or password"
-msgstr "Käyttäjätunnus tai salasana puuttuu"
-
 msgid "Mobile"
 msgstr ""
 
@@ -1416,11 +1424,11 @@ msgid ""
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 
-msgid "Prepare this text for the archiving"
-msgstr "Valmistele teksti arkistointia varten"
-
 msgid "Preview"
 msgstr "Esikatselu"
+
+msgid "Preview box height in pixel"
+msgstr ""
 
 msgid "Previous"
 msgstr "Edellinen"
@@ -1651,8 +1659,14 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr "Aseta päivämäärä osoittamaan tulevaan, jos haluat viivyttää julkaisua."
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
 msgstr "Näytä erot toisessa välilehdessä"
+
+msgid "Show filters"
+msgstr ""
 
 msgid "Show options"
 msgstr "Näytä lisävaihtoehdot"
@@ -2092,6 +2106,9 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Yksilöllinen tunniste"
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr "Julkaisemattomat tekstit"
 
@@ -2251,9 +2268,6 @@ msgid ""
 "etc.) is irrelevant."
 msgstr ""
 
-msgid "You already proved you are human"
-msgstr "Osoitit jo olevasi ihminen"
-
 msgid "You are already logged in"
 msgstr "Olet jo kirjautunut "
 
@@ -2291,6 +2305,11 @@ msgstr "Olet kirjautunut ulos"
 
 msgid "You may want to resume the editing of one of them"
 msgstr "Saatat haluta jatkaa muokkausta"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2420,9 +2439,6 @@ msgstr "pakollinen"
 msgid "new-example-uri"
 msgstr ""
 
-msgid "no font embedding"
-msgstr ""
-
 msgid "numbered item"
 msgstr "numeroitu elementti"
 
@@ -2530,6 +2546,15 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "Missing username or password"
+#~ msgstr "Käyttäjätunnus tai salasana puuttuu"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Valmistele teksti arkistointia varten"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Osoitit jo olevasi ihminen"
 
 #~ msgid ""
 #~ "Directory with templates. Do not set it unless you know what you are doing"

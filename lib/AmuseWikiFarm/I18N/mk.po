@@ -364,6 +364,11 @@ msgstr "Клонирај го репозиториумот на својата �
 msgid "Close"
 msgstr "Затвори"
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr "Изврши"
 
@@ -508,6 +513,9 @@ msgstr "EPUB (за мобилни уреди)"
 msgid "Edit"
 msgstr "Уреди"
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr "Уреди го сајтот %1"
@@ -541,6 +549,9 @@ msgstr "Email-от е ажуриран"
 
 msgid "Emails do not match"
 msgstr "E-mail-овите не се поклопуваат"
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Избриши ја измената"
@@ -1121,9 +1132,6 @@ msgstr ""
 msgid "Missing redirection"
 msgstr "Недостига пренасочување"
 
-msgid "Missing username or password"
-msgstr "Недостига корисничко име или лозинка"
-
 msgid "Mobile"
 msgstr "Mobile"
 
@@ -1536,11 +1544,11 @@ msgstr ""
 "зависно од\n"
 " видот на листата."
 
-msgid "Prepare this text for the archiving"
-msgstr "Подготви го текстот за архивирање"
-
 msgid "Preview"
 msgstr "Преглед"
+
+msgid "Preview box height in pixel"
+msgstr ""
 
 msgid "Previous"
 msgstr "Претходно"
@@ -1781,8 +1789,14 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr "Стави иден датум доколку сакаш да го одложиш објавувањето."
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
 msgstr "Покажи ги разликите во друго јазиче"
+
+msgid "Show filters"
+msgstr ""
 
 msgid "Show options"
 msgstr "Покажи ги опциите"
@@ -2252,6 +2266,9 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "Единствен ID за текстот"
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
@@ -2422,9 +2439,6 @@ msgstr ""
 "никаква\n"
 "важност."
 
-msgid "You already proved you are human"
-msgstr "Веќе докажа дека си човек"
-
 msgid "You are already logged in"
 msgstr "Веќе си пријавен"
 
@@ -2465,6 +2479,11 @@ msgstr "Одјавен си"
 
 msgid "You may want to resume the editing of one of them"
 msgstr "Можеш да се вратиш на една од измените во тек"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2594,9 +2613,6 @@ msgstr "задолжително"
 msgid "new-example-uri"
 msgstr "нов-uri-како-пример"
 
-msgid "no font embedding"
-msgstr "без фонтови во датотеката"
-
 msgid "numbered item"
 msgstr "нумериран елемент"
 
@@ -2708,6 +2724,18 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Missing username or password"
+#~ msgstr "Недостига корисничко име или лозинка"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Подготви го текстот за архивирање"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Веќе докажа дека си човек"
+
+#~ msgid "no font embedding"
+#~ msgstr "без фонтови во датотеката"
 
 #~ msgid ""
 #~ "Directory with templates. Do not set it unless you know what you are doing"

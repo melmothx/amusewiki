@@ -350,6 +350,11 @@ msgstr "Kloniraj na svoj mašini repozitorij i podesi ga"
 msgid "Close"
 msgstr "Zatvori"
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr "Spremi"
 
@@ -493,6 +498,9 @@ msgstr "EPUB (za mobilne uređaje)"
 msgid "Edit"
 msgstr "Uredi"
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr "Uredi sajt %1"
@@ -525,6 +533,9 @@ msgstr "E-mail ažuriran"
 
 msgid "Emails do not match"
 msgstr "Ne podudaraju se mailovi"
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Izbriši izmjenu"
@@ -1091,9 +1102,6 @@ msgstr "Pokazat će se slova koja nedostaju"
 msgid "Missing redirection"
 msgstr "Nedostaje preusmjeravanje"
 
-msgid "Missing username or password"
-msgstr "Nedostaje korisničko ime i lozinka"
-
 msgid "Mobile"
 msgstr "Mobile"
 
@@ -1494,11 +1502,11 @@ msgstr ""
 "o\n"
 "vrsti liste."
 
-msgid "Prepare this text for the archiving"
-msgstr "Pripremi ovaj tekst za arhivu"
-
 msgid "Preview"
 msgstr "Pregled"
+
+msgid "Preview box height in pixel"
+msgstr ""
 
 msgid "Previous"
 msgstr "Prethodno"
@@ -1736,8 +1744,14 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr "Stavi budući datum ako želiš odgoditi objavljivanje."
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
 msgstr "Pokaži razlike u drugom prozoru"
+
+msgid "Show filters"
+msgstr ""
 
 msgid "Show options"
 msgstr "Pokaži opcije"
@@ -2196,6 +2210,9 @@ msgstr "Obavezno ukloni sve nevidljive neodvojive razmake u tekstu."
 msgid "Unique ID for the text"
 msgstr "Jedinstveni ID za tekst"
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr "Neobjavljeni tekstovi"
 
@@ -2364,9 +2381,6 @@ msgstr ""
 "direktiva na zaglavlju (gdje su \"#title\", \"#lang\" itd.) nema nikakvu\n"
 "važnost."
 
-msgid "You already proved you are human"
-msgstr "Već si dokazao da si ljudsko biće"
-
 msgid "You are already logged in"
 msgstr "Već si prijavljen"
 
@@ -2406,6 +2420,11 @@ msgstr "Odjavljen si"
 
 msgid "You may want to resume the editing of one of them"
 msgstr "Možeš se vratiti jednoj od izmjena u toku"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2535,9 +2554,6 @@ msgstr "obavezno"
 msgid "new-example-uri"
 msgstr "novi-uri-kao-primjer"
 
-msgid "no font embedding"
-msgstr "bez fontova u datoteci"
-
 msgid "numbered item"
 msgstr "brojčani element"
 
@@ -2648,6 +2664,18 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Missing username or password"
+#~ msgstr "Nedostaje korisničko ime i lozinka"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Pripremi ovaj tekst za arhivu"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Već si dokazao da si ljudsko biće"
+
+#~ msgid "no font embedding"
+#~ msgstr "bez fontova u datoteci"
 
 #~ msgid ""
 #~ "Directory with templates. Do not set it unless you know what you are doing"

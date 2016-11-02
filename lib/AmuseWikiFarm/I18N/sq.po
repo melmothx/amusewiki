@@ -373,6 +373,11 @@ msgstr ""
 msgid "Close"
 msgstr "Mbyll"
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr "Lejo"
 
@@ -513,6 +518,9 @@ msgstr "EPUB (për telefona mobil)"
 msgid "Edit"
 msgstr "Ndrysho"
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr "Redakto faqen 1%"
@@ -544,6 +552,9 @@ msgstr "Email është përditësuar"
 
 msgid "Emails do not match"
 msgstr "Email-at nuk pëputhen"
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Fshije këtë përmirësim"
@@ -1120,9 +1131,6 @@ msgstr "(karakterët mangu do të raportohen)"
 msgid "Missing redirection"
 msgstr "Mungon ridrejtimi"
 
-msgid "Missing username or password"
-msgstr "Mungon emir i përoduresit si dhe fjalëkalimi"
-
 msgid "Mobile"
 msgstr "Për pajisje mobile"
 
@@ -1518,11 +1526,11 @@ msgstr ""
 " \n"
 "       “A.”,“i.”, “I.”, varësisht prej tipit të listës që të nevojitet."
 
-msgid "Prepare this text for the archiving"
-msgstr "Përgatit këtë tekst për arkivim"
-
 msgid "Preview"
 msgstr "Inspekto"
+
+msgid "Preview box height in pixel"
+msgstr ""
 
 msgid "Previous"
 msgstr "Paraprake"
@@ -1764,8 +1772,14 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr "Cakto një datë të ardhshme nëse dëshiron që ta bësh këtë më vonë"
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
 msgstr "Tregoji dallimet në tab-in e ri"
+
+msgid "Show filters"
+msgstr ""
 
 msgid "Show options"
 msgstr "Tego opcionet"
@@ -2239,6 +2253,9 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "ID unike per tekst"
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr "Tekst i papublikuar"
 
@@ -2407,9 +2424,6 @@ msgstr ""
 "Ju DUHENI ta theksoni arsyen, përndryshe rreshti nuk do të ketë efekt.\n"
 "Renditja e rreshtave të "
 
-msgid "You already proved you are human"
-msgstr "Ju tashmë e keni dëshmuar që jeni njeri"
-
 msgid "You are already logged in"
 msgstr "Ju jeni të kyçur"
 
@@ -2453,6 +2467,11 @@ msgstr "Jeni çkyqur"
 
 msgid "You may want to resume the editing of one of them"
 msgstr "Mund të dëshironi të vazhdoni me ndryshimin e njërit prej tyre"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2586,9 +2605,6 @@ msgstr "e detyrueshme"
 msgid "new-example-uri"
 msgstr ""
 
-msgid "no font embedding"
-msgstr ""
-
 msgid "numbered item"
 msgstr "element i numëruar"
 
@@ -2699,6 +2715,15 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Missing username or password"
+#~ msgstr "Mungon emir i përoduresit si dhe fjalëkalimi"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Përgatit këtë tekst për arkivim"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Ju tashmë e keni dëshmuar që jeni njeri"
 
 #~ msgid "RSS"
 #~ msgstr "RSS"

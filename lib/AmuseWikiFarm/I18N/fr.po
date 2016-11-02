@@ -362,6 +362,11 @@ msgstr "Cloner le dépôt localement et le mettre en place"
 msgid "Close"
 msgstr "Fermer"
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr "Envoyer"
 
@@ -504,6 +509,9 @@ msgstr "EPUB (pour appareils mobiles)"
 msgid "Edit"
 msgstr "Modifier"
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr "Modifier site %1"
@@ -537,6 +545,9 @@ msgstr "Email mis à jour"
 
 msgid "Emails do not match"
 msgstr "Les emails ne correspondent pas"
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Effacer cette révision"
@@ -1122,9 +1133,6 @@ msgstr "Les caractères manquants seront signalés"
 msgid "Missing redirection"
 msgstr "Redirection manquante"
 
-msgid "Missing username or password"
-msgstr "Nom d'utilisateur ou mot de passe manquant(s)"
-
 msgid "Mobile"
 msgstr "Mobile"
 
@@ -1534,11 +1542,11 @@ msgstr ""
 "Les préfixes pour listes numérotées peuvent être  “1.”, “a.”, “A.”,“i.”, "
 "“I.”, selon le type de liste dont vous avez besoin."
 
-msgid "Prepare this text for the archiving"
-msgstr "Préparer ce texte pour l'archivage"
-
 msgid "Preview"
 msgstr "Aperçu"
+
+msgid "Preview box height in pixel"
+msgstr ""
 
 msgid "Previous"
 msgstr "Précédent"
@@ -1779,8 +1787,14 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr "Définir une date future si vous souhaitez le différer."
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
 msgstr "Afficher les différences dans un nouvel onglet"
+
+msgid "Show filters"
+msgstr ""
 
 msgid "Show options"
 msgstr "Afficher les options"
@@ -2269,6 +2283,9 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr "ID unique pour le texte"
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr "Textes non publiés"
 
@@ -2442,9 +2459,6 @@ msgstr ""
 "des lignes de l'en-tête (c'est-à-dire dans quel ordre viennent les "
 "directives \"#title\", \"#lang\", etc.) n'importe pas."
 
-msgid "You already proved you are human"
-msgstr "Vous avez déjà prouvez que vous étiez un·e humain·e"
-
 msgid "You are already logged in"
 msgstr "Vous êtes déjà connecté·e"
 
@@ -2487,6 +2501,11 @@ msgstr "Vous vous êtes déconnecté·e"
 
 msgid "You may want to resume the editing of one of them"
 msgstr "Vous souhaitez peut-être reprendre l'édition de l'un d'entre eux"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2621,9 +2640,6 @@ msgstr "obligatoire"
 msgid "new-example-uri"
 msgstr "nouvel-exemple-uri"
 
-msgid "no font embedding"
-msgstr "pas d'incorporation des polices"
-
 msgid "numbered item"
 msgstr "élément numéroté"
 
@@ -2736,6 +2752,18 @@ msgstr ""
 "\"Modification périmée\" signifie que la révision a été abandonnée en cours "
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer en modifiant un texte."
+
+#~ msgid "Missing username or password"
+#~ msgstr "Nom d'utilisateur ou mot de passe manquant(s)"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Préparer ce texte pour l'archivage"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Vous avez déjà prouvez que vous étiez un·e humain·e"
+
+#~ msgid "no font embedding"
+#~ msgstr "pas d'incorporation des polices"
 
 #~ msgid ""
 #~ "Directory with templates. Do not set it unless you know what you are doing"

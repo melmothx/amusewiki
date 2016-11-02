@@ -341,6 +341,11 @@ msgstr ""
 msgid "Close"
 msgstr "Stäng"
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr "Skicka"
 
@@ -478,6 +483,9 @@ msgstr "EPUB (för mobila enheter)"
 msgid "Edit"
 msgstr "Redigera"
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr "Redigera sida %1"
@@ -509,6 +517,9 @@ msgstr "Email uppdaterad"
 
 msgid "Emails do not match"
 msgstr "Email matchar inte"
+
+msgid "Embed fonts in the EPUB file"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Radera revideringen"
@@ -1037,9 +1048,6 @@ msgstr "Saknat tecken kommer att rapporteras"
 msgid "Missing redirection"
 msgstr "Omdirigering saknas"
 
-msgid "Missing username or password"
-msgstr "Användarnamn och lösenord saknas"
-
 msgid "Mobile"
 msgstr ""
 
@@ -1431,11 +1439,11 @@ msgid ""
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 
-msgid "Prepare this text for the archiving"
-msgstr "Förbered denna text för arkiveringen"
-
 msgid "Preview"
 msgstr "Förhandsvisa"
+
+msgid "Preview box height in pixel"
+msgstr ""
 
 msgid "Previous"
 msgstr "Förra"
@@ -1673,8 +1681,14 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr "Bestämm ett datum i framtiden om du vill skjuta upp det."
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
 msgstr "Visa skillnader i en annan flik"
+
+msgid "Show filters"
+msgstr ""
 
 msgid "Show options"
 msgstr "Visa alternativ"
@@ -2119,6 +2133,9 @@ msgstr "Ta villkorslöst bort alla osynliga hårda mellanslag i texten"
 msgid "Unique ID for the text"
 msgstr "Unik ID för texten"
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr "Opublicerade texter"
 
@@ -2277,9 +2294,6 @@ msgid ""
 "etc.) is irrelevant."
 msgstr ""
 
-msgid "You already proved you are human"
-msgstr "Du har redan bevisat att du är en människa"
-
 msgid "You are already logged in"
 msgstr "Du är redan inloggad"
 
@@ -2317,6 +2331,11 @@ msgstr "Du är nu utloggad"
 
 msgid "You may want to resume the editing of one of them"
 msgstr "Du bör överväga att återgå till redigeringen av en av dem"
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
+msgstr ""
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2446,9 +2465,6 @@ msgstr "obligatorisk"
 msgid "new-example-uri"
 msgstr ""
 
-msgid "no font embedding"
-msgstr ""
-
 msgid "numbered item"
 msgstr "numererat föremål"
 
@@ -2559,6 +2575,15 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Missing username or password"
+#~ msgstr "Användarnamn och lösenord saknas"
+
+#~ msgid "Prepare this text for the archiving"
+#~ msgstr "Förbered denna text för arkiveringen"
+
+#~ msgid "You already proved you are human"
+#~ msgstr "Du har redan bevisat att du är en människa"
 
 #~ msgid ""
 #~ "Directory with templates. Do not set it unless you know what you are doing"

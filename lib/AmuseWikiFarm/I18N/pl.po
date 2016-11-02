@@ -328,6 +328,11 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
+msgid ""
+"Columns for the left side of the editing page, with the editing box (out of "
+"12)"
+msgstr ""
+
 msgid "Commit"
 msgstr ""
 
@@ -463,6 +468,9 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+msgid "Edit screen layout options"
+msgstr ""
+
 #. (esite.id)
 msgid "Edit site %1"
 msgstr ""
@@ -493,6 +501,9 @@ msgid "Email updated"
 msgstr ""
 
 msgid "Emails do not match"
+msgstr ""
+
+msgid "Embed fonts in the EPUB file"
 msgstr ""
 
 msgid "Erase this revision"
@@ -1006,9 +1017,6 @@ msgstr ""
 msgid "Missing redirection"
 msgstr ""
 
-msgid "Missing username or password"
-msgstr ""
-
 msgid "Mobile"
 msgstr ""
 
@@ -1363,10 +1371,10 @@ msgid ""
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 
-msgid "Prepare this text for the archiving"
+msgid "Preview"
 msgstr ""
 
-msgid "Preview"
+msgid "Preview box height in pixel"
 msgstr ""
 
 msgid "Previous"
@@ -1595,7 +1603,13 @@ msgstr ""
 msgid "Set a date in the future if you want it deferred."
 msgstr ""
 
+msgid "Show cheatsheet"
+msgstr ""
+
 msgid "Show differences in other tab"
+msgstr ""
+
+msgid "Show filters"
 msgstr ""
 
 msgid "Show options"
@@ -2028,6 +2042,9 @@ msgstr ""
 msgid "Unique ID for the text"
 msgstr ""
 
+msgid "Unlimited"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr ""
 
@@ -2180,9 +2197,6 @@ msgid ""
 "etc.) is irrelevant."
 msgstr ""
 
-msgid "You already proved you are human"
-msgstr ""
-
 msgid "You are already logged in"
 msgstr ""
 
@@ -2216,6 +2230,11 @@ msgid "You have logged out"
 msgstr ""
 
 msgid "You may want to resume the editing of one of them"
+msgstr ""
+
+msgid ""
+"You sent credentials over an unencrypted connection. Please switch to HTTPS, "
+"login, and change your password right away. This shouldn't happen."
 msgstr ""
 
 #. (edit_url)
@@ -2339,9 +2358,6 @@ msgid "mandatory"
 msgstr ""
 
 msgid "new-example-uri"
-msgstr ""
-
-msgid "no font embedding"
 msgstr ""
 
 msgid "numbered item"
