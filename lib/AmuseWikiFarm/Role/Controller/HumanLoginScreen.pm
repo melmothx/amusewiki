@@ -82,8 +82,9 @@ sub try_to_authenticate :Private {
                 $c->request->uri
                   . ": $username is providing auth details, but over a plain connection"
                   . " login denied ";
-                $ssl_warning = $c->loc("You sent credentials over an unencrypted connection. Please switch to HTTPS, login, and change your password right away. This shouldn't happen.");
-              };
+            };
+            $ssl_warning = $c->loc("You sent credentials over an unencrypted connection. Please switch to HTTPS, login, and change your password right away. This shouldn't happen.");
+
         }
         elsif (my $user = $c->model('DB::User')->find({ username => $username  })) {
             log_debug { "User $username found" };
