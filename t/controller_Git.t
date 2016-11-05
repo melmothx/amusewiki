@@ -1,7 +1,8 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More;
+use Test::More tests => 44;
+use URI::Escape;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -9,13 +10,7 @@ binmode $builder->output,         ":encoding(utf8)";
 binmode $builder->failure_output, ":encoding(utf8)";
 binmode $builder->todo_output,    ":encoding(utf8)";
 
-
-unless (eval q{use Test::WWW::Mechanize::Catalyst 0.55; 1}) {
-    plan skip_all => 'Test::WWW::Mechanize::Catalyst >= 0.55 required';
-    exit 0;
-}
-
-
+use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use Text::Amuse::Compile::Utils qw/write_file read_file append_file/;
@@ -26,21 +21,37 @@ use AmuseWiki::Tests qw/create_site/;
 my $site_id = '0gitz0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
-$site->cgit_integration(1);
 $site->update({ cgit_integration => 1 });
+my $othersite = create_site($schema, '0gitx0');
+$othersite->update({ cgit_integration => 1 });
 
 my $mech = Test::WWW::Mechanize::Catalyst
   ->new(catalyst_app => 'AmuseWikiFarm',
         host => $site->id . '.amusewiki.org');
 
-$mech->get('git/0gitz0');
-if ($mech->success and $mech->content !~ m/No repositories found/) {
-    plan tests => 24;
+my @traversals =  ('/git/' . $site->id . '/../' . $othersite->id,
+                   '/git/' . $site->id . '/' . uri_escape('../') . $othersite->id,
+                   '/git/' . $site->id . '/' . uri_escape(uri_escape('../')) . $othersite->id,
+                   '/git/' . $site->id . '/' . uri_escape('../', '%./') . $othersite->id,
+                   '/git/' . $site->id . '/' . uri_escape(uri_escape('../', '%./'), '%./') . $othersite->id,
+                   '/git/' . $site->id . '/tree/' . '../../' . $othersite->id,
+                   '/git/' . $site->id . '/tree/' . uri_escape('../../') . $othersite->id,
+                   '/git/' . $site->id . '/tree/' . uri_escape(uri_escape('../../')) . $othersite->id,
+                   '/git/' . $site->id . '/tree/' . uri_escape('../../', '%./') . $othersite->id,
+                   '/git/' . $site->id . '/tree/' . uri_escape(uri_escape('../../', '%./'), '%./') . $othersite->id,
+                  );
+
+foreach my $traversal (@traversals) {
+    diag "Testing $traversal";
+    $mech->get($traversal);
+    is $mech->status, '400';
+    $mech->content_like(qr{\ABad});
 }
-else {
-    plan skip_all => '/git url is disabled';
-    exit;
-}
+
+
+$mech->get('/git/0gitz0');
+SKIP: {
+    skip "/git url is disable", 24 unless $mech->success && $mech->content !~ m/No repositories found/;
 
 foreach my $text ({
                    title => "Zdravo Hello àààà",
@@ -90,4 +101,5 @@ foreach my $text ({
     ok($mech->follow_link(text => 'plain'), "link ok");
     diag $mech->uri->path;
     $mech->content_like(qr{$body_re}s);
+}
 }

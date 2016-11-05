@@ -28,6 +28,13 @@ Catalyst Controller.
 sub git :Chained('/site') :Args {
     my ($self, $c, @args) = @_;
     my $site = $c->stash->{site};
+    # do not permit leading dots and URI encoded strings. We have all
+    # the repo in ascii anyway.
+    if (grep { /\A\./ || /\%/} @args) {
+        $c->detach('/bad_request');
+        return;
+    }
+
     unless ($site->cgit_integration && $site->repo_is_under_git) {
         $c->detach('/not_found');
         return;

@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.992 2016-11-05
+
+ - [SECURITY FIX] Fixed directory traversal on /git urls which
+   discloses potentially private sites. Only sites with CGIT >= 0.11
+   are affected. Older versions (notably the one packaged by debian)
+   are not affected.
+
 1.991 2016-11-02
 
  - Upgraded I18N files (it and hr)

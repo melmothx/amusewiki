@@ -1,3 +1,9 @@
+amusewiki (1.992-1) unstable; urgency=medium
+
+  * New release with security fix
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 05 Nov 2016 15:28:09 +0100
+
 amusewiki (1.991-1) unstable; urgency=medium
 
   * New minor release (i18n)
