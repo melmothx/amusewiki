@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-08-11 23:05-0400\n"
+"PO-Revision-Date: 2016-11-06 01:18-0300\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -199,6 +199,7 @@ msgstr ""
 "          diapositivas vacías. Si quieres excluir una sección, pon un\n"
 "          comentario en el cuerpo de la sección con la palabra “noslide”."
 
+#, fuzzy
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"
@@ -207,14 +208,12 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
-"Una URI es una cadena de caracteres que identifica de manera única a un "
-"texto\n"
+"Una URI es una cadena de caracteres que identifica de manera única a un texto\n"
 "      en el archivo. En teoría, puede ser cualquier cosa, pero si quieres\n"
 "      poner uno especial, por favor sigue la convención: autor/a, nombre, \n"
 "      título, idioma, eventualmente número para diferenciación (ej.:\n"
 "      enrico-malatesta-anarquia-2. Por favor nota que esto normalmente no \n"
-"      es necesario, pero puede servir cuando un título tiene la letra 'ñ' \n"
-"      en su título."
+"      es necesario."
 
 msgid "Apache is not currently supported"
 msgstr "Actualmente no hay soporte para Apache"
@@ -250,7 +249,7 @@ msgid "Authors"
 msgstr "Autores"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Listas de autores y temas"
 
 msgid "Authors for indexing"
 msgstr "Autores para indexar"
@@ -363,10 +362,11 @@ msgstr "Clonar el repositorio localmente y configurarlo"
 msgid "Close"
 msgstr "Cerrar"
 
+#, fuzzy
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
-msgstr ""
+msgstr "Columas para el lado izquierdo de la página de edición, con la caja de edición (un máximo de 12)"
 
 msgid "Commit"
 msgstr "Enviar"
@@ -512,7 +512,7 @@ msgid "Edit"
 msgstr "Editar"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Editar opciones de diagramación de la pantalla"
 
 #. (esite.id)
 msgid "Edit site %1"
@@ -548,7 +548,7 @@ msgid "Emails do not match"
 msgstr "Los correos electrónicos no concuerdan"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Incrustar fuentes en el archivo EPUB"
 
 msgid "Erase this revision"
 msgstr "Borrar esta revisión"
@@ -1076,7 +1076,7 @@ msgid "Load"
 msgstr "Cargar"
 
 msgid "Load another session by token"
-msgstr ""
+msgstr "Cargar otra sesión mediante un token"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
@@ -1560,7 +1560,7 @@ msgid "Preview"
 msgstr "Previsualizar"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Alto de la caja de previsualización en pixeles"
 
 msgid "Previous"
 msgstr "Anterior"
@@ -1796,25 +1796,25 @@ msgid "Separate header fields"
 msgstr "Campos separados del encabezado"
 
 msgid "Session sharing"
-msgstr ""
+msgstr "Compartir sesión"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Establecer una fecha en el futuro si quieres descartarlo."
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Mostrar ayuda memoria"
 
 msgid "Show differences in other tab"
 msgstr "Mostrar diferencias en otra pestaña"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Mostrar filtros"
 
 msgid "Show options"
 msgstr "Mostrar opciones"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Mostrar previsualización en otra pestaña"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Mostrar la baja de información de texto al final de los textos"
@@ -2277,7 +2277,7 @@ msgid "UTC"
 msgstr "UTC"
 
 msgid "Unable to load the bookbuilder session"
-msgstr ""
+msgstr "Imposible cargar la sesión del creador de libros"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "PDF sin marca (esconder nombre del sitio, logo, etc.)"
@@ -2293,7 +2293,7 @@ msgid "Unique ID for the text"
 msgstr "ID único para el texto"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Ilimitado"
 
 msgid "Unpublished texts"
 msgstr "Textos no publicados"
@@ -2379,6 +2379,10 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Usando este token, puedes cargar las opciones del creador de libros\n"
+"    y la lista de textos desde otro computador, o compartirlo con alguien\n"
+"    más. Solo escríbela y luego cárgala desde otro computador usando la\n"
+"    siguiente forma."
 
 msgid "Verbatim block"
 msgstr "Bloque de código"
@@ -2398,6 +2402,10 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"Cuando inicias una sesión del creador de libros, al final\n"
+"    de la página del creador de libros puedes ver un token para compartir\n"
+"    la sesión. Puedes cargarla aquí desde otro computador para continuar\n"
+"    lo que estabas haciendo."
 
 msgid "Where does this text come from?"
 msgstr "¿De dónde viene este texto?"
@@ -2513,7 +2521,7 @@ msgstr "Quizás quieras continuar la edición de uno de ellos"
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
-msgstr ""
+msgstr "Estás enviando credenciales bajo una conexión sin encriptar. Por favor cambia a HTTPS, inicia sesión y cambia tu contraseña de inmeadiato. Esto no debería pasar."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2530,7 +2538,7 @@ msgid "Your chapter here..."
 msgstr "Tu capítulo aquí..."
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Tu token actual para el creador de libros es:"
 
 msgid "Your email"
 msgstr "Tu email"
