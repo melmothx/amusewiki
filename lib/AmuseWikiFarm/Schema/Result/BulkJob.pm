@@ -146,6 +146,10 @@ sub is_completed {
     return !$self->jobs->unfinished->count;
 }
 
+before delete => sub {
+    my $self = shift;
+    $self->jobs->delete_all;
+};
 
 __PACKAGE__->meta->make_immutable;
 1;

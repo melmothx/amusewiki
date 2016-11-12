@@ -1,0 +1,22 @@
+<div class="well">
+  <p>
+    [% loc("Here you can ask for a rebuild of the whole site, which
+    may be desirable if you changed options affecting the generated
+    files (fonts, dimensions, etc.).") %]
+  </p>
+  <p>
+    [% loc("If you request a rebuild when one is ongoing, you will
+    abort the current one.") %]
+  </p>
+</div>
+
+
+
+
+<div class="center">
+  <form action="" method="POST">
+    <button type="submit" class="btn btn-primary" name="rebuild" value="1">
+      [% loc("Rebuild") %]
+    </button>
+  </form>
+</div>

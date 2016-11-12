@@ -1,0 +1,25 @@
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered">
+    [% FOREACH job IN all_jobs %]
+    <tr>
+      <td>
+        <a href="[% c.uri_for_action('/tasks/display', [ job.id ]) %]">
+          [% job.id | html %]
+        </a>
+      </td>
+      <td>
+        [% job.status | html %]
+      </td>
+      <td>
+        [% job.completed | html %]
+      </td>
+      <td>
+        [% IF job.produced %]
+        <a href="[% c.uri_for(job.produced) %]">
+          [% job.produced %]
+        </a>
+        [% END %]
+      </td>
+    </tr>
+    [% END %]
+  </table>

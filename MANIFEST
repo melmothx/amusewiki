@@ -487,6 +487,8 @@ root/src/search/opensearch.tt
 root/src/special/display.tt
 root/src/stats/popular.tt
 root/src/tasks/display.tt
+root/src/tasks/rebuild.tt
+root/src/tasks/show_bulk_job.tt
 root/src/text.tt
 root/src/user/create.tt
 root/src/user/edit.tt

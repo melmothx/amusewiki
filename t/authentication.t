@@ -159,7 +159,9 @@ my @user_only = (
                  "/user/edit/" . $user->id  . '/options',
                 );
 my @admin_only = (
-                  "/user/site/"
+                  "/user/site/",
+                  "/tasks/rebuild",
+                  "/tasks/rebuild/1",
                  );
 my @root_only = ('/admin/newuser',
                  '/admin/debug_loc',
