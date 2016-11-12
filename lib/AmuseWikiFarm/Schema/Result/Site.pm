@@ -1432,14 +1432,12 @@ sub get_compiler {
     if ($logger) {
         $compiler->logger($logger);
     }
-    else {
-        $logger = sub { warn $_[0] };
-    }
     return $compiler;
 }
 
 sub compile_and_index_files {
     my ($self, $files, $logger) = @_;
+    $logger ||= sub { warn $_[0] };
     my $compiler = $self->get_compiler($logger);
     foreach my $f (@$files) {
         my $file;
