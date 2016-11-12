@@ -949,6 +949,7 @@ t/pagination-sizes.t
 t/private-sites.t
 t/pulling.t
 t/queue.t
+t/rebuilding.t
 t/redirect-after-login.t
 t/redirections.t
 t/repotest/a/at/a-t-another.png
