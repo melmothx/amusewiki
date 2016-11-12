@@ -26,9 +26,10 @@ throwing exceptions everywhere.
 
 =head2 handled_jobs_hashref
 
-Return a hashref with the handled jobs as keys and true as value.
+Return a hashref with the handled jobs as keys and the priority as
+value (always true).
 
-=head2 enqueue($task, $payload, $priority, $username)
+=head2 enqueue($task, $payload, $username)
 
 Enqueye the task C<$task>, with the payload C<$payload>, at priority
 C<$priority>, with $username as owner.
@@ -37,31 +38,35 @@ $payload must be an hashref.
 
 =cut
 
-sub _handled_jobs {
-    return qw/testing publish git bookbuilder purge
-              alias_delete alias_create/;
-}
-
 sub handled_jobs_hashref {
-    my $self = shift;
-    my %hash = map { $_ => 1 } $self->_handled_jobs;
-    return \%hash;
+    return {
+            purge => 2,
+            alias_delete => 4,
+            publish => 5,
+            alias_create => 6,
+            bookbuilder => 8,
+            git => 9,
+
+            testing => 10,
+            testing_high => 5,
+           };
 }
 
 sub enqueue {
-    my ($self, $task, $payload, $priority, $username) = @_;
+    my ($self, $task, $payload, $username) = @_;
 
     # validate
     die "Missing task and/or payload: $task $payload" unless $task && $payload;
     die unless (ref($payload) && (ref($payload) eq 'HASH'));
-    die "Unhandled job $task" unless $self->handled_jobs_hashref->{$task};
+    my $priority = $self->handled_jobs_hashref->{$task};
+    die "Unhandled job $task" unless $priority;
 
     my $insertion = {
                      task    => $task,
                      payload => to_json($payload),
                      status  => 'pending',
                      created => DateTime->now,
-                     priority => $priority || 10,
+                     priority => $priority,
                      username => clean_username($username),
                     };
     my $job = $self->create($insertion)->discard_changes;
@@ -85,12 +90,12 @@ The payload will be
 
 sub bookbuilder_add {
     my ($self, $payload) = @_;
-    return $self->enqueue(bookbuilder => $payload, 3);
+    return $self->enqueue(bookbuilder => $payload);
 }
 
 sub publish_add {
     my ($self, $revision, $username) = @_;
-    return $self->enqueue(publish => { id => $revision->id }, 5, $username);
+    return $self->enqueue(publish => { id => $revision->id }, $username);
 }
 
 =head2 git_action_add($payload)
@@ -118,7 +123,7 @@ sub git_action_add {
 
 sub purge_add {
     my ($self, $payload, $username) = @_;
-    return $self->enqueue(purge => $payload, 10, $username);
+    return $self->enqueue(purge => $payload, $username);
 }
 
 sub alias_delete_add {

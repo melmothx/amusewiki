@@ -32,7 +32,7 @@ is $j->committer_username, "anonymous";
 is $j->committer_name, "Anonymous";
 is $j->committer_mail, "anonymous\@blog.amusewiki.org";
 {
-    my $jx = $site->jobs->enqueue(testing => {}, 10, "ùàà òò");
+    my $jx = $site->jobs->enqueue(testing => {}, "ùàà òò");
     is $jx->username, "uaaoo";
     is $jx->committer_username, "uaaoo";
     is $jx->committer_name, "Uaaoo";
@@ -47,7 +47,7 @@ is $j->committer_mail, "anonymous\@blog.amusewiki.org";
     is $jx->committer_name, "Uaaoo";
     is $jx->committer_mail, "uaaoo\@blog.amusewiki.org";
     $jx->delete;
-    $jx = $site->jobs->enqueue(testing => {}, 10, "pinco.pallino");
+    $jx = $site->jobs->enqueue(testing => {}, "pinco.pallino");
     is $jx->username, "pinco.pallino";
     is $jx->committer_username, "pinco.pallino";
     is $jx->committer_name, "Pinco.pallino";
@@ -61,11 +61,13 @@ eval {
 
 ok($@, "Adding jobs without a site triggers an exception: $@");
 
-my $late = $site->jobs->enqueue(testing => { this => 0, test => 'òć' }, 9);
+sleep 1;
+
+$site->jobs->enqueue(testing => { this => 0, test => 'òć' });
 
 sleep 1;
 
-my $highpriority = $site->jobs->enqueue(testing => { this => 0, test => 'òć' }, 5);
+my $highpriority = $site->jobs->enqueue(testing_high => { this => 0, test => 'òć' });
 my $id = $highpriority->id;
 
 ok($id, "Id is $id");
@@ -86,7 +88,7 @@ ok($json);
 my $struct = from_json($json);
 
 is_deeply($struct->{payload},  { this  => 0, test => 'òć' });
-is $struct->{task}, 'testing';
+is $struct->{task}, 'testing_high';
 is $struct->{status}, 'completed';
 is $struct->{site_id}, '0blog0';
 is $struct->{priority}, 5;
@@ -94,8 +96,7 @@ is $struct->{id}, $id;
 
 # print Dumper($struct);
 
-my $low_id = $othersite->jobs->enqueue(testing => { this => 1, test => 1  },
-                                       10);
+my $low_id = $othersite->jobs->enqueue(testing => { this => 1, test => 1  });
 
 # empty the jobs
 

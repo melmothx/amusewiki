@@ -560,6 +560,13 @@ sub dispatch_job_testing {
     return;
 }
 
+sub dispatch_job_testing_high {
+    my ($self, $logger) = @_;
+    log_debug { "Dispatching fake testing job" };
+    return;
+}
+
+
 sub produced_files {
     my $self = shift;
     my @out = ($self->log_file);
