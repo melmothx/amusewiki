@@ -24,6 +24,7 @@ Deny access to not-human
 
 sub root :Chained('/site_human_required') :PathPart('tasks') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
+    $c->stash(full_page_no_side_columns => 1);
 }
 
 sub status :Chained('root') :CaptureArgs(1) {
