@@ -588,6 +588,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 bulk_jobs
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::BulkJob>
+
+=cut
+
+__PACKAGE__->has_many(
+  "bulk_jobs",
+  "AmuseWikiFarm::Schema::Result::BulkJob",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 categories
 
 Type: has_many
@@ -779,8 +794,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-09-05 13:01:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:S1c9AT+9y7/kE0ftGhMibQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-12 17:15:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2kQ/DL6GXwhs2c/xnurs+w
 
 =head2 other_sites
 

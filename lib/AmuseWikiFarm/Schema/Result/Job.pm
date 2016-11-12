@@ -53,6 +53,12 @@ __PACKAGE__->table("job");
   is_nullable: 0
   size: 16
 
+=head2 bulk_job_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
 =head2 task
 
   data_type: 'varchar'
@@ -83,7 +89,8 @@ __PACKAGE__->table("job");
 =head2 priority
 
   data_type: 'integer'
-  is_nullable: 1
+  default_value: 10
+  is_nullable: 0
 
 =head2 produced
 
@@ -109,6 +116,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
+  "bulk_job_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "task",
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "payload",
@@ -120,7 +129,7 @@ __PACKAGE__->add_columns(
   "completed",
   { data_type => "datetime", is_nullable => 1 },
   "priority",
-  { data_type => "integer", is_nullable => 1 },
+  { data_type => "integer", default_value => 10, is_nullable => 0 },
   "produced",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "username",
@@ -142,6 +151,26 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
+
+=head2 bulk_job
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::BulkJob>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "bulk_job",
+  "AmuseWikiFarm::Schema::Result::BulkJob",
+  { bulk_job_id => "bulk_job_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
 
 =head2 job_files
 
@@ -174,8 +203,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-02-02 09:44:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:z+PYOIN/jkotu1Gh4xEO/Q
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-12 17:15:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zDo3a64QZMqe/iyGqLzopw
 
 use Cwd;
 use File::Spec;
