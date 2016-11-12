@@ -5,9 +5,10 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 19;
+use Test::More tests => 27;
 use File::Spec::Functions;
 use Cwd;
+use Test::WWW::Mechanize::Catalyst;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -41,6 +42,7 @@ foreach my $ext (@exts) {
     $job->dispatch_job;
     is $job->status, 'completed';
     diag $job->logs;
+    is $job->produced, $text->full_uri;
     foreach my $ext (qw/tex pdf zip/) {
         like $job->logs, qr/Created .*\.\Q$ext\E/;
         ok (-f $text->filepath_for_ext($ext), "$ext exists");
@@ -48,3 +50,24 @@ foreach my $ext (@exts) {
         ok ($newts > $ts{$ext}, "$ext updated");
     }
 }
+
+system($init, 'start');
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
+
+$mech->get_ok('/');
+$mech->get($text->full_rebuild_uri);
+is $mech->status, 401;
+$mech->submit_form(form_id => 'login-form',
+                   fields => { __auth_user => 'root',
+                               __auth_pass => 'root',
+                             });
+like $mech->uri->path, qr{/tasks/status/};
+sleep 15;
+$mech->get_ok($mech->uri->path);
+$mech->content_contains('Job rebuild finished');
+$mech->content_contains('Created ' . $text->uri . '.pdf');
+$mech->get_ok($text->full_uri . '.pdf');
+system($init, 'stop');

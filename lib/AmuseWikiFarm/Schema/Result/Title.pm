@@ -831,6 +831,11 @@ sub full_edit_uri {
     return $self->full_uri . '/edit';
 }
 
+sub full_rebuild_uri {
+    my $self = shift;
+    return $self->full_uri . '/rebuild';
+}
+
 sub cover_uri {
     my $self = shift;
     if (my $uri = $self->valid_cover) {

@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 2284; # test spamming
+use Test::More tests => 2336; # test spamming
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
@@ -152,6 +152,8 @@ my @user_only = (
                  '/console/translations',
                  '/console/unpublished',
                  "/special/$special/edit",
+                 "/special/$special/rebuild",
+                 "/library/$text/rebuild",
                  "/user/create",
                  "/user/edit/" . $user->id,
                  "/user/edit/" . $user->id  . '/options',
