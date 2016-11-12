@@ -1411,8 +1411,8 @@ and it's outdated.
 
 =cut
 
-sub compile_and_index_files {
-    my ($self, $files, $logger) = @_;
+sub get_compiler {
+    my ($self, $logger) = @_;
     my $compiler = Text::Amuse::Compile->new($self->compile_options);
     if ($logger) {
         $compiler->logger($logger);
@@ -1420,6 +1420,12 @@ sub compile_and_index_files {
     else {
         $logger = sub { warn $_[0] };
     }
+    return $compiler;
+}
+
+sub compile_and_index_files {
+    my ($self, $files, $logger) = @_;
+    my $compiler = $self->get_compiler($logger);
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {

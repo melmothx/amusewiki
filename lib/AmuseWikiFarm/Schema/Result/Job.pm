@@ -186,6 +186,7 @@ use AmuseWikiFarm::Archive::BookBuilder;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username to_json
                                    from_json/;
+use Text::Amuse::Compile;
 
 has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
@@ -480,6 +481,31 @@ sub dispatch_job_publish {
     # will return the $self->title->full_uri
     return $self->site->revisions->find($id)->publish_text($logger);
 }
+
+sub dispatch_job_rebuild {
+    my ($self, $logger) = @_;
+    if (my $id = $self->job_data->{id}) {
+        my $site = $self->site;
+        if (my $text = $site->titles->find($id)) {
+            my $muse = $text->filepath_for_ext('muse');
+            if (-f $muse) {
+                my $compiler = $site->get_compiler($logger);
+                $compiler->compile($muse);
+                return $text->full_uri;
+            }
+            else {
+                die "$muse not found";
+            }
+        }
+        else {
+            die "Cannot find title with id $id";
+        }
+    }
+    else {
+        die "Missing id in the job data";
+    }
+}
+
 
 sub dispatch_job_git {
     my ($self, $logger) = @_;

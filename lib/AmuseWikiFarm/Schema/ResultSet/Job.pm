@@ -46,6 +46,7 @@ sub handled_jobs_hashref {
             publish => 5,
             bookbuilder => 6,
             git => 7,
+            rebuild => 11,
 
             # testing
             testing => 10,
@@ -135,6 +136,11 @@ sub alias_delete_add {
 sub alias_create_add {
     my ($self, $payload) = @_;
     return $self->enqueue(alias_create => $payload);
+}
+
+sub rebuild_add {
+    my ($self, $payload) = @_;
+    return $self->enqueue(rebuild => $payload);
 }
 
 =head2 dequeue
