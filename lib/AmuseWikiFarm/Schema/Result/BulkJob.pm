@@ -141,6 +141,11 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:beXju8kw3LlA0w1doMmDsQ
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub is_completed {
+    my $self = shift;
+    return !$self->jobs->unfinished->count;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

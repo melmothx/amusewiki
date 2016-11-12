@@ -3175,6 +3175,44 @@ sub edit_option_page_left_bs_columns {
     return 6;
 }
 
+sub rebuild_formats {
+    my ($self, $username) = @_;
+    my @texts = $self->titles->published_or_deferred_all
+      ->search(undef,
+               {
+                result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                columns => [qw/id/],
+               });
+    Dlog_debug { "Texts are $_" } \@texts;
+    my $site_id = $self->id;
+    my $now = DateTime->now;
+    if ($username) {
+        $username =  AmuseWikiFarm::Utils::Amuse::clean_username($username);
+    }
+    # here we skip the rebuild_add method, because it would be a lot
+    # slower to call $self->bulk_jobs->jobs->enqueue for each text.
+    # They could be very well be thousands. Here, instead, the
+    # creation is wrapped in a transaction and doesn't spawn objects
+    # without reason.
+    return $self->bulk_jobs->create({
+                                     task => 'rebuild',
+                                     created => $now,
+                                     username => $username,
+                                     jobs => [ map {
+                                         +{
+                                           payload => AmuseWikiFarm::Utils::Amuse::to_json($_),
+                                           site_id => $site_id,
+                                           task => 'rebuild',
+                                           status => 'pending',
+                                           created => $now,
+                                           priority => 20,
+                                           username => $username,
+                                          }
+                                     } @texts ]
+                                    });
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;

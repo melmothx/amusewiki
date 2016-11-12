@@ -54,6 +54,12 @@ sub handled_jobs_hashref {
            };
 }
 
+sub unfinished {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => { -not_in => [qw/failed completed/]}});
+}
+
 sub enqueue {
     my ($self, $task, $payload, $username) = @_;
 

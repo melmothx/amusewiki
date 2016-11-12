@@ -5,7 +5,7 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 27;
+use Test::More tests => 36;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -71,3 +71,22 @@ $mech->content_contains('Job rebuild finished');
 $mech->content_contains('Created ' . $text->uri . '.pdf');
 $mech->get_ok($text->full_uri . '.pdf');
 system($init, 'stop');
+
+$site->bulk_jobs->delete;
+ok(!$site->bulk_jobs->count, "No bulk jobs so far");
+$site->rebuild_formats;
+is($site->bulk_jobs->count, 1, "bulk job created");
+my $bulk = $site->bulk_jobs->first;
+ok $bulk->jobs->count, "bulk job has jobs";
+ok !$bulk->is_completed, "job is not completed";
+{
+    my $test_job = $bulk->jobs->first;
+    ok defined($test_job->bulk_job_id);
+    ok $test_job->dispatch_job;
+    is $test_job->status, 'completed';
+    diag $test_job->logs;
+    ok $test_job->logs;
+}
+
+$bulk->jobs->update({ status => 'failed' });
+ok $bulk->is_completed, "job is completed when all the jobs are completed or failed";
