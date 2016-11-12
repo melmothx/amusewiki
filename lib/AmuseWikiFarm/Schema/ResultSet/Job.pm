@@ -41,12 +41,13 @@ $payload must be an hashref.
 sub handled_jobs_hashref {
     return {
             purge => 2,
-            alias_delete => 4,
+            alias_delete => 3,
+            alias_create => 4,
             publish => 5,
-            alias_create => 6,
-            bookbuilder => 8,
-            git => 9,
+            bookbuilder => 6,
+            git => 7,
 
+            # testing
             testing => 10,
             testing_high => 5,
            };
