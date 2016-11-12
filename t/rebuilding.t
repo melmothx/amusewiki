@@ -5,7 +5,7 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 36;
+use Test::More tests => 38;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -89,4 +89,9 @@ ok !$bulk->is_completed, "job is not completed";
 }
 
 $bulk->jobs->update({ status => 'failed' });
+$bulk->discard_changes;
+ok (!$bulk->completed);
+$bulk->jobs->first->update({ status => 'completed' });
+$bulk->discard_changes;
+ok ($bulk->completed);
 ok $bulk->is_completed, "job is completed when all the jobs are completed or failed";

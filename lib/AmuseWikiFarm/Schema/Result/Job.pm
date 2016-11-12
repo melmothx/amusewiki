@@ -678,6 +678,15 @@ before delete => sub {
     }
 };
 
+after update => sub {
+    my $self = shift;
+    if (my $parent = $self->bulk_job) {
+        if ($parent->is_completed) {
+            $parent->update({ completed => DateTime->now });
+        }
+    }
+};
+
 # same as Result::Revision
 sub committer_username {
     my $self = shift;
