@@ -6,7 +6,7 @@
     <li>[% loc("Failed") %]: [% bulk_job.total_failed_jobs %]</li>
     <li>[% loc("Started") %]: [% bulk_job.created_locale(current_locale_code) %]</li>
     [% IF bulk_job.completed %]
-    <li><strong>[% loc("Completed") %]</strong>: [% bulk_job.completed_locale(current_locale_code) %]</li>
+    <li><strong id="bulk-job-is-completed">[% loc("Completed") %]</strong>: [% bulk_job.completed_locale(current_locale_code) %]</li>
     [% ELSE %]
     <li><strong>[% loc("ETA") %]</strong>: [% bulk_job.eta_locale(current_locale_code) || loc("N/A") %]</li>
     [% END %]

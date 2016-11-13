@@ -106,6 +106,12 @@ sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
 
 sub show_bulk_job :Chained('bulks') :PathPart('') :Args(1) {
     my ($self, $c, $id) = @_;
+    if ($c->request->query_params->{bare}) {
+        $c->stash->{no_wrapper} = 1;
+    }
+    else {
+        $c->stash->{reload_url} = $c->uri_for_action('/tasks/show_bulk_job', [ $id ], { bare => 1 });
+    }
     if ($id =~ m/\A[1-9][0-9]*\z/) {
         my $rs = delete $c->stash->{bulk_jobs};
         if (my $bulk = $rs->find($id)) {

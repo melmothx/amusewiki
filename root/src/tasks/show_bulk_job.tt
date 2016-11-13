@@ -10,6 +10,7 @@
 </div>
 
 
+<div id="show-bulk-job-body">
 [% INCLUDE 'include/bulk_job.tt' %]
 
 <div class="table-responsive">
@@ -51,7 +52,25 @@
     [% END %]
   </table>
 </div>
+</div>
 
 <script type="text/javascript">
-  $('[data-toggle="tooltip"]').tooltip();
+
+function update_bulk_status() {
+    $("#show-bulk-job-body").load("[% reload_url %] #show-bulk-job-body", function(response, status, xhr) {
+        if (status == 'success') {
+            if ($("#bulk-job-is-completed").length) {
+                console.log('Job is completed');
+            }
+            else {
+                console.log('Keep looping');
+                setTimeout('update_bulk_status()', 5000);
+            }
+        }
+    });
+}
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+    update_bulk_status();
+});
 </script>
