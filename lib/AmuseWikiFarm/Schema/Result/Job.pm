@@ -624,7 +624,11 @@ sub dispatch_job_testing_high {
 
 sub produced_files {
     my $self = shift;
-    my @out = ($self->log_file);
+    my @out;
+    # log file not guaranteed to be there if the job wasn't started.
+    if (-f $self->log_file) {
+        push @out,  $self->log_file;
+    }
     foreach my $file ($self->job_files) {
         my $path = $file->path;
         if (-f $path) {
