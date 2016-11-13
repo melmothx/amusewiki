@@ -298,7 +298,7 @@ sub edit_options :Chained('get_user') :PathPart('options') :Args(0) {
 
 sub site_config :Chained('user') :PathPart('site') :Args(0) {
     my ($self, $c) = @_;
-    unless ($c->check_user_roles('admin')) {
+    unless ($c->check_any_user_role(qw/admin root/)) {
         $c->detach('/not_permitted');
         return;
     }
