@@ -13,43 +13,8 @@
 <div id="show-bulk-job-body">
 [% INCLUDE 'include/bulk_job.tt' %]
 
-<div class="table-responsive">
+<div class="table-responsive" id="bulk-job-table">
   <table class="table table-striped table-condensed table-bordered">
-    [% FOREACH job IN all_jobs %]
-    <tr>
-      <td>
-        <a href="[% c.uri_for_action('/tasks/display', [ job.id ]) %]">
-          [% job.id | html %]
-        </a>
-      </td>
-      <td style="text-align:center">
-        <span
-           [% IF job.status == 'pending' %]
-           class="fa fa-clock-o fa-2x fw"
-           [% ELSIF job.status == 'failed' %]
-           class="fa fa-exclamation-circle fa-2x fw text-danger"
-           [% ELSIF job.status == 'completed' %]
-           class="fa fa-check-circle-o fa-2x fw text-success"
-           [% ELSIF job.status == 'taken' %]
-           class="fa fa-cog fa-spin fa-2x fw"
-           [% END %]
-           data-toggle="tooltip" data-placement="top"
-           title="[% loc(job.status) %]"
-           aria-hidden="true"></span>
-        <span class="sr-only" >[% loc(job.status) %]</span>
-      </td>
-      <td>
-        [% job.completed | html %]
-      </td>
-      <td>
-        [% IF job.produced %]
-        <a href="[% c.uri_for(job.produced) %]">
-          [% job.produced %]
-        </a>
-        [% END %]
-      </td>
-    </tr>
-    [% END %]
   </table>
 </div>
 </div>
@@ -58,12 +23,44 @@
 
 function update_bulk_status() {
     $.getJSON("[% ajax_job_details_url %]", function(data) {
+        var base = "[% c.uri_for('/') %]".replace(/\/$/, '');
         $('#jobs-completed').text(data.job.total_completed);
         $('#jobs-total').text(data.job.total_jobs);
         $('#jobs-failed').text(data.job.total_failed);
         $('#job-started').text(data.job.started);
         $('#job-eta').text(data.job.eta);
         $('#job-completed').text(data.job.completed);
+        var table = $('<table>');
+        table.attr('class', 'table table-striped table-condensed table-bordered');
+        $.each(data.all_jobs, function(i, item) {
+            var link = base + '/tasks/status/' + item.id;
+            var alink = $('<a>').attr('href', link).text(item.id);
+            var text_link = '';
+            if (item.produced) {
+                text_link = $('<a>').attr('href', base + item.produced).text(item.produced);
+            }
+            var icon = $('<span>');
+            if (item.status == 'pending') {
+                icon.attr("class", "fa fa-clock-o fa-2x fw");
+            }
+            else if (item.status == 'failed') {
+                icon.attr("class", "fa fa-exclamation-circle fa-2x fw text-danger");
+            }
+            else if (item.status == 'taken') {
+                icon.attr("class", "fa fa-cog fa-spin fa-2x fw");
+            }
+            else if (item.status == 'completed') {
+                icon.attr("class", "fa fa-check-circle-o fa-2x fw text-success");
+            }
+            table.append($('<tr>').append(
+                $('<td>').css('text-align', 'center')
+                    .append(icon, $('<span>').text(item.status).attr("class", "sr-only")),
+                $('<td>').append(alink),
+                $('<td>').append(text_link),
+                $('<td>').append(item.completed),
+                $('<td>').append(item.errors)));
+        });
+        $('#bulk-job-table table').replaceWith(table);
         if (data.job.completed) {
             $('#bulk-job-eta').hide();
             $('#bulk-job-done').show();
