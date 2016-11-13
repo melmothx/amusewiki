@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 2336; # test spamming
+use Test::More tests => 2424; # test spamming
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
@@ -236,7 +236,7 @@ foreach my $mode (qw/private blog modwiki openwiki/) {
 
         $mech->get_ok('/login');
         ok $mech->submit_form(with_fields => {__auth_user => 'test-admin', __auth_pass => 'test-admin' }) or die;
-        check_get_ok(@admin_only);
+        check_get_ok($mech, @admin_only);
         $mech->get('/logout');
         $mech->get_ok('/login');
         ok $mech->submit_form(with_fields => {__auth_user => 'test-username', __auth_pass => 'test-username' }) or die;
