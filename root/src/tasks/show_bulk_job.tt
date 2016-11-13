@@ -57,15 +57,23 @@
 <script type="text/javascript">
 
 function update_bulk_status() {
-    $("#show-bulk-job-body").load("[% reload_url %] #show-bulk-job-body", function(response, status, xhr) {
-        if (status == 'success') {
-            if ($("#bulk-job-is-completed").length) {
-                console.log('Job is completed');
-            }
-            else {
-                console.log('Keep looping');
-                setTimeout('update_bulk_status()', 5000);
-            }
+    $.getJSON("[% ajax_job_details_url %]", function(data) {
+        $('#jobs-completed').text(data.job.total_completed);
+        $('#jobs-total').text(data.job.total_jobs);
+        $('#jobs-failed').text(data.job.total_failed);
+        $('#job-started').text(data.job.started);
+        $('#job-eta').text(data.job.eta);
+        $('#job-completed').text(data.job.completed);
+        if (data.job.completed) {
+            $('#bulk-job-eta').hide();
+            $('#bulk-job-done').show();
+            console.log('Job is completed');
+        }
+        else {
+            $('#bulk-job-eta').show();
+            $('#bulk-job-done').hide();
+            console.log('Keep looping');
+            setTimeout('update_bulk_status()', 5000);
         }
     });
 }

@@ -2,13 +2,18 @@
   <h3><a href="[% c.uri_for_action('/tasks/show_bulk_job', [ bulk_job.bulk_job_id ]) %]">[% bulk_job.task %]</a>
   </h3>
   <ul>
-    <li>[% loc("Number of jobs") %]: [% bulk_job.total_completed_jobs %]/[% bulk_job.total_jobs %]</li>
-    <li>[% loc("Failed") %]: [% bulk_job.total_failed_jobs %]</li>
-    <li>[% loc("Started") %]: [% bulk_job.created_locale(current_locale_code) %]</li>
-    [% IF bulk_job.completed %]
-    <li><strong id="bulk-job-is-completed">[% loc("Completed") %]</strong>: [% bulk_job.completed_locale(current_locale_code) %]</li>
-    [% ELSE %]
-    <li><strong>[% loc("ETA") %]</strong>: [% bulk_job.eta_locale(current_locale_code) || loc("N/A") %]</li>
-    [% END %]
+    <li>[% loc("Number of jobs") %]:
+      <span id="jobs-completed">[% bulk_job.total_completed_jobs %]</span>/<span id="jobs-total">[% bulk_job.total_jobs %]</span>
+    </li>
+    <li>[% loc("Failed") %]: <span id="jobs-failed">[% bulk_job.total_failed_jobs %]</span></li>
+    <li>[% loc("Started") %]: <span id="job-started">[% bulk_job.created_locale(current_locale_code) %]</span></li>
+    <li id="bulk-job-done" [% UNLESS bulk_job.completed %] style="display:none" [% END %]>
+      <strong id="bulk-job-is-completed">[% loc("Completed") %]</strong>:
+      <span id="job-completed">[% bulk_job.completed_locale(current_locale_code) %]</span>
+    </li>
+    <li id="bulk-job-eta" [% IF bulk_job.completed %] style="display:none" [% END %]>
+      <strong>[% loc("ETA") %]</strong>:
+      <span id="job-eta">[% bulk_job.eta_locale(current_locale_code) || loc("N/A") %]</span>
+    </li>
   </ul>
 </div>

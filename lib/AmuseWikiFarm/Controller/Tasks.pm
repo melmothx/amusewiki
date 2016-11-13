@@ -104,19 +104,14 @@ sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
     }
 }
 
-sub show_bulk_job :Chained('bulks') :PathPart('') :Args(1) {
+sub get_bulk_job :Chained('bulks') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
-    if ($c->request->query_params->{bare}) {
-        $c->stash->{no_wrapper} = 1;
-    }
-    else {
-        $c->stash->{reload_url} = $c->uri_for_action('/tasks/show_bulk_job', [ $id ], { bare => 1 });
-    }
     if ($id =~ m/\A[1-9][0-9]*\z/) {
         my $rs = delete $c->stash->{bulk_jobs};
         if (my $bulk = $rs->find($id)) {
-            $c->stash(bulk_job => $bulk);
-            $c->stash(all_jobs => [$bulk->jobs
+            $c->stash(bulk_job => $bulk,
+                      ajax_job_details_url => $c->uri_for_action('/tasks/show_bulk_job_ajax', [ $id ]),
+                      all_jobs => [$bulk->jobs
                                    ->search(undef,
                                             {
                                              result_class => 'DBIx::Class::ResultClass::HashRefInflator',
@@ -125,6 +120,29 @@ sub show_bulk_job :Chained('bulks') :PathPart('') :Args(1) {
         }
     }
     $c->detach('/not_found');
+}
+
+sub show_bulk_job :Chained('get_bulk_job') :PathPart('show') :Args(0) {
+    my ($self, $c) = @_;
+}
+
+sub show_bulk_job_ajax :Chained('get_bulk_job') :PathPart('ajax') :Args(0) {
+    my ($self, $c) = @_;
+    my $job = $c->stash->{bulk_job};
+    my $locale = $c->stash->{current_locale_code} || 'en';
+    my %data = (
+                completed => ($job->completed ? $job->completed_locale($locale) : undef),
+                total_failed => $job->total_failed_jobs,
+                total_completed => $job->total_completed_jobs,
+                total_jobs => $job->total_jobs,
+                started => $job->created_locale($locale),
+                eta => $job->eta_locale($locale) || $c->loc("N/A"),
+               );
+    $c->stash(json => {
+                       job => \%data,
+                       all_jobs => $c->stash->{all_jobs},
+                      });
+    $c->detach($c->view('JSON'));
 }
 
 =head1 AUTHOR
