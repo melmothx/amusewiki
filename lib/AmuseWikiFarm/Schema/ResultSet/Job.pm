@@ -203,7 +203,8 @@ sub pending {
                          },
                          {
                           order_by => [qw/priority
-                                          created/],
+                                          created
+                                          id/],
                          });
 }
 
