@@ -3192,8 +3192,9 @@ sub rebuild_formats {
     # They could be very well be thousands. Here, instead, the
     # creation is wrapped in a transaction and doesn't spawn objects
     # without reason.
+    # loc('Rebuild')
     return $self->bulk_jobs->create({
-                                     task => 'rebuild',
+                                     task => 'Rebuild',
                                      created => $now,
                                      username => $username,
                                      jobs => [ map {

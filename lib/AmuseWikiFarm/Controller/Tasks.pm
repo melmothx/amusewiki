@@ -23,6 +23,9 @@ Deny access to not-human
 
 =cut
 
+use DateTime;
+
+
 sub root :Chained('/site_human_required') :PathPart('tasks') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
     $c->stash(full_page_no_side_columns => 1);
@@ -78,6 +81,8 @@ sub bulks :Chained('root') :PathPart('rebuild') :CaptureArgs(0) {
     }
     my $bulk_jobs = $c->stash->{site}->bulk_jobs;
     $c->stash(bulk_jobs => $bulk_jobs);
+    my $now = DateTime->now(locale => $c->stash->{current_locale_code});
+    $c->stash(now_datetime => $now->format_cldr($now->locale->datetime_format_full));
 }
 
 sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
@@ -90,7 +95,13 @@ sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
         $c->detach;
         return;
     }
-    $c->stash(bulk_jobs => [ $rs->all ]);
+    elsif ($c->request->body_params->{cancel}) {
+        $rs->delete_all;
+        $c->stash(bulk_jobs => []);
+    }
+    else {
+        $c->stash(bulk_jobs => [ $rs->all ]);
+    }
 }
 
 sub show_bulk_job :Chained('bulks') :PathPart('') :Args(1) {
@@ -104,8 +115,10 @@ sub show_bulk_job :Chained('bulks') :PathPart('') :Args(1) {
                                             {
                                              result_class => 'DBIx::Class::ResultClass::HashRefInflator',
                                             })->all]);
+            return;
         }
     }
+    $c->detach('/not_found');
 }
 
 =head1 AUTHOR

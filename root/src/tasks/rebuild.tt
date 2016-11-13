@@ -1,8 +1,7 @@
 <div class="well">
   <p>
-    [% loc("Here you can ask for a rebuild of the whole site, which
-    may be desirable if you changed options affecting the generated
-    files (fonts, dimensions, etc.).") %]
+      [% loc('If you edit some format options, like fonts or paper
+      dimensions, you may want to rebuild the generated files') %]
   </p>
   <p>
     [% loc("If you request a rebuild when one is ongoing, you will
@@ -10,13 +9,34 @@
   </p>
 </div>
 
+<p>
+  [% loc('Current time')%]: [% now_datetime %]
+</p>
 
-
+[% FOREACH job IN bulk_jobs %]
+<div>
+  <h3><a href="[% c.uri_for_action('/tasks/show_bulk_job', [ job.bulk_job_id ]) %]">[% job.task %]</a>
+  </h3>
+  <ul>
+    <li>[% loc("Number of jobs") %]: [% job.total_completed_jobs %]/[% job.total_jobs %]</li>
+    <li>[% loc("Failed") %]: [% job.total_failed_jobs %]</li>
+    <li>[% loc("Started") %]: [% job.created_locale(current_locale_code) %]</li>
+    [% IF job.completed %]
+    <li><strong>[% loc("Completed") %]</strong>: [% job.completed_locale(current_locale_code) %]</li>
+    [% ELSE %]
+    <li><strong>[% loc("ETA") %]</strong>: [% job.eta_locale(current_locale_code) || loc("N/A") %]</li>
+    [% END %]
+  </ul>
+</div>
+[% END %]
 
 <div class="center">
   <form action="" method="POST">
     <button type="submit" class="btn btn-primary" name="rebuild" value="1">
       [% loc("Rebuild") %]
+    </button>
+    <button type="submit" class="btn btn-primary" name="cancel" value="1">
+      [% loc("Cancel") %]
     </button>
   </form>
 </div>

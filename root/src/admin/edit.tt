@@ -1099,6 +1099,16 @@ $(document).ready(function() {
   </form>
 </div>
 
+<div class="well">
+  <p>
+    <a href="[% c.uri_for_action('/tasks/rebuild') %]">
+      [% loc('If you edit some format options, like fonts or paper
+      dimensions, you may want to rebuild the generated files') %]
+    </a>
+  </p>
+</div>
+
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#highlight-js-languages').text(hljs.listLanguages().join(' '));

@@ -425,6 +425,11 @@
                     [% loc('Edit site configuration') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/tasks/rebuild') %]">
+                    [% loc('Rebuild all generated files') %]
+                  </a>
+                </li>
                 [% END %]
                 [% IF c.check_user_roles('root') %]
                 <li>

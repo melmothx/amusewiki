@@ -60,6 +60,24 @@ sub unfinished {
     return $self->search({ "$me.status" => { -not_in => [qw/failed completed/]}});
 }
 
+sub finished_jobs {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => [qw/failed completed/] });
+}
+
+sub failed_jobs {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => 'failed' });
+}
+
+sub completed_jobs {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => 'completed' });
+}
+
 sub enqueue {
     my ($self, $task, $payload, $username) = @_;
 

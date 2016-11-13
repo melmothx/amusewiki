@@ -140,6 +140,7 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-12 17:15:55
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:beXju8kw3LlA0w1doMmDsQ
 
+use DateTime;
 
 sub is_completed {
     my $self = shift;
@@ -150,6 +151,70 @@ before delete => sub {
     my $self = shift;
     $self->jobs->delete_all;
 };
+
+sub completed_locale {
+    my ($self, $locale) = @_;
+    return $self->_format_dt_locale($self->completed, $locale)
+}
+
+sub created_locale {
+    my ($self, $locale) = @_;
+    return $self->_format_dt_locale($self->created, $locale)
+}
+
+sub _format_dt_locale {
+    my ($self, $datetime, $locale) = @_;
+    $locale ||= 'en';
+    if ($datetime) {
+        my $dt = DateTime->from_object(object => $datetime, locale => $locale);
+        return $dt->format_cldr($dt->locale->datetime_format_full);
+    }
+    else {
+        return '';
+    }
+}
+
+sub total_jobs {
+    my ($self) = @_;
+    return $self->jobs->count;
+}
+
+sub total_failed_jobs {
+    my ($self) = @_;
+    return $self->jobs->failed_jobs->count;
+}
+
+sub total_completed_jobs {
+    my ($self) = @_;
+    return $self->jobs->completed_jobs->count;
+}
+
+sub eta {
+    my ($self) = @_;
+    if (my $done = $self->completed) {
+        return $done;
+    }
+    if (my $finished = $self->jobs->finished_jobs->count) {
+        # extremely verbose but clear, hopefully
+        my $total = $self->total_jobs;
+        my $started = $self->created->clone;
+        my $to_go = $total - $finished;
+        my $now_epoch = time();
+        my $started_epoch = $started->epoch;
+        my $elapsed = $now_epoch - $started_epoch;
+        my $average = $elapsed / $finished;
+        my $expected = $to_go * $average;
+        return DateTime->now->add(seconds => $expected);
+    }
+    else {
+        return undef;
+    }
+}
+sub eta_locale {
+    my ($self, $locale) = @_;
+    return $self->_format_dt_locale($self->eta, $locale)
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;
