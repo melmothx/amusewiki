@@ -149,7 +149,8 @@ sub is_completed {
 
 before delete => sub {
     my $self = shift;
-    $self->jobs->delete_all;
+    # remove the pending jobs
+    $self->jobs->pending->delete;
 };
 
 sub completed_locale {

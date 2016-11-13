@@ -198,13 +198,23 @@ sub fetch_job_by_id_json {
 }
 
 sub pending {
-    return shift->search({
-                          status => 'pending',
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.status" => 'pending',
                          },
                          {
-                          order_by => [qw/priority
-                                          created
-                                          id/],
+                          order_by => ["$me.priority",
+                                       "$me.created",
+                                       "$me.id" ],
+                         });
+}
+
+sub exclude_bulks {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.bulk_job_id" => undef,
                          });
 }
 
@@ -215,9 +225,7 @@ Return true if the number of pending jobs is lesser than 50.
 =cut
 
 sub can_accept_further_jobs {
-    my $self = shift;
-    my $total_pending = $self->pending->count;
-    if ($total_pending < 50) {
+    if (shift->pending->exclude_bulks->count < 50) {
         return 1;
     }
     else {
