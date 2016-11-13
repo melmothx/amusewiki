@@ -468,6 +468,7 @@ root/src/help/faq.tt
 root/src/help/irc.tt
 root/src/help/opds.tt
 root/src/include/breadcrumbs.tt
+root/src/include/bulk_job.tt
 root/src/include/ckeditor.tt
 root/src/include/editing-options.tt
 root/src/include/markitup.tt

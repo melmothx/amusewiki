@@ -13,21 +13,8 @@
   [% loc('Current time')%]: [% now_datetime %]
 </p>
 
-[% FOREACH job IN bulk_jobs %]
-<div>
-  <h3><a href="[% c.uri_for_action('/tasks/show_bulk_job', [ job.bulk_job_id ]) %]">[% job.task %]</a>
-  </h3>
-  <ul>
-    <li>[% loc("Number of jobs") %]: [% job.total_completed_jobs %]/[% job.total_jobs %]</li>
-    <li>[% loc("Failed") %]: [% job.total_failed_jobs %]</li>
-    <li>[% loc("Started") %]: [% job.created_locale(current_locale_code) %]</li>
-    [% IF job.completed %]
-    <li><strong>[% loc("Completed") %]</strong>: [% job.completed_locale(current_locale_code) %]</li>
-    [% ELSE %]
-    <li><strong>[% loc("ETA") %]</strong>: [% job.eta_locale(current_locale_code) || loc("N/A") %]</li>
-    [% END %]
-  </ul>
-</div>
+[% FOREACH bulk_job IN bulk_jobs %]
+[% INCLUDE 'include/bulk_job.tt' %]
 [% END %]
 
 <div class="center">

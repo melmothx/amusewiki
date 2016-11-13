@@ -1,0 +1,14 @@
+<div>
+  <h3><a href="[% c.uri_for_action('/tasks/show_bulk_job', [ bulk_job.bulk_job_id ]) %]">[% bulk_job.task %]</a>
+  </h3>
+  <ul>
+    <li>[% loc("Number of jobs") %]: [% bulk_job.total_completed_jobs %]/[% bulk_job.total_jobs %]</li>
+    <li>[% loc("Failed") %]: [% bulk_job.total_failed_jobs %]</li>
+    <li>[% loc("Started") %]: [% bulk_job.created_locale(current_locale_code) %]</li>
+    [% IF bulk_job.completed %]
+    <li><strong>[% loc("Completed") %]</strong>: [% bulk_job.completed_locale(current_locale_code) %]</li>
+    [% ELSE %]
+    <li><strong>[% loc("ETA") %]</strong>: [% bulk_job.eta_locale(current_locale_code) || loc("N/A") %]</li>
+    [% END %]
+  </ul>
+</div>
