@@ -1,5 +1,6 @@
 package AmuseWikiFarm::Controller::Tasks;
 use Moose;
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -22,8 +23,12 @@ Deny access to not-human
 
 =cut
 
+use DateTime;
+use AmuseWikiFarm::Log::Contextual;
+
 sub root :Chained('/site_human_required') :PathPart('tasks') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
+    $c->stash(full_page_no_side_columns => 1);
 }
 
 sub status :Chained('root') :CaptureArgs(1) {
@@ -67,6 +72,79 @@ sub ajax :Chained('status') :PathPart('ajax') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+sub bulks :Chained('root') :PathPart('rebuild') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $self->check_login($c) or die;
+    unless ($c->check_any_user_role(qw/admin root/)) {
+        $c->detach('/not_permitted');
+        return;
+    }
+    my $bulk_jobs = $c->stash->{site}->bulk_jobs;
+    $c->stash(bulk_jobs => $bulk_jobs);
+    my $now = DateTime->now(locale => $c->stash->{current_locale_code});
+    $c->stash(now_datetime => $now->format_cldr($now->locale->datetime_format_full));
+}
+
+sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $rs = $c->stash->{bulk_jobs}->active_bulk_jobs;
+    my $all = delete $c->stash->{bulk_jobs};
+    if ($c->request->body_params->{rebuild}) {
+        $rs->abort_all;
+        my $job = $c->stash->{site}->rebuild_formats;
+        $c->response->redirect($c->uri_for_action('/tasks/show_bulk_job', [ $job->bulk_job_id ]));
+        $c->detach;
+        return;
+    }
+    elsif ($c->request->body_params->{cancel}) {
+        $rs->abort_all;
+    }
+    $c->stash(bulk_jobs => [ $rs->all ],
+              last_job => $all->completed_jobs->first);
+}
+
+sub get_bulk_job :Chained('bulks') :PathPart('') :CaptureArgs(1) {
+    my ($self, $c, $id) = @_;
+    if ($id =~ m/\A[1-9][0-9]*\z/) {
+        my $rs = delete $c->stash->{bulk_jobs};
+        if (my $bulk = $rs->find($id)) {
+            $c->stash(bulk_job => $bulk,
+                      ajax_job_details_url => $c->uri_for_action('/tasks/show_bulk_job_ajax', [ $id ]),
+                      all_jobs => [$bulk->jobs
+                                   ->search(undef,
+                                            {
+                                             columns => [qw/id produced status completed errors/],
+                                             result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                                            })->all]);
+            return;
+        }
+    }
+    $c->detach('/not_found');
+}
+
+sub show_bulk_job :Chained('get_bulk_job') :PathPart('show') :Args(0) {
+    my ($self, $c) = @_;
+}
+
+sub show_bulk_job_ajax :Chained('get_bulk_job') :PathPart('ajax') :Args(0) {
+    my ($self, $c) = @_;
+    my $job = $c->stash->{bulk_job};
+    my $locale = $c->stash->{current_locale_code} || 'en';
+    my %data = (
+                completed => ($job->completed ? $job->completed_locale($locale) : undef),
+                total_failed => $job->total_failed_jobs,
+                total_completed => $job->total_completed_jobs,
+                total_jobs => $job->total_jobs,
+                started => $job->created_locale($locale),
+                eta => $job->eta_locale($locale) || $c->loc("N/A"),
+                status => $job->status,
+               );
+    $c->stash(json => {
+                       job => \%data,
+                       all_jobs => $c->stash->{all_jobs},
+                      });
+    $c->detach($c->view('JSON'));
+}
 
 =head1 AUTHOR
 

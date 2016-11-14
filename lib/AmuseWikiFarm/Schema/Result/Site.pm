@@ -588,6 +588,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 bulk_jobs
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::BulkJob>
+
+=cut
+
+__PACKAGE__->has_many(
+  "bulk_jobs",
+  "AmuseWikiFarm::Schema::Result::BulkJob",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 categories
 
 Type: has_many
@@ -779,8 +794,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-09-05 13:01:56
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:S1c9AT+9y7/kE0ftGhMibQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-12 17:15:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2kQ/DL6GXwhs2c/xnurs+w
 
 =head2 other_sites
 
@@ -1411,15 +1426,19 @@ and it's outdated.
 
 =cut
 
-sub compile_and_index_files {
-    my ($self, $files, $logger) = @_;
+sub get_compiler {
+    my ($self, $logger) = @_;
     my $compiler = Text::Amuse::Compile->new($self->compile_options);
     if ($logger) {
         $compiler->logger($logger);
     }
-    else {
-        $logger = sub { warn $_[0] };
-    }
+    return $compiler;
+}
+
+sub compile_and_index_files {
+    my ($self, $files, $logger) = @_;
+    $logger ||= sub { warn $_[0] };
+    my $compiler = $self->get_compiler($logger);
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
@@ -3153,6 +3172,46 @@ sub edit_option_page_left_bs_columns {
     }
     return 6;
 }
+
+sub rebuild_formats {
+    my ($self, $username) = @_;
+    my @texts = $self->titles->published_or_deferred_all
+      ->search(undef,
+               {
+                result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                columns => [qw/id/],
+               });
+    Dlog_debug { "Texts are $_" } \@texts;
+    my $site_id = $self->id;
+    my $now = DateTime->now;
+    if ($username) {
+        $username =  AmuseWikiFarm::Utils::Amuse::clean_username($username);
+    }
+    # here we skip the rebuild_add method, because it would be a lot
+    # slower to call $self->bulk_jobs->jobs->enqueue for each text.
+    # They could be very well be thousands. Here, instead, the
+    # creation is wrapped in a transaction and doesn't spawn objects
+    # without reason.
+    # loc('Rebuild')
+    return $self->bulk_jobs->create({
+                                     task => 'Rebuild',
+                                     created => $now,
+                                     username => $username,
+                                     status => 'active',
+                                     jobs => [ map {
+                                         +{
+                                           payload => AmuseWikiFarm::Utils::Amuse::to_json($_),
+                                           site_id => $site_id,
+                                           task => 'rebuild',
+                                           status => 'pending',
+                                           created => $now,
+                                           priority => 20,
+                                           username => $username,
+                                          }
+                                     } @texts ]
+                                    });
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

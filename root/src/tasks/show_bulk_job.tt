@@ -1,0 +1,83 @@
+<div class="amw-breadcrumbs">
+  <ol class="breadcrumb">
+    <li>
+      <a href="[% c.uri_for_action('/tasks/rebuild') %]">[% loc('Rebuilding') %]</a>
+    </li>
+    <li class="active">
+      [% loc(bulk_job.task) %]
+    </li>
+  </ol>
+</div>
+
+
+<div id="show-bulk-job-body">
+[% INCLUDE 'include/bulk_job.tt' %]
+
+<div class="table-responsive" id="bulk-job-table">
+  <table class="table table-striped table-condensed table-bordered">
+  </table>
+</div>
+</div>
+
+<script type="text/javascript">
+
+function update_bulk_status() {
+    $.getJSON("[% ajax_job_details_url %]", function(data) {
+        var base = "[% c.uri_for('/') %]".replace(/\/$/, '');
+        $('.jobs-completed').text(data.job.total_completed);
+        $('.jobs-total').text(data.job.total_jobs);
+        $('.jobs-failed').text(data.job.total_failed);
+        $('.job-started').text(data.job.started);
+        $('.job-eta').text(data.job.eta);
+        $('.bulk-job-status').text(data.job.status);
+        $('.job-completed').text(data.job.completed);
+        var table = $('<table>');
+        table.attr('class', 'table table-striped table-condensed table-bordered');
+        $.each(data.all_jobs, function(i, item) {
+            var link = base + '/tasks/status/' + item.id;
+            var alink = $('<a>').attr('href', link).text(item.id);
+            var text_link = '';
+            if (item.produced) {
+                text_link = $('<a>').attr('href', base + item.produced).text(item.produced);
+            }
+            var icon = $('<span>');
+            if (item.status == 'pending') {
+                icon.attr("class", "fa fa-clock-o fa-2x fw");
+            }
+            else if (item.status == 'failed') {
+                icon.attr("class", "fa fa-exclamation-circle fa-2x fw text-danger");
+            }
+            else if (item.status == 'taken') {
+                icon.attr("class", "fa fa-cog fa-spin fa-2x fw");
+            }
+            else if (item.status == 'completed') {
+                icon.attr("class", "fa fa-check-circle-o fa-2x fw text-success");
+            }
+            table.append($('<tr>').append(
+                $('<td>').css('text-align', 'center')
+                    .append(icon, $('<span>').text(item.status).attr("class", "sr-only")),
+                $('<td>').append(alink),
+                $('<td>').append(text_link),
+                $('<td>').append(item.completed),
+                $('<td>').append(item.errors)));
+        });
+        $('#bulk-job-table table').replaceWith(table);
+        if (data.job.completed) {
+            $('.bulk-job-eta').hide();
+            $('.cancel-bulk-job-button').hide();
+            $('.bulk-job-done').show();
+            console.log('Job is completed');
+        }
+        else {
+            $('.bulk-job-eta').show();
+            $('.bulk-job-done').hide();
+            console.log('Keep looping');
+            setTimeout('update_bulk_status()', 10000);
+        }
+    });
+}
+$(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+    update_bulk_status();
+});
+</script>

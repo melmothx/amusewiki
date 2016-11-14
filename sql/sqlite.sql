@@ -168,16 +168,30 @@ CREATE TABLE revision (
        updated DATETIME NOT NULL -- internal
 );
 
+CREATE TABLE bulk_job (
+       bulk_job_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       task      VARCHAR(32),
+       created   DATETIME NOT NULL,
+       completed DATETIME,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       status    VARCHAR(32),
+       username  VARCHAR(255)
+);
+
+
 CREATE TABLE job (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       bulk_job_id INTEGER NULL REFERENCES bulk_job(bulk_job_id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
        task      VARCHAR(32),
        payload   TEXT, -- the JSON stuff
        status    VARCHAR(32),
        created   DATETIME NOT NULL,
        completed DATETIME,
-       priority  INTEGER,
+       priority  INTEGER NOT NULL DEFAULT 10,
        produced  VARCHAR(255),
        username  VARCHAR(255),
        errors    TEXT
@@ -378,6 +392,7 @@ INSERT INTO table_comments (table_name, comment_text)
          ('user_role', 'Linking table between users and roles'),
          ('revision', 'Text revisions'),
          ('job', 'Queue for jobs'),
+         ('bulk_job', 'Aggregated jobs'),
          ('job_file', 'Files produced by a job'),
          ('title', 'Texts metadata'),
          ('redirection', 'Redirections'),

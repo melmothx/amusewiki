@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 2284; # test spamming
+use Test::More tests => 2501; # test spamming
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
@@ -152,12 +152,17 @@ my @user_only = (
                  '/console/translations',
                  '/console/unpublished',
                  "/special/$special/edit",
+                 "/special/$special/rebuild",
+                 "/library/$text/rebuild",
                  "/user/create",
                  "/user/edit/" . $user->id,
                  "/user/edit/" . $user->id  . '/options',
                 );
 my @admin_only = (
-                  "/user/site/"
+                  "/user/site/",
+                  "/tasks/rebuild",
+                  "/tasks/rebuild/1/show",
+                  "/tasks/rebuild/1/ajax",
                  );
 my @root_only = ('/admin/newuser',
                  '/admin/debug_loc',
@@ -232,7 +237,11 @@ foreach my $mode (qw/private blog modwiki openwiki/) {
 
         $mech->get_ok('/login');
         ok $mech->submit_form(with_fields => {__auth_user => 'test-admin', __auth_pass => 'test-admin' }) or die;
-        check_get_ok(@admin_only);
+        check_get_ok($mech, @admin_only);
+        foreach my $path (@root_only) {
+            $mech->get($path);
+            is $mech->status, 403, "Access denied";
+        }
         $mech->get('/logout');
         $mech->get_ok('/login');
         ok $mech->submit_form(with_fields => {__auth_user => 'test-username', __auth_pass => 'test-username' }) or die;

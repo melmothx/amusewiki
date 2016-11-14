@@ -278,6 +278,17 @@
                 data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only" >[% loc('Select individual parts for the bookbuilder') %]</span></a>
       </span>
+      [% IF c.user_exists %]
+      <span id="create-rebuild-job">
+        <a href="[% c.uri_for(text.full_rebuild_uri) %]">
+          <span class="fa fa-refresh fa-2x fa-border fw"
+                aria-hidden="true"
+                data-toggle="tooltip" data-placement="top"
+                title="[% loc('Rebuild the generated formats') %]"></span><span class="sr-only" >
+            [% loc('Rebuild the generated formats') %]
+        </span></a>
+      </span>
+      [% END %]
     </div>
   </div>
   </div>

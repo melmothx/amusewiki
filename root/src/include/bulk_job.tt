@@ -1,0 +1,39 @@
+[% # -*- mode:html -*- %]
+[% # loc('active'), loc('aborted'), loc('completed') %]
+<div class="row">
+  <div class="col-xs-4">
+    <h3><a href="[% c.uri_for_action('/tasks/show_bulk_job', [ bulk_job.bulk_job_id ]) %]">[% bulk_job.task %]</a>
+      <small class="bulk-job-status">[% bulk_job.status %]</small>
+    </h3>
+    <ul>
+      <li>[% loc("Number of jobs") %]:
+        <span class="jobs-completed">[% bulk_job.total_completed_jobs %]</span>/<span class="jobs-total">[% bulk_job.total_jobs %]</span>
+      </li>
+      <li>[% loc("Failed") %]: <span class="jobs-failed">[% bulk_job.total_failed_jobs %]</span></li>
+      <li>[% loc("Started") %]: <span class="job-started">[% bulk_job.created_locale(current_locale_code) %]</span></li>
+      <li class="bulk-job-done" [% UNLESS bulk_job.completed %] style="display:none" [% END %]>
+        <strong class="bulk-job-is-completed">[% loc("Completed") %]</strong>:
+        <span class="job-completed">[% bulk_job.completed_locale(current_locale_code) %]</span>
+      </li>
+      <li class="bulk-job-eta" [% IF bulk_job.completed %] style="display:none" [% END %]>
+        <strong>[% loc("ETA") %]</strong>:
+        <span class="job-eta">[% bulk_job.eta_locale(current_locale_code) || loc("N/A") %]</span>
+      </li>
+    </ul>
+  </div>
+</div>
+[% IF bulk_job.status == 'active' %]
+<div class="row">
+  <div class="col-xs-4">
+    <div class="cancel-bulk-job-button center">
+      <form action="[% c.uri_for_action('/tasks/rebuild') %]" method="POST">
+        <button type="submit" class="btn btn-primary" name="cancel" value="1">
+          [% loc("Cancel") %]
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+[% END %]
+<hr />
+

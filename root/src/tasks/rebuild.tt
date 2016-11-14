@@ -1,0 +1,34 @@
+<div class="well">
+  <p>
+      [% loc('If you edit some format options, like fonts or paper
+      dimensions, you may want to rebuild the generated files') %]
+  </p>
+  <p>
+    [% loc("If you request a rebuild when one is ongoing, you will
+    abort the current one.") %]
+  </p>
+</div>
+
+<div class="center">
+  <p>
+    [% loc('Current time')%]: [% now_datetime %]
+  </p>
+  [% IF last_job %]
+  <p>
+    [% loc('Last successful rebuild') %]:
+    <a href="[% c.uri_for_action('/tasks/show_bulk_job', [ last_job.bulk_job_id ]) %]">
+      [% last_job.completed_locale(current_locale_code) %]
+    </a>
+  </p>
+  [% END %]
+  <form action="[% c.uri_for_action('/tasks/rebuild') %]" method="POST">
+    <button type="submit" class="btn btn-primary" name="rebuild" value="1">
+      [% loc("Rebuild") %]
+    </button>
+  </form>
+</div>
+
+[% FOREACH bulk_job IN bulk_jobs %]
+[% INCLUDE 'include/bulk_job.tt' %]
+[% END %]
+

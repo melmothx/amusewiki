@@ -851,7 +851,7 @@ sub to_json {
     my ($data) = @_;
     my $json;
     try {
-        $json = JSON::MaybeXS->new(ascii => 1, pretty => 1)->encode($data);
+        $json = JSON::MaybeXS->new(ascii => 1, pretty => 0)->encode($data);
     } catch {
         my $error = $_;
         Dlog_error { "$error: Failed to encode into json $_" } $data;

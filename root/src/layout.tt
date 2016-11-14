@@ -419,14 +419,24 @@
                   </a>
                 </li>
                 [%# and these are for root %]
-                [% IF c.check_user_roles('admin') %]
+                [% IF c.check_any_user_role('admin', 'root') %]
                 <li>
                   <a href="[% c.uri_for_action('/user/site_config') %]">
                     [% loc('Edit site configuration') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/tasks/rebuild') %]">
+                    [% loc('Rebuild all generated files') %]
+                  </a>
+                </li>
                 [% END %]
                 [% IF c.check_user_roles('root') %]
+                <li>
+                  <a href="[% c.uri_for_action('/admin/edit', site.id) %]">
+                    [% loc('Edit full site configuration') %]
+                  </a>
+                </li>
                 <li>
                   <a href="[% c.uri_for_action('/admin/show_users') %]">
                     [% loc('Users') %]
@@ -435,11 +445,6 @@
                 <li>
                   <a href="[% c.uri_for_action('/admin/list') %]">
                     [% loc('Sites') %]
-                  </a>
-                </li>
-                <li>
-                  <a href="[% c.uri_for_action('/admin/edit', site.id) %]">
-                    [% loc('Edit site configuration') %]
                   </a>
                 </li>
                 <li>

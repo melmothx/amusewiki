@@ -4,7 +4,8 @@ use strict;
 use warnings;
 
 use MooseX::MethodAttributes::Role;
-requires qw/base/;
+requires 'base';
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 
 use AmuseWikiFarm::Utils::Amuse qw//;
 use HTML::Entities qw//;
@@ -156,6 +157,21 @@ sub edit :Chained('match') PathPart('edit') :Args(0) {
     my $text = $c->stash->{text};
     $c->response->redirect($c->uri_for_action('/edit/revs', [$text->f_class,
                                                              $text->uri]));
+}
+
+sub rebuild :Chained('match') PathPart('rebuild') :Args(0) {
+    my ($self, $c) = @_;
+    log_debug { "In rebuild" };
+    die unless $self->check_login($c);
+    # please note that here we rebuild the text even if it's not a
+    # post action. It could be argued that an action like this needs a
+    # post. However, a get lets us trigger the recompile on specials
+    # as well, where the form is not visible. Also, here the data is
+    # not really changed. Let's consider it more a cache rebuilding.
+    my $text = $c->stash->{text};
+    my $job = $c->stash->{site}->jobs->rebuild_add({ id => $text->id });
+    $c->res->redirect($c->uri_for_action('/tasks/display',
+                                         [ $job->id ]));
 }
 
 1;
