@@ -5,7 +5,7 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 41;
+use Test::More tests => 44;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -77,6 +77,12 @@ ok(!$site->bulk_jobs->count, "No bulk jobs so far");
 $site->rebuild_formats;
 is($site->bulk_jobs->count, 1, "bulk job created");
 my $bulk = $site->bulk_jobs->first;
+
+$mech->get_ok('/tasks/rebuild/' . $bulk->bulk_job_id . '/show');
+$mech->get_ok('/tasks/rebuild/' . $bulk->bulk_job_id . '/ajax');
+diag $mech->content;
+$mech->get_ok('/tasks/rebuild');
+
 ok $bulk->jobs->count, "bulk job has jobs";
 ok !$bulk->completed, "job is not completed";
 {
