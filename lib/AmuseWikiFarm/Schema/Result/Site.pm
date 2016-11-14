@@ -3197,6 +3197,7 @@ sub rebuild_formats {
                                      task => 'Rebuild',
                                      created => $now,
                                      username => $username,
+                                     status => 'active',
                                      jobs => [ map {
                                          +{
                                            payload => AmuseWikiFarm::Utils::Amuse::to_json($_),

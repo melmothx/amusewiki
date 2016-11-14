@@ -225,7 +225,8 @@ sub eta_locale {
 sub check_and_set_complete {
     my $self = shift;
     log_debug { "check if the jobs are complete" };
-    if (!$self->jobs->unfinished->count) {
+    $self->discard_changes; # ensure it's refetch
+    if (!$self->completed && !$self->jobs->unfinished->count) {
         log_debug { "no unfinished jobs" };
         $self->update({
                        completed => DateTime->now,
@@ -236,8 +237,9 @@ sub check_and_set_complete {
 
 sub abort_jobs {
     my $self = shift;
-    log_debug { "aborting job" };
+    return if $self->completed;
     my $guard = $self->result_source->schema->txn_scope_guard;
+    log_debug { "aborting job" };
     $self->jobs->pending->update({
                                   status => 'completed',
                                   completed => DateTime->now,

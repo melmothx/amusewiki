@@ -24,7 +24,7 @@ Deny access to not-human
 =cut
 
 use DateTime;
-
+use AmuseWikiFarm::Log::Contextual;
 
 sub root :Chained('/site_human_required') :PathPart('tasks') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
@@ -87,21 +87,20 @@ sub bulks :Chained('root') :PathPart('rebuild') :CaptureArgs(0) {
 
 sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $rs = delete $c->stash->{bulk_jobs};
+    my $rs = $c->stash->{bulk_jobs}->active_bulk_jobs;
+    my $all = delete $c->stash->{bulk_jobs};
     if ($c->request->body_params->{rebuild}) {
-        $rs->delete_all;
+        $rs->abort_all;
         my $job = $c->stash->{site}->rebuild_formats;
         $c->response->redirect($c->uri_for_action('/tasks/show_bulk_job', [ $job->bulk_job_id ]));
         $c->detach;
         return;
     }
     elsif ($c->request->body_params->{cancel}) {
-        $rs->delete_all;
-        $c->stash(bulk_jobs => []);
+        $rs->abort_all;
     }
-    else {
-        $c->stash(bulk_jobs => [ $rs->all ]);
-    }
+    $c->stash(bulk_jobs => [ $rs->all ],
+              last_job => $all->completed_jobs->first);
 }
 
 sub get_bulk_job :Chained('bulks') :PathPart('') :CaptureArgs(1) {
@@ -138,6 +137,7 @@ sub show_bulk_job_ajax :Chained('get_bulk_job') :PathPart('ajax') :Args(0) {
                 total_jobs => $job->total_jobs,
                 started => $job->created_locale($locale),
                 eta => $job->eta_locale($locale) || $c->loc("N/A"),
+                status => $job->status,
                );
     $c->stash(json => {
                        job => \%data,

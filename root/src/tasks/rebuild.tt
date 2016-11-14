@@ -9,21 +9,26 @@
   </p>
 </div>
 
-<p>
-  [% loc('Current time')%]: [% now_datetime %]
-</p>
+<div class="center">
+  <p>
+    [% loc('Current time')%]: [% now_datetime %]
+  </p>
+  [% IF last_job %]
+  <p>
+    [% loc('Last successful rebuild') %]:
+    <a href="[% c.uri_for_action('/tasks/show_bulk_job', [ last_job.bulk_job_id ]) %]">
+      [% last_job.completed_locale(current_locale_code) %]
+    </a>
+  </p>
+  [% END %]
+  <form action="[% c.uri_for_action('/tasks/rebuild') %]" method="POST">
+    <button type="submit" class="btn btn-primary" name="rebuild" value="1">
+      [% loc("Rebuild") %]
+    </button>
+  </form>
+</div>
 
 [% FOREACH bulk_job IN bulk_jobs %]
 [% INCLUDE 'include/bulk_job.tt' %]
 [% END %]
 
-<div class="center">
-  <form action="" method="POST">
-    <button type="submit" class="btn btn-primary" name="rebuild" value="1">
-      [% loc("Rebuild") %]
-    </button>
-    <button type="submit" class="btn btn-primary" name="cancel" value="1">
-      [% loc("Cancel") %]
-    </button>
-  </form>
-</div>
