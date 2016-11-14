@@ -69,6 +69,12 @@ __PACKAGE__->table("bulk_job");
   is_nullable: 0
   size: 16
 
+=head2 status
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 32
+
 =head2 username
 
   data_type: 'varchar'
@@ -88,6 +94,8 @@ __PACKAGE__->add_columns(
   { data_type => "datetime", is_nullable => 1 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
+  "status",
+  { data_type => "varchar", is_nullable => 1, size => 32 },
   "username",
   { data_type => "varchar", is_nullable => 1, size => 255 },
 );
@@ -137,8 +145,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-12 17:15:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:beXju8kw3LlA0w1doMmDsQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-14 10:57:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wP56pV++VtTIxj+i5Xg75w
 
 use DateTime;
 

@@ -175,6 +175,7 @@ CREATE TABLE bulk_job (
        completed DATETIME,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
+       status    VARCHAR(32),
        username  VARCHAR(255)
 );
 

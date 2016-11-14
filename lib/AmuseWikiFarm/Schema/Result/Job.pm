@@ -206,6 +206,12 @@ __PACKAGE__->belongs_to(
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-12 17:15:55
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:zDo3a64QZMqe/iyGqLzopw
 
+sub sqlt_deploy_hook {
+    my ($self, $sqlt_table) = @_;
+    $sqlt_table->add_index(name => 'job_status_index', fields => ['status']);
+}
+
+
 use Cwd;
 use File::Spec;
 use File::Copy qw/copy move/;
