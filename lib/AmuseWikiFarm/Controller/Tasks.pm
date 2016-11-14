@@ -115,6 +115,7 @@ sub get_bulk_job :Chained('bulks') :PathPart('') :CaptureArgs(1) {
                                             {
                                              columns => [qw/id produced status completed errors/],
                                              result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                                             order_by => [qw/id/],
                                             })->all]);
             return;
         }
