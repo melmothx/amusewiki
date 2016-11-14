@@ -149,8 +149,10 @@ sub is_completed {
 
 before delete => sub {
     my $self = shift;
-    # remove the pending jobs
-    $self->jobs->pending->delete;
+    # we delete them manually to trigger the log cleanup. If we let
+    # this happen with cascade, we lose the trigger. However, deleting
+    # large bulks becomes very slow.
+    $self->jobs->delete_all;
 };
 
 sub completed_locale {

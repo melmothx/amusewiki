@@ -95,3 +95,4 @@ $bulk->jobs->first->update({ status => 'completed' });
 $bulk->discard_changes;
 ok ($bulk->completed);
 ok $bulk->is_completed, "job is completed when all the jobs are completed or failed";
+$bulk->delete;
