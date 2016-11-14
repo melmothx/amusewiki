@@ -82,7 +82,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
         $mech->content_contains('first-test');
         diag $mech->content;
         $mech->get_ok("/search?query=uri:$uri&fmt=json");
-        is $mech->content, "[]\n", "uri has been removed, no exception";
+        is $mech->content, "[]", "uri has been removed, no exception";
         $mech->get_ok("/search?query=uri:$uri");
         $mech->content_lacks(q{id="results"}) or diag $mech->content;
     }
