@@ -149,11 +149,7 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wP56pV++VtTIxj+i5Xg75w
 
 use DateTime;
-
-sub is_completed {
-    my $self = shift;
-    return !$self->jobs->unfinished->count;
-}
+use AmuseWikiFarm::Log::Contextual;
 
 before delete => sub {
     my $self = shift;
@@ -226,6 +222,33 @@ sub eta_locale {
     return $self->_format_dt_locale($self->eta, $locale)
 }
 
+sub check_and_set_complete {
+    my $self = shift;
+    log_debug { "check if the jobs are complete" };
+    if (!$self->jobs->unfinished->count) {
+        log_debug { "no unfinished jobs" };
+        $self->update({
+                       completed => DateTime->now,
+                       status => 'completed',
+                      });
+    }
+}
+
+sub abort_jobs {
+    my $self = shift;
+    log_debug { "aborting job" };
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->jobs->pending->update({
+                                  status => 'completed',
+                                  completed => DateTime->now,
+                                  errors => 'Bulk job aborted',
+                                 });
+    $self->update({
+                   status => 'aborted',
+                   completed => DateTime->now,
+                  });
+    $guard->commit;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

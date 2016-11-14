@@ -5,7 +5,7 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 38;
+use Test::More tests => 41;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -78,7 +78,7 @@ $site->rebuild_formats;
 is($site->bulk_jobs->count, 1, "bulk job created");
 my $bulk = $site->bulk_jobs->first;
 ok $bulk->jobs->count, "bulk job has jobs";
-ok !$bulk->is_completed, "job is not completed";
+ok !$bulk->completed, "job is not completed";
 {
     my $test_job = $bulk->jobs->first;
     ok defined($test_job->bulk_job_id);
@@ -90,10 +90,16 @@ ok !$bulk->is_completed, "job is not completed";
 
 $bulk->jobs->update({ status => 'failed' });
 $bulk->discard_changes;
-ok (!$bulk->completed);
+ok (!$bulk->completed, "completed not set because of direct db crushing");
 $bulk->jobs->first->update({ status => 'completed' });
 $bulk->discard_changes;
 ok ($bulk->completed);
-ok $bulk->is_completed, "job is completed when all the jobs are completed or failed";
+is $bulk->status, 'completed', "job is completed when all the jobs are completed or failed";
 $bulk->delete;
+
+$bulk = $site->rebuild_formats;
+$bulk->abort_jobs;
+ok ($bulk->completed);
+ok (!$bulk->jobs->pending->count, "No pending jobs after aborting");
+ok $bulk->jobs->search({ errors => 'Bulk job aborted', status => 'completed' })->count;
 $site->jobs->delete_all;

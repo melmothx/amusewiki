@@ -691,9 +691,7 @@ before delete => sub {
 after update => sub {
     my $self = shift;
     if (my $parent = $self->bulk_job) {
-        if ($parent->is_completed) {
-            $parent->update({ completed => DateTime->now });
-        }
+        $parent->check_and_set_complete;
     }
 };
 
