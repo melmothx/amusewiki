@@ -172,6 +172,7 @@ CREATE TABLE bulk_job (
        bulk_job_id INTEGER PRIMARY KEY AUTOINCREMENT,
        task      VARCHAR(32),
        created   DATETIME NOT NULL,
+       started   DATETIME,
        completed DATETIME,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                           ON DELETE CASCADE ON UPDATE CASCADE,
@@ -196,6 +197,8 @@ CREATE TABLE job (
        username  VARCHAR(255),
        errors    TEXT
 );
+
+CREATE INDEX job_status_index ON job (status);
 
 CREATE TABLE job_file (
        filename VARCHAR(255) NOT NULL PRIMARY KEY,

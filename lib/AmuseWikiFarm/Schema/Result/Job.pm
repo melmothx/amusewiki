@@ -690,6 +690,8 @@ before delete => sub {
 
 after update => sub {
     my $self = shift;
+    # on dispatching, this is called first to set the taken status,
+    # and after the dispatching to set the final status.
     if (my $parent = $self->bulk_job) {
         $parent->check_and_set_complete;
     }

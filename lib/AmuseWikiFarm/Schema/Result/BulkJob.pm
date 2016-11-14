@@ -57,6 +57,11 @@ __PACKAGE__->table("bulk_job");
   data_type: 'datetime'
   is_nullable: 0
 
+=head2 started
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =head2 completed
 
   data_type: 'datetime'
@@ -90,6 +95,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "created",
   { data_type => "datetime", is_nullable => 0 },
+  "started",
+  { data_type => "datetime", is_nullable => 1 },
   "completed",
   { data_type => "datetime", is_nullable => 1 },
   "site_id",
@@ -145,8 +152,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-14 10:57:05
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wP56pV++VtTIxj+i5Xg75w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-14 18:30:45
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ab2lccdpOT5XpTiShQF7lg
 
 use DateTime;
 use AmuseWikiFarm::Log::Contextual;
