@@ -72,7 +72,7 @@ $mech->content_contains('Created ' . $text->uri . '.pdf');
 $mech->get_ok($text->full_uri . '.pdf');
 system($init, 'stop');
 
-$site->bulk_jobs->delete;
+$site->bulk_jobs->delete_all;
 ok(!$site->bulk_jobs->count, "No bulk jobs so far");
 $site->rebuild_formats;
 is($site->bulk_jobs->count, 1, "bulk job created");
@@ -96,3 +96,4 @@ $bulk->discard_changes;
 ok ($bulk->completed);
 ok $bulk->is_completed, "job is completed when all the jobs are completed or failed";
 $bulk->delete;
+$site->jobs->delete_all;
