@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-08-05 14:12+0200\n"
+"PO-Revision-Date: 2016-11-19 19:30+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -249,7 +249,7 @@ msgid "Authors"
 msgstr "Автори"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Листа на автори и теми"
 
 msgid "Authors for indexing"
 msgstr ""
@@ -367,7 +367,7 @@ msgstr "Затвори"
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
-msgstr ""
+msgstr "Ширина на левата страна на страницата за уредување текстови"
 
 msgid "Commit"
 msgstr "Изврши"
@@ -514,7 +514,7 @@ msgid "Edit"
 msgstr "Уреди"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Поставки за уредување текстови"
 
 #. (esite.id)
 msgid "Edit site %1"
@@ -551,7 +551,7 @@ msgid "Emails do not match"
 msgstr "E-mail-овите не се поклопуваат"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Вклучи ги фонтовите во EPUB датотеката"
 
 msgid "Erase this revision"
 msgstr "Избриши ја измената"
@@ -1059,7 +1059,7 @@ msgid "Load"
 msgstr "Користи"
 
 msgid "Load another session by token"
-msgstr ""
+msgstr "Вчитај друга сесија со код"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
@@ -1548,7 +1548,7 @@ msgid "Preview"
 msgstr "Преглед"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Висина на прозорчето за прегледи (во пиксели)"
 
 msgid "Previous"
 msgstr "Претходно"
@@ -1784,25 +1784,25 @@ msgid "Separate header fields"
 msgstr "Одвојуваат делови од заглавието"
 
 msgid "Session sharing"
-msgstr ""
+msgstr "Сподели ја сесијата"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Стави иден датум доколку сакаш да го одложиш објавувањето."
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Покажи го резимето за обликување на текстот"
 
 msgid "Show differences in other tab"
 msgstr "Покажи ги разликите во друго јазиче"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Покажи ги филтрите"
 
 msgid "Show options"
 msgstr "Покажи ги опциите"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Покажи ги разликите во друг прозорец"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Прикажи ги информациите за текстот на дното од страницата"
@@ -2252,7 +2252,7 @@ msgid "UTC"
 msgstr "UTC"
 
 msgid "Unable to load the bookbuilder session"
-msgstr ""
+msgstr "Вчитувањето на сесијата не успеа"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "Анонимен PDF, без име на сајтот и без лого"
@@ -2267,7 +2267,7 @@ msgid "Unique ID for the text"
 msgstr "Единствен ID за текстот"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Неограничено"
 
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
@@ -2352,6 +2352,10 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Користејќи го овој код можеш да ги вчиташ поставките и листата текстови кои\n"
+"сега се наоѓаат во збирка на друг компјутер или да ги делиш со друга "
+"личност.\n"
+"Доволно е да се препише во следниот формулар."
 
 msgid "Verbatim block"
 msgstr "Предформатиран дел"
@@ -2371,6 +2375,9 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"Кога почнуваш да составуваш збирка, накрајот од страницата на збирката\n"
+"ќе има еден код за споделување на сесијата. Можеш да го вчиташ од друг\n"
+"компјутер и таму да продолжиш."
 
 msgid "Where does this text come from?"
 msgstr "Од каде е овој текст?"
@@ -2484,6 +2491,8 @@ msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
+"Лозинката беше пратена користејќи несигурна врска. Користи HTTP,\n"
+"пријави се и веднаш промени ја лозинката. Тоа не требаше да се случи."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2500,7 +2509,7 @@ msgid "Your chapter here..."
 msgstr "Твоето поглавје"
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Кодот на твојата збирка е:"
 
 msgid "Your email"
 msgstr "Твојот мејл"
