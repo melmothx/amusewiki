@@ -233,7 +233,11 @@ sub check_and_set_complete {
     my $self = shift;
     log_debug { "check if the jobs are complete" };
     $self->discard_changes; # ensure it's refetch
-    if (!$self->completed && !$self->jobs->unfinished->count) {
+    if (!$self->started) {
+        # first call, set started
+        $self->update({ started => DateTime->now });
+    }
+    elsif (!$self->completed && !$self->jobs->unfinished->count) {
         log_debug { "no unfinished jobs" };
         $self->update({
                        completed => DateTime->now,
