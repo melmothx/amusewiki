@@ -11,5 +11,14 @@ if [ -f /usr/share/dbconfig-common/dpkg/postrm ]; then
 	dbc_go amusewiki $@
 fi
 
+my_dbc_config="/var/lib/amusewiki/dbinfo.conf"
+if [ "$1" = "purge" ]; then
+    rm -f $my_dbc_config
+    if which ucf >/dev/null 2>&1; then
+        ucf --purge $my_dbc_config
+        ucfr --purge amusewiki $my_dbc_config
+    fi
+fi
+
 #DEBHELPER#
 
