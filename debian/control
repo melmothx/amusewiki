@@ -93,6 +93,9 @@ Homepage: https://amusewiki.org
 Package: amusewiki
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends},
+ dbconfig-common,
+ postgresql | mysql-server | sqlite3,
+ postgresql-client  | mysql-client | sqlite3,
  adduser,
  sudo,
  libbytes-random-secure-perl,
@@ -118,7 +121,7 @@ Depends: ${misc:Depends}, ${perl:Depends},
  libdatetime-format-sqlite-perl,
  libdatetime-format-strptime-perl,
  libdatetime-perl,
- libdbd-sqlite3-perl,
+ libdbd-sqlite3-perl, libdbd-mysql-perl, libdbd-pg-perl,
  libdbix-class-deploymenthandler-perl,
  libdbix-class-helpers-perl,
  libdbix-class-passphrasecolumn-perl,
