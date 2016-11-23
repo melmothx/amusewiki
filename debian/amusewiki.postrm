@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+#set -x
+
+if [ -f /usr/share/debconf/confmodule ]; then
+	. /usr/share/debconf/confmodule
+fi
+if [ -f /usr/share/dbconfig-common/dpkg/postrm ]; then
+	. /usr/share/dbconfig-common/dpkg/postrm
+	dbc_go amusewiki $@
+fi
+
+#DEBHELPER#
+

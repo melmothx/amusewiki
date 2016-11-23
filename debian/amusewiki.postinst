@@ -2,6 +2,10 @@
 
 set -e
 
+. /usr/share/debconf/confmodule
+. /usr/share/dbconfig-common/dpkg/postinst
+dbc_go amusewiki $@
+
 
 # setup the database
 dbic_file=/var/lib/amusewiki/dbic.yaml
