@@ -208,21 +208,21 @@ sub eta {
     if (my $done = $self->completed) {
         return $done;
     }
-    if (my $finished = $self->jobs->finished_jobs->count) {
-        # extremely verbose but clear, hopefully
-        my $total = $self->total_jobs;
-        my $started = $self->created->clone;
-        my $to_go = $total - $finished;
-        my $now_epoch = time();
-        my $started_epoch = $started->epoch;
-        my $elapsed = $now_epoch - $started_epoch;
-        my $average = $elapsed / $finished;
-        my $expected = $to_go * $average;
-        return DateTime->now->add(seconds => $expected);
+    if ($self->started) {
+        if (my $finished = $self->jobs->finished_jobs->count) {
+            # extremely verbose but clear, hopefully
+            my $total = $self->total_jobs;
+            my $started = $self->started->clone;
+            my $to_go = $total - $finished;
+            my $now_epoch = time();
+            my $started_epoch = $started->epoch;
+            my $elapsed = $now_epoch - $started_epoch;
+            my $average = $elapsed / $finished;
+            my $expected = $to_go * $average;
+            return DateTime->now->add(seconds => $expected);
+        }
     }
-    else {
-        return undef;
-    }
+    return undef;
 }
 sub eta_locale {
     my ($self, $locale) = @_;

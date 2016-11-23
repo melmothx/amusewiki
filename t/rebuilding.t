@@ -5,7 +5,7 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 50;
+use Test::More tests => 52;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -93,6 +93,9 @@ ok !$bulk->completed, "job is not completed";
     diag $test_job->logs;
     ok $test_job->logs;
 }
+$bulk->discard_changes;
+ok $bulk->eta;
+ok $bulk->eta_locale;
 
 $bulk->jobs->update({ status => 'failed' });
 $bulk->discard_changes;
