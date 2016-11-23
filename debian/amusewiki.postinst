@@ -5,6 +5,7 @@ set -e
 dbc_generate_include="sh:/var/lib/amusewiki/dbinfo.conf"
 dbc_generate_include_owner="amusewiki"
 dbc_generate_include_perms="0600"
+dbc_first_version="1.994"
 
 . /usr/share/debconf/confmodule
 . /usr/share/dbconfig-common/dpkg/postinst
