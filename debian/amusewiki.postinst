@@ -1,11 +1,15 @@
 #!/bin/sh
 
 set -e
-
-dbc_generate_include="sh:/var/lib/amusewiki/dbinfo.conf"
+amusewiki_dbc_include_file="/var/lib/amusewiki/dbinfo.conf"
+dbc_generate_include="sh:$amusewiki_dbc_include_file"
 dbc_generate_include_owner="amusewiki"
 dbc_generate_include_perms="0600"
 dbc_first_version="1.994"
+dbc_mysql_createdb_encoding="utf8"
+dbc_dbfile_owner="amusewiki"
+dbc_dbfile_perms="0600"
+
 
 . /usr/share/debconf/confmodule
 . /usr/share/dbconfig-common/dpkg/postinst
@@ -15,14 +19,62 @@ dbc_go amusewiki $@
 # setup the database
 dbic_file=/var/lib/amusewiki/dbic.yaml
 
+# if dbic file is missing, load generate it from the include file
 if [ ! -f $dbic_file ]; then
-    cp /usr/share/doc/amusewiki/dbic.yaml.sqlite.example $dbic_file;
+    if [ -f "$amusewiki_dbc_include_file" ]; then
+        (
+            . $amusewiki_dbc_include_file
+            case $dbtype in
+                pgsql)
+                    cat <<EOF > $dbic_file
+
+amuse:
+  dsn: 'dbi:Pg:host=localhost;database=$dbname'
+  user: '$dbuser'
+  password: '$dbpass'
+  AutoCommit: 1
+  RaiseError: 1
+  quote_names: 1
+EOF
+                    ;;
+                mysql)
+                    cat <<EOF > $dbic_file
+amuse:
+  dsn: 'dbi:mysql:$dbname'
+  user: '$dbuser'
+  password: '$dbpass'
+  AutoCommit: 1
+  RaiseError: 1
+  mysql_enable_utf8: 1
+  quote_names: 1
+EOF
+                    ;;
+                sqlite3)
+                    cat <<EOF > $dbic_file
+amuse:
+  dsn: 'dbi:SQLite:$basepath/$dbname'
+  user: ''
+  password: ''
+  on_connect_do: 'PRAGMA foreign_keys = ON'
+  AutoCommit: 1
+  RaiseError: 1
+  sqlite_unicode: 1
+  quote_names: 1
+EOF
+                    ;;
+                *)
+                    echo "Unsupported dbtype $dbtype"
+                    exit 2
+                    ;;
+            esac
+        )
+    fi
+
+    if [ ! -f $dbic_file ]; then
+        cp /usr/share/doc/amusewiki/dbic.yaml.sqlite.example $dbic_file;
+    fi
     chown amusewiki:amusewiki $dbic_file;
     chmod 600 $dbic_file;
-fi
-
-
-if [ ! -d "/var/lib/amusewiki/repo/amw" ]; then
     amusewiki create-doc-site
 fi
 
