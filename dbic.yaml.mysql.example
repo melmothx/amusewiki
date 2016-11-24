@@ -5,4 +5,4 @@ amuse:
   AutoCommit: 1
   RaiseError: 1
   mysql_enable_utf8: 1
-
+  quote_names: 1
