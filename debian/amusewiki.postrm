@@ -12,8 +12,10 @@ if [ -f /usr/share/dbconfig-common/dpkg/postrm ]; then
 fi
 
 my_dbc_config="/var/lib/amusewiki/dbinfo.conf"
+dbic_config="/var/lib/amusewiki/dbic.yaml"
 if [ "$1" = "purge" ]; then
     rm -f $my_dbc_config
+    mv $dbic_config $dbic_config.purged
     if which ucf >/dev/null 2>&1; then
         ucf --purge $my_dbc_config
         ucfr --purge amusewiki $my_dbc_config
