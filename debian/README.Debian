@@ -29,12 +29,21 @@ and editing them.
 The configuration file for the web application is installed in
 /etc/amusewiki.conf
 
-Supported databases are sqlite, postgresql and mysql.
+Supported databases are sqlite, postgresql and mysql, choice is
+prompted by dbconfig-common and it's highly recommended to use the
+managed installation.
 
-By default amusewiki uses an sqlite database. This is not recommended
-in production.
+Changing database at later stage is doable, but things could get messy
+if you want to carry over site settings, users, queues, etc.
+
+Archive integrity, however, is guaranteed, because they don't reside
+in the database.
 
 * HOW TO CHANGE THE DATABASE ENGINE
+
+Empty the queue of the sites, either publishing or trashing pending
+revisions. Ensure the job queue is empty via the admin interface.
+You're going to lose them.
 
 Stop the application.
 
@@ -178,4 +187,4 @@ If you had the git-daemon enabled:
 If something goes wrong, you can revert to the bootstrapping tecnique
 described above.
 
- -- Marco Pessotto <melmothx@gmail.com>, Sat,  3 Sep 2016 15:44:32 +0200
+ -- Marco Pessotto <melmothx@gmail.com>, Thu, 24 Nov 2016 16:35:15 +0100
