@@ -3,4 +3,4 @@ LOCALIZATION.txt
 script/sync-remote-archive.pl
 *.example
 doc/amusewiki-dbconfig-import.pl
-
+INSTALL.txt
