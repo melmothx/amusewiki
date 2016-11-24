@@ -43,6 +43,7 @@ and provide a dbic.yaml file with something like this:
 our $VERSION = 30;
 
 __PACKAGE__->load_components('Schema::Config');
+__PACKAGE__->load_components('Helper::Schema::QuoteNames');
 
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
 1;
