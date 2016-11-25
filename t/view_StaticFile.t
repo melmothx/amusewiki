@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 474;
+use Test::More tests => 476;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{CATALYST_DEBUG} = 0;
@@ -41,6 +41,10 @@ foreach my $f ('/special/index',
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "blog.amusewiki.org");
+
+$mech->get_ok('/category/topic/i-x-myfile.png');
+$mech->get_ok('/category/topic/a-t-myfile.pdf');
+
 
 foreach my $get (sort keys %files) {
     $mech->get_ok($get);

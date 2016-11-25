@@ -215,20 +215,29 @@ sub not_found :Private {
             $c->detach();
             return;
         }
+        # if looks like an image, handle it.
+        if ($c->request->path =~ m/([0-9a-z-]+\.(jpe?g|png|pdf))\z/) {
+            my $name = $1;
+            if (my $att = $site->attachments->by_uri($name)) {
+                $c->stash(serve_static_file => $att->f_full_path_name);
+                $c->detach($c->view('StaticFile'));
+            }
+            else {
+                $c->response->status(404);
+                my $replacement = $c->path_to(qw/root static images not-found.png/)->stringify;
+                if (-f $replacement) {
+                    my $fh = IO::File->new($replacement, 'r');
+                    $c->response->headers->content_type('image/png');
+                    $c->response->body($fh);
+                }
+                else {
+                    $c->response->body('Not found');
+                }
+            }
+            return;
+        }
     }
     $c->response->status(404);
-    if ($c->request->path =~ m/\.(jpe?g|png|pdf)\z/) {
-        my $replacement = $c->path_to(qw/root static images not-found.png/)->stringify;
-        if (-f $replacement) {
-            my $fh = IO::File->new($replacement, 'r');
-            $c->response->headers->content_type('image/png');
-            $c->response->body($fh);
-        }
-        else {
-            $c->response->body('Not found');
-        }
-        return;
-    }
     log_info {
         $c->request->uri
           . " not found by " . ($c->request->user_agent || '')
@@ -363,20 +372,9 @@ sub catch_all :Chained('/site') :PathPart('') Args {
     my ($self, $c, $try) = @_;
     my $fallback;
     if ($try) {
+        my $try_uri = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($try);
+        my $query = { uri => $try_uri };
         if (my $site = $c->stash->{site}) {
-            # EXPERIMENTAL, unsure if there are conflicts. On the
-            # other hand, static files have '/static/' prefix, and the
-            # uris here have the suffix, which is mangled by the
-            # naming_algo, so looks fine.
-            if ($try =~ m/\.(jpe?g|png|pdf)\z/) {
-                if (my $att = $site->attachments->by_uri($try)) {
-                    $c->stash(serve_static_file => $att->f_full_path_name);
-                    $c->detach($c->view('StaticFile'));
-                    return;
-                }
-            }
-            my $try_uri = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($try);
-            my $query = { uri => $try_uri };
             if (my $text = $site->titles->published_all
                 ->search($query)->first) {
                 $fallback = $text->full_uri;
