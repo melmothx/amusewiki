@@ -8,7 +8,8 @@ The package creates an user, amusewiki, which owns the repositories
 and runs the application. Its home is located at /var/lib/amusewiki.
 
 The package installs some amusewiki-* executables. They are all meant
-to be run by amusewiki in its home.
+to be run by amusewiki in its home. /usr/sbin/amusewiki wrapper is
+provided to safely run those command as root.
 
 No administration task is usually required, so you can safely ignore
 them if you don't have to, with two exceptions: amusewiki-clone-site
@@ -30,16 +31,26 @@ The configuration file for the web application is installed in
 /etc/amusewiki.conf
 
 Supported databases are sqlite, postgresql and mysql, choice is
-prompted by dbconfig-common and it's highly recommended to use the
-managed installation.
+prompted by dbconfig-common and it's highly recommended to think ahead
+and use the managed installation. Using postgresql is the safe and
+recommended choice.
+
+The credentials used by the application reside in
+/var/lib/amusewiki/dbic.yaml. Please note that dbconfig-common is used
+only to create and remove the database. If you run dpkg-reconfigure to
+change database, you need to remove this file, prompting the
+application to bootstrap it again.
 
 Changing database at later stage is doable, but things could get messy
 if you want to carry over site settings, users, queues, etc.
 
+So, if you want to change engine ensure you have an empty publish
+queue over all the sites you manage.
+
 Archive integrity, however, is guaranteed, because they don't reside
 in the database.
 
-* HOW TO CHANGE THE DATABASE ENGINE
+* ADVANCED TOPIC: HOW TO CHANGE THE DATABASE ENGINE
 
 Empty the queue of the sites, either publishing or trashing pending
 revisions. Ensure the job queue is empty via the admin interface.
@@ -51,7 +62,7 @@ Stop the application.
 
 Login as amusewiki.
 
-# su - amusewiki
+# amusewiki shell
 
 Export the current sites:
 
@@ -94,7 +105,7 @@ Restart the app.
 
 # systemctl start amusewiki-*
 
-* HOW TO MIGRATE FROM A PLAIN INSTALLATION TO A PACKAGED INSTALLATION
+** ADVANCED TOPIC: HOW TO MIGRATE FROM A PLAIN INSTALLATION TO A PACKAGED INSTALLATION
 
 Here we assume to have a plain installation in /home/amuse/amusewiki
 (user: amuse) and we are going to install the debian package, keeping
@@ -187,4 +198,4 @@ If you had the git-daemon enabled:
 If something goes wrong, you can revert to the bootstrapping tecnique
 described above.
 
- -- Marco Pessotto <melmothx@gmail.com>, Thu, 24 Nov 2016 16:35:15 +0100
+ -- Marco Pessotto <melmothx@gmail.com>, Fri, 25 Nov 2016 11:10:05 +0100
