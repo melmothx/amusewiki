@@ -92,9 +92,6 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
     }
     elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
         log_debug { "Found attachment $canonical$append_ext" };
-        if ($name ne $canonical) {
-            log_warn { "Using $canonical instead of $name, shouldn't happen" };
-        }
         $c->stash(serve_static_file => $attach->f_full_path_name);
         $c->detach($c->view('StaticFile'));
         return;
