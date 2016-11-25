@@ -114,7 +114,7 @@ msgstr ""
 msgid "Add a cover image (PNG or JPG)"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:64 root/src/layout.tt:267 root/src/layout.tt:636
+#: lib/AmuseWikiFarm/Controller/Edit.pm:64 root/src/layout.tt:267 root/src/layout.tt:641
 msgid "Add a new text"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Author and title. If one side document: title."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:83 lib/AmuseWikiFarm/Controller/OPDS.pm:180 lib/AmuseWikiFarm/Controller/OPDS.pm:64 root/src/edit/preview.tt:25 root/src/layout.tt:219 root/src/layout.tt:615 root/src/text.tt:64
+#: lib/AmuseWikiFarm/Controller/Category.pm:83 lib/AmuseWikiFarm/Controller/OPDS.pm:180 lib/AmuseWikiFarm/Controller/OPDS.pm:64 root/src/edit/preview.tt:25 root/src/layout.tt:219 root/src/layout.tt:620 root/src/text.tt:64
 msgid "Authors"
 msgstr ""
 
@@ -323,7 +323,7 @@ msgstr ""
 msgid "Bold"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:36 root/src/layout.tt:467 root/src/layout.tt:471
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:36 root/src/layout.tt:472 root/src/layout.tt:476
 msgid "Bookbuilder"
 msgstr ""
 
@@ -343,6 +343,10 @@ msgstr ""
 msgid "CSS Theme"
 msgstr ""
 
+#: root/src/include/bulk_job.tt:31
+msgid "Cancel"
+msgstr ""
+
 #: root/src/admin/list.tt:21
 msgid "Canonical name"
 msgstr ""
@@ -355,7 +359,7 @@ msgstr ""
 msgid "Changes"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:50
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:55
 msgid "Changes applied"
 msgstr ""
 
@@ -420,7 +424,7 @@ msgstr ""
 msgid "Commit"
 msgstr ""
 
-#: root/src/admin/jobs.tt:120
+#: root/src/admin/jobs.tt:120 root/src/include/bulk_job.tt:15
 msgid "Completed"
 msgstr ""
 
@@ -440,7 +444,7 @@ msgstr ""
 msgid "Couldn't add the text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1173
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1188
 msgid "Couldn't automatically generate the uri!"
 msgstr ""
 
@@ -498,6 +502,10 @@ msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:107 root/src/publish/pending.tt:92
 msgid "Created new text"
+msgstr ""
+
+#: root/src/tasks/rebuild.tt:14
+msgid "Current time"
 msgstr ""
 
 #: root/src/bookbuilder/index.tt:117 root/src/edit/preview.tt:32 root/src/publish/pending.tt:22 root/src/text.tt:77
@@ -568,7 +576,7 @@ msgstr ""
 msgid "Do not enforce commit message"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:51 root/src/help/opds.tt:110
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:56 root/src/help/opds.tt:110
 msgid "Done"
 msgstr ""
 
@@ -588,8 +596,16 @@ msgstr ""
 msgid "EPUB (for mobile devices)"
 msgstr ""
 
+#: root/src/include/bulk_job.tt:19
+msgid "ETA"
+msgstr ""
+
 #: root/src/console/alias_display.tt:134 root/src/console/translations.tt:33
 msgid "Edit"
+msgstr ""
+
+#: root/src/layout.tt:437
+msgid "Edit full site configuration"
 msgstr ""
 
 #: root/src/admin/edit.tt:969 root/src/layout.tt:418 root/src/user/edit_options.tt:5
@@ -601,7 +617,7 @@ msgstr ""
 msgid "Edit site %1"
 msgstr ""
 
-#: root/src/layout.tt:425 root/src/layout.tt:442
+#: root/src/layout.tt:425
 msgid "Edit site configuration"
 msgstr ""
 
@@ -646,7 +662,7 @@ msgstr ""
 msgid "Erase this revision"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1229
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1244
 msgid "Error converting the upload file. Is it an HTML file?"
 msgstr ""
 
@@ -654,7 +670,7 @@ msgstr ""
 msgid "Error sending mail!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1245
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1260
 msgid "Error while converting the HTML. Sorry."
 msgstr ""
 
@@ -688,6 +704,10 @@ msgstr ""
 
 #: root/src/console/alias_display.tt:91
 msgid "Existing redirections"
+msgstr ""
+
+#: root/src/include/bulk_job.tt:12
+msgid "Failed"
 msgstr ""
 
 #. ("$name $url")
@@ -989,8 +1009,20 @@ msgstr ""
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
+#: root/src/admin/edit.tt:1105 root/src/tasks/rebuild.tt:3
+msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
 #: root/src/edit/newtext.tt:177
 msgid "If you have a file in .doc or .odt, you can easily convert it saving it as HTML"
+msgstr ""
+
+#: root/src/tasks/rebuild.tt:7
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
 msgstr ""
 
 #: root/src/edit/edit.tt:99
@@ -1103,7 +1135,7 @@ msgstr ""
 msgid "Job not found"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:149 root/src/layout.tt:447
+#: lib/AmuseWikiFarm/Controller/Admin.pm:149 root/src/layout.tt:452
 msgid "Jobs"
 msgstr ""
 
@@ -1151,11 +1183,15 @@ msgstr ""
 msgid "Languages supported"
 msgstr ""
 
+#: root/src/tasks/rebuild.tt:18
+msgid "Last successful rebuild"
+msgstr ""
+
 #: root/src/edit/revs.tt:16
 msgid "Last updated"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Latest.pm:51 lib/AmuseWikiFarm/Controller/OPDS.pm:115 lib/AmuseWikiFarm/Controller/OPDS.pm:70 root/src/admin/edit.tt:502 root/src/layout.tt:249 root/src/layout.tt:250 root/src/layout.tt:627 root/src/text.tt:362
+#: lib/AmuseWikiFarm/Controller/Latest.pm:51 lib/AmuseWikiFarm/Controller/OPDS.pm:115 lib/AmuseWikiFarm/Controller/OPDS.pm:70 root/src/admin/edit.tt:502 root/src/layout.tt:249 root/src/layout.tt:250 root/src/layout.tt:632 root/src/text.tt:373
 msgid "Latest entries"
 msgstr ""
 
@@ -1212,11 +1248,11 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:141
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:142
 msgid "Login"
 msgstr ""
 
-#: root/src/layout.tt:458
+#: root/src/layout.tt:463
 msgid "Logout"
 msgstr ""
 
@@ -1252,7 +1288,7 @@ msgstr ""
 msgid "Main text"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Help.pm:40 root/src/help/faq.tt:2 root/src/layout.tt:453
+#: lib/AmuseWikiFarm/Controller/Help.pm:40 root/src/help/faq.tt:2 root/src/layout.tt:458
 msgid "Maintainer's FAQ"
 msgstr ""
 
@@ -1288,11 +1324,11 @@ msgstr ""
 msgid "Missing redirection"
 msgstr ""
 
-#: root/src/layout.tt:479 root/src/layout.tt:631
+#: root/src/layout.tt:484 root/src/layout.tt:636
 msgid "Mobile"
 msgstr ""
 
-#: root/src/layout.tt:482
+#: root/src/layout.tt:487
 msgid "Mobile applications"
 msgstr ""
 
@@ -1328,6 +1364,10 @@ msgstr ""
 msgid "My description"
 msgstr ""
 
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:140 root/src/include/bulk_job.tt:20
+msgid "N/A"
+msgstr ""
+
 #: root/src/admin/list.tt:18 root/src/bookbuilder/index.tt:857
 msgid "Name"
 msgstr ""
@@ -1352,11 +1392,11 @@ msgstr ""
 msgid "New site id"
 msgstr ""
 
-#: root/src/text.tt:402
+#: root/src/text.tt:413
 msgid "Newer texts"
 msgstr ""
 
-#: root/src/text.tt:399
+#: root/src/text.tt:410
 msgid "Next"
 msgstr ""
 
@@ -1417,6 +1457,10 @@ msgstr ""
 msgid "Now you can proceed to login."
 msgstr ""
 
+#: root/src/include/bulk_job.tt:9
+msgid "Number of jobs"
+msgstr ""
+
 #: root/src/admin/edit.tt:524
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
@@ -1433,7 +1477,7 @@ msgstr ""
 msgid "OPDS"
 msgstr ""
 
-#: root/src/text.tt:387
+#: root/src/text.tt:398
 msgid "Older texts"
 msgstr ""
 
@@ -1492,7 +1536,7 @@ msgstr ""
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Root.pm:237
+#: lib/AmuseWikiFarm/Controller/Root.pm:246
 msgid "Page not found!"
 msgstr ""
 
@@ -1688,7 +1732,7 @@ msgid ""
 "  supported."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:199 root/src/user/human.tt:5
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:200 root/src/user/human.tt:5
 msgid "Please prove you are a human"
 msgstr ""
 
@@ -1742,7 +1786,7 @@ msgstr ""
 msgid "Preview box height in pixel"
 msgstr ""
 
-#: root/src/text.tt:384
+#: root/src/text.tt:395
 msgid "Previous"
 msgstr ""
 
@@ -1805,7 +1849,7 @@ msgstr ""
 msgid "Query was"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:56
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:61
 msgid "Queue"
 msgstr ""
 
@@ -1817,11 +1861,11 @@ msgstr ""
 msgid "Quotes"
 msgstr ""
 
-#: root/src/layout.tt:487 root/src/layout.tt:490 root/src/layout.tt:603
+#: root/src/layout.tt:492 root/src/layout.tt:495 root/src/layout.tt:608
 msgid "RSS feed"
 msgstr ""
 
-#: root/src/layout.tt:495 root/src/layout.tt:498 root/src/layout.tt:599
+#: root/src/layout.tt:500 root/src/layout.tt:503 root/src/layout.tt:604
 msgid "Random"
 msgstr ""
 
@@ -1851,6 +1895,22 @@ msgstr ""
 
 #: root/src/help/faq.tt:52
 msgid "Reason for deletion"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:3195 root/src/tasks/rebuild.tt:26
+msgid "Rebuild"
+msgstr ""
+
+#: root/src/layout.tt:430
+msgid "Rebuild all generated files"
+msgstr ""
+
+#: root/src/text.tt:287 root/src/text.tt:288
+msgid "Rebuild the generated formats"
+msgstr ""
+
+#: root/src/tasks/show_bulk_job.tt:4
+msgid "Rebuilding"
 msgstr ""
 
 #: root/src/edit/diff.tt:50
@@ -2093,7 +2153,7 @@ msgstr ""
 msgid "Site slogan"
 msgstr ""
 
-#: root/src/admin/show_user_details.tt:54 root/src/admin/show_users.tt:14 root/src/layout.tt:437
+#: root/src/admin/show_user_details.tt:54 root/src/admin/show_users.tt:14 root/src/layout.tt:447
 msgid "Sites"
 msgstr ""
 
@@ -2174,6 +2234,10 @@ msgstr ""
 msgid "Standard"
 msgstr ""
 
+#: root/src/include/bulk_job.tt:13
+msgid "Started"
+msgstr ""
+
 #: root/src/tasks/display.tt:110
 msgid "Static page without javascript"
 msgstr ""
@@ -2200,7 +2264,7 @@ msgid ""
 "  redirection in place, and will be listed here"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1181
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1196
 msgid "Such an uri already exists"
 msgstr ""
 
@@ -2300,7 +2364,7 @@ msgid ""
 "            The last one checks if the file can be found."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1235
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1250
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
@@ -2349,7 +2413,7 @@ msgstr ""
 msgid "The text to show on the homepage preview"
 msgstr ""
 
-#: root/src/layout.tt:544
+#: root/src/layout.tt:549
 msgid "The text was added to the bookbuilder"
 msgstr ""
 
@@ -2492,7 +2556,7 @@ msgstr ""
 msgid "Title, author, date..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:100 lib/AmuseWikiFarm/Controller/OPDS.pm:252 lib/AmuseWikiFarm/Controller/OPDS.pm:53 lib/AmuseWikiFarm/Controller/OPDS.pm:76 root/src/layout.tt:211 root/src/layout.tt:608
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:100 lib/AmuseWikiFarm/Controller/OPDS.pm:252 lib/AmuseWikiFarm/Controller/OPDS.pm:53 lib/AmuseWikiFarm/Controller/OPDS.pm:76 root/src/layout.tt:211 root/src/layout.tt:613
 msgid "Titles"
 msgstr ""
 
@@ -2537,7 +2601,7 @@ msgstr ""
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:79 lib/AmuseWikiFarm/Controller/OPDS.pm:138 lib/AmuseWikiFarm/Controller/OPDS.pm:59 root/src/edit/edit.tt:627 root/src/edit/newtext.tt:80 root/src/edit/preview.tt:39 root/src/layout.tt:226 root/src/layout.tt:241 root/src/layout.tt:622 root/src/text.tt:105
+#: lib/AmuseWikiFarm/Controller/Category.pm:79 lib/AmuseWikiFarm/Controller/OPDS.pm:138 lib/AmuseWikiFarm/Controller/OPDS.pm:59 root/src/edit/edit.tt:627 root/src/edit/newtext.tt:80 root/src/edit/preview.tt:39 root/src/layout.tt:226 root/src/layout.tt:241 root/src/layout.tt:627 root/src/text.tt:105
 msgid "Topics"
 msgstr ""
 
@@ -2691,7 +2755,7 @@ msgstr ""
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Admin.pm:279 root/src/layout.tt:432
+#: lib/AmuseWikiFarm/Controller/Admin.pm:279 root/src/layout.tt:442
 msgid "Users"
 msgstr ""
 
@@ -2758,11 +2822,11 @@ msgstr ""
 msgid "Workflow"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:186
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:187
 msgid "Wrong answer!"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:115
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:116
 msgid "Wrong username or password"
 msgstr ""
 
@@ -2801,7 +2865,7 @@ msgstr ""
 msgid "You are building a collection. Please provide a title and, optionally, any other information needed for the front cover (author, subtitle, date) and the back cover (source and notes)."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:102
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:103
 msgid "You are logged in now!"
 msgstr ""
 
@@ -2833,7 +2897,7 @@ msgstr ""
 msgid "You may want to resume the editing of one of them"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:85
+#: lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm:86
 msgid "You sent credentials over an unencrypted connection. Please switch to HTTPS, login, and change your password right away. This shouldn't happen."
 msgstr ""
 
@@ -2858,7 +2922,7 @@ msgstr ""
 msgid "Your email"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Tasks.pm:49
+#: lib/AmuseWikiFarm/Controller/Tasks.pm:54
 msgid "Your file is ready"
 msgstr ""
 
@@ -2897,8 +2961,16 @@ msgstr ""
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr ""
 
+#: root/src/include/bulk_job.tt:2
+msgid "aborted"
+msgstr ""
+
 #: root/src/layout.tt:284
 msgid "about, links..."
+msgstr ""
+
+#: root/src/include/bulk_job.tt:2
+msgid "active"
 msgstr ""
 
 #: root/src/admin/edit.tt:84
@@ -2921,7 +2993,7 @@ msgstr ""
 msgid "comma or semicolon separated list"
 msgstr ""
 
-#: root/src/tasks/display.tt:4
+#: root/src/include/bulk_job.tt:2 root/src/tasks/display.tt:4
 msgid "completed"
 msgstr ""
 
@@ -3078,15 +3150,15 @@ msgstr ""
 msgid "texts by authors, title, topic..."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:181 lib/AmuseWikiFarm/Controller/OPDS.pm:225 lib/AmuseWikiFarm/Controller/OPDS.pm:65 root/src/layout.tt:218 root/src/layout.tt:615
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:181 lib/AmuseWikiFarm/Controller/OPDS.pm:225 lib/AmuseWikiFarm/Controller/OPDS.pm:65 root/src/layout.tt:218 root/src/layout.tt:620
 msgid "texts sorted by author"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:253 lib/AmuseWikiFarm/Controller/OPDS.pm:54 root/src/layout.tt:210 root/src/layout.tt:608
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:253 lib/AmuseWikiFarm/Controller/OPDS.pm:54 root/src/layout.tt:210 root/src/layout.tt:613
 msgid "texts sorted by title"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:139 lib/AmuseWikiFarm/Controller/OPDS.pm:60 root/src/layout.tt:240 root/src/layout.tt:622
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:139 lib/AmuseWikiFarm/Controller/OPDS.pm:60 root/src/layout.tt:240 root/src/layout.tt:627
 msgid "texts sorted by topics"
 msgstr ""
 

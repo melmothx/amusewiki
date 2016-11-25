@@ -304,6 +304,9 @@ msgstr "Liste à puces"
 msgid "CSS Theme"
 msgstr "Thème CSS"
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Nom canonique"
 
@@ -431,6 +434,9 @@ msgstr "Créé par"
 msgid "Created new text"
 msgstr "Nouveau texte créé"
 
+msgid "Current time"
+msgstr ""
+
 msgid "Date"
 msgstr "Date"
 
@@ -506,8 +512,14 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (pour appareils mobiles)"
 
+msgid "ETA"
+msgstr ""
+
 msgid "Edit"
 msgstr "Modifier"
+
+msgid "Edit full site configuration"
+msgstr ""
 
 msgid "Edit screen layout options"
 msgstr ""
@@ -595,6 +607,9 @@ msgstr "Exemple"
 
 msgid "Existing redirections"
 msgstr "Redirections existantes"
+
+msgid "Failed"
+msgstr ""
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -869,11 +884,21 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Si vous avez demandé une imposition, choisissez une forme d'imposition"
 
 msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
 "Si vous avez un fichier en .doc ou .odt, vous pouvez aisément le convertir "
 "en l'enregistrant comme HTML."
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1030,6 +1055,9 @@ msgstr "Choix de langue"
 msgid "Languages supported"
 msgstr "Langues prises en charge"
 
+msgid "Last successful rebuild"
+msgstr ""
+
 msgid "Last updated"
 msgstr "Mis à jour pour la dernière fois"
 
@@ -1163,6 +1191,9 @@ msgstr "Multilingue: liste des espaces séparant les codes de langue"
 msgid "My description"
 msgstr "Ma description"
 
+msgid "N/A"
+msgstr ""
+
 msgid "Name"
 msgstr "Nom"
 
@@ -1233,6 +1264,9 @@ msgstr "Notifier"
 
 msgid "Now you can proceed to login."
 msgstr "Vous pouvez continuer et vous connecter."
+
+msgid "Number of jobs"
+msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Nombre d'ajouts récents à afficher sur le flux RSS (un nombre entier)"
@@ -1648,6 +1682,18 @@ msgstr "Motif"
 msgid "Reason for deletion"
 msgstr "Raison de la suppression"
 
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
 msgid "Recheck"
 msgstr "Re-vérifier"
 
@@ -1894,6 +1940,9 @@ msgstr "HTML autonome (imprimable)"
 
 msgid "Standard"
 msgstr "Standard"
+
+msgid "Started"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Page statique sans javascript"
@@ -2558,8 +2607,14 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr ""
 "Fichier d'archive ZIP avec les sources, requis par le générateur de livres"
 
+msgid "aborted"
+msgstr ""
+
 msgid "about, links..."
 msgstr "présentation, liens..."
+
+msgid "active"
+msgstr ""
 
 msgid "affects only the frontend webserver configuration"
 msgstr "n'affecte que la configuration du serveur web frontal"

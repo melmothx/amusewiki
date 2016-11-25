@@ -288,6 +288,9 @@ msgstr "Aufzählung"
 msgid "CSS Theme"
 msgstr ""
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Kanonischer Name"
 
@@ -410,6 +413,9 @@ msgstr ""
 msgid "Created new text"
 msgstr "Neuer Text erstellt"
 
+msgid "Current time"
+msgstr ""
+
 msgid "Date"
 msgstr "Datum"
 
@@ -480,8 +486,14 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (für mobile Geräte)"
 
+msgid "ETA"
+msgstr ""
+
 msgid "Edit"
 msgstr "Bearbeiten"
+
+msgid "Edit full site configuration"
+msgstr ""
 
 msgid "Edit screen layout options"
 msgstr ""
@@ -558,6 +570,9 @@ msgstr "Beispiel"
 
 msgid "Existing redirections"
 msgstr "Bestehende Umleitungen"
+
+msgid "Failed"
+msgstr ""
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -805,8 +820,18 @@ msgstr ""
 " Broschürendruckschema"
 
 msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
+msgstr ""
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
 msgstr ""
 
 msgid ""
@@ -953,6 +978,9 @@ msgstr "Wähle deine Sprache"
 msgid "Languages supported"
 msgstr ""
 
+msgid "Last successful rebuild"
+msgstr ""
+
 msgid "Last updated"
 msgstr "Zuletzt aktualisiert"
 
@@ -1086,6 +1114,9 @@ msgstr "Mehrsprachig: Liste von Sprachcodes, getrennt durch Leerzeichen"
 msgid "My description"
 msgstr "Meine Beschreibung"
 
+msgid "N/A"
+msgstr ""
+
 msgid "Name"
 msgstr "Name"
 
@@ -1153,6 +1184,9 @@ msgid "Notify to"
 msgstr "Benachrichtige"
 
 msgid "Now you can proceed to login."
+msgstr ""
+
+msgid "Number of jobs"
 msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
@@ -1531,6 +1565,18 @@ msgstr "Grund"
 msgid "Reason for deletion"
 msgstr ""
 
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
 msgid "Recheck"
 msgstr "Nachprüfen"
 
@@ -1774,6 +1820,9 @@ msgid "Standalone HTML (printer-friendly)"
 msgstr "Reines HTML (Druckerfreundlich)"
 
 msgid "Standard"
+msgstr ""
+
+msgid "Started"
 msgstr ""
 
 msgid "Static page without javascript"
@@ -2386,8 +2435,14 @@ msgstr "Dein BenutzerInnen-Name ist %1"
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "ZIP-Archiv mit Quellen, vom Buchbinder benötigt"
 
+msgid "aborted"
+msgstr ""
+
 msgid "about, links..."
 msgstr "Über, Links, ..."
+
+msgid "active"
+msgstr ""
 
 msgid "affects only the frontend webserver configuration"
 msgstr ""

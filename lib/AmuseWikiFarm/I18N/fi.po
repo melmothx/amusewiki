@@ -283,6 +283,9 @@ msgstr "Luettelo"
 msgid "CSS Theme"
 msgstr ""
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Kanoninen nimi"
 
@@ -405,6 +408,9 @@ msgstr ""
 msgid "Created new text"
 msgstr "Uusi teksti luotu"
 
+msgid "Current time"
+msgstr ""
+
 msgid "Date"
 msgstr "Päivämäärä"
 
@@ -475,8 +481,14 @@ msgstr ""
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (mobiililaitteille)"
 
+msgid "ETA"
+msgstr ""
+
 msgid "Edit"
 msgstr "Muokkaa"
+
+msgid "Edit full site configuration"
+msgstr ""
 
 msgid "Edit screen layout options"
 msgstr ""
@@ -553,6 +565,9 @@ msgstr "Esimerkki"
 
 msgid "Existing redirections"
 msgstr "Nykyiset uudelleenohjaukset"
+
+msgid "Failed"
+msgstr ""
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -795,8 +810,18 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Jos haluat tulostusvalmiina, valitse malli"
 
 msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
+msgstr ""
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
 msgstr ""
 
 msgid ""
@@ -938,6 +963,9 @@ msgstr "Valitse kieli"
 msgid "Languages supported"
 msgstr ""
 
+msgid "Last successful rebuild"
+msgstr ""
+
 msgid "Last updated"
 msgstr "Viimeksi päivitetty"
 
@@ -1071,6 +1099,9 @@ msgstr "Monikielisyys: välilyönneillä erotettu kielikoodien lista"
 msgid "My description"
 msgstr "Kuvaus"
 
+msgid "N/A"
+msgstr ""
+
 msgid "Name"
 msgstr "Nimi"
 
@@ -1138,6 +1169,9 @@ msgid "Notify to"
 msgstr ""
 
 msgid "Now you can proceed to login."
+msgstr ""
+
+msgid "Number of jobs"
 msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
@@ -1520,6 +1554,18 @@ msgstr "Syy"
 msgid "Reason for deletion"
 msgstr ""
 
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
 msgid "Recheck"
 msgstr "Tarkista uudelleen"
 
@@ -1760,6 +1806,9 @@ msgid "Standalone HTML (printer-friendly)"
 msgstr "Pelkkä HTML (tulostusystävällinen)"
 
 msgid "Standard"
+msgstr ""
+
+msgid "Started"
 msgstr ""
 
 msgid "Static page without javascript"
@@ -2361,7 +2410,13 @@ msgstr "Käyttäjätunnuksesi on %1."
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "Kirjantekijän tarvitsema ZIP arkisto, josta löytyy lähteet"
 
+msgid "aborted"
+msgstr ""
+
 msgid "about, links..."
+msgstr ""
+
+msgid "active"
 msgstr ""
 
 msgid "affects only the frontend webserver configuration"

@@ -307,6 +307,9 @@ msgstr "Ненумерирана листа"
 msgid "CSS Theme"
 msgstr "CSS тема"
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Основно име"
 
@@ -435,6 +438,9 @@ msgstr "Автор"
 msgid "Created new text"
 msgstr "Креиран е нов текст"
 
+msgid "Current time"
+msgstr ""
+
 msgid "Date"
 msgstr "Датум"
 
@@ -510,8 +516,14 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (за мобилни уреди)"
 
+msgid "ETA"
+msgstr ""
+
 msgid "Edit"
 msgstr "Уреди"
+
+msgid "Edit full site configuration"
+msgstr ""
 
 msgid "Edit screen layout options"
 msgstr "Поставки за уредување текстови"
@@ -595,6 +607,9 @@ msgstr "Пример"
 
 msgid "Existing redirections"
 msgstr "Постоечки пренасочувања"
+
+msgid "Failed"
+msgstr ""
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -862,11 +877,21 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ако сакаш прелом на текстот, избери образец"
 
 msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
 "Ако имаш .doc или .odt датотека, можеш да ја претвориш во HTML снимајќи\n"
 " ја како HTML."
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1025,6 +1050,9 @@ msgstr "Избери јазик"
 msgid "Languages supported"
 msgstr "Јазици кои се поддржуваат"
 
+msgid "Last successful rebuild"
+msgstr ""
+
 msgid "Last updated"
 msgstr "Последна измена"
 
@@ -1162,6 +1190,9 @@ msgstr "Повеќејазичност: листа на јазични кодо�
 msgid "My description"
 msgstr "Мој опис"
 
+msgid "N/A"
+msgstr ""
+
 msgid "Name"
 msgstr "Име"
 
@@ -1230,6 +1261,9 @@ msgstr "Извести"
 
 msgid "Now you can proceed to login."
 msgstr "Сега можеш да прејдеш на најавување."
+
+msgid "Number of jobs"
+msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Бројот на последни записи за приказ на RSS (цел број)"
@@ -1650,6 +1684,18 @@ msgstr "Причина"
 msgid "Reason for deletion"
 msgstr "Причина за бришење"
 
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
 msgid "Recheck"
 msgstr "Провери повторно"
 
@@ -1891,6 +1937,9 @@ msgstr "Целосен HTML (за печатење)"
 
 msgid "Standard"
 msgstr "Стандардно"
+
+msgid "Started"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Статична страница без javascript"
@@ -2544,8 +2593,14 @@ msgstr "Твоето корисничко име е %1."
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "ZIP архивата со извор, потребна за создавање на збирка"
 
+msgid "aborted"
+msgstr ""
+
 msgid "about, links..."
 msgstr "за проектот, линкови..."
+
+msgid "active"
+msgstr ""
 
 msgid "affects only the frontend webserver configuration"
 msgstr "се однесува само на конфигурацијата на вебсерверот"

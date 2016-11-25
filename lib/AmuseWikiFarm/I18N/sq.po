@@ -315,6 +315,9 @@ msgstr "Lista e renditur"
 msgid "CSS Theme"
 msgstr ""
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Emër kanonik"
 
@@ -442,6 +445,9 @@ msgstr "E krijuar nga"
 msgid "Created new text"
 msgstr "Teksti i ri u krijua"
 
+msgid "Current time"
+msgstr ""
+
 msgid "Date"
 msgstr "Data"
 
@@ -515,8 +521,14 @@ msgstr ""
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (për telefona mobil)"
 
+msgid "ETA"
+msgstr ""
+
 msgid "Edit"
 msgstr "Ndrysho"
+
+msgid "Edit full site configuration"
+msgstr ""
 
 msgid "Edit screen layout options"
 msgstr ""
@@ -603,6 +615,9 @@ msgstr "Shembull"
 
 msgid "Existing redirections"
 msgstr "Ridrejtime ekzistuese"
+
+msgid "Failed"
+msgstr ""
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -871,11 +886,21 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Nëse e keni kërkuar imponimin, zgjidheni skemën e imponimit"
 
 msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
 "Nese e keni dokumentin në formatin .doc ose .odt, ju mund ta konvertoni "
 "lehtë duke e ruajtur si HTML"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1028,6 +1053,9 @@ msgstr "Përzgjedhja e gjuhës"
 msgid "Languages supported"
 msgstr "Gjuhët e përkrahura"
 
+msgid "Last successful rebuild"
+msgstr ""
+
 msgid "Last updated"
 msgstr "E përditësuar për here të fundit"
 
@@ -1161,6 +1189,9 @@ msgstr ""
 msgid "My description"
 msgstr "Përshkrimi im"
 
+msgid "N/A"
+msgstr ""
+
 msgid "Name"
 msgstr "Emri"
 
@@ -1231,6 +1262,9 @@ msgstr "Njofto  te"
 
 msgid "Now you can proceed to login."
 msgstr "Mund të vazhdosh kyçu"
+
+msgid "Number of jobs"
+msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Numri i shënimeve të fundit për ti shfaqur në RSS (integjer)"
@@ -1632,6 +1666,18 @@ msgstr "Arsyeja"
 msgid "Reason for deletion"
 msgstr "Arësyeja e fshirjes?"
 
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
 msgid "Recheck"
 msgstr "Rishiko"
 
@@ -1879,6 +1925,9 @@ msgid "Standalone HTML (printer-friendly)"
 msgstr "Faqja HTML (e përshtatshme për printim)"
 
 msgid "Standard"
+msgstr ""
+
+msgid "Started"
 msgstr ""
 
 msgid "Static page without javascript"
@@ -2523,8 +2572,14 @@ msgstr "Emri i shfrytëzuesit është %1."
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "ZIP arkiva me burime të nevojshme për krijuesin e librit."
 
+msgid "aborted"
+msgstr ""
+
 msgid "about, links..."
 msgstr "rreth, linqe..."
+
+msgid "active"
+msgstr ""
 
 msgid "affects only the frontend webserver configuration"
 msgstr ""

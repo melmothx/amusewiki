@@ -275,6 +275,9 @@ msgstr ""
 msgid "CSS Theme"
 msgstr ""
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Canonical name"
 msgstr ""
 
@@ -397,6 +400,9 @@ msgstr ""
 msgid "Created new text"
 msgstr ""
 
+msgid "Current time"
+msgstr ""
+
 msgid "Date"
 msgstr ""
 
@@ -465,7 +471,13 @@ msgstr ""
 msgid "EPUB (for mobile devices)"
 msgstr ""
 
+msgid "ETA"
+msgstr ""
+
 msgid "Edit"
+msgstr ""
+
+msgid "Edit full site configuration"
 msgstr ""
 
 msgid "Edit screen layout options"
@@ -542,6 +554,9 @@ msgid "Example"
 msgstr ""
 
 msgid "Existing redirections"
+msgstr ""
+
+msgid "Failed"
 msgstr ""
 
 #. ("$name $url")
@@ -784,8 +799,18 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
 msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
+msgstr ""
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
 msgstr ""
 
 msgid ""
@@ -912,6 +937,9 @@ msgid "Language selection"
 msgstr ""
 
 msgid "Languages supported"
+msgstr ""
+
+msgid "Last successful rebuild"
 msgstr ""
 
 msgid "Last updated"
@@ -1047,6 +1075,9 @@ msgstr ""
 msgid "My description"
 msgstr ""
 
+msgid "N/A"
+msgstr ""
+
 msgid "Name"
 msgstr ""
 
@@ -1114,6 +1145,9 @@ msgid "Notify to"
 msgstr ""
 
 msgid "Now you can proceed to login."
+msgstr ""
+
+msgid "Number of jobs"
 msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
@@ -1464,6 +1498,18 @@ msgstr ""
 msgid "Reason for deletion"
 msgstr ""
 
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
 msgid "Recheck"
 msgstr ""
 
@@ -1704,6 +1750,9 @@ msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
 msgid "Standard"
+msgstr ""
+
+msgid "Started"
 msgstr ""
 
 msgid "Static page without javascript"
@@ -2285,7 +2334,13 @@ msgstr ""
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr ""
 
+msgid "aborted"
+msgstr ""
+
 msgid "about, links..."
+msgstr ""
+
+msgid "active"
 msgstr ""
 
 msgid "affects only the frontend webserver configuration"

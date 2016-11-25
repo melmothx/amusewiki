@@ -302,6 +302,9 @@ msgstr "Punkttegns liste"
 msgid "CSS Theme"
 msgstr "CSS Tema"
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Canonical name"
 msgstr ""
 
@@ -428,6 +431,9 @@ msgstr "Skabt af"
 msgid "Created new text"
 msgstr "Skabte ny tekst"
 
+msgid "Current time"
+msgstr ""
+
 msgid "Date"
 msgstr "Dato"
 
@@ -501,8 +507,14 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (til mobiler)"
 
+msgid "ETA"
+msgstr ""
+
 msgid "Edit"
 msgstr "Rediger"
+
+msgid "Edit full site configuration"
+msgstr ""
 
 msgid "Edit screen layout options"
 msgstr ""
@@ -588,6 +600,9 @@ msgstr "Eksempel"
 
 msgid "Existing redirections"
 msgstr "Eksisterende omdirigeringer"
+
+msgid "Failed"
+msgstr ""
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -855,11 +870,21 @@ msgid "If you asked for imposition, select an imposition schema"
 msgstr "Hvis du bad om udskydning, så vælg et udskydningsskema"
 
 msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
 "Hvis du har en fil i .doc eller .odt format, så kan du enkelt konvertere den "
 "ved at gemme den som HTML"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1009,6 +1034,9 @@ msgstr "Sprogudvalg"
 msgid "Languages supported"
 msgstr "Understøttede sprog"
 
+msgid "Last successful rebuild"
+msgstr ""
+
 msgid "Last updated"
 msgstr "Sidst opdateret"
 
@@ -1143,6 +1171,9 @@ msgstr "Flersproget: liste med sprogkoder separeret med mellemrum"
 msgid "My description"
 msgstr "Min beskrivelse"
 
+msgid "N/A"
+msgstr ""
+
 msgid "Name"
 msgstr "Navn"
 
@@ -1213,6 +1244,9 @@ msgstr "Meddel til"
 
 msgid "Now you can proceed to login."
 msgstr "Nu kan du fortsætte til indlogning."
+
+msgid "Number of jobs"
+msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Antal seneste tilføjelser at vise på RSS'en (helt tal)"
@@ -1618,6 +1652,18 @@ msgstr "Årsag"
 msgid "Reason for deletion"
 msgstr "Årsag til sletning"
 
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
 msgid "Recheck"
 msgstr "Tjek igen"
 
@@ -1862,6 +1908,9 @@ msgstr "Standalone HTML (printervenlig)"
 
 msgid "Standard"
 msgstr "Standard"
+
+msgid "Started"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Statisk side uden javaskript"
@@ -2475,8 +2524,14 @@ msgstr "Dit brugernavn er %1"
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "ZIP arkiv med kilder, behøves af bogbyggeren"
 
+msgid "aborted"
+msgstr ""
+
 msgid "about, links..."
 msgstr "om, links"
+
+msgid "active"
+msgstr ""
 
 msgid "affects only the frontend webserver configuration"
 msgstr ""

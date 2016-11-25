@@ -208,7 +208,8 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
-"Una URI es una cadena de caracteres que identifica de manera única a un texto\n"
+"Una URI es una cadena de caracteres que identifica de manera única a un "
+"texto\n"
 "      en el archivo. En teoría, puede ser cualquier cosa, pero si quieres\n"
 "      poner uno especial, por favor sigue la convención: autor/a, nombre, \n"
 "      título, idioma, eventualmente número para diferenciación (ej.:\n"
@@ -306,6 +307,9 @@ msgstr "Lista con viñetas"
 msgid "CSS Theme"
 msgstr "Tema CSS"
 
+msgid "Cancel"
+msgstr ""
+
 msgid "Canonical name"
 msgstr "Nombre canónico"
 
@@ -366,7 +370,9 @@ msgstr "Cerrar"
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
-msgstr "Columas para el lado izquierdo de la página de edición, con la caja de edición (un máximo de 12)"
+msgstr ""
+"Columas para el lado izquierdo de la página de edición, con la caja de "
+"edición (un máximo de 12)"
 
 msgid "Commit"
 msgstr "Enviar"
@@ -432,6 +438,9 @@ msgstr "Creado por"
 
 msgid "Created new text"
 msgstr "Nuevo texto creado"
+
+msgid "Current time"
+msgstr ""
 
 msgid "Date"
 msgstr "Fecha"
@@ -508,8 +517,14 @@ msgstr "EPUB"
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (para dispositivos móviles)"
 
+msgid "ETA"
+msgstr ""
+
 msgid "Edit"
 msgstr "Editar"
+
+msgid "Edit full site configuration"
+msgstr ""
 
 msgid "Edit screen layout options"
 msgstr "Editar opciones de diagramación de la pantalla"
@@ -597,6 +612,9 @@ msgstr "Ejemplo"
 
 msgid "Existing redirections"
 msgstr "Redirecciones existentes"
+
+msgid "Failed"
+msgstr ""
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -877,11 +895,21 @@ msgstr ""
 "encuadernación"
 
 msgid ""
+"If you edit some format options, like fonts or paper\n"
+"      dimensions, you may want to rebuild the generated files"
+msgstr ""
+
+msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
 "Si tienes un archivo .doc o .odt, puedes convertirlo fácilmente guardándolo "
 "como HTML"
+
+msgid ""
+"If you request a rebuild when one is ongoing, you will\n"
+"    abort the current one."
+msgstr ""
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1042,6 +1070,9 @@ msgstr "Selección de idioma"
 msgid "Languages supported"
 msgstr "Idiomas soportados"
 
+msgid "Last successful rebuild"
+msgstr ""
+
 msgid "Last updated"
 msgstr "Últimos actualizados"
 
@@ -1175,6 +1206,9 @@ msgstr "Multi lenguaje: lista de códigos de idiomas separadas por un espacio"
 msgid "My description"
 msgstr "Mi descripción"
 
+msgid "N/A"
+msgstr ""
+
 msgid "Name"
 msgstr "Nombre"
 
@@ -1245,6 +1279,9 @@ msgstr "Notificar a"
 
 msgid "Now you can proceed to login."
 msgstr "Ahora puedes identificarte."
+
+msgid "Number of jobs"
+msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Número de últimas publicaciones para mostrar en el RSS (un entero)"
@@ -1662,6 +1699,18 @@ msgstr "Razón"
 msgid "Reason for deletion"
 msgstr "Razón de eliminación"
 
+msgid "Rebuild"
+msgstr ""
+
+msgid "Rebuild all generated files"
+msgstr ""
+
+msgid "Rebuild the generated formats"
+msgstr ""
+
+msgid "Rebuilding"
+msgstr ""
+
 msgid "Recheck"
 msgstr "Volver a revisar"
 
@@ -1908,6 +1957,9 @@ msgstr "HTML puro (bueno para imprimir)"
 
 msgid "Standard"
 msgstr "Estándar"
+
+msgid "Started"
+msgstr ""
 
 msgid "Static page without javascript"
 msgstr "Página estática sin javascript"
@@ -2521,7 +2573,10 @@ msgstr "Quizás quieras continuar la edición de uno de ellos"
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
-msgstr "Estás enviando credenciales bajo una conexión sin encriptar. Por favor cambia a HTTPS, inicia sesión y cambia tu contraseña de inmeadiato. Esto no debería pasar."
+msgstr ""
+"Estás enviando credenciales bajo una conexión sin encriptar. Por favor "
+"cambia a HTTPS, inicia sesión y cambia tu contraseña de inmeadiato. Esto no "
+"debería pasar."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2573,8 +2628,14 @@ msgstr "Tu nombre de usuaria/o es %1."
 msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "Archivo ZIP con fuentes, necesario para el creador de libros"
 
+msgid "aborted"
+msgstr ""
+
 msgid "about, links..."
 msgstr "acerca de, enlaces..."
+
+msgid "active"
+msgstr ""
 
 msgid "affects only the frontend webserver configuration"
 msgstr "afecta solo la configuración del frontend del servidor web"
