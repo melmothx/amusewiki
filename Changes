@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+1.995 2016-11-25
+
+ - debian packages now get dbconfig-common support (#88)
+ - fix eta for bulk jobs
+ - make images accessible from any path (#89)
+
 1.993 2016-11-14
 
  - Add a rebuild action, both for a single text or the whole site (#87)
