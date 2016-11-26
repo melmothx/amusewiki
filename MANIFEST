@@ -438,6 +438,7 @@ lib/AmuseWikiFarm/View/HTML.pm
 lib/AmuseWikiFarm/View/JSON.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
 lib/CatalystX/AmuseWiki/I18N.pm
+LICENSE
 LOCALIZATION.txt
 Makefile.PL
 MANIFEST
