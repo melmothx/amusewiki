@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-11-02 12:16+0100\n"
+"PO-Revision-Date: 2016-12-19 15:16+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -295,7 +295,7 @@ msgid "CSS Theme"
 msgstr "Tema CSS-a"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Poništi"
 
 msgid "Canonical name"
 msgstr "Glavno osnovno ime"
@@ -424,7 +424,7 @@ msgid "Created new text"
 msgstr "Novi tekst stvoren"
 
 msgid "Current time"
-msgstr ""
+msgstr "Vrijeme"
 
 msgid "Date"
 msgstr "Datum"
@@ -502,13 +502,13 @@ msgid "EPUB (for mobile devices)"
 msgstr "EPUB (za mobilne uređaje)"
 
 msgid "ETA"
-msgstr ""
+msgstr "Predviđeno vrijeme završetka"
 
 msgid "Edit"
 msgstr "Uredi"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "Uredi postavke sajta (napredno)"
 
 msgid "Edit screen layout options"
 msgstr "Postavke za uređivanje tekstova"
@@ -593,7 +593,7 @@ msgid "Existing redirections"
 msgstr "Postojeća preusmjeravanja"
 
 msgid "Failed"
-msgstr ""
+msgstr "Neuspješno"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -859,6 +859,8 @@ msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"Ako se promijene postavke za fajlove, kao što su fontovi ili dimenzije\n"
+"papira, valja ponovo proizvoditi ih."
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
@@ -870,7 +872,7 @@ msgstr ""
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
-msgstr ""
+msgstr "Ako se pokrene nova proizvodnja fajlova dok je jedna još u toku, stara neće završiti."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1025,7 +1027,7 @@ msgid "Languages supported"
 msgstr "Jezici koji se podržavaju"
 
 msgid "Last successful rebuild"
-msgstr ""
+msgstr "Zadnji put kad su datoteke s tekstovima regenerirane"
 
 msgid "Last updated"
 msgstr "Posljednja izmjena"
@@ -1161,7 +1163,7 @@ msgid "My description"
 msgstr "Moj opis"
 
 msgid "N/A"
-msgstr ""
+msgstr "Nepoznato"
 
 msgid "Name"
 msgstr "Ime"
@@ -1233,7 +1235,7 @@ msgid "Now you can proceed to login."
 msgstr "Sad možeš nastaviti na prijavu."
 
 msgid "Number of jobs"
-msgstr ""
+msgstr "Broj zadataka"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Broj tekstova u RSS-u"
@@ -1640,16 +1642,16 @@ msgid "Reason for deletion"
 msgstr "Razlog za izbrisanje"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "Regeneracija"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "Regeneriraj sve datoteke s tekstovima"
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "Regeneriraj datoteke s tekstovima"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "Regeneracija"
 
 msgid "Recheck"
 msgstr "Ponovo provjeri"
@@ -1894,7 +1896,7 @@ msgid "Standard"
 msgstr "Standardno"
 
 msgid "Started"
-msgstr ""
+msgstr "Započeto"
 
 msgid "Static page without javascript"
 msgstr "Statična stranica bez javascripta"
@@ -2407,6 +2409,9 @@ msgid ""
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"Oznake između kojih se nalazi dio teksta ne smiju se koristiti u\n"
+"blokovima koji zahtijevaju razmake na početku retka, kao što su popisi\n"
+"i tablice."
 
 msgid "Wrong answer!"
 msgstr "Pogrešan odgovor!"
@@ -2540,13 +2545,13 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "ZIP arhiva s izvorom, potrebna za stvaranje zbirke"
 
 msgid "aborted"
-msgstr ""
+msgstr "nedovršeno"
 
 msgid "about, links..."
 msgstr "o projektu, poveznice..."
 
 msgid "active"
-msgstr ""
+msgstr "aktivno"
 
 msgid "affects only the frontend webserver configuration"
 msgstr "tiče se samo konfiguracije webservera"
