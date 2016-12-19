@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-11-02 12:01+0100\n"
+"PO-Revision-Date: 2016-12-19 15:06+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -304,7 +304,7 @@ msgid "CSS Theme"
 msgstr "Tema CSS"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 msgid "Canonical name"
 msgstr "Nome canonico"
@@ -437,7 +437,7 @@ msgid "Created new text"
 msgstr "È stato creato un nuovo testo"
 
 msgid "Current time"
-msgstr ""
+msgstr "Ora corrente"
 
 msgid "Date"
 msgstr "Data"
@@ -516,13 +516,13 @@ msgid "EPUB (for mobile devices)"
 msgstr "EPUB (per dispositivi portatili)"
 
 msgid "ETA"
-msgstr ""
+msgstr "Orario stimato"
 
 msgid "Edit"
 msgstr "Modifica"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "Modifica la configurazione del sito (avanzato)"
 
 msgid "Edit screen layout options"
 msgstr "Modifica le impostazioni del layout della pagina di modifica dei testi"
@@ -609,7 +609,7 @@ msgid "Existing redirections"
 msgstr "Redirezioni esistenti"
 
 msgid "Failed"
-msgstr ""
+msgstr "Fallito"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -884,6 +884,9 @@ msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"Se vengono modificate le opzioni di formattazione dei file, come i\n"
+"font o il formato della carta, è opportuno rigenerare i file\n"
+"prodotti."
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
@@ -895,6 +898,8 @@ msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
 msgstr ""
+"Se richiedi nuovamente la rigenerazione del sito con una già in corso,\n"
+"quella in corso verrà annullata."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -1055,7 +1060,7 @@ msgid "Languages supported"
 msgstr "Lingue supportate"
 
 msgid "Last successful rebuild"
-msgstr ""
+msgstr "Ultima rigenerazione completata con successo"
 
 msgid "Last updated"
 msgstr "Ultima modifica"
@@ -1191,7 +1196,7 @@ msgid "My description"
 msgstr "La mia descrizione"
 
 msgid "N/A"
-msgstr ""
+msgstr "Non disponibile"
 
 msgid "Name"
 msgstr "Nome"
@@ -1265,7 +1270,7 @@ msgid "Now you can proceed to login."
 msgstr "Adesso puoi procedere al login."
 
 msgid "Number of jobs"
-msgstr ""
+msgstr "Numero di lavori"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Numero di testi da mostrare nel feed RSS (numero intero)"
@@ -1680,16 +1685,16 @@ msgid "Reason for deletion"
 msgstr "Ragione della rimozione"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "Rigenera"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "Rigenera tutti i file generati dal sito"
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "Rigenera i formati"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "Rigenerazione"
 
 msgid "Recheck"
 msgstr "Ricontrolla"
@@ -1940,7 +1945,7 @@ msgid "Standard"
 msgstr "Standard"
 
 msgid "Started"
-msgstr ""
+msgstr "Inizio"
 
 msgid "Static page without javascript"
 msgstr "Pagina statica senza javascript"
@@ -2478,6 +2483,9 @@ msgid ""
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"I tag che racchiudono un blocco di testo non possono essere usati\n"
+"all'interno di sezioni che richiedono spazio iniziale (come liste e\n"
+"tabelle)"
 
 msgid "Wrong answer!"
 msgstr "Risposta errata!"
@@ -2615,13 +2623,13 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "Archivio ZIP con sorgenti, richiesto dall'impaginatore"
 
 msgid "aborted"
-msgstr ""
+msgstr "abortito"
 
 msgid "about, links..."
 msgstr "informazioni, link..."
 
 msgid "active"
-msgstr ""
+msgstr "attivo"
 
 msgid "affects only the frontend webserver configuration"
 msgstr "ha effetto solo sulla configurazione automatica del server web"
