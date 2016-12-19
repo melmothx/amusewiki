@@ -2218,6 +2218,12 @@ msgstr ""
 msgid "Workflow"
 msgstr ""
 
+msgid ""
+"Wrapping tags cannot be used inside environments\n"
+"          which require leading space (notably, you cannot use them in\n"
+"          lists)."
+msgstr ""
+
 msgid "Wrong answer!"
 msgstr ""
 
