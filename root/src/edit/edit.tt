@@ -413,6 +413,10 @@
       <p>
         <strong>
           [% loc('Please note that wrapping tags must be placed on a line by themselves.') %]
+
+          [% loc('Wrapping tags cannot be used inside environments
+          which require leading space (notably, you cannot use them in
+          lists).') %]
         </strong>
         <pre>
   [% loc('Text formatted with markup') %]
@@ -510,6 +514,10 @@
       <p>
         <strong>
           [% loc('Please note that wrapping tags must be placed on a line by themselves.') %]
+
+          [% loc('Wrapping tags cannot be used inside environments
+          which require leading space (notably, you cannot use them in
+          lists).') %]
         </strong>
       </p>
         <pre>&lt;verse&gt;
