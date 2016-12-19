@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.000 2016-12-19
+
+ - Translations update
+ - Documentation improvement (#91)
+
 1.995 2016-11-25
 
  - debian packages now get dbconfig-common support (#88)
