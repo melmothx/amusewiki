@@ -202,8 +202,7 @@ Return the titles, specials included, with the status not set to 'published'
 =cut
 
 sub unpublished {
-    return shift->search( { status =>   { '!=' => 'published'    }, },
-                          { order_by => { -desc => [qw/pubdate/] }, } );
+    return shift->sort_by_pubdate_desc->search({ status => { '!=' => 'published' } });
 }
 
 

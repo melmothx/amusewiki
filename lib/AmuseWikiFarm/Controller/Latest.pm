@@ -36,9 +36,8 @@ sub index :Chained('base') :PathPart('') :Args {
     }
     log_debug { "requested /latest/ $page" };
     my $site = $c->stash->{site};
-    my $results = $c->stash->{texts_rs}->search(undef,
+    my $results = $c->stash->{texts_rs}->sort_by_pubdate_desc->search(undef,
                                                 {
-                                                 order_by => { -desc => 'pubdate' },
                                                  page => $page,
                                                  rows => $site->pagination_size_latest,
                                                 });

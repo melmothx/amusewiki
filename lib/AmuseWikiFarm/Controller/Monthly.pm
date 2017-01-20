@@ -77,9 +77,8 @@ sub month :Chained('year') :PathPart('') :Args(1) {
         $page = 1;
     }
     if (my $arch = $c->stash->{monthly_archives}->find({ month => $month })) {
-        my $texts = $arch->titles->published_texts
+        my $texts = $arch->titles->published_texts->sort_by_pubdate_desc
         ->search(undef, {
-                         order_by => { -desc => 'pubdate' },
                          page => $page,
                          rows => $site->pagination_size_monthly,
                         });

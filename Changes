@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.001 2017-01-20
+
+ - Fixed pagination problems when there are lots of texts with the
+   same pubdate.
+
 2.000 2016-12-19
 
  - Translations update

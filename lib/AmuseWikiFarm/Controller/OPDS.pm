@@ -109,9 +109,7 @@ sub titles :Chained('root') :PathPart('titles') :Args {
 sub new_entries :Chained('root') :PathPart('new') :Args {
     my ($self, $c, $page) = @_;
     my $feed = $c->model('OPDS');
-    my $titles = $c->stash->{site}->titles->published_texts
-      ->search(undef,
-               { order_by => { -desc => 'pubdate' } });
+    my $titles = $c->stash->{site}->titles->published_texts->sort_by_pubdate_desc;
     if ($self->populate_acquistions($feed, '/opds/new/',  $c->loc('Latest entries'), $titles, $page)) {
         $c->detach($c->view('Atom'));
     }

@@ -20,11 +20,20 @@ descending.
 
 =cut
 
+sub sort_by_updated_desc {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search(undef,
+                         { order_by => [
+                                        { -desc => "$me.updated" },
+                                        { -asc => "$me.id" }
+                                       ] });
+}
+
 sub pending {
     my $self = shift;
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.status" => 'pending' },
-                         { order_by => { -desc => "$me.updated" }});
+    return $self->sort_by_updated_desc->search({ "$me.status" => 'pending' });
 }
 
 =head2 not_published
@@ -37,8 +46,7 @@ date, descending.
 sub not_published {
     my $self = shift;
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.status" => { '!=' => 'published'  } },
-                         { order_by => { -desc => "$me.updated" } });
+    return $self->sort_by_updated_desc->search({ "$me.status" => { '!=' => 'published'  } });
 }
 
 
