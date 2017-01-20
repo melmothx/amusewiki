@@ -42,10 +42,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/font-awesome.min.css', { v => 3 }) %]" />
-
     <script type="text/javascript"
             src="[% c.uri_for('/static/js/jquery-1.11.1.min.js') %]">
     </script>
@@ -56,6 +52,9 @@
     <script type="text/javascript"
             src="[% c.uri_for('/static/js/bootstrap.min.js', { v => 5 }) %]">
     </script>
+
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/font-awesome.min.css', { v => 3 }) %]" />
 
     <!-- jquery-ui for the highlight effect everywhere and autocompletion
          source in [% c.uri_for('/static/js/jquery-ui-1.10.4.custom.js') %] -->
