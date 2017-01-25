@@ -165,6 +165,54 @@
         [% loc('EPUB') %]
       </label>
     </div>
+
+    <div class="not-slides">
+    <div>
+      <h4>[% loc('Cover image (optional)') %]</h4>
+      [% IF bb.coverfile %]
+      <div id="coverfile-is-present">
+      [% loc('A cover image was already added, but you can replace it uploading
+              a new one.') %]
+      <br />
+      <img src="[% c.uri_for('/bookbuilder/cover') | html %]" width="100"
+           alt="bookbuilder cover" />
+      </div>
+      [% END %]
+      <label for="coverimage">
+        [% loc('Add a cover image (PNG or JPG)' ) %]
+      </label>
+      <input id="coverimage" name="coverimage" type="file" />
+    </div>
+
+    <div class="checkbox image-options">
+      <label>
+        <input type="checkbox" name="removecover" value="1" id="removecover" />
+        [% loc('Remove cover image') %]
+      </label>
+    </div>
+
+    <div class="image-options">
+      <div class="row pdf-option">
+        <div class="col-sm-3">
+      <label for="coverwidth">
+        [% loc("Width of the cover image in percent of the text block width.") %]
+      </label>
+        </div>
+        <div class="col-sm-9">
+      <select id="coverwidth" class="form-control" name="coverwidth">
+        [% FOREACH coverw IN bb.coverwidths %]
+        <option value="[% coverw %]"
+                [% IF coverw == bb.coverwidth %]selected="selected"[% END %]>
+          [% coverw %]%
+        </option>
+        [% END %]
+      </select>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
     <div>&nbsp;</div>
     <div class="row">
       <div class="col-sm-3">
@@ -464,51 +512,6 @@
             [%- END %]
             [%- END %]
           </select>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="not-slides">
-    <div>
-      <h4>[% loc('Cover image (optional)') %]</h4>
-      [% IF bb.coverfile %]
-      <div id="coverfile-is-present">
-      [% loc('A cover image was already added, but you can replace it uploading
-              a new one.') %]
-      <br />
-      <img src="[% c.uri_for('/bookbuilder/cover') | html %]" width="100"
-           alt="bookbuilder cover" />
-      </div>
-      [% END %]
-      <label for="coverimage">
-        [% loc('Add a cover image (PNG or JPG)' ) %]
-      </label>
-      <input id="coverimage" name="coverimage" type="file" />
-    </div>
-
-    <div class="checkbox image-options">
-      <label>
-        <input type="checkbox" name="removecover" value="1" id="removecover" />
-        [% loc('Remove cover image') %]
-      </label>
-    </div>
-
-    <div class="image-options">
-      <div class="row pdf-option">
-        <div class="col-sm-3">
-      <label for="coverwidth">
-        [% loc("Width of the cover image in percent of the text block width.") %]
-      </label>
-        </div>
-        <div class="col-sm-9">
-      <select id="coverwidth" class="form-control" name="coverwidth">
-        [% FOREACH coverw IN bb.coverwidths %]
-        <option value="[% coverw %]"
-                [% IF coverw == bb.coverwidth %]selected="selected"[% END %]>
-          [% coverw %]%
-        </option>
-        [% END %]
-      </select>
         </div>
       </div>
     </div>
