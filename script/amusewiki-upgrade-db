@@ -117,7 +117,6 @@ my $dh = DBIx::Class::DeploymentHandler->new({
                                               databases => [qw/SQLite MySQL PostgreSQL/],
                                               sql_translator_args => { add_drop_table => 0,
                                                                        quote_identifiers => 1,
-                                                                       producer_args => { mysql_version => 5 },
                                                                      },
                                               script_directory => AmuseWikiFarm->path_to('dbicdh')->stringify,
                                               force_overwrite => $prepare,
