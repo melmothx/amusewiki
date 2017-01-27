@@ -98,6 +98,42 @@ CREATE TABLE site_options (
        PRIMARY KEY (site_id, option_name)
 );
 
+CREATE TABLE custom_formats (
+       custom_formats_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NULL REFERENCES site(id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       format_name VARCHAR(255) NOT NULL,
+       bb_format VARCHAR(16) NOT NULL DEFAULT 'pdf',
+       bb_epub_embed_fonts SMALLINT DEFAULT 1,
+       bb_bcor INTEGER NOT NULL DEFAULT 0,
+       bb_beamercolortheme VARCHAR(255) NOT NULL DEFAULT 'dove',
+       bb_beamertheme VARCHAR(255) NOT NULL DEFAULT 'default',
+       bb_cover  SMALLINT DEFAULT 1,
+       bb_crop_marks SMALLINT DEFAULT 0,
+       bb_crop_papersize VARCHAR(255) NOT NULL DEFAULT 'a4',
+       bb_crop_paper_height INTEGER NOT NULL DEFAULT 0,
+       bb_crop_paper_width  INTEGER NOT NULL DEFAULT 0,
+       bb_crop_paper_thickness  VARCHAR(16) NOT NULL DEFAULT '0.10mm',
+       bb_division INTEGER NOT NULL DEFAULT 12,
+       bb_fontsize INTEGER NOT NULL DEFAULT 10,
+       bb_headings VARCHAR(255) NOT NULL DEFAULT '0',
+       bb_imposed  SMALLINT DEFAULT 0,
+       bb_mainfont VARCHAR(255),
+       bb_sansfont VARCHAR(255),
+       bb_monofont VARCHAR(255),
+       bb_nocoverpage SMALLINT DEFAULT 0,
+       bb_notoc SMALLINT DEFAULT 0,
+       bb_opening VARCHAR(16) NOT NULL DEFAULT 'any',
+       bb_papersize VARCHAR(255) NOT NULL DEFAULT 'generic',
+       bb_paper_height INTEGER NOT NULL DEFAULT 0,
+       bb_paper_width INTEGER NOT NULL DEFAULT 0,
+       bb_schema VARCHAR(255) NOT NULL DEFAULT '2up',
+       bb_signature INTEGER NOT NULL DEFAULT 0,
+       bb_twoside SMALLINT DEFAULT 0,
+       bb_unbranded SMALLINT DEFAULT 0
+);
+
+
 CREATE TABLE users (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        username VARCHAR(255) NOT NULL,
@@ -142,6 +178,8 @@ CREATE TABLE bookbuilder_profile (
        user_id INTEGER NOT NULL REFERENCES users(id)
                        ON DELETE CASCADE ON UPDATE CASCADE,
        profile_name VARCHAR(255) NOT NULL,
+       custom_formats_id INTEGER NULL REFERENCES custom_formats(custom_formats_id)
+                         ON DELETE CASCADE ON UPDATE CASCADE,
        profile_data TEXT NOT NULL
 );
 
@@ -409,4 +447,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('legacy_link', 'Handle old paths for migrated sites'),
          ('bookbuilder_profile', 'Bookbuilder profiles'),
          ('bookbuilder_session', 'Bookbuilder sessions'),
+         ('custom_formats', 'Custom output formats, including profiles'),
          ('title_stat', 'Usage statistics');

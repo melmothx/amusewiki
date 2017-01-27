@@ -618,6 +618,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 custom_formats
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::CustomFormat>
+
+=cut
+
+__PACKAGE__->has_many(
+  "custom_formats",
+  "AmuseWikiFarm::Schema::Result::CustomFormat",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 jobs
 
 Type: has_many
@@ -794,8 +809,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-12 17:15:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2kQ/DL6GXwhs2c/xnurs+w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-01-27 14:45:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4W3rY42BMjO+bI1PtthGgA
 
 =head2 other_sites
 
