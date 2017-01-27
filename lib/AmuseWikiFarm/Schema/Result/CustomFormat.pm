@@ -59,6 +59,17 @@ __PACKAGE__->table("custom_formats");
   is_nullable: 0
   size: 255
 
+=head2 format_description
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 active
+
+  data_type: 'smallint'
+  default_value: 1
+  is_nullable: 1
+
 =head2 bb_format
 
   data_type: 'varchar'
@@ -245,6 +256,10 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 1, size => 16 },
   "format_name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "format_description",
+  { data_type => "text", is_nullable => 1 },
+  "active",
+  { data_type => "smallint", default_value => 1, is_nullable => 1 },
   "bb_format",
   {
     data_type => "varchar",
@@ -393,8 +408,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-01-27 15:00:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:mhtwJgDIAxw6mMJL4N/G0w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-01-27 17:00:56
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2XmL+V7hOP+MhUnQUcLlqQ
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

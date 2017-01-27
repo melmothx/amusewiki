@@ -103,6 +103,8 @@ CREATE TABLE custom_formats (
        site_id VARCHAR(16) NULL REFERENCES site(id)
                ON DELETE CASCADE ON UPDATE CASCADE,
        format_name VARCHAR(255) NOT NULL,
+       format_description TEXT,
+       active SMALLINT DEFAULT 1,
        bb_format VARCHAR(16) NOT NULL DEFAULT 'pdf',
        bb_epub_embed_fonts SMALLINT DEFAULT 1,
        bb_bcor INTEGER NOT NULL DEFAULT 0,
