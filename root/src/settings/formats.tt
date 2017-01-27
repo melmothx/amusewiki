@@ -17,10 +17,41 @@
           [% format.description | html %]
         </td>
         <td>
-          [% IF format.active %]<span class="fa fa-check"></span>[% END %]
+          [% IF format.active %]
+            <form action="[% format.deactivate_url %]" method="POST">
+              <input type="hidden" name="go" value="1" />
+              <button type="submit" class="btn btn-default">
+                <span class="fa fa-check-square-o"></span>
+              </button>
+            </form>
+          [% ELSE %]
+            <form action="[% format.activate_url %]" method="POST">
+              <input type="hidden" name="go" value="1" />
+              <button type="submit" class="btn btn-default">
+                <span class="fa fa-square-o"></span>
+              </button>
+            </form>
+          [% END %]
         </td>
       </tr>
     [% END %]
   </table>
 </div>
 
+<div>
+  <form action="[% c.uri_for_action('/settings/create_format') %]" class="form-inline"
+        method="POST" id="creation-site-format-form"
+        role="form">
+    <div class="form-group">
+      <label for="format_name">
+        [% loc('Format name') %]
+      </label>
+      <input type="text" name="format_name" class="form-control" id="format_name"/>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">
+        [% loc('Create a new format') %]
+      </button>
+    </div>
+  </form>
+</div>
