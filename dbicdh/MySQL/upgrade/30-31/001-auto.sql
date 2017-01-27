@@ -11,6 +11,8 @@ CREATE TABLE `custom_formats` (
   `custom_formats_id` integer NOT NULL auto_increment,
   `site_id` varchar(16) NULL,
   `format_name` varchar(255) NOT NULL,
+  `format_description` text NULL,
+  `active` smallint NULL DEFAULT 1,
   `bb_format` varchar(16) NOT NULL DEFAULT 'pdf',
   `bb_epub_embed_fonts` smallint NULL DEFAULT 1,
   `bb_bcor` integer NOT NULL DEFAULT 0,

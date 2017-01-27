@@ -773,6 +773,16 @@ schema:
           reference_table: site
           type: FOREIGN KEY
       fields:
+        active:
+          data_type: smallint
+          default_value: 1
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: active
+          order: 5
+          size:
+            - 0
         bb_bcor:
           data_type: integer
           default_value: 0
@@ -780,7 +790,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_bcor
-          order: 6
+          order: 8
           size:
             - 0
         bb_beamercolortheme:
@@ -790,7 +800,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_beamercolortheme
-          order: 7
+          order: 9
           size:
             - 255
         bb_beamertheme:
@@ -800,7 +810,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_beamertheme
-          order: 8
+          order: 10
           size:
             - 255
         bb_cover:
@@ -810,7 +820,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_cover
-          order: 9
+          order: 11
           size:
             - 0
         bb_crop_marks:
@@ -820,7 +830,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_crop_marks
-          order: 10
+          order: 12
           size:
             - 0
         bb_crop_paper_height:
@@ -830,7 +840,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_crop_paper_height
-          order: 12
+          order: 14
           size:
             - 0
         bb_crop_paper_thickness:
@@ -840,7 +850,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_crop_paper_thickness
-          order: 14
+          order: 16
           size:
             - 16
         bb_crop_paper_width:
@@ -850,7 +860,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_crop_paper_width
-          order: 13
+          order: 15
           size:
             - 0
         bb_crop_papersize:
@@ -860,7 +870,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_crop_papersize
-          order: 11
+          order: 13
           size:
             - 255
         bb_division:
@@ -870,7 +880,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_division
-          order: 15
+          order: 17
           size:
             - 0
         bb_epub_embed_fonts:
@@ -880,7 +890,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_epub_embed_fonts
-          order: 5
+          order: 7
           size:
             - 0
         bb_fontsize:
@@ -890,7 +900,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_fontsize
-          order: 16
+          order: 18
           size:
             - 0
         bb_format:
@@ -900,7 +910,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_format
-          order: 4
+          order: 6
           size:
             - 16
         bb_headings:
@@ -910,7 +920,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_headings
-          order: 17
+          order: 19
           size:
             - 255
         bb_imposed:
@@ -920,7 +930,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_imposed
-          order: 18
+          order: 20
           size:
             - 0
         bb_mainfont:
@@ -930,7 +940,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_mainfont
-          order: 19
+          order: 21
           size:
             - 255
         bb_monofont:
@@ -940,7 +950,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_monofont
-          order: 21
+          order: 23
           size:
             - 255
         bb_nocoverpage:
@@ -950,7 +960,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_nocoverpage
-          order: 22
+          order: 24
           size:
             - 0
         bb_notoc:
@@ -960,7 +970,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_notoc
-          order: 23
+          order: 25
           size:
             - 0
         bb_opening:
@@ -970,7 +980,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_opening
-          order: 24
+          order: 26
           size:
             - 16
         bb_paper_height:
@@ -980,7 +990,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_paper_height
-          order: 26
+          order: 28
           size:
             - 0
         bb_paper_width:
@@ -990,7 +1000,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_paper_width
-          order: 27
+          order: 29
           size:
             - 0
         bb_papersize:
@@ -1000,7 +1010,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_papersize
-          order: 25
+          order: 27
           size:
             - 255
         bb_sansfont:
@@ -1010,7 +1020,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_sansfont
-          order: 20
+          order: 22
           size:
             - 255
         bb_schema:
@@ -1020,7 +1030,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_schema
-          order: 28
+          order: 30
           size:
             - 255
         bb_signature:
@@ -1030,7 +1040,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_signature
-          order: 29
+          order: 31
           size:
             - 0
         bb_twoside:
@@ -1040,7 +1050,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_twoside
-          order: 30
+          order: 32
           size:
             - 0
         bb_unbranded:
@@ -1050,7 +1060,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: bb_unbranded
-          order: 31
+          order: 33
           size:
             - 0
         custom_formats_id:
@@ -1062,6 +1072,16 @@ schema:
           is_unique: 0
           name: custom_formats_id
           order: 1
+          size:
+            - 0
+        format_description:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: format_description
+          order: 4
           size:
             - 0
         format_name:

@@ -8,6 +8,8 @@ CREATE TABLE "custom_formats" (
   "custom_formats_id" serial NOT NULL,
   "site_id" character varying(16),
   "format_name" character varying(255) NOT NULL,
+  "format_description" text,
+  "active" smallint DEFAULT 1,
   "bb_format" character varying(16) DEFAULT 'pdf' NOT NULL,
   "bb_epub_embed_fonts" smallint DEFAULT 1,
   "bb_bcor" integer DEFAULT 0 NOT NULL,

@@ -8,6 +8,8 @@ CREATE TABLE custom_formats (
   custom_formats_id INTEGER PRIMARY KEY NOT NULL,
   site_id varchar(16),
   format_name varchar(255) NOT NULL,
+  format_description text,
+  active smallint DEFAULT 1,
   bb_format varchar(16) NOT NULL DEFAULT 'pdf',
   bb_epub_embed_fonts smallint DEFAULT 1,
   bb_bcor integer NOT NULL DEFAULT 0,
