@@ -6,7 +6,7 @@ BEGIN;
 ;
 CREATE TABLE custom_formats (
   custom_formats_id INTEGER PRIMARY KEY NOT NULL,
-  site_id varchar(16),
+  site_id varchar(16) NOT NULL,
   format_name varchar(255) NOT NULL,
   format_description text,
   active smallint DEFAULT 1,
@@ -43,14 +43,6 @@ CREATE TABLE custom_formats (
 
 ;
 CREATE INDEX custom_formats_idx_site_id ON custom_formats (site_id);
-
-;
-ALTER TABLE bookbuilder_profile ADD COLUMN custom_formats_id integer;
-
-;
-CREATE INDEX bookbuilder_profile_idx_custom_formats_id ON bookbuilder_profile (custom_formats_id);
-
-;
 
 ;
 

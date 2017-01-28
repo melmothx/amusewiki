@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Fri Jan 27 17:01:27 2017
+-- Created on Sat Jan 28 14:58:33 2017
 -- 
 
 ;
@@ -123,6 +123,17 @@ CREATE TABLE "attachment" (
 CREATE INDEX "attachment_idx_site_id" ON "attachment" ("site_id");
 CREATE UNIQUE INDEX "uri_site_id_unique" ON "attachment" ("uri", "site_id");
 --
+-- Table: "bookbuilder_profile"
+--
+CREATE TABLE "bookbuilder_profile" (
+  "bookbuilder_profile_id" INTEGER PRIMARY KEY NOT NULL,
+  "user_id" integer NOT NULL,
+  "profile_name" varchar(255) NOT NULL,
+  "profile_data" text NOT NULL,
+  FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE INDEX "bookbuilder_profile_idx_user_id" ON "bookbuilder_profile" ("user_id");
+--
 -- Table: "bookbuilder_session"
 --
 CREATE TABLE "bookbuilder_session" (
@@ -169,7 +180,7 @@ CREATE UNIQUE INDEX "uri_site_id_type_unique" ON "category" ("uri", "site_id", "
 --
 CREATE TABLE "custom_formats" (
   "custom_formats_id" INTEGER PRIMARY KEY NOT NULL,
-  "site_id" varchar(16),
+  "site_id" varchar(16) NOT NULL,
   "format_name" varchar(255) NOT NULL,
   "format_description" text,
   "active" smallint DEFAULT 1,
@@ -402,20 +413,6 @@ CREATE TABLE "user_site" (
 );
 CREATE INDEX "user_site_idx_site_id" ON "user_site" ("site_id");
 CREATE INDEX "user_site_idx_user_id" ON "user_site" ("user_id");
---
--- Table: "bookbuilder_profile"
---
-CREATE TABLE "bookbuilder_profile" (
-  "bookbuilder_profile_id" INTEGER PRIMARY KEY NOT NULL,
-  "user_id" integer NOT NULL,
-  "profile_name" varchar(255) NOT NULL,
-  "custom_formats_id" integer,
-  "profile_data" text NOT NULL,
-  FOREIGN KEY ("custom_formats_id") REFERENCES "custom_formats"("custom_formats_id") ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE
-);
-CREATE INDEX "bookbuilder_profile_idx_custom_formats_id" ON "bookbuilder_profile" ("custom_formats_id");
-CREATE INDEX "bookbuilder_profile_idx_user_id" ON "bookbuilder_profile" ("user_id");
 --
 -- Table: "job_file"
 --

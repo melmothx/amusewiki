@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Fri Jan 27 17:01:29 2017
+-- Created on Sat Jan 28 14:58:35 2017
 -- 
 ;
 --
@@ -135,6 +135,19 @@ CREATE INDEX "attachment_idx_site_id" on "attachment" ("site_id");
 
 ;
 --
+-- Table: bookbuilder_profile
+--
+CREATE TABLE "bookbuilder_profile" (
+  "bookbuilder_profile_id" serial NOT NULL,
+  "user_id" integer NOT NULL,
+  "profile_name" character varying(255) NOT NULL,
+  "profile_data" text NOT NULL,
+  PRIMARY KEY ("bookbuilder_profile_id")
+);
+CREATE INDEX "bookbuilder_profile_idx_user_id" on "bookbuilder_profile" ("user_id");
+
+;
+--
 -- Table: bookbuilder_session
 --
 CREATE TABLE "bookbuilder_session" (
@@ -187,7 +200,7 @@ CREATE INDEX "category_idx_site_id" on "category" ("site_id");
 --
 CREATE TABLE "custom_formats" (
   "custom_formats_id" serial NOT NULL,
-  "site_id" character varying(16),
+  "site_id" character varying(16) NOT NULL,
   "format_name" character varying(255) NOT NULL,
   "format_description" text,
   "active" smallint DEFAULT 1,
@@ -438,21 +451,6 @@ CREATE INDEX "user_site_idx_user_id" on "user_site" ("user_id");
 
 ;
 --
--- Table: bookbuilder_profile
---
-CREATE TABLE "bookbuilder_profile" (
-  "bookbuilder_profile_id" serial NOT NULL,
-  "user_id" integer NOT NULL,
-  "profile_name" character varying(255) NOT NULL,
-  "custom_formats_id" integer,
-  "profile_data" text NOT NULL,
-  PRIMARY KEY ("bookbuilder_profile_id")
-);
-CREATE INDEX "bookbuilder_profile_idx_custom_formats_id" on "bookbuilder_profile" ("custom_formats_id");
-CREATE INDEX "bookbuilder_profile_idx_user_id" on "bookbuilder_profile" ("user_id");
-
-;
---
 -- Table: job_file
 --
 CREATE TABLE "job_file" (
@@ -495,6 +493,10 @@ CREATE INDEX "title_category_idx_title_id" on "title_category" ("title_id");
 ;
 ALTER TABLE "attachment" ADD CONSTRAINT "attachment_fk_site_id" FOREIGN KEY ("site_id")
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+;
+ALTER TABLE "bookbuilder_profile" ADD CONSTRAINT "bookbuilder_profile_fk_user_id" FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ;
 ALTER TABLE "bookbuilder_session" ADD CONSTRAINT "bookbuilder_session_fk_site_id" FOREIGN KEY ("site_id")
@@ -582,14 +584,6 @@ ALTER TABLE "user_site" ADD CONSTRAINT "user_site_fk_site_id" FOREIGN KEY ("site
 
 ;
 ALTER TABLE "user_site" ADD CONSTRAINT "user_site_fk_user_id" FOREIGN KEY ("user_id")
-  REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
-;
-ALTER TABLE "bookbuilder_profile" ADD CONSTRAINT "bookbuilder_profile_fk_custom_formats_id" FOREIGN KEY ("custom_formats_id")
-  REFERENCES "custom_formats" ("custom_formats_id") ON DELETE CASCADE ON UPDATE CASCADE;
-
-;
-ALTER TABLE "bookbuilder_profile" ADD CONSTRAINT "bookbuilder_profile_fk_user_id" FOREIGN KEY ("user_id")
   REFERENCES "users" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 ;

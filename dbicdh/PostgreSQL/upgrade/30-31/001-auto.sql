@@ -6,7 +6,7 @@ BEGIN;
 ;
 CREATE TABLE "custom_formats" (
   "custom_formats_id" serial NOT NULL,
-  "site_id" character varying(16),
+  "site_id" character varying(16) NOT NULL,
   "format_name" character varying(255) NOT NULL,
   "format_description" text,
   "active" smallint DEFAULT 1,
@@ -45,16 +45,6 @@ CREATE INDEX "custom_formats_idx_site_id" on "custom_formats" ("site_id");
 ;
 ALTER TABLE "custom_formats" ADD CONSTRAINT "custom_formats_fk_site_id" FOREIGN KEY ("site_id")
   REFERENCES "site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
-;
-ALTER TABLE bookbuilder_profile ADD COLUMN custom_formats_id integer;
-
-;
-CREATE INDEX bookbuilder_profile_idx_custom_formats_id on bookbuilder_profile (custom_formats_id);
-
-;
-ALTER TABLE bookbuilder_profile ADD CONSTRAINT bookbuilder_profile_fk_custom_formats_id FOREIGN KEY (custom_formats_id)
-  REFERENCES custom_formats (custom_formats_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ;
 

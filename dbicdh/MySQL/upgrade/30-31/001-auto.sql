@@ -9,7 +9,7 @@ SET foreign_key_checks=0;
 ;
 CREATE TABLE `custom_formats` (
   `custom_formats_id` integer NOT NULL auto_increment,
-  `site_id` varchar(16) NULL,
+  `site_id` varchar(16) NOT NULL,
   `format_name` varchar(255) NOT NULL,
   `format_description` text NULL,
   `active` smallint NULL DEFAULT 1,
@@ -48,11 +48,6 @@ CREATE TABLE `custom_formats` (
 
 ;
 SET foreign_key_checks=1;
-
-;
-ALTER TABLE bookbuilder_profile ADD COLUMN custom_formats_id integer NULL,
-                                ADD INDEX bookbuilder_profile_idx_custom_formats_id (custom_formats_id),
-                                ADD CONSTRAINT bookbuilder_profile_fk_custom_formats_id FOREIGN KEY (custom_formats_id) REFERENCES custom_formats (custom_formats_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ;
 
