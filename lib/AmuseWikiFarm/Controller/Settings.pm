@@ -99,7 +99,10 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
 
     if (delete $params{update}) {
         Dlog_debug { "Params are $_" } \%params;
-        $format->update_from_params(\%params);
+        my $result = $format->update_from_params(\%params);
+        if ($result->{error}) {
+            $c->flash(error_msg => $result->{error});
+        }
     }
     $c->stash(
               bb => $format->bookbuilder,
