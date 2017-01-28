@@ -817,11 +817,27 @@ kpsewhich mylogo.pdf
         </p>
       </div>
     </div>
+    <div class="col-sm-offset-6 col-sm-6">
+      <h4>
+        <a href="[% c.uri_for_action('/settings/formats') %]" target="_blank">
+          <small>
+            <span class="fa fa-wrench"></span>
+          </small>
+        </a>
+        [% loc('Custom formats') %]
+      </h4>
+      [% FOREACH format IN esite.active_custom_formats %]
+        <div>
+          <strong>
+            <a href="[% c.uri_for_action('/settings/edit_format', [format.custom_formats_id]) %]">
+              [% format.format_name | html %]</a>
+          </strong>
+          <p>[% format.format_description | html %]</p>
+        </div>
+      [% END %]
+    </div>
       </div>
     </fieldset>
-    [% UNLESS restricted %]
-
-    [% END %]
     <fieldset>
       <legend role="button"
               data-target="#amw-config-layout"

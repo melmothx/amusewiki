@@ -3227,6 +3227,12 @@ sub rebuild_formats {
                                     });
 }
 
+sub active_custom_formats {
+    my $self = shift;
+    my @all = $self->custom_formats->active_only;
+    return \@all;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 
