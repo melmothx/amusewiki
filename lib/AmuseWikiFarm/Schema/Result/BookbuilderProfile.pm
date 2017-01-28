@@ -58,12 +58,6 @@ __PACKAGE__->table("bookbuilder_profile");
   is_nullable: 0
   size: 255
 
-=head2 custom_formats_id
-
-  data_type: 'integer'
-  is_foreign_key: 1
-  is_nullable: 1
-
 =head2 profile_data
 
   data_type: 'text'
@@ -78,8 +72,6 @@ __PACKAGE__->add_columns(
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
   "profile_name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
-  "custom_formats_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "profile_data",
   { data_type => "text", is_nullable => 0 },
 );
@@ -98,26 +90,6 @@ __PACKAGE__->set_primary_key("bookbuilder_profile_id");
 
 =head1 RELATIONS
 
-=head2 custom_format
-
-Type: belongs_to
-
-Related object: L<AmuseWikiFarm::Schema::Result::CustomFormat>
-
-=cut
-
-__PACKAGE__->belongs_to(
-  "custom_format",
-  "AmuseWikiFarm::Schema::Result::CustomFormat",
-  { custom_formats_id => "custom_formats_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
-);
-
 =head2 user
 
 Type: belongs_to
@@ -134,8 +106,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-01-27 14:52:15
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:iJwXZID4O4Uhk9sIwth4gw
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-01-28 14:54:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AIyNX4AUWQ6z/gFFIS/0ww
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse ();

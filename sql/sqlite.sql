@@ -100,7 +100,7 @@ CREATE TABLE site_options (
 
 CREATE TABLE custom_formats (
        custom_formats_id INTEGER PRIMARY KEY AUTOINCREMENT,
-       site_id VARCHAR(16) NULL REFERENCES site(id)
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                ON DELETE CASCADE ON UPDATE CASCADE,
        format_name VARCHAR(255) NOT NULL,
        format_description TEXT,
@@ -180,8 +180,6 @@ CREATE TABLE bookbuilder_profile (
        user_id INTEGER NOT NULL REFERENCES users(id)
                        ON DELETE CASCADE ON UPDATE CASCADE,
        profile_name VARCHAR(255) NOT NULL,
-       custom_formats_id INTEGER NULL REFERENCES custom_formats(custom_formats_id)
-                         ON DELETE CASCADE ON UPDATE CASCADE,
        profile_data TEXT NOT NULL
 );
 
@@ -449,5 +447,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('legacy_link', 'Handle old paths for migrated sites'),
          ('bookbuilder_profile', 'Bookbuilder profiles'),
          ('bookbuilder_session', 'Bookbuilder sessions'),
-         ('custom_formats', 'Custom output formats, including profiles'),
+         ('custom_formats', 'Custom output formats'),
          ('title_stat', 'Usage statistics');
