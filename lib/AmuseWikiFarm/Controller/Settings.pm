@@ -67,6 +67,7 @@ sub create_format :Chained('list_custom_formats') :PathPart('create') :Args(0) {
         log_debug { "Created " . $f->format_name };
         $f->discard_changes;
         $c->response->redirect($c->uri_for_action('/settings/edit_format', [ $f->custom_formats_id ]));
+        return;
     }
     $c->response->redirect($c->uri_for_action('/settings/formats'));
 }
@@ -85,6 +86,16 @@ sub get_format :Chained('list_custom_formats') :PathPart('edit') :CaptureArgs(1)
 
 sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
+    my $format = $c->stash->{edit_custom_format};
+    my %params = %{ $c->request->body_parameters };
+    if (delete $params{update}) {
+        Dlog_debug { "Params are $_" } \%params;
+        $format->update_from_params(\%params);
+    }
+    $c->stash(
+              bb => $format->bookbuilder,
+              page_title => $c->loc('Edit format [_1]', $format->format_name)
+             );
 }
 
 sub make_format_inactive :Chained('get_format') :PathPart('inactive') :Args(0) {

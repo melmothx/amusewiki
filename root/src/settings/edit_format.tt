@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h2>[% page_title | html %]</h2>
+</div>
+<script type="text/javascript" src="[% c.uri_for('/static/js/bookbuilder.js') %]"></script>
+<form action="" method="post" id="bbform">
+  <div class="form-group">
+  </div>
+  [% INCLUDE 'include/bbform.tt' %]
+  <div class="form-group">
+    <div>
+      <button type="submit" name="update" value="update" class="btn btn-default">
+        [% loc('Update') %]
+      </button>
+    </div>
+  </div>
+</form>
