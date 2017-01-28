@@ -47,26 +47,7 @@ $mech->content_contains($name);
 $mech->get_ok('/user/site');
 $mech->content_contains($name);
 
-
-
-
-my $user = $schema->resultset('User')->find({ username => 'root' });
-ok $user;
-$user->add_to_bookbuilder_profiles({
-                                    profile_name => 'ciccia',
-                                    profile_data => '',
-                                    custom_format => {
-                                                      format_name => 'ciccia',
-                                                     },
-                                   });
-ok($schema->resultset('CustomFormat')->search({ site_id => undef })->count);
-is $user->bookbuilder_profiles->first->custom_format->format_name, 'ciccia', "Found the profile";
-is($schema->resultset('CustomFormat')->search({ site_id => $site_id })->count, 1);
 $site->delete;
-ok($schema->resultset('CustomFormat')->search({ site_id => undef })->count);
-is($schema->resultset('CustomFormat')->search({ site_id => $site_id })->count, 0, "Custom format is gone after site deletion");
-$user->discard_changes;
-$user->bookbuilder_profiles->delete_all;
-is($schema->resultset('CustomFormat')->search({ format_name => 'ciccia' })->count, 0)
-  or diag Dumper ({ $schema->resultset('CustomFormat')->search({ format_name => 'ciccia' })->first->get_columns });
+is($schema->resultset('CustomFormat')->search({ site_id => $site_id })->count, 0,
+   "Custom format is gone after site deletion");
 done_testing;
