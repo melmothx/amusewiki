@@ -33,6 +33,12 @@ sub list_custom_formats :Chained('settings') :PathPart('formats') :CaptureArgs(0
         $c->detach('/not_permitted');
         return;
     }
+    $c->stash(breadcrumbs => [
+                              {
+                               uri => $c->uri_for_action('/settings/formats'),
+                               label => $c->loc('Custom formats for [_1]', $c->stash->{site}->canonical),
+                              },
+                             ]);
 }
 
 sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
@@ -88,6 +94,9 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $format = $c->stash->{edit_custom_format};
     my %params = %{ $c->request->body_parameters };
+    push @{$c->stash->{breadcrumbs}}, { uri => '#',
+                                        label => $format->format_name };
+
     if (delete $params{update}) {
         Dlog_debug { "Params are $_" } \%params;
         $format->update_from_params(\%params);
