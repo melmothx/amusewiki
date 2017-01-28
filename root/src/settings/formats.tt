@@ -18,14 +18,16 @@
         </td>
         <td>
           [% IF format.active %]
-            <form action="[% format.deactivate_url %]" method="POST">
+            <form action="[% format.deactivate_url %]" method="POST"
+                  id="format-activate-[% format.id %]">
               <input type="hidden" name="go" value="1" />
               <button type="submit" class="btn btn-default">
                 <span class="fa fa-check-square-o"></span>
               </button>
             </form>
           [% ELSE %]
-            <form action="[% format.activate_url %]" method="POST">
+            <form action="[% format.activate_url %]" method="POST"
+                  id="format-activate-[% format.id %]">
               <input type="hidden" name="go" value="1" />
               <button type="submit" class="btn btn-default">
                 <span class="fa fa-square-o"></span>
