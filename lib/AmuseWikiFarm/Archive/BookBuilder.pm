@@ -951,6 +951,23 @@ if the schema name is C<4up>.
 
 =cut
 
+sub import_profile_from_params {
+    my ($self, %params) = @_;
+    if ($params{schema} and $params{schema} eq '4up') {
+        $params{signature} = delete $params{signature_4up};
+    }
+    foreach my $method ($self->profile_methods) {
+        # ignore coverfile when importing from the params
+        try {
+            $self->$method($params{$method})
+        } catch {
+            my $error = $_;
+            log_warn { $error->message };
+        };
+    }
+}
+
+
 sub import_from_params {
     my ($self, %params) = @_;
     if ($params{schema} and $params{schema} eq '4up') {
@@ -972,13 +989,23 @@ sub import_from_params {
 }
 
 sub _main_methods {
+    return (__PACKAGE__->_text_methods, __PACKAGE__->profile_methods);
+}
+
+sub _text_methods {
     return qw/title
               subtitle
               author
               date
               notes
               source
-              format
+              coverfile
+              coverwidth
+             /;
+}
+
+sub profile_methods {
+    return qw/format
               epub_embed_fonts
               mainfont
               sansfont
@@ -986,10 +1013,8 @@ sub _main_methods {
               beamercolortheme
               beamertheme
               fontsize
-              coverfile
               division
               bcor
-              coverwidth
               twoside
               notoc
               nocoverpage
@@ -1338,13 +1363,9 @@ sub serialize_json {
 
 sub serialize_profile {
     my $self = shift;
-    my %exclusions = (
-                      coverfile => 1, # this will  get removed
-                      coverwidth => 1,  # see above
-                     );
     my %args;
-    foreach my $method ($self->_main_methods) {
-        $args{$method} = $self->$method unless $exclusions{$method};
+    foreach my $method ($self->profile_methods) {
+        $args{$method} = $self->$method;
     }
     return \%args;
 }

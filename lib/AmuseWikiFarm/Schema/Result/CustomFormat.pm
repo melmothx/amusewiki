@@ -392,6 +392,7 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:r4/lE3WGLEWerpNNpUXzkg
 
 use Try::Tiny;
+use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Archive::BookBuilder;
 
 sub update_from_params {
@@ -401,6 +402,13 @@ sub update_from_params {
         foreach my $meta (qw/format_description format_name/) {
             if (defined $params->{$meta}) {
                 $self->$meta(delete $params->{$meta});
+            }
+            my $bb = $self->bookbuilder;
+            $bb->import_profile_from_params(%$params);
+            my $out = $bb->serialize_profile;
+            foreach my $k (keys %$out) {
+                my $method = 'bb_' . $k;
+                $self->$method($out->{$k});
             }
         }
         $self->update if $self->is_changed;
@@ -413,8 +421,20 @@ sub update_from_params {
 
 sub bookbuilder {
     my ($self) = @_;
-    return AmuseWikiFarm::Archive::BookBuilder->new(site => $self->site);
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new(site => $self->site);
+    foreach my $accessor ($bb->profile_methods) {
+        my $column = 'bb_' . $accessor;
+        try {
+            $bb->$accessor($self->$column);
+        } catch {
+            my $error = $_;
+            log_warn { $column . ' => ' . $error->message };
+        };
+    }
+    return $bb;
 }
+
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
