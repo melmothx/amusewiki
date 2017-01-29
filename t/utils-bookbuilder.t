@@ -23,7 +23,7 @@ use AmuseWikiFarm::Archive::BookBuilder;
 my $pdftotext = system('pdftotext', '-v') == 0 ? 1 : 0;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-ok (-d AmuseWikiFarm::Archive::BookBuilder->customdir, "Found " . AmuseWikiFarm::Archive::BookBuilder->customdir);
+ok (-d AmuseWikiFarm::Archive::BookBuilder->filedir, "Found " . AmuseWikiFarm::Archive::BookBuilder->filedir);
 
 {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
@@ -516,10 +516,10 @@ sub check_file {
             $check_logo = basename($logo);
         }
     }
-    my $file = File::Spec->catfile($bb->customdir, $out);
+    my $file = File::Spec->catfile($bb->filedir, $out);
     ok (-f $file, "$msg: $out: $file exists");
     foreach my $f ($bb->produced_files) {
-        my $abs = File::Spec->catfile($bb->customdir, $f);
+        my $abs = File::Spec->catfile($bb->filedir, $f);
         ok (-f $abs, "$msg: $f exists in $abs");
         if ($f =~ m/(.+)\.zip/) {
             diag "found the zip $1";

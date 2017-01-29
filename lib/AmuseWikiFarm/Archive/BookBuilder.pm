@@ -151,18 +151,8 @@ Defaults are sane.
 
 =over 4
 
-=item customdir
-
-Alias for filedir.
-
-=back
-
 =cut
 
-
-sub customdir {
-    return shift->filedir;
-}
 
 sub jobdir {
     return shift->filedir;
