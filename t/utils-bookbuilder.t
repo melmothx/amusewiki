@@ -49,7 +49,7 @@ ok (-d AmuseWikiFarm::Archive::BookBuilder->filedir, "Found " . AmuseWikiFarm::A
         $bb->format($format);
         $bb->add_text('first-test');
         if ($format eq 'pdf') {
-            my $pdffile = File::Spec->catfile($bb->jobdir,
+            my $pdffile = File::Spec->catfile($bb->filedir,
                                           $bb->compile);
             my $pdf = CAM::PDF->new($pdffile);
             my ($font) = ($pdf->getFonts(1));
@@ -58,7 +58,7 @@ ok (-d AmuseWikiFarm::Archive::BookBuilder->filedir, "Found " . AmuseWikiFarm::A
             like $font->{BaseFont}->{value}, qr/Pagella/, "Font is correct";
         }
         elsif ($format eq 'epub') {
-            my $epub = File::Spec->catfile($bb->jobdir,
+            my $epub = File::Spec->catfile($bb->filedir,
                                            $bb->compile);
             ok (-f $epub);
             my $tmpdir = File::Temp->newdir(CLEANUP => 1);

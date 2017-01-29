@@ -149,15 +149,6 @@ sub _build_site {
 
 Defaults are sane.
 
-=over 4
-
-=cut
-
-
-sub jobdir {
-    return shift->filedir;
-}
-
 =head2 error
 
 Accesso to the error (set by the object).
@@ -1113,7 +1104,7 @@ sub compile {
     my ($self, $logger) = @_;
     die "Can't compile a file without a job id!" unless $self->job_id;
     $logger ||= sub { print @_; };
-    my $jobdir = File::Spec->rel2abs($self->jobdir);
+    my $jobdir = File::Spec->rel2abs($self->filedir);
     my $homedir = getcwd();
     die "In the wrong dir: $homedir" unless -d $jobdir;
     my $data = $self->as_job;
