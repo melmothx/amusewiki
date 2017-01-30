@@ -347,14 +347,14 @@ $(document).ready(function(){
       <div class="center">
         <h3>1</h3>
         <img src="[% c.uri_for('/static/images/bb-instructions-1.png') %]"
-             width="350px" />
+             class="img-responsive img-thumbnail" />
       </div>
     </div>
     <div class="col-md-6">
       <div class="center">
         <h3>2</h3>
         <img src="[% c.uri_for('/static/images/bb-instructions-2.png') %]"
-             width="350px" />
+             class="img-responsive img-thumbnail" />
       </div>
     </div>
   </div>
