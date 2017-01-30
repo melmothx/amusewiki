@@ -6,7 +6,7 @@ cd `dirname $0`
 if [ "$1" = "" ]; then
     echo "Usage: $0 [ start | stop | restart | reboot ]"
     echo ""
-    echo "reboot is meant for cronjobs @reboot and ignore pid files"
+    echo "reboot is meant for cronjobs @reboot and unconditionally removes pid files before proceeding"
     exit 2
 fi
 
