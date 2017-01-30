@@ -394,6 +394,8 @@ __PACKAGE__->belongs_to(
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Archive::BookBuilder;
+use File::Temp;
+use File::Copy qw/copy/;
 
 sub update_from_params {
     my ($self, $params) = @_;
@@ -421,7 +423,10 @@ sub update_from_params {
 
 sub bookbuilder {
     my ($self) = @_;
-    my $bb = AmuseWikiFarm::Archive::BookBuilder->new(site => $self->site);
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new(site => $self->site,
+                                                      job_id => 1, # dummy
+                                                      filedir => File::Temp->newdir,
+                                                     );
     foreach my $accessor ($bb->profile_methods) {
         my $column = 'bb_' . $accessor;
         try {
@@ -434,7 +439,62 @@ sub bookbuilder {
     return $bb;
 }
 
+sub compile {
+    my ($self, $muse, $logger) = @_;
+    return unless $muse;
+    my $ext = $self->extension;
+    return unless $ext;
+    log_debug { "Compiling $muse" };
+    my $bb = $self->bookbuilder;
+    if ($muse =~ m/([a-z0-9-]+)\.muse\z/) {
+        my $basename = $1;
+        if (my $title = $self->site->titles->text_by_uri($basename)) {
+            return if $title->deleted;
+            $bb->textlist([$basename]);
+            $bb->compile($logger);
+            my $file = $bb->produced_filename_full_path;
+            if (-f $file) {
+                log_debug { "Produced $file" };
+                my $target = $title->f_full_path_name;
+                $target =~ s/\.muse\z/$ext/;
+                log_debug { "Saving $file to $target" };
+                copy($file, $target) or log_error { "Couldn't copy $file to $target $!" };
+                return $basename . $ext;
+            }
+            else {
+                log_error { "$file was not produced!" };
+            }
+        }
+        else {
+            log_warn { "$basename couldn't be found" };
+        }
+    }
+    else {
+        log_warn { "Invalid name passed: $muse" };
+    }
+    return;
+}
 
+sub is_epub {
+    return shift->bb_format eq 'epub';
+}
+
+sub is_pdf {
+    return shift->bb_format eq 'pdf';
+}
+
+sub extension {
+    my $self = shift;
+    my $code = $self->custom_formats_id;
+    my $format = $self->bb_format;
+    if ($format eq 'pdf' or $format eq 'epub') {
+        return ".c${code}.${format}";
+    }
+    else {
+        log_error { "format $format is invalid" };
+    }
+    return;
+}
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;

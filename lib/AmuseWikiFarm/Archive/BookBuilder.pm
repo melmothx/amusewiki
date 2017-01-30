@@ -287,11 +287,12 @@ has textlist => (is => 'rw',
 
 =head2 filedir
 
-The directory with BB files: C<bbfiles>. It's a constant
+The directory with BB files: C<bbfiles>.
 
 =cut
 
-sub filedir { return 'bbfiles' }
+has filedir => (is => 'ro',
+                default => sub { return 'bbfiles' });
 
 =head2 coverfile
 
@@ -1067,6 +1068,11 @@ sub as_job {
 Compile 
 
 =cut
+
+sub produced_filename_full_path {
+    my $self = shift;
+    return File::Spec->catfile($self->filedir, $self->produced_filename);
+}
 
 sub produced_filename {
     my $self = shift;
