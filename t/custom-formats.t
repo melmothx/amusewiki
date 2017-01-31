@@ -70,8 +70,8 @@ foreach my $format (qw/epub pdf/) {
     $mech->get_ok("/library/$out");
     my $ext = $cf->extension;
     my $file = $text->f_full_path_name;
-    $file =~ s/\.muse\z/$ext/;
-    ok (-f $file, "$out found");
+    $file =~ s/\.muse\z/.$ext/;
+    ok (-f $file, "$file found");
 }
 
 

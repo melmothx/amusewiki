@@ -455,11 +455,10 @@ sub compile {
             my $file = $bb->produced_filename_full_path;
             if (-f $file) {
                 log_debug { "Produced $file" };
-                my $target = $title->f_full_path_name;
-                $target =~ s/\.muse\z/$ext/;
+                my $target = $title->filepath_for_ext($ext);
                 log_debug { "Saving $file to $target" };
                 copy($file, $target) or log_error { "Couldn't copy $file to $target $!" };
-                return $basename . $ext;
+                return $basename . '.' . $ext;
             }
             else {
                 log_error { "$file was not produced!" };
@@ -488,7 +487,7 @@ sub extension {
     my $code = $self->custom_formats_id;
     my $format = $self->bb_format;
     if ($format eq 'pdf' or $format eq 'epub') {
-        return ".c${code}.${format}";
+        return "c${code}.${format}";
     }
     else {
         log_error { "format $format is invalid" };
