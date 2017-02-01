@@ -1339,6 +1339,7 @@ sub compile {
     if ($self->is_single_file) {
         my $expected = $textobj->filepath_for_ext($self->single_file_extension);
         die "$expected was not produced, this is a bug" unless (-f $expected);
+        $logger->("* Created " . $textobj->uri . '.' . $self->single_file_extension . "\n");
         return $expected;
     }
     # create a zip archive with the temporary directory and serve it.
