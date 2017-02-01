@@ -24,6 +24,8 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
                   \.   # dot
                   # and extensions we provide
                   (
+                      c[0-9]+\.pdf |
+                      c[0-9]+\.epub |
                       a4\.pdf |
                       lt\.pdf |
                       sl\.tex |
