@@ -40,40 +40,93 @@ $mech->get('/settings/formats');
 is $mech->status, '401';
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 is $mech->status, '200';
-my $name = "my custom format";
-$mech->submit_form(with_fields => {
-                                   format_name => $name,
-                                  });
-$mech->content_contains($name);
-is $site->custom_formats->active_only->count, 1, "format created";
-my $cf = $site->custom_formats->first;
 
-$mech->get_ok('/settings/formats');
-$mech->submit_form(form_id => 'format-activate-' . $cf->custom_formats_id );
-$mech->get_ok('/admin/sites/edit/' . $site->id) or die;
-$mech->content_lacks($name);
-$mech->get_ok('/user/site');
-$mech->content_lacks($name);
+my @cfs;
+foreach my $f (qw/epub pdf/) {
+    $mech->get_ok('/settings/formats');
+    my $name = "my custom format $f";
+    $mech->submit_form(with_fields => {
+                                       format_name => $name,
+                                      });
+    $mech->content_contains($name);
+    $mech->submit_form(with_fields => {
+                                       format_name => $name,
+                                       format => $f,
+                                      },
+                       button => 'update',
+                      );
+    $mech->content_contains($name);
+    my $cf = $site->custom_formats->active_only->search({ bb_format => $f })->first;
+    ok($cf, "Found the format");
+    push @cfs, $cf;
+}
 
-$mech->get_ok('/settings/formats');
-$mech->submit_form(form_id => 'format-activate-' . $cf->custom_formats_id);
-$mech->get_ok('/admin/sites/edit/' . $site->id);
-$mech->content_contains($name);
-$mech->get_ok('/user/site');
-$mech->content_contains($name);
+foreach my $cf (@cfs) {
+    my $name = $cf->format_name;
+    $mech->get_ok('/settings/formats');
+    $mech->submit_form(form_id => 'format-activate-' . $cf->custom_formats_id );
+    $mech->get_ok('/admin/sites/edit/' . $site->id) or die;
+    $mech->content_lacks($name);
+    $mech->get_ok('/user/site');
+    $mech->content_lacks($name);
+    $mech->get_ok('/settings/formats');
+    $mech->submit_form(form_id => 'format-activate-' . $cf->custom_formats_id);
+    $mech->get_ok('/admin/sites/edit/' . $site->id);
+    $mech->content_contains($name);
+    $mech->get_ok('/user/site');
+    $mech->content_contains($name);
+    ok $cf->bookbuilder;
+}
 
-ok $cf->bookbuilder;
-foreach my $format (qw/epub pdf/) {
-    $cf->update({ bb_format => $format });
+my @links;
+my @gen_files;
+
+foreach my $cf (@cfs) {
     my $out = $cf->compile($text->f_full_path_name);
     ok $out, "Produced $out" or die;
+    push @links, "/library/$out";
     $mech->get_ok("/library/$out");
     my $ext = $cf->extension;
     my $file = $text->f_full_path_name;
     $file =~ s/\.muse\z/.$ext/;
     ok (-f $file, "$file found");
+    push @gen_files, $file;
+    diag "Removing $file";
+    unlink $file or die "Cannot unlink $file $!";
 }
 
+{
+    foreach my $file (@gen_files) {
+        ok(! -f $file, "$file doesn't exist");
+    }
+    diag "Checking if the files are generated";
+    $site->compile_and_index_files([keys %{ $site->repo_find_files }]);
+
+    foreach my $link (@links) {
+        $mech->get_ok($link);
+    }
+    foreach my $file (@gen_files) {
+        ok(-f $file, "$file exists now");
+    }
+}
+
+# and a rebuild
+{
+    foreach my $file (@gen_files) {
+        ok(unlink $file, "$file removed");
+    }
+    foreach my $title ($site->titles->all) {
+        $site->jobs->enqueue(rebuild => { id => $title->id }, 0);
+        my $job = $site->jobs->dequeue;
+        $job->dispatch_job;
+        is $job->status, 'completed';
+    }
+    foreach my $file (@gen_files) {
+        ok(-f $file, "$file exists now");
+    }
+}
+
+diag Dumper(\@gen_files, \@links);
 
 $site->delete;
 is($schema->resultset('CustomFormat')->search({ site_id => $site_id })->count, 0,

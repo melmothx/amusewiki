@@ -1454,6 +1454,7 @@ sub compile_and_index_files {
     my ($self, $files, $logger) = @_;
     $logger ||= sub { warn $_[0] };
     my $compiler = $self->get_compiler($logger);
+    my @cfs = @{$self->active_custom_formats};
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
@@ -1477,6 +1478,9 @@ sub compile_and_index_files {
             $compiler->compile($file);
         }
         $self->index_file($file, $logger);
+        foreach my $cf (@cfs) {
+            $cf->compile($file, $logger);
+        }
     }
     $logger->("Updating title and category sorting\n");
     my $time = time();
