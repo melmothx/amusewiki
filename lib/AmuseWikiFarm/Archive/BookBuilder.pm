@@ -1034,8 +1034,12 @@ Main method to create a structure to feed the jobber for the building
 sub as_job {
     my $self = shift;
     my $job = {
-               text_list => [ @{$self->texts} ],
-               $self->_muse_virtual_headers,
+               ($self->is_single_file ? ()
+                : (
+                   text_list => [ @{$self->texts} ],
+                   $self->_muse_virtual_headers,
+                  )
+               ),
                template_options => {
                                     twoside     => $self->twoside,
                                     nocoverpage => $self->nocoverpage,
@@ -1050,10 +1054,17 @@ sub as_job {
                                     monofont    => $self->monofont,
                                     beamertheme => $self->beamertheme,
                                     beamercolortheme => $self->beamercolortheme,
-                                    coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
                                     opening     => $self->opening,
-                                    cover       => $self->coverfile,
-                                   },
+
+                                    ($self->is_single_file ? ()
+                                     : (
+                                        # when we provide these, they take precedence over the file defined
+                                        # see Text::Amuse::Compile::File
+                                        cover       => $self->coverfile,
+                                        coverwidth  => sprintf('%.2f', $self->coverwidth / 100),
+                                       )
+                                    ),
+                                 },
               };
     log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
     if (!$self->epub && !$self->slides && $self->imposed) {
@@ -1199,6 +1210,7 @@ sub compile {
                          epub => $self->epub,
                          epub_embed_fonts => $self->epub_embed_fonts,
                         );
+    # inherited from site
     foreach my $setting (qw/luatex ttdir fontspec/) {
         if ($compile_opts{$setting}) {
             $compiler_args{$setting} = $compile_opts{$setting};
