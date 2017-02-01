@@ -82,6 +82,15 @@ has epub_embed_fonts => (is => 'rw',
                          isa => "Bool",
                          default => sub { 1 });
 
+has is_single_file => (is => 'ro',
+                       isa => 'Bool',
+                       default => sub { 0 });
+
+has single_file_extension => (is => 'ro',
+                              isa => 'Str',
+                              default => sub { '' });
+
+
 sub load_from_token {
     my ($self, $token) = @_;
     if (my $row = $self->site->bookbuilder_sessions->from_token($token)) {
@@ -287,12 +296,11 @@ has textlist => (is => 'rw',
 
 =head2 filedir
 
-The directory with BB files: C<bbfiles>.
+The directory with BB files: C<bbfiles>. It's a constant.
 
 =cut
 
-has filedir => (is => 'ro',
-                default => sub { return 'bbfiles' });
+sub filedir { return 'bbfiles' }
 
 =head2 coverfile
 
@@ -1105,20 +1113,30 @@ sub _produced_file {
     return $base . '.' . $ext;
 }
 
+# this method is way too long
 
 sub compile {
-    my ($self, $logger) = @_;
-    die "Can't compile a file without a job id!" unless $self->job_id;
+    my ($self, $logger, $textobj) = @_;
     $logger ||= sub { print @_; };
-    my $jobdir = File::Spec->rel2abs($self->filedir);
+    if ($self->is_single_file) {
+        die "Missing text object argument" unless $textobj && $textobj->can('f_full_path_name');
+        die "Extension is bad" unless $self->single_file_extension =~ m/\Ac[0-9]+\.(pdf|epub)\z/;
+        if ($textobj->deleted) {
+            my $expected = $textobj->filepath_for_ext($self->single_file_extension);
+            if (-f $expected) {
+                log_info { "Removing $expected due to deletion in the db" };
+                unlink $expected or log_error { "Cannot unlink $expected $!" };
+            }
+            return;
+        }
+    }
+    else {
+        die "Can't compile a file without a job id!" unless $self->job_id;
+    }
+    my $jobdir = $self->is_single_file ? $textobj->parent_dir : File::Spec->rel2abs($self->filedir);
     my $homedir = getcwd();
     die "In the wrong dir: $homedir" unless -d $jobdir;
     my $data = $self->as_job;
-    # print Dumper($data);
-    # first, get the text list
-    my $textlist = $data->{text_list};
-
-    # print $self->site->id, "\n";
 
     my %compile_opts = $self->site->compile_options;
     my $template_opts = $compile_opts{extra};
@@ -1137,28 +1155,32 @@ sub compile {
         return File::Spec->catfile($basedir, $name);
     };
 
-    # print "Created $basedir\n";
+    my (%archives, @texts);
 
-    my %archives;
-
-    # validate the texts passed looking up the uri in the db
-    my @texts;
-    Dlog_debug { "Text list is $_" } $textlist;
-    foreach my $filename (@$textlist) {
-        my $fileobj = Text::Amuse::Compile::FileName->new($filename);
-        my $text = $fileobj->name;
-        log_debug { "Checking $text" };
-        my $title = $self->site->titles->text_by_uri($text);
-        unless ($title) {
-            log_warn  { "Couldn't find $text\n" };
-            next;
-        }
-        push @texts, $fileobj;
-        if ($archives{$text}) {
-            next;
-        }
-        else {
-            $archives{$text} = $title->filepath_for_ext('zip');
+    if ($self->is_single_file) {
+        push @texts, Text::Amuse::Compile::FileName->new($textobj->uri);
+        $archives{$textobj->uri} = $textobj->filepath_for_ext('zip');
+    }
+    else {
+        my $textlist = $data->{text_list};
+        # validate the texts passed looking up the uri in the db
+        Dlog_debug { "Text list is $_" } $textlist;
+        foreach my $filename (@$textlist) {
+            my $fileobj = Text::Amuse::Compile::FileName->new($filename);
+            my $text = $fileobj->name;
+            log_debug { "Checking $text" };
+            my $title = $self->site->titles->text_by_uri($text);
+            unless ($title) {
+                log_warn  { "Couldn't find $text\n" };
+                next;
+            }
+            push @texts, $fileobj;
+            if ($archives{$text}) {
+                next;
+            }
+            else {
+                $archives{$text} = $title->filepath_for_ext('zip');
+            }
         }
     }
     die "No text found!" unless @texts;
@@ -1195,7 +1217,8 @@ sub compile {
         $zip->extractTree($archive, $basedir);
     }
     Dlog_debug { "Compiler args are: $_" } \%compiler_args;
-    if (my $coverfile = $self->coverfile_path) {
+    if (!$self->is_single_file and
+        my $coverfile = $self->coverfile_path) {
         my $coverfile_ok = 0;
         if (-f $coverfile) {
             my $coverfile_dest = $makeabs->($self->coverfile);
@@ -1222,7 +1245,12 @@ sub compile {
         }
     }
 
-    if (my $logo = $compiler_args{extra}{logo}) {
+    # not needed if it's a single file. If compiles in the tree will
+    # compile here as well. I think. I think we copy it here because
+    # the zip we ship is without the logo, so it would be not
+    # reproducible.
+    if (!$self->is_single_file and
+        my $logo = $compiler_args{extra}{logo}) {
         log_debug {"Logo is $logo"};
         my $logofile_ok = 0;
         if (my $logofile = $self->_find_logo($logo)) {
@@ -1244,13 +1272,21 @@ sub compile {
 
     Dlog_debug { "compiler args are $_" } \%compiler_args;
     my $compiler = Text::Amuse::Compile->new(%compiler_args);
-    my $outfile = $makeabs->($self->produced_filename);
+    my $outfile;
+    if ($self->is_single_file) {
+        $outfile = $makeabs->($textobj->uri . '.' . $self->single_file_extension);
+    }
+    else {
+        $outfile = $makeabs->($self->produced_filename);
+    }
 
     if (@texts == 1 and !$texts[0]->fragments) {
         my $basename = shift(@texts);
         my $fileout   = $makeabs->($basename->name . '.' . $self->_produced_file_extension);
+        # here we get just basename.ext
         $compiler->compile($makeabs->($basename->name_with_ext_and_fragments));
         if (-f $fileout) {
+            # rename
             move($fileout, $outfile) or die "Couldn't move $fileout to $outfile";
         }
     }
@@ -1275,8 +1311,9 @@ sub compile {
         $logger->("* Imposing the PDF\n");
         my %args = %{$data->{imposer_options}};
         $args{file}    =  $outfile;
-        $args{outfile} = $makeabs->($self->job_id. '.imp.pdf');
-        $args{suffix}  = 'imp';
+        # shouldn't be needed and it's deprecated to mix the tow
+        # $args{outfile} = $makeabs->($self->job_id. '.imp.pdf');
+        $args{suffix}  = '_imp';
         Dlog_debug { "Args are $_" } \%args;
         my $imposer = PDF::Imposition->new(%args);
         $imposer->impose;
@@ -1286,7 +1323,12 @@ sub compile {
         move($imposed_file, $outfile) or die "Copy to $outfile failed $!";
     }
     copy($outfile, $jobdir) or die "Copy $outfile to $jobdir failed $!";
-
+    # zip is not needed for the single file
+    if ($self->is_single_file) {
+        my $expected = $textobj->filepath_for_ext($self->single_file_extension);
+        die "$expected was not produced, this is a bug" unless (-f $expected);
+        return $expected;
+    }
     # create a zip archive with the temporary directory and serve it.
     my $zipdir = Archive::Zip->new;
     my $zipname = $self->sources_filename;

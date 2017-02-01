@@ -1479,7 +1479,12 @@ sub compile_and_index_files {
         }
         $self->index_file($file, $logger);
         foreach my $cf (@cfs) {
-            $cf->compile($file, $logger);
+            if (my $text = $self->titles->search({ f_full_path_name => $file })->first) {
+                $cf->compile($text, $logger);
+            }
+            else {
+                log_error { "Couldn't find $file in the db!" };
+            }
         }
     }
     $logger->("Updating title and category sorting\n");

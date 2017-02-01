@@ -528,7 +528,7 @@ sub dispatch_job_rebuild {
                 my $compiler = $site->get_compiler($logger);
                 $compiler->compile($muse);
                 foreach my $cf (@cfs) {
-                    $cf->compile($muse, $logger);
+                    $cf->compile($text, $logger);
                 }
                 return $text->full_uri;
             }

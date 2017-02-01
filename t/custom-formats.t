@@ -29,10 +29,6 @@ foreach my $type (qw/text special/) {
     $rev->publish_text;
 }
 
-my $text = $site->titles->published_texts->first;
-diag $text->uri;
-diag $text->f_full_path_name;
-
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 $mech->get_ok('/');
@@ -81,18 +77,25 @@ foreach my $cf (@cfs) {
 my @links;
 my @gen_files;
 
-foreach my $cf (@cfs) {
-    my $out = $cf->compile($text->f_full_path_name);
-    ok $out, "Produced $out" or die;
-    push @links, "/library/$out";
-    $mech->get_ok("/library/$out");
-    my $ext = $cf->extension;
-    my $file = $text->f_full_path_name;
-    $file =~ s/\.muse\z/.$ext/;
-    ok (-f $file, "$file found");
-    push @gen_files, $file;
-    diag "Removing $file";
-    unlink $file or die "Cannot unlink $file $!";
+foreach my $text ($site->titles->all) {
+    diag $text->uri;
+    diag $text->f_full_path_name;
+    ok $text->parent_dir and diag $text->parent_dir;
+    ok -d $text->parent_dir;
+    foreach my $cf (@cfs) {
+        my $out = $cf->compile($text, sub { diag @_ });
+        ok $out, "Produced $out" or die;
+        ok (-f $out, "$out was produced");
+        push @links, $text->full_uri . '.' . $cf->extension;
+        $mech->get_ok($text->full_uri . '.' . $cf->extension);
+        my $ext = $cf->extension;
+        my $file = $text->f_full_path_name;
+        $file =~ s/\.muse\z/.$ext/;
+        is($out, $file, "$file ok");
+        push @gen_files, $file;
+        diag "Removing $file";
+        unlink $file or die "Cannot unlink $file $!";
+    }
 }
 
 {
@@ -123,6 +126,22 @@ foreach my $cf (@cfs) {
     }
     foreach my $file (@gen_files) {
         ok(-f $file, "$file exists now");
+    }
+}
+
+# and a deletion
+{
+    foreach my $file (@gen_files) {
+        ok(-f  $file, "$file present");
+    }
+    foreach my $del ($site->titles->all) {
+        $del->update({ deleted => 'removed' });
+        foreach my $cf (@cfs) {
+            $cf->compile($del);
+        }
+    }
+    foreach my $file (@gen_files) {
+        ok(! -f  $file, "$file removed");
     }
 }
 
