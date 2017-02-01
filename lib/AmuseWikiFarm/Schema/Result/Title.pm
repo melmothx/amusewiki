@@ -461,6 +461,7 @@ use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
 use HTML::Entities qw/decode_entities/;
 use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
+use Path::Tiny qw//;
 
 =head2 listing
 
@@ -1092,6 +1093,14 @@ sub newer_text {
 
 sub older_text {
     return shift->older_texts->search(undef, { rows => 1 })->first;
+}
+
+sub path_tiny {
+    return Path::Tiny::path(shift->f_full_path_name);
+}
+
+sub parent_dir {
+    shift->path_tiny->parent->stringify;
 }
 
 __PACKAGE__->meta->make_immutable;
