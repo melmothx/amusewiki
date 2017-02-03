@@ -4,7 +4,7 @@
       <a href="[% c.uri_for_action('/tasks/rebuild') %]">[% loc('Rebuilding') %]</a>
     </li>
     <li class="active">
-      [% loc(bulk_job.task) %]
+      [% site.sitename | html %]
     </li>
   </ol>
 </div>
