@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More;
+use Test::More tests => 104;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -82,6 +82,10 @@ foreach my $text ($site->titles->all) {
     diag $text->f_full_path_name;
     ok $text->parent_dir and diag $text->parent_dir;
     ok -d $text->parent_dir;
+    $mech->get_ok($text->full_uri);
+    foreach my $cf (@cfs) {
+        $mech->content_lacks($cf->format_name);
+    }
     foreach my $cf (@cfs) {
         my $out = $cf->compile($text, sub { diag @_ });
         ok $out, "Produced $out" or die;
@@ -93,8 +97,12 @@ foreach my $text ($site->titles->all) {
         $file =~ s/\.muse\z/.$ext/;
         is($out, $file, "$file ok");
         push @gen_files, $file;
+        $mech->get_ok($text->full_uri);
+        $mech->content_contains($cf->format_name) if $text->is_regular;
         diag "Removing $file";
         unlink $file or die "Cannot unlink $file $!";
+        $mech->get_ok($text->full_uri);
+        $mech->content_lacks($cf->format_name);
     }
 }
 
@@ -150,4 +158,4 @@ diag Dumper(\@gen_files, \@links);
 $site->delete;
 is($schema->resultset('CustomFormat')->search({ site_id => $site_id })->count, 0,
    "Custom format is gone after site deletion");
-done_testing;
+

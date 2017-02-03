@@ -197,6 +197,20 @@
                 ></span><span class="sr-only">[% loc('EPUB (for mobile devices)') %]</span></a>
       </span>
       [% END %]
+      [% FOREACH cformat IN site.active_custom_formats %]
+        [% IF text.check_if_file_exists(cformat.extension) %]
+        <span>
+          <a href="[% basename %].[% cformat.extension %]" class="amw-register-stat"
+             data-amw-register-stat-type="[% cformat.extension %]">
+            <span class="fa [% IF cformat.is_epub %]fa-tablet[% ELSE %]fa-file-pdf-o[% END %] fa-2x fa-border fw"
+                  aria-hidden="true"
+                  title="[% loc(cformat.format_name) %]"
+                  data-toggle="tooltip" data-placement="top"
+            ></span><span class="sr-only">[% loc(cformat.format_name) %]</span></a>
+          </a>
+        </span>
+        [% END %]
+      [% END %]
       [% IF site.html && text.check_if_file_exists('html') %]
       <span id="downloadhtml">
         <a href="[% basename %].html" class="amw-register-stat"
