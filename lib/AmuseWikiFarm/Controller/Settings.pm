@@ -35,6 +35,10 @@ sub list_custom_formats :Chained('settings') :PathPart('formats') :CaptureArgs(0
     }
     $c->stash(breadcrumbs => [
                               {
+                               uri => $c->uri_for_action('/user/site_config'),
+                               label => $c->loc('Edit site configuration'),
+                              },
+                              {
                                uri => $c->uri_for_action('/settings/formats'),
                                label => $c->loc('Custom formats for [_1]', $c->stash->{site}->canonical),
                               },
