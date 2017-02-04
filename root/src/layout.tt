@@ -283,7 +283,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-plus fw"></span>
+                <span class="fa fa-ellipsis-h fw"></span>
                 <span class="visible-lg-inline visible-xs-inline" id="awm-special-label">
                   [% loc('More') %]
                 </span>

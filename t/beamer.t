@@ -131,5 +131,5 @@ $bb->delete_all;
 ok($bb->add_text('slides'), "added slides.muse");
 $bb->compile;
 foreach my $f ($bb->produced_files) {
-    ok (-f catfile($bb->jobdir, $f), "$f exists") and unlink $f;
+    ok (-f catfile($bb->filedir, $f), "$f exists") and unlink $f;
 }

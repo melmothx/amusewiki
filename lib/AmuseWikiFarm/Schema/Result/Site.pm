@@ -618,6 +618,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 custom_formats
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::CustomFormat>
+
+=cut
+
+__PACKAGE__->has_many(
+  "custom_formats",
+  "AmuseWikiFarm::Schema::Result::CustomFormat",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 jobs
 
 Type: has_many
@@ -794,8 +809,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-11-12 17:15:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2kQ/DL6GXwhs2c/xnurs+w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-01-27 14:45:29
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4W3rY42BMjO+bI1PtthGgA
 
 =head2 other_sites
 
@@ -1059,7 +1074,12 @@ Return true if the site repo is kept under git.
 
 =cut
 
-sub repo_is_under_git {
+has repo_is_under_git => (is => 'ro',
+                          isa => 'Bool',
+                          lazy => 1,
+                          builder => '_build_repo_is_under_git');
+
+sub _build_repo_is_under_git {
     my $self = shift;
     return -d File::Spec->catdir($self->repo_root, '.git');
 }
@@ -1439,6 +1459,7 @@ sub compile_and_index_files {
     my ($self, $files, $logger) = @_;
     $logger ||= sub { warn $_[0] };
     my $compiler = $self->get_compiler($logger);
+    my @cfs = @{$self->active_custom_formats};
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
@@ -1462,6 +1483,14 @@ sub compile_and_index_files {
             $compiler->compile($file);
         }
         $self->index_file($file, $logger);
+        foreach my $cf (@cfs) {
+            if (my $text = $self->titles->search({ f_full_path_name => $file })->first) {
+                $cf->compile($text, $logger);
+            }
+            else {
+                log_error { "Couldn't find $file in the db!" };
+            }
+        }
     }
     $logger->("Updating title and category sorting\n");
     my $time = time();
@@ -3210,6 +3239,12 @@ sub rebuild_formats {
                                           }
                                      } @texts ]
                                     });
+}
+
+sub active_custom_formats {
+    my $self = shift;
+    my @all = $self->custom_formats->active_only;
+    return \@all;
 }
 
 

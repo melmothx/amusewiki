@@ -1,0 +1,60 @@
+[% INCLUDE 'include/breadcrumbs.tt' %]
+<div class="page-header">
+  <h2>[% page_title | html %]</h2>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered">
+    <tr>
+      <th>[% loc('Name') %]</th>
+      <th>[% loc('Description') %]</th>
+      <th>[% loc('Active') %]</th>
+    </tr>
+    [% FOREACH format IN format_list %]
+      <tr>
+        <td>
+          <a href="[% format.edit_url | html %]">[% format.name | html %]</a>
+        </td>
+        <td>
+          [% format.description | html %]
+        </td>
+        <td>
+          [% IF format.active %]
+            <form action="[% format.deactivate_url %]" method="POST"
+                  id="format-activate-[% format.id %]">
+              <input type="hidden" name="go" value="1" />
+              <button type="submit" class="btn btn-default">
+                <span class="fa fa-check-square-o"></span>
+              </button>
+            </form>
+          [% ELSE %]
+            <form action="[% format.activate_url %]" method="POST"
+                  id="format-activate-[% format.id %]">
+              <input type="hidden" name="go" value="1" />
+              <button type="submit" class="btn btn-default">
+                <span class="fa fa-square-o"></span>
+              </button>
+            </form>
+          [% END %]
+        </td>
+      </tr>
+    [% END %]
+  </table>
+</div>
+
+<div>
+  <form action="[% c.uri_for_action('/settings/create_format') %]" class="form-inline"
+        method="POST" id="creation-site-format-form"
+        role="form">
+    <div class="form-group">
+      <label for="format_name">
+        [% loc('Format name') %]
+      </label>
+      <input type="text" name="format_name" class="form-control" id="format_name"/>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">
+        [% loc('Create a new format') %]
+      </button>
+    </div>
+  </form>
+</div>

@@ -106,8 +106,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-07-16 17:22:19
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:JD9wxBFreACKLJfVdrRErg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-01-28 14:54:28
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AIyNX4AUWQ6z/gFFIS/0ww
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse ();

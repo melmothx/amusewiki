@@ -132,7 +132,7 @@ embedded=1
 logo=/git/cgit.png
 CONFIG
     foreach my $site ($schema->resultset('Site')->all) {
-        next unless $site->cgit_integration;
+        next unless $site->repo_is_under_git;
         my $path = File::Spec->rel2abs(catdir($self->amw_home, 'repo',
                                               $site->id, ".git"));
         unless (-d $path) {

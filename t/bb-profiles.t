@@ -31,8 +31,8 @@ foreach my $name (qw/profiler1 profiler2/) {
     is $user->bookbuilder_profiles->count, 0, 'No profiles found for user';
     ok !$user->bookbuilder_profiles->find(1), "No profile found with id 1";
     {
-        my $bb_title = $name . ' àć';
-        my $bb = AmuseWikiFarm::Archive::BookBuilder->new(title => $name . ' àć');
+        my $bbfont = $name . ' AC';
+        my $bb = AmuseWikiFarm::Archive::BookBuilder->new(mainfont => $bbfont);
         my $profile = $user->add_bb_profile(test => $bb);
         my $pid = $profile->bookbuilder_profile_id;
         ok $pid;
@@ -40,7 +40,7 @@ foreach my $name (qw/profiler1 profiler2/) {
         is $found->profile_name, "test", "Found the profile";
         is $user->bookbuilder_profiles->count, 1, "Found 1 profile";
         my $data = $user->bookbuilder_profiles->find($pid)->bookbuilder_arguments;
-        is $data->{title}, $bb_title;
+        is $data->{mainfont}, $bbfont;
         $found->update({ profile_data => 'alsdkfjlaskdjf'});
         is_deeply $found->bookbuilder_arguments, {}, "No args on random data";
     }
@@ -79,6 +79,7 @@ $mech->content_contains("/library/my-dummy-text");
 $mech->content_like(qr{/bookbuilder/profile/\d+\"});
 $mech->submit_form(with_fields => {
                                    title => 'this is the bookbuilder title',
+                                   schema => '1x4x2cutfoldbind',
                                   },
                    button => 'update');
 
@@ -92,10 +93,10 @@ $mech->submit_form(form_id => 'bb-create-profile-form',
 {
     $mech->submit_form(with_fields => {
                                        title => 'xxxxxxxxx',
+                                       schema => '2up',
                                       },
                        button => 'update');
-    $mech->content_contains("xxxxxxxxx");
-    $mech->content_lacks("this is the bookbuilder title");
+    $mech->content_unlike(qr{1x4x2cutfoldbind"\s+class="choose-schema"\s+checked="checked"}s);
     my $user = $schema->resultset('User')->find({ username => 'profiler1' });
     ok ($user);
     my $profile = $user->bookbuilder_profiles->search({
@@ -103,12 +104,13 @@ $mech->submit_form(form_id => 'bb-create-profile-form',
                                                       })->first;
     ok $profile;
     diag $profile->bookbuilder_profile_id;
-    like $profile->profile_data, qr{this is the bookbuilder title};
+    like $profile->profile_data, qr{1x4x2cutfoldbind};
     # and load it
     $mech->submit_form(form_id => 'bb-profile-operation-' . $profile->bookbuilder_profile_id,
                        button => 'profile_load');
-    $mech->content_contains('this is the bookbuilder title');
-    $mech->content_lacks("xxxxxxxxx", "title reset with load");
+    $mech->content_lacks('this is the bookbuilder title', "Title is not loaded from profile");
+    $mech->content_contains('xxxxxxxxx');
+    $mech->content_like(qr{1x4x2cutfoldbind"\s+class="choose-schema"\s+checked="checked"}s);
     $mech->get('/bookbuilder/profile/' . ($profile->bookbuilder_profile_id + 100));
     is $mech->status, '404';
 }

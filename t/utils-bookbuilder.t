@@ -23,7 +23,7 @@ use AmuseWikiFarm::Archive::BookBuilder;
 my $pdftotext = system('pdftotext', '-v') == 0 ? 1 : 0;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-ok (-d AmuseWikiFarm::Archive::BookBuilder->customdir, "Found " . AmuseWikiFarm::Archive::BookBuilder->customdir);
+ok (-d AmuseWikiFarm::Archive::BookBuilder->filedir, "Found " . AmuseWikiFarm::Archive::BookBuilder->filedir);
 
 {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
@@ -49,7 +49,7 @@ ok (-d AmuseWikiFarm::Archive::BookBuilder->customdir, "Found " . AmuseWikiFarm:
         $bb->format($format);
         $bb->add_text('first-test');
         if ($format eq 'pdf') {
-            my $pdffile = File::Spec->catfile($bb->jobdir,
+            my $pdffile = File::Spec->catfile($bb->filedir,
                                           $bb->compile);
             my $pdf = CAM::PDF->new($pdffile);
             my ($font) = ($pdf->getFonts(1));
@@ -58,7 +58,7 @@ ok (-d AmuseWikiFarm::Archive::BookBuilder->customdir, "Found " . AmuseWikiFarm:
             like $font->{BaseFont}->{value}, qr/Pagella/, "Font is correct";
         }
         elsif ($format eq 'epub') {
-            my $epub = File::Spec->catfile($bb->jobdir,
+            my $epub = File::Spec->catfile($bb->filedir,
                                            $bb->compile);
             ok (-f $epub);
             my $tmpdir = File::Temp->newdir(CLEANUP => 1);
@@ -516,10 +516,10 @@ sub check_file {
             $check_logo = basename($logo);
         }
     }
-    my $file = File::Spec->catfile($bb->customdir, $out);
+    my $file = File::Spec->catfile($bb->filedir, $out);
     ok (-f $file, "$msg: $out: $file exists");
     foreach my $f ($bb->produced_files) {
-        my $abs = File::Spec->catfile($bb->customdir, $f);
+        my $abs = File::Spec->catfile($bb->filedir, $f);
         ok (-f $abs, "$msg: $f exists in $abs");
         if ($f =~ m/(.+)\.zip/) {
             diag "found the zip $1";

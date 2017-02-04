@@ -126,7 +126,13 @@ sub try_to_authenticate :Private {
         }
     }
     $c->stash(inherit_params => \@carry_on) if @carry_on;
-    $c->stash(login_target_action => $self->get_secure_uri($c));
+    my $login_target_action = '';
+    my $secure_login_url = $self->get_secure_uri($c)->as_string;
+    if ($secure_login_url ne $c->request->uri->as_string) {
+        log_debug { "Turned " . $c->request->uri . " into $secure_login_url"};
+        $login_target_action = $secure_login_url;
+    }
+    $c->stash(login_target_action => $login_target_action);
     return 0;
 }
 

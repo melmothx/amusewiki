@@ -51,6 +51,8 @@ dbicdh/_source/deploy/3/001-auto-__VERSION.yml
 dbicdh/_source/deploy/3/001-auto.yml
 dbicdh/_source/deploy/30/001-auto-__VERSION.yml
 dbicdh/_source/deploy/30/001-auto.yml
+dbicdh/_source/deploy/31/001-auto-__VERSION.yml
+dbicdh/_source/deploy/31/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
 dbicdh/_source/deploy/4/001-auto.yml
 dbicdh/_source/deploy/5/001-auto-__VERSION.yml
@@ -109,6 +111,8 @@ dbicdh/MySQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/3/001-auto.sql
 dbicdh/MySQL/deploy/30/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/30/001-auto.sql
+dbicdh/MySQL/deploy/31/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/31/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/4/001-auto.sql
 dbicdh/MySQL/deploy/5/001-auto-__VERSION.sql
@@ -143,6 +147,7 @@ dbicdh/MySQL/upgrade/27-28/001-auto.sql
 dbicdh/MySQL/upgrade/28-29/001-auto.sql
 dbicdh/MySQL/upgrade/29-30/001-auto.sql
 dbicdh/MySQL/upgrade/3-4/001-auto.sql
+dbicdh/MySQL/upgrade/30-31/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
@@ -195,6 +200,8 @@ dbicdh/PostgreSQL/deploy/3/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/3/001-auto.sql
 dbicdh/PostgreSQL/deploy/30/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/30/001-auto.sql
+dbicdh/PostgreSQL/deploy/31/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/31/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/4/001-auto.sql
 dbicdh/PostgreSQL/deploy/5/001-auto-__VERSION.sql
@@ -229,6 +236,7 @@ dbicdh/PostgreSQL/upgrade/27-28/001-auto.sql
 dbicdh/PostgreSQL/upgrade/28-29/001-auto.sql
 dbicdh/PostgreSQL/upgrade/29-30/001-auto.sql
 dbicdh/PostgreSQL/upgrade/3-4/001-auto.sql
+dbicdh/PostgreSQL/upgrade/30-31/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
@@ -281,6 +289,8 @@ dbicdh/SQLite/deploy/3/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/3/001-auto.sql
 dbicdh/SQLite/deploy/30/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/30/001-auto.sql
+dbicdh/SQLite/deploy/31/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/31/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/4/001-auto.sql
 dbicdh/SQLite/deploy/5/001-auto-__VERSION.sql
@@ -315,6 +325,7 @@ dbicdh/SQLite/upgrade/27-28/001-auto.sql
 dbicdh/SQLite/upgrade/28-29/001-auto.sql
 dbicdh/SQLite/upgrade/29-30/001-auto.sql
 dbicdh/SQLite/upgrade/3-4/001-auto.sql
+dbicdh/SQLite/upgrade/30-31/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
@@ -349,6 +360,7 @@ lib/AmuseWikiFarm/Controller/OPDS.pm
 lib/AmuseWikiFarm/Controller/Publish.pm
 lib/AmuseWikiFarm/Controller/Root.pm
 lib/AmuseWikiFarm/Controller/Search.pm
+lib/AmuseWikiFarm/Controller/Settings.pm
 lib/AmuseWikiFarm/Controller/SiteFiles.pm
 lib/AmuseWikiFarm/Controller/Special.pm
 lib/AmuseWikiFarm/Controller/Stats.pm
@@ -395,6 +407,7 @@ lib/AmuseWikiFarm/Schema/Result/BulkJob.pm
 lib/AmuseWikiFarm/Schema/Result/Category.pm
 lib/AmuseWikiFarm/Schema/Result/CategoryDescription.pm
 lib/AmuseWikiFarm/Schema/Result/ColumnComment.pm
+lib/AmuseWikiFarm/Schema/Result/CustomFormat.pm
 lib/AmuseWikiFarm/Schema/Result/Job.pm
 lib/AmuseWikiFarm/Schema/Result/JobFile.pm
 lib/AmuseWikiFarm/Schema/Result/LegacyLink.pm
@@ -419,6 +432,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/BookbuilderSession.pm
 lib/AmuseWikiFarm/Schema/ResultSet/BulkJob.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Category.pm
 lib/AmuseWikiFarm/Schema/ResultSet/CategoryDescription.pm
+lib/AmuseWikiFarm/Schema/ResultSet/CustomFormat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Job.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Revision.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Site.pm
@@ -491,6 +505,7 @@ root/src/git/git.tt
 root/src/help/faq.tt
 root/src/help/irc.tt
 root/src/help/opds.tt
+root/src/include/bbform.tt
 root/src/include/breadcrumbs.tt
 root/src/include/bulk_job.tt
 root/src/include/ckeditor.tt
@@ -509,6 +524,8 @@ root/src/monthly/month.tt
 root/src/publish/pending.tt
 root/src/search/index.tt
 root/src/search/opensearch.tt
+root/src/settings/edit_format.tt
+root/src/settings/formats.tt
 root/src/special/display.tt
 root/src/stats/popular.tt
 root/src/tasks/display.tt
@@ -941,6 +958,7 @@ t/controller_Uploads.t
 t/controller_User.t
 t/controller_Utils.t
 t/crash-on-loc.t
+t/custom-formats.t
 t/custom-templates.t
 t/custom-templates/css.tt
 t/custom-templates/html.tt
