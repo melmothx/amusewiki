@@ -1,5 +1,11 @@
 amusewiki (2.010-2) unstable; urgency=medium
 
+  * Fix build
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 04 Feb 2017 12:55:08 +0100
+
+amusewiki (2.010-1) unstable; urgency=medium
+
   * New release
 
  -- Marco Pessotto <melmothx@gmail.com>  Sat, 04 Feb 2017 12:38:35 +0100
