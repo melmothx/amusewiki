@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 44;
+use Test::More tests => 52;
 use URI::Escape;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
