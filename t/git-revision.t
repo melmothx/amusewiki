@@ -122,7 +122,7 @@ my $text = $site->titles->find({ f_class => 'text',
                                  uri => 'first-test' });
 
 ok($text, "Text found");
-is ($text->recent_changes_uri, undef, "No recent_changes_uri");
+is ($text->recent_changes_uri, '/git/0gitz0/log/f/ft/first-test.muse', "No recent_changes_uri");
 
 $site->cgit_integration(1);
 $site->update;

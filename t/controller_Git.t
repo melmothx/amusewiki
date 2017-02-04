@@ -102,4 +102,14 @@ foreach my $text ({
     diag $mech->uri->path;
     $mech->content_like(qr{$body_re}s);
 }
+    $mech->get_ok('/git');
+    $site->update({ cgit_integration => 0 });
+    $mech->get_ok($site->titles->published_texts->first->full_uri);
+    $mech->content_lacks("/git/");
+    $mech->get('/git');
+    is $mech->status, 401;
+    ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }) or die;
+    $mech->get_ok('/git');
+    $mech->get_ok($site->titles->published_texts->first->full_uri);
+    $mech->content_contains("/git/");
 }

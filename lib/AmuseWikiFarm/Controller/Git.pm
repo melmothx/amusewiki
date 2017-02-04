@@ -1,5 +1,6 @@
 package AmuseWikiFarm::Controller::Git;
 use Moose;
+with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 
 use AmuseWikiFarm::Log::Contextual;
@@ -38,10 +39,15 @@ sub git :Chained('/site') :Args {
         $c->detach('/bad_request');
         return;
     }
-    unless ($site->cgit_integration && $site->repo_is_under_git) {
+    unless ($site->repo_is_under_git) {
+        # can't be helped, it's a 404, nothing to show.
         $c->detach('/not_found');
         return;
     }
+    # we show /git to users and require authentication if
+    # cgit_integration is false.
+    $self->check_login($c) unless $site->cgit_integration;
+
     my $cgit = $c->model('Webserver')->cgit_proxy;
     if ($cgit->disabled) {
         $c->detach('/not_found');

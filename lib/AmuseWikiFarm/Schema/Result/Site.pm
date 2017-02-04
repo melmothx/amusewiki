@@ -1074,7 +1074,12 @@ Return true if the site repo is kept under git.
 
 =cut
 
-sub repo_is_under_git {
+has repo_is_under_git => (is => 'ro',
+                          isa => 'Bool',
+                          lazy => 1,
+                          builder => '_build_repo_is_under_git');
+
+sub _build_repo_is_under_git {
     my $self = shift;
     return -d File::Spec->catdir($self->repo_root, '.git');
 }
