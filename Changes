@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.010 2017-02-04
+
+ - Show the git history to logged in even if hidden for anon (#94)
+ - Define, show and handle custom formats (#92)
+ - Fix mixed content on /user/edit (#93)
+
 2.001 2017-01-20
 
  - Fixed pagination problems when there are lots of texts with the
