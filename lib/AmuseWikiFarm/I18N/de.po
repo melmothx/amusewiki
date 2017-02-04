@@ -373,11 +373,11 @@ msgstr ""
 msgid "Couldn't build that"
 msgstr "Konnte das nicht binden"
 
-msgid "Cover image (optional)"
-msgstr ""
-
 msgid "Create"
 msgstr "Erstellen"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Eine neue BibliothekarIn erstellen"
@@ -416,6 +416,13 @@ msgstr "Neuer Text erstellt"
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Datum"
 
@@ -438,6 +445,9 @@ msgid ""
 msgstr ""
 "Eine Änderung zu löschen ist sicher, wenn ein Text bereits veröffentlicht "
 "wurde. Andernfalls gehen die unveröffentlichten Veränderungen verloren."
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr ""
@@ -491,6 +501,10 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Bearbeiten"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr ""
@@ -660,6 +674,9 @@ msgstr "Erzwinge Zeilenumbruch"
 
 msgid "Force publishing"
 msgstr "Erzwinge Veröffentlichung"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Format: jjjj-mm-tt hh:mm, z.B."

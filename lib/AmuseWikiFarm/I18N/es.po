@@ -398,11 +398,11 @@ msgstr "¡No se pudo generar automáticamente la URI!"
 msgid "Couldn't build that"
 msgstr "No se pudo crear eso"
 
-msgid "Cover image (optional)"
-msgstr "Imagen de portada (opcional)"
-
 msgid "Create"
 msgstr "Crear"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Crear un nuevo bibliotecario"
@@ -442,6 +442,13 @@ msgstr "Nuevo texto creado"
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Fecha"
 
@@ -464,6 +471,9 @@ msgid ""
 msgstr ""
 "Borrar una revisión es seguro solo si un texto ha sido publicado.\n"
 "    O si no, al borrarlo, perderás todos los cambios no publicados."
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr "Ítem de descripción"
@@ -522,6 +532,10 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Editar"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr ""
@@ -712,6 +726,9 @@ msgstr "Forzar un salto de línea."
 
 msgid "Force publishing"
 msgstr "Forzar publicación"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formato: yyyy-mm-dd hh:mm, ej."
@@ -2832,6 +2849,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Imagen de portada (opcional)"
 
 #~ msgid "Missing username or password"
 #~ msgstr "Falta nombre de usuaria/o o contraseña"

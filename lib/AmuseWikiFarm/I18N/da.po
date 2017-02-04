@@ -391,11 +391,11 @@ msgstr "Kunne ikke automatisk generere URI'en!"
 msgid "Couldn't build that"
 msgstr "Kunne ikke bygge den"
 
-msgid "Cover image (optional)"
-msgstr "Omslagsbillede (valgfrit)"
-
 msgid "Create"
 msgstr "Skab"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Skab en ny bibliotekar"
@@ -434,6 +434,13 @@ msgstr "Skabte ny tekst"
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Dato"
 
@@ -456,6 +463,9 @@ msgid ""
 msgstr ""
 "Det er sikkert at slette en revision hvis en tekst er blevet\n"
 "    publiceret. Hvis ikke mister du de ændringer som ikke er publiceret "
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr "Beskrivende element"
@@ -512,6 +522,10 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Rediger"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr ""
@@ -694,6 +708,9 @@ msgstr "Tving et linjeskift."
 
 msgid "Force publishing"
 msgstr "Tving publicering"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Format: dd-mm-åååå hh:mm, f.eks."
@@ -2727,6 +2744,9 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Omslagsbillede (valgfrit)"
 
 #~ msgid "Missing username or password"
 #~ msgstr "Manglende brugernavn eller kodeord"

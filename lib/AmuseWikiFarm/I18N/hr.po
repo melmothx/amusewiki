@@ -382,11 +382,11 @@ msgstr "Nemoguće automatski generirati jedan URI za ovaj tekst"
 msgid "Couldn't build that"
 msgstr "Ne mogu stvoriti zbirku"
 
-msgid "Cover image (optional)"
-msgstr "Slika za naslovnicu (neobavezna)"
-
 msgid "Create"
 msgstr "Stvori"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Stvori novog bibliotekara"
@@ -426,6 +426,13 @@ msgstr "Novi tekst stvoren"
 msgid "Current time"
 msgstr "Vrijeme"
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Datum"
 
@@ -448,6 +455,9 @@ msgid ""
 msgstr ""
 "Potpuno je sigurno izbrisati izmjenu koja je već objavljena. Ako nije "
 "objavljena, izmjena će brisanjem biti zauvijek izgubljena"
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr "Popis definicija"
@@ -506,6 +516,10 @@ msgstr "Predviđeno vrijeme završetka"
 
 msgid "Edit"
 msgstr "Uredi"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr "Uredi postavke sajta (napredno)"
@@ -685,6 +699,9 @@ msgstr "Prisili na prelazak u novi red"
 
 msgid "Force publishing"
 msgstr "Prisili na objavljivanje"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formatiranje: gggg-mm-dd ss:mm, npr."
@@ -872,7 +889,9 @@ msgstr ""
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
-msgstr "Ako se pokrene nova proizvodnja fajlova dok je jedna još u toku, stara neće završiti."
+msgstr ""
+"Ako se pokrene nova proizvodnja fajlova dok je jedna još u toku, stara neće "
+"završiti."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -2738,6 +2757,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Slika za naslovnicu (neobavezna)"
 
 #~ msgid "Missing username or password"
 #~ msgstr "Nedostaje korisničko ime i lozinka"

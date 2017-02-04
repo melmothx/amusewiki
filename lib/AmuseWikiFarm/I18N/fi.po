@@ -368,11 +368,11 @@ msgstr "Osoitetta ei pystytty luomaan automaattisesti!"
 msgid "Couldn't build that"
 msgstr "Ei onnistunut"
 
-msgid "Cover image (optional)"
-msgstr ""
-
 msgid "Create"
 msgstr "Luo"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Luo uusi kirjastonhoitaja"
@@ -411,6 +411,13 @@ msgstr "Uusi teksti luotu"
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Päivämäärä"
 
@@ -433,6 +440,9 @@ msgid ""
 msgstr ""
 "Version poistaminen on turvallista, jos teksti on julkaistu.\n"
 "    Muuten julkaisemattomat muutokset menetetään."
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr ""
@@ -486,6 +496,10 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Muokkaa"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr ""
@@ -654,6 +668,9 @@ msgstr "Pakotettu rivinvaihto"
 
 msgid "Force publishing"
 msgstr "Pakota julkaisu"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Muoto: vvvv-kk-pp tt:mm, esim. "

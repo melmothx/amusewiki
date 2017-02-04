@@ -394,11 +394,11 @@ msgstr "Impossibile generare un URI automaticamente"
 msgid "Couldn't build that"
 msgstr "Errore nella compilazione del testo"
 
-msgid "Cover image (optional)"
-msgstr "Immagine di frontespizio (opzionale)"
-
 msgid "Create"
 msgstr "Crea"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Crea un nuovo bibliotecario"
@@ -439,6 +439,13 @@ msgstr "È stato creato un nuovo testo"
 msgid "Current time"
 msgstr "Ora corrente"
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Data"
 
@@ -462,6 +469,9 @@ msgstr ""
 "Cancellare una revisione che è già stata pubblicata è perfettamente\n"
 "sicuro. Se non è ancora stata pubblicata, cancellandola la revisione\n"
 "andrà persa per sempre."
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr "Descrizione"
@@ -520,6 +530,10 @@ msgstr "Orario stimato"
 
 msgid "Edit"
 msgstr "Modifica"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr "Modifica la configurazione del sito (avanzato)"
@@ -703,6 +717,9 @@ msgstr "Forza un a capo"
 
 msgid "Force publishing"
 msgstr "Forza pubblicazione"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formato: aaaa-mm-gg hh:mm, ad esempio"
@@ -2821,6 +2838,9 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Immagine di frontespizio (opzionale)"
 
 #~ msgid "Missing username or password"
 #~ msgstr "Nome utente o password mancante"

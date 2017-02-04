@@ -405,11 +405,11 @@ msgstr "URL nuk mundi të gjenerohej automatikisht!"
 msgid "Couldn't build that"
 msgstr "Nuk mundi të krijoj atë"
 
-msgid "Cover image (optional)"
-msgstr "Imazhi i kopertinës (opcionale)"
-
 msgid "Create"
 msgstr "Krijo"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Krijo një bibliotekar të ri"
@@ -448,6 +448,13 @@ msgstr "Teksti i ri u krijua"
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Data"
 
@@ -471,6 +478,9 @@ msgstr ""
 "Fshirja e një përpunimi është e sigurt nëse një\n"
 " tekst është publikuar. Përndryshe me fshirjen e tij do të humbni të gjitha "
 "ndryshimet e papublikuara"
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr "Përshkrimi i artikullit"
@@ -526,6 +536,10 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Ndrysho"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr ""
@@ -707,6 +721,9 @@ msgstr "Shkëput rreshtin."
 
 msgid "Force publishing"
 msgstr "Publikim i sforcuar"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formati: yyyy-mm-dd  hh:mm, p.sh."
@@ -2776,6 +2793,9 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Imazhi i kopertinës (opcionale)"
 
 #~ msgid "Missing username or password"
 #~ msgstr "Mungon emir i përoduresit si dhe fjalëkalimi"

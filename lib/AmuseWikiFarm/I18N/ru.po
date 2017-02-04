@@ -375,11 +375,11 @@ msgstr "Невозможно автоматически создать URI"
 msgid "Couldn't build that"
 msgstr "Нельзя создать это"
 
-msgid "Cover image (optional)"
-msgstr ""
-
 msgid "Create"
 msgstr "Создать"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Создать нового библиотекаря"
@@ -418,6 +418,13 @@ msgstr "Создать новый текст"
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Дата"
 
@@ -440,6 +447,9 @@ msgid ""
 msgstr ""
 "Удаление правок безопасно, если текст был опубликован. Если нет, то вы "
 "потеряете не сохранённые изменения"
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr ""
@@ -493,6 +503,10 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Редактировать"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr ""
@@ -668,6 +682,9 @@ msgstr "Принудительный разрыв строки."
 
 msgid "Force publishing"
 msgstr "Принудительная публикация"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Формат гггг-мм-дд чч:мм"

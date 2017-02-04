@@ -359,10 +359,10 @@ msgstr ""
 msgid "Couldn't build that"
 msgstr ""
 
-msgid "Cover image (optional)"
+msgid "Create"
 msgstr ""
 
-msgid "Create"
+msgid "Create a new format"
 msgstr ""
 
 msgid "Create a new librarian"
@@ -402,6 +402,13 @@ msgstr ""
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Date"
 
@@ -421,6 +428,9 @@ msgstr ""
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
+msgstr ""
+
+msgid "Description"
 msgstr ""
 
 msgid "Description item"
@@ -474,6 +484,10 @@ msgid "ETA"
 msgstr ""
 
 msgid "Edit"
+msgstr ""
+
+#. ($format->format_name)
+msgid "Edit format %1"
 msgstr ""
 
 msgid "Edit full site configuration"
@@ -641,6 +655,9 @@ msgid "Force a line break."
 msgstr ""
 
 msgid "Force publishing"
+msgstr ""
+
+msgid "Format name"
 msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."

@@ -394,11 +394,11 @@ msgstr "Impossibilité de générer l'URI!"
 msgid "Couldn't build that"
 msgstr "Impossibilité de construire cela"
 
-msgid "Cover image (optional)"
-msgstr "Image de couverture (optionnelle)"
-
 msgid "Create"
 msgstr "Créer"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Créer un nouveau compte bibliothécaire"
@@ -437,6 +437,13 @@ msgstr "Nouveau texte créé"
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Date"
 
@@ -459,6 +466,9 @@ msgid ""
 msgstr ""
 "Supprimer une révision ne pose pas de risques si un texte a été publié. "
 "Sinon en le supprimant vous perdrez les pages non publiées."
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr "Article de description"
@@ -517,6 +527,10 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Modifier"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr ""
@@ -707,6 +721,9 @@ msgstr "Forcer un saut de ligne."
 
 msgid "Force publishing"
 msgstr "Forcer la publication"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Format: aaaa-mm-jj hh:mm, par exemple"
@@ -2813,6 +2830,9 @@ msgstr ""
 "\"Modification périmée\" signifie que la révision a été abandonnée en cours "
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer en modifiant un texte."
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Image de couverture (optionnelle)"
 
 #~ msgid "Missing username or password"
 #~ msgstr "Nom d'utilisateur ou mot de passe manquant(s)"

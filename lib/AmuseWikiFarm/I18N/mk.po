@@ -396,11 +396,11 @@ msgstr "Невозможно е автоматски да се генерира 
 msgid "Couldn't build that"
 msgstr "Не можеше да се направи збирка"
 
-msgid "Cover image (optional)"
-msgstr "Слика за насловницата (незадолжително)"
-
 msgid "Create"
 msgstr "Креирај"
+
+msgid "Create a new format"
+msgstr ""
 
 msgid "Create a new librarian"
 msgstr "Креирај нов библиотекар"
@@ -441,6 +441,13 @@ msgstr "Креиран е нов текст"
 msgid "Current time"
 msgstr ""
 
+msgid "Custom formats"
+msgstr ""
+
+#. ($c->stash->{site}->canonical)
+msgid "Custom formats for %1"
+msgstr ""
+
 msgid "Date"
 msgstr "Датум"
 
@@ -463,6 +470,9 @@ msgid ""
 msgstr ""
 "Сосема е безбедно да се избрише измена која веќе е објавена. Ако не е "
 "објавена, со бришењето измената засекогаш ќе биде изгубена."
+
+msgid "Description"
+msgstr ""
 
 msgid "Description item"
 msgstr "Листа на дефиниции"
@@ -521,6 +531,10 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Уреди"
+
+#. ($format->format_name)
+msgid "Edit format %1"
+msgstr ""
 
 msgid "Edit full site configuration"
 msgstr ""
@@ -704,6 +718,9 @@ msgstr "Принуди на преминување во нов ред."
 
 msgid "Force publishing"
 msgstr "Принуди на објавување"
+
+msgid "Format name"
+msgstr ""
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Форматирање: гггг-мм-дд:мм, нпр.:"
@@ -2794,6 +2811,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Cover image (optional)"
+#~ msgstr "Слика за насловницата (незадолжително)"
 
 #~ msgid "Missing username or password"
 #~ msgstr "Недостига корисничко име или лозинка"
