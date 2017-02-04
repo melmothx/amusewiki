@@ -51,7 +51,7 @@ foreach my $traversal (@traversals) {
 
 $mech->get('/git/0gitz0');
 SKIP: {
-    skip "/git url is disable", 24 unless $mech->success && $mech->content !~ m/No repositories found/;
+    skip "/git url is disable", 32 unless $mech->success && $mech->content !~ m/No repositories found/;
 
 foreach my $text ({
                    title => "Zdravo Hello àààà",
