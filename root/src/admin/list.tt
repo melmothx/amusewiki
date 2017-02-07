@@ -14,7 +14,7 @@
       <th>[% loc('Active') %]</th>
       <th>[% loc('Site group') %]</th>
       <th>[% loc('Mode') %]</th>
-      <th>[% loc('Locale') %]</th>
+      <th>[% loc('Language') %]</th>
       <th>[% loc('Name') %]</th>
       <th>[% loc('Mail from') %]</th>
       <th>[% loc('Notify to') %]</th>

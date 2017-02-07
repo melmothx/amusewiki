@@ -303,7 +303,7 @@ kpsewhich mylogo.pdf
 
     <div class="form-group">
       <label for="locale" class="col-sm-6 control-label">
-        [% loc('Locale') %]
+        [% loc('Language') %]
       </label>
       <div class="col-sm-6">
         <select id="locale" name="locale" id="lang" class="form-control">
