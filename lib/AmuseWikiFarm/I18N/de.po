@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
 "PO-Revision-Date: 2017-02-04 14:20+0100\n"
-"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Last-Translator: Stefan Hornburg (Racke) <racke@linuxia.de>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -604,7 +604,7 @@ msgid ""
 msgstr ""
 
 msgid "Filters"
-msgstr ""
+msgstr "Filter"
 
 msgid "Find the add catalogue menu."
 msgstr ""
@@ -993,7 +993,7 @@ msgid "Language selection"
 msgstr "Wähle deine Sprache"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "Unterstützte Sprachen"
 
 msgid "Last successful rebuild"
 msgstr ""
@@ -1005,7 +1005,7 @@ msgid "Latest entries"
 msgstr "Letzte Einträge"
 
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Lass es leer, wenn du es gleich veröffentlichen willst."
@@ -1144,7 +1144,7 @@ msgid "Never generate a table of content"
 msgstr ""
 
 msgid "New"
-msgstr ""
+msgstr "Neu"
 
 msgid "New revision"
 msgstr "Neue Änderung"
@@ -1153,7 +1153,7 @@ msgid "New site id"
 msgstr "Neue Seitenid"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "Neue Texte"
 
 msgid "Next"
 msgstr "Nächste"
@@ -1216,10 +1216,10 @@ msgid "Numeric List"
 msgstr "Nummerische Liste"
 
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS"
 
 msgid "Older texts"
-msgstr ""
+msgstr "Ältere Texte"
 
 msgid "Open wiki"
 msgstr "Offenes wiki"
@@ -1313,7 +1313,7 @@ msgstr "Passwort"
 
 #. (host)
 msgid "Password reset for %1"
-msgstr ""
+msgstr "Passwort für %1 zurücksetzen"
 
 msgid "Password too short"
 msgstr "Passwort zu kurz"
@@ -1331,7 +1331,7 @@ msgid "Payload"
 msgstr "Nutzdaten"
 
 msgid "Pending revisions"
-msgstr "Laufende Änderungen"
+msgstr "Bevorstehende Änderungen"
 
 msgid "Picture"
 msgstr "Bild"
@@ -1512,7 +1512,7 @@ msgid "Produced"
 msgstr "Produziert"
 
 msgid "Publication date"
-msgstr ""
+msgstr "Veröffentlichungsdatum"
 
 msgid "Publication date on this site."
 msgstr "Veröffentlichungsdatum auf dieser Seite."
@@ -1560,7 +1560,7 @@ msgid "Random"
 msgstr "Zufälliger Text"
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Ganzen Text lesen ..."
 
 msgid "Real time help"
 msgstr ""
