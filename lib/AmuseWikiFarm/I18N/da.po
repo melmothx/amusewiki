@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-10-10 21:30+0200\n"
+"PO-Revision-Date: 2017-02-15 18:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "Language: da\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
@@ -35,9 +35,8 @@ msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
-"Et omslagsbillede er allerede blevet tilføjet, men du kan erstatte det ved "
-"at uploade\n"
-"              et nyt."
+"Et omslagsbillede er allerede blevet tilføjet, men du kan skifte det ud\n"
+"            ved at uploade et nyt."
 
 msgid ""
 "A footnote is a line which starts with a number between square\n"
@@ -74,7 +73,7 @@ msgid "A nice title"
 msgstr "En god titel"
 
 msgid "A4 imposed PDF"
-msgstr "A4 udskudt (imposeret) PDF"
+msgstr "A4 udskudt/imposeret (pjece) PDF"
 
 msgid "A4 paper"
 msgstr "A4 papir"
@@ -87,8 +86,8 @@ msgstr "A6 papir (også egnet til e-læsere)"
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
-"Forlod redigeringen under forløbet, vær så god at tjekke forskellen og "
-"fortsætte"
+"Opgav redigeringen under forløbet, du er velkommen til at tjekke forskellene "
+"og fortsætte"
 
 msgid "Action"
 msgstr "Handling"
@@ -106,13 +105,13 @@ msgid "Add a new text"
 msgstr "Tilføj en ny tekst"
 
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr "Tilføj en vedhæftet fil (PNG, JPG eller PDF)"
+msgstr "Vedhæft en fil (PNG, JPG eller PDF)"
 
 msgid "Add crop marks to the PDF"
 msgstr "Tilføj skæremærker til PDF'en"
 
 msgid "Add new remote repository"
-msgstr "Tilføj nyt fjernt arkiv"
+msgstr "Tilføj et nyt fjernarkiv"
 
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Tilføj hårde mellemrum hvor det er passende for sproget"
@@ -146,7 +145,7 @@ msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
 msgstr ""
-"Yderligere information (komplet dato, originaltitel, oversættere, "
+"Yderligere information (hele datoen, originaltitel, oversættere, "
 "bidragydere, etc.)."
 
 #. (c.uri_for_action('/console/unpublished')
@@ -165,7 +164,7 @@ msgid "Alias"
 msgstr "Alias"
 
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "Pseudonymet kan ikke henvise til sig selv"
 
 msgid ""
 "All kind of lists start with one or more leading\n"
@@ -207,7 +206,7 @@ msgstr ""
 "      i arkivet. I teorien kunne det være hvad som helst, men hvis du selv\n"
 "      vil indstille den, så hold dig venligst til konventionen: "
 "forfatternavn,\n"
-"      titel, sprog, eventuelt et nummer for at præcisere, f.eks.\n"
+"      titel, sprog, og eventuelt et nummer for at præcisere, f.eks.\n"
 "      errico-malatesta-anarki-2. Læg venligst mærke til at det normalt\n"
 "      ikke er nødvendigt."
 
@@ -215,10 +214,10 @@ msgid "Apache is not currently supported"
 msgstr "Apache er ikke understøttet i øjeblikket"
 
 msgid "Archive"
-msgstr "Arkiver"
+msgstr "Arkiv"
 
 msgid "Archive by month"
-msgstr "Arkiver efter måned"
+msgstr "Arkiv inddelt efter måneder"
 
 msgid "Archive history"
 msgstr "Arkivhistorie"
@@ -239,22 +238,22 @@ msgid "Author"
 msgstr "Forfatter"
 
 msgid "Author and title. If one side document: title."
-msgstr "Forfatter og titel. Hvis en-sides dokument: titel."
+msgstr "Forfatter og titel. Hvis der kun er en side: titel."
 
 msgid "Authors"
 msgstr "Forfattere"
 
 msgid "Authors and topics listing"
-msgstr "Forfatter og emneliste"
+msgstr "Liste over forfattere og emner"
 
 msgid "Authors for indexing"
-msgstr "Forfattere for indeksering"
+msgstr "Forfattere til indeksering"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "Anmod om og forny automatisk SSL certifikater fra Let's Encrypt"
 
 msgid "Available category tags for header"
-msgstr "Tilgængelige kategori tags for sidehovedet"
+msgstr "Tilgængelige kategorimarkeringer til sidehovedet"
 
 msgid "Back to the text"
 msgstr "Tilbage til teksten"
@@ -278,7 +277,7 @@ msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
-"Blokke bestående af 16 side som foldes dobbelt og bindes\n"
+"Blokke bestående af 16 sider som foldes dobbelt og bindes\n"
 "                sammen"
 
 msgid "Blog"
@@ -294,16 +293,16 @@ msgid "Bookbuilder page limit (integer)"
 msgstr "Bogbyggerens sidebegrænsning (helt tal)"
 
 msgid "Build it"
-msgstr "Byg den"
+msgstr "Skab bogen"
 
 msgid "Bulleted List"
 msgstr "Punkttegns liste"
 
 msgid "CSS Theme"
-msgstr "CSS Tema"
+msgstr "CSS tema"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annuller"
 
 msgid "Canonical name"
 msgstr ""
@@ -318,7 +317,7 @@ msgid "Changes applied"
 msgstr "Ændringer udført"
 
 msgid "Changes committed, thanks! They are now waiting to be published"
-msgstr "Ændringerne blev sendt, tak! De venter nu på at blive publiceret"
+msgstr "Ændringerne blev sendt, tak! De venter nu på at blive offentliggjort"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
@@ -333,22 +332,22 @@ msgstr ""
 "At ændre URL'er er dårlig stil. Men hvis du ved hvad du\n"
 "laver, kan du slette en eksisterende tekst og henvise til en anden ved at "
 "tilføje et\n"
-"#DELETED direktiv i tekst sidehovedet med en speciel syntaks:"
+"#DELETED direktiv i tekstens sidehoved med en speciel syntaks:"
 
 msgid "Chapter"
 msgstr "Kapitel"
 
 msgid "Chapter and section. If one side document: chapter."
-msgstr "Kapitel og sektion. Hvis en-sides dokument: kapitel."
+msgstr "Kapitel og sektion. Hvis der kun er en side: kapitel."
 
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Kapitel, kun for kapitelinddeling i bøger"
 
 msgid "Cheatsheet for the markup"
-msgstr "Hurtig manual for opmærkningen"
+msgstr "Manual til opmærkningen"
 
 msgid "Choose a paper format"
-msgstr "Vælg papirformat"
+msgstr "Vælg papirformatet"
 
 msgid "Clear the book list"
 msgstr "Tøm boglisten"
@@ -389,13 +388,13 @@ msgid "Couldn't automatically generate the uri!"
 msgstr "Kunne ikke automatisk generere URI'en!"
 
 msgid "Couldn't build that"
-msgstr "Kunne ikke bygge den"
+msgstr "Kunne ikke skabe den"
 
 msgid "Create"
 msgstr "Skab"
 
 msgid "Create a new format"
-msgstr ""
+msgstr "Skab et nyt format"
 
 msgid "Create a new librarian"
 msgstr "Skab en ny bibliotekar"
@@ -432,20 +431,20 @@ msgid "Created new text"
 msgstr "Skabte ny tekst"
 
 msgid "Current time"
-msgstr ""
+msgstr "Nuværende tidspunkt"
 
 msgid "Custom formats"
-msgstr ""
+msgstr "Tilpassede formater"
 
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
-msgstr ""
+msgstr "Tilpassede formater til %1"
 
 msgid "Date"
 msgstr "Dato"
 
 msgid "Date of the original publication"
-msgstr "Oprindelig publiceringsdato"
+msgstr "Oprindelig udgivelsesdato"
 
 msgid "Deferred/Deleted texts"
 msgstr "Udsatte/Slettede tekster"
@@ -455,17 +454,17 @@ msgstr "Slet"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
-msgstr "Slet det fjerne arkiv %1"
+msgstr "Slet fjernarkivet %1"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
 "Det er sikkert at slette en revision hvis en tekst er blevet\n"
-"    publiceret. Hvis ikke mister du de ændringer som ikke er publiceret "
+"    publiceret. Hvis ikke mister du de ændringer som ikke er publiceret"
 
 msgid "Description"
-msgstr ""
+msgstr "Beskrivelse"
 
 msgid "Description item"
 msgstr "Beskrivende element"
@@ -498,9 +497,8 @@ msgstr "Vis URL som"
 msgid "Division factor"
 msgstr "Divisor"
 
-#, fuzzy
 msgid "Do not enforce commit message"
-msgstr "Gennemtving ikke "
+msgstr "Gennemtving ikke indsendelses besked"
 
 msgid "Done"
 msgstr "Færdig"
@@ -525,13 +523,13 @@ msgstr "Rediger"
 
 #. ($format->format_name)
 msgid "Edit format %1"
-msgstr ""
+msgstr "Rediger formatet %1"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "Rediger hele sidekonfigurationen"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Rediger valgmuligheder for skærmlayout"
 
 #. (esite.id)
 msgid "Edit site %1"
@@ -542,7 +540,8 @@ msgstr "Rediger sidekonfigurationen"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
 msgstr ""
-"Rediger teksten som du vil afpublicere og tilføj denne linje til sidehovedet:"
+"Rediger teksten som du vil fjerne fra arkivet og tilføj denne linje til "
+"sidehovedet:"
 
 msgid "Edit this text"
 msgstr "Rediger denne tekst"
@@ -552,7 +551,7 @@ msgid "Edit user %1"
 msgstr "Rediger brugeren %1"
 
 msgid "Editing"
-msgstr "Redigering"
+msgstr "Redigerer"
 
 msgid "Email"
 msgstr "E-mail"
@@ -567,7 +566,7 @@ msgid "Emails do not match"
 msgstr "E-mails matcher ikke"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Indlejr skrifttyper i EPUB filen"
 
 msgid "Erase this revision"
 msgstr "Slet denne revision"
@@ -589,7 +588,7 @@ msgid ""
 "  it does not provide a dedicated mobile application."
 msgstr ""
 "Selv om denne side har et mobilvenligt layout,\n"
-"  leverer den ikke nogen app specielt for til mobiler."
+"  leverer den ikke nogen app specielt til mobiler."
 
 #, fuzzy
 msgid ""
@@ -616,23 +615,22 @@ msgid "Existing redirections"
 msgstr "Eksisterende omdirigeringer"
 
 msgid "Failed"
-msgstr ""
+msgstr "Mislykkede"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
-msgstr "Tilføjelsen af det fjerne arkiv %1 mislykkedes"
+msgstr "Tilføjelsen af fjernarkivet %1 mislykkedes"
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
-msgstr "Sletningen af det fjerne arkiv %1 mislykkedes"
+msgstr "Sletningen af fjernarkivet %1 mislykkedes"
 
 msgid "File uploaded!"
 msgstr "Fil uploadet!"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
-msgstr ""
-"Fyld med tomme sider inden den sidste side hvis trykarket ikke er fyldt."
+msgstr "Indsæt tomme sider inden den sidste side hvis trykarket ikke er fyldt."
 
 msgid "Filters"
 msgstr "Filtre"
@@ -653,13 +651,15 @@ msgid "First slide"
 msgstr ""
 
 msgid "First you have to unpublish it via #DELETED."
-msgstr "Du er nødt til først at afpublicere den via #DELETED."
+msgstr "Du er nødt til først at afpublicere den med #DELETED."
 
 msgid "Fix typography (smart quotes)"
-msgstr "Orden typografien (smarte citater)"
+msgstr ""
+"Orden typografien (ændrer forkerte citationstegn (\"citat\") til korrekte "
+"(»citat«), og bindestreger til tankestreger)"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr "Ordnede 16 sides trykark på 2 ark, med dobbelt individuel foldning."
+msgstr "Ordnede 16 siders trykark på 2 ark, med dobbelt individuel foldning."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr "Ordnede 16 siders trykark på et ark, med tredobbelt foldning."
@@ -675,7 +675,7 @@ msgstr ""
 "bindes sammen."
 
 msgid "Font preview"
-msgstr "Forhåndsvisning af skrifttypen"
+msgstr "Forhåndsvisning af skrifttyper"
 
 msgid "Font size"
 msgstr "Skriftstørrelse"
@@ -692,7 +692,7 @@ msgstr ""
 "henvisninger i brødteksten (%4), ignorerer ændringer"
 
 msgid "For texts from the internet use"
-msgstr "Ved tekster fra internettet anvend"
+msgstr "Hvis teksten er hentet fra internettet så anvend"
 
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
@@ -704,16 +704,16 @@ msgid ""
 msgstr "Du kan skabe emne og forfatter omdirigeringer her"
 
 msgid "Force a line break."
-msgstr "Tving et linjeskift."
+msgstr "Gennemtving et linjeskift."
 
 msgid "Force publishing"
-msgstr "Tving publicering"
+msgstr "Gennemtving offentliggørelse"
 
 msgid "Format name"
-msgstr ""
+msgstr "Formatets navn"
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr "Format: dd-mm-åååå hh:mm, f.eks."
+msgstr "Format: åååå-mm-dd tt:mm, f.eks."
 
 msgid "Formats"
 msgstr "Formater"
@@ -725,7 +725,7 @@ msgid "Full tag cloud"
 msgstr "Hele tagskyen"
 
 msgid "Full text search"
-msgstr "Fuld tekst søgning"
+msgstr "Fuldtekst søgning"
 
 msgid "General configuration"
 msgstr "Generel konfiguration"
@@ -765,7 +765,7 @@ msgstr ""
 "banneret"
 
 msgid "HTML/Word Importer"
-msgstr "HTML/Word Importer"
+msgstr "HTML/Word Import"
 
 msgid "Half Letter paper"
 msgstr "Halvt Letter papir"
@@ -789,7 +789,7 @@ msgid ""
 msgstr ""
 "Her kan du gemme eller indlæse dine skabeloner. Tekstlisten\n"
 "      og omslagsbilledet bliver ikke gemt med indstillingerne. Du kan\n"
-"      bruge dette til at gemme papir/skrifttype/udskydning og andre "
+"      bruge dette til at gemme papir/skrifttyper/udskydning og andre "
 "valgmuligheder."
 
 msgid "Hide options"
@@ -798,9 +798,8 @@ msgstr "Skjul valgmuligheder"
 msgid "Higher division factor means narrower margins"
 msgstr "Højere divisor betyder smallere margener"
 
-#, fuzzy
 msgid "How do I create a landing page?"
-msgstr "Hvordan skaber jeg en "
+msgstr "Hvordan skaber jeg en forside?"
 
 msgid "How do I create a special page?"
 msgstr "Hvordan skaber jeg en specialside?"
@@ -833,10 +832,11 @@ msgstr ""
 "  protokol."
 
 msgid "I am human"
-msgstr "Jeg er menneske"
+msgstr "Jeg er et menneske"
 
 msgid "I want an imposed (ready to print) PDF"
-msgstr "Jeg vil have en udskudt (klar til at printe) PDF"
+msgstr ""
+"Jeg vil have en PDF som er udskudt/imposeret (klar til udskrift som pjece)"
 
 msgid "IRC channel on freenode"
 msgstr "IRC kanal på freenode"
@@ -856,7 +856,7 @@ msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
 msgid "If the committer provided a mail, it's listed in the mail's CC field"
-msgstr "Hvis udføreren gav en mail, er den listed i mailens CC felt"
+msgstr "Hvis indsenderen gav en mailadresse, står den i mailens CC felt"
 
 msgid ""
 "If this line\n"
@@ -867,12 +867,13 @@ msgid ""
 "          on RSS and special pages at each editing."
 msgstr ""
 "Hvis denne linje\n"
-"          er tilstede, så sæt publikationsdatoen (på denne side) til den\n"
+"          er tilstede, så sættes datoen for offentliggørelse (på denne side) "
+"til den\n"
 "          dato. Datoen kan også være i fremtiden, hvilket udskyder\n"
-"          publiceringen. Hvis denne linje ikke er tilstede, vil "
-"publikationsdatoen\n"
-"          være den samme som publiceringen, hvilket aktiverer et bump\n"
-"          på RSS og specielle sider ved hver redigering."
+"          offentliggørelsen. Hvis denne linje ikke er tilstede, vil "
+"udgivelsesdatoen\n"
+"          være den samme som offentliggørelsen, hvilket aktiverer et bump\n"
+"          på RSS og specialsider ved hver redigering."
 
 msgid ""
 "If this line is\n"
@@ -881,7 +882,7 @@ msgid ""
 msgstr ""
 "Hvis denne linje er\n"
 "          tilstede og der er angivet en årsag, vil teksten blive\n"
-"          opbevaret i arkivet, men ikke publiceres."
+"          opbevaret i arkivet, men ikke offentliggøres."
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Hvis du bad om udskydning, så vælg et udskydningsskema"
@@ -890,18 +891,23 @@ msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"Hvis du redigerer valgmuligheder for formater, såsom skrifttyper\n"
+"      og papirstørrelser, er det måske en god ide at genskabe de genererede "
+"filer"
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
-"Hvis du har en fil i .doc eller .odt format, så kan du enkelt konvertere den "
+"Hvis du har en fil i .doc eller .odt format, så kan du nemt konvertere den "
 "ved at gemme den som HTML"
 
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
 msgstr ""
+"Hvis du anmoder om en genskabelse mens en anden er i gang,\n"
+"      vil du afbryde den igangværende."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -936,14 +942,14 @@ msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
-"Upload af billeder kan gøres på næste trin, når du kan\n"
-"        undersøge og forhåndsvise uploaden."
+"Upload af billeder kan gøres på næste trin, hvor du kan\n"
+"        gennemse og forhåndsvise uploaden."
 
 msgid "Image url"
 msgstr "Billedets URL"
 
 msgid "Images not used in the text are stored, but will be ignored."
-msgstr "Billeder som ikke bruges i teksten bliver gemt, men bliver ignoreret."
+msgstr "Billeder som ikke bruges i teksten bliver gemt, men ignoreret."
 
 msgid "Images:"
 msgstr "Billeder:"
@@ -996,7 +1002,7 @@ msgid "Italic"
 msgstr "Kursiv"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr "Kursiv, fed, monospatieret og kode, linjeskift..."
+msgstr "Kursiv, fed, monospatieret og kode (skrivemaskine), linjeskift..."
 
 msgid "Job deleted"
 msgstr "Job slettet"
@@ -1011,7 +1017,7 @@ msgid "Jobs waiting before yours:"
 msgstr "Job som venter inden dit:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr "Sammenstuver bare 2 på hinanden følgende sider på en fysisk side."
+msgstr "Placerer bare 2 på hinanden følgende sider på en fysisk side."
 
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
@@ -1020,7 +1026,7 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
-"Husk venligst at jeg renser teksten og giver den\n"
+"Bemærk at jeg renser teksten og giver den\n"
 "        tilbage til dig i den opmærkning som bruges på denne side. Det er op "
 "til dig\n"
 "        at tjekke den og til sidst uploade den. Sjældent anvendt opmærkning\n"
@@ -1028,7 +1034,7 @@ msgstr ""
 "        trin, hvor du også kan indsætte billeder."
 
 msgid "Keep in mind that some character may be missing in the required font."
-msgstr "Husk at nogle tegn kan mangle i den påkrævede skrifttype."
+msgstr "Tænk på at nogle tegn muligvis mangler i den ønskede skrifttype."
 
 msgid ""
 "Keep in mind that unusually\n"
@@ -1052,19 +1058,20 @@ msgid "Languages supported"
 msgstr "Understøttede sprog"
 
 msgid "Last successful rebuild"
-msgstr ""
+msgstr "Seneste succesfulde genskabelse"
 
 msgid "Last updated"
 msgstr "Sidst opdateret"
 
 msgid "Latest entries"
-msgstr "Seneste optegnelser"
+msgstr "Nyeste tekster"
 
 msgid "Layout"
 msgstr "Layout"
 
 msgid "Leave it blank if you want it published right away."
-msgstr "Lad det være blankt hvis du ønsker at det publiceres med det samme."
+msgstr ""
+"Lad feltet være tomt hvis du ønsker at den offentligøres med det samme."
 
 msgid "Letter imposed PDF"
 msgstr "Letter udskudt PDF"
@@ -1087,9 +1094,8 @@ msgstr "Lister"
 msgid "Load"
 msgstr "Indlæs"
 
-#, fuzzy
 msgid "Load another session by token"
-msgstr "Indlæs en anden session "
+msgstr "Indlæs en anden session med et mærke"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
@@ -1126,10 +1132,10 @@ msgid "Main canonical hostname, without protocol"
 msgstr ""
 
 msgid "Main font"
-msgstr "Hovedsagelig skrifttype"
+msgstr "Grundlæggende skrifttype"
 
 msgid "Main text"
-msgstr "Hovedsagelig tekst"
+msgstr "Teksten"
 
 msgid "Maintainer's FAQ"
 msgstr "Vedligeholderens FAQ"
@@ -1138,7 +1144,7 @@ msgid "Make a link clickable"
 msgstr "Gør det muligt at klikke på et link"
 
 msgid "Make all links active"
-msgstr "Gør alle link aktive"
+msgstr "Aktiver alle links"
 
 msgid "Match any of the fields above"
 msgstr "Match hvilket som helst af felterne overfor"
@@ -1147,10 +1153,10 @@ msgid "Message"
 msgstr "Besked"
 
 msgid "Missing #title header in the text!"
-msgstr "Manglende #title overskrift i teksten!"
+msgstr "Manglende #title header i teksten!"
 
 msgid "Missing alias"
-msgstr "Manglende alias"
+msgstr "Manglende pseudonym"
 
 msgid "Missing character will be reported"
 msgstr "Manglende tegn vil blive rapporteret"
@@ -1171,7 +1177,7 @@ msgid "Moderated wiki"
 msgstr "Modereret wiki"
 
 msgid "Mono font"
-msgstr "Monospatieret skrifttype"
+msgstr "Monospatieret skrifttype (skrivemaskine)"
 
 msgid "More"
 msgstr "Mere"
@@ -1189,7 +1195,7 @@ msgid "My description"
 msgstr "Min beskrivelse"
 
 msgid "N/A"
-msgstr ""
+msgstr "Ikke tilgængelig"
 
 msgid "Name"
 msgstr "Navn"
@@ -1198,7 +1204,7 @@ msgid "Network library listing screen."
 msgstr ""
 
 msgid "Never generate a table of content"
-msgstr "Generer aldrig en indholdsfortegnelse"
+msgstr "Generer ikke en indholdsfortegnelse"
 
 msgid "New"
 msgstr "Ny"
@@ -1210,7 +1216,7 @@ msgid "New site id"
 msgstr "Ny side ID"
 
 msgid "Newer texts"
-msgstr "Nyere tekster"
+msgstr "Nyeste tekster"
 
 msgid "Next"
 msgstr "Næste"
@@ -1222,7 +1228,7 @@ msgid "No"
 msgstr "Nej"
 
 msgid "No editing yet!"
-msgstr "Endnu ingen redigering!"
+msgstr "Endnu ikke redigeret!"
 
 msgid "No result found!"
 msgstr "Intet resultat fundet!"
@@ -1244,8 +1250,8 @@ msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr ""
-"Ikke færdig endnu! Tag venligst et kig på teksten og click så på \"%1\" for "
-"at afslutte din indsendelse!"
+"Du er ikke helt færdig endnu! Tag venligst et kig på teksten og klik så på "
+"\"%1\" for at afslutte din indsendelse!"
 
 msgid "Notes"
 msgstr "Noter"
@@ -1263,7 +1269,7 @@ msgid "Now you can proceed to login."
 msgstr "Nu kan du fortsætte til indlogning."
 
 msgid "Number of jobs"
-msgstr ""
+msgstr "Antal job"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Antal seneste tilføjelser at vise på RSS'en (helt tal)"
@@ -1286,23 +1292,29 @@ msgstr "Åben wiki"
 msgid "Option templates"
 msgstr "Valgmuligheds skabeloner"
 
-#, fuzzy
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
 "          concurrent revisions means that, unless someone takes care\n"
 "          of it, only one will be chosen. You can go ahead, or retry\n"
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
-msgstr "Eller skab en ny revision på eget ansvar. "
+msgstr ""
+"Eller skab en ny revision på eget ansvar. Når der er flere\n"
+"          revisioner på samme tid, betyder det at kun en af dem vil blive\n"
+"          valgt, hvis ikke der er nogen som tager sig af det. Du kan "
+"fortsætte\n"
+"          eller prøve igen senere, men kontakt hellere bibliotekarerne inden "
+"du\n"
+"          fortsætter for ikke at spilde din energi."
 
 msgid "Or log in, if you have an account."
 msgstr "Eller log ind, hvis du har en konto."
 
 msgid "Or provide an HTML file to upload"
-msgstr "Eller giv en HTML fil til upload"
+msgstr "Eller upload en HTML fil"
 
 msgid "Or wrap it in"
-msgstr "Eller pak det ind"
+msgstr "Eller omslut det i"
 
 msgid "Other languages"
 msgstr "Andre sprog"
@@ -1329,7 +1341,7 @@ msgid "Page not found!"
 msgstr "Siden findes ikke!"
 
 msgid "Page where to start a chapter"
-msgstr "Side hvor et kapitel skal begynde"
+msgstr "Siden hvor et kapitel skal begynde"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1358,7 +1370,7 @@ msgstr ""
 "        reducerer antallet af tomme sider."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr "Papirtykkelse (0.10 burde være passende for almindeligt 80g/m2 papir)"
+msgstr "Papirtykkelse (0,10 burde være passende for almindeligt 80g/m2 papir)"
 
 msgid "Paragraphs"
 msgstr "Afsnit"
@@ -1389,7 +1401,7 @@ msgid "Password, minimum 8 characters."
 msgstr "Kodeord, mindst 8 tegn."
 
 msgid "Passwords do not match"
-msgstr "Kodeordene stemmer ikke"
+msgstr "Kodeordene stemmer ikke overens"
 
 msgid "Payload"
 msgstr ""
@@ -1413,8 +1425,8 @@ msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr ""
-"Check venligst din indbakke, vi forsøgte at levere en mail til den "
-"specificerede adresse med et link til at nulstille kodeordet"
+"Check venligst din indbakke, vi forsøgte at levere en mail til den angivne "
+"adresse med et link til at nulstille kodeordet"
 
 msgid "Please choose the Beamer color theme"
 msgstr ""
@@ -1426,13 +1438,13 @@ msgid "Please choose the font size"
 msgstr "Vælg venligst skriftstørrelsen"
 
 msgid "Please choose the main font"
-msgstr "Vælg venligst den hovedsagelige skrifttype"
+msgstr "Vælg venligst den grundlæggende skrifttype"
 
 msgid "Please choose the mono font"
-msgstr "Vælg venligst den monospatierede skrifttype"
+msgstr "Vælg venligst den monospatierede skrifttype (skrivemaskine)"
 
 msgid "Please choose the sans font"
-msgstr "Vælg venligst den groteske (sans-serif) skrifttype"
+msgstr "Vælg venligst den groteske skrifttype (sans-serif)"
 
 msgid "Please describe shortly what you did"
 msgstr "Beskriv venligst kort hvad du gjorde"
@@ -1453,7 +1465,7 @@ msgid ""
 "        from the same person."
 msgstr ""
 "Giv os venligst et brugernavn. Det skal *ikke* være en mail-adresse.\n"
-"        Bare et fancy navn, så vi ved at forskellige uploads kommer\n"
+"        Bare find på et navn, så vi ved at forskellige uploads kommer\n"
 "        fra samme person."
 
 msgid ""
@@ -1462,6 +1474,9 @@ msgid ""
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"Husk at filtre er sprogspecifikke og derfor måske\n"
+"            ikke er tilgængelige for tekstens sprog. Hvis de ikke er\n"
+"             tilgængelige vil de blot lade teksten være som den er."
 
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
@@ -1470,10 +1485,10 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
-"Husk venligst at hvis du ser »Gennemtving publicering«\n"
-"    som valgmulighed, så betyder det at revisionen er blevet overflødiggjort "
+"Husk venligst at hvis du ser »Gennemtving offentliggørelse«\n"
+"    som valgmulighed, betyder det at revisionen er blevet overflødiggjort "
 "af\n"
-"    en anden, så hvis du publicerer denne bliver resultatet at du\n"
+"    en anden. Hvis du offentliggør denne revision bliver resultatet at du\n"
 "    fjerner den forrige. Prøv at undgå det med mindre du ved hvad du gør."
 
 msgid "Please leave a mail if you want to be contacted about this change"
@@ -1495,7 +1510,7 @@ msgstr ""
 "  har standalone PDF'en, så anvendes de på den."
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
-msgstr ""
+msgstr "Bemærk at omsluttende markeringer skal placeres på sin egen linje."
 
 msgid ""
 "Please note that you have to upload them first and\n"
@@ -1511,7 +1526,7 @@ msgid ""
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
 msgstr ""
-"Vær venligst opmærksom på at du måske vil indsætte fra et\n"
+"Bemærk venligst at du har mulighed for at indsætte fra et\n"
 "        Word/OpenOffice/LibreOffice/HTML dokument med »indsæt fra\n"
 "        word« knappen. Det burde bevare opmærkningen."
 
@@ -1525,7 +1540,7 @@ msgid "Please prove you are a human"
 msgstr "Bevis venligst at du er et menneske"
 
 msgid "Please reload your page"
-msgstr "Genindlæs venligst din side"
+msgstr "Genindlæs venligst siden"
 
 msgid "Please select"
 msgstr "Vælg venligst"
@@ -1566,7 +1581,7 @@ msgid "Preview"
 msgstr "Forhåndsvisning"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Forhåndsvisningsboksens højde i pixel"
 
 msgid "Previous"
 msgstr "Forrige"
@@ -1587,16 +1602,16 @@ msgid "Produced"
 msgstr "Produceret"
 
 msgid "Publication date"
-msgstr "Publiceringsdato"
+msgstr "Udgivelsesdato"
 
 msgid "Publication date on this site."
-msgstr "Publiceringsdato på denne side."
+msgstr "Dato for offentliggørelse på denne side."
 
 msgid "Publish"
-msgstr "Publicer"
+msgstr "Offentliggør"
 
 msgid "Published in *A nice book*, published by My House, 2014"
-msgstr "Publiceret i *A nice book*, publiceret af My House, 2014"
+msgstr "Offentliggjort i *En god bog*, udgivet af Mit Forlag, 2017"
 
 msgid "Purge"
 msgstr "Slet fuldstændigt"
@@ -1604,23 +1619,23 @@ msgstr "Slet fuldstændigt"
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
 msgstr ""
-"Slette fuldstændigt betyder at den fjernes fra arkivet og ikke bare bliver "
-"gemt bort."
+"Fuldstændig sletning betyder at den fjernes fra arkivet og ikke bare bliver "
+"skjult."
 
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
-"Put ekstra information her (original\n"
-"\t  titel, oversættere, bidragydere, etc.). Fodnoter får plads\n"
-"\t  i brødteksten."
+"Tilføj ekstra information her (original titel,\n"
+"    oversættere, bidragydere, etc.). Fodnoter skal\n"
+"    indsættes i selve teksten."
 
 msgid "Quarter Letter paper"
 msgstr "Kvart Letter papir"
 
 msgid "Query was"
-msgstr "Forespørgselen blev"
+msgstr "Anmodningen blev"
 
 msgid "Queue"
 msgstr "Kø"
@@ -1635,13 +1650,13 @@ msgid "RSS feed"
 msgstr "RSS-feed"
 
 msgid "Random"
-msgstr "Tilfældig"
+msgstr "Tilfældig tekst"
 
 msgid "Read the whole text..."
 msgstr "Læs hele teksten..."
 
 msgid "Real time help"
-msgstr "Real time hjælp"
+msgstr "Realtids hjælp"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1653,15 +1668,15 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
-"Omorganiser fodnoterne og fiks nummereringen,\n"
-"              men tag kun hensyn til den rækkefølge de blev indsat i.\n"
+"Omorganiser fodnoterne og orden nummereringen,\n"
+"              men tager kun hensyn til den rækkefølge de blev indsat i.\n"
 "              Lad være uafkrydset hvis du ikke ved hvad det betyder.\n"
 "              Denne valgmulighed kan være ødelæggende, så brug den venligst\n"
 "              med forsigtighed og tjek resultatet. Hvis du støder på "
 "problemer,\n"
 "              så indsend venligst resultatet og rapporter dem i beskeden.\n"
 "              Proceduren forsøger at være sikker, og ignorerer\n"
-"              ændringerne hvis fodnoter mangler eller der er for mange."
+"              ændringerne hvis der mangler fodnoter eller der er for mange."
 
 msgid "Reason"
 msgstr "Årsag"
@@ -1670,16 +1685,16 @@ msgid "Reason for deletion"
 msgstr "Årsag til sletning"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "Genskab"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "Genskab alle genererede filer"
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "Genskab de genererede formater"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "Genskaber"
 
 msgid "Recheck"
 msgstr "Tjek igen"
@@ -1738,11 +1753,11 @@ msgid "Retrieved on March 8, 2012 from"
 msgstr "Hentet den 8. marts, 2012 fra"
 
 msgid "Revision"
-msgstr "Revisioner"
+msgstr "Revision"
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
-msgstr "Revision af %1 er blevet slettet"
+msgstr "Revisionen af %1 er blevet slettet"
 
 msgid "Roles"
 msgstr "Roller"
@@ -1785,16 +1800,16 @@ msgid "Section"
 msgstr "Sektion"
 
 msgid "Section and subsection. If one side document: section."
-msgstr "Sektion og undersektion. Hvis en-sides dokument: sektion."
+msgstr "Sektion og undersektion. Hvis der kun er en side: sektion."
 
 msgid "See here for more details."
 msgstr "Se her for at få flere detaljer."
 
 msgid "See here for the full documentation."
-msgstr "Se her for den komplette dokumentation."
+msgstr "Se her for den fuldstændige dokumentation."
 
 msgid "See the full manual for more details (english)"
-msgstr "Se den komplette manual for flere detaljer (på engelsk)"
+msgstr "Se den fuldstændige manual for flere detaljer (på engelsk)"
 
 msgid "Select"
 msgstr "Vælg"
@@ -1818,16 +1833,16 @@ msgid "Session sharing"
 msgstr "Sessions deling"
 
 msgid "Set a date in the future if you want it deferred."
-msgstr "Sæt en dato i fremtiden hvis du vil forsinke den."
+msgstr "Sæt en dato i fremtiden hvis du vil udskyde den."
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Vis manualen"
 
 msgid "Show differences in other tab"
 msgstr "Vis forskelle på en anden browsertab"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Vis filtre"
 
 msgid "Show options"
 msgstr "Vis valgmuligheder"
@@ -1876,7 +1891,7 @@ msgstr ""
 "Så vi kan være sikre på at vi ikke sender kodeord til tilfældige mennesker"
 
 msgid "Some fields are missing, all are required"
-msgstr "Nogle felter mangler, alle kræves"
+msgstr "Nogle felter mangler at blive udfyldt, alle er påkrævede"
 
 msgid "Some fields are too long"
 msgstr "Nogle felter er for lange"
@@ -1899,7 +1914,7 @@ msgid "Source files"
 msgstr "Kilde filer"
 
 msgid "Source files with attachments"
-msgstr "Kiler filer med vedhæftede filer"
+msgstr "Kilde filer med vedhæftede filer"
 
 msgid "Source, notes..."
 msgstr "Kilde, notater..."
@@ -1927,7 +1942,7 @@ msgid "Standard"
 msgstr "Standard"
 
 msgid "Started"
-msgstr ""
+msgstr "Begyndte"
 
 msgid "Static page without javascript"
 msgstr "Statisk side uden javaskript"
@@ -2086,10 +2101,11 @@ msgid "The whole book in as single signature"
 msgstr "Hele bogen på et enkelt trykark"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr "Godkend så ændringen ligesom hvis det var en normal publicering."
+msgstr ""
+"Godkend derefter ændringen ligesom hvis det var en normal offentliggørelse."
 
 msgid "Then fetch the updates from this page."
-msgstr "Hent så opdateringerne på denne side. "
+msgstr "Hent derefter opdateringerne på denne side."
 
 msgid "These texts are missing the unique id."
 msgstr "Disse tekster mangler den unikke ID."
@@ -2113,10 +2129,9 @@ msgid ""
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
-"Dette er en WYSIWYG (What You See Is What You Get) editor. Hvis du "
-"foretrækker at bruge\n"
-"        den wiki-lignende syntaks, så lad den være som den er, udfyld de "
-"obligatoriske felter\n"
+"Dette er en WYSIWYG (What You See Is What You Get) editor.\n"
+"        Hvis du foretrækker at bruge den wiki-lignende syntaks,\n"
+"        så lad den være som den er, udfyld de obligatoriske felter\n"
 "        ovenfor og vent med redigering til næste trin."
 
 msgid "This is the caption"
@@ -2129,14 +2144,14 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
-"Denne mail er blevet sendt for at gøre dig opmærksom på en ny tekst\n"
-"skabelse, selv om uploadingen ikke er færdig og brugeren\n"
-"stadig behøver at færdiggøre den. Endnu en mail burde komme snart.\n"
-"Hvis det ikke sker, betyder det at uploadingen blev opgivet\n"
-"og du burde måske tjekke det ud."
+"Denne mail er blevet sendt for at gøre dig opmærksom på at en ny tekst\n"
+" er blevet skabt, selv om uploadningen ikke er færdig og brugeren stadig\n"
+" behøver at færdiggøre den. Endnu en mail burde komme snart.\n"
+" Hvis det ikke sker, betyder det at uploadningen blev opgivet,\n"
+" og du burde måske tjekke hvad der sker."
 
 msgid "This revision is already published, ignoring changes"
-msgstr "Denne revision er allerede publiceret, ignorerer ændringerne"
+msgstr "Denne revision er allerede offentligjort, ignorerer ændringerne"
 
 msgid "This revision is being actively edited"
 msgstr "Denne revision blive aktivt redigeret"
@@ -2165,29 +2180,29 @@ msgid "This text is new"
 msgstr "Denne tekst er ny"
 
 msgid "This text is not published yet"
-msgstr "Denne tekst er ikke publiceret endnu"
+msgstr "Denne tekst er ikke offentliggjort endnu"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
 msgstr "Denne tekst vi blive forsinket til %1"
 
 msgid "Time is optional."
-msgstr "Tidspunkt er valgfrit."
+msgstr "Tidspunktet er valgfrit."
 
 msgid "Title"
 msgstr "Titel"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr "Titel og kapitel. Hvis en-sides dokument: kapitel."
+msgstr "Titel og kapitel. Hvis der kun er en side: kapitel."
 
 msgid "Title and section.  If one side document: section."
-msgstr "Titel og sektion. Hvis en-sides dokument: sektion."
+msgstr "Titel og sektion. Hvis der kun er en side: sektion."
 
 msgid "Title and subtitle. If one side document: title."
-msgstr "Titel og undertitel. Hvis en-sides dokument: titel."
+msgstr "Titel og undertitel. Hvis der kun er en side: titel."
 
 msgid "Title for sorting"
-msgstr "Titel for sortering"
+msgstr "Titel til brug ved sortering"
 
 msgid "Title, author, date..."
 msgstr "Titel, forfatter, dato..."
@@ -2204,10 +2219,10 @@ msgstr ""
 
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
+msgstr "For at bevare blanktegn og linjespring, så omslut afsnittene med"
 
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "For at hurtigt formatere bibliografier, så omslut dem med"
 
 msgid "To quickly format plays, use"
 msgstr "For at hurtigt formatere skuespil, anvend"
@@ -2267,7 +2282,7 @@ msgid "Unable to load the bookbuilder session"
 msgstr "Ikke i stand til at indlæse bogbygger sessionen"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr "Ustemplet PDF (gem hjemmesidenavn, logo, etc.)"
+msgstr "Umærket PDF (skjul hjemmesidenavn, logo, etc.)"
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
@@ -2275,13 +2290,13 @@ msgid ""
 msgstr ""
 
 msgid "Unique ID for the text"
-msgstr "Unik ID for teksten"
+msgstr "Tekstens unikke ID"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Ubegrænset"
 
 msgid "Unpublished texts"
-msgstr "Ikke-publicerede tekster"
+msgstr "Ikke offentliggjorte tekster"
 
 #. ($mime)
 msgid "Unsupported file type %1"
@@ -2312,10 +2327,11 @@ msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr "Brug LuaLaTeX i stedet for XeLaTeX (langsommere)"
 
 msgid "Use SSL for authenticated users"
-msgstr "Brug SSL for a verificerede brugere"
+msgstr "Brug SSL for verificerede brugere"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
+"Brug det som et teaser billede ved at tilføje følgende linje til sidehovedet:"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2328,23 +2344,23 @@ msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
 msgstr ""
-"Praktisk til fodnoter eller i dokumentets sidehoved, hvor du ikke kan putte "
-"en tom linje for at markere et nyt afsnit."
+"Praktisk til fodnoter eller i dokumentets sidehoved, hvor du ikke kan "
+"indsætte en tom linje for at markere et nyt afsnit."
 
 #. ($user->username)
 msgid "User %1 created!"
-msgstr "Brugeren %1 er skabt!"
+msgstr "Brugeren %1 er blevet skabt!"
 
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr "Brugeren %1 er slettet"
+msgstr "Brugeren %1 er blevet slettet"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr "Brugeren %1 er opdateret"
+msgstr "Brugeren %1 er blevet opdateret"
 
 msgid "User created"
-msgstr "Bruger skabt"
+msgstr "Bruger blev skabt"
 
 msgid "Username"
 msgstr "Brugernavn"
@@ -2362,6 +2378,10 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Med dette mærke kan du indlæse bogbyggerindstillingerne\n"
+"    og tekstlisten på en anden computer, eller dele den med en anden.\n"
+"    Skriv den blot ned og indlæs den fra anden computer\n"
+"    med den følgende formular."
 
 msgid "Verbatim block"
 msgstr "Ordret blok"
@@ -2381,6 +2401,9 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"Når du påbegynder en bogbyggersession, kan du for enden\n"
+"     af bogbyggersiden se et mærke som kan bruges til at dele sessionen.\n"
+"     Du kan indlæse den her fra en anden enhed for at genoptage arbejdet."
 
 msgid "Where does this text come from?"
 msgstr "Hvor kommer denne tekst fra?"
@@ -2397,6 +2420,10 @@ msgid ""
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"Når det gælder komplekse strukturer, f.eks. et kapitel\n"
+"     med undersektioner, vil et valg af kapitlet sandsynligvis kun vælge\n"
+"     kapitlets titel, så du behøver måske at vælge kapitlet\n"
+"     og alle dets undersektioner."
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2404,7 +2431,7 @@ msgid ""
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
 "Med bogbyggeren kan du ændre layoutet (skrifttyper,\n"
-"    størrelser, papir, margener) på teksterne i biblioteket. Du kan\n"
+"    dimensioner, papir, margener) på teksterne i biblioteket. Du kan\n"
 "    også sammensætte flere tekster og lave din egen pamflet. Bare prøv!"
 
 msgid "Workflow"
@@ -2415,6 +2442,8 @@ msgid ""
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"Omsluttende markeringer kan ikke bruges i miljøer\n"
+"          som kræver indledende mellemrum (navnlig ikke i lister)."
 
 msgid "Wrong answer!"
 msgstr "Forkert svar!"
@@ -2470,7 +2499,8 @@ msgid ""
 "    remove the texts later."
 msgstr ""
 "Du kan tilføje tekster til bogbyggeren ved at klikke på\n"
-"    »plus« ikonet tæt på hver teksts downloadmuligheder. Du kan tilføje og\n"
+"    »plus« ikonet ved siden af hver teksts downloadmuligheder. Du kan "
+"tilføje og\n"
 "    fjerne teksterne senere."
 
 #. (create_url)
@@ -2483,19 +2513,21 @@ msgstr "Det kan du gøre ved at svare på et simpelt spørgsmål."
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
-"Du kan ikke skabe en ny revision fordi teksten ikke er blevet publiceret "
+"Du kan ikke skabe en ny revision fordi teksten ikke er blevet offentliggjort "
 "endnu"
 
 msgid "You have logged out"
-msgstr "Du har logget ud"
+msgstr "Du er logget ud"
 
 msgid "You may want to resume the editing of one of them"
-msgstr "Du vil måske fortsætte redigeringen af en af dem"
+msgstr "Du ønsker måske at fortsætte med at redigere en af dem"
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
+"Du sendte dit kodeord over en ukrypteret forbindelse. Skift venligst til "
+"HTTPS, log ind, og skift øjeblikkeligt dit kodeord. Dette burde ikke ske."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2505,14 +2537,14 @@ msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
 "Commit"
 msgstr ""
-"Dine ændringer er  gemt og kan tjekkes hver gang du trykker på "
+"Dine ændringer er gemt og kan tjekkes hver gang du trykker på "
 "Forhåndsvisning eller Send"
 
 msgid "Your chapter here..."
 msgstr "Dit kapitel her..."
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Dit nuværende mærke til bogbyggeren er:"
 
 msgid "Your email"
 msgstr "Din e-mail"
@@ -2545,16 +2577,16 @@ msgid "Your username is %1."
 msgstr "Dit brugernavn er %1"
 
 msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr "ZIP arkiv med kilder, behøves af bogbyggeren"
+msgstr "ZIP arkiv med kilder, som behøves af bogbyggeren"
 
 msgid "aborted"
-msgstr ""
+msgstr "afbrudt"
 
 msgid "about, links..."
-msgstr "om, links"
+msgstr "om, links..."
 
 msgid "active"
-msgstr ""
+msgstr "aktiv"
 
 msgid "affects only the frontend webserver configuration"
 msgstr ""
@@ -2563,7 +2595,8 @@ msgid "any"
 msgstr "enhver"
 
 msgid "automatically generated if not present, using author and title"
-msgstr "automatisk genereret hvis ikke tilstede, anvender forfatter og titel"
+msgstr ""
+"bliver automatisk genereret hvis feltet er tomt, bruger forfatter og titel"
 
 msgid "code and monospace"
 msgstr "kode og monospatieret"
@@ -2581,10 +2614,10 @@ msgid "description"
 msgstr "beskrivelse"
 
 msgid "displayed text"
-msgstr "fremvist tekst"
+msgstr "vist tekst"
 
 msgid "edit, commit..."
-msgstr "rediger, indsend..."
+msgstr "rediger, send..."
 
 msgid "editing"
 msgstr "redigerer"
@@ -2614,7 +2647,7 @@ msgid ""
 msgstr ""
 "hvis der tilfældigvis eksisterer en anden tekst med samme forfatter og "
 "titel, så vælg den ønskede URI i feltet nedenfor ved at indsætte forfatter, "
-"titel og et nummer,f.eks. min-forfatter-min-titel-1"
+"titel og et nummer, f.eks. min-forfatter-min-titel-1"
 
 msgid "if the repository is exported"
 msgstr "hvis arkivet er eksporteret"
@@ -2648,7 +2681,7 @@ msgid ""
 msgstr ""
 
 msgid "overstriked"
-msgstr "overskrevet"
+msgstr "overstreget"
 
 msgid "pending"
 msgstr "afventende"
@@ -2657,13 +2690,13 @@ msgid "plain PDF"
 msgstr "enkel PDF"
 
 msgid "plain text source"
-msgstr "enkel tekst kilde"
+msgstr "ren tekst kilde"
 
 msgid "processing"
 msgstr "behandler"
 
 msgid "published"
-msgstr "publiceret"
+msgstr "offentliggjort"
 
 msgid "relevant"
 msgstr "relevant"
@@ -2694,13 +2727,13 @@ msgid "superscript"
 msgstr "hævet skrift"
 
 msgid "taken"
-msgstr "taget"
+msgstr "accepteret"
 
 msgid "texts by authors, title, topic..."
-msgstr "tekster sorteret efter forfattere, titel, emne..."
+msgstr "tekster sorteret efter forfattere, titler, emner..."
 
 msgid "texts sorted by author"
-msgstr "tekster sorteret efter forfatter"
+msgstr "tekster sorteret efter forfatternavn"
 
 msgid "texts sorted by title"
 msgstr "tekster sorteret efter titel"
