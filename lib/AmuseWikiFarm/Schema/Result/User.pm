@@ -24,13 +24,11 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
-=item * L<DBIx::Class::PassphraseColumn>
-
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime", "PassphraseColumn");
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 TABLE: C<users>
 
@@ -236,17 +234,15 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-10-28 15:02:58
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:UI589B1dzfma9JThZIQjJg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:r6spqVC6QBIIWHEpJHPqGg
 
+__PACKAGE__->load_components(qw(PassphraseColumn));
 
 # Have the 'password' column use a SHA-1 hash and 20-byte salt
 # with RFC 2307 encoding; Generate the 'check_password" method
 __PACKAGE__->add_columns(
-    'password' => {
-        data_type => "varchar",
-        is_nullable => 0,
-        size => 255,
+    '+password' => {
         passphrase       => 'rfc2307',
         passphrase_class => 'SaltedDigest',
         passphrase_args  => {

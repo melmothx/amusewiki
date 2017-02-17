@@ -24,13 +24,11 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
-=item * L<DBIx::Class::PassphraseColumn>
-
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime", "PassphraseColumn");
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 TABLE: C<bookbuilder_profile>
 
@@ -106,8 +104,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-01-28 14:54:28
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:AIyNX4AUWQ6z/gFFIS/0ww
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:sOhRzK35pmwRr4pf1+W6IQ
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse ();

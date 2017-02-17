@@ -24,13 +24,11 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
-=item * L<DBIx::Class::PassphraseColumn>
-
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime", "PassphraseColumn");
+__PACKAGE__->load_components("InflateColumn::DateTime");
 
 =head1 TABLE: C<monthly_archive>
 
@@ -151,8 +149,8 @@ Composing rels: L</text_months> -> title
 __PACKAGE__->many_to_many("titles", "text_months", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2016-06-24 07:40:29
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:FfeDvxd89VFYSBT3v4dfpA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ftV+ZqacZDymRWS/9ipNQg
 
 sub datetime {
     my ($self, $locale) = @_;
