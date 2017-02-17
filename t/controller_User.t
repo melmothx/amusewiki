@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 88;
+use Test::More tests => 89;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -267,7 +267,7 @@ is $pincuz->created_by, 'pinco', "user pincuz was created by pinco";
 is $pincuz->email, $form->{email}, "Mail ok";
 
 ok $pincuz->check_password($form->{password}), "password ok";
-
+isnt $pincuz->password, $form->{password}, "password is encrypted";
 ok $pincuz->active, "active ok";
 
 is $pincuz->roles->first->role, 'librarian', "Found role librarian";
