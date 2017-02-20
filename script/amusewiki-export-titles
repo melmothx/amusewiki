@@ -1,0 +1,59 @@
+#!/usr/bin/env perl
+
+BEGIN { die "Do not run this as root" unless $>; }
+
+use strict;
+use warnings;
+use utf8;
+use lib 'lib';
+use AmuseWikiFarm::Schema;
+use Getopt::Long;
+use Pod::Usage;
+
+my ($help);
+GetOptions(help => \$help) or die;
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-export-titles - Export site titles to XLSX
+
+=head1 SYNOPSIS
+
+ amusewiki-export-titles <SITE-ID> <FILE.xlsx>
+
+L<Excel::Writer::XLSX> is required for this script to work (in debian:
+C<libspreadsheet-xlsx-perl>)
+
+=cut
+
+if ($help or @ARGV != 2) {
+    pod2usage;
+    exit 2;
+}
+my ($site_id, $file) = @ARGV;
+die "$file should have an xlsx extension\n" unless $file =~ m/\.xlsx\z/;
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+if (my $site = $schema->resultset('Site')->find($site_id)) {
+    require Excel::Writer::XLSX;
+
+    # setup the xlsx
+    my $excel = Excel::Writer::XLSX->new($file);
+    my $ws = $excel->add_worksheet;
+    my $col = 0;
+    $ws->write_row($col++, 0, [qw/author title uri/]);
+    my $texts = $site->titles->published_texts->sorted_by_title;
+    while (my $text = $texts->next) {
+        $ws->write_row($col++, 0, [
+                                   $text->title,
+                                   $text->author,
+                                   $site->canonical_url_secure . $text->full_uri,
+                                  ]);       
+    }
+}
+else {
+    die "Couldn't find site with id $site_id";
+}
