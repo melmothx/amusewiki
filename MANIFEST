@@ -932,6 +932,7 @@ t/bootstrapping-status-file.t
 t/bootstrapping.t
 t/canonical-urls.t
 t/category-desc.t
+t/category-hiding.t
 t/cgit-proxy.t
 t/cleanups.t
 t/collation-index.t

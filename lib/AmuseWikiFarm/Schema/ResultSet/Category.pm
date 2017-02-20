@@ -19,11 +19,24 @@ Return the sorted categories of a given type.
 
 =cut
 
+sub sorted {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search(undef,
+                         { order_by => ["$me.sorting_pos",
+                                        "$me.name"] });
+}
+
 sub by_type {
     my ($self, $type) = @_;
-    return $self->search({ type => $type },
-                         { order_by => [qw/sorting_pos
-                                           name/] });
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.type" => $type })->sorted;
+}
+
+sub active_only {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.text_count" => { '>' => 0 } });
 }
 
 =head2 active_only_by_type($type)
@@ -35,21 +48,7 @@ which have a text count greater than 0.
 
 sub active_only_by_type {
     my ($self, $type) = @_;
-    return $self->search({
-                          type => $type,
-                          text_count => { '>' => 0 },
-                         },
-                         {
-                          order_by => [qw/sorting_pos name/],
-                         });
-}
-
-sub active_only_by_type_no_site {
-    my ($self, $type) = @_;
-    return $self->search({
-                          type => $type,
-                          text_count => { '>' => 0 },
-                         });
+    return $self->active_only->by_type($type);
 }
 
 =head2 by_type_and_uri($type, $uri)
@@ -58,23 +57,16 @@ Return the category which corresponds to type and uri
 
 =cut
 
-
 sub by_type_and_uri {
     my ($self, $type, $uri) = @_;
-    return $self->single({type => $type,
-                          uri  => $uri});
+    my $me = $self->current_source_alias;
+    return $self->single({"$me.type" => $type,
+                          "$me.uri"  => $uri});
 }
 
 =head2 active_only
 
 Filter the categories which have text_count > 0
-
-=cut
-
-
-sub active_only {
-    return shift->search({ text_count => { '>' => 0 }});
-}
 
 =head2 min_texts($integer)
 
@@ -132,11 +124,11 @@ sub topics_count {
 }
 
 sub topics_only {
-    return shift->search({ type => 'topic' });
+    return shift->by_type('topic');
 }
 
 sub authors_only {
-    return shift->search({ type => 'author' });
+    return shift->by_type('author');
 }
 
 1;

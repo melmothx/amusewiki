@@ -2782,8 +2782,8 @@ sub static_indexes_generator {
     my $self = shift;
     require AmuseWikiFarm::Archive::StaticIndexes;
     my $texts = $self->titles->published_texts;
-    my $authors = $self->categories->active_only_by_type_no_site('author');
-    my $topics  = $self->categories->active_only_by_type_no_site('topic');
+    my $authors = $self->categories->active_only_by_type('author');
+    my $topics  = $self->categories->active_only_by_type('topic');
     my $generator = AmuseWikiFarm::Archive::StaticIndexes
       ->new(
             texts => $texts,
