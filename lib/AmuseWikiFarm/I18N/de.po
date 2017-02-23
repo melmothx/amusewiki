@@ -298,18 +298,18 @@ msgid "Categories"
 msgstr "Kategorien"
 
 msgid "Changes"
-msgstr "Veränderungen"
+msgstr "Änderungen"
 
 msgid "Changes applied"
-msgstr "Veränderungen angewandt"
+msgstr "Änderungen angewandt"
 
 msgid "Changes committed, thanks! They are now waiting to be published"
-msgstr ""
+msgstr "Änderungen gespeichert, vielen Dank! Sie warten nun auf die Veröffentlichung."
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
-msgstr "Veränderungen für %1"
+msgstr "Änderungen für %1"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -350,7 +350,7 @@ msgid ""
 msgstr ""
 
 msgid "Commit"
-msgstr "Übertragen"
+msgstr "Speichern"
 
 msgid "Completed"
 msgstr "Abgeschlossen"
@@ -1997,7 +1997,7 @@ msgstr ""
 " unter N anstatt A aufgelistet. "
 
 msgid "The title of the document. The only mandatory directive."
-msgstr "Der Titel des Dokuments. Die einzig verpflichtende Anweisung. "
+msgstr "Der Titel des Dokuments. Das einzige Pflichtfeld. "
 
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
@@ -2140,7 +2140,7 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
-"Um die ausgeführten Veränderungen zu betrachten, besuche die  folgende URL"
+"Um die eingeführten Änderungen zu betrachten, besuche die folgende URL"
 
 msgid "Topic"
 msgstr "Thema"
@@ -2496,7 +2496,7 @@ msgid "displayed text"
 msgstr "angezeigter Text"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "bearbeiten, speichern..."
 
 msgid "editing"
 msgstr "bearbeiten"
