@@ -543,6 +543,18 @@ sub dispatch_job_rebuild {
     }
 }
 
+sub dispatch_job_reindex {
+    my ($self, $logger) = @_;
+    if (my $path = $self->job_data->{path}) {
+        my $site = $self->site;
+        $site->compile_and_index_files([$path], $logger);
+        my $produced = $site->find_file_by_path($path);
+        return $produced->full_uri;
+    }
+    else {
+        die "Missing path in the job data";
+    }
+}
 
 sub dispatch_job_git {
     my ($self, $logger) = @_;

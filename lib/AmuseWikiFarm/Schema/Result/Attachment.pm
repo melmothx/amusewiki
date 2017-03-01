@@ -214,7 +214,10 @@ sub can_be_inlined {
     }
 }
 
-
+sub full_uri {
+    my $self = shift;
+    return '/library/' . $self->uri;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;
