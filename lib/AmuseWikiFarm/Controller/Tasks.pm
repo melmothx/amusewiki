@@ -72,21 +72,23 @@ sub ajax :Chained('status') :PathPart('ajax') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
-sub bulks :Chained('root') :PathPart('rebuild') :CaptureArgs(0) {
+sub bulks :Chained('root') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    # let the logged access the bulk jobs (show only).
     $self->check_login($c) or die;
-    unless ($c->check_any_user_role(qw/admin root/)) {
-        $c->detach('/not_permitted');
-        return;
-    }
     my $bulk_jobs = $c->stash->{site}->bulk_jobs;
     $c->stash(bulk_jobs => $bulk_jobs);
     my $now = DateTime->now(locale => $c->stash->{current_locale_code});
     $c->stash(now_datetime => $now->format_cldr($now->locale->datetime_format_full));
 }
 
-sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
+sub rebuild :Chained('bulks') :PathPart('rebuilds') :Args(0) {
     my ($self, $c) = @_;
+    # job control reserved to admin
+    unless ($c->check_any_user_role(qw/admin root/)) {
+        $c->detach('/not_permitted');
+        return;
+    }
     my $bulks = delete $c->stash->{bulk_jobs};
     my $all = $bulks->rebuilds;
     my $rs = $all->active_bulk_jobs;
@@ -104,7 +106,7 @@ sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
               last_job => $all->completed_jobs->first);
 }
 
-sub get_bulk_job :Chained('bulks') :PathPart('') :CaptureArgs(1) {
+sub get_bulk_job :Chained('bulks') :PathPart('job') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
     if ($id =~ m/\A[1-9][0-9]*\z/) {
         my $rs = delete $c->stash->{bulk_jobs};

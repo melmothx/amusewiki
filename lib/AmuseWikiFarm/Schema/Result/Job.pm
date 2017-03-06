@@ -566,15 +566,16 @@ sub dispatch_job_git {
     die "Couldn't validate" unless $validate->{$remote}->{$action};
     if ($action eq 'fetch') {
         $site->repo_git_pull($remote, $logger);
-        $site->update_db_from_tree($logger);
+        my $bulk = $site->update_db_from_tree_async($logger);
+        return '/tasks/job/' . $bulk->id . '/show';
     }
     elsif ($action eq 'push') {
         $site->repo_git_push($remote, $logger);
+        return '/console/git';
     }
     else {
         die "Unhandled action $action!";
     }
-    return '/console/git';
 }
 
 sub dispatch_job_alias_create {
