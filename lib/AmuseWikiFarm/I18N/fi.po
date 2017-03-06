@@ -277,7 +277,7 @@ msgstr "Kirjantekijän sivurajoitus (kokonaisluku)"
 msgid "Build it"
 msgstr "Tee kirja"
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Luettelo"
 
 msgid "CSS Theme"
@@ -1197,7 +1197,7 @@ msgstr ""
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Numerolista"
 
 msgid "OPDS"
@@ -2517,7 +2517,7 @@ msgstr "pakollinen"
 msgid "new-example-uri"
 msgstr ""
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "numeroitu elementti"
 
 msgid "optional, defaults to the author directive"
@@ -2601,7 +2601,7 @@ msgstr ""
 msgid "topic"
 msgstr "aihe"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "numeroimaton elementti"
 
 msgid "very strong emphasis"

@@ -268,7 +268,7 @@ msgstr ""
 msgid "Build it"
 msgstr ""
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr ""
 
 msgid "CSS Theme"
@@ -1172,7 +1172,7 @@ msgstr ""
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr ""
 
 msgid "OPDS"
@@ -2437,7 +2437,7 @@ msgstr ""
 msgid "new-example-uri"
 msgstr ""
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr ""
 
 msgid "optional, defaults to the author directive"
@@ -2521,7 +2521,7 @@ msgstr ""
 msgid "topic"
 msgstr ""
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr ""
 
 msgid "very strong emphasis"

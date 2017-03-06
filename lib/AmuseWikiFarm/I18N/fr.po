@@ -298,7 +298,7 @@ msgstr "Limite de pages du générateur de livres (nombre)"
 msgid "Build it"
 msgstr "Générer"
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Liste à puces"
 
 msgid "CSS Theme"
@@ -1292,7 +1292,7 @@ msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 "Nombre de résultats à afficher sur les pages paginées (un nombre entier)"
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Liste numérotée"
 
 msgid "OPDS"
@@ -2718,7 +2718,7 @@ msgstr "obligatoire"
 msgid "new-example-uri"
 msgstr "nouvel-exemple-uri"
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "élément numéroté"
 
 msgid "optional, defaults to the author directive"
@@ -2804,7 +2804,7 @@ msgstr "ce texte sera dépublié"
 msgid "topic"
 msgstr "sujet"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "élément non numéroté"
 
 msgid "very strong emphasis"

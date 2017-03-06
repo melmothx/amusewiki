@@ -282,7 +282,7 @@ msgstr "Buchbinder Seitengrenze (ganze Zahl)"
 msgid "Build it"
 msgstr "Binden"
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Aufzählung"
 
 msgid "CSS Theme"
@@ -1212,7 +1212,7 @@ msgstr ""
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Nummerische Liste"
 
 msgid "OPDS"
@@ -2543,7 +2543,7 @@ msgstr "Pflichtfeld"
 msgid "new-example-uri"
 msgstr ""
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "nummerierter Gegenstand"
 
 msgid "optional, defaults to the author directive"
@@ -2627,7 +2627,7 @@ msgstr ""
 msgid "topic"
 msgstr "Thema"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "unnummerierter Gegenstand"
 
 msgid "very strong emphasis"

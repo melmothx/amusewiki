@@ -40,10 +40,10 @@ $(document).ready(function() {
 	        {name:'[% loc("Bold") | escape_js %]',
              key:'B', openWith:' **', closeWith:'** '},
 
-	        {name:'[% loc("Bulleted List") | escape_js %]',
+	        {name:'[% loc("Unordered List") | escape_js %]',
              openWith:'\n - ' },
 
-	        {name:'[% loc("Numeric List") | escape_js %]',
+	        {name:'[% loc("Ordered List") | escape_js %]',
              openWith:'\n 1. ' },
 
 	        {name:'[% loc("Picture") | escape_js %]',

@@ -297,7 +297,7 @@ msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 msgid "Build it"
 msgstr "Impagina"
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Lista puntata"
 
 msgid "CSS Theme"
@@ -1295,7 +1295,7 @@ msgstr "Numero di testi da mostrare nel feed RSS (numero intero)"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numero di risultati da mostrare nelle paginazioni (un numero intero)"
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Lista numerata"
 
 msgid "OPDS"
@@ -2725,7 +2725,7 @@ msgstr "obbligatorio"
 msgid "new-example-uri"
 msgstr "nuovo-uri-di-esempio"
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "elemento numerato"
 
 msgid "optional, defaults to the author directive"
@@ -2812,7 +2812,7 @@ msgstr "questo testo verrà rimosso dai testi pubblicati"
 msgid "topic"
 msgstr "argomento"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "elemento non numerato"
 
 msgid "very strong emphasis"

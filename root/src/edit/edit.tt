@@ -579,11 +579,11 @@ How smart a lash that speech doth giue my Conscience?
         whitespace.') %]
       </strong></p>
       <pre>
- - [% loc('unnumbered item') %] 1
- - [% loc('unnumbered item') %] 2
+ - [% loc('unordered item') %] 1
+ - [% loc('unordered item') %] 2
 
- 1. [% loc('numbered item') %]
- 1. [% loc('numbered item') %]
+ 1. [% loc('ordered item') %]
+ 1. [% loc('ordered item') %]
 
  [% loc('Term') %] :: [% loc('Description item') %]
  [% loc('Term') %] :: [% loc('Description item') %]</pre>

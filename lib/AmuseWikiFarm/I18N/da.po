@@ -295,7 +295,7 @@ msgstr "Bogbyggerens sidebegrænsning (helt tal)"
 msgid "Build it"
 msgstr "Skab bogen"
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Punkttegns liste"
 
 msgid "CSS Theme"
@@ -1277,7 +1277,7 @@ msgstr "Antal seneste tilføjelser at vise på RSS'en (helt tal)"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Antal resultater at vise på nummererede sider (et helt tal)"
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Numerisk Liste"
 
 msgid "OPDS"
@@ -2666,7 +2666,7 @@ msgstr "obligatorisk"
 msgid "new-example-uri"
 msgstr "ny-eksempel-uri"
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "nummereret element"
 
 msgid "optional, defaults to the author directive"
@@ -2750,7 +2750,7 @@ msgstr "denne tekst vil blive afpubliceret"
 msgid "topic"
 msgstr "emne"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "unummereret element"
 
 msgid "very strong emphasis"

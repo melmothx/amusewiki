@@ -309,7 +309,7 @@ msgstr "Limiti i faqeve të përpiluesit të librit (integjer)"
 msgid "Build it"
 msgstr "Krijoje "
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Lista e renditur"
 
 msgid "CSS Theme"
@@ -1289,7 +1289,7 @@ msgstr "Numri i shënimeve të fundit për ti shfaqur në RSS (integjer)"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numri i rezultateve për ti shfaqur në faqe të numëruara (integjer)"
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Lista Numerike"
 
 msgid "OPDS"
@@ -2683,7 +2683,7 @@ msgstr "e detyrueshme"
 msgid "new-example-uri"
 msgstr ""
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "element i numëruar"
 
 msgid "optional, defaults to the author directive"
@@ -2767,7 +2767,7 @@ msgstr "ky tekst nuk do të largohet nga publikimi"
 msgid "topic"
 msgstr "tema"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "artikull i panumëruar"
 
 msgid "very strong emphasis"

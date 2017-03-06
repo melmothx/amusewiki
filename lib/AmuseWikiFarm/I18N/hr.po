@@ -288,7 +288,7 @@ msgstr "Maksimalni broj stranica zbirke"
 msgid "Build it"
 msgstr "Stvori"
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Običan popis"
 
 msgid "CSS Theme"
@@ -1262,7 +1262,7 @@ msgstr "Broj tekstova u RSS-u"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Broj rezultata po stranici kad popis ima više stranica (pagination)"
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Brojčan popis"
 
 msgid "OPDS"
@@ -2647,7 +2647,7 @@ msgstr "obavezno"
 msgid "new-example-uri"
 msgstr "novi-uri-kao-primjer"
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "brojčani element"
 
 msgid "optional, defaults to the author directive"
@@ -2732,7 +2732,7 @@ msgstr "Ovaj će se tekst izbrisati (ali će ostati u arhivu, skriven)"
 msgid "topic"
 msgstr "tema"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "element bez broja"
 
 msgid "very strong emphasis"

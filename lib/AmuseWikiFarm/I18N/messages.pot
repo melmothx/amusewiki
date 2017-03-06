@@ -336,7 +336,7 @@ msgid "Build it"
 msgstr ""
 
 #: root/src/include/markitup.tt:43
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr ""
 
 #: root/src/admin/edit.tt:290
@@ -1492,7 +1492,7 @@ msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
 #: root/src/include/markitup.tt:46
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr ""
 
 #: root/src/layout.tt:28
@@ -3095,7 +3095,7 @@ msgid "new-example-uri"
 msgstr ""
 
 #: root/src/edit/edit.tt:564 root/src/edit/edit.tt:565
-msgid "numbered item"
+msgid "ordered item"
 msgstr ""
 
 #: root/src/edit/edit.tt:621
@@ -3204,7 +3204,7 @@ msgid "topic"
 msgstr ""
 
 #: root/src/edit/edit.tt:561 root/src/edit/edit.tt:562
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr ""
 
 #: root/src/edit/edit.tt:461 root/src/edit/edit.tt:462 root/src/edit/edit.tt:464

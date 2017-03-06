@@ -301,7 +301,7 @@ msgstr "Límite de páginas del credaor de libro (número entero)"
 msgid "Build it"
 msgstr "Crear"
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Lista con viñetas"
 
 msgid "CSS Theme"
@@ -1306,7 +1306,7 @@ msgstr "Número de últimas publicaciones para mostrar en el RSS (un entero)"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Número de resultados a mostrar en páginas con paginación (un entero)"
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Lista enumerada"
 
 msgid "OPDS"
@@ -2737,7 +2737,7 @@ msgstr "obligatorio"
 msgid "new-example-uri"
 msgstr "uri-ejemplo-nuevo"
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "ítem numerado"
 
 msgid "optional, defaults to the author directive"
@@ -2823,7 +2823,7 @@ msgstr "este texto será despublicado"
 msgid "topic"
 msgstr "tema"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "ítem sin numerar"
 
 msgid "very strong emphasis"

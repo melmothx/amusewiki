@@ -282,7 +282,7 @@ msgstr "Лимит страницы конструктора книг (цело�
 msgid "Build it"
 msgstr "Создать"
 
-msgid "Bulleted List"
+msgid "Unordered List"
 msgstr "Маркированный список"
 
 msgid "CSS Theme"
@@ -1208,7 +1208,7 @@ msgstr ""
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
-msgid "Numeric List"
+msgid "Ordered List"
 msgstr "Список с нумерацией"
 
 msgid "OPDS"
@@ -2541,7 +2541,7 @@ msgstr "обязательно"
 msgid "new-example-uri"
 msgstr ""
 
-msgid "numbered item"
+msgid "ordered item"
 msgstr "список с нумерацией"
 
 msgid "optional, defaults to the author directive"
@@ -2625,7 +2625,7 @@ msgstr ""
 msgid "topic"
 msgstr "тема"
 
-msgid "unnumbered item"
+msgid "unordered item"
 msgstr "список без нумерации"
 
 msgid "very strong emphasis"
