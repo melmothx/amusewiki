@@ -289,7 +289,7 @@ msgstr ""
 msgid "Changes applied"
 msgstr ""
 
-msgid "Changes committed, thanks! They are now waiting to be published"
+msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
@@ -335,7 +335,7 @@ msgid ""
 "12)"
 msgstr ""
 
-msgid "Commit"
+msgid "Save"
 msgstr ""
 
 msgid "Completed"
@@ -462,7 +462,7 @@ msgstr ""
 msgid "Division factor"
 msgstr ""
 
-msgid "Do not enforce commit message"
+msgid "Do not enforce save message"
 msgstr ""
 
 msgid "Done"
@@ -793,7 +793,7 @@ msgstr ""
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
-msgid "If the committer provided a mail, it's listed in the mail's CC field"
+msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
 
 msgid ""
@@ -1142,7 +1142,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#. ($c->loc('Commit')
+#. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
@@ -1503,7 +1503,7 @@ msgid ""
 "              Please leave unchecked if you don't know what this\n"
 "              means. This option could be destructive, please use with\n"
 "              caution and check the result. In case you encounter\n"
-"              problems, please commit the result reporting them in the\n"
+"              problems, please save the result reporting them in the\n"
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
@@ -2314,7 +2314,7 @@ msgstr ""
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
-"Commit"
+"Save"
 msgstr ""
 
 msgid "Your chapter here..."

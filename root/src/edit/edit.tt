@@ -61,7 +61,7 @@
       [% END %]
       <div>
         <p>
-          [% loc('Your changes are saved and can be checked every time you hit Preview or Commit') %]
+          [% loc('Your changes are saved and can be checked every time you hit Preview or Save') %]
         </p>
       </div>
     </div>
@@ -333,7 +333,7 @@
               value="preview" id="amw-edit-form-preview-button">
         [% loc('Preview') %]</button>
     <button type="submit" class="btn btn-default" id="amw-edit-form-commit-button"
-            name="commit"  value="commit">[% loc('Commit')  %]</button>
+            name="commit"  value="commit">[% loc('Save')  %]</button>
     </p>
     [% END %]
   </div>

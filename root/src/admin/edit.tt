@@ -419,7 +419,7 @@ kpsewhich mylogo.pdf
           <input type="checkbox"
                  [% IF esite.do_not_enforce_commit_message %]checked="checked"[% END %]
                  name="do_not_enforce_commit_message" />
-          [% loc('Do not enforce commit message') %]
+          [% loc('Do not enforce save message') %]
         </label>
       </div>
     </div>

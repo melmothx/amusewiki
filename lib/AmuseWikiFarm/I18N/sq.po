@@ -330,7 +330,7 @@ msgstr "Ndryshimet"
 msgid "Changes applied"
 msgstr "Ndryshimet u aplikuan"
 
-msgid "Changes committed, thanks! They are now waiting to be published"
+msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
 "Ndryshimet janë lejuar. Ju faleminderit! Tani pritni që ato të publikohen"
 
@@ -381,7 +381,7 @@ msgid ""
 "12)"
 msgstr ""
 
-msgid "Commit"
+msgid "Save"
 msgstr "Lejo"
 
 msgid "Completed"
@@ -513,7 +513,7 @@ msgstr "Paraqit url saktësisht sikur"
 msgid "Division factor"
 msgstr "Faktori i ndarjes"
 
-msgid "Do not enforce commit message"
+msgid "Do not enforce save message"
 msgstr ""
 
 msgid "Done"
@@ -870,7 +870,7 @@ msgstr "ID"
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Nëse nuk është vendosur %1 do të merret nga udhëzuesi i aplikacionit"
 
-msgid "If the committer provided a mail, it's listed in the mail's CC field"
+msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr "Nëse personi e ka shkruar email-in, do të jetë i vendosur në fushën CC"
 
 msgid ""
@@ -1257,7 +1257,7 @@ msgstr "Asnjë tekst nuk është futur deri më tani"
 msgid "None"
 msgstr "Asnjë"
 
-#. ($c->loc('Commit')
+#. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
@@ -1662,7 +1662,7 @@ msgid ""
 "              Please leave unchecked if you don't know what this\n"
 "              means. This option could be destructive, please use with\n"
 "              caution and check the result. In case you encounter\n"
-"              problems, please commit the result reporting them in the\n"
+"              problems, please save the result reporting them in the\n"
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
@@ -2551,7 +2551,7 @@ msgstr "Duhet të ndryshoni fjalëkalimin menjëherë tek %1"
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
-"Commit"
+"Save"
 msgstr ""
 "Ndryshimet tuaja janë ruajtur dhe mund të kontrollohen në çdo kohë duke "
 "shtypur Inspekto ose Lejo"

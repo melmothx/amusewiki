@@ -4,7 +4,7 @@
 
 [% messages %]
 
-[% lh.loc("If the committer provided a mail, it's listed in the mail's CC field") %]
+[% lh.loc("If the user provided a mail, it's listed in the mail's CC field") %]
 
 [% IF revision_is_new %][% lh.loc('This text is new') %].[% END %]
 

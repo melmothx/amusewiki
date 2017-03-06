@@ -105,7 +105,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
             $revision->session_id($c->sessionid);
             $revision->update;
             $c->flash(status_msg => $c->loc("Created new text"));
-            $c->flash(error_msg => $c->loc('Not finished yet! Please have a look at the text and then click on "[_1]" to finalize your submission!', $c->loc('Commit')));
+            $c->flash(error_msg => $c->loc('Not finished yet! Please have a look at the text and then click on "[_1]" to finalize your submission!', $c->loc('Save')));
 
             my $uri = $revision->title->uri;
             my $id  = $revision->id;
@@ -407,7 +407,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                     log_info { "Sending mail from $mail_from to $mail_to" };
                     $c->model('Mailer')->send_mail(commit => \%mail);
                 }
-                $c->flash(status_msg => $c->loc("Changes committed, thanks! They are now waiting to be published"));
+                $c->flash(status_msg => $c->loc("Changes saved, thanks! They are now waiting to be published"));
                 if ($c->user_exists || $c->stash->{site}->human_can_publish ) {
                     $c->response->redirect($c->uri_for_action('/publish/pending'));
                 }

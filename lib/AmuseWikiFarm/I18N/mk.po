@@ -322,7 +322,7 @@ msgstr "Измени"
 msgid "Changes applied"
 msgstr "Внесени измени"
 
-msgid "Changes committed, thanks! They are now waiting to be published"
+msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr "Измените се извршени, сега се на чекање"
 
 #. ($c->stash->{revision}->title->uri)
@@ -372,7 +372,7 @@ msgid ""
 "12)"
 msgstr "Ширина на левата страна на страницата за уредување текстови"
 
-msgid "Commit"
+msgid "Save"
 msgstr "Изврши"
 
 msgid "Completed"
@@ -508,7 +508,7 @@ msgstr "Покажи го URL kako"
 msgid "Division factor"
 msgstr "Фактор на поделба"
 
-msgid "Do not enforce commit message"
+msgid "Do not enforce save message"
 msgstr "Не форсирај порака кога текстот ќе се подготви"
 
 msgid "Done"
@@ -864,7 +864,7 @@ msgstr "Id"
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ако е празно, ќе се користи %1 од директориумот на апликацијата."
 
-msgid "If the committer provided a mail, it's listed in the mail's CC field"
+msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Ако личноста која направила измени навела e-mail, вклучена е во CC листата"
 
@@ -1258,7 +1258,7 @@ msgstr "Сѐ уште не е додаден ниту еден текст"
 msgid "None"
 msgstr "Без"
 
-#. ($c->loc('Commit')
+#. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
@@ -1681,7 +1681,7 @@ msgid ""
 "              Please leave unchecked if you don't know what this\n"
 "              means. This option could be destructive, please use with\n"
 "              caution and check the result. In case you encounter\n"
-"              problems, please commit the result reporting them in the\n"
+"              problems, please save the result reporting them in the\n"
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
@@ -2572,7 +2572,7 @@ msgstr "Треба веднаш да ја промениш својата лоз
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
-"Commit"
+"Save"
 msgstr ""
 "Твоите измени се подготвени и можеш да ги прегледаш секојпат кога\n"
 " ќе кликнеш на \"Преглед\" или \"Зачувај\""

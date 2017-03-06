@@ -253,7 +253,7 @@ msgstr ""
 msgid "Attached images"
 msgstr ""
 
-#: mkits/commit/body.txt:27 root/src/publish/pending.tt:16
+#: mkits/save/body.txt:27 root/src/publish/pending.tt:16
 msgid "Attachments"
 msgstr ""
 
@@ -364,7 +364,7 @@ msgid "Changes applied"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Edit.pm:410
-msgid "Changes committed, thanks! They are now waiting to be published"
+msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
@@ -421,7 +421,7 @@ msgid "Columns for the left side of the editing page, with the editing box (out 
 msgstr ""
 
 #: root/src/edit/edit.tt:326
-msgid "Commit"
+msgid "Save"
 msgstr ""
 
 #: root/src/admin/jobs.tt:120 root/src/include/bulk_job.tt:15
@@ -586,7 +586,7 @@ msgid "Division factor"
 msgstr ""
 
 #: root/src/admin/edit.tt:422
-msgid "Do not enforce commit message"
+msgid "Do not enforce save message"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:56 root/src/help/opds.tt:110
@@ -1006,8 +1006,8 @@ msgstr ""
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
-#: mkits/commit/body.txt:7
-msgid "If the committer provided a mail, it's listed in the mail's CC field"
+#: mkits/save/body.txt:7
+msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
 
 #: root/src/edit/edit.tt:655
@@ -1454,7 +1454,7 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#. ($c->loc('Commit')
+#. ($c->loc('Save')
 #: lib/AmuseWikiFarm/Controller/Edit.pm:108
 msgid "Not finished yet! Please have a look at the text and then click on \"%1\" to finalize your submission!"
 msgstr ""
@@ -1800,7 +1800,7 @@ msgid ""
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 
-#: mkits/commit/body.txt:19 root/src/admin/edit.tt:815 root/src/edit/edit.tt:324 root/src/edit/edit.tt:35 root/src/edit/preview.tt:3
+#: mkits/save/body.txt:19 root/src/admin/edit.tt:815 root/src/edit/edit.tt:324 root/src/edit/edit.tt:35 root/src/edit/preview.tt:3
 msgid "Preview"
 msgstr ""
 
@@ -1906,7 +1906,7 @@ msgid ""
 "              Please leave unchecked if you don't know what this\n"
 "              means. This option could be destructive, please use with\n"
 "              caution and check the result. In case you encounter\n"
-"              problems, please commit the result reporting them in the\n"
+"              problems, please save the result reporting them in the\n"
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
@@ -2423,7 +2423,7 @@ msgstr ""
 msgid "The password will be mailed at this address"
 msgstr ""
 
-#: mkits/commit/body.txt:3
+#: mkits/save/body.txt:3
 msgid "The revision has the following messages"
 msgstr ""
 
@@ -2537,7 +2537,7 @@ msgstr ""
 msgid "This text does not exist"
 msgstr ""
 
-#: mkits/commit/body.txt:9 root/src/edit/diff.tt:8
+#: mkits/save/body.txt:9 root/src/edit/diff.tt:8
 msgid "This text is new"
 msgstr ""
 
@@ -2583,7 +2583,7 @@ msgid "Titles"
 msgstr ""
 
 #. (pending_url)
-#: mkits/commit/body.txt:23
+#: mkits/save/body.txt:23
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
@@ -2603,7 +2603,7 @@ msgstr ""
 msgid "To quickly format plays, use"
 msgstr ""
 
-#: mkits/commit/body.txt:11
+#: mkits/save/body.txt:11
 msgid "To resume the editing you can visit the following URL"
 msgstr ""
 
@@ -2615,7 +2615,7 @@ msgid ""
 "    the options with the \"%1\" button"
 msgstr ""
 
-#: mkits/commit/body.txt:15
+#: mkits/save/body.txt:15
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 
@@ -2936,7 +2936,7 @@ msgid "You should change your password right away at %1"
 msgstr ""
 
 #: root/src/edit/edit.tt:64
-msgid "Your changes are saved and can be checked every time you hit Preview or Commit"
+msgid "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 
 #: root/src/include/markitup.tt:19

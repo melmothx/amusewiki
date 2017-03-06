@@ -309,7 +309,7 @@ msgstr "Izmjene"
 msgid "Changes applied"
 msgstr "Unesene izmjene"
 
-msgid "Changes committed, thanks! They are now waiting to be published"
+msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr "Izmjene izvršene, hvala, sad su na čekanju"
 
 #. ($c->stash->{revision}->title->uri)
@@ -358,7 +358,7 @@ msgid ""
 "12)"
 msgstr "Širina lijeve strane stranice za uređivanje tekstova"
 
-msgid "Commit"
+msgid "Save"
 msgstr "Spremi"
 
 msgid "Completed"
@@ -493,7 +493,7 @@ msgstr "Pokaži URL kao"
 msgid "Division factor"
 msgstr "Faktor podijele"
 
-msgid "Do not enforce commit message"
+msgid "Do not enforce save message"
 msgstr "Ne forsiraj poruku kad se tekst spremi"
 
 msgid "Done"
@@ -844,7 +844,7 @@ msgstr "Id"
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ako je prazno, koristit će se %1 iz direktorija aplikacije."
 
-msgid "If the committer provided a mail, it's listed in the mail's CC field"
+msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Ako je osoba koja je napravila izmijene navela mail, uključena je u CC listu"
 
@@ -1232,7 +1232,7 @@ msgstr "Još nije dodan nijedan tekst"
 msgid "None"
 msgstr "Bez"
 
-#. ($c->loc('Commit')
+#. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
@@ -1643,7 +1643,7 @@ msgid ""
 "              Please leave unchecked if you don't know what this\n"
 "              means. This option could be destructive, please use with\n"
 "              caution and check the result. In case you encounter\n"
-"              problems, please commit the result reporting them in the\n"
+"              problems, please save the result reporting them in the\n"
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
@@ -2519,7 +2519,7 @@ msgstr "Trebao bi promjeniti svoju lozinku sada na %1"
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or "
-"Commit"
+"Save"
 msgstr ""
 "Tvoje izmjene su spremljene i možeš ih pregledati svaki put kada\n"
 "klikneš na “Pregled” ili “Spremi”"
@@ -2840,7 +2840,7 @@ msgstr ""
 #~ msgid "Full site canonical URL, including protocol"
 #~ msgstr "Čitav osnovni URL, uključujući protokol"
 
-#~ msgid "Changes committed, thanks!"
+#~ msgid "Changes saved, thanks!"
 #~ msgstr "Izmjene izvršene, hvala"
 
 #~ msgid ""
