@@ -1571,7 +1571,7 @@ msgid "Popular texts"
 msgstr "Populære tekster"
 
 msgid ""
-"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 "Præfix for nummererede lister kan være »1.«, »a.«, »A.«,\n"

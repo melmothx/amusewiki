@@ -1796,7 +1796,7 @@ msgstr ""
 
 #: root/src/edit/edit.tt:575
 msgid ""
-"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 

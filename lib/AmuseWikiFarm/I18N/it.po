@@ -1591,7 +1591,7 @@ msgid "Popular texts"
 msgstr "Testi più letti"
 
 msgid ""
-"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 "Il prefisso delle liste numerate può essere \"1.\", \"a.\", \"A.\", \"i.\", "

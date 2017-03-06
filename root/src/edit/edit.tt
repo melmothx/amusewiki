@@ -593,7 +593,7 @@ How smart a lash that speech doth giue my Conscience?
         term and the description.') %]
       </p>
       <p>
-        [% loc('Prefix for numbered lists may be “1.”, “a.”, “A.”,
+        [% loc('Prefix for ordered lists may be “1.”, “a.”, “A.”,
         “i.”, “I.”, depending on the list type you need.') %]
       </p>
       <h4 id="cslinks">[% loc('Links and images') %]</h4>

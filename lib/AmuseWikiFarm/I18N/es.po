@@ -1604,7 +1604,7 @@ msgid "Popular texts"
 msgstr "Textos populares"
 
 msgid ""
-"Prefix for numbered lists may be “1.”, “a.”, “A.”,\n"
+"Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
 "Los prefijos para listas enumeradas pueden ser “1.”, “a.”,\n"
