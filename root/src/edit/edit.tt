@@ -284,7 +284,7 @@
               Please leave unchecked if you don't know what this
               means. This option could be destructive, please use with
               caution and check the result. In case you encounter
-              problems, please commit the result reporting them in the
+              problems, please save the result reporting them in the
               message. The procedure tries to be safe and will ignore
               the change if footnotes are missing or are too many.") %]
       </label>
