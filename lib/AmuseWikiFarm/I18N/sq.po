@@ -309,9 +309,6 @@ msgstr "Limiti i faqeve të përpiluesit të librit (integjer)"
 msgid "Build it"
 msgstr "Krijoje "
 
-msgid "Unordered List"
-msgstr "Lista e renditur"
-
 msgid "CSS Theme"
 msgstr ""
 
@@ -330,14 +327,14 @@ msgstr "Ndryshimet"
 msgid "Changes applied"
 msgstr "Ndryshimet u aplikuan"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
-"Ndryshimet janë lejuar. Ju faleminderit! Tani pritni që ato të publikohen"
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Ndryshime për %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr ""
+"Ndryshimet janë lejuar. Ju faleminderit! Tani pritni që ato të publikohen"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -380,9 +377,6 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
-
-msgid "Save"
-msgstr "Lejo"
 
 msgid "Completed"
 msgstr "E përfunduar"
@@ -1113,9 +1107,6 @@ msgstr ""
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
-msgid "Locale"
-msgstr ""
-
 msgid "Log in"
 msgstr "Kyçu"
 
@@ -1289,9 +1280,6 @@ msgstr "Numri i shënimeve të fundit për ti shfaqur në RSS (integjer)"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numri i rezultateve për ti shfaqur në faqe të numëruara (integjer)"
 
-msgid "Ordered List"
-msgstr "Lista Numerike"
-
 msgid "OPDS"
 msgstr ""
 
@@ -1324,6 +1312,9 @@ msgstr "Ose ngarko një document HTML ."
 
 msgid "Or wrap it in"
 msgstr "Ose shtoje brenda"
+
+msgid "Ordered List"
+msgstr "Lista Numerike"
 
 msgid "Other languages"
 msgstr "Gjuhët tjera"
@@ -1498,6 +1489,13 @@ msgstr ""
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Ju lutem leni një email nëse dëshironi të ju kontaktojm për këtë ndryshim"
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
+msgstr ""
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1781,6 +1779,9 @@ msgstr ""
 
 msgid "Sans font"
 msgstr "Fonti Sans"
+
+msgid "Save"
+msgstr "Lejo"
 
 msgid "Save the current settings with a name"
 msgstr "Përditëso konfigurimin aktual"
@@ -2078,6 +2079,11 @@ msgstr "Fjalëkalimi do të dërgohet në këtë email adresë"
 msgid "The revision has the following messages"
 msgstr "Përpunimi ka marrë komentet në vazhdim"
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr "Struktura e tekstit është treguar më poshtë"
 
@@ -2322,6 +2328,9 @@ msgstr "ID unike per tekst"
 msgid "Unlimited"
 msgstr ""
 
+msgid "Unordered List"
+msgstr "Lista e renditur"
+
 msgid "Unpublished texts"
 msgstr "Tekst i papublikuar"
 
@@ -2448,6 +2457,11 @@ msgstr ""
 "    zgjedhni kapitullin dhe të gjitha nënseksionet."
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2550,8 +2564,7 @@ msgid "You should change your password right away at %1"
 msgstr "Duhet të ndryshoni fjalëkalimin menjëherë tek %1"
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Ndryshimet tuaja janë ruajtur dhe mund të kontrollohen në çdo kohë duke "
 "shtypur Inspekto ose Lejo"
@@ -2680,11 +2693,11 @@ msgstr "majtas"
 msgid "mandatory"
 msgstr "e detyrueshme"
 
-msgid "new-example-uri"
+msgid "markup *not* interpreted"
 msgstr ""
 
-msgid "ordered item"
-msgstr "element i numëruar"
+msgid "new-example-uri"
+msgstr ""
 
 msgid "optional, defaults to the author directive"
 msgstr "opcionale, e parazgjedhur direktiva e autorit"
@@ -2696,6 +2709,9 @@ msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
 msgstr ""
+
+msgid "ordered item"
+msgstr "element i numëruar"
 
 msgid "overstriked"
 msgstr ""

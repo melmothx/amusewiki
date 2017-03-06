@@ -269,9 +269,6 @@ msgstr ""
 msgid "Build it"
 msgstr ""
 
-msgid "Unordered List"
-msgstr ""
-
 msgid "CSS Theme"
 msgstr ""
 
@@ -290,12 +287,12 @@ msgstr ""
 msgid "Changes applied"
 msgstr ""
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
+msgstr ""
+
+msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
 
 msgid ""
@@ -334,9 +331,6 @@ msgstr ""
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
-msgstr ""
-
-msgid "Save"
 msgstr ""
 
 msgid "Completed"
@@ -999,9 +993,6 @@ msgstr ""
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
-msgid "Locale"
-msgstr ""
-
 msgid "Log in"
 msgstr ""
 
@@ -1173,9 +1164,6 @@ msgstr ""
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
-msgid "Ordered List"
-msgstr ""
-
 msgid "OPDS"
 msgstr ""
 
@@ -1203,6 +1191,9 @@ msgid "Or provide an HTML file to upload"
 msgstr ""
 
 msgid "Or wrap it in"
+msgstr ""
+
+msgid "Ordered List"
 msgstr ""
 
 msgid "Other languages"
@@ -1355,6 +1346,13 @@ msgid ""
 msgstr ""
 
 msgid "Please leave a mail if you want to be contacted about this change"
+msgstr ""
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
 msgstr ""
 
 msgid ""
@@ -1612,6 +1610,9 @@ msgid "SSL key path"
 msgstr ""
 
 msgid "Sans font"
+msgstr ""
+
+msgid "Save"
 msgstr ""
 
 msgid "Save the current settings with a name"
@@ -1901,6 +1902,11 @@ msgstr ""
 msgid "The revision has the following messages"
 msgstr ""
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr ""
 
@@ -2111,6 +2117,9 @@ msgstr ""
 msgid "Unlimited"
 msgstr ""
 
+msgid "Unordered List"
+msgstr ""
+
 msgid "Unpublished texts"
 msgstr ""
 
@@ -2227,6 +2236,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2314,8 +2328,7 @@ msgid "You should change your password right away at %1"
 msgstr ""
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 
 msgid "Your chapter here..."
@@ -2435,10 +2448,10 @@ msgstr ""
 msgid "mandatory"
 msgstr ""
 
-msgid "new-example-uri"
+msgid "markup *not* interpreted"
 msgstr ""
 
-msgid "ordered item"
+msgid "new-example-uri"
 msgstr ""
 
 msgid "optional, defaults to the author directive"
@@ -2450,6 +2463,9 @@ msgstr ""
 msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
+msgstr ""
+
+msgid "ordered item"
 msgstr ""
 
 msgid "overstriked"

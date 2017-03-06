@@ -301,9 +301,6 @@ msgstr "Límite de páginas del credaor de libro (número entero)"
 msgid "Build it"
 msgstr "Crear"
 
-msgid "Unordered List"
-msgstr "Lista con viñetas"
-
 msgid "CSS Theme"
 msgstr "Tema CSS"
 
@@ -322,13 +319,13 @@ msgstr "Cambios"
 msgid "Changes applied"
 msgstr "Cambios aplicados"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr "Cambios aplicados, ¡gracias! Ahora están a la espera de ser publicados"
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Cambios para %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Cambios aplicados, ¡gracias! Ahora están a la espera de ser publicados"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -373,9 +370,6 @@ msgid ""
 msgstr ""
 "Columas para el lado izquierdo de la página de edición, con la caja de "
 "edición (un máximo de 12)"
-
-msgid "Save"
-msgstr "Enviar"
 
 msgid "Completed"
 msgstr "Completado"
@@ -1130,9 +1124,6 @@ msgstr "Cargar otra sesión mediante un token"
 msgid "Loaded \"%1\" configuration"
 msgstr "Cargada la configuración \"%1\""
 
-msgid "Locale"
-msgstr "Local"
-
 msgid "Log in"
 msgstr "Iniciar sesión"
 
@@ -1306,9 +1297,6 @@ msgstr "Número de últimas publicaciones para mostrar en el RSS (un entero)"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Número de resultados a mostrar en páginas con paginación (un entero)"
 
-msgid "Ordered List"
-msgstr "Lista enumerada"
-
 msgid "OPDS"
 msgstr "OPDS"
 
@@ -1342,6 +1330,9 @@ msgstr "O provee un archivo HTML para subir"
 
 msgid "Or wrap it in"
 msgstr "O termínalo"
+
+msgid "Ordered List"
+msgstr "Lista enumerada"
 
 msgid "Other languages"
 msgstr "Otros idiomas"
@@ -1525,6 +1516,13 @@ msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Por favor deja un correo electrónico si quieres ser contactada/o sobre este "
 "cambio"
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
+msgstr ""
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1814,6 +1812,9 @@ msgstr "Path de llave SSL"
 
 msgid "Sans font"
 msgstr "Tipografía sans"
+
+msgid "Save"
+msgstr "Enviar"
 
 msgid "Save the current settings with a name"
 msgstr "Guardar las opciones actuales con un nombre"
@@ -2123,6 +2124,11 @@ msgstr "La contraseña será enviada por correo electrónico a esta dirección"
 msgid "The revision has the following messages"
 msgstr "La revisión tiene los siguientes mensajes"
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr "La estructura del texto se muestra abajo."
 
@@ -2364,6 +2370,9 @@ msgstr "ID único para el texto"
 msgid "Unlimited"
 msgstr "Ilimitado"
 
+msgid "Unordered List"
+msgstr "Lista con viñetas"
+
 msgid "Unpublished texts"
 msgstr "Textos no publicados"
 
@@ -2498,6 +2507,11 @@ msgstr ""
 "      capítulo y todas sus subsecciones."
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2606,8 +2620,7 @@ msgid "You should change your password right away at %1"
 msgstr "Deberías cambiar tu contraseña ahora en %1"
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Tus cambios son guardados y pueden ser revisados cada vez que clickees "
 "Previsualizar o Enviar"
@@ -2734,11 +2747,11 @@ msgstr "izquierda"
 msgid "mandatory"
 msgstr "obligatorio"
 
+msgid "markup *not* interpreted"
+msgstr ""
+
 msgid "new-example-uri"
 msgstr "uri-ejemplo-nuevo"
-
-msgid "ordered item"
-msgstr "ítem numerado"
 
 msgid "optional, defaults to the author directive"
 msgstr "opcional, de forma predeterminada es la directiva del/a autor/a"
@@ -2752,6 +2765,9 @@ msgid ""
 msgstr ""
 "o, si tienes acceso SSH a la máquina (pero no usas el mismo usuario como "
 "amusewiki, debería ser un repositorio de solo lectura)"
+
+msgid "ordered item"
+msgstr "ítem numerado"
 
 msgid "overstriked"
 msgstr "overstriked"
@@ -2849,6 +2865,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "Locale"
+#~ msgstr "Local"
 
 #~ msgid "Cover image (optional)"
 #~ msgstr "Imagen de portada (opcional)"

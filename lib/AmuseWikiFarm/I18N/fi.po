@@ -277,9 +277,6 @@ msgstr "Kirjantekijän sivurajoitus (kokonaisluku)"
 msgid "Build it"
 msgstr "Tee kirja"
 
-msgid "Unordered List"
-msgstr "Luettelo"
-
 msgid "CSS Theme"
 msgstr ""
 
@@ -298,13 +295,13 @@ msgstr "Muutokset"
 msgid "Changes applied"
 msgstr "Tehdyt muutokset"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr "Muutokset tehty, kiitos! Ne odottavat nyt julkaisua"
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Tekstin %1 muutokset"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Muutokset tehty, kiitos! Ne odottavat nyt julkaisua"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -343,9 +340,6 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
-
-msgid "Save"
-msgstr "Tee muutokset"
 
 msgid "Completed"
 msgstr "Valmis"
@@ -1023,9 +1017,6 @@ msgstr ""
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
-msgid "Locale"
-msgstr ""
-
 msgid "Log in"
 msgstr "Kirjaudu"
 
@@ -1197,9 +1188,6 @@ msgstr ""
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
-msgid "Ordered List"
-msgstr "Numerolista"
-
 msgid "OPDS"
 msgstr ""
 
@@ -1234,6 +1222,9 @@ msgstr ""
 
 msgid "Or wrap it in"
 msgstr "Tai sen voi laittaa tageihin"
+
+msgid "Ordered List"
+msgstr "Numerolista"
 
 msgid "Other languages"
 msgstr "Muut kielet"
@@ -1403,6 +1394,13 @@ msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Jätä sähköpostiosoite, jos haluat että sinuun otetaan yhteyttä tästä "
 "muutoksesta"
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
+msgstr ""
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1669,6 +1667,9 @@ msgstr ""
 
 msgid "Sans font"
 msgstr ""
+
+msgid "Save"
+msgstr "Tee muutokset"
 
 msgid "Save the current settings with a name"
 msgstr ""
@@ -1961,6 +1962,11 @@ msgstr "Salasana lähetetään tähän osoitteeseen"
 msgid "The revision has the following messages"
 msgstr "Versiossa on seuraavat viestit"
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr ""
 
@@ -2175,6 +2181,9 @@ msgstr "Yksilöllinen tunniste"
 msgid "Unlimited"
 msgstr ""
 
+msgid "Unordered List"
+msgstr "Luettelo"
+
 msgid "Unpublished texts"
 msgstr "Julkaisemattomat tekstit"
 
@@ -2295,6 +2304,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2388,8 +2402,7 @@ msgid "You should change your password right away at %1"
 msgstr "Sinun tulisi vaihtaa salasanasi heti osoitteessa %1"
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Muutokset on tallennettu ja ne voi tarkistaa aina kun painat Esikatselu tai "
 "Lähetä"
@@ -2514,11 +2527,11 @@ msgstr ""
 msgid "mandatory"
 msgstr "pakollinen"
 
-msgid "new-example-uri"
+msgid "markup *not* interpreted"
 msgstr ""
 
-msgid "ordered item"
-msgstr "numeroitu elementti"
+msgid "new-example-uri"
+msgstr ""
 
 msgid "optional, defaults to the author directive"
 msgstr "vapaaehtoinen, oletuksena kirjoittajamerkintä"
@@ -2530,6 +2543,9 @@ msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
 msgstr ""
+
+msgid "ordered item"
+msgstr "numeroitu elementti"
 
 msgid "overstriked"
 msgstr "yliviivattu"

@@ -301,9 +301,6 @@ msgstr "Максимален број на страници на збиркат�
 msgid "Build it"
 msgstr "Направи"
 
-msgid "Unordered List"
-msgstr "Ненумерирана листа"
-
 msgid "CSS Theme"
 msgstr "CSS тема"
 
@@ -322,13 +319,13 @@ msgstr "Измени"
 msgid "Changes applied"
 msgstr "Внесени измени"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr "Измените се извршени, сега се на чекање"
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Измени за %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Измените се извршени, сега се на чекање"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -371,9 +368,6 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr "Ширина на левата страна на страницата за уредување текстови"
-
-msgid "Save"
-msgstr "Изврши"
 
 msgid "Completed"
 msgstr "Готово"
@@ -1110,9 +1104,6 @@ msgstr "Вчитај друга сесија со код"
 msgid "Loaded \"%1\" configuration"
 msgstr "Користејќи %1 конфигурација"
 
-msgid "Locale"
-msgstr "Јазик"
-
 msgid "Log in"
 msgstr "Логирај се"
 
@@ -1289,9 +1280,6 @@ msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 "Број на резултати по страница кога листата има повеќе страници (pagination)"
 
-msgid "Ordered List"
-msgstr "Нумерирана листа"
-
 msgid "OPDS"
 msgstr "OPDS"
 
@@ -1324,6 +1312,9 @@ msgstr "Или вчитај HTML датотека"
 
 msgid "Or wrap it in"
 msgstr "Или вметни помеѓу"
+
+msgid "Ordered List"
+msgstr "Нумерирана листа"
 
 msgid "Other languages"
 msgstr "Други јазици"
@@ -1506,6 +1497,13 @@ msgstr ""
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Остави e-mail доколку сакаш да бидеш контактиран во врска со оваа измена"
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
+msgstr ""
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1799,6 +1797,9 @@ msgstr "Клуч SSL"
 
 msgid "Sans font"
 msgstr "Фонт без сериф"
+
+msgid "Save"
+msgstr "Изврши"
 
 msgid "Save the current settings with a name"
 msgstr "Зачувај ги опциите со име"
@@ -2100,6 +2101,11 @@ msgstr "Лозинката ќе биде испратена на оваа e-mail
 msgid "The revision has the following messages"
 msgstr "Измената ги содржи следните пораки"
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr "Структурата на текстот е покажана долу."
 
@@ -2335,6 +2341,9 @@ msgstr "Единствен ID за текстот"
 msgid "Unlimited"
 msgstr "Неограничено"
 
+msgid "Unordered List"
+msgstr "Ненумерирана листа"
+
 msgid "Unpublished texts"
 msgstr "Необјавени текстови"
 
@@ -2466,6 +2475,11 @@ msgstr ""
 " веројатно ќе се уфрли само насловот."
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2571,8 +2585,7 @@ msgid "You should change your password right away at %1"
 msgstr "Треба веднаш да ја промениш својата лозинка на %1"
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Твоите измени се подготвени и можеш да ги прегледаш секојпат кога\n"
 " ќе кликнеш на \"Преглед\" или \"Зачувај\""
@@ -2697,11 +2710,11 @@ msgstr "лево"
 msgid "mandatory"
 msgstr "задолжително"
 
+msgid "markup *not* interpreted"
+msgstr ""
+
 msgid "new-example-uri"
 msgstr "нов-uri-како-пример"
-
-msgid "ordered item"
-msgstr "нумериран елемент"
 
 msgid "optional, defaults to the author directive"
 msgstr "незадолжително, доколку недостига ќе се користи полето автор"
@@ -2715,6 +2728,9 @@ msgid ""
 msgstr ""
 "Или, ако имаш SSH пристап на машината (немој да го користиш истиот корисник "
 "од апликацијата)"
+
+msgid "ordered item"
+msgstr "нумериран елемент"
 
 msgid "overstriked"
 msgstr "избришано"
@@ -2811,6 +2827,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Locale"
+#~ msgstr "Јазик"
 
 #~ msgid "Cover image (optional)"
 #~ msgstr "Слика за насловницата (незадолжително)"

@@ -288,9 +288,6 @@ msgstr "Maksimalni broj stranica zbirke"
 msgid "Build it"
 msgstr "Stvori"
 
-msgid "Unordered List"
-msgstr "Običan popis"
-
 msgid "CSS Theme"
 msgstr "Tema CSS-a"
 
@@ -309,13 +306,13 @@ msgstr "Izmjene"
 msgid "Changes applied"
 msgstr "Unesene izmjene"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr "Izmjene izvršene, hvala, sad su na čekanju"
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Izmjene za %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Izmjene izvršene, hvala, sad su na čekanju"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -357,9 +354,6 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr "Širina lijeve strane stranice za uređivanje tekstova"
-
-msgid "Save"
-msgstr "Spremi"
 
 msgid "Completed"
 msgstr "Gotovo"
@@ -1088,9 +1082,6 @@ msgstr "Učitaj drugu sesiju kodom"
 msgid "Loaded \"%1\" configuration"
 msgstr "Koristeći \"%1\" konfiguraciju"
 
-msgid "Locale"
-msgstr "Jezik"
-
 msgid "Log in"
 msgstr "Uđi"
 
@@ -1262,9 +1253,6 @@ msgstr "Broj tekstova u RSS-u"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Broj rezultata po stranici kad popis ima više stranica (pagination)"
 
-msgid "Ordered List"
-msgstr "Brojčan popis"
-
 msgid "OPDS"
 msgstr "OPDS"
 
@@ -1297,6 +1285,9 @@ msgstr "Ili učitaj HTML datoteku"
 
 msgid "Or wrap it in"
 msgstr "Ili umetni između"
+
+msgid "Ordered List"
+msgstr "Brojčan popis"
 
 msgid "Other languages"
 msgstr "Drugi jezici"
@@ -1471,6 +1462,13 @@ msgstr ""
 
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr "Ostavi mail ako želiš biti kontaktiran u vezi ove izmjene"
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
+msgstr ""
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1758,6 +1756,9 @@ msgstr "Ključ SSL"
 
 msgid "Sans font"
 msgstr "Font bez serifa"
+
+msgid "Save"
+msgstr "Spremi"
 
 msgid "Save the current settings with a name"
 msgstr "Spremi opcije imenom"
@@ -2057,6 +2058,11 @@ msgstr "Lozinka će biti poslana ovu e-mail adresu"
 msgid "The revision has the following messages"
 msgstr "Izmjena sadrži slijedeće poruke"
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr "Struktura teksta je pokazana dolje."
 
@@ -2283,6 +2289,9 @@ msgstr "Jedinstveni ID za tekst"
 msgid "Unlimited"
 msgstr "Neograničeno"
 
+msgid "Unordered List"
+msgstr "Običan popis"
+
 msgid "Unpublished texts"
 msgstr "Neobjavljeni tekstovi"
 
@@ -2413,6 +2422,11 @@ msgstr ""
 "vjerojatno će se samo ubaciti naslov."
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2518,8 +2532,7 @@ msgid "You should change your password right away at %1"
 msgstr "Trebao bi promjeniti svoju lozinku sada na %1"
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Tvoje izmjene su spremljene i možeš ih pregledati svaki put kada\n"
 "klikneš na “Pregled” ili “Spremi”"
@@ -2644,11 +2657,11 @@ msgstr "lijeva"
 msgid "mandatory"
 msgstr "obavezno"
 
+msgid "markup *not* interpreted"
+msgstr ""
+
 msgid "new-example-uri"
 msgstr "novi-uri-kao-primjer"
-
-msgid "ordered item"
-msgstr "brojčani element"
 
 msgid "optional, defaults to the author directive"
 msgstr "neobavezno, ako nedostaje koristit će se polje autora"
@@ -2661,6 +2674,9 @@ msgid ""
 "amusewiki, it should be a read-only repo)"
 msgstr ""
 "Ili, ako imaš SSH pristup mašini (nemoj koristiti istog korisnika aplikacije)"
+
+msgid "ordered item"
+msgstr "brojčani element"
 
 msgid "overstriked"
 msgstr "izbrisano"
@@ -2757,6 +2773,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Locale"
+#~ msgstr "Jezik"
 
 #~ msgid "Cover image (optional)"
 #~ msgstr "Slika za naslovnicu (neobavezna)"

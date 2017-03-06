@@ -282,9 +282,6 @@ msgstr "Лимит страницы конструктора книг (цело�
 msgid "Build it"
 msgstr "Создать"
 
-msgid "Unordered List"
-msgstr "Маркированный список"
-
 msgid "CSS Theme"
 msgstr ""
 
@@ -303,15 +300,15 @@ msgstr "Изменения"
 msgid "Changes applied"
 msgstr "Изменения применены"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr ""
-"Изменения внесены, спасибо! После того, как администрация проверит\n"
-"текст,вы сможете увидеть изменения на сайте."
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Изменения для %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr ""
+"Изменения внесены, спасибо! После того, как администрация проверит\n"
+"текст,вы сможете увидеть изменения на сайте."
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -350,9 +347,6 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
-
-msgid "Save"
-msgstr "Опубликовать"
 
 msgid "Completed"
 msgstr "Завершено"
@@ -1034,9 +1028,6 @@ msgstr ""
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
-msgid "Locale"
-msgstr "Локаль"
-
 msgid "Log in"
 msgstr "Вход"
 
@@ -1208,9 +1199,6 @@ msgstr ""
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
-msgid "Ordered List"
-msgstr "Список с нумерацией"
-
 msgid "OPDS"
 msgstr ""
 
@@ -1243,6 +1231,9 @@ msgstr ""
 
 msgid "Or wrap it in"
 msgstr "Или поместите текст в тег"
+
+msgid "Ordered List"
+msgstr "Список с нумерацией"
 
 msgid "Other languages"
 msgstr "На других языках"
@@ -1412,6 +1403,13 @@ msgstr ""
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Пожалуйста оставьте электронную почту, чтобы с вами можно было связаться"
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
+msgstr ""
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1686,6 +1684,9 @@ msgstr ""
 
 msgid "Sans font"
 msgstr ""
+
+msgid "Save"
+msgstr "Опубликовать"
 
 msgid "Save the current settings with a name"
 msgstr ""
@@ -1978,6 +1979,11 @@ msgstr "Пароль будет отправлен на этот адрес"
 msgid "The revision has the following messages"
 msgstr "Для правки есть следующие сообщения"
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr ""
 
@@ -2196,6 +2202,9 @@ msgstr "Уникальный ID для текста"
 msgid "Unlimited"
 msgstr ""
 
+msgid "Unordered List"
+msgstr "Маркированный список"
+
 msgid "Unpublished texts"
 msgstr "Неопубликованные тексты"
 
@@ -2317,6 +2326,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2411,8 +2425,7 @@ msgid "You should change your password right away at %1"
 msgstr "Вы должны сразу изменить свой пароль на %1"
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Ваши изменения сохранены и вы можете их посмотреть нажав на Просмотр или "
 "Опубликовать"
@@ -2538,11 +2551,11 @@ msgstr ""
 msgid "mandatory"
 msgstr "обязательно"
 
-msgid "new-example-uri"
+msgid "markup *not* interpreted"
 msgstr ""
 
-msgid "ordered item"
-msgstr "список с нумерацией"
+msgid "new-example-uri"
+msgstr ""
 
 msgid "optional, defaults to the author directive"
 msgstr "опционально (по указанию автора)"
@@ -2554,6 +2567,9 @@ msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
 msgstr ""
+
+msgid "ordered item"
+msgstr "список с нумерацией"
 
 msgid "overstriked"
 msgstr "зачёркнутый"
@@ -2649,6 +2665,9 @@ msgstr ""
 "\"Устаревшее редактирование\" означает, что правка была недоделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Locale"
+#~ msgstr "Локаль"
 
 #~ msgid "Missing username or password"
 #~ msgstr "Отсутствует имя пользователя или пароль"

@@ -295,9 +295,6 @@ msgstr "Bogbyggerens sidebegrænsning (helt tal)"
 msgid "Build it"
 msgstr "Skab bogen"
 
-msgid "Unordered List"
-msgstr "Punkttegns liste"
-
 msgid "CSS Theme"
 msgstr "CSS tema"
 
@@ -316,13 +313,13 @@ msgstr "Ændringer"
 msgid "Changes applied"
 msgstr "Ændringer udført"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr "Ændringerne blev sendt, tak! De venter nu på at blive offentliggjort"
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Ændringer for %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Ændringerne blev sendt, tak! De venter nu på at blive offentliggjort"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -365,9 +362,6 @@ msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
-
-msgid "Save"
-msgstr "Send"
 
 msgid "Completed"
 msgstr "Færdig"
@@ -1101,9 +1095,6 @@ msgstr "Indlæs en anden session med et mærke"
 msgid "Loaded \"%1\" configuration"
 msgstr "Indlæste \"%1\" konfiguration"
 
-msgid "Locale"
-msgstr "Lokalisering"
-
 msgid "Log in"
 msgstr "Log ind"
 
@@ -1277,9 +1268,6 @@ msgstr "Antal seneste tilføjelser at vise på RSS'en (helt tal)"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Antal resultater at vise på nummererede sider (et helt tal)"
 
-msgid "Ordered List"
-msgstr "Numerisk Liste"
-
 msgid "OPDS"
 msgstr "OPDS"
 
@@ -1315,6 +1303,9 @@ msgstr "Eller upload en HTML fil"
 
 msgid "Or wrap it in"
 msgstr "Eller omslut det i"
+
+msgid "Ordered List"
+msgstr "Numerisk Liste"
 
 msgid "Other languages"
 msgstr "Andre sprog"
@@ -1495,6 +1486,13 @@ msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Efterlad venligst en mail-adresse hvis du vil kontaktes vedrørende denne "
 "ændring"
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
+msgstr ""
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1782,6 +1780,9 @@ msgstr "SSL nøgle sti"
 
 msgid "Sans font"
 msgstr "Grotesk (sans-serif) skrifttype"
+
+msgid "Save"
+msgstr "Send"
 
 msgid "Save the current settings with a name"
 msgstr "Gem de nuværende indstillinger med et navn"
@@ -2073,6 +2074,11 @@ msgstr "Kodeordet vil blive sendt til denne mailadresse"
 msgid "The revision has the following messages"
 msgstr "Revisionen har følgende beskeder"
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr "Tekststrukturen er vist herunder."
 
@@ -2295,6 +2301,9 @@ msgstr "Tekstens unikke ID"
 msgid "Unlimited"
 msgstr "Ubegrænset"
 
+msgid "Unordered List"
+msgstr "Punkttegns liste"
+
 msgid "Unpublished texts"
 msgstr "Ikke offentliggjorte tekster"
 
@@ -2426,6 +2435,11 @@ msgstr ""
 "     og alle dets undersektioner."
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2534,8 +2548,7 @@ msgid "You should change your password right away at %1"
 msgstr "Du bør skifte dit kodeord med det samme på %1"
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Dine ændringer er gemt og kan tjekkes hver gang du trykker på "
 "Forhåndsvisning eller Send"
@@ -2663,11 +2676,11 @@ msgstr "venstre"
 msgid "mandatory"
 msgstr "obligatorisk"
 
+msgid "markup *not* interpreted"
+msgstr ""
+
 msgid "new-example-uri"
 msgstr "ny-eksempel-uri"
-
-msgid "ordered item"
-msgstr "nummereret element"
 
 msgid "optional, defaults to the author directive"
 msgstr ""
@@ -2679,6 +2692,9 @@ msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
 msgstr ""
+
+msgid "ordered item"
+msgstr "nummereret element"
 
 msgid "overstriked"
 msgstr "overstreget"
@@ -2777,6 +2793,9 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "Locale"
+#~ msgstr "Lokalisering"
 
 #~ msgid "Cover image (optional)"
 #~ msgstr "Omslagsbillede (valgfrit)"

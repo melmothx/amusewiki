@@ -297,9 +297,6 @@ msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 msgid "Build it"
 msgstr "Impagina"
 
-msgid "Unordered List"
-msgstr "Lista puntata"
-
 msgid "CSS Theme"
 msgstr "Tema CSS"
 
@@ -318,13 +315,13 @@ msgstr "Modifiche"
 msgid "Changes applied"
 msgstr "Modifiche applicate"
 
-msgid "Changes saved, thanks! They are now waiting to be published"
-msgstr "Cambiamenti effettuati, ora sono in attesa di pubblicazione"
-
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Modifiche per %1"
+
+msgid "Changes saved, thanks! They are now waiting to be published"
+msgstr "Cambiamenti effettuati, ora sono in attesa di pubblicazione"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
@@ -369,9 +366,6 @@ msgid ""
 msgstr ""
 "Numero di colonne (12 in totale) da usare per la parte sinistra della\n"
 "schermata per la modifica dei testi"
-
-msgid "Save"
-msgstr "Salva"
 
 msgid "Completed"
 msgstr "Completato"
@@ -1119,9 +1113,6 @@ msgstr "Carica un'altra sessione usando un token"
 msgid "Loaded \"%1\" configuration"
 msgstr "La configurazione \"%1\" è stata caricata"
 
-msgid "Locale"
-msgstr "Lingua"
-
 msgid "Log in"
 msgstr "Entra"
 
@@ -1295,9 +1286,6 @@ msgstr "Numero di testi da mostrare nel feed RSS (numero intero)"
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numero di risultati da mostrare nelle paginazioni (un numero intero)"
 
-msgid "Ordered List"
-msgstr "Lista numerata"
-
 msgid "OPDS"
 msgstr "OPDS"
 
@@ -1331,6 +1319,9 @@ msgstr "Oppure caricare un file HTML"
 
 msgid "Or wrap it in"
 msgstr "O racchiudi in"
+
+msgid "Ordered List"
+msgstr "Lista numerata"
 
 msgid "Other languages"
 msgstr "Altre lingue"
@@ -1512,6 +1503,13 @@ msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Lascia una mail se vuoi essere contattato per eventuali problemi in\n"
 "questa modifica"
+
+msgid ""
+"Please note that PDFs are external files and cannot be\n"
+"        fully integrated in the document, so the generated files will\n"
+"        not embed them. If you need that, you should split the PDF in\n"
+"        images and upload those instead."
+msgstr ""
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1799,6 +1797,9 @@ msgstr "Percorso della chiave SSL"
 
 msgid "Sans font"
 msgstr "Font senza grazie"
+
+msgid "Save"
+msgstr "Salva"
 
 msgid "Save the current settings with a name"
 msgstr "Salva le impostazioni correnti con nome"
@@ -2108,6 +2109,11 @@ msgstr "La password sarà inviata a questo indirizzo"
 msgid "The revision has the following messages"
 msgstr "La revisione contiene i seguenti messaggi"
 
+msgid ""
+"The site will display the PDFs with a thumbnail at the\n"
+"        end of the document."
+msgstr ""
+
 msgid "The text structure is shown below."
 msgstr "La struttura del testo è mostrata qui sotto."
 
@@ -2350,6 +2356,9 @@ msgstr "Identificativo del testo"
 msgid "Unlimited"
 msgstr "Illimitato"
 
+msgid "Unordered List"
+msgstr "Lista puntata"
+
 msgid "Unpublished texts"
 msgstr "Testi non pubblicati"
 
@@ -2484,6 +2493,11 @@ msgstr ""
 "sue sottosezioni."
 
 msgid ""
+"With the \"verbatim\" tag you can avoid the markup to\n"
+"          be interpreted, usually not needed"
+msgstr ""
+
+msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
@@ -2594,8 +2608,7 @@ msgid "You should change your password right away at %1"
 msgstr "Dovresti cambiare subito la tua password a %1"
 
 msgid ""
-"Your changes are saved and can be checked every time you hit Preview or "
-"Save"
+"Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Le modifiche vengono salvate (e possono quindi essere controllate)\n"
 "ogni volta che il pulsante \"Anteprima\" o \"Salva\" viene premuto."
@@ -2722,11 +2735,11 @@ msgstr "sinistra"
 msgid "mandatory"
 msgstr "obbligatorio"
 
+msgid "markup *not* interpreted"
+msgstr ""
+
 msgid "new-example-uri"
 msgstr "nuovo-uri-di-esempio"
-
-msgid "ordered item"
-msgstr "elemento numerato"
 
 msgid "optional, defaults to the author directive"
 msgstr "opzionale, se mancante verrà usata la direttiva autore"
@@ -2741,6 +2754,9 @@ msgstr ""
 "oppure, se hai accesso SSH alla macchina (ma non usare la stessa utenza di "
 "amusewiki, è consigliabile che sia un repositorio in sola lettura per "
 "l'applicazione)"
+
+msgid "ordered item"
+msgstr "elemento numerato"
 
 msgid "overstriked"
 msgstr "cancellato"
@@ -2838,6 +2854,9 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Locale"
+#~ msgstr "Lingua"
 
 #~ msgid "Cover image (optional)"
 #~ msgstr "Immagine di frontespizio (opzionale)"
