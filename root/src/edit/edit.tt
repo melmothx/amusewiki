@@ -480,6 +480,17 @@
           <sup>[% loc('superscript') %]</sup>,
           <del>[% loc('overstriked') %]</del>
         </li>
+        <li>
+          <code>&lt;verbatim&gt;[% loc('markup *not* interpreted') %]&lt;/verbatim&gt;
+          </code>
+          <br />
+          [% loc('markup *not* interpreted') %]
+          <br />
+
+          [% loc('With the "verbatim" tag you can avoid the markup to
+          be interpreted, usually not needed') %]
+
+        </li>
       </ul>
 
       <h4 id="csfootnotes">[% loc('Footnotes') %]</h4>
