@@ -284,7 +284,10 @@ sub edit_category_description :Chained('category_editing_auth') :PathPart('edit'
         return;
     }
     else {
-        $c->stash(template => 'category-details-edit.tt');
+        $c->stash(
+                  template => 'category-details-edit.tt',
+                  load_markitup_css => 1,
+                 );
     }
 }
 

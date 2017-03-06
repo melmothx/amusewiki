@@ -62,6 +62,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     $c->stash(
               nav => 'add-to-library',
               page_title => $c->loc('Add a new text'),
+              load_date_picker_css => 1,
              );
 
     my $site    = $c->stash->{site};
@@ -259,7 +260,10 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;
     my $revision = $c->stash->{revision};
-    $c->stash(load_highlight => $c->stash->{site}->use_js_highlight);
+    $c->stash(
+              load_highlight => $c->stash->{site}->use_js_highlight,
+              load_markitup_css => 1,
+             );
 
     # layout settings
     my %layout_settings = (edit_option_preview_box_height => 0,
