@@ -87,8 +87,9 @@ sub bulks :Chained('root') :PathPart('rebuild') :CaptureArgs(0) {
 
 sub rebuild :Chained('bulks') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $rs = $c->stash->{bulk_jobs}->active_bulk_jobs;
-    my $all = delete $c->stash->{bulk_jobs};
+    my $bulks = delete $c->stash->{bulk_jobs};
+    my $all = $bulks->rebuilds;
+    my $rs = $all->active_bulk_jobs;
     if ($c->request->body_params->{rebuild}) {
         $rs->abort_all;
         my $job = $c->stash->{site}->rebuild_formats;

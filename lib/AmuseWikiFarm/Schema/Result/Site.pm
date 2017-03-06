@@ -3212,8 +3212,7 @@ sub update_db_from_tree_async {
     $logger ||= sub { print @_ };
     my @files = $self->_pre_update_db_from_tree($logger);
     my $now = DateTime->now;
-    return $self->bulk_jobs->create({
-                                     task => 'Reindex',
+    return $self->bulk_jobs->reindexes->create({
                                      created => $now,
                                      status => 'active',
                                      jobs => [
@@ -3250,8 +3249,7 @@ sub rebuild_formats {
     # creation is wrapped in a transaction and doesn't spawn objects
     # without reason.
     # loc('Rebuild')
-    return $self->bulk_jobs->create({
-                                     task => 'Rebuild',
+    return $self->bulk_jobs->rebuilds->create({
                                      created => $now,
                                      username => $username,
                                      status => 'active',

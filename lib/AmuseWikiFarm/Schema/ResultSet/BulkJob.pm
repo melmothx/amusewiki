@@ -6,6 +6,18 @@ use warnings;
 use base 'DBIx::Class::ResultSet';
 use AmuseWikiFarm::Log::Contextual;
 
+sub rebuilds {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.task" => 'Rebuild' });
+}
+
+sub reindexes {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.task" => 'Reindex' });
+}
+
 sub active_bulk_jobs {
     my $self = shift;
     my $me = $self->current_source_alias;
