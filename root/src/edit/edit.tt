@@ -129,6 +129,16 @@
       [% loc('PDFs not listed in the [_1] directive will be stored but ignored.',
       '#ATTACH') %]<br />
       [% loc('PDFs cannot be used in the body.') %]
+      <div>
+        [% loc('Please note that PDFs are external files and cannot be
+        fully integrated in the document, so the generated files will
+        not embed them. If you need that, you should split the PDF in
+        images and upload those instead.') %]
+      </div>
+      <div>
+        [% loc('The site will display the PDFs with a thumbnail at the
+        end of the document.') %]
+      </div>
     </div>
   </div>
 </div>
