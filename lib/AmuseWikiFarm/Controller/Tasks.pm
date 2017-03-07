@@ -82,7 +82,7 @@ sub bulks :Chained('root') :PathPart('') :CaptureArgs(0) {
     $c->stash(now_datetime => $now->format_cldr($now->locale->datetime_format_full));
 }
 
-sub rebuild :Chained('bulks') :PathPart('rebuilds') :Args(0) {
+sub rebuild :Chained('bulks') :PathPart('rebuild') :Args(0) {
     my ($self, $c) = @_;
     # job control reserved to admin
     unless ($c->check_any_user_role(qw/admin root/)) {
