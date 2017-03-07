@@ -1,11 +1,21 @@
 <div class="amw-breadcrumbs">
   <ol class="breadcrumb">
+    [% IF bulk_job.is_rebuild %]
     <li>
       <a href="[% c.uri_for_action('/tasks/rebuild') %]">[% loc('Rebuilding') %]</a>
     </li>
     <li class="active">
-      [% site.sitename | html %]
+      [% (site.sitename || site.canonical) | html %]
     </li>
+    [% END %]
+    [% IF bulk_job.is_reindex %]
+    <li>
+      <a href="[% c.uri_for_action('/console/git_display') %]">[% loc('Git console') %]</a>
+    </li>
+    <li class="active">
+      [% (site.sitename || site.canonical) | html %]
+    </li>
+    [% END %]
   </ol>
 </div>
 
@@ -32,6 +42,7 @@ function update_bulk_status() {
         $('.bulk-job-status').text(data.job.status);
         $('.job-completed').text(data.job.completed);
         var table = $('<table>');
+        var spin_first = 1;
         table.attr('class', 'table table-striped table-condensed table-bordered');
         $.each(data.all_jobs, function(i, item) {
             var link = base + '/tasks/status/' + item.id;
@@ -42,13 +53,20 @@ function update_bulk_status() {
             }
             var icon = $('<span>');
             if (item.status == 'pending') {
-                icon.attr("class", "fa fa-clock-o fa-2x fw");
+                if (spin_first) {
+                    icon.attr("class", "fa fa-clock-o fa-spin fa-2x fw");
+                    spin_first = 0;
+                }
+                else {
+                    icon.attr("class", "fa fa-clock-o fa-2x fw");
+                }
             }
             else if (item.status == 'failed') {
                 icon.attr("class", "fa fa-exclamation-circle fa-2x fw text-danger");
             }
             else if (item.status == 'taken') {
                 icon.attr("class", "fa fa-cog fa-spin fa-2x fw");
+                spin_first = 0;
             }
             else if (item.status == 'completed') {
                 icon.attr("class", "fa fa-check-circle-o fa-2x fw text-success");
@@ -72,7 +90,7 @@ function update_bulk_status() {
             $('.bulk-job-eta').show();
             $('.bulk-job-done').hide();
             console.log('Keep looping');
-            setTimeout('update_bulk_status()', 10000);
+            setTimeout('update_bulk_status()', 5000);
         }
     });
 }
