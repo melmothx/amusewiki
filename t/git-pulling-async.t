@@ -18,7 +18,7 @@ use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
-use constant { DEBUG => 1 };
+use constant { DEBUG => 0 };
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0pull2';
