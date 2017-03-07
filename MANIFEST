@@ -980,6 +980,7 @@ t/files/upload.html
 t/files/widebanner.png
 t/fontspec-json.t
 t/full-blog-mode.t
+t/git-pulling-async.t
 t/git-revision.t
 t/html-upload.t
 t/human-login-screens.t
