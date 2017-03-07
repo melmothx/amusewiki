@@ -22,6 +22,7 @@
     </ul>
   </div>
 </div>
+[% IF bulk_job.is_rebuild %]
 [% IF bulk_job.status == 'active' %]
 <div class="row">
   <div class="col-xs-4">
@@ -34,6 +35,7 @@
     </div>
   </div>
 </div>
+[% END %]
 [% END %]
 <hr />
 
