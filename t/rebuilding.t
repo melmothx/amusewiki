@@ -78,8 +78,8 @@ $site->rebuild_formats;
 is($site->bulk_jobs->count, 1, "bulk job created");
 my $bulk = $site->bulk_jobs->first;
 
-$mech->get_ok('/tasks/rebuild/' . $bulk->bulk_job_id . '/show');
-$mech->get_ok('/tasks/rebuild/' . $bulk->bulk_job_id . '/ajax');
+$mech->get_ok('/tasks/job/' . $bulk->bulk_job_id . '/show');
+$mech->get_ok('/tasks/job/' . $bulk->bulk_job_id . '/ajax');
 diag $mech->content;
 $mech->get_ok('/tasks/rebuild');
 
