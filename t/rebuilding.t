@@ -5,7 +5,7 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 52;
+use Test::More tests => 55;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -79,6 +79,10 @@ is($site->bulk_jobs->count, 1, "bulk job created");
 my $bulk = $site->bulk_jobs->first;
 
 $mech->get_ok('/tasks/job/' . $bulk->bulk_job_id . '/show');
+$mech->content_contains('/tasks/rebuild');
+# check button
+$mech->content_contains('name="cancel"');
+
 $mech->get_ok('/tasks/job/' . $bulk->bulk_job_id . '/ajax');
 diag $mech->content;
 $mech->get_ok('/tasks/rebuild');
@@ -109,6 +113,7 @@ $bulk->delete;
 
 $bulk = $site->rebuild_formats;
 $bulk->discard_changes;
+ok ($bulk->is_rebuild) or diag "Task is " . $bulk->task;
 ok (!$bulk->started);
 ok (!$bulk->completed);
 $bulk->jobs->first->update({ status => 'taken' });

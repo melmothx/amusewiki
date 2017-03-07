@@ -9,13 +9,13 @@ use AmuseWikiFarm::Log::Contextual;
 sub rebuilds {
     my $self = shift;
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.task" => 'Rebuild' });
+    return $self->search({ "$me.task" => 'rebuild' });
 }
 
 sub reindexes {
     my $self = shift;
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.task" => 'Reindex' });
+    return $self->search({ "$me.task" => 'reindex' });
 }
 
 sub active_bulk_jobs {

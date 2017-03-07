@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 51;
+use Test::More tests => 53;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -27,7 +27,7 @@ my $git = $site->git;
 
 ok ((-d $site->repo_root), "test site created");
 
-my $testdir = File::Temp->newdir(CLEANUP => 0);
+my $testdir = File::Temp->newdir(CLEANUP => 1);
 my $remotedir = $testdir->dirname;
 ok( -d $remotedir, "Found $remotedir");
 
@@ -179,7 +179,9 @@ $working_copy->push(qw/origin master/);
 $site->repo_git_pull;
 
 is $site->jobs->count, 0;
-$site->update_db_from_tree_async;
+my $bulk = $site->update_db_from_tree_async;
+is $bulk->task, 'reindex';
+ok $bulk->is_reindex;
 is $site->jobs->count, 3, "3 jobs found";
 diag $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
