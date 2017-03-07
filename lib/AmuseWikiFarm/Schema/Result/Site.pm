@@ -3215,7 +3215,8 @@ sub update_db_from_tree_async {
     my $now = DateTime->now;
     return $self->bulk_jobs->reindexes->create({
                                      created => $now,
-                                     status => 'active',
+                                     status => (scalar(@files) ? 'active' : 'completed'),
+                                     completed => (scalar(@files) ? undef : $now),
                                      jobs => [
                                               map {
                                                   +{
