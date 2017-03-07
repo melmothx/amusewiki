@@ -122,3 +122,5 @@ ok (!$bulk->jobs->pending->count, "No pending jobs after aborting");
 ok $bulk->jobs->search({ errors => 'Bulk job aborted', status => 'completed' })->count;
 $site->bulk_jobs->abort_all;
 $site->jobs->delete_all;
+
+system($init, 'stop');
