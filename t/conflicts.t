@@ -50,7 +50,7 @@ foreach my $mech ($mechone, $mechtwo) {
         like $created, qr{/action/text/edit/hello/}, "Path looks correct";
         $mech->form_with_fields('body');
         ok($mech->click('commit'));
-        $mech->content_contains('Changes committed, thanks');
+        $mech->content_contains('Changes saved, thanks');
 
     }
     else {

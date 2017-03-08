@@ -51,7 +51,7 @@ for my $use_ttdir (0..1) {
     $mech->content_contains('Created new text');
     $mech->form_id('museform');
     $mech->click('commit');
-    $mech->content_contains('Changes committed') or diag $mech->response->content;
+    $mech->content_contains('Changes saved') or diag $mech->response->content;
     ok($mech->form_name('publish'));
     $mech->click;
     {

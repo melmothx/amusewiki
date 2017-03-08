@@ -87,7 +87,7 @@ MUSE
         $mech->field(body => "$muse");
     }
     $mech->click('commit');
-    $mech->content_contains('Changes committed') or diag $mech->response->content;
+    $mech->content_contains('Changes saved') or diag $mech->response->content;
     if ($spec->{status} eq 'deferred') {
         $mech->content_like(qr/This text will be deferred to \Q$pubdate_re\E/);
         $mech->content_lacks('this text will be unpublished');

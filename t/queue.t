@@ -155,7 +155,7 @@ $mech->submit_form(with_fields => {
 
 ok($mech->form_id('museform'));
 $mech->click('commit');
-$mech->content_contains('Changes committed') or diag $mech->response->content;
+$mech->content_contains('Changes saved') or diag $mech->response->content;
 
 ok($mech->form_name('publish'));
 $mech->click;

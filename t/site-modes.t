@@ -226,5 +226,5 @@ sub open_new {
     }
     $mech->submit_form(form_id => 'museform',
                        button => 'commit');
-    $mech->content_contains("Changes committed, thanks!");
+    $mech->content_contains("Changes saved, thanks!");
 }
