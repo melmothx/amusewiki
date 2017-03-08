@@ -2,12 +2,17 @@ $(document).ready(function() {
     $('.nojs').hide();
 });
 
-function update_status(url, reloaded) {
-    $.getJSON(url, function(data) {
+function update_status(url, reloaded, offset) {
+    if (!offset) {
+        offset = 0;
+    }
+    // console.log(offset);
+    $.getJSON(url, { 'offset':  offset }, function(data) {
         if (!reloaded) {
             $('.waiting-for-job').show();
         }
-        $('pre#job-logs').text(data.logs);
+        $('pre#job-logs').append(data.logs);
+        // console.log(data.logs);
         $('.bbstatusstring').text(data.status_loc);
         if (data.errors) {
             $('#job-errors').show().text(data.errors);
@@ -18,7 +23,7 @@ function update_status(url, reloaded) {
         // recurse if pending or taken
         if ((data.status == 'pending') ||
             (data.status == 'taken')) {
-            var funct = 'update_status("' + url + '", 1)';
+            var funct = 'update_status("' + url + '", 1, ' + data.offset + ')';
             setTimeout(funct, 1000);
         }
         else {
