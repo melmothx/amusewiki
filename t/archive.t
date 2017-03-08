@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 136;
+use Test::More tests => 154;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -322,7 +322,8 @@ for (1..2) {
     foreach my $test (@tests) {
         diag $test->{test_name};
         write_file($dummy_file, $test->{muse});
-        $site->index_file($dummy_file);
+        my $text_obj = $site->index_file($dummy_file);
+        ok ($text_obj->isa('AmuseWikiFarm::Schema::Result::Title'), "index_file returned the object");
         $title = $schema->resultset('Title')->find({ uri => 'dummy-text',
                                                      site_id => $id });
         ok ($title, "title found");

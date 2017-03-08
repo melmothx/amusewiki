@@ -1480,13 +1480,11 @@ sub compile_and_index_files {
         if ($file =~ m/\.muse$/ and $compiler->file_needs_compilation($file)) {
             $compiler->compile($file);
         }
-        $self->index_file($file, $logger);
-        foreach my $cf (@cfs) {
-            if (my $text = $self->titles->search({ f_full_path_name => $file })->first) {
-                $cf->compile($text, $logger);
-            }
-            else {
-                log_error { "Couldn't find $file in the db!" };
+        if (my $indexed = $self->index_file($file, $logger)) {
+            if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
+                foreach my $cf (@cfs) {
+                    $cf->compile($indexed, $logger);
+                }
             }
         }
     }
@@ -1534,8 +1532,7 @@ sub index_file {
         $class eq 'image' or
         $class eq 'special_image') {
         $logger->("Inserting data for attachment $file\n");
-        $self->attachments->update_or_create($details);
-        return $file;
+        return $self->attachments->update_or_create($details);
     }
 
     # handle specials and texts
@@ -1686,7 +1683,7 @@ sub index_file {
         }
         $title->set_monthly_archives(\@months);
     }
-    return $file;
+    return $title;
 }
 
 =head2 title_fields
