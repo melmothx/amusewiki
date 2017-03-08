@@ -251,7 +251,7 @@ Return the job representation as an hashref
 =cut
 
 sub as_hashref {
-    my $self = shift;
+    my ($self, $offset) = @_;
     my $data = {
                   id       => $self->id,
                   site_id  => $self->site_id,
@@ -263,8 +263,8 @@ sub as_hashref {
                   priority => $self->priority,
                   produced => $self->produced,
                   errors   => $self->errors,
-                  logs     => $self->logs,
                   position => 0,
+                  $self->logs_from_offset($offset),
                  };
     if ($data->{status} eq 'pending') {
         my $pending = $self->result_source->resultset->pending
@@ -367,14 +367,41 @@ sub logs {
     my $self = shift;
     my $file = $self->log_file;
     if (-f $file) {
-        my $log = read_file($file);
-        # obfuscate the current directory
-        my $cwd = getcwd();
-        $log =~ s/$cwd/./g;
-        return $log;
+        return $self->obfuscate_logs(read_file($file));
     }
     return '';
 }
+
+sub obfuscate_logs {
+    my ($self, $log) = @_;
+    return '' unless length($log);
+    my $cwd = getcwd();
+    $log =~ s/\Q$cwd\E/./g;
+    return $log;
+}
+
+sub logs_from_offset {
+    my ($self, $offset) = @_;
+    my $file = $self->log_file;
+    if (-f $file) {
+        open (my $fh, '<:encoding(UTF-8)', $file) or return;
+        if ($offset and $offset =~ m/\A[1-9][0-9]*\z/) {
+            seek $fh, $offset, 0 or return;
+        }
+        local $/;
+        my $log = <$fh>;
+        my $new_offset = tell $fh;
+        close $fh;
+        my %out = (logs => $self->obfuscate_logs($log),
+                   (
+                    defined $offset ?
+                    (offset => $new_offset) : ()
+                   ));
+        return %out;
+    }
+    return;
+}
+
 
 =head2 logger
 

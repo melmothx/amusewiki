@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
-use Test::More tests => 51;
+use Test::More tests => 57;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -79,6 +79,22 @@ is($job->id, $id);
 is($job->status, 'completed');
 ok($job->log_file, "Found log file " . $job->log_file);
 like $job->log_file, qr/\.log$/;
+{
+    my %out = $job->logs_from_offset(4);
+    like $out{logs}, qr{\Atesting_high} or die Dumper(\%out);
+    ok($out{offset});
+}
+{
+    my %out = $job->logs_from_offset(0);
+    like $out{logs}, qr{\AJob testing_high};
+    ok($out{offset});
+}
+{
+    my %out = $job->logs_from_offset;
+    like $out{logs}, qr{\AJob testing_high};
+    ok(!exists $out{offset});
+}
+
 
 is_deeply(from_json($job->payload), { this  => 0, test => 'òć' });
 

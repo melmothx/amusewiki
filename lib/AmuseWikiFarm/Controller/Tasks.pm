@@ -41,7 +41,7 @@ sub status :Chained('root') :CaptureArgs(1) {
 
     # here we inject the message, depending on the task
 
-    my $data = $job->as_hashref;
+    my $data = $job->as_hashref($c->request->params->{offset});
     $data->{status_loc} = $c->loc($data->{status});
 
     if ($data->{produced}) {
