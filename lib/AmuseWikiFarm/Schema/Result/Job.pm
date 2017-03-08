@@ -251,7 +251,7 @@ Return the job representation as an hashref
 =cut
 
 sub as_hashref {
-    my ($self, $offset) = @_;
+    my ($self, %opts) = @_;
     my $data = {
                   id       => $self->id,
                   site_id  => $self->site_id,
@@ -264,7 +264,7 @@ sub as_hashref {
                   produced => $self->produced,
                   errors   => $self->errors,
                   position => 0,
-                  $self->logs_from_offset($offset),
+                  $self->logs_from_offset($opts{offset}),
                  };
     if ($data->{status} eq 'pending') {
         my $pending = $self->result_source->resultset->pending

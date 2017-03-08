@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile/;
-use Test::More tests => 57;
+use Test::More tests => 59;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -83,6 +83,9 @@ like $job->log_file, qr/\.log$/;
     my %out = $job->logs_from_offset(4);
     like $out{logs}, qr{\Atesting_high} or die Dumper(\%out);
     ok($out{offset});
+    my $data = $job->as_hashref(offset => 4);
+    ok $data->{offset};
+    like $data->{logs}, qr{\Atesting_high} or die Dumper($data);
 }
 {
     my %out = $job->logs_from_offset(0);
