@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 104;
+use Test::More tests => 112;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -87,9 +87,11 @@ foreach my $text ($site->titles->all) {
         $mech->content_lacks($cf->format_name);
     }
     foreach my $cf (@cfs) {
+        ok $cf->needs_compile($text);
         my $out = $cf->compile($text, sub { diag @_ });
         ok $out, "Produced $out" or die;
         ok (-f $out, "$out was produced");
+        ok (!$cf->needs_compile($text));
         push @links, $text->full_uri . '.' . $cf->extension;
         $mech->get_ok($text->full_uri . '.' . $cf->extension);
         my $ext = $cf->extension;

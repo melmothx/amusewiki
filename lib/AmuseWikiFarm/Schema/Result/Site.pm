@@ -1483,7 +1483,7 @@ sub compile_and_index_files {
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
                 foreach my $cf (@cfs) {
-                    $cf->compile($indexed, $logger);
+                    $cf->compile($indexed, $logger) if $cf->needs_compile($indexed);
                 }
             }
         }

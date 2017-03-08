@@ -442,6 +442,24 @@ sub compile {
     $self->bookbuilder->compile($logger, $muse);
 }
 
+sub needs_compile {
+    my ($self, $muse) = @_;
+    my $src = $muse->filepath_for_ext('muse');
+    log_debug { "checking $src" };
+    if (-f $src) {
+        my $expected = $muse->filepath_for_ext($self->extension);
+        log_debug { "$expected exist" };
+        if (-f $expected) {
+            log_debug { "$src and $expected exist" };
+            if ((stat($expected))[9] >= (stat($src))[9]) {
+                log_debug { "$expected and $src exist" .  (stat($expected))[9] . '>=' . (stat($src))[9] };
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 sub is_epub {
     return shift->bb_format eq 'epub';
 }
