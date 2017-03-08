@@ -543,6 +543,18 @@ sub dispatch_job_rebuild {
     }
 }
 
+sub dispatch_job_reindex {
+    my ($self, $logger) = @_;
+    if (my $path = $self->job_data->{path}) {
+        my $site = $self->site;
+        $site->compile_and_index_files([$path], $logger);
+        my $produced = $site->find_file_by_path($path);
+        return $produced->full_uri;
+    }
+    else {
+        die "Missing path in the job data";
+    }
+}
 
 sub dispatch_job_git {
     my ($self, $logger) = @_;
@@ -554,15 +566,16 @@ sub dispatch_job_git {
     die "Couldn't validate" unless $validate->{$remote}->{$action};
     if ($action eq 'fetch') {
         $site->repo_git_pull($remote, $logger);
-        $site->update_db_from_tree($logger);
+        my $bulk = $site->update_db_from_tree_async($logger);
+        return '/tasks/job/' . $bulk->id . '/show';
     }
     elsif ($action eq 'push') {
         $site->repo_git_push($remote, $logger);
+        return '/console/git';
     }
     else {
         die "Unhandled action $action!";
     }
-    return '/console/git';
 }
 
 sub dispatch_job_alias_create {

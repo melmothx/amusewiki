@@ -46,8 +46,8 @@ sub handled_jobs_hashref {
             publish => 5,
             bookbuilder => 6,
             git => 7,
-            rebuild => 11,
-
+            rebuild => 20,
+            reindex => 19,
             # testing
             testing => 10,
             testing_high => 5,

@@ -1998,19 +1998,25 @@ L<Text::Amuse::Compile> if present.
 
 sub update_db_from_tree {
     my ($self, $logger) = @_;
-    my $todo = $self->repo_find_changed_files;
     $logger ||= sub { print @_ };
+    my @files = $self->_pre_update_db_from_tree($logger);
+    $self->compile_and_index_files(\@files, $logger);
+}
+
+sub _pre_update_db_from_tree {
+    my ($self, $logger) = @_;
+    $logger ||= sub { print @_ };
+    my $todo = $self->repo_find_changed_files;
     # first delete
     foreach my $purge (@{ $todo->{removed} }) {
         if (my $found = $self->find_file_by_path($purge)) {
+            $logger->("Removing $purge from database\n");
             $found->delete;
         }
         else {
             log_warn { "$purge was not present in the db!" };
         }
     }
-    my @files = (sort @{ $todo->{new} }, @{ $todo->{changed} });
-    $self->compile_and_index_files(\@files, $logger);
     eval {
         if (my @generated =
             AmuseWikiFarm::Utils::LexiconMigration::convert($self->lexicon,
@@ -2022,6 +2028,8 @@ sub update_db_from_tree {
     if ($@) {
         $logger->("Exception migrating lexicon to PO: $@");
     }
+    my @files = (sort @{ $todo->{new} }, @{ $todo->{changed} });
+    return @files;
 }
 
 
@@ -3200,6 +3208,29 @@ sub edit_option_page_left_bs_columns {
     return 6;
 }
 
+sub update_db_from_tree_async {
+    my ($self, $logger) = @_;
+    $logger ||= sub { print @_ };
+    my @files = $self->_pre_update_db_from_tree($logger);
+    my $now = DateTime->now;
+    return $self->bulk_jobs->reindexes->create({
+                                     created => $now,
+                                     status => (scalar(@files) ? 'active' : 'completed'),
+                                     completed => (scalar(@files) ? undef : $now),
+                                     jobs => [
+                                              map {
+                                                  +{
+                                                    site_id => $self->id,
+                                                    task => 'reindex',
+                                                    status => 'pending',
+                                                    created => $now,
+                                                    priority => 19,
+                                                    payload => AmuseWikiFarm::Utils::Amuse::to_json({ path => $_ }),
+                                                  }
+                                              } @files ]
+                                    });
+}
+
 sub rebuild_formats {
     my ($self, $username) = @_;
     my @texts = $self->titles->published_or_deferred_all
@@ -3220,8 +3251,7 @@ sub rebuild_formats {
     # creation is wrapped in a transaction and doesn't spawn objects
     # without reason.
     # loc('Rebuild')
-    return $self->bulk_jobs->create({
-                                     task => 'Rebuild',
+    return $self->bulk_jobs->rebuilds->create({
                                      created => $now,
                                      username => $username,
                                      status => 'active',

@@ -261,5 +261,14 @@ sub abort_jobs {
     $guard->commit;
 }
 
+sub is_reindex {
+    return shift->task eq 'reindex';
+}
+
+sub is_rebuild {
+    return shift->task eq 'rebuild';
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

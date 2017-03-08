@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 39;
+use Test::More tests => 53;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -17,15 +17,17 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
+use Test::WWW::Mechanize::Catalyst;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0pull0';
 my $site = create_site($schema, $site_id);
+$site->update({ secure_site => 0 });
 my $git = $site->git;
 
 ok ((-d $site->repo_root), "test site created");
 
-my $testdir = File::Temp->newdir;
+my $testdir = File::Temp->newdir(CLEANUP => 1);
 my $remotedir = $testdir->dirname;
 ok( -d $remotedir, "Found $remotedir");
 
@@ -161,14 +163,40 @@ foreach my $f (qw/a-test a-test-2/) {
 }
 
 $working_copy->rm($secondfile);
+my $another_file = catfile($working_copy_dir, qw/a at a-test-3.muse/);
+write_file($another_file,
+           "#title A Test 3\n#author Pippox\n\nblabla bla\nSecond Filex\n");
+write_file($newfile,
+           "#title A Test\n#author Pippo\n\nblabla bla\nSecond File\nAppended\n");
+$working_copy->add($another_file);
+$working_copy->add($newfile);
+my $binary = catfile($working_copy_dir, qw/a at a-t-cover.png/);
+copy catfile(qw/t files shot.png/), $binary;
+$working_copy->add($binary);
 $working_copy->commit({ message => "Removed second file" });
-
 $working_copy->push(qw/origin master/);
 
 $site->repo_git_pull;
-$site->update_db_from_tree;
+
+is $site->jobs->count, 0;
+my $bulk = $site->update_db_from_tree_async;
+is $bulk->task, 'reindex';
+ok $bulk->is_reindex;
+is $site->jobs->count, 3, "3 jobs found";
+diag $site->canonical;
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+$mech->get_ok('/');
+while (my $job = $site->jobs->dequeue) {
+    my $uri = $job->dispatch_job->produced;
+    ok $uri, "Got uri: $uri";
+    $mech->get_ok($uri);
+}
 
 my $removed = catfile($site->repo_root, qw/a at/, "a-test-2.muse");
 ok (! -f catfile($site->repo_root, qw/a at/, "a-test-2.muse"), "File deleted");
 ok (! $site->find_file_by_path($removed));
 ok (! $site->titles->find({ uri => "a-test-2" }), "$removed purged in the db");
+ok ($site->find_file_by_path(catfile(qw/a at/, "a-test-3.muse")), "Found $another_file in the db");
+ok ($site->titles->find({ uri => "a-test" }), "Found text in the db");
+ok ($site->titles->find({ uri => "a-test-3" }), "Found new text in the db");
