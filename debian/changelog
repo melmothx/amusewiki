@@ -1,3 +1,9 @@
+amusewiki (2.011-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 12 Mar 2017 18:27:02 +0100
+
 amusewiki (2.010-2) unstable; urgency=medium
 
   * Fix build

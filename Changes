@@ -4,6 +4,17 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.011 2017-03-12
+
+ - Improved handling of git pull jobs, which is now a bulk job and
+   will not block the jobber longer than the time needed to compile a
+   single text.
+
+ - Support for <verbatim> tag to avoid the markup to be interpreted.
+
+ - Reduce the cropmark offset to 1mm (using new PDF::Imposition
+   release)
+
 2.010 2017-02-04
 
  - Show the git history to logged in even if hidden for anon (#94)
