@@ -92,7 +92,7 @@ requires 'HTTP::BrowserDetect';
 
 # our own dogfood
 requires 'Text::Amuse' => '0.80';
-requires 'PDF::Imposition' => '0.23';
+requires 'PDF::Imposition' => '0.24';
 requires 'Text::Amuse::Compile' => '0.87';
 requires 'Text::Amuse::Preprocessor' => '0.35';
 
