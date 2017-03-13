@@ -91,7 +91,7 @@ requires 'Protocol::ACME' => '0.12';
 requires 'HTTP::BrowserDetect';
 
 # our own dogfood
-requires 'Text::Amuse' => '0.80';
+requires 'Text::Amuse' => '0.81';
 requires 'PDF::Imposition' => '0.24';
 requires 'Text::Amuse::Compile' => '0.87';
 requires 'Text::Amuse::Preprocessor' => '0.35';
