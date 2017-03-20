@@ -567,8 +567,17 @@ sub add_attachment {
 
     # copy it in the working directory
     my $target = File::Spec->catfile($self->working_dir, $name);
-    copy($filename, $target) or die "Couldn't copy $filename to $target $!";
-
+    if ($ext eq '.pdf') {
+        log_debug { "Copying $filename to $target " };
+        copy($filename, $target) or die "Couldn't copy $filename to $target $!";
+    }
+    else {
+        log_debug { "Running  gm convert -strip $filename, $target " };
+        if (system(gm => convert => -strip => $filename, $target) != 0) {
+            $out{error} = [ "Corrupted file provided [_1]", $filename ];
+            return \%out;
+        }
+    }
     # and finally insert the thing in the db
     my $info = muse_parse_file_path($target, $self->working_dir, 1);
     die "Couldn't retrieve info from $target (this shouldn't happen)" unless $info;
