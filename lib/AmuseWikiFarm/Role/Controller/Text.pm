@@ -147,6 +147,22 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         }
     }
     $c->stash(meta_description => $meta_desc);
+    if (my $pdfs = $text->attached_pdfs) {
+        my @out;
+        my $site = $c->stash->{site};
+        foreach my $pdf (@$pdfs) {
+            push @out, {
+                        name => $pdf,
+                        href => $c->uri_for_action('/uploads/pdf', [$site->id, $pdf]),
+                        thumb => $c->uri_for_action('/uploads/thumbnail', [$site->id, $pdf . '.thumb.png']),
+                       };
+        }
+        Dlog_debug { "PDFs: $_" } \@out;
+        $c->stash(attached_pdfs => \@out);
+        if (@out > 1) {
+            $c->stash(attached_pdfs_gallery => 1);
+        }
+    }
     $c->response->headers->last_modified($text->f_timestamp_epoch || time());
 }
 

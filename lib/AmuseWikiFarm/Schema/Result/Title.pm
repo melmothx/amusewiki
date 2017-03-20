@@ -866,10 +866,13 @@ sub attached_pdfs {
     return unless $string;
     my @tokens = split(/[\s;,]+/, $string);
     my @indexed;
+    my %done;
     foreach my $token (@tokens) {
         next unless $token;
+        next if $done{$token};
         if ($self->site->attachments->by_uri($token)) {
             push @indexed, $token;
+            $done{$token}++;
         }
     }
     @indexed ? return \@indexed : return;

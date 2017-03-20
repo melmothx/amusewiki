@@ -1094,6 +1094,7 @@ t/robots.t
 t/schema.t
 t/secure-site.t
 t/serialize-site.t
+t/simple-gallery.t
 t/site-modes.t
 t/site-options-2.t
 t/site-options.t
