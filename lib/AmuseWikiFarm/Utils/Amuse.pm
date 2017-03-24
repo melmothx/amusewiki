@@ -17,6 +17,7 @@ use Text::Unidecode qw/unidecode/;
 use JSON::MaybeXS ();
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
+use Path::Tiny;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
@@ -25,6 +26,7 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_attachment_basename_for
                     muse_parse_file_path
                     muse_filepath_is_valid
+                    split_pdf
                     clean_username
                     clean_html
                     to_json
@@ -869,6 +871,19 @@ sub from_json {
         log_error { "$error: Failed to decode json $json" };
     };
     return $data;
+}
+
+sub split_pdf {
+    my ($pdf, $directory) = @_;
+    my $target = path($directory, 'page-%04d.png');
+    my @exec = (gm => convert => '+adjoin', "$pdf", "$target");
+    if (system(@exec) == 0) {
+        my @images = sort $target->parent->children(qr/\.png$/);
+        return @images;
+    }
+    else {
+        return;
+    }
 }
 
 1;

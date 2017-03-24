@@ -337,13 +337,24 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
             else {
                 log_error { $upload->tempname . ' does not exist' };
             }
-            my $outcome = $revision->add_attachment($upload->tempname);
+            my $outcome;
+            if ($params->{add_attachment_to_body}) {
+                log_debug { "Adding attachment" };
+                $outcome = $revision->embed_attachment($upload->tempname);
+            }
+            else {
+                log_debug { "Embedding attachment" };
+                $outcome = $revision->add_attachment($upload->tempname);
+            }
             if (my $error = $outcome->{error}) {
                 $c->flash(error_msg => $c->loc(@$error));
             }
-            else {
+            elsif ($outcome->{attachment}) {
                 log_info { "Attached $outcome->{attachment}" };
                 $c->flash(status_msg => $c->loc("File uploaded!"));
+            }
+            else {
+                Dlog_error { "$_ is not what I expected!" } $outcome;
             }
         }
 

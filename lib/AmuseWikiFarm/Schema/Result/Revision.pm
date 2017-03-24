@@ -186,6 +186,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor;
 use AmuseWikiFarm::Log::Contextual;
+use Path::Tiny ();
 
 =head2 muse_body
 
@@ -567,8 +568,17 @@ sub add_attachment {
 
     # copy it in the working directory
     my $target = File::Spec->catfile($self->working_dir, $name);
-    copy($filename, $target) or die "Couldn't copy $filename to $target $!";
-
+    if ($ext eq '.pdf') {
+        log_debug { "Copying $filename to $target " };
+        copy($filename, $target) or die "Couldn't copy $filename to $target $!";
+    }
+    else {
+        log_debug { "Running  gm convert -strip $filename, $target " };
+        if (system(gm => convert => -strip => $filename, $target) != 0) {
+            $out{error} = [ "Corrupted file provided [_1]", $filename ];
+            return \%out;
+        }
+    }
     # and finally insert the thing in the db
     my $info = muse_parse_file_path($target, $self->working_dir, 1);
     die "Couldn't retrieve info from $target (this shouldn't happen)" unless $info;
@@ -971,6 +981,46 @@ sub document_html_headers {
         }
     }
     return $header;
+}
+
+sub append_to_revision_body {
+    my ($self, $string) = @_;
+    my $body = $self->muse_body;
+    $body .= $string;
+    $self->edit(\$body);
+}
+
+sub embed_attachment {
+    my ($self, $file) = @_;
+    $file = Path::Tiny::path($file);
+    my @uris;
+    my $outcome = $self->add_attachment("$file");
+    if (my $uri = $outcome->{attachment}) {
+        if ($uri =~ m/\.pdf\z/) {
+            my $tmpdir = Path::Tiny->tempdir;
+            my @images = AmuseWikiFarm::Utils::Amuse::split_pdf($file, $tmpdir);
+            foreach my $img (@images) {
+                log_debug { "Attaching $img" };
+                my $res = $self->add_attachment("$img");
+                if (my $img_uri = $res->{attachment}) {
+                    log_debug { "Attaching $img_uri" };
+                    push @uris, $img_uri;
+                }
+            }
+        }
+        else {
+            push @uris, $uri;
+        }
+    }
+    else {
+        # can't embed
+        Dlog_error { "Can't embed $file $_" } $outcome;
+    }
+    if (@uris) {
+        my $append = "\n\n" . join("\n\n", map { "[[$_ f]]"} @uris) . "\n\n";
+        $self->append_to_revision_body($append);
+    }
+    return $outcome;
 }
 
 __PACKAGE__->meta->make_immutable;
