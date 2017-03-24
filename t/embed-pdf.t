@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use utf8;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 260;
+use Test::More tests => 286;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use lib catdir(qw/t lib/);
@@ -21,8 +21,9 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0gall0');
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
-$site->update({ pdf => 1 });
-
+$site->update({ pdf => 1,
+                secure_site => 0,
+                mode => 'openwiki' });
 my $tmpdir = Path::Tiny->tempdir;
 {
     my $file = path(qw/t files manual.pdf/);
@@ -59,4 +60,33 @@ foreach my $i (1..64) {
     my $uri = 'h-o-hello-' . $i . '.png';
     like $html, qr/src="\Q$uri\E"/, "Found $uri image in the body";
     $mech->get_ok('/library/' . $uri);
+}
+
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});
+$mech->content_contains('You are logged in now!');
+
+foreach my $embed (0..1) {
+    $mech->get('/action/text/new');
+    ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+    $mech->set_fields(author => 'porchetta',
+                      title => 'formaggino-xxx',
+                      uri => "formaggino-$embed",
+                      textbody => "\nblabla\n");
+    $mech->click;
+    $mech->content_contains('Created new text') or die $mech->uri;
+    $mech->form_id('museform');
+    $mech->tick(add_attachment_to_body => 1, $embed);
+    $mech->set_fields(username => "pallino",
+                      attachment => path(qw/t files manual.pdf/)->stringify);
+    $mech->click('preview');
+    foreach my $n (1..10) {
+        my $re = qr/<textarea .*\[\[f-$embed-formaggino-$embed-$n.png f\]\].*<\/textarea>/s;
+        if ($embed) {
+            $mech->content_like($re);
+        }
+        else {
+            $mech->content_unlike($re);
+        }
+    }
 }

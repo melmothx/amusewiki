@@ -160,18 +160,26 @@
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
   <div class="form-group">
-    <p>
+    <div>
       <label for="attachment">
         [% loc('Add an attachment (PNG, JPG or PDF)' ) %]
       </label>
       <input id="attachment" name="attachment" type="file" />
-    </p>
-    <p>
+    </div>
+    <div class="checkbox">
+      <label>
+      <input id="add-attachment-to-body"
+             value="1"
+             type="checkbox" name="add_attachment_to_body" />
+      [% loc('Insert the file into the body') %]
+      </label>
+    </div>
+    <div>
       <button type="submit" name="upload" value="upload" class="btn btn-default" id="amw-edit-upload-file">
         [% loc('Upload') %]
       </button>
       <br />
-    </p>
+    </div>
   </div>
   <div class="form-group">
     [% IF site.fixed_category_list %]
