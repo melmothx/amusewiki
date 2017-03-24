@@ -186,6 +186,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_naming_algo/;
 use Text::Amuse::Preprocessor;
 use AmuseWikiFarm::Log::Contextual;
+use Path::Tiny ();
 
 =head2 muse_body
 
@@ -980,6 +981,46 @@ sub document_html_headers {
         }
     }
     return $header;
+}
+
+sub append_to_revision_body {
+    my ($self, $string) = @_;
+    my $body = $self->muse_body;
+    $body .= $string;
+    $self->edit(\$body);
+}
+
+sub embed_attachment {
+    my ($self, $file) = @_;
+    $file = Path::Tiny::path($file);
+    my @uris;
+    my $outcome = $self->add_attachment("$file");
+    if (my $uri = $outcome->{attachment}) {
+        if ($uri =~ m/\.pdf\z/) {
+            my $tmpdir = Path::Tiny->tempdir;
+            my @images = AmuseWikiFarm::Utils::Amuse::split_pdf($file, $tmpdir);
+            foreach my $img (@images) {
+                log_debug { "Attaching $img" };
+                my $res = $self->add_attachment("$img");
+                if (my $img_uri = $res->{attachment}) {
+                    log_debug { "Attaching $img_uri" };
+                    push @uris, $img_uri;
+                }
+            }
+        }
+        else {
+            push @uris, $uri;
+        }
+    }
+    else {
+        # can't embed
+        Dlog_error { "Can't embed $file $_" } $outcome;
+    }
+    if (@uris) {
+        my $append = "\n\n" . join("\n\n", map { "[[$_ f]]"} @uris) . "\n\n";
+        $self->append_to_revision_body($append);
+    }
+    return $outcome;
 }
 
 __PACKAGE__->meta->make_immutable;
