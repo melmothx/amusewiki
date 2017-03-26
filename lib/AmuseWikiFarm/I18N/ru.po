@@ -913,6 +913,9 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Символьные стили"
 
+msgid "Insert the file into the body"
+msgstr ""
+
 msgid "Internal list of translations"
 msgstr "Внутренний список или переводы"
 

@@ -896,6 +896,9 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Sisäiset elementit"
 
+msgid "Insert the file into the body"
+msgstr ""
+
 msgid "Internal list of translations"
 msgstr "Sisäinen luettelo käännöksistä"
 

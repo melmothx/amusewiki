@@ -981,6 +981,9 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Елементи по линија"
 
+msgid "Insert the file into the body"
+msgstr ""
+
 msgid "Internal list of translations"
 msgstr "Внатрешна листа на преводи"
 

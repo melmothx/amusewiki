@@ -912,6 +912,9 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Inline-Elemente"
 
+msgid "Insert the file into the body"
+msgstr ""
+
 msgid "Internal list of translations"
 msgstr "Interne Liste der Übersetzungen"
 

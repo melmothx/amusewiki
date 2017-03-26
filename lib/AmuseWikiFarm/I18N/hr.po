@@ -961,6 +961,9 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Elementi po retku"
 
+msgid "Insert the file into the body"
+msgstr ""
+
 msgid "Internal list of translations"
 msgstr "Unutarnji popis prijevoda"
 
