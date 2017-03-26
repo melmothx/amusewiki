@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.012 2017-03-26
+
+ - Use thumbnails for listing (#102)
+ - Add option to insert the image at the end of the body (#101)
+ - Embed PDFs by splitting them in images (#101)
+ - Improved PDF attachment layout (#100)
+
 2.011 2017-03-12
 
  - Improved handling of git pull jobs, which is now a bulk job and
