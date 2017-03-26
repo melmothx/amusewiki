@@ -61,14 +61,18 @@ sub pdf :Chained('upload') :PathPart('') :Args(0) {
 
 sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
     my ($self, $c, $thumb) = @_;
-    my $ext = '.thumb.png';
+    my $ext = qr/\.(thumb|small)\.png/;
     # paranoid check
-    unless ($thumb =~ m/^[0-9a-z][0-9a-z-]*[0-9a-z]\.(pdf|png|jpe?g)\Q$ext\E$/s) {
+    unless ($thumb =~ m/\A
+                        [0-9a-z][0-9a-z-]*[0-9a-z]
+                        \.(pdf|png|jpe?g)
+                        $ext
+                        \z/sx) {
         log_debug { $thumb . " is not a good name" };
         $c->detach('/not_found');
         return;
     }
-    my ($uri) = File::Basename::fileparse($thumb, qr{\Q$ext\E});
+    my ($uri) = File::Basename::fileparse($thumb, $ext);
     my $srcfile = $c->stash->{site}->attachments->by_uri($uri);
     unless ($srcfile) {
         $c->detach('/not_found');
@@ -97,14 +101,32 @@ sub generate_thumbnail_from_to :Private {
     my ($self, $src, $out) = @_;
     die unless ($src && $out);
     return unless (-f $src);
-    return if (-f $out and ((stat($src))[9]) < (stat($out))[9]);
+    if (-f $out) {
+        log_debug { "$out already exists" };
+        my $ts_src = (stat($src))[9];
+        my $ts_out = (stat($out))[9];
+        if ( $ts_src > $ts_out) {
+            log_debug { "$src $ts_src is newer than $out $ts_out" };
+        }
+        else {
+            log_debug { "$src $ts_src is up-to-date wrt $out $ts_out" };
+            return;
+        };
+    }
     log_info { "Generating thumbnail from $src to $out" };
     my @exec = (qw/gm convert -thumbnail/);
     if ($src =~ m/\.pdf$/) {
         push @exec, '300x', $src . '[0]', $out;
     }
-    else {
+    elsif ($out =~ m/\.small\.png\z/) {
+        push @exec, '150x', $src, $out;
+    }
+    elsif ($out =~ m/\.thumb\.png\z/) {
         push @exec, '36x', -quality => 50, $src, $out;
+    }
+    else {
+        log_error { "$src is not a pdf and $out is nor a mini or a thumbnail"};
+        return;
     }
     Dlog_info { "Executing $_" } \@exec;
     system(@exec);

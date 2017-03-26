@@ -9,7 +9,7 @@
     [% IF text.cover_uri %]
     <div class="text-cover-img-mini-container">
       <a href="[% c.uri_for(text.full_uri) %]">
-        <img src="[% c.uri_for(text.cover_uri) %]"
+        <img src="[% c.uri_for(text.cover_small_uri) %]"
              alt="[% text.valid_cover %]"
              class="text-cover-img-mini img-thumbnail" />
       </a>

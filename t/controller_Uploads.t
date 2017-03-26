@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 33;
+use Test::More tests => 57;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -36,6 +36,7 @@ $rev->publish_text;
 my $text = $rev->title->discard_changes;
 is ($text->cover_uri, '/library/h-o-hello-1.png');
 is ($text->cover_thumbnail_uri, '/uploads/0sf1/thumbnails/h-o-hello-1.png.thumb.png');
+is ($text->cover_small_uri, '/uploads/0sf1/thumbnails/h-o-hello-1.png.small.png');
 
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
@@ -44,42 +45,35 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $mech->get_ok("/uploads/$site_id/$expected");
 $mech->get_ok($text->cover_thumbnail_uri);
 $mech->get_ok($text->cover_uri);
+$mech->get_ok($text->cover_small_uri);
 $mech->get_ok("/library/hello");
 $mech->content_contains(qq{/uploads/$site_id/$expected"});
 $mech->content_contains(qq{/uploads/$site_id/thumbnails/$expected.thumb.png"});
 
 
 foreach my $file ($expected, $png_att) {
-    my $thumb = catfile('thumbnails', $site_id, "$file.thumb.png");
-    diag "Checking $thumb\n";
-    if (-f $thumb) {
-        unlink $thumb or die $!;
+    foreach my $type (qw/small thumb/) {
+        my $thumb = catfile('thumbnails', $site_id, "$file.$type.png");
+        diag "Checking $thumb\n";
+        if (-f $thumb) {
+            unlink $thumb or die $!;
+        }
+        ok (! -f $thumb, "$thumb does not exist");
+        $mech->get_ok("/uploads/$site_id/thumbnails/$file.$type.png");
+        ok (-f $thumb, "$thumb exists");
+        my $stat = (stat($thumb))[9];
+        foreach my $sleep (1..2) {
+            sleep $sleep if $sleep;
+            $mech->get_ok("/uploads/$site_id/thumbnails/$file.$type.png");
+            is ((stat($thumb))[9], $stat, "File $thumb has been cached correctly");
+        }
+        my $srcfile = $site->attachments->by_uri($file)->f_full_path_name;;
+        ok(-f $srcfile, "Found $srcfile");
+        my $atime = my $mtime = time();
+        utime $atime, $mtime, $srcfile;
+        $mech->get_ok("/uploads/$site_id/thumbnails/$file.$type.png");
+        ok((stat($thumb))[9] > $stat, "Thumb $type $thumb regenerated");
     }
-    $mech->get_ok("/uploads/$site_id/thumbnails/$file.thumb.png");
-
-    ok (-f $thumb, "$thumb exists");
-    my $stat = (stat($thumb))[9];
-    sleep 2;
-    $mech->get_ok("/uploads/$site_id/thumbnails/$file.thumb.png");
-    is ($stat, (stat($thumb))[9], "File has been cached correctly");
-
-
-    # touch the pdf
-    ok (-f $thumb, "$thumb exists");
-    $stat = (stat($thumb))[9];
-    sleep 2;
-    $mech->get_ok("/uploads/$site_id/thumbnails/$file.thumb.png");
-    is ($stat, (stat($thumb))[9], "File has been cached correctly");
-
-    my $srcfile = $site->attachments->by_uri($file)->f_full_path_name;;
-    ok(-f $srcfile, "Found $srcfile");
-    my $atime = my $mtime = time();
-    utime $atime, $mtime, $srcfile;
-    $mech->get_ok("/uploads/$site_id/thumbnails/$file.thumb.png");
-
-    ok((stat($thumb))[9] > $stat, "Thumb $thumb regenerated");
 }
-
-
-
-
+$mech->get_ok('/latest');
+$mech->content_contains("/uploads/$site_id/thumbnails/$png_att.small.png");

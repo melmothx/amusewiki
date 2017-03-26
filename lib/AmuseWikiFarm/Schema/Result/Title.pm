@@ -849,6 +849,13 @@ sub cover_thumbnail_uri {
     }
 }
 
+sub cover_small_uri {
+    my $self = shift;
+    if (my $uri = $self->valid_cover) {
+        return '/uploads/' . $self->site_id . '/thumbnails/' . $uri . '.small.png';
+    }
+}
+
 
 
 =head2 Attached pdf (#ATTACH directive)
