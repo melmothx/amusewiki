@@ -665,6 +665,7 @@ root/static/images/tex.png
 root/static/images/toc.png
 root/static/images/zip.png
 root/static/js/amuse.js
+root/static/js/amw-anchors.js
 root/static/js/amw-diff.js
 root/static/js/amw-extimg.js
 root/static/js/amw-footnotes.js
@@ -1047,6 +1048,7 @@ t/git-revision.t
 t/html-upload.t
 t/human-login-screens.t
 t/indexer.t
+t/internal-linking.t
 t/jobber.t
 t/lang-parsing.t
 t/lang-sr.t
