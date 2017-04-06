@@ -269,7 +269,7 @@
       <label>
         <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
                [% IF bb.nocoverpage %]checked="checked"[% END %]/>
-        [% loc('For texts without a table of content, start text on the very first page') %]
+        [% loc('Do not create a cover page and start the text on the first page') %]
       </label>
     </div>
     <div class="checkbox pdf-option">

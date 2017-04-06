@@ -693,6 +693,18 @@ How smart a lash that speech doth giue my Conscience?
           present and the reason is set to something, the text will be
           stored in the archive, but will not be published.') %]
         </li>
+        <li>
+          <code>#notoc 1</code> <br />
+          [% loc('If this line is present, forbid the document to
+          generate a table of content in the PDF output.') %]
+        </li>
+        <li>
+          <code>#nocoverpage 1</code> <br />
+          [% loc('If this line is present, do not create a title page,
+          but instead start the text on the very first page and
+          produce a PDF styled like an article (chapters and parts
+          will not start on a new page).') %]
+        </li>
         [% IF site.sl_pdf %]
         <li>
           <p>
