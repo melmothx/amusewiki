@@ -816,9 +816,7 @@ msgid ""
 "          will not start on a new page)."
 msgstr ""
 
-msgid ""
-"If this line is present, forbid the document to\n"
-"          generate a table of content in the PDF output."
+msgid "If this line is present, do not display the table of contents."
 msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"

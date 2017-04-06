@@ -695,8 +695,8 @@ How smart a lash that speech doth giue my Conscience?
         </li>
         <li>
           <code>#notoc 1</code> <br />
-          [% loc('If this line is present, forbid the document to
-          generate a table of content in the PDF output.') %]
+          [%- loc('If this line is present, do not display the table of contents.') -%]
+
         </li>
         <li>
           <code>#nocoverpage 1</code> <br />
