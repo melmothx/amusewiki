@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 33;
+use Test::More tests => 8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use lib catdir(qw/t lib/);
