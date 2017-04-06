@@ -507,6 +507,9 @@ msgstr "Paraqit url saktësisht sikur"
 msgid "Division factor"
 msgstr "Faktori i ndarjes"
 
+msgid "Do not create a cover page and start the text on the first page"
+msgstr ""
+
 msgid "Do not enforce save message"
 msgstr ""
 
@@ -892,6 +895,18 @@ msgstr ""
 "Nëse ky rresht\n"
 "egziston dhe \"arsyeja\" ka ndonje vlere, teksti do te ruhet në\n"
 "akrive por nuk do te publikohet."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+
+msgid ""
+"If this line is present, forbid the document to\n"
+"          generate a table of content in the PDF output."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Nëse e keni kërkuar imponimin, zgjidheni skemën e imponimit"

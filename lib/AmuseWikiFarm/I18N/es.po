@@ -503,6 +503,9 @@ msgstr "Mostrar dirección url como"
 msgid "Division factor"
 msgstr "Factor de división"
 
+msgid "Do not create a cover page and start the text on the first page"
+msgstr ""
+
 msgid "Do not enforce save message"
 msgstr "No forzar mensaje para el save"
 
@@ -899,6 +902,18 @@ msgstr ""
 "Si esta línea está\n"
 "          presente y la razón es ajustar algo, el texto será guardado\n"
 "          en el archivo, pero no será publicado."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+
+msgid ""
+"If this line is present, forbid the document to\n"
+"          generate a table of content in the PDF output."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""

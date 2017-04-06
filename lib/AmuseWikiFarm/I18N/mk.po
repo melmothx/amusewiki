@@ -502,6 +502,9 @@ msgstr "Покажи го URL kako"
 msgid "Division factor"
 msgstr "Фактор на поделба"
 
+msgid "Do not create a cover page and start the text on the first page"
+msgstr ""
+
 msgid "Do not enforce save message"
 msgstr "Не форсирај порака кога текстот ќе се подготви"
 
@@ -883,6 +886,18 @@ msgid ""
 msgstr ""
 "Ако овој ред е присутен и има некаква содржина, текстот ќе се зачува\n"
 " но нема да се објави."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+
+msgid ""
+"If this line is present, forbid the document to\n"
+"          generate a table of content in the PDF output."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ако сакаш прелом на текстот, избери образец"

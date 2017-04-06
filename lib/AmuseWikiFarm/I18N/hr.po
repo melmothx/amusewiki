@@ -487,6 +487,9 @@ msgstr "Pokaži URL kao"
 msgid "Division factor"
 msgstr "Faktor podijele"
 
+msgid "Do not create a cover page and start the text on the first page"
+msgstr ""
+
 msgid "Do not enforce save message"
 msgstr "Ne forsiraj poruku kad se tekst spremi"
 
@@ -862,6 +865,18 @@ msgid ""
 msgstr ""
 "Ako je ovaj redak prisutan i ima neki sadržaj, tekst će se spremiti\n"
 "ali neće se objaviti."
+
+msgid ""
+"If this line is present, do not create a title page,\n"
+"          but instead start the text on the very first page and\n"
+"          produce a PDF styled like an article (chapters and parts\n"
+"          will not start on a new page)."
+msgstr ""
+
+msgid ""
+"If this line is present, forbid the document to\n"
+"          generate a table of content in the PDF output."
+msgstr ""
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ako želiš prijelom teksta izaberi obrazac"
