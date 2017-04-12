@@ -1,0 +1,67 @@
+#!/usr/bin/env perl
+
+BEGIN {
+    die "Do not run this as root" unless $>;
+    $ENV{DBICDH_DEBUG} = 1;
+}
+
+use utf8;
+use strict;
+use warnings;
+use lib 'lib';
+use Path::Tiny;
+use Test::More;
+use AmuseWikiFarm::Schema::Result::Site;
+use Text::Amuse::Compile;
+use Data::Dumper;
+
+my $langs = AmuseWikiFarm::Schema::Result::Site->known_langs;
+my $wd = Path::Tiny->tempdir(CLEANUP => 0);
+diag "saving output to $wd\n";
+plan tests => scalar(keys %$langs) * 2;
+my $c = Text::Amuse::Compile->new(pdf => 1);
+foreach my $lang (keys %$langs) {
+    next if ($lang =~ m/he|ar/);
+    my $file = path($wd, $lang . '.muse');
+    my $muse = <<"MUSE";
+#title $langs->{$lang}
+#lang $lang
+
+** My test
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+*** Another test
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum.
+
+MUSE
+    $file->spew_utf8($muse);
+    $c->compile("$file");
+    my $pdf = path($wd, $lang . '.pdf');
+    my $tex = path($wd, $lang . '.tex');
+    ok ($pdf->exists, "$pdf exists");
+    ok ($tex->exists, "$tex exists");
+    my $texbody = $tex->slurp_utf8;
+    if ($texbody =~ /\\setmainlanguage\{(.*?)\}/) {
+        diag "Language $lang set to $1";
+    }
+    else {
+        die "Couldn't find the language in the tex body";
+    }
+}
+
+
+
