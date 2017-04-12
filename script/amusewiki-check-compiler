@@ -21,7 +21,6 @@ diag "saving output to $wd\n";
 plan tests => scalar(keys %$langs) * 2;
 my $c = Text::Amuse::Compile->new(pdf => 1);
 foreach my $lang (keys %$langs) {
-    next if ($lang =~ m/he|ar/);
     my $file = path($wd, $lang . '.muse');
     my $muse = <<"MUSE";
 #title $langs->{$lang}
@@ -63,5 +62,25 @@ MUSE
     }
 }
 
+=pod
 
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-check-compiler - check LaTeX installation
+
+=head1 SYNOPSIS
+
+ amusewiki-check-compiler
+
+Output:
+
+  * Created fi.pdf
+  ok 1 - /tmp/TKbxGHyVAx/fi.pdf exists
+  ok 2 - /tmp/TKbxGHyVAx/fi.tex exists
+  # Language fi set to finnish
+  [...]
+
+=cut
 
