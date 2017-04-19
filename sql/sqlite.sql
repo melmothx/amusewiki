@@ -357,6 +357,10 @@ CREATE TABLE attachment (
        f_suffix    VARCHAR(16) NOT NULL,
        f_class     VARCHAR(16) NOT NULL,
        uri   VARCHAR(255) NOT NULL,
+       title_muse TEXT,
+       comment_muse TEXT,
+       title_html TEXT,
+       comment_html TEXT,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );

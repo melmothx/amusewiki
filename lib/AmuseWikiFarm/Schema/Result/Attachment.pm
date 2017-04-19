@@ -95,6 +95,26 @@ __PACKAGE__->table("attachment");
   is_nullable: 0
   size: 255
 
+=head2 title_muse
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 comment_muse
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 title_html
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 comment_html
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -125,6 +145,14 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 16 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "title_muse",
+  { data_type => "text", is_nullable => 1 },
+  "comment_muse",
+  { data_type => "text", is_nullable => 1 },
+  "title_html",
+  { data_type => "text", is_nullable => 1 },
+  "comment_html",
+  { data_type => "text", is_nullable => 1 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -175,8 +203,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7vs82ij5xHPQBjuRAr0wCA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-04-19 10:05:23
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bkd0NtzKUarpTVa1Gb7jtg
 
 =head2 File classes
 
