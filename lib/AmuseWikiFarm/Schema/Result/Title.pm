@@ -867,22 +867,25 @@ stored in the tree and indexed in the db, or nothing.
 
 =cut
 
-sub attached_pdfs {
+sub attached_objects {
     my $self = shift;
     my $string = $self->attach;
     return unless $string;
     my @tokens = split(/[\s;,]+/, $string);
     my @indexed;
-    my %done;
     foreach my $token (@tokens) {
         next unless $token;
-        next if $done{$token};
-        if ($self->site->attachments->by_uri($token)) {
-            push @indexed, $token;
-            $done{$token}++;
+        if (my $att = $self->site->attachments->by_uri($token)) {
+            push @indexed, $att;
         }
     }
-    @indexed ? return \@indexed : return;
+    return @indexed;
+}
+
+sub attached_pdfs {
+    my $self = shift;
+    my @all = $self->attached_objects;
+    @all ? return [ map { $_->uri } @all ] : return;
 }
 
 =head2 in_tree_uri
