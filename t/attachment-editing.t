@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 6;
+use Test::More tests => 14;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{AMW_NO_404_FALLBACK} = 1;
@@ -49,3 +49,15 @@ ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'roo
 $mech->get_ok('/attachments');
 $mech->content_contains($attachment);
 ok $mech->follow_link(url_regex => qr/attachments.*edit/);
+ok ($mech->submit_form(with_fields => {
+                                       desc_muse => "Hello *there*,\nthis is my **description**",
+                                       title_muse => 'Hello *there*',
+                                      },
+                       button => 'update',
+                      ), "Form submitted ok");
+
+$mech->content_contains("Hello <em>there</em>");
+$mech->content_contains("<strong>description</strong>");
+$mech->get_ok('/attachments');
+$mech->content_contains("Hello <em>there</em>");
+$mech->content_contains("<strong>description</strong>");

@@ -232,6 +232,9 @@ Return false if it's a PDF, false otherwise
 
 =cut
 
+use Text::Amuse::Functions qw/muse_format_line muse_to_html/;
+use AmuseWikiFarm::Log::Contextual;
+
 sub can_be_inlined {
     my $self = shift;
     if ($self->f_class eq 'upload_pdf') {
@@ -273,6 +276,18 @@ sub small_uri {
 
 sub large_uri {
     return shift->thumbnail_base_path . '.large.png';
+}
+
+sub edit {
+    my ($self, %args) = @_;
+    my %update;
+    foreach my $k (qw/title_muse comment_muse/) {
+        $update{$k} = defined($args{$k}) ? $args{$k} : '';
+    }
+    $update{title_html} = muse_format_line(html => $update{title_muse});
+    $update{comment_html} = muse_to_html($update{comment_muse});
+    Dlog_debug { "Updating $_" } \%update;
+    $self->update(\%update);
 }
 
 

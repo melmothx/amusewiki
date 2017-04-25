@@ -41,6 +41,8 @@ sub list :Chained('root') :PathPart('') :Args(0) {
                      full_uri => $c->uri_for($att->full_uri),
                      name => $att->uri,
                      thumb => $c->uri_for($att->small_uri),
+                     title => $att->title_html,
+                     desc => $att->comment_html,
                     };
     }
     $c->stash(attachments_list => \@list);
@@ -59,6 +61,12 @@ sub attachment :Chained('root') :PathPart('') :CaptureArgs(1) {
 sub edit :Chained('attachment') :Args(0) {
     my ($self, $c) = @_;
     my $att = $c->stash->{attachment};
+    if ($c->request->body_params->{update}) {
+        $att->edit(
+                   title_muse => $c->request->body_params->{title_muse},
+                   comment_muse => $c->request->body_params->{desc_muse},
+                  );
+    }
     $c->stash(page_title => $att->uri,
               load_markitup_css => 1,
              );

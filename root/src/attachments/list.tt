@@ -38,11 +38,9 @@
         [% END %]
       </td>
       <td>
-        <p>
-          [% IF att.desc %]
-          [% att.desc %]
-          [% END %]
-        </p>
+        [% IF att.desc %]
+        [% att.desc %]
+        [% END %]
       </td>
       <td>
         <a href="[% att.full_uri | html %]">
