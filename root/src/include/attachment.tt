@@ -1,0 +1,13 @@
+[%# -*- mode:html -*- %]
+<div>
+  <a href="[% c.uri_for(attachment.full_uri) %]">
+    <img src="[% c.uri_for(attachment.large_uri) %]" class="img img-thumbnail">
+  </a>
+  [% IF attachment.title_muse %]
+  <h3 class="center">[% attachment.title_html %]</h3>
+  [% END %]
+  [% IF attachment.comment_muse %]
+  <p class="center">[% attachment.comment_html %]</p>
+  [% END %]
+</div>
+

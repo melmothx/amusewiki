@@ -519,6 +519,7 @@ root/src/git/git.tt
 root/src/help/faq.tt
 root/src/help/irc.tt
 root/src/help/opds.tt
+root/src/include/attachment.tt
 root/src/include/bbform.tt
 root/src/include/breadcrumbs.tt
 root/src/include/bulk_job.tt

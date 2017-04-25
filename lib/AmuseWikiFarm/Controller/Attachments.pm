@@ -28,6 +28,7 @@ sub root :Chained('/site_user_required') :PathPart('attachments') :CaptureArgs(0
     my $attachments = $site->attachments;
     $c->stash(full_page_no_side_columns => 1,
               attachments => $attachments,
+              page_title => $c->loc('Attachments'),
              );
 }
 
@@ -58,6 +59,9 @@ sub attachment :Chained('root') :PathPart('') :CaptureArgs(1) {
 sub edit :Chained('attachment') :Args(0) {
     my ($self, $c) = @_;
     my $att = $c->stash->{attachment};
+    $c->stash(page_title => $att->uri,
+              load_markitup_css => 1,
+             );
 }
 
 
