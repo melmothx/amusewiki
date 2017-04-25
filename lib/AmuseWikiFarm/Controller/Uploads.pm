@@ -41,6 +41,7 @@ sub upload :Chained('root') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     my $attachment = $c->stash->{site}->attachments->pdf_by_uri($uri);
 
+    log_debug { "Trying to serve $uri "};
     if ($attachment) {
         $c->stash(
                   serve_static_file => $attachment->f_full_path_name,
@@ -61,7 +62,8 @@ sub pdf :Chained('upload') :PathPart('') :Args(0) {
 
 sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
     my ($self, $c, $thumb) = @_;
-    my $ext = qr/\.(thumb|small)\.png/;
+    log_debug { "Looking up $thumb" };
+    my $ext = qr/\.(thumb|small|large)\.png/;
     # paranoid check
     unless ($thumb =~ m/\A
                         [0-9a-z][0-9a-z-]*[0-9a-z]
@@ -75,6 +77,7 @@ sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
     my ($uri) = File::Basename::fileparse($thumb, $ext);
     my $srcfile = $c->stash->{site}->attachments->by_uri($uri);
     unless ($srcfile) {
+        log_debug { "$srcfile not found in the db"};
         $c->detach('/not_found');
         return;
     }
@@ -115,19 +118,31 @@ sub generate_thumbnail_from_to :Private {
     }
     log_info { "Generating thumbnail from $src to $out" };
     my @exec = (qw/gm convert -thumbnail/);
+
+    # if the source is a pdf, use the first page for thumbnailing
     if ($src =~ m/\.pdf$/) {
-        push @exec, '300x', $src . '[0]', $out;
+        $src = $src . '[0]';
     }
-    elsif ($out =~ m/\.small\.png\z/) {
-        push @exec, '150x', $src, $out;
-    }
-    elsif ($out =~ m/\.thumb\.png\z/) {
-        push @exec, '36x', -quality => 50, $src, $out;
+
+    if ($out =~ m/\.(large|small|thumb)\.png\z/) {
+        my $type = $1;
+        my %dimensions = (
+                          large => '300x',
+                          small => '150x',
+                          thumb => '36x',
+                         );
+        if (my $scale = $dimensions{$type}) {
+            push @exec, $scale;
+        }
+        else {
+            die "Not reached";
+        }
     }
     else {
-        log_error { "$src is not a pdf and $out is nor a mini or a thumbnail"};
-        return;
+        log_error { "Asked for $out, not handled" };
+        die "Wrong extension";
     }
+    push @exec, $src, $out;
     Dlog_info { "Executing $_" } \@exec;
     system(@exec);
 }

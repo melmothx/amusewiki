@@ -21,7 +21,7 @@ use AmuseWikiFarm::Schema;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = create_site($schema, '0gall0');
-$site->update({ secure_site => 0 });
+$site->update({ secure_site => 0, epub => 1 });
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
@@ -87,7 +87,7 @@ foreach my $type (qw/text special/) {
     $mech->content_contains('col-sm-4 pdf-gallery');
     foreach my $att (@pdfs) {
         $mech->get($title->full_uri);
-        $mech->content_contains('/uploads/' . $site->id . '/thumbnails/' . $att . '.thumb.png');
+        $mech->content_contains('/uploads/' . $site->id . '/thumbnails/' . $att . '.large.png');
         my $att_object = $site->attachments->by_uri($att);
         foreach my $method (qw/full_uri thumbnail_uri small_uri large_uri/) {
             ok ($att_object->$method, "$method ok: " . $att_object->$method);
