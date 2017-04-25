@@ -834,26 +834,46 @@ sub full_rebuild_uri {
     return $self->full_uri . '/rebuild';
 }
 
-sub cover_uri {
+sub cover_file {
     my $self = shift;
     if (my $uri = $self->valid_cover) {
-        return $self->full_uri($uri);
+        if (my $att = $self->site->attachments->by_uri($uri)) {
+            return $att;
+        }
+    }
+    return undef;
+}
+
+sub cover_uri {
+    my $self = shift;
+    if (my $att = $self->cover_file) {
+        return $att->full_uri;
     }
     return;
 }
 
 sub cover_thumbnail_uri {
     my $self = shift;
-    if (my $uri = $self->valid_cover) {
-        return '/uploads/' . $self->site_id . '/thumbnails/' . $uri . '.thumb.png';
+    if (my $att = $self->cover_file) {
+        return $att->thumbnail_uri;
     }
+    return;
 }
 
 sub cover_small_uri {
     my $self = shift;
-    if (my $uri = $self->valid_cover) {
-        return '/uploads/' . $self->site_id . '/thumbnails/' . $uri . '.small.png';
+    if (my $att = $self->cover_file) {
+        return $att->small_uri;
     }
+    return;
+}
+
+sub cover_large_uri {
+    my $self = shift;
+    if (my $att = $self->cover_file) {
+        return $att->large_uri;
+    }
+    return;
 }
 
 

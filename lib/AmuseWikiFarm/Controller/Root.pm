@@ -9,6 +9,10 @@ use AmuseWikiFarm::Log::Contextual;
 use HTTP::BrowserDetect;
 use IO::File;
 
+use constant {
+    AMW_NO_404_FALLBACK => $ENV{AMW_NO_404_FALLBACK},
+};
+
 #
 # Sets the actions in this controller to be registered with no prefix
 # so they function identically to actions created in MyApp.pm
@@ -216,7 +220,10 @@ sub not_found :Private {
             return;
         }
         # if looks like an image, handle it.
-        if ($c->request->path =~ m/([0-9a-z-]+\.(jpe?g|png|pdf))\z/) {
+        if (AMW_NO_404_FALLBACK) {
+            log_debug { "Not falling back on 404" };
+        }
+        elsif ($c->request->path =~ m/([0-9a-z-]+\.(jpe?g|png|pdf))\z/) {
             my $name = $1;
             if (my $att = $site->attachments->by_uri($name)) {
                 $c->stash(serve_static_file => $att->f_full_path_name);

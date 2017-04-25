@@ -244,8 +244,37 @@ sub can_be_inlined {
 
 sub full_uri {
     my $self = shift;
-    return '/library/' . $self->uri;
+    my %type = (
+                image => sub { '/library/' . $self->uri },
+                special_image => sub { '/special/' . $self->uri },
+                upload_pdf => sub { '/uploads/' . $self->site->id . '/' . $self->uri },
+               );
+    if (my $sub = $type{$self->f_class}) {
+        return $sub->();
+    }
+    else {
+        log_error { $self->f_class . ' for ' . $self->f_full_path_name . ' is not recognized' };
+    }
+    return undef;
 }
+
+sub thumbnail_base_path {
+    my $self = shift;
+    return '/uploads/' . $self->site->id . '/thumbnails/' . $self->uri;
+}
+
+sub thumbnail_uri {
+    return shift->thumbnail_base_path . '.thumb.png';
+}
+
+sub small_uri {
+    return shift->thumbnail_base_path . '.small.png';
+}
+
+sub large_uri {
+    return shift->thumbnail_base_path . '.large.png';
+}
+
 
 __PACKAGE__->meta->make_immutable;
 1;
