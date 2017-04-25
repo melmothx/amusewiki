@@ -254,3 +254,8 @@ div#text-prev-post-link span.glyphicon {
     height: 50px;
 }
 
+.table-text-centered td,
+.table-text-centered th
+{
+    text-align: center;
+}
