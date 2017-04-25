@@ -290,6 +290,9 @@ sub edit {
     $self->update(\%update);
 }
 
+sub separator { return undef }
+
+
 
 __PACKAGE__->meta->make_immutable;
 1;

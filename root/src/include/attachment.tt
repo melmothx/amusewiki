@@ -1,7 +1,9 @@
 [%# -*- mode:html -*- %]
 <div>
   <a href="[% c.uri_for(attachment.full_uri) %]">
-    <img src="[% c.uri_for(attachment.large_uri) %]" class="img img-thumbnail">
+    <img src="[% c.uri_for(attachment.large_uri) %]"
+         alt="[% attachment.uri %]"
+         class="img img-responsive img-thumbnail">
   </a>
   [% IF attachment.title_muse %]
   <h3 class="center">[% attachment.title_html %]</h3>

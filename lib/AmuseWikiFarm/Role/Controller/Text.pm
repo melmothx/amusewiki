@@ -151,9 +151,14 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         my @out;
         my $site = $c->stash->{site};
         my $is_gallery = @attachments > 1 ? 1 : 0;
-
-        foreach my $att (@attachments) {
+        my $count = 0;
+        while (@attachments) {
+            $count++;
+            my $att = shift @attachments;
             push @out, $att;
+            unless ($count % 3) {
+                push @out, { separator => 1 } if @attachments;
+            }
         }
         Dlog_debug { "PDFs: $_" } \@out;
         $c->stash(attached_pdfs => \@out,
