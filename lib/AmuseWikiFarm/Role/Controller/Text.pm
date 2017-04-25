@@ -153,11 +153,7 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         my $is_gallery = @attachments > 1 ? 1 : 0;
 
         foreach my $att (@attachments) {
-            push @out, {
-                        name => $att->uri,
-                        href => $c->uri_for($att->full_uri),
-                        thumb => $c->uri_for($att->large_uri),
-                       };
+            push @out, $att;
         }
         Dlog_debug { "PDFs: $_" } \@out;
         $c->stash(attached_pdfs => \@out,
