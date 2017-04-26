@@ -1,4 +1,5 @@
 [% # -*- mode:html -*- -%]
+[% INCLUDE 'include/breadcrumbs.tt' %]
 [% INCLUDE 'include/markitup.tt' %]
 
 <div class="center">

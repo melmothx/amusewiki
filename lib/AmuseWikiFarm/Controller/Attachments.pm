@@ -30,9 +30,16 @@ sub root :Chained('/site_user_required') :PathPart('attachments') :CaptureArgs(0
     die "Shouldn't happen" unless $c->user_exists;
     my $site = $c->stash->{site};
     my $attachments = $site->attachments;
+    my $name = $c->loc('Attachments');
     $c->stash(full_page_no_side_columns => 1,
               attachments => $attachments,
-              page_title => $c->loc('Attachments'),
+              page_title => $name,
+              breadcrumbs => [
+                              {
+                               uri => $c->uri_for_action('/attachments/list'),
+                               label => $name,
+                              }
+                             ],
              );
 }
 
@@ -80,13 +87,20 @@ sub attachment :Chained('root') :PathPart('show') :CaptureArgs(1) {
 sub edit :Chained('attachment') :Args(0) {
     my ($self, $c) = @_;
     my $att = $c->stash->{attachment};
+    my $uri = $att->uri;
     if ($c->request->body_params->{update}) {
         $att->edit(
                    title_muse => $c->request->body_params->{title_muse},
                    comment_muse => $c->request->body_params->{desc_muse},
                   );
-        $c->flash(status_msg => $c->loc('The description for [_1] has been updated', $c->stash->{attachment}->uri));
+        $c->flash(status_msg => $c->loc('The description for [_1] has been updated', $uri));
     }
+
+    push @{$c->stash->{breadcrumbs}},
+      {
+       uri => $c->uri_for_action('/attachments/edit', $uri),
+       label => $uri,
+      };
     $c->stash(page_title => $att->uri,
               load_markitup_css => 1,
              );
