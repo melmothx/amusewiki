@@ -13,8 +13,7 @@
     <div class="col-xs-1">
       [% IF c.user_exists %] 
       <span>
-        <a href="[% c.uri_for_action('/attachments/edit', [ attachment.uri ]) %]">
-          <br />
+        <a href="[% c.uri_for_action('/attachments/edit', [ attachment.uri ]) %]" target="_blank">
           <span title="[% loc('Edit attachment description') %]"
                 class="fa fa-edit"
                 style="opacity: 0.5"
@@ -30,6 +29,8 @@
       <p class="center">[% attachment.comment_html %]</p>
       [% END %]
     </div>
+  </div>
+  <div class="amw-spacer-20">
   </div>
 </div>
 
