@@ -1,15 +1,35 @@
 [%# -*- mode:html -*- %]
 <div>
-  <a href="[% c.uri_for(attachment.full_uri) %]">
-    <img src="[% c.uri_for(attachment.large_uri) %]"
-         alt="[% attachment.uri %]"
-         class="img img-responsive img-thumbnail">
-  </a>
-  [% IF attachment.title_muse %]
-  <h3 class="center">[% attachment.title_html %]</h3>
-  [% END %]
-  [% IF attachment.comment_muse %]
-  <p class="center">[% attachment.comment_html %]</p>
-  [% END %]
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="[% c.uri_for(attachment.full_uri) %]">
+        <img src="[% c.uri_for(attachment.large_uri) %]"
+             alt="[% attachment.uri %]"
+             class="img img-responsive img-thumbnail">
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-1">
+      [% IF c.user_exists %] 
+      <span>
+        <a href="[% c.uri_for_action('/attachments/edit', [ attachment.uri ]) %]">
+          <br />
+          <span title="[% loc('Edit attachment description') %]"
+                class="fa fa-edit"
+                style="opacity: 0.5"
+                aria-hidden="true"></span></a>
+      </span>
+      [% END %]
+    </div>
+    <div class="col-xs-10">
+      [% IF attachment.title_muse %]
+      <h3 class="center">[% attachment.title_html %]</h3>
+      [% END %]
+      [% IF attachment.comment_muse %]
+      <p class="center">[% attachment.comment_html %]</p>
+      [% END %]
+    </div>
+  </div>
 </div>
 
