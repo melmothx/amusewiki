@@ -48,7 +48,7 @@ $mech->get_ok($text->cover_uri);
 $mech->get_ok($text->cover_small_uri);
 $mech->get_ok("/library/hello");
 $mech->content_contains(qq{/uploads/$site_id/$expected"});
-$mech->content_contains(qq{/uploads/$site_id/thumbnails/$expected.thumb.png"});
+$mech->content_contains(qq{/uploads/$site_id/thumbnails/$expected.large.png"});
 
 
 foreach my $file ($expected, $png_att) {
