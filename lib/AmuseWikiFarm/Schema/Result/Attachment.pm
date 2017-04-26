@@ -95,6 +95,26 @@ __PACKAGE__->table("attachment");
   is_nullable: 0
   size: 255
 
+=head2 title_muse
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 comment_muse
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 title_html
+
+  data_type: 'text'
+  is_nullable: 1
+
+=head2 comment_html
+
+  data_type: 'text'
+  is_nullable: 1
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -125,6 +145,14 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 16 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "title_muse",
+  { data_type => "text", is_nullable => 1 },
+  "comment_muse",
+  { data_type => "text", is_nullable => 1 },
+  "title_html",
+  { data_type => "text", is_nullable => 1 },
+  "comment_html",
+  { data_type => "text", is_nullable => 1 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -175,8 +203,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:7vs82ij5xHPQBjuRAr0wCA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-04-19 10:05:23
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bkd0NtzKUarpTVa1Gb7jtg
 
 =head2 File classes
 
@@ -204,6 +232,9 @@ Return false if it's a PDF, false otherwise
 
 =cut
 
+use Text::Amuse::Functions qw/muse_format_line muse_to_html/;
+use AmuseWikiFarm::Log::Contextual;
+
 sub can_be_inlined {
     my $self = shift;
     if ($self->f_class eq 'upload_pdf') {
@@ -216,8 +247,52 @@ sub can_be_inlined {
 
 sub full_uri {
     my $self = shift;
-    return '/library/' . $self->uri;
+    my %type = (
+                image => sub { '/library/' . $self->uri },
+                special_image => sub { '/special/' . $self->uri },
+                upload_pdf => sub { '/uploads/' . $self->site->id . '/' . $self->uri },
+               );
+    if (my $sub = $type{$self->f_class}) {
+        return $sub->();
+    }
+    else {
+        log_error { $self->f_class . ' for ' . $self->f_full_path_name . ' is not recognized' };
+    }
+    return undef;
 }
+
+sub thumbnail_base_path {
+    my $self = shift;
+    return '/uploads/' . $self->site->id . '/thumbnails/' . $self->uri;
+}
+
+sub thumbnail_uri {
+    return shift->thumbnail_base_path . '.thumb.png';
+}
+
+sub small_uri {
+    return shift->thumbnail_base_path . '.small.png';
+}
+
+sub large_uri {
+    return shift->thumbnail_base_path . '.large.png';
+}
+
+sub edit {
+    my ($self, %args) = @_;
+    my %update;
+    foreach my $k (qw/title_muse comment_muse/) {
+        $update{$k} = defined($args{$k}) ? $args{$k} : '';
+    }
+    $update{title_html} = muse_format_line(html => $update{title_muse});
+    $update{comment_html} = muse_to_html($update{comment_muse});
+    Dlog_debug { "Updating $_" } \%update;
+    $self->update(\%update);
+}
+
+sub separator { return undef }
+
+
 
 __PACKAGE__->meta->make_immutable;
 1;

@@ -1,0 +1,32 @@
+[% # -*- mode:html -*- -%]
+[% INCLUDE 'include/breadcrumbs.tt' %]
+[% INCLUDE 'include/markitup.tt' %]
+
+<div class="center">
+  <div class="page-header">
+    <h1>[% page_title | html %]</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="well center">
+      [% INCLUDE 'include/attachment.tt' %]
+    </div>
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="title_muse">[% c.loc('Title') %]</label>
+        <input type="text" id="title_muse" name="title_muse"
+               value="[% attachment.title_muse | html %]" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="maintextarea">[% c.loc('Description') %]</label>
+        <textarea rows="20" cols="60" id="maintextarea"
+                  class="form-control text-muse-body"
+                  name="desc_muse">[%- attachment.comment_muse | html -%]</textarea>
+      </div>
+      <div class="center">
+        <button type="submit" class="btn btn-default" name="update" value="update"> [% loc('Update')  %]</button>
+      </div>
+    </form>
+  </div>
+</div>

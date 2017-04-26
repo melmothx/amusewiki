@@ -332,23 +332,27 @@
   </div>
 
   [%- IF attached_pdfs -%]
-  <div id="amw-attached-pdfs" class="row" style="margin: 80px 0">
-    <div class="center" style="margin-bottom: 40px">
-      <strong> * * * * * </strong>
+  <div id="amw-attached-pdfs" style="margin: 80px 0">
+    <div class="row">
+      <div class="center col-sm-12" style="margin-bottom: 40px">
+        <strong> * * * * * </strong>
+      </div>
     </div>
-    [%-   FOREACH att IN attached_pdfs -%]
+    <div class="row">
+    [%-   FOREACH attachment IN attached_pdfs -%]
+    [% IF attachment.separator %]
+    </div><div class="row">
+    [% ELSE %]
     [%- IF attached_pdfs_gallery -%]
-    <div class="col-sm-4 pdf-gallery center" style="padding-bottom: 20px">
+    <div class="col-sm-4 pdf-gallery center">
     [%- ELSE -%]
-    <div class="col-xs-12 center">
+    <div class="col-xs-offset-4 col-xs-4 center">
     [% END %]
-    <a href="[% att.href %]">
-      <img src="[% att.thumb %]"
-           class="img-thumbnail img-responsive"
-           alt="[% att.name %]"/>
-    </a>
+    [% INCLUDE 'include/attachment.tt' %]
     </div>
+    [% END %]
   [%-   END -%]
+    </div>
   </div>
   [%- END -%]
 

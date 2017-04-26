@@ -834,26 +834,46 @@ sub full_rebuild_uri {
     return $self->full_uri . '/rebuild';
 }
 
-sub cover_uri {
+sub cover_file {
     my $self = shift;
     if (my $uri = $self->valid_cover) {
-        return $self->full_uri($uri);
+        if (my $att = $self->site->attachments->by_uri($uri)) {
+            return $att;
+        }
+    }
+    return undef;
+}
+
+sub cover_uri {
+    my $self = shift;
+    if (my $att = $self->cover_file) {
+        return $att->full_uri;
     }
     return;
 }
 
 sub cover_thumbnail_uri {
     my $self = shift;
-    if (my $uri = $self->valid_cover) {
-        return '/uploads/' . $self->site_id . '/thumbnails/' . $uri . '.thumb.png';
+    if (my $att = $self->cover_file) {
+        return $att->thumbnail_uri;
     }
+    return;
 }
 
 sub cover_small_uri {
     my $self = shift;
-    if (my $uri = $self->valid_cover) {
-        return '/uploads/' . $self->site_id . '/thumbnails/' . $uri . '.small.png';
+    if (my $att = $self->cover_file) {
+        return $att->small_uri;
     }
+    return;
+}
+
+sub cover_large_uri {
+    my $self = shift;
+    if (my $att = $self->cover_file) {
+        return $att->large_uri;
+    }
+    return;
 }
 
 
@@ -867,22 +887,25 @@ stored in the tree and indexed in the db, or nothing.
 
 =cut
 
-sub attached_pdfs {
+sub attached_objects {
     my $self = shift;
     my $string = $self->attach;
     return unless $string;
     my @tokens = split(/[\s;,]+/, $string);
     my @indexed;
-    my %done;
     foreach my $token (@tokens) {
         next unless $token;
-        next if $done{$token};
-        if ($self->site->attachments->by_uri($token)) {
-            push @indexed, $token;
-            $done{$token}++;
+        if (my $att = $self->site->attachments->by_uri($token)) {
+            push @indexed, $att;
         }
     }
-    @indexed ? return \@indexed : return;
+    return @indexed;
+}
+
+sub attached_pdfs {
+    my $self = shift;
+    my @all = $self->attached_objects;
+    @all ? return [ map { $_->uri } @all ] : return;
 }
 
 =head2 in_tree_uri

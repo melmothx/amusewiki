@@ -147,21 +147,22 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         }
     }
     $c->stash(meta_description => $meta_desc);
-    if (my $pdfs = $text->attached_pdfs) {
+    if (my @attachments = $text->attached_objects) {
         my @out;
         my $site = $c->stash->{site};
-        foreach my $pdf (@$pdfs) {
-            push @out, {
-                        name => $pdf,
-                        href => $c->uri_for_action('/uploads/pdf', [$site->id, $pdf]),
-                        thumb => $c->uri_for_action('/uploads/thumbnail', [$site->id, $pdf . '.thumb.png']),
-                       };
+        my $is_gallery = @attachments > 1 ? 1 : 0;
+        my $count = 0;
+        while (@attachments) {
+            $count++;
+            my $att = shift @attachments;
+            push @out, $att;
+            unless ($count % 3) {
+                push @out, { separator => 1 } if @attachments;
+            }
         }
         Dlog_debug { "PDFs: $_" } \@out;
-        $c->stash(attached_pdfs => \@out);
-        if (@out > 1) {
-            $c->stash(attached_pdfs_gallery => 1);
-        }
+        $c->stash(attached_pdfs => \@out,
+                  attached_pdfs_gallery => $is_gallery);
     }
     $c->response->headers->last_modified($text->f_timestamp_epoch || time());
 }
