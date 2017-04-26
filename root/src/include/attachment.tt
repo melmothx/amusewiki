@@ -23,7 +23,7 @@
     </div>
     <div class="col-xs-10">
       [% IF attachment.title_muse %]
-      <h3 class="center">[% attachment.title_html %]</h3>
+      <h4 class="center">[% attachment.title_html %]</h4>
       [% END %]
       [% IF attachment.comment_muse %]
       <p class="center">[% attachment.comment_html %]</p>
