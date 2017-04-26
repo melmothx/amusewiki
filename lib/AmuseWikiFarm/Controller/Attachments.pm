@@ -4,6 +4,10 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Paginator;
+
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::Attachments - Catalyst Controller
@@ -32,10 +36,23 @@ sub root :Chained('/site_user_required') :PathPart('attachments') :CaptureArgs(0
              );
 }
 
-sub list :Chained('root') :PathPart('') :Args(0) {
-    my ($self, $c) = @_;
+sub list :Chained('root') :PathPart('') :Args {
+    my ($self, $c, $page) = @_;
+    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+        $page = 1;
+    }
     my @list;
-    my $all = $c->stash->{attachments}->search(undef, { order_by => 'uri' });
+    my $site = $c->stash->{site};
+    my $all = $c->stash->{attachments}->search(undef, {
+                                                       order_by => 'uri',
+                                                       page => $page,
+                                                       rows => $site->pagination_size,
+                                                      });
+    my $pager = $all->pager;
+    my $format_link = sub {
+        return $c->uri_for_action('/attachments/list', $_[0]);
+    };
+
     while (my $att = $all->next) {
         push @list, {
                      full_uri => $c->uri_for($att->full_uri),
@@ -45,7 +62,9 @@ sub list :Chained('root') :PathPart('') :Args(0) {
                      desc => $att->comment_html,
                     };
     }
-    $c->stash(attachments_list => \@list);
+    $c->stash(attachments_list => \@list,
+              pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link)
+             );
 }
 
 sub attachment :Chained('root') :PathPart('') :CaptureArgs(1) {

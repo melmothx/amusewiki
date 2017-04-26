@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 14;
+use Test::More tests => 16;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{AMW_NO_404_FALLBACK} = 1;
@@ -32,7 +32,9 @@ my $attachment;
                                        }, 'text');
     my $pdf = catfile(qw/t files shot.pdf/);
     my $got = $rev->add_attachment($pdf);
-    diag Dumper($got);
+    for my $i (1..20) {
+        $rev->add_attachment($pdf);
+    }
     ok $got->{attachment};
     $rev->edit("#ATTACH $got->{attachment}\n" . $rev->muse_body);
     $rev->commit_version;
@@ -57,7 +59,9 @@ ok ($mech->submit_form(with_fields => {
                       ), "Form submitted ok");
 
 $mech->content_contains("Hello <em>there</em>");
-$mech->content_contains("<strong>description</strong>");
+$mech->content_contains("this is my <strong>description</strong>");
 $mech->get_ok('/attachments');
 $mech->content_contains("Hello <em>there</em>");
-$mech->content_contains("<strong>description</strong>");
+$mech->content_contains("this is my <strong>description</strong>");
+ok $mech->follow_link(url_regex => qr{/attachments/2}), "Pagination ok";
+$mech->content_lacks("this is my <strong>description</strong>");

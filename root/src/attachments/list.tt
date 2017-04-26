@@ -56,3 +56,7 @@
     [% END %]
   </table>
 </div>
+
+<div class="center">
+  [% INCLUDE 'include/pagination.tt' %]
+</div>
