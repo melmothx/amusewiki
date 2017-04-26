@@ -45,10 +45,10 @@ my $attachment;
 }
 
 $mech->get_ok('/');
-$mech->get('/attachments');
+$mech->get('/attachments/list');
 is $mech->status, 401;
 ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }) or die;
-$mech->get_ok('/attachments');
+$mech->get_ok('/attachments/list');
 $mech->content_contains($attachment);
 ok $mech->follow_link(url_regex => qr/attachments.*edit/);
 ok ($mech->submit_form(with_fields => {
@@ -60,8 +60,8 @@ ok ($mech->submit_form(with_fields => {
 
 $mech->content_contains("Hello <em>there</em>");
 $mech->content_contains("this is my <strong>description</strong>");
-$mech->get_ok('/attachments');
+$mech->get_ok('/attachments/list');
 $mech->content_contains("Hello <em>there</em>");
 $mech->content_contains("this is my <strong>description</strong>");
-ok $mech->follow_link(url_regex => qr{/attachments/2}), "Pagination ok";
+ok $mech->follow_link(url_regex => qr{/attachments/list/2}), "Pagination ok";
 $mech->content_lacks("this is my <strong>description</strong>");

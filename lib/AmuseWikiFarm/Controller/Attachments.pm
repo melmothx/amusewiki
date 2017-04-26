@@ -36,7 +36,7 @@ sub root :Chained('/site_user_required') :PathPart('attachments') :CaptureArgs(0
              );
 }
 
-sub list :Chained('root') :PathPart('') :Args {
+sub list :Chained('root') :Args {
     my ($self, $c, $page) = @_;
     unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
         $page = 1;
@@ -67,7 +67,7 @@ sub list :Chained('root') :PathPart('') :Args {
              );
 }
 
-sub attachment :Chained('root') :PathPart('') :CaptureArgs(1) {
+sub attachment :Chained('root') :PathPart('show') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     if (my $att = $c->stash->{attachments}->by_uri($uri)) {
         $c->stash(attachment => $att);
