@@ -85,6 +85,7 @@ sub edit :Chained('attachment') :Args(0) {
                    title_muse => $c->request->body_params->{title_muse},
                    comment_muse => $c->request->body_params->{desc_muse},
                   );
+        $c->flash(status_msg => $c->loc('The description for [_1] has been updated', $c->stash->{attachment}->uri));
     }
     $c->stash(page_title => $att->uri,
               load_markitup_css => 1,
