@@ -4,6 +4,7 @@ dbicdh/_common/upgrade/13-14/set_site_last_updated.pl
 dbicdh/_common/upgrade/17-18/002-clear-stats.pl
 dbicdh/_common/upgrade/20-21/000-fix-sites.pl
 dbicdh/_common/upgrade/23-24/002-populate-monthly-archives.pl
+dbicdh/_common/upgrade/31-32/002-clear-thumbnails.pl
 dbicdh/_common/upgrade/5-6/002-add-and-move-job-files.pl
 dbicdh/_source/deploy/10/001-auto-__VERSION.yml
 dbicdh/_source/deploy/10/001-auto.yml
@@ -1190,6 +1191,7 @@ t/utils-json.t
 t/utils-paginator.t
 t/view_HTML.t
 t/view_StaticFile.t
+t/xapian-multilang.t
 t/xapian.t
 t/xs-sessions.t
 t/zz-finish-tests.t
