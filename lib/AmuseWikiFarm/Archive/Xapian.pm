@@ -134,6 +134,10 @@ sub index_text {
     # get and create
     my $database = $self->xapian_db;
     my $indexer = Search::Xapian::TermGenerator->new();
+    # indexing with the correct stemmer is the right thing to do. No
+    # point in stemming with the wrong locale. if i understand
+    # correctly, the unstemmed version is indexed anyway.
+
     $indexer->set_stemmer($self->xapian_stemmer($title->lang));
 
     my $qterm = 'Q' . $title->uri;
@@ -241,7 +245,7 @@ sub index_text {
     return $exit;
 }
 
-=head2 search($query_string, $page);
+=head2 search($query_string, $page, $locale);
 
 Run a query against the Xapian database. Return the number of matches
 and a list of matches, each being an hashref with the following keys:
@@ -257,7 +261,14 @@ sub search {
 
     # set up the query parser
     my $qp = Search::Xapian::QueryParser->new($database);
+    $locale ||= $self->locale;
 
+    # if the locale passed doesn't match with the main language, don't
+    # use the stemming. However, this will probably prevent to find
+    # documents in other languages which was stemmed differently.
+    if ($locale ne $self->locale) {
+        $locale = 'none';
+    }
     # lot of room here for optimization and fun
     $qp->set_stemmer($self->xapian_stemmer($locale));
     $qp->set_stemming_strategy(STEM_SOME);

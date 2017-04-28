@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 42;
+use Test::More tests => 6;
 use Data::Dumper;
 use Path::Tiny;
 
@@ -30,5 +30,11 @@ is $site->titles->count, 2, "2 titles";
 foreach my $lang (qw/en de/) {
     my ($total, @results) = $site->xapian->search(qq{training}, 1, $lang);
     is(scalar(@results), 1, "Found 1 result for training with lang $lang");
+    if ($lang eq 'en') {
+        ($total, @results) = $site->xapian->search(qq{train}, 1, $lang);
+        is(scalar(@results), 1, "Found 1 result for train with lang $lang");
+    }
+    ($total, @results) = $site->xapian->search(qq{train*}, 1, $lang);
+    is(scalar(@results), 1, "Found 1 result for train* with lang $lang");
 }
 
