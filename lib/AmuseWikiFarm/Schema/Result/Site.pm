@@ -1362,6 +1362,8 @@ sub xapian {
                                                code => $self->id,
                                                page => $self->pagination_size_search,
                                                locale => $self->locale,
+                                               # disable stemming for search on multilang environment
+                                               stem_search => !$self->multilanguage,
                                               );
 }
 

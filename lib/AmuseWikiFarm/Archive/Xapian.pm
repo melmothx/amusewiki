@@ -30,6 +30,12 @@ has locale => (
                required => 0,
               );
 
+has stem_search => (
+                    is => 'ro',
+                    isa => 'Bool',
+                    default => sub { return 1 },
+                   );
+
 has basedir => (
                 is => 'ro',
                 required => 0,
@@ -250,6 +256,20 @@ sub index_text {
 Run a query against the Xapian database. Return the number of matches
 and a list of matches, each being an hashref with the following keys:
 
+=over 4
+
+=item rank
+
+=item relevance
+
+=item pagename
+
+=back
+
+The stemming of the search term is activate only if the third argument
+is passed and stem_search is true and if the locale passed matches the
+site locale.
+
 =cut
 
 sub search {
@@ -261,15 +281,16 @@ sub search {
 
     # set up the query parser
     my $qp = Search::Xapian::QueryParser->new($database);
-    $locale ||= $self->locale;
 
     # if the locale passed doesn't match with the main language, don't
     # use the stemming. However, this will probably prevent to find
     # documents in other languages which was stemmed differently.
-    if ($locale ne $self->locale) {
+    if ($locale and $self->stem_search and $locale eq $self->locale ) {
+        log_debug { "Using $locale for stemming" };
+    }
+    else {
         $locale = 'none';
     }
-    # lot of room here for optimization and fun
     $qp->set_stemmer($self->xapian_stemmer($locale));
     $qp->set_stemming_strategy(STEM_SOME);
     $qp->set_default_op(OP_AND);
