@@ -25,6 +25,10 @@ plan tests => 14;
 
 system('script/amusewiki-populate-webfonts') == 0 or die;
 
+unless -d catdir(qw/root static images font-preview/) {
+    system('font-preview/gen.sh') == 0 or die "Couldn't generate the font preview";
+}
+
 my $texmfhome = `kpsewhich -var-value TEXMFHOME`;
 chomp $texmfhome;
 my $texmffiledir = catdir($texmfhome, qw/tex generic amusewiki data/);
