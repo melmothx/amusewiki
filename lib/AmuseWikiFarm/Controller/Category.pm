@@ -86,7 +86,8 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
         $c->detach('/not_found');
         return;
     }
-    my $rs = $c->stash->{site}->categories->active_only_by_type($type);
+    my $rs = $c->stash->{site}->categories->by_type($type)
+      ->with_texts($c->user_exists, $c->req->params->{sorting});
     $c->stash(
               page_title => $name,
               nav => $type,
@@ -104,21 +105,8 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
 
 sub category_list_display :Chained('category') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $row_sorting = [qw/sorting_pos name/];
-    if (my $sorting = $c->req->params->{sorting}) {
-        if ($sorting eq 'count-desc') {
-            $row_sorting = { -desc => [ text_count => @$row_sorting] };
-        }
-        elsif ($sorting eq 'count-asc') {
-            $row_sorting = { -asc => [ text_count => @$row_sorting] };
-        }
-        elsif ($sorting eq 'desc') {
-            $row_sorting = { -desc => [ @$row_sorting ]};
-        }
-    }
-    my $list = $c->stash->{categories_rs}->search(undef, { order_by => $row_sorting })->listing_tokens;
+    my $list = $c->stash->{categories_rs}->listing_tokens;
     Dlog_debug { "List is $_" } $list;
-
     $c->stash(list => $list,
               template => 'category.tt');
 }
@@ -129,6 +117,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
     my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
     my $site = $c->stash->{site};
     if ($cat) {
+        log_debug { "Category id is " . $cat->id; };
         if ($cat->uri ne $uri) {
             $c->response->redirect($c->uri_for($cat->full_uri));
             $c->detach();
@@ -138,7 +127,14 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
         unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
             $page = 1;
         }
-        my $texts = $cat->titles->published_texts
+        my $texts_rs;
+        if ($c->user_exists) {
+            $texts_rs = $cat->titles->published_or_deferred_all;
+        }
+        else {
+            $texts_rs = $cat->titles->published_all;
+        }
+        my $texts = $texts_rs
           ->search(undef, { rows => $site->pagination_size_category,
                             page => $page });
         # if it's a blog, the alphabetica entry is not so important,

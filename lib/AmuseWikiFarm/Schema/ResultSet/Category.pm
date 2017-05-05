@@ -4,6 +4,7 @@ use utf8;
 use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
+use AmuseWikiFarm::Log::Contextual;
 
 __PACKAGE__->load_components('Helper::ResultSet::Random');
 
@@ -34,9 +35,7 @@ sub by_type {
 }
 
 sub active_only {
-    my ($self) = @_;
-    my $me = $self->current_source_alias;
-    return $self->search({ "$me.text_count" => { '>' => 0 } });
+    return shift->with_texts;
 }
 
 =head2 active_only_by_type($type)
@@ -48,14 +47,28 @@ which have a text count greater than 0.
 
 sub active_only_by_type {
     my ($self, $type) = @_;
-    return $self->active_only->by_type($type);
+    return $self->with_texts->by_type($type);
 }
 
 sub with_texts {
-    my ($self) = shift;
+    my ($self, $logged_in, $sorting) = @_;
     my $me = $self->current_source_alias;
+
+    my @status = (qw/published/);
+    if ($logged_in) {
+        push @status, 'deferred';
+    }
+
+    my @default_sorting = ("$me.sorting_pos", "$me.uri", "$me.id");
+    my %sortings = (
+                    'count-asc' => { -asc => [live_title_count => @default_sorting ] },
+                    'count-desc'=> { -desc => [live_title_count => @default_sorting ] },
+                    'desc' => { -desc => [ @default_sorting ]},
+                    'asc' => { -asc => [ @default_sorting ]},
+                   );
+    my $order = $sortings{$sorting || 'asc'} || $sortings{asc};
     return $self->search({
-                          'title.status' => [qw/published deferred/],
+                          'title.status' => \@status,
                          },
                          {
                           join => { title_categories => 'title'},
@@ -65,10 +78,36 @@ sub with_texts {
                                           -as => 'live_title_count'
                                          } ],
                           '+as' => ["$me.text_count"],
-                          group_by => ["$me.id"],
+                          distinct => 1,
+                          order_by => $order,
                           having => \["live_title_count > 0"],
                          });
 }
+
+sub static_index_tokens {
+    my $self = shift;
+    return $self->search({
+                          'title.status' => 'published',
+                         },
+                         {
+                          result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                          collapse => 1,
+                          join => { title_categories => 'title' },
+                          order_by => [qw/me.sorting_pos me.name/],
+                          columns => [qw/me.uri
+                                         me.name
+                                        /],
+                          '+columns' => {
+                                         'title_categories.title_id' => 'title_categories.title_id',
+                                         'title_categories.category_id' => 'title_categories.category_id',
+                                         'title_categories.title.uri' => 'title.uri',
+                                         'title_categories.title.status' => 'title.status',
+                                         'title_categories.title.sorting_pos' => 'title.sorting_pos',
+                                         'title_categories.title.title' => 'title.title',
+                                        }
+                         });
+}
+
 
 =head2 by_type_and_uri($type, $uri)
 
@@ -78,9 +117,13 @@ Return the category which corresponds to type and uri
 
 sub by_type_and_uri {
     my ($self, $type, $uri) = @_;
+    return $self->by_type($type)->by_uri($uri)->single;
+}
+
+sub by_uri {
+    my ($self, $uri) = @_;
     my $me = $self->current_source_alias;
-    return $self->single({"$me.type" => $type,
-                          "$me.uri"  => $uri});
+    return $self->search({ "$me.uri" => $uri });
 }
 
 =head2 active_only
@@ -111,9 +154,9 @@ Use HRI to pull the data and select only some columns.
 sub listing_tokens {
     my $self = shift;
     my @all = $self->search(undef, {
-                                    columns => [qw/type uri name text_count/],
                                     result_class => 'DBIx::Class::ResultClass::HashRefInflator',
                                    });
+    Dlog_debug { "Listing tokens are $_" } \@all;
     foreach my $row (@all) {
         $row->{full_uri} = join('/', '', 'category', $row->{type}, $row->{uri});
     }

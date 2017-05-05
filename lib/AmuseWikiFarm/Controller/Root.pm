@@ -380,18 +380,15 @@ sub catch_all :Chained('/site') :PathPart('') Args {
     my $fallback;
     if ($try) {
         my $try_uri = AmuseWikiFarm::Utils::Amuse::muse_naming_algo($try);
-        my $query = { uri => $try_uri };
+        my $query = { 'me.uri' => $try_uri };
         if (my $site = $c->stash->{site}) {
-            if (my $text = $site->titles->published_all
-                ->search($query)->first) {
+            if (my $text = $site->titles->published_all->by_uri($try_uri)->first) {
                 $fallback = $text->full_uri;
             }
-            elsif (my $cat = $site->categories->active_only
-                   ->search($query)->first) {
+            elsif (my $cat = $site->categories->with_texts->by_uri($try_uri)->first) {
                 $fallback = $cat->full_uri;
             }
-            elsif (my $red = $site->redirections
-                   ->search($query)->first) {
+            elsif (my $red = $site->redirections->by_uri($try_uri)->first) {
                 $fallback = $red->full_dest_uri;
             }
         }

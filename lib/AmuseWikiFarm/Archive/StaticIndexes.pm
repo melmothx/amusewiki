@@ -354,23 +354,7 @@ sub create_category_list {
     my ($self, $rs) = @_;
     my $time = time();
     log_debug { "Creating category listing" };
-    my @cats = $rs->search(undef, {
-            result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-            collapse => 1,
-            join => { title_categories => 'title' },
-            order_by => [qw/me.sorting_pos me.name/],
-            columns => [qw/me.uri
-                           me.name
-                          /],
-            '+columns' => {
-                           'title_categories.title_id' => 'title_categories.title_id',
-                           'title_categories.category_id' => 'title_categories.category_id',
-                           'title_categories.title.uri' => 'title.uri',
-                           'title_categories.title.status' => 'title.status',
-                           'title_categories.title.sorting_pos' => 'title.sorting_pos',
-                           'title_categories.title.title' => 'title.title',
-                          }
-    })->all;
+    my @cats = $rs->static_index_tokens->all;
     foreach my $cat (@cats) {
         if ($cat->{title_categories}) {
             my @titles;

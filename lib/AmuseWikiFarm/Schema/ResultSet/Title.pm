@@ -147,7 +147,7 @@ Find a published text by uri.
 
 sub text_by_uri {
     my ($self, $uri) = @_;
-    return $self->published_texts->single({ uri => $uri });
+    return $self->published_texts->by_uri($uri)->single;
 }
 
 =head2 special_by_uri
@@ -158,8 +158,15 @@ Find a published special by uri.
 
 sub special_by_uri {
     my ($self, $uri) = @_;
-    return $self->published_specials->single({ uri => $uri });
+    return $self->published_specials->by_uri($uri)->single;
 }
+
+sub by_uri {
+    my ($self, $uri) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.uri" => $uri });
+}
+
 
 =head2 find_file($path)
 

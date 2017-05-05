@@ -40,7 +40,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 foreach my $uri ([qw/author pippo/],
                  [qw/topic the-cat/]) {
-    my $cat = $site->categories->find({ uri => $uri->[1], type => $uri->[0] });
+    my $cat = $site->categories->with_texts->by_type_and_uri(@$uri);
     my $full_uri = $cat->full_uri;
     ok ($cat, "Found $full_uri");
     ok ($cat->text_count, "$full_uri has " . $cat->text_count . " texts");

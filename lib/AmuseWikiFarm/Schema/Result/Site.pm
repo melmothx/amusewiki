@@ -1768,24 +1768,14 @@ sub supported_locales {
     return sort keys %out;
 }
 
-has is_without_authors => (is => 'ro',
-                           isa => 'Bool',
-                           lazy => 1,
-                           builder => '_build_is_without_authors');
-
-sub _build_is_without_authors {
-    my $self = shift;
-    return !$self->categories->authors_count;
+sub is_without_authors {
+    my ($self, $logged_in) = @_;
+    return !$self->categories->by_type('author')->with_texts($logged_in)->first;
 }
 
-has is_without_topics => (is => 'ro',
-                          isa => 'Bool',
-                          lazy => 1,
-                          builder => '_build_is_without_topics');
-
-sub _build_is_without_topics {
-    my $self = shift;
-    return !$self->categories->topics_count;
+sub is_without_topics {
+    my ($self, $logged_in) = @_;
+    return !$self->categories->by_type('author')->with_texts($logged_in)->first;
 }
 
 has options_hr => (
@@ -2774,8 +2764,8 @@ sub static_indexes_generator {
     my $self = shift;
     require AmuseWikiFarm::Archive::StaticIndexes;
     my $texts = $self->titles->published_texts;
-    my $authors = $self->categories->active_only_by_type('author');
-    my $topics  = $self->categories->active_only_by_type('topic');
+    my $authors = $self->categories->by_type('author');
+    my $topics  = $self->categories->by_type('topic');
     my $generator = AmuseWikiFarm::Archive::StaticIndexes
       ->new(
             texts => $texts,
