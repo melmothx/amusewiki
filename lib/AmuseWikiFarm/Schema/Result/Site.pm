@@ -1647,24 +1647,9 @@ sub index_file {
     foreach my $category (@parsed_cats) {
         $self->categories->update_or_create($category);
     }
+    $title->set_categories(\@parsed_cats);
+    # the final goal is to avoid the use of hardcoded text_count
 
-    if ($title->is_published && @parsed_cats) {
-        # here we can die if there are duplicated uris
-        $title->set_categories(\@parsed_cats);
-    }
-    else {
-        # purge the categories if there is none.
-        $title->set_categories([]);
-    }
-
-    foreach my $cat ($title->categories) {
-        $cat->title_count_update;
-    }
-
-    foreach my $cat_id (@old_cats_ids) {
-        my $cat = $self->categories->find($cat_id);
-        $cat->title_count_update;
-    }
     # XAPIAN INDEXING, excluding specials
     if ($class eq 'text') {
         $self->xapian->index_text($title, $logger);
@@ -2933,6 +2918,10 @@ sub pagination_size_monthly {
 
 sub text_infobox_at_the_bottom {
     return shift->get_option('text_infobox_at_the_bottom') || '';
+}
+
+sub show_preview_when_deferred {
+    return shift->get_option('show_preview_when_deferred') || '';
 }
 
 sub use_luatex {

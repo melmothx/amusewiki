@@ -258,6 +258,18 @@ sub cloud_level {
     }
 }
 
+sub live_title_count {
+    my $self = shift;
+    my $live = $self->get_column('live_title_count');
+    # if coming from a ->with_text query, we should have this column available.
+    if (defined $live) {
+        return $live;
+    }
+    # otherwise use the stored value.
+    else {
+        return $self->text_count;
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

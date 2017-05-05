@@ -21,6 +21,16 @@ my $site_id = '0deferred1';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
 $site->update({ secure_site => 0 });
+
+ok !$site->show_preview_when_deferred;
+$site->add_to_site_options({
+                             option_name => 'show_preview_when_deferred',
+                             option_value => 1,
+                            });
+$site = $schema->resultset('Site')->find($site->id);
+
+ok $site->show_preview_when_deferred;
+
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
@@ -31,7 +41,7 @@ foreach my $i (1..2) {
                                          title => 'Deferred #' . $i,
                                          teaser => "This is the preview for $i",
                                          author => "Pallino",
-                                         topics => "Topico",
+                                         SORTtopics => "Topico",
                                          pubdate => DateTime->now->add(days => 10)->ymd,
                                          lang => 'en' }, 'text');
     my $cover = catfile(qw/t files shot.png/);
@@ -52,6 +62,17 @@ foreach my $url (@urls) {
 foreach my $att ($site->attachments->all) {
     $mech->get_ok($att->full_uri);
 }
+
+foreach my $url (
+                 '/latest',
+                 '/category/topics/topico',
+                 '/category/authors/pallino') {
+    $mech->get($url);
+    foreach my $fragment (@covers, @teasers) {
+        $mech->content_lacks($fragment);
+    }
+}
+
 $mech->get_ok('/login');
 ok($mech->form_id('login-form'), "Found the login-form");
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
@@ -71,3 +92,12 @@ foreach my $url (
     }
 }
 
+$site = $schema->resultset('Site')->find($site->id);
+
+foreach my $type (qw/author topic/) {
+    my $rs = $site->categories->by_type($type)->with_texts;
+    my $cat = $rs->first;
+    ok $cat, "Category $type found";
+    is $cat->text_count, undef, "No text count hardcoded";
+    is $cat->live_title_count, 2, "Live count is correct";
+}

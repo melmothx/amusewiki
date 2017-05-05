@@ -51,6 +51,25 @@ sub active_only_by_type {
     return $self->active_only->by_type($type);
 }
 
+sub with_texts {
+    my ($self) = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          'title.status' => [qw/published deferred/],
+                         },
+                         {
+                          join => { title_categories => 'title'},
+                          columns => [qw/id name uri type sorting_pos site_id/],
+                          '+select' => [ {
+                                          count => 'title.id',
+                                          -as => 'live_title_count'
+                                         } ],
+                          '+as' => ["$me.live_title_count"],
+                          group_by => ["$me.id"],
+                          having => \["live_title_count > 0"],
+                         });
+}
+
 =head2 by_type_and_uri($type, $uri)
 
 Return the category which corresponds to type and uri
