@@ -25,7 +25,7 @@ plan tests => 14;
 
 system('script/amusewiki-populate-webfonts') == 0 or die;
 
-unless -d catdir(qw/root static images font-preview/) {
+unless (-d catdir(qw/root static images font-preview/)) {
     system('font-preview/gen.sh') == 0 or die "Couldn't generate the font preview";
 }
 
