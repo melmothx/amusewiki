@@ -98,6 +98,7 @@ foreach my $type (qw/author topic/) {
     my $rs = $site->categories->by_type($type)->with_texts;
     my $cat = $rs->first;
     ok $cat, "Category $type found";
-    is $cat->text_count, undef, "No text count hardcoded";
-    is $cat->live_title_count, 2, "Live count is correct";
+    is $cat->text_count, 2, "Text count is not stored";
+    is ($schema->resultset('Category')->find($cat->id)->text_count, 0,
+        "Category found from schema has no text_count");
 }

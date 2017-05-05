@@ -64,7 +64,7 @@ sub with_texts {
                                           count => 'title.id',
                                           -as => 'live_title_count'
                                          } ],
-                          '+as' => ["$me.live_title_count"],
+                          '+as' => ["$me.text_count"],
                           group_by => ["$me.id"],
                           having => \["live_title_count > 0"],
                          });
