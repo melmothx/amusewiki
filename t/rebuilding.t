@@ -65,7 +65,7 @@ $mech->submit_form(form_id => 'login-form',
                                __auth_pass => 'root',
                              });
 like $mech->uri->path, qr{/tasks/status/};
-sleep 15;
+sleep 30;
 $mech->get_ok($mech->uri->path);
 $mech->content_contains('Job rebuild finished');
 $mech->content_contains('Created ' . $text->uri . '.pdf');
