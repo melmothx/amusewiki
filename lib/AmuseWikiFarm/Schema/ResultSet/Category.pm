@@ -162,28 +162,6 @@ sub listing_tokens {
     return \@all;
 }
 
-=head2 authors_count
-
-Return the number of active authors
-
-=cut
-
-sub authors_count {
-    my $self = shift;
-    return $self->active_only_by_type('author')->count;
-}
-
-=head2 topics_count
-
-Return the number of active topics
-
-=cut
-
-sub topics_count {
-    my $self = shift;
-    return $self->active_only_by_type('topic')->count;
-}
-
 sub topics_only {
     return shift->by_type('topic');
 }

@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 49;
+use Test::More tests => 53;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -53,6 +53,11 @@ foreach my $i (1..2) {
     push @teasers, $rev->title->teaser;
     push @covers, $rev->title->cover;
 }
+
+$mech->get_ok('/api/autocompletion/topic');
+$mech->content_contains('["Topico"]');
+$mech->get_ok('/api/autocompletion/author');
+$mech->content_contains('["Pallino"]');
 
 foreach my $type (qw/author topic/) {
     my $rs = $site->categories->by_type($type)->with_texts(deferred => 1);
