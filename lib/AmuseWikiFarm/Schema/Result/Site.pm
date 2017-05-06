@@ -2545,6 +2545,7 @@ sub update_from_params {
                            text_infobox_at_the_bottom
                            freenode_irc_channel
                            turn_links_to_images_into_images
+                           show_preview_when_deferred
                            use_js_highlight
                            edit_option_page_left_bs_columns
                            edit_option_show_cheatsheet

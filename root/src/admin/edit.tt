@@ -283,6 +283,16 @@ kpsewhich mylogo.pdf
             [% loc('Turn links to images into images (affects site display only, static formats have the link)') %]
           </label>
         </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.show_preview_when_deferred %]checked="checked"[% END %]
+                   name="show_preview_when_deferred" />
+            [% loc('If the publication of a text is deferred, list
+            them in the category lists with the teaser with the cover,
+            but do not link them') %]
+          </label>
+        </div>
     </div>
 
     <div class="form-group">
