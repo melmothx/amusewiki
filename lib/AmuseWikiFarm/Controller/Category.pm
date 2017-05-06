@@ -86,8 +86,10 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
         $c->detach('/not_found');
         return;
     }
-    my $rs = $c->stash->{site}->categories->by_type($type)
-      ->with_texts(deferred => $c->user_exists, sort => $c->req->params->{sorting});
+    my $site = $c->stash->{site};
+    my $rs = $site->categories->by_type($type)
+      ->with_texts(deferred => $c->user_exists || $site->show_preview_when_deferred,
+                   sort => $c->req->params->{sorting});
     $c->stash(
               page_title => $name,
               nav => $type,
@@ -128,7 +130,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
             $page = 1;
         }
         my $texts_rs;
-        if ($c->user_exists) {
+        if ($c->user_exists || $site->show_preview_when_deferred) {
             $texts_rs = $cat->titles->published_or_deferred_all;
         }
         else {
@@ -144,6 +146,9 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
         }
         else {
             $c->stash(listing_item_hide_dates => 1);
+        }
+        if (!$c->user_exists and $site->show_preview_when_deferred) {
+            $c->stash(do_not_link_to_text_if_not_published => 1);
         }
 
         my $current_locale = $c->stash->{current_locale_code};

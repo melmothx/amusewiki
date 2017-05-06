@@ -4,21 +4,28 @@
 <div class="list-group">
   [% WHILE (text = texts.next) %]
   <div class="amw-listing-item">
+    [% IF do_not_link_to_text_if_not_published && !text.is_published %]
+      [% SET show_link = 0 %]
+    [% ELSE %]
+      [% SET show_link = 1 %]
+    [% END %]
   [% IF text.teaser || text.cover_uri %]
   <div class="list-group-item clearfix">
     [% IF text.cover_uri %]
     <div class="text-cover-img-mini-container">
-      <a href="[% c.uri_for(text.full_uri) %]">
+      [% IF show_link %]<a href="[% c.uri_for(text.full_uri) %]">[% END %]
         <img src="[% c.uri_for(text.cover_small_uri) %]"
              alt="[% text.valid_cover %]"
              class="text-cover-img-mini img-thumbnail" />
-      </a>
+      [% IF show_link %]</a>[% END %]
     </div>
     [% END %]
     <div>
       <h3 class="amw-latest-listing-item-title">
         [%- IF text.author %]<small>[% text.author -%]</small><br />[% END -%]
-        <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
+        [% IF show_link %]<a href="[% c.uri_for(text.full_uri) %]">[% END %]
+          [% text.title %]
+        [% IF show_link %]</a>[% END %]
         [% IF text.subtitle %]<small>[% text.subtitle -%]</small>[% END -%]
         [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
         <small class="amw-latest-listing-item-language">[[% text.lang %]]</small>
@@ -30,6 +37,7 @@
       [% END %]
     </div>
     <div class="clearfix"></div>
+    [% IF show_link %]
     <div class="amw-latest-listing-item-date">
       <br />
       <small>[% text.pubdate_locale(current_locale_code) %]</small>
@@ -42,15 +50,20 @@
         </a>
       </span>
     </div>
+    [% END %]
   </div>
   [% ELSE %]
-  <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
+    [% IF show_link %]
+    <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
+    [% ELSE %]
+    <span class="list-group-item clearfix">
+    [% END %]
     <strong>[% text.title %]</strong>
     [%- IF text.author %] — [% text.author -%][% END -%]
     [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
     <span class="amw-latest-listing-item-language">[[% text.lang %]]</span>
     [%- END -%]
-    [% IF text.is_deferred %]
+    [% IF text.is_deferred && show_link %]
     <span class="fa fa-clock-o"></span>
     [% END %]
     [% UNLESS listing_item_hide_dates %]
@@ -58,7 +71,11 @@
       [% text.pubdate_locale(current_locale_code) %]
     </span>
     [% END %]
-  </a>
+    [% IF show_link %]
+    </a>
+    [% ELSE %]
+    </span>
+    [% END %]
   [% END %]
   </div>
 [% END %]
