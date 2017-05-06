@@ -951,14 +951,11 @@ Delete method is overload to update the category text count.
 
 =cut
 
-sub delete {
+before delete => sub {
     my $self = shift;
-    my @categories = $self->categories;
+    log_debug { "Deleting " . $self->full_uri . " from xapian" };
     $self->site->xapian->delete_text($self);
-    # do the deletion
-    my $exit = $self->next::method;
-    return $exit;
-}
+};
 
 sub muse_object {
     my $self = shift;
