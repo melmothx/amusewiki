@@ -94,7 +94,7 @@ sub with_texts {
                           '+as' => ["$me.text_count"],
                           distinct => 1,
                           order_by => $order,
-                          having => \['live_title_count > ?', [ { dbd_attrs => SQL_INTEGER }, $limit ]]
+                          having => \['count(title.id) > ?', [ { dbd_attrs => SQL_INTEGER }, $limit ]]
                          });
 }
 
