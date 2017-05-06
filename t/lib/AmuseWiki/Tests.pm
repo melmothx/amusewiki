@@ -120,7 +120,6 @@ sub fill_site {
         $indexer->index_text("this uri doesn't exist a abc cdf");
         $db->replace_document_by_term('Q' . $uri, $doc);
     }
-    $_->title_count_update for ($author, $topic);
 }
 
 1;
