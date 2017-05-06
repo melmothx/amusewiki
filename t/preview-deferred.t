@@ -55,7 +55,7 @@ foreach my $i (1..2) {
 }
 
 foreach my $type (qw/author topic/) {
-    my $rs = $site->categories->by_type($type)->with_texts('logged_in');
+    my $rs = $site->categories->by_type($type)->with_texts(deferred => 1);
     my $cat = $rs->first;
     ok $cat, "Category $type found";
     is $cat->text_count, 2, "Text count is not stored";

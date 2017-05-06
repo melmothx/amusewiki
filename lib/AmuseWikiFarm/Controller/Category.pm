@@ -87,7 +87,7 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
         return;
     }
     my $rs = $c->stash->{site}->categories->by_type($type)
-      ->with_texts($c->user_exists, $c->req->params->{sorting});
+      ->with_texts(deferred => $c->user_exists, sort => $c->req->params->{sorting} . '');
     $c->stash(
               page_title => $name,
               nav => $type,

@@ -45,7 +45,7 @@ sub base :Chained('/site_robot_index') :PathPart('cloud') :CaptureArgs(0) {
     }
     log_debug { "Computing cloud with min texts $limit and max result $max" };
 
-    my $cats = $c->stash->{site}->categories->min_texts($limit)->rand($max);
+    my $cats = $c->stash->{site}->categories->with_texts(min_texts => $limit)->rand($max);
     $c->stash(cloud_categories => $cats,
               template => 'cloud/show.tt');
 }

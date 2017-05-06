@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 use AmuseWikiFarm::Log::Contextual;
+use DBI qw/SQL_INTEGER/;
 
 __PACKAGE__->load_components('Helper::ResultSet::Random');
 
@@ -50,14 +51,19 @@ sub active_only_by_type {
     return $self->with_texts->by_type($type);
 }
 
+=head2 with_texts(deferred => 0, sort => 'asc',  min_texts => 0);
+
+=cut
+
 sub with_texts {
-    my ($self, $logged_in, $sorting) = @_;
+    my ($self, %options) = @_;
     my $me = $self->current_source_alias;
 
     my @status = (qw/published/);
-    if ($logged_in) {
+    if ($options{deferred}) {
         push @status, 'deferred';
     }
+    my $sorting = $options{sort} || 'asc';
 
     my @default_sorting = ("$me.sorting_pos", "$me.uri", "$me.id");
     my %sortings = (
@@ -67,7 +73,14 @@ sub with_texts {
                     'asc' => { -asc => [ @default_sorting ]},
                     type => { -asc => [ "$me.type", @default_sorting ]},
                    );
-    my $order = $sortings{$sorting || 'asc'} || $sortings{asc};
+    my $order = $sortings{$sorting} || $sortings{asc};
+
+    my $limit = 0;
+    if ($options{min_texts} and $options{min_texts} =~ m/\A([1-9][0-9]*)\z/) {
+        $limit = $1;
+        $limit--;
+    }
+
     return $self->search({
                           'title.status' => \@status,
                          },
@@ -81,7 +94,7 @@ sub with_texts {
                           '+as' => ["$me.text_count"],
                           distinct => 1,
                           order_by => $order,
-                          having => \["live_title_count > 0"],
+                          having => \['live_title_count > ?', [ { dbd_attrs => SQL_INTEGER }, $limit ]]
                          });
 }
 
@@ -130,21 +143,6 @@ sub by_uri {
 =head2 active_only
 
 Filter the categories which have text_count > 0
-
-=head2 min_texts($integer)
-
-=cut
-
-sub min_texts {
-    my ($self, $num) = @_;
-    my $me = $self->current_source_alias;
-    my $limit = 0;
-    if ($num and $num =~ m/\A([1-9][0-9]*)\z/) {
-        $limit = $num - 1;
-    }
-    return $self->search({ "$me.text_count" => { '>' => $limit }});
-}
-
 
 =head2 listing_tokens
 

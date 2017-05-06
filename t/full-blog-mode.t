@@ -110,7 +110,7 @@ add_text({
           pubdate => "2013-01-01",
          });
 $mech->get_ok('/');
-$mech->content_lacks('Topics');
+$mech->content_lacks('Topics') or die;
 $mech->content_like(qr/Authors.*Authors/s);
 
 add_text({

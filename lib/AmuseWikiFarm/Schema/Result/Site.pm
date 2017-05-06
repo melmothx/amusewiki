@@ -1770,12 +1770,12 @@ sub supported_locales {
 
 sub is_without_authors {
     my ($self, $logged_in) = @_;
-    return !$self->categories->by_type('author')->with_texts($logged_in)->first;
+    return !$self->categories->by_type('author')->with_texts(deferred => $logged_in)->first;
 }
 
 sub is_without_topics {
     my ($self, $logged_in) = @_;
-    return !$self->categories->by_type('author')->with_texts($logged_in)->first;
+    return !$self->categories->by_type('topic')->with_texts(deferred => $logged_in)->first;
 }
 
 has options_hr => (
