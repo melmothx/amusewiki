@@ -65,6 +65,7 @@ sub with_texts {
                     'count-desc'=> { -desc => [live_title_count => @default_sorting ] },
                     'desc' => { -desc => [ @default_sorting ]},
                     'asc' => { -asc => [ @default_sorting ]},
+                    type => { -asc => [ "$me.type", @default_sorting ]},
                    );
     my $order = $sortings{$sorting || 'asc'} || $sortings{asc};
     return $self->search({

@@ -326,8 +326,7 @@ sub sitemap_txt :Chained('/site') :PathPart('sitemap.txt') :Args(0) {
     }
     my $texts = $site->titles->published_all
       ->search(undef, { order_by => [qw/f_class sorting_pos/] })->listing_tokens_plain;
-    my $categories = $site->categories->active_only
-      ->search(undef, { order_by => [qw/type sorting_pos/] })->listing_tokens;
+    my $categories = $site->categories->with_texts($c->user_exists, 'type')->listing_tokens;
     while (@$texts) {
         my $text = shift @$texts;
         push @urls, $base . $text->{full_uri};

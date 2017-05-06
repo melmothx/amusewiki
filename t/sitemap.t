@@ -14,6 +14,7 @@ $mech->get_ok('/robots.txt');
 $mech->content_contains('sitemap.txt');
 diag $mech->content;
 $mech->get_ok('/sitemap.txt');
+diag $mech->content;
 my @links = grep { /\w/ } split(/\n/, $mech->content);
 print Dumper(\@links);
 foreach my $link (@links) {
