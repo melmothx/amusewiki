@@ -447,6 +447,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Category.pm
 lib/AmuseWikiFarm/Schema/ResultSet/CategoryDescription.pm
 lib/AmuseWikiFarm/Schema/ResultSet/CustomFormat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Job.pm
+lib/AmuseWikiFarm/Schema/ResultSet/Redirection.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Revision.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Site.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
@@ -1088,6 +1089,7 @@ t/not-found.t
 t/not/parsable/ciao.muse
 t/other-sites.t
 t/pagination-sizes.t
+t/preview-deferred.t
 t/private-sites.t
 t/pulling.t
 t/queue.t
