@@ -83,7 +83,7 @@ sub enqueue {
 
     # validate
     die "Missing task and/or payload: $task $payload" unless $task && $payload;
-    die unless (ref($payload) && (ref($payload) eq 'HASH'));
+    die "payload $payload is an hashref" unless (ref($payload) && (ref($payload) eq 'HASH'));
     my $priority = $self->handled_jobs_hashref->{$task};
     die "Unhandled job $task" unless $priority;
 
