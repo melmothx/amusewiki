@@ -135,9 +135,12 @@ sub text :Chained('match') :PathPart('') :Args(0) {
     }
     my $meta_desc = '';
     if (my $teaser = $text->teaser) {
-        $meta_desc = $teaser;
+        # do not insert teasers if they're too long
+        if (length($teaser) < 160) {
+            $meta_desc = $teaser;
+        }
     }
-    else {
+    unless ($meta_desc) {
       TEXTFIELD:
         foreach my $method (qw/author title subtitle date notes/) {
             if (my $info = $text->$method) {
