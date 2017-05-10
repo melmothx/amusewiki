@@ -12,10 +12,10 @@ my $bb = AmuseWikiFarm::Archive::BookBuilder->new;
 is($bb->papersize, 'generic');
 is($bb->paper_width, 0);
 is($bb->paper_height, 0);
-is($bb->computed_papersize, 'generic');
+is($bb->computed_papersize, '210mm:11in');
 
 $bb->paper_width(200);
-is($bb->computed_papersize, 'generic');
+is($bb->computed_papersize, '210mm:11in');
 
 $bb->paper_height(300);
 is($bb->computed_papersize, '200mm:300mm');
