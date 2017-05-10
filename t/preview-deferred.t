@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 94;
+use Test::More tests => 108;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -44,6 +44,7 @@ foreach my $i (0..3) {
         my $got = $rev->add_attachment($cover);
         $rev->edit("#cover $got->{attachment}\n" . $rev->muse_body);
     }
+    $rev->edit($rev->muse_body . "\n\nFULL TEXT HERE\n");
     $rev->commit_version;
     $rev->publish_text;
     if ($defer) {
@@ -119,6 +120,7 @@ $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root'
 $mech->content_contains('You are logged in now!');
 foreach my $url (@urls, @pub_urls) {
     $mech->get_ok($url);
+    $mech->content_contains("FULL TEXT HERE");
 }
 
 foreach my $url (@test_urls) {
@@ -143,10 +145,20 @@ foreach my $url (@test_urls) {
         $mech->content_contains($fragment);
     }
     foreach my $fragment (@urls) {
-        $mech->content_lacks($fragment);
+        $mech->content_contains($fragment);
     }
 }
 foreach my $url (@urls) {
-    $mech->get($url);
-    is $mech->status, 404, "$url not accessible";
+    $mech->get_ok($url);
+    $mech->content_contains('<div class="alert alert-info" role="alert">This text is not available</div>',
+                            "$url is without body not accessible");
+    $mech->content_lacks("FULL TEXT HERE");
 }
+foreach my $url (@pub_urls) {
+    $mech->get_ok($url);
+    $mech->content_lacks('<div class="alert alert-info" role="alert">This text is not available</div>',
+                            "$url is without body not accessible");
+    $mech->content_contains("FULL TEXT HERE");
+}
+
+

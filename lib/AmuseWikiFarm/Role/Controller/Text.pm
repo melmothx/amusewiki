@@ -73,24 +73,41 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
             $c->detach();
             return;
         }
+        my $show_preview_only = 0;
+        if (!$text->is_published) {
+            # Double check
+            die "This shouldn't happen, status is wrong " . $text->status unless $text->is_deferred;
+
+            # but we're here so either we're logged in or we show only
+            # the preview.
+            if (!$c->user_exists and $site->show_preview_when_deferred) {
+                $show_preview_only = 1;
+            }
+            elsif ($c->user_exists) {
+                $show_preview_only = 0;
+            }
+            else {
+                # shoulnt' be reachable.
+                die "User doesn't exist but we are here";
+            }
+        }
         # static files are served here
+        # no download if the files are in preview only
         if ($ext) {
             log_debug { "Got $canonical $ext => " . $text->title };
             my $served_file = $text->filepath_for_ext($ext);
-            if (-f $served_file) {
+            if (!$show_preview_only and -f $served_file) {
                 $c->stash(serve_static_file => $served_file);
                 $c->detach($c->view('StaticFile'));
                 return;
             }
             else {
-                # this should not happen
-                log_warn { "File $served_file expected but not found!" };
                 $c->detach('/not_found');
                 return;
             }
         }
-        $c->stash(page_title => HTML::Entities::decode_entities($text->title));
-
+        $c->stash(page_title => HTML::Entities::decode_entities($text->title),
+                  show_preview_only => $show_preview_only);
     }
     elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
         log_debug { "Found attachment $canonical$append_ext" };

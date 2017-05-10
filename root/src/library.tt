@@ -62,7 +62,7 @@
       <strong>[% text.title %]</strong>
       [%- IF text.author %] — [% text.author -%][% END -%]
       [%- IF site.multilanguage -%] <small>[[% text.lang %]]</small>[% END -%]
-      [% IF text.is_deferred %]
+      [% IF text.is_deferred && c.user_exists %]
       <span class="fa fa-clock-o"></span>
       [% END %]
     </a>

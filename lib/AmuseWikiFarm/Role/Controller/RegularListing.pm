@@ -15,7 +15,7 @@ sub base :Chained('pre_base') :PathPart('') :CaptureArgs(0) {
     # if the user is logged in, give him access to deferred as well
     my $titles = $c->stash->{site}->titles;
     my $rs;
-    if ($c->user_exists) {
+    if ($c->user_exists || $c->stash->{site}->show_preview_when_deferred) {
         $rs = $titles->published_or_deferred_texts;
     }
     else {

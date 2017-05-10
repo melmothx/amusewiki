@@ -30,6 +30,7 @@
   <div id="preamble-container" class="well">
   <div id="preamble">
     [% IF text.is_deferred %]
+    [% UNLESS show_preview_only %]
     <div>
       <span id="pubdate-label">
         <strong>[% loc('Publication date') %]:</strong>
@@ -38,6 +39,7 @@
         [% text.pubdate %]
       </span>
     </div>
+    [% END %]
     [% END %]
     <div id="texttitle">
       <span id="texttitle-label">
@@ -80,6 +82,7 @@
     </div>
     [% END %]
 
+    [% UNLESS show_preview_only %]
     [% # if it's not a blog style site, this has no interest whatsoever? %]
     [% IF blog_style %]
     [% SET text_monthly_archive = text.monthly_archive %]
@@ -92,6 +95,7 @@
         [% text.pubdate_locale(current_locale_code) || text_monthly_archive.localized_name(current_locale_code) %]
       </a>
     </div>
+    [% END %]
     [% END %]
     [% END %]
 
@@ -136,7 +140,7 @@
   <!-- end of the preamble -->
 
   [%- SET basename = text.uri -%] 
-
+  [% UNLESS show_preview_only %]
   <div id="downloadformats">
     <div id="downloadformats-title">
       <!-- <strong>[% loc('Downloads') %]</strong> -->
@@ -307,6 +311,7 @@
       [% END %]
     </div>
   </div>
+  [% END %]
   </div>
   [% END %]
   <div class="center">
@@ -322,6 +327,16 @@
       </h1>
     </div>
   </div>
+  [% IF show_preview_only %]
+    <div class="alert alert-info" role="alert">This text is not available</div>
+    <div>
+      [% text.teaser %]
+      [% IF text.valid_cover %]
+      <img class="text-cover-preview img-thumbnail pull-right"
+           src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
+      [% END %]
+    </div>
+  [% ELSE %]
   <div id="htmltextbody">
     [% IF text.valid_cover %]
     <div id="text-cover-img-container">
@@ -354,6 +369,7 @@
   [%-   END -%]
     </div>
   </div>
+  [%- END -%]
   [%- END -%]
 
   <div class="clearfix"></div>
