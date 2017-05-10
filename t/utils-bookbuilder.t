@@ -586,7 +586,7 @@ sub cleanup {
     my $id = shift;
     my @files = ("$id.pdf", "$id.epub", "bookbuilder-$id.zip");
     foreach my $file (@files) {
-        my $path = File::Spec->catfile(qw/root custom/, $file);
+        my $path = File::Spec->catfile(bbfiles => , $file);
         if (-f $path) {
             diag "removing $path";
             unlink $path or die $!;
