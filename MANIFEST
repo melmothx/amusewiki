@@ -1034,6 +1034,7 @@ t/editing.t
 t/embed-pdf.t
 t/entities.json
 t/entities.t
+t/fail-on-cropmarks-109.t
 t/files/manual.pdf
 t/files/shot.jpg
 t/files/shot.pdf

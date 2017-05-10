@@ -522,7 +522,7 @@ sub computed_papersize {
         return $self->paper_width . 'mm:' . $self->paper_height . 'mm';
     }
     else {
-        $self->papersize;
+        $self->_resolve_papersize($self->papersize);
     }
 }
 sub computed_crop_papersize {
@@ -531,7 +531,17 @@ sub computed_crop_papersize {
         return $self->crop_paper_width . 'mm:' . $self->crop_paper_height . 'mm';
     }
     else {
-        $self->crop_papersize;
+        $self->_resolve_papersize($self->crop_papersize);
+    }
+}
+
+sub _resolve_papersize {
+    my ($self, $size) = @_;
+    if ($size and $size eq 'generic') {
+        return '210mm:11in';
+    }
+    else {
+        return $size;
     }
 }
 
