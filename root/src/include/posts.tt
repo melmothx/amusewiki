@@ -4,7 +4,7 @@
 <div class="list-group">
   [% WHILE (text = texts.next) %]
   <div class="amw-listing-item">
-    [% IF do_not_link_to_text_if_not_published && !text.is_published %]
+    [% IF no_full_text_if_not_published && !text.is_published %]
       [% SET show_link = 0 %]
     [% ELSE %]
       [% SET show_link = 1 %]
@@ -13,19 +13,17 @@
   <div class="list-group-item clearfix">
     [% IF text.cover_uri %]
     <div class="text-cover-img-mini-container">
-      [% IF show_link %]<a href="[% c.uri_for(text.full_uri) %]">[% END %]
+      <a href="[% c.uri_for(text.full_uri) %]">
         <img src="[% c.uri_for(text.cover_small_uri) %]"
              alt="[% text.valid_cover %]"
              class="text-cover-img-mini img-thumbnail" />
-      [% IF show_link %]</a>[% END %]
+      </a>
     </div>
     [% END %]
     <div>
       <h3 class="amw-latest-listing-item-title">
         [%- IF text.author %]<small>[% text.author -%]</small><br />[% END -%]
-        [% IF show_link %]<a href="[% c.uri_for(text.full_uri) %]">[% END %]
-          [% text.title %]
-        [% IF show_link %]</a>[% END %]
+        <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
         [% IF text.subtitle %]<small>[% text.subtitle -%]</small>[% END -%]
         [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
         <small class="amw-latest-listing-item-language">[[% text.lang %]]</small>
@@ -53,11 +51,7 @@
     [% END %]
   </div>
   [% ELSE %]
-    [% IF show_link %]
-    <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
-    [% ELSE %]
-    <span class="list-group-item clearfix">
-    [% END %]
+  <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
     <strong>[% text.title %]</strong>
     [%- IF text.author %] — [% text.author -%][% END -%]
     [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
@@ -71,11 +65,7 @@
       [% text.pubdate_locale(current_locale_code) %]
     </span>
     [% END %]
-    [% IF show_link %]
-    </a>
-    [% ELSE %]
-    </span>
-    [% END %]
+  </a>
   [% END %]
   </div>
 [% END %]

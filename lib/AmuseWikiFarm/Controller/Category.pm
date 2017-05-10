@@ -148,7 +148,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
             $c->stash(listing_item_hide_dates => 1);
         }
         if (!$c->user_exists and $site->show_preview_when_deferred) {
-            $c->stash(do_not_link_to_text_if_not_published => 1);
+            $c->stash(no_full_text_if_not_published => 1);
         }
 
         my $current_locale = $c->stash->{current_locale_code};
