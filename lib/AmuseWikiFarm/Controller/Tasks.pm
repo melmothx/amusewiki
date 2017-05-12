@@ -37,14 +37,12 @@ sub check_job :Chained('root') :PathPart('status') :CaptureArgs(1) {
     if (my $job = $c->stash->{site}->jobs->find($id)) {
         if ($job->username) {
             # check if there is a match
-            if ($c->user_exists and
-                $c->user->get('username') and
-                $c->user->get('username') eq $job->username) {
-                # all ok
-                $got = $job;
-            }
-            else {
-                log_info { "Access denied to job $id because of username mismatch expecting " . $job->username };
+            if ($c->user_exists) {
+                if ($c->check_any_user_role(qw/admin root/) or
+                    $c->user->get('username') eq $job->username) {
+                    # all ok
+                    $got = $job;
+                }
             }
         }
         else {
