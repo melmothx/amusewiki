@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 174;
+use Test::More tests => 210;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -203,4 +203,64 @@ foreach my $url (@urls, @pub_urls) {
         $mech->get_ok($url . $ext);       
         diag $mech->response->header('Content-Type');
     }
+}
+
+# and now the bookbuilder
+$mech->get_ok('/logout');
+for my $i (0..1) {
+    $mech->get_ok("/bookbuilder/add/deferred-text-$i");
+    $mech->content_contains('The text was added to the bookbuilder');
+    $mech->get_ok("/bookbuilder");
+}
+for my $i (2..3) {
+    $mech->get_ok("/bookbuilder/add/deferred-text-$i");
+    $mech->content_lacks('The text was added to the bookbuilder');
+}
+$mech->get_ok('/bookbuilder');
+foreach my $url (@urls) {
+    $mech->content_lacks($url);
+}
+foreach my $url (@pub_urls) {
+    $mech->content_contains($url);
+}
+
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+
+# add the missing one
+for my $i (2..3) {
+    $mech->get_ok("/bookbuilder/add/deferred-text-$i");
+    $mech->content_contains('The text was added to the bookbuilder');
+}
+
+$mech->get_ok('/bookbuilder');
+foreach my $url (@urls, @pub_urls) {
+    $mech->content_contains($url);
+}
+
+$mech->submit_form(with_fields => { title => 'Blabla' },
+                   button => 'build');
+
+my $job = $site->jobs->dequeue->dispatch_job;
+my $j_url = $job->produced;
+my $c_url = '/tasks/' . $job->id . '/status';
+diag "Got $j_url";
+$mech->get_ok($j_url);
+$mech->get_ok($c_url);
+
+# logout and recheck
+$mech->get_ok('/logout');
+
+$mech->get($j_url);
+is $mech->status, 404;
+$mech->get($c_url);
+is $mech->status, 404;
+
+# now the deferred titles are gone
+$mech->get_ok('/bookbuilder');
+foreach my $url (@pub_urls) {
+    $mech->content_contains($url);
+}
+foreach my $url (@urls) {
+    $mech->content_lacks($url);
 }

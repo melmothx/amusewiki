@@ -93,6 +93,9 @@ sub index :Chained('root') :PathPart('') :Args(0) {
         log_debug { "Putting the job in the queue now" };
 
         if (my $job = $c->stash->{site}->jobs->bookbuilder_add($bb->serialize)) {
+            if ($c->user_exists) {
+                $job->update({ username => $c->user->get('username') });
+            }
             $c->res->redirect($c->uri_for_action('/tasks/display', [$job->id]));
         }
         # if we get this, the user cheated and doesn't deserve an explanation

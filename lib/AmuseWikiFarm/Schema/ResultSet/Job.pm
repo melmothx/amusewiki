@@ -93,7 +93,7 @@ sub enqueue {
                      status  => 'pending',
                      created => DateTime->now,
                      priority => $priority,
-                     username => clean_username($username),
+                     username => ($username ? clean_username($username) : undef),
                     };
     my $job = $self->create($insertion)->discard_changes;
     $job->make_room_for_logs;
