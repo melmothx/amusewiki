@@ -36,6 +36,10 @@ has stem_search => (
                     default => sub { return 1 },
                    );
 
+has index_deferred => (is => 'ro',
+                       isa => 'Bool',
+                       default => sub { return 0 });
+
 has basedir => (
                 is => 'ro',
                 required => 0,
@@ -148,13 +152,7 @@ sub index_text {
 
     my $qterm = 'Q' . $title->uri;
     my $exit = 1;
-    if (!$title->is_published) {
-        $logger->("Deleting " . $title->uri . " from Xapian db\n");
-        eval {
-            $database->delete_document_by_term($qterm);
-        };
-    }
-    else {
+    if ($self->text_can_be_indexed($title)) {
         $logger->("Updating " . $title->uri . " in Xapian db\n");
         try {
             my $doc = Search::Xapian::Document->new();
@@ -248,8 +246,29 @@ sub index_text {
             $exit = 0;
         };
     }
+    else {
+        $logger->("Deleting " . $title->uri . " from Xapian db\n");
+        try {
+            $database->delete_document_by_term($qterm);
+        } catch {
+            my $error = $_;
+            log_warn { "$error deleting $qterm" } ;
+            $exit = 0;
+        }
+    }
     return $exit;
 }
+
+sub text_can_be_indexed {
+    my ($self, $title) = @_;
+    if ($title and
+        ($title->is_published or
+         ($title->is_deferred && $self->index_deferred))) {
+        return 1;
+    }
+    return 0;
+}
+
 
 =head2 search($query_string, $page, $locale);
 

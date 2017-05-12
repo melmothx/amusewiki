@@ -9,9 +9,10 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 108;
+use Test::More tests => 133;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -154,6 +155,27 @@ foreach my $url (@urls) {
                             "$url is without body not accessible");
     $mech->content_lacks("FULL TEXT HERE");
 }
+
+for (1..3) {
+    $mech->get_ok('/search?query=pallino&fmt=json');
+    my $search_results = from_json($mech->content);
+    is (scalar(@$search_results), 2) or diag Dumper($search_results);
+}
+
+ok ($site->xapian->index_deferred, "Xapian will index the deferred as well") or die;
+$site->xapian_reindex_all;
+
+for (1..3) {
+    # after reindexing (option is on now), we have 4 results
+    $mech->get_ok('/search?query=pallino&fmt=json');
+    foreach my $url (@urls, @pub_urls) {
+        $mech->content_contains($url);
+    }
+    my $search_results = from_json($mech->content);
+    is (scalar(@$search_results), 4) or diag Dumper($search_results);
+}
+
+
 foreach my $url (@pub_urls) {
     $mech->get_ok($url);
     $mech->content_lacks('<div class="alert alert-info" role="alert">This text is not available</div>',

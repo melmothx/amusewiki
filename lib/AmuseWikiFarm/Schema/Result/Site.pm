@@ -1364,6 +1364,7 @@ sub xapian {
                                                locale => $self->locale,
                                                # disable stemming for search on multilang environment
                                                stem_search => !$self->multilanguage,
+                                               index_deferred => $self->show_preview_when_deferred,
                                               );
 }
 
@@ -2916,7 +2917,13 @@ sub text_infobox_at_the_bottom {
 }
 
 sub show_preview_when_deferred {
-    return shift->get_option('show_preview_when_deferred') || '';
+    my $self = shift;
+    if ($self->get_option('show_preview_when_deferred')) {
+        return 1;
+    }
+    else {
+        return '';
+    }
 }
 
 sub use_luatex {
