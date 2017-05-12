@@ -147,11 +147,10 @@ $mech->content_lacks('class="pagination"');
 }
 
 foreach my $num (1..10) {
+    my $teaser = "Teaser $num. This buffer is for notes you dont want to save " x $num;
     my $new_uri = add_text({
               title => "Another one... $num",
-              teaser => ("Teaser $num. This buffer is for notes you don't want to save, and
-for Lisp evaluation. If you want to create a file, visit that file
-with C-x C-f, then enter the text in that file's own buffer. " x $num ),
+              teaser => $teaser,
               lang => 'en',
               subtitle => ("Sub " x $num),
               textbody => "Nothing interesting",
@@ -159,10 +158,17 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
               pubdate => DateTime->new(year => 2015, month => $num)->iso8601,
              });
     $mech->get_ok('/feed');
-    $mech->content_contains("Teaser $num.");
+    $mech->content_contains("Teaser $num. This buffer is for notes you dont");
     $mech->get_ok($new_uri);
     $mech->content_contains('chevron');
-    $mech->content_contains(qq{<meta name="description" content="Teaser $num.});
+    # teaser is too long
+    if (length($teaser) > 160) {
+        $mech->content_contains(qq{<meta name="description" content="Another one... $num});
+    }
+    else {
+        $teaser =~ s/\s*\z//;
+        $mech->content_contains(qq{<meta name="description" content="$teaser"});
+    }
 }
 
 {
