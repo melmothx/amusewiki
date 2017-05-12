@@ -31,7 +31,7 @@ sub root :Chained('/site_human_required') :PathPart('tasks') :CaptureArgs(0) {
     $c->stash(full_page_no_side_columns => 1);
 }
 
-sub check_job :Chained('root') :PathPart('') :CaptureArgs(1) {
+sub check_job :Chained('root') :PathPart('status') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
     my $got;
     if (my $job = $c->stash->{site}->jobs->find($id)) {
@@ -61,7 +61,7 @@ sub check_job :Chained('root') :PathPart('') :CaptureArgs(1) {
     }
 }
 
-sub status :Chained('check_job') :CaptureArgs(0) {
+sub status :Chained('check_job') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $job = delete $c->stash->{job_object};
     # here we inject the message, depending on the task

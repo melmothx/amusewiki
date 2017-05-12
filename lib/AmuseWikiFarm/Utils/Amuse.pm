@@ -81,8 +81,7 @@ sub muse_file_info {
 
     $details->{uri} = $details->{f_name};
 
-    my $header = Text::Amuse::Compile::MuseHeader
-      ->new(muse_fast_scan_header($details->{f_full_path_name}));
+    my $header = muse_header_object($details->{f_full_path_name});
 
     $details->{lang} = $header->language;
     $details->{slides} = $header->wants_slides;
@@ -166,6 +165,13 @@ sub muse_file_info {
     }
     return $details;
 }
+
+sub muse_header_object {
+    my $file = shift;
+    Text::Amuse::Compile::MuseHeader
+        ->new(muse_fast_scan_header($file));
+}
+
 
 =head2 muse_parse_file_path($file, $root, $skip_path_checking)
 

@@ -195,6 +195,12 @@ sub edit :Chained('match') PathPart('edit') :Args(0) {
                                                              $text->uri]));
 }
 
+sub json :Chained('match') PathPart('json') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(json => $c->stash->{text}->raw_headers);
+    $c->detach($c->view('JSON'));
+}
+
 sub rebuild :Chained('match') PathPart('rebuild') :Args(0) {
     my ($self, $c) = @_;
     log_debug { "In rebuild" };

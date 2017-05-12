@@ -1541,6 +1541,9 @@ sub index_file {
     # handle specials and texts
 
     # ready to store into titles?
+
+    my $guard = $self->result_source->schema->txn_scope_guard;
+
     # by default text are published, unless the file info returns something else
     # and if it's an update we have to reset it.
     my %insertion = (deleted => '');
@@ -1603,7 +1606,7 @@ sub index_file {
         }
     }
     if (%$details) {
-        $logger->("Unhandle directive in $file: " . join(", ", %$details) . "\n");
+        $logger->("Custom directives: " . join(", ", %$details) . "\n");
     }
     $logger->("Inserting data for $file\n");
 
@@ -1671,6 +1674,20 @@ sub index_file {
         }
         $title->set_monthly_archives(\@months);
     }
+    $title->muse_headers->delete;
+    if (my $header_obj = AmuseWikiFarm::Utils::Amuse::muse_header_object($title->f_full_path_name)) {
+        my %header = %{$header_obj->header};
+        foreach my $k (keys %header) {
+            # prevent a mess
+            if (length($k) < 255) {
+                $title->muse_headers->create({
+                                              muse_header => $k,
+                                              muse_value => $header{$k},
+                                             });
+            }
+        }
+    }
+    $guard->commit;
     return $title;
 }
 

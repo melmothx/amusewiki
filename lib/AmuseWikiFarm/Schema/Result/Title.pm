@@ -313,6 +313,21 @@ __PACKAGE__->add_unique_constraint("uri_f_class_site_id_unique", ["uri", "f_clas
 
 =head1 RELATIONS
 
+=head2 muse_headers
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::MuseHeader>
+
+=cut
+
+__PACKAGE__->has_many(
+  "muse_headers",
+  "AmuseWikiFarm::Schema::Result::MuseHeader",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 revisions
 
 Type: has_many
@@ -409,8 +424,8 @@ Composing rels: L</text_months> -> monthly_archive
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:K3VxwSSR4wLq8kVg5trx6g
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-05-12 16:43:01
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:12kakxrjZ0JKAILUYLGepg
 
 =head2 translations
 
@@ -1126,6 +1141,17 @@ sub path_tiny {
 sub parent_dir {
     shift->path_tiny->parent->stringify;
 }
+
+sub raw_headers {
+    my $self = shift;
+    my $all = $self->muse_headers;
+    my %out;
+    while (my $header = $all->next) {
+        $out{$header->muse_header} = $header->muse_value;
+    }
+    return \%out;
+}
+
 
 __PACKAGE__->meta->make_immutable;
 
