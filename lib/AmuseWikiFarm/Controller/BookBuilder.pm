@@ -52,6 +52,7 @@ sub root :Chained('/site_human_required') :PathPart('bookbuilder') :CaptureArgs(
             }
         }
     }
+    $bb->refresh_text_list;
     $c->stash(full_page_no_side_columns => 1);
 }
 
@@ -169,12 +170,15 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
     my $referrer = $c->uri_for_action('/library/text', [$text]);
     log_debug { "Added $addtext" };
     if ($bb->add_text($addtext)) {
-        $self->save_session($c);
         $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
+        $self->save_session($c);
     }
     elsif (my $err = $bb->error) {
         log_warn { "$err for $text" };
         $c->flash->{error_msg} = $c->loc($bb->error);
+    }
+    else {
+        $self->save_session($c);
     }
     $c->response->redirect($referrer);
     return;

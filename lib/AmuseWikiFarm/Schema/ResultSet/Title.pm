@@ -175,7 +175,6 @@ sub by_uri {
     return $self->search({ "$me.uri" => $uri });
 }
 
-
 =head2 find_file($path)
 
 Shortcut for
@@ -386,5 +385,10 @@ sub newer_than {
                          });
 }
 
+sub bookbuildable_by_uri {
+    my ($self, $uri) = @_;
+    return unless $uri;
+    return $self->status_is_published_or_deferred->texts_only->by_uri($uri)->single;
+}
 
 1;

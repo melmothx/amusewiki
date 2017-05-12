@@ -25,6 +25,7 @@ sub prepare_arguments {
             $args{token} = $token;
         }
     }
+    $args{user_is_logged_in} = $c->user_exists;
     Dlog_debug { "Bookbuilder loading with $_" } \%args;
     $args{dbic} = $c->model('DB');
     if (my $site = $c->stash->{site}) {
