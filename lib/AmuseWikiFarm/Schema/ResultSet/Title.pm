@@ -54,19 +54,27 @@ sub published_or_deferred_all  {
 }
 
 sub texts_only {
-    return shift->search({ f_class => 'text' });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.f_class" => 'text' });
 }
 
 sub specials_only {
-    return shift->search({ f_class => 'special' });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.f_class" => 'special' });
 }
 
 sub status_is_published {
-    return shift->search({ status => 'published' });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => 'published' });
 }
 
 sub status_is_published_or_deferred {
-    return shift->search({ status => [qw/published deferred/] });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => [qw/published deferred/] });
 }
 
 sub sorted_by_title {
@@ -179,7 +187,8 @@ Shortcut for
 sub find_file {
     my ($self, $path) = @_;
     die "Bad usage" unless $path;
-    return $self->search({ f_full_path_name => $path })->single;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.f_full_path_name" => $path })->single;
 }
 
 
@@ -209,7 +218,9 @@ Return the titles, specials included, with the status not set to 'published'
 =cut
 
 sub unpublished {
-    return shift->sort_by_pubdate_desc->search({ status => { '!=' => 'published' } });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->sort_by_pubdate_desc->search({ "$me.status" => { '!=' => 'published' } });
 }
 
 
@@ -225,9 +236,10 @@ sub deferred_to_publish {
     die unless $time && $time->isa('DateTime');
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($time);
+    my $me = $self->current_source_alias;
     return $self->search({
-                          status => 'deferred',
-                          pubdate => { '<' => $format_time },
+                          "$me.status" => 'deferred',
+                          "$me.pubdate" => { '<' => $format_time },
                          });
 
 }
