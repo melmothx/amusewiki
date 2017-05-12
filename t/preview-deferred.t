@@ -243,7 +243,7 @@ $mech->submit_form(with_fields => { title => 'Blabla' },
 
 my $job = $site->jobs->dequeue->dispatch_job;
 my $j_url = $job->produced;
-my $c_url = '/tasks/' . $job->id . '/status';
+my $c_url = '/tasks/status/' . $job->id;
 diag "Got $j_url";
 $mech->get_ok($j_url);
 $mech->get_ok($c_url);
