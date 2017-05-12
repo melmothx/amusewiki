@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 210;
+use Test::More tests => 226;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -47,7 +47,7 @@ foreach my $i (0..3) {
         my $got = $rev->add_attachment($cover);
         $rev->edit("#cover $got->{attachment}\n" . $rev->muse_body);
     }
-    $rev->edit($rev->muse_body . "\n\nFULL TEXT HERE\n");
+    $rev->edit("#customheader xxx\n" . $rev->muse_body . "\n\nFULL TEXT HERE\n");
     $rev->commit_version;
     $rev->publish_text;
     if ($defer) {
@@ -264,3 +264,25 @@ foreach my $url (@pub_urls) {
 foreach my $url (@urls) {
     $mech->content_lacks($url);
 }
+
+foreach my $url (@urls, @pub_urls) {
+    $mech->get_ok($url . '/json');
+    my $hashref = from_json($mech->content);
+    diag Dumper($hashref);
+    is $hashref->{customheader}, 'xxx';
+    is $hashref->{lang}, 'en';
+}
+
+$site->site_options->update_or_create({
+                                       option_name => 'show_preview_when_deferred',
+                                       option_value => 0,
+                                      });
+
+foreach my $url (@urls) {
+    $mech->get($url . '/json');
+    is $mech->status, 404;
+}
+foreach my $url (@pub_urls) {
+    $mech->get_ok($url . '/json');
+}
+

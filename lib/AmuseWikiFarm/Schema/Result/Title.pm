@@ -1142,6 +1142,17 @@ sub parent_dir {
     shift->path_tiny->parent->stringify;
 }
 
+sub raw_headers {
+    my $self = shift;
+    my $all = $self->muse_headers;
+    my %out;
+    while (my $header = $all->next) {
+        $out{$header->muse_header} = $header->muse_value;
+    }
+    return \%out;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;
