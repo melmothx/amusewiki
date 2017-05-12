@@ -424,6 +424,14 @@ CREATE TABLE legacy_link (
        PRIMARY KEY (site_id, legacy_path)
 );
 
+CREATE TABLE muse_header (
+       title_id INTEGER NOT NULL REFERENCES title(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
+       muse_header VARCHAR(255) NOT NULL,
+       muse_value TEXT,
+       PRIMARY KEY (title_id, muse_header)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -452,4 +460,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('bookbuilder_profile', 'Bookbuilder profiles'),
          ('bookbuilder_session', 'Bookbuilder sessions'),
          ('custom_formats', 'Custom output formats'),
+         ('muse_header', 'Raw title headers'),
          ('title_stat', 'Usage statistics');
