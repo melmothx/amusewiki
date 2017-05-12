@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 133;
+use Test::More tests => 174;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -21,7 +21,9 @@ use DateTime;
 my $site_id = '0deferred1';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
-$site->update({ secure_site => 0 });
+$site->update({ secure_site => 0,
+                epub => 1,
+              });
 
 ok !$site->show_preview_when_deferred;
 
@@ -175,12 +177,30 @@ for (1..3) {
     is (scalar(@$search_results), 4) or diag Dumper($search_results);
 }
 
+my @exts = ('.zip', '.html', '.epub', '.tex', '.muse');
+# note that if you have public git, the text will be exposed anyway
 
 foreach my $url (@pub_urls) {
     $mech->get_ok($url);
     $mech->content_lacks('<div class="alert alert-info" role="alert">This text is not available</div>',
                             "$url is without body not accessible");
     $mech->content_contains("FULL TEXT HERE");
+    foreach my $ext (@exts) {
+        $mech->get_ok($url . $ext);
+    }
 }
+foreach my $url (@urls) {
+    foreach my $ext (@exts) {
+        $mech->get($url . $ext);
+        is $mech->status, 404, "$url$ext is 404";
+    }
+}
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 
-
+foreach my $url (@urls, @pub_urls) {
+    foreach my $ext (@exts) {
+        $mech->get_ok($url . $ext);       
+        diag $mech->response->header('Content-Type');
+    }
+}
