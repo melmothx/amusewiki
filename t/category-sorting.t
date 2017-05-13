@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 13;
+use Test::More tests => 93;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -35,7 +35,7 @@ unless ($site = $schema->resultset('Site')->find($site_id)) {
         elsif ($i == 3) {
             $pubdate = DateTime->now->ymd;
         }
-          
+
         my ($rev) = $site->create_new_text({ uri => "my-title-$i",
                                              title => 'Title #' .  $i,
                                              teaser => ($i % 2 ? "This is the preview for $i" : ''),
@@ -54,6 +54,7 @@ unless ($site = $schema->resultset('Site')->find($site_id)) {
         $rev->publish_text;
     }
 }
+
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
@@ -86,20 +87,46 @@ my %expected = (
                 pubdate_asc => 'my-title-7',
                 pubdate_desc => 'my-title-3',
                );
+
 foreach my $sorting ($titles->available_sortings) {
     my $order_by = $sorting->{name};
     diag "$order_by $sorting->{label}";
     my $found = $site->titles->order_by($order_by)->first;
     is $found->uri, $expected{$order_by},
       "$order_by $sorting->{label} is $expected{$order_by} " . $found->pubdate->ymd;
+    is $site->validate_text_category_sorting($order_by), $order_by;
+    is $site->validate_text_category_sorting($order_by .'x'), 'title_asc';
+
 }
 
 foreach my $sorting ($site->titles->available_sortings) {
     my $order_by = $sorting->{name};
     diag "$order_by $sorting->{label}";
     foreach my $type (qw/topic author/) {
-        my $found = $site->categories->by_type_and_uri($type, 'common')->titles->order_by($order_by)->first;
+        my $found = $site->categories->by_type_and_uri($type, 'common')
+          ->titles
+          ->order_by($order_by)
+          ->page_number
+          ->rows_number
+          ->first;
         is $found->uri, $expected{$order_by},
           "$order_by $sorting->{label} is $expected{$order_by} (from $type category) " . $found->pubdate->ymd;
+
+        $mech->get_ok('/category/' . $type . '/common?sort=' . $order_by);
+        $mech->content_contains($found->full_uri);
+        $mech->get_ok('/category/' . $type . '/common/en?sort=' . $order_by);
+        $mech->content_contains($found->full_uri);
+
+        my $paged = $site->categories->by_type_and_uri($type, 'common')
+          ->titles
+          ->order_by($order_by)
+          ->page_number(2)
+          ->rows_number(2)
+          ->first;
+        $mech->get_ok('/category/' . $type . "/common?sort=$order_by&page=2&rows=2");
+        $mech->content_contains($paged->full_uri);
+        $mech->get_ok('/category/' . $type . "/common/en?sort=$order_by&page=2&rows=2");
+        $mech->content_contains($paged->full_uri);
+        isnt $paged->uri, $found->uri, "Page 2 isnt " . $found->uri . " but " . $paged->uri;
     }
 }

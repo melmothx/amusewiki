@@ -451,6 +451,26 @@ sub order_by {
     die "$order doesn't map to anything" unless $order_by;
     return $self->search(undef, { order_by => $order_by });
 }
-                
+
+sub page_number {
+    my ($self, $page) = @_;
+    return $self->search(undef, { page => $self->_check_integer($page) || 1 });
+}
+
+sub rows_number {
+    my ($self, $rows) = @_;
+    return $self->search(undef, { rows => $self->_check_integer($rows) || 10 });
+}
+
+sub _check_integer {
+    my ($self, $i) = @_;
+    if ($i and $i =~ m/\A([1-9][0-9]*)\z/) {
+        return $i + 0;
+    }
+    else {
+        return 0;
+    }
+}
+
 
 1;
