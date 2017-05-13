@@ -391,4 +391,66 @@ sub bookbuildable_by_uri {
     return $self->status_is_published_or_deferred->texts_only->by_uri($uri)->single;
 }
 
+sub _sorting_map {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return {
+            title_asc => {
+                          priority => 1,
+                          order_by => { -asc => [ "$me.sorting_pos", "$me.title" ] },
+                          # loc("By title A-Z");
+                          label => "By title A-Z",
+                         },
+            title_desc => {
+                           priority => 2,
+                           order_by => { -desc => [ "$me.sorting_pos", "$me.title" ] },
+                           # loc("By title Z-A")
+                           label => "By title Z-A",
+                          },
+            pubdate_desc => {
+                             priority => 3,
+                             order_by => [
+                                          { -desc => [ "$me.pubdate" ] },
+                                          { -asc => [ "$me.sorting_pos", "$me.title" ] }
+                                         ],
+                            # loc("Newer first")
+                            label => "Newer first",
+                            },
+            pubdate_asc => {
+                            priority => 4,
+                            order_by => { -asc => [ "$me.pubdate", "$me.sorting_pos", "$me.title" ] },
+                            # loc("Older first")
+                            label => "Older first",
+                           },
+            };
+}
+                   
+
+sub available_sortings {
+    my $self = shift;
+    my $avail = $self->_sorting_map;
+    my @out;
+    foreach my $k (keys %$avail) {
+        push @out, {
+                    name => $k,
+                    label => $avail->{$k}->{label} || die,
+                    priority => $avail->{$k}->{priority} || die,
+                   };
+    }
+    return sort { $a->{priority} <=> $b->{priority} } @out; 
+}
+
+sub order_by {
+    my ($self, $order) = @_;
+    my $map = $self->_sorting_map;
+    my $order_by = $map->{title_desc}->{order_by};
+    if ($order && $map->{$order}->{order_by}) {
+        $order_by = $map->{$order}->{order_by};
+    }
+    # not hit
+    die "$order doesn't map to anything" unless $order_by;
+    return $self->search(undef, { order_by => $order_by });
+}
+                
+
 1;
