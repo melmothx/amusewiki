@@ -60,11 +60,9 @@
     [% IF text.is_deferred && show_link %]
     <span class="fa fa-clock-o"></span>
     [% END %]
-    [% UNLESS listing_item_hide_dates %]
     <span class="pull-right clearfix">
       [% text.pubdate_locale(current_locale_code) %]
     </span>
-    [% END %]
   </a>
   [% END %]
   </div>
