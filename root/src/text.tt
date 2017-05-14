@@ -330,11 +330,13 @@
   [% IF show_preview_only %]
     <div class="alert alert-info" role="alert">[% loc('This text is not available') %]</div>
     <div>
-      [% text.teaser %]
       [% IF text.valid_cover %]
-      <img class="text-cover-preview img-thumbnail pull-right"
-           src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
+      <div class="text-cover-img-mini-container">
+        <img class="text-cover-preview img-thumbnail pull-right"
+             src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
+      </div>
       [% END %]
+      [% text.teaser %]
     </div>
   [% ELSE %]
   <div id="htmltextbody">
