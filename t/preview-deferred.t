@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 226;
+use Test::More tests => 231;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -286,3 +286,10 @@ foreach my $url (@pub_urls) {
     $mech->get_ok($url . '/json');
 }
 
+$mech->get_ok('/latest');
+foreach my $url (@urls) {
+    $mech->content_lacks($url);
+}
+foreach my $url (@pub_urls) {
+    $mech->content_contains($url);
+}

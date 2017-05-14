@@ -1,7 +1,6 @@
 package AmuseWikiFarm::Controller::Latest;
 use utf8;
 use Moose;
-with qw/AmuseWikiFarm::Role::Controller::RegularListing/;
 
 use namespace::autoclean;
 
@@ -29,18 +28,27 @@ Catalyst Controller.
 
 sub pre_base :Chained('/site_robot_index') :PathPart('latest') :CaptureArgs(0) {}
 
+sub base :Chained('pre_base') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+}
+
 sub index :Chained('base') :PathPart('') :Args {
     my ($self, $c, $page) = @_;
-    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
-        $page = 1;
-    }
-    log_debug { "requested /latest/ $page" };
     my $site = $c->stash->{site};
-    my $results = $c->stash->{texts_rs}->sort_by_pubdate_desc->search(undef,
-                                                {
-                                                 page => $page,
-                                                 rows => $site->pagination_size_latest,
-                                                });
+    my $titles;
+    if ($c->user_exists) {
+        $titles = $site->titles->status_is_published_or_deferred;
+    }
+    else {
+        $titles = $site->titles->status_is_published;
+    }
+    my $results = $titles
+      ->texts_only
+      ->order_by('pubdate_desc')
+      ->page_number($page)
+      ->rows_number($site->pagination_size_latest);
+
+    log_debug { "requested /latest/$page" };
     my $pager = $results->pager;
     my $format_link = sub {
         return $c->uri_for_action('/latest/index', $_[0]);
