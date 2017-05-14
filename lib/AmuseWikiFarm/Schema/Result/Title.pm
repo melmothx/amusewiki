@@ -844,6 +844,11 @@ sub full_edit_uri {
     return $self->full_uri . '/edit';
 }
 
+sub full_header_api {
+    my $self = shift;
+    return $self->full_uri . '/json';
+}
+
 sub full_rebuild_uri {
     my $self = shift;
     return $self->full_uri . '/rebuild';

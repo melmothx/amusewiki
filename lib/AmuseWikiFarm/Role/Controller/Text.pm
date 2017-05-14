@@ -107,6 +107,7 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
             }
         }
         $c->stash(page_title => HTML::Entities::decode_entities($text->title),
+                  text_json_api => $c->uri_for($text->full_header_api),
                   show_preview_only => $show_preview_only);
     }
     elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {

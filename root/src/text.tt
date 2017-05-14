@@ -25,7 +25,7 @@
   <div class="col-sm-10 col-sm-push-1">
 
 
-<div id="page">
+<div id="page"[% IF text_json_api %] data-text-json-header-api="[% text_json_api | html %]"[% END %]>
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   <div id="preamble">
@@ -68,7 +68,7 @@
         </strong>
       </span>
       [% FOREACH author IN text_authors -%]
-      <a href="[% c.uri_for(author.uri) %]">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
+      <a href="[% c.uri_for(author.uri) %]" class="text-authors-item">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
     </div>
     [% END %]

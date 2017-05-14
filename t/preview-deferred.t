@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 231;
+use Test::More tests => 239;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -266,6 +266,9 @@ foreach my $url (@urls) {
 }
 
 foreach my $url (@urls, @pub_urls) {
+    $mech->get_ok($url);
+    my $full = $mech->uri;
+    $mech->content_contains(qq{id="page" data-text-json-header-api="$full/json">});
     $mech->get_ok($url . '/json');
     my $hashref = from_json($mech->content);
     diag Dumper($hashref);
