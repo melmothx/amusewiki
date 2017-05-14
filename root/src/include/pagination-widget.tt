@@ -1,5 +1,3 @@
-[% IF pager %]
-[% IF pager.needed %]
 [% IF pagination_widget %]
 <div class="amw-spacer-20"></div>
 <div class="text-right">
@@ -29,6 +27,4 @@
 </form>
 </div>
 <div class="amw-spacer-20"></div>
-[% END %]
-[% END %]
 [% END %]
