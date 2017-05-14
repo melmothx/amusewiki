@@ -58,5 +58,7 @@
 [%- END -%]
 [%- END -%]
 
+
+[% INCLUDE 'include/pagination-widget.tt' %]
 [% INCLUDE 'include/posts.tt' %]
 [% INCLUDE 'include/pagination.tt' %]

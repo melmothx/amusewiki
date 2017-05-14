@@ -125,28 +125,20 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
             $c->detach();
             return;
         }
-        my $page = $c->request->query_params->{page};
-        unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
-            $page = 1;
-        }
         my $texts_rs;
         if ($c->user_exists || $site->show_preview_when_deferred) {
-            $texts_rs = $cat->titles->published_or_deferred_all;
+            $texts_rs = $cat->titles->status_is_published_or_deferred;
         }
         else {
-            $texts_rs = $cat->titles->published_all;
+            $texts_rs = $cat->titles->status_is_published;
         }
+        # handle the query parameters. The RS validate them
+        my $query = $c->request->query_params;
         my $texts = $texts_rs
-          ->search(undef, { rows => $site->pagination_size_category,
-                            page => $page });
-        # if it's a blog, the alphabetica entry is not so important,
-        # and we give precedence to latest first.
-        if ($c->stash->{blog_style}) {
-            $texts = $texts->sort_by_pubdate_desc;
-        }
-        else {
-            $c->stash(listing_item_hide_dates => 1);
-        }
+          ->order_by($query->{sort} || $site->titles_category_default_sorting)
+          ->page_number($query->{page})
+          ->rows_number($query->{rows} || $site->pagination_size_category);
+
         if (!$c->user_exists and $site->show_preview_when_deferred) {
             $c->stash(no_full_text_if_not_published => 1);
         }
@@ -192,16 +184,59 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
 }
 
 
+sub _stash_pager {
+    my ($self, $c, $action, @args) = @_;
+    my $pager = $c->stash->{texts}->pager;
+    my $site = $c->stash->{site};
+    my ($rows, $sort);
+    my $active_rows = $pager->entries_per_page;
+    my $active_sort = $site->validate_text_category_sorting($c->request->query_params->{sort} ||
+                                                            $site->titles_category_default_sorting);
+    if ($c->request->query_params->{rows}) {
+        $rows = $active_rows;
+    }
+    if (my $qsort = $c->request->query_params->{sort}) {
+        $sort = $active_sort;
+    }
+    my $format_link = sub {
+        return $c->uri_for_action($action,
+                                  \@args, {
+                                           page => $_[0],
+                                           ($rows ? (rows => $rows) : ()),
+                                           ($sort ? (sort => $sort) : ()),
+                                          });
+    };
+    my (@sortings, @rows_per_page);
+    foreach my $s ($site->titles_available_sortings) {
+        if ($s->{name} eq $active_sort) {
+            $s->{active} = 1;
+        }
+        push @sortings, $s;
+    }
+    foreach my $i (10, 20, 50, 100, 200, 500) {
+        push @rows_per_page, {
+                              rows => $i,
+                              active => ($i == $active_rows ? 1 : 0),
+                             };
+    }
+    Dlog_debug { "widget : $_ " } \@sortings;
+    $c->stash(
+              pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
+              pagination_widget => {
+                                    target => $c->uri_for_action($action, \@args),
+                                    sortings => \@sortings,
+                                    rows => \@rows_per_page,
+                                   },
+             );
+}
+
 sub single_category_display :Chained('single_category') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $pager = $c->stash->{texts}->pager;
     my @args = ($c->stash->{f_class},
                 $c->stash->{category_canonical_name});
-    my $format_link = sub {
-        return $c->uri_for_action('/category/single_category_display',
-                                  \@args, { page => $_[0] });
-    };
-    $c->stash(pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link));
+    $self->_stash_pager($c,
+                        '/category/single_category_display',
+                        @args);
 }
 
 sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureArgs(1) {
@@ -245,16 +280,10 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
 
 sub single_category_by_lang_display :Chained('single_category_by_lang') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
-    my $pager = $c->stash->{texts}->pager;
     my @args = ($c->stash->{f_class},
                 $c->stash->{category_canonical_name},
                 $c->stash->{category_language});
-
-    my $format_link = sub {
-        return $c->uri_for_action('/category/single_category_by_lang_display',
-                                  \@args, { page => $_[0] });
-    };
-    $c->stash(pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link));
+    $self->_stash_pager($c, '/category/single_category_by_lang_display', @args);
 }
 
 sub category_editing_auth :Chained('single_category_by_lang') :PathPart('') :CaptureArgs(0) {

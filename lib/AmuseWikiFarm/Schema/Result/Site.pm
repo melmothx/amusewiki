@@ -2564,6 +2564,7 @@ sub update_from_params {
                            freenode_irc_channel
                            turn_links_to_images_into_images
                            show_preview_when_deferred
+                           titles_category_default_sorting
                            use_js_highlight
                            edit_option_page_left_bs_columns
                            edit_option_show_cheatsheet
@@ -2903,6 +2904,34 @@ sub top_layout_html {
 
 sub bottom_layout_html {
     return shift->get_option('bottom_layout_html') || '';
+}
+
+
+sub titles_available_sortings {
+    my $self = shift;
+    return $self->titles->available_sortings;
+}
+
+sub validate_text_category_sorting {
+    my ($self, $option) = @_;
+    my @available = $self->titles_available_sortings;
+    if ($option) {
+        if (grep { $_->{name} eq $option } @available) {
+            return $option;
+        }
+    }
+    if ($self->blog_style) {
+        return 'pubdate_desc';
+    }
+    else {
+        return $available[0]{name};
+    }
+}
+
+sub titles_category_default_sorting {
+    my $self = shift;
+    my $option = $self->get_option('titles_category_default_sorting') || '';
+    return $self->validate_text_category_sorting($option);
 }
 
 sub pagination_size {

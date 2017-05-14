@@ -296,6 +296,23 @@ kpsewhich mylogo.pdf
     </div>
 
     <div class="form-group">
+      <label for="titles_category_default_sorting" class="col-sm-6 control-label">
+        [% loc('Default sorting for the category text list') %]
+      </label>
+      <div class="col-sm-6">
+        <select name="titles_category_default_sorting" id="titles_category_default_sorting" class="form-control">
+          [% FOREACH sorting IN site.titles_available_sortings %]
+          <option value="[% sorting.name %]"
+                  [% IF esite.titles_category_default_sorting == sorting.name %]selected="selected"[% END %]>
+            [% sorting.label %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
+
+    <div class="form-group">
       <label for="theme" class="col-sm-6 control-label">
         [% loc('CSS Theme') %]
       </label>
