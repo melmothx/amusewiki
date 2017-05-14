@@ -541,6 +541,7 @@ root/src/include/bulk_job.tt
 root/src/include/ckeditor.tt
 root/src/include/editing-options.tt
 root/src/include/markitup.tt
+root/src/include/pagination-widget.tt
 root/src/include/pagination.tt
 root/src/include/posts.tt
 root/src/include/validate.tt
@@ -1026,6 +1027,7 @@ t/bootstrapping.t
 t/canonical-urls.t
 t/category-desc.t
 t/category-hiding.t
+t/category-sorting.t
 t/cgit-proxy.t
 t/cleanups.t
 t/collation-index.t
