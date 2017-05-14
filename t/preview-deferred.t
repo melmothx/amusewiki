@@ -153,7 +153,7 @@ foreach my $url (@test_urls) {
 }
 foreach my $url (@urls) {
     $mech->get_ok($url);
-    $mech->content_contains('<div class="alert alert-info" role="alert">This text is not available</div>',
+    $mech->content_contains('<div class="alert alert-warning" role="alert">This text is not available</div>',
                             "$url is without body not accessible");
     $mech->content_lacks("FULL TEXT HERE");
 }
@@ -182,7 +182,7 @@ my @exts = ('.zip', '.html', '.epub', '.tex', '.muse');
 
 foreach my $url (@pub_urls) {
     $mech->get_ok($url);
-    $mech->content_lacks('<div class="alert alert-info" role="alert">This text is not available</div>',
+    $mech->content_lacks('<div class="alert alert-warning" role="alert">This text is not available</div>',
                             "$url is without body not accessible");
     $mech->content_contains("FULL TEXT HERE");
     foreach my $ext (@exts) {
