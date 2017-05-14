@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 341;
+use Test::More tests => 364;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -137,4 +137,21 @@ foreach my $sorting ($site->titles->available_sortings) {
         $mech->content_contains($paged->full_uri);
         isnt $paged->uri, $found->uri, "Page 2 isnt " . $found->uri . " but " . $paged->uri;
     }
+}
+
+$mech->get_ok('/login');
+ok($mech->form_id('login-form'), "Found the login-form");
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+$mech->content_contains('You are logged in now!');
+
+foreach my $sorting (sort keys %expected) {
+    $mech->get_ok('/user/site');
+    $mech->submit_form(with_fields => { titles_category_default_sorting => $sorting },
+                       button => 'edit_site');
+    my $ex = $expected{$sorting};
+    diag "Checking if there is the link to $ex";
+    $mech->get_ok('/category/topic/common?rows=1');
+    ok $mech->find_link(url_regex => qr{/library/\Q$ex\E});
+    $mech->get_ok('/category/author/common?rows=1');
+    ok $mech->find_link(url_regex => qr{/library/\Q$ex\E});
 }

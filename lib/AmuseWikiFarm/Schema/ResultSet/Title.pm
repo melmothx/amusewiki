@@ -464,7 +464,8 @@ sub rows_number {
 
 sub _check_integer {
     my ($self, $i) = @_;
-    if ($i and $i =~ m/\A([1-9][0-9]*)\z/) {
+    # avoid big integers
+    if ($i and $i =~ m/\A([1-9][0-9]{0,5})\z/) {
         return $i + 0;
     }
     else {
