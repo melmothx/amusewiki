@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 93;
+use Test::More tests => 341;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -125,6 +125,14 @@ foreach my $sorting ($site->titles->available_sortings) {
           ->first;
         $mech->get_ok('/category/' . $type . "/common?sort=$order_by&page=2&rows=2");
         $mech->content_contains($paged->full_uri);
+        my $base = '/category/' . $type . "/common";
+        my @links = $mech->find_all_links(url_regex => qr/\Q$base\E/);
+        ok (scalar(@links));
+        foreach my $link (@links) {
+            like $link->url, qr/\Q$base\E.*rows=2/;
+            like $link->url, qr/\Q$base\E.*sort=\Q$order_by\E/;
+            $mech->get_ok($link->url);
+        }
         $mech->get_ok('/category/' . $type . "/common/en?sort=$order_by&page=2&rows=2");
         $mech->content_contains($paged->full_uri);
         isnt $paged->uri, $found->uri, "Page 2 isnt " . $found->uri . " but " . $paged->uri;
