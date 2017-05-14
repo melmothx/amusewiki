@@ -394,16 +394,17 @@ sub bookbuildable_by_uri {
 sub _sorting_map {
     my $self = shift;
     my $me = $self->current_source_alias;
+    my @default = ("$me.sorting_pos", "$me.title", "$me.id");
     return {
             title_asc => {
                           priority => 1,
-                          order_by => { -asc => [ "$me.sorting_pos", "$me.title" ] },
+                          order_by => { -asc => [ @default ]},
                           # loc("By title A-Z");
                           label => "By title A-Z",
                          },
             title_desc => {
                            priority => 2,
-                           order_by => { -desc => [ "$me.sorting_pos", "$me.title" ] },
+                           order_by => { -desc => [ @default ] },
                            # loc("By title Z-A")
                            label => "By title Z-A",
                           },
@@ -411,14 +412,14 @@ sub _sorting_map {
                              priority => 3,
                              order_by => [
                                           { -desc => [ "$me.pubdate" ] },
-                                          { -asc => [ "$me.sorting_pos", "$me.title" ] }
+                                          { -asc => [ @default ] }
                                          ],
                             # loc("Newer first")
                             label => "Newer first",
                             },
             pubdate_asc => {
                             priority => 4,
-                            order_by => { -asc => [ "$me.pubdate", "$me.sorting_pos", "$me.title" ] },
+                            order_by => { -asc => [ "$me.pubdate", @default ] },
                             # loc("Older first")
                             label => "Older first",
                            },
