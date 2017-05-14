@@ -328,7 +328,7 @@
     </div>
   </div>
   [% IF show_preview_only %]
-    <div class="alert alert-info" role="alert">[% loc('This text is not available') %]</div>
+    <div class="alert alert-warning" role="alert">[% loc('This text is not available') %]</div>
     <div>
       [% IF text.valid_cover %]
       <div class="text-cover-img-mini-container">
