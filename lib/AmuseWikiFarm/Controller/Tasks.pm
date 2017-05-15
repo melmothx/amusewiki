@@ -117,7 +117,7 @@ sub rebuild :Chained('bulks') :PathPart('rebuild') :Args(0) {
     my $rs = $all->active_bulk_jobs;
     if ($c->request->body_params->{rebuild}) {
         $rs->abort_all;
-        my $job = $c->stash->{site}->rebuild_formats;
+        my $job = $c->stash->{site}->rebuild_formats($c->user->get('username'));
         $c->response->redirect($c->uri_for_action('/tasks/show_bulk_job', [ $job->bulk_job_id ]));
         $c->detach;
         return;
