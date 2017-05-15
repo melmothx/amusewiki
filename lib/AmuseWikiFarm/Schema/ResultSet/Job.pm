@@ -153,13 +153,13 @@ sub purge_add {
 }
 
 sub alias_delete_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(alias_delete => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(alias_delete => $payload, $username);
 }
 
 sub alias_create_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(alias_create => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(alias_create => $payload, $username);
 }
 
 sub rebuild_add {

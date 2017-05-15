@@ -216,7 +216,7 @@ sub alias_delete :Chained('alias') :PathPart('delete') :Args(0) {
     if (my $id = $c->request->params->{delete}) {
         if (my $alias = $c->stash->{aliases}->find($id)) {
             $c->flash(status_msg => "Deletion for $id set");
-            my $job = $c->stash->{site}->jobs->alias_delete_add({ id => $id });
+            my $job = $c->stash->{site}->jobs->alias_delete_add({ id => $id }, $c->user->get('username'));
             $c->res->redirect($c->uri_for_action('/tasks/display',
                                                  [$job->id]));
             return;
@@ -246,7 +246,7 @@ sub alias_create :Chained('alias') :PathPart('create') :Args(0) {
                        dest => $params->{dest},
                        type => $params->{type}
                       };
-        my $job = $c->stash->{site}->jobs->alias_create_add($payload);
+        my $job = $c->stash->{site}->jobs->alias_create_add($payload, $c->user->get('username'));
         $c->res->redirect($c->uri_for_action('/tasks/display',
                                              [$job->id]));
         return;

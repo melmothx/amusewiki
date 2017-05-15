@@ -1011,6 +1011,7 @@ sql/version.txt
 t/00-prepare-tests.t
 t/02pod.t
 t/03podcoverage.t
+t/aliases.t
 t/amuse-utils.t
 t/archive-cache.t
 t/archive.t
