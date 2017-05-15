@@ -163,8 +163,8 @@ sub alias_create_add {
 }
 
 sub rebuild_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(rebuild => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(rebuild => $payload, $username);
 }
 
 =head2 dequeue

@@ -212,7 +212,7 @@ sub rebuild :Chained('match') PathPart('rebuild') :Args(0) {
     # as well, where the form is not visible. Also, here the data is
     # not really changed. Let's consider it more a cache rebuilding.
     my $text = $c->stash->{text};
-    my $job = $c->stash->{site}->jobs->rebuild_add({ id => $text->id });
+    my $job = $c->stash->{site}->jobs->rebuild_add({ id => $text->id }, $c->user->get('username'));
     $c->res->redirect($c->uri_for_action('/tasks/display',
                                          [ $job->id ]));
 }

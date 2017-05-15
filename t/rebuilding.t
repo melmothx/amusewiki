@@ -5,7 +5,7 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 60;
+use Test::More tests => 61;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -64,6 +64,7 @@ $mech->submit_form(form_id => 'login-form',
                    fields => { __auth_user => 'root',
                                __auth_pass => 'root',
                              });
+my $check_status_url = $mech->uri->path;
 like $mech->uri->path, qr{/tasks/status/};
 sleep 30;
 $mech->get_ok($mech->uri->path);
@@ -106,6 +107,8 @@ ok !$bulk->completed, "job is not completed";
     $mech->get_ok($check_ext);
     $mech->get_ok('/logout');
     $mech->get($check_ext);
+    is $mech->status, 404;
+    $mech->get($check_status_url);
     is $mech->status, 404;
 }
 $bulk->discard_changes;
