@@ -143,8 +143,8 @@ Enqueue an alias deletion action.
 =cut
 
 sub git_action_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(git => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(git => $payload, $username);
 }
 
 sub purge_add {

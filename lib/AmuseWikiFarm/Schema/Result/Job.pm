@@ -593,7 +593,7 @@ sub dispatch_job_git {
     die "Couldn't validate" unless $validate->{$remote}->{$action};
     if ($action eq 'fetch') {
         $site->repo_git_pull($remote, $logger);
-        my $bulk = $site->update_db_from_tree_async($logger);
+        my $bulk = $site->update_db_from_tree_async($logger, $self->username);
         return '/tasks/job/' . $bulk->id . '/show';
     }
     elsif ($action eq 'push') {

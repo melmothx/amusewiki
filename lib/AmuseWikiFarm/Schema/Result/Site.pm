@@ -3245,7 +3245,7 @@ sub edit_option_page_left_bs_columns {
 }
 
 sub update_db_from_tree_async {
-    my ($self, $logger) = @_;
+    my ($self, $logger, $username) = @_;
     $logger ||= sub { print @_ };
     my @files = $self->_pre_update_db_from_tree($logger);
     my $now = DateTime->now;
@@ -3253,10 +3253,12 @@ sub update_db_from_tree_async {
                                      created => $now,
                                      status => (scalar(@files) ? 'active' : 'completed'),
                                      completed => (scalar(@files) ? undef : $now),
+                                     username => $username,
                                      jobs => [
                                               map {
                                                   +{
                                                     site_id => $self->id,
+                                                    username => $username,
                                                     task => 'reindex',
                                                     status => 'pending',
                                                     created => $now,

@@ -112,7 +112,7 @@ sub git_action :Chained('git') :PathPart('action') :Args(0) {
                        remote => $remote,
                        action => $action,
                       };
-        my $job = $c->stash->{site}->jobs->git_action_add($payload);
+        my $job = $c->stash->{site}->jobs->git_action_add($payload, $c->user->get('username'));
 
         $c->res->redirect($c->uri_for_action('/tasks/display',
                                              [$job->id]));
