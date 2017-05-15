@@ -6,11 +6,16 @@ $(document).ready(function() {
         var target = link.attr('href');
         if (target.match(linkre)) {
             var text = link.text();
-            link.replaceWith('<a class="text-amuse-remote-image" href="' +
-                             target +
-                             '"><img class="embedimg" src="' +
-                             target +
-                             '" alt="' + text + '" /></a>');
+            var anchor = $('<a>');
+            var img = $('<img>');
+            anchor.attr('class', 'text-amuse-remote-image');
+            anchor.attr('href', target);
+            img.attr('class', 'embedimg');
+            img.attr('alt', text);
+            img.attr('src', target);
+            anchor.append(img);
+            link.replaceWith(anchor);
+            // console.log(target + text );
         }
         // Here eventually we could handle also youtube and stuff as well.
     });
