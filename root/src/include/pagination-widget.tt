@@ -9,7 +9,7 @@
     <select class="form-control" name="sort" id="pagination-widget-form-sort" onchange="this.form.submit()">
       [% FOREACH pw_sorting IN pagination_widget.sortings %]
         <option value="[% pw_sorting.name %]" [% IF pw_sorting.active %]selected="selected"[% END %]>
-          [% pw_sorting.label %]</option>
+          [% loc(pw_sorting.label) %]</option>
       [% END %]
     </select>
   </div>
@@ -20,7 +20,7 @@
     <select class="form-control" id="pagination-widget-form-rows" name="rows" onchange="this.form.submit()">
       [% FOREACH pw_rows IN pagination_widget.rows %]
         <option value="[% pw_rows.rows %]" [% IF pw_rows.active %]selected="selected"[% END %]>
-          [% pw_rows.rows %]</option>
+          [% loc(pw_rows.rows) %]</option>
       [% END %]
     </select>
   </div>
