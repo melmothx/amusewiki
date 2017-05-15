@@ -301,6 +301,12 @@ msgstr "Límite de páginas del credaor de libro (número entero)"
 msgid "Build it"
 msgstr "Crear"
 
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "Tema CSS"
 
@@ -449,6 +455,9 @@ msgstr "Fecha"
 msgid "Date of the original publication"
 msgstr "Fecha de la publicación original"
 
+msgid "Default sorting for the category text list"
+msgstr ""
+
 msgid "Deferred/Deleted texts"
 msgstr "Textos postpuestos o borrados"
 
@@ -529,6 +538,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Editar"
+
+msgid "Edit attachment description"
+msgstr ""
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -873,6 +885,12 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Si no se ajusta %1 será tomado desde el directorio de la aplicación."
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
@@ -1251,6 +1269,9 @@ msgstr "Nueva revisión"
 msgid "New site id"
 msgstr "Nuevo id de sitio"
 
+msgid "Newer first"
+msgstr ""
+
 msgid "Newer texts"
 msgstr "Textos más recientes"
 
@@ -1315,6 +1336,9 @@ msgstr "Número de resultados a mostrar en páginas con paginación (un entero)"
 
 msgid "OPDS"
 msgstr "OPDS"
+
+msgid "Older first"
+msgstr ""
 
 msgid "Older texts"
 msgstr "Textos más antiguos"
@@ -1792,6 +1816,9 @@ msgstr "Variables de configuración restringidas"
 msgid "Restricted format options"
 msgstr "Opciones de formato restringidas"
 
+msgid "Results per page:"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Recuperado el XX de MMMMM desde URL"
 
@@ -1959,6 +1986,9 @@ msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 "Disculpa, hay muchos procesos pendientes, ¡intenta más tarde por favor!"
 
+msgid "Sorting:"
+msgstr ""
+
 msgid "Source"
 msgstr "Fuente"
 
@@ -2101,6 +2131,10 @@ msgstr ""
 "            un nombre de archivo si elegiste instalarlo en el tree\n"
 "            de TeXlive. Puedes hacerlo con los siguientes comandos.\n"
 "            El último comprueba si el archivo pudo ser encontrado."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "¡El archivo subido no es un archivo HTML!"
@@ -2260,12 +2294,18 @@ msgstr "Este texto no existe"
 msgid "This text is new"
 msgstr "Este texto es nuevo"
 
+msgid "This text is not available"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr "Este texto aún no ha sido publicado"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
 msgstr "Este texto será postergado para %1"
+
+msgid "Thumbnail"
+msgstr ""
 
 msgid "Time is optional."
 msgstr "El tiempo es opcional."

@@ -288,6 +288,12 @@ msgstr "Maksimalni broj stranica zbirke"
 msgid "Build it"
 msgstr "Stvori"
 
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "Tema CSS-a"
 
@@ -433,6 +439,9 @@ msgstr "Datum"
 msgid "Date of the original publication"
 msgstr "Datum prvog izdanja"
 
+msgid "Default sorting for the category text list"
+msgstr ""
+
 msgid "Deferred/Deleted texts"
 msgstr "Odgođeni/izbrisani tekstovi"
 
@@ -513,6 +522,9 @@ msgstr "Predviđeno vrijeme završetka"
 
 msgid "Edit"
 msgstr "Uredi"
+
+msgid "Edit attachment description"
+msgstr ""
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -840,6 +852,12 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ako je prazno, koristit će se %1 iz direktorija aplikacije."
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
@@ -1209,6 +1227,9 @@ msgstr "Nova izmjena"
 msgid "New site id"
 msgstr "Novi id sajta"
 
+msgid "Newer first"
+msgstr ""
+
 msgid "Newer texts"
 msgstr "Noviji tekstovi"
 
@@ -1271,6 +1292,9 @@ msgstr "Broj rezultata po stranici kad popis ima više stranica (pagination)"
 
 msgid "OPDS"
 msgstr "OPDS"
+
+msgid "Older first"
+msgstr ""
 
 msgid "Older texts"
 msgstr "Stariji tekstovi"
@@ -1736,6 +1760,9 @@ msgstr "Ograničena konfiguracija"
 msgid "Restricted format options"
 msgstr "Ograničene opcije za fajlove"
 
+msgid "Results per page:"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Pronađeno DANA na URL-u"
 
@@ -1898,6 +1925,9 @@ msgstr "Netko, vjerojatno ti, tražio je novu lozinku za %1 na sajtu %2."
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Previše zadataka na čekanju, vratite se kasnije!"
 
+msgid "Sorting:"
+msgstr ""
+
 msgid "Source"
 msgstr "Izvor"
 
@@ -2039,6 +2069,10 @@ msgstr ""
 "Logo u PDF-u može biti apsolutni put do datoteke ili samo ime datoteke\n"
 "ako je ova instalirana u TeXlive-u. Možeš to napraviti koristeći\n"
 "slijedeće komande."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Učitana datoteka nije u HTML-u!"
@@ -2187,12 +2221,18 @@ msgstr "Ovaj tekst ne postoji"
 msgid "This text is new"
 msgstr "Ovaj tekst je nov"
 
+msgid "This text is not available"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr "Ovaj tekst nije još objavljen"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
 msgstr "Ovaj će se tekst objaviti tek %1"
+
+msgid "Thumbnail"
+msgstr ""
 
 msgid "Time is optional."
 msgstr "Sat je neobavezan"

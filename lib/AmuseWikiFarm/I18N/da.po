@@ -295,6 +295,12 @@ msgstr "Bogbyggerens sidebegrænsning (helt tal)"
 msgid "Build it"
 msgstr "Skab bogen"
 
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "CSS tema"
 
@@ -440,6 +446,9 @@ msgstr "Dato"
 msgid "Date of the original publication"
 msgstr "Oprindelig udgivelsesdato"
 
+msgid "Default sorting for the category text list"
+msgstr ""
+
 msgid "Deferred/Deleted texts"
 msgstr "Udsatte/Slettede tekster"
 
@@ -517,6 +526,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Rediger"
+
+msgid "Edit attachment description"
+msgstr ""
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -850,6 +862,12 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
 msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
@@ -1222,6 +1240,9 @@ msgstr "Ny revision"
 msgid "New site id"
 msgstr "Ny side ID"
 
+msgid "Newer first"
+msgstr ""
+
 msgid "Newer texts"
 msgstr "Nyeste tekster"
 
@@ -1286,6 +1307,9 @@ msgstr "Antal resultater at vise på nummererede sider (et helt tal)"
 
 msgid "OPDS"
 msgstr "OPDS"
+
+msgid "Older first"
+msgstr ""
 
 msgid "Older texts"
 msgstr "Ældre tekster"
@@ -1760,6 +1784,9 @@ msgstr "Begrænsede variabler for konfiguration"
 msgid "Restricted format options"
 msgstr "Begrænsede format muligheder"
 
+msgid "Results per page:"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Hentet DATO fra URL"
 
@@ -1924,6 +1951,9 @@ msgstr ""
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Undskyld, for mange ventende opgaver, prøv venligst senere!"
 
+msgid "Sorting:"
+msgstr ""
+
 msgid "Source"
 msgstr "Kilde"
 
@@ -2056,6 +2086,10 @@ msgid ""
 "            or just a filename if you choose to install it in the\n"
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
+msgstr ""
+
+#. ($uri)
+msgid "The description for %1 has been updated"
 msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
@@ -2201,12 +2235,18 @@ msgstr "Denne tekst findes ikke"
 msgid "This text is new"
 msgstr "Denne tekst er ny"
 
+msgid "This text is not available"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr "Denne tekst er ikke offentliggjort endnu"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
 msgstr "Denne tekst vi blive forsinket til %1"
+
+msgid "Thumbnail"
+msgstr ""
 
 msgid "Time is optional."
 msgstr "Tidspunktet er valgfrit."
