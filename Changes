@@ -4,7 +4,7 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-2.020 UNRELEASED
+2.020 2017-05-17
 
  - [SECURITY FIX] Fix potential HTML injection when external images
    are enabled. This is a real security issue if it's an openwiki and

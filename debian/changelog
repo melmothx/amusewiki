@@ -1,3 +1,9 @@
+amusewiki (2.020-1+amw1) unstable; urgency=medium
+
+  * New release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Wed, 17 May 2017 15:05:28 +0200
+
 amusewiki (2.014-2+amw2) unstable; urgency=medium
 
   * Cherry pick some fixes
