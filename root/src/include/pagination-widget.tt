@@ -1,0 +1,30 @@
+[% IF pagination_widget %]
+<div class="amw-spacer-20"></div>
+<div class="text-right">
+<form method="GET" action="[% pagination_widget.target %]" class="pagination-widget-form form-inline">
+  <div class="form-group">
+    <label for="pagination-widget-form-sort" class="control-label">
+      [% loc('Sorting:') %]
+    </label>
+    <select class="form-control" name="sort" id="pagination-widget-form-sort" onchange="this.form.submit()">
+      [% FOREACH pw_sorting IN pagination_widget.sortings %]
+        <option value="[% pw_sorting.name %]" [% IF pw_sorting.active %]selected="selected"[% END %]>
+          [% loc(pw_sorting.label) %]</option>
+      [% END %]
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="pagination-widget-form-rows" class="control-label">
+      [% loc('Results per page:') %]
+    </label>
+    <select class="form-control" id="pagination-widget-form-rows" name="rows" onchange="this.form.submit()">
+      [% FOREACH pw_rows IN pagination_widget.rows %]
+        <option value="[% pw_rows.rows %]" [% IF pw_rows.active %]selected="selected"[% END %]>
+          [% loc(pw_rows.rows) %]</option>
+      [% END %]
+    </select>
+  </div>
+</form>
+</div>
+<div class="amw-spacer-20"></div>
+[% END %]

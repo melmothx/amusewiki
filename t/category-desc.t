@@ -40,7 +40,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 foreach my $uri ([qw/author pippo/],
                  [qw/topic the-cat/]) {
-    my $cat = $site->categories->find({ uri => $uri->[1], type => $uri->[0] });
+    my $cat = $site->categories->with_texts->by_type_and_uri(@$uri);
     my $full_uri = $cat->full_uri;
     ok ($cat, "Found $full_uri");
     ok ($cat->text_count, "$full_uri has " . $cat->text_count . " texts");
@@ -89,10 +89,10 @@ ok (!$title, "Title was purged");
 
 foreach my $uri ([qw/author pippo/],
                  [qw/topic the-cat/]) {
-    my $cat = $site->categories->find({ uri => $uri->[1], type => $uri->[0] });
-    ok ($cat, "Found " . $cat->full_uri);
-    ok (!$cat->text_count, $cat->name . " should have 0 texts")
-      or diag "But has " . $cat->text_count;
+    my $no_texts = $site->categories->find({ uri => $uri->[1], type => $uri->[0] });
+    ok ($no_texts, "Found " . $no_texts->full_uri);
+    my $cat = $site->categories->with_texts->find({ uri => $uri->[1], type => $uri->[0] });
+    ok (!$cat, "$uri->[1] $uri->[0] not found as there are no texts");
 }
 
 
@@ -111,7 +111,7 @@ ok $uri, "Found uri $uri";
 
 foreach my $uri ([qw/author pippo/],
                  [qw/topic the-cat/]) {
-    my $cat = $site->categories->find({ uri => $uri->[1], type => $uri->[0] });
+    my $cat = $site->categories->with_texts->find({ uri => $uri->[1], type => $uri->[0] });
     ok ($cat, "Found " . $cat->full_uri);
     ok ($cat->text_count, $cat->name . " should have 1 text")
       or diag "But has " . $cat->text_count;

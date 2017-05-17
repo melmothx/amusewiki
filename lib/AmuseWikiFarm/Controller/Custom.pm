@@ -31,11 +31,27 @@ sub custom :Chained('root') :PathPart('custom') :Args(1) {
         my $site_id = $site->id;
         if (my $serve = $c->model('DB::JobFile')->find($file)) {
             log_debug { "Found $file in the db" };
-            if ($serve->job->site_id eq $site_id) {
-                log_debug { "$file ok, belongs to $site_id" };
-                $c->stash(serve_static_file => $serve->path);
-                $c->detach($c->view('StaticFile'));
-                return;
+            my $job = $serve->job;
+            if ($job->site_id eq $site_id) {
+                if (my $jobuser = $job->username) {
+                    # this is a private job
+                    if ($c->user_exists) {
+                        my $username = $c->user->get('username');
+                        if ($username eq $jobuser or
+                            $c->check_any_user_role(qw/admin root/)) {
+                            log_info { "$username is accessing its own job (or is admin) for $file" };
+                            $c->stash(serve_static_file => $serve->path);
+                            $c->detach($c->view('StaticFile'));
+                            return;
+                        }
+                    }
+                }
+                else {
+                    log_debug { "$file ok, belongs to $site_id and to no user in particular" };
+                    $c->stash(serve_static_file => $serve->path);
+                    $c->detach($c->view('StaticFile'));
+                    return;
+                }
             }
         }
     }

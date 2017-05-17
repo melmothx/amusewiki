@@ -101,7 +101,7 @@ is($title->status, 'published');
 diag $title->f_full_path_name;
 
 
-my @cats = $title->categories;
+my @cats = $title->categories->with_texts;
 
 ok(@cats == 1);
 is($cats[0]->name, 'Supermarco');
@@ -124,7 +124,7 @@ $title = $schema->resultset('Title')->single({uri => 'dummy-text',
 
 ok($title);
 
-@cats = $title->categories;
+@cats = $title->categories->with_texts;
 
 ok(@cats == 1);
 is($cats[0]->name, 'Superpippo');
@@ -149,7 +149,10 @@ my $deleted_cat = $schema->resultset('Category')->single({uri => 'supermarco',
                                                           site_id => $id });
 
 ok($deleted_cat);
-is($deleted_cat->text_count, 0);
+ok(!$schema->resultset('Category')->with_texts->single({'me.uri' => 'supermarco',
+                                                        'me.type' => 'author',
+                                                        'me.site_id' => $id }));
+
 
 my $dummy_content_deferred =<<'MUSE';
 #title Dummy text
@@ -167,7 +170,7 @@ $title = $schema->resultset('Title')->single({uri => 'dummy-text',
                                               site_id => $id });
 
 ok($title);
-@cats = $title->categories;
+@cats = $title->categories->with_texts;
 ok(@cats == 0);
 ok(!$title->is_published);
 ok($title->can_spawn_revision, "can create a revision");
@@ -189,7 +192,9 @@ foreach my $deletion (qw/superpippo supermarco/) {
                                                            type => 'author',
                                                            site_id => $id });
     ok($deleted_cat);
-    is($deleted_cat->text_count, 0);
+    ok(!$schema->resultset('Category')->active_only->single({'me.uri' => $deletion,
+                                                             'me.type' => 'author',
+                                                             'me.site_id' => $id }));
 }
 
 diag "Now that it was deferred, the latest is $next_latest which was second";
@@ -214,7 +219,9 @@ foreach my $deletion (qw/superpippo supermarco/) {
                                                            type => 'author',
                                                            site_id => $id });
     ok($deleted_cat);
-    is($deleted_cat->text_count, 0);
+    ok(!$schema->resultset('Category')->with_texts->single({'me.uri' => $deletion,
+                                                            'me.type' => 'author',
+                                                            'me.site_id' => $id }));
 }
 
 is($title->status, 'deleted');

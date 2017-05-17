@@ -113,7 +113,7 @@ $site->compile_and_index_files([catfile($repo_root, qw/a at a-test-pippo.muse/)]
 
 $published->discard_changes;
 
-@cats = $published->categories->search({ text_count => { '>' => 0 } });
+@cats = $published->categories->with_texts;
 
 # foreach my $c (@cats) {
 #     print "Found ", $c->uri, "\n";

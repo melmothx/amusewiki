@@ -12,7 +12,7 @@ use Data::Dumper;
 use DateTime;
 use File::Spec::Functions qw/catfile/;
 use File::Basename;
-use Test::More skip_all => 'Not required';
+use Test::More tests => 4;
 use Test::Differences;
 use Test::WWW::Mechanize::Catalyst;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');

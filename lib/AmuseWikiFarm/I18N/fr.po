@@ -298,6 +298,12 @@ msgstr "Limite de pages du générateur de livres (nombre)"
 msgid "Build it"
 msgstr "Générer"
 
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "Thème CSS"
 
@@ -444,6 +450,9 @@ msgstr "Date"
 msgid "Date of the original publication"
 msgstr "Date de publication originale"
 
+msgid "Default sorting for the category text list"
+msgstr ""
+
 msgid "Deferred/Deleted texts"
 msgstr "Textes différés/supprimés"
 
@@ -524,6 +533,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Modifier"
+
+msgid "Edit attachment description"
+msgstr ""
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -866,6 +878,12 @@ msgstr "ID"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Si non définit %1 sera cherché dans le répertoire d'applications."
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
@@ -1236,6 +1254,9 @@ msgstr "Nouvelle révision"
 msgid "New site id"
 msgstr "Nouvel ID de site"
 
+msgid "Newer first"
+msgstr ""
+
 msgid "Newer texts"
 msgstr "Texte plus récents"
 
@@ -1301,6 +1322,9 @@ msgstr ""
 
 msgid "OPDS"
 msgstr "OPDS"
+
+msgid "Older first"
+msgstr ""
 
 msgid "Older texts"
 msgstr "Textes plus anciens"
@@ -1775,6 +1799,9 @@ msgstr "Variables de configuration restreintes"
 msgid "Restricted format options"
 msgstr "Options de format restreintes"
 
+msgid "Results per page:"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Consulté le DATE de URL"
 
@@ -1941,6 +1968,9 @@ msgstr ""
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Désolé, trop de tâches déjà en attente, veuillez réessayer plus tard!"
 
+msgid "Sorting:"
+msgstr ""
+
 msgid "Source"
 msgstr "Source"
 
@@ -2084,6 +2114,10 @@ msgstr ""
 "fichier si vous choisissez de l'installer dans l'arborescence TeXlive. Vous "
 "pouvez ce faire grâce aux commandes suivantes. La dernière vérifie si le "
 "fichier peut être trouvé."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Le fichier mis en ligne n'est pas un fichier HTML!"
@@ -2242,12 +2276,18 @@ msgstr "Ce texte n'existe pas"
 msgid "This text is new"
 msgstr "Ce texte est nouveau"
 
+msgid "This text is not available"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr "Ce texte n'est pas encore publié"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
 msgstr "Ce texte sera différé à %1"
+
+msgid "Thumbnail"
+msgstr ""
 
 msgid "Time is optional."
 msgstr "L'heure est optionelle."

@@ -301,6 +301,12 @@ msgstr "Максимален број на страници на збиркат�
 msgid "Build it"
 msgstr "Направи"
 
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr "CSS тема"
 
@@ -448,6 +454,9 @@ msgstr "Датум"
 msgid "Date of the original publication"
 msgstr "Датум на оригиналното издание"
 
+msgid "Default sorting for the category text list"
+msgstr ""
+
 msgid "Deferred/Deleted texts"
 msgstr "Одложени/избришани текстови"
 
@@ -528,6 +537,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Уреди"
+
+msgid "Edit attachment description"
+msgstr ""
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -860,6 +872,12 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ако е празно, ќе се користи %1 од директориумот на апликацијата."
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
@@ -1235,6 +1253,9 @@ msgstr "Нова измена"
 msgid "New site id"
 msgstr "Нов id на сајтот"
 
+msgid "Newer first"
+msgstr ""
+
 msgid "Newer texts"
 msgstr "Понови текстови"
 
@@ -1298,6 +1319,9 @@ msgstr ""
 
 msgid "OPDS"
 msgstr "OPDS"
+
+msgid "Older first"
+msgstr ""
 
 msgid "Older texts"
 msgstr "Постари текстови"
@@ -1777,6 +1801,9 @@ msgstr "Ограничена конфигурација"
 msgid "Restricted format options"
 msgstr "Ограничени опции за фајловите"
 
+msgid "Results per page:"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Пронајдено на ДАТУМ на URL"
 
@@ -1939,6 +1966,9 @@ msgstr "Некој, веројатно ти, побарал нова лозин�
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Премногу задачи на чекање, вратете се подоцна!"
 
+msgid "Sorting:"
+msgstr ""
+
 msgid "Source"
 msgstr "Извор"
 
@@ -2081,6 +2111,10 @@ msgstr ""
 "само име на датотеката\n"
 " ако таа е инсталирана во Texlive. Можеш да го направиш тоа користејќи ги\n"
 " следните команди."
+
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Вчитаната датотека не е во HTML!"
@@ -2232,12 +2266,18 @@ msgstr "Овој текст не постои"
 msgid "This text is new"
 msgstr "Овој текст е нов"
 
+msgid "This text is not available"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr "Овој текст сè уште не е објавен"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
 msgstr "Овој текст ќе се објави на %1"
+
+msgid "Thumbnail"
+msgstr ""
 
 msgid "Time is optional."
 msgstr "Времето е незадолжително"

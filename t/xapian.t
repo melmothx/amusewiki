@@ -42,7 +42,7 @@ $site->update_db_from_tree(sub { diag @_ });
 is $site->titles->count, 1, "1 title now";
 is $site->attachments->count, 2, "2 attachments";
 is $site->categories->count, 1, "1 category";
-is $site->categories->first->text_count, 1, "1 category, 1 text";
+is $site->categories->with_texts->first->text_count, 1, "1 category, 1 text";
 my $xapian_dir = $site->xapian->xapian_dir;
 ok (-d $xapian_dir, "$xapian_dir exists");
 

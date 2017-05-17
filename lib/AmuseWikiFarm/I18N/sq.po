@@ -309,6 +309,12 @@ msgstr "Limiti i faqeve të përpiluesit të librit (integjer)"
 msgid "Build it"
 msgstr "Krijoje "
 
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr ""
 
@@ -455,6 +461,9 @@ msgstr "Data"
 msgid "Date of the original publication"
 msgstr "Data e origjinale e botimit"
 
+msgid "Default sorting for the category text list"
+msgstr ""
+
 msgid "Deferred/Deleted texts"
 msgstr "Tekstet e shtyra/fshira"
 
@@ -533,6 +542,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Ndrysho"
+
+msgid "Edit attachment description"
+msgstr ""
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -866,6 +878,12 @@ msgstr "ID"
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Nëse nuk është vendosur %1 do të merret nga udhëzuesi i aplikacionit"
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr "Nëse personi e ka shkruar email-in, do të jetë i vendosur në fushën CC"
@@ -1234,6 +1252,9 @@ msgstr "Përpunim i ri"
 msgid "New site id"
 msgstr "ID e re e faqes"
 
+msgid "Newer first"
+msgstr ""
+
 msgid "Newer texts"
 msgstr "Tekste më të reja"
 
@@ -1297,6 +1318,9 @@ msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numri i rezultateve për ti shfaqur në faqe të numëruara (integjer)"
 
 msgid "OPDS"
+msgstr ""
+
+msgid "Older first"
 msgstr ""
 
 msgid "Older texts"
@@ -1759,6 +1783,9 @@ msgstr "Ndryshoret e kufizuara të parametrave"
 msgid "Restricted format options"
 msgstr "Zgjedhjet e kufizuara të formatizmit"
 
+msgid "Results per page:"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "E marrë me (datën) nga URL"
 
@@ -1928,6 +1955,9 @@ msgstr ""
 "Kërkojmë falje, mirëpo një numër i madh i punëve është në pritje. Ju lutem "
 "provoni më vonë!"
 
+msgid "Sorting:"
+msgstr ""
+
 msgid "Source"
 msgstr "Referenca"
 
@@ -2059,6 +2089,10 @@ msgid ""
 "            or just a filename if you choose to install it in the\n"
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
+msgstr ""
+
+#. ($uri)
+msgid "The description for %1 has been updated"
 msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
@@ -2213,12 +2247,18 @@ msgstr "Ky tekst nuk egziston"
 msgid "This text is new"
 msgstr "Ky është tekst i ri"
 
+msgid "This text is not available"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr "Ky tekst nuk është publikuar ende"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
 msgstr "Ky tekst është shtyrë për %1"
+
+msgid "Thumbnail"
+msgstr ""
 
 msgid "Time is optional."
 msgstr ". Koha nuk ështe e detyrueshme. "

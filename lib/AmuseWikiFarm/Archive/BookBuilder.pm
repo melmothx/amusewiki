@@ -90,6 +90,9 @@ has single_file_extension => (is => 'ro',
                               isa => 'Str',
                               default => sub { '' });
 
+has user_is_logged_in => (is => 'ro',
+                          isa => 'Bool',
+                          default => sub { 0 });
 
 sub load_from_token {
     my ($self, $token) = @_;
@@ -99,6 +102,7 @@ sub load_from_token {
                     site => $self->site,
                     token => $self->token,
                     dbic => $self->dbic,
+                    user_is_logged_in => $self->user_is_logged_in,
                    );
         my $bb = __PACKAGE__->new(%args);
         # add the current texts
@@ -192,7 +196,8 @@ sub pages_estimated_for_text {
     my ($self, $text) = @_;
     my $filename = Text::Amuse::Compile::FileName->new($text);
     if (my $site = $self->site) {
-        if (my $title = $site->titles->text_by_uri($filename->name)) {
+        # here we don't care if it's deferred or not
+        if (my $title = $site->titles->bookbuildable_by_uri($filename->name)) {
             my $text_pages = $title->pages_estimated;
             if (my $pieces = scalar($filename->fragments)) {
                 my $total = scalar(@{$title->text_html_structure}) || 1;
@@ -837,7 +842,11 @@ sub add_text {
     if (muse_filename_is_valid($filename->name)) {
         # additional checks if we have the site.
         if (my $site = $self->site) {
-            if (my $title = $site->titles->text_by_uri($filename->name)) {
+            if (my $title = $site->titles->bookbuildable_by_uri($filename->name)) {
+                if ($title->is_deferred and !$self->user_is_logged_in) {
+                    # silently drop it
+                    return;
+                }
                 my $limit = $site->bb_page_limit;
                 my $total = $self->total_pages_estimated + $self->pages_estimated_for_text($text);
                 if ($total <= $limit) {
@@ -1190,7 +1199,7 @@ sub compile {
             my $fileobj = Text::Amuse::Compile::FileName->new($filename);
             my $text = $fileobj->name;
             log_debug { "Checking $text" };
-            my $title = $self->site->titles->text_by_uri($text);
+            my $title = $self->site->titles->bookbuildable_by_uri($text);
             unless ($title) {
                 log_warn  { "Couldn't find $text\n" };
                 next;
@@ -1453,7 +1462,7 @@ sub can_generate_slides {
     my $self = shift;
     my @texts = $self->text_filenames;
     if (@texts && !$self->is_collection) {
-        if (my $text = $self->site->titles->text_by_uri($texts[0]->name)) {
+        if (my $text = $self->site->titles->bookbuildable_by_uri($texts[0]->name)) {
             return $text->slides;
         }
     }
@@ -1515,6 +1524,17 @@ sub _muse_virtual_headers {
     }
     return %header;
 }
+
+sub refresh_text_list {
+    my $self = shift;
+    my @texts = @{$self->texts};
+    # clear and readd
+    $self->delete_all;
+    foreach my $text (@texts) {
+        $self->add_text($text);
+    }
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

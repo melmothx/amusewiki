@@ -1364,6 +1364,7 @@ sub xapian {
                                                locale => $self->locale,
                                                # disable stemming for search on multilang environment
                                                stem_search => !$self->multilanguage,
+                                               index_deferred => $self->show_preview_when_deferred,
                                               );
 }
 
@@ -1540,6 +1541,9 @@ sub index_file {
     # handle specials and texts
 
     # ready to store into titles?
+
+    my $guard = $self->result_source->schema->txn_scope_guard;
+
     # by default text are published, unless the file info returns something else
     # and if it's an update we have to reset it.
     my %insertion = (deleted => '');
@@ -1602,7 +1606,7 @@ sub index_file {
         }
     }
     if (%$details) {
-        $logger->("Unhandle directive in $file: " . join(", ", %$details) . "\n");
+        $logger->("Custom directives: " . join(", ", %$details) . "\n");
     }
     $logger->("Inserting data for $file\n");
 
@@ -1647,24 +1651,9 @@ sub index_file {
     foreach my $category (@parsed_cats) {
         $self->categories->update_or_create($category);
     }
+    $title->set_categories(\@parsed_cats);
+    # the final goal is to avoid the use of hardcoded text_count
 
-    if ($title->is_published && @parsed_cats) {
-        # here we can die if there are duplicated uris
-        $title->set_categories(\@parsed_cats);
-    }
-    else {
-        # purge the categories if there is none.
-        $title->set_categories([]);
-    }
-
-    foreach my $cat ($title->categories) {
-        $cat->title_count_update;
-    }
-
-    foreach my $cat_id (@old_cats_ids) {
-        my $cat = $self->categories->find($cat_id);
-        $cat->title_count_update;
-    }
     # XAPIAN INDEXING, excluding specials
     if ($class eq 'text') {
         $self->xapian->index_text($title, $logger);
@@ -1685,6 +1674,20 @@ sub index_file {
         }
         $title->set_monthly_archives(\@months);
     }
+    $title->muse_headers->delete;
+    if (my $header_obj = AmuseWikiFarm::Utils::Amuse::muse_header_object($title->f_full_path_name)) {
+        my %header = %{$header_obj->header};
+        foreach my $k (keys %header) {
+            # prevent a mess
+            if (length($k) < 255) {
+                $title->muse_headers->create({
+                                              muse_header => $k,
+                                              muse_value => $header{$k},
+                                             });
+            }
+        }
+    }
+    $guard->commit;
     return $title;
 }
 
@@ -1783,24 +1786,18 @@ sub supported_locales {
     return sort keys %out;
 }
 
-has is_without_authors => (is => 'ro',
-                           isa => 'Bool',
-                           lazy => 1,
-                           builder => '_build_is_without_authors');
-
-sub _build_is_without_authors {
-    my $self = shift;
-    return !$self->categories->authors_count;
+sub is_without_authors {
+    my ($self, $logged_in) = @_;
+    return !$self->categories->by_type('author')
+      ->with_texts(deferred => $logged_in || $self->show_preview_when_deferred)
+      ->first;
 }
 
-has is_without_topics => (is => 'ro',
-                          isa => 'Bool',
-                          lazy => 1,
-                          builder => '_build_is_without_topics');
-
-sub _build_is_without_topics {
-    my $self = shift;
-    return !$self->categories->topics_count;
+sub is_without_topics {
+    my ($self, $logged_in) = @_;
+    return !$self->categories->by_type('topic')
+      ->with_texts(deferred => $logged_in || $self->show_preview_when_deferred)
+      ->first;
 }
 
 has options_hr => (
@@ -2566,6 +2563,8 @@ sub update_from_params {
                            text_infobox_at_the_bottom
                            freenode_irc_channel
                            turn_links_to_images_into_images
+                           show_preview_when_deferred
+                           titles_category_default_sorting
                            use_js_highlight
                            edit_option_page_left_bs_columns
                            edit_option_show_cheatsheet
@@ -2789,8 +2788,8 @@ sub static_indexes_generator {
     my $self = shift;
     require AmuseWikiFarm::Archive::StaticIndexes;
     my $texts = $self->titles->published_texts;
-    my $authors = $self->categories->active_only_by_type('author');
-    my $topics  = $self->categories->active_only_by_type('topic');
+    my $authors = $self->categories->by_type('author');
+    my $topics  = $self->categories->by_type('topic');
     my $generator = AmuseWikiFarm::Archive::StaticIndexes
       ->new(
             texts => $texts,
@@ -2907,6 +2906,34 @@ sub bottom_layout_html {
     return shift->get_option('bottom_layout_html') || '';
 }
 
+
+sub titles_available_sortings {
+    my $self = shift;
+    return $self->titles->available_sortings;
+}
+
+sub validate_text_category_sorting {
+    my ($self, $option) = @_;
+    my @available = $self->titles_available_sortings;
+    if ($option) {
+        if (grep { $_->{name} eq $option } @available) {
+            return $option;
+        }
+    }
+    if ($self->blog_style) {
+        return 'pubdate_desc';
+    }
+    else {
+        return $available[0]{name};
+    }
+}
+
+sub titles_category_default_sorting {
+    my $self = shift;
+    my $option = $self->get_option('titles_category_default_sorting') || '';
+    return $self->validate_text_category_sorting($option);
+}
+
 sub pagination_size {
     return shift->get_option('pagination_size') || 10;
 }
@@ -2933,6 +2960,16 @@ sub pagination_size_monthly {
 
 sub text_infobox_at_the_bottom {
     return shift->get_option('text_infobox_at_the_bottom') || '';
+}
+
+sub show_preview_when_deferred {
+    my $self = shift;
+    if ($self->get_option('show_preview_when_deferred')) {
+        return 1;
+    }
+    else {
+        return '';
+    }
 }
 
 sub use_luatex {
@@ -3208,7 +3245,7 @@ sub edit_option_page_left_bs_columns {
 }
 
 sub update_db_from_tree_async {
-    my ($self, $logger) = @_;
+    my ($self, $logger, $username) = @_;
     $logger ||= sub { print @_ };
     my @files = $self->_pre_update_db_from_tree($logger);
     my $now = DateTime->now;
@@ -3216,10 +3253,12 @@ sub update_db_from_tree_async {
                                      created => $now,
                                      status => (scalar(@files) ? 'active' : 'completed'),
                                      completed => (scalar(@files) ? undef : $now),
+                                     username => $username,
                                      jobs => [
                                               map {
                                                   +{
                                                     site_id => $self->id,
+                                                    username => $username,
                                                     task => 'reindex',
                                                     status => 'pending',
                                                     created => $now,

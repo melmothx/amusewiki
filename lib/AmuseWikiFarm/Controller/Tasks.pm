@@ -31,14 +31,37 @@ sub root :Chained('/site_human_required') :PathPart('tasks') :CaptureArgs(0) {
     $c->stash(full_page_no_side_columns => 1);
 }
 
-sub status :Chained('root') :CaptureArgs(1) {
+sub check_job :Chained('root') :PathPart('status') :CaptureArgs(1) {
     my ($self, $c, $id) = @_;
-    my $job = $c->stash->{site}->jobs->find($id);
-    unless ($job) {
+    my $got;
+    if (my $job = $c->stash->{site}->jobs->find($id)) {
+        if ($job->username) {
+            # check if there is a match
+            if ($c->user_exists) {
+                if ($c->check_any_user_role(qw/admin root/) or
+                    $c->user->get('username') eq $job->username) {
+                    # all ok
+                    $got = $job;
+                }
+            }
+        }
+        else {
+            # job doesn't define an username
+            $got = $job;
+        }
+    }
+    if ($got) {
+        $c->stash(job_object => $got);
+    }
+    else {
         $c->detach('/not_found');
         return;
     }
+}
 
+sub status :Chained('check_job') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $job = delete $c->stash->{job_object};
     # here we inject the message, depending on the task
     my $offset = $c->request->params->{offset};
     my $data = $job->as_hashref(offset => $offset);
@@ -94,7 +117,7 @@ sub rebuild :Chained('bulks') :PathPart('rebuild') :Args(0) {
     my $rs = $all->active_bulk_jobs;
     if ($c->request->body_params->{rebuild}) {
         $rs->abort_all;
-        my $job = $c->stash->{site}->rebuild_formats;
+        my $job = $c->stash->{site}->rebuild_formats($c->user->get('username'));
         $c->response->redirect($c->uri_for_action('/tasks/show_bulk_job', [ $job->bulk_job_id ]));
         $c->detach;
         return;

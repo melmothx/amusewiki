@@ -21,7 +21,7 @@
     </a>
   </p>
   [% END %]
-  <form action="[% c.uri_for_action('/tasks/rebuild') %]" method="POST">
+  <form id="site-rebuild-form" action="[% c.uri_for_action('/tasks/rebuild') %]" method="POST">
     <button type="submit" class="btn btn-primary" name="rebuild" value="1">
       [% loc("Rebuild") %]
     </button>

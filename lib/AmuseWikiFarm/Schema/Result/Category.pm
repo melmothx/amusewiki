@@ -190,20 +190,6 @@ __PACKAGE__->many_to_many("titles", "title_categories", "title");
 # Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C29cQenHAkgsAx2y9wSN1A
 
-=head2 title_count_update
-
-Update the published texts count. It doesn't look at the text_count in
-the row, but rather B<set> it.
-
-=cut
-
-sub title_count_update {
-    my $self = shift;
-    my $count = $self->titles->published_texts->count;
-    $self->text_count($count);
-    $self->update if $self->is_changed;
-}
-
 =head2 published_titles
 
 Return a Title resultset, but only with published texts
@@ -257,7 +243,6 @@ sub cloud_level {
         return $level;
     }
 }
-
 
 __PACKAGE__->meta->make_immutable;
 1;

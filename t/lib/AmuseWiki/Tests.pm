@@ -55,7 +55,7 @@ sub check_jobber_result {
     my $mech = shift;
     my $task_path = $mech->response->base->path;
     my ($task_id) = $task_path =~ m{^/tasks/status/(.*)};
-    die unless $task_id;
+    die "$task_path doesn't have an id" unless $task_id;
     my $success;
     for (1..30) {
         $mech->get("/tasks/status/$task_id/ajax");
@@ -120,7 +120,6 @@ sub fill_site {
         $indexer->index_text("this uri doesn't exist a abc cdf");
         $db->replace_document_by_term('Q' . $uri, $doc);
     }
-    $_->title_count_update for ($author, $topic);
 }
 
 1;

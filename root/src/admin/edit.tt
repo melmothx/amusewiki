@@ -283,7 +283,34 @@ kpsewhich mylogo.pdf
             [% loc('Turn links to images into images (affects site display only, static formats have the link)') %]
           </label>
         </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.show_preview_when_deferred %]checked="checked"[% END %]
+                   name="show_preview_when_deferred" />
+            [% loc('If the publication of a text is deferred, list it
+            with the teaser and the cover without providing access to
+            the body') %]
+          </label>
+        </div>
     </div>
+
+    <div class="form-group">
+      <label for="titles_category_default_sorting" class="col-sm-6 control-label">
+        [% loc('Default sorting for the category text list') %]
+      </label>
+      <div class="col-sm-6">
+        <select name="titles_category_default_sorting" id="titles_category_default_sorting" class="form-control">
+          [% FOREACH sorting IN site.titles_available_sortings %]
+          <option value="[% sorting.name %]"
+                  [% IF esite.titles_category_default_sorting == sorting.name %]selected="selected"[% END %]>
+            [% sorting.label %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+    </div>
+
 
     <div class="form-group">
       <label for="theme" class="col-sm-6 control-label">

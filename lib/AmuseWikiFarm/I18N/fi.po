@@ -277,6 +277,12 @@ msgstr "Kirjantekijän sivurajoitus (kokonaisluku)"
 msgid "Build it"
 msgstr "Tee kirja"
 
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr ""
 
@@ -418,6 +424,9 @@ msgstr "Päivämäärä"
 msgid "Date of the original publication"
 msgstr "Alkuperäisen julkaisun päivämäärä"
 
+msgid "Default sorting for the category text list"
+msgstr ""
+
 msgid "Deferred/Deleted texts"
 msgstr "Odottamaan jätetyt/poistetut tekstit"
 
@@ -493,6 +502,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Muokkaa"
+
+msgid "Edit attachment description"
+msgstr ""
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -800,6 +812,12 @@ msgstr "Tunniste"
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
 msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
@@ -1144,6 +1162,9 @@ msgstr "Uusi versio"
 msgid "New site id"
 msgstr "Uusi tunnus"
 
+msgid "Newer first"
+msgstr ""
+
 msgid "Newer texts"
 msgstr ""
 
@@ -1205,6 +1226,9 @@ msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
 msgid "OPDS"
+msgstr ""
+
+msgid "Older first"
 msgstr ""
 
 msgid "Older texts"
@@ -1647,6 +1671,9 @@ msgstr ""
 msgid "Restricted format options"
 msgstr ""
 
+msgid "Results per page:"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Haettu PVM osoitteesta URL"
 
@@ -1809,6 +1836,9 @@ msgstr ""
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
+msgid "Sorting:"
+msgstr ""
+
 msgid "Source"
 msgstr "Lähde"
 
@@ -1946,6 +1976,10 @@ msgid ""
 "            The last one checks if the file can be found."
 msgstr ""
 
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr ""
+
 msgid "The file uploaded is not an HTML file!"
 msgstr ""
 
@@ -2081,11 +2115,17 @@ msgstr "Tekstiä ei ole"
 msgid "This text is new"
 msgstr ""
 
+msgid "This text is not available"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr ""
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
+msgstr ""
+
+msgid "Thumbnail"
 msgstr ""
 
 msgid "Time is optional."

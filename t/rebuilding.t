@@ -5,7 +5,7 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 55;
+use Test::More tests => 61;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -64,6 +64,7 @@ $mech->submit_form(form_id => 'login-form',
                    fields => { __auth_user => 'root',
                                __auth_pass => 'root',
                              });
+my $check_status_url = $mech->uri->path;
 like $mech->uri->path, qr{/tasks/status/};
 sleep 30;
 $mech->get_ok($mech->uri->path);
@@ -74,7 +75,12 @@ system($init, 'stop');
 
 $site->bulk_jobs->delete_all;
 ok(!$site->bulk_jobs->count, "No bulk jobs so far");
-$site->rebuild_formats;
+
+$mech->get_ok('/tasks/rebuild');
+
+$mech->submit_form(form_id => 'site-rebuild-form',
+                   button => 'rebuild');
+
 is($site->bulk_jobs->count, 1, "bulk job created");
 my $bulk = $site->bulk_jobs->first;
 
@@ -94,8 +100,16 @@ ok !$bulk->completed, "job is not completed";
     ok defined($test_job->bulk_job_id);
     ok $test_job->dispatch_job;
     is $test_job->status, 'completed';
+    is $test_job->username, 'root';
     diag $test_job->logs;
     ok $test_job->logs;
+    my $check_ext = '/tasks/status/' . $test_job->id;
+    $mech->get_ok($check_ext);
+    $mech->get_ok('/logout');
+    $mech->get($check_ext);
+    is $mech->status, 404;
+    $mech->get($check_status_url);
+    is $mech->status, 404;
 }
 $bulk->discard_changes;
 ok $bulk->eta;

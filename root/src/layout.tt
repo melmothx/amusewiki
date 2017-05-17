@@ -109,7 +109,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 32 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 33 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 3 }) %]"></script>
     <script type="text/javascript">
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -218,7 +218,7 @@
                     [% loc('Titles') %]
                   </a>
                 </li>
-                [% UNLESS site.is_without_authors %]
+                [% UNLESS site_is_without_authors %]
                 <li[% IF nav == 'author' %] class="active" [% END %]
                       id="amw-nav-bar-authors">
                   <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
@@ -241,8 +241,9 @@
                 </li>
                 [%     END  %]
                 [% ELSE %]
-                    [% UNLESS site.is_without_topics %]
-	            <li[% IF nav == 'topic' %] class="active" [% END %]>
+                    [% UNLESS site_is_without_topics %]
+	            <li[% IF nav == 'topic' %] class="active" [% END %]
+                      id="amw-nav-bar-topics">
                   <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"
 		             title="[% loc('texts sorted by topics') %]">
                     [% loc('Topics') %]
@@ -620,14 +621,14 @@
 		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
         </span>
 
-      [% UNLESS site.is_without_authors %]
+      [% UNLESS site_is_without_authors %]
         <span id="amw-footer-link-authors-sep">|</span>
         <span id="amw-footer-link-authors">
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'author' ]) %]"
 		 title="[% loc('texts sorted by author') %]">[% loc('Authors') %]</a>
         </span>
       [% END %]
-      [% UNLESS site.is_without_topics %]
+      [% UNLESS site_is_without_topics %]
         <span id="amw-footer-link-topics-sep">|</span>
         <span id="amw-footer-link-topics">
       <a href="[% c.uri_for_action('/category/category_list_display', [ 'topic' ]) %]"

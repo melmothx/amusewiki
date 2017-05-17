@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 7;
+use Test::More tests => 5;
 use File::Spec::Functions qw/catfile catdir/;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
@@ -33,11 +33,6 @@ $revision->commit_version;
 my $uri = $revision->publish_text;
 ok $uri, "Found uri $uri";
 
-# caching
-ok $site->is_without_authors;
-ok $site->is_without_topics;
-
-$site = $site->get_from_storage;
 ok !$site->is_without_authors;
 ok !$site->is_without_topics;
 

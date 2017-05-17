@@ -77,6 +77,8 @@ before process => sub {
             $c->stash(meta_description => amw_meta_stripper($meta_desc));
         }
         $c->stash(
+                  site_is_without_authors => $site->is_without_authors($c->user_exists),
+                  site_is_without_topics => $site->is_without_topics($c->user_exists),
                   bootstrap_css => "/static/css/bootstrap.$theme.css",
                   main_body_cols => $columns,
                   top_layout_html => $site->top_layout_html,

@@ -27,7 +27,7 @@ my $othersite = $schema->resultset('Site')->find('0test0');
 my $j = $site->jobs->enqueue(testing => {});
 
 is $j->site->id, '0blog0';
-is $j->username, "anonymous";
+is $j->username, undef,
 is $j->committer_username, "anonymous";
 is $j->committer_name, "Anonymous";
 is $j->committer_mail, "anonymous\@blog.amusewiki.org";

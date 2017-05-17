@@ -110,7 +110,7 @@ add_text({
           pubdate => "2013-01-01",
          });
 $mech->get_ok('/');
-$mech->content_lacks('Topics');
+$mech->content_lacks('Topics') or die;
 $mech->content_like(qr/Authors.*Authors/s);
 
 add_text({
@@ -147,11 +147,10 @@ $mech->content_lacks('class="pagination"');
 }
 
 foreach my $num (1..10) {
+    my $teaser = "Teaser $num. This buffer is for notes you dont want to save " x $num;
     my $new_uri = add_text({
               title => "Another one... $num",
-              teaser => ("Teaser $num. This buffer is for notes you don't want to save, and
-for Lisp evaluation. If you want to create a file, visit that file
-with C-x C-f, then enter the text in that file's own buffer. " x $num ),
+              teaser => $teaser,
               lang => 'en',
               subtitle => ("Sub " x $num),
               textbody => "Nothing interesting",
@@ -159,10 +158,17 @@ with C-x C-f, then enter the text in that file's own buffer. " x $num ),
               pubdate => DateTime->new(year => 2015, month => $num)->iso8601,
              });
     $mech->get_ok('/feed');
-    $mech->content_contains("Teaser $num.");
+    $mech->content_contains("Teaser $num. This buffer is for notes you dont");
     $mech->get_ok($new_uri);
     $mech->content_contains('chevron');
-    $mech->content_contains(qq{<meta name="description" content="Teaser $num.});
+    # teaser is too long
+    if (length($teaser) > 160) {
+        $mech->content_contains(qq{<meta name="description" content="Another one... $num});
+    }
+    else {
+        $teaser =~ s/\s*\z//;
+        $mech->content_contains(qq{<meta name="description" content="$teaser"});
+    }
 }
 
 {
@@ -293,55 +299,56 @@ foreach my $element (qw/left right top bottom/) {
 diag "Testing tag cloud";
 
 my $guard = $schema->txn_scope_guard;
-foreach my $num (1..100) {
+foreach my $num (1..20) {
     foreach my $type (qw/topic author/) {
-        $site->add_to_categories({
-                                  name => "test $type $num",
-                                  uri => "test-$type-$num",
-                                  type => $type,
-                                  text_count => $num,
-                                  sorting_pos => $num,
-                                 })
+        my $cat = $site->add_to_categories({
+                                            name => "test $type $num",
+                                            uri => "test-$type-$num",
+                                            type => $type,
+                                            sorting_pos => $num,
+                                           });
+        my @titles = $site->titles->published_texts->search(undef, { rows => $num});
+        $cat->set_titles(\@titles);
     }
 }
 $guard->commit;
 
 $mech->get_ok('/cloud');
 $mech->content_contains('>test topic 1<');
-$mech->content_contains('>test topic 100<');
+$mech->content_contains('>test topic 20<');
 $mech->content_contains('>test author 1<');
-$mech->content_contains('>test author 100<');
+$mech->content_contains('>test author 20<');
 my @links = grep { $_->url =~ m/\/category\// } $mech->find_all_links;
 $mech->links_ok(\@links);
 ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 
-$mech->get_ok('/cloud?limit=60');
+$mech->get_ok('/cloud?limit=10');
 $mech->content_lacks('>test topic 1<');
-$mech->content_lacks('>test topic 59<');
-$mech->content_contains('>test topic 60<');
-$mech->content_contains('>test topic 100<');
+$mech->content_lacks('>test topic 9<');
+$mech->content_contains('>test topic 20<');
+$mech->content_contains('>test topic 15<');
 $mech->content_lacks('>test author 1<');
-$mech->content_lacks('>test author 59<');
-$mech->content_contains('>test author 61<');
-$mech->content_contains('>test author 100<');
+$mech->content_lacks('>test author 9<');
+$mech->content_contains('>test author 10<');
+$mech->content_contains('>test author 20<');
 
-$mech->get_ok('/cloud?limit=60&bare=1');
+$mech->get_ok('/cloud?limit=10&bare=1');
 $mech->content_lacks('>test topic 1<');
-$mech->content_lacks('>test topic 59<');
-$mech->content_contains('>test topic 60<');
-$mech->content_contains('>test topic 100<');
+$mech->content_lacks('>test topic 9<');
+$mech->content_contains('>test topic 10<');
+$mech->content_contains('>test topic 20<');
 $mech->content_lacks('>test author 1<');
-$mech->content_lacks('>test author 59<');
-$mech->content_contains('>test author 60<');
-$mech->content_contains('>test author 100<');
+$mech->content_lacks('>test author 9<');
+$mech->content_contains('>test author 10<');
+$mech->content_contains('>test author 20<');
 $mech->content_lacks('My new blog');
 
 $mech->get_ok('/cloud/authors');
-$mech->content_contains('>test author 55<');
-$mech->content_lacks('>test topic 55<');
+$mech->content_contains('>test author 15<') or die;
+$mech->content_lacks('>test topic 15<');
 $mech->get_ok('/cloud/topics');
-$mech->content_contains('>test topic 55<');
-$mech->content_lacks('>test author 55<');
+$mech->content_contains('>test topic 15<');
+$mech->content_lacks('>test author 15<');
 
 copy(catfile(qw/t files widebanner.png/),
      catfile($site->path_for_site_files));

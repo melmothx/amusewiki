@@ -54,19 +54,27 @@ sub published_or_deferred_all  {
 }
 
 sub texts_only {
-    return shift->search({ f_class => 'text' });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.f_class" => 'text' });
 }
 
 sub specials_only {
-    return shift->search({ f_class => 'special' });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.f_class" => 'special' });
 }
 
 sub status_is_published {
-    return shift->search({ status => 'published' });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => 'published' });
 }
 
 sub status_is_published_or_deferred {
-    return shift->search({ status => [qw/published deferred/] });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => [qw/published deferred/] });
 }
 
 sub sorted_by_title {
@@ -147,7 +155,7 @@ Find a published text by uri.
 
 sub text_by_uri {
     my ($self, $uri) = @_;
-    return $self->published_texts->single({ uri => $uri });
+    return $self->published_texts->by_uri($uri)->single;
 }
 
 =head2 special_by_uri
@@ -158,7 +166,13 @@ Find a published special by uri.
 
 sub special_by_uri {
     my ($self, $uri) = @_;
-    return $self->published_specials->single({ uri => $uri });
+    return $self->published_specials->by_uri($uri)->single;
+}
+
+sub by_uri {
+    my ($self, $uri) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.uri" => $uri });
 }
 
 =head2 find_file($path)
@@ -172,7 +186,8 @@ Shortcut for
 sub find_file {
     my ($self, $path) = @_;
     die "Bad usage" unless $path;
-    return $self->search({ f_full_path_name => $path })->single;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.f_full_path_name" => $path })->single;
 }
 
 
@@ -202,7 +217,9 @@ Return the titles, specials included, with the status not set to 'published'
 =cut
 
 sub unpublished {
-    return shift->sort_by_pubdate_desc->search({ status => { '!=' => 'published' } });
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->sort_by_pubdate_desc->search({ "$me.status" => { '!=' => 'published' } });
 }
 
 
@@ -218,9 +235,10 @@ sub deferred_to_publish {
     die unless $time && $time->isa('DateTime');
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($time);
+    my $me = $self->current_source_alias;
     return $self->search({
-                          status => 'deferred',
-                          pubdate => { '<' => $format_time },
+                          "$me.status" => 'deferred',
+                          "$me.pubdate" => { '<' => $format_time },
                          });
 
 }
@@ -365,6 +383,95 @@ sub newer_than {
                                                     "$me.title" ] }
                                        ]
                          });
+}
+
+sub bookbuildable_by_uri {
+    my ($self, $uri) = @_;
+    return unless $uri;
+    return $self->status_is_published_or_deferred->texts_only->by_uri($uri)->single;
+}
+
+sub _sorting_map {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    my @default = ("$me.sorting_pos", "$me.title", "$me.id");
+    return {
+            title_asc => {
+                          priority => 1,
+                          order_by => { -asc => [ @default ]},
+                          # loc("By title A-Z");
+                          label => "By title A-Z",
+                         },
+            title_desc => {
+                           priority => 2,
+                           order_by => { -desc => [ @default ] },
+                           # loc("By title Z-A")
+                           label => "By title Z-A",
+                          },
+            pubdate_desc => {
+                             priority => 3,
+                             order_by => [
+                                          { -desc => [ "$me.pubdate" ] },
+                                          { -asc => [ @default ] }
+                                         ],
+                            # loc("Newer first")
+                            label => "Newer first",
+                            },
+            pubdate_asc => {
+                            priority => 4,
+                            order_by => { -asc => [ "$me.pubdate", @default ] },
+                            # loc("Older first")
+                            label => "Older first",
+                           },
+            };
+}
+                   
+
+sub available_sortings {
+    my $self = shift;
+    my $avail = $self->_sorting_map;
+    my @out;
+    foreach my $k (keys %$avail) {
+        push @out, {
+                    name => $k,
+                    label => $avail->{$k}->{label} || die,
+                    priority => $avail->{$k}->{priority} || die,
+                   };
+    }
+    return sort { $a->{priority} <=> $b->{priority} } @out; 
+}
+
+sub order_by {
+    my ($self, $order) = @_;
+    my $map = $self->_sorting_map;
+    my $order_by = $map->{title_desc}->{order_by};
+    if ($order && $map->{$order}->{order_by}) {
+        $order_by = $map->{$order}->{order_by};
+    }
+    # not hit
+    die "$order doesn't map to anything" unless $order_by;
+    return $self->search(undef, { order_by => $order_by });
+}
+
+sub page_number {
+    my ($self, $page) = @_;
+    return $self->search(undef, { page => $self->_check_integer($page) || 1 });
+}
+
+sub rows_number {
+    my ($self, $rows) = @_;
+    return $self->search(undef, { rows => $self->_check_integer($rows) || 10 });
+}
+
+sub _check_integer {
+    my ($self, $i) = @_;
+    # avoid big integers
+    if ($i and $i =~ m/\A([1-9][0-9]{0,5})\z/) {
+        return $i + 0;
+    }
+    else {
+        return 0;
+    }
 }
 
 

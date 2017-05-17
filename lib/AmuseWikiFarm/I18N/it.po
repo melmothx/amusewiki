@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2017-02-04 12:16+0100\n"
+"PO-Revision-Date: 2017-05-15 16:27+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -297,6 +297,12 @@ msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 msgid "Build it"
 msgstr "Impagina"
 
+msgid "By title A-Z"
+msgstr "Per titolo, dalla A alla Z"
+
+msgid "By title Z-A"
+msgstr "Per titolo, dalla Z alla A"
+
 msgid "CSS Theme"
 msgstr "Tema CSS"
 
@@ -446,6 +452,9 @@ msgstr "Data"
 msgid "Date of the original publication"
 msgstr "Data della pubblicazione originale"
 
+msgid "Default sorting for the category text list"
+msgstr "Ordinamento di default per la lista dei testi delle categorie"
+
 msgid "Deferred/Deleted texts"
 msgstr "Testi non ancora pubblicati o rimossi"
 
@@ -502,7 +511,7 @@ msgid "Division factor"
 msgstr "Fattore di divisione"
 
 msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
+msgstr "Non creare il frontespizio e comincia il testo dalla prima pagina"
 
 msgid "Do not enforce save message"
 msgstr "Rendi il messaggio del salvataggio facoltativo"
@@ -527,6 +536,9 @@ msgstr "Orario stimato"
 
 msgid "Edit"
 msgstr "Modifica"
+
+msgid "Edit attachment description"
+msgstr "Modifica la descrizione dell'allegato"
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -863,6 +875,15 @@ msgstr "Id"
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Se non impostato, %1 sarà cercato nella directory dell'applicazione."
 
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
+msgstr ""
+"Se la pubblicazione di un testo è nel futuro, mostra comunque\n"
+"l'anteprima e la copertina, pur senza consentire l'accesso al corpo\n"
+"del testo"
+
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
 "Se chi ha fatto la modifica ha fornito una mail, è inclusa nella lista CC"
@@ -897,9 +918,12 @@ msgid ""
 "          produce a PDF styled like an article (chapters and parts\n"
 "          will not start on a new page)."
 msgstr ""
+"Se questa linea è presente, non creare il frontespizio. Il testo\n"
+"comincia dalla prima pagina e il PDF avrà lo stile di un articolo\n"
+"(parti e capitoli non cominciano su una nuova pagina)"
 
 msgid "If this line is present, do not display the table of contents."
-msgstr ""
+msgstr "Se questa linea è presente, non mostrare il sommario."
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Se vuoi l'impaginazione, scegli uno schema"
@@ -1005,7 +1029,7 @@ msgid "Inline elements"
 msgstr "Elementi per la riga"
 
 msgid "Insert the file into the body"
-msgstr ""
+msgstr "Inserisci il file nel corpo del testo"
 
 msgid "Internal list of translations"
 msgstr "Lista interna delle traduzioni"
@@ -1240,6 +1264,9 @@ msgstr "Nuova revisione"
 msgid "New site id"
 msgstr "Nuovo ID sito"
 
+msgid "Newer first"
+msgstr "Comincia con i più recenti"
+
 msgid "Newer texts"
 msgstr "Testi più recenti"
 
@@ -1304,6 +1331,9 @@ msgstr "Numero di risultati da mostrare nelle paginazioni (un numero intero)"
 
 msgid "OPDS"
 msgstr "OPDS"
+
+msgid "Older first"
+msgstr "Comincia con i più vecchi"
 
 msgid "Older texts"
 msgstr "Testi più vecchi"
@@ -1526,6 +1556,9 @@ msgid ""
 "        not embed them. If you need that, you should split the PDF in\n"
 "        images and upload those instead."
 msgstr ""
+"Nota bene: i PDF sono file esterni e non possono essere pienamente\n"
+"integrati nel documento. I file generati ne saranno privi. Puoi\n"
+"comunque creare immagini dai PDF e inserire quelle."
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1777,6 +1810,9 @@ msgstr "Variabili di configurazione protette"
 msgid "Restricted format options"
 msgstr "Opzioni dei formati protette"
 
+msgid "Results per page:"
+msgstr "Risultati per pagina:"
+
 msgid "Retrieved on DATE from URL"
 msgstr "Consultato il giorno DATA su URL"
 
@@ -1943,6 +1979,9 @@ msgstr ""
 "Siamo spiacenti, ci sono troppi lavori in attesa. Si prega di\n"
 "riprovare più tardi!"
 
+msgid "Sorting:"
+msgstr "Ordinamento:"
+
 msgid "Source"
 msgstr "Origine"
 
@@ -2088,6 +2127,10 @@ msgstr ""
 "eseguendo i seguenti comandi. L'ultimo comando controlla se il file\n"
 "può essere trovato."
 
+#. ($uri)
+msgid "The description for %1 has been updated"
+msgstr "La descrizione per %1 è stata aggiornata"
+
 msgid "The file uploaded is not an HTML file!"
 msgstr "Il file caricato non è un file HTML!"
 
@@ -2128,7 +2171,7 @@ msgstr "La revisione contiene i seguenti messaggi"
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
-msgstr ""
+msgstr "Il sito mostrerà i PDF con una miniatura alla fine del documento."
 
 msgid "The text structure is shown below."
 msgstr "La struttura del testo è mostrata qui sotto."
@@ -2246,12 +2289,18 @@ msgstr "Questo testo non esiste"
 msgid "This text is new"
 msgstr "Questo testo è nuovo"
 
+msgid "This text is not available"
+msgstr "Questo testo non è disponibile"
+
 msgid "This text is not published yet"
 msgstr "Questo testo ancora non è stato pubblicato"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
 msgstr "Questo testo verrà pubblicato solo in data %1"
+
+msgid "Thumbnail"
+msgstr "Miniatura"
 
 msgid "Time is optional."
 msgstr "L'ora è opzionale"
@@ -2511,7 +2560,7 @@ msgstr ""
 msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
-msgstr ""
+msgstr "Con il tag \"verbatim\" puoi evitare che il markup venga interpretato"
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2752,7 +2801,7 @@ msgid "mandatory"
 msgstr "obbligatorio"
 
 msgid "markup *not* interpreted"
-msgstr ""
+msgstr "markup *non* interpretato"
 
 msgid "new-example-uri"
 msgstr "nuovo-uri-di-esempio"

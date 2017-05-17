@@ -75,8 +75,9 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     }
 
     foreach my $res (@results) {
-        $res->{text} = $site->titles->text_by_uri($res->{pagename});
-        unless ($res->{text}) {
+        $res->{text} = $site->titles->texts_only->by_uri($res->{pagename})->single;
+        unless ($res->{text} and
+                $xapian->text_can_be_indexed($res->{text})) {
             log_error {
                 "Search returned $res->{pagename} but not present, removing during " .
                   $c->request->uri;

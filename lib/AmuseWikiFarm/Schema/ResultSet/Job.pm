@@ -93,7 +93,7 @@ sub enqueue {
                      status  => 'pending',
                      created => DateTime->now,
                      priority => $priority,
-                     username => clean_username($username),
+                     username => ($username ? clean_username($username) : undef),
                     };
     my $job = $self->create($insertion)->discard_changes;
     $job->make_room_for_logs;
@@ -143,8 +143,8 @@ Enqueue an alias deletion action.
 =cut
 
 sub git_action_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(git => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(git => $payload, $username);
 }
 
 sub purge_add {
@@ -153,18 +153,18 @@ sub purge_add {
 }
 
 sub alias_delete_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(alias_delete => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(alias_delete => $payload, $username);
 }
 
 sub alias_create_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(alias_create => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(alias_create => $payload, $username);
 }
 
 sub rebuild_add {
-    my ($self, $payload) = @_;
-    return $self->enqueue(rebuild => $payload);
+    my ($self, $payload, $username) = @_;
+    return $self->enqueue(rebuild => $payload, $username);
 }
 
 =head2 dequeue

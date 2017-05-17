@@ -73,24 +73,42 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
             $c->detach();
             return;
         }
+        my $show_preview_only = 0;
+        if (!$text->is_published) {
+            # Double check
+            die "This shouldn't happen, status is wrong " . $text->status unless $text->is_deferred;
+
+            # but we're here so either we're logged in or we show only
+            # the preview.
+            if (!$c->user_exists and $site->show_preview_when_deferred) {
+                $show_preview_only = 1;
+            }
+            elsif ($c->user_exists) {
+                $show_preview_only = 0;
+            }
+            else {
+                # shoulnt' be reachable.
+                die "User doesn't exist but we are here";
+            }
+        }
         # static files are served here
+        # no download if the files are in preview only
         if ($ext) {
             log_debug { "Got $canonical $ext => " . $text->title };
             my $served_file = $text->filepath_for_ext($ext);
-            if (-f $served_file) {
+            if (!$show_preview_only and -f $served_file) {
                 $c->stash(serve_static_file => $served_file);
                 $c->detach($c->view('StaticFile'));
                 return;
             }
             else {
-                # this should not happen
-                log_warn { "File $served_file expected but not found!" };
                 $c->detach('/not_found');
                 return;
             }
         }
-        $c->stash(page_title => HTML::Entities::decode_entities($text->title));
-
+        $c->stash(page_title => HTML::Entities::decode_entities($text->title),
+                  text_json_api => $c->uri_for($text->full_header_api),
+                  show_preview_only => $show_preview_only);
     }
     elsif (my $attach = $site->attachments->by_uri($canonical . $append_ext)) {
         log_debug { "Found attachment $canonical$append_ext" };
@@ -135,9 +153,12 @@ sub text :Chained('match') :PathPart('') :Args(0) {
     }
     my $meta_desc = '';
     if (my $teaser = $text->teaser) {
-        $meta_desc = $teaser;
+        # do not insert teasers if they're too long
+        if (length($teaser) < 160) {
+            $meta_desc = $teaser;
+        }
     }
-    else {
+    unless ($meta_desc) {
       TEXTFIELD:
         foreach my $method (qw/author title subtitle date notes/) {
             if (my $info = $text->$method) {
@@ -175,6 +196,12 @@ sub edit :Chained('match') PathPart('edit') :Args(0) {
                                                              $text->uri]));
 }
 
+sub json :Chained('match') PathPart('json') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(json => $c->stash->{text}->raw_headers);
+    $c->detach($c->view('JSON'));
+}
+
 sub rebuild :Chained('match') PathPart('rebuild') :Args(0) {
     my ($self, $c) = @_;
     log_debug { "In rebuild" };
@@ -185,7 +212,7 @@ sub rebuild :Chained('match') PathPart('rebuild') :Args(0) {
     # as well, where the form is not visible. Also, here the data is
     # not really changed. Let's consider it more a cache rebuilding.
     my $text = $c->stash->{text};
-    my $job = $c->stash->{site}->jobs->rebuild_add({ id => $text->id });
+    my $job = $c->stash->{site}->jobs->rebuild_add({ id => $text->id }, $c->user->get('username'));
     $c->res->redirect($c->uri_for_action('/tasks/display',
                                          [ $job->id ]));
 }

@@ -282,6 +282,12 @@ msgstr "Bokskapare sidbegränsning (heltal)"
 msgid "Build it"
 msgstr "Skapa den"
 
+msgid "By title A-Z"
+msgstr ""
+
+msgid "By title Z-A"
+msgstr ""
+
 msgid "CSS Theme"
 msgstr ""
 
@@ -423,6 +429,9 @@ msgstr "Datum"
 msgid "Date of the original publication"
 msgstr "Orginalpublikationens datum"
 
+msgid "Default sorting for the category text list"
+msgstr ""
+
 msgid "Deferred/Deleted texts"
 msgstr "Uppskjutna/Raderade texter"
 
@@ -498,6 +507,9 @@ msgstr ""
 
 msgid "Edit"
 msgstr "Redigera"
+
+msgid "Edit attachment description"
+msgstr ""
 
 #. ($format->format_name)
 msgid "Edit format %1"
@@ -809,6 +821,12 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
+msgid ""
+"If the publication of a text is deferred, list it\n"
+"            with the teaser and the cover without providing access to\n"
+"            the body"
 msgstr ""
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
@@ -1151,6 +1169,9 @@ msgstr "Ny revidering"
 msgid "New site id"
 msgstr "Ny sid-id"
 
+msgid "Newer first"
+msgstr ""
+
 msgid "Newer texts"
 msgstr ""
 
@@ -1212,6 +1233,9 @@ msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
 msgid "OPDS"
+msgstr ""
+
+msgid "Older first"
 msgstr ""
 
 msgid "Older texts"
@@ -1669,6 +1693,9 @@ msgstr ""
 msgid "Restricted format options"
 msgstr ""
 
+msgid "Results per page:"
+msgstr ""
+
 msgid "Retrieved on DATE from URL"
 msgstr "Mottogs den DATUM från URL"
 
@@ -1832,6 +1859,9 @@ msgstr ""
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
+msgid "Sorting:"
+msgstr ""
+
 msgid "Source"
 msgstr "Källa"
 
@@ -1967,6 +1997,10 @@ msgid ""
 "            or just a filename if you choose to install it in the\n"
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
+msgstr ""
+
+#. ($uri)
+msgid "The description for %1 has been updated"
 msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
@@ -2107,11 +2141,17 @@ msgstr "Denna text existerar inte"
 msgid "This text is new"
 msgstr ""
 
+msgid "This text is not available"
+msgstr ""
+
 msgid "This text is not published yet"
 msgstr ""
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
+msgstr ""
+
+msgid "Thumbnail"
 msgstr ""
 
 msgid "Time is optional."

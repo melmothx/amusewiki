@@ -25,11 +25,12 @@
   <div class="col-sm-10 col-sm-push-1">
 
 
-<div id="page">
+<div id="page"[% IF text_json_api %] data-text-json-header-api="[% text_json_api | html %]"[% END %]>
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   <div id="preamble">
     [% IF text.is_deferred %]
+    [% UNLESS show_preview_only %]
     <div>
       <span id="pubdate-label">
         <strong>[% loc('Publication date') %]:</strong>
@@ -38,6 +39,7 @@
         [% text.pubdate %]
       </span>
     </div>
+    [% END %]
     [% END %]
     <div id="texttitle">
       <span id="texttitle-label">
@@ -66,7 +68,7 @@
         </strong>
       </span>
       [% FOREACH author IN text_authors -%]
-      <a href="[% c.uri_for(author.uri) %]">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
+      <a href="[% c.uri_for(author.uri) %]" class="text-authors-item">[% author.name %]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
     </div>
     [% END %]
@@ -80,6 +82,7 @@
     </div>
     [% END %]
 
+    [% UNLESS show_preview_only %]
     [% # if it's not a blog style site, this has no interest whatsoever? %]
     [% IF blog_style %]
     [% SET text_monthly_archive = text.monthly_archive %]
@@ -92,6 +95,7 @@
         [% text.pubdate_locale(current_locale_code) || text_monthly_archive.localized_name(current_locale_code) %]
       </a>
     </div>
+    [% END %]
     [% END %]
     [% END %]
 
@@ -136,7 +140,7 @@
   <!-- end of the preamble -->
 
   [%- SET basename = text.uri -%] 
-
+  [% UNLESS show_preview_only %]
   <div id="downloadformats">
     <div id="downloadformats-title">
       <!-- <strong>[% loc('Downloads') %]</strong> -->
@@ -307,6 +311,7 @@
       [% END %]
     </div>
   </div>
+  [% END %]
   </div>
   [% END %]
   <div class="center">
@@ -322,6 +327,18 @@
       </h1>
     </div>
   </div>
+  [% IF show_preview_only %]
+    <div class="alert alert-warning" role="alert">[% loc('This text is not available') %]</div>
+    <div>
+      [% IF text.valid_cover %]
+      <div class="text-cover-img-mini-container">
+        <img class="text-cover-preview img-thumbnail pull-right"
+             src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
+      </div>
+      [% END %]
+      [% text.teaser %]
+    </div>
+  [% ELSE %]
   <div id="htmltextbody">
     [% IF text.valid_cover %]
     <div id="text-cover-img-container">
@@ -354,6 +371,7 @@
   [%-   END -%]
     </div>
   </div>
+  [%- END -%]
   [%- END -%]
 
   <div class="clearfix"></div>

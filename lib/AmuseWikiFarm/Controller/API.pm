@@ -30,13 +30,10 @@ sub autocompletion :Chained('api') :Args(1) {
     my ($self, $c, $type) = @_;
     my $query = lc($type);
     if ($type =~ m/(topic|author)/) {
-        my $cats = $c->stash->{site}->categories;
-        my @list;
-        my $result = $cats->by_type($1)->active_only
-          ->search(undef, { columns => qw/name/ });
-        while (my $row = $result->next) {
-            push @list, $row->name;
-        }
+        my $type = $1;
+        # include the deferred
+        my @list = map { $_->{name} }
+          @{$c->stash->{site}->categories->with_texts(deferred => 1)->by_type($type)->listing_tokens};
         $c->stash(json => \@list);
         $c->detach($c->view('JSON'));
     }

@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 75;
+use Test::More tests => 139;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -56,17 +56,22 @@ foreach my $dir (qw/specials site_files d f uploads/) {
 }
 
 $site->repo_git_pull;
-$site->update_db_from_tree_async(sub { diag @_ });
+my $bjob = $site->update_db_from_tree_async(sub { diag @_ }, 'root');
+is $bjob->username, 'root';
 
 # now remove some files under its nose
 $working_copy->rm(catfile(qw/d dt do-this-by-yourself.muse/));
 $working_copy->commit({ message => "removed file" });
 $working_copy->push(qw/origin master/);
 
-$site->repo_git_pull;
-$site->update_db_from_tree_async(sub { diag @_ });
+my $gitjob = $site->jobs->git_action_add({ remote => 'origin',
+                                           action => 'fetch' }, 'root');
+my @ids = ($gitjob->id);
+$gitjob->dispatch_job;
 
 while (my $job = $site->jobs->dequeue) {
+    is $job->username, 'root';
+    push @ids, $job->id;
     $job->dispatch_job;
     if ($job->status eq 'completed') {
         my $path = $job->job_data->{path};
@@ -115,3 +120,27 @@ $site->update_db_from_tree_async(sub { diag @_ });
 
 ok (!$site->jobs->dequeue, "no new jobs");
 ok(!$site->find_file_by_path($deletion));
+
+$site->update({ magic_answer => 16, magic_question => '12+4', mode => 'blog' });
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+
+$mech->get_ok('/human');
+ok $mech->submit_form(with_fields => { __auth_human => 16 });
+
+foreach my $id (@ids) {
+    $mech->get('/tasks/status/' . $id);
+    is $mech->status, 404;
+}
+$mech->get_ok('/');
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root',
+                                    __auth_pass => 'root',
+                                  });
+
+foreach my $id (@ids) {
+    $mech->get_ok('/tasks/status/' . $id);
+}
+
+$mech
