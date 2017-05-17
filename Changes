@@ -4,6 +4,23 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.020 UNRELEASED
+
+ - [SECURITY FIX] Fix potential HTML injection when external images
+   are enabled. This is a real security issue if it's an openwiki and
+   if the option is enabled.
+ - Fix stemming when searching on multilanguage sites (#105)
+ - Fix debian packages with missing dependencies
+ - Fix failure on bookbuilder with cropmarks and "generic" papersize
+ - Added a way to add captions to attached PDFs
+ - Improved handling of thumbnails
+ - Improved formatting of galleries (pages with multiple PDFs)
+ - Added option to show the previews when the texts are still deferred
+ - Routes for job status and download are now more strict and will not
+   serve anything if the job belongs to an user.
+ - Added json route to serve the raw headers of the muse file
+ - Improved category text listing with widget for sorting/page size
+
 2.014 2017-04-18
 
  - Add a flag icon when there is an internal anchor
