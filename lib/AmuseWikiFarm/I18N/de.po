@@ -428,7 +428,7 @@ msgid "Date"
 msgstr "Datum"
 
 msgid "Date of the original publication"
-msgstr "Datum der Veröffentlichung des Originals"
+msgstr "Veröffentlichungsdatum des Originals"
 
 msgid "Default sorting for the category text list"
 msgstr ""
@@ -2254,7 +2254,7 @@ msgid ""
 msgstr ""
 
 msgid "Unique ID for the text"
-msgstr "Einzigartige ID für den Text"
+msgstr "Eindeutige ID für den Text"
 
 msgid "Unlimited"
 msgstr ""
