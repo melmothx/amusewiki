@@ -38,7 +38,7 @@
     [% IF show_link %]
     <div class="amw-latest-listing-item-date">
       <br />
-      <small>[% text.pubdate_locale(current_locale_code) %]</small>
+      <small class="amw-list-text-pubdate-locale">[% text.pubdate_locale(current_locale_code) %]</small>
       [% IF text.is_deferred %]
       <span class="fa fa-clock-o"></span>
       [% END %]
@@ -60,7 +60,7 @@
     [% IF text.is_deferred && show_link %]
     <span class="fa fa-clock-o"></span>
     [% END %]
-    <span class="pull-right clearfix">
+    <span class="pull-right clearfix amw-list-text-pubdate-locale">
       [% text.pubdate_locale(current_locale_code) %]
     </span>
   </a>
