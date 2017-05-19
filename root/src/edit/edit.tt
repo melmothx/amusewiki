@@ -207,7 +207,10 @@
         [% loc('HTML/Word Importer') %]
       </a>
     </div>
-    <div>
+    <div id="fullscreen-markitup">
+      <div id="fullscreen-markitup-toggle-button">
+        <a href="#" id="fullscreen-markitup-toggle">[% loc('Toggle fullscreen editor') %]</a>
+      </div>
       <textarea rows="20" cols="60" id="maintextarea"
                 class="form-control text-muse-body"
                 [% IF locked_editing %]readonly="readonly"[% END %]

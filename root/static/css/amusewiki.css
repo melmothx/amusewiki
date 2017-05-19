@@ -263,3 +263,25 @@ div#text-prev-post-link span.glyphicon {
 {
     text-align: center;
 }
+
+.editor-fullscreen textarea {
+    width: 90vw;
+    height: 90vh !important;
+    margin: auto;
+    font-size: 14pt;
+    line-height: 1.2;
+}
+
+.editor-fullscreen #markItUpMaintextarea {
+    width: 90vw;
+    margin: auto;
+}
+
+.editor-fullscreen {
+    background:white;
+    margin: auto;
+}
+
+.editor-fullscreen #fullscreen-markitup-toggle-button {
+    text-align: center;
+}

@@ -18,7 +18,10 @@
         <input type="text" id="title_muse" name="title_muse"
                value="[% attachment.title_muse | html %]" class="form-control"/>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="fullscreen-markitup">
+        <div id="fullscreen-markitup-toggle-button">
+          <a href="#" id="fullscreen-markitup-toggle">[% loc('Toggle fullscreen editor') %]</a>
+        </div>
         <label for="maintextarea">[% c.loc('Description') %]</label>
         <textarea rows="20" cols="60" id="maintextarea"
                   class="form-control text-muse-body"

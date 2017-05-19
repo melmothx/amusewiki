@@ -2,6 +2,11 @@
 <script type="text/javascript"
         src="[% c.uri_for('/static/js/markitup/jquery.markitup.js') %]">
 </script>
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/screenfull.min.js') %]">
+</script>
+
+
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -100,5 +105,15 @@ $(document).ready(function() {
 	    ]
     }
     $('.text-muse-body').markItUp(myMuseSettings);
+    $('#fullscreen-markitup-toggle').on('click', function(event){
+        if (screenfull.enabled) {
+            screenfull.toggle($('#fullscreen-markitup')[0]);
+        }
+    });
+    if (screenfull.enabled) {
+        screenfull.onchange(function() {
+            $('#fullscreen-markitup').toggleClass('editor-fullscreen');
+        });
+    }
 });
 </script>

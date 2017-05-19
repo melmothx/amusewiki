@@ -10,3 +10,6 @@
 [submodule "bootstrap-amw/bootstrap-datepicker"]
 	path = bootstrap-amw/bootstrap-datepicker
 	url = https://github.com/uxsolutions/bootstrap-datepicker
+[submodule "bootstrap-amw/screenfull.js"]
+	path = bootstrap-amw/screenfull.js
+	url = https://github.com/sindresorhus/screenfull.js.git
