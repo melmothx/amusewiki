@@ -29,7 +29,9 @@
   <form action="" method="POST">
     <div class="col-md-12" id="fullscreen-markitup">
       <div id="fullscreen-markitup-toggle-button">
-        <a href="#" id="fullscreen-markitup-toggle">[% loc('Toggle fullscreen editor') %]</a>
+        <button class="btn btn-default btn-sm" type="button" id="fullscreen-markitup-toggle">
+          [% loc('Toggle fullscreen editor') %]
+        </button>
       </div>
       <textarea rows="20" cols="60" id="maintextarea"
                 class="form-control text-muse-body"
