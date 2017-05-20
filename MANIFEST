@@ -923,6 +923,7 @@ script/amusewiki-clone-site
 script/amusewiki-create-doc-site
 script/amusewiki-export-titles
 script/amusewiki-generate-nginx-conf
+script/amusewiki-import-redirections
 script/amusewiki-jobber
 script/amusewiki-letsencrypt
 script/amusewiki-populate-monthly
