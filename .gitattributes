@@ -1,1 +1,3 @@
 t/static-indexes-expected/* linguist-vendored
+dbicdh/* linguist-vendored
+sql/AmuseWikiFarm-Schema* linguist-vendored
