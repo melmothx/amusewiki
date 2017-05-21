@@ -2565,6 +2565,7 @@ sub update_from_params {
                            turn_links_to_images_into_images
                            show_preview_when_deferred
                            titles_category_default_sorting
+                           enable_order_by_sku
                            use_js_highlight
                            edit_option_page_left_bs_columns
                            edit_option_show_cheatsheet
@@ -2909,7 +2910,7 @@ sub bottom_layout_html {
 
 sub titles_available_sortings {
     my $self = shift;
-    return $self->titles->available_sortings;
+    return $self->titles->available_sortings(sku => $self->enable_order_by_sku);
 }
 
 sub validate_text_category_sorting {
@@ -2932,6 +2933,10 @@ sub titles_category_default_sorting {
     my $self = shift;
     my $option = $self->get_option('titles_category_default_sorting') || '';
     return $self->validate_text_category_sorting($option);
+}
+
+sub enable_order_by_sku {
+    return shift->get_option('enable_order_by_sku') || '';
 }
 
 sub pagination_size {

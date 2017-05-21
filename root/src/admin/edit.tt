@@ -293,6 +293,14 @@ kpsewhich mylogo.pdf
             the body') %]
           </label>
         </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.enable_order_by_sku %]checked="checked"[% END %]
+                   name="enable_order_by_sku" />
+            [% loc('Enable title ordering by SKU') %]
+          </label>
+        </div>
     </div>
 
     <div class="form-group">

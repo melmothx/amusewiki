@@ -396,42 +396,63 @@ sub _sorting_map {
     my $me = $self->current_source_alias;
     my @default = ("$me.sorting_pos", "$me.title", "$me.id");
     return {
+            sku_asc => {
+                        priority => 1,
+                        order_by => { -asc => [ "$me.sku", @default ] },
+                        # loc("By by sku ascending");
+                        label => "By sku ascending",
+                        key => 'sku',
+                       },
+            sku_desc => {
+                         priority => 2,
+                         order_by => { -desc => [ "$me.sku", @default ]},
+                         # loc("By sku descending");
+                         label => "By sku descending",
+                         key => 'sku',
+                        },
             title_asc => {
-                          priority => 1,
+                          priority => 3,
                           order_by => { -asc => [ @default ]},
                           # loc("By title A-Z");
                           label => "By title A-Z",
+                          key => 'title',
                          },
             title_desc => {
-                           priority => 2,
+                           priority => 4,
                            order_by => { -desc => [ @default ] },
                            # loc("By title Z-A")
                            label => "By title Z-A",
+                           key => 'title',
                           },
             pubdate_desc => {
-                             priority => 3,
+                             priority => 5,
                              order_by => [
                                           { -desc => [ "$me.pubdate" ] },
                                           { -asc => [ @default ] }
                                          ],
                             # loc("Newer first")
                             label => "Newer first",
+                             key => 'pubdate',
                             },
             pubdate_asc => {
-                            priority => 4,
+                            priority => 6,
                             order_by => { -asc => [ "$me.pubdate", @default ] },
                             # loc("Older first")
                             label => "Older first",
+                            key => 'pubdate',
                            },
             };
 }
                    
 
 sub available_sortings {
-    my $self = shift;
+    my ($self, %opt) = @_;
     my $avail = $self->_sorting_map;
     my @out;
     foreach my $k (keys %$avail) {
+        unless ($opt{sku}) {
+            next if $avail->{$k}->{key} eq 'sku';
+        }
         push @out, {
                     name => $k,
                     label => $avail->{$k}->{label} || die,
