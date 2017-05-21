@@ -288,6 +288,12 @@ msgstr "Maksimalni broj stranica zbirke"
 msgid "Build it"
 msgstr "Stvori"
 
+msgid "By by sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
 msgid "By title A-Z"
 msgstr ""
 
@@ -571,6 +577,9 @@ msgstr "Ne podudaraju se mailovi"
 
 msgid "Embed fonts in the EPUB file"
 msgstr "Uključi fontove u EPUB datoteku"
+
+msgid "Enable title ordering by SKU"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Izbriši izmjenu"
@@ -2288,6 +2297,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Za pogledati razlike, možeš ići na ovaj URL"
+
+msgid "Toggle fullscreen editor"
+msgstr ""
 
 msgid "Topic"
 msgstr "Tema"

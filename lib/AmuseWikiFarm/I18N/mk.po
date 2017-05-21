@@ -301,6 +301,12 @@ msgstr "Максимален број на страници на збиркат�
 msgid "Build it"
 msgstr "Направи"
 
+msgid "By by sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
 msgid "By title A-Z"
 msgstr ""
 
@@ -587,6 +593,9 @@ msgstr "E-mail-овите не се поклопуваат"
 
 msgid "Embed fonts in the EPUB file"
 msgstr "Вклучи ги фонтовите во EPUB датотеката"
+
+msgid "Enable title ordering by SKU"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Избриши ја измената"
@@ -2336,6 +2345,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "За да ги видиш внесените промени, можеш да одиш на овој URL"
+
+msgid "Toggle fullscreen editor"
+msgstr ""
 
 msgid "Topic"
 msgstr "Тема"

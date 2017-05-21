@@ -282,6 +282,12 @@ msgstr "Bokskapare sidbegränsning (heltal)"
 msgid "Build it"
 msgstr "Skapa den"
 
+msgid "By by sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
 msgid "By title A-Z"
 msgstr ""
 
@@ -554,6 +560,9 @@ msgid "Emails do not match"
 msgstr "Email matchar inte"
 
 msgid "Embed fonts in the EPUB file"
+msgstr ""
+
+msgid "Enable title ordering by SKU"
 msgstr ""
 
 msgid "Erase this revision"
@@ -2208,6 +2217,9 @@ msgstr ""
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr ""
 "För att granska de introducerade ändringarna, kan du besöka följande URL"
+
+msgid "Toggle fullscreen editor"
+msgstr ""
 
 msgid "Topic"
 msgstr "Ämne"

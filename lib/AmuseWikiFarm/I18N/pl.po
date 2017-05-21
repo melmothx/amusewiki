@@ -269,6 +269,12 @@ msgstr ""
 msgid "Build it"
 msgstr ""
 
+msgid "By by sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
 msgid "By title A-Z"
 msgstr ""
 
@@ -539,6 +545,9 @@ msgid "Emails do not match"
 msgstr ""
 
 msgid "Embed fonts in the EPUB file"
+msgstr ""
+
+msgid "Enable title ordering by SKU"
 msgstr ""
 
 msgid "Erase this revision"
@@ -2116,6 +2125,9 @@ msgid ""
 msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
+msgstr ""
+
+msgid "Toggle fullscreen editor"
 msgstr ""
 
 msgid "Topic"

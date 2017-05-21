@@ -297,6 +297,12 @@ msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 msgid "Build it"
 msgstr "Impagina"
 
+msgid "By by sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
 msgid "By title A-Z"
 msgstr "Per titolo, dalla A alla Z"
 
@@ -586,6 +592,9 @@ msgstr "Le e-mail non coincidono"
 
 msgid "Embed fonts in the EPUB file"
 msgstr "Includi i font nel file EPUB"
+
+msgid "Enable title ordering by SKU"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Cancella questa revisione"
@@ -2359,6 +2368,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Per vedere le modifiche introdotte, puoi visitare il seguente URL"
+
+msgid "Toggle fullscreen editor"
+msgstr ""
 
 msgid "Topic"
 msgstr "Argomento"

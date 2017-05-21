@@ -309,6 +309,12 @@ msgstr "Limiti i faqeve të përpiluesit të librit (integjer)"
 msgid "Build it"
 msgstr "Krijoje "
 
+msgid "By by sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
 msgid "By title A-Z"
 msgstr ""
 
@@ -589,6 +595,9 @@ msgid "Emails do not match"
 msgstr "Email-at nuk pëputhen"
 
 msgid "Embed fonts in the EPUB file"
+msgstr ""
+
+msgid "Enable title ordering by SKU"
 msgstr ""
 
 msgid "Erase this revision"
@@ -2324,6 +2333,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Për ti ruajtur ndryshimet e bëra, ju lutem klikoni linkun në vazhdim"
+
+msgid "Toggle fullscreen editor"
+msgstr ""
 
 msgid "Topic"
 msgstr "Tema"

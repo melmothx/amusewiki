@@ -301,6 +301,12 @@ msgstr "Límite de páginas del credaor de libro (número entero)"
 msgid "Build it"
 msgstr "Crear"
 
+msgid "By by sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
 msgid "By title A-Z"
 msgstr ""
 
@@ -587,6 +593,9 @@ msgstr "Los correos electrónicos no concuerdan"
 
 msgid "Embed fonts in the EPUB file"
 msgstr "Incrustar fuentes en el archivo EPUB"
+
+msgid "Enable title ordering by SKU"
+msgstr ""
 
 msgid "Erase this revision"
 msgstr "Borrar esta revisión"
@@ -2362,6 +2371,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Para ver los cambios introducidos, puedes visitar la siguiente URL"
+
+msgid "Toggle fullscreen editor"
+msgstr ""
 
 msgid "Topic"
 msgstr "Tema"

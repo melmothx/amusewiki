@@ -282,6 +282,12 @@ msgstr "Лимит страницы конструктора книг (цело�
 msgid "Build it"
 msgstr "Создать"
 
+msgid "By by sku ascending"
+msgstr ""
+
+msgid "By sku descending"
+msgstr ""
+
 msgid "By title A-Z"
 msgstr ""
 
@@ -556,6 +562,9 @@ msgid "Emails do not match"
 msgstr "Электронная почта не совпадает"
 
 msgid "Embed fonts in the EPUB file"
+msgstr ""
+
+msgid "Enable title ordering by SKU"
 msgstr ""
 
 msgid "Erase this revision"
@@ -2202,6 +2211,9 @@ msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Для просмотра внесённых изменений пройдите по следующей ссылку"
+
+msgid "Toggle fullscreen editor"
+msgstr ""
 
 msgid "Topic"
 msgstr "Тема"
