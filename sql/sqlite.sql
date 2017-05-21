@@ -295,6 +295,7 @@ CREATE TABLE title (
         teaser TEXT NOT NULL DEFAULT '',
 
         sorting_pos INTEGER NOT NULL DEFAULT 0,
+        sku VARCHAR(64) NOT NULL DEFAULT '',
         site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
