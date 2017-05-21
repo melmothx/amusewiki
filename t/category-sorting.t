@@ -62,23 +62,23 @@ my $titles = $site->categories->by_type_and_uri(qw/topic common/)->titles;
 is_deeply([$titles->available_sortings ],
           [{
             'label' => 'By title A-Z',
-            'priority' => 1,
+            'priority' => 3,
             'name' => 'title_asc'
            },
            {
             'name' => 'title_desc',
-            'priority' => 2,
+            'priority' => 4,
             'label' => 'By title Z-A'
            },
            {
-            'priority' => 3,
+            'priority' => 5,
             'name' => 'pubdate_desc',
             'label' => 'Newer first'
            },
            {
             'label' => 'Older first',
             'name' => 'pubdate_asc',
-            'priority' => 4
+            'priority' => 6
            }]);
 
 my %expected = (
