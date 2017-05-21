@@ -189,6 +189,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $mech->get_ok('/');
 while (my $job = $site->jobs->dequeue) {
     my $uri = $job->dispatch_job->produced;
+    $job->delete;
     ok $uri, "Got uri: $uri";
     $mech->get_ok($uri);
 }

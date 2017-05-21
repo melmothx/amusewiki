@@ -114,7 +114,10 @@ foreach my $text ($site->titles->all) {
     }
     diag "Checking if the files are generated";
     $site->compile_and_index_files([keys %{ $site->repo_find_files }]);
-
+    foreach my $old_j ($site->jobs) {
+        diag "Deleting job" . $old_j->id, ' ' , $old_j->task;
+        $old_j->delete;
+    }
     foreach my $link (@links) {
         $mech->get_ok($link);
     }

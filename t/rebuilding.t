@@ -43,8 +43,10 @@ foreach my $ext (@exts) {
     is $job->status, 'completed';
     diag $job->logs;
     is $job->produced, $text->full_uri;
+    my $jlogs = $job->logs;
+    $job->delete;
     foreach my $ext (qw/tex pdf zip/) {
-        like $job->logs, qr/Created .*\.\Q$ext\E/;
+        like $jlogs, qr/Created .*\.\Q$ext\E/;
         ok (-f $text->filepath_for_ext($ext), "$ext exists");
         my $newts = (stat($text->filepath_for_ext($ext)))[9];
         ok ($newts > $ts{$ext}, "$ext updated");
