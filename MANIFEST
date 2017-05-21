@@ -59,6 +59,8 @@ dbicdh/_source/deploy/32/001-auto-__VERSION.yml
 dbicdh/_source/deploy/32/001-auto.yml
 dbicdh/_source/deploy/33/001-auto-__VERSION.yml
 dbicdh/_source/deploy/33/001-auto.yml
+dbicdh/_source/deploy/34/001-auto-__VERSION.yml
+dbicdh/_source/deploy/34/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
 dbicdh/_source/deploy/4/001-auto.yml
 dbicdh/_source/deploy/5/001-auto-__VERSION.yml
@@ -123,6 +125,8 @@ dbicdh/MySQL/deploy/32/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/32/001-auto.sql
 dbicdh/MySQL/deploy/33/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/33/001-auto.sql
+dbicdh/MySQL/deploy/34/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/34/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/4/001-auto.sql
 dbicdh/MySQL/deploy/5/001-auto-__VERSION.sql
@@ -160,6 +164,7 @@ dbicdh/MySQL/upgrade/3-4/001-auto.sql
 dbicdh/MySQL/upgrade/30-31/001-auto.sql
 dbicdh/MySQL/upgrade/31-32/001-auto.sql
 dbicdh/MySQL/upgrade/32-33/001-auto.sql
+dbicdh/MySQL/upgrade/33-34/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
@@ -218,6 +223,8 @@ dbicdh/PostgreSQL/deploy/32/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/32/001-auto.sql
 dbicdh/PostgreSQL/deploy/33/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/33/001-auto.sql
+dbicdh/PostgreSQL/deploy/34/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/34/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/4/001-auto.sql
 dbicdh/PostgreSQL/deploy/5/001-auto-__VERSION.sql
@@ -255,6 +262,7 @@ dbicdh/PostgreSQL/upgrade/3-4/001-auto.sql
 dbicdh/PostgreSQL/upgrade/30-31/001-auto.sql
 dbicdh/PostgreSQL/upgrade/31-32/001-auto.sql
 dbicdh/PostgreSQL/upgrade/32-33/001-auto.sql
+dbicdh/PostgreSQL/upgrade/33-34/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
@@ -313,6 +321,8 @@ dbicdh/SQLite/deploy/32/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/32/001-auto.sql
 dbicdh/SQLite/deploy/33/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/33/001-auto.sql
+dbicdh/SQLite/deploy/34/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/34/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/4/001-auto.sql
 dbicdh/SQLite/deploy/5/001-auto-__VERSION.sql
@@ -350,6 +360,7 @@ dbicdh/SQLite/upgrade/3-4/001-auto.sql
 dbicdh/SQLite/upgrade/30-31/001-auto.sql
 dbicdh/SQLite/upgrade/31-32/001-auto.sql
 dbicdh/SQLite/upgrade/32-33/001-auto.sql
+dbicdh/SQLite/upgrade/33-34/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
@@ -1059,6 +1070,7 @@ t/controller_Utils.t
 t/crash-on-loc.t
 t/css-loading.t
 t/custom-formats.t
+t/custom-sorting-sku-116.t
 t/custom-templates.t
 t/custom-templates/css.tt
 t/custom-templates/html.tt
