@@ -312,7 +312,7 @@ kpsewhich mylogo.pdf
           [% FOREACH sorting IN site.titles_available_sortings %]
           <option value="[% sorting.name %]"
                   [% IF esite.titles_category_default_sorting == sorting.name %]selected="selected"[% END %]>
-            [% sorting.label %]
+            [% loc(sorting.label) %]
           </option>
           [% END %]
         </select>
