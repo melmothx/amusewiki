@@ -206,6 +206,13 @@ __PACKAGE__->table("title");
   default_value: 0
   is_nullable: 0
 
+=head2 sku
+
+  data_type: 'varchar'
+  default_value: (empty string)
+  is_nullable: 0
+  size: 64
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -277,6 +284,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", default_value => "", is_nullable => 0 },
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "sku",
+  { data_type => "varchar", default_value => "", is_nullable => 0, size => 64 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -424,8 +433,8 @@ Composing rels: L</text_months> -> monthly_archive
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-05-12 16:43:01
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:12kakxrjZ0JKAILUYLGepg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-05-21 11:29:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:K11+wjMjEH7HPRf2MwFb5g
 
 =head2 translations
 
