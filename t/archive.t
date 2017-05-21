@@ -51,6 +51,7 @@ is_deeply $site->title_fields, {
                              'notes' => 1,
                              'title' => 1,
                              'sorting_pos' => 1,
+                             'sku' => 1,
                              'status' => 1,
                              'f_class' => 1,
                                 slides => 1,
