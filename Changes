@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.021 2017-05-21
+
+ - Add full screen editor to editing page
+ - Add an opt-in ordering by sku in the category pages (#116)
+
 2.020 2017-05-17
 
  - [SECURITY FIX] Fix potential HTML injection when external images
