@@ -296,3 +296,34 @@ foreach my $url (@urls) {
 foreach my $url (@pub_urls) {
     $mech->content_contains($url);
 }
+
+$site->site_options->update_or_create({
+                                       option_name => 'show_preview_when_deferred',
+                                       option_value => 1,
+                                      });
+
+foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
+    $mech->get_ok($page);
+    $mech->content_contains('deferred-text-3');
+    $mech->content_contains('deferred-text-2');
+}
+
+$site->titles->find({ uri => 'deferred-text-2',
+                      f_class => 'text' })->update({ teaser => '' });
+
+foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
+    $mech->get_ok($page);
+    $mech->content_contains('deferred-text-3');
+    $mech->content_lacks('deferred-text-2');
+}
+
+# login
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+
+foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
+    $mech->get_ok($page);
+    $mech->content_contains('deferred-text-3');
+    $mech->content_contains('deferred-text-2');
+}
+
