@@ -75,9 +75,12 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     }
 
     foreach my $res (@results) {
-        $res->{text} = $site->titles->texts_only->by_uri($res->{pagename})->single;
-        unless ($res->{text} and
-                $xapian->text_can_be_indexed($res->{text})) {
+        if (my $text = $site->titles->texts_only->by_uri($res->{pagename})->single) {
+            if ($xapian->text_can_be_indexed($text)) {
+                $res->{text} = $text;
+            }
+        }
+        else {
             log_error {
                 "Search returned $res->{pagename} but not present, removing during " .
                   $c->request->uri;
@@ -107,7 +110,7 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
                built_query => $query,
                page_title => $c->loc('Search'),
-               results => \@results );
+               results => [ grep { $_->{text} } @results ] );
 }
 
 

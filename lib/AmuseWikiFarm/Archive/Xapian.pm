@@ -263,7 +263,7 @@ sub text_can_be_indexed {
     my ($self, $title) = @_;
     if ($title and
         ($title->is_published or
-         ($title->is_deferred && $self->index_deferred))) {
+         ($title->is_deferred && $title->teaser && $self->index_deferred))) {
         return 1;
     }
     return 0;
