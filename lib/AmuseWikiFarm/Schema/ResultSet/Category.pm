@@ -58,11 +58,25 @@ sub active_only_by_type {
 sub with_texts {
     my ($self, %options) = @_;
     my $me = $self->current_source_alias;
-
-    my @status = (qw/published/);
+    my $text_condition;
     if ($options{deferred}) {
-        push @status, 'deferred';
+        $text_condition =  { 'title.status' => [qw/published deferred/] };
     }
+    elsif ($options{deferred_with_teaser}) {
+        $text_condition = [
+                           {
+                            'title.status' => 'published'
+                           },
+                           {
+                            'title.status' => 'deferred',
+                            'title.teaser' => {'!=' => '' }
+                           }
+                          ];
+    }
+    else {
+        $text_condition = { 'title.status' => 'published' };
+    }
+    Dlog_debug { "$_" } $text_condition;
     my $sorting = $options{sort} || 'asc';
 
     my @default_sorting = ("$me.sorting_pos", "$me.uri", "$me.id");
@@ -81,9 +95,7 @@ sub with_texts {
         $limit--;
     }
 
-    return $self->search({
-                          'title.status' => \@status,
-                         },
+    return $self->search($text_condition,
                          {
                           join => { title_categories => 'title'},
                           columns => [qw/id name uri type sorting_pos site_id/],

@@ -87,8 +87,15 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
         return;
     }
     my $site = $c->stash->{site};
+    my %search;
+    if ($c->user_exists) {
+        $search{deferred} = 1;
+    }
+    elsif ($site->show_preview_when_deferred) {
+        $search{deferred_with_teaser} = 1;
+    }
     my $rs = $site->categories->by_type($type)
-      ->with_texts(deferred => $c->user_exists || $site->show_preview_when_deferred,
+      ->with_texts(%search,
                    sort => $c->req->params->{sorting});
     $c->stash(
               page_title => $name,
@@ -125,12 +132,15 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
             $c->detach();
             return;
         }
-        my $texts_rs;
-        if ($c->user_exists || $site->show_preview_when_deferred) {
-            $texts_rs = $cat->titles->status_is_published_or_deferred;
+        my $texts_rs = $cat->titles->texts_only;
+        if ($c->user_exists) {
+            $texts_rs = $texts_rs->status_is_published_or_deferred;
+        }
+        elsif ($site->show_preview_when_deferred) {
+            $texts_rs = $texts_rs->status_is_published_or_deferred_with_teaser;
         }
         else {
-            $texts_rs = $cat->titles->status_is_published;
+            $texts_rs = $texts_rs->status_is_published;
         }
         # handle the query parameters. The RS validate them
         my $query = $c->request->query_params;
