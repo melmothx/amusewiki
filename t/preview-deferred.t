@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 239;
+use Test::More tests => 313;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -296,3 +296,75 @@ foreach my $url (@urls) {
 foreach my $url (@pub_urls) {
     $mech->content_contains($url);
 }
+
+$site->site_options->update_or_create({
+                                       option_name => 'show_preview_when_deferred',
+                                       option_value => 1,
+                                      });
+
+foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
+    $mech->get_ok($page);
+    $mech->content_contains('deferred-text-3');
+    $mech->content_contains('deferred-text-2');
+}
+
+$site->titles->find({ uri => 'deferred-text-2',
+                      f_class => 'text' })->update({ teaser => '' });
+
+foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
+    $mech->get_ok($page);
+    $mech->content_contains('deferred-text-3');
+    $mech->content_lacks('deferred-text-2');
+}
+
+# login
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+
+foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
+    $mech->get_ok($page);
+    $mech->content_contains('deferred-text-3');
+    $mech->content_contains('deferred-text-2');
+}
+
+for (1..3) {
+    $mech->get_ok('/search?query=pallino&fmt=json');
+    foreach my $url ('deferred-text-3', @pub_urls) {
+        $mech->content_contains($url);
+    }
+    $mech->content_lacks('deferred-2');
+    my $search_results = from_json($mech->content);
+    is (scalar(@$search_results), 3) or diag Dumper($search_results);
+}
+
+$mech->get_ok('/logout');
+
+$site->site_options->update_or_create({
+                                       option_name => 'show_preview_when_deferred',
+                                       option_value => 0,
+                                      });
+
+foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
+    $mech->get_ok($page);
+    $mech->content_lacks('deferred-text-3');
+    $mech->content_lacks('deferred-text-2');
+}
+
+
+for (1..3) {
+    $mech->get_ok('/search?query=pallino&fmt=json');
+    foreach my $url (@pub_urls) {
+        $mech->content_contains($url);
+    }
+    foreach my $url (@urls) {
+        $mech->content_lacks($url);
+    }
+    my $search_results = from_json($mech->content);
+    is (scalar(@$search_results), 2) or diag Dumper($search_results);
+}
+
+$site->site_options->update_or_create({
+                                       option_name => 'show_preview_when_deferred',
+                                       option_value => 1,
+                                      });
+$site->xapian_reindex_all;
