@@ -19,7 +19,7 @@ sub base :Chained('pre_base') :PathPart('') :CaptureArgs(0) {
         $rs = $rs->status_is_published_or_deferred;
     }
     elsif ($c->stash->{site}->show_preview_when_deferred) {
-        log_warn { "Asking for deferred with teaser" };
+        log_debug { "Asking for deferred with teaser" };
         $rs = $rs->status_is_published_or_deferred_with_teaser;
     }
     else {
