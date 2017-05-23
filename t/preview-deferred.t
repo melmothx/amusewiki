@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 303;
+use Test::More tests => 313;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -337,10 +337,19 @@ for (1..3) {
     is (scalar(@$search_results), 3) or diag Dumper($search_results);
 }
 
+$mech->get_ok('/logout');
+
 $site->site_options->update_or_create({
                                        option_name => 'show_preview_when_deferred',
                                        option_value => 0,
                                       });
+
+foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
+    $mech->get_ok($page);
+    $mech->content_lacks('deferred-text-3');
+    $mech->content_lacks('deferred-text-2');
+}
+
 
 for (1..3) {
     $mech->get_ok('/search?query=pallino&fmt=json');
