@@ -13,7 +13,7 @@ sub base :Chained('pre_base') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     log_debug { 'in regular listing base' };
     # if the user is logged in, give him access to deferred as well
-    my $titles = $c->stash->{site}->titles;
+    my $titles = $c->stash->{site}->titles->sorted_by_title;
     my $rs = $titles->texts_only;
     if ($c->user_exists) {
         $rs = $rs->status_is_published_or_deferred;

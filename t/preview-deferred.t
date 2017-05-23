@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 313;
+use Test::More tests => 315;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -367,4 +367,9 @@ $site->site_options->update_or_create({
                                        option_name => 'show_preview_when_deferred',
                                        option_value => 1,
                                       });
+
+$mech->get_ok('/library');
+# check the sorting
+$mech->content_like(qr/Deferred #3.*Published #0.*Published #1/s, "Sorting appears ok");
+
 $site->xapian_reindex_all;
