@@ -77,22 +77,37 @@ sub status_is_published_or_deferred {
     return $self->search({ "$me.status" => [qw/published deferred/] });
 }
 
-sub sorted_by_title {
+sub status_is_published_or_deferred_with_teaser {
     my $self = shift;
     my $me = $self->current_source_alias;
-    return $self->search(undef,
-                         { order_by => ["$me.sorting_pos", "$me.title"] });
+    return $self->search([
+                          { "$me.status" => 'published' },
+                          {
+                           "$me.status" => 'deferred',
+                           "$me.teaser" => { '!=' => '' }
+                          }
+                         ]);
+}
+
+sub status_is_not_published {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => { '!=' => 'published' } });
+}
+
+sub status_is_deferred {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.status" => 'deferred' });
+}
+
+
+sub sorted_by_title {
+    return shift->order_by('title_asc');
 }
 
 sub sort_by_pubdate_desc {
-    my $self = shift;
-    my $me = $self->current_source_alias;
-    return $self->search(undef, { order_by => [
-                                               { -desc => "$me.pubdate" },
-                                               { -asc => [ "$me.sorting_pos",
-                                                           "$me.title" ] },
-                                              ]
-                                });
+    return shift->order_by('pubdate_desc');
 }
 
 
@@ -202,10 +217,7 @@ sub latest {
     my ($self, $items) = @_;
     $items ||= 50;
     die "Bad usage, a number is required" unless $items =~ m/^[1-9][0-9]*$/s;
-    return $self->published_texts->sort_by_pubdate_desc
-      ->search(undef, {
-                       rows => $items,
-                      });
+    return $self->published_texts->sort_by_pubdate_desc->rows_number($items);
 }
 
 =head1 Admin-related queries
@@ -219,7 +231,7 @@ Return the titles, specials included, with the status not set to 'published'
 sub unpublished {
     my $self = shift;
     my $me = $self->current_source_alias;
-    return $self->sort_by_pubdate_desc->search({ "$me.status" => { '!=' => 'published' } });
+    return $self->status_is_not_published->sort_by_pubdate_desc;
 }
 
 
@@ -236,11 +248,9 @@ sub deferred_to_publish {
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($time);
     my $me = $self->current_source_alias;
-    return $self->search({
-                          "$me.status" => 'deferred',
-                          "$me.pubdate" => { '<' => $format_time },
-                         });
-
+    return $self->status_is_deferred->search({
+                                              "$me.pubdate" => { '<' => $format_time },
+                                             });
 }
 
 =head2 publish_deferred
@@ -363,12 +373,7 @@ sub older_than {
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($dt);
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.pubdate" => { '<' => $format_time } },
-                         { order_by => [{ -desc => "$me.pubdate" },
-                                        { -asc => [ "$me.sorting_pos",
-                                                    "$me.title" ] }
-                                       ]
-                         });
+    return $self->search({ "$me.pubdate" => { '<' => $format_time } })->order_by('pubdate_desc');
 }
 
 sub newer_than {
@@ -377,12 +382,7 @@ sub newer_than {
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($dt);
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.pubdate" => { '>' => $format_time } },
-                         { order_by => [{ -asc => "$me.pubdate" },
-                                        { -asc => [ "$me.sorting_pos",
-                                                    "$me.title" ] }
-                                       ]
-                         });
+    return $self->search({ "$me.pubdate" => { '>' => $format_time } })->order_by('pubdate_asc');
 }
 
 sub bookbuildable_by_uri {
