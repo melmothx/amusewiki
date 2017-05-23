@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.022 2017-05-23
+
+ - Do not show deferred titles without a teaser if the option if
+   enabled. This way we can have more fine tuning about which titles
+   can be shown.
+
 2.021 2017-05-21
 
  - Add full screen editor to editing page
