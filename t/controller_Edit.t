@@ -11,7 +11,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
-
+use HTML::Entities;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
 binmode $builder->failure_output, ":utf8";
@@ -86,14 +86,14 @@ diag "In " . $mech->response->base->path;
 $mech->form_id('museform');
 
 my %expected = (
-                en => q{“hello” l’albero l’“adesso” ‘adesso’},
-                fi => q{”hello” l’albero l’”adesso” ’adesso’},
-                it => q{“hello” l’albero l’“adesso” ‘adesso’},
-                hr => q{„hello” l’albero l’„adesso” ‘adesso’},
-                mk => q{„hello“ l’albero l’„adesso“ ’adesso‘},
-                sr => q{„hello“ l’albero l’„adesso“ ’adesso’},
-                es => q{«hello» l’albero l’«adesso» ‘adesso’},
-                ru => q{«hello» l’albero l’«adesso» ‘adesso’},
+                en => q{“hello” <verbatim>[20]</verbatim>l’albero l’“adesso” <verbatim>"'</verbatim> ‘adesso’},
+                fi => q{”hello” <verbatim>[20]</verbatim>l’albero l’”adesso” <verbatim>"'</verbatim> ’adesso’},
+                it => q{“hello” <verbatim>[20]</verbatim>l’albero l’“adesso” <verbatim>"'</verbatim> ‘adesso’},
+                hr => q{„hello” <verbatim>[20]</verbatim>l’albero l’„adesso” <verbatim>"'</verbatim> ‘adesso’},
+                mk => q{„hello“ <verbatim>[20]</verbatim>l’albero l’„adesso“ <verbatim>"'</verbatim> ’adesso‘},
+                sr => q{„hello“ <verbatim>[20]</verbatim>l’albero l’„adesso“ <verbatim>"'</verbatim> ’adesso’},
+                es => q{«hello» <verbatim>[20]</verbatim>l’albero l’«adesso» <verbatim>"'</verbatim> ‘adesso’},
+                ru => q{«hello» <verbatim>[20]</verbatim>l’albero l’«adesso» <verbatim>"'</verbatim> ‘adesso’},
                );
 
 $mech->tick(fix_links => 1);
@@ -107,7 +107,7 @@ foreach my $lang (keys %expected) {
 #title $title
 #lang $lang
 
-"hello" l'albero l'"adesso" 'adesso' [2]
+"hello" <verbatim>[20]</verbatim>l'albero l'"adesso" <verbatim>"'</verbatim> 'adesso' [2]
 
 [3] footnote http://amusewiki.org nbsp nbsp removed
 EOF
@@ -117,7 +117,7 @@ EOF
     $mech->form_id('museform');
     my $got_body = $mech->value('body');
     like $got_body, qr/\Q$expected{$lang}\E \[1\]/;
-    $mech->content_contains($expected{$lang} . ' [1]');
+    $mech->content_contains(encode_entities($expected{$lang}, q{<>"}) .  ' [1]') or die $mech->content;
     my $exp_string =
       q{[1] footnote [[http://amusewiki.org][amusewiki.org]] nbsp nbsp removed};
     like $got_body, qr/\Q$exp_string\E/, "links, nbsp, footnotes fixed";
