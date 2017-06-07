@@ -70,7 +70,7 @@ make
 
 install_texlive () {
     cd $HOME
-    echo "Installing TeX live 2015 in your home under texlive"
+    echo "Installing TeX live 2017 in your home under texlive"
     # remove all stray files
     rm -rfv install-tl-*
     wget -O install-tl-unx.tar.gz \
@@ -80,13 +80,13 @@ install_texlive () {
     cd install-tl-201*
     cat <<EOF >> amw.profile
 selected_scheme scheme-full
-TEXDIR $HOME/texlive/2015
-TEXMFCONFIG ~/.texlive2015/texmf-config
+TEXDIR $HOME/texlive/2017
+TEXMFCONFIG ~/.texlive2017/texmf-config
 TEXMFHOME ~/texmf
 TEXMFLOCAL $HOME/texlive/texmf-local
-TEXMFSYSCONFIG $HOME/texlive/2015/texmf-config
-TEXMFSYSVAR $HOME/texlive/2015/texmf-var
-TEXMFVAR ~/.texlive2015/texmf-var
+TEXMFSYSCONFIG $HOME/texlive/2017/texmf-config
+TEXMFSYSVAR $HOME/texlive/2017/texmf-var
+TEXMFVAR ~/.texlive2017/texmf-var
 option_desktop_integration 0
 option_doc 0
 option_menu_integration 0
