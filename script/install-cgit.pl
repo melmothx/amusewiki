@@ -13,7 +13,7 @@ use AmuseWikiFarm::Utils::CgitSetup;
 
 binmode STDOUT, ":encoding(utf-8)";
 
-my $cgitversion = 'v0.12';
+my $cgitversion = 'v1.1';
 my ($reinstall, $help);
 
 GetOptions(
@@ -43,7 +43,7 @@ Options:
 
  --cgit-version
 
- By default, v0.11.2 is installed. v0.10.2 is known to work as well.
+ By default, v1.1 is installed. v0.10.2 is known to work as well.
 
 HELP
     exit 2;
