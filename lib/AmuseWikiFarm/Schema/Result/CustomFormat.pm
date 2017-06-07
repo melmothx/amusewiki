@@ -188,6 +188,12 @@ __PACKAGE__->table("custom_formats");
   default_value: 0
   is_nullable: 1
 
+=head2 bb_nofinalpage
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 1
+
 =head2 bb_notoc
 
   data_type: 'smallint'
@@ -321,6 +327,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "bb_nocoverpage",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
+  "bb_nofinalpage",
+  { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_notoc",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_opening",
@@ -386,8 +394,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IqIM7Sqmoxxj5OLrFnvv8w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-06-07 11:09:23
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:q2nZleRynjwPqilcz+DmWA
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;

@@ -328,9 +328,11 @@ default to false.
 
 =item nocoverpage
 
-=item headings
+=item nofinalpage
 
 =item notoc
+
+=item headings
 
 =item cover
 
@@ -353,6 +355,13 @@ has nocoverpage => (
                     isa => 'Bool',
                     default => sub { 0 },
                    );
+
+has nofinalpage => (
+                    is => 'rw',
+                    isa => 'Bool',
+                    default => sub { 0 },
+                   );
+
 
 sub all_headings {
     return Text::Amuse::Compile::TemplateOptions->all_headings;
@@ -1027,6 +1036,7 @@ sub profile_methods {
               twoside
               notoc
               nocoverpage
+              nofinalpage
               headings
               imposed
               signature
@@ -1062,6 +1072,7 @@ sub as_job {
                template_options => {
                                     twoside     => $self->twoside,
                                     nocoverpage => $self->nocoverpage,
+                                    nofinalpage => $self->nofinalpage,
                                     headings    => $self->headings,
                                     notoc       => $self->notoc,
                                     papersize   => $self->computed_papersize,
