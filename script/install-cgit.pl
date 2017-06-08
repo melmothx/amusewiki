@@ -68,6 +68,7 @@ print Dumper(\%paths);
 if (!$cgitsetup->cgi_exists) {
     my $system_wide_location;
     my @locations = ('/usr/lib/cgit/cgit.cgi',
+                     '/var/www/cgi-bin/cgit', # centos
                      '/usr/local/www/cgit/cgit.cgi');
 
     foreach my $loc (@locations) {
@@ -87,6 +88,16 @@ CGIT_CONFIG=$rcfile $system_wide_location "\$\@"
 CGI
         close $fh;
         chmod 0755, $cgitsetup->cgi;
+        chmod 0777, $cgitsetup->cache;
+    print <<"EOF";
+Directory for cgit cache is $paths{cache}.
+
+Permissions right now are wide open. Please consider to chown it to
+www-data (or whatever user is running fcgiwrap, and restore it to a
+sensible 755.
+
+EOF
+
         print "Wrapper installed in " . $cgitsetup->cgi . ", exiting now\n";
         exit;
     }
