@@ -323,11 +323,27 @@ system, which is lacking way too many modules.
 
 $ eval `perl -Mlocal::lib`
 $ cpanm Perl::Build
-$ perl-build -j 3 --test 5.26.0 $HOME/amw-perl
+$ perl-build -j 3 --test 5.20.3 $HOME/amw-perl
 $ cd /vaw/www/amusewiki
 $ git clone https://github.com/melmothx/amusewiki.git
 $ cd amusewiki # you're now in /vaw/www/amusewiki/amusewiki, our app home
 $ ./script/install-texlive.sh
+$ echo 'export PATH=$HOME/amw-perl/bin:$HOME/texlive/2017/bin/x86_64-linux:$PATH' >> $HOME/.bashrc
+
+Logout and login again and check the program paths to point to the newly installed ones
+
+$ which perl # should be: ~/amw-perl/bin/perl
+$ which xelatex # should be ~/texlive/2017/bin/x86_64-linux/xelatex
+
+Install cpanm and the dependencies
+
+$ perl -MCPAN -e 'install App::cpanminus'
+$ which cpanm # should be ~/amw-perl/bin/cpanm
+$ cd /var/www/amusewiki/amusewiki/
+$ ./script/install.sh
+
+
+
 
 
 Open selinux for cgit on localhost
