@@ -323,7 +323,7 @@ system, which is lacking way too many modules.
 
 $ eval `perl -Mlocal::lib`
 $ cpanm Perl::Build
-$ perl-build -j 3 --test 5.20.3 $HOME/amw-perl
+$ perl-build -j 3 --test 5.24.1 $HOME/amw-perl
 $ cd /vaw/www/amusewiki
 $ git clone https://github.com/melmothx/amusewiki.git
 $ cd amusewiki # you're now in /vaw/www/amusewiki/amusewiki, our app home
