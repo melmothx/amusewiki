@@ -300,6 +300,16 @@ From a fresh install:
     policycoreutils setroubleshoot
 # yum groupinstall 'Development Tools'
 
+Tweak nginx configuration to conform to debian standard
+
+# mkdir /etc/nginx/sites-enabled
+
+Modify /etc/nginx/nginx.conf adding this line:
+
+  include /etc/nginx/sites-enabled/*;
+
+Right after "include /etc/nginx/conf.d/*.conf;"
+
 Start nginx:
 
 # systemctl enable nginx
@@ -308,8 +318,8 @@ Start nginx:
 Open the firewall
 
 # firewall-cmd --get-active-zones
-# firewall-cmd --zone=public --add-port=443/tcp --permanent
-# firewall-cmd --zone=public --add-port=80/tcp --permanent
+# firewall-cmd --zone=public --add-service=http --permanent
+# firewall-cmd --zone=public --add-service=https --permanent
 # firewall-cmd --reload
 
 Prepare the installation directory for your user (say amusewiki)
@@ -342,7 +352,13 @@ $ which cpanm # should be ~/amw-perl/bin/cpanm
 $ cd /var/www/amusewiki/amusewiki/
 $ ./script/install.sh
 
+Decide the initial server name to serve amusewiki (to get access to
+the admin), e.g. amw.localdomain.
 
+See above if you want a mysql or postgresql database.
+
+$ ./script/configure.sh amw.localdomain
+$ ./init-all.sh start
 
 
 
@@ -350,15 +366,6 @@ Open selinux for cgit on localhost
 
 # semanage port -a -t http_port_t -p tcp 9015
 
-Tweak nginx and start it
-
-# mkdir /etc/nginx/sites-enabled
-
-Modify /etc/nginx/nginx.conf adding this line:
-
-  include /etc/nginx/sites-enabled/*;
-
-Right after "include /etc/nginx/conf.d/*.conf;"
 
 
 
@@ -410,6 +417,4 @@ $ ./script/install.sh
 
 Then decide to which hostname you want to serve this and run
 
-$ ./script/configure.sh amw.localdomain
-$ ./init-all.sh start
 
