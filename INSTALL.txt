@@ -294,12 +294,16 @@ Texlive is obsolete, so we will install it from ctan.
 From a fresh install:
 
 # yum install epel-release
-# yum -y localinstall https://harbottle.gitlab.io/epmel/7/x86_64/epmel-release-7-2.el7.x86_64.rpm
-# yum install git nginx perl-DBIx-Class perl-local-lib sqlite \
+# yum install git nginx perl-local-lib sqlite \
     perl-App-cpanminus fontconfig GraphicsMagick ImageMagick shared-mime-info openssl openssl-devel \
-    xapian xapian-core unzip wget libxml2 libxml2-devel \
+    xapian-core unzip wget libxml2 libxml2-devel \
     policycoreutils setroubleshoot
 # yum groupinstall 'Development Tools'
+
+Start nginx:
+
+# systemctl enable nginx
+# systemctl start nginx
 
 Open the firewall
 
@@ -307,6 +311,9 @@ Open the firewall
 # firewall-cmd --zone=public --add-port=443/tcp --permanent
 # firewall-cmd --zone=public --add-port=80/tcp --permanent
 # firewall-cmd --reload
+
+
+
 
 Open selinux for cgit on localhost
 
@@ -322,10 +329,6 @@ Modify /etc/nginx/nginx.conf adding this line:
 
 Right after "include /etc/nginx/conf.d/*.conf;"
 
-Start nginx:
-
-# systemctl enable nginx
-# systemctl start nginx
 
 
 This needs to be double checked, but seems to work
