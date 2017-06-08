@@ -296,7 +296,7 @@ From a fresh install:
 # yum install epel-release
 # yum install git nginx perl-local-lib sqlite cgit \
     perl-App-cpanminus fontconfig GraphicsMagick ImageMagick shared-mime-info openssl openssl-devel \
-    xapian-core unzip wget libxml2 libxml2-devel \
+    xapian-core xapian-core-devel unzip wget libxml2 libxml2-devel expat-devel \
     policycoreutils setroubleshoot
 # yum groupinstall 'Development Tools'
 
