@@ -294,7 +294,7 @@ Texlive is obsolete, so we will install it from ctan.
 From a fresh install:
 
 # yum install epel-release
-# yum install git nginx perl-local-lib sqlite \
+# yum install git nginx perl-local-lib sqlite cgit \
     perl-App-cpanminus fontconfig GraphicsMagick ImageMagick shared-mime-info openssl openssl-devel \
     xapian-core unzip wget libxml2 libxml2-devel \
     policycoreutils setroubleshoot
@@ -312,7 +312,22 @@ Open the firewall
 # firewall-cmd --zone=public --add-port=80/tcp --permanent
 # firewall-cmd --reload
 
+Prepare the installation directory for your user (say amusewiki)
 
+# mkdir /var/www/amusewiki
+# chown amusewiki:amusewiki /var/www/amusewiki
+
+As the user which is going to run amusewiki, install a fresh perl.
+This way we simplify and make our install independent from the base
+system, which is lacking way too many modules.
+
+$ eval `perl -Mlocal::lib`
+$ cpanm Perl::Build
+$ perl-build -j 3 --test 5.26.0 $HOME/amw-perl
+$ cd /vaw/www/amusewiki
+$ git clone https://github.com/melmothx/amusewiki.git
+$ cd amusewiki # you're now in /vaw/www/amusewiki/amusewiki, our app home
+$ ./script/install-texlive.sh
 
 
 Open selinux for cgit on localhost
