@@ -1,3 +1,9 @@
+amusewiki (2.022-3+amw3) unstable; urgency=medium
+
+  * Bump up dependency
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 10 Jun 2017 11:02:52 +0200
+
 amusewiki (2.022-2+amw2) unstable; urgency=medium
 
   * Rebuild from master to include new libtext-amuse-preprocessor-perl

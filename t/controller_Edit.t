@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 98;
+use Test::More tests => 106;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -112,8 +112,10 @@ foreach my $lang (keys %expected) {
 [3] footnote http://amusewiki.org nbsp nbsp removed
 EOF
     $mech->form_id('museform');
+    $body =~ s/\[20\]/\[20\]\0\r/sg;
     $mech->field(body => $body);
     $mech->click('preview');
+    $mech->content_contains('&gt;[20]&lt;');
     $mech->form_id('museform');
     my $got_body = $mech->value('body');
     like $got_body, qr/\Q$expected{$lang}\E \[1\]/;
