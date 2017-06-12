@@ -12,5 +12,21 @@ die "No cgitrc found" unless -f $cgitrc;
         CGIT_CONFIG => $cgitrc,
        );
 
-my $app = Plack::App::WrapCGI->new(script => "/usr/lib/cgit/cgit.cgi",
+my @locations = ('/usr/lib/cgit/cgit.cgi',
+                 '/var/www/cgi-bin/cgit', # centos
+                 '/usr/local/www/cgit/cgit.cgi', # freebsd
+                 File::Spec->rel2abs('root/git/cgit.cgi'), # installed by us
+                );
+
+my $cgit_exec;
+foreach my $cgit (@locations) {
+    if (-f $cgit) {
+        $cgit_exec = $cgit;
+        last;
+    }
+}
+
+die "Couldn't find a cgit executable" unless $cgit_exec;
+
+my $app = Plack::App::WrapCGI->new(script => $cgit_exec,
                                    execute => 1)->to_app;
