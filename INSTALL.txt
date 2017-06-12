@@ -286,3 +286,105 @@ Then decide to which hostname you want to serve this and run
 ./script/configure.sh amw.localdomain
 
 Take note of the credentials, and follow the instructions.
+
+** CentOS 7
+
+Texlive is obsolete, so we will install it from ctan.
+
+From a fresh install:
+
+# yum install epel-release
+# yum install git nginx perl-local-lib sqlite cgit \
+    perl-App-cpanminus fontconfig GraphicsMagick ImageMagick shared-mime-info openssl openssl-devel \
+    xapian-core xapian-core-devel unzip wget libxml2 libxml2-devel expat-devel \
+    policycoreutils setroubleshoot
+# yum groupinstall 'Development Tools'
+
+Tweak nginx configuration to conform to debian standard
+
+# mkdir /etc/nginx/sites-enabled
+
+Modify /etc/nginx/nginx.conf adding this line:
+
+  include /etc/nginx/sites-enabled/*;
+
+Right after "include /etc/nginx/conf.d/*.conf;"
+
+(Probably you may also want to add "client_max_body_size 8m;" as the
+default is way too low).
+
+Start nginx:
+
+# systemctl enable nginx
+# systemctl start nginx
+
+Open the firewall
+
+# firewall-cmd --get-active-zones
+# firewall-cmd --zone=public --add-service=http --permanent
+# firewall-cmd --zone=public --add-service=https --permanent
+# firewall-cmd --reload
+
+Prepare the installation directory for your user (say amusewiki)
+
+# mkdir /var/www/amusewiki
+# chown amusewiki:amusewiki /var/www/amusewiki
+
+As the user which is going to run amusewiki, install a fresh perl.
+This way we simplify and make our install independent from the base
+system, which is lacking way too many modules.
+
+$ eval `perl -Mlocal::lib`
+$ cpanm Perl::Build
+$ perl-build -j 3 --test 5.24.1 $HOME/amw-perl
+$ cd /vaw/www/amusewiki
+$ git clone https://github.com/melmothx/amusewiki.git
+$ cd amusewiki # you're now in /vaw/www/amusewiki/amusewiki, our app home
+$ ./script/install-texlive.sh
+$ echo 'export PATH=$HOME/amw-perl/bin:$HOME/texlive/2017/bin/x86_64-linux:$PATH' >> $HOME/.bashrc
+$ chmod 755 $HOME  # open the home so plackup is accessible to nginx
+
+Logout and login again and check the program paths to point to the newly installed ones
+
+$ which perl # should be: ~/amw-perl/bin/perl
+$ which xelatex # should be ~/texlive/2017/bin/x86_64-linux/xelatex
+
+Install cpanm and the dependencies
+
+$ perl -MCPAN -e 'install App::cpanminus'
+$ which cpanm # should be ~/amw-perl/bin/cpanm
+$ cd /var/www/amusewiki/amusewiki/
+$ ./script/install.sh
+
+Decide the initial server name to serve amusewiki (to get access to
+the admin), e.g. amw.localdomain.
+
+See above if you want a mysql or postgresql database. The following
+command will create a sample site with the current amusewiki
+documentation.
+
+$ ./script/configure.sh amw.localdomain
+
+Remove the cgit wrapper, we're going to install systemd unit files.
+
+$ rm root/git/cgit.cgi
+$ ./script/generate-systemd-unit-files
+$ ./script/amusewiki-generate-nginx-conf
+
+Read the output and install the fresh nginx configuration.
+
+Finally, open the permission for selinux. As root:
+
+cd /var/www/amusewiki/amusewiki/doc/centos/
+checkmodule -M -m -o amusewiki.mod amusewiki.te
+semodule_package -o amusewiki.pp -m amusewiki.mod
+semodule -i amusewiki.pp
+
+Reboot to be sure everything is ok, open with a browser the location
+you configured (say, amw.localdomain, you may want to add the entry
+/etc/hosts to access it) and login.
+
+You probably want to head to the admin panel under /admin/sites to
+create a new site.
+
+

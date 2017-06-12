@@ -85,7 +85,7 @@ fi
 # assert that cgit can write into its own cache
 chown www-data:www-data /var/lib/amusewiki/opt/cache/cgit
 
-if [ ! -d "/var/lib/amusewiki/fontspec.json" ]; then
+if [ ! -f "/var/lib/amusewiki/fontspec.json" ]; then
     echo "Creating a new fontspec.json file"
     amusewiki populate-webfonts
 fi

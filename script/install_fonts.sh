@@ -4,8 +4,11 @@ set -e
 
 echo "Checking and installing missing fonts"
 
-texfontsdir=$HOME/texlive/2016/texmf-dist/fonts
+texfontsdir=$HOME/texlive/2017/texmf-dist/fonts
 
+if [ ! -d $texfontsdir ]; then
+    texfontsdir=$HOME/texlive/2016/texmf-dist/fonts
+fi
 if [ ! -d $texfontsdir ]; then
     texfontsdir=$HOME/texlive/2015/texmf-dist/fonts
 fi
@@ -46,7 +49,8 @@ for font in 'CMU Serif'            \
             'Iwona'                \
             'PT Serif'             \
             'PT Sans'              \
-            'Droid Serif'          \
+            'Noto Sans' \
+            'Noto Serif' \
             'DejaVu Sans'          \
             'DejaVu Sans Mono'; do
     if fc-list "$font" | grep -q style; then
@@ -82,9 +86,11 @@ for font in 'CMU Serif'            \
                 rm -fv iwona
                 ln -s $texfontsdir/opentype/nowacki/iwona
                 ;;
-            Droid*)
-                rm -fv droid
-                ln -s $texfontsdir/truetype/public/droid
+            Noto*)
+                rm -fv noto
+                if [ -d $texfontsdir/truetype/google/noto ]; then
+                    ln -s $texfontsdir/truetype/google/noto
+                fi
                 ;;
             DejaVu*)
                 rm -fv dejavu

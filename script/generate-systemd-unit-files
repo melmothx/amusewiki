@@ -1,0 +1,82 @@
+#!/bin/sh
+
+set -e
+cd `dirname $0`
+cd ..
+
+tempdir=`mktemp -d`
+if id www-data >/dev/null 2>/dev/null; then
+    nginxid="www-data"
+else
+    if id nginx >/dev/null 2>/dev/null; then
+        nginxid="nginx"
+    fi
+fi
+
+cat <<EOF > $tempdir/amusewiki-cgit.service
+[Unit]
+Description=Amusewiki CGIT server
+After=nss-user-lookup.target
+
+[Service]
+WorkingDirectory=$(pwd)
+User=$nginxid
+Group=$nginxid
+ExecStart=$(which perl) $(which plackup) --path /git --port 9015 --host 127.0.0.1 -E deployment $(pwd)/psgi/amusewiki-cgit.psgi 
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+cat <<EOF > $tempdir/amusewiki-jobber.service
+[Unit]
+Description=Amusewiki jobber
+After=nss-user-lookup.target
+
+[Service]
+WorkingDirectory=$(pwd)
+User=$(whoami)
+Group=$(whoami)
+Environment="PATH=$PATH"
+ExecStart=$(which perl) -I$(pwd)/lib $(pwd)/script/amusewiki-jobber
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+EOF
+
+cat <<EOF > $tempdir/amusewiki-web.service
+[Unit]
+Description=Amusewiki web server
+After=nss-user-lookup.target
+
+[Service]
+WorkingDirectory=$(pwd)
+User=$(whoami)
+Group=$(whoami)
+Environment="PATH=$PATH"
+ExecStart=$(which perl) $(which plackup) -s FCGI --listen $(pwd)/var/amw.sock --nproc 5 -E deployment $(pwd)/psgi/amusewiki.psgi
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
+EOF
+
+
+head -100 $tempdir/*
+echo "############################################"
+cat <<EOF
+# The above systemd unit files are ready to be installed
+
+# Please execute as root:
+
+cp -v $tempdir/amusewiki-*.service /etc/systemd/system/
+chown root:root /etc/systemd/system/amusewiki-*
+chmod 664 /etc/systemd/system/amusewiki-*
+systemctl daemon-reload
+systemctl start amusewiki-jobber amusewiki-web amusewiki-cgit
+systemctl enable amusewiki-jobber amusewiki-web amusewiki-cgit
+EOF

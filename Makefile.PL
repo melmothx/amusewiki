@@ -40,6 +40,10 @@ requires 'MIME::Types' => '2.04';
 requires 'FCGI';
 requires 'FCGI::ProcManager';
 
+# for cgit under plack
+requires 'CGI::Emulate::PSGI';
+requires 'CGI::Compile';
+
 requires 'Unicode::Collate';
 requires 'DBIx::Class';
 requires 'DBD::SQLite';

@@ -5,7 +5,6 @@
 set -e
 
 AMWHOME=`pwd`
-TEXMIRROR=ctan.ijs.si/tex-archive
 
 missing='no'
 for command in perl cpanm fc-cache convert gm update-mime-database xapian-check openssl \
@@ -68,35 +67,6 @@ cpanm -q Log::Dispatch Log::Log4perl Module::Install Mail::Send \
 cpanm -q --installdeps .
 make
 
-install_texlive () {
-    cd $HOME
-    echo "Installing TeX live 2015 in your home under texlive"
-    # remove all stray files
-    rm -rfv install-tl-*
-    wget -O install-tl-unx.tar.gz \
-         http://$TEXMIRROR/systems/texlive/tlnet/install-tl-unx.tar.gz
-    tar -xzvf install-tl-unx.tar.gz
-    # use shell expansion
-    cd install-tl-201*
-    cat <<EOF >> amw.profile
-selected_scheme scheme-full
-TEXDIR $HOME/texlive/2015
-TEXMFCONFIG ~/.texlive2015/texmf-config
-TEXMFHOME ~/texmf
-TEXMFLOCAL $HOME/texlive/texmf-local
-TEXMFSYSCONFIG $HOME/texlive/2015/texmf-config
-TEXMFSYSVAR $HOME/texlive/2015/texmf-var
-TEXMFVAR ~/.texlive2015/texmf-var
-option_desktop_integration 0
-option_doc 0
-option_menu_integration 0
-option_src 0
-EOF
-    ./install-tl -repository http://$TEXMIRROR/systems/texlive/tlnet \
-                 -profile amw.profile
-    cd $AMWHOME
-}
-
 echo -n "Checking installation of TeX live: ";
 if which xelatex > /dev/null; then
     echo "OK";
@@ -104,6 +74,7 @@ else
     echo "TeXlive is packaged for a lot of OSes and you're suggested"
     echo "to install it (in its full variant) from the repository."
     echo "Otherwise see https://www.tug.org/texlive/"
+    echo "A non-interactive script is provided under script/install-texlive.sh"
     exit 2;
 fi
 
@@ -111,11 +82,11 @@ echo "Installing needed JS"
 ./script/install_js.sh
 ./script/install_fonts.sh
 
-cd $AMWHOME/font-preview
-./gen.sh
-
 cd $AMWHOME
 ./script/amusewiki-populate-webfonts
+
+cd $AMWHOME/font-preview
+./gen.sh
 
 cd $AMWHOME
 ./script/install-cgit.pl
