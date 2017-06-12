@@ -3,8 +3,11 @@ module amusewiki 1.0;
 require {
         type httpd_t;
         type httpd_sys_content_t;
+        type init_t;
         class sock_file write;
+        class unix_stream_socket connectto;
 }
 
 #============= httpd_t ==============
 allow httpd_t httpd_sys_content_t:sock_file write;
+allow httpd_t init_t:unix_stream_socket connectto;

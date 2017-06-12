@@ -339,6 +339,7 @@ $ git clone https://github.com/melmothx/amusewiki.git
 $ cd amusewiki # you're now in /vaw/www/amusewiki/amusewiki, our app home
 $ ./script/install-texlive.sh
 $ echo 'export PATH=$HOME/amw-perl/bin:$HOME/texlive/2017/bin/x86_64-linux:$PATH' >> $HOME/.bashrc
+$ chmod 755 $HOME  # open the home so plackup is accessible to nginx
 
 Logout and login again and check the program paths to point to the newly installed ones
 
@@ -358,63 +359,22 @@ the admin), e.g. amw.localdomain.
 See above if you want a mysql or postgresql database.
 
 $ ./script/configure.sh amw.localdomain
-$ ./init-all.sh start
+
+Remove the cgit wrapper, we're going to install systemd unit files.
+
+$ rm root/git/cgit.cgi
+$ ./script/generate-systemd-unit-files
+$ ./script/amusewiki-generate-nginx-conf
+
+Read the output and install the fresh nginx configuration.
+
+Finally, open the permission for selinux. As root:
+
+cd /var/www/amusewiki/amusewiki/doc/centos/
+checkmodule -M -m -o amusewiki.mod amusewiki.te
+semodule_package -o amusewiki.pp -m amusewiki.mod
+semodule -i amusewiki.pp
 
 
-
-Open selinux for cgit on localhost
-
-# semanage port -a -t http_port_t -p tcp 9015
-
-
-
-
-This needs to be double checked, but seems to work
-# nginx selinux module
-
-# cut here
-module nginx 1.0;
-
-require {
-        type unconfined_t;
-        type httpd_t;
-        type httpd_sys_content_t;
-        class sock_file write;
-        class unix_stream_socket connectto;
-}
-
-#============= httpd_t ==============
-
-allow httpd_t httpd_sys_content_t:sock_file write;
-
-allow httpd_t unconfined_t:unix_stream_socket connectto;
-
-# end 
-
-Login into the user you created to run the app. Please note that the
-application root is not in the $HOME to avoid further problems with
-SELinux.
-
-# mkdir /srv/amusewiki
-# chown amusewiki:amusewiki /srv/amusewiki
-# semanage fcontext -a -t httpd_sys_content_t '/srv/amusewiki/amusewiki/.*'
-# restorecon -Rv  /srv/amusewiki/amusewiki
-
-# su - amusewiki
-$ cd /srv/amusewiki
-$ git clone https://github.com/melmothx/amusewiki.git
-$ ./script/install-texlive.sh
-
-Add to ~/.bash_profile the TeXlive path and the following string
-eval `perl -Mlocal::lib`
-
-Login again.
-
-$ cpanm CPAN
-$ git clone https://github.com/melmothx/amusewiki.git
-$ cd amusewiki
-$ ./script/install.sh
-
-Then decide to which hostname you want to serve this and run
 
 
