@@ -76,4 +76,5 @@ chown root:root /etc/systemd/system/amusewiki-*
 chmod 664 /etc/systemd/system/amusewiki-*
 systemctl daemon-reload
 systemctl start amusewiki-jobber amusewiki-web amusewiki-cgit
+systemctl enable amusewiki-jobber amusewiki-web amusewiki-cgit
 EOF

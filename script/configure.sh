@@ -78,6 +78,4 @@ echo
 echo "#####################################################"
 echo
 
-echo "Starting up application"
-./init-all.sh start
-
+echo "You may want to start up application with ./init-all.sh start"
