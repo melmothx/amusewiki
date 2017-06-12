@@ -38,6 +38,7 @@ After=nss-user-lookup.target
 WorkingDirectory=$(pwd)
 User=$(whoami)
 Group=$(whoami)
+Environment="PATH=$PATH"
 ExecStart=$(which perl) -I$(pwd)/lib $(pwd)/script/amusewiki-jobber
 Restart=always
 
@@ -55,6 +56,7 @@ After=nss-user-lookup.target
 WorkingDirectory=$(pwd)
 User=$(whoami)
 Group=$(whoami)
+Environment="PATH=$PATH"
 ExecStart=$(which perl) $(which plackup) -s FCGI --listen $(pwd)/var/amw.sock --nproc 5 -E deployment $(pwd)/psgi/amusewiki.psgi
 Restart=always
 
