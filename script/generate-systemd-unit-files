@@ -75,5 +75,5 @@ cp -v $tempdir/amusewiki-*.service /etc/systemd/system/
 chown root:root /etc/systemd/system/amusewiki-*
 chmod 664 /etc/systemd/system/amusewiki-*
 systemctl daemon-reload
-systemclt start amusewiki-jobber amusewiki-web amusewiki-cgit
+systemctl start amusewiki-jobber amusewiki-web amusewiki-cgit
 EOF
