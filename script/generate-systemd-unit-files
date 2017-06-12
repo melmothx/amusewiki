@@ -38,7 +38,7 @@ After=nss-user-lookup.target
 WorkingDirectory=$(pwd)
 User=$(whoami)
 Group=$(whoami)
-ExecStart=$(pwd)/script/amusewiki-jobber
+ExecStart=$(which perl) -I$(pwd)/lib $(pwd)/script/amusewiki-jobber
 Restart=always
 
 [Install]
