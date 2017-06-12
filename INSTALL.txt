@@ -310,6 +310,9 @@ Modify /etc/nginx/nginx.conf adding this line:
 
 Right after "include /etc/nginx/conf.d/*.conf;"
 
+(Probably you may also want to add "client_max_body_size 8m;" as the
+default is way too low).
+
 Start nginx:
 
 # systemctl enable nginx
@@ -356,7 +359,9 @@ $ ./script/install.sh
 Decide the initial server name to serve amusewiki (to get access to
 the admin), e.g. amw.localdomain.
 
-See above if you want a mysql or postgresql database.
+See above if you want a mysql or postgresql database. The following
+command will create a sample site with the current amusewiki
+documentation.
 
 $ ./script/configure.sh amw.localdomain
 
@@ -375,6 +380,11 @@ checkmodule -M -m -o amusewiki.mod amusewiki.te
 semodule_package -o amusewiki.pp -m amusewiki.mod
 semodule -i amusewiki.pp
 
+Reboot to be sure everything is ok, open with a browser the location
+you configured (say, amw.localdomain, you may want to add the entry
+/etc/hosts to access it) and login.
 
+You probably want to head to the admin panel under /admin/sites to
+create a new site.
 
 
