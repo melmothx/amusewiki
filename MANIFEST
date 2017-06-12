@@ -655,6 +655,10 @@ root/static/images/font-preview/Linux-Biolinum-O.pdf
 root/static/images/font-preview/Linux-Biolinum-O.png
 root/static/images/font-preview/Linux-Libertine-O.pdf
 root/static/images/font-preview/Linux-Libertine-O.png
+root/static/images/font-preview/Noto-Sans.pdf
+root/static/images/font-preview/Noto-Sans.png
+root/static/images/font-preview/Noto-Serif.pdf
+root/static/images/font-preview/Noto-Serif.png
 root/static/images/font-preview/PT-Sans.pdf
 root/static/images/font-preview/PT-Sans.png
 root/static/images/font-preview/PT-Serif.pdf
@@ -949,9 +953,11 @@ script/amusewikifarm_server.pl
 script/amusewikifarm_test.pl
 script/cleanup-tests.sh
 script/configure.sh
+script/generate-systemd-unit-files
 script/import-wordpress.pl
 script/init-fcgi.pl
 script/install-cgit.pl
+script/install-texlive.sh
 script/install.sh
 script/install_fonts.sh
 script/install_js.sh
