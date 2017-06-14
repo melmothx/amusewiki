@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 3;
+use Test::More tests => 30;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -36,5 +36,71 @@ $mech->get('/settings/formats');
 is $mech->status, '401';
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 is $mech->status, '200';
+ok $mech->submit_form(with_fields => {
+                                      format_name => 'custom',
+                                     });
 
+my @fields = (qw/nofinalpage notoc nocoverpage unbranded/);
+ok $mech->form_with_fields(@fields);
 
+my $format = $site->custom_formats->first;
+foreach my $f (@fields) {
+    my $method = 'bb_' . $f;
+    is $format->$method, 0, "$method is false";
+}
+
+foreach my $f (@fields) {
+    $mech->tick($f => 1);
+}
+$mech->content_contains('Format successfully created');
+$mech->click('update');
+$mech->content_contains('Format successfully updated');
+
+$format->discard_changes;
+foreach my $f (@fields) {
+    my $method = 'bb_' . $f;
+    is $format->$method, 1, "$method is true";
+}
+
+$site->jobs->enqueue(rebuild => { id => $site->titles->first->id }, 15);
+{
+    my $job = $site->jobs->dequeue;
+    is $job->task, 'rebuild';
+    $job->dispatch_job;
+    is $job->status, 'completed';
+    diag $job->logs;
+    $mech->get_ok($job->produced . '.' . $format->extension);
+    $mech->get_ok($job->produced);
+}
+ok $mech->follow_link( url_regex => qr{/bookbuilder/add/} );
+$mech->get_ok('/bookbuilder');
+ok $mech->form_with_fields(@fields);
+foreach my $f (@fields) {
+    $mech->tick($f => 1);
+}
+$mech->select(papersize => 'a6');
+$mech->click('build');
+{
+    my $job = $site->jobs->dequeue;
+    is $job->task, 'bookbuilder';
+    $job->dispatch_job;
+    is $job->status, 'completed';
+    diag $job->logs;
+    $mech->get_ok($job->produced);
+}
+
+$mech->get_ok('/bookbuilder');
+ok $mech->form_with_fields(@fields);
+foreach my $f (@fields) {
+    $mech->untick($f => 1);
+}
+$mech->select(papersize => 'a4');
+$mech->click('build');
+{
+    my $job = $site->jobs->dequeue;
+    is $job->task, 'bookbuilder';
+    $job->dispatch_job;
+    is $job->status, 'completed';
+    diag $job->logs;
+    $mech->get_ok($job->produced);
+}
