@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2017-05-15 16:27+0200\n"
+"PO-Revision-Date: 2017-06-15 11:19+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -298,10 +298,10 @@ msgid "Build it"
 msgstr "Impagina"
 
 msgid "By by sku ascending"
-msgstr ""
+msgstr "Per numero di inventario, ascendente"
 
 msgid "By sku descending"
-msgstr ""
+msgstr "Per numero di inventario, discendente"
 
 msgid "By title A-Z"
 msgstr "Per titolo, dalla A alla Z"
@@ -594,7 +594,7 @@ msgid "Embed fonts in the EPUB file"
 msgstr "Includi i font nel file EPUB"
 
 msgid "Enable title ordering by SKU"
-msgstr ""
+msgstr "Abilita l'ordinamento dei titoli per numero di inventario"
 
 msgid "Erase this revision"
 msgstr "Cancella questa revisione"
@@ -740,10 +740,10 @@ msgid "Format name"
 msgstr "Nome del formato"
 
 msgid "Format successfully created"
-msgstr ""
+msgstr "Formato creato con successo"
 
 msgid "Format successfully updated"
-msgstr ""
+msgstr "Formato aggiornato con successo"
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formato: aaaa-mm-gg hh:mm, ad esempio"
@@ -1272,7 +1272,7 @@ msgstr "Non generare un sommario"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
-msgstr ""
+msgstr "Non generare mai la pagina finale con titolo, autore, note, logo e nome del sito"
 
 msgid "New"
 msgstr "Nuovo"
@@ -2380,7 +2380,7 @@ msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Per vedere le modifiche introdotte, puoi visitare il seguente URL"
 
 msgid "Toggle fullscreen editor"
-msgstr ""
+msgstr "Attiva/disattiva editor a tutto schermo"
 
 msgid "Topic"
 msgstr "Argomento"
