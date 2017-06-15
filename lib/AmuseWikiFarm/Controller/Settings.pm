@@ -77,6 +77,7 @@ sub create_format :Chained('list_custom_formats') :PathPart('create') :Args(0) {
         log_debug { "Created " . $f->format_name };
         $f->discard_changes;
         $c->response->redirect($c->uri_for_action('/settings/edit_format', [ $f->custom_formats_id ]));
+        $c->flash(status_msg => $c->loc('Format successfully created'));
         return;
     }
     $c->response->redirect($c->uri_for_action('/settings/formats'));
@@ -106,6 +107,9 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
         my $result = $format->update_from_params(\%params);
         if ($result->{error}) {
             $c->flash(error_msg => $result->{error});
+        }
+        else {
+            $c->flash(status_msg => $c->loc('Format successfully updated'));
         }
     }
     $c->stash(

@@ -260,6 +260,13 @@
     </div>
     <div class="checkbox">
       <label>
+        <input type="checkbox" name="nofinalpage" value="1" id="nofinalpage"
+               [% IF bb.nofinalpage %]checked="checked"[% END %]/>
+        [% loc('Never generate the standard final page with title/author/notes/logo/site name') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
         <input type="checkbox" name="unbranded" value="1" id="unbranded"
                [% IF bb.unbranded %]checked="checked"[% END %]/>
         [% loc('Unbranded PDF (hide site name, logo, etc.)') %]

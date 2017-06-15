@@ -124,6 +124,7 @@ CREATE TABLE custom_formats (
        bb_sansfont VARCHAR(255),
        bb_monofont VARCHAR(255),
        bb_nocoverpage SMALLINT DEFAULT 0,
+       bb_nofinalpage SMALLINT DEFAULT 0,
        bb_notoc SMALLINT DEFAULT 0,
        bb_opening VARCHAR(16) NOT NULL DEFAULT 'any',
        bb_papersize VARCHAR(255) NOT NULL DEFAULT 'generic',

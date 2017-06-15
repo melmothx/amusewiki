@@ -216,6 +216,7 @@ my $expected = {
                                        'bcor' => '20mm',
                                        'nocoverpage' => 1,
                                        'notoc' => 1,
+                                       nofinalpage => undef,
                                        'mainfont' => 'CMU Serif',
                                        sansfont    => undef,
                                        monofont    => undef,
