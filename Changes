@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.023 2017-06-15
+
+ - Add documentation for installation on CentOS
+ - Fixes to installation scripts
+ - Add nofinalpage option to BB and custom formats (#117)
+
 2.022 2017-05-23
 
  - Do not show deferred titles without a teaser if the option if
