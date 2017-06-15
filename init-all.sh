@@ -40,13 +40,17 @@ prepare_app () {
 
 # echo `pwd`
 
-start_all () {
+start_web () {
     prepare_app
     rm -fv current_version_is_*.txt
     amw_version=`perl -I lib -MAmuseWikiFarm -e 'print $AmuseWikiFarm::VERSION'`
     touch current_version_is_$amw_version.txt
     rm -rfv var/cache/*
 	./script/init-fcgi.pl start
+}
+
+start_all () {
+    start_web
     ./script/jobber.pl start
     sleep 5
 }
@@ -61,6 +65,15 @@ case $1 in
         rm -fv ./var/*.pid
         start_all
     ;;
+
+    start-app)
+        start_web
+    ;;
+
+    stop-app)
+        ./script/init-fcgi.pl stop
+    ;;
+
     start)
         start_all
 	;;
