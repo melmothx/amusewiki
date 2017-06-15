@@ -11,3 +11,5 @@ require {
 #============= httpd_t ==============
 allow httpd_t httpd_sys_content_t:sock_file write;
 allow httpd_t init_t:unix_stream_socket connectto;
+allow httpd_t unconfined_t:unix_stream_socket connectto;
+
