@@ -699,6 +699,12 @@ msgstr "Tvinga publicering"
 msgid "Format name"
 msgstr ""
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Format: åååå-mm-dd tt:mm, t.ex."
 
@@ -1168,6 +1174,10 @@ msgstr ""
 
 msgid "Never generate a table of content"
 msgstr "Generera aldrig innehållsförteckning"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
 
 msgid "New"
 msgstr ""

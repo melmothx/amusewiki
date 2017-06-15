@@ -743,6 +743,12 @@ msgstr "Publikim i sforcuar"
 msgid "Format name"
 msgstr ""
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formati: yyyy-mm-dd  hh:mm, p.sh."
 
@@ -1251,6 +1257,10 @@ msgstr "Ekrani i listimit të rrjetit të bibliotekës."
 
 msgid "Never generate a table of content"
 msgstr "Asnjëher mos gjenero tabelën e përmbajtjes"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
 
 msgid "New"
 msgstr "E re"

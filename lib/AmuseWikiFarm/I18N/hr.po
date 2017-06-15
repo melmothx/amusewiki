@@ -721,6 +721,12 @@ msgstr "Prisili na objavljivanje"
 msgid "Format name"
 msgstr ""
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formatiranje: gggg-mm-dd ss:mm, npr."
 
@@ -1226,6 +1232,10 @@ msgstr "Stranica s popisom mrežnih arhiva."
 
 msgid "Never generate a table of content"
 msgstr "Ne generiraj sadržaj"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
 
 msgid "New"
 msgstr "Novo"

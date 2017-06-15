@@ -740,6 +740,12 @@ msgstr "Принуди на објавување"
 msgid "Format name"
 msgstr ""
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Форматирање: гггг-мм-дд:мм, нпр.:"
 
@@ -1252,6 +1258,10 @@ msgstr "Страница со листа од мрежните архиви."
 
 msgid "Never generate a table of content"
 msgstr "Не генерирај содржина"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
 
 msgid "New"
 msgstr "Ново"

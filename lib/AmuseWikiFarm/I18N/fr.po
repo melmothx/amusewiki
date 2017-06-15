@@ -743,6 +743,12 @@ msgstr "Forcer la publication"
 msgid "Format name"
 msgstr ""
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Format: aaaa-mm-jj hh:mm, par exemple"
 
@@ -1253,6 +1259,10 @@ msgstr "Écran de liste de bibliothèque réseau."
 
 msgid "Never generate a table of content"
 msgstr "Ne jamais générer un sommaire"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
 
 msgid "New"
 msgstr "Nouveau"

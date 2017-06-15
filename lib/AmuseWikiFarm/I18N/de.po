@@ -697,6 +697,12 @@ msgstr "Erzwinge Veröffentlichung"
 msgid "Format name"
 msgstr ""
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Format: jjjj-mm-tt hh:mm, z.B."
 
@@ -1176,6 +1182,10 @@ msgid "Network library listing screen."
 msgstr ""
 
 msgid "Never generate a table of content"
+msgstr ""
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
 msgstr ""
 
 msgid "New"

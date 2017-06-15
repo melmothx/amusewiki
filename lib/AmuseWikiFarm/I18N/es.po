@@ -748,6 +748,12 @@ msgstr "Forzar publicación"
 msgid "Format name"
 msgstr ""
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formato: yyyy-mm-dd hh:mm, ej."
 
@@ -1268,6 +1274,10 @@ msgstr "Pantalla mostrando biblioteca en red."
 
 msgid "Never generate a table of content"
 msgstr "Nunca generar un índice de contenidos"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
 
 msgid "New"
 msgstr "Nuevo"

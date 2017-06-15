@@ -730,6 +730,12 @@ msgstr "Gennemtving offentliggørelse"
 msgid "Format name"
 msgstr "Formatets navn"
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Format: åååå-mm-dd tt:mm, f.eks."
 
@@ -1239,6 +1245,10 @@ msgstr ""
 
 msgid "Never generate a table of content"
 msgstr "Generer ikke en indholdsfortegnelse"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
 
 msgid "New"
 msgstr "Ny"

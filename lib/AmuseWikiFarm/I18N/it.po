@@ -739,6 +739,12 @@ msgstr "Forza pubblicazione"
 msgid "Format name"
 msgstr "Nome del formato"
 
+msgid "Format successfully created"
+msgstr ""
+
+msgid "Format successfully updated"
+msgstr ""
+
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formato: aaaa-mm-gg hh:mm, ad esempio"
 
@@ -1263,6 +1269,10 @@ msgstr "Schermata con l'elenco delle biblioteche online."
 
 msgid "Never generate a table of content"
 msgstr "Non generare un sommario"
+
+msgid ""
+"Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
 
 msgid "New"
 msgstr "Nuovo"
