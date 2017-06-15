@@ -1,6 +1,7 @@
 module amusewiki 1.0;
 
 require {
+        type unconfined_t;
         type httpd_t;
         type httpd_sys_content_t;
         type init_t;
