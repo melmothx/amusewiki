@@ -322,6 +322,36 @@ __PACKAGE__->add_unique_constraint("uri_f_class_site_id_unique", ["uri", "f_clas
 
 =head1 RELATIONS
 
+=head2 backlink_titles_linked_from
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Backlink>
+
+=cut
+
+__PACKAGE__->has_many(
+  "backlink_titles_linked_from",
+  "AmuseWikiFarm::Schema::Result::Backlink",
+  { "foreign.title_linked_from" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 backlink_titles_linked_to
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Backlink>
+
+=cut
+
+__PACKAGE__->has_many(
+  "backlink_titles_linked_to",
+  "AmuseWikiFarm::Schema::Result::Backlink",
+  { "foreign.title_linked_to" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 muse_headers
 
 Type: has_many
@@ -432,9 +462,37 @@ Composing rels: L</text_months> -> monthly_archive
 
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
+=head2 titles_linked_from
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-05-21 11:29:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:K11+wjMjEH7HPRf2MwFb5g
+Type: many_to_many
+
+Composing rels: L</backlink_titles_linked_to> -> title_linked_from
+
+=cut
+
+__PACKAGE__->many_to_many(
+  "titles_linked_from",
+  "backlink_titles_linked_to",
+  "title_linked_from",
+);
+
+=head2 titles_linked_to
+
+Type: many_to_many
+
+Composing rels: L</backlink_titles_linked_from> -> title_linked_to
+
+=cut
+
+__PACKAGE__->many_to_many(
+  "titles_linked_to",
+  "backlink_titles_linked_from",
+  "title_linked_to",
+);
+
+
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-03 12:04:37
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Dvmbm1A7DAvw3Sc7mk3dpA
 
 =head2 translations
 

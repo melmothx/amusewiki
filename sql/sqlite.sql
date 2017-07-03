@@ -302,6 +302,12 @@ CREATE TABLE title (
 );
 CREATE UNIQUE INDEX unique_text ON title (uri, f_class, site_id);
 
+CREATE TABLE backlink (
+    title_linked_to INTEGER NOT NULL REFERENCES title(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    title_linked_from INTEGER NOT NULL REFERENCES title(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY (title_linked_to, title_linked_from)
+);
+
 CREATE TABLE redirection (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        uri VARCHAR(255) NOT NULL,
