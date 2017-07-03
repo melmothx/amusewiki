@@ -93,6 +93,7 @@ requires 'Crypt::OpenSSL::X509';
 requires 'Protocol::ACME' => '0.12';
 
 requires 'HTTP::BrowserDetect';
+requires 'HTML::Parser';
 
 # our own dogfood
 requires 'Text::Amuse' => '0.82';

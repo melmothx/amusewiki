@@ -542,6 +542,7 @@ use Text::Amuse;
 use HTML::Entities qw/decode_entities/;
 use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
 use Path::Tiny qw//;
+use HTML::LinkExtor; # from HTML::Parser
 
 =head2 listing
 
