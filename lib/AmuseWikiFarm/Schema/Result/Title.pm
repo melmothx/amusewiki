@@ -367,6 +367,21 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 text_internal_links
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TextInternalLink>
+
+=cut
+
+__PACKAGE__->has_many(
+  "text_internal_links",
+  "AmuseWikiFarm::Schema::Result::TextInternalLink",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 text_months
 
 Type: has_many
@@ -433,8 +448,8 @@ Composing rels: L</text_months> -> monthly_archive
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-05-21 11:29:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:K11+wjMjEH7HPRf2MwFb5g
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-05 11:44:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZjKr5/w4EwWqYnnx6V9Iow
 
 =head2 translations
 

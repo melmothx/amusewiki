@@ -302,6 +302,15 @@ CREATE TABLE title (
 );
 CREATE UNIQUE INDEX unique_text ON title (uri, f_class, site_id);
 
+CREATE TABLE text_internal_link (
+        title_id     INTEGER NOT NULL REFERENCES title(id)
+                     ON DELETE CASCADE ON UPDATE CASCADE,
+        url_host VARCHAR(255) NOT NULL,
+        f_class VARCHAR(255) NOT NULL,
+        uri VARCHAR(255) NOT NULL
+);
+
+
 CREATE TABLE redirection (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        uri VARCHAR(255) NOT NULL,
@@ -463,4 +472,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('bookbuilder_session', 'Bookbuilder sessions'),
          ('custom_formats', 'Custom output formats'),
          ('muse_header', 'Raw title headers'),
+         ('text_internal_link', 'Internal links found in the body'),
          ('title_stat', 'Usage statistics');
