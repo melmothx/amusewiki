@@ -44,11 +44,12 @@ __PACKAGE__->table("text_internal_link");
   is_foreign_key: 1
   is_nullable: 0
 
-=head2 url_host
+=head2 site_id
 
   data_type: 'varchar'
+  is_foreign_key: 1
   is_nullable: 0
-  size: 255
+  size: 16
 
 =head2 f_class
 
@@ -62,20 +63,42 @@ __PACKAGE__->table("text_internal_link");
   is_nullable: 0
   size: 255
 
+=head2 full_link
+
+  data_type: 'text'
+  is_nullable: 0
+
 =cut
 
 __PACKAGE__->add_columns(
   "title_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 0 },
-  "url_host",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "site_id",
+  { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "f_class",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "full_link",
+  { data_type => "text", is_nullable => 0 },
 );
 
 =head1 RELATIONS
+
+=head2 site
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::Site>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "site",
+  "AmuseWikiFarm::Schema::Result::Site",
+  { id => "site_id" },
+  { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
+);
 
 =head2 title
 
@@ -93,8 +116,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-05 11:46:24
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jIziiME+0EjprgfgNZZ/Qg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-05 11:50:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:jV8zRSQWdTtO9qKxS1I7lw
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration

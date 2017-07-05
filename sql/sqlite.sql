@@ -303,11 +303,13 @@ CREATE TABLE title (
 CREATE UNIQUE INDEX unique_text ON title (uri, f_class, site_id);
 
 CREATE TABLE text_internal_link (
-        title_id     INTEGER NOT NULL REFERENCES title(id)
+        title_id INTEGER NOT NULL REFERENCES title(id)
                      ON DELETE CASCADE ON UPDATE CASCADE,
-        url_host VARCHAR(255) NOT NULL,
+        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                          ON DELETE CASCADE ON UPDATE CASCADE,
         f_class VARCHAR(255) NOT NULL,
-        uri VARCHAR(255) NOT NULL
+        uri VARCHAR(255) NOT NULL,
+        full_link TEXT NOT NULL
 );
 
 
