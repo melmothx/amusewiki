@@ -895,12 +895,17 @@ catalyst app url, instead of calling uri_for with 2 or 3 arguments
 sub full_uri {
     my ($self, $uri) = @_;
     $uri ||= $self->uri;
+    return $self->base_path . $uri;
+}
+
+sub base_path {
+    my $self = shift;
     my $class = $self->f_class;
     if ($class eq 'special') {
-        return '/special/' . $uri;
+        return '/special/';
     }
     elsif ($class eq 'text') {
-        return '/library/' . $uri;
+        return '/library/';
     }
     else {
         die "WTF";
