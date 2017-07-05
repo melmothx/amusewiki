@@ -1230,6 +1230,47 @@ sub raw_headers {
     return \%out;
 }
 
+sub backlinks {
+    my $self = shift;
+    return $self->titles_linked_from->status_is_published->sorted_by_title;
+}
+
+sub scan_and_store_links {
+    my $self = shift;
+    my $file = $self->filepath_for_ext('bare.html');
+    my $site = $self->site;
+    my %vhosts = map { $_->name => 1 } $site->vhosts;
+    $vhosts{$site->canonical} = 1;
+    my @uris;
+    if (-f $file) {
+        my $cb = sub {
+            my($tag, %links) = @_;
+            if ($tag eq 'a') {
+                if (my $uri = $links{href}) {
+                    if (!$uri->host || $vhosts{$uri->host}) {
+                        push @uris, $uri;
+                    }
+                }
+            }
+        };
+        my $parser = HTML::LinkExtor->new($cb, $site->canonical_url . $self->base_path);
+        $parser->parse_file($file);
+    }
+    else {
+        log_error { "$file doesn't exist for link storing" };
+    }
+    my %titles;
+    foreach my $uri (@uris) {
+        if (my $linked_title = $site->titles->find_by_full_uri($uri->path)) {
+            if ($linked_title->id != $self->id) {
+                $titles{$linked_title->full_uri} = $linked_title;
+                # log_debug { "Found " . $linked_title->full_uri };
+            }
+        }
+    }
+    $self->set_titles_linked_to([ values %titles ]);
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

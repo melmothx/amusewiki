@@ -30,12 +30,17 @@ This one references [[LINK0]] [[/library/LINK1]] [[/special/LINK2]] [[./LINK3]]
 
 This one references [[LINK4][one]] [[/library/LINK5][two]] [[./LINK6][three]]
 
+This one references [[LINK0]] [[/library/LINK1]] [[/special/LINK2]] [[./LINK3]]
+
+This one references [[LINK4#toc11][one]] [[/library/LINK5/edit][two]] [[./LINK6?param=1][three]]
+
 And link to itself [[TITLE]] [[TITLE][myself]]
 
 MUSE
 
 # we need to create 8 texts + 8 specials with the same name
 
+my @titles;
 foreach my $type (qw/text special/) {
     foreach my $id (1..8) {
         my ($rev, $err) = $site->create_new_text({
@@ -53,8 +58,19 @@ foreach my $type (qw/text special/) {
         $rev->publish_text;
         ok $rev->title->full_uri;
         diag $rev->title->full_uri;
+        push @titles, $rev->title;
     }
+}
+foreach my $title (@titles) {
+    $title->scan_and_store_links;
 }
 
 
+foreach my $title ($site->titles) {
+    ok $title->backlinks->count, "Count of backlinks for " . $title->full_uri .  " is fine";
+    foreach my $backlink ($title->backlinks->all) {
+        diag $backlink->full_uri;
+        ok $backlink->full_uri;
+    }
+}
 
