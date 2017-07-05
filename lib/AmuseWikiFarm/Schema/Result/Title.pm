@@ -1189,7 +1189,12 @@ sub raw_headers {
 
 sub backlinks {
     my $self = shift;
-    return $self->titles_linked_from->status_is_published->sorted_by_title;
+    return $self->site->text_internal_links
+      ->by_uri_and_class($self->uri, $self->f_class)
+      ->search_related(title => undef,
+                       { distinct => 1 })
+      ->status_is_published
+      ->sorted_by_title;
 }
 
 sub scan_and_store_links {
@@ -1216,16 +1221,29 @@ sub scan_and_store_links {
     else {
         log_error { "$file doesn't exist for link storing" };
     }
-    my %titles;
+
+    # now we collected all the uris which reference titles in the same site.
+    # null out existing
+    $self->text_internal_links->delete;
+    my %type_map = (
+                    library => 'text',
+                    special => 'special',
+                   );
     foreach my $uri (@uris) {
-        if (my $linked_title = $site->titles->find_by_full_uri($uri->path)) {
-            if ($linked_title->id != $self->id) {
-                $titles{$linked_title->full_uri} = $linked_title;
-                # log_debug { "Found " . $linked_title->full_uri };
+        if ($uri->path =~ m/\A\/(library|special)\/([0-9a-z-]+)/) {
+            my $text_uri = $2;
+            my $f_class = $type_map{$1};
+            unless ($f_class eq $self->f_class and
+                    $text_uri eq $self->uri) {
+                $self->add_to_text_internal_links({
+                                                   site => $site,
+                                                   f_class => $f_class,
+                                                   uri => $text_uri,
+                                                   full_link => "$uri",
+                                                  });
             }
         }
     }
-    $self->set_titles_linked_to([ values %titles ]);
 }
 
 

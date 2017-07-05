@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 16;
+use Test::More tests => 48;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -28,13 +28,13 @@ my $stub = <<'MUSE';
 
 This one references [[LINK0]] [[/library/LINK1]] [[/special/LINK2]] [[./LINK3]]
 
-This one references [[LINK4][one]] [[/library/LINK5][two]] [[./LINK6][three]]
+This one references [[../special/LINK4][one]] [[../library/LINK5][two]] [[./LINK6][three]]
 
 This one references [[LINK0]] [[/library/LINK1]] [[/special/LINK2]] [[./LINK3]]
 
 This one references [[LINK4#toc11][one]] [[/library/LINK5/edit][two]] [[./LINK6?param=1][three]]
 
-And link to itself [[TITLE]] [[TITLE][myself]]
+And link to itself [[TITLE]] [[./TITLE][myself]]
 
 MUSE
 
@@ -57,20 +57,20 @@ foreach my $type (qw/text special/) {
         $rev->commit_version;
         $rev->publish_text;
         ok $rev->title->full_uri;
-        diag $rev->title->full_uri;
         push @titles, $rev->title;
     }
 }
 foreach my $title (@titles) {
+    diag "Scanning links in " . $title->full_uri;
     $title->scan_and_store_links;
 }
 
-
 foreach my $title ($site->titles) {
-    ok $title->backlinks->count, "Count of backlinks for " . $title->full_uri .  " is fine";
+    is $title->text_internal_links->count, 14, "14 links found in the text";
+    ok $title->backlinks->count, "Count of backlinks for " . $title->full_uri .  " is fine: "
+      . $title->backlinks->count;
     foreach my $backlink ($title->backlinks->all) {
         diag $backlink->full_uri;
-        ok $backlink->full_uri;
     }
 }
 
