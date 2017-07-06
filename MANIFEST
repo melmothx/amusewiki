@@ -459,7 +459,6 @@ lib/AmuseWikiFarm/Role/Controller/RegularListing.pm
 lib/AmuseWikiFarm/Role/Controller/Text.pm
 lib/AmuseWikiFarm/Schema.pm
 lib/AmuseWikiFarm/Schema/Result/Attachment.pm
-lib/AmuseWikiFarm/Schema/Result/Backlink.pm
 lib/AmuseWikiFarm/Schema/Result/BookbuilderProfile.pm
 lib/AmuseWikiFarm/Schema/Result/BookbuilderSession.pm
 lib/AmuseWikiFarm/Schema/Result/BulkJob.pm
