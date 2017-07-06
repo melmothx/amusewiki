@@ -60,10 +60,6 @@ foreach my $type (qw/text special/) {
         push @titles, $rev->title;
     }
 }
-foreach my $title (@titles) {
-    diag "Scanning links in " . $title->full_uri;
-    $title->scan_and_store_links;
-}
 
 foreach my $title ($site->titles) {
     is $title->text_internal_links->count, 14, "14 links found in the text";

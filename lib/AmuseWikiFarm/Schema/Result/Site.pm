@@ -1702,6 +1702,7 @@ sub index_file {
             }
         }
     }
+    $title->scan_and_store_links;
     $guard->commit;
     return $title;
 }
