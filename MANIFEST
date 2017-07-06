@@ -479,6 +479,7 @@ lib/AmuseWikiFarm/Schema/Result/Site.pm
 lib/AmuseWikiFarm/Schema/Result/SiteLink.pm
 lib/AmuseWikiFarm/Schema/Result/SiteOption.pm
 lib/AmuseWikiFarm/Schema/Result/TableComment.pm
+lib/AmuseWikiFarm/Schema/Result/TextInternalLink.pm
 lib/AmuseWikiFarm/Schema/Result/TextMonth.pm
 lib/AmuseWikiFarm/Schema/Result/Title.pm
 lib/AmuseWikiFarm/Schema/Result/TitleCategory.pm
@@ -497,6 +498,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Job.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Redirection.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Revision.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Site.pm
+lib/AmuseWikiFarm/Schema/ResultSet/TextInternalLink.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
 lib/AmuseWikiFarm/Schema/ResultSet/TitleStat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
