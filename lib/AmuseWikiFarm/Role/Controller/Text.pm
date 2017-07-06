@@ -186,6 +186,19 @@ sub text :Chained('match') :PathPart('') :Args(0) {
                   attached_pdfs_gallery => $is_gallery);
     }
     $c->response->headers->last_modified($text->f_timestamp_epoch || time());
+    my @backlinks;
+    foreach my $backlink ($text->backlinks) {
+        push @backlinks, {
+                          uri => $c->uri_for($backlink->full_uri)->as_string,
+                          title => $backlink->title,
+                          author => $backlink->author,
+                          lang => $backlink->lang,
+                         };
+    }
+    if (@backlinks) {
+        Dlog_debug { "backlinks: $_" } \@backlinks;
+        $c->stash(text_backlinks => \@backlinks);
+    }
 }
 
 sub edit :Chained('match') PathPart('edit') :Args(0) {
