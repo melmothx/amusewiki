@@ -563,6 +563,9 @@ msgstr "E-mails stimmen nicht überein"
 msgid "Embed fonts in the EPUB file"
 msgstr ""
 
+msgid "Enable \"What links here\" feature"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -2378,6 +2381,9 @@ msgstr "Virtuelle Hosts"
 
 msgid "Virtual hosts, one per line"
 msgstr "Virtuelle Hosts, einer pro Zeile"
+
+msgid "What links here"
+msgstr ""
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"

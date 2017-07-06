@@ -594,6 +594,9 @@ msgstr "E-mail-овите не се поклопуваат"
 msgid "Embed fonts in the EPUB file"
 msgstr "Вклучи ги фонтовите во EPUB датотеката"
 
+msgid "Enable \"What links here\" feature"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -2521,6 +2524,9 @@ msgstr "Виртуелни хостови"
 
 msgid "Virtual hosts, one per line"
 msgstr "Виртуелни хостови, по еден во ред"
+
+msgid "What links here"
+msgstr ""
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"

@@ -578,6 +578,9 @@ msgstr "Ne podudaraju se mailovi"
 msgid "Embed fonts in the EPUB file"
 msgstr "Uključi fontove u EPUB datoteku"
 
+msgid "Enable \"What links here\" feature"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -2469,6 +2472,9 @@ msgstr "Virtualni hostovi"
 
 msgid "Virtual hosts, one per line"
 msgstr "Virtualni hostovi, po jedan za redak"
+
+msgid "What links here"
+msgstr ""
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"

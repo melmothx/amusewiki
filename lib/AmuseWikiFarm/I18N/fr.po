@@ -590,6 +590,9 @@ msgstr "Les emails ne correspondent pas"
 msgid "Embed fonts in the EPUB file"
 msgstr ""
 
+msgid "Enable \"What links here\" feature"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -2536,6 +2539,9 @@ msgstr "Hôtes virtuels"
 
 msgid "Virtual hosts, one per line"
 msgstr "Hôtes virtuels, un par ligne"
+
+msgid "What links here"
+msgstr ""
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
