@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 48;
+use Test::More tests => 188;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -60,13 +60,35 @@ foreach my $type (qw/text special/) {
         push @titles, $rev->title;
     }
 }
+foreach my $title ($site->titles) {
+    is $title->text_internal_links->count, 0, "0 links found in the text";
+}
+
+my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                               host => $site->canonical);
+$mech->get_ok('/');
+
+$mech->get('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, '200';
+$mech->get_ok("/admin/sites/edit/$site_id");
+$mech->form_id("site-edit-form");
+$mech->tick(enable_backlinks => 'on');
+$mech->click("edit_site");
+$mech->content_lacks(q{id="error_message"}) or die $mech->content;
+
+{
+    my @files = sort keys %{ $site->repo_find_files };
+    $site->compile_and_index_files(\@files, sub { diag @_ } );
+}
 
 foreach my $title ($site->titles) {
     is $title->text_internal_links->count, 14, "14 links found in the text";
     ok $title->backlinks->count, "Count of backlinks for " . $title->full_uri .  " is fine: "
       . $title->backlinks->count;
+    $mech->get($title->full_uri);
     foreach my $backlink ($title->backlinks->all) {
-        diag $backlink->full_uri;
+        $mech->content_contains($backlink->full_uri);
     }
 }
 

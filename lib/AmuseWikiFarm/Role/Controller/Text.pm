@@ -126,11 +126,11 @@ sub text :Chained('match') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     log_debug { "In text" };
     my $text = $c->stash->{text} or die "WTF?";
-
+    my $site = $c->stash->{site};
     # we are in a role, so if we don't set this special/text.tt and
     # library/text.tt will be searched .
     $c->stash(template => 'text.tt',
-              load_highlight => $c->stash->{site}->use_js_highlight);
+              load_highlight => $site->use_js_highlight);
 
     foreach my $listing (qw/authors topics/) {
         my @list;
@@ -170,7 +170,6 @@ sub text :Chained('match') :PathPart('') :Args(0) {
     $c->stash(meta_description => $meta_desc);
     if (my @attachments = $text->attached_objects) {
         my @out;
-        my $site = $c->stash->{site};
         my $is_gallery = @attachments > 1 ? 1 : 0;
         my $count = 0;
         while (@attachments) {
@@ -185,20 +184,22 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         $c->stash(attached_pdfs => \@out,
                   attached_pdfs_gallery => $is_gallery);
     }
+    if ($site->enable_backlinks) {
+        my @backlinks;
+        foreach my $backlink ($text->backlinks) {
+            push @backlinks, {
+                              uri => $c->uri_for($backlink->full_uri)->as_string,
+                              title => $backlink->title,
+                              author => $backlink->author,
+                              lang => $backlink->lang,
+                             };
+        }
+        if (@backlinks) {
+            Dlog_debug { "backlinks: $_" } \@backlinks;
+            $c->stash(text_backlinks => \@backlinks);
+        }
+    }
     $c->response->headers->last_modified($text->f_timestamp_epoch || time());
-    my @backlinks;
-    foreach my $backlink ($text->backlinks) {
-        push @backlinks, {
-                          uri => $c->uri_for($backlink->full_uri)->as_string,
-                          title => $backlink->title,
-                          author => $backlink->author,
-                          lang => $backlink->lang,
-                         };
-    }
-    if (@backlinks) {
-        Dlog_debug { "backlinks: $_" } \@backlinks;
-        $c->stash(text_backlinks => \@backlinks);
-    }
 }
 
 sub edit :Chained('match') PathPart('edit') :Args(0) {

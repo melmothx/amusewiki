@@ -1702,7 +1702,7 @@ sub index_file {
             }
         }
     }
-    $title->scan_and_store_links;
+    $title->scan_and_store_links if $self->enable_backlinks;
     $guard->commit;
     return $title;
 }
@@ -2582,6 +2582,7 @@ sub update_from_params {
                            show_preview_when_deferred
                            titles_category_default_sorting
                            enable_order_by_sku
+                           enable_backlinks
                            use_js_highlight
                            edit_option_page_left_bs_columns
                            edit_option_show_cheatsheet
@@ -2953,6 +2954,10 @@ sub titles_category_default_sorting {
 
 sub enable_order_by_sku {
     return shift->get_option('enable_order_by_sku') || '';
+}
+
+sub enable_backlinks {
+    return shift->get_option('enable_backlinks') || '';
 }
 
 sub pagination_size {
