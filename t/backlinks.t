@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 188;
+use Test::More tests => 189;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -78,8 +78,12 @@ $mech->click("edit_site");
 $mech->content_lacks(q{id="error_message"}) or die $mech->content;
 
 {
-    my @files = sort keys %{ $site->repo_find_files };
-    $site->compile_and_index_files(\@files, sub { diag @_ } );
+    my $bulk = $site->rebuild_formats;
+    while (my $job = $site->jobs->dequeue) {
+        $job->dispatch_job;
+        diag $job->logs;
+    }
+    ok $bulk->discard_changes->completed;
 }
 
 foreach my $title ($site->titles) {

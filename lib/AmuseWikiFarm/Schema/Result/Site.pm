@@ -1702,7 +1702,7 @@ sub index_file {
             }
         }
     }
-    $title->scan_and_store_links if $self->enable_backlinks;
+    $title->scan_and_store_links($logger) if $self->enable_backlinks;
     $guard->commit;
     return $title;
 }

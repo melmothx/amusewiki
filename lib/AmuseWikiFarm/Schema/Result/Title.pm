@@ -1198,7 +1198,10 @@ sub backlinks {
 }
 
 sub scan_and_store_links {
-    my $self = shift;
+    my ($self, $logger) = @_;
+    if ($logger) {
+        $logger->("Scanning links in " . $self->uri);
+    }
     my $file = $self->filepath_for_ext('bare.html');
     my $site = $self->site;
     my %vhosts = map { $_->name => 1 } $site->vhosts;
