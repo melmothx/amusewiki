@@ -2220,7 +2220,7 @@ msgid ""
 msgstr ""
 
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr "Для просмотра внесённых изменений пройдите по следующей ссылку"
+msgstr "Для просмотра внесённых изменений пройдите по следующей ссылке"
 
 msgid "Toggle fullscreen editor"
 msgstr ""
