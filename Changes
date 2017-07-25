@@ -7,6 +7,7 @@ dedicated tree.
 2.024 UNRELEASED
 
  - Add backlinks feature (#118)
+ - Improve error handling for the new text form (#119)
 
 2.023 2017-06-15
 
