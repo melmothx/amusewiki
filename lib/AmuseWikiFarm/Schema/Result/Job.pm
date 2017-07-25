@@ -555,6 +555,9 @@ sub dispatch_job_rebuild {
                 foreach my $cf (@cfs) {
                     $cf->compile($text, $logger);
                 }
+                # this is relatively fast as we already have the
+                # formats built.
+                $site->compile_and_index_files([ $text ], $logger);
                 return $text->full_uri;
             }
             else {

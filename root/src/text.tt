@@ -309,6 +309,19 @@
         </span></a>
       </span>
       [% END %]
+      [% IF text_backlinks %]
+      <span id="what-links-here-button">
+        <a class="amw-navlogo" href="#"
+           data-toggle="modal"
+           title="[% loc('What links here') %]"
+           data-target="#backlinks-modal">
+          <span class="fa fa-link fa-2x fa-border fw"></span>
+          <span class=" visible-xs-inline">
+            [% loc('What links here') %]
+          </span>
+        </a>
+      </span>
+      [% END %]
     </div>
   </div>
   [% END %]
@@ -458,6 +471,39 @@
     [% END %]
   </div>
 </div>
+
+[% IF text_backlinks %]
+<div class="modal fade" id="backlinks-modal" tabindex="-1" role="dialog"
+     aria-labelledby="backlinks-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">[% loc('Close') %]</button>
+        <h4 class="modal-title" id="backlinks-modal-label">
+          <span class="fa fa-link"></span> [% loc("What links here") %]
+        </h4>
+      </div>
+      <div class="modal-body">
+        [% FOREACH backlink IN text_backlinks %]
+        <div class="amw-listing-item">
+          <a href="[% backlink.uri %]" class="list-group-item">
+            <strong>[% backlink.title %]</strong>
+            [%- IF backlink.author %] — [% backlink.author -%][% END -%]
+            [%- IF site.multilanguage -%] <small>[[% backlink.lang %]]</small>[% END -%]
+          </a>
+        </div>
+        [% END %]
+      </div>
+      <div class="modal-footer center">
+        <button type="button" class="btn btn-default center" data-dismiss="modal">
+          [% loc('Close') %]
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+[% END %]
 
 <script type="text/javascript">
 $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });

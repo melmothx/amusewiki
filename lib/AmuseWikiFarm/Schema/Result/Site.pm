@@ -736,6 +736,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 text_internal_links
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TextInternalLink>
+
+=cut
+
+__PACKAGE__->has_many(
+  "text_internal_links",
+  "AmuseWikiFarm::Schema::Result::TextInternalLink",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 title_stats
 
 Type: has_many
@@ -807,8 +822,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:uN3U76GhYOYoD6AYdilPVA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-05 11:50:50
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IRDckgBXqdvMO9G6uWyUjQ
 
 =head2 other_sites
 
@@ -1687,6 +1702,7 @@ sub index_file {
             }
         }
     }
+    $title->scan_and_store_links($logger) if $self->enable_backlinks;
     $guard->commit;
     return $title;
 }
@@ -2566,6 +2582,7 @@ sub update_from_params {
                            show_preview_when_deferred
                            titles_category_default_sorting
                            enable_order_by_sku
+                           enable_backlinks
                            use_js_highlight
                            edit_option_page_left_bs_columns
                            edit_option_show_cheatsheet
@@ -2937,6 +2954,10 @@ sub titles_category_default_sorting {
 
 sub enable_order_by_sku {
     return shift->get_option('enable_order_by_sku') || '';
+}
+
+sub enable_backlinks {
+    return shift->get_option('enable_backlinks') || '';
 }
 
 sub pagination_size {

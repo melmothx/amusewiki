@@ -597,6 +597,9 @@ msgstr "Email-at nuk pëputhen"
 msgid "Embed fonts in the EPUB file"
 msgstr ""
 
+msgid "Enable \"What links here\" feature"
+msgstr ""
+
 msgid "Enable title ordering by SKU"
 msgstr ""
 
@@ -2503,6 +2506,9 @@ msgid "Virtual hosts"
 msgstr ""
 
 msgid "Virtual hosts, one per line"
+msgstr ""
+
+msgid "What links here"
 msgstr ""
 
 msgid ""

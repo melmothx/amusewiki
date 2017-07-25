@@ -367,6 +367,21 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 text_internal_links
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TextInternalLink>
+
+=cut
+
+__PACKAGE__->has_many(
+  "text_internal_links",
+  "AmuseWikiFarm::Schema::Result::TextInternalLink",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 text_months
 
 Type: has_many
@@ -433,8 +448,8 @@ Composing rels: L</text_months> -> monthly_archive
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-05-21 11:29:57
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:K11+wjMjEH7HPRf2MwFb5g
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-05 11:44:55
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZjKr5/w4EwWqYnnx6V9Iow
 
 =head2 translations
 
@@ -484,6 +499,7 @@ use Text::Amuse;
 use HTML::Entities qw/decode_entities/;
 use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
 use Path::Tiny qw//;
+use HTML::LinkExtor; # from HTML::Parser
 
 =head2 listing
 
@@ -836,12 +852,17 @@ catalyst app url, instead of calling uri_for with 2 or 3 arguments
 sub full_uri {
     my ($self, $uri) = @_;
     $uri ||= $self->uri;
+    return $self->base_path . $uri;
+}
+
+sub base_path {
+    my $self = shift;
     my $class = $self->f_class;
     if ($class eq 'special') {
-        return '/special/' . $uri;
+        return '/special/';
     }
     elsif ($class eq 'text') {
-        return '/library/' . $uri;
+        return '/library/';
     }
     else {
         die "WTF";
@@ -1164,6 +1185,68 @@ sub raw_headers {
         $out{$header->muse_header} = $header->muse_value;
     }
     return \%out;
+}
+
+sub backlinks {
+    my $self = shift;
+    return $self->site->text_internal_links
+      ->by_uri_and_class($self->uri, $self->f_class)
+      ->search_related(title => undef,
+                       { distinct => 1 })
+      ->status_is_published
+      ->sorted_by_title;
+}
+
+sub scan_and_store_links {
+    my ($self, $logger) = @_;
+    if ($logger) {
+        $logger->("Scanning links in " . $self->uri . "\n");
+    }
+    my $file = $self->filepath_for_ext('bare.html');
+    my $site = $self->site;
+    my %vhosts = map { $_->name => 1 } $site->vhosts;
+    $vhosts{$site->canonical} = 1;
+    my @uris;
+    if (-f $file) {
+        my $cb = sub {
+            my($tag, %links) = @_;
+            if ($tag eq 'a') {
+                if (my $uri = $links{href}) {
+                    if (!$uri->host || $vhosts{$uri->host}) {
+                        push @uris, $uri;
+                    }
+                }
+            }
+        };
+        my $parser = HTML::LinkExtor->new($cb, $site->canonical_url . $self->base_path);
+        $parser->parse_file($file);
+    }
+    else {
+        log_error { "$file doesn't exist for link storing" };
+    }
+
+    # now we collected all the uris which reference titles in the same site.
+    # null out existing
+    $self->text_internal_links->delete;
+    my %type_map = (
+                    library => 'text',
+                    special => 'special',
+                   );
+    foreach my $uri (@uris) {
+        if ($uri->path =~ m/\A\/(library|special)\/([0-9a-z-]+)/) {
+            my $text_uri = $2;
+            my $f_class = $type_map{$1};
+            unless ($f_class eq $self->f_class and
+                    $text_uri eq $self->uri) {
+                $self->add_to_text_internal_links({
+                                                   site => $site,
+                                                   f_class => $f_class,
+                                                   uri => $text_uri,
+                                                   full_link => "$uri",
+                                                  });
+            }
+        }
+    }
 }
 
 
