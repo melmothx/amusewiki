@@ -9,6 +9,18 @@
       enctype="multipart/form-data">
   <div class="form-group">
 
+    [% IF pop_uri_field_to_the_top %]
+    <p id="choose-uri">
+      <label class="mandatory" for="uri">[% loc('Desired URI') %]
+        ([% loc('Please set the URI you desire. Author (if present),
+        title and eventually a number if the URI already exists is
+        usually a good choice') %]).
+      </label>
+      <br>
+      <input class="form-control" type="text" name="uri" id="uri" size="50"
+             value="[% processed_params.uri | html %]"/>
+    </p>
+    [% END %]
     <p>
       <label for="title" class="mandatory">[% loc('Title') %]
         ([% loc('mandatory') %])
@@ -211,6 +223,7 @@
 
     <div>
       <br /><br />
+    [% UNLESS pop_uri_field_to_the_top %]
     <p id="choose-uri">
       <label for="uri">[% loc('Desired URI') %]
       ([% loc('automatically generated if not present, using author and title') %])
@@ -228,6 +241,7 @@
       <input class="form-control" type="text" name="uri" id="uri" size="50"
              value="[% processed_params.uri | html %]"/>
     </p>
+    [% END %]
     </div>
     <div>
       <br />

@@ -131,7 +131,17 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
         }
         else {
             $c->stash(processed_params => $params);
-            $c->flash(error_msg => $c->loc($error));
+
+            # this is not a clean solution, but makes sense anyway: if
+            # the error concern the URI, we pop the field up.
+            if ($error =~  m/URI/) {
+                $c->stash(pop_uri_field_to_the_top => 1);
+            }
+            my $loc_error = $c->loc($error);
+            if ($params->{fileupload}) {
+                $loc_error .= ' ' . $c->loc("Please upload your file again!");
+            }
+            $c->flash(error_msg => $loc_error);
         }
     }
     else {
