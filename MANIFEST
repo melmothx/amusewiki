@@ -1248,6 +1248,7 @@ t/texmf-files/logo-yu.pdf
 t/title-rs.t
 t/unicode-exception-old-cat.t
 t/update-or-create.t
+t/uri-clash-119.t
 t/useless-sessions.t
 t/user-admin.t
 t/users.t
