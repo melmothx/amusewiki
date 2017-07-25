@@ -1200,7 +1200,7 @@ sub backlinks {
 sub scan_and_store_links {
     my ($self, $logger) = @_;
     if ($logger) {
-        $logger->("Scanning links in " . $self->uri);
+        $logger->("Scanning links in " . $self->uri . "\n");
     }
     my $file = $self->filepath_for_ext('bare.html');
     my $site = $self->site;
