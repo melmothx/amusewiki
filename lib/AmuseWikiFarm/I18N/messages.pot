@@ -377,11 +377,11 @@ msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
-#: lib/AmuseWikiFarm/Controller/Edit.pm:465 root/src/edit/diff.tt:4
+#: lib/AmuseWikiFarm/Controller/Edit.pm:468 root/src/edit/diff.tt:4
 msgid "Changes for %1"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:425
+#: lib/AmuseWikiFarm/Controller/Edit.pm:428
 msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
 
@@ -453,7 +453,7 @@ msgid "Couldn't add the text"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1221
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:103
@@ -672,7 +672,7 @@ msgstr ""
 msgid "Edit user %1"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:158 root/src/edit/edit.tt:14 root/src/edit/edit.tt:156 root/src/edit/revs.tt:3
+#: lib/AmuseWikiFarm/Controller/Edit.pm:161 root/src/edit/edit.tt:14 root/src/edit/edit.tt:156 root/src/edit/revs.tt:3
 msgid "Editing"
 msgstr ""
 
@@ -766,7 +766,7 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:354
+#: lib/AmuseWikiFarm/Controller/Edit.pm:357
 msgid "File uploaded!"
 msgstr ""
 
@@ -835,7 +835,7 @@ msgid "Footnotes"
 msgstr ""
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
-#: lib/AmuseWikiFarm/Controller/Edit.pm:320
+#: lib/AmuseWikiFarm/Controller/Edit.pm:323
 msgid "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references in the body (%4), ignoring changes"
 msgstr ""
 
@@ -1385,7 +1385,7 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:436 root/src/edit/edit.tt:750
+#: lib/AmuseWikiFarm/Controller/Edit.pm:439 root/src/edit/edit.tt:750
 msgid "Missing #title header in the text!"
 msgstr ""
 
@@ -2367,14 +2367,14 @@ msgstr ""
 msgid "Subtitle"
 msgstr ""
 
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1229
+msgid "Such an URI already exists"
+msgstr ""
+
 #: root/src/console/alias_display.tt:18
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
-msgstr ""
-
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:1229
-msgid "Such an uri already exists"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:254
@@ -2605,7 +2605,7 @@ msgid ""
 "and you may want to check it out."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:299
+#: lib/AmuseWikiFarm/Controller/Edit.pm:302
 msgid "This revision is already published, ignoring changes"
 msgstr ""
 
@@ -2617,7 +2617,7 @@ msgstr ""
 msgid "This revision is being actively edited by you"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:294
+#: lib/AmuseWikiFarm/Controller/Edit.pm:297
 msgid "This revision is being edited by someone else!"
 msgstr ""
 
@@ -2631,7 +2631,7 @@ msgid ""
 "  password to access the OPDS."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Edit.pm:164
+#: lib/AmuseWikiFarm/Controller/Edit.pm:167
 msgid "This text does not exist"
 msgstr ""
 
