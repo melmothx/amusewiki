@@ -1597,8 +1597,17 @@ msgstr ""
 "Izaberi dimenzije stranice uključujući i kontrolne oznake, ali prije\n"
 "slaganja stranica"
 
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+
 msgid "Please setup the Beamer layout"
 msgstr "Izaberi stil slajdova"
+
+msgid "Please upload your file again!"
+msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poezija, bibliografije, drame, kod"

@@ -1649,8 +1649,17 @@ msgstr ""
 "Seleziona la dimensione di ciascuna pagina inclusi gli indicatori di "
 "ritaglio, prima dell'imposizione"
 
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+
 msgid "Please setup the Beamer layout"
 msgstr "Seleziona lo stile delle diapositive"
+
+msgid "Please upload your file again!"
+msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poesia, bibliografie, pezzi teatrali, blocchi di codice"
