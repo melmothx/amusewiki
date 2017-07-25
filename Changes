@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.024 UNRELEASED
+
+ - Add backlinks feature (#118)
+
 2.023 2017-06-15
 
  - Add documentation for installation on CentOS
