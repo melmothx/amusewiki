@@ -1597,8 +1597,17 @@ msgstr ""
 "Izaberi dimenzije stranice uključujući i kontrolne oznake, ali prije\n"
 "slaganja stranica"
 
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+
 msgid "Please setup the Beamer layout"
 msgstr "Izaberi stil slajdova"
+
+msgid "Please upload your file again!"
+msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poezija, bibliografije, drame, kod"
@@ -2001,15 +2010,15 @@ msgstr "Podpododjeljak ili element opisa"
 msgid "Subtitle"
 msgstr "Podnaslov"
 
+msgid "Such an URI already exists"
+msgstr "Ovaj URI već postoji"
+
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
 "Ovakvo zaglavlje briše tekst iz arhive i zamjenjuje ga preusmjeravanjem, a "
 "vidjet će se ovdje."
-
-msgid "Such an URI already exists"
-msgstr "Ovaj URI već postoji"
 
 msgid "Such an user already exists!"
 msgstr "Taj korisnik već postoji!"

@@ -1634,8 +1634,17 @@ msgstr ""
 "Veuillez choisir la taille de chaque page en comptant les traits de coupe, "
 "avant l'imposition"
 
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+
 msgid "Please setup the Beamer layout"
 msgstr "Veuillez configurer la mise en page Beamer"
+
+msgid "Please upload your file again!"
+msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poésie, bibliographies, pièces de théâtre, blocs de code"
@@ -2045,15 +2054,15 @@ msgstr "Sous-sous-section ou élément de description"
 msgid "Subtitle"
 msgstr "Sous-titre"
 
+msgid "Such an URI already exists"
+msgstr "Un tel URI existe déjà"
+
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
 "Un tel titre publiera le texte et mettra en place une redirection, qui sera "
 "répertoriée ici"
-
-msgid "Such an URI already exists"
-msgstr "Un tel URI existe déjà"
 
 msgid "Such an user already exists!"
 msgstr "Un tel utilisateur existe déjà!"

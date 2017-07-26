@@ -1464,7 +1464,16 @@ msgid ""
 "imposing"
 msgstr ""
 
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+
 msgid "Please setup the Beamer layout"
+msgstr ""
+
+msgid "Please upload your file again!"
 msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
@@ -1855,12 +1864,12 @@ msgstr ""
 msgid "Subtitle"
 msgstr "Subtitle"
 
+msgid "Such an URI already exists"
+msgstr ""
+
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
-msgstr ""
-
-msgid "Such an URI already exists"
 msgstr ""
 
 msgid "Such an user already exists!"

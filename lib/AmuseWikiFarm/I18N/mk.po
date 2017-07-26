@@ -1635,8 +1635,17 @@ msgstr ""
 "пред\n"
 " сложувањето на страниците"
 
+msgid ""
+"Please set the URI you desire. Author (if present),\n"
+"        title and eventually a number if the URI already exists is\n"
+"        usually a good choice"
+msgstr ""
+
 msgid "Please setup the Beamer layout"
 msgstr "Избери го стилот на слајдови"
+
+msgid "Please upload your file again!"
+msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Поезија, библиографии, драми, код"
@@ -2042,15 +2051,15 @@ msgstr "Пододдел или елемент на опис"
 msgid "Subtitle"
 msgstr "Поднаслов"
 
+msgid "Such an URI already exists"
+msgstr "Такво URI веќе постои"
+
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
 "Вакво заглавие го брише текстот од архивата и го заменува со пренасочување, "
 "а ќе се гледа овде."
-
-msgid "Such an URI already exists"
-msgstr "Такво URI веќе постои"
 
 msgid "Such an user already exists!"
 msgstr "Тој корисник веќе постои!"
