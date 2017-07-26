@@ -382,7 +382,7 @@ msgstr "Pretvori u format koji se koristi u arhivu"
 msgid "Couldn't add the text"
 msgstr "Nije bilo moguće dodati tekst"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr "Nemoguće automatski generirati jedan URI za ovaj tekst"
 
 msgid "Couldn't build that"
@@ -2008,7 +2008,7 @@ msgstr ""
 "Ovakvo zaglavlje briše tekst iz arhive i zamjenjuje ga preusmjeravanjem, a "
 "vidjet će se ovdje."
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr "Ovaj URI već postoji"
 
 msgid "Such an user already exists!"

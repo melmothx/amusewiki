@@ -394,7 +394,7 @@ msgstr "Convertir au balisage de l'Archive"
 msgid "Couldn't add the text"
 msgstr "Impossibilité d'ajouter le texte"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr "Impossibilité de générer l'URI!"
 
 msgid "Couldn't build that"
@@ -2052,7 +2052,7 @@ msgstr ""
 "Un tel titre publiera le texte et mettra en place une redirection, qui sera "
 "répertoriée ici"
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr "Un tel URI existe déjà"
 
 msgid "Such an user already exists!"

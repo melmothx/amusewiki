@@ -405,7 +405,7 @@ msgstr "Konverto në markup arkivë "
 msgid "Couldn't add the text"
 msgstr "Teksti nuk mundi të shtohej"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr "URL nuk mundi të gjenerohej automatikisht!"
 
 msgid "Couldn't build that"
@@ -2036,7 +2036,7 @@ msgid ""
 "  redirection in place, and will be listed here"
 msgstr ""
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr "URI i tillë egziston"
 
 msgid "Such an user already exists!"

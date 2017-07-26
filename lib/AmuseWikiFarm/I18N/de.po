@@ -374,7 +374,7 @@ msgstr ""
 msgid "Couldn't add the text"
 msgstr "Konnte den Text nicht hinzufügen"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr ""
 
 msgid "Couldn't build that"
@@ -1934,7 +1934,7 @@ msgstr ""
 "So eine Kopfzeile wird die Veröffentlichung rückgängig machen und\n"
 " eine Umleitung anstelle setzten, sowie den Text hier auflisten. "
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr ""
 
 msgid "Such an user already exists!"

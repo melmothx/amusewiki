@@ -368,7 +368,7 @@ msgstr ""
 msgid "Couldn't add the text"
 msgstr "Tekstiä ei voitu lisätä"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr "Osoitetta ei pystytty luomaan automaattisesti!"
 
 msgid "Couldn't build that"
@@ -1919,7 +1919,7 @@ msgstr ""
 "Tällainen otsake ottaa tekstin pois näkyvistä\n"
 "  ja laittaa tilalle uudelleenohjauksen, joka listataan täällä"
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr ""
 
 msgid "Such an user already exists!"

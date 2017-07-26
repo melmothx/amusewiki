@@ -375,7 +375,7 @@ msgstr ""
 msgid "Couldn't add the text"
 msgstr "Нельзя добавить текст"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr "Невозможно автоматически создать URI"
 
 msgid "Couldn't build that"
@@ -1936,7 +1936,7 @@ msgstr ""
 "Такой заголовок приведет к отмене публикации текста и применить "
 "перенаправление на месте, и будут перечислены здесь"
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr "Текст с таким URI уже существует. Вы можете указать свой URI"
 
 msgid "Such an user already exists!"

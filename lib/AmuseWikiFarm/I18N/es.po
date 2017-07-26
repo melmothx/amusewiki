@@ -398,7 +398,7 @@ msgstr "Convertir al marcado del archivo"
 msgid "Couldn't add the text"
 msgstr "No se pudo agregar el texto"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr "¡No se pudo generar automáticamente la URI!"
 
 msgid "Couldn't build that"
@@ -2069,7 +2069,7 @@ msgstr ""
 "Ese encabezado despublicará el texto y pondrá una\n"
 "  redirección en su lugar, y será listado aquí"
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr "Ya existe esa URI"
 
 msgid "Such an user already exists!"

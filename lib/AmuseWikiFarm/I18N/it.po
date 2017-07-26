@@ -394,7 +394,7 @@ msgstr "Converti nel markup dell'archivio"
 msgid "Couldn't add the text"
 msgstr "Aggiunta del testo fallita"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr "Impossibile generare un URI automaticamente"
 
 msgid "Couldn't build that"
@@ -2066,7 +2066,7 @@ msgstr ""
 "Tale intestazione provoca la rimozione del testo dall'archivio e la\n"
 "sua sostituzione con una redirezione, e sarà qui mostrato."
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr "URI già esistente"
 
 msgid "Such an user already exists!"

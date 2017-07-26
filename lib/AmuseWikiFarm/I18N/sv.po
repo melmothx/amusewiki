@@ -373,7 +373,7 @@ msgstr ""
 msgid "Couldn't add the text"
 msgstr "Det gick inte att lägga till texten"
 
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr "Det gick inte att automatiskt generera uri!"
 
 msgid "Couldn't build that"
@@ -1942,7 +1942,7 @@ msgstr ""
 "Ett sådant sidhuvud kommer att återkalla publiceringen  och placera en "
 "omdirigering, och kommer att listas här"
 
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr "En sådan uri existerar redan"
 
 msgid "Such an user already exists!"

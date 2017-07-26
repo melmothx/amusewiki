@@ -453,7 +453,7 @@ msgid "Couldn't add the text"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1221
-msgid "Couldn't automatically generate the uri!"
+msgid "Couldn't automatically generate the URI!"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/BookBuilder.pm:103
@@ -2374,7 +2374,7 @@ msgid ""
 msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/Result/Site.pm:1229
-msgid "Such an uri already exists"
+msgid "Such an URI already exists"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Admin.pm:254
