@@ -1634,17 +1634,8 @@ msgstr ""
 "Veuillez choisir la taille de chaque page en comptant les traits de coupe, "
 "avant l'imposition"
 
-msgid ""
-"Please set the URI you desire. Author (if present),\n"
-"        title and eventually a number if the URI already exists is\n"
-"        usually a good choice"
-msgstr ""
-
 msgid "Please setup the Beamer layout"
 msgstr "Veuillez configurer la mise en page Beamer"
-
-msgid "Please upload your file again!"
-msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poésie, bibliographies, pièces de théâtre, blocs de code"

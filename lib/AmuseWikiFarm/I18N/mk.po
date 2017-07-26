@@ -1635,17 +1635,8 @@ msgstr ""
 "пред\n"
 " сложувањето на страниците"
 
-msgid ""
-"Please set the URI you desire. Author (if present),\n"
-"        title and eventually a number if the URI already exists is\n"
-"        usually a good choice"
-msgstr ""
-
 msgid "Please setup the Beamer layout"
 msgstr "Избери го стилот на слајдови"
-
-msgid "Please upload your file again!"
-msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Поезија, библиографии, драми, код"

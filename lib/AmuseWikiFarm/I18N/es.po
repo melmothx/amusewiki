@@ -1651,17 +1651,8 @@ msgstr ""
 "Por favor selecciona el tamaño de cada página incluyendo las marcas de "
 "corte, antes del encuadernado"
 
-msgid ""
-"Please set the URI you desire. Author (if present),\n"
-"        title and eventually a number if the URI already exists is\n"
-"        usually a good choice"
-msgstr ""
-
 msgid "Please setup the Beamer layout"
 msgstr "Por favor configura la plantilla de Beamer"
-
-msgid "Please upload your file again!"
-msgstr ""
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poesía, bibliografías, diálogos, bloques de código"
