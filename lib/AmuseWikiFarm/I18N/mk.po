@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2017-07-25 15:11+0200\n"
+"PO-Revision-Date: 2016-11-19 19:30+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Macedonian\n"
 "Language: mk\n"
@@ -396,7 +396,7 @@ msgstr "Претвори во формат кој се користи во ар�
 msgid "Couldn't add the text"
 msgstr "Не беше возможно да се додаде текстот"
 
-msgid "Couldn't automatically generate the URI!"
+msgid "Couldn't automatically generate the uri!"
 msgstr "Невозможно е автоматски да се генерира URI за овој текст"
 
 msgid "Couldn't build that"
@@ -2042,15 +2042,15 @@ msgstr "Пододдел или елемент на опис"
 msgid "Subtitle"
 msgstr "Поднаслов"
 
-msgid "Such an URI already exists"
-msgstr "Такво URI веќе постои"
-
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
 "Вакво заглавие го брише текстот од архивата и го заменува со пренасочување, "
 "а ќе се гледа овде."
+
+msgid "Such an uri already exists"
+msgstr "Такво URI веќе постои"
 
 msgid "Such an user already exists!"
 msgstr "Тој корисник веќе постои!"
