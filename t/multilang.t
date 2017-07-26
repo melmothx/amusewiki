@@ -214,7 +214,7 @@ my ($rev, $error) = $site->create_new_text({
                                            }, 'text');
 
 ok(!$rev, "no revision created");
-is $error, "Couldn't generate the uri!", "Error found";
+is $error, "Couldn't automatically generate the URI!", "Error found";
 $mech->get_ok('/?__language=hr');
 $mech->content_contains('<html lang="hr">');
 $mech->get_ok('/action/text/new');
