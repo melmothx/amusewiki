@@ -12,6 +12,7 @@ use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
+use DateTime;
 
 my $init = catfile(qw/script jobber.pl/);
 # kill the jobber if running
@@ -96,10 +97,20 @@ ok !$site->nocoverpage;
 
 ok $site->discard_changes->nocoverpage, "Option picked up" or die;
 
-# rebuild
-foreach my $text ($site->titles) {
-    $site->jobs->enqueue(rebuild => { id => $text->id }, 30);
- 
+# rebuild as in the upgrade script
+my $older_than  = DateTime->new(year => 2017,
+                                month => 4,
+                                day => 1)->epoch;
+
+
+foreach my $s ($schema->resultset('Site')->search({
+                                                   nocoverpage => 1,
+                                                   id => $site->id, # not in the upgrade, obviously
+                                                  })) {
+    foreach my $text ($s->titles->status_is_published_or_deferred
+                      ->search({ f_timestamp_epoch => { '>' => $older_than } })) {
+        $s->jobs->rebuild_add({ id => $text->id });;
+    }
 }
 
 while (my $job = $site->jobs->dequeue) {
