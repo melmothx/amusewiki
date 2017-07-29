@@ -6,6 +6,7 @@ dbicdh/_common/upgrade/20-21/000-fix-sites.pl
 dbicdh/_common/upgrade/23-24/002-populate-monthly-archives.pl
 dbicdh/_common/upgrade/31-32/002-clear-thumbnails.pl
 dbicdh/_common/upgrade/32-33/002-null-bb-job-owners.pl
+dbicdh/_common/upgrade/36-37/002-rebuild-files-since-april-2017.pl
 dbicdh/_common/upgrade/5-6/002-add-and-move-job-files.pl
 dbicdh/_source/deploy/10/001-auto-__VERSION.yml
 dbicdh/_source/deploy/10/001-auto.yml
@@ -65,6 +66,8 @@ dbicdh/_source/deploy/35/001-auto-__VERSION.yml
 dbicdh/_source/deploy/35/001-auto.yml
 dbicdh/_source/deploy/36/001-auto-__VERSION.yml
 dbicdh/_source/deploy/36/001-auto.yml
+dbicdh/_source/deploy/37/001-auto-__VERSION.yml
+dbicdh/_source/deploy/37/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
 dbicdh/_source/deploy/4/001-auto.yml
 dbicdh/_source/deploy/5/001-auto-__VERSION.yml
@@ -135,6 +138,8 @@ dbicdh/MySQL/deploy/35/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/35/001-auto.sql
 dbicdh/MySQL/deploy/36/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/36/001-auto.sql
+dbicdh/MySQL/deploy/37/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/37/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/4/001-auto.sql
 dbicdh/MySQL/deploy/5/001-auto-__VERSION.sql
@@ -175,6 +180,7 @@ dbicdh/MySQL/upgrade/32-33/001-auto.sql
 dbicdh/MySQL/upgrade/33-34/001-auto.sql
 dbicdh/MySQL/upgrade/34-35/001-auto.sql
 dbicdh/MySQL/upgrade/35-36/001-auto.sql
+dbicdh/MySQL/upgrade/36-37/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
@@ -239,6 +245,8 @@ dbicdh/PostgreSQL/deploy/35/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/35/001-auto.sql
 dbicdh/PostgreSQL/deploy/36/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/36/001-auto.sql
+dbicdh/PostgreSQL/deploy/37/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/37/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/4/001-auto.sql
 dbicdh/PostgreSQL/deploy/5/001-auto-__VERSION.sql
@@ -279,6 +287,7 @@ dbicdh/PostgreSQL/upgrade/32-33/001-auto.sql
 dbicdh/PostgreSQL/upgrade/33-34/001-auto.sql
 dbicdh/PostgreSQL/upgrade/34-35/001-auto.sql
 dbicdh/PostgreSQL/upgrade/35-36/001-auto.sql
+dbicdh/PostgreSQL/upgrade/36-37/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
@@ -343,6 +352,8 @@ dbicdh/SQLite/deploy/35/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/35/001-auto.sql
 dbicdh/SQLite/deploy/36/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/36/001-auto.sql
+dbicdh/SQLite/deploy/37/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/37/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/4/001-auto.sql
 dbicdh/SQLite/deploy/5/001-auto-__VERSION.sql
@@ -383,6 +394,7 @@ dbicdh/SQLite/upgrade/32-33/001-auto.sql
 dbicdh/SQLite/upgrade/33-34/001-auto.sql
 dbicdh/SQLite/upgrade/34-35/001-auto.sql
 dbicdh/SQLite/upgrade/35-36/001-auto.sql
+dbicdh/SQLite/upgrade/36-37/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
@@ -669,14 +681,16 @@ root/static/images/font-preview/CMU-Serif.pdf
 root/static/images/font-preview/CMU-Serif.png
 root/static/images/font-preview/CMU-Typewriter-Text.pdf
 root/static/images/font-preview/CMU-Typewriter-Text.png
+root/static/images/font-preview/Cormorant-Garamond.pdf
+root/static/images/font-preview/Cormorant-Garamond.png
 root/static/images/font-preview/DejaVu-Sans-Mono.pdf
 root/static/images/font-preview/DejaVu-Sans-Mono.png
 root/static/images/font-preview/DejaVu-Sans.pdf
 root/static/images/font-preview/DejaVu-Sans.png
+root/static/images/font-preview/Gentium-Book-Basic.pdf
+root/static/images/font-preview/Gentium-Book-Basic.png
 root/static/images/font-preview/Iwona.pdf
 root/static/images/font-preview/Iwona.png
-root/static/images/font-preview/Linux-Biolinum-O.pdf
-root/static/images/font-preview/Linux-Biolinum-O.png
 root/static/images/font-preview/Linux-Libertine-O.pdf
 root/static/images/font-preview/Linux-Libertine-O.png
 root/static/images/font-preview/Noto-Sans.pdf
@@ -1078,6 +1092,7 @@ t/cgit-proxy.t
 t/cleanups.t
 t/collation-index.t
 t/conditional-get.t
+t/conditional-nocoverpage.t
 t/conflicts.t
 t/controller-admin-users.t
 t/controller_Admin.t
@@ -1141,6 +1156,7 @@ t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/links-in-headings.t
 t/mail.t
+t/manifest.t
 t/missing-image-crash-81.t
 t/mkits/test/body.txt
 t/mkits/test/manifest.json
