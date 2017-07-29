@@ -130,6 +130,9 @@
                                     [ site.id, 'local.js']) %]">
     </script>
     [%- END -%]
+    [%- IF site.enable_video_widgets  %]
+    <script src="[% c.uri_for('/static/js/amw-widgets.js', { v => 1 }) %]"></script>
+    [%- END -%]
     [%- IF site.turn_links_to_images_into_images %]
     <script src="[% c.uri_for('/static/js/amw-extimg.js', { v => 1 }) %]"></script>
     [%- END -%]

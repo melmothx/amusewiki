@@ -2579,6 +2579,7 @@ sub update_from_params {
                            text_infobox_at_the_bottom
                            freenode_irc_channel
                            turn_links_to_images_into_images
+                           enable_video_widgets
                            show_preview_when_deferred
                            titles_category_default_sorting
                            enable_order_by_sku
@@ -2884,6 +2885,10 @@ sub freenode_irc_channel {
 
 sub turn_links_to_images_into_images {
     return shift->get_option('turn_links_to_images_into_images') || '';
+}
+
+sub enable_video_widgets {
+    return shift->get_option('enable_video_widgets') || '';
 }
 
 sub pagination_needed {

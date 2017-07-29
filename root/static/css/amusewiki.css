@@ -285,3 +285,9 @@ div#text-prev-post-link span.glyphicon {
 .editor-fullscreen #fullscreen-markitup-toggle-button {
     text-align: center;
 }
+
+.amw-video-embed-container iframe {
+    padding: 20px 0;
+    width: 100%;
+    height: 450px;
+}

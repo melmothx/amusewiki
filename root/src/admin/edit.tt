@@ -286,6 +286,16 @@ kpsewhich mylogo.pdf
         <div class="col-sm-offset-6 col-sm-6">
           <label>
             <input type="checkbox"
+                   [% IF esite.enable_video_widgets %]checked="checked"[% END %]
+                   name="enable_video_widgets" />
+            [% loc('Turn links without description to YouTube, Vimeo,
+            Gmaps into widgets (affects site display only, static
+            formats have the link)') %] [EXPERIMENTAL]
+          </label>
+        </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
                    [% IF esite.show_preview_when_deferred %]checked="checked"[% END %]
                    name="show_preview_when_deferred" />
             [% loc('If the publication of a text is deferred, list it
