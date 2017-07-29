@@ -1080,6 +1080,7 @@ t/cgit-proxy.t
 t/cleanups.t
 t/collation-index.t
 t/conditional-get.t
+t/conditional-nocoverpage.t
 t/conflicts.t
 t/controller-admin-users.t
 t/controller_Admin.t
