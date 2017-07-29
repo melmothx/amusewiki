@@ -669,14 +669,16 @@ root/static/images/font-preview/CMU-Serif.pdf
 root/static/images/font-preview/CMU-Serif.png
 root/static/images/font-preview/CMU-Typewriter-Text.pdf
 root/static/images/font-preview/CMU-Typewriter-Text.png
+root/static/images/font-preview/Cormorant-Garamond.pdf
+root/static/images/font-preview/Cormorant-Garamond.png
 root/static/images/font-preview/DejaVu-Sans-Mono.pdf
 root/static/images/font-preview/DejaVu-Sans-Mono.png
 root/static/images/font-preview/DejaVu-Sans.pdf
 root/static/images/font-preview/DejaVu-Sans.png
+root/static/images/font-preview/Gentium-Book-Basic.pdf
+root/static/images/font-preview/Gentium-Book-Basic.png
 root/static/images/font-preview/Iwona.pdf
 root/static/images/font-preview/Iwona.png
-root/static/images/font-preview/Linux-Biolinum-O.pdf
-root/static/images/font-preview/Linux-Biolinum-O.png
 root/static/images/font-preview/Linux-Libertine-O.pdf
 root/static/images/font-preview/Linux-Libertine-O.png
 root/static/images/font-preview/Noto-Sans.pdf
@@ -1141,6 +1143,7 @@ t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/links-in-headings.t
 t/mail.t
+t/manifest.t
 t/missing-image-crash-81.t
 t/mkits/test/body.txt
 t/mkits/test/manifest.json
