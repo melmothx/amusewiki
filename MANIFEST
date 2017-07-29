@@ -739,6 +739,7 @@ root/static/js/amw-anchors.js
 root/static/js/amw-diff.js
 root/static/js/amw-extimg.js
 root/static/js/amw-footnotes.js
+root/static/js/amw-widgets.js
 root/static/js/bbselect.js
 root/static/js/bookbuilder.js
 root/static/js/bootstrap.js

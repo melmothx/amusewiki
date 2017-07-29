@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 192;
+use Test::More tests => 196;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -446,11 +446,60 @@ MUSE
     $mech->get_ok($extimg_uri);
     my $script = '/static/js/amw-extimg.js';
     $mech->content_lacks($script);
-    $site->add_to_site_options({ option_name => "turn_links_to_images_into_images",
-                                 option_value => "on" });
+    $mech->get('/login');
+    $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+    $mech->get('/user/site');
+    $mech->form_id("site-edit-form");
+    $mech->tick(turn_links_to_images_into_images => 'on');
+    $mech->click("edit_site");
     $mech->get_ok($extimg_uri);
     $mech->content_contains($script);
 }
+{
+    my ($rev) = $site->create_new_text({ title => "Videos",
+                                         lang => "en" }, 'text');
+    my $body =<<'MUSE';
+
+[[https://www.youtube.com/watch?v=5GIfGEeo-LU]]
+
+[[http://youtube.com/watch?v=5GIfGEeo-LU]]
+
+[[https://www.youtube.com/embed/5GIfGEeo-LU]]
+
+[[http://youtube.com/watch?v=5GIfGEeo-LU][This is not embedded]]
+
+Nor this [[http://youtube.com/watch?v=5GIfGEeo-LU]] is.
+
+[[https://vimeo.com/139886264]]
+
+[[http://vimeo.com/139886264]]
+
+[[http://vimeo.com/139886264][not embedded]]
+
+[[https://player.vimeo.com/video/156153444]]
+
+Not embedded [[http://vimeo.com/139886264]]
+
+[[https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d90459.74708433231!2d13.81613615!3d44.88535355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2shr!4v1501148524277"]]
+
+[[http://amusewiki.org/sitefiles/amw/navlogo.png]]
+
+MUSE
+    $rev->edit($rev->muse_body . $body);
+    $rev->commit_version;
+    my $videouri = $rev->publish_text;
+    diag $videouri;
+    $mech->get_ok($videouri);
+    my $script = '/static/js/amw-widgets.js';
+    $mech->content_lacks($script);
+    $mech->get('/user/site');
+    $mech->form_id("site-edit-form");
+    $mech->tick(enable_video_widgets => 'on');
+    $mech->click("edit_site");
+    $mech->get_ok($videouri);
+    $mech->content_contains($script);
+}
+
 
 sub add_text {
     my ($args, $type, $no_cover) = @_;
