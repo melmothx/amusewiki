@@ -938,7 +938,14 @@ sub compile_options {
     if (my $dir = $self->valid_ttdir) {
         $opts{ttdir} = $dir;
     }
-    foreach my $ext (qw/siteslogan logo nocoverpage
+
+    # passing nocoverpage, as we used to, would kill the coverpage
+    # globally. If you really want that, you need a custom format.
+    if ($self->nocoverpage) {
+        $opts{coverpage_only_if_toc} = 1;
+    }
+
+    foreach my $ext (qw/siteslogan logo
                         sitename opening
                         papersize division fontsize
                         bcor mainfont sansfont monofont

@@ -1331,6 +1331,21 @@ sub compile {
             # rename
             move($fileout, $outfile) or die "Couldn't move $fileout to $outfile";
         }
+        # maybe something like this in the future, to save the source
+        # if ($self->is_single_file && $textobj) {
+        #     if ($compiler->tex and $self->single_file_extension =~ m/.pdf\Z/) {
+        #         my $tex_file = $makebs->($basename->name) . '.tex';
+        #         my $tex_ext = $self->single_file_extension;
+        #         $tex_ext =~ s/\.pdf\Z/.tex/;
+        #         if (-f $tex_file) {
+        #             log_error { "Copying $tex_file to $jobdir with ext $tex_ext" };
+        #             copy($texfile, $textobj->filepath_for_ext($tex_ext));
+        #         }
+        #         else {
+        #             log_error { "Couldn't find $texfile, expected source for $outfile" };
+        #         }
+        #     }
+        # }
     }
     else {
         my $target = {

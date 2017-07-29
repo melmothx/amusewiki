@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 28;
+use Test::More tests => 30;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -70,11 +70,29 @@ foreach my $uri (keys %toc) {
 
 ok !$site->nocoverpage;
 
-$mech->get('/login');
-$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
-$mech->get('/user/site');
-$mech->submit_form(with_fields => { nocoverpage => 1 },
-                   button => 'edit_site');
+{
+    $mech->get('/login');
+    $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+    $mech->get('/user/site');
+    $mech->submit_form(with_fields => { nocoverpage => 1 },
+                       button => 'edit_site');
+
+    # create a custom format with nocoverpage and look at the output. Visual testing only,
+    # as it's not affected.
+    foreach my $nc (0, 1) {
+        $mech->get_ok('/settings/formats');
+        $mech->submit_form(with_fields => {
+                                           format_name => 'nocoverpage-' . $nc,
+                                          });
+        $mech->submit_form(with_fields => {
+                                           format => 'pdf',
+                                           ($nc ? (nocoverpage => '1') : ()),
+                                          },
+                           button => 'update',
+                          );
+    }
+}
+
 
 ok $site->discard_changes->nocoverpage, "Option picked up" or die;
 
@@ -87,6 +105,7 @@ foreach my $text ($site->titles) {
 while (my $job = $site->jobs->dequeue) {
     $job->dispatch_job;
     is $job->status, 'completed';
+    diag $job->logs;
 }
 
 foreach my $uri (keys %toc) {
