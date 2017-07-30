@@ -316,9 +316,6 @@
            title="[% loc('What links here') %]"
            data-target="#backlinks-modal">
           <span class="fa fa-link fa-2x fa-border fw"></span>
-          <span class=" visible-xs-inline">
-            [% loc('What links here') %]
-          </span>
         </a>
       </span>
       [% END %]
