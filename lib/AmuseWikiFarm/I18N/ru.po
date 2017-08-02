@@ -320,7 +320,7 @@ msgstr "Изменения для %1"
 msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
 "Изменения внесены, спасибо! После того, как администрация проверит\n"
-"текст,вы сможете увидеть изменения на сайте."
+"текст, вы сможете увидеть изменения на сайте."
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
