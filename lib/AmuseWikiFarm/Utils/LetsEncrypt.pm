@@ -11,6 +11,7 @@ use Crypt::OpenSSL::X509;
 use DateTime;
 use Try::Tiny;
 use Data::Dumper;
+use AmuseWikiFarm::Log::Contextual;
 
 has staging => (is => 'ro', isa => Bool, default => 1);
 
@@ -128,6 +129,11 @@ sub _build_host {
     }
 }
 
+sub names_as_string {
+    my $self = shift;
+    return join(' ', @{$self->names});
+}
+
 sub make_csr {
     my $self = shift;
     my $config = Path::Tiny->tempfile(SUFFIX => '.cfg');
@@ -176,7 +182,6 @@ CONF
 sub fetch {
     my ($self, $live) = @_;
     my $ok;
-    my $host = $self->staging_host;
     try {
         my $acme = Protocol::ACME->new(host => $self->host,
                                        account_key => $self->account_key,
@@ -201,7 +206,10 @@ sub fetch {
         $self->cert->spew($der_pem);
         $self->chain->spew($chain_pem);
         $ok = 1;
-    } catch { warn "Certificate fetching failed with $_" };
+    } catch {
+        my $error = $_;
+        log_warn { "Certificate fetching failed with $error for " . $self->names_as_string };
+    };
     return $ok;
 }
 
@@ -249,7 +257,8 @@ sub live_cert_object {
         try {
             $obj = Crypt::OpenSSL::X509->new_from_file($cert->stringify);
         } catch {
-            warn "$_";
+            my $error = $_;
+            log_warn { $self->names_as_string . " failed to parse $cert object: $error" };
             $obj = undef
         };
     }
@@ -271,13 +280,14 @@ sub live_cert_names_ok {
             my $missing = 0;
             foreach my $name (@{$self->names}) {
                 unless ($dns{$name}) {
-                    warn "Missing $name";
+                    log_warn { "Missing $name in " . $self->live_fullchain  };
                     $missing++;
                 }
             }
             $ok = !$missing;
         } catch {
-            warn $_;
+            my $error = $_;
+            log_warn { "$error checking names in " . $self->live_fullchain };
             $ok = 0;
         }
     }
@@ -319,7 +329,7 @@ sub self_check {
         my $response = HTTP::Tiny->new
           ->get('http://' . $name . '/.well-known/acme-challenge/' . $filename);
         unless ($response->{success}) {
-            warn "$name couldn't be self-verified: " . Dumper($response);
+            Dlog_warn { "$name couldn't be self-verified: $_" } $response;
             $failed++;
         }
         $check_file->remove;

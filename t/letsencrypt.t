@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 24;
+use Test::More tests => 28;
 use AmuseWikiFarm::Utils::LetsEncrypt;
 use Path::Tiny;
 
@@ -109,4 +109,9 @@ foreach my $method (qw/csr key cert chain fullchain/) {
     my $live = "live_" . $method;
     ok($le->$live->exists, $le->$live . " exists");
 }
-ok (1, "Reached the end");
+ok $le->staging;
+ok !$le->self_check, "Self check fails in this environment";
+ok $le->names_as_string;
+ok $le->live_cert_names_ok;
+ok !$le->fetch;
+
