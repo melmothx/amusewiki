@@ -8,9 +8,14 @@ use AmuseWikiFarm::Log::Contextual;
 use Template::Filters;
 use AmuseWikiFarm::Utils::Amuse qw/amw_meta_stripper/;
 
+$Template::Filters::FILTERS->{escape_invisible_chars} = \&escape_invisible_chars;
 $Template::Filters::FILTERS->{escape_js} = \&escape_js_string;
 
-
+sub escape_invisible_chars {
+    my $s = shift;
+    $s =~ s/([\x{ad}\x{a0}])/sprintf('<U+%04X>', ord($1))/ge;
+    return $s;
+}
 
 sub escape_js_string {
     my $s = shift;

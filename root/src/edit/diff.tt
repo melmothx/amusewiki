@@ -34,13 +34,13 @@ Source at
 <div class="row">
   <div class="col-md-6">
     <textarea rows="10" id="original" class="form-control" readonly="readonly">[%-
-      revision.starting_file_body | html
+      revision.starting_file_body | escape_invisible_chars | html
       -%]</textarea>
 
   </div>
   <div class="col-md-6">
     <textarea rows="10" id="current"  class="form-control" readonly="readonly">[%-
-      revision.muse_body | html
+      revision.muse_body | escape_invisible_chars | html
       -%]</textarea>
   </div>
 </div>

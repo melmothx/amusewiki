@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.026 UNRELEASED
+
+ - Escape some invisible chars when doing the diff (#124)
+
 2.025 2017-08-20
 
  - Add Cormorant Garamond fonts as dependency (packaged)
