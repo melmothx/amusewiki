@@ -114,7 +114,7 @@ msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Добавить неразрывные пробелы"
 
 msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr ""
+msgstr "Добавьте или удалите и добавьте заново <user_repo_url> на этой странице."
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
@@ -125,7 +125,7 @@ msgid "Add sections to the bookbuilder"
 msgstr "Добавить разделы в конструктор книг"
 
 msgid "Add the OPDS URL"
-msgstr "Добавить OPDS URL"
+msgstr "Добавьте OPDS URL"
 
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Добавить выбранные части в конструктор книг"
@@ -350,7 +350,7 @@ msgid "Click on the images to get the sample PDF"
 msgstr "Нажмите на изображение для получения PDF"
 
 msgid "Clone the repo locally and set it up"
-msgstr ""
+msgstr "Склонируйте репозиторий и настройте его"
 
 msgid "Close"
 msgstr "Закрыть"
@@ -358,7 +358,7 @@ msgstr "Закрыть"
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
-msgstr ""
+msgstr "Колонок для левой части страницы редакирования (из 12):"
 
 msgid "Completed"
 msgstr "Завершено"
@@ -367,10 +367,10 @@ msgid "Computing of differences took"
 msgstr "Вычисление различий заняло"
 
 msgid "Confirm"
-msgstr "Подтвердить"
+msgstr "Подтвердите"
 
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "Преобразовать в разметку архива"
 
 msgid "Couldn't add the text"
 msgstr "Нельзя добавить текст"
@@ -404,7 +404,7 @@ msgstr "Создать связь между авторами"
 
 msgid ""
 "Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr "Создать пустой репозиторий. Здесь мы указываем его URL как <user_repo_url>."
+msgstr "Создайте пустой репозиторий. Здесь мы ссылаемся на его URL как <user_repo_url>."
 
 msgid "Create new site"
 msgstr "Создать новый сайт"
@@ -527,7 +527,7 @@ msgid "Edit full site configuration"
 msgstr ""
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Редактировать раскладку элементов на экране"
 
 #. (esite.id)
 msgid "Edit site %1"
@@ -589,6 +589,8 @@ msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"Хотя этот сайт и имеет отзывчивую, подходящую для мобильных устройств раскладку,\n"
+"  он не предоставляет специального мобильного приложения."
 
 msgid ""
 "Every\n"
@@ -634,10 +636,10 @@ msgid "Filters"
 msgstr "Опции"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Найдите пункт добавления каталога в меню."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Найдите меню сетевых библиотек или что-то подобное."
 
 msgid "First Author and Second Author"
 msgstr "Первый Автор и Второй Автор"
@@ -815,13 +817,16 @@ msgid "How to choose a password"
 msgstr "Как сменить пароль"
 
 msgid "How to work with a remote repo"
-msgstr ""
+msgstr "Как работать с удалённым репозиторием"
 
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"Несмотря на это, вы можете просматривать, искать и загружать тексты\n"
+"  из мобильных приложений для чтения, которые поддерживают так называемый OPDS\n"
+"  протокол."
 
 msgid "I am human"
 msgstr "Я человек"
@@ -959,6 +964,9 @@ msgid ""
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
 msgstr ""
+"В данном примере мы используем FBReader, но эта процедура\n"
+"  почти такая же для всех приложений. Всё что вам нужно сделать это\n"
+"  добавить %1 в список сетевых библиотек."
 
 msgid "Inline elements"
 msgstr "Символьные стили"
@@ -982,6 +990,8 @@ msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
+"Это работает также как и для обычной страницы, но ссылка скрыта. Просто\n"
+"добавьте \"/edit\" в конец адресной строки для этой страницы."
 
 msgid "Italic"
 msgstr "Курсив"
@@ -1091,7 +1101,7 @@ msgid "Logout"
 msgstr "Выход"
 
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "Посмотрите в меню аккаунта, там есть пункт для этого."
 
 msgid "Lost your password?"
 msgstr "Забыли пароль?"
@@ -1115,7 +1125,7 @@ msgid "Main text"
 msgstr "Основной текст"
 
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "Часто задаваемые вопросы"
 
 msgid "Make a link clickable"
 msgstr "Сделать ссылку активной"
@@ -1142,7 +1152,7 @@ msgid "Missing redirection"
 msgstr "Отсутствующие перенаправления"
 
 msgid "Mobile"
-msgstr ""
+msgstr "Мобильные устройства"
 
 msgid "Mobile applications"
 msgstr "Мобильные приложения"
@@ -1178,7 +1188,7 @@ msgid "Name"
 msgstr "Имя"
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Экран списка сетевых библиотек."
 
 msgid "Never generate a table of content"
 msgstr "Не создавать содержание"
@@ -1561,7 +1571,7 @@ msgid "Preview"
 msgstr "Предпросмотр"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Высота окна предварительного просмотра в пикселях"
 
 msgid "Previous"
 msgstr "Предыдущий"
@@ -1573,7 +1583,7 @@ msgid "Private"
 msgstr ""
 
 msgid "Procedure"
-msgstr ""
+msgstr "Процедура"
 
 msgid "Produce slides."
 msgstr ""
@@ -1630,10 +1640,10 @@ msgid "Random"
 msgstr "Случайный текст"
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Читать полный текст..."
 
 msgid "Real time help"
-msgstr ""
+msgstr "Помощь в чате"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1656,19 +1666,19 @@ msgid "Reason"
 msgstr "Причина"
 
 msgid "Reason for deletion"
-msgstr ""
+msgstr "Причина удаления"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "Пересобрать"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "Пересобрать все произведённые файлы"
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "Пересобрать все произведённые форматы"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "Пересобираем"
 
 msgid "Recheck"
 msgstr "Повторная проверка"
@@ -1783,10 +1793,10 @@ msgid "Section and subsection. If one side document: section."
 msgstr "Раздел и подраздел."
 
 msgid "See here for more details."
-msgstr ""
+msgstr "Подробнее смотрите здесь."
 
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Смотрите полную документацию здесь."
 
 msgid "See the full manual for more details (english)"
 msgstr "Посмотрите полную инструкцию для уточнения"
@@ -1992,7 +2002,7 @@ msgid "Test"
 msgstr ""
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Протестированные приложения, в порядке предпочтения"
 
 msgid "Text body, before any section"
 msgstr ""
@@ -2016,7 +2026,7 @@ msgid ""
 msgstr ""
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "Адрес OPDS для этого сайта:"
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -2099,10 +2109,10 @@ msgid "The whole book in as single signature"
 msgstr "Вся книга - это одна тетрадка"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "Затем подтвердите изменение как если бы это была обычная публикация."
 
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "Затем загружайте (fetch) обновления с этой страницы."
 
 msgid "These texts are missing the unique id."
 msgstr "Эти тексты отсутствуют в уникальном id"
