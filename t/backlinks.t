@@ -69,6 +69,12 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $mech->get_ok('/');
 
 $mech->get('/login');
+
+$site->update_or_create_user({ username => 'root',
+                               password => 'root' }, 'root');
+
+$site->add_to_site_links({ url => 'http://www.example.org', label => 'Example' }) for (1..4);
+
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 is $mech->status, '200';
 $mech->get_ok("/admin/sites/edit/$site_id");
