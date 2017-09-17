@@ -4,7 +4,7 @@ use utf8;
 use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
-use Data::Dumper;
+use Data::Dumper::Concise;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
 
@@ -115,14 +115,24 @@ Create the site and set the various options passed, and return it.
 
 =cut
 
+sub site_serialize_related_rels {
+    return (qw/vhosts
+               site_options
+               legacy_links
+               site_links
+               categories
+               custom_formats
+               redirections/);
+}
+
 sub deserialize_site {
     my ($self, $hashref) = @_;
     my $guard = $self->result_source->schema->txn_scope_guard;
     die "Missing input" unless $hashref;
     my %external;
-    foreach my $method (qw/vhosts site_options legacy_links
-                           site_links categories redirections/) {
-        $external{$method} = delete $hashref->{$method} || [];
+    foreach my $method ($self->site_serialize_related_rels) {
+        my $values = delete $hashref->{$method} || [];
+        $external{$method} = $values if @$values;
     }
     my @users = @{ delete $hashref->{users} || [] };
     my $site = $self->update_or_create($hashref);

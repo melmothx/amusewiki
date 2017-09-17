@@ -859,7 +859,7 @@ use File::Copy qw/copy/;
 use AmuseWikiFarm::Archive::Xapian;
 use Unicode::Collate::Locale;
 use File::Find;
-use Data::Dumper;
+use Data::Dumper::Concise;
 use AmuseWikiFarm::Archive::BookBuilder;
 use Text::Amuse::Compile::Utils ();
 use AmuseWikiFarm::Log::Contextual;
@@ -3062,29 +3062,36 @@ this to clone a site.
 
 =cut
 
+sub _columns_with_no_embedded_id {
+    my $row = shift;
+    my $source = $row->result_source;
+    my %cols = $row->get_columns;
+
+    foreach my $col ($row->columns) {
+        my %info = %{ $source->column_info($col) };
+        if ($info{is_auto_increment} or
+            $info{is_foreign_key}) {
+            log_debug { "Deleting $col $cols{$col} from $row" };
+            delete $cols{$col};
+        }
+    }
+    return %cols;
+}
+
 sub serialize_site {
     my ($self) = @_;
     my %data =  $self->get_columns;
 
-    foreach my $method (qw/vhosts site_options site_links
-                           legacy_links
-                           categories redirections/) {
+    foreach my $method ($self->result_source->resultset->site_serialize_related_rels) {
         my @records;
       ROW:
         foreach my $row ($self->$method) {
             # we store the categories only if we have descriptions attached
-            my %row_data = $row->get_columns;
-
-            # clean the numeric ids
-            delete $row_data{site_id};
-            delete $row_data{id};
-
+            my %row_data = _columns_with_no_embedded_id($row);
             if ($method eq 'categories') {
                 my @descriptions;
                 foreach my $desc ($row->category_descriptions) {
-                    my %hashref = $desc->get_columns;
-                    delete $hashref{category_description_id};
-                    delete $hashref{category_id};
+                    my %hashref = _columns_with_no_embedded_id($desc);
                     push @descriptions, \%hashref;
                 }
                 if (@descriptions) {
