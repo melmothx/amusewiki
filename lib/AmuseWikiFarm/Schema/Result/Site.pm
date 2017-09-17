@@ -3085,7 +3085,7 @@ sub serialize_site {
     foreach my $method ($self->result_source->resultset->site_serialize_related_rels) {
         my @records;
       ROW:
-        foreach my $row ($self->$method) {
+        foreach my $row ($self->$method->all) {
             # we store the categories only if we have descriptions attached
             my %row_data = _columns_with_no_embedded_id($row);
             if ($method eq 'categories') {
@@ -3109,15 +3109,11 @@ sub serialize_site {
     # then the users
     my @users;
     foreach my $user ($self->users) {
-        my %user_data = $user->get_columns;
-        delete $user_data{id};
-        my @roles;
-        foreach my $role ($user->roles) {
-            my %role_data = $role->get_columns;
-            delete $role_data{id};
-            push @roles, \%role_data;
+        my %user_data = _columns_with_no_embedded_id($user);
+        foreach my $method (qw/roles
+                               bookbuilder_profiles/) {
+            $user_data{$method} = [ map { +{ _columns_with_no_embedded_id($_) } } $user->$method->all ];
         }
-        $user_data{roles} = \@roles;
         push @users, \%user_data;
     }
     $data{users} = \@users;
