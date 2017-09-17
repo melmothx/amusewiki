@@ -136,8 +136,20 @@ sub deserialize_site {
     }
     my @users = @{ delete $hashref->{users} || [] };
     my $site = $self->update_or_create($hashref);
+
+    # notably, tables without a non-auto PK, and where it makes sense
+    # to ignore override existing values.
+    my %clear = (
+                 site_links => 1,
+                );
+
     foreach my $method (sort keys %external) {
-        # print "Updating *** $method ***\n" . Dumper([@{$external{$method}}]);
+        if ($clear{$method}) {
+            log_debug { "Clearing out existing records for $method" };
+            $site->$method->delete;
+        }
+        Dlog_debug { "Updating *** $method *** $_" } $external{$method};
+
         foreach my $row (@{$external{$method}}) {
             my %todo;
             foreach my $k (keys %$row) {
@@ -145,10 +157,17 @@ sub deserialize_site {
                     $todo{$k} = delete $row->{$k};
                 }
             }
-            my $created = $site->$method->update_or_create($row);
-            foreach my $submethod (keys %todo) {
-                foreach my $subdata (@{$todo{$submethod}}) {
-                    $created->$submethod->update_or_create($subdata);
+
+            # print "Updating or creating $method\n";
+            my $created = $clear{$method} ? $site->$method->create($row) : $site->$method->update_or_create($row);
+
+            if (%todo) {
+                Dlog_debug { "Recursively updating data found in $method $_" } \%todo;
+                $created->discard_changes;
+                foreach my $submethod (keys %todo) {
+                    foreach my $subdata (@{$todo{$submethod}}) {
+                        $created->$submethod->update_or_create($subdata);
+                    }
                 }
             }
         }
