@@ -152,8 +152,8 @@ sub deserialize_site {
                 print "User $user->{username} already present and belongs to the site\n";
             }
             else {
-                print $exists->username . " already exists, not adding it to the site\n";
-                # push @add, $exists;
+                print $exists->username . " already exists, adding it to the site\n";
+                push @add, $exists;
             }
         }
         else {
