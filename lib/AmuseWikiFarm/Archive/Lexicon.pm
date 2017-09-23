@@ -6,13 +6,15 @@ use Moo;
 use Types::Standard qw/Str HashRef/;
 use Path::Tiny;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Paths;
 use AmuseWikiFarm::Archive::Lexicon::Site;
 use AmuseWikiFarm::Archive::Lexicon::Handles;
 
 has system_wide_po_dir => (is => 'ro',
                            isa => Str,
                            default => sub {
-                               path(__FILE__)->parent->parent->child('I18N')->realpath->stringify
+                               AmuseWikiFarm::Utils::Paths::amusewiki_modules_directory()
+                               ->child('I18N')->realpath->stringify;
                            });
 
 has repo_dir => (is => 'ro',

@@ -3363,22 +3363,8 @@ sub active_custom_formats {
 
 sub _build_root_install_directory {
     my $self = shift;
-    my $selfpath = Path::Tiny::path(__FILE__);
-    my $root = $selfpath
-      ->parent # Result
-      ->parent # Schema
-      ->parent; # AmuseWiki;
-    if ($root->child('root')->exists) {
-        return $root->realpath;
-    }
-    else {
-        # go up another two dir, so we have "lib" and the root.
-        $root = $root->parent->parent;
-        if ($root->child('root')->exists) {
-            return $root->realpath;
-        }
-    }
-    die "Couldn't find the application root for static files. This looks like a bug";
+    require AmuseWikiFarm::Utils::Paths;
+    return AmuseWikiFarm::Utils::Paths::root_install_directory();
 }
 
 sub _install_location {
@@ -3402,6 +3388,7 @@ sub templates_location {
 
 sub localizer {
     my $self = shift;
+    log_debug { "Loading localizer" };
     # there is no caching here. This should be called only outside the
     # web app if needed.
     require AmuseWikiFarm::Archive::Lexicon;
@@ -3409,6 +3396,11 @@ sub localizer {
                                                            $self->id);
 }
 
+sub mailer {
+    my $self = shift;
+    require AmuseWikiFarm::Utils::Mailer;
+    return AmuseWikiFarm::Utils::Mailer->new(mkit_location => $self->mkits_location->stringify);
+}
 
 __PACKAGE__->meta->make_immutable;
 

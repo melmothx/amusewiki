@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 34;
+use Test::More tests => 38;
 use DateTime;
 
 
@@ -30,11 +30,15 @@ diag $site->templates_location;
 ok -d $site->mkits_location;
 diag $site->mkits_location;
 
-my $lh = $site->localizer;
+{
+    my $lh = $site->localizer;
+    ok is $lh->loc("Titles"), "Naslovi";
+    ok is $lh->loc_html("Titles"), "Naslovi";
+    my $mailer = $site->mailer;
+    ok $mailer->mailer;
+    ok $mailer->transport;
 
-ok is $lh->loc("Titles"), "Naslovi";
-ok is $lh->loc_html("Titles"), "Naslovi";
-
+}
 ok($indexes);
 
 my @targets = (qw/titles topics authors/);

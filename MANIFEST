@@ -520,6 +520,7 @@ lib/AmuseWikiFarm/Utils/LexiconMigration.pm
 lib/AmuseWikiFarm/Utils/Mailer.pm
 lib/AmuseWikiFarm/Utils/Paginator.pm
 lib/AmuseWikiFarm/Utils/Paginator/Object.pm
+lib/AmuseWikiFarm/Utils/Paths.pm
 lib/AmuseWikiFarm/Utils/Webserver.pm
 lib/AmuseWikiFarm/View/Atom.pm
 lib/AmuseWikiFarm/View/HTML.pm
@@ -605,6 +606,7 @@ root/src/search/opensearch.tt
 root/src/settings/edit_format.tt
 root/src/settings/formats.tt
 root/src/special/display.tt
+root/src/static-indexes.tt
 root/src/stats/popular.tt
 root/src/tasks/display.tt
 root/src/tasks/rebuild.tt
