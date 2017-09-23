@@ -866,6 +866,7 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
 use AmuseWikiFarm::Utils::LexiconMigration;
 use Regexp::Common qw/net/;
+use Path::Tiny ();
 
 =head2 repo_root_rel
 
@@ -1103,6 +1104,12 @@ sub _build_repo_is_under_git {
     my $self = shift;
     return -d File::Spec->catdir($self->repo_root, '.git');
 }
+
+has root_install_directory => (is => 'ro',
+                               isa => 'Object',
+                               lazy => 1,
+                               builder => '_build_root_install_directory');
+
 
 =head1 Site modes
 
@@ -3352,6 +3359,45 @@ sub active_custom_formats {
     my $self = shift;
     my @all = $self->custom_formats->active_only;
     return \@all;
+}
+
+sub _build_root_install_directory {
+    my $self = shift;
+    my $selfpath = Path::Tiny::path(__FILE__);
+    my $root = $selfpath
+      ->parent # Result
+      ->parent # Schema
+      ->parent; # AmuseWiki;
+    if ($root->child('root')->exists) {
+        return $root->realpath;
+    }
+    else {
+        # go up another two dir, so we have "lib" and the root.
+        $root = $root->parent->parent;
+        if ($root->child('root')->exists) {
+            return $root->realpath;
+        }
+    }
+    die "Couldn't find the application root for static files. This looks like a bug";
+}
+
+sub _install_location {
+    my ($self, @names) = @_;
+    my $path = $self->root_install_directory->child(@names);
+    if ($path->exists) {
+        return $path;
+    }
+    else {
+        die "Couldn't find the mkits location in $path";
+    }
+}
+
+sub mkits_location {
+    return shift->_install_location(qw/mkits/);
+}
+
+sub templates_location {
+    return shift->_install_location(qw/root src/);
 }
 
 

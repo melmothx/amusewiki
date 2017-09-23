@@ -14,14 +14,21 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 29;
+use Test::More tests => 32;
 use DateTime;
 
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
-
+ok(-d $site->root_install_directory);
+diag $site->root_install_directory;
 my $indexes = $site->static_indexes_generator;
+
+ok -d $site->templates_location;
+diag $site->templates_location;
+
+ok -d $site->mkits_location;
+diag $site->mkits_location;
 
 ok($indexes);
 
