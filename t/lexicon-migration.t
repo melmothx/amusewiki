@@ -35,9 +35,7 @@ my $lexicon_orig = {
                '' => {},
               };
 
-my $model = AmuseWikiFarm::Archive::Lexicon->new(system_wide_po_dir => path(qw/lib AmuseWikiFarm I18N/)
-                                                 ->absolute->stringify,
-                                                 repo_dir => $temp_root->stringify);
+my $model = AmuseWikiFarm::Archive::Lexicon->new(repo_dir => $temp_root->stringify);
 
 AmuseWikiFarm::Utils::LexiconMigration::convert($lexicon_orig, "$temp");
 

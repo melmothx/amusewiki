@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 19;
+use Test::More tests => 21;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -46,10 +46,10 @@ path($locales_dir)->mkpath;
 
 $site = $schema->resultset('Site')->find($id);
 
-my $model = AmuseWikiFarm::Archive::Lexicon->new(system_wide_po_dir => path(qw/lib AmuseWikiFarm I18N/)
-                                                 ->absolute->stringify,
-                                                 repo_dir => path("repo")
-                                                 ->absolute->stringify);
+my $model = AmuseWikiFarm::Archive::Lexicon->new;
+ok -d $model->system_wide_po_dir;
+diag $model->system_wide_po_dir;
+is $model->repo_dir, path("repo")->absolute->stringify;
 {
     my $lh = $model->localizer(it => $site->id);
     ok !$lh->site, "No local po";

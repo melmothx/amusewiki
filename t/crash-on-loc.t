@@ -37,11 +37,8 @@ $mech->content_contains('[asdf]');
 $mech->get_ok('/category/topic/my-stuff-asdf');
 $mech->content_contains('[asdf]');
 
-my $path = path(qw/lib AmuseWikiFarm I18N/);
-my $model = AmuseWikiFarm::Archive::Lexicon->new(
-                                                 system_wide_po_dir => "$path",
-                                                 repo_dir => "repo",
-                                                );
+my $model = AmuseWikiFarm::Archive::Lexicon->new;
+
 my @strings = ('[hello]', '%hullo', "I ate [quant,_1,rhubarb pie].",
                "~[hullo~]", "~ ~", "~[~ hullo ~]~ [hullo]", "[garbage] [garbage]",
                "~[garbage~] ~[garbage~]",

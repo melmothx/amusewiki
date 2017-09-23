@@ -9,8 +9,19 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Archive::Lexicon::Site;
 use AmuseWikiFarm::Archive::Lexicon::Handles;
 
-has system_wide_po_dir => (is => 'ro', isa => Str, required => 1);
-has repo_dir => (is => 'ro', isa => Str, required => 1);
+has system_wide_po_dir => (is => 'ro',
+                           isa => Str,
+                           default => sub {
+                               path(__FILE__)->parent->parent->child('I18N')->realpath->stringify
+                           });
+
+has repo_dir => (is => 'ro',
+                 isa => Str,
+                 default => sub {
+                     path('repo')->absolute->stringify;
+                 });
+
+
 
 =head1 NAME
 
