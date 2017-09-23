@@ -3397,9 +3397,12 @@ sub localizer {
 }
 
 sub mailer {
-    my $self = shift;
+    my ($self, @args) = @_;
     require AmuseWikiFarm::Utils::Mailer;
-    return AmuseWikiFarm::Utils::Mailer->new(mkit_location => $self->mkits_location->stringify);
+    return AmuseWikiFarm::Utils::Mailer->new(mkit_location => $self->mkits_location->stringify, @args);
+    # please note that the catalyst config could have injected args.
+    # If we call this, those settings will be ignored, hence we permit
+    # argument passing)
 }
 
 __PACKAGE__->meta->make_immutable;
