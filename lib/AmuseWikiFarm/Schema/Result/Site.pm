@@ -3400,6 +3400,15 @@ sub templates_location {
     return shift->_install_location(qw/root src/);
 }
 
+sub localizer {
+    my $self = shift;
+    # there is no caching here. This should be called only outside the
+    # web app if needed.
+    require AmuseWikiFarm::Archive::Lexicon;
+    return AmuseWikiFarm::Archive::Lexicon->new->localizer($self->locale,
+                                                           $self->id);
+}
+
 
 __PACKAGE__->meta->make_immutable;
 

@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 32;
+use Test::More tests => 34;
 use DateTime;
 
 
@@ -29,6 +29,11 @@ diag $site->templates_location;
 
 ok -d $site->mkits_location;
 diag $site->mkits_location;
+
+my $lh = $site->localizer;
+
+ok is $lh->loc("Titles"), "Naslovi";
+ok is $lh->loc_html("Titles"), "Naslovi";
 
 ok($indexes);
 
