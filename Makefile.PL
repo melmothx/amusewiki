@@ -26,6 +26,7 @@ requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Test::WWW::Mechanize::Catalyst';
 requires 'Term::Size::Any';
+requires 'Data::Dumper::Concise';
 # modules used
 
 # middlewares

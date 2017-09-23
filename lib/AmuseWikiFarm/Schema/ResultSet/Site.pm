@@ -4,7 +4,7 @@ use utf8;
 use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
-use Data::Dumper;
+use Data::Dumper::Concise;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
 
@@ -115,19 +115,41 @@ Create the site and set the various options passed, and return it.
 
 =cut
 
+sub site_serialize_related_rels {
+    return (qw/vhosts
+               site_options
+               legacy_links
+               site_links
+               categories
+               custom_formats
+               redirections/);
+}
+
 sub deserialize_site {
     my ($self, $hashref) = @_;
     my $guard = $self->result_source->schema->txn_scope_guard;
     die "Missing input" unless $hashref;
     my %external;
-    foreach my $method (qw/vhosts site_options legacy_links
-                           site_links categories redirections/) {
-        $external{$method} = delete $hashref->{$method} || [];
+    foreach my $method ($self->site_serialize_related_rels) {
+        my $values = delete $hashref->{$method} || [];
+        $external{$method} = $values if @$values;
     }
     my @users = @{ delete $hashref->{users} || [] };
     my $site = $self->update_or_create($hashref);
+
+    # notably, tables without a non-auto PK, and where it makes sense
+    # to ignore override existing values.
+    my %clear = (
+                 site_links => 1,
+                );
+
     foreach my $method (sort keys %external) {
-        # print "Updating *** $method ***\n" . Dumper([@{$external{$method}}]);
+        if ($clear{$method}) {
+            log_debug { "Clearing out existing records for $method" };
+            $site->$method->delete;
+        }
+        Dlog_debug { "Updating *** $method *** $_" } $external{$method};
+
         foreach my $row (@{$external{$method}}) {
             my %todo;
             foreach my $k (keys %$row) {
@@ -135,16 +157,24 @@ sub deserialize_site {
                     $todo{$k} = delete $row->{$k};
                 }
             }
-            my $created = $site->$method->update_or_create($row);
-            foreach my $submethod (keys %todo) {
-                foreach my $subdata (@{$todo{$submethod}}) {
-                    $created->$submethod->update_or_create($subdata);
+
+            # print "Updating or creating $method\n";
+            my $created = $clear{$method} ? $site->$method->create($row) : $site->$method->update_or_create($row);
+
+            if (%todo) {
+                Dlog_debug { "Recursively updating data found in $method $_" } \%todo;
+                $created->discard_changes;
+                foreach my $submethod (keys %todo) {
+                    foreach my $subdata (@{$todo{$submethod}}) {
+                        $created->$submethod->update_or_create($subdata);
+                    }
                 }
             }
         }
     }
     my @add = $site->users;
     foreach my $user (@users) {
+        # can't be passed plainly because it's a many to many
         my $roles = delete $user->{roles};
         # search it.
         if (my $exists = $self->result_source->schema->resultset('User')->find({ username => $user->{username} })) {
@@ -152,8 +182,8 @@ sub deserialize_site {
                 print "User $user->{username} already present and belongs to the site\n";
             }
             else {
-                print $exists->username . " already exists, not adding it to the site\n";
-                # push @add, $exists;
+                print $exists->username . " already exists, adding it to the site\n";
+                push @add, $exists;
             }
         }
         else {
