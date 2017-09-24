@@ -3,8 +3,8 @@ package AmuseWikiFarm::Utils::Paths;
 use utf8;
 use strict;
 use warnings;
-
 use Path::Tiny;
+use AmuseWikiFarm::Log::Contextual;
 
 =head2 root_install_directory
 
@@ -32,6 +32,26 @@ sub root_install_directory {
 
 sub amusewiki_modules_directory {
     path(__FILE__)->parent->parent;
+}
+
+sub _install_location {
+    my (@names) = @_;
+    my $path = root_install_directory->child(@names);
+    log_debug { "Checking $path" };
+    if ($path->exists) {
+        return $path;
+    }
+    else {
+        die "Couldn't find the @names location in $path";
+    }
+}
+
+sub mkits_location {
+    _install_location(qw/mkits/);
+}
+
+sub templates_location {
+    _install_location(qw/root src/);
 }
 
 1;

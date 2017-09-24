@@ -867,6 +867,8 @@ use AmuseWikiFarm::Utils::CgitSetup;
 use AmuseWikiFarm::Utils::LexiconMigration;
 use Regexp::Common qw/net/;
 use Path::Tiny ();
+use AmuseWikiFarm::Utils::Paths ();
+
 
 =head2 repo_root_rel
 
@@ -1104,12 +1106,6 @@ sub _build_repo_is_under_git {
     my $self = shift;
     return -d File::Spec->catdir($self->repo_root, '.git');
 }
-
-has root_install_directory => (is => 'ro',
-                               isa => 'Object',
-                               lazy => 1,
-                               builder => '_build_root_install_directory');
-
 
 =head1 Site modes
 
@@ -3361,29 +3357,16 @@ sub active_custom_formats {
     return \@all;
 }
 
-sub _build_root_install_directory {
-    my $self = shift;
-    require AmuseWikiFarm::Utils::Paths;
-    return AmuseWikiFarm::Utils::Paths::root_install_directory();
-}
-
-sub _install_location {
-    my ($self, @names) = @_;
-    my $path = $self->root_install_directory->child(@names);
-    if ($path->exists) {
-        return $path;
-    }
-    else {
-        die "Couldn't find the mkits location in $path";
-    }
+sub root_install_directory {
+    AmuseWikiFarm::Utils::Paths::root_install_directory();
 }
 
 sub mkits_location {
-    return shift->_install_location(qw/mkits/);
+    AmuseWikiFarm::Utils::Paths::mkits_location();
 }
 
 sub templates_location {
-    return shift->_install_location(qw/root src/);
+    AmuseWikiFarm::Utils::Paths::templates_location();
 }
 
 sub localizer {
