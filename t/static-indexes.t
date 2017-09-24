@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 34;
+use Test::More tests => 60;
 use DateTime;
 use Path::Tiny;
 
@@ -42,10 +42,16 @@ diag $site->mkits_location;
 ok($indexes);
 
 my $static_path = AmuseWikiFarm::Utils::Paths::static_file_location();
-foreach my $f ($indexes->javascript_files, $indexes->css_files) {
+foreach my $f ($indexes->javascript_files,
+               $indexes->css_files,
+               $indexes->font_files) {
     my $src = path($static_path, $f);
     ok $src->exists, "$src exists";
 }
+
+my $ftarget = $indexes->target_subdir;
+$ftarget->remove_tree;
+ok !$ftarget->exists;
 
 my @targets = (qw/titles topics authors/);
 
@@ -73,4 +79,22 @@ foreach my $file (@files) {
     like $content, qr/My first test/, "Found text in $file";
     like $content, qr/first-test/, "Found text in $file";
 }
+
+foreach my $f ($indexes->javascript_files,
+               $indexes->css_files,
+               $indexes->font_files) {
+    my $done = path($ftarget, $f);
+    ok $done->exists, "$done exists";
+}
+
+ok !$indexes->copy_static_files;
+# change the them
+
+my $oldtheme = $site->theme;
+$site->update({ theme => 'darkly' });
+
+is $site->static_indexes_generator->copy_static_files, 1;
+$site->static_indexes_generator->generate;
+is $site->static_indexes_generator->copy_static_files, 0;
+$site->update({ theme => $oldtheme });
 

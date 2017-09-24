@@ -14,6 +14,11 @@ use AmuseWikiFarm::Utils::Paths;
 use Template;
 use Path::Tiny;
 
+# when we bump the version, we make sure to copy the files again.
+sub version {
+    return 1;
+}
+
 =head1 NAME
 
 AmuseWikiFarm::Archive::StaticIndexes -- Creating static indexes
@@ -63,8 +68,8 @@ sub generate {
     my $self = shift;
     $self->copy_static_files;
     my $lang = $self->site->locale;
-    my $prefix = "./site_files/__static_indexes/";
-    my @css_files = map { $prefix . $_ } $self->css_files;
+    my $prefix = $self->target_subdir->relative($self->site->repo_root);
+    my @css_files = map { $prefix . '/' . $_ } $self->css_files;
     my @javascript_files = map { $prefix . $_ } $self->javascript_files;
     my %todo = (
                 $self->titles_file  => {
@@ -220,26 +225,59 @@ sub css_files {
     return @out;
 }
 
+sub font_files {
+    my $self = shift;
+    my $src_dir = AmuseWikiFarm::Utils::Paths::static_file_location();
+    my @out;
+    foreach my $font ($src_dir->child('fonts')->children(qr{fontawesome}i)) {
+        log_debug { "Found font file " };
+        push @out, path(fonts => $font->basename);
+    }
+    return @out;
+}
+
+sub target_subdir {
+    my $self = shift;
+    return path($self->site->path_for_site_files, '__static_indexes');
+}
+
 sub copy_static_files {
     my $self = shift;
-    my $target_dir = path($self->site->repo_root,
-                          qw/site_files __static_indexes/);
+    my $target_dir = $self->target_subdir;
+    my $update_needed = 1;
+    if ($target_dir->child('.version')->exists and
+        $target_dir->child('.version')->slurp eq $self->version) {
+        log_debug { "No copy needed" };
+        $update_needed = 0;
+    }
     my $src_dir = AmuseWikiFarm::Utils::Paths::static_file_location();
     foreach my $dir (qw/css js fonts/) {
         path($target_dir, $dir)->mkpath;
     }
+    my $out = 0;
     foreach my $file ($self->javascript_files,
-                      $self->css_files) {
+                      $self->css_files,
+                      $self->font_files) {
         my $src = $src_dir->child($file);
-        # this is a bit expensive, but hey, it's likely we want to
-        # keep them update. Room for optimization, though.
+        my $target = $target_dir->child($file);
         if ($src->exists) {
-            $src->copy($target_dir->child($file));
+            if ($target->exists and !$update_needed) {
+                log_debug { "$target already exists" };
+            }
+            else {
+                log_debug { "Copying $src to $target" };
+                $src->copy($target);
+                $out++;
+            }
         }
         else {
             log_error { "$src doesn't exist!" };
         }
     }
+    if ($out) {
+        $target_dir->child('.version')->spew($self->version);
+    }
+    return $out;
 }
 
 __PACKAGE__->meta->make_immutable;
