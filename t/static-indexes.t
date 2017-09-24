@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 38;
+use Test::More tests => 34;
 use DateTime;
 
 
@@ -57,15 +57,12 @@ foreach my $method (map { $_ . '_file' } @targets) {
 
 $indexes->generate;
 
-like $indexes->css, qr/div#page \{/, "Found css rule in css method";
-
 foreach my $file (@files) {
     ok (-f $file, "$file was generated");
     my $content = read_file($file);
     unlike $content, qr{\[\%}, "No opening TT tokens found in $file";
     unlike $content, qr{\%\]}, "No closing TT tokens found in $file";
-    like $content, qr{<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hr" lang="hr">}, "Found html tag in $file";
-    like $content, qr/div#page \{/, "Found css rule in $file";
+    like $content, qr{<html lang="hr">}, "Found html tag in $file";
     like $content, qr/<div id="page">/, "Found container in $file";
     like $content, qr/My first test/, "Found text in $file";
     like $content, qr/first-test/, "Found text in $file";

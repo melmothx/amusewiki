@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="[% lang %]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>[% title %]</title>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <!-- Milligram CSS minified -->
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+  </head>
+  <body>
+    <div id="page">
+      <div>
+        <h3>[% title %]</h3>
+      </div>
+      <div>
+        <ol>
+        [% IF category_listing %]
+          [% FOREACH cat IN list %]
+          <li>
+            <h4 id="cat-[% cat.uri %]">[% cat.name %]</h4>
+            <ul>
+              [% FOREACH text IN cat.sorted_titles %]
+              <li>
+                <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
+              </li>
+              [% END %]
+            </ul>
+          </li>
+          [% END %]
+        [% ELSE %]
+          [% FOREACH text IN list %]
+          <li>
+            <div id="text-[% text.uri %]">
+              <a href="[% text.in_tree_uri %].html">
+                [% text.title %]
+              </a>
+              [%- IF text.author %] — [% text.author %] [% END %]
+              [% IF text.lang %]      [[% text.lang %]] [% END %]
+            </div>
+            <div>
+              [% IF formats.pdf %]
+              <a href="[% text.in_tree_uri %].pdf">
+                [PDF]
+              </a>
+              [% END %]
+              [% IF formats.a4_pdf %]
+              <a href="[% text.in_tree_uri %].a4.pdf">
+                [A4 PDF]
+              </a>
+              [% END %]
+              [% IF formats.lt_pdf %]
+              <a href="[% text.in_tree_uri %].lt.pdf">
+                [Letter PDF]
+              </a>
+              [% END %]
+              [% IF formats.tex %]
+              <a href="[% text.in_tree_uri %].tex">
+                [TeX]
+              </a>
+              [% END %]
+              [% IF formats.epub %]
+              <a href="[% text.in_tree_uri %].epub">
+                [EPUB]
+              </a>
+              [% END %]
+              [% IF formats.muse %]
+              <a href="[% text.in_tree_uri %].muse">
+                [muse]
+              </a>
+              [% END %]
+              [% IF formats.zip %]
+              <a href="[% text.in_tree_uri %].zip">
+                [ZIP]
+              </a>
+              [% END %]
+  
+            </div>
+            [%- IF text.sorted_authors %]
+            <ul style="list-style-type: none">
+              [% FOREACH author IN text.sorted_authors %]
+              <li style="display: inline">
+                <a href="./authors.html#cat-[% author.uri %]">[% author.name %]</a>
+              </li>
+              [%- END -%]
+            </ul>
+            [% END %]
+  
+            [% IF text.sorted_topics %]
+            <ul style="list-style-type: none">
+              [% FOREACH topic IN text.sorted_topics %]
+              <li style="display: inline">
+                <a href="./topics.html#cat-[% topic.uri %]">[% topic.name %]</a>
+              </li>
+              [% END %]
+            </ul>
+            [% END %]
+          </li>
+          [% END %]
+        [% END %]
+        </ol>
+      </div>
+    </div>
+  </body>
+</html>
