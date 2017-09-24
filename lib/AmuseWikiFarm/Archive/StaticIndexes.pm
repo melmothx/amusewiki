@@ -221,7 +221,8 @@ sub css_files {
     my $bootstrap = $self->site->bootstrap_theme;
     my @out = (path(css => "bootstrap.$bootstrap.css"),
                path(css => "font-awesome.min.css"),
-               path(css => "amusewiki.css"));
+               # path(css => "amusewiki.css")
+              );
     return @out;
 }
 

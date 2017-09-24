@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 60;
+use Test::More tests => 58;
 use DateTime;
 use Path::Tiny;
 
@@ -91,7 +91,7 @@ ok !$indexes->copy_static_files;
 # change the them
 
 my $oldtheme = $site->theme;
-$site->update({ theme => 'darkly' });
+$site->update({ theme => 'lumen' });
 
 is $site->static_indexes_generator->copy_static_files, 1;
 $site->static_indexes_generator->generate;

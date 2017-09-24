@@ -21,7 +21,49 @@
     [%- END %]
   </head>
   <body>
-    <div id="page">
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+                  data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span>
+          [%- IF site.has_site_file('navlogo.png') -%]
+          <a class="amw-navlogo" href="./titles.html">
+            <img src="./site_files/navlogo.png"
+                 title="[% site.sitename | html %]"
+                 style="padding: 5px 5px; height: 50px;"
+                 class="amw-navlogo-img"
+                 alt="[% site.sitename | html %]" />
+          </a>
+          [% ELSE %]
+          <a class="navbar-brand" href="./titles.html"
+             title="[% site.sitename | html %]">
+            <small>[%  site.sitename | html %]</small>
+          </a>
+          [%- END -%]
+          </span>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li[% IF title == 'Titles' %] class="active" [% END %]>
+              <a href="./titles.html">[% lh.loc_html('Titles') %]</a>
+            </li>
+            <li[% IF title == 'Authors' %] class="active" [% END %]>
+              <a href="./authors.html">[% lh.loc_html('Authors') %]</a>
+            </li>
+            <li[% IF title == 'Topics' %] class="active" [% END %]>
+              <a href="./topics.html">[% lh.loc_html('Topics') %]</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="page" class="container-fluid">
       <div>
         <h3>[% lh.loc_html(title) %]</h3>
       </div>
