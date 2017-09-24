@@ -984,6 +984,82 @@ sub available_formats {
     return %formats;
 }
 
+sub formats_definitions {
+    my $self = shift;
+    my $loc = $self->localizer;
+    my @all = (
+               {
+                code => 'pdf',
+                ext => '.pdf',
+                icon => 'fa-file-pdf-o',
+                desc => 'plain PDF',
+               },
+               {
+                code => 'a4_pdf',
+                ext => '.a4.pdf',
+                icon => 'fa-columns fa-flip-vertical',
+                desc => 'A4 imposed PDF',
+               },
+               {
+                code => 'lt_pdf',
+                ext => '.lt.pdf',
+                icon => 'fa-columns fa-flip-vertical',
+                desc => 'Letter imposed PDF',
+               },
+               # disabled, because don't check
+               # {
+               #  code => 'sl_pdf',
+               #  ext => '.sl.pdf',
+               #  icon => 'fa-file-powerpoint-o',
+               #  desc => 'Slides (PDF)',
+               # },
+               {
+                code => 'epub',
+                ext => '.epub',
+                icon => 'fa-tablet',
+                desc => 'EPUB (for mobile devices)',
+               },
+               {
+                code => 'html',
+                ext => '.html',
+                icon => 'fa-print',
+                desc => 'Standalone HTML (printer-friendly)',
+               },
+               {
+                code => 'tex',
+                ext => '.tex',
+                icon => 'fa-file-code-o',
+                desc => 'XeLaTeX source',
+               },
+               {
+                code => 'muse',
+                ext => '.muse',
+                always => 1,
+                icon => 'fa-file-text-o',
+                desc => 'plain text source',
+               },
+               {
+                code => 'zip',
+                ext => '.zip',
+                icon => 'fa-file-archive-o',
+                desc => 'Source files with attachments',
+               }
+              );
+    my %existing = $self->available_formats;
+    my @out = grep { $existing{$_->{code}} || $_->{always} } @all;
+    foreach my $custom ($self->custom_formats->active_only->all) {
+        push @out, {
+                    ext => $custom->extension,
+                    icon => ($custom->is_epub ? 'fa-tablet' : 'fa-file-pdf-o'),
+                    desc => $custom->format_name,
+                   };
+    }
+    foreach my $i (@out) {
+        $i->{desc} = $loc->loc_html($i->{desc});
+    }
+    return \@out;
+}
+
 sub available_text_exts {
     my $self = shift;
     my %formats = $self->available_formats;

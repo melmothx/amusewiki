@@ -67,21 +67,22 @@ sub titles_file {
 sub generate {
     my $self = shift;
     $self->copy_static_files;
-    my $lang = $self->site->locale;
-    my $prefix = $self->target_subdir->relative($self->site->repo_root);
+    my $site = $self->site;
+    my $localizer = $site->localizer,
+    my $lang = $site->locale;
+    my $formats = $site->formats_definitions;
+    my $prefix = $self->target_subdir->relative($site->repo_root);
     my @css_files = map { $prefix . '/' . $_ } $self->css_files;
     my @javascript_files = map { $prefix . '/' .  $_ } $self->javascript_files;
     my %todo = (
                 $self->titles_file  => {
                                         list => $self->create_titles,
                                         title   => 'Titles',
-                                        formats => $self->formats,
                                        },
                 $self->topics_file  => {
                                         list => $self->create_category_list('topic'),
                                         title   => 'Topics',
                                         category_listing => 1,
-                                        formats => $self->formats,
                                        },
                 $self->authors_file  => {
                                         list => $self->create_category_list('author'),
@@ -97,9 +98,9 @@ sub generate {
         next unless $todo{$file}{list} && @{$todo{$file}{list}};
         $tt->process('static-indexes.tt',
                            {
-                            site => $self->site,
-                            formats => $self->formats,
-                            lh => $self->site->localizer,
+                            site => $site,
+                            formats => $formats,
+                            lh => $localizer,
                             lang => $lang,
                             css_files => \@css_files,
                             javascript_files => \@javascript_files,
@@ -138,11 +139,13 @@ sub create_titles {
                                                       'title_categories.category.sorting_pos' => 'category.sorting_pos',
                                                      }
                                       })->all;
+    my $count = 0;
     foreach my $title (@texts) {
         # same as Title::in_tree_uri
         my $relpath = $title->{f_archive_rel_path};
         $relpath =~ s![^a-z0-9]!/!g;
         $title->{in_tree_uri} = join('/', '.', $relpath, $title->{uri});
+        $title->{numbering} = ++$count;
         my (@authors, @topics);
         if ($title->{title_categories}) {
             my @sorted = sort {
@@ -190,21 +193,6 @@ sub create_category_list {
     }
     log_debug { "Created category listing in " . (time() - $time) . " seconds" };
     return \@cats;
-}
-
-sub formats {
-    my $self = shift;
-    my $site = $self->site;
-    # to be changed.
-    return {
-            muse => 1,
-            pdf => $site->pdf,
-            a4_pdf => $site->a4_pdf,
-            lt_pdf => $site->lt_pdf,
-            tex => $site->tex,
-            epub => $site->epub,
-            zip  => $site->zip,
-           },
 }
 
 sub javascript_files {
