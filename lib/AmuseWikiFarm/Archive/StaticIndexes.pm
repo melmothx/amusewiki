@@ -87,7 +87,9 @@ sub generate {
         next unless $todo{$file}{list} && @{$todo{$file}{list}};
         $tt->process('static-indexes.tt',
                            {
+                            site => $self->site,
                             formats => $self->formats,
+                            lh => $self->site->localizer,
                             lang => $lang,
                             %{$todo{$file}}
                            },
