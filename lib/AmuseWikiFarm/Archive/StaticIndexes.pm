@@ -117,28 +117,7 @@ sub create_titles {
     my $out;
     my $time = time();
     log_debug { "Creating titles" };
-    my @texts = $self->site->titles->published_texts->search(undef,
-                                      {
-                                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                                       collapse => 1,
-                                       join => { title_categories => 'category' },
-                                       order_by => [qw/me.sorting_pos me.title/],
-                                       columns => [qw/me.uri
-                                                      me.title
-                                                      me.f_archive_rel_path
-                                                      me.author
-                                                      me.lang
-                                                      me.sorting_pos
-                                                     /],
-                                       '+columns' => {
-                                                      'title_categories.title_id' => 'title_categories.title_id',
-                                                      'title_categories.category_id' => 'title_categories.category_id',
-                                                      'title_categories.category.uri' => 'category.uri',
-                                                      'title_categories.category.type' => 'category.type',
-                                                      'title_categories.category.name' => 'category.name',
-                                                      'title_categories.category.sorting_pos' => 'category.sorting_pos',
-                                                     }
-                                      })->all;
+    my @texts = $self->site->titles->published_texts->static_index_tokens->all;
     my $count = 0;
     foreach my $title (@texts) {
         # same as Title::in_tree_uri
