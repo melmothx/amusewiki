@@ -75,7 +75,7 @@ foreach my $file (@files) {
     unlike $content, qr{\[\%}, "No opening TT tokens found in $file";
     unlike $content, qr{\%\]}, "No closing TT tokens found in $file";
     like $content, qr{<html lang="hr">}, "Found html tag in $file";
-    like $content, qr/<div id="page">/, "Found container in $file";
+    like $content, qr/<div id="page"/, "Found container in $file";
     like $content, qr/My first test/, "Found text in $file";
     like $content, qr/first-test/, "Found text in $file";
 }
