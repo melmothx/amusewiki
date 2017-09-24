@@ -11,6 +11,7 @@ use Types::Standard qw/Object Str HashRef/;
 use File::Spec;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paths;
+use Template;
 
 =head1 NAME
 
@@ -41,21 +42,6 @@ has site => (
              required => 1,
              isa => Object,
             );
-
-has tt => (
-           is => 'ro',
-           isa => Object,
-           default => sub {
-               require Template;
-               return Template->new;        
-           });
-
-has template_file => (is => 'ro',
-                      isa => Str,
-                      default => sub {
-                          AmuseWikiFarm::Utils::Paths::templates_location()
-                              ->child('static-indexes.tt')->relative('.')->stringify;
-                      });
 
 sub authors_file {
     my $self = shift;
@@ -93,9 +79,13 @@ sub generate {
                                         category_listing => 1,
                                        },
                );
+    my $tt = Template->new(
+                           ENCODING => 'utf8',
+                           INCLUDE_PATH => AmuseWikiFarm::Utils::Paths::templates_location()->stringify,
+                          );
     foreach my $file (keys %todo) {
         next unless $todo{$file}{list} && @{$todo{$file}{list}};
-        $self->tt->process($self->template_file,
+        $tt->process('static-indexes.tt',
                            {
                             formats => $self->formats,
                             lang => $lang,
@@ -103,7 +93,7 @@ sub generate {
                            },
                            $file,
                            { binmode => ':encoding(UTF-8)' })
-          or die $self->tt->error;
+          or die $tt->error;
     }
 }
 
