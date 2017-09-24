@@ -70,7 +70,7 @@ sub generate {
     my $lang = $self->site->locale;
     my $prefix = $self->target_subdir->relative($self->site->repo_root);
     my @css_files = map { $prefix . '/' . $_ } $self->css_files;
-    my @javascript_files = map { $prefix . $_ } $self->javascript_files;
+    my @javascript_files = map { $prefix . '/' .  $_ } $self->javascript_files;
     my %todo = (
                 $self->titles_file  => {
                                         list => $self->create_titles,
