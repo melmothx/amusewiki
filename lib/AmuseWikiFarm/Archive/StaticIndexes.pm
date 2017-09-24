@@ -12,6 +12,7 @@ use File::Spec;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paths;
 use Template;
+use Path::Tiny;
 
 =head1 NAME
 
@@ -60,7 +61,11 @@ sub titles_file {
 
 sub generate {
     my $self = shift;
+    $self->copy_static_files;
     my $lang = $self->site->locale;
+    my $prefix = "./site_files/__static_indexes/";
+    my @css_files = map { $prefix . $_ } $self->css_files;
+    my @javascript_files = map { $prefix . $_ } $self->javascript_files;
     my %todo = (
                 $self->titles_file  => {
                                         list => $self->create_titles,
@@ -91,6 +96,8 @@ sub generate {
                             formats => $self->formats,
                             lh => $self->site->localizer,
                             lang => $lang,
+                            css_files => \@css_files,
+                            javascript_files => \@javascript_files,
                             %{$todo{$file}}
                            },
                            $file,
@@ -195,6 +202,45 @@ sub formats {
            },
 }
 
+sub javascript_files {
+    my $self = shift;
+    my @out = (
+               path(js => 'jquery-1.11.1.min.js'),
+               path(js => 'bootstrap.min.js'),
+              );
+    return @out;
+}
+
+sub css_files {
+    my $self = shift;
+    my $bootstrap = $self->site->bootstrap_theme;
+    my @out = (path(css => "bootstrap.$bootstrap.css"),
+               path(css => "font-awesome.min.css"),
+               path(css => "amusewiki.css"));
+    return @out;
+}
+
+sub copy_static_files {
+    my $self = shift;
+    my $target_dir = path($self->site->repo_root,
+                          qw/site_files __static_indexes/);
+    my $src_dir = AmuseWikiFarm::Utils::Paths::static_file_location();
+    foreach my $dir (qw/css js fonts/) {
+        path($target_dir, $dir)->mkpath;
+    }
+    foreach my $file ($self->javascript_files,
+                      $self->css_files) {
+        my $src = $src_dir->child($file);
+        # this is a bit expensive, but hey, it's likely we want to
+        # keep them update. Room for optimization, though.
+        if ($src->exists) {
+            $src->copy($target_dir->child($file));
+        }
+        else {
+            log_error { "$src doesn't exist!" };
+        }
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 

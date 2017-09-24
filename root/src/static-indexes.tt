@@ -4,6 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>[% lh.loc_html(title) %]</title>
+    [%- IF site.has_site_file('favicon.ico') %]
+    <link rel="shortcut icon" href="./site_files/favicon.ico" />
+    [%- END %]
+    [%- FOREACH css IN css_files %]
+    <link rel="stylesheet" href="[% css %]" />
+    [%- END %]
+    [%- FOREACH script IN javascript_files %]
+    <script type="text/javascript" src="[% script %]" ></script>
+    [%- END %]
+    [%- IF site.has_site_file('local.css') -%]
+    <link rel="stylesheet" type="text/css" href="./site_files/local.css" />
+    [%- END %]
+    [%- IF site.has_site_file('local.js') %]
+    <script type="text/javascript" src="./site_files/local.js"></script>
+    [%- END %]
   </head>
   <body>
     <div id="page">

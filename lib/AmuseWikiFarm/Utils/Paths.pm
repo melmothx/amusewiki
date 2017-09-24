@@ -54,4 +54,8 @@ sub templates_location {
     _install_location(qw/root src/);
 }
 
+sub static_file_location {
+    _install_location(qw/root static/);
+}
+
 1;

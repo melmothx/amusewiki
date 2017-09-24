@@ -16,7 +16,7 @@ use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
 use Test::More tests => 34;
 use DateTime;
-
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -40,6 +40,12 @@ diag $site->mkits_location;
 
 }
 ok($indexes);
+
+my $static_path = AmuseWikiFarm::Utils::Paths::static_file_location();
+foreach my $f ($indexes->javascript_files, $indexes->css_files) {
+    my $src = path($static_path, $f);
+    ok $src->exists, "$src exists";
+}
 
 my @targets = (qw/titles topics authors/);
 
