@@ -70,6 +70,8 @@
             <h1>[% lh.loc_html(title) %] <small>([% total_items %])</small></h1>
           </div>
         </div>
+      </div>
+      <div style="padding-bottom: 10px">
         <div class="row">
           <div class="col-xs-offset-6 col-xs-6 text-right">
             [% lh.loc_html('Sorting:') %]
@@ -126,18 +128,17 @@
           [% END %]
         </ol>
         [% ELSE %]
-        <div id="sortable-listing">
+        <div id="sortable-listing" class="list-group">
         [% SET topics_label = lh.loc_html('Topics') %]
         [% SET authors_label = lh.loc_html('Authors') %]
         [% FOREACH text IN list %]
         <div id="text-[% text.uri %]"
-             class="row sortable-element"
+             class="sortable-element list-group-item"
              style="padding-bottom: 10px"
              data-pubdate="[% text.pubdate_int %]"
              data-alpha="[% text.sorting_pos %]">
-          <div class="col-xs-1">
-          </div>
-          <div class="col-xs-5">
+          <div class="row">
+          <div class="col-xs-6">
             <a href="[% text.in_tree_uri %].html">
               [% text.title %]
             </a>
@@ -178,6 +179,7 @@
           </div>
           <div class="col-xs-1">
             <small>[% text.pubdate %]</small>
+          </div>
           </div>
         </div>
         [%- END %]
