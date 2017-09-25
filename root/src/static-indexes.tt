@@ -65,13 +65,53 @@
     </div>
     <div id="page" class="container-fluid">
       <div class="page-header text-center">
-        <h1>[% lh.loc_html(title) %]</h1>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1>[% lh.loc_html(title) %] <small>([% total_items %])</small></h1>
+          </div>
+          <div class="col-xs-6">
+            [% lh.loc_html('Sorting:') %]
+            <div class="btn-group btn-group-xs" role="group" aria-label="Sorting">
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="alpha" data-direction="asc">
+                <span class="fa fa-sort-alpha-asc"></span>
+              </button>
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="alpha" data-direction="desc">
+                <span class="fa fa-sort-alpha-desc"></span>
+              </button>
+              [% IF category_listing %]
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="numtitles" data-direction="asc">
+                <span class="fa fa-sort-amount-asc"></span>
+              </button>
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="numtitles" data-direction="desc">
+                <span class="fa fa-sort-amount-desc"></span>
+              </button>
+              [% ELSE %]
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="pubdate" data-direction="desc">
+                [% lh.loc_html('Publication date') %]
+                <span class="fa fa-sort-desc"></span>
+              </button>
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="pubdate" data-direction="asc">
+                [% lh.loc_html('Publication date') %]
+                <span class="fa fa-sort-asc"></span>
+              </button>
+              [% END %]
+            </div>
+          </div>
+        </div>
       </div>
       <div>
         [% IF category_listing %]
-        <ol>
+        <ol id="sortable-listing">
           [% FOREACH cat IN list %]
-          <li>
+          <li data-alpha="[% cat.sorting_pos %]"
+              data-numtitles="[% cat.titles_count %]"
+              class="sortable-element">
             <h4 id="cat-[% cat.uri %]">[% cat.name %]</h4>
             <ul>
               [% FOREACH text IN cat.sorted_titles %]
@@ -84,14 +124,16 @@
           [% END %]
         </ol>
         [% ELSE %]
+        <div id="sortable-listing">
         [% SET topics_label = lh.loc_html('Topics') %]
         [% SET authors_label = lh.loc_html('Authors') %]
         [% FOREACH text IN list %]
-        <div id="text-[% text.uri %]" class="row">
+        <div id="text-[% text.uri %]"
+             class="row sortable-element"
+             style="padding-bottom: 10px"
+             data-pubdate="[% text.pubdate_int %]"
+             data-alpha="[% text.sorting_pos %]">
           <div class="col-xs-1">
-            <div class="text-right">
-              <small>[% text.numbering %].</small>
-            </div>
           </div>
           <div class="col-xs-5">
             <a href="[% text.in_tree_uri %].html">
@@ -120,7 +162,7 @@
             </div>
             [% END %]
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-5">
             [%- FOREACH format IN formats %]
             <a href="[% text.in_tree_uri %][% format.ext %]"
                style="color:black">
@@ -132,10 +174,13 @@
               </span><span class="sr-only">[% format.desc %]</span></a>
             [%- END %]
           </div>
+          <div class="col-xs-1">
+            <small>[% text.pubdate %]</small>
+          </div>
         </div>
-        <div class="clearfix">&nbsp;</div>
         [%- END %]
         [%- END %]
+        </div>
       </div>
     </div>
     <div class="clearfix">&nbsp;</div>
@@ -143,9 +188,27 @@
     <div class="clearfix">&nbsp;</div>
     <div class="clearfix">&nbsp;</div>
     <script type="text/javascript">
-      $(document).ready(function() {
-         $('[data-toggle="tooltip"]').tooltip();
-      });
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('.sorting-button').click(function () {
+            var direction = $(this).data('direction');
+            var field = $(this).data('sort');
+            console.log("Click on " + direction + ' ' + field);
+            var sorted = $('.sortable-element').sort(function(a,b) {
+                var fa = parseInt($(a).data(field));
+                var fb = parseInt($(b).data(field));
+                console.log(fa + ' ' + fb);
+                if (direction == 'asc') {
+                    return (fa < fb) ? -1 : (fa > fb) ? 1 : 0;
+                }
+                else {
+                    return (fb < fa) ? -1 : (fb > fa) ? 1 : 0;
+                }
+            }).each(function(i,item) {
+                $('#sortable-listing').append(item)
+            });
+        });
+    });
     </script>
   </body>
 </html>

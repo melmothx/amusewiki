@@ -13,6 +13,7 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paths;
 use Template;
 use Path::Tiny;
+use Date::Parse;
 
 # when we bump the version, we make sure to copy the files again.
 sub version {
@@ -98,6 +99,7 @@ sub generate {
         next unless $todo{$file}{list} && @{$todo{$file}{list}};
         $tt->process('static-indexes.tt',
                            {
+                            total_items => scalar(@{$todo{$file}{list}}),
                             site => $site,
                             formats => $formats,
                             lh => $localizer,
@@ -118,13 +120,12 @@ sub create_titles {
     my $time = time();
     log_debug { "Creating titles" };
     my @texts = $self->site->titles->published_texts->static_index_tokens->all;
-    my $count = 0;
     foreach my $title (@texts) {
         # same as Title::in_tree_uri
         my $relpath = $title->{f_archive_rel_path};
         $relpath =~ s![^a-z0-9]!/!g;
         $title->{in_tree_uri} = join('/', '.', $relpath, $title->{uri});
-        $title->{numbering} = ++$count;
+        $title->{pubdate_int} = str2time($title->{pubdate});
         my (@authors, @topics);
         if ($title->{title_categories}) {
             my @sorted = sort {
@@ -167,6 +168,7 @@ sub create_category_list {
             }
             if (@titles) {
                 $cat->{sorted_titles} = \@titles;
+                $cat->{titles_count} = scalar(@titles);
             }
         }
     }
