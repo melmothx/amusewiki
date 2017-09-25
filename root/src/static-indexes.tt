@@ -195,11 +195,10 @@
         $('.sorting-button').click(function () {
             var direction = $(this).data('direction');
             var field = $(this).data('sort');
-            console.log("Click on " + direction + ' ' + field);
+            // console.log("Click on " + direction + ' ' + field);
             var sorted = $('.sortable-element').sort(function(a,b) {
                 var fa = parseInt($(a).data(field));
                 var fb = parseInt($(b).data(field));
-                console.log(fa + ' ' + fb);
                 if (direction == 'asc') {
                     return (fa < fb) ? -1 : (fa > fb) ? 1 : 0;
                 }
