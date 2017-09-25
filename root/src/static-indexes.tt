@@ -64,12 +64,14 @@
       </div>
     </div>
     <div id="page" class="container-fluid">
-      <div class="page-header text-center">
+      <div class="page-header">
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-xs-12 text-center">
             <h1>[% lh.loc_html(title) %] <small>([% total_items %])</small></h1>
           </div>
-          <div class="col-xs-6">
+        </div>
+        <div class="row">
+          <div class="col-xs-offset-6 col-xs-6 text-right">
             [% lh.loc_html('Sorting:') %]
             <div class="btn-group btn-group-xs" role="group" aria-label="Sorting">
               <button type="button" class="btn btn-default sorting-button"
