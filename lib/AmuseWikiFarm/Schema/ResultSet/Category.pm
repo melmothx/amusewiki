@@ -133,6 +133,8 @@ sub static_index_tokens {
                                          'title_categories.title.status' => 'title.status',
                                          'title_categories.title.sorting_pos' => 'title.sorting_pos',
                                          'title_categories.title.title' => 'title.title',
+                                         'title_categories.title.author' => 'title.author',
+                                         'title_categories.title.f_archive_rel_path' => 'title.f_archive_rel_path',
                                         }
                          });
 }

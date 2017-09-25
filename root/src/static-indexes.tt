@@ -111,22 +111,39 @@
       </div>
       <div>
         [% IF category_listing %]
-        <ol id="sortable-listing">
+        <div id="sortable-listing">
           [% FOREACH cat IN list %]
-          <li data-alpha="[% cat.sorting_pos %]"
+          <div data-alpha="[% cat.sorting_pos %]"
               data-numtitles="[% cat.titles_count %]"
               class="sortable-element">
             <h4 id="cat-[% cat.uri %]">[% cat.name %]</h4>
-            <ul>
-              [% FOREACH text IN cat.sorted_titles %]
-              <li>
-                <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
-              </li>
-              [% END %]
+            <ul class="list-group">
+                  [% FOREACH text IN cat.sorted_titles %]
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
+                        [%- IF text.author %] — [% text.author %][% END %]
+                      </div>
+                      <div class="col-sm-4 text-right">
+                        [%- FOREACH format IN formats %]
+                        <a href="[% text.in_tree_uri %][% format.ext %]"
+                           style="color:black">
+                          <span class="fa fa-border [% format.icon %] fw"
+                                title="[% format.desc %]"
+                                aria-hidden="true"
+                                data-toggle="tooltip"
+                                data-placement="top">
+                          </span><span class="sr-only">[% format.desc %]</span></a>
+                        [%- END %]
+                      </div>
+                    </div>
+                  </li>
+                  [% END %]
             </ul>
-          </li>
+          </div>
           [% END %]
-        </ol>
+        </div>
         [% ELSE %]
         <div id="sortable-listing" class="list-group">
         [% SET topics_label = lh.loc_html('Topics') %]

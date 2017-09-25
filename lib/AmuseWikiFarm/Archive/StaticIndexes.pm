@@ -114,6 +114,14 @@ sub generate {
     }
 }
 
+sub _in_tree_uri {
+    my $title = shift;
+    # same as Title::in_tree_uri
+    my $relpath = $title->{f_archive_rel_path};
+    $relpath =~ s![^a-z0-9]!/!g;
+    $title->{in_tree_uri} = join('/', '.', $relpath, $title->{uri});
+}
+
 sub create_titles {
     my $self = shift;
     my $out;
@@ -121,10 +129,7 @@ sub create_titles {
     log_debug { "Creating titles" };
     my @texts = $self->site->titles->published_texts->static_index_tokens->all;
     foreach my $title (@texts) {
-        # same as Title::in_tree_uri
-        my $relpath = $title->{f_archive_rel_path};
-        $relpath =~ s![^a-z0-9]!/!g;
-        $title->{in_tree_uri} = join('/', '.', $relpath, $title->{uri});
+        _in_tree_uri($title);
         $title->{pubdate_int} = str2time($title->{pubdate});
         my (@authors, @topics);
         if ($title->{title_categories}) {
@@ -164,7 +169,9 @@ sub create_category_list {
                 $a->{title}->{sorting_pos} <=> $b->{title}->{sorting_pos}
             } @{delete $cat->{title_categories}};
             foreach my $title (@sorted) {
-                push @titles, $title->{title};
+                my $entry = $title->{title};
+                _in_tree_uri($entry);
+                push @titles, $entry;
             }
             if (@titles) {
                 $cat->{sorted_titles} = \@titles;
