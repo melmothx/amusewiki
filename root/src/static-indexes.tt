@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="[% lang %]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>[% lh.loc_html(title) %]</title>
+    [%- IF site.has_site_file('favicon.ico') %]
+    <link rel="shortcut icon" href="./site_files/favicon.ico" />
+    [%- END %]
+    [%- FOREACH css IN css_files %]
+    <link rel="stylesheet" href="[% css %]" />
+    [%- END %]
+    [%- FOREACH script IN javascript_files %]
+    <script type="text/javascript" src="[% script %]" ></script>
+    [%- END %]
+    [%- IF site.has_site_file('local.css') -%]
+    <link rel="stylesheet" type="text/css" href="./site_files/local.css" />
+    [%- END %]
+    [%- IF site.has_site_file('local.js') %]
+    <script type="text/javascript" src="./site_files/local.js"></script>
+    [%- END %]
+  </head>
+  <body>
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse"
+                  data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span>
+          [%- IF site.has_site_file('navlogo.png') -%]
+          <a class="amw-navlogo" href="./titles.html">
+            <img src="./site_files/navlogo.png"
+                 title="[% site.sitename | html %]"
+                 style="padding: 5px 5px; height: 50px;"
+                 class="amw-navlogo-img"
+                 alt="[% site.sitename | html %]" />
+          </a>
+          [% ELSE %]
+          <a class="navbar-brand" href="./titles.html"
+             title="[% site.sitename | html %]">
+            <small>[%  site.sitename | html %]</small>
+          </a>
+          [%- END -%]
+          </span>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li[% IF title == 'Titles' %] class="active" [% END %]>
+              <a href="./titles.html">[% lh.loc_html('Titles') %]</a>
+            </li>
+            <li[% IF title == 'Authors' %] class="active" [% END %]>
+              <a href="./authors.html">[% lh.loc_html('Authors') %]</a>
+            </li>
+            <li[% IF title == 'Topics' %] class="active" [% END %]>
+              <a href="./topics.html">[% lh.loc_html('Topics') %]</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="page" class="container-fluid">
+      <div class="page-header">
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <h1>[% lh.loc_html(title) %] <small>([% total_items %])</small></h1>
+          </div>
+        </div>
+      </div>
+      <div style="padding-bottom: 10px">
+        <div class="row">
+          <div class="col-xs-offset-6 col-xs-6 text-right">
+            [% lh.loc_html('Sorting:') %]
+            <div class="btn-group btn-group-xs" role="group" aria-label="Sorting">
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="alpha" data-direction="asc">
+                <span class="fa fa-sort-alpha-asc"></span>
+              </button>
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="alpha" data-direction="desc">
+                <span class="fa fa-sort-alpha-desc"></span>
+              </button>
+              [% IF category_listing %]
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="numtitles" data-direction="asc">
+                <span class="fa fa-sort-amount-asc"></span>
+              </button>
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="numtitles" data-direction="desc">
+                <span class="fa fa-sort-amount-desc"></span>
+              </button>
+              [% ELSE %]
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="pubdate" data-direction="desc">
+                [% lh.loc_html('Publication date') %]
+                <span class="fa fa-sort-desc"></span>
+              </button>
+              <button type="button" class="btn btn-default sorting-button"
+                      data-sort="pubdate" data-direction="asc">
+                [% lh.loc_html('Publication date') %]
+                <span class="fa fa-sort-asc"></span>
+              </button>
+              [% END %]
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        [% IF category_listing %]
+        <div id="sortable-listing">
+          [% FOREACH cat IN list %]
+          <div data-alpha="[% cat.sorting_pos %]"
+              data-numtitles="[% cat.titles_count %]"
+              class="sortable-element">
+            <h4 id="cat-[% cat.uri %]">[% cat.name %]</h4>
+            <ul class="list-group">
+                  [% FOREACH text IN cat.sorted_titles %]
+                  <li class="list-group-item">
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
+                        [%- IF text.author %] — [% text.author %][% END %]
+                      </div>
+                      <div class="col-sm-4 text-right">
+                        [%- FOREACH format IN formats %]
+                        <a href="[% text.in_tree_uri %][% format.ext %]"
+                           style="color:black">
+                          <span class="fa fa-border [% format.icon %] fw"
+                                title="[% format.desc %]"
+                                aria-hidden="true"
+                                data-toggle="tooltip"
+                                data-placement="top">
+                          </span><span class="sr-only">[% format.desc %]</span></a>
+                        [%- END %]
+                      </div>
+                    </div>
+                  </li>
+                  [% END %]
+            </ul>
+          </div>
+          [% END %]
+        </div>
+        [% ELSE %]
+        <div id="sortable-listing" class="list-group">
+        [% SET topics_label = lh.loc_html('Topics') %]
+        [% SET authors_label = lh.loc_html('Authors') %]
+        [% FOREACH text IN list %]
+        <div id="text-[% text.uri %]"
+             class="sortable-element list-group-item"
+             style="padding-bottom: 10px"
+             data-pubdate="[% text.pubdate_int %]"
+             data-alpha="[% text.sorting_pos %]">
+          <div class="row">
+          <div class="col-xs-6">
+            <a href="[% text.in_tree_uri %].html">
+              [% text.title %]
+            </a>
+            [%- IF text.author %] — [% text.author %] [% END %]
+            [% IF text.lang %]<small>[[% text.lang %]]</small>[% END %]
+            [% IF text.sorted_authors || text.sorted_topics %]
+            <div>
+              [%- IF text.sorted_authors %]
+              <div>
+                <strong>[% authors_label %]:</strong>
+                [%- FOREACH author IN text.sorted_authors %]
+                <a href="./authors.html#cat-[% author.uri %]">[% author.name %]</a>
+                [%- END -%]
+              </div>
+              [%- END %]
+              [%- IF text.sorted_topics %]
+              <div>
+                <strong>[% topics_label %]:</strong>
+                [%- FOREACH topic IN text.sorted_topics %]
+                <a href="./topics.html#cat-[% topic.uri %]">[% topic.name %]</a>
+                [%- END %]
+              </div>
+              [%- END %]
+            </div>
+            [% END %]
+          </div>
+          <div class="col-xs-5">
+            [%- FOREACH format IN formats %]
+            <a href="[% text.in_tree_uri %][% format.ext %]"
+               style="color:black">
+              <span class="fa fa-2x fa-border [% format.icon %] fw"
+                    title="[% format.desc %]"
+                    aria-hidden="true"
+                    data-toggle="tooltip"
+                    data-placement="top">
+              </span><span class="sr-only">[% format.desc %]</span></a>
+            [%- END %]
+          </div>
+          <div class="col-xs-1">
+            <small>[% text.pubdate %]</small>
+          </div>
+          </div>
+        </div>
+        [%- END %]
+        [%- END %]
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('.sorting-button').click(function () {
+            var direction = $(this).data('direction');
+            var field = $(this).data('sort');
+            // console.log("Click on " + direction + ' ' + field);
+            var sorted = $('.sortable-element').sort(function(a,b) {
+                var fa = parseInt($(a).data(field));
+                var fb = parseInt($(b).data(field));
+                if (direction == 'asc') {
+                    return (fa < fb) ? -1 : (fa > fb) ? 1 : 0;
+                }
+                else {
+                    return (fb < fa) ? -1 : (fb > fa) ? 1 : 0;
+                }
+            }).each(function(i,item) {
+                $('#sortable-listing').append(item)
+            });
+        });
+    });
+    </script>
+  </body>
+</html>

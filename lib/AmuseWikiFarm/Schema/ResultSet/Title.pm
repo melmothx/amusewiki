@@ -495,5 +495,33 @@ sub _check_integer {
     }
 }
 
+sub static_index_tokens {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    $self->search(undef,
+                  {
+                   result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                   collapse => 1,
+                   join => { title_categories => 'category' },
+                   order_by => ["$me.sorting_pos",  "$me.title", "$me.id" ],
+                   columns => [
+                               "$me.uri",
+                               "$me.title",
+                               "$me.f_archive_rel_path",
+                               "$me.author",
+                               "$me.lang",
+                               "$me.sorting_pos",
+                               "$me.pubdate",
+                              ],
+                   '+columns' => {
+                                  'title_categories.title_id' => 'title_categories.title_id',
+                                  'title_categories.category_id' => 'title_categories.category_id',
+                                  'title_categories.category.uri' => 'category.uri',
+                                  'title_categories.category.type' => 'category.type',
+                                  'title_categories.category.name' => 'category.name',
+                                  'title_categories.category.sorting_pos' => 'category.sorting_pos',
+                                 }
+                  });
+}
 
 1;

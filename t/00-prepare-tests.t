@@ -21,7 +21,7 @@ use AmuseWikiFarm::Schema;
 
 diag "Using DBIC $DBIx::Class::VERSION\n";
 
-plan tests => 14;
+plan tests => 20;
 
 system('script/amusewiki-populate-webfonts') == 0 or die;
 
@@ -153,6 +153,10 @@ foreach my $repo (sort keys %repos) {
             like $html, qr{\Q$mainfont\E};
         }
     }
+    ok -d $site->root_install_directory;
+    diag "INSTALL DIRECTORY is " . $site->root_install_directory;
+    ok -d $site->mkits_location;
+    ok -d $site->templates_location;
 }
 
 my $blog = $schema->resultset('Site')->find('0blog0');

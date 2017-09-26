@@ -866,6 +866,9 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::CgitSetup;
 use AmuseWikiFarm::Utils::LexiconMigration;
 use Regexp::Common qw/net/;
+use Path::Tiny ();
+use AmuseWikiFarm::Utils::Paths ();
+
 
 =head2 repo_root_rel
 
@@ -979,6 +982,82 @@ sub available_formats {
         $formats{$f} = $self->$f;
     }
     return %formats;
+}
+
+sub formats_definitions {
+    my $self = shift;
+    my $loc = $self->localizer;
+    my @all = (
+               {
+                code => 'pdf',
+                ext => '.pdf',
+                icon => 'fa-file-pdf-o',
+                desc => 'plain PDF',
+               },
+               {
+                code => 'a4_pdf',
+                ext => '.a4.pdf',
+                icon => 'fa-columns fa-flip-vertical',
+                desc => 'A4 imposed PDF',
+               },
+               {
+                code => 'lt_pdf',
+                ext => '.lt.pdf',
+                icon => 'fa-columns fa-flip-vertical',
+                desc => 'Letter imposed PDF',
+               },
+               # disabled, because don't check
+               # {
+               #  code => 'sl_pdf',
+               #  ext => '.sl.pdf',
+               #  icon => 'fa-file-powerpoint-o',
+               #  desc => 'Slides (PDF)',
+               # },
+               {
+                code => 'epub',
+                ext => '.epub',
+                icon => 'fa-tablet',
+                desc => 'EPUB (for mobile devices)',
+               },
+               {
+                code => 'html',
+                ext => '.html',
+                icon => 'fa-print',
+                desc => 'Standalone HTML (printer-friendly)',
+               },
+               {
+                code => 'tex',
+                ext => '.tex',
+                icon => 'fa-file-code-o',
+                desc => 'XeLaTeX source',
+               },
+               {
+                code => 'muse',
+                ext => '.muse',
+                always => 1,
+                icon => 'fa-file-text-o',
+                desc => 'plain text source',
+               },
+               {
+                code => 'zip',
+                ext => '.zip',
+                icon => 'fa-file-archive-o',
+                desc => 'Source files with attachments',
+               }
+              );
+    my %existing = $self->available_formats;
+    my @out = grep { $existing{$_->{code}} || $_->{always} } @all;
+    foreach my $custom ($self->custom_formats->active_only->all) {
+        push @out, {
+                    ext => $custom->extension,
+                    icon => ($custom->is_epub ? 'fa-tablet' : 'fa-file-pdf-o'),
+                    desc => $custom->format_name,
+                   };
+    }
+    foreach my $i (@out) {
+        $i->{desc} = $loc->loc_html($i->{desc});
+    }
+    return \@out;
 }
 
 sub available_text_exts {
@@ -2813,27 +2892,8 @@ GITIGNORE
 sub static_indexes_generator {
     my $self = shift;
     require AmuseWikiFarm::Archive::StaticIndexes;
-    my $texts = $self->titles->published_texts;
-    my $authors = $self->categories->by_type('author');
-    my $topics  = $self->categories->by_type('topic');
-    my $generator = AmuseWikiFarm::Archive::StaticIndexes
-      ->new(
-            texts => $texts,
-            authors => $authors,
-            topics => $topics,
-            repo_root => $self->repo_root,
-            lang => $self->locale,
-            formats => {
-                        muse => 1,
-                        pdf => $self->pdf,
-                        a4_pdf => $self->a4_pdf,
-                        lt_pdf => $self->lt_pdf,
-                        tex => $self->tex,
-                        epub => $self->epub,
-                        zip  => $self->zip,
-                       },
-           );
-    return $generator;
+    # pass a copy, so we avoid potential circular references
+    return AmuseWikiFarm::Archive::StaticIndexes->new(site => $self->get_from_storage);
 }
 
 sub canonical_url {
@@ -3354,6 +3414,36 @@ sub active_custom_formats {
     return \@all;
 }
 
+sub root_install_directory {
+    AmuseWikiFarm::Utils::Paths::root_install_directory();
+}
+
+sub mkits_location {
+    AmuseWikiFarm::Utils::Paths::mkits_location();
+}
+
+sub templates_location {
+    AmuseWikiFarm::Utils::Paths::templates_location();
+}
+
+sub localizer {
+    my $self = shift;
+    log_debug { "Loading localizer" };
+    # there is no caching here. This should be called only outside the
+    # web app if needed.
+    require AmuseWikiFarm::Archive::Lexicon;
+    return AmuseWikiFarm::Archive::Lexicon->new->localizer($self->locale,
+                                                           $self->id);
+}
+
+sub mailer {
+    my ($self, @args) = @_;
+    require AmuseWikiFarm::Utils::Mailer;
+    return AmuseWikiFarm::Utils::Mailer->new(mkit_location => $self->mkits_location->stringify, @args);
+    # please note that the catalyst config could have injected args.
+    # If we call this, those settings will be ignored, hence we permit
+    # argument passing)
+}
 
 __PACKAGE__->meta->make_immutable;
 

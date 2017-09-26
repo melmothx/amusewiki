@@ -12,11 +12,8 @@ if ($@) {
     $no_cycle = 1;
 }
 
-my $path = path(qw/lib AmuseWikiFarm I18N/);
-my $model = AmuseWikiFarm::Archive::Lexicon->new(
-                                                 system_wide_po_dir => "$path",
-                                                 repo_dir => "repo",
-                                                );
+my $model = AmuseWikiFarm::Archive::Lexicon->new;
+
 ok($model);
 for (1..2) {
     {

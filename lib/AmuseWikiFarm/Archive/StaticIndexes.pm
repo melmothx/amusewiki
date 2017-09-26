@@ -6,9 +6,19 @@ use utf8;
 
 use Moose;
 use namespace::autoclean;
+use Types::Standard qw/Object Str HashRef/;
 
 use File::Spec;
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Paths;
+use Template;
+use Path::Tiny;
+use Date::Parse;
+
+# when we bump the version, we make sure to copy the files again.
+sub version {
+    return 1;
+}
 
 =head1 NAME
 
@@ -34,296 +44,93 @@ The resultset object with the topics.
 
 =cut
 
-has texts => (
-              is => 'ro',
-              required => 0,
-              isa => 'Object',
-             );
-
-has authors => (
-                is => 'ro',
-                required => 0,
-                isa => 'Object',
-               );
-
-has topics => (
-                is => 'ro',
-                required => 0,
-                isa => 'Object',
-               );
-
-
-has repo_root => (
-                  is => 'ro',
-                  required => 1,
-                  isa => 'Str',
-                 );
-
-has tt => (
-           is => 'ro',
-           isa => 'Object',
-           default => sub {
-               require Template;
-               return Template->new;        
-           });
-
-
-has templates => (
-                  is => 'ro',
-                  isa => 'Object',
-                  default => sub {
-                      require Text::Amuse::Compile::Templates;
-                      return Text::Amuse::Compile::Templates->new;
-                  });
-has css => (is => 'ro',
-            lazy => 1,
-            isa => 'Str',
-            builder => '_build_css');
-
-sub _build_css {
-    my $self = shift;
-    my $out = '';
-    $self->tt->process($self->templates->css,
-                       { html => 1 },
-                       \$out) or die $self->tt->error;
-    return $out;
-}
-
-has lang => (
+has site => (
              is => 'ro',
-             isa => 'Str',
-             default => sub { 'en' },
+             required => 1,
+             isa => Object,
             );
-
-has formats => (
-                is => 'ro',
-                isa => 'HashRef[Str]',
-                default => sub {
-                    return { muse => 1 }
-                });
 
 sub authors_file {
     my $self = shift;
-    return File::Spec->catfile($self->repo_root, 'authors.html');
+    return File::Spec->catfile($self->site->repo_root, 'authors.html');
 }
 
 sub topics_file {
     my $self = shift;
-    return File::Spec->catfile($self->repo_root, 'topics.html');
+    return File::Spec->catfile($self->site->repo_root, 'topics.html');
 }
 
 sub titles_file {
     my $self = shift;
-    return File::Spec->catfile($self->repo_root, 'titles.html');
-}
-
-sub category_template {
-    my $template = <<'TEMPLATE';
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="[% lang %]" lang="[% lang %]">
-<head>
-  <meta http-equiv="Content-type" content="application/xhtml+xml; charset=UTF-8" />
-  <title>[% title %]</title>
-  <style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-[% css %]
-  /*]]>*/-->
-    </style>
-</head>
-<body>
- <div id="page">
-   <h3>[% title %]</h3>
-   <ol>
-[% FOREACH cat IN list %]
-<li>
-  <h4 id="cat-[% cat.uri %]">[% cat.name %]</h4>
-  <ul>
-    [% FOREACH text IN cat.sorted_titles %]
-    <li>
-      <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
-    </li>
-    [% END %]
-  </ul>
-</li>
-[% END %]
-</ol>
-
- </div>
-</body>
-</html>
-TEMPLATE
-    return \$template;
-}
-
-sub list_template {
-    my $template = <<'TEMPLATE';
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="[% lang %]" lang="[% lang %]">
-<head>
-  <meta http-equiv="Content-type" content="application/xhtml+xml; charset=UTF-8" />
-  <title>[% title %]</title>
-  <style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-[% css %]
-  /*]]>*/-->
-    </style>
-</head>
-<body>
- <div id="page">
-   <h3>[% title %]</h3>
-<ol>
-  [% FOREACH text IN list %]
-  <li>
-    <div id="text-[% text.uri %]">
-      <a href="[% text.in_tree_uri %].html">
-        [% text.title %]
-      </a>
-      [%- IF text.author %] — [% text.author %] [% END %]
-      [% IF text.lang %]      [[% text.lang %]] [% END %]
-    </div>
-    <div>
-      [% IF formats.pdf %]
-      <a href="[% text.in_tree_uri %].pdf">
-        [PDF]
-      </a>
-      [% END %]
-      [% IF formats.a4_pdf %]
-      <a href="[% text.in_tree_uri %].a4.pdf">
-        [A4 PDF]
-      </a>
-      [% END %]
-      [% IF formats.lt_pdf %]
-      <a href="[% text.in_tree_uri %].lt.pdf">
-        [Letter PDF]
-      </a>
-      [% END %]
-      [% IF formats.tex %]
-      <a href="[% text.in_tree_uri %].tex">
-        [TeX]
-      </a>
-      [% END %]
-      [% IF formats.epub %]
-      <a href="[% text.in_tree_uri %].epub">
-        [EPUB]
-      </a>
-      [% END %]
-      [% IF formats.muse %]
-      <a href="[% text.in_tree_uri %].muse">
-        [muse]
-      </a>
-      [% END %]
-      [% IF formats.zip %]
-      <a href="[% text.in_tree_uri %].zip">
-        [ZIP]
-      </a>
-      [% END %]
-
-    </div>
-    [%- IF text.sorted_authors %]
-    <ul style="list-style-type: none">
-      [% FOREACH author IN text.sorted_authors %]
-      <li style="display: inline">
-        <a href="./authors.html#cat-[% author.uri %]">[% author.name %]</a>
-      </li>
-    [%- END -%]
-    </ul>
-    [% END %]
-
-    [% IF text.sorted_topics %]
-    <ul style="list-style-type: none">
-      [% FOREACH topic IN text.sorted_topics %]
-      <li style="display: inline">
-        <a href="./topics.html#cat-[% topic.uri %]">[% topic.name %]</a>
-      </li>
-      [% END %]
-    </ul>
-    [% END %]
-  </li>
-  [% END %]
-</ol>
- </div>
-</body>
-</html>
-TEMPLATE
-    return \$template;
+    return File::Spec->catfile($self->site->repo_root, 'titles.html');
 }
 
 sub generate {
     my $self = shift;
-    my $css = $self->css;
+    $self->copy_static_files;
+    my $site = $self->site;
+    my $localizer = $site->localizer,
+    my $lang = $site->locale;
+    my $formats = $site->formats_definitions;
+    my $prefix = $self->target_subdir->relative($site->repo_root);
+    my @css_files = map { $prefix . '/' . $_ } $self->css_files;
+    my @javascript_files = map { $prefix . '/' .  $_ } $self->javascript_files;
     my %todo = (
                 $self->titles_file  => {
                                         list => $self->create_titles,
                                         title   => 'Titles',
-                                        lang    => $self->lang,
-                                        css     => $css,
-                                        template => $self->list_template,
-                                        formats => $self->formats,
                                        },
                 $self->topics_file  => {
-                                        list => $self->create_category_list($self->topics),
+                                        list => $self->create_category_list('topic'),
                                         title   => 'Topics',
-                                        lang    => $self->lang,
-                                        css     => $css,
-                                        template => $self->category_template,
-                                        formats => $self->formats,
+                                        category_listing => 1,
                                        },
                 $self->authors_file  => {
-                                        list => $self->create_category_list($self->authors),
+                                        list => $self->create_category_list('author'),
                                         title   => 'Authors',
-                                        lang    => $self->lang,
-                                        css     => $css,
-                                        template => $self->category_template,
-                                        formats => $self->formats,
+                                        category_listing => 1,
                                        },
                );
+    my $tt = Template->new(
+                           ENCODING => 'utf8',
+                           INCLUDE_PATH => AmuseWikiFarm::Utils::Paths::templates_location()->stringify,
+                          );
     foreach my $file (keys %todo) {
         next unless $todo{$file}{list} && @{$todo{$file}{list}};
-        $self->tt->process($todo{$file}{template},
-                           $todo{$file},
+        $tt->process('static-indexes.tt',
+                           {
+                            total_items => scalar(@{$todo{$file}{list}}),
+                            site => $site,
+                            formats => $formats,
+                            lh => $localizer,
+                            lang => $lang,
+                            css_files => \@css_files,
+                            javascript_files => \@javascript_files,
+                            %{$todo{$file}}
+                           },
                            $file,
                            { binmode => ':encoding(UTF-8)' })
-          or die $self-tt->error;
+          or die $tt->error;
     }
+}
+
+sub _in_tree_uri {
+    my $title = shift;
+    # same as Title::in_tree_uri
+    my $relpath = $title->{f_archive_rel_path};
+    $relpath =~ s![^a-z0-9]!/!g;
+    $title->{in_tree_uri} = join('/', '.', $relpath, $title->{uri});
 }
 
 sub create_titles {
     my $self = shift;
-    return unless $self->texts;
     my $out;
     my $time = time();
     log_debug { "Creating titles" };
-    my @texts = $self->texts->search(undef,
-                                      {
-                                       result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                                       collapse => 1,
-                                       join => { title_categories => 'category' },
-                                       order_by => [qw/me.sorting_pos me.title/],
-                                       columns => [qw/me.uri
-                                                      me.title
-                                                      me.f_archive_rel_path
-                                                      me.author
-                                                      me.lang
-                                                      me.sorting_pos
-                                                     /],
-                                       '+columns' => {
-                                                      'title_categories.title_id' => 'title_categories.title_id',
-                                                      'title_categories.category_id' => 'title_categories.category_id',
-                                                      'title_categories.category.uri' => 'category.uri',
-                                                      'title_categories.category.type' => 'category.type',
-                                                      'title_categories.category.name' => 'category.name',
-                                                      'title_categories.category.sorting_pos' => 'category.sorting_pos',
-                                                     }
-                                      })->all;
+    my @texts = $self->site->titles->published_texts->static_index_tokens->all;
     foreach my $title (@texts) {
-        # same as Title::in_tree_uri
-        my $relpath = $title->{f_archive_rel_path};
-        $relpath =~ s![^a-z0-9]!/!g;
-        $title->{in_tree_uri} = join('/', '.', $relpath, $title->{uri});
+        _in_tree_uri($title);
+        $title->{pubdate_int} = str2time($title->{pubdate});
         my (@authors, @topics);
         if ($title->{title_categories}) {
             my @sorted = sort {
@@ -351,10 +158,10 @@ sub create_titles {
 }
 
 sub create_category_list {
-    my ($self, $rs) = @_;
+    my ($self, $type) = @_;
     my $time = time();
     log_debug { "Creating category listing" };
-    my @cats = $rs->static_index_tokens->all;
+    my @cats = $self->site->categories->by_type($type)->static_index_tokens->all;
     foreach my $cat (@cats) {
         if ($cat->{title_categories}) {
             my @titles;
@@ -362,10 +169,13 @@ sub create_category_list {
                 $a->{title}->{sorting_pos} <=> $b->{title}->{sorting_pos}
             } @{delete $cat->{title_categories}};
             foreach my $title (@sorted) {
-                push @titles, $title->{title};
+                my $entry = $title->{title};
+                _in_tree_uri($entry);
+                push @titles, $entry;
             }
             if (@titles) {
                 $cat->{sorted_titles} = \@titles;
+                $cat->{titles_count} = scalar(@titles);
             }
         }
     }
@@ -373,6 +183,79 @@ sub create_category_list {
     return \@cats;
 }
 
+sub javascript_files {
+    my $self = shift;
+    my @out = (
+               path(js => 'jquery-1.11.1.min.js'),
+               path(js => 'bootstrap.min.js'),
+              );
+    return @out;
+}
+
+sub css_files {
+    my $self = shift;
+    my $bootstrap = $self->site->bootstrap_theme;
+    my @out = (path(css => "bootstrap.$bootstrap.css"),
+               path(css => "font-awesome.min.css"),
+               # path(css => "amusewiki.css")
+              );
+    return @out;
+}
+
+sub font_files {
+    my $self = shift;
+    my $src_dir = AmuseWikiFarm::Utils::Paths::static_file_location();
+    my @out;
+    foreach my $font ($src_dir->child('fonts')->children(qr{fontawesome}i)) {
+        log_debug { "Found font file " };
+        push @out, path(fonts => $font->basename);
+    }
+    return @out;
+}
+
+sub target_subdir {
+    my $self = shift;
+    return path($self->site->path_for_site_files, '__static_indexes');
+}
+
+sub copy_static_files {
+    my $self = shift;
+    my $target_dir = $self->target_subdir;
+    my $update_needed = 1;
+    if ($target_dir->child('.version')->exists and
+        $target_dir->child('.version')->slurp eq $self->version) {
+        log_debug { "No copy needed" };
+        $update_needed = 0;
+    }
+    my $src_dir = AmuseWikiFarm::Utils::Paths::static_file_location();
+    foreach my $dir (qw/css js fonts/) {
+        path($target_dir, $dir)->mkpath;
+    }
+    my $out = 0;
+    foreach my $file ($self->javascript_files,
+                      $self->css_files,
+                      $self->font_files) {
+        my $src = $src_dir->child($file);
+        my $target = $target_dir->child($file);
+        if ($src->exists) {
+            if ($target->exists and !$update_needed) {
+                log_debug { "$target already exists" };
+            }
+            else {
+                log_debug { "Copying $src to $target" };
+                $src->copy($target);
+                $out++;
+            }
+        }
+        else {
+            log_error { "$src doesn't exist!" };
+        }
+    }
+    if ($out) {
+        $target_dir->child('.version')->spew($self->version);
+    }
+    return $out;
+}
 
 __PACKAGE__->meta->make_immutable;
 

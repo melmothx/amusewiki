@@ -112,6 +112,7 @@ sub with_texts {
 
 sub static_index_tokens {
     my $self = shift;
+    my $me = $self->current_source_alias;
     return $self->search({
                           'title.status' => 'published',
                          },
@@ -119,10 +120,12 @@ sub static_index_tokens {
                           result_class => 'DBIx::Class::ResultClass::HashRefInflator',
                           collapse => 1,
                           join => { title_categories => 'title' },
-                          order_by => [qw/me.sorting_pos me.name/],
-                          columns => [qw/me.uri
-                                         me.name
-                                        /],
+                          order_by => ["$me.sorting_pos", "$me.name"],
+                          columns => [
+                                      "$me.uri",
+                                      "$me.name",
+                                      "$me.sorting_pos",
+                                     ],
                           '+columns' => {
                                          'title_categories.title_id' => 'title_categories.title_id',
                                          'title_categories.category_id' => 'title_categories.category_id',
@@ -130,6 +133,8 @@ sub static_index_tokens {
                                          'title_categories.title.status' => 'title.status',
                                          'title_categories.title.sorting_pos' => 'title.sorting_pos',
                                          'title_categories.title.title' => 'title.title',
+                                         'title_categories.title.author' => 'title.author',
+                                         'title_categories.title.f_archive_rel_path' => 'title.f_archive_rel_path',
                                         }
                          });
 }
