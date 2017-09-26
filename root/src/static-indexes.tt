@@ -116,7 +116,7 @@
           <div data-alpha="[% cat.sorting_pos %]"
               data-numtitles="[% cat.titles_count %]"
               class="sortable-element">
-            <h4 id="cat-[% cat.uri %]">[% cat.name %]</h4>
+            <h4 id="cat-[% cat.uri %]">[% lh.loc_html(cat.name) %]</h4>
             <ul class="list-group">
                   [% FOREACH text IN cat.sorted_titles %]
                   <li class="list-group-item">
@@ -175,7 +175,7 @@
               <div>
                 <strong>[% topics_label %]:</strong>
                 [%- FOREACH topic IN text.sorted_topics %]
-                <a href="./topics.html#cat-[% topic.uri %]">[% topic.name %]</a>
+                <a href="./topics.html#cat-[% topic.uri %]">[% lh.loc_html(topic.name) %]</a>
                 [%- END %]
               </div>
               [%- END %]
