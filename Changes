@@ -4,9 +4,16 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-2.026 UNRELEASED
+2.026 2017-09-26
 
  - Escape some invisible chars when doing the diff (#124)
+ - Bump dependency on Text::Amuse with syntax improvements
+   (lists obeying indexes and footnotes spanning more
+   paragraphs)
+ - I18N: added ru strings (thanks @labdsf)
+ - Improved site exporting
+ - Improved static generation (which now is localized and styled and
+   comes with some buttons for sorting.
 
 2.025 2017-08-20
 
