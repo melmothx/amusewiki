@@ -24,6 +24,7 @@ requires 'JSON::MaybeXS';
 requires 'Catalyst::Action::RenderView';
 requires 'Moose';
 requires 'namespace::autoclean';
+requires 'Test::WWW::Mechanize';
 requires 'Test::WWW::Mechanize::Catalyst';
 requires 'Term::Size::Any';
 requires 'Data::Dumper::Concise';

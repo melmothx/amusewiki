@@ -14,9 +14,10 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 58;
+use Test::More tests => 64;
 use DateTime;
 use Path::Tiny;
+use Test::WWW::Mechanize;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -98,3 +99,11 @@ $site->static_indexes_generator->generate;
 is $site->static_indexes_generator->copy_static_files, 0;
 $site->update({ theme => $oldtheme });
 
+my $mech = Test::WWW::Mechanize->new;
+foreach my $method (map { $_ . '_file' } @targets) {
+    my $file = $indexes->$method;
+    $mech->get_ok("file://" . $file);
+    my @links = $mech->followable_links;
+    diag Dumper([map { $_->url } @links]);
+    $mech->links_ok(\@links, "Check all links in $file");
+}
