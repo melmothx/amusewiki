@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 84;
+use Test::More tests => 118;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -14,6 +14,13 @@ use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+{
+    foreach my $title ($schema->resultset('Site')->find('0blog0')->titles) {
+        diag $title->_create_teaser(500);
+    }
+}
+
 my $site_id = '0autoteaser0';
 my $site = create_site($schema, $site_id);
 $site->update({ secure_site => 0,
@@ -29,8 +36,15 @@ my $attachment = catfile(qw/t files shot.png/);
 
 my $stub = <<'MUSE';
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+** Test
+
+            Centering
+
+[[../help/opds]] [[another-text]] [[/help/irc]]
+
+Russian (русский)	Здра́вствуйте! Czech (čeština) Dobrý <den>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 'do'
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut "enim" ad
 minim veniam, quis nostrud exercitation ullamco laboris nisi ut
 aliquip ex ea commodo consequat. Duis aute irure dolor in
 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
@@ -39,6 +53,15 @@ culpa qui officia deserunt mollit anim id est laborum.
 
 MUSE
 
+{
+    my ($rev) = $site->create_new_text({ title => 'another-text',
+                                         lang => 'en',
+                                         textbody => 'ciao',
+                                       }, 'text');
+    $rev->commit_version;
+    $rev->publish_text;
+}
+
 foreach my $teaser (0..1) {
     foreach my $cover (0..1) {
         foreach my $image (0..1) {
@@ -46,7 +69,8 @@ foreach my $teaser (0..1) {
                 my ($rev) = $site
                   ->create_new_text({ title => "test file cover $cover, image $image, overflow $overflow, teaser $teaser",
                                       lang => 'en',
-                                      textbody => '<h2>Test</h2>',
+                                      SORTauthors => "author $cover$teaser$image",
+                                      textbody => '<h2>Start</h2>',
                                     }, 'text');
                 my $got = $rev->add_attachment($attachment);
                 my $attcode = $got->{attachment};
@@ -64,7 +88,7 @@ foreach my $teaser (0..1) {
                 if ($overflow) {
                     $body = $body . ($stub x 50);
                 } else {
-                    $body .= $stub;
+                    $body .= $stub . "Note [1]\n\n[1] footnote\n";
                 }
                 $rev->edit($body);
                 $rev->commit_version;
@@ -101,4 +125,18 @@ while (my $job = $site->jobs->dequeue) {
 
 foreach my $title ($site->titles) {
     ok ($title->teaser, "Found teaser") and diag $title->teaser;
+    if ($title->uri =~ qr{overflow-1-teaser-0}) {
+        like $title->teaser, qr{<p class="amw-teaser-ellipsis">...</p>}, "Found the ellipsis";
+    }
+    else {
+        unlike $title->teaser, qr{<p class="amw-teaser-ellipsis">...</p>}, "Ellipsis not found";
+    }
+}
+
+foreach my $path ('/latest', '/latest/1', '/latest/2', '/category/author/', '/category/author/author-001') {
+    $mech->get_ok($path);
+    my @links = grep { $_->url !~ /\/(static|git|bookbuilder|action\/text)\// }
+      $mech->find_all_links;
+    $mech->links_ok(\@links);
+    ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 }
