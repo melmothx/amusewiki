@@ -1208,10 +1208,6 @@ t/site-options.t
 t/site_files.t
 t/sitemap.t
 t/sorting.t
-t/static-indexes-expected/authors.html
-t/static-indexes-expected/titles.html
-t/static-indexes-expected/topics.html
-t/static-indexes-optimize.t
 t/static-indexes.t
 t/status_file.t
 t/stemmer-crash.t
