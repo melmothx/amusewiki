@@ -500,6 +500,8 @@ use HTML::Entities qw/decode_entities/;
 use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
 use Path::Tiny qw//;
 use HTML::LinkExtor; # from HTML::Parser
+use HTML::TreeBuilder;
+use URI;
 
 =head2 listing
 
@@ -1249,6 +1251,85 @@ sub scan_and_store_links {
     }
 }
 
+sub autogenerate_teaser {
+    my ($self, $size, $logger) = @_;
+    return if $size < 1;
+    return if $self->teaser;
+    log_debug { "Autogenerating teaser in " . $self->uri };
+    $logger->("Generating teaser") if $logger;
+    $self->update({ teaser => $self->_create_teaser($size) });
+}
+
+sub _create_teaser {
+    my ($self, $size) = @_;
+    die "Missing size" unless defined $size;
+    my $file = Path::Tiny::path($self->filepath_for_ext('bare.html'));
+    my $base = $self->base_path;
+    if ($file->exists) {
+        my $tree = HTML::TreeBuilder->new_from_content($file->slurp_utf8);
+        $tree->elementify;
+        my $body = $tree->look_down(id => 'thework');
+        teaser_cleanup_body($body);
+        my $total = 0;
+        my $ellipsed = 0;
+        foreach my $child ($body->content_list) {
+            if (ref $child) {
+                if ($total > $size) {
+                    $child->delete;
+                    $ellipsed++;
+                }
+                else {
+                    $total += length($child->as_text);
+                }
+            }
+            else {
+                $total += length($child);
+            }
+        }
+        foreach my $links (@{ $body->extract_links }) {
+            my ($link, $element, $attr, $tag) = @$links;
+            $element->attr($attr => URI->new_abs($link, $base)->as_string) if $link ne '#';
+        }
+        if ($ellipsed) {
+            $body->push_content([ p => '...', { class => 'amw-teaser-ellipsis' } ]);
+        }
+        else {
+            # see amuse.js
+            $body->push_content([ div => '', { class => 'amw-teaser-no-ellipsis' } ]);
+        }
+        log_debug { "Ellipsed $ellipsed nodes" };
+        my $html = $body->as_HTML(q{<>&"'}, ' ', {});
+        $tree->delete; # shouldn't be needed, but hey
+        return $html;
+    }
+    else {
+        return '';
+    }
+}
+
+# recursive function to traverse all the tree
+sub teaser_cleanup_body {
+    my $elt = shift;
+    $elt->normalize_content;
+    # remove the ids.
+    $elt->attr(id => undef);
+    # remove internal linking
+    if (my $href = $elt->attr('href')) {
+        if ($href =~ m/\A#/) {
+            $elt->attr(href => '#');
+        }
+    }
+    # convert h to boldened divs
+    if ($elt->tag =~ m/\Ah[1-6]\z/) {
+        $elt->tag('div');
+        $elt->attr(style => 'font-weight:bold');
+    }
+    foreach my $child ($elt->content_list) {
+        if (ref $child) {
+            teaser_cleanup_body($child);
+        }
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 

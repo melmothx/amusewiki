@@ -17,6 +17,8 @@ $(document).ready(function(){
         clonedtoc.appendTo("#pop-up-toc");
         $("div.table-of-contents").addClass("well well-lg clearfix");
     }
+    // with this div we signal that the teaser contains the whole text
+    $("div.amw-teaser-no-ellipsis").closest('.amw-listing-item').find(".amw-read-more-link").remove();
 });
 
 $(document).ready(function() {
