@@ -518,6 +518,16 @@ kpsewhich mylogo.pdf
     </div>
 
     <div class="form-group">
+      <label for="automatic_teaser" class="col-sm-3 control-label">
+        [% loc('If set to a number greater than 0, automatically generate a teaser, with roughly this length') %]
+      </label>
+      <div class="col-sm-9">
+        <input type="text" name="automatic_teaser" id="automatic_teaser"
+               class="form-control digits"
+               value="[% esite.automatic_teaser | html %]" />
+      </div>
+    </div>
+    <div class="form-group">
       <label for="pagination_size" class="col-sm-3 control-label">
         [% loc('Number of results to show on paginated pages (an integer)') %]
       </label>

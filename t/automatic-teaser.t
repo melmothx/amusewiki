@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 81;
+use Test::More tests => 84;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -81,11 +81,12 @@ foreach my $teaser (0..1) {
         }
     }
 }
-
-$site->site_options->update_or_create({
-                                       option_name => 'automatic_teaser',
-                                       option_value => length($stub) * 2,
-                                      });
+$mech->get('/');
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+$mech->get_ok('/user/site');
+ok $mech->submit_form(with_fields => { automatic_teaser => length($stub) * 2 } ,
+                      button => 'edit_site');
 
 $site = $site->get_from_storage;
 

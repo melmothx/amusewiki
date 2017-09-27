@@ -1249,6 +1249,13 @@ sub scan_and_store_links {
     }
 }
 
+sub autogenerate_teaser {
+    my ($self, $characters, $logger) = @_;
+    return if $characters < 1;
+    return if $self->teaser;
+    log_debug { "Autogenerating teaser in " . $self->uri };
+    $self->update({ teaser => '<p>autoteaser</p>' });
+}
 
 __PACKAGE__->meta->make_immutable;
 

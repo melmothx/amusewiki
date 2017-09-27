@@ -1789,6 +1789,9 @@ sub index_file {
         }
     }
     $title->scan_and_store_links($logger) if $self->enable_backlinks;
+    if (my $teaser_length = $self->automatic_teaser) {
+        $title->autogenerate_teaser($teaser_length, $logger);
+    }
     $guard->commit;
     return $title;
 }
@@ -2639,6 +2642,7 @@ sub update_from_params {
                            pagination_size_monthly
                            pagination_size_latest
                            pagination_size_category
+                           automatic_teaser
                           /) {
         my $value = 0;
         if (my $set_to = delete $params->{$option}) {
@@ -3055,6 +3059,17 @@ sub pagination_size_monthly {
     my $self = shift;
     return $self->get_option('pagination_size_monthly') || $self->pagination_size;
 }
+
+sub automatic_teaser {
+    my $self = shift;
+    if (my $value = $self->get_option('automatic_teaser')) {
+        if ($value =~ m/\A([1-9][0-9]*)\z/) {
+            return $1;
+        }
+    }
+    return 0;
+}
+
 
 sub text_infobox_at_the_bottom {
     return shift->get_option('text_infobox_at_the_bottom') || '';
