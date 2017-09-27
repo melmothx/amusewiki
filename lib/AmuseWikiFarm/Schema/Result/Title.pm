@@ -1293,6 +1293,10 @@ sub _create_teaser {
         if ($ellipsed) {
             $body->push_content([ p => '...', { class => 'amw-teaser-ellipsis' } ]);
         }
+        else {
+            # see amuse.js
+            $body->push_content([ div => '', { class => 'amw-teaser-no-ellipsis' } ]);
+        }
         log_debug { "Ellipsed $ellipsed nodes" };
         my $html = $body->as_HTML(q{<>&"'}, ' ', {});
         $tree->delete; # shouldn't be needed, but hey
