@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 24;
+use Test::More tests => 81;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -39,35 +39,65 @@ culpa qui officia deserunt mollit anim id est laborum.
 
 MUSE
 
-foreach my $cover (0..1) {
-    foreach my $image (0..1) {
-        foreach my $overflow (0..1) {
-            my ($rev) = $site->create_new_text({ title => "test file cover $cover, image $image, overflow $overflow",
-                                                 lang => 'en',
-                                                 textbody => '<h2>Test</h2>',
-                                               }, 'text');
-            my $got = $rev->add_attachment($attachment);
-            my $attcode = $got->{attachment};
-            ok($attcode, "Got attachment $attcode") or die;
-            my $body = $rev->muse_body;
-            if ($cover) {
-                $body = "#cover $attcode\n" . $body;
+foreach my $teaser (0..1) {
+    foreach my $cover (0..1) {
+        foreach my $image (0..1) {
+            foreach my $overflow (0..1) {
+                my ($rev) = $site
+                  ->create_new_text({ title => "test file cover $cover, image $image, overflow $overflow, teaser $teaser",
+                                      lang => 'en',
+                                      textbody => '<h2>Test</h2>',
+                                    }, 'text');
+                my $got = $rev->add_attachment($attachment);
+                my $attcode = $got->{attachment};
+                ok($attcode, "Got attachment $attcode") or die;
+                my $body = $rev->muse_body;
+                if ($image) {
+                    $body .= "\n\n[[$attcode]]\n\n";
+                }
+                if ($cover) {
+                    $body = "#cover $attcode\n" . $body;
+                }
+                if ($teaser) {
+                    $body = "#teaser $teaser\n" . $body;
+                }
+                if ($overflow) {
+                    $body = $body . ($stub x 50);
+                } else {
+                    $body .= $stub;
+                }
+                $rev->edit($body);
+                $rev->commit_version;
+                $rev->publish_text;
+                my $title = $rev->title->discard_changes;
+                $mech->get_ok($title->full_uri);
+                if ($teaser) {
+                    ok $title->teaser, "Teaser exists";
+                }
+                else {
+                    ok !$title->teaser, "No teaser found";
+                }
             }
-            if ($overflow) {
-                $body = $body . ($stub x 50);
-            }
-            else {
-                $body .= $stub;
-            }
-            if ($image) {
-                $body .= "\n\n[[$attcode]]\n";
-            }
-            $rev->edit($body);
-            $rev->commit_version;
-            $rev->publish_text;
-            my $title = $rev->title->discard_changes;
-            $mech->get_ok($title->full_uri);
-            ok !$title->teaser, "No teaser found";
         }
     }
+}
+
+$site->site_options->update_or_create({
+                                       option_name => 'automatic_teaser',
+                                       option_value => length($stub) * 2,
+                                      });
+
+$site = $site->get_from_storage;
+
+is $site->automatic_teaser, length($stub) * 2;
+
+my $bulk = $site->rebuild_formats;
+while (my $job = $site->jobs->dequeue) {
+    is $job->task, 'rebuild';
+    $job->dispatch_job;
+    diag $job->logs;
+}
+
+foreach my $title ($site->titles) {
+    ok ($title->teaser, "Found teaser") and diag $title->teaser;
 }
