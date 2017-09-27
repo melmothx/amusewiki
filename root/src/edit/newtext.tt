@@ -213,6 +213,12 @@
     <div>
       [% loc('The text to show on the homepage preview') %]
     </div>
+    [% IF site.automatic_teaser %]
+    <div>
+      <span class="fa fa-warning"></span>
+      <strong>[% loc('Leave this empty to have it automatically generated') %]</strong>
+    </div>
+    [% END %]
     <div>&nbsp;</div>
     <div>
       <textarea id="teaser" name="teaser" cols="80"

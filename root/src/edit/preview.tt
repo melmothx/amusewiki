@@ -60,6 +60,11 @@
           <strong>[% loc('Teaser') %]:</strong>
           [% text.teaser %]
         </p>
+        [% ELSIF site.automatic_teaser %]
+        <p id="teaser-preview">
+          <strong>[% loc('Teaser') %]:</strong>
+          <em>[% loc('Automatically generated') %]</em>
+        </p>
         [% END %]
         [% IF text.cover %]
         <p id="text-preview-cover">
