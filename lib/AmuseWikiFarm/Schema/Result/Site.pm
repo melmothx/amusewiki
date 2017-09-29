@@ -1596,13 +1596,22 @@ sub compile_and_index_files {
     my $time = time();
     my $changed = $self->collation_index;
     $logger->("Updated $changed records in " . (time() - $time) . " seconds\n");
-    $time = time();
-    $self->static_indexes_generator->generate;
-    $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
+    $self->generate_static_indexes($logger);
     my $now = DateTime->now;
     $self->update({ last_updated => $now })
 }
 
+sub generate_static_indexes {
+    my ($self, $logger) = @_;
+    $logger ||= sub { return };
+    if ($self->jobs->pending->build_static_indexes_jobs->count) {
+        $logger->("Generation of static indexes already scheduled\n");
+    }
+    else {
+        $self->jobs->build_static_indexes_add;
+        $logger->("Scheduled static indexes generation\n");
+    }
+}
 
 sub index_file {
     my ($self, $file, $logger) = @_;

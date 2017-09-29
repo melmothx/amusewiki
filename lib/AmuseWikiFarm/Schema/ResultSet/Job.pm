@@ -48,6 +48,7 @@ sub handled_jobs_hashref {
             git => 7,
             rebuild => 20,
             reindex => 19,
+            build_static_indexes => 30,
             # testing
             testing => 10,
             testing_high => 5,
@@ -208,6 +209,17 @@ sub pending {
                                        "$me.created",
                                        "$me.id" ],
                          });
+}
+
+sub build_static_indexes_jobs {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.task" => 'build_static_indexes' });
+}
+
+sub build_static_indexes_add {
+    my ($self) = @_;
+    return $self->enqueue(build_static_indexes => {});
 }
 
 sub exclude_bulks {

@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 64;
+use Test::More tests => 72;
 use DateTime;
 use Path::Tiny;
 use Test::WWW::Mechanize;
@@ -106,4 +106,28 @@ foreach my $method (map { $_ . '_file' } @targets) {
     my @links = $mech->followable_links;
     diag Dumper([map { $_->url } @links]);
     $mech->links_ok(\@links, "Check all links in $file");
+}
+
+$site->jobs->delete;
+
+is $site->jobs->count, 0;
+
+foreach my $file (@files) {
+    unlink $file or die "Cannot remove $file $!";
+    ok (! -f $file, "$file removed");
+}
+
+for (1..4) {
+    $site->generate_static_indexes(sub { diag @_ });
+}
+
+is $site->jobs->count, 1;
+{
+    my $job = $site->jobs->dequeue;
+    $job->dispatch_job;
+    diag $job->logs;
+}
+
+foreach my $file (@files) {
+    ok (-f $file, "$file created");
 }
