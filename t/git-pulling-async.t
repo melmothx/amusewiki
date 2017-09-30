@@ -70,6 +70,10 @@ my @ids = ($gitjob->id);
 $gitjob->dispatch_job;
 
 while (my $job = $site->jobs->dequeue) {
+    if ($job->task eq 'build_static_indexes') {
+        $job->dispatch_job;
+        next;
+    }
     is $job->username, 'root';
     push @ids, $job->id;
     $job->dispatch_job;
