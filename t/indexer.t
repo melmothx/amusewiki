@@ -130,6 +130,7 @@ my $expected = {
                 notes => '',
                 f_class => 'text',
                 slides => 0,
+                teaser => '',
                };
 
 

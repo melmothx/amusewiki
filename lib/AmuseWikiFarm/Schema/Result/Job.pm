@@ -724,6 +724,15 @@ sub dispatch_job_bookbuilder {
     return;
 }
 
+sub dispatch_job_build_static_indexes {
+    my ($self, $logger) = @_;
+    my $time = time();
+    $self->site->static_indexes_generator->generate;
+    $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
+    return;
+}
+
+
 before delete => sub {
     my $self = shift;
     my @leftovers = $self->produced_files;

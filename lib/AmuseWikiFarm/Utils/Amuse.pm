@@ -157,6 +157,7 @@ sub muse_file_info {
     # title and topics are already handled
     foreach my $mandatory (qw/subtitle lang date notes 
                               author
+                              teaser
                               source uid attach/) {
         unless (exists $details->{$mandatory} and
                 defined $details->{$mandatory}) {

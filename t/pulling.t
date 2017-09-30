@@ -178,16 +178,20 @@ $working_copy->push(qw/origin master/);
 
 $site->repo_git_pull;
 
-is $site->jobs->count, 0;
+is $site->jobs->count, 1;
 my $bulk = $site->update_db_from_tree_async;
 is $bulk->task, 'reindex';
 ok $bulk->is_reindex;
-is $site->jobs->count, 3, "3 jobs found";
+is $site->jobs->count, 4, "4 jobs found";
 diag $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 $mech->get_ok('/');
 while (my $job = $site->jobs->dequeue) {
+    if ($job->task eq 'build_static_indexes') {
+        $job->dispatch_job;
+        next;
+    }
     my $uri = $job->dispatch_job->produced;
     $job->delete;
     ok $uri, "Got uri: $uri";
