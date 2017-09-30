@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 120;
+use Test::More tests => 124;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -150,3 +150,24 @@ foreach my $path ('/latest', '/latest/1', '/latest/2', '/category/author/', '/ca
     ok !$site->jobs->dequeue, "build_static_indexes was the last job";
 }
 
+$site->site_options->search({ option_name => 'automatic_teaser' })->update({ option_value => 0 });
+$site = $site->get_from_storage;
+
+
+{
+    my $rev = $site->titles->search({ teaser => { '!=' => '' } })->first->new_revision;
+    ok $rev->title->teaser;
+    $rev->edit("#title Bla\n\nBlablabla\n");
+    $rev->commit_version;
+    $rev->publish_text;
+    ok !$rev->title->discard_changes->teaser, "Now the text is without teaser";
+}
+
+
+{
+    my $job = $site->jobs->dequeue;
+    is $job->task, 'build_static_indexes';
+    $job->dispatch_job;
+    diag $job->logs;
+    ok !$site->jobs->dequeue, "build_static_indexes was the last job";
+}
