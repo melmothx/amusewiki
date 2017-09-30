@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.028 2017-09-30
+
+ - Fix sticky teaser field in the db on line removal (minor bugfix)
+ - Defer the generation of the static indexes to a low priority job (#134)
+ - At startup, check if the fontspec.json files are good (#133)
+
 2.027 2017-09-29
 
  - Added option to create automatic teasers (opt-in)
