@@ -35,6 +35,12 @@ my $count = -1;
 my $pidfile = '.amusewiki.jobber.lock';
 my $daily = 0;
 
+# at startup, ensure all the sites will have fresh indexes. This will
+# schedule the jobs
+foreach my $site ($schema->resultset('Site')->all) {
+    $site->generate_static_indexes;
+}
+
 while (1) {
     sleep AMW_POLLING;
 
