@@ -4,6 +4,9 @@ BEGIN { die "Do not run this as root" unless $>; }
 
 use strict;
 use warnings;
+use Path::Tiny;
+use Text::Amuse::Compile::Fonts;
+use Try::Tiny;
 
 =pod
 
@@ -18,11 +21,26 @@ amusewiki-populate-webfonts - amusewiki helper for EPUB font embedding
 
 Create the configuration file with font definitions.
 
-It just calls C<muse-create-font-file.pl fontspec.json>
-
-This script is meant to be used when creating an app directory.
+It calls C<muse-create-font-file.pl fontspec.json> if the spec file is
+missing and checks the existing one.
 
 =cut
+
+my @files = (path('fontspec.json'), map { path($_, qw/site_files fontspec.json/) } path('repo')->children);
+
+foreach my $file (@files) {
+    if ($file->exists) {
+        print "Checking $file\n";
+        try {
+            Text::Amuse::Compile::Fonts->new("$file")->all_fonts;
+        } catch {
+            my $err = $_;
+            my $move_to = $file . '~' . time() . '~';
+            print "$file looks bad: $err\nMoving it out of the way and renaming it to $move_to\n";
+            $file->move($move_to);
+        };
+    }
+}
 
 unless (-f 'fontspec.json') {
     system(qw/muse-create-font-file.pl fontspec.json/) == 0 or die $!;
