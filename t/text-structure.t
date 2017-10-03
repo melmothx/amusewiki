@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 4;
+use Test::More tests => 8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -196,7 +196,13 @@ foreach my $muse (@tests) {
         delete $el->{padding};
         delete $el->{toc};
         delete $el->{highlevel};
-        $el->{title} =~ s!<.*?>!!g if $el->{title};
+        $el->{title} ||= '';
+        $el->{title} =~ s!<.*?>!!g;
+    }
+    foreach my $el (@new) {
+        delete $el->{text_size};
+        delete $el->{toc_index};
     }
     is_deeply(\@new, \@old);
+    diag Dumper($title->_parse_text_structure);
 }

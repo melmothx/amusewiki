@@ -51,19 +51,20 @@
       [% FOREACH piece IN text_html_structure %]
       <tr>
         <td>
-          <div style="padding-left: [% piece.padding %]em; margin: 5px;"
+          <div style="padding-left: [% piece.level * 2 %]em; margin: 5px;"
                id="text-piece-[% piece.index %]">
-            [% IF piece.highlevel %]<strong>[% END %]
-            [% IF piece.title == 'start body' %]
-            [% loc('Text body, before any section') %]
-            [% ELSIF piece.index == 'pre' %]
+            [% IF piece.level < 3  %]<strong>[% END %]
+            [% IF piece.index == 'pre' %]
             [% loc('Title, author, date...') %]
             [% ELSIF piece.index == 'post' %]
             [% loc('Source, notes...') %]
+            [% ELSIF piece.toc_index %]
+            <a style="color: black"
+               href="[% c.uri_for(text.full_uri _ '#toc' _ piece.toc_index) %]">[% piece.title %]</a>
             [% ELSE %]
             [% piece.title %]
             [% END %]
-            [% IF piece.highlevel %]</strong>[% END %]
+            [% IF piece.level < 3 %]</strong>[% END %]
           </div>
         </td>
         <td class="amw-bbselect-cell">

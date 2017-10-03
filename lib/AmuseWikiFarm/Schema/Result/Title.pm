@@ -1017,7 +1017,7 @@ sub muse_object {
 sub text_html_structure {
     my ($self, $force) = @_;
     if ($force or !$self->text_structure) {
-        my $struct = $self->_retrieve_text_structure;
+        my $struct = $self->_parse_text_structure;
         Dlog_debug { "Retriving text structure: $_" } $struct;
         $self->text_structure(to_json($struct));
         $self->update;
@@ -1032,6 +1032,8 @@ sub _parse_text_structure {
                 index => 'pre',
                 level => 0,
                 title => '',
+                text_size => 0, # irrelevant
+                toc_index => 0,
                });
 
     # Text::Amuse doens't care at all what it returns from
@@ -1040,22 +1042,32 @@ sub _parse_text_structure {
     # push @out, $chunks[$i] if $partials->{$i};
     # } so what we do here is the right thing.
 
+    my $toc_index = 0;
     my $index = 0;
     foreach my $piece ($muse->as_splat_html) {
-        my %data = (index => $index++, level => 0);
         my $tree = HTML::TreeBuilder->new_from_content($piece);
-        my ($first) = $tree->look_down(_tag => 'body')->content_list;
 
+        my %data = (index => $index++,
+                    level => 0,
+                    text_size => length($tree->as_text),
+                   );
+
+        # find the level and the title
+        my ($first) = $tree->look_down(_tag => 'body')->content_list;
         if ($first->tag =~ m/h([1-6])/) {
             $data{level} = $1 - 1;
             $data{title} = encode_entities($first->as_text, q{<>&"'});
+            $data{toc_index} = ++$toc_index;
         }
         else {
             # this is a lonely initial element, so it's a special case
             die "This shouldn't happen! No headers should happen only at the beginning"
               unless $data{index} == 0;
             $data{title} = $self->title;
+            $data{toc_index} = 0;
         }
+
+        # cleanup and push
         $tree->delete;
         push @out, \%data;
     }
@@ -1064,13 +1076,18 @@ sub _parse_text_structure {
                     index => 'post',
                     level => 0,
                     title => '',
+                    text_size => 0, # irrelevant
+                    toc_index => 0,
                    };
     }
     return \@out;
 }
 
+
 sub _retrieve_text_structure {
     my $self = shift;
+    # report the error if by chance we call this.
+    log_error { "Calling _retrieve_text_structure is DEPRECATED" };
     my $muse = $self->muse_object;
     my @toc = $muse->raw_html_toc;
     my $index = 0;
