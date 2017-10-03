@@ -14,6 +14,6 @@
        [% END %]
        data-toggle="tooltip" data-placement="top"></i>
     <span>&nbsp;</span>
-    [% loc('pages: [_1]', text.pages_estimated) %]
+    [% loc('[_1] pp.', text.pages_estimated) %]
   </span>
 </span>
