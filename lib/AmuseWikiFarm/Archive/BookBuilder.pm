@@ -198,14 +198,23 @@ sub pages_estimated_for_text {
     if (my $site = $self->site) {
         # here we don't care if it's deferred or not
         if (my $title = $site->titles->bookbuildable_by_uri($filename->name)) {
-            my $text_pages = $title->pages_estimated;
+            my $text_pages;
             if (my $pieces = scalar($filename->fragments)) {
-                my $total = scalar(@{$title->text_html_structure}) || 1;
-                my $est = int(($text_pages / $total) * $pieces) || 1;
-                log_debug { "Partial estimate: ($text_pages / $total) * $pieces = $est" };
-                $text_pages = $est;
+                my $size = 0;
+                foreach my $piece ($filename->fragments) {
+                    if (my $part = $title->text_parts->find({ part_index => $piece })) {
+                        $size += $part->part_size;
+                    }
+                    else {
+                        log_error { "Couldn't find $piece in text parts" };
+                    }
+                }
+                $text_pages = int($size / 2000);
             }
-            return $text_pages || 0;
+            else {
+                $text_pages = $title->pages_estimated;
+            }
+            return $text_pages || 1;
         }
     }
     return 0;

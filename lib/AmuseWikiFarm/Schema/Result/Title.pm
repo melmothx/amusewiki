@@ -801,22 +801,7 @@ them.
 
 sub pages_estimated {
     my $self = shift;
-    my $path = $self->filepath_for_ext('muse');
-    my %factors = (
-                   mk => 2,
-                   ru => 2,
-                  );
-    if (-f $path) {
-        my $size = -s $path;
-        if (my $factor = $factors{$self->lang}) {
-            $size = $size / $factor;
-        }
-        my $pages = sprintf('%d', $size / 2000);
-        return $pages || 1;
-    }
-    else {
-        return;
-    }
+    return int($self->text_size / 2000) || 1;
 }
 
 
