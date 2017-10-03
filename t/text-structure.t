@@ -203,7 +203,7 @@ foreach my $muse (@tests) {
         }
     }
     foreach my $el (@new) {
-        delete $el->{text_size};
+        delete $el->{part_size};
         delete $el->{toc_index};
     }
     is_deeply(\@new, \@old);

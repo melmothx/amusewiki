@@ -1045,15 +1045,26 @@ sub muse_object {
     return Text::Amuse->new(file => $self->f_full_path_name);
 }
 
+# never delete this, is called from an upgrade class.
 sub text_html_structure {
     my ($self, $force) = @_;
-    if ($force or !$self->text_structure) {
-        my $struct = $self->_parse_text_structure;
-        Dlog_debug { "Retriving text structure: $_" } $struct;
-        $self->text_structure(to_json($struct));
-        $self->update;
+    if ($force or !$self->text_parts->count) {
+        my $parts = $self->_parse_text_structure;
+        Dlog_debug { "Retriving text structure: $_" } $parts;
+        my $order = 0;
+        eval {
+            $self->text_parts->delete;
+            foreach my $part (@$parts) {
+                $part->{part_order} = $order++;
+                $self->text_parts->create($part);
+            }
+        };
+        if ($@) {
+            Dlog_error { "$@ Failed to set text parts to $_" } $parts;
+        }
     }
-    return from_json($self->text_structure);
+    my @out = $self->text_parts->ordered->hri;
+    return \@out;
 }
 
 sub _parse_text_structure {
@@ -1063,7 +1074,7 @@ sub _parse_text_structure {
                 part_index => 'pre',
                 part_level => 0,
                 part_title => '',
-                text_size => 0, # irrelevant
+                part_size => 0, # irrelevant
                 toc_index => 0,
                });
 
@@ -1079,7 +1090,7 @@ sub _parse_text_structure {
         my $tree = HTML::TreeBuilder->new_from_content($piece);
 
         my %data = (part_index => $index++,
-                    text_size => length($tree->as_text),
+                    part_size => length($tree->as_text),
                    );
 
         # find the part_level and the part_title
@@ -1107,7 +1118,7 @@ sub _parse_text_structure {
                     part_index => 'post',
                     part_level => 0,
                     part_title => '',
-                    text_size => 0, # irrelevant
+                    part_size => 0, # irrelevant
                     toc_index => 0,
                    };
     }
