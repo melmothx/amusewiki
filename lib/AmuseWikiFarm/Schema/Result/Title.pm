@@ -496,7 +496,7 @@ use DateTime;
 use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
-use HTML::Entities qw/decode_entities/;
+use HTML::Entities qw/decode_entities encode_entities/;
 use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
 use Path::Tiny qw//;
 use HTML::LinkExtor; # from HTML::Parser
@@ -1023,6 +1023,50 @@ sub text_html_structure {
         $self->update;
     }
     return from_json($self->text_structure);
+}
+
+sub _parse_text_structure {
+    my ($self) = @_;
+    my $muse = $self->muse_object;
+    my @out = ({
+                index => 'pre',
+                level => 0,
+                title => '',
+               });
+
+    # Text::Amuse doens't care at all what it returns from
+    # raw_html_toc. It just scans the pieces returned by as_splat_html
+    # like this: for (my $i = 0; $i < @chunks; $i++) {
+    # push @out, $chunks[$i] if $partials->{$i};
+    # } so what we do here is the right thing.
+
+    my $index = 0;
+    foreach my $piece ($muse->as_splat_html) {
+        my %data = (index => $index++, level => 0);
+        my $tree = HTML::TreeBuilder->new_from_content($piece);
+        my ($first) = $tree->look_down(_tag => 'body')->content_list;
+
+        if ($first->tag =~ m/h([1-6])/) {
+            $data{level} = $1 - 1;
+            $data{title} = encode_entities($first->as_text, q{<>&"'});
+        }
+        else {
+            # this is a lonely initial element, so it's a special case
+            die "This shouldn't happen! No headers should happen only at the beginning"
+              unless $data{index} == 0;
+            $data{title} = $self->title;
+        }
+        $tree->delete;
+        push @out, \%data;
+    }
+    if ($self->notes || $self->source) {
+        push @out, {
+                    index => 'post',
+                    level => 0,
+                    title => '',
+                   };
+    }
+    return \@out;
 }
 
 sub _retrieve_text_structure {

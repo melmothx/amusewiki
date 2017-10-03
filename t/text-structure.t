@@ -114,21 +114,39 @@ Part again
 
 *** Section of second part
 
+bdoy
+
 ** Chapter of second part
+
+body
 
 **** Subsection of chap 1 of part 2.
 
 * Part 3
 
+body
+
 **** Subsection of part 3
+
+body
 
 ** Chapter 1 of part 3
 
+body
+
 **** Subsection of part 3, chap 1
+
+body
 
 ** Chapter 2 of part 3
 
+body
+
+body
+
 ** Chapter 3 of part 3
+
+body
 
 MUSE
 
@@ -170,4 +188,15 @@ foreach my $muse (@tests) {
     my $title = $rev->title->discard_changes;
     $mech->get_ok($title->full_uri);
     diag Dumper($title->_retrieve_text_structure);
+    $title->_parse_text_structure;
+    my @old = @{$title->_retrieve_text_structure};
+    my @new = @{$title->_parse_text_structure};
+    # changes wrt old version
+    foreach my $el (@old) {
+        delete $el->{padding};
+        delete $el->{toc};
+        delete $el->{highlevel};
+        $el->{title} =~ s!<.*?>!!g if $el->{title};
+    }
+    is_deeply(\@new, \@old);
 }
