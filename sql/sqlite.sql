@@ -297,6 +297,8 @@ CREATE TABLE title (
 
         sorting_pos INTEGER NOT NULL DEFAULT 0,
         sku VARCHAR(64) NOT NULL DEFAULT '',
+        text_qualification VARCHAR(255),
+        text_size INTEGER NOT NULL DEFAULT 0,
         site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -310,6 +312,18 @@ CREATE TABLE text_internal_link (
         f_class VARCHAR(255) NOT NULL,
         uri VARCHAR(255) NOT NULL,
         full_link TEXT NOT NULL
+);
+
+CREATE TABLE text_part (
+        title_id INTEGER NOT NULL REFERENCES title(id)
+                     ON DELETE CASCADE ON UPDATE CASCADE,
+        part_index VARCHAR(16) NOT NULL,
+        part_level INTEGER NOT NULL,
+        part_title TEXT NOT NULL,
+        part_size INTEGER NOT NULL,
+        toc_index INTEGER NOT NULL,
+        part_order INTEGER NOT NULL,
+        PRIMARY KEY("title_id", "part_index")
 );
 
 
@@ -475,4 +489,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('custom_formats', 'Custom output formats'),
          ('muse_header', 'Raw title headers'),
          ('text_internal_link', 'Internal links found in the body'),
+         ('text_part', 'Text sectioning'),
          ('title_stat', 'Usage statistics');

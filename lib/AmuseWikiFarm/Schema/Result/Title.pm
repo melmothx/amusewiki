@@ -213,6 +213,18 @@ __PACKAGE__->table("title");
   is_nullable: 0
   size: 64
 
+=head2 text_qualification
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 text_size
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -286,6 +298,10 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "sku",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 64 },
+  "text_qualification",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "text_size",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -397,6 +413,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 text_parts
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TextPart>
+
+=cut
+
+__PACKAGE__->has_many(
+  "text_parts",
+  "AmuseWikiFarm::Schema::Result::TextPart",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 title_categories
 
 Type: has_many
@@ -448,8 +479,8 @@ Composing rels: L</text_months> -> monthly_archive
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-05 11:44:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZjKr5/w4EwWqYnnx6V9Iow
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-03 14:25:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:d2O1GrzhtZ5iYgDDiezDrw
 
 =head2 translations
 
