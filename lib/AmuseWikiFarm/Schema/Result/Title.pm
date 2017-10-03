@@ -1027,17 +1027,22 @@ before delete => sub {
 
 sub muse_object {
     my $self = shift;
-    return Text::Amuse->new(file => $self->f_full_path_name);
+    if (my $file = $self->f_full_path_name) {
+        if ( -f $file ) {
+            return Text::Amuse->new(file => $file);
+        }
+    }
+    return;
 }
 
 # never delete this, is called from an upgrade class.
 sub text_html_structure {
     my ($self, $force) = @_;
     if ($force or !$self->text_parts->count) {
-        my $parts = $self->_parse_text_structure;
-        Dlog_debug { "Retriving text structure: $_" } $parts;
-        my $order = 0;
         eval {
+            my $parts = $self->_parse_text_structure;
+            Dlog_debug { "Retriving text structure: $_" } $parts;
+            my $order = 0;
             $self->text_parts->delete;
             my $total_size = 0;
             my $book = 0;
@@ -1057,7 +1062,7 @@ sub text_html_structure {
                           });
         };
         if ($@) {
-            Dlog_error { "$@ Failed to set text parts to $_" } $parts;
+            log_error { "$@ Failed to set text parts for " . $self->id };
         }
     }
     my @out = $self->text_parts->ordered->hri;
@@ -1067,6 +1072,10 @@ sub text_html_structure {
 sub _parse_text_structure {
     my ($self) = @_;
     my $muse = $self->muse_object;
+    unless ($muse) {
+        log_error { "Can't find file for text id " . $self->id };
+        return [];
+    }
     my @out = ({
                 part_index => 'pre',
                 part_level => 0,
