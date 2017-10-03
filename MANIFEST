@@ -7,6 +7,7 @@ dbicdh/_common/upgrade/23-24/002-populate-monthly-archives.pl
 dbicdh/_common/upgrade/31-32/002-clear-thumbnails.pl
 dbicdh/_common/upgrade/32-33/002-null-bb-job-owners.pl
 dbicdh/_common/upgrade/36-37/002-rebuild-files-since-april-2017.pl
+dbicdh/_common/upgrade/37-38/002-populate-text-structure.pl
 dbicdh/_common/upgrade/5-6/002-add-and-move-job-files.pl
 dbicdh/_source/deploy/10/001-auto-__VERSION.yml
 dbicdh/_source/deploy/10/001-auto.yml
@@ -68,6 +69,8 @@ dbicdh/_source/deploy/36/001-auto-__VERSION.yml
 dbicdh/_source/deploy/36/001-auto.yml
 dbicdh/_source/deploy/37/001-auto-__VERSION.yml
 dbicdh/_source/deploy/37/001-auto.yml
+dbicdh/_source/deploy/38/001-auto-__VERSION.yml
+dbicdh/_source/deploy/38/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
 dbicdh/_source/deploy/4/001-auto.yml
 dbicdh/_source/deploy/5/001-auto-__VERSION.yml
@@ -140,6 +143,8 @@ dbicdh/MySQL/deploy/36/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/36/001-auto.sql
 dbicdh/MySQL/deploy/37/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/37/001-auto.sql
+dbicdh/MySQL/deploy/38/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/38/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/4/001-auto.sql
 dbicdh/MySQL/deploy/5/001-auto-__VERSION.sql
@@ -181,6 +186,7 @@ dbicdh/MySQL/upgrade/33-34/001-auto.sql
 dbicdh/MySQL/upgrade/34-35/001-auto.sql
 dbicdh/MySQL/upgrade/35-36/001-auto.sql
 dbicdh/MySQL/upgrade/36-37/001-auto.sql
+dbicdh/MySQL/upgrade/37-38/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
@@ -247,6 +253,8 @@ dbicdh/PostgreSQL/deploy/36/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/36/001-auto.sql
 dbicdh/PostgreSQL/deploy/37/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/37/001-auto.sql
+dbicdh/PostgreSQL/deploy/38/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/38/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/4/001-auto.sql
 dbicdh/PostgreSQL/deploy/5/001-auto-__VERSION.sql
@@ -288,6 +296,7 @@ dbicdh/PostgreSQL/upgrade/33-34/001-auto.sql
 dbicdh/PostgreSQL/upgrade/34-35/001-auto.sql
 dbicdh/PostgreSQL/upgrade/35-36/001-auto.sql
 dbicdh/PostgreSQL/upgrade/36-37/001-auto.sql
+dbicdh/PostgreSQL/upgrade/37-38/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
@@ -354,6 +363,8 @@ dbicdh/SQLite/deploy/36/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/36/001-auto.sql
 dbicdh/SQLite/deploy/37/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/37/001-auto.sql
+dbicdh/SQLite/deploy/38/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/38/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/4/001-auto.sql
 dbicdh/SQLite/deploy/5/001-auto-__VERSION.sql
@@ -395,6 +406,7 @@ dbicdh/SQLite/upgrade/33-34/001-auto.sql
 dbicdh/SQLite/upgrade/34-35/001-auto.sql
 dbicdh/SQLite/upgrade/35-36/001-auto.sql
 dbicdh/SQLite/upgrade/36-37/001-auto.sql
+dbicdh/SQLite/upgrade/37-38/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
@@ -492,6 +504,7 @@ lib/AmuseWikiFarm/Schema/Result/SiteOption.pm
 lib/AmuseWikiFarm/Schema/Result/TableComment.pm
 lib/AmuseWikiFarm/Schema/Result/TextInternalLink.pm
 lib/AmuseWikiFarm/Schema/Result/TextMonth.pm
+lib/AmuseWikiFarm/Schema/Result/TextPart.pm
 lib/AmuseWikiFarm/Schema/Result/Title.pm
 lib/AmuseWikiFarm/Schema/Result/TitleCategory.pm
 lib/AmuseWikiFarm/Schema/Result/TitleStat.pm
@@ -510,6 +523,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Redirection.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Revision.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Site.pm
 lib/AmuseWikiFarm/Schema/ResultSet/TextInternalLink.pm
+lib/AmuseWikiFarm/Schema/ResultSet/TextPart.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
 lib/AmuseWikiFarm/Schema/ResultSet/TitleStat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
@@ -592,6 +606,7 @@ root/src/include/markitup.tt
 root/src/include/pagination-widget.tt
 root/src/include/pagination.tt
 root/src/include/posts.tt
+root/src/include/show_type_and_number_of_pages.tt
 root/src/include/validate.tt
 root/src/latest/index.tt
 root/src/layout.tt
