@@ -1085,13 +1085,17 @@ sub _parse_text_structure {
     my $index = 0;
     foreach my $piece ($muse->as_splat_html) {
         my $tree = HTML::TreeBuilder->new_from_content($piece);
-
+        $tree->elementify;
         my %data = (part_index => $index++,
                     part_size => length($tree->as_text),
                    );
 
         # find the part_level and the part_title
-        my ($first) = $tree->look_down(_tag => 'body')->content_list;
+        my ($first) = grep { ref($_) } $tree->look_down(_tag => 'body')->content_list;
+        unless ($first) {
+            log_error { "Can't find an element in $piece html" };
+            return [];
+        }
         if ($first->tag =~ m/h([1-6])/) {
             $data{part_level} = $1 - 1;
             $data{part_title} = encode_entities($first->as_text, q{<>&"'});
