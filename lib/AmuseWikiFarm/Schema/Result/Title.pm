@@ -1054,10 +1054,22 @@ sub text_html_structure {
         my $order = 0;
         eval {
             $self->text_parts->delete;
+            my $total_size = 0;
+            my $book = 0;
             foreach my $part (@$parts) {
                 $part->{part_order} = $order++;
                 $self->text_parts->create($part);
+                $total_size += $part->{part_size};
+                if ($part->{part_level} > 0 and
+                    $part->{part_level} < 3) {
+                    $book++;
+                }
             }
+            $self->update({
+                           text_size => $total_size,
+                           text_qualification => ($book ? 'book' : 'article'),
+                           text_structure => '', # obsolete.
+                          });
         };
         if ($@) {
             Dlog_error { "$@ Failed to set text parts to $_" } $parts;
