@@ -1,6 +1,7 @@
 <div class="amw-post-listing-container">
 [% IF texts.count %]
 <div class="amw-post-inner-listing">
+[% SET show_type_and_number_of_pages = site.show_type_and_number_of_pages %]
 <div class="list-group">
   [% WHILE (text = texts.next) %]
   <div class="amw-listing-item">
@@ -46,6 +47,9 @@
         <a href="[% c.uri_for(text.full_uri) %]">
           [% loc('Read the whole text...') %]
         </a>
+        [% IF show_type_and_number_of_pages %]
+        [% INCLUDE 'include/show_type_and_number_of_pages.tt' %]
+        [% END %]
       </span>
     </div>
     [% END %]
@@ -62,6 +66,9 @@
     [% END %]
     <span class="pull-right clearfix amw-list-text-pubdate-locale">
       [% text.pubdate_locale(current_locale_code) %]
+      [% IF show_type_and_number_of_pages %]
+      [% INCLUDE 'include/show_type_and_number_of_pages.tt' %]
+      [% END %]
     </span>
   </a>
   [% END %]

@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 28;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -19,6 +19,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $testnotoc =<<'MUSE';
 #lang en
+#teaser blah
 #title helloooo <&!"'title>
 
 Hello
@@ -215,4 +216,19 @@ foreach my $muse (@tests) {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new({ site => $site->discard_changes });
     my $est = $bb->pages_estimated_for_text($title->uri . ':pre,0,1,2,3,4,5,6,7,8,9,10,post');
     ok $est, "Found estimated pages $est";
+    diag Dumper($title->text_html_structure);
 }
+
+$mech->get_ok('/latest');
+$mech->content_lacks('amw-show-text-type-and-number-of-pages');
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, '200';
+$mech->get_ok("/user/site");
+$mech->form_id("site-edit-form");
+$mech->tick(show_type_and_number_of_pages => 'on');
+$mech->click("edit_site");
+$mech->content_lacks(q{id="error_message"}) or die $mech->content;
+
+$mech->get_ok('/latest');
+$mech->content_contains('amw-show-text-type-and-number-of-pages');

@@ -319,6 +319,14 @@ kpsewhich mylogo.pdf
             [% loc('Enable "What links here" feature') %]
           </label>
         </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
+                   [% IF esite.show_type_and_number_of_pages %]checked="checked"[% END %]
+                   name="show_type_and_number_of_pages" />
+            [% loc('Show text type and number of pages in the listing') %]
+          </label>
+        </div>
     </div>
 
     <div class="form-group">
