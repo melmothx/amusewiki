@@ -95,7 +95,6 @@ function update_bulk_status() {
     });
 }
 $(document).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip();
     update_bulk_status();
 });
 </script>
