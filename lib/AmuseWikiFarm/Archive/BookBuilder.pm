@@ -204,15 +204,17 @@ sub pages_estimated_for_text {
                 foreach my $piece ($filename->fragments) {
                     if (my $part = $title->text_parts->find({ part_index => $piece })) {
                         $size += $part->part_size;
+                        log_debug { "Piece $piece has " . $part->part_size . " size" };
                     }
                     else {
-                        log_error { "Couldn't find $piece in text parts" };
+                        log_error { "Couldn't find $piece in text parts for " . $site->id . ' ' . $title->full_uri };
                     }
                 }
                 $text_pages = int($size / 2000);
             }
             else {
                 $text_pages = $title->pages_estimated;
+                log_debug { "No piece scanning " . $title->text_size . " size" };
             }
             return $text_pages || 1;
         }

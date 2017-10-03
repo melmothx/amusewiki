@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 20;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -12,6 +12,7 @@ use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
+use AmuseWikiFarm::Archive::BookBuilder;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -187,7 +188,7 @@ foreach my $muse (@tests) {
     $rev->publish_text;
     my $title = $rev->title->discard_changes;
     $mech->get_ok($title->full_uri);
-    diag Dumper($title->_retrieve_text_structure);
+    # diag Dumper($title->_retrieve_text_structure);
     $title->_parse_text_structure;
     my @old = @{$title->_retrieve_text_structure};
     my @new = @{$title->_parse_text_structure};
@@ -208,4 +209,10 @@ foreach my $muse (@tests) {
     }
     is_deeply(\@new, \@old);
     diag Dumper($title->_parse_text_structure);
+    ok $title->text_size;
+    ok $title->pages_estimated;
+    diag join(" ", $title->uri, $title->text_size, pages => $title->pages_estimated);
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new({ site => $site->discard_changes });
+    my $est = $bb->pages_estimated_for_text($title->uri . ':pre,0,1,2,3,4,5,6,7,8,9,10,post');
+    ok $est, "Found estimated pages $est";
 }
