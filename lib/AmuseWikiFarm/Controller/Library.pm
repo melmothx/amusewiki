@@ -90,7 +90,7 @@ sub bbselect :Chained('match') PathPart('bbselect') :Args(0) {
         my %selected = map { $_ => 1 } split(/-/, $select);
         Dlog_debug { "selecting $_" } \%selected;
         foreach my $piece (@$struct) {
-            if ($selected{$piece->{index}}) {
+            if ($selected{$piece->{part_index}}) {
                 $piece->{selected} = 1;
             }
         }

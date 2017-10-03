@@ -198,6 +198,9 @@ foreach my $muse (@tests) {
         delete $el->{highlevel};
         $el->{title} ||= '';
         $el->{title} =~ s!<.*?>!!g;
+        foreach my $name (qw/title index level/) {
+            $el->{"part_$name"} = delete $el->{$name};
+        }
     }
     foreach my $el (@new) {
         delete $el->{text_size};

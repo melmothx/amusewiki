@@ -1029,9 +1029,9 @@ sub _parse_text_structure {
     my ($self) = @_;
     my $muse = $self->muse_object;
     my @out = ({
-                index => 'pre',
-                level => 0,
-                title => '',
+                part_index => 'pre',
+                part_level => 0,
+                part_title => '',
                 text_size => 0, # irrelevant
                 toc_index => 0,
                });
@@ -1047,23 +1047,23 @@ sub _parse_text_structure {
     foreach my $piece ($muse->as_splat_html) {
         my $tree = HTML::TreeBuilder->new_from_content($piece);
 
-        my %data = (index => $index++,
-                    level => 0,
+        my %data = (part_index => $index++,
                     text_size => length($tree->as_text),
                    );
 
-        # find the level and the title
+        # find the part_level and the part_title
         my ($first) = $tree->look_down(_tag => 'body')->content_list;
         if ($first->tag =~ m/h([1-6])/) {
-            $data{level} = $1 - 1;
-            $data{title} = encode_entities($first->as_text, q{<>&"'});
+            $data{part_level} = $1 - 1;
+            $data{part_title} = encode_entities($first->as_text, q{<>&"'});
             $data{toc_index} = ++$toc_index;
         }
         else {
             # this is a lonely initial element, so it's a special case
             die "This shouldn't happen! No headers should happen only at the beginning"
-              unless $data{index} == 0;
-            $data{title} = $self->title;
+              unless $data{part_index} == 0;
+            $data{part_level} = 0,
+            $data{part_title} = $self->title;
             $data{toc_index} = 0;
         }
 
@@ -1073,9 +1073,9 @@ sub _parse_text_structure {
     }
     if ($self->notes || $self->source) {
         push @out, {
-                    index => 'post',
-                    level => 0,
-                    title => '',
+                    part_index => 'post',
+                    part_level => 0,
+                    part_title => '',
                     text_size => 0, # irrelevant
                     toc_index => 0,
                    };
