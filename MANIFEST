@@ -1285,6 +1285,7 @@ t/update-or-create.t
 t/uri-clash-119.t
 t/useless-sessions.t
 t/user-admin.t
+t/user-language.t
 t/users.t
 t/utils-bookbuilder.t
 t/utils-cgitsetup.t
