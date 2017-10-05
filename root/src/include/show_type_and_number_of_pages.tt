@@ -4,16 +4,6 @@
 [%- END -%]
 <span class="amw-show-text-type-and-number-of-pages">
   <span class="label label-default">
-    <i aria-hidden="true"
-       [% IF text.text_qualification == 'book' %]
-       class="fa fa-book"
-       title="[% loc('This text is a book') %]"
-       [% ELSE %]
-       class="fa fa-file-text-o"
-       title="[% loc('This text is an article') %]"
-       [% END %]
-       data-toggle="tooltip" data-placement="top"></i>
-    <span>&nbsp;</span>
     [% loc('[_1] pp.', text.pages_estimated) %]
   </span>
 </span>

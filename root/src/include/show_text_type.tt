@@ -1,0 +1,16 @@
+[%- # -*- mode:html -*- -%]
+[%- UNLESS text.text_qualification -%]
+[%- SET this_can_be_ignored = text.text_html_structure -%]
+[%- END -%]
+<span class="amw-show-text-type">
+  <i aria-hidden="true"
+     [% IF text.text_qualification == 'book' %]
+     class="fa fa-book"
+     title="[% loc('This text is a book') %]"
+     [% ELSE %]
+     class="fa fa-file-text-o"
+     title="[% loc('This text is an article') %]"
+     [% END %]
+     data-container="body"
+     data-toggle="tooltip" data-placement="top"></i>
+</span>
