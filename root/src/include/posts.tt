@@ -89,21 +89,3 @@
 [% END %]
 </div>
 
-[% IF show_type_and_number_of_pages %]
-<script type="text/javascript">
-$(document).ready(function() {
-    $('*[data-poload]').each(function() {
-        var e = $(this);
-        $.get(e.data('poload'), function(d) {
-            e.data("content", d);
-            e.popover({
-                html: 1,
-                trigger: 'hover',
-                container: 'body',
-                placement: 'bottom',
-            });
-        });
-    });
-});
-</script>
-[% END %]
