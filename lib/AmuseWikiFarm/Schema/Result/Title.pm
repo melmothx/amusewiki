@@ -902,6 +902,11 @@ sub full_rebuild_uri {
     return $self->full_uri . '/rebuild';
 }
 
+sub full_toc_uri {
+    my $self = shift;
+    return $self->full_uri . '/toc';
+}
+
 sub cover_file {
     my $self = shift;
     if (my $uri = $self->valid_cover) {

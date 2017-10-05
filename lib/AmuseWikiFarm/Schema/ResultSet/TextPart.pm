@@ -18,7 +18,14 @@ sub hri {
 
 sub ordered {
     my $self = shift;
-    return $self->search(undef, { order_by => [qw/part_order/] });
+    my $me = $self->current_source_alias;
+    return $self->search(undef, { order_by => ["$me.part_order"] });
+}
+
+sub toc_entries {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.toc_index" => { '>' => 0 } });
 }
 
 1;

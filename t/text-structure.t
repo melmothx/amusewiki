@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 28;
+use Test::More tests => 32;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -189,6 +189,7 @@ foreach my $muse (@tests) {
     $rev->publish_text;
     my $title = $rev->title->discard_changes;
     $mech->get_ok($title->full_uri);
+    $mech->get_ok($title->full_toc_uri);
     # diag Dumper($title->_retrieve_text_structure);
     $title->_parse_text_structure;
     my @old = @{$title->_retrieve_text_structure};
@@ -232,3 +233,4 @@ $mech->content_lacks(q{id="error_message"}) or die $mech->content;
 
 $mech->get_ok('/latest');
 $mech->content_contains('amw-show-text-type-and-number-of-pages');
+
