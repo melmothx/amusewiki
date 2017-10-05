@@ -7,9 +7,11 @@
       data-title="[% loc('Table of Contents') %]">
   <i aria-hidden="true"
      [% IF text.text_qualification == 'book' %]
-     class="fa fa-book"
+     class="awm-show-text-type-icon fa fa-book"
+     title="[% loc('This text is a book') %]"
      [% ELSE %]
-     class="fa fa-file-text-o"
+     title="[% loc('This text is an article') %]"
+     class="awm-show-text-type-icon fa fa-file-text-o"
      [% END %]>
   </i>
 </span>
