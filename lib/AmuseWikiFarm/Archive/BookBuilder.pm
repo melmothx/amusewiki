@@ -198,6 +198,7 @@ sub pages_estimated_for_text {
     if (my $site = $self->site) {
         # here we don't care if it's deferred or not
         if (my $title = $site->titles->bookbuildable_by_uri($filename->name)) {
+            $title->text_html_structure unless $title->text_size; # lazy loading, now it's needed
             my $text_pages;
             if (my $pieces = scalar($filename->fragments)) {
                 my $size = 0;
@@ -210,7 +211,7 @@ sub pages_estimated_for_text {
                         log_error { "Couldn't find $piece in text parts for " . $site->id . ' ' . $title->full_uri };
                     }
                 }
-                $text_pages = int($size / 2000);
+                $text_pages = $title->pages_estimated($size);
             }
             else {
                 $text_pages = $title->pages_estimated;

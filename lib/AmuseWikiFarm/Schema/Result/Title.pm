@@ -533,6 +533,7 @@ use Path::Tiny qw//;
 use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
 use URI;
+use constant { PAPER_PAGE_SIZE => 2000 };
 
 =head2 listing
 
@@ -800,8 +801,11 @@ them.
 =cut
 
 sub pages_estimated {
-    my $self = shift;
-    return int($self->text_size / 2000) || 1;
+    my ($self, $length) = @_;
+    unless (defined $length) {
+        $length = $self->text_size;
+    }
+    return int(($length / PAPER_PAGE_SIZE) + 1);
 }
 
 
@@ -1085,7 +1089,7 @@ sub _parse_text_structure {
                 part_index => 'pre',
                 part_level => 0,
                 part_title => '',
-                part_size => 0, # irrelevant
+                part_size => PAPER_PAGE_SIZE, # The first part is always a page.
                 toc_index => 0,
                });
 
@@ -1101,7 +1105,10 @@ sub _parse_text_structure {
         my $tree = HTML::TreeBuilder->new_from_content($piece);
         $tree->elementify;
         my %data = (part_index => $index++,
-                    part_size => length($tree->as_text),
+                    # add half a page for each section, to compensate
+                    # for headers. This is an estimate, nothing
+                    # critical here.
+                    part_size => length($tree->as_text) + (PAPER_PAGE_SIZE / 2),
                    );
 
         # find the part_level and the part_title
