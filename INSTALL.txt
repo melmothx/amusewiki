@@ -24,7 +24,7 @@ complete it for the operations which require root privileges (notably
 the webserver configuration).
 
 You can speed up the process installing the available modules and
-texlive from the OS repositories, which is the suggested approch
+texlive from the OS repositories, which is the suggested approach
 because this way the security fixes are delegated to the standard
 tools.
 
