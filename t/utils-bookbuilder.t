@@ -338,6 +338,8 @@ $bb = AmuseWikiFarm::Archive::BookBuilder->new({
 is ($bb->site_id, '0blog0', "Object ok");
 is ($bb->site->id, '0blog0', "site built");
 
+$bb->site->update({ bb_page_limit => 15 });
+
 my @check_added;
 foreach my $text ($bb->site->titles->published_texts) {
     ok ($bb->add_text($text->uri), "Added " . $text->uri);
@@ -375,7 +377,7 @@ ok (!$bb->epub);
 # readd
 $bb->delete_text(3);
 
-$bb->site->update({ bb_page_limit => 10 });
+$bb->site->update({ bb_page_limit => 30 });
 
 foreach my $text(qw/first-test do-this-by-yourself/) {
     ok ($bb->add_text($text), "Added $text again") or diag $bb->error;
@@ -387,7 +389,7 @@ $bb->cover(1);
 check_file($bb, "imposed one");
 cleanup($bb->job_id);
 
-$bb->site->update({ bb_page_limit => 5 });
+$bb->site->update({ bb_page_limit => 10 });
 
 {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new({

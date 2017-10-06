@@ -23,6 +23,9 @@ my $mech2 = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my $mech3 = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                 host => 'test.amusewiki.org');
 
+$site->update({ bb_page_limit => 10 });
+$schema->resultset('Site')->find('0test0')->update({ bb_page_limit => 10 });
+
 for my $mech ($mech1, $mech2, $mech3) {
     # we need to hit the root, otherwise session is not picked up. Mah!
     $mech->get_ok('/');

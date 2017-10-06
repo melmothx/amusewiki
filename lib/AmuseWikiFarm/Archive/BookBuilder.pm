@@ -215,7 +215,7 @@ sub pages_estimated_for_text {
             }
             else {
                 $text_pages = $title->pages_estimated;
-                log_debug { "No piece scanning " . $title->text_size . " size" };
+                log_debug { "No partial, scanning " . $title->text_size . " size" };
             }
             return $text_pages || 1;
         }
@@ -874,6 +874,7 @@ sub add_text {
                     $to_add = $filename->name_with_fragments;
                 }
                 else {
+                    log_error { "Quota exceeded, too many pages: $limit < $total " };
                     # loc("Quota exceeded, too many pages")
                     $self->error('Quota exceeded, too many pages');
                 }
