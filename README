@@ -17,7 +17,7 @@ files behind.
 
 ** Users
 
-Permission are globals and if the same user can login on different
+Permissions are global and if the same user can login on different
 sites, it will have the same role. If you trust the user on one site,
 but not on another, then create another user with a different
 username.
@@ -66,7 +66,7 @@ public part, including reading and download.
 
 ** Modes
 
-Each site can run in one of these three modes, which differs on the
+Each site can run in one of these three modes, which differ on the
 privileges granted to the humans.
 
 *** private
