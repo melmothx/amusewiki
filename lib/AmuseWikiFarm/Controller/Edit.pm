@@ -484,9 +484,6 @@ Path: /action/edit/<my-text>/<rev-id>/preview
 sub preview :Chained('get_revision') :PathPart('preview') :Args(0) {
     my ($self, $c) = @_;
     log_debug { "Rendering preview" };
-    if ($c->request->query_params->{bare}) {
-        $c->stash->{no_wrapper} = 1;
-    }
 }
 
 sub preview_attachment :Chained('get_revision') :PathPart('') Args(1) {

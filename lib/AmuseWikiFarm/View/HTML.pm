@@ -35,6 +35,9 @@ before process => sub {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     return unless $site;
+    if ($c->request->query_params->{bare}) {
+        $c->stash(no_wrapper => 1);
+    }
     unless ($c->stash->{no_wrapper}) {
         log_debug { "Doing the layout fixes" };
 

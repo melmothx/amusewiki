@@ -57,9 +57,6 @@ sub index :Chained('base') :PathPart('') :Args {
               nav => 'latest',
               page_title => $c->loc('Latest entries'),
               texts => $results);
-    if ($c->request->query_params->{bare}) {
-        $c->stash(no_wrapper => 1);
-    }
 }
 
 

@@ -24,9 +24,6 @@ Catalyst Controller.
 sub base :Chained('/site_robot_index') :PathPart('monthly') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
-    if ($c->request->query_params->{bare}) {
-        $c->stash(no_wrapper => 1);
-    }
     my $archives = $site->monthly_archives
       ->search(undef,
                {

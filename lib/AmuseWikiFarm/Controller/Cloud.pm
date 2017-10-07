@@ -34,9 +34,6 @@ sub base :Chained('/site_robot_index') :PathPart('cloud') :CaptureArgs(0) {
             }
         }
     }
-    if ($c->request->query_params->{bare}) {
-        $c->stash->{no_wrapper} = 1;
-    }
     my $limit = 0;
     if (my $query_limit = $c->request->query_params->{limit}) {
         if ($query_limit =~ m/\A([1-9][0-9]*)\z/) {
