@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.029 2017-10-07
+
+ - Offer a ToC preview on listing (opt-in) (#130)
+ - Register UI language per user and set it at login (#137)
+ - Accurate (as much as possible) page count in bookbuilder and listing
+
+This upgrade carries a two step DB upgrade (automatically managed)
+
 2.028 2017-09-30
 
  - Fix sticky teaser field in the db on line removal (minor bugfix)
