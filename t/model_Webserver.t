@@ -59,3 +59,4 @@ $mech->content_contains("jquery.validate.min.js") or diag $mech->content;
     ok $ws->ckeditor_use_cdn;
     ok $ws->highlight_use_cdn;
 }
+$schema->resultset('User')->update({ preferred_language => undef });

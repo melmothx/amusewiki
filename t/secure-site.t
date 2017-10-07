@@ -107,3 +107,4 @@ sub session {
     my ($session) = $mech->response->header('Set-Cookie') =~ m/session=(.*?);/;
     return $session;
 }
+$schema->resultset('User')->update({ preferred_language => undef });

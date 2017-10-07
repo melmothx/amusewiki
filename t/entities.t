@@ -111,3 +111,5 @@ Neusklađene fusnote: pronađeno <a> fusnota (<&>) i pronađeno <"> fusnota
 u tekstu (<'>), zanemarivši izmjene. 
 TXT
 is $mech->content, $expected, "Localization methods appears ok";
+
+$schema->resultset('User')->update({ preferred_language => undef });

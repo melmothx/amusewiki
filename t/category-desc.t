@@ -249,3 +249,4 @@ ok !$site->categories->find({ uri => 'pippo', type => 'author' })
 ok $site->categories->find({ uri => 'pippo', type => 'author' }),
   "Category is still there";
 
+$schema->resultset('User')->update({ preferred_language => undef });

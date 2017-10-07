@@ -24,6 +24,8 @@ my $site = create_site($schema, $site_id);
 $site->multilanguage('en it hr');
 $site->update->discard_changes;
 
+$schema->resultset('User')->update({ preferred_language => undef });
+
 my $root = $site->repo_root;
 my $filedir = catdir($root, qw/a at/);
 my $specialdir = catdir($root, 'specials');
@@ -154,7 +156,7 @@ $site->update->discard_changes;
 
 $mech->get_ok('/login');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
-$mech->get_ok('/action/text/new');
+$mech->get_ok('/action/text/new?__language=it');
 ok($mech->form_with_fields(qw/uid title textbody/));
 foreach my $cat (@{$site->list_fixed_categories}) {
     $mech->content_contains("fixed_cat_" . $cat);
@@ -244,3 +246,4 @@ foreach my $lang (qw/alksd als jp lad/) {
 }
 $mech->get_ok("/?__language=sr");
 $mech->content_lacks("Napravi zbirku") or diag $mech->content;
+$schema->resultset('User')->update({ preferred_language => undef });
