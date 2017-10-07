@@ -51,25 +51,26 @@
       [% FOREACH piece IN text_html_structure %]
       <tr>
         <td>
-          <div style="padding-left: [% piece.padding %]em; margin: 5px;"
-               id="text-piece-[% piece.index %]">
-            [% IF piece.highlevel %]<strong>[% END %]
-            [% IF piece.title == 'start body' %]
-            [% loc('Text body, before any section') %]
-            [% ELSIF piece.index == 'pre' %]
+          <div style="padding-left: [% piece.part_level * 2 %]em; margin: 5px;"
+               id="text-piece-[% piece.part_index %]">
+            [% IF piece.part_level < 3  %]<strong>[% END %]
+            [% IF piece.part_index == 'pre' %]
             [% loc('Title, author, date...') %]
-            [% ELSIF piece.index == 'post' %]
+            [% ELSIF piece.part_index == 'post' %]
             [% loc('Source, notes...') %]
+            [% ELSIF piece.toc_index %]
+            <a style="color: black"
+               href="[% c.uri_for(text.full_uri _ '#toc' _ piece.toc_index) %]">[% piece.part_title %]</a>
             [% ELSE %]
-            [% piece.title %]
+            [% piece.part_title %]
             [% END %]
-            [% IF piece.highlevel %]</strong>[% END %]
+            [% IF piece.part_level < 3 %]</strong>[% END %]
           </div>
         </td>
         <td class="amw-bbselect-cell">
-          <input type="checkbox" name="select" data-bb-level="[% piece.level %]"
+          <input type="checkbox" name="select" data-bb-level="[% piece.part_level %]"
                  [% IF piece.selected %]checked="checked"[% END %]
-                 value="[% piece.index %]" />
+                 value="[% piece.part_index %]" />
         </td>
       </tr>
       [% END %]

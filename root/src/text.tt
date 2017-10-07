@@ -502,10 +502,6 @@
 
 [% END %]
 
-<script type="text/javascript">
-$(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });
-</script>
-
 [% IF text.f_class == 'text' %]
 <script type="text/javascript">
     $(document).ready(function() {
@@ -528,7 +524,24 @@ $(document).ready(function() { $('[data-toggle="tooltip"]').tooltip() });
   $(document).ready(function() {
       $("#text-optional-footer").append("<br /><hr /><br />");
       $("div#preamble-container").remove().appendTo("#text-optional-footer");
-      $('[data-toggle="tooltip"]').tooltip();
   });
 </script>
 [% END %]
+
+<script src="[% c.uri_for('/static/js/amw-footnotes.js', { v => 1 }) %]"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".footnotebody").click(function() {
+        var source = $(this).attr('id');
+        var target = source.replace(/fn/, '#fn_back');
+        $(target).effect("highlight", {}, 10000);
+    });
+    $(".footnote").click(function() {
+        var source = $(this).attr('id');
+        var target = source.replace(/fn_back/, '#fn');
+        $(target).effect("highlight", {}, 10000);
+    });
+
+});
+</script>
+

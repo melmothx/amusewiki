@@ -2688,6 +2688,7 @@ sub update_from_params {
                            edit_option_show_cheatsheet
                            edit_option_show_filters
                            edit_option_preview_box_height
+                           show_type_and_number_of_pages
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3077,6 +3078,11 @@ sub automatic_teaser {
         }
     }
     return 0;
+}
+
+sub show_type_and_number_of_pages {
+    my $self = shift;
+    return $self->get_option('show_type_and_number_of_pages') || '';
 }
 
 

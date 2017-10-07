@@ -34,6 +34,8 @@ my $testdir = File::Temp->newdir(CLEANUP => 1);
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
 
+$schema->resultset('User')->update({ preferred_language => undef });
+
 $mech->get_ok('/');
 $mech->get('/action/text/new');
 is $mech->status, 401;
@@ -45,7 +47,7 @@ diag "Uploading a text";
 my $title = 'ciccia ' . int(rand(1000));
 
 # without this it looks like mech can't upload. Mah!
-$mech->get_ok('/action/text/new');
+$mech->get_ok('/action/text/new?__language=en');
 ok($mech->form_id('ckform'), "Found the form for uploading stuff");
 $mech->set_fields(author => 'pippo',
                   title => $title,
@@ -222,6 +224,8 @@ ok (!$text_row, "$text_file not found");
 ok (! -f $text_file, "$text_file is no more");
 
 system($init, 'stop');
+
+$schema->resultset('User')->update({ preferred_language => undef });
 
 {
     my $now = DateTime->now;

@@ -104,6 +104,10 @@ sub try_to_authenticate :Private {
                 }
                 $c->session(i_am_human => 1,
                             site_id => $site->id,
+                            # we don't need to validate this, because
+                            # it's validated back in the root
+                            # controller.
+                            user_locale => $user->preferred_language,
                            );
                 # continue now
                 return 1;

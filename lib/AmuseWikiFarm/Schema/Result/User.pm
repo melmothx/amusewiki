@@ -101,6 +101,12 @@ __PACKAGE__->table("users");
   default_value: 6
   is_nullable: 1
 
+=head2 preferred_language
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 8
+
 =head2 reset_token
 
   data_type: 'text'
@@ -134,6 +140,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 1, is_nullable => 0, size => 1 },
   "edit_option_page_left_bs_columns",
   { data_type => "integer", default_value => 6, is_nullable => 1 },
+  "preferred_language",
+  { data_type => "varchar", is_nullable => 1, size => 8 },
   "reset_token",
   { data_type => "text", is_nullable => 1 },
   "reset_until",
@@ -234,8 +242,8 @@ Composing rels: L</user_sites> -> site
 __PACKAGE__->many_to_many("sites", "user_sites", "site");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:r6spqVC6QBIIWHEpJHPqGg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-06 08:36:48
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:KZQtyh2v/hvSoGp+mjvYnw
 
 __PACKAGE__->load_components(qw(PassphraseColumn));
 

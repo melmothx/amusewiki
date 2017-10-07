@@ -216,6 +216,16 @@ sub json :Chained('match') PathPart('json') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+sub toc :Chained('match') PathPart('toc') :Args(0) {
+    my ($self, $c) = @_;
+    my @struct = $c->stash->{text}->text_parts->ordered->toc_entries->hri;
+    $_->{prefix} = '*' x $_->{part_level} for @struct;
+    $c->stash(no_wrapper => 1,
+              toc => \@struct,
+              template => 'library/toc.tt',
+             );
+}
+
 sub rebuild :Chained('match') PathPart('rebuild') :Args(0) {
     my ($self, $c) = @_;
     log_debug { "In rebuild" };

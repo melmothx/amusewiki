@@ -140,8 +140,18 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     }
 
     if (my $set_language = $c->request->query_params->{__language}) {
+        $set_language .= ''; # force stringification. probably not needed.
         if ($site->known_langs->{$set_language}) {
-            $c->session(user_locale => $set_language . '',
+            if ($c->user_exists) {
+                if (my $user_object = $c->user->get_object) {
+                    log_debug { "Setting " . $user_object->username . " language to " . $set_language };
+                    $user_object->update({ preferred_language => $set_language });
+                }
+                else {
+                    Dlog_error { "User exist but the DB doesn't know about that? " . $_ } $c;
+                }
+            }
+            $c->session(user_locale => $set_language,
                         site_id => $site->id,
                        );
         }

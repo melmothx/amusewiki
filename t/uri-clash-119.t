@@ -64,3 +64,4 @@ diag $mech->uri;
 
 $site->revisions->delete;
 
+$schema->resultset('User')->update({ preferred_language => undef });

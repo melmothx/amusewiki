@@ -213,6 +213,18 @@ __PACKAGE__->table("title");
   is_nullable: 0
   size: 64
 
+=head2 text_qualification
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
+=head2 text_size
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -286,6 +298,10 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "sku",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 64 },
+  "text_qualification",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
+  "text_size",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -397,6 +413,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 text_parts
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TextPart>
+
+=cut
+
+__PACKAGE__->has_many(
+  "text_parts",
+  "AmuseWikiFarm::Schema::Result::TextPart",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 title_categories
 
 Type: has_many
@@ -448,8 +479,8 @@ Composing rels: L</text_months> -> monthly_archive
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-05 11:44:55
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZjKr5/w4EwWqYnnx6V9Iow
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-03 14:25:06
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:d2O1GrzhtZ5iYgDDiezDrw
 
 =head2 translations
 
@@ -496,12 +527,13 @@ use DateTime;
 use File::Copy qw/copy/;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse;
-use HTML::Entities qw/decode_entities/;
+use HTML::Entities qw/decode_entities encode_entities/;
 use AmuseWikiFarm::Utils::Amuse qw/cover_filename_is_valid to_json from_json/;
 use Path::Tiny qw//;
 use HTML::LinkExtor; # from HTML::Parser
 use HTML::TreeBuilder;
 use URI;
+use constant { PAPER_PAGE_SIZE => 2000 };
 
 =head2 listing
 
@@ -769,23 +801,11 @@ them.
 =cut
 
 sub pages_estimated {
-    my $self = shift;
-    my $path = $self->filepath_for_ext('muse');
-    my %factors = (
-                   mk => 2,
-                   ru => 2,
-                  );
-    if (-f $path) {
-        my $size = -s $path;
-        if (my $factor = $factors{$self->lang}) {
-            $size = $size / $factor;
-        }
-        my $pages = sprintf('%d', $size / 2000);
-        return $pages || 1;
+    my ($self, $length) = @_;
+    unless (defined $length) {
+        $length = $self->text_size;
     }
-    else {
-        return;
-    }
+    return int(($length / PAPER_PAGE_SIZE) + 1);
 }
 
 
@@ -884,6 +904,11 @@ sub full_header_api {
 sub full_rebuild_uri {
     my $self = shift;
     return $self->full_uri . '/rebuild';
+}
+
+sub full_toc_uri {
+    my $self = shift;
+    return $self->full_uri . '/toc';
 }
 
 sub cover_file {
@@ -1011,22 +1036,123 @@ before delete => sub {
 
 sub muse_object {
     my $self = shift;
-    return Text::Amuse->new(file => $self->f_full_path_name);
+    if (my $file = $self->f_full_path_name) {
+        if ( -f $file ) {
+            return Text::Amuse->new(file => $file);
+        }
+    }
+    return;
 }
 
+# never delete this, is called from an upgrade class.
 sub text_html_structure {
     my ($self, $force) = @_;
-    if ($force or !$self->text_structure) {
-        my $struct = $self->_retrieve_text_structure;
-        Dlog_debug { "Retriving text structure: $_" } $struct;
-        $self->text_structure(to_json($struct));
-        $self->update;
+    if ($force or !$self->text_parts->count) {
+        eval {
+            my $parts = $self->_parse_text_structure;
+            Dlog_debug { "Retriving text structure: $_" } $parts;
+            my $order = 0;
+            $self->text_parts->delete;
+            my $total_size = 0;
+            my $book = 0;
+            foreach my $part (@$parts) {
+                $part->{part_order} = $order++;
+                $self->text_parts->create($part);
+                $total_size += $part->{part_size};
+                if ($part->{part_level} > 0 and
+                    $part->{part_level} < 3) {
+                    $book++;
+                }
+            }
+            $self->update({
+                           text_size => $total_size,
+                           text_qualification => ($book ? 'book' : 'article'),
+                           text_structure => '', # obsolete.
+                          });
+        };
+        if ($@) {
+            log_error { "$@ Failed to set text parts for " . $self->id };
+        }
     }
-    return from_json($self->text_structure);
+    my @out = $self->text_parts->ordered->hri;
+    return \@out;
 }
+
+sub _parse_text_structure {
+    my ($self) = @_;
+    my $muse = $self->muse_object;
+    unless ($muse) {
+        log_error { "Can't find file for text id " . $self->id };
+        return [];
+    }
+    my @out = ({
+                part_index => 'pre',
+                part_level => 0,
+                part_title => '',
+                part_size => PAPER_PAGE_SIZE, # The first part is always a page.
+                toc_index => 0,
+               });
+
+    # Text::Amuse doens't care at all what it returns from
+    # raw_html_toc. It just scans the pieces returned by as_splat_html
+    # like this: for (my $i = 0; $i < @chunks; $i++) {
+    # push @out, $chunks[$i] if $partials->{$i};
+    # } so what we do here is the right thing.
+
+    my $toc_index = 0;
+    my $index = 0;
+  HTMLPIECE:
+    foreach my $piece ($muse->as_splat_html) {
+        my $tree = HTML::TreeBuilder->new_from_content($piece);
+        $tree->elementify;
+        my %data = (part_index => $index++,
+                    # add half a page for each section, to compensate
+                    # for headers. This is an estimate, nothing
+                    # critical here.
+                    part_size => length($tree->as_text) + (PAPER_PAGE_SIZE / 2),
+                   );
+
+        # find the part_level and the part_title
+        my ($first) = grep { ref($_) } $tree->look_down(_tag => 'body')->content_list;
+        unless ($first) {
+            log_info { "Can't find an element in $piece html from file: " . $self->f_full_path_name };
+            next HTMLPIECE;
+        }
+        if ($first->tag =~ m/h([1-6])/) {
+            $data{part_level} = $1 - 1;
+            $data{part_title} = encode_entities($first->as_text, q{<>&"'});
+            $data{toc_index} = ++$toc_index;
+        }
+        else {
+            # this is a lonely initial element, so it's a special case
+            die "This shouldn't happen! No headers should happen only at the beginning"
+              unless $data{part_index} == 0;
+            $data{part_level} = 0,
+            $data{part_title} = $self->title;
+            $data{toc_index} = 0;
+        }
+
+        # cleanup and push
+        $tree->delete;
+        push @out, \%data;
+    }
+    if ($self->notes || $self->source) {
+        push @out, {
+                    part_index => 'post',
+                    part_level => 0,
+                    part_title => '',
+                    part_size => 0, # irrelevant
+                    toc_index => 0,
+                   };
+    }
+    return \@out;
+}
+
 
 sub _retrieve_text_structure {
     my $self = shift;
+    # report the error if by chance we call this.
+    log_error { "Calling _retrieve_text_structure is DEPRECATED" };
     my $muse = $self->muse_object;
     my @toc = $muse->raw_html_toc;
     my $index = 0;

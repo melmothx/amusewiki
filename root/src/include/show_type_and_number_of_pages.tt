@@ -1,0 +1,9 @@
+[%- # -*- mode:html -*- -%]
+[%- UNLESS text.text_qualification -%]
+[%- SET this_can_be_ignored = text.text_html_structure -%]
+[%- END -%]
+<span class="amw-show-text-type-and-number-of-pages">
+  <span class="label label-default">
+    [% loc('[_1] pp.', text.pages_estimated) %]
+  </span>
+</span>

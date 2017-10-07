@@ -17,6 +17,8 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
 $site->update({ bb_page_limit => 5 });
+# fake it for test purpose
+$site->titles->update({ text_size => 1900 });
 
 use Test::WWW::Mechanize::Catalyst;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
@@ -66,6 +68,7 @@ $mech->content_lacks('/library/first-test');
 
 $mech->get_ok('/library/second-test');
 
+
 # 5 times
 foreach my $i (1..5) {
     $mech->get_ok('/bookbuilder/add/second-test');
@@ -74,7 +77,7 @@ foreach my $i (1..5) {
     $mech->get('/bookbuilder');
     $mech->content_lacks("Couldn't add the text");
     $mech->content_lacks("Quota exceeded");
-    $mech->content_contains("Total pages: $i");
+    $mech->content_like(qr/Total pages: \Q$i\E/) or die $mech->content;
 }
 
 $mech->get_ok('/bookbuilder/add/second-test');
@@ -250,8 +253,12 @@ foreach my $purgef (@purge) {
 $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
 $mech->get_ok('/?__language=en');
-$site->update({ bb_page_limit => 1 });
+$site->update({ bb_page_limit => 2 });
 $mech->get_ok('/library/first-test');
+
+foreach my $title ($site->titles) {
+    $title->text_html_structure(1);
+}
 
 $mech->get('/bookbuilder/add/first-test');
 is $mech->status, 401;
@@ -267,6 +274,6 @@ $mech->content_lacks("Quota exceeded");
 $mech->content_contains('first-test/bbselect?selected=pre-1-post"');
 
 # restore
-$site->update({ bb_page_limit => 5 });
+$site->update({ bb_page_limit => 10 });
 
 

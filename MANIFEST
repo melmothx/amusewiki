@@ -68,6 +68,10 @@ dbicdh/_source/deploy/36/001-auto-__VERSION.yml
 dbicdh/_source/deploy/36/001-auto.yml
 dbicdh/_source/deploy/37/001-auto-__VERSION.yml
 dbicdh/_source/deploy/37/001-auto.yml
+dbicdh/_source/deploy/38/001-auto-__VERSION.yml
+dbicdh/_source/deploy/38/001-auto.yml
+dbicdh/_source/deploy/39/001-auto-__VERSION.yml
+dbicdh/_source/deploy/39/001-auto.yml
 dbicdh/_source/deploy/4/001-auto-__VERSION.yml
 dbicdh/_source/deploy/4/001-auto.yml
 dbicdh/_source/deploy/5/001-auto-__VERSION.yml
@@ -140,6 +144,10 @@ dbicdh/MySQL/deploy/36/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/36/001-auto.sql
 dbicdh/MySQL/deploy/37/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/37/001-auto.sql
+dbicdh/MySQL/deploy/38/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/38/001-auto.sql
+dbicdh/MySQL/deploy/39/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/39/001-auto.sql
 dbicdh/MySQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/4/001-auto.sql
 dbicdh/MySQL/deploy/5/001-auto-__VERSION.sql
@@ -181,6 +189,8 @@ dbicdh/MySQL/upgrade/33-34/001-auto.sql
 dbicdh/MySQL/upgrade/34-35/001-auto.sql
 dbicdh/MySQL/upgrade/35-36/001-auto.sql
 dbicdh/MySQL/upgrade/36-37/001-auto.sql
+dbicdh/MySQL/upgrade/37-38/001-auto.sql
+dbicdh/MySQL/upgrade/38-39/001-auto.sql
 dbicdh/MySQL/upgrade/4-5/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
@@ -247,6 +257,10 @@ dbicdh/PostgreSQL/deploy/36/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/36/001-auto.sql
 dbicdh/PostgreSQL/deploy/37/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/37/001-auto.sql
+dbicdh/PostgreSQL/deploy/38/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/38/001-auto.sql
+dbicdh/PostgreSQL/deploy/39/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/39/001-auto.sql
 dbicdh/PostgreSQL/deploy/4/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/4/001-auto.sql
 dbicdh/PostgreSQL/deploy/5/001-auto-__VERSION.sql
@@ -288,6 +302,8 @@ dbicdh/PostgreSQL/upgrade/33-34/001-auto.sql
 dbicdh/PostgreSQL/upgrade/34-35/001-auto.sql
 dbicdh/PostgreSQL/upgrade/35-36/001-auto.sql
 dbicdh/PostgreSQL/upgrade/36-37/001-auto.sql
+dbicdh/PostgreSQL/upgrade/37-38/001-auto.sql
+dbicdh/PostgreSQL/upgrade/38-39/001-auto.sql
 dbicdh/PostgreSQL/upgrade/4-5/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
@@ -354,6 +370,10 @@ dbicdh/SQLite/deploy/36/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/36/001-auto.sql
 dbicdh/SQLite/deploy/37/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/37/001-auto.sql
+dbicdh/SQLite/deploy/38/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/38/001-auto.sql
+dbicdh/SQLite/deploy/39/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/39/001-auto.sql
 dbicdh/SQLite/deploy/4/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/4/001-auto.sql
 dbicdh/SQLite/deploy/5/001-auto-__VERSION.sql
@@ -395,6 +415,8 @@ dbicdh/SQLite/upgrade/33-34/001-auto.sql
 dbicdh/SQLite/upgrade/34-35/001-auto.sql
 dbicdh/SQLite/upgrade/35-36/001-auto.sql
 dbicdh/SQLite/upgrade/36-37/001-auto.sql
+dbicdh/SQLite/upgrade/37-38/001-auto.sql
+dbicdh/SQLite/upgrade/38-39/001-auto.sql
 dbicdh/SQLite/upgrade/4-5/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
@@ -492,6 +514,7 @@ lib/AmuseWikiFarm/Schema/Result/SiteOption.pm
 lib/AmuseWikiFarm/Schema/Result/TableComment.pm
 lib/AmuseWikiFarm/Schema/Result/TextInternalLink.pm
 lib/AmuseWikiFarm/Schema/Result/TextMonth.pm
+lib/AmuseWikiFarm/Schema/Result/TextPart.pm
 lib/AmuseWikiFarm/Schema/Result/Title.pm
 lib/AmuseWikiFarm/Schema/Result/TitleCategory.pm
 lib/AmuseWikiFarm/Schema/Result/TitleStat.pm
@@ -510,6 +533,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/Redirection.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Revision.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Site.pm
 lib/AmuseWikiFarm/Schema/ResultSet/TextInternalLink.pm
+lib/AmuseWikiFarm/Schema/ResultSet/TextPart.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Title.pm
 lib/AmuseWikiFarm/Schema/ResultSet/TitleStat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
@@ -592,11 +616,14 @@ root/src/include/markitup.tt
 root/src/include/pagination-widget.tt
 root/src/include/pagination.tt
 root/src/include/posts.tt
+root/src/include/show_text_type.tt
+root/src/include/show_type_and_number_of_pages.tt
 root/src/include/validate.tt
 root/src/latest/index.tt
 root/src/layout.tt
 root/src/library.tt
 root/src/library/bbselect.tt
+root/src/library/toc.tt
 root/src/macros.tt
 root/src/monthly/list.tt
 root/src/monthly/month.tt
@@ -1262,12 +1289,14 @@ t/test-repos/0test0/s/st/second-test.muse
 t/test-repos/0test0/specials/index.muse
 t/texmf-files/logo-en.pdf
 t/texmf-files/logo-yu.pdf
+t/text-structure.t
 t/title-rs.t
 t/unicode-exception-old-cat.t
 t/update-or-create.t
 t/uri-clash-119.t
 t/useless-sessions.t
 t/user-admin.t
+t/user-language.t
 t/users.t
 t/utils-bookbuilder.t
 t/utils-cgitsetup.t

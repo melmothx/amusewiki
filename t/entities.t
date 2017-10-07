@@ -74,12 +74,12 @@ $mech->content_like(qr/class="list-group-item\ clearfix"
 
 $mech->get_ok('/topics/war');
 $mech->content_contains(q{<title>Ratovi&quot; i'  &amp; terorizam | </title>});
-$mech->content_contains(q{<h1>Ratovi&quot; i&#39; &lt;državni&gt; &amp; terorizam}) or diag $mech->content;
+$mech->content_contains(q{<h1><span id="amw-category-details-category-name">Ratovi&quot; i&#39; &lt;državni&gt; &amp; terorizam}) or diag $mech->content;
 
 $mech->get_ok('/topics/topic');
 # title is escaped with | html, so "'" is preserved
 $mech->content_like(qr/<title>&quot;'topic'&quot;/) or diag $mech->content;
-$mech->content_contains(q{<h1>&quot;&#39;topic&#39;&quot;});
+$mech->content_contains(q{<h1><span id="amw-category-details-category-name">&quot;&#39;topic&#39;&quot;});
 
 $mech->get_ok('/library/a-test');
 $mech->content_contains(q{<title> &quot;'hello'&quot; | </title>});
@@ -111,3 +111,5 @@ Neusklađene fusnote: pronađeno <a> fusnota (<&>) i pronađeno <"> fusnota
 u tekstu (<'>), zanemarivši izmjene. 
 TXT
 is $mech->content, $expected, "Localization methods appears ok";
+
+$schema->resultset('User')->update({ preferred_language => undef });

@@ -1,0 +1,11 @@
+<div>
+[% IF toc.size %]
+[% FOREACH entry IN toc %]
+<p>
+  [% entry.prefix %] [% entry.part_title %]
+ </p>
+[% END %]
+[% ELSE %]
+<p>[% text.title %]</p>
+[% END %]
+</div>

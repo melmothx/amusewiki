@@ -19,19 +19,7 @@ $(document).ready(function(){
     }
     // with this div we signal that the teaser contains the whole text
     $("div.amw-teaser-no-ellipsis").closest('.amw-listing-item').find(".amw-read-more-link").remove();
+    // globally enable tooltips
+    $('[data-toggle="tooltip"]').tooltip();
 });
-
-$(document).ready(function() {
-    $(".footnotebody").click(function() {
-        var source = $(this).attr('id');
-        var target = source.replace(/fn/, '#fn_back');
-        $(target).effect("highlight", {}, 10000);
-    });
-    $(".footnote").click(function() {
-        var source = $(this).attr('id');
-        var target = source.replace(/fn_back/, '#fn');
-        $(target).effect("highlight", {}, 10000);
-    });
-});
-
 

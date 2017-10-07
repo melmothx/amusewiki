@@ -198,14 +198,26 @@ sub pages_estimated_for_text {
     if (my $site = $self->site) {
         # here we don't care if it's deferred or not
         if (my $title = $site->titles->bookbuildable_by_uri($filename->name)) {
-            my $text_pages = $title->pages_estimated;
+            $title->text_html_structure unless $title->text_size; # lazy loading, now it's needed
+            my $text_pages;
             if (my $pieces = scalar($filename->fragments)) {
-                my $total = scalar(@{$title->text_html_structure}) || 1;
-                my $est = int(($text_pages / $total) * $pieces) || 1;
-                log_debug { "Partial estimate: ($text_pages / $total) * $pieces = $est" };
-                $text_pages = $est;
+                my $size = 0;
+                foreach my $piece ($filename->fragments) {
+                    if (my $part = $title->text_parts->find({ part_index => $piece })) {
+                        $size += $part->part_size;
+                        log_debug { "Piece $piece has " . $part->part_size . " size" };
+                    }
+                    else {
+                        log_error { "Couldn't find $piece in text parts for " . $site->id . ' ' . $title->full_uri };
+                    }
+                }
+                $text_pages = $title->pages_estimated($size);
             }
-            return $text_pages || 0;
+            else {
+                $text_pages = $title->pages_estimated;
+                log_debug { "No partial, scanning " . $title->text_size . " size" };
+            }
+            return $text_pages || 1;
         }
     }
     return 0;
@@ -862,6 +874,7 @@ sub add_text {
                     $to_add = $filename->name_with_fragments;
                 }
                 else {
+                    log_error { "Quota exceeded, too many pages: $limit < $total " };
                     # loc("Quota exceeded, too many pages")
                     $self->error('Quota exceeded, too many pages');
                 }
