@@ -1101,6 +1101,7 @@ sub _parse_text_structure {
 
     my $toc_index = 0;
     my $index = 0;
+  HTMLPIECE:
     foreach my $piece ($muse->as_splat_html) {
         my $tree = HTML::TreeBuilder->new_from_content($piece);
         $tree->elementify;
@@ -1114,8 +1115,8 @@ sub _parse_text_structure {
         # find the part_level and the part_title
         my ($first) = grep { ref($_) } $tree->look_down(_tag => 'body')->content_list;
         unless ($first) {
-            log_error { "Can't find an element in $piece html" };
-            return [];
+            log_info { "Can't find an element in $piece html from file: " . $self->f_full_path_name };
+            next HTMLPIECE;
         }
         if ($first->tag =~ m/h([1-6])/) {
             $data{part_level} = $1 - 1;
