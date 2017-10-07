@@ -24,6 +24,10 @@ msgstr "%1 no existe"
 msgid "%1 on mobile"
 msgstr "%1 en dispositivos móviles"
 
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(citas inteligentes, enlaces, notas a pie de página, etc.)"
 
@@ -254,6 +258,9 @@ msgstr "Listas de autores y temas"
 
 msgid "Authors for indexing"
 msgstr "Autores para indexar"
+
+msgid "Automatically generated"
+msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "Solicitar y renovar automáticamente certificados SSL de Let's Encrypt"
@@ -905,6 +912,11 @@ msgid "If not set %1 will be looked up from the application directory."
 msgstr "Si no se ajusta %1 será tomado desde el directorio de la aplicación."
 
 msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
@@ -1147,6 +1159,9 @@ msgstr "Layout"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Déjalo en blanco si lo quieres publicar así."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
 
 msgid "Letter imposed PDF"
 msgstr "PDF tamaño carta para cuadernillo"
@@ -1957,6 +1972,9 @@ msgstr "Mostrar opciones"
 msgid "Show preview in other tab"
 msgstr "Mostrar previsualización en otra pestaña"
 
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Mostrar la baja de información de texto al final de los textos"
 
@@ -2125,9 +2143,6 @@ msgstr "Prueba"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Aplicaciones probadas, en este orden de preferencia"
-
-msgid "Text body, before any section"
-msgstr "Texto del cuerpo, antes de cualquier sección"
 
 msgid "Text formatted with markup"
 msgstr "Texto formateado con marcado"
@@ -2322,6 +2337,12 @@ msgstr ""
 msgid "This text does not exist"
 msgstr "Este texto no existe"
 
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
+
 msgid "This text is new"
 msgstr "Este texto es nuevo"
 
@@ -2419,6 +2440,12 @@ msgstr ""
 "Cambiar enlaces a imágenes en imágenes (afecta solo la muestra en el sitio, "
 "los\n"
 "formatos estáticos tienen el enlace)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
 
 msgid "Two side layout"
 msgstr "Diagramación para ambos lados de la hoja"
@@ -2958,6 +2985,9 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "Text body, before any section"
+#~ msgstr "Texto del cuerpo, antes de cualquier sección"
 
 #~ msgid "Locale"
 #~ msgstr "Local"

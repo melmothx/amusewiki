@@ -24,6 +24,10 @@ msgstr "%1 nuk ekziston"
 msgid "%1 on mobile"
 msgstr "%1 në pajisje mobile"
 
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(smart quotes, linqe, fusnota, etj.)"
 
@@ -261,6 +265,9 @@ msgstr ""
 
 msgid "Authors for indexing"
 msgstr "Autorët për indeksim"
+
+msgid "Automatically generated"
+msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
@@ -898,6 +905,11 @@ msgid "If not set %1 will be looked up from the application directory."
 msgstr "Nëse nuk është vendosur %1 do të merret nga udhëzuesi i aplikacionit"
 
 msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
@@ -1130,6 +1142,9 @@ msgstr "Renditja"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "(lejeni të zbrazët nëse dëshironi ta publikoni menjëherë)"
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
 
 msgid "Letter imposed PDF"
 msgstr ""
@@ -1925,6 +1940,9 @@ msgstr "Tego opcionet"
 msgid "Show preview in other tab"
 msgstr ""
 
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Trego kutinë informative të tekstit në fund të teksteve"
 
@@ -2092,9 +2110,6 @@ msgstr "Test "
 
 msgid "Tested applications, in this order of preference"
 msgstr "Aplikacionet e testuara"
-
-msgid "Text body, before any section"
-msgstr "Trupi i tekstit i vendosur para cilit do seksion"
 
 msgid "Text formatted with markup"
 msgstr "Teksti i formatuar me përmirësime"
@@ -2275,6 +2290,12 @@ msgstr ""
 msgid "This text does not exist"
 msgstr "Ky tekst nuk egziston"
 
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
+
 msgid "This text is new"
 msgstr "Ky është tekst i ri"
 
@@ -2380,6 +2401,12 @@ msgid ""
 msgstr ""
 "Shëndërro linqet në imazhe (ndikon vetëm në paraqitjen e faqës, formatët "
 "static tashmë kan link)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
 
 msgid "Two side layout"
 msgstr "Renditja në të dyja anët"
@@ -2902,6 +2929,9 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Text body, before any section"
+#~ msgstr "Trupi i tekstit i vendosur para cilit do seksion"
 
 #~ msgid "Cover image (optional)"
 #~ msgstr "Imazhi i kopertinës (opcionale)"

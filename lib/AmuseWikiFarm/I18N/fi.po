@@ -24,6 +24,10 @@ msgstr "%1 ei löydy"
 msgid "%1 on mobile"
 msgstr ""
 
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr ""
 
@@ -232,6 +236,9 @@ msgstr ""
 
 msgid "Authors for indexing"
 msgstr "Kirjoittajat hakemistoa varten"
+
+msgid "Automatically generated"
+msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
@@ -833,6 +840,11 @@ msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
 msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
@@ -1040,6 +1052,9 @@ msgstr ""
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Jätä tyhjäksi, jos haluat julkaisun heti."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
 
 msgid "Letter imposed PDF"
 msgstr "Letter tulostusvalmis PDF"
@@ -1812,6 +1827,9 @@ msgstr "Näytä lisävaihtoehdot"
 msgid "Show preview in other tab"
 msgstr ""
 
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
 msgid "Show the text infobox at the bottom of the texts"
 msgstr ""
 
@@ -1974,9 +1992,6 @@ msgid "Test"
 msgstr ""
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
-
-msgid "Text body, before any section"
 msgstr ""
 
 msgid "Text formatted with markup"
@@ -2143,6 +2158,12 @@ msgstr ""
 msgid "This text does not exist"
 msgstr "Tekstiä ei ole"
 
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
+
 msgid "This text is new"
 msgstr ""
 
@@ -2234,6 +2255,12 @@ msgstr "Jos et ole varma, kokeile satunnaista tekstiä"
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
+msgstr ""
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
 msgstr ""
 
 msgid "Two side layout"

@@ -25,6 +25,10 @@ msgstr "%1 ne postoji"
 msgid "%1 on mobile"
 msgstr "%1 za mobitele"
 
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(navodnici, poveznice, fusnote itd.)"
 
@@ -243,6 +247,9 @@ msgstr "Popisi autora i tema"
 
 msgid "Authors for indexing"
 msgstr "Autori za indeksiranje"
+
+msgid "Automatically generated"
+msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "Automatski zahtijevaj i obnovi SSL certifikate koristeći Let's Encrypt"
@@ -872,6 +879,11 @@ msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ako je prazno, koristit će se %1 iz direktorija aplikacije."
 
 msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
@@ -1105,6 +1117,9 @@ msgstr "Layout"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Ostavi prazno ako želiš odmah objaviti."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
 
 msgid "Letter imposed PDF"
 msgstr "Format \"Letter\" u PDF formatu"
@@ -1901,6 +1916,9 @@ msgstr "Pokaži opcije"
 msgid "Show preview in other tab"
 msgstr "Pokaži pregled u drugom prozoru"
 
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Prikaži informacije o tekstu na dnu stranice"
 
@@ -2064,9 +2082,6 @@ msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Testirane aplikacije"
-
-msgid "Text body, before any section"
-msgstr "Tekst koji ne pripada nijednom dijelu"
 
 msgid "Text formatted with markup"
 msgstr "Tekst u wiki formatu"
@@ -2249,6 +2264,12 @@ msgstr ""
 msgid "This text does not exist"
 msgstr "Ovaj tekst ne postoji"
 
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
+
 msgid "This text is new"
 msgstr "Ovaj tekst je nov"
 
@@ -2342,6 +2363,12 @@ msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
 msgstr "Pretvori poveznice na slike u slike (to se tiče samo HTML prikaza)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
 
 msgid "Two side layout"
 msgstr "Obostrani prijelom"
@@ -2866,6 +2893,9 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Text body, before any section"
+#~ msgstr "Tekst koji ne pripada nijednom dijelu"
 
 #~ msgid "Locale"
 #~ msgstr "Jezik"

@@ -25,6 +25,10 @@ msgstr "%1 n'existe pas"
 msgid "%1 on mobile"
 msgstr "%1 sur mobile\t"
 
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(guillemets, liens, notes de bas de page, etc.)"
 
@@ -252,6 +256,9 @@ msgstr ""
 
 msgid "Authors for indexing"
 msgstr "Auteur·e·s pour indexation"
+
+msgid "Automatically generated"
+msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
@@ -898,6 +905,11 @@ msgid "If not set %1 will be looked up from the application directory."
 msgstr "Si non définit %1 sera cherché dans le répertoire d'applications."
 
 msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
@@ -1132,6 +1144,9 @@ msgstr "Mise en page"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Laissez vide si vous souhaitez le publier de suite."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
 
 msgid "Letter imposed PDF"
 msgstr "PDF Lettre imposée"
@@ -1940,6 +1955,9 @@ msgstr "Afficher les options"
 msgid "Show preview in other tab"
 msgstr ""
 
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Afficher la boite d'informations de texte en bas des textes"
 
@@ -2108,9 +2126,6 @@ msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Application testées, dans cet ordre de préférence"
-
-msgid "Text body, before any section"
-msgstr "Corps de texte, avant toute section"
 
 msgid "Text formatted with markup"
 msgstr "Texte formaté avec balisage"
@@ -2304,6 +2319,12 @@ msgstr ""
 msgid "This text does not exist"
 msgstr "Ce texte n'existe pas"
 
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
+
 msgid "This text is new"
 msgstr "Ce texte est nouveau"
 
@@ -2405,6 +2426,12 @@ msgid ""
 msgstr ""
 "Changer les liens d'images en images (change uniquement l'affichage sur le "
 "site, les formats statiques afficheront les liens)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
 
 # Mise en page recto-verso ?
 msgid "Two side layout"
@@ -2939,6 +2966,9 @@ msgstr ""
 "\"Modification périmée\" signifie que la révision a été abandonnée en cours "
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer en modifiant un texte."
+
+#~ msgid "Text body, before any section"
+#~ msgstr "Corps de texte, avant toute section"
 
 #~ msgid "Locale"
 #~ msgstr "Lieu"

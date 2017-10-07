@@ -26,12 +26,17 @@ msgstr "%1 не существует"
 msgid "%1 on mobile"
 msgstr ""
 
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr ""
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
-"Пустая строка (или несколько пустых строк) обозначают начало нового параграфа."
+"Пустая строка (или несколько пустых строк) обозначают начало нового "
+"параграфа."
 
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
@@ -84,7 +89,8 @@ msgid "A6 paper (also suitable for e-readers)"
 msgstr "А6 (также подходит для электронных книг)"
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
-msgstr "Прошлое редактирование в процессе. Можете сравнить отличия и продолжать"
+msgstr ""
+"Прошлое редактирование в процессе. Можете сравнить отличия и продолжать"
 
 msgid "Action"
 msgstr "Действия"
@@ -114,7 +120,8 @@ msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Добавить неразрывные пробелы"
 
 msgid "Add or delete and add again the <user_repo_url> on this page."
-msgstr "Добавьте или удалите и добавьте заново <user_repo_url> на этой странице."
+msgstr ""
+"Добавьте или удалите и добавьте заново <user_repo_url> на этой странице."
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
@@ -234,6 +241,9 @@ msgstr ""
 
 msgid "Authors for indexing"
 msgstr "Авторы (для индексации)"
+
+msgid "Automatically generated"
+msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
@@ -404,7 +414,9 @@ msgstr "Создать связь между авторами"
 
 msgid ""
 "Create an empty repository. Here we refer to its url as <user_repo_url>."
-msgstr "Создайте пустой репозиторий. Здесь мы ссылаемся на его URL как <user_repo_url>."
+msgstr ""
+"Создайте пустой репозиторий. Здесь мы ссылаемся на его URL как "
+"<user_repo_url>."
 
 msgid "Create new site"
 msgstr "Создать новый сайт"
@@ -537,7 +549,9 @@ msgid "Edit site configuration"
 msgstr "Редактировать конфигурацию сайта"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
-msgstr "Отредактируйте текст, публикацию которого вы хотите отменить, и добавьте следующую строку в шапку:"
+msgstr ""
+"Отредактируйте текст, публикацию которого вы хотите отменить, и добавьте "
+"следующую строку в шапку:"
 
 msgid "Edit this text"
 msgstr "Редактировать текст"
@@ -589,7 +603,8 @@ msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
-"Хотя этот сайт и имеет отзывчивую, подходящую для мобильных устройств раскладку,\n"
+"Хотя этот сайт и имеет отзывчивую, подходящую для мобильных устройств "
+"раскладку,\n"
 "  он не предоставляет специального мобильного приложения."
 
 msgid ""
@@ -825,7 +840,8 @@ msgid ""
 "  protocol."
 msgstr ""
 "Несмотря на это, вы можете просматривать, искать и загружать тексты\n"
-"  из мобильных приложений для чтения, которые поддерживают так называемый OPDS\n"
+"  из мобильных приложений для чтения, которые поддерживают так называемый "
+"OPDS\n"
 "  протокол."
 
 msgid "I am human"
@@ -849,6 +865,11 @@ msgstr "Id"
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
+msgstr ""
+
+msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
 msgstr ""
 
 msgid ""
@@ -939,7 +960,8 @@ msgid "Image url"
 msgstr "url изображения"
 
 msgid "Images not used in the text are stored, but will be ignored."
-msgstr "Не использованные в тексте изображения будут сохранены, но проигнорированы"
+msgstr ""
+"Не использованные в тексте изображения будут сохранены, но проигнорированы"
 
 msgid "Images:"
 msgstr "Изображения:"
@@ -1062,6 +1084,9 @@ msgstr ""
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Оставьте поле пустым, если хотите опубликовать в таком виде"
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
 
 msgid "Letter imposed PDF"
 msgstr "Спуск полос на Letter"
@@ -1437,7 +1462,9 @@ msgid "Please describe shortly what you did"
 msgstr "Пожалуйста, напишите коротко что вы сделали"
 
 msgid "Please do not use a valuable password."
-msgstr "Пожалуйста, не используйте те же пароли, которые вы используете на других сайтах."
+msgstr ""
+"Пожалуйста, не используйте те же пароли, которые вы используете на других "
+"сайтах."
 
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
@@ -1840,6 +1867,9 @@ msgstr "Показать опции"
 msgid "Show preview in other tab"
 msgstr ""
 
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
 msgid "Show the text infobox at the bottom of the texts"
 msgstr ""
 
@@ -2004,9 +2034,6 @@ msgstr ""
 msgid "Tested applications, in this order of preference"
 msgstr "Протестированные приложения, в порядке предпочтения"
 
-msgid "Text body, before any section"
-msgstr ""
-
 msgid "Text formatted with markup"
 msgstr ""
 
@@ -2136,9 +2163,9 @@ msgid ""
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
-"Это WYSIWYG-редактор. Если вы предпочитаете вики-подобный синтаксис, оставьте "
-"всё как есть, заполните необходимые поля сверху и переходите к следующему "
-"шагу."
+"Это WYSIWYG-редактор. Если вы предпочитаете вики-подобный синтаксис, "
+"оставьте всё как есть, заполните необходимые поля сверху и переходите к "
+"следующему шагу."
 
 msgid "This is the caption"
 msgstr "Это подпись"
@@ -2174,6 +2201,12 @@ msgstr ""
 
 msgid "This text does not exist"
 msgstr "Текст не существует"
+
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
 
 msgid "This text is new"
 msgstr "Этот текст новый"
@@ -2266,6 +2299,12 @@ msgstr "Попробуйте случайный текст."
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
+msgstr ""
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
 msgstr ""
 
 msgid "Two side layout"
@@ -2500,8 +2539,9 @@ msgid ""
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
-"Вы можете добавить текст в конструктор книг нажав на иконку «плюс» (находится "
-"рядом с ссылками на скачивание). Вы сможете добавить или удалить текст позже."
+"Вы можете добавить текст в конструктор книг нажав на иконку "
+"«плюс» (находится рядом с ссылками на скачивание). Вы сможете добавить или "
+"удалить текст позже."
 
 #. (create_url)
 msgid "You can create a peer at %1"
@@ -2771,9 +2811,9 @@ msgid ""
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
-"«Устаревшее редактирование» означает, что правка не была доделана, но всё ещё "
-"существует, на случай если кто-то захочет посмотреть её при редактировании "
-"текста."
+"«Устаревшее редактирование» означает, что правка не была доделана, но всё "
+"ещё существует, на случай если кто-то захочет посмотреть её при "
+"редактировании текста."
 
 #~ msgid "Locale"
 #~ msgstr "Локаль"

@@ -24,6 +24,10 @@ msgstr "%1 не постои"
 msgid "%1 on mobile"
 msgstr "за мобилни"
 
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(наводници, линкови, фусноти, инт.)"
 
@@ -255,6 +259,9 @@ msgid "Authors for indexing"
 msgstr ""
 "Автори за индексирање - во заграда наведи го и изворното писмо - пр.: \"Џон "
 "Зерзан (John Zerzan)\""
+
+msgid "Automatically generated"
+msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
@@ -892,6 +899,11 @@ msgid "If not set %1 will be looked up from the application directory."
 msgstr "Ако е празно, ќе се користи %1 од директориумот на апликацијата."
 
 msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
@@ -1127,6 +1139,9 @@ msgstr "Layout"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Остави празно ако сакаш веднаш да се објави."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
 
 msgid "Letter imposed PDF"
 msgstr "PDF спремен за печатење во letter формат"
@@ -1942,6 +1957,9 @@ msgstr "Покажи ги опциите"
 msgid "Show preview in other tab"
 msgstr "Покажи ги разликите во друг прозорец"
 
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Прикажи ги информациите за текстот на дното од страницата"
 
@@ -2105,9 +2123,6 @@ msgstr "Тест"
 
 msgid "Tested applications, in this order of preference"
 msgstr "Тестирани апликации"
-
-msgid "Text body, before any section"
-msgstr "Текст кој не припаѓа на ниеден дел"
 
 msgid "Text formatted with markup"
 msgstr "Текст во wiki формат"
@@ -2294,6 +2309,12 @@ msgstr ""
 msgid "This text does not exist"
 msgstr "Овој текст не постои"
 
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
+
 msgid "This text is new"
 msgstr "Овој текст е нов"
 
@@ -2392,6 +2413,12 @@ msgid ""
 msgstr ""
 "Претвори ги линковите за сликите во слики (тоа се однесува само на HTML "
 "приказот)"
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
+msgstr ""
 
 msgid "Two side layout"
 msgstr "Двостран прелом"
@@ -2920,6 +2947,9 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Text body, before any section"
+#~ msgstr "Текст кој не припаѓа на ниеден дел"
 
 #~ msgid "Locale"
 #~ msgstr "Јазик"

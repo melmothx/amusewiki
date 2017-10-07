@@ -25,6 +25,10 @@ msgstr "%1 findes ikke"
 msgid "%1 on mobile"
 msgstr "%1 på mobil"
 
+#. (text.pages_estimated)
+msgid "%1 pp."
+msgstr ""
+
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(smarte citater, links, fodnoter, etc.)"
 
@@ -248,6 +252,9 @@ msgstr "Liste over forfattere og emner"
 
 msgid "Authors for indexing"
 msgstr "Forfattere til indeksering"
+
+msgid "Automatically generated"
+msgstr ""
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "Anmod om og forny automatisk SSL certifikater fra Let's Encrypt"
@@ -883,6 +890,11 @@ msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
 msgid ""
+"If set to a number greater than 0, automatically generate a teaser, with "
+"roughly this length"
+msgstr ""
+
+msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
@@ -1118,6 +1130,9 @@ msgstr "Layout"
 msgid "Leave it blank if you want it published right away."
 msgstr ""
 "Lad feltet være tomt hvis du ønsker at den offentligøres med det samme."
+
+msgid "Leave this empty to have it automatically generated"
+msgstr ""
 
 msgid "Letter imposed PDF"
 msgstr "Letter udskudt PDF"
@@ -1925,6 +1940,9 @@ msgstr "Vis valgmuligheder"
 msgid "Show preview in other tab"
 msgstr "Forhåndsvisning på en anden browsertab"
 
+msgid "Show text type and number of pages in the listing"
+msgstr ""
+
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Vis tekstens infoboks ved tekstens afslutning"
 
@@ -2089,9 +2107,6 @@ msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
 msgstr ""
-
-msgid "Text body, before any section"
-msgstr "Brødtekst, før nogen sektion"
 
 msgid "Text formatted with markup"
 msgstr "Tekst formateret med opmærkning"
@@ -2263,6 +2278,12 @@ msgstr ""
 msgid "This text does not exist"
 msgstr "Denne tekst findes ikke"
 
+msgid "This text is a book"
+msgstr ""
+
+msgid "This text is an article"
+msgstr ""
+
 msgid "This text is new"
 msgstr "Denne tekst er ny"
 
@@ -2354,6 +2375,12 @@ msgstr "Prøv en tilfældig tekst hvis du er usikker"
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
+msgstr ""
+
+msgid ""
+"Turn links without description to YouTube, Vimeo,\n"
+"            Gmaps into widgets (affects site display only, static\n"
+"            formats have the link)"
 msgstr ""
 
 msgid "Two side layout"
@@ -2886,6 +2913,9 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "Text body, before any section"
+#~ msgstr "Brødtekst, før nogen sektion"
 
 #~ msgid "Locale"
 #~ msgstr "Lokalisering"
