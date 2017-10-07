@@ -295,3 +295,8 @@ div#text-prev-post-link span.glyphicon {
 .amw-show-text-type-and-number-of-pages {
     padding: 0 0 0 10px;
 }
+
+img.amw-wide-banner-img {
+    margin-left: auto;
+    margin-right: auto;
+}
