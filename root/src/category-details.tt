@@ -3,7 +3,7 @@
 [% INCLUDE 'include/breadcrumbs.tt' %]
 
 <div class="page-header">
-<h1>[% loc(category.name) %]
+  <h1><span id="amw-category-details-category-name">[% loc(category.name) %]</span>
   [%- IF multilang -%]
   [%- IF multilang.active -%]
   [%- IF multilang.filtered -%]
