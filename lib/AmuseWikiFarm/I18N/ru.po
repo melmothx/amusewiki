@@ -292,7 +292,7 @@ msgstr "Лимит страницы конструктора книг (цело�
 msgid "Build it"
 msgstr "Создать"
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"

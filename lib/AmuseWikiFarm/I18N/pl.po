@@ -276,7 +276,7 @@ msgstr ""
 msgid "Build it"
 msgstr ""
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"

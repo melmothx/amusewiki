@@ -308,7 +308,7 @@ msgstr "Максимален број на страници на збиркат�
 msgid "Build it"
 msgstr "Направи"
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"

@@ -305,7 +305,7 @@ msgstr "Limite de pages du générateur de livres (nombre)"
 msgid "Build it"
 msgstr "Générer"
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"

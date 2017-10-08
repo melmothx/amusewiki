@@ -308,7 +308,7 @@ msgstr "Límite de páginas del credaor de libro (número entero)"
 msgid "Build it"
 msgstr "Crear"
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"

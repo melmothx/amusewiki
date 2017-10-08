@@ -289,7 +289,7 @@ msgstr "Buchbinder Seitengrenze (ganze Zahl)"
 msgid "Build it"
 msgstr "Binden"
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"

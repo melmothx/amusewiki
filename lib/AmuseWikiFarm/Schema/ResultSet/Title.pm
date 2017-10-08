@@ -399,7 +399,7 @@ sub _sorting_map {
             sku_asc => {
                         priority => 1,
                         order_by => { -asc => [ "$me.sku", @default ] },
-                        # loc("By by sku ascending");
+                        # loc("By sku ascending");
                         label => "By sku ascending",
                         key => 'sku',
                        },

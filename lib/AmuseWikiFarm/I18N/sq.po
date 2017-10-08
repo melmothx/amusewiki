@@ -316,7 +316,7 @@ msgstr "Limiti i faqeve të përpiluesit të librit (integjer)"
 msgid "Build it"
 msgstr "Krijoje "
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"

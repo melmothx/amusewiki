@@ -345,7 +345,7 @@ msgid "Build it"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:402
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:409

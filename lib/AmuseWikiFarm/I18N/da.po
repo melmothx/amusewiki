@@ -302,7 +302,7 @@ msgstr "Bogbyggerens sidebegrænsning (helt tal)"
 msgid "Build it"
 msgstr "Skab bogen"
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"

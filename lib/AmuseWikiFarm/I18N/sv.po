@@ -289,7 +289,7 @@ msgstr "Bokskapare sidbegränsning (heltal)"
 msgid "Build it"
 msgstr "Skapa den"
 
-msgid "By by sku ascending"
+msgid "By sku ascending"
 msgstr ""
 
 msgid "By sku descending"
