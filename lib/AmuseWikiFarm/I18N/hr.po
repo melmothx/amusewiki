@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-12-19 15:16+0100\n"
+"PO-Revision-Date: 2017-10-08 10:52+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -27,7 +27,7 @@ msgstr "%1 za mobitele"
 
 #. (text.pages_estimated)
 msgid "%1 pp."
-msgstr ""
+msgstr "%1 str."
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(navodnici, poveznice, fusnote itd.)"
@@ -249,7 +249,7 @@ msgid "Authors for indexing"
 msgstr "Autori za indeksiranje"
 
 msgid "Automatically generated"
-msgstr ""
+msgstr "Automatski"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "Automatski zahtijevaj i obnovi SSL certifikate koristeći Let's Encrypt"
@@ -296,16 +296,16 @@ msgid "Build it"
 msgstr "Stvori"
 
 msgid "By by sku ascending"
-msgstr ""
+msgstr "Po SKU-u prema gore"
 
 msgid "By sku descending"
-msgstr ""
+msgstr "Po SKU-u prema dole"
 
 msgid "By title A-Z"
-msgstr ""
+msgstr "Po naslovu A-Z"
 
 msgid "By title Z-A"
-msgstr ""
+msgstr "Po naslovu Z-A"
 
 msgid "CSS Theme"
 msgstr "Tema CSS-a"
@@ -399,7 +399,7 @@ msgid "Create"
 msgstr "Stvori"
 
 msgid "Create a new format"
-msgstr ""
+msgstr "Stvori novi format"
 
 msgid "Create a new librarian"
 msgstr "Stvori novog bibliotekara"
@@ -440,11 +440,11 @@ msgid "Current time"
 msgstr "Vrijeme"
 
 msgid "Custom formats"
-msgstr ""
+msgstr "Posebni formati"
 
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
-msgstr ""
+msgstr "Posebni formati za %1"
 
 msgid "Date"
 msgstr "Datum"
@@ -453,7 +453,7 @@ msgid "Date of the original publication"
 msgstr "Datum prvog izdanja"
 
 msgid "Default sorting for the category text list"
-msgstr ""
+msgstr "Zadano sortiranje"
 
 msgid "Deferred/Deleted texts"
 msgstr "Odgođeni/izbrisani tekstovi"
@@ -473,7 +473,7 @@ msgstr ""
 "objavljena, izmjena će brisanjem biti zauvijek izgubljena"
 
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 msgid "Description item"
 msgstr "Popis definicija"
@@ -510,7 +510,7 @@ msgid "Division factor"
 msgstr "Faktor podijele"
 
 msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
+msgstr "Bez naslovnice, tekst počinje na prvoj stranici"
 
 msgid "Do not enforce save message"
 msgstr "Ne forsiraj poruku kad se tekst spremi"
@@ -537,11 +537,11 @@ msgid "Edit"
 msgstr "Uredi"
 
 msgid "Edit attachment description"
-msgstr ""
+msgstr "Uredi opis priloga"
 
 #. ($format->format_name)
 msgid "Edit format %1"
-msgstr ""
+msgstr "Uredi format %1"
 
 msgid "Edit full site configuration"
 msgstr "Uredi postavke sajta (napredno)"
@@ -586,10 +586,10 @@ msgid "Embed fonts in the EPUB file"
 msgstr "Uključi fontove u EPUB datoteku"
 
 msgid "Enable \"What links here\" feature"
-msgstr ""
+msgstr "Omogući \"Što vodi ovamo\""
 
 msgid "Enable title ordering by SKU"
-msgstr ""
+msgstr "Omogući sortiranje po SKU-u"
 
 msgid "Erase this revision"
 msgstr "Izbriši izmjenu"
@@ -729,13 +729,13 @@ msgid "Force publishing"
 msgstr "Prisili na objavljivanje"
 
 msgid "Format name"
-msgstr ""
+msgstr "Ime formata"
 
 msgid "Format successfully created"
-msgstr ""
+msgstr "Format uspješno stvoren"
 
 msgid "Format successfully updated"
-msgstr ""
+msgstr "Format uspješno uređen"
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formatiranje: gggg-mm-dd ss:mm, npr."
@@ -881,13 +881,15 @@ msgstr "Ako je prazno, koristit će se %1 iz direktorija aplikacije."
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
 "roughly this length"
-msgstr ""
+msgstr "Ako je broj veći od nule, automatski stvori tekst za pregled s tolikim slovima (okvirno)"
 
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
 msgstr ""
+"Ako je objavljivanje odgođeno, pokazati će se pregled i slika na\n"
+"popisima, ali bez pristupa tekstu"
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
@@ -920,9 +922,11 @@ msgid ""
 "          produce a PDF styled like an article (chapters and parts\n"
 "          will not start on a new page)."
 msgstr ""
+"Ako je ovaj redak prisutan, neće se koristiti naslovnica pa će se\n"
+"tekst prelamati kao članak"
 
 msgid "If this line is present, do not display the table of contents."
-msgstr ""
+msgstr "Ako je ovaj redak prisutan, tekst bit će bez popis sadržaja (bez kazala)"
 
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Ako želiš prijelom teksta izaberi obrazac"
@@ -1023,7 +1027,7 @@ msgid "Inline elements"
 msgstr "Elementi po retku"
 
 msgid "Insert the file into the body"
-msgstr ""
+msgstr "Dodaj datoteku tekstu"
 
 msgid "Internal list of translations"
 msgstr "Unutarnji popis prijevoda"
@@ -1119,7 +1123,7 @@ msgid "Leave it blank if you want it published right away."
 msgstr "Ostavi prazno ako želiš odmah objaviti."
 
 msgid "Leave this empty to have it automatically generated"
-msgstr ""
+msgstr "Ostavi prazno da bude automatski generirano"
 
 msgid "Letter imposed PDF"
 msgstr "Format \"Letter\" u PDF formatu"
@@ -1253,7 +1257,7 @@ msgstr "Ne generiraj sadržaj"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
-msgstr ""
+msgstr "Nemoj stvoriti zadnju stranicu s naslovom, autorom, logom itd."
 
 msgid "New"
 msgstr "Novo"
@@ -1265,7 +1269,7 @@ msgid "New site id"
 msgstr "Novi id sajta"
 
 msgid "Newer first"
-msgstr ""
+msgstr "Najnoviji prvi"
 
 msgid "Newer texts"
 msgstr "Noviji tekstovi"
@@ -1331,7 +1335,7 @@ msgid "OPDS"
 msgstr "OPDS"
 
 msgid "Older first"
-msgstr ""
+msgstr "Najstariji prvi"
 
 msgid "Older texts"
 msgstr "Stariji tekstovi"
@@ -1546,6 +1550,9 @@ msgid ""
 "        not embed them. If you need that, you should split the PDF in\n"
 "        images and upload those instead."
 msgstr ""
+"PDFovi su vanjske datoteke i ne mogu biti potpuno integrirane u\n"
+"tekstu. Generirani formati bit će bez njih. Ako ih trebaš, možeš ih\n"
+"pretvoriti u slike i dodati njih."
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1617,12 +1624,14 @@ msgid ""
 "        title and eventually a number if the URI already exists is\n"
 "        usually a good choice"
 msgstr ""
+"Izaberi željeni URI. Inače je autor, naslov i neki broj (ako URI već\n"
+"postoji) dobar izbor."
 
 msgid "Please setup the Beamer layout"
 msgstr "Izaberi stil slajdova"
 
 msgid "Please upload your file again!"
-msgstr ""
+msgstr "Molim ponovo učitaj datoteku!"
 
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poezija, bibliografije, drame, kod"
@@ -1807,7 +1816,7 @@ msgid "Restricted format options"
 msgstr "Ograničene opcije za fajlove"
 
 msgid "Results per page:"
-msgstr ""
+msgstr "Rezultati po stranici:"
 
 msgid "Retrieved on DATE from URL"
 msgstr "Pronađeno DANA na URL-u"
@@ -1917,7 +1926,7 @@ msgid "Show preview in other tab"
 msgstr "Pokaži pregled u drugom prozoru"
 
 msgid "Show text type and number of pages in the listing"
-msgstr ""
+msgstr "Pokaži vrstu i broj stranica na popisima tekstova"
 
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Prikaži informacije o tekstu na dnu stranice"
@@ -1975,7 +1984,7 @@ msgid "Sorry, too many jobs pending, please try again later!"
 msgstr "Previše zadataka na čekanju, vratite se kasnije!"
 
 msgid "Sorting:"
-msgstr ""
+msgstr "Sortiranje:"
 
 msgid "Source"
 msgstr "Izvor"
@@ -2118,7 +2127,7 @@ msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
-msgstr ""
+msgstr "Opis za %1 uređena"
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Učitana datoteka nije u HTML-u!"
@@ -2157,7 +2166,7 @@ msgstr "Izmjena sadrži slijedeće poruke"
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
-msgstr ""
+msgstr "PDF s minijaturom pokazat će se na kraju teksta"
 
 msgid "The text structure is shown below."
 msgstr "Struktura teksta je pokazana dolje."
@@ -2265,16 +2274,16 @@ msgid "This text does not exist"
 msgstr "Ovaj tekst ne postoji"
 
 msgid "This text is a book"
-msgstr ""
+msgstr "Ovo je knjiga"
 
 msgid "This text is an article"
-msgstr ""
+msgstr "Ovo je članak"
 
 msgid "This text is new"
 msgstr "Ovaj tekst je nov"
 
 msgid "This text is not available"
-msgstr ""
+msgstr "Ovaj je tekst nedostupan"
 
 msgid "This text is not published yet"
 msgstr "Ovaj tekst nije još objavljen"
@@ -2284,7 +2293,7 @@ msgid "This text will be deferred to %1"
 msgstr "Ovaj će se tekst objaviti tek %1"
 
 msgid "Thumbnail"
-msgstr ""
+msgstr "Minijatura"
 
 msgid "Time is optional."
 msgstr "Sat je neobavezan"
@@ -2342,7 +2351,7 @@ msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Za pogledati razlike, možeš ići na ovaj URL"
 
 msgid "Toggle fullscreen editor"
-msgstr ""
+msgstr "Pokaži/skrij full-screen editor"
 
 msgid "Topic"
 msgstr "Tema"
@@ -2369,6 +2378,8 @@ msgid ""
 "            Gmaps into widgets (affects site display only, static\n"
 "            formats have the link)"
 msgstr ""
+"Pretvori linkove bez opisa na YouTube, Vimeo i Gmaps u widgets (samo\n"
+"na sajtu, formati za skidanje imat će samo link)"
 
 msgid "Two side layout"
 msgstr "Obostrani prijelom"
@@ -2510,7 +2521,7 @@ msgid "Virtual hosts, one per line"
 msgstr "Virtualni hostovi, po jedan za redak"
 
 msgid "What links here"
-msgstr ""
+msgstr "Što vodi ovamo"
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -2545,6 +2556,8 @@ msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
 msgstr ""
+"Koristeći se tagom \"verbatim\", može se spriječiti tumačenje markupa\n"
+"(inače to ne treba)"
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2778,7 +2791,7 @@ msgid "mandatory"
 msgstr "obavezno"
 
 msgid "markup *not* interpreted"
-msgstr ""
+msgstr "ovaj markup *nije* tumačen"
 
 msgid "new-example-uri"
 msgstr "novi-uri-kao-primjer"
