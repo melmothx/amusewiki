@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2017-10-07 22:07+0200\n"
+"PO-Revision-Date: 2017-10-08 16:12+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -24,11 +24,11 @@ msgstr "%1 не существует"
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr "%1 стр."
+msgstr ""
 
 #. (text.pages_estimated)
 msgid "%1 pp."
-msgstr ""
+msgstr "%1 стр."
 
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr ""
