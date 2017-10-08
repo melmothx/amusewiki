@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.030 2017-10-08
+
+ - Updated and corrected I18N strings
+ - Completed i18n for it and hr
+
 2.029 2017-10-07
 
  - Offer a ToC preview on listing (opt-in) (#130)
