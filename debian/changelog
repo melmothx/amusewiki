@@ -1,3 +1,9 @@
+amusewiki (2.030-1+amw2) unstable; urgency=medium
+
+  * Rebuild with updated POs
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sun, 08 Oct 2017 16:14:36 +0200
+
 amusewiki (2.030-1+amw1) unstable; urgency=medium
 
   * New minor release
