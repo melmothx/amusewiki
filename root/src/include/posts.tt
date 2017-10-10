@@ -40,7 +40,7 @@
     <div class="amw-latest-listing-item-date">
       <br />
       [% IF show_type_and_number_of_pages %]
-      [% INCLUDE 'include/show_text_type.tt' %]
+      [% PROCESS 'include/show_text_type.tt' %]
       [% END %]
       <small class="amw-list-text-pubdate-locale">[% text.pubdate_locale(current_locale_code) %]</small>
       [% IF text.is_deferred %]
@@ -51,7 +51,7 @@
           [% loc('Read the whole text...') %]
         </a>
         [% IF show_type_and_number_of_pages %]
-        [% INCLUDE 'include/show_type_and_number_of_pages.tt' %]
+        [% PROCESS 'include/show_type_and_number_of_pages.tt' %]
         [% END %]
       </span>
     </div>
@@ -60,7 +60,7 @@
   [% ELSE %]
   <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
     [% IF show_type_and_number_of_pages %]
-    [% INCLUDE 'include/show_text_type.tt' %]
+    [% PROCESS 'include/show_text_type.tt' %]
     [% END %]
     <strong>[% text.title %]</strong>
     [%- IF text.author %] — [% text.author -%][% END -%]
@@ -73,7 +73,7 @@
     <span class="pull-right clearfix amw-list-text-pubdate-locale">
       [% text.pubdate_locale(current_locale_code) %]
       [% IF show_type_and_number_of_pages %]
-      [% INCLUDE 'include/show_type_and_number_of_pages.tt' %]
+      [% PROCESS 'include/show_type_and_number_of_pages.tt' %]
       [% END %]
     </span>
   </a>
