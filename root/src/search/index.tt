@@ -125,14 +125,26 @@
 <h3 id="results">[% built_query | html %]</h3>
 
 <div class="list-group">
+  [% SET show_type_and_number_of_pages = site.show_type_and_number_of_pages %]
   [% FOREACH res IN results %]
   [% IF res.text %]
   <div class="amw-listing-item">
   <a href="[% c.uri_for(res.text.full_uri) %]"
-     class="list-group-item clearfix">[% res.text.title %]
+     class="list-group-item clearfix">
+    [% SET text = res.text %]
+    [% IF show_type_and_number_of_pages %]
+    [% PROCESS 'include/show_text_type.tt' %]
+    [% END %]
+    [% res.text.title %]
     — [% res.text.author %]
     ([% res.relevance %]% [% loc("relevant") %])
+    <span class="pull-right">
+      [% IF show_type_and_number_of_pages %]
+      [% PROCESS 'include/show_type_and_number_of_pages.tt' %]
+      &nbsp;
+      [% END %]
     <span class="badge">[% res.rank %]</span>
+    </span>
   </a>
   </div>
   [% END %]

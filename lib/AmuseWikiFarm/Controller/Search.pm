@@ -97,6 +97,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
                                  title => $txt->title,
                                  author => $txt->author,
                                  url => $c->uri_for($txt->full_uri)->as_string,
+                                 text_type => $txt->text_qualification,
+                                 pages => $txt->pages_estimated,
                                 };
             }
         }
