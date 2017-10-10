@@ -524,4 +524,28 @@ sub static_index_tokens {
                   });
 }
 
+sub internal_for_sorting {
+    my $self = shift;
+    $self->search(undef, {
+                          order_by => "sorting_pos",
+                          select => [qw/id sorting_pos list_title/],
+                          as => [qw/id sorting_pos name/],
+                          result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                         });
+}
+
+# compare to Category RS 
+sub unsorted_records {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.sorting_pos" => 0 });
+}
+
+sub sorted_records {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.sorting_pos" => { '>' => 0  }});
+}
+
+
 1;

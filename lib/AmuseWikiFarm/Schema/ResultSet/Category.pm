@@ -187,5 +187,28 @@ sub authors_only {
     return shift->by_type('author');
 }
 
+sub internal_for_sorting {
+    my $self = shift;
+    $self->search(undef, {
+                          order_by => 'sorting_pos',
+                          columns => [qw/id sorting_pos name/],
+                          result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                         });
+}
+
+# compare to Title RS 
+sub unsorted_records {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.sorting_pos" => 0 });
+}
+
+sub sorted_records {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.sorting_pos" => { '>' => 0  }});
+}
+
+
 1;
 
