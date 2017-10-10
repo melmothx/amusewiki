@@ -868,8 +868,7 @@ use AmuseWikiFarm::Utils::LexiconMigration;
 use Regexp::Common qw/net/;
 use Path::Tiny ();
 use AmuseWikiFarm::Utils::Paths ();
-use constant SORTING_OFFSET => 16; # handy to find the hole by / 2
-use Time::HiRes qw(time);
+
 
 =head2 repo_root_rel
 
@@ -1482,157 +1481,10 @@ Return the number of updates (both titles and categories);
 
 =cut
 
-sub normalize_sorting {
-    my $self = shift;
-    my $time = time();
-    my $titles = $self->titles;
-    my $cats = $self->categories;
-    my $guard = $self->result_source->schema->txn_scope_guard;
-    my $updates = $self->_set_sorting_pos($titles) + $self->_set_sorting_pos($cats);
-    $guard->commit;
-    log_info { "Normalizing took " . (time() - $time) . " seconds" };
-    return $updates;
-}
-
-sub _set_sorting_pos {
-    my ($self, $rs) = @_;
-    my $collator = Unicode::Collate::Locale->new(locale => $self->locale);
-    # here we get both titles and categories, but we don't actually care which one
-    my @sorted = sort {
-        $collator->cmp($a->{name}, $b->{name})
-    } $rs->internal_for_sorting->all;
-    my $i = 0;
-    my $updates = 0;
-    foreach my $el (@sorted) {
-        $i += SORTING_OFFSET;
-        if ($el->{sorting_pos} != $i) {
-            $updates++;
-            $rs->search({ id => $el->{id} })->update({ sorting_pos => $i });
-        }
-    }
-    return $updates;
-}
-
 sub collation_index {
     my $self = shift;
     my $collator = Unicode::Collate::Locale->new(locale => $self->locale);
-    my ($changes, $bailed) = (0, 0);
-    my $time = time();
-    my $guard = $self->result_source->schema->txn_scope_guard;
-  COLLATIONLOOP:
-    foreach my $method (qw/titles categories/) {
-        my @unsorted = $self->$method->internal_for_sorting->unsorted_records;
-        if (@unsorted > 20) {
-            log_debug {
-                "Too many items to sort $method, bailing out and doing a full update: "
-                  . scalar(@unsorted) . " elements"
-              };
-            $bailed = 1;
-            last COLLATIONLOOP;
-        }
-        elsif (!@unsorted) {
-            log_debug { "No unsorted items in $method " };
-            next COLLATIONLOOP;
-        }
-        else {
-            log_debug { "Sorting " . scalar(@unsorted) . " elements" };
-        }
-
-        my $update = sub {
-            my ($id, $pos) = @_;
-            log_debug { "Updating $id id to position $pos" };
-            $self->$method->search({ id => $id })->update({ sorting_pos => $pos });
-            $changes++;
-        };
-
-      UNSORTEDLOOP:
-        while (@unsorted) {
-            my $un = shift(@unsorted);
-
-            # this query looks pretty fast to me it hits only PK and
-            # retrieve 3 fields. eventually we could replace it with a
-            # splicing, but looks like microoptimization
-            my @sorted = $self->$method->internal_for_sorting->sorted_records;
-
-            my $placement = 0;
-
-            unless (@sorted) {
-                # basically, this is the first item. So we find a
-                # resonably high number.
-                $placement = SORTING_OFFSET * 100;
-            }
-
-            # now we have to find the place for them. We could do a
-            # quick sort algorithm, like jumping in the middle, see if
-            # going up or down, until we find the place, but looks
-            # like an overkill. So scan linearly until we find the right place
-
-          SORTLOOP:
-            for (my $i = 0; $i < @sorted ; $i++) {
-                my $el = $sorted[$i];
-                my $current = $el->{sorting_pos};
-                my $previous = $i ? $sorted[$i - 1]{sorting_pos} : 0;
-                my $cmp = $collator->cmp($el->{name}, $un->{name});
-                # log_debug { "Compared $el->{name} with $un->{name} and got $cmp. " .
-                #              " Current $current, previous $previous" };
-                # we start comparing against B, e.g.
-                if ($cmp > 0) {
-                    # existing is greater say B and A.
-                    # and we got past the point and we need to go back and find the hole.
-                    log_debug { "$un->{name} got past the greater one $el->{name}" };
-                    # check if the previous index exist)
-                    my $try = $current - int(($current - $previous) / 2);
-                    if ($try != $previous and $try != $current) {
-                        log_debug { "$try is a good placement for $un->{name} because $el->{name} is $el->{sorting_pos}" };
-                        $placement = $try;
-                    }
-                    else {
-                        log_debug { "$try clashes with previous $previous or current $current, bailing"
-                                . "$un->{name} is greater than $el->{name}" };
-                        $bailed++;
-                    }
-                }
-                elsif ($cmp < 0) {
-                    # log_debug { "Continuing because $un->{name} is lesser than $el->{name}"  };
-                }
-                else {
-                    log_debug { "Identical string $un->{name} $el->{name}, same position $el->{sorting_pos}" };
-                    $placement = $current;
-                }
-                if ($placement || $bailed) {
-                    log_debug { "Placement is $placement, bailed is $bailed, breaking out" };
-                    last SORTLOOP;
-                }
-            }
-            if ($placement) {
-                log_debug { "Found placement for $un->{name} at position $placement" };
-                $update->($un->{id}, $placement);
-            }
-            elsif ($bailed) {
-                log_info { "Couldn't find an hole, bailing out and normalizing" };
-                last COLLATIONLOOP;
-            }
-            else {
-                log_debug { "Scanned all the records, $un->{name} seems to be the last element" };
-                $update->($un->{id}, $sorted[-1]{sorting_pos} + SORTING_OFFSET * 100);
-            }
-        }
-    }
-    $guard->commit;
-    if ($bailed) {
-        return $self->normalize_sorting;
-    }
-    else {
-        log_info { "Sorting without normalizing took " . (time() - $time) . " seconds" };
-    }
-    return $changes;
-}
-
-sub old_collation_index {
-    my $self = shift;
-    my $collator = Unicode::Collate::Locale->new(locale => $self->locale);
     my $changes = 0;
-    my $global_run = time();
     my $ttime = time();
     my @texts = sort {
         # warn $a->id . ' <=>  ' . $b->id;
@@ -1681,7 +1533,6 @@ sub old_collation_index {
     $guard->commit;
 
     log_debug { "Update categories done in " . (time() - $ttime) . " seconds" };
-    log_info { "Updating all took " . (time() - $global_run) . " seconds" };
     return $changes;
 }
 
