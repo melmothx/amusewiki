@@ -71,7 +71,7 @@
     <span class="fa fa-clock-o"></span>
     [% END %]
     <span class="pull-right clearfix amw-list-text-pubdate-locale">
-      [% text.pubdate_locale(current_locale_code) %]
+      <small>[% text.pubdate_locale(current_locale_code) %]</small>
       [% IF show_type_and_number_of_pages %]
       [% PROCESS 'include/show_type_and_number_of_pages.tt' %]
       [% END %]
