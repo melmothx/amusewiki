@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 72;
+use Test::More tests => 74;
 use DateTime;
 use Path::Tiny;
 use Test::WWW::Mechanize;
@@ -121,12 +121,19 @@ for (1..4) {
     $site->generate_static_indexes(sub { diag @_ });
 }
 
+$site->titles->status_is_published_or_deferred->update({
+                                                        text_size => 0,
+                                                        text_qualification => 0,
+                                                       });
+ok $site->titles->status_is_published_or_deferred->with_missing_pages_qualification->count;
 is $site->jobs->count, 1;
 {
     my $job = $site->jobs->dequeue;
     $job->dispatch_job;
     diag $job->logs;
 }
+
+ok !$site->titles->status_is_published_or_deferred->with_missing_pages_qualification->count;
 
 foreach my $file (@files) {
     ok (-f $file, "$file created");

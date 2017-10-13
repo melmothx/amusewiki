@@ -524,4 +524,13 @@ sub static_index_tokens {
                   });
 }
 
+sub with_missing_pages_qualification {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search([
+                          { text_size => 0},
+                          { text_qualification => [undef, ''] },
+                         ]);
+}
+
 1;

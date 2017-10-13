@@ -727,6 +727,11 @@ sub dispatch_job_bookbuilder {
 sub dispatch_job_build_static_indexes {
     my ($self, $logger) = @_;
     my $time = time();
+    my $missing = $self->site->titles->status_is_published_or_deferred->with_missing_pages_qualification;
+    while (my $text = $missing->next) {
+        $logger->("Populating text structure for " . $text->full_uri . "\n");
+        $text->text_html_structure(1);
+    }
     $self->site->static_indexes_generator->generate;
     $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
     return;
