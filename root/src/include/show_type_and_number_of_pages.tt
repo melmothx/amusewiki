@@ -1,6 +1,42 @@
 [%- # -*- mode:html -*- -%]
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.awm-show-text-type-icon').removeAttr('title');
+    $('*[data-poload]').each(function() {
+        var e = $(this);
+        $.get(e.data('poload'), function(d) {
+            e.data("content", d);
+            e.popover({
+                html: 1,
+                trigger: 'hover',
+                container: 'body',
+                placement: 'bottom',
+            });
+        });
+    });
+});
+</script>
+
+[%- BLOCK show_text_type %]
+<span class="amw-show-text-type"
+      data-poload="[% text.full_toc_uri %]"
+      data-title="[% loc('Table of Contents') %]">
+  <i aria-hidden="true"
+     [% IF text.text_qualification == 'book' %]
+     class="awm-show-text-type-icon fa fa-book"
+     title="[% loc('This text is a book') %]"
+     [% ELSE %]
+     title="[% loc('This text is an article') %]"
+     class="awm-show-text-type-icon fa fa-file-text-o"
+     [% END %]>
+  </i>
+</span>
+[%- END -%]
+
+[%- BLOCK show_page_nums %]
 <span class="amw-show-text-type-and-number-of-pages">
   <span class="label label-default">
     [% loc('[_1] pp.', text.pages_estimated) %]
   </span>
 </span>
+[%- END -%]
