@@ -197,10 +197,10 @@
           <div class="col-xs-1">
             <small>[% text.pubdate %]</small><br>
             <i aria-hidden="true"
-               [% IF text.text_qualification == 'book' %]
-               class="awm-show-text-type-icon fa fa-book"
                data-toggle="tooltip"
                data-placement="top"
+               [% IF text.text_qualification == 'book' %]
+               class="awm-show-text-type-icon fa fa-book"
                title="[% lh.loc_html('This text is a book') %]"
                [% ELSE %]
                title="[% lh.loc_html('This text is an article') %]"
