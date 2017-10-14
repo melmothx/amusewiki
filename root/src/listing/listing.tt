@@ -1,0 +1,6 @@
+<div class="page-header">
+  <h1>[% page_title | html  %]</h1>
+</div>
+[% INCLUDE 'include/pagination-widget.tt' %]
+[% INCLUDE 'include/posts.tt' %]
+[% INCLUDE 'include/pagination.tt' %]

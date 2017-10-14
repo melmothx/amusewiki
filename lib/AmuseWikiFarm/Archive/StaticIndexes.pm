@@ -17,7 +17,7 @@ use Date::Parse;
 
 # when we bump the version, we make sure to copy the files again.
 sub version {
-    return 1;
+    return 2;
 }
 
 =head1 NAME
@@ -128,9 +128,14 @@ sub create_titles {
     my $time = time();
     log_debug { "Creating titles" };
     my @texts = $self->site->titles->published_texts->static_index_tokens->all;
+    my $locale = $self->site->locale || 'en';
     foreach my $title (@texts) {
         _in_tree_uri($title);
         $title->{pubdate_int} = str2time($title->{pubdate});
+        my $dt = DateTime->from_epoch(epoch => $title->{pubdate_int},
+                                      locale => $locale);
+        $title->{pubdate} = $dt->format_cldr($dt->locale->date_format_medium);
+        $title->{pages_estimated} = int($title->{text_size} / 2000);
         my (@authors, @topics);
         if ($title->{title_categories}) {
             my @sorted = sort {
@@ -243,7 +248,15 @@ sub copy_static_files {
             }
             else {
                 log_debug { "Copying $src to $target" };
-                $src->copy($target);
+                if ($target->basename eq 'font-awesome.css' or
+                    $target->basename eq 'font-awesome.min.css') {
+                    my $body = $src->slurp_raw;
+                    $body =~ s/(\.(eot|woff|ttf|svg|woff2))\?[^']*v=[0-9]+\.[0-9]+\.[0-9]+[^']*'/$1'/g;
+                    $target->spew_raw($body);
+                }
+                else {
+                    $src->copy($target);
+                }
                 $out++;
             }
         }

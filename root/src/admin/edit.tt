@@ -470,6 +470,8 @@ kpsewhich mylogo.pdf
                  [% IF esite.cgit_integration %]checked="checked"[% END %]
                  name="cgit_integration" />
           [% loc('View history') %] (CGIT)
+          <br>
+          [% loc('This also makes /mirror/ public') %]
         </label>
       </div>
     </div>

@@ -33,7 +33,7 @@
           </button>
           <span>
           [%- IF site.has_site_file('navlogo.png') -%]
-          <a class="amw-navlogo" href="./titles.html">
+          <a class="amw-navlogo" href="[% site.canonical_url_secure %]">
             <img src="./site_files/navlogo.png"
                  title="[% site.sitename | html %]"
                  style="padding: 5px 5px; height: 50px;"
@@ -195,7 +195,19 @@
             [%- END %]
           </div>
           <div class="col-xs-1">
-            <small>[% text.pubdate %]</small>
+            <small>[% text.pubdate %]</small><br>
+            <i aria-hidden="true"
+               [% IF text.text_qualification == 'book' %]
+               class="awm-show-text-type-icon fa fa-book"
+               data-toggle="tooltip"
+               data-placement="top"
+               title="[% lh.loc_html('This text is a book') %]"
+               [% ELSE %]
+               title="[% lh.loc_html('This text is an article') %]"
+               class="awm-show-text-type-icon fa fa-file-text-o"
+               [% END %]>
+            </i>
+            <small>[% lh.loc_html('[_1] pp.', text.pages_estimated) %]</small>
           </div>
           </div>
         </div>

@@ -1,7 +1,14 @@
+[%- # -*- mode: html -*- %]
 <div class="amw-post-listing-container">
 [% IF texts.count %]
 <div class="amw-post-inner-listing">
-[% SET show_type_and_number_of_pages = site.show_type_and_number_of_pages %]
+
+  [%- IF site.show_type_and_number_of_pages -%]
+  [% PROCESS 'include/show_type_and_number_of_pages.tt' %]
+  [% ELSE %]
+  [% PROCESS 'include/hide_type_and_number_of_pages.tt' %]
+  [%- END -%]
+
 <div class="list-group">
   [% WHILE (text = texts.next) %]
   <div class="amw-listing-item">
@@ -39,9 +46,7 @@
     [% IF show_link %]
     <div class="amw-latest-listing-item-date">
       <br />
-      [% IF show_type_and_number_of_pages %]
-      [% INCLUDE 'include/show_text_type.tt' %]
-      [% END %]
+      [% PROCESS show_text_type %]
       <small class="amw-list-text-pubdate-locale">[% text.pubdate_locale(current_locale_code) %]</small>
       [% IF text.is_deferred %]
       <span class="fa fa-clock-o"></span>
@@ -50,18 +55,14 @@
         <a href="[% c.uri_for(text.full_uri) %]">
           [% loc('Read the whole text...') %]
         </a>
-        [% IF show_type_and_number_of_pages %]
-        [% INCLUDE 'include/show_type_and_number_of_pages.tt' %]
-        [% END %]
+        [% PROCESS show_page_nums %]
       </span>
     </div>
     [% END %]
   </div>
   [% ELSE %]
   <a href="[% c.uri_for(text.full_uri) %]" class="list-group-item clearfix">
-    [% IF show_type_and_number_of_pages %]
-    [% INCLUDE 'include/show_text_type.tt' %]
-    [% END %]
+    [% PROCESS show_text_type  %]
     <strong>[% text.title %]</strong>
     [%- IF text.author %] — [% text.author -%][% END -%]
     [%- IF site.multilanguage || (text.lang != current_locale_code) -%]
@@ -71,10 +72,8 @@
     <span class="fa fa-clock-o"></span>
     [% END %]
     <span class="pull-right clearfix amw-list-text-pubdate-locale">
-      [% text.pubdate_locale(current_locale_code) %]
-      [% IF show_type_and_number_of_pages %]
-      [% INCLUDE 'include/show_type_and_number_of_pages.tt' %]
-      [% END %]
+      <small>[% text.pubdate_locale(current_locale_code) %]</small>
+      [% PROCESS show_page_nums %]
     </span>
   </a>
   [% END %]
@@ -88,23 +87,3 @@
 </div>
 [% END %]
 </div>
-
-[% IF show_type_and_number_of_pages %]
-<script type="text/javascript">
-$(document).ready(function() {
-    $('.awm-show-text-type-icon').removeAttr('title');
-    $('*[data-poload]').each(function() {
-        var e = $(this);
-        $.get(e.data('poload'), function(d) {
-            e.data("content", d);
-            e.popover({
-                html: 1,
-                trigger: 'hover',
-                container: 'body',
-                placement: 'bottom',
-            });
-        });
-    });
-});
-</script>
-[% END %]

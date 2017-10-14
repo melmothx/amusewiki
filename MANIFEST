@@ -447,6 +447,8 @@ lib/AmuseWikiFarm/Controller/Git.pm
 lib/AmuseWikiFarm/Controller/Help.pm
 lib/AmuseWikiFarm/Controller/Latest.pm
 lib/AmuseWikiFarm/Controller/Library.pm
+lib/AmuseWikiFarm/Controller/Listing.pm
+lib/AmuseWikiFarm/Controller/Mirror.pm
 lib/AmuseWikiFarm/Controller/Monthly.pm
 lib/AmuseWikiFarm/Controller/OPDS.pm
 lib/AmuseWikiFarm/Controller/Publish.pm
@@ -488,6 +490,7 @@ lib/AmuseWikiFarm/Model/Mailer.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
 lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm
+lib/AmuseWikiFarm/Role/Controller/Listing.pm
 lib/AmuseWikiFarm/Role/Controller/ListingDisplay.pm
 lib/AmuseWikiFarm/Role/Controller/RegularListing.pm
 lib/AmuseWikiFarm/Role/Controller/Text.pm
@@ -539,6 +542,7 @@ lib/AmuseWikiFarm/Schema/ResultSet/TitleStat.pm
 lib/AmuseWikiFarm/Schema/ResultSet/User.pm
 lib/AmuseWikiFarm/Utils/Amuse.pm
 lib/AmuseWikiFarm/Utils/CgitSetup.pm
+lib/AmuseWikiFarm/Utils/Iterator.pm
 lib/AmuseWikiFarm/Utils/LetsEncrypt.pm
 lib/AmuseWikiFarm/Utils/LexiconMigration.pm
 lib/AmuseWikiFarm/Utils/Mailer.pm
@@ -612,6 +616,7 @@ root/src/include/breadcrumbs.tt
 root/src/include/bulk_job.tt
 root/src/include/ckeditor.tt
 root/src/include/editing-options.tt
+root/src/include/hide_type_and_number_of_pages.tt
 root/src/include/markitup.tt
 root/src/include/pagination-widget.tt
 root/src/include/pagination.tt
@@ -624,6 +629,7 @@ root/src/layout.tt
 root/src/library.tt
 root/src/library/bbselect.tt
 root/src/library/toc.tt
+root/src/listing/listing.tt
 root/src/macros.tt
 root/src/monthly/list.tt
 root/src/monthly/month.tt
@@ -1136,6 +1142,8 @@ t/controller_Git.t
 t/controller_Help.t
 t/controller_Latest.t
 t/controller_Library.t
+t/controller_Listing.t
+t/controller_Mirror.t
 t/controller_OPDS.t
 t/controller_Publish.t
 t/controller_Search.t
@@ -1300,6 +1308,7 @@ t/user-language.t
 t/users.t
 t/utils-bookbuilder.t
 t/utils-cgitsetup.t
+t/utils-iterator.t
 t/utils-json.t
 t/utils-paginator.t
 t/view_HTML.t

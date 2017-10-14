@@ -1,0 +1,2 @@
+[% BLOCK show_page_nums %][% END %]
+[% BLOCK show_text_type %][% END %]

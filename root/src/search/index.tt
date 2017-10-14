@@ -6,7 +6,7 @@
 </div>
 [% END %]
 
-<div>
+<div style="margin-top: 20px">
   [% # form-horizontal doesn't need .row %]
 
   <form id="search" method="get" class="form-horizontal" role="form">
@@ -120,25 +120,13 @@
 </div>
 
 
-[% IF results.size %]
+[% IF texts.count %]
 
-<h3 id="results">[% built_query | html %]</h3>
-
-<div class="list-group">
-  [% FOREACH res IN results %]
-  [% IF res.text %]
-  <div class="amw-listing-item">
-  <a href="[% c.uri_for(res.text.full_uri) %]"
-     class="list-group-item clearfix">[% res.text.title %]
-    — [% res.text.author %]
-    ([% res.relevance %]% [% loc("relevant") %])
-    <span class="badge">[% res.rank %]</span>
-  </a>
-  </div>
-  [% END %]
-  [% END %]
+<div class="page-header">
+  <h1 id="results">[% built_query | html %]</h1>
 </div>
 
+[% INCLUDE 'include/posts.tt' %]
 [% INCLUDE 'include/pagination.tt' %]
 
 [% ELSIF built_query %]

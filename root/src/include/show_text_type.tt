@@ -1,7 +1,4 @@
 [%- # -*- mode:html -*- -%]
-[%- UNLESS text.text_qualification -%]
-[%- SET this_can_be_ignored = text.text_html_structure -%]
-[%- END -%]
 <span class="amw-show-text-type"
       data-poload="[% text.full_toc_uri %]"
       data-title="[% loc('Table of Contents') %]">

@@ -30,10 +30,10 @@
 
     [% IF pager %]
     [% IF pager.next_url %]
-    <link rel="next" href="[% pager.next_url %]" />
+    <link rel="next" href="[% pager.next_url | html %]" />
     [% END %]
     [% IF pager.prev_url %]
-    <link rel="prev" href="[% pager.prev_url %]" />
+    <link rel="prev" href="[% pager.prev_url | html %]" />
     [% END %]
     [% END %]
 
@@ -215,7 +215,7 @@
               <ul class="dropdown-menu dropdown-menu-left">
 	            <li[% IF nav == 'titles' %] class="active" [% END %]
                       id="amw-nav-bar-titles">
-                  <a href="[% c.uri_for('/library') %]"
+                  <a href="[% c.uri_for('/listing') %]"
 		             title="[% loc('texts sorted by title') %]">
                     [% loc('Titles') %]
                   </a>
@@ -619,7 +619,7 @@
         </span>
         <span id="amw-footer-link-feeds-sep">|</span>
         <span id="amw-footer-link-library">
-      <a href="[% c.uri_for('/library') %]"
+      <a href="[% c.uri_for('/listing') %]"
 		 title="[% loc('texts sorted by title') %]">[% loc('Titles') %]</a>
         </span>
 

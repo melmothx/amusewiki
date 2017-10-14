@@ -1,12 +1,12 @@
 package AmuseWikiFarm::Controller::Category;
 use Moose;
-with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
+with qw/AmuseWikiFarm::Role::Controller::HumanLoginScreen
+        AmuseWikiFarm::Role::Controller::Listing/;
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Utils::Amuse qw/muse_naming_algo/;
-use AmuseWikiFarm::Utils::Paginator;
 use AmuseWikiFarm::Log::Contextual;
 
 =head1 NAME
@@ -120,7 +120,7 @@ sub category_list_display :Chained('category') :PathPart('') :Args(0) {
               template => 'category.tt');
 }
 
-sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
+sub select_texts :Chained('category') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     my $canonical = muse_naming_algo($uri);
     my $cat = $c->stash->{categories_rs}->find({ uri => $canonical });
@@ -133,25 +133,24 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
             return;
         }
         my $texts_rs = $cat->titles->texts_only;
-        if ($c->user_exists) {
-            $texts_rs = $texts_rs->status_is_published_or_deferred;
-        }
-        elsif ($site->show_preview_when_deferred) {
-            $texts_rs = $texts_rs->status_is_published_or_deferred_with_teaser;
-        }
-        else {
-            $texts_rs = $texts_rs->status_is_published;
-        }
-        # handle the query parameters. The RS validate them
-        my $query = $c->request->query_params;
-        my $texts = $texts_rs
-          ->order_by($query->{sort} || $site->titles_category_default_sorting)
-          ->page_number($query->{page})
-          ->rows_number($query->{rows} || $site->pagination_size_category);
+        $c->stash(texts => $texts_rs,
+                  category_object => $cat,
+                  category_uri => $canonical,
+                 );
+    }
+    else {
+        $c->stash(uri => $canonical);
+        $c->detach('/not_found');
+    }
+}
 
-        if (!$c->user_exists and $site->show_preview_when_deferred) {
-            $c->stash(no_full_text_if_not_published => 1);
-        }
+# chained from AmuseWikiFarm::Role::Controller::Listing;
+
+sub single_category :Chained('filter_texts') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $cat = delete $c->stash->{category_object};
+    my $uri = delete $c->stash->{category_uri};
+    my $site = $c->stash->{site};
 
         my $current_locale = $c->stash->{current_locale_code};
         my $category_description = $cat->localized_desc($current_locale);
@@ -159,8 +158,7 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
         my $page_title = $c->loc($cat->name);
         $c->stash(page_title => $page_title,
                   template => 'category-details.tt',
-                  texts => $texts,
-                  category_canonical_name => $canonical,
+                  category_canonical_name => $uri,
                   category_description => $category_description,
                   meta_description => ( $category_description ? $category_description->html_body : $page_title),
                   category => $cat);
@@ -186,59 +184,10 @@ sub single_category :Chained('category') :PathPart('') :CaptureArgs(1) {
                                      [ $c->stash->{f_class}, $uri ]),
            label => $c->loc($cat->name),
           };
-    }
-    else {
-        $c->stash(uri => $canonical);
-        $c->detach('/not_found');
-    }
+
 }
 
 
-sub _stash_pager {
-    my ($self, $c, $action, @args) = @_;
-    my $pager = $c->stash->{texts}->pager;
-    my $site = $c->stash->{site};
-    my ($rows, $sort);
-    my $active_rows = $pager->entries_per_page;
-    my $active_sort = $site->validate_text_category_sorting($c->request->query_params->{sort} ||
-                                                            $site->titles_category_default_sorting);
-    if ($c->request->query_params->{rows}) {
-        $rows = $active_rows;
-    }
-    if (my $qsort = $c->request->query_params->{sort}) {
-        $sort = $active_sort;
-    }
-    my $format_link = sub {
-        return $c->uri_for_action($action,
-                                  \@args, {
-                                           page => $_[0],
-                                           ($rows ? (rows => $rows) : ()),
-                                           ($sort ? (sort => $sort) : ()),
-                                          });
-    };
-    my (@sortings, @rows_per_page);
-    foreach my $s ($site->titles_available_sortings) {
-        if ($s->{name} eq $active_sort) {
-            $s->{active} = 1;
-        }
-        push @sortings, $s;
-    }
-    foreach my $i (10, 20, 50, 100, 200, 500) {
-        push @rows_per_page, {
-                              rows => $i,
-                              active => ($i == $active_rows ? 1 : 0),
-                             };
-    }
-    Dlog_debug { "widget : $_ " } \@sortings;
-    $c->stash(
-              pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
-              pagination_widget => {
-                                    target => $c->uri_for_action($action, \@args),
-                                    sortings => \@sortings,
-                                    rows => \@rows_per_page,
-                                   },
-             );
-}
 
 sub single_category_display :Chained('single_category') :PathPart('') :Args(0) {
     my ($self, $c) = @_;

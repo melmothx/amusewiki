@@ -512,6 +512,8 @@ sub static_index_tokens {
                                "$me.lang",
                                "$me.sorting_pos",
                                "$me.pubdate",
+                               "$me.text_size",
+                               "$me.text_qualification",
                               ],
                    '+columns' => {
                                   'title_categories.title_id' => 'title_categories.title_id',
@@ -522,6 +524,15 @@ sub static_index_tokens {
                                   'title_categories.category.sorting_pos' => 'category.sorting_pos',
                                  }
                   });
+}
+
+sub with_missing_pages_qualification {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search([
+                          { text_size => 0},
+                          { text_qualification => [undef, ''] },
+                         ]);
 }
 
 1;

@@ -23,6 +23,7 @@ Catalyst Controller.
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Paginator;
+use AmuseWikiFarm::Utils::Iterator;
 use Data::Page;
 
 sub opensearch :Chained('/site_no_auth') :PathPart('opensearch.xml') :Args(0) {
@@ -97,6 +98,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
                                  title => $txt->title,
                                  author => $txt->author,
                                  url => $c->uri_for($txt->full_uri)->as_string,
+                                 text_type => $txt->text_qualification,
+                                 pages => $txt->pages_estimated,
                                 };
             }
         }
@@ -110,7 +113,7 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
                built_query => $query,
                page_title => $c->loc('Search'),
-               results => [ grep { $_->{text} } @results ] );
+               texts => AmuseWikiFarm::Utils::Iterator->new([ map { $_->{text} } grep { $_->{text} } @results ]));
 }
 
 
