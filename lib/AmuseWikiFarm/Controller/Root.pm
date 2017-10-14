@@ -307,13 +307,13 @@ sub robots_txt :Chained('/site_no_auth') :PathPart('robots.txt') :Args(0) {
 User-agent: Wget
 Disallow: /library/
 Disallow: /special/
-Disallow: /random
 
 User-agent: *
 Disallow: /edit/
 Disallow: /bookbuilder/
 Disallow: /bookbuilder
 Disallow: /search
+Disallow: /random
 Disallow: /git/
 ROBOTS
     my $site = $c->stash->{site};
