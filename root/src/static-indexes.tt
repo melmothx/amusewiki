@@ -33,7 +33,7 @@
           </button>
           <span>
           [%- IF site.has_site_file('navlogo.png') -%]
-          <a class="amw-navlogo" href="./titles.html">
+          <a class="amw-navlogo" href="[% site.canonical_url_secure %]">
             <img src="./site_files/navlogo.png"
                  title="[% site.sitename | html %]"
                  style="padding: 5px 5px; height: 50px;"

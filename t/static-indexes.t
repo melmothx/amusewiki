@@ -104,8 +104,8 @@ foreach my $method (map { $_ . '_file' } @targets) {
     my $file = $indexes->$method;
     $mech->get_ok("file://" . $file);
     my @links = $mech->followable_links;
-    diag Dumper([map { $_->url } @links]);
-    $mech->links_ok(\@links, "Check all links in $file");
+    diag Dumper([grep { $_ !~ /^https?:/ } map { $_->url } @links]);
+    $mech->links_ok( [ grep { $_->url !~ /^https?:/ } @links ], "Check all links in $file");
 }
 
 $site->jobs->delete;
