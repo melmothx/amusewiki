@@ -21,7 +21,8 @@ use Test::WWW::Mechanize::Catalyst;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $sid = '0listing0';
 my $site;
-unless ($site = $schema->resultset('Site')->find($sid)) {
+# unless ($site = $schema->resultset('Site')->find($sid))
+{
     $site = create_site($schema, $sid);
     $site->update({
                secure_site => 0,
@@ -69,7 +70,7 @@ foreach my $login (0..1) {
         $mech->get_ok($url);
         $mech->content_contains($expected{$sorting->{name}}) or die;
         my @pager_links = $mech->find_all_links(url_regex => qr/\/listing/);
-        is scalar(@pager_links), 7, "7 links found for the pager";
+        is scalar(@pager_links), 9, "9 links found for the pager";
         foreach my $link ($url, @pager_links) {
             $mech->get_ok($link);
             foreach my $link ($mech->find_all_links(url_regex => qr/\/library\/.+/)) {
