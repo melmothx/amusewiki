@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 10;
+use Test::More tests => 12;
 use AmuseWikiFarm::Utils::Iterator;
 my $iter = AmuseWikiFarm::Utils::Iterator->new([1,2,3]);
 is $iter->count, 3;
