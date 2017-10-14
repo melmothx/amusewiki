@@ -199,6 +199,8 @@
             <i aria-hidden="true"
                [% IF text.text_qualification == 'book' %]
                class="awm-show-text-type-icon fa fa-book"
+               data-toggle="tooltip"
+               data-placement="top"
                title="[% lh.loc_html('This text is a book') %]"
                [% ELSE %]
                title="[% lh.loc_html('This text is an article') %]"
