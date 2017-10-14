@@ -304,6 +304,10 @@ sub favicon :Chained('/site_no_auth') :PathPart('favicon.ico') :Args(0) {
 sub robots_txt :Chained('/site_no_auth') :PathPart('robots.txt') :Args(0) {
     my ($self, $c) = @_;
     my $robots = <<'ROBOTS';
+User-agent: Wget
+Disallow: /library/
+Disallow: /special/
+
 User-agent: *
 Disallow: /edit/
 Disallow: /bookbuilder/
