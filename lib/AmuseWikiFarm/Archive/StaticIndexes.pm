@@ -17,7 +17,7 @@ use Date::Parse;
 
 # when we bump the version, we make sure to copy the files again.
 sub version {
-    return 1;
+    return 2;
 }
 
 =head1 NAME
@@ -248,7 +248,15 @@ sub copy_static_files {
             }
             else {
                 log_debug { "Copying $src to $target" };
-                $src->copy($target);
+                if ($target->basename eq 'font-awesome.css' or
+                    $target->basename eq 'font-awesome.min.css') {
+                    my $body = $src->slurp_raw;
+                    $body =~ s/(\.(eot|woff|ttf|svg|woff2))\?[^']*v=[0-9]+\.[0-9]+\.[0-9]+[^']*'/$1'/g;
+                    $target->spew_raw($body);
+                }
+                else {
+                    $src->copy($target);
+                }
                 $out++;
             }
         }
