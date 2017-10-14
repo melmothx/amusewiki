@@ -42,13 +42,15 @@ sub mirror :Chained('root') :PathPart('mirror') :Args {
     $self->check_login($c) unless $site->cgit_integration;
 
     unless (@path) {
-        $c->res->redirect($c->uri_for_action('/mirror/mirror', 'titles.html'));
+        $c->res->redirect($c->uri_for_action('/mirror/mirror', 'index.html'));
         $c->detach;
         return;
     }
-    # if no args, default to titles.html
-    push @path, 'titles.html' unless @path;
-
+    # fake index.html for wget and alike, otherwise the redirection
+    # will not download index.html again.
+    if (@path == 1 and $path[0] eq 'index.html') {
+        @path = ('titles.html');
+    }
     my @valid = grep { m/\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z/ } @path;
     # all fragments are valid:
     if (scalar(@valid) != scalar(@path)) {

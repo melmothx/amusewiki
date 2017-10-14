@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 30;
+use Test::More tests => 33;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -43,10 +43,17 @@ foreach my $path (@paths) {
 }
 
 $mech->get_ok("/mirror");
-is $mech->uri->path, '/mirror/titles.html';
+is $mech->uri->path, '/mirror/index.html';
 $mech->get_ok("/mirror/");
-is $mech->uri->path, '/mirror/titles.html';
+is $mech->uri->path, '/mirror/index.html';
 
+{
+    $mech->get_ok("/mirror/index.html");
+    my $index_body = $mech->content;
+    $mech->get_ok("/mirror/titles.html");
+    my $titles_body = $mech->content;
+    is $titles_body, $index_body, "index.html and titles.html are the same";
+}
 
 foreach my $bad (qw[.git .gitignore .. . ../../../hello blaa/../hello ]) {
     $mech->get("/mirror/$bad");
