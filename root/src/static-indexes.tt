@@ -195,7 +195,17 @@
             [%- END %]
           </div>
           <div class="col-xs-1">
-            <small>[% text.pubdate %]</small>
+            <small>[% text.pubdate %]</small><br>
+            <i aria-hidden="true"
+               [% IF text.text_qualification == 'book' %]
+               class="awm-show-text-type-icon fa fa-book"
+               title="[% lh.loc_html('This text is a book') %]"
+               [% ELSE %]
+               title="[% lh.loc_html('This text is an article') %]"
+               class="awm-show-text-type-icon fa fa-file-text-o"
+               [% END %]>
+            </i>
+            <small>[% lh.loc_html('[_1] pp.', text.pages_estimated) %]</small>
           </div>
           </div>
         </div>
