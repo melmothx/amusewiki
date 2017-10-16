@@ -48,6 +48,7 @@ sub handled_jobs_hashref {
             git => 7,
             rebuild => 20,
             reindex => 19,
+            build_custom_format => 25, # after publish/rebuild/reindex but before the static indexes
             build_static_indexes => 30,
             # testing
             testing => 10,
@@ -215,6 +216,18 @@ sub build_static_indexes_jobs {
     my $self = shift;
     my $me = $self->current_source_alias;
     return $self->search({ "$me.task" => 'build_static_indexes' });
+}
+
+sub build_custom_format_jobs {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.task" => 'build_custom_format' });
+}
+
+sub build_custom_format_add {
+    my ($self, $payload, $username) = @_;
+    die "Missing required keys id and cf" unless $payload->{id} && $payload->{cf};
+    return $self->enqueue(build_custom_format => $payload, $username);
 }
 
 sub build_static_indexes_add {

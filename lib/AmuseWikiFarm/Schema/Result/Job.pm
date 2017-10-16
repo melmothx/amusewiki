@@ -737,6 +737,28 @@ sub dispatch_job_build_static_indexes {
     return;
 }
 
+sub dispatch_job_build_custom_format {
+    my ($self, $logger) = @_;
+    my $time = time();
+    my $data = $self->job_data;
+    my $cf = $self->site->custom_formats->find($data->{cf});
+    my $title = $self->site->titles->find($data->{id});
+    if ($cf && $title) {
+        if ($cf->needs_compile($title)) {
+            $cf->compile($title, $logger);
+            $logger->("Generated " . $cf->format_name . ' for ' . $title->full_uri
+                      . ' in ' . (time() - $time) . " seconds\n");
+        }
+        else {
+            $logger->($cf->format_name . ' is not needed for ' . $title->full_uri);
+        }
+    }
+    else {
+        $logger->("Couldn't find CF $data->{cf} or title $data->{id}\n");
+    }
+
+}
+
 
 before delete => sub {
     my $self = shift;

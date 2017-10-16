@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 112;
+use Test::More tests => 217;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -28,6 +28,8 @@ foreach my $type (qw/text special/) {
     $rev->commit_version;
     $rev->publish_text;
 }
+
+ok !$site->jobs->pending->build_custom_format_jobs->count;
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
@@ -74,6 +76,26 @@ foreach my $cf (@cfs) {
     ok $cf->bookbuilder;
 }
 
+foreach my $type (qw/text special/) {
+    my ($rev, $err) =  $site->create_new_text({ author => 'new-author',
+                                                title => 'new-text',
+                                                lang => 'en',
+                                              }, $type);
+    die $err if $err;
+    $rev->edit($rev->muse_body . "\n\n some more text for the masses\n");
+    $rev->commit_version;
+    $rev->publish_text;
+}
+
+ok $site->jobs->pending->build_custom_format_jobs->count;
+while (my $job = $site->jobs->dequeue) {
+    $job->dispatch_job;
+    is $job->status, 'completed';
+    diag $job->logs;
+}
+
+
+
 my @links;
 my @gen_files;
 
@@ -84,10 +106,25 @@ foreach my $text ($site->titles->all) {
     ok -d $text->parent_dir;
     $mech->get_ok($text->full_uri);
     foreach my $cf (@cfs) {
-        $mech->content_lacks($cf->format_name);
+        $mech->get_ok($text->full_uri);
+        if ($text->title eq 'pallino') {
+            $mech->content_lacks($cf->format_name);
+        }
+        elsif ($text->f_class eq 'special') {
+            $mech->get_ok($text->full_uri . '.' . $cf->extension);
+        }
+        else {
+            $mech->content_contains($cf->format_name);
+            $mech->get_ok($text->full_uri . '.' . $cf->extension);
+        }
     }
     foreach my $cf (@cfs) {
-        ok $cf->needs_compile($text);
+        if ($text->title eq 'pallino') {
+            ok $cf->needs_compile($text);
+        }
+        else {
+            ok !$cf->needs_compile($text), $cf->format_name . " already built for " . $text->full_uri;
+        }
         my $out = $cf->compile($text, sub { diag @_ });
         ok $out, "Produced $out" or die;
         ok (-f $out, "$out was produced");
@@ -114,6 +151,13 @@ foreach my $text ($site->titles->all) {
     }
     diag "Checking if the files are generated";
     $site->compile_and_index_files([keys %{ $site->repo_find_files }]);
+
+    ok $site->jobs->pending->build_custom_format_jobs->count;
+    while (my $job = $site->jobs->dequeue) {
+        $job->dispatch_job;
+        is $job->status, 'completed';
+        diag $job->logs;
+    }
     foreach my $old_j ($site->jobs) {
         diag "Deleting job" . $old_j->id, ' ' , $old_j->task;
         $old_j->delete;
