@@ -113,8 +113,6 @@ while (1) {
             log_info { "Checking deferred titles, old jobs and revisions" };
             eval {
                 $schema->resultset('Title')->publish_deferred;
-                $schema->resultset('Job')->purge_old_jobs;
-                $schema->resultset('Revision')->purge_old_revisions;
             };
             if ($@) {
                 log_error { "Errors: $@" };
