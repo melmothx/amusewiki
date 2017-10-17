@@ -46,6 +46,7 @@ sub handled_jobs_hashref {
             publish => 5,
             bookbuilder => 6,
             git => 7,
+            hourly_job => 9,
             daily_job => 10,
             rebuild => 20,
             reindex => 19,
@@ -188,8 +189,16 @@ sub alias_create_add {
 
 sub rebuild_add {
     my ($self, $payload, $username) = @_;
+    die "Missing id" unless $payload->{id};
     return $self->enqueue(rebuild => $payload, $username);
 }
+
+sub reindex_add {
+    my ($self, $payload, $username) = @_;
+    die "Missing path" unless $payload->{path};
+    return $self->enqueue(reindex => $payload, $username);
+}
+
 
 =head2 dequeue
 

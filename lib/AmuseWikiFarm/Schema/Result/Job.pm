@@ -783,6 +783,20 @@ sub dispatch_job_daily_job {
     return;
 }
 
+sub dispatch_job_hourly_job {
+    my ($self, $logger) = @_;
+    my $schema = $self->result_source->schema;
+    # this is the former publish_deferred, the "async" way
+    my $deferred = $schema->resultset('Title')->deferred_to_publish(DateTime->now);
+    my $username = $self->username;
+    while (my $title = $deferred->next) {
+        my $site = $title->site;
+        my $file = $title->f_full_path_name;
+        $site->jobs->reindex_add({ path => $file }, $username);
+        $logger->("Scheduled reindex for " . $site->id . $title->full_uri . "\n");
+    }
+    return;
+}
 
 before delete => sub {
     my $self = shift;

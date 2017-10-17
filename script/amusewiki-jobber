@@ -12,6 +12,7 @@ use POSIX qw/nice setsid/;
 use Fcntl qw/:flock/;
 use File::Spec;
 use AmuseWikiFarm::Schema;
+use DateTime;
 
 =pod
 
@@ -31,15 +32,17 @@ It stays in the foreground, but each job is managed in a double fork
 
 nice(19);
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $count = -1;
 my $pidfile = '.amusewiki.jobber.lock';
 my $daily = 0;
+my $hourly = 0;
 
 # at startup, ensure all the sites will have fresh indexes. This will
-# schedule the jobs
-foreach my $site ($schema->resultset('Site')->all) {
-    $site->generate_static_indexes;
-}
+# schedule the jobs. Wrapped in eval if DB is failing us.
+eval {
+    foreach my $site ($schema->resultset('Site')->all) {
+        $site->generate_static_indexes;
+    }
+};
 
 while (1) {
     sleep AMW_POLLING;
@@ -54,32 +57,27 @@ while (1) {
         flock($lock, LOCK_UN);
         close $lock;
     }
-    if ($count == 1000) {
-        # reset the counter and trigger the deferred texts.
-        $count = 0;
-    }
-    else {
-        $count++;
-    }
     my $now = time();
     if (($now - $daily) > (60 * 60 * 24)) {
         $daily = $now;
         log_debug { "Setting daily job" };
         $schema->resultset('Job')->enqueue_global_job('daily_job');
     }
-    else {
-        log_debug { "too early: " . ($now - $daily) . " seconds since last daily job" };
+    if (($now - $hourly) > (60 * 60)) {
+        $hourly = $now;
+        log_debug { "Setting hourly job" };
+        $schema->resultset('Job')->enqueue_global_job('hourly_job');
     }
+
     my $job = eval { $schema->resultset('Job')->dequeue };
     if ($@) {
         log_error { "Errors on dequeu: $@" };
     }
-    unless ($job or $count == 0) {
-        next;
-    }
+    next unless $job;
+
     if (my $pid = fork()) {
         wait;
-        print "Detached new job " . $job->task . "\n";
+        print "Detached new job " . $job->task . " " . DateTime->now . "\n";
         log_debug { "Child $pid exited, looping again\n" };
     }
     elsif (defined $pid) {
@@ -109,16 +107,7 @@ while (1) {
         print $lock $$;
 
         $schema->resultset('Job')->fail_stale_jobs;
-        if ($count == 0) {
-            log_info { "Checking deferred titles, old jobs and revisions" };
-            eval {
-                $schema->resultset('Title')->publish_deferred;
-            };
-            if ($@) {
-                log_error { "Errors: $@" };
-            }
-            log_info { "Done checking deferred titles, old jobs and revisions" };
-        }
+
         if ($job) {
             eval { $job->dispatch_job };
             if ($@) {

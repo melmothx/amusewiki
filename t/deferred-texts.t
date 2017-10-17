@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 79;
+use Test::More tests => 97;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -179,7 +179,17 @@ is ($site->titles->published_or_deferred_texts
 
     $deferred->pubdate($now);
     $deferred->update;
-    $schema->resultset('Title')->publish_deferred;
+    $schema->resultset('Job')->delete;
+    $schema->resultset('Job')->enqueue_global_job('hourly_job');
+    while (my $job = $schema->resultset('Job')->dequeue) {
+        $job->dispatch_job;
+        is $job->status, 'completed';
+        ok($job->started) and diag $job->started;
+        ok($job->completed) and diag $job->completed;
+        diag $job->logs;
+    }
+
+
     $deferred->discard_changes;
 
     is ($deferred->status, 'deferred', "Without changing the file, it's still deferred");
@@ -191,7 +201,14 @@ is ($site->titles->published_or_deferred_texts
 
     $deferred->pubdate($now);
     $deferred->update;
-    $schema->resultset('Title')->publish_deferred;
+    $schema->resultset('Job')->enqueue_global_job('hourly_job');
+    while (my $job = $schema->resultset('Job')->dequeue) {
+        $job->dispatch_job;
+        is $job->status, 'completed';
+        ok($job->started) and diag $job->started;
+        ok($job->completed) and diag $job->completed;
+        diag $job->logs;
+    }
     $deferred->discard_changes;
 
     is ($deferred->status, 'published');

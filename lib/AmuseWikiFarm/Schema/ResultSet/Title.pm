@@ -253,26 +253,6 @@ sub deferred_to_publish {
                                              });
 }
 
-=head2 publish_deferred
-
-Check and publish text which need publishing
-
-=cut
-
-sub publish_deferred {
-    my $self = shift;
-    my $now = DateTime->now;
-    log_debug { "checking deferred titles for $now" };
-    my $deferred = $self->deferred_to_publish($now);
-    while (my $title = $deferred->next) {
-        my $site = $title->site;
-        my $file = $title->f_full_path_name;
-        log_info { "Publishing $file for site " . $site->id };;
-        $site->compile_and_index_files([ $file ]);
-        log_info { "Done publishing $file" };
-    }
-}
-
 =head2 listing_tokens($lang)
 
 Use HRI to pull the data and select only some columns.
