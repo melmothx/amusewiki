@@ -190,7 +190,6 @@
                 ></span><span class="sr-only">[% loc('Slides (PDF)') %]</span></a>
       </span>
       [% END %]
-      [% IF site.epub && text.check_if_file_exists('epub') %]
       <span id="downloadepub">
         <a href="[% basename %].epub" class="amw-register-stat"
            data-amw-register-stat-type="epub">
@@ -200,7 +199,6 @@
                 data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only">[% loc('EPUB (for mobile devices)') %]</span></a>
       </span>
-      [% END %]
       [% FOREACH cformat IN site.active_custom_formats %]
         [% IF text.check_if_file_exists(cformat.extension) %]
         <span>
@@ -215,7 +213,6 @@
         </span>
         [% END %]
       [% END %]
-      [% IF site.html && text.check_if_file_exists('html') %]
       <span id="downloadhtml">
         <a href="[% basename %].html" class="amw-register-stat"
            data-amw-register-stat-type="html">
@@ -225,8 +222,6 @@
                 data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only">[% loc('Standalone HTML (printer-friendly)') %]</span></a>
       </span>
-      [% END %]
-      [% IF site.tex && text.check_if_file_exists('tex') %]
       <span id="downloadtex">
         <a href="[% basename %].tex">
           <span class="fa fa-file-code-o fa-2x fa-border fw"
@@ -235,7 +230,6 @@
                 title="[% loc('XeLaTeX source') %]"
                 ></span><span class="sr-only" >[% loc('XeLaTeX source') %]</span></a>
       </span>
-      [% END %]
       <span id="downloadsrc">
         <a href="[% basename %].muse">
           <span class="fa fa-file-text-o fa-2x fa-border fw"
@@ -244,7 +238,6 @@
                 data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only" >[% loc('plain text source') %]</span></a>
       </span>
-      [% IF site.zip %]
       <span id="downloadzip">
         <a href="[% basename %].zip">
           <span class="fa fa-file-archive-o fa-2x fa-border fw"
@@ -253,7 +246,6 @@
                 data-toggle="tooltip" data-placement="top"
                 ></span><span class="sr-only" >[% loc('Source files with attachments') %]</span></a>
       </span>
-      [% END %]
       [% IF (cgit_link = text.recent_changes_uri) %]
         [% IF site.cgit_integration || c.user_exists %]
       <span id="filehistory">

@@ -967,15 +967,20 @@ sub compile_options {
 
 sub available_formats {
     my $self = shift;
-    my %formats;
-    foreach my $f (qw/tex
+    # mandatory formats are always true, without them we break the
+    # app. we could nuke the columns, but this would break eventual
+    # upgrade code
+    my %formats = (
+                   tex => 1,
+                   html => 1,
+                   bare_html => 1,
+                   epub => 1,
+                   zip => 1,
+                  );
+    foreach my $f (qw/
                       pdf
                       a4_pdf
                       lt_pdf
-                      html
-                      bare_html
-                      epub
-                      zip
                       sl_tex
                       sl_pdf
                      /) {
@@ -2391,11 +2396,6 @@ sub update_from_params_restricted {
                         canonical         => 'value',
                         sitegroup         => 'value',
 
-                        tex               => 'value',
-                        html              => 'value',
-                        bare_html         => 'value',
-                        epub              => 'value',
-                        zip               => 'value',
                         ttdir             => 'value',
 
                         use_luatex               => 'option',
@@ -2452,7 +2452,7 @@ sub update_from_params {
 
     # first round: booleans. Here there is not much to do. If it's set, 1,
     # otherwise 0
-    my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
+    my @booleans = (qw/    pdf a4_pdf lt_pdf
                        sl_pdf
                        logo_with_sitename
                        cgit_integration

@@ -98,60 +98,6 @@
       </legend>
       <div id="restricted-formats" class="collapse">
 
-      <div class="form-group">
-        <div class="col-sm-offset-6 col-sm-6">
-          <label>
-            <input type="checkbox"
-                   [% IF esite.tex %]checked="checked"[% END %]
-                   name="tex" />
-            [% loc('TeX') %]
-          </label>
-        </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-6">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.html %]checked="checked"[% END %]
-                 name="html" />
-          [% loc('HTML') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-6">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.bare_html %]checked="checked"[% END %]
-                 name="bare_html" />
-          [% loc('Bare HTML, needed by the application') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-6">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.epub %]checked="checked"[% END %]
-                 name="epub" />
-          [% loc('EPUB') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-6">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.zip %]checked="checked"[% END %]
-                 name="zip" />
-          [% loc('ZIP archive with sources, needed by the bookbuilder') %]
-        </label>
-      </div>
-    </div>
-
     <div class="form-group">
       <label for="ttdir" class="col-sm-6 control-label">
         [% loc('Directory with templates in the site repositoy, e.g.
