@@ -5,10 +5,11 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 61;
+use Test::More tests => 67;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
+use Data::Dumper::Concise;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -45,7 +46,7 @@ foreach my $ext (@exts) {
     is $job->produced, $text->full_uri;
     my $jlogs = $job->logs;
     $job->delete;
-    foreach my $ext (qw/tex pdf zip/) {
+    foreach my $ext (@exts) {
         like $jlogs, qr/Created .*\.\Q$ext\E/;
         ok (-f $text->filepath_for_ext($ext), "$ext exists");
         my $newts = (stat($text->filepath_for_ext($ext)))[9];

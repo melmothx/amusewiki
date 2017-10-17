@@ -1592,10 +1592,12 @@ sub compile_and_index_files {
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
                 foreach my $cf (@cfs) {
-                    $self->jobs->build_custom_format_add({
-                                                          id => $indexed->id,
-                                                          cf => $cf->custom_formats_id,
-                                                         });
+                    if ($cf->needs_compile($indexed)) {
+                        $self->jobs->build_custom_format_add({
+                                                              id => $indexed->id,
+                                                              cf => $cf->custom_formats_id,
+                                                             })
+                    }
                 }
             }
         }

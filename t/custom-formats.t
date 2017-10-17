@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 227;
+use Test::More tests => 258;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -179,13 +179,29 @@ foreach my $text ($site->titles->all) {
     }
     foreach my $title ($site->titles->all) {
         $site->jobs->enqueue(rebuild => { id => $title->id }, 0);
-        my $job = $site->jobs->dequeue;
-        $job->dispatch_job;
-        is $job->status, 'completed';
+        while (my $j = $site->jobs->dequeue) {
+            $j->dispatch_job;
+            ok $j->completed;
+            diag $j->logs;
+        }
     }
     foreach my $file (@gen_files) {
         ok(-f $file, "$file exists now");
     }
+    $site->jobs->enqueue(rebuild => { id => $site->titles->first->id }, 0);
+    my $forced;
+    while (my $j = $site->jobs->dequeue) {
+        $j->dispatch_job;
+        ok $j->completed;
+        diag $j->task . ' ' . $j->payload;
+        if ($j->task eq 'build_custom_format') {
+            like $j->logs, qr/Generated/;
+            like $j->payload, qr/force/;
+            unlike $j->logs, qr/is not needed/;
+            $forced++;
+        }
+    }
+    ok($forced, "rebuild force the custom formats");
 }
 
 # and a deletion

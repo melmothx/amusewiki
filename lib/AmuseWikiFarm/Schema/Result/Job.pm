@@ -563,7 +563,11 @@ sub dispatch_job_rebuild {
                 my $compiler = $site->get_compiler($logger);
                 $compiler->compile($muse);
                 foreach my $cf (@cfs) {
-                    $cf->compile($text, $logger);
+                    $site->jobs->build_custom_format_add({
+                                                          id => $id,
+                                                          cf => $cf->custom_formats_id,
+                                                          force => 1,
+                                                         });
                 }
                 # this is relatively fast as we already have the
                 # formats built.
@@ -754,13 +758,13 @@ sub dispatch_job_build_custom_format {
     my $cf = $self->site->custom_formats->find($data->{cf});
     my $title = $self->site->titles->find($data->{id});
     if ($cf && $title) {
-        if ($cf->needs_compile($title)) {
+        if ($data->{force} or $cf->needs_compile($title)) {
             $cf->compile($title, $logger);
             $logger->("Generated " . $cf->format_name . ' for ' . $title->full_uri
                       . ' in ' . (time() - $time) . " seconds\n");
         }
         else {
-            $logger->($cf->format_name . ' is not needed for ' . $title->full_uri);
+            $logger->($cf->format_name . ' is not needed for ' . $title->full_uri . "\n");
         }
     }
     else {
