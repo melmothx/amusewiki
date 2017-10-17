@@ -62,11 +62,10 @@ while (1) {
         $count++;
     }
     my $now = time();
-    my $daily_job;
     if (($now - $daily) > (60 * 60 * 24)) {
         $daily = $now;
         log_debug { "Setting daily job" };
-        $daily_job = 1;
+        $schema->resultset('Job')->enqueue_global_job('daily_job');
     }
     else {
         log_debug { "too early: " . ($now - $daily) . " seconds since last daily job" };
@@ -75,12 +74,12 @@ while (1) {
     if ($@) {
         log_error { "Errors on dequeu: $@" };
     }
-    unless ($daily_job or $job or $count == 0) {
+    unless ($job or $count == 0) {
         next;
     }
     if (my $pid = fork()) {
         wait;
-        print "Detached new job\n";
+        print "Detached new job " . $job->task . "\n";
         log_debug { "Child $pid exited, looping again\n" };
     }
     elsif (defined $pid) {
@@ -109,22 +108,6 @@ while (1) {
         flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
         print $lock $$;
 
-        if ($daily_job) {
-            log_info { "Daily job initialized" };
-            eval {
-                $schema->resultset('Site')->check_and_update_acme_certificates(1);
-            };
-            if ($@) {
-                log_error { "Errors: $@" };
-            }
-            eval {
-                $schema->resultset('TitleStat')->delete_old;
-            };
-            if ($@) {
-                log_error { "Errors: $@" };
-            }
-            log_info { "Daily job finished" };
-        }
         $schema->resultset('Job')->fail_stale_jobs;
         if ($count == 0) {
             log_info { "Checking deferred titles, old jobs and revisions" };

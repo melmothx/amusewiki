@@ -769,6 +769,22 @@ sub dispatch_job_build_custom_format {
 
 }
 
+sub dispatch_job_daily_job {
+    my ($self, $logger) = @_;
+    my $schema = $self->result_source->schema;
+    eval { $schema->resultset('TitleStat')->delete_old; };
+    if (my $err = $@) {
+        log_error { "Deleting old stats: $err" };
+        $logger->(  "Deleting old stats: $err" );
+    }
+    eval { $schema->resultset('Site')->check_and_update_acme_certificates(1); };
+    if (my $err = $@) {
+        log_error { "Updating ACME certificates: $err" };
+        $logger->(  "Updating ACME certificates: $err" );
+    }
+    return;
+}
+
 
 before delete => sub {
     my $self = shift;

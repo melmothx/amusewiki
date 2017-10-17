@@ -46,6 +46,7 @@ sub handled_jobs_hashref {
             publish => 5,
             bookbuilder => 6,
             git => 7,
+            daily_job => 10,
             rebuild => 20,
             reindex => 19,
             build_custom_format => 25, # after publish/rebuild/reindex but before the static indexes
@@ -96,6 +97,27 @@ sub enqueue {
                      created => DateTime->now,
                      priority => $priority,
                      username => ($username ? clean_username($username) : undef),
+                    };
+    my $job = $self->create($insertion)->discard_changes;
+    $job->make_room_for_logs;
+    return $job;
+}
+
+sub enqueue_global_job {
+    my ($self, $task, $payload) = @_;
+    $payload ||= {};
+    my $site = $self->result_source->schema->resultset('Site')->first;
+    return unless $site;
+    die "payload $payload is an hashref" unless (ref($payload) && (ref($payload) eq 'HASH'));
+    my $priority = $self->handled_jobs_hashref->{$task};
+    die "Unhandled job $task" unless $priority;
+    my $insertion = {
+                     task    => $task,
+                     payload => to_json($payload),
+                     status  => 'pending',
+                     created => DateTime->now,
+                     priority => $priority,
+                     site => $site,
                     };
     my $job = $self->create($insertion)->discard_changes;
     $job->make_room_for_logs;
