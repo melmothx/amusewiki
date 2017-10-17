@@ -231,6 +231,7 @@ CREATE TABLE job (
        payload   TEXT, -- the JSON stuff
        status    VARCHAR(32),
        created   DATETIME NOT NULL,
+       started   DATETIME,
        completed DATETIME,
        priority  INTEGER NOT NULL DEFAULT 10,
        produced  VARCHAR(255),

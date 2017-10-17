@@ -79,6 +79,11 @@ __PACKAGE__->table("job");
   data_type: 'datetime'
   is_nullable: 0
 
+=head2 started
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =head2 completed
 
   data_type: 'datetime'
@@ -124,6 +129,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "created",
   { data_type => "datetime", is_nullable => 0 },
+  "started",
+  { data_type => "datetime", is_nullable => 1 },
   "completed",
   { data_type => "datetime", is_nullable => 1 },
   "priority",
@@ -201,8 +208,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rDD8GopfN4xzot0CtVd26Q
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-17 11:14:23
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PIlQOyZOhi1ow/6AiwhzYA
 
 sub sqlt_deploy_hook {
     my ($self, $sqlt_table) = @_;
