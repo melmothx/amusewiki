@@ -434,7 +434,10 @@ trigger a job.
 
 sub dispatch_job {
     my $self = shift;
-    $self->update({ status => 'taken' });
+    $self->update({
+                   status => 'taken',
+                   started => DateTime->now,
+                  });
     my $task = $self->task;
     my $handlers = $self->result_source->resultset->handled_jobs_hashref;
     if ($handlers->{$task}) {

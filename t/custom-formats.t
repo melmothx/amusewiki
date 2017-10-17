@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 217;
+use Test::More tests => 227;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -91,6 +91,8 @@ ok $site->jobs->pending->build_custom_format_jobs->count;
 while (my $job = $site->jobs->dequeue) {
     $job->dispatch_job;
     is $job->status, 'completed';
+    ok($job->started) and diag $job->started;
+    ok($job->completed) and diag $job->completed;
     diag $job->logs;
 }
 
