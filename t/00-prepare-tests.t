@@ -51,6 +51,24 @@ if (-f 'test.db') {
     unlink 'test.db' or die $!;
 }
 
+{
+    my $schema = AmuseWikiFarm::Schema->connect('amuse');
+    if ($schema->storage->sqlt_type eq 'SQLite') {
+        $schema->storage->dbh->do('pragma foreign_keys=off');
+    }
+    my $dh = DBIx::Class::DeploymentHandler->new({
+                                                  schema => $schema,
+                                                  databases => [qw/SQLite MySQL PostgreSQL/],
+                                                  sql_translator_args => { add_drop_table => 0,
+                                                                           quote_identifiers => 1,
+                                                                         },
+                                                  script_directory => "dbicdh",
+                                                 });
+    $dh->install({ version => 2 });
+    $dh->upgrade;
+    unlink 'test.db' or die $!;
+}
+
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 DBIx::Class::DeploymentHandler->new({
