@@ -233,6 +233,14 @@ has bookbuilder => (is => 'ro',
                     lazy => 1,
                     builder => '_build_bookbuilder');
 
+has non_blocking => (is => 'rw',
+                     isa => 'Int',
+                     default => sub { 0 });
+
+sub can_be_non_blocking {
+    return shift->task eq 'build_custom_format';
+}
+
 sub _build_bookbuilder {
     my $self = shift;
     if ($self->task eq 'bookbuilder') {

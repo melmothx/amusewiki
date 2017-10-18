@@ -24,6 +24,8 @@ has polling_interval => (is => 'ro',
                          isa => Int,
                          default => sub { 5 });
 
+has max_parallel => (is => 'ro', isa => Int, default => sub { 3 });
+
 has _daily => (is => 'rw', isa => Int, default => sub { 0 });
 has _hourly => (is => 'rw', isa => Int, default => sub { 0 });
 
@@ -44,12 +46,15 @@ sub main_loop {
         log_debug { "Setting hourly job" };
         $self->schema->resultset('Job')->enqueue_global_job('hourly_job');
     }
-    my $job = eval { $self->schema->resultset('Job')->dequeue };
-    if ($@) {
-        log_error { "Errors on dequeu: $@" };
+    my @jobs = $self->get_jobs;
+    foreach my $job (@jobs) {
+        $self->spawn_job($job);
     }
-    return unless $job;
+    return @jobs;
+}
 
+sub spawn_job {
+    my ($self, $job) = @_;
     if (my $pid = fork()) {
         wait;
         log_info { "Detached new job " . $job->task . " " . DateTime->now } ;
@@ -68,7 +73,6 @@ sub main_loop {
     else {
         die "Couldn't fork $!";
     }
-    return $job;
 }
 
 sub handle_job {
@@ -76,7 +80,10 @@ sub handle_job {
     return unless $job;
     # be nice
     nice(19);
-    log_info { "This is the jobber $$, detaching and handling " . $job->task; };
+    log_info { "This is the jobber $$, detaching and handling " . $job->task };
+    if ($job->non_blocking) {
+        log_info { "This job will be non-blocking" };
+    }
     my $stdin = my $stdout = File::Spec->devnull;
     log_debug { "my $stdin = my $stdout  = File::Spec->devnull ($$)" };
     open (STDIN, '<', $stdin)
@@ -87,15 +94,19 @@ sub handle_job {
     open(STDERR, ">&STDOUT") or die "can't dup stdout: $!";
 
     log_info { "Starting job with pid $$" };
-    my $lock = $self->get_lock;
-    if ($job) {
+
+    if ($job->non_blocking) {
+        eval { $job->dispatch_job };
+    }
+    else {
+        my $lock = $self->get_lock;
         eval { $job->dispatch_job };
         if ($@) {
             log_error { "Errors: $@" };
         }
+        log_info { "job $$ finished, exiting" };
+        $self->release_lock($lock);
     }
-    log_info { "job $$ finished, exiting" };
-    $self->release_lock($lock);
 }
 
 sub get_lock {
@@ -113,5 +124,31 @@ sub release_lock {
     flock($lock, LOCK_UN);
     close $lock;
 }
+
+sub get_jobs {
+    my $self = shift;
+    my ($first, @pending) = $self->schema->resultset('Job')
+      ->pending
+      ->search(undef, { rows => $self->max_parallel })
+      ->all;
+    return unless $first;
+    if ($first->can_be_non_blocking) {
+        # we don't set the non_blocking flag on the first, so the next
+        # loop will wait for it.
+        my @out = ($first);
+        while (@pending && $pending[0]->can_be_non_blocking) {
+            my $j = shift @pending;
+            # subsequent jobs will be non-blocking in this batch
+            $j->non_blocking(1);
+            push @out, $j;
+        }
+        return @out;
+    }
+    # if the first job is blocking, just return that;
+    else {
+        return ($first);
+    }
+}
+
 
 1;
