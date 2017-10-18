@@ -36,7 +36,6 @@ eval {
 
 my $jobber = AmuseWikiFarm::Utils::Jobber->new(
                                                schema => $schema,
-                                               pidfile => '.amusewiki.jobber.lock',
                                                ($ENV{AMW_POLLING} ?
                                                 ( polling_interval => $ENV{AMW_POLLING} )
                                                 :
