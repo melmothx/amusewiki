@@ -5,14 +5,8 @@ BEGIN { die "Do not run this as root" unless $>; }
 use strict;
 use warnings;
 use utf8;
-use AmuseWikiFarm::Log::Contextual;
-use Cwd;
-use constant AMW_POLLING => $ENV{AMW_POLLING} || 5;
-use POSIX qw/nice setsid/;
-use Fcntl qw/:flock/;
-use File::Spec;
 use AmuseWikiFarm::Schema;
-use DateTime;
+use AmuseWikiFarm::Utils::Jobber;
 
 =pod
 
@@ -30,11 +24,7 @@ It stays in the foreground, but each job is managed in a double fork
 
 =cut
 
-nice(19);
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $pidfile = '.amusewiki.jobber.lock';
-my $daily = 0;
-my $hourly = 0;
 
 # at startup, ensure all the sites will have fresh indexes. This will
 # schedule the jobs. Wrapped in eval if DB is failing us.
@@ -44,86 +34,17 @@ eval {
     }
 };
 
+my $jobber = AmuseWikiFarm::Utils::Jobber->new(
+                                               schema => $schema,
+                                               pidfile => '.amusewiki.jobber.lock',
+                                               ($ENV{AMW_POLLING} ?
+                                                ( polling_interval => $ENV{AMW_POLLING} )
+                                                :
+                                                ()
+                                               ));
+
 while (1) {
-    sleep AMW_POLLING;
-
-    # here we wait to have a lock
-    {
-        open (my $lock, '>', $pidfile) or die "Can't open $pidfile $!";
-        log_debug { "Waiting for the lock on $pidfile" };
-        flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
-        print $lock $$;
-        log_debug { "Got the lock on $pidfile in parent" };
-        flock($lock, LOCK_UN);
-        close $lock;
-    }
-    my $now = time();
-    if (($now - $daily) > (60 * 60 * 24)) {
-        $daily = $now;
-        log_debug { "Setting daily job" };
-        $schema->resultset('Job')->enqueue_global_job('daily_job');
-    }
-    if (($now - $hourly) > (60 * 60)) {
-        $hourly = $now;
-        log_debug { "Setting hourly job" };
-        $schema->resultset('Job')->enqueue_global_job('hourly_job');
-    }
-
-    my $job = eval { $schema->resultset('Job')->dequeue };
-    if ($@) {
-        log_error { "Errors on dequeu: $@" };
-    }
-    next unless $job;
-
-    if (my $pid = fork()) {
-        wait;
-        print "Detached new job " . $job->task . " " . DateTime->now . "\n";
-        log_debug { "Child $pid exited, looping again\n" };
-    }
-    elsif (defined $pid) {
-        # fork again
-        defined(my $pid = fork()) or die "Cannot fork: $!";
-        if ($pid) {
-            log_debug { "Spawned jobber from $$ to $pid, exiting now" };
-            exit;
-        }
-        log_debug { "This is the jobber $$, detaching" };
-        my $stdin = my $stdout = File::Spec->devnull;
-        log_debug { "my $stdin = my $stdout  = File::Spec->devnull ($$)" };
-        open (STDIN, '<', $stdin)
-          or die "Couldn't open $stdin";
-
-
-        open (STDOUT, '>', $stdout)
-          or die "Couldn't open $stdout";
-        die "Can't start a new session $!" if (setsid() == -1);
-
-        open(STDERR, ">&STDOUT") or die "can't dup stdout: $!";
-
-        log_info { "Starting job with pid $$" };
-            # get the lock
-        open (my $lock, '>', $pidfile) or die "Can't open pidfile $!";
-        flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
-        print $lock $$;
-
-        $schema->resultset('Job')->fail_stale_jobs;
-
-        if ($job) {
-            eval { $job->dispatch_job };
-            if ($@) {
-                log_error { "Errors: $@" };
-            }
-        }
-        log_info { "job $$ finished, exiting" };
-        flock($lock, LOCK_UN);
-        close $lock;
-        # log_debug { sleep 10 ; "$$ is exiting" };
-        # and exit;
-        exit;
-    }
-    else {
-        die "Couldn't fork $!";
-    }
+    $jobber->main_loop;
 }
     
 
