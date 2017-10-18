@@ -68,6 +68,7 @@ sub main_loop {
     else {
         die "Couldn't fork $!";
     }
+    return $job;
 }
 
 sub handle_job {
@@ -75,7 +76,7 @@ sub handle_job {
     return unless $job;
     # be nice
     nice(19);
-    log_info { "This is the jobber $$, detaching" };
+    log_info { "This is the jobber $$, detaching and handling " . $job->task; };
     my $stdin = my $stdout = File::Spec->devnull;
     log_debug { "my $stdin = my $stdout  = File::Spec->devnull ($$)" };
     open (STDIN, '<', $stdin)
