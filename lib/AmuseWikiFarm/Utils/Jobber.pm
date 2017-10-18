@@ -88,7 +88,6 @@ sub handle_job {
 
     log_info { "Starting job with pid $$" };
     my $lock = $self->get_lock;
-    $self->schema->resultset('Job')->fail_stale_jobs;
     if ($job) {
         eval { $job->dispatch_job };
         if ($@) {
