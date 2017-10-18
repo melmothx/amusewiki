@@ -1049,7 +1049,7 @@ sub formats_definitions {
     my @out = grep { $existing{$_->{code}} || $_->{always} } @all;
     foreach my $custom ($self->custom_formats->active_only->all) {
         push @out, {
-                    ext => $custom->extension,
+                    ext => '.' . $custom->extension,
                     icon => ($custom->is_epub ? 'fa-tablet' : 'fa-file-pdf-o'),
                     desc => $custom->format_name,
                    };
