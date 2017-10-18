@@ -338,11 +338,11 @@ for stale jobs (due, e.g. to a crash, or db connection failing, etc.).
 sub fail_stale_jobs {
     my $self = shift;
     my $me = $self->current_source_alias;
-    my $yesterday = $self->result_source->schema->storage->datetime_parser
+    my $reftime = $self->result_source->schema->storage->datetime_parser
       ->format_datetime(DateTime->now->subtract(hours => 1));
     $self->search({
                    "$me.status" => 'taken',
-                   "$me.created" => { '<', $yesterday },
+                   "$me.created" => { '<', $reftime },
                   })
       ->update({ status => 'failed',
                  errors => "Job aborted, please try again" });
