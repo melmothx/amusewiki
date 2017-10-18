@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 30;
+use Test::More tests => 32;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -64,13 +64,17 @@ foreach my $f (@fields) {
 
 $site->jobs->enqueue(rebuild => { id => $site->titles->first->id }, 15);
 {
-    my $job = $site->jobs->dequeue;
-    is $job->task, 'rebuild';
-    $job->dispatch_job;
-    is $job->status, 'completed';
-    diag $job->logs;
-    $mech->get_ok($job->produced . '.' . $format->extension);
-    $mech->get_ok($job->produced);
+    my $produced;
+    while (my $job = $site->jobs->dequeue) {
+        $job->dispatch_job;
+        is $job->status, 'completed';
+        diag $job->logs;
+        if ($job->task eq 'rebuild') {
+            $produced = $job->produced;
+        }
+    }
+    $mech->get_ok($produced . '.' . $format->extension);
+    $mech->get_ok($produced);
 }
 ok $mech->follow_link( url_regex => qr{/bookbuilder/add/} );
 $mech->get_ok('/bookbuilder');
