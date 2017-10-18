@@ -1055,7 +1055,6 @@ script/upgrade-to-secure-sites.pl
 script/upgrade_db
 script/upgrade_i18n
 sql/sqlite.sql
-sql/version.txt
 t/00-prepare-tests.t
 t/02pod.t
 t/03podcoverage.t
