@@ -152,6 +152,69 @@ Optional, but we should have it. We need the language_TERRITORY, though.
 
 sub add_open_graph {
     my ($self, $c) = @_;
+    if (my $site = $c->stash->{site}) {
+        if ($site->has_site_file('navlogo.png')) {
+            # ok, we have an image, we can proceed
+            my @opengraph;
+            my $default_image =  $c->uri_for_action('/sitefiles/local_files',
+                                                    [ $site->id, 'navlogo.png' ]);
+            # title
+            my $title = $c->stash->{page_title} || $site->sitename;
+            if ($title) {
+                push @opengraph, { p => 'og:title', c => $title  };
+            }
+            else {
+                # cannot proceed, this is a broken setup and shouldn't happen
+                return;
+            }
+            my $text = $c->stash->{text};
+            if ($text and ref($text) and $text->can('text_qualification')) {
+                my $type = $text->text_qualification || 'article';
+                push @opengraph, { p => 'og:type', c => $type };
+                if (my $author = $text->author) {
+                    push @opengraph, { p => "og:$type:author", c => $author };
+                }
+                if (my $topics = $c->stash->{text_topics}) {
+                    if (ref($topics) and ref($topics) eq 'ARRAY') {
+                        foreach my $topic (@$topics) {
+                            push @opengraph, { p => "og:$type:tag", c => $c->loc($topic->{name}) }
+                              if $topic->{name};
+                        }
+                    }
+                }
+                if (my $cover_uri = $text->cover_uri) {
+                    push @opengraph, { p => 'og:image', c => $c->uri_for($cover_uri) };
+                }
+                else {
+                    push @opengraph, { p => 'og:image', c => $default_image };
+                }
+            }
+            else {
+                push @opengraph, { p => 'og:type', c => 'website' };
+                push @opengraph, { p => 'og:image', c => $default_image };
+            }
+            my $uri = $c->request->uri->clone;
+            my %query = $uri->query_form; # don't mind if the param is repeated twice.
+            foreach my $k (keys %query) {
+                delete $query{$k} if $k =~ m/^__/;
+            }
+            $uri->query_form(%query);
+            my $base = $site->canonical_url_secure;
+            # unclear what happens if the app is mounted, but in this
+            # case I think that's the last of our problems.
+            push @opengraph, { p => 'og:url', c => $base . $uri->path_query };
+
+            if (my $site_name = $site->sitename) {
+                push @opengraph, { p => 'og:site_name', c => $site_name  };
+            }
+            if (my $desc = $c->stash->{meta_description}) {
+                if ($desc ne $title) {
+                    push @opengraph, { p => 'og:description', c => $desc };
+                }
+            }
+            $c->stash(open_graph => \@opengraph) if @opengraph;
+        }
+    }
 }
 
 

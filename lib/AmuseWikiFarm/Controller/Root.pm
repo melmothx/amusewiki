@@ -333,9 +333,10 @@ sub sitemap_txt :Chained('/site') :PathPart('sitemap.txt') :Args(0) {
     my $site = $c->stash->{site};
     my @urls;
     my $base = $site->canonical_url_secure;
-    foreach my $root ('library',
-                      'opds',
+    foreach my $root ('opds',
                       'feed',
+                      'latest',
+                      'listing',
                       'category/topic',
                       'category/author') {
         push @urls, $base . '/' . $root;
@@ -352,9 +353,8 @@ sub sitemap_txt :Chained('/site') :PathPart('sitemap.txt') :Args(0) {
         my $cat = shift @$categories;
         push @urls, $base . $cat->{full_uri};
     }
-    push @urls, '';
     $c->response->content_type('text/plain');
-    $c->response->body(join("\n", @urls));
+    $c->response->body(join("\n", @urls) . "\n");
 }
 
 =head2 index
