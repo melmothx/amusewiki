@@ -7,6 +7,7 @@ extends 'Catalyst::View::TT';
 use AmuseWikiFarm::Log::Contextual;
 use Template::Filters;
 use AmuseWikiFarm::Utils::Amuse qw/amw_meta_stripper/;
+use URI;
 
 $Template::Filters::FILTERS->{escape_invisible_chars} = \&escape_invisible_chars;
 $Template::Filters::FILTERS->{escape_js} = \&escape_js_string;
@@ -84,6 +85,7 @@ before process => sub {
         if (my $meta_desc = $c->stash->{meta_description}) {
             $c->stash(meta_description => amw_meta_stripper($meta_desc));
         }
+        $self->add_open_graph($c);
         $c->stash(
                   site_is_without_authors => $site->is_without_authors($c->user_exists),
                   site_is_without_topics => $site->is_without_topics($c->user_exists),
@@ -94,6 +96,63 @@ before process => sub {
                  );
     }
 };
+
+=head2 add_open_graph
+
+From the specs (L<http://ogp.me>)
+
+=over 4
+
+=item og:title
+
+The title of your object as it should appear within the graph, e.g., "The Rock".
+
+We look into page_title, which should already set. Otherwise we fall
+back to the site description.
+
+=item og:type
+
+The type of your object, e.g., "video.movie". Depending on the type you specify, other properties may also be required.
+
+If a text object is stashed, we can set it to C<book> or C<article> +
+C<$type:author> + C<$type:tag> with topics, otherwise it's C<website>
+
+=item og:image
+
+An image URL which should represent your object within the graph. If
+it's a text object, we could have a cover attached. Otherwise default
+to the site logo. Skip the whole thing if we don't have that, as it's
+mandatory.
+
+=item og:url
+
+The canonical URL of your object that will be used as its permanent ID
+in the graph, e.g., "http://www.imdb.com/title/tt0117500/".
+
+If C<page_title> is not set, default to the root. Otherwise parse
+$c->request->uri, stripping reserved params (prefixed by C<__>). If
+I'm not mistaken, we don't have different access urls for the same
+resources, so it's always the canonical.
+
+=item og:description
+
+This is optional, use the meta_description if set.
+
+=item og:site_name
+
+This is optional, but we should have it.
+
+=item og:locale and og:locale:alternate (string).
+
+Optional, but we should have it. We need the language_TERRITORY, though.
+
+=back
+
+=cut
+
+sub add_open_graph {
+    my ($self, $c) = @_;
+}
 
 
 =head1 NAME
