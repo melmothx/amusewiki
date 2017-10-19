@@ -207,10 +207,8 @@ sub add_open_graph {
             if (my $site_name = $site->sitename) {
                 push @opengraph, { p => 'og:site_name', c => $site_name  };
             }
-            if (my $desc = $c->stash->{meta_description}) {
-                if ($desc ne $title) {
-                    push @opengraph, { p => 'og:description', c => $desc };
-                }
+            if (my $desc = $c->stash->{meta_description} || $title) {
+                push @opengraph, { p => 'og:description', c => $desc };
             }
             $c->stash(open_graph => \@opengraph) if @opengraph;
         }

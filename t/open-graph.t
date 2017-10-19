@@ -3,7 +3,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 181;
+use Test::More;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
@@ -43,8 +43,10 @@ foreach my $url (@urls) {
         }
     }
     diag Dumper(\%og);
-    foreach my $c (qw/title type image url/) {
+    foreach my $c (qw/title type image url description/) {
         ok $og{"og:$c"}, "Found mandatory og:$c " . $og{"og:$c"};
     }
     $mech->get_ok($og{'og:url'});
 }
+
+done_testing;
