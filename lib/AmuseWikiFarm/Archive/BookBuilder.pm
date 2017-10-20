@@ -4,7 +4,7 @@ use utf8;
 use strict;
 use warnings;
 
-use Moose;
+use Moo;
 use namespace::autoclean;
 
 use Cwd;
@@ -27,8 +27,8 @@ use AmuseWikiFarm::Log::Contextual;
 use Bytes::Random::Secure;
 use IO::Pipe;
 use File::Basename;
-use Types::Standard qw/StrMatch Maybe Enum/;
-use Path::Tiny;
+use Types::Standard qw/Int Bool Str StrMatch Maybe Enum Object ArrayRef/;
+use Path::Tiny ();
 
 
 =head1 NAME
@@ -59,47 +59,55 @@ The numeric ID for the output basename.
 =cut
 
 has dbic => (is => 'ro',
-             isa => 'Object');
+             isa => Object);
 
 has site_id => (is => 'ro',
-                isa => 'Maybe[Str]');
+                isa => Maybe[Str]);
 
-has site => (is => 'ro',
-             isa => 'Maybe[Object]',
-             lazy => 1,
-             builder => '_build_site');
+has site => (is => 'lazy',
+             isa => Maybe[Object]);
+
+sub _build_site {
+    my $self = shift;
+    if (my $schema = $self->dbic) {
+        if (my $id = $self->site_id) {
+            if (my $site  = $schema->resultset('Site')->find($id)) {
+                return $site;
+            }
+        }
+    }
+    return undef;
+}
 
 has job_id => (is => 'ro',
-               isa => 'Maybe[Str]');
+               isa => Maybe[Str]);
 
 has format => (is => 'rw',
                isa => Enum[qw/epub pdf slides/],
                default => sub { 'pdf' });
 
 has token => (is => 'rw',
-              isa => 'Str',
+              isa => Str,
               default => sub { '' });
 
 has epub_embed_fonts => (is => 'rw',
-                         isa => "Bool",
+                         isa => Bool,
                          default => sub { 1 });
 
 has is_single_file => (is => 'ro',
-                       isa => 'Bool',
+                       isa => Bool,
                        default => sub { 0 });
 
 has single_file_extension => (is => 'ro',
-                              isa => 'Str',
+                              isa => Str,
                               default => sub { '' });
 
 has user_is_logged_in => (is => 'ro',
-                          isa => 'Bool',
+                          isa => Bool,
                           default => sub { 0 });
 
-has bbdir => (is => 'ro',
-              lazy => 1,
-              isa => 'Object',
-              builder => '_build_bbdir');
+has bbdir => (is => 'lazy',
+              isa => Object);
 
 sub _build_bbdir {
     return Path::Tiny->tempdir(CLEANUP => 1);
@@ -157,17 +165,6 @@ sub generate_token {
       ->string_from('AABCDEEFGHLMNPQRSTUUVWYZ123456789', 6);
 }
 
-sub _build_site {
-    my $self = shift;
-    if (my $schema = $self->dbic) {
-        if (my $id = $self->site_id) {
-            if (my $site  = $schema->resultset('Site')->find($id)) {
-                return $site;
-            }
-        }
-    }
-    return undef;
-}
 
 =head2 paths and output
 
@@ -180,7 +177,7 @@ Accesso to the error (set by the object).
 =cut
 
 has error => (is => 'rw',
-              isa => 'Maybe[Str]');
+              isa => Maybe[Str]);
 
 =head2 total_pages_estimated
 
@@ -285,27 +282,27 @@ sub pdf {
 
 has title => (
               is => 'rw',
-              isa => 'Maybe[Str]',
+              isa => Maybe[Str],
              );
 has subtitle => (
                  is => 'rw',
-                 isa => 'Maybe[Str]',
+                 isa => Maybe[Str],
                 );
 has author => (
                is => 'rw',
-               isa => 'Maybe[Str]',
+               isa => Maybe[Str],
               );
 has date => (
              is => 'rw',
-             isa => 'Maybe[Str]',
+             isa => Maybe[Str],
             );
 has notes => (
               is => 'rw',
-              isa => 'Maybe[Str]',
+              isa => Maybe[Str],
              );
 has source => (
                is => 'rw',
-               isa => 'Maybe[Str]',
+               isa => Maybe[Str],
               );
 
 
@@ -318,7 +315,7 @@ Unclear if this side-effect is welcome or not.
 =cut
 
 has textlist => (is => 'rw',
-                 isa => 'ArrayRef[Str]',
+                 isa => ArrayRef[Str],
                  default => sub { [] },
                 );
 
@@ -337,7 +334,7 @@ The absolute uploaded filename for the cover image.
 =cut
 
 has coverfile => (is => 'rw',
-                  isa => 'Maybe[Str]',
+                  isa => Maybe[Str],
                   default => sub { undef });
 
 =head2 Booleans
@@ -371,25 +368,25 @@ If the imposition pass is required.
 
 has twoside => (
                 is => 'rw',
-                isa => 'Bool',
+                isa => Bool,
                 default => sub { 0 },
                );
 
 has nocoverpage => (
                     is => 'rw',
-                    isa => 'Bool',
+                    isa => Bool,
                     default => sub { 0 },
                    );
 
 has coverpage_only_if_toc => (
                               is => 'rw',
-                              isa => 'Bool',
+                              isa => Bool,
                               default => sub { 0 },
                              );
 
 has nofinalpage => (
                     is => 'rw',
-                    isa => 'Bool',
+                    isa => Bool,
                     default => sub { 0 },
                    );
 
@@ -406,26 +403,26 @@ has headings => (
 
 has notoc => (
               is => 'rw',
-              isa => 'Bool',
+              isa => Bool,
               default => sub { 0 },
              );
 
 # imposer options
 has cover => (
               is => 'rw',
-              isa => 'Bool',
+              isa => Bool,
               default => sub { 1 },
              );
 
 has unbranded => (
                   is => 'rw',
-                  isa => 'Bool',
+                  isa => Bool,
                   default => sub { 0 },
                  );
 
 has imposed => (
                 is => 'rw',
-                isa => 'Bool',
+                isa => Bool,
                 default => sub { 0 },
                );
 
@@ -527,19 +524,19 @@ has crop_paper_thickness => (
 
 has crop_marks => (
                    is => 'rw',
-                   isa => 'Bool',
+                   isa => Bool,
                    default => sub { 0 },
                   );
 
 has paper_width => (
                     is => 'rw',
-                    isa => 'Int',
+                    isa => Int,
                     default => sub { 0 },
                    );
 
 has paper_height => (
                      is => 'rw',
-                     isa => 'Int',
+                     isa => Int,
                      default => sub { 0 },
                     );
 
@@ -551,13 +548,13 @@ has crop_papersize => (
 
 has crop_paper_width => (
                          is => 'rw',
-                         isa => 'Int',
+                         isa => Int,
                          default => sub { 0 },
                         );
 
 has crop_paper_height => (
                           is => 'rw',
-                          isa => 'Int',
+                          isa => Int,
                           default => sub { 0 },
                          );
 
@@ -663,7 +660,8 @@ of the font. This is used for validation.
 
 =cut
 
-has fonts => (is => 'ro', lazy => 1, isa => 'Object', builder => '_build_fonts',
+has fonts => (is => 'lazy',
+              isa => Object,
               handles => [qw/serif_fonts mono_fonts sans_fonts/],
              );
 
@@ -1602,8 +1600,5 @@ sub refresh_text_list {
         $self->add_text($text);
     }
 }
-
-
-__PACKAGE__->meta->make_immutable;
 
 1;
