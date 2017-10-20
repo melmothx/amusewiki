@@ -146,106 +146,21 @@
       <!-- <strong>[% loc('Downloads') %]</strong> -->
     </div>
     <div id="downloadformats-list">
-      [% IF site.pdf && text.check_if_file_exists('pdf') %]
-      <span id="pdfgeneric">
-        <a href="[% basename %].pdf" class="pdflinks amw-register-stat"
-           data-amw-register-stat-type="pdf">
-          <span class="fa fa-file-pdf-o fa-2x fa-border fw"
-                aria-hidden="true"
-                title="[% loc('plain PDF') %]"
-                data-toggle="tooltip" data-placement="top"
-                ></span><span class="sr-only">[% loc('plain PDF') %]</span></a>
-      </span>
-      [% END %]
-      [% IF site.a4_pdf && text.check_if_file_exists('a4.pdf') %]
-      <span id="pdfa4imp">
-        <a href="[% basename %].a4.pdf" class="pdflinks amw-register-stat"
-           data-amw-register-stat-type="a4-pdf">
-          <span class="fa fa-columns fa-2x fa-border fa-flip-vertical fw"
-                aria-hidden="true"
-                title="[% loc('A4 imposed PDF') %]"
-                data-toggle="tooltip" data-placement="top"
-                ></span><span class="sr-only">[% loc('A4 imposed PDF') %]</span></a>
-      </span>
-      [% END %]
-      [% IF site.lt_pdf && text.check_if_file_exists('lt.pdf') %]
-      <span id="letterimp">
-        <a href="[% basename %].lt.pdf" class="pdflinks amw-register-stat"
-           data-amw-register-stat-type="lt-pdf">
-          <span class="fa fa-columns fa-2x fa-border fa-flip-vertical fw"
-                aria-hidden="true"
-                title="[% loc('Letter imposed PDF') %]"
-                data-toggle="tooltip" data-placement="top"
-                ></span><span class="sr-only">[% loc('Letter imposed PDF') %]</span></a>
-      </span>
-      [% END %]
-      [% IF site.sl_pdf && text.slides && text.check_if_file_exists('sl.pdf') %]
-      <span id="downloadslides">
-        <a href="[% basename %].sl.pdf" class="amw-register-stat"
-           data-amw-register-stat-type="slides">
-          <span class="fa fa-file-powerpoint-o fa-2x fa-border fw"
-                aria-hidden="true"
-                title="[% loc('Slides (PDF)') %]"
-                data-toggle="tooltip" data-placement="top"
-                ></span><span class="sr-only">[% loc('Slides (PDF)') %]</span></a>
-      </span>
-      [% END %]
-      <span id="downloadepub">
-        <a href="[% basename %].epub" class="amw-register-stat"
-           data-amw-register-stat-type="epub">
-          <span class="fa fa-tablet fa-2x fa-border fw"
-                aria-hidden="true"
-                title="[% loc('EPUB (for mobile devices)') %]"
-                data-toggle="tooltip" data-placement="top"
-                ></span><span class="sr-only">[% loc('EPUB (for mobile devices)') %]</span></a>
-      </span>
-      [% FOREACH cformat IN site.active_custom_formats %]
-        [% IF text.check_if_file_exists(cformat.extension) %]
-        <span>
-          <a href="[% basename %].[% cformat.extension %]" class="amw-register-stat"
-             data-amw-register-stat-type="[% cformat.extension %]">
-            <span class="fa [% IF cformat.is_epub %]fa-tablet[% ELSE %]fa-file-pdf-o[% END %] fa-2x fa-border fw"
+      [% FOREACH cformat IN site.formats_definitions %]
+      [% IF text.check_if_file_exists(cformat.code) %]
+      <span [% IF cformat.oldid %] id="[% cformat.oldid %]" [% END %]>
+        <span id="download-format-[% cformat.code %]">
+          <a href="[% basename %][% cformat.ext %]" class="amw-register-stat"
+             data-amw-register-stat-type="[% cformat.code %]">
+            <span class="fa [% cformat.icon %] fa-2x fa-border fw"
                   aria-hidden="true"
-                  title="[% loc(cformat.format_name) %]"
+                  title="[% loc(cformat.desc) %]"
                   data-toggle="tooltip" data-placement="top"
-            ></span><span class="sr-only">[% loc(cformat.format_name) %]</span></a>
-          </a>
+                  ></span><span class="sr-only">[% loc(cformat.format_name) %]</span></a>
         </span>
-        [% END %]
+      </span>
       [% END %]
-      <span id="downloadhtml">
-        <a href="[% basename %].html" class="amw-register-stat"
-           data-amw-register-stat-type="html">
-          <span class="fa fa-border fa-2x fa-print"
-                aria-hidden="true"
-                title="[% loc('Standalone HTML (printer-friendly)') %]"
-                data-toggle="tooltip" data-placement="top"
-                ></span><span class="sr-only">[% loc('Standalone HTML (printer-friendly)') %]</span></a>
-      </span>
-      <span id="downloadtex">
-        <a href="[% basename %].tex">
-          <span class="fa fa-file-code-o fa-2x fa-border fw"
-                aria-hidden="true"
-                data-toggle="tooltip" data-placement="top"
-                title="[% loc('XeLaTeX source') %]"
-                ></span><span class="sr-only" >[% loc('XeLaTeX source') %]</span></a>
-      </span>
-      <span id="downloadsrc">
-        <a href="[% basename %].muse">
-          <span class="fa fa-file-text-o fa-2x fa-border fw"
-                aria-hidden="true"
-                title="[% loc('plain text source') %]"
-                data-toggle="tooltip" data-placement="top"
-                ></span><span class="sr-only" >[% loc('plain text source') %]</span></a>
-      </span>
-      <span id="downloadzip">
-        <a href="[% basename %].zip">
-          <span class="fa fa-file-archive-o fa-2x fa-border fw"
-                aria-hidden="true"
-                title="[% loc('Source files with attachments') %]"
-                data-toggle="tooltip" data-placement="top"
-                ></span><span class="sr-only" >[% loc('Source files with attachments') %]</span></a>
-      </span>
+      [% END %]
       [% IF (cgit_link = text.recent_changes_uri) %]
         [% IF site.cgit_integration || c.user_exists %]
       <span id="filehistory">

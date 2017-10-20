@@ -562,6 +562,11 @@ sub extension {
     }
 }
 
+sub is_imposed_pdf {
+    my $self = shift;
+    return $self->bb_imposed;
+}
+
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

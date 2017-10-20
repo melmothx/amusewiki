@@ -904,14 +904,6 @@ sub repo_root {
 
 Options to feed the Text::Amuse::Compile object.
 
-=head2 available_formats
-
-Return a list of format => enable pairs.
-
-=head2 available_text_exts
-
-As above, but instead of the compiler options, list the extensions.
-
 =cut
 
 sub valid_ttdir {
@@ -931,7 +923,13 @@ sub valid_ttdir {
 
 sub compile_options {
     my $self = shift;
-    my %opts = $self->available_formats;
+    my %opts = (
+                tex => 1,
+                html => 1,
+                bare_html => 1,
+                epub => 1,
+                zip => 1,
+               );
     if ($self->use_luatex) {
         $opts{luatex} = 1;
     }
@@ -965,117 +963,82 @@ sub compile_options {
     return %opts;
 }
 
-sub available_formats {
-    my $self = shift;
-    # mandatory formats are always true, without them we break the
-    # app. we could nuke the columns, but this would break eventual
-    # upgrade code
-    my %formats = (
-                   tex => 1,
-                   html => 1,
-                   bare_html => 1,
-                   epub => 1,
-                   zip => 1,
-                  );
-    foreach my $f (qw/
-                      pdf
-                      a4_pdf
-                      lt_pdf
-                      sl_tex
-                      sl_pdf
-                     /) {
-        $formats{$f} = $self->$f;
-    }
-    return %formats;
-}
-
 sub formats_definitions {
-    my $self = shift;
-    my $loc = $self->localizer;
-    my @all = (
-               {
-                code => 'pdf',
-                ext => '.pdf',
-                icon => 'fa-file-pdf-o',
-                desc => 'plain PDF',
-               },
-               {
-                code => 'a4_pdf',
-                ext => '.a4.pdf',
-                icon => 'fa-columns fa-flip-vertical',
-                desc => 'A4 imposed PDF',
-               },
-               {
-                code => 'lt_pdf',
-                ext => '.lt.pdf',
-                icon => 'fa-columns fa-flip-vertical',
-                desc => 'Letter imposed PDF',
-               },
-               # disabled, because don't check
-               # {
-               #  code => 'sl_pdf',
-               #  ext => '.sl.pdf',
-               #  icon => 'fa-file-powerpoint-o',
-               #  desc => 'Slides (PDF)',
-               # },
-               {
+    my ($self, %opts) = @_;
+    my @all = ({
                 code => 'epub',
                 ext => '.epub',
                 icon => 'fa-tablet',
                 desc => 'EPUB (for mobile devices)',
+                oldid => "downloadepub",
                },
                {
                 code => 'html',
                 ext => '.html',
                 icon => 'fa-print',
                 desc => 'Standalone HTML (printer-friendly)',
+                oldid => "downloadhtml",
                },
                {
                 code => 'tex',
                 ext => '.tex',
                 icon => 'fa-file-code-o',
                 desc => 'XeLaTeX source',
+                oldid => "downloadtex",
                },
                {
                 code => 'muse',
                 ext => '.muse',
-                always => 1,
                 icon => 'fa-file-text-o',
                 desc => 'plain text source',
+                oldid => "downloadsrc",
                },
                {
                 code => 'zip',
                 ext => '.zip',
                 icon => 'fa-file-archive-o',
                 desc => 'Source files with attachments',
+                oldid => "downloadzip",
                }
               );
-    my %existing = $self->available_formats;
-    my @out = grep { $existing{$_->{code}} || $_->{always} } @all;
+    my %legacy_ids = (
+                      pdf => 'pdfgeneric',
+                      'a4.pdf' => 'pdfa4imp',
+                      'lt.pdf' => 'letterimp',
+                      'sl.pdf' => 'downloadslides',
+                     );
     foreach my $custom ($self->custom_formats->active_only->all) {
-        push @out, {
-                    ext => '.' . $custom->extension,
-                    icon => ($custom->is_epub ? 'fa-tablet' : 'fa-file-pdf-o'),
+        my $icon;
+        if ($custom->is_epub) {
+            $icon = 'fa-tablet';
+        }
+        elsif ($custom->is_imposed_pdf) {
+            $icon = 'fa-columns fa-flip-vertical';
+        }
+        else {
+            $icon = 'fa-file-pdf-o'
+        }
+        my $old_id;
+        if (my $alias = $custom->format_alias) {
+            $old_id = $legacy_ids{$alias};
+        }
+        my $extension = $custom->format_alias || $custom->extension;
+        push @all, {
+                    code => $extension,
+                    ext => '.' . $extension,
+                    icon => $icon,
                     desc => $custom->format_name,
+                    oldid => $old_id,
                    };
     }
-    foreach my $i (@out) {
-        $i->{desc} = $loc->loc_html($i->{desc});
+    if ($opts{localize}) {
+        log_debug { "Localizing descriptions" };
+        my $loc = $self->localizer;
+        foreach my $i (@all) {
+            $i->{desc} = $loc->loc_html($i->{desc});
+        }
     }
-    return \@out;
-}
-
-sub available_text_exts {
-    my $self = shift;
-    my %formats = $self->available_formats;
-    my %exts;
-    foreach my $k (keys %formats) {
-        my $ext = $k;
-        $ext =~ s/_/./g;
-        $ext = '.' . $ext;
-        $exts{$ext} = $formats{$k};
-    }
-    return %exts;
+    return \@all;
 }
 
 sub known_langs {

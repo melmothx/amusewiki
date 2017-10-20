@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 22;
+use Test::More tests => 20;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -18,36 +18,6 @@ ok($db);
 my $site = $db->resultset('Site')->find('0test0');
 
 ok($site);
-
-my %formats = $site->available_formats;
-
-is_deeply \%formats, {
-                      'bare_html' => 1,
-                      'pdf' => 1,
-                      'zip' => 1,
-                      'html' => 1,
-                      'lt_pdf' => 0,
-                      'tex' => 1,
-                      'a4_pdf' => 0,
-                      'epub' => 1,
-                      'sl_pdf' => 0,
-                      sl_tex => 0,
-                     };
-
-my %exts = $site->available_text_exts;
-
-is_deeply \%exts, {
-                   '.bare.html' => 1,
-                   '.pdf' => 1,
-                   '.zip' => 1,
-                   '.html' => 1,
-                   '.lt.pdf' => 0,
-                   '.tex' => 1,
-                   '.a4.pdf' => 0,
-                   '.epub' => 1,
-                   '.sl.pdf' => 0,
-                   '.sl.tex' => 0,
-                  };
 
 my $test = $site->titles->random_text;
 
