@@ -340,6 +340,8 @@ default to false.
 
 =item nocoverpage
 
+=item coverpage_only_if_toc
+
 =item nofinalpage
 
 =item notoc
@@ -367,6 +369,12 @@ has nocoverpage => (
                     isa => 'Bool',
                     default => sub { 0 },
                    );
+
+has coverpage_only_if_toc => (
+                              is => 'rw',
+                              isa => 'Bool',
+                              default => sub { 0 },
+                             );
 
 has nofinalpage => (
                     is => 'rw',
@@ -1049,6 +1057,7 @@ sub profile_methods {
               twoside
               notoc
               nocoverpage
+              coverpage_only_if_toc
               nofinalpage
               headings
               imposed
@@ -1252,6 +1261,7 @@ sub compile {
                          sl_pdf => $self->slides,
                          epub => $self->epub,
                          epub_embed_fonts => $self->epub_embed_fonts,
+                         coverpage_only_if_toc => $self->coverpage_only_if_toc,
                         );
     # inherited from site
     foreach my $setting (qw/luatex ttdir fontspec/) {
