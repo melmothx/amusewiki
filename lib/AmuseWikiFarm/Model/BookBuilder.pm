@@ -17,21 +17,27 @@ sub prepare_arguments {
     # reflected in the session. At some point, we could pass a copy
     # here instead, but it seems to work as expected...
     my %args;
+    my $token;
     if ($c->sessionid) {
         if (my $data = $c->session->{bookbuilder}) {
             %args = %$data;
         }
-        if (my $token = $c->session->{bookbuilder_token}) {
-            $args{token} = $token;
-        }
+        $token = $c->session->{bookbuilder_token};
+    }
+    # load the default from the site settings.
+    my $site = $c->stash->{site};
+    if ($site and !%args) {
+        %args = $site->bb_values;
+        Dlog_debug { "Loading defaults from site " . $_ } \%args;
+    }
+    if ($token) {
+        $args{token} = $token;
     }
     $args{user_is_logged_in} = $c->user_exists;
     Dlog_debug { "Bookbuilder loading with $_" } \%args;
     $args{dbic} = $c->model('DB');
-    if (my $site = $c->stash->{site}) {
-        $args{site} = $site;
-    }
-    # this switched from boolean to string
+    $args{site} = $site if $site;
+    # this switched from boolean to string and it was a long time ago.
     $args{headings} ||= 0;
     return \%args;
 }

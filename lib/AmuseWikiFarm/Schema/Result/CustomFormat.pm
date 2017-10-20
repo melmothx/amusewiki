@@ -575,6 +575,18 @@ sub is_imposed_pdf {
     return $self->bb_imposed;
 }
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub sync_from_site {
+    my $self = shift;
+    my $site = $self->site;
+    my %bb_values = $site->bb_values;
+    foreach my $k (keys %bb_values) {
+        my $cf_method = "bb_$k";
+        $self->$cf_method($bb_values{$k});
+    }
+    $self->update if $self->is_changed;
+    return $self;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

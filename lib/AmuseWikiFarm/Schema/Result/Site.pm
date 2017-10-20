@@ -868,7 +868,7 @@ use AmuseWikiFarm::Utils::LexiconMigration;
 use Regexp::Common qw/net/;
 use Path::Tiny ();
 use AmuseWikiFarm::Utils::Paths ();
-
+use Try::Tiny;
 
 =head2 repo_root_rel
 
@@ -1045,6 +1045,53 @@ sub formats_definitions {
         }
     }
     return \@out;
+}
+
+sub bb_values {
+    my $self = shift;
+    # here the problem is that there is no 1:1 mapping, which kind of
+    # sucks, but hey.
+    my %out;
+    my %map = (division => 0,
+               bcor => 0,
+               fontsize => 0,
+               mainfont => 0,
+               sansfont => 0,
+               monofont => 0,
+               beamertheme => 0,
+               beamercolortheme => 0,
+               nocoverpage => 'coverpage_only_if_toc',
+               twoside => 0,
+              );
+    foreach my $method (sort keys %map) {
+        my $target = $map{$method} || $method;
+        # special shitty case.
+        if ($method eq 'bcor') {
+            if ($self->bcor =~ m/0?([1-9][0-9]*)(mm)?/) {
+                $out{$target} = $1;
+            }
+        }
+        else {
+            $out{$target} = $self->$method;
+        }
+    }
+    my $valid;
+    try {
+        # validate
+        if (my $bb = AmuseWikiFarm::Archive::BookBuilder->new(%out)) {
+            $valid = 1;
+        }
+    } catch {
+        my $err = $_;
+        # scream, so we fix it
+        log_error { "$err validating $_" } \%out;
+    };
+    if ($valid) {
+        return %out;
+    }
+    else {
+        return;
+    }
 }
 
 sub known_langs {

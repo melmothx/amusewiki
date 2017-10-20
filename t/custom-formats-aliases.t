@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 139;
+use Test::More tests => 204;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -130,3 +130,33 @@ foreach my $mirror (qw/index.html authors.html topics.html/) {
     $mech->get_ok("/mirror/$mirror");
     $mech->page_links_ok("All the links are fine in /mirror/$mirror");
 }
+
+$site->update({
+               division => 15,
+               bcor => '9mm',
+               fontsize => 12,
+               mainfont => 'TeX Gyre Pagella',
+               sansfont => 'TeX Gyre Heros',
+               sansfont => 'TeX Gyre Cursor',
+               beamertheme => 'Madrid',
+               beamercolortheme => 'albatross',
+               twoside => 1,
+               nocoverpage => 1,
+              });
+foreach my $cf ($site->custom_formats) {
+    $cf->sync_from_site;
+    is $cf->bb_division, 15;
+    is $cf->bb_bcor, 9;
+    is $cf->bb_mainfont, $site->mainfont;
+    is $cf->bb_sansfont, $site->sansfont;
+    is $cf->bb_monofont, $site->monofont;
+    is $cf->bb_beamercolortheme, $site->beamercolortheme;
+    is $cf->bb_beamertheme, $site->beamertheme;
+    is $cf->bb_twoside, $site->twoside;
+    is $cf->bb_coverpage_only_if_toc, $site->nocoverpage;
+}
+
+$site->update({ division => 55 });
+ok !$site->bb_values;
+$site->update({ division => 15 });
+ok scalar($site->bb_values);
