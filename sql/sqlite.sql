@@ -104,6 +104,7 @@ CREATE TABLE custom_formats (
                ON DELETE CASCADE ON UPDATE CASCADE,
        format_name VARCHAR(255) NOT NULL,
        format_description TEXT,
+       format_alias VARCHAR(8) NULL,
        active SMALLINT DEFAULT 1,
        bb_format VARCHAR(16) NOT NULL DEFAULT 'pdf',
        bb_epub_embed_fonts SMALLINT DEFAULT 1,
@@ -124,6 +125,7 @@ CREATE TABLE custom_formats (
        bb_sansfont VARCHAR(255),
        bb_monofont VARCHAR(255),
        bb_nocoverpage SMALLINT DEFAULT 0,
+       bb_coverpage_only_if_toc SMALLINT DEFAULT 0,
        bb_nofinalpage SMALLINT DEFAULT 0,
        bb_notoc SMALLINT DEFAULT 0,
        bb_opening VARCHAR(16) NOT NULL DEFAULT 'any',
@@ -135,6 +137,34 @@ CREATE TABLE custom_formats (
        bb_twoside SMALLINT DEFAULT 0,
        bb_unbranded SMALLINT DEFAULT 0
 );
+
+CREATE UNIQUE INDEX unique_custom_formats_site_alias ON custom_formats (site_id,format_alias);
+
+-- https://sqlite.org/faq.html#q26
+-- Perhaps you are referring to the following statement from SQL92:
+
+--     A unique constraint is satisfied if and only if no two rows in
+--     a table have the same non-null values in the unique columns.
+--
+-- That statement is ambiguous, having at least two possible
+-- interpretations:
+--
+--     A unique constraint is satisfied if and only if no two rows in
+--     a table have the same values and have non-null values in the
+--     unique columns.
+--
+--         A unique constraint is satisfied if and only if no two rows
+--         in a table have the same values in the subset of unique
+--         columns that are not null.
+--
+-- SQLite follows interpretation (1), as does PostgreSQL, MySQL,
+-- Oracle, and Firebird. It is true that Informix and Microsoft SQL
+-- Server use interpretation (2), however we the SQLite developers
+-- hold that interpretation (1) is the most natural reading of the
+-- requirement and we also want to maximize compatibility with other
+-- SQL database engines, and most other database engines also go with
+-- (1), so that is what SQLite does.
+
 
 
 CREATE TABLE users (

@@ -62,6 +62,12 @@ __PACKAGE__->table("custom_formats");
   data_type: 'text'
   is_nullable: 1
 
+=head2 format_alias
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 8
+
 =head2 active
 
   data_type: 'smallint'
@@ -188,6 +194,12 @@ __PACKAGE__->table("custom_formats");
   default_value: 0
   is_nullable: 1
 
+=head2 bb_coverpage_only_if_toc
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 1
+
 =head2 bb_nofinalpage
 
   data_type: 'smallint'
@@ -262,6 +274,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "format_description",
   { data_type => "text", is_nullable => 1 },
+  "format_alias",
+  { data_type => "varchar", is_nullable => 1, size => 8 },
   "active",
   { data_type => "smallint", default_value => 1, is_nullable => 1 },
   "bb_format",
@@ -327,6 +341,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "bb_nocoverpage",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
+  "bb_coverpage_only_if_toc",
+  { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_nofinalpage",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_notoc",
@@ -376,6 +392,22 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key("custom_formats_id");
 
+=head1 UNIQUE CONSTRAINTS
+
+=head2 C<site_id_format_alias_unique>
+
+=over 4
+
+=item * L</site_id>
+
+=item * L</format_alias>
+
+=back
+
+=cut
+
+__PACKAGE__->add_unique_constraint("site_id_format_alias_unique", ["site_id", "format_alias"]);
+
 =head1 RELATIONS
 
 =head2 site
@@ -394,8 +426,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-06-07 11:09:23
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:q2nZleRynjwPqilcz+DmWA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-20 08:36:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SIYx8fO56/+N04N8PtEODA
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
