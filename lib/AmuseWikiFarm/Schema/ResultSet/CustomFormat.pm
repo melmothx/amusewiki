@@ -9,8 +9,12 @@ sub active_only {
     my $self = shift;
     my $me = $self->current_source_alias;
     return $self->search({ "$me.active" => 1 },
-                         { order_by => 'format_name' });
-                            
+                         { order_by => [
+                                        "$me.format_priority",
+                                        "$me.format_name",
+                                        "$me.custom_formats_id",
+                                       ] });
+
 }
 
 

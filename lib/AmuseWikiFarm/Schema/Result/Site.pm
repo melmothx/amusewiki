@@ -1007,6 +1007,7 @@ sub formats_definitions {
                       'lt.pdf' => 'letterimp',
                       'sl.pdf' => 'downloadslides',
                      );
+    my @out;
     foreach my $custom ($self->custom_formats->active_only->all) {
         my $icon;
         if ($custom->is_epub) {
@@ -1023,7 +1024,7 @@ sub formats_definitions {
             $old_id = $legacy_ids{$alias};
         }
         my $extension = $custom->format_alias || $custom->extension;
-        push @all, {
+        push @out, {
                     code => $extension,
                     ext => '.' . $extension,
                     icon => $icon,
@@ -1031,14 +1032,15 @@ sub formats_definitions {
                     oldid => $old_id,
                    };
     }
+    push @out, @all;
     if ($opts{localize}) {
         log_debug { "Localizing descriptions" };
         my $loc = $self->localizer;
-        foreach my $i (@all) {
+        foreach my $i (@out) {
             $i->{desc} = $loc->loc_html($i->{desc});
         }
     }
-    return \@all;
+    return \@out;
 }
 
 sub known_langs {
