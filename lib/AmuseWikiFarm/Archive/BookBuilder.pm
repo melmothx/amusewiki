@@ -237,23 +237,32 @@ Build an EPUB instead of a PDF
 
 =cut
 
-sub epub {
+has epub => (is => 'lazy',
+             isa => Bool);
+
+sub _build_epub {
     my $self = shift;
     return $self->format eq 'epub';
 }
 
-sub slides {
+has slides => (is => 'lazy',
+               isa => Bool);
+
+sub _build_slides {
     my $self = shift;
-    if ($self->format eq 'slides' and $self->can_generate_slides) {
-        return 1;
+    if ($self->format eq 'slides') {
+        if ($self->is_single_file or $self->can_generate_slides) {
+            return 1;
+        }
     }
-    else {
-        return 0;
-    }
+    return 0;
 }
 
+has pdf => (is => 'lazy',
+            isa => Bool);
+
 # this is the default
-sub pdf {
+sub _build_pdf {
     my $self = shift;
     if ($self->format eq 'pdf' or
         (!$self->slides && !$self->epub)) {
@@ -1201,6 +1210,10 @@ sub compile {
             }
             return;
         }
+        if ($self->slides and !$textobj->slides) {
+            log_debug { $textobj->full_uri . " can't generate slides, returning" };
+            return;
+        }
     }
     else {
         die "Can't compile a file without a job id!" unless $self->job_id;
@@ -1532,6 +1545,7 @@ sub can_generate_slides {
             return $text->slides;
         }
     }
+    log_debug { $self->format . " cannot generate slides" };
     return 0;
 }
 

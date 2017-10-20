@@ -480,7 +480,8 @@ sub bookbuilder {
 sub compile {
     my ($self, $muse, $logger) = @_;
     my $bb = $self->bookbuilder;
-    log_debug { "Compiling" };
+    log_debug { "Compiling " . $self->bb_format  };
+    Dlog_debug { "BB $_" } $bb->as_job;
     if (my $res = $bb->compile($logger, $muse)) {
         my ($tex) = $bb->bbdir->children(qr{\.tex\z});
         if ($tex) {
@@ -536,7 +537,11 @@ sub is_epub {
 }
 
 sub is_pdf {
-    return shift->bb_format eq 'pdf';
+    return !shift->is_epub;
+}
+
+sub is_slides {
+    return shift->bb_format eq 'slides';
 }
 
 sub tex_extension {
@@ -549,11 +554,11 @@ sub extension {
     my $self = shift;
     my $code = $self->custom_formats_id;
     my $format = $self->bb_format;
-    if ($format eq 'pdf' or $format eq 'epub') {
-        return "c${code}.${format}";
+    if ($self->is_epub) {
+        return "c${code}.epub";
     }
     else {
-        die "format $format is invalid";
+        return "c${code}.pdf";
     }
 }
 
