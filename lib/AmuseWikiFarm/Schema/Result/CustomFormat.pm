@@ -68,6 +68,12 @@ __PACKAGE__->table("custom_formats");
   is_nullable: 1
   size: 8
 
+=head2 format_priority
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 active
 
   data_type: 'smallint'
@@ -276,6 +282,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "format_alias",
   { data_type => "varchar", is_nullable => 1, size => 8 },
+  "format_priority",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "active",
   { data_type => "smallint", default_value => 1, is_nullable => 1 },
   "bb_format",
@@ -426,8 +434,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-20 08:36:39
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:SIYx8fO56/+N04N8PtEODA
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-20 15:13:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ieGE99PDz6aLes8Z4RLyyQ
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
