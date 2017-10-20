@@ -280,7 +280,7 @@
         [% loc('Do not create a cover page and start the text on the first page') %]
       </label>
     </div>
-    <div class="checkbox">
+    <div class="checkbox" id="coverpage_only_if_toc_container">
       <label>
         <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"
                [% IF bb.coverpage_only_if_toc %]checked="checked"[% END %]/>
