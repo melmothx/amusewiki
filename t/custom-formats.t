@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 258;
+use Test::More tests => 270;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -138,6 +138,10 @@ foreach my $text ($site->titles->all) {
         $file =~ s/\.muse\z/.$ext/;
         is($out, $file, "$file ok");
         push @gen_files, $file;
+        $mech->get_ok($text->full_uri . '.' . $cf->extension);
+        if ($cf->is_pdf) {
+            $mech->get_ok($text->full_uri . '.' . $cf->tex_extension);
+        }
         $mech->get_ok($text->full_uri);
         $mech->content_contains($cf->format_name) if $text->is_regular;
         diag "Removing $file";

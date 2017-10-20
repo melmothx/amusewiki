@@ -479,7 +479,19 @@ sub bookbuilder {
 
 sub compile {
     my ($self, $muse, $logger) = @_;
-    $self->bookbuilder->compile($logger, $muse);
+    my $bb = $self->bookbuilder;
+    log_debug { "Compiling" };
+    if (my $res = $bb->compile($logger, $muse)) {
+        my ($tex) = $bb->bbdir->children(qr{\.tex\z});
+        if ($tex) {
+            log_debug { "Copying $tex to " . $muse->filepath_for_ext($self->tex_extension) };
+            $tex->copy($muse->filepath_for_ext($self->tex_extension));
+        }
+        return $res;
+    }
+    else {
+        return;
+    }
 }
 
 sub needs_compile {
@@ -506,6 +518,12 @@ sub is_epub {
 
 sub is_pdf {
     return shift->bb_format eq 'pdf';
+}
+
+sub tex_extension {
+    my $self = shift;
+    my $code = $self->custom_formats_id;
+    return "c${code}.tex";
 }
 
 sub extension {
