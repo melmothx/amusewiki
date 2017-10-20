@@ -28,6 +28,8 @@ use Bytes::Random::Secure;
 use IO::Pipe;
 use File::Basename;
 use Types::Standard qw/StrMatch Maybe Enum/;
+use Path::Tiny;
+
 
 =head1 NAME
 
@@ -100,7 +102,7 @@ has bbdir => (is => 'ro',
               builder => '_build_bbdir');
 
 sub _build_bbdir {
-    return File::Temp->newdir(CLEANUP => 1);
+    return Path::Tiny->tempdir(CLEANUP => 1);
 }
 
 sub load_from_token {
@@ -1219,7 +1221,17 @@ sub compile {
     }
 
     # print Dumper($template_opts);
-    my $basedir = $self->bbdir->dirname;
+    my $basedir = $self->bbdir->stringify;
+    # ensure the directory is empty
+    foreach my $child ($self->bbdir->children) {
+        log_error { "Found $child in $basedir, supposedly empty, removing" };
+        if ($child->is_dir) {
+            $child->remove_tree;
+        }
+        else {
+            $child->remove;
+        }
+    }
     my $makeabs = sub {
         my $name = shift;
         return File::Spec->catfile($basedir, $name);
