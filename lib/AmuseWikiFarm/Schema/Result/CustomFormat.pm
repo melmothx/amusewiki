@@ -487,6 +487,25 @@ sub compile {
             log_debug { "Copying $tex to " . $muse->filepath_for_ext($self->tex_extension) };
             $tex->copy($muse->filepath_for_ext($self->tex_extension));
         }
+        if (my $alias = $self->format_alias) {
+            my %permitted = (
+                             pdf => 1,
+                             'sl.pdf' => 1,
+                             'a4.pdf' => 1,
+                             'lt.pdf' => 1,
+                            );
+            if ($permitted{$alias}) {
+                copy ($muse->filepath_for_ext($self->extension),
+                      $muse->filepath_for_ext($alias))
+                  or die "Couldn't copy "
+                  . $muse->filepath_for_ext($self->extension)
+                  . " to "
+                  . $muse->filepath_for_ext($self->alias) . "$!";
+            }
+            else {
+                die "$alias is not a permitted alias!";
+            }
+        }
         return $res;
     }
     else {
