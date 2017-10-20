@@ -94,6 +94,15 @@ has user_is_logged_in => (is => 'ro',
                           isa => 'Bool',
                           default => sub { 0 });
 
+has bbdir => (is => 'ro',
+              lazy => 1,
+              isa => 'Object',
+              builder => '_build_bbdir');
+
+sub _build_bbdir {
+    return File::Temp->newdir(CLEANUP => 1);
+}
+
 sub load_from_token {
     my ($self, $token) = @_;
     if (my $row = $self->site->bookbuilder_sessions->from_token($token)) {
@@ -1210,9 +1219,7 @@ sub compile {
     }
 
     # print Dumper($template_opts);
-
-    my $bbdir    = File::Temp->newdir(CLEANUP => 1);
-    my $basedir = $bbdir->dirname;
+    my $basedir = $self->bbdir->dirname;
     my $makeabs = sub {
         my $name = shift;
         return File::Spec->catfile($basedir, $name);
