@@ -67,6 +67,9 @@ sub spawn_job {
             log_debug { "Spawned jobber from $$ to $pid, exiting now" };
             exit;
         }
+        # reset random seed as we are going to spawn temporary files
+        # in parallel. See File::Temp "Forking"
+        srand();
         $self->handle_job($job);
         exit;
     }
