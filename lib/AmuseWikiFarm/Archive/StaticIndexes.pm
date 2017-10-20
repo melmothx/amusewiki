@@ -96,7 +96,7 @@ sub generate {
                            INCLUDE_PATH => AmuseWikiFarm::Utils::Paths::templates_location()->stringify,
                           );
     foreach my $file (keys %todo) {
-        next unless $todo{$file}{list} && @{$todo{$file}{list}};
+        die "Shouldn't happen" unless $todo{$file}{list};
         $tt->process('static-indexes.tt',
                            {
                             total_items => scalar(@{$todo{$file}{list}}),

@@ -127,6 +127,14 @@
                       </div>
                       <div class="col-sm-4 text-right">
                         [%- FOREACH format IN formats %]
+                        [%- IF format.is_slides && !text.slides %]
+                        <span class="fa fa-border fa-ban fw"
+                              title="[% format.desc %] [% lh.loc('N/A') %]"
+                              aria-hidden="true"
+                              data-toggle="tooltip"
+                              data-placement="top">
+                        </span><span class="sr-only">[% format.desc %] [% lh.loc('N/A') %]</span>
+                        [%- ELSE %]
                         <a href="[% text.in_tree_uri %][% format.ext %]"
                            style="color:black">
                           <span class="fa fa-border [% format.icon %] fw"
@@ -135,6 +143,7 @@
                                 data-toggle="tooltip"
                                 data-placement="top">
                           </span><span class="sr-only">[% format.desc %]</span></a>
+                        [%- END %]
                         [%- END %]
                       </div>
                     </div>
@@ -184,6 +193,14 @@
           </div>
           <div class="col-xs-5">
             [%- FOREACH format IN formats %]
+            [%- IF format.is_slides && !text.slides %]
+            <span class="fa fa-2x fa-border fa-ban fw"
+                  title="[% format.desc %] [% lh.loc('N/A') %]"
+                  aria-hidden="true"
+                  data-toggle="tooltip"
+                  data-placement="top">
+            </span><span class="sr-only">[% format.desc %] [% lh.loc('N/A') %]</span>
+            [%- ELSE %]
             <a href="[% text.in_tree_uri %][% format.ext %]"
                style="color:black">
               <span class="fa fa-2x fa-border [% format.icon %] fw"
@@ -192,6 +209,7 @@
                     data-toggle="tooltip"
                     data-placement="top">
               </span><span class="sr-only">[% format.desc %]</span></a>
+            [%- END %]
             [%- END %]
           </div>
           <div class="col-xs-1">

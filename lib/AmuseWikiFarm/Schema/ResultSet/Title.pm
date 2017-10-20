@@ -494,6 +494,7 @@ sub static_index_tokens {
                                "$me.pubdate",
                                "$me.text_size",
                                "$me.text_qualification",
+                               "$me.slides",
                               ],
                    '+columns' => {
                                   'title_categories.title_id' => 'title_categories.title_id',

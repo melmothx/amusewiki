@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 133;
+use Test::More tests => 139;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -124,4 +124,9 @@ foreach my $text ($site->titles) {
             }
         }
     }
+}
+
+foreach my $mirror (qw/index.html authors.html topics.html/) {
+    $mech->get_ok("/mirror/$mirror");
+    $mech->page_links_ok("All the links are fine in /mirror/$mirror");
 }

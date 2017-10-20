@@ -1016,6 +1016,9 @@ sub formats_definitions {
         elsif ($custom->is_imposed_pdf) {
             $icon = 'fa-columns fa-flip-vertical';
         }
+        elsif ($custom->is_slides) {
+            $icon = 'fa-file-powerpoint-o';
+        }
         else {
             $icon = 'fa-file-pdf-o'
         }
@@ -1030,6 +1033,7 @@ sub formats_definitions {
                     icon => $icon,
                     desc => $custom->format_name,
                     oldid => $old_id,
+                    is_slides => $custom->is_slides,
                    };
     }
     push @out, @all;
