@@ -1,3 +1,4 @@
+[% # -*- mode:html -*- %]
 <div id="bbform-included">
   <div class="form-group">
     <div class="btn-group" data-toggle="buttons">
@@ -277,6 +278,13 @@
         <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
                [% IF bb.nocoverpage %]checked="checked"[% END %]/>
         [% loc('Do not create a cover page and start the text on the first page') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"
+               [% IF bb.coverpage_only_if_toc %]checked="checked"[% END %]/>
+        [% loc('For texts without a table of content, start text on the very first page') %]
       </label>
     </div>
     <div class="checkbox pdf-option">

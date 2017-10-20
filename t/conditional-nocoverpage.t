@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 39;
+use Test::More tests => 47;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -80,17 +80,25 @@ ok !$site->nocoverpage;
 
     # create a custom format with nocoverpage and look at the output. Visual testing only,
     # as it's not affected.
-    foreach my $nc (0, 1) {
+    foreach my $nc (0..2) {
         $mech->get_ok('/settings/formats');
-        $mech->submit_form(with_fields => {
-                                           format_name => 'nocoverpage-' . $nc,
-                                          });
-        $mech->submit_form(with_fields => {
+        my %fields = (
+                      format_name => 'nocoverpage-' . $nc,
+                     );
+        $mech->submit_form(with_fields => { %fields });
+        if ($nc == 1) {
+            $fields{nocoverpage} = 1;
+        }
+        elsif ($nc == 2) {
+            $fields{coverpage_only_if_toc} = 1;
+        }
+        diag Dumper(\%fields);
+        ok($mech->submit_form(with_fields => {
                                            format => 'pdf',
-                                           ($nc ? (nocoverpage => '1') : ()),
+                                           %fields,
                                           },
                            button => 'update',
-                          );
+                          ));
     }
 }
 
