@@ -21,6 +21,7 @@ sub prepare_arguments {
     if ($c->sessionid) {
         if (my $data = $c->session->{bookbuilder}) {
             %args = %$data;
+            Dlog_debug { "Bookbuilder's session loaded with $_" } \%args;
         }
         $token = $c->session->{bookbuilder_token};
     }
@@ -34,11 +35,11 @@ sub prepare_arguments {
         $args{token} = $token;
     }
     $args{user_is_logged_in} = $c->user_exists;
-    Dlog_debug { "Bookbuilder loading with $_" } \%args;
     $args{dbic} = $c->model('DB');
     $args{site} = $site if $site;
     # this switched from boolean to string and it was a long time ago.
     $args{headings} ||= 0;
+    delete $args{signature}; # legacy
     return \%args;
 }
 
