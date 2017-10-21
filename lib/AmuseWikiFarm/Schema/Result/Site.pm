@@ -1098,19 +1098,24 @@ sub check_and_update_custom_formats {
     my $self = shift;
     my %formats = (
                    pdf => {
-                           alias => 'pdf',
-                           name => 'plain PDF', # loc('plain PDF')
+                           initial => {
+                                       format_alias => 'pdf',
+                                       format_name => 'plain PDF', # loc('plain PDF')
+                                       format_priority => 1,
+                                      },
                            fields => {
-                                      format_priority => 1,
                                       bb_format => 'pdf',
                                       bb_imposed => 0,
                                      },
                           },
                    a4_pdf => {
-                              alias => 'a4.pdf',
-                              name => 'A4 imposed PDF', # loc('A4 imposed PDF')
+                              initial => {
+                                          format_alias => 'a4.pdf',
+                                          format_name => 'A4 imposed PDF', # loc('A4 imposed PDF')
+                                          format_priority => 2,
+                                          bb_signature_2up => '40-80',
+                                         },
                               fields => {
-                                         format_priority => 2,
                                          bb_format => 'pdf',
                                          bb_imposed => 1,
                                          bb_papersize => 'a5',
@@ -1119,10 +1124,13 @@ sub check_and_update_custom_formats {
                                         },
                              },
                    lt_pdf => {
-                              alias => 'lt.pdf',
-                              name => 'Letter imposed PDF', # loc('Letter imposed PDF')
+                              initial => {
+                                          format_alias => 'lt.pdf',
+                                          format_name => 'Letter imposed PDF', # loc('Letter imposed PDF')
+                                          format_priority => 3,
+                                          bb_signature_2up => '40-80',
+                                          },
                               fields => {
-                                         format_priority => 3,
                                          bb_format => 'pdf',
                                          bb_imposed => 1,
                                          bb_papersize => '5.5in:8.5in',
@@ -1131,27 +1139,23 @@ sub check_and_update_custom_formats {
                                         },
                              },
                    sl_pdf => {
-                              alias => 'sl.pdf',
-                              name => 'Slides (PDF)', # loc('Slides (PDF)')
+                              initial => {
+                                          format_alias => 'sl.pdf',
+                                          format_name => 'Slides (PDF)', # loc('Slides (PDF)'),
+                                          format_priority => 4,
+                                          },
                               fields => {
                                          bb_format => 'slides',
-                                         format_priority => 4,
                                         },
                              },
                   );
     my $guard = $self->result_source->schema->txn_scope_guard;
     foreach my $method (sort keys %formats) {
-        my $alias = $formats{$method}{alias} or die;
+        my $alias = $formats{$method}{initial}{format_alias} or die;
 
         my $cf = $self->custom_formats->find({ format_alias => $alias });
-
         unless ($cf) {
-            $cf = $self->custom_formats->create({
-                                                 format_alias => $alias,
-                                                 format_name => $formats{$method}{name},
-                                                 format_description => "Standard predefined",
-                                                 bb_signature => '40-80',
-                                                });
+            $cf = $self->custom_formats->create($formats{$method}{initial});
             # import the common stuff from the site
             $cf->sync_from_site;
         }
