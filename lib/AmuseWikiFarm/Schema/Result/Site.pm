@@ -1653,8 +1653,15 @@ sub compile_and_index_files {
     my ($self, $files, $logger) = @_;
     $logger ||= sub { warn $_[0] };
     my $compiler = $self->get_compiler($logger);
-    my @cfs = @{$self->active_custom_formats};
-    my @all_cfs = $self->custom_formats;
+    my (@active_cfs, @inactive_cfs);
+    foreach my $cf ($self->custom_formats) {
+        if ($cf->active) {
+            push @active_cfs, $cf;
+        }
+        else {
+            push @inactive_cfs, $cf;
+        }
+    }
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
@@ -1679,10 +1686,15 @@ sub compile_and_index_files {
         }
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
-                foreach my $cf (@all_cfs) {
+                foreach my $cf (@inactive_cfs) {
+                    $logger->("Removing inactive format " . $cf->format_name . "\n");
                     $cf->remove_stale_files($indexed);
                 }
-                foreach my $cf (@cfs) {
+                foreach my $cf (@active_cfs) {
+                    # the standard compilation nuked the standar formats, so we
+                    # have to restore them, preserving the TS. Then we
+                    # will rebuild them in the next job.
+                    $cf->install_aliased_file($indexed);
                     if ($cf->needs_compile($indexed)) {
                         $logger->("Scheduled generation of " . $cf->format_name . "\n");
                         $self->jobs->build_custom_format_add({

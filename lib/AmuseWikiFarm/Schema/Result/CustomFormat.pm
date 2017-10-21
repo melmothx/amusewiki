@@ -441,7 +441,6 @@ use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Archive::BookBuilder;
 use File::Temp;
-use File::Copy qw/copy/;
 use Path::Tiny;
 
 sub update_from_params {
@@ -504,6 +503,27 @@ sub valid_alias {
     }
 }
 
+sub install_aliased_file {
+    my ($self, $muse) = @_;
+    return unless $muse;
+    if (my $alias = $self->valid_alias) {
+        my $src = path($muse->filepath_for_ext($self->extension));
+        # it's perfectly fine if the src doesn't exist. We just ensure
+        # that if present, the alias is installed.
+        if ($src->exists) {
+            my $dest = path($muse->filepath_for_ext($alias));
+            try {
+                $src->copy($dest) or die $!;
+                $dest->touch($src->stat->mtime);
+            } catch {
+                my $err = $_;
+                log_error { "Couldn't copy $src to $dest $_" };
+            };
+        }
+    }
+}
+
+
 sub compile {
     my ($self, $muse, $logger) = @_;
     my $bb = $self->bookbuilder;
@@ -515,14 +535,7 @@ sub compile {
             log_debug { "Copying $tex to " . $muse->filepath_for_ext($self->tex_extension) };
             $tex->copy($muse->filepath_for_ext($self->tex_extension));
         }
-        if (my $alias = $self->valid_alias) {
-                copy ($muse->filepath_for_ext($self->extension),
-                      $muse->filepath_for_ext($alias))
-                  or die "Couldn't copy "
-                  . $muse->filepath_for_ext($self->extension)
-                  . " to "
-                  . $muse->filepath_for_ext($self->alias) . "$!";
-        }
+        $self->install_aliased_file($muse);
         return $res;
     }
     else {
