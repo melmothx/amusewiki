@@ -575,7 +575,9 @@ sub dispatch_job_rebuild {
                         $logger->($cf->format_name . " is not needed\n");
                     }
                     else {
-                        $logger->("Scheduled generation of " . $cf->format_name . "\n");
+                        $logger->("Scheduled generation of "
+                                  . $text->uri . '.' . ($cf->valid_alias || $cf->extension)
+                                  . " (" .  $cf->format_name .")\n");
                         $site->jobs->build_custom_format_add({
                                                               id => $id,
                                                               cf => $cf->custom_formats_id,

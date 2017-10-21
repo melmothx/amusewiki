@@ -30,6 +30,9 @@ Existing trees and db objects are removed.
 sub create_site {
     my ($schema, $id) = @_;
     die unless $id;
+    foreach my $job ($schema->resultset('Job')->all) {
+        $job->delete;
+    }
     if (my $stray = $schema->resultset('Site')->find($id)) {
         if ( -d $stray->repo_root) {
             remove_tree($stray->repo_root);

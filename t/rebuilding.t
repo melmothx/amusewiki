@@ -11,7 +11,7 @@ use Cwd;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/start_jobber stop_jobber/;
+use AmuseWiki::Tests qw/start_jobber stop_jobber run_all_jobs/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -45,8 +45,9 @@ foreach my $ext (@exts) {
     is $job->produced, $text->full_uri;
     my $jlogs = $job->logs;
     $job->delete;
+    run_all_jobs($schema);
     foreach my $ext (@exts) {
-        like $jlogs, qr/Created .*\.\Q$ext\E/;
+        like $jlogs, qr/(Created|Scheduled) .*\.\Q$ext\E/;
         ok (-f $text->filepath_for_ext($ext), "$ext exists");
         my $newts = (stat($text->filepath_for_ext($ext)))[9];
         ok ($newts > $ts{$ext}, "$ext updated");
@@ -71,7 +72,8 @@ like $mech->uri->path, qr{/tasks/status/};
 sleep 30;
 $mech->get_ok($mech->uri->path);
 $mech->content_contains('Job rebuild finished');
-$mech->content_contains('Created ' . $text->uri . '.pdf');
+my $uri = $text->uri;
+$mech->content_like(qr{Scheduled .* \Q$uri\E\.pdf});
 $mech->get_ok($text->full_uri . '.pdf');
 
 stop_jobber();

@@ -9,7 +9,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use Data::Dumper;
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site run_all_jobs/;
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Schema;
 use File::Path qw/make_path/;
@@ -21,6 +21,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
 $site->pdf(1);
 $site->update->discard_changes;
+$site->check_and_update_custom_formats;
 
 # this muse will not compile because the list is too deep
 my $faulty_muse =<<'EOF';
@@ -42,7 +43,7 @@ my $target = catfile($wd, $name . '.muse');
 write_file($target, $faulty_muse);
 
 $site->update_db_from_tree;
-
+run_all_jobs($schema);
 check_failure($name);
 
 # then, create a revision and publish it.
@@ -57,7 +58,7 @@ $rev->edit($faulty_muse);
 $rev->commit_version;
 
 $rev->publish_text;
-
+run_all_jobs($schema);
 check_failure('a-test-2');
 
 
@@ -68,11 +69,12 @@ sub check_failure {
     my $text = $site->titles->find({ uri => $uri, f_class => 'text'});
     ok $text, "Found the text";
     is $text->title, 'Fail', "Found the title";
-    is $text->status, 'deleted', "Status is deleted";
-    like $text->deleted, qr/compilation failed/i, "Deletion was set";
-
+    is $text->status, 'published', "Status is published";
     my $statusline = read_file(catfile($wd, $uri . '.status'));
-    like $statusline, qr/^FAILED/, "Status line reports failure";
+    like $statusline, qr/^OK/, "Status line reports success";
+    my $failed = $site->jobs->search({ status => 'failed' })->first;
+    like $failed->errors, qr/\Q$uri\E.*not produced/;
+    $site->jobs->delete_all;
 }
 
 

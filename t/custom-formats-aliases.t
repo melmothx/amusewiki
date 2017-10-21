@@ -3,13 +3,13 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 218;
+use Test::More tests => 214;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
 use lib catdir(qw/t lib/);
 
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site run_all_jobs/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
@@ -21,6 +21,8 @@ $schema->resultset('Job')->delete;
 my $site = create_site($schema, '0cformats0');
 $site->update({ secure_site => 0 });
 
+# reset for testing purpose, created by the after modifier.
+$site->custom_formats->delete;
 
 foreach my $alias (qw/sl.pdf a4.pdf lt.pdf pdf/) {
     $site->custom_formats->create({

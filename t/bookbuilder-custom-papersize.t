@@ -39,7 +39,6 @@ my $as_job = $bb->as_job;
 
 is_deeply ($bb->as_job->{imposer_options},
            {
-            signature => 0,
             schema => '2up',
             cover => 1,
            }, "Imposer options look ok");
@@ -51,7 +50,6 @@ $bb->crop_marks(1);
 
 is_deeply ($bb->as_job->{imposer_options},
            {
-            signature => 0,
             schema => '2up',
             cover => 1,
             paper => '300mm:400mm',

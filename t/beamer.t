@@ -22,7 +22,7 @@ use File::Copy qw/copy/;
 use Text::Amuse::Compile::Utils qw/write_file read_file append_file/;
 use Data::Dumper;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site run_all_jobs/;
 use AmuseWikiFarm::Archive::BookBuilder;
 
 my $site_id = '0beamer0';
@@ -37,7 +37,10 @@ $site->update({ sl_pdf => 1,
                 beamertheme => 'Madrid',
                 beamercolortheme => 'wolverine',
               });
-ok $site->sl_tex;
+$site->check_and_update_custom_formats;
+my $cf = $site->custom_formats->find({ format_alias => 'sl.pdf' });
+$cf->sync_from_site;
+ok $cf->active;
 
 my $mech = Test::WWW::Mechanize::Catalyst
   ->new(catalyst_app => 'AmuseWikiFarm',
@@ -53,11 +56,12 @@ foreach my $muse ('slides.muse', 'slides-s-no.muse') {
 $site->git->add($destination);
 $site->git->commit({ message => "Added files" });
 $site->update_db_from_tree;
-ok (-f catfile($destination, 'slides.sl.tex'), "Slides sources created");
+run_all_jobs($schema);
+ok (-f catfile($destination, 'slides.' . $cf->tex_extension), "Slides sources created" . $cf->tex_extension);
 ok (-f catfile($destination, 'slides.sl.pdf'), "Slides created");
 ok (! -f catfile($destination, 'slides-s-no.sl.pdf'),
     "Slides not created if #slides no");
-my $tex_body = read_file(catfile($destination, 'slides.sl.tex'));
+my $tex_body = read_file(catfile($destination, 'slides.' . $cf->tex_extension));
 like($tex_body, qr{Iwona}, "Found the sans font");
 like($tex_body, qr{wolverine}, "Found the beamer color theme");
 like($tex_body, qr{Madrid}, "Found the beamer theme");
@@ -67,7 +71,7 @@ $mech->content_contains('Slides (PDF)');
 $mech->get_ok('/library/slides-s-no');
 $mech->content_lacks('Slides (PDF)');
 $mech->get_ok('/library/slides.sl.pdf');
-$mech->get_ok('/library/slides.sl.tex');
+$mech->get_ok('/library/slides.' . $cf->tex_extension);
 $mech->get('/library/slides-s-no.sl.pdf');
 is ($mech->status, '404', "slides for slides-s-no not found");
 $mech->get('/library/slides-s-no.sl.tex');

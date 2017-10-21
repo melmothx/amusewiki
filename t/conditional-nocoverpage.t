@@ -3,12 +3,12 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 47;
+use Test::More tests => 49;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
 
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site run_all_jobs/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
@@ -22,6 +22,9 @@ $site->update({
                tex => 1,
                pdf => 1,
               });
+
+$site->check_and_update_custom_formats;
+
 
 my ($with_toc, $no_toc);
 {
@@ -46,6 +49,8 @@ my ($with_toc, $no_toc);
 }
 diag $with_toc;
 diag $no_toc;
+
+run_all_jobs($schema);
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
