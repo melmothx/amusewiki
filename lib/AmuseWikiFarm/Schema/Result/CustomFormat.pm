@@ -635,6 +635,15 @@ sub sync_from_site {
     return $self;
 }
 
+sub sync_site_format {
+    my $self = shift;
+    if (my $alias = $self->valid_alias) {
+        my $method = $alias;
+        $method =~ s/\./_/;
+        log_info { "Updating site $method to " . $self->active };
+        $self->site->update({ $method => $self->active });
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

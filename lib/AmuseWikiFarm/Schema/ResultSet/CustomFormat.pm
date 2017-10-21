@@ -14,8 +14,12 @@ sub active_only {
                                         "$me.format_name",
                                         "$me.custom_formats_id",
                                        ] });
-
 }
 
+sub with_alias {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.format_alias" => { '!=' => '' } }),
+}
 
 1;

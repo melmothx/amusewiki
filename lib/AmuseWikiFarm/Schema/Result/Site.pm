@@ -1094,6 +1094,77 @@ sub bb_values {
     }
 }
 
+sub check_and_update_custom_formats {
+    my $self = shift;
+    my %formats = (
+                   pdf => {
+                           alias => 'pdf',
+                           name => 'plain PDF', # loc('plain PDF')
+                           fields => {
+                                      format_priority => 1,
+                                      bb_format => 'pdf',
+                                      bb_imposed => 0,
+                                     },
+                          },
+                   a4_pdf => {
+                              alias => 'a4.pdf',
+                              name => 'A4 imposed PDF', # loc('A4 imposed PDF')
+                              fields => {
+                                         format_priority => 2,
+                                         bb_format => 'pdf',
+                                         bb_imposed => 1,
+                                         bb_papersize => 'a5',
+                                         bb_schema => '2up',
+                                         bb_cover => 1,
+                                        },
+                             },
+                   lt_pdf => {
+                              alias => 'lt.pdf',
+                              name => 'Letter imposed PDF', # loc('Letter imposed PDF')
+                              fields => {
+                                         format_priority => 3,
+                                         bb_format => 'pdf',
+                                         bb_imposed => 1,
+                                         bb_papersize => '5.5in:8.5in',
+                                         bb_schema => '2up',
+                                         bb_cover => 1,
+                                        },
+                             },
+                   sl_pdf => {
+                              alias => 'sl.pdf',
+                              name => 'Slides (PDF)', # loc('Slides (PDF)')
+                              fields => {
+                                         bb_format => 'slides',
+                                         format_priority => 4,
+                                        },
+                             },
+                  );
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    foreach my $method (sort keys %formats) {
+        my $alias = $formats{$method}{alias} or die;
+
+        my $cf = $self->custom_formats->find({ format_alias => $alias });
+
+        unless ($cf) {
+            $cf = $self->custom_formats->create({
+                                                 format_alias => $alias,
+                                                 format_name => $formats{$method}{name},
+                                                 format_description => "Standard predefined",
+                                                 bb_signature => '40-80',
+                                                });
+            # import the common stuff from the site
+            $cf->sync_from_site;
+        }
+        die "Shouldn't happen" unless $cf;
+        # sync the inactive status from the site. This is the other
+        # way around than $cf->sync_site_format
+        $cf->active($self->$method);
+        $cf->update($formats{$method}{fields});
+    }
+    $guard->commit;
+}
+
+
 sub known_langs {
     my $self = shift;
     return {
