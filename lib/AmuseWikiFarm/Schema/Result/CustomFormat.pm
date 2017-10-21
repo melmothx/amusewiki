@@ -559,10 +559,14 @@ sub remove_stale_files {
 
 sub needs_compile {
     my ($self, $muse) = @_;
+    return unless $muse;
     my $src = $muse->filepath_for_ext('muse');
     log_debug { "checking $src" };
-    if (-f $src) {
-        my $expected = $muse->filepath_for_ext($self->extension);
+    unless (-f $src) {
+        log_error { "$src doesn't exist but needs_compile was called" };
+        return;
+    }
+        my $expected = $muse->filepath_for_ext($self->valid_alias || $self->extension);
         log_debug { "$expected exist" };
         if (-f $expected) {
             log_debug { "$src and $expected exist" };
@@ -571,7 +575,6 @@ sub needs_compile {
                 return 0;
             }
         }
-    }
     return 1;
 }
 
