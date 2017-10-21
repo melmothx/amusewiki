@@ -11,6 +11,7 @@ use File::Path qw/remove_tree make_path/;
 use File::Copy qw/copy/;
 use DBIx::Class::DeploymentHandler;
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
+use Text::Amuse::Compile::Fonts::Import;
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
@@ -18,12 +19,14 @@ BEGIN {
 };
 
 use AmuseWikiFarm::Schema;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/run_all_jobs/;
 
 diag "Using DBIC $DBIx::Class::VERSION\n";
 
 plan tests => 20;
 
-system('script/amusewiki-populate-webfonts') == 0 or die;
+Text::Amuse::Compile::Fonts::Import->new(output => 'fontspec.json')->import_and_save;
 
 unless (-d catdir(qw/root static images font-preview/)) {
     system('font-preview/gen.sh') == 0 or die "Couldn't generate the font preview";
@@ -204,3 +207,4 @@ $schema->resultset('User')->create({ username => 'marcomarco',
                                      user_roles => [ { role => { role => 'admin' } } ] })
   ->add_to_sites($blog);
 
+run_all_jobs($schema);

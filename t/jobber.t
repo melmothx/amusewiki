@@ -10,17 +10,12 @@ use File::Spec::Functions qw/catdir catfile/;
 use File::Temp;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site check_jobber_result/;
+use AmuseWiki::Tests qw/create_site check_jobber_result start_jobber stop_jobber/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 
-diag "(Re)starting the jobber";
-
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-
-system($init, 'restart');
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+start_jobber($schema);
 my $site_id = '0job0';
 my $site = create_site($schema, $site_id);
 ok($site);
@@ -223,7 +218,7 @@ $text_row = $schema->resultset('Title')
 ok (!$text_row, "$text_file not found");
 ok (! -f $text_file, "$text_file is no more");
 
-system($init, 'stop');
+stop_jobber();
 
 $schema->resultset('User')->update({ preferred_language => undef });
 

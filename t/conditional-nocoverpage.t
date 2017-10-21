@@ -14,11 +14,6 @@ use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 use DateTime;
 
-my $init = catfile(qw/script jobber.pl/);
-# kill the jobber if running
-system($init, 'stop');
-
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0nofinal0';
 my $site = create_site($schema, $site_id);

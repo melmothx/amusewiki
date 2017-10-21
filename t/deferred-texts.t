@@ -9,7 +9,7 @@ use Cwd;
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site start_jobber stop_jobber/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 use File::Find;
@@ -18,11 +18,10 @@ use DateTime;
 
 diag "(Re)starting the jobber";
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-
-system($init, 'restart');
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+start_jobber($schema);
+
 my $site_id = '0deferred0';
 my $site = create_site($schema, $site_id);
 $site->update({ secure_site => 0 });
@@ -153,7 +152,7 @@ $mech->content_lacks('/library/pippo-deleted-text');
 $mech->get('/library/pippo-deferred-text');
 is $mech->status, '404', "deferred not found";
 
-system($init, 'stop');
+stop_jobber();
 
 # $site->delete;
 

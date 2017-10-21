@@ -3,19 +3,16 @@
 use strict;
 use warnings;
 
-use Test::More tests => 35;
+use Test::More tests => 34;
 use Cwd;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site start_jobber stop_jobber/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
-
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-ok(system($init, 'restart') == 0);
 
 my $site_id = '0confl0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -25,7 +22,8 @@ $site->magic_question('Hu?');
 $site->magic_answer('Hu?');
 $site->update;
 
-
+my $jpid = start_jobber($schema);
+diag "Jobber pid is $jpid";
 
 my $mechone = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
@@ -98,4 +96,8 @@ foreach my $mech ($mechone, $mechtwo) {
         $mech->content_contains('text has not been published yet');
     }
 }
+
+diag "Killin $jpid";
+stop_jobber($jpid);
+
 

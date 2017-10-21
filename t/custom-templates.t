@@ -11,16 +11,14 @@ use File::Copy::Recursive qw/dircopy/;
 use File::Temp;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site check_jobber_result/;
+use AmuseWiki::Tests qw/create_site check_jobber_result start_jobber stop_jobber/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 use Archive::Zip qw( :ERROR_CODES :CONSTANTS );
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-system($init, 'restart');
-
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+start_jobber($schema);
 
 my $site = create_site($schema, "0ctmpl0");
 $site->update({
@@ -121,7 +119,7 @@ for my $use_ttdir (0..1) {
     }
 }
 
-system($init, 'stop');
+stop_jobber();
 
 sub get_epub_css_from_url {
     my $mech = shift;

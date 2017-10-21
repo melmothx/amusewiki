@@ -12,11 +12,6 @@ use AmuseWikiFarm::Archive::BookBuilder;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 
-
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-# kill the jobber if running
-system($init, 'stop');
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');

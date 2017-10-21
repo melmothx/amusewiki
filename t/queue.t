@@ -18,10 +18,6 @@ my $site = $schema->resultset('Site')->find('0blog0');
 # clear
 $schema->resultset('Job')->delete;
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-# kill the jobber
-system($init, 'stop');
-
 my $othersite = $schema->resultset('Site')->find('0test0');
 
 my $j = $site->jobs->enqueue(testing => {});

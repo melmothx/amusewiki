@@ -9,9 +9,12 @@ use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use Git::Wrapper;
 use Search::Xapian;
 use DateTime;
+use AmuseWikiFarm::Utils::Jobber;
 
 our @ISA = qw(Exporter);
-our @EXPORT_OK = qw/create_site check_jobber_result fill_site/;
+our @EXPORT_OK = qw/create_site check_jobber_result fill_site
+                    run_all_jobs start_jobber stop_jobber/;
+
 
 =head2 create_site($schema, $id)
 
@@ -120,6 +123,43 @@ sub fill_site {
         $indexer->index_text("this uri doesn't exist a abc cdf");
         $db->replace_document_by_term('Q' . $uri, $doc);
     }
+}
+
+sub run_all_jobs {
+    my ($schema) = @_;
+    foreach my $j ($schema->resultset('Job')->pending) {
+        $j->dispatch_job;
+    }
+}
+
+my $job_pid;
+
+sub start_jobber {
+    my $schema = shift;
+    if (my $pid = fork()) {
+        $job_pid = $pid;
+        return $pid;
+    }
+    elsif(defined $pid) {
+        my $jobber = AmuseWikiFarm::Utils::Jobber->new(schema => $schema,
+                                                       polling_interval => 1,
+                                                      );
+        # this fork will not run forever. Max 5 minutes on dry-run.
+        for (1..300) {
+            $jobber->main_loop;
+        }
+        exit;
+    }
+    else {
+        die "Couldn't fork";
+    }
+}
+
+sub stop_jobber {
+    my $pid = shift || $job_pid;
+    kill TERM => $pid;
+    wait;
+    die "$pid is not killed yet" if kill(0, $pid);
 }
 
 1;

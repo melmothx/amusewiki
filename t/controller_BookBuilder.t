@@ -9,10 +9,6 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-# kill the jobber
-system($init, 'stop');
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');

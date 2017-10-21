@@ -10,14 +10,13 @@ use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/start_jobber stop_jobber/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
 ok ($site, "site found");
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-# kill the jobber if running
-system($init, 'stop');
 my $text = $site->titles->published_texts->first;
 $site->jobs->enqueue(rebuild => { id => $text->id }, 15);
 sleep 1;
@@ -54,7 +53,7 @@ foreach my $ext (@exts) {
     }
 }
 
-system($init, 'start');
+start_jobber($schema);
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
@@ -74,7 +73,8 @@ $mech->get_ok($mech->uri->path);
 $mech->content_contains('Job rebuild finished');
 $mech->content_contains('Created ' . $text->uri . '.pdf');
 $mech->get_ok($text->full_uri . '.pdf');
-system($init, 'stop');
+
+stop_jobber();
 
 $site->bulk_jobs->delete_all;
 ok(!$site->bulk_jobs->count, "No bulk jobs so far");
@@ -145,4 +145,5 @@ ok $bulk->jobs->search({ errors => 'Bulk job aborted', status => 'completed' })-
 $site->bulk_jobs->abort_all;
 $site->jobs->delete_all;
 
-system($init, 'stop');
+
+
