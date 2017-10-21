@@ -442,6 +442,7 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Archive::BookBuilder;
 use File::Temp;
 use File::Copy qw/copy/;
+use Path::Tiny;
 
 sub update_from_params {
     my ($self, $params) = @_;
@@ -485,6 +486,24 @@ sub bookbuilder {
     return $bb;
 }
 
+sub valid_alias {
+    my $self = shift;
+    my $alias = $self->format_alias;
+    return unless $alias;
+    my %permitted = (
+                     pdf => 1,
+                     'sl.pdf' => 1,
+                     'a4.pdf' => 1,
+                     'lt.pdf' => 1,
+                    );
+    if ($permitted{$alias}) {
+        return $alias;
+    }
+    else {
+        return;
+    }
+}
+
 sub compile {
     my ($self, $muse, $logger) = @_;
     my $bb = $self->bookbuilder;
@@ -496,30 +515,46 @@ sub compile {
             log_debug { "Copying $tex to " . $muse->filepath_for_ext($self->tex_extension) };
             $tex->copy($muse->filepath_for_ext($self->tex_extension));
         }
-        if (my $alias = $self->format_alias) {
-            my %permitted = (
-                             pdf => 1,
-                             'sl.pdf' => 1,
-                             'a4.pdf' => 1,
-                             'lt.pdf' => 1,
-                            );
-            if ($permitted{$alias}) {
+        if (my $alias = $self->valid_alias) {
                 copy ($muse->filepath_for_ext($self->extension),
                       $muse->filepath_for_ext($alias))
                   or die "Couldn't copy "
                   . $muse->filepath_for_ext($self->extension)
                   . " to "
                   . $muse->filepath_for_ext($self->alias) . "$!";
-            }
-            else {
-                die "$alias is not a permitted alias!";
-            }
         }
         return $res;
     }
     else {
         return;
     }
+}
+
+sub remove_stale_files {
+    my ($self, $muse) = @_;
+    unless ($muse) {
+        log_error { "remove_stale_files called without argument! " };
+        return;
+    }
+    my $ret = 0;
+    foreach my $ext ($self->extensions) {
+        my $f = path($muse->filepath_for_ext($ext));
+        if ($f->exists) {
+            log_info { "Removing stale file $f" };
+            try {
+                $f->remove;
+                $ret++;
+            } catch {
+                my $err = $_;
+                log_error { "Error removing $f, $err" };
+            };
+        }
+        else {
+            # this is to be expected.
+            log_debug { "$f does not exist" };
+        }
+    }
+    return $ret;
 }
 
 sub needs_compile {
@@ -568,6 +603,16 @@ sub extension {
     else {
         return "c${code}.pdf";
     }
+}
+
+sub extensions {
+    my $self = shift;
+    my $code = $self->custom_formats_id;
+    my @exts = map { "c" . $code . "." . $_ } (qw/epub pdf tex/);
+    if (my $alias = $self->valid_alias) {
+        push @exts, $alias;
+    }
+    return @exts;
 }
 
 sub is_imposed_pdf {

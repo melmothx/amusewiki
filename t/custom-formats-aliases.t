@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 204;
+use Test::More tests => 218;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -160,3 +160,14 @@ $site->update({ division => 55 });
 ok !$site->bb_values;
 $site->update({ division => 15 });
 ok scalar($site->bb_values);
+
+foreach my $special ($site->titles->specials_only) {
+    foreach my $cf ($site->custom_formats) {
+        if ($cf->bb_format eq 'slides' and !$special->slides) {
+            ok !$cf->remove_stale_files($special), "No removal needed";
+        }
+        else {
+            ok $cf->remove_stale_files($special), "State files purged";
+        }
+    }
+}

@@ -1583,6 +1583,7 @@ sub compile_and_index_files {
     $logger ||= sub { warn $_[0] };
     my $compiler = $self->get_compiler($logger);
     my @cfs = @{$self->active_custom_formats};
+    my @all_cfs = $self->custom_formats;
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
@@ -1607,12 +1608,16 @@ sub compile_and_index_files {
         }
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
+                foreach my $cf (@all_cfs) {
+                    $cf->remove_stale_files($indexed);
+                }
                 foreach my $cf (@cfs) {
                     if ($cf->needs_compile($indexed)) {
+                        $logger->("Scheduled generation of " . $cf->format_name . "\n");
                         $self->jobs->build_custom_format_add({
                                                               id => $indexed->id,
                                                               cf => $cf->custom_formats_id,
-                                                             })
+                                                             });
                     }
                 }
             }
