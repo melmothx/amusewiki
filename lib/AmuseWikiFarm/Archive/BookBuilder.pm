@@ -237,18 +237,12 @@ Build an EPUB instead of a PDF
 
 =cut
 
-has epub => (is => 'lazy',
-             isa => Bool);
-
-sub _build_epub {
+sub epub {
     my $self = shift;
     return $self->format eq 'epub';
 }
 
-has slides => (is => 'lazy',
-               isa => Bool);
-
-sub _build_slides {
+sub slides {
     my $self = shift;
     if ($self->format eq 'slides') {
         if ($self->is_single_file or $self->can_generate_slides) {
@@ -258,11 +252,8 @@ sub _build_slides {
     return 0;
 }
 
-has pdf => (is => 'lazy',
-            isa => Bool);
-
 # this is the default
-sub _build_pdf {
+sub pdf {
     my $self = shift;
     if ($self->format eq 'pdf' or
         (!$self->slides && !$self->epub)) {
