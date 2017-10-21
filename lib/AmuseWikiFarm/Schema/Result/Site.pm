@@ -2859,6 +2859,7 @@ sub update_from_params {
         }
         $guard->commit;
         $self->configure_cgit;
+        $self->check_and_update_custom_formats;
     }
     # in any case discard the changes
     $self->discard_changes;
@@ -3583,6 +3584,12 @@ sub mailer {
     # If we call this, those settings will be ignored, hence we permit
     # argument passing)
 }
+
+after insert => sub {
+    my $self = shift;
+    $self->discard_changes;
+    $self->check_and_update_custom_formats;
+};
 
 __PACKAGE__->meta->make_immutable;
 
