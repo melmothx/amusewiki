@@ -27,7 +27,7 @@ my $othersite = $schema->resultset('Site')->find('0test0');
 my $j = $site->jobs->enqueue(testing => {});
 
 is $j->site->id, '0blog0';
-is $j->username, undef,
+is $j->username, undef, "Username is undef";
 is $j->committer_username, "anonymous";
 is $j->committer_name, "Anonymous";
 is $j->committer_mail, "anonymous\@blog.amusewiki.org";
@@ -155,7 +155,7 @@ $mech->submit_form(
 $mech->get_ok('/random');
 ok($mech->follow_link(url_regex => qr{/bookbuilder/add/.+}));
 $mech->get_ok('/bookbuilder');
-$mech->form_with_fields('signature');
+$mech->form_with_fields('signature_2up');
 $mech->field(title => 'test');
 fill_queue($site);
 $mech->click;

@@ -4,7 +4,7 @@ use utf8;
 use Test::More tests => 227;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Data::Dumper;
+use Data::Dumper::Concise;
 # use Test::Memory::Cycle;
 use Try::Tiny;
 use CAM::PDF;
@@ -60,6 +60,12 @@ ok (-d AmuseWikiFarm::Archive::BookBuilder->filedir, "Found " . AmuseWikiFarm::A
         elsif ($format eq 'epub') {
             my $epub = File::Spec->catfile($bb->filedir,
                                            $bb->compile);
+            unless ($epub =~ m/\.epub/) {
+                # horrid
+                delete $bb->{dbic};
+                delete $bb->{site};
+                die Dumper($bb);
+            }
             ok (-f $epub);
             my $tmpdir = File::Temp->newdir(CLEANUP => 1);
             my $zip = Archive::Zip->new;
@@ -247,7 +253,7 @@ my %params = (
               notoc       => 1,
               nocoverpage => 1,
               imposed     => 1,
-              signature   => '40-80',
+              signature_2up   => '40-80',
               schema      => '2up',
               cover       => 1,
               # coverfile should be called with add_file
@@ -286,7 +292,7 @@ is ($bb->opening, 'right');
            notoc       => 1,
            nocoverpage => 1,
            imposed     => 1,
-           signature   => '40-80',
+           signature_2up   => '40-80',
            signature_4up => '8',
            schema      => '2up',
            cover       => 1,
@@ -295,7 +301,7 @@ is ($bb->opening, 'right');
           );
 
 $bb->import_from_params(%params);
-is $bb->signature, '40-80', "Signature_4up ignored with schema 2up";
+is $bb->signature_in_use, '40-80', "Signature_4up ignored with schema 2up";
 is $bb->opening, 'any';
 
 %params = (
@@ -310,7 +316,7 @@ is $bb->opening, 'any';
            notoc       => 1,
            nocoverpage => 1,
            imposed     => 1,
-           signature   => '4',
+           signature_2up   => '4',
            signature_4up => '16',
            schema      => '4up',
            cover       => 1,
@@ -319,7 +325,7 @@ is $bb->opening, 'any';
           );
 
 $bb->import_from_params(%params);
-is $bb->signature, 16, "Signature_4up picked up with 4up schema";
+is $bb->signature_in_use, 16, "Signature_4up picked up with 4up schema";
 is $bb->opening, 'any', "Opening set to any because of invalid input";
 
 is $bb->mainfont, 'CMU Serif';
@@ -384,7 +390,7 @@ foreach my $text(qw/first-test do-this-by-yourself/) {
 }
 ok ($bb->imposed, "Imposing required");
 $bb->schema('2up');
-$bb->signature(0);
+$bb->signature_2up(0);
 $bb->cover(1);
 check_file($bb, "imposed one");
 cleanup($bb->job_id);
@@ -448,7 +454,7 @@ $bb->site->update({ bb_page_limit => 10 });
                                                        job_id => 666699,
                                                        imposed => 1,
                                                        schema => '2up',
-                                                       signature => 0,
+                                                       signature_2up => 0,
                                                        papersize => 'b6',
                                                        crop_papersize => 'a5',
                                                        crop_marks => 1,
@@ -473,7 +479,7 @@ $bb->site->update({ bb_page_limit => 10 });
                                                        job_id => 666791,
                                                        imposed => 1,
                                                        schema => '2up',
-                                                       signature => 0,
+                                                       signature_2up => 0,
                                                        papersize => 'b6',
                                                        crop_papersize => 'a5',
                                                        crop_marks => 1,

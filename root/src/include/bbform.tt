@@ -383,15 +383,15 @@
     <div id="signature-explanation">
       <div class="row">
         <div class="col-sm-3">
-      <label for="signature">
+      <label for="signature_2up">
         <strong>[% loc('Please select the signature size:') %]</strong>
       </label>
         </div>
         <div class="col-sm-9">
-      <select id="signature" class="form-control" name="signature">
-        [% FOREACH sign IN bb.signature_values %]
+      <select id="signature_2up" class="form-control" name="signature_2up">
+        [% FOREACH sign IN bb.signature_values_2up %]
         <option value="[% sign %]"
-                [% IF sign == bb.signature %]selected="selected"[% END %]>
+                [% IF sign == bb.signature_2up %]selected="selected"[% END %]>
           [% IF sign.match('-') %]
           [% loc('Use optimized signatures with [_1] pages each', sign) %]
           [% ELSIF sign == 0 %]
@@ -434,7 +434,7 @@
       <select id="signature_4up" class="form-control" name="signature_4up">
         [% FOREACH sign IN bb.signature_values_4up %]
         <option value="[% sign %]"
-                [% IF sign == bb.signature %]selected="selected"[% END %]>
+                [% IF sign == bb.signature_4up %]selected="selected"[% END %]>
           [% IF sign.match('-') %]
           [% loc('Use optimized signatures with [_1] pages each', sign) %]
           [% ELSIF sign == 0 %]

@@ -739,7 +739,7 @@ has coverwidth => (
                    default => sub { '100' },
                   );
 
-=head2 signature
+=head2 signature_2up
 
 The signature to use.
 
@@ -747,7 +747,7 @@ The signature to use.
 
 =cut
 
-sub signature_values {
+sub signature_values_2up {
     return [qw/0 40-80 4  8 12 16 20 24 28 32 36 40
                       44 48 52 56 60 64 68 72 76 80
               /];
@@ -762,12 +762,17 @@ sub signature_values_4up {
 
 
 
-has signature => (
-                   is => 'rw',
-                   isa => Enum[ @{__PACKAGE__->signature_values} ],
-                   default => sub { '0' },
-                 );
+has signature_2up => (
+                      is => 'rw',
+                      isa => Enum[ @{__PACKAGE__->signature_values_2up} ],
+                      default => sub { '0' },
+                     );
 
+has signature_4up => (
+                      is => 'rw',
+                      isa => Enum[ @{__PACKAGE__->signature_values_4up} ],
+                      default => sub { '0' },
+                     );
 
 sub opening_values {
     return [qw/any right/];
@@ -994,16 +999,10 @@ Populate the object with the provided HTTP parameters. Given the the
 form has correct values, failing to import means that the params were
 tampered or incorrect, so just ignore those.
 
-As a particular case, the 4up signature will be imported as signature
-if the schema name is C<4up>.
-
 =cut
 
 sub import_profile_from_params {
     my ($self, %params) = @_;
-    if ($params{schema} and $params{schema} eq '4up') {
-        $params{signature} = delete $params{signature_4up};
-    }
     foreach my $method ($self->profile_methods) {
         # ignore coverfile when importing from the params
         try {
@@ -1018,9 +1017,6 @@ sub import_profile_from_params {
 
 sub import_from_params {
     my ($self, %params) = @_;
-    if ($params{schema} and $params{schema} eq '4up') {
-        $params{signature} = delete $params{signature_4up};
-    }
     foreach my $method ($self->_main_methods) {
         # ignore coverfile when importing from the params
         next if $method eq 'coverfile';
@@ -1070,7 +1066,8 @@ sub profile_methods {
               nofinalpage
               headings
               imposed
-              signature
+              signature_2up
+              signature_4up
               schema
               opening
               paper_width
@@ -1090,6 +1087,19 @@ sub profile_methods {
 Main method to create a structure to feed the jobber for the building
 
 =cut
+
+sub signature_in_use {
+    my $self = shift;
+    if ($self->schema eq '2up') {
+        return $self->signature_2up;
+    }
+    elsif ($self->schema eq '4up') {
+        return $self->signature_4up;
+    }
+    else {
+        return;
+    }
+}
 
 sub as_job {
     my $self = shift;
@@ -1130,9 +1140,9 @@ sub as_job {
     log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
     if (!$self->epub && !$self->slides && $self->imposed) {
         $job->{imposer_options} = {
-                                   signature => $self->signature,
                                    schema    => $self->schema,
                                    cover     => $self->cover,
+                                   ($self->signature_in_use ? (signature => $self->signature_in_use) : ()),
                                   };
         if ($self->crop_marks) {
             $job->{imposer_options}->{paper} = $self->computed_crop_papersize;

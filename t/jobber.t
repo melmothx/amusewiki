@@ -128,7 +128,7 @@ $mech->content_contains("The text was added to the bookbuilder");
 is ($mech->uri->path, $text);
 $mech->get_ok("/bookbuilder");
 
-$mech->form_with_fields('signature');
+$mech->form_with_fields('signature_2up');
 
 $mech->field(title => 'test');
 $mech->click;
