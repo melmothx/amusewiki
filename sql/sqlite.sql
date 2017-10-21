@@ -135,6 +135,8 @@ CREATE TABLE custom_formats (
        bb_paper_width INTEGER NOT NULL DEFAULT 0,
        bb_schema VARCHAR(255) NOT NULL DEFAULT '2up',
        bb_signature INTEGER NOT NULL DEFAULT 0,
+       bb_signature_2up VARCHAR(8) NOT NULL DEFAULT '40-80',
+       bb_signature_4up VARCHAR(8) NOT NULL DEFAULT '40-80',
        bb_twoside SMALLINT DEFAULT 0,
        bb_unbranded SMALLINT DEFAULT 0
 );

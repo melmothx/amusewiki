@@ -257,6 +257,20 @@ __PACKAGE__->table("custom_formats");
   default_value: 0
   is_nullable: 0
 
+=head2 bb_signature_2up
+
+  data_type: 'varchar'
+  default_value: '40-80'
+  is_nullable: 0
+  size: 8
+
+=head2 bb_signature_4up
+
+  data_type: 'varchar'
+  default_value: '40-80'
+  is_nullable: 0
+  size: 8
+
 =head2 bb_twoside
 
   data_type: 'smallint'
@@ -382,6 +396,20 @@ __PACKAGE__->add_columns(
   },
   "bb_signature",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "bb_signature_2up",
+  {
+    data_type => "varchar",
+    default_value => "40-80",
+    is_nullable => 0,
+    size => 8,
+  },
+  "bb_signature_4up",
+  {
+    data_type => "varchar",
+    default_value => "40-80",
+    is_nullable => 0,
+    size => 8,
+  },
   "bb_twoside",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_unbranded",
@@ -434,8 +462,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-20 15:13:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ieGE99PDz6aLes8Z4RLyyQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-21 17:51:57
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8ZiOuiARbLxrtGYT/Nq6Bw
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
