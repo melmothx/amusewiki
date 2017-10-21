@@ -579,6 +579,10 @@ sub needs_compile {
         log_error { "$src doesn't exist but needs_compile was called" };
         return;
     }
+    if ($self->is_slides and !$muse->slides) {
+        log_debug { "Text doesn't define slides, so not needed" };
+        return;
+    }
         my $expected = $muse->filepath_for_ext($self->valid_alias || $self->extension);
         log_debug { "$expected exist" };
         if (-f $expected) {

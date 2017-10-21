@@ -571,11 +571,17 @@ sub dispatch_job_rebuild {
                 my $compiler = $site->get_compiler($logger);
                 $compiler->compile($muse);
                 foreach my $cf (@cfs) {
-                    $site->jobs->build_custom_format_add({
-                                                          id => $id,
-                                                          cf => $cf->custom_formats_id,
-                                                          force => 1,
-                                                         });
+                    if ($cf->is_slides and !$text->slides) {
+                        $logger->($cf->format_name . " is not needed\n");
+                    }
+                    else {
+                        $logger->("Scheduled generation of " . $cf->format_name . "\n");
+                        $site->jobs->build_custom_format_add({
+                                                              id => $id,
+                                                              cf => $cf->custom_formats_id,
+                                                              force => 1,
+                                                             });
+                    }
                 }
                 # this is relatively fast as we already have the
                 # formats built.
@@ -767,9 +773,13 @@ sub dispatch_job_build_custom_format {
     my $title = $self->site->titles->find($data->{id});
     if ($cf && $title) {
         if ($data->{force} or $cf->needs_compile($title)) {
-            $cf->compile($title, $logger);
-            $logger->("Generated " . $cf->format_name . ' for ' . $title->full_uri
-                      . ' in ' . (time() - $time) . " seconds\n");
+            if ($cf->compile($title, $logger)) {
+                $logger->("Generated " . $cf->format_name . ' for ' . $title->full_uri
+                          . ' in ' . (time() - $time) . " seconds\n");
+            }
+            else {
+                $logger->("Nothing produced for " . $title->full_uri . ' and ' .$cf->format_name . "\n");
+            }
         }
         else {
             $logger->($cf->format_name . ' is not needed for ' . $title->full_uri . "\n");
