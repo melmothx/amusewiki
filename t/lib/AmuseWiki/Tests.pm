@@ -130,8 +130,11 @@ sub fill_site {
 
 sub run_all_jobs {
     my ($schema) = @_;
-    foreach my $j ($schema->resultset('Job')->pending) {
+    my $i = 0;
+    while (my $j = $schema->resultset('Job')->dequeue) {
         $j->dispatch_job;
+        $i++;
+        die "Too many jobs $i" if $i > 200;
     }
 }
 
