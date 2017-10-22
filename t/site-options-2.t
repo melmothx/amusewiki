@@ -125,7 +125,7 @@ foreach my $rest (@restricted) {
     delete $old{$rest};
 }
 
-foreach my $good (qw/pdf a4_pdf lt_pdf cgit_integration/) {
+foreach my $good (qw/blog_style twoside nocoverpage cgit_integration/) {
     $site->update({ $good => 0 });
     my $error = $site->update_from_params_restricted({ %old, $good => 1 });
     ok !$error or diag $error;

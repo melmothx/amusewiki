@@ -115,7 +115,28 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
     if (delete $params{update}) {
         Dlog_debug { "Params are $_" } \%params;
         my $result = $format->update_from_params(\%params);
-        if ($result->{error}) {
+
+        my @warnings;
+        if (my $aliased = $format->format_alias) {
+            my %fixed = $c->stash->{site}->fixed_formats_definitions;
+            if (my ($def) = grep { $_->{initial}->{format_alias} eq $aliased } values %fixed) {
+                foreach my $k (keys %{$def->{fields}}) {
+                    log_warn {"Reverting $k to  $def->{fields}->{$k}"};
+                    if ($format->$k ne $def->{fields}->{$k}) {
+                        push @warnings, $k;
+                        $format->$k($def->{fields} {$k});
+                    }
+                }
+                $format->update if $format->is_changed;
+            }
+            else {
+                Dlog_error { "$aliased is without a format definition in $_" } \%fixed;
+            }
+        }
+        if (@warnings) {
+            $c->flash(error_msg => "Ignored changes: " . join(', ', @warnings));
+        }
+        elsif ($result->{error}) {
             $c->flash(error_msg => $result->{error});
         }
         else {
@@ -131,14 +152,22 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
 sub make_format_inactive :Chained('get_format') :PathPart('inactive') :Args(0) {
     my ($self, $c) = @_;
     Dlog_debug { "setting active => 0 $_" } $c->request->body_parameters;
-    $c->stash->{edit_custom_format}->update({ active => 0 }) if $c->request->body_parameters->{go};
+    my $cf = $c->stash->{edit_custom_format};
+    if ($c->request->body_parameters->{go}) {
+        $cf->update({ active => 0 });
+        $cf->sync_site_format;
+    }
     $c->response->redirect($c->uri_for_action('/settings/formats'));
 }
 
 sub make_format_active :Chained('get_format') :PathPart('active') :Args(0) {
     my ($self, $c) = @_;
     Dlog_debug { "setting active => 1 $_" } $c->request->body_parameters;
-    $c->stash->{edit_custom_format}->update({ active => 1 }) if $c->request->body_parameters->{go};
+    my $cf = $c->stash->{edit_custom_format};
+    if ($c->request->body_parameters->{go}) {
+        $cf->update({ active => 1 });
+        $cf->sync_site_format;
+    }
     $c->response->redirect($c->uri_for_action('/settings/formats'));
 }
 

@@ -28,7 +28,6 @@ use AmuseWikiFarm::Archive::BookBuilder;
 my $site_id = '0beamer0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
-ok !$site->sl_tex, "No sl.tex";
 $site->update({ sl_pdf => 1,
                 cgit_integration => 1,
                 secure_site => 0,
@@ -83,12 +82,10 @@ $mech->submit_form(with_fields => { __auth_user => 'root',
                                   });
 $mech->get_ok('/action/text/new');
 $mech->content_contains('Produce slides');
-$mech->get_ok("/admin/sites/edit/$site_id");
-$mech->form_id("site-edit-form");
-$mech->untick(sl_pdf => 'on');
-$mech->click("edit_site");
+$mech->get_ok("/settings/formats");
+$mech->submit_form(form_id => "format-activate-" . $cf->custom_formats_id);
 $mech->content_lacks(q{id="error_message"}) or die $mech->content;
-ok(!$site->discard_changes->sl_pdf, "sl_pdf disabled");
+ok(!$cf->discard_changes->active, "sl_pdf disabled");
 $mech->get_ok('/action/text/new');
 $mech->content_lacks('Produce slides');
 
@@ -101,10 +98,10 @@ $mech->content_contains('Created new text');
 $mech->content_lacks('#slides');
 
 $mech->get_ok("/admin/sites/edit/$site_id");
-$mech->form_id("site-edit-form");
-$mech->tick(sl_pdf => 'on');
-$mech->click;
-ok($site->discard_changes->sl_pdf, "Slides are active now");
+
+$mech->get_ok("/settings/formats");
+$mech->submit_form(form_id => "format-activate-" . $cf->custom_formats_id);
+ok($cf->discard_changes->active, "Slides are active now");
 $mech->get_ok('/action/text/new');
 $mech->content_contains('Produce slides');
 ok($mech->form_id('ckform'), "Found the form for uploading stuff");

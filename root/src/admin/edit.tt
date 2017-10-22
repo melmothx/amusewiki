@@ -609,49 +609,6 @@ kpsewhich mylogo.pdf
       [% END %]
       </div>
     </div>
-    <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-6">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.pdf %]checked="checked"[% END %]
-                 name="pdf" />
-          [% loc('Plain PDF') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-6">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.a4_pdf %]checked="checked"[% END %]
-                 name="a4_pdf" />
-          [% loc('A4 imposed PDF') %]
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-6">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.lt_pdf %]checked="checked"[% END %]
-                 name="lt_pdf" />
-          [% loc('Letter imposed PDF') %]
-        </label>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-6 col-sm-6">
-        <label>
-          <input type="checkbox"
-                 [% IF esite.sl_pdf %]checked="checked"[% END %]
-                 name="sl_pdf" value="on"/>
-          [% loc('Slides (PDF)') %]
-        </label>
-      </div>
-    </div>
-
     [% # pick these options from the bookbuilder %]
     [% SET bb = c.model('BookBuilder') %]
     <div class="form-group">

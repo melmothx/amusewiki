@@ -1094,15 +1094,28 @@ sub bb_values {
     }
 }
 
-sub check_and_update_custom_formats {
-    my $self = shift;
+=head2 check_and_update_custom_formats
+
+Method to spawn the standard CF, bound to the site flags
+pdf/sl_pdf/a4_pdf/lt_pdf. Such flags are now informative only and are
+toggled on /settings/formats. This method is called after the
+insertion in the DB of a new site, at jobber startup and when visiting
+/settings/formats.
+
+Assert that all the formats are active, either by site flag or by
+format active, and never deactivate anything.
+
+Also assert that the custom formats are what they say they are.
+
+=cut
+
+sub fixed_formats_definitions {
     my %formats = (
                    pdf => {
                            initial => {
                                        format_alias => 'pdf',
                                        format_name => 'plain PDF', # loc('plain PDF')
                                        format_priority => 1,
-                                       format_description => 'Standard',
                                       },
                            fields => {
                                       bb_format => 'pdf',
@@ -1115,7 +1128,6 @@ sub check_and_update_custom_formats {
                                           format_name => 'A4 imposed PDF', # loc('A4 imposed PDF')
                                           format_priority => 2,
                                           bb_signature_2up => '40-80',
-                                          format_description => 'Standard',
                                          },
                               fields => {
                                          bb_format => 'pdf',
@@ -1131,7 +1143,6 @@ sub check_and_update_custom_formats {
                                           format_name => 'Letter imposed PDF', # loc('Letter imposed PDF')
                                           format_priority => 3,
                                           bb_signature_2up => '40-80',
-                                          format_description => 'Standard',
                                           },
                               fields => {
                                          bb_format => 'pdf',
@@ -1146,27 +1157,56 @@ sub check_and_update_custom_formats {
                                           format_alias => 'sl.pdf',
                                           format_name => 'Slides (PDF)', # loc('Slides (PDF)'),
                                           format_priority => 4,
-                                          format_description => 'Standard',
                                           },
                               fields => {
                                          bb_format => 'slides',
                                         },
                              },
                   );
+    return %formats;
+}
+
+sub check_and_update_custom_formats {
+    my $self = shift;
+    my %formats = $self->fixed_formats_definitions;
     my $guard = $self->result_source->schema->txn_scope_guard;
     foreach my $method (sort keys %formats) {
         my $alias = $formats{$method}{initial}{format_alias} or die;
 
         my $cf = $self->custom_formats->find({ format_alias => $alias });
         unless ($cf) {
-            $cf = $self->custom_formats->create($formats{$method}{initial});
+            my %insertion = %{$formats{$method}{initial}};
+            $insertion{active} = 0;
+            my @fixed;
+            foreach  my $k (sort keys %{$formats{$method}{fields}}) {
+                my $v = $formats{$method}{fields}{$k};
+                $k =~ s/bb_//;
+                push @fixed, "$k:$v";
+            }
+            $insertion{format_description} = "Standard format. Changes to these fields will be ignored: "
+              . join(' ', @fixed);
+            $cf = $self->custom_formats->create(\%insertion);
             # import the common stuff from the site
             $cf->sync_from_site;
         }
         die "Shouldn't happen" unless $cf;
-        # sync the inactive status from the site. This is the other
-        # way around than $cf->sync_site_format
-        $cf->active($self->$method);
+
+        if ($self->$method) {
+            if (!$cf->active) {
+                log_info { "Activating CF " . $self->id . '/' . $cf->format_alias };
+                $cf->update({ active => 1 });
+            }
+        }
+        elsif ($cf->active) {
+            if (!$self->$method) {
+                log_info { "Setting $method flag for " . $self->id . '/' . $cf->format_alias };
+                $self->update({ $method => 1 });
+            }
+        }
+        else {
+            log_info { "$method for " . $self->id . " is disabled" };
+        }
+        Dlog_debug { "Enforcing $_ on " . $cf->format_name } $formats{$method}{fields};
         $cf->update($formats{$method}{fields});
     }
     $guard->commit;
@@ -2571,9 +2611,7 @@ sub update_from_params {
 
     # first round: booleans. Here there is not much to do. If it's set, 1,
     # otherwise 0
-    my @booleans = (qw/    pdf a4_pdf lt_pdf
-                       sl_pdf
-                       logo_with_sitename
+    my @booleans = (qw/logo_with_sitename
                        cgit_integration
                        secure_site
                        active
@@ -2872,7 +2910,6 @@ sub update_from_params {
         }
         $guard->commit;
         $self->configure_cgit;
-        $self->check_and_update_custom_formats;
     }
     # in any case discard the changes
     $self->discard_changes;
@@ -3245,10 +3282,6 @@ sub use_js_highlight {
 sub use_js_highlight_value {
     my $self = shift;
     return $self->get_option('use_js_highlight');
-}
-
-sub sl_tex {
-    return shift->sl_pdf;
 }
 
 sub mail_from_default {
