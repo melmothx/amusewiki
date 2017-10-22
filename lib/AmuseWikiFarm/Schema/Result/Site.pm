@@ -1740,8 +1740,8 @@ sub compile_and_index_files {
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
                 foreach my $cf (@inactive_cfs) {
-                    $logger->("Removing inactive format " . $cf->format_name . "\n");
-                    $cf->remove_stale_files($indexed);
+                    $logger->("Removed inactive format " . $cf->format_name . "\n")
+                      if $cf->remove_stale_files($indexed);
                 }
                 foreach my $cf (@active_cfs) {
                     # the standard compilation nuked the standar formats, so we
