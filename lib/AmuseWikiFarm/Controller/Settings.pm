@@ -66,7 +66,7 @@ sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
     # Dlog_debug { "Found these formats $_" } \@list;
     $c->stash(
               format_list => \@list,
-              f_priority_values => [1..20],
+              f_priority_values => [1..50],
               create_url => $c->uri_for_action('/settings/create_format'),
               page_title => $c->loc('Custom formats for [_1]', $c->stash->{site}->canonical),
              );
@@ -76,7 +76,14 @@ sub create_format :Chained('list_custom_formats') :PathPart('create') :Args(0) {
     my ($self, $c) = @_;
     my %params = %{ $c->request->body_parameters };
     if ($params{format_name} and length($params{format_name}) < 255) {
-        my $f = $c->stash->{site}->custom_formats->create({ format_name => "$params{format_name}"});
+        my $priority = 1;
+        if (my $last = $c->stash->{site}->custom_formats->sorted_by_priority_desc->first) {
+            $priority = $last->format_priority + 1;
+        }
+        my $f = $c->stash->{site}->custom_formats->create({
+                                                           format_name => "$params{format_name}",
+                                                           format_priority => $priority,
+                                                          });
         log_debug { "Created " . $f->format_name };
         $f->discard_changes;
         $c->response->redirect($c->uri_for_action('/settings/edit_format', [ $f->custom_formats_id ]));

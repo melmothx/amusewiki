@@ -5,6 +5,17 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
+sub sorted_by_priority_desc {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search(undef,
+                         { order_by => { -desc => [
+                                                   "$me.format_priority",
+                                                   "$me.format_name",
+                                                   "$me.custom_formats_id",
+                                                  ] } });
+}
+
 sub sorted_by_priority {
     my $self = shift;
     my $me = $self->current_source_alias;
