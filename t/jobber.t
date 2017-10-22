@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 98;
+use Test::More tests => 102;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
