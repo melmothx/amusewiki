@@ -551,6 +551,37 @@ sub install_aliased_file {
     }
 }
 
+# this is the reverse of install_aliased_file. We need this because on
+# migration we have the .sl.pdf etc., but we're missing the the
+# cXX.pdf. The first compile run will nuke them and then we will not
+# have the cXXX.pdf to restore them from. All this idiocy could have
+# been spared if the compiler didn't nuke the pdf, but at the time it
+# made kind of sense to avoid having stale files around.
+
+sub save_canonical_from_aliased_file {
+    my ($self, $file) = @_;
+    return unless $file;
+    return unless $self->valid_alias;
+    if ($file =~ m/(.+)\.muse\z/) {
+        $file = $1;
+    }
+    else {
+        log_error { "spurious $file passed" };
+        return;
+    }
+    my $src  = path($file . '.' . $self->valid_alias);
+    my $dest = path($file . '.' . $self->extension);
+    if ($src->exists and !$dest->exists) {
+        log_info { "Copying $src into $dest, which is missing" };
+        try {
+            $src->copy($dest) or die $!;
+            $dest->touch($src->stat->mtime);
+        } catch {
+            my $err = $_;
+            log_error { "Couldn't copy $src to $dest $_" };
+        };
+    }
+}
 
 sub compile {
     my ($self, $muse, $logger) = @_;

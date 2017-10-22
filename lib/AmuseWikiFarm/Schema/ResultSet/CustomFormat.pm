@@ -22,4 +22,8 @@ sub with_alias {
     return $self->search({ "$me.format_alias" => { '!=' => '' } }),
 }
 
+sub standards {
+    return shift->active_only->with_alias;
+}
+
 1;

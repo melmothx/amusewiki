@@ -367,7 +367,7 @@ sub make_room_for_logs {
     my $logfile = $self->log_file;
     if (-f $logfile) {
         my $oldfile = $self->old_log_file;
-        log_warn { "$logfile exists, renaming to $oldfile" };
+        log_debug { "$logfile exists, renaming to $oldfile" };
         move($logfile, $oldfile) or log_error { "cannot move $logfile to $oldfile $!" };
     }
 }
@@ -569,6 +569,9 @@ sub dispatch_job_rebuild {
             my $muse = $text->filepath_for_ext('muse');
             if (-f $muse) {
                 my $compiler = $site->get_compiler($logger);
+                foreach my $cf (@cfs) {
+                    $cf->save_canonical_from_aliased_file($muse);
+                }
                 $compiler->compile($muse);
                 foreach my $cf (@cfs) {
                     if ($cf->is_slides and !$text->slides) {

@@ -1685,8 +1685,13 @@ sub compile_and_index_files {
         unless (muse_filepath_is_valid($relpath)) {
             die "$relpath doesn't appear a valid path!";
         }
-        if ($file =~ m/\.muse$/ and $compiler->file_needs_compilation($file)) {
-            $compiler->compile($file);
+        if ($file =~ m/\.muse$/) {
+            # ensure that we properly migrated the PDFS to CF
+            foreach my $cf (@active_cfs) {
+                $cf->save_canonical_from_aliased_file($file);
+            }
+            # compile
+            $compiler->compile($file) if $compiler->file_needs_compilation($file);
         }
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
