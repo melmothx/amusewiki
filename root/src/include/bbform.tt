@@ -8,7 +8,8 @@
                value="pdf" [% IF bb.pdf %]checked="checked"[% END %]>
         [% loc('PDF') %]
       </label>
-      [% IF site.sl_pdf && bb.can_generate_slides %]
+      [% # always show the slide button in the admin, when defining the custom formats %]
+      [% IF edit_custom_format || (site.sl_pdf && bb.can_generate_slides) %]
       <label class="btn btn-default[% IF bb.slides %] active[% END %]">
         <input type="radio" name="format" id="slides-format"
                class="format-radio"
