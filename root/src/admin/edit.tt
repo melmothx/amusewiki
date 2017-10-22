@@ -578,6 +578,37 @@ kpsewhich mylogo.pdf
       </legend>
       <div id="amw-config-formats" class="collapse">
 
+    <div class="col-sm-6">
+      <div class="well">
+        <p>
+          [% loc('The following settings provide the defaults for each format.') %].
+          <a href="[% c.uri_for_action('/settings/formats') %]" target="_blank">
+            [% loc('You can tune them editing them here.') %]
+          </a>
+        </p>
+        <p>
+          [% loc('The Beamer selections are relevant only if you activate the
+  slides output.') %]
+          <a href="https://www.hartwork.org/beamer-theme-matrix/">
+            [% loc('Preview') %].
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="list-group">
+      [% FOREACH format IN esite.active_custom_formats %]
+        <div class="list-group-item">
+          <span class="fa fa-wrench"></span>
+          <strong>
+            <a href="[% c.uri_for_action('/settings/edit_format', [format.custom_formats_id]) %]">
+              [% format.format_name | html %] </a>
+          </strong>
+          <p>[% format.format_description | html %]</p>
+        </div>
+      [% END %]
+      </div>
+    </div>
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-6">
         <label>
@@ -816,44 +847,6 @@ kpsewhich mylogo.pdf
           [% loc('For texts without a table of content, start text on the very first page') %]
         </label>
       </div>
-    </div>
-
-    <div class="col-sm-offset-6 col-sm-6">
-      <div class="well">
-        <p>
-          [% loc('Please note that the twoside and binding correction options follow
-  this logic: if you have some imposed format, they are ignored for
-  the standalone PDF but applied for the imposed ones. If you have
-  only the standalone PDF, they are applied to it.') %]
-        </p>
-
-        <p>
-          [% loc('The Beamer selections are relevant only if you activate the
-  slides output.') %]
-          <a href="https://www.hartwork.org/beamer-theme-matrix/">
-            [% loc('Preview') %].
-          </a>
-        </p>
-      </div>
-    </div>
-    <div class="col-sm-offset-6 col-sm-6">
-      <h4>
-        <a href="[% c.uri_for_action('/settings/formats') %]" target="_blank">
-          <small>
-            <span class="fa fa-wrench"></span>
-          </small>
-        </a>
-        [% loc('Custom formats') %]
-      </h4>
-      [% FOREACH format IN esite.active_custom_formats %]
-        <div>
-          <strong>
-            <a href="[% c.uri_for_action('/settings/edit_format', [format.custom_formats_id]) %]">
-              [% format.format_name | html %]</a>
-          </strong>
-          <p>[% format.format_description | html %]</p>
-        </div>
-      [% END %]
     </div>
       </div>
     </fieldset>

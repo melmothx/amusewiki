@@ -1102,6 +1102,7 @@ sub check_and_update_custom_formats {
                                        format_alias => 'pdf',
                                        format_name => 'plain PDF', # loc('plain PDF')
                                        format_priority => 1,
+                                       format_description => 'Standard',
                                       },
                            fields => {
                                       bb_format => 'pdf',
@@ -1114,6 +1115,7 @@ sub check_and_update_custom_formats {
                                           format_name => 'A4 imposed PDF', # loc('A4 imposed PDF')
                                           format_priority => 2,
                                           bb_signature_2up => '40-80',
+                                          format_description => 'Standard',
                                          },
                               fields => {
                                          bb_format => 'pdf',
@@ -1129,6 +1131,7 @@ sub check_and_update_custom_formats {
                                           format_name => 'Letter imposed PDF', # loc('Letter imposed PDF')
                                           format_priority => 3,
                                           bb_signature_2up => '40-80',
+                                          format_description => 'Standard',
                                           },
                               fields => {
                                          bb_format => 'pdf',
@@ -1143,6 +1146,7 @@ sub check_and_update_custom_formats {
                                           format_alias => 'sl.pdf',
                                           format_name => 'Slides (PDF)', # loc('Slides (PDF)'),
                                           format_priority => 4,
+                                          format_description => 'Standard',
                                           },
                               fields => {
                                          bb_format => 'slides',

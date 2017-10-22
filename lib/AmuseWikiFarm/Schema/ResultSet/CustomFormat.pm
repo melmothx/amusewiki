@@ -5,15 +5,21 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 
-sub active_only {
+sub sorted_by_priority {
     my $self = shift;
     my $me = $self->current_source_alias;
-    return $self->search({ "$me.active" => 1 },
+    return $self->search(undef,
                          { order_by => [
                                         "$me.format_priority",
                                         "$me.format_name",
                                         "$me.custom_formats_id",
                                        ] });
+}
+
+sub active_only {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->sorted_by_priority->search({ "$me.active" => 1 });
 }
 
 sub with_alias {

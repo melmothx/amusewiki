@@ -48,7 +48,7 @@ sub list_custom_formats :Chained('settings') :PathPart('formats') :CaptureArgs(0
 sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my @list;
-    my $formats = $c->stash->{site}->custom_formats;
+    my $formats = $c->stash->{site}->custom_formats->sorted_by_priority;
     while (my $format = $formats->next) {
         my $id =  $format->custom_formats_id;
         push @list, {
@@ -56,14 +56,17 @@ sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
                      edit_url => $c->uri_for_action('/settings/edit_format', [ $id ]),
                      deactivate_url => $c->uri_for_action('/settings/make_format_inactive', [ $id ]),
                      activate_url   => $c->uri_for_action('/settings/make_format_active', [ $id ]),
+                     change_format_priority_url => $c->uri_for_action('/settings/change_format_priority', [ $id ]),
                      name => $format->format_name,
                      description => $format->format_description,
                      active => $format->active,
+                     priority => $format->format_priority,
                     };
     }
     # Dlog_debug { "Found these formats $_" } \@list;
     $c->stash(
               format_list => \@list,
+              f_priority_values => [1..20],
               create_url => $c->uri_for_action('/settings/create_format'),
               page_title => $c->loc('Custom formats for [_1]', $c->stash->{site}->canonical),
              );
@@ -132,6 +135,16 @@ sub make_format_active :Chained('get_format') :PathPart('active') :Args(0) {
     $c->response->redirect($c->uri_for_action('/settings/formats'));
 }
 
+sub change_format_priority :Chained('get_format') :PathPart('priority') :Args(0) {
+    my ($self, $c) = @_;
+    Dlog_debug { "setting priority => 1 $_" } $c->request->body_parameters;
+    if (my $priority = $c->request->body_parameters->{priority}) {
+        if ($priority =~ m/\A[1-9][0-9]*\z/) {
+            $c->stash->{edit_custom_format}->update({ format_priority => $priority })
+        }
+    }
+    $c->response->redirect($c->uri_for_action('/settings/formats'));
+}
 
 =encoding utf8
 
