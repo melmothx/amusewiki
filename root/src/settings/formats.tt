@@ -9,6 +9,7 @@
       <th>[% loc('Description') %]</th>
       <th>[% loc('Active') %]</th>
       <th>[% loc('Priority') %]</th>
+      <th>[% loc('File extension') %]</th>
     </tr>
     [% FOREACH format IN format_list %]
       <tr>
@@ -48,6 +49,9 @@
               [% END %]
             </select>
           </form>
+        </td>
+        <td>
+          <code>.[% format.extension %]</code>
         </td>
       </tr>
     [% END %]

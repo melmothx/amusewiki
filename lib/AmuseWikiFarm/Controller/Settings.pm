@@ -61,6 +61,7 @@ sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
                      description => $format->format_description,
                      active => $format->active,
                      priority => $format->format_priority,
+                     extension => $format->valid_alias || $format->extension,
                     };
     }
     # Dlog_debug { "Found these formats $_" } \@list;
@@ -85,6 +86,8 @@ sub create_format :Chained('list_custom_formats') :PathPart('create') :Args(0) {
                                                            format_priority => $priority,
                                                           });
         log_debug { "Created " . $f->format_name };
+        log_debug { "Populating from site" };
+        $f->sync_from_site;
         $f->discard_changes;
         $c->response->redirect($c->uri_for_action('/settings/edit_format', [ $f->custom_formats_id ]));
         $c->flash(status_msg => $c->loc('Format successfully created'));
@@ -112,7 +115,10 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
     push @{$c->stash->{breadcrumbs}}, { uri => '#',
                                         label => $format->format_name };
 
-    if (delete $params{update}) {
+    my $update = delete $params{update};
+    my $reset =  delete $params{reset};
+
+    if ($update || $reset) {
         Dlog_debug { "Params are $_" } \%params;
         my $result = $format->update_from_params(\%params);
 
@@ -132,6 +138,9 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
             else {
                 Dlog_error { "$aliased is without a format definition in $_" } \%fixed;
             }
+        }
+        if ($reset) {
+            $format->sync_from_site;
         }
         if (@warnings) {
             $c->flash(error_msg => "Ignored changes: " . join(', ', @warnings));
