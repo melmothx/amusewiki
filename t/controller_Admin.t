@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 109;
+use Test::More tests => 111;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -68,6 +68,8 @@ $mech->get('/logout');
 $mech->get_ok('/login');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 $mech->get_ok('/admin/sites/edit/0blog0');
+is $mech->response->header('X-XSS-Protection'), 0, "XSS protection is disabled";
+
 
 my $html_injection = q{<script>alert('hullo')</script>};
 my $links = <<LINKS;
@@ -81,6 +83,8 @@ $mech->submit_form(with_fields => {
                                    site_links => $links,
                                   },
                    button => 'edit_site');
+
+is $mech->response->header('X-XSS-Protection'), 0, "XSS protection is disabled";
 
 $mech->get_ok('/special/index');
 $mech->content_contains($html_injection, "Found HTML");

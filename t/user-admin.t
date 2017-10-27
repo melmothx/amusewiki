@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 28;
+use Test::More tests => 30;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -61,6 +61,7 @@ isnt ($site->magic_answer, '???');
 isnt ($site->magic_question, 'Guess what');
 isnt ($site->canonical, 'garbage');
 diag $mech->uri->path;
+is $mech->response->header('X-XSS-Protection'), 0, "XSS protection is disabled";
 $mech->submit_form(with_fields => {
                                    magic_question => 'Guess what',
                                    magic_answer => '???',
@@ -72,6 +73,7 @@ $mech->submit_form(with_fields => {
                                   },
                    button => 'edit_site');
 $site = $schema->resultset('Site')->find($site->id);
+is $mech->response->header('X-XSS-Protection'), 0, "XSS protection is disabled";
 is ($site->magic_answer, '???', "Site updated");
 is ($site->magic_question, 'Guess what', "Site updated");
 is ($site->pagination_size, 24, "pagination latest ok");
