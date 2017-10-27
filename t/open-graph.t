@@ -5,9 +5,9 @@ use strict;
 use warnings;
 use Test::More;
 use File::Spec::Functions;
-use Cwd;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
+use Path::Tiny;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -19,8 +19,34 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 my $site_map = $mech->get_ok('/sitemap.txt');
 my @urls = grep { $_ } split /\n/, $mech->content;
+
+my $opengraph = path(repo => '0blog0', site_files => 'opengraph.png');
+my $navlogo = path(repo => '0blog0', site_files => 'navlogo.png');
+my $pagelogo = path(repo => '0blog0', site_files => 'pagelogo.png');
+
+die unless $navlogo->exists;
+$opengraph->remove if $opengraph->exists;
+$pagelogo->remove  if $pagelogo->exists;
+
 push @urls, qw[ /search /help/opds /help/irc /latest/2 ];
-foreach my $url (@urls) {
+
+check_urls($navlogo->basename, @urls);
+
+$navlogo->copy($opengraph);
+
+check_urls($opengraph->basename, @urls);
+
+$opengraph->remove;
+
+$navlogo->copy($pagelogo);
+
+check_urls($pagelogo->basename, @urls);
+
+$pagelogo->remove;
+
+sub check_urls {
+    my ($image, @pages) = @_;
+  foreach my $url (@pages) {
     next if $url =~ m{blog.amusewiki.org/(feed|opds)};
     diag "Checking $url";
     $mech->get_ok($url);
@@ -46,7 +72,9 @@ foreach my $url (@urls) {
     foreach my $c (qw/title type image url description/) {
         ok $og{"og:$c"}, "Found mandatory og:$c " . $og{"og:$c"};
     }
+    like $og{'og:image'}, qr{\Q$image\E$}, "Image is $image";
+    $mech->get_ok($og{'og:image'});
     $mech->get_ok($og{'og:url'});
+  }
 }
-
 done_testing;
