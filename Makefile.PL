@@ -101,7 +101,7 @@ requires 'HTML::Tree';
 # our own dogfood
 requires 'Text::Amuse' => '0.90';
 requires 'PDF::Imposition' => '0.24';
-requires 'Text::Amuse::Compile' => '0.95';
+requires 'Text::Amuse::Compile' => '0.97';
 requires 'Text::Amuse::Preprocessor' => '0.41';
 
 # devel things to be removed at the end of the development cycle
