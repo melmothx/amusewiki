@@ -274,6 +274,14 @@ sub exclude_bulks {
                          });
 }
 
+sub exclude_low_priority {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.priority" => { '<' => 10 },
+                         });
+}
+
 =head2 can_accept_further_jobs
 
 Return true if the number of pending jobs is lesser than 50.
@@ -281,7 +289,7 @@ Return true if the number of pending jobs is lesser than 50.
 =cut
 
 sub can_accept_further_jobs {
-    if (shift->pending->exclude_bulks->count < 50) {
+    if (shift->pending->exclude_bulks->exclude_low_priority->count < 50) {
         return 1;
     }
     else {
