@@ -1161,6 +1161,7 @@ t/multilang.t
 t/nofinalpage.t
 t/not-found.t
 t/not/parsable/ciao.muse
+t/open-graph.t
 t/other-sites.t
 t/pagination-sizes.t
 t/preview-deferred.t

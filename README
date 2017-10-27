@@ -108,7 +108,7 @@ Deny the following in the webserver configuration:
  - root/src    template directory.
 
 
-** Local files (favicon.ico, navlogo.png, pagelogo.png, widebanner.png, local.css, local.js)
+** Local files (favicon.ico, navlogo.png, pagelogo.png, widebanner.png, local.css, local.js, opengraph.png)
 
 These files may provide an override for cosmetics and features (via
 js) without tampering the code. These files should be placed in the
@@ -125,6 +125,11 @@ for the image itself.
 If widebanner.png is present, then it's used to place a banner below
 the navbar (which is fixed). It should have a width of 1170px for
 optimal results.
+
+If opengraph.png is present, it will be used for the opengraph
+protocol. The image opengraph.png should have dimension 300x300 for
+better effect. If not present, pagelogo.png will be used, otherwise
+navlogo.png will be used, with often odd results.
 
 ** Local PO files
 

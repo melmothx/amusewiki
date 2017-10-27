@@ -72,6 +72,10 @@ sub edit :Chained('sites') :PathPart('edit') :Args() {
     my %params = %{ $c->request->body_parameters };
     my $site;
     my $listing_url = $c->uri_for_action('/admin/list');
+    # given that we have HTML going in and going out, we need to
+    # prevent chrome to complain.
+    # https://stackoverflow.com/questions/43249998/chrome-err-blocked-by-xss-auditor-details
+    $c->response->header('X-XSS-Protection', 0);
     my $check_config;
     if ($id) {
         if ($site = $c->model('DB::Site')->find($id)) {

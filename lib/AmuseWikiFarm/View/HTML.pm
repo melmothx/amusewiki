@@ -153,11 +153,19 @@ Optional, but we should have it. We need the language_TERRITORY, though.
 sub add_open_graph {
     my ($self, $c) = @_;
     if (my $site = $c->stash->{site}) {
-        if ($site->has_site_file('navlogo.png')) {
+        my $image;
+      SEARCHIMAGE:
+        foreach my $i (qw/opengraph.png pagelogo.png navlogo.png/) {
+            if ($site->has_site_file($i)) {
+                $image = $i;
+                last SEARCHIMAGE;
+            }
+        }
+        if ($image) {
             # ok, we have an image, we can proceed
             my @opengraph;
             my $default_image =  $c->uri_for_action('/sitefiles/local_files',
-                                                    [ $site->id, 'navlogo.png' ]);
+                                                    [ $site->id, $image ]);
             # title
             my $title = $c->stash->{page_title} || $site->sitename;
             if ($title) {

@@ -304,6 +304,8 @@ sub site_config :Chained('user') :PathPart('site') :Args(0) {
     }
     my $site = $c->stash->{site};
     my $esite = $c->model('DB::Site')->find($site->id);
+    # this is a restricted area as well, and we post HTML and get it back verbatim.
+    $c->response->header('X-XSS-Protection', 0);
     my %params = %{ $c->request->body_parameters };
     if (delete $params{edit_site}) {
         Dlog_debug { "Doing the update on $_" } \%params;

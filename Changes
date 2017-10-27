@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.032 2017-10-27
+
+ - Add opengraph support (#150)
+ - Prevent chrome to complain for XSS when we supposedly know what we
+   are doing (#151)
+
 2.031 2017-10-14
 
  - Provide /mirror, suitable for wget -m. Please note that the route
