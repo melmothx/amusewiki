@@ -127,8 +127,9 @@ sub edit_format :Chained('get_format') :PathPart('') :Args(0) {
             my %fixed = $c->stash->{site}->fixed_formats_definitions;
             if (my ($def) = grep { $_->{initial}->{format_alias} eq $aliased } values %fixed) {
                 foreach my $k (keys %{$def->{fields}}) {
-                    log_warn {"Reverting $k to  $def->{fields}->{$k}"};
-                    if ($format->$k ne $def->{fields}->{$k}) {
+                    # we know we don't have undef in Site method here
+                    my $format_value = $format->$k || 0;
+                    if ($format_value ne $def->{fields}->{$k}) {
                         push @warnings, $k;
                         $format->$k($def->{fields} {$k});
                     }
