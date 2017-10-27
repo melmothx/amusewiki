@@ -57,7 +57,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group slides-option">
+    <div class="form-group pdf-common-option">
       <div class="row">
         <label for="sansfont" class="col-sm-3 control-label">
           [% loc('Please choose the sans font') %]
@@ -281,6 +281,23 @@
         [% loc('Do not create a cover page and start the text on the first page') %]
       </label>
     </div>
+
+    <!-- compiler 0.97 -->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="impressum" value="1" id="impressum"
+               [% IF bb.impressum %]checked="checked"[% END %]/>
+        [% loc('Place the notes on the back of the first page, impressum-style') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="sansfontsections" value="1" id="sansfontsections"
+               [% IF bb.sansfontsections %]checked="checked"[% END %]/>
+        [% loc('Use sans fonts for section titles') %]
+      </label>
+    </div>
+
     <div class="checkbox" id="coverpage_only_if_toc_container">
       <label>
         <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"

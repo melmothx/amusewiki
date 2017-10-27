@@ -129,6 +129,8 @@ CREATE TABLE custom_formats (
        bb_coverpage_only_if_toc SMALLINT DEFAULT 0,
        bb_nofinalpage SMALLINT DEFAULT 0,
        bb_notoc SMALLINT DEFAULT 0,
+       bb_impressum        SMALLINT DEFAULT 0,
+       bb_sansfontsections SMALLINT DEFAULT 0,
        bb_opening VARCHAR(16) NOT NULL DEFAULT 'any',
        bb_papersize VARCHAR(255) NOT NULL DEFAULT 'generic',
        bb_paper_height INTEGER NOT NULL DEFAULT 0,

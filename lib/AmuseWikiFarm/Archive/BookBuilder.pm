@@ -354,6 +354,10 @@ default to false.
 
 =item notoc
 
+=item impressum
+
+=item sansfontsections
+
 =item headings
 
 =item cover
@@ -406,6 +410,19 @@ has notoc => (
               isa => Bool,
               default => sub { 0 },
              );
+
+has impressum => (
+                  is => 'rw',
+                  isa => Bool,
+                  default => sub { 0 },
+                 );
+
+has sansfontsections => (
+                         is => 'rw',
+                         isa => Bool,
+                         default => sub { 0 },
+                        );
+
 
 # imposer options
 has cover => (
@@ -1064,6 +1081,8 @@ sub profile_methods {
               nocoverpage
               coverpage_only_if_toc
               nofinalpage
+              impressum
+              sansfontsections
               headings
               imposed
               signature_2up
@@ -1126,6 +1145,9 @@ sub as_job {
                                     beamertheme => $self->beamertheme,
                                     beamercolortheme => $self->beamercolortheme,
                                     opening     => $self->opening,
+                                    # 0.97
+                                    impressum   => $self->impressum,
+                                    sansfontsections => $self->sansfontsections,
 
                                     ($self->is_single_file ? ()
                                      : (
