@@ -58,6 +58,17 @@ sub handled_jobs_hashref {
            };
 }
 
+sub purge_schedule {
+    my %keep = (
+                bookbuilder => 360, # let's keep it one year
+                build_static_indexes => 1,
+               );
+    foreach my $job (keys %{__PACKAGE__->handled_jobs_hashref}) {
+        $keep{$job} ||= 7; # defaults to 7 days.
+    }
+    return %keep;
+}
+
 sub unfinished {
     my $self = shift;
     my $me = $self->current_source_alias;
@@ -307,11 +318,20 @@ datetime object passed as argument.
 sub completed_older_than {
     my ($self, $time) = @_;
     die unless $time && $time->isa('DateTime');
+    my $me = $self->current_source_alias;
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($time);
     return $self->search({
-                          status => 'completed',
-                          completed => { '<' => $format_time },
+                          "$me.status" => 'completed',
+                          "$me.completed" => { '<' => $format_time },
+                         });
+}
+
+sub by_task {
+    my ($self, $task) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.task" => $task,
                          });
 }
 
@@ -324,15 +344,17 @@ of them, so attached files are removed correctly.
 
 sub purge_old_jobs {
     my $self = shift;
-    my $reftime = DateTime->now;
-    # after one month, delete the revisions and jobs
-    $reftime->subtract(months => 1);
-    my $old_jobs = $self->completed_older_than($reftime);
-    while (my $job = $old_jobs->next) {
-        die unless $job->status eq 'completed'; # shouldn't happen
-        log_info { "Removing old job " . $job->id . " for site " . $job->site->id .
-                     " and task " . $job->task };
-        $job->delete;
+    my %schedule = $self->purge_schedule;
+    foreach my $job (sort keys %schedule) {
+        my $reftime = DateTime->now;
+        $reftime->subtract(days => $schedule{$job} || 1);
+        my $old_jobs = $self->by_task($job)->completed_older_than($reftime);
+        while (my $job = $old_jobs->next) {
+            die unless $job->status eq 'completed'; # shouldn't happen
+            log_info { "Removing old job " . $job->id . " for site " . $job->site->id .
+                         " and task " . $job->task };
+            $job->delete;
+        }
     }
 }
 
