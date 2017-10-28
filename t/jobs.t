@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 32;
+use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -54,6 +54,7 @@ foreach my $i (1..10) {
 # with 3 parallels, we need 3 loops + 1 for the last + 1 for the static indexes
 
 ok $site->jobs->pending->build_custom_format_jobs->count;
+like $site->jobs->pending->first->payload_pretty, qr{\n};
 foreach my $i (1..5) {
     diag "Loop $i of the jobber\n";
     my (@jobs) = $jobber->main_loop;

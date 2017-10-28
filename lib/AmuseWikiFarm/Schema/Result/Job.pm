@@ -498,6 +498,12 @@ sub job_data {
     return from_json($payload);
 }
 
+sub payload_pretty {
+    my $self = shift;
+    to_json(from_json($self->payload), pretty => 1, ascii => 0, canonical => 1);
+}
+
+
 =head2 DISPATCHERS
 
 =head3 dispatch_job_publish
