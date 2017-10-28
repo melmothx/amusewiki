@@ -54,6 +54,7 @@ sub create_site {
 
     remove_tree($site->repo_root) if -d $site->repo_root;
     $site->initialize_git;
+    $site->index_site_files;
     return $site;
 }
 

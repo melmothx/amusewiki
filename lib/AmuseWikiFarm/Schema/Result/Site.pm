@@ -1294,12 +1294,40 @@ sub path_for_site_files {
     return File::Spec->catdir($self->repo_root, 'site_files');
 }
 
+sub index_site_files {
+    my $self = shift;
+    my $dir = Path::Tiny::path($self->path_for_site_files);
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->global_site_files->delete;
+    if ($dir->exists) {
+        foreach my $path ($dir->children(qr{^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$})) {
+            my $stored = $self->global_site_files->create({
+                                                           file_name => $path->basename,
+                                                           file_path => "$path",
+                                                          });
+            if ($stored->is_image) {
+                try {
+                    require Imager;
+                    my $img = Imager->new(file => $stored->file_path);
+                    $stored->update({
+                                     image_width => $img->getwidth,
+                                     image_height => $img->getheight,
+                                    });
+                } catch {
+                    my $err = $_;
+                    log_error { "Cannot compute image size for $path $err" };
+                };
+            }
+        }
+    }
+    $guard->commit;
+    return $self->global_site_files->count;
+}
+
 sub has_site_file {
     my ($self, $file) = @_;
-    return unless $file && $file =~ m/^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$/s;
-    my $path = File::Spec->catfile($self->path_for_site_files, $file);
-    if (-f $path) {
-        return $path;
+    if (my $gfile = $self->global_site_files->find({ file_name => $file })) {
+        return $gfile->file_path;
     }
     else {
         return;
@@ -2309,6 +2337,7 @@ sub _pre_update_db_from_tree {
             log_warn { "$purge was not present in the db!" };
         }
     }
+    $self->index_site_files;
     eval {
         if (my @generated =
             AmuseWikiFarm::Utils::LexiconMigration::convert($self->lexicon,

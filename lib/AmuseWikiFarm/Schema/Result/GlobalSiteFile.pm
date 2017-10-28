@@ -117,6 +117,31 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2nGD+mCJSUgurVA4fbmmMg
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub is_image {
+    my $self = shift;
+    if ($self->file_name =~ m/\.(jpe?g|png)/) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+sub is_public {
+    my $self = shift;
+    if ($self->file_name =~ m/[a-z0-9]
+                              \.
+                              (
+                                  png | jpe?g | gif | ico | otf | ttf | woff |
+                                  torrent | txt | css | js
+                              )\Z/x) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

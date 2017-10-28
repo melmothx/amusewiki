@@ -31,6 +31,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 eval {
     foreach my $site ($schema->resultset('Site')->all) {
         $site->check_and_update_custom_formats;
+        $site->index_site_files;
         $site->generate_static_indexes;
     }
 };
