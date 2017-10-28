@@ -98,6 +98,16 @@ CREATE TABLE site_options (
        PRIMARY KEY (site_id, option_name)
 );
 
+CREATE TABLE global_site_files (
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       file_name VARCHAR(64) NOT NULL,
+       file_path TEXT NOT NULL,
+       image_width INTEGER NULL,
+       image_height INTEGER NULL,
+       PRIMARY KEY (site_id, file_name)
+);
+
 CREATE TABLE custom_formats (
        custom_formats_id INTEGER PRIMARY KEY AUTOINCREMENT,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
@@ -527,4 +537,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('muse_header', 'Raw title headers'),
          ('text_internal_link', 'Internal links found in the body'),
          ('text_part', 'Text sectioning'),
+         ('global_site_files', 'Site files'),
          ('title_stat', 'Usage statistics');
