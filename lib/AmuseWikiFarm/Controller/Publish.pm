@@ -6,6 +6,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Utils::Paginator;
 
 =head1 NAME
 
@@ -72,13 +73,30 @@ sub pending :Chained('root') :PathPart('pending') :Args(0) {
     $c->stash(revisions => $revs->as_list );
 };
 
-sub all :Chained('root') :PathPart('all') :Args(0) {
-    my ($self, $c) = @_;
-    my $revs = delete $c->stash->{revisions};
-    $c->stash(revisions => $revs->as_list );
-    $c->stash(page_title => $c->loc('All revisions'));
-    $c->stash(return => 'all');
-    $c->stash(template => 'publish/pending.tt');
+sub all :Chained('root') :PathPart('all') :Args {
+    my ($self, $c, $page) = @_;
+    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+        $page = 1;
+    }
+    my $rs = $c->stash->{revisions};
+    my $me = $rs->current_source_alias;
+    my $revs = $rs->search(undef,
+                           {
+                            order_by => { -desc => ["$me.updated", "$me.id" ] },
+                            page => $page,
+                            rows => $c->stash->{site}->pagination_size,
+                           });
+    my $pager = $revs->pager;
+    my $format_link = sub {
+        return $c->uri_for_action('/publish/all', $_[0]);
+    };
+    $c->stash(
+              pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
+              revisions => $revs->as_list,
+              page_title => $c->loc('All revisions'),
+              return => 'all',
+              template => 'publish/pending.tt',
+             );
 }
 
 
