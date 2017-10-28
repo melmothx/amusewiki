@@ -31,7 +31,8 @@ has _hourly => (is => 'rw', isa => Int, default => sub { 0 });
 
 sub main_loop {
     my $self = shift;
-    sleep $self->polling_interval;
+    # sleeping 0 doesn't look like a good idea CPU-wise
+    sleep $self->polling_interval || 1;
     # wait for the lock
     $self->release_lock($self->get_lock);
     log_debug { "Acquired and released the lock" };
