@@ -101,6 +101,8 @@ CREATE TABLE site_options (
 CREATE TABLE global_site_files (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                ON DELETE CASCADE ON UPDATE CASCADE,
+       attachment_id INTEGER NULL REFERENCES attachment(id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
        file_name VARCHAR(255) NOT NULL,
        file_type VARCHAR(255) NOT NULL,
        file_path TEXT NOT NULL,
@@ -538,5 +540,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('muse_header', 'Raw title headers'),
          ('text_internal_link', 'Internal links found in the body'),
          ('text_part', 'Text sectioning'),
-         ('global_site_files', 'Site files'),
+         ('global_site_files', 'Files which site uses'),
          ('title_stat', 'Usage statistics');

@@ -6,7 +6,7 @@ package AmuseWikiFarm::Schema::Result::GlobalSiteFile;
 
 =head1 NAME
 
-AmuseWikiFarm::Schema::Result::GlobalSiteFile - Site files
+AmuseWikiFarm::Schema::Result::GlobalSiteFile - Files which site uses
 
 =cut
 
@@ -45,6 +45,12 @@ __PACKAGE__->table("global_site_files");
   is_nullable: 0
   size: 16
 
+=head2 attachment_id
+
+  data_type: 'integer'
+  is_foreign_key: 1
+  is_nullable: 1
+
 =head2 file_name
 
   data_type: 'varchar'
@@ -77,6 +83,8 @@ __PACKAGE__->table("global_site_files");
 __PACKAGE__->add_columns(
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
+  "attachment_id",
+  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
   "file_name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "file_type",
@@ -105,6 +113,26 @@ __PACKAGE__->set_primary_key("site_id", "file_name");
 
 =head1 RELATIONS
 
+=head2 attachment
+
+Type: belongs_to
+
+Related object: L<AmuseWikiFarm::Schema::Result::Attachment>
+
+=cut
+
+__PACKAGE__->belongs_to(
+  "attachment",
+  "AmuseWikiFarm::Schema::Result::Attachment",
+  { id => "attachment_id" },
+  {
+    is_deferrable => 0,
+    join_type     => "LEFT",
+    on_delete     => "CASCADE",
+    on_update     => "CASCADE",
+  },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -121,8 +149,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-29 09:41:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ppa/zPV6xos+6F/uEUdC3w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-29 09:48:38
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NN5qBAlfstPYQQEA81PWkA
 
 
 sub is_image {

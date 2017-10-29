@@ -187,6 +187,21 @@ __PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
 
 =head1 RELATIONS
 
+=head2 global_site_files
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::GlobalSiteFile>
+
+=cut
+
+__PACKAGE__->has_many(
+  "global_site_files",
+  "AmuseWikiFarm::Schema::Result::GlobalSiteFile",
+  { "foreign.attachment_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -203,8 +218,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-04-19 10:05:23
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bkd0NtzKUarpTVa1Gb7jtg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-29 09:46:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Mw+7E+47hobdPiK7t4XC/A
 
 =head2 File classes
 
