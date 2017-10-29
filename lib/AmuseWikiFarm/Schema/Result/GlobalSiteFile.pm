@@ -153,6 +153,8 @@ __PACKAGE__->belongs_to(
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NN5qBAlfstPYQQEA81PWkA
 
 
+use Path::Tiny;
+
 sub is_image {
     my $self = shift;
     if ($self->file_name =~ m/\.(jpe?g|png)/) {
@@ -178,6 +180,9 @@ sub is_public {
     }
 }
 
+sub path_object {
+    return path(shift->file_path);
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

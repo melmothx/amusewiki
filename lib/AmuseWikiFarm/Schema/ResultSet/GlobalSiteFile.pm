@@ -27,4 +27,33 @@ sub thumbnails {
     return $self->search({ "$me.file_type" => 'thumbnail' });
 }
 
+# See Attachments::generate_thumbnails
+
+sub thumb {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.image_width" => 36 });
+}
+
+sub small {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.image_width" => 150 });
+}
+
+sub large {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.image_width" =>  300 });
+}
+
+sub min_dimensions {
+    my ($self, $w, $h) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.image_width" =>  { '>' => $w || 0 },
+                          "$me.image_height" =>  { '>' => $h || 0 }
+                         });
+}
+
 1;

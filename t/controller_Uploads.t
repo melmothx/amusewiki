@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 57;
+use Test::More tests => 56;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -33,6 +33,17 @@ is ($png_att, "h-o-hello-1.png");
 $rev->commit_version;
 $rev->publish_text;
 
+foreach my $att ($site->attachments) {
+    $att->generate_thumbnails;
+    foreach my $method (qw/thumb small large/) {
+        is $att->thumbnails->$method->count, 1;
+        foreach my $thumb ($att->thumbnails->$method) {
+            my $file = $thumb->path_object;
+            ok ($file->exists, "$file created");
+        }
+    }
+}
+
 my $text = $rev->title->discard_changes;
 is ($text->cover_uri, '/library/h-o-hello-1.png');
 is ($text->cover_thumbnail_uri, '/uploads/0sf1/thumbnails/h-o-hello-1.png.thumb.png');
@@ -51,29 +62,27 @@ $mech->content_contains(qq{/uploads/$site_id/$expected"});
 $mech->content_contains(qq{/uploads/$site_id/thumbnails/$expected.large.png"});
 
 
-foreach my $file ($expected, $png_att) {
-    foreach my $type (qw/small thumb/) {
+foreach my $attachment ($site->attachments) {
+    is $attachment->thumbnails->count, 3;
+    my $file_path = $attachment->f_full_path_name;
+    my $file = $attachment->uri;
+    foreach my $type (qw/small thumb large/) {
         my $thumb = catfile('thumbnails', $site_id, "$file.$type.png");
         diag "Checking $thumb\n";
         if (-f $thumb) {
             unlink $thumb or die $!;
         }
         ok (! -f $thumb, "$thumb does not exist");
-        $mech->get_ok("/uploads/$site_id/thumbnails/$file.$type.png");
+        $mech->get("/uploads/$site_id/thumbnails/$file.$type.png");
+        is $mech->status, 404;
+    }
+    $site->index_file($file_path);
+    foreach my $type (qw/small thumb large/) {
+        my $thumb = catfile('thumbnails', $site_id, "$file.$type.png");
         ok (-f $thumb, "$thumb exists");
-        my $stat = (stat($thumb))[9];
-        foreach my $sleep (1..2) {
-            sleep $sleep if $sleep;
-            $mech->get_ok("/uploads/$site_id/thumbnails/$file.$type.png");
-            is ((stat($thumb))[9], $stat, "File $thumb has been cached correctly");
-        }
-        my $srcfile = $site->attachments->by_uri($file)->f_full_path_name;;
-        ok(-f $srcfile, "Found $srcfile");
-        my $atime = my $mtime = time();
-        utime $atime, $mtime, $srcfile;
         $mech->get_ok("/uploads/$site_id/thumbnails/$file.$type.png");
-        ok((stat($thumb))[9] > $stat, "Thumb $type $thumb regenerated");
     }
 }
+ok $site->thumbnails->min_dimensions(200, 200)->count, "Found thumbs with dimensions > 200";
 $mech->get_ok('/latest');
 $mech->content_contains("/uploads/$site_id/thumbnails/$png_att.small.png");

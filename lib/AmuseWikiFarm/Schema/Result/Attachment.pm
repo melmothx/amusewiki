@@ -249,6 +249,7 @@ Return false if it's a PDF, false otherwise
 
 use Text::Amuse::Functions qw/muse_format_line muse_to_html/;
 use AmuseWikiFarm::Log::Contextual;
+use Path::Tiny;
 
 sub can_be_inlined {
     my $self = shift;
@@ -307,7 +308,85 @@ sub edit {
 
 sub separator { return undef }
 
+sub path_object {
+    return path(shift->f_full_path_name);
+}
 
+sub generate_thumbnails {
+    my $self = shift;
+    my $srcfile = $self->path_object;
+    my $basename = $srcfile->basename;
+    my $repo_root = $self->site->repo_root;
+    die "$srcfile does not exists" unless -f $srcfile;
+
+    # sanity checks pointing to grave issues
+    my $src;
+    if ($basename =~ m/\.pdf$/) {
+        $src = "$srcfile" . '[0]';
+    }
+    elsif ($basename =~ m/\.(png|jpe?g)/) {
+        $src = "$srcfile";
+    }
+    else {
+        die "$src is wrong not a pdf nor a png/jpeg";
+    }
+    if ($src =~ m/\.\./ or
+        $src !~ m/\A\Q$repo_root\E/) {
+        die "$src is outside the repo root";
+    }
+
+    # see AmuseWikiFarm::Schema::ResultSet::GlobalSiteFile;
+    my %dimensions = (
+                      '.large.png' => '300x',
+                      '.small.png' => '150x',
+                      '.thumb.png' => '36x',
+                     );
+    my $thumbnail_dir = path('thumbnails');
+    foreach my $ext (keys %dimensions) {
+        my $outfile = path($thumbnail_dir, $self->site_id, $basename . $ext);
+        my $out = $outfile->absolute;
+        log_debug { "Creating thumbnail from $src to $out" };
+        my $info = path($out . ".spec");
+        my @exec = (qw/gm convert/,
+                    -thumbnail => $dimensions{$ext},
+                    -format => '%wx%h',
+                    -write => "info:$info",
+                    "$src", "$out");
+        Dlog_info { "Executing $_" } \@exec;
+        if (system(@exec) == 0) {
+            my ($width, $height);
+            if (-f $info) {
+                if (my $spec = $info->slurp) {
+                    if ($spec =~ m/([0-9]+)x([0-9]+)/) {
+                        $width = $1;
+                        $height = $2;
+                    }
+                    $info->remove;
+                }
+                else {
+                    log_warn { "$infoCouldn't compute width and height form $info" };
+                }
+            }
+            else {
+                log_warn { "$info doesn't exist" };
+            }
+            $self->thumbnails->update_or_create({
+                                                 site_id => $self->site_id,
+                                                 file_name => $outfile->basename,
+                                                 file_path => $out,
+                                                 image_width => $width,
+                                                 image_height => $height,
+                                                });
+        }
+        else {
+            Dlog_error { "Error executing $_ $!"} \@exec;
+        }
+    }
+}
+
+sub thumbnails {
+    shift->global_site_files->thumbnails;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;
