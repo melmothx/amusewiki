@@ -187,7 +187,7 @@ empty_queue($site);
 sub fill_queue {
     my $site = shift;
     for (1..50) {
-        $site->jobs->enqueue(testing => { this => 1, test => 1  });
+        $site->jobs->enqueue(testing_high => { this => 1, test => 1  });
     }
 }
 

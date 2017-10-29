@@ -234,6 +234,8 @@ my $expected = {
                                        'coverwidth' => '0.85',
                                        'papersize' => 'a4',
                                        'cover' => undef,
+                                       impressum => undef,
+                                       sansfontsections => undef,
                                        opening => 'right',
                                        headings => 0,
                                       },

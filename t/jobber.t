@@ -224,7 +224,7 @@ $schema->resultset('User')->update({ preferred_language => undef });
 
 {
     my $now = DateTime->now;
-    $now->subtract(days => 32);
+    $now->subtract(days => 400);
     my $completed = $site->jobs->search({ status => 'completed' });
     my @leftovers = map { $_->produced_files } $completed->all;
     diag Dumper(\@leftovers);
