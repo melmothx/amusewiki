@@ -1298,13 +1298,13 @@ sub index_site_files {
     my $self = shift;
     my $dir = Path::Tiny::path($self->path_for_site_files);
     my $guard = $self->result_source->schema->txn_scope_guard;
-    $self->global_site_files->delete;
+    $self->global_site_files->app_files->delete;
     if ($dir->exists) {
         foreach my $path ($dir->children(qr{^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$})) {
-            my $stored = $self->global_site_files->create({
-                                                           file_name => $path->basename,
-                                                           file_path => "$path",
-                                                          });
+            my $stored = $self->global_site_files->app_files->create({
+                                                                      file_name => $path->basename,
+                                                                      file_path => "$path",
+                                                                     });
             if ($stored->is_image) {
                 try {
                     require Imager;
@@ -1321,12 +1321,12 @@ sub index_site_files {
         }
     }
     $guard->commit;
-    return $self->global_site_files->count;
+    return $self->global_site_files->app_files->count;
 }
 
 sub has_site_file {
     my ($self, $file) = @_;
-    if (my $gfile = $self->global_site_files->find({ file_name => $file })) {
+    if (my $gfile = $self->global_site_files->app_files->find({ file_name => $file })) {
         return $gfile->file_path;
     }
     else {
