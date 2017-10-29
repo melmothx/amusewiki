@@ -101,7 +101,8 @@ CREATE TABLE site_options (
 CREATE TABLE global_site_files (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                ON DELETE CASCADE ON UPDATE CASCADE,
-       file_name VARCHAR(64) NOT NULL,
+       file_name VARCHAR(255) NOT NULL,
+       file_type VARCHAR(255) NOT NULL,
        file_path TEXT NOT NULL,
        image_width INTEGER NULL,
        image_height INTEGER NULL,

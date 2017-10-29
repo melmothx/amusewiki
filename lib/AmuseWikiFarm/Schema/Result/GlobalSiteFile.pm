@@ -49,7 +49,13 @@ __PACKAGE__->table("global_site_files");
 
   data_type: 'varchar'
   is_nullable: 0
-  size: 64
+  size: 255
+
+=head2 file_type
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
 
 =head2 file_path
 
@@ -72,7 +78,9 @@ __PACKAGE__->add_columns(
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "file_name",
-  { data_type => "varchar", is_nullable => 0, size => 64 },
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "file_type",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
   "file_path",
   { data_type => "text", is_nullable => 0 },
   "image_width",
@@ -113,8 +121,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-28 12:36:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:2nGD+mCJSUgurVA4fbmmMg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-29 09:41:09
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ppa/zPV6xos+6F/uEUdC3w
 
 
 sub is_image {
