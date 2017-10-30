@@ -1316,12 +1316,22 @@ sub index_site_files {
                                                    });
             if ($stored->is_image) {
                 try {
-                    require Imager;
-                    my $img = Imager->new(file => $stored->file_path);
-                    $stored->update({
-                                     image_width => $img->getwidth,
-                                     image_height => $img->getheight,
-                                    });
+                    require IO::Pipe; # already used by Text::Amuse::Compile
+                    my @exec = (qw/gm identify/, -format => '%wx%h', $stored->file_path);
+                    my $pipe = IO::Pipe->new;
+                    $pipe->reader(@exec);
+                    $pipe->autoflush;
+                    while (my $line = <$pipe>) {
+                        if ($line =~ m/([0-9]+)x([0-9]+)/) {
+                            my $width = $1;
+                            my $height = $2;
+                            $stored->update({
+                                             image_width => $width,
+                                             image_height => $height,
+                                            });
+                        }
+                    }
+                    wait; # unclear, I think so to avoid zombies
                 } catch {
                     my $err = $_;
                     log_error { "Cannot compute image size for $path $err" };
