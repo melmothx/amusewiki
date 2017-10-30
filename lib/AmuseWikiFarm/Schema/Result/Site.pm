@@ -1865,7 +1865,12 @@ sub index_file {
         $class eq 'special_image') {
         $logger->("Inserting data for attachment $file and generating thumbnails\n");
         my $attachment =  $self->attachments->update_or_create($details);
-        $attachment->generate_thumbnails;
+        try {
+            $attachment->generate_thumbnails;
+        } catch {
+            my $err = $_;
+            Dlog_error { "Error generating thumbnails for $_" } $details;
+        };
         return $attachment;
     }
 
