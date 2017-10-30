@@ -4,7 +4,9 @@ use utf8;
 use strict;
 use warnings;
 use Test::More;
-use File::Spec::Functions;
+use File::Spec::Functions qw/catfile catdir/;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper::Concise;
@@ -17,7 +19,23 @@ binmode $builder->todo_output,    ":encoding(utf-8)";
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my $site = $schema->resultset('Site')->find('0blog0');
+my $site = create_site($schema, '0ogp0');
+
+my $imagefile = path(qw/t test-repos 0opds0 site_files navlogo.png/);
+$imagefile->copy($site->path_for_site_files);
+
+{
+    my ($rev) = $site->create_new_text({ title => 'hello there',
+                                         lang => 'hr',
+                                         textbody => '<p>ciao</p>',
+                                       }, 'text');
+    my $att = $rev->add_attachment(path(qw/t files shot.png/)->stringify)->{attachment};
+    $rev->edit("#cover $att\n#author pinco pallino, caio, sempronio\n#teaser Here!\n#SORTtopics blabla, blaba\n"
+               . $rev->muse_body);
+    ok $att;
+    $rev->commit_version;
+    $rev->publish_text;
+}
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
@@ -25,9 +43,9 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my $site_map = $mech->get_ok('/sitemap.txt');
 my @urls = grep { $_ } split /\n/, $mech->content;
 
-my $opengraph = path(repo => '0blog0', site_files => 'opengraph.png');
-my $navlogo = path(repo => '0blog0', site_files => 'navlogo.png');
-my $pagelogo = path(repo => '0blog0', site_files => 'pagelogo.png');
+my $opengraph = path($site->path_for_site_files, 'opengraph.png');
+my $navlogo = path($site->path_for_site_files,'navlogo.png');
+my $pagelogo = path($site->path_for_site_files,'pagelogo.png');
 
 die unless $navlogo->exists;
 
@@ -63,10 +81,35 @@ $pagelogo->remove;
 
 ok $site->index_site_files;
 
+my $og = check_url('/library/hello-there', 'h-t-hello-there-1.png.large.png');
+
+is_deeply $og,
+  {
+   "og:article:author" => "pinco pallino, caio, sempronio",
+   "og:article:tag" => [
+                        "blaba",
+                        "blabla"
+                       ],
+   "og:description" => "Here!",
+   "og:image" => "https://0ogp0.amusewiki.org/uploads/0ogp0/thumbnails/h-t-hello-there-1.png.large.png",
+   "og:image:height" => 381,
+   "og:image:width" => 300,
+   "og:title" => "hello there",
+   "og:type" => "article",
+   "og:url" => "https://0ogp0.amusewiki.org/library/hello-there"
+  }, "hello-there looks good";
+
+
 sub check_urls {
     my ($image, @pages) = @_;
-  foreach my $url (@pages) {
-    next if $url =~ m{blog.amusewiki.org/(feed|opds)};
+    foreach my $url (@pages) {
+        next if $url =~ m{amusewiki\.org/(feed|opds)};
+        next if $url =~ m{amusewiki\.org/library/hello-there};
+        check_url($url, $image);
+    }
+}
+sub check_url {
+    my ($url, $image) = @_;
     diag "Checking $url";
     $mech->get_ok($url);
     my $content = $mech->content;
@@ -88,12 +131,15 @@ sub check_urls {
         }
     }
     diag Dumper(\%og);
-    foreach my $c (qw/title type image url description/) {
+    foreach my $c (qw/title type image url description image:width image:height/) {
         ok $og{"og:$c"}, "Found mandatory og:$c " . $og{"og:$c"};
     }
     like $og{'og:image'}, qr{\Q$image\E$}, "Image is $image";
     $mech->get_ok($og{'og:image'});
     $mech->get_ok($og{'og:url'});
-  }
+    return \%og;
 }
+
+
+
 done_testing;

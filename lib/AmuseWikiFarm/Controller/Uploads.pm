@@ -61,9 +61,8 @@ sub pdf :Chained('upload') :PathPart('') :Args(0) {
 sub thumbnail :Chained('root') :PathPart('thumbnails') :Args(1) {
     my ($self, $c, $thumb) = @_;
     log_debug { "Looking up $thumb" };
-    my $site = $c->stash->{site};
     # if the DB is compromised, we're fried anyway
-    if (my $thumb = $site->thumbnails->find({ file_name => $thumb })) {
+    if (my $thumb = $c->stash->{site}->thumbnails->find({ file_name => $thumb })) {
         $c->stash(serve_static_file => $thumb->file_path);
         $c->detach($c->view('StaticFile'));
     }

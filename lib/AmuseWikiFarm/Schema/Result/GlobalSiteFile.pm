@@ -184,5 +184,14 @@ sub path_object {
     return path(shift->file_path);
 }
 
+sub is_thumbnail {
+    return shift->file_type eq 'thumbnail';
+}
+
+sub is_site_file {
+    return shift->file_type eq 'application';
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

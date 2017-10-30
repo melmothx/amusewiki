@@ -344,6 +344,7 @@ sub generate_thumbnails {
     my $thumbnail_dir = path('thumbnails');
     foreach my $ext (keys %dimensions) {
         my $outfile = path($thumbnail_dir, $self->site_id, $basename . $ext);
+        $outfile->parent->mkpath;
         my $out = $outfile->absolute;
         log_debug { "Creating thumbnail from $src to $out" };
         my $info = path($out . ".spec");
