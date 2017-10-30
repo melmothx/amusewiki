@@ -21,15 +21,15 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = create_site($schema, '0ogp0');
 
-my $imagefile = path(qw/t test-repos 0opds0 site_files navlogo.png/);
-$imagefile->copy($site->path_for_site_files);
+my $imagefile = path(qw/t files shot.png/);
+$imagefile->copy(path($site->path_for_site_files, 'navlogo.png'));
 
 {
     my ($rev) = $site->create_new_text({ title => 'hello there',
                                          lang => 'hr',
                                          textbody => '<p>ciao</p>',
                                        }, 'text');
-    my $att = $rev->add_attachment(path(qw/t files shot.png/)->stringify)->{attachment};
+    my $att = $rev->add_attachment("$imagefile")->{attachment};
     $rev->edit("#cover $att\n#author pinco pallino, caio, sempronio\n#teaser Here!\n#SORTtopics blabla, blaba\n"
                . $rev->muse_body);
     ok $att;
