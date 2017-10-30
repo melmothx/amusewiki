@@ -34,6 +34,13 @@ eval {
         $site->index_site_files;
         $site->generate_static_indexes;
     }
+    # this is a bit expensive, but hey...
+    foreach my $att ($schema->resultset('Attachment')->all) {
+        unless ($att->thumbnails->count) {
+            print "Generating thumbnails for " . $att->uri . "\n";
+            $att->generate_thumbnails;
+        }
+    }
 };
 
 my $jobber = AmuseWikiFarm::Utils::Jobber->new(
