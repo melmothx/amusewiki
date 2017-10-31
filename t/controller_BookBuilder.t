@@ -47,8 +47,8 @@ $mech->content_contains("Page not found!");
 
 $mech->get_ok('/bookbuilder/fonts');
 {
-    my @links = grep { $_->url =~ m/font-preview/ } $mech->find_all_links;
-    ok (scalar @links, "Found font-preview links");
+    my @links = grep { $_->url =~ m/fontpreview/ } $mech->find_all_links;
+    ok (scalar @links, "Found fontpreview links");
 }
 
 $mech->get_ok('/bookbuilder/add/first-test');

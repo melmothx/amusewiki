@@ -271,8 +271,8 @@ sub fonts :Chained('root') :PathPart('fonts') :Args(0) {
                      );
         my $name = $myfont{name};
         $name =~ s/ /-/g;
-        my $path = "/static/images/font-preview/";
-        my $pdf = $c->path_to(File::Spec->catfile(qw/root static images font-preview/, $name . '.pdf'));
+        my $path = "/static/images/fontpreview/";
+        my $pdf = $c->path_to(File::Spec->catfile(qw/root static images fontpreview/, $name . '.pdf'));
         if (-f $pdf) {
             $myfont{thumb} = $c->uri_for($path . $name . '.png');
             $myfont{pdf}   = $c->uri_for($path . $name . '.pdf');

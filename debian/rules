@@ -12,10 +12,6 @@ override_dh_systemd_enable:
 	install -p -m644 $(CURDIR)/debian/amusewiki-jobber.service $(TMP)/lib/systemd/system/
 	dh_systemd_enable
 
-override_dh_testdir:
-	$(CURDIR)/font-preview/gen.sh
-	dh_testdir
-
 # no parallel
 override_dh_auto_build:
 	dh_auto_build --max-parallel=1
