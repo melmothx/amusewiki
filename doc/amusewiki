@@ -16,14 +16,26 @@ EOF
     for exe in /usr/bin/amusewiki-*; do
         echo $exe | sed -e 's!/usr/bin/amusewiki-!amusewiki !'
     done
-    echo "amusewiki shell"
-    echo
-    echo "The shell subcommand will start a shell with the amusewiki user"
-    echo
-    echo 'See man amusewiki-<action> for usage of each command'
-    echo 'or run amusewiki <action> --help'
-    echo 'Other useful commands:'
-    echo 'systemctl [ status | start | stop | restart ] [ amusewiki-* | amusewiki-web | amusewiki-jobber | amusewiki-cgit ]'
+
+    cat <<EOF
+
+amusewiki shell
+
+The shell subcommand will start a shell with the amusewiki user
+
+See man amusewiki-<action> for usage of each command
+or run amusewiki <action> --help
+
+Other useful commands:
+
+amusewiki [ start | stop | restart ]
+
+start and stop actions simply call systemctl, while the restart action
+performs a restart without downtime (so being a bit more useful than
+just "systemctl restart amusewiki-web amusewiki-jobber amusewiki-cgit"
+
+EOF
+
 	exit 1
 }
 
@@ -36,6 +48,38 @@ action=$1
 shift
 if [ "x$action" = "xshell" ]; then
     exec su - amusewiki
+    exit
+fi
+
+if [ "x$action" = "xstart" ]; then
+    systemctl start amusewiki-web amusewiki-jobber amusewiki-cgit
+    exit
+fi
+
+if [ "x$action" = "xstop" ]; then
+    systemctl stop amusewiki-web amusewiki-jobber amusewiki-cgit
+    exit
+fi
+
+if [ "x$action" = "xrestart" ]; then
+    cd /var/lib/amusewiki
+    sudo -u amusewiki -- /usr/bin/plackup -s FCGI \
+         --listen /var/lib/amusewiki/amusewiki.socket \
+         --nproc 3 -E deployment \
+         /usr/share/perl5/AmuseWikiFarm/psgi/amusewiki.psgi &
+    temp_pid=$!
+
+    echo "Started copy of the application with pid $temp_pid."
+    echo "If this script exits prematurely, please kill it yourself."
+    echo "Waiting for the backup app to come up..."
+    sleep 20
+    echo "Restarting the apps"
+    systemctl restart amusewiki-web amusewiki-jobber amusewiki-cgit
+    echo "Waiting for the real app to come up..."
+    sleep 20
+    echo "Stopping the backup app $temp_pid"
+    kill $temp_pid
+    echo "All done, no errors"
     exit
 fi
 
