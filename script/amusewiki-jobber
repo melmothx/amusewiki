@@ -51,6 +51,10 @@ my $jobber = AmuseWikiFarm::Utils::Jobber->new(
                                                 ()
                                                ));
 
+print "Starting jobber's loop with polling interval of " . $jobber->polling_interval . " seconds\n";
+print "Lockfile is " . $jobber->pidfile . "\n";
+print "Max parallel jobs: " . $jobber->max_parallel . "\n";
+
 while (1) {
     $jobber->main_loop;
 }
