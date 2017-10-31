@@ -14,10 +14,6 @@ use AmuseWikiFarm::Archive::BookBuilder;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-# kill the jobber if running
-system($init, 'stop');
-
 my $site = $schema->resultset('Site')->find('0blog0');
 my @uris = map { $_->uri } $site->titles->published_texts;
 ok (scalar(@uris), "Found " . join(" ", @uris));

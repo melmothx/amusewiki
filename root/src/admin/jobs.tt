@@ -190,7 +190,7 @@
         [% job.task | html %]
       </td>
       <td>
-        [% job.payload | html %]
+        <pre>[% job.payload_pretty | html %]</pre>
       </td>
       <td>
         [% job.status | html %]

@@ -4,7 +4,7 @@ use utf8;
 use strict;
 use warnings;
 
-use Moose;
+use Moo;
 use namespace::autoclean;
 
 use Cwd;
@@ -27,7 +27,9 @@ use AmuseWikiFarm::Log::Contextual;
 use Bytes::Random::Secure;
 use IO::Pipe;
 use File::Basename;
-use Types::Standard qw/StrMatch Maybe Enum/;
+use Types::Standard qw/Int Bool Str StrMatch Maybe Enum Object ArrayRef/;
+use Path::Tiny ();
+
 
 =head1 NAME
 
@@ -57,42 +59,59 @@ The numeric ID for the output basename.
 =cut
 
 has dbic => (is => 'ro',
-             isa => 'Object');
+             isa => Object);
 
 has site_id => (is => 'ro',
-                isa => 'Maybe[Str]');
+                isa => Maybe[Str]);
 
-has site => (is => 'ro',
-             isa => 'Maybe[Object]',
-             lazy => 1,
-             builder => '_build_site');
+has site => (is => 'lazy',
+             isa => Maybe[Object]);
+
+sub _build_site {
+    my $self = shift;
+    if (my $schema = $self->dbic) {
+        if (my $id = $self->site_id) {
+            if (my $site  = $schema->resultset('Site')->find($id)) {
+                return $site;
+            }
+        }
+    }
+    return undef;
+}
 
 has job_id => (is => 'ro',
-               isa => 'Maybe[Str]');
+               isa => Maybe[Str]);
 
 has format => (is => 'rw',
                isa => Enum[qw/epub pdf slides/],
                default => sub { 'pdf' });
 
 has token => (is => 'rw',
-              isa => 'Str',
+              isa => Str,
               default => sub { '' });
 
 has epub_embed_fonts => (is => 'rw',
-                         isa => "Bool",
+                         isa => Bool,
                          default => sub { 1 });
 
 has is_single_file => (is => 'ro',
-                       isa => 'Bool',
+                       isa => Bool,
                        default => sub { 0 });
 
 has single_file_extension => (is => 'ro',
-                              isa => 'Str',
+                              isa => Str,
                               default => sub { '' });
 
 has user_is_logged_in => (is => 'ro',
-                          isa => 'Bool',
+                          isa => Bool,
                           default => sub { 0 });
+
+has bbdir => (is => 'lazy',
+              isa => Object);
+
+sub _build_bbdir {
+    return Path::Tiny->tempdir(CLEANUP => 1);
+}
 
 sub load_from_token {
     my ($self, $token) = @_;
@@ -146,17 +165,6 @@ sub generate_token {
       ->string_from('AABCDEEFGHLMNPQRSTUUVWYZ123456789', 6);
 }
 
-sub _build_site {
-    my $self = shift;
-    if (my $schema = $self->dbic) {
-        if (my $id = $self->site_id) {
-            if (my $site  = $schema->resultset('Site')->find($id)) {
-                return $site;
-            }
-        }
-    }
-    return undef;
-}
 
 =head2 paths and output
 
@@ -169,7 +177,7 @@ Accesso to the error (set by the object).
 =cut
 
 has error => (is => 'rw',
-              isa => 'Maybe[Str]');
+              isa => Maybe[Str]);
 
 =head2 total_pages_estimated
 
@@ -236,12 +244,12 @@ sub epub {
 
 sub slides {
     my $self = shift;
-    if ($self->format eq 'slides' and $self->can_generate_slides) {
-        return 1;
+    if ($self->format eq 'slides') {
+        if ($self->is_single_file or $self->can_generate_slides) {
+            return 1;
+        }
     }
-    else {
-        return 0;
-    }
+    return 0;
 }
 
 # this is the default
@@ -274,27 +282,27 @@ sub pdf {
 
 has title => (
               is => 'rw',
-              isa => 'Maybe[Str]',
+              isa => Maybe[Str],
              );
 has subtitle => (
                  is => 'rw',
-                 isa => 'Maybe[Str]',
+                 isa => Maybe[Str],
                 );
 has author => (
                is => 'rw',
-               isa => 'Maybe[Str]',
+               isa => Maybe[Str],
               );
 has date => (
              is => 'rw',
-             isa => 'Maybe[Str]',
+             isa => Maybe[Str],
             );
 has notes => (
               is => 'rw',
-              isa => 'Maybe[Str]',
+              isa => Maybe[Str],
              );
 has source => (
                is => 'rw',
-               isa => 'Maybe[Str]',
+               isa => Maybe[Str],
               );
 
 
@@ -307,7 +315,7 @@ Unclear if this side-effect is welcome or not.
 =cut
 
 has textlist => (is => 'rw',
-                 isa => 'ArrayRef[Str]',
+                 isa => ArrayRef[Str],
                  default => sub { [] },
                 );
 
@@ -326,7 +334,7 @@ The absolute uploaded filename for the cover image.
 =cut
 
 has coverfile => (is => 'rw',
-                  isa => 'Maybe[Str]',
+                  isa => Maybe[Str],
                   default => sub { undef });
 
 =head2 Booleans
@@ -340,9 +348,15 @@ default to false.
 
 =item nocoverpage
 
+=item coverpage_only_if_toc
+
 =item nofinalpage
 
 =item notoc
+
+=item impressum
+
+=item sansfontsections
 
 =item headings
 
@@ -358,19 +372,25 @@ If the imposition pass is required.
 
 has twoside => (
                 is => 'rw',
-                isa => 'Bool',
+                isa => Bool,
                 default => sub { 0 },
                );
 
 has nocoverpage => (
                     is => 'rw',
-                    isa => 'Bool',
+                    isa => Bool,
                     default => sub { 0 },
                    );
 
+has coverpage_only_if_toc => (
+                              is => 'rw',
+                              isa => Bool,
+                              default => sub { 0 },
+                             );
+
 has nofinalpage => (
                     is => 'rw',
-                    isa => 'Bool',
+                    isa => Bool,
                     default => sub { 0 },
                    );
 
@@ -387,26 +407,39 @@ has headings => (
 
 has notoc => (
               is => 'rw',
-              isa => 'Bool',
+              isa => Bool,
               default => sub { 0 },
              );
+
+has impressum => (
+                  is => 'rw',
+                  isa => Bool,
+                  default => sub { 0 },
+                 );
+
+has sansfontsections => (
+                         is => 'rw',
+                         isa => Bool,
+                         default => sub { 0 },
+                        );
+
 
 # imposer options
 has cover => (
               is => 'rw',
-              isa => 'Bool',
+              isa => Bool,
               default => sub { 1 },
              );
 
 has unbranded => (
                   is => 'rw',
-                  isa => 'Bool',
+                  isa => Bool,
                   default => sub { 0 },
                  );
 
 has imposed => (
                 is => 'rw',
-                isa => 'Bool',
+                isa => Bool,
                 default => sub { 0 },
                );
 
@@ -508,19 +541,19 @@ has crop_paper_thickness => (
 
 has crop_marks => (
                    is => 'rw',
-                   isa => 'Bool',
+                   isa => Bool,
                    default => sub { 0 },
                   );
 
 has paper_width => (
                     is => 'rw',
-                    isa => 'Int',
+                    isa => Int,
                     default => sub { 0 },
                    );
 
 has paper_height => (
                      is => 'rw',
-                     isa => 'Int',
+                     isa => Int,
                      default => sub { 0 },
                     );
 
@@ -532,13 +565,13 @@ has crop_papersize => (
 
 has crop_paper_width => (
                          is => 'rw',
-                         isa => 'Int',
+                         isa => Int,
                          default => sub { 0 },
                         );
 
 has crop_paper_height => (
                           is => 'rw',
-                          isa => 'Int',
+                          isa => Int,
                           default => sub { 0 },
                          );
 
@@ -644,7 +677,8 @@ of the font. This is used for validation.
 
 =cut
 
-has fonts => (is => 'ro', lazy => 1, isa => 'Object', builder => '_build_fonts',
+has fonts => (is => 'lazy',
+              isa => Object,
               handles => [qw/serif_fonts mono_fonts sans_fonts/],
              );
 
@@ -722,7 +756,7 @@ has coverwidth => (
                    default => sub { '100' },
                   );
 
-=head2 signature
+=head2 signature_2up
 
 The signature to use.
 
@@ -730,7 +764,7 @@ The signature to use.
 
 =cut
 
-sub signature_values {
+sub signature_values_2up {
     return [qw/0 40-80 4  8 12 16 20 24 28 32 36 40
                       44 48 52 56 60 64 68 72 76 80
               /];
@@ -745,12 +779,17 @@ sub signature_values_4up {
 
 
 
-has signature => (
-                   is => 'rw',
-                   isa => Enum[ @{__PACKAGE__->signature_values} ],
-                   default => sub { '0' },
-                 );
+has signature_2up => (
+                      is => 'rw',
+                      isa => Enum[ @{__PACKAGE__->signature_values_2up} ],
+                      default => sub { '0' },
+                     );
 
+has signature_4up => (
+                      is => 'rw',
+                      isa => Enum[ @{__PACKAGE__->signature_values_4up} ],
+                      default => sub { '0' },
+                     );
 
 sub opening_values {
     return [qw/any right/];
@@ -977,16 +1016,10 @@ Populate the object with the provided HTTP parameters. Given the the
 form has correct values, failing to import means that the params were
 tampered or incorrect, so just ignore those.
 
-As a particular case, the 4up signature will be imported as signature
-if the schema name is C<4up>.
-
 =cut
 
 sub import_profile_from_params {
     my ($self, %params) = @_;
-    if ($params{schema} and $params{schema} eq '4up') {
-        $params{signature} = delete $params{signature_4up};
-    }
     foreach my $method ($self->profile_methods) {
         # ignore coverfile when importing from the params
         try {
@@ -1001,9 +1034,6 @@ sub import_profile_from_params {
 
 sub import_from_params {
     my ($self, %params) = @_;
-    if ($params{schema} and $params{schema} eq '4up') {
-        $params{signature} = delete $params{signature_4up};
-    }
     foreach my $method ($self->_main_methods) {
         # ignore coverfile when importing from the params
         next if $method eq 'coverfile';
@@ -1049,10 +1079,14 @@ sub profile_methods {
               twoside
               notoc
               nocoverpage
+              coverpage_only_if_toc
               nofinalpage
+              impressum
+              sansfontsections
               headings
               imposed
-              signature
+              signature_2up
+              signature_4up
               schema
               opening
               paper_width
@@ -1072,6 +1106,19 @@ sub profile_methods {
 Main method to create a structure to feed the jobber for the building
 
 =cut
+
+sub signature_in_use {
+    my $self = shift;
+    if ($self->schema eq '2up') {
+        return $self->signature_2up;
+    }
+    elsif ($self->schema eq '4up') {
+        return $self->signature_4up;
+    }
+    else {
+        return;
+    }
+}
 
 sub as_job {
     my $self = shift;
@@ -1098,6 +1145,9 @@ sub as_job {
                                     beamertheme => $self->beamertheme,
                                     beamercolortheme => $self->beamercolortheme,
                                     opening     => $self->opening,
+                                    # 0.97
+                                    impressum   => $self->impressum,
+                                    sansfontsections => $self->sansfontsections,
 
                                     ($self->is_single_file ? ()
                                      : (
@@ -1112,9 +1162,9 @@ sub as_job {
     log_debug { "Cover is " . ($self->coverfile ? $self->coverfile : "none") };
     if (!$self->epub && !$self->slides && $self->imposed) {
         $job->{imposer_options} = {
-                                   signature => $self->signature,
                                    schema    => $self->schema,
                                    cover     => $self->cover,
+                                   ($self->signature_in_use ? (signature => $self->signature_in_use) : ()),
                                   };
         if ($self->crop_marks) {
             $job->{imposer_options}->{paper} = $self->computed_crop_papersize;
@@ -1183,6 +1233,10 @@ sub compile {
             }
             return;
         }
+        if ($self->slides and !$textobj->slides) {
+            log_debug { $textobj->full_uri . " can't generate slides, returning" };
+            return;
+        }
     }
     else {
         die "Can't compile a file without a job id!" unless $self->job_id;
@@ -1201,9 +1255,17 @@ sub compile {
     }
 
     # print Dumper($template_opts);
-
-    my $bbdir    = File::Temp->newdir(CLEANUP => 1);
-    my $basedir = $bbdir->dirname;
+    my $basedir = $self->bbdir->stringify;
+    # ensure the directory is empty
+    foreach my $child ($self->bbdir->children) {
+        log_error { "Found $child in $basedir, supposedly empty, removing" };
+        if ($child->is_dir) {
+            $child->remove_tree;
+        }
+        else {
+            $child->remove;
+        }
+    }
     my $makeabs = sub {
         my $name = shift;
         return File::Spec->catfile($basedir, $name);
@@ -1252,6 +1314,7 @@ sub compile {
                          sl_pdf => $self->slides,
                          epub => $self->epub,
                          epub_embed_fonts => $self->epub_embed_fonts,
+                         coverpage_only_if_toc => $self->coverpage_only_if_toc,
                         );
     # inherited from site
     foreach my $setting (qw/luatex ttdir fontspec/) {
@@ -1505,6 +1568,7 @@ sub can_generate_slides {
             return $text->slides;
         }
     }
+    log_debug { $self->format . " cannot generate slides" };
     return 0;
 }
 
@@ -1573,8 +1637,5 @@ sub refresh_text_list {
         $self->add_text($text);
     }
 }
-
-
-__PACKAGE__->meta->make_immutable;
 
 1;

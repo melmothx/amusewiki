@@ -64,6 +64,8 @@ JSON
 
 write_file(catfile($site->path_for_site_files, 'fontspec.json'), $json);
 
+$site->index_site_files;
+
 foreach my $page (@pages_with_fonts) {
     $mech->get_ok($page);
     $mech->content_lacks($removed_font);

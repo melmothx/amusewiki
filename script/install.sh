@@ -85,9 +85,6 @@ echo "Installing needed JS"
 cd $AMWHOME
 ./script/amusewiki-populate-webfonts
 
-cd $AMWHOME/font-preview
-./gen.sh
-
 cd $AMWHOME
 ./script/install-cgit.pl
 

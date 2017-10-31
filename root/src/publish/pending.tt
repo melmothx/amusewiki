@@ -107,6 +107,8 @@
   </table>
 </div>
 
+[% INCLUDE 'include/pagination.tt' %]
+
 <div class="well">
   <p>
     [% loc("Please keep in mind that if you see “Force publishing”

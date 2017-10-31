@@ -9,10 +9,6 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use AmuseWikiFarm::Schema;
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-# kill the jobber
-system($init, 'stop');
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -51,8 +47,8 @@ $mech->content_contains("Page not found!");
 
 $mech->get_ok('/bookbuilder/fonts');
 {
-    my @links = grep { $_->url =~ m/font-preview/ } $mech->find_all_links;
-    ok (scalar @links, "Found font-preview links");
+    my @links = grep { $_->url =~ m/fontpreview/ } $mech->find_all_links;
+    ok (scalar @links, "Found fontpreview links");
 }
 
 $mech->get_ok('/bookbuilder/add/first-test');

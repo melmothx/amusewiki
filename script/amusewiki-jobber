@@ -5,13 +5,8 @@ BEGIN { die "Do not run this as root" unless $>; }
 use strict;
 use warnings;
 use utf8;
-use AmuseWikiFarm::Log::Contextual;
-use Cwd;
-use constant AMW_POLLING => $ENV{AMW_POLLING} || 5;
-use POSIX qw/nice setsid/;
-use Fcntl qw/:flock/;
-use File::Spec;
 use AmuseWikiFarm::Schema;
+use AmuseWikiFarm::Utils::Jobber;
 
 =pod
 
@@ -29,131 +24,39 @@ It stays in the foreground, but each job is managed in a double fork
 
 =cut
 
-nice(19);
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $count = -1;
-my $pidfile = '.amusewiki.jobber.lock';
-my $daily = 0;
 
 # at startup, ensure all the sites will have fresh indexes. This will
-# schedule the jobs
-foreach my $site ($schema->resultset('Site')->all) {
-    $site->generate_static_indexes;
-}
+# schedule the jobs. Wrapped in eval if DB is failing us.
+eval {
+    foreach my $site ($schema->resultset('Site')->all) {
+        $site->check_and_update_custom_formats;
+        $site->index_site_files;
+        $site->generate_static_indexes;
+    }
+    # this is a bit expensive, but hey...
+    foreach my $att ($schema->resultset('Attachment')->all) {
+        unless ($att->thumbnails->count) {
+            print "Generating thumbnails for " . $att->uri . "\n";
+            $att->generate_thumbnails;
+        }
+    }
+};
+
+my $jobber = AmuseWikiFarm::Utils::Jobber->new(
+                                               schema => $schema,
+                                               ($ENV{AMW_POLLING} ?
+                                                ( polling_interval => $ENV{AMW_POLLING} )
+                                                :
+                                                ()
+                                               ));
+
+print "Starting jobber's loop with polling interval of " . $jobber->polling_interval . " seconds\n";
+print "Lockfile is " . $jobber->pidfile . "\n";
+print "Max parallel jobs: " . $jobber->max_parallel . "\n";
 
 while (1) {
-    sleep AMW_POLLING;
-
-    # here we wait to have a lock
-    {
-        open (my $lock, '>', $pidfile) or die "Can't open $pidfile $!";
-        log_debug { "Waiting for the lock on $pidfile" };
-        flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
-        print $lock $$;
-        log_debug { "Got the lock on $pidfile in parent" };
-        flock($lock, LOCK_UN);
-        close $lock;
-    }
-    if ($count == 1000) {
-        # reset the counter and trigger the deferred texts.
-        $count = 0;
-    }
-    else {
-        $count++;
-    }
-    my $now = time();
-    my $daily_job;
-    if (($now - $daily) > (60 * 60 * 24)) {
-        $daily = $now;
-        log_debug { "Setting daily job" };
-        $daily_job = 1;
-    }
-    else {
-        log_debug { "too early: " . ($now - $daily) . " seconds since last daily job" };
-    }
-    my $job = eval { $schema->resultset('Job')->dequeue };
-    if ($@) {
-        log_error { "Errors on dequeu: $@" };
-    }
-    unless ($daily_job or $job or $count == 0) {
-        next;
-    }
-    if (my $pid = fork()) {
-        wait;
-        print "Detached new job\n";
-        log_debug { "Child $pid exited, looping again\n" };
-    }
-    elsif (defined $pid) {
-        # fork again
-        defined(my $pid = fork()) or die "Cannot fork: $!";
-        if ($pid) {
-            log_debug { "Spawned jobber from $$ to $pid, exiting now" };
-            exit;
-        }
-        log_debug { "This is the jobber $$, detaching" };
-        my $stdin = my $stdout = File::Spec->devnull;
-        log_debug { "my $stdin = my $stdout  = File::Spec->devnull ($$)" };
-        open (STDIN, '<', $stdin)
-          or die "Couldn't open $stdin";
-
-
-        open (STDOUT, '>', $stdout)
-          or die "Couldn't open $stdout";
-        die "Can't start a new session $!" if (setsid() == -1);
-
-        open(STDERR, ">&STDOUT") or die "can't dup stdout: $!";
-
-        log_info { "Starting job with pid $$" };
-            # get the lock
-        open (my $lock, '>', $pidfile) or die "Can't open pidfile $!";
-        flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
-        print $lock $$;
-
-        if ($daily_job) {
-            log_info { "Daily job initialized" };
-            eval {
-                $schema->resultset('Site')->check_and_update_acme_certificates(1);
-            };
-            if ($@) {
-                log_error { "Errors: $@" };
-            }
-            eval {
-                $schema->resultset('TitleStat')->delete_old;
-            };
-            if ($@) {
-                log_error { "Errors: $@" };
-            }
-            log_info { "Daily job finished" };
-        }
-        $schema->resultset('Job')->fail_stale_jobs;
-        if ($count == 0) {
-            log_info { "Checking deferred titles, old jobs and revisions" };
-            eval {
-                $schema->resultset('Title')->publish_deferred;
-                $schema->resultset('Job')->purge_old_jobs;
-                $schema->resultset('Revision')->purge_old_revisions;
-            };
-            if ($@) {
-                log_error { "Errors: $@" };
-            }
-            log_info { "Done checking deferred titles, old jobs and revisions" };
-        }
-        if ($job) {
-            eval { $job->dispatch_job };
-            if ($@) {
-                log_error { "Errors: $@" };
-            }
-        }
-        log_info { "job $$ finished, exiting" };
-        flock($lock, LOCK_UN);
-        close $lock;
-        # log_debug { sleep 10 ; "$$ is exiting" };
-        # and exit;
-        exit;
-    }
-    else {
-        die "Couldn't fork $!";
-    }
+    $jobber->main_loop;
 }
     
 

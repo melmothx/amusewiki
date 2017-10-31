@@ -748,6 +748,7 @@ using L<File::Spec>.
 sub filepath_for_ext {
     my ($self, $ext) = @_;
     $ext ||= "html";
+    die "Bad extension $ext" unless $ext =~ m/\A[a-z0-9]+(\.[a-z0-9]+)?\z/;
     return File::Spec->catfile($self->f_path,
                                $self->f_name . '.' . $ext);
 }

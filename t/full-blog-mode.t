@@ -352,6 +352,7 @@ $mech->content_lacks('>test author 15<');
 
 copy(catfile(qw/t files widebanner.png/),
      catfile($site->path_for_site_files));
+$site->index_site_files;
 $mech->get_ok('/');
 $mech->content_contains('widebanner.png');
 

@@ -53,15 +53,9 @@ sub root :Chained('/site_no_auth') :PathPart('sitefiles') :CaptureArgs(1) {
 
 sub local_files :Chained('root') :PathPart('') :Args(1) {
     my ($self, $c, $file) = @_;
-    # this method has already a sanity checker on the filename
-    if (my $path = $c->stash->{site}->has_site_file($file)) {
-        if ($file =~ m/[a-z0-9]
-                       \.
-                       (
-                           png | jpe?g | gif | ico | otf | ttf | woff |
-                           torrent | txt | css | js
-                       )\Z/x) {
-            $c->stash(serve_static_file => $path);
+    if (my $gfile = $c->stash->{site}->site_files->find({ file_name => $file })) {
+        if ($gfile->is_public) {
+            $c->stash(serve_static_file => $gfile->file_path);
             $c->detach($c->view('StaticFile'));
             return;
         }

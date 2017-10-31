@@ -631,6 +631,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 global_site_files
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::GlobalSiteFile>
+
+=cut
+
+__PACKAGE__->has_many(
+  "global_site_files",
+  "AmuseWikiFarm::Schema::Result::GlobalSiteFile",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 jobs
 
 Type: has_many
@@ -822,8 +837,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-07-05 11:50:50
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:IRDckgBXqdvMO9G6uWyUjQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-28 12:33:39
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ZkmgwiBwtaGJJ/O8tzT0WA
 
 =head2 other_sites
 
@@ -868,7 +883,7 @@ use AmuseWikiFarm::Utils::LexiconMigration;
 use Regexp::Common qw/net/;
 use Path::Tiny ();
 use AmuseWikiFarm::Utils::Paths ();
-
+use Try::Tiny;
 
 =head2 repo_root_rel
 
@@ -904,14 +919,6 @@ sub repo_root {
 
 Options to feed the Text::Amuse::Compile object.
 
-=head2 available_formats
-
-Return a list of format => enable pairs.
-
-=head2 available_text_exts
-
-As above, but instead of the compiler options, list the extensions.
-
 =cut
 
 sub valid_ttdir {
@@ -931,7 +938,13 @@ sub valid_ttdir {
 
 sub compile_options {
     my $self = shift;
-    my %opts = $self->available_formats;
+    my %opts = (
+                tex => 1,
+                html => 1,
+                bare_html => 1,
+                epub => 1,
+                zip => 1,
+               );
     if ($self->use_luatex) {
         $opts{luatex} = 1;
     }
@@ -965,113 +978,255 @@ sub compile_options {
     return %opts;
 }
 
-sub available_formats {
-    my $self = shift;
-    my %formats;
-    foreach my $f (qw/tex
-                      pdf
-                      a4_pdf
-                      lt_pdf
-                      html
-                      bare_html
-                      epub
-                      zip
-                      sl_tex
-                      sl_pdf
-                     /) {
-        $formats{$f} = $self->$f;
-    }
-    return %formats;
-}
-
 sub formats_definitions {
-    my $self = shift;
-    my $loc = $self->localizer;
-    my @all = (
-               {
-                code => 'pdf',
-                ext => '.pdf',
-                icon => 'fa-file-pdf-o',
-                desc => 'plain PDF',
-               },
-               {
-                code => 'a4_pdf',
-                ext => '.a4.pdf',
-                icon => 'fa-columns fa-flip-vertical',
-                desc => 'A4 imposed PDF',
-               },
-               {
-                code => 'lt_pdf',
-                ext => '.lt.pdf',
-                icon => 'fa-columns fa-flip-vertical',
-                desc => 'Letter imposed PDF',
-               },
-               # disabled, because don't check
-               # {
-               #  code => 'sl_pdf',
-               #  ext => '.sl.pdf',
-               #  icon => 'fa-file-powerpoint-o',
-               #  desc => 'Slides (PDF)',
-               # },
-               {
+    my ($self, %opts) = @_;
+    my @all = ({
                 code => 'epub',
                 ext => '.epub',
                 icon => 'fa-tablet',
                 desc => 'EPUB (for mobile devices)',
+                oldid => "downloadepub",
                },
                {
                 code => 'html',
                 ext => '.html',
                 icon => 'fa-print',
                 desc => 'Standalone HTML (printer-friendly)',
+                oldid => "downloadhtml",
                },
                {
                 code => 'tex',
                 ext => '.tex',
                 icon => 'fa-file-code-o',
                 desc => 'XeLaTeX source',
+                oldid => "downloadtex",
                },
                {
                 code => 'muse',
                 ext => '.muse',
-                always => 1,
                 icon => 'fa-file-text-o',
                 desc => 'plain text source',
+                oldid => "downloadsrc",
                },
                {
                 code => 'zip',
                 ext => '.zip',
                 icon => 'fa-file-archive-o',
                 desc => 'Source files with attachments',
+                oldid => "downloadzip",
                }
               );
-    my %existing = $self->available_formats;
-    my @out = grep { $existing{$_->{code}} || $_->{always} } @all;
+    my %legacy_ids = (
+                      pdf => 'pdfgeneric',
+                      'a4.pdf' => 'pdfa4imp',
+                      'lt.pdf' => 'letterimp',
+                      'sl.pdf' => 'downloadslides',
+                     );
+    my @out;
     foreach my $custom ($self->custom_formats->active_only->all) {
+        my $icon;
+        if ($custom->is_epub) {
+            $icon = 'fa-tablet';
+        }
+        elsif ($custom->is_imposed_pdf) {
+            $icon = 'fa-columns fa-flip-vertical';
+        }
+        elsif ($custom->is_slides) {
+            $icon = 'fa-file-powerpoint-o';
+        }
+        else {
+            $icon = 'fa-file-pdf-o'
+        }
+        my $old_id;
+        if (my $alias = $custom->format_alias) {
+            $old_id = $legacy_ids{$alias};
+        }
+        my $extension = $custom->format_alias || $custom->extension;
         push @out, {
-                    ext => '.' . $custom->extension,
-                    icon => ($custom->is_epub ? 'fa-tablet' : 'fa-file-pdf-o'),
+                    code => $extension,
+                    ext => '.' . $extension,
+                    icon => $icon,
                     desc => $custom->format_name,
+                    oldid => $old_id,
+                    is_slides => $custom->is_slides,
                    };
     }
-    foreach my $i (@out) {
-        $i->{desc} = $loc->loc_html($i->{desc});
+    push @out, @all;
+    if ($opts{localize}) {
+        log_debug { "Localizing descriptions" };
+        my $loc = $self->localizer;
+        foreach my $i (@out) {
+            $i->{desc} = $loc->loc_html($i->{desc});
+        }
     }
     return \@out;
 }
 
-sub available_text_exts {
+sub bb_values {
     my $self = shift;
-    my %formats = $self->available_formats;
-    my %exts;
-    foreach my $k (keys %formats) {
-        my $ext = $k;
-        $ext =~ s/_/./g;
-        $ext = '.' . $ext;
-        $exts{$ext} = $formats{$k};
+    # here the problem is that there is no 1:1 mapping, which kind of
+    # sucks, but hey.
+    my %out;
+    my %map = (division => 0,
+               bcor => 0,
+               fontsize => 0,
+               mainfont => 0,
+               sansfont => 0,
+               monofont => 0,
+               beamertheme => 0,
+               beamercolortheme => 0,
+               nocoverpage => 'coverpage_only_if_toc',
+               twoside => 0,
+              );
+    foreach my $method (sort keys %map) {
+        my $target = $map{$method} || $method;
+        # special shitty case.
+        if ($method eq 'bcor') {
+            if ($self->bcor =~ m/0?([1-9][0-9]*)(mm)?/) {
+                $out{$target} = $1;
+            }
+        }
+        else {
+            $out{$target} = $self->$method;
+        }
     }
-    return %exts;
+    my $valid;
+    try {
+        # validate
+        if (my $bb = AmuseWikiFarm::Archive::BookBuilder->new(%out)) {
+            $valid = 1;
+        }
+    } catch {
+        my $err = $_;
+        # scream, so we fix it
+        log_error { "$err validating $_" } \%out;
+    };
+    if ($valid) {
+        return %out;
+    }
+    else {
+        return;
+    }
 }
+
+=head2 check_and_update_custom_formats
+
+Method to spawn the standard CF, bound to the site flags
+pdf/sl_pdf/a4_pdf/lt_pdf. Such flags are now informative only and are
+toggled on /settings/formats. This method is called after the
+insertion in the DB of a new site, at jobber startup and when visiting
+/settings/formats.
+
+Assert that all the formats are active, either by site flag or by
+format active, and never deactivate anything.
+
+Also assert that the custom formats are what they say they are.
+
+=cut
+
+sub fixed_formats_definitions {
+    my %formats = (
+                   pdf => {
+                           initial => {
+                                       format_alias => 'pdf',
+                                       format_name => 'plain PDF', # loc('plain PDF')
+                                       format_priority => 1,
+                                      },
+                           fields => {
+                                      bb_format => 'pdf',
+                                      bb_imposed => 0,
+                                     },
+                          },
+                   a4_pdf => {
+                              initial => {
+                                          format_alias => 'a4.pdf',
+                                          format_name => 'A4 imposed PDF', # loc('A4 imposed PDF')
+                                          format_priority => 2,
+                                          bb_signature_2up => '40-80',
+                                         },
+                              fields => {
+                                         bb_format => 'pdf',
+                                         bb_imposed => 1,
+                                         bb_papersize => 'a5',
+                                         bb_schema => '2up',
+                                         bb_cover => 1,
+                                        },
+                             },
+                   lt_pdf => {
+                              initial => {
+                                          format_alias => 'lt.pdf',
+                                          format_name => 'Letter imposed PDF', # loc('Letter imposed PDF')
+                                          format_priority => 3,
+                                          bb_signature_2up => '40-80',
+                                          },
+                              fields => {
+                                         bb_format => 'pdf',
+                                         bb_imposed => 1,
+                                         bb_papersize => '5.5in:8.5in',
+                                         bb_schema => '2up',
+                                         bb_cover => 1,
+                                        },
+                             },
+                   sl_pdf => {
+                              initial => {
+                                          format_alias => 'sl.pdf',
+                                          format_name => 'Slides (PDF)', # loc('Slides (PDF)'),
+                                          format_priority => 4,
+                                          },
+                              fields => {
+                                         bb_format => 'slides',
+                                        },
+                             },
+                  );
+    return %formats;
+}
+
+sub check_and_update_custom_formats {
+    my $self = shift;
+    my %formats = $self->fixed_formats_definitions;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    foreach my $method (sort keys %formats) {
+        my $alias = $formats{$method}{initial}{format_alias} or die;
+
+        my $cf = $self->custom_formats->find({ format_alias => $alias });
+        unless ($cf) {
+            my %insertion = %{$formats{$method}{initial}};
+            $insertion{active} = 0;
+            my @fixed;
+            foreach  my $k (sort keys %{$formats{$method}{fields}}) {
+                my $v = $formats{$method}{fields}{$k};
+                $k =~ s/bb_//;
+                push @fixed, "$k:$v";
+            }
+            $insertion{format_description} = "Standard format. Changes to these fields will be ignored: "
+              . join(' ', @fixed);
+            $cf = $self->custom_formats->create(\%insertion);
+            # import the common stuff from the site
+            $cf->sync_from_site;
+        }
+        die "Shouldn't happen" unless $cf;
+
+        if ($self->$method) {
+            if (!$cf->active) {
+                log_info { "Activating CF " . $self->id . '/' . $cf->format_alias };
+                $cf->update({ active => 1 });
+            }
+        }
+        elsif ($cf->active) {
+            if (!$self->$method) {
+                log_info { "Setting $method flag for " . $self->id . '/' . $cf->format_alias };
+                $self->update({ $method => 1 });
+            }
+        }
+        else {
+            log_info { "$method for " . $self->id . " is disabled" };
+        }
+        Dlog_debug { "Enforcing $_ on " . $cf->format_name } $formats{$method}{fields};
+        $cf->update($formats{$method}{fields});
+    }
+    $guard->commit;
+}
+
 
 sub known_langs {
     my $self = shift;
@@ -1139,12 +1294,59 @@ sub path_for_site_files {
     return File::Spec->catdir($self->repo_root, 'site_files');
 }
 
+sub site_files {
+    return shift->global_site_files->app_files;
+}
+
+sub thumbnails {
+    return shift->global_site_files->thumbnails;
+}
+
+
+sub index_site_files {
+    my $self = shift;
+    my $dir = Path::Tiny::path($self->path_for_site_files);
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->site_files->delete;
+    if ($dir->exists) {
+        foreach my $path ($dir->children(qr{^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$})) {
+            my $stored = $self->site_files->create({
+                                                    file_name => $path->basename,
+                                                    file_path => "$path",
+                                                   });
+            if ($stored->is_image) {
+                try {
+                    require IO::Pipe; # already used by Text::Amuse::Compile
+                    my @exec = (qw/gm identify/, -format => '%wx%h', $stored->file_path);
+                    my $pipe = IO::Pipe->new;
+                    $pipe->reader(@exec);
+                    $pipe->autoflush;
+                    while (my $line = <$pipe>) {
+                        if ($line =~ m/([0-9]+)x([0-9]+)/) {
+                            my $width = $1;
+                            my $height = $2;
+                            $stored->update({
+                                             image_width => $width,
+                                             image_height => $height,
+                                            });
+                        }
+                    }
+                    wait; # unclear, I think so to avoid zombies
+                } catch {
+                    my $err = $_;
+                    log_error { "Cannot compute image size for $path $err" };
+                };
+            }
+        }
+    }
+    $guard->commit;
+    return $self->site_files->count;
+}
+
 sub has_site_file {
     my ($self, $file) = @_;
-    return unless $file && $file =~ m/^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$/s;
-    my $path = File::Spec->catfile($self->path_for_site_files, $file);
-    if (-f $path) {
-        return $path;
+    if (my $gfile = $self->site_files->find({ file_name => $file })) {
+        return $gfile->file_path;
     }
     else {
         return;
@@ -1561,7 +1763,15 @@ sub compile_and_index_files {
     my ($self, $files, $logger) = @_;
     $logger ||= sub { warn $_[0] };
     my $compiler = $self->get_compiler($logger);
-    my @cfs = @{$self->active_custom_formats};
+    my (@active_cfs, @inactive_cfs);
+    foreach my $cf ($self->custom_formats) {
+        if ($cf->active) {
+            push @active_cfs, $cf;
+        }
+        else {
+            push @inactive_cfs, $cf;
+        }
+    }
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
@@ -1581,13 +1791,32 @@ sub compile_and_index_files {
         unless (muse_filepath_is_valid($relpath)) {
             die "$relpath doesn't appear a valid path!";
         }
-        if ($file =~ m/\.muse$/ and $compiler->file_needs_compilation($file)) {
-            $compiler->compile($file);
+        if ($file =~ m/\.muse$/) {
+            # ensure that we properly migrated the PDFS to CF
+            foreach my $cf (@active_cfs) {
+                $cf->save_canonical_from_aliased_file($file);
+            }
+            # compile
+            $compiler->compile($file) if $compiler->file_needs_compilation($file);
         }
         if (my $indexed = $self->index_file($file, $logger)) {
             if ($indexed->isa('AmuseWikiFarm::Schema::Result::Title')) {
-                foreach my $cf (@cfs) {
-                    $cf->compile($indexed, $logger) if $cf->needs_compile($indexed);
+                foreach my $cf (@inactive_cfs) {
+                    $logger->("Removed inactive format " . $cf->format_name . "\n")
+                      if $cf->remove_stale_files($indexed);
+                }
+                foreach my $cf (@active_cfs) {
+                    # the standard compilation nuked the standar formats, so we
+                    # have to restore them, preserving the TS. Then we
+                    # will rebuild them in the next job.
+                    $cf->install_aliased_file($indexed);
+                    if ($cf->needs_compile($indexed)) {
+                        $logger->("Scheduled generation of " . $cf->format_name . "\n");
+                        $self->jobs->build_custom_format_add({
+                                                              id => $indexed->id,
+                                                              cf => $cf->custom_formats_id,
+                                                             });
+                    }
                 }
             }
         }
@@ -1644,8 +1873,15 @@ sub index_file {
     if ($class eq 'upload_pdf' or
         $class eq 'image' or
         $class eq 'special_image') {
-        $logger->("Inserting data for attachment $file\n");
-        return $self->attachments->update_or_create($details);
+        $logger->("Inserting data for attachment $file and generating thumbnails\n");
+        my $attachment =  $self->attachments->update_or_create($details);
+        try {
+            $attachment->generate_thumbnails;
+        } catch {
+            my $err = $_;
+            Dlog_error { "Error generating thumbnails for $_" } $details;
+        };
+        return $attachment;
     }
 
     # handle specials and texts
@@ -2127,6 +2363,7 @@ sub _pre_update_db_from_tree {
             log_warn { "$purge was not present in the db!" };
         }
     }
+    $self->index_site_files;
     eval {
         if (my @generated =
             AmuseWikiFarm::Utils::LexiconMigration::convert($self->lexicon,
@@ -2388,11 +2625,6 @@ sub update_from_params_restricted {
                         canonical         => 'value',
                         sitegroup         => 'value',
 
-                        tex               => 'value',
-                        html              => 'value',
-                        bare_html         => 'value',
-                        epub              => 'value',
-                        zip               => 'value',
                         ttdir             => 'value',
 
                         use_luatex               => 'option',
@@ -2449,9 +2681,7 @@ sub update_from_params {
 
     # first round: booleans. Here there is not much to do. If it's set, 1,
     # otherwise 0
-    my @booleans = (qw/tex pdf a4_pdf lt_pdf html bare_html zip epub
-                       sl_pdf
-                       logo_with_sitename
+    my @booleans = (qw/logo_with_sitename
                        cgit_integration
                        secure_site
                        active
@@ -3124,10 +3354,6 @@ sub use_js_highlight_value {
     return $self->get_option('use_js_highlight');
 }
 
-sub sl_tex {
-    return shift->sl_pdf;
-}
-
 sub mail_from_default {
     my $self = shift;
     if (my $mail = $self->mail_from) {
@@ -3474,6 +3700,12 @@ sub mailer {
     # If we call this, those settings will be ignored, hence we permit
     # argument passing)
 }
+
+after insert => sub {
+    my $self = shift;
+    $self->discard_changes;
+    $self->check_and_update_custom_formats;
+};
 
 __PACKAGE__->meta->make_immutable;
 

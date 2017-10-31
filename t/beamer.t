@@ -22,13 +22,12 @@ use File::Copy qw/copy/;
 use Text::Amuse::Compile::Utils qw/write_file read_file append_file/;
 use Data::Dumper;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site run_all_jobs/;
 use AmuseWikiFarm::Archive::BookBuilder;
 
 my $site_id = '0beamer0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
-ok !$site->sl_tex, "No sl.tex";
 $site->update({ sl_pdf => 1,
                 cgit_integration => 1,
                 secure_site => 0,
@@ -37,7 +36,10 @@ $site->update({ sl_pdf => 1,
                 beamertheme => 'Madrid',
                 beamercolortheme => 'wolverine',
               });
-ok $site->sl_tex;
+$site->check_and_update_custom_formats;
+my $cf = $site->custom_formats->find({ format_alias => 'sl.pdf' });
+$cf->sync_from_site;
+ok $cf->active;
 
 my $mech = Test::WWW::Mechanize::Catalyst
   ->new(catalyst_app => 'AmuseWikiFarm',
@@ -53,11 +55,12 @@ foreach my $muse ('slides.muse', 'slides-s-no.muse') {
 $site->git->add($destination);
 $site->git->commit({ message => "Added files" });
 $site->update_db_from_tree;
-ok (-f catfile($destination, 'slides.sl.tex'), "Slides sources created");
+run_all_jobs($schema);
+ok (-f catfile($destination, 'slides.' . $cf->tex_extension), "Slides sources created" . $cf->tex_extension);
 ok (-f catfile($destination, 'slides.sl.pdf'), "Slides created");
 ok (! -f catfile($destination, 'slides-s-no.sl.pdf'),
     "Slides not created if #slides no");
-my $tex_body = read_file(catfile($destination, 'slides.sl.tex'));
+my $tex_body = read_file(catfile($destination, 'slides.' . $cf->tex_extension));
 like($tex_body, qr{Iwona}, "Found the sans font");
 like($tex_body, qr{wolverine}, "Found the beamer color theme");
 like($tex_body, qr{Madrid}, "Found the beamer theme");
@@ -67,7 +70,7 @@ $mech->content_contains('Slides (PDF)');
 $mech->get_ok('/library/slides-s-no');
 $mech->content_lacks('Slides (PDF)');
 $mech->get_ok('/library/slides.sl.pdf');
-$mech->get_ok('/library/slides.sl.tex');
+$mech->get_ok('/library/slides.' . $cf->tex_extension);
 $mech->get('/library/slides-s-no.sl.pdf');
 is ($mech->status, '404', "slides for slides-s-no not found");
 $mech->get('/library/slides-s-no.sl.tex');
@@ -79,12 +82,10 @@ $mech->submit_form(with_fields => { __auth_user => 'root',
                                   });
 $mech->get_ok('/action/text/new');
 $mech->content_contains('Produce slides');
-$mech->get_ok("/admin/sites/edit/$site_id");
-$mech->form_id("site-edit-form");
-$mech->untick(sl_pdf => 'on');
-$mech->click("edit_site");
+$mech->get_ok("/settings/formats");
+$mech->submit_form(form_id => "format-activate-" . $cf->custom_formats_id);
 $mech->content_lacks(q{id="error_message"}) or die $mech->content;
-ok(!$site->discard_changes->sl_pdf, "sl_pdf disabled");
+ok(!$cf->discard_changes->active, "sl_pdf disabled");
 $mech->get_ok('/action/text/new');
 $mech->content_lacks('Produce slides');
 
@@ -97,10 +98,10 @@ $mech->content_contains('Created new text');
 $mech->content_lacks('#slides');
 
 $mech->get_ok("/admin/sites/edit/$site_id");
-$mech->form_id("site-edit-form");
-$mech->tick(sl_pdf => 'on');
-$mech->click;
-ok($site->discard_changes->sl_pdf, "Slides are active now");
+
+$mech->get_ok("/settings/formats");
+$mech->submit_form(form_id => "format-activate-" . $cf->custom_formats_id);
+ok($cf->discard_changes->active, "Slides are active now");
 $mech->get_ok('/action/text/new');
 $mech->content_contains('Produce slides');
 ok($mech->form_id('ckform'), "Found the form for uploading stuff");

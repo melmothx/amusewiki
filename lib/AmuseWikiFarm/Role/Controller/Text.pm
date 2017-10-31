@@ -26,6 +26,7 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
                   (
                       c[0-9]+\.pdf |
                       c[0-9]+\.epub |
+                      c[0-9]+\.tex |
                       a4\.pdf |
                       lt\.pdf |
                       sl\.tex |
@@ -50,14 +51,6 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
 
     if ($ext) {
         $append_ext = '.' . $ext;
-
-        my %managed = $site->available_text_exts;
-        if (exists $managed{$append_ext}) {
-            unless ($managed{$append_ext}) {
-                log_debug { "$ext is not provided" };
-                $c->detach('/not_found');
-            }
-        }
     }
 
     # assert we are using canonical names.

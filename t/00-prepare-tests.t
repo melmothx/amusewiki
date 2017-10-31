@@ -11,6 +11,7 @@ use File::Path qw/remove_tree make_path/;
 use File::Copy qw/copy/;
 use DBIx::Class::DeploymentHandler;
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
+use Text::Amuse::Compile::Fonts::Import;
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
@@ -18,16 +19,14 @@ BEGIN {
 };
 
 use AmuseWikiFarm::Schema;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/run_all_jobs/;
 
 diag "Using DBIC $DBIx::Class::VERSION\n";
 
 plan tests => 20;
 
-system('script/amusewiki-populate-webfonts') == 0 or die;
-
-unless (-d catdir(qw/root static images font-preview/)) {
-    system('font-preview/gen.sh') == 0 or die "Couldn't generate the font preview";
-}
+Text::Amuse::Compile::Fonts::Import->new(output => 'fontspec.json')->import_and_save;
 
 my $texmfhome = `kpsewhich -var-value TEXMFHOME`;
 chomp $texmfhome;
@@ -48,6 +47,24 @@ foreach my $pdflogo (qw/logo-yu.pdf logo-en.pdf/) {
 }
 
 if (-f 'test.db') {
+    unlink 'test.db' or die $!;
+}
+
+{
+    my $schema = AmuseWikiFarm::Schema->connect('amuse');
+    if ($schema->storage->sqlt_type eq 'SQLite') {
+        $schema->storage->dbh->do('pragma foreign_keys=off');
+    }
+    my $dh = DBIx::Class::DeploymentHandler->new({
+                                                  schema => $schema,
+                                                  databases => [qw/SQLite MySQL PostgreSQL/],
+                                                  sql_translator_args => { add_drop_table => 0,
+                                                                           quote_identifiers => 1,
+                                                                         },
+                                                  script_directory => "dbicdh",
+                                                 });
+    $dh->install({ version => 2 });
+    $dh->upgrade;
     unlink 'test.db' or die $!;
 }
 
@@ -186,3 +203,4 @@ $schema->resultset('User')->create({ username => 'marcomarco',
                                      user_roles => [ { role => { role => 'admin' } } ] })
   ->add_to_sites($blog);
 
+run_all_jobs($schema);

@@ -102,7 +102,14 @@ function show_hide_standard_papersizes(prefix) {
     }
 }
 
-
+function show_conditional_nocoverpage() {
+    if ($('#nocoverpage').is(":checked")) {
+        $('#coverpage_only_if_toc_container').hide('fast');
+    }
+    else {
+        $('#coverpage_only_if_toc_container').show('fast');
+    }
+}
 
 $(document).ready(function(){
     show_format_options();
@@ -113,6 +120,7 @@ $(document).ready(function(){
     show_crop_options();
     handle_papersize('crop');
     handle_papersize('logical');
+    show_conditional_nocoverpage();
     $('#imposed').click(function() {
         show_imposition();
     });
@@ -153,6 +161,9 @@ $(document).ready(function(){
     $("form#bbform :input").change(function() {
         $("#bb-profiles-instructions").show();
         $("#bb-profiles-forms").hide();
+    });
+    $('#nocoverpage').click(function() {
+        show_conditional_nocoverpage();
     });
 });
 

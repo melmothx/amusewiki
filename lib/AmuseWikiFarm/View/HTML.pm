@@ -156,17 +156,14 @@ sub add_open_graph {
         my $image;
       SEARCHIMAGE:
         foreach my $i (qw/opengraph.png pagelogo.png navlogo.png/) {
-            if ($site->has_site_file($i)) {
-                $image = $i;
+            if (my $found = $site->site_files->min_dimensions(200, 200)->single({ file_name => $i })) {
+                $image = $found;
                 last SEARCHIMAGE;
             }
         }
         if ($image) {
             # ok, we have an image, we can proceed
             my @opengraph;
-            my $default_image =  $c->uri_for_action('/sitefiles/local_files',
-                                                    [ $site->id, $image ]);
-            # title
             my $title = $c->stash->{page_title} || $site->sitename;
             if ($title) {
                 push @opengraph, { p => 'og:title', c => $title  };
@@ -190,17 +187,35 @@ sub add_open_graph {
                         }
                     }
                 }
-                if (my $cover_uri = $text->cover_uri) {
-                    push @opengraph, { p => 'og:image', c => $c->uri_for($cover_uri) };
-                }
-                else {
-                    push @opengraph, { p => 'og:image', c => $default_image };
+                if (my $cover = $text->cover_file) {
+                    # this return an attachment object
+                    if (my $thumb = $cover->thumbnails->min_dimensions(200, 200)->first) {
+                        $image = $thumb;
+                    }
                 }
             }
             else {
                 push @opengraph, { p => 'og:type', c => 'website' };
-                push @opengraph, { p => 'og:image', c => $default_image };
             }
+            my $image_url = $image->is_site_file ?
+              $c->uri_for_action('/sitefiles/local_files',
+                                 [ $site->id, $image->file_name ])
+              :
+              $c->uri_for_action('/uploads/thumbnail',
+                                 [ $site->id, $image->file_name ]);
+
+            push @opengraph, ({
+                               p => 'og:image',
+                               c => $image_url,
+                              },
+                              {
+                               p => 'og:image:width',
+                               c => $image->image_width,
+                              },
+                              {
+                               p => 'og:image:height',
+                               c => $image->image_height,
+                              });
             my $uri = $c->request->uri->clone;
             my %query = $uri->query_form; # don't mind if the param is repeated twice.
             foreach my $k (keys %query) {

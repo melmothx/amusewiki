@@ -413,6 +413,11 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/attachments/list') %]">
+                    [% loc('Attachments') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for_action('/console/git_display') %]">
                     [% loc('Remotes') %]
                   </a>

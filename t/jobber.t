@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 98;
+use Test::More tests => 102;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -10,17 +10,12 @@ use File::Spec::Functions qw/catdir catfile/;
 use File::Temp;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site check_jobber_result/;
+use AmuseWiki::Tests qw/create_site check_jobber_result start_jobber stop_jobber/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 
-diag "(Re)starting the jobber";
-
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-
-system($init, 'restart');
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+start_jobber($schema);
 my $site_id = '0job0';
 my $site = create_site($schema, $site_id);
 ok($site);
@@ -128,7 +123,7 @@ $mech->content_contains("The text was added to the bookbuilder");
 is ($mech->uri->path, $text);
 $mech->get_ok("/bookbuilder");
 
-$mech->form_with_fields('signature');
+$mech->form_with_fields('signature_2up');
 
 $mech->field(title => 'test');
 $mech->click;
@@ -223,13 +218,13 @@ $text_row = $schema->resultset('Title')
 ok (!$text_row, "$text_file not found");
 ok (! -f $text_file, "$text_file is no more");
 
-system($init, 'stop');
+stop_jobber();
 
 $schema->resultset('User')->update({ preferred_language => undef });
 
 {
     my $now = DateTime->now;
-    $now->subtract(days => 32);
+    $now->subtract(days => 400);
     my $completed = $site->jobs->search({ status => 'completed' });
     my @leftovers = map { $_->produced_files } $completed->all;
     diag Dumper(\@leftovers);

@@ -187,6 +187,21 @@ __PACKAGE__->add_unique_constraint("uri_site_id_unique", ["uri", "site_id"]);
 
 =head1 RELATIONS
 
+=head2 global_site_files
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::GlobalSiteFile>
+
+=cut
+
+__PACKAGE__->has_many(
+  "global_site_files",
+  "AmuseWikiFarm::Schema::Result::GlobalSiteFile",
+  { "foreign.attachment_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -203,8 +218,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-04-19 10:05:23
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:bkd0NtzKUarpTVa1Gb7jtg
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-29 09:46:42
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Mw+7E+47hobdPiK7t4XC/A
 
 =head2 File classes
 
@@ -234,6 +249,7 @@ Return false if it's a PDF, false otherwise
 
 use Text::Amuse::Functions qw/muse_format_line muse_to_html/;
 use AmuseWikiFarm::Log::Contextual;
+use Path::Tiny;
 
 sub can_be_inlined {
     my $self = shift;
@@ -292,7 +308,86 @@ sub edit {
 
 sub separator { return undef }
 
+sub path_object {
+    return path(shift->f_full_path_name);
+}
 
+sub generate_thumbnails {
+    my $self = shift;
+    my $srcfile = $self->path_object;
+    my $basename = $srcfile->basename;
+    my $repo_root = $self->site->repo_root;
+    die "$srcfile does not exists" unless -f $srcfile;
+
+    # sanity checks pointing to grave issues
+    my $src;
+    if ($basename =~ m/\.pdf$/) {
+        $src = "$srcfile" . '[0]';
+    }
+    elsif ($basename =~ m/\.(png|jpe?g)/) {
+        $src = "$srcfile";
+    }
+    else {
+        die "$src is wrong not a pdf nor a png/jpeg";
+    }
+    if ($src =~ m/\.\./ or
+        $src !~ m/\A\Q$repo_root\E/) {
+        die "$src is outside the repo root";
+    }
+
+    # see AmuseWikiFarm::Schema::ResultSet::GlobalSiteFile;
+    my %dimensions = (
+                      '.large.png' => '300x',
+                      '.small.png' => '150x',
+                      '.thumb.png' => '36x',
+                     );
+    my $thumbnail_dir = path('thumbnails');
+    foreach my $ext (keys %dimensions) {
+        my $outfile = path($thumbnail_dir, $self->site_id, $basename . $ext);
+        $outfile->parent->mkpath;
+        my $out = $outfile->absolute;
+        log_debug { "Creating thumbnail from $src to $out" };
+        my $info = path($out . ".spec");
+        my @exec = (qw/gm convert/,
+                    -thumbnail => $dimensions{$ext},
+                    -format => '%wx%h',
+                    -write => "info:$info",
+                    "$src", "$out");
+        Dlog_info { "Executing $_" } \@exec;
+        if (system(@exec) == 0) {
+            my ($width, $height);
+            if (-f $info) {
+                if (my $spec = $info->slurp) {
+                    if ($spec =~ m/([0-9]+)x([0-9]+)/) {
+                        $width = $1;
+                        $height = $2;
+                    }
+                    $info->remove;
+                }
+                else {
+                    log_warn { "$infoCouldn't compute width and height form $info" };
+                }
+            }
+            else {
+                log_warn { "$info doesn't exist" };
+            }
+            $self->thumbnails->update_or_create({
+                                                 site_id => $self->site_id,
+                                                 file_name => $outfile->basename,
+                                                 file_path => $out,
+                                                 image_width => $width,
+                                                 image_height => $height,
+                                                });
+        }
+        else {
+            Dlog_error { "Error executing $_ $!"} \@exec;
+        }
+    }
+}
+
+sub thumbnails {
+    shift->global_site_files->thumbnails;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

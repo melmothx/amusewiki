@@ -70,7 +70,6 @@ my ($llog) = $site->git->log;
 ok($rlog, "Found log in remote");
 ok($llog, "Found log in local");
 is ($rlog->message, $llog->message, "Pushing worked: " . $rlog->message);
-# system(qw/ls -lh/, $remotedir);
 
 my $working_copy_dir_obj = File::Temp->newdir;
 my $working_copy_dir = $working_copy_dir_obj->dirname;
@@ -81,8 +80,6 @@ $working_copy->remote(add => origin => $remotedir);
 $working_copy->pull(qw/origin master/);
 my ($wlog) = $working_copy->log;
 is ($wlog->message, $rlog->message, "Pulling worked: " . $rlog->message);
-
-# system(qw/ls -lha/, $working_copy_dir);
 
 diag "Adding a file and pushing";
 

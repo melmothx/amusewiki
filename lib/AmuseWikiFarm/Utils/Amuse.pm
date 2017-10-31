@@ -857,10 +857,14 @@ sub amw_meta_stripper {
 }
 
 sub to_json {
-    my ($data) = @_;
+    my ($data, %opts) = @_;
     my $json;
     try {
-        $json = JSON::MaybeXS->new(ascii => 1, pretty => 0)->encode($data);
+        $json = JSON::MaybeXS->new(
+                                   ascii => (defined $opts{ascii} ? $opts{ascii} : 1),
+                                   pretty => (defined $opts{pretty} ? $opts{pretty} : 0),
+                                   canonical => (defined $opts{canonical} ? $opts{canonical} : 0)
+                                  )->encode($data);
     } catch {
         my $error = $_;
         Dlog_error { "$error: Failed to encode into json $_" } $data;

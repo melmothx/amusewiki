@@ -2,14 +2,14 @@
 
 use strict;
 use warnings;
-use Test::More tests => 79;
+use Test::More tests => 97;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site start_jobber stop_jobber/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 use File::Find;
@@ -18,11 +18,10 @@ use DateTime;
 
 diag "(Re)starting the jobber";
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-
-system($init, 'restart');
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+start_jobber($schema);
+
 my $site_id = '0deferred0';
 my $site = create_site($schema, $site_id);
 $site->update({ secure_site => 0 });
@@ -153,7 +152,7 @@ $mech->content_lacks('/library/pippo-deleted-text');
 $mech->get('/library/pippo-deferred-text');
 is $mech->status, '404', "deferred not found";
 
-system($init, 'stop');
+stop_jobber();
 
 # $site->delete;
 
@@ -179,7 +178,17 @@ is ($site->titles->published_or_deferred_texts
 
     $deferred->pubdate($now);
     $deferred->update;
-    $schema->resultset('Title')->publish_deferred;
+    $schema->resultset('Job')->delete;
+    $schema->resultset('Job')->enqueue_global_job('hourly_job');
+    while (my $job = $schema->resultset('Job')->dequeue) {
+        $job->dispatch_job;
+        is $job->status, 'completed';
+        ok($job->started) and diag $job->started;
+        ok($job->completed) and diag $job->completed;
+        diag $job->logs;
+    }
+
+
     $deferred->discard_changes;
 
     is ($deferred->status, 'deferred', "Without changing the file, it's still deferred");
@@ -191,7 +200,14 @@ is ($site->titles->published_or_deferred_texts
 
     $deferred->pubdate($now);
     $deferred->update;
-    $schema->resultset('Title')->publish_deferred;
+    $schema->resultset('Job')->enqueue_global_job('hourly_job');
+    while (my $job = $schema->resultset('Job')->dequeue) {
+        $job->dispatch_job;
+        is $job->status, 'completed';
+        ok($job->started) and diag $job->started;
+        ok($job->completed) and diag $job->completed;
+        diag $job->logs;
+    }
     $deferred->discard_changes;
 
     is ($deferred->status, 'published');

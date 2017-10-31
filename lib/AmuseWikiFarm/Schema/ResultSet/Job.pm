@@ -46,13 +46,27 @@ sub handled_jobs_hashref {
             publish => 5,
             bookbuilder => 6,
             git => 7,
+            hourly_job => 9,
+            daily_job => 10,
             rebuild => 20,
             reindex => 19,
+            build_custom_format => 25, # after publish/rebuild/reindex but before the static indexes
             build_static_indexes => 30,
             # testing
             testing => 10,
             testing_high => 5,
            };
+}
+
+sub purge_schedule {
+    my %keep = (
+                bookbuilder => 360, # let's keep it one year
+                build_static_indexes => 1,
+               );
+    foreach my $job (keys %{__PACKAGE__->handled_jobs_hashref}) {
+        $keep{$job} ||= 7; # defaults to 7 days.
+    }
+    return %keep;
 }
 
 sub unfinished {
@@ -95,6 +109,27 @@ sub enqueue {
                      created => DateTime->now,
                      priority => $priority,
                      username => ($username ? clean_username($username) : undef),
+                    };
+    my $job = $self->create($insertion)->discard_changes;
+    $job->make_room_for_logs;
+    return $job;
+}
+
+sub enqueue_global_job {
+    my ($self, $task, $payload) = @_;
+    $payload ||= {};
+    my $site = $self->result_source->schema->resultset('Site')->first;
+    return unless $site;
+    die "payload $payload is an hashref" unless (ref($payload) && (ref($payload) eq 'HASH'));
+    my $priority = $self->handled_jobs_hashref->{$task};
+    die "Unhandled job $task" unless $priority;
+    my $insertion = {
+                     task    => $task,
+                     payload => to_json($payload),
+                     status  => 'pending',
+                     created => DateTime->now,
+                     priority => $priority,
+                     site => $site,
                     };
     my $job = $self->create($insertion)->discard_changes;
     $job->make_room_for_logs;
@@ -165,8 +200,16 @@ sub alias_create_add {
 
 sub rebuild_add {
     my ($self, $payload, $username) = @_;
+    die "Missing id" unless $payload->{id};
     return $self->enqueue(rebuild => $payload, $username);
 }
+
+sub reindex_add {
+    my ($self, $payload, $username) = @_;
+    die "Missing path" unless $payload->{path};
+    return $self->enqueue(reindex => $payload, $username);
+}
+
 
 =head2 dequeue
 
@@ -217,6 +260,18 @@ sub build_static_indexes_jobs {
     return $self->search({ "$me.task" => 'build_static_indexes' });
 }
 
+sub build_custom_format_jobs {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.task" => 'build_custom_format' });
+}
+
+sub build_custom_format_add {
+    my ($self, $payload, $username) = @_;
+    die "Missing required keys id and cf" unless $payload->{id} && $payload->{cf};
+    return $self->enqueue(build_custom_format => $payload, $username);
+}
+
 sub build_static_indexes_add {
     my ($self) = @_;
     return $self->enqueue(build_static_indexes => {});
@@ -230,6 +285,14 @@ sub exclude_bulks {
                          });
 }
 
+sub exclude_low_priority {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.priority" => { '<' => 10 },
+                         });
+}
+
 =head2 can_accept_further_jobs
 
 Return true if the number of pending jobs is lesser than 50.
@@ -237,7 +300,7 @@ Return true if the number of pending jobs is lesser than 50.
 =cut
 
 sub can_accept_further_jobs {
-    if (shift->pending->exclude_bulks->count < 50) {
+    if (shift->pending->exclude_bulks->exclude_low_priority->count < 50) {
         return 1;
     }
     else {
@@ -255,11 +318,20 @@ datetime object passed as argument.
 sub completed_older_than {
     my ($self, $time) = @_;
     die unless $time && $time->isa('DateTime');
+    my $me = $self->current_source_alias;
     my $format_time = $self->result_source->schema->storage->datetime_parser
       ->format_datetime($time);
     return $self->search({
-                          status => 'completed',
-                          completed => { '<' => $format_time },
+                          "$me.status" => 'completed',
+                          "$me.completed" => { '<' => $format_time },
+                         });
+}
+
+sub by_task {
+    my ($self, $task) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.task" => $task,
                          });
 }
 
@@ -272,15 +344,17 @@ of them, so attached files are removed correctly.
 
 sub purge_old_jobs {
     my $self = shift;
-    my $reftime = DateTime->now;
-    # after one month, delete the revisions and jobs
-    $reftime->subtract(months => 1);
-    my $old_jobs = $self->completed_older_than($reftime);
-    while (my $job = $old_jobs->next) {
-        die unless $job->status eq 'completed'; # shouldn't happen
-        log_info { "Removing old job " . $job->id . " for site " . $job->site->id .
-                     " and task " . $job->task };
-        $job->delete;
+    my %schedule = $self->purge_schedule;
+    foreach my $job (sort keys %schedule) {
+        my $reftime = DateTime->now;
+        $reftime->subtract(days => $schedule{$job} || 1);
+        my $old_jobs = $self->by_task($job)->completed_older_than($reftime);
+        while (my $job = $old_jobs->next) {
+            die unless $job->status eq 'completed'; # shouldn't happen
+            log_info { "Removing old job " . $job->id . " for site " . $job->site->id .
+                         " and task " . $job->task };
+            $job->delete;
+        }
     }
 }
 
@@ -293,7 +367,13 @@ for stale jobs (due, e.g. to a crash, or db connection failing, etc.).
 
 sub fail_stale_jobs {
     my $self = shift;
-    $self->search({ status => 'taken' })
+    my $me = $self->current_source_alias;
+    my $reftime = $self->result_source->schema->storage->datetime_parser
+      ->format_datetime(DateTime->now->subtract(hours => 1));
+    $self->search({
+                   "$me.status" => 'taken',
+                   "$me.created" => { '<', $reftime },
+                  })
       ->update({ status => 'failed',
                  errors => "Job aborted, please try again" });
 }

@@ -11,12 +11,6 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use AmuseWikiFarm::Schema;
 
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-
-system($init, 'stop');
-
-# cleanup
-
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 ok ($schema);
 foreach my $job ($schema->resultset('Job')->all) {

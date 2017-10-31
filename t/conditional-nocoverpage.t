@@ -3,21 +3,16 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 31;
+use Test::More tests => 85;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
 
-use AmuseWiki::Tests qw/create_site/;
+use AmuseWiki::Tests qw/create_site run_all_jobs/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 use DateTime;
-
-my $init = catfile(qw/script jobber.pl/);
-# kill the jobber if running
-system($init, 'stop');
-
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0nofinal0';
@@ -27,6 +22,9 @@ $site->update({
                tex => 1,
                pdf => 1,
               });
+
+$site->check_and_update_custom_formats;
+
 
 my ($with_toc, $no_toc);
 {
@@ -52,6 +50,8 @@ my ($with_toc, $no_toc);
 diag $with_toc;
 diag $no_toc;
 
+run_all_jobs($schema);
+
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
@@ -64,12 +64,12 @@ foreach my $uri (keys %toc) {
     $mech->get_ok($uri);
     $mech->get_ok($uri . '.pdf');
     $mech->get_ok($uri . '.tex');
-    $mech->content_contains('{scrbook}');
-    $mech->content_lacks('{scrartcl}');
-    $mech->content_lacks('\let\chapter\section');
+    is_book($mech);
 }
 
 ok !$site->nocoverpage;
+
+my @cfs;
 
 {
     $mech->get('/login');
@@ -78,22 +78,27 @@ ok !$site->nocoverpage;
     $mech->submit_form(with_fields => { nocoverpage => 1 },
                        button => 'edit_site');
 
-    # create a custom format with nocoverpage and look at the output. Visual testing only,
-    # as it's not affected.
-    foreach my $nc (0, 1) {
+    foreach my $nc (0..2) {
         $mech->get_ok('/settings/formats');
-        $mech->submit_form(with_fields => {
-                                           format_name => 'nocoverpage-' . $nc,
-                                          });
-        $mech->submit_form(with_fields => {
+        my %fields = (
+                      format_name => 'nocoverpage-' . $nc,
+                     );
+        $mech->submit_form(with_fields => { %fields });
+        if ($nc == 1) {
+            $fields{nocoverpage} = 1;
+        }
+        elsif ($nc == 2) {
+            $fields{coverpage_only_if_toc} = 1;
+        }
+        push @cfs, \%fields;
+        ok($mech->submit_form(with_fields => {
                                            format => 'pdf',
-                                           ($nc ? (nocoverpage => '1') : ()),
+                                           %fields,
                                           },
                            button => 'update',
-                          );
+                          ));
     }
 }
-
 
 ok $site->discard_changes->nocoverpage, "Option picked up" or die;
 
@@ -119,19 +124,52 @@ while (my $job = $site->jobs->dequeue) {
     diag $job->logs;
 }
 
+diag Dumper(\@cfs);
+
 foreach my $uri (keys %toc) {
     $mech->get_ok($uri);
     $mech->get_ok($uri . '.pdf');
     $mech->get_ok($uri . '.tex');
     # has toc?
     if ($toc{$uri}) {
-        $mech->content_contains('{scrbook}');
-        $mech->content_lacks('{scrartcl}');
-        $mech->content_lacks('\let\chapter\section');
+        is_book($mech);
     }
     else {
-        $mech->content_lacks('{scrbook}');
-        $mech->content_contains('{scrartcl}');
-        $mech->content_contains('\let\chapter\section');
+        is_article($mech);
     }
+    foreach my $cf_spec (@cfs) {
+        my $cf = $site->custom_formats->single({ format_name => $cf_spec->{format_name} });
+        ok $cf;
+        $mech->get_ok($uri . '.' . $cf->extension);
+        $mech->get_ok($uri . '.' . $cf->tex_extension);
+        # this is not conditional. It will always be an article
+        if ($cf->bb_nocoverpage) {
+            is_article($mech);
+        }
+        elsif ($cf->bb_coverpage_only_if_toc) {
+            if ($toc{$uri}) {
+                is_book($mech);
+            }
+            else {
+                is_article($mech);
+            }
+        }
+        else {
+            is_book($mech);
+        }
+    }
+}
+
+sub is_article {
+    my $mech = shift;
+    $mech->content_lacks('{scrbook}');
+    $mech->content_contains('{scrartcl}');
+    $mech->content_contains('\let\chapter\section');
+}
+
+sub is_book {
+    my $mech = shift;
+    $mech->content_contains('{scrbook}');
+    $mech->content_lacks('{scrartcl}');
+    $mech->content_lacks('\let\chapter\section');
 }

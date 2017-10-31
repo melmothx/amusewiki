@@ -79,6 +79,11 @@ __PACKAGE__->table("job");
   data_type: 'datetime'
   is_nullable: 0
 
+=head2 started
+
+  data_type: 'datetime'
+  is_nullable: 1
+
 =head2 completed
 
   data_type: 'datetime'
@@ -124,6 +129,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 1, size => 32 },
   "created",
   { data_type => "datetime", is_nullable => 0 },
+  "started",
+  { data_type => "datetime", is_nullable => 1 },
   "completed",
   { data_type => "datetime", is_nullable => 1 },
   "priority",
@@ -201,8 +208,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:rDD8GopfN4xzot0CtVd26Q
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-17 11:14:23
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:PIlQOyZOhi1ow/6AiwhzYA
 
 sub sqlt_deploy_hook {
     my ($self, $sqlt_table) = @_;
@@ -225,6 +232,14 @@ has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
                     lazy => 1,
                     builder => '_build_bookbuilder');
+
+has non_blocking => (is => 'rw',
+                     isa => 'Int',
+                     default => sub { 0 });
+
+sub can_be_non_blocking {
+    return shift->task eq 'build_custom_format';
+}
 
 sub _build_bookbuilder {
     my $self = shift;
@@ -352,7 +367,7 @@ sub make_room_for_logs {
     my $logfile = $self->log_file;
     if (-f $logfile) {
         my $oldfile = $self->old_log_file;
-        log_warn { "$logfile exists, renaming to $oldfile" };
+        log_debug { "$logfile exists, renaming to $oldfile" };
         move($logfile, $oldfile) or log_error { "cannot move $logfile to $oldfile $!" };
     }
 }
@@ -427,7 +442,10 @@ trigger a job.
 
 sub dispatch_job {
     my $self = shift;
-    $self->update({ status => 'taken' });
+    $self->update({
+                   status => 'taken',
+                   started => DateTime->now,
+                  });
     my $task = $self->task;
     my $handlers = $self->result_source->resultset->handled_jobs_hashref;
     if ($handlers->{$task}) {
@@ -479,6 +497,12 @@ sub job_data {
     return {} unless $payload;
     return from_json($payload);
 }
+
+sub payload_pretty {
+    my $self = shift;
+    to_json(from_json($self->payload), pretty => 1, ascii => 0, canonical => 1);
+}
+
 
 =head2 DISPATCHERS
 
@@ -551,9 +575,24 @@ sub dispatch_job_rebuild {
             my $muse = $text->filepath_for_ext('muse');
             if (-f $muse) {
                 my $compiler = $site->get_compiler($logger);
+                foreach my $cf (@cfs) {
+                    $cf->save_canonical_from_aliased_file($muse);
+                }
                 $compiler->compile($muse);
                 foreach my $cf (@cfs) {
-                    $cf->compile($text, $logger);
+                    if ($cf->is_slides and !$text->slides) {
+                        $logger->($cf->format_name . " is not needed\n");
+                    }
+                    else {
+                        $logger->("Scheduled generation of "
+                                  . $text->uri . '.' . ($cf->valid_alias || $cf->extension)
+                                  . " (" .  $cf->format_name .")\n");
+                        $site->jobs->build_custom_format_add({
+                                                              id => $id,
+                                                              cf => $cf->custom_formats_id,
+                                                              force => 1,
+                                                             });
+                    }
                 }
                 # this is relatively fast as we already have the
                 # formats built.
@@ -737,6 +776,57 @@ sub dispatch_job_build_static_indexes {
     return;
 }
 
+sub dispatch_job_build_custom_format {
+    my ($self, $logger) = @_;
+    my $time = time();
+    my $data = $self->job_data;
+    my $cf = $self->site->custom_formats->find($data->{cf});
+    my $title = $self->site->titles->find($data->{id});
+    if ($cf && $title) {
+        if ($data->{force} or $cf->needs_compile($title)) {
+            if ($cf->compile($title, $logger)) {
+                $logger->("Generated " . $cf->format_name . ' for ' . $title->full_uri
+                          . ' in ' . (time() - $time) . " seconds\n");
+            }
+            else {
+                $logger->("Nothing produced for " . $title->full_uri . ' and ' .$cf->format_name . "\n");
+            }
+        }
+        else {
+            $logger->($cf->format_name . ' is not needed for ' . $title->full_uri . "\n");
+        }
+    }
+    else {
+        $logger->("Couldn't find CF $data->{cf} or title $data->{id}\n");
+    }
+
+}
+
+sub dispatch_job_daily_job {
+    my ($self, $logger) = @_;
+    my $schema = $self->result_source->schema;
+    $schema->resultset('TitleStat')->delete_old;
+    $schema->resultset('Job')->purge_old_jobs;
+    $schema->resultset('Revision')->purge_old_revisions;
+    $schema->resultset('Site')->check_and_update_acme_certificates(1);
+    return;
+}
+
+sub dispatch_job_hourly_job {
+    my ($self, $logger) = @_;
+    my $schema = $self->result_source->schema;
+    $schema->resultset('Job')->fail_stale_jobs;
+    # this is the former publish_deferred, the "async" way
+    my $deferred = $schema->resultset('Title')->deferred_to_publish(DateTime->now);
+    my $username = $self->username;
+    while (my $title = $deferred->next) {
+        my $site = $title->site;
+        my $file = $title->f_full_path_name;
+        $site->jobs->reindex_add({ path => $file }, $username);
+        $logger->("Scheduled reindex for " . $site->id . $title->full_uri . "\n");
+    }
+    return;
+}
 
 before delete => sub {
     my $self = shift;

@@ -58,6 +58,8 @@ foreach my $file (@good, @bad) {
     ok (-f $testfile, "$testfile found");
 }
 
+$site->index_site_files;
+
 foreach my $good_one (@good) {
     $mech->get_ok("/sitefiles/$site_id/$good_one");
 }
@@ -86,7 +88,7 @@ foreach my $localf (@localfiles) {
     my $testfile = catfile($basedir, $localf);
     unlink $testfile or die "Couldn't unlink $testfile $!";
 }
-
+$site->index_site_files;
 $mech->get_ok('/');
 foreach my $localf (@localfiles) {
     $mech->content_lacks($localf);

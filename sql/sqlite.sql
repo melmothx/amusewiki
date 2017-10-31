@@ -98,12 +98,27 @@ CREATE TABLE site_options (
        PRIMARY KEY (site_id, option_name)
 );
 
+CREATE TABLE global_site_files (
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       attachment_id INTEGER NULL REFERENCES attachment(id)
+               ON DELETE CASCADE ON UPDATE CASCADE,
+       file_name VARCHAR(255) NOT NULL,
+       file_type VARCHAR(255) NOT NULL,
+       file_path TEXT NOT NULL,
+       image_width INTEGER NULL,
+       image_height INTEGER NULL,
+       PRIMARY KEY (site_id, file_name)
+);
+
 CREATE TABLE custom_formats (
        custom_formats_id INTEGER PRIMARY KEY AUTOINCREMENT,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                ON DELETE CASCADE ON UPDATE CASCADE,
        format_name VARCHAR(255) NOT NULL,
        format_description TEXT,
+       format_alias VARCHAR(8) NULL,
+       format_priority INTEGER NOT NULL DEFAULT 0,
        active SMALLINT DEFAULT 1,
        bb_format VARCHAR(16) NOT NULL DEFAULT 'pdf',
        bb_epub_embed_fonts SMALLINT DEFAULT 1,
@@ -124,17 +139,50 @@ CREATE TABLE custom_formats (
        bb_sansfont VARCHAR(255),
        bb_monofont VARCHAR(255),
        bb_nocoverpage SMALLINT DEFAULT 0,
+       bb_coverpage_only_if_toc SMALLINT DEFAULT 0,
        bb_nofinalpage SMALLINT DEFAULT 0,
        bb_notoc SMALLINT DEFAULT 0,
+       bb_impressum        SMALLINT DEFAULT 0,
+       bb_sansfontsections SMALLINT DEFAULT 0,
        bb_opening VARCHAR(16) NOT NULL DEFAULT 'any',
        bb_papersize VARCHAR(255) NOT NULL DEFAULT 'generic',
        bb_paper_height INTEGER NOT NULL DEFAULT 0,
        bb_paper_width INTEGER NOT NULL DEFAULT 0,
        bb_schema VARCHAR(255) NOT NULL DEFAULT '2up',
        bb_signature INTEGER NOT NULL DEFAULT 0,
+       bb_signature_2up VARCHAR(8) NOT NULL DEFAULT '40-80',
+       bb_signature_4up VARCHAR(8) NOT NULL DEFAULT '40-80',
        bb_twoside SMALLINT DEFAULT 0,
        bb_unbranded SMALLINT DEFAULT 0
 );
+
+CREATE UNIQUE INDEX unique_custom_formats_site_alias ON custom_formats (site_id,format_alias);
+
+-- https://sqlite.org/faq.html#q26
+-- Perhaps you are referring to the following statement from SQL92:
+
+--     A unique constraint is satisfied if and only if no two rows in
+--     a table have the same non-null values in the unique columns.
+--
+-- That statement is ambiguous, having at least two possible
+-- interpretations:
+--
+--     A unique constraint is satisfied if and only if no two rows in
+--     a table have the same values and have non-null values in the
+--     unique columns.
+--
+--         A unique constraint is satisfied if and only if no two rows
+--         in a table have the same values in the subset of unique
+--         columns that are not null.
+--
+-- SQLite follows interpretation (1), as does PostgreSQL, MySQL,
+-- Oracle, and Firebird. It is true that Informix and Microsoft SQL
+-- Server use interpretation (2), however we the SQLite developers
+-- hold that interpretation (1) is the most natural reading of the
+-- requirement and we also want to maximize compatibility with other
+-- SQL database engines, and most other database engines also go with
+-- (1), so that is what SQLite does.
+
 
 
 CREATE TABLE users (
@@ -231,6 +279,7 @@ CREATE TABLE job (
        payload   TEXT, -- the JSON stuff
        status    VARCHAR(32),
        created   DATETIME NOT NULL,
+       started   DATETIME,
        completed DATETIME,
        priority  INTEGER NOT NULL DEFAULT 10,
        produced  VARCHAR(255),
@@ -491,4 +540,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('muse_header', 'Raw title headers'),
          ('text_internal_link', 'Internal links found in the body'),
          ('text_part', 'Text sectioning'),
+         ('global_site_files', 'Files which site uses'),
          ('title_stat', 'Usage statistics');

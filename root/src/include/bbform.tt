@@ -1,3 +1,4 @@
+[% # -*- mode:html -*- %]
 <div id="bbform-included">
   <div class="form-group">
     <div class="btn-group" data-toggle="buttons">
@@ -7,7 +8,8 @@
                value="pdf" [% IF bb.pdf %]checked="checked"[% END %]>
         [% loc('PDF') %]
       </label>
-      [% IF site.sl_pdf && bb.can_generate_slides %]
+      [% # always show the slide button in the admin, when defining the custom formats %]
+      [% IF edit_custom_format || (site.sl_pdf && bb.can_generate_slides) %]
       <label class="btn btn-default[% IF bb.slides %] active[% END %]">
         <input type="radio" name="format" id="slides-format"
                class="format-radio"
@@ -55,7 +57,7 @@
         </div>
       </div>
     </div>
-    <div class="form-group slides-option">
+    <div class="form-group pdf-common-option">
       <div class="row">
         <label for="sansfont" class="col-sm-3 control-label">
           [% loc('Please choose the sans font') %]
@@ -279,6 +281,30 @@
         [% loc('Do not create a cover page and start the text on the first page') %]
       </label>
     </div>
+
+    <!-- compiler 0.97 -->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="impressum" value="1" id="impressum"
+               [% IF bb.impressum %]checked="checked"[% END %]/>
+        [% loc('Place the notes on the back of the first page, impressum-style') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="sansfontsections" value="1" id="sansfontsections"
+               [% IF bb.sansfontsections %]checked="checked"[% END %]/>
+        [% loc('Use sans fonts for section titles') %]
+      </label>
+    </div>
+
+    <div class="checkbox" id="coverpage_only_if_toc_container">
+      <label>
+        <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"
+               [% IF bb.coverpage_only_if_toc %]checked="checked"[% END %]/>
+        [% loc('For texts without a table of content, start text on the very first page') %]
+      </label>
+    </div>
     <div class="checkbox pdf-option">
       <label>
         <input type="checkbox" name="twoside" value="1" id="twoside"
@@ -375,15 +401,15 @@
     <div id="signature-explanation">
       <div class="row">
         <div class="col-sm-3">
-      <label for="signature">
+      <label for="signature_2up">
         <strong>[% loc('Please select the signature size:') %]</strong>
       </label>
         </div>
         <div class="col-sm-9">
-      <select id="signature" class="form-control" name="signature">
-        [% FOREACH sign IN bb.signature_values %]
+      <select id="signature_2up" class="form-control" name="signature_2up">
+        [% FOREACH sign IN bb.signature_values_2up %]
         <option value="[% sign %]"
-                [% IF sign == bb.signature %]selected="selected"[% END %]>
+                [% IF sign == bb.signature_2up %]selected="selected"[% END %]>
           [% IF sign.match('-') %]
           [% loc('Use optimized signatures with [_1] pages each', sign) %]
           [% ELSIF sign == 0 %]
@@ -426,7 +452,7 @@
       <select id="signature_4up" class="form-control" name="signature_4up">
         [% FOREACH sign IN bb.signature_values_4up %]
         <option value="[% sign %]"
-                [% IF sign == bb.signature %]selected="selected"[% END %]>
+                [% IF sign == bb.signature_4up %]selected="selected"[% END %]>
           [% IF sign.match('-') %]
           [% loc('Use optimized signatures with [_1] pages each', sign) %]
           [% ELSIF sign == 0 %]

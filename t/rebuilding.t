@@ -5,18 +5,18 @@ use utf8;
 use strict;
 use warnings;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 61;
+use Test::More tests => 67;
 use File::Spec::Functions;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
+use Data::Dumper::Concise;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/start_jobber stop_jobber run_all_jobs/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
 ok ($site, "site found");
 
-my $init = catfile(getcwd(), qw/script jobber.pl/);
-# kill the jobber if running
-system($init, 'stop');
 my $text = $site->titles->published_texts->first;
 $site->jobs->enqueue(rebuild => { id => $text->id }, 15);
 sleep 1;
@@ -45,15 +45,16 @@ foreach my $ext (@exts) {
     is $job->produced, $text->full_uri;
     my $jlogs = $job->logs;
     $job->delete;
-    foreach my $ext (qw/tex pdf zip/) {
-        like $jlogs, qr/Created .*\.\Q$ext\E/;
+    run_all_jobs($schema);
+    foreach my $ext (@exts) {
+        like $jlogs, qr/(Created|Scheduled) .*\.\Q$ext\E/;
         ok (-f $text->filepath_for_ext($ext), "$ext exists");
         my $newts = (stat($text->filepath_for_ext($ext)))[9];
         ok ($newts > $ts{$ext}, "$ext updated");
     }
 }
 
-system($init, 'start');
+start_jobber($schema);
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
@@ -71,9 +72,11 @@ like $mech->uri->path, qr{/tasks/status/};
 sleep 30;
 $mech->get_ok($mech->uri->path);
 $mech->content_contains('Job rebuild finished');
-$mech->content_contains('Created ' . $text->uri . '.pdf');
+my $uri = $text->uri;
+$mech->content_like(qr{Scheduled .* \Q$uri\E\.pdf});
 $mech->get_ok($text->full_uri . '.pdf');
-system($init, 'stop');
+
+stop_jobber();
 
 $site->bulk_jobs->delete_all;
 ok(!$site->bulk_jobs->count, "No bulk jobs so far");
@@ -144,4 +147,5 @@ ok $bulk->jobs->search({ errors => 'Bulk job aborted', status => 'completed' })-
 $site->bulk_jobs->abort_all;
 $site->jobs->delete_all;
 
-system($init, 'stop');
+
+

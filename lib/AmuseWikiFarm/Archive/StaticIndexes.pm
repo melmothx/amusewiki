@@ -71,7 +71,7 @@ sub generate {
     my $site = $self->site;
     my $localizer = $site->localizer,
     my $lang = $site->locale;
-    my $formats = $site->formats_definitions;
+    my $formats = $site->formats_definitions(localize => 1);
     my $prefix = $self->target_subdir->relative($site->repo_root);
     my @css_files = map { $prefix . '/' . $_ } $self->css_files;
     my @javascript_files = map { $prefix . '/' .  $_ } $self->javascript_files;
@@ -96,7 +96,7 @@ sub generate {
                            INCLUDE_PATH => AmuseWikiFarm::Utils::Paths::templates_location()->stringify,
                           );
     foreach my $file (keys %todo) {
-        next unless $todo{$file}{list} && @{$todo{$file}{list}};
+        die "Shouldn't happen" unless $todo{$file}{list};
         $tt->process('static-indexes.tt',
                            {
                             total_items => scalar(@{$todo{$file}{list}}),

@@ -114,6 +114,7 @@ sub static_index_tokens {
     my $self = shift;
     my $me = $self->current_source_alias;
     return $self->search({
+                          'title.f_class' => 'text',
                           'title.status' => 'published',
                          },
                          {
@@ -133,6 +134,7 @@ sub static_index_tokens {
                                          'title_categories.title.status' => 'title.status',
                                          'title_categories.title.sorting_pos' => 'title.sorting_pos',
                                          'title_categories.title.title' => 'title.title',
+                                         'title_categories.title.slides' => 'title.slides',
                                          'title_categories.title.author' => 'title.author',
                                          'title_categories.title.f_archive_rel_path' => 'title.f_archive_rel_path',
                                         }

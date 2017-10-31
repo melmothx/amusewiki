@@ -36,6 +36,9 @@
       <button type="submit" name="update" value="update" class="btn btn-default">
         [% loc('Update') %]
       </button>
+      <button type="submit" name="reset" value="reset" class="btn btn-default">
+        [% loc('Reset to site defaults') %]
+      </button>
     </div>
   </div>
 </form>

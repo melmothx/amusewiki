@@ -28,6 +28,8 @@ ok -d $site->repo_root;
 mkdir catdir($site->repo_root, 'site_files');
 write_file(catfile($site->repo_root, 'site_files', 'test.txt'), "Hello\n");
 
+$site->index_site_files;
+
 my @uris = (qw[library category/topic category/author bookbuilder search special
                cloud monthly latest
                      opds help/opds sitemap.txt
