@@ -79,6 +79,7 @@ if [ "x$action" = "xrestart" ]; then
     sleep 20
     echo "Stopping the backup app $temp_pid"
     kill $temp_pid
+    wait $temp_pid
     echo "All done, no errors"
     exit
 fi
