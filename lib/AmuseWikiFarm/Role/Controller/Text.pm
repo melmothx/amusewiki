@@ -115,16 +115,12 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
     }
 }
 
-sub text :Chained('match') :PathPart('') :Args(0) {
+sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    log_debug { "In text" };
     my $text = $c->stash->{text} or die "WTF?";
     my $site = $c->stash->{site};
     # we are in a role, so if we don't set this special/text.tt and
     # library/text.tt will be searched .
-    $c->stash(template => 'text.tt',
-              load_highlight => $site->use_js_highlight);
-
     foreach my $listing (qw/authors topics/) {
         my @list;
         my $categories = $text->$listing;
@@ -136,6 +132,14 @@ sub text :Chained('match') :PathPart('') :Args(0) {
         }
         $c->stash("text_$listing" => \@list);
     }
+}
+
+sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $text = $c->stash->{text};
+    my $site = $c->stash->{site};
+    $c->stash(template => 'text.tt',
+              load_highlight => $site->use_js_highlight);
     if ($c->stash->{blog_style} && $text->is_regular) {
         if (my $next_text = $text->newer_text) {
             $c->stash(text_next_uri => $next_text->full_uri);
@@ -217,6 +221,13 @@ sub toc :Chained('match') PathPart('toc') :Args(0) {
               toc => \@struct,
               template => 'library/toc.tt',
              );
+}
+
+sub embed :Chained('populate_preamble') PathPart('embed') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(no_wrapper => 1,
+              bootstrap_css => "/static/css/bootstrap." . $c->stash->{site}->bootstrap_theme . ".css",
+              template => 'library/embed.tt');
 }
 
 sub rebuild :Chained('match') PathPart('rebuild') :Args(0) {

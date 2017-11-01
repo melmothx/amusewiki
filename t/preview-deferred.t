@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 317;
+use Test::More tests => 331;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -274,6 +274,8 @@ foreach my $url (@urls, @pub_urls) {
     diag Dumper($hashref);
     is $hashref->{customheader}, 'xxx';
     is $hashref->{lang}, 'en';
+    $mech->get_ok($url . '/embed');
+    $mech->content_contains('<div id="preamble-container">') or die $mech->content;
 }
 
 $site->site_options->update_or_create({
@@ -284,9 +286,13 @@ $site->site_options->update_or_create({
 foreach my $url (@urls) {
     $mech->get($url . '/json');
     is $mech->status, 404;
+    $mech->get($url . '/embed');
+    is $mech->status, 404;
 }
 foreach my $url (@pub_urls) {
     $mech->get_ok($url . '/json');
+    $mech->get_ok($url . '/embed');
+    $mech->content_contains('<div id="downloadformats-list">') or die $mech->content;
 }
 
 $mech->get_ok('/latest');

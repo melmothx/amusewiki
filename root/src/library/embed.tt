@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="[% current_locale_code %]">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      [%- IF page_title -%]
+      [%- page_title | html -%] |
+      [%- END %] [% site.sitename | html -%]</title>
+    <link rel="stylesheet"
+          href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 4 }) %]" />
+    <link rel="stylesheet"
+          href="[% c.uri_for('/static/css/font-awesome.min.css', { v => 3 }) %]" />
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/css/amuse.css', { v => 3 }) %]" />
+    <link rel="stylesheet" type="text/css"
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 34 }) %]" />
+    <style type="text/css">
+      body { margin-top: 0; padding-top: 0; }
+      div#preamble-container { padding: 10px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12-sm">
+          <div id="preamble-container">
+            [% PROCESS 'include/preamble.tt' %]
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
