@@ -26,7 +26,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 ok -d $site->repo_root;
 mkdir catdir($site->repo_root, 'site_files');
-write_file(catfile($site->repo_root, 'site_files', 'test.txt'), "Hello\n");
+write_file(catfile($site->repo_root, 'site_files', 'test.js'), "Hello\n");
 
 $site->index_site_files;
 
@@ -39,7 +39,7 @@ $mech->get_ok('/login');
 
 check_denied('before login');
 
-$mech->get_ok('/sitefiles/0private0/test.txt');
+$mech->get_ok('/sitefiles/0private0/test.js');
 is $mech->response->content, "Hello\n", "Sitefile retrieved";
 
 foreach my $open (qw/login opensearch.xml/) {
