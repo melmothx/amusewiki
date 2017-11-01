@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 61;
+use Test::More tests => 88;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -44,13 +44,13 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my $basedir = $site->path_for_site_files;
 like $basedir, qr/\Q$site_id\E.\Qsite_files\E/ or die $basedir;
 
-my @good = (qw/test.txt test.torrent test.ico
+my @good = (qw/test.torrent test.ico
                test.jpg test.jpeg test.gif test.png
                test.ttf test.woff test.otf
                test.js test.css
               /);
 my @bad = (".tryme.torrent", "test me.exe", "hullo_therer.ciao", "lexicon.json",
-           "fontspec.json", "file.exe", "adsf.");
+           "fontspec.json", "file.exe", "adsf.", "test.txt");
 
 foreach my $file (@good, @bad) {
     my $testfile = catfile($basedir, $file);
@@ -81,6 +81,18 @@ foreach my $localf (@localfiles) {
     $mech->content_contains(qq{$localf"});
     $mech->get_ok($uri);
     $mech->content_contains('Empty by default');
+}
+
+$site->site_files->update({ file_path => '/etc/passwd' });
+
+foreach my $f ($site->site_files) {
+    if ($f->is_public) {
+        my $localf = $f->file_name;
+        diag "GET /sitefiles/$site_id/$localf";
+        $mech->get("/sitefiles/$site_id/$localf");
+        is $mech->status, 403;
+        is $mech->content, 'Access denied';
+    }
 }
 
 # delete and recheck

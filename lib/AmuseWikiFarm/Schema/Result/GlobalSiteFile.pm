@@ -171,7 +171,7 @@ sub is_public {
                               \.
                               (
                                   png | jpe?g | gif | ico | otf | ttf | woff |
-                                  torrent | txt | css | js
+                                  torrent | css | js
                               )\Z/x) {
         return 1;
     }

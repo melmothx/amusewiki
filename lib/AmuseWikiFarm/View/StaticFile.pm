@@ -6,6 +6,9 @@ extends 'Catalyst::View';
 
 use Plack::Util;
 use AmuseWikiFarm::Log::Contextual;
+use Path::Tiny ();
+use Cwd;
+use constant ROOT => getcwd();
 
 sub process {
     my ($self, $c) = @_;
@@ -17,6 +20,9 @@ sub process {
         $c->response->body('Not found');
         return;
     }
+    # resolve symlinks and upward directory parts.
+    $file = Path::Tiny::path($file)->realpath->stringify;
+
     my $mime = {
                 tex => 'application/x-tex',
                 pdf => 'application/pdf',
@@ -27,15 +33,31 @@ sub process {
                 png => 'image/png',
                 jpg => 'image/jpeg',
                 jpeg => 'image/jpeg',
+                gif => 'image/gif',
                 ico => 'image/x-icon',
                 css => 'text/css',
                 js => 'text/javascript',
+                eot => 'application/vnd.ms-fontobject',
+                otf => 'application/font-sfnt',
+                svg => 'image/svg+xml',
+                ttf => 'application/font-sfnt',
+                woff => 'application/font-woff',
+                torrent => 'application/x-bittorrent',
                };
 
+    my $type;
     # no extension => octect-stream
-    my $type = 'application/octet-stream';
     if ($file =~ m/\.(\w+)$/) {
-        $type = $mime->{$1} || 'text/plain';
+        $type = $mime->{$1};
+    }
+    if (index($file, ROOT) != 0 or !$type) {
+        $c->response->status(403);
+        log_error {
+            "Tried to serve $file, refused, outside " . ROOT
+              . " or forbidden extension (.txt is not allowed)"
+          };
+        $c->response->body("Access denied");
+        return;
     }
 
     my $fh = IO::File->new($file, 'r');
