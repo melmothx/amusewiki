@@ -121,7 +121,7 @@
       [% IF text.check_if_file_exists(cformat.code) %]
       <span [% IF cformat.oldid %] id="[% cformat.oldid %]" [% END %]>
         <span id="download-format-[% cformat.code %]">
-          <a href="[% basename %][% cformat.ext %]" class="amw-register-stat"
+          <a href="[% c.uri_for(text.full_uri) %][% cformat.ext %]" class="amw-register-stat"
              data-amw-register-stat-type="[% cformat.code %]">
             <span class="fa [% cformat.icon %] fa-2x fa-border fw"
                   aria-hidden="true"
