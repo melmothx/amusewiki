@@ -646,6 +646,7 @@ root/src/include/markitup.tt
 root/src/include/pagination-widget.tt
 root/src/include/pagination.tt
 root/src/include/posts.tt
+root/src/include/preamble.tt
 root/src/include/show_text_type.tt
 root/src/include/show_type_and_number_of_pages.tt
 root/src/include/validate.tt
@@ -653,6 +654,7 @@ root/src/latest/index.tt
 root/src/layout.tt
 root/src/library.tt
 root/src/library/bbselect.tt
+root/src/library/embed.tt
 root/src/library/toc.tt
 root/src/listing/listing.tt
 root/src/macros.tt
