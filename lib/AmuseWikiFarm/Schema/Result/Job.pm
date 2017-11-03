@@ -218,6 +218,7 @@ sub sqlt_deploy_hook {
 
 
 use Cwd;
+use constant ROOT => getcwd();
 use File::Spec;
 use File::Copy qw/copy move/;
 use Text::Amuse::Compile::Utils qw/read_file append_file/;
@@ -227,6 +228,7 @@ use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username to_json
                                    from_json/;
 use Text::Amuse::Compile;
+use HTML::Entities qw/encode_entities/;
 
 has bookbuilder => (is => 'ro',
                     isa => 'Maybe[Object]',
@@ -390,9 +392,9 @@ sub logs {
 sub obfuscate_logs {
     my ($self, $log) = @_;
     return '' unless length($log);
-    my $cwd = getcwd();
+    my $cwd = ROOT;
     $log =~ s/\Q$cwd\E/./g;
-    return $log;
+    return encode_entities($log);
 }
 
 sub logs_from_offset {
@@ -584,14 +586,15 @@ sub dispatch_job_rebuild {
                         $logger->($cf->format_name . " is not needed\n");
                     }
                     else {
+                        my $job = $site->jobs->build_custom_format_add({
+                                                                        id => $id,
+                                                                        cf => $cf->custom_formats_id,
+                                                                        force => 1,
+                                                                       });
                         $logger->("Scheduled generation of "
-                                  . $text->uri . '.' . ($cf->valid_alias || $cf->extension)
-                                  . " (" .  $cf->format_name .")\n");
-                        $site->jobs->build_custom_format_add({
-                                                              id => $id,
-                                                              cf => $cf->custom_formats_id,
-                                                              force => 1,
-                                                             });
+                                  . $text->full_uri . '.' . ($cf->valid_alias || $cf->extension)
+                                  . " (" .  $cf->format_name .') as task number #'
+                                  . $job->id . "\n");
                     }
                 }
                 # this is relatively fast as we already have the

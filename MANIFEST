@@ -1193,6 +1193,7 @@ t/human-login-screens.t
 t/improve-diff-124.t
 t/indexer.t
 t/internal-linking.t
+t/job-display.t
 t/job-purging.t
 t/jobber.t
 t/jobs.t

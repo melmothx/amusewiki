@@ -79,6 +79,16 @@ sub status :Chained('check_job') :PathPart('') :CaptureArgs(0) {
         # $c->loc('Done');
         $data->{message} = $c->loc($msg);
     }
+    if ($data->{logs}) {
+        my $linkify = sub {
+            my $num = $_[0];
+            return q{<a href="} . $c->uri_for_action('/tasks/display', [ $num ]) . q{">#} . $num . q{</a>};
+        };
+        $data->{logs} =~ s/(Scheduled\ generation\ of.*as\ task\ number\ )
+                           (\#)(\d+)
+                          /$1 . $linkify->($3)/gxe;
+        undef $linkify;
+    }
     $c->stash(
               job => $data,
               page_title => $c->loc('Queue'),

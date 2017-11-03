@@ -1811,11 +1811,14 @@ sub compile_and_index_files {
                     # will rebuild them in the next job.
                     $cf->install_aliased_file($indexed);
                     if ($cf->needs_compile($indexed)) {
-                        $logger->("Scheduled generation of " . $cf->format_name . "\n");
-                        $self->jobs->build_custom_format_add({
-                                                              id => $indexed->id,
-                                                              cf => $cf->custom_formats_id,
-                                                             });
+                        my $job = $self->jobs->build_custom_format_add({
+                                                                        id => $indexed->id,
+                                                                        cf => $cf->custom_formats_id,
+                                                                       });
+                        $logger->("Scheduled generation of "
+                                  . $indexed->full_uri . '.' . ($cf->valid_alias || $cf->extension)
+                                  . " (" .  $cf->format_name .') as task number #'
+                                  . $job->id . "\n");
                     }
                 }
             }
