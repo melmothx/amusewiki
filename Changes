@@ -4,6 +4,24 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.090 2017-11-04
+
+ - Improve OpenGraph support
+ - Add /library/*/embed route suitable for external iframes
+ - Adjusted scheduling of job purging (keep bookbuilder files 1 year)
+ - Turn PDFs into custom formats (allowing fine-tuning)
+ - Turn slow PDF compilations into async and parallelized job
+
+This entry is not much verbose, but the changes are fairly large (with
+some chance of new bugs). Notably, the publishing process has been
+improved, deferring the PDF generation into a background job. Also,
+the standard PDFs are now custom formats, so they can be tuned
+individually.
+
+This is supposed to be the first release of the 2.1 series, hence
+numbered 2.090 with some room for minor bug-fixing releases before the
+official 2.1.
+
 2.032 2017-10-27
 
  - Add opengraph support (#150)
