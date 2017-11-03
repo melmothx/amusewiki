@@ -72,8 +72,8 @@ like $mech->uri->path, qr{/tasks/status/};
 sleep 30;
 $mech->get_ok($mech->uri->path);
 $mech->content_contains('Job rebuild finished');
-my $uri = $text->uri;
-$mech->content_like(qr{Scheduled .* \Q$uri\E\.pdf});
+my $uri = $text->full_uri;
+$mech->content_like(qr{Scheduled .* \Q$uri\E\.pdf}) or die $mech->content;
 $mech->get_ok($text->full_uri . '.pdf');
 
 stop_jobber();
