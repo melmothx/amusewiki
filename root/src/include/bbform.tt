@@ -558,7 +558,15 @@
       </div>
 
     </div>
-
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="1x1"
+               class="choose-schema"
+               [% IF bb.schema == '1x1' %]checked="checked"[% END %] />
+        <strong>1x1</strong>:
+        [% loc("One page per sheet. This is useful only if you want to add the cropmarks") %]
+      </label>
+    </div>
 
     <div class="checkbox">
       <label for="crop_marks">
