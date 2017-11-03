@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 20;
+use Test::More tests => 18;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -42,13 +42,6 @@ $site = $db->resultset('Site')->find('0blog0');
 
 is $site->repo_root_rel, File::Spec->catdir('repo', '0blog0');
 is $site->repo_root, File::Spec->catdir(getcwd(), 'repo', '0blog0');
-
-my $tmp = File::Spec->tmpdir;
-
-is $site->repo_root($tmp), File::Spec->catdir($tmp, qw/repo 0blog0/);
-
-is $site->repo_root(0), File::Spec->catdir(getcwd(), 0, qw/repo 0blog0/);
-
 
 my @users = $site->users->search({ username => { -like => 'user%' }});
 

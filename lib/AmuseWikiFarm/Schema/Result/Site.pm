@@ -861,6 +861,7 @@ __PACKAGE__->has_many(
 
 use File::Spec;
 use Cwd;
+use constant ROOT => getcwd();
 use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
                                    muse_file_info
                                    muse_filepath_is_valid
@@ -909,10 +910,10 @@ sub repo_root_rel {
 
 sub repo_root {
     my ($self, $base) = @_;
-    unless (defined $base) {
-        $base = '';
+    if (defined $base) {
+        die "repo_root doesn't accept an argument";
     }
-    return File::Spec->rel2abs($self->repo_root_rel, $base);
+    return File::Spec->catdir(ROOT, $self->repo_root_rel);
 }
 
 =head2 compile_options
@@ -1460,7 +1461,7 @@ sub staging_dirname {
 
 sub staging_dir {
     my $self = shift;
-    return File::Spec->catdir(getcwd(), $self->staging_dirname);
+    return File::Spec->catdir(ROOT, $self->staging_dirname);
 }
 
 =head2 create_new_text(\%params, $f_class)
