@@ -213,7 +213,7 @@ msgid "Archive by month"
 msgstr ""
 
 msgid "Archive history"
-msgstr ""
+msgstr "Archiventwicklung"
 
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
@@ -370,10 +370,10 @@ msgid "Completed"
 msgstr "Abgeschlossen"
 
 msgid "Computing of differences took"
-msgstr "Berechnen der Unterschiede dauerte"
+msgstr "Die Berechnung der Unterschiede dauerte"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Bestätigen"
 
 msgid "Convert to archive markup"
 msgstr ""
@@ -422,13 +422,13 @@ msgid "Created"
 msgstr "Erstellt"
 
 msgid "Created by"
-msgstr ""
+msgstr "Erstellt von"
 
 msgid "Created new text"
 msgstr "Neuer Text erstellt"
 
 msgid "Current time"
-msgstr ""
+msgstr "Aktuelle Zeit"
 
 msgid "Custom formats"
 msgstr ""
@@ -1530,13 +1530,13 @@ msgid "Please prove you are a human"
 msgstr "Bitte bestätige, dass du ein Mensch bist."
 
 msgid "Please reload your page"
-msgstr "Bitte läde deine Seite neu"
+msgstr "Bitte lade deine Seite neu"
 
 msgid "Please select"
-msgstr "Bitte wähle aus"
+msgstr "Bitte auswählen"
 
 msgid "Please select the desired fonts"
-msgstr "Bitte wähle die gewünschte Schrifft aus"
+msgstr "Bitte die gewünschte Schriftart aus"
 
 msgid "Please select the signature size:"
 msgstr ""
@@ -1642,7 +1642,7 @@ msgid "RSS feed"
 msgstr "RSS feed"
 
 msgid "Random"
-msgstr "Zufälliger Text"
+msgstr "Zufallstext"
 
 msgid "Read the whole text..."
 msgstr "Ganzen Text lesen ..."
@@ -1974,7 +1974,7 @@ msgid "Summary"
 msgstr "Zusammenfassung"
 
 msgid "Supported directive in the header"
-msgstr "Unterstützte Anweisung in der Kopfzeile"
+msgstr "Unterstützte Anweisungen in der Kopfzeile"
 
 msgid "Table of Contents"
 msgstr "Inhaltsverzeichnis"
@@ -2155,7 +2155,7 @@ msgid ""
 msgstr ""
 
 msgid "This revision is already published, ignoring changes"
-msgstr "Diese Änderung ist bereits veröffentlicht und ignoriert Veränderungen"
+msgstr "Diese Änderung wurde bereits veröffentlicht und ignoriert Veränderungen"
 
 msgid "This revision is being actively edited"
 msgstr "Diese Änderung wird aktiv bearbeitet"
@@ -2179,19 +2179,19 @@ msgid "This text does not exist"
 msgstr "Dieser Text existiert nicht"
 
 msgid "This text is a book"
-msgstr ""
+msgstr "Dieser Text ist ein Buch"
 
 msgid "This text is an article"
-msgstr ""
+msgstr "Dieser Text ist ein Artikel"
 
 msgid "This text is new"
-msgstr ""
+msgstr "Dieser Text ist neu"
 
 msgid "This text is not available"
 msgstr ""
 
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Dieser Text wurde noch nicht veröffentlicht"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
@@ -2219,14 +2219,14 @@ msgid "Title for sorting"
 msgstr "Titel für die Sortierung"
 
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Titel, Autor, Datum..."
 
 msgid "Titles"
 msgstr "Liste aller Texte"
 
 #. (pending_url)
 msgid "To apply the changes, you can visit %1"
-msgstr "Um Änderungen anzuwenden gehe auf %1"
+msgstr "Um diese Änderungen zu übernehmen, gehe auf %1"
 
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
@@ -2318,7 +2318,7 @@ msgid "Unique ID for the text"
 msgstr "Eindeutige ID für den Text"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Unbegrenzt"
 
 msgid "Unordered List"
 msgstr "Aufzählung"
