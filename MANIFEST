@@ -474,6 +474,7 @@ lib/AmuseWikiFarm/Controller/Mirror.pm
 lib/AmuseWikiFarm/Controller/Monthly.pm
 lib/AmuseWikiFarm/Controller/OPDS.pm
 lib/AmuseWikiFarm/Controller/Publish.pm
+lib/AmuseWikiFarm/Controller/Remote.pm
 lib/AmuseWikiFarm/Controller/Root.pm
 lib/AmuseWikiFarm/Controller/Search.pm
 lib/AmuseWikiFarm/Controller/Settings.pm
@@ -1153,6 +1154,7 @@ t/controller_Listing.t
 t/controller_Mirror.t
 t/controller_OPDS.t
 t/controller_Publish.t
+t/controller_Remote.t
 t/controller_Search.t
 t/controller_Special.t
 t/controller_Stats.t
