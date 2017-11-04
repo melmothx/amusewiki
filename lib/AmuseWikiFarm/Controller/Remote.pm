@@ -43,7 +43,7 @@ sub create :Chained('root') :PathPart('create') :Args(0) {
             $revision->commit_version("Upload from /remote/create",
                                       clean_username($user));
             $revision->discard_changes;
-            my $job = $site->jobs->publish_add($revision, $user);
+            my $job = $site->jobs->publish_add($revision);
             $response->{url} = $c->uri_for($revision->title->full_uri)->as_string;
             $response->{job} = $c->uri_for_action('/tasks/display',  [$job->id])->as_string;
         }
@@ -55,6 +55,7 @@ sub create :Chained('root') :PathPart('create') :Args(0) {
         $response->{error} = "Missing mandatory title and textbody parameters";
     }
     $c->stash(json => $response);
+    $c->logout;
     $c->detach($c->view('JSON'));
 
 }
