@@ -91,7 +91,9 @@ foreach my $path ('/authors/ciao',
     is $mech->status, 301, "$path is moved permanentently";
     my $expected = $path;
     $expected =~ s!/?(topic|author)s!/category/$1!;
-    is $mech->response->header('location')->path, $expected, "Requesting $path lead to permanent redirect" or die;
+    diag Dumper($mech->response->header('location'));
+    is $mech->response->header('location'), $site->canonical_url . $expected,
+      "Requesting $path lead to permanent redirect";
     $mech->content_contains('This item has moved');
 }
 
