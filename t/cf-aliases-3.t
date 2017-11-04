@@ -1,7 +1,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 36;
+use Test::More tests => 42;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -92,3 +92,16 @@ $gentium->discard_changes;
 is ($gentium->bb_mainfont, $site->mainfont);
 is ($gentium->bb_sansfont, $site->sansfont);
 is ($gentium->bb_format, 'epub');
+
+{
+    my $std_pdf = $site->custom_formats->find({ format_alias => 'pdf' });
+    is $std_pdf->bb_twoside, 0;
+    $mech->get_ok('/settings/formats/edit/' . $std_pdf->custom_formats_id);
+    ok $mech->form_id('bbform');
+    $mech->tick(twoside => 1);
+    ok $mech->click('update');
+    $mech->content_contains('Ignored changes: bb_twoside');
+    $std_pdf->discard_changes;
+    is $std_pdf->bb_twoside, 0;
+}
+

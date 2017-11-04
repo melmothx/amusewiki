@@ -724,7 +724,31 @@ sub sync_from_site {
         $self->$cf_method($bb_values{$k});
     }
     $self->update if $self->is_changed;
+    $self->enforce_standard_fields;
     return $self;
+}
+
+sub enforce_standard_fields {
+    my $self = shift;
+    my @changed;
+    if (my $aliased = $self->valid_alias) {
+        my %fixed = $self->site->fixed_formats_definitions;
+        if (my ($def) = grep { $_->{initial}->{format_alias} eq $aliased } values %fixed) {
+            foreach my $k (keys %{$def->{fields}}) {
+                # we know we don't have undef in Site method here
+                my $format_value = $self->$k || 0;
+                if ($format_value ne $def->{fields}->{$k}) {
+                    push @changed, $k;
+                    $self->$k($def->{fields}->{$k});
+                }
+            }
+            $self->update if $self->is_changed;
+        }
+        else {
+            Dlog_error { "$aliased is without a format definition in $_" } \%fixed;
+        }
+    }
+    return @changed;
 }
 
 sub sync_site_format {

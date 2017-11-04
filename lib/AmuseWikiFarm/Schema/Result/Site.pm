@@ -1136,6 +1136,7 @@ sub fixed_formats_definitions {
                            fields => {
                                       bb_format => 'pdf',
                                       bb_imposed => 0,
+                                      bb_twoside => 0,
                                      },
                           },
                    a4_pdf => {

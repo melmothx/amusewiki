@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 214;
+use Test::More tests => 216;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -19,7 +19,17 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 $schema->resultset('Job')->delete;
 
 my $site = create_site($schema, '0cformats0');
-$site->update({ secure_site => 0 });
+
+is $site->custom_formats->find({ format_alias => 'pdf' })->bb_twoside, 0, "pdf twoside is enforced to 0";
+
+$site->update({
+               secure_site => 0,
+               twoside => 1,
+              });
+
+$site->check_and_update_custom_formats;
+
+is $site->custom_formats->find({ format_alias => 'pdf' })->bb_twoside, 0, "pdf twoside is enforced to 0";
 
 # reset for testing purpose, created by the after modifier.
 $site->custom_formats->delete;
@@ -154,7 +164,8 @@ foreach my $cf ($site->custom_formats) {
     is $cf->bb_monofont, $site->monofont;
     is $cf->bb_beamercolortheme, $site->beamercolortheme;
     is $cf->bb_beamertheme, $site->beamertheme;
-    is $cf->bb_twoside, $site->twoside;
+    my $twoside_expected = ($cf->format_alias and $cf->format_alias eq 'pdf') ? 0 : 1;
+    is $cf->bb_twoside, $twoside_expected, "twoside is $twoside_expected for " . $cf->format_name;
     is $cf->bb_coverpage_only_if_toc, $site->nocoverpage;
 }
 
