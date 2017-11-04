@@ -7,6 +7,7 @@ use warnings;
 use utf8;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Utils::Jobber;
+use Try::Tiny;
 
 =pod
 
@@ -28,19 +29,26 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 # at startup, ensure all the sites will have fresh indexes. This will
 # schedule the jobs. Wrapped in eval if DB is failing us.
-eval {
+try {
     foreach my $site ($schema->resultset('Site')->all) {
         $site->check_and_update_custom_formats;
         $site->index_site_files;
         $site->generate_static_indexes;
     }
     # this is a bit expensive, but hey...
-    foreach my $att ($schema->resultset('Attachment')->all) {
+    my $attachments = $schema->resultset('Attachment');
+    while (my $att = $attachments->next) {
         unless ($att->thumbnails->count) {
             print "Generating thumbnails for " . $att->uri . "\n";
-            $att->generate_thumbnails;
+            try {
+                $att->generate_thumbnails;
+            } catch {
+                warn $_;
+            };
         }
     }
+} catch {
+    warn $_;
 };
 
 my $jobber = AmuseWikiFarm::Utils::Jobber->new(
