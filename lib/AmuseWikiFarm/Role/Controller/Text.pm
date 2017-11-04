@@ -90,6 +90,8 @@ sub match :Chained('base') PathPart('') :CaptureArgs(1) {
             log_debug { "Got $canonical $ext => " . $text->title };
             my $served_file = $text->filepath_for_ext($ext);
             if (!$show_preview_only and -f $served_file) {
+                # https://support.google.com/webmasters/answer/93710?hl=en
+                $c->response->header('X-Robots-Tag' => 'noindex');
                 $c->stash(serve_static_file => $served_file);
                 $c->detach($c->view('StaticFile'));
                 return;

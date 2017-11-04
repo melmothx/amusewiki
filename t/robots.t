@@ -1,11 +1,13 @@
 use strict;
 use warnings;
-use Test::More tests => 60;
+use Test::More tests => 120;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
+use Data::Dumper::Concise;
+
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => 'blog.amusewiki.org');
@@ -81,3 +83,11 @@ $site->locale('hr');
 $site->update;
 $mech->get_ok('/robots.txt');
 $mech->content_contains('/git');
+
+foreach my $text ($site->titles->published_all) {
+    foreach my $ext (qw/muse zip pdf html epub tex/) {
+        $mech->get_ok($text->full_uri . '.' . $ext);
+        diag Dumper ($mech->response->headers);
+        is $mech->response->header('X-Robots-Tag'), 'noindex', "Found the X-Robots-Tag: noindex";
+    }
+}
