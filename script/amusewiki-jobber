@@ -35,21 +35,20 @@ try {
         $site->check_and_update_custom_formats;
         $site->index_site_files;
         $site->generate_static_indexes;
-    }
 
-    # ignore the attachments in the staging area instead of dying
-    # because out of the root
-    my $attachments = $schema->resultset('Attachment')->search({ f_archive_rel_path => { '!=' => '' } });
-
-    while (my $att = $attachments->next) {
-        unless ($att->thumbnails->count) {
-            print "Generating thumbnails for " . $att->uri . "\n";
-            try {
-                $att->generate_thumbnails;
-            } catch {
-                my $err = $_;
-                log_error { "Error generating thumbnail: $err" };
-            };
+        # ignore the attachments in the staging area instead of dying
+        # because out of the root
+        my $attachments = $site->attachments->search({ f_archive_rel_path => { '!=' => '' } });
+        while (my $att = $attachments->next) {
+            unless ($att->thumbnails->count) {
+                log_info { "Generating thumbnails for " . $att->uri };
+                try {
+                    $att->generate_thumbnails;
+                } catch {
+                    my $err = $_;
+                    log_error { $site->id . ": error generating thumbnail: $err" };
+                };
+            }
         }
     }
 } catch {
