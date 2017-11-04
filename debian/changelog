@@ -1,3 +1,9 @@
+amusewiki (2.092-1+amw1) unstable; urgency=medium
+
+  * Bugfix release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 04 Nov 2017 18:55:27 +0100
+
 amusewiki (2.091-1+amw1) unstable; urgency=medium
 
   * New minor release
