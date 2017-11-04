@@ -62,11 +62,11 @@ foreach my $cf ($site->custom_formats->all) {
     isnt $cf->active, $status, "$status was toogled with the inactive";
 }
 $mech->get_ok('/user/site');
-$mech->submit_form(with_fields => { mainfont => 'Gentium Book Basic' },
+$mech->submit_form(with_fields => { mainfont => 'TeX Gyre Schola' },
                    button => 'edit_site');
 
 $site->discard_changes;
-is $site->mainfont, 'Gentium Book Basic';
+is $site->mainfont, 'TeX Gyre Schola';
 $mech->get_ok('/settings/formats');
 ok($mech->submit_form(with_fields => { format_name => 'Gentium' }));
 my $gentium = $site->custom_formats->search({ format_name => 'Gentium' })->first;
