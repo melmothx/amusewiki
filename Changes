@@ -4,7 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-2.090 2017-11-04
+2.091 2017-11-04
+
+ - Add /remote/create API route (#158)
+
+2.090 2017-11-03
 
  - Improve OpenGraph support
  - Add /library/*/embed route suitable for external iframes
