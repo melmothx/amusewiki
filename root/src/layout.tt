@@ -151,7 +151,9 @@
       window.addEventListener("hashchange", shiftWindow);
       function amw_load_page() { if (window.location.hash) { shiftWindow(); } };
     </script>
-
+    <script type="application/ld+json">
+[% sitelinks_searchbox %]
+    </script>
   </head>
   <body onload="amw_load_page()">
     <!-- Fixed navbar -->

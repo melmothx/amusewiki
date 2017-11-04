@@ -6,7 +6,7 @@ extends 'Catalyst::View::TT';
 
 use AmuseWikiFarm::Log::Contextual;
 use Template::Filters;
-use AmuseWikiFarm::Utils::Amuse qw/amw_meta_stripper/;
+use AmuseWikiFarm::Utils::Amuse qw/amw_meta_stripper to_json/;
 use URI;
 
 $Template::Filters::FILTERS->{escape_invisible_chars} = \&escape_invisible_chars;
@@ -86,6 +86,16 @@ before process => sub {
             $c->stash(meta_description => amw_meta_stripper($meta_desc));
         }
         $self->add_open_graph($c);
+        my $sitelink = {
+                        '@context' => 'http://schema.org',
+                        '@type' => "WebSite",
+                        'url' => $c->uri_for('/')->as_string,
+                        'potentialAction' => {
+                                              '@type' => "SearchAction",
+                                              'target' => $c->uri_for_action('/search/index') . '?query={search_term_string}',
+                                              'query-input' => "required name=search_term_string"
+                                             },
+                       };
         $c->stash(
                   site_is_without_authors => $site->is_without_authors($c->user_exists),
                   site_is_without_topics => $site->is_without_topics($c->user_exists),
@@ -93,6 +103,7 @@ before process => sub {
                   main_body_cols => $columns,
                   top_layout_html => $site->top_layout_html,
                   bottom_layout_html => $site->bottom_layout_html,
+                  sitelinks_searchbox => to_json($sitelink, pretty => 1),
                  );
     }
 };
