@@ -313,7 +313,6 @@ User-agent: *
 Disallow: /edit/
 Disallow: /bookbuilder/
 Disallow: /bookbuilder
-Disallow: /search
 Disallow: /random
 Disallow: /git/
 ROBOTS

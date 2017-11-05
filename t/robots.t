@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 120;
+use Test::More tests => 130;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 
@@ -31,10 +31,10 @@ my @norobots = (
                 '/publish/publish',
                 '/tasks/status/1',
                 '/admin/pending',
-                '/search',
                 '/blabla',
                );
 my @yesrobots = (
+                 '/search',
                  '/authors',
                  '/authors/ciao',
                  '/library',
@@ -85,6 +85,8 @@ $mech->get_ok('/robots.txt');
 $mech->content_contains('/git');
 
 foreach my $text ($site->titles->published_all) {
+    $mech->get_ok($text->full_uri);
+    $mech->content_lacks($meta);
     foreach my $ext (qw/muse zip pdf html epub tex/) {
         $mech->get_ok($text->full_uri . '.' . $ext);
         diag Dumper ($mech->response->headers);

@@ -34,6 +34,7 @@ sub opensearch :Chained('/site_no_auth') :PathPart('opensearch.xml') :Args(0) {
 
 sub index :Chained('/site') :PathPart('search') :Args(0) {
     my ( $self, $c ) = @_;
+    $c->stash(please_index => 1);
     my $site = $c->stash->{site};
     my $xapian = $site->xapian;
     # here we could configure the paging
