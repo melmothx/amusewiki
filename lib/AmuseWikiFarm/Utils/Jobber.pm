@@ -31,8 +31,11 @@ has _hourly => (is => 'rw', isa => Int, default => sub { 0 });
 
 sub main_loop {
     my $self = shift;
-    # sleeping 0 doesn't look like a good idea CPU-wise
-    sleep $self->polling_interval || 1;
+    unless ($self->schema->resultset('Job')->pending->count) {
+        my $sleep = $self->polling_interval || 1;
+        log_debug { "Sleeping because the queue is empty for $sleep seconds" };
+        sleep $sleep;
+    }
     # wait for the lock
     $self->release_lock($self->get_lock);
     log_debug { "Acquired and released the lock" };
