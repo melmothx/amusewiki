@@ -31,14 +31,17 @@ has _hourly => (is => 'rw', isa => Int, default => sub { 0 });
 
 sub main_loop {
     my $self = shift;
+    # we always sleep 1 to avoid race conditions on the lock.
+    sleep 1;
     unless ($self->schema->resultset('Job')->pending->count) {
         my $sleep = $self->polling_interval || 1;
         log_debug { "Sleeping because the queue is empty for $sleep seconds" };
         sleep $sleep;
     }
     # wait for the lock
+    log_debug { "$$ Waiting for the lock from the master" };
     $self->release_lock($self->get_lock);
-    log_debug { "Acquired and released the lock" };
+    log_debug { "$$ Acquired and released the lock from the master" };
     my $now = time();
     if (($now - $self->_daily) > (60 * 60 * 24)) {
         $self->_daily($now);
@@ -92,7 +95,6 @@ sub handle_job {
         log_info { "This job will be non-blocking" };
     }
     my $stdin = my $stdout = File::Spec->devnull;
-    log_debug { "my $stdin = my $stdout  = File::Spec->devnull ($$)" };
     open (STDIN, '<', $stdin)
       or die "Couldn't open $stdin";
     open (STDOUT, '>', $stdout)
@@ -120,7 +122,7 @@ sub get_lock {
     my $self = shift;
     my $pidfile = $self->pidfile;
     open (my $lock, '>', $pidfile) or die "Can't open $pidfile $!";
-    log_debug { "Waiting for the lock on $pidfile" };
+    log_debug { "$$ Waiting for the lock on $pidfile" };
     flock($lock, LOCK_EX) or die "Cannot lock $pidfile $!";
     print $lock $$;
     return $lock;
