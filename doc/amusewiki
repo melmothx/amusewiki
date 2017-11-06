@@ -78,9 +78,19 @@ if [ "x$action" = "xrestart" ]; then
     echo "Waiting for the real app to come up..."
     sleep 20
     echo "Stopping the backup app $temp_pid"
-    kill $temp_pid
-    wait $temp_pid
-    echo "All done, no errors"
+    for i in 1 2 3; do
+        if kill -0 $temp_pid >/dev/null 2>/dev/null; then
+            echo "Trying to kill $temp_pid"
+            kill $temp_pid || echo;
+            sleep 2
+        fi
+    done
+
+    if kill -0 $temp_pid >/dev/null 2>/dev/null; then
+        echo "$temp_pid is still alive"
+    else
+        echo "All done, no errors"
+    fi
     exit
 fi
 
