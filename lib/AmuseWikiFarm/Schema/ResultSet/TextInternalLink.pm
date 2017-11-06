@@ -11,7 +11,7 @@ AmuseWikiFarm::Schema::ResultSet::TextInternalLink - resultset for internal link
 
 =head1 METHODS
 
-=head by_uri_and_class
+=head2 by_uri_and_class
 
 =cut
 

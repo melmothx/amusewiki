@@ -6,9 +6,17 @@ use warnings;
 use Path::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 
+=head1 NAME
+
+AmuseWikiFarm::Utils::Paths - common file locations
+
+=head1 FUNCTIONS
+
+All the methods return L<Path::Tiny> objects with realpath directories
+
 =head2 root_install_directory
 
-Where to find the root/src and mkits
+The direct where the application runs.
 
 =cut
 
@@ -29,6 +37,25 @@ sub root_install_directory {
     }
     die "Couldn't find the application root for static files. This looks like a bug";
 }
+
+
+=head2 amusewiki_modules_directory
+
+Return the location of lib/AmuseWikiFarm
+
+=head2 mkits_location
+
+mkits directory
+
+=head2 templates_location
+
+root/src directory
+
+=head2 static_file_location
+
+root/static directory
+
+=cut
 
 sub amusewiki_modules_directory {
     path(__FILE__)->parent->parent;
