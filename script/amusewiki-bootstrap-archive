@@ -65,6 +65,8 @@ database first. You can save a lot of I/O.
 Do not perform any compilation or db operation, but only reindex the
 xapian database.
 
+=back
+
 =cut
 
 # be nice
