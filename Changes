@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.094 2017-11-06
+
+ - Adjust the jobber behaviour to be more aggressive but not too much
+ - Documentation fixes
+ - Tentative fix for debian-specific amusewiki script on restart
+
 2.093 2017-11-04
 
  - SEO improvements: noindex on generated files, sitelink searchbox,
