@@ -1,11 +1,10 @@
 * AmuseWiki
 
-This is a wiki engine based on Emacs Muse markup with a Git backend.
-It can work as a read-only site, as a moderated wiki, or as a fully
-open wiki or even as a private site.
-
-It strives to be simple and yet powerful enough for long-term
-archiving of texts.
+This is a wiki engine using the Text::Amuse markup (based on and
+mostly compatible with Emacs Muse) and a Git backend. It can work as a
+read-only site, as a moderated wiki, or as a fully open wiki or even
+as a private site. On a single instance you can run as many sites you
+want.
 
 For requirement and installation, see INSTALL.txt
 
