@@ -10,7 +10,6 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use DateTime;
 use Text::Wrapper;
-use Email::Valid;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
 
@@ -416,7 +415,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                                 to => $mail_to,
                                 from => $mail_from,
                                 subject => $uri,
-                                cc => '',
+                                cc => $params->{email},
                                 revision_is_new => $revision->is_new_text || 0,
                                 home => $c->uri_for('/'),
                                 resume_url =>  $c->stash->{editing_uri},
@@ -426,9 +425,6 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                                 attachments => \@file_urls,
                                 messages => $revision->message,
                                );
-                    if (my $cc = Email::Valid->address($params->{email})) {
-                        $mail{cc} = $cc;
-                    }
                     log_info { "Sending mail from $mail_from to $mail_to" };
                     $c->stash->{site}->send_mail(commit => \%mail);
                 }

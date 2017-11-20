@@ -3708,6 +3708,18 @@ sub mailer {
 
 sub send_mail {
     my ($self, $mkit, $tokens) = @_;
+    foreach my $f (qw/to from cc/) {
+        if (length($tokens->{$f})) {
+            if (my $valid = Email::Valid->address($tokens->{$f})) {
+                $tokens->{$f} = $valid;
+            }
+            else {
+                log_error { "Invalid email for $f $tokens->{$f} for $mkit" };
+                $tokens->{$f} = '';
+            }
+        }
+    }
+    return unless $tokens->{to} && $tokens->{from};
     $self->mailer->send_mail($mkit => $tokens);
 }
 

@@ -46,7 +46,6 @@ install in the session the key C<i_am_human>.
 
 =cut
 
-use Email::Valid;
 use URI;
 use URI::QueryParam;
 use Try::Tiny;
@@ -203,7 +202,7 @@ sub create :Chained('user') :Args(0) {
             my %mail = (
                         lh => $c->stash->{lh},
                         to => $user->email,
-                        cc => '',
+                        cc => $c->user->get('email'),
                         from => $mail_from,
                         home => $c->uri_for('/'),
                         username  => $user->username,
@@ -211,11 +210,6 @@ sub create :Chained('user') :Args(0) {
                         create_url => $c->uri_for_action('/user/create'),
                         edit_url => $c->uri_for_action('/user/edit', [ $user->id ]),
                        );
-            if (my $usercc = $c->user->get('email')) {
-                if (my $cc = Email::Valid->address($usercc)) {
-                    $mail{cc} = $cc;
-                }
-            }
             if ($c->stash->{site}->send_mail(newuser => \%mail)) {
                 $c->flash->{status_msg} .= "\n" . $c->loc('Email sent!');
             }
