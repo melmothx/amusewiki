@@ -509,7 +509,6 @@ lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Feed.pm
 lib/AmuseWikiFarm/Model/Lexicon.pm
-lib/AmuseWikiFarm/Model/Mailer.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
 lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm
@@ -1208,6 +1207,7 @@ t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
 t/links-in-headings.t
 t/mail.t
+t/mailer-locale-155.t
 t/manifest.t
 t/missing-image-crash-81.t
 t/mkits/test/body.txt

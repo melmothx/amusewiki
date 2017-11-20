@@ -125,7 +125,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                             location => $location,
                            );
                 log_info { "Sending mail from $mail_from to $mail_to for new $uri" };
-                $c->model('Mailer')->send_mail(newtext => \%mail);
+                $c->stash->{site}->send_mail(newtext => \%mail);
             }
             $c->response->redirect($location);
         }
@@ -430,7 +430,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                         $mail{cc} = $cc;
                     }
                     log_info { "Sending mail from $mail_from to $mail_to" };
-                    $c->model('Mailer')->send_mail(commit => \%mail);
+                    $c->stash->{site}->send_mail(commit => \%mail);
                 }
                 $c->flash(status_msg => $c->loc("Changes saved, thanks! They are now waiting to be published"));
                 if ($c->user_exists || $c->stash->{site}->human_can_publish ) {

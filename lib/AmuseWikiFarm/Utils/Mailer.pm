@@ -16,37 +16,17 @@ has mkit_location => (is => 'ro',
                       isa => 'Str',
                       required => 1);
 
-has mailer => (is => 'ro',
-               isa => 'Str',
-               default => sub { 'sendmail' },
-              );
-
-has mailer_args => (is => 'ro',
-                    isa => 'HashRef',
-                    default => sub { +{} },
-                   );
-
-has transport => (is => 'ro',
-                  lazy => 1,
-                  builder => '_build_transport');
-
-sub _build_transport {
-    my $self = shift;
-    my $class = ucfirst($self->mailer);
-    if ($class !~ /^Email::Sender::Transport::/ ) {
-        $class = "Email::Sender::Transport::$class";
-    }
-    load $class;
-    Dlog_info { "Loading $class as transport with $_" } $self->mailer_args;
-    return $class->new($self->mailer_args);
-}
-
-
 sub send_mail {
     my ($self, $mkit, $tokens) = @_;
     die "Missing arguments to sendmail!" unless $mkit && $tokens;
     my $path = path($self->mkit_location, $mkit);
-    log_debug { "Using $path for mkit" };
+    if ($path->exists) {
+        log_debug { "Using $path for mkit" };
+    }
+    else {
+        log_error { "$mkit doesn't exist in $path" };
+        return 0;
+    }
     my $ok;
     try {
         my $kit = Email::MIME::Kit->new({ source => "$path" });
@@ -54,7 +34,7 @@ sub send_mail {
         if (defined $tokens->{cc} && !$tokens->{cc}) {
             $email->header_set('cc');
         }
-        sendmail($email, { transport => $self->transport });
+        sendmail($email);
         log_info { "Email sent with $mkit" };
         $ok = 1;
     } catch {

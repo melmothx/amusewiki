@@ -195,17 +195,19 @@ existing cronjobs if you used it.
 
 ** MAIL WITH SMTP
 
-Add this stanza to amusewikifarm_local.conf:
+You need to set the desired parameter as environment variable (in the
+systemd unit file or in the user starting the application). See
+https://metacpan.org/pod/Email::Sender::Manual::QuickStart and
+https://metacpan.org/pod/Email::Sender::Transport::SMTP for details.
 
-<Model::Mailer>
-  mailer SMTP
- # these are Email::Sender::Transport::$mailer options
-  <mailer_args>
-    host     => 'my.smtp.host, # defaults to localhost
-    sasl_username => 'mail',
-    sasl_password => 'blabla',
-  </mailer_args>
-</Model::Mailer>
+Previously we used the application config file, but that's sloppy
+because it prevents the jobber to send mails properly.
+
+Example:
+
+  $ export EMAIL_SENDER_TRANSPORT=SMTP
+  $ export EMAIL_SENDER_TRANSPORT_host=smtp.example.com
+  $ export EMAIL_SENDER_TRANSPORT_port=2525
 
 ** EXPOSE THE GIT REPOSITORY WITH GIT-DAEMON
 

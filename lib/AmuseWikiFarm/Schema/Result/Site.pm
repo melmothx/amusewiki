@@ -3706,6 +3706,11 @@ sub mailer {
     # argument passing)
 }
 
+sub send_mail {
+    my ($self, $mkit, $tokens) = @_;
+    $self->mailer->send_mail($mkit => $tokens);
+}
+
 after insert => sub {
     my $self = shift;
     $self->discard_changes;

@@ -90,7 +90,7 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
             my $valid_until = $dt->format_cldr($dt->locale->datetime_format_long);
             my $url = $c->uri_for_action('/user/reset_password_confirm',
                                          [ $user->username, $user->reset_token ]);
-            $c->model('Mailer')->send_mail(resetpassword => {
+            $site->send_mail(resetpassword => {
                                                              lh => $c->stash->{lh},
                                                              to => $user->email,
                                                              from => $site->mail_from_default,
@@ -216,7 +216,7 @@ sub create :Chained('user') :Args(0) {
                     $mail{cc} = $cc;
                 }
             }
-            if ($c->model('Mailer')->send_mail(newuser => \%mail)) {
+            if ($c->stash->{site}->send_mail(newuser => \%mail)) {
                 $c->flash->{status_msg} .= "\n" . $c->loc('Email sent!');
             }
             else {

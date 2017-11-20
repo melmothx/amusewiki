@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 54;
+use Test::More tests => 53;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -21,7 +21,7 @@ use Test::WWW::Mechanize::Catalyst;
 my $mailer = AmuseWikiFarm::Utils::Mailer->new(mkit_location => 't/mkits');
 
 ok($mailer);
-ok($mailer->transport);
+
 {
     my $exit = $mailer->send_mail(test => {
                                            from => "Mić <me\@localhost>",
