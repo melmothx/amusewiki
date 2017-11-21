@@ -3688,12 +3688,17 @@ sub templates_location {
 }
 
 sub localizer {
-    my $self = shift;
+    my ($self, $locale_asked) = @_;
     log_debug { "Loading localizer" };
     # there is no caching here. This should be called only outside the
     # web app if needed.
+    my $locale = $locale_asked || $self->locale || 'en';
+    unless ($self->known_langs->{$locale}) {
+        log_error { "Unknown locale asked: $locale, defaulting to en" };
+        $locale = 'en';
+    }
     require AmuseWikiFarm::Archive::Lexicon;
-    return AmuseWikiFarm::Archive::Lexicon->new->localizer($self->locale,
+    return AmuseWikiFarm::Archive::Lexicon->new->localizer($locale,
                                                            $self->id);
 }
 
@@ -3720,6 +3725,20 @@ sub send_mail {
         }
     }
     return unless $tokens->{to} && $tokens->{from};
+
+    # check if the recipient is known to us and have a language
+    # preference
+
+    if (my $known_user = $self->result_source->schema->resultset('User')
+        ->search({
+                  email => $tokens->{to},
+                  preferred_language => [ keys %{$self->known_langs} ],
+                 })->first) {
+        $tokens->{lh} = $self->localizer($known_user->preferred_language);
+    }
+    else {
+        $tokens->{lh} = $self->localizer;
+    }
     $self->mailer->send_mail($mkit => $tokens);
 }
 

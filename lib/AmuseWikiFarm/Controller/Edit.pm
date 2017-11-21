@@ -116,7 +116,6 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
             my $mail_from = $c->stash->{site}->mail_from;
             if ($mail_to && $mail_from) {
                 my %mail = (
-                            lh => $c->stash->{lh},
                             to => $mail_to,
                             from => $mail_from,
                             subject => $uri,
@@ -411,7 +410,6 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                     }
                     Dlog_debug { "Files are $_ " } \@file_urls;
                     my %mail = (
-                                lh => $c->stash->{lh},
                                 to => $mail_to,
                                 from => $mail_from,
                                 subject => $uri,

@@ -90,7 +90,6 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
             my $url = $c->uri_for_action('/user/reset_password_confirm',
                                          [ $user->username, $user->reset_token ]);
             $site->send_mail(resetpassword => {
-                                                             lh => $c->stash->{lh},
                                                              to => $user->email,
                                                              from => $site->mail_from_default,
                                                              reset_url => $url,
@@ -200,7 +199,6 @@ sub create :Chained('user') :Args(0) {
 
         if (my $mail_from = $c->stash->{site}->mail_from) {
             my %mail = (
-                        lh => $c->stash->{lh},
                         to => $user->email,
                         cc => $c->user->get('email'),
                         from => $mail_from,
