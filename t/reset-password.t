@@ -26,7 +26,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 $site->update({
                mail_from => 'root@amusewiki.org',
                locale => 'en',
-               mail_notify => 'notifications@amusewiki.org',
+               mail_notify => 'xxnotifications@amusewiki.org',
                mode => 'private',
               });
 # root login and creates a user

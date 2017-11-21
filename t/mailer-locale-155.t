@@ -105,7 +105,7 @@ my @expected = (
                 qr{Someone, probably you, has requested a password reset for notifications},
                 qr{Your username is marchetto},
                 qr{A new text has been created at},
-                qr{A new revision has been created at},
+                qr{The revision has the following messages},
                 # then site it set to hr
                 qr{Netko, vjerojatno ti, tra=C5=BEio},
                 qr{Tvoj korisnik je stvoren na},
@@ -116,7 +116,7 @@ my @expected = (
                 # however, the recipient is new, so we use the site locale
                 qr{Tvoj korisnik je stvoren na},
                 qr{Un nuovo testo =C3=A8 stato creato},
-                qr{=C3=88 stata creata una nuova revisione},
+                qr{La revisione contiene i seguenti messaggi},
                );
 
 is scalar(@mails), 12;

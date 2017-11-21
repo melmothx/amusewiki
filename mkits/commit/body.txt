@@ -1,12 +1,12 @@
-[% lh.loc('A new revision has been created at [_1]', home) %]
+***** [% lh.loc('Changes for [_1]', document_uri) %] *****
+
+[% IF revision_is_new %][% lh.loc('This text is new') %].[% END %]
 
 [% lh.loc('The revision has the following messages') %]
 
 [% messages %]
 
 [% lh.loc("If the user provided a mail, it's listed in the mail's CC field") %]
-
-[% IF revision_is_new %][% lh.loc('This text is new') %].[% END %]
 
 [% lh.loc('To resume the editing you can visit the following URL') %]:
 

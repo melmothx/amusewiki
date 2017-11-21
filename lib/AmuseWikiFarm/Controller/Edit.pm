@@ -118,7 +118,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                 my %mail = (
                             to => $mail_to,
                             from => $mail_from,
-                            subject => $uri,
+                            subject => $revision->title->full_uri,
                             home => $c->uri_for('/'),
                             location => $location,
                            );
@@ -412,7 +412,8 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                     my %mail = (
                                 to => $mail_to,
                                 from => $mail_from,
-                                subject => $uri,
+                                subject => $revision->title->full_uri,
+                                document_uri => $c->uri_for($revision->title->full_uri),
                                 cc => $params->{email},
                                 revision_is_new => $revision->is_new_text || 0,
                                 home => $c->uri_for('/'),
