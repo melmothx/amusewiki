@@ -456,6 +456,17 @@
                     [% loc('Rebuild all generated files') %]
                   </a>
                 </li>
+                <li>
+                  <a href="[% c.uri_for_action('/tasks/jobs') %]">
+                    [% loc("Job status") %]
+                    [% IF site_failed_jobs %]
+                    <span title="[% loc('There are failed jobs') %]">
+                      <span class="badge">[%- site_failed_jobs -%]</span>
+                      <span class="fa fa-warning"></span>
+                    </span>
+                    [% END %]
+                  </a>
+                </li>
                 [% END %]
                 [% IF c.check_user_roles('root') %]
                 <li>

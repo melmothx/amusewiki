@@ -62,6 +62,12 @@ before process => sub {
             }
             $c->stash(navigation => $nav_hash);
         }
+
+        # warn about failed jobs in the user menu
+        if ($c->user_exists and $c->check_any_user_role(qw/admin root/)) {
+            $c->stash->{site_failed_jobs} = $c->stash->{site}->jobs->failed_jobs->count;
+        }
+
         # layout adjustments
         my $theme = $site->bootstrap_theme;
         my $columns = 12;
