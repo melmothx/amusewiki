@@ -82,6 +82,7 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
     my $params = $c->request->body_params;
     if ($params->{submit} && $params->{email} && $params->{email} =~ m/\w/) {
         my $site = $c->stash->{site};
+        log_debug { "resetting password for $params->{email}" };
         foreach my $user ($site->users->set_reset_token($params->{email})) {
             log_info { "Set reset token for " . $user->username };
             my $dt = DateTime->from_epoch(epoch => $user->reset_until,
