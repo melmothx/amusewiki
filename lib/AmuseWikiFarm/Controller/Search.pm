@@ -108,6 +108,9 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
         $c->detach($c->view('JSON'));
         return;
     }
+    if (!$c->user_exists and $site->show_preview_when_deferred) {
+        $c->stash(no_full_text_if_not_published => 1);
+    }
     my $format_link = sub {
         return $c->uri_for($c->action, { page => $_[0], query => $query });
     };
