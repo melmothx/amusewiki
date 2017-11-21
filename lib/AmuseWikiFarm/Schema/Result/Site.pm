@@ -2915,6 +2915,7 @@ sub update_from_params {
                            turn_links_to_images_into_images
                            enable_video_widgets
                            show_preview_when_deferred
+                           lists_are_always_flat
                            titles_category_default_sorting
                            enable_order_by_sku
                            enable_backlinks
@@ -3205,6 +3206,10 @@ sub turn_links_to_images_into_images {
 
 sub enable_video_widgets {
     return shift->get_option('enable_video_widgets') || '';
+}
+
+sub lists_are_always_flat {
+    return shift->get_option('lists_are_always_flat') || '';
 }
 
 sub pagination_needed {

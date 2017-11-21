@@ -252,6 +252,14 @@ kpsewhich mylogo.pdf
         <div class="col-sm-offset-6 col-sm-6">
           <label>
             <input type="checkbox"
+                   [% IF esite.lists_are_always_flat %]checked="checked"[% END %]
+                   name="lists_are_always_flat" />
+            [% loc('Never show teaser and/or cover in text lists') %]
+          </label>
+        </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
                    [% IF esite.enable_order_by_sku %]checked="checked"[% END %]
                    name="enable_order_by_sku" />
             [% loc('Enable title ordering by SKU') %]
