@@ -512,6 +512,7 @@ lib/AmuseWikiFarm/Model/Lexicon.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
 lib/AmuseWikiFarm/Role/Controller/HumanLoginScreen.pm
+lib/AmuseWikiFarm/Role/Controller/Jobs.pm
 lib/AmuseWikiFarm/Role/Controller/Listing.pm
 lib/AmuseWikiFarm/Role/Controller/ListingDisplay.pm
 lib/AmuseWikiFarm/Role/Controller/RegularListing.pm
@@ -1194,6 +1195,7 @@ t/human-login-screens.t
 t/improve-diff-124.t
 t/indexer.t
 t/internal-linking.t
+t/job-console.t
 t/job-display.t
 t/job-purging.t
 t/jobber.t

@@ -1,6 +1,8 @@
 package AmuseWikiFarm::Controller::Tasks;
 use Moose;
-with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
+with qw/AmuseWikiFarm::Role::Controller::HumanLoginScreen
+        AmuseWikiFarm::Role::Controller::Jobs
+       /;
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -182,6 +184,22 @@ sub show_bulk_job_ajax :Chained('get_bulk_job') :PathPart('ajax') :Args(0) {
                       });
     $c->detach($c->view('JSON'));
 }
+
+sub get_jobs :Chained('root') :PathPart('all') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    $self->check_login($c) or die;
+    unless ($c->check_any_user_role(qw/admin root/)) {
+        $c->detach('/not_permitted');
+        return;
+    }
+    my $rs = $c->stash->{site}->jobs;
+    $c->stash(
+              all_jobs => $rs,
+              page_title => $c->loc('Jobs'),
+             );
+}
+
+
 
 =head1 AUTHOR
 

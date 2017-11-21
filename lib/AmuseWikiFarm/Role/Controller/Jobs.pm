@@ -13,6 +13,23 @@ use AmuseWikiFarm::Log::Contextual;
 sub jobs :Chained('get_jobs') :PathPart('show') :Args {
     my ($self, $c, $order_by, $direction, $page) = @_;
     my $rs = delete $c->stash->{all_jobs};
+
+    # first, we handled deletions and reschedule
+    if (my $delete = $c->request->body_parameters->{delete_job}) {
+        if (my $job = $rs->find($delete)) {
+            $job->delete;
+            $c->flash(status_msg => $c->loc("Job deleted"));
+        }
+    }
+    elsif (my $reschedule = $c->request->body_parameters->{reschedule_job}) {
+        if (my $job = $rs->find($reschedule)) {
+            if ($job->reschedule) {
+                $c->flash(status_msg => $c->loc("Job rescheduled"));
+            }
+        }
+    }
+    # then continue as nothing happened
+
     my @columns = $rs->result_source->columns;
     my %order_fields = map { $_ => 1 } @columns;
     Dlog_debug { "Permitted fields: $_ " } \%order_fields;
@@ -61,8 +78,10 @@ sub jobs :Chained('get_jobs') :PathPart('show') :Args {
                            rows => $c->stash->{site}->pagination_size,
                           });
     my $pager = $all->pager;
+    # called from a role
+    my $action = $c->action;
     my $format_link = sub {
-        return $c->uri_for_action('/admin/jobs', $order_by, $direction, $_[0], {
+        return $c->uri_for($action, $order_by, $direction, $_[0], {
                                                                                 field => $filter_field,
                                                                                 search => $filter_search,
                                                                                });
@@ -70,26 +89,8 @@ sub jobs :Chained('get_jobs') :PathPart('show') :Args {
     $c->stash(jobs => [ $all->all ],
               search_fields => \@columns,
               pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
+              template => 'admin/jobs.tt',
              );
-}
-
-sub delete_job :Chained('get_jobs') :PathPart('delete') :Args(0) {
-    my ($self, $c) = @_;
-    if (my $id = $c->request->body_parameters->{job_id}) {
-        if (my $job = $c->stash->{all_jobs}->find($id)) {
-            $job->delete;
-            $c->flash(status_msg => $c->loc("Job deleted"));
-        }
-        else {
-            $c->flash(error_msg => $c->loc("Job not found"));
-        }
-    }
-    else {
-        $c->flash(error_msg => $c->loc("Bad request"));
-    }
-    $c->response->redirect($c->uri_for_action('/admin/jobs'));
-    return;
-
 }
 
 1;
