@@ -3728,6 +3728,10 @@ sub send_mail {
                 $tokens->{$f} = '';
             }
         }
+        else {
+            # 0 or undef length
+            $tokens->{$f} = '';
+        }
     }
     return unless $tokens->{to} && $tokens->{from};
 
