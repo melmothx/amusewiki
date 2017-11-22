@@ -56,6 +56,13 @@ __PACKAGE__->table("site_link");
   default_value: 0
   is_nullable: 0
 
+=head2 menu
+
+  data_type: 'varchar'
+  default_value: 'specials'
+  is_nullable: 0
+  size: 32
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -72,6 +79,13 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "menu",
+  {
+    data_type => "varchar",
+    default_value => "specials",
+    is_nullable => 0,
+    size => 32,
+  },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -94,8 +108,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:NRFMHxiqYXfjo03RfUzCZQ
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-11-22 11:49:10
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:CD13lY/374whMeBAI5ysDg
 
 __PACKAGE__->meta->make_immutable;
 1;
