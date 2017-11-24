@@ -281,6 +281,15 @@
                 </li>
                 [% END %]
 
+                [% IF navigation.archive %]
+                [% FOREACH link IN navigation.archive %]
+                <li [% IF link.active %] class="active"[% END %]>
+                  <a href="[% link.uri | html %]">[% link.name | html %]</a>
+                </li>
+                [% END %]
+                [% END %]
+
+
                 [% IF c.user_exists || site.human_can_edit %]
                 <li role="presentation" class="divider"></li>
                 <li[% IF nav == 'add-to-library' %] class="active"[% END %]>
@@ -313,7 +322,7 @@
               <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH link IN navigation.specials %]
                 <li[% IF link.active %] class="active"[% END %]>
-                  <a href="[% link.uri %]">[% link.name %]</a>
+                  <a href="[% link.uri | html %]">[% link.name | html %]</a>
                 </li>
                 [% END %]
               </ul>
@@ -328,14 +337,14 @@
                  data-toggle="dropdown">
                 <span class="fa fa-th fw"></span>
                 <span class="hidden-sm" id="amw-sitegroup-label">
-                  [% loc('Other languages') %]
+                  [% loc('Related projects') %]
                 </span>
                 <b class="caret hidden-sm"></b>
               </a>
               <ul class="dropdown-menu dropdown-menu-left">
                 [% FOREACH link IN navigation.projects %]
-                <li>
-                  <a href="[% link.canonical_url %]">[% link.sitename || link.canonical %]</a>
+                <li [% IF link.active %] class="active"[% END %]>
+                  <a href="[% link.uri | html %]">[% link.name | html %]</a>
                 </li>
                 [% END   %]
               </ul>

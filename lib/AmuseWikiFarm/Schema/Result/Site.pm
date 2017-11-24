@@ -2512,41 +2512,6 @@ sub remove_git_remote {
     }
 }
 
-
-=head2 special_list
-
-Return a list where each element is an hashref describing the special
-pages we have and has the following keys: C<uri>, C<name>.
-
-The index pages are excluded.
-
-=cut
-
-sub special_list {
-    my $self = shift;
-    my @list = $self->titles->published_specials
-      ->search({
-                uri => { -not_like => 'index%' },
-               },
-               { columns => [qw/title uri/] });
-    my @out;
-    foreach my $l (@list) {
-        push @out, {
-                    uri => $l->uri,
-                    name => $l->title || $l->uri
-                   };
-    }
-    my @links = $self->site_links->search(undef,
-                                          { order_by => [qw/sorting_pos label/] });
-    foreach my $l (@links) {
-        push @out, {
-                    full_url => $l->url,
-                    name => $l->label,
-                   };
-    }
-    return @out;
-}
-
 =head2 update_or_create_user(\%attrs, $role)
        update_or_create_user($username, $role)
 
@@ -2936,7 +2901,11 @@ sub update_from_params {
                        };
     }
 
-    my @site_links = $self->deserialize_links(delete $params->{site_links});
+    my @site_links = (
+                      $self->deserialize_links(delete $params->{site_links}, 'specials'),
+                      $self->deserialize_links(delete $params->{site_links_projects}, 'projects'),
+                      $self->deserialize_links(delete $params->{site_links_archive}, 'archive')
+                     );
 
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
@@ -3000,18 +2969,19 @@ sub configure_cgit {
 }
 
 sub deserialize_links {
-    my ($self, $string) = @_;
+    my ($self, $string, $menu) = @_;
     my @links;
     return @links unless $string;
     my @lines = grep { $_ } split(/\r?\n/, $string);
     return @links unless @lines;
     my $order = 0;
     foreach my $line (@lines) {
-        if ($line =~ m{^\s*(https?://\S+)\s+(.*?)\s*$}) {
+        if ($line =~ m{^\s*(\S+)\s+(.*?)\s*$}) {
             push @links, {
                           url => $1,
                           label => $2,
                           sorting_pos => $order++,
+                          menu => $menu,
                          };
         }
     }
@@ -3019,8 +2989,9 @@ sub deserialize_links {
 }
 
 sub serialize_links {
-    my $self = shift;
-    my $links = $self->site_links->search(undef, { order_by => [qw/sorting_pos label/] });
+    my ($self, $menu) = @_;
+    my $links = $self->site_links->search({ menu => $menu },
+                                          { order_by => [qw/sorting_pos label url/] });
     my @lines;
     while (my $link = $links->next) {
         push @lines, $link->url . ' ' . $link->label;
