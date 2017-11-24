@@ -467,7 +467,7 @@ sub dispatch_job {
         if ($@) {
             $self->status('failed');
             $self->errors($@);
-            log_error { $@ };
+            log_error { $@ . ' ' . $self->logs };
         }
         else {
             $self->completed(DateTime->now);
