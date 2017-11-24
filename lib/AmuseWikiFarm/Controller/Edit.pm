@@ -10,7 +10,6 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use DateTime;
 use Text::Wrapper;
-use Email::Valid;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
 
@@ -117,15 +116,14 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
             my $mail_from = $c->stash->{site}->mail_from;
             if ($mail_to && $mail_from) {
                 my %mail = (
-                            lh => $c->stash->{lh},
                             to => $mail_to,
                             from => $mail_from,
-                            subject => $uri,
+                            subject => $revision->title->full_uri,
                             home => $c->uri_for('/'),
                             location => $location,
                            );
                 log_info { "Sending mail from $mail_from to $mail_to for new $uri" };
-                $c->model('Mailer')->send_mail(newtext => \%mail);
+                $c->stash->{site}->send_mail(newtext => \%mail);
             }
             $c->response->redirect($location);
         }
@@ -412,11 +410,11 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                     }
                     Dlog_debug { "Files are $_ " } \@file_urls;
                     my %mail = (
-                                lh => $c->stash->{lh},
                                 to => $mail_to,
                                 from => $mail_from,
-                                subject => $uri,
-                                cc => '',
+                                subject => $revision->title->full_uri,
+                                document_uri => $c->uri_for($revision->title->full_uri),
+                                cc => $params->{email},
                                 revision_is_new => $revision->is_new_text || 0,
                                 home => $c->uri_for('/'),
                                 resume_url =>  $c->stash->{editing_uri},
@@ -426,11 +424,8 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                                 attachments => \@file_urls,
                                 messages => $revision->message,
                                );
-                    if (my $cc = Email::Valid->address($params->{email})) {
-                        $mail{cc} = $cc;
-                    }
                     log_info { "Sending mail from $mail_from to $mail_to" };
-                    $c->model('Mailer')->send_mail(commit => \%mail);
+                    $c->stash->{site}->send_mail(commit => \%mail);
                 }
                 $c->flash(status_msg => $c->loc("Changes saved, thanks! They are now waiting to be published"));
                 if ($c->user_exists || $c->stash->{site}->human_can_publish ) {

@@ -252,6 +252,14 @@ kpsewhich mylogo.pdf
         <div class="col-sm-offset-6 col-sm-6">
           <label>
             <input type="checkbox"
+                   [% IF esite.lists_are_always_flat %]checked="checked"[% END %]
+                   name="lists_are_always_flat" />
+            [% loc('Never show teaser and/or cover in text lists') %]
+          </label>
+        </div>
+        <div class="col-sm-offset-6 col-sm-6">
+          <label>
+            <input type="checkbox"
                    [% IF esite.enable_order_by_sku %]checked="checked"[% END %]
                    name="enable_order_by_sku" />
             [% loc('Enable title ordering by SKU') %]
@@ -459,7 +467,31 @@ kpsewhich mylogo.pdf
         <div class="col-sm-9">
           <textarea rows="5" name="site_links" id="site_links"
                     class="form-control">
-            [%- esite.serialize_links | html -%]</textarea>
+            [%- esite.serialize_links('specials') | html -%]</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3 text-right">
+          <label for="site_links_projects" class="control-label">
+            [% loc('Same as above, for the Related Projects menu') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="site_links_projects" id="site_links_projects"
+                    class="form-control">
+            [%- esite.serialize_links('projects') | html -%]</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3 text-right">
+          <label for="site_links_archive" class="control-label">
+            [% loc('Same as above, for the Archive menu') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <textarea rows="5" name="site_links_archive" id="site_links_archive"
+                    class="form-control">
+            [%- esite.serialize_links('archive') | html -%]</textarea>
         </div>
     </div>
     <div class="form-group">

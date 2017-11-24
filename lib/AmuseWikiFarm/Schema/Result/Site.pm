@@ -2512,41 +2512,6 @@ sub remove_git_remote {
     }
 }
 
-
-=head2 special_list
-
-Return a list where each element is an hashref describing the special
-pages we have and has the following keys: C<uri>, C<name>.
-
-The index pages are excluded.
-
-=cut
-
-sub special_list {
-    my $self = shift;
-    my @list = $self->titles->published_specials
-      ->search({
-                uri => { -not_like => 'index%' },
-               },
-               { columns => [qw/title uri/] });
-    my @out;
-    foreach my $l (@list) {
-        push @out, {
-                    uri => $l->uri,
-                    name => $l->title || $l->uri
-                   };
-    }
-    my @links = $self->site_links->search(undef,
-                                          { order_by => [qw/sorting_pos label/] });
-    foreach my $l (@links) {
-        push @out, {
-                    full_url => $l->url,
-                    name => $l->label,
-                   };
-    }
-    return @out;
-}
-
 =head2 update_or_create_user(\%attrs, $role)
        update_or_create_user($username, $role)
 
@@ -2915,6 +2880,7 @@ sub update_from_params {
                            turn_links_to_images_into_images
                            enable_video_widgets
                            show_preview_when_deferred
+                           lists_are_always_flat
                            titles_category_default_sorting
                            enable_order_by_sku
                            enable_backlinks
@@ -2935,7 +2901,11 @@ sub update_from_params {
                        };
     }
 
-    my @site_links = $self->deserialize_links(delete $params->{site_links});
+    my @site_links = (
+                      $self->deserialize_links(delete $params->{site_links}, 'specials'),
+                      $self->deserialize_links(delete $params->{site_links_projects}, 'projects'),
+                      $self->deserialize_links(delete $params->{site_links_archive}, 'archive')
+                     );
 
     if (%$params) {
         push @errors, "Unprocessed parameters found: "
@@ -2999,18 +2969,19 @@ sub configure_cgit {
 }
 
 sub deserialize_links {
-    my ($self, $string) = @_;
+    my ($self, $string, $menu) = @_;
     my @links;
     return @links unless $string;
     my @lines = grep { $_ } split(/\r?\n/, $string);
     return @links unless @lines;
     my $order = 0;
     foreach my $line (@lines) {
-        if ($line =~ m{^\s*(https?://\S+)\s+(.*?)\s*$}) {
+        if ($line =~ m{^\s*(\S+)\s+(.*?)\s*$}) {
             push @links, {
                           url => $1,
                           label => $2,
                           sorting_pos => $order++,
+                          menu => $menu,
                          };
         }
     }
@@ -3018,8 +2989,9 @@ sub deserialize_links {
 }
 
 sub serialize_links {
-    my $self = shift;
-    my $links = $self->site_links->search(undef, { order_by => [qw/sorting_pos label/] });
+    my ($self, $menu) = @_;
+    my $links = $self->site_links->search({ menu => $menu },
+                                          { order_by => [qw/sorting_pos label url/] });
     my @lines;
     while (my $link = $links->next) {
         push @lines, $link->url . ' ' . $link->label;
@@ -3205,6 +3177,10 @@ sub turn_links_to_images_into_images {
 
 sub enable_video_widgets {
     return shift->get_option('enable_video_widgets') || '';
+}
+
+sub lists_are_always_flat {
+    return shift->get_option('lists_are_always_flat') || '';
 }
 
 sub pagination_needed {
@@ -3688,12 +3664,17 @@ sub templates_location {
 }
 
 sub localizer {
-    my $self = shift;
+    my ($self, $locale_asked) = @_;
     log_debug { "Loading localizer" };
     # there is no caching here. This should be called only outside the
     # web app if needed.
+    my $locale = $locale_asked || $self->locale || 'en';
+    unless ($self->known_langs->{$locale}) {
+        log_error { "Unknown locale asked: $locale, defaulting to en" };
+        $locale = 'en';
+    }
     require AmuseWikiFarm::Archive::Lexicon;
-    return AmuseWikiFarm::Archive::Lexicon->new->localizer($self->locale,
+    return AmuseWikiFarm::Archive::Lexicon->new->localizer($locale,
                                                            $self->id);
 }
 
@@ -3704,6 +3685,41 @@ sub mailer {
     # please note that the catalyst config could have injected args.
     # If we call this, those settings will be ignored, hence we permit
     # argument passing)
+}
+
+sub send_mail {
+    my ($self, $mkit, $tokens) = @_;
+    foreach my $f (qw/to from cc/) {
+        if (length($tokens->{$f})) {
+            if (my $valid = Email::Valid->address($tokens->{$f})) {
+                $tokens->{$f} = $valid;
+            }
+            else {
+                log_error { "Invalid email for $f $tokens->{$f} for $mkit" };
+                $tokens->{$f} = '';
+            }
+        }
+        else {
+            # 0 or undef length
+            $tokens->{$f} = '';
+        }
+    }
+    return unless $tokens->{to} && $tokens->{from};
+
+    # check if the recipient is known to us and have a language
+    # preference
+
+    if (my $known_user = $self->result_source->schema->resultset('User')
+        ->search({
+                  email => $tokens->{to},
+                  preferred_language => [ keys %{$self->known_langs} ],
+                 })->first) {
+        $tokens->{lh} = $self->localizer($known_user->preferred_language);
+    }
+    else {
+        $tokens->{lh} = $self->localizer;
+    }
+    $self->mailer->send_mail($mkit => $tokens);
 }
 
 after insert => sub {

@@ -42,26 +42,13 @@ before process => sub {
     unless ($c->stash->{no_wrapper}) {
         log_debug { "Doing the layout fixes" };
 
-        my @related = $site->other_sites;
-        my @specials = $site->special_list;
-        for my $sp (@specials) {
-            my $uri = $sp->{uri};
-            $sp->{special_uri} = $uri;
-            $sp->{uri} = $sp->{full_url} || $c->uri_for_action('/special/text', [ $uri ]);
-            $sp->{active} = ($c->request->uri eq $sp->{uri});
+        $self->add_navigation_menus($c, $site);
+
+        # warn about failed jobs in the user menu
+        if ($c->user_exists and $c->check_any_user_role(qw/admin root/)) {
+            $c->stash->{site_failed_jobs} = $c->stash->{site}->jobs->failed_jobs->count;
         }
 
-        # let's assume related will return self, and special index
-        if (@related || @specials) {
-            my $nav_hash = {};
-            if (@related) {
-                $nav_hash->{projects} = \@related;
-            }
-            if (@specials) {
-                $nav_hash->{specials} = \@specials;
-            }
-            $c->stash(navigation => $nav_hash);
-        }
         # layout adjustments
         my $theme = $site->bootstrap_theme;
         my $columns = 12;
@@ -247,6 +234,48 @@ sub add_open_graph {
             $c->stash(open_graph => \@opengraph) if @opengraph;
         }
     }
+}
+
+sub add_navigation_menus {
+    my ($self, $c, $site) = @_;
+
+    my @related = map {
+        +{ uri =>  $_->canonical_url, name => $_->sitename || $_->canonical }
+    } $site->other_sites;
+
+    my @specials = map {
+        +{ uri => $_->full_uri, name => $_->title || $_->rui }
+    } $site->titles->published_specials->search({ uri => { -not_like => 'index%' } },
+                                                { columns => [qw/title uri f_class/] });
+
+    my %out = (
+               projects => \@related,
+               specials => \@specials,
+               archive  => [],
+              );
+
+    foreach my $link ($site->site_links->search(undef, { order_by => [qw/sorting_pos url/] })) {
+        if ($out{$link->menu}) {
+            push @{$out{$link->menu}}, {
+                                        uri => $link->url,
+                                        name => $link->label || $link->url
+                                       };
+        }
+    }
+    foreach my $menu (keys %out) {
+        if (@{$out{$menu}}) {
+            foreach my $link (@{$out{$menu}}) {
+                unless ($link->{uri} =~ m{https?://}) {
+                    $link->{uri} = $c->uri_for($link->{uri});
+                }
+                $link->{active} = $link->{uri} eq $c->request->uri;
+            }
+        }
+        else {
+            delete $out{$menu}; # nothing to show
+        }
+    }
+    $c->stash(navigation => \%out);
 }
 
 

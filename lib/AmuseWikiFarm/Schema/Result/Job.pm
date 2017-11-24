@@ -867,5 +867,24 @@ sub committer_mail {
     return $self->committer_username . '@' . $hostname;
 }
 
+sub is_failed {
+   shift->status eq 'failed';
+}
+
+sub reschedule {
+    my $self = shift;
+    if ($self->is_failed) {
+        $self->update({
+                       status => 'pending',
+                       started => undef,
+                       completed => undef,
+                       produced => undef,
+                       errors => undef,
+                      });
+        return 1;
+    }
+    return 0;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;

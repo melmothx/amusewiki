@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 54;
+use Test::More tests => 53;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -21,7 +21,7 @@ use Test::WWW::Mechanize::Catalyst;
 my $mailer = AmuseWikiFarm::Utils::Mailer->new(mkit_location => 't/mkits');
 
 ok($mailer);
-ok($mailer->transport);
+
 {
     my $exit = $mailer->send_mail(test => {
                                            from => "Mić <me\@localhost>",
@@ -48,7 +48,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
 $site->update({ mail_from => 'root@amusewiki.org',
                 locale => 'en',
-                mail_notify => 'notifications@amusewiki.org',
+                mail_notify => 'xnotifications@amusewiki.org',
               });
 
 my $user = $site->update_or_create_user({
@@ -153,7 +153,7 @@ $mech->click("commit");
         my $body = $sent->{email}->as_string;
         ok ($body);
         $body =~ s/=\r?\n//g;
-        like $body, qr{subject: pippo-my-test}i;
+        like $body, qr{subject: /library/pippo-my-test}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/};
         like $body, qr{needs to finalize the upload}i;
         diag $body;
@@ -162,7 +162,7 @@ $mech->click("commit");
         ok ($sent, "The application sent the mail");
         my $body = $sent->{email}->as_string;
         ok ($body);
-        like $body, qr{subject: pippo-my-test}i;
+        like $body, qr{subject: /library/pippo-my-test}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/[0-9]+/diff};
         like $body, qr{Preview};
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test/[0-9]+/preview};
@@ -174,7 +174,7 @@ $mech->click("commit");
         my $body = $sent->{email}->as_string;
         ok ($body);
         $body =~ s/=\r?\n//g;
-        like $body, qr{subject: pippo-my-test-2}i;
+        like $body, qr{subject: /library/pippo-my-test-2}i;
         like $body, qr{needs to finalize the upload}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/};
         diag $body;
@@ -183,7 +183,7 @@ $mech->click("commit");
         ok ($sent, "The application sent the mail");
         my $body = $sent->{email}->as_string;
         ok ($body);
-        like $body, qr{subject: pippo-my-test-2}i;
+        like $body, qr{subject: /library/pippo-my-test-2}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/};
         like $body, qr{cc: uploader\@amusewiki.org}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/p-m-pi},

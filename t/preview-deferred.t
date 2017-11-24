@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 331;
+use Test::More tests => 346;
 use Data::Dumper;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -381,3 +381,22 @@ $mech->get_ok('/library/deferred-text-3');
 $mech->get('/library/deferred-text-2');
 is $mech->status, 404, "deferred and no preview => 404";
 $site->xapian_reindex_all;
+
+$mech->get_ok('/search?query=published');
+$mech->content_contains('Read the whole text');
+$mech->get_ok('/search?query=deferred+3');
+$mech->content_contains('Deferred #3');
+$mech->content_lacks('Read the whole text');
+$mech->content_lacks('fa-clock-o');
+$mech->get_ok('/library/deferred-text-3');
+$mech->content_contains('   This is the preview for 3');
+
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+$mech->get_ok('/search?query=deferred+3');
+$mech->content_contains('Deferred #3');
+$mech->content_contains('Read the whole text');
+$mech->content_contains('fa-clock-o');
+$mech->get_ok('/library/deferred-text-3');
+# leading space, because the string is in the <meta>
+$mech->content_lacks('   This is the preview for 3');

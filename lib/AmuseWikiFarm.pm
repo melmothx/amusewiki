@@ -90,7 +90,7 @@ use Catalyst (
 
 extends 'Catalyst';
 
-our $VERSION = '2.094';
+our $VERSION = '2.095';
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Log::Contextual::App;
@@ -125,11 +125,6 @@ __PACKAGE__->config(
         # COMPILE_DIR => __PACKAGE__->path_to(qw/opt cache tt/),
        },
    );
-
-__PACKAGE__->config('Model::Mailer' => {
-    mkit_location => __PACKAGE__->path_to('mkits')->stringify,
-});
-
 
 # Configure SimpleDB Authentication
 __PACKAGE__->config(

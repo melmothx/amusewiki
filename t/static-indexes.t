@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 74;
+use Test::More tests => 72;
 use DateTime;
 use Path::Tiny;
 use Test::WWW::Mechanize;
@@ -35,10 +35,6 @@ diag $site->mkits_location;
     my $lh = $site->localizer;
     ok is $lh->loc("Titles"), "Naslovi";
     ok is $lh->loc_html("Titles"), "Naslovi";
-    my $mailer = $site->mailer;
-    ok $mailer->mailer;
-    ok $mailer->transport;
-
 }
 ok($indexes);
 

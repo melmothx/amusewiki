@@ -111,6 +111,21 @@
         </a>
       </th>
       <th>
+        <a href="[% c.uri_for_action('/admin/jobs', 'started', 'desc', 1,
+                 { field => c.req.query_params.field,
+                   search => c.req.query_params.search,
+                 }) | html %]">
+          <span class="fa fa-arrow-down"></span>
+        </a>
+        [% loc('Started') %]
+        <a href="[% c.uri_for_action('/admin/jobs', 'started', 'asc', 1,
+                 { field => c.req.query_params.field,
+                   search => c.req.query_params.search,
+                 }) | html %]">
+          <span class="fa fa-arrow-up"></span>
+        </a>
+      </th>
+      <th>
         <a href="[% c.uri_for_action('/admin/jobs', 'completed', 'desc', 1,
                  { field => c.req.query_params.field,
                    search => c.req.query_params.search,
@@ -199,7 +214,10 @@
         [% job.created.iso8601 | html %]
       </td>
       <td>
-        [% job.completed.iso8601 | html %]
+        [% IF job.started %][% job.started.iso8601 | html %][% END %]
+      </td>
+      <td>
+        [% IF job.completed %][% job.completed.iso8601 | html %][% END %]
       </td>
       <td>
         [% job.priority | html %]
@@ -213,12 +231,20 @@
         [% job.errors | html %]
       </td>
       <td>
-        <form action="[% c.uri_for_action('/admin/delete_job') %]" method="post">
-          <input type="hidden" name="job_id" value="[% job.id %]" />
-          <button type="submit" class="btn btn-default">
-          [% loc('Delete') %]
+        <form id="delete-job-[% job.id %]" action="" method="post">
+          <input type="hidden" name="delete_job" value="[% job.id %]" />
+          <button type="submit" class="btn btn-default" title="[% loc('Delete') %]">
+            <span class="fa fa-trash"></span>
           </button>
         </form>
+        [% IF job.is_failed %]
+        <form id="reschedule-job-[% job.id %]" action="" method="post">
+          <input type="hidden" name="reschedule_job" value="[% job.id %]" />
+          <button type="submit" class="btn btn-default" title="[% loc('Try again') %]">
+            <span class="fa fa-refresh"></span>
+          </button>
+        </form>
+        [% END %]
       </td>
     </tr>
     [% END %]

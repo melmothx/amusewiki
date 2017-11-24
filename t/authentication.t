@@ -13,7 +13,7 @@ use Text::Amuse::Compile::Utils qw/write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 2471; # test spamming
+use Test::More tests => 2483; # test spamming
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0authen0');
@@ -163,11 +163,11 @@ my @user_only = (
 my @admin_only = (
                   "/user/site/",
                   "/tasks/rebuild",
+                  "/tasks/all/show",
                  );
 my @root_only = ('/admin/newuser',
                  '/admin/debug_loc',
                  '/admin/debug_site_id',
-                 '/admin/jobs/delete',
                  '/admin/users/' . $user->id . '/delete',
                  '/admin/sites/edit',
                  '/admin/sites/edit/' . $site->id,

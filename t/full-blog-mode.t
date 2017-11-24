@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 196;
+use Test::More tests => 228;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Test::WWW::Mechanize::Catalyst;
@@ -514,4 +514,35 @@ sub add_text {
     }
     $rev->commit_version;
     $rev->publish_text;
+}
+
+# flat lists
+
+{
+    $mech->get_ok('/user/site');
+    $mech->form_id("site-edit-form");
+    $mech->tick(lists_are_always_flat => 'on');
+    $mech->click("edit_site");
+
+    my @checks = ('/listing',
+                  '/category/author/pippo',
+                  '/latest',
+                  '/category/topic/blabla',
+                  '/search?query=a+third+entry');
+    foreach my $uri (@checks) {
+        $mech->get_ok($uri);
+        $mech->content_lacks('text-cover-img-mini-container');
+        $mech->content_lacks('amw-read-more-link');
+    }
+
+    $mech->get_ok('/user/site');
+    $mech->form_id("site-edit-form");
+    $mech->untick(lists_are_always_flat => 'on');
+    $mech->click("edit_site");
+
+    foreach my $uri (@checks) {
+        $mech->get_ok($uri);
+        $mech->content_contains('text-cover-img-mini-container');
+        $mech->content_contains('amw-read-more-link');
+    }
 }

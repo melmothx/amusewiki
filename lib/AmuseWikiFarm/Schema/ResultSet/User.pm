@@ -141,6 +141,7 @@ sub set_reset_token {
         my $random = Bytes::Random::Secure->new(NonBlocking => 1);
         # return all the users with the given mail
         while (my $user = $users->next) {
+            log_debug { "Setting the token for " .  $user->username };
             my $now = time();
             my $token = $random->bytes_hex(32);
             if ($token and length($token) > 10) {
@@ -152,6 +153,12 @@ sub set_reset_token {
                                   });
                     push @out, $user;
                 }
+                else {
+                    Dlog_debug { "Token already present: $_ " } [ $user->reset_until, $user->reset_token ];
+                }
+            }
+            else {
+                log_debug { "No token found" };
             }
         }
     }

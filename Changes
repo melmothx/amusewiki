@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.095 2017-11-24
+
+ - Adjusted mailing localization and wording (#163 #155). Thanks to
+   racke to point that out.
+ - Opt-out for teaser and cover in the listings (#170)
+ - Minor fix to the layout for search results (#168)
+ - Give access to the site's jobs console to admins (#169)
+ - Improve customization of navbar links (#167)
+
 2.094 2017-11-06
 
  - Adjust the jobber behaviour to be more aggressive but not too much

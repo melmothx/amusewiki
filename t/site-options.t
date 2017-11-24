@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 16;
+use Test::More tests => 34;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -13,6 +13,7 @@ use AmuseWikiFarm::Schema;
 use Data::Dumper;
 use Test::WWW::Mechanize::Catalyst;
 use File::Copy qw(move copy);
+use HTML::Entities;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -123,11 +124,13 @@ my @links = ({
               url => 'http://bau.org',
               label => 'Bauuuu',
               sorting_pos => 0,
+              menu => 'specials',
              },
              {
               url => 'http://bau2.org',
               label => 'Bauuuu 2',
               sorting_pos => 1,
+              menu => 'specials',
              });
 
 $site->site_links->delete;
@@ -135,9 +138,11 @@ foreach my $link (@links) {
     $site->site_links->create($link);
 }
 
-my @outlinks = $site->deserialize_links($site->serialize_links);
-is_deeply(\@outlinks, \@links, "de/serialize works");
-diag $site->serialize_links;
+foreach my $type ('specials') {
+    my @outlinks = $site->deserialize_links($site->serialize_links($type), $type);
+    is_deeply(\@outlinks, \@links, "de/serialize works");
+    diag $site->serialize_links($type);
+}
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "blog.amusewiki.org");
@@ -159,3 +164,30 @@ $mech->get_ok('/', "Crash 1.22 fixed");
                                      \s*\}
                                      \s*\z}sx;
 }
+
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+$mech->get_ok('/user/site');
+
+$mech->submit_form(with_fields => {
+                                   site_links => "https://prova.org TEST1\nhttps://prova.org <TEST2>\n",
+                                   site_links_projects => "/library/prova-prova TEST1\nhttps://prova.org <TEST2>\n",
+                                   site_links_archive => "https://prova.org TEST1\n/prova/prova <TEST2>\n",
+                                  },
+                   button => 'edit_site');
+
+is $site->site_links->count, 6;
+$mech->get_ok('/');
+foreach my $link ($site->site_links->all) {
+    $mech->content_contains(encode_entities($link->url));
+    $mech->content_contains(encode_entities($link->label));
+}
+
+$mech->get_ok('/user/site');
+$mech->submit_form(with_fields => {
+                                   site_links => "\n",
+                                   site_links_projects => "\n",
+                                   site_links_archive => "\n",
+                                  },
+                   button => 'edit_site');
+is $site->site_links->count, 0;

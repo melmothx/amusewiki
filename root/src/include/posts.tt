@@ -17,7 +17,7 @@
     [% ELSE %]
       [% SET show_link = 1 %]
     [% END %]
-  [% IF text.teaser || text.cover_uri %]
+  [% IF (!site.lists_are_always_flat && (text.teaser || text.cover_uri)) %]
   <div class="list-group-item clearfix">
     [% IF text.cover_uri %]
     <div class="text-cover-img-mini-container">

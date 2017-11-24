@@ -46,7 +46,6 @@ install in the session the key C<i_am_human>.
 
 =cut
 
-use Email::Valid;
 use URI;
 use URI::QueryParam;
 use Try::Tiny;
@@ -83,6 +82,7 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
     my $params = $c->request->body_params;
     if ($params->{submit} && $params->{email} && $params->{email} =~ m/\w/) {
         my $site = $c->stash->{site};
+        log_debug { "resetting password for $params->{email}" };
         foreach my $user ($site->users->set_reset_token($params->{email})) {
             log_info { "Set reset token for " . $user->username };
             my $dt = DateTime->from_epoch(epoch => $user->reset_until,
@@ -90,8 +90,7 @@ sub reset_password :Chained('secure_no_user') :PathPart('reset-password') :Args(
             my $valid_until = $dt->format_cldr($dt->locale->datetime_format_long);
             my $url = $c->uri_for_action('/user/reset_password_confirm',
                                          [ $user->username, $user->reset_token ]);
-            $c->model('Mailer')->send_mail(resetpassword => {
-                                                             lh => $c->stash->{lh},
+            $site->send_mail(resetpassword => {
                                                              to => $user->email,
                                                              from => $site->mail_from_default,
                                                              reset_url => $url,
@@ -201,9 +200,8 @@ sub create :Chained('user') :Args(0) {
 
         if (my $mail_from = $c->stash->{site}->mail_from) {
             my %mail = (
-                        lh => $c->stash->{lh},
                         to => $user->email,
-                        cc => '',
+                        cc => $c->user->get('email'),
                         from => $mail_from,
                         home => $c->uri_for('/'),
                         username  => $user->username,
@@ -211,12 +209,7 @@ sub create :Chained('user') :Args(0) {
                         create_url => $c->uri_for_action('/user/create'),
                         edit_url => $c->uri_for_action('/user/edit', [ $user->id ]),
                        );
-            if (my $usercc = $c->user->get('email')) {
-                if (my $cc = Email::Valid->address($usercc)) {
-                    $mail{cc} = $cc;
-                }
-            }
-            if ($c->model('Mailer')->send_mail(newuser => \%mail)) {
+            if ($c->stash->{site}->send_mail(newuser => \%mail)) {
                 $c->flash->{status_msg} .= "\n" . $c->loc('Email sent!');
             }
             else {
