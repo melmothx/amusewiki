@@ -43,9 +43,14 @@ Notable entries are listed above.
  - https://amusewiki.org/library/ssl-certificates-with-lets-encrypt or
    https://github.com/melmothx/amusewiki-site/blob/master/s/sc/ssl-certificates-with-lets-encrypt.muse
 
-### Offline editing
+### Editing
 
- - https://amusewiki.org/library/offline-editing-via-git or
+ - User manual for the Muse markup:
+   https://amusewiki.org/library/manual or
+   https://github.com/melmothx/amusewiki-site/blob/master/m/ml/manual.muse
+
+ - Offline editing with Git:
+   https://amusewiki.org/library/offline-editing-via-git or
    https://github.com/melmothx/amusewiki-site/blob/master/o/oe/offline-editing-via-git.muse
 
 ### Localization
