@@ -1,0 +1,57 @@
+# AmuseWiki
+
+This is a wiki engine using the Text::Amuse markup (based on and
+mostly compatible with Emacs Muse) and a Git backend. It can work as a
+read-only site, as a moderated wiki, or as a fully open wiki or even
+as a private site. On a single instance you can run as many sites you
+want.
+
+The application is written in Perl and uses the AmuseWikiFarm
+namespace (for legacy reason, as its predecessor used the AmuseWiki
+namespace).
+
+The application has an extensive test suite. However, **do not run
+=make test= in the production directory**. If you want to run the
+tests, do it in a dedicated checkout, as tests leave a lot of files
+behind.
+
+## Documentation
+
+The official documentation can be found on [https://amusewiki.org]. If
+for some reason the site is offline you can find the muse source files
+in the
+[git hub repository](https://github.com/melmothx/amusewiki-site).
+Notable entries are listed above.
+
+### Install and upgrade
+
+ - [https://amusewiki.org/library/install] or
+   [https://github.com/melmothx/amusewiki-site/blob/master/i/il/install.muse]
+
+ - [https://amusewiki.org/library/upgrade-amusewiki] or
+   [https://github.com/melmothx/amusewiki-site/blob/master/u/ua/upgrade-amusewiki.muse]
+
+### Site setup, customization, user roles, SSL certificates
+
+ - [https://amusewiki.org/library/roles] or
+   [https://github.com/melmothx/amusewiki-site/blob/master/r/rs/roles.muse]
+
+ - [https://amusewiki.org/library/site-customization] or
+   [https://github.com/melmothx/amusewiki-site/blob/master/s/sc/site-customization.muse]
+
+ - [https://amusewiki.org/library/ssl-certificates-with-lets-encrypt] or
+   [https://github.com/melmothx/amusewiki-site/blob/master/s/sc/ssl-certificates-with-lets-encrypt.muse]
+
+### Offline editing
+
+ - [https://amusewiki.org/library/offline-editing-via-git] or
+   [https://github.com/melmothx/amusewiki-site/blob/master/o/oe/offline-editing-via-git.muse]
+
+### Localization
+
+ - [https://amusewiki.org/library/localization] or
+   [https://github.com/melmothx/amusewiki-site/blob/master/l/ln/localization.muse]
+
+ - [https://amusewiki.org/library/translating-the-interface] or
+   [https://github.com/melmothx/amusewiki-site/blob/master/t/tt/translating-the-interface.muse]
+

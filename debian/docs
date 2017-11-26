@@ -1,6 +1,5 @@
-README
-LOCALIZATION.txt
+README.mdwn
 script/sync-remote-archive.pl
 *.example
 doc/amusewiki-dbconfig-import.pl
-INSTALL.txt
+

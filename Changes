@@ -13,6 +13,21 @@ dedicated tree.
  - Give access to the site's jobs console to admins (#169)
  - Improve customization of navbar links (#167)
 
+Incompatible change: if you used the configuration file to set the
+SMTP parameters, you need to upgrade the setup.
+
+You need to set the desired parameter as environment variable (in the
+systemd unit file or in the user starting the application). See
+https://metacpan.org/pod/Email::Sender::Manual::QuickStart and
+https://metacpan.org/pod/Email::Sender::Transport::SMTP for details.
+
+Example:
+
+  $ export EMAIL_SENDER_TRANSPORT=SMTP
+  $ export EMAIL_SENDER_TRANSPORT_host=smtp.example.com
+  $ export EMAIL_SENDER_TRANSPORT_port=2525
+
+
 2.094 2017-11-06
 
  - Adjust the jobber behaviour to be more aggressive but not too much
