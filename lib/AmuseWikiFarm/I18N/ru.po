@@ -24,7 +24,7 @@ msgstr "%1 не существует"
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 на мобильных устройствах"
 
 #. (text.pages_estimated)
 msgid "%1 pp."
@@ -64,6 +64,8 @@ msgid ""
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"Список ссылок для вставки в верхнюю полосу. Одна ссылка на линию, сначала "
+"URL, затем метка через пробел, например \"http://test.me Test site\""
 
 #. (home)
 msgid "A new revision has been created at %1"
@@ -99,7 +101,7 @@ msgid "Activate the blog-style look and feel"
 msgstr "Включить оформление в стиле блога"
 
 msgid "Active"
-msgstr ""
+msgstr "Активно"
 
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Добавить обложку (PNG или JPG)"
@@ -111,7 +113,7 @@ msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Добавить вложение (PNG, JPG или PDF)"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Добавить метки обрезки в PDF"
 
 msgid "Add new remote repository"
 msgstr "Добавить новый удалённый репозиторий"
@@ -127,6 +129,7 @@ msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
 msgstr ""
+"Разделять на страницы список текстов, когда число текстов больше чем (целое)"
 
 msgid "Add sections to the bookbuilder"
 msgstr "Добавить разделы в конструктор книг"
@@ -190,6 +193,10 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"Также произвести слайды из документа. Каждый раздел, независимо от его "
+"глубины, произведет слайд. Если текст снаружи раздела проигнорирован, то "
+"если у вас нет разделов, то вы получите пустые слайды. Если вы хотите "
+"исключить разделы, поместите в неё комментарий «noslide»."
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -201,9 +208,9 @@ msgid ""
 msgstr ""
 "URI это строка, которая определяет уникальный идентификатор для текста в "
 "архиве. В теории это может быть всё что угодно, но если вы хотите прописать "
-"её сами, пожалуйста следуйте шаблону: автор, название, язык, возможное число "
-"для устранения неоднозначности, например: errico-malatesta-anarchy-2. "
-"Пожалуйста помните, что обычно в этом нет необходимости"
+"её сами, пожалуйста, следуйте шаблону: автор, название, язык, возможное "
+"число для устранения неоднозначности, например: errico-malatesta-anarchy-2. "
+"Пожалуйста, помните, что обычно в этом нет необходимости"
 
 msgid "Apache is not currently supported"
 msgstr "Apache в данный момент не поддерживается"
@@ -239,13 +246,13 @@ msgid "Authors"
 msgstr "Авторы"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Список авторов и тем"
 
 msgid "Authors for indexing"
 msgstr "Авторы (для индексации)"
 
 msgid "Automatically generated"
-msgstr ""
+msgstr "Сгенерировано автоматически"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
@@ -264,10 +271,10 @@ msgid "Bare HTML, needed by the application"
 msgstr "Чистый HTML, необходим для приложения"
 
 msgid "Beamer color theme"
-msgstr ""
+msgstr "Цветовая схема Beamer"
 
 msgid "Beamer theme"
-msgstr ""
+msgstr "Тема Beamer"
 
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Учёт ширины переплёта в мм (дополнительные внутренние поля)"
@@ -295,10 +302,10 @@ msgid "Build it"
 msgstr "Создать"
 
 msgid "By sku ascending"
-msgstr ""
+msgstr "По номеру по возрастанию"
 
 msgid "By sku descending"
-msgstr ""
+msgstr "По номеру по убыванию"
 
 msgid "By title A-Z"
 msgstr "По названию А-Я"
@@ -307,7 +314,7 @@ msgid "By title Z-A"
 msgstr "По названию Я-А"
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "CSS-тема"
 
 msgid "Cancel"
 msgstr "Отмена"
@@ -455,7 +462,7 @@ msgid "Date of the original publication"
 msgstr "Дата оригинальной публикации"
 
 msgid "Default sorting for the category text list"
-msgstr ""
+msgstr "Порядок по умолчанию для списка категорий текстов"
 
 msgid "Deferred/Deleted texts"
 msgstr "Отложенные/Удалённые тексты"
@@ -475,15 +482,17 @@ msgstr ""
 "потеряете не сохранённые изменения"
 
 msgid "Description"
-msgstr "Описание"
+msgstr "Определение"
 
 msgid "Description item"
-msgstr ""
+msgstr "Пункт списка определений"
 
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
 msgstr ""
+"Списки определений используют двойное двоеточие, чтобы отделять термин от "
+"определения."
 
 msgid "Desired URI"
 msgstr "Желаемый URI"
@@ -499,6 +508,8 @@ msgid ""
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
+"Директория с шаблонами для репозитория сайта, например, \"templates"
+"\" (только ASCII). Не указывайте это если вы не уверены в том, что вы делаете"
 
 msgid "Display url as"
 msgstr "Отобразить URL как"
@@ -507,10 +518,10 @@ msgid "Division factor"
 msgstr "Ширина текстового блока"
 
 msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
+msgstr "Не создавать обложку в начале текста на первой странице"
 
 msgid "Do not enforce save message"
-msgstr ""
+msgstr "Не требовать сообщения для сохранения"
 
 msgid "Done"
 msgstr "Готово"
@@ -534,14 +545,14 @@ msgid "Edit"
 msgstr "Редактировать"
 
 msgid "Edit attachment description"
-msgstr ""
+msgstr "Редактировать описание вложения"
 
 #. ($format->format_name)
 msgid "Edit format %1"
 msgstr "Редактировать формат %1"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "Редактировать полную конфигурацию сайта"
 
 msgid "Edit screen layout options"
 msgstr "Редактировать раскладку элементов на экране"
@@ -584,7 +595,7 @@ msgid "Embed fonts in the EPUB file"
 msgstr "Встроить шрифты в EPUB-файл"
 
 msgid "Enable \"What links here\" feature"
-msgstr "Включить функцию \"ссылки сюда\""
+msgstr "Включить функцию «ссылки сюда»"
 
 msgid "Enable title ordering by SKU"
 msgstr ""
@@ -616,7 +627,7 @@ msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
-msgstr ""
+msgstr "Каждый раздел произведёт слайд. Вам нужны разделы, чтобы это работало."
 
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
@@ -634,7 +645,7 @@ msgid "Existing redirections"
 msgstr "Существующее перенаправление"
 
 msgid "Failed"
-msgstr ""
+msgstr "Неудача"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
@@ -751,7 +762,7 @@ msgid "Full text search"
 msgstr "Полнотекстовый поиск"
 
 msgid "General configuration"
-msgstr ""
+msgstr "Основные настройки"
 
 msgid "Generic (fits in A4 and Letter)"
 msgstr "Универсальный (умещается на A4 и Letter)"
@@ -772,18 +783,19 @@ msgid ""
 msgstr ""
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML для вставки в левую боковую панель"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML для вставки в правую боковую панель"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "HTML для вставки в низ раскладки, над подвалом"
 
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
 msgstr ""
+"HTML для вставки в верх раскладки, между навигационной панелью и баннером"
 
 msgid "HTML/Word Importer"
 msgstr "Импорт HTML/Word"
@@ -801,7 +813,7 @@ msgid "Height:"
 msgstr "Высота:"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
-msgstr ""
+msgstr "Здесь вы можете посмотреть на темы и цветовые схемы Beamer."
 
 msgid ""
 "Here you can save or load your templates. The text list\n"
@@ -816,7 +828,7 @@ msgid "Higher division factor means narrower margins"
 msgstr "Чем больше число — тем уже поля"
 
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "Как мне создать стартовую страницу?"
 
 msgid "How do I create a special page?"
 msgstr "Как мне создать специальную страницу?"
@@ -876,12 +888,16 @@ msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
 "roughly this length"
 msgstr ""
+"Если установлено в значение больше 0, автоматически генерировать тизер "
+"примерно такой длины"
 
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
 msgstr ""
+"Если публикация текста отложена, вывести его с тизером и обложкой без "
+"предоставления доступа к содержимому"
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr "Если редактор указывает e-mail, то он добавляется в поле CC."
@@ -918,6 +934,8 @@ msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"Если вы изменили какие-либо настройки форматирования, такие как шрифты или "
+"размеры бумаги, вы можете захотеть пересобрать производные файлы"
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
@@ -938,10 +956,14 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Если вы используете обложку, изображение также будет помещено на первую "
+"страницу PDF. Вы можете установить ширину, добавив следующую линию в "
+"заголовок, где значение это доля ширина, занимаемой текстом. 1 это полная "
+"ширина, 0.5 половина и т.д."
 
 #. (reset_url)
 msgid "If you want to proceed, please visit the following url: %1"
-msgstr "Если вы хотите продолжить, пожалуйста пройдите по ссылке: %1"
+msgstr "Если вы хотите продолжить, пожалуйста, пройдите по ссылке: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
@@ -953,6 +975,9 @@ msgid ""
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
+"Если ваш сайт многоязыковой, то вы можете создать отдельную стартовую "
+"страницу для каждого языка, например \"/special/index-ru\", т.е. URI \"index"
+"\", знак минуса и код языка."
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -999,7 +1024,7 @@ msgid "Inline elements"
 msgstr "Символьные стили"
 
 msgid "Insert the file into the body"
-msgstr ""
+msgstr "Вставить файл в текст"
 
 msgid "Internal list of translations"
 msgstr "Внутренний список или переводы"
@@ -1085,13 +1110,13 @@ msgid "Latest entries"
 msgstr "Последние загруженные"
 
 msgid "Layout"
-msgstr ""
+msgstr "Раскладка"
 
 msgid "Leave it blank if you want it published right away."
 msgstr "Оставьте поле пустым, если хотите опубликовать в таком виде"
 
 msgid "Leave this empty to have it automatically generated"
-msgstr ""
+msgstr "Оставьте поле пустым, чтобы это было сгенерировано автоматически"
 
 msgid "Letter imposed PDF"
 msgstr "Спуск полос на Letter"
@@ -1112,14 +1137,14 @@ msgid "Lists"
 msgstr "Списки"
 
 msgid "Load"
-msgstr ""
+msgstr "Загрузить"
 
 msgid "Load another session by token"
-msgstr "Загрузить другую секцию по токену"
+msgstr "Загрузить другую сессию по токену"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
-msgstr ""
+msgstr "Загружена конфигурация «%1»"
 
 msgid "Log in"
 msgstr "Вход"
@@ -1146,7 +1171,7 @@ msgid "Mail from"
 msgstr "Письмо от"
 
 msgid "Main canonical hostname, without protocol"
-msgstr ""
+msgstr "Основное каноничное имя хоста, без протокола"
 
 msgid "Main font"
 msgstr "Основной шрифт"
@@ -1191,7 +1216,7 @@ msgid "Mode"
 msgstr "Режим"
 
 msgid "Moderated wiki"
-msgstr "Вики модератора"
+msgstr "Модерируемая вики"
 
 msgid "Mono font"
 msgstr "Моноширинный шрифт"
@@ -1212,7 +1237,7 @@ msgid "My description"
 msgstr "Моё описание"
 
 msgid "N/A"
-msgstr ""
+msgstr "Н/Д"
 
 msgid "Name"
 msgstr "Имя"
@@ -1226,9 +1251,11 @@ msgstr "Не создавать содержание"
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
 msgstr ""
+"Никогда не генерировать стандартную последнюю страницу с заголовком/автором/"
+"примечаниями/логотипом/именем сайта"
 
 msgid "New"
-msgstr ""
+msgstr "Новый"
 
 msgid "New revision"
 msgstr "Новая правка"
@@ -1258,7 +1285,7 @@ msgid "No result found!"
 msgstr "Ничего не найдено!"
 
 msgid "No revisions to show"
-msgstr ""
+msgstr "Нет редакций для показа"
 
 msgid "No text found!"
 msgstr "Текст не найден!"
@@ -1274,6 +1301,8 @@ msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
 msgstr ""
+"Ещё не завершено! Пожалуйста, посмотрите на текст и нажмите на «%1», чтобы "
+"завершить отправку!"
 
 msgid "Notes"
 msgstr "Дополнительная информация"
@@ -1288,7 +1317,7 @@ msgid "Notify to"
 msgstr "Оповестить"
 
 msgid "Now you can proceed to login."
-msgstr ""
+msgstr "Теперь вы можете войти."
 
 msgid "Number of jobs"
 msgstr "Число заданий"
@@ -1312,7 +1341,7 @@ msgid "Open wiki"
 msgstr "Открытая вики"
 
 msgid "Option templates"
-msgstr ""
+msgstr "Шаблоны настроек"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1348,7 +1377,7 @@ msgid "PDF"
 msgstr "PDF"
 
 msgid "PDF logo"
-msgstr ""
+msgstr "Логотип PDF"
 
 msgid "PDFs cannot be used in the body."
 msgstr "PDF не могут быть использованы в теле текста"
@@ -1362,7 +1391,7 @@ msgid "Page not found!"
 msgstr "Страница не найдена"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Страница, с которой начинать главу"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
@@ -1389,7 +1418,7 @@ msgstr ""
 "пустых страниц. Также всю книгу можно поместить в одну тетрадку."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
+msgstr "Толщина бумаги (0,10 должно подходить для типичной 80г/м2 бумаги)"
 
 msgid "Paragraphs"
 msgstr "Параграфы"
@@ -1401,7 +1430,7 @@ msgid "Part, for larger books only"
 msgstr "Часть (только для больших текстов)"
 
 msgid "Partial selection"
-msgstr ""
+msgstr "Частичное выделение"
 
 msgid "Password"
 msgstr "Пароль"
@@ -1432,10 +1461,10 @@ msgid "Picture"
 msgstr "Изображение"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Поместить его в текст с описанием:"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Поместить его в текст без описания:"
 
 msgid "Plain PDF"
 msgstr "Обычный PDF"
@@ -1444,12 +1473,14 @@ msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr ""
+"Пожалуйста, проверьте свой ящик, мы попытались доставить письмо со ссылкой "
+"сброса пароля на указанный вами адрес"
 
 msgid "Please choose the Beamer color theme"
-msgstr ""
+msgstr "Полажуйста, выберите цветовую схему Beamer"
 
 msgid "Please choose the Beamer theme"
-msgstr ""
+msgstr "Пожалуйста, выберите тему Beamer"
 
 msgid "Please choose the font size"
 msgstr "Пожалуйста, выберите размер шрифта"
@@ -1483,6 +1514,9 @@ msgid ""
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Пожалуйста, оставьте нам имя пользователя. Это *не* должен быть почтовый "
+"адрес. Просто любое имя, чтобы мы знали, что несколько загрузок поступили от "
+"одного и того же человека."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1500,14 +1534,14 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
-"Пожалуйста, имейте в виду, что если вы видите \"Опубликовать принудительно\" "
+"Пожалуйста, имейте в виду, что если вы видите «Опубликовать принудительно» "
 "как действие, это означает, что одна правка была заменена другой, так "
 "опубликования этого, вы в конечном итоге возвращаясь с предыдущий. "
 "Старайтесь избегать этого, если вы не знаете, что делаете."
 
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
-"Пожалуйста оставьте электронную почту, чтобы с вами можно было связаться"
+"Пожалуйста, оставьте электронную почту, чтобы с вами можно было связаться"
 
 msgid ""
 "Please note that PDFs are external files and cannot be\n"
@@ -1515,6 +1549,9 @@ msgid ""
 "        not embed them. If you need that, you should split the PDF in\n"
 "        images and upload those instead."
 msgstr ""
+"Помните, что PDF это внешние файлы и не могут быть полностью интегрированы в "
+"документ, поэтому сгенерированные файлы не будут включать их. Если вам это "
+"нужно, разделите PDF на изображения и загрузите их."
 
 msgid ""
 "Please note that the twoside and binding correction options follow\n"
@@ -1552,21 +1589,23 @@ msgid ""
 "  the bare page name as shown above. External redirecting is not\n"
 "  supported."
 msgstr ""
+"Помните: без какого-либо префикса, протокола или хоста, просто имя страницы "
+"как показано выше. Внешние перенаправления не поддерживаются."
 
 msgid "Please prove you are a human"
 msgstr "Пожалуйста, докажите что вы человек"
 
 msgid "Please reload your page"
-msgstr "Пожалуйста перезагрузите страницу"
+msgstr "Пожалуйста, перезагрузите страницу"
 
 msgid "Please select"
-msgstr "Пожалуйста выберите"
+msgstr "Пожалуйста, выберите"
 
 msgid "Please select the desired fonts"
-msgstr "Пожалуйста выберите понравившийся шрифт"
+msgstr "Пожалуйста, выберите понравившийся шрифт"
 
 msgid "Please select the signature size:"
-msgstr "Пожалуйста выберите количество страниц в тетрадках"
+msgstr "Пожалуйста, выберите количество страниц в тетрадках"
 
 msgid ""
 "Please select the size of each page including the crop marks, before the "
@@ -1578,15 +1617,17 @@ msgid ""
 "        title and eventually a number if the URI already exists is\n"
 "        usually a good choice"
 msgstr ""
+"Пожалуйста, укажите желаемую ссылку. Автор (если есть), заголовок и, "
+"возможно, номер, если такой URI уже существует является хорошим решением"
 
 msgid "Please setup the Beamer layout"
-msgstr ""
+msgstr "Пожалуйста, установите раскладку Beamer"
 
 msgid "Please upload your file again!"
-msgstr "Пожалуйста загрузите ваш файл снова!"
+msgstr "Пожалуйста, загрузите ваш файл снова!"
 
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Поэзия, библиографии, пьесы, блоки кода"
 
 msgid "Pointing to"
 msgstr "Указывает на"
@@ -1598,6 +1639,8 @@ msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"Префикс для упорядоченного списка может быть «1.», «a.», «A.», «i.», «I.», в "
+"зависимости от типа списка."
 
 msgid "Preview"
 msgstr "Предпросмотр"
@@ -1612,13 +1655,13 @@ msgid "Priority"
 msgstr "Приоритет"
 
 msgid "Private"
-msgstr ""
+msgstr "Приватный"
 
 msgid "Procedure"
 msgstr "Процедура"
 
 msgid "Produce slides."
-msgstr ""
+msgstr "Произвести слайды."
 
 msgid "Produced"
 msgstr "Изготовлено"
@@ -1757,13 +1800,13 @@ msgid "Reset password"
 msgstr "Сбросить пароль"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Ограничить настройки переменных"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "Ограничить настройки формата"
 
 msgid "Results per page:"
-msgstr ""
+msgstr "Результатов на странице:"
 
 msgid "Retrieved on DATE from URL"
 msgstr "Скопировано ДАТА c ССЫЛКА"
@@ -1782,7 +1825,7 @@ msgid "Roles"
 msgstr "Роли"
 
 msgid "Running headings"
-msgstr ""
+msgstr "Бегущие заголовки"
 
 msgid "SSL CA certificate path (Apache)"
 msgstr "Путь к SSL-сертификату УЦ (Apache)"
@@ -1791,7 +1834,7 @@ msgid "SSL certificate path (Apache)"
 msgstr "Путь к SSL-сертификату (Apache)"
 
 msgid "SSL chained certificate path (Nginx)"
-msgstr ""
+msgstr "Путь к цепочке SSL-сертификатов (Nginx)"
 
 msgid "SSL configuration"
 msgstr "Конфигурация SSL"
@@ -1806,11 +1849,11 @@ msgid "Save"
 msgstr "Опубликовать"
 
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "Сохранить текущие настройки с именем"
 
 #. ($pname)
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "Сохранена конфигурация «%1»"
 
 msgid "Search"
 msgstr "Поиск"
@@ -1852,7 +1895,7 @@ msgid "Separate header fields"
 msgstr "Разделить поля шапки"
 
 msgid "Session sharing"
-msgstr ""
+msgstr "Разделение сессий"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Установите дату, чтобы текст опубликовался позже."
@@ -1873,10 +1916,10 @@ msgid "Show preview in other tab"
 msgstr "Предварительный просмотр в другой вкладке"
 
 msgid "Show text type and number of pages in the listing"
-msgstr ""
+msgstr "Показывать тип текста и число страниц в списке"
 
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "Показывать информацию о текстах внизу текстов"
 
 msgid "Single bars"
 msgstr "Одна вертикальная линия"
@@ -1928,10 +1971,10 @@ msgid "Someone, probably you, has requested a password reset for %1 at %2."
 msgstr "Кто-то, возможно вы, запросил сброс пароля для %1 на %2."
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "Извините, слишком много задач в очереди, пожалуйста, попробуйте позже!"
 
 msgid "Sorting:"
-msgstr ""
+msgstr "Упорядочить по:"
 
 msgid "Source"
 msgstr "Источник"
@@ -1955,7 +1998,7 @@ msgid "Special pages"
 msgstr "Специальные страницы"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "Укажите список языков через пробел, чтобы активировать их."
 
 msgid "Stale editing"
 msgstr "Устаревшие редакции"
@@ -1964,10 +2007,10 @@ msgid "Standalone HTML (printer-friendly)"
 msgstr "HTML (подходит для печати)"
 
 msgid "Standard"
-msgstr ""
+msgstr "Стандарт"
 
 msgid "Started"
-msgstr ""
+msgstr "Начато"
 
 msgid "Static page without javascript"
 msgstr "Статическая страница без javascript"
@@ -2016,7 +2059,7 @@ msgid "Tag cloud with authors"
 msgstr "Облако тегов с авторами"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Облако тегов с темами"
 
 msgid "Task"
 msgstr "Задачи"
@@ -2025,13 +2068,13 @@ msgid "TeX"
 msgstr "TeX"
 
 msgid "Teaser"
-msgstr ""
+msgstr "Тизер"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "Тизер-изображение"
 
 msgid "Term"
-msgstr ""
+msgstr "Термин"
 
 msgid "Test"
 msgstr "Тест"
@@ -2040,7 +2083,7 @@ msgid "Tested applications, in this order of preference"
 msgstr "Протестированные приложения, в порядке предпочтения"
 
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Текст, отформатированный с помощью разметки"
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
@@ -2069,18 +2112,20 @@ msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
-msgstr ""
+msgstr "Описание %1 было обновлено"
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Загруженный файл не является HTML-файлом!"
 
 msgid "The following values are used to generate the webserver configuration."
-msgstr ""
+msgstr "Следующие значения испльзуются для генерации настроек вебсервера."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
 msgstr ""
+"Сгенерированная конфигурация вебсервера будет перенаправлять все HTTP-"
+"запросы на HTTPS"
 
 #. (valid)
 msgid "The link is valid until %1 (one hour from now)"
@@ -2108,13 +2153,13 @@ msgstr "Для правки есть следующие сообщения"
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
-msgstr ""
+msgstr "Сайт будет показывать PDF с эскизом в конце документа."
 
 msgid "The text structure is shown below."
 msgstr "Структура текста показана ниже."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "Текст для показа на предпросмотре домашней страницы"
 
 msgid "The text was added to the bookbuilder"
 msgstr ""
@@ -2138,7 +2183,7 @@ msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
 msgstr ""
-"Вебсервер должен быть перенастроен. Пожалуйста запустите из-под root "
+"Вебсервер должен быть перенастроен. Пожалуйста, запустите из-под root "
 "следующие команды:"
 
 msgid "The whole book in as single signature"
@@ -2186,6 +2231,10 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"Это письмо было отправлено вам для оповещения о создании нового текста, даже "
+"если заргузка ещё не завершена и пользователь должен завершить загрузку. "
+"Другой письмо скоро придёт. Если это не произойдёт, это означает, что "
+"загрузка была заброшена и вам стоит проверить её."
 
 msgid "This revision is already published, ignoring changes"
 msgstr "Правка уже опубликована (изменения проигнорированы)"
@@ -2200,13 +2249,15 @@ msgid "This revision is being edited by someone else!"
 msgstr "Правка редактируется кем-то другим"
 
 msgid "This section will not produce a slide"
-msgstr ""
+msgstr "Этот раздел не произведёт слайд"
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
 "and\n"
 "  password to access the OPDS."
 msgstr ""
+"Этот сайт приватный и мобильные приложения должны спрашивать ваше имя "
+"пользователя и пароль для доступа к OPDS."
 
 msgid "This text does not exist"
 msgstr "Текст не существует"
@@ -2228,10 +2279,10 @@ msgstr "Этот текст ещё не опубликован"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Текст будет отложен до %1"
 
 msgid "Thumbnail"
-msgstr ""
+msgstr "Эскиз"
 
 msgid "Time is optional."
 msgstr "Время можно не указывать."
@@ -2240,13 +2291,13 @@ msgid "Title"
 msgstr "Название"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "Заголовок и глава. Для одностороннего документа: глава"
 
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "Заголовок и раздел. Для одностороннего документа: раздел."
 
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "Заголовок и подзаголовок. Для одностороннего документа: заголовок."
 
 msgid "Title for sorting"
 msgstr "Название (для сортировки)"
@@ -2283,6 +2334,8 @@ msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
 msgstr ""
+"Чтобы сохранить или обновить шаблоны, вы должны сохранить опции с помощью "
+"кнопки «%1»"
 
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Для просмотра внесённых изменений пройдите по следующей ссылке"
@@ -2317,6 +2370,9 @@ msgid ""
 "            Gmaps into widgets (affects site display only, static\n"
 "            formats have the link)"
 msgstr ""
+"Превращать ссылки без описания на YouTube, Vimeo, Gmaps в виджеты (влияет "
+"только на отображение на сайте, статические форматы будут использовать "
+"ссылку)"
 
 msgid "Two side layout"
 msgstr "Внутренние и внешние поля разной величины"
@@ -2343,7 +2399,7 @@ msgid "Unable to load the bookbuilder session"
 msgstr "Невозможно загрузить сессию конструктора книг"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
+msgstr "PDF без имени сайта, логотипа и т.д."
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
@@ -2354,7 +2410,7 @@ msgid "Unique ID for the text"
 msgstr "Уникальный ID для текста"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Неограничено"
 
 msgid "Unordered List"
 msgstr "Маркированный список"
@@ -2394,7 +2450,7 @@ msgid "Use SSL for authenticated users"
 msgstr "Использовать SSL для авторизованных пользователей"
 
 msgid "Use it as a teaser image adding to the header this line:"
-msgstr ""
+msgstr "Используйте это как обложку, добавив следующую строку в заголовок"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
@@ -2443,6 +2499,10 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Используя этот токен, вы можете загрузить настройки конструктора книг и "
+"список текстов на другом компьютере, или поделиться им с кем-либо ещё. "
+"Просто запишите его и загрузите на другом компьютере используя следующую "
+"форму."
 
 msgid "Verbatim block"
 msgstr "Блок стенограммы"
@@ -2486,6 +2546,8 @@ msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
 msgstr ""
+"С помощью тега «verbatim» вы можете избежать интерпретации разметки, обычно "
+"не нужно"
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
@@ -2504,6 +2566,8 @@ msgid ""
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"Оборачивающие теги не могут использоваться внутри окружений, которые требуют "
+"отступа (в частности, внутри списков)"
 
 msgid "Wrong answer!"
 msgstr "Неправильный ответ!"
@@ -2526,12 +2590,17 @@ msgid ""
 "    appear, you have to place somewhere in the body or in the header,\n"
 "    depending on their purpose. See the examples below."
 msgstr ""
+"Вы присоединили одно или несколько изображений. Этого не достаточно! Чтобы "
+"они появились, вы должны поместить их куда-нибудь в текст или заголовок, в "
+"зависимости от их цели. Смотрите примеры ниже."
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
+"Вы ДОЛЖНЫ указать причину, иначе линия не приведёт ни к какому эффекту. "
+"Порядок директив (\"#title\", \"#lang\" и т.д.) не важен."
 
 msgid "You are already logged in"
 msgstr "Вы уже вошли"
@@ -2541,6 +2610,9 @@ msgid ""
 "other information needed for the front cover (author, subtitle, date) and "
 "the back cover (source and notes)."
 msgstr ""
+"Вы создаёте коллекцию. Пожалуйста, укажите заголовок и, опционально, любую "
+"другую информацию, необходимую для первой (автор, подзаголовок, дата) и "
+"последней (источник и примечания) страницы."
 
 msgid "You are logged in now!"
 msgstr "Вы вошли!"
@@ -2576,6 +2648,9 @@ msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
+"Вы переслали пароль по незащищённому соединению. Пожалуйста, переключитесь "
+"на HTTPS, зайдите, и измените свой пароль немедленно. Это не должно "
+"происходить."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
@@ -2591,7 +2666,7 @@ msgid "Your chapter here..."
 msgstr "Ваша глава здесь"
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Ваш текущий токен конструктора книг:"
 
 msgid "Your email"
 msgstr "Ваша электронная почта"
@@ -2627,19 +2702,19 @@ msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr "ZIP архив с исходниками. Необходим для конструктора книг"
 
 msgid "aborted"
-msgstr ""
+msgstr "отменено"
 
 msgid "about, links..."
 msgstr "о проекте, ссылки..."
 
 msgid "active"
-msgstr ""
+msgstr "активно"
 
 msgid "affects only the frontend webserver configuration"
-msgstr ""
+msgstr "влияет только на настройку вебсервера"
 
 msgid "any"
-msgstr ""
+msgstr "любой"
 
 msgid "automatically generated if not present, using author and title"
 msgstr ""
@@ -2665,7 +2740,7 @@ msgid "displayed text"
 msgstr "отображаемый текст"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "отредактируйте, зафиксируйте изменения..."
 
 msgid "editing"
 msgstr "редактирование"
@@ -2686,7 +2761,7 @@ msgid "for poetry"
 msgstr "для поэзии"
 
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "общее разделение на разделы, хорошо для статей"
 
 msgid ""
 "if by chance another text with the same author and title exists, choose the "
@@ -2701,6 +2776,8 @@ msgstr "если репозиторий экспортирован"
 
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
+"если вы хотите использовать пользовательский размер, вы должны указать как "
+"ширину, так и высоту"
 
 msgid "left"
 msgstr ""
@@ -2709,7 +2786,7 @@ msgid "mandatory"
 msgstr "обязательно"
 
 msgid "markup *not* interpreted"
-msgstr ""
+msgstr "разметка *не* интерпретируется"
 
 msgid "new-example-uri"
 msgstr ""
@@ -2756,7 +2833,7 @@ msgid "revision"
 msgstr "правка"
 
 msgid "right"
-msgstr ""
+msgstr "правая"
 
 #. (args)
 msgid "string"
