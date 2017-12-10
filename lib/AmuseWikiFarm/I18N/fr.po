@@ -508,7 +508,7 @@ msgid "Differences"
 msgstr "Différences"
 
 msgid ""
-"Directory with templates in the site repositoy, e.g.\n"
+"Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""

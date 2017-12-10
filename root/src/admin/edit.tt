@@ -100,7 +100,7 @@
 
     <div class="form-group">
       <label for="ttdir" class="col-sm-6 control-label">
-        [% loc('Directory with templates in the site repositoy, e.g.
+        [% loc('Directory with templates in the site repository, e.g.
         "templates" (ASCII only). Do not set it unless you know
         exactly what you are doing') %]
       </label>
