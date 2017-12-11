@@ -109,6 +109,7 @@ if (!$cgitsetup->cgi_exists || $reinstall) {
 }
 
 sub compile {
+    my $gnumake = `which gmake` eq '' ? 'make' : 'gmake'; # cgit Makefile require GNU Make extensions
     chdir $paths{src} or die $!;
     print getcwd() . "\n";
     unless (-d $paths{cgitsrc}) {
@@ -124,10 +125,10 @@ sub compile {
     sysexec(qw/git checkout/, $cgitversion);
     sysexec(qw/git submodule update/);
     chdir $paths{gitsrc} or die $!;
-    sysexec(qw/make clean/);
+    sysexec($gnumake, 'clean');
     chdir $paths{cgitsrc} or die $!;
-    sysexec(qw/make clean/);
-    sysexec('make',
+    sysexec($gnumake, 'clean');
+    sysexec($gnumake,
             "CGIT_SCRIPT_PATH=$paths{www}",
             "CGIT_CONFIG=$paths{cgitrc}",
             "CACHE_ROOT=$paths{cache}",
