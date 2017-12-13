@@ -21,8 +21,8 @@ The official documentation can be found on https://amusewiki.org
 
 If for some reason the site is offline you can find the muse source
 files in the
-[git hub repository](https://github.com/melmothx/amusewiki-site).
-Notable entries are listed above.
+[GitHub repository](https://github.com/melmothx/amusewiki-site).
+Notable entries are listed below.
 
 ### Install and upgrade
 
