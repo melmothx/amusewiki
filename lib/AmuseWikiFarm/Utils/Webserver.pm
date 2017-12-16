@@ -431,7 +431,6 @@ EOF
     rewrite ^/authors/(.*)\\.html /category/author/\$1 permanent;
     # END LEGACY STUFF
 
-    # deny direct access to the cgi file
 INCLUDE
 
     foreach my $cdn_or_local (qw/ckeditor highlight/) {
@@ -453,6 +452,7 @@ INCLUDE
     location /.well-known/acme-challenge/ {
         root $acme_root;
     }
+    # deny direct access to the CGI file
     location /git/cgit.cgi {
         deny all;
     }
