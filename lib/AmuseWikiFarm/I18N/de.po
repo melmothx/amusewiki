@@ -577,7 +577,7 @@ msgid "Enable title ordering by SKU"
 msgstr ""
 
 msgid "Erase this revision"
-msgstr "Lösche diese Änderung"
+msgstr "Diese Änderung löschen: "
 
 msgid "Error converting the upload file. Is it an HTML file?"
 msgstr ""
@@ -1216,7 +1216,7 @@ msgid "New site id"
 msgstr "Neue Seitenid"
 
 msgid "Newer first"
-msgstr ""
+msgstr "Neue zuerst"
 
 msgid "Newer texts"
 msgstr "Neue Texte"
@@ -1282,7 +1282,7 @@ msgid "OPDS"
 msgstr "OPDS"
 
 msgid "Older first"
-msgstr ""
+msgstr "Ältere zuerst"
 
 msgid "Older texts"
 msgstr "Ältere Texte"
@@ -1680,7 +1680,7 @@ msgid "Rebuilding"
 msgstr ""
 
 msgid "Recheck"
-msgstr "Nachprüfen"
+msgstr "Erneut prüfen"
 
 msgid "Redirections"
 msgstr "Umleitungen"
@@ -1730,7 +1730,7 @@ msgid "Restricted format options"
 msgstr ""
 
 msgid "Results per page:"
-msgstr ""
+msgstr "Ergebnisse pro Seite:"
 
 msgid "Retrieved on DATE from URL"
 msgstr "Entnommen am DATUM von URL"
@@ -1746,7 +1746,7 @@ msgid "Revision for %1 has been deleted"
 msgstr "Änderung von %1 wurde gelöscht"
 
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
 msgid "Running headings"
 msgstr ""
@@ -1829,16 +1829,16 @@ msgid "Show cheatsheet"
 msgstr ""
 
 msgid "Show differences in other tab"
-msgstr "Zeige Unterschiede in anderem Tab"
+msgstr "Unterschiede in anderem Tab anzeigen"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Filter anzeigen"
 
 msgid "Show options"
-msgstr "Zeige Optionen"
+msgstr "Optionen anzeigen"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Vorschau in anderem Tab anzeigen"
 
 msgid "Show text type and number of pages in the listing"
 msgstr ""
@@ -1901,7 +1901,7 @@ msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
 msgid "Sorting:"
-msgstr ""
+msgstr "Sortierung:"
 
 msgid "Source"
 msgstr "Quelle"
