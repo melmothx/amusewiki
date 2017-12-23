@@ -42,6 +42,7 @@ sub process {
                 svg => 'image/svg+xml',
                 ttf => 'application/font-sfnt',
                 woff => 'application/font-woff',
+                woff2 => 'font/woff2',
                 torrent => 'application/x-bittorrent',
                };
 

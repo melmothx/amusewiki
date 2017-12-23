@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 88;
+use Test::More tests => 92;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/write_file read_file/;
@@ -48,6 +48,7 @@ my @good = (qw/test.torrent test.ico
                test.jpg test.jpeg test.gif test.png
                test.ttf test.woff test.otf
                test.js test.css
+               test.woff2
               /);
 my @bad = (".tryme.torrent", "test me.exe", "hullo_therer.ciao", "lexicon.json",
            "fontspec.json", "file.exe", "adsf.", "test.txt");
