@@ -597,6 +597,8 @@ Makefile.PL
 MANIFEST
 mkits/commit/body.txt
 mkits/commit/manifest.json
+mkits/git_action/body.txt
+mkits/git_action/manifest.json
 mkits/newtext/body.txt
 mkits/newtext/manifest.json
 mkits/newuser/body.txt

@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 53;
+use Test::More tests => 58;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -114,11 +114,18 @@ $mech->set_fields(email => 'uploader@amusewiki.org',
                   attachment => 't/files/shot.png');
 $mech->click("commit");
 
+ok $site->mail_notify;
+ok $site->mail_from;
+$site->repo_git_pull;
+
+$site->update({ mail_from => undef });
+# no mail;
+$site->repo_git_pull;
 
 
 {
     my @mails = Email::Sender::Simple->default_transport->deliveries;
-    is scalar(@mails), 7, "mails sent" or die Dumper(\@mails);
+    is scalar(@mails), 8, "mails sent" or die Dumper(\@mails);
     if (@mails and my $sent = shift @mails) {
         ok ($sent, "Email sent") and diag $sent->{email}->as_string;
         my $body = $sent->{email}->as_string;
@@ -190,5 +197,13 @@ $mech->click("commit");
           "Found attachment";
         diag $body;
     }
+    if (@mails and my $sent = shift @mails) {
+        ok ($sent, "The application sent the mail");
+        my $body = $sent->{email}->as_string;
+        ok ($body);
+        like $body, qr{subject: \[0mail0\.amusewiki\.org\] git pull origin}i;
+        diag $body;
+    }
+
 
 }
