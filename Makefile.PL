@@ -99,10 +99,10 @@ requires 'HTML::Parser';
 requires 'HTML::Tree';
 
 # our own dogfood
-requires 'Text::Amuse' => '0.90';
+requires 'Text::Amuse' => '0.94';
 requires 'PDF::Imposition' => '0.24';
-requires 'Text::Amuse::Compile' => '0.97';
-requires 'Text::Amuse::Preprocessor' => '0.41';
+requires 'Text::Amuse::Compile' => '0.99';
+requires 'Text::Amuse::Preprocessor' => '0.51';
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
