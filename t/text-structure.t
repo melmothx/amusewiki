@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 32;
+use Test::More tests => 33;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use lib catdir(qw/t lib/);
@@ -208,6 +208,13 @@ foreach my $muse (@tests) {
     foreach my $el (@new) {
         delete $el->{part_size};
         delete $el->{toc_index};
+
+        if ($el->{part_title} =~ m/Subsection 3\.0\.1/) {
+            like $el->{part_title}, qr{\[1\]}, "Found the footnote in the new structure";
+            # the deprecated method uses a routine which with new
+            # Text::Amuse strip the footnotes.
+            $el->{part_title} =~ s/Subsection 3\.0\.1 \[1\]/Subsection 3.0.1/;
+        }
     }
     is_deeply(\@new, \@old);
     diag Dumper($title->_parse_text_structure);
