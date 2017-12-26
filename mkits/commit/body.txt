@@ -1,4 +1,5 @@
-***** [% lh.loc('Changes for [_1]', document_uri) %] *****
+[% lh.loc('Changes for [_1]', author_title) %]
+[% document_uri %]
 
 [% IF revision_is_new %][% lh.loc('This text is new') %].[% END %]
 

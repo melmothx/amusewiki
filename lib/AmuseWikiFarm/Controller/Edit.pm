@@ -413,6 +413,7 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
                                 to => $mail_to,
                                 from => $mail_from,
                                 subject => $revision->title->full_uri,
+                                author_title => $revision->title->author_title,
                                 document_uri => $c->uri_for($revision->title->full_uri),
                                 cc => $params->{email},
                                 revision_is_new => $revision->is_new_text || 0,

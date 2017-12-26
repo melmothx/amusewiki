@@ -1458,6 +1458,21 @@ sub teaser_cleanup_body {
     }
 }
 
+sub author_title {
+    my $self = shift;
+    if (my $title = $self->title) {
+        if (my $author = $self->author) {
+            return $author . ' - ' . $title;
+        }
+        else {
+            return $title;
+        }
+    }
+    else {
+        return $self->uri;
+    }
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
