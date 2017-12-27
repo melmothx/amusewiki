@@ -119,6 +119,12 @@
   </div>
   [% END %]
 
+  [% IF text.f_class == 'text' %]
+  <div>
+    [%- site.html_regular_page_bottom -%]
+  </div>
+  [% END %]
+
   [% IF text.f_class == 'special' %]
   <script>
     $('.table-of-contents').remove();
@@ -219,11 +225,6 @@
 [% END %]
 
 [% IF text.f_class == 'text' %]
-
-<div>
-  [%- site.html_regular_page_bottom -%]
-</div>
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('.amw-register-stat').click(function() {
