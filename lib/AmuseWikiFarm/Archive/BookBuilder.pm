@@ -358,6 +358,10 @@ default to false.
 
 =item sansfontsections
 
+=item nobold
+
+=item secondary_footnotes_alpha
+
 =item headings
 
 =item cover
@@ -422,6 +426,19 @@ has sansfontsections => (
                          isa => Bool,
                          default => sub { 0 },
                         );
+
+has nobold => (
+               is => 'rw',
+               isa => Bool,
+               default => sub { 0 },
+              );
+
+has secondary_footnotes_alpha => (
+                                  is => 'rw',
+                                  isa => Bool,
+                                  default => sub { 0 },
+                                 );
+
 
 
 # imposer options
@@ -1083,6 +1100,8 @@ sub profile_methods {
               nofinalpage
               impressum
               sansfontsections
+              nobold
+              secondary_footnotes_alpha
               headings
               imposed
               signature_2up
@@ -1148,6 +1167,9 @@ sub as_job {
                                     # 0.97
                                     impressum   => $self->impressum,
                                     sansfontsections => $self->sansfontsections,
+                                    # 0.99
+                                    nobold => $self->nobold,
+                                    secondary_footnotes_alpha => $self->secondary_footnotes_alpha,
 
                                     ($self->is_single_file ? ()
                                      : (
