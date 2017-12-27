@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 111;
+use Test::More tests => 116;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -72,6 +72,7 @@ is $mech->response->header('X-XSS-Protection'), 0, "XSS protection is disabled";
 
 
 my $html_injection = q{<script>alert('hullo')</script>};
+my $html_regular_injection = q{<script>alert('hello!')</script>};
 my $links = <<LINKS;
 http://sandbox.amusewiki.org Sandbox
 http://www.amusewiki.org WWW
@@ -80,6 +81,7 @@ LINKS
 
 $mech->submit_form(with_fields => {
                                    html_special_page_bottom => $html_injection,
+                                   html_regular_page_bottom => $html_regular_injection,
                                    site_links => $links,
                                   },
                    button => 'edit_site');
@@ -88,12 +90,17 @@ is $mech->response->header('X-XSS-Protection'), 0, "XSS protection is disabled";
 
 $mech->get_ok('/special/index');
 $mech->content_contains($html_injection, "Found HTML");
+$mech->content_lacks($html_regular_injection, "No regular HTML in /special");
 $mech->content_contains('<a href="http://sandbox.amusewiki.org">Sandbox</a>');
 $mech->content_contains('<a href="http://www.amusewiki.org">WWW</a>');
+$mech->get_ok('/library/second-test');
+$mech->content_contains($html_regular_injection, "Regular HTML in /libary");
+
 
 $mech->get_ok('/admin/sites/edit/0blog0');
 $mech->submit_form(with_fields => {
                                    html_special_page_bottom => '',
+                                   html_regular_page_bottom => '',
                                    site_links => '',
                                   },
                    button => 'edit_site');
@@ -101,6 +108,8 @@ $mech->get_ok('/special/index');
 $mech->content_lacks($html_injection, "HTML wiped");
 $mech->content_lacks('<a href="http://sandbox.amusewiki.org">Sandbox</a>');
 $mech->content_lacks('<a href="http://www.amusewiki.org">WWW</a>');
+$mech->get_ok('/library/second-test');
+$mech->content_lacks($html_regular_injection, "Regular HTML in /libary");
 
 
 foreach my $sitespec ({

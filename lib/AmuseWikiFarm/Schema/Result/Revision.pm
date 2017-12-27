@@ -476,6 +476,7 @@ sub edit {
     if ($is_ref and $is_ref eq 'HASH') {
         foreach my $k (qw/fix_links fix_typography
                           fix_nbsp remove_nbsp
+                          show_nbsp
                           fix_footnotes/) {
             $ppargs{$k} = $string->{$k};
         }

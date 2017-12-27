@@ -220,6 +220,7 @@
     </div>
     [% SET show_filters = edit_option_show_filters %]
     [%- IF (c.req.params.fix_typography || c.req.params.fix_typography || c.req.params.fix_links ||
+            c.req.params.show_nbsp      ||
             c.req.params.remove_nbsp    || c.req.params.fix_nbsp       || c.req.params.fix_footnotes) -%]
        [%- SET show_filters = 1 -%]
     [%- END -%]
@@ -275,6 +276,19 @@
 
       </label>
     </div>
+
+    <div class="checkbox">
+      <label>
+        <input id="show-nbsp"
+               [% IF c.req.params.show_nbsp %]checked="checked"[% END %]
+               value="1"
+               type="checkbox" name="show_nbsp" />
+        [% loc('Make all non-breaking spaces explicit and visible as ~~') %]
+      </label>
+    </div>
+
+
+
     <div class="checkbox fix-nbsp-related-stuff">
       <label>
         <input id="fix-nbsp"

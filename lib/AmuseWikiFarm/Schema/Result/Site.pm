@@ -2878,6 +2878,7 @@ sub update_from_params {
 
     # this is totally arbitrary
     foreach my $option (qw/html_special_page_bottom use_luatex
+                           html_regular_page_bottom
                            left_layout_html
                            right_layout_html
                            top_layout_html
@@ -3211,6 +3212,10 @@ sub get_option {
 
 sub html_special_page_bottom {
     return shift->get_option('html_special_page_bottom') || '';
+}
+
+sub html_regular_page_bottom {
+    return shift->get_option('html_regular_page_bottom') || '';
 }
 
 sub left_layout_html {

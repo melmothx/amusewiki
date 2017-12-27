@@ -298,6 +298,25 @@
       </label>
     </div>
 
+    <!-- compiler 0.99 -->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="nobold" value="1" id="nobold"
+               [% IF bb.nobold %]checked="checked"[% END %]/>
+        [% loc('Do not use bold fonts') %]
+      </label>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="secondary_footnotes_alpha" value="1" id="secondary_footnotes_alpha"
+               [% IF bb.secondary_footnotes_alpha %]checked="checked"[% END %]/>
+        [% loc('By default, secondary footnotes use arabic numbering
+        between parens. With this option they will use per-page alpha
+        numbering') %]
+      </label>
+    </div>
+
     <div class="checkbox" id="coverpage_only_if_toc_container">
       <label>
         <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"

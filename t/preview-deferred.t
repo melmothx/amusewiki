@@ -399,4 +399,4 @@ $mech->content_contains('Read the whole text');
 $mech->content_contains('fa-clock-o');
 $mech->get_ok('/library/deferred-text-3');
 # leading space, because the string is in the <meta>
-$mech->content_lacks('   This is the preview for 3');
+$mech->content_contains('   This is the preview for 3');

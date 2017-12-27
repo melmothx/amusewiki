@@ -236,6 +236,8 @@ my $expected = {
                                        'cover' => undef,
                                        impressum => undef,
                                        sansfontsections => undef,
+                                       nobold => undef,
+                                       secondary_footnotes_alpha => undef,
                                        opening => 'right',
                                        headings => 0,
                                       },

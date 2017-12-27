@@ -54,7 +54,7 @@
       [% END %]
       [% text.teaser %]
     </div>
-    <div style="clear:both"></div>
+    <div style="clear:both"><br /><br /></div>
     <div class="alert alert-warning" role="alert">[% loc('This text is not available') %]</div>
   [% ELSE %]
   <div id="htmltextbody">
@@ -63,6 +63,14 @@
       <img id="text-cover-img" src="[% text.valid_cover %]" alt="[% text.valid_cover %]" />
     </div>
     [% END %]
+    [% IF text.is_deferred && text.teaser %]
+    <div class="teaser-when-deferred">
+      [% text.teaser %]
+      <div style="clear:both"><br /><br /></div>
+      <div class="alert alert-warning" role="alert">[% loc('This text is not public yet') %]</div>
+    </div>
+    [% END %]
+
     [% text.html_body %]
   </div>
 
@@ -108,6 +116,12 @@
       </li>
       [% END %]
     </ul>
+  </div>
+  [% END %]
+
+  [% IF text.f_class == 'text' %]
+  <div>
+    [%- site.html_regular_page_bottom -%]
   </div>
   [% END %]
 
