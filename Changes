@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.096 2017-12-27
+
+ - Localization updates: fr, ru, de
+ - Upgrade the Text::Amuse stack, bringing secondary footnotes, ~~ as
+   visible nbsp
+ - New editing option: show_nbsp
+ - New CF/BB options: nobold and secondary_footnotes_alpha
+
 2.095 2017-11-24
 
  - Adjusted mailing localization and wording (#163 #155). Thanks to
