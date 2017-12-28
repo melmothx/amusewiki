@@ -700,12 +700,21 @@ How smart a lash that speech doth giue my Conscience?
           [% loc('Language code of the document (2 or 3 letters). ') %]
         </li>
         <li>
+          <p>
           <code>#pubdate 2015-10-10</code> <br /> [% loc('If this line
           is present, set the publication date (on this site) to the
           date. The date may also be in the future, deferring the
           publication. If this line is not present, the publication
           date will be the time of the publishing, triggering a bump
           on RSS and special pages at each editing.') %]
+          </p>
+          <p>
+            [% loc('It is recommended to always set a publication
+                    date, so the system does not need to rely on the
+                    file timestamp. Also, you should bump the
+                    publication date only on major editing, leaving it
+                    untouched for minor ones.') %]
+          </p>
         </li>
         <li>
           <code>#DELETED [% loc('Reason') %]</code> <br /> [% loc('If this line is
