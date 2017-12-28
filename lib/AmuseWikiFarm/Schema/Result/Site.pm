@@ -985,6 +985,7 @@ sub formats_definitions {
                 code => 'epub',
                 ext => '.epub',
                 icon => 'fa-tablet',
+                # loc('EPUB (for mobile devices)');
                 desc => 'EPUB (for mobile devices)',
                 oldid => "downloadepub",
                },
@@ -992,6 +993,7 @@ sub formats_definitions {
                 code => 'html',
                 ext => '.html',
                 icon => 'fa-print',
+                # loc('Standalone HTML (printer-friendly)');
                 desc => 'Standalone HTML (printer-friendly)',
                 oldid => "downloadhtml",
                },
@@ -999,6 +1001,7 @@ sub formats_definitions {
                 code => 'tex',
                 ext => '.tex',
                 icon => 'fa-file-code-o',
+                # loc('XeLaTeX source');
                 desc => 'XeLaTeX source',
                 oldid => "downloadtex",
                },
@@ -1006,6 +1009,7 @@ sub formats_definitions {
                 code => 'muse',
                 ext => '.muse',
                 icon => 'fa-file-text-o',
+                # loc('plain text source');
                 desc => 'plain text source',
                 oldid => "downloadsrc",
                },
@@ -1013,6 +1017,7 @@ sub formats_definitions {
                 code => 'zip',
                 ext => '.zip',
                 icon => 'fa-file-archive-o',
+                # loc('Source files with attachments');
                 desc => 'Source files with attachments',
                 oldid => "downloadzip",
                }
@@ -1130,7 +1135,9 @@ sub fixed_formats_definitions {
                    pdf => {
                            initial => {
                                        format_alias => 'pdf',
-                                       format_name => 'plain PDF', # loc('plain PDF')
+                                       # loc('plain PDF');
+                                       # loc('Plain PDF');
+                                       format_name => 'Plain PDF',
                                        format_priority => 1,
                                       },
                            fields => {
@@ -1142,7 +1149,8 @@ sub fixed_formats_definitions {
                    a4_pdf => {
                               initial => {
                                           format_alias => 'a4.pdf',
-                                          format_name => 'A4 imposed PDF', # loc('A4 imposed PDF')
+                                          # loc('A4 imposed PDF');
+                                          format_name => 'A4 imposed PDF',
                                           format_priority => 2,
                                           bb_signature_2up => '40-80',
                                          },
@@ -1157,7 +1165,8 @@ sub fixed_formats_definitions {
                    lt_pdf => {
                               initial => {
                                           format_alias => 'lt.pdf',
-                                          format_name => 'Letter imposed PDF', # loc('Letter imposed PDF')
+                                          # loc('Letter imposed PDF');
+                                          format_name => 'Letter imposed PDF',
                                           format_priority => 3,
                                           bb_signature_2up => '40-80',
                                           },
@@ -1172,7 +1181,8 @@ sub fixed_formats_definitions {
                    sl_pdf => {
                               initial => {
                                           format_alias => 'sl.pdf',
-                                          format_name => 'Slides (PDF)', # loc('Slides (PDF)'),
+                                          # loc('Slides (PDF)'),
+                                          format_name => 'Slides (PDF)',
                                           format_priority => 4,
                                           },
                               fields => {
