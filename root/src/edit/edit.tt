@@ -283,7 +283,7 @@
                [% IF c.req.params.show_nbsp %]checked="checked"[% END %]
                value="1"
                type="checkbox" name="show_nbsp" />
-        [% loc('Make all non-breaking spaces explicit and visible as ~~') %]
+        [% loc('Make all non-breaking spaces explicit and visible as ~~~~') %]
       </label>
     </div>
 
