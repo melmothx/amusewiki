@@ -65,10 +65,6 @@ msgstr ""
 "linea, prima l'URL e poi il nome, separato da uno spazio, ad esempio "
 "\"http://www.dominio.tld Collegamento di test\""
 
-#. (home)
-msgid "A new revision has been created at %1"
-msgstr "È stata creata una nuova revisione sul sito %1"
-
 #. (location)
 msgid "A new text has been created at %1"
 msgstr "Un nuovo testo è stato creato in %1"
@@ -271,9 +267,6 @@ msgstr "Torna al testo"
 msgid "Bad request"
 msgstr "Richiesta errata"
 
-msgid "Bare HTML, needed by the application"
-msgstr "HTML nudo, richiesto dall'applicazione"
-
 msgid "Beamer color theme"
 msgstr "Tema del colore delle diapositive"
 
@@ -303,6 +296,12 @@ msgstr "Massimo di pagine per l'impaginatore (numero intero)"
 
 msgid "Build it"
 msgstr "Impagina"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
 
 msgid "By sku ascending"
 msgstr "Per numero di inventario, ascendente"
@@ -336,6 +335,7 @@ msgstr "Modifiche applicate"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
+#. (author_title)
 msgid "Changes for %1"
 msgstr "Modifiche per %1"
 
@@ -452,9 +452,6 @@ msgstr "È stato creato un nuovo testo"
 msgid "Current time"
 msgstr "Ora corrente"
 
-msgid "Custom formats"
-msgstr "Definizione di formati particolari"
-
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
 msgstr "Formati particolari per %1"
@@ -528,6 +525,9 @@ msgstr "Non creare il frontespizio e comincia il testo dalla prima pagina"
 
 msgid "Do not enforce save message"
 msgstr "Rendi il messaggio del salvataggio facoltativo"
+
+msgid "Do not use bold fonts"
+msgstr ""
 
 msgid "Done"
 msgstr "Fatto"
@@ -661,6 +661,9 @@ msgstr "Errore nell'aggiungere il repo remoto %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Errore nel rimuovere il repo remoto %1"
 
+msgid "File extension"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "File caricato!"
 
@@ -782,8 +785,10 @@ msgstr "Console git"
 msgid "Git is not enabled on this site"
 msgstr "Git non è abilitato in questo sito"
 
-msgid "HTML"
-msgstr "HTML"
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
 
 msgid ""
 "HTML to append to each special page, inserted\n"
@@ -1076,6 +1081,14 @@ msgid "Invalid username"
 msgstr "Nome utente non valido"
 
 msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+
+msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
@@ -1092,8 +1105,11 @@ msgstr "Corsivo, grassetto, codice, interruzioni di linea..."
 msgid "Job deleted"
 msgstr "Lavoro cancellato"
 
-msgid "Job not found"
-msgstr "Lavoro non trovato"
+msgid "Job rescheduled"
+msgstr ""
+
+msgid "Job status"
+msgstr ""
 
 msgid "Jobs"
 msgstr "Lavori"
@@ -1230,6 +1246,9 @@ msgstr "Rendi un collegamento cliccabile"
 msgid "Make all links active"
 msgstr "Rendi tutti i collegamenti cliccabili"
 
+msgid "Make all non-breaking spaces explicit and visible as ~"
+msgstr ""
+
 msgid "Match any of the fields above"
 msgstr "Trova un testo che abbia uno qualsiasi dei campi qui sopra"
 
@@ -1295,6 +1314,9 @@ msgid ""
 msgstr ""
 "Non generare mai la pagina finale con titolo, autore, note, logo e nome del "
 "sito"
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr ""
 
 msgid "New"
 msgstr "Nuovo"
@@ -1379,6 +1401,10 @@ msgstr "Comincia con i più vecchi"
 msgid "Older texts"
 msgstr "Testi più vecchi"
 
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Wiki aperto"
 
@@ -1409,9 +1435,6 @@ msgstr "O racchiudi in"
 
 msgid "Ordered List"
 msgstr "Lista numerata"
-
-msgid "Other languages"
-msgstr "Altre lingue"
 
 msgid "Otherwise, please just ignore this mail."
 msgstr "In caso contrario, puoi semplicemente ignorare questa mail."
@@ -1514,6 +1537,9 @@ msgstr "Collocala nel corpo del testo con una descrizione:"
 msgid "Place it in the body without description:"
 msgstr "Collocala nel corpo del testo senza alcuna descrizione:"
 
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr ""
+
 msgid "Plain PDF"
 msgstr "PDF semplice"
 
@@ -1600,18 +1626,6 @@ msgstr ""
 "Nota bene: i PDF sono file esterni e non possono essere pienamente\n"
 "integrati nel documento. I file generati ne saranno privi. Puoi\n"
 "comunque creare immagini dai PDF e inserire quelle."
-
-msgid ""
-"Please note that the twoside and binding correction options follow\n"
-"  this logic: if you have some imposed format, they are ignored for\n"
-"  the standalone PDF but applied for the imposed ones. If you have\n"
-"  only the standalone PDF, they are applied to it."
-msgstr ""
-"Le opzioni per il fronte-retro e per la correzione per la rilegatura\n"
-"seguono la seguente logica: se è impostato un formato impaginato,\n"
-"vengono ignorate quando viene creato il formato semplice, e applicate\n"
-"sui formati impaginati. Se è presente solo il formato semplice, non\n"
-"impaginato, le opzioni vengono applicate."
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
@@ -1856,6 +1870,9 @@ msgstr "Ricomincia da capo"
 msgid "Reset password"
 msgstr "Reimposta la password"
 
+msgid "Reset to site defaults"
+msgstr ""
+
 msgid "Restricted configuration variables"
 msgstr "Variabili di configurazione protette"
 
@@ -1898,6 +1915,12 @@ msgstr "Configurazione SSL"
 
 msgid "SSL key path"
 msgstr "Percorso della chiave SSL"
+
+msgid "Same as above, for the Archive menu"
+msgstr ""
+
+msgid "Same as above, for the Related Projects menu"
+msgstr ""
 
 msgid "Sans font"
 msgstr "Font senza grazie"
@@ -2127,9 +2150,6 @@ msgstr "Nuvola dei tag con gli argomenti"
 msgid "Task"
 msgstr "Lavoro"
 
-msgid "TeX"
-msgstr "TeX"
-
 msgid "Teaser"
 msgstr "Anteprima"
 
@@ -2185,6 +2205,9 @@ msgstr "La descrizione per %1 è stata aggiornata"
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Il file caricato non è un file HTML!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr ""
 
 msgid "The following values are used to generate the webserver configuration."
 msgstr ""
@@ -2266,6 +2289,9 @@ msgstr ""
 msgid "Then fetch the updates from this page."
 msgstr "Poi recupera gli aggiornamenti da questa pagina."
 
+msgid "There are failed jobs"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Questi testi sono senza identificativo."
 
@@ -2278,6 +2304,9 @@ msgid ""
 msgstr ""
 "Devono essere percorsi di file relativi alla radice della configurazione del "
 "server web o percorsi assoluti(raccomandato)"
+
+msgid "This also makes /mirror/ public"
+msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
@@ -2349,6 +2378,9 @@ msgstr "Questo testo è nuovo"
 
 msgid "This text is not available"
 msgstr "Questo testo non è disponibile"
+
+msgid "This text is not public yet"
+msgstr ""
 
 msgid "This text is not published yet"
 msgstr "Questo testo ancora non è stato pubblicato"
@@ -2435,6 +2467,9 @@ msgstr "Triple barre"
 
 msgid "Try a random text if unsure"
 msgstr "Prova con un testo casuale, se in dubbio"
+
+msgid "Try again"
+msgstr ""
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
@@ -2535,6 +2570,9 @@ msgstr ""
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Durante l'impaginazione, usa blocchi ottimizzati di %s pagine ciascuno"
+
+msgid "Use sans fonts for section titles"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Frammenti HTML utili"
@@ -2721,6 +2759,9 @@ msgstr "Puoi creare un'utenza su %1"
 msgid "You can do so answering a simple question."
 msgstr "Puoi farlo rispondendo a una semplice domanda."
 
+msgid "You can tune them editing them here."
+msgstr ""
+
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
@@ -2786,9 +2827,6 @@ msgstr "Il tuo utente su %1 è stato creato."
 #. (username)
 msgid "Your username is %1."
 msgstr "Il tuo nome utente è %1."
-
-msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr "Archivio ZIP con sorgenti, richiesto dall'impaginatore"
 
 msgid "aborted"
 msgstr "abortito"
@@ -2914,9 +2952,6 @@ msgstr "in corso di lavorazione"
 msgid "published"
 msgstr "pubblicato"
 
-msgid "relevant"
-msgstr "rilevanza"
-
 msgid "revision"
 msgstr "revisione"
 
@@ -2992,6 +3027,45 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "A new revision has been created at %1"
+#~ msgstr "È stata creata una nuova revisione sul sito %1"
+
+#~ msgid "Bare HTML, needed by the application"
+#~ msgstr "HTML nudo, richiesto dall'applicazione"
+
+#~ msgid "Custom formats"
+#~ msgstr "Definizione di formati particolari"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Job not found"
+#~ msgstr "Lavoro non trovato"
+
+#~ msgid "Other languages"
+#~ msgstr "Altre lingue"
+
+#~ msgid ""
+#~ "Please note that the twoside and binding correction options follow\n"
+#~ "  this logic: if you have some imposed format, they are ignored for\n"
+#~ "  the standalone PDF but applied for the imposed ones. If you have\n"
+#~ "  only the standalone PDF, they are applied to it."
+#~ msgstr ""
+#~ "Le opzioni per il fronte-retro e per la correzione per la rilegatura\n"
+#~ "seguono la seguente logica: se è impostato un formato impaginato,\n"
+#~ "vengono ignorate quando viene creato il formato semplice, e applicate\n"
+#~ "sui formati impaginati. Se è presente solo il formato semplice, non\n"
+#~ "impaginato, le opzioni vengono applicate."
+
+#~ msgid "TeX"
+#~ msgstr "TeX"
+
+#~ msgid "ZIP archive with sources, needed by the bookbuilder"
+#~ msgstr "Archivio ZIP con sorgenti, richiesto dall'impaginatore"
+
+#~ msgid "relevant"
+#~ msgstr "rilevanza"
 
 #~ msgid "By by sku ascending"
 #~ msgstr "Per numero di inventario, ascendente"

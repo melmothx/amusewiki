@@ -63,10 +63,6 @@ msgid ""
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
 
-#. (home)
-msgid "A new revision has been created at %1"
-msgstr "En ny revidering har skapats till 1%"
-
 #. (location)
 msgid "A new text has been created at %1"
 msgstr ""
@@ -257,9 +253,6 @@ msgstr "Tillbaka till texten"
 msgid "Bad request"
 msgstr "Bad request"
 
-msgid "Bare HTML, needed by the application"
-msgstr "Bare HTML, behövd av applikationen"
-
 msgid "Beamer color theme"
 msgstr ""
 
@@ -288,6 +281,12 @@ msgstr "Bokskapare sidbegränsning (heltal)"
 
 msgid "Build it"
 msgstr "Skapa den"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
 
 msgid "By sku ascending"
 msgstr ""
@@ -321,6 +320,7 @@ msgstr "Ändrigar utförda"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
+#. (author_title)
 msgid "Changes for %1"
 msgstr "Ändringar till %1"
 
@@ -429,9 +429,6 @@ msgstr "Ny text skapad"
 msgid "Current time"
 msgstr ""
 
-msgid "Custom formats"
-msgstr ""
-
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
 msgstr ""
@@ -498,6 +495,9 @@ msgid "Do not create a cover page and start the text on the first page"
 msgstr ""
 
 msgid "Do not enforce save message"
+msgstr ""
+
+msgid "Do not use bold fonts"
 msgstr ""
 
 msgid "Done"
@@ -624,6 +624,9 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
+msgid "File extension"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Fil uppladdad!"
 
@@ -742,8 +745,10 @@ msgstr "Git-konsol"
 msgid "Git is not enabled on this site"
 msgstr ""
 
-msgid "HTML"
-msgstr "HTML"
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
 
 msgid ""
 "HTML to append to each special page, inserted\n"
@@ -984,6 +989,14 @@ msgid "Invalid username"
 msgstr "Ogiltigt användarnamn"
 
 msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+
+msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
@@ -997,8 +1010,11 @@ msgstr ""
 msgid "Job deleted"
 msgstr "Jobb raderat"
 
-msgid "Job not found"
-msgstr "Jobb hittas inte"
+msgid "Job rescheduled"
+msgstr ""
+
+msgid "Job status"
+msgstr ""
 
 msgid "Jobs"
 msgstr "Jobb"
@@ -1133,6 +1149,9 @@ msgstr "Gör en länk klickbar"
 msgid "Make all links active"
 msgstr "Aktivera alla länkar"
 
+msgid "Make all non-breaking spaces explicit and visible as ~"
+msgstr ""
+
 msgid "Match any of the fields above"
 msgstr "Matcha vilken av de ovanstående fälten som helst"
 
@@ -1195,6 +1214,9 @@ msgstr "Generera aldrig innehållsförteckning"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+
+msgid "Never show teaser and/or cover in text lists"
 msgstr ""
 
 msgid "New"
@@ -1278,6 +1300,10 @@ msgstr ""
 msgid "Older texts"
 msgstr ""
 
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Öppen wiki"
 
@@ -1308,9 +1334,6 @@ msgstr "Eller wrappa in det"
 
 msgid "Ordered List"
 msgstr "Numerisk lista"
-
-msgid "Other languages"
-msgstr "Andra språk"
 
 msgid "Otherwise, please just ignore this mail."
 msgstr ""
@@ -1410,6 +1433,9 @@ msgstr ""
 msgid "Place it in the body without description:"
 msgstr ""
 
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr ""
+
 msgid "Plain PDF"
 msgstr "Plain PDF"
 
@@ -1489,17 +1515,6 @@ msgid ""
 "        not embed them. If you need that, you should split the PDF in\n"
 "        images and upload those instead."
 msgstr ""
-
-msgid ""
-"Please note that the twoside and binding correction options follow\n"
-"  this logic: if you have some imposed format, they are ignored for\n"
-"  the standalone PDF but applied for the imposed ones. If you have\n"
-"  only the standalone PDF, they are applied to it."
-msgstr ""
-"Vänligen notera att den tvåsidiga- och bindningskorrekturens alternativ "
-"följer denna logik: om du har ett imposed format, så ignoreras de i den "
-"fristående PDF:en men används i de med imposed format. Om du endast har den "
-"fristående PDF:en, så används de i den.  "
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
@@ -1733,6 +1748,9 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
+msgid "Reset to site defaults"
+msgstr ""
+
 msgid "Restricted configuration variables"
 msgstr ""
 
@@ -1774,6 +1792,12 @@ msgid "SSL configuration"
 msgstr ""
 
 msgid "SSL key path"
+msgstr ""
+
+msgid "Same as above, for the Archive menu"
+msgstr ""
+
+msgid "Same as above, for the Related Projects menu"
 msgstr ""
 
 msgid "Sans font"
@@ -1999,9 +2023,6 @@ msgstr ""
 msgid "Task"
 msgstr "Uppgift"
 
-msgid "TeX"
-msgstr "TeX"
-
 msgid "Teaser"
 msgstr ""
 
@@ -2050,6 +2071,9 @@ msgid "The description for %1 has been updated"
 msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid "The following settings provide the defaults for each format."
 msgstr ""
 
 msgid "The following values are used to generate the webserver configuration."
@@ -2123,6 +2147,9 @@ msgstr ""
 msgid "Then fetch the updates from this page."
 msgstr ""
 
+msgid "There are failed jobs"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Dessa texter saknar det unika ID:t."
 
@@ -2132,6 +2159,9 @@ msgstr "De har samma syntax (bilder är faktiskt länkar)"
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
+msgstr ""
+
+msgid "This also makes /mirror/ public"
 msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
@@ -2194,6 +2224,9 @@ msgid "This text is new"
 msgstr ""
 
 msgid "This text is not available"
+msgstr ""
+
+msgid "This text is not public yet"
 msgstr ""
 
 msgid "This text is not published yet"
@@ -2278,6 +2311,9 @@ msgstr "Tredubbla staplar"
 
 msgid "Try a random text if unsure"
 msgstr "Prova en slumpmässig text om du är osäker"
+
+msgid "Try again"
+msgstr ""
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
@@ -2368,6 +2404,9 @@ msgstr ""
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Använd optimerade signaturer med %1 sidor vardera"
+
+msgid "Use sans fonts for section titles"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr ""
@@ -2528,6 +2567,9 @@ msgstr "Du kan skapa en peer vid %1"
 msgid "You can do so answering a simple question."
 msgstr "Detta kan du göra genom att svara på en enkel fråga."
 
+msgid "You can tune them editing them here."
+msgstr ""
+
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr "Du kan inte skapa en ny revidering då texten ännu inte har publicerats"
@@ -2588,9 +2630,6 @@ msgstr "Din användare har skapats till %1"
 #. (username)
 msgid "Your username is %1."
 msgstr "Ditt användarnamn är %1"
-
-msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr "ZIParkiv med källor, nödvändig för bokskaparen"
 
 msgid "aborted"
 msgstr ""
@@ -2711,9 +2750,6 @@ msgstr "processerar"
 msgid "published"
 msgstr "publicerad"
 
-msgid "relevant"
-msgstr "relevant"
-
 msgid "revision"
 msgstr "revidering"
 
@@ -2789,6 +2825,41 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "A new revision has been created at %1"
+#~ msgstr "En ny revidering har skapats till 1%"
+
+#~ msgid "Bare HTML, needed by the application"
+#~ msgstr "Bare HTML, behövd av applikationen"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Job not found"
+#~ msgstr "Jobb hittas inte"
+
+#~ msgid "Other languages"
+#~ msgstr "Andra språk"
+
+#~ msgid ""
+#~ "Please note that the twoside and binding correction options follow\n"
+#~ "  this logic: if you have some imposed format, they are ignored for\n"
+#~ "  the standalone PDF but applied for the imposed ones. If you have\n"
+#~ "  only the standalone PDF, they are applied to it."
+#~ msgstr ""
+#~ "Vänligen notera att den tvåsidiga- och bindningskorrekturens alternativ "
+#~ "följer denna logik: om du har ett imposed format, så ignoreras de i den "
+#~ "fristående PDF:en men används i de med imposed format. Om du endast har "
+#~ "den fristående PDF:en, så används de i den.  "
+
+#~ msgid "TeX"
+#~ msgstr "TeX"
+
+#~ msgid "ZIP archive with sources, needed by the bookbuilder"
+#~ msgstr "ZIParkiv med källor, nödvändig för bokskaparen"
+
+#~ msgid "relevant"
+#~ msgstr "relevant"
 
 #~ msgid "Locale"
 #~ msgstr "Variant"

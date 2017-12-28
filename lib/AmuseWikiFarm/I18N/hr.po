@@ -65,10 +65,6 @@ msgstr ""
 "retku, najprije URL i poslije naslov, odvojenih razmakom, npr.\n"
 "\"http://test.me Test sajt\""
 
-#. (home)
-msgid "A new revision has been created at %1"
-msgstr "Nova izmjena stvorena na %1"
-
 #. (location)
 msgid "A new text has been created at %1"
 msgstr "Novi tekst: %1"
@@ -263,9 +259,6 @@ msgstr "Vrati se na tekst"
 msgid "Bad request"
 msgstr "Pogrešan zahtjev"
 
-msgid "Bare HTML, needed by the application"
-msgstr "Goli HTML, zahtjeva ga aplikacija"
-
 msgid "Beamer color theme"
 msgstr "Beamer tema za boju"
 
@@ -294,6 +287,12 @@ msgstr "Maksimalni broj stranica zbirke"
 
 msgid "Build it"
 msgstr "Stvori"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
 
 msgid "By sku ascending"
 msgstr "Po SKU-u prema gore"
@@ -327,6 +326,7 @@ msgstr "Unesene izmjene"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
+#. (author_title)
 msgid "Changes for %1"
 msgstr "Izmjene za %1"
 
@@ -439,9 +439,6 @@ msgstr "Novi tekst stvoren"
 msgid "Current time"
 msgstr "Vrijeme"
 
-msgid "Custom formats"
-msgstr "Posebni formati"
-
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
 msgstr "Posebni formati za %1"
@@ -514,6 +511,9 @@ msgstr "Bez naslovnice, tekst počinje na prvoj stranici"
 
 msgid "Do not enforce save message"
 msgstr "Ne forsiraj poruku kad se tekst spremi"
+
+msgid "Do not use bold fonts"
+msgstr ""
 
 msgid "Done"
 msgstr "Gotovo"
@@ -645,6 +645,9 @@ msgstr "Greška pri dodavanju udaljenog repozitorija %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Greška pri izbrisanju udaljenog repozitorija %1"
 
+msgid "File extension"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Datoteka učitana!"
 
@@ -764,8 +767,10 @@ msgstr "Git konzola"
 msgid "Git is not enabled on this site"
 msgstr "Git nije aktivan na ovom sajtu"
 
-msgid "HTML"
-msgstr "HTML"
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
 
 msgid ""
 "HTML to append to each special page, inserted\n"
@@ -1045,6 +1050,14 @@ msgid "Invalid username"
 msgstr "Ime korisnika nije valjano"
 
 msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+
+msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
@@ -1060,8 +1073,11 @@ msgstr "Kurzivi, podebljano, kod, novi redak"
 msgid "Job deleted"
 msgstr "Izbrisani zadatak"
 
-msgid "Job not found"
-msgstr "Zadatak nije pronađen"
+msgid "Job rescheduled"
+msgstr ""
+
+msgid "Job status"
+msgstr ""
 
 msgid "Jobs"
 msgstr "Zadaci"
@@ -1198,6 +1214,9 @@ msgstr "Stvori aktivnu poveznicu"
 msgid "Make all links active"
 msgstr "Aktiviraj sve poveznice"
 
+msgid "Make all non-breaking spaces explicit and visible as ~"
+msgstr ""
+
 msgid "Match any of the fields above"
 msgstr "Bilo koje polje"
 
@@ -1261,6 +1280,9 @@ msgstr "Ne generiraj sadržaj"
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
 msgstr "Nemoj stvoriti zadnju stranicu s naslovom, autorom, logom itd."
+
+msgid "Never show teaser and/or cover in text lists"
+msgstr ""
 
 msgid "New"
 msgstr "Novo"
@@ -1343,6 +1365,10 @@ msgstr "Najstariji prvi"
 msgid "Older texts"
 msgstr "Stariji tekstovi"
 
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Otvoreni wiki"
 
@@ -1372,9 +1398,6 @@ msgstr "Ili umetni između"
 
 msgid "Ordered List"
 msgstr "Brojčan popis"
-
-msgid "Other languages"
-msgstr "Drugi jezici"
 
 msgid "Otherwise, please just ignore this mail."
 msgstr "Ako to nije slučaj, možeš samo ignorirati ovaj mail."
@@ -1473,6 +1496,9 @@ msgstr "Stavi je u tekst s opisom"
 msgid "Place it in the body without description:"
 msgstr "Stavi je u tekst bez opisa"
 
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr ""
+
 msgid "Plain PDF"
 msgstr "Običan PDF"
 
@@ -1556,18 +1582,6 @@ msgstr ""
 "PDFovi su vanjske datoteke i ne mogu biti potpuno integrirane u\n"
 "tekstu. Generirani formati bit će bez njih. Ako ih trebaš, možeš ih\n"
 "pretvoriti u slike i dodati njih."
-
-msgid ""
-"Please note that the twoside and binding correction options follow\n"
-"  this logic: if you have some imposed format, they are ignored for\n"
-"  the standalone PDF but applied for the imposed ones. If you have\n"
-"  only the standalone PDF, they are applied to it."
-msgstr ""
-"Pazi da opcije za obostrani prijelom i za korekciju za uvez slijede\n"
-"ovu logiku: ako su prisutni formati spremni za štampanje, onda za\n"
-"običan PDF opcije budu ignorirane (ali se ipak koriste za formate za\n"
-"štampanje). Ako samo običan PDF je prisutan, opcije se primjenjuju\n"
-"ovom formatu."
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
@@ -1812,6 +1826,9 @@ msgstr "Poništi sve"
 msgid "Reset password"
 msgstr "Ponovo postavi lozinku"
 
+msgid "Reset to site defaults"
+msgstr ""
+
 msgid "Restricted configuration variables"
 msgstr "Ograničena konfiguracija"
 
@@ -1854,6 +1871,12 @@ msgstr "SSL konfiguracija"
 
 msgid "SSL key path"
 msgstr "Ključ SSL"
+
+msgid "Same as above, for the Archive menu"
+msgstr ""
+
+msgid "Same as above, for the Related Projects menu"
+msgstr ""
 
 msgid "Sans font"
 msgstr "Font bez serifa"
@@ -2077,9 +2100,6 @@ msgstr "Tag cloud s temama"
 msgid "Task"
 msgstr "Zadatak"
 
-msgid "TeX"
-msgstr "TeX"
-
 msgid "Teaser"
 msgstr "Pregled"
 
@@ -2134,6 +2154,9 @@ msgstr "Opis za %1 uređena"
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Učitana datoteka nije u HTML-u!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr ""
 
 msgid "The following values are used to generate the webserver configuration."
 msgstr "Slijedeće postavke služe za proizvodnju konfiguracije webservera."
@@ -2208,6 +2231,9 @@ msgstr "Nakon toga, odobri izmjenu kao obično."
 msgid "Then fetch the updates from this page."
 msgstr "I preuzmi nadogradnje iz ove stranice."
 
+msgid "There are failed jobs"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Ovim tekstovima nedostaje jedinstveni id."
 
@@ -2220,6 +2246,9 @@ msgid ""
 msgstr ""
 "Trebaju biti putevi od korijena konfiguracije webservera, ili, bolje,\n"
 "apsolutni putevi."
+
+msgid "This also makes /mirror/ public"
+msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Ovo polje zahtjeva popis imena datoteka odvojenih razmacima."
@@ -2287,6 +2316,9 @@ msgstr "Ovaj tekst je nov"
 
 msgid "This text is not available"
 msgstr "Ovaj je tekst nedostupan"
+
+msgid "This text is not public yet"
+msgstr ""
 
 msgid "This text is not published yet"
 msgstr "Ovaj tekst nije još objavljen"
@@ -2370,6 +2402,9 @@ msgstr "Trostruka traka (\"|||\")"
 
 msgid "Try a random text if unsure"
 msgstr "Pokušaj sa slučajnim tekstom ako nisi siguran"
+
+msgid "Try again"
+msgstr ""
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
@@ -2464,6 +2499,9 @@ msgstr "Koristi je kao sliku za pregled dodajući slijedeći redak zaglavlju:"
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 "Kod prijeloma teksta koristi optimizirane sveske sa %1 stranica za svaki."
+
+msgid "Use sans fonts for section titles"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Korisni dijelovi HTML koda"
@@ -2646,6 +2684,9 @@ msgstr "Možeš stvoriti račun na %1"
 msgid "You can do so answering a simple question."
 msgstr "Odgovarajući na jednostavno pitanje."
 
+msgid "You can tune them editing them here."
+msgstr ""
+
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr "Ne možeš napraviti novu izmjenu jer tekst još nije objavljen"
@@ -2708,9 +2749,6 @@ msgstr "Tvoj korisnik je stvoren na %1."
 #. (username)
 msgid "Your username is %1."
 msgstr "Tvoje korisničko ime je %1."
-
-msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr "ZIP arhiva s izvorom, potrebna za stvaranje zbirke"
 
 msgid "aborted"
 msgstr "nedovršeno"
@@ -2832,9 +2870,6 @@ msgstr "u toku"
 msgid "published"
 msgstr "objavljeno"
 
-msgid "relevant"
-msgstr "relevantno"
-
 msgid "revision"
 msgstr "izmjena"
 
@@ -2909,6 +2944,45 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "A new revision has been created at %1"
+#~ msgstr "Nova izmjena stvorena na %1"
+
+#~ msgid "Bare HTML, needed by the application"
+#~ msgstr "Goli HTML, zahtjeva ga aplikacija"
+
+#~ msgid "Custom formats"
+#~ msgstr "Posebni formati"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Job not found"
+#~ msgstr "Zadatak nije pronađen"
+
+#~ msgid "Other languages"
+#~ msgstr "Drugi jezici"
+
+#~ msgid ""
+#~ "Please note that the twoside and binding correction options follow\n"
+#~ "  this logic: if you have some imposed format, they are ignored for\n"
+#~ "  the standalone PDF but applied for the imposed ones. If you have\n"
+#~ "  only the standalone PDF, they are applied to it."
+#~ msgstr ""
+#~ "Pazi da opcije za obostrani prijelom i za korekciju za uvez slijede\n"
+#~ "ovu logiku: ako su prisutni formati spremni za štampanje, onda za\n"
+#~ "običan PDF opcije budu ignorirane (ali se ipak koriste za formate za\n"
+#~ "štampanje). Ako samo običan PDF je prisutan, opcije se primjenjuju\n"
+#~ "ovom formatu."
+
+#~ msgid "TeX"
+#~ msgstr "TeX"
+
+#~ msgid "ZIP archive with sources, needed by the bookbuilder"
+#~ msgstr "ZIP arhiva s izvorom, potrebna za stvaranje zbirke"
+
+#~ msgid "relevant"
+#~ msgstr "relevantno"
 
 #~ msgid "By by sku ascending"
 #~ msgstr "Po SKU-u prema gore"

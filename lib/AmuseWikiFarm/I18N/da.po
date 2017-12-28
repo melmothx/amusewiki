@@ -65,10 +65,6 @@ msgid ""
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr "En liste bestående af links og"
 
-#. (home)
-msgid "A new revision has been created at %1"
-msgstr "En ny revision er blevet skabt på %1"
-
 #. (location)
 msgid "A new text has been created at %1"
 msgstr "En ny tekst er blevet skabt på %1"
@@ -268,9 +264,6 @@ msgstr "Tilbage til teksten"
 msgid "Bad request"
 msgstr "Mangelfuld forespørgsel"
 
-msgid "Bare HTML, needed by the application"
-msgstr "Ren HTML, behøves af programmet"
-
 msgid "Beamer color theme"
 msgstr ""
 
@@ -301,6 +294,12 @@ msgstr "Bogbyggerens sidebegrænsning (helt tal)"
 
 msgid "Build it"
 msgstr "Skab bogen"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
 
 msgid "By sku ascending"
 msgstr ""
@@ -334,6 +333,7 @@ msgstr "Ændringer udført"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
+#. (author_title)
 msgid "Changes for %1"
 msgstr "Ændringer for %1"
 
@@ -446,9 +446,6 @@ msgstr "Skabte ny tekst"
 msgid "Current time"
 msgstr "Nuværende tidspunkt"
 
-msgid "Custom formats"
-msgstr "Tilpassede formater"
-
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
 msgstr "Tilpassede formater til %1"
@@ -518,6 +515,9 @@ msgstr ""
 
 msgid "Do not enforce save message"
 msgstr "Gennemtving ikke indsendelses besked"
+
+msgid "Do not use bold fonts"
+msgstr ""
 
 msgid "Done"
 msgstr "Færdig"
@@ -653,6 +653,9 @@ msgstr "Tilføjelsen af fjernarkivet %1 mislykkedes"
 msgid "Failed to remove Remote repository %1"
 msgstr "Sletningen af fjernarkivet %1 mislykkedes"
 
+msgid "File extension"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Fil uploadet!"
 
@@ -773,8 +776,10 @@ msgstr "Git konsol"
 msgid "Git is not enabled on this site"
 msgstr "Git er ikke aktiveret på denne side"
 
-msgid "HTML"
-msgstr "HTML"
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
 
 msgid ""
 "HTML to append to each special page, inserted\n"
@@ -1049,6 +1054,14 @@ msgid "Invalid username"
 msgstr "Ugyldigt brugernavn"
 
 msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+
+msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
@@ -1065,8 +1078,11 @@ msgstr "Kursiv, fed, monospatieret og kode (skrivemaskine), linjeskift..."
 msgid "Job deleted"
 msgstr "Job slettet"
 
-msgid "Job not found"
-msgstr "Fandt ikke jobbet"
+msgid "Job rescheduled"
+msgstr ""
+
+msgid "Job status"
+msgstr ""
 
 msgid "Jobs"
 msgstr "Job"
@@ -1204,6 +1220,9 @@ msgstr "Gør det muligt at klikke på et link"
 msgid "Make all links active"
 msgstr "Aktiver alle links"
 
+msgid "Make all non-breaking spaces explicit and visible as ~"
+msgstr ""
+
 msgid "Match any of the fields above"
 msgstr "Match hvilket som helst af felterne overfor"
 
@@ -1266,6 +1285,9 @@ msgstr "Generer ikke en indholdsfortegnelse"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+
+msgid "Never show teaser and/or cover in text lists"
 msgstr ""
 
 msgid "New"
@@ -1351,6 +1373,10 @@ msgstr ""
 msgid "Older texts"
 msgstr "Ældre tekster"
 
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Åben wiki"
 
@@ -1383,9 +1409,6 @@ msgstr "Eller omslut det i"
 
 msgid "Ordered List"
 msgstr "Numerisk Liste"
-
-msgid "Other languages"
-msgstr "Andre sprog"
 
 msgid "Otherwise, please just ignore this mail."
 msgstr "Hvis ikke, så ignorer venligst denne e-mail."
@@ -1486,6 +1509,9 @@ msgstr "Placer det i brødteksten med en beskrivelse:"
 msgid "Place it in the body without description:"
 msgstr "Placer det i brødteksten uden en beskrivelse:"
 
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr ""
+
 msgid "Plain PDF"
 msgstr "Enkel PDF"
 
@@ -1570,19 +1596,6 @@ msgid ""
 "        not embed them. If you need that, you should split the PDF in\n"
 "        images and upload those instead."
 msgstr ""
-
-msgid ""
-"Please note that the twoside and binding correction options follow\n"
-"  this logic: if you have some imposed format, they are ignored for\n"
-"  the standalone PDF but applied for the imposed ones. If you have\n"
-"  only the standalone PDF, they are applied to it."
-msgstr ""
-"Vær venligst opmærksom på at tosides og bindingsjusterings mulighederne "
-"følger\n"
-"  denne logik: hvis du har en form for udskudt format, bliver de ignoreret "
-"på\n"
-"  standalone PDF'en, men anvendt på de udskudte. Hvis du kun\n"
-"  har standalone PDF'en, så anvendes de på den."
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr "Bemærk at omsluttende markeringer skal placeres på sin egen linje."
@@ -1824,6 +1837,9 @@ msgstr "Nulstil alt"
 msgid "Reset password"
 msgstr "Nulstil kodeord"
 
+msgid "Reset to site defaults"
+msgstr ""
+
 msgid "Restricted configuration variables"
 msgstr "Begrænsede variabler for konfiguration"
 
@@ -1866,6 +1882,12 @@ msgstr "SSL konfiguration"
 
 msgid "SSL key path"
 msgstr "SSL nøgle sti"
+
+msgid "Same as above, for the Archive menu"
+msgstr ""
+
+msgid "Same as above, for the Related Projects menu"
+msgstr ""
 
 msgid "Sans font"
 msgstr "Grotesk (sans-serif) skrifttype"
@@ -2090,9 +2112,6 @@ msgstr "Tagsky med emner"
 msgid "Task"
 msgstr "Opgave"
 
-msgid "TeX"
-msgstr "TeX"
-
 msgid "Teaser"
 msgstr "Teaser"
 
@@ -2140,6 +2159,9 @@ msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Den uploadede fil er ikke en HTML fil!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr ""
 
 msgid "The following values are used to generate the webserver configuration."
 msgstr "De følgende værdier bruges til at generere webserverens konfiguration."
@@ -2209,6 +2231,9 @@ msgstr ""
 msgid "Then fetch the updates from this page."
 msgstr "Hent derefter opdateringerne på denne side."
 
+msgid "There are failed jobs"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Disse tekster mangler den unikke ID."
 
@@ -2218,6 +2243,9 @@ msgstr "De har samme syntaks (billeder er i virkeligheden links)"
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
+msgstr ""
+
+msgid "This also makes /mirror/ public"
 msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
@@ -2288,6 +2316,9 @@ msgid "This text is new"
 msgstr "Denne tekst er ny"
 
 msgid "This text is not available"
+msgstr ""
+
+msgid "This text is not public yet"
 msgstr ""
 
 msgid "This text is not published yet"
@@ -2371,6 +2402,9 @@ msgstr "Tredobbelte barer"
 
 msgid "Try a random text if unsure"
 msgstr "Prøv en tilfældig tekst hvis du er usikker"
+
+msgid "Try again"
+msgstr ""
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
@@ -2462,6 +2496,9 @@ msgstr ""
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Brug optimerede trykark med %1 sider hver"
+
+msgid "Use sans fonts for section titles"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Brugbare HTML stumper"
@@ -2644,6 +2681,9 @@ msgstr ""
 msgid "You can do so answering a simple question."
 msgstr "Det kan du gøre ved at svare på et simpelt spørgsmål."
 
+msgid "You can tune them editing them here."
+msgstr ""
+
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
@@ -2708,9 +2748,6 @@ msgstr "Din bruger på %1 er blevet skabt."
 #. (username)
 msgid "Your username is %1."
 msgstr "Dit brugernavn er %1"
-
-msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr "ZIP arkiv med kilder, som behøves af bogbyggeren"
 
 msgid "aborted"
 msgstr "afbrudt"
@@ -2834,9 +2871,6 @@ msgstr "behandler"
 msgid "published"
 msgstr "offentliggjort"
 
-msgid "relevant"
-msgstr "relevant"
-
 msgid "revision"
 msgstr "revision"
 
@@ -2913,6 +2947,46 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "A new revision has been created at %1"
+#~ msgstr "En ny revision er blevet skabt på %1"
+
+#~ msgid "Bare HTML, needed by the application"
+#~ msgstr "Ren HTML, behøves af programmet"
+
+#~ msgid "Custom formats"
+#~ msgstr "Tilpassede formater"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Job not found"
+#~ msgstr "Fandt ikke jobbet"
+
+#~ msgid "Other languages"
+#~ msgstr "Andre sprog"
+
+#~ msgid ""
+#~ "Please note that the twoside and binding correction options follow\n"
+#~ "  this logic: if you have some imposed format, they are ignored for\n"
+#~ "  the standalone PDF but applied for the imposed ones. If you have\n"
+#~ "  only the standalone PDF, they are applied to it."
+#~ msgstr ""
+#~ "Vær venligst opmærksom på at tosides og bindingsjusterings mulighederne "
+#~ "følger\n"
+#~ "  denne logik: hvis du har en form for udskudt format, bliver de "
+#~ "ignoreret på\n"
+#~ "  standalone PDF'en, men anvendt på de udskudte. Hvis du kun\n"
+#~ "  har standalone PDF'en, så anvendes de på den."
+
+#~ msgid "TeX"
+#~ msgstr "TeX"
+
+#~ msgid "ZIP archive with sources, needed by the bookbuilder"
+#~ msgstr "ZIP arkiv med kilder, som behøves af bogbyggeren"
+
+#~ msgid "relevant"
+#~ msgstr "relevant"
 
 #~ msgid "Text body, before any section"
 #~ msgstr "Brødtekst, før nogen sektion"

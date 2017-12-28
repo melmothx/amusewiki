@@ -67,10 +67,6 @@ msgstr ""
 "            separado por un espacio, ej.: \"http://prueba.me Sitio de prueba"
 "\""
 
-#. (home)
-msgid "A new revision has been created at %1"
-msgstr "Se ha creado una nueva revisión en %1"
-
 #. (location)
 msgid "A new text has been created at %1"
 msgstr "Se ha creado un nuevo texto en %1"
@@ -274,9 +270,6 @@ msgstr "Volver al texto"
 msgid "Bad request"
 msgstr "Petición errónea"
 
-msgid "Bare HTML, needed by the application"
-msgstr "HTML desnudo (bare), necesitado por la aplicación"
-
 msgid "Beamer color theme"
 msgstr "Color de tema de Beamer"
 
@@ -307,6 +300,12 @@ msgstr "Límite de páginas del credaor de libro (número entero)"
 
 msgid "Build it"
 msgstr "Crear"
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
+msgstr ""
 
 msgid "By sku ascending"
 msgstr ""
@@ -340,6 +339,7 @@ msgstr "Cambios aplicados"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
+#. (author_title)
 msgid "Changes for %1"
 msgstr "Cambios para %1"
 
@@ -455,9 +455,6 @@ msgstr "Nuevo texto creado"
 msgid "Current time"
 msgstr ""
 
-msgid "Custom formats"
-msgstr ""
-
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
 msgstr ""
@@ -530,6 +527,9 @@ msgstr ""
 
 msgid "Do not enforce save message"
 msgstr "No forzar mensaje para el save"
+
+msgid "Do not use bold fonts"
+msgstr ""
 
 msgid "Done"
 msgstr "Listo"
@@ -666,6 +666,9 @@ msgstr "Fallo al agregar el repositorio remoto %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Fallo al eliminar repositorio remoto %1"
 
+msgid "File extension"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "¡Archivo subido!"
 
@@ -791,8 +794,10 @@ msgstr "Consola git"
 msgid "Git is not enabled on this site"
 msgstr "Git no está habilitado en este sitio"
 
-msgid "HTML"
-msgstr "HTML"
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
+msgstr ""
 
 msgid ""
 "HTML to append to each special page, inserted\n"
@@ -1078,6 +1083,14 @@ msgid "Invalid username"
 msgstr "Nombre de usuaria/o no válido"
 
 msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+
+msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
@@ -1093,8 +1106,11 @@ msgstr "Cursivas, negrita, monoespaciado y código, saltos de línea..."
 msgid "Job deleted"
 msgstr "Proceso borrado"
 
-msgid "Job not found"
-msgstr "Proceso no encontrado"
+msgid "Job rescheduled"
+msgstr ""
+
+msgid "Job status"
+msgstr ""
 
 msgid "Jobs"
 msgstr "Procesos"
@@ -1233,6 +1249,9 @@ msgstr "Hacer un link clickeable"
 msgid "Make all links active"
 msgstr "Haz todos los enlaces activos"
 
+msgid "Make all non-breaking spaces explicit and visible as ~"
+msgstr ""
+
 msgid "Match any of the fields above"
 msgstr "Ajusta cualquiera de los campos anteriores"
 
@@ -1295,6 +1314,9 @@ msgstr "Nunca generar un índice de contenidos"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+
+msgid "Never show teaser and/or cover in text lists"
 msgstr ""
 
 msgid "New"
@@ -1380,6 +1402,10 @@ msgstr ""
 msgid "Older texts"
 msgstr "Textos más antiguos"
 
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+
 msgid "Open wiki"
 msgstr "Wiki abierta"
 
@@ -1410,9 +1436,6 @@ msgstr "O termínalo"
 
 msgid "Ordered List"
 msgstr "Lista enumerada"
-
-msgid "Other languages"
-msgstr "Otros idiomas"
 
 msgid "Otherwise, please just ignore this mail."
 msgstr "En caso contrario, por favor ignora este mail."
@@ -1515,6 +1538,9 @@ msgstr "Ubicarlo en el cuerpo con una descripción:"
 msgid "Place it in the body without description:"
 msgstr "Ubicarlo en el cuerpo sin una descripción:"
 
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr ""
+
 msgid "Plain PDF"
 msgstr "PDF plano"
 
@@ -1600,19 +1626,6 @@ msgid ""
 "        not embed them. If you need that, you should split the PDF in\n"
 "        images and upload those instead."
 msgstr ""
-
-msgid ""
-"Please note that the twoside and binding correction options follow\n"
-"  this logic: if you have some imposed format, they are ignored for\n"
-"  the standalone PDF but applied for the imposed ones. If you have\n"
-"  only the standalone PDF, they are applied to it."
-msgstr ""
-"Por favor ten en cuenta que las opciones de corrección para encuadernación\n"
-"  y doble página siguen esta lógica: si tienes algún formato para "
-"encuadernación,\n"
-"  son ignorados para el PDF normal, pero aplicados para los PDFs para "
-"encuadernación.\n"
-"  Si tienes solo un PDF, las correcciones se le aplican a ese."
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr "Por favor nota que las etiquetas deben ser puestas en una línea."
@@ -1856,6 +1869,9 @@ msgstr "Reiniciar todo"
 msgid "Reset password"
 msgstr "Reestablecer contraseña"
 
+msgid "Reset to site defaults"
+msgstr ""
+
 msgid "Restricted configuration variables"
 msgstr "Variables de configuración restringidas"
 
@@ -1898,6 +1914,12 @@ msgstr "Configuración SSL"
 
 msgid "SSL key path"
 msgstr "Path de llave SSL"
+
+msgid "Same as above, for the Archive menu"
+msgstr ""
+
+msgid "Same as above, for the Related Projects menu"
+msgstr ""
 
 msgid "Sans font"
 msgstr "Tipografía sans"
@@ -2126,9 +2148,6 @@ msgstr "Nube de etiquetas con temas"
 msgid "Task"
 msgstr "Tarea"
 
-msgid "TeX"
-msgstr "TeX"
-
 msgid "Teaser"
 msgstr "Muestra"
 
@@ -2184,6 +2203,9 @@ msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "¡El archivo subido no es un archivo HTML!"
+
+msgid "The following settings provide the defaults for each format."
+msgstr ""
 
 msgid "The following values are used to generate the webserver configuration."
 msgstr ""
@@ -2265,6 +2287,9 @@ msgstr "Luego aprueba el cambio como si fuera una publicación normal."
 msgid "Then fetch the updates from this page."
 msgstr "Luego toma las actualizaciones desde esta página."
 
+msgid "There are failed jobs"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Estos textos no tienen el id único."
 
@@ -2277,6 +2302,9 @@ msgid ""
 msgstr ""
 "Deberías ser rutas relativas a la configuración root del servidor web o "
 "rutas absolutas (recomendado)."
+
+msgid "This also makes /mirror/ public"
+msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
@@ -2347,6 +2375,9 @@ msgid "This text is new"
 msgstr "Este texto es nuevo"
 
 msgid "This text is not available"
+msgstr ""
+
+msgid "This text is not public yet"
 msgstr ""
 
 msgid "This text is not published yet"
@@ -2432,6 +2463,9 @@ msgstr "Barras triples"
 
 msgid "Try a random text if unsure"
 msgstr "Intenta con un texto aleatorio si no estás segura/o"
+
+msgid "Try again"
+msgstr ""
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
@@ -2531,6 +2565,9 @@ msgstr "Usarla como una imagen de muestra agregando al header esta línea:"
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 "Cuando sea para encuadernación, usar cuadernillos de %1 páginas cada uno"
+
+msgid "Use sans fonts for section titles"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Snippets HTML útiles"
@@ -2715,6 +2752,9 @@ msgstr "Puedes crear un/a compañero/a en %1"
 msgid "You can do so answering a simple question."
 msgstr "Puedes responder una simple pregunta."
 
+msgid "You can tune them editing them here."
+msgstr ""
+
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
@@ -2780,9 +2820,6 @@ msgstr "Tu usuaria/o ha sido creado en %1."
 #. (username)
 msgid "Your username is %1."
 msgstr "Tu nombre de usuaria/o es %1."
-
-msgid "ZIP archive with sources, needed by the bookbuilder"
-msgstr "Archivo ZIP con fuentes, necesario para el creador de libros"
 
 msgid "aborted"
 msgstr ""
@@ -2907,9 +2944,6 @@ msgstr "procesando"
 msgid "published"
 msgstr "publicado"
 
-msgid "relevant"
-msgstr "relevante"
-
 msgid "revision"
 msgstr "revisión"
 
@@ -2985,6 +3019,44 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "A new revision has been created at %1"
+#~ msgstr "Se ha creado una nueva revisión en %1"
+
+#~ msgid "Bare HTML, needed by the application"
+#~ msgstr "HTML desnudo (bare), necesitado por la aplicación"
+
+#~ msgid "HTML"
+#~ msgstr "HTML"
+
+#~ msgid "Job not found"
+#~ msgstr "Proceso no encontrado"
+
+#~ msgid "Other languages"
+#~ msgstr "Otros idiomas"
+
+#~ msgid ""
+#~ "Please note that the twoside and binding correction options follow\n"
+#~ "  this logic: if you have some imposed format, they are ignored for\n"
+#~ "  the standalone PDF but applied for the imposed ones. If you have\n"
+#~ "  only the standalone PDF, they are applied to it."
+#~ msgstr ""
+#~ "Por favor ten en cuenta que las opciones de corrección para "
+#~ "encuadernación\n"
+#~ "  y doble página siguen esta lógica: si tienes algún formato para "
+#~ "encuadernación,\n"
+#~ "  son ignorados para el PDF normal, pero aplicados para los PDFs para "
+#~ "encuadernación.\n"
+#~ "  Si tienes solo un PDF, las correcciones se le aplican a ese."
+
+#~ msgid "TeX"
+#~ msgstr "TeX"
+
+#~ msgid "ZIP archive with sources, needed by the bookbuilder"
+#~ msgstr "Archivo ZIP con fuentes, necesario para el creador de libros"
+
+#~ msgid "relevant"
+#~ msgstr "relevante"
 
 #~ msgid "Text body, before any section"
 #~ msgstr "Texto del cuerpo, antes de cualquier sección"

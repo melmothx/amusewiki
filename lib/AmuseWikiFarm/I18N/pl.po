@@ -60,10 +60,6 @@ msgid ""
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
 
-#. (home)
-msgid "A new revision has been created at %1"
-msgstr ""
-
 #. (location)
 msgid "A new text has been created at %1"
 msgstr ""
@@ -244,9 +240,6 @@ msgstr ""
 msgid "Bad request"
 msgstr ""
 
-msgid "Bare HTML, needed by the application"
-msgstr ""
-
 msgid "Beamer color theme"
 msgstr ""
 
@@ -274,6 +267,12 @@ msgid "Bookbuilder page limit (integer)"
 msgstr ""
 
 msgid "Build it"
+msgstr ""
+
+msgid ""
+"By default, secondary footnotes use arabic numbering\n"
+"        between parens. With this option they will use per-page alpha\n"
+"        numbering"
 msgstr ""
 
 msgid "By sku ascending"
@@ -308,6 +307,7 @@ msgstr ""
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
+#. (author_title)
 msgid "Changes for %1"
 msgstr ""
 
@@ -416,9 +416,6 @@ msgstr ""
 msgid "Current time"
 msgstr ""
 
-msgid "Custom formats"
-msgstr ""
-
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
 msgstr ""
@@ -483,6 +480,9 @@ msgid "Do not create a cover page and start the text on the first page"
 msgstr ""
 
 msgid "Do not enforce save message"
+msgstr ""
+
+msgid "Do not use bold fonts"
 msgstr ""
 
 msgid "Done"
@@ -609,6 +609,9 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
+msgid "File extension"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr ""
 
@@ -722,7 +725,9 @@ msgstr ""
 msgid "Git is not enabled on this site"
 msgstr ""
 
-msgid "HTML"
+msgid ""
+"HTML code to append to each regular page, inserted\n"
+"            verbatim, so be careful"
 msgstr ""
 
 msgid ""
@@ -960,6 +965,14 @@ msgid "Invalid username"
 msgstr ""
 
 msgid ""
+"It is recommended to always set a publication\n"
+"                    date, so the system does not need to rely on the\n"
+"                    file timestamp. Also, you should bump the\n"
+"                    publication date only on major editing, leaving it\n"
+"                    untouched for minor ones."
+msgstr ""
+
+msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
@@ -973,7 +986,10 @@ msgstr ""
 msgid "Job deleted"
 msgstr ""
 
-msgid "Job not found"
+msgid "Job rescheduled"
+msgstr ""
+
+msgid "Job status"
 msgstr ""
 
 msgid "Jobs"
@@ -1102,6 +1118,9 @@ msgstr ""
 msgid "Make all links active"
 msgstr ""
 
+msgid "Make all non-breaking spaces explicit and visible as ~"
+msgstr ""
+
 msgid "Match any of the fields above"
 msgstr ""
 
@@ -1164,6 +1183,9 @@ msgstr ""
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
+msgstr ""
+
+msgid "Never show teaser and/or cover in text lists"
 msgstr ""
 
 msgid "New"
@@ -1247,6 +1269,10 @@ msgstr ""
 msgid "Older texts"
 msgstr ""
 
+msgid ""
+"One page per sheet. This is useful only if you want to add the cropmarks"
+msgstr ""
+
 msgid "Open wiki"
 msgstr ""
 
@@ -1271,9 +1297,6 @@ msgid "Or wrap it in"
 msgstr ""
 
 msgid "Ordered List"
-msgstr ""
-
-msgid "Other languages"
 msgstr ""
 
 msgid "Otherwise, please just ignore this mail."
@@ -1364,6 +1387,9 @@ msgstr ""
 msgid "Place it in the body without description:"
 msgstr ""
 
+msgid "Place the notes on the back of the first page, impressum-style"
+msgstr ""
+
 msgid "Plain PDF"
 msgstr ""
 
@@ -1430,13 +1456,6 @@ msgid ""
 "        fully integrated in the document, so the generated files will\n"
 "        not embed them. If you need that, you should split the PDF in\n"
 "        images and upload those instead."
-msgstr ""
-
-msgid ""
-"Please note that the twoside and binding correction options follow\n"
-"  this logic: if you have some imposed format, they are ignored for\n"
-"  the standalone PDF but applied for the imposed ones. If you have\n"
-"  only the standalone PDF, they are applied to it."
 msgstr ""
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
@@ -1655,6 +1674,9 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
+msgid "Reset to site defaults"
+msgstr ""
+
 msgid "Restricted configuration variables"
 msgstr ""
 
@@ -1696,6 +1718,12 @@ msgid "SSL configuration"
 msgstr ""
 
 msgid "SSL key path"
+msgstr ""
+
+msgid "Same as above, for the Archive menu"
+msgstr ""
+
+msgid "Same as above, for the Related Projects menu"
 msgstr ""
 
 msgid "Sans font"
@@ -1918,9 +1946,6 @@ msgstr ""
 msgid "Task"
 msgstr ""
 
-msgid "TeX"
-msgstr ""
-
 msgid "Teaser"
 msgstr ""
 
@@ -1967,6 +1992,9 @@ msgid "The description for %1 has been updated"
 msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
+msgstr ""
+
+msgid "The following settings provide the defaults for each format."
 msgstr ""
 
 msgid "The following values are used to generate the webserver configuration."
@@ -2036,6 +2064,9 @@ msgstr ""
 msgid "Then fetch the updates from this page."
 msgstr ""
 
+msgid "There are failed jobs"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr ""
 
@@ -2045,6 +2076,9 @@ msgstr ""
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
+msgstr ""
+
+msgid "This also makes /mirror/ public"
 msgstr ""
 
 msgid "This directive wants a whitespace separated list of filenames."
@@ -2104,6 +2138,9 @@ msgid "This text is new"
 msgstr ""
 
 msgid "This text is not available"
+msgstr ""
+
+msgid "This text is not public yet"
 msgstr ""
 
 msgid "This text is not published yet"
@@ -2186,6 +2223,9 @@ msgid "Triple bars"
 msgstr ""
 
 msgid "Try a random text if unsure"
+msgstr ""
+
+msgid "Try again"
 msgstr ""
 
 msgid ""
@@ -2276,6 +2316,9 @@ msgstr ""
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
+msgstr ""
+
+msgid "Use sans fonts for section titles"
 msgstr ""
 
 msgid "Useful HTML snippets"
@@ -2428,6 +2471,9 @@ msgstr ""
 msgid "You can do so answering a simple question."
 msgstr ""
 
+msgid "You can tune them editing them here."
+msgstr ""
+
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
@@ -2485,9 +2531,6 @@ msgstr ""
 
 #. (username)
 msgid "Your username is %1."
-msgstr ""
-
-msgid "ZIP archive with sources, needed by the bookbuilder"
 msgstr ""
 
 msgid "aborted"
@@ -2604,9 +2647,6 @@ msgid "processing"
 msgstr ""
 
 msgid "published"
-msgstr ""
-
-msgid "relevant"
 msgstr ""
 
 msgid "revision"
