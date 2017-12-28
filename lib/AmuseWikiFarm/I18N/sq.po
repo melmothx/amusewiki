@@ -1232,7 +1232,7 @@ msgstr "Mundëso linkun që të klikohet"
 msgid "Make all links active"
 msgstr "Shëndërroi të gjitha linqet në linqe aktive"
 
-msgid "Make all non-breaking spaces explicit and visible as ~"
+msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Match any of the fields above"

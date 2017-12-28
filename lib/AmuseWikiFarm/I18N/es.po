@@ -1249,7 +1249,7 @@ msgstr "Hacer un link clickeable"
 msgid "Make all links active"
 msgstr "Haz todos los enlaces activos"
 
-msgid "Make all non-breaking spaces explicit and visible as ~"
+msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Match any of the fields above"

@@ -1413,7 +1413,7 @@ msgid "Make all links active"
 msgstr ""
 
 #: root/src/edit/edit.tt:286
-msgid "Make all non-breaking spaces explicit and visible as ~"
+msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 #: root/src/search/index.tt:96

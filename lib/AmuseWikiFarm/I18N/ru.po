@@ -1221,7 +1221,7 @@ msgstr "Сделать ссылку активной"
 msgid "Make all links active"
 msgstr "Сделать все ссылки активными"
 
-msgid "Make all non-breaking spaces explicit and visible as ~"
+msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Match any of the fields above"

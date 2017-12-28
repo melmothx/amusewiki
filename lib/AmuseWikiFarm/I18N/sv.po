@@ -1149,7 +1149,7 @@ msgstr "Gör en länk klickbar"
 msgid "Make all links active"
 msgstr "Aktivera alla länkar"
 
-msgid "Make all non-breaking spaces explicit and visible as ~"
+msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Match any of the fields above"

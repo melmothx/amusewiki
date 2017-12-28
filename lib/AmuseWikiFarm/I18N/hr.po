@@ -1214,7 +1214,7 @@ msgstr "Stvori aktivnu poveznicu"
 msgid "Make all links active"
 msgstr "Aktiviraj sve poveznice"
 
-msgid "Make all non-breaking spaces explicit and visible as ~"
+msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Match any of the fields above"

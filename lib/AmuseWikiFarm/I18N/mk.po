@@ -1242,7 +1242,7 @@ msgstr "Активирај линк"
 msgid "Make all links active"
 msgstr "Активирај ги сите линкови"
 
-msgid "Make all non-breaking spaces explicit and visible as ~"
+msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
 msgid "Match any of the fields above"
