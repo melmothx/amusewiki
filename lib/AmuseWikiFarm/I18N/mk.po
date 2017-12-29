@@ -2089,6 +2089,9 @@ msgstr "Целосен HTML (за печатење)"
 msgid "Standard"
 msgstr "Стандардно"
 
+msgid "Start the document with an empty page"
+msgstr ""
+
 msgid "Started"
 msgstr "Започнато"
 

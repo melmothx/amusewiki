@@ -2068,6 +2068,9 @@ msgstr "Faqja HTML (e përshtatshme për printim)"
 msgid "Standard"
 msgstr ""
 
+msgid "Start the document with an empty page"
+msgstr ""
+
 msgid "Started"
 msgstr ""
 

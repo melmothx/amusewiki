@@ -2052,6 +2052,9 @@ msgstr "HTML (подходит для печати)"
 msgid "Standard"
 msgstr "Стандарт"
 
+msgid "Start the document with an empty page"
+msgstr ""
+
 msgid "Started"
 msgstr "Начато"
 

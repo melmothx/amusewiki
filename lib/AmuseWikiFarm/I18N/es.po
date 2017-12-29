@@ -2093,6 +2093,9 @@ msgstr "HTML puro (bueno para imprimir)"
 msgid "Standard"
 msgstr "Estándar"
 
+msgid "Start the document with an empty page"
+msgstr ""
+
 msgid "Started"
 msgstr ""
 

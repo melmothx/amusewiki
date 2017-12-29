@@ -122,7 +122,7 @@ msgstr ""
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr ""
 
-#: root/src/include/bbform.tt:594
+#: root/src/include/bbform.tt:605
 msgid "Add crop marks to the PDF"
 msgstr ""
 
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: root/src/include/bbform.tt:364
+#: root/src/include/bbform.tt:375
 msgid "Author and title. If one side document: title."
 msgstr ""
 
@@ -309,7 +309,7 @@ msgstr ""
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr ""
 
-#: root/src/include/bbform.tt:516
+#: root/src/include/bbform.tt:527
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
@@ -404,7 +404,7 @@ msgstr ""
 msgid "Chapter"
 msgstr ""
 
-#: root/src/include/bbform.tt:365
+#: root/src/include/bbform.tt:376
 msgid "Chapter and section. If one side document: chapter."
 msgstr ""
 
@@ -456,7 +456,7 @@ msgstr ""
 msgid "Convert to archive markup"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:939
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:946
 msgid "Couldn't add the text"
 msgstr ""
 
@@ -745,7 +745,7 @@ msgid ""
 "        sectioning for this to work."
 msgstr ""
 
-#: root/src/include/bbform.tt:451
+#: root/src/include/bbform.tt:462
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
@@ -782,7 +782,7 @@ msgstr ""
 msgid "File uploaded!"
 msgstr ""
 
-#: root/src/include/bbform.tt:672
+#: root/src/include/bbform.tt:683
 msgid "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 
@@ -818,11 +818,11 @@ msgstr ""
 msgid "Fix typography (smart quotes)"
 msgstr ""
 
-#: root/src/include/bbform.tt:567
+#: root/src/include/bbform.tt:578
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
 msgstr ""
 
-#: root/src/include/bbform.tt:548
+#: root/src/include/bbform.tt:559
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr ""
 
@@ -830,7 +830,7 @@ msgstr ""
 msgid "Fixed category list"
 msgstr ""
 
-#: root/src/bookbuilder/schemas.tt:37 root/src/include/bbform.tt:534
+#: root/src/bookbuilder/schemas.tt:37 root/src/include/bbform.tt:545
 msgid "Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together."
 msgstr ""
 
@@ -855,7 +855,7 @@ msgstr ""
 msgid "For texts from the internet use"
 msgstr ""
 
-#: root/src/admin/edit.tt:836 root/src/include/bbform.tt:324
+#: root/src/admin/edit.tt:836 root/src/include/bbform.tt:335
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 
@@ -966,7 +966,7 @@ msgstr ""
 msgid "Headings"
 msgstr ""
 
-#: root/src/include/bbform.tt:200 root/src/include/bbform.tt:632
+#: root/src/include/bbform.tt:200 root/src/include/bbform.tt:643
 msgid "Height:"
 msgstr ""
 
@@ -1032,7 +1032,7 @@ msgstr ""
 msgid "I am human"
 msgstr ""
 
-#: root/src/include/bbform.tt:387
+#: root/src/include/bbform.tt:398
 msgid "I want an imposed (ready to print) PDF"
 msgstr ""
 
@@ -1100,7 +1100,7 @@ msgstr ""
 msgid "If this line is present, do not display the table of contents."
 msgstr ""
 
-#: root/src/include/bbform.tt:393
+#: root/src/include/bbform.tt:404
 msgid "If you asked for imposition, select an imposition schema"
 msgstr ""
 
@@ -1165,7 +1165,7 @@ msgstr ""
 msgid "Images:"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:291 root/src/bookbuilder/schemas.tt:3 root/src/include/bbform.tt:382
+#: lib/AmuseWikiFarm/Controller/BookBuilder.pm:291 root/src/bookbuilder/schemas.tt:3 root/src/include/bbform.tt:393
 msgid "Imposition schemas"
 msgstr ""
 
@@ -1556,7 +1556,7 @@ msgstr ""
 msgid "No text was added yet"
 msgstr ""
 
-#: root/src/include/bbform.tt:362
+#: root/src/include/bbform.tt:373
 msgid "None"
 msgstr ""
 
@@ -1609,7 +1609,7 @@ msgstr ""
 msgid "Older texts"
 msgstr ""
 
-#: root/src/include/bbform.tt:586
+#: root/src/include/bbform.tt:597
 msgid "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
 
@@ -1672,18 +1672,18 @@ msgstr ""
 msgid "Page not found!"
 msgstr ""
 
-#: root/src/admin/edit.tt:721 root/src/include/bbform.tt:338
+#: root/src/admin/edit.tt:721 root/src/include/bbform.tt:349
 msgid "Page where to start a chapter"
 msgstr ""
 
-#: root/src/include/bbform.tt:496
+#: root/src/include/bbform.tt:507
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
 
-#: root/src/include/bbform.tt:403
+#: root/src/include/bbform.tt:414
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1694,7 +1694,7 @@ msgid ""
 "        reduce the number of blank pages."
 msgstr ""
 
-#: root/src/include/bbform.tt:651
+#: root/src/include/bbform.tt:662
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
 
@@ -1884,11 +1884,11 @@ msgstr ""
 msgid "Please select the desired fonts"
 msgstr ""
 
-#: root/src/include/bbform.tt:424 root/src/include/bbform.tt:467
+#: root/src/include/bbform.tt:435 root/src/include/bbform.tt:478
 msgid "Please select the signature size:"
 msgstr ""
 
-#: root/src/include/bbform.tt:601
+#: root/src/include/bbform.tt:612
 msgid "Please select the size of each page including the crop marks, before the imposing"
 msgstr ""
 
@@ -2000,7 +2000,7 @@ msgstr ""
 msgid "Queue"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:934
+#: lib/AmuseWikiFarm/Archive/BookBuilder.pm:941
 msgid "Quota exceeded, too many pages"
 msgstr ""
 
@@ -2155,7 +2155,7 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: root/src/include/bbform.tt:357
+#: root/src/include/bbform.tt:368
 msgid "Running headings"
 msgstr ""
 
@@ -2216,11 +2216,11 @@ msgstr ""
 msgid "Section"
 msgstr ""
 
-#: root/src/include/bbform.tt:366
+#: root/src/include/bbform.tt:377
 msgid "Section and subsection. If one side document: section."
 msgstr ""
 
-#: root/src/include/bbform.tt:550 root/src/include/bbform.tt:569
+#: root/src/include/bbform.tt:561 root/src/include/bbform.tt:580
 msgid "See here for more details."
 msgstr ""
 
@@ -2405,8 +2405,12 @@ msgstr ""
 msgid "Standalone HTML (printer-friendly)"
 msgstr ""
 
-#: root/src/include/bbform.tt:195 root/src/include/bbform.tt:208 root/src/include/bbform.tt:627 root/src/include/bbform.tt:640
+#: root/src/include/bbform.tt:195 root/src/include/bbform.tt:208 root/src/include/bbform.tt:638 root/src/include/bbform.tt:651
 msgid "Standard"
+msgstr ""
+
+#: root/src/include/bbform.tt:325
+msgid "Start the document with an empty page"
 msgstr ""
 
 #: root/src/admin/jobs.tt:120 root/src/include/bulk_job.tt:13
@@ -2615,7 +2619,7 @@ msgstr ""
 msgid "The webserver needs to be reconfigured. Please execute in a root shell the following commands:"
 msgstr ""
 
-#: root/src/include/bbform.tt:435 root/src/include/bbform.tt:478
+#: root/src/include/bbform.tt:446 root/src/include/bbform.tt:489
 msgid "The whole book in as single signature"
 msgstr ""
 
@@ -2746,15 +2750,15 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: root/src/include/bbform.tt:367
+#: root/src/include/bbform.tt:378
 msgid "Title and chapter. If one side document: chapter."
 msgstr ""
 
-#: root/src/include/bbform.tt:368
+#: root/src/include/bbform.tt:379
 msgid "Title and section.  If one side document: section."
 msgstr ""
 
-#: root/src/include/bbform.tt:363
+#: root/src/include/bbform.tt:374
 msgid "Title and subtitle. If one side document: title."
 msgstr ""
 
@@ -2846,7 +2850,7 @@ msgid ""
 "            formats have the link)"
 msgstr ""
 
-#: root/src/admin/edit.tt:825 root/src/include/bbform.tt:331
+#: root/src/admin/edit.tt:825 root/src/include/bbform.tt:342
 msgid "Two side layout"
 msgstr ""
 
@@ -2945,7 +2949,7 @@ msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
 
 #. (sign)
-#: root/src/include/bbform.tt:433 root/src/include/bbform.tt:476
+#: root/src/include/bbform.tt:444 root/src/include/bbform.tt:487
 msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
@@ -3036,7 +3040,7 @@ msgstr ""
 msgid "Width of the cover image in percent of the text block width."
 msgstr ""
 
-#: root/src/include/bbform.tt:187 root/src/include/bbform.tt:619
+#: root/src/include/bbform.tt:187 root/src/include/bbform.tt:630
 msgid "Width:"
 msgstr ""
 
@@ -3299,7 +3303,7 @@ msgstr ""
 msgid "if the repository is exported"
 msgstr ""
 
-#: root/src/include/bbform.tt:171 root/src/include/bbform.tt:602
+#: root/src/include/bbform.tt:171 root/src/include/bbform.tt:613
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 
