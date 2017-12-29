@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.097 2017-12-29
+
+ - Localization updates: it, hr (complete)
+
 2.096 2017-12-27
 
  - Localization updates: fr, ru, de
