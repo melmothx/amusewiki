@@ -237,6 +237,7 @@ my $expected = {
                                        impressum => undef,
                                        sansfontsections => undef,
                                        nobold => undef,
+                                       start_with_empty_page => undef,
                                        secondary_footnotes_alpha => undef,
                                        opening => 'right',
                                        headings => 0,

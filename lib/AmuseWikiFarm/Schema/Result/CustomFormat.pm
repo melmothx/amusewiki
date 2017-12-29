@@ -242,6 +242,12 @@ __PACKAGE__->table("custom_formats");
   default_value: 0
   is_nullable: 1
 
+=head2 bb_start_with_empty_page
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 1
+
 =head2 bb_opening
 
   data_type: 'varchar'
@@ -401,6 +407,8 @@ __PACKAGE__->add_columns(
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_secondary_footnotes_alpha",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
+  "bb_start_with_empty_page",
+  { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_opening",
   {
     data_type => "varchar",
@@ -494,8 +502,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-12-27 09:25:51
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:OmWVDbrli0qBSG/Eprd64w
+# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-12-29 08:52:26
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3dhLD3omfDCtMmk5gz2ovA
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;

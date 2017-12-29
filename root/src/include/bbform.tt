@@ -317,6 +317,17 @@
       </label>
     </div>
 
+    <!-- compiler 1.00 -->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="start_with_empty_page" value="1" id="start_with_empty_page"
+               [% IF bb.start_with_empty_page %]checked="checked"[% END %]/>
+        [% loc('Start the document with an empty page') %]
+      </label>
+    </div>
+
+
+
     <div class="checkbox" id="coverpage_only_if_toc_container">
       <label>
         <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"

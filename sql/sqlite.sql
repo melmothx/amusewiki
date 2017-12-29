@@ -146,6 +146,7 @@ CREATE TABLE custom_formats (
        bb_sansfontsections SMALLINT DEFAULT 0,
        bb_nobold SMALLINT DEFAULT 0,
        bb_secondary_footnotes_alpha SMALLINT DEFAULT 0,
+       bb_start_with_empty_page SMALLINT DEFAULT 0,
        bb_opening VARCHAR(16) NOT NULL DEFAULT 'any',
        bb_papersize VARCHAR(255) NOT NULL DEFAULT 'generic',
        bb_paper_height INTEGER NOT NULL DEFAULT 0,

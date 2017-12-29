@@ -362,6 +362,8 @@ default to false.
 
 =item secondary_footnotes_alpha
 
+=item start_with_empty_page
+
 =item headings
 
 =item cover
@@ -440,6 +442,11 @@ has secondary_footnotes_alpha => (
                                  );
 
 
+has start_with_empty_page => (
+                              is => 'rw',
+                              isa => Bool,
+                              default => sub { 0 },
+                             );
 
 # imposer options
 has cover => (
@@ -1102,6 +1109,7 @@ sub profile_methods {
               sansfontsections
               nobold
               secondary_footnotes_alpha
+              start_with_empty_page
               headings
               imposed
               signature_2up
@@ -1170,6 +1178,8 @@ sub as_job {
                                     # 0.99
                                     nobold => $self->nobold,
                                     secondary_footnotes_alpha => $self->secondary_footnotes_alpha,
+                                    # 1.00
+                                    start_with_empty_page => $self->start_with_empty_page,
 
                                     ($self->is_single_file ? ()
                                      : (
