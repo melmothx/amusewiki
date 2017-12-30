@@ -299,6 +299,8 @@ msgid ""
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
 msgstr ""
+"По умолчанию дополнительные сноски используют арабские цифры в скобках. С "
+"этой опцией они будут использовать постраничную нумерацию буквами"
 
 msgid "By sku ascending"
 msgstr "По номеру по возрастанию"
@@ -521,7 +523,7 @@ msgid "Do not enforce save message"
 msgstr "Не требовать сообщения для сохранения"
 
 msgid "Do not use bold fonts"
-msgstr ""
+msgstr "Не использовать жирный шрифт"
 
 msgid "Done"
 msgstr "Готово"
@@ -656,7 +658,7 @@ msgid "Failed to remove Remote repository %1"
 msgstr "Не удалось удалить удалённый репозиторий %1"
 
 msgid "File extension"
-msgstr ""
+msgstr "Расширение файла"
 
 msgid "File uploaded!"
 msgstr "Файл загружен!"
@@ -780,6 +782,8 @@ msgid ""
 "HTML code to append to each regular page, inserted\n"
 "            verbatim, so be careful"
 msgstr ""
+"HTML-код для добавления к каждой обычной странице, вставляется как есть, так "
+"что будьте осторожны"
 
 msgid ""
 "HTML to append to each special page, inserted\n"
@@ -1067,6 +1071,9 @@ msgid ""
 "                    publication date only on major editing, leaving it\n"
 "                    untouched for minor ones."
 msgstr ""
+"Рекомендуется всегда указывать дату публикации, так что системе не требуется "
+"использовать дату изменения файла. Кроме того, вам нужно обновлять дату "
+"публикации после каждого большого "
 
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
@@ -1085,10 +1092,10 @@ msgid "Job deleted"
 msgstr "Задание удалено"
 
 msgid "Job rescheduled"
-msgstr ""
+msgstr "Задача перезапущена"
 
 msgid "Job status"
-msgstr ""
+msgstr "Статус задания"
 
 msgid "Jobs"
 msgstr "Задание"
@@ -1222,7 +1229,7 @@ msgid "Make all links active"
 msgstr "Сделать все ссылки активными"
 
 msgid "Make all non-breaking spaces explicit and visible as ~~"
-msgstr ""
+msgstr "Сделать все неразрывные пробелы явными и видимыми как ~~"
 
 msgid "Match any of the fields above"
 msgstr "Заполнить все поля выше"
@@ -1291,7 +1298,7 @@ msgstr ""
 "примечаниями/логотипом/именем сайта"
 
 msgid "Never show teaser and/or cover in text lists"
-msgstr ""
+msgstr "Никогда не показывать аннотацию и/или обложку в списках текстов"
 
 msgid "New"
 msgstr "Новый"
@@ -1379,6 +1386,8 @@ msgstr "Более старые тексты"
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
+"Одна страница на лист. Это полезно только если вы хотите добавить метки "
+"обрезки"
 
 msgid "Open wiki"
 msgstr "Открытая вики"
@@ -1507,7 +1516,7 @@ msgid "Place it in the body without description:"
 msgstr "Поместить его в текст без описания:"
 
 msgid "Place the notes on the back of the first page, impressum-style"
-msgstr ""
+msgstr "Разместить примечания на обороте первой страницы, как impressum"
 
 msgid "Plain PDF"
 msgstr "Обычный PDF"
@@ -1834,7 +1843,7 @@ msgid "Reset password"
 msgstr "Сбросить пароль"
 
 msgid "Reset to site defaults"
-msgstr ""
+msgstr "Восстановить настройки сайта по умолчанию"
 
 msgid "Restricted configuration variables"
 msgstr "Ограничить настройки переменных"
@@ -1880,10 +1889,10 @@ msgid "SSL key path"
 msgstr "Путь к SSL-ключу"
 
 msgid "Same as above, for the Archive menu"
-msgstr ""
+msgstr "Также как выше, для меню Архив"
 
 msgid "Same as above, for the Related Projects menu"
-msgstr ""
+msgstr "Также как выше, для меню «На других языках»"
 
 msgid "Sans font"
 msgstr "Шрифт без засечек"
@@ -2053,7 +2062,7 @@ msgid "Standard"
 msgstr "Стандарт"
 
 msgid "Start the document with an empty page"
-msgstr ""
+msgstr "Начать документ с пустой страницы"
 
 msgid "Started"
 msgstr "Начато"
@@ -2166,7 +2175,7 @@ msgid "The file uploaded is not an HTML file!"
 msgstr "Загруженный файл не является HTML-файлом!"
 
 msgid "The following settings provide the defaults for each format."
-msgstr ""
+msgstr "Далее идут настройки по умолчанию для каждого формата."
 
 msgid "The following values are used to generate the webserver configuration."
 msgstr "Следующие значения испльзуются для генерации настроек вебсервера."
@@ -2247,7 +2256,7 @@ msgid "Then fetch the updates from this page."
 msgstr "Затем загружайте (fetch) обновления с этой страницы."
 
 msgid "There are failed jobs"
-msgstr ""
+msgstr "Некоторые задачи завершились с ошибкой"
 
 msgid "These texts are missing the unique id."
 msgstr "Эти тексты отсутствуют в уникальном id"
@@ -2263,7 +2272,7 @@ msgstr ""
 "абсолютные пути (рекомендуется)."
 
 msgid "This also makes /mirror/ public"
-msgstr ""
+msgstr "Это также делает /mirror/ общедоступным"
 
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Этому указанию необходим разделённый пробелами список названий файлов"
@@ -2334,7 +2343,7 @@ msgid "This text is not available"
 msgstr "Этот текст недоступен"
 
 msgid "This text is not public yet"
-msgstr ""
+msgstr "Этот текст ещё не общедоступен"
 
 msgid "This text is not published yet"
 msgstr "Этот текст ещё не опубликован"
@@ -2421,7 +2430,7 @@ msgid "Try a random text if unsure"
 msgstr "Попробуйте случайный текст."
 
 msgid "Try again"
-msgstr ""
+msgstr "Попробовать снова"
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
@@ -2523,7 +2532,7 @@ msgstr ""
 "При спуске полос использовать оптимальные тетрадки по %s страниц в каждой"
 
 msgid "Use sans fonts for section titles"
-msgstr ""
+msgstr "Использовать шрифт без засечек для заголовков разделов"
 
 msgid "Useful HTML snippets"
 msgstr "Полезные HTML-заготовки"
@@ -2708,7 +2717,7 @@ msgid "You can do so answering a simple question."
 msgstr "Вы можете сделать это ответив на простой вопрос"
 
 msgid "You can tune them editing them here."
-msgstr ""
+msgstr "Вы можете отредактировать их здесь."
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
