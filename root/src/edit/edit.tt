@@ -394,6 +394,7 @@
           </a>
         </li>
         <li><a href="#csfootnotes">[% loc('Footnotes') %]</a></li>
+        <li><a href="#cssecfootnotes">[% loc('Secondary footnotes') %]</a></li>
         <li>
           <a href="#csspecial">
             [% loc('Poetry, bibliographies, plays, code blocks') %]
@@ -544,6 +545,19 @@
           <code>[1] [% loc('Example') %]</code>
         </li>
       </ul>
+
+      <h4 id="cssecfootnotes">[% loc('Secondary footnotes') %]</h4>
+      <p>
+          [% loc("It is possible to have an additional set of
+          footnotes which you use to annote the text (e.g. critical
+          editions or translator's notes). They work the same way of
+          the regular footnotes, but they use curly brackets instead
+          of square brackets. Placing secondary footnote references
+          inside a regular footnote is permitted.") %]
+      </p>
+      <pre>[% loc('Example') %] {1}
+
+{1} [% loc('Example') %]</pre>
 
       <h4 id="csspecial">[% loc('Special blocks') %]</h4>
       <p>
