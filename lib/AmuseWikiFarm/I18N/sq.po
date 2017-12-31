@@ -1066,6 +1066,15 @@ msgid "Invalid username"
 msgstr "Përdoruesi i pavlefshëm"
 
 msgid ""
+"It is possible to have an additional set of\n"
+"          footnotes which you use to annote the text (e.g. critical\n"
+"          editions or translator's notes). They work the same way as\n"
+"          the regular footnotes, but they use curly brackets instead\n"
+"          of square brackets. Placing secondary footnote references\n"
+"          inside a regular footnote is permitted."
+msgstr ""
+
+msgid ""
 "It is recommended to always set a publication\n"
 "                    date, so the system does not need to rely on the\n"
 "                    file timestamp. Also, you should bump the\n"
@@ -1912,6 +1921,9 @@ msgstr "Kërko"
 
 msgid "Search results"
 msgstr "Rezultatet e kërkimit"
+
+msgid "Secondary footnotes"
+msgstr ""
 
 msgid "Section"
 msgstr "Seksioni"
