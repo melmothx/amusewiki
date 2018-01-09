@@ -80,5 +80,11 @@ $mech_ext->post($mech_ext->uri,
                            ]);
 
 $mech_ext->content_contains('This revision is being edited by someone else!');
-is $site->revisions->first->muse_body, $body, "body not modified";
+my $rev = $site->revisions->first;
+is $rev->muse_body, $body, "body not modified";
 is $site->attachments->count, 1, "Only one file upload";
+
+$rev->commit_version;
+$rev->publish_text(sub { diag @_ });
+$mech_ext->get_ok($mech->uri);
+$mech_ext->content_contains('This revision is already published, ignoring changes');
