@@ -14,7 +14,8 @@
 \.orig$
 \.rej$
 
-root/static/js/ckeditor/.*
+root/static/js/ckeditor.*
+root/static/js/highlight.*
 root/git/.*
 root/static/cgit/.*
 root/static/.*\.zip$

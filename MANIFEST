@@ -981,6 +981,8 @@ root/static/js/queue.js
 root/static/js/screenfull.min.js
 root/static/js/select2/select2.js
 root/static/js/select2/select2.min.js
+root/static/js/simpleUpload.js
+root/static/js/simpleUpload.min.js
 root/static/js/validate/dist/additional-methods.js
 root/static/js/validate/dist/additional-methods.min.js
 root/static/js/validate/dist/jquery.validate.js
@@ -1154,6 +1156,7 @@ t/authentication.t
 t/author-update.t
 t/automatic-teaser.t
 t/backlinks.t
+t/batch-upload.t
 t/bb-profiles.t
 t/beamer.t
 t/bookbuilder-custom-papersize.t
