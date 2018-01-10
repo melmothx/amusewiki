@@ -264,7 +264,26 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
     }
 }
 
-sub edit :Chained('get_revision') :PathPart('') :Args(0) {
+sub revision_can_be_edited :Chained('get_revision') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    my $revision = $c->stash->{revision};
+    # while editing, prevent multiple session to write stuff
+    if ($revision->editing_ongoing and
+        $revision->session_id      and
+        $revision->session_id ne $c->sessionid) {
+        log_debug { $revision->session_id . ' ne ' . $c->sessionid };
+        $c->stash->{editing_warnings} =
+          $c->loc("This revision is being edited by someone else!");
+        $c->stash(locked_editing => 1);
+    }
+    elsif ($revision->published) {
+        $c->stash->{editing_warnings} =
+          $c->loc("This revision is already published, ignoring changes");
+        $c->stash(locked_editing => 1);
+    }
+}
+
+sub edit :Chained('revision_can_be_edited') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;
     my $revision = $c->stash->{revision};
@@ -293,24 +312,12 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
     }
     $c->stash(%layout_settings);
 
-    # while editing, prevent multiple session to write stuff
-    if ($revision->editing_ongoing and
-        $revision->session_id      and
-        $revision->session_id ne $c->sessionid) {
-        log_debug { $revision->session_id . ' ne ' . $c->sessionid };
-        $c->stash->{editing_warnings} =
-          $c->loc("This revision is being edited by someone else!");
-        $c->stash(locked_editing => 1);
-    }
-    elsif ($revision->published) {
-        $c->stash->{editing_warnings} =
-          $c->loc("This revision is already published, ignoring changes");
-        $c->stash(locked_editing => 1);
-    }
     # on submit, do the editing. Please note that we don't care about
     # the params. We save the body and pass that as preview. So if the
     # user closes the browser, when it has a chance to pick it back.
-    elsif ($params->{preview} || $params->{commit} || $params->{upload}) {
+    return if $c->stash->{locked_editing};
+
+    if ($params->{preview} || $params->{commit} || $params->{upload}) {
 
         # set the session id
         $revision->session_id($c->sessionid);
@@ -344,14 +351,13 @@ sub edit :Chained('get_revision') :PathPart('') :Args(0) {
             }
             else {
                 log_error { $upload->tempname . ' does not exist' };
+                die "Shouldn't happen, " . $upload->tempname . ' does not exist';
             }
             my $outcome;
             if ($params->{add_attachment_to_body}) {
-                log_debug { "Adding attachment" };
                 $outcome = $revision->embed_attachment($upload->tempname);
             }
             else {
-                log_debug { "Embedding attachment" };
                 $outcome = $revision->add_attachment($upload->tempname);
             }
             if (my $error = $outcome->{error}) {
