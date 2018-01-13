@@ -255,6 +255,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
                   revision => $revision,
                   editing_uri => $c->uri_for_action('/edit/edit', [@args]),
                   diffing_uri => $c->uri_for_action('/edit/diff', [@args]),
+                  binary_upload_uri => $c->uri_for_action('/edit/upload', [@args]),
                   preview_uri => $c->uri_for_action('/edit/preview', [@args]),
                  );
     }
@@ -286,8 +287,11 @@ sub revision_can_be_edited :Chained('get_revision') :PathPart('') :CaptureArgs(0
 sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
     my ($self, $c) = @_;
     my @uris;
+    my %out;
     if ($c->stash->{locked_editing}) {
         log_error { "Locked editing, no upload possible" };
+        $out{error}{message} = $c->loc("Locked editing, no upload possible");
+        $out{success} = 0;
     }
     else {
         my $revision = $c->stash->{revision};
@@ -299,7 +303,14 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
             }
         }
     }
-    $c->stash(json => { uris => \@uris });
+    if (@uris) {
+        $out{success} = 1;
+        $out{uris} = \@uris;
+    }
+    else {
+        $out{error}{message} ||= $c->loc("Nothing uploaded");
+    }
+    $c->stash(json => \%out);
     $c->detach($c->view('JSON'));
 }
 

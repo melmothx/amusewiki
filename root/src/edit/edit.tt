@@ -3,6 +3,14 @@
 [% INCLUDE 'include/markitup.tt' %]
 [% INCLUDE 'include/validate.tt' %]
 
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/simpleUpload.min.js') %]">
+</script>
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/amw-batch-upload.js') %]">
+</script>
+
+
 [% IF editing_warnings %]
 <div id="editing-warnings" class="alert alert-danger">
   [% editing_warnings %]
@@ -164,7 +172,10 @@
       <label for="attachment">
         [% loc('Add an attachment (PNG, JPG or PDF)' ) %]
       </label>
-      <input id="attachment" name="attachment" type="file" />
+      <div id="uploads"></div>
+      <input data-upload-url="[% binary_upload_uri | html %]"
+             class="simple-upload-input"
+             id="attachment" name="attachment" type="file" />
     </div>
     <div class="checkbox">
       <label>
