@@ -5,12 +5,13 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 20;
+use Test::More tests => 23;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -88,3 +89,42 @@ $rev->commit_version;
 $rev->publish_text(sub { diag @_ });
 $mech_ext->get_ok($mech->uri);
 $mech_ext->content_contains('This revision is already published, ignoring changes');
+
+$mech->get('/action/text/new');
+$mech->submit_form(with_fields => {
+                                   author => 'pippo',
+                                   title => 'Test title 2',
+                                   textbody => "blablabla\n"
+                                  },
+                   button => 'go');
+$mech->content_contains('Created new text');
+
+my $revedit =  $mech->uri;
+$mech->post($revedit . '/upload',
+            Content_Type => 'form-data',
+            Content => [
+                        attachment => [ catfile(qw/t files shot.png/),
+                                        catfile(qw/t files shot.png/),
+                                        Content_Type => 'image/png',
+                                      ],
+                       ]);
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok scalar(@{$res->{uris}});
+}
+
+$mech->post($revedit . '/upload',
+            Content_Type => 'form-data',
+            Content => [
+                        attachment => [ catfile(qw/t files manual.pdf/),
+                                        catfile(qw/t files manual.pdf/),
+                                        Content_Type => 'application/pdf',
+                                      ],
+                       ]);
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok @{$res->{uris}} > 10;
+}
+

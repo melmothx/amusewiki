@@ -283,6 +283,26 @@ sub revision_can_be_edited :Chained('get_revision') :PathPart('') :CaptureArgs(0
     }
 }
 
+sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
+    my ($self, $c) = @_;
+    my @uris;
+    if ($c->stash->{locked_editing}) {
+        log_error { "Locked editing, no upload possible" };
+    }
+    else {
+        my $revision = $c->stash->{revision};
+        # expecting only one upload;
+        if (my ($upload) = $c->request->upload('attachment')) {
+            my $res = $revision->add_attachment_as_images($upload->tempname);
+            if ($res->{uris} and @{$res->{uris}}) {
+                @uris = @{$res->{uris}};
+            }
+        }
+    }
+    $c->stash(json => { uris => \@uris });
+    $c->detach($c->view('JSON'));
+}
+
 sub edit :Chained('revision_can_be_edited') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;

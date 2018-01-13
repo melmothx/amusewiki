@@ -991,7 +991,7 @@ sub append_to_revision_body {
     $self->edit(\$body);
 }
 
-sub embed_attachment {
+sub add_attachment_as_images {
     my ($self, $file) = @_;
     $file = Path::Tiny::path($file);
     my @uris;
@@ -1017,8 +1017,15 @@ sub embed_attachment {
         # can't embed
         Dlog_error { "Can't embed $file $_" } $outcome;
     }
-    if (@uris) {
-        my $append = "\n\n" . join("\n\n", map { "[[$_ f]]"} @uris) . "\n\n";
+    $outcome->{uris} = \@uris;
+    return $outcome;
+}
+
+sub embed_attachment {
+    my ($self, $file) = @_;
+    my $outcome = $self->add_attachment_as_images($file);
+    if ($outcome->{uris} and @{$outcome->{uris}}) {
+        my $append = "\n\n" . join("\n\n", map { "[[$_ f]]"} @{$outcome->{uris}} ) . "\n\n";
         $self->append_to_revision_body($append);
     }
     return $outcome;
