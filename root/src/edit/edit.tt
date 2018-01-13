@@ -168,14 +168,15 @@
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
   <div class="form-group">
+    <div id="uploads" class="row"></div>
     <div>
       <label for="attachment">
         [% loc('Add an attachment (PNG, JPG or PDF)' ) %]
       </label>
-      <div id="uploads"></div>
       <input data-upload-url="[% binary_upload_uri | html %]"
              class="simple-upload-input"
              id="attachment" name="attachment" type="file" />
+      [% # here we are not ready for multiple yet %]
     </div>
     <div class="checkbox">
       <label>
