@@ -31,6 +31,21 @@ $(document).ready(function() {
                         )
                     )
                 );
+                if (data.insert) {
+                    var body = $('#maintextarea').val();
+                    if (uri.match(/\.pdf$/)) {
+                        if (body.match(/^#ATTACH .*$/m)) {
+                            body = body.replace(/^(#ATTACH .*)$/m, '$1 ' + uri);
+                        }
+                        else {
+                            body = '#ATTACH ' + uri + "\n" + body;
+                        }
+                    }
+                    else {
+                        body = body + "\n\n[[" + uri + "]]\n\n";
+                    }
+                    $('#maintextarea').val(body)
+                }
             }
 		}
         else {
