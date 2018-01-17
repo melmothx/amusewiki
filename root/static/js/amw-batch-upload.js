@@ -21,7 +21,7 @@ $(document).ready(function() {
                 else {
                     img = $('<span/>', { class: "fa fa-file-pdf-o fa-2x fa-border" });
                 }
-				$('#uploads').append(
+				$('#uploads').prepend(
                     $("<div/>", { 'class': 'upload-item  col-sm-6 col-md-4' }).append(
                         $('<div/>', { class: "thumbnail" }).append(
                             img,
@@ -44,7 +44,8 @@ $(document).ready(function() {
                     else {
                         body = body + "\n\n[[" + uri + "]]\n\n";
                     }
-                    $('#maintextarea').val(body)
+                    $('#maintextarea').effect("highlight", {}, 2000);
+                    $('#maintextarea').val(body);
                 }
             }
 		}

@@ -41,10 +41,19 @@
   <div class="panel-heading">
     <h3 class="panel-title">
         [% loc('Preview') %]
-        <a href="[% preview_uri %]" target="_blank"
+        <a href="[% preview_uri | html %]" target="_blank"
            title="[% loc('Show preview in other tab') %]">
           <span class="fa fa-arrows-alt"></span>
         </a>
+        [% IF revision.has_local_modifications %]
+        <a href="[% diffing_uri | html %]" target="_blank"
+           title="[% loc('Show differences in other tab') %]">
+          <span class="pull-right" style="text-decoration: none">
+            <span class="fa fa-plus"></span>
+            <span class="fa fa-minus"></span>
+          </span>
+        </a>
+        [% END %]
     </h3>
   </div>
   <div class="panel-body amw-fixed-panel-edit"
@@ -56,40 +65,24 @@
       </div>
     </div>
   </div>
-  <hr />
-  <div class="panel-body">
-    <div>
-      [% IF revision.has_local_modifications %]
-      <div class="center">
-        <button type="button" id="goto-diff" class="btn btn-default">
-          [% loc('Show differences in other tab') %]
-        </button>
-        <br />&nbsp;
-      </div>
-      [% END %]
-      <div>
-        <p>
-          [% loc('Your changes are saved and can be checked every time you hit Preview or Save') %]
-        </p>
-      </div>
-    </div>
-  </div>
 </div>
 
 
-[% SET attachments = revision.attached_images %]
-[% IF attachments.size %]
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">[% loc('Attached images') %]</h3>
   </div>
   <div class="panel-body">
-  <div class="alert alert-warning">
-    <span class="fa fa-warning"></span> [% loc('You
+    <div id="image-warning" class="alert alert-warning" style="display: none">
+      <span class="fa fa-warning"></span> [% loc('You
     have attached one or more images. This is not enough! To make them
     appear, you have to place somewhere in the body or in the header,
     depending on their purpose. See the examples below.') %]
-  </div>
+    </div>
+    <div id="uploads" class="row" data-listing-url="[% upload_listing_uri | html %]">
+    </div>
+
+
   [% FOREACH attach IN attachments %]
   <div>
     <img src="[% attach %]" alt="attachment" class="img-responsive img-thumbnail"  />
@@ -119,42 +112,6 @@
   </div>
 </div>
 
-[% END %]
-
-[% IF revision.attached_pdfs_string %]
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">[% loc('Attached PDFs') %]</h3>
-  </div>
-  <div class="panel-body">
-    <div class="alert alert-warning">
-      <span class="fa fa-warning"></span>
-      [% loc('To display the PDFs, set or append the following string in the header') %]:<br />
-      <code>[% revision.attached_pdfs_string | html %]</code>
-    </div>
-    <div>
-      [% loc('This directive wants a whitespace separated list of filenames.') %]<br/>
-      [% loc('PDFs not listed in the [_1] directive will be stored but ignored.',
-      '#ATTACH') %]<br />
-      [% loc('PDFs cannot be used in the body.') %]
-      <div>
-        [% loc('Please note that PDFs are external files and cannot be
-        fully integrated in the document, so the generated files will
-        not embed them. If you need that, you should split the PDF in
-        images and upload those instead.') %]
-      </div>
-      <div>
-        [% loc('The site will display the PDFs with a thumbnail at the
-        end of the document.') %]
-      </div>
-    </div>
-  </div>
-</div>
-[% END %]
-
-
-
-
   </div>
   <div id="edit-page-left-panels" class="col-sm-[% edit_option_page_left_bs_columns %]
               col-sm-pull-[% edit_option_page_right_bs_columns %]">
@@ -168,8 +125,51 @@
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
   <div class="form-group">
-    <div id="uploads" class="row" data-listing-url="[% upload_listing_uri | html %]">
+    [% IF site.fixed_category_list %]
+    <div>
+      <p>
+        <strong>
+          [% loc('Available category tags for header') %]
+        </strong>
+      </p>
+      <p>
+        <code>#cat [% site.fixed_category_list | html %]</code>
+      </p>
     </div>
+    [% END %]
+
+    <div id="fullscreen-markitup">
+      <textarea rows="20" cols="60" id="maintextarea"
+                class="form-control text-muse-body"
+                [% IF locked_editing %]readonly="readonly"[% END %]
+                name="body">[%- revision.muse_body | html -%]</textarea>
+      <div id="fullscreen-markitup-toggle-button">
+        <button class="btn btn-default btn-sm" type="button" id="fullscreen-markitup-toggle">
+          [% loc('Toggle fullscreen editor') %]
+        </button>
+      </div>
+    </div>
+    <div>
+      <a href="#cheatsheet">
+        <span class="fa fa-hand-o-right"></span>
+        [% loc('Cheatsheet for the markup') %]
+      </a>
+    </div>
+    <div>
+      <a href="[% c.uri_for_action('utils/import') %]" target="_blank">
+        <span class="fa fa-hand-o-right"></span>
+        [% loc('HTML/Word Importer') %]
+      </a>
+    </div>
+    <br />
+
+    [% SET show_filters = edit_option_show_filters %]
+    [%- IF (c.req.params.fix_typography || c.req.params.fix_typography || c.req.params.fix_links ||
+            c.req.params.show_nbsp      ||
+            c.req.params.remove_nbsp    || c.req.params.fix_nbsp       || c.req.params.fix_footnotes) -%]
+       [%- SET show_filters = 1 -%]
+    [%- END -%]
+
     <div id="uploads-errors" class="alert alert-warning" style="display:none">
     </div>
     <div class="row">
@@ -196,60 +196,12 @@
       <label>
       <input id="add-attachment-to-body"
              value="1"
+             checked="checked"
              type="checkbox" name="add_attachment_to_body" />
       [% loc('Insert the file into the body') %]
       </label>
     </div>
-    <div>
-      <button type="submit" name="upload" value="upload" class="btn btn-default" id="amw-edit-upload-file">
-        [% loc('Upload') %]
-      </button>
-      <br />
-    </div>
-  </div>
-  <div class="form-group">
-    [% IF site.fixed_category_list %]
-    <div>
-      <p>
-        <strong>
-          [% loc('Available category tags for header') %]
-        </strong>
-      </p>
-      <p>
-        <code>#cat [% site.fixed_category_list | html %]</code>
-      </p>
-    </div>
-    [% END %]
 
-    <div>
-      <a href="#cheatsheet">
-        <span class="fa fa-hand-o-right"></span>
-        [% loc('Cheatsheet for the markup') %]
-      </a>
-    </div>
-    <div>
-      <a href="[% c.uri_for_action('utils/import') %]" target="_blank">
-        <span class="fa fa-hand-o-right"></span>
-        [% loc('HTML/Word Importer') %]
-      </a>
-    </div>
-    <div id="fullscreen-markitup">
-      <div id="fullscreen-markitup-toggle-button">
-        <button class="btn btn-default btn-sm" type="button" id="fullscreen-markitup-toggle">
-          [% loc('Toggle fullscreen editor') %]
-        </button>
-      </div>
-      <textarea rows="20" cols="60" id="maintextarea"
-                class="form-control text-muse-body"
-                [% IF locked_editing %]readonly="readonly"[% END %]
-                name="body">[%- revision.muse_body | html -%]</textarea>
-    </div>
-    [% SET show_filters = edit_option_show_filters %]
-    [%- IF (c.req.params.fix_typography || c.req.params.fix_typography || c.req.params.fix_links ||
-            c.req.params.show_nbsp      ||
-            c.req.params.remove_nbsp    || c.req.params.fix_nbsp       || c.req.params.fix_footnotes) -%]
-       [%- SET show_filters = 1 -%]
-    [%- END -%]
 
     <div>
       <label role="button"

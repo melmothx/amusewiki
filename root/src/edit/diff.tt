@@ -19,6 +19,10 @@
 
 [% IF revision.has_local_modifications %]
 
+<div class="alert alert-info">
+  [% loc('Your changes are saved and can be checked every time you hit Preview or Save') %]
+</div>
+
 <!--
 Source at
 [% c.uri_for('/static/js/diff/diff_match_patch_uncompressed.js') %]
