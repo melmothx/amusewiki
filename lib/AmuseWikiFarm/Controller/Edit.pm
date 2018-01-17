@@ -12,6 +12,7 @@ use DateTime;
 use Text::Wrapper;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
+use Path::Tiny ();
 
 =head1 NAME
 
@@ -302,11 +303,29 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
     }
     else {
         my $revision = $c->stash->{revision};
-        # expecting only one upload;
+        # bounce back the setting
+        $out{insert} = $c->request->body_params->{insert} ? 1 : 0;
+
         if (my ($upload) = $c->request->upload('attachment')) {
-            my $res = $revision->add_attachment_as_images($upload->tempname);
-            if ($res->{uris} and @{$res->{uris}}) {
-                @uris = @{$res->{uris}};
+            my $file =  $upload->tempname;
+            my $outcome = $revision->add_attachment($upload->tempname);
+            if (my $uri = $outcome->{attachment}) {
+                if ($uri =~ m/\.pdf\z/ and $c->request->body_params->{split_pdf}) {
+                    log_info { "Splitting $uri because " . $c->request->body_params->{split_pdf} . " is true" };
+                    my $tmpdir = Path::Tiny->tempdir;
+                    my @images = AmuseWikiFarm::Utils::Amuse::split_pdf($file, $tmpdir);
+                    foreach my $img (@images) {
+                        log_debug { "Attaching $img" };
+                        my $res = $revision->add_attachment("$img");
+                        if (my $img_uri = $res->{attachment}) {
+                            log_debug { "Attaching $img_uri" };
+                            push @uris, $img_uri;
+                        }
+                    }
+                }
+                else {
+                    push @uris, $uri;
+                }
             }
         }
     }

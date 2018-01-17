@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 25;
+use Test::More tests => 30;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -125,6 +125,29 @@ $mech->post($revedit . '/upload',
 {
     my $res = from_json($mech->content);
     diag $mech->content;
+    ok @{$res->{uris}} == 1;
+}
+
+$mech->get_ok($revedit . '/list-upload');
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok @{$res->{uris}} == 2;
+}
+
+
+$mech->post($revedit . '/upload',
+            Content_Type => 'form-data',
+            Content => [
+                        split_pdf => 1,
+                        attachment => [ catfile(qw/t files manual.pdf/),
+                                        catfile(qw/t files manual.pdf/),
+                                        Content_Type => 'application/pdf',
+                                      ],
+                       ]);
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
     ok @{$res->{uris}} > 10;
 }
 
@@ -133,5 +156,12 @@ $mech->get_ok($revedit . '/list-upload');
     my $res = from_json($mech->content);
     diag $mech->content;
     ok @{$res->{uris}} > 10;
+}
+
+$mech->get_ok('/api/lexicon.json');
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok $res->{MaxFileSizeError};
 }
 
