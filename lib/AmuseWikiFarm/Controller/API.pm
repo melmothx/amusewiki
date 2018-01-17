@@ -42,6 +42,18 @@ sub autocompletion :Chained('api') :Args(1) {
     }
 }
 
+sub lexicon :Chained('api') :PathPart('lexicon.json') :Args(0) {
+    my ($self, $c) = @_;
+    my %out = (
+               InvalidFileExtensionError => $c->loc("File format not allowed"),
+               InvalidFileTypeError => $c->loc("File format not allowed"),
+               MaxFileSizeError => $c->loc("File too big"),
+               RequestError => $c->loc("Request failed! Please report the the problem"),
+              );
+    $c->stash(json => \%out);
+    $c->detach($c->view('JSON'));
+}
+
 sub ckeditor :Chained('api') :Args(0) {
     my ($self, $c) = @_;
     my $lang = $c->stash->{current_locale_code} || 'en';

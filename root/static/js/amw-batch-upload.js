@@ -1,5 +1,10 @@
 $(document).ready(function() {
     var list = $('#uploads').data('listing-url');
+    var messages = {};
+    $.get("/api/lexicon.json", function(data) {
+        messages = data;
+    });
+
     function parse_uris_data (data) {
         console.log(data);
 		if (data.uris) {
@@ -10,8 +15,8 @@ $(document).ready(function() {
                     img = $('<img/>', {
                         class: "img-responsive img-thumbnail",
                         src: uri,
-                        alt: uri }
-                           );
+                        alt: uri
+                    });
                 }
                 else {
                     img = $('<span/>', { class: "fa fa-file-pdf-o fa-2x fa-border" });
@@ -30,7 +35,7 @@ $(document).ready(function() {
 		}
         else {
 			//our application returned an error
-            $('#uploads-errors').append($('<div/>').text(data.error.message)).show();
+            $('#uploads-errors').text(data.error.message).show();
 		}
     }
     if (list) {
@@ -44,6 +49,7 @@ $(document).ready(function() {
             $(this).simpleUpload(target, {
                 start: function(file) {
 				    //upload started
+                    $('#uploads-errors').hide();
 				    this.progressBar = $('<div/>', { class: "progress-bar",
                                                      role: "progressbar",
                                                      style: "width: 1%" });
@@ -65,8 +71,16 @@ $(document).ready(function() {
 				    //upload failed
                     console.log(error);
 				    this.progressBar.remove();
-                    $('#uploads-errors').append($('<div/>').text(error.message)).show();
-			    }
+                    $('#uploads-errors').text(messages[error.name]).show();
+			    },
+                maxFileSize: 8 * 1028 * 1028,
+                data: {
+                    insert: $("#add-attachment-to-body").is(":checked") ? 1 : 0,
+                    split_pdf: $("#split-pdf").is(":checked") ? 1 : 0,
+                },
+                expect: "json",
+                allowedExts: ["pdf", "jpg", "jpeg", "png" ],
+                allowedTypes: ["application/pdf", "image/png", "image/jpeg"]
 		    });
         }
     });
