@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 23;
+use Test::More tests => 25;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -122,6 +122,13 @@ $mech->post($revedit . '/upload',
                                         Content_Type => 'application/pdf',
                                       ],
                        ]);
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok @{$res->{uris}} > 10;
+}
+
+$mech->get_ok($revedit . '/list-upload');
 {
     my $res = from_json($mech->content);
     diag $mech->content;

@@ -357,7 +357,7 @@ sub attached_files {
     @files = grep { /\w\.(pdf|jpe?g|png)$/ && -f File::Spec->catfile($dir, $_) }
       readdir($dh);
     closedir $dh;
-    return \@files;
+    return [ sort { $a cmp $b } @files ] ;
 }
 
 sub attached_images {

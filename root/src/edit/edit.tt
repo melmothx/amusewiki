@@ -168,7 +168,13 @@
 <div id="museform-container">
 <form method="post" enctype="multipart/form-data" id="museform" action="[% c.req.base %][% c.req.path %]">
   <div class="form-group">
-    <div id="uploads" class="row"></div>
+    <div id="uploads" class="row" data-listing-url="[% upload_listing_uri | html %]">
+    </div>
+    <div id="uploads-errors" class="alert alert-warning" style="display:none">
+    </div>
+    <div class="row">
+      <div class="col-xs-12" id="upload-progress"></div>
+    </div>
     <div>
       <label for="attachment">
         [% loc('Add an attachment (PNG, JPG or PDF)' ) %]

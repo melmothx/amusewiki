@@ -256,6 +256,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
                   editing_uri => $c->uri_for_action('/edit/edit', [@args]),
                   diffing_uri => $c->uri_for_action('/edit/diff', [@args]),
                   binary_upload_uri => $c->uri_for_action('/edit/upload', [@args]),
+                  upload_listing_uri => $c->uri_for_action('/edit/list_uploads', [@args]),
                   preview_uri => $c->uri_for_action('/edit/preview', [@args]),
                  );
     }
@@ -263,6 +264,12 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
         $c->detach('/not_found');
         return;
     }
+}
+
+sub list_uploads :Chained('get_revision') :PathPart('list-upload') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(json => { uris => $c->stash->{revision}->attached_files });
+    $c->detach($c->view('JSON'));
 }
 
 sub revision_can_be_edited :Chained('get_revision') :PathPart('') :CaptureArgs(0) {
