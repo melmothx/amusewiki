@@ -49,6 +49,7 @@ sub lexicon :Chained('api') :PathPart('lexicon.json') :Args(0) {
                InvalidFileTypeError => $c->loc("File format not allowed"),
                MaxFileSizeError => $c->loc("File too big"),
                RequestError => $c->loc("Request failed! Please report the the problem"),
+               'Unused attachment' => $c->loc("Unused attachment"),
               );
     $c->stash(json => \%out);
     $c->detach($c->view('JSON'));

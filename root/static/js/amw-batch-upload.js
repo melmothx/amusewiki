@@ -4,13 +4,17 @@ $(document).ready(function() {
     $.get("/api/lexicon.json", function(data) {
         messages = data;
     });
-
+    function l(string) {
+        return messages[string] || string;
+    }
     function parse_uris_data (data) {
         console.log(data);
 		if (data.uris) {
             for (var i = 0; i < data.uris.length; i++) {
+                $('#upload-image-panel').show();
                 var uri = data.uris[i];
                 var img;
+                var thumb;
                 if (uri.match(/\.(png|jpe?g)$/)) {
                     img = $('<img/>', {
                         class: "img-responsive img-thumbnail",
@@ -21,17 +25,18 @@ $(document).ready(function() {
                 else {
                     img = $('<span/>', { class: "fa fa-file-pdf-o fa-2x fa-border" });
                 }
-				$('#uploads').prepend(
-                    $("<div/>", { 'class': 'upload-item  col-sm-6 col-md-4' }).append(
-                        $('<div/>', { class: "thumbnail" }).append(
-                            img,
-                            $('<div/>', { class: "caption" }).append(
-                                $('<code/>').text(uri)
-                            )
+                var thumb = $("<div/>", { 'class': 'upload-item  col-sm-6 col-md-4' }).append(
+                    $('<div/>', { class: "thumbnail" }).append(
+                        img,
+                        $('<div/>', { class: "caption" }).append(
+                            $('<code/>').text(uri)
                         )
                     )
                 );
+
+				$('#uploads').prepend(thumb);
                 if (data.insert) {
+                    $('#maintextarea').attr('readonly', 'readonly');
                     var body = $('#maintextarea').val();
                     if (uri.match(/\.pdf$/)) {
                         if (body.match(/^#ATTACH .*$/m)) {
@@ -46,6 +51,18 @@ $(document).ready(function() {
                     }
                     $('#maintextarea').effect("highlight", {}, 2000);
                     $('#maintextarea').val(body);
+                    $('#maintextarea').removeAttr('readonly');
+                }
+                else {
+                    if ($('#maintextarea').val().search(uri) < 0) {
+                        // not present, mark it
+                        thumb.append(
+                            $('<div/>', { class: "alert alert-warning" })
+                                .append($('<span/>', { class: "fa fa-warning" }),
+                                        ' ',
+                                        $('<span/>').text(l('Unused attachment')))
+                        );
+                    }
                 }
             }
 		}
@@ -87,7 +104,7 @@ $(document).ready(function() {
 				    //upload failed
                     console.log(error);
 				    this.progressBar.remove();
-                    $('#uploads-errors').text(messages[error.name]).show();
+                    $('#uploads-errors').text(l(error.name)).show();
 			    },
                 maxFileSize: 8 * 1028 * 1028,
                 data: {

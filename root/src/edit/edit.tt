@@ -68,47 +68,13 @@
 </div>
 
 
-<div class="panel panel-default">
+<div id="upload-image-panel" class="panel panel-default" style="display:none">
   <div class="panel-heading">
     <h3 class="panel-title">[% loc('Attached images') %]</h3>
   </div>
   <div class="panel-body">
-    <div id="image-warning" class="alert alert-warning" style="display: none">
-      <span class="fa fa-warning"></span> [% loc('You
-    have attached one or more images. This is not enough! To make them
-    appear, you have to place somewhere in the body or in the header,
-    depending on their purpose. See the examples below.') %]
-    </div>
     <div id="uploads" class="row" data-listing-url="[% upload_listing_uri | html %]">
     </div>
-
-
-  [% FOREACH attach IN attachments %]
-  <div>
-    <img src="[% attach %]" alt="attachment" class="img-responsive img-thumbnail"  />
-  </div>
-  <ul>
-    <li>[% loc('Place it in the body without description:') %]<br>
-      <code>[[[%- attach -%]]]</code>
-    </li>
-    <li>[% loc('Place it in the body with a description:') %]<br>
-      <code>[[[%- attach -%]][<em>[% loc ('My description') %]</em>]]</code>
-    </li>
-    <li>[% loc('Use it as a teaser image adding to the header this line:') %]<br>
-      <code>#cover [%- attach -%]</code>
-    </li>
-    <li>[% loc('If you use it as a teaser image, the image will also
-      be placed on the first page of the PDF. You can set its width
-      adding the following line to the header, where the value is the
-      text width ratio. 1 is the full text width, 0.5 is half, and so
-      on') %]<br>
-      <code>#coverwidth 0.25</code>
-    </li>
-  </ul>
-  [% END %]
-  <p>
-    [% loc('Images not used in the text are stored, but will be ignored.') %]
-  </p>
   </div>
 </div>
 
@@ -625,10 +591,27 @@ How smart a lash that speech doth giue my Conscience?
           [% loc('or') %] <code>[[http://theanarchistlibrary.org]]</code>
           ([% loc('without description') %])
         </li>
-        <li>
+        <li id="image-help">
           [% loc('Images:') %]
-          <code>[[image-name.jpg][[% loc('displayed text') %]]]</code> [% loc('or') %]
-          <code>[[image-name.jpg]]</code>.
+
+  <ul>
+    <li>[% loc('Place it in the body without description:') %]<br>
+      <code>[[[%- loc('image') -%]]]</code>
+    </li>
+    <li>[% loc('Place it in the body with a description:') %]<br>
+      <code>[[[%- loc('image') -%]][<em>[% loc ('My description') %]</em>]]</code>
+    </li>
+    <li>[% loc('Use it as a teaser image adding to the header this line:') %]<br>
+      <code>#cover [%- loc('image') -%]</code>
+    </li>
+    <li>[% loc('If you use it as a teaser image, the image will also
+      be placed on the first page of the PDF. You can set its width
+      adding the following line to the header, where the value is the
+      text width ratio. 1 is the full text width, 0.5 is half, and so
+      on') %]<br>
+      <code>#coverwidth 0.25</code>
+    </li>
+  </ul>
 
           [% loc('Please note that you have to upload them first and
           use the name the form provides. Images are always renamed by
@@ -716,7 +699,14 @@ How smart a lash that speech doth giue my Conscience?
         <li>
           <code>#notoc 1</code> <br />
           [%- loc('If this line is present, do not display the table of contents.') -%]
-
+        </li>
+        <li>
+          <code>#ATTACH</code> <br />
+          [% loc('This directive wants a whitespace separated list of filenames.') %]<br />
+          [% loc('PDFs not listed in the [_1] directive will be stored but ignored.', '#ATTACH') %]<br />
+          [% loc('PDFs cannot be used in the body.') %]<br />
+        [% loc('The site will display the PDFs with a thumbnail at the
+        end of the document.') %]
         </li>
         <li>
           <code>#nocoverpage 1</code> <br />
