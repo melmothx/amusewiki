@@ -147,8 +147,7 @@
       </label>
       <input data-upload-url="[% binary_upload_uri | html %]"
              class="simple-upload-input"
-             id="attachment" name="attachment" type="file" />
-      [% # here we are not ready for multiple yet %]
+             id="attachment" name="attachment" type="file" multiple/>
     </div>
     <div class="checkbox">
       <label>

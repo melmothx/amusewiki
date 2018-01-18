@@ -187,6 +187,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
 use Text::Amuse::Preprocessor;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny ();
+use Fcntl qw/:flock/;
 
 =head2 muse_body
 
@@ -561,6 +562,12 @@ sub add_attachment {
     # and now we have to check if the same name exists in the
     # attachment table for the same site.
     my $name;
+
+    # use a lockfile to prevent crashes on concurrent image uploads
+    my $lockfile = File::Spec->catfile($self->working_dir, '.lockfile');
+    open (my $lock, '>', $lockfile) or die "Cannot open $lockfile";
+    flock($lock, LOCK_EX) or die "Cannot lock $lockfile $!";
+
     do {
         $name = $base . '-' . ++$suffix . $ext;
     } while ($self->site->attachments->find({ uri => $name }));
@@ -592,6 +599,8 @@ sub add_attachment {
 
     # and let it crash on race conditions
     $self->site->attachments->create($info);
+    flock($lock, LOCK_UN);
+    close $lock;
     $out{attachment} = $info->{uri};
     return \%out;
 }
