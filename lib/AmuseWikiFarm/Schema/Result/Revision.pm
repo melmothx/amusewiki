@@ -933,14 +933,11 @@ sub purge_working_tree {
         opendir(my $dh, $working_tree) or die "Can't opendir $working_tree: $!";
         my @files = grep { /^\w/ } readdir($dh);
         closedir $dh;
-        foreach my $file (@files) {
+        foreach my $file (@files, '.lockfile') {
             my $path = File::Spec->catfile($working_tree, $file);
             if (-f $path) {
                 log_info { "Removing $path" };
                 unlink $path or log_warn { "Couldn't unlink $path $!" };
-            }
-            else {
-                log_warn { "Found strange file in $working_tree: $path" };
             }
         }
         log_info {  "Removing $working_tree" };
