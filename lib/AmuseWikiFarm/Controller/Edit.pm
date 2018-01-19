@@ -308,23 +308,16 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
 
         if (my ($upload) = $c->request->upload('attachment')) {
             my $file =  $upload->tempname;
-            my $outcome = $revision->add_attachment($upload->tempname);
-            if (my $uri = $outcome->{attachment}) {
-                if ($uri =~ m/\.pdf\z/ and $c->request->body_params->{split_pdf}) {
-                    log_info { "Splitting $uri because " . $c->request->body_params->{split_pdf} . " is true" };
-                    my $tmpdir = Path::Tiny->tempdir;
-                    my @images = AmuseWikiFarm::Utils::Amuse::split_pdf($file, $tmpdir);
-                    foreach my $img (@images) {
-                        log_debug { "Attaching $img" };
-                        my $res = $revision->add_attachment("$img");
-                        if (my $img_uri = $res->{attachment}) {
-                            log_debug { "Attaching $img_uri" };
-                            push @uris, $img_uri;
-                        }
-                    }
+            if ($c->request->body_params->{split_pdf}) {
+                my $outcome = $revision->add_attachment_as_images($file);
+                if ($outcome->{uris}) {
+                    push @uris, @{$outcome->{uris}};
                 }
-                else {
-                    push @uris, $uri;
+            }
+            else {
+                my $outcome = $revision->add_attachment($file);
+                if ($outcome->{attachment}) {
+                    push @uris, $outcome->{attachment};
                 }
             }
         }

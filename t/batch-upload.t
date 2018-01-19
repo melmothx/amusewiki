@@ -46,6 +46,7 @@ my $body = "#title My *Title*\n#lang en\n\nThis\n\nis\n\na\n\ntest\n";
 $mech->submit_form(with_fields => {
                                    body => $body,
                                    attachment => catfile(qw/t files shot.png/),
+                                   add_attachment_to_body => 0,
                                   },
                    button => 'preview');
 
