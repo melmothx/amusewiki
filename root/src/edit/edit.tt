@@ -581,9 +581,9 @@ How smart a lash that speech doth giue my Conscience?
       <ul>
         <li>
           [% loc('Make a link clickable') %]:
-          <code>[[http://theanarchistlibrary.org][[% loc('displayed text') %]]]</code>
+          <code>[[https://amusewiki.org][[% loc('displayed text') %]]]</code>
           ([% loc('with description') %])
-          [% loc('or') %] <code>[[http://theanarchistlibrary.org]]</code>
+          [% loc('or') %] <code>[[https://amusewiki.org]]</code>
           ([% loc('without description') %])
         </li>
         <li id="image-help">
