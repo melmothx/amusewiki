@@ -254,6 +254,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
         log_debug { "Found the revision " . $revision->id };
         $c->stash(
                   revision => $revision,
+                  ajax_editing_uri => $c->uri_for_action('/edit/ajax', [@args]),
                   editing_uri => $c->uri_for_action('/edit/edit', [@args]),
                   diffing_uri => $c->uri_for_action('/edit/diff', [@args]),
                   binary_upload_uri => $c->uri_for_action('/edit/upload', [@args]),
@@ -333,7 +334,43 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
-sub edit :Chained('revision_can_be_edited') :PathPart('') :Args(0) {
+sub edit_revision :Chained('revision_can_be_edited') :PathPart('') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+    return if $c->stash->{locked_editing};
+
+    my $params = $c->request->body_params;
+    my $revision = $c->stash->{revision};
+    if ($params->{preview} || $params->{commit} || $params->{upload}) {
+
+        # set the session id
+        $revision->session_id($c->sessionid);
+        $revision->update;
+
+        log_debug { "Handling the thing" };
+        if ($params->{body}) {
+            if (my $error = $revision->edit($params)) {
+                my $errmsg;
+                if (ref($error) and ref($error) eq 'HASH') {
+                    $errmsg = $c->loc("Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes",
+                                      $error->{footnotes},
+                                      $error->{footnotes_found},
+                                      $error->{references},
+                                      $error->{references_found});
+                }
+                else {
+                    $errmsg = $c->loc($error);
+                }
+                $c->stash(revision_editing_error_msg => $errmsg);
+                return;
+            }
+            else {
+                $c->stash(revision_edited_ok => 1);
+            }
+        }
+    }
+}
+
+sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;
     my $revision = $c->stash->{revision};
@@ -369,30 +406,7 @@ sub edit :Chained('revision_can_be_edited') :PathPart('') :Args(0) {
 
     if ($params->{preview} || $params->{commit} || $params->{upload}) {
 
-        # set the session id
-        $revision->session_id($c->sessionid);
-        $revision->update;
-
-        log_debug { "Handling the thing" };
-        if ($params->{body}) {
-            if (my $error = $revision->edit($params)) {
-                my $errmsg;
-                if (ref($error) and ref($error) eq 'HASH') {
-                    $errmsg = $c->loc("Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes",
-                                      $error->{footnotes},
-                                      $error->{footnotes_found},
-                                      $error->{references},
-                                      $error->{references_found});
-                }
-                else {
-                    $errmsg = $c->loc($error);
-                }
-                $c->flash(error_msg => $errmsg);
-                return;
-            }
-        }
-
-        # handle the uploads, if any
+        # legacy handling of uploads
         foreach my $upload ($c->request->upload('attachment')) {
 
             log_debug { $upload->tempname . ' => '. $upload->size  };
@@ -420,6 +434,11 @@ sub edit :Chained('revision_can_be_edited') :PathPart('') :Args(0) {
             else {
                 Dlog_error { "$_ is not what I expected!" } $outcome;
             }
+        }
+
+        if (my $errmsg = $c->stash->{revision_editing_error_msg}) {
+            $c->flash(error_msg => $errmsg);
+            return;
         }
 
         # if it's a commit, close the editing.
@@ -499,6 +518,26 @@ sub edit :Chained('revision_can_be_edited') :PathPart('') :Args(0) {
             }
         }
     }
+}
+
+sub ajax :Chained('edit_revision') :PathPart('ajax') :Args(0) {
+    my ($self, $c) = @_;
+    my %out;
+    if ($c->stash->{revision_edited_ok}) {
+        $out{success} = 1;
+        $out{body} = $c->stash->{revision}->muse_body;
+    }
+    elsif ($c->stash->{locked_editing}) {
+        $out{error}{message} = $c->stash->{editing_warnings} || "Editing is locked";
+    }
+    elsif ($c->stash->{revision_editing_error_msg}) {
+        $out{error}{message} = $c->stash->{revision_editing_error_msg};
+    }
+    else {
+        log_debug { "Nothing to do" };
+    }
+    $c->stash(json => \%out);
+    $c->detach($c->view('JSON'));
 }
 
 sub attachments :Private {

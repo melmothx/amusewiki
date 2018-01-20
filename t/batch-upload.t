@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 30;
+use Test::More tests => 34;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -166,3 +166,31 @@ $mech->get_ok('/api/lexicon.json');
     ok $res->{MaxFileSizeError};
 }
 
+$mech->post($revedit . '/ajax',
+            Content_Type => 'form-data',
+            Content => [
+                        fix_typography => 1,
+                        body => qq{#title Hello there\n#lang en\n\n"hullo" "there"},
+                        preview => 1,
+                       ]);
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok $res->{body};
+    like $res->{body}, qr/“hullo” “there”/;
+}
+
+$mech->post($revedit . '/ajax',
+            Content_Type => 'form-data',
+            Content => [
+                        fix_typography => 1,
+                        fix_footnotes => 1,
+                        body => qq{#title Hello there\n#lang en\n\n"hullo" "there" [1]},
+                        preview => 1,
+                       ]);
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok !$res->{body};
+    ok $res->{error}->{message};
+}

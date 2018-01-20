@@ -117,4 +117,32 @@ $(document).ready(function() {
 		    });
         }
     });
+    $("button#amw-edit-form-preview-button").click(function() {
+        var target = $(this).data('ajax-post');
+        // collect the params
+        // https://stackoverflow.com/questions/2276463/how-can-i-get-form-data-with-javascript-jquery
+        var data = $('form#museform')
+            .serializeArray()
+            .reduce(function(obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+        data['preview'] = 1;
+        // console.log(data);
+        $('#maintextarea').attr('readonly', 'readonly');
+        $.post(target, data, function(res) {
+            // console.log(res);
+            if (res.success && res.body) {
+                $('#maintextarea').effect("highlight", {}, 1000);
+                console.log("Updating with " + res.body);
+                $('#maintextarea').val(res.body);
+                $('#editing-warnings-inline').hide();
+                load_preview();
+            }
+            if (res.error) {
+                $('#editing-warnings-inline').text(res.error.message).show();
+            }
+            $('#maintextarea').removeAttr('readonly');
+        });
+    });
 });

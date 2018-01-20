@@ -3,14 +3,6 @@
 [% INCLUDE 'include/markitup.tt' %]
 [% INCLUDE 'include/validate.tt' %]
 
-<script type="text/javascript"
-        src="[% c.uri_for('/static/js/simpleUpload.min.js') %]">
-</script>
-<script type="text/javascript"
-        src="[% c.uri_for('/static/js/amw-batch-upload.js') %]">
-</script>
-
-
 [% IF editing_warnings %]
 <div id="editing-warnings" class="alert alert-danger">
   [% editing_warnings %]
@@ -113,6 +105,13 @@
         <button class="btn btn-default btn-sm" type="button" id="fullscreen-markitup-toggle">
           [% loc('Toggle fullscreen editor') %]
         </button>
+        <button type="button" class="btn btn-default btn-sm" name="preview"
+                data-ajax-post="[% ajax_editing_uri %]"
+                value="preview" id="amw-edit-form-preview-button">
+          [% loc('Preview') %]
+        </button>
+        <br>
+        <div class="alert alert-danger" id="editing-warnings-inline" style="display:none; margin: 10px 0;"></div>
       </div>
     </div>
     <div>
@@ -299,9 +298,6 @@
     </div>
     [% UNLESS locked_editing %]
     <p>
-      <button type="submit" class="btn btn-default" name="preview"
-              value="preview" id="amw-edit-form-preview-button">
-        [% loc('Preview') %]</button>
     <button type="submit" class="btn btn-default" id="amw-edit-form-commit-button"
             name="commit"  value="commit">[% loc('Save')  %]</button>
     </p>
@@ -748,6 +744,9 @@ How smart a lash that speech doth giue my Conscience?
 </div>
 
 <script type="text/javascript">
+ function load_preview() {
+     $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page");
+ }
 $.validator.addMethod("muse", function (value, element) {
     var re = new RegExp("^#title +", "m");
     return this.optional(element) || re.test(value);
@@ -763,24 +762,16 @@ $(document).ready(function(){
             email: "email",
         }
     });
-    [% UNLESS site.do_not_enforce_commit_message %]
-    [% # http://stackoverflow.com/questions/24450524/jquery-validation-plugin-with-two-submit-buttons %]
-    $("button#amw-edit-form-commit-button").click(function() {
-        $("#rev-message").rules('add', "required");
-        $("#museform").submit();
-    });
-    $("button#amw-edit-form-preview-button").click(function() {
-        $("#rev-message").rules('remove');
-        $("#museform").submit();
-    });
-    $("button#amw-edit-upload-file").click(function() {
-        $("#rev-message").rules('remove');
-        $("#museform").submit();
-    });
-    [% END %]
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });
-    $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page");
-});
+     load_preview();
+ });
+</script>
+
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/simpleUpload.min.js') %]">
+</script>
+<script type="text/javascript"
+        src="[% c.uri_for('/static/js/amw-batch-upload.js') %]">
 </script>
 
   <!-- end of the preamble -->
