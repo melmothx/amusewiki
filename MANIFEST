@@ -1154,6 +1154,7 @@ t/authentication.t
 t/author-update.t
 t/automatic-teaser.t
 t/backlinks.t
+t/batch-upload.t
 t/bb-profiles.t
 t/beamer.t
 t/bookbuilder-custom-papersize.t
