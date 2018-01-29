@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 20;
+use Test::More tests => 24;
 
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
@@ -13,6 +13,7 @@ use AmuseWikiFarm::Schema;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
 ok ($site, "Found the site");
+$site->categories->search({ uri => 'empty-category' })->delete;
 my $empty = $site->categories->create({
                                        name => 'empty category',
                                        uri => 'empty-category',
@@ -42,3 +43,10 @@ is $config->{toolbar}, "AmuseWiki";
 ok $config->{toolbar_AmuseWiki};
 
 $empty->delete;
+
+$mech->get_ok("/api/autocompletion/adisplay");
+my $adisplays = from_json($mech->content);
+ok @$adisplays == 3;
+ok scalar(grep { $_ eq 'Marco & C.' }  @$adisplays);
+diag $mech->content;
+is_deeply($adisplays, $site->titles->list_display_authors);

@@ -312,28 +312,23 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var separator = /[;,]\s*/;
+        var all_terms = {
+            topic: [],
+            author: [],
+            adisplay: [],
+        };
         var availableTerms = [];
-        var availableTopics = [];
-        var availableAuthors = [];
 
-        $.ajax({
-            url: "[% c.uri_for_action('/api/autocompletion', ['topic']) %]",
-            async: false,
-            dataType: 'json',
-            success: function(response) {
-                availableTopics = response;
-            }
-        });
-        $.ajax({
-            url: "[% c.uri_for_action('/api/autocompletion', ['author']) %]",
-            async: false,
-            dataType: 'json',
-            success: function(response) {
-                availableAuthors = response;
-            }
-        });
-
-
+        for (var key in all_terms) {
+            $.ajax({
+                url: "/api/autocompletion/" + key,
+                async: false,
+                dataType: 'json',
+                success: function(response) {
+                    all_terms[key] = response;
+                }
+            });
+        }
 
 	    $( ".amwautocomplete")
 	        .bind( "keydown", function( event ) {
@@ -342,13 +337,17 @@
 		            event.preventDefault();
 		        }
                 var target = $(this).attr('name');
-                if (target.match(/author/)) {
-                    availableTerms = availableAuthors;
+                if (target === 'SORTauthors') {
+                    availableTerms = all_terms.author;
                 }
-                else if (target.match(/topic/)) {
-                    availableTerms = availableTopics;
+                else if (target == 'SORTtopics') {
+                    availableTerms = all_terms.topic;
+                }
+                else if (target == 'author') {
+                    availableTerms = all_terms.adisplay;
                 }
                 else {
+                    console.log("Autocomplete not available for " + target);
                     availableTerms = [];
                 }
 	        })
