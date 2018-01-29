@@ -91,14 +91,12 @@ $(document).ready(function() {
 				    this.progressBar = $('<div/>', { class: "progress-bar",
                                                      role: "progressbar",
                                                      style: "width: 1%" });
-                    this.progressBar.text('0%');
+                    this.progressBar.text(file.name);
 				    $('#upload-progress').append(this.progressBar);
 			    },
 			    progress: function(progress) {
 				    //received progress
-                    console.log("Progress: " + progress);
 				    this.progressBar.css("width", progress + "%");
-                    this.progressBar.text(progress + "%");
 			    },
 			    success: function(data) {
 				    //upload successful
