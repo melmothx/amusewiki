@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 34;
+use Test::More tests => 39;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -193,4 +193,33 @@ $mech->post($revedit . '/ajax',
     diag $mech->content;
     ok !$res->{body};
     ok $res->{error}->{message};
+}
+
+
+$mech->get_ok($revedit . '/list-upload');
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok @{$res->{uris}} > 0;
+    $mech->post($revedit . '/ajax-remove-attachment',
+                          Content_Type => 'form-data',
+                          Content => [
+                                      remove => $res->{uris}->[0],
+                                     ]);
+    {
+        my $del = from_json($mech->content);
+        diag $mech->content;
+        ok $del->{success};
+    }
+    $mech->post($revedit . '/ajax-remove-attachment',
+                          Content_Type => 'form-data',
+                          Content => [
+                                      remove => "/etc/passwd",
+                                     ]);
+    {
+        my $del = from_json($mech->content);
+        diag $mech->content;
+        ok $del->{error};
+        ok !$del->{success};
+    }
 }

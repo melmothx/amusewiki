@@ -540,6 +540,17 @@ sub ajax :Chained('edit_revision') :PathPart('ajax') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+sub remove_attachment :Chained('revision_can_be_edited') :PathPart('ajax-remove-attachment') :Args(0) {
+    my ($self, $c) = @_;
+    my $params = $c->request->body_params;
+    my $out = {};
+    if ($params->{remove}) {
+        $out = $c->stash->{revision}->remove_attachment($params->{remove});
+    }
+    $c->stash(json => $out);
+    $c->detach($c->view('JSON'));
+}
+
 sub attachments :Private {
     my ($self, $c, $path) = @_;
     log_debug { "Handling attachment: $path" };
