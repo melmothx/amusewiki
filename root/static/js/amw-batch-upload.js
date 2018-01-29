@@ -10,6 +10,7 @@ $(document).ready(function() {
     }
     function parse_uris_data (data) {
         console.log(data);
+        var maintextarea = $('#maintextarea');
 		if (data.uris) {
             for (var i = 0; i < data.uris.length; i++) {
                 $('#upload-image-panel').show();
@@ -42,8 +43,9 @@ $(document).ready(function() {
 
 				$('#uploads').prepend(thumb);
                 if (data.insert) {
-                    $('#maintextarea').attr('readonly', 'readonly');
-                    var body = $('#maintextarea').val();
+                    maintextarea.attr('readonly', 'readonly');
+                    var body = maintextarea.val();
+                    var finaloffset;
                     if (uri.match(/\.pdf$/)) {
                         if (body.match(/^#ATTACH .*$/m)) {
                             body = body.replace(/^(#ATTACH .*)$/m, '$1 ' + uri);
@@ -53,13 +55,30 @@ $(document).ready(function() {
                         }
                     }
                     else {
-                        body = body + "\n\n[[" + uri + "]]\n\n";
+                        var chunk = "\n\n[[" + uri + "]]\n\n";
+                        var offset = maintextarea.prop('selectionStart');
+                        if (offset) {
+                            var before = body.substring(0, offset);
+                            var after = body.substring(offset);
+                            console.log("Offset is " + offset);
+                            body = before + chunk + after;
+                            finaloffset = offset + chunk.length;
+                        }
+                        else {
+                            body = body + chunk;
+                        }
                     }
-                    $('#maintextarea').val(body);
-                    $('#maintextarea').removeAttr('readonly');
+                    maintextarea.val(body);
+                    maintextarea.removeAttr('readonly');
+                    if (finaloffset) {
+                        maintextarea.prop('selectionStart', finaloffset);
+                        maintextarea.prop('selectionEnd', finaloffset);
+                    }
+                    maintextarea.focus();
+                    $.event.trigger({ type : 'keypress' });
                 }
                 else {
-                    if ($('#maintextarea').val().search(uri) < 0) {
+                    if (maintextarea.val().search(uri) < 0) {
                         // not present, mark it
                         thumb.append(
                             $('<div/>', { class: "alert alert-warning" })
