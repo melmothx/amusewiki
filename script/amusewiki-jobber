@@ -69,7 +69,12 @@ print "Lockfile is " . $jobber->pidfile . "\n";
 print "Max parallel jobs: " . $jobber->max_parallel . "\n";
 
 while (1) {
-    $jobber->main_loop;
+    try {
+        $jobber->main_loop;
+    } catch {
+        my $err = $_;
+        log_error { "Error $err on the jobber's main loop" };
+    };
 }
     
 
