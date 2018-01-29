@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
+use AmuseWikiFarm::Log::Contextual;
+
 =head1 NAME
 
 AmuseWikiFarm::Controller::API - Catalyst Controller
@@ -29,17 +31,19 @@ sub api :Chained('/site') :CaptureArgs(0) {
 sub autocompletion :Chained('api') :Args(1) {
     my ($self, $c, $type) = @_;
     my $query = lc($type);
+    my @list;
     if ($type =~ m/(topic|author)/) {
         my $type = $1;
         # include the deferred
-        my @list = map { $_->{name} }
+        @list = map { $_->{name} }
           @{$c->stash->{site}->categories->with_texts(deferred => 1)->by_type($type)->listing_tokens};
-        $c->stash(json => \@list);
-        $c->detach($c->view('JSON'));
     }
-    else {
-        $c->detach('/not_found');
+    elsif ($type eq 'adisplay') {
+        @list = @{$c->stash->{site}->titles->list_display_authors};
     }
+    Dlog_debug { "Found list for $type:  $_" } \@list;
+    $c->stash(json => \@list);
+    $c->detach($c->view('JSON'));
 }
 
 sub lexicon :Chained('api') :PathPart('lexicon.json') :Args(0) {

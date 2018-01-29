@@ -18,6 +18,7 @@ __PACKAGE__->load_components('Helper::ResultSet::Random');
 
 use DateTime;
 use AmuseWikiFarm::Log::Contextual;
+use HTML::Entities ();
 
 =head2 published_all
 
@@ -514,6 +515,22 @@ sub with_missing_pages_qualification {
                           { text_size => 0},
                           { text_qualification => [undef, ''] },
                          ]);
+}
+
+sub list_display_authors {
+    my $self = shift;
+    my @all = $self->published_or_deferred_all
+      ->search({
+                author => { '!=' => '' },
+               },
+               {
+                columns => ['author'],
+                distinct => 1,
+                result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                order_by => [qw/author/],
+               })->all;
+    # authors are in HTML, as it's a display only thing.
+    return [ map { HTML::Entities::decode_entities($_->{author}) } @all ]
 }
 
 1;

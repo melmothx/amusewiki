@@ -147,4 +147,3 @@ foreach my $id (@ids) {
     $mech->get_ok('/tasks/status/' . $id);
 }
 
-$mech
