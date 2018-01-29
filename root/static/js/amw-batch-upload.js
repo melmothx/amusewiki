@@ -29,7 +29,12 @@ $(document).ready(function() {
                     $('<div/>', { class: "thumbnail" }).append(
                         img,
                         $('<div/>', { class: "caption" }).append(
-                            $('<code/>').text(uri)
+                            $('<code/>').text(uri),
+                            ' ',
+                            $('<a/>', { 'data-uri': uri,
+                                           'data-target': $('#uploads').data('removal-url'),
+                                           class: "badge remove-attachment-action",
+                                        title:l("Remove")}).text("X")
                         )
                     )
                 );
@@ -49,7 +54,6 @@ $(document).ready(function() {
                     else {
                         body = body + "\n\n[[" + uri + "]]\n\n";
                     }
-                    $('#maintextarea').effect("highlight", {}, 2000);
                     $('#maintextarea').val(body);
                     $('#maintextarea').removeAttr('readonly');
                 }
@@ -72,6 +76,7 @@ $(document).ready(function() {
 		}
     }
     if (list) {
+        $('#uploads-static-listing').remove();
         $.get(list, function(data) {
             parse_uris_data(data, $('#uploads'));
         });
@@ -144,5 +149,22 @@ $(document).ready(function() {
             }
             $('#maintextarea').removeAttr('readonly');
         });
+    });
+    $(document).on('click', '.remove-attachment-action', function (e) {
+        var block = $(this).closest('.upload-item');
+        var target = $(this).data('target');
+        var uri = $(this).data('uri')
+        if (block && target && uri) {
+            console.log("Clicked on removal: " + target + " " + uri);
+            $.post(target,
+                   { "remove": uri},
+                   function (res) {
+                       console.log("Posting to " + target  + " done");
+                       console.log(res);
+                       if (res.success) {
+                           block.remove();
+                       }
+                   });
+        }
     });
 });

@@ -255,6 +255,7 @@ sub get_revision :Chained('text') :PathPart('') :CaptureArgs(1) {
         $c->stash(
                   revision => $revision,
                   ajax_editing_uri => $c->uri_for_action('/edit/ajax', [@args]),
+                  ajax_delete_uri => $c->uri_for_action('/edit/remove_attachment', [@args]),
                   editing_uri => $c->uri_for_action('/edit/edit', [@args]),
                   diffing_uri => $c->uri_for_action('/edit/diff', [@args]),
                   binary_upload_uri => $c->uri_for_action('/edit/upload', [@args]),

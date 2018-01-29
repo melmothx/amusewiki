@@ -65,7 +65,14 @@
     <h3 class="panel-title">[% loc('Attached images') %]</h3>
   </div>
   <div class="panel-body">
-    <div id="uploads" class="row" data-listing-url="[% upload_listing_uri | html %]">
+    <div id="uploads" class="row"
+         data-removal-url="[% ajax_delete_uri   | html %]"
+         data-listing-url="[% upload_listing_uri | html %]">
+      <ol id="uploads-static-listing">
+        [% FOREACH attachment IN revision.attached_files %]
+        <li><code>attachment.uri</code></li>
+        [% END %]
+      </ol>
     </div>
   </div>
 </div>
