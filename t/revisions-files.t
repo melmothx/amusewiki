@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 64;
+use Test::More tests => 92;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -11,6 +11,7 @@ use File::Copy qw/copy/;
 use File::Basename qw/basename/;
 use File::Temp;
 use Data::Dumper;
+use Path::Tiny;
 
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -84,6 +85,27 @@ sub test_revision {
                ["Unsupported file type [_1]", "text/plain"]);
 
     # print Dumper($rev->attached_images, $rev->attached_files, $rev->attached_pdfs);
+
+    {
+        my $discard = $rev->add_attachment($attach[0]);
+        ok $discard->{attachment};
+        ok -f path($rev->working_dir, $discard->{attachment});
+        ok $site->attachments->by_uri($discard->{attachment});
+        my $removal = $rev->remove_attachment($discard->{attachment});
+        ok !path($rev->working_dir, $discard->{attachment})->exists, "$discard->{attachment} removed";
+        ok !$site->attachments->by_uri($discard->{attachment}), "$discard->{attachment} removed from db";
+        ok !$removal->{error};
+        ok $removal->{success} or die;
+        foreach my $fail (path($rev->working_dir)->children(qr{\.muse\z})) {
+            ok -f $fail;
+            diag "Testing failure on $fail";
+            my $fail_uri = $fail->basename;
+            my $fail_res = $rev->remove_attachment($fail_uri);
+            is $fail_res->{error}, "File to delete not found!";
+            ok !$fail_res->{success};
+        }
+        ok $rev->remove_attachment('askldfjalksdf')->{error};
+    }
 
     is_deeply([ sort @{$rev->attached_files} ],
               [ "h-o-hello-$suffix.jpg",

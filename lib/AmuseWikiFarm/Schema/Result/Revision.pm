@@ -1037,5 +1037,33 @@ sub embed_attachment {
     return $outcome;
 }
 
+sub remove_attachment {
+    my ($self, $uri) = @_;
+    log_debug { "Removing $uri from " . $self->working_dir };
+    my %out = (error => 0,
+               success => 0);
+    my %all = map { $_ => File::Spec->catfile($self->working_dir, $_) } @{$self->attached_files};
+    Dlog_debug { "Found attachments $_ " } \%all;
+    if (my $path = $all{$uri}) {
+        log_debug { "Removing $path as requested"};
+        if (my $attach = $self->site->attachments->find_file($path)) {
+            $attach->delete;
+        }
+        else {
+            log_error { "$uri => $path not found in the DB, not removing it" };
+        }
+        unlink $path or log_error{ "Cannot unlink $path $!" };
+        $out{success} = 1;
+    }
+    else {
+        log_debug {  "Setting  error, $uri not found" };
+        # loc("File to delete not found!");
+        $out{error} = "File to delete not found!";
+    }
+    Dlog_debug { "Response is $_" } \%out;
+    return \%out;
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;
