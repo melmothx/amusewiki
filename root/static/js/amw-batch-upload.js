@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('#upload-image-panel').hide();
     var list = $('#uploads').data('listing-url');
     var messages = {};
     $.get("/api/lexicon.json", function(data) {
@@ -120,7 +121,8 @@ $(document).ready(function() {
 		    });
         }
     });
-    $("button#amw-edit-form-preview-button").click(function() {
+    $("button#amw-edit-form-preview-button").click(function(e) {
+        e.preventDefault();
         var target = $(this).data('ajax-post');
         // collect the params
         // https://stackoverflow.com/questions/2276463/how-can-i-get-form-data-with-javascript-jquery

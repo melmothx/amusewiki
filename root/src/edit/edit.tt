@@ -60,7 +60,7 @@
 </div>
 
 
-<div id="upload-image-panel" class="panel panel-default" style="display:none">
+<div id="upload-image-panel" class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">[% loc('Attached images') %]</h3>
   </div>
@@ -70,7 +70,7 @@
          data-listing-url="[% upload_listing_uri | html %]">
       <ol id="uploads-static-listing">
         [% FOREACH attachment IN revision.attached_files %]
-        <li><code>attachment.uri</code></li>
+        <li><code>[% attachment %]</code></li>
         [% END %]
       </ol>
     </div>
@@ -112,7 +112,7 @@
         <button class="btn btn-default btn-sm" type="button" id="fullscreen-markitup-toggle">
           [% loc('Toggle fullscreen editor') %]
         </button>
-        <button type="button" class="btn btn-default btn-sm" name="preview"
+        <button type="submit" class="btn btn-default btn-sm" name="preview"
                 data-ajax-post="[% ajax_editing_uri %]"
                 value="preview" id="amw-edit-form-preview-button">
           [% loc('Preview') %]
