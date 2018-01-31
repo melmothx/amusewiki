@@ -155,6 +155,15 @@
              class="simple-upload-input"
              id="attachment" name="attachment" type="file" multiple/>
     </div>
+    <div id="upload-button-no-js-container" style="padding-top: 10px">
+      <button type="submit"
+              class="btn btn-default"
+              name="upload"
+              data-ajax-post="[% ajax_editing_uri %]"
+              value="upload" id="amw-edit-form-upload-file-button">
+        [% loc('Upload') %]
+      </button>
+    </div>
     <div class="checkbox">
       <label>
       <input id="split-pdf"
