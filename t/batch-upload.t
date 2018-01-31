@@ -5,13 +5,14 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 39;
+use Test::More tests => 63;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::Amuse qw/from_json/;
+use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -28,6 +29,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my $mech_ext = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                    host => $site->canonical);
 
+my @images;
 $mech->get_ok('/');
 $mech->get('/action/text/new');
 is $mech->status, 401;
@@ -150,6 +152,7 @@ $mech->post($revedit . '/upload',
     my $res = from_json($mech->content);
     diag $mech->content;
     ok @{$res->{uris}} > 10;
+    @images = @{$res->{uris}};
 }
 
 $mech->get_ok($revedit . '/list-upload');
@@ -223,3 +226,9 @@ $mech->get_ok($revedit . '/list-upload');
         ok !$del->{success};
     }
 }
+
+for my $i (0..10) {
+    $mech->get_ok($revedit . '/' . $images[$i]);
+    is $mech->response->header('Cache-Control'), 'no-cache, no-store, must-revalidate';
+}
+

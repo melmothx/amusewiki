@@ -173,6 +173,8 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     # set the localization
     $c->set_language($locale, $site_id);
 
+    # set no-cache by default, previously in the middleware
+    $c->response->header('Cache-Control' => 'no-cache');
     return 1;
 }
 
@@ -245,6 +247,7 @@ sub not_found :Private {
                 if (-f $replacement) {
                     my $fh = IO::File->new($replacement, 'r');
                     $c->response->headers->content_type('image/png');
+                    $c->response->header('Cache-Control' => 'no-cache, no-store, must-revalidate');
                     $c->response->body($fh);
                 }
                 else {

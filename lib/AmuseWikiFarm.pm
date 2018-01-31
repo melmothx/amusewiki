@@ -145,7 +145,6 @@ __PACKAGE__->config(
         'ConditionalGET',
         ETag => {
             check_last_modified_header => 0,
-            cache_control => [ 'no-cache' ],
             file_etag => [qw/inode mtime size/],
         },
        ],

@@ -1,14 +1,14 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 476;
+use Test::More tests => 498;
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
     $ENV{CATALYST_DEBUG} = 0;
     use_ok 'AmuseWikiFarm::View::StaticFile';
 }
 
-use Data::Dumper;
+use Data::Dumper::Concise;
 use Cwd;
 use Test::WWW::Mechanize::Catalyst;
 
@@ -42,6 +42,9 @@ foreach my $f ('/special/index',
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "blog.amusewiki.org");
 
+$mech->get_ok('/');
+is ($mech->response->header('Cache-Control'), 'no-cache', "/ has no-cache") or die;
+
 $mech->get_ok('/category/topic/i-x-myfile.png');
 $mech->get_ok('/category/topic/a-t-myfile.pdf');
 
@@ -56,6 +59,7 @@ foreach my $get (sort keys %files) {
     ok ($mech->response->header('ETag'), "Etag not present");
     ok ($mech->response->header('Last-Modified'),
         "Last-Modified present: " . $mech->response->header('Last-Modified'));
+    is ($mech->response->header('Cache-Control'), 'no-cache', "$get has no-cache") or die;
 }
 
 foreach my $get ('/feed', '/library') {
@@ -124,4 +128,6 @@ $mech->get($icon);
 
 is $mech->status, '404', "404, no leaking between sites";
 
-
+$mech->get('/aasdlfj/asdkf.png');
+is $mech->status, 404;
+is $mech->response->header('Cache-Control'), 'no-cache, no-store, must-revalidate';

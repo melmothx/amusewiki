@@ -71,6 +71,9 @@ sub process {
     $c->response->headers->content_type($type);
     $c->response->headers->content_length(-s $file);
     $c->response->headers->last_modified((stat($file))[9]);
+    if ($c->stash->{serve_static_file_no_cache}) {
+        $c->response->header('Cache-Control' => 'no-cache, no-store, must-revalidate');
+    }
     $c->response->body($fh);
 }
 
