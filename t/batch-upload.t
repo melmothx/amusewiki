@@ -229,6 +229,6 @@ $mech->get_ok($revedit . '/list-upload');
 
 for my $i (0..10) {
     $mech->get_ok($revedit . '/' . $images[$i]);
-    is $mech->response->header('Cache-Control'), 'no-cache, no-store, must-revalidate';
+    is $mech->response->header('Cache-Control'), 'no-cache';
 }
 
