@@ -21,7 +21,7 @@ $(document).ready(function() {
                 if (uri.match(/\.(png|jpe?g)$/)) {
                     img = $('<img/>', {
                         class: "img-responsive img-thumbnail",
-                        src: uri + '?i=' + Date.now(),
+                        src: uri,
                         alt: uri
                     });
                 }
