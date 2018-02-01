@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('#upload-image-panel').hide();
     $('#upload-button-no-js-container').remove();
+    $('.image-listing-no-js').remove();
     var list = $('#uploads').data('listing-url');
     var messages = {};
     $.get("/api/lexicon.json", function(data) {

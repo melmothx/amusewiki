@@ -68,11 +68,19 @@
     <div id="uploads" class="row"
          data-removal-url="[% ajax_delete_uri   | html %]"
          data-listing-url="[% upload_listing_uri | html %]">
-      <ol id="uploads-static-listing">
-        [% FOREACH attachment IN revision.attached_files %]
-        <li><code>[% attachment %]</code></li>
-        [% END %]
-      </ol>
+      [% FOREACH attachment IN revision.attached_images %]
+      <div class="col-sm-6 col-md-4 image-listing-no-js">
+        <div class="thumbnail">
+          <img class="img-responsive img-thumbnail" src="[% attachment %]" alt="[% attachment %]" />
+        </div>
+        <div class="caption">
+          <code>[[[% attachment %]]]</code>
+        </div>
+      </div>
+      [% END %]
+      <div class="col-xs-12 image-listing-no-js">
+        <code>[% revision.attached_pdfs_string %]</code>
+      </div>
     </div>
   </div>
 </div>
