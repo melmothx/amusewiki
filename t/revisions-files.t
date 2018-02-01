@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 92;
+use Test::More tests => 122;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -161,6 +161,20 @@ sub test_revision {
         }
         else {
             ok $attdb->can_be_inlined, "$f *can* be inlined";
+        }
+    }
+    {
+        my $readd = $title->new_revision;
+        foreach my $att (@attach) {
+            my $got = $readd->add_attachment($att)->{attachment};
+            ok $got;
+            diag $got;
+            ok $readd->remove_attachment($got)->{success};
+            diag "Readding $got after removal";
+            my $anew = $readd->add_attachment($att)->{attachment};
+            ok $anew;
+            isnt $got, $anew, "$got != $anew";
+            ok $readd->remove_attachment($anew)->{success};
         }
     }
 }

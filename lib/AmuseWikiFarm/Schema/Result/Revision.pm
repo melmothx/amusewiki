@@ -568,9 +568,18 @@ sub add_attachment {
     open (my $lock, '>', $lockfile) or die "Cannot open $lockfile";
     flock($lock, LOCK_EX) or die "Cannot lock $lockfile $!";
 
+    my $counter = Path::Tiny::path($self->working_dir, "$ext.suffix");
+    if ($counter->exists) {
+        if ($counter->slurp =~ m/([1-9][0-9]*)/) {
+            $suffix = $1;
+        }
+    }
+
     do {
         $name = $base . '-' . ++$suffix . $ext;
     } while ($self->site->attachments->find({ uri => $name }));
+
+    $counter->spew($suffix);
 
     die "Something went wrong" unless $name;
 
@@ -598,6 +607,7 @@ sub add_attachment {
     $info->{f_class} = 'attachment';
 
     # and let it crash on race conditions
+    # Not supposed to happen because of the lockfile
     $self->site->attachments->create($info);
     flock($lock, LOCK_UN);
     close $lock;
@@ -933,7 +943,8 @@ sub purge_working_tree {
         opendir(my $dh, $working_tree) or die "Can't opendir $working_tree: $!";
         my @files = grep { /^\w/ } readdir($dh);
         closedir $dh;
-        foreach my $file (@files, '.lockfile') {
+        foreach my $file (@files, '.lockfile',
+                          '.png.suffix', '.jpg.suffix', '.pdf.suffix') {
             my $path = File::Spec->catfile($working_tree, $file);
             if (-f $path) {
                 log_info { "Removing $path" };
