@@ -35,10 +35,11 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = create_site($schema, '0fizl0');
 
-my $suffix = 1;
-test_revision($site, text => $suffix);
-$suffix++;
-test_revision($site, special => $suffix);
+test_revision($site, text => 1);
+# please note that here we increment just by one, because the
+# extension will shift and the serie will start anew (it's the same
+# base filename)
+test_revision($site, special => 2);
 
 
 sub test_revision {
@@ -107,32 +108,40 @@ sub test_revision {
         ok $rev->remove_attachment('askldfjalksdf')->{error};
     }
 
+    my %suffixes = (
+                    jpg => $suffix + 0,
+                    png => $suffix + 1,
+                    pdf => $suffix + 2,
+                   );
+
     is_deeply([ sort @{$rev->attached_files} ],
-              [ "h-o-hello-$suffix.jpg",
-                "h-o-hello-$suffix.pdf",
-                "h-o-hello-$suffix.png" ],
-              "Attached files ok");
+              [ "h-o-hello-$suffixes{jpg}.jpg",
+                "h-o-hello-$suffixes{png}.png",
+                "h-o-hello-$suffixes{pdf}.pdf",
+              ],
+              "Attached files ok") or die;
 
 
     is_deeply([ sort @{$rev->attached_images} ],
-              [ "h-o-hello-$suffix.jpg",
-                "h-o-hello-$suffix.png" ],
-              "Attached images ok");
+              [ "h-o-hello-$suffixes{jpg}.jpg",
+                "h-o-hello-$suffixes{png}.png",
+              ],
+              "Attached images ok") or die;
 
     is_deeply([ sort @{$rev->attached_pdfs} ],
-              [ "h-o-hello-$suffix.pdf" ],
+              [ "h-o-hello-$suffixes{pdf}.pdf" ],
               "Attached pdfs ok");
-    $rev->edit("#ATTACH h-o-hello-$suffix.pdf\n" . $rev->muse_body);
+    $rev->edit("#ATTACH h-o-hello-$suffixes{pdf}.pdf\n" . $rev->muse_body);
     $rev->commit_version;
     is $rev->publish_text, $outpath . 'hello';
 
     $rev->discard_changes;
     my $title = $rev->title;
-    is ($title->attach, "h-o-hello-$suffix.pdf");
+    is ($title->attach, "h-o-hello-$suffixes{pdf}.pdf");
 
-    my $attachment = $site->attachments->find({ uri => "h-o-hello-$suffix.pdf" });
-    ok ($attachment, "attachment found");
-    is_deeply($title->attached_pdfs, ["h-o-hello-$suffix.pdf"]);
+    my $attachment = $site->attachments->find({ uri => "h-o-hello-$suffixes{pdf}.pdf" });
+    ok ($attachment, "attachment found") or die;
+    is_deeply($title->attached_pdfs || [], ["h-o-hello-$suffixes{pdf}.pdf"]) or die;
     my $imagepath;
     if ($class eq 'special') {
         $imagepath = catdir($site->repo_root, 'specials');
@@ -142,11 +151,11 @@ sub test_revision {
     }
     my @files;
     foreach my $ext (qw/jpg png/) {
-        my $expim = catfile($imagepath, "h-o-hello-$suffix.$ext");
+        my $expim = catfile($imagepath, "h-o-hello-$suffixes{$ext}.$ext");
         ok (-f $expim, "$expim exists");
         push @files, $expim;
     }
-    my $pdf = catfile($site->repo_root, uploads => "h-o-hello-$suffix.pdf");
+    my $pdf = catfile($site->repo_root, uploads => "h-o-hello-$suffixes{pdf}.pdf");
     ok (-f $pdf, "pdf $pdf exists");
     push @files,$pdf;
 
