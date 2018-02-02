@@ -800,6 +800,7 @@ sub dispatch_job_build_custom_format {
             if ($cf->compile($title, $logger)) {
                 $logger->("Generated " . $cf->format_name . ' for ' . $title->full_uri
                           . ' in ' . (time() - $time) . " seconds\n");
+                return $title->full_uri . '.' . $cf->extension;
             }
             else {
                 $logger->("Nothing produced for " . $title->full_uri . ' and ' .$cf->format_name . "\n");
