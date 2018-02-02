@@ -57,7 +57,7 @@ $(document).ready(function() {
                         }
                     }
                     else {
-                        var chunk = "\n\n[[" + uri + "]]\n\n";
+                        var chunk = "\n\n[[" + uri + " f]]\n\n";
                         var offset = maintextarea.prop('selectionStart');
                         if (offset) {
                             var before = body.substring(0, offset);

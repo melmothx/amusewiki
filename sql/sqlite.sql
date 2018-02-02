@@ -352,6 +352,7 @@ CREATE TABLE title (
         sku VARCHAR(64) NOT NULL DEFAULT '',
         text_qualification VARCHAR(255),
         text_size INTEGER NOT NULL DEFAULT 0,
+        attachment_index INTEGER NOT NULL DEFAULT 0,
         site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );

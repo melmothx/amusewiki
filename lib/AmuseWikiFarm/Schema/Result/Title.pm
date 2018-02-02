@@ -225,6 +225,12 @@ __PACKAGE__->table("title");
   default_value: 0
   is_nullable: 0
 
+=head2 attachment_index
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -301,6 +307,8 @@ __PACKAGE__->add_columns(
   "text_qualification",
   { data_type => "varchar", is_nullable => 1, size => 255 },
   "text_size",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "attachment_index",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
@@ -479,8 +487,8 @@ Composing rels: L</text_months> -> monthly_archive
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-03 14:25:06
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:d2O1GrzhtZ5iYgDDiezDrw
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-02-02 10:48:12
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QHDrg8Q3dvW9lTKoh/1liQ
 
 =head2 translations
 

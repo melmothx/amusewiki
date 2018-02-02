@@ -60,6 +60,7 @@ is_deeply $site->title_fields, {
                                 teaser => 1,
                                 text_qualification => 1,
                                 text_size => 1,
+                                attachment_index => 1,
                             }, "the archive knows the title fields";
 
 ok(!$site->index_file);
