@@ -637,9 +637,19 @@ sub dispatch_job_git {
     my $validate = $site->remote_gits_hashref;
     die "Couldn't validate" unless $validate->{$remote}->{$action};
     if ($action eq 'fetch') {
-        $site->repo_git_pull($remote, $logger);
+        my @logs = $site->repo_git_pull($remote, $logger);
         my $bulk = $site->update_db_from_tree_async($logger, $self->username);
-        return '/tasks/job/' . $bulk->id . '/show';
+        my $url = '/tasks/job/' . $bulk->id . '/show';
+        $site->send_mail(git_action => {
+                                        # no action if those mails are
+                                        # not set, as per convention.
+                                        to => $site->mail_notify,
+                                        from => $site->mail_from,
+                                        logs => join("", @logs),
+                                        subject => '[' . $site->canonical . "] git pull $remote",
+                                        action_url => $site->canonical_url_secure . $url,
+                                       });
+        return $url;
     }
     elsif ($action eq 'push') {
         $site->repo_git_push($remote, $logger);

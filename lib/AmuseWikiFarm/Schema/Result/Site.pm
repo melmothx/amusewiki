@@ -2336,14 +2336,6 @@ sub _repo_git_action {
         push @out, "Not under git!";
     }
     if (@out) {
-        $self->send_mail(git_action => {
-                                        # no action if those mails are
-                                        # not set, as per convention.
-                                        to => $self->mail_notify,
-                                        from => $self->mail_from,
-                                        logs => join("\n", @out) . "\n",
-                                        subject => '[' . $self->canonical . "] git $action $remote",
-                                       });
         @out = map { $_ . "\n" } @out;
         if ($logger) {
             $logger->(@out);
@@ -2352,7 +2344,7 @@ sub _repo_git_action {
             print @out;
         }
     }
-    return;
+    return @out;
 }
 
 =head3 update_db_from_tree($logger)

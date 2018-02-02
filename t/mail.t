@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 58;
+use Test::More tests => 59;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -214,6 +214,7 @@ $site->update({ mail_from => undef });
         my $body = $sent->{email}->as_string;
         ok ($body);
         like $body, qr{subject: \[0mail0\.amusewiki\.org\] git pull test}i;
+        like $body, qr{https\:\/\/0mail0\.amusewiki\.org\/tasks\/job\/};
         diag $body;
     }
 
