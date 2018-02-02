@@ -37,17 +37,20 @@ my $tmpdir = Path::Tiny->tempdir;
                                          uri => 'hello',
                                        }, 'text');
     $rev->edit($rev->muse_body);
+    # 1
     $rev->add_attachment("$file");
     diag $rev->muse_body;
     $rev->append_to_revision_body("\n\n[[my-file.png]\n");
     like $rev->muse_body, qr/title HELLO.*ciao.*my-file\.png/s;
     diag $rev->muse_body;
+    # 2 (pdf)
     my $out = $rev->embed_attachment($file);
     ok ($out->{attachment}) and diag Dumper($out);
     $out = $rev->embed_attachment(path(qw/t files shot.png/));
     ok ($out->{attachment}) and diag Dumper($out);
     my $body = $rev->muse_body;
-    foreach my $i (1..64) {
+    # the pages
+    foreach my $i (3..66) {
         like $body, qr/\[\[h-o-hello-\Q$i\E\.png f\]\]/, "Found png $i";
     }
     $rev->commit_version;
@@ -56,7 +59,7 @@ my $tmpdir = Path::Tiny->tempdir;
 
 $mech->get_ok('/library/hello') or die;
 my $html = $mech->content;
-foreach my $i (1..64) {
+foreach my $i (3..66) {
     my $uri = 'h-o-hello-' . $i . '.png';
     like $html, qr/src="\Q$uri\E"/, "Found $uri image in the body";
     $mech->get_ok('/library/' . $uri);
@@ -80,7 +83,7 @@ foreach my $embed (0..1) {
     $mech->set_fields(username => "pallino",
                       attachment => path(qw/t files manual.pdf/)->stringify);
     $mech->click('preview');
-    foreach my $n (1..10) {
+    foreach my $n (2..11) {
         my $re = qr/<textarea .*\[\[f-$embed-formaggino-$embed-$n.png f\]\].*<\/textarea>/s;
         if ($embed) {
             $mech->content_like($re);

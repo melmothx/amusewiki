@@ -28,7 +28,7 @@ is $expected, "h-o-hello-1.pdf", "$expected is h-o-hello-1.pdf";
 is_deeply($rev->attached_pdfs, [ $expected ]);
 my $png_att = $rev->add_attachment($png)->{attachment};
 $rev->edit("#cover $png_att\n" . $rev->muse_body);
-is ($png_att, "h-o-hello-1.png");
+is ($png_att, "h-o-hello-2.png");
 
 $rev->commit_version;
 $rev->publish_text;
@@ -45,9 +45,9 @@ foreach my $att ($site->attachments) {
 }
 
 my $text = $rev->title->discard_changes;
-is ($text->cover_uri, '/library/h-o-hello-1.png');
-is ($text->cover_thumbnail_uri, '/uploads/0sf1/thumbnails/h-o-hello-1.png.thumb.png');
-is ($text->cover_small_uri, '/uploads/0sf1/thumbnails/h-o-hello-1.png.small.png');
+is ($text->cover_uri, '/library/h-o-hello-2.png');
+is ($text->cover_thumbnail_uri, '/uploads/0sf1/thumbnails/h-o-hello-2.png.thumb.png');
+is ($text->cover_small_uri, '/uploads/0sf1/thumbnails/h-o-hello-2.png.small.png');
 
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
