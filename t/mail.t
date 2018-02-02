@@ -116,12 +116,24 @@ $mech->click("commit");
 
 ok $site->mail_notify;
 ok $site->mail_from;
-$site->repo_git_pull;
+$site->add_git_remote("test", "git://localhost/git/prova.git");
+
+{
+    my $job = $site->jobs->git_action_add({ remote => 'test',
+                                            action => 'fetch' });
+
+    diag $job->dispatch_job;
+}
 
 $site->update({ mail_from => undef });
 # no mail;
-$site->repo_git_pull;
 
+{
+    my $job = $site->jobs->git_action_add({ remote => 'test',
+                                            action => 'fetch' });
+
+    diag $job->dispatch_job;
+}
 
 {
     my @mails = Email::Sender::Simple->default_transport->deliveries;
@@ -201,7 +213,7 @@ $site->repo_git_pull;
         ok ($sent, "The application sent the mail");
         my $body = $sent->{email}->as_string;
         ok ($body);
-        like $body, qr{subject: \[0mail0\.amusewiki\.org\] git pull origin}i;
+        like $body, qr{subject: \[0mail0\.amusewiki\.org\] git pull test}i;
         diag $body;
     }
 
