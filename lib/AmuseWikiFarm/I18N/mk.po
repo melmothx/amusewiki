@@ -230,9 +230,6 @@ msgstr "Историја на архивата"
 msgid "Are you sure?"
 msgstr "Сигурно?"
 
-msgid "Attached PDFs"
-msgstr "PDF фајлови во прилог"
-
 msgid "Attached images"
 msgstr "Слики во прилог"
 
@@ -664,6 +661,15 @@ msgstr "Грешка при бришењето на оддалечениот р�
 msgid "File extension"
 msgstr ""
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Датотеката е вчитана!"
 
@@ -1024,10 +1030,6 @@ msgstr ""
 msgid "Image url"
 msgstr "URL од сликата"
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
-"Сликите кои не се користат во текстот се зачувани, но ќе бидат игнорирани."
-
 msgid "Images:"
 msgstr "Слики:"
 
@@ -1207,6 +1209,9 @@ msgstr "Вчитај друга сесија со код"
 msgid "Loaded \"%1\" configuration"
 msgstr "Користејќи %1 конфигурација"
 
+msgid "Locked editing, no upload possible"
+msgstr ""
+
 msgid "Log in"
 msgstr "Логирај се"
 
@@ -1376,6 +1381,9 @@ msgstr "Забелешки"
 
 msgid "Nothing to see here, so far"
 msgstr "Нема што да се види овде, засега"
+
+msgid "Nothing uploaded"
+msgstr ""
 
 msgid "Notify mail: blank field will disable them"
 msgstr "E-mail известувања: остави празно за да ги оневозможиш"
@@ -1621,16 +1629,6 @@ msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Остави e-mail доколку сакаш да бидеш контактиран во врска со оваа измена"
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-"PDF-те се надворешни датотеки и не можат целосно да бидат \n"
-"интегрирани во текстот. Генерираните формати ќе бидат без нив.\n"
-"Ако ти требаат, можеш да ги претвориш во слики и додадеш."
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Имај на ум дека ознаките меѓу кои се наоѓа дел од текстот мораат да бидат "
@@ -1872,6 +1870,9 @@ msgstr "Повтори ја лозинката"
 
 msgid "Repository"
 msgstr "Репозиториум"
+
+msgid "Request failed! Please report the the problem"
+msgstr ""
 
 msgid "Reset all"
 msgstr "Поништи сè"
@@ -2421,11 +2422,6 @@ msgstr "Наслови"
 msgid "To apply the changes, you can visit %1"
 msgstr "За да ја објавиш измената, оди на %1"
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
-"За да ги видиш PDF датотеките, примени го или додади го овој низ од знаци во "
-"заглавието"
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "За да ги зачуваш празните места и новите редови, вметни пасус помеѓу "
@@ -2534,6 +2530,9 @@ msgstr "Необјавени текстови"
 #. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Погрешен вид на фајл %1"
+
+msgid "Unused attachment"
+msgstr ""
 
 msgid "Update"
 msgstr "Ажурирај"
@@ -2644,6 +2643,9 @@ msgstr ""
 "ќе има еден код за споделување на сесијата. Можеш да го вчиташ од друг\n"
 "компјутер и таму да продолжиш."
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr "Од каде е овој текст?"
 
@@ -2706,16 +2708,6 @@ msgstr "Година"
 
 msgid "Yes"
 msgstr "Да"
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
-msgstr ""
-"Си додал/додала една или повеќе слики, но процедурата сè уште не завршена.\n"
-"За да се појават во текстот, мораш да ги користиш или во самиот текст или\n"
-"во заглавјето. Види ги примерите подолу."
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
@@ -2899,6 +2891,9 @@ msgstr "доколку репозиториумот е отворен на web"
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr "ако сакаш посебни димензии треба да вметнеш и ширина и висина"
 
+msgid "image"
+msgstr ""
+
 msgid "left"
 msgstr "лево"
 
@@ -3019,6 +3014,41 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Attached PDFs"
+#~ msgstr "PDF фајлови во прилог"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr ""
+#~ "Сликите кои не се користат во текстот се зачувани, но ќе бидат игнорирани."
+
+#~ msgid ""
+#~ "Please note that PDFs are external files and cannot be\n"
+#~ "        fully integrated in the document, so the generated files will\n"
+#~ "        not embed them. If you need that, you should split the PDF in\n"
+#~ "        images and upload those instead."
+#~ msgstr ""
+#~ "PDF-те се надворешни датотеки и не можат целосно да бидат \n"
+#~ "интегрирани во текстот. Генерираните формати ќе бидат без нив.\n"
+#~ "Ако ти требаат, можеш да ги претвориш во слики и додадеш."
+
+#~ msgid ""
+#~ "To display the PDFs, set or append the following string in the header"
+#~ msgstr ""
+#~ "За да ги видиш PDF датотеките, примени го или додади го овој низ од знаци "
+#~ "во заглавието"
+
+#~ msgid ""
+#~ "You\n"
+#~ "    have attached one or more images. This is not enough! To make them\n"
+#~ "    appear, you have to place somewhere in the body or in the header,\n"
+#~ "    depending on their purpose. See the examples below."
+#~ msgstr ""
+#~ "Си додал/додала една или повеќе слики, но процедурата сè уште не "
+#~ "завршена.\n"
+#~ "За да се појават во текстот, мораш да ги користиш или во самиот текст "
+#~ "или\n"
+#~ "во заглавјето. Види ги примерите подолу."
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "Нова измена создадена на %1"

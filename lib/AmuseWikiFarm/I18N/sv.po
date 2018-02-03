@@ -214,9 +214,6 @@ msgstr ""
 msgid "Are you sure?"
 msgstr "Är du säker?"
 
-msgid "Attached PDFs"
-msgstr "Bifogade PDF:er"
-
 msgid "Attached images"
 msgstr "Bifogade bilder"
 
@@ -627,6 +624,15 @@ msgstr ""
 msgid "File extension"
 msgstr ""
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Fil uppladdad!"
 
@@ -943,9 +949,6 @@ msgstr ""
 msgid "Image url"
 msgstr "Bild url"
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr "Bilder som inte används lagras men kommer att ignoreras."
-
 msgid "Images:"
 msgstr "Bilder:"
 
@@ -1116,6 +1119,9 @@ msgstr ""
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
+msgid "Locked editing, no upload possible"
+msgstr ""
+
 msgid "Log in"
 msgstr "Logga in"
 
@@ -1281,6 +1287,9 @@ msgstr "Anteckningar"
 
 msgid "Nothing to see here, so far"
 msgstr "Än så länge finns här ingenting att se"
+
+msgid "Nothing uploaded"
+msgstr ""
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Underrätta mail: tomt fält kommer att inaktivera dem"
@@ -1518,13 +1527,6 @@ msgstr ""
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr "Lämna gärna mail om du vill bli kontaktad angående denna förändring"
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Vänligen lägg märke till att wrapping-taggarna måste placeras på en egen rad."
@@ -1750,6 +1752,9 @@ msgstr "Upprepa lösenord"
 
 msgid "Repository"
 msgstr "Förvaring"
+
+msgid "Request failed! Please report the the problem"
+msgstr ""
 
 msgid "Reset all"
 msgstr ""
@@ -2282,9 +2287,6 @@ msgstr "Titlar"
 msgid "To apply the changes, you can visit %1"
 msgstr "För att verkställa ändringarna, kan du besöka %1"
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr "För att visa PDF:er, skriv eller bifoga följande sträng i sidhuvudet"
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "För att behålla blankstegen, anpassa styckena med "
@@ -2385,6 +2387,9 @@ msgstr "Opublicerade texter"
 #. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Filtypen stöds inte %1"
+
+msgid "Unused attachment"
+msgstr ""
 
 msgid "Update"
 msgstr "Updatera"
@@ -2487,6 +2492,9 @@ msgid ""
 "    doing."
 msgstr ""
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr "Vartifrån kommer denna text?"
 
@@ -2539,13 +2547,6 @@ msgid "Year"
 msgstr "År"
 
 msgid "Yes"
-msgstr ""
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
 msgstr ""
 
 msgid ""
@@ -2721,6 +2722,9 @@ msgstr ""
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 
+msgid "image"
+msgstr ""
+
 msgid "left"
 msgstr ""
 
@@ -2840,6 +2844,17 @@ msgstr ""
 "\"Förlegad redigering\" innebär att revideringen övergavs    under "
 "redigeringens gång, men den är fortfarande där, utifall att     någon vill "
 "återuppta den, medans den redigerar en text."
+
+#~ msgid "Attached PDFs"
+#~ msgstr "Bifogade PDF:er"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr "Bilder som inte används lagras men kommer att ignoreras."
+
+#~ msgid ""
+#~ "To display the PDFs, set or append the following string in the header"
+#~ msgstr ""
+#~ "För att visa PDF:er, skriv eller bifoga följande sträng i sidhuvudet"
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "En ny revidering har skapats till 1%"

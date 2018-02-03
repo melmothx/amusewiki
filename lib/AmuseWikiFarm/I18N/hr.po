@@ -220,9 +220,6 @@ msgstr "Povijest arhiva"
 msgid "Are you sure?"
 msgstr "Sigurno?"
 
-msgid "Attached PDFs"
-msgstr "PDFovi u privitku"
-
 msgid "Attached images"
 msgstr "Slike u privitku"
 
@@ -650,6 +647,15 @@ msgstr "Greška pri izbrisanju udaljenog repozitorija %1"
 msgid "File extension"
 msgstr "Ekstenzija fajlova"
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Datoteka učitana!"
 
@@ -1005,10 +1011,6 @@ msgstr ""
 msgid "Image url"
 msgstr "URL slike"
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
-"Slike koje se ne koriste u tekstu su spremljene, ali bit će zanemarene."
-
 msgid "Images:"
 msgstr "Slike:"
 
@@ -1192,6 +1194,9 @@ msgstr "Učitaj drugu sesiju kodom"
 msgid "Loaded \"%1\" configuration"
 msgstr "Koristeći \"%1\" konfiguraciju"
 
+msgid "Locked editing, no upload possible"
+msgstr ""
+
 msgid "Log in"
 msgstr "Uđi"
 
@@ -1357,6 +1362,9 @@ msgstr "Napomene"
 
 msgid "Nothing to see here, so far"
 msgstr "Ovdje se nema što vidjeti, za sada"
+
+msgid "Nothing uploaded"
+msgstr ""
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Mail obavijesti: ostavi prazno za onemogućiti"
@@ -1594,16 +1602,6 @@ msgstr ""
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr "Ostavi mail ako želiš biti kontaktiran u vezi ove izmjene"
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-"PDFovi su vanjske datoteke i ne mogu biti potpuno integrirane u\n"
-"tekstu. Generirani formati bit će bez njih. Ako ih trebaš, možeš ih\n"
-"pretvoriti u slike i dodati njih."
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Pazi: oznake između kojih se nalazi dio teksta moraju biti same u jednom "
@@ -1840,6 +1838,9 @@ msgstr "Ponovi lozinku"
 
 msgid "Repository"
 msgstr "Repozitorij"
+
+msgid "Request failed! Please report the the problem"
+msgstr ""
 
 msgid "Reset all"
 msgstr "Poništi sve"
@@ -2385,9 +2386,6 @@ msgstr "Naslovi"
 msgid "To apply the changes, you can visit %1"
 msgstr "Da bi objavio izmjenu, idi na %1"
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr "Da bi vidio PDF-ove, dodaj slijedeći redak zaglavlju"
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "Da bi se sačuvali prazni znakovi i novi redak, umetni odlomak između"
@@ -2491,6 +2489,9 @@ msgstr "Neobjavljeni tekstovi"
 #. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Pogrešna vrsta fajla: %1"
+
+msgid "Unused attachment"
+msgstr ""
 
 msgid "Update"
 msgstr "Ažuriraj"
@@ -2601,6 +2602,9 @@ msgstr ""
 "jedan kôd za dijeljenje sesije. Možeš ga učitati s drugog kompjutera i\n"
 "tamo nastaviti."
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr "Odakle dolazi ovaj tekst?"
 
@@ -2661,16 +2665,6 @@ msgstr "Godina"
 
 msgid "Yes"
 msgstr "Da"
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
-msgstr ""
-"Dodala/dodao si jednu ili više slika, ali procedura nije još dovršena.\n"
-"Da bi se pojavile u tekstu, moraš ih koristiti ili u samom tekstu ili\n"
-"u zaglavlju. Vidi primjere malo dolje."
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
@@ -2852,6 +2846,9 @@ msgstr "ako je repozitorij otvoren na webu"
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr "ako želiš posebne dimenzije, trebaš ubaciti i širinu i visinu"
 
+msgid "image"
+msgstr ""
+
 msgid "left"
 msgstr "lijeva"
 
@@ -2971,6 +2968,37 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Attached PDFs"
+#~ msgstr "PDFovi u privitku"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr ""
+#~ "Slike koje se ne koriste u tekstu su spremljene, ali bit će zanemarene."
+
+#~ msgid ""
+#~ "Please note that PDFs are external files and cannot be\n"
+#~ "        fully integrated in the document, so the generated files will\n"
+#~ "        not embed them. If you need that, you should split the PDF in\n"
+#~ "        images and upload those instead."
+#~ msgstr ""
+#~ "PDFovi su vanjske datoteke i ne mogu biti potpuno integrirane u\n"
+#~ "tekstu. Generirani formati bit će bez njih. Ako ih trebaš, možeš ih\n"
+#~ "pretvoriti u slike i dodati njih."
+
+#~ msgid ""
+#~ "To display the PDFs, set or append the following string in the header"
+#~ msgstr "Da bi vidio PDF-ove, dodaj slijedeći redak zaglavlju"
+
+#~ msgid ""
+#~ "You\n"
+#~ "    have attached one or more images. This is not enough! To make them\n"
+#~ "    appear, you have to place somewhere in the body or in the header,\n"
+#~ "    depending on their purpose. See the examples below."
+#~ msgstr ""
+#~ "Dodala/dodao si jednu ili više slika, ali procedura nije još dovršena.\n"
+#~ "Da bi se pojavile u tekstu, moraš ih koristiti ili u samom tekstu ili\n"
+#~ "u zaglavlju. Vidi primjere malo dolje."
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "Nova izmjena stvorena na %1"

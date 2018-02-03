@@ -200,9 +200,6 @@ msgstr ""
 msgid "Are you sure?"
 msgstr ""
 
-msgid "Attached PDFs"
-msgstr ""
-
 msgid "Attached images"
 msgstr ""
 
@@ -611,6 +608,15 @@ msgstr ""
 msgid "File extension"
 msgstr ""
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr ""
 
@@ -920,9 +926,6 @@ msgstr ""
 msgid "Image url"
 msgstr ""
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
-
 msgid "Images:"
 msgstr ""
 
@@ -1082,6 +1085,9 @@ msgstr ""
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
+msgstr ""
+
+msgid "Locked editing, no upload possible"
 msgstr ""
 
 msgid "Log in"
@@ -1248,6 +1254,9 @@ msgid "Notes"
 msgstr "Notes"
 
 msgid "Nothing to see here, so far"
+msgstr ""
+
+msgid "Nothing uploaded"
 msgstr ""
 
 msgid "Notify mail: blank field will disable them"
@@ -1459,13 +1468,6 @@ msgstr ""
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 
@@ -1674,6 +1676,9 @@ msgid "Repeat password"
 msgstr ""
 
 msgid "Repository"
+msgstr ""
+
+msgid "Request failed! Please report the the problem"
 msgstr ""
 
 msgid "Reset all"
@@ -2195,9 +2200,6 @@ msgstr "Titles"
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
@@ -2298,6 +2300,9 @@ msgstr ""
 msgid "Unsupported file type %1"
 msgstr ""
 
+msgid "Unused attachment"
+msgstr ""
+
 msgid "Update"
 msgstr ""
 
@@ -2396,6 +2401,9 @@ msgid ""
 "    doing."
 msgstr ""
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr ""
 
@@ -2445,13 +2453,6 @@ msgid "Year"
 msgstr ""
 
 msgid "Yes"
-msgstr ""
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
 msgstr ""
 
 msgid ""
@@ -2617,6 +2618,9 @@ msgid "if the repository is exported"
 msgstr ""
 
 msgid "if you want to use a custom size, you need to set both width and height"
+msgstr ""
+
+msgid "image"
 msgstr ""
 
 msgid "left"

@@ -225,9 +225,6 @@ msgstr "Arkivhistorie"
 msgid "Are you sure?"
 msgstr "Er du sikker?"
 
-msgid "Attached PDFs"
-msgstr "Vedhæftede PDF'er"
-
 msgid "Attached images"
 msgstr "Vedhæftede billeder"
 
@@ -656,6 +653,15 @@ msgstr "Sletningen af fjernarkivet %1 mislykkedes"
 msgid "File extension"
 msgstr ""
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Fil uploadet!"
 
@@ -1008,9 +1014,6 @@ msgstr ""
 msgid "Image url"
 msgstr "Billedets URL"
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr "Billeder som ikke bruges i teksten bliver gemt, men ignoreret."
-
 msgid "Images:"
 msgstr "Billeder:"
 
@@ -1187,6 +1190,9 @@ msgstr "Indlæs en anden session med et mærke"
 msgid "Loaded \"%1\" configuration"
 msgstr "Indlæste \"%1\" konfiguration"
 
+msgid "Locked editing, no upload possible"
+msgstr ""
+
 msgid "Log in"
 msgstr "Log ind"
 
@@ -1354,6 +1360,9 @@ msgstr "Noter"
 
 msgid "Nothing to see here, so far"
 msgstr "Intet at se her indtil videre"
+
+msgid "Nothing uploaded"
+msgstr ""
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Meddelelses mail: et tomt felt deaktiverer dem"
@@ -1599,13 +1608,6 @@ msgstr ""
 "Efterlad venligst en mail-adresse hvis du vil kontaktes vedrørende denne "
 "ændring"
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr "Bemærk at omsluttende markeringer skal placeres på sin egen linje."
 
@@ -1839,6 +1841,9 @@ msgstr "Gentag kodeord"
 
 msgid "Repository"
 msgstr "Arkiv"
+
+msgid "Request failed! Please report the the problem"
+msgstr ""
 
 msgid "Reset all"
 msgstr "Nulstil alt"
@@ -2374,9 +2379,6 @@ msgstr "Titler"
 msgid "To apply the changes, you can visit %1"
 msgstr "For at aktivere ændringerne kan du besøge %1"
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "For at bevare blanktegn og linjespring, så omslut afsnittene med"
@@ -2476,6 +2478,9 @@ msgstr "Ikke offentliggjorte tekster"
 #. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Ikke understøttet filtype %1"
+
+msgid "Unused attachment"
+msgstr ""
 
 msgid "Update"
 msgstr "Opdater"
@@ -2586,6 +2591,9 @@ msgstr ""
 "     af bogbyggersiden se et mærke som kan bruges til at dele sessionen.\n"
 "     Du kan indlæse den her fra en anden enhed for at genoptage arbejdet."
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr "Hvor kommer denne tekst fra?"
 
@@ -2645,18 +2653,6 @@ msgstr "År"
 
 msgid "Yes"
 msgstr "Ja"
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
-msgstr ""
-"Du\n"
-"    har vedhæftet et eller flere billeder. Det er ikke nok! For at de skal\n"
-"    vises er du nødt til at placere dem et sted i teksten eller "
-"sidehovedet,\n"
-"    afhængigt af deres formål. Se eksemplerne nedenfor."
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
@@ -2842,6 +2838,9 @@ msgstr ""
 "hvis du vil anvende en tilpasset størrelse er du nødt til at fastsætte både "
 "bredde og højde"
 
+msgid "image"
+msgstr ""
+
 msgid "left"
 msgstr "venstre"
 
@@ -2962,6 +2961,25 @@ msgstr ""
 "    under redigeringen, men den er stadig der, hvis nogen skulle få lyst "
 "til\n"
 "    at samle den op under redigeringen af en tekst."
+
+#~ msgid "Attached PDFs"
+#~ msgstr "Vedhæftede PDF'er"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr "Billeder som ikke bruges i teksten bliver gemt, men ignoreret."
+
+#~ msgid ""
+#~ "You\n"
+#~ "    have attached one or more images. This is not enough! To make them\n"
+#~ "    appear, you have to place somewhere in the body or in the header,\n"
+#~ "    depending on their purpose. See the examples below."
+#~ msgstr ""
+#~ "Du\n"
+#~ "    har vedhæftet et eller flere billeder. Det er ikke nok! For at de "
+#~ "skal\n"
+#~ "    vises er du nødt til at placere dem et sted i teksten eller "
+#~ "sidehovedet,\n"
+#~ "    afhængigt af deres formål. Se eksemplerne nedenfor."
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "En ny revision er blevet skabt på %1"

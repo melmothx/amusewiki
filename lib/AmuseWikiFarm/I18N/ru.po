@@ -223,9 +223,6 @@ msgstr "История каталога"
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
-msgid "Attached PDFs"
-msgstr "Вложенные PDF"
-
 msgid "Attached images"
 msgstr "Вложенные изображения"
 
@@ -660,6 +657,15 @@ msgstr "Не удалось удалить удалённый репозитор
 msgid "File extension"
 msgstr "Расширение файла"
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Файл загружен!"
 
@@ -1015,10 +1021,6 @@ msgstr ""
 msgid "Image url"
 msgstr "url изображения"
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
-"Не использованные в тексте изображения будут сохранены, но проигнорированы"
-
 msgid "Images:"
 msgstr "Изображения:"
 
@@ -1199,6 +1201,9 @@ msgstr "Загрузить другую сессию по токену"
 msgid "Loaded \"%1\" configuration"
 msgstr "Загружена конфигурация «%1»"
 
+msgid "Locked editing, no upload possible"
+msgstr ""
+
 msgid "Log in"
 msgstr "Вход"
 
@@ -1368,6 +1373,9 @@ msgstr "Дополнительная информация"
 
 msgid "Nothing to see here, so far"
 msgstr "Здесь пока ничего нет"
+
+msgid "Nothing uploaded"
+msgstr ""
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Оповещающие сообщения (оставьте поле пустым для отключения)"
@@ -1608,16 +1616,6 @@ msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Пожалуйста, оставьте электронную почту, чтобы с вами можно было связаться"
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-"Помните, что PDF это внешние файлы и не могут быть полностью интегрированы в "
-"документ, поэтому сгенерированные файлы не будут включать их. Если вам это "
-"нужно, разделите PDF на изображения и загрузите их."
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Помните, что теги форматирования должны быть помещены на отдельной строке"
@@ -1848,6 +1846,9 @@ msgstr "Повторите пароль"
 
 msgid "Repository"
 msgstr "Репозиторий"
+
+msgid "Request failed! Please report the the problem"
+msgstr ""
 
 msgid "Reset all"
 msgstr "Сбросить всё"
@@ -2399,9 +2400,6 @@ msgstr "Названия"
 msgid "To apply the changes, you can visit %1"
 msgstr "Для применения изменений вы можете посетить %1"
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr "Для отображения PDF-файлов, добавьте следующую строку в заголовке"
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "Для сохранения пробелов и разрывов строк, поместите параграфы в"
@@ -2511,6 +2509,9 @@ msgstr "Неопубликованные тексты"
 #. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Неподдерживаемый формат файла %1"
+
+msgid "Unused attachment"
+msgstr ""
 
 msgid "Update"
 msgstr "Обновить"
@@ -2622,6 +2623,9 @@ msgstr ""
 "можете увидеть токен для обмена сессиями. Там же вы можете загрузить его на "
 "другом устройстве, чтобы продолжить с того места, на котором вы остановились."
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr "Откуда этот текст?"
 
@@ -2682,16 +2686,6 @@ msgstr "Год"
 
 msgid "Yes"
 msgstr "Да"
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
-msgstr ""
-"Вы присоединили одно или несколько изображений. Этого не достаточно! Чтобы "
-"они появились, вы должны поместить их куда-нибудь в текст или заголовок, в "
-"зависимости от их цели. Смотрите примеры ниже."
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
@@ -2878,6 +2872,9 @@ msgstr ""
 "если вы хотите использовать пользовательский размер, вы должны указать как "
 "ширину, так и высоту"
 
+msgid "image"
+msgstr ""
+
 msgid "left"
 msgstr "левая"
 
@@ -2998,6 +2995,37 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Attached PDFs"
+#~ msgstr "Вложенные PDF"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr ""
+#~ "Не использованные в тексте изображения будут сохранены, но проигнорированы"
+
+#~ msgid ""
+#~ "Please note that PDFs are external files and cannot be\n"
+#~ "        fully integrated in the document, so the generated files will\n"
+#~ "        not embed them. If you need that, you should split the PDF in\n"
+#~ "        images and upload those instead."
+#~ msgstr ""
+#~ "Помните, что PDF это внешние файлы и не могут быть полностью "
+#~ "интегрированы в документ, поэтому сгенерированные файлы не будут включать "
+#~ "их. Если вам это нужно, разделите PDF на изображения и загрузите их."
+
+#~ msgid ""
+#~ "To display the PDFs, set or append the following string in the header"
+#~ msgstr "Для отображения PDF-файлов, добавьте следующую строку в заголовке"
+
+#~ msgid ""
+#~ "You\n"
+#~ "    have attached one or more images. This is not enough! To make them\n"
+#~ "    appear, you have to place somewhere in the body or in the header,\n"
+#~ "    depending on their purpose. See the examples below."
+#~ msgstr ""
+#~ "Вы присоединили одно или несколько изображений. Этого не достаточно! "
+#~ "Чтобы они появились, вы должны поместить их куда-нибудь в текст или "
+#~ "заголовок, в зависимости от их цели. Смотрите примеры ниже."
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "Новая редакция была создана в %1"

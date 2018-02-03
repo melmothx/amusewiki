@@ -231,9 +231,6 @@ msgstr "Historial de archivo"
 msgid "Are you sure?"
 msgstr "¿Estás segura/o?"
 
-msgid "Attached PDFs"
-msgstr "PDFs adjuntados"
-
 msgid "Attached images"
 msgstr "Imágenes adjuntadas"
 
@@ -669,6 +666,15 @@ msgstr "Fallo al eliminar repositorio remoto %1"
 msgid "File extension"
 msgstr ""
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "¡Archivo subido!"
 
@@ -1031,10 +1037,6 @@ msgstr ""
 msgid "Image url"
 msgstr "Dirección URL de la imagen"
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
-"Las imágenes no usadas en el texto son guardadas, pero serán ignoradas."
-
 msgid "Images:"
 msgstr "Imágenes"
 
@@ -1216,6 +1218,9 @@ msgstr "Cargar otra sesión mediante un token"
 msgid "Loaded \"%1\" configuration"
 msgstr "Cargada la configuración \"%1\""
 
+msgid "Locked editing, no upload possible"
+msgstr ""
+
 msgid "Log in"
 msgstr "Iniciar sesión"
 
@@ -1383,6 +1388,9 @@ msgstr "Notas"
 
 msgid "Nothing to see here, so far"
 msgstr "Nada que ver aquí, por cierto"
+
+msgid "Nothing uploaded"
+msgstr ""
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Correo electrónico de notificación: campo en blanco lo deshabilitará"
@@ -1629,13 +1637,6 @@ msgstr ""
 "Por favor deja un correo electrónico si quieres ser contactada/o sobre este "
 "cambio"
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr "Por favor nota que las etiquetas deben ser puestas en una línea."
 
@@ -1871,6 +1872,9 @@ msgstr "Repetir contraseña"
 
 msgid "Repository"
 msgstr "Repositorio"
+
+msgid "Request failed! Please report the the problem"
+msgstr ""
 
 msgid "Reset all"
 msgstr "Reiniciar todo"
@@ -2433,9 +2437,6 @@ msgstr "Textos"
 msgid "To apply the changes, you can visit %1"
 msgstr "Para aplicar los cambios, puedes visitar %1"
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr "Para mostrar los PDFs, cambia o agrega lo siguiente en el encabezado"
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "Para conservar los espacios y saltos de línea, trunca los párrafos con"
@@ -2545,6 +2546,9 @@ msgstr "Textos no publicados"
 #. ($mime)
 msgid "Unsupported file type %1"
 msgstr "Tipo de archivo %1 no soportado"
+
+msgid "Unused attachment"
+msgstr ""
 
 msgid "Update"
 msgstr "Actualizar"
@@ -2657,6 +2661,9 @@ msgstr ""
 "    la sesión. Puedes cargarla aquí desde otro computador para continuar\n"
 "    lo que estabas haciendo."
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr "¿De dónde viene este texto?"
 
@@ -2715,17 +2722,6 @@ msgstr "Año"
 
 msgid "Yes"
 msgstr "Sí"
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
-msgstr ""
-"Tú\n"
-"    has adjuntado una o más imágenes. ¡Esto no es suficiente! Para hacerlas\n"
-"    visibles, debes insertar en alguna parte del cuerpo del texto o en el,\n"
-"    header, dependiendo de tu propósito. Mira ejemplos más abajo."
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
@@ -2913,6 +2909,9 @@ msgstr ""
 "si quieres usar un tamaño personalizado, necesitas ajustar tanto el ancho "
 "como el alto"
 
+msgid "image"
+msgstr ""
+
 msgid "left"
 msgstr "izquierda"
 
@@ -3034,6 +3033,31 @@ msgstr ""
 "\"Edición abandonada\" significa que la revisión fue abandonada\n"
 "    mientras se estaba editando, pero todavía está ahí, en caso de que\n"
 "    alguien quiera modificarla cuando edite un texto."
+
+#~ msgid "Attached PDFs"
+#~ msgstr "PDFs adjuntados"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr ""
+#~ "Las imágenes no usadas en el texto son guardadas, pero serán ignoradas."
+
+#~ msgid ""
+#~ "To display the PDFs, set or append the following string in the header"
+#~ msgstr ""
+#~ "Para mostrar los PDFs, cambia o agrega lo siguiente en el encabezado"
+
+#~ msgid ""
+#~ "You\n"
+#~ "    have attached one or more images. This is not enough! To make them\n"
+#~ "    appear, you have to place somewhere in the body or in the header,\n"
+#~ "    depending on their purpose. See the examples below."
+#~ msgstr ""
+#~ "Tú\n"
+#~ "    has adjuntado una o más imágenes. ¡Esto no es suficiente! Para "
+#~ "hacerlas\n"
+#~ "    visibles, debes insertar en alguna parte del cuerpo del texto o en "
+#~ "el,\n"
+#~ "    header, dependiendo de tu propósito. Mira ejemplos más abajo."
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "Se ha creado una nueva revisión en %1"

@@ -228,9 +228,6 @@ msgstr "Historique des Archives"
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr·e?"
 
-msgid "Attached PDFs"
-msgstr "PDFs joints"
-
 msgid "Attached images"
 msgstr "Images jointes"
 
@@ -668,6 +665,15 @@ msgstr "Échec à l'ajout du dépôt distant %1"
 msgid "File extension"
 msgstr ""
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Fichier mis en ligne !"
 
@@ -1033,10 +1039,6 @@ msgstr ""
 msgid "Image url"
 msgstr "Url de l'image"
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr ""
-"Les images non utilisées dans le texte sont stockées, mais seront ignorées."
-
 msgid "Images:"
 msgstr "Images :"
 
@@ -1215,6 +1217,9 @@ msgstr "Charger une autre session par \"token\""
 msgid "Loaded \"%1\" configuration"
 msgstr "Configuration \"%1\" chargée"
 
+msgid "Locked editing, no upload possible"
+msgstr ""
+
 msgid "Log in"
 msgstr "Se connecter"
 
@@ -1384,6 +1389,9 @@ msgstr "Notes"
 
 msgid "Nothing to see here, so far"
 msgstr "Rien à voir ici, pour l'instant"
+
+msgid "Nothing uploaded"
+msgstr ""
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Notifications par e-mail : laisser le champ vide les désactivera"
@@ -1629,17 +1637,6 @@ msgstr ""
 "Veuillez laisser un email si vous souhaitez être contacté·e à propos de "
 "cette modification"
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-"Veuillez noter que les PDFs sont des fichiers externes et ne peuvent pas "
-"être pleinement intégrés au document, donc les fichiers générés ne les "
-"incorporent pas. Si vous souhaitez qu'ils le fassent, vous devriez à la "
-"place scinder le PDF en images à la place et les téléverser."
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Veuillez remarquer que les balises d'enveloppement doivent être placées "
@@ -1878,6 +1875,9 @@ msgstr "Répéter le mot de passe"
 
 msgid "Repository"
 msgstr "Dépôt"
+
+msgid "Request failed! Please report the the problem"
+msgstr ""
 
 msgid "Reset all"
 msgstr "Tout réinitialiser"
@@ -2439,11 +2439,6 @@ msgstr "Textes"
 msgid "To apply the changes, you can visit %1"
 msgstr "Pour appliquer les modifications, vous pouvez visiter %1"
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
-"Pour afficher les PDFs, définissez ou ajoutez la chaîne de caractères "
-"suivante au titre :"
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
@@ -2561,6 +2556,9 @@ msgstr "Textes non publiés"
 msgid "Unsupported file type %1"
 msgstr "Type de fichier %1 non pris en charge"
 
+msgid "Unused attachment"
+msgstr ""
+
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -2671,6 +2669,9 @@ msgstr ""
 "charger ici depuis un autre appareil pour reprendre ce que vous étiez en "
 "train de faire."
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr "D'où provient ce texte?"
 
@@ -2735,16 +2736,6 @@ msgstr "Année"
 
 msgid "Yes"
 msgstr "Oui"
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
-msgstr ""
-"Vous avez joint une ou plusieurs images. Cela ne suffit pas ! Pour les "
-"rendre visibles, il faut les placer quelque part dans le corps de texte ou "
-"l'en-tête. Voir les exemples ci-dessous."
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
@@ -2935,6 +2926,9 @@ msgstr ""
 "si vous souhaitez utiliser une taille personnalisée, vous devez définir et "
 "la largeur et la hauteur"
 
+msgid "image"
+msgstr ""
+
 msgid "left"
 msgstr "gauche"
 
@@ -3056,6 +3050,41 @@ msgstr ""
 "\"Modification périmée\" signifie que la révision a été abandonnée en cours "
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer lors d'une modification du texte."
+
+#~ msgid "Attached PDFs"
+#~ msgstr "PDFs joints"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr ""
+#~ "Les images non utilisées dans le texte sont stockées, mais seront "
+#~ "ignorées."
+
+#~ msgid ""
+#~ "Please note that PDFs are external files and cannot be\n"
+#~ "        fully integrated in the document, so the generated files will\n"
+#~ "        not embed them. If you need that, you should split the PDF in\n"
+#~ "        images and upload those instead."
+#~ msgstr ""
+#~ "Veuillez noter que les PDFs sont des fichiers externes et ne peuvent pas "
+#~ "être pleinement intégrés au document, donc les fichiers générés ne les "
+#~ "incorporent pas. Si vous souhaitez qu'ils le fassent, vous devriez à la "
+#~ "place scinder le PDF en images à la place et les téléverser."
+
+#~ msgid ""
+#~ "To display the PDFs, set or append the following string in the header"
+#~ msgstr ""
+#~ "Pour afficher les PDFs, définissez ou ajoutez la chaîne de caractères "
+#~ "suivante au titre :"
+
+#~ msgid ""
+#~ "You\n"
+#~ "    have attached one or more images. This is not enough! To make them\n"
+#~ "    appear, you have to place somewhere in the body or in the header,\n"
+#~ "    depending on their purpose. See the examples below."
+#~ msgstr ""
+#~ "Vous avez joint une ou plusieurs images. Cela ne suffit pas ! Pour les "
+#~ "rendre visibles, il faut les placer quelque part dans le corps de texte "
+#~ "ou l'en-tête. Voir les exemples ci-dessous."
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "Une nouvelle révision a été créée à %1"

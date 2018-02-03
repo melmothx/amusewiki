@@ -236,9 +236,6 @@ msgstr "Historia e arkivës"
 msgid "Are you sure?"
 msgstr "A jeni të sigurtë?"
 
-msgid "Attached PDFs"
-msgstr "PDF-ët e bashkangjitur"
-
 msgid "Attached images"
 msgstr "Fotot e bashkangjitura"
 
@@ -672,6 +669,15 @@ msgstr ""
 msgid "File extension"
 msgstr ""
 
+msgid "File format not allowed"
+msgstr ""
+
+msgid "File to delete not found!"
+msgstr ""
+
+msgid "File too big"
+msgstr ""
+
 msgid "File uploaded!"
 msgstr "Dokumenti është ngarkuar!"
 
@@ -1017,9 +1023,6 @@ msgstr ""
 msgid "Image url"
 msgstr "Linku i imazhit"
 
-msgid "Images not used in the text are stored, but will be ignored."
-msgstr "Imazhet e papërdoruna në tekst janë ruajtur mirëpo do të injorohen"
-
 msgid "Images:"
 msgstr "Imazhet"
 
@@ -1199,6 +1202,9 @@ msgstr ""
 msgid "Loaded \"%1\" configuration"
 msgstr ""
 
+msgid "Locked editing, no upload possible"
+msgstr ""
+
 msgid "Log in"
 msgstr "Kyçu"
 
@@ -1366,6 +1372,9 @@ msgstr "Shënime"
 
 msgid "Nothing to see here, so far"
 msgstr "Asgjë deri më tani"
+
+msgid "Nothing uploaded"
+msgstr ""
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Mail informues: fusha e zbrazët do ti pamundësoj ato"
@@ -1602,13 +1611,6 @@ msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Ju lutem leni një email nëse dëshironi të ju kontaktojm për këtë ndryshim"
 
-msgid ""
-"Please note that PDFs are external files and cannot be\n"
-"        fully integrated in the document, so the generated files will\n"
-"        not embed them. If you need that, you should split the PDF in\n"
-"        images and upload those instead."
-msgstr ""
-
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Keni kujdes që tags të mbledhura duhen të vendosen në një rresht veçmas. "
@@ -1843,6 +1845,9 @@ msgid "Repeat password"
 msgstr "Përsëriteni fjalëkalimin"
 
 msgid "Repository"
+msgstr ""
+
+msgid "Request failed! Please report the the problem"
 msgstr ""
 
 msgid "Reset all"
@@ -2398,9 +2403,6 @@ msgstr "Titujt"
 msgid "To apply the changes, you can visit %1"
 msgstr "Për ti vendosur ndryshimet, ju mund të vizitoni %1"
 
-msgid "To display the PDFs, set or append the following string in the header"
-msgstr ""
-
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
@@ -2510,6 +2512,9 @@ msgstr "Tekst i papublikuar"
 msgid "Unsupported file type %1"
 msgstr "Tip i dokumentit i pasuportuar %1"
 
+msgid "Unused attachment"
+msgstr ""
+
 msgid "Update"
 msgstr "Përditëso"
 
@@ -2612,6 +2617,9 @@ msgid ""
 "    doing."
 msgstr ""
 
+msgid "When you upload a PDF, split it into images to be inserted in the body"
+msgstr ""
+
 msgid "Where does this text come from?"
 msgstr "Prej nga vjen ky tekst?"
 
@@ -2672,13 +2680,6 @@ msgstr "Viti"
 
 msgid "Yes"
 msgstr "Po"
-
-msgid ""
-"You\n"
-"    have attached one or more images. This is not enough! To make them\n"
-"    appear, you have to place somewhere in the body or in the header,\n"
-"    depending on their purpose. See the examples below."
-msgstr ""
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
@@ -2865,6 +2866,9 @@ msgstr ""
 "nëse dëshiron të përdorësh një madhësi të ndryshme, duhet të vendosësh "
 "lartësinë dhe gjerësinë"
 
+msgid "image"
+msgstr ""
+
 msgid "left"
 msgstr "majtas"
 
@@ -2984,6 +2988,12 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Attached PDFs"
+#~ msgstr "PDF-ët e bashkangjitur"
+
+#~ msgid "Images not used in the text are stored, but will be ignored."
+#~ msgstr "Imazhet e papërdoruna në tekst janë ruajtur mirëpo do të injorohen"
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "Një përpunim i ri është krijuar në %1"
