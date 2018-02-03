@@ -514,6 +514,14 @@ CREATE TABLE muse_header (
        PRIMARY KEY (title_id, muse_header)
 );
 
+CREATE TABLE amw_session (
+       session_id VARCHAR(255) NOT NULL,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       session_data TEXT,
+       PRIMARY KEY (site_id, session_id)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -546,4 +554,5 @@ INSERT INTO table_comments (table_name, comment_text)
          ('text_internal_link', 'Internal links found in the body'),
          ('text_part', 'Text sectioning'),
          ('global_site_files', 'Files which site uses'),
+         ('amw_session', 'Session backend'),
          ('title_stat', 'Usage statistics');

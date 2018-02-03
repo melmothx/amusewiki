@@ -101,6 +101,8 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
         $c->detach('/not_permitted');
         return;
     }
+    # stash the site object, this is needed for session operations
+    $c->stash(site => $site);
     my $site_id = $site->id;
     log_debug { "Site ID for $host is $site_id, with locale " . $site->locale };
     log_debug { "session id is " . ($c->sessionid || '<none>') };
@@ -125,8 +127,6 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
     }
 
     log_debug { "User exists? " .  $c->user_exists };
-    # stash the site object
-    $c->stash(site => $site);
     $c->stash(blog_style => $site->blog_style);
 
     # force ssl for authenticated users
