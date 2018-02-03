@@ -99,7 +99,7 @@ requires 'HTML::Parser';
 requires 'HTML::Tree';
 
 # our own dogfood
-requires 'Text::Amuse' => '0.96';
+requires 'Text::Amuse' => '0.98';
 requires 'PDF::Imposition' => '0.24';
 requires 'Text::Amuse::Compile' => '1.01';
 requires 'Text::Amuse::Preprocessor' => '0.51';
