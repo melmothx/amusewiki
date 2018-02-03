@@ -90,7 +90,7 @@ use Catalyst (
 
 extends 'Catalyst';
 
-our $VERSION = '2.099';
+our $VERSION = '2.100';
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Log::Contextual::App;

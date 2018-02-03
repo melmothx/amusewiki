@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.100 2018-02-03
+
+ - Improved editing UI: batch file upload and ajax preview
+
 2.099 2018-01-27
 
  - Updated i18n: ru, it, hr
