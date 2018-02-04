@@ -31,6 +31,8 @@ my $key   = 'schema';
 my $value = scalar localtime;
 
 for my $mech ($mech_1, $mech_2) {
+    # weirdness to make the cookie jar kick in...
+    $mech->get('http://' . $mech->host . '/');
     # Setup session
     $mech->get_ok("/session/setup?key=$key&value=$value", 'request to set session value');
     $mech->content_is('ok', 'set session value');
