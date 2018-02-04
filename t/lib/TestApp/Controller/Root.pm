@@ -8,6 +8,11 @@ use AmuseWikiFarm::Log::Contextual;
 
 __PACKAGE__->config(namespace => '');
 
+sub root :Path('') {
+    my ($self, $c) = @_;
+    $c->response->body('OK');
+}
+
 sub auto :Private {
     my ($self, $c) = @_;
     my $host = $c->request->uri->host;
