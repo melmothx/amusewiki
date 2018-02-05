@@ -518,7 +518,10 @@ CREATE TABLE amw_session (
        session_id VARCHAR(255) NOT NULL,
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                     ON DELETE CASCADE ON UPDATE CASCADE,
-       session_data TEXT,
+       expires INTEGER NULL,
+       session_data BLOB NULL,
+       flash_data BLOB NULL,
+       generic_data BLOB NULL,
        PRIMARY KEY (site_id, session_id)
 );
 

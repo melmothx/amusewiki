@@ -51,9 +51,24 @@ __PACKAGE__->table("amw_session");
   is_nullable: 0
   size: 16
 
+=head2 expires
+
+  data_type: 'integer'
+  is_nullable: 1
+
 =head2 session_data
 
-  data_type: 'text'
+  data_type: 'blob'
+  is_nullable: 1
+
+=head2 flash_data
+
+  data_type: 'blob'
+  is_nullable: 1
+
+=head2 generic_data
+
+  data_type: 'blob'
   is_nullable: 1
 
 =cut
@@ -63,8 +78,14 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
+  "expires",
+  { data_type => "integer", is_nullable => 1 },
   "session_data",
-  { data_type => "text", is_nullable => 1 },
+  { data_type => "blob", is_nullable => 1 },
+  "flash_data",
+  { data_type => "blob", is_nullable => 1 },
+  "generic_data",
+  { data_type => "blob", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -99,8 +120,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-02-03 20:01:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:krBi6yDSCVlDqyomHRXB5g
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-02-05 17:28:30
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MbbGB9a/lSYdTvsbOR38XA
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
