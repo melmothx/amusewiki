@@ -11,7 +11,7 @@ use Data::Dumper::Concise;
 use HTTP::Cookies;
 use AmuseWikiFarm::Schema;
 
-plan tests => 81;
+plan tests => 97;
 
 my @mechs = (Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'TestApp',
                                                  host => "blog.amusewiki.org",
@@ -67,6 +67,11 @@ for my $mech (@mechs) {
     $mech->get_ok("/flash/setup?key=$key&value=$value", 'request to set flash value');
     ok(index($mech->response->header('Set-Cookie'), $mech->{___amw_store_sx_cookie}) > 0,
        $mech->response->header('Set-Cookie') . "contains  $mech->{___amw_store_sx_cookie}");
+
+    ok ($schema->resultset('AmwSession')
+        ->search({ session_id => { -like => '%' . $mech->{___amw_store_sx_cookie} . '%' }})->count,
+        "Session cleaned up in the db") or die;
+
     $mech->content_is('ok', 'set flash value');
 }
 # Check flash
@@ -74,6 +79,11 @@ for my $mech (@mechs) {
     $mech->get_ok("/flash/output?key=$key", 'request to get flash value');
     ok(index($mech->response->header('Set-Cookie'), $mech->{___amw_store_sx_cookie}) > 0,
        $mech->response->header('Set-Cookie') . "contains  $mech->{___amw_store_sx_cookie}");
+
+    ok ($schema->resultset('AmwSession')
+        ->search({ session_id => { -like => '%' . $mech->{___amw_store_sx_cookie} . '%' }})->count,
+        "Session cleaned up in the db") or die;
+
     $mech->content_is($value, 'got flash value back');
 }
 
@@ -82,6 +92,11 @@ for my $mech (@mechs) {
     $mech->get_ok("/session/output?key=$key", 'request to get session value');
     ok(index($mech->response->header('Set-Cookie'), $mech->{___amw_store_sx_cookie}) > 0,
        $mech->response->header('Set-Cookie') . "contains  $mech->{___amw_store_sx_cookie}");
+
+    ok ($schema->resultset('AmwSession')
+        ->search({ session_id => { -like => '%' . $mech->{___amw_store_sx_cookie} . '%' }})->count,
+        "Session cleaned up in the db") or die;
+
     $mech->content_is($value, 'got session value back');
 }
 
@@ -90,7 +105,9 @@ for my $mech (@mechs) {
     $mech->get_ok('/session/delete', 'request to delete session');
     ok(index($mech->response->header('Set-Cookie'), $mech->{___amw_store_sx_cookie}) > 0,
        $mech->response->header('Set-Cookie') . "contains  $mech->{___amw_store_sx_cookie}");
-
+    ok (!$schema->resultset('AmwSession')
+        ->search({ session_id => { -like => '%' . $mech->{___amw_store_sx_cookie} . '%' }})->count,
+        "Session cleaned up in the db") or die;
     $mech->content_is('ok', 'deleted session');
 }
 
