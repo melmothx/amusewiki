@@ -11,7 +11,7 @@ use Data::Dumper::Concise;
 use HTTP::Cookies;
 use AmuseWikiFarm::Schema;
 
-plan tests => 80;
+plan tests => 81;
 
 my @mechs = (Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'TestApp',
                                                  host => "blog.amusewiki.org",
@@ -45,6 +45,8 @@ for my $mech (@mechs) {
     ok !$mech->response->header('Set-Cookie');
 }
 
+my %cookies;
+
 for my $mech (@mechs) {
     # Setup session
     $mech->get_ok("/session/setup?key=$key&value=$value", 'request to set session value');
@@ -54,8 +56,11 @@ for my $mech (@mechs) {
     $mech->cookie_jar->scan(sub { my @all = @_; $sx_cookie = $all[2] });
     $mech->{___amw_store_sx_cookie} = $sx_cookie;
     ok $sx_cookie, "Found cookie $sx_cookie";
+    $cookies{$sx_cookie} = 1;
     $mech->content_is('ok', 'set session value');
 }
+
+is (scalar(keys %cookies), 4, "4 sessions open");
 
 # Setup flash
 for my $mech (@mechs) {
