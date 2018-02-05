@@ -1,5 +1,6 @@
 #!perl
 
+use utf8;
 use strict;
 use warnings;
 use FindBin;
@@ -11,7 +12,7 @@ use Data::Dumper::Concise;
 use HTTP::Cookies;
 use AmuseWikiFarm::Schema;
 
-plan tests => 97;
+plan tests => 108;
 
 my @mechs = (Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'TestApp',
                                                  host => "blog.amusewiki.org",
@@ -119,3 +120,31 @@ for my $mech (@mechs) {
     $mech->get_ok('/session/delete_expired', 'request to delete expired sessions');
     $mech->content_is('ok', 'deleted expired sessions');
 }
+
+my $site = $schema->resultset('Site')->find('0blog0');
+
+my $engine = $site->amw_sessions;
+
+foreach my $prefix (qw/session flash blbabla/) {
+    my $k = "key";
+    my $value = "dđ jadsfćč sŠ";
+    my $sid = $prefix . ':' . $k;
+    $engine->store_session_data($sid, $value);
+    is $engine->get_session_data($sid), $value;
+
+    $engine->store_session_data($sid, [ $value ] );
+    is_deeply $engine->get_session_data($sid), [ $value ];
+
+    $engine->store_session_data($sid, {  $value => 1  } );
+    is_deeply $engine->get_session_data($sid), { $value => 1 };
+
+}
+
+eval { $schema->resultset('AmwSession')->store_session_data('expires:2', 1) };
+ok $@, "Cannot store data without a site $@";
+
+
+$engine->store_session_data('expires:2', { 'hello' => 1  });
+is $engine->get_session_data('expires:2'), undef, "Cannot store arbitrary data in expires";
+
+

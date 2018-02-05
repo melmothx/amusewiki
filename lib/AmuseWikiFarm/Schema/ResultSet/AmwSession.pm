@@ -47,9 +47,22 @@ sub store_session_data {
     my ($self, $string, $data) = @_;
     my ($sid, $field) = _split_id_and_field($string);
     Dlog_debug { "Calling store_session_data for $sid $_" } $data;
+    my $serialized;
+    if ($field eq 'expires') {
+        if ($data =~ m/\A[1-9][0-9]+\z/) {
+            $serialized = $data;
+        }
+        else {
+            Dlog_error { "expires is supposed to be an integer, got $_, nulling out" } $data;
+            $serialized = undef;
+        }
+    }
+    else {
+        $serialized = encode_json([ $data ]);
+    }
     $self->update_or_create({
                              session_id => $sid,
-                             $field => ($field eq 'expires' ? $data : encode_json([ $data ])),
+                             $field => $serialized,
                             });
     return;
 }
