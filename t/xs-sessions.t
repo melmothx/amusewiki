@@ -2,7 +2,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 27;
+use Test::More tests => 33;
 use File::Spec::Functions qw/catfile catdir/;
 use Data::Dumper;
 use lib catdir(qw/t lib/);
@@ -17,6 +17,9 @@ my $sid_second = '0xss1';
 
 my $site1 = create_site($schema, $sid_first);
 my $site2 = create_site($schema, $sid_second);
+
+$site1->amw_sessions->delete;
+$site2->amw_sessions->delete;
 
 my $mech1 = Test::WWW::Mechanize::Catalyst
   ->new(catalyst_app => 'AmuseWikiFarm',
@@ -70,33 +73,59 @@ ok ($cookie_on_first, "Got the cookie");
 diag "Using $cookie_on_first on another site";
 $mech1->get('/console/git', Cookie => $cookie_on_first);
 is ($mech1->uri->path, "/console/git", "Legit user ok");
-$res2 = $mech2->get('/console/git', Cookie => $cookie_on_first);
-is $mech2->status, 401;
-$mech2->content_lacks('pinco1');
-ok(!$res2->header('Cookie'), "No cookie returned after stealing");
-$mech2->get('/library', Cookie => $cookie_on_first);
 
-foreach my $mech ($mech1, $mech2) {
-    $mech->get('/library', Cookie => $cookie_on_first);
+is $site2->amw_sessions->count, 1;
+is $site1->amw_sessions->count, 1;
+
+# here we use the cookie for against another site
+{
+    diag "Hitting " . $mech2->host . " with $cookie_on_first";
+    $res2 = $mech2->get('/console/git', Cookie => $cookie_on_first);
+    is $mech2->status, 401;
+    $mech2->content_lacks('pinco1');
+    ok(!$res2->header('Cookie'), "No cookie returned after stealing");
+    # library
+    $mech2->get('/library', Cookie => $cookie_on_first);
+    $mech2->content_lacks('pinco1');
+    ok $mech2->response->header('Set-Cookie');
+    is $site2->amw_sessions->count, 2;
+    diag $mech2->response->header('Set-Cookie');
+    # bookbuilder
+    $mech2->get('/bookbuilder', Cookie => $cookie_on_first);
+    is $site2->amw_sessions->count, 3;
+    ok $mech2->response->header('Set-Cookie');
+    diag $mech2->response->header('Set-Cookie');
+    is $mech2->status, 401;
+    $mech2->content_contains('__auth_human');
+    # console/git
+    $mech2->get('/console/git', Cookie => $cookie_on_first);
+    ok $mech2->response->header('Set-Cookie');
+    diag $mech2->response->header('Set-Cookie');
+    is $site2->amw_sessions->count, 4;
+    is $mech2->status, 401, "can't access git";
+}
+{
+    diag "getting /library using $cookie_on_first";
+    # library
+    $mech1->get('/library', Cookie => $cookie_on_first);
+    is $mech1->status, 200;
+    $mech1->get('/console/git', Cookie => 'amusewikifarm_session=3e627aca67b24e7626aefba81e6466217de2e6d5');
+    is $mech1->status, 401;
+
+    is $site1->amw_sessions->count, 2, "only one session spawned";
+
+    $mech1->get('/library', Cookie => $cookie_on_first);
+    is $mech1->status, 200;
+
     # we are logged in
-    $mech->content_lacks('pinco1',
-                         "user on the site is now forcibly logged out");
-    $mech->get('/bookbuilder', Cookie => $cookie_on_first);
-    is $mech->status, 401;
-    $mech->content_contains('__auth_human');
-    $mech->get('/console/git', Cookie => $cookie_on_first);
-    is $mech->status, 401, "logged out and session cleared, can't access git";
+    $mech1->content_contains('pinco1', "Nothing happened on " . $mech1->host);
+    # bookbuilder
+    $mech1->get('/bookbuilder', Cookie => $cookie_on_first);
+    is $mech1->status, 200;
+    $mech1->content_lacks('__auth_human');
+    # git
+    is $mech1->status, 200;
+    $mech1->get('/console/git', Cookie => $cookie_on_first);
 }
 
-foreach my $mech ($mech1, $mech2) {
-    $mech->get('/library');
-    # we are logged in
-    $mech->content_lacks('pinco1',
-                         "user on the site is now forcibly logged out");
-    $mech->get('/bookbuilder');
-    is $mech->status, 401,
-        "logged out and session cleared, is not even recognized as human";
-    $mech->get('/console/git');
-    is $mech->status, 401,
-        "logged out and session cleared, can't access git";
-}
+
