@@ -12,7 +12,7 @@ use Data::Dumper::Concise;
 use HTTP::Cookies;
 use AmuseWikiFarm::Schema;
 
-plan tests => 111;
+plan tests => 114;
 
 my @mechs = (Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'TestApp',
                                                  host => "blog.amusewiki.org",
@@ -137,7 +137,7 @@ foreach my $prefix (qw/session flash blbabla/) {
 
     $engine->store_session_data($site->id, $sid, {  $value => 1  } );
     is_deeply $engine->get_session_data($site->id, $sid), { $value => 1 };
-
+    is_deeply $engine->get_session_data('0test0', $sid), undef, "using another site returns nothing";
 }
 
 eval { $schema->resultset('AmwSession')->store_session_data(undef, 'expires:2', 1) };
