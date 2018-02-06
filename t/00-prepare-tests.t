@@ -12,6 +12,7 @@ use File::Copy qw/copy/;
 use DBIx::Class::DeploymentHandler;
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use Text::Amuse::Compile::Fonts::Import;
+use AmuseWikiFarm::Utils::Paths;
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
@@ -24,7 +25,11 @@ use AmuseWiki::Tests qw/run_all_jobs/;
 
 diag "Using DBIC $DBIx::Class::VERSION\n";
 
-plan tests => 20;
+plan tests => 21;
+
+my $script_dir = AmuseWikiFarm::Utils::Paths::dbicdh_location();
+diag "Script dir is $script_dir";
+ok -d $script_dir;
 
 Text::Amuse::Compile::Fonts::Import->new(output => 'fontspec.json')->import_and_save;
 
@@ -61,7 +66,7 @@ if (-f 'test.db') {
                                                   sql_translator_args => { add_drop_table => 0,
                                                                            quote_identifiers => 1,
                                                                          },
-                                                  script_directory => "dbicdh",
+                                                  script_directory => "$script_dir",
                                                  });
     $dh->install({ version => 2 });
     $dh->upgrade;
