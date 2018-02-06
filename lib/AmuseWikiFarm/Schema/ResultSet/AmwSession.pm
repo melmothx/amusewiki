@@ -32,10 +32,10 @@ sub get_session_data {
     my ($self, $site_id, $string) = @_;
     die "Required arguments site_id and session_id missing" unless $site_id && $string;
     my ($session_id, $field) = _split_id_and_field($string);
-    if (my $sx = $self->single({
-                              session_id => $session_id,
-                              site_id => $site_id,
-                             })) {
+    if (my $sx = $self->search({
+                                session_id => $session_id,
+                                site_id => $site_id,
+                               }, {columns => [ $field ]})->single) {
         if ($field eq 'expires') {
             return $sx->expires;
         }
