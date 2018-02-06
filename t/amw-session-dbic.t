@@ -147,4 +147,10 @@ ok $@, "Cannot store data without a site $@";
 $engine->store_session_data('expires:2', { 'hello' => 1  });
 is $engine->get_session_data('expires:2'), undef, "Cannot store arbitrary data in expires";
 
+$engine->store_session_data('expires:2', 20);
+is $engine->get_session_data('expires:2'), 20;
+
+eval { $schema->resultset('AmwSession')->get_session_data('expires:2'), 20 };
+ok $@, "Cannot retrieve data without a site";
+
 
