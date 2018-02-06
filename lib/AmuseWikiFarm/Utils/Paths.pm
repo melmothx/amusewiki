@@ -55,7 +55,13 @@ root/src directory
 
 root/static directory
 
+=head2 dbicdh_location
+
+dbicdh directory
+
 =cut
+
+
 
 sub amusewiki_modules_directory {
     path(__FILE__)->parent->parent;
@@ -75,6 +81,10 @@ sub _install_location {
 
 sub mkits_location {
     _install_location(qw/mkits/);
+}
+
+sub dbicdh_location {
+    _install_location(qw/dbicdh/);
 }
 
 sub templates_location {
