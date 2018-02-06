@@ -150,7 +150,7 @@ is $engine->get_session_data('expires:2'), undef, "Cannot store arbitrary data i
 $engine->store_session_data('expires:2', 20);
 is $engine->get_session_data('expires:2'), 20;
 
-eval { $schema->resultset('AmwSession')->get_session_data('expires:2'), 20 };
+eval { $schema->resultset('AmwSession')->get_session_data('expires:2') };
 ok $@, "Cannot retrieve data without a site";
 
 
