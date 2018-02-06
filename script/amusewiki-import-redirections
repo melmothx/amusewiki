@@ -32,7 +32,6 @@ E.g.
 use strict;
 use warnings;
 use lib 'lib';
-use AmuseWikiFarm;
 use AmuseWikiFarm::Schema;
 use YAML qw/LoadFile/;
 
