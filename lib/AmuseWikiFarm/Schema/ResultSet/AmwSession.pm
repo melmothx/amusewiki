@@ -17,6 +17,7 @@ my %FIELDS = (
 
 sub _split_id_and_field {
     my $string = shift;
+    die "Missing session name" unless $string;
     my ($field, $sid) = split(/:/, $string, 2);
     if (my $dbfield = $FIELDS{$field}) {
         return ($sid, $dbfield);
@@ -28,10 +29,13 @@ sub _split_id_and_field {
 }
 
 sub get_session_data {
-    my ($self, $string) = @_;
-    my ($sid, $field) = _split_id_and_field($string);
-    log_debug { "Calling get_session_data $field for $sid" };
-    if (my $sx = $self->find({ session_id => $sid })) {
+    my ($self, $site_id, $string) = @_;
+    die "Required arguments site_id and session_id missing" unless $site_id && $string;
+    my ($session_id, $field) = _split_id_and_field($string);
+    if (my $sx = $self->single({
+                              session_id => $session_id,
+                              site_id => $site_id,
+                             })) {
         if ($field eq 'expires') {
             return $sx->expires;
         }
@@ -44,9 +48,10 @@ sub get_session_data {
     }
 }
 sub store_session_data {
-    my ($self, $string, $data) = @_;
-    my ($sid, $field) = _split_id_and_field($string);
-    Dlog_debug { "Calling store_session_data for $sid $_" } $data;
+    my ($self, $site_id, $string, $data) = @_;
+    die "Required arguments site_id and session_id missing" unless $site_id && $string;
+    my ($session_id, $field) = _split_id_and_field($string);
+    Dlog_debug { "Calling store_session_data for $session_id $_" } $data;
     my $serialized;
     if ($field eq 'expires') {
         if ($data =~ m/\A[1-9][0-9]+\z/) {
@@ -61,16 +66,21 @@ sub store_session_data {
         $serialized = encode_json([ $data ]);
     }
     $self->update_or_create({
-                             session_id => $sid,
+                             site_id => $site_id,
+                             session_id => $session_id,
                              $field => $serialized,
                             });
     return;
 }
 sub delete_session_data {
-    my ($self, $string) = @_;
-    my ($sid, $field) = _split_id_and_field($string);
-    log_debug { "Calling delete_session_data for $sid" };
-    if (my $sx = $self->find({ session_id => $sid })) {
+    my ($self, $site_id, $string) = @_;
+    die "Required arguments site_id and session_id missing" unless $site_id && $string;
+    my ($session_id, $field) = _split_id_and_field($string);
+    log_debug { "Calling delete_session_data for $session_id" };
+    if (my $sx = $self->single({
+                                session_id => $session_id,
+                                site_id => $site_id,
+                               })) {
         $sx->$field(undef);
         if ($sx->expires || $sx->session_data || $sx->flash_data || $sx->generic_data) {
             $sx->update;
@@ -80,16 +90,21 @@ sub delete_session_data {
         }
     }
     else {
-        log_debug { "$sid not found!" };
+        log_debug { "$session_id to delete not found!" };
     }
     return;
 }
 
 sub delete_expired_sessions {
-    my ($self) = @_;
+    my ($self, $site_id) = @_;
     my $now = time();
     log_debug { "Calling delete_expired_sessions" };
-    my $rs = $self->search({ expires => { '<' => $now } });
+    my $rs = $self->search(
+                           {
+                            expires => { '<' => $now },
+                            ($site_id ? (site_id => $site_id) : ()), # optional
+                           }
+                          );
     log_info { "Nuking " . $rs->count . " expired sessions" };
     $rs->delete;
     return;

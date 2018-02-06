@@ -12,7 +12,7 @@ use Data::Dumper::Concise;
 use HTTP::Cookies;
 use AmuseWikiFarm::Schema;
 
-plan tests => 108;
+plan tests => 111;
 
 my @mechs = (Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'TestApp',
                                                  host => "blog.amusewiki.org",
@@ -129,28 +129,32 @@ foreach my $prefix (qw/session flash blbabla/) {
     my $k = "key";
     my $value = "dđ jadsfćč sŠ";
     my $sid = $prefix . ':' . $k;
-    $engine->store_session_data($sid, $value);
-    is $engine->get_session_data($sid), $value;
+    $engine->store_session_data($site->id, $sid, $value);
+    is $engine->get_session_data($site->id, $sid), $value;
 
-    $engine->store_session_data($sid, [ $value ] );
-    is_deeply $engine->get_session_data($sid), [ $value ];
+    $engine->store_session_data($site->id, $sid, [ $value ] );
+    is_deeply $engine->get_session_data($site->id, $sid), [ $value ];
 
-    $engine->store_session_data($sid, {  $value => 1  } );
-    is_deeply $engine->get_session_data($sid), { $value => 1 };
+    $engine->store_session_data($site->id, $sid, {  $value => 1  } );
+    is_deeply $engine->get_session_data($site->id, $sid), { $value => 1 };
 
 }
 
-eval { $schema->resultset('AmwSession')->store_session_data('expires:2', 1) };
+eval { $schema->resultset('AmwSession')->store_session_data(undef, 'expires:2', 1) };
 ok $@, "Cannot store data without a site $@";
 
 
-$engine->store_session_data('expires:2', { 'hello' => 1  });
-is $engine->get_session_data('expires:2'), undef, "Cannot store arbitrary data in expires";
+$engine->store_session_data ($site->id, 'expires:2', { 'hello' => 1  });
+is $engine->get_session_data($site->id, 'expires:2'), undef, "Cannot store arbitrary data in expires";
 
-$engine->store_session_data('expires:2', 20);
-is $engine->get_session_data('expires:2'), 20;
+$engine->store_session_data($site->id, 'expires:2', 20);
+is $engine->get_session_data($site->id, 'expires:2'), 20;
 
-eval { $schema->resultset('AmwSession')->get_session_data('expires:2') };
-ok $@, "Cannot retrieve data without a site";
+eval { $schema->resultset('AmwSession')->get_session_data(undef, 'expires:2') };
+ok $@, "Cannot retrieve data without a site $@";
+
+
+eval { $schema->resultset('AmwSession')->store_session_data('asdkfljasdf', 'session:2', { hello => 1 }) };
+ok $@, "Cannot store data without a valid site $@";
 
 

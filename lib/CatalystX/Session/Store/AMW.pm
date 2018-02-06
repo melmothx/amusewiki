@@ -7,29 +7,29 @@ use namespace::clean -except => 'meta';
  
 extends 'Catalyst::Plugin::Session::Store';
 
-use AmuseWikiFarm::Log::Contextual;
-
-sub _session_amw_resultset {
-    my ($c) = @_;
-    if (my $site = $c->stash->{site}) {
-        return $site->amw_sessions;
-    }
-    else {
-        Catalyst::Exception->throw("site not present in the stash, cannot use the session");
-    }
-}
-
 sub get_session_data {
-    shift->_session_amw_resultset->get_session_data(@_);
+    my ($c, @args) = @_;
+    my $site = $c->stash->{site}
+      or Catalyst::Exception->throw("site not present in the stash, cannot get the session");
+    $site->amw_sessions->get_session_data($site->id, @args);
 }
 sub store_session_data {
-    shift->_session_amw_resultset->store_session_data(@_);
+    my ($c, @args) = @_;
+    my $site = $c->stash->{site}
+      or Catalyst::Exception->throw("site not present in the stash, cannot store the session");
+    $site->amw_sessions->store_session_data($site->id, @args);
 }
 sub delete_session_data {
-    shift->_session_amw_resultset->delete_session_data(@_);
+    my ($c, @args) = @_;
+    my $site = $c->stash->{site}
+      or Catalyst::Exception->throw("site not present in the stash, cannot delete the session");
+    $site->amw_sessions->delete_session_data($site->id, @args);
 }
 sub delete_expired_sessions {
-    shift->_session_amw_resultset->delete_expired_sessions(@_);
+    my ($c, @args) = @_;
+    my $site = $c->stash->{site}
+      or Catalyst::Exception->throw("site not present in the stash, cannot delete expired sessions");
+    $site->amw_sessions->delete_expired_sessions($site->id, @args);
 }
 
 __PACKAGE__->meta->make_immutable;
