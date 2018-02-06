@@ -10,7 +10,7 @@ use utf8;
 use lib 'lib';
 use DBIx::Class::DeploymentHandler;
 use AmuseWikiFarm::Schema;
-use AmuseWikiFarm;
+use AmuseWikiFarm::Utils::Paths;
 use Data::Dumper;
 use Try::Tiny;
 use Cwd;
@@ -95,6 +95,9 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 die "Couldn't load the schema! Please check dbic.yaml!\n" unless $schema->storage->dbh;
 
+my $sql_dir = AmuseWikiFarm::Utils::Paths::dbicdh_location();
+die "$sql_dir not found" unless $sql_dir->exists;
+
 my $dh = DBIx::Class::DeploymentHandler->new({
                                               schema => $schema,
                                               databases => [qw/SQLite MySQL PostgreSQL/],
@@ -102,7 +105,7 @@ my $dh = DBIx::Class::DeploymentHandler->new({
                                                                       add_drop_table => 0,
                                                                       quote_identifiers => 1,
                                                                      },
-                                              script_directory => AmuseWikiFarm->path_to('dbicdh')->stringify,
+                                              script_directory => "$sql_dir",
                                              });
 
 $dh->install;
