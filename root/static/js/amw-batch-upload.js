@@ -27,7 +27,9 @@ $(document).ready(function() {
                     });
                 }
                 else {
-                    img = $('<span/>', { class: "fa fa-file-pdf-o fa-2x fa-border" });
+                    img = $("<a/>", { 'href': uri }).append(
+                        $('<span/>', { class: "fa fa-file-pdf-o fa-2x fa-border" })
+                    );
                 }
                 var thumb = $("<div/>", { 'class': 'upload-item  col-sm-6 col-md-4' }).append(
                     $('<div/>', { class: "thumbnail" }).append(
