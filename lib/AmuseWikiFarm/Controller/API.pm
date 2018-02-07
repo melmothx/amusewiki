@@ -55,6 +55,8 @@ sub lexicon :Chained('api') :PathPart('lexicon.json') :Args(0) {
                RequestError => $c->loc("Request failed! Please report the the problem"),
                'Unused attachment' => $c->loc("Unused attachment"),
                Remove => $c->loc("Remove"),
+               "Insert the file into the body" => $c->loc("Insert the file into the body"),
+               "Use the image as cover" => $c->loc("Use the image as cover"),
               );
     $c->stash(json => \%out);
     $c->detach($c->view('JSON'));

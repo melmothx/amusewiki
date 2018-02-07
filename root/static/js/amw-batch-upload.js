@@ -60,17 +60,19 @@ $(document).ready(function() {
                                                class: "remove-attachment-action a-no-color",
                                                title:l("Remove")}
                                     ).append($("<span/>", { class: "fa fa-trash fa-2x fa-border" })));
+                    caption.append($('<a/>', { 'data-uri': uri,
+                                               href: "#",
+                                               class: "use-image-as-picture a-no-color",
+                                               title:l("Insert the file into the body")}
+                                    ).append($("<span/>", { class: "fa fa-picture-o fa-2x fa-border" })));
                 }
-                caption.append($('<a/>', { 'data-uri': uri,
-                                           href: "#",
-                                           class: "use-image-as-picture a-no-color",
-                                           title:l("Insert in the body at the cursor")}
-                                ).append($("<span/>", { class: "fa fa-picture-o fa-2x fa-border" })));
-                caption.append($('<a/>', { 'data-uri': uri,
-                                           href: "#",
-                                           class: "use-image-as-cover a-no-color",
-                                           title:l("Use the image as cover")}
-                                ).append($("<span/>", { class: "fa fa-file-image-o fa-2x fa-border" })));
+                if (uri.match(/\.(png|jpe?g)$/)) {
+                    caption.append($('<a/>', { 'data-uri': uri,
+                                               href: "#",
+                                               class: "use-image-as-cover a-no-color",
+                                               title:l("Use the image as cover")}
+                                    ).append($("<span/>", { class: "fa fa-file-image-o fa-2x fa-border" })));
+                }
 		        $('#uploads').prepend(thumb);
             }
 		}
@@ -120,6 +122,7 @@ $(document).ready(function() {
             maintextarea.prop('selectionStart', finaloffset);
             maintextarea.prop('selectionEnd', finaloffset);
         }
+        maintextarea.effect("highlight", {}, 1000);
         maintextarea.focus();
         $.event.trigger({ type : 'keypress' });
     }
@@ -218,6 +221,24 @@ $(document).ready(function() {
         var uri = $(this).data('uri');
         if (uri) {
             insert_uri(uri);
+            refresh_attachments();
+        }
+    });
+    $(document).on('click', '.use-image-as-cover', function(e) {
+        e.preventDefault();
+        var uri = $(this).data('uri');
+        if (uri) {
+            maintextarea.attr('readonly', 'readonly');
+            var body = maintextarea.val();
+            if (body.match(/^#cover .*$/m)) {
+                body = body.replace(/^#cover .*$/m, '#cover ' + uri);
+            }
+            else {
+                body = '#cover ' + uri + "\n" + body;
+            }
+            maintextarea.val(body);
+            maintextarea.removeAttr('readonly');
+            maintextarea.effect("highlight", {}, 1000);
             refresh_attachments();
         }
     });
