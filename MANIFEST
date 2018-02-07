@@ -86,6 +86,8 @@ dbicdh/_source/deploy/44/001-auto-__VERSION.yml
 dbicdh/_source/deploy/44/001-auto.yml
 dbicdh/_source/deploy/45/001-auto-__VERSION.yml
 dbicdh/_source/deploy/45/001-auto.yml
+dbicdh/_source/deploy/46/001-auto-__VERSION.yml
+dbicdh/_source/deploy/46/001-auto.yml
 dbicdh/_source/deploy/5/001-auto-__VERSION.yml
 dbicdh/_source/deploy/5/001-auto.yml
 dbicdh/_source/deploy/6/001-auto-__VERSION.yml
@@ -174,6 +176,8 @@ dbicdh/MySQL/deploy/44/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/44/001-auto.sql
 dbicdh/MySQL/deploy/45/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/45/001-auto.sql
+dbicdh/MySQL/deploy/46/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/46/001-auto.sql
 dbicdh/MySQL/deploy/5/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/5/001-auto.sql
 dbicdh/MySQL/deploy/6/001-auto-__VERSION.sql
@@ -222,6 +226,7 @@ dbicdh/MySQL/upgrade/41-42/001-auto.sql
 dbicdh/MySQL/upgrade/42-43/001-auto.sql
 dbicdh/MySQL/upgrade/43-44/001-auto.sql
 dbicdh/MySQL/upgrade/44-45/001-auto.sql
+dbicdh/MySQL/upgrade/45-46/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
 dbicdh/MySQL/upgrade/7-8/001-auto.sql
@@ -305,6 +310,8 @@ dbicdh/PostgreSQL/deploy/44/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/44/001-auto.sql
 dbicdh/PostgreSQL/deploy/45/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/45/001-auto.sql
+dbicdh/PostgreSQL/deploy/46/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/46/001-auto.sql
 dbicdh/PostgreSQL/deploy/5/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/5/001-auto.sql
 dbicdh/PostgreSQL/deploy/6/001-auto-__VERSION.sql
@@ -353,6 +360,7 @@ dbicdh/PostgreSQL/upgrade/41-42/001-auto.sql
 dbicdh/PostgreSQL/upgrade/42-43/001-auto.sql
 dbicdh/PostgreSQL/upgrade/43-44/001-auto.sql
 dbicdh/PostgreSQL/upgrade/44-45/001-auto.sql
+dbicdh/PostgreSQL/upgrade/45-46/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
 dbicdh/PostgreSQL/upgrade/7-8/001-auto.sql
@@ -436,6 +444,8 @@ dbicdh/SQLite/deploy/44/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/44/001-auto.sql
 dbicdh/SQLite/deploy/45/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/45/001-auto.sql
+dbicdh/SQLite/deploy/46/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/46/001-auto.sql
 dbicdh/SQLite/deploy/5/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/5/001-auto.sql
 dbicdh/SQLite/deploy/6/001-auto-__VERSION.sql
@@ -484,6 +494,7 @@ dbicdh/SQLite/upgrade/41-42/001-auto.sql
 dbicdh/SQLite/upgrade/42-43/001-auto.sql
 dbicdh/SQLite/upgrade/43-44/001-auto.sql
 dbicdh/SQLite/upgrade/44-45/001-auto.sql
+dbicdh/SQLite/upgrade/45-46/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
@@ -561,6 +572,7 @@ lib/AmuseWikiFarm/Role/Controller/ListingDisplay.pm
 lib/AmuseWikiFarm/Role/Controller/RegularListing.pm
 lib/AmuseWikiFarm/Role/Controller/Text.pm
 lib/AmuseWikiFarm/Schema.pm
+lib/AmuseWikiFarm/Schema/Result/AmwSession.pm
 lib/AmuseWikiFarm/Schema/Result/Attachment.pm
 lib/AmuseWikiFarm/Schema/Result/BookbuilderProfile.pm
 lib/AmuseWikiFarm/Schema/Result/BookbuilderSession.pm
@@ -592,6 +604,7 @@ lib/AmuseWikiFarm/Schema/Result/User.pm
 lib/AmuseWikiFarm/Schema/Result/UserRole.pm
 lib/AmuseWikiFarm/Schema/Result/UserSite.pm
 lib/AmuseWikiFarm/Schema/Result/Vhost.pm
+lib/AmuseWikiFarm/Schema/ResultSet/AmwSession.pm
 lib/AmuseWikiFarm/Schema/ResultSet/Attachment.pm
 lib/AmuseWikiFarm/Schema/ResultSet/BookbuilderSession.pm
 lib/AmuseWikiFarm/Schema/ResultSet/BulkJob.pm
@@ -624,6 +637,7 @@ lib/AmuseWikiFarm/View/HTML.pm
 lib/AmuseWikiFarm/View/JSON.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
 lib/CatalystX/AmuseWiki/I18N.pm
+lib/CatalystX/Session/Store/AMW.pm
 LICENSE
 Makefile.PL
 MANIFEST
@@ -1159,6 +1173,7 @@ t/02pod.t
 t/03podcoverage.t
 t/aliases.t
 t/amuse-utils.t
+t/amw-session-dbic.t
 t/archive-cache.t
 t/archive.t
 t/atr-lexicon.json
@@ -1255,6 +1270,11 @@ t/lexicon-2.t
 t/lexicon-migration.t
 t/lexicon.t
 t/lib/AmuseWiki/Tests.pm
+t/lib/TestApp.pm
+t/lib/TestApp/Controller/Flash.pm
+t/lib/TestApp/Controller/Root.pm
+t/lib/TestApp/Controller/Session.pm
+t/lib/TestApp/Model/DBICSchema.pm
 t/links-in-headings.t
 t/mail.t
 t/mailer-locale-155.t
