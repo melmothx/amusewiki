@@ -11,7 +11,7 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $file = $ARGV[0];
 die "first argument must be a file" unless $file && -f $file;
 
-my $sub = do "$file" or die $@;
+my $sub = do "./$file" or die($@ || $!);
 
 $sub->($schema);
 
