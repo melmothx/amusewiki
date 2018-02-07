@@ -74,12 +74,18 @@
           <img class="img-responsive img-thumbnail" src="[% attachment %]" alt="[% attachment %]" />
         </div>
         <div class="caption">
-          <code>[[[% attachment %]]]</code>
+          [% loc('As regular image in the body') %]:   <code>[[[% attachment %]]]</code> <br />
+          [% loc('As cover in the header') %]: <code>#cover [% attachment %]</code>
         </div>
       </div>
       [% END %]
       <div class="col-xs-12 image-listing-no-js">
-        <code>[% revision.attached_pdfs_string %]</code>
+        <hr />
+        [% IF revision.attached_pdfs.size %]
+        [% loc('To display the PDFs, set or append the following string in the header') %]:<br />
+        <code>#ATTACH [% FOREACH uppdf IN revision.attached_pdfs %]<a href="[% uppdf %]">[% uppdf %]</a>[% END %]</code>
+        [% END %]
+
       </div>
     </div>
   </div>
