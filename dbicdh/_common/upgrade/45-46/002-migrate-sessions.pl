@@ -1,23 +1,19 @@
-#!/usr/bin/env perl
-
-use strict;
-use warnings;
-use lib 'lib';
 use AmuseWikiFarm;
-use AmuseWikiFarm::Schema;
-use Data::Dumper::Concise;
 use Cache::FastMmap;
-use File::Copy qw/copy move/;
+use File::Copy;
+use Data::Dumper::Concise;
 
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
+sub {
+my $schema = shift;
 my %sessions;
 my $config = AmuseWikiFarm->_session_plugin_config;
 unless ($config->{cache_size} && $config->{storage} && -f $config->{storage}) {
     print "No need to migrate, exiting\n";
     exit;
 }
-copy($config->{storage}, $config->{storage} . '~' . time())
-  or die "$config->{storage}: Couldn't make a backup $!";
+print Dumper($config);
+File::Copy::copy($config->{storage}, $config->{storage} . '~' . time())
+    or die "$config->{storage}: Couldn't make a backup $!";
 
 my $c = Cache::FastMmap->new(raw_values => 0,
                              unlink_on_exit => 0,
@@ -58,8 +54,7 @@ foreach my $sid (keys %sessions) {
         }
     }
 }
-
-move($config->{storage}, $config->{storage} . '~' . time())
+File::Copy::move($config->{storage}, $config->{storage} . '~' . time())
   or die "$config->{storage}: Couldn't move it $!";
-
 $guard->commit;
+}

@@ -7,6 +7,7 @@ dbicdh/_common/upgrade/23-24/002-populate-monthly-archives.pl
 dbicdh/_common/upgrade/31-32/002-clear-thumbnails.pl
 dbicdh/_common/upgrade/32-33/002-null-bb-job-owners.pl
 dbicdh/_common/upgrade/36-37/002-rebuild-files-since-april-2017.pl
+dbicdh/_common/upgrade/45-46/002-migrate-sessions.pl
 dbicdh/_common/upgrade/5-6/002-add-and-move-job-files.pl
 dbicdh/_source/deploy/10/001-auto-__VERSION.yml
 dbicdh/_source/deploy/10/001-auto.yml
@@ -1150,7 +1151,6 @@ script/amusewikifarm_server.pl
 script/amusewikifarm_test.pl
 script/cleanup-tests.sh
 script/configure.sh
-script/dump_sessions.pl
 script/generate-systemd-unit-files
 script/import-wordpress.pl
 script/init-fcgi.pl
