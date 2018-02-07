@@ -3,6 +3,9 @@
 use utf8;
 use strict;
 use warnings;
+
+BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+
 use FindBin;
 use Test::More;
 use Test::Warn;
