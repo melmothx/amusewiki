@@ -300,3 +300,7 @@ img.amw-wide-banner-img {
     margin-left: auto;
     margin-right: auto;
 }
+
+a.a-no-color {
+    color: black;
+}

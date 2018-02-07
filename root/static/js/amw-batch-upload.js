@@ -30,67 +30,48 @@ $(document).ready(function() {
                         $('<span/>', { class: "fa fa-file-pdf-o fa-2x fa-border" })
                     );
                 }
+
                 var thumb = $("<div/>", { 'class': 'upload-item  col-sm-6 col-md-4' }).append(
                     $('<div/>', { class: "thumbnail" }).append(
                         img,
                         $('<div/>', { class: "caption" }).append(
                             $('<code/>').text(uri),
-                            ' ',
-                            $('<a/>', { 'data-uri': uri,
-                                           'data-target': $('#uploads').data('removal-url'),
-                                           class: "badge remove-attachment-action",
-                                        title:l("Remove")}).text("X")
+                            $('<br>')
                         )
                     )
                 );
-
-				$('#uploads').prepend(thumb);
                 if (data.insert) {
-                    maintextarea.attr('readonly', 'readonly');
-                    var body = maintextarea.val();
-                    var finaloffset;
-                    if (uri.match(/\.pdf$/)) {
-                        if (body.match(/^#ATTACH .*$/m)) {
-                            body = body.replace(/^(#ATTACH .*)$/m, '$1 ' + uri);
-                        }
-                        else {
-                            body = '#ATTACH ' + uri + "\n" + body;
-                        }
-                    }
-                    else {
-                        var chunk = "\n\n[[" + uri + " f]]\n\n";
-                        var offset = maintextarea.prop('selectionStart');
-                        if (offset) {
-                            var before = body.substring(0, offset);
-                            var after = body.substring(offset);
-                            console.log("Offset is " + offset);
-                            body = before + chunk + after;
-                            finaloffset = offset + chunk.length;
-                        }
-                        else {
-                            body = body + chunk;
-                        }
-                    }
-                    maintextarea.val(body);
-                    maintextarea.removeAttr('readonly');
-                    if (finaloffset) {
-                        maintextarea.prop('selectionStart', finaloffset);
-                        maintextarea.prop('selectionEnd', finaloffset);
-                    }
-                    maintextarea.focus();
-                    $.event.trigger({ type : 'keypress' });
+                    insert_uri(uri);
                 }
-                else {
-                    if (maintextarea.val().search(uri) < 0) {
-                        // not present, mark it
-                        thumb.append(
-                            $('<div/>', { class: "alert alert-warning" })
-                                .append($('<span/>', { class: "fa fa-warning" }),
-                                        ' ',
-                                        $('<span/>').text(l('Unused attachment')))
-                        );
-                    }
+                var caption = thumb.find('.caption');
+                if (maintextarea.val().search(uri) < 0) {
+                    // not present, mark it and add a removal button
+                    caption.prepend($('<div/>', { class: "text-warning unused-attachment",
+                                                 href: "#" }).append(
+                                                     $('<span/>', {
+                                                         class: "fa fa-warning fa-border",
+                                                         title: l('Unused attachment')
+                                                     }),
+                                                     $('<span/>').text(l('Unused attachment'))
+                                                 ));
+                    caption.append($('<a/>', { 'data-uri': uri,
+                                               'data-target': $('#uploads').data('removal-url'),
+                                               href: "#",
+                                               class: "remove-attachment-action a-no-color",
+                                               title:l("Remove")}
+                                    ).append($("<span/>", { class: "fa fa-trash fa-2x fa-border" })));
                 }
+                caption.append($('<a/>', { 'data-uri': uri,
+                                           href: "#",
+                                           class: "use-image-as-picture a-no-color",
+                                           title:l("Insert in the body at the cursor")}
+                                ).append($("<span/>", { class: "fa fa-picture-o fa-2x fa-border" })));
+                caption.append($('<a/>', { 'data-uri': uri,
+                                           href: "#",
+                                           class: "use-image-as-cover a-no-color",
+                                           title:l("Use the image as cover")}
+                                ).append($("<span/>", { class: "fa fa-file-image-o fa-2x fa-border" })));
+		        $('#uploads').prepend(thumb);
             }
 		}
         else {
@@ -107,6 +88,42 @@ $(document).ready(function() {
             });
         }
     }
+    function insert_uri(uri) {
+        maintextarea.attr('readonly', 'readonly');
+        var body = maintextarea.val();
+        var finaloffset;
+        if (uri.match(/\.pdf$/)) {
+            if (body.match(/^#ATTACH .*$/m)) {
+                body = body.replace(/^(#ATTACH .*)$/m, '$1 ' + uri);
+            }
+            else {
+                body = '#ATTACH ' + uri + "\n" + body;
+            }
+        }
+        else {
+            var chunk = "\n\n[[" + uri + " f]]\n\n";
+            var offset = maintextarea.prop('selectionStart');
+            if (offset) {
+                var before = body.substring(0, offset);
+                var after = body.substring(offset);
+                console.log("Offset is " + offset);
+                body = before + chunk + after;
+                finaloffset = offset + chunk.length;
+            }
+            else {
+                body = body + chunk;
+            }
+        }
+        maintextarea.val(body);
+        maintextarea.removeAttr('readonly');
+        if (finaloffset) {
+            maintextarea.prop('selectionStart', finaloffset);
+            maintextarea.prop('selectionEnd', finaloffset);
+        }
+        maintextarea.focus();
+        $.event.trigger({ type : 'keypress' });
+    }
+
     refresh_attachments();
 
     $('#attachment').change(function() {
@@ -179,9 +196,10 @@ $(document).ready(function() {
         refresh_attachments();
     });
     $(document).on('click', '.remove-attachment-action', function (e) {
+        e.preventDefault();
         var block = $(this).closest('.upload-item');
         var target = $(this).data('target');
-        var uri = $(this).data('uri')
+        var uri = $(this).data('uri');
         if (block && target && uri) {
             console.log("Clicked on removal: " + target + " " + uri);
             $.post(target,
@@ -193,6 +211,14 @@ $(document).ready(function() {
                            block.remove();
                        }
                    });
+        }
+    });
+    $(document).on('click', '.use-image-as-picture', function (e) {
+        e.preventDefault();
+        var uri = $(this).data('uri');
+        if (uri) {
+            insert_uri(uri);
+            refresh_attachments();
         }
     });
 });
