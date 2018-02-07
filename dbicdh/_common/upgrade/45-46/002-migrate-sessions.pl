@@ -57,4 +57,5 @@ foreach my $sid (keys %sessions) {
 File::Copy::move($config->{storage}, $config->{storage} . '~' . time())
   or die "$config->{storage}: Couldn't move it $!";
 $guard->commit;
+print "Migrated " . $schema->resultset('AmwSession')->count . " sessions\n";
 }
