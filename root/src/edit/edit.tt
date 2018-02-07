@@ -180,23 +180,20 @@
     </div>
     <div class="checkbox">
       <label>
+      <input id="add-attachment-to-body"
+             value="1"
+             type="checkbox" name="add_attachment_to_body" />
+      [% loc('Insert the file into the body') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
       <input id="split-pdf"
              value="1"
              type="checkbox" name="split-pdf"/>
       [% loc('When you upload a PDF, split it into images to be inserted in the body') %]
       </label>
     </div>
-    <div class="checkbox">
-      <label>
-      <input id="add-attachment-to-body"
-             value="1"
-             checked="checked"
-             type="checkbox" name="add_attachment_to_body" />
-      [% loc('Insert the file into the body') %]
-      </label>
-    </div>
-
-
     <div>
       <label role="button"
          data-target="#filters"
