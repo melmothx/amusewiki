@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#upload-image-panel').hide();
     $('#upload-button-no-js-container').remove();
     $('.image-listing-no-js').remove();
-    var list = $('#uploads').data('listing-url');
+    var maintextarea = $('#maintextarea');
     var messages = {};
     $.get("/api/lexicon.json", function(data) {
         messages = data;
@@ -12,7 +12,6 @@ $(document).ready(function() {
     }
     function parse_uris_data (data) {
         console.log(data);
-        var maintextarea = $('#maintextarea');
 		if (data.uris) {
             for (var i = 0; i < data.uris.length; i++) {
                 $('#upload-image-panel').show();
@@ -99,12 +98,17 @@ $(document).ready(function() {
             $('#uploads-errors').text(data.error.message).show();
 		}
     }
-    if (list) {
-        $('#uploads-static-listing').remove();
-        $.get(list, function(data) {
-            parse_uris_data(data, $('#uploads'));
-        });
+    function refresh_attachments() {
+        if ($('#uploads').data('listing-url')) {
+            $('#uploads-static-listing').remove();
+            $.get($('#uploads').data('listing-url'), function(data) {
+                $('#uploads').children().remove();
+                parse_uris_data(data, $('#uploads'));
+            });
+        }
     }
+    refresh_attachments();
+
     $('#attachment').change(function() {
         var target = $(this).data('upload-url');
         if (target) {
@@ -157,21 +161,22 @@ $(document).ready(function() {
             }, {});
         data['preview'] = 1;
         // console.log(data);
-        $('#maintextarea').attr('readonly', 'readonly');
+        maintextarea.attr('readonly', 'readonly');
         $.post(target, data, function(res) {
             // console.log(res);
             if (res.success && res.body) {
-                $('#maintextarea').effect("highlight", {}, 1000);
-                console.log("Updating with " + res.body);
-                $('#maintextarea').val(res.body);
+                maintextarea.effect("highlight", {}, 1000);
+                // console.log("Updating with " + res.body);
+                maintextarea.val(res.body);
                 $('#editing-warnings-inline').hide();
                 load_preview();
             }
             if (res.error) {
                 $('#editing-warnings-inline').text(res.error.message).show();
             }
-            $('#maintextarea').removeAttr('readonly');
+            maintextarea.removeAttr('readonly');
         });
+        refresh_attachments();
     });
     $(document).on('click', '.remove-attachment-action', function (e) {
         var block = $(this).closest('.upload-item');
