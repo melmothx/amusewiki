@@ -551,7 +551,6 @@ lib/AmuseWikiFarm/Log/Contextual/App.pm
 lib/AmuseWikiFarm/Middleware/ConditionalGET.pm
 lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/DB.pm
-lib/AmuseWikiFarm/Model/Feed.pm
 lib/AmuseWikiFarm/Model/Lexicon.pm
 lib/AmuseWikiFarm/Model/OPDS.pm
 lib/AmuseWikiFarm/Model/Webserver.pm
