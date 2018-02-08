@@ -67,7 +67,7 @@ $(document).ready(function() {
                                  {
                                      'data-uri': uri,
                                      'href': "#",
-                                     'class': "use-image-as-picture" + ( uri_is_present ? '-disabled' : ''),
+                                     'class': "amw-image-use use-image-as-picture" + ( uri_is_present ? '-disabled' : ''),
                                      'title': (uri_is_present ?
                                                l("File already in the body") :
                                                l("Insert the file into the body at the cursor position"))
@@ -84,7 +84,7 @@ $(document).ready(function() {
                     }
                     caption.append($('<a/>', { "data-uri": uri,
                                                "href": "#",
-                                               "class": "use-image-as-cover" + (uri_is_cover ? '-disabled' : ''),
+                                               "class": "amw-image-use use-image-as-cover" + (uri_is_cover ? '-disabled' : ''),
                                                "title": (uri_is_cover ?
                                                          l("Image already set as cover") :
                                                          l("Use the image as cover"))
@@ -96,11 +96,12 @@ $(document).ready(function() {
                                      'data-uri': uri,
                                      'data-target': $('#uploads').data('removal-url'),
                                      'href': "#",
-                                     'class': "remove-attachment-action" + ( uri_is_present ? '-disabled' : ''),
+                                     'class': "amw-image-use remove-attachment-action" + ( uri_is_present ? '-disabled' : ''),
                                      'title': (uri_is_present ? l("Please remove this file from the body first") : l("Remove"))
                                  }).append(
                                      $("<span/>", { class: "fa fa-trash fa-2x fa-border" })
                                  ));
+                caption.children('.amw-image-use').tooltip();
 		        $('#uploads').prepend(thumb);
             }
 		}
@@ -229,7 +230,6 @@ $(document).ready(function() {
 
     $(document).on('click', '.remove-attachment-action-disabled', function (e) {
         e.preventDefault();
-        $(this).tooltip('show');
     });
     $(document).on('click', '.remove-attachment-action', function (e) {
         e.preventDefault();
@@ -252,7 +252,6 @@ $(document).ready(function() {
 
     $(document).on('click', '.use-image-as-picture-disabled', function (e) {
         e.preventDefault();
-        $(this).tooltip('show');
     });
     $(document).on('click', '.use-image-as-picture', function (e) {
         e.preventDefault();
@@ -265,7 +264,6 @@ $(document).ready(function() {
 
     $(document).on('click', '.use-image-as-cover-disabled', function (e) {
         e.preventDefault();
-        $(this).tooltip('show');
     });
     $(document).on('click', '.use-image-as-cover', function(e) {
         e.preventDefault();
