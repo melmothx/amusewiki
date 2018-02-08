@@ -46,8 +46,7 @@
         </a>
     </h3>
   </div>
-  <div class="panel-body amw-fixed-panel-edit"
-       [% IF edit_option_preview_box_height %]style="max-height: [% edit_option_preview_box_height %]px;"[% END %]>
+  <div class="panel-body amw-fixed-panel-edit">
     <div id="amw-text-edit-preview-box">
       <div class="center">
         <span class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></span>
@@ -181,7 +180,7 @@
       <input id="add-attachment-to-body"
              value="1"
              type="checkbox" name="add_attachment_to_body" />
-      [% loc('Insert the file into the body') %]
+      [% loc("Insert the file into the body at the cursor position") %]
       </label>
     </div>
     <div class="checkbox">

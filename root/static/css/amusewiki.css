@@ -244,6 +244,8 @@ div#text-prev-post-link span.glyphicon {
 .amw-fixed-panel-edit {
     width: 100%;
     overflow-y: scroll;
+    height: 300px;
+    resize: vertical;
 }
 
 .amw-spacer-20 {
