@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 105;
+use Test::More tests => 104;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -44,7 +44,6 @@ $mech->click;
 $mech->content_contains('Created new text');
 
 {
-    $mech->content_lacks('Show differences in other tab');
     my $editing_uri = $mech->uri;
     my $diff_uri = $mech->uri . '/diff';
     my $preview_uri = $mech->uri . '/preview';
