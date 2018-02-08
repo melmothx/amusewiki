@@ -12,6 +12,7 @@ $(document).ready(function() {
     }
     function parse_uris_data (data) {
         console.log(data);
+        var body = maintextarea.val();
 		if (data.uris) {
             for (var i = 0; i < data.uris.length; i++) {
                 $('#upload-image-panel').show();
@@ -44,35 +45,62 @@ $(document).ready(function() {
                     insert_uri(uri);
                 }
                 var caption = thumb.find('.caption');
-                if (maintextarea.val().search(uri) < 0) {
+                var uri_is_present = 0;
+                var uri_is_cover = 0;
+                if (body.search(uri) < 0) {
                     // not present, mark it and add a removal button
-                    caption.prepend($('<div/>', { class: "text-warning unused-attachment",
-                                                 href: "#" }).append(
-                                                     $('<span/>', {
-                                                         class: "fa fa-warning fa-border",
-                                                         title: l('Unused attachment')
-                                                     }),
-                                                     $('<span/>').text(l('Unused attachment'))
-                                                 ));
-                    caption.append($('<a/>', { 'data-uri': uri,
-                                               'data-target': $('#uploads').data('removal-url'),
-                                               href: "#",
-                                               class: "remove-attachment-action a-no-color",
-                                               title:l("Remove")}
-                                    ).append($("<span/>", { class: "fa fa-trash fa-2x fa-border" })));
-                    caption.append($('<a/>', { 'data-uri': uri,
-                                               href: "#",
-                                               class: "use-image-as-picture a-no-color",
-                                               title:l("Insert the file into the body")}
-                                    ).append($("<span/>", { class: "fa fa-picture-o fa-2x fa-border" })));
+                    caption.prepend($('<div/>',
+                                      { 'class': "text-warning unused-attachment",
+                                        'href': "#"
+                                      }).append(
+                                          $('<span/>', {
+                                              'class': "fa fa-warning fa-border",
+                                              'title': l('Unused attachment')
+                                          }),
+                                          $('<span/>').text(l('Unused attachment'))
+                                      ));
                 }
+                else {
+                    uri_is_present = 1;
+                }
+                caption.append($('<a/>',
+                                 {
+                                     'data-uri': uri,
+                                     'href': "#",
+                                     'class': "use-image-as-picture" + ( uri_is_present ? '-disabled' : ''),
+                                     'title': (uri_is_present ?
+                                               l("File already in the body") :
+                                               l("Insert the file into the body at the cursor position"))
+                                 }).append(
+                                     $("<span/>", { class: "fa fa-picture-o fa-2x fa-border" })
+                                 ));
+
                 if (uri.match(/\.(png|jpe?g)$/)) {
-                    caption.append($('<a/>', { 'data-uri': uri,
-                                               href: "#",
-                                               class: "use-image-as-cover a-no-color",
-                                               title:l("Use the image as cover")}
+                    if (body.search('#cover ' + uri) < 0) {
+                        uri_is_cover = 0;
+                    }
+                    else {
+                        uri_is_cover = 1;
+                    }
+                    caption.append($('<a/>', { "data-uri": uri,
+                                               "href": "#",
+                                               "class": "use-image-as-cover" + (uri_is_cover ? '-disabled' : ''),
+                                               "title": (uri_is_cover ?
+                                                         l("Image already set as cover") :
+                                                         l("Use the image as cover"))
+                                             }
                                     ).append($("<span/>", { class: "fa fa-file-image-o fa-2x fa-border" })));
                 }
+                caption.append($('<a/>',
+                                 {
+                                     'data-uri': uri,
+                                     'data-target': $('#uploads').data('removal-url'),
+                                     'href': "#",
+                                     'class': "remove-attachment-action" + ( uri_is_present ? '-disabled' : ''),
+                                     'title': (uri_is_present ? l("Please remove this file from the body first") : l("Remove"))
+                                 }).append(
+                                     $("<span/>", { class: "fa fa-trash fa-2x fa-border" })
+                                 ));
 		        $('#uploads').prepend(thumb);
             }
 		}
@@ -198,6 +226,11 @@ $(document).ready(function() {
         });
         refresh_attachments();
     });
+
+    $(document).on('click', '.remove-attachment-action-disabled', function (e) {
+        e.preventDefault();
+        $(this).tooltip('show');
+    });
     $(document).on('click', '.remove-attachment-action', function (e) {
         e.preventDefault();
         var block = $(this).closest('.upload-item');
@@ -216,6 +249,11 @@ $(document).ready(function() {
                    });
         }
     });
+
+    $(document).on('click', '.use-image-as-picture-disabled', function (e) {
+        e.preventDefault();
+        $(this).tooltip('show');
+    });
     $(document).on('click', '.use-image-as-picture', function (e) {
         e.preventDefault();
         var uri = $(this).data('uri');
@@ -223,6 +261,11 @@ $(document).ready(function() {
             insert_uri(uri);
             refresh_attachments();
         }
+    });
+
+    $(document).on('click', '.use-image-as-cover-disabled', function (e) {
+        e.preventDefault();
+        $(this).tooltip('show');
     });
     $(document).on('click', '.use-image-as-cover', function(e) {
         e.preventDefault();

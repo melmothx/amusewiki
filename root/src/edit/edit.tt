@@ -129,7 +129,7 @@
         <button type="submit" class="btn btn-default btn-sm" name="preview"
                 data-ajax-post="[% ajax_editing_uri %]"
                 value="preview" id="amw-edit-form-preview-button">
-          [% loc('Preview') %]
+          [% loc('Preview') %] / [% loc('Refresh') %]
         </button>
         <br>
         <div class="alert alert-danger" id="editing-warnings-inline" style="display:none; margin: 10px 0;"></div>

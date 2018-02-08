@@ -301,6 +301,11 @@ img.amw-wide-banner-img {
     margin-right: auto;
 }
 
-a.a-no-color {
+a.remove-attachment-action, a.use-image-as-picture, a.use-image-as-cover {
     color: black;
 }
+
+a.remove-attachment-action-disabled, a.use-image-as-picture-disabled, a.use-image-as-cover-disabled {
+    color: #cdcdcd;
+}
+
