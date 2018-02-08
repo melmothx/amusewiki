@@ -236,6 +236,12 @@ msgstr "Historia e arkivës"
 msgid "Are you sure?"
 msgstr "A jeni të sigurtë?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Fotot e bashkangjitura"
 
@@ -666,6 +672,9 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr ""
 
@@ -1013,6 +1022,9 @@ msgstr ""
 "faqe fillerstare, p.sh. \"\"/special/index-it\", qe do te thotë \n"
 "\"Indexi\" i URI, vizë lidhëse dhe kodi \"locale\"."
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1053,7 +1065,7 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Elementet në rresht "
 
-msgid "Insert the file into the body"
+msgid "Insert the file into the body at the cursor position"
 msgstr ""
 
 msgid "Internal list of translations"
@@ -1648,6 +1660,9 @@ msgstr "Ju lutem vërtetoni që jeni njeri"
 msgid "Please reload your page"
 msgstr "Të lutem rifresko faqën"
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Të lutem zgjidh"
 
@@ -1813,6 +1828,9 @@ msgid "Recheck"
 msgstr "Rishiko"
 
 msgid "Redirections"
+msgstr ""
+
+msgid "Refresh and apply filters"
 msgstr ""
 
 msgid "Related projects"
@@ -2403,6 +2421,9 @@ msgstr "Titujt"
 msgid "To apply the changes, you can visit %1"
 msgstr "Për ti vendosur ndryshimet, ju mund të vizitoni %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
@@ -2550,6 +2571,9 @@ msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
 msgid "Use sans fonts for section titles"
+msgstr ""
+
+msgid "Use the image as cover"
 msgstr ""
 
 msgid "Useful HTML snippets"

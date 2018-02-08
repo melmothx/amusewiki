@@ -226,6 +226,12 @@ msgstr "Storico dell'archivio"
 msgid "Are you sure?"
 msgstr "Sicuro?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Immagini allegate"
 
@@ -661,6 +667,9 @@ msgstr "Errore nell'aggiungere il repo remoto %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Errore nel rimuovere il repo remoto %1"
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr "Estensione del file"
 
@@ -1029,6 +1038,9 @@ msgstr ""
 "localizzata aggiungendo il codice della lingua all'URI, ad esempio\n"
 "\"/special/index-it\" o \"/special/index-en\"."
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1071,8 +1083,8 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Elementi per la riga"
 
-msgid "Insert the file into the body"
-msgstr "Inserisci il file nel corpo del testo"
+msgid "Insert the file into the body at the cursor position"
+msgstr ""
 
 msgid "Internal list of translations"
 msgstr "Lista interna delle traduzioni"
@@ -1691,6 +1703,9 @@ msgstr "Dimostra di essere un umano"
 msgid "Please reload your page"
 msgstr "Ricarica la pagina"
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Seleziona"
 
@@ -1858,6 +1873,9 @@ msgstr "Ricontrolla"
 
 msgid "Redirections"
 msgstr "Redirezioni"
+
+msgid "Refresh and apply filters"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Progetti correlati"
@@ -2458,6 +2476,10 @@ msgstr "Titoli"
 msgid "To apply the changes, you can visit %1"
 msgstr "Per applicare le modifiche, puoi visitare %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+"Per mostrare i PDF, imposta o aggiungi la seguente stringa nell'intestazione"
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
@@ -2610,6 +2632,9 @@ msgstr "Durante l'impaginazione, usa blocchi ottimizzati di %s pagine ciascuno"
 
 msgid "Use sans fonts for section titles"
 msgstr "Usa caratteri senza grazie per i titoli delle sezioni"
+
+msgid "Use the image as cover"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Frammenti HTML utili"
@@ -3060,6 +3085,9 @@ msgstr ""
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
 
+#~ msgid "Insert the file into the body"
+#~ msgstr "Inserisci il file nel corpo del testo"
+
 #~ msgid "Attached PDFs"
 #~ msgstr "PDF allegati"
 
@@ -3077,12 +3105,6 @@ msgstr ""
 #~ "Nota bene: i PDF sono file esterni e non possono essere pienamente\n"
 #~ "integrati nel documento. I file generati ne saranno privi. Puoi\n"
 #~ "comunque creare immagini dai PDF e inserire quelle."
-
-#~ msgid ""
-#~ "To display the PDFs, set or append the following string in the header"
-#~ msgstr ""
-#~ "Per mostrare i PDF, imposta o aggiungi la seguente stringa "
-#~ "nell'intestazione"
 
 #~ msgid ""
 #~ "You\n"

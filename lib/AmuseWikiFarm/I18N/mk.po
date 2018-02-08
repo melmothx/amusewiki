@@ -230,6 +230,12 @@ msgstr "Историја на архивата"
 msgid "Are you sure?"
 msgstr "Сигурно?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Слики во прилог"
 
@@ -658,6 +664,9 @@ msgstr "Грешка при додавањето оддалечен репози
 msgid "Failed to remove Remote repository %1"
 msgstr "Грешка при бришењето на оддалечениот репозиториум %1"
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr ""
 
@@ -1020,6 +1029,9 @@ msgstr ""
 "страница давајќи ѝ име, нпр. \"/special/index-mk\", т.е. \"index\",\n"
 " цртичка, и меѓународниот јазичен код."
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1060,8 +1072,8 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Елементи по линија"
 
-msgid "Insert the file into the body"
-msgstr "Додај ја датотеката на текстот"
+msgid "Insert the file into the body at the cursor position"
+msgstr ""
 
 msgid "Internal list of translations"
 msgstr "Внатрешна листа на преводи"
@@ -1667,6 +1679,9 @@ msgstr "Докажи дека си човек"
 msgid "Please reload your page"
 msgstr "Вчитај ја повторно твојата страница"
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Избери"
 
@@ -1838,6 +1853,9 @@ msgstr "Провери повторно"
 
 msgid "Redirections"
 msgstr "Пренасочувања"
+
+msgid "Refresh and apply filters"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Поврзани проекти"
@@ -2422,6 +2440,11 @@ msgstr "Наслови"
 msgid "To apply the changes, you can visit %1"
 msgstr "За да ја објавиш измената, оди на %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+"За да ги видиш PDF датотеките, примени го или додади го овој низ од знаци во "
+"заглавието"
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "За да ги зачуваш празните места и новите редови, вметни пасус помеѓу "
@@ -2570,6 +2593,9 @@ msgid "Use optimized signatures with %1 pages each"
 msgstr "При прелом на текстот користи оптимиризани табаци со %s страници секој"
 
 msgid "Use sans fonts for section titles"
+msgstr ""
+
+msgid "Use the image as cover"
 msgstr ""
 
 msgid "Useful HTML snippets"
@@ -3015,6 +3041,9 @@ msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
 
+#~ msgid "Insert the file into the body"
+#~ msgstr "Додај ја датотеката на текстот"
+
 #~ msgid "Attached PDFs"
 #~ msgstr "PDF фајлови во прилог"
 
@@ -3031,12 +3060,6 @@ msgstr ""
 #~ "PDF-те се надворешни датотеки и не можат целосно да бидат \n"
 #~ "интегрирани во текстот. Генерираните формати ќе бидат без нив.\n"
 #~ "Ако ти требаат, можеш да ги претвориш во слики и додадеш."
-
-#~ msgid ""
-#~ "To display the PDFs, set or append the following string in the header"
-#~ msgstr ""
-#~ "За да ги видиш PDF датотеките, примени го или додади го овој низ од знаци "
-#~ "во заглавието"
 
 #~ msgid ""
 #~ "You\n"

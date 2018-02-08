@@ -209,6 +209,12 @@ msgstr ""
 msgid "Are you sure?"
 msgstr "Oletko varma?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Liitetyt kuvat"
 
@@ -616,6 +622,9 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr ""
 
@@ -930,6 +939,9 @@ msgid ""
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -965,7 +977,7 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Sisäiset elementit"
 
-msgid "Insert the file into the body"
+msgid "Insert the file into the body at the cursor position"
 msgstr ""
 
 msgid "Internal list of translations"
@@ -1549,6 +1561,9 @@ msgstr "Todista, että olet ihminen"
 msgid "Please reload your page"
 msgstr "Lataa sivu uudestaan"
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Valitse"
 
@@ -1702,6 +1717,9 @@ msgstr "Tarkista uudelleen"
 
 msgid "Redirections"
 msgstr "Uudelleenohjaukset"
+
+msgid "Refresh and apply filters"
+msgstr ""
 
 msgid "Related projects"
 msgstr ""
@@ -2265,6 +2283,9 @@ msgstr "Tekstit"
 msgid "To apply the changes, you can visit %1"
 msgstr ""
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "Välilyöntien ja rivinvaihtojen säilyttämiseksi laita kappale tageihin"
@@ -2403,6 +2424,9 @@ msgid "Use optimized signatures with %1 pages each"
 msgstr "Käytä optimoitua signaturea, joissa on %1 sivua kussakin. "
 
 msgid "Use sans fonts for section titles"
+msgstr ""
+
+msgid "Use the image as cover"
 msgstr ""
 
 msgid "Useful HTML snippets"

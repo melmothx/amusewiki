@@ -220,6 +220,12 @@ msgstr "Povijest arhiva"
 msgid "Are you sure?"
 msgstr "Sigurno?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Slike u privitku"
 
@@ -644,6 +650,9 @@ msgstr "Greška pri dodavanju udaljenog repozitorija %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Greška pri izbrisanju udaljenog repozitorija %1"
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr "Ekstenzija fajlova"
 
@@ -1002,6 +1011,9 @@ msgstr ""
 "stranicu dajući joj ime, npr. \"/special/index-hr\", t.j. \"index\",\n"
 "crtica, i međunarodni jezični kod."
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1040,8 +1052,8 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Elementi po retku"
 
-msgid "Insert the file into the body"
-msgstr "Dodaj datoteku tekstu"
+msgid "Insert the file into the body at the cursor position"
+msgstr ""
 
 msgid "Internal list of translations"
 msgstr "Unutarnji popis prijevoda"
@@ -1639,6 +1651,9 @@ msgstr "Dokaži da si ljudsko biće"
 msgid "Please reload your page"
 msgstr "Ponovno učitaj tvoju stranicu."
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Izaberi"
 
@@ -1806,6 +1821,9 @@ msgstr "Ponovo provjeri"
 
 msgid "Redirections"
 msgstr "Preusmjeravanja"
+
+msgid "Refresh and apply filters"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Povezani projekti"
@@ -2386,6 +2404,9 @@ msgstr "Naslovi"
 msgid "To apply the changes, you can visit %1"
 msgstr "Da bi objavio izmjenu, idi na %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr "Da bi vidio PDF-ove, dodaj slijedeći redak zaglavlju"
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "Da bi se sačuvali prazni znakovi i novi redak, umetni odlomak između"
@@ -2530,6 +2551,9 @@ msgstr ""
 
 msgid "Use sans fonts for section titles"
 msgstr "Koristi sans fontove za naslove odjeljaka i poglavlja"
+
+msgid "Use the image as cover"
+msgstr ""
 
 msgid "Useful HTML snippets"
 msgstr "Korisni dijelovi HTML koda"
@@ -2969,6 +2993,9 @@ msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
 
+#~ msgid "Insert the file into the body"
+#~ msgstr "Dodaj datoteku tekstu"
+
 #~ msgid "Attached PDFs"
 #~ msgstr "PDFovi u privitku"
 
@@ -2985,10 +3012,6 @@ msgstr ""
 #~ "PDFovi su vanjske datoteke i ne mogu biti potpuno integrirane u\n"
 #~ "tekstu. Generirani formati bit će bez njih. Ako ih trebaš, možeš ih\n"
 #~ "pretvoriti u slike i dodati njih."
-
-#~ msgid ""
-#~ "To display the PDFs, set or append the following string in the header"
-#~ msgstr "Da bi vidio PDF-ove, dodaj slijedeći redak zaglavlju"
 
 #~ msgid ""
 #~ "You\n"
