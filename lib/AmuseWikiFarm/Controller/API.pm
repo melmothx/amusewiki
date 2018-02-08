@@ -53,11 +53,20 @@ sub lexicon :Chained('api') :PathPart('lexicon.json') :Args(0) {
                InvalidFileTypeError => $c->loc("File format not allowed"),
                MaxFileSizeError => $c->loc("File too big"),
                RequestError => $c->loc("Request failed! Please report the the problem"),
-               'Unused attachment' => $c->loc("Unused attachment"),
-               Remove => $c->loc("Remove"),
-               "Insert the file into the body" => $c->loc("Insert the file into the body"),
-               "Use the image as cover" => $c->loc("Use the image as cover"),
               );
+    foreach my $js_string (
+                           'Unused attachment',
+                           'Remove',
+                           'Insert the file into the body',
+                           'Use the image as cover',
+                           'File already in the body',
+                           'Image already set as cover',
+                           'Insert the file into the body at the cursor position',
+                           'Please remove this file from the body first',
+                           'Use the image as cover',
+                          ) {
+        $out{$js_string} = $c->loc($js_string);
+    }
     $c->stash(json => \%out);
     $c->detach($c->view('JSON'));
 }
