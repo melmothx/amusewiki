@@ -41,13 +41,14 @@ $(document).ready(function() {
                         )
                     )
                 );
-                if (data.insert) {
-                    insert_uri(uri);
-                }
                 var caption = thumb.find('.caption');
                 var uri_is_present = 0;
                 var uri_is_cover = 0;
-                if (body.search(uri) < 0) {
+                if (data.insert) {
+                    insert_uri(uri);
+                    uri_is_present = 1;
+                }
+                else if (body.search(uri) < 0) {
                     // not present, mark it and add a removal button
                     caption.prepend($('<div/>',
                                       { 'class': "text-warning unused-attachment",
