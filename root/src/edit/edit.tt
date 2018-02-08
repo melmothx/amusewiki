@@ -46,7 +46,8 @@
         </a>
     </h3>
   </div>
-  <div class="panel-body amw-fixed-panel-edit">
+  <div class="panel-body amw-fixed-panel-edit"
+       [% IF edit_option_preview_box_height %]style="height: [% edit_option_preview_box_height %]px;"[% END %]>
     <div id="amw-text-edit-preview-box">
       <div class="center">
         <span class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></span>
