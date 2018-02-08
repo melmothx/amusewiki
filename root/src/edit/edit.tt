@@ -37,7 +37,6 @@
            title="[% loc('Show preview in other tab') %]">
           <span class="fa fa-arrows-alt"></span>
         </a>
-        [% IF revision.has_local_modifications %]
         <a href="[% diffing_uri | html %]" target="_blank"
            title="[% loc('Show differences in other tab') %]">
           <span class="pull-right" style="text-decoration: none">
@@ -45,7 +44,6 @@
             <span class="fa fa-minus"></span>
           </span>
         </a>
-        [% END %]
     </h3>
   </div>
   <div class="panel-body amw-fixed-panel-edit"
