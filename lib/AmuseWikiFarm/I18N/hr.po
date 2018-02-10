@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2018-01-17 11:36+0100\n"
+"PO-Revision-Date: 2018-02-10 11:16+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -221,10 +221,10 @@ msgid "Are you sure?"
 msgstr "Sigurno?"
 
 msgid "As cover in the header"
-msgstr ""
+msgstr "Kao naslovnica na zaglavlju"
 
 msgid "As regular image in the body"
-msgstr ""
+msgstr "Kao obična slika u tekstu"
 
 msgid "Attached images"
 msgstr "Slike u privitku"
@@ -651,19 +651,19 @@ msgid "Failed to remove Remote repository %1"
 msgstr "Greška pri izbrisanju udaljenog repozitorija %1"
 
 msgid "File already in the body"
-msgstr ""
+msgstr "Datoteka je već prisutna u tekstu"
 
 msgid "File extension"
 msgstr "Ekstenzija fajlova"
 
 msgid "File format not allowed"
-msgstr ""
+msgstr "Ova vrsta datoteke nije dopuštena"
 
 msgid "File to delete not found!"
-msgstr ""
+msgstr "Datoteka nije pronađena"
 
 msgid "File too big"
-msgstr ""
+msgstr "Datoteka prevelika"
 
 msgid "File uploaded!"
 msgstr "Datoteka učitana!"
@@ -1012,7 +1012,7 @@ msgstr ""
 "crtica, i međunarodni jezični kod."
 
 msgid "Image already set as cover"
-msgstr ""
+msgstr "Slika je već na naslovnici"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -1053,7 +1053,7 @@ msgid "Inline elements"
 msgstr "Elementi po retku"
 
 msgid "Insert the file into the body at the cursor position"
-msgstr ""
+msgstr "Dodaj datoteku tekstu tamo gdje se nalazi kursor"
 
 msgid "Internal list of translations"
 msgstr "Unutarnji popis prijevoda"
@@ -1207,7 +1207,7 @@ msgid "Loaded \"%1\" configuration"
 msgstr "Koristeći \"%1\" konfiguraciju"
 
 msgid "Locked editing, no upload possible"
-msgstr ""
+msgstr "Uređenje zaključan, nije moguće učitati datoteku"
 
 msgid "Log in"
 msgstr "Uđi"
@@ -1376,7 +1376,7 @@ msgid "Nothing to see here, so far"
 msgstr "Ovdje se nema što vidjeti, za sada"
 
 msgid "Nothing uploaded"
-msgstr ""
+msgstr "Ništa nije učitano"
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Mail obavijesti: ostavi prazno za onemogućiti"
@@ -1652,7 +1652,7 @@ msgid "Please reload your page"
 msgstr "Ponovno učitaj tvoju stranicu."
 
 msgid "Please remove this file from the body first"
-msgstr ""
+msgstr "Najprije se datoteka mora ukloniti iz teksta"
 
 msgid "Please select"
 msgstr "Izaberi"
@@ -1823,7 +1823,7 @@ msgid "Redirections"
 msgstr "Preusmjeravanja"
 
 msgid "Refresh and apply filters"
-msgstr ""
+msgstr "Osvježi i koristi filtere"
 
 msgid "Related projects"
 msgstr "Povezani projekti"
@@ -1858,7 +1858,7 @@ msgid "Repository"
 msgstr "Repozitorij"
 
 msgid "Request failed! Please report the the problem"
-msgstr ""
+msgstr "Greška! Kontaktirajte administratore"
 
 msgid "Reset all"
 msgstr "Poništi sve"
@@ -2512,7 +2512,7 @@ msgid "Unsupported file type %1"
 msgstr "Pogrešna vrsta fajla: %1"
 
 msgid "Unused attachment"
-msgstr ""
+msgstr "Privitak se ne koristi"
 
 msgid "Update"
 msgstr "Ažuriraj"
@@ -2553,7 +2553,7 @@ msgid "Use sans fonts for section titles"
 msgstr "Koristi sans fontove za naslove odjeljaka i poglavlja"
 
 msgid "Use the image as cover"
-msgstr ""
+msgstr "Koristi sliku kao naslovnicu"
 
 msgid "Useful HTML snippets"
 msgstr "Korisni dijelovi HTML koda"
@@ -2627,7 +2627,7 @@ msgstr ""
 "tamo nastaviti."
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
-msgstr ""
+msgstr "Kad se učita PDF datoteku, pretvori je u slike koje je moguće dodati tekstu"
 
 msgid "Where does this text come from?"
 msgstr "Odakle dolazi ovaj tekst?"
@@ -2871,7 +2871,7 @@ msgid "if you want to use a custom size, you need to set both width and height"
 msgstr "ako želiš posebne dimenzije, trebaš ubaciti i širinu i visinu"
 
 msgid "image"
-msgstr ""
+msgstr "slika"
 
 msgid "left"
 msgstr "lijeva"
