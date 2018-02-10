@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2017-12-31 15:28+0100\n"
+"PO-Revision-Date: 2018-02-08 14:52+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -225,6 +225,12 @@ msgstr "Storico dell'archivio"
 
 msgid "Are you sure?"
 msgstr "Sicuro?"
+
+msgid "As cover in the header"
+msgstr "Come immagine di copertina nelle intestazioni"
+
+msgid "As regular image in the body"
+msgstr "Come una normale immagine nel corpo del testo"
 
 msgid "Attached images"
 msgstr "Immagini allegate"
@@ -661,17 +667,20 @@ msgstr "Errore nell'aggiungere il repo remoto %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Errore nel rimuovere il repo remoto %1"
 
+msgid "File already in the body"
+msgstr "File già presente nel corpo del testo"
+
 msgid "File extension"
 msgstr "Estensione del file"
 
 msgid "File format not allowed"
-msgstr ""
+msgstr "Formato del file non valido"
 
 msgid "File to delete not found!"
-msgstr ""
+msgstr "File da cancellare non trovato!"
 
 msgid "File too big"
-msgstr ""
+msgstr "Dimensioni del file troppo grandi"
 
 msgid "File uploaded!"
 msgstr "File caricato!"
@@ -1029,6 +1038,9 @@ msgstr ""
 "localizzata aggiungendo il codice della lingua all'URI, ad esempio\n"
 "\"/special/index-it\" o \"/special/index-en\"."
 
+msgid "Image already set as cover"
+msgstr "Già impostata come immagine di copertina"
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1071,8 +1083,8 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Elementi per la riga"
 
-msgid "Insert the file into the body"
-msgstr "Inserisci il file nel corpo del testo"
+msgid "Insert the file into the body at the cursor position"
+msgstr "Inserisci il file nel corpo del testo nella posizione corrente del cursore"
 
 msgid "Internal list of translations"
 msgstr "Lista interna delle traduzioni"
@@ -1230,7 +1242,7 @@ msgid "Loaded \"%1\" configuration"
 msgstr "La configurazione \"%1\" è stata caricata"
 
 msgid "Locked editing, no upload possible"
-msgstr ""
+msgstr "Modifiche bloccate, caricamento non permesso"
 
 msgid "Log in"
 msgstr "Entra"
@@ -1405,7 +1417,7 @@ msgid "Nothing to see here, so far"
 msgstr "Niente da vedere qui, per ora"
 
 msgid "Nothing uploaded"
-msgstr ""
+msgstr "Caricamento fallito"
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Mail di notifica: lasciare in bianco per disabilitare"
@@ -1691,6 +1703,9 @@ msgstr "Dimostra di essere un umano"
 msgid "Please reload your page"
 msgstr "Ricarica la pagina"
 
+msgid "Please remove this file from the body first"
+msgstr "Cancella prima il file dal corpo del testo"
+
 msgid "Please select"
 msgstr "Seleziona"
 
@@ -1859,6 +1874,9 @@ msgstr "Ricontrolla"
 msgid "Redirections"
 msgstr "Redirezioni"
 
+msgid "Refresh and apply filters"
+msgstr "Aggiorna e applica i filtri"
+
 msgid "Related projects"
 msgstr "Progetti correlati"
 
@@ -1892,7 +1910,7 @@ msgid "Repository"
 msgstr "Repository"
 
 msgid "Request failed! Please report the the problem"
-msgstr ""
+msgstr "Richiesta fallita! Per cortesia contatta gli amministratori"
 
 msgid "Reset all"
 msgstr "Ricomincia da capo"
@@ -2458,6 +2476,10 @@ msgstr "Titoli"
 msgid "To apply the changes, you can visit %1"
 msgstr "Per applicare le modifiche, puoi visitare %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+"Per mostrare i PDF, imposta o aggiungi la seguente stringa nell'intestazione"
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
@@ -2571,7 +2593,7 @@ msgid "Unsupported file type %1"
 msgstr "Tipo di file (%1) non supportato"
 
 msgid "Unused attachment"
-msgstr ""
+msgstr "Allegato non in uso"
 
 msgid "Update"
 msgstr "Aggiorna"
@@ -2610,6 +2632,9 @@ msgstr "Durante l'impaginazione, usa blocchi ottimizzati di %s pagine ciascuno"
 
 msgid "Use sans fonts for section titles"
 msgstr "Usa caratteri senza grazie per i titoli delle sezioni"
+
+msgid "Use the image as cover"
+msgstr "Usa l'immagine come immagine di copertina"
 
 msgid "Useful HTML snippets"
 msgstr "Frammenti HTML utili"
@@ -2685,6 +2710,8 @@ msgstr ""
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
+"Quando carichi un PDF, trasformalo in una serie di immagini che\n"
+"possono essere inserite nel corpo del testo"
 
 msgid "Where does this text come from?"
 msgstr "Da dove proviene il testo?"
@@ -2935,7 +2962,7 @@ msgstr ""
 "che l'altezza"
 
 msgid "image"
-msgstr ""
+msgstr "immagine"
 
 msgid "left"
 msgstr "sinistra"
@@ -3060,6 +3087,9 @@ msgstr ""
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
 
+#~ msgid "Insert the file into the body"
+#~ msgstr "Inserisci il file nel corpo del testo"
+
 #~ msgid "Attached PDFs"
 #~ msgstr "PDF allegati"
 
@@ -3077,12 +3107,6 @@ msgstr ""
 #~ "Nota bene: i PDF sono file esterni e non possono essere pienamente\n"
 #~ "integrati nel documento. I file generati ne saranno privi. Puoi\n"
 #~ "comunque creare immagini dai PDF e inserire quelle."
-
-#~ msgid ""
-#~ "To display the PDFs, set or append the following string in the header"
-#~ msgstr ""
-#~ "Per mostrare i PDF, imposta o aggiungi la seguente stringa "
-#~ "nell'intestazione"
 
 #~ msgid ""
 #~ "You\n"

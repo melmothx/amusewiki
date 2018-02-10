@@ -244,6 +244,8 @@ div#text-prev-post-link span.glyphicon {
 .amw-fixed-panel-edit {
     width: 100%;
     overflow-y: scroll;
+    height: 300px;
+    resize: vertical;
 }
 
 .amw-spacer-20 {
@@ -300,3 +302,12 @@ img.amw-wide-banner-img {
     margin-left: auto;
     margin-right: auto;
 }
+
+a.remove-attachment-action, a.use-image-as-picture, a.use-image-as-cover {
+    color: black;
+}
+
+a.remove-attachment-action-disabled, a.use-image-as-picture-disabled, a.use-image-as-cover-disabled {
+    color: #cdcdcd;
+}
+

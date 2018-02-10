@@ -231,6 +231,12 @@ msgstr "Historial de archivo"
 msgid "Are you sure?"
 msgstr "¿Estás segura/o?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Imágenes adjuntadas"
 
@@ -663,6 +669,9 @@ msgstr "Fallo al agregar el repositorio remoto %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Fallo al eliminar repositorio remoto %1"
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr ""
 
@@ -1027,6 +1036,9 @@ msgstr ""
 "  específica para cada lengua, por ejemplo \"/special/index-it\", o sea,\n"
 "  la URI \"index\", un guión, y el código de localización."
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1069,7 +1081,7 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Elementos en línea"
 
-msgid "Insert the file into the body"
+msgid "Insert the file into the body at the cursor position"
 msgstr ""
 
 msgid "Internal list of translations"
@@ -1673,6 +1685,9 @@ msgstr "Por favor prueba que eres una persona"
 msgid "Please reload your page"
 msgstr "Por favor actualiza la página"
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Selecciona, por favor"
 
@@ -1840,6 +1855,9 @@ msgstr "Volver a revisar"
 
 msgid "Redirections"
 msgstr "Redirecciones"
+
+msgid "Refresh and apply filters"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Proyectos relacionados"
@@ -2437,6 +2455,9 @@ msgstr "Textos"
 msgid "To apply the changes, you can visit %1"
 msgstr "Para aplicar los cambios, puedes visitar %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr "Para mostrar los PDFs, cambia o agrega lo siguiente en el encabezado"
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "Para conservar los espacios y saltos de línea, trunca los párrafos con"
@@ -2586,6 +2607,9 @@ msgstr ""
 "Cuando sea para encuadernación, usar cuadernillos de %1 páginas cada uno"
 
 msgid "Use sans fonts for section titles"
+msgstr ""
+
+msgid "Use the image as cover"
 msgstr ""
 
 msgid "Useful HTML snippets"
@@ -3040,11 +3064,6 @@ msgstr ""
 #~ msgid "Images not used in the text are stored, but will be ignored."
 #~ msgstr ""
 #~ "Las imágenes no usadas en el texto son guardadas, pero serán ignoradas."
-
-#~ msgid ""
-#~ "To display the PDFs, set or append the following string in the header"
-#~ msgstr ""
-#~ "Para mostrar los PDFs, cambia o agrega lo siguiente en el encabezado"
 
 #~ msgid ""
 #~ "You\n"

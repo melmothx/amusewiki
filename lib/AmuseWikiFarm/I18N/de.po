@@ -214,6 +214,12 @@ msgstr "Archiventwicklung"
 msgid "Are you sure?"
 msgstr "Bist du sicher?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Angehängte Bilder"
 
@@ -622,6 +628,9 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr ""
 
@@ -941,6 +950,9 @@ msgid ""
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -979,7 +991,7 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Inline-Elemente"
 
-msgid "Insert the file into the body"
+msgid "Insert the file into the body at the cursor position"
 msgstr ""
 
 msgid "Internal list of translations"
@@ -1560,6 +1572,9 @@ msgstr "Bitte bestätige, dass du ein Mensch bist."
 msgid "Please reload your page"
 msgstr "Bitte lade deine Seite neu"
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Bitte auswählen"
 
@@ -1712,6 +1727,9 @@ msgstr "Erneut prüfen"
 
 msgid "Redirections"
 msgstr "Umleitungen"
+
+msgid "Refresh and apply filters"
+msgstr ""
 
 msgid "Related projects"
 msgstr "In Bezug stehende Projekte"
@@ -2284,6 +2302,10 @@ msgstr "Liste aller Texte"
 msgid "To apply the changes, you can visit %1"
 msgstr "Um diese Änderungen zu übernehmen, gehe auf %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+"Um die PDFs anzuzeigen, setzte oder füge den folgenden Faden in die Kopfzeile"
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
@@ -2423,6 +2445,9 @@ msgid "Use optimized signatures with %1 pages each"
 msgstr ""
 
 msgid "Use sans fonts for section titles"
+msgstr ""
+
+msgid "Use the image as cover"
 msgstr ""
 
 msgid "Useful HTML snippets"
@@ -2854,12 +2879,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Bilder die im Text nicht gebraucht werden, werden gespeichert, aber "
 #~ "ignoriert."
-
-#~ msgid ""
-#~ "To display the PDFs, set or append the following string in the header"
-#~ msgstr ""
-#~ "Um die PDFs anzuzeigen, setzte oder füge den folgenden Faden in die "
-#~ "Kopfzeile"
 
 #~ msgid "A new revision has been created at %1"
 #~ msgstr "Eine neue Änderung wurde erstellt unter %1"

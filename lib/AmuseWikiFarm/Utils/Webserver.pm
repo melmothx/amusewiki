@@ -161,6 +161,10 @@ has highlight_use_cdn => (is => 'ro',
                           builder => '_build_highlight_use_cdn',
                          );
 
+has nginx_disable_gzip_on_dynamic_pages => (is => 'ro',
+                                            isa => 'Bool',
+                                            default => sub { 0 });
+
 has highlight_location => (is => 'ro',
                            default => sub {
                                my $system_wide = '/usr/share/javascript/highlight.js';
@@ -448,6 +452,9 @@ INCLUDE
         }
     }
     my $acme_root = $self->acme_root or die "No acme root?";
+
+    my $gzip_off = $self->nginx_disable_gzip_on_dynamic_pages ? 'gzip off;' : '';
+
     print $fh <<"INCLUDE";
     location /.well-known/acme-challenge/ {
         root $acme_root;
@@ -483,7 +490,8 @@ INCLUDE
         expires max;
     }
     location \@proxy {
-        gzip off; # avoid etag stripping. :-(
+        # with nginx < 1.7.3, gzip must be off. Set nginx_disable_gzip_on_dynamic_pages to 1 in the Model::Webserver config
+        $gzip_off
         fastcgi_param  QUERY_STRING       \$query_string;
         fastcgi_param  REQUEST_METHOD     \$request_method;
         fastcgi_param  CONTENT_TYPE       \$content_type;

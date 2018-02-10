@@ -37,7 +37,6 @@
            title="[% loc('Show preview in other tab') %]">
           <span class="fa fa-arrows-alt"></span>
         </a>
-        [% IF revision.has_local_modifications %]
         <a href="[% diffing_uri | html %]" target="_blank"
            title="[% loc('Show differences in other tab') %]">
           <span class="pull-right" style="text-decoration: none">
@@ -45,11 +44,10 @@
             <span class="fa fa-minus"></span>
           </span>
         </a>
-        [% END %]
     </h3>
   </div>
   <div class="panel-body amw-fixed-panel-edit"
-       [% IF edit_option_preview_box_height %]style="max-height: [% edit_option_preview_box_height %]px;"[% END %]>
+       [% IF edit_option_preview_box_height %]style="height: [% edit_option_preview_box_height %]px;"[% END %]>
     <div id="amw-text-edit-preview-box">
       <div class="center">
         <span class="fa fa-spinner fa-spin fa-3x fa-fw" aria-hidden="true"></span>
@@ -74,12 +72,18 @@
           <img class="img-responsive img-thumbnail" src="[% attachment %]" alt="[% attachment %]" />
         </div>
         <div class="caption">
-          <code>[[[% attachment %]]]</code>
+          [% loc('As regular image in the body') %]:   <code>[[[% attachment %]]]</code> <br />
+          [% loc('As cover in the header') %]: <code>#cover [% attachment %]</code>
         </div>
       </div>
       [% END %]
       <div class="col-xs-12 image-listing-no-js">
-        <code>[% revision.attached_pdfs_string %]</code>
+        <hr />
+        [% IF revision.attached_pdfs.size %]
+        [% loc('To display the PDFs, set or append the following string in the header') %]:<br />
+        <code>#ATTACH [% FOREACH uppdf IN revision.attached_pdfs %]<a href="[% uppdf %]">[% uppdf %]</a>[% END %]</code>
+        [% END %]
+
       </div>
     </div>
   </div>
@@ -123,7 +127,7 @@
         <button type="submit" class="btn btn-default btn-sm" name="preview"
                 data-ajax-post="[% ajax_editing_uri %]"
                 value="preview" id="amw-edit-form-preview-button">
-          [% loc('Preview') %]
+          [% loc('Preview') %] / [% loc('Refresh and apply filters') %]
         </button>
         <br>
         <div class="alert alert-danger" id="editing-warnings-inline" style="display:none; margin: 10px 0;"></div>
@@ -174,23 +178,20 @@
     </div>
     <div class="checkbox">
       <label>
+      <input id="add-attachment-to-body"
+             value="1"
+             type="checkbox" name="add_attachment_to_body" />
+      [% loc("Insert the file into the body at the cursor position") %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
       <input id="split-pdf"
              value="1"
              type="checkbox" name="split-pdf"/>
       [% loc('When you upload a PDF, split it into images to be inserted in the body') %]
       </label>
     </div>
-    <div class="checkbox">
-      <label>
-      <input id="add-attachment-to-body"
-             value="1"
-             checked="checked"
-             type="checkbox" name="add_attachment_to_body" />
-      [% loc('Insert the file into the body') %]
-      </label>
-    </div>
-
-
     <div>
       <label role="button"
          data-target="#filters"

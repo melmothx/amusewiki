@@ -228,6 +228,12 @@ msgstr "Historique des Archives"
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr·e?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Images jointes"
 
@@ -662,6 +668,9 @@ msgstr "Échec à l'ajout du dépôt distant %1"
 msgid "Failed to remove Remote repository %1"
 msgstr "Échec à l'ajout du dépôt distant %1"
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr ""
 
@@ -1029,6 +1038,9 @@ msgstr ""
 "spécifique à la langue en créant, par exemple, \"/special/index-it\", c'est-"
 "à-dire, l'URI \"index\", un tiret, et le code de langue."
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1069,8 +1081,8 @@ msgstr ""
 msgid "Inline elements"
 msgstr "Éléments inline"
 
-msgid "Insert the file into the body"
-msgstr "Insérer le fichier dans le corps de texte"
+msgid "Insert the file into the body at the cursor position"
+msgstr ""
 
 msgid "Internal list of translations"
 msgstr "Liste interne de traductions"
@@ -1674,6 +1686,9 @@ msgstr "Veuillez prouvez que vous êtes bien un·e humain·e"
 msgid "Please reload your page"
 msgstr "Veuillez recharger votre page"
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Veuillez sélectionner"
 
@@ -1843,6 +1858,9 @@ msgstr "Re-vérifier"
 
 msgid "Redirections"
 msgstr "Redirections"
+
+msgid "Refresh and apply filters"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Projets apparentés"
@@ -2439,6 +2457,11 @@ msgstr "Textes"
 msgid "To apply the changes, you can visit %1"
 msgstr "Pour appliquer les modifications, vous pouvez visiter %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+"Pour afficher les PDFs, définissez ou ajoutez la chaîne de caractères "
+"suivante au titre :"
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
@@ -2596,6 +2619,9 @@ msgid "Use optimized signatures with %1 pages each"
 msgstr "Utiliser des signatures optimisées avec %1 pages chacune"
 
 msgid "Use sans fonts for section titles"
+msgstr ""
+
+msgid "Use the image as cover"
 msgstr ""
 
 msgid "Useful HTML snippets"
@@ -3051,6 +3077,9 @@ msgstr ""
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer lors d'une modification du texte."
 
+#~ msgid "Insert the file into the body"
+#~ msgstr "Insérer le fichier dans le corps de texte"
+
 #~ msgid "Attached PDFs"
 #~ msgstr "PDFs joints"
 
@@ -3069,12 +3098,6 @@ msgstr ""
 #~ "être pleinement intégrés au document, donc les fichiers générés ne les "
 #~ "incorporent pas. Si vous souhaitez qu'ils le fassent, vous devriez à la "
 #~ "place scinder le PDF en images à la place et les téléverser."
-
-#~ msgid ""
-#~ "To display the PDFs, set or append the following string in the header"
-#~ msgstr ""
-#~ "Pour afficher les PDFs, définissez ou ajoutez la chaîne de caractères "
-#~ "suivante au titre :"
 
 #~ msgid ""
 #~ "You\n"

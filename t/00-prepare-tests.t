@@ -81,7 +81,7 @@ DBIx::Class::DeploymentHandler->new({
                                      sql_translator_args => { add_drop_table => 0,
                                                               quote_identifiers => 1,
                                                             },
-                                     script_directory => "dbicdh",
+                                     script_directory => "$script_dir",
                                     })->install;
 
 ok (-f 'test.db', "test.db created");

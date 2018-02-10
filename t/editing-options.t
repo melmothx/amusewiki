@@ -113,7 +113,7 @@ $user->delete;
 sub check_default {
     my $mech = shift;
     $mech->content_like(qr{id="page"\s*class="col-sm-6\s*col-sm-push-6}s) or die $mech->content;
-    $mech->content_contains(q{style="max-height: 500px});
+    $mech->content_contains(q{style="height: 500px});
     $mech->content_like(qr{id="edit-page-left-panels"\s*class="col-sm-6\s*col-sm-pull-6}s);
     $mech->content_like(qr{data-target="#filters"[^>]*aria-expanded="true"}s);
     $mech->content_like(qr{data-target="#cheatsheet-panel"[^>]*aria-expanded="true"}s);
@@ -122,7 +122,7 @@ sub check_default {
 sub check_modified {
     my $mech = shift;
     $mech->content_like(qr{id="page"\s*class="col-sm-9\s*col-sm-push-3}s) or die $mech->content;
-    $mech->content_contains(q{style="max-height: 400px});
+    $mech->content_contains(q{style="height: 400px});
     $mech->content_like(qr{id="edit-page-left-panels"\s*class="col-sm-3\s*col-sm-pull-9}s);
     $mech->content_like(qr{data-target="#filters"[^>]*aria-expanded="false"}s);
     $mech->content_like(qr{data-target="#cheatsheet-panel"[^>]*aria-expanded="false"}s);

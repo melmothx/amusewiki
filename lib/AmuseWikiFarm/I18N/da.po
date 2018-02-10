@@ -225,6 +225,12 @@ msgstr "Arkivhistorie"
 msgid "Are you sure?"
 msgstr "Er du sikker?"
 
+msgid "As cover in the header"
+msgstr ""
+
+msgid "As regular image in the body"
+msgstr ""
+
 msgid "Attached images"
 msgstr "Vedhæftede billeder"
 
@@ -650,6 +656,9 @@ msgstr "Tilføjelsen af fjernarkivet %1 mislykkedes"
 msgid "Failed to remove Remote repository %1"
 msgstr "Sletningen af fjernarkivet %1 mislykkedes"
 
+msgid "File already in the body"
+msgstr ""
+
 msgid "File extension"
 msgstr ""
 
@@ -1004,6 +1013,9 @@ msgid ""
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
 
+msgid "Image already set as cover"
+msgstr ""
+
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1041,7 +1053,7 @@ msgstr ""
 msgid "Inline elements"
 msgstr ""
 
-msgid "Insert the file into the body"
+msgid "Insert the file into the body at the cursor position"
 msgstr ""
 
 msgid "Internal list of translations"
@@ -1641,6 +1653,9 @@ msgstr "Bevis venligst at du er et menneske"
 msgid "Please reload your page"
 msgstr "Genindlæs venligst siden"
 
+msgid "Please remove this file from the body first"
+msgstr ""
+
 msgid "Please select"
 msgstr "Vælg venligst"
 
@@ -1809,6 +1824,9 @@ msgstr "Tjek igen"
 
 msgid "Redirections"
 msgstr "Omdirigeringer"
+
+msgid "Refresh and apply filters"
+msgstr ""
 
 msgid "Related projects"
 msgstr "Beslægtede projekter"
@@ -2379,6 +2397,9 @@ msgstr "Titler"
 msgid "To apply the changes, you can visit %1"
 msgstr "For at aktivere ændringerne kan du besøge %1"
 
+msgid "To display the PDFs, set or append the following string in the header"
+msgstr ""
+
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr "For at bevare blanktegn og linjespring, så omslut afsnittene med"
@@ -2518,6 +2539,9 @@ msgid "Use optimized signatures with %1 pages each"
 msgstr "Brug optimerede trykark med %1 sider hver"
 
 msgid "Use sans fonts for section titles"
+msgstr ""
+
+msgid "Use the image as cover"
 msgstr ""
 
 msgid "Useful HTML snippets"

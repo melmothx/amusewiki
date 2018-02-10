@@ -80,7 +80,8 @@ use Catalyst (
   '+CatalystX::AmuseWiki::I18N',
 #  'MemoryUsage',
   'Session',
-  'Session::Store::FastMmap',
+  '+CatalystX::Session::Store::AMW',
+#  'Session::Store::FastMmap',
   'Session::State::Cookie',
   'Authentication',
   'Authorization::Roles',
@@ -152,9 +153,10 @@ __PACKAGE__->config(
 
 __PACKAGE__->config(
     'Plugin::Session' => {
-        expires => 60 * 60 * 24 * 7, # 1 week for expiration
+        expires => 60 * 60 * 24 * 7 * 4, # 1 month for expiration
         verify_address => 0, # let's keep the session across router's reboots
-        verify_user_agent => 1,
+        verify_user_agent => 0, # otherwise we loose the session on each browser upgrade
+        # the following settings are unused, kept for the migration
         cache_size => '100m',
         unlink_on_exit => 0,
         storage => File::Spec->rel2abs(File::Spec->catfile(qw/opt cache fastmmap/)),

@@ -5,6 +5,7 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
+use XML::FeedPP;
 
 =head1 NAME
 
@@ -31,7 +32,7 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
 
     my @specials = $site->titles->published_specials;
 
-    my $feed = $c->model('Feed');
+    my $feed = XML::FeedPP::RSS->new;
 
     # set up the channel
     $feed->title($site->sitename);
