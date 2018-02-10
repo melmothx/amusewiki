@@ -4,6 +4,18 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.101 2018-02-10
+
+ - Improved editing UI for image uploads
+ - migrate sessions backend from fastmmap to database
+
+The session migration is handled automatically on upgrade. The
+procedure has been tested and saves a copy of the current session
+storage.
+
+Worst case scenario, your uses will be logged out. If this happens,
+please report it ASAP (but shouldn't happen).
+
 2.100 2018-02-03
 
  - Improved editing UI: batch file upload and ajax preview
