@@ -353,7 +353,7 @@ sub generate_thumbnails {
                     -format => '%wx%h',
                     -write => "info:$info",
                     "$src", "$out");
-        Dlog_info { "Executing $_" } \@exec;
+        Dlog_debug { "Executing $_" } \@exec;
         if (system(@exec) == 0) {
             my ($width, $height);
             if (-f $info) {
@@ -365,7 +365,7 @@ sub generate_thumbnails {
                     $info->remove;
                 }
                 else {
-                    log_warn { "$infoCouldn't compute width and height form $info" };
+                    log_warn { "$info Couldn't compute width and height form $info" };
                 }
             }
             else {
