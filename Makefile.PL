@@ -116,6 +116,7 @@ requires 'Locale::PO';
 test_requires 'Test::More' => '0.88';
 test_requires 'CAM::PDF';
 test_requires 'Test::Differences';
+test_requires 'Test::Warn';
 
 # locations where we store the stuff
 catalyst_ignore('repo',
