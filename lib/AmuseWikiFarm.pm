@@ -142,12 +142,9 @@ __PACKAGE__->config(
 
 __PACKAGE__->config(
     psgi_middleware => [
-        'XSendfile',
-        'ConditionalGET',
-        ETag => {
-            check_last_modified_header => 0,
-            file_etag => [qw/inode mtime size/],
-        },
+        qw/XSendfile
+           ConditionalGET
+           WeakETag/
        ],
 );
 

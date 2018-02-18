@@ -31,8 +31,6 @@ requires 'Data::Dumper::Concise';
 # modules used
 
 # middlewares
-requires 'Plack::Middleware::ETag';
-requires 'Plack::Middleware::ConditionalGET';
 requires 'Plack::Middleware::XSendfile';
 
 # needs a recent thing

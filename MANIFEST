@@ -561,6 +561,7 @@ lib/AmuseWikiFarm/I18N/sv.po
 lib/AmuseWikiFarm/Log/Contextual.pm
 lib/AmuseWikiFarm/Log/Contextual/App.pm
 lib/AmuseWikiFarm/Middleware/ConditionalGET.pm
+lib/AmuseWikiFarm/Middleware/WeakETag.pm
 lib/AmuseWikiFarm/Model/BookBuilder.pm
 lib/AmuseWikiFarm/Model/DB.pm
 lib/AmuseWikiFarm/Model/Lexicon.pm
