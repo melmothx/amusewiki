@@ -9,7 +9,7 @@ my %sessions;
 my $config = AmuseWikiFarm->_session_plugin_config;
 unless ($config->{cache_size} && $config->{storage} && -f $config->{storage}) {
     print "No need to migrate, exiting\n";
-    exit;
+    return;
 }
 print Dumper($config);
 File::Copy::copy($config->{storage}, $config->{storage} . '~' . time())
