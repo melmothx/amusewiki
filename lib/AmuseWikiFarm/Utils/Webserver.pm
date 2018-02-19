@@ -594,6 +594,7 @@ sub _insert_server_stanza {
         my $logpath = File::Spec->catfile($self->nginx_log_dir, $canonical . '.log');
         $out .= "    access_log $logpath $logformat;\n";
     }
+    $out .= "    error_log " . File::Spec->catfile($self->nginx_log_dir, $canonical . '.err.log') . ";\n";
 
     # the common config
     $out .= "    include ${amwbase}_include;\n";
