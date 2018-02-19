@@ -2893,6 +2893,12 @@ msgstr ""
 "si non défini, il est automatiquement généré à partir de l'auteur·e et du "
 "titre"
 
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
+
 msgid "code and monospace"
 msgstr "code et caractères à espacement fixe"
 

@@ -2803,6 +2803,12 @@ msgid "automatically generated if not present, using author and title"
 msgstr ""
 "bliver automatisk genereret hvis feltet er tomt, bruger forfatter og titel"
 
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
+
 msgid "code and monospace"
 msgstr "kode og monospatieret"
 

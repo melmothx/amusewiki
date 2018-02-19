@@ -778,7 +778,7 @@ msgstr ""
 msgid "Failed to remove Remote repository %1"
 msgstr ""
 
-#: root/static/js/amw-batch-upload.js:72
+#: root/static/js/amw-batch-upload.js:73
 msgid "File already in the body"
 msgstr ""
 
@@ -1167,7 +1167,7 @@ msgid ""
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
 
-#: root/static/js/amw-batch-upload.js:89
+#: root/static/js/amw-batch-upload.js:90
 msgid "Image already set as cover"
 msgstr ""
 
@@ -1212,7 +1212,7 @@ msgstr ""
 msgid "Inline elements"
 msgstr ""
 
-#: root/src/edit/edit.tt:184 root/static/js/amw-batch-upload.js:73
+#: root/src/edit/edit.tt:184 root/static/js/amw-batch-upload.js:74
 msgid "Insert the file into the body at the cursor position"
 msgstr ""
 
@@ -1906,7 +1906,7 @@ msgstr ""
 msgid "Please reload your page"
 msgstr ""
 
-#: root/static/js/amw-batch-upload.js:100
+#: root/static/js/amw-batch-upload.js:101
 msgid "Please remove this file from the body first"
 msgstr ""
 
@@ -2078,7 +2078,7 @@ msgstr ""
 msgid "Reason for deletion"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:3659 root/src/tasks/rebuild.tt:26
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:3662 root/src/tasks/rebuild.tt:26
 msgid "Rebuild"
 msgstr ""
 
@@ -2124,7 +2124,7 @@ msgstr ""
 msgid "Remotes"
 msgstr ""
 
-#: root/src/console/git_display.tt:16 root/static/js/amw-batch-upload.js:100
+#: root/src/console/git_display.tt:16 root/static/js/amw-batch-upload.js:101
 msgid "Remove"
 msgstr ""
 
@@ -2954,7 +2954,7 @@ msgstr ""
 msgid "Unsupported file type %1"
 msgstr ""
 
-#: root/static/js/amw-batch-upload.js:58 root/static/js/amw-batch-upload.js:60
+#: root/static/js/amw-batch-upload.js:59 root/static/js/amw-batch-upload.js:61
 msgid "Unused attachment"
 msgstr ""
 
@@ -3007,7 +3007,7 @@ msgstr ""
 msgid "Use sans fonts for section titles"
 msgstr ""
 
-#: root/static/js/amw-batch-upload.js:90
+#: root/static/js/amw-batch-upload.js:91
 msgid "Use the image as cover"
 msgstr ""
 
@@ -3287,6 +3287,14 @@ msgstr ""
 
 #: root/src/edit/newtext.tt:235
 msgid "automatically generated if not present, using author and title"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:428
+msgid "by number of pages, ascending"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:438
+msgid "by number of pages, descending"
 msgstr ""
 
 #: root/src/edit/edit.tt:469 root/src/edit/edit.tt:470 root/src/edit/edit.tt:472

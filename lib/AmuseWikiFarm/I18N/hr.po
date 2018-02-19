@@ -2627,7 +2627,8 @@ msgstr ""
 "tamo nastaviti."
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
-msgstr "Kad se učita PDF datoteku, pretvori je u slike koje je moguće dodati tekstu"
+msgstr ""
+"Kad se učita PDF datoteku, pretvori je u slike koje je moguće dodati tekstu"
 
 msgid "Where does this text come from?"
 msgstr "Odakle dolazi ovaj tekst?"
@@ -2812,6 +2813,12 @@ msgstr "bilo koja"
 
 msgid "automatically generated if not present, using author and title"
 msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
+
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "oblikovanje koda"

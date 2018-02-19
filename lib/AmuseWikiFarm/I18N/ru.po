@@ -2838,6 +2838,12 @@ msgstr ""
 "если поле оставлено пустым создаётся автоматически с использованием автора и "
 "названия"
 
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
+
 msgid "code and monospace"
 msgstr "код и моноширинный"
 

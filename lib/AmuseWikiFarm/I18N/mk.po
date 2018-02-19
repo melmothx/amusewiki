@@ -2860,6 +2860,12 @@ msgstr "која било"
 msgid "automatically generated if not present, using author and title"
 msgstr "се генерира автоматски доколку недостига, со автор и наслов"
 
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
+
 msgid "code and monospace"
 msgstr "обликување на кодот"
 

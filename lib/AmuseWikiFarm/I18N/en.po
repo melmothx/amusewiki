@@ -2590,6 +2590,12 @@ msgstr ""
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
+
 msgid "code and monospace"
 msgstr ""
 

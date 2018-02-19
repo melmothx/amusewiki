@@ -2874,6 +2874,12 @@ msgstr "cualquiera"
 msgid "automatically generated if not present, using author and title"
 msgstr "generado automáticamente si no se ocupa, usando autor/a y título"
 
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
+
 msgid "code and monospace"
 msgstr "código y mono espaciado"
 

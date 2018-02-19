@@ -1084,7 +1084,8 @@ msgid "Inline elements"
 msgstr "Elementi per la riga"
 
 msgid "Insert the file into the body at the cursor position"
-msgstr "Inserisci il file nel corpo del testo nella posizione corrente del cursore"
+msgstr ""
+"Inserisci il file nel corpo del testo nella posizione corrente del cursore"
 
 msgid "Internal list of translations"
 msgstr "Lista interna delle traduzioni"
@@ -2901,6 +2902,12 @@ msgstr "qualsiasi"
 
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
+
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
 
 msgid "code and monospace"
 msgstr "formattazione codice"

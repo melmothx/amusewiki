@@ -2831,6 +2831,12 @@ msgstr ""
 "gjenerohet automatikisht nëse nuk është prezente duke përdorur autorin dhe "
 "titullin"
 
+msgid "by number of pages, ascending"
+msgstr ""
+
+msgid "by number of pages, descending"
+msgstr ""
+
 msgid "code and monospace"
 msgstr "Kodi dhe monospace"
 
