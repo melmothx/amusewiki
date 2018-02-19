@@ -3254,7 +3254,10 @@ sub bottom_layout_html {
 
 sub titles_available_sortings {
     my $self = shift;
-    return $self->titles->available_sortings(sku => $self->enable_order_by_sku);
+    return $self->titles->available_sortings(
+                                             sku => $self->enable_order_by_sku,
+                                             text_size => $self->show_type_and_number_of_pages,
+                                            );
 }
 
 sub validate_text_category_sorting {

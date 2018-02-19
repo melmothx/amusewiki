@@ -8,7 +8,7 @@ use strict;
 use warnings;
 use utf8;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 50;
+use Test::More tests => 71;
 
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -29,7 +29,7 @@ unless ($site) {
             my $sku = sprintf('%s-%.6d', $prefix, $i);
             foreach my $add_sku (0..1) {
                 my ($rev) = $site->create_new_text({ title => "Prefix $i SKU $sku $add_sku",
-                                                     textbody => '<p>ciao</p>',
+                                                     textbody => ('<p>ciao</p>' x $i),
                                                      ($add_sku ? (cat => $prefix,
                                                                   author => $prefix) : ()),
                                                    }, 'text');
@@ -51,6 +51,20 @@ foreach my $text ($site->titles->search({ sku => { '!=' => '' } })) {
 is $site->titles->search({ sku => { "!=" => '' } })->order_by('sku_asc')->first->sku, 'first-000095';
 is $site->titles->order_by('sku_desc')->first->sku, 'second-000102';
 
+is $site->titles->order_by('pages_asc')->first->uri, 'prefix-95-sku-first-000095-0';
+{
+    my $page_desc = $site->titles->order_by('pages_desc');
+    is $page_desc->next->uri, 'prefix-102-sku-first-000102-0';
+    is $page_desc->next->uri, 'first-prefix-102-sku-first-000102-1';
+}
+{
+    my $page_asc = $site->titles->order_by('pages_asc');
+    is $page_asc->next->uri, 'prefix-95-sku-first-000095-0';
+    is $page_asc->next->uri, 'first-prefix-95-sku-first-000095-1';
+}
+
+
+
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
@@ -63,18 +77,42 @@ diag "Checking if the option pops up";
 $mech->get_ok('/category/author/first');
 $mech->content_lacks('sku_desc');
 $mech->content_lacks('sku_asc');
+
+$mech->content_lacks('pages_desc');
+$mech->content_lacks('pages_asc');
+
+
 $mech->get_ok('/user/site');
 $mech->content_lacks('sku_desc');
 $mech->content_lacks('sku_asc');
-$mech->submit_form(with_fields => { enable_order_by_sku => '1' },
+
+$mech->content_lacks('pages_desc');
+$mech->content_lacks('pages_asc');
+
+
+$mech->submit_form(with_fields => {
+                                   enable_order_by_sku => 1,
+                                   show_type_and_number_of_pages => 1,
+                                  },
                    button => 'edit_site');
 $mech->get_ok('/user/site');
 $mech->content_contains('sku_desc');
 $mech->content_contains('sku_asc');
+
+$mech->content_contains('pages_desc');
+$mech->content_contains('pages_asc');
+
+
 $mech->get_ok('/category/author/first');
+
 $mech->content_contains('sku_desc');
 $mech->content_contains('sku_asc');
 
+$mech->content_contains('pages_desc');
+$mech->content_contains('pages_asc');
 
+foreach my $sorting ($site->discard_changes->titles_available_sortings) {
+    $mech->get_ok('/listing?sort=' . $sorting->{name});
+}
 
 

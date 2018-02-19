@@ -422,6 +422,23 @@ sub _sorting_map {
                             label => "Older first",
                             key => 'pubdate',
                            },
+            pages_asc => {
+                          priority => 7,
+                          order_by => { -asc => [ "$me.text_size", @default ] },
+                          # loc("by number of pages, ascending");
+                          label => "by number of pages, ascending",
+                          key => 'text_size',
+                         },
+            pages_desc => {
+                           priority => 8,
+                           order_by => [
+                                        { -desc => [ "$me.text_size" ] },
+                                        { -asc  => [  @default ] },
+                                       ],
+                           # loc("by number of pages, descending");
+                           label => "by number of pages, descending",
+                           key => 'text_size',
+                          },
             };
 }
                    
@@ -430,9 +447,12 @@ sub available_sortings {
     my ($self, %opt) = @_;
     my $avail = $self->_sorting_map;
     my @out;
+  SORTMETHOD:
     foreach my $k (keys %$avail) {
-        unless ($opt{sku}) {
-            next if $avail->{$k}->{key} eq 'sku';
+        foreach my $optional (qw/sku text_size/) {
+            unless ($opt{$optional}) {
+                next SORTMETHOD if $avail->{$k}->{key} eq $optional;
+            }
         }
         push @out, {
                     name => $k,
