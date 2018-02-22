@@ -445,6 +445,7 @@ INCLUDE
                 $location =~ s!/*\z!/!;
                 print $fh <<"INCLUDE";
     location /static/js/$cdn_or_local/ {
+        expires 1w;
         alias $location;
     }
 INCLUDE
@@ -487,7 +488,7 @@ INCLUDE
     }
     location / {
         try_files \$uri \@proxy;
-        expires max;
+        expires 1w;
     }
     location \@proxy {
         # with nginx < 1.7.3, gzip must be off. Set nginx_disable_gzip_on_dynamic_pages to 1 in the Model::Webserver config
