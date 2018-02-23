@@ -15,11 +15,13 @@ use POSIX qw/nice/;
 use Getopt::Long;
 use Pod::Usage;
 
-my ($refresh, $recompile, $help, $xapian);
+my ($refresh, $recompile, $help, $xapian,
+    $rebuild);
 
 GetOptions (refresh => \$refresh,
             help => \$help,
             xapian => \$xapian,
+            rebuild => \$rebuild,
            ) or die;
 
 if ($help) {
@@ -65,6 +67,11 @@ database first. You can save a lot of I/O.
 Do not perform any compilation or db operation, but only reindex the
 xapian database.
 
+=item --rebuild
+
+Rebuild all the formats. It does the same thing as calling the
+/tasks/rebuild route.
+
 =back
 
 =cut
@@ -103,6 +110,11 @@ foreach my $code (@codes) {
     }
     elsif ($xapian) {
         $site->xapian_reindex_all;
+    }
+    elsif ($rebuild) {
+        $site->bulk_jobs->rebuilds->active_bulk_jobs->abort_all;
+        my $j = $site->rebuild_formats;
+        print $site->canonical_url . '/tasks/job/' . $j->bulk_job_id . "/show\n";
     }
     # without, do a full import
     else {
