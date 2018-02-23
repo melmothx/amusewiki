@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 59;
+use Test::More tests => 60;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -17,6 +17,8 @@ use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
+use Git::Wrapper;
+use Path::Tiny;
 
 my $mailer = AmuseWikiFarm::Utils::Mailer->new(mkit_location => 't/mkits');
 
@@ -116,7 +118,21 @@ $mech->click("commit");
 
 ok $site->mail_notify;
 ok $site->mail_from;
-$site->add_git_remote("test", "git://localhost/git/prova.git");
+
+my $remotegit = Path::Tiny->tempdir(CLEANUP => 0);
+my $remote = Git::Wrapper->new("$remotegit");
+my $testfile = path($remotegit, 'specials', 'index.muse');
+{
+    $remote->clone($site->repo_root, "$remotegit");
+    diag "Cloned in $remotegit?";
+    die "Not cloned" unless $remotegit->child('.git')->exists;
+    $testfile->parent->mkpath;
+    $testfile->spew("#title Hello\n\nciao\n");
+    $remote->add("$testfile");
+    $remote->commit({ message => 'First addition' });
+}
+
+$site->add_git_remote("test", "$remotegit");
 
 {
     my $job = $site->jobs->git_action_add({ remote => 'test',
@@ -127,6 +143,13 @@ $site->add_git_remote("test", "git://localhost/git/prova.git");
 
 $site->update({ mail_from => undef });
 # no mail;
+
+{
+    $testfile->spew("#title Hello\n\nciao\nciao\nciao\n");
+    $remote->add("$testfile");
+    $remote->commit({ message => 'Second addition' });
+
+}
 
 {
     my $job = $site->jobs->git_action_add({ remote => 'test',
@@ -213,6 +236,7 @@ $site->update({ mail_from => undef });
         ok ($sent, "The application sent the mail");
         my $body = $sent->{email}->as_string;
         ok ($body);
+        like $body, qr{specials/index\.muse}i;
         like $body, qr{subject: \[0mail0\.amusewiki\.org\] git pull test}i;
         like $body, qr{https\:\/\/0mail0\.amusewiki\.org\/tasks\/job\/};
         diag $body;
