@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 33;
+use Test::More tests => 39;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -61,6 +61,20 @@ foreach my $bad (qw[.git .gitignore .. . ../../../hello blaa/../hello ]) {
 }
 
 
+$mech->get_ok("/mirror.txt");
+$mech->content_contains('/mirror/index.html');
+$mech->content_contains('/mirror/titles.html');
+diag $mech->content;
+my @list = grep { /\Ahttp\S*\z/ } split(/\n/, $mech->content);
+my ($got_ok, $got_fail) = (0,0);
+foreach my $url (@list) {
+    $mech->get($url);
+    $mech->status eq '200' ? $got_ok++ : $got_fail++;
+}
+ok ($got_ok > 30, "$got_ok requests ok");
+ok (!$got_fail, "$got_fail failed request");
+
+
 $site->update({ mode => 'private' });
 ok $site->cgit_integration;
 
@@ -68,6 +82,10 @@ foreach my $path (@paths) {
     $mech->get("/mirror/$path");
     is $mech->status, 401;
 }
+
+$mech->get("/mirror.txt");
+is $mech->status, 401;
+
 
 $site->update({
                cgit_integration => 0,

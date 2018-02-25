@@ -5,6 +5,8 @@ use namespace::autoclean;
 
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
+use File::Find;
+use File::Spec;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
@@ -27,11 +29,6 @@ Catalyst Controller.
 
 sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
-}
-
-sub mirror :Chained('root') :PathPart('mirror') :Args {
-    my ($self, $c, @path) = @_;
-    Dlog_debug { "Request for under mirror $_" } \@path;
     my $site = $c->stash->{site};
     # this is a bit (just a bit) risky, as we expose the repo tree
     # without doing much checking. However, we don't do directory
@@ -40,7 +37,39 @@ sub mirror :Chained('root') :PathPart('mirror') :Args {
     # tree even if we have not published yet texts. So we do the same
     # check for /git, requiring logging in if not normally exposed.
     $self->check_login($c) unless $site->cgit_integration;
+}
 
+sub mirror_index :Chained('root') :PathPart('mirror.txt') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my $root = path($site->repo_root);
+    my $base_url = $c->uri_for_action('/mirror/mirror', '');
+    my @list = ('index.html', 'titles.html', 'topics.html', 'authors.html' );
+    my $root_as_string = $root->stringify;
+    find({ wanted => sub {
+               my $filename = $_;
+               if (-f $filename) {
+                   my ($volume, $dir, $file) = File::Spec->splitpath(File::Spec->abs2rel($filename,
+                                                                                         $root_as_string));
+                   my @fragments = grep { length($_) } (File::Spec->splitdir($dir), $file);
+
+                   Dlog_debug { "$filename: $_" } \@fragments;
+
+                   return if grep { !m{\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z} } @fragments;
+                   return if $fragments[-1] =~ m/\.(status|log)\z/;
+                   push @list, join('/', @fragments);
+               }
+           },
+           no_chdir => 1,
+         }, map { $_->stringify } $root->children(qr{\A[0-9a-zA-Z][0-9a-zA-Z_-]*\z}));
+    $c->response->content_type('text/plain');
+    $c->response->body(join("\n", map { $base_url . $_ } @list). "\n");
+}
+
+sub mirror :Chained('root') :PathPart('mirror') :Args {
+    my ($self, $c, @path) = @_;
+    Dlog_debug { "Request for under mirror $_" } \@path;
+    my $site = $c->stash->{site};
     unless (@path) {
         $c->res->redirect($c->uri_for_action('/mirror/mirror', 'index.html'));
         $c->detach;
