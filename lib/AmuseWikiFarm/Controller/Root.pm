@@ -339,6 +339,8 @@ sub sitemap_txt :Chained('/site') :PathPart('sitemap.txt') :Args(0) {
                       'feed',
                       'latest',
                       'listing',
+                      'library',
+                      'search',
                       'category/topic',
                       'category/author') {
         push @urls, $base . '/' . $root;

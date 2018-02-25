@@ -21,6 +21,7 @@ foreach my $link (@links) {
     $mech->get_ok($link);
     my $path = $mech->uri->path;
     like $link, qr{\Q$path\E$}, "$path is fine";
+    $mech->content_lacks(q{<meta name="robots"})
 }
 
 done_testing;

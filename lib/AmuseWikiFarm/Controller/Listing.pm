@@ -23,7 +23,7 @@ Catalyst Controller.
 
 =cut
 
-sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
+sub root :Chained('/site_robot_index') :PathPart('') :CaptureArgs(0) {
     my ( $self, $c ) = @_;
     # compare with Controller::Category::single_category
 }
