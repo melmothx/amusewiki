@@ -1161,6 +1161,7 @@ script/install.sh
 script/install_fonts.sh
 script/install_js.sh
 script/jobber.pl
+script/mirror-site.sh
 script/patch-cam-pdf.sh
 script/sync-remote-archive.pl
 script/test-dbic-upgrade-script.pl

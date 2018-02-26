@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 40;
+use Test::More tests => 43;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -76,6 +76,11 @@ foreach my $url (@list) {
 }
 ok ($got_ok > 30, "$got_ok requests ok");
 ok (!$got_fail, "$got_fail failed request");
+
+$mech->get_ok('/mirror.ts.txt');
+diag $mech->content;
+$mech->content_contains("index.html#\n");
+$mech->content_like(qr{^specials/index\.muse\#\d+$}m);
 
 
 $site->update({ mode => 'private' });

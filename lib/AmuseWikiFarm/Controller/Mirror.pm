@@ -39,16 +39,20 @@ sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
     $self->check_login($c) unless $site->cgit_integration;
 }
 
-sub mirror_index :Chained('root') :PathPart('mirror.txt') :Args(0) {
+sub get_files :Chained('root') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     my $root = path($site->repo_root);
-    my $base_url = $c->uri_for_action('/mirror/mirror', '');
-    my @list = ('index.html', 'titles.html', 'topics.html', 'authors.html' );
+
+    my @list = map { +{
+                       file => $_,
+                       ts => (stat($root->child($_)))[9] || '',
+                      } } ('index.html', 'titles.html', 'topics.html', 'authors.html' );
     my $root_as_string = $root->stringify;
     find({ wanted => sub {
                my $filename = $_;
                if (-f $filename) {
+                   my $ts = (stat($filename))[9];
                    my ($volume, $dir, $file) = File::Spec->splitpath(File::Spec->abs2rel($filename,
                                                                                          $root_as_string));
                    my @fragments = grep { length($_) } (File::Spec->splitdir($dir), $file);
@@ -57,13 +61,29 @@ sub mirror_index :Chained('root') :PathPart('mirror.txt') :Args(0) {
 
                    return if grep { !m{\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z} } @fragments;
                    return if $fragments[-1] =~ m/\.(status|log)\z/;
-                   push @list, join('/', @fragments);
+                   push @list, {
+                                file => join('/', @fragments),
+                                ts => $ts,
+                               };
                }
            },
            no_chdir => 1,
          }, map { $_->stringify } $root->children(qr{\A[0-9a-zA-Z][0-9a-zA-Z_-]*\z}));
+    Dlog_debug { "List is $_" } \@list;
+    $c->stash->{mirror_file_list} = \@list;
+}
+
+sub mirror_index :Chained('get_files') :PathPart('mirror.txt') :Args(0) {
+    my ($self, $c) = @_;
+    my $base_url = $c->uri_for_action('/mirror/mirror', '');
     $c->response->content_type('text/plain');
-    $c->response->body(join("\n", map { $base_url . $_ } @list). "\n");
+    $c->response->body(join("\n", map { $base_url . $_->{file} } @{$c->stash->{mirror_file_list}}). "\n");
+}
+
+sub mirror_index_with_ts :Chained('get_files') :PathPart('mirror.ts.txt') :Args(0) {
+    my ($self, $c) = @_;
+    $c->response->content_type('text/plain');
+    $c->response->body(join("\n", map { $_->{file} . '#' . $_->{ts} } @{$c->stash->{mirror_file_list}}). "\n");
 }
 
 sub mirror :Chained('root') :PathPart('mirror') :Args {
