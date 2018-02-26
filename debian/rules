@@ -19,6 +19,7 @@ override_dh_auto_build:
 # fix shebang and remove the use 'lib' stuff
 override_dh_auto_install:
 	dh_auto_install
+	dh_bash-completion
 	mkdir $(TMP)/etc
 	cat $(CURDIR)/debian/amusewiki-debian-config.conf > $(TMP)/etc/amusewiki.conf
 	ln -sf ../../../../etc/amusewiki.conf $(TMP)/usr/share/perl5/AmuseWikiFarm/amusewikifarm.conf
