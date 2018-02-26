@@ -154,7 +154,7 @@ Create a database for amusewiki as above:
  create user amusewiki with password 'XXXX';
  create database amusewiki owner amusewiki;
 
-And create a a new dbic.yaml file in /var/lib/amusewiki as described
+And create a new dbic.yaml file in /var/lib/amusewiki as described
 in the above section.
 
 ** As amusewiki
@@ -198,4 +198,4 @@ If you had the git-daemon enabled:
 If something goes wrong, you can revert to the bootstrapping tecnique
 described above.
 
- -- Marco Pessotto <melmothx@gmail.com>, Fri, 25 Nov 2016 11:10:05 +0100
+ -- Marco Pessotto <melmothx@gmail.com>, Mon, 26 Feb 2018 10:57:21 +0100
