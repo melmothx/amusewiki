@@ -306,18 +306,17 @@ sub favicon :Chained('/site_no_auth') :PathPart('favicon.ico') :Args(0) {
 
 sub robots_txt :Chained('/site_no_auth') :PathPart('robots.txt') :Args(0) {
     my ($self, $c) = @_;
-    my $robots = <<'ROBOTS';
-User-agent: Wget
-Disallow: /library/
-Disallow: /special/
-Disallow: /random
-
+    my $mirror_url = $c->uri_for_action('/mirror/mirror_index');
+    my $robots = <<"ROBOTS";
 User-agent: *
 Disallow: /edit/
 Disallow: /bookbuilder/
 Disallow: /bookbuilder
 Disallow: /random
 Disallow: /git/
+
+# Istant mirror:
+# wget -q -O - $mirror_url | wget -x -N -q -i -
 ROBOTS
     my $site = $c->stash->{site};
     if (!$site or $site->is_private) {

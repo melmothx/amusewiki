@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 39;
+use Test::More tests => 40;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -37,6 +37,9 @@ foreach my $path (@paths) {
 
 $site->update({ cgit_integration => 1 });
 ok $site->cgit_integration;
+
+$mech->get('/robots.txt');
+$mech->content_contains('http://blog.amusewiki.org/mirror.txt | wget');
 
 foreach my $path (@paths) {
     $mech->get_ok("/mirror/$path");
