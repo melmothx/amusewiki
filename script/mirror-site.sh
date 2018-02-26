@@ -34,8 +34,9 @@ while read -r line ; do
     if [ -n "$file" -a -n "$ts" ]; then
         if [ -f "$sitename/mirror/$file" ]; then
             mine=$(stat -c "%Y" "$sitename/mirror/$file")
-            if [ $ts -gt $mine ]; then
+            if [ $ts -ne $mine ]; then
                 echo "$site/mirror/$file" >> $urls
+                rm "$sitename/mirror/$file"
             fi
         else
             echo "$site/mirror/$file" >> $urls
