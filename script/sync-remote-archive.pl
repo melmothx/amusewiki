@@ -17,21 +17,3 @@ my $id = $job->discard_changes->id;
 
 print "Job id is tasks/status/$id\n";
 
-# then loop and pool
-
-my $maxloop = 100;
-while ($job->status ne 'completed' and $job->status ne 'failed') {
-    $maxloop--;
-    if ($maxloop < 0) {
-        print "Waiting for job completion timed out\n";
-        last;
-    }
-    sleep 10;
-    $job = $schema->resultset('Job')->find($id);
-
-}
-
-print join("\n", map { $_ || '' }
-           $job->id , $job->site_id, $job->status,
-           $job->produced,
-           $job->errors, $job->logs);
