@@ -13,6 +13,16 @@ use Data::Page;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Unidecode ();
 use Try::Tiny;
+use JSON::MaybeXS;
+use AmuseWikiFarm::Archive::Xapian::Result;
+
+my %SLOTS = (
+             author => 0,
+             topic => 1,
+             pubdate => 2,
+             qualification => 3,
+             pages => 4,
+            );
 
 =head1 NAME
 
@@ -161,27 +171,16 @@ sub index_text {
             $indexer->set_document($doc);
 
             # Set the document data to the uri so we can show it for matches.
+            # this is treated as blob.
             $doc->set_data($title->uri);
 
             # Unique ID.
             $doc->add_term($qterm);
 
-            # To allow sorting by author.
-            # $doc->add_value($SLOT_AUTHOR, $author);
-
-            # To allow sorting by title..
-            # $doc->add_value($SLOT_TITLE, $doc_name);
-
             # Index the author to allow fielded free-text searching.
             if (my $author = $title->author) {
                 $indexer->index_text($author, 1, 'A');
             }
-
-            if (my $author_list = $title->author_list) {
-                # with lesser weight, index the list
-                $indexer->index_text($author_list, 2, 'A');
-            }
-
             # Index the title and subtitle to allow fielded free-text searching.
             $indexer->index_text($title->title, 1, 'S');
 
@@ -189,15 +188,30 @@ sub index_text {
                 $indexer->index_text($subtitle, 2, 'S');
             }
 
+            my %cats = (
+                        author => { key => 'A', index => 2, rs => 'authors_only' },
+                        topic =>  { key => 'K', index => 1, rs => 'topics_only' },
+                       );
+            foreach my $cat (keys %cats) {
+                my @list;
+                my $prefix = $cats{$cat}{key};
+                my $rs = $cats{$cat}{rs};
+                my $index = $cats{$cat}{index};
+                foreach my $item ($title->categories->$rs->all) {
+                    push @list, $item->full_uri;
+                    $doc->add_boolean_term('X' . $prefix);
+                    $indexer->index_text($item->name, $index, $prefix);
+                }
+                $doc->add_value($SLOTS{$cat}, encode_json(\@list));
+            }
+
+
             # To allow date range searching and sorting by date.
             if ($title->date and $title->date =~ /(\d{4})/) {
                 $indexer->index_text($1, 1, 'Y');
                 # $doc->add_value($SLOT_DATE, "$1$2$3");
             }
 
-            if (my $topic_list = $title->topic_list) {
-                $indexer->index_text($topic_list, 1, 'K');
-            }
             if (my $source = $title->source) {
                 $indexer->index_text($source, 1, 'XSOURCE');
             }
@@ -232,7 +246,7 @@ sub index_text {
                     # This way we have a match for both case.
                     try {
                         $indexer->index_text(Text::Unidecode::unidecode($line));
-                        log_debug { Text::Unidecode::unidecode($line) };
+                        # log_debug { Text::Unidecode::unidecode($line) };
                     } catch {
                         my $error = $_;
                         log_warn { "Cannot unidecode $line: $_" } ;
@@ -295,14 +309,22 @@ site locale.
 
 sub search {
     my ($self, $query_string, $page, $locale) = @_;
-    my $pager = Data::Page->new;
-    return $pager unless $query_string;
+    my $res = $self->faceted_search(
+                                    locale => $locale,
+                                    no_facets => 1,
+                                    page => $page,
+                                    query => $query_string,
+                                   );
+    return $res->pager, @{$res->matches};
+}
 
+sub faceted_search {
+    my ($self, %args) = @_;
     my $database = Search::Xapian::Database->new($self->xapian_dir);
-
-    # set up the query parser
     my $qp = Search::Xapian::QueryParser->new($database);
 
+    # locale + stemming
+    my $locale = $args{locale};
     # if the locale passed doesn't match with the main language, don't
     # use the stemming. However, this will probably prevent to find
     # documents in other languages which was stemmed differently.
@@ -314,6 +336,7 @@ sub search {
     }
     $qp->set_stemmer($self->xapian_stemmer($locale));
     $qp->set_stemming_strategy(STEM_SOME);
+
     $qp->set_default_op(OP_AND);
     $qp->add_prefix(author => 'A');
     $qp->add_prefix(title => 'S');
@@ -324,7 +347,7 @@ sub search {
     $qp->add_prefix(notes => 'XNOTES');
     $qp->add_boolean_prefix(uri => 'Q');
 
-    my $query = $qp->parse_query($query_string,
+    my $query = $qp->parse_query(delete $args{query} || '',
                                  (FLAG_PHRASE   |
                                   FLAG_BOOLEAN  |
                                   FLAG_LOVEHATE |
@@ -332,41 +355,81 @@ sub search {
 
     my $enquire = $database->enquire($query);
 
+    my %spies;
+    unless ($args{no_facets}) {
+        foreach my $slot (keys %SLOTS) {
+            $spies{$slot} = Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot});
+            $enquire->add_matchspy($spies{$slot});
+        }
+    }
+
     # paging
     my $pagesize = $self->page;
+    my $page = $args{page};
     # be sure to have a number
-    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+    unless ($page and $page =~ m/\A([1-9][0-9]*)\z/) {
         $page = 1;
     }
     my $start = ($page - 1) * $pagesize;
+
     my $mset = $enquire->get_mset($start, $pagesize, $pagesize);
+    # pager
+    my $pager = Data::Page->new;
     $pager->total_entries($mset->get_matches_estimated);
     $pager->entries_per_page($pagesize);
     $pager->current_page($page);
-    my @results;
-    foreach my $m ($mset->items) {
-        my $founddoc = {};
-        $founddoc->{rank} = $m->get_rank + 1;
-        $founddoc->{relevance} = $m->get_percent;
-        $founddoc->{pagename} = $m->get_document->get_data;
-        push @results, $founddoc;
+
+    my @matches;
+    foreach my $item ($mset->items) {
+        my $doc = $item->get_document;
+        push @matches, {
+                        pagename => $doc->get_data,
+                        relevance => $item->get_percent,
+                        rank => $item->get_rank + 1,
+                       };
+        log_debug { join(' ', map { '<' . ($doc->get_value($_) || '') . '>'  } values %SLOTS) };
     }
-    return $pager, @results;
+    my %facets;
+    foreach my $spy_name (keys %spies) {
+        my $spy = $spies{$spy_name};
+        # Fetch and display the spy values
+        my @got;
+        my $end = $spy->values_end;
+        # this is really weird, but the docs says so
+      SPYLOOP:
+        for (my $it = $spy->values_begin; $it != $end; $it++) {
+            push @got, {
+                        value => $it->get_termname,
+                        count => $it->get_termfreq,
+                       };
+        }
+        $facets{$spy_name} = \@got;
+    }
+
+    # and unroll the json one. This is horrid, but there is no
+    # multivalue and subclassing MatchSpy leads to a beautiful
+    # segmentation fault (core dumped)
+
+    foreach my $k (qw/author topic/) {
+        next unless $facets{$k};
+        my @raw = @{$facets{$k}};
+        my %out;
+        while (@raw) {
+            my $record = shift @raw;
+            my @values = @{decode_json($record->{value})};
+            my $count = $record->{count};
+            foreach my $v (@values) {
+                $out{$v} += $count;
+            }
+        }
+        $facets{$k} = [ map { +{ value => $_, count => $out{$_} } } sort keys %out ];
+    }
+    return AmuseWikiFarm::Archive::Xapian::Result->new(
+                                                       matches => \@matches,
+                                                       facets => \%facets,
+                                                       pager => $pager,
+                                                      );
 }
-
-=over 4
-
-=item rank
-
-=item relevance
-
-=item pagename
-
-=back
-
-=cut
-
-
 
 
 
