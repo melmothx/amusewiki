@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 1;
+use Test::More tests => 11;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -33,6 +33,7 @@ my $site = create_site($schema, $site_id);
 #topics kuća, snijeg, škola, peć
 #authors pinkić palinić, kajo šempronijo
 #pubdate 2013-12-25
+#date -1993-
 #lang en
 
 ** This is a book common
@@ -53,6 +54,7 @@ MUSE
 #authors apinkić apalinić, akajo ašempronijo, pinkić palinić, kajo šempronijo, hey
 #pubdate 2009-12-25
 #lang en
+#date -1559-
 
 This is not a book common
 
@@ -70,6 +72,7 @@ MUSE
 #topics xkuća, xsnijeg, xškola, xpeć
 #authors apinkić apalinić, akajo ašempronijo
 #pubdate 2017-12-25
+#date (2001)
 #lang hr
 
 This is a very long piece common
@@ -124,7 +127,42 @@ LOREM
 
 $site->update_db_from_tree(sub { diag @_ });
 
-my $res = $site->xapian->faceted_search(query => "is");
-diag Dumper($res);
-is $res->pager->total_entries, 3;
+{
+    my $res = $site->xapian->faceted_search(query => "is");
+    diag Dumper($res);
+    is $res->pager->total_entries, 3;
+}
 
+{
+    my $sample = $site->titles->first;
+
+    $sample->date('1759-');
+    is $sample->date_decade, 1750;
+
+    $sample->date('-1800');
+    is $sample->date_decade, 1800;
+
+    $sample->date('-1799-');
+    is $sample->date_decade, 1790;
+
+    $sample->date('(2000-2001)');
+    is $sample->date_decade, 2000;
+    
+    $sample->date('(1999-2001)');
+    is $sample->date_decade, 1990;
+
+    $sample->date('(1991)');
+    is $sample->date_decade, 1990;
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => "date:2001");
+    is $res->pager->total_entries, 1;
+    is $res->matches->[0]->{pagename}, 'test3';
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => "year:2001");
+    is $res->pager->total_entries, 1;
+    is $res->matches->[0]->{pagename}, 'test3';
+}

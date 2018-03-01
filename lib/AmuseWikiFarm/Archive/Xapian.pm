@@ -22,6 +22,7 @@ my %SLOTS = (
              pubdate => 2,
              qualification => 3,
              pages => 4,
+             date => 5,
             );
 
 =head1 NAME
@@ -205,11 +206,10 @@ sub index_text {
                 $doc->add_value($SLOTS{$cat}, encode_json(\@list));
             }
 
-
-            # To allow date range searching and sorting by date.
-            if ($title->date and $title->date =~ /(\d{4})/) {
-                $indexer->index_text($1, 1, 'Y');
-                # $doc->add_value($SLOT_DATE, "$1$2$3");
+            if (my $decade = $title->date_decade) {
+                $doc->add_value($SLOTS{date}, $decade);
+                $doc->add_boolean_term('XY' . $decade);
+                $doc->add_boolean_term('Y'  . $title->date_year);
             }
 
             if (my $source = $title->source) {
@@ -340,8 +340,8 @@ sub faceted_search {
     $qp->set_default_op(OP_AND);
     $qp->add_prefix(author => 'A');
     $qp->add_prefix(title => 'S');
-    $qp->add_prefix(year => 'Y');
-    $qp->add_prefix(date => 'Y');
+    $qp->add_boolean_prefix(year => 'Y');
+    $qp->add_boolean_prefix(date => 'Y');
     $qp->add_prefix(topic => 'K');
     $qp->add_prefix(source => 'XSOURCE');
     $qp->add_prefix(notes => 'XNOTES');
