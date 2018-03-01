@@ -2030,12 +2030,9 @@ sub index_file {
     $title->set_categories(\@parsed_cats);
     # the final goal is to avoid the use of hardcoded text_count
 
-    # XAPIAN INDEXING, excluding specials
     if ($class eq 'text') {
-        $self->xapian->index_text($title, $logger);
-        # and update the text structure
+        # update the text structure
         $title->text_html_structure(1);
-        # and add or remove from the archives
         my $pubdate = $title->pubdate;
         my @months;
         # populate
@@ -2068,6 +2065,11 @@ sub index_file {
         $title->autogenerate_teaser($teaser_length, $logger);
     }
     $guard->commit;
+
+    # postpone the xapian indexing to the very end. The only piece
+    # missing is the collation indexing, which changes anyway.
+
+    $self->xapian->index_text($title, $logger);
     return $title;
 }
 

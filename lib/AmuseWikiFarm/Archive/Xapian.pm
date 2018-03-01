@@ -137,6 +137,8 @@ sub delete_text_by_uri {
 
 sub index_text {
     my ($self, $title, $logger) = @_;
+    # exclude specials
+    return unless $title->is_regular;
     unless ($logger) {
         $logger = sub { warn join(" ", @_) };
     }
