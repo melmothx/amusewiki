@@ -49,7 +49,7 @@ MUSE
     my $file = path($site->repo_root, qw/t t2 test2.muse/);
     $file->parent->mkpath;
     my $muse = <<'MUSE';
-#title Second test
+#title Second test kuća
 #topics kuća, snijeg, škola, peć, xkuća, xsnijeg, xškola, xpeć, hullo
 #authors apinkić apalinić, akajo ašempronijo, pinkić palinić, kajo šempronijo, hey
 #pubdate 2009-12-25
@@ -171,7 +171,7 @@ $site->update_db_from_tree(sub { diag @_ });
 }
 
 {
-    my $res = $site->xapian->faceted_search(query => "year:2001");
+    my $res = $site->xapian->faceted_search(query => q{year:"2001"});
     is $res->pager->total_entries, 1;
     is $res->matches->[0]->{pagename}, 'test3';
 }
@@ -181,4 +181,74 @@ $site->update_db_from_tree(sub { diag @_ });
         ok $title->page_range;
         diag $title->page_range;
     }
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => q{title:"Third Test"});
+    is $res->pager->total_entries, 1;
+    is $res->matches->[0]->{pagename}, 'test3';
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => q{title:"second test kuća"});
+    is $res->pager->total_entries, 1;
+    is $res->matches->[0]->{pagename}, 'test2';
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => q{title:"kuća"});
+    is $res->pager->total_entries, 1;
+    is $res->matches->[0]->{pagename}, 'test2';
+}
+
+
+
+{
+    my $res = $site->xapian->faceted_search(title => q{Third Test});
+    is $res->pager->total_entries, 1;
+    is $res->matches->[0]->{pagename}, 'test3';
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => q{"Taj je tekst" AND "ne samo preživio"});
+    is $res->pager->total_entries, 1;
+    is $res->matches->[0]->{pagename}, 'test3';
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => "is", filter_date => '1990');
+    diag Dumper($res);
+    is $res->pager->total_entries, 1;
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => "is",
+                                            filter_topic => $site->categories
+                                            ->by_type_and_uri('topic', 'skola')->full_uri);
+    is $res->pager->total_entries, 2 or diag Dumper($res);
+}
+
+
+{
+    my $res = $site->xapian->faceted_search(query => "is",
+                                            filter_author => $site->categories
+                                            ->by_type_and_uri('author', 'pinkic-palinic')->full_uri);
+    is $res->pager->total_entries, 2 or diag Dumper($res);
+}
+
+
+{
+    my $res = $site->xapian->faceted_search(query => "is", filter_qualification => 'article');
+    is $res->pager->total_entries, 2 or diag Dumper($res);
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => "is", filter_pages => '1-5');
+    is $res->pager->total_entries, 2 or diag Dumper($res);
+}
+
+
+{
+    my $res = $site->xapian->faceted_search(query => "is", filter_pubdate => '2013');
+    is $res->pager->total_entries, 1 or diag Dumper($res);
 }

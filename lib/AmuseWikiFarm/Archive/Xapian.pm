@@ -17,12 +17,30 @@ use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
 
 my %SLOTS = (
-             author => 0,
-             topic => 1,
-             pubdate => 2,
-             qualification => 3,
-             pages => 4,
-             date => 5,
+             author => {
+                        slot => 0,
+                        prefix => 'XA',
+                       },
+             topic => {
+                       slot => 1,
+                       prefix => 'XK'
+                      },
+             pubdate => {
+                         slot => 2,
+                         prefix => 'XP',
+                        },
+             qualification => {
+                               slot => 3,
+                               prefix => 'XQ',
+                              },
+             pages => {
+                       slot => 4,
+                       prefix => 'XL',
+                      },
+             date => {
+                      slot => 5,
+                      prefix => 'XD',
+                     },
             );
 
 =head1 NAME
@@ -200,28 +218,28 @@ sub index_text {
                 my $index = $cats{$cat}{index};
                 foreach my $item ($title->categories->$rs->all) {
                     push @list, $item->full_uri;
-                    $doc->add_boolean_term('X' . $prefix);
+                    $doc->add_boolean_term($SLOTS{$cat}{prefix} . $item->full_uri);
                     $indexer->index_text($item->name, $index, $prefix);
                 }
-                $doc->add_value($SLOTS{$cat}, encode_json(\@list));
+                $doc->add_value($SLOTS{$cat}{slot}, encode_json(\@list));
             }
 
             if (my $decade = $title->date_decade) {
-                $doc->add_value($SLOTS{date}, $decade);
-                $doc->add_boolean_term('XDECADE' . $decade);
+                $doc->add_value($SLOTS{date}{slot}, $decade);
+                $doc->add_boolean_term($SLOTS{date}{prefix} . $decade);
                 $doc->add_boolean_term('Y'  . $title->date_year);
             }
 
             my $pub_year = $title->pubdate->year;
-            $doc->add_value($SLOTS{pubdate}, $pub_year);
-            $doc->add_boolean_term('XPUBDATE' .  $pub_year);
+            $doc->add_value($SLOTS{pubdate}{slot}, $pub_year);
+            $doc->add_boolean_term($SLOTS{pubdate}{prefix} .  $pub_year);
 
-            $doc->add_value($SLOTS{pages}, $title->page_range);
-            $doc->add_boolean_term('XPAGES' .  $pub_year);
+            $doc->add_value($SLOTS{pages}{slot}, $title->page_range);
+            $doc->add_boolean_term($SLOTS{pages}{prefix} .  $title->page_range);
 
             if (my $qual = $title->text_qualification) {
-                $doc->add_value($SLOTS{qualification}, $qual);
-                $doc->add_boolean_term('XQUALIFICATION' . $qual);
+                $doc->add_value($SLOTS{qualification}{slot}, $qual);
+                $doc->add_boolean_term($SLOTS{qualification}{prefix} . $qual);
             }
 
             if (my $source = $title->source) {
@@ -350,27 +368,81 @@ sub faceted_search {
     $qp->set_stemming_strategy(STEM_SOME);
 
     $qp->set_default_op(OP_AND);
-    $qp->add_prefix(author => 'A');
-    $qp->add_prefix(title => 'S');
-    $qp->add_boolean_prefix(year => 'Y');
-    $qp->add_boolean_prefix(date => 'Y');
-    $qp->add_prefix(topic => 'K');
-    $qp->add_prefix(source => 'XSOURCE');
-    $qp->add_prefix(notes => 'XNOTES');
-    $qp->add_boolean_prefix(uri => 'Q');
 
-    my $query = $qp->parse_query(delete $args{query} || '',
+    my @prefixes = (
+                    { name => author => prefix => 'A', bool => 0 },
+                    { name => title  => prefix => 'S', bool => 0 },
+                    { name => topic  => prefix => 'K', bool => 0 },
+                    { name => source => prefix => 'XSOURCE', bool => 0 },
+                    { name => notes  => prefix => 'XNOTES', bool => 0 },
+                    { name => year   => prefix => 'Y', bool => 1 },
+                    { name => date   => prefix => 'Y', bool => 1 },
+                   );
+    foreach my $prefix (@prefixes) {
+        if ($prefix->{bool}) {
+            $qp->add_boolean_prefix($prefix->{name}, $prefix->{prefix});
+        }
+        else {
+            $qp->add_prefix($prefix->{name}, $prefix->{prefix});
+        }
+    }
+
+    my $query = $qp->parse_query($args{query} || '',
                                  (FLAG_PHRASE   |
                                   FLAG_BOOLEAN  |
                                   FLAG_LOVEHATE |
                                   FLAG_WILDCARD ));
+
+    # I belive this should be nuked, replaced by the checkboxes + help
+    # for the prefixes.
+    my @additional;
+    foreach my $field (@prefixes) {
+        if (my $term = $args{$field->{name}}) {
+            log_debug {  "Adding " . $field->{prefix} . lc($term) };
+            push @additional, Search::Xapian::Query->new(OP_AND,
+                                                         map {
+                                                             Search::Xapian::Query->new($field->{prefix} . lc($_))
+                                                           } split (/\s+/, $term));
+        }
+    }
+    if (@additional) {
+        $query = Search::Xapian::Query->new(($args{match_any} ? OP_OR : OP_AND),
+                                            ($args{query} ? ($query) : ()),
+                                            @additional);
+    }
+    my @filters;
+  FILTERS:
+    foreach my $filter (keys %SLOTS) {
+        if (my $param = $args{"filter_$filter"}) {
+            my @checked;
+            if (my $ref = ref($param)) {
+                if ($ref eq 'ARRAY') {
+                    @checked = @$param;
+                }
+            }
+            else {
+                @checked = ($param);
+            }
+            if (@checked) {
+                my $subquery = Search::Xapian::Query->new(+OP_OR,
+                                                          map { Search::Xapian::Query
+                                                              ->new($SLOTS{$filter}{prefix} . $_)
+                                                          } @checked);
+                Dlog_debug { "Adding filter for $filter: $_"  } \@checked;
+                push @filters, $subquery;
+            }
+        }
+    }
+    if (@filters) {
+        $query = Search::Xapian::Query->new(+OP_FILTER, $query, @filters)
+    }
 
     my $enquire = $database->enquire($query);
 
     my %spies;
     unless ($args{no_facets}) {
         foreach my $slot (keys %SLOTS) {
-            $spies{$slot} = Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot});
+            $spies{$slot} = Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot});
             $enquire->add_matchspy($spies{$slot});
         }
     }
@@ -399,7 +471,7 @@ sub faceted_search {
                         relevance => $item->get_percent,
                         rank => $item->get_rank + 1,
                        };
-        log_debug { join(' ', map { '<' . ($doc->get_value($_) || '') . '>'  } values %SLOTS) };
+        log_debug { join(' ', map { '<' . ($doc->get_value($SLOTS{$_}{slot}) || '') . '>'  } keys %SLOTS) };
     }
     my %facets;
     foreach my $spy_name (keys %spies) {
