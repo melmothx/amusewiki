@@ -1502,6 +1502,19 @@ sub date_decade {
     }
 }
 
+sub page_range {
+    my $self = shift;
+    my $pages = $self->pages_estimated || 1;
+    my @ranges = (1, 5, 10, 20, 30, 40, 50, 100, 150, 200, 300, 500, 1000);
+    for (my $i = 0; $i < @ranges; $i++) {
+        if ($pages < $ranges[$i]) {
+            return $ranges[$i - 1] . '-' . $ranges[$i];
+        }
+    }
+    return '+1000';
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;

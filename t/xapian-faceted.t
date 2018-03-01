@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 11;
+use Test::More tests => 17;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -153,6 +153,15 @@ $site->update_db_from_tree(sub { diag @_ });
 
     $sample->date('(1991)');
     is $sample->date_decade, 1990;
+
+    $sample->text_size(2000 * 3000);
+    is $sample->page_range, '+1000';
+
+    $sample->text_size(2000 * 600);
+    is $sample->page_range, '500-1000';
+
+    $sample->text_size(500);
+    is $sample->page_range, '1-5';
 }
 
 {
@@ -165,4 +174,11 @@ $site->update_db_from_tree(sub { diag @_ });
     my $res = $site->xapian->faceted_search(query => "year:2001");
     is $res->pager->total_entries, 1;
     is $res->matches->[0]->{pagename}, 'test3';
+}
+
+{
+    foreach my $title ($site->titles) {
+        ok $title->page_range;
+        diag $title->page_range;
+    }
 }

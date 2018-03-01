@@ -208,8 +208,20 @@ sub index_text {
 
             if (my $decade = $title->date_decade) {
                 $doc->add_value($SLOTS{date}, $decade);
-                $doc->add_boolean_term('XY' . $decade);
+                $doc->add_boolean_term('XDECADE' . $decade);
                 $doc->add_boolean_term('Y'  . $title->date_year);
+            }
+
+            my $pub_year = $title->pubdate->year;
+            $doc->add_value($SLOTS{pubdate}, $pub_year);
+            $doc->add_boolean_term('XPUBDATE' .  $pub_year);
+
+            $doc->add_value($SLOTS{pages}, $title->page_range);
+            $doc->add_boolean_term('XPAGES' .  $pub_year);
+
+            if (my $qual = $title->text_qualification) {
+                $doc->add_value($SLOTS{qualification}, $qual);
+                $doc->add_boolean_term('XQUALIFICATION' . $qual);
             }
 
             if (my $source = $title->source) {
