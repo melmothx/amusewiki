@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 32;
+use Test::More tests => 36;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -129,7 +129,6 @@ $site->update_db_from_tree(sub { diag @_ });
 
 {
     my $res = $site->xapian->faceted_search(query => "is");
-    diag Dumper($res);
     is $res->pager->total_entries, 3;
 }
 
@@ -209,7 +208,6 @@ $site->update_db_from_tree(sub { diag @_ });
 
 {
     my $res = $site->xapian->faceted_search(query => "is", filter_date => '1990');
-    diag Dumper($res);
     is $res->pager->total_entries, 1;
 }
 
@@ -247,6 +245,30 @@ $site->update_db_from_tree(sub { diag @_ });
 
 {
     my $res = $site->xapian->faceted_search;
-    diag Dumper($res);
     is $res->pager->total_entries, 3;
 }
+
+{
+    my $res = $site->xapian->faceted_search(filter_pubdate => [qw/2013 2017/],
+                                            filter_date => '2000');
+    is $res->pager->total_entries, 2;
+}
+
+{
+    my $res = $site->xapian->faceted_search(filter_pubdate => [qw/2013 2017/],
+                                            filter_date => '1550');
+    is $res->pager->total_entries, 3;
+}
+
+{
+    my $res = $site->xapian->faceted_search(filter_pubdate => '2017',
+                                            filter_date => '1550');
+    is $res->pager->total_entries, 2;
+}
+
+
+{
+    my $res = $site->xapian->faceted_search(filter_date => '1550');
+    is $res->pager->total_entries, 1;
+}
+

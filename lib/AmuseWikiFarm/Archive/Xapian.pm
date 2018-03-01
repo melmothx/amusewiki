@@ -435,7 +435,7 @@ sub faceted_search {
         }
     }
     if (@filters) {
-        $query = Search::Xapian::Query->new(+OP_FILTER, $query, @filters)
+        $query = Search::Xapian::Query->new(+OP_FILTER, $query, Search::Xapian::Query->new(+OP_OR, @filters));
     }
 
     my $enquire = $database->enquire($query);
