@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 17;
+use Test::More tests => 32;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -201,14 +201,6 @@ $site->update_db_from_tree(sub { diag @_ });
     is $res->matches->[0]->{pagename}, 'test2';
 }
 
-
-
-{
-    my $res = $site->xapian->faceted_search(title => q{Third Test});
-    is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test3';
-}
-
 {
     my $res = $site->xapian->faceted_search(query => q{"Taj je tekst" AND "ne samo preživio"});
     is $res->pager->total_entries, 1;
@@ -251,4 +243,10 @@ $site->update_db_from_tree(sub { diag @_ });
 {
     my $res = $site->xapian->faceted_search(query => "is", filter_pubdate => '2013');
     is $res->pager->total_entries, 1 or diag Dumper($res);
+}
+
+{
+    my $res = $site->xapian->faceted_search;
+    diag Dumper($res);
+    is $res->pager->total_entries, 3;
 }

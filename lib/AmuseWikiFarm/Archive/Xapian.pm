@@ -387,29 +387,30 @@ sub faceted_search {
         }
     }
 
-    my $query = $qp->parse_query($args{query} || '',
-                                 (FLAG_PHRASE   |
-                                  FLAG_BOOLEAN  |
-                                  FLAG_LOVEHATE |
-                                  FLAG_WILDCARD ));
+    my $query = $args{query} ? $qp->parse_query($args{query},
+                                                (FLAG_PHRASE   |
+                                                 FLAG_BOOLEAN  |
+                                                 FLAG_LOVEHATE |
+                                                 FLAG_WILDCARD )) :  Search::Xapian::Query->MatchAll;
 
     # I belive this should be nuked, replaced by the checkboxes + help
     # for the prefixes.
-    my @additional;
-    foreach my $field (@prefixes) {
-        if (my $term = $args{$field->{name}}) {
-            log_debug {  "Adding " . $field->{prefix} . lc($term) };
-            push @additional, Search::Xapian::Query->new(OP_AND,
-                                                         map {
-                                                             Search::Xapian::Query->new($field->{prefix} . lc($_))
-                                                           } split (/\s+/, $term));
-        }
-    }
-    if (@additional) {
-        $query = Search::Xapian::Query->new(($args{match_any} ? OP_OR : OP_AND),
-                                            ($args{query} ? ($query) : ()),
-                                            @additional);
-    }
+    # my @additional;
+    # foreach my $field (@prefixes) {
+    #     if (my $term = $args{$field->{name}}) {
+    #         log_debug {  "Adding " . $field->{prefix} . lc($term) };
+    #         push @additional, Search::Xapian::Query->new(OP_AND,
+    #                                                      map {
+    #                                                          Search::Xapian::Query->new($field->{prefix} . lc($_))
+    #                                                        } split (/\s+/, $term));
+    #     }
+    # }
+    # if (@additional) {
+    #     $query = Search::Xapian::Query->new(($args{match_any} ? OP_OR : OP_AND),
+    #                                         ($args{query} ? ($query) : ()),
+    #                                         @additional);
+    # }
+
     my @filters;
   FILTERS:
     foreach my $filter (keys %SLOTS) {
