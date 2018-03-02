@@ -491,28 +491,12 @@ sub faceted_search {
         $facets{$spy_name} = \@got;
     }
 
-    # and unroll the json one. This is horrid, but there is no
-    # multivalue and subclassing MatchSpy leads to a beautiful
-    # segmentation fault (core dumped)
-
-    foreach my $k (qw/author topic/) {
-        next unless $facets{$k};
-        my @raw = @{$facets{$k}};
-        my %out;
-        while (@raw) {
-            my $record = shift @raw;
-            my @values = @{decode_json($record->{value})};
-            my $count = $record->{count};
-            foreach my $v (@values) {
-                $out{$v} += $count;
-            }
-        }
-        $facets{$k} = [ map { +{ value => $_, count => $out{$_} } } sort keys %out ];
-    }
     return AmuseWikiFarm::Archive::Xapian::Result->new(
                                                        matches => \@matches,
                                                        facets => \%facets,
                                                        pager => $pager,
+                                                       site => $args{site},
+                                                       lh => $args{lh},
                                                       );
 }
 

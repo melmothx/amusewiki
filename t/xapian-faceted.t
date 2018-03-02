@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 36;
+use Test::More tests => 41;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -272,3 +272,11 @@ $site->update_db_from_tree(sub { diag @_ });
     is $res->pager->total_entries, 1;
 }
 
+{
+    my $res = $site->xapian->faceted_search;
+    ok($res->authors);
+    ok($res->topics);
+    ok($res->dates);
+    ok($res->pubdates);
+    ok($res->num_pages);
+}
