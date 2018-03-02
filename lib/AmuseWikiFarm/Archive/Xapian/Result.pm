@@ -89,6 +89,47 @@ sub unpack_json_facets {
     return undef;
 }
 
+sub texts {
+    my ($self) = @_;
+    if (my $site = $self->site) {
+        my @out;
+        foreach my $match (@{$self->matches}) {
+            if (my $text = $site->titles->texts_only->by_uri($match->{pagename})->single) {
+                if ($text->can_be_indexed) {
+                    push @out, $text;
+                }
+                else {
+                    log_error { $site->id . ' ' . $match->{pagename} . ' is obsolete, removing'  };
+                    $site->xapian->delete_text_by_uri($match->{pagename});
+                }
+            }
+            else {
+                log_error { $site->id . ' ' . $match->{pagename} . ' not found, removing'  };
+                $site->xapian->delete_text_by_uri($match->{pagename});
+            }
+        }
+        return \@out;
+    }
+    else {
+        log_error { "Site object was not provided, cannot output a list of texts" };
+        return;
+    }
+}
 
+sub json_output {
+    my $self = shift;
+    my @out;
+    if (my $texts = $self->texts) {
+        my $base = $self->site->canonical_url;
+        @out = map { +{
+                       title => $_->title,
+                       author => $_->author,
+                       url => $base . $_->full_uri,
+                       text_type => $_->text_qualification,
+                       pages => $_->pages_estimated,
+                      } } @$texts;
+    }
+    return \@out;
+}
 
 1;

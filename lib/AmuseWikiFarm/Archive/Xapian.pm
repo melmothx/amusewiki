@@ -183,7 +183,7 @@ sub index_text {
 
     my $qterm = 'Q' . $title->uri;
     my $exit = 1;
-    if ($self->text_can_be_indexed($title)) {
+    if ($title and ($title->is_published or ($self->index_deferred && $title->can_be_indexed))) {
         $logger->("Updating " . $title->uri . " in Xapian db\n");
         try {
             my $doc = Search::Xapian::Document->new();
@@ -304,17 +304,6 @@ sub index_text {
     }
     return $exit;
 }
-
-sub text_can_be_indexed {
-    my ($self, $title) = @_;
-    if ($title and
-        ($title->is_published or
-         ($title->is_deferred && $title->teaser && $self->index_deferred))) {
-        return 1;
-    }
-    return 0;
-}
-
 
 =head2 search($query_string, $page, $locale);
 

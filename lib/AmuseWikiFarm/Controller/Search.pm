@@ -37,74 +37,12 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     $c->stash(please_index => 1);
     my $site = $c->stash->{site};
     my $xapian = $site->xapian;
-    # here we could configure the paging
-    # $xapian->page(1);
-
-    my $query = $c->req->params->{query};
-    my %params = %{ $c->req->params };
-    if (delete $params{complex_query}) {
-        delete $params{fmt};
-        delete $params{page};
-        my $match_any = delete $params{match_any};
-        my @tokens = (delete $params{query});
-        foreach my $k (keys %params) {
-            my $string = $params{$k};
-            next unless $string =~ m/\w/;
-            $string =~ s/["<>]//g;
-            $string =~ s/^\s+//;
-            $string =~ s/\s+$//;
-            push @tokens, qq{$k:"$string"};
-        }
-        my $joiner = $match_any ? ' OR ' : ' AND ';
-        $query = join($joiner, grep { defined and m/\w/ } @tokens);
-    }
-
-    my $page = 1;
-    if ($c->req->params->{page} and
-        $c->req->params->{page} =~ m/([1-9][0-9]*)/) {
-        $page = $1;
-    }
-
-    my ($pager, @results);
-    eval {
-        ($pager, @results) = $xapian->search($query, $page,
-                                             $c->stash->{current_locale_code});
-    };
-    if ($@) {
-        Dlog_error { "Xapian error: " . $c->request->uri . ": $@ " . $_ } ($c->request->params);
-        $c->stash(xapian_errors => "$@");
-        $pager = Data::Page->new;
-    }
-
-    foreach my $res (@results) {
-        if (my $text = $site->titles->texts_only->by_uri($res->{pagename})->single) {
-            if ($xapian->text_can_be_indexed($text)) {
-                $res->{text} = $text;
-            }
-        }
-        else {
-            log_error {
-                "Search returned $res->{pagename} but not present, removing during " .
-                  $c->request->uri;
-            };
-            eval { $xapian->delete_text_by_uri($res->{pagename}) };
-        }
-    }
-
+    my $res = $xapian->faceted_search(%{$c->req->params},
+                                      locale => $c->stash->{current_locale_code},
+                                      lh => $c->stash->{lh},
+                                      site => $site);
     if ($c->req->params->{fmt} and $c->req->params->{fmt} eq 'json') {
-        my @unrolled;
-        foreach my $res (@results) {
-            if (my $txt = $res->{text}) {
-                push @unrolled, {
-                                 title => $txt->title,
-                                 author => $txt->author,
-                                 url => $c->uri_for($txt->full_uri)->as_string,
-                                 text_type => $txt->text_qualification,
-                                 pages => $txt->pages_estimated,
-                                };
-            }
-        }
-        $c->stash(json => \@unrolled);
+        $c->stash(json => $res->json_output);
         $c->detach($c->view('JSON'));
         return;
     }
@@ -115,12 +53,10 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
         return $c->uri_for($c->action, { page => $_[0], query => $query });
     };
     $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
-               built_query => $query,
                page_title => $c->loc('Search'),
-               texts => AmuseWikiFarm::Utils::Iterator->new([ map { $_->{text} } grep { $_->{text} } @results ]));
+               texts => AmuseWikiFarm::Utils::Iterator->new($res->texts);
+
 }
-
-
 
 
 =encoding utf8

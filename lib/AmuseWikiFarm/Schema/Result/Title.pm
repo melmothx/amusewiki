@@ -1514,6 +1514,17 @@ sub page_range {
     return '+1000';
 }
 
+sub can_be_indexed {
+    my $self = shift;
+    if (($self->is_published) or
+        ($self->is_deferred && $self->teaser)) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
 
 __PACKAGE__->meta->make_immutable;
 
