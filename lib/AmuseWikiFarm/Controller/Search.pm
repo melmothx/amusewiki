@@ -37,7 +37,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     $c->stash(please_index => 1);
     my $site = $c->stash->{site};
     my $xapian = $site->xapian;
-    my $res = $xapian->faceted_search(%{$c->req->params},
+    my %params = %{$c->req->params};
+    my $res = $xapian->faceted_search(%params,
                                       locale => $c->stash->{current_locale_code},
                                       lh => $c->stash->{lh},
                                       site => $site);
@@ -50,12 +51,11 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
         $c->stash(no_full_text_if_not_published => 1);
     }
     my $format_link = sub {
-        return $c->uri_for($c->action, { page => $_[0], query => $query });
+        return $c->uri_for($c->action, { %params, page => $_[0] });
     };
-    $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($pager, $format_link),
+    $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($res->pager, $format_link),
                page_title => $c->loc('Search'),
-               texts => AmuseWikiFarm::Utils::Iterator->new($res->texts);
-
+               texts => AmuseWikiFarm::Utils::Iterator->new($res->texts));
 }
 
 
