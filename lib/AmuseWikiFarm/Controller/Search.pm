@@ -53,8 +53,11 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     my $format_link = sub {
         return $c->uri_for($c->action, { %params, page => $_[0] });
     };
+    Dlog_debug { "$_"} \%params;
+    Dlog_debug { "$_" } $res->facet_tokens;
     $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($res->pager, $format_link),
                page_title => $c->loc('Search'),
+               facets => $res->facet_tokens,
                texts => AmuseWikiFarm::Utils::Iterator->new($res->texts));
 }
 
