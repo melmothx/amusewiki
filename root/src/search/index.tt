@@ -47,7 +47,10 @@
     [% FOREACH checkbox IN facet.facets %]
     <div class="checkbox">
       <label>
-        <input class="xapian-filter" type="checkbox" name="[% facet.name %]" value="[% checkbox.value | html %]" />
+        <input class="xapian-filter" type="checkbox"
+               name="[% facet.name %]" value="[% checkbox.value | html %]"
+               [% IF checkbox.active %]checked="checked"[% END %]
+        />
         [% checkbox.label | html %] <em>([% checkbox.count | html %])</em>
       </label>
     </div>

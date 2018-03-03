@@ -21,6 +21,10 @@ has facets => (is => 'ro',
                required => 1,
                isa => HashRef[ArrayRef[HashRef]]);
 
+has selections => (is => 'ro',
+                   default => sub { +{} },
+                   isa => HashRef[HashRef]);
+
 has site => (is => 'ro',
              isa => Maybe[Object]);
 
@@ -76,6 +80,12 @@ sub facet_tokens {
                 facets => $self->num_pages,
                 name => 'filter_pages',
                });
+    my $selections = $self->selections;
+    foreach my $block (@out) {
+        foreach my $facet (@{$block->{facets}}) {
+            $facet->{active} = $selections->{$block->{name}}->{$facet->{value}};
+        }
+    }
     return \@out;
 }
 

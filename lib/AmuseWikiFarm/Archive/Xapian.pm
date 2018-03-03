@@ -399,18 +399,15 @@ sub faceted_search {
     #                                         @additional);
     # }
 
+    my %actives;
     my @filters;
   FILTERS:
     foreach my $filter (keys %SLOTS) {
-        if (my $param = $args{"filter_$filter"}) {
-            my @checked;
-            if (my $ref = ref($param)) {
-                if ($ref eq 'ARRAY') {
-                    @checked = @$param;
-                }
-            }
-            else {
-                @checked = ($param);
+        my $param_name = "filter_" . $filter;
+        if (my $param = $args{$param_name}) {
+            my @checked = ref($args{$param_name}) ? (@{$args{$param_name}}) : ($args{$param_name});
+            foreach my $active (@checked) {
+                $actives{"filter_${filter}"}{$active} = 1;
             }
             if (@checked) {
                 my $subquery = Search::Xapian::Query->new(+OP_OR,
@@ -478,8 +475,9 @@ sub faceted_search {
         }
         $facets{$spy_name} = \@got;
     }
-
+    Dlog_debug { "Selections: $_ " } \%actives;
     return AmuseWikiFarm::Archive::Xapian::Result->new(
+                                                       selections => \%actives,
                                                        matches => \@matches,
                                                        facets => \%facets,
                                                        pager => $pager,
