@@ -43,6 +43,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
                                           no_filters => 1,
                                           locale => $c->stash->{current_locale_code},
                                           lh => $c->stash->{lh},
+                                          # workaround to collect all the facets: request the last page
+                                          page => int($site->titles->count / $xapian->page) + 1,
                                           site => $site);
 
     my $res = $xapian->faceted_search(%params,
