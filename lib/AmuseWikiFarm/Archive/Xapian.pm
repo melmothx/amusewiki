@@ -365,7 +365,6 @@ sub faceted_search {
                     { name => source => prefix => 'XSOURCE', bool => 0 },
                     { name => notes  => prefix => 'XNOTES', bool => 0 },
                     { name => year   => prefix => 'Y', bool => 1 },
-                    { name => date   => prefix => 'Y', bool => 1 },
                    );
     foreach my $prefix (@prefixes) {
         if ($prefix->{bool}) {

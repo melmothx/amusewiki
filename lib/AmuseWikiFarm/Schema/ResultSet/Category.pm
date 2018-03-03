@@ -189,5 +189,17 @@ sub authors_only {
     return shift->by_type('author');
 }
 
+sub by_full_uri {
+    my ($self, $url) = @_;
+    my ($prefix, $type, $uri) = grep { length($_) } split(/\//, $url);
+    if ($type && $uri) {
+        my $me = $self->current_source_alias;
+        return $self->by_type($type)->by_uri($uri)->single;
+    }
+    else {
+        return;
+    }
+}
+
 1;
 

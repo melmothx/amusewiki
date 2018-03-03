@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 42;
+use Test::More tests => 131;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -164,12 +164,6 @@ $site->update_db_from_tree(sub { diag @_ });
 }
 
 {
-    my $res = $site->xapian->faceted_search(query => "date:2001");
-    is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test3';
-}
-
-{
     my $res = $site->xapian->faceted_search(query => q{year:"2001"});
     is $res->pager->total_entries, 1;
     is $res->matches->[0]->{pagename}, 'test3';
@@ -273,13 +267,29 @@ $site->update_db_from_tree(sub { diag @_ });
 }
 
 {
-    my $res = $site->xapian->faceted_search(site => $site);
+    my $res = $site->xapian->faceted_search(site => $site,
+                                            lh => $site->localizer,
+                                            locale => 'hr',
+                                            query => '',
+                                           );
     ok($res->authors);
     ok($res->topics);
     ok($res->dates);
     ok($res->pubdates);
     ok($res->num_pages);
+    ok($res->text_types);
     # diag Dumper($res);
     ok $res->texts;
     diag Dumper([ map { $_->full_uri } @{$res->texts} ]);
+    diag Dumper($res->facet_tokens);
+    foreach my $f (@{$res->facet_tokens}) {
+        ok scalar(@{$f->{facets}});
+        ok $f->{name};
+        ok $f->{label};
+        foreach my $v (@{$f->{facets}}) {
+            ok $v->{value};
+            ok $v->{count};
+            ok $v->{label};
+        }
+    }
 }
