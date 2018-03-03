@@ -429,8 +429,11 @@ sub faceted_search {
     my %spies;
     unless ($args{no_facets}) {
         foreach my $slot (keys %SLOTS) {
-            $spies{$slot} = Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot});
-            $enquire->add_matchspy($spies{$slot});
+            my $spy = try { Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot}) };
+            if ($spy) {
+                $spies{$slot} = Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot});
+                $enquire->add_matchspy($spies{$slot});
+            }
         }
     }
 
