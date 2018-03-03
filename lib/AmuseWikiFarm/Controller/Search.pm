@@ -38,11 +38,19 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     my $site = $c->stash->{site};
     my $xapian = $site->xapian;
     my %params = %{$c->req->params};
+
+    my $baseres = $xapian->faceted_search(%params,
+                                          no_filters => 1,
+                                          locale => $c->stash->{current_locale_code},
+                                          lh => $c->stash->{lh},
+                                          site => $site);
+
     my $res = $xapian->faceted_search(%params,
+                                      no_facets => 1,
                                       locale => $c->stash->{current_locale_code},
                                       lh => $c->stash->{lh},
                                       site => $site);
-    if ($c->req->params->{fmt} and $c->req->params->{fmt} eq 'json') {
+    if ($params{fmt} and $params{fmt} eq 'json') {
         $c->stash(json => $res->json_output);
         $c->detach($c->view('JSON'));
         return;
@@ -53,11 +61,9 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     my $format_link = sub {
         return $c->uri_for($c->action, { %params, page => $_[0] });
     };
-    Dlog_debug { "$_"} \%params;
-    Dlog_debug { "$_" } $res->facet_tokens;
     $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($res->pager, $format_link),
                page_title => $c->loc('Search'),
-               facets => $res->facet_tokens,
+               facets => $baseres->facet_tokens,
                texts => AmuseWikiFarm::Utils::Iterator->new($res->texts));
 }
 

@@ -401,7 +401,7 @@ sub faceted_search {
 
     my %actives;
     my @filters;
-  FILTERS:
+  FILTER:
     foreach my $filter (keys %SLOTS) {
         my $param_name = "filter_" . $filter;
         if (my $param = $args{$param_name}) {
@@ -409,6 +409,7 @@ sub faceted_search {
             foreach my $active (@checked) {
                 $actives{"filter_${filter}"}{$active} = 1;
             }
+            next FILTER if $args{no_filters};
             if (@checked) {
                 my $subquery = Search::Xapian::Query->new(+OP_OR,
                                                           map { Search::Xapian::Query
@@ -420,7 +421,7 @@ sub faceted_search {
         }
     }
     if (@filters) {
-        $query = Search::Xapian::Query->new(+OP_FILTER, $query, Search::Xapian::Query->new(+OP_OR, @filters));
+        $query = Search::Xapian::Query->new(+OP_FILTER, $query, Search::Xapian::Query->new(+OP_AND, @filters));
     }
 
     my $enquire = $database->enquire($query);
