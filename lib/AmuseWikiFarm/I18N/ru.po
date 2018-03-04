@@ -224,10 +224,10 @@ msgid "Are you sure?"
 msgstr "Вы уверены?"
 
 msgid "As cover in the header"
-msgstr ""
+msgstr "Как обложка в заголовок"
 
 msgid "As regular image in the body"
-msgstr ""
+msgstr "Как обычное изображение в текст"
 
 msgid "Attached images"
 msgstr "Вложенные изображения"
@@ -661,19 +661,19 @@ msgid "Failed to remove Remote repository %1"
 msgstr "Не удалось удалить удалённый репозиторий %1"
 
 msgid "File already in the body"
-msgstr ""
+msgstr "Файл уже в тексте"
 
 msgid "File extension"
 msgstr "Расширение файла"
 
 msgid "File format not allowed"
-msgstr ""
+msgstr "Недопустимый формат файла"
 
 msgid "File to delete not found!"
-msgstr ""
+msgstr "Файл для удаления не найден!"
 
 msgid "File too big"
-msgstr ""
+msgstr "Файл слишком большой"
 
 msgid "File uploaded!"
 msgstr "Файл загружен!"
@@ -1021,7 +1021,7 @@ msgstr ""
 "\", знак минуса и код языка."
 
 msgid "Image already set as cover"
-msgstr ""
+msgstr "Изображение уже установлено в качестве обложки"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
@@ -1064,7 +1064,7 @@ msgid "Inline elements"
 msgstr "Символьные стили"
 
 msgid "Insert the file into the body at the cursor position"
-msgstr ""
+msgstr "Вставить файл в текст после курсора"
 
 msgid "Internal list of translations"
 msgstr "Внутренний список или переводы"
@@ -1122,7 +1122,7 @@ msgid "Job rescheduled"
 msgstr "Задача перезапущена"
 
 msgid "Job status"
-msgstr "Статус задания"
+msgstr "Статус заданий"
 
 msgid "Jobs"
 msgstr "Задание"
@@ -1214,7 +1214,7 @@ msgid "Loaded \"%1\" configuration"
 msgstr "Загружена конфигурация «%1»"
 
 msgid "Locked editing, no upload possible"
-msgstr ""
+msgstr "Редактирование заблокировано, загрузка невозможна"
 
 msgid "Log in"
 msgstr "Вход"
@@ -1387,7 +1387,7 @@ msgid "Nothing to see here, so far"
 msgstr "Здесь пока ничего нет"
 
 msgid "Nothing uploaded"
-msgstr ""
+msgstr "Ничего не загружено"
 
 msgid "Notify mail: blank field will disable them"
 msgstr "Оповещающие сообщения (оставьте поле пустым для отключения)"
@@ -1663,7 +1663,7 @@ msgid "Please reload your page"
 msgstr "Пожалуйста, перезагрузите страницу"
 
 msgid "Please remove this file from the body first"
-msgstr ""
+msgstr "Пожалуйста, сначала удалите файл из текста"
 
 msgid "Please select"
 msgstr "Пожалуйста, выберите"
@@ -1831,7 +1831,7 @@ msgid "Redirections"
 msgstr "Перенаправление"
 
 msgid "Refresh and apply filters"
-msgstr ""
+msgstr "Перезагрузить и применить фильтры"
 
 msgid "Related projects"
 msgstr "На других языках"
@@ -1866,7 +1866,7 @@ msgid "Repository"
 msgstr "Репозиторий"
 
 msgid "Request failed! Please report the the problem"
-msgstr ""
+msgstr "Запрос завершился с ошибкой! Пожалуйста, сообщите о проблеме"
 
 msgid "Reset all"
 msgstr "Сбросить всё"
@@ -2532,7 +2532,7 @@ msgid "Unsupported file type %1"
 msgstr "Неподдерживаемый формат файла %1"
 
 msgid "Unused attachment"
-msgstr ""
+msgstr "Неиспользуемое вложение"
 
 msgid "Update"
 msgstr "Обновить"
@@ -2573,7 +2573,7 @@ msgid "Use sans fonts for section titles"
 msgstr "Использовать шрифт без засечек для заголовков разделов"
 
 msgid "Use the image as cover"
-msgstr ""
+msgstr "Использовать изображение как обложку"
 
 msgid "Useful HTML snippets"
 msgstr "Полезные HTML-заготовки"
@@ -2649,6 +2649,7 @@ msgstr ""
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
+"Когда вы загружаете PDF-файл, разбить его на изображения и вставить в текст"
 
 msgid "Where does this text come from?"
 msgstr "Откуда этот текст?"
@@ -2839,10 +2840,10 @@ msgstr ""
 "названия"
 
 msgid "by number of pages, ascending"
-msgstr ""
+msgstr "по возрастанию числа страниц"
 
 msgid "by number of pages, descending"
-msgstr ""
+msgstr "по убыванию числа страниц"
 
 msgid "code and monospace"
 msgstr "код и моноширинный"
@@ -2903,7 +2904,7 @@ msgstr ""
 "ширину, так и высоту"
 
 msgid "image"
-msgstr ""
+msgstr "изображение"
 
 msgid "left"
 msgstr "левая"
