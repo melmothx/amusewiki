@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.103 UNRELEASED
+
+ - Completed ru translation (thanks @labdsf)
+ - serve a list of urls to mirror under /mirror.txt and /mirror.ts.txt
+   to feed wget with it. Plus provided a client in
+   script/mirror-site.sh
+
 2.102 2018-02-19
 
  - Minor fix dependencies in debian packages (gs was missing)
