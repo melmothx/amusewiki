@@ -446,7 +446,7 @@ sub faceted_search {
     }
     my $start = ($page - 1) * $pagesize;
 
-    my $mset = $enquire->get_mset($start, $pagesize, $pagesize);
+    my $mset = $enquire->get_mset($start, $pagesize, $args{check_at_least} || $pagesize);
     # pager
     my $pager = Data::Page->new;
     $pager->total_entries($mset->get_matches_estimated);
@@ -477,6 +477,7 @@ sub faceted_search {
                         count => $it->get_termfreq,
                        };
         }
+        log_debug { "$spy_name went thourgh " . $spy->get_total };
         $facets{$spy_name} = \@got;
     }
     Dlog_debug { "Selections: $_ " } \%actives;
