@@ -25,6 +25,8 @@ use constant {
               SLOT_DATE => 5,
               SLOT_TITLE => 6,
               SLOT_YEAR => 7,
+              SORT_ASC => 0,
+              SORT_DESC => 1,
              };
 
 
@@ -55,12 +57,15 @@ my %SLOTS = (
                      },
             );
 
-my %SORTINGS = (
-                pubdate => SLOT_PUBDATE,
-                pages => SLOT_PAGES,
-                year => SLOT_YEAR,
-                title => SLOT_TITLE,
-               );
+sub sortings {
+    my %out = (
+               pubdate => SLOT_PUBDATE,
+               pages => SLOT_PAGES,
+               year => SLOT_YEAR,
+               title => SLOT_TITLE,
+              );
+    return %out;
+}
 
 
 =head1 NAME
@@ -470,6 +475,13 @@ sub faceted_search {
         $page = 1;
     }
     my $start = ($page - 1) * $pagesize;
+
+    my %SORTINGS = $self->sortings;
+    if ($args{sort} and defined $SORTINGS{$args{sort}}) {
+        my $direction = $args{sort_direction} || 'asc';
+        $enquire->set_sort_by_value_then_relevance($SORTINGS{$args{sort}},
+                                                   ($direction eq 'desc' ? SORT_DESC : SORT_ASC));
+    }
 
     my $mset = $enquire->get_mset($start, $pagesize, $args{check_at_least} || $pagesize);
     # pager

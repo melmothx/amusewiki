@@ -242,6 +242,15 @@ $site->update_db_from_tree(sub { diag @_ });
     is $res->pager->total_entries, 3;
 }
 
+my %SORTINGS = $site->xapian->sortings;
+foreach my $sort_by (keys %SORTINGS) {
+    my $res = $site->xapian->faceted_search(sort => $sort_by, sort_direction => 'asc');
+    is $res->pager->total_entries, 3;
+    my $res1 = $site->xapian->faceted_search(sort => $sort_by, sort_direction => 'desc');
+    is $res1->pager->total_entries, 3;
+    is $res1->matches->[0]->{pagename}, $res->matches->[2]->{pagename};
+}
+
 {
     my $res = $site->xapian->faceted_search(filter_pubdate => [qw/2013 2017/],
                                             filter_date => '2000');
