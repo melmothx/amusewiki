@@ -245,19 +245,19 @@ $site->update_db_from_tree(sub { diag @_ });
 {
     my $res = $site->xapian->faceted_search(filter_pubdate => [qw/2013 2017/],
                                             filter_date => '2000');
-    is $res->pager->total_entries, 2;
+    is $res->pager->total_entries, 1;
 }
 
 {
     my $res = $site->xapian->faceted_search(filter_pubdate => [qw/2013 2017/],
                                             filter_date => '1550');
-    is $res->pager->total_entries, 3;
+    is $res->pager->total_entries, 0;
 }
 
 {
-    my $res = $site->xapian->faceted_search(filter_pubdate => '2017',
+    my $res = $site->xapian->faceted_search(filter_pubdate => '2009',
                                             filter_date => '1550');
-    is $res->pager->total_entries, 2;
+    is $res->pager->total_entries, 1;
 }
 
 
