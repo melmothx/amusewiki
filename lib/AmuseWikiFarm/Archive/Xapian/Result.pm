@@ -4,7 +4,7 @@ use utf8;
 use strict;
 use warnings;
 use Moo;
-use Types::Standard qw/Maybe Object HashRef ArrayRef InstanceOf/;
+use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf/;
 use JSON::MaybeXS;
 use AmuseWikiFarm::Log::Contextual;
 use namespace::clean;
@@ -12,6 +12,10 @@ use namespace::clean;
 has pager => (is => 'ro',
               required => 1,
               isa => InstanceOf['Data::Page']);
+
+has max_categories => (is => 'ro',
+                       default => sub { 30 },
+                       isa => Int);
 
 has matches => (is => 'ro',
                 required => 1,
@@ -181,9 +185,11 @@ sub unpack_json_facets {
                 $out{$v} += $count;
             }
         }
-        return [ sort { $b->{count} <=> $a->{count} || $a->{value} cmp $b->{value} }
-                 map { +{ value => $_, count => $out{$_} } }
-                 keys %out ];
+        my @out = sort { $b->{count} <=> $a->{count} || $a->{value} cmp $b->{value} }
+          map { +{ value => $_, count => $out{$_} } }
+          keys %out;
+        splice(@out, $self->max_categories);
+        return \@out;
     }
     return undef;
 }
