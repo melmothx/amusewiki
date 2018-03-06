@@ -115,8 +115,9 @@
          var url = form.attr('action') + '?' + $('form#search').serialize();
          $('#xapian-loading').show();
          $('#xapian-results').remove();
-         $('#xapian-results-container').load(url + ' #xapian-results');
-         $('#xapian-loading').hide();
+         $('#xapian-results-container').load(url + ' #xapian-results',
+                                             function () {$('#xapian-loading').hide();
+                                             });
          // $('html,body').animate({ scrollTop: $('#xapian-results-container').offset().top - 50}, 1000);
      })
   })
