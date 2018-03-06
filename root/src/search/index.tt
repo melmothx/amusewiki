@@ -95,7 +95,7 @@
         [% IF texts.count %]
           [% INCLUDE 'include/posts.tt' %]
           [% INCLUDE 'include/pagination.tt' %]
-        [% ELSIF c.req.params.query %]
+        [% ELSE %]
           <p class="text-center">
             <strong>[% loc("No result found!") %]</strong>
           </p>
