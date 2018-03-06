@@ -16,32 +16,52 @@ use Try::Tiny;
 use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
 
+use constant {
+              SLOT_AUTHOR => 0,
+              SLOT_TOPIC => 1,
+              SLOT_PUBDATE => 2,
+              SLOT_QUALIFICATION => 3,
+              SLOT_PAGES => 4,
+              SLOT_DATE => 5,
+              SLOT_TITLE => 6,
+              SLOT_YEAR => 7,
+             };
+
+
 my %SLOTS = (
              author => {
-                        slot => 0,
+                        slot => SLOT_AUTHOR,
                         prefix => 'XA',
                        },
              topic => {
-                       slot => 1,
+                       slot => SLOT_TOPIC,
                        prefix => 'XK'
                       },
              pubdate => {
-                         slot => 2,
+                         slot => SLOT_PUBDATE,
                          prefix => 'XP',
                         },
              qualification => {
-                               slot => 3,
+                               slot => SLOT_QUALIFICATION,
                                prefix => 'XQ',
                               },
              pages => {
-                       slot => 4,
+                       slot => SLOT_PAGES,
                        prefix => 'XL',
                       },
              date => {
-                      slot => 5,
+                      slot => SLOT_DATE,
                       prefix => 'XD',
                      },
             );
+
+my %SORTINGS = (
+                pubdate => SLOT_PUBDATE,
+                pages => SLOT_PAGES,
+                year => SLOT_YEAR,
+                title => SLOT_TITLE,
+               );
+
 
 =head1 NAME
 
@@ -240,6 +260,11 @@ sub index_text {
             if (my $qual = $title->text_qualification) {
                 $doc->add_value($SLOTS{qualification}{slot}, $qual);
                 $doc->add_boolean_term($SLOTS{qualification}{prefix} . $qual);
+            }
+
+            $doc->add_value(SLOT_TITLE, Text::Unidecode::unidecode($title->list_title || $title->title));
+            if (my $year = $title->date_year) {
+                $doc->add_value(SLOT_YEAR, $year);
             }
 
             if (my $source = $title->source) {
