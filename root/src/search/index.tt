@@ -86,6 +86,10 @@
     [% END %]
   </div>
   <div class="col-xs-10">
+    <div id="xapian-loading" class="center">
+      <span class="fa fa-spinner fa-spin fa-3x fa-fw">
+      </span>
+    </div>
     <div id="xapian-results-container">
       <div id="xapian-results">
         [% IF texts.count %]
@@ -105,11 +109,14 @@
 
 <script type="text/javascript">
  $(document).ready(function() {
+     $('#xapian-loading').hide();
      $(".xapian-filter").change(function() {
          var form = $('form#search');
          var url = form.attr('action') + '?' + $('form#search').serialize();
+         $('#xapian-loading').show();
          $('#xapian-results').remove();
          $('#xapian-results-container').load(url + ' #xapian-results');
+         $('#xapian-loading').hide();
          // $('html,body').animate({ scrollTop: $('#xapian-results-container').offset().top - 50}, 1000);
      })
   })
