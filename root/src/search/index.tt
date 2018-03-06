@@ -86,14 +86,18 @@
     [% END %]
   </div>
   <div class="col-xs-10">
-    [% IF texts.count %]
-      [% INCLUDE 'include/posts.tt' %]
-      [% INCLUDE 'include/pagination.tt' %]
-    [% ELSIF c.req.params.query %]
-      <p class="text-center">
-        <strong>[% loc("No result found!") %]</strong>
-      </p>
-    [% END %]
+    <div id="xapian-results-container">
+      <div id="xapian-results">
+        [% IF texts.count %]
+          [% INCLUDE 'include/posts.tt' %]
+          [% INCLUDE 'include/pagination.tt' %]
+        [% ELSIF c.req.params.query %]
+          <p class="text-center">
+            <strong>[% loc("No result found!") %]</strong>
+          </p>
+        [% END %]
+      </div>
+    </div>
   </div>
 </div>
 
@@ -102,7 +106,11 @@
 <script type="text/javascript">
  $(document).ready(function() {
      $(".xapian-filter").change(function() {
-         $('form#search').submit();
+         var form = $('form#search');
+         var url = form.attr('action') + '?' + $('form#search').serialize();
+         $('#xapian-results').remove();
+         $('#xapian-results-container').load(url + ' #xapian-results');
+         // $('html,body').animate({ scrollTop: $('#xapian-results-container').offset().top - 50}, 1000);
      })
   })
 </script>
