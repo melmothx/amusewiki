@@ -24,7 +24,8 @@ use constant {
               SLOT_PAGES => 4,
               SLOT_DATE => 5,
               SLOT_TITLE => 6,
-              SLOT_YEAR => 7,
+              SLOT_PUBDATE_FULL  => 7,
+              SLOT_PAGES_FULL  => 8,
               SORT_ASC => 0,
               SORT_DESC => 1,
              };
@@ -59,9 +60,8 @@ my %SLOTS = (
 
 sub sortings {
     my %out = (
-               pubdate => SLOT_PUBDATE,
-               pages => SLOT_PAGES,
-               year => SLOT_YEAR,
+               pubdate => SLOT_PUBDATE_FULL,
+               pages => SLOT_PAGES_FULL,
                title => SLOT_TITLE,
               );
     return %out;
@@ -267,10 +267,10 @@ sub index_text {
                 $doc->add_boolean_term($SLOTS{qualification}{prefix} . $qual);
             }
 
+            # for sorting purposes
             $doc->add_value(SLOT_TITLE, Text::Unidecode::unidecode($title->list_title || $title->title));
-            if (my $year = $title->date_year) {
-                $doc->add_value(SLOT_YEAR, $year);
-            }
+            $doc->add_value(SLOT_PUBDATE_FULL, Search::Xapian::sortable_serialise($title->pubdate->epoch));
+            $doc->add_value(SLOT_PAGES_FULL, Search::Xapian::sortable_serialise($title->pages_estimated));
 
             if (my $source = $title->source) {
                 $indexer->index_text($source, 1, 'XSOURCE');
@@ -477,10 +477,19 @@ sub faceted_search {
     my $start = ($page - 1) * $pagesize;
 
     my %SORTINGS = $self->sortings;
-    if ($args{sort} and defined $SORTINGS{$args{sort}}) {
-        my $direction = $args{sort_direction} || 'asc';
-        $enquire->set_sort_by_value_then_relevance($SORTINGS{$args{sort}},
-                                                   ($direction eq 'desc' ? SORT_DESC : SORT_ASC));
+    if ($args{sort}) {
+        if ($args{sort} =~ m/\A(.+?)_(.+?)\z/) {
+            my $sort = $1;
+            my $direction = $2;
+            if ($SORTINGS{$sort}) {
+                log_debug { "Sorting $sort $direction" };
+                $enquire->set_sort_by_value_then_relevance($SORTINGS{$sort},
+                                                           ($direction eq 'desc' ? SORT_DESC : SORT_ASC));
+            }
+        }
+        else {
+            log_warn { "Bad value for sorting: $args{sort}" };
+        }
     }
 
     my $mset = $enquire->get_mset($start, $pagesize, $args{check_at_least} || $pagesize);

@@ -8,7 +8,7 @@
 
 <div class="amw-spacer-20"></div>
 
-<form id="search" method="get">
+<form id="search" method="get" action="[% c.uri_for_action('/search/index') %]">
 
 <div class="row">
     <div class="col-xs-12">
@@ -36,10 +36,36 @@
 
 <div class="amw-spacer-20"></div>
 
-[% IF texts.count %]
-
 <div class="row">
   <div class="col-xs-2">
+    <div class="form-group">
+      <label for="xapian-sort" class="control-label">
+        [% loc('Sorting:') %]
+      </label>
+      <select class="form-control xapian-filter" name="sort" id="xapian-sort">
+        <option value="" [% UNLESS c.req.params.sort %]selected="selected"[% END %]>
+          [% loc("By relevance") %]
+        </option>
+        <option value="title_asc" [% IF c.req.params.sort == 'title_asc' %]selected="selected"[% END %]>
+          [% loc("By title A-Z") %]
+        </option>
+        <option value="title_desc" [% IF c.req.params.sort == 'title_desc' %]selected="selected"[% END %]>
+          [% loc("By title Z-A") %]
+        </option>
+        <option value="pubdate_asc" [% IF c.req.params.sort == 'pubdate_asc' %]selected="selected"[% END %]>
+          [% loc('Older first') %]
+        </option>
+        <option value="pubdate_desc" [% IF c.req.params.sort == 'pubdate_desc' %]selected="selected"[% END %]>
+          [% loc('Newer first') %]
+        </option>
+        <option value="pages_asc" [% IF c.req.params.sort == 'pages_asc' %]selected="selected"[% END %]>
+          [% loc("by number of pages, ascending") %]
+        </option>
+        <option value="pages_desc" [% IF c.req.params.sort == 'pages_desc' %]selected="selected"[% END %]>
+          [% loc("by number of pages, descending") %]
+        </option>
+      </select>
+    </div>
     [% IF facets %]
     [% FOREACH facet IN facets %]
     [% IF facet.facets.size %]
@@ -60,20 +86,16 @@
     [% END %]
   </div>
   <div class="col-xs-10">
-[% INCLUDE 'include/posts.tt' %]
-[% INCLUDE 'include/pagination.tt' %]
+    [% IF texts.count %]
+      [% INCLUDE 'include/posts.tt' %]
+      [% INCLUDE 'include/pagination.tt' %]
+    [% ELSIF c.req.params.query %]
+      <p class="text-center">
+        <strong>[% loc("No result found!") %]</strong>
+      </p>
+    [% END %]
   </div>
 </div>
-
-[% ELSIF c.req.params.query %]
-<div class="row">
-  <div class="col-xs-12">
-    <p class="text-center">
-      <strong>[% loc("No result found!") %]</strong>
-    </p>
-  </div>
-</div>
-[% END %]
 
 </form>
 

@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 143;
+use Test::More tests => 140;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -244,9 +244,9 @@ $site->update_db_from_tree(sub { diag @_ });
 
 my %SORTINGS = $site->xapian->sortings;
 foreach my $sort_by (keys %SORTINGS) {
-    my $res = $site->xapian->faceted_search(sort => $sort_by, sort_direction => 'asc');
+    my $res = $site->xapian->faceted_search(sort => $sort_by . '_asc');
     is $res->pager->total_entries, 3;
-    my $res1 = $site->xapian->faceted_search(sort => $sort_by, sort_direction => 'desc');
+    my $res1 = $site->xapian->faceted_search(sort => $sort_by . '_desc');
     is $res1->pager->total_entries, 3;
     is $res1->matches->[0]->{pagename}, $res->matches->[2]->{pagename};
 }
