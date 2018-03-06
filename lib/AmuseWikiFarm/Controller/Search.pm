@@ -44,7 +44,7 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
                                           locale => $c->stash->{current_locale_code},
                                           lh => $c->stash->{lh},
                                           # collect all the facets: set check_at_least to all the docs
-                                          check_at_least => int($site->titles->count / $xapian->page) + 1,
+                                          check_at_least => $site->titles->count,
                                           site => $site);
 
     my $res = $xapian->faceted_search(%params,
