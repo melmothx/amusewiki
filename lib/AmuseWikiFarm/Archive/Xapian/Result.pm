@@ -129,7 +129,8 @@ sub _build_dates {
         # these are decades, actually
         $i->{label} = $i->{value} . '-' . ($i->{value} + 9);
     }
-    return $list;
+    return [ sort  { $a->{value} <=> $b->{value} } @$list ];
+
 }
 
 sub _build_pubdates {
@@ -169,7 +170,7 @@ sub _build_text_types {
             $i->{label} = $lh->loc($i->{value});
         }
     }
-    return [ sort @$list ];
+    return [ sort  { $a->{value} cmp $b->{value} } @$list ];
 }
 
 
