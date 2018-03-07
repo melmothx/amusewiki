@@ -138,7 +138,7 @@ sub _build_pubdates {
     foreach my $i (@$list) {
         $i->{label} = $i->{value};
     }
-    return $list;
+    return [ sort { _first_number($a->{value}) <=> _first_number($b->{value}) } @$list ];
 }
 
 sub _build_num_pages {
@@ -147,8 +147,17 @@ sub _build_num_pages {
     foreach my $i (@$list) {
         $i->{label} = $i->{value};
     }
-    return $list;
+    return [ sort { _first_number($a->{value}) <=> _first_number($b->{value}) } @$list ];
+}
 
+sub _first_number {
+    my $str = shift;
+    if ($str =~ m/^([1-9][0-9]*)/) {
+        return $1;
+    }
+    else {
+        return 0;
+    }
 }
 
 sub _build_text_types {
@@ -160,7 +169,7 @@ sub _build_text_types {
             $i->{label} = $lh->loc($i->{value});
         }
     }
-    return $list;
+    return [ sort @$list ];
 }
 
 
