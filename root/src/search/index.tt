@@ -67,6 +67,12 @@
       </select>
     </div>
     [% IF facets %]
+      <div>
+        <a class="btn btn-primary btn-sm"
+           href="[% c.uri_for_action('/search/index', { query => c.req.params.query }) | html %]">
+          [% loc('Reset filters') %]
+        </a>
+      </div>
     [% FOREACH facet IN facets %]
     [% IF facet.facets.size %]
     <h5><strong>[% facet.label | html %]</strong></h5>
@@ -83,6 +89,12 @@
     [% END %]
     [% END %]
     [% END %]
+      <div>
+        <a class="btn btn-primary btn-sm"
+           href="[% c.uri_for_action('/search/index', { query => c.req.params.query }) | html %]">
+          [% loc('Reset filters') %]
+        </a>
+      </div>
     [% END %]
   </div>
   <div class="col-xs-10">
@@ -108,17 +120,23 @@
 </form>
 
 <script type="text/javascript">
+ function load_xapian_results (url) {
+     $('#xapian-loading').show();
+     $('#xapian-results').remove();
+     $('#xapian-results-container').load(url + ' #xapian-results',
+                                         function () {$('#xapian-loading').hide();
+                                         });
+ }
  $(document).ready(function() {
      $('#xapian-loading').hide();
      $(".xapian-filter").change(function() {
          var form = $('form#search');
-         var url = form.attr('action') + '?' + $('form#search').serialize();
-         $('#xapian-loading').show();
-         $('#xapian-results').remove();
-         $('#xapian-results-container').load(url + ' #xapian-results',
-                                             function () {$('#xapian-loading').hide();
-                                             });
+         load_xapian_results(form.attr('action') + '?bare=1&' + $('form#search').serialize());
          // $('html,body').animate({ scrollTop: $('#xapian-results-container').offset().top - 50}, 1000);
      })
-  })
+ })
+ $(document).on('click', '.pagination li a', function(e) {
+     e.preventDefault();
+     load_xapian_results($(this).attr('href'));
+ });
 </script>
