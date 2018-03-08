@@ -405,11 +405,11 @@ sub faceted_search {
         }
     }
 
-    my $query = $args{query} ? $qp->parse_query($args{query},
-                                                (FLAG_PHRASE   |
-                                                 FLAG_BOOLEAN  |
-                                                 FLAG_LOVEHATE |
-                                                 FLAG_WILDCARD )) :  Search::Xapian::Query->MatchAll;
+    my $flags = $args{partial} ? (FLAG_PARTIAL) : (FLAG_PHRASE   |
+                                                   FLAG_BOOLEAN  |
+                                                   FLAG_LOVEHATE |
+                                                   FLAG_WILDCARD );
+    my $query = $args{query} ? $qp->parse_query($args{query}, $flags) : Search::Xapian::Query->MatchAll;
 
     # I belive this should be nuked, replaced by the checkboxes + help
     # for the prefixes.
@@ -536,7 +536,6 @@ sub faceted_search {
                                                        lh => $args{lh},
                                                       );
 }
-
 
 
 __PACKAGE__->meta->make_immutable;

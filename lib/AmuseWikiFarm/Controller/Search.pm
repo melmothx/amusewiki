@@ -38,6 +38,19 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     my $site = $c->stash->{site};
     my $xapian = $site->xapian;
     my %params = %{$c->req->params};
+    Dlog_debug { "Searching with these parameters $_" } \%params;
+
+    my $res = $xapian->faceted_search(%params,
+                                      no_facets => 1,
+                                      locale => $c->stash->{current_locale_code},
+                                      lh => $c->stash->{lh},
+                                      site => $site);
+
+    if ($params{fmt} and $params{fmt} eq 'json') {
+        $c->stash(json => $res->json_output);
+        $c->detach($c->view('JSON'));
+        return;
+    }
 
     my $baseres = $xapian->faceted_search(%params,
                                           no_filters => 1,
@@ -46,17 +59,6 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
                                           # collect all the facets: set check_at_least to all the docs
                                           check_at_least => $site->titles->count,
                                           site => $site);
-
-    my $res = $xapian->faceted_search(%params,
-                                      no_facets => 1,
-                                      locale => $c->stash->{current_locale_code},
-                                      lh => $c->stash->{lh},
-                                      site => $site);
-    if ($params{fmt} and $params{fmt} eq 'json') {
-        $c->stash(json => $res->json_output);
-        $c->detach($c->view('JSON'));
-        return;
-    }
     if (!$c->user_exists and $site->show_preview_when_deferred) {
         $c->stash(no_full_text_if_not_published => 1);
     }
