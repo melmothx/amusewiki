@@ -142,7 +142,7 @@
                  url: "/search",
                  dataType: "json",
                  data: {
-                     term: req.term,
+                     query: req.term,
                      partial: 1,
                      fmt: "json"
                  },
