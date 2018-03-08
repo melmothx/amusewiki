@@ -405,10 +405,9 @@ sub faceted_search {
         }
     }
 
-    my $flags = $args{partial} ? (FLAG_PARTIAL) : (FLAG_PHRASE   |
-                                                   FLAG_BOOLEAN  |
-                                                   FLAG_LOVEHATE |
-                                                   FLAG_WILDCARD );
+    my $flags = $args{partial} ? (FLAG_PHRASE | FLAG_BOOLEAN  | FLAG_LOVEHATE | FLAG_WILDCARD | FLAG_PARTIAL)
+                               : (FLAG_PHRASE | FLAG_BOOLEAN  | FLAG_LOVEHATE | FLAG_WILDCARD);
+
     my $query = $args{query} ? $qp->parse_query($args{query}, $flags) : Search::Xapian::Query->MatchAll;
 
     # I belive this should be nuked, replaced by the checkboxes + help
