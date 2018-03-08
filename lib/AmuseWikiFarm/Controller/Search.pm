@@ -45,6 +45,12 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
                                       locale => $c->stash->{current_locale_code},
                                       lh => $c->stash->{lh},
                                       site => $site);
+    if (my $error = $res->error) {
+        # an error is likely triggered by a wrong syntax, so a 404
+        # makes sense (no results for such query)
+        $c->response->status(404);
+        $c->stash(search_error => $error);
+    }
 
     if ($params{fmt} and $params{fmt} eq 'json') {
         $c->stash(json => $res->json_output);

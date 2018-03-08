@@ -109,7 +109,7 @@
           [% INCLUDE 'include/pagination.tt' %]
         [% ELSE %]
           <p class="text-center">
-            <strong>[% loc("No result found!") %]</strong>
+            <strong>[% loc("No result found!") %] [% search_error | html %]</strong>
           </p>
         [% END %]
       </div>

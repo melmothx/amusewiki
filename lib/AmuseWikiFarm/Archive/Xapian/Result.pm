@@ -4,13 +4,14 @@ use utf8;
 use strict;
 use warnings;
 use Moo;
-use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf/;
+use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf Str/;
 use JSON::MaybeXS;
 use AmuseWikiFarm::Log::Contextual;
+use Data::Page;
 use namespace::clean;
 
 has pager => (is => 'ro',
-              required => 1,
+              default => sub { Data::Page->new },
               isa => InstanceOf['Data::Page']);
 
 has max_categories => (is => 'ro',
@@ -18,11 +19,11 @@ has max_categories => (is => 'ro',
                        isa => Int);
 
 has matches => (is => 'ro',
-                required => 1,
+                default => sub { [] },
                 isa => ArrayRef[HashRef]);
 
 has facets => (is => 'ro',
-               required => 1,
+               default => sub { +{} },
                isa => HashRef[ArrayRef[HashRef]]);
 
 has selections => (is => 'ro',
@@ -47,8 +48,11 @@ has num_pages => (is => 'lazy');
 
 has text_types => (is => 'lazy');
 
+has error => (is => 'ro', isa => Maybe[Str]);
+
 sub facet_tokens {
     my $self = shift;
+    return [] if $self->error;
     my $lh = $self->lh;
     unless ($lh) {
         log_error { "Facet tokens called without the LH token, aborting" };
@@ -206,6 +210,7 @@ sub unpack_json_facets {
 
 sub texts {
     my ($self) = @_;
+    return [] if $self->error;
     if (my $site = $self->site) {
         my @out;
         foreach my $match (@{$self->matches}) {

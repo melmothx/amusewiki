@@ -369,6 +369,18 @@ sub search {
 
 sub faceted_search {
     my ($self, %args) = @_;
+    my $res = try {
+        $self->_do_faceted_search(%args);
+    } catch {
+        my $err = $_;
+        Dlog_error { "$err calling faceted_search $args{query}" };
+        AmuseWikiFarm::Archive::Xapian::Result->new(error => "$err");
+    };
+    return $res;
+}
+
+sub _do_faceted_search {
+    my ($self, %args) = @_;
     my $database = Search::Xapian::Database->new($self->xapian_dir);
     my $qp = Search::Xapian::QueryParser->new($database);
 
