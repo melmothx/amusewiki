@@ -158,7 +158,7 @@
              });
          },
          minLength: 3,
-         delay: 1000,
+         delay: 500,
          select: function(event, ui) {
              window.location.href = ui.item.link;
          },
