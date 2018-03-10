@@ -407,6 +407,7 @@ sub _do_faceted_search {
                     { name => source => prefix => 'XSOURCE', bool => 0 },
                     { name => notes  => prefix => 'XNOTES', bool => 0 },
                     { name => year   => prefix => 'Y', bool => 1 },
+                    { name => uri   => prefix => 'Q', bool => 1 },
                    );
     foreach my $prefix (@prefixes) {
         if ($prefix->{bool}) {
@@ -545,6 +546,7 @@ sub _do_faceted_search {
                                                        pager => $pager,
                                                        site => $args{site},
                                                        lh => $args{lh},
+                                                       show_deferred => $self->index_deferred,
                                                       );
 }
 

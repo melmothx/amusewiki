@@ -4,7 +4,7 @@ use utf8;
 use strict;
 use warnings;
 use Moo;
-use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf Str/;
+use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf Str Bool/;
 use JSON::MaybeXS;
 use AmuseWikiFarm::Log::Contextual;
 use Data::Page;
@@ -35,6 +35,10 @@ has site => (is => 'ro',
 
 has lh => (is => 'ro',
            isa => Maybe[Object]);
+
+has show_deferred => (is => 'ro',
+                      isa => Bool,
+                      default => sub { 0 });
 
 has authors => (is => 'lazy');
 
@@ -215,7 +219,7 @@ sub texts {
         my @out;
         foreach my $match (@{$self->matches}) {
             if (my $text = $site->titles->texts_only->by_uri($match->{pagename})->single) {
-                if ($text->can_be_indexed) {
+                if ($text->is_published or ($self->show_deferred && $text->can_be_indexed)) {
                     push @out, $text;
                 }
                 else {

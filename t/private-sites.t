@@ -26,9 +26,12 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 ok -d $site->repo_root;
 mkdir catdir($site->repo_root, 'site_files');
+mkdir catdir($site->repo_root, 'a');
+mkdir catdir($site->repo_root, 'a', 'at');
+write_file(catfile($site->repo_root, 'a', 'at', 'a-test.muse'), "#title a test\n\nHello, a test\n");
 write_file(catfile($site->repo_root, 'site_files', 'test.js'), "Hello\n");
 
-$site->index_site_files;
+$site->update_db_from_tree(sub { diag @_ });
 
 my @uris = (qw[library category/topic category/author bookbuilder search special
                cloud monthly latest

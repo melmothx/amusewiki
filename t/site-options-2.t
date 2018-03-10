@@ -39,6 +39,7 @@ while (my $option = $options->next) {
 }
 is_deeply \%settings, \%tests, "Thing stored";
 
+$site = $site->get_from_storage;
 foreach my $opt (keys %tests) {
     ok($site->get_option($opt), "Found $opt in settings");
 }
