@@ -15,7 +15,7 @@
       <div class="jumbotron">
         <div class="input-group">
           <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">[% loc('Full text search') %]</button>
+            <button class="btn btn-primary" type="submit">[% loc('Full text search') %]</button>
           </span>
           <input type="text" class="form-control search-autocomplete" id="query" name="query"
                  placeholder="[% loc('E.g. some word AND title:"My Title" AND author:Author OR year:2017') %]"
@@ -68,7 +68,7 @@
     </div>
     [% IF facets %]
       <div>
-        <a class="btn btn-primary btn-sm"
+        <a class="btn btn-default btn-sm"
            href="[% c.uri_for_action('/search/index', { query => c.req.params.query }) | html %]">
           [% loc('Reset filters') %]
         </a>
@@ -90,7 +90,7 @@
     [% END %]
     [% END %]
       <div>
-        <a class="btn btn-primary btn-sm"
+        <a class="btn btn-default btn-sm"
            href="[% c.uri_for_action('/search/index', { query => c.req.params.query }) | html %]">
           [% loc('Reset filters') %]
         </a>
