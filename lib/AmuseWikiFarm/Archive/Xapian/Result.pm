@@ -161,7 +161,7 @@ sub _build_num_pages {
 
 sub _first_number {
     my $str = shift;
-    if ($str =~ m/^([1-9][0-9]*)/) {
+    if ($str =~ m/([1-9][0-9]*)/) {
         return $1;
     }
     else {
