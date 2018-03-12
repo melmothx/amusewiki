@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 42;
+use Test::More tests => 43;
 use Data::Dumper;
 use File::Path qw/make_path/;
 
@@ -21,6 +21,8 @@ binmode $builder->failure_output, ":encoding(utf-8)";
 binmode $builder->todo_output,    ":encoding(utf-8)";
 binmode STDOUT, ":encoding(utf-8)";
 
+
+use_ok('AmuseWikiFarm::Archive::Xapian') or die "Cannot load Xapian";
 
 my $site_id = '0xapian0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
@@ -84,6 +86,8 @@ foreach my $term ("état", "etat", "ÉTAT", "ETAT") {
 
 my $russian =<<MUSE;
 #title Russian
+#authors Pinco Pallino, Tizio Caio Sempronio
+#topics First Cat, Second Cat, Third Cat
 #lang ru
 
  Среди множества героических натур, отдавших свои силы и жизнь на
@@ -114,7 +118,10 @@ my $russian =<<MUSE;
 
 MUSE
 
+sleep 1;
+
 write_file($target, $russian);
+
 $site->update_db_from_tree;
 $site->xapian_reindex_all;
 foreach my $term ('умеренными', '1887', 'ravno', 'protiv', 'ИЗГНАНИЕМ',

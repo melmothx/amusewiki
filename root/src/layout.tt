@@ -553,7 +553,7 @@
             [% IF c.user_exists || site.human_can_edit %]
             <li id="awm-navbar-add-new-text-icon">
               <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]" title="[% loc('Add a new text') %]">
-                <span class="fa fa-upload fw"></span>
+                <span class="fa fa-plus fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Add a new text') %]
                 </span>

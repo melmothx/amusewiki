@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 34;
+use Test::More tests => 35;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Catalyst::Test 'AmuseWikiFarm';
@@ -21,13 +21,15 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 }
 
 {
-    $mech->get_ok('/search?query=asdfasdfasdf+OR+OR+OR');
+    $mech->get('/search?query=asdfasdfasdf+OR+OR+OR');
+    is $mech->status, 404;
+    $mech->content_contains('Exception');
 }
 
 {
     $mech->get_ok('/search?query=a');
     $mech->content_like(qr/second-test/, "Found a text");
-    $mech->get_ok('/search?query=a&complex_query=1&title=My first test&fmt=json');
+    $mech->get_ok('/search?query=a+title:"My first test"&fmt=json');
     diag $mech->content;
     $mech->content_like(qr/first-test/, "Found the text");
     $mech->content_unlike(qr/second-test/, "Other title filtered out");

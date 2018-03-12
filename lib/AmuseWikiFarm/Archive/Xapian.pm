@@ -13,6 +13,60 @@ use Data::Page;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Unidecode ();
 use Try::Tiny;
+use JSON::MaybeXS;
+use AmuseWikiFarm::Archive::Xapian::Result;
+
+use constant {
+              SLOT_AUTHOR => 0,
+              SLOT_TOPIC => 1,
+              SLOT_PUBDATE => 2,
+              SLOT_QUALIFICATION => 3,
+              SLOT_PAGES => 4,
+              SLOT_DATE => 5,
+              SLOT_TITLE => 6,
+              SLOT_PUBDATE_FULL  => 7,
+              SLOT_PAGES_FULL  => 8,
+              SORT_ASC => 0,
+              SORT_DESC => 1,
+             };
+
+
+my %SLOTS = (
+             author => {
+                        slot => SLOT_AUTHOR,
+                        prefix => 'XA',
+                       },
+             topic => {
+                       slot => SLOT_TOPIC,
+                       prefix => 'XK'
+                      },
+             pubdate => {
+                         slot => SLOT_PUBDATE,
+                         prefix => 'XP',
+                        },
+             qualification => {
+                               slot => SLOT_QUALIFICATION,
+                               prefix => 'XQ',
+                              },
+             pages => {
+                       slot => SLOT_PAGES,
+                       prefix => 'XL',
+                      },
+             date => {
+                      slot => SLOT_DATE,
+                      prefix => 'XD',
+                     },
+            );
+
+sub sortings {
+    my %out = (
+               pubdate => SLOT_PUBDATE_FULL,
+               pages => SLOT_PAGES_FULL,
+               title => SLOT_TITLE,
+              );
+    return %out;
+}
+
 
 =head1 NAME
 
@@ -137,6 +191,8 @@ sub delete_text_by_uri {
 
 sub index_text {
     my ($self, $title, $logger) = @_;
+    # exclude specials
+    return unless $title->is_regular;
     unless ($logger) {
         $logger = sub { warn join(" ", @_) };
     }
@@ -152,34 +208,23 @@ sub index_text {
 
     my $qterm = 'Q' . $title->uri;
     my $exit = 1;
-    if ($self->text_can_be_indexed($title)) {
+    if ($title and ($title->is_published or ($self->index_deferred && $title->can_be_indexed))) {
         $logger->("Updating " . $title->uri . " in Xapian db\n");
         try {
             my $doc = Search::Xapian::Document->new();
             $indexer->set_document($doc);
 
             # Set the document data to the uri so we can show it for matches.
+            # this is treated as blob.
             $doc->set_data($title->uri);
 
             # Unique ID.
             $doc->add_term($qterm);
 
-            # To allow sorting by author.
-            # $doc->add_value($SLOT_AUTHOR, $author);
-
-            # To allow sorting by title..
-            # $doc->add_value($SLOT_TITLE, $doc_name);
-
             # Index the author to allow fielded free-text searching.
             if (my $author = $title->author) {
                 $indexer->index_text($author, 1, 'A');
             }
-
-            if (my $author_list = $title->author_list) {
-                # with lesser weight, index the list
-                $indexer->index_text($author_list, 2, 'A');
-            }
-
             # Index the title and subtitle to allow fielded free-text searching.
             $indexer->index_text($title->title, 1, 'S');
 
@@ -187,15 +232,46 @@ sub index_text {
                 $indexer->index_text($subtitle, 2, 'S');
             }
 
-            # To allow date range searching and sorting by date.
-            if ($title->date and $title->date =~ /(\d{4})/) {
-                $indexer->index_text($1, 1, 'Y');
-                # $doc->add_value($SLOT_DATE, "$1$2$3");
+            my %cats = (
+                        author => { key => 'A', index => 2, rs => 'authors_only' },
+                        topic =>  { key => 'K', index => 1, rs => 'topics_only' },
+                       );
+            foreach my $cat (keys %cats) {
+                my @list;
+                my $prefix = $cats{$cat}{key};
+                my $rs = $cats{$cat}{rs};
+                my $index = $cats{$cat}{index};
+                foreach my $item ($title->categories->$rs->all) {
+                    push @list, $item->full_uri;
+                    $doc->add_boolean_term($SLOTS{$cat}{prefix} . $item->full_uri);
+                    $indexer->index_text($item->name, $index, $prefix);
+                }
+                $doc->add_value($SLOTS{$cat}{slot}, encode_json(\@list));
             }
 
-            if (my $topic_list = $title->topic_list) {
-                $indexer->index_text($topic_list, 1, 'K');
+            if (my $decade = $title->date_decade) {
+                $doc->add_value($SLOTS{date}{slot}, $decade);
+                $doc->add_boolean_term($SLOTS{date}{prefix} . $decade);
+                $doc->add_boolean_term('Y'  . $title->date_year);
             }
+
+            my $pub_year = $title->pubdate->year;
+            $doc->add_value($SLOTS{pubdate}{slot}, $pub_year);
+            $doc->add_boolean_term($SLOTS{pubdate}{prefix} .  $pub_year);
+
+            $doc->add_value($SLOTS{pages}{slot}, $title->page_range);
+            $doc->add_boolean_term($SLOTS{pages}{prefix} .  $title->page_range);
+
+            if (my $qual = $title->text_qualification) {
+                $doc->add_value($SLOTS{qualification}{slot}, $qual);
+                $doc->add_boolean_term($SLOTS{qualification}{prefix} . $qual);
+            }
+
+            # for sorting purposes
+            $doc->add_value(SLOT_TITLE, Text::Unidecode::unidecode($title->list_title || $title->title));
+            $doc->add_value(SLOT_PUBDATE_FULL, Search::Xapian::sortable_serialise($title->pubdate->epoch));
+            $doc->add_value(SLOT_PAGES_FULL, Search::Xapian::sortable_serialise($title->pages_estimated));
+
             if (my $source = $title->source) {
                 $indexer->index_text($source, 1, 'XSOURCE');
             }
@@ -230,7 +306,7 @@ sub index_text {
                     # This way we have a match for both case.
                     try {
                         $indexer->index_text(Text::Unidecode::unidecode($line));
-                        log_debug { Text::Unidecode::unidecode($line) };
+                        # log_debug { Text::Unidecode::unidecode($line) };
                     } catch {
                         my $error = $_;
                         log_warn { "Cannot unidecode $line: $_" } ;
@@ -259,17 +335,6 @@ sub index_text {
     return $exit;
 }
 
-sub text_can_be_indexed {
-    my ($self, $title) = @_;
-    if ($title and
-        ($title->is_published or
-         ($title->is_deferred && $title->teaser && $self->index_deferred))) {
-        return 1;
-    }
-    return 0;
-}
-
-
 =head2 search($query_string, $page, $locale);
 
 Run a query against the Xapian database. Return the number of matches
@@ -293,14 +358,34 @@ site locale.
 
 sub search {
     my ($self, $query_string, $page, $locale) = @_;
-    my $pager = Data::Page->new;
-    return $pager unless $query_string;
+    my $res = $self->faceted_search(
+                                    locale => $locale,
+                                    no_facets => 1,
+                                    page => $page,
+                                    query => $query_string,
+                                   );
+    return $res->pager, @{$res->matches};
+}
 
+sub faceted_search {
+    my ($self, %args) = @_;
+    my $res = try {
+        $self->_do_faceted_search(%args);
+    } catch {
+        my $err = $_;
+        Dlog_error { "$err calling faceted_search $args{query}" };
+        AmuseWikiFarm::Archive::Xapian::Result->new(error => "$err");
+    };
+    return $res;
+}
+
+sub _do_faceted_search {
+    my ($self, %args) = @_;
     my $database = Search::Xapian::Database->new($self->xapian_dir);
-
-    # set up the query parser
     my $qp = Search::Xapian::QueryParser->new($database);
 
+    # locale + stemming
+    my $locale = $args{locale};
     # if the locale passed doesn't match with the main language, don't
     # use the stemming. However, this will probably prevent to find
     # documents in other languages which was stemmed differently.
@@ -312,60 +397,158 @@ sub search {
     }
     $qp->set_stemmer($self->xapian_stemmer($locale));
     $qp->set_stemming_strategy(STEM_SOME);
-    $qp->set_default_op(OP_AND);
-    $qp->add_prefix(author => 'A');
-    $qp->add_prefix(title => 'S');
-    $qp->add_prefix(year => 'Y');
-    $qp->add_prefix(date => 'Y');
-    $qp->add_prefix(topic => 'K');
-    $qp->add_prefix(source => 'XSOURCE');
-    $qp->add_prefix(notes => 'XNOTES');
-    $qp->add_boolean_prefix(uri => 'Q');
 
-    my $query = $qp->parse_query($query_string,
-                                 (FLAG_PHRASE   |
-                                  FLAG_BOOLEAN  |
-                                  FLAG_LOVEHATE |
-                                  FLAG_WILDCARD ));
+    $qp->set_default_op(OP_AND);
+
+    my @prefixes = (
+                    { name => author => prefix => 'A', bool => 0 },
+                    { name => title  => prefix => 'S', bool => 0 },
+                    { name => topic  => prefix => 'K', bool => 0 },
+                    { name => source => prefix => 'XSOURCE', bool => 0 },
+                    { name => notes  => prefix => 'XNOTES', bool => 0 },
+                    { name => year   => prefix => 'Y', bool => 1 },
+                    { name => uri   => prefix => 'Q', bool => 1 },
+                   );
+    foreach my $prefix (@prefixes) {
+        if ($prefix->{bool}) {
+            $qp->add_boolean_prefix($prefix->{name}, $prefix->{prefix});
+        }
+        else {
+            $qp->add_prefix($prefix->{name}, $prefix->{prefix});
+        }
+    }
+
+    my $flags = $args{partial} ? (FLAG_PHRASE | FLAG_BOOLEAN  | FLAG_LOVEHATE | FLAG_WILDCARD | FLAG_PARTIAL)
+                               : (FLAG_PHRASE | FLAG_BOOLEAN  | FLAG_LOVEHATE | FLAG_WILDCARD);
+
+    my $query = $args{query} ? $qp->parse_query($args{query}, $flags) : Search::Xapian::Query->MatchAll;
+
+    # I belive this should be nuked, replaced by the checkboxes + help
+    # for the prefixes.
+    # my @additional;
+    # foreach my $field (@prefixes) {
+    #     if (my $term = $args{$field->{name}}) {
+    #         log_debug {  "Adding " . $field->{prefix} . lc($term) };
+    #         push @additional, Search::Xapian::Query->new(OP_AND,
+    #                                                      map {
+    #                                                          Search::Xapian::Query->new($field->{prefix} . lc($_))
+    #                                                        } split (/\s+/, $term));
+    #     }
+    # }
+    # if (@additional) {
+    #     $query = Search::Xapian::Query->new(($args{match_any} ? OP_OR : OP_AND),
+    #                                         ($args{query} ? ($query) : ()),
+    #                                         @additional);
+    # }
+
+    my %actives;
+    my @filters;
+  FILTER:
+    foreach my $filter (keys %SLOTS) {
+        my $param_name = "filter_" . $filter;
+        if (my $param = $args{$param_name}) {
+            my @checked = ref($args{$param_name}) ? (@{$args{$param_name}}) : ($args{$param_name});
+            foreach my $active (@checked) {
+                $actives{"filter_${filter}"}{$active} = 1;
+            }
+            next FILTER if $args{no_filters};
+            if (@checked) {
+                my $subquery = Search::Xapian::Query->new(+OP_OR,
+                                                          map { Search::Xapian::Query
+                                                              ->new($SLOTS{$filter}{prefix} . $_)
+                                                          } @checked);
+                Dlog_debug { "Adding filter for $filter: $_"  } \@checked;
+                push @filters, $subquery;
+            }
+        }
+    }
+    if (@filters) {
+        $query = Search::Xapian::Query->new(+OP_FILTER, $query, Search::Xapian::Query->new(+OP_AND, @filters));
+    }
 
     my $enquire = $database->enquire($query);
 
+    my %spies;
+    unless ($args{no_facets}) {
+        foreach my $slot (keys %SLOTS) {
+            my $spy = try { Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot}) };
+            if ($spy) {
+                $spies{$slot} = Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot});
+                $enquire->add_matchspy($spies{$slot});
+            }
+        }
+    }
+
     # paging
     my $pagesize = $self->page;
+    my $page = $args{page};
     # be sure to have a number
-    unless ($page and $page =~ m/\A[1-9][0-9]*\z/) {
+    unless ($page and $page =~ m/\A([1-9][0-9]*)\z/) {
         $page = 1;
     }
     my $start = ($page - 1) * $pagesize;
-    my $mset = $enquire->get_mset($start, $pagesize, $pagesize);
+
+    my %SORTINGS = $self->sortings;
+    if ($args{sort}) {
+        if ($args{sort} =~ m/\A(.+?)_(.+?)\z/) {
+            my $sort = $1;
+            my $direction = $2;
+            if ($SORTINGS{$sort}) {
+                log_debug { "Sorting $sort $direction" };
+                $enquire->set_sort_by_value_then_relevance($SORTINGS{$sort},
+                                                           ($direction eq 'desc' ? SORT_DESC : SORT_ASC));
+            }
+        }
+        else {
+            log_warn { "Bad value for sorting: $args{sort}" };
+        }
+    }
+
+    my $mset = $enquire->get_mset($start, $pagesize, $args{check_at_least} || $pagesize);
+    # pager
+    my $pager = Data::Page->new;
     $pager->total_entries($mset->get_matches_estimated);
     $pager->entries_per_page($pagesize);
     $pager->current_page($page);
-    my @results;
-    foreach my $m ($mset->items) {
-        my $founddoc = {};
-        $founddoc->{rank} = $m->get_rank + 1;
-        $founddoc->{relevance} = $m->get_percent;
-        $founddoc->{pagename} = $m->get_document->get_data;
-        push @results, $founddoc;
+
+    my @matches;
+    foreach my $item ($mset->items) {
+        my $doc = $item->get_document;
+        push @matches, {
+                        pagename => $doc->get_data,
+                        relevance => $item->get_percent,
+                        rank => $item->get_rank + 1,
+                       };
+        log_debug { join(' ', map { '<' . ($doc->get_value($SLOTS{$_}{slot}) || '') . '>'  } keys %SLOTS) };
     }
-    return $pager, @results;
+    my %facets;
+    foreach my $spy_name (keys %spies) {
+        my $spy = $spies{$spy_name};
+        # Fetch and display the spy values
+        my @got;
+        my $end = $spy->values_end;
+        # this is really weird, but the docs says so
+      SPYLOOP:
+        for (my $it = $spy->values_begin; $it != $end; $it++) {
+            push @got, {
+                        value => $it->get_termname,
+                        count => $it->get_termfreq,
+                       };
+        }
+        log_debug { "$spy_name went thourgh " . $spy->get_total };
+        $facets{$spy_name} = \@got;
+    }
+    Dlog_debug { "Selections: $_ " } \%actives;
+    return AmuseWikiFarm::Archive::Xapian::Result->new(
+                                                       selections => \%actives,
+                                                       matches => \@matches,
+                                                       facets => \%facets,
+                                                       pager => $pager,
+                                                       site => $args{site},
+                                                       lh => $args{lh},
+                                                       show_deferred => $self->index_deferred,
+                                                      );
 }
-
-=over 4
-
-=item rank
-
-=item relevance
-
-=item pagename
-
-=back
-
-=cut
-
-
-
 
 
 __PACKAGE__->meta->make_immutable;

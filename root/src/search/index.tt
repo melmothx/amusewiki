@@ -6,149 +6,169 @@
 </div>
 [% END %]
 
-<div style="margin-top: 20px">
-  [% # form-horizontal doesn't need .row %]
+<div class="amw-spacer-20"></div>
 
-  <form id="search" method="get" class="form-horizontal" role="form">
-    <div class="form-group">
-      <label for="query" class="col-xs-3 control-label">
-        [% loc('Full text search') %]
-      </label>
-      <div class="col-xs-9">
-        <input type="text" class="form-control" id="query" name="query"
-               value="[% c.req.params.query | html %]"/>
-      </div>
-    </div>
+<form id="search" method="get" action="[% c.uri_for_action('/search/index') %]">
 
-    [% IF c.req.params.title   || c.req.params.author || c.req.params.year || c.req.params.topic ||
-          c.req.params.source || c.req.params.notes  || c.req.params.match_any %]
-        [% SET show_full_options = 1 %]
-    [% END %]
-
-    <div id="full-options" class="collapse[% IF show_full_options %] in[% END %]">
-    <div class="form-group more-option">
-      <label for="title" class="col-xs-3 control-label">
-        [% loc('Title') %]
-      </label>
-      <div class="col-xs-9">
-        <input type="text" class="form-control" id="title" name="title"
-               value="[% c.req.params.title | html %]"/>
-      </div>
-    </div>
-
-    <div class="form-group more-option">
-      <label for="author" class="col-xs-3 control-label">
-        [% loc('Author') %]
-      </label>
-      <div class="col-xs-9">
-        <input type="text" class="form-control" id="author" name="author"
-               value="[% c.req.params.author | html %]"/>
-      </div>
-    </div>
-
-    <div class="form-group more-option">
-      <label for="year" class="col-xs-3 control-label">
-        [% loc('Year') %]
-      </label>
-      <div class="col-xs-9">
-        <input type="text" class="form-control" id="year" name="year"
-               value="[% c.req.params.year | html %]"/>
-      </div>
-    </div>
-
-    <div class="form-group more-option">
-      <label for="topic" class="col-xs-3 control-label">
-        [% loc('Topic') %]
-      </label>
-      <div class="col-xs-9">
-        <input type="text" class="form-control" id="topic" name="topic"
-               value="[% c.req.params.topic | html %]"/>
-      </div>
-    </div>
-
-    <div class="form-group more-option">
-      <label for="source" class="col-xs-3 control-label">
-        [% loc('Source') %]
-      </label>
-      <div class="col-xs-9">
-        <input type="text" class="form-control" id="source" name="source"
-               value="[% c.req.params.source | html %]"/>
-      </div>
-    </div>
-
-    <div class="form-group more-option">
-      <label for="notes" class="col-xs-3 control-label">
-        [% loc('Notes') %]
-      </label>
-      <div class="col-xs-9">
-        <input type="text" class="form-control" id="notes" name="notes"
-               value="[% c.req.params.notes | html %]"/>
-      </div>
-    </div>
-
-    <div class="form-group more-option">
-      <div class="col-xs-offset-3 col-xs-9">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox"
-                   [% IF c.req.params.match_any %]checked="checked"[% END %]
-                   name="match_any" />
-            [% loc('Match any of the fields above') %]
-          </label>
+<div class="row">
+    <div class="col-xs-12">
+      <div class="jumbotron">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">[% loc('Full text search') %]</button>
+          </span>
+          <input type="text" class="form-control search-autocomplete" id="query" name="query"
+                 placeholder="[% loc('E.g. some word AND title:"My Title" AND author:Author OR year:2017') %]"
+                 value="[% c.req.params.query | html %]"/>
         </div>
+        <small>
+          [% loc('You can use the following prefixes to search a word in a specific field, e.g. "title:example"') %]:
+          <code>author:</code>,
+          <code>title:</code>,
+          <code>topic:</code>,
+          <code>source:</code>,
+          <code>notes:</code>,
+          <code>year:</code>
+        </small><br>
       </div>
     </div>
-    </div>
+</div>
 
+<div class="amw-spacer-20"></div>
+
+<div class="row">
+  <div class="col-xs-2">
     <div class="form-group">
-      <div class="col-xs-offset-3 col-xs-9">
-        <button type="submit" class="btn btn-default">
-          [% loc('Full text search') %]
-        </button>
-        <button type="button" class="btn btn-default toggle-options"
-                data-target="#full-options"
-                data-toggle="collapse"
-                aria-expanded="[% IF show_full_options %]true[% ELSE %]false[% END %]"
-                aria-controls="full-options">
-          <span id="hide-options"[% UNLESS show_full_options %] style="display:none"[% END %]>[% loc('Hide options') %]</span>
-          <span id="show-options"[% IF     show_full_options %] style="display:none"[% END %]>[% loc('Show options') %]</span>
-        </button>
+      <label for="xapian-sort" class="control-label">
+        [% loc('Sorting:') %]
+      </label>
+      <select class="form-control xapian-filter" name="sort" id="xapian-sort">
+        <option value="" [% UNLESS c.req.params.sort %]selected="selected"[% END %]>
+          [% loc("By relevance") %]
+        </option>
+        <option value="title_asc" [% IF c.req.params.sort == 'title_asc' %]selected="selected"[% END %]>
+          [% loc("By title A-Z") %]
+        </option>
+        <option value="title_desc" [% IF c.req.params.sort == 'title_desc' %]selected="selected"[% END %]>
+          [% loc("By title Z-A") %]
+        </option>
+        <option value="pubdate_asc" [% IF c.req.params.sort == 'pubdate_asc' %]selected="selected"[% END %]>
+          [% loc('Older first') %]
+        </option>
+        <option value="pubdate_desc" [% IF c.req.params.sort == 'pubdate_desc' %]selected="selected"[% END %]>
+          [% loc('Newer first') %]
+        </option>
+        <option value="pages_asc" [% IF c.req.params.sort == 'pages_asc' %]selected="selected"[% END %]>
+          [% loc("by number of pages, ascending") %]
+        </option>
+        <option value="pages_desc" [% IF c.req.params.sort == 'pages_desc' %]selected="selected"[% END %]>
+          [% loc("by number of pages, descending") %]
+        </option>
+      </select>
+    </div>
+    [% IF facets %]
+      <div>
+        <a class="btn btn-default btn-sm"
+           href="[% c.uri_for_action('/search/index', { query => c.req.params.query }) | html %]">
+          [% loc('Reset filters') %]
+        </a>
+      </div>
+    [% FOREACH facet IN facets %]
+    [% IF facet.facets.size %]
+    <h5><strong>[% facet.label | html %]</strong></h5>
+    [% FOREACH checkbox IN facet.facets %]
+    <div class="checkbox">
+      <label>
+        <input class="xapian-filter" type="checkbox"
+               name="[% facet.name %]" value="[% checkbox.value | html %]"
+               [% IF checkbox.active %]checked="checked"[% END %]
+        />
+        [% checkbox.label | html %] <em>([% checkbox.count | html %])</em>
+      </label>
+    </div>
+    [% END %]
+    [% END %]
+    [% END %]
+      <div>
+        <a class="btn btn-default btn-sm"
+           href="[% c.uri_for_action('/search/index', { query => c.req.params.query }) | html %]">
+          [% loc('Reset filters') %]
+        </a>
+      </div>
+    [% END %]
+  </div>
+  <div class="col-xs-10">
+    <div id="xapian-loading" class="center">
+      <span class="fa fa-spinner fa-spin fa-3x fa-fw">
+      </span>
+    </div>
+    <div id="xapian-results-container">
+      <div id="xapian-results">
+        [% IF texts.count %]
+          [% INCLUDE 'include/posts.tt' %]
+          [% INCLUDE 'include/pagination.tt' %]
+        [% ELSE %]
+          <p class="text-center">
+            <strong>[% loc("No result found!") %] [% search_error | html %]</strong>
+          </p>
+        [% END %]
       </div>
     </div>
-    <input type="hidden" name="complex_query" value="1" />
-  </form>
+  </div>
 </div>
 
+</form>
 
-[% IF texts.count %]
-
-<div class="page-header">
-  <h1 id="results">[% built_query | html %]</h1>
-</div>
-
-[% INCLUDE 'include/posts.tt' %]
-[% INCLUDE 'include/pagination.tt' %]
-
-[% ELSIF built_query %]
-<div>
-  <p>
-    <strong>[% loc("No result found!") %]</strong>
-  </p>
-  <p>
-    [% loc("Query was") %]: [% built_query | html %]
-  </p>
-</div>
-[% END %]
+[% UNLESS c.req.params.bare %]
 
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#full-options').on('hidden.bs.collapse', function() {
-        $('#hide-options').hide();
-        $('#show-options').show();
-    });
-    $('#full-options').on('shown.bs.collapse', function() {
-        $('#hide-options').show();
-        $('#show-options').hide();
-    });
-});
+ function load_xapian_results (url) {
+     $('#xapian-loading').show();
+     $('#xapian-results').remove();
+     $('#xapian-results-container').load(url + ' #xapian-results',
+                                         function () {$('#xapian-loading').hide();
+                                         });
+ }
+ $(document).ready(function() {
+     $('#xapian-loading').hide();
+     $(".xapian-filter").change(function() {
+         var form = $('form#search');
+         load_xapian_results(form.attr('action') + '?bare=1&' + $('form#search').serialize());
+         // $('html,body').animate({ scrollTop: $('#xapian-results-container').offset().top - 50}, 1000);
+     })
+     $('input.search-autocomplete').autocomplete({
+         source: function(req, res) {
+             $.ajax({
+                 url: "/search",
+                 dataType: "json",
+                 data: {
+                     query: req.term,
+                     partial: 1,
+                     fmt: "json"
+                 },
+                 success: function(data) {
+                     res($.map(data, function(item) {
+                         return {
+                             label: item.title,
+                             value: '',
+                             link: item.url
+                         };
+                     }));
+                 }
+             });
+         },
+         minLength: 3,
+         delay: 500,
+         select: function(event, ui) {
+             window.location.href = ui.item.link;
+         },
+         position: { my: "left top", at: "left bottom" }
+     });
+ });
+ $(document).on('click', '.pagination li a', function(e) {
+     e.preventDefault();
+     load_xapian_results($(this).attr('href'));
+ });
 </script>
+
+[% END %]

@@ -76,7 +76,6 @@ use Catalyst::Runtime 5.90075;
 
 use Catalyst (
   'ConfigLoader',
-#  'Static::Simple',
   '+CatalystX::AmuseWiki::I18N',
 #  'MemoryUsage',
   'Session',

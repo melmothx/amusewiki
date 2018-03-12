@@ -53,6 +53,7 @@ sub create_site {
                                                   })->discard_changes;
 
     remove_tree($site->repo_root) if -d $site->repo_root;
+    remove_tree($site->xapian->xapian_dir) if -d $site->xapian->xapian_dir;
     $site->initialize_git;
     $site->index_site_files;
     return $site;

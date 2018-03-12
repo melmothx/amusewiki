@@ -1481,6 +1481,51 @@ sub author_title {
     }
 }
 
+sub date_year {
+    my $self = shift;
+    if (my $date = $self->date) {
+        if ($date =~ m/\b([0-9]{4})\b/) {
+            return $1;
+        }
+    }
+    return;
+}
+
+sub date_decade {
+    my $self = shift;
+    if (my $year = $self->date_year) {
+        $year = $year - ($year % 10);
+        return $year;
+    }
+    else {
+        return;
+    }
+}
+
+sub page_range {
+    my $self = shift;
+    my $pages = $self->pages_estimated || 1;
+    my @ranges = (1, 5, 10, 20, 30, 40, 50, 100, 150, 200, 300, 500, 1000);
+    for (my $i = 0; $i < @ranges; $i++) {
+        if ($pages < $ranges[$i]) {
+            return $ranges[$i - 1] . '-' . $ranges[$i];
+        }
+    }
+    return '+1000';
+}
+
+sub can_be_indexed {
+    my $self = shift;
+    if (($self->is_published) or
+        ($self->is_deferred && $self->teaser)) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+
 __PACKAGE__->meta->make_immutable;
 
 1;
