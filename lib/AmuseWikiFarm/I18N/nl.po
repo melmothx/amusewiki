@@ -277,6 +277,9 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr ""
 
@@ -487,6 +490,9 @@ msgstr ""
 msgid "Do not use bold fonts"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr ""
 
@@ -494,6 +500,9 @@ msgid "Double bars"
 msgstr ""
 
 msgid "Downloads"
+msgstr ""
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 
 msgid "EPUB"
@@ -786,9 +795,6 @@ msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
-msgstr ""
-
-msgid "Hide options"
 msgstr ""
 
 msgid "Higher division factor means narrower margins"
@@ -1147,9 +1153,6 @@ msgstr ""
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
-msgid "Match any of the fields above"
-msgstr ""
-
 msgid "Message"
 msgstr ""
 
@@ -1284,6 +1287,9 @@ msgid "Number of jobs"
 msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr ""
+
+msgid "Number of pages"
 msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
@@ -1586,6 +1592,9 @@ msgstr ""
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr ""
 
@@ -1600,9 +1609,6 @@ msgid ""
 msgstr ""
 
 msgid "Quarter Letter paper"
-msgstr ""
-
-msgid "Query was"
 msgstr ""
 
 msgid "Queue"
@@ -1700,6 +1706,9 @@ msgid "Request failed! Please report the the problem"
 msgstr ""
 
 msgid "Reset all"
+msgstr ""
+
+msgid "Reset filters"
 msgstr ""
 
 msgid "Reset password"
@@ -1825,9 +1834,6 @@ msgid "Show differences in other tab"
 msgstr ""
 
 msgid "Show filters"
-msgstr ""
-
-msgid "Show options"
 msgstr ""
 
 msgid "Show preview in other tab"
@@ -2473,9 +2479,6 @@ msgstr ""
 msgid "XeLaTeX source"
 msgstr ""
 
-msgid "Year"
-msgstr ""
-
 msgid "Yes"
 msgstr ""
 
@@ -2511,6 +2514,11 @@ msgid "You can do so answering a simple question."
 msgstr ""
 
 msgid "You can tune them editing them here."
+msgstr ""
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 
 msgid ""
@@ -2587,7 +2595,13 @@ msgstr ""
 msgid "any"
 msgstr ""
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
+msgstr ""
+
+msgid "book"
 msgstr ""
 
 msgid "by number of pages, ascending"

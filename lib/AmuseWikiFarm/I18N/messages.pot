@@ -261,7 +261,7 @@ msgstr ""
 msgid "Attachments"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:106 root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:58 root/src/include/preamble.tt:35 root/src/search/index.tt:41
+#: root/src/bookbuilder/index.tt:106 root/src/console/unpublished.tt:10 root/src/edit/newtext.tt:58 root/src/include/preamble.tt:35
 msgid "Author"
 msgstr ""
 
@@ -269,7 +269,7 @@ msgstr ""
 msgid "Author and title. If one side document: title."
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:83 lib/AmuseWikiFarm/Controller/OPDS.pm:178 lib/AmuseWikiFarm/Controller/OPDS.pm:64 root/src/edit/preview.tt:25 root/src/include/preamble.tt:37 root/src/layout.tt:239 root/src/layout.tt:676
+#: lib/AmuseWikiFarm/Archive/Xapian/Result.pm:71 lib/AmuseWikiFarm/Controller/Category.pm:83 lib/AmuseWikiFarm/Controller/OPDS.pm:178 lib/AmuseWikiFarm/Controller/OPDS.pm:64 root/src/edit/preview.tt:25 root/src/include/preamble.tt:37 root/src/layout.tt:239 root/src/layout.tt:676
 msgid "Authors"
 msgstr ""
 
@@ -346,6 +346,10 @@ msgid ""
 "        numbering"
 msgstr ""
 
+#: root/src/search/index.tt:47
+msgid "By relevance"
+msgstr ""
+
 #: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:383
 msgid "By sku ascending"
 msgstr ""
@@ -354,11 +358,11 @@ msgstr ""
 msgid "By sku descending"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:397
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:397 root/src/search/index.tt:50
 msgid "By title A-Z"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:404
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:404 root/src/search/index.tt:53
 msgid "By title Z-A"
 msgstr ""
 
@@ -533,7 +537,7 @@ msgstr ""
 msgid "Custom formats for %1"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:117 root/src/edit/preview.tt:32 root/src/include/preamble.tt:50 root/src/publish/pending.tt:22
+#: lib/AmuseWikiFarm/Archive/Xapian/Result.pm:76 root/src/bookbuilder/index.tt:117 root/src/edit/preview.tt:32 root/src/include/preamble.tt:50 root/src/publish/pending.tt:22
 msgid "Date"
 msgstr ""
 
@@ -617,6 +621,10 @@ msgstr ""
 msgid "Do not use bold fonts"
 msgstr ""
 
+#: lib/AmuseWikiFarm/Archive/Xapian/Result.pm:81
+msgid "Document type"
+msgstr ""
+
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:81 root/src/help/opds.tt:110
 msgid "Done"
 msgstr ""
@@ -627,6 +635,10 @@ msgstr ""
 
 #: root/src/include/preamble.tt:117
 msgid "Downloads"
+msgstr ""
+
+#: root/src/search/index.tt:21
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 
 #: root/src/include/bbform.tt:24
@@ -921,7 +933,7 @@ msgstr ""
 msgid "Full tag cloud"
 msgstr ""
 
-#: root/src/search/index.tt:106 root/src/search/index.tt:15
+#: root/src/search/index.tt:18
 msgid "Full text search"
 msgstr ""
 
@@ -999,10 +1011,6 @@ msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
-msgstr ""
-
-#: root/src/search/index.tt:113
-msgid "Hide options"
 msgstr ""
 
 #: root/src/admin/edit.tt:666 root/src/include/bbform.tt:222
@@ -1450,10 +1458,6 @@ msgstr ""
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
-#: root/src/search/index.tt:96
-msgid "Match any of the fields above"
-msgstr ""
-
 #: root/src/publish/pending.tt:21
 msgid "Message"
 msgstr ""
@@ -1550,7 +1554,7 @@ msgstr ""
 msgid "New site id"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:414
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:414 root/src/search/index.tt:59
 msgid "Newer first"
 msgstr ""
 
@@ -1574,7 +1578,7 @@ msgstr ""
 msgid "No editing yet!"
 msgstr ""
 
-#: root/src/search/index.tt:135
+#: root/src/search/index.tt:112
 msgid "No result found!"
 msgstr ""
 
@@ -1599,7 +1603,7 @@ msgstr ""
 msgid "Not finished yet! Please have a look at the text and then click on \"%1\" to finalize your submission!"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:137 root/src/edit/newtext.tt:197 root/src/edit/preview.tt:53 root/src/edit/revs.tt:17 root/src/include/preamble.tt:104 root/src/search/index.tt:81
+#: root/src/bookbuilder/index.tt:137 root/src/edit/newtext.tt:197 root/src/edit/preview.tt:53 root/src/edit/revs.tt:17 root/src/include/preamble.tt:104
 msgid "Notes"
 msgstr ""
 
@@ -1631,6 +1635,10 @@ msgstr ""
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 
+#: lib/AmuseWikiFarm/Archive/Xapian/Result.pm:91
+msgid "Number of pages"
+msgstr ""
+
 #: root/src/admin/edit.tt:520 root/src/admin/edit.tt:530 root/src/admin/edit.tt:541 root/src/admin/edit.tt:552 root/src/admin/edit.tt:563
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
@@ -1639,7 +1647,7 @@ msgstr ""
 msgid "OPDS"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:421
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:421 root/src/search/index.tt:56
 msgid "Older first"
 msgstr ""
 
@@ -2007,6 +2015,10 @@ msgstr ""
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 
+#: lib/AmuseWikiFarm/Archive/Xapian/Result.pm:86
+msgid "Published on this site"
+msgstr ""
+
 #: root/src/console/unpublished.tt:15 root/src/console/unpublished.tt:47
 msgid "Purge"
 msgstr ""
@@ -2024,10 +2036,6 @@ msgstr ""
 
 #: root/src/admin/edit.tt:7
 msgid "Quarter Letter paper"
-msgstr ""
-
-#: root/src/search/index.tt:138
-msgid "Query was"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/Tasks.pm:96
@@ -2078,7 +2086,7 @@ msgstr ""
 msgid "Reason for deletion"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:3662 root/src/tasks/rebuild.tt:26
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:3666 root/src/tasks/rebuild.tt:26
 msgid "Rebuild"
 msgstr ""
 
@@ -2154,6 +2162,10 @@ msgstr ""
 
 #: root/src/bookbuilder/index.tt:65
 msgid "Reset all"
+msgstr ""
+
+#: root/src/search/index.tt:73 root/src/search/index.tt:95
+msgid "Reset filters"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Controller/User.pm:80 root/src/user/reset_password.tt:18
@@ -2246,7 +2258,7 @@ msgstr ""
 msgid "Saved \"%1\" configuration"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/OPDS.pm:83 lib/AmuseWikiFarm/Controller/Search.pm:119 root/src/admin/edit.tt:531 root/src/admin/jobs.tt:24 root/src/layout.tt:194
+#: lib/AmuseWikiFarm/Controller/OPDS.pm:83 lib/AmuseWikiFarm/Controller/Search.pm:83 root/src/admin/edit.tt:531 root/src/admin/jobs.tt:24 root/src/layout.tt:194
 msgid "Search"
 msgstr ""
 
@@ -2320,10 +2332,6 @@ msgstr ""
 
 #: root/src/include/editing-options.tt:54
 msgid "Show filters"
-msgstr ""
-
-#: root/src/search/index.tt:114
-msgid "Show options"
 msgstr ""
 
 #: root/src/edit/edit.tt:37
@@ -2407,11 +2415,11 @@ msgstr ""
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 
-#: root/src/include/pagination-widget.tt:7
+#: root/src/include/pagination-widget.tt:7 root/src/search/index.tt:43
 msgid "Sorting:"
 msgstr ""
 
-#: root/src/bookbuilder/index.tt:128 root/src/edit/newtext.tt:120 root/src/edit/preview.tt:46 root/src/include/preamble.tt:95 root/src/search/index.tt:71
+#: root/src/bookbuilder/index.tt:128 root/src/edit/newtext.tt:120 root/src/edit/preview.tt:46 root/src/include/preamble.tt:95
 msgid "Source"
 msgstr ""
 
@@ -2792,7 +2800,7 @@ msgstr ""
 msgid "Time is optional."
 msgstr ""
 
-#: root/src/attachments/edit.tt:17 root/src/attachments/list.tt:16 root/src/bookbuilder/index.tt:86 root/src/console/unpublished.tt:11 root/src/edit/newtext.tt:25 root/src/edit/preview.tt:12 root/src/include/preamble.tt:17 root/src/search/index.tt:31
+#: root/src/attachments/edit.tt:17 root/src/attachments/list.tt:16 root/src/bookbuilder/index.tt:86 root/src/console/unpublished.tt:11 root/src/edit/newtext.tt:25 root/src/edit/preview.tt:12 root/src/include/preamble.tt:17
 msgid "Title"
 msgstr ""
 
@@ -2861,11 +2869,11 @@ msgstr ""
 msgid "Toggle fullscreen editor"
 msgstr ""
 
-#: root/src/include/preamble.tt:78 root/src/search/index.tt:61
+#: root/src/include/preamble.tt:78
 msgid "Topic"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Controller/Category.pm:79 lib/AmuseWikiFarm/Controller/OPDS.pm:136 lib/AmuseWikiFarm/Controller/OPDS.pm:59 root/src/edit/edit.tt:678 root/src/edit/newtext.tt:92 root/src/edit/preview.tt:39 root/src/include/preamble.tt:80 root/src/layout.tt:246 root/src/layout.tt:262 root/src/layout.tt:683
+#: lib/AmuseWikiFarm/Archive/Xapian/Result.pm:66 lib/AmuseWikiFarm/Controller/Category.pm:79 lib/AmuseWikiFarm/Controller/OPDS.pm:136 lib/AmuseWikiFarm/Controller/OPDS.pm:59 root/src/edit/edit.tt:678 root/src/edit/newtext.tt:92 root/src/edit/preview.tt:39 root/src/include/preamble.tt:80 root/src/layout.tt:246 root/src/layout.tt:262 root/src/layout.tt:683
 msgid "Topics"
 msgstr ""
 
@@ -3146,10 +3154,6 @@ msgstr ""
 msgid "XeLaTeX source"
 msgstr ""
 
-#: root/src/search/index.tt:51
-msgid "Year"
-msgstr ""
-
 #: root/src/admin/show_users.tt:39 root/src/bookbuilder/index.tt:29
 msgid "Yes"
 msgstr ""
@@ -3191,6 +3195,10 @@ msgstr ""
 
 #: root/src/admin/edit.tt:618
 msgid "You can tune them editing them here."
+msgstr ""
+
+#: root/src/search/index.tt:25
+msgid "You can use the following prefixes to search a word in a specific field, e.g. \"title:example\""
 msgstr ""
 
 #: root/src/edit/revs.tt:80
@@ -3285,15 +3293,23 @@ msgstr ""
 msgid "any"
 msgstr ""
 
+#: lib/AmuseWikiFarm/Archive/Xapian/Result.pm:177
+msgid "article"
+msgstr ""
+
 #: root/src/edit/newtext.tt:235
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:428
+#: lib/AmuseWikiFarm/Archive/Xapian/Result.pm:177
+msgid "book"
+msgstr ""
+
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:428 root/src/search/index.tt:62
 msgid "by number of pages, ascending"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:438
+#: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:438 root/src/search/index.tt:65
 msgid "by number of pages, descending"
 msgstr ""
 

@@ -318,6 +318,9 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr ""
 
@@ -538,6 +541,9 @@ msgstr ""
 msgid "Do not use bold fonts"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr "E përfunduar"
 
@@ -546,6 +552,9 @@ msgstr "Shirita të dyfisht"
 
 msgid "Downloads"
 msgstr "Shkarkimet"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
 
 msgid "EPUB"
 msgstr ""
@@ -861,9 +870,6 @@ msgstr ""
 "si dhe photografia e kopertinës nuk përfshihen nga procesi i ruajtjes. Këtë "
 "mund ta\n"
 "shfrytëzosh për të ruajtur formatin/letren/fontin si dhe opcionet tjera."
-
-msgid "Hide options"
-msgstr "Fsheh zgjedhjet"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Faktori më i lartë i ndarjes dmth. margjinat më të ngushta"
@@ -1262,9 +1268,6 @@ msgstr "Shëndërroi të gjitha linqet në linqe aktive"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
-msgid "Match any of the fields above"
-msgstr ""
-
 msgid "Message"
 msgstr "Porosi"
 
@@ -1402,6 +1405,9 @@ msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Numri i shënimeve të fundit për ti shfaqur në RSS (integjer)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numri i rezultateve për ti shfaqur në faqe të numëruara (integjer)"
@@ -1742,6 +1748,9 @@ msgstr "Publiko"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "E publikuar në *Një libër i mire*, e publikuar nga Shtëpia Ime, 2014"
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr "Spastro"
 
@@ -1760,9 +1769,6 @@ msgstr ""
 
 msgid "Quarter Letter paper"
 msgstr ""
-
-msgid "Query was"
-msgstr "Pyetja ishte"
 
 msgid "Queue"
 msgstr "Rradhë"
@@ -1870,6 +1876,9 @@ msgstr ""
 
 msgid "Reset all"
 msgstr "Rivendosi të gjitha"
+
+msgid "Reset filters"
+msgstr ""
 
 msgid "Reset password"
 msgstr "Rivendos fjalëkalimin"
@@ -1996,9 +2005,6 @@ msgstr "Tregoji dallimet në tab-in e ri"
 
 msgid "Show filters"
 msgstr ""
-
-msgid "Show options"
-msgstr "Tego opcionet"
 
 msgid "Show preview in other tab"
 msgstr ""
@@ -2699,9 +2705,6 @@ msgstr "Emri i shfrytëzuesit ose fjalëkalimi gabim"
 msgid "XeLaTeX source"
 msgstr ""
 
-msgid "Year"
-msgstr "Viti"
-
 msgid "Yes"
 msgstr "Po"
 
@@ -2746,6 +2749,11 @@ msgid "You can do so answering a simple question."
 msgstr "Mund ta bëni këtë duke u përgjigjur në një pyetje të thjeshtë."
 
 msgid "You can tune them editing them here."
+msgstr ""
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 
 msgid ""
@@ -2826,10 +2834,16 @@ msgstr ""
 msgid "any"
 msgstr "cilido"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "gjenerohet automatikisht nëse nuk është prezente duke përdorur autorin dhe "
 "titullin"
+
+msgid "book"
+msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""
@@ -3018,6 +3032,18 @@ msgstr ""
 "“Ndryshim i mbetur” do të thotë që përpunimi është brakstisur\n"
 " gjatë ndryshimit por është ende aty në rast se dikush dëshiron të vazhdoj\n"
 " me ndryshimin e tekstit."
+
+#~ msgid "Hide options"
+#~ msgstr "Fsheh zgjedhjet"
+
+#~ msgid "Query was"
+#~ msgstr "Pyetja ishte"
+
+#~ msgid "Show options"
+#~ msgstr "Tego opcionet"
+
+#~ msgid "Year"
+#~ msgstr "Viti"
 
 #~ msgid "Attached PDFs"
 #~ msgstr "PDF-ët e bashkangjitur"

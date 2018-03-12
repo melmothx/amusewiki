@@ -299,6 +299,9 @@ msgstr ""
 "Druga vrsta fusnota koristi brojeve u zagradama npr. (1) kao oznake. Ovom će "
 "se opcijom koristiti slova, počevši iznova na svakoj stranici."
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr "Po SKU-u prema gore"
 
@@ -520,6 +523,9 @@ msgstr "Ne forsiraj poruku kad se tekst spremi"
 msgid "Do not use bold fonts"
 msgstr "Ne koristi podebljane fontove"
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr "Gotovo"
 
@@ -528,6 +534,9 @@ msgstr "Dvostruke trake (\"||\")"
 
 msgid "Downloads"
 msgstr "Preuzimanja"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -840,9 +849,6 @@ msgstr ""
 "sliku za naslovnicu bit će ignorirane u spremljene opcije. Možeš to\n"
 "koristiti da spremiš svoje opcije za papir, fontove, prijelom itd.,\n"
 "koristeći ih u budućnost."
-
-msgid "Hide options"
-msgstr "Sakrij opcije"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Što je faktor podijele veći to će margine biti uže"
@@ -1254,9 +1260,6 @@ msgstr "Aktiviraj sve poveznice"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Pokaži neodvojivi razmak kao ~~"
 
-msgid "Match any of the fields above"
-msgstr "Bilo koje polje"
-
 msgid "Message"
 msgstr "Poruka"
 
@@ -1392,6 +1395,9 @@ msgstr "Broj zadataka"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Broj tekstova u RSS-u"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Broj rezultata po stranici kad popis ima više stranica (pagination)"
@@ -1737,6 +1743,9 @@ msgstr "Objavi"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Objavljeno u *Lijepa knjiga*, objavila Izdavačka kuća, 2014."
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr "Očisti"
 
@@ -1756,9 +1765,6 @@ msgstr ""
 
 msgid "Quarter Letter paper"
 msgstr "Četvrtina \"Letter\" papira"
-
-msgid "Query was"
-msgstr "Upit je"
 
 msgid "Queue"
 msgstr "Red"
@@ -1862,6 +1868,9 @@ msgstr "Greška! Kontaktirajte administratore"
 
 msgid "Reset all"
 msgstr "Poništi sve"
+
+msgid "Reset filters"
+msgstr ""
 
 msgid "Reset password"
 msgstr "Ponovo postavi lozinku"
@@ -1987,9 +1996,6 @@ msgstr "Pokaži razlike u drugom prozoru"
 
 msgid "Show filters"
 msgstr "Pokaži filtere"
-
-msgid "Show options"
-msgstr "Pokaži opcije"
 
 msgid "Show preview in other tab"
 msgstr "Pokaži pregled u drugom prozoru"
@@ -2685,9 +2691,6 @@ msgstr "Pogrešno korisničko ime ili lozinka"
 msgid "XeLaTeX source"
 msgstr "XeLaTex izvor"
 
-msgid "Year"
-msgstr "Godina"
-
 msgid "Yes"
 msgstr "Da"
 
@@ -2732,6 +2735,11 @@ msgstr "Odgovarajući na jednostavno pitanje."
 
 msgid "You can tune them editing them here."
 msgstr "Možeš ih podesiti ovdje."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
@@ -2811,8 +2819,14 @@ msgstr "tiče se samo konfiguracije webservera"
 msgid "any"
 msgstr "bilo koja"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
+
+msgid "book"
+msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr "po broju stranica (manje na početku)"
@@ -2999,6 +3013,21 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Hide options"
+#~ msgstr "Sakrij opcije"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Bilo koje polje"
+
+#~ msgid "Query was"
+#~ msgstr "Upit je"
+
+#~ msgid "Show options"
+#~ msgstr "Pokaži opcije"
+
+#~ msgid "Year"
+#~ msgstr "Godina"
 
 #~ msgid "Insert the file into the body"
 #~ msgstr "Dodaj datoteku tekstu"

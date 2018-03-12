@@ -310,6 +310,9 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr "Според СКУ кон горе"
 
@@ -533,6 +536,9 @@ msgstr "Не форсирај порака кога текстот ќе се п�
 msgid "Do not use bold fonts"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr "Готово"
 
@@ -541,6 +547,9 @@ msgstr "Двојни линии"
 
 msgid "Downloads"
 msgstr "Преземања"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -856,9 +865,6 @@ msgstr ""
 " можеш да го користиш за да ги зачуваш своите опции за хартија, фонтови, "
 "прелом итн.,\n"
 " кои ќе ги користиш во иднина."
-
-msgid "Hide options"
-msgstr "Сокриј ги опциите"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Колку факторот на поделба е поголем толку маргините ќе бидат потесни"
@@ -1271,9 +1277,6 @@ msgstr "Активирај ги сите линкови"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
-msgid "Match any of the fields above"
-msgstr "Кое било поле"
-
 msgid "Message"
 msgstr "Порака"
 
@@ -1411,6 +1414,9 @@ msgstr "Број на задачи"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Бројот на последни записи за приказ на RSS (цел број)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
@@ -1766,6 +1772,9 @@ msgstr "Објави"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Објавено во *Убава книга*, објавена од Издавачка куќа, 2014"
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr "Исчисти"
 
@@ -1785,9 +1794,6 @@ msgstr ""
 
 msgid "Quarter Letter paper"
 msgstr "Четвртина од letter форматот"
-
-msgid "Query was"
-msgstr "Прашањето е"
 
 msgid "Queue"
 msgstr "Низа"
@@ -1894,6 +1900,9 @@ msgstr ""
 
 msgid "Reset all"
 msgstr "Поништи сè"
+
+msgid "Reset filters"
+msgstr ""
 
 msgid "Reset password"
 msgstr "Повторно постави лозинка"
@@ -2019,9 +2028,6 @@ msgstr "Покажи ги разликите во друго јазиче"
 
 msgid "Show filters"
 msgstr "Покажи ги филтрите"
-
-msgid "Show options"
-msgstr "Покажи ги опциите"
 
 msgid "Show preview in other tab"
 msgstr "Покажи ги разликите во друг прозорец"
@@ -2729,9 +2735,6 @@ msgstr "Погрешно корисничко име или лозинка"
 msgid "XeLaTeX source"
 msgstr "XeLaTeX извор"
 
-msgid "Year"
-msgstr "Година"
-
 msgid "Yes"
 msgstr "Да"
 
@@ -2776,6 +2779,11 @@ msgid "You can do so answering a simple question."
 msgstr "Одговарајќи на едноставно прашање"
 
 msgid "You can tune them editing them here."
+msgstr ""
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 
 msgid ""
@@ -2857,8 +2865,14 @@ msgstr "се однесува само на конфигурацијата на 
 msgid "any"
 msgstr "која било"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "се генерира автоматски доколку недостига, со автор и наслов"
+
+msgid "book"
+msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""
@@ -3046,6 +3060,21 @@ msgid ""
 msgstr ""
 "\"Измената во тек е напуштена\" значи дека измената не е довршена, но и "
 "понатаму е таму, во случај некој да сака да продолжи."
+
+#~ msgid "Hide options"
+#~ msgstr "Сокриј ги опциите"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Кое било поле"
+
+#~ msgid "Query was"
+#~ msgstr "Прашањето е"
+
+#~ msgid "Show options"
+#~ msgstr "Покажи ги опциите"
+
+#~ msgid "Year"
+#~ msgstr "Година"
 
 #~ msgid "Insert the file into the body"
 #~ msgstr "Додај ја датотеката на текстот"

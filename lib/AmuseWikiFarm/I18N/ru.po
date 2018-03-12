@@ -305,6 +305,9 @@ msgstr ""
 "По умолчанию дополнительные сноски используют арабские цифры в скобках. С "
 "этой опцией они будут использовать постраничную нумерацию буквами"
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr "По номеру по возрастанию"
 
@@ -528,6 +531,9 @@ msgstr "Не требовать сообщения для сохранения"
 msgid "Do not use bold fonts"
 msgstr "Не использовать жирный шрифт"
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr "Готово"
 
@@ -536,6 +542,9 @@ msgstr "Две вертикальные линии"
 
 msgid "Downloads"
 msgstr "Загрузки"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -849,9 +858,6 @@ msgstr ""
 "Здесь вы можете сохранить или загрузить ваши шаблоны. Список текстов и "
 "обложка исключаются их сохранённых настроек. Вы можете использовать это для "
 "сохранения бумаги/шрифтов/схемы спуска полос и других настроек."
-
-msgid "Hide options"
-msgstr "Скрыть опции"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Чем больше число — тем уже поля"
@@ -1261,9 +1267,6 @@ msgstr "Сделать все ссылки активными"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Сделать все неразрывные пробелы явными и видимыми как ~~"
 
-msgid "Match any of the fields above"
-msgstr "Заполнить все поля выше"
-
 msgid "Message"
 msgstr "Сообщение"
 
@@ -1403,6 +1406,9 @@ msgstr "Число заданий"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Число последних записей для отображения в RSS (целое)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Число результатов для показа на странице (целое)"
@@ -1747,6 +1753,9 @@ msgstr "Опубликовать"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Опубликовано в *Хорошей книге* выпущенной Моим Издательством, 2014"
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr "Вычистить"
 
@@ -1764,9 +1773,6 @@ msgstr ""
 
 msgid "Quarter Letter paper"
 msgstr "Четверть Letter"
-
-msgid "Query was"
-msgstr "Запрос"
 
 msgid "Queue"
 msgstr "Очередь"
@@ -1870,6 +1876,9 @@ msgstr "Запрос завершился с ошибкой! Пожалуйст�
 
 msgid "Reset all"
 msgstr "Сбросить всё"
+
+msgid "Reset filters"
+msgstr ""
 
 msgid "Reset password"
 msgstr "Сбросить пароль"
@@ -1995,9 +2004,6 @@ msgstr "Показать различия в другой вкладке"
 
 msgid "Show filters"
 msgstr "Показать фильтры"
-
-msgid "Show options"
-msgstr "Показать опции"
 
 msgid "Show preview in other tab"
 msgstr "Предварительный просмотр в другой вкладке"
@@ -2706,9 +2712,6 @@ msgstr "Неправильные имя пользователя или паро
 msgid "XeLaTeX source"
 msgstr "Исходник XeLaTeX"
 
-msgid "Year"
-msgstr "Год"
-
 msgid "Yes"
 msgstr "Да"
 
@@ -2753,6 +2756,11 @@ msgstr "Вы можете сделать это ответив на просто
 
 msgid "You can tune them editing them here."
 msgstr "Вы можете отредактировать их здесь."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
@@ -2834,10 +2842,16 @@ msgstr "влияет только на настройку вебсервера"
 msgid "any"
 msgstr "любой"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "если поле оставлено пустым создаётся автоматически с использованием автора и "
 "названия"
+
+msgid "book"
+msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr "по возрастанию числа страниц"
@@ -3026,6 +3040,21 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Hide options"
+#~ msgstr "Скрыть опции"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Заполнить все поля выше"
+
+#~ msgid "Query was"
+#~ msgstr "Запрос"
+
+#~ msgid "Show options"
+#~ msgstr "Показать опции"
+
+#~ msgid "Year"
+#~ msgstr "Год"
 
 #~ msgid "Insert the file into the body"
 #~ msgstr "Вставить файл в текст"

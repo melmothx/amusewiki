@@ -309,6 +309,9 @@ msgstr ""
 "parentesi. Con questa opzione verrà usata una numerazione alfabetica\n"
 "per pagina. (La prima nota secondaria di ogni pagina sarà \"a\")"
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr "Per numero di inventario, ascendente"
 
@@ -535,6 +538,9 @@ msgstr "Rendi il messaggio del salvataggio facoltativo"
 msgid "Do not use bold fonts"
 msgstr "Non usare caratteri in grassetto"
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr "Fatto"
 
@@ -543,6 +549,9 @@ msgstr "Doppie barre"
 
 msgid "Downloads"
 msgstr "Download"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -862,9 +871,6 @@ msgstr ""
 "lista dei testi e l'immagine di copertina sono ignorate. Puoi usare\n"
 "questo strumento per salvare impostazioni quali il formato della\n"
 "carta, i caratteri, l'impaginazione, ecc."
-
-msgid "Hide options"
-msgstr "Nascondi le opzioni"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Un fattore di divisione più alto implica margini più stretti"
@@ -1292,9 +1298,6 @@ msgstr ""
 "Rendi tutti gli spazi invisibili che impediscono di spezzare la riga\n"
 "espliciti con ~~"
 
-msgid "Match any of the fields above"
-msgstr "Trova un testo che abbia uno qualsiasi dei campi qui sopra"
-
 msgid "Message"
 msgstr "Messaggio"
 
@@ -1434,6 +1437,9 @@ msgstr "Numero di lavori"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Numero di testi da mostrare nel feed RSS (numero intero)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numero di risultati da mostrare nelle paginazioni (un numero intero)"
@@ -1789,6 +1795,9 @@ msgstr "Pubblica"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Pubblicato in *Un bel libro*, edito da Casa Editrice, 2014"
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr "Purga"
 
@@ -1808,9 +1817,6 @@ msgstr ""
 
 msgid "Quarter Letter paper"
 msgstr "Un quarto di carta Letter"
-
-msgid "Query was"
-msgstr "La ricerca è"
 
 msgid "Queue"
 msgstr "Coda"
@@ -1915,6 +1921,9 @@ msgstr "Richiesta fallita! Per cortesia contatta gli amministratori"
 
 msgid "Reset all"
 msgstr "Ricomincia da capo"
+
+msgid "Reset filters"
+msgstr ""
 
 msgid "Reset password"
 msgstr "Reimposta la password"
@@ -2040,9 +2049,6 @@ msgstr "Mostra le differenze in un'altra finestra"
 
 msgid "Show filters"
 msgstr "Mostra i filtri disponibili"
-
-msgid "Show options"
-msgstr "Mostra le opzioni"
 
 msgid "Show preview in other tab"
 msgstr "Mostra l'anteprima in un'altra finestra"
@@ -2771,9 +2777,6 @@ msgstr "Nome utente o password errata"
 msgid "XeLaTeX source"
 msgstr "Sorgenti XeLaTeX"
 
-msgid "Year"
-msgstr "Anno"
-
 msgid "Yes"
 msgstr "Sì"
 
@@ -2818,6 +2821,11 @@ msgstr "Puoi farlo rispondendo a una semplice domanda."
 
 msgid "You can tune them editing them here."
 msgstr "Puoi modificarli qui."
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
+msgstr ""
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
@@ -2900,8 +2908,14 @@ msgstr "ha effetto solo sulla configurazione automatica del server web"
 msgid "any"
 msgstr "qualsiasi"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
+
+msgid "book"
+msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr "per numero di pagine (da minore a maggiore)"
@@ -3093,6 +3107,21 @@ msgstr ""
 "“Modifica in corso abbandonata” significa che la revisione non è stata\n"
 "portata a termine, ma è ancora là, nel caso qualcuno voglia\n"
 "riprenderla."
+
+#~ msgid "Hide options"
+#~ msgstr "Nascondi le opzioni"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Trova un testo che abbia uno qualsiasi dei campi qui sopra"
+
+#~ msgid "Query was"
+#~ msgstr "La ricerca è"
+
+#~ msgid "Show options"
+#~ msgstr "Mostra le opzioni"
+
+#~ msgid "Year"
+#~ msgstr "Anno"
 
 #~ msgid "Insert the file into the body"
 #~ msgstr "Inserisci il file nel corpo del testo"

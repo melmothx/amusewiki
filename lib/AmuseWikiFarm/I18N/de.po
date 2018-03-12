@@ -291,6 +291,9 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr ""
 
@@ -504,6 +507,9 @@ msgstr ""
 msgid "Do not use bold fonts"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr "Erledigt"
 
@@ -512,6 +518,9 @@ msgstr "Doppelbalken"
 
 msgid "Downloads"
 msgstr "Downloads"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -806,9 +815,6 @@ msgid ""
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
-
-msgid "Hide options"
-msgstr "Optionen verstecken"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Höherer Trennungsfaktor bedeutet engere Ränder"
@@ -1186,9 +1192,6 @@ msgstr "Alle Links aktivieren"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
-msgid "Match any of the fields above"
-msgstr "Übereinstimmung mit irgendeinem der Felder"
-
 msgid "Message"
 msgstr "Nachricht"
 
@@ -1323,6 +1326,9 @@ msgid "Number of jobs"
 msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr ""
+
+msgid "Number of pages"
 msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
@@ -1651,6 +1657,9 @@ msgstr "Veröffentlichen"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Veröffentlicht in *Ein nettes Buch', veröffentlicht von My House, 2014"
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr "Reinige"
 
@@ -1668,9 +1677,6 @@ msgstr ""
 
 msgid "Quarter Letter paper"
 msgstr "Viertel US Letterpapier"
-
-msgid "Query was"
-msgstr "Suchanfrage war"
 
 msgid "Queue"
 msgstr "Warteschlange"
@@ -1767,6 +1773,9 @@ msgid "Request failed! Please report the the problem"
 msgstr ""
 
 msgid "Reset all"
+msgstr ""
+
+msgid "Reset filters"
 msgstr ""
 
 msgid "Reset password"
@@ -1894,9 +1903,6 @@ msgstr "Unterschiede in anderem Tab anzeigen"
 
 msgid "Show filters"
 msgstr "Filter anzeigen"
-
-msgid "Show options"
-msgstr "Optionen anzeigen"
 
 msgid "Show preview in other tab"
 msgstr "Vorschau in anderem Tab anzeigen"
@@ -2566,9 +2572,6 @@ msgstr "Falscher BenutzerInnenname oder Passwort"
 msgid "XeLaTeX source"
 msgstr "XeLaTex Quelle"
 
-msgid "Year"
-msgstr "Jahr"
-
 msgid "Yes"
 msgstr ""
 
@@ -2607,6 +2610,11 @@ msgid "You can do so answering a simple question."
 msgstr "Du kannst eine einfache Frage beantworten. "
 
 msgid "You can tune them editing them here."
+msgstr ""
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 
 msgid ""
@@ -2688,9 +2696,15 @@ msgstr ""
 msgid "any"
 msgstr ""
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "automatisch erstellt falls nicht vorhanden, verwendet Autorin und Titel"
+
+msgid "book"
+msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""
@@ -2877,6 +2891,21 @@ msgstr ""
 " Bearbeitung, auf Eis gelegt wurde, aber immer noch\n"
 " erhalten ist, falls sie jemand wieder aufnehmen will wenn sie den\n"
 " Text bearbeitet. "
+
+#~ msgid "Hide options"
+#~ msgstr "Optionen verstecken"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Übereinstimmung mit irgendeinem der Felder"
+
+#~ msgid "Query was"
+#~ msgstr "Suchanfrage war"
+
+#~ msgid "Show options"
+#~ msgstr "Optionen anzeigen"
+
+#~ msgid "Year"
+#~ msgstr "Jahr"
 
 #~ msgid "Attached PDFs"
 #~ msgstr "Angehängte PDFs"

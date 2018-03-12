@@ -286,6 +286,9 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr ""
 
@@ -498,6 +501,9 @@ msgstr ""
 msgid "Do not use bold fonts"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr "Valmis"
 
@@ -506,6 +512,9 @@ msgstr "Kaksi putkea"
 
 msgid "Downloads"
 msgstr "Lataukset"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
 
 msgid "EPUB"
 msgstr ""
@@ -799,9 +808,6 @@ msgid ""
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
-
-msgid "Hide options"
-msgstr "Piilota lisävaihtoehdot"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Korkeampi jakaja tarkoittaa kapeampia marginaaleja"
@@ -1172,9 +1178,6 @@ msgstr "Tee kaikista linkeistä aktiivisia"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
-msgid "Match any of the fields above"
-msgstr "Riittää kun täsmää mihin tahansa ylläolevaan kenttään"
-
 msgid "Message"
 msgstr "Viesti"
 
@@ -1309,6 +1312,9 @@ msgid "Number of jobs"
 msgstr ""
 
 msgid "Number of latest entries to display on the RSS (an integer)"
+msgstr ""
+
+msgid "Number of pages"
 msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
@@ -1641,6 +1647,9 @@ msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 "Julkaistu nimellä *Hauska kirja*, kustantajana Kustannusosuuskunta, 2013"
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr "Poista"
 
@@ -1658,9 +1667,6 @@ msgstr ""
 
 msgid "Quarter Letter paper"
 msgstr "Quarter Letter"
-
-msgid "Query was"
-msgstr "Hakulauseke"
 
 msgid "Queue"
 msgstr "Jono"
@@ -1757,6 +1763,9 @@ msgid "Request failed! Please report the the problem"
 msgstr ""
 
 msgid "Reset all"
+msgstr ""
+
+msgid "Reset filters"
 msgstr ""
 
 msgid "Reset password"
@@ -1883,9 +1892,6 @@ msgstr "Näytä erot toisessa välilehdessä"
 
 msgid "Show filters"
 msgstr ""
-
-msgid "Show options"
-msgstr "Näytä lisävaihtoehdot"
 
 msgid "Show preview in other tab"
 msgstr ""
@@ -2545,9 +2551,6 @@ msgstr "Väärä käyttäjätunnus tai salasana"
 msgid "XeLaTeX source"
 msgstr "XeLaTex lähdetiedosto"
 
-msgid "Year"
-msgstr "Vuosi"
-
 msgid "Yes"
 msgstr ""
 
@@ -2586,6 +2589,11 @@ msgid "You can do so answering a simple question."
 msgstr "Sen voi tehdä vastaamalla helppoon kysymykseen."
 
 msgid "You can tune them editing them here."
+msgstr ""
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 
 msgid ""
@@ -2664,8 +2672,14 @@ msgstr ""
 msgid "any"
 msgstr ""
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr "luodaan automaattisesti kirjoittajan ja otsikon pohjalta"
+
+msgid "book"
+msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""
@@ -2849,6 +2863,21 @@ msgid ""
 msgstr ""
 "\"Vanha muokkaus\" tarkoittaa sitä, että versio hylättiin\n"
 "    kesken muokkauksen, mutta se on yhä odottamassa jatkajaansa"
+
+#~ msgid "Hide options"
+#~ msgstr "Piilota lisävaihtoehdot"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Riittää kun täsmää mihin tahansa ylläolevaan kenttään"
+
+#~ msgid "Query was"
+#~ msgstr "Hakulauseke"
+
+#~ msgid "Show options"
+#~ msgstr "Näytä lisävaihtoehdot"
+
+#~ msgid "Year"
+#~ msgstr "Vuosi"
 
 #~ msgid "Attached PDFs"
 #~ msgstr "Liitetyt PDF:t"

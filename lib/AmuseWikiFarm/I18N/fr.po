@@ -306,6 +306,9 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By relevance"
+msgstr ""
+
 msgid "By sku ascending"
 msgstr "Par sku croissant"
 
@@ -533,6 +536,9 @@ msgstr "Ne pas forcer le message de validation"
 msgid "Do not use bold fonts"
 msgstr ""
 
+msgid "Document type"
+msgstr ""
+
 msgid "Done"
 msgstr "Fait"
 
@@ -541,6 +547,9 @@ msgstr "Double barre"
 
 msgid "Downloads"
 msgstr "Téléchargements"
+
+msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
+msgstr ""
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -863,9 +872,6 @@ msgstr ""
 "l'image de couverture sont exclues par les paramètres sauvegardés. Vous "
 "pouvez utiliser ceci pour enregistrer format/police/imposition et autres "
 "options."
-
-msgid "Hide options"
-msgstr "Cacher les options"
 
 msgid "Higher division factor means narrower margins"
 msgstr "Un facteur de division plus élevé crée des marges plus étroites"
@@ -1277,9 +1283,6 @@ msgstr "Rendre tous liens actifs"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
-msgid "Match any of the fields above"
-msgstr "Faire correspondre avec un des champs ci-dessus"
-
 msgid "Message"
 msgstr "Message"
 
@@ -1419,6 +1422,9 @@ msgstr "Nombre de tâches"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Nombre d'ajouts récents à afficher sur le flux RSS (un nombre entier)"
+
+msgid "Number of pages"
+msgstr ""
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
@@ -1771,6 +1777,9 @@ msgstr "Publier"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Publié dans *Un livre sympa*, publié par Ma Maison d'Édition, 2014"
 
+msgid "Published on this site"
+msgstr ""
+
 msgid "Purge"
 msgstr "Purger"
 
@@ -1791,9 +1800,6 @@ msgstr ""
 
 msgid "Quarter Letter paper"
 msgstr "Papier Quart-de-Lettre"
-
-msgid "Query was"
-msgstr "La requête était"
 
 msgid "Queue"
 msgstr "File d'attente"
@@ -1899,6 +1905,9 @@ msgstr ""
 
 msgid "Reset all"
 msgstr "Tout réinitialiser"
+
+msgid "Reset filters"
+msgstr ""
 
 msgid "Reset password"
 msgstr "Réinitialiser le mot de passe"
@@ -2024,9 +2033,6 @@ msgstr "Afficher les différences dans un nouvel onglet"
 
 msgid "Show filters"
 msgstr "Afficher les filtres"
-
-msgid "Show options"
-msgstr "Afficher les options"
 
 msgid "Show preview in other tab"
 msgstr "Afficher l'aperçu dans un autre onglet"
@@ -2757,9 +2763,6 @@ msgstr "Nom d'utilisateur ou mot de passe incorrect"
 msgid "XeLaTeX source"
 msgstr "Source XeLaTeX"
 
-msgid "Year"
-msgstr "Année"
-
 msgid "Yes"
 msgstr "Oui"
 
@@ -2805,6 +2808,11 @@ msgid "You can do so answering a simple question."
 msgstr "Vous pouvez ce faire en répondant à une question simple."
 
 msgid "You can tune them editing them here."
+msgstr ""
+
+msgid ""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 
 msgid ""
@@ -2888,10 +2896,16 @@ msgstr "n'affecte que la configuration du serveur web frontal"
 msgid "any"
 msgstr "quelconque"
 
+msgid "article"
+msgstr ""
+
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "si non défini, il est automatiquement généré à partir de l'auteur·e et du "
 "titre"
+
+msgid "book"
+msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""
@@ -3082,6 +3096,21 @@ msgstr ""
 "\"Modification périmée\" signifie que la révision a été abandonnée en cours "
 "d'édition, mais qu'elle est toujours là, au cas où quelqu'un·e souhaiterait "
 "la récupérer lors d'une modification du texte."
+
+#~ msgid "Hide options"
+#~ msgstr "Cacher les options"
+
+#~ msgid "Match any of the fields above"
+#~ msgstr "Faire correspondre avec un des champs ci-dessus"
+
+#~ msgid "Query was"
+#~ msgstr "La requête était"
+
+#~ msgid "Show options"
+#~ msgstr "Afficher les options"
+
+#~ msgid "Year"
+#~ msgstr "Année"
 
 #~ msgid "Insert the file into the body"
 #~ msgstr "Insérer le fichier dans le corps de texte"
