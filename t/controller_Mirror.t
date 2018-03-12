@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 43;
+use Test::More tests => 45;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -94,6 +94,12 @@ foreach my $path (@paths) {
 $mech->get("/mirror.txt");
 is $mech->status, 401;
 
+
+$mech->get("/mirror.ts.txt");
+is $mech->status, 401;
+
+$mech->get('/mirror/index.html');
+is $mech->status, 401;
 
 $site->update({
                cgit_integration => 0,
