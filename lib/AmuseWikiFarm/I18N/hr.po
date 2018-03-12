@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2018-02-19 11:21+0100\n"
+"PO-Revision-Date: 2018-03-12 12:02+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -300,7 +300,7 @@ msgstr ""
 "se opcijom koristiti slova, počevši iznova na svakoj stranici."
 
 msgid "By relevance"
-msgstr ""
+msgstr "Po relevantnosti"
 
 msgid "By sku ascending"
 msgstr "Po SKU-u prema gore"
@@ -524,7 +524,7 @@ msgid "Do not use bold fonts"
 msgstr "Ne koristi podebljane fontove"
 
 msgid "Document type"
-msgstr ""
+msgstr "Vrsta dokumenta"
 
 msgid "Done"
 msgstr "Gotovo"
@@ -536,7 +536,7 @@ msgid "Downloads"
 msgstr "Preuzimanja"
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
-msgstr ""
+msgstr "Npr. neka riječ AND title:\"Naslov\" AND author:Autor OR year:2017"
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -1397,7 +1397,7 @@ msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Broj tekstova u RSS-u"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Broj stranica"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Broj rezultata po stranici kad popis ima više stranica (pagination)"
@@ -1744,7 +1744,7 @@ msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Objavljeno u *Lijepa knjiga*, objavila Izdavačka kuća, 2014."
 
 msgid "Published on this site"
-msgstr ""
+msgstr "Datum objavljivanja na ovom sajtu"
 
 msgid "Purge"
 msgstr "Očisti"
@@ -1870,7 +1870,7 @@ msgid "Reset all"
 msgstr "Poništi sve"
 
 msgid "Reset filters"
-msgstr ""
+msgstr "Poništi filtere"
 
 msgid "Reset password"
 msgstr "Ponovo postavi lozinku"
@@ -2740,6 +2740,8 @@ msgid ""
 "You can use the following prefixes to search a word in a specific field, e."
 "g. \"title:example\""
 msgstr ""
+"Možeš koristiti slijedeće oznake da bi se pretražila neka riječ u\n"
+"nekom određenom polju, npr. \"title:Naslov\""
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
@@ -2820,13 +2822,13 @@ msgid "any"
 msgstr "bilo koja"
 
 msgid "article"
-msgstr ""
+msgstr "članak"
 
 msgid "automatically generated if not present, using author and title"
 msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
 
 msgid "book"
-msgstr ""
+msgstr "knjiga"
 
 msgid "by number of pages, ascending"
 msgstr "po broju stranica (manje na početku)"
