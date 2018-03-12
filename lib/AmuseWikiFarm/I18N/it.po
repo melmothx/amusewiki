@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2018-02-19 11:19+0100\n"
+"PO-Revision-Date: 2018-03-12 10:24+0100\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -310,7 +310,7 @@ msgstr ""
 "per pagina. (La prima nota secondaria di ogni pagina sarà \"a\")"
 
 msgid "By relevance"
-msgstr ""
+msgstr "Rilevanza"
 
 msgid "By sku ascending"
 msgstr "Per numero di inventario, ascendente"
@@ -539,7 +539,7 @@ msgid "Do not use bold fonts"
 msgstr "Non usare caratteri in grassetto"
 
 msgid "Document type"
-msgstr ""
+msgstr "Tipo di documento"
 
 msgid "Done"
 msgstr "Fatto"
@@ -551,7 +551,7 @@ msgid "Downloads"
 msgstr "Download"
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
-msgstr ""
+msgstr "Ad esempio Qualche parola AND title:\"Tizio\" AND author:Caio OR year:2017"
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -1439,7 +1439,7 @@ msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Numero di testi da mostrare nel feed RSS (numero intero)"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Numero di pagine"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Numero di risultati da mostrare nelle paginazioni (un numero intero)"
@@ -1796,7 +1796,7 @@ msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Pubblicato in *Un bel libro*, edito da Casa Editrice, 2014"
 
 msgid "Published on this site"
-msgstr ""
+msgstr "Data di pubblicazione su questo sito"
 
 msgid "Purge"
 msgstr "Purga"
@@ -1923,7 +1923,7 @@ msgid "Reset all"
 msgstr "Ricomincia da capo"
 
 msgid "Reset filters"
-msgstr ""
+msgstr "Rimuovi i filtri"
 
 msgid "Reset password"
 msgstr "Reimposta la password"
@@ -2826,6 +2826,9 @@ msgid ""
 "You can use the following prefixes to search a word in a specific field, e."
 "g. \"title:example\""
 msgstr ""
+"Si possono usare i seguenti prefissi per cercare una parola in un\n"
+"campo specifico, ad esempio: \"title:titolo\" (i prefissi sono in\n"
+"inglese)"
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
@@ -2909,13 +2912,13 @@ msgid "any"
 msgstr "qualsiasi"
 
 msgid "article"
-msgstr ""
+msgstr "articolo"
 
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
 
 msgid "book"
-msgstr ""
+msgstr "libro"
 
 msgid "by number of pages, ascending"
 msgstr "per numero di pagine (da minore a maggiore)"
