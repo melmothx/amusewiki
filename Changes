@@ -4,12 +4,54 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-2.103 UNRELEASED
+2.200 UNRELEASED
 
- - Completed ru translation (thanks @labdsf)
+ - Refactored the search page, using facets now
+ - Updated ru (thanks @labdsf), it and hr translations
  - serve a list of urls to mirror under /mirror.txt and /mirror.ts.txt
    to feed wget with it. Plus provided a client in
    script/mirror-site.sh
+
+This version brings a refactored, faceted search page. To get the
+facets working, you need a Search::Xapian module newer then 1.2.22.0.
+Notably, Debian jessie has a 1.2.19.0. Another problem is that the
+current 1.2.25.0 version on CPAN fails to install using Xapian system
+libraries in the 1.2 branch (I believe the issue, a single test
+failing, will be addressed in the next Search::Xapian release).
+
+Please note that without satisfying this dependency, Amusewiki will
+still work without problems. You are just going to miss a nice
+feature.
+
+There are 4 cases here:
+
+ - Debian stretch, Amusewiki installed with deb package: works out of
+   the box.
+
+ - Recent distro, with Xapian (system library) > 1.4, and Amusewiki
+   installed from git. It could already work out of the box. If not
+   so, upgrading Search::Xapian from CPAN (e.g. `cpanm Search::Xapian`)
+   will do.
+
+ - Older distro (with Xapian system library 1.2) and Amusewiki
+   installed with git: you need to install Search::Xapian from git. If
+   it refuses to install because of a single test failing, force the
+   installation skipping the tests. I asked the upstream, and they
+   confirmed it's harmless.
+
+ - Debian jessie, Amusewiki installed with deb package: you need to
+   build a recent Search::Xapian. You can install it from CPAN
+   system-wide, but it has the downside of making your system dirty,
+   so it's not recommended (but still viable). Instead, you could
+   build a deb package with this procedure.
+
+   # apt-get install libdevel-leak-perl libtest-pod-perl devscripts \
+                     build-essential fakeroot libxapian-dev
+   $ git clone https://github.com/melmothx/amusewiki-debian-packages.git
+   $ cd amusewiki-debian-packages/libsearch-xapian-perl-1.2.24.0/
+   $ debuild -i -us -uc -b
+
+   And install the resulting deb (as root) in the parent directory.
 
 2.102 2018-02-19
 

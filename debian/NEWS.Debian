@@ -1,0 +1,24 @@
+amusewiki (2.200-1+amw1) unstable; urgency=medium
+
+    This version brings a refactored, faceted search page. To have this
+    (optional) feature working, you need a libsearch-xapian-perl >
+    1.2.22.0. On Debian Stretch no action is required, but Debian Jessie
+    has 1.2.19.0.
+
+    If you want the facets on the search page, you need to install a
+    recent version of Search::Xapian. You can install it from CPAN
+    system-wide, but it's not recommended. Instead, you could build a deb
+    package with this procedure:
+
+    # apt-get install libdevel-leak-perl libtest-pod-perl devscripts \
+                      build-essential fakeroot libxapian-dev
+    $ git clone https://github.com/melmothx/amusewiki-debian-packages.git
+    $ cd amusewiki-debian-packages/libsearch-xapian-perl-1.2.24.0/
+    $ debuild -i -us -uc -b
+
+    And install the resulting deb (as root) in the parent directory.
+
+    The sources from the amusewiki repository have a patch to permit the
+    building against the Xapian system library found in Jessie.
+
+ -- Marco Pessotto <melmothx@gmail.com>  Mon, 12 Mar 2018 16:29:19 +0100
