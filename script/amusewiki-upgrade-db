@@ -158,13 +158,3 @@ if ($dh->schema_version > $dh->database_version) {
 else {
     print "YES\n";
 }
-
-# print $dh->database_version . "\n";
-
-unless ($prepare) {
-    try {
-        foreach my $site ($schema->resultset('Site')->search(undef, { order_by => 'id' })->all) {
-            $site->xapian_reindex_all unless $site->xapian->database_is_up_to_date;
-        }
-    } catch { warn $_ };
-}
