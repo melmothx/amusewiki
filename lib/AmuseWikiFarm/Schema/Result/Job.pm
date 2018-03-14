@@ -635,7 +635,7 @@ sub dispatch_job_git {
     my $remote = $data->{remote};
     my $action = $data->{action};
     my $validate = $site->remote_gits_hashref;
-    die "Couldn't validate" unless $validate->{$remote}->{$action};
+    die "Couldn't remote $remote for action $action appears invalid!" unless $validate->{$remote}->{$action};
     if ($action eq 'fetch') {
         my @logs = $site->repo_git_pull($remote, $logger);
         my $bulk = $site->update_db_from_tree_async($logger, $self->username);
