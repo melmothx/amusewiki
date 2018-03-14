@@ -104,6 +104,8 @@ if ($help) {
 my $schema = AmuseWikiFarm::Schema->connect('amuse')
   or die "Couldn't connect to amuse DB!";
 
+$schema->storage->ensure_connected or die "Couldn't connect to amuse DB!";
+
 # print $schema->storage->sqlt_type, "\n";
 
 # with sqlite, disable the foreign keys, otherwise copying to
