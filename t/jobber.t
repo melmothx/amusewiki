@@ -10,7 +10,7 @@ use File::Spec::Functions qw/catdir catfile/;
 use File::Temp;
 use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
-use AmuseWiki::Tests qw/create_site check_jobber_result start_jobber stop_jobber/;
+use AmuseWiki::Tests qw/create_site check_jobber_result start_jobber stop_jobber run_all_jobs/;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 
@@ -220,12 +220,13 @@ ok (! -f $text_file, "$text_file is no more");
 
 stop_jobber();
 
+run_all_jobs($schema);
+
 $schema->resultset('User')->update({ preferred_language => undef });
 
 {
     my $now = DateTime->now;
     $now->subtract(days => 400);
-    sleep 2;
     my $completed = $site->jobs->search({ status => 'completed' });
     my @leftovers = map { $_->produced_files } $completed->all;
     diag Dumper(\@leftovers);
