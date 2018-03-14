@@ -87,6 +87,7 @@ use DBIx::Class::DeploymentHandler;
 use Getopt::Long;
 use Data::Dumper;
 use Pod::Usage;
+use Try::Tiny;
 my ($prepare);
 
 my $help;
@@ -158,3 +159,10 @@ else {
 
 # print $dh->database_version . "\n";
 
+unless ($prepare) {
+    try {
+        foreach my $site ($schema->resultset('Site')->search(undef, { order_by => 'id' })->all) {
+            $site->xapian_reindex_all unless $site->xapian->database_is_up_to_date;
+        }
+    } catch { warn $_ };
+}

@@ -13,10 +13,12 @@ use Data::Page;
 use AmuseWikiFarm::Log::Contextual;
 use Text::Unidecode ();
 use Try::Tiny;
+use Path::Tiny ();
 use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
 
 use constant {
+              AMW_XAPIAN_VERSION => 1,
               SLOT_AUTHOR => 0,
               SLOT_TOPIC => 1,
               SLOT_PUBDATE => 2,
@@ -111,14 +113,64 @@ has page => (
              default => sub { return 10 },
             );
 
-sub xapian_dir {
+has auxiliary => (
+                  is => 'ro',
+                  isa => 'Bool',
+                  default => sub { 0 },
+                 );
+
+has temporary_suffix => (is => 'ro',
+                         isa => 'Str',
+                         default => sub { '~' . time() }
+                        );
+
+sub _path_tokens {
     my $self = shift;
     my @path;
     if (my $root = $self->basedir) {
         push @path, $root;
     }
-    push @path, (xapian => $self->code);
-    return File::Spec->catdir(@path);
+    push @path, 'xapian';
+    my $code = $self->code;
+    if ($self->auxiliary) {
+        $code .= $self->temporary_suffix;
+    }
+    push @path, $code;
+    return @path;
+}
+
+sub xapian_dir {
+    my $self = shift;
+    return File::Spec->catdir($self->_path_tokens);
+}
+
+sub xapian_backup_dir {
+    my $self = shift;
+    my @path = $self->_path_tokens;
+    $path[-1] .= '~backup';
+    return Path::Tiny::path(@path);
+}
+
+sub specification_file {
+    my $self = shift;
+    my @path = $self->_path_tokens;
+    $path[-1] .= '.json';
+    return Path::Tiny::path(@path);
+}
+
+sub write_specification_file {
+    my $self = shift;
+    $self->specification_file->spew(encode_json({ version => AMW_XAPIAN_VERSION }));
+}
+
+sub read_specification_file {
+    my $self = shift;
+    my $spec_file = $self->specification_file;
+    if ($spec_file->exists) {
+        my $spec = $spec_file->slurp;
+        return decode_json($spec);
+    }
+    return undef;
 }
 
 
@@ -548,6 +600,16 @@ sub _do_faceted_search {
                                                        lh => $args{lh},
                                                        show_deferred => $self->index_deferred,
                                                       );
+}
+
+sub database_is_up_to_date {
+    my $self = shift;
+    if (my $spec = $self->read_specification_file) {
+        if ($spec->{version} and $spec->{version} == AMW_XAPIAN_VERSION) {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 
