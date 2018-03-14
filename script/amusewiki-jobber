@@ -50,12 +50,6 @@ try {
                 };
             }
         }
-        try {
-            $site->xapian_reindex_all unless $site->xapian->database_is_up_to_date;
-        } catch {
-            my $err = $_;
-            log_error { $site->id . ": error upgrading Xapian: $err" };
-        };
     }
 } catch {
     my $err = $_;

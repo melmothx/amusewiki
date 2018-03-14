@@ -3516,7 +3516,7 @@ sub bootstrap_theme_list {
 }
 
 sub xapian_reindex_all {
-    my $self = shift;
+    my ($self, $logger) = @_;
     my $xapian = $self->xapian;
     my $newdir;
     my $titles = $self->titles->texts_only;
@@ -3524,7 +3524,7 @@ sub xapian_reindex_all {
     try {
         my $newdb = $self->xapian(auxiliary => 1);
         log_info { "Building new db against " . $newdb->xapian_dir };
-        my $logger = sub { print join(" ", @_) };
+        $logger ||= sub { return };
         while (my $title = $titles->next) {
             $newdb->index_text($title, $logger);
         }

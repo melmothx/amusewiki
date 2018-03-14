@@ -109,7 +109,7 @@ foreach my $code (@codes) {
         $site->update_db_from_tree;
     }
     elsif ($xapian) {
-        $site->xapian_reindex_all;
+        $site->xapian_reindex_all(sub { print @_ });
     }
     elsif ($rebuild) {
         $site->bulk_jobs->rebuilds->active_bulk_jobs->abort_all;
