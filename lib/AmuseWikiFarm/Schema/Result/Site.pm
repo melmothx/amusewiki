@@ -1687,8 +1687,9 @@ Return a L<AmuseWikiFarm::Archive::Xapian> object
 =cut
 
 sub xapian {
-    my $self = shift;
+    my ($self, %args) = @_;
     return AmuseWikiFarm::Archive::Xapian->new(
+                                               %args,
                                                code => $self->id,
                                                page => $self->pagination_size_search,
                                                locale => $self->locale,
@@ -3515,12 +3516,44 @@ sub bootstrap_theme_list {
 }
 
 sub xapian_reindex_all {
-    my $self = shift;
+    my ($self, $logger) = @_;
     my $xapian = $self->xapian;
-    my @titles = $self->titles->texts_only;
-    my $logger = sub { print join(" ", @_) };
-    foreach my $title (@titles) {
-        $xapian->index_text($title, $logger);
+    my $newdir;
+    my $titles = $self->titles->texts_only;
+    return unless $titles->count;
+    try {
+        my $newdb = $self->xapian(auxiliary => 1);
+        log_info { "Building new db against " . $newdb->xapian_dir };
+        $logger ||= sub { return };
+        while (my $title = $titles->next) {
+            $newdb->index_text($title, $logger);
+        }
+        $newdir = $newdb->xapian_dir;
+        log_info { "new xapian dir is $newdir" };
+    } catch {
+        my $err = $_;
+        log_error { "$err while rebuilding xapian index for " . $self->id };
+    };
+    if ($newdir and -d $newdir) {
+        my $src = Path::Tiny::path($newdir);
+        my $dest = Path::Tiny::path($xapian->xapian_dir);
+        my $backup = Path::Tiny::path($xapian->xapian_backup_dir);
+        log_info { "moving $dest to $backup and  $newdir to $dest" };
+        try {
+            $backup->remove_tree({ verbose => 1 }) if $backup->exists;
+            # please note that this is not atomical, but it should be
+            # really fast as it's a rename. I think we can afford a
+            # couple of failed requests. At least for now.
+            $dest->move($backup) if $dest->exists;
+            $src->move($dest);
+            $xapian->write_specification_file;
+        } catch {
+            my $err = $_;
+            log_error { "$err while swapping xapian dbs for " . $self->id };
+        };
+    }
+    else {
+        log_error { "No newdir $newdir set for " . $self->id };
     }
 }
 

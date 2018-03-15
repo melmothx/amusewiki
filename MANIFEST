@@ -510,6 +510,7 @@ lib/AmuseWikiFarm/Archive/Lexicon/Handles.pm
 lib/AmuseWikiFarm/Archive/Lexicon/Site.pm
 lib/AmuseWikiFarm/Archive/StaticIndexes.pm
 lib/AmuseWikiFarm/Archive/Xapian.pm
+lib/AmuseWikiFarm/Archive/Xapian/Result.pm
 lib/AmuseWikiFarm/Controller/Admin.pm
 lib/AmuseWikiFarm/Controller/API.pm
 lib/AmuseWikiFarm/Controller/Archive.pm
@@ -1400,7 +1401,9 @@ t/utils-json.t
 t/utils-paginator.t
 t/view_HTML.t
 t/view_StaticFile.t
+t/xapian-faceted.t
 t/xapian-multilang.t
+t/xapian-versioning.t
 t/xapian.t
 t/xs-sessions.t
 t/zz-finish-tests.t
