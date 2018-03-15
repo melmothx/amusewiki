@@ -1,9 +1,8 @@
 amusewiki (2.200-1+amw1) unstable; urgency=medium
 
-  * New release. See NEWS.Debian how to enable the faceted search on
-    Jessie.
+  * New release.
 
- -- Marco Pessotto <melmothx@gmail.com>  Mon, 12 Mar 2018 16:30:26 +0100
+ -- Marco Pessotto <melmothx@gmail.com>  Thu, 15 Mar 2018 16:28:03 +0100
 
 amusewiki (2.102-1+amw1) unstable; urgency=medium
 
