@@ -7,7 +7,8 @@ dedicated tree.
 2.200 UNRELEASED
 
  - Refactored the search page, using facets now
- - Updated ru (thanks @labdsf), it and hr translations
+ - Updated ru (thanks @labdsf), it and hr translations, add cs
+   preliminary support
  - serve a list of urls to mirror under /mirror.txt and /mirror.ts.txt
    to feed wget with it. Plus provided a client in
    script/mirror-site.sh
@@ -34,16 +35,17 @@ There are 4 cases here:
    will do.
 
  - Older distro (with Xapian system library 1.2) and Amusewiki
-   installed with git: you need to install Search::Xapian from git. If
-   it refuses to install because of a single test failing, force the
-   installation skipping the tests. I asked the upstream, and they
-   confirmed it's harmless.
+   installed with git: you need to install Search::Xapian from CPAN.
+   If it refuses to install because of a single test failing, force
+   the installation skipping the tests `cpanm -f Search::Xapian`. I
+   asked the upstream, and they confirmed it's harmless.
 
  - Debian jessie, Amusewiki installed with deb package: you need to
    build a recent Search::Xapian. You can install it from CPAN
    system-wide, but it has the downside of making your system dirty,
-   so it's not recommended (but still viable). Instead, you could
-   build a deb package with this procedure.
+   so it's not recommended. Instead, you could build a deb package
+   with this procedure (the libsearch-xapian-perl sources are provided
+   as courtesy for this case, incorporating the needed patch).
 
    # apt-get install libdevel-leak-perl libtest-pod-perl devscripts \
                      build-essential fakeroot libxapian-dev
