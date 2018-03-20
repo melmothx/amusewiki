@@ -38,7 +38,7 @@
 
 <div class="row">
   <div class="col-xs-2">
-    <div class="form-group">
+    <div id="facet-box-sorting-dropdown" class="form-group">
       <label for="xapian-sort" class="control-label">
         [% loc('Sorting:') %]
       </label>
@@ -67,7 +67,7 @@
       </select>
     </div>
     [% IF facets %]
-      <div>
+      <div id="facet-box-reset-filters-top">
         <a class="btn btn-default btn-sm"
            href="[% c.uri_for_action('/search/index', { query => c.req.params.query }) | html %]">
           [% loc('Reset filters') %]
@@ -75,6 +75,7 @@
       </div>
     [% FOREACH facet IN facets %]
     [% IF facet.facets.size %]
+      <div id="facet-box-[% facet.name %]">
     <h5><strong>[% facet.label | html %]</strong></h5>
     [% FOREACH checkbox IN facet.facets %]
     <div class="checkbox">
@@ -87,9 +88,10 @@
       </label>
     </div>
     [% END %]
+      </div>
     [% END %]
     [% END %]
-      <div>
+      <div id="facet-box-reset-filters-bottom">
         <a class="btn btn-default btn-sm"
            href="[% c.uri_for_action('/search/index', { query => c.req.params.query }) | html %]">
           [% loc('Reset filters') %]
