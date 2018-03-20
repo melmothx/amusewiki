@@ -2344,13 +2344,13 @@ sub _repo_git_action {
         else {
             die "Bad usage $action";
         }
+        # this is the standard error was ->ERR, now is ->error
+        if (my $err = $git->can('error') ? $git->error : $git->ERR) {
+            push @out, @$err if @$err;
+        }
         if ($fatal) {
             push @out, $fatal->error;
-            log_error { $self->id . ": Fatal error on $action $remote: " . $fatal->error };
-        }
-        if (my $err = $git->ERR) {
-            push @out, @$err;
-            log_error { $self->id . ": Fatal error on $action $remote: " . join("\n" . @$err) };
+            log_error { $self->id . ": Fatal error on $action $remote: " . join("\n", @out) };
         }
     }
     else {
