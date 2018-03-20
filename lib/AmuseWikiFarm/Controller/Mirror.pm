@@ -60,7 +60,7 @@ sub get_files :Chained('root') :PathPart('') :CaptureArgs(0) {
                    Dlog_debug { "$filename: $_" } \@fragments;
 
                    return if grep { !m{\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z} } @fragments;
-                   return if $fragments[-1] =~ m/\.(status|log)\z/;
+                   return if $fragments[-1] =~ m/\.(status|log|aux|toc)\z/;
                    push @list, {
                                 file => join('/', @fragments),
                                 ts => $ts,

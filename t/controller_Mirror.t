@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 45;
+use Test::More tests => 47;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -11,6 +11,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
@@ -82,6 +83,11 @@ diag $mech->content;
 $mech->content_contains("index.html#\n");
 $mech->content_like(qr{^specials/index\.muse\#\d+$}m);
 
+path($site->titles->first->path_tiny->basename('.muse') . '.aux')->spew('blah');
+path($site->titles->first->path_tiny->basename('.muse') . '.toc')->spew('blah');
+
+$mech->content_lacks('.aux#');
+$mech->content_lacks('.toc#');
 
 $site->update({ mode => 'private' });
 ok $site->cgit_integration;
