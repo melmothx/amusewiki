@@ -53,7 +53,7 @@ sub process {
     }
     if (index($file, ROOT) != 0 or !$type) {
         $c->response->status(403);
-        log_error {
+        log_info {
             "Tried to serve $file, refused, outside " . ROOT
               . " or forbidden extension (.txt is not allowed)"
           };
