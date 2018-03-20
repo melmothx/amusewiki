@@ -6,11 +6,26 @@ use utf8;
 use Test::More tests => 10;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
+use File::Spec::Functions qw/catfile catdir/;
+use lib catdir(qw/t lib/);
+use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-my $site = $schema->resultset('Site')->find('0blog0');
+my $site_id = '0revmerg0';
+my $site = create_site($schema, $site_id);
+
+{
+    my $file = path($site->repo_root, qw/f ft first-test.muse/);
+    $file->parent->mkpath;
+    $file->spew_utf8(path(qw/repo 0blog0 f ft first-test.muse/)->slurp_utf8);
+    foreach my $f (path(qw/repo 0blog0 f ft/)->children(qr{\.(png|jpe?g)})) {
+        $f->copy($file->parent);
+    }
+    $site->update_db_from_tree(sub { diag @_ });
+}
 
 my $text = $site->titles->published_texts->find({ uri => 'first-test' });
 

@@ -522,7 +522,7 @@ sub check_file {
     my ($bb, $msg) = @_;
     my $total_pages = $bb->total_pages_estimated;
     ok ($total_pages, "Total pages: $total_pages");
-    my $out = $bb->compile;
+    my $out = $bb->compile(sub { diag @_ });
     ok ($out, "$msg: $out produced");
     my $check_logo;
     if (my $site = $bb->site) {
