@@ -37,7 +37,7 @@
 <div class="amw-spacer-20"></div>
 
 <div class="row">
-  <div class="col-xs-2">
+  <div class="col-sm-4 col-md-3">
     <div id="facet-box-sorting-dropdown" class="form-group">
       <label for="xapian-sort" class="control-label">
         [% loc('Sorting:') %]
@@ -99,7 +99,7 @@
       </div>
     [% END %]
   </div>
-  <div class="col-xs-10">
+  <div class="col-sm-8 col-md-9">
     <div id="xapian-loading" class="center">
       <span class="fa fa-spinner fa-spin fa-3x fa-fw">
       </span>
