@@ -8,6 +8,7 @@ use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf Str Bool/;
 use JSON::MaybeXS;
 use AmuseWikiFarm::Log::Contextual;
 use Data::Page;
+use DateTime;
 use namespace::clean;
 
 has pager => (is => 'ro',
@@ -147,7 +148,11 @@ sub _build_pubdates {
     foreach my $i (@$list) {
         $i->{label} = $i->{value};
     }
-    return [ sort { _first_number($a->{value}) <=> _first_number($b->{value}) } @$list ];
+    my $year = DateTime->now->year;
+    return [ sort { _first_number($a->{value}) <=> _first_number($b->{value}) }
+             grep { $_->{value} <= $year }
+             @$list
+           ];
 }
 
 sub _build_num_pages {
