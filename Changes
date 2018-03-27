@@ -4,6 +4,25 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.201 2018-03-27
+
+ - Bump dependency on Text::Amuse 1.00 and Text::Amuse::Compile 1.03
+
+
+With Text::Amuse::Compile 1.03, a relatively recent bigfoot.sty
+version is needed. If your installation is missing it (notably jessie,
+stretch is fine), you can install it as the user running the amusewiki
+instance with the following commands:
+
+   $ cd /tmp/
+   $ mkdir -p `kpsewhich -var-value TEXMFHOME`/tex/latex/bigfoot
+   $ wget http://mirrors.ctan.org/macros/latex/contrib/bigfoot.zip
+   $ unzip bigfoot.zip
+   $ cd bigfoot
+   $ make
+   $ mv *.sty `kpsewhich -var-value TEXMFHOME`/tex/latex/bigfoot
+   $ texhash `kpsewhich -var-value TEXMFHOME`
+
 2.200 2018-03-20
 
  - Refactored the search page, using facets now
