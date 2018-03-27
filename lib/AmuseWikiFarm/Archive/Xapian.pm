@@ -102,11 +102,6 @@ has basedir => (
                 isa => 'Str',
                );
 
-has xapian_db => (is => 'ro',
-                  isa => 'Object',
-                  lazy => 1,
-                  builder => '_build_xapian_db');
-
 has page => (
              is => 'rw',
              isa => 'Int',
@@ -174,7 +169,7 @@ sub read_specification_file {
 }
 
 
-sub _build_xapian_db {
+sub xapian_db {
     my $self = shift;
     my $db = $self->xapian_dir;
     unless (-d $db) {
@@ -252,6 +247,7 @@ sub index_text {
     # get and create
     my $database = $self->xapian_db;
     my $indexer = Search::Xapian::TermGenerator->new();
+    $indexer->set_database($database);
     # indexing with the correct stemmer is the right thing to do. No
     # point in stemming with the wrong locale. if i understand
     # correctly, the unstemmed version is indexed anyway.
@@ -335,38 +331,11 @@ sub index_text {
             # doc_name and keywords.
             $indexer->increase_termpos();
 
-            my $filepath = $title->f_full_path_name;
-            open (my $fh, '<:encoding(UTF-8)', $filepath)
-              or die "Couldn't open $filepath: $!";
-            # slurp by paragraph
-            local $/ = "\n\n";
-            while (my $line = <$fh>) {
-                chomp $line;
-                $line =~ s/^\#\w+//gm; # delete the directives
-                $line =~ s/<.+?>//g; # delete the tags.
-                if ($line =~ /\S/) {
-                    $indexer->index_text($line);
-                    # don't abort here. We index each line twice, once
-                    # with the real string, once with the ascii
-                    # representation.
-
-                    # This technique is borrowed from elastic search,
-                    # which suggests to index the text twice, once
-                    # with the ascii representation, once with the
-                    # real string.
-
-                    # This way we have a match for both case.
-                    try {
-                        $indexer->index_text(Text::Unidecode::unidecode($line));
-                        # log_debug { Text::Unidecode::unidecode($line) };
-                    } catch {
-                        my $error = $_;
-                        log_warn { "Cannot unidecode $line: $_" } ;
-                    };
-                }
+            if (my $teaser = $title->teaser) {
+                $self->_index_html($indexer, $teaser);
             }
-            close $fh;
-            # Add or the replace the document to the database.
+            my $file = Path::Tiny::path($title->filepath_for_ext('bare.html'));
+            $self->_index_html($indexer, $file->slurp_utf8);
             $database->replace_document_by_term($qterm, $doc);
         } catch {
             my $error = $_;
@@ -610,6 +579,24 @@ sub database_is_up_to_date {
         }
     }
     return 0;
+}
+
+sub _index_html {
+    my ($self, $indexer, $html) = @_;
+    if (my $tree = HTML::TreeBuilder->new_from_content($html)) {
+        $tree->elementify;
+        my $text = $tree->as_text;
+        # log_debug { "Text is $text" };
+        $indexer->index_text($text);
+        try {
+            $indexer->index_text(Text::Unidecode::unidecode($text));
+            # log_debug { Text::Unidecode::unidecode($line) };
+        } catch {
+            my $error = $_;
+            log_warn { "Cannot unidecode $text: $_" } ;
+        };
+        $tree->delete;
+    }
 }
 
 
