@@ -7,7 +7,7 @@ dedicated tree.
 2.201 2018-03-27
 
  - Bump dependency on Text::Amuse 1.00 and Text::Amuse::Compile 1.03
-
+ - Fix secondary footnotes CSS
 
 With Text::Amuse::Compile 1.03, a relatively recent bigfoot.sty
 version is needed. If your installation is missing it (notably jessie,

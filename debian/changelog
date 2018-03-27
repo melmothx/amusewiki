@@ -1,3 +1,9 @@
+amusewiki (2.201-1+amw1) unstable; urgency=medium
+
+  * New release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Tue, 27 Mar 2018 11:54:59 +0200
+
 amusewiki (2.200-3+amw1) unstable; urgency=medium
 
   * Rebuilt with serach layout fix
