@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 47;
+use Test::More tests => 59;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -78,16 +78,24 @@ foreach my $url (@list) {
 ok ($got_ok > 30, "$got_ok requests ok");
 ok (!$got_fail, "$got_fail failed request");
 
+my @denied = (qw/exe pl aux toc po json tt/);
+
+my @test_denied;
+foreach my $deny (@denied) {
+    my $testfile = path($site->titles->published_texts->first->path_tiny . '.' . $deny);
+    diag "Creating $testfile";
+    $testfile->spew('blah');
+    push @test_denied, $testfile;
+}
+
 $mech->get_ok('/mirror.ts.txt');
 diag $mech->content;
 $mech->content_contains("index.html#\n");
 $mech->content_like(qr{^specials/index\.muse\#\d+$}m);
 
-path($site->titles->first->path_tiny->basename('.muse') . '.aux')->spew('blah');
-path($site->titles->first->path_tiny->basename('.muse') . '.toc')->spew('blah');
-
-$mech->content_lacks('.aux#');
-$mech->content_lacks('.toc#');
+foreach my $deny (@denied) {
+    $mech->content_lacks('.' . $deny . '#');
+}
 
 $site->update({ mode => 'private' });
 ok $site->cgit_integration;
@@ -111,3 +119,7 @@ $site->update({
                cgit_integration => 0,
                mode => 'modwiki',
               });
+
+foreach my $testfile (@test_denied) {
+    ok $testfile->remove;
+}

@@ -7,6 +7,7 @@ extends 'Catalyst::View';
 use Plack::Util;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny ();
+use AmuseWikiFarm::Utils::Paths;
 use Cwd;
 use constant ROOT => getcwd();
 
@@ -22,30 +23,7 @@ sub process {
     }
     # resolve symlinks and upward directory parts.
     $file = Path::Tiny::path($file)->realpath->stringify;
-
-    my $mime = {
-                tex => 'application/x-tex',
-                pdf => 'application/pdf',
-                html => 'text/html',
-                epub => 'application/epub+zip',
-                muse => 'text/plain',
-                zip => 'application/zip',
-                png => 'image/png',
-                jpg => 'image/jpeg',
-                jpeg => 'image/jpeg',
-                gif => 'image/gif',
-                ico => 'image/x-icon',
-                css => 'text/css',
-                js => 'text/javascript',
-                eot => 'application/vnd.ms-fontobject',
-                otf => 'application/font-sfnt',
-                svg => 'image/svg+xml',
-                ttf => 'application/font-sfnt',
-                woff => 'application/font-woff',
-                woff2 => 'font/woff2',
-                torrent => 'application/x-bittorrent',
-               };
-
+    my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
     my $type;
     # no extension => octect-stream
     if ($file =~ m/\.(\w+)$/) {

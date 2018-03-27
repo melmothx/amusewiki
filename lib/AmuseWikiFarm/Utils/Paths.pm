@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use Path::Tiny;
 use AmuseWikiFarm::Log::Contextual;
+use constant ROOT => Path::Tiny->cwd;
 
 =head1 NAME
 
@@ -93,6 +94,32 @@ sub templates_location {
 
 sub static_file_location {
     _install_location(qw/root static/);
+}
+
+
+sub served_mime_types {
+    return  +{
+                tex => 'application/x-tex',
+                pdf => 'application/pdf',
+                html => 'text/html',
+                epub => 'application/epub+zip',
+                muse => 'text/plain',
+                zip => 'application/zip',
+                png => 'image/png',
+                jpg => 'image/jpeg',
+                jpeg => 'image/jpeg',
+                gif => 'image/gif',
+                ico => 'image/x-icon',
+                css => 'text/css',
+                js => 'text/javascript',
+                eot => 'application/vnd.ms-fontobject',
+                otf => 'application/font-sfnt',
+                svg => 'image/svg+xml',
+                ttf => 'application/font-sfnt',
+                woff => 'application/font-woff',
+                woff2 => 'font/woff2',
+                torrent => 'application/x-bittorrent',
+               };
 }
 
 1;
