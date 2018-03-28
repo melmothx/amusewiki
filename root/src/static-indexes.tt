@@ -19,6 +19,11 @@
     [%- IF site.has_site_file('local.js') %]
     <script type="text/javascript" src="./site_files/local.js"></script>
     [%- END %]
+    <style type="text/css">
+     .force-black { color: black }
+     .pb-10 { padding-bottom: 10px }
+     .amw-navlogo-img { padding: 5px 5px; height: 50px; }
+    </style>
   </head>
   <body>
     <div class="navbar navbar-default" role="navigation">
@@ -36,7 +41,6 @@
           <a class="amw-navlogo" href="[% site.canonical_url_secure %]">
             <img src="./site_files/navlogo.png"
                  title="[% site.sitename | html %]"
-                 style="padding: 5px 5px; height: 50px;"
                  class="amw-navlogo-img"
                  alt="[% site.sitename | html %]" />
           </a>
@@ -71,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div style="padding-bottom: 10px">
+      <div class="pb-10">
         <div class="row">
           <div class="col-xs-offset-6 col-xs-6 text-right">
             [% lh.loc_html('Sorting:') %]
@@ -121,30 +125,9 @@
                   [% FOREACH text IN cat.sorted_titles %]
                   <li class="list-group-item">
                     <div class="row">
-                      <div class="col-sm-8">
+                      <div class="col-sm-12">
                         <a href="./titles.html#text-[% text.uri %]">[% text.title %]</a>
                         [%- IF text.author %] — [% text.author %][% END %]
-                      </div>
-                      <div class="col-sm-4 text-right">
-                        [%- FOREACH format IN formats %]
-                        [%- IF format.is_slides && !text.slides %]
-                        <span class="fa fa-border fa-ban fw"
-                              title="[% format.desc %] [% lh.loc('N/A') %]"
-                              aria-hidden="true"
-                              data-toggle="tooltip"
-                              data-placement="top">
-                        </span><span class="sr-only">[% format.desc %] [% lh.loc('N/A') %]</span>
-                        [%- ELSE %]
-                        <a href="[% text.in_tree_uri %][% format.ext %]"
-                           style="color:black">
-                          <span class="fa fa-border [% format.icon %] fw"
-                                title="[% format.desc %]"
-                                aria-hidden="true"
-                                data-toggle="tooltip"
-                                data-placement="top">
-                          </span><span class="sr-only">[% format.desc %]</span></a>
-                        [%- END %]
-                        [%- END %]
                       </div>
                     </div>
                   </li>
@@ -159,8 +142,7 @@
         [% SET authors_label = lh.loc_html('Authors') %]
         [% FOREACH text IN list %]
         <div id="text-[% text.uri %]"
-             class="sortable-element list-group-item"
-             style="padding-bottom: 10px"
+             class="sortable-element list-group-item pb-10"
              data-pubdate="[% text.pubdate_int %]"
              data-alpha="[% text.sorting_pos %]">
           <div class="row">
@@ -201,8 +183,7 @@
                   data-placement="top">
             </span><span class="sr-only">[% format.desc %] [% lh.loc('N/A') %]</span>
             [%- ELSE %]
-            <a href="[% text.in_tree_uri %][% format.ext %]"
-               style="color:black">
+            <a class="force-black" href="[% text.in_tree_uri %][% format.ext %]">
               <span class="fa fa-2x fa-border [% format.icon %] fw"
                     title="[% format.desc %]"
                     aria-hidden="true"
