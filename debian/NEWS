@@ -1,3 +1,16 @@
+amusewiki (2.202-1+amw1) unstable; urgency=medium
+
+    Given that XeTeX chocks on woff files (see debian bug #861938), this
+    version installs a disabled configuration stanza for fontconfig
+    excluding the woff files (which are not meant for local use anyway).
+    It's up to the system admin to enable it symlinking it in
+    /etc/fonts/conf.d
+
+    Without this configuration, compilations using Charis fonts (and
+    possibly others) are going to fail.
+
+ -- Marco Pessotto <melmothx@gmail.com>  Wed, 28 Mar 2018 09:55:03 +0200
+
 amusewiki (2.200-1+amw1) unstable; urgency=medium
 
     This version brings a refactored, faceted search page. To have this
