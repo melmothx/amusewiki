@@ -424,12 +424,20 @@ kpsewhich mylogo.pdf
                  [% IF esite.cgit_integration %]checked="checked"[% END %]
                  name="cgit_integration" />
           [% loc('View history') %] (CGIT)
-          <br>
-          [% loc('This also makes /mirror/ public') %]
         </label>
       </div>
     </div>
-
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.restrict_mirror %]checked="checked"[% END %]
+                 value="ON"
+                 name="restrict_mirror" />
+          [% loc('Disable /mirror/ URL for anonymous users') %]
+        </label>
+      </div>
+    </div>
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-6">
         <label>

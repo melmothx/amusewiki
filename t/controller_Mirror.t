@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 59;
+use Test::More tests => 79;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -26,18 +26,21 @@ my @paths = (qw[
                    site_files/__static_indexes/fonts/FontAwesome.otf
               ]);
 
-$site->update({
-               cgit_integration => 0,
-               mode => 'modwiki',
-              });
+# private mode: always deny
+
+$site->update({ mode => 'private' });
+$site->site_options->search({ option_name => 'restrict_mirror' })->delete;
 
 foreach my $path (@paths) {
     $mech->get("/mirror/$path");
     is $mech->status, 401;
 }
+$mech->get('/robots.txt');
+$mech->content_lacks('http://blog.amusewiki.org/mirror.txt | wget');
 
-$site->update({ cgit_integration => 1 });
-ok $site->cgit_integration;
+# public mode, no restrict_mirror, ok
+
+$site->update({ mode => 'blog' });
 
 $mech->get('/robots.txt');
 $mech->content_contains('http://blog.amusewiki.org/mirror.txt | wget');
@@ -45,6 +48,34 @@ $mech->content_contains('http://blog.amusewiki.org/mirror.txt | wget');
 foreach my $path (@paths) {
     $mech->get_ok("/mirror/$path");
 }
+
+# public mode: deny if restrict_mirror is active
+
+$site->site_options->update_or_create({
+                                       option_name => 'restrict_mirror',
+                                       option_value => 1,
+                                      });
+$mech->get_ok('/robots.txt');
+$mech->content_lacks('http://blog.amusewiki.org/mirror.txt | wget');
+foreach my $path (@paths) {
+    $mech->get("/mirror/$path");
+    is $mech->status, 401;
+}
+
+# public mode, no restrict_mirror, ok
+
+$site->site_options->update_or_create({
+                                       option_name => 'restrict_mirror',
+                                       option_value => '',
+                                      });
+
+$mech->get('/robots.txt');
+$mech->content_contains('http://blog.amusewiki.org/mirror.txt | wget');
+foreach my $path (@paths) {
+    $mech->get_ok("/mirror/$path");
+}
+$mech->get('/robots.txt');
+$mech->content_contains('http://blog.amusewiki.org/mirror.txt | wget');
 
 $mech->get_ok("/mirror");
 is $mech->uri->path, '/mirror/index.html';
@@ -98,7 +129,6 @@ foreach my $deny (@denied) {
 }
 
 $site->update({ mode => 'private' });
-ok $site->cgit_integration;
 
 foreach my $path (@paths) {
     $mech->get("/mirror/$path");
@@ -115,11 +145,27 @@ is $mech->status, 401;
 $mech->get('/mirror/index.html');
 is $mech->status, 401;
 
-$site->update({
-               cgit_integration => 0,
-               mode => 'modwiki',
-              });
+$site->update({ mode => 'modwiki' });
 
 foreach my $testfile (@test_denied) {
     ok $testfile->remove;
 }
+
+$mech->get_ok('/login');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+$mech->get_ok('/user/site');
+$mech->form_with_fields(qw/restrict_mirror/);
+$mech->tick(restrict_mirror => 'ON');
+$mech->click;
+
+$site = $site->get_from_storage;
+ok $site->restrict_mirror;
+
+$mech->get_ok('/user/site');
+$mech->form_with_fields(qw/restrict_mirror/);
+$mech->untick(restrict_mirror => 'ON');
+$mech->click;
+
+$site = $site->get_from_storage;
+ok !$site->restrict_mirror;
+

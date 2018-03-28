@@ -2911,6 +2911,7 @@ sub update_from_params {
                            freenode_irc_channel
                            turn_links_to_images_into_images
                            enable_video_widgets
+                           restrict_mirror
                            show_preview_when_deferred
                            lists_are_always_flat
                            titles_category_default_sorting
@@ -3205,6 +3206,10 @@ sub freenode_irc_channel {
 
 sub turn_links_to_images_into_images {
     return shift->get_option('turn_links_to_images_into_images') || '';
+}
+
+sub restrict_mirror {
+    return shift->get_option('restrict_mirror') || '';
 }
 
 sub enable_video_widgets {
