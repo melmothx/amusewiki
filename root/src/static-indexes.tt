@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="[% css %]" />
     [%- END %]
     [%- FOREACH script IN javascript_files %]
-    <script type="text/javascript" src="[% script %]" ></script>
+    <script src="[% script %]" ></script>
     [%- END %]
     [%- IF site.has_site_file('local.css') -%]
     <link rel="stylesheet" type="text/css" href="./site_files/local.css" />
     [%- END %]
     [%- IF site.has_site_file('local.js') %]
-    <script type="text/javascript" src="./site_files/local.js"></script>
+    <script src="./site_files/local.js"></script>
     [%- END %]
-    <style type="text/css">
+    <style>
      .force-black { color: black }
      .pb-10 { padding-bottom: 10px }
      .amw-navlogo-img { padding: 5px 5px; height: 50px; }
@@ -113,8 +113,7 @@
           </div>
         </div>
       </div>
-      <div>
-        [% IF category_listing %]
+      [% IF category_listing %]
         <div id="sortable-listing">
           [% FOREACH cat IN list %]
           <div data-alpha="[% cat.sorting_pos %]"
@@ -211,15 +210,14 @@
           </div>
         </div>
         [%- END %]
-        [%- END %]
         </div>
-      </div>
+      [%- END %]
     </div>
     <div class="clearfix">&nbsp;</div>
     <div class="clearfix">&nbsp;</div>
     <div class="clearfix">&nbsp;</div>
     <div class="clearfix">&nbsp;</div>
-    <script type="text/javascript">
+    <script>
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
         $('.sorting-button').click(function () {
