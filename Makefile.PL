@@ -95,6 +95,9 @@ requires 'Protocol::ACME' => '0.12';
 requires 'HTTP::BrowserDetect';
 requires 'HTML::Parser';
 requires 'HTML::Tree';
+requires 'HTML::Packer';
+requires 'CSS::Packer';
+requires 'JavaScript::Packer';
 
 # our own dogfood
 requires 'Text::Amuse' => '1.00';

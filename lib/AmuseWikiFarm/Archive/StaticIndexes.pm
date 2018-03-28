@@ -14,6 +14,7 @@ use AmuseWikiFarm::Utils::Paths;
 use Template;
 use Path::Tiny;
 use Date::Parse;
+use HTML::Packer;
 
 # when we bump the version, we make sure to copy the files again.
 sub version {
@@ -97,6 +98,7 @@ sub generate {
                           );
     foreach my $file (keys %todo) {
         die "Shouldn't happen" unless $todo{$file}{list};
+        my $content;
         $tt->process('static-indexes.tt',
                            {
                             total_items => scalar(@{$todo{$file}{list}}),
@@ -108,9 +110,14 @@ sub generate {
                             javascript_files => \@javascript_files,
                             %{$todo{$file}}
                            },
-                           $file,
-                           { binmode => ':encoding(UTF-8)' })
-          or die $tt->error;
+                     \$content) or die $tt->error;
+        my $packer = HTML::Packer->init();
+        $packer->minify(\$content, {
+                                    remove_comments => 1,
+                                    do_javascript => 'best',
+                                    do_stylesheet => 'minify',
+                                   });
+        path($file)->spew_utf8($content);
     }
 }
 
