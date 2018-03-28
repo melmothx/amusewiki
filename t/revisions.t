@@ -70,6 +70,7 @@ ok (-f $revision->starting_file, "Original body was stored");
 $revision->edit("#title blabla\n#notes blabla\n\n Hello world!\n");
 
 $revision->commit_version;
+sleep 1;
 my $uri = $revision->publish_text;
 $uri =~ s!^/library/!!;
 
@@ -84,6 +85,7 @@ ok ($text->notes, "Found the notes");
 $revision = $text->new_revision;
 $revision->edit("#title blabla\n\n Hellox worldx!\n");
 $revision->commit_version;
+sleep 1;
 my $newuri = $revision->publish_text;
 $newuri =~ s!^/library/!!;
 is $uri, $newuri;
@@ -128,6 +130,7 @@ ok !$text->notes, "Notes are empty" or diag "Found " . $text->notes;
     ok (!$title->can_spawn_revision, "can't spawn revisions");
     is ($title->status, "editing", "Title in editing state");
     $revision->commit_version;
+    sleep 1;
     $revision->publish_text;
     $title->discard_changes;
     is $title->status, "published", "Title status now is published";
