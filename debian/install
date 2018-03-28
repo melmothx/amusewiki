@@ -1,1 +1,2 @@
 doc/amusewiki usr/sbin
+doc/99-font-config-disable-woff.conf etc/fonts/conf.avail
