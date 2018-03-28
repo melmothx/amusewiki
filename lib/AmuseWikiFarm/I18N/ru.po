@@ -306,7 +306,7 @@ msgstr ""
 "этой опцией они будут использовать постраничную нумерацию буквами"
 
 msgid "By relevance"
-msgstr ""
+msgstr "По релевантности"
 
 msgid "By sku ascending"
 msgstr "По номеру по возрастанию"
@@ -532,7 +532,7 @@ msgid "Do not use bold fonts"
 msgstr "Не использовать жирный шрифт"
 
 msgid "Document type"
-msgstr ""
+msgstr "Тип документа"
 
 msgid "Done"
 msgstr "Готово"
@@ -544,7 +544,7 @@ msgid "Downloads"
 msgstr "Загрузки"
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
-msgstr ""
+msgstr "Например, слово AND title:\"Название\" AND author:Автор OR year:2017"
 
 msgid "EPUB"
 msgstr "EPUB"
@@ -1408,7 +1408,7 @@ msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Число последних записей для отображения в RSS (целое)"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Число страниц"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Число результатов для показа на странице (целое)"
@@ -1754,7 +1754,7 @@ msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Опубликовано в *Хорошей книге* выпущенной Моим Издательством, 2014"
 
 msgid "Published on this site"
-msgstr ""
+msgstr "Опубликовано на сайте"
 
 msgid "Purge"
 msgstr "Вычистить"
@@ -1878,7 +1878,7 @@ msgid "Reset all"
 msgstr "Сбросить всё"
 
 msgid "Reset filters"
-msgstr ""
+msgstr "Сбросить фильтры"
 
 msgid "Reset password"
 msgstr "Сбросить пароль"
@@ -2761,6 +2761,8 @@ msgid ""
 "You can use the following prefixes to search a word in a specific field, e."
 "g. \"title:example\""
 msgstr ""
+"Вы можете использовать следующие префиксы, чтобы найти слово в отдельном "
+"поле, например \"title:пример\""
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
@@ -2843,7 +2845,7 @@ msgid "any"
 msgstr "любой"
 
 msgid "article"
-msgstr ""
+msgstr "статья"
 
 msgid "automatically generated if not present, using author and title"
 msgstr ""
@@ -2851,7 +2853,7 @@ msgstr ""
 "названия"
 
 msgid "book"
-msgstr ""
+msgstr "книга"
 
 msgid "by number of pages, ascending"
 msgstr "по возрастанию числа страниц"
