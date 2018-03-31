@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.202 2018-03-31
+
+ - Bump dependency on Text::Amuse 1.01 and Text::Amuse::Compile 1.04
+ - Do not list ignored files in /mirror.txt
+ - Debian: install a disabled fontconfig setting for woff fonts
+ - Optimize static indexes
+ - Use option restrict_mirror to disable mirroring
+ - Update ru i18n (thanks @labdsf)
+
 2.201 2018-03-27
 
  - Bump dependency on Text::Amuse 1.00 and Text::Amuse::Compile 1.03
