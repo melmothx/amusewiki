@@ -100,7 +100,7 @@ requires 'CSS::Packer';
 requires 'JavaScript::Packer';
 
 # our own dogfood
-requires 'Text::Amuse' => '1.01';
+requires 'Text::Amuse' => '1.10';
 requires 'PDF::Imposition' => '0.24';
 requires 'Text::Amuse::Compile' => '1.04';
 requires 'Text::Amuse::Preprocessor' => '0.51';
