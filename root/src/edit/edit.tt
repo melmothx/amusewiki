@@ -770,7 +770,8 @@ How smart a lash that speech doth giue my Conscience?
 
 <script type="text/javascript">
  function load_preview() {
-     $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page");
+     $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page",
+                                          function() { add_flag_to_internal_anchors() });
  }
 $.validator.addMethod("muse", function (value, element) {
     var re = new RegExp("^#title +", "m");
@@ -798,5 +799,3 @@ $(document).ready(function(){
 <script type="text/javascript"
         src="[% c.uri_for('/static/js/amw-batch-upload.js') %]">
 </script>
-
-  <!-- end of the preamble -->
