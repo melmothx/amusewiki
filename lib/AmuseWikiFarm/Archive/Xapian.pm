@@ -303,9 +303,10 @@ sub index_text {
                 $doc->add_boolean_term('Y'  . $title->date_year);
             }
 
-            my $pub_year = $title->pubdate->year;
-            $doc->add_value($SLOTS{pubdate}{slot}, $pub_year);
-            $doc->add_boolean_term($SLOTS{pubdate}{prefix} .  $pub_year);
+            my $pub_date = $title->pubdate;
+            $doc->add_value($SLOTS{pubdate}{slot}, $pub_date->epoch);
+            $doc->add_value(SLOT_PUBDATE_FULL, Search::Xapian::sortable_serialise($title->pubdate->epoch));
+            $doc->add_boolean_term($SLOTS{pubdate}{prefix} .  $pub_date->year);
 
             $doc->add_value($SLOTS{pages}{slot}, $title->page_range);
             $doc->add_boolean_term($SLOTS{pages}{prefix} .  $title->page_range);
@@ -317,7 +318,6 @@ sub index_text {
 
             # for sorting purposes
             $doc->add_value(SLOT_TITLE, Text::Unidecode::unidecode($title->list_title || $title->title));
-            $doc->add_value(SLOT_PUBDATE_FULL, Search::Xapian::sortable_serialise($title->pubdate->epoch));
             $doc->add_value(SLOT_PAGES_FULL, Search::Xapian::sortable_serialise($title->pages_estimated));
 
             if (my $source = $title->source) {

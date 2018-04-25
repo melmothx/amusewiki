@@ -145,14 +145,20 @@ sub _build_dates {
 sub _build_pubdates {
     my $self = shift;
     my $list = $self->facets->{pubdate};
-    foreach my $i (@$list) {
-        $i->{label} = $i->{value};
+    my %years;
+    my $now = time();
+    foreach my $epoch (@$list) {
+        if ($now > $epoch->{value}) {
+            my $date = DateTime->from_epoch(epoch => $epoch->{value});
+            $years{$date->year} += $epoch->{count};
+        }
     }
-    my $year = DateTime->now->year;
-    return [ sort { _first_number($a->{value}) <=> _first_number($b->{value}) }
-             grep { $_->{value} <= $year }
-             @$list
-           ];
+    my @out;
+    foreach my $y (keys %years) {
+        push @out, { value => $y, label => $y, count => $years{$y} };
+    }
+    Dlog_debug { "pudates became is $_" } \@out;
+    return \@out;
 }
 
 sub _build_num_pages {
