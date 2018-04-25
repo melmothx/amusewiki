@@ -16,9 +16,10 @@ use Try::Tiny;
 use Path::Tiny ();
 use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
+use AmuseWikiFarm::Archive::Xapian::Result::Text;
 
 use constant {
-              AMW_XAPIAN_VERSION => 1,
+              AMW_XAPIAN_VERSION => 2,
               SLOT_AUTHOR => 0,
               SLOT_TOPIC => 1,
               SLOT_PUBDATE => 2,
@@ -264,7 +265,8 @@ sub index_text {
 
             # Set the document data to the uri so we can show it for matches.
             # this is treated as blob.
-            $doc->set_data($title->uri);
+            my $abstract = AmuseWikiFarm::Archive::Xapian::Result::Text->new($title);
+            $doc->set_data(encode_json($abstract->clone_args));
 
             # Unique ID.
             $doc->add_term($qterm);
@@ -536,7 +538,7 @@ sub _do_faceted_search {
     foreach my $item ($mset->items) {
         my $doc = $item->get_document;
         push @matches, {
-                        pagename => $doc->get_data,
+                        pagedata => decode_json($doc->get_data),
                         relevance => $item->get_percent,
                         rank => $item->get_rank + 1,
                        };

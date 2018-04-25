@@ -1258,6 +1258,10 @@ sub _clean_html {
     return decode_entities($string);
 }
 
+sub pubdate_epoch {
+    return shift->pubdate->epoch;
+}
+
 sub pubdate_locale {
     my ($self, $locale) = @_;
     $locale ||= 'en';

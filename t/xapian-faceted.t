@@ -194,7 +194,7 @@ $site->update_db_from_tree(sub { diag @_ });
 {
     my $res = $site->xapian->faceted_search(query => q{year:"2001"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test3';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test3';
 }
 
 {
@@ -207,25 +207,25 @@ $site->update_db_from_tree(sub { diag @_ });
 {
     my $res = $site->xapian->faceted_search(query => q{title:"Third Test"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test3';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test3';
 }
 
 {
     my $res = $site->xapian->faceted_search(query => q{title:"second test kuća"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test2';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test2';
 }
 
 {
     my $res = $site->xapian->faceted_search(query => q{title:"kuća"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test2';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test2';
 }
 
 {
     my $res = $site->xapian->faceted_search(query => q{"Taj je tekst" AND "ne samo preživio"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test3';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test3';
 }
 
 {

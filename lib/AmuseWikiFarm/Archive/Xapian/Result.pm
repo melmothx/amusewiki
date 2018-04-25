@@ -227,22 +227,7 @@ sub texts {
     my ($self) = @_;
     return [] if $self->error;
     if (my $site = $self->site) {
-        my @out;
-        foreach my $match (@{$self->matches}) {
-            if (my $text = $site->titles->texts_only->by_uri($match->{pagename})->single) {
-                if ($text->is_published or ($self->show_deferred && $text->can_be_indexed)) {
-                    push @out, $text;
-                }
-                else {
-                    log_error { $site->id . ' ' . $match->{pagename} . ' is obsolete, removing'  };
-                    $site->xapian->delete_text_by_uri($match->{pagename});
-                }
-            }
-            else {
-                log_error { $site->id . ' ' . $match->{pagename} . ' not found, removing'  };
-                $site->xapian->delete_text_by_uri($match->{pagename});
-            }
-        }
+        my @out = map { AmuseWikiFarm::Archive::Xapian::Result::Text->new($_->{pagedata}) } @{$self->matches};
         return \@out;
     }
     else {
