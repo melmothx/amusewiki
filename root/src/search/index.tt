@@ -37,7 +37,7 @@
 <div class="amw-spacer-20"></div>
 
 <div class="row">
-  <div class="col-sm-4 col-md-3">
+  <div class="col-xs-3">
     <div id="facet-box-sorting-dropdown" class="form-group">
       <label for="xapian-sort" class="control-label">
         [% loc('Sorting:') %]
@@ -99,7 +99,7 @@
       </div>
     [% END %]
   </div>
-  <div class="col-sm-8 col-md-9">
+  <div class="col-xs-9">
     <div id="xapian-loading" class="center">
       <span class="fa fa-spinner fa-spin fa-3x fa-fw">
       </span>
@@ -128,7 +128,9 @@
      $('#xapian-loading').show();
      $('#xapian-results').remove();
      $('#xapian-results-container').load(url + ' #xapian-results',
-                                         function () {$('#xapian-loading').hide();
+                                         function () {
+                                             $('#xapian-loading').hide();
+                                             $('html,body').animate({ scrollTop: 0 }, 300);
                                          });
  }
  $(document).ready(function() {
@@ -136,7 +138,6 @@
      $(".xapian-filter").change(function() {
          var form = $('form#search');
          load_xapian_results(form.attr('action') + '?bare=1&' + $('form#search').serialize());
-         // $('html,body').animate({ scrollTop: $('#xapian-results-container').offset().top - 50}, 1000);
      })
      $('input.search-autocomplete').autocomplete({
          source: function(req, res) {
