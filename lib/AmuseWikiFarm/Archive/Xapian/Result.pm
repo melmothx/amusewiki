@@ -11,6 +11,8 @@ use Data::Page;
 use DateTime;
 use namespace::clean;
 
+has multisite => (is => 'ro', isa => Bool,  default => sub { 0 } );
+
 has pager => (is => 'ro',
               default => sub { Data::Page->new },
               isa => InstanceOf['Data::Page']);
@@ -46,6 +48,8 @@ has authors => (is => 'lazy');
 has topics => (is => 'lazy');
 
 has languages => (is => 'lazy');
+
+has hostnames => (is => 'lazy');
 
 has dates => (is => 'lazy');
 
@@ -102,6 +106,14 @@ sub facet_tokens {
                     name => 'filter_language',
                    };
     }
+    if ($self->multisite) {
+        push @out, {
+                    label => $lh->loc('Site'),
+                    facets => $self->hostnames,
+                    name => 'filter_hostname',
+                   };
+    }
+
     my $selections = $self->selections;
     foreach my $block (@out) {
         foreach my $facet (@{$block->{facets}}) {
@@ -191,6 +203,15 @@ sub _build_languages {
     my $map = $self->site ? $self->site->known_langs : {};
     foreach my $i (@$list) {
         $i->{label} = $map->{$i->{value}} || $i->{value};
+    }
+    return [ sort { $a->{value} cmp $b->{value} } @$list ];
+}
+
+sub _build_hostnames {
+    my $self = shift;
+    my $list = $self->facets->{hostname};
+    foreach my $i (@$list) {
+        $i->{label} = $i->{value};
     }
     return [ sort { $a->{value} cmp $b->{value} } @$list ];
 }

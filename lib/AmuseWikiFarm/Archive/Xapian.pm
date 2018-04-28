@@ -30,6 +30,7 @@ use constant {
               SLOT_PUBDATE_FULL  => 7,
               SLOT_PAGES_FULL  => 8,
               SLOT_LANG => 9,
+              SLOT_HOSTNAME => 10,
               SORT_ASC => 0,
               SORT_DESC => 1,
              };
@@ -62,7 +63,11 @@ my %SLOTS = (
                      },
              language => {
                           slot => SLOT_LANG,
-                          prefix => 'L'
+                          prefix => 'L',
+                         },
+             hostname => {
+                          slot => SLOT_HOSTNAME,
+                          prefix => 'H',
                          },
             );
 
@@ -326,6 +331,12 @@ sub index_text {
             if (my $lang = $title->lang) {
                 $doc->add_value($SLOTS{language}{slot}, $lang);
                 $doc->add_boolean_term($SLOTS{language}{prefix} . $lang);
+            }
+            if (my $site = $title->site) {
+                if (my $canonical = $site->canonical) {
+                    $doc->add_value($SLOTS{hostname}{slot}, $canonical);
+                    $doc->add_boolean_term($SLOTS{hostname}{prefix} . $canonical);
+                }
             }
 
             # for sorting purposes
