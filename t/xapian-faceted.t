@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 153;
+use Test::More tests => 155;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -282,7 +282,7 @@ foreach my $sort_by (keys %SORTINGS) {
     is $res->pager->total_entries, 4;
     my $res1 = $site->xapian->faceted_search(sort => $sort_by . '_desc');
     is $res1->pager->total_entries, 4;
-    is $res1->matches->[0]->{pagename}, $res->matches->[-1]->{pagename}, "$sort_by OK";
+    is $res1->matches->[0]->{pagedata}->{uri}, $res->matches->[-1]->{pagedata}->{uri}, "$sort_by OK";
 }
 
 {
@@ -353,4 +353,20 @@ foreach my $sort_by (keys %SORTINGS) {
                                            );
     is $res->pager->total_entries, 1;
     is $res->json_output->[0]->{url}, "http://0facets0.amusewiki.org/library/test-19";
+}
+
+{
+    $site->update({ multilanguage => '' });
+    my $res = $site->xapian->faceted_search(lh => $site->localizer,
+                                            site => $site,
+                                            query => '');
+    ok !scalar(grep { $_->{name} eq 'filter_language' } @{$res->facet_tokens});
+}
+
+{
+    $site->update({ multilanguage => 'en hr it' });
+    my $res = $site->xapian->faceted_search(lh => $site->localizer,
+                                            site => $site,
+                                            query => '');
+    ok scalar(grep { $_->{name} eq 'filter_language' } @{$res->facet_tokens});
 }

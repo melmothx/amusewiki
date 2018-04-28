@@ -29,6 +29,7 @@ use constant {
               SLOT_TITLE => 6,
               SLOT_PUBDATE_FULL  => 7,
               SLOT_PAGES_FULL  => 8,
+              SLOT_LANG => 9,
               SORT_ASC => 0,
               SORT_DESC => 1,
              };
@@ -59,6 +60,10 @@ my %SLOTS = (
                       slot => SLOT_DATE,
                       prefix => 'XD',
                      },
+             language => {
+                          slot => SLOT_LANG,
+                          prefix => 'L'
+                         },
             );
 
 sub sortings {
@@ -316,6 +321,11 @@ sub index_text {
             if (my $qual = $title->text_qualification) {
                 $doc->add_value($SLOTS{qualification}{slot}, $qual);
                 $doc->add_boolean_term($SLOTS{qualification}{prefix} . $qual);
+            }
+
+            if (my $lang = $title->lang) {
+                $doc->add_value($SLOTS{language}{slot}, $lang);
+                $doc->add_boolean_term($SLOTS{language}{prefix} . $lang);
             }
 
             # for sorting purposes

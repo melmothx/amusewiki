@@ -45,6 +45,8 @@ has authors => (is => 'lazy');
 
 has topics => (is => 'lazy');
 
+has languages => (is => 'lazy');
+
 has dates => (is => 'lazy');
 
 has pubdates => (is => 'lazy');
@@ -93,6 +95,13 @@ sub facet_tokens {
                 facets => $self->num_pages,
                 name => 'filter_pages',
                });
+    if ($self->site && $self->site->multilanguage) {
+        push @out, {
+                    label => $lh->loc('Language'),
+                    facets => $self->languages,
+                    name => 'filter_language',
+                   };
+    }
     my $selections = $self->selections;
     foreach my $block (@out) {
         foreach my $facet (@{$block->{facets}}) {
@@ -174,6 +183,16 @@ sub _build_num_pages {
         $i->{label} = $i->{value};
     }
     return [ sort { _first_number($a->{value}) <=> _first_number($b->{value}) } @$list ];
+}
+
+sub _build_languages {
+    my $self = shift;
+    my $list = $self->facets->{language};
+    my $map = $self->site ? $self->site->known_langs : {};
+    foreach my $i (@$list) {
+        $i->{label} = $map->{$i->{value}} || $i->{value};
+    }
+    return [ sort { $a->{value} cmp $b->{value} } @$list ];
 }
 
 sub _first_number {
