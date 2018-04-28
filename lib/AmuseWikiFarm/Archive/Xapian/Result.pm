@@ -112,9 +112,15 @@ sub _build_authors {
 sub _add_category_labels {
     my ($self, $list) = @_;
     my $site = $self->site or return;
+    my @uris;
     foreach my $i (@$list) {
-        if (my $cat = $site->categories->by_full_uri($i->{value})) {
-            $i->{label} = $cat->name;
+        my $uri = (split(/\//, $i->{value}))[-1];
+        push @uris, $uri;
+    }
+    my $map = $site->categories->by_uri(\@uris)->full_uri_name_mapping_hashref;
+    foreach my $i (@$list) {
+        if (my $label = $map->{$i->{value}}) {
+            $i->{label} = $label;
         }
     }
 }
