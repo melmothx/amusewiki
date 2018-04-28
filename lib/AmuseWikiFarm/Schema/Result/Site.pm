@@ -898,6 +898,7 @@ use AmuseWikiFarm::Utils::CgitSetup;
 use AmuseWikiFarm::Utils::LexiconMigration;
 use Regexp::Common qw/net/;
 use Path::Tiny ();
+use JSON::MaybeXS ();
 use AmuseWikiFarm::Utils::Paths ();
 use Try::Tiny;
 
@@ -1874,6 +1875,68 @@ sub generate_static_indexes {
     }
 }
 
+sub list_files_for_mirroring {
+    my $self = shift;
+    my $cache = Path::Tiny::path($self->mirror_list_file);
+    my $list;
+    try {
+        $list = JSON::MaybeXS::decode_json($cache->slurp)
+    } catch {
+        log_warn { "Failed to read cached mirror list $cache $_, refreshing" };
+        $list = $self->store_file_list_for_mirroring;
+    };
+    return $list;
+}
+
+sub store_file_list_for_mirroring {
+    my $self = shift;
+    my $file = Path::Tiny::path($self->mirror_list_file);
+    my $list = $self->get_file_list_for_mirroring;
+    log_debug { "Writing mirror list into cache $file" };
+    $file->spew(JSON::MaybeXS::encode_json($list));
+    return $list;
+}
+
+
+sub get_file_list_for_mirroring {
+    my ($self) = @_;
+    my $root = Path::Tiny::path($self->repo_root);
+    my @list = map { +{
+                       file => $_,
+                       ts => (stat($root->child($_)))[9] || '',
+                      } } ('index.html', 'titles.html', 'topics.html', 'authors.html' );
+    my $root_as_string = $root->stringify;
+    my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+    find({ wanted => sub {
+               my $filename = $_;
+               if (-f $filename) {
+                   my $ts = (stat($filename))[9];
+                   my ($volume, $dir, $file) = File::Spec->splitpath(File::Spec->abs2rel($filename,
+                                                                                         $root_as_string));
+                   my @fragments = grep { length($_) } (File::Spec->splitdir($dir), $file);
+
+                   Dlog_debug { "$filename: $_" } \@fragments;
+                   return if grep { !m{\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z} } @fragments;
+                   if ($fragments[-1] =~ m/\.([0-9a-zA-Z]+)\z/) {
+                       my $ext = $1;
+                       if ($mime->{$ext}) {
+                           push @list, {
+                                        file => join('/', @fragments),
+                                        ts => $ts,
+                                       };
+                       }
+                       else {
+                           log_info { "$filename denied, $ext not allowed" };
+                       }
+                   }
+               }
+           },
+           no_chdir => 1,
+         }, map { $_->stringify } $root->children(qr{\A[0-9a-zA-Z][0-9a-zA-Z_-]*\z}));
+    Dlog_debug { "List is $_" } \@list;
+    return \@list;
+}
+
 sub index_file {
     my ($self, $file, $logger) = @_;
     unless ($logger) {
@@ -2111,6 +2174,11 @@ sub locales_dir {
 sub lexicon_file {
     my $self = shift;
     return File::Spec->catfile($self->path_for_site_files, "lexicon.json");
+}
+
+sub mirror_list_file {
+    my $self = shift;
+    return File::Spec->catfile($self->path_for_site_files, "mirror.json");
 }
 
 has lexicon => (is => 'ro',

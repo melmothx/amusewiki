@@ -5,9 +5,6 @@ use namespace::autoclean;
 
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
-use File::Find;
-use File::Spec;
-use AmuseWikiFarm::Utils::Paths;
 
 BEGIN { extends 'Catalyst::Controller'; }
 
@@ -42,43 +39,7 @@ sub root :Chained('/site') :PathPart('') :CaptureArgs(0) {
 
 sub get_files :Chained('root') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    my $root = path($site->repo_root);
-
-    my @list = map { +{
-                       file => $_,
-                       ts => (stat($root->child($_)))[9] || '',
-                      } } ('index.html', 'titles.html', 'topics.html', 'authors.html' );
-    my $root_as_string = $root->stringify;
-    my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
-    find({ wanted => sub {
-               my $filename = $_;
-               if (-f $filename) {
-                   my $ts = (stat($filename))[9];
-                   my ($volume, $dir, $file) = File::Spec->splitpath(File::Spec->abs2rel($filename,
-                                                                                         $root_as_string));
-                   my @fragments = grep { length($_) } (File::Spec->splitdir($dir), $file);
-
-                   Dlog_debug { "$filename: $_" } \@fragments;
-                   return if grep { !m{\A[0-9a-zA-Z_-]+(\.[0-9a-zA-Z]+)*\z} } @fragments;
-                   if ($fragments[-1] =~ m/\.([0-9a-zA-Z]+)\z/) {
-                       my $ext = $1;
-                       if ($mime->{$ext}) {
-                           push @list, {
-                                        file => join('/', @fragments),
-                                        ts => $ts,
-                                       };
-                       }
-                       else {
-                           log_info { "$filename denied, $ext not allowed" };
-                       }
-                   }
-               }
-           },
-           no_chdir => 1,
-         }, map { $_->stringify } $root->children(qr{\A[0-9a-zA-Z][0-9a-zA-Z_-]*\z}));
-    Dlog_debug { "List is $_" } \@list;
-    $c->stash->{mirror_file_list} = \@list;
+    $c->stash(mirror_file_list => $c->stash->{site}->list_files_for_mirroring);
 }
 
 sub mirror_index :Chained('get_files') :PathPart('mirror.txt') :Args(0) {

@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 79;
+use Test::More tests => 84;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -15,6 +15,26 @@ use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
+
+$site->generate_static_indexes(sub { diag @_ });
+
+my $cache = path($site->mirror_list_file);
+if ($cache->exists) {
+    $cache->remove;
+}
+
+ok !$cache->exists;
+ok $site->list_files_for_mirroring;
+ok $cache->exists;
+$cache->remove;
+ok !$cache->exists;
+
+while (my $j = $site->jobs->dequeue) {
+    $j->dispatch_job;
+    diag $j->logs;
+}
+
+ok $cache->exists or die;
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
