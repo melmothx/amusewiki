@@ -81,6 +81,11 @@ sub is_deferred {
     }
 }
 
+sub is_published {
+    return !shift->is_deferred;
+}
+
+
 sub clone_args {
     my $self = shift;
     my %values;

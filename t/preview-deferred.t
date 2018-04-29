@@ -13,7 +13,7 @@ use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::More tests => 346;
-use Data::Dumper;
+use Data::Dumper::Concise;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
 use DateTime;
@@ -314,8 +314,12 @@ foreach my $page ('/library', '/category/author/pallino', '/category/topic/topic
     $mech->content_contains('deferred-text-2');
 }
 
-$site->titles->find({ uri => 'deferred-text-2',
-                      f_class => 'text' })->update({ teaser => '' });
+{
+    my $remove_teaser = $site->titles->find({ uri => 'deferred-text-2',
+                                              f_class => 'text' });
+    $remove_teaser->update({ teaser => '' });
+    $site->xapian->index_text($remove_teaser);
+}
 
 foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
     $mech->get_ok($page);
@@ -338,7 +342,7 @@ for (1..3) {
     foreach my $url ('deferred-text-3', @pub_urls) {
         $mech->content_contains($url);
     }
-    $mech->content_lacks('deferred-2');
+    $mech->content_lacks('deferred-text-2');
     my $search_results = from_json($mech->content);
     is (scalar(@$search_results), 3) or diag Dumper($search_results);
 }
@@ -350,11 +354,15 @@ $site->site_options->update_or_create({
                                        option_value => 0,
                                       });
 
+$site = $site->get_from_storage;
+
 foreach my $page ('/library', '/category/author/pallino', '/category/topic/topico') {
     $mech->get_ok($page);
     $mech->content_lacks('deferred-text-3');
     $mech->content_lacks('deferred-text-2');
 }
+
+$site->xapian_reindex_all;
 
 
 for (1..3) {
@@ -380,7 +388,7 @@ $mech->content_like(qr/Deferred #3.*Published #0.*Published #1/s, "Sorting appea
 $mech->get_ok('/library/deferred-text-3');
 $mech->get('/library/deferred-text-2');
 is $mech->status, 404, "deferred and no preview => 404";
-$site->xapian_reindex_all;
+$site->get_from_storage->xapian_reindex_all;
 
 $mech->get_ok('/search?query=published');
 $mech->content_contains('Read the whole text');
