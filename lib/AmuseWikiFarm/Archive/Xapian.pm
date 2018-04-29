@@ -354,8 +354,10 @@ sub index_text {
             # doc_name and keywords.
             $indexer->increase_termpos();
 
-            if (my $teaser = $title->teaser) {
-                $self->_index_html($indexer, $teaser);
+            foreach my $method (qw/title subtitle author teaser/) {
+                if (my $thing = $title->$method) {
+                    $self->_index_html($indexer, $thing);
+                }
             }
             my $file = Path::Tiny::path($title->filepath_for_ext('bare.html'));
             $self->_index_html($indexer, $file->slurp_utf8);

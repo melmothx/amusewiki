@@ -223,13 +223,17 @@ sub search :Chained('clean_root') :PathPart('search') :Args(0) {
                                         description => $c->loc('texts sorted by author'),
                                        );
     if ($query) {
-        my ($pager, @results) = eval { $xapian->search($query, $page) };
-        if ($pager && @results) {
+        my $res = $xapian->faceted_search(no_facets => 1,
+                                          page => $page,
+                                          locale => $c->stash->{current_locale_code},
+                                          query => $query);
+        if (my @results = @{$res->matches}) {
+            my $pager = $res->pager;
             $feed->search_result_pager($pager);
             $feed->search_result_terms($query);
             $self->add_pager($feed, $pager, $base, $c->loc('Search results'));
-            foreach my $res (@results) {
-                if (my $title = $site->titles->text_by_uri($res->{pagename})) {
+            foreach my $match (@results) {
+                if (my $title = $site->titles->text_by_uri($match->{pagedata}->{uri})) {
                     if (my $entry = $title->opds_entry) {
                         $feed->add_to_acquisitions(%$entry);
                     }
