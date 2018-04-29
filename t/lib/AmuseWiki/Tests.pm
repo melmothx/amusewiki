@@ -10,6 +10,8 @@ use Git::Wrapper;
 use Search::Xapian;
 use DateTime;
 use AmuseWikiFarm::Utils::Jobber;
+use AmuseWikiFarm::Archive::Xapian::Result::Text;
+use JSON::MaybeXS;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/create_site check_jobber_result fill_site
@@ -105,6 +107,8 @@ sub fill_site {
                                            f_suffix => "muse",
                                            f_class => 'text',
                                            status => 'published',
+                                           text_size => 1000,
+                                           text_qualification => 'article',
                                           });
         $title->set_categories([ $topic, $author ]);
         $title->set_monthly_archives([{ site_id => $site->id,
@@ -121,7 +125,8 @@ sub fill_site {
         my $doc = Search::Xapian::Document->new();
         $indexer->set_stemmer($xapian->xapian_stemmer);
         $indexer->set_document($doc);
-        $doc->set_data($uri);
+        my $abstract = AmuseWikiFarm::Archive::Xapian::Result::Text->new($title);
+        $doc->set_data(encode_json($abstract->clone_args));
         $doc->add_term('Q' . $uri);
         $indexer->index_text($uri, 1, 'S');
         $indexer->increase_termpos();
