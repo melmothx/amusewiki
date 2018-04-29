@@ -1802,6 +1802,7 @@ sub compile_and_index_files {
             push @inactive_cfs, $cf;
         }
     }
+    my (@muses, @images);
     foreach my $f (@$files) {
         my $file;
         if (ref($f)) {
@@ -1821,6 +1822,14 @@ sub compile_and_index_files {
         unless (muse_filepath_is_valid($relpath)) {
             die "$relpath doesn't appear a valid path!";
         }
+        if ($file =~ m/\.muse$/) {
+            push @muses, $file;
+        }
+        else {
+            push @images, $file;
+        }
+    }
+    foreach my $file (@images, @muses) {
         if ($file =~ m/\.muse$/) {
             # ensure that we properly migrated the PDFS to CF
             foreach my $cf (@active_cfs) {
