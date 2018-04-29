@@ -9,6 +9,7 @@ use JSON::MaybeXS;
 use AmuseWikiFarm::Log::Contextual;
 use Data::Page;
 use DateTime;
+use Try::Tiny;
 use namespace::clean;
 
 has multisite => (is => 'ro', isa => Bool,  default => sub { 0 } );
@@ -272,14 +273,17 @@ sub unpack_json_facets {
 sub texts {
     my ($self) = @_;
     return [] if $self->error;
-    if (my $site = $self->site) {
-        my @out = map { AmuseWikiFarm::Archive::Xapian::Result::Text->new($_->{pagedata}) } @{$self->matches};
-        return \@out;
+    my @out;
+    foreach my $match (@{$self->matches}) {
+        try {
+            my $obj = AmuseWikiFarm::Archive::Xapian::Result::Text->new($match->{pagedata});
+            push @out, $obj;
+        } catch {
+            my $err = $_;
+            Dlog_error { "Cannot construct object from $_ " } $match->{pagedata};
+        };
     }
-    else {
-        log_error { "Site object was not provided, cannot output a list of texts" };
-        return;
-    }
+    return \@out;
 }
 
 sub json_output {

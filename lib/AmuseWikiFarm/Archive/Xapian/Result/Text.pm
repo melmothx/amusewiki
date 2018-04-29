@@ -39,7 +39,7 @@ sub imported_methods {
     return @methods;
 }
 
-has [ __PACKAGE__->imported_methods ] => (is => 'ro');
+has [ __PACKAGE__->imported_methods ] => (is => 'ro', required => 1);
 
 sub BUILDARGS {
     my ($self, @args) = @_;

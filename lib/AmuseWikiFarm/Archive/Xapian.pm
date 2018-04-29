@@ -419,7 +419,7 @@ sub faceted_search {
         $self->_do_faceted_search(%args);
     } catch {
         my $err = $_;
-        Dlog_error { "$err calling faceted_search $args{query}" };
+        log_error { "$err calling faceted_search $args{query}" };
         AmuseWikiFarm::Archive::Xapian::Result->new(error => "$err");
     };
     return $res;
@@ -560,11 +560,18 @@ sub _do_faceted_search {
     my @matches;
     foreach my $item ($mset->items) {
         my $doc = $item->get_document;
-        push @matches, {
-                        pagedata => decode_json($doc->get_data),
-                        relevance => $item->get_percent,
-                        rank => $item->get_rank + 1,
-                       };
+        # log_debug { $doc->get_data };
+        try {
+            my $data = decode_json($doc->get_data);
+            push @matches, {
+                            pagedata => $data,
+                            relevance => $item->get_percent,
+                            rank => $item->get_rank + 1,
+                           };
+        } catch {
+            my $err = $_;
+            log_error { "Cannot get JSON data from $_" . $doc->get_data }
+        };
         log_debug { join(' ', map { '<' . ($doc->get_value($SLOTS{$_}{slot}) || '') . '>'  } keys %SLOTS) };
     }
     my %facets;

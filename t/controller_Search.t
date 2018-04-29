@@ -14,6 +14,9 @@ use Data::Dumper;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 my $site = $schema->resultset('Site')->find('0blog0');
+
+$site->xapian->delete_text_by_uri('this-uri-doesnt-exist');
+
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 {
@@ -28,8 +31,8 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 {
     $mech->get_ok('/search?query=a');
-    $mech->content_like(qr/second-test/, "Found a text");
-    $mech->get_ok('/search?query=a+title:"My first test"&fmt=json');
+    $mech->content_like(qr/second-test/, "Found a text") or die $mech->content;
+    $mech->get_ok('/search?query=title:"My first test"&fmt=json');
     diag $mech->content;
     $mech->content_like(qr/first-test/, "Found the text");
     $mech->content_unlike(qr/second-test/, "Other title filtered out");
@@ -67,7 +70,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
         my $doc = Search::Xapian::Document->new();
         $indexer->set_stemmer($xapian->xapian_stemmer);
         $indexer->set_document($doc);
-        $doc->set_data($uri);
+        $doc->set_data(qq[{ "uri":"$uri" }]);
         $doc->add_term('Q' . $uri);
         $indexer->index_text($uri, 1, 'S');
         $indexer->increase_termpos();
@@ -77,7 +80,7 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
     {
         my $xapian = $schema->resultset('Site')->find('0blog0')->xapian;
         my ($pager, @res) = $xapian->search("uri:$uri");
-        is ($res[0]{pagename}, $uri, "Found the uri");
+        is ($res[0]{pagedata}{uri}, $uri, "Found the uri");
     }
     for (1..2) {
         $mech->get_ok("/search?query=uri:first-test&fmt=json");
