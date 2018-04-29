@@ -54,7 +54,7 @@ for my $term ('XXXX', 'bla') {
     is($total->last, 1, "one result, of course");
     is($total->first, 1, "one result, of course");
     ok(@results == 1, "Found 1 result with $term");
-    is $results[0]{pagename}, "test", "Found the doc";
+    is $results[0]{pagedata}{uri}, "test", "Found the doc";
 }
 
 for my $removal ($target,
