@@ -311,3 +311,12 @@ a.remove-attachment-action-disabled, a.use-image-as-picture-disabled, a.use-imag
     color: #cdcdcd;
 }
 
+a.search-autocomplete-item {
+    color: black;
+    padding-left: 5px;
+}
+
+a.search-autocomplete-item:hover {
+    font-weight: bold;
+    text-decoration: none;
+}

@@ -8,7 +8,11 @@ use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf Str Bool/;
 use JSON::MaybeXS;
 use AmuseWikiFarm::Log::Contextual;
 use Data::Page;
+use DateTime;
+use Try::Tiny;
 use namespace::clean;
+
+has multisite => (is => 'ro', isa => Bool,  default => sub { 0 } );
 
 has pager => (is => 'ro',
               default => sub { Data::Page->new },
@@ -43,6 +47,10 @@ has show_deferred => (is => 'ro',
 has authors => (is => 'lazy');
 
 has topics => (is => 'lazy');
+
+has languages => (is => 'lazy');
+
+has hostnames => (is => 'lazy');
 
 has dates => (is => 'lazy');
 
@@ -92,6 +100,21 @@ sub facet_tokens {
                 facets => $self->num_pages,
                 name => 'filter_pages',
                });
+    if ($self->site && $self->site->multilanguage) {
+        push @out, {
+                    label => $lh->loc('Language'),
+                    facets => $self->languages,
+                    name => 'filter_language',
+                   };
+    }
+    if ($self->multisite) {
+        push @out, {
+                    label => $lh->loc('Site'),
+                    facets => $self->hostnames,
+                    name => 'filter_hostname',
+                   };
+    }
+
     my $selections = $self->selections;
     foreach my $block (@out) {
         foreach my $facet (@{$block->{facets}}) {
@@ -111,9 +134,15 @@ sub _build_authors {
 sub _add_category_labels {
     my ($self, $list) = @_;
     my $site = $self->site or return;
+    my @uris;
     foreach my $i (@$list) {
-        if (my $cat = $site->categories->by_full_uri($i->{value})) {
-            $i->{label} = $cat->name;
+        my $uri = (split(/\//, $i->{value}))[-1];
+        push @uris, $uri;
+    }
+    my $map = $site->categories->by_uri(\@uris)->full_uri_name_mapping_hashref;
+    foreach my $i (@$list) {
+        if (my $label = $map->{$i->{value}}) {
+            $i->{label} = $label;
         }
     }
 }
@@ -144,10 +173,20 @@ sub _build_dates {
 sub _build_pubdates {
     my $self = shift;
     my $list = $self->facets->{pubdate};
-    foreach my $i (@$list) {
-        $i->{label} = $i->{value};
+    my %years;
+    my $now = time();
+    foreach my $epoch (@$list) {
+        if ($now > $epoch->{value}) {
+            my $date = DateTime->from_epoch(epoch => $epoch->{value});
+            $years{$date->year} += $epoch->{count};
+        }
     }
-    return [ sort { _first_number($a->{value}) <=> _first_number($b->{value}) } @$list ];
+    my @out;
+    foreach my $y (keys %years) {
+        push @out, { value => $y, label => $y, count => $years{$y} };
+    }
+    Dlog_debug { "pudates became is $_" } \@out;
+    return \@out;
 }
 
 sub _build_num_pages {
@@ -157,6 +196,25 @@ sub _build_num_pages {
         $i->{label} = $i->{value};
     }
     return [ sort { _first_number($a->{value}) <=> _first_number($b->{value}) } @$list ];
+}
+
+sub _build_languages {
+    my $self = shift;
+    my $list = $self->facets->{language};
+    my $map = $self->site ? $self->site->known_langs : {};
+    foreach my $i (@$list) {
+        $i->{label} = $map->{$i->{value}} || $i->{value};
+    }
+    return [ sort { $a->{value} cmp $b->{value} } @$list ];
+}
+
+sub _build_hostnames {
+    my $self = shift;
+    my $list = $self->facets->{hostname};
+    foreach my $i (@$list) {
+        $i->{label} = $i->{value};
+    }
+    return [ sort { $a->{value} cmp $b->{value} } @$list ];
 }
 
 sub _first_number {
@@ -215,29 +273,17 @@ sub unpack_json_facets {
 sub texts {
     my ($self) = @_;
     return [] if $self->error;
-    if (my $site = $self->site) {
-        my @out;
-        foreach my $match (@{$self->matches}) {
-            if (my $text = $site->titles->texts_only->by_uri($match->{pagename})->single) {
-                if ($text->is_published or ($self->show_deferred && $text->can_be_indexed)) {
-                    push @out, $text;
-                }
-                else {
-                    log_error { $site->id . ' ' . $match->{pagename} . ' is obsolete, removing'  };
-                    $site->xapian->delete_text_by_uri($match->{pagename});
-                }
-            }
-            else {
-                log_error { $site->id . ' ' . $match->{pagename} . ' not found, removing'  };
-                $site->xapian->delete_text_by_uri($match->{pagename});
-            }
-        }
-        return \@out;
+    my @out;
+    foreach my $match (@{$self->matches}) {
+        try {
+            my $obj = AmuseWikiFarm::Archive::Xapian::Result::Text->new($match->{pagedata});
+            push @out, $obj;
+        } catch {
+            my $err = $_;
+            Dlog_error { "Cannot construct object from $_ " } $match->{pagedata};
+        };
     }
-    else {
-        log_error { "Site object was not provided, cannot output a list of texts" };
-        return;
-    }
+    return \@out;
 }
 
 sub json_output {

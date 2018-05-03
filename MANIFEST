@@ -511,6 +511,7 @@ lib/AmuseWikiFarm/Archive/Lexicon/Site.pm
 lib/AmuseWikiFarm/Archive/StaticIndexes.pm
 lib/AmuseWikiFarm/Archive/Xapian.pm
 lib/AmuseWikiFarm/Archive/Xapian/Result.pm
+lib/AmuseWikiFarm/Archive/Xapian/Result/Text.pm
 lib/AmuseWikiFarm/Controller/Admin.pm
 lib/AmuseWikiFarm/Controller/API.pm
 lib/AmuseWikiFarm/Controller/Archive.pm
@@ -983,6 +984,10 @@ root/static/js/jquery-1.11.1.js
 root/static/js/jquery-1.11.1.min.js
 root/static/js/jquery-ui-1.10.4.custom.js
 root/static/js/jquery-ui-1.10.4.custom.min.js
+root/static/js/jquery-ui-1.12.1.custom/AUTHORS.txt
+root/static/js/jquery-ui-1.12.1.custom/jquery-ui.js
+root/static/js/jquery-ui-1.12.1.custom/jquery-ui.min.js
+root/static/js/jquery-ui-1.12.1.custom/LICENSE.txt
 root/static/js/markitup/jquery.markitup.js
 root/static/js/markitup/sets/muse/images/bold.png
 root/static/js/markitup/sets/muse/images/code.png
@@ -1384,6 +1389,7 @@ t/test-repos/0test0/f/ft/first-test.muse
 t/test-repos/0test0/f/ft/testimage.png
 t/test-repos/0test0/s/st/second-test.muse
 t/test-repos/0test0/specials/index.muse
+t/test-repos/gulliver.txt
 t/texmf-files/logo-en.pdf
 t/texmf-files/logo-yu.pdf
 t/text-structure.t

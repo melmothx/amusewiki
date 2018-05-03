@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 140;
+use Test::More tests => 157;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -25,11 +25,24 @@ my $site_id = '0facets0';
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, $site_id);
 
+$site->update({ secure_site => 0 });
+$site->site_options->update_or_create({
+                                       option_name => 'show_preview_when_deferred',
+                                       option_value => 1,
+                                      });
+$site->site_options->update_or_create({
+                                       option_name => 'automatic_teaser',
+                                       option_value => 1,
+                                      });
+
+$site = $site->get_from_storage;
+
 {
     my $file = path($site->repo_root, qw/t t1 test1.muse/);
     $file->parent->mkpath;
     my $muse = <<'MUSE';
-#title First test
+#author Pinco *Pallino*
+#title First *test*
 #topics kuća, snijeg, škola, peć
 #authors pinkić palinić, kajo šempronijo
 #pubdate 2013-12-25
@@ -43,6 +56,20 @@ my $site = create_site($schema, $site_id);
 MUSE
     $file->spew_utf8($muse);
 }
+
+{
+    my $file = path($site->repo_root, qw/t t1 test-19.muse/);
+    $file->parent->mkpath;
+    my $muse = <<'MUSE';
+#title Gulliver's Travels
+#pubdate 2030-12-25
+#date 1726
+#lang en
+
+MUSE
+    $file->spew_utf8($muse, path('t', 'test-repos', 'gulliver.txt')->slurp_utf8);
+}
+
 
 
 {
@@ -125,11 +152,13 @@ LOREM
     $file->spew_utf8($muse, $lorem x 20);
 }
 
+ok $site->xapian->index_deferred or  die;
+
 $site->update_db_from_tree(sub { diag @_ });
 
 {
     my $res = $site->xapian->faceted_search(query => "is");
-    is $res->pager->total_entries, 3;
+    is $res->pager->total_entries, 4;
 }
 
 {
@@ -166,7 +195,7 @@ $site->update_db_from_tree(sub { diag @_ });
 {
     my $res = $site->xapian->faceted_search(query => q{year:"2001"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test3';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test3';
 }
 
 {
@@ -179,25 +208,25 @@ $site->update_db_from_tree(sub { diag @_ });
 {
     my $res = $site->xapian->faceted_search(query => q{title:"Third Test"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test3';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test3';
 }
 
 {
     my $res = $site->xapian->faceted_search(query => q{title:"second test kuća"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test2';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test2';
 }
 
 {
     my $res = $site->xapian->faceted_search(query => q{title:"kuća"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test2';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test2';
 }
 
 {
     my $res = $site->xapian->faceted_search(query => q{"Taj je tekst" AND "ne samo preživio"});
     is $res->pager->total_entries, 1;
-    is $res->matches->[0]->{pagename}, 'test3';
+    is $res->matches->[0]->{pagedata}->{uri}, 'test3';
 }
 
 {
@@ -227,6 +256,12 @@ $site->update_db_from_tree(sub { diag @_ });
 }
 
 {
+    my $res = $site->xapian->faceted_search(query => "is", filter_qualification => 'book');
+    is $res->pager->total_entries, 2 or diag Dumper($res);
+}
+
+
+{
     my $res = $site->xapian->faceted_search(query => "is", filter_pages => '1-5');
     is $res->pager->total_entries, 2 or diag Dumper($res);
 }
@@ -239,16 +274,16 @@ $site->update_db_from_tree(sub { diag @_ });
 
 {
     my $res = $site->xapian->faceted_search;
-    is $res->pager->total_entries, 3;
+    is $res->pager->total_entries, 4;
 }
 
 my %SORTINGS = $site->xapian->sortings;
 foreach my $sort_by (keys %SORTINGS) {
     my $res = $site->xapian->faceted_search(sort => $sort_by . '_asc');
-    is $res->pager->total_entries, 3;
+    is $res->pager->total_entries, 4;
     my $res1 = $site->xapian->faceted_search(sort => $sort_by . '_desc');
-    is $res1->pager->total_entries, 3;
-    is $res1->matches->[0]->{pagename}, $res->matches->[2]->{pagename};
+    is $res1->pager->total_entries, 4;
+    is $res1->matches->[0]->{pagedata}->{uri}, $res->matches->[-1]->{pagedata}->{uri}, "$sort_by OK";
 }
 
 {
@@ -301,4 +336,44 @@ foreach my $sort_by (keys %SORTINGS) {
             ok $v->{label};
         }
     }
+}
+
+{
+    my $res = $site->xapian->faceted_search(lh => $site->localizer,
+                                            site => $site,
+                                            locale => 'hr',
+                                            query => 'nepoznati tiskar'
+                                           );
+    is $res->pager->total_entries, 1;
+    is $res->json_output->[0]->{url}, "http://0facets0.amusewiki.org/library/test3";
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => 'inform the captain',
+                                            site => $site,
+                                           );
+    is $res->pager->total_entries, 1;
+    is $res->json_output->[0]->{url}, "http://0facets0.amusewiki.org/library/test-19";
+}
+
+{
+    $site->update({ multilanguage => '' });
+    my $res = $site->xapian->faceted_search(lh => $site->localizer,
+                                            site => $site,
+                                            query => '');
+    ok !scalar(grep { $_->{name} eq 'filter_language' } @{$res->facet_tokens});
+}
+
+{
+    $site->update({ multilanguage => 'en hr it' });
+    my $res = $site->xapian->faceted_search(lh => $site->localizer,
+                                            site => $site,
+                                            query => '');
+    ok scalar(grep { $_->{name} eq 'filter_language' } @{$res->facet_tokens});
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => 'first test');
+    is ($res->texts->[0]->title, "First <em>test</em>");
+    is ($res->texts->[0]->author, "Pinco <em>Pallino</em>");
 }

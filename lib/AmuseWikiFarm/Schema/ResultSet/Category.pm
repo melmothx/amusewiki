@@ -201,5 +201,14 @@ sub by_full_uri {
     }
 }
 
+sub full_uri_name_mapping_hashref {
+    my $self = shift;
+    my %map;
+    while (my $cat = $self->next) {
+        $map{$cat->full_uri} = $cat->name;
+    }
+    return \%map;
+}
+
 1;
 

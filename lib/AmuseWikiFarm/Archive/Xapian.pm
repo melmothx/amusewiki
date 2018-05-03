@@ -16,9 +16,10 @@ use Try::Tiny;
 use Path::Tiny ();
 use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
+use AmuseWikiFarm::Archive::Xapian::Result::Text;
 
 use constant {
-              AMW_XAPIAN_VERSION => 1,
+              AMW_XAPIAN_VERSION => 2,
               SLOT_AUTHOR => 0,
               SLOT_TOPIC => 1,
               SLOT_PUBDATE => 2,
@@ -28,6 +29,8 @@ use constant {
               SLOT_TITLE => 6,
               SLOT_PUBDATE_FULL  => 7,
               SLOT_PAGES_FULL  => 8,
+              SLOT_LANG => 9,
+              SLOT_HOSTNAME => 10,
               SORT_ASC => 0,
               SORT_DESC => 1,
              };
@@ -58,6 +61,14 @@ my %SLOTS = (
                       slot => SLOT_DATE,
                       prefix => 'XD',
                      },
+             language => {
+                          slot => SLOT_LANG,
+                          prefix => 'L',
+                         },
+             hostname => {
+                          slot => SLOT_HOSTNAME,
+                          prefix => 'H',
+                         },
             );
 
 sub sortings {
@@ -101,11 +112,6 @@ has basedir => (
                 required => 0,
                 isa => 'Str',
                );
-
-has xapian_db => (is => 'ro',
-                  isa => 'Object',
-                  lazy => 1,
-                  builder => '_build_xapian_db');
 
 has page => (
              is => 'rw',
@@ -174,7 +180,7 @@ sub read_specification_file {
 }
 
 
-sub _build_xapian_db {
+sub xapian_db {
     my $self = shift;
     my $db = $self->xapian_dir;
     unless (-d $db) {
@@ -252,6 +258,7 @@ sub index_text {
     # get and create
     my $database = $self->xapian_db;
     my $indexer = Search::Xapian::TermGenerator->new();
+    $indexer->set_database($database);
     # indexing with the correct stemmer is the right thing to do. No
     # point in stemming with the wrong locale. if i understand
     # correctly, the unstemmed version is indexed anyway.
@@ -268,7 +275,8 @@ sub index_text {
 
             # Set the document data to the uri so we can show it for matches.
             # this is treated as blob.
-            $doc->set_data($title->uri);
+            my $abstract = AmuseWikiFarm::Archive::Xapian::Result::Text->new($title);
+            $doc->set_data(encode_json($abstract->clone_args));
 
             # Unique ID.
             $doc->add_term($qterm);
@@ -307,9 +315,10 @@ sub index_text {
                 $doc->add_boolean_term('Y'  . $title->date_year);
             }
 
-            my $pub_year = $title->pubdate->year;
-            $doc->add_value($SLOTS{pubdate}{slot}, $pub_year);
-            $doc->add_boolean_term($SLOTS{pubdate}{prefix} .  $pub_year);
+            my $pub_date = $title->pubdate;
+            $doc->add_value($SLOTS{pubdate}{slot}, $pub_date->epoch);
+            $doc->add_value(SLOT_PUBDATE_FULL, Search::Xapian::sortable_serialise($title->pubdate->epoch));
+            $doc->add_boolean_term($SLOTS{pubdate}{prefix} .  $pub_date->year);
 
             $doc->add_value($SLOTS{pages}{slot}, $title->page_range);
             $doc->add_boolean_term($SLOTS{pages}{prefix} .  $title->page_range);
@@ -319,9 +328,19 @@ sub index_text {
                 $doc->add_boolean_term($SLOTS{qualification}{prefix} . $qual);
             }
 
+            if (my $lang = $title->lang) {
+                $doc->add_value($SLOTS{language}{slot}, $lang);
+                $doc->add_boolean_term($SLOTS{language}{prefix} . $lang);
+            }
+            if (my $site = $title->site) {
+                if (my $canonical = $site->canonical) {
+                    $doc->add_value($SLOTS{hostname}{slot}, $canonical);
+                    $doc->add_boolean_term($SLOTS{hostname}{prefix} . $canonical);
+                }
+            }
+
             # for sorting purposes
             $doc->add_value(SLOT_TITLE, Text::Unidecode::unidecode($title->list_title || $title->title));
-            $doc->add_value(SLOT_PUBDATE_FULL, Search::Xapian::sortable_serialise($title->pubdate->epoch));
             $doc->add_value(SLOT_PAGES_FULL, Search::Xapian::sortable_serialise($title->pages_estimated));
 
             if (my $source = $title->source) {
@@ -335,38 +354,13 @@ sub index_text {
             # doc_name and keywords.
             $indexer->increase_termpos();
 
-            my $filepath = $title->f_full_path_name;
-            open (my $fh, '<:encoding(UTF-8)', $filepath)
-              or die "Couldn't open $filepath: $!";
-            # slurp by paragraph
-            local $/ = "\n\n";
-            while (my $line = <$fh>) {
-                chomp $line;
-                $line =~ s/^\#\w+//gm; # delete the directives
-                $line =~ s/<.+?>//g; # delete the tags.
-                if ($line =~ /\S/) {
-                    $indexer->index_text($line);
-                    # don't abort here. We index each line twice, once
-                    # with the real string, once with the ascii
-                    # representation.
-
-                    # This technique is borrowed from elastic search,
-                    # which suggests to index the text twice, once
-                    # with the ascii representation, once with the
-                    # real string.
-
-                    # This way we have a match for both case.
-                    try {
-                        $indexer->index_text(Text::Unidecode::unidecode($line));
-                        # log_debug { Text::Unidecode::unidecode($line) };
-                    } catch {
-                        my $error = $_;
-                        log_warn { "Cannot unidecode $line: $_" } ;
-                    };
+            foreach my $method (qw/title subtitle author teaser/) {
+                if (my $thing = $title->$method) {
+                    $self->_index_html($indexer, $thing);
                 }
             }
-            close $fh;
-            # Add or the replace the document to the database.
+            my $file = Path::Tiny::path($title->filepath_for_ext('bare.html'));
+            $self->_index_html($indexer, $file->slurp_utf8);
             $database->replace_document_by_term($qterm, $doc);
         } catch {
             my $error = $_;
@@ -425,7 +419,7 @@ sub faceted_search {
         $self->_do_faceted_search(%args);
     } catch {
         my $err = $_;
-        Dlog_error { "$err calling faceted_search $args{query}" };
+        log_error { "$err calling faceted_search $args{query}" };
         AmuseWikiFarm::Archive::Xapian::Result->new(error => "$err");
     };
     return $res;
@@ -566,11 +560,18 @@ sub _do_faceted_search {
     my @matches;
     foreach my $item ($mset->items) {
         my $doc = $item->get_document;
-        push @matches, {
-                        pagename => $doc->get_data,
-                        relevance => $item->get_percent,
-                        rank => $item->get_rank + 1,
-                       };
+        # log_debug { $doc->get_data };
+        try {
+            my $data = decode_json($doc->get_data);
+            push @matches, {
+                            pagedata => $data,
+                            relevance => $item->get_percent,
+                            rank => $item->get_rank + 1,
+                           };
+        } catch {
+            my $err = $_;
+            log_error { "Cannot get JSON data from $_" . $doc->get_data }
+        };
         log_debug { join(' ', map { '<' . ($doc->get_value($SLOTS{$_}{slot}) || '') . '>'  } keys %SLOTS) };
     }
     my %facets;
@@ -610,6 +611,24 @@ sub database_is_up_to_date {
         }
     }
     return 0;
+}
+
+sub _index_html {
+    my ($self, $indexer, $html) = @_;
+    if (my $tree = HTML::TreeBuilder->new_from_content($html)) {
+        $tree->elementify;
+        my $text = $tree->as_text;
+        # log_debug { "Text is $text" };
+        $indexer->index_text($text);
+        try {
+            $indexer->index_text(Text::Unidecode::unidecode($text));
+            # log_debug { Text::Unidecode::unidecode($line) };
+        } catch {
+            my $error = $_;
+            log_warn { "Cannot unidecode $text: $_" } ;
+        };
+        $tree->delete;
+    }
 }
 
 
