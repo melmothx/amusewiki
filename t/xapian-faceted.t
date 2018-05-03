@@ -11,7 +11,7 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 155;
+use Test::More tests => 157;
 use Data::Dumper::Concise;
 use Path::Tiny;
 
@@ -41,7 +41,8 @@ $site = $site->get_from_storage;
     my $file = path($site->repo_root, qw/t t1 test1.muse/);
     $file->parent->mkpath;
     my $muse = <<'MUSE';
-#title First test
+#author Pinco *Pallino*
+#title First *test*
 #topics kuća, snijeg, škola, peć
 #authors pinkić palinić, kajo šempronijo
 #pubdate 2013-12-25
@@ -369,4 +370,10 @@ foreach my $sort_by (keys %SORTINGS) {
                                             site => $site,
                                             query => '');
     ok scalar(grep { $_->{name} eq 'filter_language' } @{$res->facet_tokens});
+}
+
+{
+    my $res = $site->xapian->faceted_search(query => 'first test');
+    is ($res->texts->[0]->title, "First <em>test</em>");
+    is ($res->texts->[0]->author, "Pinco <em>Pallino</em>");
 }
