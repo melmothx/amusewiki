@@ -4,7 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-2.203 2019-04-23
+2.210 2018-05-03
+
+ - Various fixes and optimizations on mirror routes and Xapian
+
+2.203 2018-04-23
 
  - Bump dependency on Text::Amuse 1.10 with improved anchors and
    restored compatibility with Emacs Muse
