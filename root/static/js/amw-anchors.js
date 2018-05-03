@@ -4,12 +4,16 @@ function add_flag_to_internal_anchors() {
         var scream = window.location.href.match(/\/action\/.*\/edit/) ? 1 : 0;
         var link = $(this).attr('id');
         var flag = $('<span>');
+        var parent_position = $(this).closest('div#thework').offset();
+        var position = $(this).offset();
+        var anchor = $('<a>');
+        var div = $('<div>');
+
         flag.attr('class', 'fa fa-flag amusewiki-internal-anchor-box');
         flag.css({ padding: '2px',
                    color: scream ? '#860000' : 'black',
                    opacity: scream ? 1 : 0.25,
                  });
-        var anchor = $('<a>');
         anchor.attr('href', '#' + link);
         // console.log(link);
         anchor.append(flag);
@@ -17,10 +21,7 @@ function add_flag_to_internal_anchors() {
             $(this).append(anchor);
             return;
         }
-        else {
-            var position = $(this).offset();
-            var parent_position = $(this).closest('div#thework').offset();
-            var div = $('<div>');
+        else if (parent_position) {
             div.attr('id', 'amusewiki-internal-anchor-box-' + i);
             div.attr('class', 'amusewiki-internal-anchor-box');
             div.append(anchor);
