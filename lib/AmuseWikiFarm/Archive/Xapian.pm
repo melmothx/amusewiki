@@ -354,7 +354,7 @@ sub index_text {
             # doc_name and keywords.
             $indexer->increase_termpos();
 
-            foreach my $method (qw/title subtitle author teaser/) {
+            foreach my $method (qw/title subtitle author teaser source notes/) {
                 if (my $thing = $title->$method) {
                     $self->_index_html($indexer, $thing);
                 }
