@@ -160,13 +160,17 @@
                  }
              });
          },
-         minLength: 3,
-         delay: 500,
+         minLength: 2,
+         delay: 200,
          select: function(event, ui) {
              window.location.href = ui.item.link;
          },
          position: { my: "left top", at: "left bottom" }
-     });
+     }).autocomplete( "instance" )._renderItem = function( ul, item ) {
+         return $("<li>")
+	         .append( $("<a>", { class: "search-autocomplete-item" }).html(item.label))
+			 .appendTo( ul );
+	 };
  });
  $(document).on('click', '.pagination li a', function(e) {
      e.preventDefault();
