@@ -641,6 +641,10 @@ lib/AmuseWikiFarm/View/Atom.pm
 lib/AmuseWikiFarm/View/HTML.pm
 lib/AmuseWikiFarm/View/JSON.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
+lib/AmuseWikiMeta.pm
+lib/AmuseWikiMeta/Controller/Root.pm
+lib/AmuseWikiMeta/Model/DB.pm
+lib/AmuseWikiMeta/View/JSON.pm
 lib/CatalystX/AmuseWiki/I18N.pm
 lib/CatalystX/Session/Store/AMW.pm
 LICENSE
@@ -658,6 +662,7 @@ mkits/resetpassword/body.txt
 mkits/resetpassword/manifest.json
 psgi/amusewiki-cgit.psgi
 psgi/amusewiki.psgi
+psgi/amusewikimeta.psgi
 README.mdwn
 root/docs/logo.png
 root/docs/manual.a4.pdf
@@ -1288,6 +1293,7 @@ t/links-in-headings.t
 t/mail.t
 t/mailer-locale-155.t
 t/manifest.t
+t/meta.t
 t/missing-image-crash-81.t
 t/mkits/test/body.txt
 t/mkits/test/manifest.json
