@@ -915,6 +915,7 @@ sub full_rebuild_uri {
     return $self->full_uri . '/rebuild';
 }
 
+# emulated on Xapian
 sub full_toc_uri {
     my $self = shift;
     return $self->full_uri . '/toc';

@@ -4,15 +4,18 @@ $(document).ready(function() {
     $('.awm-show-text-type-icon').removeAttr('title');
     $('*[data-poload]').each(function() {
         var e = $(this);
-        $.get(e.data('poload'), function(d) {
-            e.data("content", d);
-            e.popover({
-                html: 1,
-                trigger: 'hover',
-                container: 'body',
-                placement: 'bottom',
+        var toc = e.data('poload');
+        if (toc) {
+            $.get(toc, function(d) {
+                e.data("content", d);
+                e.popover({
+                    html: 1,
+                    trigger: 'hover',
+                    container: 'body',
+                    placement: 'bottom',
+                });
             });
-        });
+        }
     });
 });
 </script>

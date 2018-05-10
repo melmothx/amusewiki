@@ -85,6 +85,9 @@ sub is_published {
     return !shift->is_deferred;
 }
 
+sub full_toc_uri {
+    return shift->full_uri . '/toc';
+}
 
 sub clone_args {
     my $self = shift;
