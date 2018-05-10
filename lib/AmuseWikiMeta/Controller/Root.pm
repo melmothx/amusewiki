@@ -1,11 +1,16 @@
+use utf8;
 package AmuseWikiMeta::Controller::Root;
 use Moose;
 
 use namespace::autoclean;
+
 BEGIN { extends 'Catalyst::Controller' }
 
 use AmuseWikiFarm::Log::Contextual;
-
+use Path::Tiny;
+use IO::File;
+use AmuseWikiFarm::Utils::Paths;
+use constant AMW_META_ROOT => $ENV{AMW_META_ROOT};
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -17,10 +22,39 @@ sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
 
-sub home :Chained('root') :PathPart('') :Args(0) {
+sub search :Chained('root') :PathPart('search') :Args(0) {
     my ($self, $c) = @_;
     $c->stash->{json}->{sites} = [ map { $_->id } $c->model('DB::Site')->search({ mode => { '!=' => 'private' } }) ];
 }
+
+sub pages :Chained('root') :PathPart('') :Args {
+    my ($self, $c, $page) = @_;
+    $page ||= 'index.html';
+    log_debug { "Asked $page" };
+    if (AMW_META_ROOT and $page =~ m/\A[a-z][a-z\.]+\.(html|js|css|ico)\z/) {
+        my $ext = $1;
+        my $mime = AmuseWikiFarm::Utils::Paths->served_mime_types->{$ext};
+        my $file = path(AMW_META_ROOT, $page);
+        if (-f $file) {
+            log_debug { "Found $file" };
+            $c->response->content_type($mime);
+            my $fh = IO::File->new("$file", 'r');
+            Plack::Util::set_io_path($fh, "$file");
+            $c->response->body($fh);
+            return;
+        }
+        else {
+            log_debug { "$file Not found" };
+        }
+    }
+    else {
+        $c->response->content_type('text/plain');
+        $c->response->body('Not found');
+        $c->response->status(404);
+    }
+      
+}
+                
 
 sub end : ActionClass('RenderView') {
     my ($self, $c) = @_;

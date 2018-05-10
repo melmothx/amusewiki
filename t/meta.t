@@ -4,7 +4,10 @@ use utf8;
 use strict;
 use warnings;
 
-BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
+BEGIN {
+    $ENV{DBIX_CONFIG_DIR} = "t";
+    $ENV{AMW_META_ROOT} = "doc/meta-search";
+};
 use File::Spec::Functions qw/catdir/;
 use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
@@ -18,8 +21,13 @@ use Test::WWW::Mechanize::Catalyst;
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiMeta');
 
-$mech->get_ok('/');
+$mech->get_ok('/search');
 my $data = from_json($mech->content);
 ok $data;
+
+diag Dumper($data);
+
+$mech->get_ok('/');
+$mech->content_contains('<!doctype html>', "Static pages served");
 
 done_testing;
