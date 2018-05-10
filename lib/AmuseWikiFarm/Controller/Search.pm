@@ -62,8 +62,6 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
                                           no_filters => 1,
                                           locale => $c->stash->{current_locale_code},
                                           lh => $c->stash->{lh},
-                                          # collect all the facets: set check_at_least to all the docs
-                                          check_at_least => $site->titles->count,
                                           site => $site);
     if (!$c->user_exists and $site->show_preview_when_deferred) {
         $c->stash(no_full_text_if_not_published => 1);

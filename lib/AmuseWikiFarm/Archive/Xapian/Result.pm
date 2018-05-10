@@ -65,62 +65,72 @@ has error => (is => 'ro', isa => Maybe[Str]);
 sub facet_tokens {
     my $self = shift;
     return [] if $self->error;
-    my $lh = $self->lh;
-    unless ($lh) {
+    my $loc;
+    if (my $lh = $self->lh) {
+        $loc = sub { return $lh->loc(@_) };
+    }
+    elsif ($self->multisite) {
+        # no loc if not passed
+        $loc = sub { return @_ };
+    }
+    else {
         log_error { "Facet tokens called without the LH token, aborting" };
         return;
     }
-    my @out = ({
-                label => $lh->loc('Topics'),
+    my @out;
+    # topics and authors depend on the locale and on the origin site,
+    # so if in a mixed environment it doesn't help much
+    push @out, {
+                label => $loc->('Topics'),
                 facets => $self->topics,
                 name => 'filter_topic',
-               },
-               {
-                label => $lh->loc('Authors'),
+               } unless $self->multisite;
+    push @out, {
+                label => $loc->('Authors'),
                 facets => $self->authors,
                 name => 'filter_author',
-               },
-               {
-                label => $lh->loc('Date'),
+               } unless $self->multisite;
+    push @out, {
+                label => $loc->('Date'),
                 facets => $self->dates,
                 name => 'filter_date',
                },
                {
-                label => $lh->loc('Document type'),
+                label => $loc->('Document type'),
                 facets => $self->text_types,
                 name => 'filter_qualification',
                },
                {
-                label => $lh->loc('Published on this site'),
+                label => $loc->('Publication date'),
                 facets => $self->pubdates,
                 name => 'filter_pubdate',
                },
                {
-                label => $lh->loc('Number of pages'),
+                label => $loc->('Number of pages'),
                 facets => $self->num_pages,
                 name => 'filter_pages',
-               });
-    if ($self->site && $self->site->multilanguage) {
+               };
+    if (($self->site && $self->site->multilanguage) or $self->multisite) {
         push @out, {
-                    label => $lh->loc('Language'),
+                    label => $loc->('Language'),
                     facets => $self->languages,
                     name => 'filter_language',
                    };
     }
     if ($self->multisite) {
         push @out, {
-                    label => $lh->loc('Site'),
+                    label => $loc->('Site'),
                     facets => $self->hostnames,
                     name => 'filter_hostname',
                    };
     }
-
     my $selections = $self->selections;
     foreach my $block (@out) {
         foreach my $facet (@{$block->{facets}}) {
             $facet->{active} = $selections->{$block->{name}}->{$facet->{value}};
         }
     }
+    undef $loc; # shouldn't be needed, but still...
     return \@out;
 }
 
@@ -182,7 +192,7 @@ sub _build_pubdates {
         }
     }
     my @out;
-    foreach my $y (keys %years) {
+    foreach my $y (sort keys %years) {
         push @out, { value => $y, label => $y, count => $years{$y} };
     }
     Dlog_debug { "pudates became is $_" } \@out;

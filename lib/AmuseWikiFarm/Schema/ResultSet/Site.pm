@@ -20,6 +20,12 @@ Return the active sites, ordered by id and with vhosts prefetched.
 
 =cut
 
+sub public_only {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.mode" => [qw/blog modwiki openwiki/] });
+}
+
 sub active_only {
     my ($self) = @_;
     my $me = $self->current_source_alias;

@@ -40,34 +40,42 @@ my %SLOTS = (
              author => {
                         slot => SLOT_AUTHOR,
                         prefix => 'XA',
+                        singlesite => 1,
                        },
              topic => {
                        slot => SLOT_TOPIC,
-                       prefix => 'XK'
+                       prefix => 'XK',
+                       singlesite => 1,
                       },
              pubdate => {
                          slot => SLOT_PUBDATE,
                          prefix => 'XP',
+                         singlesite => 0,
                         },
              qualification => {
                                slot => SLOT_QUALIFICATION,
                                prefix => 'XQ',
+                               singlesite => 0,
                               },
              pages => {
                        slot => SLOT_PAGES,
                        prefix => 'XL',
+                       singlesite => 0,
                       },
              date => {
                       slot => SLOT_DATE,
                       prefix => 'XD',
+                      singlesite => 0,
                      },
              language => {
                           slot => SLOT_LANG,
                           prefix => 'L',
+                          singlesite => 0,
                          },
              hostname => {
                           slot => SLOT_HOSTNAME,
                           prefix => 'H',
+                          singlesite => 0,
                          },
             );
 
@@ -88,8 +96,15 @@ AmuseWikiFarm::Archive::Xapian - amusewiki Xapian model
 =cut
 
 has code => (is => 'ro',
-             required => 1,
+             required => 0,
              isa => 'Str');
+
+has multisite => (is => 'ro',
+                  isa => 'Bool',
+                  default => sub { 0 });
+
+has stub_database => (is => 'ro',
+                      isa => 'Str');
 
 has locale => (
                is => 'ro',
@@ -137,7 +152,7 @@ sub _path_tokens {
         push @path, $root;
     }
     push @path, 'xapian';
-    my $code = $self->code;
+    my $code = $self->code or die "site code not provided, cannot guess the path";
     if ($self->auxiliary) {
         $code .= $self->temporary_suffix;
     }
@@ -147,7 +162,12 @@ sub _path_tokens {
 
 sub xapian_dir {
     my $self = shift;
-    return File::Spec->catdir($self->_path_tokens);
+    if (my $stub = $self->stub_database) {
+        return $stub;
+    }
+    else {
+        return File::Spec->catdir($self->_path_tokens);
+    }
 }
 
 sub xapian_backup_dir {
@@ -516,7 +536,9 @@ sub _do_faceted_search {
 
     my %spies;
     unless ($args{no_facets}) {
+      FACET:
         foreach my $slot (keys %SLOTS) {
+            next FACET if $self->multisite && $SLOTS{$slot}{singlesite};
             my $spy = try { Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot}) };
             if ($spy) {
                 $spies{$slot} = Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot});
@@ -550,7 +572,9 @@ sub _do_faceted_search {
         }
     }
 
-    my $mset = $enquire->get_mset($start, $pagesize, $args{check_at_least} || $pagesize);
+    # if no facets required, we don't need to scan everything.
+    my $mset = $enquire->get_mset($start, $pagesize, $args{no_facets} ? $pagesize : $database->get_doccount);
+    log_debug { "Total document is " . $database->get_doccount };
     # pager
     my $pager = Data::Page->new;
     $pager->total_entries($mset->get_matches_estimated);
@@ -597,6 +621,7 @@ sub _do_faceted_search {
                                                        matches => \@matches,
                                                        facets => \%facets,
                                                        pager => $pager,
+                                                       multisite => $self->multisite,
                                                        site => $args{site},
                                                        lh => $args{lh},
                                                        show_deferred => $self->index_deferred,

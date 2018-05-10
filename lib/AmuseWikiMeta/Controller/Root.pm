@@ -20,11 +20,7 @@ __PACKAGE__->config(namespace => '');
 
 sub root :Chained('/') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
-}
-
-sub search :Chained('root') :PathPart('search') :Args(0) {
-    my ($self, $c) = @_;
-    $c->stash->{json}->{sites} = [ map { $_->id } $c->model('DB::Site')->search({ mode => { '!=' => 'private' } }) ];
+    $c->stash(amw_meta_root => AMW_META_ROOT);
 }
 
 sub pages :Chained('root') :PathPart('') :Args {
