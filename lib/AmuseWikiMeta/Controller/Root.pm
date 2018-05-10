@@ -47,12 +47,9 @@ sub pages :Chained('root') :PathPart('') :Args {
             log_debug { "$file Not found" };
         }
     }
-    else {
-        $c->response->content_type('text/plain');
-        $c->response->body('Not found');
-        $c->response->status(404);
-    }
-      
+    $c->response->content_type('text/plain');
+    $c->response->body('Not found');
+    $c->response->status(404);
 }
                 
 

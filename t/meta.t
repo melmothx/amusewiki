@@ -30,4 +30,7 @@ diag Dumper($data);
 $mech->get_ok('/');
 $mech->content_contains('<!doctype html>', "Static pages served");
 
+$mech->get('/blablabla');
+is $mech->status, 404;
+
 done_testing;
