@@ -1,5 +1,6 @@
 function get_search_response() {
-    $.post('/search', $('#search-page-form').serialize(), function (data) {
+    var params = $('#search-page-form').serialize();
+    $.get('/search?' + params, function (data) {
         render_template(data);
     });
 }
@@ -12,5 +13,12 @@ function render_template(data) {
 }
 
 $(document).ready(function () {
+    $('#search-page-form').submit(function(event) {
+        event.preventDefault();
+        get_search_response();
+    });
+});
+
+$(document).on('change', '.xapian-filter', function(event) {
     get_search_response();
 });
