@@ -85,6 +85,7 @@ sub is_published {
     return !shift->is_deferred;
 }
 
+# this should be stored in xapian
 sub full_toc_uri {
     return shift->full_uri . '/toc';
 }

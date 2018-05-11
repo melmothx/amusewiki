@@ -19,12 +19,16 @@ sub search :Chained('/root') :PathPart('search') :Args(0) {
                                                      stub_database => "$stub",
                                                     );
     my %params = %{$c->req->params};
-    my $res = $xapian->faceted_search(%params);
+    my $res = $xapian->faceted_search(%params,
+                                      filters => 1,
+                                      facets => 1,
+                                     );
+    $res->sites_map({ map { $_->id => $_->canonical_url } $c->model('DB::Site')->public_only });
     my $pager = $res->pager;
+
     $c->stash(json => {
-                       matches => $res->matches,
+                       matches => $res->json_output,
                        filters => $res->facet_tokens,
-                       sites => { map { $_->id => $_->canonical_url } $c->model('DB::Site')->public_only },
                        pager => { map { $_ => $pager->$_ } (qw/total_entries entries_per_page
                                                                first_page current_page last_page
                                                               /) },

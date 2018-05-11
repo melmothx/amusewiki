@@ -302,15 +302,30 @@ sub texts {
 sub json_output {
     my $self = shift;
     my @out;
-    if (my $texts = $self->texts) {
-        my $base = $self->site->canonical_url;
-        @out = map { +{
-                       title => $_->title,
-                       author => $_->author,
-                       url => $base . $_->full_uri,
-                       text_type => $_->text_qualification,
-                       pages => $_->pages_estimated,
-                      } } @$texts;
+    return \@out if $self->error;
+    my $sites_map = $self->sites_map;
+    my $site = $self->site;
+    if (!$sites_map and $site) {
+        $sites_map = { $site->id => $site->canonical_url };
+    }
+    foreach my $match (@{$self->matches}) {
+        my %text = %{$match->{pagedata}};
+        $text{rank} = $match->{rank};
+        $text{relevance} = $match->{relevance};
+        if ($sites_map) {
+            my $site_url = $sites_map->{$text{site_id}};
+            foreach my $uri (grep { /_uri$/ } keys %text) {
+                if ($text{$uri}) {
+                    $text{$uri} = $site_url . $text{$uri};
+                }
+            }
+            # back compat
+            $text{url} = $text{full_uri};
+            $text{text_type} = $text{text_qualification};
+            $text{page} = $text{pages_estimate};
+            $text{site_url} = $site_url;
+        }
+        push @out, \%text;
     }
     return \@out;
 }

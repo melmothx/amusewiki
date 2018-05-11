@@ -32,9 +32,9 @@
       </div>
     </nav>    
     <form id="search-page-form">
-      <div class="container text-center">
-        <h1 id="top" class="p-3 m-3">Search</h1>
-        <p class="lead mb-3">
+      <div class="container">
+        <h1 id="top" class="p-3 m-3 text-center">Search</h1>
+        <p class="lead mb-3 text-center">
           Search all the libraries residing on this server!
         </p>
         <div id="results">
@@ -53,29 +53,57 @@
     <script src="/jquery.mustache.js"></script>
     <script src="/search.js"></script>
     <script id="template" type="x-tmpl-mustache">
-      <ol>
-        {{#matches}}
-        {{#pagedata}}
-        <li>
-          <a href="{{full_uri}}">{{{title}}}
-            {{#author}}
-            — {{{author}}}
-            {{/author}}
-            ({{lang}})
-          </a>
-        </li>
-        {{/pagedata}}
-        {{/matches}}
-      </ol>
-      <div>
-        {{#filters}}
-        <div>
-          {{label}} {{name}}
-          {{#facets}}
-          {{value}} {{count}} {{#active}}ACTIVE{{/active}} ({{label}})
-          {{/facets}}
+      <div class="row">
+        <div class="col-3">
+          {{#filters}}
+          <div id="facet-box-{{name}}">
+            <h6>{{label}}</h6>
+            {{#facets}}
+            <div class="checkbox">
+              <label>
+                <input class="xapian-filter" type="checkbox"
+                       name="{{name}}" value="{{value}}"
+                       {{#active}}checked="checked"{{/active}} />
+                {{label}} <em>({{count}})</em>
+              </label>
+            </div>
+            {{/facets}}
+          </div>
+          {{/filters}}
         </div>
-        {{/filters}}
+        <div class="col">
+          {{#matches}}
+          <div class="card m-1">
+            <div class="card-body">
+              {{#cover_small_uri}}
+              <a href="{{full_uri}}">
+                <img src="{{cover_small_uri}}" alt="cover" class="img-thumbnail float-right m-2"/>
+              </a>
+              {{/cover_small_uri}}
+              <p class="lead">
+                <a href="{{full_uri}}">
+                  {{{title}}}
+                  {{#author}}
+                  — {{{author}}}
+                  {{/author}}
+                </a>
+                ({{lang}})
+                {{#subtitle}}
+                <br>{{{subtitle}}}
+                {{/subtitle}}
+
+              </p>
+              {{#teaser}}
+              <div>{{{teaser}}}</div>
+              {{/teaser}}
+              <div class="mt-2">
+                <small>{{text_qualification}}, {{pages_estimated}}pp.</small>
+                <small><a href="{{site_url}}">{{site_url}}</a></small>
+              </div>
+            </div>
+          </div>
+          {{/matches}}
+        </div>
       </div>
     </script>
   </body>
