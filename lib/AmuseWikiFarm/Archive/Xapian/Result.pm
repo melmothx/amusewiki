@@ -45,6 +45,9 @@ has lh => (is => 'rw',
 has sites_map => (is => 'rw',
                   isa => Maybe[HashRef]);
 
+has languages_map => (is => 'rw',
+                      isa => Maybe[HashRef]);
+
 has show_deferred => (is => 'ro',
                       isa => Bool,
                       default => sub { 0 });
@@ -216,7 +219,16 @@ sub _build_num_pages {
 sub _build_languages {
     my $self = shift;
     my $list = $self->facets->{language};
-    my $map = $self->site ? $self->site->known_langs : {};
+    my $map;
+    if ($self->languages_map) {
+        $map = $self->languages_map;
+    }
+    elsif ($self->site) {
+        $map = $self->site->known_langs;
+    }
+    else {
+        $map = {};
+    }
     foreach my $i (@$list) {
         $i->{label} = $map->{$i->{value}} || $i->{value};
     }
