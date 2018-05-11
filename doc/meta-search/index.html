@@ -71,6 +71,14 @@
     <script id="template" type="x-tmpl-mustache">
       <div class="row">
         <div class="col-3">
+          {{#filters_needed}}
+          <div id="facet-box-sorting-dropdown" class="form-group">
+            <select class="form-control xapian-filter" name="sort" id="xapian-sort">
+              {{#sorter}}
+              <option value="{{value}}" {{#active}}selected="selected"{{/active}}>{{label}}</option>
+              {{/sorter}}
+            </select>
+          </div>
           {{#filters}}
           <div id="facet-box-{{name}}">
             <h6>{{label}}</h6>
@@ -86,6 +94,7 @@
             {{/facets}}
           </div>
           {{/filters}}
+          {{/filters_needed}}
         </div>
         <div class="col">
           {{#matches}}
@@ -115,6 +124,8 @@
               <div class="mt-2">
                 <small>{{text_qualification}}, {{pages_estimated}}pp.</small>
                 <small><a href="{{site_url}}">{{site_url}}</a></small>
+                <small>{{pubdate_iso}}</small>
+                <small>{{relevance}}% relevant</small>
               </div>
             </div>
           </div>

@@ -336,6 +336,9 @@ sub json_output {
             $text{text_type} = $text{text_qualification};
             $text{page} = $text{pages_estimate};
             $text{site_url} = $site_url;
+            if ($text{pubdate_epoch} and $text{pubdate_epoch} < time()) {
+                $text{pubdate_iso} = DateTime->from_epoch(epoch => $text{pubdate_epoch})->ymd;
+            }
         }
         push @out, \%text;
     }

@@ -38,11 +38,34 @@ sub search :Chained('/root') :PathPart('search') :Args(0) {
 
     my $pager = AmuseWikiFarm::Utils::Paginator::create_pager($res->pager, sub { $_[0] });
 
+    my $facets = $baseres->facet_tokens;
+    my $has_facets = 0;
+    foreach my $facet (@$facets) {
+        if (@{$facet->{facets}}) {
+            $has_facets = 1;
+            last;
+        }
+    }
+    my @sorter = ({ value => "", label => "By relevance" },
+                  { value => "title_asc", label => "By title A-Z" },
+                  { value => "title_desc", label => "By title Z-A" },
+                  { value => "pubdate_asc", label => "Older first" },
+                  { value => "pubdate_desc", label => "Newer first" },
+                  { value => "pages_asc", label => "By number of pages, ascending" },
+                  { value => "pages_desc", label => "By number of pages, descending" });
+    my $selected = $params{sort} || "";
+    foreach my $sort (@sorter) {
+        if ($selected eq $sort->{value}) {
+            $sort->{active} = 1;
+        }
+    }
     $c->stash(json => {
                        matches => $res->json_output,
-                       filters => $baseres->facet_tokens,
+                       filters => $facets,
+                       filters_needed => $has_facets,
                        pager_needed => $pager->needed,
                        pager => $pager->items,
+                       sorter => \@sorter,
                       });
     Dlog_debug { "json is $_" } $c->stash->{json};
 }
