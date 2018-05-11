@@ -22,17 +22,21 @@ sub search :Chained('/root') :PathPart('search') :Args(0) {
 
     my @sites = $c->model('DB::Site')->public_only;
     my $res = $xapian->faceted_search(%params,
+                                      facets => 0,
                                       filters => 1,
-                                      facets => 1,
                                      );
     $res->sites_map({ map { $_->id => $_->canonical_url } @sites });
     $res->languages_map($sites[0]->known_langs);
+
+    my $baseres = $xapian->faceted_search(%params,
+                                          filters => 0,
+                                          facets => 1);
 
     my $pager = $res->pager;
 
     $c->stash(json => {
                        matches => $res->json_output,
-                       filters => $res->facet_tokens,
+                       filters => $baseres->facet_tokens,
                        pager => { map { $_ => $pager->$_ } (qw/total_entries entries_per_page
                                                                first_page current_page last_page
                                                               /) },
