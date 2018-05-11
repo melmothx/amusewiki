@@ -72,7 +72,7 @@
         <div class="col-3">
           {{#filters_needed}}
           <div id="facet-box-sorting-dropdown" class="form-group">
-            <select class="form-control xapian-filter" name="sort" id="xapian-sort">
+            <select class="custom-select xapian-filter" name="sort" id="xapian-sort">
               {{#sorter}}
               <option value="{{value}}" {{#active}}selected="selected"{{/active}}>{{label}}</option>
               {{/sorter}}
@@ -84,7 +84,7 @@
             {{#facets}}
             <div class="checkbox">
               <label>
-                <input class="xapian-filter" type="checkbox"
+                <input class="xapian-filter-checkbox xapian-filter" type="checkbox"
                        name="{{name}}" value="{{value}}"
                        {{#active}}checked="checked"{{/active}} />
                 {{label}} <em>({{count}})</em>
