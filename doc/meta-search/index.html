@@ -31,20 +31,52 @@
         </ul>
       </div>
     </nav>    
-    <div class="container text-center">
-      <h1 id="top" class="p-3 m-3">Search</h1>
-      <p class="lead mb-3">
-        Search all the libraries residing on this server!
-      </p>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+    <form id="search-page-form">
+      <div class="container text-center">
+        <h1 id="top" class="p-3 m-3">Search</h1>
+        <p class="lead mb-3">
+          Search all the libraries residing on this server!
+        </p>
+        <div id="results">
+        </div>
+      </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
             integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
             crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
             integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-            crossorigin="anonymous"></script>    
+            crossorigin="anonymous"></script>
+    <script src="/jquery.mustache.js"></script>
+    <script src="/search.js"></script>
+    <script id="template" type="x-tmpl-mustache">
+      <ol>
+        {{#matches}}
+        {{#pagedata}}
+        <li>
+          <a href="{{full_uri}}">{{{title}}}
+            {{#author}}
+            — {{{author}}}
+            {{/author}}
+            ({{lang}})
+          </a>
+        </li>
+        {{/pagedata}}
+        {{/matches}}
+      </ol>
+      <div>
+        {{#filters}}
+        <div>
+          {{label}} {{name}}
+          {{#facets}}
+          {{value}} {{count}} {{#active}}ACTIVE{{/active}} ({{label}})
+          {{/facets}}
+        </div>
+        {{/filters}}
+      </div>
+    </script>
   </body>
 </html>

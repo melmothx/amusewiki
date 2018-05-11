@@ -23,7 +23,7 @@ sub search :Chained('/root') :PathPart('search') :Args(0) {
     my $pager = $res->pager;
     $c->stash(json => {
                        matches => $res->matches,
-                       facets => $res->facet_tokens,
+                       filters => $res->facet_tokens,
                        sites => { map { $_->id => $_->canonical_url } $c->model('DB::Site')->public_only },
                        pager => { map { $_ => $pager->$_ } (qw/total_entries entries_per_page
                                                                first_page current_page last_page
