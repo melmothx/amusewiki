@@ -36,6 +36,8 @@ sub pages :Chained('root') :PathPart('') :Args {
             $c->response->content_type($mime);
             my $fh = IO::File->new("$file", 'r');
             Plack::Util::set_io_path($fh, "$file");
+            $c->response->headers->content_length(-s $file);
+            $c->response->headers->last_modified((stat($file))[9]);
             $c->response->body($fh);
             return;
         }
