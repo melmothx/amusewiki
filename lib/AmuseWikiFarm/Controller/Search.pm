@@ -42,8 +42,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     Dlog_debug { "Searching with these parameters $_" } \%params;
 
     my $res = $xapian->faceted_search(%params,
-                                      no_facets => 1,
-                                      no_filters => 0,
+                                      facets => 0,
+                                      filters => 1,
                                       locale => $c->stash->{current_locale_code},
                                      );
     $res->lh($lh);
@@ -63,7 +63,8 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     }
 
     my $baseres = $xapian->faceted_search(%params,
-                                          no_filters => 1,
+                                          filters => 0,
+                                          facets => 1,
                                           locale => $c->stash->{current_locale_code},
                                          );
     $baseres->lh($lh);

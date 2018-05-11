@@ -427,7 +427,8 @@ sub search {
     my ($self, $query_string, $page, $locale) = @_;
     my $res = $self->faceted_search(
                                     locale => $locale,
-                                    no_facets => 1,
+                                    facets => 0,
+                                    filters => 1,
                                     page => $page,
                                     query => $query_string,
                                    );
@@ -518,7 +519,7 @@ sub _do_faceted_search {
             foreach my $active (@checked) {
                 $actives{"filter_${filter}"}{$active} = 1;
             }
-            next FILTER if $args{no_filters};
+            next FILTER unless $args{filters};
             if (@checked) {
                 my $subquery = Search::Xapian::Query->new(+OP_OR,
                                                           map { Search::Xapian::Query
@@ -536,7 +537,7 @@ sub _do_faceted_search {
     my $enquire = $database->enquire($query);
 
     my %spies;
-    unless ($args{no_facets}) {
+    if ($args{facets}) {
       FACET:
         foreach my $slot (keys %SLOTS) {
             next FACET if $self->multisite && $SLOTS{$slot}{singlesite};
@@ -574,7 +575,7 @@ sub _do_faceted_search {
     }
 
     # if no facets required, we don't need to scan everything.
-    my $mset = $enquire->get_mset($start, $pagesize, $args{no_facets} ? $pagesize : $database->get_doccount);
+    my $mset = $enquire->get_mset($start, $pagesize, $args{facets} ? $database->get_doccount : $pagesize);
     log_debug { "Total document is " . $database->get_doccount };
     # pager
     my $pager = Data::Page->new;
