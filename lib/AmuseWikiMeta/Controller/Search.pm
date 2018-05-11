@@ -31,10 +31,12 @@ sub search :Chained('/root') :PathPart('search') :Args(0) {
                                           filters => 0,
                                           facets => 1);
     my $site_map = { map { $_->id => $_->canonical_url } @sites };
+    my $hostname_map = { map { $_->canonical => $_->sitename }  @sites };
 
     $baseres->sites_map($site_map);
     $res->sites_map($site_map);
     $baseres->languages_map($sites[0]->known_langs);
+    $baseres->hostname_map($hostname_map);
 
     my $pager = AmuseWikiFarm::Utils::Paginator::create_pager($res->pager, sub { $_[0] });
 

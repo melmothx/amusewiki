@@ -48,6 +48,9 @@ has sites_map => (is => 'rw',
 has languages_map => (is => 'rw',
                       isa => Maybe[HashRef]);
 
+has hostname_map => (is => 'rw',
+                     isa => Maybe[HashRef]);
+
 has show_deferred => (is => 'ro',
                       isa => Bool,
                       default => sub { 0 });
@@ -238,8 +241,9 @@ sub _build_languages {
 sub _build_hostnames {
     my $self = shift;
     my $list = $self->facets->{hostname};
+    my $map = $self->hostname_map || {};
     foreach my $i (@$list) {
-        $i->{label} = $i->{value};
+        $i->{label} = $map->{$i->{value}} || $i->{value};
     }
     return [ sort { $b->{count} <=> $a->{count} or $a->{value} cmp $b->{value} } @$list ];
 }
