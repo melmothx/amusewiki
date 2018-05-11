@@ -9,7 +9,7 @@ use AmuseWikiFarm::Archive::Xapian;
 use AmuseWikiFarm::Utils::Paginator;
 use Path::Tiny;
 
-sub search :Chained('/root') :PathPart('search') :Args(0) {
+sub search :Chained('/root') :PathPart('search.ajax') :Args(0) {
     my ($self, $c) = @_;
     # here instead of a directory, we pass a stub database, named xapian.stub
     my $stub = $ENV{AMW_META_XAPIAN_DB} ?

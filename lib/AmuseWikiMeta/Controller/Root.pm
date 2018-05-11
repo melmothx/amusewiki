@@ -27,10 +27,11 @@ sub pages :Chained('root') :PathPart('') :Args {
     my ($self, $c, $page) = @_;
     $page ||= 'index.html';
     log_debug { "Asked $page" };
-    if (AMW_META_ROOT and $page =~ m/\A[a-z][a-z\.]+\.(html|js|css|ico)\z/) {
-        my $ext = $1;
+    if (AMW_META_ROOT and $page =~ m/\A([a-z][a-z\.]+?)(\.(html|js|css|ico))?\z/) {
+        my $base = $1;
+        my $ext = $3 || 'html';
         my $mime = AmuseWikiFarm::Utils::Paths->served_mime_types->{$ext};
-        my $file = path(AMW_META_ROOT, $page);
+        my $file = path(AMW_META_ROOT, $base . '.' . $ext);
         if (-f $file) {
             log_debug { "Found $file" };
             $c->response->content_type($mime);
