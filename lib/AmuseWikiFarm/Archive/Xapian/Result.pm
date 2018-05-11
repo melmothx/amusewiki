@@ -229,7 +229,7 @@ sub _build_hostnames {
     foreach my $i (@$list) {
         $i->{label} = $i->{value};
     }
-    return [ sort { $a->{value} cmp $b->{value} } @$list ];
+    return [ sort { $b->{count} <=> $a->{count} or $a->{value} cmp $b->{value} } @$list ];
 }
 
 sub _first_number {
