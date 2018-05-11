@@ -13,14 +13,18 @@ function render_template(data) {
     $('html,body').animate({ scrollTop: 0 }, 300);
 }
 
+function reset_page() {
+    $('input#request-page').val(1);
+}
+
 $('#search-page-form').submit(function(event) {
     event.preventDefault();
-    $('input#request-page').val(1);
+    reset_page();
     get_search_response();
 });
 
 $(document).on('change', '.xapian-filter', function(event) {
-    $('input#request-page').val(1);
+    reset_page();
     get_search_response();
 });
 
@@ -31,4 +35,10 @@ $(document).on('click', '.search-page', function(event) {
         $('input#request-page').val(page);
         get_search_response();
     }
+});
+
+$(document).on('click', '#reset-filters', function(event) {
+    $('.xapian-filter-checkbox').prop('checked', false);
+    reset_page();
+    get_search_response();
 });
