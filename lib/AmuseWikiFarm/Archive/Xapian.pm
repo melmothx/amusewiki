@@ -4,8 +4,8 @@ use strict;
 use warnings;
 use utf8;
 
-use Moose;
-use namespace::autoclean;
+use Moo;
+use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf Str Bool/;
 
 use Search::Xapian (':all');
 use File::Spec;
@@ -17,6 +17,7 @@ use Path::Tiny ();
 use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
 use AmuseWikiFarm::Archive::Xapian::Result::Text;
+use namespace::clean;
 
 use constant {
               AMW_XAPIAN_VERSION => 2,
@@ -97,51 +98,54 @@ AmuseWikiFarm::Archive::Xapian - amusewiki Xapian model
 
 has code => (is => 'ro',
              required => 0,
-             isa => 'Str');
+             isa => Str);
 
 has multisite => (is => 'ro',
-                  isa => 'Bool',
+                  isa => Bool,
                   default => sub { 0 });
 
+has sites_map => (is => 'ro',
+                  isa => Maybe[HashRef]);
+
 has stub_database => (is => 'ro',
-                      isa => 'Str');
+                      isa => Str);
 
 has locale => (
                is => 'ro',
-               isa => 'Str',
+               isa => Str,
                required => 0,
               );
 
 has stem_search => (
                     is => 'ro',
-                    isa => 'Bool',
+                    isa => Bool,
                     default => sub { return 1 },
                    );
 
 has index_deferred => (is => 'ro',
-                       isa => 'Bool',
+                       isa => Bool,
                        default => sub { return 0 });
 
 has basedir => (
                 is => 'ro',
                 required => 0,
-                isa => 'Str',
+                isa => Str,
                );
 
 has page => (
              is => 'rw',
-             isa => 'Int',
+             isa => Int,
              default => sub { return 10 },
             );
 
 has auxiliary => (
                   is => 'ro',
-                  isa => 'Bool',
+                  isa => Bool,
                   default => sub { 0 },
                  );
 
 has temporary_suffix => (is => 'ro',
-                         isa => 'Str',
+                         isa => Str,
                          default => sub { '~' . time() }
                         );
 
@@ -655,8 +659,5 @@ sub _index_html {
         $tree->delete;
     }
 }
-
-
-__PACKAGE__->meta->make_immutable;
 
 1;
