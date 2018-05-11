@@ -10,6 +10,7 @@ function render_template(data) {
     var template = $('#template').html();
     var rendered = Mustache.render(template, data);
     $('#results').html(rendered);
+    $('html,body').animate({ scrollTop: 0 }, 300);
 }
 
 $(document).ready(function () {
