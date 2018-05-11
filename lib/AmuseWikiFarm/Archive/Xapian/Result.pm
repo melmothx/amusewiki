@@ -240,11 +240,9 @@ sub _first_number {
 sub _build_text_types {
     my $self = shift;
     my $list = $self->facets->{qualification};
-    if (my $lh = $self->lh) {
-        foreach my $i (@$list) {
-            # loc('book'), loc('article')
-            $i->{label} = $lh->loc($i->{value});
-        }
+    my $lh = $self->lh;
+    foreach my $i (@$list) {
+        $i->{label} = $lh ? $lh->loc($i->{value}) : $i->{value};
     }
     return [ sort  { $a->{value} cmp $b->{value} } @$list ];
 }
