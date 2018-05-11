@@ -36,15 +36,19 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     my ( $self, $c ) = @_;
     $c->stash(please_index => 1);
     my $site = $c->stash->{site};
+    my $lh = $c->stash->{lh};
     my $xapian = $site->xapian;
     my %params = %{$c->req->params};
     Dlog_debug { "Searching with these parameters $_" } \%params;
 
     my $res = $xapian->faceted_search(%params,
                                       no_facets => 1,
+                                      no_filters => 0,
                                       locale => $c->stash->{current_locale_code},
-                                      lh => $c->stash->{lh},
-                                      site => $site);
+                                     );
+    $res->lh($lh);
+    $res->site($site);
+
     if (my $error = $res->error) {
         # an error is likely triggered by a wrong syntax, so a 404
         # makes sense (no results for such query)
@@ -61,8 +65,10 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     my $baseres = $xapian->faceted_search(%params,
                                           no_filters => 1,
                                           locale => $c->stash->{current_locale_code},
-                                          lh => $c->stash->{lh},
-                                          site => $site);
+                                         );
+    $baseres->lh($lh);
+    $baseres->site($site);
+
     if (!$c->user_exists and $site->show_preview_when_deferred) {
         $c->stash(no_full_text_if_not_published => 1);
     }

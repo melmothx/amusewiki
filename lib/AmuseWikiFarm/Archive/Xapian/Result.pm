@@ -34,11 +34,16 @@ has selections => (is => 'ro',
                    default => sub { +{} },
                    isa => HashRef[HashRef]);
 
-has site => (is => 'ro',
+# these are needed for the display
+
+has site => (is => 'rw',
              isa => Maybe[Object]);
 
-has lh => (is => 'ro',
+has lh => (is => 'rw',
            isa => Maybe[Object]);
+
+has sites_map => (is => 'rw',
+                  isa => Maybe[HashRef]);
 
 has show_deferred => (is => 'ro',
                       isa => Bool,

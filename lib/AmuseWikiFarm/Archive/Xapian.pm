@@ -104,9 +104,6 @@ has multisite => (is => 'ro',
                   isa => Bool,
                   default => sub { 0 });
 
-has sites_map => (is => 'ro',
-                  isa => Maybe[HashRef]);
-
 has stub_database => (is => 'ro',
                       isa => Str);
 
@@ -626,8 +623,6 @@ sub _do_faceted_search {
                                                        facets => \%facets,
                                                        pager => $pager,
                                                        multisite => $self->multisite,
-                                                       site => $args{site},
-                                                       lh => $args{lh},
                                                        show_deferred => $self->index_deferred,
                                                       );
 }
