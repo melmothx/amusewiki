@@ -596,7 +596,7 @@ sub _do_faceted_search {
             my $err = $_;
             log_error { "Cannot get JSON data from $_" . $doc->get_data }
         };
-        log_debug { join(' ', map { '<' . ($doc->get_value($SLOTS{$_}{slot}) || '') . '>'  } keys %SLOTS) };
+        # log_debug { join(' ', map { '<' . ($doc->get_value($SLOTS{$_}{slot}) || '') . '>'  } keys %SLOTS) };
     }
     my %facets;
     foreach my $spy_name (keys %spies) {
