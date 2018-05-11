@@ -449,6 +449,9 @@ sub faceted_search {
 
 sub _do_faceted_search {
     my ($self, %args) = @_;
+    foreach my $default (qw/facets filters/) {
+        $args{$default} = 1 unless exists $args{$default};
+    }
     my $database = Search::Xapian::Database->new($self->xapian_dir);
     my $qp = Search::Xapian::QueryParser->new($database);
 
@@ -624,6 +627,8 @@ sub _do_faceted_search {
                                                        facets => \%facets,
                                                        pager => $pager,
                                                        multisite => $self->multisite,
+                                                       site => $args{site},
+                                                       lh => $args{lh},
                                                        show_deferred => $self->index_deferred,
                                                       );
 }

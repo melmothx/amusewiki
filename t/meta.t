@@ -15,7 +15,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use JSON::MaybeXS;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 9;
+use Test::More tests => 7;
 use Data::Dumper::Concise;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
@@ -32,10 +32,9 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiMeta');
 $mech->get_ok('/search');
 my $data = decode_json($mech->content);
 diag Dumper($data);
-foreach my $k (qw/matches facets sites pager/) {
+foreach my $k (qw/matches filters pager/) {
     ok $data->{$k}, "$k found in the json";
 }
-ok(scalar(keys %{$data->{sites}}) > 1, "Found more sites");
 $mech->get_ok('/');
 $mech->content_contains('<!doctype html>', "Static pages served");
 $mech->get('/blablabla');
