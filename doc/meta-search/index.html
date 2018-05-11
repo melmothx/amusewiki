@@ -32,6 +32,7 @@
       </div>
     </nav>    
     <form id="search-page-form">
+      <input type="hidden" id="request-page" name="page" value="1" />
       <div class="container">
         <h1 id="top" class="p-3 m-3 text-center">Search the libraries</h1>
         <div class="jumbotron">
@@ -118,6 +119,18 @@
             </div>
           </div>
           {{/matches}}
+          {{#pager_needed}}
+          <nav class="mt-3" aria-label="Page navigation">
+            <ul class="pagination">
+              {{#pager}}
+              <li class="page-item{{#active}} active{{/active}}">
+                <a href="#" data-page="{{uri}}"
+                   class="search-page page-link{{^active}} disabled{{/active}}">{{label}}</a>
+              </li>
+              {{/pager}}
+            </ul>
+          </nav>
+          {{/pager_needed}}
         </div>
       </div>
     </script>

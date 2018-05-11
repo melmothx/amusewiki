@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Archive::Xapian;
+use AmuseWikiFarm::Utils::Paginator;
 use Path::Tiny;
 
 sub search :Chained('/root') :PathPart('search') :Args(0) {
@@ -35,15 +36,15 @@ sub search :Chained('/root') :PathPart('search') :Args(0) {
     $res->sites_map($site_map);
     $baseres->languages_map($sites[0]->known_langs);
 
-    my $pager = $res->pager;
+    my $pager = AmuseWikiFarm::Utils::Paginator::create_pager($res->pager, sub { $_[0] });
 
     $c->stash(json => {
                        matches => $res->json_output,
                        filters => $baseres->facet_tokens,
-                       pager => { map { $_ => $pager->$_ } (qw/total_entries entries_per_page
-                                                               first_page current_page last_page
-                                                              /) },
+                       pager_needed => $pager->needed,
+                       pager => $pager->items,
                       });
+    Dlog_debug { "json is $_" } $c->stash->{json};
 }
 
 __PACKAGE__->meta->make_immutable;

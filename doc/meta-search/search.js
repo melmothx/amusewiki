@@ -13,13 +13,20 @@ function render_template(data) {
     $('html,body').animate({ scrollTop: 0 }, 300);
 }
 
-$(document).ready(function () {
-    $('#search-page-form').submit(function(event) {
-        event.preventDefault();
-        get_search_response();
-    });
+$('#search-page-form').submit(function(event) {
+    event.preventDefault();
+    get_search_response();
 });
 
 $(document).on('change', '.xapian-filter', function(event) {
     get_search_response();
+});
+
+$(document).on('click', '.search-page', function(event) {
+    event.preventDefault();
+    var page = $(this).data('page');
+    if (page) {
+        $('input#request-page').val(page);
+        get_search_response();
+    }
 });
