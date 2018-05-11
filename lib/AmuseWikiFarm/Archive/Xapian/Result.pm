@@ -89,6 +89,20 @@ sub facet_tokens {
     # topics and authors depend on the locale and on the origin site,
     # so if in a mixed environment it doesn't help much
     push @out, {
+                label => $loc->('Site'),
+                facets => $self->hostnames,
+                name => 'filter_hostname',
+               } if $self->multisite;
+
+    if (($self->site && $self->site->multilanguage) or $self->multisite) {
+        push @out, {
+                    label => $loc->('Language'),
+                    facets => $self->languages,
+                    name => 'filter_language',
+                   };
+    }
+
+    push @out, {
                 label => $loc->('Topics'),
                 facets => $self->topics,
                 name => 'filter_topic',
@@ -99,11 +113,6 @@ sub facet_tokens {
                 name => 'filter_author',
                } unless $self->multisite;
     push @out, {
-                label => $loc->('Date'),
-                facets => $self->dates,
-                name => 'filter_date',
-               },
-               {
                 label => $loc->('Document type'),
                 facets => $self->text_types,
                 name => 'filter_qualification',
@@ -117,21 +126,12 @@ sub facet_tokens {
                 label => $loc->('Number of pages'),
                 facets => $self->num_pages,
                 name => 'filter_pages',
+               },
+               {
+                label => $loc->('Date'),
+                facets => $self->dates,
+                name => 'filter_date',
                };
-    if (($self->site && $self->site->multilanguage) or $self->multisite) {
-        push @out, {
-                    label => $loc->('Language'),
-                    facets => $self->languages,
-                    name => 'filter_language',
-                   };
-    }
-    if ($self->multisite) {
-        push @out, {
-                    label => $loc->('Site'),
-                    facets => $self->hostnames,
-                    name => 'filter_hostname',
-                   };
-    }
     my $selections = $self->selections;
     foreach my $block (@out) {
         foreach my $facet (@{$block->{facets}}) {
