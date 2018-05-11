@@ -25,12 +25,13 @@ sub search :Chained('/root') :PathPart('search') :Args(0) {
                                       facets => 0,
                                       filters => 1,
                                      );
-    $res->sites_map({ map { $_->id => $_->canonical_url } @sites });
-    $res->languages_map($sites[0]->known_langs);
 
     my $baseres = $xapian->faceted_search(%params,
                                           filters => 0,
                                           facets => 1);
+    $baseres->sites_map({ map { $_->id => $_->canonical_url } @sites });
+    $baseres->languages_map($sites[0]->known_langs);
+
 
     my $pager = $res->pager;
 
