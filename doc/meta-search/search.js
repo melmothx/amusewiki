@@ -15,10 +15,12 @@ function render_template(data) {
 
 $('#search-page-form').submit(function(event) {
     event.preventDefault();
+    $('input#request-page').val(1);
     get_search_response();
 });
 
 $(document).on('change', '.xapian-filter', function(event) {
+    $('input#request-page').val(1);
     get_search_response();
 });
 
