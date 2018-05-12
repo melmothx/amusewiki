@@ -121,11 +121,6 @@ sub facet_tokens {
                 name => 'filter_qualification',
                },
                {
-                label => $loc->('Publication date'),
-                facets => $self->pubdates,
-                name => 'filter_pubdate',
-               },
-               {
                 label => $loc->('Number of pages'),
                 facets => $self->num_pages,
                 name => 'filter_pages',
@@ -134,6 +129,11 @@ sub facet_tokens {
                 label => $loc->('Date'),
                 facets => $self->dates,
                 name => 'filter_date',
+               },
+               {
+                label => $loc->('Publication date'),
+                facets => $self->pubdates,
+                name => 'filter_pubdate',
                };
     my $selections = $self->selections;
     foreach my $block (@out) {
