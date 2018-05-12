@@ -223,7 +223,7 @@ sub search :Chained('clean_root') :PathPart('search') :Args(0) {
                                         description => $c->loc('texts sorted by author'),
                                        );
     if ($query) {
-        my $res = $xapian->faceted_search(no_facets => 1,
+        my $res = $xapian->faceted_search(facets => 0,
                                           page => $page,
                                           locale => $c->stash->{current_locale_code},
                                           query => $query);
