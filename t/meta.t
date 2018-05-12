@@ -29,7 +29,7 @@ diag $stub->slurp;
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiMeta');
 
-$mech->get_ok('/search');
+$mech->get_ok('/search/ajax');
 my $data = decode_json($mech->content);
 diag Dumper($data);
 foreach my $k (qw/matches filters pager/) {
