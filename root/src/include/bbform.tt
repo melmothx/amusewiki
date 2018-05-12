@@ -517,6 +517,25 @@
              alt="2side" />
       </div>
     </div>
+
+    <div class="radio">
+      <label>
+        <input type="radio" name="schema" value="2x4x1"
+               class="choose-schema"
+               [% IF bb.schema == '2x4x1' %]checked="checked"[% END %] />
+        <strong>2x4x1</strong>:
+
+        [% loc("Blocks of 8 pages to be folded twice and then bound
+                together.") %]
+
+      </label>
+      <div class="schema-preview">
+        <img src="[% c.uri_for('/static/images/schema-preview/2x4x1.png') %]"
+             alt="2x4x1" />
+      </div>
+    </div>
+
+
     <div class="radio">
       <label>
         <input type="radio" name="schema" value="2x4x2"
