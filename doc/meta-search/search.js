@@ -1,6 +1,6 @@
 function get_search_response() {
     var params = $('#search-page-form').serialize();
-    $.get('/search.ajax?' + params, function (data) {
+    $.get('/search/ajax?' + params, function (data) {
         render_template(data);
     });
 }
