@@ -4,8 +4,8 @@ use strict;
 use warnings;
 use utf8;
 
-use Moose;
-use namespace::autoclean;
+use Moo;
+use Types::Standard qw/Int Maybe Object HashRef ArrayRef InstanceOf Str Bool/;
 
 use Search::Xapian (':all');
 use File::Spec;
@@ -17,6 +17,7 @@ use Path::Tiny ();
 use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
 use AmuseWikiFarm::Archive::Xapian::Result::Text;
+use namespace::clean;
 
 use constant {
               AMW_XAPIAN_VERSION => 2,
@@ -40,34 +41,42 @@ my %SLOTS = (
              author => {
                         slot => SLOT_AUTHOR,
                         prefix => 'XA',
+                        singlesite => 1,
                        },
              topic => {
                        slot => SLOT_TOPIC,
-                       prefix => 'XK'
+                       prefix => 'XK',
+                       singlesite => 1,
                       },
              pubdate => {
                          slot => SLOT_PUBDATE,
                          prefix => 'XP',
+                         singlesite => 0,
                         },
              qualification => {
                                slot => SLOT_QUALIFICATION,
                                prefix => 'XQ',
+                               singlesite => 0,
                               },
              pages => {
                        slot => SLOT_PAGES,
                        prefix => 'XL',
+                       singlesite => 0,
                       },
              date => {
                       slot => SLOT_DATE,
                       prefix => 'XD',
+                      singlesite => 0,
                      },
              language => {
                           slot => SLOT_LANG,
                           prefix => 'L',
+                          singlesite => 0,
                          },
              hostname => {
                           slot => SLOT_HOSTNAME,
                           prefix => 'H',
+                          singlesite => 0,
                          },
             );
 
@@ -88,45 +97,52 @@ AmuseWikiFarm::Archive::Xapian - amusewiki Xapian model
 =cut
 
 has code => (is => 'ro',
-             required => 1,
-             isa => 'Str');
+             required => 0,
+             isa => Str);
+
+has multisite => (is => 'ro',
+                  isa => Bool,
+                  default => sub { 0 });
+
+has stub_database => (is => 'ro',
+                      isa => Str);
 
 has locale => (
                is => 'ro',
-               isa => 'Str',
+               isa => Str,
                required => 0,
               );
 
 has stem_search => (
                     is => 'ro',
-                    isa => 'Bool',
+                    isa => Bool,
                     default => sub { return 1 },
                    );
 
 has index_deferred => (is => 'ro',
-                       isa => 'Bool',
+                       isa => Bool,
                        default => sub { return 0 });
 
 has basedir => (
                 is => 'ro',
                 required => 0,
-                isa => 'Str',
+                isa => Str,
                );
 
 has page => (
              is => 'rw',
-             isa => 'Int',
+             isa => Int,
              default => sub { return 10 },
             );
 
 has auxiliary => (
                   is => 'ro',
-                  isa => 'Bool',
+                  isa => Bool,
                   default => sub { 0 },
                  );
 
 has temporary_suffix => (is => 'ro',
-                         isa => 'Str',
+                         isa => Str,
                          default => sub { '~' . time() }
                         );
 
@@ -137,7 +153,7 @@ sub _path_tokens {
         push @path, $root;
     }
     push @path, 'xapian';
-    my $code = $self->code;
+    my $code = $self->code or die "site code not provided, cannot guess the path";
     if ($self->auxiliary) {
         $code .= $self->temporary_suffix;
     }
@@ -147,7 +163,12 @@ sub _path_tokens {
 
 sub xapian_dir {
     my $self = shift;
-    return File::Spec->catdir($self->_path_tokens);
+    if (my $stub = $self->stub_database) {
+        return $stub;
+    }
+    else {
+        return File::Spec->catdir($self->_path_tokens);
+    }
 }
 
 sub xapian_backup_dir {
@@ -406,7 +427,8 @@ sub search {
     my ($self, $query_string, $page, $locale) = @_;
     my $res = $self->faceted_search(
                                     locale => $locale,
-                                    no_facets => 1,
+                                    facets => 0,
+                                    filters => 1,
                                     page => $page,
                                     query => $query_string,
                                    );
@@ -427,6 +449,9 @@ sub faceted_search {
 
 sub _do_faceted_search {
     my ($self, %args) = @_;
+    foreach my $default (qw/facets filters/) {
+        $args{$default} = 1 unless exists $args{$default};
+    }
     my $database = Search::Xapian::Database->new($self->xapian_dir);
     my $qp = Search::Xapian::QueryParser->new($database);
 
@@ -497,7 +522,7 @@ sub _do_faceted_search {
             foreach my $active (@checked) {
                 $actives{"filter_${filter}"}{$active} = 1;
             }
-            next FILTER if $args{no_filters};
+            next FILTER unless $args{filters};
             if (@checked) {
                 my $subquery = Search::Xapian::Query->new(+OP_OR,
                                                           map { Search::Xapian::Query
@@ -515,8 +540,10 @@ sub _do_faceted_search {
     my $enquire = $database->enquire($query);
 
     my %spies;
-    unless ($args{no_facets}) {
+    if ($args{facets}) {
+      FACET:
         foreach my $slot (keys %SLOTS) {
+            next FACET if $self->multisite && $SLOTS{$slot}{singlesite};
             my $spy = try { Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot}) };
             if ($spy) {
                 $spies{$slot} = Search::Xapian::ValueCountMatchSpy->new($SLOTS{$slot}{slot});
@@ -550,7 +577,9 @@ sub _do_faceted_search {
         }
     }
 
-    my $mset = $enquire->get_mset($start, $pagesize, $args{check_at_least} || $pagesize);
+    # if no facets required, we don't need to scan everything.
+    my $mset = $enquire->get_mset($start, $pagesize, $args{facets} ? $database->get_doccount : $pagesize);
+    log_debug { "Total document is " . $database->get_doccount };
     # pager
     my $pager = Data::Page->new;
     $pager->total_entries($mset->get_matches_estimated);
@@ -572,7 +601,7 @@ sub _do_faceted_search {
             my $err = $_;
             log_error { "Cannot get JSON data from $_" . $doc->get_data }
         };
-        log_debug { join(' ', map { '<' . ($doc->get_value($SLOTS{$_}{slot}) || '') . '>'  } keys %SLOTS) };
+        # log_debug { join(' ', map { '<' . ($doc->get_value($SLOTS{$_}{slot}) || '') . '>'  } keys %SLOTS) };
     }
     my %facets;
     foreach my $spy_name (keys %spies) {
@@ -597,6 +626,7 @@ sub _do_faceted_search {
                                                        matches => \@matches,
                                                        facets => \%facets,
                                                        pager => $pager,
+                                                       multisite => $self->multisite,
                                                        site => $args{site},
                                                        lh => $args{lh},
                                                        show_deferred => $self->index_deferred,
@@ -630,8 +660,5 @@ sub _index_html {
         $tree->delete;
     }
 }
-
-
-__PACKAGE__->meta->make_immutable;
 
 1;

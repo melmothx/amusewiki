@@ -34,11 +34,22 @@ has selections => (is => 'ro',
                    default => sub { +{} },
                    isa => HashRef[HashRef]);
 
-has site => (is => 'ro',
+# these are needed for the display
+
+has site => (is => 'rw',
              isa => Maybe[Object]);
 
-has lh => (is => 'ro',
+has lh => (is => 'rw',
            isa => Maybe[Object]);
+
+has sites_map => (is => 'rw',
+                  isa => Maybe[HashRef]);
+
+has languages_map => (is => 'rw',
+                      isa => Maybe[HashRef]);
+
+has hostname_map => (is => 'rw',
+                     isa => Maybe[HashRef]);
 
 has show_deferred => (is => 'ro',
                       isa => Bool,
@@ -65,62 +76,72 @@ has error => (is => 'ro', isa => Maybe[Str]);
 sub facet_tokens {
     my $self = shift;
     return [] if $self->error;
-    my $lh = $self->lh;
-    unless ($lh) {
+    my $loc;
+    if (my $lh = $self->lh) {
+        $loc = sub { return $lh->loc(@_) };
+    }
+    elsif ($self->multisite) {
+        # no loc if not passed
+        $loc = sub { return @_ };
+    }
+    else {
         log_error { "Facet tokens called without the LH token, aborting" };
         return;
     }
-    my @out = ({
-                label => $lh->loc('Topics'),
-                facets => $self->topics,
-                name => 'filter_topic',
-               },
-               {
-                label => $lh->loc('Authors'),
-                facets => $self->authors,
-                name => 'filter_author',
-               },
-               {
-                label => $lh->loc('Date'),
-                facets => $self->dates,
-                name => 'filter_date',
-               },
-               {
-                label => $lh->loc('Document type'),
-                facets => $self->text_types,
-                name => 'filter_qualification',
-               },
-               {
-                label => $lh->loc('Published on this site'),
-                facets => $self->pubdates,
-                name => 'filter_pubdate',
-               },
-               {
-                label => $lh->loc('Number of pages'),
-                facets => $self->num_pages,
-                name => 'filter_pages',
-               });
-    if ($self->site && $self->site->multilanguage) {
+    my @out;
+    # topics and authors depend on the locale and on the origin site,
+    # so if in a mixed environment it doesn't help much
+    push @out, {
+                label => $loc->('Site'),
+                facets => $self->hostnames,
+                name => 'filter_hostname',
+               } if $self->multisite;
+
+    if (($self->site && $self->site->multilanguage) or $self->multisite) {
         push @out, {
-                    label => $lh->loc('Language'),
+                    label => $loc->('Language'),
                     facets => $self->languages,
                     name => 'filter_language',
                    };
     }
-    if ($self->multisite) {
-        push @out, {
-                    label => $lh->loc('Site'),
-                    facets => $self->hostnames,
-                    name => 'filter_hostname',
-                   };
-    }
 
+    push @out, {
+                label => $loc->('Topics'),
+                facets => $self->topics,
+                name => 'filter_topic',
+               } unless $self->multisite;
+    push @out, {
+                label => $loc->('Authors'),
+                facets => $self->authors,
+                name => 'filter_author',
+               } unless $self->multisite;
+    push @out, {
+                label => $loc->('Document type'),
+                facets => $self->text_types,
+                name => 'filter_qualification',
+               },
+               {
+                label => $loc->('Number of pages'),
+                facets => $self->num_pages,
+                name => 'filter_pages',
+               },
+               {
+                label => $loc->('Date'),
+                facets => $self->dates,
+                name => 'filter_date',
+               },
+               {
+                label => $loc->('Publication date'),
+                facets => $self->pubdates,
+                name => 'filter_pubdate',
+               };
     my $selections = $self->selections;
     foreach my $block (@out) {
         foreach my $facet (@{$block->{facets}}) {
             $facet->{active} = $selections->{$block->{name}}->{$facet->{value}};
         }
     }
+    undef $loc; # shouldn't be needed, but still...
     return \@out;
 }
 
@@ -182,7 +203,7 @@ sub _build_pubdates {
         }
     }
     my @out;
-    foreach my $y (keys %years) {
+    foreach my $y (sort keys %years) {
         push @out, { value => $y, label => $y, count => $years{$y} };
     }
     Dlog_debug { "pudates became is $_" } \@out;
@@ -201,7 +222,16 @@ sub _build_num_pages {
 sub _build_languages {
     my $self = shift;
     my $list = $self->facets->{language};
-    my $map = $self->site ? $self->site->known_langs : {};
+    my $map;
+    if ($self->languages_map) {
+        $map = $self->languages_map;
+    }
+    elsif ($self->site) {
+        $map = $self->site->known_langs;
+    }
+    else {
+        $map = {};
+    }
     foreach my $i (@$list) {
         $i->{label} = $map->{$i->{value}} || $i->{value};
     }
@@ -211,10 +241,11 @@ sub _build_languages {
 sub _build_hostnames {
     my $self = shift;
     my $list = $self->facets->{hostname};
+    my $map = $self->hostname_map || {};
     foreach my $i (@$list) {
-        $i->{label} = $i->{value};
+        $i->{label} = $map->{$i->{value}} || $i->{value};
     }
-    return [ sort { $a->{value} cmp $b->{value} } @$list ];
+    return [ sort { $b->{count} <=> $a->{count} or $a->{value} cmp $b->{value} } @$list ];
 }
 
 sub _first_number {
@@ -230,11 +261,9 @@ sub _first_number {
 sub _build_text_types {
     my $self = shift;
     my $list = $self->facets->{qualification};
-    if (my $lh = $self->lh) {
-        foreach my $i (@$list) {
-            # loc('book'), loc('article')
-            $i->{label} = $lh->loc($i->{value});
-        }
+    my $lh = $self->lh;
+    foreach my $i (@$list) {
+        $i->{label} = $lh ? $lh->loc($i->{value}) : $i->{value};
     }
     return [ sort  { $a->{value} cmp $b->{value} } @$list ];
 }
@@ -289,15 +318,33 @@ sub texts {
 sub json_output {
     my $self = shift;
     my @out;
-    if (my $texts = $self->texts) {
-        my $base = $self->site->canonical_url;
-        @out = map { +{
-                       title => $_->title,
-                       author => $_->author,
-                       url => $base . $_->full_uri,
-                       text_type => $_->text_qualification,
-                       pages => $_->pages_estimated,
-                      } } @$texts;
+    return \@out if $self->error;
+    my $sites_map = $self->sites_map;
+    my $site = $self->site;
+    if (!$sites_map and $site) {
+        $sites_map = { $site->id => $site->canonical_url };
+    }
+    foreach my $match (@{$self->matches}) {
+        my %text = %{$match->{pagedata}};
+        $text{rank} = $match->{rank};
+        $text{relevance} = $match->{relevance};
+        if ($sites_map) {
+            my $site_url = $sites_map->{$text{site_id}};
+            foreach my $uri (grep { /_uri$/ } keys %text) {
+                if ($text{$uri}) {
+                    $text{$uri} = $site_url . $text{$uri};
+                }
+            }
+            # back compat
+            $text{url} = $text{full_uri};
+            $text{text_type} = $text{text_qualification};
+            $text{page} = $text{pages_estimate};
+            $text{site_url} = $site_url;
+            if ($text{pubdate_epoch} and $text{pubdate_epoch} < time()) {
+                $text{pubdate_iso} = DateTime->from_epoch(epoch => $text{pubdate_epoch})->ymd;
+            }
+        }
+        push @out, \%text;
     }
     return \@out;
 }
