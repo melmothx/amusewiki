@@ -4,11 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
-2.220 UNRELEASED
+2.220 2018-05-13
 
  - Add empty tr language
  - Add new imposition schema: 2x4x1 (via upgraded PDF::Imposition)
- - Provide a disabled and not documented yet application to provide
+ - Provide a disabled and not yet documented application to provide
    an aggregated search of a given set of amusewiki sites residing on
    the same server
 
