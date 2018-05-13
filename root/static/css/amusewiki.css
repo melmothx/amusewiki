@@ -320,3 +320,15 @@ a.search-autocomplete-item:hover {
     font-weight: bold;
     text-decoration: none;
 }
+
+.schema-preview img {
+    max-height: 160px;
+}
+
+.schema-preview-single img {
+    max-height: 80px;
+
+}
+div.schema-preview {
+    margin: 20px;
+}

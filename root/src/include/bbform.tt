@@ -420,11 +420,15 @@
         reduce the number of blank pages.") %]
 
       </label>
-      <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/2up_1.png') %]"
+      <div class="schema-preview schema-preview-single">
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-1.png') %]"
              alt="2up" />
-
-        <img src="[% c.uri_for('/static/images/schema-preview/2up_2.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-2.png') %]"
+             alt="2up" />
+        &nbsp;&nbsp;
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-3.png') %]"
+             alt="2up" />
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-4.png') %]"
              alt="2up" />
       </div>
     </div>
@@ -464,10 +468,14 @@
         can print, for example, A6 booklets on A4.") %]
       </label>
       <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/4up_1.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-1.png') %]"
              alt="4up" />
-
-        <img src="[% c.uri_for('/static/images/schema-preview/4up_2.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-2.png') %]"
+             alt="4up" />
+        &nbsp;&nbsp;
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-3.png') %]"
+             alt="4up" />
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-4.png') %]"
              alt="4up" />
       </div>
     </div>
@@ -509,11 +517,11 @@
         This is not meant to be folded.") %]
 
       </label>
-      <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/2side_1.png') %]"
+      <div class="schema-preview schema-preview-single">
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2side-1.png') %]"
              alt="2side" />
 
-        <img src="[% c.uri_for('/static/images/schema-preview/2side_2.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2side-2.png') %]"
              alt="2side" />
       </div>
     </div>
@@ -530,7 +538,9 @@
 
       </label>
       <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/2x4x1.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x1-1.png') %]"
+             alt="2x4x1" />
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x1-2.png') %]"
              alt="2x4x1" />
       </div>
     </div>
@@ -548,10 +558,16 @@
 
       </label>
       <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/2x4x2_1.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-1.png') %]"
              alt="2x4x2" />
-        <img src="[% c.uri_for('/static/images/schema-preview/2x4x2_2.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-2.png') %]"
              alt="2x4x2" />
+        &nbsp;&nbsp;
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-3.png') %]"
+             alt="2x4x2" />
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-4.png') %]"
+             alt="2x4x2" />
+
       </div>
     </div>
 
@@ -563,8 +579,10 @@
         <strong>1x4x2cutfoldbind</strong>:
         [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
       </label>
-      <div>
-        <img src="[% c.uri_for('/static/images/schema-preview/1x4x2.png') %]"
+      <div class="schema-preview">
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-1x4x2cutfoldbind-1.png') %]"
+             alt="1x4x2cutfoldbind" />
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-1x4x2cutfoldbind-2.png') %]"
              alt="1x4x2cutfoldbind" />
       </div>
     </div>
@@ -581,9 +599,9 @@
         </a>
       </label>
       <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/1x8x2-1.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-1x8x2-1.png') %]"
              alt="1x8x2" />
-        <img src="[% c.uri_for('/static/images/schema-preview/1x8x2-2.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-1x8x2-2.png') %]"
              alt="1x8x2" />
       </div>
     </div>
@@ -600,10 +618,16 @@
         </a>
       </label>
       <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/ea4x4-1.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-1.png') %]"
              alt="ea4x4" />
-        <img src="[% c.uri_for('/static/images/schema-preview/ea4x4-2.png') %]"
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-2.png') %]"
              alt="ea4x4" />
+        &nbsp;&nbsp;
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-3.png') %]"
+             alt="ea4x4" />
+        <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-4.png') %]"
+             alt="ea4x4" />
+
       </div>
 
     </div>
