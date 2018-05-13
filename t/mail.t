@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 60;
+use Test::More tests => 71;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -108,7 +108,7 @@ $mech->click("commit");
 $mech->get_ok('/action/text/new');
 ok($mech->form_id('ckform'), "Found the form for uploading stuff");
 $mech->set_fields(author => 'pippo',
-                  title => 'My test, 2',
+                  title => '*My* **test** & 2',
                   textbody => "Hello world again\n");
 $mech->click;
 $mech->form_id('museform');
@@ -141,6 +141,19 @@ $site->add_git_remote("test", "$remotegit");
     diag $job->dispatch_job;
 }
 
+foreach my $rev ($site->revisions) {
+    ok $rev->publish_text;
+}
+
+{
+    $mech->get_ok('/library/pippo-my-test-2/edit');
+    $mech->form_id('museform');
+    $mech->set_fields(email => 'uploader@amusewiki.org',
+                      attachment => 't/files/shot.png'
+                     );
+    $mech->click("commit");
+}
+
 $site->update({ mail_from => undef });
 # no mail;
 
@@ -160,7 +173,7 @@ $site->update({ mail_from => undef });
 
 {
     my @mails = Email::Sender::Simple->default_transport->deliveries;
-    is scalar(@mails), 8, "mails sent" or die Dumper(\@mails);
+    is scalar(@mails), 9, "mails sent" or die Dumper(\@mails);
     if (@mails and my $sent = shift @mails) {
         ok ($sent, "Email sent") and diag $sent->{email}->as_string;
         my $body = $sent->{email}->as_string;
@@ -225,6 +238,7 @@ $site->update({ mail_from => undef });
         ok ($sent, "The application sent the mail");
         my $body = $sent->{email}->as_string;
         ok ($body);
+        like $body, qr{changes for pippo-my-test-2}i;
         like $body, qr{subject: /library/pippo-my-test-2}i;
         like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/};
         like $body, qr{cc: uploader\@amusewiki.org}i;
@@ -239,6 +253,18 @@ $site->update({ mail_from => undef });
         like $body, qr{specials/index\.muse}i;
         like $body, qr{subject: \[0mail0\.amusewiki\.org\] git pull test}i;
         like $body, qr{https\:\/\/0mail0\.amusewiki\.org\/tasks\/job\/};
+        diag $body;
+    }
+    if (@mails and my $sent = shift @mails) {
+        ok ($sent, "The application sent the mail");
+        my $body = $sent->{email}->as_string;
+        ok ($body);
+        like $body, qr{changes for.*my test & 2}i;
+        like $body, qr{subject: /library/pippo-my-test-2}i;
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/};
+        like $body, qr{cc: uploader\@amusewiki.org}i;
+        like $body, qr{https://0mail0.amusewiki.org/action/text/edit/pippo-my-test-2/p-m-pi},
+          "Found attachment";
         diag $body;
     }
 

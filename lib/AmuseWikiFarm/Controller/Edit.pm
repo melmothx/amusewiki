@@ -11,7 +11,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 use DateTime;
 use Text::Wrapper;
 use AmuseWikiFarm::Log::Contextual;
-use AmuseWikiFarm::Utils::Amuse qw/clean_username/;
+use AmuseWikiFarm::Utils::Amuse qw/clean_username clean_html/;
 use Path::Tiny ();
 
 =head1 NAME
@@ -489,7 +489,7 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
                                 to => $mail_to,
                                 from => $mail_from,
                                 subject => $revision->title->full_uri,
-                                author_title => $revision->title->author_title,
+                                author_title => clean_html($revision->title->author_title),
                                 document_uri => $c->uri_for($revision->title->full_uri),
                                 cc => $params->{email},
                                 revision_is_new => $revision->is_new_text || 0,
