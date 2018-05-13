@@ -561,6 +561,7 @@ lib/AmuseWikiFarm/I18N/ru.po
 lib/AmuseWikiFarm/I18N/sq.po
 lib/AmuseWikiFarm/I18N/sr.po
 lib/AmuseWikiFarm/I18N/sv.po
+lib/AmuseWikiFarm/I18N/tr.po
 lib/AmuseWikiFarm/Log/Contextual.pm
 lib/AmuseWikiFarm/Log/Contextual/App.pm
 lib/AmuseWikiFarm/Middleware/ConditionalGET.pm

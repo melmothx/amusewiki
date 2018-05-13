@@ -1276,6 +1276,7 @@ sub known_langs {
             pt => 'Português',
             da => 'Dansk',
             cs => 'Čeština',
+            tr => 'Türkçe',
            };
 }
 
