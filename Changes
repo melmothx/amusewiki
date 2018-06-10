@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.221 2018-06-10
+
+ - Add nl tranlations
+
 2.220 2018-05-13
 
  - Add empty tr language
