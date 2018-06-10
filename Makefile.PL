@@ -103,7 +103,7 @@ requires 'JavaScript::Packer';
 requires 'Text::Amuse' => '1.10';
 requires 'PDF::Imposition' => '0.25';
 requires 'Text::Amuse::Compile' => '1.04';
-requires 'Text::Amuse::Preprocessor' => '0.51';
+requires 'Text::Amuse::Preprocessor' => '0.53';
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
