@@ -27,11 +27,13 @@ sub ajax :Chained('search') :Args(0) {
 
     my @sites = $c->model('DB::Site')->public_only;
     my $res = $xapian->faceted_search(%params,
+                                      published_only => 1,
                                       facets => 0,
                                       filters => 1,
                                      );
 
     my $baseres = $xapian->faceted_search(%params,
+                                          published_only => 1,
                                           filters => 0,
                                           facets => 1);
     my $site_map = { map { $_->id => $_->canonical_url } @sites };

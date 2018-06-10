@@ -536,7 +536,13 @@ sub _do_faceted_search {
     if (@filters) {
         $query = Search::Xapian::Query->new(+OP_FILTER, $query, Search::Xapian::Query->new(+OP_AND, @filters));
     }
-
+    if ($args{published_only}) {
+        my $published_only = Search::Xapian::Query->new(OP_VALUE_LE,
+                                                   SLOT_PUBDATE_FULL,
+                                                   Search::Xapian::sortable_serialise(time()));
+        log_debug { "Filtering by full date" };
+        $query = Search::Xapian::Query->new(+OP_FILTER, $query, $published_only);
+    }
     my $enquire = $database->enquire($query);
 
     my %spies;
