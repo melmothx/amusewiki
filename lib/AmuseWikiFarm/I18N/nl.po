@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2014-07-25 15:36+0200\n"
+"PO-Revision-Date: 2018-06-09 22:49+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
@@ -14,127 +14,146 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #. ($filename)
 msgid "%1 doesn't exist"
-msgstr ""
+msgstr "%1 bestaat niet"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
 msgid "%1 on mobile"
-msgstr ""
+msgstr "%1 op mobiel"
 
 #. (text.pages_estimated)
 msgid "%1 pp."
-msgstr ""
+msgstr "%1 pp."
 
 msgid "(smart quotes, links, footnotes, etc.)"
-msgstr ""
+msgstr "(slimme citaten, links, voetnoten, etc.)"
 
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr ""
+"Een witregel (of meerdere witregels) geeft het begin van een nieuwe alinea "
+"aan."
 
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
 msgstr ""
+"Een omslagafbeelding was al toegevoegd, maar je kan hem vervangen door een "
+"nieuwe\n"
+"\t\tte uploaden."
 
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
 msgstr ""
+"Een voetnoet is een regel die begint met een nummer tussen\n"
+"          rechte haakjes, zonder spaties vooraf."
 
 msgid "A line which starts with 2 or more whitespaces is a quotation."
-msgstr ""
+msgstr "Een regel die begint met twee of meer spaties is een citaat."
 
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
-msgstr ""
+msgstr "Een regel die begint met 20 of meer spaties is rechts uitgelijnd."
 
 msgid "A line which starts with 6 or more whitespaces is centered."
-msgstr ""
+msgstr "Een regel die begint met zes of meer spaties is een gecentreerd."
 
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
 "            separated by a space, e.g. \"http://test.me Test site\""
 msgstr ""
+"Een lijst met links en labels om in te voegen in\n"
+"            de top-balk. Een per regel, eerst de url, dan\n"
+"            het label, gescheiden door een spatie, \n"
+"            bijvoorbeeld '\"http://test.me Test site\""
 
 #. (location)
 msgid "A new text has been created at %1"
-msgstr ""
+msgstr "Er is een nieuwe tekst aangemaakt bij %1"
 
 msgid "A nice title"
-msgstr ""
+msgstr "Een mooie titel"
 
 msgid "A4 imposed PDF"
-msgstr ""
+msgstr "A4 PDF in katernen"
 
 msgid "A4 paper"
-msgstr ""
+msgstr "A4 papier"
 
 msgid "A5 paper"
-msgstr ""
+msgstr "A5 papier"
 
 msgid "A6 paper (also suitable for e-readers)"
-msgstr ""
+msgstr "A6 papier (ook geschikt voor e-readers)"
 
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
+"Verlaten opmaak bezig, voel je vrij om de diff te controleren en verder te "
+"gaan"
 
 msgid "Action"
-msgstr ""
+msgstr "Actie"
 
 msgid "Activate the blog-style look and feel"
-msgstr ""
+msgstr "Activeer het blog-stijl uiterlijk"
 
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 msgid "Add a cover image (PNG or JPG)"
-msgstr ""
+msgstr "Voeg een omslagafbeelding toe (PNG of JPG)"
 
 msgid "Add a new text"
-msgstr ""
+msgstr "Voeg een nieuwe tekst toe"
 
 msgid "Add an attachment (PNG, JPG or PDF)"
-msgstr ""
+msgstr "Voeg een bijlage toe (PNG, JPG of PDF)"
 
 msgid "Add crop marks to the PDF"
-msgstr ""
+msgstr "Voeg herkaderingtekens toe aan de PDF"
 
 msgid "Add new remote repository"
-msgstr ""
+msgstr "Voeg externe repository toe"
 
 msgid "Add non-breaking spaces where appropriate for the language"
-msgstr ""
+msgstr "Voeg harde spatie toe waar van toepassing voor de taal"
 
 msgid "Add or delete and add again the <user_repo_url> on this page."
 msgstr ""
+"Voeg toe of verwijder en voeg op nieuw toe de <user_repo_url> op deze pagina."
 
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
 msgstr ""
+"Voeg pagineerded toe voor tekstlijst als het aantal teksten groter is dan "
+"(integer)"
 
 msgid "Add sections to the bookbuilder"
-msgstr ""
+msgstr "Voeg secties toe aan de boekmaker"
 
 msgid "Add the OPDS URL"
-msgstr ""
+msgstr "Voeg de OPDS URL toe"
 
 msgid "Add the selected parts to the bookbuilder"
-msgstr ""
+msgstr "Voeg te geselecteerde delen toe aan de boekmaker"
 
 msgid "Add the whole text"
-msgstr ""
+msgstr "Voeg de hele tekst toe"
 
 msgid "Add this text to the bookbuilder"
-msgstr ""
+msgstr "Voeg deze tekst toe aan de boekmaker"
 
 msgid ""
 "Additional information (full date, original title, translators, credits, "
 "etc)."
 msgstr ""
+"Extra informatie (volledige datum,  originele titel, vertalers, erkenningen, "
+"etc.)"
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
@@ -143,29 +162,35 @@ msgid ""
 "  change, it will appear under %1. There is a big red\n"
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
+"Na de goedkeuring van de\n"
+"  wijziging, zal het verschijnen onder %1. Er is een \n"
+"  grote rode knop voor elke verwijderde tekst, en je kunt doorgaan \n"
+"  met verwijderen."
 
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 msgid "Alias can't point to itself"
-msgstr ""
+msgstr "Alias kan niet naar zichzelf verwijzen"
 
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
 msgstr ""
+"Allerlei soorten lijsten die beginnen met een of \n"
+"        meer spaties."
 
 msgid "All languages"
-msgstr ""
+msgstr "Alle talen"
 
 msgid "All revisions"
-msgstr ""
+msgstr "Alle revisies"
 
 msgid "All sites"
-msgstr ""
+msgstr "Alle sites"
 
 msgid "All users"
-msgstr ""
+msgstr "Alle gebruiken"
 
 msgid ""
 "Also produce slides\n"
@@ -175,6 +200,12 @@ msgid ""
 "          you want to exclude a section, put a comment in the section\n"
 "          body with the string “noslide”."
 msgstr ""
+"Maak ook slides\n"
+"          van het document. Elke sectie, ongeacht hoe diep, zal\n"
+"          een slide maken. De tekst buiten de sectie wordt genegeerd\n"
+"          dus als je geen secties hebt, krijg je lege slides. Als\n"
+"          je een sectie wil uitsluiten, stop dan een commentaar in de\n"
+"          hoofdttekst van de sectie met de tekst \"noslide\"."
 
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
@@ -184,663 +215,729 @@ msgid ""
 "      errico-malatesta-anarchy-2. Please note that this is normally\n"
 "      not needed"
 msgstr ""
+"Een URI is een tekenreeks die een unieke identificatie is voor de tekst\n"
+"      in het archief. Theoretisch gezien, zou het van alles kunnen zijn,\n"
+"      maar als je het zelf wil bepalen, houd je dan alsjeblieft aan de\n"
+"      conventie: auteur, naam, titel, taal, eventueel een nummer om\n"
+"      om dubbelzinnigheid te voorkomen, bijvoorbeeld \n"
+"      errico-malatesta-anarchy-2. Let op dat dit meestal niet nodig is"
 
 msgid "Apache is not currently supported"
-msgstr ""
+msgstr "Apache wordt momenteel niet ondersteund"
 
 msgid "Archive"
-msgstr ""
+msgstr "Archief"
 
 msgid "Archive by month"
-msgstr ""
+msgstr "Archief per maand"
 
 msgid "Archive history"
-msgstr ""
+msgstr "Archief historie"
 
 msgid "Are you sure?"
-msgstr ""
+msgstr "Weet je het zeker?"
 
 msgid "As cover in the header"
-msgstr ""
+msgstr "Als omslag in de koptekst"
 
 msgid "As regular image in the body"
-msgstr ""
+msgstr "Als normale afbeelding in de hoofdtekst"
 
 msgid "Attached images"
-msgstr ""
+msgstr "Bijgevoegde afbeeldingen"
 
 msgid "Attachments"
-msgstr ""
+msgstr "Bijlages"
 
 msgid "Author"
-msgstr ""
+msgstr "Auteur"
 
 msgid "Author and title. If one side document: title."
-msgstr ""
+msgstr "Auteur en titel. Indien eenzijdig document: titel."
 
 msgid "Authors"
-msgstr ""
+msgstr "Auteurs"
 
 msgid "Authors and topics listing"
-msgstr ""
+msgstr "Auteurs en onderwerpen lijst"
 
 msgid "Authors for indexing"
-msgstr ""
+msgstr "Auteurs voor indexering"
 
 msgid "Automatically generated"
-msgstr ""
+msgstr "Automatisch gegenereerd"
 
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
-msgstr ""
+msgstr "SSL certificaten van Let's Encrypt automatisch aanvragen en vernieuwen"
 
 msgid "Available category tags for header"
-msgstr ""
+msgstr "Beschikbare categorie tags voor de koptekst"
 
 msgid "Back to the text"
-msgstr ""
+msgstr "Terug naar de tekst"
 
 msgid "Bad request"
-msgstr ""
+msgstr "Verkeerde aanvraag"
 
 msgid "Beamer color theme"
-msgstr ""
+msgstr "Beamer kleurthema"
 
 msgid "Beamer theme"
-msgstr ""
+msgstr "Beamer thema"
 
 msgid "Binding correction in millimeters (additional inner margin)"
-msgstr ""
+msgstr "Inbinding correctie in milimeters (extra binnenmarge)"
 
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
+"Blokken van 16 pagina's die twee keer gevouwen\n"
+"                worden en dan samen gebonden."
 
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 msgid "Bold"
-msgstr ""
+msgstr "Vet"
 
 msgid "Bookbuilder"
-msgstr ""
+msgstr "Boekmaker"
 
 msgid "Bookbuilder page limit (integer)"
-msgstr ""
+msgstr "Boekmaker paginalimiet (integer)"
 
 msgid "Build it"
-msgstr ""
+msgstr "Maak het"
 
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
 "        numbering"
 msgstr ""
+"Standaard gebruiken secondaire voetnoten arabische\n"
+"        nummers tussen haakjes. Met deze optie gebruiken ze\n"
+"        alfa nummering per pagina"
 
 msgid "By relevance"
-msgstr ""
+msgstr "Op relevantie"
 
 msgid "By sku ascending"
-msgstr ""
+msgstr "Op sku oplopend"
 
 msgid "By sku descending"
-msgstr ""
+msgstr "Op sku aflopen"
 
 msgid "By title A-Z"
-msgstr ""
+msgstr "Op titel A-Z"
 
 msgid "By title Z-A"
-msgstr ""
+msgstr "Op titel Z-A"
 
 msgid "CSS Theme"
-msgstr ""
+msgstr "CSS Thema"
 
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 msgid "Canonical name"
-msgstr ""
+msgstr "Kanonieke naam"
 
 msgid "Categories"
-msgstr ""
+msgstr "Categorieen"
 
 msgid "Changes"
-msgstr ""
+msgstr "Wijzigingen"
 
 msgid "Changes applied"
-msgstr ""
+msgstr "Toegepaste wijziginen"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 #. (author_title)
 msgid "Changes for %1"
-msgstr ""
+msgstr "Wijzigingen voor %1"
 
 msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr ""
+"Wijzigingen opgeslagen, bedankt! Ze wachten nu om gepubliceerd te worden"
 
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
 "doing, you can delete an existing text and point to another adding a\n"
 "#DELETED directive in the text header with a special syntax:"
 msgstr ""
+"URLs wijzigen is een slechte gewoonte. Maar als je weet wat je\n"
+"doet, kun je een bestaande tekst verwijderen en verwijzen naar\n"
+"een andere door een #DELETED instructie toe te voegen in de\n"
+"koptekst met een speciale syntax:"
 
 msgid "Chapter"
-msgstr ""
+msgstr "Hoofdstuk"
 
 msgid "Chapter and section. If one side document: chapter."
-msgstr ""
+msgstr "Hoofdstuk en sectie. Indien eenzijdig document: hoofdstuk."
 
 msgid "Chapter, only for chapter divisions in books"
-msgstr ""
+msgstr "Hoofdstuk, alleen voor hoofdstukindeling in boeken"
 
 msgid "Cheatsheet for the markup"
-msgstr ""
+msgstr "Spiekbriefje voor de opmaak"
 
 msgid "Choose a paper format"
-msgstr ""
+msgstr "Kies een papierformaat"
 
 msgid "Clear the book list"
-msgstr ""
+msgstr "Leeg de boekenlijst"
 
 msgid "Click on the images to get the sample PDF"
-msgstr ""
+msgstr "Klik op de afbeelding om de voorbeeld PDF te krijgen"
 
 msgid "Clone the repo locally and set it up"
-msgstr ""
+msgstr "Kloon de repo lokaal en begin hem"
 
 msgid "Close"
-msgstr ""
+msgstr "Sluit"
 
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
 msgstr ""
+"Kolommen voor de linker kant van de bewerkpagina, met het bewerkvak (van de "
+"12)"
 
 msgid "Completed"
-msgstr ""
+msgstr "Voltooid"
 
 msgid "Computing of differences took"
-msgstr ""
+msgstr "Berekenen van de verschillen kostte"
 
 msgid "Confirm"
-msgstr ""
+msgstr "Bevestig"
 
 msgid "Convert to archive markup"
-msgstr ""
+msgstr "Omzetten naar archiefopmaak"
 
 msgid "Couldn't add the text"
-msgstr ""
+msgstr "Kon de tekst niet toevoegen"
 
 msgid "Couldn't automatically generate the URI!"
-msgstr ""
+msgstr "Kon de URI niet automatisch genereren!"
 
 msgid "Couldn't build that"
-msgstr ""
+msgstr "Kon dat niet maken"
 
 msgid "Create"
-msgstr ""
+msgstr "Maak"
 
 msgid "Create a new format"
-msgstr ""
+msgstr "Maak een nieuw formaat"
 
 msgid "Create a new librarian"
-msgstr ""
+msgstr "Maak een nieuwe bilbiothecaris"
 
 msgid "Create a new special page"
-msgstr ""
+msgstr "Maak een nieuwe speciale pagina"
 
 msgid "Create a new user"
-msgstr ""
+msgstr "Maak een nieuwe gebruiker"
 
 msgid "Create a topic alias"
-msgstr ""
+msgstr "Maak een nieuw onderwerpalias"
 
 msgid "Create an author alias"
-msgstr ""
+msgstr "Maak een auteuralias"
 
 msgid ""
 "Create an empty repository. Here we refer to its url as <user_repo_url>."
 msgstr ""
+"Maak een lege repository. Hier refereren we zijn zijn url als "
+"<user_repo_url>."
 
 msgid "Create new site"
-msgstr ""
+msgstr "Voeg een nieuwe site toe"
 
 msgid "Create user and mail password"
-msgstr ""
+msgstr "Maak gebruiker en wachtwoord"
 
 msgid "Created"
-msgstr ""
+msgstr "Gemaakt"
 
 msgid "Created by"
-msgstr ""
+msgstr "Gemaakt door"
 
 msgid "Created new text"
-msgstr ""
+msgstr "Nieuwe tekst gemaakt"
 
 msgid "Current time"
-msgstr ""
+msgstr "Huidige tijd"
 
 #. ($c->stash->{site}->canonical)
 msgid "Custom formats for %1"
-msgstr ""
+msgstr "Aangepaste formaten voor %1"
 
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 msgid "Date of the original publication"
-msgstr ""
+msgstr "Datum van de originele publicatie"
 
 msgid "Default sorting for the category text list"
-msgstr ""
+msgstr "Standaar sortering voor de categorie tekstlijst"
 
 msgid "Deferred/Deleted texts"
-msgstr ""
+msgstr "Uitgestelde/verwijderde teksten"
 
 msgid "Delete"
-msgstr ""
+msgstr "Verwijder"
 
 #. (remote.name)
 msgid "Delete remote repository %1"
-msgstr ""
+msgstr "Verwijder externe repository %1"
 
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
+"Een revisie verwijderen is veilig als een tekst\n"
+"    is gepubliceerd. Anders zorgt het verwijderen ervoor dat "
+"ongepubliceerde\n"
+"    wijzigingen verloren gaan"
 
 msgid "Description"
-msgstr ""
+msgstr "Beschrijving"
 
 msgid "Description item"
-msgstr ""
+msgstr "Beschrijving item"
 
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
 msgstr ""
+"Lijsten met beschrijvingen gebruiken een dubble punt\n"
+"         om het begrip en de beschrijving van elkaar te \n"
+"         scheiden."
 
 msgid "Desired URI"
-msgstr ""
+msgstr "Gewenste URL"
 
 msgid "Destination"
-msgstr ""
+msgstr "Bestemming"
 
 msgid "Differences"
-msgstr ""
+msgstr "Verschillen"
 
 msgid ""
 "Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
+"Map met sjablonen in de site repository, bijvoorbeeld\n"
+"        \"sjablonen\" (alleen ASCII). Stel niet in tenzij je precies\n"
+"        weer wat je doet"
 
 msgid "Display url as"
-msgstr ""
+msgstr "Toon URL als"
 
 msgid "Division factor"
-msgstr ""
+msgstr "Deelfactor"
 
 msgid "Do not create a cover page and start the text on the first page"
-msgstr ""
+msgstr "Maak geen omslagpagina aan en begin de tekst op de eerste pagina"
 
 msgid "Do not enforce save message"
-msgstr ""
+msgstr "Dwing geen opslaan-bericht af"
 
 msgid "Do not use bold fonts"
-msgstr ""
+msgstr "Gebruik geen vette lettertpyes"
 
 msgid "Document type"
-msgstr ""
+msgstr "Documenttype"
 
 msgid "Done"
-msgstr ""
+msgstr "Voltooid"
 
 msgid "Double bars"
-msgstr ""
+msgstr "Dubbele strepen"
 
 msgid "Downloads"
-msgstr ""
+msgstr "Downloads"
 
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
+"Bijvoorbeeld een woord EN titel:\"Mijn titel\" EN auteur:Auteur OF jaar:2017"
 
 msgid "EPUB"
-msgstr ""
+msgstr "EPUB"
 
 msgid "EPUB (for mobile devices)"
-msgstr ""
+msgstr "EPUB (voor mobiele apparaten)"
 
 msgid "ETA"
-msgstr ""
+msgstr "Geschatte tijd"
 
 msgid "Edit"
-msgstr ""
+msgstr "Bewerk"
 
 msgid "Edit attachment description"
-msgstr ""
+msgstr "Voeg een beschrijvings bijlage toe"
 
 #. ($format->format_name)
 msgid "Edit format %1"
-msgstr ""
+msgstr "Bewerk formaat %1"
 
 msgid "Edit full site configuration"
-msgstr ""
+msgstr "Bewerk volledige siteconfiguratie"
 
 msgid "Edit screen layout options"
-msgstr ""
+msgstr "Bewerk scherm layoutopties"
 
 #. (esite.id)
 msgid "Edit site %1"
-msgstr ""
+msgstr "Bewerk site %1"
 
 msgid "Edit site configuration"
-msgstr ""
+msgstr "Bewerk siteconfiguratie"
 
 msgid "Edit the text you want to unpublish and add this line to the header:"
 msgstr ""
+"Bewerk de tekst die je wil de-publiceren en voeg deze regel toe aan de "
+"koptekst:"
 
 msgid "Edit this text"
-msgstr ""
+msgstr "Bewerk deze tekst"
 
 #. (user.username)
 msgid "Edit user %1"
-msgstr ""
+msgstr "Bewerk gebruiker %1"
 
 msgid "Editing"
-msgstr ""
+msgstr "Bewerken"
 
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 msgid "Email sent!"
-msgstr ""
+msgstr "E-mail verstuurd!"
 
 msgid "Email updated"
-msgstr ""
+msgstr "E-mail geupdated"
 
 msgid "Emails do not match"
-msgstr ""
+msgstr "E-mails komen niet overeen"
 
 msgid "Embed fonts in the EPUB file"
-msgstr ""
+msgstr "Lettertypes insluiten in het EPUB bestand"
 
 msgid "Enable \"What links here\" feature"
-msgstr ""
+msgstr "Schakel \"Welke links hier\" optie in"
 
 msgid "Enable title ordering by SKU"
-msgstr ""
+msgstr "Schakel titel sorteren op SKU in"
 
 msgid "Erase this revision"
-msgstr ""
+msgstr "Wis deze revisie"
 
 msgid "Error converting the upload file. Is it an HTML file?"
-msgstr ""
+msgstr "Fout bij het omzetten van het uploadbestand. Is het een HTML-bestand?"
 
 msgid "Error sending mail!"
-msgstr ""
+msgstr "Probleem bij het verzenden van e-mail!"
 
 msgid "Error while converting the HTML. Sorry."
-msgstr ""
+msgstr "Fout bij het omzetten van de HTML. Sorry."
 
 msgid "Errors"
-msgstr ""
+msgstr "Fouten"
 
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
 msgstr ""
+"Zelfs als deze site een responsieve, mobiel-vriendelijke layout\n"
+"  heeft, biedt hij geen aparte mobiele app."
 
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
 "        sectioning for this to work."
 msgstr ""
+"Elke\n"
+"        sectie zal een slide genereren. Je moet de tekst goed\n"
+"        in secties indelen om dit te laten werken."
 
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
+"Net zoals 2up, maar dan moeten de vellen eerst\n"
+"        horizontaal gesneden worden en daarna opelkaar gestapeld\n"
+"        worden. Op deze manier kun je bijvoorbeeld A6 boekjes op\n"
+"        A4 drukken."
 
 msgid "Example"
-msgstr ""
+msgstr "Voorbeeld"
 
 msgid "Existing redirections"
-msgstr ""
+msgstr "Bestaande verwijzingen"
 
 msgid "Failed"
-msgstr ""
+msgstr "Mislukt"
 
 #. ("$name $url")
 msgid "Failed to add remote repository %1"
-msgstr ""
+msgstr "Niet gelukt om externe repository %1 toe te voegen"
 
 #. ($name)
 msgid "Failed to remove Remote repository %1"
-msgstr ""
+msgstr "Niet gelukt om externe repository %1 te verwijderen"
 
 msgid "File already in the body"
-msgstr ""
+msgstr "Bestand bestaat al in de hoofdtekst"
 
 msgid "File extension"
-msgstr ""
+msgstr "Bestandsextensie"
 
 msgid "File format not allowed"
-msgstr ""
+msgstr "Bestandsformaat niet toegestaan"
 
 msgid "File to delete not found!"
-msgstr ""
+msgstr "Te verwijderen bestand niet gevonden!"
 
 msgid "File too big"
-msgstr ""
+msgstr "Bestand te groot"
 
 msgid "File uploaded!"
-msgstr ""
+msgstr "Bestand geuploaded!"
 
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
+"Vul met blanco paginas voor de laatste pagina als het katern niet vol is."
 
 msgid "Filters"
-msgstr ""
+msgstr "Filters"
 
 msgid "Find the add catalogue menu."
-msgstr ""
+msgstr "Vind het catalogus toevoegen menu."
 
 msgid "Find the network library menu, or equivalent."
-msgstr ""
+msgstr "Vind het netwerk bibliotheek menu, of gelijkwaardig."
 
 msgid "First Author and Second Author"
-msgstr ""
+msgstr "Eerste auteur en tweede auteur"
 
 msgid "First Author, Second Author"
-msgstr ""
+msgstr "Eerste auteur, tweede auteur"
 
 msgid "First slide"
-msgstr ""
+msgstr "Eerste slide"
 
 msgid "First you have to unpublish it via #DELETED."
-msgstr ""
+msgstr "Eerst moet je het de-publiceren via #DELETED."
 
 msgid "Fix typography (smart quotes)"
-msgstr ""
+msgstr "Repareer typografie (slimme aanhalingstekens)"
 
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
-msgstr ""
+msgstr "Vast 16 paginas katernen op twee vellen, met dubbele individuele vouw."
 
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
-msgstr ""
+msgstr "Vast 16 paginas katernen op een enkel vel, met drievoudige vouw."
 
 msgid "Fixed category list"
-msgstr ""
+msgstr "Vaste categorielijst"
 
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
+"Vaste katernen van acht paginas, die horizontaal gesneden moeten worden, "
+"individueel gevouwen, en samengebonden."
 
 msgid "Font preview"
-msgstr ""
+msgstr "Lettertype voorbeeldweergave"
 
 msgid "Font size"
-msgstr ""
+msgstr "Lettertypegrootte"
 
 msgid "Footnotes"
-msgstr ""
+msgstr "Voetnoten"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
 "in the body (%4), ignoring changes"
 msgstr ""
+"Voetnoten komen niet overeen: gevonden %1 voetnoten (%2) and gevonden %3 "
+"voetnootreferenties in de hoofdteskt, wijzigingen negerend"
 
 msgid "For texts from the internet use"
-msgstr ""
+msgstr "Voor teksten van het internet gebruik"
 
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
+"Begin van teksten zonder inhoudsopgave de tekst op de allereerste pagina"
 
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
 msgstr ""
+"Onderwerp- en auteursverwijzingen kun je\n"
+"  hier maken"
 
 msgid "Force a line break."
-msgstr ""
+msgstr "Forceer een regeleinde."
 
 msgid "Force publishing"
-msgstr ""
+msgstr "Forceer publicatie"
 
 msgid "Format name"
-msgstr ""
+msgstr "Opmaak naam"
 
 msgid "Format successfully created"
-msgstr ""
+msgstr "Opmaak succesvol aangemaakt"
 
 msgid "Format successfully updated"
-msgstr ""
+msgstr "Opmaak succesvol geupdated"
 
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
-msgstr ""
+msgstr "Opmaak: jjjj-mm-dd uu:mm, bijvoorbeeld"
 
 msgid "Formats"
-msgstr ""
+msgstr "Opmaken"
 
 msgid "Full list of texts"
 msgstr "Lijst van alle teksten"
 
 msgid "Full tag cloud"
-msgstr ""
+msgstr "Volledige tagwolk"
 
 msgid "Full text search"
-msgstr ""
+msgstr "Volledige tekst doorzoeken"
 
 msgid "General configuration"
-msgstr ""
+msgstr "Algemene instellingen"
 
 msgid "Generic (fits in A4 and Letter)"
-msgstr ""
+msgstr "Generiek (past in A4 en US-Letter)"
 
 msgid "Git console"
-msgstr ""
+msgstr "Git console"
 
 msgid "Git is not enabled on this site"
-msgstr ""
+msgstr "Git is niet ingeschakeld op deze site"
 
 msgid ""
 "HTML code to append to each regular page, inserted\n"
 "            verbatim, so be careful"
 msgstr ""
+"HTLM code om aan ieder reguliere pagina toe te voegen,\n"
+"            letterlijk ingevoegd, dus let op"
 
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
 "            be careful"
 msgstr ""
+"HTLM code om aan ieder speciale pagina toe te voegen,\n"
+"            letterlijk ingevoegd, je hebt hiermee de kans om alles te "
+"verpesten,\n"
+"            dus wees voorzichting"
 
 msgid "HTML to insert into the left sidebar"
-msgstr ""
+msgstr "HTML om in te voegen in de linker zijbalk"
 
 msgid "HTML to insert into the right sidebar"
-msgstr ""
+msgstr "HTML om in te voegen in de rechter zijbalk"
 
 msgid "HTML to insert on the bottom of the layout, above the footer"
-msgstr ""
+msgstr "HTML om in te voegen in de onderkant van de layout, boven de voettekst"
 
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
 msgstr ""
+"HTML om in te voegen bovenaan de layout, achter de navigatiebalk en onder de "
+"banner"
 
 msgid "HTML/Word Importer"
-msgstr ""
+msgstr "HTML/Word Importeerder"
 
 msgid "Half Letter paper"
-msgstr ""
+msgstr "Half US-Letter papier"
 
 msgid "Heading"
-msgstr ""
+msgstr "Kop"
 
 msgid "Headings"
-msgstr ""
+msgstr "Koppen"
 
 msgid "Height:"
-msgstr ""
+msgstr "Hoogte:"
 
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
+"Hier kun je een voorbeeldweergave vinden van de Beamerthemas en kleurenthemas"
 
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
 "      use this to save paper/fonts/imposition and other options."
 msgstr ""
+"Hier kun je sjablonen opslaan of laden. De tekstlijst\n"
+"      en de omslagafbeeldingen zijn uitgesloten door de opgeslagen\n"
+"      instellingen. Je kunt dit gebruiken om papier, lettertype, oplegging\n"
+"      en andere instellingen op te slaan."
 
 msgid "Higher division factor means narrower margins"
-msgstr ""
+msgstr "Hogere deelfactor betekent smallere marges"
 
 msgid "How do I create a landing page?"
-msgstr ""
+msgstr "Hoe maak ik een landingspagina?"
 
 msgid "How do I create a special page?"
-msgstr ""
+msgstr "Hoe maak ik een speciale pagina?"
 
 msgid "How do I delete a text?"
-msgstr ""
+msgstr "Hoe verwijder ik een tekst?"
 
 msgid "How do I modify a special page?"
-msgstr ""
+msgstr "Hoe pas ik een speciale pagina aan?"
 
 msgid "How do I purge a text?"
-msgstr ""
+msgstr "Hoe schoon ik een tekst op?"
 
 msgid "How do I redirect to another page?"
-msgstr ""
+msgstr "Hoe verwijs ik naar een andere pagina?"
 
 msgid "How to choose a password"
-msgstr ""
+msgstr "Hoe kies je een wachtwoord"
 
 msgid "How to work with a remote repo"
-msgstr ""
+msgstr "Hoe werk je met een externe repository"
 
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
 "  protocol."
 msgstr ""
+"Maar, je kunt teksten doorbladeren, zoeken, opslaan en lezen\n"
+"  vanaf mobiele leesprogrammas die het zogenaamde OPDS\n"
+"  protocol ondersteunen."
 
 msgid "I am human"
-msgstr ""
+msgstr "Ik ben een mens"
 
 msgid "I want an imposed (ready to print) PDF"
-msgstr ""
+msgstr "Ik wil een opgelegde (klaar om te printen) PDF"
 
 msgid "IRC channel on freenode"
-msgstr ""
+msgstr "IRC kanaal op freenode"
 
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #. ('ssl/' _ esite.canonical _ '/key.pem')
 #. ('ssl/' _ esite.canonical _ '/fullchain.pem')
@@ -851,21 +948,28 @@ msgstr ""
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
 msgid "If not set %1 will be looked up from the application directory."
-msgstr ""
+msgstr "Als %1 niet is ingesteld wordt het opgezocht in de programma index."
 
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
 "roughly this length"
 msgstr ""
+"Indien ingesteld op een waarde groter dan 0, generereer automatisch een "
+"teaser, met ongeveer deze lengte"
 
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
 "            the body"
 msgstr ""
+"Als de publicatie van een tekst is uitgesteld,\n"
+"            geef hem dan in de lijst weer met de teaser en de omslag\n"
+"            zonder toegang te geven tot de hoofdtekstk"
 
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr ""
+"Als de gebruiker een e-mail heeft opgegeven, staat die in het CC veld van de "
+"mail"
 
 msgid ""
 "If this line\n"
@@ -875,12 +979,22 @@ msgid ""
 "          date will be the time of the publishing, triggering a bump\n"
 "          on RSS and special pages at each editing."
 msgstr ""
+"Als deze regel\n"
+"          aanwezig is, stel dan de publicatiedatum (op deze site)\n"
+"          in op de datum. De datum mag ook in de toekomst zijn,\n"
+"          wat de publicatie uitstelt. Als deze regel niet aanwezig is,\n"
+"          zal de publicatiedatum gelijk zijn aan het moment van\n"
+"          publicatie, een RSS bump in gang zetten en speciale\n"
+"          paginas bij iedere bewerking."
 
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
 "          stored in the archive, but will not be published."
 msgstr ""
+"Als deze regel\n"
+"          aanwezig is en de reden is ergens op ingesteld, zal de tekst\n"
+"          worden opgeslagen in het archief, maar niet worden gepubliceerd."
 
 msgid ""
 "If this line is present, do not create a title page,\n"
@@ -888,27 +1002,39 @@ msgid ""
 "          produce a PDF styled like an article (chapters and parts\n"
 "          will not start on a new page)."
 msgstr ""
+"Als deze regel aanwezig is, maak dan geen titelpagina,\n"
+"          maar begin in plaats daarvan de tekst op de aller-\n"
+"          eerste pagina en maak een PDF die is opgemaakt \n"
+"          als een artikel (hoofdstukken en delen beginnen\\n\n"
+"          niet op een nieuwe pagina)."
 
 msgid "If this line is present, do not display the table of contents."
-msgstr ""
+msgstr "Als deze regel aanwezig is, geef dan niet de inhoudsopgave weer."
 
 msgid "If you asked for imposition, select an imposition schema"
-msgstr ""
+msgstr "Als je hebt gevraagd om oplegging, selecteer dan een oplegschema"
 
 msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
 msgstr ""
+"Als je bepaalde opmaakopties bewerkt zoals letterypes\n"
+"      of papierformaat, zou je mogelijk de generereerde \n"
+"      bestanden opnieuw willen aanmaken"
 
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
 msgstr ""
+"Als je een bestand in .doc of .odt hebt, kun je het makkelijk omzetten door "
+"het op te slaan als HTML"
 
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
 msgstr ""
+"Als je om opnieuw aanmaken verzoekt terwijl dat al bezig is,\n"
+"    beeindig je die sessie."
 
 msgid ""
 "If you use it as a teaser image, the image will also\n"
@@ -917,46 +1043,61 @@ msgid ""
 "      text width ratio. 1 is the full text width, 0.5 is half, and so\n"
 "      on"
 msgstr ""
+"Als je het als een teaser plaatje gebruikt, wordt het\n"
+"      plaatje ook op de eerste pagina van de PDF geplaats. Je kunt\n"
+"      de breedte ervan instellen door de volgende regel aan de header\n"
+"      toe te voegen, waarbij de waarde de tekst-breedte verhouding is.\n"
+"      1 is de volledige tekstbreedte, 0.5 is half, enzovoort"
 
 #. (reset_url)
 msgid "If you want to proceed, please visit the following url: %1"
-msgstr ""
+msgstr "Als je verder wilt gaan, ga dan naar de volgende URL: %1"
 
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
 msgstr ""
+"Als je site dat niet heeft, maak dan gewoon een speciale pagina\n"
+"en wijs de URI \"index\" toe."
 
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
 "  URI \"index\", a dash, and the locale code."
 msgstr ""
+"Als je site meertalig is, kun je een taalspecifieke landingspagina\n"
+"  maken, door bijvoorbeeld \"/special/index-it\" te maken, oftewel\n"
+"  de URI \"index\", een streepje, en de locale code."
 
 msgid "Image already set as cover"
-msgstr ""
+msgstr "Afbeelding reeds ingesteld als omslagafbeelding"
 
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
 msgstr ""
+"Uploaden van de afbeelding kan in de volgende stap worden gedaan,\n"
+"        waar je de upload kunt beoordelen en een voorbeeldweergave\n"
+"        kunt zien."
 
 msgid "Image url"
-msgstr ""
+msgstr "Afbeeldings URL"
 
 msgid "Images:"
-msgstr ""
+msgstr "Afbeeldingen:"
 
 msgid "Imposition schemas"
-msgstr ""
+msgstr "Oplegschemas"
 
 msgid "In both case you will get a reverse indentation."
-msgstr ""
+msgstr "In beide gevallen zul je een omgekeerde inspringing krijgen."
 
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
 msgstr ""
+"In de tekst wordt een getal binnen vierkante haakjes geinterpreteerd\n"
+"          een referentie naar een voetnoet, voorzover zo'n voetnoot bestaat."
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
@@ -965,24 +1106,27 @@ msgid ""
 "  pretty much the same for all applications. All you have to do is to\n"
 "  add %1 to the network libraries."
 msgstr ""
+"In dit voorbeeld gebruiken we FBreader, maar de procedure\n"
+"  grotendeels hetzelfde voor alle toepassingen. Alles wat je hoeft te\n"
+"  doen is %1 toevoegen aan de netwerkbibliotheken."
 
 msgid "Inline elements"
-msgstr ""
+msgstr "Elementen in de lopende tekst"
 
 msgid "Insert the file into the body at the cursor position"
-msgstr ""
+msgstr "Voeg het bestand in de hoofdtekst in bij de cursorpositie"
 
 msgid "Internal list of translations"
-msgstr ""
+msgstr "Interne lijst van vertalingen"
 
 msgid "Invalid email"
-msgstr ""
+msgstr "Ongeldige e-mail"
 
 msgid "Invalid name"
-msgstr ""
+msgstr "Ongeldige naam"
 
 msgid "Invalid username"
-msgstr ""
+msgstr "Ongeldige gebruikersnaam"
 
 msgid ""
 "It is possible to have an additional set of\n"
@@ -992,6 +1136,14 @@ msgid ""
 "          of square brackets. Placing secondary footnote references\n"
 "          inside a regular footnote is permitted."
 msgstr ""
+"Is het mogelijk om een extra set voetnoten\n"
+"          te hebben die je gebruikt om de tekst te annoteren (bijvoorbeeld\n"
+"          kritische voetnoten of aantekeningen van de vertaler). Ze werken\n"
+"          hetzelfde als de reguliere voetnoten, maar ze gebruiken "
+"krulhaakjes\n"
+"          in plaats van vierkante haakjes. Het plaatsen van secundaire "
+"voetnoot-\n"
+"          referenties binnen een reguliere voetnoot is toegestaan."
 
 msgid ""
 "It is recommended to always set a publication\n"
@@ -1000,35 +1152,42 @@ msgid ""
 "                    publication date only on major editing, leaving it\n"
 "                    untouched for minor ones."
 msgstr ""
+"Het is aan te raden om altijd een publicatiedatum\n"
+"                    in te stellen. zodat het systeem niet hoeft te\n"
+"                    vertrouwen op de tijdsaanduiding van het bestand.\n"
+"                    Ook hoor je de publicatiedatum aan te passen bij\n"
+"                    grote wijzigingen, maar niet bij kleine."
 
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
 msgstr ""
+"Het werkt hetzelfde als voor de reguliere pagina, maar de link is verstopt.\n"
+"Voeg gewoon \"/edit\" toe aan de URL van de pagina."
 
 msgid "Italic"
-msgstr ""
+msgstr "Cursief"
 
 msgid "Italics, bold, monospace and code, linebreaks..."
-msgstr ""
+msgstr "Cursief, vet, niet-proportioneel en code (monospace), regeleindes..."
 
 msgid "Job deleted"
-msgstr ""
+msgstr "Taak verwijderd"
 
 msgid "Job rescheduled"
-msgstr ""
+msgstr "Taak uitgesteld"
 
 msgid "Job status"
-msgstr ""
+msgstr "Taakstatus"
 
 msgid "Jobs"
-msgstr ""
+msgstr "Taken"
 
 msgid "Jobs waiting before yours:"
-msgstr ""
+msgstr "Taken in de wachtrij voor die van jou:"
 
 msgid "Just packs 2 consecutives logical pages on a physical one."
-msgstr ""
+msgstr "Stopt gewoon twee achtereenvolgende logische paginas op een fysieke."
 
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
@@ -1037,282 +1196,297 @@ msgid ""
 "        be lost in the process. Please check the preview on the next\n"
 "        step, where you can also insert images."
 msgstr ""
+"Houd in gedachten dat ik de tekst aan het opruimen\n"
+"        ben en aan je teruggeef in de opmaak die op deze site wordt\n"
+"        gebruikt. Het is aan jou om een laatste controle te doen en de\n"
+"        tekst uiteindelijk te uploaden. Bepaalde weinig gebruikte opmaak\n"
+"        zal verloren gaan in het proces. Controloreer de voorbeeldweergave\n"
+"        in de volgende stap, waar je ook afbeeldingen kunt invoegen."
 
 msgid "Keep in mind that some character may be missing in the required font."
 msgstr ""
+"Houd in gedachten dat sommige karakters niet aanwezig zouden kunnen zijn in "
+"het benodigde lettertype."
 
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
 "        tables and images only on the next step."
 msgstr ""
+"Houd in gedachten dat ongebruikelijk\n"
+"        complexe opmaak verwijderd wordt. Het is alleen mogelijk \n"
+"        om tabellen en afbeeldingen in te voegen, in de volgende stap."
 
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 msgid "Language code of the document (2 or 3 letters). "
-msgstr ""
+msgstr "Taalcode van het document (twee of drie letters). "
 
 msgid "Language selection"
-msgstr "Kies je taal"
+msgstr "Taalselectie"
 
 msgid "Languages supported"
-msgstr ""
+msgstr "Ondersteunde talen"
 
 msgid "Last successful rebuild"
-msgstr ""
+msgstr "Laatste succesvolle rebuild"
 
 msgid "Last updated"
-msgstr ""
+msgstr "Voor het laatst geupdated"
 
 msgid "Latest entries"
-msgstr ""
+msgstr "Laatste inzendingen"
 
 msgid "Layout"
-msgstr ""
+msgstr "Indeling"
 
 msgid "Leave it blank if you want it published right away."
-msgstr ""
+msgstr "Laat leeg als je het direct gepubliceerd wil hebben."
 
 msgid "Leave this empty to have it automatically generated"
-msgstr ""
+msgstr "Laat dit leeg om het automatisch te laten genereren"
 
 msgid "Letter imposed PDF"
-msgstr ""
+msgstr "US-letter opgelegde PDF"
 
 msgid "Letter paper"
-msgstr ""
+msgstr "US-letter papier"
 
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 msgid "Links and images"
-msgstr ""
+msgstr "Links en afbeeldingen"
 
 msgid "List of texts on hold"
-msgstr ""
+msgstr "Lijst van teksten in de wacht"
 
 msgid "Lists"
-msgstr ""
+msgstr "Lijsten"
 
 msgid "Load"
-msgstr ""
+msgstr "Laden"
 
 msgid "Load another session by token"
-msgstr ""
+msgstr "Laad een andere sessie met een identificatienummer"
 
 #. ($pname)
 msgid "Loaded \"%1\" configuration"
-msgstr ""
+msgstr "Configuratie \"%1\" geladen"
 
 msgid "Locked editing, no upload possible"
-msgstr ""
+msgstr "Bewerken vergrendeld, geen upload mogelijk"
 
 msgid "Log in"
-msgstr ""
+msgstr "Log in"
 
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 msgid "Logout"
-msgstr ""
+msgstr "Log uit"
 
 msgid "Look into the account’s menu, there is an entry for that."
-msgstr ""
+msgstr "Kijk in het menu van de account, er is een item voor."
 
 msgid "Lost your password?"
-msgstr ""
+msgstr "Wachtwoord kwijt?"
 
 msgid "Magic answer"
-msgstr ""
+msgstr "Magisch antwoord"
 
 msgid "Magic question"
-msgstr ""
+msgstr "Magische vraag"
 
 msgid "Mail from"
-msgstr ""
+msgstr "Post van"
 
 msgid "Main canonical hostname, without protocol"
-msgstr ""
+msgstr "Belangrijkste kanonieke hostnaam, zonder protocol"
 
 msgid "Main font"
-msgstr ""
+msgstr "Hoofdlettertype"
 
 msgid "Main text"
-msgstr ""
+msgstr "Hoofdtekst"
 
 msgid "Maintainer's FAQ"
-msgstr ""
+msgstr "FAQ voor beheerders"
 
 msgid "Make a link clickable"
-msgstr ""
+msgstr "Maak een link klikbaar"
 
 msgid "Make all links active"
-msgstr ""
+msgstr "Maak alle links actief"
 
 msgid "Make all non-breaking spaces explicit and visible as ~~"
-msgstr ""
+msgstr "Maak alle harde spaties expliciet en zichtbaar als ~~"
 
 msgid "Message"
-msgstr ""
+msgstr "Bericht"
 
 msgid "Missing #title header in the text!"
-msgstr ""
+msgstr "Missende #title koptekst in de tekst!"
 
 msgid "Missing alias"
-msgstr ""
+msgstr "Missend alias"
 
 msgid "Missing character will be reported"
-msgstr ""
+msgstr "Missend karakter zal worden gemeld"
 
 msgid "Missing redirection"
-msgstr ""
+msgstr "Missende verwijzing"
 
 msgid "Mobile"
-msgstr ""
+msgstr "Mobiel"
 
 msgid "Mobile applications"
-msgstr ""
+msgstr "Mobiele toepassingen"
 
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 msgid "Moderated wiki"
-msgstr ""
+msgstr "Gemodereerde wiki"
 
 msgid "Mono font"
-msgstr ""
+msgstr "Mono lettertype"
 
 msgid "More"
-msgstr ""
+msgstr "Meer"
 
 msgid "Move down"
-msgstr ""
+msgstr "Beweeg omlaag"
 
 msgid "Move up"
-msgstr ""
+msgstr "Beweeg omhoog"
 
 msgid "Multilanguage: list of whitespace separated language codes"
-msgstr ""
+msgstr "Meertalig: lijst van spatie-gescheiden taalcodes"
 
 msgid "My description"
-msgstr ""
+msgstr "Mijn beschrijving"
 
 msgid "N/A"
-msgstr ""
+msgstr "Niet beschikbaar"
 
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgid "Network library listing screen."
-msgstr ""
+msgstr "Netwerkbibliotheek lijstvenster."
 
 msgid "Never generate a table of content"
-msgstr ""
+msgstr "Genereer nooit een inhoudsopgave"
 
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
 msgstr ""
+"Genereer nooit de standaard eindpagina met titel/auteur/notities/logo/site "
+"naam"
 
 msgid "Never show teaser and/or cover in text lists"
-msgstr ""
+msgstr "Toon nooit teaser en/of omslag in tekstlijsten"
 
 msgid "New"
-msgstr ""
+msgstr "Nieuw"
 
 msgid "New revision"
-msgstr ""
+msgstr "Nieuwe herziening"
 
 msgid "New site id"
-msgstr ""
+msgstr "Nieuwe site id"
 
 msgid "Newer first"
-msgstr ""
+msgstr "Nieuwer eerst"
 
 msgid "Newer texts"
-msgstr ""
+msgstr "Nieuwere teksten"
 
 msgid "Next"
-msgstr ""
+msgstr "Volgende"
 
 msgid "Nice title"
-msgstr ""
+msgstr "Mooie titel"
 
 msgid "No"
-msgstr ""
+msgstr "Nee"
 
 msgid "No editing yet!"
-msgstr ""
+msgstr "Nog geen bewerking!"
 
 msgid "No result found!"
-msgstr ""
+msgstr "Geen resultaat gevonden!"
 
 msgid "No revisions to show"
-msgstr ""
+msgstr "Geen herzieningen om te tonen"
 
 msgid "No text found!"
-msgstr ""
+msgstr "Geen tekst gevonden!"
 
 msgid "No text was added yet"
-msgstr ""
+msgstr "Er is nog geen tekst toegevoegd"
 
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #. ($c->loc('Save')
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
-msgstr ""
+msgstr "Nog niet klaar!"
 
 msgid "Notes"
-msgstr ""
+msgstr "Notities"
 
 msgid "Nothing to see here, so far"
-msgstr ""
+msgstr "Nog niets te zien hier"
 
 msgid "Nothing uploaded"
-msgstr ""
+msgstr "Niets geuploaded"
 
 msgid "Notify mail: blank field will disable them"
-msgstr ""
+msgstr "Notificatiemail: leeg veld schakelt ze uit"
 
 msgid "Notify to"
-msgstr ""
+msgstr "Notifactie aan"
 
 msgid "Now you can proceed to login."
-msgstr ""
+msgstr "Nu kun je verder gaan naar de login."
 
 msgid "Number of jobs"
-msgstr ""
+msgstr "Aantal taken"
 
 msgid "Number of latest entries to display on the RSS (an integer)"
-msgstr ""
+msgstr "Aantal laatste inzendingen om weer te geven op de RSS (een integer)"
 
 msgid "Number of pages"
-msgstr ""
+msgstr "Aantal paginas"
 
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
+"Aantal resultaten om weer te geven op gepagineerde paginas (een integer)"
 
 msgid "OPDS"
-msgstr ""
+msgstr "OPDS"
 
 msgid "Older first"
-msgstr ""
+msgstr "Ouder eerst"
 
 msgid "Older texts"
-msgstr ""
+msgstr "Oudere teksten"
 
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
+"Een pagina per tekst. Dit is alleen nuttig als je de snijtekens wil toevoegen"
 
 msgid "Open wiki"
-msgstr ""
+msgstr "Open wiki"
 
 msgid "Option templates"
-msgstr ""
+msgstr "Optiesjablonen"
 
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
@@ -1321,47 +1495,58 @@ msgid ""
 "          later, or, better, contact the librarians before proceeding,\n"
 "          to avoid wasting energies."
 msgstr ""
+"Of maak een nieuwe herziening, op eigen risico. Het hebben van\n"
+"          meerdere gelijktijdige herzieningen betekent dat tenzij iemand\n"
+"          er voor zorgt, er maar een wordt gekozen. Je kunt verdergaan,\n"
+"          het later opnieuw proberen, of (bij voorkeur) contact opnemen met\n"
+"          de bibliothecarissen voordat je verdergaat om te voorkomen dat je\n"
+"          energie verspilt."
 
 msgid "Or log in, if you have an account."
-msgstr ""
+msgstr "Of log in, als je een account hebt."
 
 msgid "Or provide an HTML file to upload"
-msgstr ""
+msgstr "Of voorzie in een HTML-bestand om te uploaden"
 
 msgid "Or wrap it in"
-msgstr ""
+msgstr "Of verpak het ik"
 
 msgid "Ordered List"
-msgstr ""
+msgstr "Georderde lijst"
 
 msgid "Otherwise, please just ignore this mail."
-msgstr ""
+msgstr "In andere gevallen kun je deze e-mail negeren."
 
 msgid "PDF"
-msgstr ""
+msgstr "PDF"
 
 msgid "PDF logo"
-msgstr ""
+msgstr "PDF logo"
 
 msgid "PDFs cannot be used in the body."
-msgstr ""
+msgstr "PDFs kunnen niet in de hoofdtekst worden gebruikt."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
+"PDFs niet niet vermeld staan in de %1 instructie worden wel opgeslagen maar "
+"genegeerd."
 
 msgid "Page not found!"
-msgstr ""
+msgstr "Pagina niet gevonden!"
 
 msgid "Page where to start a chapter"
-msgstr ""
+msgstr "Pagina waar een hoofdstuk begint"
 
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
 "        This is not meant to be folded."
 msgstr ""
+"Paginas worden niet herorderd. De eerste pagina bevat\n"
+"        paginas 1 en 2, de tweede 3 en 4, enzovoort, naast elkaar.\n"
+"        Dit is niet bedoeld om te vouwen."
 
 msgid ""
 "Pages are reordered, in one or more groups\n"
@@ -1372,101 +1557,117 @@ msgid ""
 "        whole book in a single signature, or an optimized size to\n"
 "        reduce the number of blank pages."
 msgstr ""
+"Paginas worden herordend in een of meer groepen\n"
+"        (katernen), daarna in half gevouwen. Als je meerdere\n"
+"        katernen hebt, bind je ze samen als een boek. Met deze\n"
+"        optie kun je de grootte van de katernen bepalen. Dit kan\n"
+"        een vaste waarde zijn (4,8,16 etc.), het hele boek in een\n"
+"        enkel katern, of een optimale waarde om het aantal blanco\n"
+"        paginas te minimaliseren."
 
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
-msgstr ""
+msgstr "Papierdikte, (0.10 zou voldoende moeten zijn gewoon 80g/m2 papier)"
 
 msgid "Paragraphs"
-msgstr ""
+msgstr "Alineas"
 
 msgid "Part"
-msgstr ""
+msgstr "Deel"
 
 msgid "Part, for larger books only"
-msgstr ""
+msgstr "Deel, alleen voor grotere boeken"
 
 msgid "Partial selection"
-msgstr ""
+msgstr "Deelselectie"
 
 msgid "Password"
-msgstr ""
+msgstr "Wachtwoord"
 
 #. (host)
 msgid "Password reset for %1"
-msgstr ""
+msgstr "Wachtwoord opnieuw instellen voor %1"
 
 msgid "Password too short"
-msgstr ""
+msgstr "Wachtwoord te kort"
 
 msgid "Password updated"
-msgstr ""
+msgstr "Wachtwoord geupdated"
 
 msgid "Password, minimum 8 characters."
-msgstr ""
+msgstr "Wachtwoord, minimaal 8 karakters."
 
 msgid "Passwords do not match"
-msgstr ""
+msgstr "Wachtwoorden komen niet overeen"
 
 msgid "Payload"
-msgstr ""
+msgstr "Payload"
 
 msgid "Pending revisions"
-msgstr ""
+msgstr "Herzieningen in de wacht"
 
 msgid "Picture"
-msgstr ""
+msgstr "Foto"
 
 msgid "Place it in the body with a description:"
-msgstr ""
+msgstr "Plaats het in de hoofdtekst met een beschrijving:"
 
 msgid "Place it in the body without description:"
-msgstr ""
+msgstr "Plaats het in de hoofdtekst zonder een beschrijving:"
 
 msgid "Place the notes on the back of the first page, impressum-style"
 msgstr ""
+"Plaats de notities op de achterkant van de eerste paginas, zoals een "
+"impressum"
 
 msgid "Plain PDF"
-msgstr ""
+msgstr "Gewone PDF"
 
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
 msgstr ""
+"Controleer je inbox, we hebben geprobeerd een e-mail af te leveren bij het "
+"adres dat je hebt opgegeven met een wachtwoord-reset link"
 
 msgid "Please choose the Beamer color theme"
-msgstr ""
+msgstr "Kies het Beamer kleurthema"
 
 msgid "Please choose the Beamer theme"
-msgstr ""
+msgstr "Kies het Beamer thema"
 
 msgid "Please choose the font size"
-msgstr ""
+msgstr "Kies de lettertypegrootte"
 
 msgid "Please choose the main font"
-msgstr ""
+msgstr "Kies het hoofdlettertype"
 
 msgid "Please choose the mono font"
-msgstr ""
+msgstr "Kies het niet-proportionele (monospace) lettertype"
 
 msgid "Please choose the sans font"
-msgstr ""
+msgstr "Kies het schreefloze lettertype"
 
 msgid "Please describe shortly what you did"
-msgstr ""
+msgstr "Omschrijf wat je hebt gedaan"
 
 msgid "Please do not use a valuable password."
-msgstr ""
+msgstr "Gebruik geen belangrijk wachtwoord."
 
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
 msgstr ""
+"Gebruik niet de hogere niveaus (delen of hoofdstukken) voor korte artikelen "
+"met secties."
 
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
 "        from the same person."
 msgstr ""
+"Geef ons een gebruikersnaam. Het mag *geen* e-mailadres zijn.\n"
+"        Gewoon een mooie naam, zodat we weten dat verschillende\n"
+"        uploads van dezelfde persoon komen."
 
 msgid ""
 "Please keep in mind that filters are language-specific\n"
@@ -1474,6 +1675,10 @@ msgid ""
 "              text. If not available, they will just leave the text as\n"
 "              is."
 msgstr ""
+"Houd in gedachten dat filters taal-specifiek zijn\n"
+"                en wel of niet beschikbaar zouden kunnen zijn voor\n"
+"                de taal van de tekst. Indien niet beschikbaar laten ze\n"
+"                de tekst zoals die is."
 
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
@@ -1482,155 +1687,184 @@ msgid ""
 "    previous one. Try to avoid this, unless you know what you're\n"
 "    doing."
 msgstr ""
+"Houd in gedachten dat als je \"Forceer publicatie\" als\n"
+"   als actie ziet, het inhoudt dat de herziening achterhaald is\n"
+"   door een andere, dus als je deze publiceert, maakt je een\n"
+"   eerdere herziening ongedaan. Probeer dit te vermijden,\n"
+"   tenzij je weet wat je doet."
 
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
+"Laat een e-mailadres achter als je gecontacteerd wil worden over deze "
+"verandering"
 
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
+"Let op dat omhullende tags alleen en op een aparte regel moeten worden "
+"geplaatst."
 
 msgid ""
 "Please note that you have to upload them first and\n"
 "          use the name the form provides. Images are always renamed by\n"
 "          us."
 msgstr ""
+"Let op dat je ze eerst moet uploaden en de naam\n"
+"          moet gebruiken uit het formulier. Afbeeldingen worden altijd\n"
+"          door ons hernoemd."
 
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
 "        from word” button. This is supposed to preserve the markup."
-msgstr ""
+msgstr "Let op dat je tekst uit een Word/OpenOffice/LibreOffice/HTML document."
 
 msgid ""
 "Please note: without any prefix, protocol or hostname, just\n"
 "  the bare page name as shown above. External redirecting is not\n"
 "  supported."
 msgstr ""
+"Let op: zonder enig voorvoegsel, protocol or hostname, allen\n"
+"  de kale paginanaam zoals hierboven getoond. Externe doorverwijzing\n"
+"  wordt niet ondersteund."
 
 msgid "Please prove you are a human"
-msgstr ""
+msgstr "Toon aan dat je geen robot bent"
 
 msgid "Please reload your page"
-msgstr ""
+msgstr "Herlaad de pagina"
 
 msgid "Please remove this file from the body first"
-msgstr ""
+msgstr "Verwijder dit bestand eerst uit de hoofdtekst"
 
 msgid "Please select"
-msgstr ""
+msgstr "Selecteer"
 
 msgid "Please select the desired fonts"
-msgstr ""
+msgstr "Selecteer de gewenste lettertypes"
 
 msgid "Please select the signature size:"
-msgstr ""
+msgstr "Selecteer de katerngrootte:"
 
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
 msgstr ""
+"Selecteer de grootte van iedere pagina inclusief de snijmarkeringen, voor "
+"het opleggen"
 
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
 "        title and eventually a number if the URI already exists is\n"
 "        usually a good choice"
 msgstr ""
+"Stel de gewenste URI in. Auteur (indien aanwezig),\n"
+"        titel en eventueel een nummer als de URI al bestaat\n"
+"        is meestal een goede keuze"
 
 msgid "Please setup the Beamer layout"
-msgstr ""
+msgstr "Stel de Beamer layout is"
 
 msgid "Please upload your file again!"
-msgstr ""
+msgstr "Upload je bestand nog een keer!"
 
 msgid "Poetry, bibliographies, plays, code blocks"
-msgstr ""
+msgstr "Poezie, bibliografie, toneelstukken, codeblokken"
 
 msgid "Pointing to"
-msgstr ""
+msgstr "Wijzend naar"
 
 msgid "Popular texts"
-msgstr ""
+msgstr "Populaire teksten"
 
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
 msgstr ""
+"Voorvoegsels voor geordende lijsten kunnen zijn\n"
+"        “1.”, “a.”, “A.”, “i.”, “I.”, afhankelijk van het type lijst\n"
+"        dat je nodig hebt."
 
 msgid "Preview"
-msgstr ""
+msgstr "Voorbeeldweergave"
 
 msgid "Preview box height in pixel"
-msgstr ""
+msgstr "Voorbeeldweergave vensterhoogte in pixels"
 
 msgid "Previous"
-msgstr ""
+msgstr "Vorige"
 
 msgid "Priority"
-msgstr ""
+msgstr "Prioriteit"
 
 msgid "Private"
-msgstr ""
+msgstr "Prive"
 
 msgid "Procedure"
-msgstr ""
+msgstr "Procedure"
 
 msgid "Produce slides."
-msgstr ""
+msgstr "Maak slides."
 
 msgid "Produced"
-msgstr ""
+msgstr "Gemaakt"
 
 msgid "Publication date"
-msgstr ""
+msgstr "Publicatiedatum"
 
 msgid "Publication date on this site."
-msgstr ""
+msgstr "Publicatiedatum op deze site."
 
 msgid "Publish"
-msgstr ""
+msgstr "Publiceer"
 
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
+"Gepubliceerd in *Een mooi boek*, gepubliceerd door Mijn Uitgeverij, 2014"
 
 msgid "Published on this site"
-msgstr ""
+msgstr "Gepubliceerd op deze site"
 
 msgid "Purge"
-msgstr ""
+msgstr "Opschonen"
 
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
 msgstr ""
+"Opschonen betekent volledig verwijderen uit het archief, niet alleen "
+"verstoppen."
 
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
 "\t  body."
 msgstr ""
+"Stop extra informatie hier (oorspronkelijke\n"
+"\t titel, vertalers, naamsvermeldingen, etc). Voetnoten\n"
+"\t horen in de hoofdtekst."
 
 msgid "Quarter Letter paper"
-msgstr ""
+msgstr "Kwart US-Letter papier"
 
 msgid "Queue"
-msgstr ""
+msgstr "Wachtrij"
 
 msgid "Quota exceeded, too many pages"
-msgstr ""
+msgstr "Quotum overschreden, te veel paginas"
 
 msgid "Quotes"
-msgstr ""
+msgstr "Citaten"
 
 msgid "RSS feed"
-msgstr ""
+msgstr "RSS feed"
 
 msgid "Random"
-msgstr ""
+msgstr "Willekeurig"
 
 msgid "Read the whole text..."
-msgstr ""
+msgstr "Lees de hele tekst..."
 
 msgid "Real time help"
-msgstr ""
+msgstr "Realtime hulp"
 
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
@@ -1642,386 +1876,406 @@ msgid ""
 "              message. The procedure tries to be safe and will ignore\n"
 "              the change if footnotes are missing or are too many."
 msgstr ""
+"Herschik de voetnoten, waarbij je de nummering\n"
+"              vastzet, en alleen de invoervolgorde in ogenschouw\n"
+"              wordt genomen. Laat onaangevinkt als je niet weet wat\n"
+"              dit betekent. Deze optie kan destructief zijn, gebruik dus\n"
+"              met voorzorg en controleer het resultaat. Mocht je\n"
+"              problemen tegenkomen, sla het resultaat dan op en\n"
+"              vermeld ze in het bericht. De procedure probeert\n"
+"              voorzichtig te zijn en zal de wijziging negeren als er\n"
+"              voetnoten missen of er teveel zijn."
 
 msgid "Reason"
-msgstr ""
+msgstr "Reden"
 
 msgid "Reason for deletion"
-msgstr ""
+msgstr "Reden voor verwijdering"
 
 msgid "Rebuild"
-msgstr ""
+msgstr "Maak opnieuw"
 
 msgid "Rebuild all generated files"
-msgstr ""
+msgstr "Maak alle gegenereerde bestanden opnieuw"
 
 msgid "Rebuild the generated formats"
-msgstr ""
+msgstr "Maak de de gegenereerde layouts opnieuw"
 
 msgid "Rebuilding"
-msgstr ""
+msgstr "Opnieuw aan het maken"
 
 msgid "Recheck"
-msgstr ""
+msgstr "Controleer opnieuw"
 
 msgid "Redirections"
-msgstr ""
+msgstr "Verwijzingen"
 
 msgid "Refresh and apply filters"
-msgstr ""
+msgstr "Ververs en pas filters toe"
 
 msgid "Related projects"
-msgstr ""
+msgstr "Gerelateerde projecten"
 
 #. ("$name $url")
 msgid "Remote repository %1 added"
-msgstr ""
+msgstr "Externe repository %1 toegevoegd"
 
 #. ($name)
 msgid "Remote repository %1 removed"
-msgstr ""
+msgstr "Externe repository %1 verwijderd"
 
 msgid "Remotes"
-msgstr ""
+msgstr "Externen"
 
 msgid "Remove"
-msgstr ""
+msgstr "Verwijder"
 
 msgid "Remove cover image"
-msgstr ""
+msgstr "Verwijder omslagafbeelding"
 
 msgid "Rename to"
-msgstr ""
+msgstr "Hernoem naar"
 
 msgid "Repeat email"
-msgstr ""
+msgstr "Herhaal e-mail"
 
 msgid "Repeat password"
-msgstr ""
+msgstr "Herhaal wachtwoord"
 
 msgid "Repository"
-msgstr ""
+msgstr "Repository"
 
 msgid "Request failed! Please report the the problem"
-msgstr ""
+msgstr "Verzoek mislukt! Vertel ons alsjeblieft over dit probleem"
 
 msgid "Reset all"
-msgstr ""
+msgstr "Stell alles opnieuw in"
 
 msgid "Reset filters"
-msgstr ""
+msgstr "Stel alle filters opnieuw in"
 
 msgid "Reset password"
-msgstr ""
+msgstr "Stel wachtwoord opnieuw in"
 
 msgid "Reset to site defaults"
-msgstr ""
+msgstr "Stel in op de standaardinstellingen van de site"
 
 msgid "Restricted configuration variables"
-msgstr ""
+msgstr "Afgeschermde configuratievariabelen"
 
 msgid "Restricted format options"
-msgstr ""
+msgstr "Afgescherme layoutopties"
 
 msgid "Results per page:"
-msgstr ""
+msgstr "Resultaten per pagina:"
 
 msgid "Retrieved on DATE from URL"
-msgstr ""
+msgstr "Verkregen op DATUM van URL"
 
 msgid "Retrieved on March 8, 2012 from"
-msgstr ""
+msgstr "Verkregen op 8 maart 2012 van"
 
 msgid "Revision"
-msgstr ""
+msgstr "Herziening"
 
 #. ($uri)
 msgid "Revision for %1 has been deleted"
-msgstr ""
+msgstr "Herziening voor %1 is verwijderd"
 
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
 msgid "Running headings"
-msgstr ""
+msgstr "Lopende koppen"
 
 msgid "SSL CA certificate path (Apache)"
-msgstr ""
+msgstr "SSL CA certificaatpad (Apache)"
 
 msgid "SSL certificate path (Apache)"
-msgstr ""
+msgstr "SSL certificaatpad (Apache)"
 
 msgid "SSL chained certificate path (Nginx)"
-msgstr ""
+msgstr "SSL certificaatketenpad (Nginx)"
 
 msgid "SSL configuration"
-msgstr ""
+msgstr "SSL configuratie"
 
 msgid "SSL key path"
-msgstr ""
+msgstr "SSL sleutelpad"
 
 msgid "Same as above, for the Archive menu"
-msgstr ""
+msgstr "Zelfde als boven, voor het Archiefmenu"
 
 msgid "Same as above, for the Related Projects menu"
-msgstr ""
+msgstr "Zelfde als boven, voor het gerelateerde projectenmenu"
 
 msgid "Sans font"
-msgstr ""
+msgstr "Schreefloos lettertype"
 
 msgid "Save"
-msgstr ""
+msgstr "Opslaan"
 
 msgid "Save the current settings with a name"
-msgstr ""
+msgstr "Sla de huidige instellingen op met een naam"
 
 #. ($pname)
 msgid "Saved \"%1\" configuration"
-msgstr ""
+msgstr "Configuratie \"%1\" opgeslagen"
 
 msgid "Search"
 msgstr "Zoeken"
 
 msgid "Search results"
-msgstr ""
+msgstr "Resultaten zoeken"
 
 msgid "Secondary footnotes"
-msgstr ""
+msgstr "Secundaire voetnoten"
 
 msgid "Section"
-msgstr ""
+msgstr "Sectie"
 
 msgid "Section and subsection. If one side document: section."
-msgstr ""
+msgstr "Sectie en subsectie. Indien eenzijdigd document: sectie."
 
 msgid "See here for more details."
-msgstr ""
+msgstr "Zie hier voor meer details."
 
 msgid "See here for the full documentation."
-msgstr ""
+msgstr "Zie hier voor de volledige documentatie."
 
 msgid "See the full manual for more details (english)"
-msgstr ""
+msgstr "Zie de volledige gebruiksaanwijzing voor meer details (engels)"
 
 msgid "Select"
-msgstr ""
+msgstr "Selecteer"
 
 msgid "Select all"
-msgstr ""
+msgstr "Selecteer alle"
 
 msgid "Select individual parts for the bookbuilder"
-msgstr ""
+msgstr "Selecteer individuele delen voor de boekmaker"
 
 msgid "Separate body fields"
-msgstr ""
+msgstr "Scheid hoofdtekstvelden"
 
 msgid "Separate footer fields"
-msgstr ""
+msgstr "Scheid voettekstvelden"
 
 msgid "Separate header fields"
-msgstr ""
+msgstr "Scheid koptekstvelden"
 
 msgid "Session sharing"
-msgstr ""
+msgstr "Sessie delen"
 
 msgid "Set a date in the future if you want it deferred."
-msgstr ""
+msgstr "Stek een datum in de toekomst in als je het uit wil stellen."
 
 msgid "Show cheatsheet"
-msgstr ""
+msgstr "Toon spiekbriefje"
 
 msgid "Show differences in other tab"
-msgstr ""
+msgstr "Toon verschillen in andere tab"
 
 msgid "Show filters"
-msgstr ""
+msgstr "Toon filters"
 
 msgid "Show preview in other tab"
-msgstr ""
+msgstr "Toon voorvertoning in andere tab"
 
 msgid "Show text type and number of pages in the listing"
-msgstr ""
+msgstr "Toon teksttype en aantal paginas in de lijstvermelding"
 
 msgid "Show the text infobox at the bottom of the texts"
-msgstr ""
+msgstr "Toon het tekstinfovenster onderaan de teksten"
 
 msgid "Single bars"
-msgstr ""
+msgstr "Enkele strepen"
 
 msgid "Site already exists"
-msgstr ""
+msgstr "Site bestaat al"
 
 msgid "Site group"
-msgstr ""
+msgstr "Sitegroep"
 
 msgid "Site id"
-msgstr ""
+msgstr "Site id"
 
 msgid "Site mail (From field)"
-msgstr ""
+msgstr "Site mail (Van veld)"
 
 msgid "Site mode"
-msgstr ""
+msgstr "Sitemodus"
 
 msgid "Site name"
-msgstr ""
+msgstr "Sitenaam"
 
 msgid "Site slogan"
-msgstr ""
+msgstr "Siteslogan"
 
 msgid "Sites"
-msgstr ""
+msgstr "Sites"
 
 msgid "Slides"
-msgstr ""
+msgstr "Slide"
 
 msgid "Slides (PDF)"
-msgstr ""
+msgstr "Slides (PDF)"
 
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
+"Zodat we er zeker van kunnen zijn dat we geen wachtwoorden naar willekeurige "
+"mensen e-mailen"
 
 msgid "Some fields are missing, all are required"
-msgstr ""
+msgstr "Sommige velden missen, alle zijn vereist"
 
 msgid "Some fields are too long"
-msgstr ""
+msgstr "Sommige velden zijn te lang"
 
 msgid "Some ongoing revisions were found"
-msgstr ""
+msgstr "Er zijn een paar lopende herzieningen gevonden"
 
 #. (username, host)
 msgid "Someone, probably you, has requested a password reset for %1 at %2."
 msgstr ""
+"Iemand, waarschijnlijk jij, heeft verzocht een wachtwoord opnieuw in te "
+"stellen voor %1 op %2."
 
 msgid "Sorry, too many jobs pending, please try again later!"
-msgstr ""
+msgstr "Sorry, te veel taken in de wacht, probeer het later opnieuw!"
 
 msgid "Sorting:"
-msgstr ""
+msgstr "Sortering:"
 
 msgid "Source"
-msgstr ""
+msgstr "Bron"
 
 msgid "Source files"
-msgstr ""
+msgstr "Bronbestanden"
 
 msgid "Source files with attachments"
-msgstr ""
+msgstr "Bronbestanden met bijlages"
 
 msgid "Source, notes..."
-msgstr ""
+msgstr "Bron, notities..."
 
 msgid "Sources"
-msgstr ""
+msgstr "Bronnen"
 
 msgid "Special blocks"
-msgstr ""
+msgstr "Speciale blokken"
 
 msgid "Special pages"
-msgstr ""
+msgstr "Speciale paginas"
 
 msgid "Specify a whitespace-separated list of languages to activate it."
-msgstr ""
+msgstr "Specificeer een spatie-gescheiden lijst van talen om het te activeren."
 
 msgid "Stale editing"
-msgstr ""
+msgstr "Oud bewerken"
 
 msgid "Standalone HTML (printer-friendly)"
-msgstr ""
+msgstr "Losstaande HTML (printervriendelijk)"
 
 msgid "Standard"
-msgstr ""
+msgstr "Standaard"
 
 msgid "Start the document with an empty page"
-msgstr ""
+msgstr "Begin het document met een lege pagina"
 
 msgid "Started"
-msgstr ""
+msgstr "Begonnen"
 
 msgid "Static page without javascript"
-msgstr ""
+msgstr "Statische pagina zonder javascript"
 
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 msgid "Subsection"
-msgstr ""
+msgstr "Subsectie"
 
 msgid "Subsubsection or description item"
-msgstr ""
+msgstr "Subsubsectie of beschrijvingsitem"
 
 msgid "Subtitle"
-msgstr ""
+msgstr "Ondertitel"
 
 msgid "Such an URI already exists"
-msgstr ""
+msgstr "Zo'n URI bestaat al"
 
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
+"Zo'n koptekst zal de tekst de-publiceren en\n"
+"  vervangen door een verwijzing, en zal hier \n"
+"  vermeld worden"
 
 msgid "Such an user already exists!"
-msgstr ""
+msgstr "Zo'n gebruiker bestaat al!"
 
 msgid "Such username already exists"
-msgstr ""
+msgstr "Zo'n gebruikersnaam bestaat al"
 
 msgid "Summary"
-msgstr ""
+msgstr "Samenvatting"
 
 msgid "Supported directive in the header"
-msgstr ""
+msgstr "Ondersteunde instructie in de koptekst"
 
 msgid "Table of Contents"
-msgstr ""
+msgstr "Inhoudsopgave"
 
 msgid "Tables"
-msgstr ""
+msgstr "Tabellen"
 
 msgid "Tag cloud with authors"
-msgstr ""
+msgstr "Tagwold met auteurs"
 
 msgid "Tag cloud with topics"
-msgstr ""
+msgstr "Tagwolk met onderwerpen"
 
 msgid "Task"
-msgstr ""
+msgstr "Taak"
 
 msgid "Teaser"
-msgstr ""
+msgstr "Teaser"
 
 msgid "Teaser image"
-msgstr ""
+msgstr "Teaserplaatje"
 
 msgid "Term"
-msgstr ""
+msgstr "Term"
 
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 msgid "Tested applications, in this order of preference"
-msgstr ""
+msgstr "Geteste toepassing, in deze volgorde van voorkeur"
 
 msgid "Text formatted with markup"
-msgstr ""
+msgstr "Opgemaakte tekst"
 
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
 msgstr ""
+"Tekstverwijzingen zijn in de tekst zelf ingesteld,\n"
+"  met gebruikt van de DELETED koptekst met deze syntax"
 
 msgid "Texts"
-msgstr ""
+msgstr "Teksten"
 
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
 msgstr ""
+"De Beamerselecties zijn alleen relevant als je de slides-uitvoer\n"
+"  activeert."
 
 msgid "The OPDS address for this site is:"
-msgstr ""
+msgstr "Het OPDS adres voor deze site is:"
 
 msgid ""
 "The PDF logo value can be either an absolute path\n"
@@ -2029,59 +2283,73 @@ msgid ""
 "            TeXlive tree. You can do so with the following commands.\n"
 "            The last one checks if the file can be found."
 msgstr ""
+"De PDF logowaarde kan ofwel een absoluut pad\n"
+"            zijn, ofwel alleen een bestandsnaam als je ervoor\n"
+"            kiest om het in de TeXlive boom te installeren. Je kunt het "
+"doen\n"
+"            met de volgende commando's. De laatste controleert of het\n"
+"            bestand gevonden kan worden."
 
 #. ($uri)
 msgid "The description for %1 has been updated"
-msgstr ""
+msgstr "De beschrijving voor %1 is geupdated"
 
 msgid "The file uploaded is not an HTML file!"
-msgstr ""
+msgstr "Het geuploade bestand is geen HTML bestand!"
 
 msgid "The following settings provide the defaults for each format."
-msgstr ""
+msgstr "De volgende instellingen voorzien de standaard voor ieder formaat."
 
 msgid "The following values are used to generate the webserver configuration."
 msgstr ""
+"De volgende waardes worden gebruikt om de webserverconfiguratie te genereren."
 
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
 msgstr ""
+"De gegenereerde webserverconfiguratie zal alle\n"
+"          HTTP verzoeken doorsturen naar HTTPS"
 
 #. (valid)
 msgid "The link is valid until %1 (one hour from now)"
-msgstr ""
+msgstr "De link is geldig tot %1 (een uur vanaf nu)"
 
 msgid "The logo has the site name on itself"
-msgstr ""
+msgstr "Op het logo staat de sitenaam"
 
 msgid "The optional subtitle"
-msgstr ""
+msgstr "De optionele ondertitel"
 
 msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
 msgstr ""
+"De pagina /special/index is dubbel speciaal. Er wordt aangenomen\n"
+"dat het de standaard pagina om te bezoeken is als de site's root wordt "
+"geladen."
 
 msgid "The password will be mailed at this address"
-msgstr ""
+msgstr "Het wachtwoord wordt ge-e-maild naar dit adres"
 
 msgid "The revision has the following messages"
-msgstr ""
+msgstr "De herziening heeft de volgende berichten"
 
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr ""
+"De site zal de PDFs weergeven met een miniafbeelding\n"
+"          aan het van het document."
 
 msgid "The text structure is shown below."
-msgstr ""
+msgstr "De tekststructuur wordt hieronder getoond."
 
 msgid "The text to show on the homepage preview"
-msgstr ""
+msgstr "De tekst om op de thuispagina-voorvertoning te laten zien"
 
 msgid "The text was added to the bookbuilder"
-msgstr ""
+msgstr "De tekst is toegevoegd aan de boekmaker"
 
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
@@ -2089,55 +2357,68 @@ msgid ""
 "          nice title” could have this set to “Nice title”, and will be\n"
 "          listed under N, not under A."
 msgstr ""
+"De titel van het document, voor sorteerdoeleinden. Nuttig\n"
+"          als je het artikel wil strippen, indien aanwezig. Een tekst\n"
+"          getiteld \"Een mooie titel\" zou bijvoorbeeld ingesteld kunnen\n"
+"          worden op \"Mooie titel\", en onder M vermeld worden in\n"
+"          plaats van E."
 
 msgid "The title of the document. The only mandatory directive."
-msgstr ""
+msgstr "De titel van het document. De enige verplichte instructie."
 
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
 msgstr ""
+"De webserver moet opnieuw geconfigureerd worden. Voer in een root shell de "
+"volgende commando's uit:"
 
 msgid "The whole book in as single signature"
-msgstr ""
+msgstr "Het hele boek als een enkel katern"
 
 msgid "Then approve the change as it would be a normal publishing."
-msgstr ""
+msgstr "Keur dan de wijziging goed als zou het een normale publicering zijn."
 
 msgid "Then fetch the updates from this page."
-msgstr ""
+msgstr "Haal dan de updates van deze pagina."
 
 msgid "There are failed jobs"
-msgstr ""
+msgstr "Er zijn mislukte taken"
 
 msgid "These texts are missing the unique id."
-msgstr ""
+msgstr "Deze teksten missen de unieke id."
 
 msgid "They have the same syntax (images are actually links)"
-msgstr ""
+msgstr "Ze hebben dezelfde syntax (afbeeeldingen zijn eigenlijk links)"
 
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
 msgstr ""
+"Ze zouden paden moeten zijn relatief aan de webserverconfiguratie root of "
+"absolute paden (aangeraden)."
 
 msgid "This also makes /mirror/ public"
-msgstr ""
+msgstr "Dit maakt ook /mirror/ publiek"
 
 msgid "This directive wants a whitespace separated list of filenames."
-msgstr ""
+msgstr "Deze instructie wil een spatiegescheiden lijst met bestandsnamen."
 
 msgid "This field is required"
-msgstr ""
+msgstr "Dit veld is vereist"
 
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
 "        above and postpone the editing to the next step."
 msgstr ""
+"Dit is een WJZIWJK bewerker. Als je liever\n"
+"        de wiki-achtige syntax gebruikt laat het dan zoals het ism\n"
+"        vul de vereiste velden hierboven in en stel het bewerken\n"
+"        uit tot de volgende stap."
 
 msgid "This is the caption"
-msgstr ""
+msgstr "Dit is het onderschrift"
 
 msgid ""
 "This mail has been sent to notify you about a new text\n"
@@ -2146,99 +2427,108 @@ msgid ""
 "If this doesn't happen, it means that the uploading has been abandoned\n"
 "and you may want to check it out."
 msgstr ""
+"Deze mail is verstuurd om je op de hoogte te stellen van\n"
+"het aanmaken van een nieuwe tekst, zelfs als het uploaden nog niet\n"
+"voltooid is en de gebruiker de upload nog af moet maken. Een andere\n"
+"mail zou er snel aan moeten komen. Als dat niet gebeurt, betekent het\n"
+"dat het uploaden is afgebroken en je het misschien moet controleren."
 
 msgid "This revision is already published, ignoring changes"
-msgstr ""
+msgstr "Deze herziening is al gepubliceerd, waarbij wijzigingen genegeerd zijn"
 
 msgid "This revision is being actively edited"
-msgstr ""
+msgstr "Deze herziening wordt actief bewerkt"
 
 msgid "This revision is being actively edited by you"
-msgstr ""
+msgstr "Deze herziening wordt actief bewerkt door jou"
 
 msgid "This revision is being edited by someone else!"
-msgstr ""
+msgstr "Deze herizening wordt bewerkt door iemand anders!"
 
 msgid "This section will not produce a slide"
-msgstr ""
+msgstr "Deze sectie zal geen slide creeeren"
 
 msgid ""
 "This site is private and mobile applications should ask for your username "
 "and\n"
 "  password to access the OPDS."
 msgstr ""
+"Deze site is prive en mobiele applicaties zouden om je gebruikersnaam en\n"
+"  wachtwoord moeten vragen om toegang te krijgen tot de OPDS."
 
 msgid "This text does not exist"
-msgstr ""
+msgstr "Deze tekst bestaat niet"
 
 msgid "This text is a book"
-msgstr ""
+msgstr "Deze tekst is een boek"
 
 msgid "This text is an article"
-msgstr ""
+msgstr "Deze tekst is een artikel"
 
 msgid "This text is new"
-msgstr ""
+msgstr "Deze tekst is nieuw"
 
 msgid "This text is not available"
-msgstr ""
+msgstr "Deze tekst is niet beschikbaar"
 
 msgid "This text is not public yet"
-msgstr ""
+msgstr "Deze tekst is nog niet publiek"
 
 msgid "This text is not published yet"
-msgstr ""
+msgstr "Deze tekst is nog niet gepubliceerd"
 
 #. (rev.is_deferred)
 msgid "This text will be deferred to %1"
-msgstr ""
+msgstr "Deze test zal worden uitgesteld tot %1"
 
 msgid "Thumbnail"
-msgstr ""
+msgstr "Miniafbeelding"
 
 msgid "Time is optional."
-msgstr ""
+msgstr "Tijd is optioneel."
 
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 msgid "Title and chapter. If one side document: chapter."
-msgstr ""
+msgstr "Titel en hoofdstuk. Indien een zijde document: hoofdstuk."
 
 msgid "Title and section.  If one side document: section."
-msgstr ""
+msgstr "Titel en sectie. Indien een zijde document: sectie."
 
 msgid "Title and subtitle. If one side document: title."
-msgstr ""
+msgstr "Titel en ondertitel. Indien een zijde document: titel."
 
 msgid "Title for sorting"
-msgstr ""
+msgstr "Titel voor sortering"
 
 msgid "Title, author, date..."
-msgstr ""
+msgstr "Titel, auteur, datum..."
 
 msgid "Titles"
-msgstr ""
+msgstr "Titels"
 
 #. (pending_url)
 msgid "To apply the changes, you can visit %1"
-msgstr ""
+msgstr "Om de wijzigingen toe te passen kun je naar %1 gaan"
 
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr ""
+"Om de PDFs weer te geven stel je de volgende tekenreeks in als koptekst of "
+"voeg je die eraan toe"
 
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
-msgstr ""
+msgstr "Om de spaties en regeleindes te behouden omhul je de alineas met"
 
 msgid "To quickly format bibliographies wrap them in"
-msgstr ""
+msgstr "Om snel bibliografien op te maken omhul je ze met"
 
 msgid "To quickly format plays, use"
-msgstr ""
+msgstr "Om snel toneelstukken op te maken gebruik je"
 
 msgid "To resume the editing you can visit the following URL"
-msgstr ""
+msgstr "Om verder te gaan met bewerken ga je naar de volgende URL"
 
 #. (loc('Update')
 #. (loc("Update"))
@@ -2246,161 +2536,179 @@ msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
 msgstr ""
+"Om de sjablonen op te slaan of te actualiseren, moet je\n"
+"    eerst de opties opslaan met de \"%1\" knop"
 
 msgid "To view the changes introduced, you can visit the following URL"
-msgstr ""
+msgstr "Om de ingediende wijzigingen te zien ga je naar de volgende URL"
 
 msgid "Toggle fullscreen editor"
-msgstr ""
+msgstr "Kies schermvullende editor"
 
 msgid "Topic"
-msgstr ""
+msgstr "Onderwerp"
 
 msgid "Topics"
 msgstr "Onderwerpen"
 
 msgid "Total pages"
-msgstr ""
+msgstr "Totaal aantal paginas"
 
 msgid "Triple bars"
-msgstr ""
+msgstr "Driedubbele strepen"
 
 msgid "Try a random text if unsure"
-msgstr ""
+msgstr "Probeer een willekeurige tekst indien niet zeker"
 
 msgid "Try again"
-msgstr ""
+msgstr "Probeer opnieuw"
 
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
 msgstr ""
+"Verander links naar afbeeldingen in afbeeldingen (heeft alleen invloed op de "
+"siteweergave, statische weergaves hebben de link)"
 
 msgid ""
 "Turn links without description to YouTube, Vimeo,\n"
 "            Gmaps into widgets (affects site display only, static\n"
 "            formats have the link)"
 msgstr ""
+"Verander links zonder beschrijving naar Youtube, Vimeo,\n"
+"            Gmaps in widgets (heeft alleen invloed op de siteweergave, "
+"statische weergaves hebben de link)"
 
 msgid "Two side layout"
-msgstr ""
+msgstr "Twee zijde indeling"
 
 msgid "URI"
-msgstr ""
+msgstr "URI"
 
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgid ""
 "URL of the new remote repository\n"
 "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
 "        supported."
 msgstr ""
+"URL van de nieuwe externe repository\n"
+"        HTTP, HTTPS, GIT, of lokaal (alleen het pad). SSH wordt niet\n"
+"        ondersteund."
 
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 msgid "Unable to load the bookbuilder session"
-msgstr ""
+msgstr "Niet in staat om de boekmakersessie te laden"
 
 msgid "Unbranded PDF (hide site name, logo, etc.)"
-msgstr ""
+msgstr "Ongemerkte PDF (verberg sitenaam, logo etc.)"
 
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
 msgstr ""
+"Onvoorwaardelijk alle zichtbaar hard spaties in de\n"
+"                verwijderen"
 
 msgid "Unique ID for the text"
-msgstr ""
+msgstr "Unieke ID voor de tekst"
 
 msgid "Unlimited"
-msgstr ""
+msgstr "Onbeperkt"
 
 msgid "Unordered List"
-msgstr ""
+msgstr "Ongeordende lijst"
 
 msgid "Unpublished texts"
-msgstr ""
+msgstr "Ongepubliceerde teksten"
 
 #. ($mime)
 msgid "Unsupported file type %1"
-msgstr ""
+msgstr "Niet-ondersteund bestandsformaat %1"
 
 msgid "Unused attachment"
-msgstr ""
+msgstr "Ongebruikte bijlage"
 
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 msgid "Update account info"
-msgstr ""
+msgstr "Update account info"
 
 msgid "Update category description"
-msgstr ""
+msgstr "Update categoriebeschrijving"
 
 msgid "Update to current settings"
-msgstr ""
+msgstr "Update naar huidige instellingen"
 
 msgid "Upload"
-msgstr ""
+msgstr "Upload"
 
 msgid "Url"
-msgstr ""
+msgstr "URL"
 
 msgid "Use JS syntax highlight for code blocks"
-msgstr ""
+msgstr "Gebruik JS syntax highlight voor codeblokken"
 
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
-msgstr ""
+msgstr "Gebruik LuaLaTeX in plaats van XeLaTeX (langzamer)"
 
 msgid "Use SSL for authenticated users"
-msgstr ""
+msgstr "Gebruik SSL voor geauthenticeerde gebruikers"
 
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr ""
+"Gebruik het als een teaserafbeelding, waarbij deze regel aan de koptekst "
+"wordt toegevoegd:"
 
 #. (sign)
 msgid "Use optimized signatures with %1 pages each"
-msgstr ""
+msgstr "Gebruik geoptimaliseerde handtekeningen met %1 paginas elk"
 
 msgid "Use sans fonts for section titles"
-msgstr ""
+msgstr "Gebruik schreefloze lettertypes voor sectietitels"
 
 msgid "Use the image as cover"
-msgstr ""
+msgstr "Gebruik de afbeelding als omslag"
 
 msgid "Useful HTML snippets"
-msgstr ""
+msgstr "Nuttige stukjes HTML"
 
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
 msgstr ""
+"Nuttig voor voetnoten of in de koptekst van het document, waar je geen "
+"witregel kunt invoegen om een nieuwe alinea aan te geven."
 
 #. ($user->username)
 msgid "User %1 created!"
-msgstr ""
+msgstr "Gebruiker %1 aangemaakt!"
 
 #. ($c->stash->{user}->username)
 msgid "User %1 deleted"
-msgstr ""
+msgstr "Gebruiker %1 verwijderd"
 
 #. ($user->username)
 msgid "User %1 updated"
-msgstr ""
+msgstr "Gebruiker %1 geupdated"
 
 msgid "User created"
-msgstr ""
+msgstr "Gebruiker aangemaakt"
 
 msgid "Username"
-msgstr ""
+msgstr "Gebruikersnaam"
 
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
+"Gebruikersnaam, alleen letters en cijfers, geen speciale karakters, geen "
+"hoofdletters"
 
 msgid "Users"
-msgstr ""
+msgstr "Gebruikers"
 
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
@@ -2408,21 +2716,27 @@ msgid ""
 "    else. Just write it down and then load it from another computer\n"
 "    using the following form."
 msgstr ""
+"Met deze identificatiecode kun je de instellinen van de boekmaker\n"
+"    en de tekstlijst vanaf een andere computer inladen, of het delen met "
+"iemand\n"
+"    anders. Je hoeft hem alleen maar op te schrijven en dan te laden vanaf "
+"een\n"
+"    andere computer met volgende formulier."
 
 msgid "Verbatim block"
-msgstr ""
+msgstr "Letterlijk blok"
 
 msgid "View history"
-msgstr ""
+msgstr "Toon geschiedenis"
 
 msgid "Virtual hosts"
-msgstr ""
+msgstr "Virtuele hosts"
 
 msgid "Virtual hosts, one per line"
-msgstr ""
+msgstr "Virtuele hosts, een per regel"
 
 msgid "What links here"
-msgstr ""
+msgstr "Wat hiernaartoe linkt"
 
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
@@ -2430,18 +2744,24 @@ msgid ""
 "    can load it here from another device to resume what you were\n"
 "    doing."
 msgstr ""
+"Als je een boekmakersessie start zie je aan het eind van de\n"
+"    pagina een identificatiecode voor het delen van de sessie. Je\n"
+"    kunt hem hier laden van een ander apparaat om verder te gaan\n"
+"    met wat je aan het doen was."
 
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
+"Als je een PDF uploaded splits hem dan in afbeeldingen die in de hoofdtekst "
+"zullen worden ingevoegd"
 
 msgid "Where does this text come from?"
-msgstr ""
+msgstr "Waar komt deze tekst vandaan?"
 
 msgid "Width of the cover image in percent of the text block width."
-msgstr ""
+msgstr "Breedte van de omslagafbeelding in procent van de tekstblokbreedte."
 
 msgid "Width:"
-msgstr ""
+msgstr "Breedte:"
 
 msgid ""
 "With complex structures, e.g., a chapter with\n"
@@ -2449,335 +2769,380 @@ msgid ""
 "      the chapter's title, so probably you want to select the chapter\n"
 "      and all its subsections."
 msgstr ""
+"Bij complexe structuren zoals bijvoorbeeld\n"
+"      een hoofstuk met subsecties, zorgt het selecteren van alleen\n"
+"      het hoofdstuk waarschijnlijk voor alleen het selecteren van de\n"
+"      hoofdstuktitel, dus het is aan te raden om het hoofdstuk en\n"
+"      alle subsecties te selecteren."
 
 msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
 msgstr ""
+"Met de \"letterlijk\" tag kun je zorgen dat de opmaak\n"
+"        niet word verwerkt, meestal niet nodig"
 
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
 "    also merge more texts to create your own booklet. Just try it!"
 msgstr ""
+"Met de boekmaker kun je de indeling veranderen (lettertypen.\n"
+"    afmetingen, papier, marges) van de teksten in de bibliotheek. Je\n"
+"    kunt ook meer teksten samenvoegen om je eigen boekje te maken.\n"
+"    Probeer maar!"
 
 msgid "Workflow"
-msgstr ""
+msgstr "Workflow"
 
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
 "          lists)."
 msgstr ""
+"Omhullende tags kunnen niet worden gebruikt binnen\n"
+"        omgevingen die spaties vooraan vereisen (in het bijzonder\n"
+"        kun je ze niet in lijsten gebruiken)."
 
 msgid "Wrong answer!"
-msgstr ""
+msgstr "Fout antwoord!"
 
 msgid "Wrong username or password"
-msgstr ""
+msgstr "Foute gebruikersnaam of wachtwoord"
 
 msgid "XeLaTeX source"
-msgstr ""
+msgstr "XeLaTeX bron"
 
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
 "etc.) is irrelevant."
 msgstr ""
+"Je MOET een reden opgeven, anders zal de regel geen effect hebben.\n"
+"De volgorde van de regels van de koptekst (waar er \"#title\", \"#lang\" "
+"etc. is)\n"
+"is niet relevant."
 
 msgid "You are already logged in"
-msgstr ""
+msgstr "Je bent al ingelogd"
 
 msgid ""
 "You are building a collection. Please provide a title and, optionally, any "
 "other information needed for the front cover (author, subtitle, date) and "
 "the back cover (source and notes)."
 msgstr ""
+"Je ben een verzameling aan het maken. Geef een titel op, en optioneel alle "
+"andere informatie die nodig is voor de voorkaft (auteur, ondertitel, datum) "
+"en de achterkaft (bron en notities)."
 
 msgid "You are logged in now!"
-msgstr ""
+msgstr "Je bent nu ingelogd!"
 
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
+"Je kunt teksten toevoegen aan de boekmaker door te\n"
+"    klikken op het \"plus\" icoon bij de downloads van elke tekst. Je\n"
+"    kunt de teksten laten toevoegen en verwijderen."
 
 #. (create_url)
 msgid "You can create a peer at %1"
-msgstr ""
+msgstr "Je kunt een peer toevoegen bij %1"
 
 msgid "You can do so answering a simple question."
-msgstr ""
+msgstr "Je kunt het doen door een eenvoudige vraag te beantwoorden."
 
 msgid "You can tune them editing them here."
-msgstr ""
+msgstr "Je kun ze bijwerken door ze hier aan te passen."
 
 msgid ""
 "You can use the following prefixes to search a word in a specific field, e."
 "g. \"title:example\""
 msgstr ""
+"Je kunt de volgende voorvoegsels gebruiken om te zoeken naar een woord in "
+"een specifiek veld, bijvoorbeeld \"title:example\""
 
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
+"Je kunt geen nieuwe herzienining aanmaken omdat de tekst nog niet is "
+"gepubliceerd"
 
 msgid "You have logged out"
-msgstr ""
+msgstr "Je bent uitgelogd"
 
 msgid "You may want to resume the editing of one of them"
-msgstr ""
+msgstr "Je zou kunnen verdergaan met het bewerken van een van hen"
 
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
 msgstr ""
+"Je stuurt toegangsgegevens over een onversleutelde verbinding. Wissel "
+"alsjeblieft naar HTTPS, log in, en verander meteen je wachtwoord. Dit zou "
+"niet moeten gebeuren."
 
 #. (edit_url)
 msgid "You should change your password right away at %1"
-msgstr ""
+msgstr "Je moet je wachtwoord meteen veranderen bij %1"
 
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
+"Je wijzigingen zijn opgeslagen en kunnen gecontroleerd worden elke keer dat "
+"je op Voorbeeld of Opslaan klikt"
 
 msgid "Your chapter here..."
-msgstr ""
+msgstr "Jouw hoofdstuk hier..."
 
 msgid "Your current bookbuilder token is:"
-msgstr ""
+msgstr "Je huidige boekmaker identificatienummer is:"
 
 msgid "Your email"
-msgstr ""
+msgstr "Jouw e-mail"
 
 msgid "Your file is ready"
-msgstr ""
+msgstr "Je bestand is klaar"
 
 msgid "Your part here..."
-msgstr ""
+msgstr "Jouw deel hier..."
 
 #. (password)
 msgid "Your password is %1."
-msgstr ""
+msgstr "Je wachtwoord is %1."
 
 msgid "Your section here..."
-msgstr ""
+msgstr "Jouw deel hier..."
 
 msgid "Your sub-sub-section (or description heading) here..."
-msgstr ""
+msgstr "Jouw sub-sub-sectie (of beschrijvende koptekst) hier..."
 
 msgid "Your subsection here..."
-msgstr ""
+msgstr "Jouw subsectie hier..."
 
 #. (home)
 msgid "Your user at %1 has been created."
-msgstr ""
+msgstr "Je gebruiker in %1 is aangemaakt."
 
 #. (username)
 msgid "Your username is %1."
-msgstr ""
+msgstr "Je gebruikersnaam is %1."
 
 msgid "aborted"
-msgstr ""
+msgstr "afgebroken"
 
 msgid "about, links..."
-msgstr ""
+msgstr "over, links..."
 
 msgid "active"
-msgstr ""
+msgstr "actief"
 
 msgid "affects only the frontend webserver configuration"
-msgstr ""
+msgstr "heeft alleen invloed op de frontend webserver configuratie"
 
 msgid "any"
-msgstr ""
+msgstr "elk"
 
 msgid "article"
-msgstr ""
+msgstr "artikel"
 
 msgid "automatically generated if not present, using author and title"
 msgstr ""
+"automatisch gegenereerd indien niet aanwezig, op basis van auteur en titel"
 
 msgid "book"
-msgstr ""
+msgstr "boek"
 
 msgid "by number of pages, ascending"
-msgstr ""
+msgstr "op aantal pagina's, oplopend"
 
 msgid "by number of pages, descending"
-msgstr ""
+msgstr "op aantal pagina's, aflopend"
 
 msgid "code and monospace"
-msgstr ""
+msgstr "code en niet-proportioneel (monospace)"
 
 msgid "comma or semicolon separated list"
-msgstr ""
+msgstr "komma of puntkomma gescheiden lijst"
 
 msgid "completed"
-msgstr ""
+msgstr "voltooid"
 
 msgid "conflict"
-msgstr ""
+msgstr "conflict"
 
 msgid "description"
-msgstr ""
+msgstr "beschrijving"
 
 msgid "displayed text"
-msgstr ""
+msgstr "weergegeven tekst"
 
 msgid "edit, commit..."
-msgstr ""
+msgstr "bewerk, commit..."
 
 msgid "editing"
-msgstr ""
+msgstr "bewerken"
 
 msgid "emphasis"
-msgstr ""
+msgstr "nadruk"
 
 msgid "failed"
-msgstr ""
+msgstr "mislukt"
 
 msgid "for code, monospaced"
-msgstr ""
+msgstr "voor code, niet-proportioneel (monospace)"
 
 msgid "for display"
-msgstr ""
+msgstr "voor weergave"
 
 msgid "for poetry"
-msgstr ""
+msgstr "voor poezie"
 
 msgid "generic sectioning, good for articles"
-msgstr ""
+msgstr "generieke indeling, goed voor artikelen"
 
 msgid ""
 "if by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
+"als door toeval een andere tekst met dezelfde auteur en titel bestaat, kies "
+"dan de gewenste URI door het veld hieronder te gebruiken en auteur, titel en "
+"een getal in te voeren, bijvoorbeeld mijn-auteur-mijn-titel-1"
 
 msgid "if the repository is exported"
-msgstr ""
+msgstr "als de repository geexporteerd is"
 
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
+"als je een aangepast grootte wilt gebruiken, moet je zowel breedte als "
+"hoogte instellen"
 
 msgid "image"
-msgstr ""
+msgstr "afbeelding"
 
 msgid "left"
-msgstr ""
+msgstr "links"
 
 msgid "mandatory"
-msgstr ""
+msgstr "verplicht"
 
 msgid "markup *not* interpreted"
-msgstr ""
+msgstr "opmaak *niet* geinterpreteerd"
 
 msgid "new-example-uri"
-msgstr ""
+msgstr "nieuwe-voorbeeld-uri"
 
 msgid "optional, defaults to the author directive"
-msgstr ""
+msgstr "optioneel, gebruikt standaard de auteur instructie"
 
 msgid "or"
-msgstr ""
+msgstr "of"
 
 msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
 msgstr ""
+"of, als je SSH toegang hebt tot het apparaat (maar gebruik niet dezelfde "
+"gebruiker als amusewiki, het moet een alleen-lezen repo zijn)"
 
 msgid "ordered item"
-msgstr ""
+msgstr "bestelde item"
 
 msgid "overstriked"
-msgstr ""
+msgstr "overstriked"
 
 msgid "pending"
-msgstr ""
+msgstr "in afwachting"
 
 msgid "plain PDF"
-msgstr ""
+msgstr "gewone PDF"
 
 msgid "plain text source"
-msgstr ""
+msgstr "platte tekst bron"
 
 msgid "processing"
-msgstr ""
+msgstr "verwerkend"
 
 msgid "published"
-msgstr ""
+msgstr "gepubliceerd"
 
 msgid "revision"
-msgstr ""
+msgstr "herziening"
 
 msgid "right"
-msgstr ""
+msgstr "rechts"
 
 #. (args)
 msgid "string"
-msgstr ""
+msgstr "tekenreeks"
 
 msgid "strong emphasis"
-msgstr ""
+msgstr "sterke nadruk"
 
 msgid "sub-sub-section"
-msgstr ""
+msgstr "sub-sub-sectie"
 
 msgid "subscript"
-msgstr ""
+msgstr "subscript"
 
 msgid "subsection"
-msgstr ""
+msgstr "subsectie"
 
 msgid "superscript"
-msgstr ""
+msgstr "superscript"
 
 msgid "taken"
-msgstr ""
+msgstr "taken"
 
 msgid "texts by authors, title, topic..."
-msgstr ""
+msgstr "tekst op auteurs, titel, onderwerp..."
 
 msgid "texts sorted by author"
-msgstr "teksten naar auteur"
+msgstr "teksten gesorteerd op auteur"
 
 msgid "texts sorted by title"
-msgstr ""
+msgstr "teksten gesorteerd op titel"
 
 msgid "texts sorted by topics"
-msgstr ""
+msgstr "teksten gesorteerd op onderwerp"
 
 msgid "the author of the text (as displayed)"
-msgstr ""
+msgstr "de auteur van de tekst (zoals weergegeven)"
 
 msgid "this text will be unpublished"
-msgstr ""
+msgstr "deze tekst zal gepubliceerd worden"
 
 msgid "topic"
-msgstr ""
+msgstr "onderwerp"
 
 msgid "unordered item"
-msgstr ""
+msgstr "ongesorteerd item"
 
 msgid "very strong emphasis"
-msgstr ""
+msgstr "zeer sterke nadruk"
 
 msgid "with description"
-msgstr ""
+msgstr "met beschrijving"
 
 msgid "without description"
-msgstr ""
+msgstr "zonder beschrijving"
 
 msgid ""
 "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
+"je zou wellicht de \"Een\", \"De\" etc. vooraan de titel willen verwijderen"
 
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
+"\"Oude bewerking\" betekent dat de herziening was verlaten\n"
+"    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
+"    iemand er verder mee wil gaan bij het bewerken van een tekst."
