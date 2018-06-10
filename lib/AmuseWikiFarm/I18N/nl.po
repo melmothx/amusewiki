@@ -1,13 +1,13 @@
 # AmuseWiki i18n
 # This file is distributed under the same license as the AmuseWiki package.
-# Marco Pessotto <melmothx@gmail.com>, 2014.
+# Anarchistische Groep Amsterdam <aga@agamsterdam.org>, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
 "PO-Revision-Date: 2018-06-09 22:49+0200\n"
-"Last-Translator: Marco <melmothx@gmail.com>\n"
+"Last-Translator: Anarchistische Groep Amsterdam <aga@agamsterdam.org>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
