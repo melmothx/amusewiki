@@ -1257,27 +1257,7 @@ sub check_and_update_custom_formats {
 
 
 sub known_langs {
-    my $self = shift;
-    return {
-            ru => 'Русский',
-            sr => 'Srpski',
-            hr => 'Hrvatski',
-            mk => 'Македонски',
-            fi => 'Suomi',
-            it => 'Italiano',
-            es => 'Español',
-            en => 'English',
-            fr => 'Français',
-            nl => 'Nederlands',
-            de => 'Deutsch',
-            sq => 'Shqip',
-            sv => 'Svenska',
-            pl => 'Polski',
-            pt => 'Português',
-            da => 'Dansk',
-            cs => 'Čeština',
-            tr => 'Türkçe',
-           };
+    AmuseWikiFarm::Utils::Amuse::known_langs();
 }
 
 sub known_langs_as_string {
