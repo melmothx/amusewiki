@@ -897,4 +897,27 @@ sub split_pdf {
     }
 }
 
+sub known_langs {
+    return {
+            ru => 'Русский',
+            sr => 'Srpski',
+            hr => 'Hrvatski',
+            mk => 'Македонски',
+            fi => 'Suomi',
+            it => 'Italiano',
+            es => 'Español',
+            en => 'English',
+            fr => 'Français',
+            nl => 'Nederlands',
+            de => 'Deutsch',
+            sq => 'Shqip',
+            sv => 'Svenska',
+            pl => 'Polski',
+            pt => 'Português',
+            da => 'Dansk',
+            cs => 'Čeština',
+            tr => 'Türkçe',
+           };
+}
+
 1;

@@ -6,6 +6,7 @@ BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
 use XML::FeedPP;
+use AmuseWikiFarm::Utils::Amuse qw/clean_html/;
 
 =head1 NAME
 
@@ -69,7 +70,7 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
 
         # here we must force stringification
         my $item = $feed->add_item("$link");
-        $item->title($text->title);
+        $item->title(clean_html($text->title));
         $item->pubDate($pubdate_epoch);
         $item->guid(undef, isPermaLink => 1);
 
