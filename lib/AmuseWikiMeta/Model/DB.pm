@@ -1,11 +1,10 @@
 package AmuseWikiMeta::Model::DB;
 
 use strict;
-use base 'Catalyst::Model::DBIC::Schema';
+use base 'Catalyst::Model::Adaptor';
 
 __PACKAGE__->config(
-    schema_class => 'AmuseWikiFarm::Schema',
-    connect_info => 'amuse',
+    class => 'AmuseWikiMeta::Archive::Config',
 );
 
 1;

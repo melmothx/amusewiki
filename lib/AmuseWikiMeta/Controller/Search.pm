@@ -16,16 +16,15 @@ sub search :Chained('/root') :CaptureArgs(0) {
 sub ajax :Chained('search') :Args(0) {
     my ($self, $c) = @_;
     # here instead of a directory, we pass a stub database, named xapian.stub
-    my $stub = $ENV{AMW_META_XAPIAN_DB} ?
-      path($ENV{AMW_META_XAPIAN_DB}) :
-      path($c->stash->{amw_meta_root}, 'xapian.stub');
+    my $conf = $c->model('DB');
+    my $stub = $conf->stub_database;
+    log_debug { "Using $stub db" };
     die "Cannot proceed without $stub stub database" unless -f $stub;
     my $xapian = AmuseWikiFarm::Archive::Xapian->new(multisite => 1,
                                                      stub_database => "$stub",
                                                     );
     my %params = %{$c->req->params};
 
-    my @sites = $c->model('DB::Site')->public_only;
     my $res = $xapian->faceted_search(%params,
                                       published_only => 1,
                                       facets => 0,
@@ -36,13 +35,10 @@ sub ajax :Chained('search') :Args(0) {
                                           published_only => 1,
                                           filters => 0,
                                           facets => 1);
-    my $site_map = { map { $_->id => $_->canonical_url } @sites };
-    my $hostname_map = { map { $_->canonical => $_->sitename }  @sites };
-
-    $baseres->sites_map($site_map);
-    $res->sites_map($site_map);
-    $baseres->languages_map($sites[0]->known_langs);
-    $baseres->hostname_map($hostname_map);
+    $baseres->sites_map($conf->site_map);
+    $res->sites_map($conf->site_map);
+    $baseres->languages_map($conf->languages_map);
+    $baseres->hostname_map($conf->hostnames_map);
 
     my $pager = AmuseWikiFarm::Utils::Paginator::create_pager($res->pager, sub { $_[0] });
 
@@ -75,7 +71,7 @@ sub ajax :Chained('search') :Args(0) {
                        pager => $pager->items,
                        sorter => \@sorter,
                       });
-    Dlog_debug { "json is $_" } $c->stash->{json};
+    # Dlog_debug { "json is $_" } $c->stash->{json};
 }
 
 __PACKAGE__->meta->make_immutable;

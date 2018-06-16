@@ -22,6 +22,8 @@ __PACKAGE__->config(
                     default_view => 'JSON',
                    );
 
+__PACKAGE__->config('Model::DB' => { config_file => $ENV{AMW_META_CONFIG_FILE} });
+
 __PACKAGE__->setup();
 
 1;
