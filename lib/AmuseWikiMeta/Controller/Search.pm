@@ -65,6 +65,7 @@ sub ajax :Chained('search') :Args(0) {
         }
     }
     $c->stash(json => {
+                       params => \%params,
                        matches => $res->json_output,
                        filters => $facets,
                        filters_needed => $has_facets,

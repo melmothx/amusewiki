@@ -32,7 +32,16 @@ sub pages :Chained('root') :PathPart('') :Args {
         my $ext = $3 || 'html';
         my $mime = AmuseWikiFarm::Utils::Paths->served_mime_types->{$ext};
         my $file = path(AMW_META_ROOT, $base . '.' . $ext);
-        if (-f $file) {
+        my $bare = path(AMW_META_ROOT, $base . '.bare.' . $ext);
+        my $layout = path(AMW_META_ROOT, 'layout.tt');
+        if ($ext eq 'html' and $bare->exists and $layout->exists) {
+            $c->stash(
+                      html_source => $bare,
+                      html_layout => $layout,
+                     );
+            $c->detach($c->view('HTML'));
+        }
+        elsif (-f $file) {
             log_debug { "Found $file" };
             $c->response->content_type($mime);
             my $fh = IO::File->new("$file", 'r');
