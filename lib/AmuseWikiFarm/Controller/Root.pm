@@ -87,6 +87,10 @@ sub site_no_auth :Chained('check_unicode_errors') :PathPart('') :CaptureArgs(0) 
             # strategy to avoid splitting the results.
             my $uri = $c->request->uri->clone;
             $uri->host($site->canonical);
+
+            # in case there is a session active, avoid crash
+            $c->stash(site => $site);
+
             # log_debug { "Redirecting to " . $uri->as_string };
             # place a permanent redirect
             $c->response->redirect($uri->as_string, 301);
