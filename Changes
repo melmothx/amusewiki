@@ -4,6 +4,12 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.222 2018-07-04
+
+ - Add Bahasa Indonesia support
+ - AMW-Meta: RSS feeds, avoid use of the DB
+ - Mirror script: port to perl and drammatical speed up
+
 2.221 2018-06-10
 
  - Add nl tranlations
