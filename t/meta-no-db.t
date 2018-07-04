@@ -7,7 +7,7 @@ use warnings;
 use Path::Tiny;
 use AmuseWikiMeta::Archive::Config;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 1;
+use Test::More tests => 7;
 use Data::Dumper::Concise;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
