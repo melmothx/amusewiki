@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 39;
+use Test::More tests => 40;
 use Data::Dumper;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
