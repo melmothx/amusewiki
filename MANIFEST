@@ -551,6 +551,7 @@ lib/AmuseWikiFarm/I18N/es.po
 lib/AmuseWikiFarm/I18N/fi.po
 lib/AmuseWikiFarm/I18N/fr.po
 lib/AmuseWikiFarm/I18N/hr.po
+lib/AmuseWikiFarm/I18N/id.po
 lib/AmuseWikiFarm/I18N/it.po
 lib/AmuseWikiFarm/I18N/messages.pot
 lib/AmuseWikiFarm/I18N/mk.po
@@ -643,9 +644,11 @@ lib/AmuseWikiFarm/View/HTML.pm
 lib/AmuseWikiFarm/View/JSON.pm
 lib/AmuseWikiFarm/View/StaticFile.pm
 lib/AmuseWikiMeta.pm
+lib/AmuseWikiMeta/Archive/Config.pm
 lib/AmuseWikiMeta/Controller/Root.pm
 lib/AmuseWikiMeta/Controller/Search.pm
 lib/AmuseWikiMeta/Model/DB.pm
+lib/AmuseWikiMeta/View/HTML.pm
 lib/AmuseWikiMeta/View/JSON.pm
 lib/CatalystX/AmuseWiki/I18N.pm
 lib/CatalystX/Session/Store/AMW.pm
@@ -1185,6 +1188,7 @@ script/amusewiki-check-compiler
 script/amusewiki-clone-site
 script/amusewiki-create-doc-site
 script/amusewiki-export-titles
+script/amusewiki-generate-meta-config
 script/amusewiki-generate-nginx-conf
 script/amusewiki-import-redirections
 script/amusewiki-jobber
@@ -1211,6 +1215,7 @@ script/install.sh
 script/install_fonts.sh
 script/install_js.sh
 script/jobber.pl
+script/mirror-site.pl
 script/mirror-site.sh
 script/patch-cam-pdf.sh
 script/sync-remote-archive.pl
@@ -1331,6 +1336,7 @@ t/links-in-headings.t
 t/mail.t
 t/mailer-locale-155.t
 t/manifest.t
+t/meta-no-db.t
 t/meta.t
 t/missing-image-crash-81.t
 t/mkits/test/body.txt
@@ -1375,6 +1381,7 @@ t/schema.t
 t/secondary-footnotes.t
 t/secure-site.t
 t/serialize-site.t
+t/session-crash-202.t
 t/simple-gallery.t
 t/site-modes.t
 t/site-options-2.t
