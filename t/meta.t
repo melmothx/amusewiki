@@ -6,8 +6,6 @@ use warnings;
 
 BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
-    $ENV{AMW_META_ROOT} = "doc/meta-search";
-    $ENV{AMW_META_XAPIAN_DB} = "t/xapian.stub";
 };
 use File::Spec::Functions qw/catdir/;
 use lib catdir(qw/t lib/);
@@ -15,17 +13,26 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use JSON::MaybeXS;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
+use AmuseWikiMeta::Archive::Config;
 use Test::More tests => 7;
 use Data::Dumper::Concise;
 use Path::Tiny;
 use Test::WWW::Mechanize::Catalyst;
 
-my $stub = path($ENV{AMW_META_XAPIAN_DB});
-my $schema = AmuseWikiFarm::Schema->connect('amuse');
-$stub->spew(join("\n",
-                 map { "auto " . path($_->xapian->xapian_dir)->absolute }
-                 $schema->resultset('Site')->public_only) . "\n");
-diag $stub->slurp;
+
+
+{
+    my $schema = AmuseWikiFarm::Schema->connect('amuse');
+    my $wd = Path::Tiny::tempdir(CLEANUP => 0);
+    my $conf = $wd->child("amw-meta-config.yml");
+    $ENV{AMW_META_ROOT} = "doc/meta-search";
+    my $obj = AmuseWikiMeta::Archive::Config->new(config_file => "$conf",
+                                              schema => $schema);
+
+    $obj->generate_config;
+    $ENV{AMW_META_CONFIG_FILE} = "$conf";
+}
+
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiMeta');
 
@@ -39,4 +46,5 @@ $mech->get_ok('/');
 $mech->content_contains('<!doctype html>', "Static pages served");
 $mech->get('/blablabla');
 is $mech->status, 404;
-$stub->remove;
+
+path(AmuseWikiMeta::Archive::Config->new(config_file => $ENV{AMW_META_CONFIG_FILE})->stub_database)->remove;
