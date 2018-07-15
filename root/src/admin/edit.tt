@@ -289,7 +289,7 @@ kpsewhich mylogo.pdf
       </label>
       <div class="col-sm-6">
         <select name="titles_category_default_sorting" id="titles_category_default_sorting" class="form-control">
-          [% FOREACH sorting IN site.titles_available_sortings %]
+          [% FOREACH sorting IN esite.titles_available_sortings %]
           <option value="[% sorting.name %]"
                   [% IF esite.titles_category_default_sorting == sorting.name %]selected="selected"[% END %]>
             [% loc(sorting.label) %]
