@@ -1623,6 +1623,7 @@ sub import_text_from_html_params {
     foreach my $directive (qw/title subtitle author LISTtitle SORTauthors
                               SORTtopics date uid cat
                               slides
+                              sku
                               source lang pubdate/) {
 
         $self->_add_directive($fh, $directive, $params->{$directive});
