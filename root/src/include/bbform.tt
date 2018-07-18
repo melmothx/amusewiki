@@ -326,7 +326,28 @@
       </label>
     </div>
 
-
+    <!-- compiler 1.05 -->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="continuefootnotes" value="1" id="continuefootnotes"
+               [% IF bb.continuefootnotes %]checked="checked"[% END %]/>
+        [% loc('Continuous footnote numbering across the whole document.') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="centerchapter" value="1" id="centerchapter"
+               [% IF bb.centerchapter %]checked="checked"[% END %]/>
+        [% loc('Center the **chapter titles.') %]
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="centersection" value="1" id="centersection"
+               [% IF bb.centersection %]checked="checked"[% END %]/>
+        [% loc('Center all the sectioning titles.') %]
+      </label>
+    </div>
 
     <div class="checkbox" id="coverpage_only_if_toc_container">
       <label>

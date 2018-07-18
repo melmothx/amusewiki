@@ -364,6 +364,12 @@ default to false.
 
 =item start_with_empty_page
 
+=item continuefootnotes
+
+=item centerchapter
+
+=item centersection
+
 =item headings
 
 =item cover
@@ -447,6 +453,11 @@ has start_with_empty_page => (
                               isa => Bool,
                               default => sub { 0 },
                              );
+
+has continuefootnotes => (is => 'rw', isa => Bool, default => sub { 0 });
+has centerchapter     => (is => 'rw', isa => Bool, default => sub { 0 });
+has centersection     => (is => 'rw', isa => Bool, default => sub { 0 });
+
 
 # imposer options
 has cover => (
@@ -1110,6 +1121,9 @@ sub profile_methods {
               nobold
               secondary_footnotes_alpha
               start_with_empty_page
+              continuefootnotes
+              centerchapter
+              centersection
               headings
               imposed
               signature_2up
@@ -1180,6 +1194,10 @@ sub as_job {
                                     secondary_footnotes_alpha => $self->secondary_footnotes_alpha,
                                     # 1.00
                                     start_with_empty_page => $self->start_with_empty_page,
+                                    # 1.05
+                                    continuefootnotes => $self->continuefootnotes,
+                                    centerchapter => $self->centerchapter,
+                                    centersection => $self->centerchapter,
 
                                     ($self->is_single_file ? ()
                                      : (

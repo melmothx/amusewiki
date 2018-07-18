@@ -721,6 +721,18 @@ How smart a lash that speech doth giue my Conscience?
           [%- loc('If this line is present, do not display the table of contents.') -%]
         </li>
         <li>
+          <code>#continuefootnotes 1</code> <br />
+          [%- loc('Continuous footnote numbering across the whole document.') -%]
+        </li>
+        <li>
+          <code>#centerchapter 1</code> <br />
+          [%- loc('Center the **chapter titles.') -%]
+        </li>
+        <li>
+          <code>#centersection 1</code> <br />
+          [%- loc('Center all the sectioning titles') -%]
+        </li>
+        <li>
           <code>#ATTACH</code> <br />
           [% loc('This directive wants a whitespace separated list of filenames.') %]<br />
           [% loc('PDFs not listed in the [_1] directive will be stored but ignored.', '#ATTACH') %]<br />
