@@ -334,21 +334,6 @@
         [% loc('Continuous footnote numbering across the whole document.') %]
       </label>
     </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="centerchapter" value="1" id="centerchapter"
-               [% IF bb.centerchapter %]checked="checked"[% END %]/>
-        [% loc('Center the **chapter titles.') %]
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="centersection" value="1" id="centersection"
-               [% IF bb.centersection %]checked="checked"[% END %]/>
-        [% loc('Center all the sectioning titles.') %]
-      </label>
-    </div>
-
     <div class="checkbox" id="coverpage_only_if_toc_container">
       <label>
         <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"
@@ -409,6 +394,22 @@
         </div>
       </div>
     </div>
+    </div>
+    <div class="form-group pdf-option epub-option">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="centerchapter" value="1" id="centerchapter"
+                 [% IF bb.centerchapter %]checked="checked"[% END %]/>
+          [% loc('Center the chapter titles.') %]
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="centersection" value="1" id="centersection"
+                 [% IF bb.centersection %]checked="checked"[% END %]/>
+          [% loc('Center all the sectioning titles.') %]
+        </label>
+      </div>
     </div>
     <div class="pdf-option">
     <h4>[% loc('Imposition schemas') %]</h4>

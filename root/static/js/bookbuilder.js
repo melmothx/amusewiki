@@ -47,22 +47,21 @@ function show_crop_options() {
 function show_format_options() {
     var current_format = $("form#bbform input[name=format]:checked").val();
     if (current_format == 'epub') {
-        $('.pdf-common-option').hide('fast');
-        $('.epub-option').show('fast');
-        $('.slides-option').hide('fast');
-        $('.pdf-option').hide('fast');
+        $('.pdf-common-option').hide();
+        $('.slides-option').hide();
+        $('.pdf-option').hide();
+        $('.epub-option').show();
     }
     else {
-        $('.pdf-common-option').show('fast');
-        $('.epub-option').hide('fast');
+        $('.pdf-common-option').show();
+        $('.epub-option').hide();
         if  (current_format == 'slides') {
             $('.pdf-option').hide();
             $('.slides-option').show();
         }
         else {
-            $('.pdf-option').show();
             $('.slides-option').hide();
-
+            $('.pdf-option').show();
         }
     }
     if (current_format == 'slides') {

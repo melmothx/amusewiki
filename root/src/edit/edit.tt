@@ -726,11 +726,11 @@ How smart a lash that speech doth giue my Conscience?
         </li>
         <li>
           <code>#centerchapter 1</code> <br />
-          [%- loc('Center the **chapter titles.') -%]
+          [%- loc('Center the chapter titles.') -%]
         </li>
         <li>
           <code>#centersection 1</code> <br />
-          [%- loc('Center all the sectioning titles') -%]
+          [%- loc('Center all the sectioning titles.') -%]
         </li>
         <li>
           <code>#ATTACH</code> <br />
