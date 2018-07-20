@@ -8,7 +8,7 @@ use strict;
 use warnings;
 use utf8;
 use File::Spec::Functions qw/catfile catdir/;
-use Test::More tests => 71;
+use Test::More tests => 78;
 
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
