@@ -16,6 +16,7 @@ use AmuseWiki::Tests qw/create_site/;
 use Data::Dumper;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
+use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -115,4 +116,36 @@ foreach my $sorting ($site->discard_changes->titles_available_sortings) {
     $mech->get_ok('/listing?sort=' . $sorting->{name});
 }
 
+$site->site_options->update_or_create({
+                                       option_name => 'titles_category_default_sorting',
+                                       option_value => 'sku_asc',
+                                      });
 
+$site = $site->get_from_storage;
+
+while (my $j = $site->jobs->dequeue) {
+    $j->dispatch_job;
+    diag $j->logs;
+}
+
+foreach my $f (qw/titles.html topics.html authors.html/) {
+    my $static = path($site->repo_root, $f)->slurp_utf8;
+    like $static, qr{Prefix 95 SKU first-000095 1.*Prefix 97 SKU first-000097 1.*Prefix 102 SKU first-000102 1}s;
+}
+
+ok $site->enable_order_by_sku;
+ok $site->validate_text_category_sorting('sku_asc') or die;
+is $site->get_option('titles_category_default_sorting'), 'sku_asc' or die;
+is $site->titles_category_default_sorting, 'sku_asc' or die;
+
+my @tokens = $site->titles->published_texts
+  ->static_index_tokens
+  ->order_by($site->titles_category_default_sorting)
+  ->all;
+
+my @cats = $site->categories->by_type('topic')
+  ->static_index_tokens
+  ->order_titles_by($site->titles_category_default_sorting)
+  ->all;
+
+diag Dumper(\@tokens, \@cats);

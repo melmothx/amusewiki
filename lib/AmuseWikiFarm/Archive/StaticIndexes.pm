@@ -134,7 +134,11 @@ sub create_titles {
     my $out;
     my $time = time();
     log_debug { "Creating titles" };
-    my @texts = $self->site->titles->published_texts->static_index_tokens->all;
+    my $site = $self->site;
+    my @texts = $site->titles->published_texts
+      ->static_index_tokens
+      ->order_by($site->titles_category_default_sorting)
+      ->all;
     my $locale = $self->site->locale || 'en';
     foreach my $title (@texts) {
         _in_tree_uri($title);
@@ -173,14 +177,15 @@ sub create_category_list {
     my ($self, $type) = @_;
     my $time = time();
     log_debug { "Creating category listing" };
-    my @cats = $self->site->categories->by_type($type)->static_index_tokens->all;
+    my $site = $self->site;
+    my @cats = $site->categories->by_type($type)
+      ->static_index_tokens
+      ->order_titles_by($site->titles_category_default_sorting)
+      ->all;
     foreach my $cat (@cats) {
         if ($cat->{title_categories}) {
             my @titles;
-            my @sorted = sort {
-                $a->{title}->{sorting_pos} <=> $b->{title}->{sorting_pos}
-            } @{delete $cat->{title_categories}};
-            foreach my $title (@sorted) {
+            foreach my $title (@{delete $cat->{title_categories}}) {
                 my $entry = $title->{title};
                 _in_tree_uri($entry);
                 push @titles, $entry;

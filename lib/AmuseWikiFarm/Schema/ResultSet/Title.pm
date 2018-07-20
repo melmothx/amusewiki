@@ -372,6 +372,17 @@ sub bookbuildable_by_uri {
     return $self->status_is_published_or_deferred->texts_only->by_uri($uri)->single;
 }
 
+sub get_order_by {
+    my ($self, $sorting) = @_;
+    my $avail = $self->_sorting_map;
+    if ($avail->{$sorting}) {
+        return $avail->{$sorting}->{order_by};
+    }
+    else {
+        $avail->{title_asc}->{order_by};
+    }
+}
+
 sub _sorting_map {
     my $self = shift;
     my $me = $self->current_source_alias;

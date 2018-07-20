@@ -141,6 +141,24 @@ sub static_index_tokens {
                          });
 }
 
+sub order_titles_by {
+    my ($self, $key) = @_;
+    my $order_by = $self->result_source
+      ->schema->resultset('Category')->search(undef)
+      ->search_related('title_categories')
+      ->search_related('title')
+      ->get_order_by($key);
+    my $me = $self->current_source_alias;
+    my @ordering = ("$me.sorting_pos", "$me.name");
+    if (ref($order_by) eq 'ARRAY') {
+        push @ordering, @$order_by;
+    }
+    else {
+        push @ordering, $order_by;
+    }
+    Dlog_debug { "Order is $_" } \@ordering;
+    return $self->search(undef,  { order_by => \@ordering });
+}
 
 =head2 by_type_and_uri($type, $uri)
 
