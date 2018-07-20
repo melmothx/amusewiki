@@ -265,6 +265,11 @@ msgid ""
 "                together."
 msgstr "16 sivun lohkoja kahdesti taitettuna ja siitä sidottuna."
 
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
 msgid "Blog"
 msgstr "Blogi"
 
@@ -312,6 +317,12 @@ msgstr "Kanoninen nimi"
 
 msgid "Categories"
 msgstr "Kategoriat"
+
+msgid "Center all the sectioning titles."
+msgstr ""
+
+msgid "Center the chapter titles."
+msgstr ""
 
 msgid "Changes"
 msgstr "Muutokset"
@@ -373,6 +384,9 @@ msgid "Computing of differences took"
 msgstr "Erojen laskeminen kesti"
 
 msgid "Confirm"
+msgstr ""
+
+msgid "Continuous footnote numbering across the whole document."
 msgstr ""
 
 msgid "Convert to archive markup"
@@ -486,6 +500,9 @@ msgid ""
 "        exactly what you are doing"
 msgstr ""
 
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Osoitteen näyttömuoto"
 
@@ -499,9 +516,6 @@ msgid "Do not enforce save message"
 msgstr ""
 
 msgid "Do not use bold fonts"
-msgstr ""
-
-msgid "Document type"
 msgstr ""
 
 msgid "Done"
@@ -1314,9 +1328,6 @@ msgstr ""
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr ""
 
-msgid "Number of pages"
-msgstr ""
-
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 
@@ -1646,9 +1657,6 @@ msgstr "Julkaise"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 "Julkaistu nimellä *Hauska kirja*, kustantajana Kustannusosuuskunta, 2013"
-
-msgid "Published on this site"
-msgstr ""
 
 msgid "Purge"
 msgstr "Poista"
@@ -2182,9 +2190,6 @@ msgid ""
 "absolute paths (recommended)."
 msgstr ""
 
-msgid "This also makes /mirror/ public"
-msgstr ""
-
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
 
@@ -2672,14 +2677,8 @@ msgstr ""
 msgid "any"
 msgstr ""
 
-msgid "article"
-msgstr ""
-
 msgid "automatically generated if not present, using author and title"
 msgstr "luodaan automaattisesti kirjoittajan ja otsikon pohjalta"
-
-msgid "book"
-msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""

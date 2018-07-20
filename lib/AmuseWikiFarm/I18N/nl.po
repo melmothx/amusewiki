@@ -295,6 +295,11 @@ msgstr ""
 "Blokken van 16 pagina's die twee keer gevouwen\n"
 "                worden en dan samen gebonden."
 
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
 msgid "Blog"
 msgstr "Blog"
 
@@ -345,6 +350,12 @@ msgstr "Kanonieke naam"
 
 msgid "Categories"
 msgstr "Categorieen"
+
+msgid "Center all the sectioning titles."
+msgstr ""
+
+msgid "Center the chapter titles."
+msgstr ""
 
 msgid "Changes"
 msgstr "Wijzigingen"
@@ -414,6 +425,9 @@ msgstr "Berekenen van de verschillen kostte"
 
 msgid "Confirm"
 msgstr "Bevestig"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr "Omzetten naar archiefopmaak"
@@ -536,6 +550,9 @@ msgstr ""
 "        \"sjablonen\" (alleen ASCII). Stel niet in tenzij je precies\n"
 "        weer wat je doet"
 
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Toon URL als"
 
@@ -550,9 +567,6 @@ msgstr "Dwing geen opslaan-bericht af"
 
 msgid "Do not use bold fonts"
 msgstr "Gebruik geen vette lettertpyes"
-
-msgid "Document type"
-msgstr "Documenttype"
 
 msgid "Done"
 msgstr "Voltooid"
@@ -1461,9 +1475,6 @@ msgstr "Aantal taken"
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Aantal laatste inzendingen om weer te geven op de RSS (een integer)"
 
-msgid "Number of pages"
-msgstr "Aantal paginas"
-
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 "Aantal resultaten om weer te geven op gepagineerde paginas (een integer)"
@@ -1820,9 +1831,6 @@ msgstr "Publiceer"
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr ""
 "Gepubliceerd in *Een mooi boek*, gepubliceerd door Mijn Uitgeverij, 2014"
-
-msgid "Published on this site"
-msgstr "Gepubliceerd op deze site"
 
 msgid "Purge"
 msgstr "Opschonen"
@@ -2398,9 +2406,6 @@ msgstr ""
 "Ze zouden paden moeten zijn relatief aan de webserverconfiguratie root of "
 "absolute paden (aangeraden)."
 
-msgid "This also makes /mirror/ public"
-msgstr "Dit maakt ook /mirror/ publiek"
-
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Deze instructie wil een spatiegescheiden lijst met bestandsnamen."
 
@@ -2948,15 +2953,9 @@ msgstr "heeft alleen invloed op de frontend webserver configuratie"
 msgid "any"
 msgstr "elk"
 
-msgid "article"
-msgstr "artikel"
-
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "automatisch gegenereerd indien niet aanwezig, op basis van auteur en titel"
-
-msgid "book"
-msgstr "boek"
 
 msgid "by number of pages, ascending"
 msgstr "op aantal pagina's, oplopend"
@@ -3146,3 +3145,21 @@ msgstr ""
 "\"Oude bewerking\" betekent dat de herziening was verlaten\n"
 "    tijdens het bewerken, maar hij is er nog steeds voor het geval dat\n"
 "    iemand er verder mee wil gaan bij het bewerken van een tekst."
+
+#~ msgid "Document type"
+#~ msgstr "Documenttype"
+
+#~ msgid "Number of pages"
+#~ msgstr "Aantal paginas"
+
+#~ msgid "Published on this site"
+#~ msgstr "Gepubliceerd op deze site"
+
+#~ msgid "This also makes /mirror/ public"
+#~ msgstr "Dit maakt ook /mirror/ publiek"
+
+#~ msgid "article"
+#~ msgstr "artikel"
+
+#~ msgid "book"
+#~ msgstr "boek"

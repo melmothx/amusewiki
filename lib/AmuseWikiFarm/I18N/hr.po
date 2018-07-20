@@ -276,6 +276,11 @@ msgid ""
 "                together."
 msgstr "Svesci od 16 stranica koji treba savijati dva puta"
 
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
 msgid "Blog"
 msgstr "Blog"
 
@@ -325,6 +330,12 @@ msgstr "Glavno osnovno ime"
 
 msgid "Categories"
 msgstr "Teme"
+
+msgid "Center all the sectioning titles."
+msgstr ""
+
+msgid "Center the chapter titles."
+msgstr ""
 
 msgid "Changes"
 msgstr "Izmjene"
@@ -390,6 +401,9 @@ msgstr "Za izračunavanje razlika bilo je potrebno"
 
 msgid "Confirm"
 msgstr "Potvrdi"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr "Pretvori u format koji se koristi u arhivu"
@@ -508,6 +522,9 @@ msgstr ""
 "\"obrasci\" (samo ASCII slova, bez kvačicama itd.). Ostavi prazno ako ne\n"
 "znaš što to točno znači."
 
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Pokaži URL kao"
 
@@ -522,9 +539,6 @@ msgstr "Ne forsiraj poruku kad se tekst spremi"
 
 msgid "Do not use bold fonts"
 msgstr "Ne koristi podebljane fontove"
-
-msgid "Document type"
-msgstr "Vrsta dokumenta"
 
 msgid "Done"
 msgstr "Gotovo"
@@ -1396,9 +1410,6 @@ msgstr "Broj zadataka"
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Broj tekstova u RSS-u"
 
-msgid "Number of pages"
-msgstr "Broj stranica"
-
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Broj rezultata po stranici kad popis ima više stranica (pagination)"
 
@@ -1742,9 +1753,6 @@ msgstr "Objavi"
 
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Objavljeno u *Lijepa knjiga*, objavila Izdavačka kuća, 2014."
-
-msgid "Published on this site"
-msgstr "Datum objavljivanja na ovom sajtu"
 
 msgid "Purge"
 msgstr "Očisti"
@@ -2299,9 +2307,6 @@ msgstr ""
 "Trebaju biti putevi od korijena konfiguracije webservera, ili, bolje,\n"
 "apsolutni putevi."
 
-msgid "This also makes /mirror/ public"
-msgstr "/mirror/ će isto biti javan"
-
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Ovo polje zahtjeva popis imena datoteka odvojenih razmacima."
 
@@ -2821,14 +2826,8 @@ msgstr "tiče se samo konfiguracije webservera"
 msgid "any"
 msgstr "bilo koja"
 
-msgid "article"
-msgstr "članak"
-
 msgid "automatically generated if not present, using author and title"
 msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
-
-msgid "book"
-msgstr "knjiga"
 
 msgid "by number of pages, ascending"
 msgstr "po broju stranica (manje na početku)"
@@ -3015,6 +3014,24 @@ msgid ""
 msgstr ""
 "\"Izmjena u toku napuštena\" znači da izmjena nije dovršena ali je i dalje "
 "tamo, u slučaju da netko želi nastaviti."
+
+#~ msgid "Document type"
+#~ msgstr "Vrsta dokumenta"
+
+#~ msgid "Number of pages"
+#~ msgstr "Broj stranica"
+
+#~ msgid "Published on this site"
+#~ msgstr "Datum objavljivanja na ovom sajtu"
+
+#~ msgid "This also makes /mirror/ public"
+#~ msgstr "/mirror/ će isto biti javan"
+
+#~ msgid "article"
+#~ msgstr "članak"
+
+#~ msgid "book"
+#~ msgstr "knjiga"
 
 #~ msgid "Hide options"
 #~ msgstr "Sakrij opcije"

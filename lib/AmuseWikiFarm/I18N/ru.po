@@ -282,6 +282,11 @@ msgstr ""
 "На одном листе с двух сторон печатаются 8 страниц. Каждые два листа "
 "составляют одну тетрадку из 16 страниц."
 
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
 msgid "Blog"
 msgstr "Блог"
 
@@ -331,6 +336,12 @@ msgstr "Традиционное имя"
 
 msgid "Categories"
 msgstr "Категории"
+
+msgid "Center all the sectioning titles."
+msgstr ""
+
+msgid "Center the chapter titles."
+msgstr ""
 
 msgid "Changes"
 msgstr "Изменения"
@@ -398,6 +409,9 @@ msgstr "Вычисление различий заняло"
 
 msgid "Confirm"
 msgstr "Подтвердите"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr "Преобразовать в разметку архива"
@@ -516,6 +530,9 @@ msgstr ""
 "Директория с шаблонами для репозитория сайта, например, \"templates"
 "\" (только ASCII). Не указывайте это если вы не уверены в том, что вы делаете"
 
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Отобразить URL как"
 
@@ -530,9 +547,6 @@ msgstr "Не требовать сообщения для сохранения"
 
 msgid "Do not use bold fonts"
 msgstr "Не использовать жирный шрифт"
-
-msgid "Document type"
-msgstr "Тип документа"
 
 msgid "Done"
 msgstr "Готово"
@@ -1407,9 +1421,6 @@ msgstr "Число заданий"
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Число последних записей для отображения в RSS (целое)"
 
-msgid "Number of pages"
-msgstr "Число страниц"
-
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Число результатов для показа на странице (целое)"
 
@@ -1752,9 +1763,6 @@ msgstr "Опубликовать"
 
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Опубликовано в *Хорошей книге* выпущенной Моим Издательством, 2014"
-
-msgid "Published on this site"
-msgstr "Опубликовано на сайте"
 
 msgid "Purge"
 msgstr "Вычистить"
@@ -2312,9 +2320,6 @@ msgstr ""
 "Это должны быть пути относительно корня конфигурации вебсервера или "
 "абсолютные пути (рекомендуется)."
 
-msgid "This also makes /mirror/ public"
-msgstr "Это также делает /mirror/ общедоступным"
-
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Этому указанию необходим разделённый пробелами список названий файлов"
 
@@ -2844,16 +2849,10 @@ msgstr "влияет только на настройку вебсервера"
 msgid "any"
 msgstr "любой"
 
-msgid "article"
-msgstr "статья"
-
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "если поле оставлено пустым создаётся автоматически с использованием автора и "
 "названия"
-
-msgid "book"
-msgstr "книга"
 
 msgid "by number of pages, ascending"
 msgstr "по возрастанию числа страниц"
@@ -3042,6 +3041,24 @@ msgstr ""
 "«Устаревшее редактирование» означает, что правка не была доделана, но всё "
 "ещё существует, на случай если кто-то захочет посмотреть её при "
 "редактировании текста."
+
+#~ msgid "Document type"
+#~ msgstr "Тип документа"
+
+#~ msgid "Number of pages"
+#~ msgstr "Число страниц"
+
+#~ msgid "Published on this site"
+#~ msgstr "Опубликовано на сайте"
+
+#~ msgid "This also makes /mirror/ public"
+#~ msgstr "Это также делает /mirror/ общедоступным"
+
+#~ msgid "article"
+#~ msgstr "статья"
+
+#~ msgid "book"
+#~ msgstr "книга"
 
 #~ msgid "Hide options"
 #~ msgstr "Скрыть опции"

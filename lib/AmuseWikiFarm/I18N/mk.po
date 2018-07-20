@@ -289,6 +289,11 @@ msgid ""
 "                together."
 msgstr "Табаци од 16 страници кои треба да се свиткаат двапати"
 
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
 msgid "Blog"
 msgstr "Блог"
 
@@ -336,6 +341,12 @@ msgstr "Основно име"
 
 msgid "Categories"
 msgstr "Теми"
+
+msgid "Center all the sectioning titles."
+msgstr ""
+
+msgid "Center the chapter titles."
+msgstr ""
 
 msgid "Changes"
 msgstr "Измени"
@@ -402,6 +413,9 @@ msgstr "За пресметување на разликите беше потр�
 
 msgid "Confirm"
 msgstr "Потврди"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr "Претвори во формат кој се користи во архивата"
@@ -521,6 +535,9 @@ msgstr ""
 " \"обрасци\" (само ASCII  букви). Остави празно ако не\n"
 " знаеш што точно значи тоа."
 
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Покажи го URL kako"
 
@@ -534,9 +551,6 @@ msgid "Do not enforce save message"
 msgstr "Не форсирај порака кога текстот ќе се подготви"
 
 msgid "Do not use bold fonts"
-msgstr ""
-
-msgid "Document type"
 msgstr ""
 
 msgid "Done"
@@ -1415,9 +1429,6 @@ msgstr "Број на задачи"
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Бројот на последни записи за приказ на RSS (цел број)"
 
-msgid "Number of pages"
-msgstr ""
-
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 "Број на резултати по страница кога листата има повеќе страници (pagination)"
@@ -1771,9 +1782,6 @@ msgstr "Објави"
 
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Објавено во *Убава книга*, објавена од Издавачка куќа, 2014"
-
-msgid "Published on this site"
-msgstr ""
 
 msgid "Purge"
 msgstr "Исчисти"
@@ -2334,9 +2342,6 @@ msgstr ""
 "подобро, \n"
 " апсолутни патеки."
 
-msgid "This also makes /mirror/ public"
-msgstr ""
-
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr "Ова поле бара листа на имињата на датотеки одвоени со празно место."
 
@@ -2865,14 +2870,8 @@ msgstr "се однесува само на конфигурацијата на 
 msgid "any"
 msgstr "која било"
 
-msgid "article"
-msgstr ""
-
 msgid "automatically generated if not present, using author and title"
 msgstr "се генерира автоматски доколку недостига, со автор и наслов"
-
-msgid "book"
-msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""

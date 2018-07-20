@@ -283,6 +283,11 @@ msgstr ""
 "Blokke bestående af 16 sider som foldes dobbelt og bindes\n"
 "                sammen"
 
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
 msgid "Blog"
 msgstr "Blog"
 
@@ -330,6 +335,12 @@ msgstr ""
 
 msgid "Categories"
 msgstr "Kategorier"
+
+msgid "Center all the sectioning titles."
+msgstr ""
+
+msgid "Center the chapter titles."
+msgstr ""
 
 msgid "Changes"
 msgstr "Ændringer"
@@ -396,6 +407,9 @@ msgstr "Beregning af forskelle tog"
 
 msgid "Confirm"
 msgstr "Godkend"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr "Konverter til arkivets opmærkning"
@@ -510,6 +524,9 @@ msgid ""
 "        exactly what you are doing"
 msgstr ""
 
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Vis URL som"
 
@@ -523,9 +540,6 @@ msgid "Do not enforce save message"
 msgstr "Gennemtving ikke indsendelses besked"
 
 msgid "Do not use bold fonts"
-msgstr ""
-
-msgid "Document type"
 msgstr ""
 
 msgid "Done"
@@ -1394,9 +1408,6 @@ msgstr "Antal job"
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Antal seneste tilføjelser at vise på RSS'en (helt tal)"
 
-msgid "Number of pages"
-msgstr ""
-
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Antal resultater at vise på nummererede sider (et helt tal)"
 
@@ -1741,9 +1752,6 @@ msgstr "Offentliggør"
 
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Offentliggjort i *En god bog*, udgivet af Mit Forlag, 2017"
-
-msgid "Published on this site"
-msgstr ""
 
 msgid "Purge"
 msgstr "Slet fuldstændigt"
@@ -2289,9 +2297,6 @@ msgid ""
 "absolute paths (recommended)."
 msgstr ""
 
-msgid "This also makes /mirror/ public"
-msgstr ""
-
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
 
@@ -2807,15 +2812,9 @@ msgstr ""
 msgid "any"
 msgstr "enhver"
 
-msgid "article"
-msgstr ""
-
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "bliver automatisk genereret hvis feltet er tomt, bruger forfatter og titel"
-
-msgid "book"
-msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""

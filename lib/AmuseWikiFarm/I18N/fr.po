@@ -285,6 +285,11 @@ msgid ""
 "                together."
 msgstr "Blocs de 16 pages à être pliés deux fois puis reliés ensemble."
 
+msgid ""
+"Blocks of 8 pages to be folded twice and then bound\n"
+"                together."
+msgstr ""
+
 msgid "Blog"
 msgstr "Blog"
 
@@ -332,6 +337,12 @@ msgstr "Nom canonique"
 
 msgid "Categories"
 msgstr "Catégories"
+
+msgid "Center all the sectioning titles."
+msgstr ""
+
+msgid "Center the chapter titles."
+msgstr ""
 
 msgid "Changes"
 msgstr "Modifications"
@@ -402,6 +413,9 @@ msgstr "Le calcul des différences a pris"
 
 msgid "Confirm"
 msgstr "Confirmer"
+
+msgid "Continuous footnote numbering across the whole document."
+msgstr ""
 
 msgid "Convert to archive markup"
 msgstr "Convertir au balisage de l'Archive"
@@ -519,6 +533,9 @@ msgstr ""
 "\" (ASCII seulement). Ne pas le définir à moins de savoir exactement ce que "
 "vous êtes en train de faire"
 
+msgid "Disable /mirror/ URL for anonymous users"
+msgstr ""
+
 msgid "Display url as"
 msgstr "Afficher l'url comme"
 
@@ -534,9 +551,6 @@ msgid "Do not enforce save message"
 msgstr "Ne pas forcer le message de validation"
 
 msgid "Do not use bold fonts"
-msgstr ""
-
-msgid "Document type"
 msgstr ""
 
 msgid "Done"
@@ -1423,9 +1437,6 @@ msgstr "Nombre de tâches"
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Nombre d'ajouts récents à afficher sur le flux RSS (un nombre entier)"
 
-msgid "Number of pages"
-msgstr ""
-
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr ""
 "Nombre de résultats à afficher sur les pages paginées (un nombre entier)"
@@ -1776,9 +1787,6 @@ msgstr "Publier"
 
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Publié dans *Un livre sympa*, publié par Ma Maison d'Édition, 2014"
-
-msgid "Published on this site"
-msgstr ""
 
 msgid "Purge"
 msgstr "Purger"
@@ -2348,9 +2356,6 @@ msgstr ""
 "Il doit s'agir de chemins relatifs à la racine de la configuration du "
 "serveur web, ou de chemins absolus (recommandé)."
 
-msgid "This also makes /mirror/ public"
-msgstr ""
-
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
 "Cette directive nécessite une liste de noms de fichiers séparés avec des "
@@ -2896,16 +2901,10 @@ msgstr "n'affecte que la configuration du serveur web frontal"
 msgid "any"
 msgstr "quelconque"
 
-msgid "article"
-msgstr ""
-
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "si non défini, il est automatiquement généré à partir de l'auteur·e et du "
 "titre"
-
-msgid "book"
-msgstr ""
 
 msgid "by number of pages, ascending"
 msgstr ""
