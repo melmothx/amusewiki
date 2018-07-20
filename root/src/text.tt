@@ -263,7 +263,26 @@ $(document).ready(function() {
         var target = source.replace(/fn_back/, '#fn');
         $(target).effect("highlight", {}, 10000);
     });
-
 });
+
+$(document).ready(function () {
+    var api = $('#page').data('text-json-header-api');
+    if (api) {
+        // console.log("Api is " + api);
+        $.ajax({
+            url: api,
+            dataType: 'json',
+            success: function(response) {
+                if (response.centerchapter) {
+                    $('#page h1,#page h2,#page h3').css('text-align', 'center');
+                }
+                if (response.centersection) {
+                    $('#page h1,#page h2,#page h3,#page h4,#page h5,#page h6').css('text-align', 'center');
+                }
+            }
+        });
+    }
+});
+
 </script>
 

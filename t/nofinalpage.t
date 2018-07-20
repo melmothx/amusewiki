@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 32;
+use Test::More tests => 35;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -13,6 +13,7 @@ use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
+use AmuseWikiFarm::Utils::Amuse qw/from_json/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0nofinal0';
@@ -108,3 +109,41 @@ $mech->click('build');
     diag $job->logs;
     $mech->get_ok($job->produced);
 }
+
+{
+    my ($rev, $err) =  $site->create_new_text({ author => 'pinco',
+                                                title => 'pallino-w',
+                                                lang => 'en',
+                                              }, 'text');
+    die $err if $err;
+    my $body =<< 'MUSE';
+#author Pinco Pallino
+#title Test!
+#notoc 1
+#centerchapter 1
+
+* Part
+
+** First
+
+*** Chapter
+
+**** Section
+
+* Part (2)
+
+** First (2)
+
+*** Chapter (2)
+
+**** Section (2)
+
+MUSE
+    $rev->edit($body);
+    $rev->commit_version;
+    $rev->publish_text;
+}
+
+$mech->get_ok('/library/pinco-pallino-w');
+$mech->get_ok('/library/pinco-pallino-w/json');
+ok from_json($mech->content)->{centerchapter};
