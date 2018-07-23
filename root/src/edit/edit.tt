@@ -137,7 +137,7 @@
         </button>
         <br>
         <div class="alert alert-danger" id="editing-warnings-inline" style="display:none; margin: 10px 0;"></div>
-        <pre id="editing-warnings-inline-footnotes"></pre>
+        <pre id="editing-warnings-inline-footnotes" style="display:none"></pre>
       </div>
     </div>
     <div>
