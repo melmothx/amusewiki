@@ -214,15 +214,19 @@ $(document).ready(function() {
         maintextarea.attr('readonly', 'readonly');
         $.post(target, data, function(res) {
             // console.log(res);
+            $('#editing-warnings-inline').hide();
+            $('#editing-warnings-inline-footnotes').hide();
             if (res.success && res.body) {
                 maintextarea.effect("highlight", {}, 1000);
                 // console.log("Updating with " + res.body);
                 maintextarea.val(res.body);
-                $('#editing-warnings-inline').hide();
                 load_preview();
             }
             if (res.error) {
                 $('#editing-warnings-inline').text(res.error.message).show();
+                if (res.error.footnotesdebug) {
+                    $('#editing-warnings-inline-footnotes').text(res.error.footnotesdebug).show();
+                }
             }
             maintextarea.removeAttr('readonly');
         });

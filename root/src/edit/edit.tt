@@ -9,6 +9,12 @@
 </div>
 [% END %]
 
+[% IF footnote_error_list_differences %]
+<pre id="footnote_error_list_differences">
+  [% footnote_error_list_differences %]
+</pre>
+[% END %]
+
 <div class="center">
   <div class="page-header">
     <h1>[% loc('Editing') %] [% revision.title.uri %]
@@ -131,6 +137,7 @@
         </button>
         <br>
         <div class="alert alert-danger" id="editing-warnings-inline" style="display:none; margin: 10px 0;"></div>
+        <pre id="editing-warnings-inline-footnotes"></pre>
       </div>
     </div>
     <div>
@@ -809,5 +816,5 @@ $(document).ready(function(){
         src="[% c.uri_for('/static/js/simpleUpload.min.js') %]">
 </script>
 <script type="text/javascript"
-        src="[% c.uri_for('/static/js/amw-batch-upload.js') %]">
+        src="[% c.uri_for('/static/js/amw-batch-upload.js', { v => 2 }) %]">
 </script>

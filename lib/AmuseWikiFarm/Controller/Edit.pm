@@ -13,6 +13,7 @@ use Text::Wrapper;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username clean_html/;
 use Path::Tiny ();
+use Text::Diff ();
 
 =head1 NAME
 
@@ -357,6 +358,13 @@ sub edit_revision :Chained('revision_can_be_edited') :PathPart('') :CaptureArgs(
                                       $error->{footnotes_found},
                                       $error->{references},
                                       $error->{references_found});
+                    my $diff = Text::Diff::diff([ map { $_ . "\n" } split /\s+/, $error->{footnotes_found}  ],
+                                                [ map { $_ . "\n" } split /\s+/, $error->{references_found} ],
+                                                { STYLE => 'Unified' });
+                    $errmsg .= "\n";
+                    $errmsg .= $c->loc("The differences between the list of footnotes and references is shown below.");
+                    log_debug { "Diff is $diff" };
+                    $c->stash(footnote_error_list_differences => $diff);
                 }
                 else {
                     $errmsg = $c->loc($error);
@@ -533,10 +541,12 @@ sub ajax :Chained('edit_revision') :PathPart('ajax') :Args(0) {
     }
     elsif ($c->stash->{revision_editing_error_msg}) {
         $out{error}{message} = $c->stash->{revision_editing_error_msg};
+        $out{error}{footnotesdebug} = $c->stash->{footnote_error_list_differences};
     }
     else {
         log_debug { "Nothing to do" };
     }
+    Dlog_debug { "Output is $_" } \%out;
     $c->stash(json => \%out);
     $c->detach($c->view('JSON'));
 }
