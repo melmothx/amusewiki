@@ -13,7 +13,6 @@ use Text::Wrapper;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username clean_html/;
 use Path::Tiny ();
-use Text::Diff ();
 
 =head1 NAME
 
@@ -353,18 +352,14 @@ sub edit_revision :Chained('revision_can_be_edited') :PathPart('') :CaptureArgs(
             if (my $error = $revision->edit($params)) {
                 my $errmsg;
                 if (ref($error) and ref($error) eq 'HASH') {
-                    $errmsg = $c->loc("Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes",
+                    $errmsg = $c->loc("Footnotes mismatch: found [_1] footnotes ([_2]) and found [_3] footnote references in the body ([_4]), ignoring changes.",
                                       $error->{footnotes},
                                       $error->{footnotes_found},
                                       $error->{references},
                                       $error->{references_found});
-                    my $diff = Text::Diff::diff([ map { $_ . "\n" } split /\s+/, $error->{footnotes_found}  ],
-                                                [ map { $_ . "\n" } split /\s+/, $error->{references_found} ],
-                                                { STYLE => 'Unified' });
                     $errmsg .= "\n";
                     $errmsg .= $c->loc("The differences between the list of footnotes and references is shown below.");
-                    log_debug { "Diff is $diff" };
-                    $c->stash(footnote_error_list_differences => $diff);
+                    $c->stash(footnote_error_list_differences => $error->{differences});
                 }
                 else {
                     $errmsg = $c->loc($error);
