@@ -1,6 +1,7 @@
 README.mdwn
 script/sync-remote-archive.pl
 script/mirror-site.sh
+script/import-wordpress.pl
 *.example
 doc/amusewiki-dbconfig-import.pl
 
