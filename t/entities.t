@@ -16,6 +16,7 @@ use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Utils::LexiconMigration;
+use Test::Differences;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -110,6 +111,6 @@ u tekstu (<'>), zanemarivši izmjene.
 Neusklađene fusnote: pronađeno <a> fusnota (<&>) i pronađeno <"> fusnota
 u tekstu (<'>), zanemarivši izmjene. 
 TXT
-is $mech->content, $expected, "Localization methods appears ok";
+eq_or_diff_text $mech->content, $expected, "Localization methods appears ok";
 
 $schema->resultset('User')->update({ preferred_language => undef });
