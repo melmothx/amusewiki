@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.224 2018-07-28
+
+ - Dependencies bump with RTL support in the parser
+ - Update the wordpress import script
+
 2.223 2018-07-20
 
  - New Bookbuilder/custom format options: centerchapter, centersection,
