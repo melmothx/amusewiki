@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-11-06 01:18-0300\n"
+"PO-Revision-Date: 2018-07-28 14:57+0200\n"
 "Last-Translator: Marco <melmothx@gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es\n"
@@ -770,11 +770,11 @@ msgstr "Notas a pie de página"
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes"
+"in the body (%4), ignoring changes."
 msgstr ""
 "Notas a pie de página no calzan: se encontraron %1 notas a pie de página "
 "(%2) y se encontraron %3 referencias de notas a pie de página en el cuerpo "
-"(%4), ignorando cambios"
+"(%4), ignorando cambios."
 
 msgid "For texts from the internet use"
 msgstr "Para textos extraídos desde internet usa"
@@ -2250,6 +2250,10 @@ msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
+msgstr ""
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
 msgstr ""
 
 msgid "The file uploaded is not an HTML file!"

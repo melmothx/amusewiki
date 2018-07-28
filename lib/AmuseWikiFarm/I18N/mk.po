@@ -764,7 +764,7 @@ msgstr "Фусноти"
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes"
+"in the body (%4), ignoring changes."
 msgstr ""
 "Неускладени фусноти: пронајдено %1 фусноти (%2) и пронајдено %3 фусноти\n"
 " во текстот (%4), занемарувајќи ги измените."
@@ -2244,6 +2244,10 @@ msgstr ""
 #. ($uri)
 msgid "The description for %1 has been updated"
 msgstr "Описот за %1 е уреден"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Вчитаната датотека не е во HTML!"

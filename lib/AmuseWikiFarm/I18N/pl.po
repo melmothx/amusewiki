@@ -707,7 +707,7 @@ msgstr ""
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes"
+"in the body (%4), ignoring changes."
 msgstr ""
 
 msgid "For texts from the internet use"
@@ -2041,6 +2041,10 @@ msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
+msgstr ""
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
 msgstr ""
 
 msgid "The file uploaded is not an HTML file!"

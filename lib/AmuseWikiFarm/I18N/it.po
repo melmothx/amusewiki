@@ -767,7 +767,7 @@ msgstr "Note a piè di pagina"
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes"
+"in the body (%4), ignoring changes."
 msgstr ""
 "Le note a piè di pagina non combaciano: trovate %1 note (%2) e trovati\n"
 "%3 riferimenti (%4) nel corpo del testo), i cambiamenti verranno\n"
@@ -2272,6 +2272,10 @@ msgstr ""
 #. ($uri)
 msgid "The description for %1 has been updated"
 msgstr "La descrizione per %1 è stata aggiornata"
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
+msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Il file caricato non è un file HTML!"

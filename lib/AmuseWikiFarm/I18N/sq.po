@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libraria-anarkiste\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2016-07-27 08:30+0200\n"
+"PO-Revision-Date: 2018-07-28 14:59+0200\n"
 "Last-Translator: ArbenSadiku <arben.sadiku@autistici.org>\n"
 "Language-Team: Albanian\n"
 "Language: sq\n"
@@ -769,10 +769,10 @@ msgstr "Fusnota"
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
-"in the body (%4), ignoring changes"
+"in the body (%4), ignoring changes."
 msgstr ""
 "Mospërputhje në fusnotë: janë gjet %1 fusnota (%2) dhe janë gjet %3 "
-"referenca të fusnotës në trup (%4), injorohen ndryshimet"
+"referenca të fusnotës në trup (%4), injorohen ndryshimet."
 
 msgid "For texts from the internet use"
 msgstr "Për tekstet e huazuara nga interneti"
@@ -2216,6 +2216,10 @@ msgstr ""
 
 #. ($uri)
 msgid "The description for %1 has been updated"
+msgstr ""
+
+msgid ""
+"The differences between the list of footnotes and references is shown below."
 msgstr ""
 
 msgid "The file uploaded is not an HTML file!"
