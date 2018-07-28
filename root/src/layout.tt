@@ -114,7 +114,7 @@
 
     [%# base css for amuse texts %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amuse.css', { v => 5 }) %]" />
+          href="[% c.uri_for('/static/css/amuse.css', { v => 6 }) %]" />
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"

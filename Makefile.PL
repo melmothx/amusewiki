@@ -101,10 +101,10 @@ requires 'CSS::Packer';
 requires 'JavaScript::Packer';
 
 # our own dogfood
-requires 'Text::Amuse' => '1.20';
+requires 'Text::Amuse' => '1.21';
 requires 'PDF::Imposition' => '0.25';
 requires 'Text::Amuse::Compile' => '1.20';
-requires 'Text::Amuse::Preprocessor' => '0.56';
+requires 'Text::Amuse::Preprocessor' => '0.57';
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
