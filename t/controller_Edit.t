@@ -92,7 +92,7 @@ my %expected = (
                 mk => q{„hello“ <verbatim>[20]</verbatim>l’albero l’„adesso“ <verbatim>"'</verbatim> ’adesso‘},
                 sr => q{„hello“ <verbatim>[20]</verbatim>l’albero l’„adesso“ <verbatim>"'</verbatim> ’adesso’},
                 es => q{«hello» <verbatim>[20]</verbatim>l’albero l’«adesso» <verbatim>"'</verbatim> ‘adesso’},
-                ru => q{«hello» <verbatim>[20]</verbatim>l’albero l’«adesso» <verbatim>"'</verbatim> ‘adesso’},
+                ru => q{«hello» <verbatim>[20]</verbatim>l’albero l’«adesso» <verbatim>"'</verbatim> „adesso“},
                );
 
 $mech->tick(fix_links => 1);
