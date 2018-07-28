@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5 {
     margin-top: 24pt;
 }
 
+#thework h1, #thework h2, #thework h3, #thework h4, #thework h5, #thework h6 {
+    clear:both;
+}
+
 sup, sub {
     font-size: 8pt;
     line-height: 0;
@@ -50,7 +54,6 @@ div.image, div.float_image_f {
     margin: 1em;
     text-align: center;
     padding: 3px;
-    background-color: white;
 }
 
 div.float_image_r {
