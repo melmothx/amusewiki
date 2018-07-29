@@ -1727,7 +1727,9 @@ sub collation_index {
     # and then sort the categories
     my @categories = sort {
         # warn $a->id . ' <=> ' . $b->id;
-        $collator->cmp($a->name, $b->name)
+        $collator->cmp($a->sorting_fragments->[0], $b->sorting_fragments->[0]) or
+          $a->sorting_fragments->[1] <=> $b->sorting_fragments->[1] or
+          $collator->cmp($a->sorting_fragments->[2], $b->sorting_fragments->[2])
     } $self->categories->search(undef, { order_by => 'sorting_pos',
                                          columns => [qw/id sorting_pos name/] })->all;
 

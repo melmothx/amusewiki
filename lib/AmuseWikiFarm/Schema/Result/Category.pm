@@ -244,5 +244,57 @@ sub cloud_level {
     }
 }
 
+
+=head2 sorting_fragments
+
+Return an arrayref with 3 elements, a string, a number, a string. The
+categories are supposed to be sorted with:
+
+ $a->sorting_fragments->[0] cmp $b->sorting_fragments->[0] or
+ $a->sorting_fragments->[1] <=> $b->sorting_fragments->[1] or
+ $a->sorting_fragments->[2] cmp $b->sorting_fragments->[2]
+
+Or equivalent.
+
+The second element is supposed to be an issue number, so the sorting
+would be correct (numeric sorting). E.g.:
+
+ 'Magazine #3 (Spring)' =>  ['Magazine #', 3, '(Summer)']
+
+ 'Magazine #23 (Summer)' =>  ['Magazine #', 23, '(Summer)']
+
+ 'Magazine #100' =>  ['Magazine #', 100, '']
+
+ 'Whatever' =>  ['Whatever', 0, '']
+
+=cut
+
+
+has sorting_fragments => (is => 'ro',
+                          isa => 'ArrayRef',
+                          lazy => 1,
+                          builder => '_build_sorting_fragments',
+                         );
+
+sub _build_sorting_fragments {
+    my $self = shift;
+    my @out;
+    my $name = $self->name;
+    if ($name and $name =~ m/\A(.+?\#)([0-9]+)(.*)\z/) {
+        my ($prefix, $number, $postfix) = ($1, $2, $3);
+        $number =~ s/^0+//;
+        $number ||= 0;
+        $postfix //= '';
+        $postfix =~ s/\A\s+//;
+        @out = ($prefix, $number, $postfix);
+    }
+    else {
+        @out = ($name, 0, '');
+    }
+    return \@out;
+}
+
+
+
 __PACKAGE__->meta->make_immutable;
 1;
