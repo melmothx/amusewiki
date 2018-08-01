@@ -170,21 +170,50 @@ sub add :Chained('root') :PathPart('add') :Args(1) {
             $addtext = $text;
         }
     }
-    my $referrer = $c->uri_for_action('/library/text', [$text]);
-    log_debug { "Added $addtext" };
+    log_debug { "Adding $addtext" };
+    my $res = {
+               referrer => $c->uri_for_action('/library/text', [$text])->as_string,
+              };
     if ($bb->add_text($addtext)) {
-        $c->flash->{status_msg} = 'BOOKBUILDER_ADDED';
+        $res->{status_msg} = 'BOOKBUILDER_ADDED';
         $self->save_session($c);
     }
     elsif (my $err = $bb->error) {
         log_warn { "$err for $text" };
-        $c->flash->{error_msg} = $c->loc($bb->error);
+        $res->{error_msg} = $c->loc($bb->error);
     }
     else {
         $self->save_session($c);
     }
-    $c->response->redirect($referrer);
+    if ($params->{ajax}) {
+        $res->{texts} = $bb->texts;
+        $res->{total} = scalar @{$res->{texts}};
+        $c->stash(json => $res);
+        $c->detach($c->view('JSON'));
+    }
+    else {
+        foreach my $k (qw/status_msg error_msg/) {
+            if (my $v = delete $res->{$k}) {
+                $c->flash($k => $v);
+            }
+        }
+        $c->response->redirect($res->{referrer});
+    }
     return;
+}
+
+sub ajax :Chained('root') :CaptureArgs(0) :PathPart('ajax') {
+    my ($self, $c) = @_;
+}
+
+sub titles :Chained('ajax') :PathPart('titles') :Args(0) {
+    my ($self, $c) = @_;
+    my $bb = $c->stash->{bb};
+    my $res = {
+               titles => $bb->texts,
+              };
+    $c->stash(json => $res);
+    $c->detach($c->view('JSON'));
 }
 
 sub cover :Chained('root') :Args(0) {
