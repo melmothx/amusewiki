@@ -554,13 +554,16 @@ lib/AmuseWikiFarm/Controller/Tasks.pm
 lib/AmuseWikiFarm/Controller/Uploads.pm
 lib/AmuseWikiFarm/Controller/User.pm
 lib/AmuseWikiFarm/Controller/Utils.pm
+lib/AmuseWikiFarm/I18N/ar.po
 lib/AmuseWikiFarm/I18N/cs.po
 lib/AmuseWikiFarm/I18N/da.po
 lib/AmuseWikiFarm/I18N/de.po
 lib/AmuseWikiFarm/I18N/en.po
 lib/AmuseWikiFarm/I18N/es.po
+lib/AmuseWikiFarm/I18N/fa.po
 lib/AmuseWikiFarm/I18N/fi.po
 lib/AmuseWikiFarm/I18N/fr.po
+lib/AmuseWikiFarm/I18N/he.po
 lib/AmuseWikiFarm/I18N/hr.po
 lib/AmuseWikiFarm/I18N/id.po
 lib/AmuseWikiFarm/I18N/it.po
@@ -1253,6 +1256,7 @@ t/backlinks.t
 t/batch-upload.t
 t/bb-profiles.t
 t/beamer.t
+t/bookbuilder-ajax.t
 t/bookbuilder-custom-papersize.t
 t/bookbuilder-sessions.t
 t/bootstrapping-status-file.t
@@ -1359,6 +1363,7 @@ t/multilang.t
 t/nofinalpage.t
 t/not-found.t
 t/not/parsable/ciao.muse
+t/numeric-collation-cats.t
 t/open-graph.t
 t/other-sites.t
 t/pagination-sizes.t
