@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 58;
+use Test::More tests => 62;
 use Data::Dumper;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -14,6 +14,7 @@ use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use File::Path qw/make_path/;
 use Test::WWW::Mechanize::Catalyst;
+use JSON::MaybeXS;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -197,7 +198,27 @@ foreach my $legacy ({
 
 my $dump = $site->serialize_site;
 diag Dumper($dump);
+
+$mech->get_ok('/api/legacy-links');
+diag $mech->content;
+
+is_deeply decode_json($mech->content), {
+                                        '/bla/bla/200' => '/library',
+                                        '/blax/' => '/search',
+                                        '/x?p=10' => '/login',
+                                        '/?page=topics' => '/category/topic',
+                                       };
+
+
 $site->legacy_links->delete;
 my $new = $schema->resultset('Site')->deserialize_site($dump);
 ok $new->legacy_links->count, "Restored legacy links";
 ok $new->redirections->count, "Restored redirections";
+
+$mech->get_ok('/api/legacy-links');
+is_deeply decode_json($mech->content), {
+                                        '/bla/bla/200' => '/library',
+                                        '/blax/' => '/search',
+                                        '/x?p=10' => '/login',
+                                        '/?page=topics' => '/category/topic',
+                                       };

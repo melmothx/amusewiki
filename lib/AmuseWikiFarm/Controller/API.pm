@@ -132,6 +132,24 @@ sub ckeditor :Chained('api') :Args(0) {
     $c->detach($c->view('JSON'));
 }
 
+sub legacy_links :Chained('api') :PathPart('legacy-links') :Args(0) {
+    my ($self, $c)  = @_;
+    my @redirections = $c->stash->{site}->legacy_links
+      ->search(undef,
+               {
+                columns => [qw/legacy_path new_path/],
+                result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+               })->all;
+    my %out;
+    foreach my $r (@redirections) {
+        $out{$r->{legacy_path}} = $r->{new_path};
+    }
+    $c->stash(json => \%out);
+    $c->detach($c->view('JSON'));
+}
+
+
+
 =head1 AUTHOR
 
 Marco Pessotto <melmothx@gmail.com>
