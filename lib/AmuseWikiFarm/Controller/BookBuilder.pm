@@ -342,6 +342,12 @@ sub save_session :Private {
     Dlog_debug { "bb saved: $_" } $c->session->{bookbuilder};
     # save the bb state in the db
     $c->session->{bookbuilder_token} = $c->stash->{bb}->save_session;
+
+    # please note that with concurrent requests this is a big fail. To
+    # make it work: Create bookbuilder_session_titles table, with
+    # session_id, title, priority, title_id (optional). With ajax just
+    # add/remove this records. Then when loading the BB, load the list
+    # from this table. Right now is an overkill.
 }
 
 =encoding utf8
