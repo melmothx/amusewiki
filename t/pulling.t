@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 53;
+use Test::More tests => 54;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -173,7 +173,13 @@ $working_copy->add($binary);
 $working_copy->commit({ message => "Removed second file" });
 $working_copy->push(qw/origin master/);
 
-$site->repo_git_pull;
+{
+    my @logs;
+    my $logger = sub { push @logs, @_ };
+    $site->repo_git_pull(origin => $logger);
+    like join("\n", @logs), qr{Removed second file};
+    diag @logs;
+}
 
 is $site->jobs->count, 1;
 my $bulk = $site->update_db_from_tree_async;

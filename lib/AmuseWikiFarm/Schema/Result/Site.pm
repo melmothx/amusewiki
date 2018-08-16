@@ -2389,6 +2389,14 @@ sub _repo_git_action {
     my @out;
     if (my $git = $self->git) {
         $remote ||= 'origin';
+        if ($remote =~ m/\A([a-z0-9]{2,30})\z/) {
+            $remote = $1; # untainting tecnique from the old days
+        }
+        else {
+            die "Invalid remote repo name $remote";
+        }
+        # cfr. git remote
+
         my $fatal;
         if ($action eq 'push') {
             eval {
@@ -2398,7 +2406,10 @@ sub _repo_git_action {
         }
         elsif ($action eq 'pull') {
             eval {
-                @out = $git->pull({ ff_only => 1 }, $remote, 'master');
+                $git->fetch($remote);
+                # safe interpolation, as we checked it.
+                @out = map { $_->author, $_->date, '', $_->message, '' } $git->log("HEAD..$remote/master");
+                push @out, $git->pull({ ff_only => 1 }, $remote, 'master');
             };
             $fatal = $@;
         }
@@ -2574,7 +2585,7 @@ sub add_git_remote {
     return unless $git;
     log_debug { "Trying to add $name and $url" };
     my ($valid_name, $valid_url);
-    if ($name =~ m/\A\s*([0-9a-zA-Z]+)\s*\z/) {
+    if ($name =~ m/\A\s*([0-9a-zA-Z]{2,30})\s*\z/) {
         $valid_name = lc($1);
     }
     my $pathre = qr{(/[0-9a-zA-Z\._-]+)+/?};
