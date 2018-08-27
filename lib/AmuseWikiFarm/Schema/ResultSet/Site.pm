@@ -122,13 +122,16 @@ Create the site and set the various options passed, and return it.
 =cut
 
 sub site_serialize_related_rels {
-    return (qw/vhosts
-               site_options
-               legacy_links
-               site_links
-               categories
-               custom_formats
-               redirections/);
+    my @out= (
+              [ vhosts          => undef, { order_by => [qw/name/]        } ],
+              [ site_options    => undef, { order_by => [qw/option_name/] } ],
+              [ legacy_links    => undef, { order_by => [qw/legacy_path/] } ],
+              [ site_links      => undef, { order_by => [qw/url/]         } ],
+              [ categories      => undef, { order_by => [qw/uri/]         } ],
+              [ custom_formats  => undef, { order_by => [qw/format_name/] } ],
+              [ redirections    => undef, { order_by => [qw/uri/]         } ],
+             );
+    return @out;
 }
 
 sub deserialize_site {
@@ -136,7 +139,8 @@ sub deserialize_site {
     my $guard = $self->result_source->schema->txn_scope_guard;
     die "Missing input" unless $hashref;
     my %external;
-    foreach my $method ($self->site_serialize_related_rels) {
+    foreach my $spec ($self->site_serialize_related_rels) {
+        my ($method, @search_args) = @$spec;
         my $values = delete $hashref->{$method} || [];
         $external{$method} = $values if @$values;
     }

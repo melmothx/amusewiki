@@ -4,7 +4,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 22;
+use Test::More tests => 28;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -24,6 +24,7 @@ $site->add_to_site_options({ option_name => 'test', option_value => 'tvalue' });
 $site->add_to_site_links({ url => 'http://www.example.org', label => 'Example' }) for (1..4);
 $site->add_to_categories({ name => 'The Cat', uri => 'the-cat', type => 'topic' });
 $site->add_to_redirections({ uri => 'test', type => 'topic', redirect => 'the-text' });
+$site->add_to_legacy_links({ legacy_path => 'blablab', new_path => 'baf' });
 $site->set_users([
                   {
                    username => 'punzo',
@@ -150,6 +151,15 @@ is_deeply(\%site_users, {
                          palmiro => 1,
                         }, "users found");
 
+
+foreach my $check (qw/vhosts
+                      site_options
+                      site_links
+                      categories
+                      legacy_links
+                      redirections/) {
+    ok $new->$check->first;
+}
 
 $test_user->delete;
 $new->delete;

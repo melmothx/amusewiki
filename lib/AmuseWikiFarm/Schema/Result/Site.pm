@@ -3495,10 +3495,11 @@ sub serialize_site {
     my ($self) = @_;
     my %data =  $self->get_columns;
 
-    foreach my $method ($self->result_source->resultset->site_serialize_related_rels) {
+    foreach my $spec ($self->result_source->resultset->site_serialize_related_rels) {
+        my ($method, @search_args) = @$spec;
         my @records;
       ROW:
-        foreach my $row ($self->$method->all) {
+        foreach my $row ($self->$method->search(@search_args)->all) {
             # we store the categories only if we have descriptions attached
             my %row_data = _columns_with_no_embedded_id($row);
             if ($method eq 'categories') {
