@@ -668,7 +668,7 @@ lib/CatalystX/AmuseWiki/I18N.pm
 lib/CatalystX/Session/Store/AMW.pm
 LICENSE
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 mkits/commit/body.txt
 mkits/commit/manifest.json
 mkits/git_action/body.txt
@@ -1327,6 +1327,7 @@ t/git-pulling-async.t
 t/git-revision.t
 t/html-upload.t
 t/human-login-screens.t
+t/imager.t
 t/improve-diff-124.t
 t/indexer.t
 t/internal-linking.t
