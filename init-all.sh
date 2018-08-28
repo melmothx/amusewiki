@@ -31,7 +31,12 @@ prepare_app () {
         cpanm --installdeps .
         cp Makefile.PL "Makefile.PL~"
     fi
-
+    if perl -MImager -e 'foreach my $i (qw/jpeg png/) { die "Missing support for $i\n" unless $Imager::formats{$i} }'; then
+        echo "Imager loaded correctly";
+    else
+        echo "Imager was built without png and/or jpeg support. Are the development libraries installed?"
+        exit 2;
+    fi
     ./script/amusewiki-upgrade-db
     ./script/amusewiki-generate-nginx-conf
     ./script/amusewiki-upgrade-lexicon repo/*
