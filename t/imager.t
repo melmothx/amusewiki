@@ -69,6 +69,10 @@ my $site = $schema->resultset('Site')->find('0blog0');
             ok -f $out;
         }
     }
+    AmuseWikiFarm::Utils::Amuse::strip_image(path(qw/t files big.jpeg/), $tmp->child('stripped.png'));
+    AmuseWikiFarm::Utils::Amuse::strip_image(path(qw/t files big.jpeg/), $tmp->child('stripped.jpg'));
+    ok $tmp->child('stripped.png')->exists;
+    ok $tmp->child('stripped.jpg')->exists;
 }
 
 1;

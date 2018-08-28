@@ -187,6 +187,7 @@ use AmuseWikiFarm::Utils::Amuse qw/muse_get_full_path
 use Text::Amuse::Preprocessor;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny ();
+use Try::Tiny;
 use Fcntl qw/:flock/;
 
 =head2 muse_body
@@ -583,9 +584,16 @@ sub add_attachment {
         copy($filename, $target) or die "Couldn't copy $filename to $target $!";
     }
     else {
-        log_debug { "Running  gm convert -strip $filename, $target " };
-        if (system(gm => convert => -strip => $filename, $target) != 0) {
-            $out{error} = [ "Corrupted file provided [_1]", $filename ];
+        my $failure = "";
+        try {
+            AmuseWikiFarm::Utils::Amuse::strip_image($filename, $target);
+        } catch {
+            my $err = $_;
+            log_error { "Failure to strip $filename $target: $err" };
+        };
+        # here
+        unless (-f $target) {
+            $out{error} = [ "Corrupted file provided [_1]", "$filename $failure" ];
             return \%out;
         }
     }

@@ -891,6 +891,7 @@ sub image_dimensions {
     if ($file and -f $file and $file =~ m/\.(jpe?g|png)\z/) {
         try {
             require Imager;
+            Imager->set_file_limits(reset => 1);
             my $img = Imager->new(file => "$file") or die Imager->errstr;
             $w = $img->getwidth;
             $h = $img->getheight;
@@ -991,6 +992,7 @@ sub _generate_thumbnail {
         $input = $outpng; # consider our PNG as the source;
     }
     require Imager;
+    Imager->set_file_limits(reset => 1);
     my $img = Imager->new(file => "$input") or die Imager->errstr;
     log_debug { "Scaling $input into $output with $width" };
     my $thumb = $img->scale(xpixels => $width, qtype => 'mixing');
@@ -998,6 +1000,20 @@ sub _generate_thumbnail {
     return ($thumb->getwidth, $thumb->getheight);
 }
 
+sub strip_image {
+    my ($input, $output) = @_;
+    require Imager;
+    Imager->set_file_limits(width => 4000,
+                            height => 4000);
+    my $incoming = Imager->new(file => $input) or die Imager->errstr;
+    my $img = $incoming->copy;
+    undef $incoming;
+    log_debug { "Writing $input image into $output" };
+    # tags are already stripped.
+    $img->write(file => $output);
+    undef $img;
+    die "$output not written!" unless -f $output;
+}
 
 sub known_langs {
     return {
