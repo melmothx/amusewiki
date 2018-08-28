@@ -27,6 +27,7 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_parse_file_path
                     muse_filepath_is_valid
                     split_pdf
+                    image_dimensions
                     clean_username
                     clean_html
                     to_json
@@ -882,6 +883,24 @@ sub from_json {
         log_error { "$error: Failed to decode json $json" };
     };
     return $data;
+}
+
+sub image_dimensions {
+    my ($file) = @_;
+    my ($w, $h);
+    if ($file and -f $file and $file =~ m/\.(jpe?g|png)\z/) {
+        try {
+            require Imager;
+            my $img = Imager->new(file => "$file") or die Imager->errstr;
+            $w = $img->getwidth;
+            $h = $img->getheight;
+            log_debug { "$file: W:$w H:$h" };
+        } catch {
+            my $error = $_;
+            log_error { "Failed to compute image dimensions for $file: $error" };
+        };
+    }
+    return ($w, $h);
 }
 
 sub split_pdf {

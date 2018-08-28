@@ -1320,33 +1320,13 @@ sub index_site_files {
     $self->site_files->delete;
     if ($dir->exists) {
         foreach my $path ($dir->children(qr{^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$})) {
+            my ($w, $h) = AmuseWikiFarm::Utils::Amuse::image_dimensions($path);
             my $stored = $self->site_files->create({
                                                     file_name => $path->basename,
                                                     file_path => "$path",
+                                                    image_width => $w,
+                                                    image_height => $h,
                                                    });
-            if ($stored->is_image) {
-                try {
-                    require IO::Pipe; # already used by Text::Amuse::Compile
-                    my @exec = (qw/gm identify/, -format => '%wx%h', $stored->file_path);
-                    my $pipe = IO::Pipe->new;
-                    $pipe->reader(@exec);
-                    $pipe->autoflush;
-                    while (my $line = <$pipe>) {
-                        if ($line =~ m/([0-9]+)x([0-9]+)/) {
-                            my $width = $1;
-                            my $height = $2;
-                            $stored->update({
-                                             image_width => $width,
-                                             image_height => $height,
-                                            });
-                        }
-                    }
-                    wait; # unclear, I think so to avoid zombies
-                } catch {
-                    my $err = $_;
-                    log_error { "Cannot compute image size for $path $err" };
-                };
-            }
         }
     }
     $guard->commit;
