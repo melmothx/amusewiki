@@ -905,16 +905,61 @@ sub image_dimensions {
 
 sub split_pdf {
     my ($pdf, $directory) = @_;
-    my $target = path($directory, 'page-%04d.png');
-    my @exec = (gm => convert => '+adjoin', "$pdf", "$target");
-    if (system(@exec) == 0) {
-        my @images = sort $target->parent->children(qr/\.png$/);
+    die "Missing $pdf" unless $pdf;
+    die "Missing directory" unless $directory;
+    $directory = path($directory);
+    require PDF::API2;
+    my @images;
+    try {
+        # first, we read the PDF and split it by page. This way we
+        # also convert the PDF to a lower version. This makes it more
+        # difficult (probably not impossible) for exploits to reach
+        # the gs executable.
+        my $pdf = PDF::API2->open("$pdf");
+        my $count = $pdf->pages;
+        my $p = 0;
+        while ($p < $count) {
+            $p++;
+            my $outpdf = PDF::API2->new;
+            $outpdf->import_page($pdf, $p);
+            $outpdf->saveas(path($directory, sprintf('page-%04d.pdf', $p))->stringify);
+        }
+        $pdf->end;
+        foreach my $page (sort $directory->children(qr/\.pdf/)) {
+            if (my $image = convert_pdf_to_png($page, $directory->child($page->basename(qr/\.pdf/) . '.png'))) {
+                push @images, $image;
+            }
+        }
+    } catch {
+        my $err = $_;
+        log_error { "Failure to split the pdf $pdf into $directory $err" };
+    };
+    if (@images) {
         return @images;
     }
     else {
         return;
     }
 }
+
+sub convert_pdf_to_png {
+    my ($input, $output) = @_;
+    die "Bad usage" unless $input && $output;
+    die "$input is not a file" unless -f $input;
+    my @exec = (qw/gs -q -dSAFER -sDEVICE=png16m -dNOPAUSE -dBATCH
+                   -dUseCropBox -dTextAlphaBits=4 -dGraphicsAlphaBits=4
+                   -dMaxBitmap=50000000 -r300
+                  /);
+    push @exec, "-sOutputFile=$output", "$input";
+    Dlog_debug { "Executing $_" } \@exec;
+    if (system(@exec) == 0) {
+        return $output;
+    }
+    else {
+        Dlog_error { "Execution of $_ failed" } \@exec;
+    }
+}
+
 
 sub known_langs {
     return {

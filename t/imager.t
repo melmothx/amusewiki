@@ -8,7 +8,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Imager;
 use Data::Dumper::Concise;
-use Test::More;
+use Test::More tests => 17;
 use AmuseWikiFarm::Utils::Amuse qw/split_pdf image_dimensions/;
 use AmuseWikiFarm::Schema;
 use Path::Tiny;
@@ -42,6 +42,16 @@ my $site = $schema->resultset('Site')->find('0blog0');
     my ($w, $h) = image_dimensions(path(qw/t files doesnotexists.jpg/));
     is $w, undef;
     is $h, undef;
+}
+
+{
+    my $tmp = Path::Tiny->tempdir(CLEANUP => 1);
+    my @images = split_pdf(path(qw/t files amw-version-22.pdf/), $tmp);
+    ok @images;
+    foreach my $i (@images) {
+        ok $i->exists;
+    }
+    diag Dumper(\@images);
 }
 
 done_testing;
