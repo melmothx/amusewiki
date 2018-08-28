@@ -960,6 +960,44 @@ sub convert_pdf_to_png {
     }
 }
 
+sub create_thumbnail {
+    my ($input, $output, $width) = @_;
+    return unless $input && $output && $width;
+    my ($w, $h);
+    try {
+        ($w, $h) = _generate_thumbnail($input, $output, $width);
+    } catch {
+        my $err = $_;
+        log_error { "Failure to create thumbnail $input => $output => $width with error $err" };
+    };
+    return ($w, $h);
+}
+
+sub _generate_thumbnail {
+    my ($input, $output, $width) = @_;
+    die unless $input && $output && $width;
+    my $wd = Path::Tiny->tempdir;
+    if ($input =~ m/\.pdf\z/) {
+        require PDF::API2;
+        my $in = PDF::API2->open("$input");
+        my $out = PDF::API2->new;
+        $out->import_page($in, 1);
+        my $outpdf = $wd->child("firstpage.pdf");
+        my $outpng = $wd->child("firstpage.png");
+        $out->saveas("$outpdf");
+        $in->end;
+        convert_pdf_to_png("$outpdf", "$outpng");
+        log_debug { "Using $outpng instead of $input" };
+        $input = $outpng; # consider our PNG as the source;
+    }
+    require Imager;
+    my $img = Imager->new(file => "$input") or die Imager->errstr;
+    log_debug { "Scaling $input into $output with $width" };
+    my $thumb = $img->scale(xpixels => $width, qtype => 'mixing');
+    $thumb->write(file => $output);
+    return ($thumb->getwidth, $thumb->getheight);
+}
+
 
 sub known_langs {
     return {

@@ -8,7 +8,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Imager;
 use Data::Dumper::Concise;
-use Test::More tests => 17;
+use Test::More tests => 53;
 use AmuseWikiFarm::Utils::Amuse qw/split_pdf image_dimensions/;
 use AmuseWikiFarm::Schema;
 use Path::Tiny;
@@ -54,6 +54,21 @@ my $site = $schema->resultset('Site')->find('0blog0');
     diag Dumper(\@images);
 }
 
-done_testing;
+{
+    my $tmp = Path::Tiny->tempdir(CLEANUP => 1);
+    foreach my $src (path(qw/t files amw-version-22.pdf/),
+                     path(qw/t files shot.jpg/),
+                     path(qw/t files shot.png/)) {
+        foreach my $w (36, 150, 300) {
+            my $out = $tmp->child($src->basename . '.' . $w . '.png');
+            my ($width, $height) = AmuseWikiFarm::Utils::Amuse::create_thumbnail($src, $out, $w);
+            diag "Generated $out from $src with $w: $width $height";
+            ok $width;
+            ok $height;
+            is $width, $w, "$src width is $width";
+            ok -f $out;
+        }
+    }
+}
 
 1;
