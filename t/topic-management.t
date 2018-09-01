@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 69;
+use Test::More tests => 78;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -30,17 +30,22 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
 $mech->get_ok('/');
 
+$site->add_to_categories({ name => 'hidden', uri => 'hidden', type => 'topic', active => 0 });
+$site->add_to_categories({ name => 'hidden', uri => 'hidden', type => 'author', active => 0 });
+
 foreach my $name (qw/one two three four/) {
     my ($revision) = $site->create_new_text({ uri => "name-$name",
                                               title => "Hello $name",
                                               lang => 'en',
                                               textbody => "Bla bla $name"
                                             }, 'text');
-    $revision->edit("#SORTauthors fixed; $name\n#SORTtopics fixed; $name\n" . $revision->muse_body);
+    $revision->edit("#SORTauthors hidden; fixed; $name\n#SORTtopics hidden; fixed; $name\n" . $revision->muse_body);
     $revision->commit_version;
     my $uri = $revision->publish_text;
     ok $uri, "Found uri $uri";
     $mech->get_ok($uri);
+    $mech->content_lacks("/topic/hidden");
+    $mech->content_lacks("/author/hidden");
     $mech->content_contains("/topic/$name");
     $mech->content_contains("/topic/fixed");
     $mech->content_contains("/author/$name");
@@ -62,6 +67,8 @@ foreach my $name (qw/one two three four/) {
     $mech->get("/category/author/$name");
     is $mech->status, 404;
 }
+
+ok !$site->categories->by_type_and_uri(qw/topic hidden/)->active;
 
 $mech->get('/console/inactive-categories/list');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
