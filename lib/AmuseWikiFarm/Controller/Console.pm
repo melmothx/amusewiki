@@ -271,6 +271,38 @@ sub translations :Chained('root') :PathPart('translations') :Args(0) {
     }
 }
 
+sub inactive_categories :Chained('root') :PathPart('inactive-categories') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+}
+
+sub list_inactive_categories :Chained('inactive_categories') :PathPart('list') :Args(0) {
+    my ($self, $c) = @_;
+    my @all = $c->stash->{site}->categories->inactive->sorted->all;
+    $c->stash(
+              page_title => $c->loc('Inactive categories'),
+              categories => \@all,
+              toggler_url => $c->uri_for_action('/console/toggle_category'),
+             );
+}
+
+sub toggle_category :Chained('inactive_categories') :PathPart('toggle') :Args(0) {
+    my ($self, $c) = @_;
+    my %out;
+    if (my $id = $c->request->params->{toggle}) {
+        if (my $cat = $c->stash->{site}->categories->find("$id")) {
+            $out{active} = $cat->toggle_active;
+            $out{ok} = 1;
+        }
+        else {
+            $out{error} = "$id not found";
+        }
+    }
+    else {
+        $out{error} = "No param";
+    }
+    $c->stash(json => \%out);
+    $c->detach($c->view('JSON'));
+}
 
 =head1 AUTHOR
 

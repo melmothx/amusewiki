@@ -302,7 +302,12 @@ sub _build_sorting_fragments {
     return \@out;
 }
 
-
+sub toggle_active {
+    my $self = shift;
+    my $new = $self->active ? 0 : 1;
+    $self->update({ active => $new });
+    return $new;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

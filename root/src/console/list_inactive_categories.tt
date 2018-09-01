@@ -1,0 +1,71 @@
+[%# -*- mode: html -*- %]
+
+<div class="center">
+  <div class="page-header">
+    <h1>[% page_title | html %]</h1>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-condensed table-bordered">
+    <tr>
+      <th>[% loc('Type') %]</th>
+      <th>[% loc('Name') %]</th>
+      <th>[% loc('Active') %]</th>
+    </tr>
+    [% FOREACH cat IN categories %]
+      <tr class="cat-row">
+        <td>[% cat.type   | html %]</td>
+        <td id="cat-cell-[% cat.id %]" class="cat-cell" data-category="[% cat.id %]" data-active="[% cat.active %]">
+          <span id="cat-active-[% cat.id %]">
+            <a href="[% cat.full_uri | html %]"><strong>[% cat.name | html %]</strong></a>
+          </span>
+          <span id="cat-inactive-[% cat.id %]">
+            [% cat.name | html %]
+          </span>
+      </td>
+      <td><input type="checkbox" class="toggle-cat" id="toggler-[% cat.id %]"
+                 data-toggler="[% toggler_url | html %]"
+                 value="[% cat.id | html %]"></td>
+    </tr>
+    [% END %]
+  </table>
+</div>
+
+<script>
+ $(document).ready(function() {
+     function refresh_cats () {
+         $('.cat-cell').each(function() {
+             var el = $(this);
+             var id = el.data('category');
+             var active = el.data('active');
+             console.log(id + ' ' + active);
+             if (active) {
+                 $('#toggler-' + id).prop('checked', true);
+                 $('#cat-inactive-' + id).hide();
+                 $('#cat-active-' + id).show();
+             }
+             else {
+                 $('#toggler-' + id).prop('checked', false);
+                 $('#cat-inactive-' + id).show();
+                 $('#cat-active-' + id).hide();
+             }
+         });
+     }
+     refresh_cats();
+     $('.toggle-cat').change(function() {
+         var target = $(this).data('toggler');
+         var id = $(this).val();
+         $.post(target, { toggle: id }, function (data) {
+             console.log(data);
+             if (data.ok) {
+                 $('#cat-cell-' + id).data('active', data.active);
+             }
+             else {
+                 alert(data.error);
+             }
+             refresh_cats();
+         });
+     });
+ });
+</script>

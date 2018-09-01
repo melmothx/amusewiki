@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 62;
+use Test::More tests => 69;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -63,3 +63,14 @@ foreach my $name (qw/one two three four/) {
     is $mech->status, 404;
 }
 
+$mech->get('/console/inactive-categories/list');
+$mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, '200';
+$mech->get_ok('/console/inactive-categories/list');
+my $cat = $site->categories->with_active_flag_on->first;
+ok $cat->active;
+ok !$cat->toggle_active;
+ok $cat->toggle_active;
+$mech->get_ok('/console/inactive-categories/toggle?toggle=' . $cat->id);
+diag $mech->content;
+ok !$cat->discard_changes->active;
