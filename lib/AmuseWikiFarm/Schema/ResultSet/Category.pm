@@ -35,8 +35,15 @@ sub by_type {
     return $self->search({ "$me.type" => $type })->sorted;
 }
 
+sub with_active_flag_on {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.active" => 1 });
+}
+
 sub active_only {
-    return shift->with_texts;
+    my ($self) = @_;
+    return $self->with_texts->with_active_flag_on;
 }
 
 =head2 active_only_by_type($type)
@@ -48,7 +55,7 @@ which have a text count greater than 0.
 
 sub active_only_by_type {
     my ($self, $type) = @_;
-    return $self->with_texts->by_type($type);
+    return $self->active_only->by_type($type);
 }
 
 =head2 with_texts(deferred => 0, sort => 'asc',  min_texts => 0);

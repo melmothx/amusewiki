@@ -95,6 +95,7 @@ sub category :Chained('root') :PathPart('category') :CaptureArgs(1) {
         $search{deferred_with_teaser} = 1;
     }
     my $rs = $site->categories->by_type($type)
+      ->with_active_flag_on
       ->with_texts(%search,
                    sort => $c->req->params->{sorting});
     $c->stash(
