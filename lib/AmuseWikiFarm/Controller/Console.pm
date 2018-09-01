@@ -271,21 +271,21 @@ sub translations :Chained('root') :PathPart('translations') :Args(0) {
     }
 }
 
-sub inactive_categories :Chained('root') :PathPart('inactive-categories') :CaptureArgs(0) {
+sub categories :Chained('root') :PathPart('categories') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
 
-sub list_inactive_categories :Chained('inactive_categories') :PathPart('list') :Args(0) {
+sub list_categories :Chained('categories') :PathPart('list') :Args(0) {
     my ($self, $c) = @_;
-    my @all = $c->stash->{site}->categories->inactive->sorted->all;
+    my @all = $c->stash->{site}->categories->sorted->all;
     $c->stash(
-              page_title => $c->loc('Inactive categories'),
+              page_title => $c->loc('Manage categories'),
               categories => \@all,
               toggler_url => $c->uri_for_action('/console/toggle_category'),
              );
 }
 
-sub toggle_category :Chained('inactive_categories') :PathPart('toggle') :Args(0) {
+sub toggle_category :Chained('categories') :PathPart('toggle') :Args(0) {
     my ($self, $c) = @_;
     my %out;
     if (my $id = $c->request->params->{toggle}) {

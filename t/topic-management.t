@@ -70,14 +70,14 @@ foreach my $name (qw/one two three four/) {
 
 ok !$site->categories->by_type_and_uri(qw/topic hidden/)->active;
 
-$mech->get('/console/inactive-categories/list');
+$mech->get('/console/categories/list');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
 is $mech->status, '200';
-$mech->get_ok('/console/inactive-categories/list');
+$mech->get_ok('/console/categories/list');
 my $cat = $site->categories->with_active_flag_on->first;
 ok $cat->active;
 ok !$cat->toggle_active;
 ok $cat->toggle_active;
-$mech->get_ok('/console/inactive-categories/toggle?toggle=' . $cat->id);
+$mech->get_ok('/console/categories/toggle?toggle=' . $cat->id);
 diag $mech->content;
 ok !$cat->discard_changes->active;

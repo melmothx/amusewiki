@@ -21,7 +21,7 @@
   </a>
   <button class="trash-category btn btn-default pull-right" data-category-id="[% category.id %]"
           title="[% loc('Remove this category') %]"
-          data-final="[% c.uri_for_action('/console/list_inactive_categories') %]"
+          data-final="[% c.uri_for_action('/console/list_categories') %]"
           data-action="[% c.uri_for_action('/console/toggle_category') %]">
     <i class="fa fa-trash"></i>
   </button>
