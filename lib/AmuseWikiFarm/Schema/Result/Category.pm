@@ -73,6 +73,12 @@ __PACKAGE__->table("category");
   default_value: 0
   is_nullable: 0
 
+=head2 active
+
+  data_type: 'smallint'
+  default_value: 1
+  is_nullable: 0
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -95,6 +101,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "text_count",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "active",
+  { data_type => "smallint", default_value => 1, is_nullable => 0 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -187,8 +195,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-02-17 19:36:30
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:C29cQenHAkgsAx2y9wSN1A
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-09-01 11:11:09
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/DjhX2PpXXO2wZ6SvSHBlA
 
 =head2 published_titles
 

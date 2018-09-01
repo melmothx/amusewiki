@@ -412,6 +412,7 @@ CREATE TABLE category (
         type  VARCHAR(16) NOT NULL,
         sorting_pos INTEGER NOT NULL DEFAULT 0,
         text_count INTEGER NOT NULL DEFAULT 0,
+        active SMALLINT NOT NULL DEFAULT 1,
         site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
