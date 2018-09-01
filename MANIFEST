@@ -91,6 +91,8 @@ dbicdh/_source/deploy/46/001-auto-__VERSION.yml
 dbicdh/_source/deploy/46/001-auto.yml
 dbicdh/_source/deploy/47/001-auto-__VERSION.yml
 dbicdh/_source/deploy/47/001-auto.yml
+dbicdh/_source/deploy/48/001-auto-__VERSION.yml
+dbicdh/_source/deploy/48/001-auto.yml
 dbicdh/_source/deploy/5/001-auto-__VERSION.yml
 dbicdh/_source/deploy/5/001-auto.yml
 dbicdh/_source/deploy/6/001-auto-__VERSION.yml
@@ -183,6 +185,8 @@ dbicdh/MySQL/deploy/46/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/46/001-auto.sql
 dbicdh/MySQL/deploy/47/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/47/001-auto.sql
+dbicdh/MySQL/deploy/48/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/48/001-auto.sql
 dbicdh/MySQL/deploy/5/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/5/001-auto.sql
 dbicdh/MySQL/deploy/6/001-auto-__VERSION.sql
@@ -233,6 +237,7 @@ dbicdh/MySQL/upgrade/43-44/001-auto.sql
 dbicdh/MySQL/upgrade/44-45/001-auto.sql
 dbicdh/MySQL/upgrade/45-46/001-auto.sql
 dbicdh/MySQL/upgrade/46-47/001-auto.sql
+dbicdh/MySQL/upgrade/47-48/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
 dbicdh/MySQL/upgrade/7-8/001-auto.sql
@@ -320,6 +325,8 @@ dbicdh/PostgreSQL/deploy/46/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/46/001-auto.sql
 dbicdh/PostgreSQL/deploy/47/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/47/001-auto.sql
+dbicdh/PostgreSQL/deploy/48/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/48/001-auto.sql
 dbicdh/PostgreSQL/deploy/5/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/5/001-auto.sql
 dbicdh/PostgreSQL/deploy/6/001-auto-__VERSION.sql
@@ -370,6 +377,7 @@ dbicdh/PostgreSQL/upgrade/43-44/001-auto.sql
 dbicdh/PostgreSQL/upgrade/44-45/001-auto.sql
 dbicdh/PostgreSQL/upgrade/45-46/001-auto.sql
 dbicdh/PostgreSQL/upgrade/46-47/001-auto.sql
+dbicdh/PostgreSQL/upgrade/47-48/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
 dbicdh/PostgreSQL/upgrade/7-8/001-auto.sql
@@ -457,6 +465,8 @@ dbicdh/SQLite/deploy/46/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/46/001-auto.sql
 dbicdh/SQLite/deploy/47/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/47/001-auto.sql
+dbicdh/SQLite/deploy/48/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/48/001-auto.sql
 dbicdh/SQLite/deploy/5/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/5/001-auto.sql
 dbicdh/SQLite/deploy/6/001-auto-__VERSION.sql
@@ -507,6 +517,7 @@ dbicdh/SQLite/upgrade/43-44/001-auto.sql
 dbicdh/SQLite/upgrade/44-45/001-auto.sql
 dbicdh/SQLite/upgrade/45-46/001-auto.sql
 dbicdh/SQLite/upgrade/46-47/001-auto.sql
+dbicdh/SQLite/upgrade/47-48/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
@@ -711,6 +722,7 @@ root/src/category.tt
 root/src/cloud/show.tt
 root/src/console/alias_display.tt
 root/src/console/git_display.tt
+root/src/console/list_categories.tt
 root/src/console/translations.tt
 root/src/console/unpublished.tt
 root/src/edit/diff.tt
@@ -1464,6 +1476,7 @@ t/texmf-files/logo-en.pdf
 t/texmf-files/logo-yu.pdf
 t/text-structure.t
 t/title-rs.t
+t/topic-management.t
 t/unicode-exception-old-cat.t
 t/update-or-create.t
 t/uri-clash-119.t
