@@ -19,6 +19,12 @@
      class="btn btn-default pull-right" role="button">
     <span class="fa fa-edit"></span>
   </a>
+  <button class="trash-category btn btn-default pull-right" data-category-id="[% category.id %]"
+          title="[% loc('Remove this category') %]"
+          data-final="[% c.uri_for_action('/console/list_inactive_categories') %]"
+          data-action="[% c.uri_for_action('/console/toggle_category') %]">
+    <i class="fa fa-trash"></i>
+  </button>
   [% END %]
 </h1>
 </div>
@@ -63,3 +69,19 @@
 [% INCLUDE 'include/pagination-widget.tt' %]
 [% INCLUDE 'include/posts.tt' %]
 [% INCLUDE 'include/pagination.tt' %]
+
+<script>
+ $(document).ready(function() {
+     $(".trash-category").click(function() {
+         var el = $(this);
+         $.post(el.data('action'), { toggle: el.data('category-id') }, function (data) {
+             if (data.ok) {
+                 window.location = el.data('final');
+             }
+             else {
+                 alert(data.error);
+             }
+         });
+     });
+ });
+</script>
