@@ -3480,9 +3480,9 @@ sub serialize_site {
         my @records;
       ROW:
         foreach my $row ($self->$method->search(@search_args)->all) {
-            # we store the categories only if we have descriptions attached
             my %row_data = _columns_with_no_embedded_id($row);
             if ($method eq 'categories') {
+                # add the description, if needed
                 my @descriptions;
                 foreach my $desc ($row->category_descriptions) {
                     my %hashref = _columns_with_no_embedded_id($desc);
@@ -3490,10 +3490,6 @@ sub serialize_site {
                 }
                 if (@descriptions) {
                     $row_data{category_descriptions} = \@descriptions;
-                }
-                else {
-                    # skip the categories without descriptions
-                    next ROW;
                 }
             }
             push @records, \%row_data;

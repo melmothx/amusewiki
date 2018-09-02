@@ -5,12 +5,14 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 78;
+use Test::More tests => 85;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
+use Storable qw/dclone/;
+use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":utf8";
@@ -81,3 +83,17 @@ ok $cat->toggle_active;
 $mech->get_ok('/console/categories/toggle?toggle=' . $cat->id);
 diag $mech->content;
 ok !$cat->discard_changes->active;
+$mech->get_ok('/search?query=');
+$mech->content_contains('/category/topic/fixed');
+$mech->content_lacks($cat->full_uri);
+$cat->toggle_active;
+$mech->get_ok('/search?query=');
+$mech->content_contains($cat->full_uri);
+
+{
+    my $export = $site->serialize_site;
+    ok scalar(@{$export->{categories}});
+    diag Dumper($export->{categories});
+    my $new = $schema->resultset('Site')->deserialize_site(dclone($export));
+    is_deeply($new->serialize_site, $export, "Updating self works");
+}
