@@ -179,6 +179,7 @@ sub create_category_list {
     log_debug { "Creating category listing" };
     my $site = $self->site;
     my @cats = $site->categories->by_type($type)
+      ->with_active_flag_on
       ->static_index_tokens
       ->order_titles_by($site->titles_category_default_sorting)
       ->all;

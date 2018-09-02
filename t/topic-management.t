@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 85;
+use Test::More tests => 91;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -96,4 +96,11 @@ $mech->content_contains($cat->full_uri);
     diag Dumper($export->{categories});
     my $new = $schema->resultset('Site')->deserialize_site(dclone($export));
     is_deeply($new->serialize_site, $export, "Updating self works");
+}
+
+$site->jobs->dequeue->dispatch_job;
+foreach my $type (qw/topic author/) {
+    $mech->get_ok("/mirror/${type}s.html");
+    $mech->content_contains(q{id="cat-} . $cat->uri  . q{">});
+    $mech->content_lacks(q{id="cat-} . $site->categories->inactive->by_type($type)->first->uri  . q{">});
 }
