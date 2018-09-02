@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 20;
+use Test::More tests => 29;
 use Data::Dumper;
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
@@ -45,12 +45,23 @@ foreach my $path ('/feed', 'rss.xml') {
     is $mech->content_type, 'application/rss+xml';
     $mech->content_like(qr/<enclosure.*epub/);
     diag "Testing encoding";
-    $mech->content_like( qr/<title>Ža Third &amp; test/);
+    $mech->content_like( qr/<title>Marco &amp; C. - Ža Third &amp; test/);
     $mech->content_like( qr/Marco &amp;amp; C./);
     $mech->content_like( qr/isPermaLink="true"/);
     $mech->content_like( qr[library/test-text-1\.epub]);
     $mech->content_like( qr{library/test-text-2\?v=\d+});
     $mech->content_like( qr{special/test-special-1\?v=\d+});
+    is $mech->response->header('Access-Control-Allow-Origin'), '*';
     diag $mech->content;
 }
+$mech->get_ok('/');
+ok !$mech->response->header('Access-Control-Allow-Origin');
+
+$site->update({ mode => 'private' });
+$mech->get('/feed');
+ok $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
+is $mech->status, 200;
+is $mech->uri, 'https://0rss0.amusewiki.org/feed';
+$mech->content_contains("<channel>");
+ok !$mech->response->header('Access-Control-Allow-Origin');
 

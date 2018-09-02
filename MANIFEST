@@ -1083,6 +1083,7 @@ root/static/js/markitup/skins/amw/images/menu.png
 root/static/js/markitup/skins/amw/images/submenu.png
 root/static/js/markitup/skins/amw/style.css
 root/static/js/queue.js
+root/static/js/rss-aggregator.js
 root/static/js/screenfull.min.js
 root/static/js/select2/select2.js
 root/static/js/select2/select2.min.js

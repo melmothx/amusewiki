@@ -332,3 +332,7 @@ a.search-autocomplete-item:hover {
 div.schema-preview {
     margin: 20px;
 }
+
+a.rss-aggregate-site-title {
+    font-weight: bold;
+}
