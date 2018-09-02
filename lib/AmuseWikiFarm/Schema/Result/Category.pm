@@ -306,6 +306,7 @@ sub toggle_active {
     my $self = shift;
     my $new = $self->active ? 0 : 1;
     $self->update({ active => $new });
+    $self->site->generate_static_indexes;
     return $new;
 }
 

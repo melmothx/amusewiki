@@ -1840,10 +1840,12 @@ sub generate_static_indexes {
     my ($self, $logger) = @_;
     $logger ||= sub { return };
     if ($self->jobs->pending->build_static_indexes_jobs->count) {
+        log_debug { "Generation of static indexes already scheduled" };
         $logger->("Generation of static indexes already scheduled\n");
     }
     else {
         $self->jobs->build_static_indexes_add;
+        log_debug { "Scheduled static indexes generation" };
         $logger->("Scheduled static indexes generation\n");
     }
 }
