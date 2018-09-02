@@ -148,30 +148,42 @@ sub facet_tokens {
 sub _build_authors {
     my $self = shift;
     my $list = $self->unpack_json_facets($self->facets->{author});
-    $self->_add_category_labels($list);
+    $self->_add_category_labels(author => $list);
     return $list;
 }
 
 sub _add_category_labels {
-    my ($self, $list) = @_;
+    my ($self, $type, $list) = @_;
+    # do nothing if we don't have a site object
     my $site = $self->site or return;
     my @uris;
     foreach my $i (@$list) {
         my $uri = (split(/\//, $i->{value}))[-1];
         push @uris, $uri;
     }
-    my $map = $site->categories->by_uri(\@uris)->full_uri_name_mapping_hashref;
-    foreach my $i (@$list) {
+    my $map = $site->categories->by_uri(\@uris)
+      ->by_type($type)
+      ->with_active_flag_on
+      ->full_uri_name_mapping_hashref;
+    Dlog_debug { "Map is $_" } $map;
+    my @out;
+    while (@$list) {
+        my $i = shift @$list;
+        # skip the missing ones
         if (my $label = $map->{$i->{value}}) {
             $i->{label} = $label;
+            push @out, $i;
         }
     }
+    # edit the ref in place, and return it anyway
+    @$list = @out;
+    return $list;
 }
 
 sub _build_topics {
     my $self = shift;
     my $list = $self->unpack_json_facets($self->facets->{topic});
-    $self->_add_category_labels($list);
+    $self->_add_category_labels(topic => $list);
     if (my $lh = $self->lh) {
         foreach my $i (@$list) {
             $i->{label} = $lh->loc($i->{label});
