@@ -8,7 +8,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Imager;
 use Data::Dumper::Concise;
-use Test::More tests => 53;
+use Test::More tests => 55;
 use AmuseWikiFarm::Utils::Amuse qw/split_pdf image_dimensions/;
 use AmuseWikiFarm::Schema;
 use Path::Tiny;
