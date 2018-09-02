@@ -152,8 +152,11 @@ sub create_titles {
             my @sorted = sort {
                 $a->{category}->{sorting_pos} <=> $b->{category}->{sorting_pos}
             } @{$title->{title_categories}};
+            Dlog_debug { "Categories are $_" } $title->{title_categories};
+          CATEGORY:
             while (@sorted) {
                 my $cat = shift @sorted;
+                next CATEGORY unless $cat->{category}->{active};
                 if ($cat->{category}->{type} eq 'topic') {
                     push @topics, $cat->{category};
                 }

@@ -534,6 +534,7 @@ sub static_index_tokens {
                                   'title_categories.category.uri' => 'category.uri',
                                   'title_categories.category.type' => 'category.type',
                                   'title_categories.category.name' => 'category.name',
+                                  'title_categories.category.active' => 'category.active',
                                   'title_categories.category.sorting_pos' => 'category.sorting_pos',
                                  }
                   });
