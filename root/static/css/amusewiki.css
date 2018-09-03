@@ -336,3 +336,11 @@ div.schema-preview {
 a.rss-aggregate-site-title {
     font-weight: bold;
 }
+
+ul.ui-autocomplete {
+    z-index: 10000 !important;
+}
+
+.ui-menu-item:hover {
+    font-weight: bold;
+}

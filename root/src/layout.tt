@@ -190,7 +190,7 @@
                 id="formsearchbox" action="[% c.uri_for('/search') %]">
             <div class="form-group">
               <div class="input-group">
-		        <input type="text" class="form-control"
+		        <input type="text" class="form-control search-autocomplete"
                        placeholder="[% loc('Search') %]"
                        name="query" value=""/>
                 <div class="input-group-btn">
@@ -704,6 +704,37 @@
       [% END %]
       </div>
     </div>
+    <script type="text/javascript">
+    $('input.search-autocomplete').autocomplete({
+        source: function(req, res) {
+            $.ajax({
+                url: "/search",
+                dataType: "json",
+                data: {
+                    query: req.term,
+                    partial: 1,
+                    fmt: "json"
+                },
+                success: function(data) {
+                    res($.map(data, function(item) {
+                        return {
+                            label: item.title,
+                            value: '',
+                            link: item.url
+                        };
+                    }));
+                }
+            });
+        },
+        minLength: 2,
+        delay: 200,
+        select: function(event, ui) {
+            console.log(ui.item.link);
+            window.location.href = ui.item.link;
+        },
+        position: { my: "left top", at: "left bottom" }
+    });
+    </script>
   </body>
 </html>
 
