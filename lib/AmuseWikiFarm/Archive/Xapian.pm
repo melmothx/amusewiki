@@ -280,6 +280,7 @@ sub index_text {
     my $database = $self->xapian_db;
     my $indexer = Search::Xapian::TermGenerator->new();
     $indexer->set_database($database);
+    $indexer->set_flags(FLAG_SPELLING_CORRECTION);
     # indexing with the correct stemmer is the right thing to do. No
     # point in stemming with the wrong locale. if i understand
     # correctly, the unstemmed version is indexed anyway.
@@ -489,8 +490,8 @@ sub _do_faceted_search {
         }
     }
 
-    my $flags = $args{partial} ? (FLAG_PHRASE | FLAG_BOOLEAN  | FLAG_LOVEHATE | FLAG_WILDCARD | FLAG_PARTIAL)
-                               : (FLAG_PHRASE | FLAG_BOOLEAN  | FLAG_LOVEHATE | FLAG_WILDCARD);
+    my $flags = $args{partial} ? ( FLAG_PHRASE | FLAG_BOOLEAN  | FLAG_LOVEHATE | FLAG_WILDCARD | FLAG_SPELLING_CORRECTION | FLAG_PARTIAL)
+                               : ( FLAG_PHRASE | FLAG_BOOLEAN  | FLAG_LOVEHATE | FLAG_WILDCARD | FLAG_SPELLING_CORRECTION );
 
     my $query = $args{query} ? $qp->parse_query($args{query}, $flags) : Search::Xapian::Query->MatchAll;
 
@@ -636,6 +637,7 @@ sub _do_faceted_search {
                                                        site => $args{site},
                                                        lh => $args{lh},
                                                        show_deferred => $self->index_deferred,
+                                                       did_you_mean => $qp->get_corrected_query_string,
                                                       );
 }
 

@@ -73,6 +73,8 @@ has text_types => (is => 'lazy');
 
 has error => (is => 'ro', isa => Maybe[Str]);
 
+has did_you_mean => (is => 'ro', isa => Str, default => sub { '' });
+
 sub facet_tokens {
     my $self = shift;
     return [] if $self->error;

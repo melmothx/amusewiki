@@ -84,6 +84,13 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
             last;
         }
     }
+    if (my $corrected = $res->did_you_mean) {
+        $params{query} = $corrected;
+        $c->uri_for_action('/search/index', [], \%params);
+        $c->stash(did_you_mean => $corrected,
+                  did_you_mean_url => $c->uri_for_action('/search/index', [], \%params));
+    }
+
     $c->stash( pager => AmuseWikiFarm::Utils::Paginator::create_pager($res->pager, $format_link),
                page_title => $c->loc('Search'),
                facets => ($has_facets ? $facets : undef),

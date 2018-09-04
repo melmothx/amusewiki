@@ -11,9 +11,11 @@ use lib catdir(qw/t lib/);
 use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
-use Test::More tests => 157;
+use Test::WWW::Mechanize::Catalyst;
+use Test::More tests => 170;
 use Data::Dumper::Concise;
 use Path::Tiny;
+use Search::Xapian (':all');
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -376,4 +378,29 @@ foreach my $sort_by (keys %SORTINGS) {
     my $res = $site->xapian->faceted_search(query => 'first test');
     is ($res->texts->[0]->title, "First <em>test</em>");
     is ($res->texts->[0]->author, "Pinco <em>Pallino</em>");
+}
+
+{
+    my $xap = Search::Xapian::Database->new($site->xapian->xapian_dir);
+    is $xap->get_spelling_suggestion('commmon'), "common";
+    is $xap->get_spelling_suggestion('artilce'), "article";
+    foreach my $sugg ([qw/commmon common/],
+                      [qw/artilce article/]) {
+        my $res = $site->xapian->faceted_search(query => 'commmon');
+        is $res->did_you_mean, "common";
+    }
+    foreach my $sugg ([qw/commmon common/],
+                      [qw/gullliver gulliver/]) {
+        my $res = $site->xapian->faceted_search(query => $sugg->[0]);
+        is $res->did_you_mean, $sugg->[1], "Suggestion is $sugg->[1]";
+        my $correct = $site->xapian->faceted_search(query => $sugg->[1]);
+        ok !$correct->did_you_mean or diag $correct->did_you_mean;
+    }
+    my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                   host => $site->canonical);
+    $mech->get_ok('/');
+    $mech->get_ok('/search?query=gullliver');
+    $mech->content_contains('Did you mean');
+    ok $mech->follow_link(text_regex => qr{gulliver});
+    $mech->content_lacks('Did you mean');
 }

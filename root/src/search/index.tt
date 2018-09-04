@@ -30,6 +30,11 @@
           <code>notes:</code>,
           <code>year:</code>
         </small><br>
+        [% IF did_you_mean %]
+        <div class="h4">
+          [% loc("Did you mean:") %] <a href="[% did_you_mean_url | html %]"><em>[% did_you_mean | html %]</em></a>?
+        </div>
+        [% END %]
       </div>
     </div>
 </div>
