@@ -131,46 +131,15 @@
                                          function () {
                                              $('#xapian-loading').hide();
                                              $('html,body').animate({ scrollTop: 0 }, 300);
+                                             window.history.pushState('Search', 'Search', url);
                                          });
  }
  $(document).ready(function() {
      $('#xapian-loading').hide();
      $(".xapian-filter").change(function() {
          var form = $('form#search');
-         load_xapian_results(form.attr('action') + '?bare=1&' + $('form#search').serialize());
+         load_xapian_results(form.attr('action') + '?' + $('form#search').serialize());
      })
-     $('input.search-autocomplete').autocomplete({
-         source: function(req, res) {
-             $.ajax({
-                 url: "/search",
-                 dataType: "json",
-                 data: {
-                     query: req.term,
-                     partial: 1,
-                     fmt: "json"
-                 },
-                 success: function(data) {
-                     res($.map(data, function(item) {
-                         return {
-                             label: item.title,
-                             value: '',
-                             link: item.url
-                         };
-                     }));
-                 }
-             });
-         },
-         minLength: 2,
-         delay: 200,
-         select: function(event, ui) {
-             window.location.href = ui.item.link;
-         },
-         position: { my: "left top", at: "left bottom" }
-     }).autocomplete( "instance" )._renderItem = function( ul, item ) {
-         return $("<li>")
-	         .append( $("<a>", { class: "search-autocomplete-item" }).html(item.label))
-			 .appendTo( ul );
-	 };
  });
  $(document).on('click', '.pagination li a', function(e) {
      e.preventDefault();

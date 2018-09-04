@@ -1320,33 +1320,13 @@ sub index_site_files {
     $self->site_files->delete;
     if ($dir->exists) {
         foreach my $path ($dir->children(qr{^[a-z0-9]([a-z0-9-]*[a-z0-9])?\.[a-z0-9]+$})) {
+            my ($w, $h) = AmuseWikiFarm::Utils::Amuse::image_dimensions($path);
             my $stored = $self->site_files->create({
                                                     file_name => $path->basename,
                                                     file_path => "$path",
+                                                    image_width => $w,
+                                                    image_height => $h,
                                                    });
-            if ($stored->is_image) {
-                try {
-                    require IO::Pipe; # already used by Text::Amuse::Compile
-                    my @exec = (qw/gm identify/, -format => '%wx%h', $stored->file_path);
-                    my $pipe = IO::Pipe->new;
-                    $pipe->reader(@exec);
-                    $pipe->autoflush;
-                    while (my $line = <$pipe>) {
-                        if ($line =~ m/([0-9]+)x([0-9]+)/) {
-                            my $width = $1;
-                            my $height = $2;
-                            $stored->update({
-                                             image_width => $width,
-                                             image_height => $height,
-                                            });
-                        }
-                    }
-                    wait; # unclear, I think so to avoid zombies
-                } catch {
-                    my $err = $_;
-                    log_error { "Cannot compute image size for $path $err" };
-                };
-            }
         }
     }
     $guard->commit;
@@ -1860,10 +1840,12 @@ sub generate_static_indexes {
     my ($self, $logger) = @_;
     $logger ||= sub { return };
     if ($self->jobs->pending->build_static_indexes_jobs->count) {
+        log_debug { "Generation of static indexes already scheduled" };
         $logger->("Generation of static indexes already scheduled\n");
     }
     else {
         $self->jobs->build_static_indexes_add;
+        log_debug { "Scheduled static indexes generation" };
         $logger->("Scheduled static indexes generation\n");
     }
 }
@@ -3500,9 +3482,9 @@ sub serialize_site {
         my @records;
       ROW:
         foreach my $row ($self->$method->search(@search_args)->all) {
-            # we store the categories only if we have descriptions attached
             my %row_data = _columns_with_no_embedded_id($row);
             if ($method eq 'categories') {
+                # add the description, if needed
                 my @descriptions;
                 foreach my $desc ($row->category_descriptions) {
                     my %hashref = _columns_with_no_embedded_id($desc);
@@ -3510,10 +3492,6 @@ sub serialize_site {
                 }
                 if (@descriptions) {
                     $row_data{category_descriptions} = \@descriptions;
-                }
-                else {
-                    # skip the categories without descriptions
-                    next ROW;
                 }
             }
             push @records, \%row_data;

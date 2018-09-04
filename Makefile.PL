@@ -100,6 +100,10 @@ requires 'HTML::Packer';
 requires 'CSS::Packer';
 requires 'JavaScript::Packer';
 
+#images
+requires 'Imager';
+requires 'PDF::API2';
+
 # our own dogfood
 requires 'Text::Amuse' => '1.21';
 requires 'PDF::Imposition' => '0.25';

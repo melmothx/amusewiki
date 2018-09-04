@@ -27,6 +27,7 @@ our @EXPORT_OK = qw/muse_file_info
                     muse_parse_file_path
                     muse_filepath_is_valid
                     split_pdf
+                    image_dimensions
                     clean_username
                     clean_html
                     to_json
@@ -884,17 +885,134 @@ sub from_json {
     return $data;
 }
 
+sub image_dimensions {
+    my ($file) = @_;
+    my ($w, $h);
+    if ($file and -f $file and $file =~ m/\.(jpe?g|png)\z/) {
+        try {
+            require Imager;
+            Imager->set_file_limits(reset => 1);
+            my $img = Imager->new(file => "$file") or die Imager->errstr;
+            $w = $img->getwidth;
+            $h = $img->getheight;
+            log_debug { "$file: W:$w H:$h" };
+        } catch {
+            my $error = $_;
+            log_error { "Failed to compute image dimensions for $file: $error" };
+        };
+    }
+    return ($w, $h);
+}
+
 sub split_pdf {
     my ($pdf, $directory) = @_;
-    my $target = path($directory, 'page-%04d.png');
-    my @exec = (gm => convert => '+adjoin', "$pdf", "$target");
-    if (system(@exec) == 0) {
-        my @images = sort $target->parent->children(qr/\.png$/);
+    die "Missing $pdf" unless $pdf;
+    die "Missing directory" unless $directory;
+    $directory = path($directory);
+    require PDF::API2;
+    my @images;
+    try {
+        # first, we read the PDF and split it by page. This way we
+        # also convert the PDF to a lower version. This makes it more
+        # difficult (probably not impossible) for exploits to reach
+        # the gs executable.
+        my $pdf = PDF::API2->open("$pdf");
+        my $count = $pdf->pages;
+        my $p = 0;
+        while ($p < $count) {
+            $p++;
+            my $outpdf = PDF::API2->new;
+            $outpdf->import_page($pdf, $p);
+            $outpdf->saveas(path($directory, sprintf('page-%04d.pdf', $p))->stringify);
+        }
+        $pdf->end;
+        foreach my $page (sort $directory->children(qr/\.pdf/)) {
+            if (my $image = convert_pdf_to_png($page, $directory->child($page->basename(qr/\.pdf/) . '.png'))) {
+                push @images, $image;
+            }
+        }
+    } catch {
+        my $err = $_;
+        log_error { "Failure to split the pdf $pdf into $directory $err" };
+    };
+    if (@images) {
         return @images;
     }
     else {
         return;
     }
+}
+
+sub convert_pdf_to_png {
+    my ($input, $output) = @_;
+    die "Bad usage" unless $input && $output;
+    die "$input is not a file" unless -f $input;
+    my @exec = (qw/gs -q -dSAFER -sDEVICE=png16m -dNOPAUSE -dBATCH
+                   -dUseCropBox -dTextAlphaBits=4 -dGraphicsAlphaBits=4
+                   -dMaxBitmap=50000000 -r300
+                  /);
+    push @exec, "-sOutputFile=$output", "$input";
+    Dlog_debug { "Executing $_" } \@exec;
+    if (system(@exec) == 0) {
+        return $output;
+    }
+    else {
+        Dlog_error { "Execution of $_ failed" } \@exec;
+    }
+}
+
+sub create_thumbnail {
+    my ($input, $output, $width) = @_;
+    return unless $input && $output && $width;
+    my ($w, $h);
+    try {
+        ($w, $h) = _generate_thumbnail($input, $output, $width);
+    } catch {
+        my $err = $_;
+        log_error { "Failure to create thumbnail $input => $output => $width with error $err" };
+    };
+    return ($w, $h);
+}
+
+sub _generate_thumbnail {
+    my ($input, $output, $width) = @_;
+    die unless $input && $output && $width;
+    my $wd = Path::Tiny->tempdir;
+    if ($input =~ m/\.pdf\z/) {
+        require PDF::API2;
+        my $in = PDF::API2->open("$input");
+        my $out = PDF::API2->new;
+        $out->import_page($in, 1);
+        my $outpdf = $wd->child("firstpage.pdf");
+        my $outpng = $wd->child("firstpage.png");
+        $out->saveas("$outpdf");
+        $in->end;
+        convert_pdf_to_png("$outpdf", "$outpng");
+        log_debug { "Using $outpng instead of $input" };
+        $input = $outpng; # consider our PNG as the source;
+    }
+    require Imager;
+    Imager->set_file_limits(reset => 1);
+    my $img = Imager->new(file => "$input") or die Imager->errstr;
+    log_debug { "Scaling $input into $output with $width" };
+    my $thumb = $img->scale(xpixels => $width, qtype => 'mixing');
+    $thumb->write(file => $output);
+    return ($thumb->getwidth, $thumb->getheight);
+}
+
+sub strip_image {
+    my ($input, $output) = @_;
+    require Imager;
+    Imager->set_file_limits(width => 4000,
+                            height => 4000);
+    my $incoming = Imager->new(file => $input) or die Imager->errstr;
+    my $img = $incoming->copy;
+    undef $incoming;
+    log_debug { "Writing $input image into $output" };
+    # tags are already stripped.
+    $img->write(file => $output);
+    undef $img;
+    die "$output not written!" unless -f $output;
 }
 
 sub known_langs {

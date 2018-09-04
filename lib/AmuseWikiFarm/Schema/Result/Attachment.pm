@@ -320,16 +320,9 @@ sub generate_thumbnails {
     die "$srcfile does not exists" unless -f $srcfile;
 
     # sanity checks pointing to grave issues
-    my $src;
-    if ($basename =~ m/\.pdf$/) {
-        $src = "$srcfile" . '[0]';
-    }
-    elsif ($basename =~ m/\.(png|jpe?g)/) {
-        $src = "$srcfile";
-    }
-    else {
-        die "$src is wrong not a pdf nor a png/jpeg";
-    }
+    my $src = "$srcfile";
+    die "$src is wrong not a pdf nor a png/jpeg" unless $basename =~ m/\.(pdf|png|jpe?g)\z/;
+
     if ($src =~ m/\.\./ or
         $src !~ m/\A\Q$repo_root\E/) {
         die "$src is outside the repo root";
@@ -337,50 +330,27 @@ sub generate_thumbnails {
 
     # see AmuseWikiFarm::Schema::ResultSet::GlobalSiteFile;
     my %dimensions = (
-                      '.large.png' => '300x',
-                      '.small.png' => '150x',
-                      '.thumb.png' => '36x',
+                      '.large.png' => '300',
+                      '.small.png' => '150',
+                      '.thumb.png' => '36',
                      );
     my $thumbnail_dir = path('thumbnails');
     foreach my $ext (keys %dimensions) {
         my $outfile = path($thumbnail_dir, $self->site_id, $basename . $ext);
         $outfile->parent->mkpath;
         my $out = $outfile->absolute;
-        log_debug { "Creating thumbnail from $src to $out" };
-        my $info = path($out . ".spec");
-        my @exec = (qw/gm convert/,
-                    -thumbnail => $dimensions{$ext},
-                    -format => '%wx%h',
-                    -write => "info:$info",
-                    "$src", "$out");
-        Dlog_debug { "Executing $_" } \@exec;
-        if (system(@exec) == 0) {
-            my ($width, $height);
-            if (-f $info) {
-                if (my $spec = $info->slurp) {
-                    if ($spec =~ m/([0-9]+)x([0-9]+)/) {
-                        $width = $1;
-                        $height = $2;
-                    }
-                    $info->remove;
-                }
-                else {
-                    log_warn { "$info Couldn't compute width and height form $info" };
-                }
-            }
-            else {
-                log_warn { "$info doesn't exist" };
-            }
+        my ($w, $h) = AmuseWikiFarm::Utils::Amuse::create_thumbnail($src, $out, $dimensions{$ext});
+        if ($w && $h) {
             $self->thumbnails->update_or_create({
                                                  site_id => $self->site_id,
                                                  file_name => $outfile->basename,
                                                  file_path => $out,
-                                                 image_width => $width,
-                                                 image_height => $height,
+                                                 image_width => $w,
+                                                 image_height => $h,
                                                 });
         }
         else {
-            Dlog_error { "Error executing $_ $!"} \@exec;
+            log_error { "Cannot extract thumbnail from $src into $out with $dimensions{$ext}"};
         }
     }
 }

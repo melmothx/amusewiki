@@ -70,7 +70,7 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
 
         # here we must force stringification
         my $item = $feed->add_item("$link");
-        $item->title(clean_html($text->title));
+        $item->title(clean_html($text->author_title));
         $item->pubDate($pubdate_epoch);
         $item->guid(undef, isPermaLink => 1);
 
@@ -109,6 +109,7 @@ sub index :Chained('/site') :PathPart('feed') :Args(0) {
 
     # render and set
     $c->response->content_type('application/rss+xml');
+    $c->response->header('Access-Control-Allow-Origin', '*') unless $site->is_private;
     $c->response->body($feed->to_string);
 }
 

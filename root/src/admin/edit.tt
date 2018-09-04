@@ -949,7 +949,7 @@ kpsewhich mylogo.pdf
       <div class="col-sm-12">
         <h4>[% loc('Useful HTML snippets') %]</h4>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h5>[% loc('Full tag cloud') %]</h5>
         <pre class="example">
 &lt;div id=&quot;amw-cloud-embedded-sidebar&quot;&gt;
@@ -962,7 +962,7 @@ $(document).ready(function() {
 &lt;/script&gt;
 </pre>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h5>[% loc('Tag cloud with authors') %]</h5>
         <pre class="example">
 &lt;div id=&quot;amw-cloud-embedded-authors&quot;&gt;
@@ -974,7 +974,7 @@ $(document).ready(function() {
 });
 &lt;/script&gt;</pre>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h5>[% loc('Tag cloud with topics') %]</h5>
         <pre class="example">
 &lt;div id=&quot;amw-cloud-embedded-topics&quot;&gt;
@@ -986,7 +986,7 @@ $(document).ready(function() {
 });
 &lt;/script&gt;</pre>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
         <h5>Archives</h5>
         <pre class="example">
 &lt;div id=&quot;amw-monthly-embedded-sidebar&quot;&gt;
@@ -997,6 +997,23 @@ $(document).ready(function() {
     .load(&quot;/monthly?bare=1&quot;);
 });
 &lt;/script&gt;</pre>
+      </div>
+
+      <div class="col-md-4">
+        <h5>[% loc('RSS aggregator') %]</h5>
+        <pre class="example">
+&lt;script type=&quot;text/javascript&quot;
+        src=&quot;/static/js/rss-aggregator.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+/* requires CORS set on the upstream RSS upstream,
+all amusewiki sites do that */
+$(document).ready(function() {
+     rss_aggregate($(&quot;#rss-aggregator&quot;),
+                   [&quot;https://amusewiki.org/feed&quot;]);
+});
+&lt;/script&gt;
+&lt;div id=&quot;rss-aggregator&quot;&gt;&lt;/div&gt;
+        </pre>
       </div>
       </div>
     </fieldset>

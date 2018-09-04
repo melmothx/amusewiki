@@ -157,7 +157,7 @@ use Path::Tiny;
 
 sub is_image {
     my $self = shift;
-    if ($self->file_name =~ m/\.(jpe?g|png)/) {
+    if ($self->file_name =~ m/\.(jpe?g|png)\z/) {
         return 1;
     }
     else {

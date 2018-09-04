@@ -125,7 +125,7 @@ sub populate_preamble :Chained('match') :PathPart('') :CaptureArgs(0) {
     # library/text.tt will be searched .
     foreach my $listing (qw/authors topics/) {
         my @list;
-        my $categories = $text->$listing;
+        my $categories = $text->$listing->with_active_flag_on;
         while (my $cat = $categories->next) {
             push @list, {
                          uri => $cat->full_uri,

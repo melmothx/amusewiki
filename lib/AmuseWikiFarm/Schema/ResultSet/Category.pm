@@ -25,8 +25,11 @@ sub sorted {
     my ($self) = @_;
     my $me = $self->current_source_alias;
     return $self->search(undef,
-                         { order_by => ["$me.sorting_pos",
-                                        "$me.name"] });
+                         { order_by => [
+                                        "$me.type",
+                                        "$me.sorting_pos",
+                                        "$me.name"
+                                       ] });
 }
 
 sub by_type {
@@ -35,8 +38,21 @@ sub by_type {
     return $self->search({ "$me.type" => $type })->sorted;
 }
 
+sub with_active_flag_on {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.active" => 1 });
+}
+
+sub inactive {
+    my ($self) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.active" => 0 });
+}
+
 sub active_only {
-    return shift->with_texts;
+    my ($self) = @_;
+    return $self->with_texts->with_active_flag_on;
 }
 
 =head2 active_only_by_type($type)
@@ -48,7 +64,7 @@ which have a text count greater than 0.
 
 sub active_only_by_type {
     my ($self, $type) = @_;
-    return $self->with_texts->by_type($type);
+    return $self->active_only->by_type($type);
 }
 
 =head2 with_texts(deferred => 0, sort => 'asc',  min_texts => 0);
@@ -187,11 +203,15 @@ Use HRI to pull the data and select only some columns.
 
 =cut
 
+sub hri {
+    my $self = shift;
+    return $self->search(undef, { result_class => 'DBIx::Class::ResultClass::HashRefInflator' });
+}
+
 sub listing_tokens {
     my $self = shift;
-    my @all = $self->search(undef, {
-                                    result_class => 'DBIx::Class::ResultClass::HashRefInflator',
-                                   });
+    my @all = $self->hri;
+
     Dlog_debug { "Listing tokens are $_" } \@all;
     foreach my $row (@all) {
         $row->{full_uri} = join('/', '', 'category', $row->{type}, $row->{uri});

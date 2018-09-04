@@ -142,6 +142,7 @@ sub human :Chained('/site') :PathPart('human') :Args(0) {
 sub user :Chained('/site_user_required') :CaptureArgs(0) {
     my ($self, $c) = @_;
     $self->check_login($c);
+    $c->stash(full_page_no_side_columns => 1);
 }
 
 sub create :Chained('user') :Args(0) {

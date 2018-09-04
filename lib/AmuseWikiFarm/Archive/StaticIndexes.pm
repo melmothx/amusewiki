@@ -152,8 +152,11 @@ sub create_titles {
             my @sorted = sort {
                 $a->{category}->{sorting_pos} <=> $b->{category}->{sorting_pos}
             } @{$title->{title_categories}};
+            Dlog_debug { "Categories are $_" } $title->{title_categories};
+          CATEGORY:
             while (@sorted) {
                 my $cat = shift @sorted;
+                next CATEGORY unless $cat->{category}->{active};
                 if ($cat->{category}->{type} eq 'topic') {
                     push @topics, $cat->{category};
                 }
@@ -179,6 +182,7 @@ sub create_category_list {
     log_debug { "Creating category listing" };
     my $site = $self->site;
     my @cats = $site->categories->by_type($type)
+      ->with_active_flag_on
       ->static_index_tokens
       ->order_titles_by($site->titles_category_default_sorting)
       ->all;
