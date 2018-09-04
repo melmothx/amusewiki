@@ -718,7 +718,7 @@
                 success: function(data) {
                     res($.map(data, function(item) {
                         return {
-                            label: item.title,
+                            label: $($.parseHTML(item.title)).text(),
                             value: '',
                             link: item.url
                         };
