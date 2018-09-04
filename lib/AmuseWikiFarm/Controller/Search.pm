@@ -86,7 +86,6 @@ sub index :Chained('/site') :PathPart('search') :Args(0) {
     }
     if (my $corrected = $res->did_you_mean) {
         $params{query} = $corrected;
-        $c->uri_for_action('/search/index', [], \%params);
         $c->stash(did_you_mean => $corrected,
                   did_you_mean_url => $c->uri_for_action('/search/index', [], \%params));
     }
