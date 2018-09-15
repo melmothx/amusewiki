@@ -308,6 +308,12 @@ sub favicon :Chained('/site_no_auth') :PathPart('favicon.ico') :Args(0) {
                 ['favicon.ico']);
 }
 
+sub apple_touch_icon :Chained('/site_no_auth') :PathPart('apple-touch-icon.png') :Args(0) {
+    my ($self, $c) = @_;
+    $c->detach('/sitefiles/local_files',
+               ['opengraph.png']);
+}
+
 sub robots_txt :Chained('/site_no_auth') :PathPart('robots.txt') :Args(0) {
     my ($self, $c) = @_;
     my $robots = <<"ROBOTS";

@@ -156,6 +156,10 @@ sub add_open_graph {
         foreach my $i (qw/opengraph.png pagelogo.png navlogo.png/) {
             if (my $found = $site->site_files->min_dimensions(200, 200)->single({ file_name => $i })) {
                 $image = $found;
+                log_debug { "Found $i, stashing apple_touch_icon " . $image->file_name . ' ' . $image->mime_type };
+                $c->stash(apple_touch_icon => $c->uri_for_action('/sitefiles/local_files',
+                                                                 [ $site->id, $image->file_name ]));
+                $c->stash(apple_touch_icon_mime_type => $image->mime_type);
                 last SEARCHIMAGE;
             }
         }

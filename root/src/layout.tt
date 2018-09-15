@@ -19,6 +19,10 @@
           href="[% c.uri_for_action('/sitefiles/local_files',
                                     [ site.id, 'favicon.ico']) %]" />
     [% END %]
+    [%- IF apple_touch_icon %]
+    <link rel="icon"             href="[% apple_touch_icon %]" type="[% apple_touch_icon_mime_type %]" />
+    <link rel="apple-touch-icon" href="[% apple_touch_icon %]" type="[% apple_touch_icon_mime_type %]" />
+    [%- END %]
     <link rel="search" href="[% c.uri_for_action('/search/opensearch') %]"
           type="application/opensearchdescription+xml"
           title="[% site.sitename | html %]">

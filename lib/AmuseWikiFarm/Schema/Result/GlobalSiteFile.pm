@@ -193,6 +193,18 @@ sub is_site_file {
     return shift->file_type eq 'application';
 }
 
+sub mime_type {
+    my $self = shift;
+    if ($self->is_image) {
+        if ($self->file_name =~ m/\.png\z/) {
+            return 'image/png';
+        }
+        else {
+            return 'image/jpeg';
+        }
+    }
+    return undef;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

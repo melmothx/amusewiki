@@ -54,8 +54,16 @@ foreach my $f ($opengraph, $pagelogo) {
 }
 ok $site->index_site_files;
 
+$mech->get_ok('/apple-touch-icon.png') or die;
+
+
 $opengraph->remove if $opengraph->exists;
 $pagelogo->remove  if $pagelogo->exists;
+
+diag "icon removed";
+$mech->get('/apple-touch-icon.png');
+is $mech->status, 404 or die;
+
 
 push @urls, qw[ /search /help/opds /help/irc /latest/2 ];
 
@@ -105,14 +113,21 @@ sub check_urls {
     foreach my $url (@pages) {
         next if $url =~ m{amusewiki\.org/(feed|opds)};
         next if $url =~ m{amusewiki\.org/library/hello-there};
-        check_url($url, $image);
+        check_url($url, $image, icons => 1);
     }
 }
 sub check_url {
-    my ($url, $image) = @_;
+    my ($url, $image, %opts) = @_;
     diag "Checking $url";
     $mech->get_ok($url);
     my $content = $mech->content;
+    if ($opts{icons}) {
+        like $content, qr{<link rel="icon"\s+href="[^>]*?\Q$image\E"} or die;
+        like $content, qr{<link rel="apple-touch-icon"\s+href="[^>]*?\Q$image\E"};
+    }
+    else {
+        unlike $content, qr{<link rel="icon.*?"\s+href="[^>]*\Q$image\E"};
+    }
     my %og;
     while ($content =~ m{<meta property="(.*)" content="(.*?)" />}g) {
         my $p = $1;
