@@ -787,12 +787,6 @@ sub dispatch_job_build_static_indexes {
     $self->site->static_indexes_generator->generate;
     $self->site->store_file_list_for_mirroring;
     $logger->("Generated static indexes " . (time() - $time) . " seconds\n");
-    unless ($self->site->xapian->database_is_up_to_date) {
-        $logger->("Upgrading Xapian DB\n");
-        $time = time();
-        $self->site->xapian_reindex_all($logger);
-        $logger->("Rebuilt Xapian DB in " . (time() - $time) . " seconds\n");
-    }
     return;
 }
 

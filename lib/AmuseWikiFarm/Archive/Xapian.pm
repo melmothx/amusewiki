@@ -198,6 +198,9 @@ sub read_specification_file {
         my $spec = $spec_file->slurp;
         return decode_json($spec);
     }
+    else {
+        log_warn { "$spec_file does not exist" };
+    }
     return undef;
 }
 
@@ -658,6 +661,9 @@ sub database_is_up_to_date {
     if (my $spec = $self->read_specification_file) {
         if ($spec->{version} and $spec->{version} == AMW_XAPIAN_VERSION) {
             return 1;
+        }
+        else {
+            log_info { "$spec->{version} != " . AMW_XAPIAN_VERSION };
         }
     }
     return 0;

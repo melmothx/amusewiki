@@ -56,6 +56,43 @@ try {
     log_error { "Error at startup: $err" };
 };
 
+# double fork and upgrade xapian if needed
+
+XAPIAN_UPGRADE: {
+    if (my $child = fork()) {
+        log_debug { "Main $$ Waiting for $child" };
+        wait;
+    }
+    elsif (defined $child) {
+        if (my $grandchild = fork()) {
+            # here we exit the child and the grandchild is detached.
+            log_debug { "Exiting $$" };
+            exit;
+        }
+        elsif (defined $grandchild) {
+            log_info {
+                "Detached and upgrading xapian with pid $$\n";
+            };
+            foreach my $site ($schema->resultset('Site')->all) {
+                unless ($site->xapian->database_is_up_to_date) {
+                    log_info { "Upgrading Xapian DB for " . $site->id };
+                    my $time = time();
+                    $site->xapian_reindex_all;
+                    log_info { "Rebuilt Xapian DB in " . (time() - $time) . " seconds\n" } ;
+                }
+            }
+            log_info { "Exiting $$" };
+            exit;
+        }
+        else {
+            die "Couldn't fork child $!";
+        }
+    }
+    else {
+        die "Couldn't fork $!";
+    }
+}
+
 my $jobber = AmuseWikiFarm::Utils::Jobber->new(
                                                schema => $schema,
                                                ($ENV{AMW_POLLING} ?
@@ -64,7 +101,7 @@ my $jobber = AmuseWikiFarm::Utils::Jobber->new(
                                                 ()
                                                ));
 
-print "Starting jobber's loop with polling interval of " . $jobber->polling_interval . " seconds\n";
+print "Starting jobber's loop with polling interval of " . $jobber->polling_interval . " seconds with pid $$\n";
 print "Lockfile is " . $jobber->pidfile . "\n";
 print "Max parallel jobs: " . $jobber->max_parallel . "\n";
 

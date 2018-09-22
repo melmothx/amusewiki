@@ -3574,14 +3574,17 @@ sub bootstrap_theme_list {
 
 sub xapian_reindex_all {
     my ($self, $logger) = @_;
+    $logger ||= sub { return };
     my $xapian = $self->xapian;
     my $newdir;
     my $titles = $self->titles->texts_only;
-    return unless $titles->count;
+    unless ($titles->count) {
+        $xapian->write_specification_file;
+        return;
+    }
     try {
         my $newdb = $self->xapian(auxiliary => 1);
         log_info { "Building new db against " . $newdb->xapian_dir };
-        $logger ||= sub { return };
         while (my $title = $titles->next) {
             $newdb->index_text($title, $logger);
         }
