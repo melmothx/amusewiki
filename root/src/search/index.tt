@@ -132,7 +132,14 @@
  function load_xapian_results (url) {
      $('#xapian-loading').show();
      $('#xapian-results').remove();
-     $('#xapian-results-container').load(url + ' #xapian-results',
+     var bare;
+     if (url.indexOf('?') > -1) {
+         bare = '&bare=1';
+     }
+     else {
+         bare = '?bare=1';
+     }
+     $('#xapian-results-container').load(url + bare + ' #xapian-results',
                                          function () {
                                              $('#xapian-loading').hide();
                                              $('html,body').animate({ scrollTop: 0 }, 300);
