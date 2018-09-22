@@ -12,10 +12,11 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 170;
+use Test::More tests => 187;
 use Data::Dumper::Concise;
 use Path::Tiny;
 use Search::Xapian (':all');
+use Encode qw/decode encode/;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf-8)";
@@ -88,6 +89,41 @@ MUSE
 This is not a book common
 
 This is an article
+
+
+Михаил Бакунин родился в русской дворянской семье, родословная которой
+восходит к 17–ому столетию. Согласно преданию предки Бакунина
+иммигрировали в Россию из Трансильвании. Отец его еще ребенком был
+отправлен вместе с русским посольством во Флоренцию и прожил в этом
+городе и в Неаполе до 35–летнего возраста, состоя на дипломатической
+службе. После его возвращения в Россию ему вскоре надоела столичная,
+придворная жизнь. Он уехал на постоянное жительство в свое имение и в
+сорокалетнем возрасте женился на 18–летней девушке из семьи
+Муравьевых. От этого брака родилось 11 детей – 6 сыновей и 5 дочерей;
+Михаил Бакунин был старшим сыном (родился 8/20 мая 1814 г.) Бакунин
+описал свои детские годы, проведенные в родном селе Прямухине
+Торжковского уезда, Тверской губернии, в автобиографическом очерке
+«История моей жизни», впервые напечатанном в «Société Nouvelle»
+(Брюссель, сентябрь 1896 г.). В этом очерке он рассказывает что он был
+очень привязан к своему отцу. Это был умеренный либерал, просвещенный
+человек, принимавший участие в одном из декабристских кружков, что
+осталось впрочем необнаруженным. Однако печальный исход всех
+свободолюбивых стремлений, разочарование в российской
+действительности, а также и влияние жены, холодно относившейся к его
+гуманитарным взглядам, все это привело к тому что он отказался от
+своих идей и стал крайне осторожным скептиком. Благодаря отцу Бакунин
+получил более или менее свободное воспитание. Так, например, ему не
+прививали никаких религиозных верований, ограничившись тем, что
+познакомили его с внешней обрядовой стороной православия. С другой
+стороны отец старался по возможности оградить детей от ознакомления с
+действительным положением народа, напр. с крепостничеством, опасаясь,
+что это может вызвать в них дух недовольства существующим строем. Он
+охотно давал детям читать описания путешествий, производившие на
+Михаила Бакунина сильное впечатление, возбуждавшие его воображение и
+вызывавшие в нем желание самому пережить подобные приключения, так что
+одно время он даже, как говорят, помышлял о бегстве из родительского
+дома. Он провел таким образом счастливое детство, не зная ничего о
+суровых сторонах жизни.
 
 MUSE
     $file->spew_utf8($muse);
@@ -384,23 +420,27 @@ foreach my $sort_by (keys %SORTINGS) {
     my $xap = Search::Xapian::Database->new($site->xapian->xapian_dir);
     is $xap->get_spelling_suggestion('commmon'), "common";
     is $xap->get_spelling_suggestion('artilce'), "article";
+    is $xap->get_spelling_suggestion('неддовольства'), encode('UTF-8', 'недовольства');
+
     foreach my $sugg ([qw/commmon common/],
                       [qw/artilce article/]) {
         my $res = $site->xapian->faceted_search(query => 'commmon');
         is $res->did_you_mean, "common";
     }
+    my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
+                                                   host => $site->canonical);
+    $mech->get_ok('/');
     foreach my $sugg ([qw/commmon common/],
+                      [qw/неддовольства недовольства/],
+                      [qw/челловек человек/],
                       [qw/gullliver gulliver/]) {
         my $res = $site->xapian->faceted_search(query => $sugg->[0]);
         is $res->did_you_mean, $sugg->[1], "Suggestion is $sugg->[1]";
         my $correct = $site->xapian->faceted_search(query => $sugg->[1]);
         ok !$correct->did_you_mean or diag $correct->did_you_mean;
+        $mech->get_ok('/search?query=' . $sugg->[0]);
+        $mech->content_contains('Did you mean');
+        ok $mech->follow_link(text_regex => qr{\Q$sugg->[1]\E});
+        $mech->content_lacks('Did you mean');
     }
-    my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
-                                                   host => $site->canonical);
-    $mech->get_ok('/');
-    $mech->get_ok('/search?query=gullliver');
-    $mech->content_contains('Did you mean');
-    ok $mech->follow_link(text_regex => qr{gulliver});
-    $mech->content_lacks('Did you mean');
 }

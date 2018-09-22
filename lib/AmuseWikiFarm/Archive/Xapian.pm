@@ -17,6 +17,7 @@ use Path::Tiny ();
 use JSON::MaybeXS;
 use AmuseWikiFarm::Archive::Xapian::Result;
 use AmuseWikiFarm::Archive::Xapian::Result::Text;
+use Encode ();
 use namespace::clean;
 
 use constant {
@@ -628,6 +629,17 @@ sub _do_faceted_search {
         $facets{$spy_name} = \@got;
     }
     Dlog_debug { "Selections: $_ " } \%actives;
+    my $corrected_query = $qp->get_corrected_query_string;
+    if ($corrected_query) {
+        eval {
+            $corrected_query = Encode::decode('UTF-8', $corrected_query);
+        };
+        if ($@) {
+            my $err = $@;
+            log_error { "Failed to decode $corrected_query $err" };
+            $corrected_query = '';
+        }
+    }
     return AmuseWikiFarm::Archive::Xapian::Result->new(
                                                        selections => \%actives,
                                                        matches => \@matches,
@@ -637,7 +649,7 @@ sub _do_faceted_search {
                                                        site => $args{site},
                                                        lh => $args{lh},
                                                        show_deferred => $self->index_deferred,
-                                                       did_you_mean => $qp->get_corrected_query_string,
+                                                       did_you_mean => $corrected_query,
                                                       );
 }
 
