@@ -4,6 +4,22 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.300 2018-09-22
+
+ - Replace GraphicsMagick with Imager module
+ - Add category manager page (can set some author/topic to inactive,
+   hiding it)
+ - Add a simple JS RSS aggregator
+ - Add autocomplete on the layout search box
+ - Add spelling corrections on search
+ - Add the apple-touch-icon (using the opengraph.png file)
+
+The Imager module requires system libraries to be installed properly.
+There is a check on startup to assert you're covered. Otherwise refer
+to https://metacpan.org/pod/distribution/Imager/lib/Imager/Install.pod
+if in doubt.
+
+
 2.226 2018-08-16
 
  - Expose the legacy links via /api/legacy-links (#205)
