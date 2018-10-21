@@ -80,7 +80,7 @@ EOF
     fi
     chown amusewiki:amusewiki $dbic_file;
     chmod 600 $dbic_file;
-    amusewiki create-doc-site | tee -a $install_logfile
+    amusewiki create-doc-site | tee $install_logfile
     send_mail_to_user="1"
 fi
 
