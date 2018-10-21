@@ -101,6 +101,7 @@ Package: amusewiki
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends},
  dbconfig-common,
+ bsd-mailx,
  postgresql | default-mysql-server | mysql-server | sqlite3,
  postgresql-client, default-mysql-client | mysql-client,
  adduser,

@@ -19,6 +19,11 @@ dbc_go amusewiki $@
 # setup the database
 dbic_file=/var/lib/amusewiki/dbic.yaml
 
+mkdir -p -m 700 /var/log/amusewiki
+install_logfile="/var/log/amusewiki/installation.log"
+
+send_mail_to_user=""
+
 # if dbic file is missing, load generate it from the include file
 if [ ! -f $dbic_file ]; then
     if [ -f "$amusewiki_dbc_include_file" ]; then
@@ -75,8 +80,8 @@ EOF
     fi
     chown amusewiki:amusewiki $dbic_file;
     chmod 600 $dbic_file;
-    mkdir -m 700 /var/log/amusewiki
-    amusewiki create-doc-site | tee -a /var/log/amusewiki/installation.log
+    amusewiki create-doc-site | tee -a $install_logfile
+    send_mail_to_user="1"
 fi
 
 # refresh the configuration
@@ -127,7 +132,11 @@ su -c "rm -rfv /var/lib/amusewiki/var/cache" amusewiki
 
 # upgrade the db, if needed
 amusewiki upgrade-db
-amusewiki generate-nginx-conf
+amusewiki generate-nginx-conf | tee -a /var/log/amusewiki/installation.log
+
+if [ -n "$send_mail_to_user" ]; then
+    cat $install_logfile | mail -s "AmuseWiki installation" root@localhost
+fi
 
 #DEBHELPER#
 
