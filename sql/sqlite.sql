@@ -306,21 +306,21 @@ CREATE TABLE title (
         id          INTEGER PRIMARY KEY,
 
         -- from the .muse file
-        title       TEXT NOT NULL DEFAULT '',
-        subtitle    TEXT NOT NULL DEFAULT '',
+        title       TEXT,
+        subtitle    TEXT,
 
         -- 3 letters, as per doc
         lang        VARCHAR(3) NOT NULL DEFAULT 'en',
 
-        date        TEXT NOT NULL DEFAULT '',
-        notes       TEXT NOT NULL DEFAULT '',
-        source      TEXT NOT NULL DEFAULT '',
+        date        TEXT,
+        notes       TEXT,
+        source      TEXT,
 
         -- sorting only, as per doc
-        list_title  TEXT NOT NULL DEFAULT '',
+        list_title  TEXT,
 
         -- display only, as per doc
-        author      TEXT NOT NULL DEFAULT '',
+        author      TEXT,
 
         -- from tabula rasa
         -- to identify translations texts across libraries
@@ -342,14 +342,14 @@ CREATE TABLE title (
         f_class     VARCHAR(16) NOT NULL,
 
         uri         VARCHAR(255) NOT NULL,
-        deleted     TEXT NOT NULL DEFAULT '',
+        deleted     TEXT,
 
         slides      INTEGER(1) NOT NULL DEFAULT 0,
 
-        text_structure TEXT NOT NULL DEFAULT '',
+        text_structure TEXT,
 
         cover VARCHAR(255) NOT NULL DEFAULT '',
-        teaser TEXT NOT NULL DEFAULT '',
+        teaser TEXT,
 
         sorting_pos INTEGER NOT NULL DEFAULT 0,
         sku VARCHAR(64) NOT NULL DEFAULT '',
