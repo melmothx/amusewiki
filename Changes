@@ -4,6 +4,14 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.310 2018-10-21
+
+ - Fix the "title" table to work nice when MySQL is in strict mode,
+   permitting NULLs and removing the default value. Tests pass. We
+   already populate those values in code.
+ - Log the output of create-doc-site, so if buried, the user can
+   inspect it.
+
 2.300 2018-09-22
 
  - Replace GraphicsMagick with Imager module
