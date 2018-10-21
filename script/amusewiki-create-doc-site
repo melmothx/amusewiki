@@ -192,6 +192,12 @@ Root username: "$username"
 Root password: "$password"
 
 You should be able to login at http://$hostname/login with the above
-credentials.
+credentials. This is going to be a dummy site with the documentation.
+
+You can create a new site at http://$hostname/admin/sites
+
+If your browser can't find the server or shows you a default nginx
+page, please edit your /etc/hosts file adding "$hostname" to the
+127.0.0.1 line (or whatever IP you're trying to reach).
 
 EOF
