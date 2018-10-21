@@ -1,0 +1,69 @@
+-- Convert schema '/home/melmoth/amw/AmuseWikiFarm/dbicdh/_source/deploy/48/001-auto.yml' to '/home/melmoth/amw/AmuseWikiFarm/dbicdh/_source/deploy/49/001-auto.yml':;
+
+;
+BEGIN;
+
+;
+ALTER TABLE title ALTER COLUMN title DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN title DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN subtitle DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN subtitle DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN date DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN date DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN notes DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN notes DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN source DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN source DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN list_title DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN list_title DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN author DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN author DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN deleted DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN deleted DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN text_structure DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN text_structure DROP DEFAULT;
+
+;
+ALTER TABLE title ALTER COLUMN teaser DROP NOT NULL;
+
+;
+ALTER TABLE title ALTER COLUMN teaser DROP DEFAULT;
+
+;
+
+COMMIT;
+
