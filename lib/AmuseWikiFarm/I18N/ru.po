@@ -285,7 +285,7 @@ msgstr ""
 msgid ""
 "Blocks of 8 pages to be folded twice and then bound\n"
 "                together."
-msgstr ""
+msgstr "Блоки по 8 страниц для складывания вдвое и скрепления вместе."
 
 msgid "Blog"
 msgstr "Блог"
@@ -338,10 +338,10 @@ msgid "Categories"
 msgstr "Категории"
 
 msgid "Center all the sectioning titles."
-msgstr ""
+msgstr "Центрировать все заголовки разделов."
 
 msgid "Center the chapter titles."
-msgstr ""
+msgstr "Центрировать названия глав."
 
 msgid "Changes"
 msgstr "Изменения"
@@ -411,7 +411,7 @@ msgid "Confirm"
 msgstr "Подтвердите"
 
 msgid "Continuous footnote numbering across the whole document."
-msgstr ""
+msgstr "Сквозная нумерация сносок по всему тексту."
 
 msgid "Convert to archive markup"
 msgstr "Преобразовать в разметку архива"
@@ -519,6 +519,9 @@ msgstr "Желаемый URI"
 msgid "Destination"
 msgstr "Назначение"
 
+msgid "Did you mean:"
+msgstr "Возможно вы имели в виду:"
+
 msgid "Differences"
 msgstr "Различия"
 
@@ -531,7 +534,7 @@ msgstr ""
 "\" (только ASCII). Не указывайте это если вы не уверены в том, что вы делаете"
 
 msgid "Disable /mirror/ URL for anonymous users"
-msgstr ""
+msgstr "Отключить путь /mirror/ для анонимных пользователей"
 
 msgid "Display url as"
 msgstr "Отобразить URL как"
@@ -1281,6 +1284,9 @@ msgstr "Сделать все ссылки активными"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Сделать все неразрывные пробелы явными и видимыми как ~~"
 
+msgid "Manage categories"
+msgstr "Управление категориями"
+
 msgid "Message"
 msgstr "Сообщение"
 
@@ -1791,6 +1797,9 @@ msgstr "Превышен размер, слишком много страниц"
 msgid "Quotes"
 msgstr "Цитаты"
 
+msgid "RSS aggregator"
+msgstr "RSS-агрегатор"
+
 msgid "RSS feed"
 msgstr "Лента RSS"
 
@@ -1866,6 +1875,9 @@ msgstr "Удалить"
 
 msgid "Remove cover image"
 msgstr "Удалить изображение"
+
+msgid "Remove this category"
+msgstr "Удалить эту категорию"
 
 msgid "Rename to"
 msgstr "Переименовать в"
@@ -2222,7 +2234,7 @@ msgstr "Описание %1 было обновлено"
 
 msgid ""
 "The differences between the list of footnotes and references is shown below."
-msgstr ""
+msgstr "Разница между списком сносок и списком ссылок на них показана ниже."
 
 msgid "The file uploaded is not an HTML file!"
 msgstr "Загруженный файл не является HTML-файлом!"
@@ -2500,6 +2512,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Внутренние и внешние поля разной величины"
+
+msgid "Type"
+msgstr "Тип"
 
 msgid "URI"
 msgstr "URI"
