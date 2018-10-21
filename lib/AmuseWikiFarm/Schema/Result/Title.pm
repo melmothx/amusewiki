@@ -47,14 +47,12 @@ __PACKAGE__->table("title");
 =head2 title
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 subtitle
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 lang
 
@@ -66,32 +64,27 @@ __PACKAGE__->table("title");
 =head2 date
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 notes
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 source
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 list_title
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 author
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 uid
 
@@ -171,8 +164,7 @@ __PACKAGE__->table("title");
 =head2 deleted
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 slides
 
@@ -184,8 +176,7 @@ __PACKAGE__->table("title");
 =head2 text_structure
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 cover
 
@@ -197,8 +188,7 @@ __PACKAGE__->table("title");
 =head2 teaser
 
   data_type: 'text'
-  default_value: (empty string)
-  is_nullable: 0
+  is_nullable: 1
 
 =head2 sorting_pos
 
@@ -244,21 +234,21 @@ __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
   "title",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "subtitle",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "lang",
   { data_type => "varchar", default_value => "en", is_nullable => 0, size => 3 },
   "date",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "notes",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "source",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "list_title",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "author",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "uid",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "attach",
@@ -291,15 +281,15 @@ __PACKAGE__->add_columns(
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
   "deleted",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "slides",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "text_structure",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "cover",
   { data_type => "varchar", default_value => "", is_nullable => 0, size => 255 },
   "teaser",
-  { data_type => "text", default_value => "", is_nullable => 0 },
+  { data_type => "text", is_nullable => 1 },
   "sorting_pos",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "sku",
@@ -487,8 +477,8 @@ Composing rels: L</text_months> -> monthly_archive
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-02-02 10:48:12
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QHDrg8Q3dvW9lTKoh/1liQ
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-10-21 09:13:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nBEL9Llh3MSI5tiON6BuqQ
 
 =head2 translations
 

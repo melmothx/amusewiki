@@ -75,7 +75,8 @@ EOF
     fi
     chown amusewiki:amusewiki $dbic_file;
     chmod 600 $dbic_file;
-    amusewiki create-doc-site
+    mkdir -m 700 /var/log/amusewiki
+    amusewiki create-doc-site | tee -a /var/log/amusewiki/installation.log
 fi
 
 # refresh the configuration
