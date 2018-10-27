@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 54;
+
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -18,6 +19,12 @@ use AmuseWikiFarm::Schema;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
+
+
+my $builder = Test::More->builder;
+binmode $builder->output,         ":encoding(UTF-8)";
+binmode $builder->failure_output, ":encoding(UTF-8)";
+binmode $builder->todo_output,    ":encoding(UTF-8)";
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site_id = '0pull0';
@@ -170,14 +177,14 @@ $working_copy->add($newfile);
 my $binary = catfile($working_copy_dir, qw/a at a-t-cover.png/);
 copy catfile(qw/t files shot.png/), $binary;
 $working_copy->add($binary);
-$working_copy->commit({ message => "Removed second file" });
+$working_copy->commit({ message => "Removed second file По-русски" });
 $working_copy->push(qw/origin master/);
 
 {
     my @logs;
     my $logger = sub { push @logs, @_ };
     $site->repo_git_pull(origin => $logger);
-    like join("\n", @logs), qr{Removed second file};
+    like join("\n", @logs), qr{Removed second file По-русски};
     diag @logs;
 }
 

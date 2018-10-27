@@ -901,6 +901,7 @@ use Path::Tiny ();
 use JSON::MaybeXS ();
 use AmuseWikiFarm::Utils::Paths ();
 use Try::Tiny;
+use Encode ();
 
 =head2 repo_root_rel
 
@@ -2390,7 +2391,7 @@ sub _repo_git_action {
             eval {
                 $git->fetch($remote);
                 # safe interpolation, as we checked it.
-                @out = map { $_->author, $_->date, '', $_->message, '' } $git->log("HEAD..$remote/master");
+                @out = $git->RUN(log => "HEAD..$remote/master");
                 push @out, $git->pull({ ff_only => 1 }, $remote, 'master');
             };
             $fatal = $@;
@@ -2411,6 +2412,10 @@ sub _repo_git_action {
         push @out, "Not under git!";
     }
     if (@out) {
+        eval {
+            my @decoded = map  { Encode::decode('UTF-8', $_) } @out;
+            @out = @decoded;
+        };
         @out = map { $_ . "\n" } @out;
         if ($logger) {
             $logger->(@out);
