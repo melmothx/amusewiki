@@ -1,3 +1,9 @@
+amusewiki (2.311-1+amw1) unstable; urgency=medium
+
+  * New minor release
+
+ -- Marco Pessotto <melmothx@gmail.com>  Sat, 27 Oct 2018 09:25:16 +0200
+
 amusewiki (2.310-1+amw3) unstable; urgency=medium
 
   * Minor fix.

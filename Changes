@@ -4,6 +4,11 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.311 2018-10-27
+
+ - Fix encoding of Git::Wrapper output.
+ - Update ru.po (@link2xt)
+
 2.310 2018-10-21
 
  - Fix the "title" table to work nice when MySQL is in strict mode,
