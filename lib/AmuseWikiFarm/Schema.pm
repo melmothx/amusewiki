@@ -40,7 +40,7 @@ and provide a dbic.yaml file with something like this:
 
 =cut
 
-our $VERSION = 49;
+our $VERSION = 50;
 
 __PACKAGE__->load_components('Schema::Config');
 __PACKAGE__->load_components('Helper::Schema::QuoteNames');
