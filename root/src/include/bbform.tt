@@ -318,16 +318,14 @@
       <div class="form-group pdf-option" style="margin-top: 15px">
         <div class="row">
           <div class="col-sm-3">
-            <label for="tex_tolerance">
-              [% loc('TeX options (advanced)') %]
-            </label>
+            <strong>[% loc('TeX options (advanced)') %]</strong>
           </div>
           <div class="col-sm-9">
             <div class="row">
-              <label for="tex_tolerance" class="col-xs-3 control-label">
+              <label for="tex_tolerance" class="col-sm-3 control-label">
                 <code>tolerance</code>
               </label>
-              <div class="col-xs-3">
+              <div class="col-sm-3">
                 <select name="tex_tolerance" id="tex_tolerance" class="form-control">
                   [% FOREACH tolerance IN bb.tex_tolerances %]
                   <option value="[% tolerance %]"
@@ -337,10 +335,10 @@
                   [% END %]
                 </select>
               </div>
-              <label for="tex_emergencystretch" class="col-xs-3 control-label">
+              <label for="tex_emergencystretch" class="col-sm-3 control-label">
                 <code>emergencystretch</code>
               </label>
-              <div class="col-xs-3">
+              <div class="col-sm-3">
                 <select name="tex_emergencystretch" id="tex_emergencystretch" class="form-control">
                   [% FOREACH emergencystretch IN bb.tex_emergencystretch_values %]
                   <option value="[% emergencystretch %]"
@@ -810,39 +808,53 @@
                   [% END %]
                 </select>
               </div>
-              <div style="margin-top: 5px">
-                [% loc('Width:') %]
-                <select name="crop_paper_width" id="crop-paper-width"
-                        data-prefix="crop"
-                        class="paper-select-handle form-control">
-                  [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
-                  <option value="[% page_custom_size %]"[% IF bb.crop_paper_width == page_custom_size %] selected="selected"[% END %]>
-                    [% IF page_custom_size %]
-                    [% page_custom_size %] mm
-                    [% ELSE %]
-                    [% loc('Standard') %]
+              <div class="row mt-1">
+                <div class="col-xs-2">
+                  <label for="crop-paper-width">
+                    [% loc('Width:') %]
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <select name="crop_paper_width" id="crop-paper-width"
+                          data-prefix="crop"
+                          class="paper-select-handle form-control">
+                    [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+                    <option value="[% page_custom_size %]"
+                            [% IF bb.crop_paper_width == page_custom_size %] selected="selected"[% END %]>
+                      [% IF page_custom_size %]
+                      [% page_custom_size %] mm
+                      [% ELSE %]
+                      [% loc('Standard') %]
+                      [% END %]
+                    </option>
                     [% END %]
-                  </option>
-                  [% END %]
-                </select>
-                [% loc('Height:') %]
-                <select name="crop_paper_height" id="crop-paper-height"
-                        data-prefix="crop"
-                        class="paper-select-handle form-control">
-                  [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
-                  <option value="[% page_custom_size %]"[% IF bb.crop_paper_height == page_custom_size %] selected="selected"[% END %]>
-                    [% IF page_custom_size %]
-                    [% page_custom_size %] mm
-                    [% ELSE %]
-                    [% loc('Standard') %]
+                  </select>
+                </div>
+                <div class="col-xs-2">
+                  <label for="crop-paper-height">
+                    [% loc('Height:') %]
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <select name="crop_paper_height" id="crop-paper-height"
+                          data-prefix="crop"
+                          class="paper-select-handle form-control">
+                    [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+                    <option value="[% page_custom_size %]"
+                            [% IF bb.crop_paper_height == page_custom_size %] selected="selected"[% END %]>
+                      [% IF page_custom_size %]
+                      [% page_custom_size %] mm
+                      [% ELSE %]
+                      [% loc('Standard') %]
+                      [% END %]
+                    </option>
                     [% END %]
-                  </option>
-                  [% END %]
-                </select>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-1">
             <div class="col-sm-3">
               <label for="crop_paper_thickness">
                 [% loc("Paper thickness (0.10 should be appropriate for common 80g/m2 paper)") %]
