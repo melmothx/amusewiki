@@ -105,9 +105,9 @@ requires 'Imager';
 requires 'PDF::API2';
 
 # our own dogfood
-requires 'Text::Amuse' => '1.21';
+requires 'Text::Amuse' => '1.26';
 requires 'PDF::Imposition' => '0.25';
-requires 'Text::Amuse::Compile' => '1.21';
+requires 'Text::Amuse::Compile' => '1.26';
 requires 'Text::Amuse::Preprocessor' => '0.57';
 
 # devel things to be removed at the end of the development cycle
