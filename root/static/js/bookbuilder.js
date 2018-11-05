@@ -91,6 +91,9 @@ function show_hide_standard_papersizes(prefix) {
     if (prefix == "crop") {
         standard = '#crop_papersize';
     }
+    if (prefix == "areaset") {
+        standard  = '#division';
+    }
     var height = $(hid).val();
     var width  = $(wid).val();
     if (height && width && (height != "0") && (width != "0")) {
@@ -119,6 +122,7 @@ $(document).ready(function(){
     show_crop_options();
     handle_papersize('crop');
     handle_papersize('logical');
+    handle_papersize('areaset');
     show_conditional_nocoverpage();
     $('#imposed').click(function() {
         show_imposition();
@@ -140,20 +144,13 @@ $(document).ready(function(){
             $('.image-options').show('fast');
         }
     });
-    $(".crop-paper-select").change(function() {
+    $(".paper-select-handle").change(function() {
+        var prefix = $(this).data('prefix');
         if ($(this).val() === "0") {
-            handle_papersize('crop');
+            handle_papersize(prefix);
         }
         else {
-            show_hide_standard_papersizes('crop');
-        }
-    });
-    $(".logical-paper-select").change(function() {
-        if ($(this).val() === "0") {
-            handle_papersize('logical');
-        }
-        else {
-            show_hide_standard_papersizes('logical');
+            show_hide_standard_papersizes(prefix);
         }
     });
     $("#bb-profiles-instructions").hide();
