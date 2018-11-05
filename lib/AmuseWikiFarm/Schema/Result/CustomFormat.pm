@@ -331,6 +331,42 @@ __PACKAGE__->table("custom_formats");
   default_value: 0
   is_nullable: 1
 
+=head2 bb_areaset_height
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
+=head2 bb_areaset_width
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
+=head2 bb_fussy_last_word
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 1
+
+=head2 bb_tex_emergencystretch
+
+  data_type: 'integer'
+  default_value: 30
+  is_nullable: 0
+
+=head2 bb_tex_tolerance
+
+  data_type: 'integer'
+  default_value: 200
+  is_nullable: 0
+
+=head2 bb_ignore_cover
+
+  data_type: 'smallint'
+  default_value: 0
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -478,6 +514,18 @@ __PACKAGE__->add_columns(
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
   "bb_unbranded",
   { data_type => "smallint", default_value => 0, is_nullable => 1 },
+  "bb_areaset_height",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "bb_areaset_width",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "bb_fussy_last_word",
+  { data_type => "smallint", default_value => 0, is_nullable => 1 },
+  "bb_tex_emergencystretch",
+  { data_type => "integer", default_value => 30, is_nullable => 0 },
+  "bb_tex_tolerance",
+  { data_type => "integer", default_value => 200, is_nullable => 0 },
+  "bb_ignore_cover",
+  { data_type => "smallint", default_value => 0, is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -526,8 +574,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-07-18 15:03:08
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:9Ghj453ZscdCyOyRhnpuaQ
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-11-05 14:00:21
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:cM8EGuyHQVE9O4N+qLjneQ
 
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;

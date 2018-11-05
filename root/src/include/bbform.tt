@@ -183,10 +183,13 @@
       [% END %]
     </select>
           </div>
-          <div style="margin-top: 5px">
-          [% loc('Width:') %]
+          <div class="row">
+            <div class="col-xs-6">
+              <label for="logical-paper-width">
+                [% loc('Width:') %]
+              </label>
           <select name="paper_width" id="logical-paper-width"
-                  class="logical-paper-select">
+                  class="logical-paper-select form-control">
             [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
             <option value="[% page_custom_size %]"[% IF bb.paper_width == page_custom_size %] selected="selected"[% END %]>
               [% IF page_custom_size %]
@@ -197,9 +200,13 @@
             </option>
             [% END %]
           </select>
-          [% loc('Height:') %]
+            </div>
+            <div class="col-xs-6">
+              <label for="logical-paper-height">
+                [% loc('Height:') %]
+              </label>
           <select name="paper_height" id="logical-paper-height"
-                  class="logical-paper-select">
+                  class="logical-paper-select form-control">
             [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
             <option value="[% page_custom_size %]"[% IF bb.paper_height == page_custom_size %] selected="selected"[% END %]>
               [% IF page_custom_size %]
@@ -210,16 +217,19 @@
             </option>
             [% END %]
           </select>
+            </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
     <div class="form-group pdf-option">
       <div class="row">
         <div class="col-sm-3">
       <label for="division">
       [% loc('Division factor') %]
-      ([% loc('Higher division factor means narrower margins') %]):
+      ([% loc('Higher division factor means narrower margins') %];
+       [% loc('if you want to use a custom size, you need to set both width and height') %])
       </label>
         </div>
         <div class="col-sm-9">
@@ -231,10 +241,50 @@
         </option>
         [% END %]
       </select>
-        </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <label for="areaset-width">
+          [% loc('Width:') %]
+        </label>
+        <select name="areaset_width" id="areaset-width"
+                class="areaset-select form-control">
+          [% FOREACH areaset_size IN bb.areasizes_in_mm %]
+          <option value="[% areaset_size %]"
+                  [% IF bb.areaset_width == areaset_size %] selected="selected"[% END %]
+                  >
+            [% IF areaset_size %]
+            [% areaset_size %] mm
+            [% ELSE %]
+            [% loc('Standard') %]
+            [% END %]
+          </option>
+          [% END %]
+        </select>
+      </div>
+      <div class="col-xs-6">
+        <label for="areaset-height">
+          [% loc('Height:') %]
+        </label>
+        <select name="areaset_height" id="areaset-height"
+                class="areaset-select form-control">
+          [% FOREACH areaset_size IN bb.areasizes_in_mm %]
+          <option value="[% areaset_size %]"
+                  [% IF bb.areaset_height == areaset_size %] selected="selected"[% END %]
+                  >
+            [% IF areaset_size %]
+            [% areaset_size %] mm
+            [% ELSE %]
+            [% loc('Standard') %]
+            [% END %]
+          </option>
+          [% END %]
+        </select>
       </div>
     </div>
-    <div class="form-group pdf-option">
+      </div>
+    </div>
+    <div class="form-group pdf-option" style="margin-top: 15px">
       <div class="row">
         <div class="col-sm-3">
       <label for="bcor">
@@ -250,6 +300,45 @@
       </option>
       [% END %]
     </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group pdf-option" style="margin-top: 15px">
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="tex_tolerance">
+            [% loc('TeX options (advanced)') %]
+          </label>
+        </div>
+        <div class="col-sm-9">
+          <div class="row">
+            <label for="tex_tolerance" class="col-xs-3 control-label">
+              <code>tolerance</code>
+            </label>
+            <div class="col-xs-3">
+              <select name="tex_tolerance" id="tex_tolerance" class="form-control">
+                [% FOREACH tolerance IN bb.tex_tolerances %]
+                <option value="[% tolerance %]"
+                        [% IF tolerance == bb.tex_tolerance %]selected="selected"[% END %]>
+                  [% tolerance %]
+                </option>
+                [% END %]
+              </select>
+            </div>
+            <label for="tex_emergencystretch" class="col-xs-3 control-label">
+              <code>emergencystretch</code>
+            </label>
+            <div class="col-xs-3">
+              <select name="tex_emergencystretch" id="tex_emergencystretch" class="form-control">
+                [% FOREACH emergencystretch IN bb.tex_emergencystretch_values %]
+                <option value="[% emergencystretch %]"
+                        [% IF emergencystretch == bb.tex_emergencystretch %]selected="selected"[% END %]>
+                  [% emergencystretch %]pt
+                </option>
+                [% END %]
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -326,6 +415,23 @@
       </label>
     </div>
 
+    <!-- compiler 1.26 -->
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="fussy_last_word" value="1" id="fussy_last_word"
+               [% IF bb.fussy_last_word %]checked="checked"[% END %]/>
+        [% loc('Avoid hyphenation on the last word of a sentence (it could result in bad spacing)') %]
+      </label>
+    </div>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="ignore_cover" value="1" id="ignore_cover"
+               [% IF bb.ignore_cover %]checked="checked"[% END %]/>
+        [% loc('Never display the cover') %]
+      </label>
+    </div>
+
     <!-- compiler 1.05 -->
     <div class="checkbox">
       <label>
@@ -377,6 +483,7 @@
         <div class="col-sm-9">
           <select name="headings" id="headings" class="form-control">
             [%- # loc('None')                                                     -%]
+            [%- # loc('Part and chapter. If one side document: part.')            -%]
             [%- # loc('Title and subtitle. If one side document: title.')         -%]
             [%- # loc('Author and title. If one side document: title.')           -%]
             [%- # loc('Chapter and section. If one side document: chapter.')      -%]

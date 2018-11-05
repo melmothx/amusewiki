@@ -526,6 +526,67 @@ sub papersizes_in_mm {
     return [ 0, (80..300) ];
 }
 
+sub areasizes_in_mm {
+    return [ 0, (30..300) ];
+}
+
+has areaset_width => (is => 'rw',
+                      isa => Enum[ @{__PACKAGE__->areasizes_in_mm} ],
+                      default => sub { 0 });
+
+has areaset_height => (is => 'rw',
+                       isa => Enum[ @{__PACKAGE__->areasizes_in_mm} ],
+                       default => sub { 0 });
+
+sub computed_areaset_height {
+    my $self = shift;
+    if (my $h = $self->areaset_height) {
+        return $h . 'mm';
+    }
+    else {
+        return '';
+    }
+}
+
+sub computed_areaset_width {
+    my $self = shift;
+    if (my $w = $self->areaset_width) {
+        return $w . 'mm';
+    }
+    else {
+        return '';
+    }
+}
+
+
+sub tex_emergencystretch_values {
+    return [ 0..60 ];
+}
+
+sub tex_tolerances {
+    return [
+            100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
+            1000, 1500, 2000, 2500, 3000, 4000, 5000, 6000, 7000,
+            8000, 9000, 10000
+           ];
+}
+
+has tex_tolerance => (is => 'rw',
+                      isa => Int,
+                      default => 200);
+
+has tex_emergencystretch => (is => 'rw',
+                             isa => Int,
+                             default => 30);
+
+has fussy_last_word => (is => 'rw',
+                        isa => Bool,
+                        default => sub { 0 });
+
+has ignore_cover => (is => 'rw',
+                     isa => Bool,
+                     default => sub { 0 });
+
 
 sub papersize_values_as_hashref {
     my $list = __PACKAGE__->papersize_values;
@@ -555,6 +616,18 @@ has papersize => (
 =head2 crop_paper_height
 
 =head2 crop_paper_thickness
+
+=head2 areaset_width
+
+=head2 areaset_height
+
+=head2 tex_tolerance
+
+=head2 tex_emergencystretch
+
+=head2 fussy_last_word
+
+=head2 ignore_cover
 
 =cut
 
@@ -948,7 +1021,7 @@ sub add_text {
                     $to_add = $filename->name_with_fragments;
                 }
                 else {
-                    log_error { "Quota exceeded, too many pages: $limit < $total " };
+                    log_error { "Quota exceeded, too many pages: $limit < $total " . $self->site_id };
                     # loc("Quota exceeded, too many pages")
                     $self->error('Quota exceeded, too many pages');
                 }
@@ -1139,6 +1212,12 @@ sub profile_methods {
               crop_paper_height
               crop_paper_thickness
               unbranded
+              areaset_height
+              areaset_width
+              fussy_last_word
+              tex_emergencystretch
+              tex_tolerance
+              ignore_cover
               cover/;
 }
 
@@ -1198,6 +1277,13 @@ sub as_job {
                                     continuefootnotes => $self->continuefootnotes,
                                     centerchapter => $self->centerchapter,
                                     centersection => $self->centerchapter,
+
+                                    tex_tolerance        => $self->tex_tolerance,
+                                    tex_emergencystretch => $self->tex_emergencystretch . 'pt',
+                                    fussy_last_word      => $self->fussy_last_word,
+                                    ignore_cover         => $self->ignore_cover,
+                                    areaset_height       => $self->computed_areaset_height,
+                                    areaset_width        => $self->computed_areaset_width,
 
                                     ($self->is_single_file ? ()
                                      : (

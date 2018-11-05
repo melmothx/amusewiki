@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 227;
+use Test::More tests => 228;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper::Concise;
@@ -25,12 +25,16 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
 ok (-d AmuseWikiFarm::Archive::BookBuilder->filedir, "Found " . AmuseWikiFarm::Archive::BookBuilder->filedir);
 
+$schema->resultset('Site')->find('0blog0')->update({ bb_page_limit => 50 });
+
+
 {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new({
                                                        dbic => $schema,
                                                        site_id => '0blog0',
                                                        job_id => 999998,
                                                       });
+    is $bb->site->bb_page_limit, 50 or die;
     my $token = $bb->generate_token;
     my $json = $bb->serialize_json;
     ok($token, "Token generated") and diag $token;
@@ -241,6 +245,12 @@ my $expected = {
                                        continuefootnotes  => undef,
                                        centerchapter      => undef,
                                        centersection      => undef,
+                                       tex_tolerance => '200',
+                                       tex_emergencystretch => '30pt',
+                                       fussy_last_word => undef,
+                                       areaset_width => '',
+                                       areaset_height => '',
+                                       ignore_cover => undef,
                                        secondary_footnotes_alpha => undef,
                                        opening => 'right',
                                        headings => 0,
@@ -352,7 +362,7 @@ $bb = AmuseWikiFarm::Archive::BookBuilder->new({
 is ($bb->site_id, '0blog0', "Object ok");
 is ($bb->site->id, '0blog0', "site built");
 
-$bb->site->update({ bb_page_limit => 15 });
+$bb->site->update({ bb_page_limit => 18 });
 
 my @check_added;
 foreach my $text ($bb->site->titles->published_texts) {
