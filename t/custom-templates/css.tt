@@ -71,6 +71,11 @@ div#page {
 pre, code {
     font-family: Consolas, courier, monospace;
 }
+
+pre {
+    overflow: auto;
+}
+
 /* invisibles */
 span.hiddenindex, span.commentmarker, .comment, span.tocprefix, #hitme {
     display: none
