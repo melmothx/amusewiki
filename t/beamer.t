@@ -64,7 +64,7 @@ my $tex_body = read_file(catfile($destination, 'slides.' . $cf->tex_extension));
 like($tex_body, qr{Iwona}, "Found the sans font");
 like($tex_body, qr{wolverine}, "Found the beamer color theme");
 like($tex_body, qr{Madrid}, "Found the beamer theme");
-like($tex_body, qr{TeX Gyre Cursor}, "Found the font");
+like($tex_body, qr{tex\s*gyre\s*cursor}i, "Found the font");
 $mech->get_ok('/library/slides');
 $mech->content_contains('Slides (PDF)');
 $mech->get_ok('/library/slides-s-no');

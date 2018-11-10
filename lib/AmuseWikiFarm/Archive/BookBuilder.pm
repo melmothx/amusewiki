@@ -106,6 +106,10 @@ has user_is_logged_in => (is => 'ro',
                           isa => Bool,
                           default => sub { 0 });
 
+has custom_format_id => (is => 'rw',
+                         isa => Str,
+                         default => sub { '' });
+
 has bbdir => (is => 'lazy',
               isa => Object);
 
@@ -1523,7 +1527,8 @@ sub compile {
             delete $compiler_args{extra}{logo};
         }
     }
-
+    # add the format ID if provided;
+    $compiler_args{extra}{format_id} = $self->custom_format_id;
     Dlog_debug { "compiler args are $_" } \%compiler_args;
     my $compiler = Text::Amuse::Compile->new(%compiler_args);
     my $outfile;

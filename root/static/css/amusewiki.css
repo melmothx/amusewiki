@@ -344,3 +344,18 @@ ul.ui-autocomplete {
 .ui-menu-item:hover {
     font-weight: bold;
 }
+
+.mb-1 {
+    margin-bottom: 1em;
+}
+
+.mt-1 {
+    margin-top: 1em;
+}
+
+legend.amw-facet-title {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 0px;
+    margin-top: 8px;
+}

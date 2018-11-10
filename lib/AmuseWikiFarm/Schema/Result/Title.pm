@@ -1386,7 +1386,7 @@ sub autogenerate_teaser {
     return if $size < 1;
     return if $self->teaser;
     log_debug { "Autogenerating teaser in " . $self->uri };
-    $logger->("Generating teaser") if $logger;
+    $logger->("Generating teaser\n") if $logger;
     $self->update({ teaser => $self->_create_teaser($size) });
 }
 

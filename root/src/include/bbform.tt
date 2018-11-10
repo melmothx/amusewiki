@@ -34,8 +34,8 @@
       </div>
       <div class="col-sm-9">
         <p class="pdf-option">
-        [% loc('Keep in mind that some character may be missing in the required font.') %]
-        [% loc('Missing character will be reported') %].
+          [% loc('Keep in mind that some character may be missing in the required font.') %]
+          [% loc('Missing character will be reported') %].
         </p>
       </div>
     </div>
@@ -163,177 +163,132 @@
       </div>
     </div>
     <div class="pdf-option">
-    <div class="form-group">
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="papersize" class="control-label">
-    [% loc('Choose a paper format') %]
-          ([% loc('if you want to use a custom size, you need to set both width and height') %])
-          </label>
-        </div>
-        <div class="col-sm-9">
-          <div>
-    <select name="papersize" id="papersize" class="form-control">
-      [% SET mypapers = bb.papersizes %]
-      [% FOREACH paper IN bb.papersize_values %]
-      <option value="[% paper %]"
-              [% IF paper == bb.papersize %]selected="selected"[% END %]>
-        [% loc(mypapers.$paper) %]
-      </option>
-      [% END %]
-    </select>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="papersize" class="control-label">
+              [% loc('Choose a paper format') %]
+              ([% loc('if you want to use a custom size, you need to set both width and height') %])
+            </label>
           </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <label for="logical-paper-width">
-                [% loc('Width:') %]
-              </label>
-          <select name="paper_width" id="logical-paper-width"
-                  class="logical-paper-select form-control">
-            [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
-            <option value="[% page_custom_size %]"[% IF bb.paper_width == page_custom_size %] selected="selected"[% END %]>
-              [% IF page_custom_size %]
-              [% page_custom_size %] mm
-              [% ELSE %]
-              [% loc('Standard') %]
-              [% END %]
-            </option>
-            [% END %]
-          </select>
+          <div class="col-sm-9">
+            <div>
+              <select name="papersize" id="papersize" class="form-control">
+                [% SET mypapers = bb.papersizes %]
+                [% FOREACH paper IN bb.papersize_values %]
+                <option value="[% paper %]"
+                        [% IF paper == bb.papersize %]selected="selected"[% END %]>
+                  [% loc(mypapers.$paper) %]
+                </option>
+                [% END %]
+              </select>
             </div>
-            <div class="col-xs-6">
-              <label for="logical-paper-height">
-                [% loc('Height:') %]
-              </label>
-          <select name="paper_height" id="logical-paper-height"
-                  class="logical-paper-select form-control">
-            [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
-            <option value="[% page_custom_size %]"[% IF bb.paper_height == page_custom_size %] selected="selected"[% END %]>
-              [% IF page_custom_size %]
-              [% page_custom_size %] mm
-              [% ELSE %]
-              [% loc('Standard') %]
-              [% END %]
-            </option>
-            [% END %]
-          </select>
+            <div class="row mt-1">
+              <div class="col-xs-2">
+                <label for="logical-paper-width">
+                  [% loc('Width:') %]
+                </label>
+              </div>
+              <div class="col-xs-4">
+                <select name="paper_width" id="logical-paper-width"
+                        data-prefix="logical"
+                        class="paper-select-handle form-control">
+                  [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+                  <option value="[% page_custom_size %]"[% IF bb.paper_width == page_custom_size %] selected="selected"[% END %]>
+                    [% IF page_custom_size %]
+                    [% page_custom_size %] mm
+                    [% ELSE %]
+                    [% loc('Standard') %]
+                    [% END %]
+                  </option>
+                  [% END %]
+                </select>
+              </div>
+              <div class="col-xs-2">
+                <label for="logical-paper-height">
+                  [% loc('Height:') %]
+                </label>
+              </div>
+              <div class="col-xs-4">
+                <select name="paper_height" id="logical-paper-height"
+                        data-prefix="logical"
+                        class="paper-select-handle form-control">
+                  [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+                  <option value="[% page_custom_size %]"[% IF bb.paper_height == page_custom_size %] selected="selected"[% END %]>
+                    [% IF page_custom_size %]
+                    [% page_custom_size %] mm
+                    [% ELSE %]
+                    [% loc('Standard') %]
+                    [% END %]
+                  </option>
+                  [% END %]
+                </select>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
     <div class="form-group pdf-option">
       <div class="row">
         <div class="col-sm-3">
-      <label for="division">
-      [% loc('Division factor') %]
-      ([% loc('Higher division factor means narrower margins') %];
-       [% loc('if you want to use a custom size, you need to set both width and height') %])
-      </label>
-        </div>
-        <div class="col-sm-9">
-      <select name="division" id="division" class="form-control">
-        [% FOREACH division IN bb.divs_values %]
-        <option value="[% division %]"
-                [% IF bb.division == division %]selected="selected"[% END %]>
-                [% division %]
-        </option>
-        [% END %]
-      </select>
-
-    <div class="row">
-      <div class="col-xs-6">
-        <label for="areaset-width">
-          [% loc('Width:') %]
-        </label>
-        <select name="areaset_width" id="areaset-width"
-                class="areaset-select form-control">
-          [% FOREACH areaset_size IN bb.areasizes_in_mm %]
-          <option value="[% areaset_size %]"
-                  [% IF bb.areaset_width == areaset_size %] selected="selected"[% END %]
-                  >
-            [% IF areaset_size %]
-            [% areaset_size %] mm
-            [% ELSE %]
-            [% loc('Standard') %]
-            [% END %]
-          </option>
-          [% END %]
-        </select>
-      </div>
-      <div class="col-xs-6">
-        <label for="areaset-height">
-          [% loc('Height:') %]
-        </label>
-        <select name="areaset_height" id="areaset-height"
-                class="areaset-select form-control">
-          [% FOREACH areaset_size IN bb.areasizes_in_mm %]
-          <option value="[% areaset_size %]"
-                  [% IF bb.areaset_height == areaset_size %] selected="selected"[% END %]
-                  >
-            [% IF areaset_size %]
-            [% areaset_size %] mm
-            [% ELSE %]
-            [% loc('Standard') %]
-            [% END %]
-          </option>
-          [% END %]
-        </select>
-      </div>
-    </div>
-      </div>
-    </div>
-    <div class="form-group pdf-option" style="margin-top: 15px">
-      <div class="row">
-        <div class="col-sm-3">
-      <label for="bcor">
-        [% loc('Binding correction in millimeters (additional inner margin)') %]:
-      </label>
-        </div>
-        <div class="col-sm-9">
-    <select name="bcor" id="bcor" class="form-control">
-      [% FOREACH bcor IN bb.bcor_values %]
-      <option value="[% bcor %]"
-              [% IF bcor == bb.bcor %]selected="selected"[% END %]>
-        [% bcor %] mm
-      </option>
-      [% END %]
-    </select>
-        </div>
-      </div>
-    </div>
-    <div class="form-group pdf-option" style="margin-top: 15px">
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="tex_tolerance">
-            [% loc('TeX options (advanced)') %]
+          <label for="division">
+            [% loc('Division factor') %]
+            ([% loc('Higher division factor means narrower margins') %];
+            [% loc('if you want to use a custom size, you need to set both width and height') %])
           </label>
         </div>
         <div class="col-sm-9">
-          <div class="row">
-            <label for="tex_tolerance" class="col-xs-3 control-label">
-              <code>tolerance</code>
-            </label>
-            <div class="col-xs-3">
-              <select name="tex_tolerance" id="tex_tolerance" class="form-control">
-                [% FOREACH tolerance IN bb.tex_tolerances %]
-                <option value="[% tolerance %]"
-                        [% IF tolerance == bb.tex_tolerance %]selected="selected"[% END %]>
-                  [% tolerance %]
+          <select name="division" id="division" class="form-control">
+            [% FOREACH division IN bb.divs_values %]
+            <option value="[% division %]"
+                    [% IF bb.division == division %]selected="selected"[% END %]>
+              [% division %]
+            </option>
+            [% END %]
+          </select>
+
+          <div class="row mt-1">
+            <div class="col-xs-2">
+              <label for="areaset-paper-width">
+                [% loc('Width:') %]
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <select name="areaset_width" id="areaset-paper-width"
+                        data-prefix="areaset"
+                        class="paper-select-handle form-control">
+                [% FOREACH areaset_size IN bb.areasizes_in_mm %]
+                <option value="[% areaset_size %]"
+                        [% IF bb.areaset_width == areaset_size %] selected="selected"[% END %]
+                        >
+                  [% IF areaset_size %]
+                  [% areaset_size %] mm
+                  [% ELSE %]
+                  [% loc('Standard') %]
+                  [% END %]
                 </option>
                 [% END %]
               </select>
             </div>
-            <label for="tex_emergencystretch" class="col-xs-3 control-label">
-              <code>emergencystretch</code>
-            </label>
-            <div class="col-xs-3">
-              <select name="tex_emergencystretch" id="tex_emergencystretch" class="form-control">
-                [% FOREACH emergencystretch IN bb.tex_emergencystretch_values %]
-                <option value="[% emergencystretch %]"
-                        [% IF emergencystretch == bb.tex_emergencystretch %]selected="selected"[% END %]>
-                  [% emergencystretch %]pt
+            <div class="col-xs-2">
+              <label for="areaset-paper-height">
+                [% loc('Height:') %]
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <select name="areaset_height" id="areaset-paper-height"
+                      data-prefix="areaset"
+                      class="paper-select-handle form-control">
+                [% FOREACH areaset_size IN bb.areasizes_in_mm %]
+                <option value="[% areaset_size %]"
+                        [% IF bb.areaset_height == areaset_size %] selected="selected"[% END %]
+                        >
+                  [% IF areaset_size %]
+                  [% areaset_size %] mm
+                  [% ELSE %]
+                  [% loc('Standard') %]
+                  [% END %]
                 </option>
                 [% END %]
               </select>
@@ -341,166 +296,221 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="notoc" value="1" id="notoc"
-               [% IF bb.notoc %]checked="checked"[% END %]/>
-        [% loc('Never generate a table of content') %]
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="nofinalpage" value="1" id="nofinalpage"
-               [% IF bb.nofinalpage %]checked="checked"[% END %]/>
-        [% loc('Never generate the standard final page with title/author/notes/logo/site name') %]
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="unbranded" value="1" id="unbranded"
-               [% IF bb.unbranded %]checked="checked"[% END %]/>
-        [% loc('Unbranded PDF (hide site name, logo, etc.)') %]
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
-               [% IF bb.nocoverpage %]checked="checked"[% END %]/>
-        [% loc('Do not create a cover page and start the text on the first page') %]
-      </label>
-    </div>
+      <div class="form-group pdf-option" style="margin-top: 15px">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="bcor">
+              [% loc('Binding correction in millimeters (additional inner margin)') %]:
+            </label>
+          </div>
+          <div class="col-sm-9">
+            <select name="bcor" id="bcor" class="form-control">
+              [% FOREACH bcor IN bb.bcor_values %]
+              <option value="[% bcor %]"
+                      [% IF bcor == bb.bcor %]selected="selected"[% END %]>
+                [% bcor %] mm
+              </option>
+              [% END %]
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pdf-option" style="margin-top: 15px">
+        <div class="row">
+          <div class="col-sm-3">
+            <strong>[% loc('TeX options (advanced)') %]</strong>
+          </div>
+          <div class="col-sm-9">
+            <div class="row">
+              <label for="tex_tolerance" class="col-sm-3 control-label">
+                <code>tolerance</code>
+              </label>
+              <div class="col-sm-3">
+                <select name="tex_tolerance" id="tex_tolerance" class="form-control">
+                  [% FOREACH tolerance IN bb.tex_tolerances %]
+                  <option value="[% tolerance %]"
+                          [% IF tolerance == bb.tex_tolerance %]selected="selected"[% END %]>
+                    [% tolerance %]
+                  </option>
+                  [% END %]
+                </select>
+              </div>
+              <label for="tex_emergencystretch" class="col-sm-3 control-label">
+                <code>emergencystretch</code>
+              </label>
+              <div class="col-sm-3">
+                <select name="tex_emergencystretch" id="tex_emergencystretch" class="form-control">
+                  [% FOREACH emergencystretch IN bb.tex_emergencystretch_values %]
+                  <option value="[% emergencystretch %]"
+                          [% IF emergencystretch == bb.tex_emergencystretch %]selected="selected"[% END %]>
+                    [% emergencystretch %]pt
+                  </option>
+                  [% END %]
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="notoc" value="1" id="notoc"
+                 [% IF bb.notoc %]checked="checked"[% END %]/>
+          [% loc('Never generate a table of content') %]
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="nofinalpage" value="1" id="nofinalpage"
+                 [% IF bb.nofinalpage %]checked="checked"[% END %]/>
+          [% loc('Never generate the standard final page with title/author/notes/logo/site name') %]
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="unbranded" value="1" id="unbranded"
+                 [% IF bb.unbranded %]checked="checked"[% END %]/>
+          [% loc('Unbranded PDF (hide site name, logo, etc.)') %]
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="nocoverpage" value="1" id="nocoverpage"
+                 [% IF bb.nocoverpage %]checked="checked"[% END %]/>
+          [% loc('Do not create a cover page and start the text on the first page') %]
+        </label>
+      </div>
 
-    <!-- compiler 0.97 -->
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="impressum" value="1" id="impressum"
-               [% IF bb.impressum %]checked="checked"[% END %]/>
-        [% loc('Place the notes on the back of the first page, impressum-style') %]
-      </label>
-    </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="sansfontsections" value="1" id="sansfontsections"
-               [% IF bb.sansfontsections %]checked="checked"[% END %]/>
-        [% loc('Use sans fonts for section titles') %]
-      </label>
-    </div>
+      <!-- compiler 0.97 -->
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="impressum" value="1" id="impressum"
+                 [% IF bb.impressum %]checked="checked"[% END %]/>
+          [% loc('Place the notes on the back of the first page, impressum-style') %]
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="sansfontsections" value="1" id="sansfontsections"
+                 [% IF bb.sansfontsections %]checked="checked"[% END %]/>
+          [% loc('Use sans fonts for section titles') %]
+        </label>
+      </div>
 
-    <!-- compiler 0.99 -->
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="nobold" value="1" id="nobold"
-               [% IF bb.nobold %]checked="checked"[% END %]/>
-        [% loc('Do not use bold fonts') %]
-      </label>
-    </div>
+      <!-- compiler 0.99 -->
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="nobold" value="1" id="nobold"
+                 [% IF bb.nobold %]checked="checked"[% END %]/>
+          [% loc('Do not use bold fonts') %]
+        </label>
+      </div>
 
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="secondary_footnotes_alpha" value="1" id="secondary_footnotes_alpha"
-               [% IF bb.secondary_footnotes_alpha %]checked="checked"[% END %]/>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="secondary_footnotes_alpha" value="1" id="secondary_footnotes_alpha"
+                 [% IF bb.secondary_footnotes_alpha %]checked="checked"[% END %]/>
         [% loc('By default, secondary footnotes use arabic numbering
         between parens. With this option they will use per-page alpha
         numbering') %]
-      </label>
-    </div>
+        </label>
+      </div>
 
-    <!-- compiler 1.00 -->
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="start_with_empty_page" value="1" id="start_with_empty_page"
-               [% IF bb.start_with_empty_page %]checked="checked"[% END %]/>
-        [% loc('Start the document with an empty page') %]
-      </label>
-    </div>
+      <!-- compiler 1.00 -->
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="start_with_empty_page" value="1" id="start_with_empty_page"
+                 [% IF bb.start_with_empty_page %]checked="checked"[% END %]/>
+          [% loc('Start the document with an empty page') %]
+        </label>
+      </div>
 
-    <!-- compiler 1.26 -->
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="fussy_last_word" value="1" id="fussy_last_word"
-               [% IF bb.fussy_last_word %]checked="checked"[% END %]/>
-        [% loc('Avoid hyphenation on the last word of a sentence (it could result in bad spacing)') %]
-      </label>
-    </div>
+      <!-- compiler 1.26 -->
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="fussy_last_word" value="1" id="fussy_last_word"
+                 [% IF bb.fussy_last_word %]checked="checked"[% END %]/>
+          [% loc('Avoid hyphenation on the last word of a sentence (it could result in bad spacing)') %]
+        </label>
+      </div>
 
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="ignore_cover" value="1" id="ignore_cover"
-               [% IF bb.ignore_cover %]checked="checked"[% END %]/>
-        [% loc('Never display the cover') %]
-      </label>
-    </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="ignore_cover" value="1" id="ignore_cover"
+                 [% IF bb.ignore_cover %]checked="checked"[% END %]/>
+          [% loc('Never display the cover') %]
+        </label>
+      </div>
 
-    <!-- compiler 1.05 -->
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="continuefootnotes" value="1" id="continuefootnotes"
-               [% IF bb.continuefootnotes %]checked="checked"[% END %]/>
-        [% loc('Continuous footnote numbering across the whole document.') %]
-      </label>
-    </div>
-    <div class="checkbox" id="coverpage_only_if_toc_container">
-      <label>
-        <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"
-               [% IF bb.coverpage_only_if_toc %]checked="checked"[% END %]/>
-        [% loc('For texts without a table of content, start text on the very first page') %]
-      </label>
-    </div>
-    <div class="checkbox pdf-option">
-      <label>
-        <input type="checkbox" name="twoside" value="1" id="twoside"
-               [% IF bb.twoside %]checked="checked"[% END %]/>
-        <strong>[% loc('Two side layout') %]</strong>
-      </label>
-    </div>
-    <div id="choose-opening" class="form-group">
-      <div class="row">
-        <div class="col-sm-3">
-      <label for="opening">
-        [% loc('Page where to start a chapter') %]
-      </label>
-        </div>
-        <div class="col-sm-9">
-      <select id="opening" class="form-control" name="opening">
-        [% FOREACH opening IN bb.opening_values %]
-        <option value="[% opening %]"
-                [% IF bb.opening == opening %]selected="selected"[% END %]>
-          [% loc(opening) %]
-        </option>
-        [% END %]
-      </select>
+      <!-- compiler 1.05 -->
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="continuefootnotes" value="1" id="continuefootnotes"
+                 [% IF bb.continuefootnotes %]checked="checked"[% END %]/>
+          [% loc('Continuous footnote numbering across the whole document.') %]
+        </label>
+      </div>
+      <div class="checkbox" id="coverpage_only_if_toc_container">
+        <label>
+          <input type="checkbox" name="coverpage_only_if_toc" value="1" id="coverpage_only_if_toc"
+                 [% IF bb.coverpage_only_if_toc %]checked="checked"[% END %]/>
+          [% loc('For texts without a table of content, start text on the very first page') %]
+        </label>
+      </div>
+      <div class="checkbox pdf-option">
+        <label>
+          <input type="checkbox" name="twoside" value="1" id="twoside"
+                 [% IF bb.twoside %]checked="checked"[% END %]/>
+          <strong>[% loc('Two side layout') %]</strong>
+        </label>
+      </div>
+      <div id="choose-opening" class="form-group">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="opening">
+              [% loc('Page where to start a chapter') %]
+            </label>
+          </div>
+          <div class="col-sm-9">
+            <select id="opening" class="form-control" name="opening">
+              [% FOREACH opening IN bb.opening_values %]
+              <option value="[% opening %]"
+                      [% IF bb.opening == opening %]selected="selected"[% END %]>
+                [% loc(opening) %]
+              </option>
+              [% END %]
+            </select>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="form-group pdf-option">
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="headings" class="control-label">
-          [% loc('Running headings') %]
-          </label>
-        </div>
-        <div class="col-sm-9">
-          <select name="headings" id="headings" class="form-control">
-            [%- # loc('None')                                                     -%]
-            [%- # loc('Part and chapter. If one side document: part.')            -%]
-            [%- # loc('Title and subtitle. If one side document: title.')         -%]
-            [%- # loc('Author and title. If one side document: title.')           -%]
-            [%- # loc('Chapter and section. If one side document: chapter.')      -%]
-            [%- # loc('Section and subsection. If one side document: section.')   -%]
-            [%- # loc('Title and chapter. If one side document: chapter.')        -%]
-            [%- # loc('Title and section.  If one side document: section.')       -%]
-            [%- FOREACH heading IN bb.all_headings %]
-            [%- IF heading.desc %]
-            <option value="[% heading.name %]"[% IF heading.name == bb.headings %] selected="selected"[% END %]>
-              [% loc(heading.desc) %]
-            </option>
-            [%- END %]
-            [%- END %]
-          </select>
+      <div class="form-group pdf-option">
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="headings" class="control-label">
+              [% loc('Running headings') %]
+            </label>
+          </div>
+          <div class="col-sm-9">
+            <select name="headings" id="headings" class="form-control">
+              [%- # loc('None')                                                     -%]
+              [%- # loc('Part and chapter. If one side document: part.')            -%]
+              [%- # loc('Title and subtitle. If one side document: title.')         -%]
+              [%- # loc('Author and title. If one side document: title.')           -%]
+              [%- # loc('Chapter and section. If one side document: chapter.')      -%]
+              [%- # loc('Section and subsection. If one side document: section.')   -%]
+              [%- # loc('Title and chapter. If one side document: chapter.')        -%]
+              [%- # loc('Title and section.  If one side document: section.')       -%]
+              [%- FOREACH heading IN bb.all_headings %]
+              [%- IF heading.desc %]
+              <option value="[% heading.name %]"[% IF heading.name == bb.headings %] selected="selected"[% END %]>
+                [% loc(heading.desc) %]
+              </option>
+              [%- END %]
+              [%- END %]
+            </select>
+          </div>
         </div>
       </div>
-    </div>
     </div>
     <div class="form-group pdf-option epub-option">
       <div class="checkbox">
@@ -519,26 +529,26 @@
       </div>
     </div>
     <div class="pdf-option">
-    <h4>[% loc('Imposition schemas') %]</h4>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" name="imposed" value="1" id="imposed"
-               [% IF bb.imposed %]checked="checked"[% END %]/>
-        <strong>[% loc('I want an imposed (ready to print) PDF') %]</strong>
-      </label>
-    </div>
-    <div id="imposition-options">
-    <div>
-      <strong>
-        [% loc('If you asked for imposition, select an imposition schema') %]:
-      </strong>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="2up" id="schema2up"
-               class="choose-schema"
-               [% IF bb.schema == '2up' %]checked="checked"[% END %] />
-        <strong>2up</strong>:
+      <h4>[% loc('Imposition schemas') %]</h4>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="imposed" value="1" id="imposed"
+                 [% IF bb.imposed %]checked="checked"[% END %]/>
+          <strong>[% loc('I want an imposed (ready to print) PDF') %]</strong>
+        </label>
+      </div>
+      <div id="imposition-options">
+        <div>
+          <strong>
+            [% loc('If you asked for imposition, select an imposition schema') %]:
+          </strong>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="2up" id="schema2up"
+                   class="choose-schema"
+                   [% IF bb.schema == '2up' %]checked="checked"[% END %] />
+            <strong>2up</strong>:
 
         [% loc("Pages are reordered, in one or more groups
         (signatures), then folded in half. If you have more
@@ -548,314 +558,330 @@
         whole book in a single signature, or an optimized size to
         reduce the number of blank pages.") %]
 
-      </label>
-      <div class="schema-preview schema-preview-single">
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-1.png') %]"
-             alt="2up" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-2.png') %]"
-             alt="2up" />
-        &nbsp;&nbsp;
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-3.png') %]"
-             alt="2up" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-4.png') %]"
-             alt="2up" />
-      </div>
-    </div>
-    <div id="signature-explanation">
-      <div class="row">
-        <div class="col-sm-3">
-      <label for="signature_2up">
-        <strong>[% loc('Please select the signature size:') %]</strong>
-      </label>
+          </label>
+          <div class="schema-preview schema-preview-single">
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-1.png') %]"
+                 alt="2up" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-2.png') %]"
+                 alt="2up" />
+            &nbsp;&nbsp;
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-3.png') %]"
+                 alt="2up" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2up-4.png') %]"
+                 alt="2up" />
+          </div>
         </div>
-        <div class="col-sm-9">
-      <select id="signature_2up" class="form-control" name="signature_2up">
-        [% FOREACH sign IN bb.signature_values_2up %]
-        <option value="[% sign %]"
-                [% IF sign == bb.signature_2up %]selected="selected"[% END %]>
-          [% IF sign.match('-') %]
-          [% loc('Use optimized signatures with [_1] pages each', sign) %]
-          [% ELSIF sign == 0 %]
-          [% loc('The whole book in as single signature') %]
-          [% ELSE %]
-          [% sign %]
-          [% END %]
-        </option>
-        [% END %]
-      </select>
+        <div id="signature-explanation">
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="signature_2up">
+                <strong>[% loc('Please select the signature size:') %]</strong>
+              </label>
+            </div>
+            <div class="col-sm-9">
+              <select id="signature_2up" class="form-control" name="signature_2up">
+                [% FOREACH sign IN bb.signature_values_2up %]
+                <option value="[% sign %]"
+                        [% IF sign == bb.signature_2up %]selected="selected"[% END %]>
+                  [% IF sign.match('-') %]
+                  [% loc('Use optimized signatures with [_1] pages each', sign) %]
+                  [% ELSIF sign == 0 %]
+                  [% loc('The whole book in as single signature') %]
+                  [% ELSE %]
+                  [% sign %]
+                  [% END %]
+                </option>
+                [% END %]
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="4up" id="schema4up"
-               class="choose-schema"
-               [% IF bb.schema == '4up' %]checked="checked"[% END %] />
-        <strong>4up</strong>:
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="4up" id="schema4up"
+                   class="choose-schema"
+                   [% IF bb.schema == '4up' %]checked="checked"[% END %] />
+            <strong>4up</strong>:
         [% loc("Exactly like 2up, but the sheets are meant to be cut
         horizontally first and then stack on each other. This way you
         can print, for example, A6 booklets on A4.") %]
-      </label>
-      <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-1.png') %]"
-             alt="4up" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-2.png') %]"
-             alt="4up" />
-        &nbsp;&nbsp;
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-3.png') %]"
-             alt="4up" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-4.png') %]"
-             alt="4up" />
-      </div>
-    </div>
-    <div id="signature-explanation-4up">
-      <div class="row">
-        <div class="col-sm-3">
-      <label for="signature_4up">
-        <strong>[% loc('Please select the signature size:') %]</strong>
-      </label>
+          </label>
+          <div class="schema-preview">
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-1.png') %]"
+                 alt="4up" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-2.png') %]"
+                 alt="4up" />
+            &nbsp;&nbsp;
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-3.png') %]"
+                 alt="4up" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-4up-4.png') %]"
+                 alt="4up" />
+          </div>
         </div>
-        <div class="col-sm-9">
-      <select id="signature_4up" class="form-control" name="signature_4up">
-        [% FOREACH sign IN bb.signature_values_4up %]
-        <option value="[% sign %]"
-                [% IF sign == bb.signature_4up %]selected="selected"[% END %]>
-          [% IF sign.match('-') %]
-          [% loc('Use optimized signatures with [_1] pages each', sign) %]
-          [% ELSIF sign == 0 %]
-          [% loc('The whole book in as single signature') %]
-          [% ELSE %]
-          [% sign %]
-          [% END %]
-        </option>
-        [% END %]
-      </select>
+        <div id="signature-explanation-4up">
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="signature_4up">
+                <strong>[% loc('Please select the signature size:') %]</strong>
+              </label>
+            </div>
+            <div class="col-sm-9">
+              <select id="signature_4up" class="form-control" name="signature_4up">
+                [% FOREACH sign IN bb.signature_values_4up %]
+                <option value="[% sign %]"
+                        [% IF sign == bb.signature_4up %]selected="selected"[% END %]>
+                  [% IF sign.match('-') %]
+                  [% loc('Use optimized signatures with [_1] pages each', sign) %]
+                  [% ELSIF sign == 0 %]
+                  [% loc('The whole book in as single signature') %]
+                  [% ELSE %]
+                  [% sign %]
+                  [% END %]
+                </option>
+                [% END %]
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="2side"
-               class="choose-schema"
-               [% IF bb.schema == '2side' %]checked="checked"[% END %] />
-        <strong>2side</strong>:
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="2side"
+                   class="choose-schema"
+                   [% IF bb.schema == '2side' %]checked="checked"[% END %] />
+            <strong>2side</strong>:
 
         [% loc("Pages are not reordered. The first sheet contains
         pages 1 and 2, the second 3 and 4, and so on, side by side.
         This is not meant to be folded.") %]
 
-      </label>
-      <div class="schema-preview schema-preview-single">
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2side-1.png') %]"
-             alt="2side" />
+          </label>
+          <div class="schema-preview schema-preview-single">
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2side-1.png') %]"
+                 alt="2side" />
 
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2side-2.png') %]"
-             alt="2side" />
-      </div>
-    </div>
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2side-2.png') %]"
+                 alt="2side" />
+          </div>
+        </div>
 
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="2x4x1"
-               class="choose-schema"
-               [% IF bb.schema == '2x4x1' %]checked="checked"[% END %] />
-        <strong>2x4x1</strong>:
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="2x4x1"
+                   class="choose-schema"
+                   [% IF bb.schema == '2x4x1' %]checked="checked"[% END %] />
+            <strong>2x4x1</strong>:
 
         [% loc("Blocks of 8 pages to be folded twice and then bound
                 together.") %]
 
-      </label>
-      <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x1-1.png') %]"
-             alt="2x4x1" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x1-2.png') %]"
-             alt="2x4x1" />
-      </div>
-    </div>
+          </label>
+          <div class="schema-preview">
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x1-1.png') %]"
+                 alt="2x4x1" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x1-2.png') %]"
+                 alt="2x4x1" />
+          </div>
+        </div>
 
 
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="2x4x2"
-               class="choose-schema"
-               [% IF bb.schema == '2x4x2' %]checked="checked"[% END %] />
-        <strong>2x4x2</strong>:
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="2x4x2"
+                   class="choose-schema"
+                   [% IF bb.schema == '2x4x2' %]checked="checked"[% END %] />
+            <strong>2x4x2</strong>:
 
         [% loc("Blocks of 16 pages to be folded twice and then bound
                 together.") %]
 
-      </label>
-      <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-1.png') %]"
-             alt="2x4x2" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-2.png') %]"
-             alt="2x4x2" />
-        &nbsp;&nbsp;
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-3.png') %]"
-             alt="2x4x2" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-4.png') %]"
-             alt="2x4x2" />
-
-      </div>
-    </div>
-
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="1x4x2cutfoldbind"
-               class="choose-schema"
-               [% IF bb.schema == '1x4x2cutfoldbind' %]checked="checked"[% END %] />
-        <strong>1x4x2cutfoldbind</strong>:
-        [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
-      </label>
-      <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-1x4x2cutfoldbind-1.png') %]"
-             alt="1x4x2cutfoldbind" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-1x4x2cutfoldbind-2.png') %]"
-             alt="1x4x2cutfoldbind" />
-      </div>
-    </div>
-
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="1x8x2"
-               class="choose-schema"
-               [% IF bb.schema == '1x8x2' %]checked="checked"[% END %] />
-        <strong>1x8x2</strong>:
-        [% loc("Fixed 16 pages signatures on a single sheet, with triple folding.") %]
-        <a href="https://metacpan.org/pod/PDF::Imposition::Schema1x8x2">
-          [% loc("See here for more details.") %]
-        </a>
-      </label>
-      <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-1x8x2-1.png') %]"
-             alt="1x8x2" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-1x8x2-2.png') %]"
-             alt="1x8x2" />
-      </div>
-    </div>
-
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="ea4x4"
-               class="choose-schema"
-               [% IF bb.schema == 'ea4x4' %]checked="checked"[% END %] />
-        <strong>EA-4x4</strong>:
-        [% loc("Fixed 16 pages signatures on 2 sheets, with double individual folding.") %]
-        <a href="https://metacpan.org/pod/PDF::Imposition::Schemaea4x4">
-          [% loc("See here for more details.") %]
-        </a>
-      </label>
-      <div class="schema-preview">
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-1.png') %]"
-             alt="ea4x4" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-2.png') %]"
-             alt="ea4x4" />
-        &nbsp;&nbsp;
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-3.png') %]"
-             alt="ea4x4" />
-        <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-4.png') %]"
-             alt="ea4x4" />
-
-      </div>
-
-    </div>
-    <div class="radio">
-      <label>
-        <input type="radio" name="schema" value="1x1"
-               class="choose-schema"
-               [% IF bb.schema == '1x1' %]checked="checked"[% END %] />
-        <strong>1x1</strong>:
-        [% loc("One page per sheet. This is useful only if you want to add the cropmarks") %]
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label for="crop_marks">
-        <input type="checkbox" name="crop_marks" value="1" id="crop_marks"
-               [% IF bb.crop_marks %]checked="checked"[% END %]/>
-        [% loc('Add crop marks to the PDF') %]
-      </label>
-    </div>
-    <div id="cropmarks-paper-options">
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="crop_papersize">
-            <strong>[% loc('Please select the size of each page including the crop marks, before the imposing') %]</strong>
-            ([% loc('if you want to use a custom size, you need to set both width and height') %])
-
           </label>
-        </div>
-        <div class="col-sm-9">
-          <div>
-          <select id="crop_papersize" class="form-control" name="crop_papersize">
-            [% SET mypapers = bb.papersizes %]
-            [% FOREACH paper IN bb.papersize_values %]
-            <option value="[% paper %]"
-              [% IF paper == bb.crop_papersize %]selected="selected"[% END %]>
-              [% loc(mypapers.$paper) %]
-            </option>
-            [% END %]
-          </select>
-          </div>
-          <div style="margin-top: 5px">
-          [% loc('Width:') %]
-          <select name="crop_paper_width" id="crop-paper-width"
-                  class="crop-paper-select">
-            [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
-            <option value="[% page_custom_size %]"[% IF bb.crop_paper_width == page_custom_size %] selected="selected"[% END %]>
-              [% IF page_custom_size %]
-              [% page_custom_size %] mm
-              [% ELSE %]
-              [% loc('Standard') %]
-              [% END %]
-            </option>
-            [% END %]
-          </select>
-          [% loc('Height:') %]
-          <select name="crop_paper_height" id="crop-paper-height"
-                  class="crop-paper-select">
-            [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
-            <option value="[% page_custom_size %]"[% IF bb.crop_paper_height == page_custom_size %] selected="selected"[% END %]>
-              [% IF page_custom_size %]
-              [% page_custom_size %] mm
-              [% ELSE %]
-              [% loc('Standard') %]
-              [% END %]
-            </option>
-            [% END %]
-          </select>
+          <div class="schema-preview">
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-1.png') %]"
+                 alt="2x4x2" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-2.png') %]"
+                 alt="2x4x2" />
+            &nbsp;&nbsp;
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-3.png') %]"
+                 alt="2x4x2" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-2x4x2-4.png') %]"
+                 alt="2x4x2" />
+
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="crop_paper_thickness">
-            [% loc("Paper thickness (0.10 should be appropriate for common 80g/m2 paper)") %]
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="1x4x2cutfoldbind"
+                   class="choose-schema"
+                   [% IF bb.schema == '1x4x2cutfoldbind' %]checked="checked"[% END %] />
+            <strong>1x4x2cutfoldbind</strong>:
+            [% loc("Fixed signatures of 8 pages, to be cut horizontally, folded individually, and bound together.") %]
+          </label>
+          <div class="schema-preview">
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-1x4x2cutfoldbind-1.png') %]"
+                 alt="1x4x2cutfoldbind" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-1x4x2cutfoldbind-2.png') %]"
+                 alt="1x4x2cutfoldbind" />
+          </div>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="1x8x2"
+                   class="choose-schema"
+                   [% IF bb.schema == '1x8x2' %]checked="checked"[% END %] />
+            <strong>1x8x2</strong>:
+            [% loc("Fixed 16 pages signatures on a single sheet, with triple folding.") %]
+            <a href="https://metacpan.org/pod/PDF::Imposition::Schema1x8x2">
+              [% loc("See here for more details.") %]
+            </a>
+          </label>
+          <div class="schema-preview">
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-1x8x2-1.png') %]"
+                 alt="1x8x2" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-1x8x2-2.png') %]"
+                 alt="1x8x2" />
+          </div>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="ea4x4"
+                   class="choose-schema"
+                   [% IF bb.schema == 'ea4x4' %]checked="checked"[% END %] />
+            <strong>EA-4x4</strong>:
+            [% loc("Fixed 16 pages signatures on 2 sheets, with double individual folding.") %]
+            <a href="https://metacpan.org/pod/PDF::Imposition::Schemaea4x4">
+              [% loc("See here for more details.") %]
+            </a>
+          </label>
+          <div class="schema-preview">
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-1.png') %]"
+                 alt="ea4x4" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-2.png') %]"
+                 alt="ea4x4" />
+            &nbsp;&nbsp;
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-3.png') %]"
+                 alt="ea4x4" />
+            <img src="[% c.uri_for('/static/images/schema-preview/schema-ea4x4-4.png') %]"
+                 alt="ea4x4" />
+
+          </div>
+
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="schema" value="1x1"
+                   class="choose-schema"
+                   [% IF bb.schema == '1x1' %]checked="checked"[% END %] />
+            <strong>1x1</strong>:
+            [% loc("One page per sheet. This is useful only if you want to add the cropmarks") %]
           </label>
         </div>
-        <div class="col-sm-9">
-          <select id="crop_paper_thickness" class="form-control"
-                  name="crop_paper_thickness">
-            [% FOREACH thickness IN bb.paper_thickness_values %]
-            <option value="[% thickness %]"
-                    [% IF thickness == bb.crop_paper_thickness %]selected="selected"[% END %]>
-              [% thickness %]
-            </option>
-            [% END %]
-          </select>
+
+        <div class="checkbox">
+          <label for="crop_marks">
+            <input type="checkbox" name="crop_marks" value="1" id="crop_marks"
+                   [% IF bb.crop_marks %]checked="checked"[% END %]/>
+            [% loc('Add crop marks to the PDF') %]
+          </label>
+        </div>
+        <div id="cropmarks-paper-options">
+          <div class="row">
+            <div class="col-sm-3">
+              <label for="crop_papersize">
+                <strong>[% loc('Please select the size of each page including the crop marks, before the imposing') %]</strong>
+                ([% loc('if you want to use a custom size, you need to set both width and height') %])
+
+              </label>
+            </div>
+            <div class="col-sm-9">
+              <div>
+                <select id="crop_papersize" class="form-control" name="crop_papersize">
+                  [% SET mypapers = bb.papersizes %]
+                  [% FOREACH paper IN bb.papersize_values %]
+                  <option value="[% paper %]"
+                          [% IF paper == bb.crop_papersize %]selected="selected"[% END %]>
+                    [% loc(mypapers.$paper) %]
+                  </option>
+                  [% END %]
+                </select>
+              </div>
+              <div class="row mt-1">
+                <div class="col-xs-2">
+                  <label for="crop-paper-width">
+                    [% loc('Width:') %]
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <select name="crop_paper_width" id="crop-paper-width"
+                          data-prefix="crop"
+                          class="paper-select-handle form-control">
+                    [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+                    <option value="[% page_custom_size %]"
+                            [% IF bb.crop_paper_width == page_custom_size %] selected="selected"[% END %]>
+                      [% IF page_custom_size %]
+                      [% page_custom_size %] mm
+                      [% ELSE %]
+                      [% loc('Standard') %]
+                      [% END %]
+                    </option>
+                    [% END %]
+                  </select>
+                </div>
+                <div class="col-xs-2">
+                  <label for="crop-paper-height">
+                    [% loc('Height:') %]
+                  </label>
+                </div>
+                <div class="col-xs-4">
+                  <select name="crop_paper_height" id="crop-paper-height"
+                          data-prefix="crop"
+                          class="paper-select-handle form-control">
+                    [% FOREACH page_custom_size IN bb.papersizes_in_mm %]
+                    <option value="[% page_custom_size %]"
+                            [% IF bb.crop_paper_height == page_custom_size %] selected="selected"[% END %]>
+                      [% IF page_custom_size %]
+                      [% page_custom_size %] mm
+                      [% ELSE %]
+                      [% loc('Standard') %]
+                      [% END %]
+                    </option>
+                    [% END %]
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-1">
+            <div class="col-sm-3">
+              <label for="crop_paper_thickness">
+                [% loc("Paper thickness (0.10 should be appropriate for common 80g/m2 paper)") %]
+              </label>
+            </div>
+            <div class="col-sm-9">
+              <select id="crop_paper_thickness" class="form-control"
+                      name="crop_paper_thickness">
+                [% FOREACH thickness IN bb.paper_thickness_values %]
+                <option value="[% thickness %]"
+                        [% IF thickness == bb.crop_paper_thickness %]selected="selected"[% END %]>
+                  [% thickness %]
+                </option>
+                [% END %]
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkbox">
+          <label for="cover">
+            <input type="checkbox" name="cover" value="1" id="cover"
+                   [% IF bb.cover %]checked="checked"[% END %]/>
+            [% loc('Fill with blank pages before the last page if the signature is not full.') %]
+          </label>
         </div>
       </div>
-    </div>
-
-    <div class="checkbox">
-      <label for="cover">
-        <input type="checkbox" name="cover" value="1" id="cover"
-               [% IF bb.cover %]checked="checked"[% END %]/>
-        [% loc('Fill with blank pages before the last page if the signature is not full.') %]
-      </label>
-    </div>
-    </div>
     </div>
   </div>
 </div>
