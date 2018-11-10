@@ -1,5 +1,5 @@
 [% # -*- mode:html -*- %]
-<div id="bbform-included horizontal-form">
+<div id="bbform-included">
   <div class="form-group">
     <div class="btn-group" data-toggle="buttons">
       <label class="btn btn-default[% IF bb.pdf %] active[% END %]">
@@ -250,7 +250,7 @@
 
           <div class="row mt-1">
             <div class="col-xs-2">
-              <label for="areaset-width">
+              <label for="areaset-paper-width">
                 [% loc('Width:') %]
               </label>
             </div>
@@ -272,7 +272,7 @@
               </select>
             </div>
             <div class="col-xs-2">
-              <label for="areaset-height">
+              <label for="areaset-paper-height">
                 [% loc('Height:') %]
               </label>
             </div>

@@ -208,13 +208,13 @@
 
 [% IF bb.is_collection %]
 [% INCLUDE 'include/validate.tt' %]
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
    $("#bbform").validate();
 });
 </script>
 [% ELSE %]
-<script type="text/javascript">
+<script>
 $(document).ready(function(){
    $("#customtitlepage").hide();
 });
@@ -319,7 +319,7 @@ $(document).ready(function(){
 </div>
 [% END %]
 
-<script type="text/javascript" src="[% c.uri_for('/static/js/bookbuilder.js') %]"></script>
+<script src="[% c.uri_for('/static/js/bookbuilder.js') %]"></script>
 [% ELSE %]
 
 <div class="alert alert-warning">
