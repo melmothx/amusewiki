@@ -576,7 +576,7 @@
     <div id="wrap">
     <div id="main" class="container[% IF full_page_no_side_columns %]-fluid[% END %] clear-top">
       [% IF site.has_site_file('widebanner.png') %]
-      <div class="row">
+      <div class="row" role="banner">
         <div class="col-12-sm hidden-xs">
           <div class="amw-wide-banner-container">
             <a class="amw-wide-banner" href="[% c.uri_for('/') %]">
@@ -628,7 +628,7 @@
       [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
 [% END %]
 
-          <div id="widepage">
+          <div id="widepage" role="main">
             [% content %]
           </div>
           <div>&nbsp;</div>
@@ -663,7 +663,7 @@
       <div class="clearfix">&nbsp;</div>
     </div><!-- end of main -->
     </div><!-- end of wrap -->
-    <div id="footer">
+    <div id="footer" role="contentinfo">
       <div class="footer center">
         <span id="amw-footer-link-random">
           <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">[% loc('Random') %]</a>
