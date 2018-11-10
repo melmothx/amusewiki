@@ -6,6 +6,8 @@
 </div>
 [% END %]
 
+<h1 class="sr-only">[% loc('Search') %]</h1>
+
 <div class="amw-spacer-20"></div>
 
 <form id="search" method="get" action="[% c.uri_for_action('/search/index') %]">
@@ -19,6 +21,7 @@
           </span>
           <input type="text" class="form-control search-autocomplete" id="query" name="query"
                  placeholder="[% loc('E.g. some word AND title:"My Title" AND author:Author OR year:2017') %]"
+                 aria-label="[% loc('Search') %]"
                  value="[% c.req.params.query | html %]"/>
         </div>
         <small>
@@ -43,6 +46,7 @@
 
 <div class="row">
   <div class="col-xs-3">
+    <h2 class="sr-only">[% loc('Search filters') %]</h2>
     <div id="facet-box-sorting-dropdown" class="form-group">
       <label for="xapian-sort" class="control-label">
         [% loc('Sorting:') %]
@@ -81,7 +85,8 @@
     [% FOREACH facet IN facets %]
     [% IF facet.facets.size %]
       <div id="facet-box-[% facet.name %]">
-    <h5><strong>[% facet.label | html %]</strong></h5>
+        <fieldset>
+          <legend class="amw-facet-title">[% facet.label | html %]</legend>
     [% FOREACH checkbox IN facet.facets %]
     <div class="checkbox">
       <label>
@@ -93,6 +98,7 @@
       </label>
     </div>
     [% END %]
+        </fieldset>
       </div>
     [% END %]
     [% END %]
@@ -109,6 +115,7 @@
       <span class="fa fa-spinner fa-spin fa-3x fa-fw">
       </span>
     </div>
+    <h2 class="sr-only">[% loc("Search results") %]</h2>
     <div id="xapian-results-container">
       <div id="xapian-results">
         [% IF texts.count %]

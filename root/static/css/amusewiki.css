@@ -352,3 +352,10 @@ ul.ui-autocomplete {
 .mt-1 {
     margin-top: 1em;
 }
+
+legend.amw-facet-title {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
