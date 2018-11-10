@@ -612,6 +612,7 @@ sub bookbuilder {
     my $bb = AmuseWikiFarm::Archive::BookBuilder->new(site => $self->site,
                                                       is_single_file => 1,
                                                       single_file_extension => $self->extension,
+                                                      custom_format_id => $self->code,
                                                      );
     foreach my $accessor ($bb->profile_methods) {
         my $column = 'bb_' . $accessor;
@@ -778,28 +779,25 @@ sub is_slides {
     return shift->bb_format eq 'slides';
 }
 
+sub code {
+    return 'c' . shift->custom_formats_id;
+}
+
 sub tex_extension {
     my $self = shift;
     my $code = $self->custom_formats_id;
-    return "c${code}.tex";
+    return $self->code . '.tex';
 }
 
 sub extension {
     my $self = shift;
-    my $code = $self->custom_formats_id;
-    my $format = $self->bb_format;
-    if ($self->is_epub) {
-        return "c${code}.epub";
-    }
-    else {
-        return "c${code}.pdf";
-    }
+    return $self->code . ( $self->is_epub ? ".epub" : ".pdf" );
 }
 
 sub extensions {
     my $self = shift;
-    my $code = $self->custom_formats_id;
-    my @exts = map { "c" . $code . "." . $_ } (qw/epub pdf tex/);
+    my $code = $self->code;
+    my @exts = map { $code . "." . $_ } (qw/epub pdf tex/);
     if (my $alias = $self->valid_alias) {
         push @exts, $alias;
     }
