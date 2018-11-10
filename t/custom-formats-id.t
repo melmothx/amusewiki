@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 6;
+use Test::More tests => 10;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -30,7 +30,14 @@ $site->update({
                pdf => 1,
               });
 $site->check_and_update_custom_formats;
-my $cf_code = $site->custom_formats->search({ format_alias => 'pdf' })->first->code;
+my $cf = $site->custom_formats->search({ format_alias => 'pdf' })->first;
+$cf->update({
+             bb_areaset_height => '40',
+             bb_areaset_width => '40',
+             bb_tex_tolerance => '800',
+             bb_tex_emergencystretch => '50',
+            });
+my $cf_code = $cf->code;
 my $marker = "FORMAT ID CORRECTLY PASSED $cf_code";
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
@@ -64,4 +71,8 @@ run_all_jobs($schema);
     $mech->get_ok($base . '.' . $cf_code . '.tex');
     $mech->content_contains($marker);
     $mech->content_lacks('% No marker found.');
+    $mech->content_contains('tolerance=800');
+    $mech->content_contains('\\setlength{\\emergencystretch}{50pt}');
+    $mech->content_contains('\\setlength{\\emergencystretch}{50pt}');
+    $mech->content_contains('areaset[current]{40mm}{40mm}');
 }
