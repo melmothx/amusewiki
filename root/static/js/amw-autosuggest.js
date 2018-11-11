@@ -10,7 +10,6 @@ $('input.search-autocomplete').autocomplete({
             },
             success: function(data) {
                 res($.map(data, function(item) {
-                    console.log(item);
                     var label = $($.parseHTML(item.title)).text();
                     if (item.author) {
                         label = label + ' - ' + $($.parseHTML(item.author)).text();
@@ -27,7 +26,6 @@ $('input.search-autocomplete').autocomplete({
     minLength: 2,
     delay: 200,
     select: function(event, ui) {
-        console.log(ui.item.link);
         window.location.href = ui.item.link;
     },
     position: { my: "left top", at: "left bottom" }
