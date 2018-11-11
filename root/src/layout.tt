@@ -705,37 +705,7 @@
       [% END %]
       </div>
     </div>
-    <script>
-    $('input.search-autocomplete').autocomplete({
-        source: function(req, res) {
-            $.ajax({
-                url: "/search",
-                dataType: "json",
-                data: {
-                    query: req.term,
-                    partial: 1,
-                    fmt: "json"
-                },
-                success: function(data) {
-                    res($.map(data, function(item) {
-                        return {
-                            label: $($.parseHTML(item.title)).text(),
-                            value: '',
-                            link: item.url
-                        };
-                    }));
-                }
-            });
-        },
-        minLength: 2,
-        delay: 200,
-        select: function(event, ui) {
-            console.log(ui.item.link);
-            window.location.href = ui.item.link;
-        },
-        position: { my: "left top", at: "left bottom" }
-    });
-    </script>
+    <script src="[% c.uri_for('/static/js/amw-autosuggest.js') %]"></script>
   </body>
 </html>
 
