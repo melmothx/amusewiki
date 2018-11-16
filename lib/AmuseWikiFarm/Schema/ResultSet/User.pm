@@ -21,7 +21,7 @@ AmuseWikiFarm::Schema::ResultSet::User - Users resultset
 Return a validated hashrefs with these params: username, email,
 password if the constraint passes.
 
-Accepted paramaters:
+Accepted parameters:
 
 =over 4
 

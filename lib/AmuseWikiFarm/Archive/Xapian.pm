@@ -499,7 +499,7 @@ sub _do_faceted_search {
 
     my $query = $args{query} ? $qp->parse_query($args{query}, $flags) : Search::Xapian::Query->MatchAll;
 
-    # I belive this should be nuked, replaced by the checkboxes + help
+    # I believe this should be nuked, replaced by the checkboxes + help
     # for the prefixes.
     # my @additional;
     # foreach my $field (@prefixes) {

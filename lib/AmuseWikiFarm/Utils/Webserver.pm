@@ -569,7 +569,7 @@ sub _insert_server_stanza {
     my $amwbase = $self->instance_name;
 
     # key and cert are not guaranteed to be readable by the user
-    # running the app. So, if explicitely set, use them.
+    # running the app. So, if explicitly set, use them.
 
     unless (($site->ssl_key && $site->ssl_chained_cert) or
             (-f $site_key and -f $site_crt)) {

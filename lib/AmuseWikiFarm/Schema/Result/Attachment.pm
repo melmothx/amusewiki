@@ -233,7 +233,7 @@ A standard image
 
 =item special_image
 
-An images beloging to a special text
+An images belonging to a special text
 
 =item upload_pdf
 

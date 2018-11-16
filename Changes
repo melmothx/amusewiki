@@ -61,7 +61,7 @@ if in doubt.
 
 2.221 2018-06-10
 
- - Add nl tranlations
+ - Add nl translations
 
 2.220 2018-05-13
 
@@ -475,7 +475,7 @@ testing to be consolidated.
  - Save the bookbuilder sessions in the database
  - Implement bookbuilder session resuming by token
 
-If you want to reindex the texts with the new algoritm, please run
+If you want to reindex the texts with the new algorithm, please run
 
  amusewiki-bootstrap-archive --xapian
 
@@ -715,7 +715,7 @@ details.
 
 1.602 2016-01-31
 
-  - Added option to the admin for hightlight.js configuration (select
+  - Added option to the admin for highlight.js configuration (select
     the languages you are interested in).
   - Fix to avoid jobber's crash when the db connection goes away in
     the wrong moment.

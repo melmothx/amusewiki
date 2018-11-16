@@ -152,7 +152,7 @@ sub create :Chained('user') :Args(0) {
     if ($params{create}) {
         # check if all the fields are in place
         my %to_validate;
-        log_debug { "Validating the paramaters" };
+        log_debug { "Validating the parameters" };
         my $missing = 0;
         foreach my $f (qw/username password passwordrepeat
                           email emailrepeat/) {

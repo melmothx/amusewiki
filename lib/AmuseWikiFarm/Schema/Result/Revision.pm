@@ -426,7 +426,7 @@ sub attached_files_paths {
 
 =head2 edit(\$string)
 
-Edit the current revision. It's reccomended to pass a reference to a
+Edit the current revision. It's recommended to pass a reference to a
 scalar or an hashref with the string in the "body" key to avoid large
 copying, but a scalar will do the same.
 
