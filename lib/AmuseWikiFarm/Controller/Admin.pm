@@ -158,6 +158,12 @@ sub get_jobs :Chained('root') :PathPart('jobs') :CaptureArgs(0) {
 
 # chaining here in the role AmuseWikiFarm::Role::Controller::Jobs;
 
+sub monitor :Chained('get_jobs') :PathPart('monitor') :Args(0) {
+    my ($self, $c) = @_;
+    $c->stash(json => $c->stash->{all_jobs}->monitoring_data);
+    $c->detach($c->view('JSON'));
+}
+
 sub create_user :Chained('root') :PathPart('newuser') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;

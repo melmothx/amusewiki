@@ -1,8 +1,13 @@
 [%# -*- mode:html -*- %]
 
-<h2>[% page_title | html %]</h2>
+<div class="center">
+  <div class="page-header">
+    <h1>[% page_title | html %]</h1>
+  </div>
+</div>
 
-<div>
+<div class="row">
+  <div class="col-sm-9">
   <form id="search_jobs" method="get" action="[% c.uri_for_action('/admin/jobs') %]"
         class="form-horizontal" role="form">
     <div class="form-group">
@@ -23,10 +28,38 @@
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit">[% loc('Search') %]</button>
           </span>
+        </div>
       </div>
-
     </div>
   </form>
+  </div>
+  <div class="col-sm-3" id="monitoring-box">
+    <table class="table table-bordered table-condensed">
+      <tr>
+        <th>[% loc('pending') %]</th>
+        <th>[% loc('completed') %]</th>
+        <th>[% loc('failed') %]</th>
+        <th>[% loc('taken') %]</th>
+      </tr>
+      <tr>
+        <td class="monitor-status-count-pending">0</td>
+        <td class="monitor-status-count-completed">0</td>
+        <td class="monitor-status-count-failed">0</td>
+        <td class="monitor-status-count-taken">0</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="monitor-status-jobber text-center">
+          <i class="monitor-status-jobber-ok fa fa-check text-success"></i>
+          <i class="monitor-status-jobber-not-ok fa fa-exclamation-triangle text-danger"></i>
+          [% loc('Age:') %]
+          <span class="monitor-last-success-job"></span>
+          [% loc('minutes') %]
+        </td>
+        <td class="monitor-active-jobs text-center">
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 
 <div class="table-responsive">
@@ -252,3 +285,48 @@
 </div>
 
 [% INCLUDE 'include/pagination.tt' %]
+
+<script>
+ function update_monitor() {
+     $.ajax({
+         url: '/admin/jobs/monitor',
+         success: function(data) {
+             console.log(data);
+             var statuses = ["pending", "taken", "completed", "failed"];
+             for (var i = 0; i < statuses.length; i++) {
+                 var stat = statuses[i];
+                 $('.monitor-status-count-' + stat).text(data.status[stat]);
+             }
+             if (data.jobber_ok) {
+                 $('.monitor-status-jobber-not-ok').hide();
+                 $('.monitor-status-jobber-ok').show();
+             }
+             else {
+                 $('.monitor-status-jobber-not-ok').show();
+                 $('.monitor-status-jobber-ok').hide();
+             }
+             $('.monitor-last-success-job').text(data.last_completed_job);
+             var active = data.active_jobs;
+             var active_box = $('.monitor-active-jobs');
+             active_box.children().remove();
+             active_box.hide();
+             for (var i = 0; i < active.length; i++) {
+                 active_box.show();
+                 var url = active[i];
+                 active_box.append(
+                     $('<a/>', { href: url }).append(
+                         $('<i/>', { class: "fa fa-cog fa-spin fa-fw" })
+                     )
+                 );
+             }
+             setTimeout('update_monitor()', 5000);
+         },
+         error: function(data) {
+             $('#monitoring-box').remove();
+         }
+     });
+ }
+ $(document).ready(function() {
+     update_monitor();
+ });
+</script>
