@@ -1448,7 +1448,7 @@ sub compile {
                          # the following is required to avoid the
                          # laziness of the compiler to recycle the
                          # existing .tex when there is only one text,
-                         # so options will be ingnored.
+                         # so options will be ignored.
                          tex => $self->pdf,
                          sl_tex => $self->slides,
                          sl_pdf => $self->slides,

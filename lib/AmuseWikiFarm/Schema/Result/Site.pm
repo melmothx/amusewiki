@@ -1524,7 +1524,7 @@ sub import_text_from_html_params {
     my $uri = $params->{uri};
     die "uri not set!" unless $uri;
 
-    # the first thing we do is to assing a path and create a revision in the db
+    # the first thing we do is to assign a path and create a revision in the db
     my $pubdate = str2time($params->{pubdate}) || time();
     my $pubdt = DateTime->from_epoch(epoch => $pubdate);
     $params->{pubdate} = $pubdt->iso8601;
@@ -1810,7 +1810,7 @@ sub compile_and_index_files {
                       if $cf->remove_stale_files($indexed);
                 }
                 foreach my $cf (@active_cfs) {
-                    # the standard compilation nuked the standar formats, so we
+                    # the standard compilation nuked the standard formats, so we
                     # have to restore them, preserving the TS. Then we
                     # will rebuild them in the next job.
                     $cf->install_aliased_file($indexed);
@@ -3606,7 +3606,7 @@ sub xapian_reindex_all {
         log_info { "moving $dest to $backup and  $newdir to $dest" };
         try {
             $backup->remove_tree({ verbose => 1 }) if $backup->exists;
-            # please note that this is not atomical, but it should be
+            # please note that this is not atomic, but it should be
             # really fast as it's a rename. I think we can afford a
             # couple of failed requests. At least for now.
             $dest->move($backup) if $dest->exists;

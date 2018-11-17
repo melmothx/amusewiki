@@ -1050,7 +1050,7 @@ sub text_html_structure {
     if ($force or !$self->text_parts->count) {
         eval {
             my $parts = $self->_parse_text_structure;
-            Dlog_debug { "Retriving text structure: $_" } $parts;
+            Dlog_debug { "Retrieving text structure: $_" } $parts;
             my $order = 0;
             $self->text_parts->delete;
             my $total_size = 0;
@@ -1093,7 +1093,7 @@ sub _parse_text_structure {
                 toc_index => 0,
                });
 
-    # Text::Amuse doens't care at all what it returns from
+    # Text::Amuse doesn't care at all what it returns from
     # raw_html_toc. It just scans the pieces returned by as_splat_html
     # like this: for (my $i = 0; $i < @chunks; $i++) {
     # push @out, $chunks[$i] if $partials->{$i};

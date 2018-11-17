@@ -102,7 +102,7 @@ amusewiki (2.201-1+amw1) unstable; urgency=medium
 
 amusewiki (2.200-3+amw1) unstable; urgency=medium
 
-  * Rebuilt with serach layout fix
+  * Rebuilt with search layout fix
 
  -- Marco Pessotto <melmothx@gmail.com>  Wed, 21 Mar 2018 09:40:10 +0100
 
@@ -606,7 +606,7 @@ amusewiki (1.820-1) unstable; urgency=medium
 
 amusewiki (1.811-4) unstable; urgency=medium
 
-  * French tranlation in
+  * French translation in
 
  -- Marco Pessotto <melmothx@gmail.com>  Sat, 07 May 2016 13:36:54 +0200
 

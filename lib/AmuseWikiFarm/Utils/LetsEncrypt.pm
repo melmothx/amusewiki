@@ -228,7 +228,7 @@ sub process {
     if (-f $self->key and -f $self->csr) {
         if ($self->fetch and -f $self->fullchain) {
             $self->_backup_and_install;
-            # create an hidded directory
+            # create an hidden directory
             return 1;
         }
     }

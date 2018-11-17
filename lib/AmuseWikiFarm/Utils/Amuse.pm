@@ -43,7 +43,7 @@ AmuseWikiFarm::Utils::Amuse - amusewiki utilities
 =head2 muse_file_info($file, $root)
 
 Scan the header of the file $file, considering its root $root, and
-collect all the relevant informations, returning them as a hashref. It
+collect all the relevant information, returning them as a hashref. It
 includes also the file attributes, like timestamp, paths, etc.
 
 The result is suitable to feed the database, so see
@@ -386,7 +386,7 @@ sub transliteration_table  {
    'ö' => 'o', 'Ö' => 'o',
    # german
    'ß' => 'ss',
-   # other northen
+   # other northern
    'ø' => 'o',  'õ' => 'o', 
    'Ø' => 'o',  'Õ' => 'o', 
    # croatian/serbian
@@ -516,7 +516,7 @@ sub muse_naming_algo {
     }
 }
 
-# 2000 requests for a long path with no hypens => 0.2 seconds. 0.16 for a short one
+# 2000 requests for a long path with no hyphens => 0.2 seconds. 0.16 for a short one
 
 =head2 muse_get_full_path($filename);
 
@@ -631,7 +631,7 @@ sub _parse_topic_or_author {
 =head2 muse_filename_valid($uri)
 
 Return true (the uri itself) if the passed uri is valid. Valid names
-are lowercased and digits, with optionals hyphens inside the name, and
+are lowercase and digits, with optionals hyphens inside the name, and
 with a maximum length of 95 characters.
 
 Consecutive dashes are not checked, but at least guarantees the

@@ -21,7 +21,7 @@ sub {
         print <<HELP;
 
 We tried to rebuild all the files from april 2017 up to today in the
-sites where nocoverpage is set to true (which was too agressive and
+sites where nocoverpage is set to true (which was too aggressive and
 basically always prevented a proper coverpage when it was supposed to
 do so only if the table of contents was missing). This failed
 (probably this is a multistep upgrade). You are suggested to initiate

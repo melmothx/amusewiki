@@ -72,7 +72,7 @@ sub mirror_site {
         print <$lst>;
         close $lst;
         system(wget => '-a', $log, '-x', '-N', '-i', $urls, @wget_args)
-          and warn "Errors downloadning $urls, check $log";
+          and warn "Errors downloading $urls, check $log";
     }
     chdir $gitdir or die;
     if ($git) {
