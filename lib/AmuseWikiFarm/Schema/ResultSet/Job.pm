@@ -422,6 +422,7 @@ sub monitoring_data {
                active_jobs => [],
                jobber_ok => 1,
                stuck_jobs => $self->stuck_jobs->count,
+               last_completed_job => 0,
               };
     foreach my $r ($self->job_status_count->all) {
         $out->{status}->{$r->{status}} = $r->{job_count};
@@ -431,18 +432,17 @@ sub monitoring_data {
                                              $j->site->canonical_url,
                                              $j->id);
     }
+    # check if the latest completed job is fresh, otherwise signal
+    # the fail, as we are stuck
+    my $last = $self->completed_jobs->search(undef, {
+                                                     order_by => { -desc => 'completed'},
+                                                     rows => 1,
+                                                    })->first;
+    if ($last) {
+        $out->{last_completed_job} = int((time() - $last->completed->epoch) / 60);
+    }
     if ($out->{status}->{pending}) {
-        # check if the latest completed job is fresh, otherwise signal
-        # the fail, as we are stuck
-        my $last = $self->completed_jobs->search(undef, {
-                                                             order_by => { -desc => 'completed'},
-                                                             rows => 1,
-                                                            })->first;
-        my $ref = time() - (10 * 60); # ten minutes
-        if ($last and $last->completed->epoch > $ref) {
-            $out->{last_completed_job} = $last->completed->iso8601;
-        }
-        else {
+        if ($out->{last_completed_job} > 10) {
             $out->{jobber_ok} = 0;
         }
     }
