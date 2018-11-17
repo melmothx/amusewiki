@@ -37,23 +37,25 @@
     <table class="table table-bordered table-condensed">
       <tr>
         <th>[% loc('pending') %]</th>
-        <th>[% loc('taken') %]</th>
         <th>[% loc('completed') %]</th>
         <th>[% loc('failed') %]</th>
+        <th>[% loc('taken') %]</th>
       </tr>
       <tr>
         <td class="monitor-status-count-pending">0</td>
-        <td class="monitor-status-count-taken">0</td>
         <td class="monitor-status-count-completed">0</td>
         <td class="monitor-status-count-failed">0</td>
+        <td class="monitor-status-count-taken">0</td>
       </tr>
       <tr>
-        <td colspan="4" class="monitor-status-jobber text-center">
+        <td colspan="3" class="monitor-status-jobber text-center">
           <i class="monitor-status-jobber-ok fa fa-check text-success"></i>
           <i class="monitor-status-jobber-not-ok fa fa-exclamation-triangle text-danger"></i>
           [% loc('Age:') %]
           <span class="monitor-last-success-job"></span>
           [% loc('minutes') %]
+        </td>
+        <td class="monitor-active-jobs text-center">
         </td>
       </tr>
     </table>
@@ -304,6 +306,19 @@
                  $('.monitor-status-jobber-ok').hide();
              }
              $('.monitor-last-success-job').text(data.last_completed_job);
+             var active = data.active_jobs;
+             var active_box = $('.monitor-active-jobs');
+             active_box.children().remove();
+             active_box.hide();
+             for (var i = 0; i < active.length; i++) {
+                 active_box.show();
+                 var url = active[i];
+                 active_box.append(
+                     $('<a/>', { href: url }).append(
+                         $('<i/>', { class: "fa fa-cog fa-spin fa-fw" })
+                     )
+                 );
+             }
              setTimeout('update_monitor()', 5000);
          },
          error: function(data) {
@@ -311,7 +326,7 @@
          }
      });
  }
-         $(document).ready(function() {
-             update_monitor();
-         });
+ $(document).ready(function() {
+     update_monitor();
+ });
 </script>
