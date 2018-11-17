@@ -4,13 +4,14 @@ use strict;
 use warnings;
 
 use utf8;
-use Test::More tests => 37;
+use Test::More tests => 48;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
+use Data::Dumper::Concise;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0jobscon0');
@@ -30,6 +31,27 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 my $other_id = $schema->resultset('Site')->find('0blog0')->jobs->enqueue(testing => {})->id;
 
 my $j = $site->jobs->enqueue(testing => {});
+
+{
+    is $schema->resultset('Job')->job_status_count->first->{status}, 'pending';
+    is $schema->resultset('Job')->job_status_count->first->{job_count}, 2;
+    is $site->jobs->job_status_count->first->{job_count}, 1;
+
+    my $pj = $site->jobs->enqueue(testing => {});
+    $pj->update({ status => 'taken' });
+    my $data = $schema->resultset('Job')->monitoring_data;
+    ok scalar(@{$data->{active_jobs}}), "Found active jobs"  or diag Dumper($data);
+    ok $data->{status}->{taken}  or diag Dumper($data);
+    is $data->{stuck_jobs}, 0  or diag Dumper($data);
+    $pj->dispatch_job;
+
+    $data = $schema->resultset('Job')->monitoring_data;
+    is $data->{status}->{taken}, 0 or diag Dumper($data);
+    ok $data->{last_completed_job} or diag Dumper($data);
+    ok $data->{jobber_ok} or diag Dumper($data);
+    $pj->delete;
+}
+
 my $jid = $j->id;
 $j->dispatch_job;
 $j->update({ status => 'failed' });
@@ -82,6 +104,11 @@ ok $mech->click;
 $mech->content_contains("Job deleted");
 $mech->content_lacks("delete-job-$jid");
 $mech->content_contains("delete-job-$other_id");
+
+$mech->get_ok('/admin/jobs/monitor');
+$mech->content_contains('active_jobs');
+diag $mech->content;
+
 logout();
 
 

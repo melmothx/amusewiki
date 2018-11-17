@@ -254,6 +254,14 @@ sub pending {
                          });
 }
 
+sub taken_jobs {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search({
+                          "$me.status" => 'taken',
+                         });
+}
+
 sub build_static_indexes_jobs {
     my $self = shift;
     my $me = $self->current_source_alias;
@@ -365,7 +373,7 @@ for stale jobs (due, e.g. to a crash, or db connection failing, etc.).
 
 =cut
 
-sub fail_stale_jobs {
+sub stuck_jobs {
     my $self = shift;
     my $me = $self->current_source_alias;
     my $reftime = $self->result_source->schema->storage->datetime_parser
@@ -374,8 +382,72 @@ sub fail_stale_jobs {
                    "$me.status" => 'taken',
                    "$me.created" => { '<', $reftime },
                   })
+}
+
+sub fail_stale_jobs {
+    my $self = shift;
+    $self->stuck_jobs
       ->update({ status => 'failed',
                  errors => "Job aborted, please try again" });
 }
+
+=head2 monitoring_data
+
+A data structure describing the current jobber status.
+
+=cut
+
+sub job_status_count {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    return $self->search(undef,
+                         {
+                          result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                          columns => ["$me.status"],
+                          '+select' => [ { count => "$me.id", -as => 'job_count' } ],
+                          '+as' => [ "$me.job_count" ],
+                          group_by => ["$me.status"],
+                         });
+}
+
+sub monitoring_data {
+    my $self = shift;
+    my $out = {
+               status => {
+                          pending => 0,
+                          failed => 0,
+                          taken => 0,
+                          completed => 0,
+                         },
+               active_jobs => [],
+               jobber_ok => 1,
+               stuck_jobs => $self->stuck_jobs->count,
+              };
+    foreach my $r ($self->job_status_count->all) {
+        $out->{status}->{$r->{status}} = $r->{job_count};
+    }
+    foreach my $j ($self->taken_jobs->search(undef, { prefetch => 'site' })->all) {
+        push @{$out->{active_jobs}}, sprintf('%s/tasks/status/%s',
+                                             $j->site->canonical_url,
+                                             $j->id);
+    }
+    if ($out->{status}->{pending}) {
+        # check if the latest completed job is fresh, otherwise signal
+        # the fail, as we are stuck
+        my $last = $self->completed_jobs->search(undef, {
+                                                             order_by => { -desc => 'completed'},
+                                                             rows => 1,
+                                                            })->first;
+        my $ref = time() - (10 * 60); # ten minutes
+        if ($last and $last->completed->epoch > $ref) {
+            $out->{last_completed_job} = $last->completed->iso8601;
+        }
+        else {
+            $out->{jobber_ok} = 0;
+        }
+    }
+    return $out;
+}
+
 
 1;
