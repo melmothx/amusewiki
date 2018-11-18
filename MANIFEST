@@ -97,6 +97,8 @@ dbicdh/_source/deploy/49/001-auto-__VERSION.yml
 dbicdh/_source/deploy/49/001-auto.yml
 dbicdh/_source/deploy/5/001-auto-__VERSION.yml
 dbicdh/_source/deploy/5/001-auto.yml
+dbicdh/_source/deploy/50/001-auto-__VERSION.yml
+dbicdh/_source/deploy/50/001-auto.yml
 dbicdh/_source/deploy/6/001-auto-__VERSION.yml
 dbicdh/_source/deploy/6/001-auto.yml
 dbicdh/_source/deploy/7/001-auto-__VERSION.yml
@@ -193,6 +195,8 @@ dbicdh/MySQL/deploy/49/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/49/001-auto.sql
 dbicdh/MySQL/deploy/5/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/5/001-auto.sql
+dbicdh/MySQL/deploy/50/001-auto-__VERSION.sql
+dbicdh/MySQL/deploy/50/001-auto.sql
 dbicdh/MySQL/deploy/6/001-auto-__VERSION.sql
 dbicdh/MySQL/deploy/6/001-auto.sql
 dbicdh/MySQL/deploy/7/001-auto-__VERSION.sql
@@ -243,6 +247,7 @@ dbicdh/MySQL/upgrade/45-46/001-auto.sql
 dbicdh/MySQL/upgrade/46-47/001-auto.sql
 dbicdh/MySQL/upgrade/47-48/001-auto.sql
 dbicdh/MySQL/upgrade/48-49/001-auto.sql
+dbicdh/MySQL/upgrade/49-50/001-auto.sql
 dbicdh/MySQL/upgrade/5-6/001-auto.sql
 dbicdh/MySQL/upgrade/6-7/001-auto.sql
 dbicdh/MySQL/upgrade/7-8/001-auto.sql
@@ -336,6 +341,8 @@ dbicdh/PostgreSQL/deploy/49/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/49/001-auto.sql
 dbicdh/PostgreSQL/deploy/5/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/5/001-auto.sql
+dbicdh/PostgreSQL/deploy/50/001-auto-__VERSION.sql
+dbicdh/PostgreSQL/deploy/50/001-auto.sql
 dbicdh/PostgreSQL/deploy/6/001-auto-__VERSION.sql
 dbicdh/PostgreSQL/deploy/6/001-auto.sql
 dbicdh/PostgreSQL/deploy/7/001-auto-__VERSION.sql
@@ -386,6 +393,7 @@ dbicdh/PostgreSQL/upgrade/45-46/001-auto.sql
 dbicdh/PostgreSQL/upgrade/46-47/001-auto.sql
 dbicdh/PostgreSQL/upgrade/47-48/001-auto.sql
 dbicdh/PostgreSQL/upgrade/48-49/001-auto.sql
+dbicdh/PostgreSQL/upgrade/49-50/001-auto.sql
 dbicdh/PostgreSQL/upgrade/5-6/001-auto.sql
 dbicdh/PostgreSQL/upgrade/6-7/001-auto.sql
 dbicdh/PostgreSQL/upgrade/7-8/001-auto.sql
@@ -479,6 +487,8 @@ dbicdh/SQLite/deploy/49/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/49/001-auto.sql
 dbicdh/SQLite/deploy/5/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/5/001-auto.sql
+dbicdh/SQLite/deploy/50/001-auto-__VERSION.sql
+dbicdh/SQLite/deploy/50/001-auto.sql
 dbicdh/SQLite/deploy/6/001-auto-__VERSION.sql
 dbicdh/SQLite/deploy/6/001-auto.sql
 dbicdh/SQLite/deploy/7/001-auto-__VERSION.sql
@@ -529,6 +539,7 @@ dbicdh/SQLite/upgrade/45-46/001-auto.sql
 dbicdh/SQLite/upgrade/46-47/001-auto.sql
 dbicdh/SQLite/upgrade/47-48/001-auto.sql
 dbicdh/SQLite/upgrade/48-49/001-auto.sql
+dbicdh/SQLite/upgrade/49-50/001-auto.sql
 dbicdh/SQLite/upgrade/5-6/001-auto.sql
 dbicdh/SQLite/upgrade/6-7/001-auto.sql
 dbicdh/SQLite/upgrade/7-8/001-auto.sql
@@ -846,6 +857,8 @@ root/static/images/fontpreview/Alegreya-Sans.pdf
 root/static/images/fontpreview/Alegreya-Sans.png
 root/static/images/fontpreview/Alegreya.pdf
 root/static/images/fontpreview/Alegreya.png
+root/static/images/fontpreview/Amiri.pdf
+root/static/images/fontpreview/Amiri.png
 root/static/images/fontpreview/Anonymous-Pro.pdf
 root/static/images/fontpreview/Anonymous-Pro.png
 root/static/images/fontpreview/Antykwa-Poltawskiego.pdf
@@ -874,8 +887,12 @@ root/static/images/fontpreview/DejaVu-Sans-Mono.pdf
 root/static/images/fontpreview/DejaVu-Sans-Mono.png
 root/static/images/fontpreview/DejaVu-Sans.pdf
 root/static/images/fontpreview/DejaVu-Sans.png
+root/static/images/fontpreview/DejaVu-Serif.pdf
+root/static/images/fontpreview/DejaVu-Serif.png
 root/static/images/fontpreview/Fira-Sans.pdf
 root/static/images/fontpreview/Fira-Sans.png
+root/static/images/fontpreview/FreeSerif.pdf
+root/static/images/fontpreview/FreeSerif.png
 root/static/images/fontpreview/Gentium-Book-Basic.pdf
 root/static/images/fontpreview/Gentium-Book-Basic.png
 root/static/images/fontpreview/Iwona.pdf
@@ -902,6 +919,8 @@ root/static/images/fontpreview/PT-Serif.pdf
 root/static/images/fontpreview/PT-Serif.png
 root/static/images/fontpreview/Rubik.pdf
 root/static/images/fontpreview/Rubik.png
+root/static/images/fontpreview/Scheherazade.pdf
+root/static/images/fontpreview/Scheherazade.png
 root/static/images/fontpreview/Source-Sans-Pro.pdf
 root/static/images/fontpreview/Source-Sans-Pro.png
 root/static/images/fontpreview/Space-Mono.pdf
@@ -992,6 +1011,7 @@ root/static/images/toc.png
 root/static/images/zip.png
 root/static/js/amuse.js
 root/static/js/amw-anchors.js
+root/static/js/amw-autosuggest.js
 root/static/js/amw-batch-upload.js
 root/static/js/amw-diff.js
 root/static/js/amw-extimg.js
@@ -1291,6 +1311,7 @@ t/category-hiding.t
 t/category-sorting.t
 t/cf-aliases-2.t
 t/cf-aliases-3.t
+t/cf-scheduling.t
 t/cgit-proxy.t
 t/cleanups.t
 t/collation-index.t
@@ -1323,6 +1344,7 @@ t/controller_Utils.t
 t/crash-on-loc.t
 t/css-loading.t
 t/custom-formats-aliases.t
+t/custom-formats-id.t
 t/custom-formats.t
 t/custom-sorting-sku-116.t
 t/custom-templates.t

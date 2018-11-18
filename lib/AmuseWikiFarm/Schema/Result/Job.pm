@@ -599,7 +599,8 @@ sub dispatch_job_rebuild {
                 }
                 # this is relatively fast as we already have the
                 # formats built.
-                $site->compile_and_index_files([ $text ], $logger);
+                # But still, instruct it that we already have the custom formats.
+                $site->compile_and_index_files([ $text ], $logger, skip_custom_formats => 1);
                 return $text->full_uri;
             }
             else {

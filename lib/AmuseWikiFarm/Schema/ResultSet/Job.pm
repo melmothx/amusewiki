@@ -439,7 +439,7 @@ sub monitoring_data {
                                                      rows => 1,
                                                     })->first;
     if ($last) {
-        $out->{last_completed_job} = int((time() - $last->completed->epoch) / 60);
+        $out->{last_completed_job} = 1 + int((time() - $last->completed->epoch) / 60);
     }
     if ($out->{status}->{pending}) {
         if ($out->{last_completed_job} > 10) {
