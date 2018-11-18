@@ -156,7 +156,7 @@ foreach my $job (qw/rebuild reindex rebuild reindex/) {
     is $test_j->status, 'completed';
     foreach my $cf ($site->custom_formats->standards) {
         # and this fails on rebuild, because the compilation nuked them
-        $mech->get_ok($title->full_uri . '.' . $cf->valid_alias);
+        $mech->get_ok($title->full_uri . '.' . $cf->valid_alias) or die;
     }
     while (my $j = $site->jobs->dequeue) {
         $j->dispatch_job;

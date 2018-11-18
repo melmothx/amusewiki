@@ -694,6 +694,12 @@ sub save_canonical_from_aliased_file {
             log_error { "Couldn't copy $src to $dest $_" };
         };
     }
+    elsif ($src->exists and $dest->exists) {
+        log_debug { "Nothing to do $src existing and $dest exists" }
+    }
+    else {
+        log_error { "$src doesn't exist" };
+    }
 }
 
 sub compile {

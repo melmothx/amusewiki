@@ -1761,7 +1761,7 @@ sub compile_and_index_files {
     my (@active_cfs, @inactive_cfs);
     foreach my $cf ($self->custom_formats) {
         if ($cf->active) {
-            push @active_cfs, $cf unless $opts{skip_custom_formats};
+            push @active_cfs, $cf;
         }
         else {
             push @inactive_cfs, $cf;
@@ -1809,11 +1809,13 @@ sub compile_and_index_files {
                     $logger->("Removed inactive format " . $cf->format_name . "\n")
                       if $cf->remove_stale_files($indexed);
                 }
+              CUSTOMFORMAT:
                 foreach my $cf (@active_cfs) {
                     # the standard compilation nuked the standard formats, so we
                     # have to restore them, preserving the TS. Then we
                     # will rebuild them in the next job.
                     $cf->install_aliased_file($indexed);
+                    next CUSTOMFORMAT if $opts{skip_custom_formats};
                     if ($cf->needs_compile($indexed)) {
                         my $job = $self->jobs->build_custom_format_add({
                                                                         id => $indexed->id,
