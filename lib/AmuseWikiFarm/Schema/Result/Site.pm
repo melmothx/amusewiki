@@ -1755,13 +1755,13 @@ sub get_compiler {
 }
 
 sub compile_and_index_files {
-    my ($self, $files, $logger) = @_;
+    my ($self, $files, $logger, %opts) = @_;
     $logger ||= sub { warn $_[0] };
     my $compiler = $self->get_compiler($logger);
     my (@active_cfs, @inactive_cfs);
     foreach my $cf ($self->custom_formats) {
         if ($cf->active) {
-            push @active_cfs, $cf;
+            push @active_cfs, $cf unless $opts{skip_custom_formats};
         }
         else {
             push @inactive_cfs, $cf;
