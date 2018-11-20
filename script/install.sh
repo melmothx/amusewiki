@@ -17,8 +17,12 @@ for command in perl cpanm fc-cache convert gm update-mime-database xapian-check 
             echo "NO, please install xapian and its utils"
         elif [ $command = 'make' ]; then
             echo "NO, please install build essential utils"
+        elif [ $command = 'convert']; then
+            echo "NO, please install imagemagick"
         elif [ $command = 'gm' ]; then
             echo "NO, please install graphicsmagick"
+        elif [ $command = 'fc-cache' ]; then
+            echo "NO, please install fontconfig"
         else
             echo "NO, please install $command"
         fi
