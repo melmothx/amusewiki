@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "POT-Creation-Date: 2014-03-06 10:16+0100\n"
-"PO-Revision-Date: 2018-07-28 14:59+0200\n"
-"Last-Translator: Marco <melmothx@gmail.com>\n"
+"PO-Revision-Date: 2018-11-21 02:22+0300\n"
+"Last-Translator: Alexander <ilabdsf@gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -158,6 +158,9 @@ msgstr ""
 "После подтверждения изменения, оно появится под %1. Для каждого удалённого "
 "текста есть большая красная кнопка, и далее вы сможете вычистить его."
 
+msgid "Age:"
+msgstr "Прошло времени:"
+
 msgid "Alias"
 msgstr "Псевдоним"
 
@@ -259,6 +262,13 @@ msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Доступные категории тегов для заголовка"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+"Избегать переносов в последнем слове предложения (это может привести к "
+"плохому выравниванию)"
 
 msgid "Back to the text"
 msgstr "Вернуться к тексту"
@@ -399,7 +409,7 @@ msgstr "Закрыть"
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
-msgstr "Колонок для левой части страницы редакирования (из 12):"
+msgstr "Колонок для левой части страницы редакирования (из 12)"
 
 msgid "Completed"
 msgstr "Завершено"
@@ -1341,6 +1351,9 @@ msgstr "Имя"
 msgid "Network library listing screen."
 msgstr "Экран списка сетевых библиотек."
 
+msgid "Never display the cover"
+msgstr "Никогда не показывать обложку"
+
 msgid "Never generate a table of content"
 msgstr "Не создавать содержание"
 
@@ -1384,7 +1397,7 @@ msgid "No result found!"
 msgstr "Ничего не найдено!"
 
 msgid "No revisions to show"
-msgstr "Нет редакций для показа"
+msgstr "Нет правок для показа"
 
 msgid "No text found!"
 msgstr "Текст не найден!"
@@ -1530,6 +1543,9 @@ msgstr "Параграфы"
 
 msgid "Part"
 msgstr "Часть"
+
+msgid "Part and chapter. If one side document: part."
+msgstr "Часть и глава. Если документ односторонний: часть."
 
 msgid "Part, for larger books only"
 msgstr "Часть (только для больших текстов)"
@@ -1801,7 +1817,7 @@ msgid "RSS aggregator"
 msgstr "RSS-агрегатор"
 
 msgid "RSS feed"
-msgstr "Лента RSS"
+msgstr "RSS-лента"
 
 msgid "Random"
 msgstr "Случайный текст"
@@ -1851,7 +1867,7 @@ msgid "Recheck"
 msgstr "Повторная проверка"
 
 msgid "Redirections"
-msgstr "Перенаправление"
+msgstr "Перенаправления"
 
 msgid "Refresh and apply filters"
 msgstr "Перезагрузить и применить фильтры"
@@ -1971,6 +1987,9 @@ msgstr "Сохранена конфигурация «%1»"
 msgid "Search"
 msgstr "Поиск"
 
+msgid "Search filters"
+msgstr "Поисковые фильтры"
+
 msgid "Search results"
 msgstr "Результаты поиска"
 
@@ -2011,19 +2030,19 @@ msgid "Separate header fields"
 msgstr "Разделить поля шапки"
 
 msgid "Session sharing"
-msgstr "Разделение сессий"
+msgstr "Обмен сессиями"
 
 msgid "Set a date in the future if you want it deferred."
 msgstr "Установите дату, чтобы текст опубликовался позже."
 
 msgid "Show cheatsheet"
-msgstr "Показать шпаргалку"
+msgstr "Показывать шпаргалку"
 
 msgid "Show differences in other tab"
 msgstr "Показать различия в другой вкладке"
 
 msgid "Show filters"
-msgstr "Показать фильтры"
+msgstr "Показывать фильтры"
 
 msgid "Show preview in other tab"
 msgstr "Предварительный просмотр в другой вкладке"
@@ -2114,7 +2133,7 @@ msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr "Укажите список языков через пробел, чтобы активировать их."
 
 msgid "Stale editing"
-msgstr "Устаревшие редакции"
+msgstr "Устаревшие правки"
 
 msgid "Standalone HTML (printer-friendly)"
 msgstr "HTML (подходит для печати)"
@@ -2179,6 +2198,9 @@ msgstr "Облако тегов с темами"
 
 msgid "Task"
 msgstr "Задачи"
+
+msgid "TeX options (advanced)"
+msgstr "Опции TeX (для экспертов)"
 
 msgid "Teaser"
 msgstr "Аннотация"
@@ -2948,6 +2970,9 @@ msgstr "обязательно"
 
 msgid "markup *not* interpreted"
 msgstr "разметка *не* интерпретируется"
+
+msgid "minutes"
+msgstr "минуты"
 
 msgid "new-example-uri"
 msgstr "пример-uri"
