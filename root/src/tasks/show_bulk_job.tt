@@ -54,22 +54,22 @@ function update_bulk_status() {
             var icon = $('<span>');
             if (item.status == 'pending') {
                 if (spin_first) {
-                    icon.attr("class", "fa fa-clock-o fa-spin fa-2x fw");
+                    icon.attr("class", "fa fa-clock-o fa-spin fa-2x");
                     spin_first = 0;
                 }
                 else {
-                    icon.attr("class", "fa fa-clock-o fa-2x fw");
+                    icon.attr("class", "fa fa-clock-o fa-2x");
                 }
             }
             else if (item.status == 'failed') {
-                icon.attr("class", "fa fa-exclamation-circle fa-2x fw text-danger");
+                icon.attr("class", "fa fa-exclamation-circle fa-2x text-danger");
             }
             else if (item.status == 'taken') {
-                icon.attr("class", "fa fa-cog fa-spin fa-2x fw");
+                icon.attr("class", "fa fa-cog fa-spin fa-2x");
                 spin_first = 0;
             }
             else if (item.status == 'completed') {
-                icon.attr("class", "fa fa-check-circle-o fa-2x fw text-success");
+                icon.attr("class", "fa fa-check-circle-o fa-2x text-success");
             }
             table.append($('<tr>').append(
                 $('<td>').css('text-align', 'center')

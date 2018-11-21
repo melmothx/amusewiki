@@ -123,7 +123,7 @@
         <span id="download-format-[% cformat.code %]">
           <a href="[% c.uri_for(text.full_uri) %][% cformat.ext %]" class="amw-register-stat"
              data-amw-register-stat-type="[% cformat.code %]">
-            <span class="fa [% cformat.icon %] fa-2x fa-border fw"
+            <span class="fa [% cformat.icon %] fa-2x fa-border"
                   aria-hidden="true"
                   title="[% loc(cformat.desc) %]"
                   data-toggle="tooltip" data-placement="top"
@@ -136,7 +136,7 @@
         [% IF site.cgit_integration || c.user_exists %]
       <span id="filehistory">
         <a href="[% c.uri_for(cgit_link, { showmsg => 1 }) %]" rel="nofollow">
-          <span class="fa fa-history fa-2x fa-border fw"
+          <span class="fa fa-history fa-2x fa-border"
                 aria-hidden="true"
                 title="[% loc('View history') %]"
                 data-toggle="tooltip" data-placement="top"
@@ -147,7 +147,7 @@
       [% IF c.user_exists || site.human_can_edit %]
       <span id="text-edit-button">
         <a href="[% c.uri_for(text.full_edit_uri) %]">
-          <span class="fa fa-edit fa-2x fa-border fw"
+          <span class="fa fa-edit fa-2x fa-border"
                 aria-hidden="true"
                 title="[% loc('Edit this text') %]"
                 data-toggle="tooltip" data-placement="top"
@@ -159,7 +159,7 @@
            id="add-to-bookbuilder"
            class="amw-register-stat"
            data-amw-register-stat-type="bookbuilder">
-          <span class="fa fa-book fa-2x fa-border fw"
+          <span class="fa fa-book fa-2x fa-border"
                 aria-hidden="true"
                 title="[% loc('Add this text to the bookbuilder') %]"
                 data-toggle="tooltip" data-placement="top"
@@ -170,7 +170,7 @@
            class="amw-register-stat"
            id="add-to-bookbuilder-partial"
            data-amw-register-stat-type="bookbuilder">
-          <span class="fa fa-list-alt fa-2x fa-border fw"
+          <span class="fa fa-list-alt fa-2x fa-border"
                 aria-hidden="true"
                 title="[% loc('Select individual parts for the bookbuilder') %]"
                 data-toggle="tooltip" data-placement="top"
@@ -179,7 +179,7 @@
       [% IF c.user_exists %]
       <span id="create-rebuild-job">
         <a href="[% c.uri_for(text.full_rebuild_uri) %]">
-          <span class="fa fa-refresh fa-2x fa-border fw"
+          <span class="fa fa-refresh fa-2x fa-border"
                 aria-hidden="true"
                 data-toggle="tooltip" data-placement="top"
                 title="[% loc('Rebuild the generated formats') %]"></span><span class="sr-only" >
@@ -193,7 +193,7 @@
            data-toggle="modal"
            title="[% loc('What links here') %]"
            data-target="#backlinks-modal">
-          <span class="fa fa-link fa-2x fa-border fw"></span>
+          <span class="fa fa-link fa-2x fa-border"></span>
         </a>
       </span>
       [% END %]

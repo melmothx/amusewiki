@@ -196,7 +196,7 @@
                 <div class="input-group-btn">
                   <button type="submit" class="btn btn-primary">
                     <span class="sr-only">[% loc('Search') %]</span>
-                    <span class="fa fa-search fw"></span>
+                    <span class="fa fa-search fa-fw"></span>
                   </button>
                 </div>
               </div>
@@ -208,7 +208,7 @@
                  data-toggle="modal"
                  title="[% loc('Table of Contents') %]"
                  data-target="#myModal">
-                <span class="fa fa-list text-primary fw"></span>
+                <span class="fa fa-list text-primary fa-fw"></span>
                 <span class=" visible-xs-inline">
                   [% loc('Table of Contents') %]
                 </span>
@@ -218,7 +218,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('texts by authors, title, topic...') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-heart fw"></span>
+                <span class="fa fa-heart fa-fw"></span>
                 <span class="hidden-sm" id="amw-catalog-label">
                   [% loc('Archive') %]
                 </span>
@@ -314,7 +314,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('about, links...') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-ellipsis-h fw"></span>
+                <span class="fa fa-ellipsis-h fa-fw"></span>
                 <span class="visible-lg-inline visible-xs-inline" id="awm-special-label">
                   [% loc('More') %]
                 </span>
@@ -336,7 +336,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Related projects') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-th fw"></span>
+                <span class="fa fa-th fa-fw"></span>
                 <span class="hidden-sm" id="amw-sitegroup-label">
                   [% loc('Related projects') %]
                 </span>
@@ -359,7 +359,7 @@
               <a href="#" class="dropdown-toggle"
                  title="[% loc('Language selection') %]"
                  data-toggle="dropdown">
-                <span class="fa fa-globe fw"></span>
+                <span class="fa fa-globe fa-fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Language selection') %]
                 </span>
@@ -387,7 +387,7 @@
                  class="dropdown-toggle"
                  title="[% c.user.get('username') | html %]"
                  data-toggle="dropdown">
-                <span class="fa fa-user fw"></span>
+                <span class="fa fa-user fa-fw"></span>
                 <span class="visible-xs-inline">
                   [% c.user.get('username') | html %]
                 </span>
@@ -523,7 +523,7 @@
             <li [% IF nav == 'bookbuilder' %] class="active" [% END %]>
               <a href="[% c.uri_for('/bookbuilder') %]" title="[% loc('Bookbuilder') %]">
                 [% SET bb_count_texts = c.model('BookBuilder').total_texts %]
-                <span class="fa fa-book [% IF bb_count_texts %]text-primary[% END %] fw"></span>
+                <span class="fa fa-book [% IF bb_count_texts %]text-primary[% END %] fa-fw"></span>
                 <span class="visible-lg-inline visible-xs-inline">
                   [% loc('Bookbuilder') %]
                 </span>
@@ -534,7 +534,7 @@
             </li>
             <li id="amw-navbar-opds-link">
               <a href="[% c.uri_for('/help/opds') %]" title="[% loc('Mobile') %]">
-                <span class="fa fa-tablet fw"></span>
+                <span class="fa fa-tablet fa-fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Mobile applications') %]
                 </span>
@@ -542,7 +542,7 @@
             </li>
             <li id="amw-navbar-feed-link">
               <a href="[% c.uri_for('/feed') %]" title="[% loc('RSS feed') %]">
-                <span class="fa fa-rss fw"></span>
+                <span class="fa fa-rss fa-fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('RSS feed') %]
                 </span>
@@ -550,7 +550,7 @@
             </li>
             <li id="amw-navbar-opds-random">
               <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">
-                <span class="fa fa-random fw"></span>
+                <span class="fa fa-random fa-fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Random') %]
                 </span>
@@ -559,7 +559,7 @@
             [% IF c.user_exists || site.human_can_edit %]
             <li id="awm-navbar-add-new-text-icon">
               <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]" title="[% loc('Add a new text') %]">
-                <span class="fa fa-plus fw"></span>
+                <span class="fa fa-plus fa-fw"></span>
                 <span class="visible-xs-inline">
                   [% loc('Add a new text') %]
                 </span>
@@ -617,7 +617,7 @@
       [% END %]
       [% IF c.flash.error_msg %]
       <div class="alert alert-warning" id="error_message">
-        <span class="fa fa-exclamation-triangle fw"></span>
+        <span class="fa fa-exclamation-triangle"></span>
         [% c.flash.error_msg | html %]
       </div>
       [% END %]
