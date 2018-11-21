@@ -49,7 +49,7 @@
       </td>
       <td>
         <a href="[% c.uri_for_action('/attachments/edit', [ att.name ]) %]">
-          <span class="fa fa-edit fa-2x fa-border fw" aria-hidden="true"></span>
+          <span class="fa fa-edit fa-2x fa-border" aria-hidden="true"></span>
         </a>
       </td>
     </tr>

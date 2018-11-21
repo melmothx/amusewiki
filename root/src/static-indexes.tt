@@ -175,7 +175,7 @@
           <div class="col-xs-5">
             [%- FOREACH format IN formats %]
             [%- IF format.is_slides && !text.slides %]
-            <span class="fa fa-2x fa-border fa-ban fw"
+            <span class="fa fa-2x fa-border fa-ban"
                   title="[% format.desc %] [% lh.loc('N/A') %]"
                   aria-hidden="true"
                   data-toggle="tooltip"
@@ -183,7 +183,7 @@
             </span><span class="sr-only">[% format.desc %] [% lh.loc('N/A') %]</span>
             [%- ELSE %]
             <a class="force-black" href="[% text.in_tree_uri %][% format.ext %]">
-              <span class="fa fa-2x fa-border [% format.icon %] fw"
+              <span class="fa fa-2x fa-border [% format.icon %]"
                     title="[% format.desc %]"
                     aria-hidden="true"
                     data-toggle="tooltip"
