@@ -411,7 +411,7 @@ kpsewhich mylogo.pdf
         [% loc('Bookbuilder page limit (integer)') %]
       </label>
       <div class="col-sm-6">
-        <input type="text"  name="bb_page_limit" id="bb_page_limit"
+        <input type="number" min="1" name="bb_page_limit" id="bb_page_limit"
                class="form-control digits" value="[% esite.bb_page_limit | html %]" />
       </div>
     </div>
@@ -516,7 +516,7 @@ kpsewhich mylogo.pdf
         [% loc('If set to a number greater than 0, automatically generate a teaser, with roughly this length') %]
       </label>
       <div class="col-sm-9">
-        <input type="text" name="automatic_teaser" id="automatic_teaser"
+        <input type="number" min="0" name="automatic_teaser" id="automatic_teaser"
                class="form-control digits"
                value="[% esite.automatic_teaser | html %]" />
       </div>
@@ -526,8 +526,8 @@ kpsewhich mylogo.pdf
         [% loc('Number of results to show on paginated pages (an integer)') %]
       </label>
       <div class="col-sm-9">
-        <input type="text" name="pagination_size" id="pagination_size"
-               class="form-control digits"
+        <input type="number" name="pagination_size" id="pagination_size"
+               class="form-control digits" min="1"
                value="[% esite.pagination_size | html %]" />
       </div>
     </div>
@@ -537,8 +537,8 @@ kpsewhich mylogo.pdf
         <strong>([% loc('Search') %])</strong>
       </label>
       <div class="col-sm-9">
-        <input type="text" name="pagination_size_search" id="pagination_size_search"
-               class="form-control digits"
+        <input type="number" name="pagination_size_search" id="pagination_size_search"
+               class="form-control digits" min="1"
                value="[% esite.pagination_size_search | html %]" />
       </div>
     </div>
@@ -548,8 +548,8 @@ kpsewhich mylogo.pdf
         <strong>([% loc('Archive by month') %])</strong>
       </label>
       <div class="col-sm-9">
-        <input type="text" name="pagination_size_monthly" id="pagination_size_monthly"
-               class="form-control digits"
+        <input type="number" name="pagination_size_monthly" id="pagination_size_monthly"
+               class="form-control digits" min="1"
                value="[% esite.pagination_size_monthly | html %]" />
       </div>
     </div>
@@ -559,8 +559,8 @@ kpsewhich mylogo.pdf
         <strong>([% loc('Latest entries') %])</strong>
       </label>
       <div class="col-sm-9">
-        <input type="text" name="pagination_size_latest" id="pagination_size_latest"
-               class="form-control digits"
+        <input type="number" name="pagination_size_latest" id="pagination_size_latest"
+               class="form-control digits" min="1"
                value="[% esite.pagination_size_latest | html %]" />
       </div>
     </div>
@@ -570,8 +570,8 @@ kpsewhich mylogo.pdf
         <strong>([% loc('Authors and topics listing') %])</strong>
       </label>
       <div class="col-sm-9">
-        <input type="text" name="pagination_size_category" id="pagination_size_category"
-               class="form-control digits"
+        <input type="number" name="pagination_size_category" id="pagination_size_category"
+               class="form-control digits" min="1"
                value="[% esite.pagination_size_category | html %]" />
       </div>
     </div>
@@ -581,9 +581,9 @@ kpsewhich mylogo.pdf
         [% loc('Number of latest entries to display on the RSS (an integer)') %]
       </label>
       <div class="col-sm-9">
-        <input type="text" name="latest_entries_for_rss"
+        <input type="number" name="latest_entries_for_rss"
                id="latest_entries_for_rss"
-               class="form-control digits"
+               class="form-control digits" min="1"
                value="[% esite.latest_entries_for_rss | html %]" />
       </div>
     </div>
@@ -593,10 +593,10 @@ kpsewhich mylogo.pdf
         [% loc('Add paginator for text listing when the number of texts is greater than (integer)') %]
       </label>
       <div class="col-sm-9">
-        <input type="text"
+        <input type="number"
                name="paginate_archive_after"
                id="paginate_archive_after"
-               class="form-control digits"
+               class="form-control digits" min="1"
                value="[% esite.paginate_archive_after | html %]" />
       </div>
     </div>
