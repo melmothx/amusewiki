@@ -49,11 +49,9 @@
       </div>
     </div>
     <div class="form-group">
-        <div class="col-sm-3">
-          <label for="vhosts" class="control-label">
+        <label for="vhosts" class="col-sm-3 control-label">
             [% loc('Virtual hosts, one per line') %]
         </label>
-        </div>
         <div class="col-sm-9">
         <textarea rows="5" name="vhosts" id="vhosts" class="form-control">
           [%- SET vhosts = esite.vhosts_rs -%]
