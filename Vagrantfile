@@ -74,14 +74,11 @@ Vagrant.configure("2") do |config|
 
     # Install local::lib
     apt-get install -y liblocal-lib-perl
-
-    apt-get install -y git
   SHELL
 
   # Configure Amusewiki
   config.vm.provision "amusewiki-configure", type: "shell", privileged: false, inline: <<-SHELL
-    git clone /vagrant amusewiki
-    cd amusewiki
+    cd /vagrant
 
     eval `perl -Mlocal::lib`
     cp dbic.yaml.sqlite.example dbic.yaml
@@ -89,13 +86,19 @@ Vagrant.configure("2") do |config|
     script/install.sh
     script/configure.sh localhost
     script/amusewiki-generate-nginx-conf | sudo /bin/sh
+    sudo sed -i s/www-data/vagrant/ /etc/nginx/nginx.conf
+
+    # It is impossible to create socket on VirtualBox filesystem.
+    # Move it to home as a workaround.
+    sudo sed -i 's|unix:/vagrant/var/amw.sock|unix:/home/vagrant/amw.sock|' /etc/nginx/amusewiki_include
   SHELL
 
   # Start Amusewiki services on every "vagrant up" or "vagrant reload"
   config.vm.provision "amusewiki-run", type: "shell", privileged: false, run: "always", inline: <<-SHELL
-    cd amusewiki
+    cd /vagrant
     eval `perl -Mlocal::lib`
-
-    ./init-all.sh start
+    script/jobber.pl start
+    script/amusewikifarm_fastcgi.pl start -l /home/vagrant/amw.sock -d
+    sudo service nginx restart
   SHELL
 end
