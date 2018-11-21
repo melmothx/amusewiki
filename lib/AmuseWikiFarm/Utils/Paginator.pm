@@ -43,7 +43,7 @@ sub create_pager {
 
     my $expected = 1;
     foreach my $spec ({
-                       label => "«««",
+                       label => '<span class="fa fa-chevron-left" />',
                        page => $pager->previous_page,
                       },
                       {
@@ -74,7 +74,7 @@ sub create_pager {
                        page => $last,
                       },
                       {
-                       label => "»»»",
+                       label => '<span class="fa fa-chevron-right" />',
                        page => $pager->next_page,
                       }) {
         my $page = $spec->{page};
