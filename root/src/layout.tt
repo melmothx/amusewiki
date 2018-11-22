@@ -571,9 +571,11 @@
       </div>
     </div>
     <div id="wrap">
-    <div id="main" class="container[% IF full_page_no_side_columns %]-fluid[% END %] clear-top">
+      <div id="main"
+           role="main"
+           class="container[% IF full_page_no_side_columns %]-fluid[% END %] clear-top">
       [% IF site.has_site_file('widebanner.png') %]
-      <div class="row" role="banner">
+      <div class="row">
         <div class="col-12-sm hidden-xs">
           <div class="amw-wide-banner-container">
             <a class="amw-wide-banner" href="[% c.uri_for('/') %]">
@@ -625,7 +627,7 @@
       [%- SET flash_cleared_output_suppressed = c.clear_flash -%]
 [% END %]
 
-          <div id="widepage" role="main">
+          <div id="widepage">
             [% content %]
           </div>
           <div>&nbsp;</div>

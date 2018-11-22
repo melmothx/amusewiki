@@ -29,7 +29,7 @@
     </div>
     [% END %]
     <div>
-      <h3 class="amw-latest-listing-item-title">
+      <h2 class="amw-latest-listing-item-title h3">
         [%- IF text.author %]<small>[% text.author -%]</small><br />[% END -%]
         <a href="[% c.uri_for(text.full_uri) %]">[% text.title %]</a>
         [% IF text.subtitle %]<small>[% text.subtitle -%]</small>[% END -%]
@@ -37,7 +37,7 @@
         <small class="amw-latest-listing-item-language">[[% text.lang %]]</small>
         [%- END -%]
 
-      </h3>
+      </h2>
       [% IF text.teaser %]
       [% text.teaser %]
       [% END %]
