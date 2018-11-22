@@ -46,3 +46,4 @@ debian/amusewiki/*
 debian/amusewiki*.debhelper*
 debian/amusewiki.substvars
 lib/AmuseWikiFarm/I18N/*.mo
+.vagrant/
