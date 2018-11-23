@@ -1100,7 +1100,7 @@ msgid "Insert the file into the body at the cursor position"
 msgstr "Вставить файл в текст после курсора"
 
 msgid "Internal list of translations"
-msgstr "Внутренний список или переводы"
+msgstr "Внутренний список переводов"
 
 msgid "Invalid email"
 msgstr "Неправильный адрес электронной почты"
@@ -2346,7 +2346,7 @@ msgid "There are failed jobs"
 msgstr "Некоторые задачи завершились с ошибкой"
 
 msgid "These texts are missing the unique id."
-msgstr "Эти тексты отсутствуют в уникальном id"
+msgstr "У этих текстов отсутствуют уникальные идентификаторы."
 
 msgid "They have the same syntax (images are actually links)"
 msgstr "Они имеют тот же синтаксис (по факту, изображения это тоже ссылки)"
