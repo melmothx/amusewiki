@@ -2346,7 +2346,7 @@ msgid "There are failed jobs"
 msgstr "Некоторые задачи завершились с ошибкой"
 
 msgid "These texts are missing the unique id."
-msgstr "Эти тексты отсутствуют в уникальном id"
+msgstr "У этих текстов отсутствуют уникальные идентификаторы."
 
 msgid "They have the same syntax (images are actually links)"
 msgstr "Они имеют тот же синтаксис (по факту, изображения это тоже ссылки)"
