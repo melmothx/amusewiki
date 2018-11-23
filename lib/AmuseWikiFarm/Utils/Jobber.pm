@@ -66,6 +66,7 @@ sub spawn_job {
         wait;
         log_info { "Detached new job " . $job->task . " " . DateTime->now } ;
         log_debug { "Child $pid exited, looping again\n" };
+	return;
     }
     elsif (defined $pid) {
         # fork again
@@ -116,6 +117,7 @@ sub handle_job {
         log_info { "job $$ finished, exiting" };
         $self->release_lock($lock);
     }
+    return;
 }
 
 sub get_lock {

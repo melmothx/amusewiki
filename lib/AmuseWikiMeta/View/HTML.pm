@@ -1,5 +1,7 @@
 package AmuseWikiMeta::View::HTML;
 
+use strict;
+use warnings;
 use base qw/Catalyst::View/;
 use Template::Tiny;
 

@@ -81,19 +81,19 @@ sub _install_location {
 }
 
 sub mkits_location {
-    _install_location(qw/mkits/);
+    return _install_location(qw/mkits/);
 }
 
 sub dbicdh_location {
-    _install_location(qw/dbicdh/);
+    return _install_location(qw/dbicdh/);
 }
 
 sub templates_location {
-    _install_location(qw/root src/);
+    return _install_location(qw/root src/);
 }
 
 sub static_file_location {
-    _install_location(qw/root static/);
+    return _install_location(qw/root static/);
 }
 
 

@@ -76,7 +76,7 @@ sub _build_site {
             }
         }
     }
-    return undef;
+    return;
 }
 
 has job_id => (is => 'ro',
@@ -986,7 +986,7 @@ sub coverfile_path {
         return File::Spec->rel2abs(File::Spec->catfile($self->filedir, $cover));
     }
     else {
-        return undef;
+        return;
     }
 }
 
@@ -1751,7 +1751,7 @@ sub _find_file_texmf {
         return $path;
     }
     else {
-        return undef;
+        return;
     }
 }
 
