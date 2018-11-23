@@ -82,6 +82,9 @@ Vagrant.configure("2") do |config|
       texlive-luatex                                                      \
       texlive-xetex                                                       \
 
+    # Required by /vagrant/script/upgrade_i18n
+    sudo apt install --no-install-recommends --no-install-suggests -y gettext
+
     # Install local::lib
     sudo apt-get install -y liblocal-lib-perl
     echo 'eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >>~/.bashrc
