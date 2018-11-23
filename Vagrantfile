@@ -10,16 +10,16 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
   # Install dependencies
-  config.vm.provision "apt", type: "shell", inline: <<-SHELL
-    apt-get update
-    apt-get install -y nginx
+  config.vm.provision "apt", type: "shell", privileged: false, inline: <<-SHELL
+    sudo apt-get update
+    sudo apt-get install -y nginx
 
     # Install dependencies
-    apt-get install -y cpanminus make fontconfig imagemagick unzip graphicsmagick \
+    sudo apt-get install -y cpanminus make fontconfig imagemagick unzip graphicsmagick \
       shared-mime-info xapian-tools gcc
 
     # Install most requirements (from Makefile.PL and others) from the repository
-    apt-get install -y                               \
+    sudo apt-get install -y                          \
       libarchive-zip-perl                            \
       libcatalyst-action-renderview-perl             \
       libcatalyst-devel-perl                         \
@@ -73,7 +73,8 @@ Vagrant.configure("2") do |config|
       libyaml-tiny-perl                              \
 
     # Install local::lib
-    apt-get install -y liblocal-lib-perl
+    sudo apt-get install -y liblocal-lib-perl
+    echo 'eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >>~/.bashrc
   SHELL
 
   # Configure Amusewiki
