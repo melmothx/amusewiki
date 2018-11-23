@@ -1100,7 +1100,7 @@ msgid "Insert the file into the body at the cursor position"
 msgstr "Вставить файл в текст после курсора"
 
 msgid "Internal list of translations"
-msgstr "Внутренний список или переводы"
+msgstr "Внутренний список переводов"
 
 msgid "Invalid email"
 msgstr "Неправильный адрес электронной почты"
