@@ -399,63 +399,75 @@
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/edit/newtext', ['special']) %]">
+                    <span class="fa fa-plus-square fa-fw" aria-hidden="true"></span>
                     [% loc('Create a new special page') %]
                   </a>
                 </li>
                 [% IF site.multilanguage %]
                 <li>
                   <a href="[% c.uri_for_action('/console/translations') %]">
+                    <span class="fa fa-language fa-fw" aria-hidden="true"></span>
                     [% loc('Internal list of translations') %]
                   </a>
                 </li>
                 [% END %]
                 <li>
                   <a href="[% c.uri_for_action('/publish/pending') %]">
+                    <span class="fa fa-inbox fa-fw" aria-hidden="true"></span>
                     [% loc('Pending revisions') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/publish/all') %]">
+                    <span class="fa fa-archive fa-fw" aria-hidden="true"></span>
                     [% loc('All revisions') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/console/unpublished') %]">
+                    <span class="fa fa-trash fa-fw" aria-hidden="true"></span>
                     [% loc('Deferred/Deleted texts') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/console/list_categories') %]">
+                    <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
                     [% loc('Manage categories') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/attachments/list') %]">
+                    <span class="fa fa-file-image-o fa-fw" aria-hidden="true"></span>
                     [% loc('Attachments') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/console/git_display') %]">
+                    <span class="fa fa-code-fork fa-fw" aria-hidden="true"></span>
                     [% loc('Remotes') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/console/alias_display') %]">
+                    <span class="fa fa-exchange fa-fw" aria-hidden="true"></span>
                     [% loc('Redirections') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/user/create') %]">
+                    <span class="fa fa-user-plus fa-fw" aria-hidden="true"></span>
                     [% loc('Create a new librarian') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/user/edit', [c.user.get('id')]) %]">
+                    <span class="fa fa-id-card-o fa-fw" aria-hidden="true"></span>
                     [% loc('Update account info') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/user/edit_options', [c.user.get('id')]) %]">
+                    <span class="fa fa-object-group fa-fw" aria-hidden="true"></span>
                     [% loc('Edit screen layout options') %]
                   </a>
                 </li>
@@ -463,16 +475,19 @@
                 [% IF c.check_any_user_role('admin', 'root') %]
                 <li>
                   <a href="[% c.uri_for_action('/user/site_config') %]">
+                    <span class="fa fa-cog fa-fw" aria-hidden="true"></span>
                     [% loc('Edit site configuration') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/tasks/rebuild') %]">
+                    <span class="fa fa-refresh fa-fw" aria-hidden="true"></span>
                     [% loc('Rebuild all generated files') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/tasks/jobs') %]">
+                    <span class="fa fa-tasks fa-fw" aria-hidden="true"></span>
                     [% loc("Job status") %]
                     [% IF site_failed_jobs %]
                     <span title="[% loc('There are failed jobs') %]">
@@ -486,32 +501,38 @@
                 [% IF c.check_user_roles('root') %]
                 <li>
                   <a href="[% c.uri_for_action('/admin/edit', site.id) %]">
+                    <span class="fa fa-cogs fa-fw" aria-hidden="true"></span>
                     [% loc('Edit full site configuration') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/admin/show_users') %]">
+                    <span class="fa fa-users fa-fw" aria-hidden="true"></span>
                     [% loc('Users') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/admin/list') %]">
+                    <span class="fa fa-sitemap fa-fw" aria-hidden="true"></span>
                     [% loc('Sites') %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for_action('/admin/jobs') %]">
+                    <span class="fa fa-tasks fa-fw" aria-hidden="true"></span>
                     [% loc('Jobs') %]
                   </a>
                 </li>
                 [% END %]
                 <li>
                   <a href="[% c.uri_for_action('/help/faq') %]">
+                    <span class="fa fa-support fa-fw" aria-hidden="true"></span>
                     [% loc("Maintainer's FAQ") %]
                   </a>
                 </li>
                 <li>
                   <a href="[% c.uri_for('/logout') %]">
+                    <span class="fa fa-sign-out fa-fw" aria-hidden="true"></span>
                     [% loc('Logout') %]
                   </a>
                 </li>
