@@ -520,7 +520,7 @@
                 <li>
                   <a href="[% c.uri_for_action('/admin/jobs') %]">
                     <span class="fa fa-tasks fa-fw" aria-hidden="true"></span>
-                    [% loc('Jobs') %]
+                    [% loc('Jobs (all sites)') %]
                   </a>
                 </li>
                 [% END %]
