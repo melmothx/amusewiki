@@ -72,6 +72,16 @@ Vagrant.configure("2") do |config|
       libxml-writer-perl                             \
       libyaml-tiny-perl                              \
 
+    sudo apt-get install --no-install-recommends --no-install-suggests -y \
+      texlive-base                                                        \
+      texlive-generic-recommended texlive-fonts-recommended               \
+      texlive-lang-all                                                    \
+      texlive-latex-base                                                  \
+      texlive-latex-extra                                                 \
+      texlive-latex-recommended                                           \
+      texlive-luatex                                                      \
+      texlive-xetex                                                       \
+
     # Install local::lib
     sudo apt-get install -y liblocal-lib-perl
     echo 'eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >>~/.bashrc
