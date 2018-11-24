@@ -160,6 +160,9 @@ msgstr ""
 "  knap for hver slettet tekst, og du kan fortsætte med den fuldstændige "
 "fjernelse."
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -260,6 +263,11 @@ msgstr "Anmod om og forny automatisk SSL certifikater fra Let's Encrypt"
 
 msgid "Available category tags for header"
 msgstr "Tilgængelige kategorimarkeringer til sidehovedet"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Tilbage til teksten"
@@ -514,6 +522,9 @@ msgstr "Den ønskede URI"
 
 msgid "Destination"
 msgstr "Destination"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Forskelle"
@@ -1131,6 +1142,9 @@ msgstr ""
 msgid "Jobs"
 msgstr "Job"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr "Job som venter inden dit:"
 
@@ -1270,6 +1284,9 @@ msgstr "Aktiver alle links"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Besked"
 
@@ -1322,6 +1339,9 @@ msgid "Name"
 msgstr "Navn"
 
 msgid "Network library listing screen."
+msgstr ""
+
+msgid "Never display the cover"
 msgstr ""
 
 msgid "Never generate a table of content"
@@ -1515,6 +1535,9 @@ msgstr "Afsnit"
 
 msgid "Part"
 msgstr "Del"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Del, kun for større bøger"
@@ -1783,6 +1806,9 @@ msgstr "Kvote overskredet, for mange sider"
 msgid "Quotes"
 msgstr "Citater"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS-feed"
 
@@ -1861,6 +1887,9 @@ msgstr "Fjern"
 
 msgid "Remove cover image"
 msgstr "Fjern omslagsbillede"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr "Omdøb til"
@@ -1953,6 +1982,9 @@ msgstr "Gemte \"%1\" konfiguration"
 
 msgid "Search"
 msgstr "Søg"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr "Søgeresultater"
@@ -2163,6 +2195,9 @@ msgstr "Tagsky med emner"
 
 msgid "Task"
 msgstr "Opgave"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr "Teaser"
@@ -2472,6 +2507,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Tosides layout"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -2895,6 +2933,9 @@ msgid "mandatory"
 msgstr "obligatorisk"
 
 msgid "markup *not* interpreted"
+msgstr ""
+
+msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"

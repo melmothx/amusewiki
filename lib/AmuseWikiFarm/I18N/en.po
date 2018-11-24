@@ -144,6 +144,9 @@ msgid ""
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr ""
 
@@ -234,6 +237,11 @@ msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr ""
 
 msgid "Available category tags for header"
+msgstr ""
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
 msgstr ""
 
 msgid "Back to the text"
@@ -478,6 +486,9 @@ msgid "Desired URI"
 msgstr ""
 
 msgid "Destination"
+msgstr ""
+
+msgid "Did you mean:"
 msgstr ""
 
 msgid "Differences"
@@ -1038,6 +1049,9 @@ msgstr ""
 msgid "Jobs"
 msgstr ""
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr ""
 
@@ -1167,6 +1181,9 @@ msgstr ""
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr ""
 
@@ -1219,6 +1236,9 @@ msgid "Name"
 msgstr ""
 
 msgid "Network library listing screen."
+msgstr ""
+
+msgid "Never display the cover"
 msgstr ""
 
 msgid "Never generate a table of content"
@@ -1391,6 +1411,9 @@ msgid "Paragraphs"
 msgstr ""
 
 msgid "Part"
+msgstr ""
+
+msgid "Part and chapter. If one side document: part."
 msgstr ""
 
 msgid "Part, for larger books only"
@@ -1628,6 +1651,9 @@ msgstr ""
 msgid "Quotes"
 msgstr ""
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr ""
 
@@ -1696,6 +1722,9 @@ msgid "Remove"
 msgstr ""
 
 msgid "Remove cover image"
+msgstr ""
+
+msgid "Remove this category"
 msgstr ""
 
 msgid "Rename to"
@@ -1788,6 +1817,9 @@ msgid "Saved \"%1\" configuration"
 msgstr ""
 
 msgid "Search"
+msgstr ""
+
+msgid "Search filters"
 msgstr ""
 
 msgid "Search results"
@@ -1995,6 +2027,9 @@ msgid "Tag cloud with topics"
 msgstr ""
 
 msgid "Task"
+msgstr ""
+
+msgid "TeX options (advanced)"
 msgstr ""
 
 msgid "Teaser"
@@ -2292,6 +2327,9 @@ msgid ""
 msgstr ""
 
 msgid "Two side layout"
+msgstr ""
+
+msgid "Type"
 msgstr ""
 
 msgid "URI"
@@ -2677,6 +2715,9 @@ msgid "mandatory"
 msgstr ""
 
 msgid "markup *not* interpreted"
+msgstr ""
+
+msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"

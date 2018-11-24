@@ -161,6 +161,9 @@ msgstr ""
 "По одобрувањето на измената, на страницата ќе се појави %1. Со големо црвено "
 "копче можеш целосно да го избришеш од архивата."
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Алијас"
 
@@ -268,6 +271,11 @@ msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Расположиви ознаки за категории за заглавието"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Врати се на текстот"
@@ -522,6 +530,9 @@ msgstr "URI по желба"
 
 msgid "Destination"
 msgstr "Одредиште"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Разлики"
@@ -1149,6 +1160,9 @@ msgstr ""
 msgid "Jobs"
 msgstr "Задачи"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr "Задачи на чекање:"
 
@@ -1291,6 +1305,9 @@ msgstr "Активирај ги сите линкови"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Порака"
 
@@ -1346,6 +1363,9 @@ msgstr "Име"
 
 msgid "Network library listing screen."
 msgstr "Страница со листа од мрежните архиви."
+
+msgid "Never display the cover"
+msgstr ""
 
 msgid "Never generate a table of content"
 msgstr "Не генерирај содржина"
@@ -1535,6 +1555,9 @@ msgstr "Пасуси"
 
 msgid "Part"
 msgstr "Дел"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Дел, само за поголеми книги"
@@ -1812,6 +1835,9 @@ msgstr "Премногу страници"
 msgid "Quotes"
 msgstr "Цитати"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS feed"
 
@@ -1890,6 +1916,9 @@ msgstr "Избриши"
 
 msgid "Remove cover image"
 msgstr "Отстрани ја насловната слика"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr "Преименување"
@@ -1982,6 +2011,9 @@ msgstr "Зачувана конфигурација \"%1\" "
 
 msgid "Search"
 msgstr "Барај"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr "Резултати од пребарувањето"
@@ -2191,6 +2223,9 @@ msgstr "Tag cloud со теми"
 
 msgid "Task"
 msgstr "Задача"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr "Преглед"
@@ -2523,6 +2558,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Двостран прелом"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -2951,6 +2989,9 @@ msgstr "задолжително"
 
 msgid "markup *not* interpreted"
 msgstr "овој маркап *не е* толкуван"
+
+msgid "minutes"
+msgstr ""
 
 msgid "new-example-uri"
 msgstr "нов-uri-како-пример"

@@ -159,6 +159,9 @@ msgstr ""
 "  cambio, aparecerá en %1. Hay un botón grande rojo debajo\n"
 "  de cada texto borrado, donde puedes purgarlo."
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -266,6 +269,11 @@ msgstr "Solicitar y renovar automáticamente certificados SSL de Let's Encrypt"
 
 msgid "Available category tags for header"
 msgstr "Etiquetas de categorías disponibles para el encabezado"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Volver al texto"
@@ -523,6 +531,9 @@ msgstr "URI deseado"
 
 msgid "Destination"
 msgstr "Destino"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Diferencias"
@@ -1158,6 +1169,9 @@ msgstr ""
 msgid "Jobs"
 msgstr "Procesos"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr "Procesos esperando antes que el tuyo:"
 
@@ -1298,6 +1312,9 @@ msgstr "Haz todos los enlaces activos"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Mensaje"
 
@@ -1351,6 +1368,9 @@ msgstr "Nombre"
 
 msgid "Network library listing screen."
 msgstr "Pantalla mostrando biblioteca en red."
+
+msgid "Never display the cover"
+msgstr ""
 
 msgid "Never generate a table of content"
 msgstr "Nunca generar un índice de contenidos"
@@ -1543,6 +1563,9 @@ msgstr "Párrafos"
 
 msgid "Part"
 msgstr "Parte"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Parte, solo para grandes libros"
@@ -1814,6 +1837,9 @@ msgstr "Cuota excedida, demasiadas páginas"
 msgid "Quotes"
 msgstr "Citas"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS"
 
@@ -1892,6 +1918,9 @@ msgstr "Eliminar"
 
 msgid "Remove cover image"
 msgstr "Eliminar imagen de portada"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr "Renombrar a"
@@ -1984,6 +2013,9 @@ msgstr "Guardada la configuración \"%1\""
 
 msgid "Search"
 msgstr "Búsqueda"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr "Resultados de búsqueda"
@@ -2198,6 +2230,9 @@ msgstr "Nube de etiquetas con temas"
 
 msgid "Task"
 msgstr "Tarea"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr "Muestra"
@@ -2535,6 +2570,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Diagramación para ambos lados de la hoja"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -2966,6 +3004,9 @@ msgid "mandatory"
 msgstr "obligatorio"
 
 msgid "markup *not* interpreted"
+msgstr ""
+
+msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"

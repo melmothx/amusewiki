@@ -160,6 +160,9 @@ msgstr ""
 "Après acceptation du texte, il apparaitra sous %1. Il y a un gros bouton "
 "rouge pour chaque texte supprimé, et vous pouvez effectuer la purgation."
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -264,6 +267,11 @@ msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Étiquettes de catégorie disponibles pour le titre"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Retour au texte"
@@ -520,6 +528,9 @@ msgstr "URI désiré"
 
 msgid "Destination"
 msgstr "Destination"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Différences"
@@ -1160,6 +1171,9 @@ msgstr ""
 msgid "Jobs"
 msgstr "Tâches"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr "Tâches en attente avant la vôtre:"
 
@@ -1297,6 +1311,9 @@ msgstr "Rendre tous liens actifs"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Message"
 
@@ -1350,6 +1367,9 @@ msgstr "Nom"
 
 msgid "Network library listing screen."
 msgstr "Écran de liste de bibliothèque réseau."
+
+msgid "Never display the cover"
+msgstr ""
 
 msgid "Never generate a table of content"
 msgstr "Ne jamais générer un sommaire"
@@ -1543,6 +1563,9 @@ msgstr "Paragraphes"
 
 msgid "Part"
 msgstr "Partie"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Partie, uniquement pour des livres plus conséquents"
@@ -1818,6 +1841,9 @@ msgstr "Quota dépassé, trop de pages"
 msgid "Quotes"
 msgstr "Citations"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "Flux RSS"
 
@@ -1895,6 +1921,9 @@ msgstr "Retirer"
 
 msgid "Remove cover image"
 msgstr "Enlever l'image de couverture"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr "Renommer"
@@ -1987,6 +2016,9 @@ msgstr "Configuration \"%1\" sauvegardée"
 
 msgid "Search"
 msgstr "Recherche"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr "Résultats de recherche"
@@ -2201,6 +2233,9 @@ msgstr "Nuage d'étiquettes avec sujets"
 
 msgid "Task"
 msgstr "Tâche"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr "Teaser"
@@ -2547,6 +2582,9 @@ msgid "Two side layout"
 msgstr ""
 "Mise en page bilatérale (\"deux faces\" : fait une distinction entre faces "
 "gauche et droite)"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -2986,6 +3024,9 @@ msgstr "obligatoire"
 
 msgid "markup *not* interpreted"
 msgstr "balisage *non* interprété"
+
+msgid "minutes"
+msgstr ""
 
 msgid "new-example-uri"
 msgstr "nouvel-exemple-uri"

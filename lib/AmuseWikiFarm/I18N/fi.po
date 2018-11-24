@@ -148,6 +148,9 @@ msgid ""
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -244,6 +247,11 @@ msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Käytössä olevat kategoriatagit"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Takaisin tekstiin"
@@ -490,6 +498,9 @@ msgstr "Haluttu osoite"
 
 msgid "Destination"
 msgstr "Kohde"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Eroavaisuudet"
@@ -1052,6 +1063,9 @@ msgstr ""
 msgid "Jobs"
 msgstr "Työt"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr ""
 
@@ -1192,6 +1206,9 @@ msgstr "Tee kaikista linkeistä aktiivisia"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Viesti"
 
@@ -1244,6 +1261,9 @@ msgid "Name"
 msgstr "Nimi"
 
 msgid "Network library listing screen."
+msgstr ""
+
+msgid "Never display the cover"
 msgstr ""
 
 msgid "Never generate a table of content"
@@ -1434,6 +1454,9 @@ msgstr "Kappaleet"
 
 msgid "Part"
 msgstr "Osa"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Osa, vain suuremmissa kirjoissa"
@@ -1685,6 +1708,9 @@ msgstr "Kiintiö ylitetty, liikaa sivuja"
 msgid "Quotes"
 msgstr "Lainaukset"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS syöte"
 
@@ -1754,6 +1780,9 @@ msgstr ""
 
 msgid "Remove cover image"
 msgstr "Poista kansikuva"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr ""
@@ -1846,6 +1875,9 @@ msgstr ""
 
 msgid "Search"
 msgstr "Hae"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr ""
@@ -2055,6 +2087,9 @@ msgstr ""
 
 msgid "Task"
 msgstr "Tehtävä"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr ""
@@ -2358,6 +2393,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Kaksipuoleinen taitto"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr ""
@@ -2757,6 +2795,9 @@ msgid "mandatory"
 msgstr "pakollinen"
 
 msgid "markup *not* interpreted"
+msgstr ""
+
+msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"

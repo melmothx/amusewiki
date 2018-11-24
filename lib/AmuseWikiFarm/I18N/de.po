@@ -152,6 +152,9 @@ msgid ""
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -249,6 +252,11 @@ msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Verfügbare Kategorien für Textkopf"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Zurück zum Text"
@@ -496,6 +504,9 @@ msgstr "Gewünschter URI"
 
 msgid "Destination"
 msgstr "Ziel"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Unterschiede"
@@ -1066,6 +1077,9 @@ msgstr ""
 msgid "Jobs"
 msgstr "Aufträge"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr ""
 
@@ -1206,6 +1220,9 @@ msgstr "Alle Links aktivieren"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Nachricht"
 
@@ -1258,6 +1275,9 @@ msgid "Name"
 msgstr "Name"
 
 msgid "Network library listing screen."
+msgstr ""
+
+msgid "Never display the cover"
 msgstr ""
 
 msgid "Never generate a table of content"
@@ -1438,6 +1458,9 @@ msgstr "Absätze"
 
 msgid "Part"
 msgstr "Teil"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Teil, nur für größere Bücher"
@@ -1695,6 +1718,9 @@ msgstr "Kontingent überschritten, zu viele Seiten"
 msgid "Quotes"
 msgstr "Zitate"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS feed"
 
@@ -1763,6 +1789,9 @@ msgid "Remove"
 msgstr ""
 
 msgid "Remove cover image"
+msgstr ""
+
+msgid "Remove this category"
 msgstr ""
 
 msgid "Rename to"
@@ -1856,6 +1885,9 @@ msgstr ""
 
 msgid "Search"
 msgstr "Suchen"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr ""
@@ -2068,6 +2100,9 @@ msgstr ""
 
 msgid "Task"
 msgstr "Aufgabe"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr ""
@@ -2379,6 +2414,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Zweiseitiges Layout"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -2782,6 +2820,9 @@ msgid "mandatory"
 msgstr "Pflichtfeld"
 
 msgid "markup *not* interpreted"
+msgstr ""
+
+msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"

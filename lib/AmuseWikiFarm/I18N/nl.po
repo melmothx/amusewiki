@@ -167,6 +167,9 @@ msgstr ""
 "  grote rode knop voor elke verwijderde tekst, en je kunt doorgaan \n"
 "  met verwijderen."
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -272,6 +275,11 @@ msgstr "SSL certificaten van Let's Encrypt automatisch aanvragen en vernieuwen"
 
 msgid "Available category tags for header"
 msgstr "Beschikbare categorie tags voor de koptekst"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Terug naar de tekst"
@@ -537,6 +545,9 @@ msgstr "Gewenste URL"
 
 msgid "Destination"
 msgstr "Bestemming"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Verschillen"
@@ -1197,6 +1208,9 @@ msgstr "Taakstatus"
 msgid "Jobs"
 msgstr "Taken"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr "Taken in de wachtrij voor die van jou:"
 
@@ -1337,6 +1351,9 @@ msgstr "Maak alle links actief"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Maak alle harde spaties expliciet en zichtbaar als ~~"
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Bericht"
 
@@ -1390,6 +1407,9 @@ msgstr "Naam"
 
 msgid "Network library listing screen."
 msgstr "Netwerkbibliotheek lijstvenster."
+
+msgid "Never display the cover"
+msgstr ""
 
 msgid "Never generate a table of content"
 msgstr "Genereer nooit een inhoudsopgave"
@@ -1584,6 +1604,9 @@ msgstr "Alineas"
 
 msgid "Part"
 msgstr "Deel"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Deel, alleen voor grotere boeken"
@@ -1862,6 +1885,9 @@ msgstr "Quotum overschreden, te veel paginas"
 msgid "Quotes"
 msgstr "Citaten"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS feed"
 
@@ -1940,6 +1966,9 @@ msgstr "Verwijder"
 
 msgid "Remove cover image"
 msgstr "Verwijder omslagafbeelding"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr "Hernoem naar"
@@ -2032,6 +2061,9 @@ msgstr "Configuratie \"%1\" opgeslagen"
 
 msgid "Search"
 msgstr "Zoeken"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr "Resultaten zoeken"
@@ -2246,6 +2278,9 @@ msgstr "Tagwolk met onderwerpen"
 
 msgid "Task"
 msgstr "Taak"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr "Teaser"
@@ -2590,6 +2625,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Twee zijde indeling"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -3037,6 +3075,9 @@ msgstr "verplicht"
 
 msgid "markup *not* interpreted"
 msgstr "opmaak *niet* geinterpreteerd"
+
+msgid "minutes"
+msgstr ""
 
 msgid "new-example-uri"
 msgstr "nieuwe-voorbeeld-uri"

@@ -165,6 +165,9 @@ msgstr ""
 " buton i kuq i kadh për secilin tekst të fshirë dhe ti mund të vazdhosh me "
 "spastrim."
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Pseudonim"
 
@@ -274,6 +277,11 @@ msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Etiketat e kategorive në dispozicion për "
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Ktheju tek teksti"
@@ -530,6 +538,9 @@ msgstr "URI e dëshiruar"
 
 msgid "Destination"
 msgstr "Destinacioni"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Dallimet"
@@ -1142,6 +1153,9 @@ msgstr ""
 msgid "Jobs"
 msgstr "Punët"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr "Punët që janë në rend para punës tënde: "
 
@@ -1282,6 +1296,9 @@ msgstr "Shëndërroi të gjitha linqet në linqe aktive"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Porosi"
 
@@ -1335,6 +1352,9 @@ msgstr "Emri"
 
 msgid "Network library listing screen."
 msgstr "Ekrani i listimit të rrjetit të bibliotekës."
+
+msgid "Never display the cover"
+msgstr ""
 
 msgid "Never generate a table of content"
 msgstr "Asnjëher mos gjenero tabelën e përmbajtjes"
@@ -1518,6 +1538,9 @@ msgstr "Paragrafet"
 
 msgid "Part"
 msgstr "Pjesa"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Pjesa, vetëm për librat më të më mëdhenjë"
@@ -1787,6 +1810,9 @@ msgstr "Limiti është tejkaluar! Janë vendosur shumë faqe."
 msgid "Quotes"
 msgstr "Citatet"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr ""
 
@@ -1866,6 +1892,9 @@ msgstr "Largo"
 
 msgid "Remove cover image"
 msgstr "Largo imazhin e kopertinës"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr "Ndërro emërtimin"
@@ -1958,6 +1987,9 @@ msgstr "Konfigurimi \"%1\" është ruajtur"
 
 msgid "Search"
 msgstr "Kërko"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr "Rezultatet e kërkimit"
@@ -2172,6 +2204,9 @@ msgstr "Tag cloud me temat"
 
 msgid "Task"
 msgstr "Detyra"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr ""
@@ -2503,6 +2538,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Renditja në të dyja anët"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -2923,6 +2961,9 @@ msgid "mandatory"
 msgstr "e detyrueshme"
 
 msgid "markup *not* interpreted"
+msgstr ""
+
+msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"

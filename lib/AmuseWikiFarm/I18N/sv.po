@@ -153,6 +153,9 @@ msgid ""
 "  button for each deleted text, and you can proceed with the purging."
 msgstr ""
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -249,6 +252,11 @@ msgstr ""
 
 msgid "Available category tags for header"
 msgstr "Tillgängliga kategori-taggar för header"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Tillbaka till texten"
@@ -495,6 +503,9 @@ msgstr "Önskad URI"
 
 msgid "Destination"
 msgstr "Destination"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Skillnader"
@@ -1063,6 +1074,9 @@ msgstr ""
 msgid "Jobs"
 msgstr "Jobb"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr ""
 
@@ -1199,6 +1213,9 @@ msgstr "Aktivera alla länkar"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr ""
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Meddelande"
 
@@ -1251,6 +1268,9 @@ msgid "Name"
 msgstr "Namn"
 
 msgid "Network library listing screen."
+msgstr ""
+
+msgid "Never display the cover"
 msgstr ""
 
 msgid "Never generate a table of content"
@@ -1439,6 +1459,9 @@ msgstr "Stycken"
 
 msgid "Part"
 msgstr "Del"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Del, endast för större böcker"
@@ -1695,6 +1718,9 @@ msgstr "Kvoten överskriden, för många sidor"
 msgid "Quotes"
 msgstr "Citat"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS feed"
 
@@ -1772,6 +1798,9 @@ msgstr ""
 
 msgid "Remove cover image"
 msgstr "Avlägsna omslagsbild"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr ""
@@ -1864,6 +1893,9 @@ msgstr ""
 
 msgid "Search"
 msgstr "Sök"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr ""
@@ -2074,6 +2106,9 @@ msgstr ""
 
 msgid "Task"
 msgstr "Uppgift"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr ""
@@ -2381,6 +2416,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Tvåsidig layout"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -2779,6 +2817,9 @@ msgid "mandatory"
 msgstr "obligatorisk"
 
 msgid "markup *not* interpreted"
+msgstr ""
+
+msgid "minutes"
 msgstr ""
 
 msgid "new-example-uri"

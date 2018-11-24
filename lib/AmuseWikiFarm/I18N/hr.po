@@ -155,6 +155,9 @@ msgstr ""
 "Nakon odobrenja izmjene, pojavit će se na stranici %1. Velikim crvenim\n"
 "gumbom možeš ga potpuno izbrisati iz arhiva."
 
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
@@ -255,6 +258,11 @@ msgstr "Automatski zahtijevaj i obnovi SSL certifikate koristeći Let's Encrypt"
 
 msgid "Available category tags for header"
 msgstr "Raspoložive kategorijske oznake za zaglavlje"
+
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
 
 msgid "Back to the text"
 msgstr "Vrati se na tekst"
@@ -509,6 +517,9 @@ msgstr "URI po želji"
 
 msgid "Destination"
 msgstr "Odredište"
+
+msgid "Did you mean:"
+msgstr ""
 
 msgid "Differences"
 msgstr "Razlike"
@@ -1136,6 +1147,9 @@ msgstr "Status zadatka"
 msgid "Jobs"
 msgstr "Zadaci"
 
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr "Zadaci na čekanju:"
 
@@ -1274,6 +1288,9 @@ msgstr "Aktiviraj sve poveznice"
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Pokaži neodvojivi razmak kao ~~"
 
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Poruka"
 
@@ -1327,6 +1344,9 @@ msgstr "Ime"
 
 msgid "Network library listing screen."
 msgstr "Stranica s popisom mrežnih arhiva."
+
+msgid "Never display the cover"
+msgstr ""
 
 msgid "Never generate a table of content"
 msgstr "Ne generiraj sadržaj"
@@ -1513,6 +1533,9 @@ msgstr "Odlomci"
 
 msgid "Part"
 msgstr "Dio"
+
+msgid "Part and chapter. If one side document: part."
+msgstr ""
 
 msgid "Part, for larger books only"
 msgstr "Dio, samo za velike knjige"
@@ -1783,6 +1806,9 @@ msgstr "Previše stranica"
 msgid "Quotes"
 msgstr "Citati"
 
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS feed"
 
@@ -1858,6 +1884,9 @@ msgstr "Izbriši"
 
 msgid "Remove cover image"
 msgstr "Ukloni naslovnu sliku"
+
+msgid "Remove this category"
+msgstr ""
 
 msgid "Rename to"
 msgstr "Preimenovanje"
@@ -1950,6 +1979,9 @@ msgstr "Spremljena konfiguracija \"%1\""
 
 msgid "Search"
 msgstr "Traži"
+
+msgid "Search filters"
+msgstr ""
 
 msgid "Search results"
 msgstr "Rezultati pretraživanja"
@@ -2159,6 +2191,9 @@ msgstr "Tag cloud s temama"
 
 msgid "Task"
 msgstr "Zadatak"
+
+msgid "TeX options (advanced)"
+msgstr ""
 
 msgid "Teaser"
 msgstr "Pregled"
@@ -2482,6 +2517,9 @@ msgstr ""
 
 msgid "Two side layout"
 msgstr "Obostrani prijelom"
+
+msgid "Type"
+msgstr ""
 
 msgid "URI"
 msgstr "URI"
@@ -2907,6 +2945,9 @@ msgstr "obavezno"
 
 msgid "markup *not* interpreted"
 msgstr "ovaj markup *nije* tumačen"
+
+msgid "minutes"
+msgstr ""
 
 msgid "new-example-uri"
 msgstr "novi-uri-kao-primjer"
