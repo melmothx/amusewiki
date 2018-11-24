@@ -85,5 +85,11 @@ for font in 'CMU Serif'            \
                 ;;
         esac
         fc-cache -f
+
+        # Check that font is installed successfully
+        if ! fc-list "$font" | grep -q style; then
+            echo "Failed to install $font"
+            exit 3;
+        fi
     fi
 done
