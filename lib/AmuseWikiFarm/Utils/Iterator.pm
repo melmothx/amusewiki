@@ -59,7 +59,7 @@ sub next {
         return $self->_array->[$i];
     }
     else {
-        return undef;
+        return;
     }
 }
 

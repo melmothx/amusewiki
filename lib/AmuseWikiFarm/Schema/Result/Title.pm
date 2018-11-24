@@ -918,7 +918,7 @@ sub cover_file {
             return $att;
         }
     }
-    return undef;
+    return;
 }
 
 sub cover_uri {
@@ -1306,7 +1306,7 @@ sub path_tiny {
 }
 
 sub parent_dir {
-    shift->path_tiny->parent->stringify;
+    return shift->path_tiny->parent->stringify;
 }
 
 sub raw_headers {
@@ -1379,6 +1379,7 @@ sub scan_and_store_links {
             }
         }
     }
+    return;
 }
 
 sub autogenerate_teaser {

@@ -246,6 +246,7 @@ sub _backup_and_install {
         $self->$live->spew($self->$method->slurp);
         $self->$live->chmod(0600);
     }
+    return;
 }
 
 sub live_cert_object {
