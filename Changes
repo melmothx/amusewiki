@@ -4,6 +4,18 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.320 2018-11-24
+
+ - Update ru.po, many thanks to @link2xt and @kabanoid
+ - Add Vagrantfile for quick hacking setup (@link2xt)
+ - Style improvements with Font Awesome (@link2xt)
+ - New bookbuilder options (typearea, tolerances)
+ - Fixed a couple of accessibility glitches
+ - Enhanced search suggestions
+ - Live job monitor (for root users)
+ - Fix redundant job scheduling in some corner cases
+
+
 2.311 2018-10-27
 
  - Fix encoding of Git::Wrapper output.
