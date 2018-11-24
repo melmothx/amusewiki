@@ -253,7 +253,7 @@ sub _build_bookbuilder {
         return $bb;
     }
     else {
-        return;
+        return undef;
     }
 }
 

@@ -274,7 +274,7 @@ sub full_uri {
     else {
         log_error { $self->f_class . ' for ' . $self->f_full_path_name . ' is not recognized' };
     }
-    return;
+    return undef;
 }
 
 sub thumbnail_base_path {

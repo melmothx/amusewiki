@@ -310,7 +310,7 @@ sub unpack_json_facets {
         splice(@out, $self->max_categories);
         return \@out;
     }
-    return;
+    return undef;
 }
 
 sub texts {

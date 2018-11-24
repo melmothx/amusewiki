@@ -201,7 +201,7 @@ sub read_specification_file {
     else {
         log_warn { "$spec_file does not exist" };
     }
-    return;
+    return undef;
 }
 
 

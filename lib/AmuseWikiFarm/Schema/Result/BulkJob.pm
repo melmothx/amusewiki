@@ -220,7 +220,7 @@ sub eta {
             return DateTime->now->add(seconds => $expected);
         }
     }
-    return;
+    return undef;
 }
 sub eta_locale {
     my ($self, $locale) = @_;

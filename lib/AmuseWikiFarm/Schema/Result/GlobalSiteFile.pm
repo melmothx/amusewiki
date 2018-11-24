@@ -203,7 +203,7 @@ sub mime_type {
             return 'image/jpeg';
         }
     }
-    return;
+    return undef;
 }
 
 __PACKAGE__->meta->make_immutable;

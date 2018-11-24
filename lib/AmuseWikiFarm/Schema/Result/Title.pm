@@ -918,7 +918,7 @@ sub cover_file {
             return $att;
         }
     }
-    return;
+    return undef;
 }
 
 sub cover_uri {
@@ -1379,7 +1379,6 @@ sub scan_and_store_links {
             }
         }
     }
-    return;
 }
 
 sub autogenerate_teaser {

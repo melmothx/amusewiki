@@ -1355,7 +1355,7 @@ sub fontspec_file {
         return File::Spec->rel2abs($filename);
     }
     else {
-        return;
+        return undef;
     }
 }
 
@@ -2177,7 +2177,7 @@ sub _build_lexicon {
             log_fatal { $@ };
         }
     }
-    return;
+    return undef;
 }
 
 sub multilanguage_list {
@@ -3296,7 +3296,7 @@ sub get_option {
         return $self->options_hr->{$lookup};
     }
     else {
-        return;
+        return undef;
     }
 }
 

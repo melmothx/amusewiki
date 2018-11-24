@@ -44,7 +44,7 @@ sub get_session_data {
         }
     }
     else {
-        return;
+        return undef;
     }
 }
 sub store_session_data {

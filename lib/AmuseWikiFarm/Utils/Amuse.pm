@@ -537,7 +537,7 @@ Or undef if the filename is dangerous.
 sub muse_get_full_path {
   my $filename = shift;
   # path required, so don't be so sure about names.
-  return unless muse_filename_is_valid($filename);
+  return undef unless muse_filename_is_valid($filename);
   my @chars = split //, $filename;
   my @path;
   # given the above regexp, the first character is guaranteed to be a
