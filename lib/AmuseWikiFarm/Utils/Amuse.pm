@@ -494,7 +494,7 @@ sub muse_naming_algo {
         # characters. But only if we have already 2 of them in the stash
         else {
             if ((@cleaned) and
-                ($cleaned[$#cleaned] ne "-")) {
+                ($cleaned[-1] ne "-")) {
                 push @cleaned, "-";
             }
         }
@@ -505,7 +505,7 @@ sub muse_naming_algo {
     @cleaned = map { split // } @cleaned;
     splice @cleaned, 95;
     # remove the trailing -
-    while ($cleaned[$#cleaned] eq "-") {
+    while ($cleaned[-1] eq "-") {
         pop @cleaned;
     }
     my $clean = join ("", @cleaned);
@@ -706,7 +706,7 @@ sub muse_filepath_is_valid {
     my @dirs = File::Spec->splitdir($path);
     return unless @dirs;
     # remove trailing separator, if any
-    if ($dirs[$#dirs] eq '') {
+    if ($dirs[-1] eq '') {
         pop @dirs;
     }
     return unless @dirs;
