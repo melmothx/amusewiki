@@ -1158,7 +1158,10 @@ msgid "Job status"
 msgstr "Статус заданий"
 
 msgid "Jobs"
-msgstr "Задание"
+msgstr "Задания"
+
+msgid "Jobs (all sites)"
+msgstr "Задания (все сайты)"
 
 msgid "Jobs waiting before yours:"
 msgstr "Задания, ожидающие перед вашим:"
