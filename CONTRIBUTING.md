@@ -47,8 +47,8 @@ file is required.
 
 ## Hacking
 
-There is a guide to quickly setup a development environment on
-[Hacking](https://amusewiki.org/library/hacking). Otherwise you need
-to follow the [install guide](https://amusewiki.org/library/install)
+There is a [guide to quickly setup a development environment](https://amusewiki.org/library/hacking).
+
+Otherwise you need to follow the [install guide](https://amusewiki.org/library/install)
 (the longer version, install from Git master).
 
