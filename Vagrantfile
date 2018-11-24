@@ -89,7 +89,7 @@ Vagrant.configure("2") do |config|
       fonts-texgyre
 
     # Required by /vagrant/script/upgrade_i18n
-    sudo apt install --no-install-recommends --no-install-suggests -y gettext
+    sudo apt-get install --no-install-recommends --no-install-suggests -y gettext
 
     # Install local::lib
     sudo apt-get install -y liblocal-lib-perl
