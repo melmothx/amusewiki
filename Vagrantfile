@@ -11,6 +11,8 @@ Vagrant.configure("2") do |config|
 
   # Install dependencies
   config.vm.provision "apt", type: "shell", privileged: false, inline: <<-SHELL
+    set -e
+
     sudo apt-get update
     sudo apt-get install -y nginx
 
@@ -101,6 +103,8 @@ Vagrant.configure("2") do |config|
 
   # Configure Amusewiki
   config.vm.provision "amusewiki-configure", type: "shell", privileged: false, inline: <<-SHELL
+    set -e
+
     cd /vagrant
 
     eval `perl -Mlocal::lib`
@@ -118,6 +122,8 @@ Vagrant.configure("2") do |config|
 
   # Start Amusewiki services on every "vagrant up" or "vagrant reload"
   config.vm.provision "amusewiki-run", type: "shell", privileged: false, run: "always", inline: <<-SHELL
+    set -e
+
     cd /vagrant
     eval `perl -Mlocal::lib`
     script/jobber.pl start
