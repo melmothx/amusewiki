@@ -21,6 +21,10 @@ my $sub = sub {
 
 my $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
 
+my $left = '<i class="fa fa-chevron-left"></i><span class="sr-only">«<span>';
+my $right = '<i class="fa fa-chevron-right"></i><span class="sr-only">»<span>';
+
+
 is_deeply($pages->items, [
                    {
                     'label' => 1,
@@ -47,7 +51,7 @@ is_deeply($pages->items, [
                     'label' => 14
                    },
                    {
-                    'label' => "\x{bb}\x{bb}\x{bb}",
+                    'label' => $right,
                     'uri' => '/latest/2'
                    }
                   ]);
@@ -62,7 +66,7 @@ $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
 is_deeply($pages->items,
           [
            {
-            'label' => "\x{ab}\x{ab}\x{ab}",
+            'label' => $left,
             'uri' => '/latest/7'
            },
            {
@@ -110,7 +114,7 @@ is_deeply($pages->items,
            },
            {
             'uri' => '/latest/9',
-            'label' => "\x{bb}\x{bb}\x{bb}"
+            'label' => $right,
            }
           ]);
 
@@ -125,7 +129,7 @@ $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
 is_deeply($pages->items,
           [
            {
-            'label' => "\x{ab}\x{ab}\x{ab}",
+            'label' => $left,
             'uri' => '/latest/8'
            },
            {
@@ -173,7 +177,7 @@ is_deeply($pages->items,
            },
            {
             'uri' => '/latest/10',
-            'label' => "\x{bb}\x{bb}\x{bb}"
+            'label' => $right,
            }
           ]) or diag Dumper($pages);
 
@@ -186,7 +190,7 @@ $pages = AmuseWikiFarm::Utils::Paginator::create_pager($pager, $sub);
 is_deeply($pages->items,
           [
            {
-            'label' => "\x{ab}\x{ab}\x{ab}",
+            'label' => $left,
             'uri' => '/latest/13'
            },
            {
