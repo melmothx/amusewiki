@@ -698,7 +698,7 @@ sub save_canonical_from_aliased_file {
         log_debug { "Nothing to do $src existing and $dest exists" }
     }
     else {
-        log_error { "$src doesn't exist" };
+        log_debug { "$src doesn't exist" };
     }
 }
 
