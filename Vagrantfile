@@ -82,6 +82,10 @@ Vagrant.configure("2") do |config|
       texlive-luatex                                                      \
       texlive-xetex                                                       \
 
+    sudo apt-get install --no-install-recommends --no-install-suggests -y \
+      fonts-cmu \
+      fonts-texgyre
+
     # Required by /vagrant/script/upgrade_i18n
     sudo apt install --no-install-recommends --no-install-suggests -y gettext
 
