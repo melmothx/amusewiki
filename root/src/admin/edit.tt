@@ -619,7 +619,7 @@ kpsewhich mylogo.pdf
     <div class="col-sm-6">
       <div class="well">
         <p>
-          [% loc('The following settings provide the defaults for each format.') %].
+          [% loc('The following settings provide the defaults for each format.') %]
           <a href="[% c.uri_for_action('/settings/formats') %]" target="_blank">
             [% loc('You can tune them editing them here.') %]
           </a>
