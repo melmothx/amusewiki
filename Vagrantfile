@@ -74,7 +74,9 @@ Vagrant.configure("2") do |config|
 
     sudo apt-get install --no-install-recommends --no-install-suggests -y \
       texlive-base                                                        \
-      texlive-generic-recommended texlive-fonts-recommended               \
+      texlive-fonts-extra                                                 \
+      texlive-fonts-recommended                                           \
+      texlive-generic-recommended                                         \
       texlive-lang-all                                                    \
       texlive-latex-base                                                  \
       texlive-latex-extra                                                 \
