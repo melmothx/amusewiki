@@ -148,6 +148,7 @@ $mech->content_lacks('class="pagination"');
 
 foreach my $num (1..10) {
     my $teaser = "Teaser $num. This buffer is for notes you dont want to save " x $num;
+    my $pubdate = DateTime->new(year => 2015, month => $num, day => 3);
     my $new_uri = add_text({
               title => "Another one... $num",
               teaser => $teaser,
@@ -155,7 +156,7 @@ foreach my $num (1..10) {
               subtitle => ("Sub " x $num),
               textbody => "Nothing interesting",
               SORTtopics => "first topic, second topic",
-              pubdate => DateTime->new(year => 2015, month => $num)->iso8601,
+              pubdate => $pubdate
              });
     $mech->get_ok('/feed');
     $mech->content_contains("Teaser $num. This buffer is for notes you dont");
@@ -359,7 +360,7 @@ $mech->content_contains('widebanner.png');
 my $deleted_text;
 for my $month (1,2) {
     $mech->get_ok('/monthly');
-    $mech->content_contains("monthly-list-item-2015-$month");
+    $mech->content_contains(qq{id="monthly-list-item-2015-$month"});
     my $archive = $site->monthly_archives->find({ year => 2015, month => $month });
     ok($archive, "Found month");
     foreach my $text ($archive->titles) {
@@ -373,7 +374,7 @@ for my $month (1,2) {
     $archive = $site->monthly_archives->find({ year => 2015, month => $month });
     is $archive->text_months->count, 0, "Count reset";
     $mech->get_ok('/monthly');
-    $mech->content_lacks("monthly-list-item-2015-$month");
+    $mech->content_lacks(qq{id="monthly-list-item-2015-$month"});
     $mech->get_ok("/monthly/2015/$month");
     $mech->content_contains("No text found!");
 }
