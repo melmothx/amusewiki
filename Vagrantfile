@@ -111,8 +111,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "amusewiki-run", type: "shell", privileged: false, run: "always", inline: <<-SHELL
     cd /vagrant
     eval `perl -Mlocal::lib`
-    script/jobber.pl start
-    script/amusewikifarm_fastcgi.pl start -l /home/vagrant/amw.sock -d
+    script/jobber.pl restart
+    script/init-fcgi.pl --socket /home/vagrant/amw.sock restart
     sudo service nginx restart
   SHELL
 end

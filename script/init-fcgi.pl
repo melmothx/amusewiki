@@ -6,6 +6,11 @@ use Daemon::Control;
 use File::Basename;
 use File::Spec;
 use Cwd;
+use Getopt::Long;
+
+my %opts;
+GetOptions (\%opts, 'socket=s') or die;
+
 my $basedir = getcwd();
 my $program = File::Spec->catfile($basedir, "script", "amusewikifarm_fastcgi.pl");
 my $vardir = File::Spec->catdir($basedir, 'var');
@@ -16,7 +21,7 @@ unless (-d $vardir) {
 die "Couldn't find $program" unless (-f $program);
 my $uid = (stat($program))[4];
 my $gid = (stat($program))[5];
-my $socket = File::Spec->catfile($vardir, 'amw.sock');
+my $socket = $opts{socket} || File::Spec->catfile($vardir, 'amw.sock');
 
 die "Don't run as root!" unless $uid && $gid;
 
