@@ -74,6 +74,7 @@ Vagrant.configure("2") do |config|
       libxml-feedpp-perl                             \
       libxml-writer-perl                             \
       libyaml-tiny-perl                              \
+      cgit                                           \
 
     sudo apt-get install --no-install-recommends --no-install-suggests -y \
       texlive-base                                                        \
