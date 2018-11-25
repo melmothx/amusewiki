@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 54;
+use Test::More tests => 52;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -192,7 +192,7 @@ is $site->jobs->count, 1;
 my $bulk = $site->update_db_from_tree_async;
 is $bulk->task, 'reindex';
 ok $bulk->is_reindex;
-is $site->jobs->count, 4, "4 jobs found";
+ok $site->jobs->count > 3, "at least 4 jobs found";
 diag $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
@@ -204,8 +204,10 @@ while (my $job = $site->jobs->dequeue) {
     }
     my $uri = $job->dispatch_job->produced;
     $job->delete;
-    ok $uri, "Got uri: $uri";
-    $mech->get_ok($uri);
+    unless ($uri =~ m/\.png$/) {
+        ok $uri, "Got uri: $uri";
+        $mech->get_ok($uri);
+    }
 }
 
 my $removed = catfile($site->repo_root, qw/a at/, "a-test-2.muse");
