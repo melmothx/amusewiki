@@ -6,7 +6,8 @@ echo "Checking and installing missing fonts"
 
 linkfont () {
     rm -fv `basename $1`
-    for texfontsdir in "$HOME/texlive/2017/texmf-dist/fonts" \
+    for texfontsdir in "$HOME/texlive/2018/texmf-dist/fonts" \
+                       "$HOME/texlive/2017/texmf-dist/fonts" \
                        "$HOME/texlive/2016/texmf-dist/fonts" \
                        "$HOME/texlive/2015/texmf-dist/fonts" \
                        "$HOME/texlive/2014/texmf-dist/fonts" \
@@ -89,7 +90,7 @@ for font in 'CMU Serif'            \
         # Check that font is installed successfully
         if ! fc-list "$font" | grep -q style; then
             echo "Failed to install $font"
-            exit 3;
+            # exit 3;
         fi
     fi
 done
