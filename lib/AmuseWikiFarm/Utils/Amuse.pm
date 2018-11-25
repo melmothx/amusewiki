@@ -271,6 +271,12 @@ sub muse_parse_file_path {
 
     my $epoch_timestamp = (stat($file))[9];
 
+    if ($epoch_timestamp > time()) {
+        log_error { "$file timestamp is in the future! Setting to now!" };
+        $epoch_timestamp = time() - 1;
+    }
+
+
     my %out = (
                f_path => $path,
                f_name => $name,
