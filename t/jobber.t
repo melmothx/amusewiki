@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 102;
+use Test::More tests => 85;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Cwd;
@@ -231,14 +231,15 @@ $schema->resultset('User')->update({ preferred_language => undef });
     my $completed = $site->jobs->search({ status => 'completed' });
     my @leftovers = map { $_->produced_files } $completed->all;
     diag Dumper(\@leftovers);
+    ok @leftovers > 7, "Found leftovers";
     ok ($completed->count, "Found jobs: " . $completed);
     foreach my $leftover (@leftovers) {
-        ok (-f $leftover, "$leftover exists");
+        die "$leftover doesn't exist" unless -f $leftover;
     }
     $site->jobs->search({ status => 'completed' })->update({ completed => $now });
     $site->jobs->purge_old_jobs;
     foreach my $leftover (@leftovers) {
-        ok (! -f $leftover, "$leftover purged");
+        die "$leftover still exists" if -f $leftover;
     }
     ok (!$site->jobs->search({ status => 'completed' })->count, "No completed jobs found, all purged");
 }
