@@ -257,7 +257,7 @@ sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
     # This is as much optimized as it can get. The bottleneck now is
     # in the XML generation, and there is nothing to do, I think.
     my $time = my $now = time();
-    my @texts = $site->titles->published_texts->sorted_by_title
+    my $texts_rs = $site->titles->published_texts->sorted_by_title
       ->search(undef,
                {
                 result_class => 'DBIx::Class::ResultClass::HashRefInflator',
@@ -277,15 +277,14 @@ sub crawlable :Chained('clean_root') :PathPart('crawlable') :Args(0) {
                                'title_categories.category.type' => 'category.type',
                                'title_categories.category.name' => 'category.name',
                               }
-               })->all;
+               });
     my $dt_parser = $c->model('DB')->storage->datetime_parser;
     # Dlog_debug { "texts: $_" } [ \@texts, $c->model('DB')->storage->datetime_parser ];
     log_debug { $now = time();
                 my $elapsed = $now - $time;
                 $time = $now;
                 "query done in $elapsed seconds" };
-    while (@texts) {
-        my $text = shift @texts;
+    while (my $text = $texts_rs->next) {
         my %entry = (
                      title => clean_html($text->{title}),
                      href => '/library/' . $text->{uri},
