@@ -4,32 +4,22 @@ set -e
 
 echo "Checking and installing missing fonts"
 
-texfontsdir=$HOME/texlive/2017/texmf-dist/fonts
-
-if [ ! -d $texfontsdir ]; then
-    texfontsdir=$HOME/texlive/2016/texmf-dist/fonts
-fi
-if [ ! -d $texfontsdir ]; then
-    texfontsdir=$HOME/texlive/2015/texmf-dist/fonts
-fi
-if [ ! -d $texfontsdir ]; then
-    texfontsdir=$HOME/texlive/2014/texmf-dist/fonts
-fi
-# freebsd
-if [ ! -d $texfontsdir ]; then
-    texfontsdir=/usr/local/share/texmf-dist/fonts
-fi
-# debian, but they move stuff around
-
-if [ ! -d $texfontsdir ]; then
-    texfontsdir=/usr/share/texmf/fonts
-fi
-
-
-if [ ! -d $texfontsdir ]; then
-    echo "Couldn't find $texfontsdir";
-    exit 2;
-fi
+linkfont () {
+    rm -fv `basename $1`
+    for texfontsdir in "$HOME/texlive/2017/texmf-dist/fonts" \
+                       "$HOME/texlive/2016/texmf-dist/fonts" \
+                       "$HOME/texlive/2015/texmf-dist/fonts" \
+                       "$HOME/texlive/2014/texmf-dist/fonts" \
+                       "/usr/local/share/texmf-dist/fonts" \
+                       "/usr/share/texmf/fonts" \
+                       "/usr/share/texlive/texmf-dist/fonts"; do
+        if [ -d "$texfontsdir/$1" ]; then
+            ln -s "$texfontsdir/$1"
+            return 0
+        fi
+    done
+    return 0
+}
 
 mkdir -p $HOME/.fonts
 cd $HOME/.fonts
@@ -59,42 +49,31 @@ for font in 'CMU Serif'            \
         echo "$font NOT installed, installing"
         case "$font" in
             Linux*)
-                rm -fv libertine
-                ln -s $texfontsdir/opentype/public/libertine
+                linkfont opentype/public/libertine
                 ;;
             TeX*)
-                rm -fv tex-gyre
-                ln -s $texfontsdir/opentype/public/tex-gyre
+                linkfont opentype/public/tex-gyre
                 ;;
             CMU*)
-                rm -fv cm-unicode
-                ln -s $texfontsdir/opentype/public/cm-unicode
+                linkfont opentype/public/cm-unicode
                 ;;
             *Torunska*)
-                rm -fv antt
-                ln -s $texfontsdir/opentype/public/antt
+                linkfont opentype/public/antt
                 ;;
             *Poltawskiego*)
-                rm -fv poltawski
-                ln -s $texfontsdir/opentype/gust/poltawski
+                linkfont opentype/gust/poltawski
                 ;;
             PT*)
-                rm -fv paratype
-                ln -s $texfontsdir/truetype/paratype
+                linkfont truetype/paratype
                 ;;
             Iwona*)
-                rm -fv iwona
-                ln -s $texfontsdir/opentype/nowacki/iwona
+                linkfont opentype/nowacki/iwona
                 ;;
             Noto*)
-                rm -fv noto
-                if [ -d $texfontsdir/truetype/google/noto ]; then
-                    ln -s $texfontsdir/truetype/google/noto
-                fi
+                linkfont truetype/google/noto
                 ;;
             DejaVu*)
-                rm -fv dejavu
-                ln -s $texfontsdir/truetype/public/dejavu
+                linkfont $texfontsdir/truetype/public/dejavu
                 ;;
             *Charis*)
                 rm -fv charis
@@ -106,5 +85,11 @@ for font in 'CMU Serif'            \
                 ;;
         esac
         fc-cache -f
+
+        # Check that font is installed successfully
+        if ! fc-list "$font" | grep -q style; then
+            echo "Failed to install $font"
+            exit 3;
+        fi
     fi
 done
