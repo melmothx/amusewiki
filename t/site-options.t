@@ -83,7 +83,7 @@ my $errors = $site->update_from_params({
                                         papersize => 'a4',
                                         bcor => '0mm',
                                         opening => 'right',
-                                        sansfont => 'Iwona',
+                                        sansfont => 'TeX Gyre Heros',
                                         beamercolortheme => 'wolverine',
                                         beamertheme => 'Madrid',
                                        });
