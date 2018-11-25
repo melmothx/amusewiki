@@ -49,7 +49,7 @@ $mech2->content_lacks('/library/first-test');
 my $coverfile = File::Spec->catfile(qw/t files shot.png/);
 $mech1->submit_form(with_fields => {
                                     title => 'My nice title',
-                                    mainfont => 'Iwona',
+                                    mainfont => 'TeX Gyre Heros',
                                     coverimage => $coverfile,
                                    },
                     button => 'update');
@@ -61,7 +61,7 @@ $mech2->get_ok('/bookbuilder');
 $mech2->submit_form(with_fields => { token => $sid1 });
 # now the cover is found
 $mech2->content_contains('My nice title');
-$mech2->content_like(qr{Iwona"\s+selected}s);
+$mech2->content_like(qr{TeX Gyre Heros"\s+selected}s);
 $mech2->content_contains('/library/first-test');
 $mech2->get_ok('/bookbuilder/cover');
 $mech1->get_ok('/bookbuilder');

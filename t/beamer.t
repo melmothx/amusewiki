@@ -31,7 +31,7 @@ my $site = create_site($schema, $site_id);
 $site->update({ sl_pdf => 1,
                 cgit_integration => 1,
                 secure_site => 0,
-                sansfont => 'Iwona',
+                sansfont => 'TeX Gyre Heros',
                 monofont => 'TeX Gyre Cursor',
                 beamertheme => 'Madrid',
                 beamercolortheme => 'wolverine',
@@ -61,7 +61,7 @@ ok (-f catfile($destination, 'slides.sl.pdf'), "Slides created");
 ok (! -f catfile($destination, 'slides-s-no.sl.pdf'),
     "Slides not created if #slides no");
 my $tex_body = read_file(catfile($destination, 'slides.' . $cf->tex_extension));
-like($tex_body, qr{Iwona}, "Found the sans font");
+like($tex_body, qr{tex\s*gyre\s*heros}i, "Found the sans font");
 like($tex_body, qr{wolverine}, "Found the beamer color theme");
 like($tex_body, qr{Madrid}, "Found the beamer theme");
 like($tex_body, qr{tex\s*gyre\s*cursor}i, "Found the font");
