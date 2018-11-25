@@ -41,6 +41,7 @@ Vagrant.configure("2") do |config|
       libdata-dumper-concise-perl                    \
       libdbd-sqlite3-perl                            \
       libdbix-class-perl                             \
+      libdbix-class-schema-loader-perl               \
       libemail-valid-perl                            \
       libfcgi-perl                                   \
       libfcgi-procmanager-perl                       \
@@ -76,7 +77,6 @@ Vagrant.configure("2") do |config|
 
     sudo apt-get install --no-install-recommends --no-install-suggests -y \
       texlive-base                                                        \
-      texlive-fonts-extra                                                 \
       texlive-fonts-recommended                                           \
       texlive-generic-recommended                                         \
       texlive-lang-all                                                    \
@@ -87,8 +87,10 @@ Vagrant.configure("2") do |config|
       texlive-xetex                                                       \
 
     sudo apt-get install --no-install-recommends --no-install-suggests -y \
-      fonts-cmu \
-      fonts-texgyre
+      fonts-cmu fonts-texgyre fonts-sil-charis \
+      fonts-dejavu fonts-linuxlibertine fonts-sil-charis fonts-hosny-amiri \
+      lmodern fonts-lmodern fonts-sil-scheherazade fonts-sil-gentium \
+      fonts-sil-gentium-basic
 
     # Required by /vagrant/script/upgrade_i18n
     sudo apt-get install --no-install-recommends --no-install-suggests -y gettext
