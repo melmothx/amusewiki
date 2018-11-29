@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.321 2018-11-29
+
+ - Minor release to silence a useless logging.
+
 2.320 2018-11-24
 
  - Update ru.po, many thanks to @link2xt and @kabanoid
