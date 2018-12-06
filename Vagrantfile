@@ -114,6 +114,15 @@ Vagrant.configure("2") do |config|
     lmodern
   ]
 
+  # Perl module compilation dependencies
+  packages += %w[
+    g++
+    libssl-dev
+    libxapian-dev
+    libxml2-dev
+    libexpat1-dev
+  ]
+
   # Install gettext required by /vagrant/script/upgrade_i18n
   packages << "gettext"
 
