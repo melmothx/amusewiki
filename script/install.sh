@@ -69,6 +69,7 @@ cpanm -q Log::Dispatch Log::Log4perl Module::Install Mail::Send \
       Log::Dispatch::File::Stamped \
       Module::Install::Catalyst
 cpanm -q --installdeps .
+perl Makefile.PL # Generate Makefile
 make
 
 echo -n "Checking installation of TeX live: ";
