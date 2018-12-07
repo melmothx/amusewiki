@@ -716,17 +716,6 @@ psgi/amusewiki-cgit.psgi
 psgi/amusewiki.psgi
 psgi/amusewikimeta.psgi
 README.mdwn
-root/docs/logo.png
-root/docs/manual.a4.pdf
-root/docs/manual.bare.html
-root/docs/manual.epub
-root/docs/manual.html
-root/docs/manual.log
-root/docs/manual.lt.pdf
-root/docs/manual.muse
-root/docs/manual.pdf
-root/docs/manual.tex
-root/docs/manual.zip
 root/src/admin/debug_loc.tt
 root/src/admin/edit.tt
 root/src/admin/jobs.tt
