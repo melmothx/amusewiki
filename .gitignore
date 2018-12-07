@@ -15,6 +15,7 @@ bbfiles/*
 !bbfiles/README.txt
 dbic.yaml
 !t/dbic.yaml
+root/git/cgit.cgi
 root/static/images/font-preview/*
 root/static/js/ckeditor*
 root/static/js/highlight*
