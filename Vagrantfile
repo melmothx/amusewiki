@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
 
   # Install script/install.sh dependencies
   packages += %w[
+    carton
     cpanminus
     fontconfig
     gcc
