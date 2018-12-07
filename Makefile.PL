@@ -162,7 +162,12 @@ catalyst_ignore('repo',
                 '.*\.lock',
                 '.*\.example',
                 'fontspec.json',
-                'ssl');
+                'ssl',
+                'CONTRIBUTING.md',
+                'MYMETA.json',
+                'MYMETA.yml',
+                'README.mdwn',
+                'Vagrantfile');
 catalyst;
 
 install_script glob('script/amusewiki-*');
