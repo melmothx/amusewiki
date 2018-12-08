@@ -3,6 +3,7 @@ package AmuseWikiFarm::Utils::Paths;
 use utf8;
 use strict;
 use warnings;
+use File::ShareDir;
 use Path::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 use constant ROOT => Path::Tiny->cwd;
@@ -85,7 +86,7 @@ sub mkits_location {
 }
 
 sub dbicdh_location {
-    return _install_location(qw/dbicdh/);
+    return path(File::ShareDir::dist_dir('AmuseWikiFarm'))->child('dbicdh')->realpath;
 }
 
 sub templates_location {
