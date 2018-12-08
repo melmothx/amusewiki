@@ -68,7 +68,8 @@ echo "Installing perl modules"
 cpanm -q Log::Dispatch Log::Log4perl Module::Install Mail::Send \
       Log::Dispatch::File::Stamped \
       Module::Install::Catalyst \
-      ExtUtils::MakeMaker::CPANfile
+      ExtUtils::MakeMaker::CPANfile \
+      File::ShareDir::Install
 cpanm -q --installdeps .
 perl Makefile.PL # Generate Makefile
 make
