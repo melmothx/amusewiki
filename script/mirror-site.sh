@@ -4,6 +4,6 @@
 
 echo "Replaced by mirror-site.pl in the same amusewiki directory"
 
-cd $(dirname $0) || exit 2;
-basedir=$(pwd);
-$basedir/mirror-site.pl "$@"
+cd "$(dirname $0)" || exit 2
+basedir=$(pwd)
+"$basedir/mirror-site.pl" "$@"
