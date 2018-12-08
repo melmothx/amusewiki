@@ -11,7 +11,7 @@ for command in perl cpanm fc-cache convert gm update-mime-database xapian-check 
                make gcc wget git unzip rsync; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
-        echo "YES";
+        echo "YES"
     else
         if [ $command = 'xapian-check' ]; then
             echo "NO, please install xapian and its utils"
@@ -72,24 +72,24 @@ cpanm -q --installdeps .
 perl Makefile.PL # Generate Makefile
 make
 
-echo -n "Checking installation of TeX live: ";
+echo -n "Checking installation of TeX live: "
 if which xelatex > /dev/null; then
-    echo "OK";
+    echo "OK"
 else
     echo "TeXlive is packaged for a lot of OSes and you're suggested"
     echo "to install it (in its full variant) from the repository."
     echo "Otherwise see https://www.tug.org/texlive/"
     echo "A non-interactive script is provided under script/install-texlive.sh"
-    exit 2;
+    exit 2
 fi
 
 echo "Installing needed JS"
 ./script/install_js.sh
 ./script/install_fonts.sh
 
-cd $AMWHOME
+cd "$AMWHOME"
 ./script/amusewiki-populate-webfonts
 
-cd $AMWHOME
+cd "$AMWHOME"
 ./script/install-cgit.pl
 

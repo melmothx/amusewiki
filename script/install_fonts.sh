@@ -5,7 +5,7 @@ set -e
 echo "Checking and installing missing fonts"
 
 linkfont () {
-    rm -fv `basename $1`
+    rm -fv "$(basename "$1")"
     for texfontsdir in "$HOME/texlive/2018/texmf-dist/fonts" \
                        "$HOME/texlive/2017/texmf-dist/fonts" \
                        "$HOME/texlive/2016/texmf-dist/fonts" \
@@ -22,8 +22,8 @@ linkfont () {
     return 0
 }
 
-mkdir -p $HOME/.fonts
-cd $HOME/.fonts
+mkdir -p "$HOME/.fonts"
+cd "$HOME/.fonts"
 for font in 'CMU Serif'            \
             'Linux Libertine O'    \
             'Linux Biolinum O'     \
@@ -74,12 +74,12 @@ for font in 'CMU Serif'            \
                 linkfont truetype/google/noto
                 ;;
             DejaVu*)
-                linkfont $texfontsdir/truetype/public/dejavu
+                linkfont "$texfontsdir/truetype/public/dejavu"
                 ;;
             *Charis*)
                 rm -fv charis
-                wget -O $HOME/CharisSIL-4.114.zip 'http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=CharisSIL-4.114.zip&filename=CharisSIL-4.114.zip'
-                unzip -d $HOME/.fonts/charis $HOME/CharisSIL-4.114.zip
+                wget -O "$HOME/CharisSIL-4.114.zip" 'http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=CharisSIL-4.114.zip&filename=CharisSIL-4.114.zip'
+                unzip -d "$HOME/.fonts/charis" "$HOME/CharisSIL-4.114.zip"
                 ;;
             *)
                 echo "Unhandled font $font!"
@@ -90,7 +90,7 @@ for font in 'CMU Serif'            \
         # Check that font is installed successfully
         if ! fc-list "$font" | grep -q style; then
             echo "Failed to install $font"
-            # exit 3;
+            # exit 3
         fi
     fi
 done

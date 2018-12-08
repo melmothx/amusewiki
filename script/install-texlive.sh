@@ -1,7 +1,8 @@
 #!/bin/sh
+set -e
 
 TEXMIRROR=ctan.ijs.si/tex-archive
-cd $HOME
+cd "$HOME"
 echo "Installing TeX live 2017 in your home under texlive"
 # remove all stray files
 rm -rfv install-tl-*

@@ -18,7 +18,7 @@ if [ ! -d "$js_dir/ckeditor" ]; then
         wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%20$ckeditor_version/$ckeditor_zip
         unzip $ckeditor_zip
     fi
-    cd $home_dir
+    cd "$home_dir"
 fi
 
 if [ ! -d "$js_dir/highlight" ]; then
@@ -32,5 +32,5 @@ if [ ! -d "$js_dir/highlight" ]; then
         mkdir styles
         wget -O styles/default.css https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css
     fi
-    cd $home_dir
+    cd "$home_dir"
 fi
