@@ -76,10 +76,12 @@
     </div>
 
     [% SET muse_doc = revision.muse_doc %]
+    [% UNLESS muse_doc.header_as_html.notoc %]
     [% IF muse_doc.toc_as_html %]
     <div class="well">
     [% muse_doc.toc_as_html %]
     </div>
+    [% END %]
     [% END %]
 
     <div id="htmltextbody">
