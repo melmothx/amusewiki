@@ -9,7 +9,7 @@
     <link rel="stylesheet"
           href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 4 }) %]" />
     <link rel="stylesheet"
-          href="[% c.uri_for('/static/css/font-awesome.min.css', { v => 3 }) %]" />
+          href="[% c.uri_for('/static/css/fork-awesome.min.css', { v => 3 }) %]" />
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/css/amuse.css', { v => 3 }) %]" />
     <link rel="stylesheet" type="text/css"
