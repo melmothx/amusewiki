@@ -1001,7 +1001,7 @@ sub formats_definitions {
     my @all = ({
                 code => 'epub',
                 ext => '.epub',
-                icon => 'fa-tablet',
+                icon => 'fa-file-epub',
                 # loc('EPUB (for mobile devices)');
                 desc => 'EPUB (for mobile devices)',
                 oldid => "downloadepub",
@@ -1049,7 +1049,7 @@ sub formats_definitions {
     foreach my $custom ($self->custom_formats->active_only->all) {
         my $icon;
         if ($custom->is_epub) {
-            $icon = 'fa-tablet';
+            $icon = 'fa-file-epub';
         }
         elsif ($custom->is_imposed_pdf) {
             $icon = 'fa-columns fa-flip-vertical';

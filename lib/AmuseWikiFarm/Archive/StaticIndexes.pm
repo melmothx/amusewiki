@@ -217,7 +217,7 @@ sub css_files {
     my $self = shift;
     my $bootstrap = $self->site->bootstrap_theme;
     my @out = (path(css => "bootstrap.$bootstrap.css"),
-               path(css => "font-awesome.min.css"),
+               path(css => "fork-awesome.min.css"),
                # path(css => "amusewiki.css")
               );
     return @out;
@@ -227,7 +227,7 @@ sub font_files {
     my $self = shift;
     my $src_dir = AmuseWikiFarm::Utils::Paths::static_file_location();
     my @out;
-    foreach my $font ($src_dir->child('fonts')->children(qr{fontawesome}i)) {
+    foreach my $font ($src_dir->child('fonts')->children(qr{forkawesome}i)) {
         log_debug { "Found font file " };
         push @out, path(fonts => $font->basename);
     }
@@ -264,8 +264,8 @@ sub copy_static_files {
             }
             else {
                 log_debug { "Copying $src to $target" };
-                if ($target->basename eq 'font-awesome.css' or
-                    $target->basename eq 'font-awesome.min.css') {
+                if ($target->basename eq 'fork-awesome.css' or
+                    $target->basename eq 'fork-awesome.min.css') {
                     my $body = $src->slurp_raw;
                     $body =~ s/(\.(eot|woff|ttf|svg|woff2))\?[^']*v=[0-9]+\.[0-9]+\.[0-9]+[^']*'/$1'/g;
                     $target->spew_raw($body);
