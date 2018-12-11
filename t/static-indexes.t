@@ -14,7 +14,7 @@ use AmuseWikiFarm::Schema;
 
 use AmuseWikiFarm::Archive::StaticIndexes;
 use Data::Dumper;
-use Test::More tests => 72;
+use Test::More tests => 70;
 use DateTime;
 use Path::Tiny;
 use Test::WWW::Mechanize;

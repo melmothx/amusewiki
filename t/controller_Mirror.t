@@ -43,7 +43,7 @@ my @paths = (qw[
                    authors.html 
                    titles.html topics.html site_files/navlogo.png 
                    site_files/favicon.ico
-                   site_files/__static_indexes/fonts/FontAwesome.otf
+                   site_files/__static_indexes/fonts/forkawesome-webfont.ttf
               ]);
 
 # private mode: always deny
