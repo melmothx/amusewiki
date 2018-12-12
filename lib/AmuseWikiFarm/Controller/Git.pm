@@ -4,6 +4,7 @@ with 'AmuseWikiFarm::Role::Controller::HumanLoginScreen';
 use namespace::autoclean;
 
 use AmuseWikiFarm::Log::Contextual;
+use AmuseWikiFarm::Archive::CgitEmulated;
 use Encode qw/decode/;
 
 BEGIN { extends 'Catalyst::Controller'; }
@@ -48,8 +49,8 @@ sub git :Chained('/site') :Args {
     # cgit_integration is false.
     $self->check_login($c) unless $site->cgit_integration;
 
-    my $cgit = $c->model('Webserver')->cgit_proxy;
-    if ($cgit->disabled) {
+    my $cgit = AmuseWikiFarm::Archive::CgitEmulated->new;
+    unless ($cgit->enabled) {
         $c->detach('/not_found');
         return;
     }
@@ -73,37 +74,33 @@ sub git :Chained('/site') :Args {
 
 
     my %params = %{ $c->request->params };
-    my $res = $cgit->get([ @args ], { %params });
-    if ($res->success) {
-        if ($res->verbatim) {
-            $c->response->headers->content_type($res->content_type);
-            if (my $last_modified = $res->last_modified) {
-                $c->response->header('Last-Modified', $last_modified);
-            }
-            if (my $disposition = $res->disposition) {
-                $c->response->header('Content-Disposition', $disposition);
-            }
-            if (my $expires = $res->expires) {
-                $c->response->header('Expires', $expires);
-            }
-            # work around a catalyst bug encoding the stuff again to
-            # support older versions.
-            if ($res->content_type =~ m{text/\w+\; charset=utf-8}i) {
-                $c->response->body(decode('UTF-8', $res->content));
-            }
-            else {
-                $c->response->content_length(length($res->content));
-                $c->response->body($res->content);
+    my $res = $cgit->get([ @args ], { %params }, $c->request->env);
+    if (my ($status) = $res->headers->remove_header('Status')) {
+        log_debug { "Status is $status" } ;
+        if ($status =~ m/(\d{3})/a) {
+            if ($status and $status ne '200') {
+                $c->response->status($1);
+                $c->response->body("Not found");
+                return;
             }
         }
-        elsif (my $html = $res->html) {
-            $c->stash(cgit_body => $html,
-                      text => $text,
-                      cgit_page => 1);
-        }
-        else {
-            $c->detach('/not_found');
-        }
+    }
+
+    my %headers = $res->headers->flatten;
+    Dlog_debug { "Headers are $_" } \%headers;
+    $c->response->header(%headers);
+
+    if ($res->headers->header('Content-Disposition')) {
+        # now, here we trust both Catalyst and the HTTP::Message
+        # module to do the right thing about the encoding/decoding.
+        # And let's hope for the best. Seems to work, though.
+        $c->response->body($res->decoded_content);
+        $c->detach;
+    }
+    elsif ($res->content_type =~ m/text\/html/) {
+        $c->stash(cgit_body => $res->decoded_content,
+                  text => $text,
+                  cgit_page => 1);
     }
     else {
         $c->detach('/not_found');
