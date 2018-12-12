@@ -49,7 +49,7 @@ sub git :Chained('/site') :Args {
     # cgit_integration is false.
     $self->check_login($c) unless $site->cgit_integration;
 
-    my $cgit = AmuseWikiFarm::Archive::CgitEmulated->new;
+    my $cgit = $c->model('Cgit');
     unless ($cgit->enabled) {
         $c->detach('/not_found');
         return;
@@ -75,7 +75,10 @@ sub git :Chained('/site') :Args {
 
     my %params = %{ $c->request->params };
     my $res = $cgit->get([ @args ], { %params }, $c->request->env);
-    if (my ($status) = $res->headers->remove_header('Status')) {
+
+    # plack doesn't want it in the headers
+    my ($status) = $res->headers->remove_header('Status');
+    if ($status) {
         log_debug { "Status is $status" } ;
         if ($status =~ m/(\d{3})/a) {
             if ($status and $status ne '200') {

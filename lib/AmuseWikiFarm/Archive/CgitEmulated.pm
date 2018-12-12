@@ -24,7 +24,7 @@ sub _build_cgit {
     foreach my $cgit (@locations) {
         if (-f $cgit) {
             $cgit_exec = $cgit;
-            # log_debug { "Using $cgit as cgit executable" };
+            log_info { "Using $cgit as cgit executable" };
             last;
         }
     }
@@ -49,7 +49,7 @@ sub get {
     my $uri = URI->new;
     $uri->path('/' . join('/', @{ $args || []}));
     $uri->query_form({ %{ $params || {} } });
-    log_debug { "Getting $uri " };
+    log_debug { "Getting $uri" };
     my ($out, $err);
     my %req_headers = map { $_ => $env->{$_} } grep { /^(HTTP_|REQUEST_)/ } keys %{ $env || {} };
     delete $req_headers{HTTP_PROXY};
@@ -68,11 +68,11 @@ sub get {
                       SERVER_SOFTWARE => "AmuseWikiFarm::Archive::CgitEmulated",
                       REMOTE_ADDR     => '127.0.0.1',
                       REMOTE_HOST     => 'localhost',
-                      REMOTE_PORT     => int( rand(64000) + 1000 )
+                      REMOTE_PORT     => 63000, # a number like another
                      );
         # Dlog_debug { "Environment is $_" } \%ENV;
         my $in;
-        run [ $self->cgit ], \$in, \$out, \$err, timeout(6) or die;
+        run [ $self->cgit ], \$in, \$out, \$err, timeout(60) or die;
     };
     if ($err) {
         Dlog_error { "$err with $_" } [ $args, $params ];
