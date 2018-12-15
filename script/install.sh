@@ -4,8 +4,6 @@
 
 set -e
 
-AMWHOME=`pwd`
-
 missing='no'
 for command in perl cpanm fc-cache convert gm update-mime-database xapian-check openssl \
                make gcc wget git unzip rsync; do
@@ -87,9 +85,9 @@ echo "Installing needed JS"
 ./script/install_js.sh
 ./script/install_fonts.sh
 
-cd "$AMWHOME"
+echo "Creating fontspec.json"
 ./script/amusewiki-populate-webfonts
 
-cd "$AMWHOME"
+echo "Installing cgit"
 ./script/install-cgit.pl
 
