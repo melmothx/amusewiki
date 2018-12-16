@@ -32,6 +32,7 @@ requires 'FCGI::ProcManager';
 requires 'CGI::Emulate::PSGI';
 requires 'CGI::Compile';
 
+requires 'Config::General'; # Required by Catalyst::Plugin::ConfigLoader
 requires 'Unicode::Collate';
 requires 'DBIx::Class';
 requires 'DBD::SQLite';
