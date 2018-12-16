@@ -84,9 +84,10 @@ Vagrant.configure("2") do |config|
     sudo apt-get $APT_ARGS update
     sudo apt-get $APT_ARGS install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
 
-    # Install local::lib
-    sudo apt-get $APT_ARGS install -y liblocal-lib-perl
-    echo 'eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >>~/.bashrc
+    # Install dependencies from cpanfile
+    sudo apt-get $APT_ARGS install -y libmodule-install-perl
+    cd /vagrant
+    carton install --deployment
   SHELL
 
   # Configure Amusewiki
@@ -95,12 +96,14 @@ Vagrant.configure("2") do |config|
 
     cd /vagrant
 
-    eval `perl -Mlocal::lib`
     cp dbic.yaml.sqlite.example dbic.yaml
 
-    script/install.sh
-    script/configure.sh localhost
-    script/amusewiki-generate-nginx-conf | sudo /bin/sh
+    script/install_js.sh
+    script/install_fonts.sh
+    carton exec script/amusewiki-populate-webfonts
+    carton exec script/install-cgit.pl
+    carton exec script/configure.sh localhost
+    carton exec script/amusewiki-generate-nginx-conf | sudo /bin/sh
     sudo sed -i s/www-data/vagrant/ /etc/nginx/nginx.conf
 
     # It is impossible to create socket on VirtualBox filesystem.
@@ -113,9 +116,8 @@ Vagrant.configure("2") do |config|
     set -e
 
     cd /vagrant
-    eval `perl -Mlocal::lib`
-    script/jobber.pl restart
-    script/init-fcgi.pl --socket /home/vagrant/amw.sock restart
+    carton exec script/jobber.pl restart
+    carton exec script/init-fcgi.pl --socket /home/vagrant/amw.sock restart
     sudo service nginx restart
   SHELL
 
