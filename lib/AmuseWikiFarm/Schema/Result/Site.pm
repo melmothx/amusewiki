@@ -3504,6 +3504,13 @@ sub serialize_site {
             }
             push @records, \%row_data;
         }
+        if (my $ordering = $search_args[1]{order_by}) {
+            if (@$ordering == 1) {
+                my $order_by = $ordering->[0];
+                log_debug { "Ordering again by $order_by" };
+                @records = sort { $a->{$order_by} cmp $b->{$order_by} } @records;
+            }
+        }
         $data{$method} = \@records;
     }
     # then the users
