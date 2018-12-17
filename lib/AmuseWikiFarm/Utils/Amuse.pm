@@ -84,13 +84,13 @@ sub muse_file_info {
 
     my $header = muse_header_object($details->{f_full_path_name});
 
-    $details->{lang} = $header->language;
+    my $lang = $details->{lang} = $header->language;
     $details->{slides} = $header->wants_slides;
 
     my %parsed_header = %{ $header->header };
     foreach my $directive (keys %parsed_header) {
         unless (exists $details->{$directive}) {
-            $details->{$directive} = muse_format_line(html => $parsed_header{$directive});
+            $details->{$directive} = muse_format_line(html => $parsed_header{$directive}, $lang);
         }
     }
 
@@ -106,9 +106,12 @@ sub muse_file_info {
     my @cats;
     if (exists $details->{authors} or
         exists $details->{sortauthors}) {
-        if (my @authors = $header->authors_as_html_list) {
-            push @cats, map { _parse_topic_or_author(author => $_) }
-              $header->authors_as_html_list;
+        if (my @authors = @{$header->authors || []}) {
+            Dlog_debug  { "Formatting $_ with $lang" } \@authors;
+            push @cats, map {
+                _parse_topic_or_author(author => muse_format_line(html => $_, $lang))
+            } @authors;
+            Dlog_debug { "Cats are $_ now" } \@cats;
         }
     }
 
@@ -118,10 +121,16 @@ sub muse_file_info {
     # are in archive.t
 
     elsif ($details->{author}) {
-        push @cats, _parse_topic_or_author(author => $details->{author});
+        push @cats, _parse_topic_or_author(author => muse_format_line(html => $details->{author},
+                                                                      $lang));
     }
-    push @cats, map { _parse_topic_or_author(topic  => $_) } $header->topics_as_html_list;
+    push @cats, map {
+        _parse_topic_or_author(topic => muse_format_line(html => $_, $lang))
+    } @{$header->topics || []};
+    Dlog_debug { $_ } $header;
+
     @cats = grep { $_ } @cats;
+
     if (@cats) {
         $details->{parsed_categories} = \@cats;
     }
