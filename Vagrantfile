@@ -130,4 +130,18 @@ Vagrant.configure("2") do |config|
     script/init-fcgi.pl --socket /home/vagrant/amw.sock restart
     sudo service nginx restart
   SHELL
+
+  config.vm.hostname = 'amusewiki'
+
+  config.vm.post_up_message = <<~MESSAGE
+    Amusewiki is running at http://localhost:8080/
+
+    To change default password:
+      $ vagrant ssh
+      vagrant@amusewiki:~$ cd /vagrant/
+      vagrant@amusewiki:~$ script/amusewiki-reset-password amusewiki
+
+    Run tests with:
+      vagrant@amusewiki:~$ prove -b
+  MESSAGE
 end
