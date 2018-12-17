@@ -15,7 +15,7 @@ if [ ! -d "$js_dir/ckeditor" ]; then
     if [ -f "/usr/share/javascript/ckeditor/ckeditor.js" ]; then
         ln -s /usr/share/javascript/ckeditor
     else
-        wget http://download.cksource.com/CKEditor/CKEditor/CKEditor%20$ckeditor_version/$ckeditor_zip
+        wget https://download.cksource.com/CKEditor/CKEditor/CKEditor%20$ckeditor_version/$ckeditor_zip
         unzip $ckeditor_zip
     fi
     cd "$home_dir"
