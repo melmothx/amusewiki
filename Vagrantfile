@@ -129,9 +129,9 @@ Vagrant.configure("2") do |config|
     To change default password:
       $ vagrant ssh
       vagrant@amusewiki:~$ cd /vagrant/
-      vagrant@amusewiki:~$ script/amusewiki-reset-password amusewiki
+      vagrant@amusewiki:~$ carton exec script/amusewiki-reset-password amusewiki
 
     Run tests with:
-      vagrant@amusewiki:~$ prove -b
+      vagrant@amusewiki:~$ carton exec prove -l
   MESSAGE
 end
