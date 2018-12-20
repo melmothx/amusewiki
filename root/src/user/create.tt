@@ -55,7 +55,7 @@
   </div>
   <div class="col-md-6">
     <strong>[% loc('How to choose a password') %]</strong><br />
-    <img src="http://imgs.xkcd.com/comics/password_strength.png" width="90%"/>
+    <img src="https://imgs.xkcd.com/comics/password_strength.png" width="90%"/>
   </div>
 </div>
 
