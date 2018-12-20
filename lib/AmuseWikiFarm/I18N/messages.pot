@@ -2128,7 +2128,7 @@ msgstr ""
 msgid "Reason for deletion"
 msgstr ""
 
-#: lib/AmuseWikiFarm/Schema/Result/Site.pm:3767 root/src/tasks/rebuild.tt:26
+#: lib/AmuseWikiFarm/Schema/Result/Site.pm:3774 root/src/tasks/rebuild.tt:26
 msgid "Rebuild"
 msgstr ""
 

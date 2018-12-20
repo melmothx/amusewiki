@@ -2,45 +2,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: AmuseWiki 0.01\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-11 22:40-0200\n"
+"POT-Creation-Date: 2014-03-06 10:16+0100\n"
 "PO-Revision-Date: 2018-12-20 10:09+0100\n"
 "Last-Translator: baderna james\n"
 "Language-Team: Portuguese\n"
 "Language: pt-BR\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Loco https://localise.biz\n"
 "X-Loco-Source-Locale: en\n"
 "X-Loco-Project-Id: 57701\n"
-"X-Loco-Api-Version: 1.0.21 20181210-1"
+"X-Loco-Api-Version: 1.0.21 20181210-1\n"
 
 #. ($filename)
-#: loco:5be8cc18a08ef156a3498511
 msgid "%1 doesn't exist"
 msgstr "%1 não existe"
 
 #. ($c->stash->{site}->full_name)
 #. (site.full_name)
-#: loco:5be8cc18a08ef156a3498512
 msgid "%1 on mobile"
 msgstr "%1 no mobile"
 
 #. (text.pages_estimated)
-#: loco:5be8cc18a08ef156a3498513
 msgid "%1 pp."
 msgstr "%1 pp."
 
-#: loco:5be8cc18a08ef156a3498514
 msgid "(smart quotes, links, footnotes, etc.)"
 msgstr "(aspas inteligentes, links, notas de rodapé, etc.)"
 
-#: loco:5be8cc18a08ef156a3498515
 msgid "A blank line (or more blank lines) starts a new paragraph."
 msgstr "Uma ou mais linhas em branco começam um novo parágrafo."
 
-#: loco:5be8cc18a08ef156a3498516
 msgid ""
 "A cover image was already added, but you can replace it uploading\n"
 "              a new one."
@@ -48,7 +42,6 @@ msgstr ""
 "Uma imagem de capa já foi adicionada, mas você pode substituí-la\n"
 "               enviando uma nova."
 
-#: loco:5be8cc18a08ef156a3498517
 msgid ""
 "A footnote is a line which starts with a number between square\n"
 "          brackets, with no leading whitespace."
@@ -56,20 +49,16 @@ msgstr ""
 "Uma nota de rodapé é uma linha que começa com um número entre colchetes, sem "
 "nenhum espaço antes do colchete."
 
-#: loco:5be8cc18a08ef156a3498518
 msgid "A line which starts with 2 or more whitespaces is a quotation."
 msgstr "Uma linha que começa com dois ou mais espaços em branco é uma citação."
 
-#: loco:5be8cc18a08ef156a3498519
 msgid "A line which starts with 20 or more whitespaces is right-aligned."
 msgstr ""
 "Uma linha que começa com 20 ou mais espaços em branco é alinhada à direita"
 
-#: loco:5be8cc18a08ef156a349851a
 msgid "A line which starts with 6 or more whitespaces is centered."
 msgstr "Uma linha que começa com 6 ou mais espaços em branco é centralizada."
 
-#: loco:5be8cc18a08ef156a349851b
 msgid ""
 "A list of links and labels to insert into the top\n"
 "            bar. One per line, first the url, then the label,\n"
@@ -81,77 +70,59 @@ msgstr ""
 "teste\""
 
 #. (location)
-#: loco:5be8cc18a08ef156a349851c
 msgid "A new text has been created at %1"
 msgstr "Um novo texto foi criado em %1"
 
-#: loco:5be8cc18a08ef156a349851d
 msgid "A nice title"
 msgstr "Um bom título"
 
-#: loco:5be8cc18a08ef156a349851e
 msgid "A4 imposed PDF"
 msgstr "PDF imposto sobre A4"
 
-#: loco:5be8cc18a08ef156a349851f
 msgid "A4 paper"
 msgstr "Papel A1"
 
-#: loco:5be8cc18a08ef156a3498520
 msgid "A5 paper"
 msgstr "Papel A5"
 
-#: loco:5be8cc18a08ef156a3498521
 msgid "A6 paper (also suitable for e-readers)"
 msgstr "Papel A6 (e e-readers)"
 
-#: loco:5be8cc18a08ef156a3498522
 msgid "Abandoned editing in progress, feel free to check the diff and resume"
 msgstr ""
 "Edição abandonada em progresso, sinta se livre para checar o *diff* e "
 "continuar."
 
-#: loco:5be8cc18a08ef156a3498523
 msgid "Action"
 msgstr "Ação"
 
-#: loco:5be8cc18a08ef156a3498524
 msgid "Activate the blog-style look and feel"
 msgstr "Ativar visual tipo blog"
 
-#: loco:5be8cc18a08ef156a3498525
 msgid "Active"
 msgstr "Ativar"
 
-#: loco:5be8cc18a08ef156a3498526
 msgid "Add a cover image (PNG or JPG)"
 msgstr "Adicionar uma imagem de capa (PNG ou JPG)"
 
-#: loco:5be8cc18a08ef156a3498527
 msgid "Add a new text"
 msgstr "Adicionar um novo texto"
 
-#: loco:5be8cc18a08ef156a3498528
 msgid "Add an attachment (PNG, JPG or PDF)"
 msgstr "Adicionar um anexo (PNG, JPG ou PDF)"
 
-#: loco:5be8cc18a08ef156a3498529
 msgid "Add crop marks to the PDF"
 msgstr "Adicionar marcas de recorte no PDF"
 
-#: loco:5be8cc18a08ef156a349852a
 msgid "Add new remote repository"
 msgstr "Adicionar um novo repositório remoto"
 
-#: loco:5be8cc18a08ef156a349852b
 msgid "Add non-breaking spaces where appropriate for the language"
 msgstr "Adicionar espaços não-separáveis onde apropriado para a linguagem"
 
-#: loco:5be8cc18a08ef156a349852c
 msgid "Add or delete and add again the <user_repo_url> on this page."
 msgstr "Adicione ou apague a <user_repo_url> nesta página."
 
-#: loco:5be8cc18a08ef156a349852d
 msgid ""
 "Add paginator for text listing when the number of texts is greater than "
 "(integer)"
@@ -159,37 +130,30 @@ msgstr ""
 "Adicionar paginador para a lista de textos quando o número de textos é maior "
 "que (inteiro)"
 
-#: loco:5be8cc18a08ef156a349852e
 msgid "Add sections to the bookbuilder"
 msgstr "Adicionar seções ao construtor de livros"
 
-#: loco:5be8cc18a08ef156a349852f
 msgid "Add the OPDS URL"
 msgstr "Adicione a URL OPDS"
 
-#: loco:5be8cc18a08ef156a3498530
 msgid "Add the selected parts to the bookbuilder"
 msgstr "Adicionar partes selecionadas ao construtor de livros"
 
-#: loco:5be8cc18a08ef156a3498531
 msgid "Add the whole text"
 msgstr "Adicionar o texto completo"
 
-#: loco:5be8cc18a08ef156a3498532
 msgid "Add this text to the bookbuilder"
 msgstr "Adicionar este texto ao construtor de livros"
 
-#: loco:5be8cc18a08ef156a3498533
 msgid ""
-"Additional information (full date, original title, translators, credits, etc)"
-"."
+"Additional information (full date, original title, translators, credits, "
+"etc)."
 msgstr ""
 "Informação adicional (data completa, título original, tradutores, créditos, "
 "etc)."
 
 #. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
-#: loco:5be8cc18a08ef156a3498534
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -199,37 +163,32 @@ msgstr ""
 "     ela vai aparecer em %1. Existe um grande botão vermelho\n"
 "     para cada texto apagado, onde você pode prosseguir com o expurgo."
 
-#: loco:5be8cc18a08ef156a3498535
+msgid "Age:"
+msgstr ""
+
 msgid "Alias"
 msgstr "Alias"
 
-#: loco:5be8cc18a08ef156a3498536
 msgid "Alias can't point to itself"
 msgstr "O alias não pode apontar para si mesmo"
 
-#: loco:5be8cc18a08ef156a3498537
 msgid ""
 "All kind of lists start with one or more leading\n"
 "        whitespace."
 msgstr "Todos os tipos de lista começam com espaços."
 
-#: loco:5be8cc18a08ef156a3498538
 msgid "All languages"
 msgstr "Todas as linguagens"
 
-#: loco:5be8cc18a08ef156a3498539
 msgid "All revisions"
 msgstr "Todas as revisões"
 
-#: loco:5be8cc18a08ef156a349853a
 msgid "All sites"
 msgstr "Todos os sites"
 
-#: loco:5be8cc18a08ef156a349853b
 msgid "All users"
 msgstr "Todos os usuários"
 
-#: loco:5be8cc18a08ef156a349853c
 msgid ""
 "Also produce slides\n"
 "          from the document. Each section, no matter how deep, will\n"
@@ -244,7 +203,6 @@ msgstr ""
 "seção, ponha um comentário no corpo da seção com a cadeia de caracteres "
 "\"noslide\"."
 
-#: loco:5be8cc18a08ef156a349853d
 msgid ""
 "An URI is a string which uniquely identifies the text\n"
 "      in the archive. In theory, it could be anything, but if you want\n"
@@ -262,129 +220,104 @@ msgstr ""
 "      errico-malatesta-anarquia-2. Por favor note que isso normalmente\n"
 "      não é necessário"
 
-#: loco:5be8cc18a08ef156a349853e
 msgid "Apache is not currently supported"
 msgstr "Apache atualmente não é suportado"
 
-#: loco:5be8cc18a08ef156a349853f
 msgid "Archive"
 msgstr "Arquivo"
 
-#: loco:5be8cc18a08ef156a3498540
 msgid "Archive by month"
 msgstr "Arquivar por mês."
 
-#: loco:5be8cc18a08ef156a3498541
 msgid "Archive history"
 msgstr "Histórico de arquivo"
 
-#: loco:5be8cc18a08ef156a3498542
 msgid "Are you sure?"
 msgstr "Tem certeza?"
 
-#: loco:5be8cc18a08ef156a3498543
 msgid "As cover in the header"
 msgstr "Como capa no cabeçalho"
 
-#: loco:5be8cc18a08ef156a3498544
 msgid "As regular image in the body"
 msgstr "Como imagem normal no corpo"
 
-#: loco:5be8cc18a08ef156a3498545
 msgid "Attached images"
 msgstr "Imagens anexadas"
 
-#: loco:5be8cc18a08ef156a3498546
 msgid "Attachments"
 msgstr "Anexos"
 
-#: loco:5be8cc18a08ef156a3498547
 msgid "Author"
 msgstr "Autor"
 
-#: loco:5be8cc18a08ef156a3498548
 msgid "Author and title. If one side document: title."
 msgstr "Autor e título. Se documento de um lado só: título."
 
-#: loco:5be8cc18a08ef156a3498549
 msgid "Authors"
 msgstr "Autores"
 
-#: loco:5be8cc18a08ef156a349854a
 msgid "Authors and topics listing"
 msgstr "Listagem de autores e tópicos"
 
-#: loco:5be8cc18a08ef156a349854b
 msgid "Authors for indexing"
 msgstr "Autores para indexação"
 
-#: loco:5be8cc18a08ef156a349854c
 msgid "Automatically generated"
 msgstr "Gerado automaticamente"
 
-#: loco:5be8cc18a08ef156a349854d
 msgid "Automatically request and renew SSL certificates from Let's Encrypt"
 msgstr "Solicitar e renovar automaticamente certificados SSL do Let's Encrypt"
 
-#: loco:5be8cc18a08ef156a349854e
 msgid "Available category tags for header"
 msgstr "Etiquetas de categoria disponíveis para o cabeçalho"
 
-#: loco:5be8cc18a08ef156a349854f
+msgid ""
+"Avoid hyphenation on the last word of a sentence (it could result in bad "
+"spacing)"
+msgstr ""
+
 msgid "Back to the text"
 msgstr "De volta ao texto"
 
-#: loco:5be8cc18a08ef156a3498550
 msgid "Bad request"
 msgstr "Má requisição"
 
-#: loco:5be8cc18a08ef156a3498551
 msgid "Beamer color theme"
 msgstr "Tema de cores do Beamer"
 
-#: loco:5be8cc18a08ef156a3498552
 msgid "Beamer theme"
 msgstr "Tema do Beamer"
 
-#: loco:5be8cc18a08ef156a3498553
 msgid "Binding correction in millimeters (additional inner margin)"
 msgstr "Correção para encadernação em milimetros (margem interna adicional)"
 
-#: loco:5be8cc18a08ef156a3498554
 msgid ""
 "Blocks of 16 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
 "Blocos de 16 páginas para serem dobradas duas vezes e então encadernadas."
 
-#: loco:5be8cc18a08ef156a3498555
 msgid ""
 "Blocks of 8 pages to be folded twice and then bound\n"
 "                together."
 msgstr ""
 "Blocos de 8 páginas para serem dobradas duas vezes e então encadernadas."
 
-#: loco:5be8cc18a08ef156a3498556
 msgid "Blog"
 msgstr "Blog"
 
-#: loco:5be8cc18a08ef156a3498557
 msgid "Bold"
 msgstr "Bold"
 
-#: loco:5be8cc18a08ef156a3498558
 msgid "Bookbuilder"
 msgstr "Bookbuilder"
 
-#: loco:5be8cc18a08ef156a3498559
 msgid "Bookbuilder page limit (integer)"
 msgstr "Limite de páginas do construtor de livros (número inteiro)"
 
-#: loco:5be8cc18a08ef156a349855a
 msgid "Build it"
 msgstr "Construir"
 
-#: loco:5be8cc18a08ef156a349855b
 msgid ""
 "By default, secondary footnotes use arabic numbering\n"
 "        between parens. With this option they will use per-page alpha\n"
@@ -395,70 +328,54 @@ msgstr ""
 "        essa opção eles usam numeração alpha\n"
 "        por página."
 
-#: loco:5be8cc18a08ef156a349855c
 msgid "By relevance"
 msgstr "Por relevância"
 
-#: loco:5be8cc18a08ef156a349855d
 msgid "By sku ascending"
 msgstr "Por SKU ascendente"
 
-#: loco:5be8cc18a08ef156a349855e
 msgid "By sku descending"
 msgstr "Por SKU descendente"
 
-#: loco:5be8cc18a08ef156a349855f
 msgid "By title A-Z"
 msgstr "Por título A-Z"
 
-#: loco:5be8cc18a08ef156a3498560
 msgid "By title Z-A"
 msgstr "Por título Z-A"
 
-#: loco:5be8cc18a08ef156a3498561
 msgid "CSS Theme"
 msgstr "Tema CSS"
 
-#: loco:5be8cc18a08ef156a3498562
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: loco:5be8cc18a08ef156a3498563
 msgid "Canonical name"
 msgstr "Nome canônico"
 
-#: loco:5be8cc18a08ef156a3498564
 msgid "Categories"
 msgstr "Categorias"
 
-#: loco:5be8cc18a08ef156a3498565
 msgid "Center all the sectioning titles."
 msgstr "Centralizar todos os títulos de seção."
 
-#: loco:5be8cc18a08ef156a3498566
 msgid "Center the chapter titles."
 msgstr "Centralizar os títulos de capítulo."
 
-#: loco:5be8cc18a08ef156a3498567
 msgid "Changes"
 msgstr "Mudanças"
 
-#: loco:5be8cc18a08ef156a3498568
 msgid "Changes applied"
 msgstr "Mudanças aplicadas"
 
 #. ($c->stash->{revision}->title->uri)
 #. (revision.title.uri)
 #. (author_title)
-#: loco:5be8cc18a08ef156a3498569
 msgid "Changes for %1"
 msgstr "Mudanças para %1"
 
-#: loco:5be8cc18a08ef156a349856a
 msgid "Changes saved, thanks! They are now waiting to be published"
 msgstr "Mudanças salvas, obrigado! Elas estão aguardando para serem publicadas"
 
-#: loco:5be8cc18a08ef156a349856b
 msgid ""
 "Changing urls is a poor practice. Anyway, if you know what you’re\n"
 "doing, you can delete an existing text and point to another adding a\n"
@@ -469,43 +386,33 @@ msgstr ""
 "adicionando uma\n"
 "diretiva #DELETED no cabeçalho do texto com a sintaxe especial:"
 
-#: loco:5be8cc18a08ef156a349856c
 msgid "Chapter"
 msgstr "Capítulo"
 
-#: loco:5be8cc18a08ef156a349856d
 msgid "Chapter and section. If one side document: chapter."
 msgstr "Capítulo e seção. Se documento de um lado: capítulo."
 
-#: loco:5be8cc18a08ef156a349856e
 msgid "Chapter, only for chapter divisions in books"
 msgstr "Capítulo, apenas para divisões em livros"
 
-#: loco:5be8cc18a08ef156a349856f
 msgid "Cheatsheet for the markup"
 msgstr "Cola para a markup"
 
-#: loco:5be8cc18a08ef156a3498570
 msgid "Choose a paper format"
 msgstr "Escolha um formato de papel"
 
-#: loco:5be8cc18a08ef156a3498571
 msgid "Clear the book list"
 msgstr "Limpar a lista de livros"
 
-#: loco:5be8cc18a08ef156a3498572
 msgid "Click on the images to get the sample PDF"
 msgstr "Clique nas imagens para obter o PDF de amostra"
 
-#: loco:5be8cc18a08ef156a3498573
 msgid "Clone the repo locally and set it up"
 msgstr "Clonar o repositório localmente e configurá-lo"
 
-#: loco:5be8cc18a08ef156a3498574
 msgid "Close"
 msgstr "Fechar"
 
-#: loco:5be8cc18a08ef156a3498575
 msgid ""
 "Columns for the left side of the editing page, with the editing box (out of "
 "12)"
@@ -513,318 +420,247 @@ msgstr ""
 "Colunas para o lado esquerdo da página em edição, com a caixa de edição (de "
 "12)"
 
-#: loco:5be8cc18a08ef156a3498576
 msgid "Completed"
 msgstr "Completo"
 
-#: loco:5be8cc18a08ef156a3498577
 msgid "Computing of differences took"
 msgstr "Computar as diferenças levou"
 
-#: loco:5be8cc18a08ef156a3498578
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: loco:5be8cc18a08ef156a3498579
 msgid "Continuous footnote numbering across the whole document."
 msgstr "Numeração de notas de rodapé contínua ao longo do documento."
 
-#: loco:5be8cc18a08ef156a349857a
 msgid "Convert to archive markup"
 msgstr "Converter para markup de arquivo"
 
-#: loco:5be8cc18a08ef156a349857b
 msgid "Couldn't add the text"
 msgstr "Não foi possível adicionar o texto"
 
-#: loco:5be8cc18a08ef156a349857c
 msgid "Couldn't automatically generate the URI!"
 msgstr "Não foi possível gerar automaticamente a URI!"
 
-#: loco:5be8cc18a08ef156a349857d
 msgid "Couldn't build that"
 msgstr "Não consegui construir isso"
 
-#: loco:5be8cc18a08ef156a349857e
 msgid "Create"
 msgstr "Criar"
 
-#: loco:5be8cc18a08ef156a349857f
 msgid "Create a new format"
 msgstr "Criar novo formato"
 
-#: loco:5be8cc18a08ef156a3498580
 msgid "Create a new librarian"
 msgstr "Criar novo bibliotecário"
 
-#: loco:5be8cc18a08ef156a3498581
 msgid "Create a new special page"
 msgstr "Criar nova página especial"
 
-#: loco:5be8cc18a08ef156a3498582
 msgid "Create a new user"
 msgstr "Criar novo usuário"
 
-#: loco:5be8cc18a08ef156a3498583
 msgid "Create a topic alias"
 msgstr "Criar um tópico alias"
 
-#: loco:5be8cc18a08ef156a3498584
 msgid "Create an author alias"
 msgstr "Criar um alias de autor"
 
-#: loco:5be8cc18a08ef156a3498585
 msgid ""
 "Create an empty repository. Here we refer to its url as <user_repo_url>."
 msgstr ""
 "Cria um repositório vazio. Aqui nos referimos a sua URL como <user_repo_url>."
 
-#: loco:5be8cc18a08ef156a3498586
 msgid "Create new site"
 msgstr "Criar novo site"
 
-#: loco:5be8cc18a08ef156a3498587
 msgid "Create user and mail password"
 msgstr "Criar senhas de usuário e e-mail"
 
-#: loco:5be8cc18a08ef156a3498588
 msgid "Created"
 msgstr "Criado"
 
-#: loco:5be8cc18a08ef156a3498589
 msgid "Created by"
 msgstr "Criado por"
 
-#: loco:5be8cc18a08ef156a349858a
 msgid "Created new text"
 msgstr "Criado novo"
 
-#: loco:5be8cc18a08ef156a349858b
 msgid "Current time"
 msgstr "Hora atual"
 
 #. ($c->stash->{site}->canonical)
-#: loco:5be8cc18a08ef156a349858c
 msgid "Custom formats for %1"
 msgstr "Formatos personalizados para %1"
 
-#: loco:5be8cc18a08ef156a349858d
 msgid "Date"
 msgstr "Data"
 
-#: loco:5be8cc18a08ef156a349858e
 msgid "Date of the original publication"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a349858f
 msgid "Default sorting for the category text list"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a3498590
 msgid "Deferred/Deleted texts"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a3498591
 msgid "Delete"
 msgstr "Deletar"
 
 #. (remote.name)
-#: loco:5be8cc18a08ef156a3498592
 msgid "Delete remote repository %1"
 msgstr "Deletar repositório remoto %1"
 
-#: loco:5be8cc18a08ef156a3498593
 msgid ""
 "Deleting a revision is safe if a text has been\n"
 "    published. Otherwise deleting it you'll lose the unpublished changes"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a3498594
 msgid "Description"
 msgstr "Descrição"
 
-#: loco:5be8cc18a08ef156a3498595
 msgid "Description item"
 msgstr "Descrição do item"
 
-#: loco:5be8cc18a08ef156a3498596
 msgid ""
 "Description lists use a double colon to separate the\n"
 "        term and the description."
 msgstr ""
 
-#: loco:5be8cc18a08ef156a3498597
 msgid "Desired URI"
 msgstr "URI desejada"
 
-#: loco:5be8cc18a08ef156a3498598
 msgid "Destination"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a3498599
+msgid "Did you mean:"
+msgstr ""
+
 msgid "Differences"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a349859a
 msgid ""
 "Directory with templates in the site repository, e.g.\n"
 "        \"templates\" (ASCII only). Do not set it unless you know\n"
 "        exactly what you are doing"
 msgstr ""
-"Diretório com modelos no repositório do site, por exemplo \"templates\" "
-"(apenas ASCII). Não configure exceto se você souber exatamente o que está "
+"Diretório com modelos no repositório do site, por exemplo \"templates"
+"\" (apenas ASCII). Não configure exceto se você souber exatamente o que está "
 "fazendo"
 
-#: loco:5be8cc18a08ef156a349859b
 msgid "Disable /mirror/ URL for anonymous users"
 msgstr "Desabilitar /mirror/ URL para usuários anônimos"
 
-#: loco:5be8cc18a08ef156a349859c
 msgid "Display url as"
 msgstr "Exibir URL como"
 
-#: loco:5be8cc18a08ef156a349859d
 msgid "Division factor"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a349859e
 msgid "Do not create a cover page and start the text on the first page"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a349859f
 msgid "Do not enforce save message"
 msgstr "Não forçar mensagem de salvamento"
 
-#: loco:5be8cc18a08ef156a34985a0
 msgid "Do not use bold fonts"
 msgstr "Não utilize fontes Bold"
 
-#: loco:5be8cc18a08ef156a34985a1
 msgid "Done"
 msgstr "Pronto"
 
-#: loco:5be8cc18a08ef156a34985a2
 msgid "Double bars"
 msgstr "Barras duplas"
 
-#: loco:5be8cc18a08ef156a34985a3
 msgid "Downloads"
 msgstr "Downloads"
 
-#: loco:5be8cc18a08ef156a34985a4
 msgid "E.g. some word AND title:\"My Title\" AND author:Author OR year:2017"
 msgstr ""
 "Por exemplo: alguma palavra AND title:\"Meu Título\" AND author:Autor OR "
 "year:2017"
 
-#: loco:5be8cc18a08ef156a34985a5
 msgid "EPUB"
 msgstr "EPUB"
 
-#: loco:5be8cc18a08ef156a34985a6
 msgid "EPUB (for mobile devices)"
 msgstr "EPUB (para dispositivos móveis)"
 
-#: loco:5be8cc18a08ef156a34985a7
 msgid "ETA"
 msgstr "ETA"
 
-#: loco:5be8cc18a08ef156a34985a8
 msgid "Edit"
 msgstr "Editar"
 
-#: loco:5be8cc18a08ef156a34985a9
 msgid "Edit attachment description"
 msgstr "Editar descrição do anexo"
 
 #. ($format->format_name)
-#: loco:5be8cc18a08ef156a34985aa
 msgid "Edit format %1"
 msgstr "Editar formato %1"
 
-#: loco:5be8cc18a08ef156a34985ab
 msgid "Edit full site configuration"
 msgstr "Editar configurações completas do site"
 
-#: loco:5be8cc18a08ef156a34985ac
 msgid "Edit screen layout options"
 msgstr "Editar opções de layout de tela"
 
 #. (esite.id)
-#: loco:5be8cc18a08ef156a34985ad
 msgid "Edit site %1"
 msgstr "Editar site %1"
 
-#: loco:5be8cc18a08ef156a34985ae
 msgid "Edit site configuration"
 msgstr "Editar configurações do site"
 
-#: loco:5be8cc18a08ef156a34985af
 msgid "Edit the text you want to unpublish and add this line to the header:"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985b0
 msgid "Edit this text"
 msgstr "Editar esse texto"
 
 #. (user.username)
-#: loco:5be8cc18a08ef156a34985b1
 msgid "Edit user %1"
 msgstr "Editar usuário %1"
 
-#: loco:5be8cc18a08ef156a34985b2
 msgid "Editing"
 msgstr "Editando"
 
-#: loco:5be8cc18a08ef156a34985b3
 msgid "Email"
 msgstr "E-mail"
 
-#: loco:5be8cc18a08ef156a34985b4
 msgid "Email sent!"
 msgstr "E-mail enviado"
 
-#: loco:5be8cc18a08ef156a34985b5
 msgid "Email updated"
 msgstr "E-mail atualizado"
 
-#: loco:5be8cc18a08ef156a34985b6
 msgid "Emails do not match"
 msgstr "Os e-mails não correspondem"
 
-#: loco:5be8cc18a08ef156a34985b7
 msgid "Embed fonts in the EPUB file"
 msgstr "Embutir fontes no arquivo EPUB"
 
-#: loco:5be8cc18a08ef156a34985b8
 msgid "Enable \"What links here\" feature"
 msgstr "Habilitar funcionalidade \"O que liga para cá\""
 
-#: loco:5be8cc18a08ef156a34985b9
 msgid "Enable title ordering by SKU"
 msgstr "Habilitar ordenação de títulos por SKU"
 
-#: loco:5be8cc18a08ef156a34985ba
 msgid "Erase this revision"
 msgstr "Apagar essa revisão"
 
-#: loco:5be8cc18a08ef156a34985bb
 msgid "Error converting the upload file. Is it an HTML file?"
 msgstr "Erro ao converter o arquivo carregado. É mesmo um HTML?"
 
-#: loco:5be8cc18a08ef156a34985bc
 msgid "Error sending mail!"
 msgstr "Erro ao enviar e-mail!"
 
-#: loco:5be8cc18a08ef156a34985bd
 msgid "Error while converting the HTML. Sorry."
 msgstr "Erro ao converter o HTML."
 
-#: loco:5be8cc18a08ef156a34985be
 msgid "Errors"
 msgstr "Erros"
 
-#: loco:5be8cc18a08ef156a34985bf
 msgid ""
 "Even if this site has a responsive, mobile-friendly layout,\n"
 "  it does not provide a dedicated mobile application."
@@ -832,7 +668,6 @@ msgstr ""
 "Mesmo se este site tiver um layout responsivo, amigável à dispositivos "
 "móveis, ele não provê uma aplicação móvel dedicada."
 
-#: loco:5be8cc18a08ef156a34985c0
 msgid ""
 "Every\n"
 "        section will generate a slide. You need to do proper\n"
@@ -841,130 +676,101 @@ msgstr ""
 "Cada seção irá gerar um slide. Você precisar de divisão em seções "
 "apropriadas para isto funcionar."
 
-#: loco:5be8cc18a08ef156a34985c1
 msgid ""
 "Exactly like 2up, but the sheets are meant to be cut\n"
 "        horizontally first and then stack on each other. This way you\n"
 "        can print, for example, A6 booklets on A4."
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985c2
 msgid "Example"
 msgstr "Exemplo"
 
-#: loco:5be8cc18a08ef156a34985c3
 msgid "Existing redirections"
 msgstr "Redirecionamentos existentes"
 
-#: loco:5be8cc18a08ef156a34985c4
 msgid "Failed"
 msgstr "Falhou"
 
 #. ("$name $url")
-#: loco:5be8cc18a08ef156a34985c5
 msgid "Failed to add remote repository %1"
 msgstr "Falha ao adicionar repositório remoto %1"
 
 #. ($name)
-#: loco:5be8cc18a08ef156a34985c6
 msgid "Failed to remove Remote repository %1"
 msgstr "Falha ao remover o repositório remoto %1"
 
-#: loco:5be8cc18a08ef156a34985c7
 msgid "File already in the body"
 msgstr "Arquivo já no corpo"
 
-#: loco:5be8cc18a08ef156a34985c8
 msgid "File extension"
 msgstr "Extensão do arquivo"
 
-#: loco:5be8cc18a08ef156a34985c9
 msgid "File format not allowed"
 msgstr "Formato do arquivo não permitido"
 
-#: loco:5be8cc18a08ef156a34985ca
 msgid "File to delete not found!"
 msgstr "Filme para apagar não encontrado"
 
-#: loco:5be8cc18a08ef156a34985cb
 msgid "File too big"
 msgstr "Arquivo muito grande"
 
-#: loco:5be8cc18a08ef156a34985cc
 msgid "File uploaded!"
 msgstr "Arquivo enviado!"
 
-#: loco:5be8cc18a08ef156a34985cd
 msgid ""
 "Fill with blank pages before the last page if the signature is not full."
 msgstr ""
 "Complete com páginas em bracno antes da última página se a assinatura não "
 "estiver completa."
 
-#: loco:5be8cc18a08ef156a34985ce
 msgid "Filters"
 msgstr "Filtros"
 
-#: loco:5be8cc18a08ef156a34985cf
 msgid "Find the add catalogue menu."
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985d0
 msgid "Find the network library menu, or equivalent."
 msgstr "Encontre o menu de biblioteca de rede, ou equivalente."
 
-#: loco:5be8cc18a08ef156a34985d1
 msgid "First Author and Second Author"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985d2
 msgid "First Author, Second Author"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985d3
 msgid "First slide"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985d4
 msgid "First you have to unpublish it via #DELETED."
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985d5
 msgid "Fix typography (smart quotes)"
 msgstr "Consertar tipografia (aspas inteligentes)"
 
-#: loco:5be8cc18a08ef156a34985d6
 msgid "Fixed 16 pages signatures on 2 sheets, with double individual folding."
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985d7
 msgid "Fixed 16 pages signatures on a single sheet, with triple folding."
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985d8
 msgid "Fixed category list"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985d9
 msgid ""
 "Fixed signatures of 8 pages, to be cut horizontally, folded individually, "
 "and bound together."
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985da
 msgid "Font preview"
 msgstr "Preview da fonte"
 
-#: loco:5be8cc18a08ef156a34985db
 msgid "Font size"
 msgstr "Tamanho da fonte"
 
-#: loco:5be8cc18a08ef156a34985dc
 msgid "Footnotes"
 msgstr "Notas de rodapé"
 
 #. ($error->{footnotes},                                      $error->{footnotes_found},                                      $error->{references},                                      $error->{references_found})
-#: loco:5be8cc18a08ef156a34985dd
 msgid ""
 "Footnotes mismatch: found %1 footnotes (%2) and found %3 footnote references "
 "in the body (%4), ignoring changes."
@@ -972,77 +778,59 @@ msgstr ""
 "Discrepância nas notas de rodapé: %1 notas encontradas (%2) e %3 referências "
 "a notas encontradas no corpo (%4), ignorando mudanças."
 
-#: loco:5be8cc18a08ef156a34985de
 msgid "For texts from the internet use"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985df
 msgid "For texts without a table of content, start text on the very first page"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985e0
 msgid ""
 "For topics and authors redirections, you can create them\n"
 "  here"
 msgstr "Para redirecionamentos de tópicos e autores, você pode criar eles aqui"
 
-#: loco:5be8cc18a08ef156a34985e1
 msgid "Force a line break."
 msgstr "Forçar a quebra de linha"
 
-#: loco:5be8cc18a08ef156a34985e2
 msgid "Force publishing"
 msgstr "Forçar publicação"
 
-#: loco:5be8cc18a08ef156a34985e3
 msgid "Format name"
 msgstr "Nome do formato"
 
-#: loco:5be8cc18a08ef156a34985e4
 msgid "Format successfully created"
 msgstr "Formato criado com sucesso"
 
-#: loco:5be8cc18a08ef156a34985e5
 msgid "Format successfully updated"
 msgstr "Formato atualizado com sucesso"
 
-#: loco:5be8cc18a08ef156a34985e6
 msgid "Format: yyyy-mm-dd hh:mm, e.g."
 msgstr "Formato: yyyy-mm-dd hh:mm, por exemplo"
 
-#: loco:5be8cc18a08ef156a34985e7
 msgid "Formats"
 msgstr "Formatos"
 
-#: loco:5be8cc18a08ef156a34985e8
 msgid "Full list of texts"
 msgstr "Lista completa de textos"
 
-#: loco:5be8cc18a08ef156a34985e9
 msgid "Full tag cloud"
 msgstr "Nuvem de tags/etiquetas completa"
 
-#: loco:5be8cc18a08ef156a34985ea
 msgid "Full text search"
 msgstr "Pesquisa em texto completo"
 
-#: loco:5be8cc18a08ef156a34985eb
 msgid "General configuration"
 msgstr "Configurações gerais"
 
-#: loco:5be8cc18a08ef156a34985ec
 msgid "Generic (fits in A4 and Letter)"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985ed
 msgid "Git console"
 msgstr "Console do Git"
 
-#: loco:5be8cc18a08ef156a34985ee
 msgid "Git is not enabled on this site"
 msgstr "Git não habilitado neste site"
 
-#: loco:5be8cc18a08ef156a34985ef
 msgid ""
 "HTML code to append to each regular page, inserted\n"
 "            verbatim, so be careful"
@@ -1050,7 +838,6 @@ msgstr ""
 "Código HTML a anexar a cada página regular, inserida\n"
 "                  verbatim, então seja cuidadoso"
 
-#: loco:5be8cc18a08ef156a34985f0
 msgid ""
 "HTML to append to each special page, inserted\n"
 "            verbatim, now you have a chance to screw up everything, so\n"
@@ -1060,19 +847,15 @@ msgstr ""
 "               verbatim, existe a chance de estragar tudo,\n"
 "               então tome cuidado"
 
-#: loco:5be8cc18a08ef156a34985f1
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML a ser inserido na barra lateral esquerda"
 
-#: loco:5be8cc18a08ef156a34985f2
 msgid "HTML to insert into the right sidebar"
 msgstr "HTML a ser inserido na barra lateral direita"
 
-#: loco:5be8cc18a08ef156a34985f3
 msgid "HTML to insert on the bottom of the layout, above the footer"
 msgstr "HTML a ser inserido na parte mais baixa do layout, acima do rodapé"
 
-#: loco:5be8cc18a08ef156a34985f4
 msgid ""
 "HTML to insert on the top of the layout, behind the navigation bar and below "
 "the banner"
@@ -1080,33 +863,26 @@ msgstr ""
 "HTML a ser inserido na parte mais alta do layout, atrás da barra de "
 "navegação e abaixo do banner"
 
-#: loco:5be8cc18a08ef156a34985f5
 msgid "HTML/Word Importer"
 msgstr "Importar HTML/Word"
 
-#: loco:5be8cc18a08ef156a34985f6
 msgid "Half Letter paper"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a34985f7
 msgid "Heading"
 msgstr "Título"
 
-#: loco:5be8cc18a08ef156a34985f8
 msgid "Headings"
 msgstr "Títulos"
 
-#: loco:5be8cc18a08ef156a34985f9
 msgid "Height:"
 msgstr "Altura:"
 
-#: loco:5be8cc18a08ef156a34985fa
 msgid "Here you can find a preview of the Beamer themes and color themes"
 msgstr ""
 "Aqui você pode encontrar uma preview dos temas do Beamer (pacote LaTeX) e "
 "temas de cores"
 
-#: loco:5be8cc18a08ef156a34985fb
 msgid ""
 "Here you can save or load your templates. The text list\n"
 "      and the cover image are excluded by the saved settings. You can\n"
@@ -1116,43 +892,33 @@ msgstr ""
 "a imagem de capa são excluídas das configurações salvas. Você pode usar isto "
 "para economizar papel/fontes/imposição e outras opções."
 
-#: loco:5be8cc18a08ef156a34985fc
 msgid "Higher division factor means narrower margins"
 msgstr "Fator de divisão mais alto significa margens mais estreitas"
 
-#: loco:5be8cc18a08ef156a34985fd
 msgid "How do I create a landing page?"
 msgstr "Como criar uma landing page?"
 
-#: loco:5be8cc18a08ef156a34985fe
 msgid "How do I create a special page?"
 msgstr "Como criar uma página especial?"
 
-#: loco:5be8cc18a08ef156a34985ff
 msgid "How do I delete a text?"
 msgstr "Como deletar um texto?"
 
-#: loco:5be8cc18a08ef156a3498600
 msgid "How do I modify a special page?"
 msgstr "Como modificar um página especial?"
 
-#: loco:5be8cc18a08ef156a3498601
 msgid "How do I purge a text?"
 msgstr "Como eu expurgo um texto?"
 
-#: loco:5be8cc18a08ef156a3498602
 msgid "How do I redirect to another page?"
 msgstr "Como eu redireciono para outra página?"
 
-#: loco:5be8cc18a08ef156a3498603
 msgid "How to choose a password"
 msgstr "Como escolher uma senha"
 
-#: loco:5be8cc18a08ef156a3498604
 msgid "How to work with a remote repo"
 msgstr "Como utilizar um repositório remoto"
 
-#: loco:5be8cc18a08ef156a3498605
 msgid ""
 "However, you can browse, search, download and read the texts\n"
 "  from mobile reading applications which support the so-called OPDS\n"
@@ -1162,19 +928,15 @@ msgstr ""
 "    os textos em aplicações móveis que suportem o protocolo\n"
 "    OPDS."
 
-#: loco:5be8cc18a08ef156a3498606
 msgid "I am human"
 msgstr "Não sou um robô"
 
-#: loco:5be8cc18a08ef156a3498607
 msgid "I want an imposed (ready to print) PDF"
 msgstr "Preparar o arquivo para impressão em PDF (imposar)"
 
-#: loco:5be8cc18a08ef156a3498608
 msgid "IRC channel on freenode"
 msgstr "Canal do IRC no freenode"
 
-#: loco:5be8cc18a08ef156a3498609
 msgid "Id"
 msgstr "ID"
 
@@ -1186,17 +948,14 @@ msgstr "ID"
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
-#: loco:5be8cc18a08ef156a349860a
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Se não estiver definido %1 vai ser buscado no diretório da aplicação."
 
-#: loco:5be8cc18a08ef156a349860b
 msgid ""
 "If set to a number greater than 0, automatically generate a teaser, with "
 "roughly this length"
 msgstr ""
 
-#: loco:5be8cc18a08ef156a349860c
 msgid ""
 "If the publication of a text is deferred, list it\n"
 "            with the teaser and the cover without providing access to\n"
@@ -1205,11 +964,9 @@ msgstr ""
 "Se a publicação de um texto é adiado, liste-o com o teaser e a capa sem "
 "prover acesso ao corpo"
 
-#: loco:5be8cc18a08ef156a349860d
 msgid "If the user provided a mail, it's listed in the mail's CC field"
 msgstr "Se um usuário forneceu um email, está listado no campo CC da mensagem"
 
-#: loco:5be8cc18a08ef156a349860e
 msgid ""
 "If this line\n"
 "          is present, set the publication date (on this site) to the\n"
@@ -1224,7 +981,6 @@ msgstr ""
 "publicação, disparando uma entrada no RSS e em páginas especiais em cada "
 "edição."
 
-#: loco:5be8cc18a08ef156a349860f
 msgid ""
 "If this line is\n"
 "          present and the reason is set to something, the text will be\n"
@@ -1233,7 +989,6 @@ msgstr ""
 "Se esta linha estiver presente e a razão estiver configurada para algo, o "
 "texto da razão será armazenado no arquivo mas não será publicado."
 
-#: loco:5be8cc18a08ef156a3498610
 msgid ""
 "If this line is present, do not create a title page,\n"
 "          but instead start the text on the very first page and\n"
@@ -1245,15 +1000,12 @@ msgstr ""
 "         produzam um PDF estilizado como um artigo\n"
 "         (capítulos e partes não começarão numa página nova)."
 
-#: loco:5be8cc18a08ef156a3498611
 msgid "If this line is present, do not display the table of contents."
 msgstr "Se esta linha está presente, não exibir o sumário do conteúdo."
 
-#: loco:5be8cc18a08ef156a3498612
 msgid "If you asked for imposition, select an imposition schema"
 msgstr "Se você pediu imposição, selecione um esquema de imposição"
 
-#: loco:5be8cc18a08ef156a3498613
 msgid ""
 "If you edit some format options, like fonts or paper\n"
 "      dimensions, you may want to rebuild the generated files"
@@ -1261,7 +1013,6 @@ msgstr ""
 "Se você editar algumas opções de formato, como fontes ou\n"
 "     dimensões do papel, você pode querer reconstruir os arquivos gerados"
 
-#: loco:5be8cc18a08ef156a3498614
 msgid ""
 "If you have a file in .doc or .odt, you can easily convert it saving it as "
 "HTML"
@@ -1269,7 +1020,6 @@ msgstr ""
 "Se você tem um arquivo em .doc ou .odt, você pode facilmente converter ele "
 "salvando como HTML"
 
-#: loco:5be8cc18a08ef156a3498615
 msgid ""
 "If you request a rebuild when one is ongoing, you will\n"
 "    abort the current one."
@@ -1277,7 +1027,6 @@ msgstr ""
 "Se você pedir uma reconstrução quando uma já estiver em andamento, você vai "
 "abortar a que está em andamento."
 
-#: loco:5be8cc18a08ef156a3498616
 msgid ""
 "If you use it as a teaser image, the image will also\n"
 "      be placed on the first page of the PDF. You can set its width\n"
@@ -1292,11 +1041,9 @@ msgstr ""
 "     do texto, 0.5 é metade do comprimenro e assim por diante"
 
 #. (reset_url)
-#: loco:5be8cc18a08ef156a3498617
 msgid "If you want to proceed, please visit the following url: %1"
 msgstr "Se você quer prosseguir, por favor visite a seguinte URL: %1"
 
-#: loco:5be8cc18a08ef156a3498618
 msgid ""
 "If your site doesn’t have that, just create a special page and assign\n"
 "the uri \"index\"."
@@ -1304,7 +1051,6 @@ msgstr ""
 "Se o seu site não tiver isso, apenas crie uma página especial e aloque\n"
 "a URI \"index\"."
 
-#: loco:5be8cc18a08ef156a3498619
 msgid ""
 "If your site is multilanguage, you can create a language-specific\n"
 "  landing page creating, e.g. \"/special/index-it\", i.e., the\n"
@@ -1314,11 +1060,9 @@ msgstr ""
 "    específica para uma língua, por exemplo \"/special/index-pt\", ou seja,\n"
 "    a URI \"index\", um traço, e o código da língua."
 
-#: loco:5be8cc18a08ef156a349861a
 msgid "Image already set as cover"
 msgstr "A imagem já está definida como capa"
 
-#: loco:5be8cc18a08ef156a349861b
 msgid ""
 "Image uploading may be done on the next step, when you can\n"
 "        review and preview the upload."
@@ -1326,23 +1070,18 @@ msgstr ""
 "Envio de imagens pode ser feito no próximo passo, e então você pode\n"
 "       revisar e pré-visualizar o upload."
 
-#: loco:5be8cc18a08ef156a349861c
 msgid "Image url"
 msgstr "URL da imagem"
 
-#: loco:5be8cc18a08ef156a349861d
 msgid "Images:"
 msgstr "Imagens:"
 
-#: loco:5be8cc18a08ef156a349861e
 msgid "Imposition schemas"
 msgstr "Esquema de imposição"
 
-#: loco:5be8cc18a08ef156a349861f
 msgid "In both case you will get a reverse indentation."
 msgstr "Em qualquer caso você terá indentação reversa."
 
-#: loco:5be8cc18a08ef156a3498620
 msgid ""
 "In the text, a number within square brackets is interpreted as a\n"
 "          footnote reference, if such footnote exists."
@@ -1352,7 +1091,6 @@ msgstr ""
 
 #. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
-#: loco:5be8cc18a08ef156a3498621
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1362,31 +1100,24 @@ msgstr ""
 "     mais ou menos o mesmo para todas as aplicações. Tudo\n"
 "     que você deve fazer é adicionar %1 às bibliotecas de redes."
 
-#: loco:5be8cc18a08ef156a3498622
 msgid "Inline elements"
 msgstr "Elementos inline (em linha)"
 
-#: loco:5be8cc18a08ef156a3498623
 msgid "Insert the file into the body at the cursor position"
 msgstr "Insira o arquivo no corpo na posição do cursor"
 
-#: loco:5be8cc18a08ef156a3498624
 msgid "Internal list of translations"
 msgstr "Lista de traduções internas"
 
-#: loco:5be8cc18a08ef156a3498625
 msgid "Invalid email"
 msgstr "E-mal inválido"
 
-#: loco:5be8cc18a08ef156a3498626
 msgid "Invalid name"
 msgstr "Nome inválido"
 
-#: loco:5be8cc18a08ef156a3498627
 msgid "Invalid username"
 msgstr "Nome de usuário inválido"
 
-#: loco:5be8cc18a08ef156a3498628
 msgid ""
 "It is possible to have an additional set of\n"
 "          footnotes which you use to annote the text (e.g. critical\n"
@@ -1401,7 +1132,6 @@ msgstr ""
 "colchetes. Colocação de notas de rodapé secundárias dentro de notas de "
 "rodapé comuns é permitido."
 
-#: loco:5be8cc18a08ef156a3498629
 msgid ""
 "It is recommended to always set a publication\n"
 "                    date, so the system does not need to rely on the\n"
@@ -1416,7 +1146,6 @@ msgstr ""
 "                     apenas em grandes edições, deixando-à\n"
 "                     intocada em edições menores."
 
-#: loco:5be8cc18a08ef156a349862a
 msgid ""
 "It works the same as for regular page, but the link is hidden. Just\n"
 "append \"/edit\" to the url of the page."
@@ -1425,39 +1154,33 @@ msgstr ""
 "escondido. Apenas\n"
 "adicione \"/edit\" na URL da página."
 
-#: loco:5be8cc18a08ef156a349862b
 msgid "Italic"
 msgstr "Itálico"
 
-#: loco:5be8cc18a08ef156a349862c
 msgid "Italics, bold, monospace and code, linebreaks..."
 msgstr "Itálicos, negritos, monoespaçadas (código), quebras de linha..."
 
-#: loco:5be8cc18a08ef156a349862d
 msgid "Job deleted"
 msgstr "Tarefa deletada"
 
-#: loco:5be8cc18a08ef156a349862e
 msgid "Job rescheduled"
 msgstr "Tarefa reagendada"
 
-#: loco:5be8cc18a08ef156a349862f
 msgid "Job status"
 msgstr "Status das tarefas"
 
-#: loco:5be8cc18a08ef156a3498630
 msgid "Jobs"
 msgstr "Tarefas"
 
-#: loco:5be8cc18a08ef156a3498631
+msgid "Jobs (all sites)"
+msgstr ""
+
 msgid "Jobs waiting before yours:"
 msgstr "Tarefas na fila antes da sua:"
 
-#: loco:5be8cc18a08ef156a3498632
 msgid "Just packs 2 consecutives logical pages on a physical one."
 msgstr "Empacota duas páginas lógicas consecutivas em uma página física."
 
-#: loco:5be8cc18a08ef156a3498633
 msgid ""
 "Keep in mind that I’m cleaning the text and give it\n"
 "        back to you in the markup used on this site. It’s up to you to\n"
@@ -1473,12 +1196,10 @@ msgstr ""
 "        serão perdidads no processo. Por favor cheque a previsão no próximo\n"
 "        passo, onde você também pode inserir imagens."
 
-#: loco:5be8cc18a08ef156a3498634
 msgid "Keep in mind that some character may be missing in the required font."
 msgstr ""
 "Lembre que alguns caracteres podem não estar disponíveis na fonte solicitada."
 
-#: loco:5be8cc18a08ef156a3498635
 msgid ""
 "Keep in mind that unusually\n"
 "        complex formatting will be stripped. Is it possible to add\n"
@@ -1488,290 +1209,225 @@ msgstr ""
 "         complexa e não-usual será removida. É possível adicionar\n"
 "         tabelas e imagens apenas no próximo passo."
 
-#: loco:5be8cc18a08ef156a3498636
 msgid "Language"
 msgstr "Idioma"
 
-#: loco:5be8cc18a08ef156a3498637
 msgid "Language code of the document (2 or 3 letters). "
 msgstr "Língua código do documento (2 ou três letras)"
 
-#: loco:5be8cc18a08ef156a3498638
 msgid "Language selection"
 msgstr "Selecionar idioma"
 
-#: loco:5be8cc18a08ef156a3498639
 msgid "Languages supported"
 msgstr "Idiomas suportados"
 
-#: loco:5be8cc18a08ef156a349863a
 msgid "Last successful rebuild"
 msgstr "Ultima reconstrução com sucesso."
 
-#: loco:5be8cc18a08ef156a349863b
 msgid "Last updated"
 msgstr "Atualizado recentemente"
 
-#: loco:5be8cc18a08ef156a349863c
 msgid "Latest entries"
 msgstr "Entradas recentes"
 
-#: loco:5be8cc18a08ef156a349863d
 msgid "Layout"
 msgstr "Layout"
 
-#: loco:5be8cc18a08ef156a349863e
 msgid "Leave it blank if you want it published right away."
 msgstr "Deixe isto em branco se você quiser publicar em seguida."
 
-#: loco:5be8cc18a08ef156a349863f
 msgid "Leave this empty to have it automatically generated"
 msgstr "Deixe o campo vazio para geração automática."
 
-#: loco:5be8cc18a08ef156a3498640
 msgid "Letter imposed PDF"
 msgstr "PDF imposado (carta)"
 
-#: loco:5be8cc18a08ef156a3498641
 msgid "Letter paper"
 msgstr "Papel Carta"
 
-#: loco:5be8cc18a08ef156a3498642
 msgid "Link"
 msgstr "Link"
 
-#: loco:5be8cc18a08ef156a3498643
 msgid "Links and images"
 msgstr "Links e imagens"
 
-#: loco:5be8cc18a08ef156a3498644
 msgid "List of texts on hold"
 msgstr "Lista de textos em espera"
 
-#: loco:5be8cc18a08ef156a3498645
 msgid "Lists"
 msgstr "Listas"
 
-#: loco:5be8cc18a08ef156a3498646
 msgid "Load"
 msgstr "Carregar"
 
-#: loco:5be8cc18a08ef156a3498647
 msgid "Load another session by token"
 msgstr "Abra uma nova sessão por token"
 
 #. ($pname)
-#: loco:5be8cc18a08ef156a3498648
 msgid "Loaded \"%1\" configuration"
 msgstr "Aberta a configuração \"%1\""
 
-#: loco:5be8cc18a08ef156a3498649
 msgid "Locked editing, no upload possible"
 msgstr "Edição travada, não é possível fazer upload."
 
-#: loco:5be8cc18a08ef156a349864a
 msgid "Log in"
 msgstr "Entrar"
 
-#: loco:5be8cc18a08ef156a349864b
 msgid "Login"
 msgstr "Login"
 
-#: loco:5be8cc18a08ef156a349864c
 msgid "Logout"
 msgstr "Sair"
 
-#: loco:5be8cc18a08ef156a349864d
 msgid "Look into the account’s menu, there is an entry for that."
 msgstr "Olhe para o menu de contas, existe uma entrada para isso."
 
-#: loco:5be8cc18a08ef156a349864e
 msgid "Lost your password?"
 msgstr "Esqueceu sua senha?"
 
-#: loco:5be8cc18a08ef156a349864f
 msgid "Magic answer"
 msgstr "Resposta mágica"
 
-#: loco:5be8cc18a08ef156a3498650
 msgid "Magic question"
 msgstr "Pergunta mágica"
 
-#: loco:5be8cc18a08ef156a3498651
 msgid "Mail from"
 msgstr "E-mail de"
 
-#: loco:5be8cc18a08ef156a3498652
 msgid "Main canonical hostname, without protocol"
 msgstr "Nome canônico do host principal, sem protocolo"
 
-#: loco:5be8cc18a08ef156a3498653
 msgid "Main font"
 msgstr "Fonte principal"
 
-#: loco:5be8cc18a08ef156a3498654
 msgid "Main text"
 msgstr "Texto principal"
 
-#: loco:5be8cc18a08ef156a3498655
 msgid "Maintainer's FAQ"
 msgstr "FAQ dos Mantenedores"
 
-#: loco:5be8cc18a08ef156a3498656
 msgid "Make a link clickable"
 msgstr "Tornar o link clicável"
 
-#: loco:5be8cc18a08ef156a3498657
 msgid "Make all links active"
 msgstr "Tornar todos os links ativos"
 
-#: loco:5be8cc18a08ef156a3498658
 msgid "Make all non-breaking spaces explicit and visible as ~~"
 msgstr "Fazer todos os espaços explícitos e visíveis como ~~"
 
-#: loco:5be8cc18a08ef156a3498659
+msgid "Manage categories"
+msgstr ""
+
 msgid "Message"
 msgstr "Mensagem"
 
-#: loco:5be8cc18a08ef156a349865a
 msgid "Missing #title header in the text!"
 msgstr "Falta #título cabeçalho no texto!"
 
-#: loco:5be8cc18a08ef156a349865b
 msgid "Missing alias"
 msgstr "Alias faltando"
 
-#: loco:5be8cc18a08ef156a349865c
 msgid "Missing character will be reported"
 msgstr "Caracter faltante será relatado"
 
-#: loco:5be8cc18a08ef156a349865d
 msgid "Missing redirection"
 msgstr "Redirecionamento faltante"
 
-#: loco:5be8cc18a08ef156a349865e
 msgid "Mobile"
 msgstr "Móvel"
 
-#: loco:5be8cc18a08ef156a349865f
 msgid "Mobile applications"
 msgstr "Aplicações móveis"
 
-#: loco:5be8cc18a08ef156a3498660
 msgid "Mode"
 msgstr "Modo"
 
-#: loco:5be8cc18a08ef156a3498661
 msgid "Moderated wiki"
 msgstr "Wiki moderada"
 
-#: loco:5be8cc18a08ef156a3498662
 msgid "Mono font"
 msgstr "Fonte monoespaçada"
 
-#: loco:5be8cc18a08ef156a3498663
 msgid "More"
 msgstr "Mais"
 
-#: loco:5be8cc18a08ef156a3498664
 msgid "Move down"
 msgstr "Mover para baixo"
 
-#: loco:5be8cc18a08ef156a3498665
 msgid "Move up"
 msgstr "Mover para cima"
 
-#: loco:5be8cc18a08ef156a3498666
 msgid "Multilanguage: list of whitespace separated language codes"
 msgstr "Multilinguagem: lista de códigos de idioma separados por espaço"
 
-#: loco:5be8cc18a08ef156a3498667
 msgid "My description"
 msgstr "Minha descrição"
 
-#: loco:5be8cc18a08ef156a3498668
 msgid "N/A"
 msgstr "N/A"
 
-#: loco:5be8cc18a08ef156a3498669
 msgid "Name"
 msgstr "Nome"
 
-#: loco:5be8cc18a08ef156a349866a
 msgid "Network library listing screen."
 msgstr "Tela de listagem da biblioteca de redes."
 
-#: loco:5be8cc18a08ef156a349866b
+msgid "Never display the cover"
+msgstr ""
+
 msgid "Never generate a table of content"
 msgstr "Nunca gerar um sumário"
 
-#: loco:5be8cc18a08ef156a349866c
 msgid ""
 "Never generate the standard final page with title/author/notes/logo/site name"
 msgstr "Nunca gerar a página final padrão com título/autor/notas/logo/site"
 
-#: loco:5be8cc18a08ef156a349866d
 msgid "Never show teaser and/or cover in text lists"
 msgstr "Nunca exibir teaser e/ou capa nas listas de textos"
 
-#: loco:5be8cc18a08ef156a349866e
 msgid "New"
 msgstr "Novo"
 
-#: loco:5be8cc18a08ef156a349866f
 msgid "New revision"
 msgstr "Nova revisão"
 
-#: loco:5be8cc18a08ef156a3498670
 msgid "New site id"
 msgstr "Novo ID do site"
 
-#: loco:5be8cc18a08ef156a3498671
 msgid "Newer first"
 msgstr "Mais novo primeiro"
 
-#: loco:5be8cc18a08ef156a3498672
 msgid "Newer texts"
 msgstr "Textos mais novos"
 
-#: loco:5be8cc18a08ef156a3498673
 msgid "Next"
 msgstr "Próximo"
 
-#: loco:5be8cc18a08ef156a3498674
 msgid "Nice title"
 msgstr "Título"
 
-#: loco:5be8cc18a08ef156a3498675
 msgid "No"
 msgstr "Não"
 
-#: loco:5be8cc18a08ef156a3498676
 msgid "No editing yet!"
 msgstr "Sem edições ainda!"
 
-#: loco:5be8cc18a08ef156a3498677
 msgid "No result found!"
 msgstr "Nenhum resultado encontrado!"
 
-#: loco:5be8cc18a08ef156a3498678
 msgid "No revisions to show"
 msgstr "Sem revisões para exibir"
 
-#: loco:5be8cc18a08ef156a3498679
 msgid "No text found!"
 msgstr "Texto não encontrado!"
 
-#: loco:5be8cc18a08ef156a349867a
 msgid "No text was added yet"
 msgstr "Nenhum texto foi adicionado ainda"
 
-#: loco:5be8cc18a08ef156a349867b
 msgid "None"
 msgstr "Nenhum"
 
 #. ($c->loc('Save')
-#: loco:5be8cc18a08ef156a349867c
 msgid ""
 "Not finished yet! Please have a look at the text and then click on \"%1\" to "
 "finalize your submission!"
@@ -1779,70 +1435,54 @@ msgstr ""
 "Ainda não terminado! Por favor olhe o texto e então clique em \"%1\" para "
 "finalizar sua submissão!"
 
-#: loco:5be8cc18a08ef156a349867d
 msgid "Notes"
 msgstr "Notas"
 
-#: loco:5be8cc18a08ef156a349867e
 msgid "Nothing to see here, so far"
 msgstr "Nada para ver aqui até o momento"
 
-#: loco:5be8cc18a08ef156a349867f
 msgid "Nothing uploaded"
 msgstr "Nada enviado"
 
-#: loco:5be8cc18a08ef156a3498680
 msgid "Notify mail: blank field will disable them"
 msgstr "Email de notificação: campo em branco vai desabilitar"
 
-#: loco:5be8cc18a08ef156a3498681
 msgid "Notify to"
 msgstr "Notificar para"
 
-#: loco:5be8cc18a08ef156a3498682
 msgid "Now you can proceed to login."
 msgstr "Agora você pode fazer o log in."
 
-#: loco:5be8cc18a08ef156a3498683
 msgid "Number of jobs"
 msgstr "Número de tarefas"
 
-#: loco:5be8cc18a08ef156a3498684
 msgid "Number of latest entries to display on the RSS (an integer)"
 msgstr "Número de entradas a ser exibidas no RSS (valor inteiro)"
 
-#: loco:5be8cc18a08ef156a3498685
 msgid "Number of results to show on paginated pages (an integer)"
 msgstr "Número de resultados a exibir em páginas numeradas (um número inteiro)"
 
-#: loco:5be8cc18a08ef156a3498686
 msgid "OPDS"
 msgstr "OPDS"
 
-#: loco:5be8cc18a08ef156a3498687
 msgid "Older first"
 msgstr "Mais antigo primeiro"
 
-#: loco:5be8cc18a08ef156a3498688
 msgid "Older texts"
 msgstr "Textos mais antigos"
 
-#: loco:5be8cc18a08ef156a3498689
 msgid ""
 "One page per sheet. This is useful only if you want to add the cropmarks"
 msgstr ""
 "Uma página por folha. Isso é útil apenas se você quer adicionar marcas de "
 "recorte"
 
-#: loco:5be8cc18a08ef156a349868a
 msgid "Open wiki"
 msgstr "Wiki aberta"
 
-#: loco:5be8cc18a08ef156a349868b
 msgid "Option templates"
 msgstr "Modelos de opção"
 
-#: loco:5be8cc18a08ef156a349868c
 msgid ""
 "Or create a new revision, at your own peril. Having multiple\n"
 "          concurrent revisions means that, unless someone takes care\n"
@@ -1856,53 +1496,41 @@ msgstr ""
 "ou, melhor, contactar os bibliotecários antes de prosseguir, para evitar "
 "desperdiças energia."
 
-#: loco:5be8cc18a08ef156a349868d
 msgid "Or log in, if you have an account."
 msgstr "Ou faça login, se você tem uma conta."
 
-#: loco:5be8cc18a08ef156a349868e
 msgid "Or provide an HTML file to upload"
 msgstr "Ou forneça um arquivo HTML para upload"
 
-#: loco:5be8cc18a08ef156a349868f
 msgid "Or wrap it in"
 msgstr "Ou enquadre"
 
-#: loco:5be8cc18a08ef156a3498690
 msgid "Ordered List"
 msgstr "Lista Ordenada"
 
-#: loco:5be8cc18a08ef156a3498691
 msgid "Otherwise, please just ignore this mail."
 msgstr "De outra forma, por favor ignore este email."
 
-#: loco:5be8cc18a08ef156a3498692
 msgid "PDF"
 msgstr "PDF"
 
-#: loco:5be8cc18a08ef156a3498693
 msgid "PDF logo"
 msgstr "logo para PDF"
 
-#: loco:5be8cc18a08ef156a3498694
 msgid "PDFs cannot be used in the body."
 msgstr "PDFs não podem ser usandos no corpo."
 
 #. ('#ATTACH')
 #. ("#ATTACH")
-#: loco:5be8cc18a08ef156a3498695
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDFs não listados na diretiva %1 serão armazenados mas ignorados."
 
-#: loco:5be8cc18a08ef156a3498696
 msgid "Page not found!"
 msgstr "Página não encontrada!"
 
-#: loco:5be8cc18a08ef156a3498697
 msgid "Page where to start a chapter"
 msgstr "Página onde começar um capítulo"
 
-#: loco:5be8cc18a08ef156a3498698
 msgid ""
 "Pages are not reordered. The first sheet contains\n"
 "        pages 1 and 2, the second 3 and 4, and so on, side by side.\n"
@@ -1912,7 +1540,6 @@ msgstr ""
 "segunda 3 e 4, e assim por diante, lado-a-lado. O objetivo não é dobrar as "
 "folhas."
 
-#: loco:5be8cc18a08ef156a3498699
 msgid ""
 "Pages are reordered, in one or more groups\n"
 "        (signatures), then folded in half. If you have more\n"
@@ -1928,82 +1555,66 @@ msgstr ""
 "um valor fixo (4, 8, 16, etc.), o livro inteiro em uma única assinatura, ou "
 "um tamanho otimizado para reduzir o número de páginas em branco."
 
-#: loco:5be8cc18a08ef156a349869a
 msgid "Paper thickness (0.10 should be appropriate for common 80g/m2 paper)"
 msgstr ""
 "Espessura do papel (0.10 deve ser apropriado para papel comum de gramatura "
 "80g/m2)"
 
-#: loco:5be8cc18a08ef156a349869b
 msgid "Paragraphs"
 msgstr "Parágrafos"
 
-#: loco:5be8cc18a08ef156a349869c
 msgid "Part"
 msgstr "Parte"
 
-#: loco:5be8cc18a08ef156a349869d
+msgid "Part and chapter. If one side document: part."
+msgstr ""
+
 msgid "Part, for larger books only"
 msgstr "Parte, para livros maiores apenas"
 
-#: loco:5be8cc18a08ef156a349869e
 msgid "Partial selection"
 msgstr "Seleção parcial"
 
-#: loco:5be8cc18a08ef156a349869f
 msgid "Password"
 msgstr "Senha"
 
 #. (host)
-#: loco:5be8cc18a08ef156a34986a0
 msgid "Password reset for %1"
 msgstr "Redefinida a senha para %1"
 
-#: loco:5be8cc18a08ef156a34986a1
 msgid "Password too short"
 msgstr "Senha muito curta"
 
-#: loco:5be8cc18a08ef156a34986a2
 msgid "Password updated"
 msgstr "Senha atualizada"
 
-#: loco:5be8cc18a08ef156a34986a3
 msgid "Password, minimum 8 characters."
 msgstr "Senha com no mínimo 8 caracteres."
 
-#: loco:5be8cc18a08ef156a34986a4
 msgid "Passwords do not match"
 msgstr "As senhas não correspondem"
 
-#: loco:5be8cc18a08ef156a34986a5
 msgid "Payload"
 msgstr "Carga"
 
-#: loco:5be8cc18a08ef156a34986a6
 msgid "Pending revisions"
 msgstr "Revisões pendentes"
 
-#: loco:5be8cc18a08ef156a34986a7
 msgid "Picture"
 msgstr "Imagem"
 
-#: loco:5be8cc18a08ef156a34986a8
 msgid "Place it in the body with a description:"
 msgstr "Ponha no corpo com uma descrição:"
 
-#: loco:5be8cc18a08ef156a34986a9
 msgid "Place it in the body without description:"
 msgstr "Ponha no corpo sem uma descrição:"
 
-#: loco:5be8cc18a08ef156a34986aa
 msgid "Place the notes on the back of the first page, impressum-style"
 msgstr "Ponha as notas no verso da primeira página, etilo *impressum*"
 
-#: loco:5be8cc18a08ef156a34986ab
 msgid "Plain PDF"
 msgstr "PDF simples"
 
-#: loco:5be8cc18a08ef156a34986ac
 msgid ""
 "Please check your inbox, we tried to deliver a mail to the address you "
 "specified with a password reset link"
@@ -2012,39 +1623,30 @@ msgstr ""
 "correspondência para o endereço que você especificou com um link para "
 "redefinir senha."
 
-#: loco:5be8cc18a08ef156a34986ad
 msgid "Please choose the Beamer color theme"
 msgstr "Por favor escolha um tema de cores do Beamer"
 
-#: loco:5be8cc18a08ef156a34986ae
 msgid "Please choose the Beamer theme"
 msgstr "Por favor escolhar uma tema do Beamer"
 
-#: loco:5be8cc18a08ef156a34986af
 msgid "Please choose the font size"
 msgstr "Por favor escolha o tamanho da fonte"
 
-#: loco:5be8cc18a08ef156a34986b0
 msgid "Please choose the main font"
 msgstr "Por favor escolha a fonte principal"
 
-#: loco:5be8cc18a08ef156a34986b1
 msgid "Please choose the mono font"
 msgstr "Por favor escolha a fonte monoespaçada"
 
-#: loco:5be8cc18a08ef156a34986b2
 msgid "Please choose the sans font"
 msgstr "Por favor escolha a fonte sem serifa"
 
-#: loco:5be8cc18a08ef156a34986b3
 msgid "Please describe shortly what you did"
 msgstr "Por favor descreva rapidamente o que você fez"
 
-#: loco:5be8cc18a08ef156a34986b4
 msgid "Please do not use a valuable password."
 msgstr "Por favor não use uma senha importante."
 
-#: loco:5be8cc18a08ef156a34986b5
 msgid ""
 "Please do not use higher levels (part or chapter) for short articles with "
 "sections."
@@ -2052,7 +1654,6 @@ msgstr ""
 "Por favor não use níveis mais altos (parte ou capítulo) para artigos curtos "
 "com seções."
 
-#: loco:5be8cc18a08ef156a34986b6
 msgid ""
 "Please give us a username. It should *not* be a mail address.\n"
 "        Just a fancy name, so we can know that multiple uploads come\n"
@@ -2063,7 +1664,6 @@ msgstr ""
 "uploads\n"
 "        vem da mesma pessoa."
 
-#: loco:5be8cc18a08ef156a34986b7
 msgid ""
 "Please keep in mind that filters are language-specific\n"
 "              and may or may not be available for the language of the\n"
@@ -2075,7 +1675,6 @@ msgstr ""
 "              texto. Se não disponível, eles vão apenas deixar o texto\n"
 "              do jeito que está."
 
-#: loco:5be8cc18a08ef156a34986b8
 msgid ""
 "Please keep in mind that if you see “Force publishing”\n"
 "    as action, it means that the revision has been superseded by\n"
@@ -2088,18 +1687,15 @@ msgstr ""
 "vai reverter a outra. Evite isto, a não ser que você saiba o que está "
 "fazendo."
 
-#: loco:5be8cc18a08ef156a34986b9
 msgid "Please leave a mail if you want to be contacted about this change"
 msgstr ""
 "Por favor deixe um email se você quer ser contactado sobre essa mudança"
 
-#: loco:5be8cc18a08ef156a34986ba
 msgid "Please note that wrapping tags must be placed on a line by themselves."
 msgstr ""
 "Por favor note que tags de enquadramento devem ser colocadas numa linha "
 "isolada."
 
-#: loco:5be8cc18a08ef156a34986bb
 msgid ""
 "Please note that you have to upload them first and\n"
 "          use the name the form provides. Images are always renamed by\n"
@@ -2109,7 +1705,6 @@ msgstr ""
 "         usar o nome que o formulário provê. Imagens sempre são renomeadas\n"
 "         por nós."
 
-#: loco:5be8cc18a08ef156a34986bc
 msgid ""
 "Please note that you may want to paste from a\n"
 "        Word/OpenOffice/LibreOffice/HTML document using the “paste\n"
@@ -2119,7 +1714,6 @@ msgstr ""
 "        Word/OpenOffice/LibreOffice/HTML usando o botão “paste\n"
 "        from word” (colar do word). Isso deve preservar o markup."
 
-#: loco:5be8cc18a08ef156a34986bd
 msgid ""
 "Please note: without any prefix, protocol or hostname, just\n"
 "  the bare page name as shown above. External redirecting is not\n"
@@ -2129,31 +1723,24 @@ msgstr ""
 "    o nome bruto da página é exibido acima. Redirecionamento\n"
 "    externo não é suportado."
 
-#: loco:5be8cc18a08ef156a34986be
 msgid "Please prove you are a human"
 msgstr "Prove que você é um humano."
 
-#: loco:5be8cc18a08ef156a34986bf
 msgid "Please reload your page"
 msgstr "Por favor recarregue sua página"
 
-#: loco:5be8cc18a08ef156a34986c0
 msgid "Please remove this file from the body first"
 msgstr "Por favor remova este arquivo do corpo primeiro"
 
-#: loco:5be8cc18a08ef156a34986c1
 msgid "Please select"
 msgstr "Por favor selecione"
 
-#: loco:5be8cc18a08ef156a34986c2
 msgid "Please select the desired fonts"
 msgstr "Selecione as fontes desejadas"
 
-#: loco:5be8cc18a08ef156a34986c3
 msgid "Please select the signature size:"
 msgstr "Selecione o tamanho da assinatura:"
 
-#: loco:5be8cc18a08ef156a34986c4
 msgid ""
 "Please select the size of each page including the crop marks, before the "
 "imposing"
@@ -2161,7 +1748,6 @@ msgstr ""
 "Selecione o tamanho de cada página incluindo as marcas de recorte, antes da "
 "imposição"
 
-#: loco:5be8cc18a08ef156a34986c5
 msgid ""
 "Please set the URI you desire. Author (if present),\n"
 "        title and eventually a number if the URI already exists is\n"
@@ -2171,27 +1757,21 @@ msgstr ""
 "       título e eventualmente um número se a URI já existir é\n"
 "       geralmente uma boa escolha."
 
-#: loco:5be8cc18a08ef156a34986c6
 msgid "Please setup the Beamer layout"
 msgstr "Por favor configure o layout do Beamer"
 
-#: loco:5be8cc18a08ef156a34986c7
 msgid "Please upload your file again!"
 msgstr "Por favor envie o seu arquivo de novo!"
 
-#: loco:5be8cc18a08ef156a34986c8
 msgid "Poetry, bibliographies, plays, code blocks"
 msgstr "Poesia, bibliografias, peças, blocos de código"
 
-#: loco:5be8cc18a08ef156a34986c9
 msgid "Pointing to"
 msgstr "Apontando para"
 
-#: loco:5be8cc18a08ef156a34986ca
 msgid "Popular texts"
 msgstr "Textos populares"
 
-#: loco:5be8cc18a08ef156a34986cb
 msgid ""
 "Prefix for ordered lists may be “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, depending on the list type you need."
@@ -2199,65 +1779,50 @@ msgstr ""
 "Prefixos para listas ordenadas podem ser “1.”, “a.”, “A.”,\n"
 "        “i.”, “I.”, dependendo do tipo de lista que você precisa."
 
-#: loco:5be8cc18a08ef156a34986cc
 msgid "Preview"
 msgstr "Previsão"
 
-#: loco:5be8cc18a08ef156a34986cd
 msgid "Preview box height in pixel"
 msgstr "Altura da caixa de previsão em pixels"
 
-#: loco:5be8cc18a08ef156a34986ce
 msgid "Previous"
 msgstr "Anteriores"
 
-#: loco:5be8cc18a08ef156a34986cf
 msgid "Priority"
 msgstr "Prioridade"
 
-#: loco:5be8cc18a08ef156a34986d0
 msgid "Private"
 msgstr "Privado"
 
-#: loco:5be8cc18a08ef156a34986d1
 msgid "Procedure"
 msgstr "Procedimento"
 
-#: loco:5be8cc18a08ef156a34986d2
 msgid "Produce slides."
 msgstr "Produzir slides."
 
-#: loco:5be8cc18a08ef156a34986d3
 msgid "Produced"
 msgstr "Produzido"
 
-#: loco:5be8cc18a08ef156a34986d4
 msgid "Publication date"
 msgstr "Data de publicação"
 
-#: loco:5be8cc18a08ef156a34986d5
 msgid "Publication date on this site."
 msgstr "Publicação e data neste site"
 
-#: loco:5be8cc18a08ef156a34986d6
 msgid "Publish"
 msgstr "Publicar"
 
-#: loco:5be8cc18a08ef156a34986d7
 msgid "Published in *A nice book*, published by My House, 2014"
 msgstr "Publicado em *Um Bom Livro*, por Minha Editora, 2014"
 
-#: loco:5be8cc18a08ef156a34986d8
 msgid "Purge"
 msgstr "Expurgo"
 
-#: loco:5be8cc18a08ef156a34986d9
 msgid ""
 "Purging means removing it completely from the archive, not just hiding it."
 msgstr ""
 "Expurgar significa remover completamente do arquivo, não apenas esconder."
 
-#: loco:5be8cc18a08ef156a34986da
 msgid ""
 "Put additional information here (original\n"
 "\t  title, translators, credits, etc). Footnotes go in the\n"
@@ -2267,39 +1832,33 @@ msgstr ""
 "          original, traduções, créditos, etc).\n"
 "          Notas de rodapé vão no corpo."
 
-#: loco:5be8cc18a08ef156a34986db
 msgid "Quarter Letter paper"
 msgstr "Papel Quarto de Carta"
 
-#: loco:5be8cc18a08ef156a34986dc
 msgid "Queue"
 msgstr "Fila"
 
-#: loco:5be8cc18a08ef156a34986dd
 msgid "Quota exceeded, too many pages"
 msgstr "Cota excedida, páginas depois"
 
-#: loco:5be8cc18a08ef156a34986de
 msgid "Quotes"
 msgstr "Citações"
 
-#: loco:5be8cc18a08ef156a34986df
+msgid "RSS aggregator"
+msgstr ""
+
 msgid "RSS feed"
 msgstr "RSS feed"
 
-#: loco:5be8cc18a08ef156a34986e0
 msgid "Random"
 msgstr "Aleatório"
 
-#: loco:5be8cc18a08ef156a34986e1
 msgid "Read the whole text..."
 msgstr "Ler o texto completo..."
 
-#: loco:5be8cc18a08ef156a34986e2
 msgid "Real time help"
 msgstr "Ajuda em tempo real"
 
-#: loco:5be8cc18a08ef156a34986e3
 msgid ""
 "Rearrange the footnotes, fixing the numbering,\n"
 "              considering only the order in which they were inserted.\n"
@@ -2320,496 +1879,385 @@ msgstr ""
 "             a mudança se notas de rodapé estiverem faltando ou\n"
 "             forem muitas."
 
-#: loco:5be8cc18a08ef156a34986e4
 msgid "Reason"
 msgstr "Razão"
 
-#: loco:5be8cc18a08ef156a34986e5
 msgid "Reason for deletion"
 msgstr "Razão para exclusão"
 
-#: loco:5be8cc18a08ef156a34986e6
 msgid "Rebuild"
 msgstr "Reconstruir"
 
-#: loco:5be8cc18a08ef156a34986e7
 msgid "Rebuild all generated files"
 msgstr "Reconstruir todos os arquivos gerados"
 
-#: loco:5be8cc18a08ef156a34986e8
 msgid "Rebuild the generated formats"
 msgstr "Reconstruir os formatos gerados"
 
-#: loco:5be8cc18a08ef156a34986e9
 msgid "Rebuilding"
 msgstr "Reconstruindo"
 
-#: loco:5be8cc18a08ef156a34986ea
 msgid "Recheck"
 msgstr "Re-verificar"
 
-#: loco:5be8cc18a08ef156a34986eb
 msgid "Redirections"
 msgstr "Redirecionamentos"
 
-#: loco:5be8cc18a08ef156a34986ec
 msgid "Refresh and apply filters"
 msgstr "Atualizar e aplicar filtros"
 
-#: loco:5be8cc18a08ef156a34986ed
 msgid "Related projects"
 msgstr "Projetos semelhantes"
 
 #. ("$name $url")
-#: loco:5be8cc18a08ef156a34986ee
 msgid "Remote repository %1 added"
 msgstr "Repositório remoto %1 incluído"
 
 #. ($name)
-#: loco:5be8cc18a08ef156a34986ef
 msgid "Remote repository %1 removed"
 msgstr "Repositório remoto %1 removido"
 
-#: loco:5be8cc18a08ef156a34986f0
 msgid "Remotes"
 msgstr "Remotos"
 
-#: loco:5be8cc18a08ef156a34986f1
 msgid "Remove"
 msgstr "Remover"
 
-#: loco:5be8cc18a08ef156a34986f2
 msgid "Remove cover image"
 msgstr "Remover imagem de capa"
 
-#: loco:5be8cc18a08ef156a34986f3
+msgid "Remove this category"
+msgstr ""
+
 msgid "Rename to"
 msgstr "Renomear para"
 
-#: loco:5be8cc18a08ef156a34986f4
 msgid "Repeat email"
 msgstr "Repetir email"
 
-#: loco:5be8cc18a08ef156a34986f5
 msgid "Repeat password"
 msgstr "Repita a senha"
 
-#: loco:5be8cc18a08ef156a34986f6
 msgid "Repository"
 msgstr "Repositório"
 
-#: loco:5be8cc18a08ef156a34986f7
 msgid "Request failed! Please report the the problem"
 msgstr "Requisição falhou! Por favor relate o problema"
 
-#: loco:5be8cc18a08ef156a34986f8
 msgid "Reset all"
 msgstr "Reconfigure tudo"
 
-#: loco:5be8cc18a08ef156a34986f9
 msgid "Reset filters"
 msgstr "Configure filtros"
 
-#: loco:5be8cc18a08ef156a34986fa
 msgid "Reset password"
 msgstr "Redefinir senha"
 
-#: loco:5be8cc18a08ef156a34986fb
 msgid "Reset to site defaults"
 msgstr "Reconfigure para os padrões do site"
 
-#: loco:5be8cc18a08ef156a34986fc
 msgid "Restricted configuration variables"
 msgstr "Variáveis de configuração restritas"
 
-#: loco:5be8cc18a08ef156a34986fd
 msgid "Restricted format options"
 msgstr "Opções de formato restritas"
 
-#: loco:5be8cc18a08ef156a34986fe
 msgid "Results per page:"
 msgstr "Resultados por página:"
 
-#: loco:5be8cc18a08ef156a34986ff
 msgid "Retrieved on DATE from URL"
 msgstr "Adquirido em DATE de URL"
 
-#: loco:5be8cc18a08ef156a3498700
 msgid "Retrieved on March 8, 2012 from"
 msgstr "Obtido em 8 de Março de 2012, de"
 
-#: loco:5be8cc18a08ef156a3498701
 msgid "Revision"
 msgstr "Revisão"
 
 #. ($uri)
-#: loco:5be8cc18a08ef156a3498702
 msgid "Revision for %1 has been deleted"
 msgstr "A revisão de %1 foi deletada"
 
-#: loco:5be8cc18a08ef156a3498703
 msgid "Roles"
 msgstr "Papéis"
 
-#: loco:5be8cc18a08ef156a3498704
 msgid "Running headings"
 msgstr "Títulos para páginas"
 
-#: loco:5be8cc18a08ef156a3498705
 msgid "SSL CA certificate path (Apache)"
 msgstr "SSL CA certificate path (Apache)"
 
-#: loco:5be8cc18a08ef156a3498706
 msgid "SSL certificate path (Apache)"
 msgstr "SSL certificate path (Apache)"
 
-#: loco:5be8cc18a08ef156a3498707
 msgid "SSL chained certificate path (Nginx)"
 msgstr "SSL chained certificate path (Nginx)"
 
-#: loco:5be8cc18a08ef156a3498708
 msgid "SSL configuration"
 msgstr "SSL configuration"
 
-#: loco:5be8cc18a08ef156a3498709
 msgid "SSL key path"
 msgstr "SSL key path"
 
-#: loco:5be8cc18a08ef156a349870a
 msgid "Same as above, for the Archive menu"
 msgstr "O mesmo que acima, para o menu arquivar"
 
-#: loco:5be8cc18a08ef156a349870b
 msgid "Same as above, for the Related Projects menu"
 msgstr "O mesmo que acima, para o menu de Projetos Relacionados"
 
-#: loco:5be8cc18a08ef156a349870c
 msgid "Sans font"
 msgstr "Fonte sem Serifa"
 
-#: loco:5be8cc18a08ef156a349870d
 msgid "Save"
 msgstr "Salvar"
 
-#: loco:5be8cc18a08ef156a349870e
 msgid "Save the current settings with a name"
 msgstr "Salvar as definições atuais com um nome"
 
 #. ($pname)
-#: loco:5be8cc18a08ef156a349870f
 msgid "Saved \"%1\" configuration"
 msgstr "Configuração %1 salva"
 
-#: loco:5be8cc18a08ef156a3498710
 msgid "Search"
 msgstr "Buscar"
 
-#: loco:5be8cc18a08ef156a3498711
+msgid "Search filters"
+msgstr ""
+
 msgid "Search results"
 msgstr "Resultado de busca"
 
-#: loco:5be8cc18a08ef156a3498712
 msgid "Secondary footnotes"
 msgstr "Notas de rodapé secundárias"
 
-#: loco:5be8cc18a08ef156a3498713
 msgid "Section"
 msgstr "Seção"
 
-#: loco:5be8cc18a08ef156a3498714
 msgid "Section and subsection. If one side document: section."
 msgstr "Seção e subseção. Se documento de uma face só: seção."
 
-#: loco:5be8cc18a08ef156a3498715
 msgid "See here for more details."
 msgstr "Veja mais detalhes"
 
-#: loco:5be8cc18a08ef156a3498716
 msgid "See here for the full documentation."
 msgstr "Veja a documentação completa"
 
-#: loco:5be8cc18a08ef156a3498717
 msgid "See the full manual for more details (english)"
 msgstr "Consulte o manual (em inglês) para mais detalhes"
 
-#: loco:5be8cc18a08ef156a3498718
 msgid "Select"
 msgstr "Selecionar"
 
-#: loco:5be8cc18a08ef156a3498719
 msgid "Select all"
 msgstr "Selecionar todos"
 
-#: loco:5be8cc18a08ef156a349871a
 msgid "Select individual parts for the bookbuilder"
 msgstr "Selecionar algumas partes para o bookbuilder"
 
-#: loco:5be8cc18a08ef156a349871b
 msgid "Separate body fields"
 msgstr "Campos de corpo separados"
 
-#: loco:5be8cc18a08ef156a349871c
 msgid "Separate footer fields"
 msgstr "Campos de rodapé separados"
 
-#: loco:5be8cc18a08ef156a349871d
 msgid "Separate header fields"
 msgstr "Campos de cabeçalho separados"
 
-#: loco:5be8cc18a08ef156a349871e
 msgid "Session sharing"
 msgstr "Sessão compartilhada"
 
-#: loco:5be8cc18a08ef156a349871f
 msgid "Set a date in the future if you want it deferred."
 msgstr "Ponha uma data futura se você quiser adiar."
 
-#: loco:5be8cc18a08ef156a3498720
 msgid "Show cheatsheet"
 msgstr "Mostrar manual rápido"
 
-#: loco:5be8cc18a08ef156a3498721
 msgid "Show differences in other tab"
 msgstr "Ver as diferenças em outra tab"
 
-#: loco:5be8cc18a08ef156a3498722
 msgid "Show filters"
 msgstr "Ver filtros"
 
-#: loco:5be8cc18a08ef156a3498723
 msgid "Show preview in other tab"
 msgstr "Pré-visualização em outra tab"
 
-#: loco:5be8cc18a08ef156a3498724
 msgid "Show text type and number of pages in the listing"
 msgstr "Mostrar o tipo do texto e o número de páginas na listagem"
 
-#: loco:5be8cc18a08ef156a3498725
 msgid "Show the text infobox at the bottom of the texts"
 msgstr "Mostrar caixa de texto informativo abaixo dos textos"
 
-#: loco:5be8cc18a08ef156a3498726
 msgid "Single bars"
 msgstr "Barras simples"
 
-#: loco:5be8cc18a08ef156a3498727
 msgid "Site already exists"
 msgstr "Site já existe"
 
-#: loco:5be8cc18a08ef156a3498728
 msgid "Site group"
 msgstr "Grupo do site"
 
-#: loco:5be8cc18a08ef156a3498729
 msgid "Site id"
 msgstr "Site ID"
 
-#: loco:5be8cc18a08ef156a349872a
 msgid "Site mail (From field)"
 msgstr "Local da correspondência (Campo \"De:\")"
 
-#: loco:5be8cc18a08ef156a349872b
 msgid "Site mode"
 msgstr "Modo do site"
 
-#: loco:5be8cc18a08ef156a349872c
 msgid "Site name"
 msgstr "Nome do site"
 
-#: loco:5be8cc18a08ef156a349872d
 msgid "Site slogan"
 msgstr "Slogan do site"
 
-#: loco:5be8cc18a08ef156a349872e
 msgid "Sites"
 msgstr "Sites"
 
-#: loco:5be8cc18a08ef156a349872f
 msgid "Slides"
 msgstr "Slides"
 
-#: loco:5be8cc18a08ef156a3498730
 msgid "Slides (PDF)"
 msgstr "Slides (PDF)"
 
-#: loco:5be8cc18a08ef156a3498731
 msgid "So we can be sure we are not mailing passwords to random people"
 msgstr ""
 "De forma que estejamos certos de não enviar senha para pessoas aleatórias"
 
-#: loco:5be8cc18a08ef156a3498732
 msgid "Some fields are missing, all are required"
 msgstr "Alguns campos estão faltando, todos são obrigatórios"
 
-#: loco:5be8cc18a08ef156a3498733
 msgid "Some fields are too long"
 msgstr "Alguns campos estão muito longos"
 
-#: loco:5be8cc18a08ef156a3498734
 msgid "Some ongoing revisions were found"
 msgstr "Algumas revisões em andamento foram encontradas"
 
 #. (username, host)
-#: loco:5be8cc18a08ef156a3498735
 msgid "Someone, probably you, has requested a password reset for %1 at %2."
 msgstr ""
 "Alguém, possivelmente você, solicitou uma redefinição de senha para %1 em %2."
 
-#: loco:5be8cc18a08ef156a3498736
 msgid "Sorry, too many jobs pending, please try again later!"
 msgstr ""
 "Desculpe, estamos com muitas tarefas pendentes, por favor tente mais tarde!"
 
-#: loco:5be8cc18a08ef156a3498737
 msgid "Sorting:"
 msgstr "Ordenando:"
 
-#: loco:5be8cc18a08ef156a3498738
 msgid "Source"
 msgstr "Fonte"
 
-#: loco:5be8cc18a08ef156a3498739
 msgid "Source files"
 msgstr "Arquivos fonte"
 
-#: loco:5be8cc18a08ef156a349873a
 msgid "Source files with attachments"
 msgstr "Arquivos fonte com anexos"
 
-#: loco:5be8cc18a08ef156a349873b
 msgid "Source, notes..."
 msgstr "Fonte, notas..."
 
-#: loco:5be8cc18a08ef156a349873c
 msgid "Sources"
 msgstr "Fontes"
 
-#: loco:5be8cc18a08ef156a349873d
 msgid "Special blocks"
 msgstr "Blocos especiais"
 
-#: loco:5be8cc18a08ef156a349873e
 msgid "Special pages"
 msgstr "Páginas especiais"
 
-#: loco:5be8cc18a08ef156a349873f
 msgid "Specify a whitespace-separated list of languages to activate it."
 msgstr ""
 "Especifique uma lista de linguagens separadas por espaços para ativá-la."
 
-#: loco:5be8cc18a08ef156a3498740
 msgid "Stale editing"
 msgstr "Edição obsoleta"
 
-#: loco:5be8cc18a08ef156a3498741
 msgid "Standalone HTML (printer-friendly)"
 msgstr "HTML puro (para impressão)"
 
-#: loco:5be8cc18a08ef156a3498742
 msgid "Standard"
 msgstr "Padrão"
 
-#: loco:5be8cc18a08ef156a3498743
 msgid "Start the document with an empty page"
 msgstr "Iniciar o documento com uma página em branco"
 
-#: loco:5be8cc18a08ef156a3498744
 msgid "Started"
 msgstr "Iniciado"
 
-#: loco:5be8cc18a08ef156a3498745
 msgid "Static page without javascript"
 msgstr "Página estática sem javascript"
 
-#: loco:5be8cc18a08ef156a3498746
 msgid "Status"
 msgstr "Status"
 
-#: loco:5be8cc18a08ef156a3498747
 msgid "Subsection"
 msgstr "Subseção"
 
-#: loco:5be8cc18a08ef156a3498748
 msgid "Subsubsection or description item"
 msgstr "Subseção ou item de descrição"
 
-#: loco:5be8cc18a08ef156a3498749
 msgid "Subtitle"
 msgstr "Subtítulo"
 
-#: loco:5be8cc18a08ef156a349874a
 msgid "Such an URI already exists"
 msgstr "Tal URI já existe"
 
-#: loco:5be8cc18a08ef156a349874b
 msgid ""
 "Such an header will unpublish the text and put a\n"
 "  redirection in place, and will be listed here"
 msgstr ""
-"Este cabeçalho vai des-publicar o texto colocar um redirecionamento no lugar,"
-" e será listado aqui"
+"Este cabeçalho vai des-publicar o texto colocar um redirecionamento no "
+"lugar, e será listado aqui"
 
-#: loco:5be8cc18a08ef156a349874c
 msgid "Such an user already exists!"
 msgstr "Tal nome de usuário já existe!"
 
-#: loco:5be8cc18a08ef156a349874d
 msgid "Such username already exists"
 msgstr "Tal nome de usuário já existe"
 
-#: loco:5be8cc18a08ef156a349874e
 msgid "Summary"
 msgstr "Sumário"
 
-#: loco:5be8cc18a08ef156a349874f
 msgid "Supported directive in the header"
 msgstr "Diretiva suportada no cebeçalho"
 
-#: loco:5be8cc18a08ef156a3498750
 msgid "Table of Contents"
 msgstr "Sumário"
 
-#: loco:5be8cc18a08ef156a3498751
 msgid "Tables"
 msgstr "Tabelas"
 
-#: loco:5be8cc18a08ef156a3498752
 msgid "Tag cloud with authors"
 msgstr "Nuvem de tags com autores"
 
-#: loco:5be8cc18a08ef156a3498753
 msgid "Tag cloud with topics"
 msgstr "Nuvem de tags por assuntos"
 
-#: loco:5be8cc18a08ef156a3498754
 msgid "Task"
 msgstr "Tarefas"
 
-#: loco:5be8cc18a08ef156a3498755
+msgid "TeX options (advanced)"
+msgstr ""
+
 msgid "Teaser"
 msgstr "Provocação"
 
-#: loco:5be8cc18a08ef156a3498756
 msgid "Teaser image"
 msgstr "Imagem de teaser"
 
-#: loco:5be8cc18a08ef156a3498757
 msgid "Term"
 msgstr "Termo"
 
-#: loco:5be8cc18a08ef156a3498758
 msgid "Test"
 msgstr "Teste"
 
-#: loco:5be8cc18a08ef156a3498759
 msgid "Tested applications, in this order of preference"
 msgstr "Aplicações testadas, na ordem de preferência"
 
-#: loco:5be8cc18a08ef156a349875a
 msgid "Text formatted with markup"
 msgstr "Texto formato com markup"
 
-#: loco:5be8cc18a08ef156a349875b
 msgid ""
 "Text redirections are set in the text itself, using the\n"
 "  DELETED header with this syntax"
@@ -2817,22 +2265,18 @@ msgstr ""
 "Redirecionamentos de texto são definidos no próprio texto, usando o "
 "cabeçalho DELETED com esta sintaxe"
 
-#: loco:5be8cc18a08ef156a349875c
 msgid "Texts"
 msgstr "Textos"
 
-#: loco:5be8cc18a08ef156a349875d
 msgid ""
 "The Beamer selections are relevant only if you activate the\n"
 "  slides output."
 msgstr ""
 "As seleções de Beamer são relevantes apenas se você ativar a saída em slides."
 
-#: loco:5be8cc18a08ef156a349875e
 msgid "The OPDS address for this site is:"
 msgstr "O endereço OPDS para este site é:"
 
-#: loco:5be8cc18a08ef156a349875f
 msgid ""
 "The PDF logo value can be either an absolute path\n"
 "            or just a filename if you choose to install it in the\n"
@@ -2845,31 +2289,25 @@ msgstr ""
 "ser encontrado."
 
 #. ($uri)
-#: loco:5be8cc18a08ef156a3498760
 msgid "The description for %1 has been updated"
 msgstr "A descrição de %1 foi atualizada"
 
-#: loco:5be8cc18a08ef156a3498761
 msgid ""
 "The differences between the list of footnotes and references is shown below."
 msgstr ""
 "As diferenças entre a lista de notas de rodapé e referências é mostrada "
 "abaixo"
 
-#: loco:5be8cc18a08ef156a3498762
 msgid "The file uploaded is not an HTML file!"
 msgstr "O arquivo carregado não é um HTML!"
 
-#: loco:5be8cc18a08ef156a3498763
 msgid "The following settings provide the defaults for each format."
 msgstr "As seguinte definições formam o padrão para cada formato."
 
-#: loco:5be8cc18a08ef156a3498764
 msgid "The following values are used to generate the webserver configuration."
 msgstr ""
 "Os seguinte valores são usados para gerar a configuração do servidor web."
 
-#: loco:5be8cc18a08ef156a3498765
 msgid ""
 "The generate webserver configuration will redirect\n"
 "          all the HTTP requests to HTTPS"
@@ -2878,19 +2316,15 @@ msgstr ""
 "para HTTPS"
 
 #. (valid)
-#: loco:5be8cc18a08ef156a3498766
 msgid "The link is valid until %1 (one hour from now)"
 msgstr "O link é válido até %1 (uma hora a partir de agora)"
 
-#: loco:5be8cc18a08ef156a3498767
 msgid "The logo has the site name on itself"
 msgstr "O logo tem o nome do site"
 
-#: loco:5be8cc18a08ef156a3498768
 msgid "The optional subtitle"
 msgstr "Subtítulo opcional"
 
-#: loco:5be8cc18a08ef156a3498769
 msgid ""
 "The page /special/index is twice special. It is assumed to be the\n"
 "default page to visit when loading the site’s root."
@@ -2898,33 +2332,26 @@ msgstr ""
 "A página /special/index é duplamente especial. Supõe-se que é a página "
 "padrão a ser exibida quando carregando a raiz do site."
 
-#: loco:5be8cc18a08ef156a349876a
 msgid "The password will be mailed at this address"
 msgstr "A senha será enviada para este endereço"
 
-#: loco:5be8cc18a08ef156a349876b
 msgid "The revision has the following messages"
 msgstr "A revisão tem as seguinte mensagens"
 
-#: loco:5be8cc18a08ef156a349876c
 msgid ""
 "The site will display the PDFs with a thumbnail at the\n"
 "        end of the document."
 msgstr "O site vai exibir os PDFs com uma miniatura no fim do documento."
 
-#: loco:5be8cc18a08ef156a349876d
 msgid "The text structure is shown below."
 msgstr "A estrutura do texto é exibida abaixo."
 
-#: loco:5be8cc18a08ef156a349876e
 msgid "The text to show on the homepage preview"
 msgstr "O texto a ser exibido na preview da homepage"
 
-#: loco:5be8cc18a08ef156a349876f
 msgid "The text was added to the bookbuilder"
 msgstr "Este texto foi adicionado ao bookbuilder"
 
-#: loco:5be8cc18a08ef156a3498770
 msgid ""
 "The title of the document, for sorting purposes. Useful\n"
 "          if you want to strip the article, if any. A text titled “A\n"
@@ -2935,11 +2362,9 @@ msgstr ""
 "artigos. Um texto intitulado \"Um Bom Título\" pode ter neste campo \"Bom "
 "Título\", de modo a ser listado na letra B e não na letra U."
 
-#: loco:5be8cc18a08ef156a3498771
 msgid "The title of the document. The only mandatory directive."
 msgstr "O título do documento. A única diretiva obrigatória."
 
-#: loco:5be8cc18a08ef156a3498772
 msgid ""
 "The webserver needs to be reconfigured. Please execute in a root shell the "
 "following commands:"
@@ -2947,31 +2372,24 @@ msgstr ""
 "O servidor wev precisa ser reconfigurado. Por favor execute os comandos "
 "seguintes como usuário root:"
 
-#: loco:5be8cc18a08ef156a3498773
 msgid "The whole book in as single signature"
 msgstr "O livro inteiro como uma assinatura simples"
 
-#: loco:5be8cc18a08ef156a3498774
 msgid "Then approve the change as it would be a normal publishing."
 msgstr "Então aprove a mudança da mesma forma que uma publicação normal."
 
-#: loco:5be8cc18a08ef156a3498775
 msgid "Then fetch the updates from this page."
 msgstr "Então busca as atualizações daqui desta página."
 
-#: loco:5be8cc18a08ef156a3498776
 msgid "There are failed jobs"
 msgstr "Existem trabalhos que falharam."
 
-#: loco:5be8cc18a08ef156a3498777
 msgid "These texts are missing the unique id."
 msgstr "Estes textos estão sem identificador único."
 
-#: loco:5be8cc18a08ef156a3498778
 msgid "They have the same syntax (images are actually links)"
 msgstr "Eles tema  mesma sintaxe (imagens são na verdade links)."
 
-#: loco:5be8cc18a08ef156a3498779
 msgid ""
 "They should be paths relative to the webserver configuration root or "
 "absolute paths (recommended)."
@@ -2979,16 +2397,13 @@ msgstr ""
 "Eles devem ser caminhos relativos à raiz da configuração do servidor web ou "
 "caminhos absolutos (recomendado)."
 
-#: loco:5be8cc18a08ef156a349877a
 msgid "This directive wants a whitespace separated list of filenames."
 msgstr ""
 "Esta diretiva espera uma lista de nomes de arquivos sepados por espaços."
 
-#: loco:5be8cc18a08ef156a349877b
 msgid "This field is required"
 msgstr "Este campo é obrigatório"
 
-#: loco:5be8cc18a08ef156a349877c
 msgid ""
 "This is a WYSIWYG editor. If you prefer to use\n"
 "        the wiki-like syntax leave it as is, fill the required fields\n"
@@ -2999,11 +2414,9 @@ msgstr ""
 "necessários\n"
 "        acima e adie a edição para o próximo passo."
 
-#: loco:5be8cc18a08ef156a349877d
 msgid "This is the caption"
 msgstr "Essa é a legenda"
 
-#: loco:5be8cc18a08ef156a349877e
 msgid ""
 "This mail has been sent to notify you about a new text\n"
 "creation, even if the uploading is not completed yet and the user\n"
@@ -3013,32 +2426,26 @@ msgid ""
 msgstr ""
 "Esta correspondência foi enviada para notificar você sobre a criação\n"
 "de um novo texto, mesmo se o upload ainda não foi completado e o usuário\n"
-"ainda precisa finalizar o upload. Outra correspondência deve seguir em breve."
-"\n"
+"ainda precisa finalizar o upload. Outra correspondência deve seguir em "
+"breve.\n"
 "Se isso não acontecer, significa que o upload foi abandonado\n"
 "e você pode querer checá-lo."
 
-#: loco:5be8cc18a08ef156a349877f
 msgid "This revision is already published, ignoring changes"
 msgstr "Esta revisão já foi publicada, ignorando modificações."
 
-#: loco:5be8cc18a08ef156a3498780
 msgid "This revision is being actively edited"
 msgstr "Esta revisão está sendo ativamente editada."
 
-#: loco:5be8cc18a08ef156a3498781
 msgid "This revision is being actively edited by you"
 msgstr "Esta revisão está sendo ativamente editada por você."
 
-#: loco:5be8cc18a08ef156a3498782
 msgid "This revision is being edited by someone else!"
 msgstr "Esta revisão está sendo editada por outra pessoa. "
 
-#: loco:5be8cc18a08ef156a3498783
 msgid "This section will not produce a slide"
 msgstr "Esta seção não produzirá um slide"
 
-#: loco:5be8cc18a08ef156a3498784
 msgid ""
 "This site is private and mobile applications should ask for your username "
 "and\n"
@@ -3047,106 +2454,82 @@ msgstr ""
 "Este site é privado e aplicações móveis devem pedir seu nome de usuário e "
 "senha para acessar o OPDS."
 
-#: loco:5be8cc18a08ef156a3498785
 msgid "This text does not exist"
 msgstr "Este texto não existe"
 
-#: loco:5be8cc18a08ef156a3498786
 msgid "This text is a book"
 msgstr "Este texto é um livro"
 
-#: loco:5be8cc18a08ef156a3498787
 msgid "This text is an article"
 msgstr "Este texto é um artigo"
 
-#: loco:5be8cc18a08ef156a3498788
 msgid "This text is new"
 msgstr "Este texto é novo"
 
-#: loco:5be8cc18a08ef156a3498789
 msgid "This text is not available"
 msgstr "Este texto não está disponível"
 
-#: loco:5be8cc18a08ef156a349878a
 msgid "This text is not public yet"
 msgstr "Este texto não é público ainda"
 
-#: loco:5be8cc18a08ef156a349878b
 msgid "This text is not published yet"
 msgstr "Este texto não foi publicado ainda"
 
 #. (rev.is_deferred)
-#: loco:5be8cc18a08ef156a349878c
 msgid "This text will be deferred to %1"
 msgstr "Este texto será adiado para %1."
 
-#: loco:5be8cc18a08ef156a349878d
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: loco:5be8cc18a08ef156a349878e
 msgid "Time is optional."
 msgstr "Hora é opcional."
 
-#: loco:5be8cc18a08ef156a349878f
 msgid "Title"
 msgstr "Título"
 
-#: loco:5be8cc18a08ef156a3498790
 msgid "Title and chapter. If one side document: chapter."
 msgstr "Título e capítulo. Se documento de um lado: Capítulo."
 
-#: loco:5be8cc18a08ef156a3498791
 msgid "Title and section.  If one side document: section."
 msgstr "Título e seção. Se documento de um lado: Seção."
 
-#: loco:5be8cc18a08ef156a3498792
 msgid "Title and subtitle. If one side document: title."
 msgstr "Título e subtítulo. Se documento de um lado: Título."
 
-#: loco:5be8cc18a08ef156a3498793
 msgid "Title for sorting"
 msgstr "Título para ordenação"
 
-#: loco:5be8cc18a08ef156a3498794
 msgid "Title, author, date..."
 msgstr "Título, autor, data..."
 
-#: loco:5be8cc18a08ef156a3498795
 msgid "Titles"
 msgstr "Títulos"
 
 #. (pending_url)
-#: loco:5be8cc18a08ef156a3498796
 msgid "To apply the changes, you can visit %1"
 msgstr "Para fazer modificações, você precisa acessar %1"
 
-#: loco:5be8cc18a08ef156a3498797
 msgid "To display the PDFs, set or append the following string in the header"
 msgstr "Para exibir os PDFs, ajuste ou adicione o seguinte texto no cabeçalho"
 
-#: loco:5be8cc18a08ef156a3498798
 msgid ""
 "To preserve the whitespaces and line breakings, wrap the paragraphs with"
 msgstr ""
 "Para preservar os espaços em brando e quebras de linhas, enquadre os "
 "parágrafos com "
 
-#: loco:5be8cc18a08ef156a3498799
 msgid "To quickly format bibliographies wrap them in"
 msgstr "Para formatar rapidamente bibliografias, enquadre eles com"
 
-#: loco:5be8cc18a08ef156a349879a
 msgid "To quickly format plays, use"
 msgstr "Para formatar rapidamente peças, use"
 
-#: loco:5be8cc18a08ef156a349879b
 msgid "To resume the editing you can visit the following URL"
 msgstr "Para continuar a edição você pode visitar a seguinte URL"
 
 #. (loc('Update')
 #. (loc("Update"))
-#: loco:5be8cc18a08ef156a349879c
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -3154,39 +2537,30 @@ msgstr ""
 "Para salvar ou atualizar os modelos, primeiro você deve salvar\n"
 "    as opções com o botão \"%1\"."
 
-#: loco:5be8cc18a08ef156a349879d
 msgid "To view the changes introduced, you can visit the following URL"
 msgstr "Para ver as mudanças introduzidas, você pode visitar a seguinte URL"
 
-#: loco:5be8cc18a08ef156a349879e
 msgid "Toggle fullscreen editor"
 msgstr "Mudar para o editor em tela cheia"
 
-#: loco:5be8cc18a08ef156a349879f
 msgid "Topic"
 msgstr "Assunto"
 
-#: loco:5be8cc18a08ef156a34987a0
 msgid "Topics"
 msgstr "Assuntos"
 
-#: loco:5be8cc18a08ef156a34987a1
 msgid "Total pages"
 msgstr "Total de páginas"
 
-#: loco:5be8cc18a08ef156a34987a2
 msgid "Triple bars"
 msgstr "Barras triplas"
 
-#: loco:5be8cc18a08ef156a34987a3
 msgid "Try a random text if unsure"
 msgstr "Na dúvida tente um texto aleatório"
 
-#: loco:5be8cc18a08ef156a34987a4
 msgid "Try again"
 msgstr "Tente novamente"
 
-#: loco:5be8cc18a08ef156a34987a5
 msgid ""
 "Turn links to images into images (affects site display only, static formats "
 "have the link)"
@@ -3194,7 +2568,6 @@ msgstr ""
 "Transforma links para imagens em imagens (afeta apenas a visualização no "
 "site, formatos estáticos exibiam o link)"
 
-#: loco:5be8cc18a08ef156a34987a6
 msgid ""
 "Turn links without description to YouTube, Vimeo,\n"
 "            Gmaps into widgets (affects site display only, static\n"
@@ -3204,19 +2577,18 @@ msgstr ""
 "           Google Maps em janelas (afeta apenas a exibição\n"
 "           no site, formatos estáticos exibem apenas o link)"
 
-#: loco:5be8cc18a08ef156a34987a7
 msgid "Two side layout"
 msgstr "Layout de dois lados"
 
-#: loco:5be8cc18a08ef156a34987a8
+msgid "Type"
+msgstr ""
+
 msgid "URI"
 msgstr "URI"
 
-#: loco:5be8cc18a08ef156a34987a9
 msgid "URL"
 msgstr "URL"
 
-#: loco:5be8cc18a08ef156a34987aa
 msgid ""
 "URL of the new remote repository\n"
 "        HTTP, HTTPS, GIT, or local (just the local path). SSH is not\n"
@@ -3225,108 +2597,83 @@ msgstr ""
 "URL do novo repositório remoto HTTP, HTTPS, GIT, ou local (apenas o caminho "
 "local). SSH ainda não é suportado."
 
-#: loco:5be8cc18a08ef156a34987ab
 msgid "UTC"
 msgstr "UTC"
 
-#: loco:5be8cc18a08ef156a34987ac
 msgid "Unable to load the bookbuilder session"
 msgstr "Impossível de carregar a sessão do bookbuilder"
 
-#: loco:5be8cc18a08ef156a34987ad
 msgid "Unbranded PDF (hide site name, logo, etc.)"
 msgstr "PDF sem marca (esconde nome do site, logo, etc.)"
 
-#: loco:5be8cc18a08ef156a34987ae
 msgid ""
 "Unconditionally remove all the invisible non-breaking\n"
 "                spaces in the text"
 msgstr ""
 "Remove incondicionalmente todos os expaços não-separáveis invisíveis no texto"
 
-#: loco:5be8cc18a08ef156a34987af
 msgid "Unique ID for the text"
 msgstr "ID único no texto"
 
-#: loco:5be8cc18a08ef156a34987b0
 msgid "Unlimited"
 msgstr "Ilimitado"
 
-#: loco:5be8cc18a08ef156a34987b1
 msgid "Unordered List"
 msgstr "Lista não ordenada"
 
-#: loco:5be8cc18a08ef156a34987b2
 msgid "Unpublished texts"
 msgstr "Textos não publicados"
 
 #. ($mime)
-#: loco:5be8cc18a08ef156a34987b3
 msgid "Unsupported file type %1"
 msgstr "Tipo de arquivo não suportado %1"
 
-#: loco:5be8cc18a08ef156a34987b4
 msgid "Unused attachment"
 msgstr "Anexo não usado"
 
-#: loco:5be8cc18a08ef156a34987b5
 msgid "Update"
 msgstr "Atualizar"
 
-#: loco:5be8cc18a08ef156a34987b6
 msgid "Update account info"
 msgstr "Atualizar informações de conta"
 
-#: loco:5be8cc18a08ef156a34987b7
 msgid "Update category description"
 msgstr "Atualizar descrição da categoria"
 
-#: loco:5be8cc18a08ef156a34987b8
 msgid "Update to current settings"
 msgstr "Atualizar para as configurações correntes"
 
-#: loco:5be8cc18a08ef156a34987b9
 msgid "Upload"
 msgstr "Upload"
 
-#: loco:5be8cc18a08ef156a34987ba
 msgid "Url"
 msgstr "URL"
 
-#: loco:5be8cc18a08ef156a34987bb
 msgid "Use JS syntax highlight for code blocks"
 msgstr "Usar destaque de sintaxe JS para blocos de código"
 
-#: loco:5be8cc18a08ef156a34987bc
 msgid "Use LuaLaTeX instead of XeLaTeX (slower)"
 msgstr "Usar LuaLaTeX no lugar do XeLaTeX (mais lento)"
 
-#: loco:5be8cc18a08ef156a34987bd
 msgid "Use SSL for authenticated users"
 msgstr "Usar SSL para usuários autenticados"
 
-#: loco:5be8cc18a08ef156a34987be
 msgid "Use it as a teaser image adding to the header this line:"
 msgstr "Use como imagem de \"teaser\" adicionando ao cabeçalho esta linha:"
 
 #. (sign)
-#: loco:5be8cc18a08ef156a34987bf
 msgid "Use optimized signatures with %1 pages each"
 msgstr "Usar assinaturas otimizadas com %1 páginas cada"
 
-#: loco:5be8cc18a08ef156a34987c0
 msgid "Use sans fonts for section titles"
 msgstr "Usar fontes sem serifa para títulos de seção"
 
-#: loco:5be8cc18a08ef156a34987c1
 msgid "Use the image as cover"
 msgstr "Usar a imagem como capa"
 
-#: loco:5be8cc18a08ef156a34987c2
 msgid "Useful HTML snippets"
 msgstr "Trechos de HTML úteis"
 
-#: loco:5be8cc18a08ef156a34987c3
 msgid ""
 "Useful for footnotes or in the headers of the document, where you cannot put "
 "a blank line to mark a new paragraph."
@@ -3335,39 +2682,31 @@ msgstr ""
 "uma linha em branco para marcar um novo parágrafo."
 
 #. ($user->username)
-#: loco:5be8cc18a08ef156a34987c4
 msgid "User %1 created!"
 msgstr "Usuário %1 criado!"
 
 #. ($c->stash->{user}->username)
-#: loco:5be8cc18a08ef156a34987c5
 msgid "User %1 deleted"
 msgstr "Usuário %1 deletado"
 
 #. ($user->username)
-#: loco:5be8cc18a08ef156a34987c6
 msgid "User %1 updated"
 msgstr "Usuário %1 atualizado"
 
-#: loco:5be8cc18a08ef156a34987c7
 msgid "User created"
 msgstr "Usuário criado"
 
-#: loco:5be8cc18a08ef156a34987c8
 msgid "Username"
 msgstr "Nome de usuário"
 
-#: loco:5be8cc18a08ef156a34987c9
 msgid "Username, alphanumerical only, no special characters, no uppercase"
 msgstr ""
 "Nome de usuário, alfanumérico apenas, sem caracteres especiais, sem letras "
 "maiúsculas"
 
-#: loco:5be8cc18a08ef156a34987ca
 msgid "Users"
 msgstr "Usuários"
 
-#: loco:5be8cc18a08ef156a34987cb
 msgid ""
 "Using this token, you can load the bookbuilder settings\n"
 "    and the text list from another computer, or share it with someone\n"
@@ -3380,27 +2719,21 @@ msgstr ""
 "    pessoa. Apenas anote ele e entrão carregue-o em outro computador\n"
 "    usando o seguinte formulário."
 
-#: loco:5be8cc18a08ef156a34987cc
 msgid "Verbatim block"
 msgstr "Bloco verbatim"
 
-#: loco:5be8cc18a08ef156a34987cd
 msgid "View history"
 msgstr "Ver histórico"
 
-#: loco:5be8cc18a08ef156a34987ce
 msgid "Virtual hosts"
 msgstr "Hosts virtuais"
 
-#: loco:5be8cc18a08ef156a34987cf
 msgid "Virtual hosts, one per line"
 msgstr "Hosts virtuais, um por linha"
 
-#: loco:5be8cc18a08ef156a34987d0
 msgid "What links here"
 msgstr "O que tem links para cá"
 
-#: loco:5be8cc18a08ef156a34987d1
 msgid ""
 "When you start a bookbuilder session, at the end of the\n"
 "    bookbuilder page you can see a token for sharing the session. You\n"
@@ -3413,24 +2746,19 @@ msgstr ""
 "    Você pode carregá-lo aqui a partir de outro dispositivo para continuar o "
 "que você estava fazendo."
 
-#: loco:5be8cc18a08ef156a34987d2
 msgid "When you upload a PDF, split it into images to be inserted in the body"
 msgstr ""
 "Quando você enviar um PDF, quebrá-lo em imagens para serem inseridas no corpo"
 
-#: loco:5be8cc18a08ef156a34987d3
 msgid "Where does this text come from?"
 msgstr "De onde este texto vem?"
 
-#: loco:5be8cc18a08ef156a34987d4
 msgid "Width of the cover image in percent of the text block width."
 msgstr "Largura da imagem de capa em percentual da largura do bloco de texto."
 
-#: loco:5be8cc18a08ef156a34987d5
 msgid "Width:"
 msgstr "Largura:"
 
-#: loco:5be8cc18a08ef156a34987d6
 msgid ""
 "With complex structures, e.g., a chapter with\n"
 "      subsections, selecting only the chapter is likely to select only\n"
@@ -3441,7 +2769,6 @@ msgstr ""
 "apenas o capítulo possivelmente vai selecionar apenas o título do capítulo, "
 "então provavelmente você quer selecionar o capítulo e todas as subseções."
 
-#: loco:5be8cc18a08ef156a34987d7
 msgid ""
 "With the \"verbatim\" tag you can avoid the markup to\n"
 "          be interpreted, usually not needed"
@@ -3449,7 +2776,6 @@ msgstr ""
 "Com a tag \"verbatim\" você pode evitar que a markup\n"
 "         seja interpretada, normamente isso não é necessário"
 
-#: loco:5be8cc18a08ef156a34987d8
 msgid ""
 "With the bookbuilder you can change the layout (fonts,\n"
 "    dimensions, paper, margins) of the texts on the library. You can\n"
@@ -3459,11 +2785,9 @@ msgstr ""
 "papel, margens) dos textos na biblioteca. Você pode também fundir textos "
 "para criar seu próprio livreto. Experimente!"
 
-#: loco:5be8cc18a08ef156a34987d9
 msgid "Workflow"
 msgstr "Fluxo de trabalho"
 
-#: loco:5be8cc18a08ef156a34987da
 msgid ""
 "Wrapping tags cannot be used inside environments\n"
 "          which require leading space (notably, you cannot use them in\n"
@@ -3472,23 +2796,18 @@ msgstr ""
 "Tags de enquadramento não podem ser usados dentro de ambientes que requerem "
 "espaços em branco no começo (em particular, você não pode usá-los em listas)."
 
-#: loco:5be8cc18a08ef156a34987db
 msgid "Wrong answer!"
 msgstr "Resposta errada!"
 
-#: loco:5be8cc18a08ef156a34987dc
 msgid "Wrong username or password"
 msgstr "Nome de usuário ou senha incorretos."
 
-#: loco:5be8cc18a08ef156a34987dd
 msgid "XeLaTeX source"
 msgstr "Código-fonte XeLaTeX"
 
-#: loco:5be8cc18a08ef156a34987de
 msgid "Yes"
 msgstr "Sim"
 
-#: loco:5be8cc18a08ef156a34987df
 msgid ""
 "You MUST specify a reason, otherwise the line will have no effect.\n"
 "The ordering of the header’s lines (where there is \"#title\", \"#lang\",\n"
@@ -3498,11 +2817,9 @@ msgstr ""
 "ordenação das linhas do cabeçalho (onde há \"#title\", \"#lang\", etc.) é "
 "irrelevante."
 
-#: loco:5be8cc18a08ef156a34987e0
 msgid "You are already logged in"
 msgstr "Você já está logado."
 
-#: loco:5be8cc18a08ef156a34987e1
 msgid ""
 "You are building a collection. Please provide a title and, optionally, any "
 "other information needed for the front cover (author, subtitle, date) and "
@@ -3512,56 +2829,46 @@ msgstr ""
 "opcionalmente, alguma outra informação para a capa (autor, subtítulo, data) "
 "e para a sobrecapa (fontes e notas)."
 
-#: loco:5be8cc18a08ef156a34987e2
 msgid "You are logged in now!"
 msgstr "Agora você está logado!"
 
-#: loco:5be8cc18a08ef156a34987e3
 msgid ""
 "You can add texts to the bookbuilder clicking on the\n"
 "    “plus” icon near the downloads of each text. You can add and\n"
 "    remove the texts later."
 msgstr ""
-"Você pode adicionar textos ao construtor de livros clicando no ícone de "
-"\"+\" próximo ao download de cada texto. Você pode adicionar ou remover "
-"textos depois."
+"Você pode adicionar textos ao construtor de livros clicando no ícone de \"+"
+"\" próximo ao download de cada texto. Você pode adicionar ou remover textos "
+"depois."
 
 #. (create_url)
-#: loco:5be8cc18a08ef156a34987e4
 msgid "You can create a peer at %1"
 msgstr "Você pode criar um par em %1"
 
-#: loco:5be8cc18a08ef156a34987e5
 msgid "You can do so answering a simple question."
 msgstr "Você pode fazê-lo respondendo uma questão simples."
 
-#: loco:5be8cc18a08ef156a34987e6
 msgid "You can tune them editing them here."
 msgstr "Você pode ajustar eles editando aqui."
 
-#: loco:5be8cc18a08ef156a34987e7
 msgid ""
-"You can use the following prefixes to search a word in a specific field, e.g."
-" \"title:example\""
+"You can use the following prefixes to search a word in a specific field, e."
+"g. \"title:example\""
 msgstr ""
 "Você pode usar os seguintes prefixos para procurar uma palavra em um campo "
 "específico, por exemplo \"title:exemplo\""
 
-#: loco:5be8cc18a08ef156a34987e8
 msgid ""
 "You can't create a new revision because the text has not been published yet"
 msgstr ""
 "Você não pode criar uma nova revisão porquê o texto não foi publicado ainda"
 
-#: loco:5be8cc18a08ef156a34987e9
 msgid "You have logged out"
 msgstr "Você foi deslogado"
 
-#: loco:5be8cc18a08ef156a34987ea
 msgid "You may want to resume the editing of one of them"
 msgstr "Você pode querer continuar a edição de um deles"
 
-#: loco:5be8cc18a08ef156a34987eb
 msgid ""
 "You sent credentials over an unencrypted connection. Please switch to HTTPS, "
 "login, and change your password right away. This shouldn't happen."
@@ -3571,153 +2878,117 @@ msgstr ""
 "acontecer."
 
 #. (edit_url)
-#: loco:5be8cc18a08ef156a34987ec
 msgid "You should change your password right away at %1"
 msgstr "Você deveria mudar sua senha imediatamente em %1"
 
-#: loco:5be8cc18a08ef156a34987ed
 msgid ""
 "Your changes are saved and can be checked every time you hit Preview or Save"
 msgstr ""
 "Suas mudanças são salvas e podem ser verificadas cada vez que você clica em "
 "Previsão ou Salvar"
 
-#: loco:5be8cc18a08ef156a34987ee
 msgid "Your chapter here..."
 msgstr "Seu capítula aqui..."
 
-#: loco:5be8cc18a08ef156a34987ef
 msgid "Your current bookbuilder token is:"
 msgstr "Seu token corrent do construtor de livros é:"
 
-#: loco:5be8cc18a08ef156a34987f0
 msgid "Your email"
 msgstr "Seu email"
 
-#: loco:5be8cc18a08ef156a34987f1
 msgid "Your file is ready"
 msgstr "Seu arquivo está pronto"
 
-#: loco:5be8cc18a08ef156a34987f2
 msgid "Your part here..."
 msgstr "Sua parte aqui..."
 
 #. (password)
-#: loco:5be8cc18a08ef156a34987f3
 msgid "Your password is %1."
 msgstr "Sua senha é %1."
 
-#: loco:5be8cc18a08ef156a34987f4
 msgid "Your section here..."
 msgstr "Sua seção aqui..."
 
-#: loco:5be8cc18a08ef156a34987f5
 msgid "Your sub-sub-section (or description heading) here..."
 msgstr "Sua sub-sub-seção (ou cabeçalho de descrição) aqui..."
 
-#: loco:5be8cc18a08ef156a34987f6
 msgid "Your subsection here..."
 msgstr "Sua subseção aqui...."
 
 #. (home)
-#: loco:5be8cc18a08ef156a34987f7
 msgid "Your user at %1 has been created."
 msgstr "Seu usuário em %1 foi criado."
 
 #. (username)
-#: loco:5be8cc18a08ef156a34987f8
 msgid "Your username is %1."
 msgstr "Seu nome de usuário é %1."
 
-#: loco:5be8cc18a08ef156a34987f9
 msgid "aborted"
 msgstr "abortado"
 
-#: loco:5be8cc18a08ef156a34987fa
 msgid "about, links..."
 msgstr "sobre, links..."
 
-#: loco:5be8cc18a08ef156a34987fb
 msgid "active"
 msgstr "ativo"
 
-#: loco:5be8cc18a08ef156a34987fc
 msgid "affects only the frontend webserver configuration"
 msgstr "afeta apenas a configuração do servidor front-end"
 
-#: loco:5be8cc18a08ef156a34987fd
 msgid "any"
 msgstr "algum"
 
-#: loco:5be8cc18a08ef156a34987fe
 msgid "automatically generated if not present, using author and title"
 msgstr "gerado automaticamente se não estiver presente, usando autor e título"
 
-#: loco:5be8cc18a08ef156a34987ff
 msgid "by number of pages, ascending"
 msgstr "por número de páginas, ascendente"
 
-#: loco:5be8cc18a08ef156a3498800
 msgid "by number of pages, descending"
 msgstr "por número de páginas, descendente"
 
-#: loco:5be8cc18a08ef156a3498801
 msgid "code and monospace"
 msgstr "código e monoespaçamento"
 
-#: loco:5be8cc18a08ef156a3498802
 msgid "comma or semicolon separated list"
 msgstr "lista separada por vírgula ou ponto-e-vírgula"
 
-#: loco:5be8cc18a08ef156a3498803
 msgid "completed"
 msgstr "completado"
 
-#: loco:5be8cc18a08ef156a3498804
 msgid "conflict"
 msgstr "conflito"
 
-#: loco:5be8cc18a08ef156a3498805
 msgid "description"
 msgstr "descrição"
 
-#: loco:5be8cc18a08ef156a3498806
 msgid "displayed text"
 msgstr "texto exibido"
 
-#: loco:5be8cc18a08ef156a3498807
 msgid "edit, commit..."
 msgstr "editar, enviar..."
 
-#: loco:5be8cc18a08ef156a3498808
 msgid "editing"
 msgstr "editando"
 
-#: loco:5be8cc18a08ef156a3498809
 msgid "emphasis"
 msgstr "ênfase"
 
-#: loco:5be8cc18a08ef156a349880a
 msgid "failed"
 msgstr "falhou"
 
-#: loco:5be8cc18a08ef156a349880b
 msgid "for code, monospaced"
 msgstr "para código, monoespaçada"
 
-#: loco:5be8cc18a08ef156a349880c
 msgid "for display"
 msgstr "para exibição"
 
-#: loco:5be8cc18a08ef156a349880d
 msgid "for poetry"
 msgstr "para poesia"
 
-#: loco:5be8cc18a08ef156a349880e
 msgid "generic sectioning, good for articles"
 msgstr "seccionamento genérico, bom para artigos"
 
-#: loco:5be8cc18a08ef156a349880f
 msgid ""
 "if by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
@@ -3727,45 +2998,38 @@ msgstr ""
 "desejada usando o campo abaixo inserindo autor, título e um número, por "
 "exemplo meu-autor-meu-titulo-1"
 
-#: loco:5be8cc18a08ef156a3498810
 msgid "if the repository is exported"
 msgstr "se o repositório for exportado"
 
-#: loco:5be8cc18a08ef156a3498811
 msgid "if you want to use a custom size, you need to set both width and height"
 msgstr ""
 "se você quer usar um tamanho personalizado, você precisa configurar tanto "
 "largura quanto altura"
 
-#: loco:5be8cc18a08ef156a3498812
 msgid "image"
 msgstr "Imagem"
 
-#: loco:5be8cc18a08ef156a3498813
 msgid "left"
 msgstr "esquerda"
 
-#: loco:5be8cc18a08ef156a3498814
 msgid "mandatory"
 msgstr "mandatório"
 
-#: loco:5be8cc18a08ef156a3498815
 msgid "markup *not* interpreted"
 msgstr "markup \"não\" interpretada"
 
-#: loco:5be8cc18a08ef156a3498816
+msgid "minutes"
+msgstr ""
+
 msgid "new-example-uri"
 msgstr "nova-uri-de-exemplo"
 
-#: loco:5be8cc18a08ef156a3498817
 msgid "optional, defaults to the author directive"
 msgstr "opcional, o padrão é a diretiva autor"
 
-#: loco:5be8cc18a08ef156a3498818
 msgid "or"
 msgstr "ou"
 
-#: loco:5be8cc18a08ef156a3498819
 msgid ""
 "or, if you have SSH access to the machine (but do not use the same user as "
 "amusewiki, it should be a read-only repo)"
@@ -3773,127 +3037,98 @@ msgstr ""
 "ou, se você tiver acesso SSH à máquina (mas não usa o mesmo usuário que a "
 "amusewiki, o repositório deve ser apenas leitura)"
 
-#: loco:5be8cc18a08ef156a349881a
 msgid "ordered item"
 msgstr "item ordenado"
 
-#: loco:5be8cc18a08ef156a349881b
 msgid "overstriked"
 msgstr "tachado"
 
-#: loco:5be8cc18a08ef156a349881c
 msgid "pending"
 msgstr "pendente"
 
-#: loco:5be8cc18a08ef156a349881d
 msgid "plain PDF"
 msgstr "PDF simples"
 
-#: loco:5be8cc18a08ef156a349881e
 msgid "plain text source"
 msgstr "fonte em texto puro"
 
-#: loco:5be8cc18a08ef156a349881f
 msgid "processing"
 msgstr "processando"
 
-#: loco:5be8cc18a08ef156a3498820
 msgid "published"
 msgstr "publicado"
 
-#: loco:5be8cc18a08ef156a3498821
 msgid "revision"
 msgstr "revisão"
 
-#: loco:5be8cc18a08ef156a3498822
 msgid "right"
 msgstr "lado errado"
 
 #. (args)
-#: loco:5be8cc18a08ef156a3498823
 msgid "string"
 msgstr "cadeia de caracteres"
 
-#: loco:5be8cc18a08ef156a3498824
 msgid "strong emphasis"
 msgstr "ênfase forte"
 
-#: loco:5be8cc18a08ef156a3498825
 msgid "sub-sub-section"
 msgstr "sub-sub-seção"
 
-#: loco:5be8cc18a08ef156a3498826
 msgid "subscript"
 msgstr "subscrito"
 
-#: loco:5be8cc18a08ef156a3498827
 msgid "subsection"
 msgstr "subseção"
 
-#: loco:5be8cc18a08ef156a3498828
 msgid "superscript"
 msgstr "sobreescrito"
 
-#: loco:5be8cc18a08ef156a3498829
 msgid "taken"
 msgstr "tomado"
 
-#: loco:5be8cc18a08ef156a349882a
 msgid "texts by authors, title, topic..."
 msgstr "textos por autor, título, tópico..."
 
-#: loco:5be8cc18a08ef156a349882b
 msgid "texts sorted by author"
 msgstr "textos ordenados por autor"
 
-#: loco:5be8cc18a08ef156a349882c
 msgid "texts sorted by title"
 msgstr "textos ordenados por título"
 
-#: loco:5be8cc18a08ef156a349882d
 msgid "texts sorted by topics"
 msgstr "textos ordenados por tópicos"
 
-#: loco:5be8cc18a08ef156a349882e
 msgid "the author of the text (as displayed)"
 msgstr "o autor do texto (como exibido)"
 
-#: loco:5be8cc18a08ef156a349882f
 msgid "this text will be unpublished"
 msgstr "este texto não será publicado"
 
-#: loco:5be8cc18a08ef156a3498830
 msgid "topic"
 msgstr "tópico"
 
-#: loco:5be8cc18a08ef156a3498831
 msgid "unordered item"
 msgstr "item não ordenado"
 
-#: loco:5be8cc18a08ef156a3498832
 msgid "very strong emphasis"
 msgstr "ênfase muito forte"
 
-#: loco:5be8cc18a08ef156a3498833
 msgid "with description"
 msgstr "com descrição"
 
-#: loco:5be8cc18a08ef156a3498834
 msgid "without description"
 msgstr "sem descrição"
 
-#: loco:5be8cc18a08ef156a3498835
 msgid ""
 "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 "você pode querer remover o artigo do início do título (O, A, Uma, Um, etc)"
 
-#: loco:5be8cc18a08ef156a3498836
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
 "    while editing, but it's still there, in case someone wants to pick\n"
 "    it up when editing a text."
 msgstr ""
-"\"Edição obsoleta\" significa que a revisão foi abandonada enquanto editando,"
-" mas ainda está lá, caso alguém queira continuar desse ponto quando editando "
-"um texto."
+"\"Edição obsoleta\" significa que a revisão foi abandonada enquanto "
+"editando, mas ainda está lá, caso alguém queira continuar desse ponto quando "
+"editando um texto."
