@@ -104,30 +104,26 @@ sub muse_file_info {
     }
 
     my @cats;
-    if (exists $details->{authors} or
-        exists $details->{sortauthors}) {
-        if (my @authors = @{$header->authors || []}) {
-            Dlog_debug  { "Formatting $_ with $lang" } \@authors;
-            push @cats, map {
-                _parse_topic_or_author(author => muse_format_line(html => $_, $lang))
-            } @authors;
-            Dlog_debug { "Cats are $_ now" } \@cats;
-        }
-    }
-
     # use author as default if there is no #authors. Please note that
     # #(sort)authors could be empty or with a - in it. In this case
     # we fall into the case above and don't resort to Author. Tests
     # are in archive.t
 
-    elsif ($details->{author}) {
-        push @cats, _parse_topic_or_author(author => muse_format_line(html => $details->{author},
-                                                                      $lang));
+    my @authors = @{$header->authors || []};
+    unless (@authors) {
+        if (my $author = $header->author) {
+            if ($author =~ /\w/) {
+                @authors = ($author);
+            }
+        }
     }
+    push @cats, map {
+        _parse_topic_or_author(author => muse_format_line(html => $_, $lang))
+    } @authors;
+
     push @cats, map {
         _parse_topic_or_author(topic => muse_format_line(html => $_, $lang))
     } @{$header->topics || []};
-    Dlog_debug { $_ } $header;
 
     @cats = grep { $_ } @cats;
 
