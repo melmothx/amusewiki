@@ -69,6 +69,12 @@ Vagrant.configure("2") do |config|
     libexpat1-dev
   ]
 
+  # Install Imager module dependencies
+  packages += %w[
+    libjpeg-dev
+    libpng-dev
+  ]
+
   # Install gettext required by /vagrant/script/upgrade_i18n
   packages << "gettext"
 
