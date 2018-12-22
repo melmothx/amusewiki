@@ -77,13 +77,6 @@ for my $term ('XXXX', 'bla') {
 eval { $site->xapian->xapian_db->delete_document_by_term("Qtest") };
 ok !$@, "No exception deleting an already deleted doc";
 
-write_file($target, "#title XXXX#lang fr\n#SORTtopics prova\n\nBla bla État\n");
-$site->update_db_from_tree;
-foreach my $term ("état", "etat", "ÉTAT", "ETAT") {
-    my ($total, @results) = $site->xapian->search($term);
-    is $total->total_entries, 1, "Found one record searching for $term";
-}
-
 my $russian =<<MUSE;
 #title Russian
 #authors Pinco Pallino, Tizio Caio Sempronio
@@ -135,6 +128,13 @@ foreach my $term ('xxxумеренными', 'x1887x', 'xravnox', 'xprotivx', 'x
     is $total->total_entries, 0, "Found no record searching for $term";
 }
 
+sleep 1;
 
-
+write_file($target, "#title XXXX#lang fr\n#SORTtopics prova\n\nBla bla État\n");
+$site->update_db_from_tree;
+$site->xapian_reindex_all;
+foreach my $term ("état", "etat", "ÉTAT", "ETAT") {
+    my ($total, @results) = $site->xapian->search($term);
+    is $total->total_entries, 1, "Found one record searching for $term";
+}
 
