@@ -103,21 +103,20 @@ sub muse_file_info {
         $details->{deleted} ||= "Missing title";
     }
 
-    my @cats;
     # use author as default if there is no #authors. Please note that
     # #(sort)authors could be empty or with a - in it. In this case
     # we fall into the case above and don't resort to Author. Tests
     # are in archive.t
-
-    my @authors = @{$header->authors || []};
-    unless (@authors) {
-        if (my $author = $header->author) {
-            if ($author =~ /\w/) {
-                @authors = ($author);
-            }
-        }
+    my @authors;
+    Dlog_debug { "Header is $_"  } $header->header;
+    if (defined $header->header->{authors} || defined $header->header->{sortauthors}) {
+        @authors = @{$header->authors || []};
     }
-    push @cats, map {
+    elsif ($header->author =~ /\w/) {
+        @authors = ($header->author);
+    }
+
+    my @cats =  map {
         _parse_topic_or_author(author => muse_format_line(html => $_, $lang))
     } @authors;
 
