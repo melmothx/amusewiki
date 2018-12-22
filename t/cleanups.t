@@ -3,7 +3,7 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 56;
+use Test::More tests => 36;
 use DateTime;
 use Cwd;
 use File::Spec::Functions qw/catfile catdir rel2abs/;
@@ -144,49 +144,3 @@ ok (-f $expected, "EPUB created");
 $check->delete;
 ok (! -f $expected, "EPUB cleaned up after record removal");
 
-my $newjob = $site->jobs->bookbuilder_add({});
-my $job_id = $newjob->id;
-diag "Testing files without jobfiles $job_id";
-@files = ("$job_id.pdf", "$job_id.epub", "$job_id.sl.pdf",
-             "bookbuilder-$job_id.zip");
-
-foreach my $file (@files) {
-    my $f = catfile(qw/root custom/, $file);
-    unlink $f if -f $f;
-    my $url = "/custom/$file";
-    $mech->get($url);
-    is $mech->status, '404';
-}
-
-my $oldcustomdir = catdir(qw/root custom/);
-mkdir $oldcustomdir unless -d $oldcustomdir;
-foreach my $file (@files) {
-    my $path = catfile($oldcustomdir => $file);
-    open (my $fh, ">", $path) or die $!;
-    print $fh "xx";
-    close $fh;
-    ok -f $path, "$path exists";
-}
-
-{
-    my $upgrade_file = rel2abs(catfile(qw/dbicdh _common upgrade 5-6 002-add-and-move-job-files.pl/));
-    diag "Simulating the upgrade\n";
-    my $upgrade = do "$upgrade_file";
-    $upgrade->($schema);
-}
-
-
-foreach my $file (@files) {
-    my $url = "/custom/$file";
-    $mech->get_ok($url);
-    $mech_no_auth->get($url);
-    is $mech_no_auth->status, '404', "same file ($url) not found on another site";
-}
-
-$newjob->delete;
-
-foreach my $file (@files) {
-    my $path = catfile(bbfiles => $file);
-    ok (! -f $path, "$path deleted");
-}
-rmdir $oldcustomdir;
