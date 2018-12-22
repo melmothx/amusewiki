@@ -3,17 +3,18 @@
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use strict;
 use warnings;
-use Test::More tests => 47;
+use Test::More tests => 56;
 use DateTime;
 use Cwd;
-use File::Spec::Functions qw/catfile catdir/;
+use File::Spec::Functions qw/catfile catdir rel2abs/;
 use AmuseWikiFarm::Schema;
 use AmuseWikiFarm::Archive::BookBuilder;
 use Test::WWW::Mechanize::Catalyst;
 use Data::Dumper;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
-
+$schema->resultset('Job')->delete;
+$schema->resultset('JobFile')->delete;
 my $site = $schema->resultset('Site')->find('0blog0');
 
 my $mech = Test::WWW::Mechanize::Catalyst
@@ -57,7 +58,10 @@ is_deeply ($bb->texts, [@uris, @uris], "Texts imported");
 my $job = $site->jobs->bookbuilder_add($bb->serialize);
 
 # dispatch
-$job->dispatch_job or diag $job->logs;
+{
+    $job->dispatch_job;
+    ok $job->as_hashref->{produced};
+}
 
 
 
@@ -90,6 +94,7 @@ $job->dispatch_job;
 diag $job->produced;
 is $job->status, 'completed', "Even if the cover is missing, the thing went ok";
 diag $job->logs;
+diag Dumper($job->as_hashref);
 $job->delete;
 
 $bb->coverfile($bb->coverfile_path);
@@ -100,6 +105,8 @@ $job = $site->jobs->alias_create_add({ src => 'pippo',
                                        type => 'type' });
 
 $job->dispatch_job;
+
+diag Dumper($job->as_hashref);
 
 @leftovers = $job->produced_files;
 is (scalar(@leftovers), 1, "Found 1 file to nuke");
@@ -124,6 +131,9 @@ $job = $site->jobs->bookbuilder_add($bb->serialize);
 diag "job id is " . $job->id;
 my $check = $site->jobs->find($job->id);
 $check->dispatch_job;
+
+diag Dumper($job->as_hashref);
+
 $check = $site->jobs->find($job->id);
 my @files = $check->job_files;
 ok (@files > 0, "Found the job files");
@@ -140,6 +150,14 @@ diag "Testing files without jobfiles $job_id";
 @files = ("$job_id.pdf", "$job_id.epub", "$job_id.sl.pdf",
              "bookbuilder-$job_id.zip");
 
+foreach my $file (@files) {
+    my $f = catfile(qw/root custom/, $file);
+    unlink $f if -f $f;
+    my $url = "/custom/$file";
+    $mech->get($url);
+    is $mech->status, '404';
+}
+
 my $oldcustomdir = catdir(qw/root custom/);
 mkdir $oldcustomdir unless -d $oldcustomdir;
 foreach my $file (@files) {
@@ -147,14 +165,16 @@ foreach my $file (@files) {
     open (my $fh, ">", $path) or die $!;
     print $fh "xx";
     close $fh;
+    ok -f $path, "$path exists";
 }
 
-my $upgrade_file = catfile(qw/dbicdh _common upgrade 5-6 002-add-and-move-job-files.pl/);
-if (-f $upgrade_file) {
+{
+    my $upgrade_file = rel2abs(catfile(qw/dbicdh _common upgrade 5-6 002-add-and-move-job-files.pl/));
     diag "Simulating the upgrade\n";
-    my $upgrade = do $upgrade_file;
-    $upgrade->($schema) if $upgrade;
+    my $upgrade = do "$upgrade_file";
+    $upgrade->($schema);
 }
+
 
 foreach my $file (@files) {
     my $url = "/custom/$file";
