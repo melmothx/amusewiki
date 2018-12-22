@@ -1355,6 +1355,7 @@ t/files/slides.muse
 t/files/upload.html
 t/files/widebanner.png
 t/fontspec-json.t
+t/french.t
 t/full-blog-mode.t
 t/git-pulling-async.t
 t/git-revision.t

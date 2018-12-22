@@ -84,13 +84,13 @@ sub muse_file_info {
 
     my $header = muse_header_object($details->{f_full_path_name});
 
-    $details->{lang} = $header->language;
+    my $lang = $details->{lang} = $header->language;
     $details->{slides} = $header->wants_slides;
 
     my %parsed_header = %{ $header->header };
     foreach my $directive (keys %parsed_header) {
         unless (exists $details->{$directive}) {
-            $details->{$directive} = muse_format_line(html => $parsed_header{$directive});
+            $details->{$directive} = muse_format_line(html => $parsed_header{$directive}, $lang);
         }
     }
 
@@ -103,25 +103,29 @@ sub muse_file_info {
         $details->{deleted} ||= "Missing title";
     }
 
-    my @cats;
-    if (exists $details->{authors} or
-        exists $details->{sortauthors}) {
-        if (my @authors = $header->authors_as_html_list) {
-            push @cats, map { _parse_topic_or_author(author => $_) }
-              $header->authors_as_html_list;
-        }
-    }
-
     # use author as default if there is no #authors. Please note that
     # #(sort)authors could be empty or with a - in it. In this case
     # we fall into the case above and don't resort to Author. Tests
     # are in archive.t
-
-    elsif ($details->{author}) {
-        push @cats, _parse_topic_or_author(author => $details->{author});
+    my @authors;
+    Dlog_debug { "Header is $_"  } $header->header;
+    if (defined $header->header->{authors} || defined $header->header->{sortauthors}) {
+        @authors = @{$header->authors || []};
     }
-    push @cats, map { _parse_topic_or_author(topic  => $_) } $header->topics_as_html_list;
+    elsif ($header->author =~ /\w/) {
+        @authors = ($header->author);
+    }
+
+    my @cats =  map {
+        _parse_topic_or_author(author => muse_format_line(html => $_, $lang))
+    } @authors;
+
+    push @cats, map {
+        _parse_topic_or_author(topic => muse_format_line(html => $_, $lang))
+    } @{$header->topics || []};
+
     @cats = grep { $_ } @cats;
+
     if (@cats) {
         $details->{parsed_categories} = \@cats;
     }

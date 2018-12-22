@@ -307,6 +307,7 @@ MUSE
     my $body =<<'MUSE';
 #title Test
 #author <miao>
+#topics <bau>, <miao>
 
 x
 MUSE
@@ -316,6 +317,16 @@ MUSE
                                             {
                                              name => '&lt;miao&gt;',
                                              type => 'author',
+                                             uri => 'miao',
+                                            },
+                                            {
+                                             name => '&lt;bau&gt;',
+                                             type => 'topic',
+                                             uri => 'bau',
+                                            },
+                                            {
+                                             name => '&lt;miao&gt;',
+                                             type => 'topic',
                                              uri => 'miao',
                                             },
                                            ], "author ok");
