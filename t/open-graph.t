@@ -29,7 +29,12 @@ $imagefile->copy(path($site->path_for_site_files, 'navlogo.png'));
                                          lang => 'hr',
                                          textbody => '<p>ciao</p>',
                                        }, 'text');
-    my $att = $rev->add_attachment("$imagefile")->{attachment};
+    my $outcome = $rev->add_attachment("$imagefile");
+    if (my $error = $outcome->{error})
+      {
+        die @$error;
+      }
+    my $att = $outcome->{attachment};
     $rev->edit("#cover $att\n#author pinco pallino, caio, sempronio\n#teaser Here!\n#SORTtopics blabla, blaba\n"
                . $rev->muse_body);
     ok $att;
