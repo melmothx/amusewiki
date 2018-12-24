@@ -117,6 +117,32 @@ while (my $post = $posts->next) {
     $out{textbody} = $post->html_body;
 
     my @links = grep { $_ } ($post->clean_url, $post->permalink);
+
+    if ($out{textbody} =~ m/\[child-pages.*?\]/) {
+        # reset the body, we're interested only in the content. Too bad for the image.
+        $out{textbody} = '';
+        foreach my $child ($post->children->published->search({
+                                                               post_type => [qw/page/],
+                                                              },
+                                                              {
+                                                               order_by => [qw/menu_order post_name/],
+                                                              })->all) {
+
+            $out{textbody} .= "<h2>" . $child->post_title;
+            if (my @cauths = map { $_->wp_term->name } $child->taxonomies->search({ taxonomy => { -like => '%author' } })) {
+                $out{textbody} .= " <em>(" . join(", ", @cauths) . ")</em>";
+            }
+
+            $out{textbody} .= "</h2>";
+            if (my $subt = $child->metas->search({ meta_key => 'subtitle'})->first) {
+                $out{textbody} .= "<h3>" .  $subt->meta_value . "</h3>";
+            }
+            $out{textbody} .= "<div>" . $child->html_body . "</div>";
+            push @links, $child->clean_url, $child->permalink;
+        }
+    }
+    $out{textbody} =~ s/<strong>(.*?<img .*?>.*?)<\/strong>/$1/g;
+    # $out{textbody} =~ s/(<h.>.*?)(<img .*?>)(.*?<\/h.>)/$1$3$2/g;
     add_text(\%out, \@links);
 }
 
@@ -238,6 +264,11 @@ sub add_text {
     if (@pdfs) {
         $muse = "#ATTACH " . join(' ', @pdfs) . "\n" . $muse . "\n";
     }
+
+    $muse =~ s/<strong>\s*<\/strong>//gs;
+    $muse =~ s/<em>\s*<\/em>//gs;
+    $muse =~ s/^\*+ *$//gm;
+
     $revision->edit({
                      body => $muse,
                      fix_typography => 1,
