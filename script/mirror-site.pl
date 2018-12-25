@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use FindBin;
 use File::Spec::Functions qw/catfile catdir/;
+use File::Copy qw/copy/;
 use Cwd;
 chdir $FindBin::Bin or die;
 
@@ -73,6 +74,9 @@ sub mirror_site {
         close $lst;
         system(wget => '-a', $log, '-x', '-N', '-i', $urls, @wget_args)
           and warn "Errors downloading $urls, check $log";
+        copy(catfile($sitename, mirror => 'titles.html'),
+             catfile($sitename, mirror => 'index.html'))
+          or warn "Cannot copy titles.html into index.html, $!";
     }
     chdir $gitdir or die;
     if ($git) {
