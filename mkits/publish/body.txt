@@ -1,0 +1,6 @@
+[% author_title %]
+[% url %]
+[% lh.loc('Publication date') %]: [% pubdate %]
+[% lh.loc('Status changed') %]: [% lh.loc(old_status) %] -> [% lh.loc(new_status) %]
+
+
