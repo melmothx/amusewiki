@@ -329,7 +329,7 @@
         }
 
 	    $( ".amwautocomplete")
-	        .bind( "keydown", function( event ) {
+	        .on( "keydown", function( event ) {
 		        if ( event.keyCode === $.ui.keyCode.TAB &&
 		             $( this ).data( "ui-autocomplete" ).menu.active ) {
 		            event.preventDefault();

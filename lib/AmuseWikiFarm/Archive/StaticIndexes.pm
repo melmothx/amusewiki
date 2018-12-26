@@ -207,7 +207,7 @@ sub create_category_list {
 sub javascript_files {
     my $self = shift;
     my @out = (
-               path(js => 'jquery-1.11.1.min.js'),
+               path(js => 'jquery-3.3.1.min.js'),
                path(js => 'bootstrap.min.js'),
               );
     return @out;

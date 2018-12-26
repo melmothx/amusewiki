@@ -8,11 +8,11 @@ var Footnotes = {
     setup: function() {
         var footnotelinks = $("a.footnote");
         
-        footnotelinks.unbind('mouseover', Footnotes.footnoteover);
-        footnotelinks.unbind('mouseout',  Footnotes.footnoteoout);
+        footnotelinks.off('mouseover', Footnotes.footnoteover);
+        footnotelinks.off('mouseout',  Footnotes.footnoteoout);
         
-        footnotelinks.bind('mouseover', Footnotes.footnoteover);
-        footnotelinks.bind('mouseout',  Footnotes.footnoteoout);
+        footnotelinks.on('mouseover', Footnotes.footnoteover);
+        footnotelinks.on('mouseout',  Footnotes.footnoteoout);
     },
     footnoteover: function() {
         clearTimeout(Footnotes.footnotetimeout);
@@ -24,8 +24,8 @@ var Footnotes = {
     
         var div = $(document.createElement('div'));
         div.attr('id','footnotediv');
-        div.bind('mouseover', Footnotes.divover);
-        div.bind('mouseout',  Footnotes.footnoteoout);
+        div.on('mouseover', Footnotes.divover);
+        div.on('mouseout',  Footnotes.footnoteoout);
 
         var el = $(id).parent();
         div.html($(el).html());
