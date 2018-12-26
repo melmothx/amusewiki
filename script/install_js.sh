@@ -2,7 +2,7 @@
 set -e
 home_dir=`pwd`
 js_dir="root/static/js"
-ckeditor_version=4.4.3
+ckeditor_version=4.11.1
 ckeditor_zip=ckeditor_${ckeditor_version}_standard.zip
 
 if [ "x$1" = "x--clean" ]; then
