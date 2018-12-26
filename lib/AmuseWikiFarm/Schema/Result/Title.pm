@@ -652,6 +652,20 @@ sub update_text_status {
             warn $msg;
         }
         $self->update;
+        eval {
+            my $site = $self->site;
+            $site->send_mail(publish => {
+                                         to => $site->mail_notify,
+                                         from => $site->mail_from,
+                                         subject => $self->full_uri . ': ' . $self->status,
+                                         url => $site->canonical_url . $self->full_uri,
+                                         old_status => $old_status,
+                                         new_status => $self->status,
+                                         author_title => $self->author_title,
+                                         pubdate => $self->pubdate_locale($site->locale),
+                                        });
+        };
+        log_error { $@ } if $@;
     }
     $self->_check_status_file if $self->is_published;
     return;

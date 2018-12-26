@@ -1,0 +1,11 @@
+{
+    "renderer": "TT",
+    "header": [
+        { "From": "[% from %]" },
+        { "To": "[% to %]" },
+        { "Cc": "[% cc %]" },
+        { "Subject": "[% subject %]" }
+    ],
+    "type": "text/plain",
+    "path": "body.txt"
+}

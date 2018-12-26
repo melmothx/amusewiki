@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 71;
+use Test::More tests => 73;
 use AmuseWikiFarm::Utils::Mailer;
 use Data::Dumper;
 use File::Spec::Functions qw/catfile catdir/;
@@ -173,7 +173,7 @@ $site->update({ mail_from => undef });
 
 {
     my @mails = Email::Sender::Simple->default_transport->deliveries;
-    is scalar(@mails), 9, "mails sent" or die Dumper(\@mails);
+    is scalar(@mails), 11, "mails sent" or die Dumper(\@mails);
     if (@mails and my $sent = shift @mails) {
         ok ($sent, "Email sent") and diag $sent->{email}->as_string;
         my $body = $sent->{email}->as_string;
@@ -254,6 +254,15 @@ $site->update({ mail_from => undef });
         like $body, qr{subject: \[0mail0\.amusewiki\.org\] git pull test}i;
         like $body, qr{https\:\/\/0mail0\.amusewiki\.org\/tasks\/job\/};
         diag $body;
+    }
+    # the two status changed mails
+    if (@mails and my $sent = shift @mails) {
+        my $body = $sent->{email}->as_string;
+        like $body, qr{status changed}i;
+    }
+    if (@mails and my $sent = shift @mails) {
+        my $body = $sent->{email}->as_string;
+        like $body, qr{status changed}i;
     }
     if (@mails and my $sent = shift @mails) {
         ok ($sent, "The application sent the mail");
