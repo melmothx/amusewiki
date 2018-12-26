@@ -107,11 +107,6 @@
           href="[% c.uri_for('/static/js/markitup/sets/muse/style.css') %]" />
     [%- END -%]
 
-    [%- IF load_date_picker_css -%]
-    <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/bootstrap-datepicker3.min.css') %]" />
-    [%- END -%]
-
     [%# base css for amuse texts %]
     <link rel="stylesheet" type="text/css"
           href="[% c.uri_for('/static/css/amuse.css', { v => 6 }) %]" />

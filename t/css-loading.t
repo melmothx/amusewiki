@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 18;
+use Test::More tests => 11;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
 
@@ -17,12 +17,10 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
 my $mk_css = '/static/js/markitup/skins/amw/style.css';
-my $dp_css = '/static/css/bootstrap-datepicker3.min.css';
 
 $mech->get_ok('/');
 diag "At root";
 $mech->content_lacks($mk_css);
-$mech->content_lacks($dp_css);
 
 $mech->get_ok('/login');
 ok($mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }),
@@ -33,23 +31,20 @@ foreach my $type (qw/special text/) {
     $mech->get("/action/$type/new");
     diag $mech->uri;
     $mech->content_lacks($mk_css);
-    $mech->content_contains($dp_css);
 
     $mech->submit_form(with_fields => {title => 'this-is-a-test-' . $type},
                        button => 'go',
                       );
     diag $mech->uri;
     $mech->content_contains($mk_css);
-    $mech->content_lacks($dp_css);
 }
 
 $mech->get('/category/author/ciao/edit');
 diag $mech->uri;
 $mech->content_contains($mk_css);
-$mech->content_lacks($dp_css);
 
 $mech->get('/category/topic/miao/edit');
 diag $mech->uri;
 $mech->content_contains($mk_css);
-$mech->content_lacks($dp_css);
+
 
