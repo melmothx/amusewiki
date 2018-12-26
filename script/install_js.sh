@@ -28,9 +28,9 @@ if [ ! -d "$js_dir/highlight" ]; then
     else
         mkdir highlight
         cd highlight
-        wget https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js
+        wget https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js
         mkdir styles
-        wget -O styles/default.css https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css
+        wget -O styles/default.css https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css
     fi
     cd "$home_dir"
 fi
