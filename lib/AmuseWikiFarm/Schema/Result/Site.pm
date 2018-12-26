@@ -3557,12 +3557,21 @@ sub bootstrap_themes {
                      darkly
                      flatly
                      journal
+                     litera
                      lumen
-                     readable
+                     lux
+                     materia
+                     minty
+                     pulse
+                     sandstone
                      simplex
+                     sketchy
                      slate
+                     solar
                      spacelab
+                     superhero
                      united
+                     yeti
                     /);
     return @themes;
 }

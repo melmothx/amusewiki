@@ -1,20 +1,20 @@
 #!/bin/bash
 
-cp bootstrap/dist/js/bootstrap* ../root/static/js
-lessc -x amusewiki.less ../root/static/css/bootstrap.css
+cp bootstrap/dist/js/bootstrap.bundle.* ../root/static/js
 for theme in amusecosmo amusewiki amusejournal; do
-    lessc -x $theme.less ../root/static/css/bootstrap.$theme.css
+    sass $theme.scss ../root/static/css/bootstrap.$theme.css
 done
 
-rm -f amw-theme.less
-for theme in cerulean cosmo cyborg darkly default flatly journal lumen paper readable \
-                  sandstone simplex slate spacelab superhero united yeti; do
-    cat <<EOF > amw-theme.less
-@import "bootstrap.less";
-@import "bootswatch/$theme/variables.less";
-@import "bootswatch/$theme/bootswatch.less";
-@import "amw-ui.less";
+rm -f amw-theme.scss
+for theme in bootswatch/dist/*; do
+    theme=$(basename $theme);
+    cat <<EOF > amw-theme.scss
+@import "bootswatch/dist/$theme/variables";
+@import "bootstrap/scss/bootstrap";
+@import "bootswatch/dist/$theme/bootswatch";
+@import "amw-ui";
 EOF
-    lessc -x amw-theme.less ../root/static/css/bootstrap.$theme.css || echo "Cannot generate $theme"
+    echo "Generating $theme from amw-theme.scss"
+    sass amw-theme.scss ../root/static/css/bootstrap.$theme.css || echo "Cannot generate $theme"
 done
-rm -f amw-theme.less
+rm -f amw-theme.scss

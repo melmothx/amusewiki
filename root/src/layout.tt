@@ -63,7 +63,7 @@
           href="[% c.uri_for((bootstrap_css || '/static/css/bootstrap.css'), { v => 4 }) %]" />
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="[% c.uri_for('/static/js/bootstrap.min.js', { v => 5 }) %]">
+    <script src="[% c.uri_for('/static/js/bootstrap.bundle.min.js', { v => 5 }) %]">
     </script>
 
     <link rel="stylesheet"
