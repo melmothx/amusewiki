@@ -256,10 +256,8 @@
         [% loc('Leave it blank if you want it published right away.') %]
         </label><br />
         [% loc('Set a date in the future if you want it deferred.') %]
-        [% loc('Time is optional.') %]
-        [% loc('Format: yyyy-mm-dd hh:mm, e.g.') %]
-        <code>2014-10-19 08:30</code><br />
         <input class="form-control" id="pubdate"
+               type="date"
                name="pubdate" />
     </div>
     <div class="center">
@@ -372,19 +370,5 @@
     });
 </script>
 
-<script type="text/javascript" src="[% c.uri_for('/static/js/datepicker/bootstrap-datepicker.min.js') %]">
-</script>
-<script type="text/javascript" src="[% c.uri_for('/static/js/datepicker/locales/bootstrap-datepicker.' _ current_locale_code  _'.min.js') %]">
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-  $('#pubdate').datepicker({
-  language: '[% current_locale_code %]',
-  format: 'yyyy-mm-dd',
-  todayHighlight: true
-  });
-  });
-</script>
 
 [% END %]
