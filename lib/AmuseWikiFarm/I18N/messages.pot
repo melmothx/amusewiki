@@ -3356,11 +3356,11 @@ msgid "automatically generated if not present, using author and title"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:439 root/src/search/index.tt:71
-msgid "by number of pages, ascending"
+msgid "By number of pages, ascending"
 msgstr ""
 
 #: lib/AmuseWikiFarm/Schema/ResultSet/Title.pm:449 root/src/search/index.tt:74
-msgid "by number of pages, descending"
+msgid "By number of pages, descending"
 msgstr ""
 
 #: root/src/edit/edit.tt:476 root/src/edit/edit.tt:477 root/src/edit/edit.tt:479

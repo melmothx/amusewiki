@@ -2941,11 +2941,11 @@ msgstr "algum"
 msgid "automatically generated if not present, using author and title"
 msgstr "gerado automaticamente se não estiver presente, usando autor e título"
 
-msgid "by number of pages, ascending"
-msgstr "por número de páginas, ascendente"
+msgid "By number of pages, ascending"
+msgstr "Por número de páginas, ascendente"
 
-msgid "by number of pages, descending"
-msgstr "por número de páginas, descendente"
+msgid "By number of pages, descending"
+msgstr "Por número de páginas, descendente"
 
 msgid "code and monospace"
 msgstr "código e monoespaçamento"

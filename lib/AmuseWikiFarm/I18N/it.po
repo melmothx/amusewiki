@@ -2962,11 +2962,11 @@ msgstr "qualsiasi"
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
 
-msgid "by number of pages, ascending"
-msgstr "per numero di pagine (da minore a maggiore)"
+msgid "By number of pages, ascending"
+msgstr "Per numero di pagine (da minore a maggiore)"
 
-msgid "by number of pages, descending"
-msgstr "per numero di pagine (da maggiore a minore)"
+msgid "By number of pages, descending"
+msgstr "Per numero di pagine (da maggiore a minore)"
 
 msgid "code and monospace"
 msgstr "formattazione codice"
