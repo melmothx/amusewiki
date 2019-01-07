@@ -68,10 +68,10 @@
           [% loc('Newer first') %]
         </option>
         <option value="pages_asc" [% IF c.req.params.sort == 'pages_asc' %]selected="selected"[% END %]>
-          [% loc("by number of pages, ascending") %]
+          [% loc("By number of pages, ascending") %]
         </option>
         <option value="pages_desc" [% IF c.req.params.sort == 'pages_desc' %]selected="selected"[% END %]>
-          [% loc("by number of pages, descending") %]
+          [% loc("By number of pages, descending") %]
         </option>
       </select>
     </div>

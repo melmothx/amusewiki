@@ -436,8 +436,8 @@ sub _sorting_map {
             pages_asc => {
                           priority => 7,
                           order_by => { -asc => [ "$me.text_size", @default ] },
-                          # loc("by number of pages, ascending");
-                          label => "by number of pages, ascending",
+                          # loc("By number of pages, ascending");
+                          label => "By number of pages, ascending",
                           key => 'text_size',
                          },
             pages_desc => {
@@ -446,8 +446,8 @@ sub _sorting_map {
                                         { -desc => [ "$me.text_size" ] },
                                         { -asc  => [  @default ] },
                                        ],
-                           # loc("by number of pages, descending");
-                           label => "by number of pages, descending",
+                           # loc("By number of pages, descending");
+                           label => "By number of pages, descending",
                            key => 'text_size',
                           },
             };

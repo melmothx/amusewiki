@@ -2871,11 +2871,11 @@ msgstr "bilo koja"
 msgid "automatically generated if not present, using author and title"
 msgstr "automatski generiran ako nedostaje, s autorom i naslovom"
 
-msgid "by number of pages, ascending"
-msgstr "po broju stranica (manje na početku)"
+msgid "By number of pages, ascending"
+msgstr "Po broju stranica (manje na početku)"
 
-msgid "by number of pages, descending"
-msgstr "po broju stranica (više na početku)"
+msgid "By number of pages, descending"
+msgstr "Po broju stranica (više na početku)"
 
 msgid "code and monospace"
 msgstr "oblikovanje koda"

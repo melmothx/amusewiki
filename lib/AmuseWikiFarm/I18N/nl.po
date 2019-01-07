@@ -2999,11 +2999,11 @@ msgid "automatically generated if not present, using author and title"
 msgstr ""
 "automatisch gegenereerd indien niet aanwezig, op basis van auteur en titel"
 
-msgid "by number of pages, ascending"
-msgstr "op aantal pagina's, oplopend"
+msgid "By number of pages, ascending"
+msgstr "Op aantal pagina's, oplopend"
 
-msgid "by number of pages, descending"
-msgstr "op aantal pagina's, aflopend"
+msgid "By number of pages, descending"
+msgstr "Op aantal pagina's, aflopend"
 
 msgid "code and monospace"
 msgstr "code en niet-proportioneel (monospace)"
