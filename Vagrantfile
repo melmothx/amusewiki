@@ -9,92 +9,119 @@ Vagrant.configure("2") do |config|
   # Only allow access via 127.0.0.1 to disable public access.
   config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-  # Install dependencies
+  packages = []
+
+  # Install script/install.sh dependencies
+  packages += %w[
+    cpanminus
+    fontconfig
+    gcc
+    graphicsmagick
+    imagemagick
+    make
+    rsync
+    shared-mime-info
+    unzip
+    xapian-tools
+  ]
+
+  packages << "nginx"
+
+  packages += %w[cgit fcgiwrap]
+
+  # Install most Perl requirements (from Makefile.PL and others) from the repository
+  packages += %w[
+    libarchive-zip-perl
+    libcatalyst-action-renderview-perl
+    libcatalyst-devel-perl
+    libcatalyst-perl
+    libcatalyst-plugin-authentication-perl
+    libcatalyst-plugin-authorization-roles-perl
+    libcatalyst-plugin-configloader-perl
+    libcatalyst-plugin-session-perl
+    libcatalyst-plugin-session-state-cookie-perl
+    libcatalyst-plugin-session-store-fastmmap-perl
+    libcatalyst-view-json-perl
+    libcatalyst-view-tt-perl
+    libcgi-compile-perl
+    libcgi-emulate-psgi-perl
+    libcrypt-openssl-x509-perl
+    libdaemon-control-perl
+    libdata-dumper-concise-perl
+    libdbd-sqlite3-perl
+    libdbix-class-perl
+    libdbix-class-schema-loader-perl
+    libemail-valid-perl
+    libfcgi-perl
+    libfcgi-procmanager-perl
+    libgit-wrapper-perl
+    libhttp-browserdetect-perl
+    libhttp-lite-perl
+    libhttp-parser-perl
+    libhttp-tiny-perl
+    libimager-perl
+    libjavascript-packer-perl
+    liblocale-po-perl
+    liblog-dispatch-perl
+    libmime-types-perl
+    libmoose-perl
+    libmoosex-nonmoose-perl
+    libnamespace-autoclean-perl
+    libpdf-api2-perl
+    libprotocol-acme-perl
+    libsearch-xapian-perl
+    libsql-translator-perl
+    libtemplate-tiny-perl
+    libterm-size-any-perl
+    libtest-www-mechanize-catalyst-perl
+    libtest-www-mechanize-perl
+    libtext-diff-perl
+    libtext-unidecode-perl
+    libunicode-collate-perl
+    libuuid-tiny-perl
+    libxml-atom-perl
+    libxml-feedpp-perl
+    libxml-writer-perl
+    libyaml-tiny-perl
+  ]
+
+  # Install TeX Live
+  packages += %w[
+    texlive-base
+    texlive-fonts-recommended
+    texlive-generic-recommended
+    texlive-lang-all
+    texlive-latex-base
+    texlive-latex-extra
+    texlive-latex-recommended
+    texlive-luatex
+    texlive-xetex
+  ]
+
+  # Install fonts
+  packages += %w[
+    fonts-cmu
+    fonts-dejavu
+    fonts-hosny-amiri
+    fonts-linuxlibertine
+    fonts-lmodern
+    fonts-sil-charis
+    fonts-sil-gentium
+    fonts-sil-gentium-basic
+    fonts-sil-scheherazade
+    fonts-texgyre
+    lmodern
+  ]
+
+  # Install gettext required by /vagrant/script/upgrade_i18n
+  packages << "gettext"
+
+  # Install dependencies via APT
   config.vm.provision "apt", type: "shell", privileged: false, inline: <<-SHELL
     set -e
 
     sudo apt-get update
-    sudo apt-get install -y nginx
-
-    # Install dependencies
-    sudo apt-get install -y cpanminus make fontconfig imagemagick unzip graphicsmagick \
-      shared-mime-info xapian-tools gcc
-
-    # Install most requirements (from Makefile.PL and others) from the repository
-    sudo apt-get install -y                          \
-      libarchive-zip-perl                            \
-      libcatalyst-action-renderview-perl             \
-      libcatalyst-devel-perl                         \
-      libcatalyst-perl                               \
-      libcatalyst-plugin-authentication-perl         \
-      libcatalyst-plugin-authorization-roles-perl    \
-      libcatalyst-plugin-configloader-perl           \
-      libcatalyst-plugin-session-perl                \
-      libcatalyst-plugin-session-state-cookie-perl   \
-      libcatalyst-plugin-session-store-fastmmap-perl \
-      libcatalyst-view-json-perl                     \
-      libcatalyst-view-tt-perl                       \
-      libcgi-compile-perl                            \
-      libcgi-emulate-psgi-perl                       \
-      libcrypt-openssl-x509-perl                     \
-      libdaemon-control-perl                         \
-      libdata-dumper-concise-perl                    \
-      libdbd-sqlite3-perl                            \
-      libdbix-class-perl                             \
-      libdbix-class-schema-loader-perl               \
-      libemail-valid-perl                            \
-      libfcgi-perl                                   \
-      libfcgi-procmanager-perl                       \
-      libgit-wrapper-perl                            \
-      libhttp-browserdetect-perl                     \
-      libhttp-lite-perl                              \
-      libhttp-parser-perl                            \
-      libhttp-tiny-perl                              \
-      libimager-perl                                 \
-      libjavascript-packer-perl                      \
-      liblocale-po-perl                              \
-      liblog-dispatch-perl                           \
-      libmime-types-perl                             \
-      libmoose-perl                                  \
-      libmoosex-nonmoose-perl                        \
-      libnamespace-autoclean-perl                    \
-      libpdf-api2-perl                               \
-      libprotocol-acme-perl                          \
-      libsearch-xapian-perl                          \
-      libsql-translator-perl                         \
-      libtemplate-tiny-perl                          \
-      libterm-size-any-perl                          \
-      libtest-www-mechanize-catalyst-perl            \
-      libtest-www-mechanize-perl                     \
-      libtext-diff-perl                              \
-      libtext-unidecode-perl                         \
-      libunicode-collate-perl                        \
-      libuuid-tiny-perl                              \
-      libxml-atom-perl                               \
-      libxml-feedpp-perl                             \
-      libxml-writer-perl                             \
-      libyaml-tiny-perl                              \
-      cgit fcgiwrap                                  \
-
-    sudo apt-get install --no-install-recommends --no-install-suggests -y \
-      texlive-base                                                        \
-      texlive-fonts-recommended                                           \
-      texlive-generic-recommended                                         \
-      texlive-lang-all                                                    \
-      texlive-latex-base                                                  \
-      texlive-latex-extra                                                 \
-      texlive-latex-recommended                                           \
-      texlive-luatex                                                      \
-      texlive-xetex                                                       \
-
-    sudo apt-get install --no-install-recommends --no-install-suggests -y \
-      fonts-cmu fonts-texgyre fonts-sil-charis \
-      fonts-dejavu fonts-linuxlibertine fonts-sil-charis fonts-hosny-amiri \
-      lmodern fonts-lmodern fonts-sil-scheherazade fonts-sil-gentium \
-      fonts-sil-gentium-basic
-
-    # Required by /vagrant/script/upgrade_i18n
-    sudo apt-get install --no-install-recommends --no-install-suggests -y gettext
+    sudo apt-get install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
 
     # Install local::lib
     sudo apt-get install -y liblocal-lib-perl
