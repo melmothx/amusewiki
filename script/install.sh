@@ -6,7 +6,7 @@ set -e
 
 missing='no'
 for command in perl cpanm fc-cache convert gm update-mime-database xapian-check openssl \
-               make gcc wget git unzip rsync; do
+               make gcc wget git unzip rsync gs; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
         echo "YES"
@@ -21,6 +21,8 @@ for command in perl cpanm fc-cache convert gm update-mime-database xapian-check 
             echo "NO, please install graphicsmagick"
         elif [ $command = 'fc-cache' ]; then
             echo "NO, please install fontconfig"
+        elif [ $command = 'gs' ]; then
+            echo "NO, please install ghostscript"
         else
             echo "NO, please install $command"
         fi
