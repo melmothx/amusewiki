@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
   # Using the officially recommended (https://www.vagrantup.com/docs/boxes.html#official-boxes) Bento box.
-  config.vm.box = "bento/debian-9.5"
+  config.vm.box = "bento/debian-9.6"
 
   # Map HTTP port to port 8080 on host machine to make web server available as http://localhost:8080/
   # Only allow access via 127.0.0.1 to disable public access.
