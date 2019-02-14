@@ -44,9 +44,14 @@ before process => sub {
 
         $self->add_navigation_menus($c, $site);
 
+        # display number of pending revisions in the user menu
+        if ($c->user_exists) {
+            $c->stash->{site_pending_revisions} = $site->revisions->pending->count;
+        }
+
         # warn about failed jobs in the user menu
         if ($c->user_exists and $c->check_any_user_role(qw/admin root/)) {
-            $c->stash->{site_failed_jobs} = $c->stash->{site}->jobs->failed_jobs->count;
+            $c->stash->{site_failed_jobs} = $site->jobs->failed_jobs->count;
         }
 
         # layout adjustments

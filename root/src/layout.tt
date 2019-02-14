@@ -415,6 +415,11 @@
                   <a href="[% c.uri_for_action('/publish/pending') %]">
                     <span class="fa fa-inbox fa-fw" aria-hidden="true"></span>
                     [% loc('Pending revisions') %]
+                    [% IF site_pending_revisions %]
+                    <span title="[% loc('There are pending revisions') %]">
+                      <span class="badge">[%- site_pending_revisions -%]</span>
+                    </span>
+                    [% END %]
                   </a>
                 </li>
                 <li>
