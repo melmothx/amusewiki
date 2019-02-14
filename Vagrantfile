@@ -121,11 +121,16 @@ Vagrant.configure("2") do |config|
   config.vm.provision "apt", type: "shell", privileged: false, inline: <<-SHELL
     set -e
 
-    sudo apt-get update
-    sudo apt-get install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
+    # Workaround for https://www.debian.org/security/2019/dsa-4371 until Debian 9.7 is available as a bento box
+    APT_ARGS='-o Acquire::http::AllowRedirect=false'
+    sudo sed -i 's/httpredir\.debian\.org/cdn-fastly.deb.debian.org/' /etc/apt/sources.list
+    sudo sed -i 's/security\.debian\.org/cdn-fastly.deb.debian.org/' /etc/apt/sources.list
+
+    sudo apt-get $APT_ARGS update
+    sudo apt-get $APT_ARGS install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
 
     # Install local::lib
-    sudo apt-get install -y liblocal-lib-perl
+    sudo apt-get $APT_ARGS install -y liblocal-lib-perl
     echo 'eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >>~/.bashrc
   SHELL
 
