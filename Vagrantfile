@@ -30,62 +30,6 @@ Vagrant.configure("2") do |config|
 
   packages += %w[cgit fcgiwrap]
 
-  # Install most Perl requirements (from Makefile.PL and others) from the repository
-  packages += %w[
-    libarchive-zip-perl
-    libcatalyst-action-renderview-perl
-    libcatalyst-devel-perl
-    libcatalyst-perl
-    libcatalyst-plugin-authentication-perl
-    libcatalyst-plugin-authorization-roles-perl
-    libcatalyst-plugin-configloader-perl
-    libcatalyst-plugin-session-perl
-    libcatalyst-plugin-session-state-cookie-perl
-    libcatalyst-plugin-session-store-fastmmap-perl
-    libcatalyst-view-json-perl
-    libcatalyst-view-tt-perl
-    libcgi-compile-perl
-    libcgi-emulate-psgi-perl
-    libcrypt-openssl-x509-perl
-    libdaemon-control-perl
-    libdata-dumper-concise-perl
-    libdbd-sqlite3-perl
-    libdbix-class-perl
-    libdbix-class-schema-loader-perl
-    libemail-valid-perl
-    libfcgi-perl
-    libfcgi-procmanager-perl
-    libgit-wrapper-perl
-    libhttp-browserdetect-perl
-    libhttp-lite-perl
-    libhttp-parser-perl
-    libhttp-tiny-perl
-    libimager-perl
-    libjavascript-packer-perl
-    liblocale-po-perl
-    liblog-dispatch-perl
-    libmime-types-perl
-    libmoose-perl
-    libmoosex-nonmoose-perl
-    libnamespace-autoclean-perl
-    libpdf-api2-perl
-    libprotocol-acme-perl
-    libsearch-xapian-perl
-    libsql-translator-perl
-    libtemplate-tiny-perl
-    libterm-size-any-perl
-    libtest-www-mechanize-catalyst-perl
-    libtest-www-mechanize-perl
-    libtext-diff-perl
-    libtext-unidecode-perl
-    libunicode-collate-perl
-    libuuid-tiny-perl
-    libxml-atom-perl
-    libxml-feedpp-perl
-    libxml-writer-perl
-    libyaml-tiny-perl
-  ]
-
   # Install TeX Live
   packages += %w[
     texlive-base
