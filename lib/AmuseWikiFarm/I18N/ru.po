@@ -2157,6 +2157,9 @@ msgstr "Статическая страница без javascript"
 msgid "Status"
 msgstr "Статус"
 
+msgid "Status changed"
+msgstr "Статус изменился"
+
 msgid "Subsection"
 msgstr "Подраздел"
 
@@ -2348,6 +2351,9 @@ msgstr "Затем загружайте (fetch) обновления с этой
 
 msgid "There are failed jobs"
 msgstr "Некоторые задачи завершились с ошибкой"
+
+msgid "There are pending revisions"
+msgstr "Есть ожидающие правки"
 
 msgid "These texts are missing the unique id."
 msgstr "У этих текстов отсутствуют уникальные идентификаторы."
