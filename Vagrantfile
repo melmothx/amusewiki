@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
     fontconfig
     gcc
     ghostscript
+    git
     graphicsmagick
     imagemagick
     make
