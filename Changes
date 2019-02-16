@@ -4,6 +4,17 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.322 2019-02-16
+
+ - Update ru translations (@link2xt)
+ - Update Vagrantfile and build system (@link2xt)
+ - Show number of pending revisions in the navbar (@link2xt)
+ - Notify when a text status changes. This could be noisy.
+ - Add PT localization
+ - Handle FR formatting
+ - Migrate to ForkAwesome instead of FontAwesome (includes new EPUB
+   icon)
+
 2.321 2018-11-29
 
  - Minor release to silence a useless logging.
