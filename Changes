@@ -4,6 +4,10 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.323 2019-02-17
+
+ - Fix broken forkawesome CSS in static indexes
+
 2.322 2019-02-16
 
  - Update ru translations (@link2xt)
