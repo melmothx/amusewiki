@@ -5,7 +5,7 @@
 set -e
 
 missing='no'
-for command in perl cpanm fc-cache convert gm update-mime-database xapian-check openssl \
+for command in perl carton fc-cache convert gm update-mime-database xapian-check openssl \
                make gcc wget git unzip rsync gs; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
@@ -34,7 +34,7 @@ if [ "$missing" != "no" ]; then
     cat <<EOF
 Missing core utilities, cannot proceed. Please install them:
 
- - a working perl with cpanm (i.e., you can install modules)
+ - a working perl with carton (i.e., you can install modules)
  - fontconfig (install it before installing texlive)
  - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
  - a mime-info database: shared-mime-info on debian
@@ -44,33 +44,8 @@ EOF
     exit 2
 fi
 
-echo -n "Checking if I can install modules in my home..."
-
-cpanm -q Text::Amuse::Compile
-
-if which muse-compile.pl > /dev/null; then
-    echo "OK, I can install Perl5 modules"
-else
-    cat <<"EOF"
-
-It looks like I can't install modules. Please be sure to have this
-line in your $HOME/.bashrc (or the rc file of your shell)
-
-eval `perl -I ~/perl5/lib/perl5/ -Mlocal::lib`
-
-Then login/logout
-
-EOF
-    exit 2
-fi
-
 echo "Installing perl modules"
-cpanm -q Log::Dispatch Log::Log4perl Module::Install Mail::Send \
-      Log::Dispatch::File::Stamped \
-      Module::Install::Catalyst
-cpanm -q --installdeps .
-perl Makefile.PL # Generate Makefile
-make
+PERL_USE_UNSAFE_INC=1 carton install --deployment
 
 echo -n "Checking installation of TeX live: "
 if which xelatex > /dev/null; then
@@ -84,12 +59,12 @@ else
 fi
 
 echo "Installing needed JS"
-./script/install_js.sh
-./script/install_fonts.sh
+script/install_js.sh
+script/install_fonts.sh
 
 echo "Creating fontspec.json"
-./script/amusewiki-populate-webfonts
+carton exec script/amusewiki-populate-webfonts
 
 echo "Installing cgit"
-./script/install-cgit.pl
+carton exec script/install-cgit.pl
 

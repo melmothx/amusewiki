@@ -89,10 +89,6 @@ Vagrant.configure("2") do |config|
 
     sudo apt-get $APT_ARGS update
     sudo apt-get $APT_ARGS install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
-
-    # Install dependencies from cpanfile
-    cd /vagrant
-    PERL_USE_UNSAFE_INC=1 carton install --deployment
   SHELL
 
   # Configure Amusewiki
@@ -103,10 +99,7 @@ Vagrant.configure("2") do |config|
 
     cp dbic.yaml.sqlite.example dbic.yaml
 
-    script/install_js.sh
-    script/install_fonts.sh
-    carton exec script/amusewiki-populate-webfonts
-    carton exec script/install-cgit.pl
+    script/install.sh
     carton exec script/configure.sh localhost
     carton exec script/amusewiki-generate-nginx-conf | sudo /bin/sh
     sudo sed -i s/www-data/vagrant/ /etc/nginx/nginx.conf
