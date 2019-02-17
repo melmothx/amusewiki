@@ -18,7 +18,7 @@ use HTML::Packer;
 
 # when we bump the version, we make sure to copy the files again.
 sub version {
-    return 2;
+    return 3;
 }
 
 =head1 NAME
@@ -267,7 +267,13 @@ sub copy_static_files {
                 if ($target->basename eq 'fork-awesome.css' or
                     $target->basename eq 'fork-awesome.min.css') {
                     my $body = $src->slurp_raw;
-                    $body =~ s/(\.(eot|woff|ttf|svg|woff2))\?[^']*v=[0-9]+\.[0-9]+\.[0-9]+[^']*'/$1'/g;
+                    # this is fragile but under our control.
+                    $body =~ s/url
+                               \(
+                               (.+?) # anything non-greedy
+                               (\?[^\)]*?)? # optional, anything non-greeding excluding closing parens
+                               \) # closing parens.
+                              /url($1)/gx;
                     $target->spew_raw($body);
                 }
                 else {

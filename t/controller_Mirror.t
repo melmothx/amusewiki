@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 84;
+use Test::More tests => 88;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
@@ -11,12 +11,28 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use Test::WWW::Mechanize::Catalyst;
 use AmuseWikiFarm::Schema;
+use AmuseWikiFarm::Utils::Paths;
 use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find('0blog0');
 
 $site->generate_static_indexes(sub { diag @_ });
+
+{
+    my $src_dir = AmuseWikiFarm::Utils::Paths::static_file_location();
+    my $indexes = $site->static_indexes_generator;
+    foreach my $css ($indexes->css_files) {
+        my $path = path($src_dir, $css);
+        if ($path->basename eq 'fork-awesome.css' or
+            $path->basename eq 'fork-awesome.min.css') {
+            my $body = $path->slurp_raw;
+            $body =~ s/url\((.+?)(\?[^\)]*?)?\)/url($1)/g;
+            unlike $body, qr{v=}, "$path is without font versioning";
+        }
+    }
+}
+
 
 my $cache = path($site->mirror_list_file);
 if ($cache->exists) {
@@ -189,3 +205,6 @@ $mech->click;
 $site = $site->get_from_storage;
 ok !$site->restrict_mirror;
 
+$mech->get_ok('/mirror/site_files/__static_indexes/css/fork-awesome.min.css');
+$mech->content_contains(q{url(../fonts/forkawesome-webfont.eot) format('embedded-opentype')});
+$mech->content_contains(q{url(../fonts/forkawesome-webfont.woff2) format('woff2')});
