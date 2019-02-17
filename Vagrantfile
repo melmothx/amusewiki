@@ -91,9 +91,8 @@ Vagrant.configure("2") do |config|
     sudo apt-get $APT_ARGS install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
 
     # Install dependencies from cpanfile
-    sudo apt-get $APT_ARGS install -y libmodule-install-perl
     cd /vagrant
-    carton install --deployment
+    PERL_USE_UNSAFE_INC=1 carton install --deployment
   SHELL
 
   # Configure Amusewiki
