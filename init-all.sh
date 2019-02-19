@@ -24,13 +24,7 @@ prepare_app () {
 # locally, without adding more work to the sysadmin
 
     ./script/install_js.sh
-    # perl dependencies. Probably switch to use carton
-    if diff -q Makefile.PL "Makefile.PL~" 2>/dev/null; then
-        echo "makefile up to date"
-    else
-        cpanm --installdeps .
-        cp Makefile.PL "Makefile.PL~"
-    fi
+    PERL_USE_UNSAFE_INC=1 carton install --deployment
     if perl -MImager -e 'foreach my $i (qw/jpeg png/) { die "Missing support for $i\n" unless $Imager::formats{$i} }'; then
         echo "Imager loaded correctly";
     else
