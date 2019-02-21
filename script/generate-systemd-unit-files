@@ -22,7 +22,7 @@ After=nss-user-lookup.target
 WorkingDirectory=$(pwd)
 User=$nginxid
 Group=$nginxid
-ExecStart=$(which perl) $(which plackup) --path /git --port 9015 --host 127.0.0.1 -E deployment $(pwd)/psgi/amusewiki-cgit.psgi 
+ExecStart=$(which carton) exec plackup --path /git --port 9015 --host 127.0.0.1 -E deployment $(pwd)/psgi/amusewiki-cgit.psgi
 Restart=always
 
 [Install]
@@ -39,7 +39,7 @@ WorkingDirectory=$(pwd)
 User=$(whoami)
 Group=$(whoami)
 Environment="PATH=$PATH"
-ExecStart=$(which perl) -I$(pwd)/lib $(pwd)/script/amusewiki-jobber
+ExecStart=$(which carton) exec perl -I$(pwd)/lib $(pwd)/script/amusewiki-jobber
 Restart=always
 
 [Install]
@@ -57,7 +57,7 @@ WorkingDirectory=$(pwd)
 User=$(whoami)
 Group=$(whoami)
 Environment="PATH=$PATH"
-ExecStart=$(which perl) $(which plackup) -s FCGI --listen $(pwd)/var/amw.sock --nproc 5 -E deployment $(pwd)/psgi/amusewiki.psgi
+ExecStart=$(which carton) exec plackup -s FCGI --listen $(pwd)/var/amw.sock --nproc 5 -E deployment $(pwd)/psgi/amusewiki.psgi
 Restart=always
 
 [Install]
