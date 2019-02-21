@@ -102,21 +102,20 @@ Vagrant.configure("2") do |config|
     script/install.sh
     carton exec script/configure.sh localhost
     carton exec script/amusewiki-generate-nginx-conf | sudo /bin/sh
-    sudo sed -i s/www-data/vagrant/ /etc/nginx/nginx.conf
+
+    carton exec script/generate-systemd-unit-files
+    sudo cp -v /tmp/tmp.*/amusewiki-*.service /etc/systemd/system/
+    sudo chown root:root /etc/systemd/system/amusewiki-*
+    sudo chmod 664 /etc/systemd/system/amusewiki-*
 
     # It is impossible to create socket on VirtualBox filesystem.
     # Move it to home as a workaround.
     sudo sed -i 's|unix:/vagrant/var/amw.sock|unix:/home/vagrant/amw.sock|' /etc/nginx/amusewiki_include
-  SHELL
+    sudo sed -i 's|/vagrant/var/amw.sock|/home/vagrant/amw.sock|' /etc/systemd/system/amusewiki-web.service
 
-  # Start Amusewiki services on every "vagrant up" or "vagrant reload"
-  config.vm.provision "amusewiki-run", type: "shell", privileged: false, run: "always", inline: <<-SHELL
-    set -e
-
-    cd /vagrant
-    carton exec script/jobber.pl restart
-    carton exec script/init-fcgi.pl --socket /home/vagrant/amw.sock restart
-    sudo service nginx restart
+    # Don't enable amusewiki-cgit here, because it is already started on port 9015 in /etc/nginx/sites-enabled/amusewiki
+    sudo systemctl enable --now amusewiki-jobber amusewiki-web
+    sudo systemctl restart nginx
   SHELL
 
   config.vm.hostname = 'amusewiki'
