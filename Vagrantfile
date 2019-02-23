@@ -103,8 +103,8 @@ Vagrant.configure("2") do |config|
     carton exec script/configure.sh localhost
     carton exec script/amusewiki-generate-nginx-conf | sudo /bin/sh
 
-    carton exec script/generate-systemd-unit-files
-    sudo cp -v /tmp/tmp.*/amusewiki-*.service /etc/systemd/system/
+    carton exec script/generate-systemd-unit-files ./var/tmp/systemd
+    sudo cp -v ./var/tmp/systemd/* /etc/systemd/system/
     sudo chown root:root /etc/systemd/system/amusewiki-*
     sudo chmod 664 /etc/systemd/system/amusewiki-*
 
