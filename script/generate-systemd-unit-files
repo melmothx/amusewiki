@@ -4,12 +4,21 @@ set -e
 cd `dirname $0`
 cd ..
 
-tempdir=`mktemp -d`
+tempdir=$1
+if [ "x$tempdir" = "x" ]; then
+    tempdir=`mktemp -d`
+else
+    mkdir -p $tempdir
+fi
+
 if id www-data >/dev/null 2>/dev/null; then
     nginxid="www-data"
 else
     if id nginx >/dev/null 2>/dev/null; then
         nginxid="nginx"
+    else
+        echo "Cannot determine a user to run the cgit service"
+        exit 2
     fi
 fi
 
