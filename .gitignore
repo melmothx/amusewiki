@@ -49,3 +49,6 @@ debian/amusewiki*.debhelper*
 debian/amusewiki.substvars
 lib/AmuseWikiFarm/I18N/*.mo
 .vagrant/
+
+# Carton module installation directory
+local/

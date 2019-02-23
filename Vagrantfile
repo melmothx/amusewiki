@@ -13,10 +13,12 @@ Vagrant.configure("2") do |config|
 
   # Install script/install.sh dependencies
   packages += %w[
+    carton
     cpanminus
     fontconfig
     gcc
     ghostscript
+    git
     graphicsmagick
     imagemagick
     make
@@ -29,62 +31,6 @@ Vagrant.configure("2") do |config|
   packages << "nginx"
 
   packages += %w[cgit fcgiwrap]
-
-  # Install most Perl requirements (from Makefile.PL and others) from the repository
-  packages += %w[
-    libarchive-zip-perl
-    libcatalyst-action-renderview-perl
-    libcatalyst-devel-perl
-    libcatalyst-perl
-    libcatalyst-plugin-authentication-perl
-    libcatalyst-plugin-authorization-roles-perl
-    libcatalyst-plugin-configloader-perl
-    libcatalyst-plugin-session-perl
-    libcatalyst-plugin-session-state-cookie-perl
-    libcatalyst-plugin-session-store-fastmmap-perl
-    libcatalyst-view-json-perl
-    libcatalyst-view-tt-perl
-    libcgi-compile-perl
-    libcgi-emulate-psgi-perl
-    libcrypt-openssl-x509-perl
-    libdaemon-control-perl
-    libdata-dumper-concise-perl
-    libdbd-sqlite3-perl
-    libdbix-class-perl
-    libdbix-class-schema-loader-perl
-    libemail-valid-perl
-    libfcgi-perl
-    libfcgi-procmanager-perl
-    libgit-wrapper-perl
-    libhttp-browserdetect-perl
-    libhttp-lite-perl
-    libhttp-parser-perl
-    libhttp-tiny-perl
-    libimager-perl
-    libjavascript-packer-perl
-    liblocale-po-perl
-    liblog-dispatch-perl
-    libmime-types-perl
-    libmoose-perl
-    libmoosex-nonmoose-perl
-    libnamespace-autoclean-perl
-    libpdf-api2-perl
-    libprotocol-acme-perl
-    libsearch-xapian-perl
-    libsql-translator-perl
-    libtemplate-tiny-perl
-    libterm-size-any-perl
-    libtest-www-mechanize-catalyst-perl
-    libtest-www-mechanize-perl
-    libtext-diff-perl
-    libtext-unidecode-perl
-    libunicode-collate-perl
-    libuuid-tiny-perl
-    libxml-atom-perl
-    libxml-feedpp-perl
-    libxml-writer-perl
-    libyaml-tiny-perl
-  ]
 
   # Install TeX Live
   packages += %w[
@@ -114,6 +60,21 @@ Vagrant.configure("2") do |config|
     lmodern
   ]
 
+  # Perl module compilation dependencies
+  packages += %w[
+    g++
+    libssl-dev
+    libxapian-dev
+    libxml2-dev
+    libexpat1-dev
+  ]
+
+  # Install Imager module dependencies
+  packages += %w[
+    libjpeg-dev
+    libpng-dev
+  ]
+
   # Install gettext required by /vagrant/script/upgrade_i18n
   packages << "gettext"
 
@@ -128,10 +89,6 @@ Vagrant.configure("2") do |config|
 
     sudo apt-get $APT_ARGS update
     sudo apt-get $APT_ARGS install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
-
-    # Install local::lib
-    sudo apt-get $APT_ARGS install -y liblocal-lib-perl
-    echo 'eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)"' >>~/.bashrc
   SHELL
 
   # Configure Amusewiki
@@ -140,28 +97,25 @@ Vagrant.configure("2") do |config|
 
     cd /vagrant
 
-    eval `perl -Mlocal::lib`
     cp dbic.yaml.sqlite.example dbic.yaml
 
     script/install.sh
-    script/configure.sh localhost
-    script/amusewiki-generate-nginx-conf | sudo /bin/sh
-    sudo sed -i s/www-data/vagrant/ /etc/nginx/nginx.conf
+    carton exec script/configure.sh localhost
+    carton exec script/amusewiki-generate-nginx-conf | sudo /bin/sh
+
+    carton exec script/generate-systemd-unit-files
+    sudo cp -v /tmp/tmp.*/amusewiki-*.service /etc/systemd/system/
+    sudo chown root:root /etc/systemd/system/amusewiki-*
+    sudo chmod 664 /etc/systemd/system/amusewiki-*
 
     # It is impossible to create socket on VirtualBox filesystem.
     # Move it to home as a workaround.
     sudo sed -i 's|unix:/vagrant/var/amw.sock|unix:/home/vagrant/amw.sock|' /etc/nginx/amusewiki_include
-  SHELL
+    sudo sed -i 's|/vagrant/var/amw.sock|/home/vagrant/amw.sock|' /etc/systemd/system/amusewiki-web.service
 
-  # Start Amusewiki services on every "vagrant up" or "vagrant reload"
-  config.vm.provision "amusewiki-run", type: "shell", privileged: false, run: "always", inline: <<-SHELL
-    set -e
-
-    cd /vagrant
-    eval `perl -Mlocal::lib`
-    script/jobber.pl restart
-    script/init-fcgi.pl --socket /home/vagrant/amw.sock restart
-    sudo service nginx restart
+    # Don't enable amusewiki-cgit here, because it is already started on port 9015 in /etc/nginx/sites-enabled/amusewiki
+    sudo systemctl enable --now amusewiki-jobber amusewiki-web
+    sudo systemctl restart nginx
   SHELL
 
   config.vm.hostname = 'amusewiki'
@@ -172,9 +126,9 @@ Vagrant.configure("2") do |config|
     To change default password:
       $ vagrant ssh
       vagrant@amusewiki:~$ cd /vagrant/
-      vagrant@amusewiki:~$ script/amusewiki-reset-password amusewiki
+      vagrant@amusewiki:~$ carton exec script/amusewiki-reset-password amusewiki
 
     Run tests with:
-      vagrant@amusewiki:~$ prove -b
+      vagrant@amusewiki:~$ carton exec prove -l
   MESSAGE
 end
