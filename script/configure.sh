@@ -60,21 +60,21 @@ fi
 # check if I can access to the db
 
 echo -n "Checking DB connection: "
-if perl -I lib -MAmuseWikiFarm::Schema -MData::Dumper\
+if carton exec perl -I lib -MAmuseWikiFarm::Schema -MData::Dumper\
         -e 'AmuseWikiFarm::Schema->connect("amuse")->storage->dbh or die'; then
     echo "OK"
 else
     show_dbic_setup
 fi
 
-./script/amusewiki-create-doc-site --hostname "$hostname" --email "`whoami`@$hostname"
+carton exec ./script/amusewiki-create-doc-site --hostname "$hostname" --email "`whoami`@$hostname"
 
 # install the first site and the first user. No PDF compile
 echo "Bootstrapping the initial site with the documentation"
 
 echo "#####################################################"
 echo
-./script/amusewiki-generate-nginx-conf
+carton exec ./script/amusewiki-generate-nginx-conf
 echo "#####################################################"
 echo
 
