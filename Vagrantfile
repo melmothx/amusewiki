@@ -2,8 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  # Using the officially recommended (https://www.vagrantup.com/docs/boxes.html#official-boxes) Bento box.
-  config.vm.box = "bento/debian-9.6"
+  config.vm.box = "debian/contrib-stretch64"
 
   # Map HTTP port to port 8080 on host machine to make web server available as http://localhost:8080/
   # Only allow access via 127.0.0.1 to disable public access.
@@ -82,13 +81,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "apt", type: "shell", privileged: false, inline: <<-SHELL
     set -e
 
-    # Workaround for https://www.debian.org/security/2019/dsa-4371 until Debian 9.7 is available as a bento box
-    APT_ARGS='-o Acquire::http::AllowRedirect=false'
-    sudo sed -i 's/httpredir\.debian\.org/cdn-fastly.deb.debian.org/' /etc/apt/sources.list
-    sudo sed -i 's/security\.debian\.org/cdn-fastly.deb.debian.org/' /etc/apt/sources.list
-
-    sudo apt-get $APT_ARGS update
-    sudo apt-get $APT_ARGS install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
+    sudo apt-get update
+    sudo apt-get install --no-install-recommends --no-install-suggests -y #{packages.join(' ')}
   SHELL
 
   # Configure Amusewiki
