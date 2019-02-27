@@ -39,6 +39,8 @@ die "2 arguments required: site_id and hostname" unless $site_id && $hostname;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = $schema->resultset('Site')->find($site_id) or die "Cannot find site id $site_id!";
+my $email = $site->mail_notify;
+$site->update({ mail_notify => undef });
 my $wp = WordPress::DBIC::Schema->connect('wordpress');
 my $topic_prefix = $opts{'topic-prefix'} || '';
 my $sku_prefix = $opts{'sku-prefix'} || '';
@@ -142,7 +144,7 @@ while (my $post = $posts->next) {
         }
     }
     $out{textbody} =~ s/<strong>(.*?<img .*?>.*?)<\/strong>/$1/g;
-    # $out{textbody} =~ s/(<h.>.*?)(<img .*?>)(.*?<\/h.>)/$1$3$2/g;
+    $out{textbody} =~ s/(<h.>.*?)(<img .*?>)(.*?<\/h.>)/$1$2$3/g;
     add_text(\%out, \@links);
 }
 
@@ -213,6 +215,7 @@ if ($opts{grandparent}) {
     }
 }
 
+$site->update({ mail_notify => $email });
 
 print "Done. Generating indexes now\n";
 if (my $j = $site->jobs->search({ task => 'build_static_indexes' })->dequeue) {
