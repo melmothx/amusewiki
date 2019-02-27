@@ -25,16 +25,16 @@ prepare_app () {
 
     ./script/install_js.sh
     PERL_USE_UNSAFE_INC=1 carton install --deployment
-    if perl -MImager -e 'foreach my $i (qw/jpeg png/) { die "Missing support for $i\n" unless $Imager::formats{$i} }'; then
+    if carton exec perl -MImager -e 'foreach my $i (qw/jpeg png/) { die "Missing support for $i\n" unless $Imager::formats{$i} }'; then
         echo "Imager loaded correctly";
     else
         echo "Imager was built without png and/or jpeg support. Are the development libraries installed?"
         exit 2;
     fi
-    ./script/amusewiki-upgrade-db
-    ./script/amusewiki-generate-nginx-conf
-    ./script/amusewiki-upgrade-lexicon repo/*
-    ./script/amusewiki-populate-webfonts
+    carton exec ./script/amusewiki-upgrade-db
+    carton exec ./script/amusewiki-generate-nginx-conf
+    carton exec ./script/amusewiki-upgrade-lexicon repo/*
+    carton exec ./script/amusewiki-populate-webfonts
 }
 
 # echo `pwd`
@@ -42,21 +42,21 @@ prepare_app () {
 start_web () {
     prepare_app
     rm -fv current_version_is_*.txt
-    amw_version=`perl -I lib -MAmuseWikiFarm -e 'print $AmuseWikiFarm::VERSION'`
+    amw_version=`carton exec perl -I lib -MAmuseWikiFarm -e 'print $AmuseWikiFarm::VERSION'`
     touch current_version_is_$amw_version.txt
     rm -rfv var/cache/*
-	./script/init-fcgi.pl start
+	carton exec ./script/init-fcgi.pl start
 }
 
 start_all () {
     start_web
-    ./script/jobber.pl start
+    carton exec ./script/jobber.pl start
     sleep 5
 }
 
 stop_all () {
-    ./script/jobber.pl stop
-	./script/init-fcgi.pl stop
+    carton exec ./script/jobber.pl stop
+	carton exec ./script/init-fcgi.pl stop
 }
 
 case $1 in
@@ -70,7 +70,7 @@ case $1 in
     ;;
 
     stop-app)
-        ./script/init-fcgi.pl stop
+        carton exec ./script/init-fcgi.pl stop
     ;;
 
     start)
