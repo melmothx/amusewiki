@@ -5,7 +5,7 @@
 set -e
 
 missing='no'
-for command in perl carton fc-cache convert gm update-mime-database xapian-check openssl \
+for command in perl carton fc-cache update-mime-database xapian-check openssl \
                make gcc wget git unzip rsync gs; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
