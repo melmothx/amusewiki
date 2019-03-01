@@ -689,7 +689,8 @@
     </div><!-- end of main -->
     </div><!-- end of wrap -->
     <div id="footer" role="contentinfo">
-      <div class="footer center">
+      <div class="footer">
+        <div class="center">
         <span id="amw-footer-link-random">
           <a href="[% c.uri_for('/random') %]" title="[% loc('Random') %]">[% loc('Random') %]</a>
         </span>
@@ -731,6 +732,12 @@
       <a href="[% c.uri_for_action('/edit/newtext', ['text']) %]">[% loc('Add a new text') %]</a>
         </span>
       [% END %]
+        </div>
+        [% IF footer_layout_html %]
+        <div>
+          [% footer_layout_html %]
+        </div>
+        [% END %]
       </div>
     </div>
     <script src="[% c.uri_for('/static/js/amw-autosuggest.js') %]"></script>

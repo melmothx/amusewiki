@@ -2968,6 +2968,7 @@ sub update_from_params {
                            right_layout_html
                            top_layout_html
                            bottom_layout_html
+                           footer_layout_html
                            do_not_enforce_commit_message
                            text_infobox_at_the_bottom
                            freenode_irc_channel
@@ -3324,6 +3325,9 @@ sub bottom_layout_html {
     return shift->get_option('bottom_layout_html') || '';
 }
 
+sub footer_layout_html {
+    return shift->get_option('footer_layout_html') || '';
+}
 
 sub titles_available_sortings {
     my $self = shift;

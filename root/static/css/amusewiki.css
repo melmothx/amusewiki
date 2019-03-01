@@ -16,7 +16,7 @@ html, body {
 .footer {
   position: relative;
   margin-top: -70px; /* negative value of footer height */
-  height: 70px;
+  min-height: 70px;
   clear:both;
   padding-top:15px;
 }

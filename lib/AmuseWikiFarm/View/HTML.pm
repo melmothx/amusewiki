@@ -95,6 +95,7 @@ before process => sub {
                   main_body_cols => $columns,
                   top_layout_html => $site->top_layout_html,
                   bottom_layout_html => $site->bottom_layout_html,
+                  footer_layout_html => $site->footer_layout_html,
                   sitelinks_searchbox => to_json($sitelink, pretty => 1, canonical => 1),
                  );
     }
