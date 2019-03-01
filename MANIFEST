@@ -1241,7 +1241,6 @@ script/amusewiki-populate-webfonts
 script/amusewiki-reset-password
 script/amusewiki-upgrade-db
 script/amusewiki-upgrade-lexicon
-script/amusewikifarm_cgi.pl
 script/amusewikifarm_create.pl
 script/amusewikifarm_fastcgi.pl
 script/amusewikifarm_server.pl
