@@ -3,7 +3,7 @@ set -e
 
 TEXMIRROR=ctan.ijs.si/tex-archive
 cd "$HOME"
-echo "Installing TeX live 2017 in your home under texlive"
+echo "Installing latest TeX live in your home under texlive"
 # remove all stray files
 rm -rfv install-tl-*
 wget -O install-tl-unx.tar.gz \
