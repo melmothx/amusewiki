@@ -15,10 +15,6 @@ for command in perl carton fc-cache convert gm update-mime-database xapian-check
             echo "NO, please install xapian and its utils"
         elif [ $command = 'make' ]; then
             echo "NO, please install build essential utils"
-        elif [ $command = 'convert' ]; then
-            echo "NO, please install imagemagick"
-        elif [ $command = 'gm' ]; then
-            echo "NO, please install graphicsmagick"
         elif [ $command = 'fc-cache' ]; then
             echo "NO, please install fontconfig"
         elif [ $command = 'gs' ]; then
@@ -36,7 +32,6 @@ Missing core utilities, cannot proceed. Please install them:
 
  - a working perl with carton (i.e., you can install modules)
  - fontconfig (install it before installing texlive)
- - graphicsmagick (for thumbnails) and imagemagick (for preview generation)
  - a mime-info database: shared-mime-info on debian
  - openssl
  - general utils: wget, git, unzip, rsync
