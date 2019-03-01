@@ -1242,9 +1242,6 @@ script/amusewiki-reset-password
 script/amusewiki-upgrade-db
 script/amusewiki-upgrade-lexicon
 script/amusewikifarm_create.pl
-script/amusewikifarm_fastcgi.pl
-script/amusewikifarm_server.pl
-script/amusewikifarm_test.pl
 script/cleanup-tests.sh
 script/configure.sh
 script/create_schema_icons.pl
