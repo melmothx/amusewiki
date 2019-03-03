@@ -86,7 +86,7 @@
         </label>
       </div>
       [% END %]
-    </p>
+    </div>
     [% ELSE %]
     <p>
       <label for="SORTtopics">[% loc('Topics') %]</label>:
