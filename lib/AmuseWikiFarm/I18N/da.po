@@ -2907,11 +2907,11 @@ msgid "generic sectioning, good for articles"
 msgstr "generel sektionering, passer til artikler"
 
 msgid ""
-"if by chance another text with the same author and title exists, choose the "
+"If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"hvis der tilfældigvis eksisterer en anden tekst med samme forfatter og "
+"Hvis der tilfældigvis eksisterer en anden tekst med samme forfatter og "
 "titel, så vælg den ønskede URI i feltet nedenfor ved at indsætte forfatter, "
 "titel og et nummer, f.eks. min-forfatter-min-titel-1"
 

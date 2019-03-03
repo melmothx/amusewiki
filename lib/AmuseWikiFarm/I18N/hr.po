@@ -2920,11 +2920,11 @@ msgid "generic sectioning, good for articles"
 msgstr "općenit odjeljak, preporučen za kratke tekstove"
 
 msgid ""
-"if by chance another text with the same author and title exists, choose the "
+"If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"ako slučajno postoji još jedan tekst istog autora i istog naslova, izaberi "
+"Ako slučajno postoji još jedan tekst istog autora i istog naslova, izaberi "
 "željeni URI koristeći polje niže, unesi autora, naslov i jedan broj, npr. "
 "moj-autor-moj-naslov-1"
 

@@ -2796,11 +2796,11 @@ msgid "generic sectioning, good for articles"
 msgstr "Generische Sektionierung, gut für Artikel"
 
 msgid ""
-"if by chance another text with the same author and title exists, choose the "
+"If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"im gegebenen Fall, dass ein Text der selben AutorIn mit dem selben Titel "
+"Im gegebenen Fall, dass ein Text der selben AutorIn mit dem selben Titel "
 "existiert, wähle die gewünschte URI, verwende dazu das untere Feld und gib "
 "die AutorIn, den Titel und eine Nummer an, z.B. meine-AutorIn-mein-Titel-1 "
 

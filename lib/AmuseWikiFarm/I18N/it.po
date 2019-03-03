@@ -3011,7 +3011,7 @@ msgid "generic sectioning, good for articles"
 msgstr "sezione generica, raccomandata per gli articoli"
 
 msgid ""
-"if by chance another text with the same author and title exists, choose the "
+"If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""

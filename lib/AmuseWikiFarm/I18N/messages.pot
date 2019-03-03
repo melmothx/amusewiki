@@ -3420,7 +3420,7 @@ msgid "generic sectioning, good for articles"
 msgstr ""
 
 #: root/src/edit/newtext.tt:28
-msgid "if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1"
+msgid "If by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1"
 msgstr ""
 
 #: root/src/console/git_display.tt:86

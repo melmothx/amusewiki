@@ -3048,11 +3048,11 @@ msgid "generic sectioning, good for articles"
 msgstr "generieke indeling, goed voor artikelen"
 
 msgid ""
-"if by chance another text with the same author and title exists, choose the "
+"If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"als door toeval een andere tekst met dezelfde auteur en titel bestaat, kies "
+"Als door toeval een andere tekst met dezelfde auteur en titel bestaat, kies "
 "dan de gewenste URI door het veld hieronder te gebruiken en auteur, titel en "
 "een getal in te voeren, bijvoorbeeld mijn-auteur-mijn-titel-1"
 

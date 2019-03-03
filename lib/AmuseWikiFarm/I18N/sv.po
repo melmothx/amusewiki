@@ -2793,11 +2793,11 @@ msgid "generic sectioning, good for articles"
 msgstr "generisk uppdelning, bra för artiklar"
 
 msgid ""
-"if by chance another text with the same author and title exists, choose the "
+"If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
-"om det av en händelse skulle finnas en annan text med samma författare och "
+"Om det av en händelse skulle finnas en annan text med samma författare och "
 "titel, välj den önskade URI genom att fylla i fältet nedan med författare, "
 "titel och nummer, t.ex. min-förf-min-titel-1"
 
