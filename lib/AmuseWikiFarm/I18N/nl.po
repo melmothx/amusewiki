@@ -155,8 +155,8 @@ msgstr ""
 "Extra informatie (volledige datum,  originele titel, vertalers, erkenningen, "
 "etc.)"
 
-#. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
+#. (c.uri_for_action('/console/unpublished')
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -332,6 +332,12 @@ msgstr ""
 "        nummers tussen haakjes. Met deze optie gebruiken ze\n"
 "        alfa nummering per pagina"
 
+msgid "By number of pages, ascending"
+msgstr "Op aantal pagina's, oplopend"
+
+msgid "By number of pages, descending"
+msgstr "Op aantal pagina's, aflopend"
+
 msgid "By relevance"
 msgstr "Op relevantie"
 
@@ -372,8 +378,8 @@ msgid "Changes applied"
 msgstr "Toegepaste wijziginen"
 
 #. ($c->stash->{revision}->title->uri)
-#. (revision.title.uri)
 #. (author_title)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Wijzigingen voor %1"
 
@@ -871,6 +877,9 @@ msgstr ""
 "verpesten,\n"
 "            dus wees voorzichting"
 
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML om in te voegen in de linker zijbalk"
 
@@ -964,14 +973,14 @@ msgstr "IRC kanaal op freenode"
 msgid "Id"
 msgstr "Id"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Als %1 niet is ingesteld wordt het opgezocht in de programma index."
 
@@ -1124,8 +1133,8 @@ msgstr ""
 "In de tekst wordt een getal binnen vierkante haakjes geinterpreteerd\n"
 "          een referentie naar een voetnoet, voorzover zo'n voetnoot bestaat."
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1557,8 +1566,8 @@ msgstr "PDF logo"
 msgid "PDFs cannot be used in the body."
 msgstr "PDFs kunnen niet in de hoofdtekst worden gebruikt."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "PDFs niet niet vermeld staan in de %1 instructie worden wel opgeslagen maar "
@@ -2232,6 +2241,9 @@ msgstr "Statische pagina zonder javascript"
 msgid "Status"
 msgstr "Status"
 
+msgid "Status changed"
+msgstr ""
+
 msgid "Subsection"
 msgstr "Subsectie"
 
@@ -2432,6 +2444,9 @@ msgstr "Haal dan de updates van deze pagina."
 msgid "There are failed jobs"
 msgstr "Er zijn mislukte taken"
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Deze teksten missen de unieke id."
 
@@ -2574,8 +2589,8 @@ msgstr "Om snel toneelstukken op te maken gebruik je"
 msgid "To resume the editing you can visit the following URL"
 msgstr "Om verder te gaan met bewerken ga je naar de volgende URL"
 
-#. (loc('Update')
 #. (loc("Update"))
+#. (loc('Update')
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -2998,12 +3013,6 @@ msgstr "elk"
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "automatisch gegenereerd indien niet aanwezig, op basis van auteur en titel"
-
-msgid "By number of pages, ascending"
-msgstr "Op aantal pagina's, oplopend"
-
-msgid "By number of pages, descending"
-msgstr "Op aantal pagina's, aflopend"
 
 msgid "code and monospace"
 msgstr "code en niet-proportioneel (monospace)"

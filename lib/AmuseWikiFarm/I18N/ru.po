@@ -148,8 +148,8 @@ msgid ""
 msgstr ""
 "Дополнительная информация (дата, название в оригинале, переводчики и др.)."
 
-#. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
+#. (c.uri_for_action('/console/unpublished')
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -320,6 +320,12 @@ msgstr ""
 "По умолчанию дополнительные сноски используют арабские цифры в скобках. С "
 "этой опцией они будут использовать постраничную нумерацию буквами"
 
+msgid "By number of pages, ascending"
+msgstr "По возрастанию числа страниц"
+
+msgid "By number of pages, descending"
+msgstr "По убыванию числа страниц"
+
 msgid "By relevance"
 msgstr "По релевантности"
 
@@ -360,8 +366,8 @@ msgid "Changes applied"
 msgstr "Изменения применены"
 
 #. ($c->stash->{revision}->title->uri)
-#. (revision.title.uri)
 #. (author_title)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Изменения для %1"
 
@@ -844,6 +850,9 @@ msgstr ""
 "HTML для вставки на каждой специальной странице, вставляется без обработки, "
 "у вас есть шанс испортить разметку, поэтому будьте осторожны"
 
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML для вставки в левую боковую панель"
 
@@ -935,14 +944,14 @@ msgstr "IRC-канал на Freenode"
 msgid "Id"
 msgstr "Id"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Если не указано, будем искать %1 относительно директории приложения."
 
@@ -1083,8 +1092,8 @@ msgstr ""
 "В тексте номер в квадратных скобках воспринимается как\n"
 " номер сноски, если сноска существует. "
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1504,8 +1513,8 @@ msgstr "Логотип PDF"
 msgid "PDFs cannot be used in the body."
 msgstr "PDF не могут быть использованы в теле текста"
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF не прописанные в %1 будут сохранены но проигнорированы"
 
@@ -2493,8 +2502,8 @@ msgstr "Для быстрого форматирования пьес испол
 msgid "To resume the editing you can visit the following URL"
 msgstr "Для продолжения редактирования пройдите по следующей ссылке"
 
-#. (loc('Update')
 #. (loc("Update"))
+#. (loc('Update')
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -2904,12 +2913,6 @@ msgid "automatically generated if not present, using author and title"
 msgstr ""
 "если поле оставлено пустым создаётся автоматически с использованием автора и "
 "названия"
-
-msgid "By number of pages, ascending"
-msgstr "По возрастанию числа страниц"
-
-msgid "By number of pages, descending"
-msgstr "По убыванию числа страниц"
 
 msgid "code and monospace"
 msgstr "код и моноширинный"

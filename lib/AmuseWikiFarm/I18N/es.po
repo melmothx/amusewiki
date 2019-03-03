@@ -148,8 +148,8 @@ msgid ""
 msgstr ""
 "Información adicional (fecha, título original, traductores, créditos, etc.)."
 
-#. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
+#. (c.uri_for_action('/console/unpublished')
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -323,6 +323,12 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
+msgstr ""
+
 msgid "By relevance"
 msgstr ""
 
@@ -363,8 +369,8 @@ msgid "Changes applied"
 msgstr "Cambios aplicados"
 
 #. ($c->stash->{revision}->title->uri)
-#. (revision.title.uri)
 #. (author_title)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Cambios para %1"
 
@@ -857,6 +863,9 @@ msgstr ""
 "            palabra, por lo que tienes la posibilidad de echar todo a\n"
 "            perder ahora, así que sé cuidadosa/o"
 
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML a insertar en la barra lateral izquierda"
 
@@ -951,14 +960,14 @@ msgstr "Canal IRC en freenode"
 msgid "Id"
 msgstr "Id"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Si no se ajusta %1 será tomado desde el directorio de la aplicación."
 
@@ -1098,8 +1107,8 @@ msgstr ""
 "          referencia a una nota a pie de página, si es que dicha nota a pie "
 "de página existe."
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1515,8 +1524,8 @@ msgstr "Logo PDF"
 msgid "PDFs cannot be used in the body."
 msgstr "No se pueden usar PDFs en el cuerpo."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "Los PDFs no listados en la directiva %1 serán guardados, pero ignorados"
@@ -2185,6 +2194,9 @@ msgstr "Página estática sin javascript"
 msgid "Status"
 msgstr "Estado"
 
+msgid "Status changed"
+msgstr ""
+
 msgid "Subsection"
 msgstr "Subsección"
 
@@ -2380,6 +2392,9 @@ msgstr "Luego toma las actualizaciones desde esta página."
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Estos textos no tienen el id único."
 
@@ -2521,8 +2536,8 @@ msgstr "Para dar formato a diálogos, usa"
 msgid "To resume the editing you can visit the following URL"
 msgstr "Para continuar editando, puedes visitar la siguiente URL"
 
-#. (loc('Update')
 #. (loc("Update"))
+#. (loc('Update')
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -2928,12 +2943,6 @@ msgstr "cualquiera"
 
 msgid "automatically generated if not present, using author and title"
 msgstr "generado automáticamente si no se ocupa, usando autor/a y título"
-
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
 
 msgid "code and monospace"
 msgstr "código y mono espaciado"

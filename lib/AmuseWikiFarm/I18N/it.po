@@ -150,8 +150,8 @@ msgid ""
 msgstr ""
 "Informazioni aggiuntive (data completa, titolo originale, traduttori, ecc.)"
 
-#. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
+#. (c.uri_for_action('/console/unpublished')
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -322,6 +322,12 @@ msgstr ""
 "parentesi. Con questa opzione verrà usata una numerazione alfabetica\n"
 "per pagina. (La prima nota secondaria di ogni pagina sarà \"a\")"
 
+msgid "By number of pages, ascending"
+msgstr "Per numero di pagine (da minore a maggiore)"
+
+msgid "By number of pages, descending"
+msgstr "Per numero di pagine (da maggiore a minore)"
+
 msgid "By relevance"
 msgstr "Rilevanza"
 
@@ -362,8 +368,8 @@ msgid "Changes applied"
 msgstr "Modifiche applicate"
 
 #. ($c->stash->{revision}->title->uri)
-#. (revision.title.uri)
 #. (author_title)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Modifiche per %1"
 
@@ -854,6 +860,9 @@ msgstr ""
 "letteralmente. Fai attenzione a ciò che fai, dato che puoi inserire\n"
 "qualsiasi cosa (codice, script, ecc.)"
 
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+
 msgid "HTML to insert into the left sidebar"
 msgstr "Codice HTML da inserire nella colonna di sinistra"
 
@@ -946,14 +955,14 @@ msgstr "Canale IRC su Freenode"
 msgid "Id"
 msgstr "Id"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Se non impostato, %1 sarà cercato nella directory dell'applicazione."
 
@@ -1101,8 +1110,8 @@ msgstr ""
 "Nel testo, un numero tra parentesi quadre è interpretato come un\n"
 "riferimento a una nota a piè di pagina, se tale nota esiste."
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1534,8 +1543,8 @@ msgstr "Logo PDF"
 msgid "PDFs cannot be used in the body."
 msgstr "I PDF non possono essere usati all'interno del testo."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "I PDF non elencatine nella direttiva %1 saranno salvati ma ignorati."
 
@@ -2206,6 +2215,9 @@ msgstr "Pagina statica senza javascript"
 msgid "Status"
 msgstr "Status"
 
+msgid "Status changed"
+msgstr ""
+
 msgid "Subsection"
 msgstr "Sottosezione"
 
@@ -2403,6 +2415,9 @@ msgstr "Poi recupera gli aggiornamenti da questa pagina."
 msgid "There are failed jobs"
 msgstr "Ci sono lavori falliti"
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Questi testi sono senza identificativo."
 
@@ -2546,8 +2561,8 @@ msgstr "Per formattare pezzi teatrali, usa"
 msgid "To resume the editing you can visit the following URL"
 msgstr "Per riprendere la modifica, puoi visitare il seguente URL"
 
-#. (loc('Update')
 #. (loc("Update"))
+#. (loc('Update')
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -2961,12 +2976,6 @@ msgstr "qualsiasi"
 
 msgid "automatically generated if not present, using author and title"
 msgstr "generato automaticamente se non presente, usando autore e titolo"
-
-msgid "By number of pages, ascending"
-msgstr "Per numero di pagine (da minore a maggiore)"
-
-msgid "By number of pages, descending"
-msgstr "Per numero di pagine (da maggiore a minore)"
 
 msgid "code and monospace"
 msgstr "formattazione codice"

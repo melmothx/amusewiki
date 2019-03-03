@@ -145,8 +145,8 @@ msgstr ""
 "Ytterligare information (fullständigt datum, originaltitel, översättare, "
 "tillägnanden, etc.)"
 
-#. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
+#. (c.uri_for_action('/console/unpublished')
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -304,6 +304,12 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
+msgstr ""
+
 msgid "By relevance"
 msgstr ""
 
@@ -344,8 +350,8 @@ msgid "Changes applied"
 msgstr "Ändrigar utförda"
 
 #. ($c->stash->{revision}->title->uri)
-#. (revision.title.uri)
 #. (author_title)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Ändringar till %1"
 
@@ -805,6 +811,9 @@ msgid ""
 "            be careful"
 msgstr ""
 
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+
 msgid "HTML to insert into the left sidebar"
 msgstr ""
 
@@ -888,14 +897,14 @@ msgstr ""
 msgid "Id"
 msgstr "Id"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -1008,8 +1017,8 @@ msgstr ""
 "I texten tolkas en siffra inom parentes som en fotnotsreferens,om sådan "
 "fotnot existerar. "
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1414,8 +1423,8 @@ msgstr ""
 msgid "PDFs cannot be used in the body."
 msgstr "PDF:er kan inte användas i brödtexten."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF är inte listad i %1 direktiv kommer att lagras men ignoreras"
 
@@ -2061,6 +2070,9 @@ msgstr "Statisk sida utan javascript"
 msgid "Status"
 msgstr "Status"
 
+msgid "Status changed"
+msgstr ""
+
 msgid "Subsection"
 msgstr "Underavdelning"
 
@@ -2241,6 +2253,9 @@ msgstr ""
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Dessa texter saknar det unika ID:t."
 
@@ -2371,8 +2386,8 @@ msgstr "För att snabbt formatera pjäser, använd"
 msgid "To resume the editing you can visit the following URL"
 msgstr "För att återgå till redigeringen kan du besöka denna URL"
 
-#. (loc('Update')
 #. (loc("Update"))
+#. (loc('Update')
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -2743,12 +2758,6 @@ msgstr ""
 
 msgid "automatically generated if not present, using author and title"
 msgstr "genereras automatiskt om saknad, genom författare och titel"
-
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
 
 msgid "code and monospace"
 msgstr "kod och monospace"

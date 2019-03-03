@@ -148,8 +148,8 @@ msgstr ""
 "Yderligere information (hele datoen, originaltitel, oversættere, "
 "bidragydere, etc.)."
 
-#. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
+#. (c.uri_for_action('/console/unpublished')
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -317,6 +317,12 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
+msgstr ""
+
 msgid "By relevance"
 msgstr ""
 
@@ -357,8 +363,8 @@ msgid "Changes applied"
 msgstr "Ændringer udført"
 
 #. ($c->stash->{revision}->title->uri)
-#. (revision.title.uri)
 #. (author_title)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Ændringer for %1"
 
@@ -836,6 +842,9 @@ msgid ""
 "            be careful"
 msgstr ""
 
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML til at indsætte i den venstre sidebar"
 
@@ -929,14 +938,14 @@ msgstr "IRC kanal på freenode"
 msgid "Id"
 msgstr "Id"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr ""
 
@@ -1073,8 +1082,8 @@ msgstr ""
 "I teksten fortolkes et tal i klammer som en\n"
 "          fodnotehenvisning, hvis en sådan fodnote findes."
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1489,8 +1498,8 @@ msgstr "PDF logo"
 msgid "PDFs cannot be used in the body."
 msgstr "PDF'er kan ikke bruges i brødteksten."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr ""
 "PDF'er som ikke er fortegnet i %1 direktivet bliver opbevaret men ignoreret."
@@ -2152,6 +2161,9 @@ msgstr "Statisk side uden javaskript"
 msgid "Status"
 msgstr "Status"
 
+msgid "Status changed"
+msgstr ""
+
 msgid "Subsection"
 msgstr "Undersektion"
 
@@ -2325,6 +2337,9 @@ msgstr "Hent derefter opdateringerne på denne side."
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Disse tekster mangler den unikke ID."
 
@@ -2463,8 +2478,8 @@ msgstr "For at hurtigt formatere skuespil, anvend"
 msgid "To resume the editing you can visit the following URL"
 msgstr "For at genoptage redigeringen kan du besøge den følgende URL"
 
-#. (loc('Update')
 #. (loc("Update"))
+#. (loc('Update')
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -2857,12 +2872,6 @@ msgstr "enhver"
 msgid "automatically generated if not present, using author and title"
 msgstr ""
 "bliver automatisk genereret hvis feltet er tomt, bruger forfatter og titel"
-
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
 
 msgid "code and monospace"
 msgstr "kode og monospatieret"

@@ -153,8 +153,8 @@ msgstr ""
 "Informatat shtesë (data e plotë, titulli origjinal, përkthyesit, "
 "pjesëmarrësit etj.)"
 
-#. (c.uri_for_action('/console/unpublished')
 #. (c.uri_for_action("/console/unpublished").path)
+#. (c.uri_for_action('/console/unpublished')
 msgid ""
 "After the approval of the\n"
 "  change, it will appear under %1. There is a big red\n"
@@ -331,6 +331,12 @@ msgid ""
 "        numbering"
 msgstr ""
 
+msgid "By number of pages, ascending"
+msgstr ""
+
+msgid "By number of pages, descending"
+msgstr ""
+
 msgid "By relevance"
 msgstr ""
 
@@ -371,8 +377,8 @@ msgid "Changes applied"
 msgstr "Ndryshimet u aplikuan"
 
 #. ($c->stash->{revision}->title->uri)
-#. (revision.title.uri)
 #. (author_title)
+#. (revision.title.uri)
 msgid "Changes for %1"
 msgstr "Ndryshime për %1"
 
@@ -852,6 +858,9 @@ msgstr ""
 "ashtu siç është, tani ke mundesi me prishë çdo gjë, pranaj \n"
 "ke kujdes"
 
+msgid "HTML to insert in the footer of the layout, below the links"
+msgstr ""
+
 msgid "HTML to insert into the left sidebar"
 msgstr "HTML-i të vendoset në shiritin në të majtë"
 
@@ -944,14 +953,14 @@ msgstr "Kanali IRC në freenode"
 msgid "Id"
 msgstr "ID"
 
-#. ('ssl/' _ esite.canonical _ '/key.pem')
-#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
-#. ('ssl/' _ esite.canonical _ '/cert.pem')
-#. ('ssl/' _ esite.canonical _ '/chain.pem')
 #. ("ssl/' _ esite.canonical _ '/key.pem")
 #. ("ssl/' _ esite.canonical _ '/fullchain.pem")
 #. ("ssl/' _ esite.canonical _ '/cert.pem")
 #. ("ssl/' _ esite.canonical _ '/chain.pem")
+#. ('ssl/' _ esite.canonical _ '/key.pem')
+#. ('ssl/' _ esite.canonical _ '/fullchain.pem')
+#. ('ssl/' _ esite.canonical _ '/cert.pem')
+#. ('ssl/' _ esite.canonical _ '/chain.pem')
 msgid "If not set %1 will be looked up from the application directory."
 msgstr "Nëse nuk është vendosur %1 do të merret nga udhëzuesi i aplikacionit"
 
@@ -1082,8 +1091,8 @@ msgstr ""
 "Numri brenda kllapave të mesme në tekst interpretohet si\n"
 "fusnotë, nëse ezgiston një fusnote e tillë."
 
-#. (c.uri_for_action('/opds/start')
 #. (c.uri_for_action("/opds/start"))
+#. (c.uri_for_action('/opds/start')
 msgid ""
 "In this example, we use FBreader, but the procedure is\n"
 "  pretty much the same for all applications. All you have to do is to\n"
@@ -1498,8 +1507,8 @@ msgstr "PDF llogo"
 msgid "PDFs cannot be used in the body."
 msgstr "PDF-at nuk mund të përdoren në trup."
 
-#. ('#ATTACH')
 #. ("#ATTACH")
+#. ('#ATTACH')
 msgid "PDFs not listed in the %1 directive will be stored but ignored."
 msgstr "PDF-at e pa listuar në direktivën %1 do të ruhen por do të injorohen."
 
@@ -2161,6 +2170,9 @@ msgstr "Faqja statike pa javascript"
 msgid "Status"
 msgstr "Statusi"
 
+msgid "Status changed"
+msgstr ""
+
 msgid "Subsection"
 msgstr "Nënseksioni"
 
@@ -2342,6 +2354,9 @@ msgstr "Pastaj merrini përditësimet nga kjo faqe."
 msgid "There are failed jobs"
 msgstr ""
 
+msgid "There are pending revisions"
+msgstr ""
+
 msgid "These texts are missing the unique id."
 msgstr "Ketyre teksteve iu mungon ID e veçantë."
 
@@ -2490,8 +2505,8 @@ msgid "To resume the editing you can visit the following URL"
 msgstr ""
 "Për të vazhduar ndryshimin e teksti, ju mund ta vizitoni linkun në vazhdim:"
 
-#. (loc('Update')
 #. (loc("Update"))
+#. (loc('Update')
 msgid ""
 "To save or update the templates, you need first to save\n"
 "    the options with the \"%1\" button"
@@ -2885,12 +2900,6 @@ msgid "automatically generated if not present, using author and title"
 msgstr ""
 "gjenerohet automatikisht nëse nuk është prezente duke përdorur autorin dhe "
 "titullin"
-
-msgid "By number of pages, ascending"
-msgstr ""
-
-msgid "By number of pages, descending"
-msgstr ""
 
 msgid "code and monospace"
 msgstr "Kodi dhe monospace"
