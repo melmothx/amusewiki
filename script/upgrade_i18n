@@ -2,11 +2,12 @@
 
 filelist=`mktemp`
 
-find ./lib -type f -iname "*.pm" | grep -v debug_loc > $filelist
-find ./root/src -type f -iname "*.tt" | grep -v debug_loc >> $filelist
-find ./mkits -type f >> $filelist
-echo ./root/static/js/amw-batch-upload.js >> $filelist
-cat $filelist
+{
+find ./lib -type f -iname "*.pm" | grep -v debug_loc
+find ./root/src -type f -iname "*.tt" | grep -v debug_loc
+find ./mkits -type f
+echo ./root/static/js/amw-batch-upload.js
+} | sort -u | tee $filelist
 
 xgettext.pl -P perl=* -P tt2=* -P generic=js \
     --output=lib/AmuseWikiFarm/I18N/messages.pot -f $filelist
