@@ -3127,9 +3127,9 @@ msgid "without description"
 msgstr "sans description"
 
 msgid ""
-"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
-"vous souhaitez peut-être retirer le premier mot du titre s'il s'agit de \"Un"
+"Vous souhaitez peut-être retirer le premier mot du titre s'il s'agit de \"Un"
 "\", \"Le\", etc"
 
 msgid ""

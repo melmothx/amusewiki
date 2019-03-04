@@ -48,10 +48,12 @@
 
   <div class="form-group">
     <label for="LISTtitle">[% loc('Title for sorting') %]</label>
-    ([% loc('you may want to strip the leading “A”, “An”, “The”, and so on from the title') %]):
     <input class="form-control" type="text" name="LISTtitle" id="LISTtitle"
            maxlength="250" size="30"
            value="[% processed_params.LISTtitle | html %]" />
+    <p class="help-block">
+      [% loc('You may want to strip the leading “A”, “An”, “The”, and so on from the title') %].
+    </p>
   </div>
 
 

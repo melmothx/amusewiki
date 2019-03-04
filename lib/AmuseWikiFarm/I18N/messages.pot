@@ -3577,7 +3577,7 @@ msgid "without description"
 msgstr ""
 
 #: root/src/edit/newtext.tt:50
-msgid "you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgid "You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 
 #: root/src/publish/pending.tt:121

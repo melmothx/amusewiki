@@ -2919,9 +2919,9 @@ msgid "without description"
 msgstr "utan beskrivning"
 
 msgid ""
-"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
-"du bör överväga att ta bort det inledande \"En\", \"Ett\", \"Den\" och så "
+"Du bör överväga att ta bort det inledande \"En\", \"Ett\", \"Den\" och så "
 "vidare från titeln"
 
 msgid ""

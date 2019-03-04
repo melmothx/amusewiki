@@ -3084,8 +3084,8 @@ msgid "without description"
 msgstr "без описания"
 
 msgid ""
-"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
-msgstr "возможно вы захотите отделить «О», «Об» и др. от названия"
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
+msgstr "Возможно вы захотите отделить «О», «Об» и др. от названия"
 
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"

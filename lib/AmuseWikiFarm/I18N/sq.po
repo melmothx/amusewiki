@@ -3063,7 +3063,7 @@ msgid "without description"
 msgstr "pa përshkrim"
 
 msgid ""
-"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 "Nëse dëshironi, ju mund të largoni parafjalët, fjalët lidhëse e të tjera, "
 "nga titulli."

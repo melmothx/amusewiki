@@ -3092,7 +3092,7 @@ msgid "without description"
 msgstr "без опис"
 
 msgid ""
-"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 "Насловот на документот, за индексирање. Обично не се користи во македонскиот "
 "јазик"

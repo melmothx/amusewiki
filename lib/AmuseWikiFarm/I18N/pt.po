@@ -3120,9 +3120,9 @@ msgid "without description"
 msgstr "sem descrição"
 
 msgid ""
-"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
-"você pode querer remover o artigo do início do título (O, A, Uma, Um, etc)"
+"Você pode querer remover o artigo do início do título (O, A, Uma, Um, etc)"
 
 msgid ""
 "“Stale editing” means that the revision was abandoned\n"
