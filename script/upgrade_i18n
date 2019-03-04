@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 filelist=`mktemp`
 
@@ -8,7 +9,7 @@ find ./mkits -type f >> $filelist
 echo ./root/static/js/amw-batch-upload.js >> $filelist
 cat $filelist
 
-xgettext.pl -P perl=* -P tt2=* -P generic=js \
+carton exec xgettext.pl -P perl=* -P tt2=* -P generic=js \
     --output=lib/AmuseWikiFarm/I18N/messages.pot -f $filelist
 
 for i in hr fi es mk ru id it de fr nl en sq sr sv pl pt da cs tr ar fa he; do
