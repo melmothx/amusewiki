@@ -2924,8 +2924,8 @@ msgstr ""
 msgid "code and monospace"
 msgstr "обликување на кодот"
 
-msgid "comma or semicolon separated list"
-msgstr "листа разделена со запирка или точка-запирка"
+msgid "Comma or semicolon separated list"
+msgstr "Листа разделена со запирка или точка-запирка"
 
 msgid "completed"
 msgstr "готово"
@@ -2996,8 +2996,8 @@ msgstr ""
 msgid "new-example-uri"
 msgstr "нов-uri-како-пример"
 
-msgid "optional, defaults to the author directive"
-msgstr "незадолжително, доколку недостига ќе се користи полето автор"
+msgid "Optional, defaults to the author directive"
+msgstr "Незадолжително, доколку недостига ќе се користи полето автор"
 
 msgid "or"
 msgstr "или"

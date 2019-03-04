@@ -2914,8 +2914,8 @@ msgstr "По убыванию числа страниц"
 msgid "code and monospace"
 msgstr "код и моноширинный"
 
-msgid "comma or semicolon separated list"
-msgstr "список, разделённый запятой или точкой с запятой"
+msgid "Comma or semicolon separated list"
+msgstr "Список, разделённый запятой или точкой с запятой"
 
 msgid "completed"
 msgstr "завершено"
@@ -2987,8 +2987,8 @@ msgstr "минуты"
 msgid "new-example-uri"
 msgstr "пример-uri"
 
-msgid "optional, defaults to the author directive"
-msgstr "опционально (по указанию автора)"
+msgid "Optional, defaults to the author directive"
+msgstr "Опционально (по указанию автора)"
 
 msgid "or"
 msgstr "или"

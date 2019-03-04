@@ -665,10 +665,10 @@ How smart a lash that speech doth giue my Conscience?
         <li>
           <code>
 	        #SORTauthors [% loc('First Author, Second Author') %]
-          </code>
-          [% loc('Authors for indexing') %]:
-          [% loc('comma or semicolon separated list') %]
-          ([% loc('optional, defaults to the author directive') %]).
+          </code><br/>
+          [% loc('Authors for indexing') %].
+          [% loc('Comma or semicolon separated list') %].
+          [% loc('Optional, defaults to the author directive') %].
         </li>
         <li>
           <code>#LISTtitle [% loc('Nice title') %]</code> <br /> [%
@@ -682,7 +682,7 @@ How smart a lash that speech doth giue my Conscience?
         </li>
         <li>
           <code>#SORTtopics [% loc('topic') %] 1, [% loc('topic') %] 2, [% loc('topic') %] 3</code><br />
-          [% loc('Topics') %]: [% loc('comma or semicolon separated list') %].
+          [% loc('Topics') %]. [% loc('Comma or semicolon separated list') %].
         </li>
         <li>
           <code>#date 2012</code><br />

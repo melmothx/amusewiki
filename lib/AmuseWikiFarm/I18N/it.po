@@ -2971,8 +2971,8 @@ msgstr "Per numero di pagine (da maggiore a minore)"
 msgid "code and monospace"
 msgstr "formattazione codice"
 
-msgid "comma or semicolon separated list"
-msgstr "lista separata da virgola o punto e virgola"
+msgid "Comma or semicolon separated list"
+msgstr "Lista separata da virgola o punto e virgola"
 
 msgid "completed"
 msgstr "completato"
@@ -3045,7 +3045,7 @@ msgstr ""
 msgid "new-example-uri"
 msgstr "nuovo-uri-di-esempio"
 
-msgid "optional, defaults to the author directive"
+msgid "Optional, defaults to the author directive"
 msgstr "opzionale, se mancante verrà usata la direttiva autore"
 
 msgid "or"

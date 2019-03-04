@@ -2753,8 +2753,8 @@ msgstr ""
 msgid "code and monospace"
 msgstr "kod och monospace"
 
-msgid "comma or semicolon separated list"
-msgstr "lista separerad med komma eller semikolon"
+msgid "Comma or semicolon separated list"
+msgstr "Lista separerad med komma eller semikolon"
 
 msgid "completed"
 msgstr "slutförd"
@@ -2825,8 +2825,8 @@ msgstr ""
 msgid "new-example-uri"
 msgstr ""
 
-msgid "optional, defaults to the author directive"
-msgstr "valfri, förvalda värden till författaranvisningen"
+msgid "Optional, defaults to the author directive"
+msgstr "Valfri, förvalda värden till författaranvisningen"
 
 msgid "or"
 msgstr "eller"

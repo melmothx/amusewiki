@@ -2895,8 +2895,8 @@ msgstr ""
 msgid "code and monospace"
 msgstr "Kodi dhe monospace"
 
-msgid "comma or semicolon separated list"
-msgstr "listë e ndarë me presje ose pikëpresje"
+msgid "Comma or semicolon separated list"
+msgstr "Listë e ndarë me presje ose pikëpresje"
 
 msgid "completed"
 msgstr "i kompletuar"
@@ -2969,8 +2969,8 @@ msgstr ""
 msgid "new-example-uri"
 msgstr ""
 
-msgid "optional, defaults to the author directive"
-msgstr "opcionale, e parazgjedhur direktiva e autorit"
+msgid "Optional, defaults to the author directive"
+msgstr "Opcionale, e parazgjedhur direktiva e autorit"
 
 msgid "or"
 msgstr "ose"

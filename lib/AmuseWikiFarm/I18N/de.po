@@ -2756,8 +2756,8 @@ msgstr ""
 msgid "code and monospace"
 msgstr "Code und Monospace"
 
-msgid "comma or semicolon separated list"
-msgstr "durch Komma oder Strichpunkt getrennte Liste"
+msgid "Comma or semicolon separated list"
+msgstr "Durch Komma oder Strichpunkt getrennte Liste"
 
 msgid "completed"
 msgstr "fertig gestellt"
@@ -2828,8 +2828,8 @@ msgstr ""
 msgid "new-example-uri"
 msgstr ""
 
-msgid "optional, defaults to the author directive"
-msgstr "optional, standardmäßig nach der Anweisung der Autorin "
+msgid "Optional, defaults to the author directive"
+msgstr "Optional, standardmäßig nach der Anweisung der Autorin "
 
 msgid "or"
 msgstr "oder"

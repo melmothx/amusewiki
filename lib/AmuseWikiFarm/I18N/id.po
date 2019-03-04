@@ -2653,7 +2653,7 @@ msgstr ""
 msgid "code and monospace"
 msgstr ""
 
-msgid "comma or semicolon separated list"
+msgid "Comma or semicolon separated list"
 msgstr ""
 
 msgid "completed"
@@ -2722,7 +2722,7 @@ msgstr ""
 msgid "new-example-uri"
 msgstr ""
 
-msgid "optional, defaults to the author directive"
+msgid "Optional, defaults to the author directive"
 msgstr ""
 
 msgid "or"

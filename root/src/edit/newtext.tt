@@ -67,12 +67,14 @@
   </div>
 
   <div class="form-group">
-    <label for="SORTauthors">[% loc('Authors for indexing') %]</label>,
-    [% loc('comma or semicolon separated list') %]:
+    <label for="SORTauthors">[% loc('Authors for indexing') %]</label>
     <input class="form-control amwautocomplete" id="SORTauthors"
            maxlength="250"
            name="SORTauthors"
            value="[% processed_params.SORTauthors | html %]" />
+    <p class="help-block">
+      [% loc('Comma or semicolon separated list') %].
+    </p>
   </div>
 
   [% IF site.fixed_category_list %]
@@ -92,14 +94,15 @@
   </div>
   [% ELSE %]
   <div class="form-group">
-    <label for="SORTtopics">[% loc('Topics') %]</label>:
-    [% loc('comma or semicolon separated list') %]
-    <br />
+    <label for="SORTtopics">[% loc('Topics') %]</label>
     <input class="form-control amwautocomplete" id="SORTtopics"
            size="50"
            maxlength="250"
            name="SORTtopics"
            value="[% processed_params.SORTtopics | html %]" />
+    <p class="help-block">
+      [% loc('Comma or semicolon separated list') %].
+    </p>
   </div>
   [% END %]
 

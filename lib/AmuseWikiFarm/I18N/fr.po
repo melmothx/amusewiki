@@ -2957,8 +2957,8 @@ msgstr ""
 msgid "code and monospace"
 msgstr "code et caractères à espacement fixe"
 
-msgid "comma or semicolon separated list"
-msgstr "liste séparée par virgules ou deux-points"
+msgid "Comma or semicolon separated list"
+msgstr "Liste séparée par virgules ou deux-points"
 
 msgid "completed"
 msgstr "complété"
@@ -3031,8 +3031,8 @@ msgstr ""
 msgid "new-example-uri"
 msgstr "nouvel-exemple-uri"
 
-msgid "optional, defaults to the author directive"
-msgstr "facultatif, prend par défaut la valeur de la directive #author"
+msgid "Optional, defaults to the author directive"
+msgstr "Facultatif, prend par défaut la valeur de la directive #author"
 
 msgid "or"
 msgstr "ou"

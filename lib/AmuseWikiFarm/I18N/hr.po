@@ -2880,8 +2880,8 @@ msgstr "Po broju stranica (više na početku)"
 msgid "code and monospace"
 msgstr "oblikovanje koda"
 
-msgid "comma or semicolon separated list"
-msgstr "popis odvojen zarezom"
+msgid "Comma or semicolon separated list"
+msgstr "Popis odvojen zarezom"
 
 msgid "completed"
 msgstr "gotovo"
@@ -2952,7 +2952,7 @@ msgstr ""
 msgid "new-example-uri"
 msgstr "novi-uri-kao-primjer"
 
-msgid "optional, defaults to the author directive"
+msgid "Optional, defaults to the author directive"
 msgstr "neobavezno, ako nedostaje koristit će se polje autora"
 
 msgid "or"

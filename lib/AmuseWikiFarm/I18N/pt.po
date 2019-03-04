@@ -2950,8 +2950,8 @@ msgstr "Por número de páginas, descendente"
 msgid "code and monospace"
 msgstr "código e monoespaçamento"
 
-msgid "comma or semicolon separated list"
-msgstr "lista separada por vírgula ou ponto-e-vírgula"
+msgid "Comma or semicolon separated list"
+msgstr "Lista separada por vírgula ou ponto-e-vírgula"
 
 msgid "completed"
 msgstr "completado"
@@ -3024,8 +3024,8 @@ msgstr ""
 msgid "new-example-uri"
 msgstr "nova-uri-de-exemplo"
 
-msgid "optional, defaults to the author directive"
-msgstr "opcional, o padrão é a diretiva autor"
+msgid "Optional, defaults to the author directive"
+msgstr "Opcional, o padrão é a diretiva autor"
 
 msgid "or"
 msgstr "ou"

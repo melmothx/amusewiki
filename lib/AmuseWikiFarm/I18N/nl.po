@@ -3008,8 +3008,8 @@ msgstr "Op aantal pagina's, aflopend"
 msgid "code and monospace"
 msgstr "code en niet-proportioneel (monospace)"
 
-msgid "comma or semicolon separated list"
-msgstr "komma of puntkomma gescheiden lijst"
+msgid "Comma or semicolon separated list"
+msgstr "Komma of puntkomma gescheiden lijst"
 
 msgid "completed"
 msgstr "voltooid"
@@ -3082,8 +3082,8 @@ msgstr ""
 msgid "new-example-uri"
 msgstr "nieuwe-voorbeeld-uri"
 
-msgid "optional, defaults to the author directive"
-msgstr "optioneel, gebruikt standaard de auteur instructie"
+msgid "Optional, defaults to the author directive"
+msgstr "Optioneel, gebruikt standaard de auteur instructie"
 
 msgid "or"
 msgstr "of"

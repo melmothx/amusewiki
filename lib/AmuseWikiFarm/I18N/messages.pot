@@ -3368,7 +3368,7 @@ msgid "code and monospace"
 msgstr ""
 
 #: root/src/edit/edit.tt:670 root/src/edit/edit.tt:685 root/src/edit/newtext.tt:68 root/src/edit/newtext.tt:93
-msgid "comma or semicolon separated list"
+msgid "Comma or semicolon separated list"
 msgstr ""
 
 #: root/src/admin/jobs.tt:40 root/src/include/bulk_job.tt:2 root/src/tasks/display.tt:4
@@ -3456,7 +3456,7 @@ msgid "new-example-uri"
 msgstr ""
 
 #: root/src/edit/edit.tt:671
-msgid "optional, defaults to the author directive"
+msgid "Optional, defaults to the author directive"
 msgstr ""
 
 #: root/src/edit/edit.tt:433 root/src/edit/edit.tt:441 root/src/edit/edit.tt:449 root/src/edit/edit.tt:458 root/src/edit/edit.tt:464 root/src/edit/edit.tt:470 root/src/edit/edit.tt:476 root/src/edit/edit.tt:537 root/src/edit/edit.tt:538 root/src/edit/edit.tt:618

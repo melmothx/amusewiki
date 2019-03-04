@@ -2731,8 +2731,8 @@ msgstr ""
 msgid "code and monospace"
 msgstr "koodi ja tasavälinen teksti"
 
-msgid "comma or semicolon separated list"
-msgstr "pilkulla tai puolipisteellä erotettu lista"
+msgid "Comma or semicolon separated list"
+msgstr "Pilkulla tai puolipisteellä erotettu lista"
 
 msgid "completed"
 msgstr "valmis"
@@ -2803,8 +2803,8 @@ msgstr ""
 msgid "new-example-uri"
 msgstr ""
 
-msgid "optional, defaults to the author directive"
-msgstr "vapaaehtoinen, oletuksena kirjoittajamerkintä"
+msgid "Optional, defaults to the author directive"
+msgstr "Vapaaehtoinen, oletuksena kirjoittajamerkintä"
 
 msgid "or"
 msgstr "tai"
