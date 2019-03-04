@@ -37,7 +37,7 @@
   </div>
 
   <div class="form-group">
-    <label for="subtitle">[% loc('Subtitle') %]</label>:
+    <label for="subtitle">[% loc('Subtitle') %]</label>
     <input class="form-control" type="text" name="subtitle" id="subtitle"
            maxlength="250"
            size="30"
