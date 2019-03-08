@@ -164,24 +164,25 @@
 
   <h3>[% loc('Main text') %]</h3>
   <div>
+    <p>
       [% loc('Please note that you may want to paste from a
         Word/OpenOffice/LibreOffice/HTML document using the “paste
         from word” button. This is supposed to preserve the markup.') %]
-
-      <br />
-
+    </p>
+    <p>
       [% loc('This is a WYSIWYG editor. If you prefer to use
         the wiki-like syntax leave it as is, fill the required fields
         above and postpone the editing to the next step.') %]
-      <br />
-
+    </p>
+    <p>
       [% loc('Image uploading may be done on the next step, when you can
         review and preview the upload.') %]
-
-      <br />
+    </p>
+    <p>
       [% loc('Keep in mind that unusually
         complex formatting will be stripped. Is it possible to add
         tables and images only on the next step.') %]
+    </p>
   </div>
   <div>&nbsp;</div>
   <div>
