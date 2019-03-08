@@ -24,15 +24,15 @@
     <label for="title" class="mandatory">[% loc('Title') %]
       ([% loc('mandatory') %])
     </label>
-    <a href="#choose-uri">
-      <span class="fa fa-share"></span>
-    </a>
     <input class="form-control" type="text" name="title"
            maxlength="250" id="title"
            size="30"
            value="[% processed_params.title | html %]" />
     <p class="help-block">
       [% loc('If by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %].
+      <a href="#choose-uri">
+        <span class="fa fa-share"></span>
+      </a>
     </p>
   </div>
 
