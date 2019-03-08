@@ -1682,8 +1682,8 @@ msgstr "Producerad"
 msgid "Publication date"
 msgstr "Publikationsdatum"
 
-msgid "Publication date on this site."
-msgstr "Publikationsdatum på denna sida."
+msgid "Publication date on this site"
+msgstr "Publikationsdatum på denna sida"
 
 msgid "Publish"
 msgstr "Publicera"

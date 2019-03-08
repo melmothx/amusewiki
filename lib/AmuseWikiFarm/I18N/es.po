@@ -1799,7 +1799,7 @@ msgstr "Producido"
 msgid "Publication date"
 msgstr "Fecha de publicación"
 
-msgid "Publication date on this site."
+msgid "Publication date on this site"
 msgstr "Fecha de publicación en este sitio"
 
 msgid "Publish"

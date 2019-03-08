@@ -1617,7 +1617,7 @@ msgstr ""
 msgid "Publication date"
 msgstr ""
 
-msgid "Publication date on this site."
+msgid "Publication date on this site"
 msgstr ""
 
 msgid "Publish"

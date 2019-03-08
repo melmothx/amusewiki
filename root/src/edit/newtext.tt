@@ -254,18 +254,17 @@
   </p>
   [% END %]
   </div>
-  <div>
-    <br />
-    <p>
-      <label for="pubdate">[% loc('Publication date on this site.') %]
+  <div class="form-group">
+    <label for="pubdate">[% loc('Publication date on this site') %]</label>
+    <input class="form-control" id="pubdate"
+           name="pubdate" />
+    <p class="help-block">
       [% loc('Leave it blank if you want it published right away.') %]
-      </label><br />
       [% loc('Set a date in the future if you want it deferred.') %]
       [% loc('Time is optional.') %]
       [% loc('Format: yyyy-mm-dd hh:mm, e.g.') %]
-      <code>2014-10-19 08:30</code><br />
-      <input class="form-control" id="pubdate"
-             name="pubdate" />
+      <code>2014-10-19 08:30</code>
+    </p>
   </div>
   <div class="center">
     <p>

@@ -1797,8 +1797,8 @@ msgstr "Изработено"
 msgid "Publication date"
 msgstr "Датум на објавување"
 
-msgid "Publication date on this site."
-msgstr "Датум на објавување на овој сајт."
+msgid "Publication date on this site"
+msgstr "Датум на објавување на овој сајт"
 
 msgid "Publish"
 msgstr "Објави"

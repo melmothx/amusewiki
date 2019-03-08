@@ -1845,8 +1845,8 @@ msgstr "Gemaakt"
 msgid "Publication date"
 msgstr "Publicatiedatum"
 
-msgid "Publication date on this site."
-msgstr "Publicatiedatum op deze site."
+msgid "Publication date on this site"
+msgstr "Publicatiedatum op deze site"
 
 msgid "Publish"
 msgstr "Publiceer"

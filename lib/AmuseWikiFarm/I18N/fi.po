@@ -1671,8 +1671,8 @@ msgstr ""
 msgid "Publication date"
 msgstr "Julkaisuajankohta"
 
-msgid "Publication date on this site."
-msgstr "Julkaisupäivä tällä sivustolla."
+msgid "Publication date on this site"
+msgstr "Julkaisupäivä tällä sivustolla"
 
 msgid "Publish"
 msgstr "Julkaise"

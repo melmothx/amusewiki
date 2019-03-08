@@ -1768,7 +1768,7 @@ msgstr "Stvoreno"
 msgid "Publication date"
 msgstr "Datum objavljivanja"
 
-msgid "Publication date on this site."
+msgid "Publication date on this site"
 msgstr "Datum objavljivanja na ovom sajtu"
 
 msgid "Publish"

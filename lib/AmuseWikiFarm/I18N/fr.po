@@ -1802,8 +1802,8 @@ msgstr "Produit"
 msgid "Publication date"
 msgstr "Date de publication"
 
-msgid "Publication date on this site."
-msgstr "Date de publication sur ce site."
+msgid "Publication date on this site"
+msgstr "Date de publication sur ce site"
 
 msgid "Publish"
 msgstr "Publier"

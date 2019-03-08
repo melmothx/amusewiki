@@ -2046,7 +2046,7 @@ msgid "Publication date"
 msgstr ""
 
 #: root/src/edit/newtext.tt:255
-msgid "Publication date on this site."
+msgid "Publication date on this site"
 msgstr ""
 
 #: root/src/publish/pending.tt:46

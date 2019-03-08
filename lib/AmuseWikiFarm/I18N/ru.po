@@ -1781,8 +1781,8 @@ msgstr "Изготовлено"
 msgid "Publication date"
 msgstr "Дата публикации"
 
-msgid "Publication date on this site."
-msgstr "Дата публикации на этом сайте."
+msgid "Publication date on this site"
+msgstr "Дата публикации на этом сайте"
 
 msgid "Publish"
 msgstr "Опубликовать"

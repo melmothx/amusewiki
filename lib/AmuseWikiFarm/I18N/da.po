@@ -1767,8 +1767,8 @@ msgstr "Produceret"
 msgid "Publication date"
 msgstr "Udgivelsesdato"
 
-msgid "Publication date on this site."
-msgstr "Dato for offentliggørelse på denne side."
+msgid "Publication date on this site"
+msgstr "Dato for offentliggørelse på denne side"
 
 msgid "Publish"
 msgstr "Offentliggør"

@@ -1773,7 +1773,7 @@ msgstr "Krijuar"
 msgid "Publication date"
 msgstr "Data e publikimit"
 
-msgid "Publication date on this site."
+msgid "Publication date on this site"
 msgstr "Data e publikimit në këtë faqe"
 
 msgid "Publish"
