@@ -59,7 +59,7 @@
 
   <div class="form-group">
     <label for="author">[% loc('Author') %]</label>
-    ([% loc('for display') %]):
+    ([% loc('for display') %])
     <input class="form-control amwautocomplete"
            type="text" name="author" id="author"
                maxlength="250"
