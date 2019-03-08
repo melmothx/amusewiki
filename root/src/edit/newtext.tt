@@ -125,11 +125,13 @@
 
   <div class="form-group"><label for="source">[% loc('Source') %]</label>
 
-    ([% loc('For texts from the internet use') %]:
-     [% loc('Retrieved on DATE from URL') %]).
 
     <input class="form-control" id="source" size="50" maxlength="250"
                name="source" value="[% processed_params.source | html %]" />
+    <p class="help-block">
+      [% loc('For texts from the internet use') %]:
+      [% loc('Retrieved on DATE from URL') %].
+    </p>
   </div>
   [% END %]
   <div class="form-group">
