@@ -1280,7 +1280,7 @@ sub as_job {
                                     # 1.05
                                     continuefootnotes => $self->continuefootnotes,
                                     centerchapter => $self->centerchapter,
-                                    centersection => $self->centerchapter,
+                                    centersection => $self->centersection,
 
                                     tex_tolerance        => $self->tex_tolerance,
                                     tex_emergencystretch => $self->tex_emergencystretch . 'pt',
