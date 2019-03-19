@@ -6429,10 +6429,10 @@ DISTRIBUTIONS
       Test::More 0
       Text::Amuse 1.21
       Type::Tiny 1
-  Text-Amuse-Preprocessor-0.60
-    pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.60.tar.gz
+  Text-Amuse-Preprocessor-0.61
+    pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.61.tar.gz
     provides:
-      Text::Amuse::Preprocessor 0.60
+      Text::Amuse::Preprocessor 0.61
       Text::Amuse::Preprocessor::Footnotes undef
       Text::Amuse::Preprocessor::HTML 0.59
       Text::Amuse::Preprocessor::Parser undef
