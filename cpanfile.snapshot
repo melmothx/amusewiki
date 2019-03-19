@@ -406,6 +406,7 @@ DISTRIBUTIONS
       Module::Runtime 0.012
       Moose 1.12
       MooseX::MarkAsMethods 0.13
+      MooseX::NonMoose 0.16
       MooseX::Types 0
       MooseX::Types::LoadableClass 0.009
       Storable 0
@@ -6428,12 +6429,13 @@ DISTRIBUTIONS
       Test::More 0
       Text::Amuse 1.21
       Type::Tiny 1
-  Text-Amuse-Preprocessor-0.59-1
-    pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.59-1.tar.gz
+  Text-Amuse-Preprocessor-0.60
+    pathname: M/ME/MELMOTHX/Text-Amuse-Preprocessor-0.60.tar.gz
     provides:
-      Text::Amuse::Preprocessor 0.59
+      Text::Amuse::Preprocessor 0.60
       Text::Amuse::Preprocessor::Footnotes undef
       Text::Amuse::Preprocessor::HTML 0.59
+      Text::Amuse::Preprocessor::Parser undef
       Text::Amuse::Preprocessor::Typography 0.09
       Text::Amuse::Preprocessor::TypographyFilters undef
     requirements:

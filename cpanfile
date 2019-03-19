@@ -97,7 +97,7 @@ requires 'PDF::API2';
 requires 'Text::Amuse' => '1.27';
 requires 'PDF::Imposition' => '0.25';
 requires 'Text::Amuse::Compile' => '1.27';
-requires 'Text::Amuse::Preprocessor' => '0.59';
+requires 'Text::Amuse::Preprocessor' => '0.60';
 
 # devel things to be removed at the end of the development cycle
 # requires 'Catalyst::Plugin::StackTrace';
