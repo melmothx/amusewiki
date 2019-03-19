@@ -44,7 +44,7 @@ Hello [1] There [1] {1}
 
 [1] Second {1}
 
-{1} Secondary 2 from the footnote # these  are nothing [1] {1} # this is 
+{1} Secondary 2 from the footnote # these  are nothing [1] {1} # this is
 
 MUSE
 
@@ -64,7 +64,7 @@ Hello [1] There [2] {1}
 
 [2] Second {2}
 
-{2} Secondary 2 from the footnote # these  are nothing [1] {1} # this is 
+{2} Secondary 2 from the footnote # these  are nothing [1] {1} # this is
 
 MUSE
 
