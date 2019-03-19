@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 228;
+use Test::More tests => 230;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper::Concise;
@@ -26,6 +26,15 @@ my $schema = AmuseWikiFarm::Schema->connect('amuse');
 ok (-d AmuseWikiFarm::Archive::BookBuilder->filedir, "Found " . AmuseWikiFarm::Archive::BookBuilder->filedir);
 
 $schema->resultset('Site')->find('0blog0')->update({ bb_page_limit => 50 });
+
+
+{
+    my $bb = AmuseWikiFarm::Archive::BookBuilder->new(centerchapter => 1,
+                                                      centersection => 0);
+    is $bb->as_job->{template_options}->{centerchapter}, 1, "centerchapter ok";
+    is $bb->as_job->{template_options}->{centersection}, 0, "centersection ok";
+}
+
 
 
 {
@@ -512,10 +521,7 @@ $bb->site->update({ bb_page_limit => 10 });
         like $pdftext, qr{Pg\s+0008}, "Found page marker";
         like $pdftext, qr{page 4 \#1/4}, "Found signature marker";
     }
-
 }
-
-
 
 sub pdf_content {
     my $pdf = shift;

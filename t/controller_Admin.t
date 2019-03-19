@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More tests => 116;
+use Test::More tests => 117;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use Data::Dumper;
@@ -77,11 +77,12 @@ my $links = <<LINKS;
 http://sandbox.amusewiki.org Sandbox
 http://www.amusewiki.org WWW
 LINKS
-
+my $html_footer = q{<div id="my-site-footer">FOOTER COPYRIGHT NOTICE</div>};
 
 $mech->submit_form(with_fields => {
                                    html_special_page_bottom => $html_injection,
                                    html_regular_page_bottom => $html_regular_injection,
+                                   footer_layout_html => $html_footer,
                                    site_links => $links,
                                   },
                    button => 'edit_site');
@@ -93,6 +94,7 @@ $mech->content_contains($html_injection, "Found HTML");
 $mech->content_lacks($html_regular_injection, "No regular HTML in /special");
 $mech->content_contains('<a href="http://sandbox.amusewiki.org">Sandbox</a>');
 $mech->content_contains('<a href="http://www.amusewiki.org">WWW</a>');
+$mech->content_contains($html_footer);
 $mech->get_ok('/library/second-test');
 $mech->content_contains($html_regular_injection, "Regular HTML in /libary");
 

@@ -101,7 +101,7 @@ $mech->tick(fix_footnotes => 1);
 $mech->tick(fix_nbsp => 1);
 $mech->tick(remove_nbsp => 1);
 
-foreach my $lang (keys %expected) {
+foreach my $lang (sort keys %expected) {
     my $body =<<"EOF";
 #title $title
 #lang $lang
