@@ -66,9 +66,9 @@ foreach my $path ('/feed', 'rss.xml') {
     $mech->content_like( qr/<title>Marco &amp; C. - Ža Third &amp; test/);
     $mech->content_like( qr/Marco &amp;amp; C./);
     $mech->content_like( qr/isPermaLink="true"/);
-    $mech->content_like( qr[library/test-text-1\.epub]);
-    $mech->content_like( qr{library/test-text-2\?v=\d+});
-    $mech->content_like( qr{special/test-special-1\?v=\d+});
+    $mech->content_like( qr[amusewiki\.org/library/test-text-1\.epub]);
+    $mech->content_like( qr{amusewiki\.org/library/test-text-2\?v=\d+});
+    $mech->content_like( qr{amusewiki\.org/special/test-special-1\?v=\d+});
     is $mech->response->header('Access-Control-Allow-Origin'), '*';
     diag $mech->content;
     $mech->content_lacks('tableofcontentline');
