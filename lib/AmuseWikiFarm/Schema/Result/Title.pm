@@ -1404,6 +1404,13 @@ sub autogenerate_teaser {
     $self->update({ teaser => $self->_create_teaser($size) });
 }
 
+sub create_feed_teaser {
+    my $self = shift;
+    # eventually we can configure it. But 5000 chars is more than
+    # enough for a feed.
+    $self->_create_teaser(5000);
+}
+
 sub _create_teaser {
     my ($self, $size) = @_;
     die "Missing size" unless defined $size;
