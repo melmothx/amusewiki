@@ -1836,6 +1836,7 @@ sub compile_and_index_files {
     my $changed = $self->collation_index;
     $logger->("Updated $changed records in " . (time() - $time) . " seconds\n");
     $self->generate_static_indexes($logger);
+    $self->store_rss_feed;
     my $now = DateTime->now;
     $self->update({ last_updated => $now })
 }
