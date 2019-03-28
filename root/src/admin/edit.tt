@@ -616,6 +616,7 @@ kpsewhich mylogo.pdf
       </legend>
       <div id="amw-config-formats" class="collapse">
 
+    <div class="row">
     <div class="col-sm-6">
       <div class="well">
         <p>
@@ -646,6 +647,7 @@ kpsewhich mylogo.pdf
         </div>
       [% END %]
       </div>
+    </div>
     </div>
     [% # pick these options from the bookbuilder %]
     [% SET bb = c.model('BookBuilder') %]
