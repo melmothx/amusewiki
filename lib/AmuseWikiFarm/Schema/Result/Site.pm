@@ -3896,8 +3896,9 @@ sub get_rss_feed {
 sub store_rss_feed {
     my $self = shift;
     my $feed = $self->create_feed;
-    Dlog_info { $_ } $feed;
-    $self->rss_feed_file->spew_utf8($feed);
+    my $file = $self->rss_feed_file;
+    $file->parent->mkpath;
+    $file->spew_utf8($feed);
     return $feed;
 }
 
