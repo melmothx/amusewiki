@@ -5,8 +5,6 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller'; }
 
 use AmuseWikiFarm::Log::Contextual;
-use XML::FeedPP;
-use AmuseWikiFarm::Utils::Amuse qw/clean_html/;
 
 =head1 NAME
 
@@ -29,88 +27,11 @@ RSS 2.0 feed, built using XML::FeedPP
 sub index :Chained('/site') :PathPart('feed') :Args(0) {
     my ( $self, $c ) = @_;
     my $site = $c->stash->{site};
-    my @texts = $site->latest_entries_for_rss_rs;
-
-    my @specials = $site->titles->published_specials;
-
-    my $feed = XML::FeedPP::RSS->new;
-
-    # set up the channel
-    $feed->title($site->sitename);
-    $feed->description($site->siteslogan);
-
-    $feed->link($site->canonical_url);
-    $feed->language($site->locale);
-
-    $feed->xmlns('xmlns:atom' => "http://www.w3.org/2005/Atom");
-
-    # set the link to ourself
-    $feed->set('atom:link@href', $c->uri_for_action($c->action));
-    $feed->set('atom:link@rel', 'self');
-    $feed->set('atom:link@type', "application/rss+xml");
-
-    if (@texts) {
-        $feed->pubDate($texts[0]->pubdate->epoch);
-    }
-
-    foreach my $text (@specials, @texts) {
-        my $link;
-        my $pubdate_epoch = $text->pubdate->epoch;
-        if ($text->f_class eq 'text') {
-            $link = $c->uri_for_action('/library/text', [$text->uri],
-                                       { v => $pubdate_epoch });
-        }
-        else {
-            # to fool the scrapers, set the permalink for specials
-            # adding a version with the timestamp of the file, so we
-            # catch updates
-            $link = $c->uri_for_action('/special/text', [$text->uri],
-                                       { v => $text->f_timestamp_epoch });
-        }
-
-        # here we must force stringification
-        my $item = $feed->add_item("$link");
-        $item->title(clean_html($text->author_title));
-        $item->pubDate($pubdate_epoch);
-        $item->guid(undef, isPermaLink => 1);
-
-        if ($text->f_class eq 'special') {
-            my $body = $text->teaser || $text->html_body;
-            $item->description($body);
-            next;
-        }
-        my @lines;
-        foreach my $method (qw/author title subtitle date notes source/) {
-            my $string = $text->$method;
-            if (length($string)) {
-                push @lines,
-                  '<strong>' . $c->loc(ucfirst($method)) . '</strong>: ' . $string;
-            }
-        }
-        if (my $teaser = $text->teaser) {
-            push @lines, '<div>' . $teaser . '</div>';
-        }
-        $item->description('<div>' . join('<br>', @lines) . '</div>');
-
-        # if we provide epub, add it as attachment, so the poor
-        # bastards with phones can actually read something.
-        if ($site->epub) {
-            my $epub_local_file = $text->filepath_for_ext('epub');
-            if (-f $epub_local_file) {
-                my $epub_url = $c->uri_for_action('/library/text',
-                                                  [ $text->uri . '.epub' ]);
-                log_debug { "EPUB path = $epub_local_file" };
-                $item->set('enclosure@url' => $epub_url);
-                $item->set('enclosure@type' => 'application/epub+zip');
-                $item->set('enclosure@length' => -s $epub_local_file);
-            }
-        }
-    }
-
+    my $feed = $site->get_rss_feed;
     # render and set
     $c->response->content_type('application/rss+xml');
     $c->response->header('Access-Control-Allow-Origin', '*') unless $site->is_private;
-    $c->response->body($feed->to_string);
+    $c->response->body($feed);
 }
 
 =encoding utf8

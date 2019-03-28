@@ -902,6 +902,7 @@ use JSON::MaybeXS ();
 use AmuseWikiFarm::Utils::Paths ();
 use Try::Tiny;
 use Encode ();
+use XML::FeedPP;
 
 =head2 repo_root_rel
 
@@ -3869,6 +3870,108 @@ sub send_mail {
         $tokens->{lh} = $self->localizer;
     }
     $self->mailer->send_mail($mkit => $tokens);
+}
+
+sub rss_feed_file {
+    my $self = shift;
+    return Path::Tiny::path($self->path_for_site_files, 'rss.xml');
+}
+
+sub get_rss_feed {
+    my $self = shift;
+    my $file = $self->rss_feed_file;
+    my $feed;
+    try {
+        $feed = $file->slurp_utf8;
+    } catch {
+        $feed = $self->store_rss_feed;
+    };
+    return $feed || '';
+}
+
+# same logic as the file list for mirroring. If called directly,
+# create the feed and write the file. The writing here is atomical.
+
+sub store_rss_feed {
+    my $self = shift;
+    my $feed = $self->create_feed;
+    Dlog_info { $_ } $feed;
+    $self->rss_feed_file->spew_utf8($feed);
+    return $feed;
+}
+
+sub feed_link {
+    my $self = shift;
+    return $self->canonical_url . '/feed';
+}
+
+sub create_feed {
+    my $self = shift;
+    my @texts = $self->latest_entries_for_rss_rs;
+    my @specials = $self->titles->published_specials;
+    my $feed = XML::FeedPP::RSS->new;
+    my $lh = $self->localizer;
+    # set up the channel
+    $feed->title($self->sitename || $self->canonical_url);
+    $feed->description($self->siteslogan);
+    $feed->link($self->canonical_url);
+    $feed->language($self->locale);
+    $feed->xmlns('xmlns:atom' => "http://www.w3.org/2005/Atom");
+
+    # set the link to ourself
+    $feed->set('atom:link@href', $self->feed_link);
+    $feed->set('atom:link@rel', 'self');
+    $feed->set('atom:link@type', "application/rss+xml");
+
+    if (@texts) {
+        $feed->pubDate($texts[0]->pubdate->epoch);
+    }
+
+    foreach my $text (@specials, @texts) {
+        my $pubdate_epoch = $text->pubdate->epoch;
+
+        # to fool the scrapers, set the permalink for specials
+        # adding a version with the timestamp of the file, so we
+        # catch updates
+        my $ts = $text->is_regular ? $pubdate_epoch : $text->f_timestamp_epoch;
+        my $link = $self->canonical_url . $text->full_uri . "?v=$ts";
+
+        my $item = $feed->add_item($link);
+        $item->title(AmuseWikiFarm::Utils::Amuse::clean_html($text->author_title));
+        $item->pubDate($pubdate_epoch);
+        $item->guid(undef, isPermaLink => 1);
+
+        my @lines;
+        if ($text->is_regular) {
+            foreach my $method (qw/author title subtitle date notes source/) {
+                my $string = $text->$method;
+                if (length($string)) {
+                    push @lines,
+                      '<strong>' . $lh->loc_html(ucfirst($method)) . '</strong>: ' . $string;
+                }
+            }
+        }
+        if (my $teaser = $text->teaser) {
+            push @lines, '<div>' . $teaser . '</div>';
+        }
+        else {
+            push @lines, '<div>' . $text->create_feed_teaser . '</div>';
+        }
+        $item->description('<div>' . join('<br>', @lines) . '</div>');
+        # if we provide epub, add it as attachment, so the poor
+        # bastards with phones can actually read something.
+        if ($self->epub) {
+            my $epub_local_file = $text->filepath_for_ext('epub');
+            if (-f $epub_local_file) {
+                my $epub_url = $self->canonical_url . $text->full_uri . '.epub';
+                log_debug { "EPUB path = $epub_local_file" };
+                $item->set('enclosure@url' => $epub_url);
+                $item->set('enclosure@type' => 'application/epub+zip');
+                $item->set('enclosure@length' => -s $epub_local_file);
+            }
+        }
+    }
+    return $feed->to_string;
 }
 
 after insert => sub {
