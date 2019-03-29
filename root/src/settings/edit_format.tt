@@ -30,6 +30,13 @@
       </div>
     </div>
   </div>
+
+  <div>
+    <h4>[% loc('Working locally?') %]</h4>
+    <pre>[% bb.as_cli %]</pre>
+  </div>
+
+
   [% INCLUDE 'include/bbform.tt' %]
   <div class="form-group">
     <div>

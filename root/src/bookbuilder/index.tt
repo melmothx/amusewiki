@@ -409,3 +409,7 @@ $(document).ready(function(){
     </div>
   </form>
 </div>
+<div>
+  <h3>[% loc('Working locally?') %]</h3>
+  <pre>[% bb.as_cli %]</pre>
+</div>

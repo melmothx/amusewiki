@@ -1766,19 +1766,39 @@ sub as_cli {
             push @cli, "--extra", "$k=$arg", "\\\n";
         }
     }
-    push @cli, "file.muse\n\n";
+    my @files = $self->text_filenames;
+    my $site = $self->site;
+    foreach my $f (@files) {
+        if ($site) {
+            if (my $text = $self->site->titles->bookbuildable_by_uri($f->name)) {
+                push @cli, $text->in_tree_uri . $f->suffix . $f->fragments_specification;
+            }
+        }
+        else {
+            push @cli, $f->name_with_ext_and_fragments;
+        }
+    }
+    push @cli, "file.muse" unless @files;
     if (my %imposer_args = $self->imposer_options) {
-        push @cli, "pdf-impose.pl";
+        push @cli, "\n\n";
+        my @impcli;
         foreach my $k (sort keys %imposer_args) {
             if (my $arg = $imposer_args{$k}) {
                 $k =~ s/_/-/g;
                 if ($arg =~ m/\s/) {
                     $arg = qq{"$arg"};
                 }
-                push @cli, "--" . $k, ($k eq 'cover' ? () : ($arg));
+                push @impcli, "--" . $k, ($k eq 'cover' ? () : ($arg));
             }
         }
-        push @cli, "file.pdf";
+        if (@files) {
+            push @cli, qw/for i in/, (map { $_->name . '.pdf' } @files), ';',  'do';
+            push @cli, "pdf-impose.pl", @impcli;
+            push @cli, '$i;', "done";
+        }
+        else {
+            push @cli, "pdf-impose.pl", @impcli, "file.pdf";
+        }
     }
     return join(" ", @cli);
 }
