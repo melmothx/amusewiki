@@ -535,6 +535,45 @@ CREATE TABLE amw_session (
        PRIMARY KEY (site_id, session_id)
 );
 
+CREATE TABLE tag (
+       tag_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       uri VARCHAR(255) NOT NULL,
+       parent_tag_id INTEGER NULL REFERENCES tag(tag_id)
+       ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+CREATE UNIQUE INDEX unique_tag_site_id_uri ON tag("site_id", "uri");
+
+CREATE TABLE tag_body (
+       tag_id INTEGER NOT NULL REFERENCES tag(tag_id) ON DELETE CASCADE ON UPDATE CASCADE,
+       lang VARCHAR(3) NOT NULL DEFAULT 'en',
+       title_muse TEXT,
+       title_html TEXT,
+       body_muse TEXT,
+       body_html TEXT,
+       PRIMARY KEY(tag_id, lang)
+);
+
+CREATE UNIQUE INDEX unique_tag_id_lang ON tag_body("tag_id", "lang");
+
+CREATE TABLE tag_title (
+        tag_id   INTEGER NOT NULL REFERENCES tag(tag_id)
+                 ON DELETE CASCADE ON UPDATE CASCADE,
+        title_id INTEGER NOT NULL REFERENCES title(id)
+                 ON DELETE CASCADE ON UPDATE CASCADE,
+        PRIMARY KEY (tag_id, title_id)
+);
+
+CREATE TABLE tag_category (
+       tag_id      INTEGER NOT NULL REFERENCES tag(tag_id)
+                   ON DELETE CASCADE ON UPDATE CASCADE,
+       category_id INTEGER NOT NULL REFERENCES category(id)
+                   ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (tag_id, category_id)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -568,4 +607,10 @@ INSERT INTO table_comments (table_name, comment_text)
          ('text_part', 'Text sectioning'),
          ('global_site_files', 'Files which site uses'),
          ('amw_session', 'Session backend'),
-         ('title_stat', 'Usage statistics');
+         ('title_stat', 'Usage statistics'),
+         ('tag', 'Nestable tags'),
+         ('tag_body', 'Tags description'),
+         ('tag_title', 'Linking table from Tag to Title'),
+         ('tag_category', 'Linking table from Tag to Category')
+         ;
+
