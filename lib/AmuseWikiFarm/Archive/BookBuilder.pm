@@ -1806,8 +1806,8 @@ sub as_cli {
 sub compiler_options {
     my $self = shift;
     my $data = $self->as_job;
-    my %compile_opts = $self->site ? ($self->site->compile_options) : ();
-    my $template_opts = $compile_opts{extra} || {};
+    my %site_opts = $self->site ? ($self->site->compile_options) : ();
+    my $template_opts = $site_opts{extra} || {};
     # overwrite the site ones with the user-defined (and validated)
     foreach my $k (keys %{ $data->{template_options} }) {
         $template_opts->{$k} = $data->{template_options}->{$k};
@@ -1828,8 +1828,8 @@ sub compiler_options {
                         );
     # inherited from site
     foreach my $setting (qw/luatex ttdir fontspec/) {
-        if ($compile_opts{$setting}) {
-            $compiler_args{$setting} = $compile_opts{$setting};
+        if ($site_opts{$setting}) {
+            $compiler_args{$setting} = $site_opts{$setting};
         }
     }
     if ($self->unbranded) {
@@ -1838,9 +1838,9 @@ sub compiler_options {
             log_debug { "Deleting $brand ($gone) from extra, unbranded pdf" };
         }
     }
-    Dlog_debug { "Compiler args are: $_" } \%compiler_args;
     # add the format ID if provided;
     $compiler_args{extra}{format_id} = $self->custom_format_id;
+    Dlog_debug { "Compiler args are: $_" } \%compiler_args;
     return %compiler_args;
 }
 
