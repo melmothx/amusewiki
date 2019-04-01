@@ -226,6 +226,36 @@ __PACKAGE__->many_to_many("titles", "tag_titles", "title");
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TJv+dOS58FGiMyuDeHXr+Q
 
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub children {
+    return shift->tags;
+}
+
+sub parent {
+    return shift->parent_tag;
+}
+
+sub is_root {
+    return !shift->parent_tag_id;
+}
+
+sub ancestors {
+    my $self = shift;
+    my @ancestors;
+    my $rec = $self;
+    my $max = 0;
+    # max 10 as deep. Seems even too much
+    while (++$max < 10 and $rec = $rec->parent) {
+        push @ancestors, $rec;
+    }
+    return @ancestors;
+}
+
+sub full_uri {
+    my $self = shift;
+    my @path = ($self->uri, (map { $_->uri } $self->ancestors));
+    return join('/', tags => reverse(@path));
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;
