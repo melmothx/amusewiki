@@ -381,6 +381,21 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 tag_titles
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TagTitle>
+
+=cut
+
+__PACKAGE__->has_many(
+  "tag_titles",
+  "AmuseWikiFarm::Schema::Result::TagTitle",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 text_internal_links
 
 Type: has_many
@@ -476,9 +491,19 @@ Composing rels: L</text_months> -> monthly_archive
 
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
+=head2 tags
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-10-21 09:13:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nBEL9Llh3MSI5tiON6BuqQ
+Type: many_to_many
+
+Composing rels: L</tag_titles> -> tag
+
+=cut
+
+__PACKAGE__->many_to_many("tags", "tag_titles", "tag");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-01 14:43:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ifFe6akM/ow7qN65OX2ZOQ
 
 =head2 translations
 

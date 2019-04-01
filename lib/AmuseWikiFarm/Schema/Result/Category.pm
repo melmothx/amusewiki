@@ -169,6 +169,21 @@ __PACKAGE__->belongs_to(
   { is_deferrable => 0, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
+=head2 tag_categories
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::TagCategory>
+
+=cut
+
+__PACKAGE__->has_many(
+  "tag_categories",
+  "AmuseWikiFarm::Schema::Result::TagCategory",
+  { "foreign.category_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 title_categories
 
 Type: has_many
@@ -184,6 +199,16 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 tags
+
+Type: many_to_many
+
+Composing rels: L</tag_categories> -> tag
+
+=cut
+
+__PACKAGE__->many_to_many("tags", "tag_categories", "tag");
+
 =head2 titles
 
 Type: many_to_many
@@ -195,8 +220,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-09-01 11:11:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/DjhX2PpXXO2wZ6SvSHBlA
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-04-01 14:47:08
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:MlffSU32iD6XW2kBFR4nLg
 
 =head2 published_titles
 
