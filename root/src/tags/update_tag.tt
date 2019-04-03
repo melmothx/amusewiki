@@ -1,0 +1,13 @@
+[% loc('Tag editing') %]
+
+[% FOREACH desc IN edit_tag.prepare_form_tokens %]
+<pre>
+[% desc.lang | html %]
+[% desc.title_html %]
+[% desc.body_htmol %]
+[% desc.title.param_value | html %]
+[% desc.title.param_name | html %]
+[% desc.body.param_value | html %]
+[% desc.body.param_name | html %]
+</pre>
+[% END %]

@@ -46,6 +46,50 @@ sub display :Chained('root') :PathPart('') :Args() {
     }
 }
 
+sub admin :Chained('/site_user_required') :PathPart('tag-editor') :CaptureArgs(0) {
+    my ($self, $c) = @_;
+}
+
+sub list_tags :Chained('admin') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    if (my $uri = $c->request->body_parameters->{uri}) {
+        log_info { $c->user->get('username') . " is creating tags/$uri" };
+        $c->stash->{site}->tags->find_or_create({ uri => $uri });
+        $c->response->redirect($c->uri_for_action('/tags/edit_tag', [$uri]));
+    }
+}
+
+sub edit :Chained('admin') :PathPart('') :CaptureArgs(1) {
+    my ($self, $c, $uri) = @_;
+    if (my $tag = $c->stash->{site}->tags->find_by_uri($uri)) {
+        $c->stash(edit_tag => $tag);
+    }
+    else {
+        $c->detach('/not_found');
+    }
+}
+
+sub delete_tag :Chained('edit') :PathPart('delete') :Args(0) {
+    my ($self, $c) = @_;
+    my $tag = $c->stash->{edit_tag};
+    if ($c->request->body_parameters->{delete}) {
+        log_info { $c->user->get('username') . " is deleting " . $tag->full_uri };
+        $tag->delete;
+    }
+    $c->response->redirect($c->uri_for_action('/tags/list_tags'));
+}
+
+sub update_tag :Chained('edit') :PathPart('update') :Args(0) {
+    my ($self, $c) = @_;
+    my $tag = $c->stash->{edit_tag};
+    my %params = %{ $c->request->body_parameters };
+    if (%params and $params{update}) {
+        Dlog_info { $c->user->get('username') . " is updating " . $tag->full_uri . " with $_" } \%params;
+        $tag->update_from_params(\%params);
+        $c->stash({ update_ok => 1 });
+    }
+}
+
 
 =encoding utf8
 

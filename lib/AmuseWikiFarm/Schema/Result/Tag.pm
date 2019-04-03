@@ -277,6 +277,11 @@ sub update_from_params {
         $body{body_html} = muse_to_object($body{body_muse})->as_html;
         $self->add_to_tag_bodies(\%body);
     }
+    my $parent;
+    if ($params->{parent_tag_id} and $site->tags->find($params->{parent_tag_id})) {
+        $parent = $params->{parent_tag_id};
+    }
+    $self->update({ parent_tag_id => $parent });
     $guard->commit;
 }
 

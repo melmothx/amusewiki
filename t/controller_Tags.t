@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 19;
+use Test::More tests => 30;
 use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
@@ -99,6 +99,14 @@ foreach my $id (qw/first second third/) {
     $multiparam->{body_de} = "> test me";
     $tag->update_from_params($multiparam);
     is_deeply(get_params($tag), $multiparam, "Multilang is fine as well");
+
+    $mech->get('/tag-editor/four/update');
+    ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' });
+    diag $mech->content;
+    $mech->get_ok('/tag-editor/four/update');
+    $mech->get_ok('/tag-editor/four/delete');
+    $mech->get_ok('/tag-editor');
+
 }
 
 sub get_params {
