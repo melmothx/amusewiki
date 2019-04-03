@@ -225,6 +225,10 @@ __PACKAGE__->many_to_many("titles", "tag_titles", "title");
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-04-01 14:52:56
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TJv+dOS58FGiMyuDeHXr+Q
 
+use AmuseWikiFarm::Log::Contextual;
+use Text::Amuse::Functions qw/muse_to_object
+                              muse_format_line
+                             /;
 
 sub children {
     return shift->tags;
@@ -253,7 +257,50 @@ sub ancestors {
 sub full_uri {
     my $self = shift;
     my @path = ($self->uri, (map { $_->uri } $self->ancestors));
-    return join('/', tags => reverse(@path));
+    return join('/', '', tags => reverse(@path));
+}
+
+sub update_from_params {
+    my ($self, $params) = @_;
+    Dlog_debug { "Updating " . $self->full_uri . " with $_" } $params;
+    my $site = $self->site;
+    my @locales = $site->supported_locales;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->tag_bodies->search({ lang => \@locales })->delete;
+    foreach my $lang (@locales) {
+        my %body = (
+                    title_muse => $params->{'title_' . $lang} || '',
+                    body_muse => $params->{'body_' . $lang} || '',
+                    lang => $lang,
+                   );
+        $body{title_html} = muse_format_line(html => $body{title_muse}, $lang);
+        $body{body_html} = muse_to_object($body{body_muse})->as_html;
+        $self->add_to_tag_bodies(\%body);
+    }
+    $guard->commit;
+}
+
+# we do all the languages in a single page, to simplify
+sub prepare_form_tokens {
+    my $self = shift;
+    my @out;
+    foreach my $lang ($self->site->supported_locales) {
+        my $desc = $self->tag_bodies->find({ lang => $lang });
+        push @out, {
+                    lang => $lang,
+                    title => {
+                              param_name => 'title_' . $lang,
+                              param_value => $desc ? $desc->title_muse : '',
+                             },
+                    body => {
+                             param_name => 'body_' . $lang,
+                             param_value => $desc ? $desc->body_muse : '',
+                            },
+                    title_html => $desc ? $desc->title_html : '',
+                    body_html =>  $desc ? $desc->body_html  : '',
+                   };
+    }
+    return \@out;
 }
 
 

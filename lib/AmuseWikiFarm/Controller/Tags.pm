@@ -32,10 +32,10 @@ sub display :Chained('root') :PathPart('') :Args() {
     log_debug { "Displaying " . join("/", @args) };
     if (my $target = $c->stash->{site}->tags->find_by_uri($args[-1])) {
         my $full_uri = $target->full_uri;
-        my $got = join('/', tags => @args);
+        my $got = join('/', '', tags => @args);
         log_debug { "$full_uri and $got" };
         if ($full_uri ne $got) {
-            $c->response->redirect($c->uri_for('/' . $full_uri), 301);
+            $c->response->redirect($c->uri_for($full_uri), 301);
             $c->detach();
             return;
         }

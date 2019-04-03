@@ -8,6 +8,7 @@ use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
 use Test::More tests => 19;
+use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
@@ -37,8 +38,8 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
 
-is $site->tags->find({ uri => 'six' })->full_uri, 'tags/one/two/three/four/five/six';
-is $site->tags->find({ uri => 'one' })->full_uri, 'tags/one';
+is $site->tags->find({ uri => 'six' })->full_uri, '/tags/one/two/three/four/five/six';
+is $site->tags->find({ uri => 'one' })->full_uri, '/tags/one';
 
 foreach my $tag ($site->tags) {
     my @ancestors = $tag->ancestors;
@@ -53,3 +54,60 @@ foreach my $tag ($site->tags) {
     $mech->get_ok($tag->full_uri);
 }
 
+foreach my $id (qw/first second third/) {
+    foreach my $type (qw/text special/) {
+        my ($rev) = $site->create_new_text({
+                                            title => "Title $type " . ucfirst($id),
+                                            uri => $id,
+                                            lang => 'en',
+                                            textbody => '<p>hello there</p>',
+                                            author => "Author $id",
+                                            cat => "cat-$id",
+                                           }, $type);
+        $rev->commit_version;
+        $rev->publish_text;
+    }
+}
+
+# let's attach some texts
+
+{
+    my $tag = $site->tags->find_by_uri('four');
+    ok $tag;
+    my $title = $site->titles->text_by_uri('first');
+    my $special = $site->titles->special_by_uri('second');
+    $tag->add_to_titles($title);
+    $tag->add_to_titles($special);
+    $tag->add_to_categories($site->categories->by_type_and_uri(qw/topic cat-third/));
+    $tag->add_to_categories($site->categories->by_type_and_uri(qw/author author-second/));
+    is $tag->titles->count, 2;
+    is $tag->categories->count, 2;
+    diag Dumper($tag->prepare_form_tokens);
+    my $update = {
+                  title_en => "Four",
+                  body_en => "this\n\nwas a\n - list\n - list\n\n",
+                 };
+    $tag->update_from_params($update);
+    diag Dumper($tag->prepare_form_tokens);
+    my $params = get_params($tag);
+    is_deeply($params, $update, "Update is fine and idempotens");
+    $site->update({ multilanguage => 'en es de' });
+    $tag = $tag->get_from_storage;
+    my $multiparam = get_params($tag);
+    is scalar(keys %$multiparam), 6;
+    ok exists($multiparam->{body_de});
+    $multiparam->{body_de} = "> test me";
+    $tag->update_from_params($multiparam);
+    is_deeply(get_params($tag), $multiparam, "Multilang is fine as well");
+}
+
+sub get_params {
+    my $tag = shift;
+    my %params;
+    foreach my $token (@{$tag->prepare_form_tokens}) {
+        foreach my $k (qw/title body/) {
+            $params{$token->{$k}->{param_name}} = $token->{$k}->{param_value};
+        }
+    }
+    return \%params;
+}
