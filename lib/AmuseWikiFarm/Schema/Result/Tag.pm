@@ -308,6 +308,58 @@ sub prepare_form_tokens {
     return \@out;
 }
 
+sub as_html {
+    my ($self, $lang, $depth) = @_;
+    $depth ||= 0;
+    $lang ||= 'en';
+    # this is not to be pretty.
+    # First, retrieve the body.
+    my $root_indent = '  ' x $depth;
+    my $indent = $root_indent . '  ';
+    my $html = "\n" . $root_indent . "<div>\n";
+    if ($depth == 0) {
+        my $desc = $self->tag_bodies->not_empty->find_by_lang($lang) ||
+          $self->tag_bodies->not_empty->find_by_lang('en');
+        my $title = $desc ? $desc->title_html : '';
+        my $body = $desc ? $desc->body_html : '';
+        $html .= $indent . sprintf('<div><strong>%s</strong></div><div>%s</div>',
+                                  $title, $body) . "\n";
+    }
+    my @list;
+    my $titles = $self->titles->published_all;
+    while (my $title = $titles->next) {
+        push @list, [ $title->author_title, $title->full_uri ];
+    }
+    my $cats = $self->categories->active_only->sorted;
+    while (my $cat = $cats->next) {
+        push @list, [ $cat->name, $cat->full_uri ];
+    }
+    if (@list) {
+        $html .= join("",
+                      $indent . "<ul>\n",
+                      (map { $indent . sprintf(' <li><a href="%s">%s</li>', $_->[1], $_->[0]) . "\n" } @list),
+                      $indent . "</ul>\n");
+    }
+
+    $depth++;
+    if ($depth > 10) {
+        log_error { "Recursion too deep! on $html" };
+        return $html;
+    }
+    my $children = $self->children;
+    my @children_html;
+    while (my $child = $children->next) {
+        push @children_html, $child->as_html($lang, $depth);
+    }
+    if (@children_html) {
+        $html .= join("",
+                      $indent . "<ul>\n",
+                      (map { $indent . '<li>' . $_ . "\n" . $indent . "</li>\n" } @children_html),
+                      $indent . "</ul>\n");
+    }
+    $html .= $root_indent . "</div>";
+    return $html;
+}
 
 __PACKAGE__->meta->make_immutable;
 1;

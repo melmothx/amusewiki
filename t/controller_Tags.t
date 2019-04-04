@@ -72,6 +72,10 @@ foreach my $id (qw/first second third/) {
 # let's attach some texts
 
 {
+    my $tag = $site->tags->find_by_uri('one');
+    diag $tag->as_html;
+}
+{
     my $tag = $site->tags->find_by_uri('four');
     ok $tag;
     my $title = $site->titles->text_by_uri('first');
@@ -91,6 +95,9 @@ foreach my $id (qw/first second third/) {
     diag Dumper($tag->prepare_form_tokens);
     my $params = get_params($tag);
     is_deeply($params, $update, "Update is fine and idempotens");
+
+    diag $tag->as_html('en');
+
     $site->update({ multilanguage => 'en es de' });
     $tag = $tag->get_from_storage;
     my $multiparam = get_params($tag);
