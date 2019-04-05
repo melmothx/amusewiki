@@ -404,3 +404,8 @@ legend.amw-facet-title {
 .node-overview-list ul li:last-child:after {
     display: none;
 }
+
+.node-links ul {
+    list-style-type: none;
+    padding-left: 0px;
+}

@@ -366,6 +366,36 @@ sub serialize {
     return \%out;
 }
 
+sub linked_pages {
+    my ($self, %options) = @_;
+    my $titles = $self->titles;
+    my $cats = $self->categories;
+    unless ($options{logged_in}) {
+        # this sort them as well
+        $titles = $titles->published_all;
+        $cats = $cats->active_only;
+    }
+    my @out;
+    push @out, map { +{ label => $_->name,         uri => $_->full_uri } } $cats->all;
+    push @out, map { +{ label => $_->author_title, uri => $_->full_uri } } $titles->all;
+    Dlog_debug { "linked pages: $_" } \@out;
+    return @out;
+}
+
+sub children_pages {
+    my ($self, %options) = @_;
+    my $locale = $options{locale} || 'en';
+    my @out;
+    foreach my $child ($self->children) {
+        push @out, {
+                    label => $child->name($locale),
+                    uri => $child->full_uri,
+                   };
+    }
+    Dlog_debug { "children nodes are $_" } \@out;
+    return @out;
+}
+
 sub linked_pages_as_html {
     my ($self, %options) = @_;
     my $indent = $options{indent} || '';
