@@ -15,6 +15,7 @@ Catalyst Controller.
 =cut
 
 use AmuseWikiFarm::Log::Contextual;
+use HTML::Entities qw/encode_entities/;
 
 sub root :Chained('/site') :PathPart('nodes') :CaptureArgs(0) {
     my ($self, $c) = @_;
@@ -48,21 +49,31 @@ sub display :Chained('root') :PathPart('') :Args() {
 
 sub admin :Chained('/site_user_required') :PathPart('node-editor') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    $c->stash(breadcrumbs => [{
+                               uri => $c->uri_for_action('/nodes/list_nodes'),
+                               label => $c->loc('Nodes'),
+                              }]);
 }
 
 sub list_nodes :Chained('admin') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
+    my $site = $c->stash->{site};
     if (my $uri = $c->request->body_parameters->{uri}) {
         log_info { $c->user->get('username') . " is creating nodes/$uri" };
-        $c->stash->{site}->nodes->find_or_create({ uri => $uri });
-        $c->response->redirect($c->uri_for_action('/nodes/edit_node', [$uri]));
+        $site->nodes->find_or_create({ uri => $uri });
+        $c->response->redirect($c->uri_for_action('/nodes/update_node', [$uri]));
     }
+    $c->stash(nodes => [ $site->nodes->root_nodes->all ]);
 }
 
 sub edit :Chained('admin') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     if (my $node = $c->stash->{site}->nodes->find_by_uri($uri)) {
         $c->stash(edit_node => $node);
+        push @{$c->stash->{breadcrumbs}}, {
+                                           uri => $c->uri_for_action('/nodes/update_node', [$node->uri]),
+                                           label => encode_entities($node->uri),
+                                          };
     }
     else {
         $c->detach('/not_found');
@@ -79,7 +90,7 @@ sub delete_node :Chained('edit') :PathPart('delete') :Args(0) {
     $c->response->redirect($c->uri_for_action('/nodes/list_nodes'));
 }
 
-sub update_node :Chained('edit') :PathPart('update') :Args(0) {
+sub update_node :Chained('edit') :PathPart('edit') :Args(0) {
     my ($self, $c) = @_;
     my $node = $c->stash->{edit_node};
     my %params = %{ $c->request->body_parameters };
@@ -88,6 +99,7 @@ sub update_node :Chained('edit') :PathPart('update') :Args(0) {
         $node->update_from_params(\%params);
         $c->stash({ update_ok => 1 });
     }
+    $c->stash(all_nodes => [ $c->stash->{site}->nodes->all ]);
 }
 
 
