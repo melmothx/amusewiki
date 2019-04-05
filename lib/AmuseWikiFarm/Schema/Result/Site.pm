@@ -706,6 +706,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 nodes
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Node>
+
+=cut
+
+__PACKAGE__->has_many(
+  "nodes",
+  "AmuseWikiFarm::Schema::Result::Node",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 redirections
 
 Type: has_many
@@ -852,8 +867,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-02-03 20:01:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:emUAqdjyD58S+6sOj2+GJg
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+alNkWZI/N7Iz8XTfZ+mNg
 
 =head2 other_sites
 
