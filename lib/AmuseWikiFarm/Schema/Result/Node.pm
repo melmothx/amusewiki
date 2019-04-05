@@ -278,11 +278,10 @@ sub update_from_params {
         $body{body_html} = muse_to_object($body{body_muse})->as_html;
         $self->add_to_node_bodies(\%body);
     }
-    my $parent;
-    if ($params->{parent_node_id} and $site->nodes->find($params->{parent_node_id})) {
-        $parent = $params->{parent_node_id};
+    if (my $parent = $site->nodes->find_by_uri($params->{parent_node_uri})) {
+        $self->parent_node($parent);
     }
-    $self->update({ parent_node_id => $parent });
+    $self->update;
     $guard->commit;
 }
 
@@ -338,17 +337,11 @@ sub as_html {
     $lang ||= 'en';
     # this is not to be pretty.
     # First, retrieve the body.
-    log_debug { "Descending into " . $self->uri };
+    log_debug { "Descending into $lang " . $self->uri };
     my $root_indent = '  ' x $depth;
     my $indent = $root_indent . '  ';
     my $html = "\n" . $root_indent . "<div>\n";
-    my $desc = $self->node_bodies->not_empty->find_by_lang($lang) ||
-      $self->node_bodies->not_empty->find_by_lang('en');
-    my $title = encode_entities($self->uri);
-    if ($desc && $desc->title_html) {
-        $title = $desc->title_html;
-    }
-    $html .= $indent . sprintf('<div><strong>%s</strong></div>', $title) . "\n";
+    $html .= $indent . sprintf('<div><strong>%s</strong></div>', $self->name($lang)) . "\n";
     $html .= $self->linked_pages_as_html(indent => $indent);
     $depth++;
     if ($depth > 10) {
@@ -368,6 +361,25 @@ sub as_html {
     }
     $html .= $root_indent . "</div>";
     return $html;
+}
+
+sub name {
+    my ($self, $lang) = @_;
+    if (my $desc = $self->description($lang)) {
+        return $desc->title_html;
+    }
+    else {
+        # fallback
+        return encode_entities($self->uri);
+    }
+}
+
+sub description {
+    my ($self, $lang) = @_;
+    $lang ||= 'en';
+    my $desc = $self->node_bodies->not_empty->find_by_lang($lang) ||
+      $self->node_bodies->not_empty->find_by_lang('en');
+    return $desc;
 }
 
 __PACKAGE__->meta->make_immutable;

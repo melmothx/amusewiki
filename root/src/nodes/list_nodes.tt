@@ -1,1 +1,41 @@
-[% loc('Node creation') %]
+[%# -*- mode:web -*- %]
+
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Nodes') %]</h1>
+  </div>
+</div>
+
+<div class="row">
+  [% FOREACH node IN nodes %]
+    <div class="col-md-6">
+      [% node.as_html(current_locale_code) %]
+    </div>
+  [% END %]
+</div>
+
+<div class="row">
+  <div class="center">
+    <h2>[% loc('Create') %]</h2>
+  </div>
+  <div class="col-xs-12">
+    <form method="POST" id="create-node-form" class="form-inline">
+      <div class="form-group">
+        <label for="create_node">
+          [% loc('URI') %]
+          ([% loc('only lowercase ASCII and hyphens') %])
+        </label>
+        <input type="text" name="uri" class="form-control"
+               id="create_node"
+               pattern="[a-z0-9][a-z0-9-]*[a-z0-9]" required/>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-default">
+          [% loc('Create') %]
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
