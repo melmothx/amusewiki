@@ -261,6 +261,16 @@ sub full_uri {
     return join('/', '', node => reverse(@path));
 }
 
+sub full_edit_uri {
+    my $self = shift;
+    return join('/', '', 'node-editor', $self->uri, 'edit');
+}
+
+sub full_delete_uri {
+    my $self = shift;
+    return join('/', '', 'node-editor', $self->uri, 'delete');
+}
+
 
 
 sub update_from_params {
@@ -334,16 +344,30 @@ sub linked_pages_as_html {
 }
 
 sub as_html {
-    my ($self, $lang, $depth) = @_;
+    my ($self, $lang, $depth, %options) = @_;
     $depth ||= 0;
     $lang ||= 'en';
     # this is not to be pretty.
     # First, retrieve the body.
-    log_debug { "Descending into $lang " . $self->uri };
+    Dlog_debug { "Descending into $lang $depth " . $self->uri . " $_" } \%options;
     my $root_indent = '  ' x $depth;
     my $indent = $root_indent . '  ';
     my $html = "\n" . $root_indent . "<div>\n";
-    $html .= $indent . sprintf('<div><strong>%s</strong></div>', $self->name($lang)) . "\n";
+    $html .= $indent . '<div>';
+    $html .= sprintf('<strong><a href="%s">%s</a></strong>',
+                     $self->full_uri,
+                     $self->name($lang));
+    if ($options{show_edit}) {
+        $html .= sprintf('&nbsp;<a href="%s" title="%s"><i class="fa fa-edit"></i></a>',
+                         $self->full_edit_uri,
+                         encode_entities($options{show_edit}));
+    }
+    if ($options{show_delete}) {
+        $html .= sprintf('&nbsp;<a href="%s" title="%s"><i class="fa fa-trash"></i></a>',
+                         $self->full_delete_uri,
+                         encode_entities($options{show_delete}));
+    }
+    $html .= "</div>\n";
     $html .= $self->linked_pages_as_html(indent => $indent);
     $depth++;
     if ($depth > 10) {
@@ -353,7 +377,7 @@ sub as_html {
     my $children = $self->children;
     my @children_html;
     while (my $child = $children->next) {
-        push @children_html, $child->as_html($lang, $depth);
+        push @children_html, $child->as_html($lang, $depth, %options);
     }
     if (@children_html) {
         $html .= join("",
