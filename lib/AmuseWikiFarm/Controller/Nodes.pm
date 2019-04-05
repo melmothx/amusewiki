@@ -17,7 +17,7 @@ Catalyst Controller.
 use AmuseWikiFarm::Log::Contextual;
 use HTML::Entities qw/encode_entities/;
 
-sub root :Chained('/site') :PathPart('nodes') :CaptureArgs(0) {
+sub root :Chained('/site') :PathPart('node') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
 
@@ -33,7 +33,7 @@ sub display :Chained('root') :PathPart('') :Args() {
     log_debug { "Displaying " . join("/", @args) };
     if (my $target = $c->stash->{site}->nodes->find_by_uri($args[-1])) {
         my $full_uri = $target->full_uri;
-        my $got = join('/', '', nodes => @args);
+        my $got = join('/', '', node => @args);
         log_debug { "$full_uri and $got" };
         if ($full_uri ne $got) {
             $c->response->redirect($c->uri_for($full_uri), 301);
