@@ -60,8 +60,15 @@ sub list_nodes :Chained('admin') :PathPart('') :Args(0) {
     my $site = $c->stash->{site};
     if (my $uri = $c->request->body_parameters->{uri}) {
         log_info { $c->user->get('username') . " is creating nodes/$uri" };
-        $site->nodes->find_or_create({ uri => $uri });
-        $c->response->redirect($c->uri_for_action('/nodes/update_node', [$uri]));
+        if ($uri =~ m/([a-z0-9][a-z0-9-]*[a-z0-9])/) {
+            $uri = $1;
+            $uri =~ s/--+/-/g;
+            $site->nodes->find_or_create({ uri => $uri });
+            $c->response->redirect($c->uri_for_action('/nodes/update_node', [$uri]));
+        }
+        else {
+            log_error { "Failed attempt to create " . $site->id . "/node/$uri" };
+        }
     }
     $c->stash(nodes => [ $site->nodes->root_nodes->all ]);
 }
