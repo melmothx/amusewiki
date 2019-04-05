@@ -54,6 +54,12 @@ sub published_or_deferred_all  {
     return shift->sorted_by_title->status_is_published_or_deferred;
 }
 
+sub by_type {
+    my ($self, $type) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.f_class" => $type });
+}
+
 sub texts_only {
     my $self = shift;
     my $me = $self->current_source_alias;
@@ -563,6 +569,25 @@ sub list_display_authors {
                })->all;
     # authors are in HTML, as it's a display only thing.
     return [ map { HTML::Entities::decode_entities($_->{author}) } @all ]
+}
+
+sub by_full_uri {
+    my ($self, $url) = @_;
+    my @elements = grep { length($_) } split(/\//, $url);
+    Dlog_debug { "Parsing $_" } \@elements;
+    return if @elements < 2;
+    my $uri = $elements[-1];
+    my $type = $elements[-2];
+    my %types = (
+                 library => 'text',
+                 special => 'special',
+                );
+    if ($type && $uri && $types{$type}) {
+        return $self->by_type($types{$type})->by_uri($uri)->single;
+    }
+    else {
+        return;
+    }
 }
 
 1;

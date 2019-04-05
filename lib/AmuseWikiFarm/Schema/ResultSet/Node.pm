@@ -18,5 +18,18 @@ sub root_nodes {
     return $self->search({ "$me.parent_node_id" => undef });
 }
 
+sub update_or_create_from_params {
+    my ($self, $params) = @_;
+    if (my $uri = $params->{uri}) {
+        if ($uri =~ m/([a-z0-9][a-z0-9-]*[a-z0-9])/) {
+            $uri = $1;
+            $uri =~ s/--+/-/g;
+            my $node = $self->find_or_create({ uri => $uri });
+            $node->discard_changes;
+            $node->update_from_params($params);
+            return $node;
+        }
+    }
+}
 
 1;

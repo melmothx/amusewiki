@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 30;
+use Test::More tests => 38;
 use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
@@ -92,7 +92,7 @@ foreach my $id (qw/first second third/) {
                   body_en => "this\n\nwas a\n - list\n - list\n\n",
                  };
     $node->update_from_params($update);
-    diag Dumper($node->prepare_form_tokens);
+    diag Dumper($node->serialize);
     my $params = get_params($node);
     is_deeply($params, $update, "Update is fine and idempotens");
 
@@ -109,8 +109,47 @@ foreach my $id (qw/first second third/) {
     $mech->get('/node-editor/four/edit');
     ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' });
     $mech->get_ok('/node-editor/four/edit');
+
+    {
+        my $existing = $node->serialize;
+        $node->update_from_params({ %$existing });
+        is_deeply($node->serialize, $existing, "serialization is idempotens")
+          or die Dumper($node->serialize, $existing);
+    }
+
+
     $mech->get_ok('/node-editor/four/delete');
+    ok !$site->nodes->find_by_uri('four'), "Tag deleted visiting the delete link. This is a TODO";
     $mech->get_ok('/node-editor');
+}
+
+{
+    $site->update({ multilanguage => 'en it' });
+    my %params = (
+                  uri => 'pinco',
+                  parent_node_uri => 'pallino',
+                  attached_uris => "/library/first /special/third",
+                  title_en => "*pinco*",
+                  body_en => "another *try*",
+                  title_it => "*pinco it*",
+                  body_it => "another *try* it",
+                 );
+    my $node = $site->nodes->update_or_create_from_params({ %params });
+    is $node->name, "<em>pinco</em>";
+    is $node->titles->count, 2, "Found titles";
+    is $node->categories->count, 0, "Found 0 cats";
+    my %copy = %params;
+    $copy{attached_uris} =~ s/\s+/\n/g;
+    # pallino doesn't exist yet, so will return undef
+    $copy{parent_node_uri} = undef;
+    is_deeply($node->serialize, \%copy);
+    is $node->name('it'), "<em>pinco it</em>";
+
+    $site->nodes->update_or_create_from_params({ uri => 'pallino' });
+    # stuff it again
+    $params{attached_uris} =~ s/\s+/\n/g;
+    $node = $site->nodes->update_or_create_from_params({ %params });
+    is_deeply($node->serialize, \%params);
 }
 
 

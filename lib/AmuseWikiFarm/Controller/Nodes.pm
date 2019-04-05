@@ -63,13 +63,8 @@ sub list_nodes :Chained('admin') :PathPart('') :Args(0) {
     my %params = %{$c->request->body_parameters};
     if (my $uri = $params{uri}) {
         log_info { $c->user->get('username') . " is creating nodes/$uri" };
-        if ($uri =~ m/([a-z0-9][a-z0-9-]*[a-z0-9])/) {
-            $uri = $1;
-            $uri =~ s/--+/-/g;
-            my $node = $site->nodes->find_or_create({ uri => $uri });
-            $node->discard_changes;
-            $node->update_from_params(\%params);
-            $c->response->redirect($c->uri_for_action('/nodes/update_node', [$uri]));
+        if (my $node = $site->nodes->update_or_create_from_params(\%params)) {
+            $c->response->redirect($c->uri_for_action('/nodes/update_node', [$node->uri]));
         }
         else {
             log_error { "Failed attempt to create " . $site->id . "/node/$uri" };
