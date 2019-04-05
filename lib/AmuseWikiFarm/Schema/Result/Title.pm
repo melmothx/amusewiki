@@ -351,6 +351,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 node_titles
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeTitle>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_titles",
+  "AmuseWikiFarm::Schema::Result::NodeTitle",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 revisions
 
 Type: has_many
@@ -476,9 +491,19 @@ Composing rels: L</text_months> -> monthly_archive
 
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
+=head2 nodes
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-10-21 09:13:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nBEL9Llh3MSI5tiON6BuqQ
+Type: many_to_many
+
+Composing rels: L</node_titles> -> node
+
+=cut
+
+__PACKAGE__->many_to_many("nodes", "node_titles", "node");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Y7K2O+LQ6E4CGlSx5UkN7g
 
 =head2 translations
 
