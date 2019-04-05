@@ -279,8 +279,12 @@ sub update_from_params {
     my $site = $self->site;
     my @locales = $site->supported_locales;
     my $guard = $self->result_source->schema->txn_scope_guard;
-    $self->node_bodies->search({ lang => \@locales })->delete;
+  LANG:
     foreach my $lang (@locales) {
+        my $title = $params->{'title_' . $lang};
+        my $body = $params->{'body_' . $lang};
+        # be sure it's coming from the form
+        next LANG unless defined($title) && defined($body);
         my %body = (
                     title_muse => $params->{'title_' . $lang} || '',
                     body_muse => $params->{'body_' . $lang} || '',
@@ -288,12 +292,34 @@ sub update_from_params {
                    );
         $body{title_html} = muse_format_line(html => $body{title_muse}, $lang);
         $body{body_html} = muse_to_object($body{body_muse})->as_html;
-        $self->add_to_node_bodies(\%body);
+        $self->node_bodies->update_or_create(\%body);
     }
     if (my $parent = $site->nodes->find_by_uri($params->{parent_node_uri})) {
         $self->parent_node($parent);
     }
     $self->update;
+    if ($params->{attached_uris}) {
+        my @list = ref($params->{attached_uris})
+          ? (@{$params->{attached_uris}})
+          : (split(/\s+/, $params->{attached_uris}));
+        my (@titles, @cats);
+        my $titles_rs = $site->titles;
+        my $cats_rs = $site->categories;
+      STRING:
+        foreach my $str (@list) {
+            if (my $title = $titles_rs->by_full_uri($str)) {
+                push @titles, $title;
+            }
+            elsif (my $cat = $cats_rs->by_full_uri($str)) {
+                push @cats, $cat;
+            }
+            else {
+                Dlog_info { "Ignored $str while updating from params $_"} $params;
+            }
+        }
+        $self->set_titles(\@titles);
+        $self->set_categories(\@cats);
+    }
     $guard->commit;
 }
 
@@ -320,22 +346,44 @@ sub prepare_form_tokens {
     return \@out;
 }
 
+sub serialize {
+    my $self = shift;
+    my $parent = $self->parent;
+    my %out = (
+               uri => $self->uri,
+               parent_node_uri => $parent ? $parent->uri : undef,
+              );
+    foreach my $desc ($self->node_bodies->all) {
+        my $lang = $desc->lang;
+        $out{'title_' . $lang} = $desc->title_muse;
+        $out{'body_'  . $lang} = $desc->body_muse;
+    }
+    my @attached;
+    foreach my $el ($self->titles->all, $self->categories->all) {
+        push @attached, $el->full_uri;
+    }
+    $out{attached_uris} = join("\n", sort @attached);
+    return \%out;
+}
+
 sub linked_pages_as_html {
     my ($self, %options) = @_;
     my $indent = $options{indent} || '';
     my @list;
-    my $titles = $self->titles->published_all;
+    my $titles = $self->titles;
     while (my $title = $titles->next) {
         push @list, [ $title->author_title, $title->full_uri ];
     }
-    my $cats = $self->categories->active_only->sorted;
+    my $cats = $self->categories;
     while (my $cat = $cats->next) {
         push @list, [ $cat->name, $cat->full_uri ];
     }
     if (@list) {
         return join("",
                     $indent . "<ul>\n",
-                    (map { $indent . sprintf(' <li><a href="%s">%s</a></li>', $_->[1], $_->[0]) . "\n" } @list),
+                    (map { $indent . sprintf(' <li><a href="%s">%s</a></li>', $_->[1], $_->[0]) . "\n" }
+                     sort { $a->[1] cmp $b->[1] }
+                     @list),
                     $indent . "</ul>\n");
     }
     else {
@@ -349,7 +397,7 @@ sub as_html {
     $lang ||= 'en';
     # this is not to be pretty.
     # First, retrieve the body.
-    Dlog_debug { "Descending into $lang $depth " . $self->uri . " $_" } \%options;
+    #Dlog_debug { "Descending into $lang $depth " . $self->uri . " $_" } \%options;
     my $root_indent = '  ' x $depth;
     my $indent = $root_indent . '  ';
     my $html = "\n" . $root_indent . "<div>\n";

@@ -11,6 +11,7 @@
 <div class="row">
   <div class="col-xs-12">
     <form method="POST" action="" class="form-horizontal">
+      <input type="hidden" name="uri" value="[% edit_node.uri | html %]" />
       <div class="form-group">
         <div class="col-xs-12">
           <label for="parent_node_id">
@@ -72,6 +73,20 @@
             </fieldset>
           </div>
         [% END %]
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label for="attached_uris">
+            [% loc('List of URLs to attach to this node, one per line.') %]
+            [% loc('They can be texts, regular, authors or topics.') %]
+          </label>
+        </div>
+        <div class="col-sm-12">
+          <textarea name="attached_uris"
+                    id="attached_uris"
+                    rows="10"
+                    class="form-control">[% edit_node.serialize.attached_uris | html %]</textarea>
+        </div>
       </div>
       <div class="row">
         <div class="form-group">
