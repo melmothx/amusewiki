@@ -258,8 +258,10 @@ sub ancestors {
 sub full_uri {
     my $self = shift;
     my @path = ($self->uri, (map { $_->uri } $self->ancestors));
-    return join('/', '', nodes => reverse(@path));
+    return join('/', '', node => reverse(@path));
 }
+
+
 
 sub update_from_params {
     my ($self, $params) = @_;
