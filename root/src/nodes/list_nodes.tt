@@ -11,7 +11,7 @@
 <div class="row">
   [% FOREACH node IN nodes %]
     <div class="col-md-6">
-      [% node.as_html(current_locale_code) %]
+      [% node.as_html(current_locale_code, 0, 'show_edit', loc('Edit'), 'show_delete', loc('Delete')) %]
     </div>
   [% END %]
 </div>

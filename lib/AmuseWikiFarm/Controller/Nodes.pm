@@ -90,10 +90,10 @@ sub edit :Chained('admin') :PathPart('') :CaptureArgs(1) {
 sub delete_node :Chained('edit') :PathPart('delete') :Args(0) {
     my ($self, $c) = @_;
     my $node = $c->stash->{edit_node};
-    if ($c->request->body_parameters->{delete}) {
-        log_info { $c->user->get('username') . " is deleting " . $node->full_uri };
-        $node->delete;
-    }
+    # ok, I know, just visiting an url shouldn't trigger a deletion.
+    # This is TODO when the code has stabilized.
+    log_info { $c->user->get('username') . " is deleting " . $node->full_uri };
+    $node->delete;
     $c->response->redirect($c->uri_for_action('/nodes/list_nodes'));
 }
 
