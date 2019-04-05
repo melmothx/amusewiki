@@ -431,6 +431,12 @@
                   </a>
                 </li>
                 <li>
+                  <a href="[% c.uri_for_action('/nodes/list_nodes') %]">
+                    <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
+                    [% loc('Nodes') %]
+                  </a>
+                </li>
+                <li>
                   <a href="[% c.uri_for_action('/attachments/list') %]">
                     <span class="fa fa-file-image-o fa-fw" aria-hidden="true"></span>
                     [% loc('Attachments') %]
