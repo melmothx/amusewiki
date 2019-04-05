@@ -358,12 +358,12 @@ sub as_html {
                      $self->full_uri,
                      $self->name($lang));
     if ($options{show_edit}) {
-        $html .= sprintf('&nbsp;<a href="%s" title="%s"><i class="fa fa-edit"></i></a>',
+        $html .= sprintf('&nbsp;<a class="edit-node" href="%s" title="%s"><i class="fa fa-edit"></i></a>',
                          $self->full_edit_uri,
                          encode_entities($options{show_edit}));
     }
     if ($options{show_delete}) {
-        $html .= sprintf('&nbsp;<a href="%s" title="%s"><i class="fa fa-trash"></i></a>',
+        $html .= sprintf('&nbsp;<a class="delete-node" href="%s" title="%s"><i class="fa fa-trash"></i></a>',
                          $self->full_delete_uri,
                          encode_entities($options{show_delete}));
     }

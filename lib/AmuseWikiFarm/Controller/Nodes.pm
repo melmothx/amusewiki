@@ -49,21 +49,26 @@ sub display :Chained('root') :PathPart('') :Args() {
 
 sub admin :Chained('/site_user_required') :PathPart('node-editor') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    my $site = $c->stash->{site};
     $c->stash(breadcrumbs => [{
                                uri => $c->uri_for_action('/nodes/list_nodes'),
                                label => $c->loc('Nodes'),
                               }]);
+    $c->stash(all_nodes => [ $site->nodes->all ]);
 }
 
 sub list_nodes :Chained('admin') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
-    if (my $uri = $c->request->body_parameters->{uri}) {
+    my %params = %{$c->request->body_parameters};
+    if (my $uri = $params{uri}) {
         log_info { $c->user->get('username') . " is creating nodes/$uri" };
         if ($uri =~ m/([a-z0-9][a-z0-9-]*[a-z0-9])/) {
             $uri = $1;
             $uri =~ s/--+/-/g;
-            $site->nodes->find_or_create({ uri => $uri });
+            my $node = $site->nodes->find_or_create({ uri => $uri });
+            $node->discard_changes;
+            $node->update_from_params(\%params);
             $c->response->redirect($c->uri_for_action('/nodes/update_node', [$uri]));
         }
         else {
@@ -106,7 +111,6 @@ sub update_node :Chained('edit') :PathPart('edit') :Args(0) {
         $node->update_from_params(\%params);
         $c->stash({ update_ok => 1 });
     }
-    $c->stash(all_nodes => [ $c->stash->{site}->nodes->all ]);
 }
 
 
