@@ -106,9 +106,9 @@ foreach my $id (qw/first second third/) {
     $multiparam->{body_de} = "> test me";
     $node->update_from_params($multiparam);
     is_deeply(get_params($node), $multiparam, "Multilang is fine as well");
-    $mech->get('/node-editor/four/update');
+    $mech->get('/node-editor/four/edit');
     ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' });
-    $mech->get_ok('/node-editor/four/update');
+    $mech->get_ok('/node-editor/four/edit');
     $mech->get_ok('/node-editor/four/delete');
     $mech->get_ok('/node-editor');
 }

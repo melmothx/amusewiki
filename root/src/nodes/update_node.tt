@@ -1,13 +1,79 @@
-[% loc('Node editing') %]
+[%# -*- mode:web -*- %]
 
-[% FOREACH desc IN edit_node.prepare_form_tokens %]
-<pre>
-[% desc.lang | html %]
-[% desc.title_html %]
-[% desc.body_htmol %]
-[% desc.title.param_value | html %]
-[% desc.title.param_name | html %]
-[% desc.body.param_value | html %]
-[% desc.body.param_name | html %]
-</pre>
-[% END %]
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Node editing') %]: [% edit_node.uri | html %]</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <form method="POST" action="" class="form-horizontal">
+      <div class="form-group">
+        <label for="parent_node_id">
+          [% loc('Parent node') %]
+        </label>
+        <select name="parent_node_uri" id="parent_node_uri" class="form-control">
+          <option value="0">[% loc('Root node') %]</option>
+          [% FOREACH node IN all_nodes %]
+            <option value="[% node.uri %]"
+                    [% IF node.node_id == edit_node.parent_node_id %]selected="selected"[% END %]>
+              [% node.name(current_locale_code) %] ([% node.full_uri %])
+            </option>
+          [% END %]
+        </select>
+      </div>
+      <div class="row">
+        [% FOREACH desc IN edit_node.prepare_form_tokens %]
+          <div class="col-md-6">
+            <fieldset>
+              <legend>[% desc.lang | html %]</legend>
+              [% IF desc.title_html %]
+                <div>
+                  <strong>[% desc.title_html %]</strong>
+                </div>
+              [% END %]
+              [% IF desc.body_html %]
+                <div>
+                  [% desc.body_html %]
+                </div>
+              [% END %]
+              <div class="form-group">
+                <label for="[% desc.title.param_name | html %]">
+                  [% loc('Title') %]
+                </label>
+                <input name="[% desc.title.param_name | html %]"
+                       id="[% desc.title.param_name | html %]"
+                       value="[% desc.title.param_value | html %]"
+                       class="form-control" />
+              </div>
+              <div class="form-group">
+                <label for="[% desc.body.param_name | html %]">
+                  [% loc('Body') %]
+                </label>
+                <textarea name="[% desc.body.param_name | html %]"
+                          id="[% desc.body.param_name | html %]"
+                          class="form-control">[% desc.body.param_value | html %]</textarea>
+              </div>
+            </fieldset>
+          </div>
+        [% END %]
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <div class="center">
+              <button type="submit" class="btn btn-primary"
+                      name="update"
+                      value="update">
+                [% loc('Update') %]
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
