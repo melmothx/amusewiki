@@ -40,6 +40,33 @@ sub display :Chained('root') :PathPart('') :Args() {
             $c->detach();
             return;
         }
+        my $locale = $c->stash->{current_locale_code};
+        my $desc = $target->description($locale);
+        my $title = $desc ? $desc->title_html : encode_entities($target->uri);
+        my $body =  $desc ? $desc->body_html : '';
+        my @breadcrumbs = ({
+                            uri => "/",
+                            label => $c->loc_html('Home'),
+                           });
+        foreach my $ancestor (reverse $target->ancestors) {
+            push @breadcrumbs, {
+                                uri => $ancestor->full_uri,
+                                label => $ancestor->name($locale),
+                               };
+        }
+        push @breadcrumbs, {
+                            uri => $target->full_uri,
+                            label => $title,
+                           };
+        my @pages = $target->linked_pages;
+        my @children = $target->children_pages;
+        $c->stash(node => $target,
+                  node_title => $title,
+                  node_body => $body,
+                  breadcrumbs => \@breadcrumbs,
+                  node_linked_pages => scalar(@pages) ? \@pages : undef,
+                  node_children => scalar(@children) ? \@children : undef,
+                 );
     }
     else {
         log_info { $args[-1] . ' not found'};
@@ -52,7 +79,7 @@ sub admin :Chained('/site_user_required') :PathPart('node-editor') :CaptureArgs(
     my $site = $c->stash->{site};
     $c->stash(breadcrumbs => [{
                                uri => $c->uri_for_action('/nodes/list_nodes'),
-                               label => $c->loc('Nodes'),
+                               label => $c->loc_html('Nodes'),
                               }]);
     $c->stash(all_nodes => [ $site->nodes->all ]);
 }

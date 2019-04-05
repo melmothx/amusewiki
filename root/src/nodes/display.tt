@@ -1,1 +1,39 @@
 [% # -*- mode: web -*- %]
+
+[% INCLUDE 'include/breadcrumbs.tt' %]
+
+<div class="center">
+  <div class="page-header">
+    <h1>[% node_title %]</h1>
+  </div>
+</div>
+<div id="page">
+  <div id="thework">
+    [% node_body %]
+  </div>
+</div>
+<hr />
+<div class="row" >
+  [% IF node_linked_pages %]
+    <div class="col-sm-12">
+      <div class="list-group">
+        [% FOREACH page IN node_linked_pages %]
+          <div class="amw-listing-item">
+            <a class="list-group-item" href="[% page.uri %]">[% page.label %]</a>
+          </div>
+        [% END %]
+      </div>
+    </div>
+  [% END %]
+  [% IF node_children %]
+    <div class="col-sm-12">
+      <div class="list-group">
+        [% FOREACH page IN node_children %]
+          <div class="amw-listing-item">
+            <a class="list-group-item" href="[% page.uri %]">[% page.label %]</a>
+          </div>
+        [% END %]
+      </div>
+    </div>
+  [% END %]
+</div>
