@@ -225,7 +225,150 @@ __PACKAGE__->many_to_many("titles", "node_titles", "title");
 # Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wvwnVE7iZWdNMtXhrabmuA
 
+use AmuseWikiFarm::Log::Contextual;
+use Text::Amuse::Functions qw/muse_to_object
+                              muse_format_line
+                             /;
+use HTML::Entities qw/encode_entities/;
 
-# You can replace this text with custom code or comments, and it will be preserved on regeneration
+sub children {
+    return shift->nodes;
+}
+
+sub parent {
+    return shift->parent_node;
+}
+
+sub is_root {
+    return !shift->parent_node_id;
+}
+
+sub ancestors {
+    my $self = shift;
+    my @ancestors;
+    my $rec = $self;
+    my $max = 0;
+    # max 10 as deep. Seems even too much
+    while (++$max < 10 and $rec = $rec->parent) {
+        push @ancestors, $rec;
+    }
+    return @ancestors;
+}
+
+sub full_uri {
+    my $self = shift;
+    my @path = ($self->uri, (map { $_->uri } $self->ancestors));
+    return join('/', '', nodes => reverse(@path));
+}
+
+sub update_from_params {
+    my ($self, $params) = @_;
+    Dlog_debug { "Updating " . $self->full_uri . " with $_" } $params;
+    my $site = $self->site;
+    my @locales = $site->supported_locales;
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->node_bodies->search({ lang => \@locales })->delete;
+    foreach my $lang (@locales) {
+        my %body = (
+                    title_muse => $params->{'title_' . $lang} || '',
+                    body_muse => $params->{'body_' . $lang} || '',
+                    lang => $lang,
+                   );
+        $body{title_html} = muse_format_line(html => $body{title_muse}, $lang);
+        $body{body_html} = muse_to_object($body{body_muse})->as_html;
+        $self->add_to_node_bodies(\%body);
+    }
+    my $parent;
+    if ($params->{parent_node_id} and $site->nodes->find($params->{parent_node_id})) {
+        $parent = $params->{parent_node_id};
+    }
+    $self->update({ parent_node_id => $parent });
+    $guard->commit;
+}
+
+# we do all the languages in a single page, to simplify
+sub prepare_form_tokens {
+    my $self = shift;
+    my @out;
+    foreach my $lang ($self->site->supported_locales) {
+        my $desc = $self->node_bodies->find({ lang => $lang });
+        push @out, {
+                    lang => $lang,
+                    title => {
+                              param_name => 'title_' . $lang,
+                              param_value => $desc ? $desc->title_muse : '',
+                             },
+                    body => {
+                             param_name => 'body_' . $lang,
+                             param_value => $desc ? $desc->body_muse : '',
+                            },
+                    title_html => $desc ? $desc->title_html : '',
+                    body_html =>  $desc ? $desc->body_html  : '',
+                   };
+    }
+    return \@out;
+}
+
+sub linked_pages_as_html {
+    my ($self, %options) = @_;
+    my $indent = $options{indent} || '';
+    my @list;
+    my $titles = $self->titles->published_all;
+    while (my $title = $titles->next) {
+        push @list, [ $title->author_title, $title->full_uri ];
+    }
+    my $cats = $self->categories->active_only->sorted;
+    while (my $cat = $cats->next) {
+        push @list, [ $cat->name, $cat->full_uri ];
+    }
+    if (@list) {
+        return join("",
+                    $indent . "<ul>\n",
+                    (map { $indent . sprintf(' <li><a href="%s">%s</a></li>', $_->[1], $_->[0]) . "\n" } @list),
+                    $indent . "</ul>\n");
+    }
+    else {
+        return '';
+    }
+}
+
+sub as_html {
+    my ($self, $lang, $depth) = @_;
+    $depth ||= 0;
+    $lang ||= 'en';
+    # this is not to be pretty.
+    # First, retrieve the body.
+    log_debug { "Descending into " . $self->uri };
+    my $root_indent = '  ' x $depth;
+    my $indent = $root_indent . '  ';
+    my $html = "\n" . $root_indent . "<div>\n";
+    my $desc = $self->node_bodies->not_empty->find_by_lang($lang) ||
+      $self->node_bodies->not_empty->find_by_lang('en');
+    my $title = encode_entities($self->uri);
+    if ($desc && $desc->title_html) {
+        $title = $desc->title_html;
+    }
+    $html .= $indent . sprintf('<div><strong>%s</strong></div>', $title) . "\n";
+    $html .= $self->linked_pages_as_html(indent => $indent);
+    $depth++;
+    if ($depth > 10) {
+        log_error { "Recursion too deep! on $html" };
+        return $html;
+    }
+    my $children = $self->children;
+    my @children_html;
+    while (my $child = $children->next) {
+        push @children_html, $child->as_html($lang, $depth);
+    }
+    if (@children_html) {
+        $html .= join("",
+                      $indent . "<ul>\n",
+                      (map { $indent . '<li>' . $_ . "\n" . $indent . "</li>\n" } @children_html),
+                      $indent . "</ul>\n");
+    }
+    $html .= $root_indent . "</div>";
+    return $html;
+}
+
 __PACKAGE__->meta->make_immutable;
 1;
