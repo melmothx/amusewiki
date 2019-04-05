@@ -21,7 +21,7 @@
     <h2>[% loc('Create') %]</h2>
   </div>
   <div class="col-xs-12">
-    <form method="POST" id="create-node-form" class="form-inline">
+    <form method="POST" id="create-node-form">
       <div class="form-group">
         <label for="create_node">
           [% loc('URI') %]
@@ -32,6 +32,20 @@
                pattern="[a-z0-9][a-z0-9-]*[a-z0-9]" required/>
       </div>
       <div class="form-group">
+        <label for="parent_node_id">
+          [% loc('Parent node') %]
+        </label>
+        <select name="parent_node_uri" id="parent_node_uri" class="form-control">
+          <option value="0">[% loc('Root node') %]</option>
+          [% FOREACH node IN all_nodes %]
+            <option value="[% node.uri %]"
+                    [% IF node.node_id == edit_node.parent_node_id %]selected="selected"[% END %]>
+              [% node.name(current_locale_code) %] ([% node.full_uri %])
+            </option>
+          [% END %]
+        </select>
+      </div>
+      <div class="form-group center">
         <button type="submit" class="btn btn-default">
           [% loc('Create') %]
         </button>
@@ -39,3 +53,11 @@
     </form>
   </div>
 </div>
+
+<script>
+ $('.delete-node').on('click', function(e) {
+     if (!amw_confirm()) {
+         e.preventDefault();
+     }
+ });
+</script>

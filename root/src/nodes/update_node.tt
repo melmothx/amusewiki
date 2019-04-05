@@ -12,18 +12,22 @@
   <div class="col-xs-12">
     <form method="POST" action="" class="form-horizontal">
       <div class="form-group">
-        <label for="parent_node_id">
-          [% loc('Parent node') %]
-        </label>
-        <select name="parent_node_uri" id="parent_node_uri" class="form-control">
-          <option value="0">[% loc('Root node') %]</option>
-          [% FOREACH node IN all_nodes %]
-            <option value="[% node.uri %]"
-                    [% IF node.node_id == edit_node.parent_node_id %]selected="selected"[% END %]>
-              [% node.name(current_locale_code) %] ([% node.full_uri %])
-            </option>
-          [% END %]
-        </select>
+        <div class="col-xs-12">
+          <label for="parent_node_id">
+            [% loc('Parent node') %]
+          </label>
+        </div>
+        <div class="col-xs-12">
+          <select name="parent_node_uri" id="parent_node_uri" class="form-control">
+            <option value="0">[% loc('Root node') %]</option>
+            [% FOREACH node IN all_nodes %]
+              <option value="[% node.uri %]"
+                      [% IF node.node_id == edit_node.parent_node_id %]selected="selected"[% END %]>
+                [% node.name(current_locale_code) %] ([% node.full_uri %])
+              </option>
+            [% END %]
+          </select>
+        </div>
       </div>
       <div class="row">
         [% FOREACH desc IN edit_node.prepare_form_tokens %]
@@ -41,21 +45,29 @@
                 </div>
               [% END %]
               <div class="form-group">
-                <label for="[% desc.title.param_name | html %]">
-                  [% loc('Title') %]
-                </label>
-                <input name="[% desc.title.param_name | html %]"
-                       id="[% desc.title.param_name | html %]"
-                       value="[% desc.title.param_value | html %]"
-                       class="form-control" />
+                <div class="col-xs-12">
+                  <label for="[% desc.title.param_name | html %]">
+                    [% loc('Title') %]
+                  </label>
+                </div>
+                <div class="col-xs-12">
+                  <input name="[% desc.title.param_name | html %]"
+                         id="[% desc.title.param_name | html %]"
+                         value="[% desc.title.param_value | html %]"
+                         class="form-control" />
+                </div>
               </div>
               <div class="form-group">
-                <label for="[% desc.body.param_name | html %]">
-                  [% loc('Body') %]
-                </label>
-                <textarea name="[% desc.body.param_name | html %]"
-                          id="[% desc.body.param_name | html %]"
-                          class="form-control">[% desc.body.param_value | html %]</textarea>
+                <div class="col-xs-12">
+                  <label for="[% desc.body.param_name | html %]">
+                    [% loc('Body') %]
+                  </label>
+                </div>
+                <div class="col-xs-12">
+                  <textarea name="[% desc.body.param_name | html %]"
+                            id="[% desc.body.param_name | html %]"
+                            class="form-control">[% desc.body.param_value | html %]</textarea>
+                </div>
               </div>
             </fieldset>
           </div>
