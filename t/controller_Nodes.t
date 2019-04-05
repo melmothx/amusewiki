@@ -38,8 +38,8 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $site->canonical);
 
 
-is $site->nodes->find({ uri => 'six' })->full_uri, '/nodes/one/two/three/four/five/six';
-is $site->nodes->find({ uri => 'one' })->full_uri, '/nodes/one';
+is $site->nodes->find({ uri => 'six' })->full_uri, '/node/one/two/three/four/five/six';
+is $site->nodes->find({ uri => 'one' })->full_uri, '/node/one';
 
 foreach my $node ($site->nodes) {
     my @ancestors = $node->ancestors;
