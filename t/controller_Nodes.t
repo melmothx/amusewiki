@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 38;
+use Test::More tests => 83;
 use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
@@ -17,6 +17,7 @@ binmode $builder->todo_output,    ":encoding(utf8)";
 
 use AmuseWiki::Tests qw/create_site/;
 use Test::WWW::Mechanize::Catalyst;
+use HTML::Entities qw/encode_entities/;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 
@@ -64,6 +65,8 @@ foreach my $id (qw/first second third/) {
                                             author => "Author $id",
                                             cat => "cat-$id",
                                            }, $type);
+        $rev->edit(qq{#SORTtopics "x" <script>;\n#SORTauthors Author $id; author "<script>" kid\n}
+                   . $rev->muse_body);
         $rev->commit_version;
         $rev->publish_text;
     }
@@ -152,6 +155,55 @@ foreach my $id (qw/first second third/) {
     is_deeply($node->serialize, \%params);
 }
 
+{
+    my %params = (
+                  uri => 'pinco-x',
+                  parent_node_uri => 'pallino',
+                  attached_uris => "/category/author/author-script-kid /category/topic/x-script",
+                  title_en => q{<script>"'pinco'"</script>"},
+                  body_en => q{"another 'try'"},
+                  title_it => q{"pinco <it>"},
+                  body_it => q{"another" <try> 'it'},
+                 );
+    my $node = $site->nodes->update_or_create_from_params({ %params });
+    diag Dumper({ $node->get_columns });
+    diag Dumper($node->serialize);
+    foreach my $lang (qw/en it/) {
+        $mech->get_ok("/node-editor?bare=1&__language=$lang");
+        diag $mech->content;
+        $mech->content_lacks($params{"title_$lang"});
+        my $expected = encode_entities($params{"title_$lang"});
+        $expected =~ s/&#39;/&#x27;/g;
+        $mech->content_contains($expected);
+
+        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>');
+        $mech->content_lacks('"<script>" kid');
+        $mech->content_contains('<a href="/category/topic/x-script">&quot;x&quot; &lt;script&gt;</a>');
+        $mech->content_lacks(q{>"'pinco'"<});
+        $mech->content_lacks(q{"x" <script>});
+        $mech->content_contains(encode_entities(q{"x" <script>}));
+        $mech->get_ok("/node-editor?bare=1&__language=$lang");
+        # $mech->page_links_ok; this will remove everything.
+        $mech->get_ok($node->full_uri . "?bare=1&__language=$lang");
+        diag $mech->uri;
+        $mech->content_contains($expected);
+        $mech->content_lacks($params{"title_$lang"}) or diag $mech->content;
+        $mech->content_contains('>&quot;x&quot; &lt;script&gt;</a>') or diag $mech->content;
+        $mech->content_lacks(q{"x" <script>}) or diag $mech->content;
+        $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>');
+        $mech->content_lacks('"<script>" kid');
+    }
+    $mech->get_ok($node->full_edit_uri . '?bare=1');
+    foreach my $param (qw/title_en title_it body_en body_it/) {
+        $mech->content_lacks($params{$param});
+        my $expected = encode_entities($params{$param});
+        $expected =~ s/&#39;/&#x27;/g;
+        $mech->content_contains($expected);
+    }
+    diag $mech->content;
+    $mech->content_contains("/category/topic/x-script</textarea>");
+    $mech->content_contains(">/category/author/author-script-kid\n");
+}
 
 sub get_params {
     my $node = shift;
