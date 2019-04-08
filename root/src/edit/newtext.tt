@@ -7,236 +7,241 @@
 
 <form id="ckform" method="post"
       enctype="multipart/form-data">
-  <div class="form-group">
 
-    [% IF pop_uri_field_to_the_top %]
-    <p id="choose-uri">
-      <label class="mandatory" for="uri">[% loc('Desired URI') %]
-        ([% loc('Please set the URI you desire. Author (if present),
-        title and eventually a number if the URI already exists is
-        usually a good choice') %]).
-      </label>
-      <br>
-      <input class="form-control" type="text" name="uri" id="uri" size="50"
-             value="[% processed_params.uri | html %]"/>
-    </p>
-    [% END %]
-    <p>
-      <label for="title" class="mandatory">[% loc('Title') %]
-        ([% loc('mandatory') %])
-      </label>:
-      [% loc('if by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %]
+  [% IF pop_uri_field_to_the_top %]
+  <div id="choose-uri" class="form-group">
+    <label class="mandatory" for="uri">[% loc('Desired URI') %]
+      ([% loc('Please set the URI you desire. Author (if present),
+      title and eventually a number if the URI already exists is
+      usually a good choice') %]).
+    </label>
+    <br>
+    <input class="form-control" type="text" name="uri" id="uri" size="50"
+           value="[% processed_params.uri | html %]"/>
+  </div>
+  [% END %]
+  <div class="form-group">
+    <label for="title" class="mandatory">[% loc('Title') %]
+      ([% loc('mandatory') %])
+    </label>
+    <input class="form-control" type="text" name="title"
+           maxlength="250" id="title"
+           size="30"
+           value="[% processed_params.title | html %]" />
+    <p class="help-block">
+      [% loc('If by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %].
       <a href="#choose-uri">
         <span class="fa fa-share"></span>
       </a>
-      <input class="form-control" type="text" name="title"
-	     maxlength="250" id="title"
-	     size="30"
-	     value="[% processed_params.title | html %]" />
     </p>
+  </div>
 
-    <p>
-      <label for="subtitle">[% loc('Subtitle') %]</label>:
-      <input class="form-control" type="text" name="subtitle" id="subtitle"
-	     maxlength="250"
-	     size="30"
-	     value="[% processed_params.subtitle | html %]" />
+  <div class="form-group">
+    <label for="subtitle">[% loc('Subtitle') %]</label>
+    <input class="form-control" type="text" name="subtitle" id="subtitle"
+           maxlength="250"
+           size="30"
+           value="[% processed_params.subtitle | html %]" />
+  </div>
+
+  [% IF f_class == 'text' %]
+
+  <div class="form-group">
+    <label for="LISTtitle">[% loc('Title for sorting') %]</label>
+    <input class="form-control" type="text" name="LISTtitle" id="LISTtitle"
+           maxlength="250" size="30"
+           value="[% processed_params.LISTtitle | html %]" />
+    <p class="help-block">
+      [% loc('You may want to strip the leading “A”, “An”, “The”, and so on from the title') %].
     </p>
-    
-    [% IF f_class == 'text' %]
+  </div>
 
-    <p>
-      <label for="LISTtitle">[% loc('Title for sorting') %]</label>
-      ([% loc('you may want to strip the leading “A”, “An”, “The”, and so on from the title') %]):
-      <input class="form-control" type="text" name="LISTtitle" id="LISTtitle"
-	     maxlength="250" size="30"
-	     value="[% processed_params.LISTtitle | html %]" />
+
+  <div class="form-group">
+    <label for="author">[% loc('Author') %]</label>
+    ([% loc('for display') %])
+    <input class="form-control amwautocomplete"
+           type="text" name="author" id="author"
+               maxlength="250"
+               value="[% processed_params.author | html %]" />
+  </div>
+
+  <div class="form-group">
+    <label for="SORTauthors">[% loc('Authors for indexing') %]</label>
+    <input class="form-control amwautocomplete" id="SORTauthors"
+           maxlength="250"
+           name="SORTauthors"
+           value="[% processed_params.SORTauthors | html %]" />
+    <p class="help-block">
+      [% loc('Comma or semicolon separated list') %].
     </p>
+  </div>
 
-
-    <p>
-      <label for="author">[% loc('Author') %]</label>
-      ([% loc('for display') %]):
-      <input class="form-control amwautocomplete"
-             type="text" name="author" id="author"
-	         maxlength="250"
-	         value="[% processed_params.author | html %]" />
-    </p>
-
-    <p>
-      <label for="SORTauthors">[% loc('Authors for indexing') %]</label>,
-      [% loc('comma or semicolon separated list') %]:
-      <input class="form-control amwautocomplete" id="SORTauthors"
-	     maxlength="250"
-	     name="SORTauthors"
-	     value="[% processed_params.SORTauthors | html %]" />
-    </p>
-
-    [% IF site.fixed_category_list %]
-    <div id="fixed-category-choose">
-      <strong>[% loc('Categories') %]</strong>
-      [% FOREACH cat IN site.list_fixed_categories %]
-      <div class="checkbox">
-        <label>
-          [% fixed_cat_name = "fixed_cat_" _ cat %]
-          <input type="checkbox"
-                 [% IF c.req.params.$fixed_cat_name %]checked="checked"[% END %]
-                 name="[% fixed_cat_name %]" value="[% cat %]"/>
-          [% loc(cat) %]
-        </label>
-      </div>
-      [% END %]
-    </p>
-    [% ELSE %]
-    <p>
-      <label for="SORTtopics">[% loc('Topics') %]</label>:
-      [% loc('comma or semicolon separated list') %]
-      <br />
-      <input class="form-control amwautocomplete" id="SORTtopics"
-	     size="50"
-	     maxlength="250"
-	     name="SORTtopics"
-	     value="[% processed_params.SORTtopics | html %]" />
-    </p>
-    [% END %]
-
-    [% IF site.multilanguage %]
-    <p>
-      <label for="text-uid">[% loc('Unique ID for the text') %]</label>
-      <input class="form-control" name="uid" id="text-uid" type="text"
-             value="[% processed_params.uid | html %]" />
-    </p>
-    [% END %]
-
-    <p>
-      <label for="date">[% loc('Date of the original publication') %]</label>
-      <input class="form-control" id="date"
-	     size="50"
-	     maxlength="250"
-	     name="date"
-	     value="[% processed_params.date | html %]" />
-    </p>
-    
-    <p><label for="source">[% loc('Source') %]</label>
-
-      ([% loc('For texts from the internet use') %]:
-       [% loc('Retrieved on DATE from URL') %]).
-
-      <input class="form-control" id="source" size="50" maxlength="250"
-	         name="source" value="[% processed_params.source | html %]" />
-    </p>
-    [% END %]
-    <p>
-      [% SET current_language = processed_params.lang || current_locale_code %]
-      <label for="lang">[% loc('Language') %]</label>
-      <select name="lang" id="lang" class="form-control">
-
-      [% known_langs = site.known_langs %]
-      [% FOREACH lang IN known_langs.keys.sort %]
-      <option [% IF current_language == lang %]selected="selected"[% END %]
-              value="[% lang %]">
-        [% known_langs.$lang %]
-      </option>
-      [% END %]
-    </select>
-    </p>
-
-    [% IF site.sl_pdf %]
+  [% IF site.fixed_category_list %]
+  <div id="fixed-category-choose" class="form-group">
+    <strong>[% loc('Categories') %]</strong>
+    [% FOREACH cat IN site.list_fixed_categories %]
     <div class="checkbox">
       <label>
+        [% fixed_cat_name = "fixed_cat_" _ cat %]
         <input type="checkbox"
-               [% IF c.req.params.slides %]checked="checked"[% END %]
-               name="slides" value="yes"/>
-        <strong>[% loc('Produce slides.') %]</strong> [% loc('Every
-        section will generate a slide. You need to do proper
-        sectioning for this to work.') %]
+               [% IF c.req.params.$fixed_cat_name %]checked="checked"[% END %]
+               name="[% fixed_cat_name %]" value="[% cat %]"/>
+        [% loc(cat) %]
       </label>
     </div>
     [% END %]
+  </div>
+  [% ELSE %]
+  <div class="form-group">
+    <label for="SORTtopics">[% loc('Topics') %]</label>
+    <input class="form-control amwautocomplete" id="SORTtopics"
+           size="50"
+           maxlength="250"
+           name="SORTtopics"
+           value="[% processed_params.SORTtopics | html %]" />
+    <p class="help-block">
+      [% loc('Comma or semicolon separated list') %].
+    </p>
+  </div>
+  [% END %]
 
-    <h3>[% loc('Main text') %]</h3>
-    <div>
-        [% loc('Please note that you may want to paste from a
+  [% IF site.multilanguage %]
+  <div class="form-group">
+    <label for="text-uid">[% loc('Unique ID for the text') %]</label>
+    <input class="form-control" name="uid" id="text-uid" type="text"
+           value="[% processed_params.uid | html %]" />
+  </div>
+  [% END %]
+
+  <div class="form-group">
+    <label for="date">[% loc('Date of the original publication') %]</label>
+    <input class="form-control" id="date"
+           size="50"
+           maxlength="250"
+           name="date"
+           value="[% processed_params.date | html %]" />
+  </div>
+
+  <div class="form-group"><label for="source">[% loc('Source') %]</label>
+
+
+    <input class="form-control" id="source" size="50" maxlength="250"
+               name="source" value="[% processed_params.source | html %]" />
+    <p class="help-block">
+      [% loc('For texts from the internet use') %]:
+      [% loc('Retrieved on DATE from URL') %].
+    </p>
+  </div>
+  [% END %]
+  <div class="form-group">
+    [% SET current_language = processed_params.lang || current_locale_code %]
+    <label for="lang">[% loc('Language') %]</label>
+    <select name="lang" id="lang" class="form-control">
+
+    [% known_langs = site.known_langs %]
+    [% FOREACH lang IN known_langs.keys.sort %]
+    <option [% IF current_language == lang %]selected="selected"[% END %]
+            value="[% lang %]">
+      [% known_langs.$lang %]
+    </option>
+    [% END %]
+  </select>
+  </div>
+
+  [% IF site.sl_pdf %]
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"
+             [% IF c.req.params.slides %]checked="checked"[% END %]
+             name="slides" value="yes"/>
+      <strong>[% loc('Produce slides.') %]</strong> [% loc('Every
+      section will generate a slide. You need to do proper
+      sectioning for this to work.') %]
+    </label>
+  </div>
+  [% END %]
+
+  <h3>[% loc('Main text') %]</h3>
+  <div>
+    <p>
+      [% loc('Please note that you may want to paste from a
         Word/OpenOffice/LibreOffice/HTML document using the “paste
         from word” button. This is supposed to preserve the markup.') %]
-
-        <br />
-        
-        [% loc('This is a WYSIWYG editor. If you prefer to use
+    </p>
+    <p>
+      [% loc('This is a WYSIWYG editor. If you prefer to use
         the wiki-like syntax leave it as is, fill the required fields
         above and postpone the editing to the next step.') %]
-        <br />
-
-        [% loc('Image uploading may be done on the next step, when you can
+    </p>
+    <p>
+      [% loc('Image uploading may be done on the next step, when you can
         review and preview the upload.') %]
-
-        <br />
-        [% loc('Keep in mind that unusually
+    </p>
+    <p>
+      [% loc('Keep in mind that unusually
         complex formatting will be stripped. Is it possible to add
         tables and images only on the next step.') %]
-    </div>
-    <div>&nbsp;</div>
-    <div>
-      <textarea id="textbody" name="textbody" cols="80"
-                rows="20">[%- processed_params.textbody | html -%]</textarea>
-    </div>
-    <div>&nbsp;</div>
-    <div>
-      <p>
-        <strong>[% loc('Or provide an HTML file to upload') %]</strong>
-      </p>
-      <p>
-        [% loc('If you have a file in .doc or .odt, you can easily convert it saving it as HTML') %]
-      </p>
-      <p>
-        <input id="texthtmlfile" name="texthtmlfile" type="file" />
-      </p>
-    </div>
-    
-    [% IF f_class == 'text' %]
-    <h3>[% loc('Notes') %]</h3>
-    <div>
-      [% loc('Put additional information here (original
+    </p>
+  </div>
+  <div>&nbsp;</div>
+  <div>
+    <textarea id="textbody" name="textbody" cols="80"
+              rows="20">[%- processed_params.textbody | html -%]</textarea>
+  </div>
+  <div>&nbsp;</div>
+  <div class="form-group">
+    <label for="texthtmlfile">[% loc('Or provide an HTML file to upload') %]</label>
+    <input id="texthtmlfile" name="texthtmlfile" type="file" />
+    <p class="help-block">
+      [% loc('If you have a file in .doc or .odt, you can easily convert it saving it as HTML') %]
+    </p>
+  </div>
+
+  [% IF f_class == 'text' %]
+  <h3>[% loc('Notes') %]</h3>
+  <div>
+    [% loc('Put additional information here (original
 	  title, translators, credits, etc). Footnotes go in the
 	  body.') %]
-    </div>
-    <div>&nbsp;</div>
-    <div>
-      <textarea id="notes" name="notes" cols="80"
-                rows="5">[%- processed_params.notes | html %]</textarea>
-    </div>
-    [% END %]
+  </div>
+  <div>&nbsp;</div>
+  <div>
+    <textarea id="notes" name="notes" cols="80"
+              rows="5">[%- processed_params.notes | html %]</textarea>
+  </div>
+  [% END %]
 
-    [% IF blog_style %]
-    [% IF f_class == 'text' %]
-    <h3>[% loc('Teaser') %]</h3>
-    <div>
-      [% loc('The text to show on the homepage preview') %]
-    </div>
-    [% IF site.automatic_teaser %]
-    <div>
-      <span class="fa fa-warning"></span>
-      <strong>[% loc('Leave this empty to have it automatically generated') %]</strong>
-    </div>
-    [% END %]
-    <div>&nbsp;</div>
-    <div>
-      <textarea id="teaser" name="teaser" cols="80"
-                rows="10">[%- processed_params.teaser | html %]</textarea>
-    </div>
-    [% END %]
-    [% END %]
+  [% IF blog_style %]
+  [% IF f_class == 'text' %]
+  <h3>[% loc('Teaser') %]</h3>
+  <div>
+    [% loc('The text to show on the homepage preview') %]
+  </div>
+  [% IF site.automatic_teaser %]
+  <div>
+    <span class="fa fa-warning"></span>
+    <strong>[% loc('Leave this empty to have it automatically generated') %]</strong>
+  </div>
+  [% END %]
+  <div>&nbsp;</div>
+  <div>
+    <textarea id="teaser" name="teaser" cols="80"
+              rows="10">[%- processed_params.teaser | html %]</textarea>
+  </div>
+  [% END %]
+  [% END %]
 
-    <div>
-      <br /><br />
-    [% UNLESS pop_uri_field_to_the_top %]
-    <p id="choose-uri">
-      <label for="uri">[% loc('Desired URI') %]
-      ([% loc('automatically generated if not present, using author and title') %])
-      </label>
-      <br />
+  <div>
+    <br /><br />
+  [% UNLESS pop_uri_field_to_the_top %]
+  <p id="choose-uri">
+    <label for="uri">[% loc('Desired URI') %]
+    ([% loc('automatically generated if not present, using author and title') %])
+    </label>
+    <br />
 
-      [% loc("An URI is a string which uniquely identifies the text
+    [% loc("An URI is a string which uniquely identifies the text
       in the archive. In theory, it could be anything, but if you want
       to set it yourself, please stick with the convention: author
       name, title, language, eventual number for disambiguation, e.g.
@@ -244,50 +249,48 @@
       not needed") %]
 
 
-      <input class="form-control" type="text" name="uri" id="uri" size="50"
-             value="[% processed_params.uri | html %]"/>
+    <input class="form-control" type="text" name="uri" id="uri" size="50"
+           value="[% processed_params.uri | html %]"/>
+  </p>
+  [% END %]
+  </div>
+  <div class="form-group">
+    <label for="pubdate">[% loc('Publication date on this site') %]</label>
+    <input class="form-control" id="pubdate"
+           name="pubdate" />
+    <p class="help-block">
+      [% loc('Leave it blank if you want it published right away.') %]
+      [% loc('Set a date in the future if you want it deferred.') %]
+      [% loc('Time is optional.') %]
+      [% loc('Format: yyyy-mm-dd hh:mm, e.g.') %]
+      <code>2014-10-19 08:30</code>
     </p>
-    [% END %]
-    </div>
-    <div>
-      <br />
-      <p>
-        <label for="pubdate">[% loc('Publication date on this site.') %]
-        [% loc('Leave it blank if you want it published right away.') %]
-        </label><br />
-        [% loc('Set a date in the future if you want it deferred.') %]
-        [% loc('Time is optional.') %]
-        [% loc('Format: yyyy-mm-dd hh:mm, e.g.') %]
-        <code>2014-10-19 08:30</code><br />
-        <input class="form-control" id="pubdate"
-               name="pubdate" />
-    </div>
-    <div class="center">
-      <p>
-        [% loc('Keep in mind that I’m cleaning the text and give it
+  </div>
+  <div class="center">
+    <p>
+      [% loc('Keep in mind that I’m cleaning the text and give it
         back to you in the markup used on this site. It’s up to you to
         check it and finally upload it. Some rarely used markup will
         be lost in the process. Please check the preview on the next
         step, where you can also insert images.') %]
-      </p>
-      <button type="submit" class="btn btn-default"
-	          name="go" value="go">
-        [% loc('Create') %]
-      </button>
-    </div>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $("#ckform").validate({
-            rules: {
-                title: "required"
-            },
-            messages: {
-                title: "[% loc('This field is required') %]"
-            }
-        });
+    </p>
+    <button type="submit" class="btn btn-default"
+            name="go" value="go">
+      [% loc('Create') %]
+    </button>
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#ckform").validate({
+          rules: {
+              title: "required"
+          },
+          messages: {
+              title: "[% loc('This field is required') %]"
+          }
       });
-    </script>
-</div>
+    });
+  </script>
 </form>
 
 <script type="text/javascript">
@@ -330,12 +333,12 @@
             });
         }
 
-	    $( ".amwautocomplete")
-	        .bind( "keydown", function( event ) {
-		        if ( event.keyCode === $.ui.keyCode.TAB &&
-		             $( this ).data( "ui-autocomplete" ).menu.active ) {
-		            event.preventDefault();
-		        }
+            $( ".amwautocomplete")
+                .bind( "keydown", function( event ) {
+                        if ( event.keyCode === $.ui.keyCode.TAB &&
+                             $( this ).data( "ui-autocomplete" ).menu.active ) {
+                            event.preventDefault();
+                        }
                 var target = $(this).attr('name');
                 if (target === 'SORTauthors') {
                     availableTerms = all_terms.author;
@@ -350,25 +353,25 @@
                     console.log("Autocomplete not available for " + target);
                     availableTerms = [];
                 }
-	        })
-	        .autocomplete({
-		        minLength: 0,
-		        source: function( request, response ) {
-		            // delegate back to autocomplete, but extract the last term
-		            response( $.ui.autocomplete.filter(
-			            availableTerms, request.term.split(separator).pop()));
-		        },
-		        focus: function() {
-		            return false;
-		        },
-		        select: function( event, ui ) {
-		            var terms = this.value.split(separator);
-		            terms.pop();
-		            terms.push( ui.item.value );
-		            this.value = terms.join( ", " );
-		            return false;
-		        }
-	        });
+                })
+                .autocomplete({
+                        minLength: 0,
+                        source: function( request, response ) {
+                            // delegate back to autocomplete, but extract the last term
+                            response( $.ui.autocomplete.filter(
+                                    availableTerms, request.term.split(separator).pop()));
+                        },
+                        focus: function() {
+                            return false;
+                        },
+                        select: function( event, ui ) {
+                            var terms = this.value.split(separator);
+                            terms.pop();
+                            terms.push( ui.item.value );
+                            this.value = terms.join( ", " );
+                            return false;
+                        }
+                });
     });
 </script>
 

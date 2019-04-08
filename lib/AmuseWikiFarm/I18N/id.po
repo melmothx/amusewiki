@@ -1616,7 +1616,7 @@ msgstr ""
 msgid "Publication date"
 msgstr ""
 
-msgid "Publication date on this site."
+msgid "Publication date on this site"
 msgstr ""
 
 msgid "Publish"
@@ -2653,7 +2653,7 @@ msgstr ""
 msgid "code and monospace"
 msgstr ""
 
-msgid "comma or semicolon separated list"
+msgid "Comma or semicolon separated list"
 msgstr ""
 
 msgid "completed"
@@ -2693,7 +2693,7 @@ msgid "generic sectioning, good for articles"
 msgstr ""
 
 msgid ""
-"if by chance another text with the same author and title exists, choose the "
+"If by chance another text with the same author and title exists, choose the "
 "desired URI using the field below inserting author, title and a number, e.g. "
 "my-author-my-title-1"
 msgstr ""
@@ -2722,7 +2722,7 @@ msgstr ""
 msgid "new-example-uri"
 msgstr ""
 
-msgid "optional, defaults to the author directive"
+msgid "Optional, defaults to the author directive"
 msgstr ""
 
 msgid "or"
@@ -2816,7 +2816,7 @@ msgid "without description"
 msgstr ""
 
 msgid ""
-"you may want to strip the leading “A”, “An”, “The”, and so on from the title"
+"You may want to strip the leading “A”, “An”, “The”, and so on from the title"
 msgstr ""
 
 msgid ""
