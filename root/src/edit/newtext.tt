@@ -1,7 +1,6 @@
 [% # -*- mode: html -*- %]
 
 [% INCLUDE 'include/ckeditor.tt' %]
-[% INCLUDE 'include/validate.tt' %]
 
 [% form_action %]
 
@@ -17,7 +16,8 @@
     </label>
     <br>
     <input class="form-control" type="text" name="uri" id="uri" size="50"
-           value="[% processed_params.uri | html %]"/>
+           value="[% processed_params.uri | html %]"
+           required />
   </div>
   [% END %]
   <div class="form-group">
@@ -27,7 +27,8 @@
     <input class="form-control" type="text" name="title"
            maxlength="250" id="title"
            size="30"
-           value="[% processed_params.title | html %]" />
+           value="[% processed_params.title | html %]"
+           required />
     <p class="help-block">
       [% loc('If by chance another text with the same author and title exists, choose the desired URI using the field below inserting author, title and a number, e.g. my-author-my-title-1') %].
       <a href="#choose-uri">
@@ -257,13 +258,12 @@
   <div class="form-group">
     <label for="pubdate">[% loc('Publication date on this site') %]</label>
     <input class="form-control" id="pubdate"
+           type="date"
+           value="[% processed_params.pubdate | html %]"
            name="pubdate" />
     <p class="help-block">
       [% loc('Leave it blank if you want it published right away.') %]
       [% loc('Set a date in the future if you want it deferred.') %]
-      [% loc('Time is optional.') %]
-      [% loc('Format: yyyy-mm-dd hh:mm, e.g.') %]
-      <code>2014-10-19 08:30</code>
     </p>
   </div>
   <div class="center">
@@ -279,18 +279,6 @@
       [% loc('Create') %]
     </button>
   </div>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $("#ckform").validate({
-          rules: {
-              title: "required"
-          },
-          messages: {
-              title: "[% loc('This field is required') %]"
-          }
-      });
-    });
-  </script>
 </form>
 
 <script type="text/javascript">
@@ -373,21 +361,6 @@
                         }
                 });
     });
-</script>
-
-<script type="text/javascript" src="[% c.uri_for('/static/js/datepicker/bootstrap-datepicker.min.js') %]">
-</script>
-<script type="text/javascript" src="[% c.uri_for('/static/js/datepicker/locales/bootstrap-datepicker.' _ current_locale_code  _'.min.js') %]">
-</script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-  $('#pubdate').datepicker({
-  language: '[% current_locale_code %]',
-  format: 'yyyy-mm-dd',
-  todayHighlight: true
-  });
-  });
 </script>
 
 [% END %]
