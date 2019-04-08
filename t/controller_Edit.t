@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 104;
+use Test::More tests => 121;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -25,12 +25,15 @@ $site->update({ secure_site => 0 });
 my $host = $site->canonical;
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => $host);
-$mech->get_ok('/');
+$mech->get_ok('/?__language=en');
 $mech->get('/action/text/new');
 is $mech->status, 401;
 ok($mech->form_id('login-form'), "Found the login-form");
 $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});
 $mech->content_contains('You are logged in now!');
+
+$mech->get_ok('/?__language=en');
+$mech->get('/action/text/new');
 
 diag "Uploading a text";
 my $title = 'test-fixes';
@@ -269,4 +272,49 @@ $mech->content_like(qr{porchetta.*going-to-abandon-this}si, "First the committed
     my $revision = $site->revisions->find($rev_id);
     is $revision->username, 'pallinopinco.anon';
     like $revision->message, qr{\s+pallinopinco\s+}s;
+}
+
+{
+    $site->update({ multilanguage => 'en it de',
+                    blog_style => 1,
+                  });
+    $mech->get('/action/text/new');
+    ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+    my %params = (
+                  subtitle => "sottotitolo",
+                  LISTtitle => "titolo listato",
+                  author => "autore",
+                  SORTauthors => "auth1, auth2",
+                  SORTtopics => "topic1, topic2",
+                  date => "2020 fall",
+                  source => "My source",
+                  uid => 'myuid1234',
+                  lang => 'it',
+                  textbody => '<p>Hello <em>world</em> <strong>asdf</strong></p>',
+                  teaser => 'This is my teaser!',
+                  notes => 'These are my notes',
+                  pubdate => '2023-10-10',
+                 );
+    $mech->set_fields(%params);
+    $mech->click;
+    $params{title} = "Titolo";
+    ok $mech->form_id('ckform');
+    $mech->set_fields(title => $params{title});
+    $mech->click;
+    $mech->form_id('museform');
+    my $muse_body = $mech->field('body');
+    diag $muse_body;
+    foreach my $k (keys %params) {
+        if ($k eq 'textbody') {
+            my $value = "\n\n\nHello <em>world</em> <strong>asdf</strong>\n\n\n";
+            like $muse_body, qr{\Q$value\E}, "body ok";
+        }
+        elsif ($k eq 'pubdate') {
+            my $value = substr($params{$k}, 0, 6);
+            like $muse_body, qr{\#\Q$k\E \Q$value\E}, "$k is $value";
+        }
+        else {
+            like $muse_body, qr{\#\Q$k\E \Q$params{$k}\E}, "$k ok";
+        }
+    }
 }
