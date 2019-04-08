@@ -62,7 +62,6 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     $c->stash(
               nav => 'add-to-library',
               page_title => $c->loc('Add a new text'),
-              load_date_picker_css => 1,
              );
 
     my $site    = $c->stash->{site};
