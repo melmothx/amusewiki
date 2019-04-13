@@ -3,7 +3,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 13;
+use Test::More tests => 14;
 use Test::WWW::Mechanize::Catalyst;
 use File::Spec;
 use File::Copy qw/move/;
@@ -29,10 +29,17 @@ my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
 
 $mech->get_ok('/login');
 $mech->submit_form(with_fields => { __auth_user => 'root', __auth_pass => 'root' });
-$mech->get('/action/text/new');
+$mech->get('/action/text/new?__language=hr');
+ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+$mech->set_fields(author => 'pippo',
+                  title => 'title',
+                  textbody => "\n");
+
+$mech->click;
+diag $mech->uri;
 $mech->content_contains("localization/messages_hr.js");
 diag "Changing language user interface";
-$mech->get('/action/text/new?__language=en');
+$mech->get($mech->uri . '?__language=en');
 $mech->content_lacks("localization/messages_en.js");
 $mech->content_lacks("localization/messages_hr.js");
 $mech->content_lacks("localization/messages");
