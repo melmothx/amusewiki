@@ -31,12 +31,6 @@
     </div>
   </div>
 
-  <div>
-    <h4>[% loc('Working locally?') %]</h4>
-    <pre>[% bb.as_cli %]</pre>
-  </div>
-
-
   [% INCLUDE 'include/bbform.tt' %]
   <div class="form-group">
     <div>
@@ -49,3 +43,19 @@
     </div>
   </div>
 </form>
+
+<hr>
+<div>
+  <p>
+    <button type="button"
+            class="btn btn-small btn-default"
+            data-toggle="collapse"
+            data-target="#show-bb-cli"
+            aria-expanded="false"
+            aria-controls="show-bb-cli">
+      [% loc('Working locally?') %]
+    </button>
+  </p>
+  <pre id="show-bb-cli" class="collapse">[% bb.as_cli | html %]</pre>
+</div>
+
