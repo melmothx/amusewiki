@@ -709,6 +709,8 @@ mkits/newtext/body.txt
 mkits/newtext/manifest.json
 mkits/newuser/body.txt
 mkits/newuser/manifest.json
+mkits/publish/body.txt
+mkits/publish/manifest.json
 mkits/resetpassword/body.txt
 mkits/resetpassword/manifest.json
 psgi/amusewiki-cgit.psgi
@@ -1223,6 +1225,7 @@ t/batch-upload.t
 t/bb-profiles.t
 t/beamer.t
 t/bookbuilder-ajax.t
+t/bookbuilder-cli.t
 t/bookbuilder-custom-papersize.t
 t/bookbuilder-sessions.t
 t/bootstrapping-status-file.t
@@ -1335,6 +1338,7 @@ t/multilang.t
 t/nofinalpage.t
 t/not-found.t
 t/not/parsable/ciao.muse
+t/notify-deferred.t
 t/numeric-collation-cats.t
 t/open-graph.t
 t/other-sites.t

@@ -1384,15 +1384,6 @@ sub compile {
     my $jobdir = $self->is_single_file ? $textobj->parent_dir : File::Spec->rel2abs($self->filedir);
     my $homedir = getcwd();
     die "In the wrong dir: $homedir" unless -d $jobdir;
-    my $data = $self->as_job;
-
-    my %compile_opts = $self->site->compile_options;
-    my $template_opts = $compile_opts{extra};
-
-    # overwrite the site ones with the user-defined (and validated)
-    foreach my $k (keys %{ $data->{template_options} }) {
-        $template_opts->{$k} = $data->{template_options}->{$k};
-    }
 
     # print Dumper($template_opts);
     my $basedir = $self->bbdir->stringify;
@@ -1418,7 +1409,7 @@ sub compile {
         $archives{$textobj->uri} = $textobj->filepath_for_ext('zip');
     }
     else {
-        my $textlist = $data->{text_list};
+        my $textlist = [ @{$self->texts} ];
         # validate the texts passed looking up the uri in the db
         Dlog_debug { "Text list is $_" } $textlist;
         foreach my $filename (@$textlist) {
@@ -1441,27 +1432,6 @@ sub compile {
     }
     die "No text found!" unless @texts;
 
-    my %compiler_args = (
-                         logger => $logger,
-                         extra => $template_opts,
-                         pdf => $self->pdf,
-                         # the following is required to avoid the
-                         # laziness of the compiler to recycle the
-                         # existing .tex when there is only one text,
-                         # so options will be ignored.
-                         tex => $self->pdf,
-                         sl_tex => $self->slides,
-                         sl_pdf => $self->slides,
-                         epub => $self->epub,
-                         epub_embed_fonts => $self->epub_embed_fonts,
-                         coverpage_only_if_toc => $self->coverpage_only_if_toc,
-                        );
-    # inherited from site
-    foreach my $setting (qw/luatex ttdir fontspec/) {
-        if ($compile_opts{$setting}) {
-            $compiler_args{$setting} = $compile_opts{$setting};
-        }
-    }
     Dlog_debug { "archives: $_" } \%archives;
     # extract the archives
 
@@ -1474,7 +1444,10 @@ sub compile {
         }
         $zip->extractTree($archive, $basedir);
     }
-    Dlog_debug { "Compiler args are: $_" } \%compiler_args;
+
+    my %compiler_args = $self->compiler_options;
+    $compiler_args{logger} = $logger;
+
     if (!$self->is_single_file and
         my $coverfile = $self->coverfile_path) {
         my $coverfile_ok = 0;
@@ -1496,13 +1469,6 @@ sub compile {
             delete $compiler_args{extra}{cover};
         }
     }
-    if ($self->unbranded) {
-        foreach my $brand (qw/logo site sitename siteslogan/) {
-            my $gone = delete $compiler_args{extra}{$brand};
-            log_debug { "Deleting $brand ($gone) from extra, unbranded pdf" };
-        }
-    }
-
     # not needed if it's a single file. If compiles in the tree will
     # compile here as well. I think. I think we copy it here because
     # the zip we ship is without the logo, so it would be not
@@ -1527,8 +1493,6 @@ sub compile {
             delete $compiler_args{extra}{logo};
         }
     }
-    # add the format ID if provided;
-    $compiler_args{extra}{format_id} = $self->custom_format_id;
     Dlog_debug { "compiler args are $_" } \%compiler_args;
     my $compiler = Text::Amuse::Compile->new(%compiler_args);
     my $outfile;
@@ -1578,18 +1542,14 @@ sub compile {
     die "$outfile not produced!\n" unless (-f $outfile);
 
     # imposing needed?
-    if (!$self->epub and !$self->slides and
-        $data->{imposer_options} and
-        %{$data->{imposer_options}}) {
-
+    if (my %imposer_options = $self->imposer_options) {
         $logger->("* Imposing the PDF\n");
-        my %args = %{$data->{imposer_options}};
-        $args{file}    =  $outfile;
+        $imposer_options{file}    =  $outfile;
         # shouldn't be needed and it's deprecated to mix the tow
-        # $args{outfile} = $makeabs->($self->job_id. '.imp.pdf');
-        $args{suffix}  = '_imp';
-        Dlog_debug { "Args are $_" } \%args;
-        my $imposer = PDF::Imposition->new(%args);
+        # $imposer_options{outfile} = $makeabs->($self->job_id. '.imp.pdf');
+        $imposer_options{suffix}  = '_imp';
+        Dlog_debug { "Args are $_" } \%imposer_options;
+        my $imposer = PDF::Imposition->new(%imposer_options);
         $imposer->impose;
         my $imposed_file = $imposer->outfile;
         undef $imposer;
@@ -1778,5 +1738,121 @@ sub refresh_text_list {
         $self->add_text($text);
     }
 }
+
+sub as_cli {
+    my $self = shift;
+    my %c_args = $self->compiler_options;
+    my %extra = %{ delete $c_args{extra} || {} };
+    my @cli = ('muse-compile.pl');
+
+    my %skipped = (
+                   fontspec => 1,
+                   epub_embed_fonts => 1,
+                  );
+
+    foreach my $top (sort keys %c_args) {
+        next if $skipped{$top};
+        if ($c_args{$top}) {
+            $top =~ s/_/-/g;
+            push @cli, "--" . $top;
+        }
+    }
+    foreach my $k (sort keys %extra) {
+        if ($extra{$k}) {
+            my $arg = $extra{$k};
+            if ($arg =~ m/\s/) {
+                $arg = qq{"$arg"};
+            }
+            push @cli, "--extra", "$k=$arg", "\\\n";
+        }
+    }
+    my @files = $self->text_filenames;
+    my $site = $self->site;
+    foreach my $f (@files) {
+        if ($site) {
+            if (my $text = $self->site->titles->bookbuildable_by_uri($f->name)) {
+                push @cli, $text->in_tree_uri . $f->suffix . $f->fragments_specification;
+            }
+        }
+        else {
+            push @cli, $f->name_with_ext_and_fragments;
+        }
+    }
+    push @cli, "file.muse" unless @files;
+    if (my %imposer_args = $self->imposer_options) {
+        push @cli, "\n\n";
+        my @impcli;
+        foreach my $k (sort keys %imposer_args) {
+            if (my $arg = $imposer_args{$k}) {
+                $k =~ s/_/-/g;
+                if ($arg =~ m/\s/) {
+                    $arg = qq{"$arg"};
+                }
+                push @impcli, "--" . $k, ($k eq 'cover' ? () : ($arg));
+            }
+        }
+        if (@files) {
+            push @cli, qw/for i in/, (map { $_->name . '.pdf' } @files), ';',  'do';
+            push @cli, "pdf-impose.pl", @impcli;
+            push @cli, '$i;', "done";
+        }
+        else {
+            push @cli, "pdf-impose.pl", @impcli, "file.pdf";
+        }
+    }
+    return join(" ", @cli);
+}
+
+sub compiler_options {
+    my $self = shift;
+    my $data = $self->as_job;
+    my %site_opts = $self->site ? ($self->site->compile_options) : ();
+    my $template_opts = $site_opts{extra} || {};
+    # overwrite the site ones with the user-defined (and validated)
+    foreach my $k (keys %{ $data->{template_options} }) {
+        $template_opts->{$k} = $data->{template_options}->{$k};
+    }
+    my %compiler_args = (
+                         extra => $template_opts,
+                         pdf => $self->pdf,
+                         # the following is required to avoid the
+                         # laziness of the compiler to recycle the
+                         # existing .tex when there is only one text,
+                         # so options will be ignored.
+                         tex => $self->pdf,
+                         sl_tex => $self->slides,
+                         sl_pdf => $self->slides,
+                         epub => $self->epub,
+                         epub_embed_fonts => $self->epub_embed_fonts,
+                         coverpage_only_if_toc => $self->coverpage_only_if_toc,
+                        );
+    # inherited from site
+    foreach my $setting (qw/luatex ttdir fontspec/) {
+        if ($site_opts{$setting}) {
+            $compiler_args{$setting} = $site_opts{$setting};
+        }
+    }
+    if ($self->unbranded) {
+        foreach my $brand (qw/logo site sitename siteslogan/) {
+            my $gone = delete $compiler_args{extra}{$brand};
+            log_debug { "Deleting $brand ($gone) from extra, unbranded pdf" };
+        }
+    }
+    # add the format ID if provided;
+    $compiler_args{extra}{format_id} = $self->custom_format_id;
+    Dlog_debug { "Compiler args are: $_" } \%compiler_args;
+    return %compiler_args;
+}
+
+sub imposer_options {
+    my $self = shift;
+    my $data = $self->as_job;
+    my %out;
+    if ($data->{imposer_options}) {
+        %out = %{$data->{imposer_options}};
+    }
+    return %out;
+}
+
 
 1;

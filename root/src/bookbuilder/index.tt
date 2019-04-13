@@ -409,3 +409,17 @@ $(document).ready(function(){
     </div>
   </form>
 </div>
+<hr>
+<div>
+  <p>
+    <button type="button"
+            class="btn btn-small"
+            data-toggle="collapse"
+            data-target="#show-bb-cli"
+            aria-expanded="false"
+            aria-controls="show-bb-cli">
+      [% loc('Working locally?') %]
+    </button>
+  </p>
+  <pre id="show-bb-cli" class="collapse">[% bb.as_cli | html %]</pre>
+</div>
