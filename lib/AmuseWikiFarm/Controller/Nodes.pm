@@ -21,7 +21,17 @@ sub root :Chained('/site') :PathPart('node') :CaptureArgs(0) {
     my ($self, $c) = @_;
 }
 
-sub display :Chained('root') :PathPart('') :Args() {
+sub node_root :Chained('root') :PathPart('') :Args(0) {
+    my ($self, $c) = @_;
+    my $site = $c->stash->{site};
+    my $lang = $c->stash->{current_locale_code};
+    $c->stash(node_list => [
+                            map { +{ uri => $_->full_uri, label => $_->name($lang) } }
+                            $site->nodes->root_nodes->sorted
+                           ]);
+}
+
+sub display :Chained('root') :PathPart('') :Args {
     my ($self, $c, @args) = @_;
 
     # The uri part is unique, so in theory we could just look at the
@@ -29,7 +39,6 @@ sub display :Chained('root') :PathPart('') :Args() {
     # ignore the pieces in between, or validate the whole path,
     # comparing the path requested with the real path, or redirect if
     # doesn't match. Going for this last option.
-    $c->detach('/not_found') unless @args;
     log_debug { "Displaying " . join("/", @args) };
     my $site = $c->stash->{site};
     if (my $target = $site->nodes->find_by_uri($args[-1])) {
