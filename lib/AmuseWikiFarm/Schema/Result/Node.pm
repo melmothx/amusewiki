@@ -509,5 +509,30 @@ sub description {
     return $desc;
 }
 
+sub breadcrumbs {
+    my ($self, $lang) = @_;
+    my $site = $self->site;
+    my $lh = $site->localizer($lang);
+    my @breadcrumbs = ({
+                        uri => $self->full_uri,
+                        label => $self->name($lang),
+                       });
+    my @full = my @path = $self->ancestors;
+    foreach my $ancestor (@path) {
+        log_debug { "scanning next ancestor" };
+        push @breadcrumbs, {
+                            uri => join('/', '', node => map { $_->uri} reverse @full),
+                            label => $ancestor->name($lang),
+                           };
+        shift @full;
+    }
+    push @breadcrumbs,{
+                       uri => "/",
+                       label => $lh->loc_html('Home'),
+                      };
+    return [ reverse @breadcrumbs ];
+}
+
+
 __PACKAGE__->meta->make_immutable;
 1;

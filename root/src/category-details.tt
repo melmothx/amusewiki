@@ -1,5 +1,6 @@
 [%- # -*- mode: html -*- -%]
 
+[% INCLUDE 'include/node_breadcrumbs.tt' %]
 [% INCLUDE 'include/breadcrumbs.tt' %]
 
 <div class="page-header">
