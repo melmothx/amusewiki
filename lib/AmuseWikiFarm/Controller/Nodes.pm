@@ -19,6 +19,7 @@ use HTML::Entities qw/encode_entities/;
 
 sub root :Chained('/site') :PathPart('node') :CaptureArgs(0) {
     my ($self, $c) = @_;
+    $c->stash(please_index => 1);
 }
 
 sub node_root :Chained('root') :PathPart('') :Args(0) {
