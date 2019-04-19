@@ -251,7 +251,12 @@ sub is_root {
     return !shift->parent_node_id;
 }
 
-sub ancestors {
+has ancestors_cache => (is => 'ro',
+                        lazy => 1,
+                        isa => 'ArrayRef',
+                        builder => '_build_ancestors_cache');
+
+sub _build_ancestors_cache {
     my $self = shift;
     my @ancestors;
     my $rec = $self;
@@ -260,7 +265,11 @@ sub ancestors {
     while (++$max < 10 and $rec = $rec->parent) {
         push @ancestors, $rec;
     }
-    return @ancestors;
+    return \@ancestors;
+}
+
+sub ancestors {
+    return @{shift->ancestors_cache};
 }
 
 sub full_uri {
