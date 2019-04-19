@@ -540,6 +540,7 @@ CREATE TABLE node (
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                     ON DELETE CASCADE ON UPDATE CASCADE,
        uri VARCHAR(255) NOT NULL,
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
        parent_node_id INTEGER NULL REFERENCES node(node_id)
        ON UPDATE CASCADE ON DELETE SET NULL
 );
