@@ -57,6 +57,12 @@ __PACKAGE__->table("node");
   is_nullable: 0
   size: 255
 
+=head2 sorting_pos
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+
 =head2 parent_node_id
 
   data_type: 'integer'
@@ -72,6 +78,8 @@ __PACKAGE__->add_columns(
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
   "uri",
   { data_type => "varchar", is_nullable => 0, size => 255 },
+  "sorting_pos",
+  { data_type => "integer", default_value => 0, is_nullable => 0 },
   "parent_node_id",
   { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
@@ -222,8 +230,8 @@ Composing rels: L</node_titles> -> title
 __PACKAGE__->many_to_many("titles", "node_titles", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:wvwnVE7iZWdNMtXhrabmuA
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-19 10:17:13
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+5zWavVSncC1stTKDruz9g
 
 use AmuseWikiFarm::Log::Contextual;
 use Text::Amuse::Functions qw/muse_to_object
