@@ -306,6 +306,10 @@ sub update_from_params {
     else {
         $self->parent_node(undef);
     }
+    if (defined $params->{sorting_pos} and $params->{sorting_pos} =~ m/\A[1-9][0-9]*\z/) {
+        log_debug { "Setting sorting pos to $params->{sorting_pos}" };
+        $self->sorting_pos($params->{sorting_pos});
+    }
     $self->update;
     if (defined $params->{attached_uris}) {
         my @list = ref($params->{attached_uris})
@@ -366,6 +370,7 @@ sub serialize {
     my %out = (
                uri => $self->uri,
                parent_node_uri => $parent ? $parent->uri : undef,
+               sorting_pos => $self->sorting_pos,
               );
     foreach my $desc ($self->node_bodies->all) {
         my $lang = $desc->lang;
@@ -400,7 +405,7 @@ sub children_pages {
     my ($self, %options) = @_;
     my $locale = $options{locale} || 'en';
     my @out;
-    foreach my $child ($self->children) {
+    foreach my $child ($self->children->sorted) {
         push @out, {
                     label => $child->name($locale),
                     uri => $child->full_uri,
@@ -414,11 +419,11 @@ sub linked_pages_as_html {
     my ($self, %options) = @_;
     my $indent = $options{indent} || '';
     my @list;
-    my $titles = $self->titles;
+    my $titles = $self->titles->sorted_by_title;
     while (my $title = $titles->next) {
         push @list, [ $title->author_title, $title->full_uri ];
     }
-    my $cats = $self->categories;
+    my $cats = $self->categories->sorted;
     while (my $cat = $cats->next) {
         push @list, [ $cat->name, $cat->full_uri ];
     }
@@ -461,7 +466,7 @@ sub as_html {
         log_error { "Recursion too deep! on $html" };
         return $html;
     }
-    my $children = $self->children;
+    my $children = $self->children->sorted;
     my @children_html;
     while (my $child = $children->next) {
         push @children_html, $child->as_html($lang, $depth, %options);

@@ -132,6 +132,7 @@ foreach my $id (qw/first second third/) {
                   uri => 'pinco',
                   parent_node_uri => 'pallino',
                   attached_uris => "/library/first /special/third /library/first /special/third",
+                  sorting_pos => 1,
                   title_en => "*pinco*",
                   body_en => "another *try*",
                   title_it => "*pinco it*",
