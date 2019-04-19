@@ -31,7 +31,8 @@ sub display :Chained('root') :PathPart('') :Args() {
     # doesn't match. Going for this last option.
     $c->detach('/not_found') unless @args;
     log_debug { "Displaying " . join("/", @args) };
-    if (my $target = $c->stash->{site}->nodes->find_by_uri($args[-1])) {
+    my $site = $c->stash->{site};
+    if (my $target = $site->nodes->find_by_uri($args[-1])) {
         my $full_uri = $target->full_uri;
         my $got = join('/', '', node => @args);
         log_debug { "$full_uri and $got" };
@@ -66,7 +67,13 @@ sub display :Chained('root') :PathPart('') :Args() {
                   breadcrumbs => \@breadcrumbs,
                   node_linked_pages => scalar(@pages) ? \@pages : undef,
                   node_children => scalar(@children) ? \@children : undef,
+                  page_title => $title,
                  );
+        if ($c->user_exists) {
+            $c->stash(edit_node => $target,
+                      all_nodes => [ $site->nodes->all ],
+                     );
+        }
     }
     else {
         log_info { $args[-1] . ' not found'};
@@ -133,6 +140,7 @@ sub update_node :Chained('edit') :PathPart('edit') :Args(0) {
         $node->update_from_params(\%params);
         $c->stash({ update_ok => 1 });
     }
+    $c->response->redirect($c->uri_for($node->full_uri));
 }
 
 

@@ -262,16 +262,13 @@ sub full_uri {
 }
 
 sub full_edit_uri {
-    my $self = shift;
-    return join('/', '', 'node-editor', $self->uri, 'edit');
+    shift->full_uri;
 }
 
 sub full_delete_uri {
     my $self = shift;
     return join('/', '', 'node-editor', $self->uri, 'delete');
 }
-
-
 
 sub update_from_params {
     my ($self, $params) = @_;
@@ -297,6 +294,9 @@ sub update_from_params {
     if (my $parent = $site->nodes->find_by_uri($params->{parent_node_uri})) {
         $self->parent_node($parent);
     }
+    else {
+        $self->parent_node(undef);
+    }
     $self->update;
     if ($params->{attached_uris}) {
         my @list = ref($params->{attached_uris})
@@ -305,13 +305,18 @@ sub update_from_params {
         my (@titles, @cats);
         my $titles_rs = $site->titles;
         my $cats_rs = $site->categories;
+        my %done;
       STRING:
         foreach my $str (@list) {
             if (my $title = $titles_rs->by_full_uri($str)) {
-                push @titles, $title;
+                my $u = $title->full_uri;
+                $done{$u}++;
+                push @titles, $title unless $done{$u} > 1;
             }
             elsif (my $cat = $cats_rs->by_full_uri($str)) {
-                push @cats, $cat;
+                my $u = $cat->full_uri;
+                $done{$u}++;
+                push @cats, $cat unless $done{$u} > 1;
             }
             else {
                 Dlog_info { "Ignored $str while updating from params $_"} $params;
@@ -435,11 +440,6 @@ sub as_html {
     $html .= sprintf('<strong><a href="%s">%s</a></strong>',
                      $self->full_uri,
                      $self->name($lang));
-    if ($options{show_edit}) {
-        $html .= sprintf('&nbsp;<a class="edit-node" href="%s" title="%s"><i class="fa fa-edit"></i></a>',
-                         $self->full_edit_uri,
-                         encode_entities($options{show_edit}));
-    }
     if ($options{show_delete}) {
         $html .= sprintf('&nbsp;<a class="delete-node" href="%s" title="%s"><i class="fa fa-trash"></i></a>',
                          $self->full_delete_uri,

@@ -7,12 +7,14 @@
     <h1>[% node_title %]</h1>
   </div>
 </div>
+[% IF node_body %]
 <div id="page">
   <div id="thework">
     [% node_body %]
   </div>
 </div>
 <hr />
+[% END %]
 <div class="row" >
   [% IF node_linked_pages %]
     <div class="col-sm-12">
@@ -37,3 +39,6 @@
     </div>
   [% END %]
 </div>
+[% IF edit_node %]
+[% INCLUDE 'include/edit_node.tt' %]
+[% END %]
