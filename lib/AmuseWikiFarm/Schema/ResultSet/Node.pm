@@ -32,4 +32,10 @@ sub update_or_create_from_params {
     }
 }
 
+sub sorted {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+    $self->search(undef, { order_by => [map { $me . '.' . $_ } (qw/sorting_pos uri/) ] });
+}
+
 1;
