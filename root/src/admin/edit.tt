@@ -6,7 +6,6 @@
 [%# loc('Half Letter paper'); %]
 [%# loc('Quarter Letter paper'); %]
 [%# loc('Generic (fits in A4 and Letter)') %]
-[% INCLUDE 'include/validate.tt' %]
 [% IF exec_as_root %]
 <div class="alert alert-warning">
   <p>
@@ -296,8 +295,19 @@ kpsewhich mylogo.pdf
         </select>
       </div>
     </div>
-
-
+    <div class="form-group">
+      <label for="home_page" class="col-sm-6 control-label">
+        [% loc('Custom home page') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="text"
+               id="home_page"
+               name="home_page"
+               pattern="/[a-z][a-z0-9/-]*"
+               value="[% esite.home_page | html %]"
+               class="form-control" />
+      </div>
+    </div>
     <div class="form-group">
       <label for="theme" class="col-sm-6 control-label">
         [% loc('CSS Theme') %]
@@ -351,7 +361,7 @@ kpsewhich mylogo.pdf
       </label>
       <div class="col-sm-6">
         <input type="text"  name="magic_question" id="magic_question"
-               class="form-control required" value="[% esite.magic_question | html %]" />
+               class="form-control" value="[% esite.magic_question | html %]" required/>
       </div>
     </div>
 
@@ -361,7 +371,7 @@ kpsewhich mylogo.pdf
       </label>
       <div class="col-sm-6">
         <input type="text"  name="magic_answer" id="magic_answer"
-               class="form-control required" value="[% esite.magic_answer | html %]" />
+               class="form-control" value="[% esite.magic_answer | html %]" required/>
       </div>
     </div>
 
@@ -1184,6 +1194,5 @@ $(document).ready(function() {
 <script type="text/javascript">
     $(document).ready(function() {
         $('#highlight-js-languages').text(hljs.listLanguages().join(' '));
-        $("#site-edit-form").validate();
     });
 </script>
