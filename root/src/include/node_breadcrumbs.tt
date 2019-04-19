@@ -1,0 +1,25 @@
+[% # -*- mode:web -*- %]
+[% # the labels are already escaped. %]
+[% IF node_breadcrumbs %]
+  <div class="row">
+    <div class="col-xs-12">
+      [% FOREACH node_breadcrumb IN node_breadcrumbs %]
+        <div class="amw-node-breadcrumbs">
+          <ol class="breadcrumb">
+            [% FOREACH breadcrumb IN node_breadcrumb %]
+              <li[% IF loop.last %] class="active"[% END %]>
+                [% IF loop.last %]
+                  [% breadcrumb.label %]
+                [% ELSE %]
+                  <a href="[% breadcrumb.uri  %]">
+                    [% breadcrumb.label %]
+                  </a>
+                [% END %]
+              </li>
+            [% END %]
+          </ol>
+        </div>
+      [% END %]
+    </div>
+  </div>
+[% END %]

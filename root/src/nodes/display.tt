@@ -1,6 +1,6 @@
 [% # -*- mode: web -*- %]
 
-[% INCLUDE 'include/breadcrumbs.tt' %]
+[% INCLUDE 'include/node_breadcrumbs.tt' %]
 
 <div class="center">
   <div class="page-header">
