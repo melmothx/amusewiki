@@ -198,6 +198,17 @@ sub text :Chained('populate_preamble') :PathPart('') :Args(0) {
             $c->stash(text_backlinks => \@backlinks);
         }
     }
+    if (my @nodes = $text->nodes->sorted->all) {
+        my $lang = $c->stash->{current_locale_code} || 'en';
+        my @node_breadcrumbs = map { $_->breadcrumbs($lang) } @nodes;
+        foreach my $nbc (@node_breadcrumbs) {
+            push @$nbc, {
+                         uri => $text->full_uri,
+                         label => $text->title,
+                        };
+        }
+        $c->stash(node_breadcrumbs => \@node_breadcrumbs);
+    }
     $c->response->headers->last_modified($text->f_timestamp_epoch || time());
 }
 

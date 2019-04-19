@@ -45,26 +45,12 @@ sub display :Chained('root') :PathPart('') :Args() {
         my $desc = $target->description($locale);
         my $title = $desc ? $desc->title_html : encode_entities($target->uri);
         my $body =  $desc ? $desc->body_html : '';
-        my @breadcrumbs = ({
-                            uri => "/",
-                            label => $c->loc_html('Home'),
-                           });
-        foreach my $ancestor (reverse $target->ancestors) {
-            push @breadcrumbs, {
-                                uri => $ancestor->full_uri,
-                                label => $ancestor->name($locale),
-                               };
-        }
-        push @breadcrumbs, {
-                            uri => $target->full_uri,
-                            label => $title,
-                           };
         my @pages = $target->linked_pages;
         my @children = $target->children_pages;
         $c->stash(node => $target,
                   node_title => $title,
                   node_body => $body,
-                  breadcrumbs => \@breadcrumbs,
+                  node_breadcrumbs => [ $target->breadcrumbs($locale) ],
                   node_linked_pages => scalar(@pages) ? \@pages : undef,
                   node_children => scalar(@children) ? \@children : undef,
                   page_title => $title,

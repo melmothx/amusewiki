@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 87;
+use Test::More tests => 88;
 use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
@@ -33,6 +33,13 @@ my $site = create_site($schema, '0nodes0');
         }
         $parent = $node;
     }
+}
+
+{
+    diag "Fetching the breadcrumbs";
+    my $node = $site->nodes->find({ uri => 'eight' });
+    ok $node->breadcrumbs;
+    diag Dumper($node->breadcrumbs);
 }
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',

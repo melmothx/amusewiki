@@ -157,6 +157,16 @@ sub single_category :Chained('filter_texts') :PathPart('') :CaptureArgs(0) {
         my $category_description = $cat->localized_desc($current_locale);
         # the unescaping happens when calling $c->loc
         my $page_title = $c->loc($cat->name);
+        if (my @nodes = $cat->nodes->sorted->all) {
+            my @node_breadcrumbs = map { $_->breadcrumbs($current_locale) } @nodes;
+            foreach my $nbc (@node_breadcrumbs) {
+                push @$nbc, {
+                             uri => $cat->full_uri,
+                             label => $c->loc_html($cat->name),
+                            };
+            }
+            $c->stash(node_breadcrumbs => \@node_breadcrumbs);
+        }
         $c->stash(page_title => $page_title,
                   template => 'category-details.tt',
                   category_canonical_name => $uri,
