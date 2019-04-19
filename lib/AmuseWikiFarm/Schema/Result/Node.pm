@@ -262,7 +262,8 @@ sub full_uri {
 }
 
 sub full_edit_uri {
-    shift->full_uri;
+    my $self = shift;
+    return join('/', '', 'node-editor', $self->uri, 'edit');
 }
 
 sub full_delete_uri {
@@ -298,7 +299,7 @@ sub update_from_params {
         $self->parent_node(undef);
     }
     $self->update;
-    if ($params->{attached_uris}) {
+    if (defined $params->{attached_uris}) {
         my @list = ref($params->{attached_uris})
           ? (@{$params->{attached_uris}})
           : (split(/\s+/, $params->{attached_uris}));

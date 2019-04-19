@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 83;
+use Test::More tests => 87;
 use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
@@ -153,6 +153,15 @@ foreach my $id (qw/first second third/) {
     $params{attached_uris} =~ s/\s+/\n/g;
     $node = $site->nodes->update_or_create_from_params({ %params });
     is_deeply($node->serialize, \%params);
+    $copy{attached_uris} = undef;
+    $copy{parent_node_uri} = 'pallino';
+    $node = $site->nodes->update_or_create_from_params({ %copy });
+    is_deeply($node->serialize, \%params);
+    $copy{attached_uris} = '';
+    $node = $site->nodes->update_or_create_from_params({ %copy });
+    is $node->titles->count, 0;
+    is $node->categories->count, 0;
+    is $node->serialize->{attached_uris}, '';
 }
 
 {
@@ -170,7 +179,7 @@ foreach my $id (qw/first second third/) {
     diag Dumper($node->serialize);
     foreach my $lang (qw/en it/) {
         $mech->get_ok("/node-editor?bare=1&__language=$lang");
-        diag $mech->content;
+        # diag $mech->content;
         $mech->content_lacks($params{"title_$lang"});
         my $expected = encode_entities($params{"title_$lang"});
         $expected =~ s/&#39;/&#x27;/g;
