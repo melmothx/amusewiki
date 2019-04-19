@@ -66,8 +66,9 @@
                 </div>
                 <div class="col-xs-12">
                   <textarea name="[% desc.body.param_name | html %]"
+                            data-title-id="[% desc.title.param_name | html %]"
                             id="[% desc.body.param_name | html %]"
-                            class="form-control">[% desc.body.param_value | html %]</textarea>
+                            class="form-control node-body-text">[% desc.body.param_value | html %]</textarea>
                 </div>
               </div>
             </fieldset>
@@ -104,3 +105,21 @@
     </form>
   </div>
 </div>
+<script>
+ function node_require_title() {
+     $('.node-body-text').each(function() {
+         if ($(this).val()) {
+             $('#' + $(this).data('title-id')).prop('required', true);
+         }
+         else {
+             $('#' + $(this).data('title-id')).prop('required', false);
+         }
+     });
+ }
+ $(document).ready(function() {
+     node_require_title();
+     $('.node-body-text').on('change', function() {
+         node_require_title();
+     });
+ });
+</script>
