@@ -105,7 +105,7 @@ sub list_nodes :Chained('admin') :PathPart('') :Args(0) {
             log_error { "Failed attempt to create " . $site->id . "/node/$uri" };
         }
     }
-    $c->stash(nodes => [ $site->nodes->root_nodes->all ]);
+    $c->stash(nodes => [ $site->nodes->root_nodes->sorted->all ]);
 }
 
 sub edit :Chained('admin') :PathPart('') :CaptureArgs(1) {
