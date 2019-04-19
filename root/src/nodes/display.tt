@@ -40,5 +40,6 @@
   [% END %]
 </div>
 [% IF edit_node %]
-[% INCLUDE 'include/edit_node.tt' %]
+  <hr />
+  [% INCLUDE 'include/edit_node.tt' %]
 [% END %]
