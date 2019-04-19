@@ -87,7 +87,7 @@
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-default">
-        [% loc('Create a new node) %]
+        [% loc('Create new site') %]
       </button>
     </div>
   </form>
