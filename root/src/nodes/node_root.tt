@@ -1,0 +1,13 @@
+[% # -*- mode: web -*- %]
+
+<div class="row" >
+  <div class="col-sm-12">
+    <div class="list-group">
+      [% FOREACH node IN node_list %]
+        <div class="amw-listing-item">
+          <a class="list-group-item" href="[% node.uri %]">[% node.label %]</a>
+        </div>
+      [% END %]
+    </div>
+  </div>
+</div>
