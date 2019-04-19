@@ -71,6 +71,7 @@ sub display :Chained('root') :PathPart('') :Args() {
                  );
         if ($c->user_exists) {
             $c->stash(edit_node => $target,
+                      load_markitup_css => 1,
                       all_nodes => [ $site->nodes->all ],
                      );
         }
