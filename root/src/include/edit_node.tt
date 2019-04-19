@@ -1,7 +1,4 @@
 [%# -*- mode:web -*- %]
-
-[% INCLUDE 'include/breadcrumbs.tt' %]
-
 <div class="center">
   <div class="page-header">
     <h1>[% loc('Node editing') %]: [% edit_node.uri | html %]</h1>
@@ -10,7 +7,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <form method="POST" action="" class="form-horizontal">
+    <form method="POST" action="[% edit_node.full_edit_uri %]" class="form-horizontal">
       <input type="hidden" name="uri" value="[% edit_node.uri | html %]" />
       <div class="form-group">
         <div class="col-xs-12">

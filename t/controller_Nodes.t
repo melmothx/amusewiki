@@ -131,7 +131,7 @@ foreach my $id (qw/first second third/) {
     my %params = (
                   uri => 'pinco',
                   parent_node_uri => 'pallino',
-                  attached_uris => "/library/first /special/third",
+                  attached_uris => "/library/first /special/third /library/first /special/third",
                   title_en => "*pinco*",
                   body_en => "another *try*",
                   title_it => "*pinco it*",
@@ -141,8 +141,8 @@ foreach my $id (qw/first second third/) {
     is $node->name, "<em>pinco</em>";
     is $node->titles->count, 2, "Found titles";
     is $node->categories->count, 0, "Found 0 cats";
+    $params{attached_uris} = "/library/first\n/special/third";
     my %copy = %params;
-    $copy{attached_uris} =~ s/\s+/\n/g;
     # pallino doesn't exist yet, so will return undef
     $copy{parent_node_uri} = undef;
     is_deeply($node->serialize, \%copy);
@@ -200,7 +200,6 @@ foreach my $id (qw/first second third/) {
         $expected =~ s/&#39;/&#x27;/g;
         $mech->content_contains($expected);
     }
-    diag $mech->content;
     $mech->content_contains("/category/topic/x-script</textarea>");
     $mech->content_contains(">/category/author/author-script-kid\n");
 }
