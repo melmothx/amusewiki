@@ -1,10 +1,5 @@
 [%# -*- mode:web -*- %]
 [% INCLUDE 'include/markitup.tt' %]
-<div class="center">
-  <div class="page-header">
-    <h1>[% loc('Node editing') %]: [% edit_node.uri | html %]</h1>
-  </div>
-</div>
 
 <div class="row">
   <div class="col-xs-12">
