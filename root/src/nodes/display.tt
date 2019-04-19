@@ -41,5 +41,18 @@
 </div>
 [% IF edit_node %]
   <hr />
-  [% INCLUDE 'include/edit_node.tt' %]
+  <div class="text-right">
+    <button type="button"
+            class="btn btn-default"
+            data-target="#node-editing-form"
+            data-toggle="collapse"
+            aria-expanded="false"
+            aria-controls="node-editing-form">
+      <i class="fa fa-edit fa-border"></i>
+      <span class="sr-only">[% loc('Edit') %]</span>
+    </button>
+  </div>
+  <div id="node-editing-form" class="collapse">
+    [% INCLUDE 'include/edit_node.tt' %]
+  </div>
 [% END %]
