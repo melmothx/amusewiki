@@ -541,6 +541,7 @@ CREATE TABLE node (
                                     ON DELETE CASCADE ON UPDATE CASCADE,
        uri VARCHAR(255) NOT NULL,
        sorting_pos INTEGER NOT NULL DEFAULT 0,
+       full_path TEXT,
        parent_node_id INTEGER NULL REFERENCES node(node_id)
        ON UPDATE CASCADE ON DELETE SET NULL
 );
