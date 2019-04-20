@@ -30,6 +30,7 @@ my $site = create_site($schema, '0nodes0');
         if ($parent) {
             $node->parent_node($parent);
             $node->update;
+            $node->update_full_path;
         }
         $parent = $node;
     }
