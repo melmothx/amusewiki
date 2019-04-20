@@ -5,6 +5,7 @@ use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
 use HTML::Entities qw/encode_entities/;
+use AmuseWikiFarm::Log::Contextual;
 
 sub hri {
     return shift->search(undef, { result_class => 'DBIx::Class::ResultClass::HashRefInflator' });
@@ -73,6 +74,101 @@ sub all_nodes {
         push @out, \%node;
     }
     return \@out;
+}
+
+sub as_tree {
+    my ($self, $lang) = @_;
+    my $me = $self->current_source_alias;
+    my @all = $self->search(undef,
+                            {
+                             prefetch => [
+                                          'node_bodies',
+                                          {
+                                           node_categories => 'category',
+                                           node_titles => 'title',
+                                          },
+                                         ],
+                            })->hri->all;
+    Dlog_debug { "All nodes: $_ " } \@all;
+    my %source;
+    foreach my $n (@all) {
+        $source{$n->{node_id}} = $n;
+        # search the body by language
+        my @bodies = @{ delete $n->{node_bodies} };
+        my ($found) = ((grep { $_->{lang} eq $lang and $_->{title_html} } @bodies),
+                       (grep { $_->{lang} eq 'en'  and $_->{title_html} } @bodies));
+        if ($found) {
+            $source{$n->{node_id}}{title_html} = $found->{title_html};
+        }
+        else {
+            $source{$n->{node_id}}{title_html} = encode_entities($n->{uri});
+        }
+    }
+    Dlog_debug { "Flattened $_" } \%source;
+    my @out = map { _render_node(\%source, $_->{node_id}) }
+      sort { $a->{sorting_pos} <=> $b->{sorting_pos} or $a->{uri} cmp $b->{uri} }
+      grep { !$_->{parent_node_id} } @all;
+    return join('', @out);
+}
+
+sub _render_node {
+    my ($source, $id, $depth) = @_;
+    $depth ||= 0;
+    log_debug { "Rendering $id $depth" };
+    my $node = $source->{$id};
+    my $root_indent = '  ' x $depth;
+    my $indent = $root_indent . '  ';
+    my $html = "\n" . $root_indent . "<div>\n";
+    $html .= $indent . '<div>';
+    $html .= sprintf('<strong><a href="%s">%s</a></strong>',
+                     '/node/' . $node->{full_path},
+                     $node->{title_html});
+    $html .= "</div>\n";
+
+    my @list;
+    if (my @titles = @{$node->{node_titles}}) {
+        foreach my $title (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
+                           grep { $_->{status} eq 'published' }
+                           map { $_->{title} }
+                           @titles) {
+            my $full_uri = $title->{f_class} eq 'text'
+              ? "/library/$title->{uri}"
+              : "/special/$title->{uri}";
+            push @list, [ $title->{title}, $full_uri ];
+        }
+    }
+    if (my @categories = @{$node->{node_categories}}) {
+        foreach my $cat (sort { $a->{sorting_pos} <=> $b->{sorting_pos} }
+                         grep { $_->{active} }
+                         map { $_->{category} }
+                         @categories) {
+            push @list, [ $cat->{name}, "/category/$cat->{type}/$cat->{uri}"] ;
+        }
+    }
+    if (@list) {
+        $html .= join("",
+                      $indent . "<ul>\n",
+                      (map { $indent . sprintf(' <li><a href="%s">%s</a></li>', $_->[1], $_->[0]) . "\n" }
+                       @list),
+                      $indent . "</ul>\n");
+    }
+    $depth++;
+    if ($depth > 10) {
+        log_error { "Recursion too deep! on $html" };
+        return $html;
+    }
+    my @children_html;
+    foreach my $child (grep { $_->{parent_node_id} and  $_->{parent_node_id} eq $id } values %$source) {
+        push @children_html, _render_node($source, $child->{node_id}, $depth);
+    }
+    if (@children_html) {
+        $html .= join("",
+                      $indent . "<ul>\n",
+                      (map { $indent . '<li>' . $_ . "\n" . $indent . "</li>\n" } @children_html),
+                      $indent . "</ul>\n");
+    }
+    $html .= $root_indent . "</div>";
+    return $html;
 }
 
 
