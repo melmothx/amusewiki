@@ -281,8 +281,7 @@ sub ancestors {
 
 sub full_uri {
     my $self = shift;
-    my @path = ($self->uri, (map { $_->uri } $self->ancestors));
-    return join('/', '', node => reverse(@path));
+    return join('/', '', node => $self->full_path || $self->update_full_path);
 }
 
 sub full_edit_uri {
@@ -327,6 +326,7 @@ sub update_from_params {
         $self->sorting_pos($params->{sorting_pos});
     }
     $self->update;
+    $self->update_full_path;
     if (defined $params->{attached_uris}) {
         my @list = ref($params->{attached_uris})
           ? (@{$params->{attached_uris}})
@@ -539,6 +539,18 @@ sub breadcrumbs {
     return [ reverse @breadcrumbs ];
 }
 
+sub update_full_path {
+    my $self = shift;
+    $self->discard_changes;
+    my $full = join('/', reverse ($self->uri, (map { $_->uri } $self->ancestors)));
+    $self->update({ full_path =>  $full });
+    log_debug { "Updated full_path to $full" };
+    return $full;
+}
+
+after insert => sub {
+    shift->update_full_path;
+};
 
 __PACKAGE__->meta->make_immutable;
 1;

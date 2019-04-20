@@ -62,7 +62,7 @@ sub all_nodes {
     foreach my $node (@all) {
         my %node = (
                     value => $node->{node_id},
-                    title => $node->{full_uri},
+                    title => join('/', '', 'node', $node->{full_path}),
                     label => encode_entities($node->{uri}),
                    );
         if (@{$node->{node_bodies}}) {
