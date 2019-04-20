@@ -118,24 +118,21 @@ sub edit :Chained('admin') :PathPart('') :CaptureArgs(1) {
     }
 }
 
-sub delete_node :Chained('edit') :PathPart('delete') :Args(0) {
-    my ($self, $c) = @_;
-    my $node = $c->stash->{edit_node};
-    # ok, I know, just visiting an url shouldn't trigger a deletion.
-    # This is TODO when the code has stabilized.
-    log_info { $c->user->get('username') . " is deleting " . $node->full_uri };
-    $node->delete;
-    $c->response->redirect($c->uri_for_action('/nodes/list_nodes'));
-}
-
 sub update_node :Chained('edit') :PathPart('edit') :Args(0) {
     my ($self, $c) = @_;
     my $node = $c->stash->{edit_node};
     my %params = %{ $c->request->body_parameters };
-    if (%params and $params{update}) {
+    Dlog_info { "Editing " . $node->node_id . " with $_" } \%params;
+    if ($params{update}) {
         Dlog_info { $c->user->get('username') . " is updating " . $node->full_uri . " with $_" } \%params;
         $node->update_from_params(\%params);
         $c->stash({ update_ok => 1 });
+    }
+    elsif ($params{delete}) {
+        Dlog_info { $c->user->get('username') . " deleted $_" } +{ $node->get_columns };
+        $node->delete;
+        $c->response->redirect($c->uri_for_action('/nodes/list_nodes'));
+        return;
     }
     $c->response->redirect($c->uri_for($node->full_uri));
 }

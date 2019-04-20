@@ -470,11 +470,6 @@ sub as_html {
     $html .= sprintf('<strong><a href="%s">%s</a></strong>',
                      $self->full_uri,
                      $self->name($lang));
-    if ($options{show_delete}) {
-        $html .= sprintf('&nbsp;<a class="delete-node" href="%s" title="%s"><i class="fa fa-trash"></i></a>',
-                         $self->full_delete_uri,
-                         encode_entities($options{show_delete}));
-    }
     $html .= "</div>\n";
     $html .= $self->linked_pages_as_html(indent => $indent);
     $depth++;

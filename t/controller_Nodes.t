@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 95;
+use Test::More tests => 96;
 use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
@@ -128,9 +128,10 @@ foreach my $id (qw/first second third/) {
           or die Dumper($node->serialize, $existing);
     }
 
-
-    $mech->get_ok('/node-editor/four/delete');
-    ok !$site->nodes->find_by_uri('four'), "Tag deleted visiting the delete link. This is a TODO";
+    $mech->get_ok('/node/four');
+    ok($mech->form_id('node-edit-form'));
+    $mech->click('delete');
+    ok (!$site->nodes->find_by_uri('four'), "Node deleted by posting") or die;
     $mech->get_ok('/node-editor');
 
     $mech->get_ok('/user/site');

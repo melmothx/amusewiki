@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <form method="POST" action="[% edit_node.full_edit_uri %]" class="form-horizontal">
+    <form method="POST" action="[% edit_node.full_edit_uri %]" class="form-horizontal" id="node-edit-form">
       <input type="hidden" name="uri" value="[% edit_node.uri | html %]" />
       <div class="form-group">
         <div class="col-xs-12">
@@ -98,6 +98,12 @@
                       value="update">
                 [% loc('Update') %]
               </button>
+              <button type="submit"
+                      class="btn btn-danger delete-node"
+                      name="delete"
+                      value="delete">
+                [% loc('Delete permanently') %]
+              </button>
             </div>
           </div>
         </div>
@@ -121,5 +127,10 @@
      $('.node-body-text').on('change', function() {
          node_require_title();
      });
- });
+     $('.delete-node').on('click', function(e) {
+         if (!amw_confirm()) {
+             e.preventDefault();
+         }
+     });
+});
 </script>
