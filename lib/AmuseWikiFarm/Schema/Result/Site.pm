@@ -1592,7 +1592,21 @@ sub import_text_from_html_params {
 
     my $guard = $self->result_source->schema->txn_scope_guard;
     # title->can_spawn_revision will return false, so we have to force
-    my $revision = $self->titles->create($bogus)->new_revision('force');
+    my $created = $self->titles->create($bogus);
+    if ($params->{node_id}) {
+        Dlog_debug { "Assigning text to nodes $_" } $params->{node_id};
+        my @nodes = ref($params->{node_id}) ? (@{$params->{node_id}}) : ($params->{node_id});
+        foreach my $id (@nodes) {
+            if (my $node = $self->nodes->find($id)) {
+                log_info { "Assigned " . $created->uri . " to node " . $node->uri };
+                $created->add_to_nodes($node);
+            }
+            else {
+                log_error { "node $id not found in site " . $self->id };
+            }
+        }
+    }
+    my $revision = $created->new_revision('force');
 
     # save a copy of the html request
     my $html_copy = $revision->original_html;
