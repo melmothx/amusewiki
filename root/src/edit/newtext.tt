@@ -266,18 +266,40 @@
       [% loc('Set a date in the future if you want it deferred.') %]
     </p>
   </div>
-  <div class="center">
-    <p>
-      [% loc('Keep in mind that I’m cleaning the text and give it
+  [% IF node_checkboxes %]
+    <h3>[% loc('Assing text to nodes') %]</h3>
+    <div class="form-group">
+      [% FOREACH node IN node_checkboxes %]
+        <div class="col-xs-2">
+          <div class="checkbox">
+            <label title="[% node.title | html %]">
+              <input name="node_id"
+                     type="checkbox"
+                     [% IF node.checked %]checked="checked"[% END %]
+                     value="[% node.value | html %]">
+              [% node.label %]
+            </label>
+          </div>
+        </div>
+      [% END %]
+    </div>
+  [% END %]
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="help-block">
+        [% loc('Keep in mind that I’m cleaning the text and give it
         back to you in the markup used on this site. It’s up to you to
         check it and finally upload it. Some rarely used markup will
         be lost in the process. Please check the preview on the next
         step, where you can also insert images.') %]
-    </p>
-    <button type="submit" class="btn btn-default"
-            name="go" value="go">
-      [% loc('Create') %]
-    </button>
+      </p>
+      <p class="text-center">
+        <button type="submit" class="btn btn-default"
+                name="go" value="go">
+          [% loc('Create') %]
+        </button>
+      </p>
+    </div>
   </div>
 </form>
 

@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 93;
+use Test::More tests => 95;
 use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
@@ -229,6 +229,25 @@ foreach my $id (qw/first second third/) {
     $mech->content_contains("/category/topic/x-script</textarea>");
     $mech->content_contains(">/category/author/author-script-kid\n");
 }
+
+my @node_ids = map { $_->node_id } $site->nodes;
+
+foreach my $checked ([ single => $node_ids[0] ], [ all => \@node_ids ]) {
+    my ($rev) = $site->create_new_text({
+                                        title => "Assigned node " . $checked->[0],
+                                        uri => "assigned-node-" . $checked->[0],
+                                        node_id => $checked->[1],
+                                       }, "text");
+    $rev->commit_version;
+    $rev->publish_text;
+    if ($checked->[0] eq 'single') {
+        is $rev->title->nodes->count, 1, "Single node attached";
+    }
+    else {
+        ok $rev->title->nodes->count > 1, "Multiple nodes attached";
+    }
+}
+
 
 sub get_params {
     my $node = shift;

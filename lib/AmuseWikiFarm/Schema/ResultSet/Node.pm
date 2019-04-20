@@ -4,6 +4,11 @@ use utf8;
 use strict;
 use warnings;
 use base 'DBIx::Class::ResultSet';
+use HTML::Entities qw/encode_entities/;
+
+sub hri {
+    return shift->search(undef, { result_class => 'DBIx::Class::ResultClass::HashRefInflator' });
+}
 
 sub find_by_uri {
     my ($self, $uri) = @_;
@@ -37,5 +42,38 @@ sub sorted {
     my $me = $self->current_source_alias;
     $self->search(undef, { order_by => [map { $me . '.' . $_ } (qw/sorting_pos uri/) ] });
 }
+
+sub with_body {
+    my ($self, $lang) = @_;
+    my $me = $self->current_source_alias;
+    $self->search({
+                   'node_bodies.lang' => [ $lang || 'en', undef ],
+                  },
+                  {
+                   prefetch => 'node_bodies',
+                  });
+}
+
+sub all_nodes {
+    my ($self, $lang) = @_;
+    my $me = $self->current_source_alias;
+    my @all = $self->search(undef, { order_by => "$me.uri" })->with_body->hri;
+    my @out;
+    foreach my $node (@all) {
+        my %node = (
+                    value => $node->{node_id},
+                    title => $node->{full_uri},
+                    label => encode_entities($node->{uri}),
+                   );
+        if (@{$node->{node_bodies}}) {
+            if (my $label = $node->{node_bodies}->[0]->{title_html}) {
+                $node{label} = $label;
+            }
+        }
+        push @out, \%node;
+    }
+    return \@out;
+}
+
 
 1;

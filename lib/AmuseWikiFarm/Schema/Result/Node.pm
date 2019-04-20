@@ -519,7 +519,6 @@ sub breadcrumbs {
                        });
     my @full = my @path = $self->ancestors;
     foreach my $ancestor (@path) {
-        log_debug { "scanning next ancestor" };
         push @breadcrumbs, {
                             uri => join('/', '', node => map { $_->uri} reverse @full),
                             label => $ancestor->name($lang),

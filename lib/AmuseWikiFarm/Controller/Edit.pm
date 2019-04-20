@@ -66,13 +66,13 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
 
     my $site    = $c->stash->{site};
     my $f_class = $c->stash->{f_class} or die;
-    # if there was a posting, process it
-    Dlog_debug { "In the newtext route $_" } $c->request->body_params;
-    if ($c->request->body_params->{go}) {
 
-        # create a working copy of the params
-        my $params = { %{$c->request->body_params} };
-        Dlog_debug { "Params are $_" } $params;
+
+    # create a working copy of the params
+    my $params = { %{$c->request->body_params} };
+    Dlog_debug { "In the newtext route $_" } $params;
+    # if there was a posting, process it
+    if ($params->{go}) {
         my ($upload) = $c->request->upload('texthtmlfile');
         if ($upload) {
             log_debug { $upload->tempname . ' => '. $upload->size  };
@@ -126,6 +126,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                 $c->stash->{site}->send_mail(newtext => \%mail);
             }
             $c->response->redirect($location);
+            return;
         }
         else {
             $c->stash(processed_params => $params);
@@ -144,6 +145,26 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     }
     else {
         log_debug { "Nothing to do, rendering form" };
+    }
+    if ($site->nodes->count) {
+        my $nodes = $site->nodes->all_nodes;
+        # don't lose the selection
+        if ($params->{node_id}) {
+            my %selected;
+            if (ref($params->{node_id})) {
+                $selected{$_} = 1 for @{$params->{node_id}};
+            }
+            else {
+                $selected{$params->{node_id}} = 1;
+            }
+            Dlog_debug { "Found selected nodes: $_" } \%selected;
+            foreach my $n (@$nodes) {
+                if ($selected{$n->{value}}) {
+                    $n->{checked} = 1;
+                }
+            }
+        }
+        $c->stash(node_checkboxes => $nodes);
     }
 }
 
