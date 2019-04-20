@@ -138,7 +138,7 @@ foreach my $path ('/latest', '/latest/1', '/latest/2', '/category/author/', '/ca
     $mech->get_ok($path);
     my @links = grep { $_->url !~ /\/(static|git|bookbuilder|action\/text)\// }
       $mech->find_all_links;
-    $mech->links_ok(\@links);
+    $mech->links_ok(\@links) or diag Dumper(\@links);
     ok(scalar(@links), "Found and tested " . scalar(@links) . " links");
 }
 
