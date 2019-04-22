@@ -1052,9 +1052,6 @@ sub formats_definitions {
         if ($custom->is_epub) {
             $icon = 'fa-file-epub';
         }
-        elsif ($custom->is_imposed_pdf) {
-            $icon = 'fa-columns fa-flip-vertical';
-        }
         elsif ($custom->is_slides) {
             $icon = 'fa-file-powerpoint-o';
         }
