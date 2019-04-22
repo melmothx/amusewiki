@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 96;
+use Test::More tests => 99;
 use Data::Dumper::Concise;
 
 my $builder = Test::More->builder;
@@ -117,22 +117,28 @@ foreach my $id (qw/first second third/) {
     $multiparam->{body_de} = "> test me";
     $node->update_from_params($multiparam);
     is_deeply(get_params($node), $multiparam, "Multilang is fine as well");
-    $mech->get('/node-editor/four/edit');
+    $mech->get('/node/four');
+    ok(!$mech->form_id('node-edit-form'));
+    $mech->get_ok('/login');
     ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' });
-    $mech->get_ok('/node-editor/four/edit');
-
     {
         my $existing = $node->serialize;
         $node->update_from_params({ %$existing });
         is_deeply($node->serialize, $existing, "serialization is idempotens")
           or die Dumper($node->serialize, $existing);
     }
-
     $mech->get_ok('/node/four');
+    diag $mech->uri;
+    $mech->submit_form(with_fields => { title_en => 'Auuuu' },
+                       button => 'update');
+    is $node->discard_changes->name, 'Auuuu';
+    $mech->content_contains('Auuuu');
+
     ok($mech->form_id('node-edit-form'));
+
     $mech->click('delete');
     ok (!$site->nodes->find_by_uri('four'), "Node deleted by posting") or die;
-    $mech->get_ok('/node-editor');
+    is $mech->uri->path, '/node';
 
     $mech->get_ok('/user/site');
     ok !$site->home_page;
@@ -197,7 +203,7 @@ foreach my $id (qw/first second third/) {
     diag Dumper({ $node->get_columns });
     diag Dumper($node->serialize);
     foreach my $lang (qw/en it/) {
-        $mech->get_ok("/node-editor?bare=1&__language=$lang");
+        $mech->get_ok("/node?bare=1&__language=$lang");
         # diag $mech->content;
         $mech->content_lacks($params{"title_$lang"});
         my $expected = encode_entities($params{"title_$lang"});
@@ -210,7 +216,7 @@ foreach my $id (qw/first second third/) {
         $mech->content_lacks(q{>"'pinco'"<});
         $mech->content_lacks(q{"x" <script>});
         $mech->content_contains(encode_entities(q{"x" <script>}));
-        $mech->get_ok("/node-editor?bare=1&__language=$lang");
+        $mech->get_ok("/node?bare=1&__language=$lang");
         # $mech->page_links_ok; this will remove everything.
         $mech->get_ok($node->full_uri . "?bare=1&__language=$lang");
         diag $mech->uri;
@@ -221,7 +227,7 @@ foreach my $id (qw/first second third/) {
         $mech->content_contains('&quot;&lt;script&gt;&quot; kid</a>');
         $mech->content_lacks('"<script>" kid');
     }
-    $mech->get_ok($node->full_edit_uri . '?bare=1');
+    $mech->get_ok($node->full_uri . '?bare=1');
     foreach my $param (qw/title_en title_it body_en body_it/) {
         $mech->content_lacks($params{$param});
         my $expected = encode_entities($params{$param});

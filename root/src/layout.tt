@@ -113,7 +113,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 37 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 38 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 3 }) %]"></script>
     <script>
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -431,7 +431,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="[% c.uri_for_action('/nodes/list_nodes') %]">
+                  <a href="[% c.uri_for_action('/nodes/node_root') %]">
                     <span class="fa fa-tags fa-fw" aria-hidden="true"></span>
                     [% loc('Nodes') %]
                   </a>

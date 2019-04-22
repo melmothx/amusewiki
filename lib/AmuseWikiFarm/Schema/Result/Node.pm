@@ -284,16 +284,6 @@ sub full_uri {
     return join('/', '', node => $self->full_path || $self->update_full_path);
 }
 
-sub full_edit_uri {
-    my $self = shift;
-    return join('/', '', 'node-editor', $self->uri, 'edit');
-}
-
-sub full_delete_uri {
-    my $self = shift;
-    return join('/', '', 'node-editor', $self->uri, 'delete');
-}
-
 sub update_from_params {
     my ($self, $params) = @_;
     Dlog_debug { "Updating " . $self->full_uri . " with $_" } $params;
@@ -527,10 +517,14 @@ sub breadcrumbs {
                            };
         shift @full;
     }
-    push @breadcrumbs,{
-                       uri => "/",
-                       label => $lh->loc_html('Home'),
-                      };
+    push @breadcrumbs, {
+                        uri => "/node",
+                        label => $lh->loc_html('Site Map'),
+                       };
+    push @breadcrumbs, {
+                        uri => "/",
+                        label => $lh->loc_html('Home'),
+                       };
     return [ reverse @breadcrumbs ];
 }
 

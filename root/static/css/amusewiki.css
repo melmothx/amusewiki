@@ -405,3 +405,17 @@ legend.amw-facet-title {
     list-style-type: none;
     padding-left: 0px;
 }
+
+.node-overview-list a {
+    color: inherit;
+}
+
+.node-overview-list, .amw-label-node {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.amw-label-node {
+    font-size: 14px;
+    font-weight: bold;
+}

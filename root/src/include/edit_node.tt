@@ -3,7 +3,8 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <form method="POST" action="[% edit_node.full_edit_uri %]" class="form-horizontal" id="node-edit-form">
+    <form method="POST" action="[% c.uri_for_action('nodes/update_node', [ node.uri]) %]"
+          class="form-horizontal" id="node-edit-form">
       <input type="hidden" name="uri" value="[% edit_node.uri | html %]" />
       <div class="form-group">
         <div class="col-xs-12">
@@ -14,8 +15,8 @@
             <option value="0">[% loc('Root node') %]</option>
             [% FOREACH node IN all_nodes %]
               <option value="[% node.uri %]"
-                      [% IF node.node_id == edit_node.parent_node_id %]selected="selected"[% END %]>
-                [% node.name(current_locale_code) %] ([% node.full_uri %])
+                      [% IF node.value == edit_node.parent_node_id %]selected="selected"[% END %]>
+                [% node.label %] ([% node.title %])
               </option>
             [% END %]
           </select>
