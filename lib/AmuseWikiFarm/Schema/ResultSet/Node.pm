@@ -64,6 +64,7 @@ sub all_nodes {
         my %node = (
                     value => $node->{node_id},
                     title => join('/', '', 'node', $node->{full_path}),
+                    uri => $node->{uri},
                     label => encode_entities($node->{uri}),
                    );
         if (@{$node->{node_bodies}}) {
@@ -77,7 +78,7 @@ sub all_nodes {
 }
 
 sub as_tree {
-    my ($self, $lang) = @_;
+    my ($self, $lang, %opts) = @_;
     my $me = $self->current_source_alias;
     my @all = $self->search(undef,
                             {
@@ -105,14 +106,14 @@ sub as_tree {
         }
     }
     Dlog_debug { "Flattened $_" } \%source;
-    my @out = map { _render_node(\%source, $_->{node_id}) }
+    my @out = map { _render_node(\%source, $_->{node_id}, 0, %opts) }
       sort { $a->{sorting_pos} <=> $b->{sorting_pos} or $a->{uri} cmp $b->{uri} }
       grep { !$_->{parent_node_id} } @all;
-    return join('', @out);
+    return \@out;
 }
 
 sub _render_node {
-    my ($source, $id, $depth) = @_;
+    my ($source, $id, $depth, %opts) = @_;
     $depth ||= 0;
     log_debug { "Rendering $id $depth" };
     my $node = $source->{$id};
@@ -120,7 +121,9 @@ sub _render_node {
     my $indent = $root_indent . '  ';
     my $html = "\n" . $root_indent . "<div>\n";
     $html .= $indent . '<div>';
-    $html .= sprintf('<strong><a href="%s">%s</a></strong>',
+    my $class= $opts{class} || 'amw-label-node';
+    $html .= sprintf('<div class="%s"><a href="%s">%s</a></div>',
+                     $class,
                      '/node/' . $node->{full_path},
                      $node->{title_html});
     $html .= "</div>\n";
@@ -159,7 +162,7 @@ sub _render_node {
     }
     my @children_html;
     foreach my $child (grep { $_->{parent_node_id} and  $_->{parent_node_id} eq $id } values %$source) {
-        push @children_html, _render_node($source, $child->{node_id}, $depth);
+        push @children_html, _render_node($source, $child->{node_id}, $depth, %opts);
     }
     if (@children_html) {
         $html .= join("",

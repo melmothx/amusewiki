@@ -26,10 +26,11 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     my $lang = $c->stash->{current_locale_code};
-    $c->stash(node_list => [
-                            map { +{ uri => $_->full_uri, label => $_->name($lang) } }
-                            $site->nodes->root_nodes->sorted
-                           ]);
+    $c->stash(node_list => $site->nodes->as_tree);
+    if ($c->user_exists) {
+        $c->stash(all_nodes => $site->nodes->all_nodes);
+        Dlog_debug  { "All nodes: $_" } $c->stash->{all_nodes};
+    }
 }
 
 sub display :Chained('root') :PathPart('') :Args {
@@ -68,7 +69,7 @@ sub display :Chained('root') :PathPart('') :Args {
         if ($c->user_exists) {
             $c->stash(edit_node => $target,
                       load_markitup_css => 1,
-                      all_nodes => [ $site->nodes->all ],
+                      all_nodes => $site->nodes->all_nodes,
                      );
         }
     }
@@ -80,22 +81,16 @@ sub display :Chained('root') :PathPart('') :Args {
 
 sub admin :Chained('/site_user_required') :PathPart('node-editor') :CaptureArgs(0) {
     my ($self, $c) = @_;
-    my $site = $c->stash->{site};
-    $c->stash(breadcrumbs => [{
-                               uri => $c->uri_for_action('/nodes/list_nodes'),
-                               label => $c->loc_html('Nodes'),
-                              }]);
-    $c->stash(all_nodes => [ $site->nodes->all ]);
 }
 
-sub list_nodes :Chained('admin') :PathPart('') :Args(0) {
+sub create :Chained('admin') :PathPart('create') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     my %params = %{$c->request->body_parameters};
     if (my $uri = $params{uri}) {
         log_info { $c->user->get('username') . " is creating nodes/$uri" };
         if (my $node = $site->nodes->update_or_create_from_params(\%params)) {
-            $c->response->redirect($c->uri_for_action('/nodes/update_node', [$node->uri]));
+            $c->response->redirect($c->uri_for($node->full_uri));
         }
         else {
             log_error { "Failed attempt to create " . $site->id . "/node/$uri" };
@@ -104,21 +99,17 @@ sub list_nodes :Chained('admin') :PathPart('') :Args(0) {
     $c->stash(nodes => [ $site->nodes->root_nodes->sorted->all ]);
 }
 
-sub edit :Chained('admin') :PathPart('') :CaptureArgs(1) {
+sub edit :Chained('admin') :PathPart('edit') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
     if (my $node = $c->stash->{site}->nodes->find_by_uri($uri)) {
         $c->stash(edit_node => $node);
-        push @{$c->stash->{breadcrumbs}}, {
-                                           uri => $c->uri_for_action('/nodes/update_node', [$node->uri]),
-                                           label => encode_entities($node->uri),
-                                          };
     }
     else {
         $c->detach('/not_found');
     }
 }
 
-sub update_node :Chained('edit') :PathPart('edit') :Args(0) {
+sub update_node :Chained('edit') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $node = $c->stash->{edit_node};
     my %params = %{ $c->request->body_parameters };
@@ -131,9 +122,10 @@ sub update_node :Chained('edit') :PathPart('edit') :Args(0) {
     elsif ($params{delete}) {
         Dlog_info { $c->user->get('username') . " deleted $_" } +{ $node->get_columns };
         $node->delete;
-        $c->response->redirect($c->uri_for_action('/nodes/list_nodes'));
+        $c->response->redirect($c->uri_for_action('/nodes/node_root'));
         return;
     }
+    log_debug { "Redirecting to " . $node->full_uri };
     $c->response->redirect($c->uri_for($node->full_uri));
 }
 
