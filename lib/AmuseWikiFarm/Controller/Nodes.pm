@@ -26,7 +26,9 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     my $lang = $c->stash->{current_locale_code};
-    $c->stash(node_list => $site->nodes->as_tree);
+    $c->stash(node_list => $site->nodes->as_tree,
+              page_title => $c->loc('Site Map'),
+             );
     if ($c->user_exists) {
         $c->stash(all_nodes => $site->nodes->all_nodes);
         Dlog_debug  { "All nodes: $_" } $c->stash->{all_nodes};
