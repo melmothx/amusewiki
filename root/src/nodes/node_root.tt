@@ -1,5 +1,11 @@
 [% # -*- mode: web -*- %]
 
+<div class="center">
+  <div class="page-header">
+    <h1>[% loc('Site Map') %]</h1>
+  </div>
+</div>
+
 <div class="row" >
   [% FOREACH node IN node_list %]
     <div class="col-xs-4">
