@@ -1786,16 +1786,16 @@ msgid "Remotes"
 msgstr "unzugänglich"
 
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 msgid "Remove cover image"
-msgstr ""
+msgstr "Titelbild entfernen"
 
 msgid "Remove this category"
-msgstr ""
+msgstr "Diese Kategorie entfernen"
 
 msgid "Rename to"
-msgstr ""
+msgstr "Umbenennen zu"
 
 msgid "Repeat email"
 msgstr "Wiederhole die E-mail"
@@ -2501,7 +2501,7 @@ msgid "Use sans fonts for section titles"
 msgstr ""
 
 msgid "Use the image as cover"
-msgstr ""
+msgstr "Als Titelbild verwenden"
 
 msgid "Useful HTML snippets"
 msgstr ""
