@@ -6,16 +6,16 @@
   </div>
 </div>
 
-<div class="row" >
-  [% FOREACH node IN node_list %]
-    <div class="col-xs-4">
-      <div class="node-overview-list">
+[% FOREACH node IN node_list %]
+  <div class="row" >
+    <div class="col-xs-12">
+      <div class="well node-overview-list">
         [% node %]
       </div>
     </div>
-  [% END %]
-</div>
-</div>
+  </div>
+[% END %]
+
 
 [% IF all_nodes %]
   <div class="row">
