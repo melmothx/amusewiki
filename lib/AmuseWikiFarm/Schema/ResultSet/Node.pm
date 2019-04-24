@@ -58,7 +58,7 @@ sub with_body {
 sub all_nodes {
     my ($self, $lang) = @_;
     my $me = $self->current_source_alias;
-    my @all = $self->search(undef, { order_by => "$me.uri" })->with_body->hri;
+    my @all = $self->with_body->hri;
     my @out;
     foreach my $node (@all) {
         my %node = (
@@ -161,7 +161,9 @@ sub _render_node {
         return $html;
     }
     my @children_html;
-    foreach my $child (grep { $_->{parent_node_id} and  $_->{parent_node_id} eq $id } values %$source) {
+    foreach my $child (sort { $a->{sorting_pos} <=> $b->{sorting_pos} or $a->{uri} cmp $b->{uri} }
+                       grep { $_->{parent_node_id} and  $_->{parent_node_id} eq $id }
+                       values %$source) {
         push @children_html, _render_node($source, $child->{node_id}, $depth, %opts);
     }
     if (@children_html) {

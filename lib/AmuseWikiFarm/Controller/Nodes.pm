@@ -26,11 +26,11 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $site = $c->stash->{site};
     my $lang = $c->stash->{current_locale_code};
-    $c->stash(node_list => $site->nodes->as_tree,
+    $c->stash(node_list => $site->nodes->sorted->as_tree($lang),
               page_title => $c->loc('Site Map'),
              );
     if ($c->user_exists) {
-        $c->stash(all_nodes => $site->nodes->all_nodes);
+        $c->stash(all_nodes => $site->nodes->sorted->all_nodes($lang));
         Dlog_debug  { "All nodes: $_" } $c->stash->{all_nodes};
     }
 }
@@ -59,7 +59,7 @@ sub display :Chained('root') :PathPart('') :Args {
         my $title = $desc ? $desc->title_html : encode_entities($target->uri);
         my $body =  $desc ? $desc->body_html : '';
         my @pages = $target->linked_pages;
-        my @children = $target->children_pages;
+        my @children = $target->children_pages(locale => $locale);
         $c->stash(node => $target,
                   node_title => $title,
                   node_body => $body,
@@ -71,7 +71,7 @@ sub display :Chained('root') :PathPart('') :Args {
         if ($c->user_exists) {
             $c->stash(edit_node => $target,
                       load_markitup_css => 1,
-                      all_nodes => $site->nodes->all_nodes,
+                      all_nodes => $site->nodes->sorted->all_nodes($locale),
                      );
         }
     }
