@@ -145,6 +145,7 @@ sub deserialize_site {
         $external{$method} = $values if @$values;
     }
     my @users = @{ delete $hashref->{users} || [] };
+    my @nodes = @{ delete $hashref->{nodes} || [] };
     my $site = $self->update_or_create($hashref);
 
     # notably, tables without a non-auto PK, and where it makes sense
@@ -205,6 +206,7 @@ sub deserialize_site {
         }
     }
     $site->set_users(\@add);
+    $site->deserialize_nodes(\@nodes);
     $guard->commit;
     $site->discard_changes;
     return $site;

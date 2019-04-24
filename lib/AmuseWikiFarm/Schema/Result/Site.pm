@@ -3571,8 +3571,72 @@ sub serialize_site {
         push @users, \%user_data;
     }
     $data{users} = \@users;
+    # and the nodes
+    $data{nodes} = [ map { $_->serialize } $self->nodes->sorted->all ];
     return \%data;
 }
+
+sub _validate_attached_uris {
+    my ($self, $string) = @_;
+    my @list = ref($string)
+          ? (@$string)
+          : (grep { length($_) } split(/\s+/, $string));
+    my $titles_rs = $self->titles;
+    my $cats_rs = $self->categories;
+    my (@done, @missing);
+  STRING:
+    foreach my $str (@list) {
+        if (my $title = $titles_rs->by_full_uri($str)) {
+            push @done, $str;
+        }
+        elsif (my $cat = $cats_rs->by_full_uri($str)) {
+            push @done, $str;
+        }
+        else {
+            push @missing, $str;
+        }
+    }
+    return +{
+             ok => \@done,
+             fail => \@missing,
+            };
+}
+
+
+
+sub deserialize_nodes {
+    my ($self, $nodes) = @_;
+    my $changed = $self->repo_find_changed_files;
+    return unless @$nodes;
+
+    my @fail;
+    foreach my $node (@$nodes) {
+        if (my $str = $node->{attached_uris}) {
+            my $validate = $self->_validate_attached_uris($str);
+            Dlog_debug { "$str => $_" } $validate;
+            push @fail, @{$validate->{fail} || []};
+        }
+    }
+    if (@fail) {
+        Dlog_error { $self->id . " cannot import nodes because of $_ non existing URIs,"
+                       . " please reimport after a bootstrap\n" } \@fail;
+        print map { $_ . "\n" } @fail;
+        print $self->id . " is missing the above attached URIs, please reimport after a boostrap\n";
+        return;
+    }
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->nodes->delete;
+    foreach my $node (@$nodes) {
+        $self->nodes->update_or_create_from_params({ %$node });
+    }
+    # here's the trick. We need to run it twice so the parents exist
+    foreach my $node (@$nodes) {
+        $self->nodes->update_or_create_from_params({ %$node });
+    }
+    $guard->commit;
+    return scalar(@$nodes);
+}
+
 
 sub populate_monthly_archives {
     my $self = shift;

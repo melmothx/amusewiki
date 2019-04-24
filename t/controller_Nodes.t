@@ -7,8 +7,9 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 99;
+use Test::More tests => 106;
 use Data::Dumper::Concise;
+use YAML qw/Dump Load/;
 
 my $builder = Test::More->builder;
 binmode $builder->output,         ":encoding(utf8)";
@@ -254,6 +255,36 @@ foreach my $checked ([ single => $node_ids[0] ], [ all => \@node_ids ]) {
     else {
         ok $rev->title->nodes->count > 1, "Multiple nodes attached";
     }
+}
+
+
+{
+    my $serialized = $site->serialize_site;
+    diag Dump($serialized->{nodes});
+    my $check_site = Load(Dump($serialized));
+    my $copy = Load(Dump($serialized->{nodes}));
+    $site->nodes->delete;
+    is_deeply $site->serialize_site->{nodes}, [], "nodes are gone";
+    $site->deserialize_nodes($serialized->{nodes});
+    $site->discard_changes;
+    is_deeply $site->serialize_site->{nodes}, $copy;
+    $site->delete;
+    my $new_site = $schema->resultset('Site')->deserialize_site(Load(Dump($serialized)));
+    ok $new_site;
+    my $round_trip = $new_site->serialize_site;
+    is_deeply $round_trip->{nodes}, [], "No nodes because the titles are gone";
+    $new_site->update_db_from_tree;
+
+    ok scalar(@{ $serialized->{nodes} || []}), "Nodes still there";
+    $schema->resultset('Site')->deserialize_site(Load(Dump($serialized)));
+
+    $round_trip = $new_site->serialize_site;
+    foreach my $spurious (qw/last_updated/) {
+        delete $round_trip->{$spurious};
+        delete $check_site->{$spurious};
+    }
+    is_deeply $round_trip, $check_site, "Serialization work" or diag Dumper([ $round_trip, $check_site ]);
+    ok $new_site->nodes->count;
 }
 
 
