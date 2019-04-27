@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # cp bootstrap/dist/fonts/* ../root/static/fonts
-cp Font-Awesome/css/* ../root/static/css
-cp Font-Awesome/fonts/* ../root/static/fonts
 cp bootstrap/dist/js/bootstrap* ../root/static/js
 lessc -x amusewiki.less ../root/static/css/bootstrap.css
 for theme in amusecosmo amusewiki amusejournal; do
@@ -10,7 +8,7 @@ for theme in amusecosmo amusewiki amusejournal; do
 done
 
 rm -f amw-theme.less
-for theme in cerulean cosmo cyborg darkly default flatly journal lumen paper readable \
+for theme in cerulean cosmo cyborg darkly flatly journal lumen paper readable \
                   sandstone simplex slate spacelab superhero united yeti; do
     cat <<EOF > amw-theme.less
 @import "bootstrap.less";
