@@ -1,0 +1,28 @@
+/* https://google-webfonts-helper.herokuapp.com/fonts/news-cycle?subsets=latin-ext,latin */
+/* news-cycle-regular - latin_latin-ext */
+@font-face {
+  font-family: 'News Cycle';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/news-cycle-v15-latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
+  src: local('News Cycle'), local('NewsCycle'),
+       url('../fonts/news-cycle-v15-latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/news-cycle-v15-latin_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/news-cycle-v15-latin_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/news-cycle-v15-latin_latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/news-cycle-v15-latin_latin-ext-regular.svg#NewsCycle') format('svg'); /* Legacy iOS */
+}
+
+/* news-cycle-700 - latin_latin-ext */
+@font-face {
+  font-family: 'News Cycle';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/news-cycle-v15-latin_latin-ext-700.eot'); /* IE9 Compat Modes */
+  src: local('News Cycle Bold'), local('NewsCycle-Bold'),
+       url('../fonts/news-cycle-v15-latin_latin-ext-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/news-cycle-v15-latin_latin-ext-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/news-cycle-v15-latin_latin-ext-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/news-cycle-v15-latin_latin-ext-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/news-cycle-v15-latin_latin-ext-700.svg#NewsCycle') format('svg'); /* Legacy iOS */
+}
