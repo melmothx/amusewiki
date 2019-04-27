@@ -3566,6 +3566,10 @@ sub bootstrap_themes {
                      slate
                      spacelab
                      united
+                     paper
+                     sandstone
+                     superhero
+                     yeti
                     /);
     return @themes;
 }
