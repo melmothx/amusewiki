@@ -5,7 +5,7 @@ use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 61;
+use Test::More tests => 65;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -103,6 +103,32 @@ $mech->submit_form(with_fields => {
 $mech->content_contains('Created new text');
 
 my $revedit =  $mech->uri;
+
+$site->site_options->update_or_create({ option_name => 'max_image_dimension',
+                                        option_value => 10 });
+
+$mech->post($revedit . '/upload',
+            Content_Type => 'form-data',
+            Content => [
+                        attachment => [ catfile(qw/t files shot.png/),
+                                        catfile(qw/t files shot.png/),
+                                        Content_Type => 'image/png',
+                                      ],
+                       ]);
+{
+    my $res = from_json($mech->content);
+    diag $mech->content;
+    ok $res->{error};
+    ok !$res->{success};
+    ok !$res->{insert};
+    like $res->{error}->{message}, qr{Image dimensions .* exceed limit of 10 x 10 pixels};
+}
+
+$site->site_options->update_or_create({ option_name => 'max_image_dimension',
+                                        option_value => 4000 });
+
+
+
 $mech->post($revedit . '/upload',
             Content_Type => 'form-data',
             Content => [

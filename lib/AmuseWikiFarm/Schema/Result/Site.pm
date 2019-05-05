@@ -2944,6 +2944,7 @@ sub update_from_params {
                            pagination_size_latest
                            pagination_size_category
                            automatic_teaser
+                           max_image_dimension
                           /) {
         my $value = 0;
         if (my $set_to = delete $params->{$option}) {
@@ -3280,6 +3281,10 @@ sub enable_video_widgets {
 
 sub lists_are_always_flat {
     return shift->get_option('lists_are_always_flat') || '';
+}
+
+sub max_image_dimension {
+    return shift->get_option('max_image_dimension') || 4000;
 }
 
 sub pagination_needed {
