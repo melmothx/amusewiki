@@ -2986,6 +2986,7 @@ sub update_from_params {
                            edit_option_show_filters
                            edit_option_preview_box_height
                            show_type_and_number_of_pages
+                           enable_xapian_suggestions
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3410,6 +3411,10 @@ sub show_type_and_number_of_pages {
     return $self->get_option('show_type_and_number_of_pages') || '';
 }
 
+sub enable_xapian_suggestions {
+    my $self = shift;
+    return $self->get_option('enable_xapian_suggestions') || '';
+}
 
 sub text_infobox_at_the_bottom {
     return shift->get_option('text_infobox_at_the_bottom') || '';

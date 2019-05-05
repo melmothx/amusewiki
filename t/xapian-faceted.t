@@ -12,7 +12,7 @@ use Text::Amuse::Compile::Utils qw/read_file write_file/;
 use AmuseWiki::Tests qw/create_site/;
 use AmuseWikiFarm::Schema;
 use Test::WWW::Mechanize::Catalyst;
-use Test::More tests => 187;
+use Test::More tests => 195;
 use Data::Dumper::Concise;
 use Path::Tiny;
 use Search::Xapian (':all');
@@ -438,9 +438,19 @@ foreach my $sort_by (keys %SORTINGS) {
         is $res->did_you_mean, $sugg->[1], "Suggestion is $sugg->[1]";
         my $correct = $site->xapian->faceted_search(query => $sugg->[1]);
         ok !$correct->did_you_mean or diag $correct->did_you_mean;
-        $mech->get_ok('/search?query=' . $sugg->[0]);
-        $mech->content_contains('Did you mean');
-        ok $mech->follow_link(text_regex => qr{\Q$sugg->[1]\E});
-        $mech->content_lacks('Did you mean');
+
+        foreach my $enable (0, 1) {
+            $site->site_options->update_or_create({ option_name => 'enable_xapian_suggestions',
+                                                    option_value => $enable });
+            $mech->get_ok('/search?query=' . $sugg->[0]);
+            if ($enable) {
+                $mech->content_contains('Did you mean');
+                ok $mech->follow_link(text_regex => qr{\Q$sugg->[1]\E});
+                $mech->content_lacks('Did you mean');
+            }
+            else {
+                $mech->content_lacks('Did you mean');
+            }
+        }
     }
 }
