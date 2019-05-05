@@ -309,6 +309,27 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
 
         if (my ($upload) = $c->request->upload('attachment')) {
             my $file =  $upload->tempname;
+
+            my ($w, $h) = AmuseWikiFarm::Utils::Amuse::image_dimensions($file);
+            if ($w && $h) {
+                if (my $limit = $c->stash->{site}->max_image_dimension) {
+                    if ($w > $limit or $h > $limit) {
+                        %out = (
+                                success => 0,
+                                insert => 0,
+                                error => {
+                                          message => $c->loc('Image dimensions [_1] x [_2] exceed limit of [_3] x [_4] pixels',
+                                                             $w, $h, $limit, $limit),
+                                         },
+                               );
+                        $c->stash(json => \%out);
+                        $c->detach($c->view('JSON'));
+                        return;
+                    }
+                }
+            }
+
+
             if ($c->request->body_params->{split_pdf}) {
                 my $outcome = $revision->add_attachment_as_images($file);
                 if ($outcome->{uris}) {
@@ -317,6 +338,7 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
             }
             else {
                 my $outcome = $revision->add_attachment($file);
+                Dlog_debug { "add attachment outcome: $_" } $outcome;
                 if ($outcome->{attachment}) {
                     push @uris, $outcome->{attachment};
                 }

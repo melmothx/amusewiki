@@ -18,6 +18,8 @@ use JSON::MaybeXS ();
 use Try::Tiny;
 use AmuseWikiFarm::Log::Contextual;
 use Path::Tiny;
+use File::MimeInfo::Magic qw/mimetype/;
+use Imager;
 
 our @ISA = qw(Exporter);
 our @EXPORT_OK = qw/muse_file_info
@@ -898,18 +900,19 @@ sub from_json {
 sub image_dimensions {
     my ($file) = @_;
     my ($w, $h);
-    if ($file and -f $file and $file =~ m/\.(jpe?g|png)\z/) {
-        try {
-            require Imager;
-            Imager->set_file_limits(reset => 1);
-            my $img = Imager->new(file => "$file") or die Imager->errstr;
-            $w = $img->getwidth;
-            $h = $img->getheight;
-            log_debug { "$file: W:$w H:$h" };
-        } catch {
-            my $error = $_;
-            log_error { "Failed to compute image dimensions for $file: $error" };
-        };
+    if ($file and -f $file) {
+        my $mime = mimetype("$file");
+        if ($mime =~ m{image/(jpeg|png)}) {
+            try {
+                my $img = Imager->new(file => "$file") or die Imager->errstr;
+                $w = $img->getwidth;
+                $h = $img->getheight;
+                log_debug { "$file: W:$w H:$h" };
+            } catch {
+                my $error = $_;
+                log_error { "Failed to compute image dimensions for $file: $error" };
+            };
+        }
     }
     return ($w, $h);
 }
@@ -1001,8 +1004,6 @@ sub _generate_thumbnail {
         log_debug { "Using $outpng instead of $input" };
         $input = $outpng; # consider our PNG as the source;
     }
-    require Imager;
-    Imager->set_file_limits(reset => 1);
     my $img = Imager->new(file => "$input") or die Imager->errstr;
     log_debug { "Scaling $input into $output with $width" };
     my $thumb = $img->scale(xpixels => $width, qtype => 'mixing');
@@ -1012,9 +1013,6 @@ sub _generate_thumbnail {
 
 sub strip_image {
     my ($input, $output) = @_;
-    require Imager;
-    Imager->set_file_limits(width => 4000,
-                            height => 4000);
     my $incoming = Imager->new(file => $input) or die Imager->errstr;
     my $img = $incoming->copy;
     undef $incoming;

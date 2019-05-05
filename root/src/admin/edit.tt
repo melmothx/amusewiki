@@ -415,6 +415,19 @@ kpsewhich mylogo.pdf
                class="form-control digits" value="[% esite.bb_page_limit | html %]" />
       </div>
     </div>
+
+    <div class="form-group">
+      <label for="max_image_dimension" class="col-sm-6 control-label">
+        [% loc('Max image dimension in pixels, applies to both width and height') %]
+      </label>
+      <div class="col-sm-6">
+        <input type="number" min="1" name="max_image_dimension" id="max_image_dimension"
+               class="form-control digits" value="[% esite.max_image_dimension | html %]" />
+      </div>
+    </div>
+
+
+
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-6">
         <label>
