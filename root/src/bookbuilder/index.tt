@@ -87,8 +87,8 @@
         </label>
       </div>
       <div class="col-sm-9 amw-form-field">
-        <input type="text" name="title" id="title"
-               class="form-control required" value="[% bb.title | html %]"/>
+        <input type="text" name="title" id="title" data-is-collection="[% bb.is_collection %]"
+               class="form-control" value="[% bb.title | html %]" />
       </div>
     </div>
     <div class="row">
@@ -206,23 +206,17 @@
   </div>
 </form>
 
-[% IF bb.is_collection %]
-[% INCLUDE 'include/validate.tt' %]
 <script>
-$(document).ready(function(){
-   $("#bbform").validate();
-});
+ $(document).ready(function(){
+     if ($("#title").data('is-collection')) {
+         $("#title").prop('required', true);
+     }
+     else {
+         $("#customtitlepage").hide();
+     }
+ });
 </script>
-[% ELSE %]
-<script>
-$(document).ready(function(){
-   $("#customtitlepage").hide();
-});
-</script>
-[% END %]
 </div>
-
-
 [% IF c.user_exists %]
 <div id="bb-profiles">
   <h3>[% loc('Option templates') %]</h3>
