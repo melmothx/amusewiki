@@ -1,7 +1,6 @@
 [% # -*- mode:html -*- %]
 
 [% INCLUDE 'include/markitup.tt' %]
-[% INCLUDE 'include/validate.tt' %]
 
 [% IF editing_warnings %]
 <div id="editing-warnings" class="alert alert-danger">
@@ -125,6 +124,7 @@
       <textarea rows="20" cols="60" id="maintextarea"
                 class="form-control text-muse-body"
                 [% IF locked_editing %]readonly="readonly"[% END %]
+                required
                 name="body">[%- revision.muse_body | html -%]</textarea>
       <div id="fullscreen-markitup-toggle-button">
         <button class="btn btn-default btn-sm" type="button" id="fullscreen-markitup-toggle">
@@ -301,7 +301,8 @@
       </label>
       <textarea rows="2" cols="72" id="rev-message"
                 [% IF locked_editing %]readonly="readonly"[% END %]
-                name="message" class="form-control">
+                name="message" class="form-control"
+                [% UNLESS site.do_not_enforce_commit_message %]required[% END %]>
 [%- c.req.params.message | html -%]</textarea>
       <br />
     </div>
@@ -309,7 +310,7 @@
       <label for="email">
         [% loc('Please leave a mail if you want to be contacted about this change') %]
       </label>
-      <input type="text" name="email" id="email" class="form-control" value="[% c.req.params.email | html %]"/>
+      <input type="email" name="email" id="email" class="form-control" value="[% c.req.params.email | html %]"/>
       <br />
     </div>
     <div>
@@ -325,7 +326,7 @@
         Just a fancy name, so we can know that multiple uploads come
         from the same person.") %]
       </label>
-      <input type="text" name="username" id="username" class="form-control" value="[% submitted_username | html %]" />
+      <input type="text" name="username" id="username" class="form-control" value="[% submitted_username | html %]" required/>
       <br />
     </div>
     [% UNLESS locked_editing %]
@@ -792,21 +793,7 @@ How smart a lash that speech doth giue my Conscience?
      $('#amw-text-edit-preview-box').load("[% preview_uri %]?bare=1 #amw-text-preview-page",
                                           function() { add_flag_to_internal_anchors() });
  }
-$.validator.addMethod("muse", function (value, element) {
-    var re = new RegExp("^#title +", "m");
-    return this.optional(element) || re.test(value);
-}, "[% loc('Missing #title header in the text!') | escape_js %]");
 $(document).ready(function(){
-    $("#museform").validate({
-        rules: {
-            body: "required muse",
-            username: "required",
-            [%- UNLESS site.do_not_enforce_commit_message %]
-            message: "required",
-            [%- END %]
-            email: "email",
-        }
-    });
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });
      load_preview();
  });
