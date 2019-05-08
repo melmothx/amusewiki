@@ -301,9 +301,7 @@
       </label>
       <textarea rows="2" cols="72" id="rev-message"
                 [% IF locked_editing %]readonly="readonly"[% END %]
-                name="message" class="form-control"
-                [% UNLESS site.do_not_enforce_commit_message %]required[% END %]>
-[%- c.req.params.message | html -%]</textarea>
+                name="message" class="form-control" [% UNLESS site.do_not_enforce_commit_message %]required[% END %]>[%- c.req.params.message | html -%]</textarea>
       <br />
     </div>
     <div>
