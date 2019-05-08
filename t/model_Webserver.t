@@ -3,7 +3,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 14;
+use Test::More tests => 9;
 use Test::WWW::Mechanize::Catalyst;
 use File::Spec;
 use File::Copy qw/move/;
@@ -37,13 +37,8 @@ $mech->set_fields(author => 'pippo',
 
 $mech->click;
 diag $mech->uri;
-$mech->content_contains("localization/messages_hr.js");
 diag "Changing language user interface";
 $mech->get($mech->uri . '?__language=en');
-$mech->content_lacks("localization/messages_en.js");
-$mech->content_lacks("localization/messages_hr.js");
-$mech->content_lacks("localization/messages");
-$mech->content_contains("jquery.validate.min.js") or diag $mech->content;
 
 {
     my $ws = AmuseWikiFarm::Utils::Webserver->new;
