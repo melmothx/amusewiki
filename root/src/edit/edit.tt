@@ -372,7 +372,8 @@
           </a>
         </li>
         <li><a href="#cslists">[% loc('Lists') %]</a></li>
-        <li><a href="#cslinks">[% loc('Links and images') %]</a></li>
+        <li><a href="#cslinks">[% loc('Links')%]</a></li>
+        <li><a href="#csimages">[% loc('Images')%]</a></li>
         <li><a href="#cstabs">[% loc('Tables') %]</a></li>
         <li>
           <a href="#csdirs">
@@ -608,20 +609,26 @@ How smart a lash that speech doth giue my Conscience?
         [% loc('Prefix for ordered lists may be “1.”, “a.”, “A.”,
         “i.”, “I.”, depending on the list type you need.') %]
       </p>
-      <h4 id="cslinks">[% loc('Links and images') %]</h4>
-      <p>[% loc('They have the same syntax (images are actually links)') %]</p>
-      <ul>
-        <li>
+      <h4 id="cslinks">[% loc('Links') %]</h4>
+      <p>
           [% loc('Make a link clickable') %]:
           <code>[[https://amusewiki.org][[% loc('displayed text') %]]]</code>
           ([% loc('with description') %])
           [% loc('or') %] <code>[[https://amusewiki.org]]</code>
-          ([% loc('without description') %])
-        </li>
-        <li id="image-help">
-          [% loc('Images:') %]
+          ([% loc('without description') %]).
+      </p>
+      <p>
+        <a href="https://amusewiki.org/library/manual#text-amuse-label-namedanchor">
+          [% loc('You can also link to a part of the text. Please refer to the manual for this feature') %]
+        </a>
+      </p>
 
-  <ul>
+      <h4 id="csimages">[% loc('Images') %]</h4>
+
+      <p><em>[% loc('Upload the image and note its name. Files are always renamed.') %]</em></p>
+      <p>[% loc('Uploaded and available images are shown and listed below the text preview.') %]</p>
+
+      <ul>
     <li>[% loc('Place it in the body without description:') %]<br>
       <code>[[[%- loc('image') -%]]]</code>
     </li>
@@ -638,12 +645,6 @@ How smart a lash that speech doth giue my Conscience?
       on') %]<br>
       <code>#coverwidth 0.25</code>
     </li>
-  </ul>
-
-          [% loc('Please note that you have to upload them first and
-          use the name the form provides. Images are always renamed by
-          us.') %]
-        </li>
       </ul>
       <h4 id="cstabs">[% loc('Tables') %]</h4>
       <pre>
