@@ -1204,6 +1204,5 @@ $(document).ready(function() {
 <script type="text/javascript">
     $(document).ready(function() {
         $('#highlight-js-languages').text(hljs.listLanguages().join(' '));
-        $("#site-edit-form").validate();
     });
 </script>
