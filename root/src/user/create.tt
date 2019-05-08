@@ -1,5 +1,4 @@
 [%# -*- mode:html -*- %]
-[% INCLUDE 'include/validate.tt' %]
 
 <h2>[% loc('Create a new librarian') %]</h2>
 
@@ -12,7 +11,8 @@
       <label for="username">
         [% loc('Username, alphanumerical only, no special characters, no uppercase') %]
       </label>
-      <input class="form-control userv required" type="text" name="username"
+      <input class="form-control" type="text" name="username"
+             required pattern="[0-9a-z]+"
              id="username" value="[% c.req.params.username | html %]" />
     </p>
     <p>
@@ -20,14 +20,16 @@
           [% loc('Password, minimum 8 characters.') %]<br />
           <strong>[% loc('Please do not use a valuable password.') %]</strong>
       </label>
-      <input class="form-control required passv" type="password" name="password"
+      <input class="form-control" type="password" name="password"
+             pattern=".{8,}" required
              id="password" value="" />
     </p>
     <p>
       <label for="passwordrepeat">
         [% loc('Repeat password') %]
       </label>
-      <input class="form-control required passv" type="password" name="passwordrepeat"
+      <input class="form-control passv" type="password" name="passwordrepeat"
+             pattern=".{8,}" required
              id="passwordrepeat" value="" />
     </p>
     <p>
@@ -35,7 +37,7 @@
         [% loc('Email') %]
       </label>
       [% loc('The password will be mailed at this address') %]
-      <input class="form-control email required" type="text" name="email"
+      <input class="form-control email" type="email" name="email" required
              id="email" value="[% c.req.params.email | html %]" />
     </p>
     <p>
@@ -43,7 +45,7 @@
         [% loc('Repeat email') %]
       </label>
       [% loc('So we can be sure we are not mailing passwords to random people') %]
-      <input class="form-control email required" type="text" name="emailrepeat"
+      <input class="form-control email required" type="email" name="emailrepeat" required
              id="emailrepeat" value="" />
     </p>
     <button type="submit" class="btn btn-default" name="create" value="create">
@@ -58,17 +60,3 @@
     <img src="https://imgs.xkcd.com/comics/password_strength.png" width="90%"/>
   </div>
 </div>
-
-<script type="text/javascript">
-$.validator.addMethod("userv", function (value, element) {
-    var re = new RegExp("^[0-9a-z]+$")
-    return this.optional(element) || re.test(value);
-}, "[% loc('Invalid username') | escape_js %]");
-$.validator.addMethod("passv", function (value, element) {
-    var re = new RegExp("^.{8,}$")
-    return this.optional(element) || re.test(value);
-}, "[% loc('Password too short') | escape_js %]");
-$(document).ready(function(){
-   $("#create-user").validate();
-});
-</script>
