@@ -1,5 +1,0 @@
-[%# -*- mode: html -*- %]
-<script src="[% c.uri_for('/static/js/validate/dist/jquery.validate.min.js') %]"></script>
-[% IF current_locale_code != 'en' %]
-<script src="[% c.uri_for('/static/js/validate/dist/localization/messages_' _ current_locale_code _ '.js') %]"></script>
-[% END %]
