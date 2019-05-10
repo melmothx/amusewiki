@@ -59,7 +59,7 @@ sub is_obsolete {
     return 0;
 }
 
-sub loc {
+sub _normalize_args {
     my ($self, $key, @args) = @_;
     return '' unless defined($key) && length($key);
     if (@args == 1) {
@@ -80,6 +80,13 @@ sub loc {
         $key =~ s/\[(?!_[1-9]\])/~[/g;
         $key =~ s/(?<!\[_[1-9])\]/~]/g;
     }
+    return ($key, @args);
+}
+
+sub loc {
+    my $self = shift;
+    my ($key, @args) = $self->_normalize_args(@_);
+    return '' unless length($key);
     log_debug { "Translating $key" };
     my $out;
     if (my $site = $self->site) {
@@ -95,6 +102,23 @@ sub loc {
 sub loc_html {
     my $self = shift;
     return encode_entities($self->loc(@_), q{<>&"'});
+}
+
+sub site_loc {
+    my $self = shift;
+    my ($key, @args) = $self->_normalize_args(@_);
+    return '' unless length($key);
+    log_debug { "Translating $key" };
+    my $out;
+    if (my $site = $self->site) {
+        try { $out = $site->maketext($key, @args) } catch { $out = undef };
+    }
+    return $out || $key;
+}
+
+sub site_loc_html {
+    my $self = shift;
+    return encode_entities($self->site_loc(@_), q{<>&"'});
 }
 
 1;
