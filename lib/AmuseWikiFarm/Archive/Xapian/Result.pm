@@ -188,7 +188,7 @@ sub _build_topics {
     $self->_add_category_labels(topic => $list);
     if (my $lh = $self->lh) {
         foreach my $i (@$list) {
-            $i->{label} = $lh->loc($i->{label});
+            $i->{label} = $lh->site_loc($i->{label});
         }
     }
     return $list;

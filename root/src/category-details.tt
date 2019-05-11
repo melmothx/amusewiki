@@ -4,7 +4,7 @@
 
 <div class="page-header">
   [%- # if you modify this, check entities.t and controller_Category.t -%]
-  <h1><span id="amw-category-details-category-name">[% loc(category.name) %]</span>
+  <h1><span id="amw-category-details-category-name">[% lh.site_loc_html(category.name) %]</span>
   [%- IF multilang -%]
   [%- IF multilang.active -%]
   [%- IF multilang.filtered -%]

@@ -33,7 +33,7 @@
   <div style="margin-bottom: 1px">
     <a href="[%- c.uri_for(cat.full_uri) -%]" class="list-group-item clearfix">
       <strong>
-        [%- loc(cat.name) -%]
+        [%- lh.site_loc_html(cat.name) -%]
       </strong>
       <span class="badge">[%- cat.text_count -%]</span>
     </a>

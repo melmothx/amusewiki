@@ -4,7 +4,7 @@
 
 <div class="row" style="margin-bottom: 20px">
   <div class="col-md-12 center">
-    <h2>[% loc('Update category description') %]: [% loc(category.name) %] ([% multilang.filtered %])</h2>
+    <h2>[% loc('Update category description') %]: [% lh.site_loc_html(category.name) %] ([% multilang.filtered %])</h2>
   </div>
 </div>
 [% IF category_description %]

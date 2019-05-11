@@ -87,7 +87,7 @@ sub loc {
     my $self = shift;
     my ($key, @args) = $self->_normalize_args(@_);
     return '' unless length($key);
-    log_debug { "Translating $key" };
+    # log_debug { "Translating $key" };
     my $out;
     if (my $site = $self->site) {
         try { $out = $site->maketext($key, @args) } catch { $out = undef };
@@ -95,7 +95,7 @@ sub loc {
     unless (defined $out) {
         $out = $self->global->maketext($key, @args);
     }
-    log_debug { "Returning <$out> from <$key>" };
+    # log_debug { "Returning <$out> from <$key>" };
     return $out;
 }
 
@@ -108,11 +108,12 @@ sub site_loc {
     my $self = shift;
     my ($key, @args) = $self->_normalize_args(@_);
     return '' unless length($key);
-    log_debug { "Translating $key" };
+    log_debug { "Translating (site) $key" };
     my $out;
     if (my $site = $self->site) {
         try { $out = $site->maketext($key, @args) } catch { $out = undef };
     }
+    log_debug { "Result is " . ($out || $key) };
     return $out || $key;
 }
 
