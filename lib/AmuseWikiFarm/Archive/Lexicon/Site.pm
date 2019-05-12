@@ -75,17 +75,18 @@ sub _normalize_args {
     }
     # in case html is passed:
     $key = decode_entities($key);
+    my $original_key = $key;
     if ($key =~ m/[\[\]]/) {
         $key =~ s/~/~~/g; # escape the tilde
         $key =~ s/\[(?!_[1-9]\])/~[/g;
         $key =~ s/(?<!\[_[1-9])\]/~]/g;
     }
-    return ($key, @args);
+    return ($original_key, $key, @args);
 }
 
 sub loc {
     my $self = shift;
-    my ($key, @args) = $self->_normalize_args(@_);
+    my ($original_key, $key, @args) = $self->_normalize_args(@_);
     return '' unless length($key);
     # log_debug { "Translating $key" };
     my $out;
@@ -106,7 +107,7 @@ sub loc_html {
 
 sub site_loc {
     my $self = shift;
-    my ($key, @args) = $self->_normalize_args(@_);
+    my ($original_key, $key, @args) = $self->_normalize_args(@_);
     return '' unless length($key);
     log_debug { "Translating (site) $key" };
     my $out;
@@ -114,7 +115,7 @@ sub site_loc {
         try { $out = $site->maketext($key, @args) } catch { $out = undef };
     }
     log_debug { "Result is " . ($out || $key) };
-    return $out || $key;
+    return $out || $original_key;
 }
 
 sub site_loc_html {

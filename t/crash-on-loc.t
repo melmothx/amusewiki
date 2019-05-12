@@ -6,7 +6,7 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 19;
+use Test::More tests => 32;
 use AmuseWikiFarm::Schema;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -47,4 +47,5 @@ my @strings = ('[hello]', '%hullo', "I ate [quant,_1,rhubarb pie].",
               );
 foreach my $string (@strings) {
     is $string, $model->localizer->loc($string), "$string pass ok";
+    is $string, $model->localizer->site_loc($string), "$string pass ok";
 }
