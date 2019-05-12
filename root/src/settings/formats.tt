@@ -8,6 +8,7 @@
       <th>[% loc('Name') %]</th>
       <th>[% loc('Description') %]</th>
       <th>[% loc('Active') %]</th>
+      <th>[% loc('Clone') %]</th>
       <th>[% loc('Priority') %]</th>
       <th>[% loc('File extension') %]</th>
     </tr>
@@ -37,6 +38,15 @@
               </button>
             </form>
           [% END %]
+        </td>
+        <td>
+          <form action="[% format.clone_url %]" method="POST"
+                id="format-clone-[% format.id %]">
+            <input type="hidden" name="go" value="1" />
+            <button type="submit" class="btn btn-default">
+              <span class="fa fa-copy"></span>
+            </button>
+          </form>
         </td>
         <td>
           <form action="[% format.change_format_priority_url %]" method="POST"

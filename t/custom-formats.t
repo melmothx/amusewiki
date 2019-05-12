@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 262;
+use Test::More tests => 264;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -225,6 +225,18 @@ foreach my $text ($site->titles->all) {
 }
 
 diag Dumper(\@gen_files, \@links);
+
+{
+    my $total = $site->custom_formats->count;
+    $mech->get_ok('/settings/formats');
+    foreach my $cf ($site->custom_formats->all) {
+        $mech->submit_form(form_id => 'format-clone-' . $cf->custom_formats_id );
+    }
+    is $site->custom_formats->count, $total * 2;
+}
+
+
+
 
 $site->delete;
 is($schema->resultset('CustomFormat')->search({ site_id => $site_id })->count, 0,

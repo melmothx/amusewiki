@@ -57,6 +57,7 @@ sub formats :Chained('list_custom_formats') :PathPart('') :Args(0) {
                      deactivate_url => $c->uri_for_action('/settings/make_format_inactive', [ $id ]),
                      activate_url   => $c->uri_for_action('/settings/make_format_active', [ $id ]),
                      change_format_priority_url => $c->uri_for_action('/settings/change_format_priority', [ $id ]),
+                     clone_url => $c->uri_for_action('/settings/clone_format', [ $id ]),
                      name => $format->format_name,
                      description => $format->format_description,
                      active => $format->active,
@@ -170,6 +171,30 @@ sub change_format_priority :Chained('get_format') :PathPart('priority') :Args(0)
         if ($priority =~ m/\A[1-9][0-9]*\z/) {
             $c->stash->{edit_custom_format}->update({ format_priority => $priority })
         }
+    }
+    $c->response->redirect($c->uri_for_action('/settings/formats'));
+}
+
+sub clone_format :Chained('get_format') :PathPart('clone') :Args(0) {
+    my ($self, $c) = @_;
+    Dlog_debug { "cloning CF" } $c->request->body_parameters;
+    my $cf = $c->stash->{edit_custom_format};
+    if ($c->request->body_parameters->{go}) {
+        my %existing = map { $_->format_name => 1 } $cf->site->custom_formats->all;
+        my $basename = $cf->format_name;
+        $basename =~ s/ \([0-9]+\)$//;
+        my $name = $basename;
+        my $count = 0;
+        Dlog_debug { "Existing CF $_" } \%existing;
+        while ($existing{$name}) {
+            $count++;
+            $name = $basename . " ($count)";
+        }
+        $cf->copy({
+                   format_alias => undef,
+                   format_name => $name,
+                  });
+        $cf->sync_site_format;
     }
     $c->response->redirect($c->uri_for_action('/settings/formats'));
 }
