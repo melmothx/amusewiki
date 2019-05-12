@@ -156,7 +156,7 @@ sub single_category :Chained('filter_texts') :PathPart('') :CaptureArgs(0) {
         my $current_locale = $c->stash->{current_locale_code};
         my $category_description = $cat->localized_desc($current_locale);
         # the unescaping happens when calling $c->loc
-        my $page_title = $c->loc($cat->name);
+        my $page_title = $c->stash->{lh}->site_loc($cat->name);
         $c->stash(page_title => $page_title,
                   template => 'category-details.tt',
                   category_canonical_name => $uri,
@@ -183,7 +183,7 @@ sub single_category :Chained('filter_texts') :PathPart('') :CaptureArgs(0) {
           {
            uri => $c->uri_for_action('/category/single_category_display',
                                      [ $c->stash->{f_class}, $uri ]),
-           label => $c->loc($cat->name),
+           label => $c->stash->{lh}->site_loc($cat->name),
           };
 
 }

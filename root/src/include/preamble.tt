@@ -83,7 +83,7 @@
       </span>
       [% FOREACH topic IN text_topics -%]
       <a href="[% c.uri_for(topic.uri) %]">
-      [% loc(topic.name) %]
+      [% lh.site_loc_html(topic.name) %]
       [%- # -%]</a>[% UNLESS loop.last %],[% END %]
       [% END %]
     </div>

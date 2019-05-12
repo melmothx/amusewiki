@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 21;
+use Test::More tests => 27;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -81,6 +81,12 @@ foreach my $po (AmuseWikiFarm::Utils::LexiconMigration::convert($site->lexicon, 
     is ($lh->loc('&lt;test&gt;'), '<Test>');
     is ($lh->loc('test [_1] [_2] [_3]', qw/uno due tre/), "uno due tre prova \" ć100");
     is ($lh->loc('test [_1] [_2] [_3]', [qw/uno due tre/]), "uno due tre prova \" ć100");
+    is ($lh->loc('Active'), "Attivo");
+    is ($lh->site_loc('Active'), "Active");
+    is ($lh->site_loc('test'), 'Prova');
+    is ($lh->site_loc('<test>'), '<Test>');
+    is ($lh->site_loc_html('<test>'), '&lt;Test&gt;');
+    is ($lh->site_loc_html('&lt;test&gt;'), '&lt;Test&gt;');
 }
 
 {
