@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 37;
+use Test::More tests => 42;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -65,6 +65,7 @@ $mech->content_lacks($xcat);
 foreach my $url ('/category/topic',
                  '/library/another-text',
                  '/mirror/index.html',
+                 '/search',
                  '/mirror/topics.html') {
     $mech->get_ok($url);
     $mech->content_contains($cat);
