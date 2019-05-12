@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 9;
+use Test::More tests => 37;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 my $builder = Test::More->builder;
@@ -23,6 +23,7 @@ use Test::WWW::Mechanize::Catalyst;
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0loc0');
 
+$site->update({ locale => 'it' });
 # so we can test againt "Host virtuali"
 my $cat = 'Virtual hosts';
 my $it = "Host virtuali";
@@ -58,5 +59,26 @@ $mech->get_ok('/category/topic/virtual-hosts');
 $mech->content_contains($cat);
 $mech->content_lacks($it);
 $mech->get_ok('/category/topic/texst');
+$mech->content_contains($xit);
+$mech->content_lacks($xcat);
+
+foreach my $url ('/category/topic',
+                 '/library/another-text',
+                 '/mirror/index.html',
+                 '/mirror/topics.html') {
+    $mech->get_ok($url);
+    $mech->content_contains($cat);
+    $mech->content_lacks($xcat);
+    $mech->content_lacks($it);
+    $mech->content_contains($xit);
+}
+
+$mech->get_ok('/login');
+ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' }) or die;
+
+$mech->get_ok('/category/topic/virtual-hosts/en/edit');
+$mech->content_contains($cat);
+$mech->content_lacks($it);
+$mech->get_ok('/category/topic/texst/en/edit');
 $mech->content_contains($xit);
 $mech->content_lacks($xcat);
