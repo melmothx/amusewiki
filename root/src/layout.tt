@@ -113,7 +113,7 @@
 
     [%# our css for the web application %]
     <link rel="stylesheet" type="text/css"
-          href="[% c.uri_for('/static/css/amusewiki.css', { v => 36 }) %]" />
+          href="[% c.uri_for('/static/css/amusewiki.css', { v => 37 }) %]" />
     <script src="[% c.uri_for('/static/js/amuse.js', { v => 3 }) %]"></script>
     <script>
       function amw_confirm() { return confirm('[% lh.loc('Are you sure?') | escape_js %]') }
@@ -140,18 +140,12 @@
     <script src="[% c.uri_for('/static/js/amw-extimg.js', { v => 1 }) %]"></script>
     [%- END -%]
     <script src="[% c.uri_for('/static/js/amw-anchors.js', { v => 2 }) %]"></script>
-    <script>
-      var shiftWindow = function() { scrollBy(0, -50) };
-      window.addEventListener("hashchange", shiftWindow);
-      function amw_load_page() { if (window.location.hash) { shiftWindow(); } };
-    </script>
     <script type="application/ld+json">
 [% sitelinks_searchbox %]
     </script>
   </head>
-  <body onload="amw_load_page()">
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <body>
+    <div id="amw-nav-bar-top" class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -736,6 +730,7 @@
       </div>
     </div>
     <script src="[% c.uri_for('/static/js/amw-autosuggest.js') %]"></script>
+    <script src="[% c.uri_for('/static/js/amw-navbar.js') %]"></script>
   </body>
 </html>
 
