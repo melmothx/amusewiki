@@ -6,7 +6,6 @@ $(document).ready(function() {
         var scroll = $(window).scrollTop();
         var newhash = window.location.hash;
         var hash_changed = hash != newhash ? 1 : 0;
-        console.log(scroll + ' ' + hash_changed);
         if (scroll > 0 && scroll < previous && !hash_changed) {
             $('#amw-nav-bar-top').addClass('navbar-fixed-top');
         }
