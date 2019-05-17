@@ -1056,6 +1056,8 @@ root/static/js/diff/COPYING
 root/static/js/diff/diff_match_patch.js
 root/static/js/diff/diff_match_patch_uncompressed.js
 root/static/js/diff/README.txt
+root/static/js/imagesloaded.pkgd.js
+root/static/js/imagesloaded.pkgd.min.js
 root/static/js/jquery-1.11.1.js
 root/static/js/jquery-1.11.1.min.js
 root/static/js/jquery-ui-1.10.4.custom.js

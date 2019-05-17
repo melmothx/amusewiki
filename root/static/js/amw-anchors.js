@@ -39,6 +39,10 @@ function add_flag_to_internal_anchors() {
 
 $(document).ready(function() {
     add_flag_to_internal_anchors();
+    $('#widepage').imagesLoaded()
+        .always(function() {
+            add_flag_to_internal_anchors();
+        });
     $(window).resize(function() {
         add_flag_to_internal_anchors();
     });

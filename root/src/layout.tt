@@ -139,6 +139,7 @@
     [%- IF site.turn_links_to_images_into_images %]
     <script src="[% c.uri_for('/static/js/amw-extimg.js', { v => 1 }) %]"></script>
     [%- END -%]
+    <script src="[% c.uri_for('/static/js/imagesloaded.pkgd.min.js', { v => 1 }) %]"></script>
     <script src="[% c.uri_for('/static/js/amw-anchors.js', { v => 2 }) %]"></script>
     <script type="application/ld+json">
 [% sitelinks_searchbox %]
