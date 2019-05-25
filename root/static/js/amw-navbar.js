@@ -4,15 +4,22 @@ $(document).ready(function() {
     var hash = window.location.hash || '';
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();
-        var newhash = window.location.hash;
-        var hash_changed = hash != newhash ? 1 : 0;
-        if (scroll > 0 && scroll < previous && !hash_changed) {
-            $('#amw-nav-bar-top').addClass('navbar-fixed-top');
+        var newhash = window.location.hash || '';
+        if (hash === newhash && scroll > 0 && scroll < previous) {
+            if ((previous - scroll) > 120) {
+                $('#amw-nav-bar-top').addClass('navbar-fixed-top');
+                previous = scroll;
+            }
+            /*
+            else {
+               console.log("Not registering skip " + previous + ' ' + scroll);
+            }
+            */
         }
         else {
             $('#amw-nav-bar-top').removeClass('navbar-fixed-top');
+            previous = scroll;
         }
-        previous = scroll;
         hash = newhash;
     })
 });
