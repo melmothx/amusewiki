@@ -4,6 +4,22 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.330 2019-05-26
+
+ - RSS optimization
+ - Improve layout of text creation screen (thanks @link2xt)
+ - Remove unneeded js libraries (validate and datepicker)
+ - Show CLI arguments for muse-compile on the bookbuilder and custom
+   format pages
+ - Let search engines ignore the generated formats
+ - Do not rely on CDN for amusewiki-branded bootstrap themes
+ - Add a couple of new CSS themes which previously didn't compile
+ - Add button to clone the custom formats
+ - Translations: use site translation for topics, not the global lexicon.
+ - Improve handling of images upload errors
+ - Install scripts: install TeXlive 2019 and fallback to cpanm if
+   carton fails
+
 2.324 2019-03-19
 
  - Switch to carton for dependencies tracking (@link2xt)
