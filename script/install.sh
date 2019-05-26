@@ -6,6 +6,7 @@ set -e
 
 missing='no'
 for command in perl carton fc-cache update-mime-database xapian-check openssl \
+               cpanm \
                make wget git unzip rsync gs; do
     echo -n "Checking if $command is present: "
     if which $command > /dev/null; then
@@ -30,7 +31,7 @@ if [ "$missing" != "no" ]; then
     cat <<EOF
 Missing core utilities, cannot proceed. Please install them:
 
- - a working perl with carton (i.e., you can install modules)
+ - a working perl with carton and cpanm (i.e., you can install modules)
  - fontconfig (install it before installing texlive)
  - a mime-info database: shared-mime-info on debian
  - openssl
@@ -40,7 +41,9 @@ EOF
 fi
 
 echo "Installing perl modules"
-PERL_USE_UNSAFE_INC=1 carton install --deployment
+export PERL_USE_UNSAFE_INC=1
+carton install --deployment || cpanm -L local --installdeps .
+export PERL_USE_UNSAFE_INC=""
 
 echo -n "Checking installation of TeX live: "
 if which xelatex > /dev/null; then

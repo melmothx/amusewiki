@@ -24,7 +24,9 @@ prepare_app () {
 # locally, without adding more work to the sysadmin
 
     ./script/install_js.sh
-    PERL_USE_UNSAFE_INC=1 carton install --deployment
+    export PERL_USE_UNSAFE_INC=1
+    carton install --deployment || cpanm -L local --installdeps .
+    export PERL_USE_UNSAFE_INC=""
     if carton exec perl -MImager -e 'foreach my $i (qw/jpeg png/) { die "Missing support for $i\n" unless $Imager::formats{$i} }'; then
         echo "Imager loaded correctly";
     else
