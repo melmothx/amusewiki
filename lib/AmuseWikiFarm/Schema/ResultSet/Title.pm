@@ -590,4 +590,28 @@ sub by_full_uri {
     }
 }
 
+sub by_lang {
+    my ($self, $lang) = @_;
+    my $me = $self->current_source_alias;
+    return $self->search({ "$me.lang" => $lang });
+}
+
+sub language_stats {
+    my $self = shift;
+    my $me = $self->current_source_alias;
+
+    $self->search(undef,
+                  {
+                   result_class => 'DBIx::Class::ResultClass::HashRefInflator',
+                   columns => ["$me.lang"],
+                   '+select' => [{
+                                  count => "$me.id",
+                                  -as => 'count_titles'
+                                 }],
+                   '+as' => => ["$me.count_titles"],
+                   group_by => ["$me.lang"],
+                   order_by => [{ -desc => "$me.lang" }],
+                  });
+}
+
 1;
