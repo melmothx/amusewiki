@@ -257,6 +257,11 @@ foreach my $checked ([ single => $node_ids[0] ], [ all => \@node_ids ]) {
     }
 }
 
+{
+    diag $site->nodes->as_tree('en');
+}
+
+
 
 {
     my $serialized = $site->serialize_site;

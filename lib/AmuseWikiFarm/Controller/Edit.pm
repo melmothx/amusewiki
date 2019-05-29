@@ -147,7 +147,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
         log_debug { "Nothing to do, rendering form" };
     }
     if ($site->nodes->count) {
-        my $nodes = $site->nodes->all_nodes;
+        my $nodes = $site->nodes->as_list_with_path($c->stash->{current_locale_code});
         # don't lose the selection
         if ($params->{node_id}) {
             my %selected;
@@ -164,6 +164,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                 }
             }
         }
+        Dlog_debug { "Nodes are $_" } $nodes;
         $c->stash(node_checkboxes => $nodes);
     }
 }

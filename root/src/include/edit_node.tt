@@ -16,7 +16,7 @@
             [% FOREACH node IN all_nodes %]
               <option value="[% node.uri %]"
                       [% IF node.value == edit_node.parent_node_id %]selected="selected"[% END %]>
-                [% node.label %] ([% node.title %])
+                [% node.title %]
               </option>
             [% END %]
           </select>

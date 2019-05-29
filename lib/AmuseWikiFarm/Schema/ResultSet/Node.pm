@@ -77,8 +77,38 @@ sub all_nodes {
     return \@out;
 }
 
-sub as_tree {
-    my ($self, $lang, %opts) = @_;
+sub as_list_with_path {
+    my ($self, $lang) = @_;
+    my $source = $self->as_tree_source($lang);
+    my @out;
+    foreach my $node (values %$source) {
+        push @out, {
+                    value => $node->{node_id},
+                    title => join(' / ', reverse(_get_path_label($source, $node->{node_id}))),
+                    uri => $node->{uri},
+                    label => $node->{uri},
+                    sorting_pos => $node->{sorting_pos},
+                   };
+    }
+    @out = sort { $a->{title} cmp $b->{title} } @out;
+    return \@out;
+}
+
+sub _get_path_label {
+    my ($source, $id, $depth) = @_;
+    $depth++;
+    return unless $id;
+    return if $depth > 10;
+    my $node = $source->{$id};
+    return unless $node;
+    my @out = ($node->{title_html}, _get_path_label($source, $node->{parent_node_id}, $depth));
+    return @out;
+}
+
+
+sub as_tree_source {
+    my ($self, $lang) = @_;
+    $lang ||= 'en';
     my $me = $self->current_source_alias;
     my @all = $self->search(undef,
                             {
@@ -106,9 +136,15 @@ sub as_tree {
         }
     }
     Dlog_debug { "Flattened $_" } \%source;
-    my @out = map { _render_node(\%source, $_->{node_id}, 0, %opts) }
+    return \%source;
+}
+
+sub as_tree {
+    my ($self, $lang, %opts) = @_;
+    my $source = $self->as_tree_source($lang);
+    my @out = map { _render_node($source, $_->{node_id}, 0, %opts) }
       sort { $a->{sorting_pos} <=> $b->{sorting_pos} or $a->{uri} cmp $b->{uri} }
-      grep { !$_->{parent_node_id} } @all;
+      grep { !$_->{parent_node_id} } values %$source;
     return \@out;
 }
 

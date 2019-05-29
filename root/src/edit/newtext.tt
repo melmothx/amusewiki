@@ -266,24 +266,6 @@
       [% loc('Set a date in the future if you want it deferred.') %]
     </p>
   </div>
-  [% IF node_checkboxes %]
-    <h3>[% loc('Assing text to nodes') %]</h3>
-    <div class="form-group">
-      [% FOREACH node IN node_checkboxes %]
-        <div class="col-xs-2">
-          <div class="checkbox">
-            <label title="[% node.title | html %]">
-              <input name="node_id"
-                     type="checkbox"
-                     [% IF node.checked %]checked="checked"[% END %]
-                     value="[% node.value | html %]">
-              [% node.label %]
-            </label>
-          </div>
-        </div>
-      [% END %]
-    </div>
-  [% END %]
   <div class="row">
     <div class="col-xs-12">
       <p class="help-block">
@@ -301,6 +283,24 @@
       </p>
     </div>
   </div>
+  [% IF node_checkboxes %]
+    <h3>[% loc('Assign text to nodes') %]</h3>
+    <div class="form-group">
+      [% FOREACH node IN node_checkboxes %]
+        <div class="col-xs-12">
+          <div class="checkbox">
+            <label>
+              <input name="node_id"
+                     type="checkbox"
+                     [% IF node.checked %]checked="checked"[% END %]
+                     value="[% node.value | html %]">
+              [% node.title %]
+            </label>
+          </div>
+        </div>
+      [% END %]
+    </div>
+  [% END %]
 </form>
 
 <script type="text/javascript">

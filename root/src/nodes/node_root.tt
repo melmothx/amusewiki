@@ -41,7 +41,7 @@
             <option value="0">[% loc('Root node') %]</option>
             [% FOREACH node IN all_nodes %]
               <option value="[% node.uri %]">
-                [% node.label %] ([% node.title %])
+                [% node.title %]
               </option>
             [% END %]
           </select>

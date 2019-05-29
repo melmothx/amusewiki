@@ -30,7 +30,7 @@ sub node_root :Chained('root') :PathPart('') :Args(0) {
               page_title => $c->loc('Site Map'),
              );
     if ($c->user_exists) {
-        $c->stash(all_nodes => $site->nodes->sorted->all_nodes($lang));
+        $c->stash(all_nodes => $site->nodes->as_list_with_path($lang));
         Dlog_debug  { "All nodes: $_" } $c->stash->{all_nodes};
     }
 }
@@ -71,7 +71,7 @@ sub display :Chained('root') :PathPart('') :Args {
         if ($c->user_exists) {
             $c->stash(edit_node => $target,
                       load_markitup_css => 1,
-                      all_nodes => $site->nodes->sorted->all_nodes($locale),
+                      all_nodes => $site->nodes->as_list_with_path($locale),
                      );
         }
     }
