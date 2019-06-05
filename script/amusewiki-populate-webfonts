@@ -43,7 +43,24 @@ foreach my $file (@files) {
 }
 
 unless (-f 'fontspec.json') {
-    system(qw/muse-create-font-file.pl fontspec.json/) == 0 or die $!;
+    my $masterfile = '/etc/amusewiki.d/fontspec.json';
+    my $symlink = 0;
+    if (-f $masterfile) {
+        try {
+            Text::Amuse::Compile::Fonts->new("$masterfile")->all_fonts;
+            $symlink = 1;
+        } catch {
+            print "$masterfile looks invalid!";
+        };
+    }
+    if ($symlink) {
+        print "Found system wide fontspec.json, symlinking\n";
+        symlink($masterfile, 'fontspec.json');
+    }
+    else {
+        print "Generating fontspec.json\n";
+        system(qw/muse-create-font-file.pl fontspec.json/) == 0 or die $!;
+    }
 }
 
 
