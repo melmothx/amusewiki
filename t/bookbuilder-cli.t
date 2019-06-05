@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 24;
+use Test::More tests => 25;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -15,7 +15,12 @@ use Path::Tiny;
 
 my $schema = AmuseWikiFarm::Schema->connect('amuse');
 my $site = create_site($schema, '0bbcli0');
-$site->update({ logo => 'logo-yu.pdf' });
+path(catdir($site->repo_root, 'templates'))->mkpath;
+$site->update({
+               logo => 'logo-yu.pdf',
+               ttdir => 'templates',
+              });
+
 {
     my ($rev) = $site->create_new_text({
                                         title => 'test',
@@ -46,6 +51,7 @@ $site->update({ logo => 'logo-yu.pdf' });
     like $cli, qr{fontsize=10};
     like $cli, qr{pdf-impose};
     like $cli, qr{--schema 2up};
+    like $cli, qr{--ttdir templates};
     diag $bb->as_cli; 
 }
 

@@ -1749,12 +1749,18 @@ sub as_cli {
                    fontspec => 1,
                    epub_embed_fonts => 1,
                   );
+    my %named = (
+                 ttdir => sub { basename($_[0]) },
+                );
 
     foreach my $top (sort keys %c_args) {
         next if $skipped{$top};
-        if ($c_args{$top}) {
+        if (my $v = $c_args{$top}) {
             $top =~ s/_/-/g;
             push @cli, "--" . $top;
+            if (my $sub = $named{$top}) {
+                push @cli, $sub->($v);
+            }
         }
     }
     foreach my $k (sort keys %extra) {
