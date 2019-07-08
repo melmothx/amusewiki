@@ -31,10 +31,20 @@ if [ ! -f $dbic_file ]; then
             . $amusewiki_dbc_include_file
             case $dbtype in
                 pgsql)
+                    if [ -z "$dbport" ]; then
+                        if lsof -i :5432 >/dev/null; then
+                            dbport=5432
+                        elif lsof -i :5433 >/dev/null; then
+                            dbport=5433
+                        else
+                            echo "Nobody listening on 5432 or 5433! Is postgresql installed and running?"
+                            exit 2;
+                        fi
+                    fi
                     cat <<EOF > $dbic_file
 
 amuse:
-  dsn: 'dbi:Pg:host=localhost;database=$dbname'
+  dsn: 'dbi:Pg:host=localhost;port=$dbport;database=$dbname'
   user: '$dbuser'
   password: '$dbpass'
   AutoCommit: 1
