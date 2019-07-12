@@ -4,6 +4,13 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.331 2019-07-12
+
+ - Handle Pg listening on 5433 instead of 5432 (debian packaging)
+ - Fix the query params for the freenode webchat (they moved from
+ - Symlink system wide fontspec.json if found installed
+ - Display the --ttdir argument for muse-compiler.pl
+
 2.330 2019-05-26
 
  - RSS optimization
