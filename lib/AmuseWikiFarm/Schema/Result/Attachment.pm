@@ -115,6 +115,12 @@ __PACKAGE__->table("attachment");
   data_type: 'text'
   is_nullable: 1
 
+=head2 mime_type
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -153,6 +159,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "comment_html",
   { data_type => "text", is_nullable => 1 },
+  "mime_type",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -218,8 +226,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-29 09:46:42
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Mw+7E+47hobdPiK7t4XC/A
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z8dT4nmTMCOTH5QTIHwLFg
 
 =head2 File classes
 

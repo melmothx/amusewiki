@@ -221,6 +221,13 @@ __PACKAGE__->table("title");
   default_value: 0
   is_nullable: 0
 
+=head2 blob_container
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -300,6 +307,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "attachment_index",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "blob_container",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -502,8 +511,8 @@ Composing rels: L</node_titles> -> node
 __PACKAGE__->many_to_many("nodes", "node_titles", "node");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Y7K2O+LQ6E4CGlSx5UkN7g
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/pCllfccL1G90LMVI7t94Q
 
 =head2 translations
 
