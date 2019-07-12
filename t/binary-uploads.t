@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 10;
+use Test::More tests => 15;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
 use Path::Tiny;
