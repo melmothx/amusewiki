@@ -85,6 +85,7 @@ CREATE TABLE site (
        logo_with_sitename INTEGER(1) NOT NULL DEFAULT 0,
        opening VARCHAR(16) NOT NULL DEFAULT 'any',
        twoside INTEGER(1) NOT NULL DEFAULT 0,
+       binary_upload_max_size_in_mega INTEGER NOT NULL DEFAULT 8,
        last_updated DATETIME
 );
 
@@ -362,6 +363,7 @@ CREATE TABLE title (
         text_qualification VARCHAR(255),
         text_size INTEGER NOT NULL DEFAULT 0,
         attachment_index INTEGER NOT NULL DEFAULT 0,
+        blob_container INTEGER(1) NOT NULL DEFAULT 0,
         site_id     VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -452,6 +454,7 @@ CREATE TABLE attachment (
        comment_muse TEXT,
        title_html TEXT,
        comment_html TEXT,
+       mime_type VARCHAR(255),
        site_id VARCHAR(16) NOT NULL REFERENCES site(id)
                                 ON DELETE CASCADE ON UPDATE CASCADE
 );
