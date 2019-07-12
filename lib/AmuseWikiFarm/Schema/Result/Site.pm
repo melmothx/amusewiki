@@ -2020,7 +2020,7 @@ sub index_file {
 
     delete $details->{coverwidth};
     $insertion{cover} = cover_filename_is_valid($insertion{cover});
-    $insertion{blob_container} = delete $details->{blob};
+    $insertion{blob_container} = delete $details->{blob} || 0;
 
     # this is needed because we insert it from title, and DBIC can't
     # infer the site_id from there (even if it should, but hey).
