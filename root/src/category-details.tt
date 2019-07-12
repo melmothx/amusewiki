@@ -1,17 +1,14 @@
 [%- # -*- mode: html -*- -%]
 
+[% INCLUDE 'include/node_breadcrumbs.tt' %]
 [% INCLUDE 'include/breadcrumbs.tt' %]
 
 <div class="page-header">
   [%- # if you modify this, check entities.t and controller_Category.t -%]
   <h1><span id="amw-category-details-category-name">[% lh.site_loc_html(category.name) %]</span>
-  [%- IF multilang -%]
-  [%- IF multilang.active -%]
-  [%- IF multilang.filtered -%]
-  <small>[% multilang.filtered %]</small>
-  [%- END -%]
-  [%- END -%]
-  [%- END -%]
+    [%- IF multilang_filtered -%]
+      <small>[% multilang_filtered | html %]</small>
+    [%- END -%]
   [% IF c.user_exists %]
   <a href="[% c.uri_for_action('/category/edit_category_description', [category.type, category.uri, current_locale_code ]) %]"
      id="amw-category-description-edit-button"
@@ -36,33 +33,16 @@
 [% END %]
 
 [%- IF multilang -%]
-[%- IF multilang.active %]
 <ul class="nav nav-tabs" role="tablist">
-  <li [% UNLESS multilang.code -%] class="active" [%- END %]>
-    <a href="[% multilang.cat_uri_all  %]">
-      [% loc('All languages') %]
-    </a>
-  </li>
-  [%- IF multilang.cat_uri_selected -%]
-  <li>
-    <a href="[% multilang.cat_uri_lang %]">
-      [% multilang.cat_lang_name %]
-    </a>
-  </li>
-  <li class="active">
-    <a href="[% multilang.cat_uri_selected %]">
-      [% multilang.filtered %]
-    </a>
-  </li>
-  [% ELSE %]
-  <li [% IF multilang.code %] class="active" [% END %]>
-    <a href="[% multilang.cat_uri_lang %]">
-      [% multilang.cat_lang_name %]
-    </a>
-  </li>
-  [%- END -%]
+  [% FOREACH tab IN multilang %]
+    <li [% IF tab.selected %]class="active"[% END %]>
+      <a href="[% tab.uri | html %]">
+        [% tab.language_name | html %]
+        <span class="badge">[% tab.quantity | html %]</span>
+      </a>
+    </li>
+  [% END %]
 </ul>
-[%- END -%]
 [%- END -%]
 
 

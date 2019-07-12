@@ -66,6 +66,7 @@ foreach my $i (3..66) {
 }
 
 $mech->get_ok('/login');
+$schema->resultset('User')->find({ username => 'root'})->update({ preferred_language => undef });
 $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});
 $mech->content_contains('You are logged in now!');
 

@@ -706,6 +706,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 nodes
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Node>
+
+=cut
+
+__PACKAGE__->has_many(
+  "nodes",
+  "AmuseWikiFarm::Schema::Result::Node",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 redirections
 
 Type: has_many
@@ -852,8 +867,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-02-03 20:01:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:emUAqdjyD58S+6sOj2+GJg
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:+alNkWZI/N7Iz8XTfZ+mNg
 
 =head2 other_sites
 
@@ -1577,7 +1592,21 @@ sub import_text_from_html_params {
 
     my $guard = $self->result_source->schema->txn_scope_guard;
     # title->can_spawn_revision will return false, so we have to force
-    my $revision = $self->titles->create($bogus)->new_revision('force');
+    my $created = $self->titles->create($bogus);
+    if ($params->{node_id}) {
+        Dlog_debug { "Assigning text to nodes $_" } $params->{node_id};
+        my @nodes = ref($params->{node_id}) ? (@{$params->{node_id}}) : ($params->{node_id});
+        foreach my $id (@nodes) {
+            if (my $node = $self->nodes->find($id)) {
+                log_info { "Assigned " . $created->uri . " to node " . $node->uri };
+                $created->add_to_nodes($node);
+            }
+            else {
+                log_error { "node $id not found in site " . $self->id };
+            }
+        }
+    }
+    my $revision = $created->new_revision('force');
 
     # save a copy of the html request
     my $html_copy = $revision->original_html;
@@ -2975,6 +3004,7 @@ sub update_from_params {
                            turn_links_to_images_into_images
                            enable_video_widgets
                            restrict_mirror
+                           home_page
                            show_preview_when_deferred
                            lists_are_always_flat
                            titles_category_default_sorting
@@ -3276,6 +3306,10 @@ sub restrict_mirror {
     return shift->get_option('restrict_mirror') || '';
 }
 
+sub home_page {
+    return shift->get_option('home_page') || '';
+}
+
 sub enable_video_widgets {
     return shift->get_option('enable_video_widgets') || '';
 }
@@ -3537,8 +3571,72 @@ sub serialize_site {
         push @users, \%user_data;
     }
     $data{users} = \@users;
+    # and the nodes
+    $data{nodes} = [ map { $_->serialize } $self->nodes->sorted->all ];
     return \%data;
 }
+
+sub _validate_attached_uris {
+    my ($self, $string) = @_;
+    my @list = ref($string)
+          ? (@$string)
+          : (grep { length($_) } split(/\s+/, $string));
+    my $titles_rs = $self->titles;
+    my $cats_rs = $self->categories;
+    my (@done, @missing);
+  STRING:
+    foreach my $str (@list) {
+        if (my $title = $titles_rs->by_full_uri($str)) {
+            push @done, $str;
+        }
+        elsif (my $cat = $cats_rs->by_full_uri($str)) {
+            push @done, $str;
+        }
+        else {
+            push @missing, $str;
+        }
+    }
+    return +{
+             ok => \@done,
+             fail => \@missing,
+            };
+}
+
+
+
+sub deserialize_nodes {
+    my ($self, $nodes) = @_;
+    my $changed = $self->repo_find_changed_files;
+    return unless @$nodes;
+
+    my @fail;
+    foreach my $node (@$nodes) {
+        if (my $str = $node->{attached_uris}) {
+            my $validate = $self->_validate_attached_uris($str);
+            Dlog_debug { "$str => $_" } $validate;
+            push @fail, @{$validate->{fail} || []};
+        }
+    }
+    if (@fail) {
+        Dlog_error { $self->id . " cannot import nodes because of $_ non existing URIs,"
+                       . " please reimport after a bootstrap\n" } \@fail;
+        print map { $_ . "\n" } @fail;
+        print $self->id . " is missing the above attached URIs, please reimport after a boostrap\n";
+        return;
+    }
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->nodes->delete;
+    foreach my $node (@$nodes) {
+        $self->nodes->update_or_create_from_params({ %$node });
+    }
+    # here's the trick. We need to run it twice so the parents exist
+    foreach my $node (@$nodes) {
+        $self->nodes->update_or_create_from_params({ %$node });
+    }
+    $guard->commit;
+    return scalar(@$nodes);
+}
+
 
 sub populate_monthly_archives {
     my $self = shift;

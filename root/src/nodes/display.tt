@@ -1,0 +1,58 @@
+[% # -*- mode: web -*- %]
+
+[% INCLUDE 'include/node_breadcrumbs.tt' %]
+
+<div class="center">
+  <div class="page-header">
+    <h1>[% node_title %]</h1>
+  </div>
+</div>
+[% IF node_body %]
+<div id="page">
+  <div id="thework">
+    [% node_body %]
+  </div>
+</div>
+<hr />
+[% END %]
+<div class="row" >
+  [% IF node_linked_pages %]
+    <div class="col-sm-12">
+      <div class="list-group">
+        [% FOREACH page IN node_linked_pages %]
+          <div class="amw-listing-item">
+            <a class="list-group-item" href="[% page.uri %]">[% page.label %]</a>
+          </div>
+        [% END %]
+      </div>
+    </div>
+  [% END %]
+  [% IF node_children %]
+    <div class="col-sm-12">
+      <div class="list-group">
+        [% FOREACH page IN node_children %]
+          <div class="amw-listing-item">
+            <a class="list-group-item" href="[% page.uri %]">[% page.label %]</a>
+          </div>
+        [% END %]
+      </div>
+    </div>
+  [% END %]
+</div>
+[% IF edit_node %]
+  <hr />
+  <div class="text-right">
+    <button type="button"
+            class="btn btn-default"
+            data-target="#node-editing-form"
+            data-toggle="collapse"
+            aria-expanded="false"
+            aria-controls="node-editing-form">
+      <i class="fa fa-edit fa-border"></i>
+      <span class="sr-only">[% loc('Edit') %]</span>
+    </button>
+  </div>
+  <div id="node-editing-form" class="collapse">
+    [% INCLUDE 'include/edit_node.tt' %]
+  </div>
+[% END %]

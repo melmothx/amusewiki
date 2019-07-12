@@ -154,6 +154,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 node_categories
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeCategory>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_categories",
+  "AmuseWikiFarm::Schema::Result::NodeCategory",
+  { "foreign.category_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 site
 
 Type: belongs_to
@@ -184,6 +199,16 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 nodes
+
+Type: many_to_many
+
+Composing rels: L</node_categories> -> node
+
+=cut
+
+__PACKAGE__->many_to_many("nodes", "node_categories", "node");
+
 =head2 titles
 
 Type: many_to_many
@@ -195,8 +220,8 @@ Composing rels: L</title_categories> -> title
 __PACKAGE__->many_to_many("titles", "title_categories", "title");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-09-01 11:11:09
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/DjhX2PpXXO2wZ6SvSHBlA
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-04-05 08:15:44
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:hdrQWlxYWWxzRpXlv/uGqw
 
 =head2 published_titles
 

@@ -20,6 +20,8 @@
   </div>
 </div>
 
+[% INCLUDE 'include/node_breadcrumbs.tt' %]
+
 [% # if we have the sidebars, we're cool, otherwise we have to shrink it %]
 <div class="row">
   <div class="col-sm-10 col-sm-push-1">

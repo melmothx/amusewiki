@@ -157,27 +157,55 @@ sub single_category :Chained('filter_texts') :PathPart('') :CaptureArgs(0) {
         my $category_description = $cat->localized_desc($current_locale);
         # the unescaping happens when calling $c->loc
         my $page_title = $c->stash->{lh}->site_loc($cat->name);
+        if (my @nodes = $cat->nodes->sorted->all) {
+            my @node_breadcrumbs = map { $_->breadcrumbs($current_locale) } @nodes;
+            foreach my $nbc (@node_breadcrumbs) {
+                push @$nbc, {
+                             uri => $cat->full_uri,
+                             label => $c->loc_html($cat->name),
+                            };
+            }
+            $c->stash(node_breadcrumbs => \@node_breadcrumbs);
+        }
         $c->stash(page_title => $page_title,
                   template => 'category-details.tt',
                   category_canonical_name => $uri,
                   category_description => $category_description,
                   meta_description => ( $category_description ? $category_description->html_body : $page_title),
                   category => $cat);
+
         # Prepare the links for multisite, if needed
-        my $multi = {
-                         cat_uri_all => $c->uri_for_action('/category/single_category_display',
-                                                           [ $c->stash->{f_class}, $uri ]),
-                         cat_uri_lang => $c->uri_for_action('/category/single_category_by_lang_display',
-                                                            [
-                                                             $c->stash->{f_class},
-                                                             $uri,
-                                                             $current_locale,
-                                                            ]),
-                         cat_lang_name => $c->stash->{current_locale_name},
-                         default_lang_code => $current_locale,
-                         active => $site->multilanguage ? 1 : 0,
+    my @langs;
+    my $known_langs = AmuseWikiFarm::Utils::Amuse::known_langs();
+    my $f_class = $c->stash->{f_class};
+    my $total = 0;
+    foreach my $l ($c->stash->{texts}->language_stats) {
+        $total += $l->{count_titles};
+        if (my $name = $known_langs->{$l->{lang}}) {
+            push @langs, {
+                          uri => $c->uri_for_action('/category/single_category_by_lang_display',
+                                                    [
+                                                     $f_class,
+                                                     $uri,
+                                                     $l->{lang},
+                                                    ]),
+                          language_code => $l->{lang},
+                          language_name => $name,
+                          quantity => $l->{count_titles},
+                         };
+        }
+    }
+    # do we need filtering?
+    if (@langs > 1) {
+        unshift @langs, {
+                         uri => $c->uri_for_action('/category/single_category_display', [ $f_class, $uri ]),
+                         quantity => $total,
+                         language_name => $c->stash->{lh}->loc('All languages'),
+                         selected => 1
                         };
-        $c->stash(multilang => $multi);
+        Dlog_debug { "languages for $uri are $_ "} \@langs;
+        $c->stash(multilang => \@langs);
+    }
 
         push @{$c->stash->{breadcrumbs}},
           {
@@ -185,7 +213,6 @@ sub single_category :Chained('filter_texts') :PathPart('') :CaptureArgs(0) {
                                      [ $c->stash->{f_class}, $uri ]),
            label => $c->stash->{lh}->site_loc($cat->name),
           };
-
 }
 
 
@@ -214,7 +241,7 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
     }
     elsif (my $category_lang = $c->stash->{site}->known_langs->{$lang}) {
         my $category_description = $c->stash->{category}->localized_desc($lang);
-        my $filtered = $texts->search({ lang => $lang });
+        my $filtered = $texts->by_lang($lang);
         $c->stash(
                   texts => $filtered,
                   category_language => $lang,
@@ -224,13 +251,9 @@ sub single_category_by_lang :Chained('single_category') :PathPart('') :CaptureAr
         if ($category_description) {
             $c->stash(meta_description => $category_description->html_body);
         }
-        $c->stash->{multilang}->{filtered} = $category_lang;
-        $c->stash->{multilang}->{code} = $lang;
-        $c->stash->{multilang}->{active} = 1;
-        if ($c->stash->{multilang}->{code} ne $c->stash->{multilang}->{default_lang_code}) {
-            $c->stash->{multilang}->{cat_uri_selected} =
-              $c->uri_for_action('/category/single_category_by_lang_display',
-                                 [ $c->stash->{f_class}, $c->stash->{category_canonical_name}, $lang ]);
+        $c->stash->{multilang_filtered} = $category_lang;
+        foreach my $l (@{$c->stash->{multilang} || []}) {
+            $l->{selected} = $lang eq ($l->{language_code} // '');
         }
     }
     else {

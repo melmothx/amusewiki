@@ -535,6 +535,47 @@ CREATE TABLE amw_session (
        PRIMARY KEY (site_id, session_id)
 );
 
+CREATE TABLE node (
+       node_id INTEGER PRIMARY KEY AUTOINCREMENT,
+       site_id VARCHAR(16) NOT NULL REFERENCES site(id)
+                                    ON DELETE CASCADE ON UPDATE CASCADE,
+       uri VARCHAR(255) NOT NULL,
+       sorting_pos INTEGER NOT NULL DEFAULT 0,
+       full_path TEXT,
+       parent_node_id INTEGER NULL REFERENCES node(node_id)
+       ON UPDATE CASCADE ON DELETE SET NULL
+);
+
+CREATE UNIQUE INDEX unique_node_site_id_uri ON node("site_id", "uri");
+
+CREATE TABLE node_body (
+       node_id INTEGER NOT NULL REFERENCES node(node_id) ON DELETE CASCADE ON UPDATE CASCADE,
+       lang VARCHAR(3) NOT NULL DEFAULT 'en',
+       title_muse TEXT,
+       title_html TEXT,
+       body_muse TEXT,
+       body_html TEXT,
+       PRIMARY KEY(node_id, lang)
+);
+
+CREATE UNIQUE INDEX unique_node_id_lang ON node_body("node_id", "lang");
+
+CREATE TABLE node_title (
+        node_id   INTEGER NOT NULL REFERENCES node(node_id)
+                 ON DELETE CASCADE ON UPDATE CASCADE,
+        title_id INTEGER NOT NULL REFERENCES title(id)
+                 ON DELETE CASCADE ON UPDATE CASCADE,
+        PRIMARY KEY (node_id, title_id)
+);
+
+CREATE TABLE node_category (
+       node_id      INTEGER NOT NULL REFERENCES node(node_id)
+                   ON DELETE CASCADE ON UPDATE CASCADE,
+       category_id INTEGER NOT NULL REFERENCES category(id)
+                   ON DELETE CASCADE ON UPDATE CASCADE,
+       PRIMARY KEY (node_id, category_id)
+);
+
 INSERT INTO table_comments (table_name, comment_text)
        values
          ('vhost', 'Virtual hosts definitions'),
@@ -568,4 +609,10 @@ INSERT INTO table_comments (table_name, comment_text)
          ('text_part', 'Text sectioning'),
          ('global_site_files', 'Files which site uses'),
          ('amw_session', 'Session backend'),
-         ('title_stat', 'Usage statistics');
+         ('title_stat', 'Usage statistics'),
+         ('node', 'Nestable nodes'),
+         ('node_body', 'Nodes description'),
+         ('node_title', 'Linking table from Node to Title'),
+         ('node_category', 'Linking table from Node to Category')
+         ;
+
