@@ -44,7 +44,11 @@
       </td>
       <td>
         <a href="[% att.full_uri | html %]">
-          <img class="img img-thumbnail" src="[% att.thumb %]" alt="[% att.name %]" />
+          [% IF att.has_thumbnails %]
+            <img class="img img-thumbnail" src="[% att.thumb %]" alt="[% att.name %]" />
+          [% ELSE %]
+            <i title="[% att.uri %]" class="fa fa-file-o fa-4x fa-border"></i>
+          [% END %]
         </a>
       </td>
       <td>

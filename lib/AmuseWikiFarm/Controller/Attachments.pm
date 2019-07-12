@@ -67,6 +67,7 @@ sub list :Chained('root') :Args {
                      thumb => $c->uri_for($att->small_uri),
                      title => $att->title_html,
                      desc => $att->comment_html,
+                     has_thumbnails => $att->has_thumbnails,
                     };
     }
     $c->stash(attachments_list => \@list,

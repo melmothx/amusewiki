@@ -35,6 +35,7 @@ sub imported_methods {
                      site_id
                      text_qualification
                      pages_estimated
+                     blob_container
                      /);
     return @methods;
 }

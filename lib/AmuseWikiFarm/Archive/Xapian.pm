@@ -21,7 +21,7 @@ use Encode ();
 use namespace::clean;
 
 use constant {
-              AMW_XAPIAN_VERSION => 3,
+              AMW_XAPIAN_VERSION => 4,
               SLOT_AUTHOR => 0,
               SLOT_TOPIC => 1,
               SLOT_PUBDATE => 2,
