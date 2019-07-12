@@ -36,6 +36,15 @@ sub pdf_by_uri {
                          });
 }
 
+sub binary_by_uri {
+    my ($self, $uri) = @_;
+    my $me = $self->current_source_alias;
+    return $self->single({
+                          "$me.uri" => $uri,
+                          "$me.f_class" => [qw/upload_pdf upload_binary/],
+                         });
+}
+
 =head2 find_file($path)
 
 Shortcut for

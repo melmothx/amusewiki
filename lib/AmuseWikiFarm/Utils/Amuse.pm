@@ -233,11 +233,6 @@ valid only if root is C</etc>.
 
 =cut
 
-sub _my_suffixes {
-    return qr{\.(muse|png|jpe?g|pdf)};
-}
-
-
 sub muse_parse_file_path {
     my ($file, $root, $skip_path_checking) = @_;
     unless ($file && $root) {
@@ -256,8 +251,8 @@ sub muse_parse_file_path {
     my $rel_file = File::Spec->abs2rel($file, $root);
     # warn "Rel path is $rel_file";
 
-    my ($name, $path, $suffix)          = fileparse($file, _my_suffixes());
-    my ($relname, $relpath, $relsuffix) = fileparse($rel_file, _my_suffixes());
+    my ($name, $path, $suffix)          = fileparse($file, qr{\.[a-z0-9]{3,}});
+    my ($relname, $relpath, $relsuffix) = fileparse($rel_file, qr{\.[a-z0-9]{3,}});
 
 
     unless ($suffix) {
@@ -291,6 +286,7 @@ sub muse_parse_file_path {
                f_timestamp_epoch => $epoch_timestamp,
                f_full_path_name  => $file,
                f_suffix => $suffix,
+               mime_type => mimetype($file) || '',
               );
     # warn "Parsing $relpath";
     my @dirs = grep { $_ ne '' and $_ ne '.' } File::Spec->splitdir($relpath);
@@ -711,7 +707,7 @@ sub muse_filepath_is_valid {
     my $relpath = shift;
     return unless $relpath;
     log_debug { "Scanning $relpath" };
-    my ($name, $path, $suffix) = fileparse($relpath, _my_suffixes());
+    my ($name, $path, $suffix) = fileparse($relpath, qr{\.[a-z0-9]{3,}});
     log_debug { "$name, $path, $suffix" };
     return unless $suffix && $path;
 
@@ -729,8 +725,13 @@ sub muse_filepath_is_valid {
     if (@dirs == 1) {
         my $dir = shift @dirs;
 
-        if ($dir eq 'uploads' and $suffix eq '.pdf') {
-            return 'upload_pdf';
+        if ($dir eq 'uploads') {
+            if ($suffix eq '.pdf') {
+                return 'upload_pdf';
+            }
+            else {
+                return 'upload_binary';
+            }
         }
         elsif ($dir eq 'specials') {
             if ($suffix =~ m/^\.(jpe?g|png)$/s) {

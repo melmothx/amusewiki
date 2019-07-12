@@ -119,6 +119,16 @@ sub served_mime_types {
                 woff => 'application/font-woff',
                 woff2 => 'font/woff2',
                 torrent => 'application/x-bittorrent',
+                flac => 'audio/flac',
+                mp3 => 'audio/mpeg',
+                ogg  => 'audio/x-vorbis+ogg',
+                avi => 'video/x-msvideo',
+                mkv => 'video/x-matroska',
+                mov => 'video/quicktime',
+                mp4 => 'video/mp4',
+                mpg => 'video/mpeg',
+                ogv => 'video/x-theora+ogg',
+                webm => 'video/webm',
                };
 }
 

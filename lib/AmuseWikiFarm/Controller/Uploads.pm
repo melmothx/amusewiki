@@ -39,8 +39,7 @@ sub root :Chained('/site') :PathPart('uploads') :CaptureArgs(1) {
 
 sub upload :Chained('root') :PathPart('') :CaptureArgs(1) {
     my ($self, $c, $uri) = @_;
-    my $attachment = $c->stash->{site}->attachments->pdf_by_uri($uri);
-
+    my $attachment = $c->stash->{site}->attachments->binary_by_uri($uri);
     log_debug { "Trying to serve $uri "};
     if ($attachment) {
         $c->stash(

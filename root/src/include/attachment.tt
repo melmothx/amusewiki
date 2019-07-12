@@ -3,9 +3,23 @@
   <div class="row">
     <div class="col-xs-12">
       <a href="[% c.uri_for(attachment.full_uri) %]">
+        [% IF attachment.has_thumbnails %]
         <img src="[% c.uri_for(attachment.large_uri) %]"
              alt="[% attachment.uri %]"
              class="img img-responsive img-thumbnail">
+        [% ELSIF attachment.is_audio %]
+        <audio controls>
+          <source src="[% c.uri_for(attachment.full_uri) %]" type="[% attachment.mime_type %]">
+          [% loc('Your browser does not support the audio tag.') %]
+        </audio>
+        [% ELSIF attachment.is_video %]
+        <video controls>
+          <source src="[% c.uri_for(attachment.full_uri) %]" type="[% attachment.mime_type %]">
+          [% loc('Your browser does not support the video tag.') %]
+        </video>
+        [% ELSE %]
+        <i title="[% attachment.uri %]" class="fa fa-file-o fa-4x fa-border"></i>
+        [% END %]
       </a>
     </div>
   </div>

@@ -29,10 +29,12 @@
 
 <div lang="[% text.lang %]"
      id="page"[% IF text_json_api %] data-text-json-header-api="[% text_json_api | html %]"[% END %]>
+  [% UNLESS text.blob_container %]
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   [% PROCESS 'include/preamble.tt' %]
   </div>
+  [% END %]
   [% END %]
   <div class="center">
     <div class="page-header">

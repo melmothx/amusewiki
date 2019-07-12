@@ -275,6 +275,7 @@ sub full_uri {
                 image => sub { '/library/' . $self->uri },
                 special_image => sub { '/special/' . $self->uri },
                 upload_pdf => sub { '/uploads/' . $self->site->id . '/' . $self->uri },
+                upload_binary => sub { '/uploads/' . $self->site->id . '/' . $self->uri },
                );
     if (my $sub = $type{$self->f_class}) {
         return $sub->();
@@ -365,6 +366,30 @@ sub generate_thumbnails {
 
 sub thumbnails {
     shift->global_site_files->thumbnails;
+}
+
+sub is_audio {
+    my $self = shift;
+    if ($self->mime_type =~ m|^audio|) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+sub is_video {
+    my $self = shift;
+    if ($self->mime_type =~ m|^video|) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+sub has_thumbnails {
+    return shift->f_class ne 'upload_binary';
 }
 
 __PACKAGE__->meta->make_immutable;

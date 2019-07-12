@@ -1974,6 +1974,7 @@ sub index_file {
                    upload_pdf => 1,
                    special => 1,
                    special_image => 1,
+                   upload_binary => 1,
                    text => 1,
                   );
 
@@ -1981,9 +1982,11 @@ sub index_file {
 
     if ($class eq 'upload_pdf' or
         $class eq 'image' or
+        $class eq 'upload_binary' or
         $class eq 'special_image') {
         $logger->("Inserting data for attachment $file and generating thumbnails\n");
         my $attachment =  $self->attachments->update_or_create($details);
+        return $attachment if $class eq $attachment;
         try {
             $attachment->generate_thumbnails;
         } catch {
@@ -1992,7 +1995,9 @@ sub index_file {
         };
         return $attachment;
     }
-
+    else {
+        delete $details->{mime_type};
+    }
     # handle specials and texts
 
     # ready to store into titles?
@@ -2015,6 +2020,7 @@ sub index_file {
 
     delete $details->{coverwidth};
     $insertion{cover} = cover_filename_is_valid($insertion{cover});
+    $insertion{blob_container} = delete $details->{blob};
 
     # this is needed because we insert it from title, and DBIC can't
     # infer the site_id from there (even if it should, but hey).
