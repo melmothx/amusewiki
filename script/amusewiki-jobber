@@ -40,7 +40,7 @@ try {
         # because out of the root
         my $attachments = $site->attachments->search({ f_archive_rel_path => { '!=' => '' } });
         while (my $att = $attachments->next) {
-            unless ($att->thumbnails->count) {
+            if ($att->has_thumbnails and !$att->thumbnails->count) {
                 log_info { "Generating thumbnails for " . $att->uri };
                 try {
                     $att->generate_thumbnails;
