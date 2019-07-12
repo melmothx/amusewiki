@@ -305,37 +305,6 @@ sub muse_parse_file_path {
     return;
 }
 
-
-sub _parse_muse_file {
-    my ($file, $root) = @_;
-    my $fileinfo = muse_parse_file_path($file, $root);
-    return unless $fileinfo;
-    # remove the suffix key
-    if ($fileinfo->{f_suffix} ne '.muse') {
-        return $fileinfo;
-    }
-
-    # scan the directives;
-    my $directives = muse_fast_scan_header($fileinfo->{f_full_path_name},
-                                           'html');
-    unless ($directives && %$directives) {
-        # title is mandatory?
-        warn "$file couldn't be parsed by muse_fast_scan_header\n";
-        return;
-    }
-    my %lowered;
-    # we don't get clashes with the parsing of the muse file because
-    # directives have not underscors in them
-
-    my %out = (
-               %$fileinfo,
-               %lowered,
-              );
-
-    return \%out;
-}
-
-
 =head2 transliteration_table
 
 Returns an hashref with the transliteration table.
@@ -741,18 +710,18 @@ sub muse_filepath_is_valid {
                 return 'special';
             }
         }
-        # warn "$relpath not in the right dir!\n";
+        log_debug { "$relpath not in the right dir!" };
         return;
     }
     # then process the regular files.
     if (@dirs != 2) {
-        # warn "$relpath not two levels down\n";
+        log_debug { "$relpath not two levels down" };
         return;
     }
 
     # check the suffixes
     unless ($suffix =~ m/^\.(muse|jpe?g|png)$/s) {
-        # warn "$relpath has a suffix I don't recognize\n";
+        log_info { "$relpath has a suffix I don't recognize" };
         return;
     }
 
