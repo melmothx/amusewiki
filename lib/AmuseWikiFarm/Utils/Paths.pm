@@ -126,10 +126,12 @@ sub served_mime_types {
                 mkv => 'video/x-matroska',
                 mov => 'video/quicktime',
                 mp4 => 'video/mp4',
+                mpeg => 'video/mpeg',
                 mpg => 'video/mpeg',
                 ogv => 'video/x-theora+ogg',
                 webm => 'video/webm',
-               };
+             };
+    # browser for ogv and ogg returns video/ogg
 }
 
 1;

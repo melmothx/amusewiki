@@ -798,6 +798,10 @@ $(document).ready(function(){
  });
 </script>
 
+<script>
+ var amw_batch_upload_settings = [% amw_batch_upload_settings_json %];
+</script>
+
 <script type="text/javascript"
         src="[% c.uri_for('/static/js/simpleUpload.min.js') %]">
 </script>

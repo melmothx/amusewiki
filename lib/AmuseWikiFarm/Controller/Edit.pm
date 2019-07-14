@@ -12,6 +12,7 @@ use DateTime;
 use Text::Wrapper;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username clean_html/;
+use AmuseWikiFarm::Utils::Paths ();
 use Path::Tiny ();
 
 =head1 NAME
@@ -425,6 +426,17 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
               load_highlight => $c->stash->{site}->use_js_highlight,
               load_markitup_css => 1,
              );
+
+    {
+        my $served_mime_types = AmuseWikiFarm::Utils::Paths::served_mime_types();
+        delete $served_mime_types->{muse};
+        my $settings = {
+                         extensions => [ keys %$served_mime_types ],
+                         mime_types => [ values %$served_mime_types ],
+                         max_file_size => $c->stash->{site}->binary_upload_max_size_in_mega * 1028 * 1028,
+                        };
+        $c->stash(amw_batch_upload_settings_json => AmuseWikiFarm::Utils::Amuse::to_json($settings));
+    }
 
     # layout settings
     my %layout_settings = (edit_option_preview_box_height => 0,

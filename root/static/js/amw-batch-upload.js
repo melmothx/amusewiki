@@ -187,14 +187,14 @@ $(document).ready(function() {
 				    this.progressBar.remove();
                     $('#uploads-errors').text(l(error.name)).show();
 			    },
-                maxFileSize: 8 * 1028 * 1028,
+                maxFileSize: amw_batch_upload_settings.max_file_size,
                 data: {
                     insert: $("#add-attachment-to-body").is(":checked") ? 1 : 0,
                     split_pdf: $("#split-pdf").is(":checked") ? 1 : 0,
                 },
                 expect: "json",
-                allowedExts: ["pdf", "jpg", "jpeg", "png" ],
-                allowedTypes: ["application/pdf", "image/png", "image/jpeg"]
+                allowedExts: amw_batch_upload_settings.extensions,
+                allowedTypes: amw_batch_upload_settings.mime_types
 		    });
         }
     });
