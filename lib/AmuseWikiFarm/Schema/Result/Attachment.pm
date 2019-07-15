@@ -328,9 +328,8 @@ sub generate_thumbnails {
     my $repo_root = $self->site->repo_root;
     die "$srcfile does not exists" unless -f $srcfile;
 
-    # sanity checks pointing to grave issues
     my $src = "$srcfile";
-    die "$src is wrong not a pdf nor a png/jpeg" unless $basename =~ m/\.(pdf|png|jpe?g)\z/;
+    return unless $basename =~ m/\.(pdf|png|jpe?g)\z/;
 
     if ($src =~ m/\.\./ or
         $src !~ m/\A\Q$repo_root\E/) {

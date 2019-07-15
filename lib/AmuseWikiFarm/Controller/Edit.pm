@@ -318,6 +318,7 @@ sub revision_can_be_edited :Chained('get_revision') :PathPart('') :CaptureArgs(0
 
 sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
     my ($self, $c) = @_;
+    my $site = $c->stash->{site};
     my @uris;
     my %out;
     if ($c->stash->{locked_editing}) {
@@ -333,9 +334,23 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
         if (my ($upload) = $c->request->upload('attachment')) {
             my $file =  $upload->tempname;
 
+            my $mime_type = AmuseWikiFarm::Utils::Amuse::mimetype($file);
+
+            log_info { "Attaching $file $mime_type" };
+            my $allowed = $c->stash->{site}->allowed_binary_uploads(restricted => !$c->user_exists);
+            unless ($allowed->{$mime_type}) {
+                Dlog_info { "$mime_type not allowed $_" } $allowed;
+                %out = (success => 0,
+                        insert => 0,
+                        error => { message => $c->loc("Unsupported file type [_1]", $mime_type) });
+                $c->stash(json => \%out);
+                $c->detach($c->view('JSON'));
+                return;
+            }
+
             my ($w, $h) = AmuseWikiFarm::Utils::Amuse::image_dimensions($file);
             if ($w && $h) {
-                if (my $limit = $c->stash->{site}->max_image_dimension) {
+                if (my $limit = $site->max_image_dimension) {
                     if ($w > $limit or $h > $limit) {
                         %out = (
                                 success => 0,
@@ -364,6 +379,9 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
                 Dlog_debug { "add attachment outcome: $_" } $outcome;
                 if ($outcome->{attachment}) {
                     push @uris, $outcome->{attachment};
+                }
+                elsif ($outcome->{error} and ref($outcome->{error}) eq 'ARRAY') {
+                    $out{error}{message} = $c->loc(@{$outcome->{error}});
                 }
             }
         }
@@ -466,15 +484,24 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
     if ($params->{preview} || $params->{commit} || $params->{upload}) {
 
         # legacy handling of uploads
+      UPLOAD:
         foreach my $upload ($c->request->upload('attachment')) {
 
-            log_debug { $upload->tempname . ' => '. $upload->size  };
+            log_debug { $upload->tempname . ' => '. $upload->size . " User exists" . $c->user_exists };
             if (-f $upload->tempname) {
                 log_debug { $upload->tempname . ' exists' };
             }
             else {
                 log_error { $upload->tempname . ' does not exist' };
                 die "Shouldn't happen, " . $upload->tempname . ' does not exist';
+            }
+
+            my $mime_type = AmuseWikiFarm::Utils::Amuse::mimetype($upload->tempname);
+            my $allowed = $c->stash->{site}->allowed_binary_uploads(restricted => !$c->user_exists);
+            unless ($allowed->{$mime_type}) {
+                $c->flash(error_mgs => $c->loc("Unsupported file type [_1]", $mime_type));
+                Dlog_info { "Refusing to upload $mime_type: $_" } $allowed;
+                next UPLOAD;
             }
             my $outcome;
             if ($params->{add_attachment_to_body}) {

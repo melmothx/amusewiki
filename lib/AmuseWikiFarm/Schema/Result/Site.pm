@@ -3512,6 +3512,26 @@ sub mail_from_default {
     }
 }
 
+sub allow_binary_uploads {
+    shift->get_option('allow_binary_uploads') ? 1 : 0;
+}
+
+sub allowed_binary_uploads {
+    my ($self, %options) = @_;
+    my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+    my %allowed;
+    foreach my $ext (qw/png jpg pdf/) {
+        $allowed{$mime->{$ext}} ||= $ext;
+    }
+    if (!$options{restricted} and $self->allow_binary_uploads) {
+        foreach my $ext (sort keys %$mime) {
+            $allowed{$mime->{$ext}} ||= $ext;
+        }
+    }
+    Dlog_debug { "Allowed mime_types: $_"} \%allowed;
+    return \%allowed;
+}
+
 sub popular_titles {
     my ($self, $page) = @_;
     return $self->title_stats->popular_texts($page, $self->pagination_size);

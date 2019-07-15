@@ -277,6 +277,14 @@ sub working_dir {
     return File::Spec->catfile($self->site->staging_dir, $self->id);
 }
 
+sub blob_directory {
+    my $self = shift;
+    my $dir = Path::Tiny::path($self->working_dir)->child('blobs');
+    $dir->mkpath;
+    return $dir;
+}
+
+
 =head2 private files
 
 They have an underscore, so they are invalid files for use and avoid clashes.
@@ -350,16 +358,19 @@ Return an array reference to the list of attached basenames.
 
 =cut
 
+sub all_attachments {
+    my $self = shift;
+    my @files = Path::Tiny::path($self->working_dir)->children(qr{\w\.(pdf|jpe?g|png)$});
+    my $blobs = Path::Tiny::path($self->blob_directory);
+    if ($blobs->exists) {
+        push @files, $blobs->children;
+    }
+    return @files;
+}
+
 sub attached_files {
     my $self = shift;
-    my @files;
-    my $dir = $self->working_dir;
-    opendir(my $dh, $dir) || die "can't opendir $dir: $!";
-    # we know only about pdf, jpeg, png
-    @files = grep { /\w\.(pdf|jpe?g|png)$/ && -f File::Spec->catfile($dir, $_) }
-      readdir($dh);
-    closedir $dh;
-    return [ sort { $a cmp $b } @files ] ;
+    return [ sort { $a cmp $b } map { $_->basename } $self->all_attachments ] ;
 }
 
 sub attached_images {
@@ -398,14 +409,6 @@ sub attached_pdfs_string {
     }
 }
 
-sub attached_file_path {
-    my ($self, $name) = @_;
-    return unless $name;
-    my $path = File::Spec->catfile($self->working_dir, $name);
-    return unless -f $path;
-    return $path;
-}
-
 =head2 attached_files_paths
 
 Return a list of absolute path to the attached files.
@@ -415,12 +418,7 @@ Return a list of absolute path to the attached files.
 
 sub attached_files_paths {
     my $self = shift;
-    my @paths;
-    foreach my $file (@{$self->attached_files}) {
-        my $path = $self->attached_file_path($file);
-        push @paths, $path if $path;
-    }
-    return @paths;
+    return map { "$_" } grep { $_->exists } $self->all_attachments;
 }
 
 
@@ -542,22 +540,15 @@ sub add_attachment {
         return \%out;
     }
     my $mime = mimetype($filename) || "";
-    my $ext;
-    if ($mime eq 'image/jpeg') {
-        $ext = '.jpg';
-    }
-    elsif ($mime eq 'image/png') {
-        $ext = '.png';
-    }
-    elsif ($mime eq 'application/pdf') {
-        $ext = '.pdf';
-    }
-    else {
+    my $site = $self->site;
+    my $ext = $site->allowed_binary_uploads->{$mime};
+    unless ($ext) {
         # PO:
         # loc("Unsupported file type [_1]", $mime);
         $out{error} = [ "Unsupported file type [_1]", $mime ];
         return \%out;
     }
+    log_debug {"Extension for $mime is $ext"};
     my $base = muse_attachment_basename_for($self->muse_uri);
     # and now we have to check if the same name exists in the
     # attachment table for the same site.
@@ -570,20 +561,18 @@ sub add_attachment {
 
     my $suffix = $self->title->attachment_index;
     do {
-        $name = $base . '-' . ++$suffix . $ext;
-    } while ($self->site->attachments->find({ uri => $name }));
+        $name = $base . '-' . ++$suffix . '.' . $ext;
+    } while ($site->attachments->find({ uri => $name }));
 
     die "Something went wrong" unless $name;
 
     $self->title->update({ attachment_index => $suffix });
 
+    my ($target, $working_dir);
     # copy it in the working directory
-    my $target = File::Spec->catfile($self->working_dir, $name);
-    if ($ext eq '.pdf') {
-        log_debug { "Copying $filename to $target " };
-        copy($filename, $target) or die "Couldn't copy $filename to $target $!";
-    }
-    else {
+    if ($ext eq 'png' or $ext eq 'jpg') {
+        $working_dir = $self->working_dir;
+        $target = File::Spec->catfile($working_dir, $name);
         my $failure = "";
         try {
             AmuseWikiFarm::Utils::Amuse::strip_image($filename, $target);
@@ -597,8 +586,14 @@ sub add_attachment {
             return \%out;
         }
     }
+    else {
+        $working_dir = $self->blob_directory;
+        $target = File::Spec->catfile($working_dir, $name);
+        log_debug { "Copying $filename to $target " };
+        copy($filename, $target) or die "Couldn't copy $filename to $target $!";
+    }
     # and finally insert the thing in the db
-    my $info = muse_parse_file_path($target, $self->working_dir, 1);
+    my $info = muse_parse_file_path($target, $working_dir, 1);
     die "Couldn't retrieve info from $target (this shouldn't happen)" unless $info;
 
     $info->{uri} = $info->{f_name} . $info->{f_suffix};
@@ -608,7 +603,7 @@ sub add_attachment {
     $info->{f_class} = 'attachment';
 
     # and let it crash on race conditions
-    $self->site->attachments->create($info);
+    $site->attachments->create($info);
     flock($lock, LOCK_UN);
     close $lock;
     $out{attachment} = $info->{uri};
@@ -641,14 +636,15 @@ sub destination_paths {
     die "pdf <$pdf_dir> is not a dir" unless $pdf_dir && -d $pdf_dir;
     my %dests;
     foreach my $file ($self->f_full_path_name, $self->attached_files_paths) {
-        my ($basename, $path, $suffix) = fileparse($file, qr{\.pdf});
+        my ($basename, $path, $suffix) = fileparse($file, qr{\.(jpe?g|png|muse)});
         if ($suffix) {
-            $dests{$file} = File::Spec->catfile($pdf_dir, $basename . $suffix);
+            $dests{$file} = File::Spec->catfile($target_dir, $basename . $suffix);
         }
         else {
-            $dests{$file} = File::Spec->catfile($target_dir, $basename);
+            $dests{$file} = File::Spec->catfile($pdf_dir, $basename);
         }
     }
+    Dlog_debug { "Paths are $_"  } \%dests;
     return %dests;
 }
 
@@ -831,6 +827,7 @@ sub publish_text {
     # catch the muse files and its attachments, and validate it.
     my $muse;
     my @attachments;
+    Dlog_debug { "Files are $_" } \%files;
     foreach my $src (keys %files) {
         my $target = $files{$src};
         if ($target =~ m/\.muse$/) {

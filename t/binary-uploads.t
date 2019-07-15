@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 51;
+use Test::More tests => 258;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
 use Path::Tiny;
@@ -27,7 +27,6 @@ my $site = create_site($schema, '0blobs0');
 
 $site->site_options->update_or_create({ option_name => 'show_type_and_number_of_pages',
                                         option_value => 1 });
-
 
 foreach my $f (path('t/binary-files')->children) {
     diag "Copying $f to uploads directory";
@@ -115,11 +114,152 @@ foreach my $f (@files) {
 # however, it's impossible to download
 ok $site->attachments->find({ uri => 'test.exe' });
 my $res = $mech->get("/uploads/" . $site->id . "/test.exe");
-$res->code, 403;
+is $res->code, 403;
 
 $mech->get_ok('/latest');
 $mech->content_lacks('This text is a book');
 $mech->content_lacks('This text is an article');
 $mech->content_lacks('amw-show-text-type');
 $mech->content_lacks('amw-show-text-type-and-number-of-pages');
+
+$site->site_options->update_or_create({ option_name => 'allow_binary_uploads',
+                                        option_value => 0 });
+$site->discard_changes;
+foreach my $type (qw/text special/) {
+    my ($rev) = $site->create_new_text({ title => "Add $type",
+                                         lang => 'en',
+                                         textbody => 'ciao',
+                                       }, $type);
+    foreach my $f (path('t/binary-files')->children) {
+        my $outcome = $rev->add_attachment("$f");
+        next if $f =~ m/\.pdf$/;
+        ok $outcome->{error} or die Dumper($outcome);
+    }
+    $rev->commit_version;
+    $rev->publish_text;
+}
+
+$site->site_options->update_or_create({ option_name => 'allow_binary_uploads',
+                                        option_value => 1 });
+
+my @check;
+
+$site->discard_changes;
+foreach my $type (qw/text special/) {
+    my ($rev) = $site->create_new_text({ title => "Add 1 $type",
+                                         lang => 'en',
+                                         textbody => 'ciao',
+                                       }, $type);
+    foreach my $f (path('t/binary-files')->children) {
+        my $outcome = $rev->add_attachment("$f");
+        ok !$outcome->{error} or die Dumper($outcome);
+        push @check, $outcome->{attachment};
+    }
+    $rev->edit("#blob 1\n#attach " . join(' ', @check) . "\n" . $rev->muse_body);
+    $rev->commit_version;
+    $rev->publish_text(sub { diag @_ });
+    $mech->get_ok($rev->title->full_uri);
+    foreach my $uri (@check) {
+        $mech->content_contains($uri);
+    }
+}
+
+foreach my $uri (@check) {
+    my $att = $site->attachments->find({ uri => $uri });
+    unlike $att->f_full_path_name, qr{staging/\d+/blobs};
+    my $path = $site->path_for_uploads;
+    like $att->f_full_path_name, qr{\Q$path/$uri\E};
+    $mech->get_ok($att->full_uri);
+    my @logs = $site->git->log($att->f_full_path_name);
+    ok (@logs) and diag $att->f_full_path_name . " => " . $logs[0]->id;    
+}
+
+# now see how it works with the browsers
+{
+
+    my $count = $site->attachments->count;
+    $mech->get_ok('/');
+    $mech->get('/action/text/new');
+    is $mech->status, 401;
+    ok($mech->form_id('login-form'), "Found the login-form");
+    $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root'});
+    $mech->content_contains('You are logged in now!');
+    ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+    $mech->set_fields(author => 'pippo',
+                      title => 'Test title',
+                      textbody => "blablabla\n");
+    $mech->click;
+    $mech->content_contains('Created new text');
+    my $body = "#title My *Title*\n#lang en\n\nThis\n\nis\n\na\n\ntest\n";
+    my $binfile = catfile(qw/t binary-files video.mp4/);
+
+    my $edit_url = $mech->uri;
+    foreach my $embed (0, 1) {
+        $mech->get_ok($edit_url);
+        $mech->submit_form(with_fields => {
+                                           body => $body,
+                                           attachment => $binfile,
+                                           add_attachment_to_body => 0,
+                                          },
+                           button => 'preview');
+        $count++;
+        is $site->attachments->count, $count, "File uploaded";
+    }
+
+    foreach my $embed (0, 1) {
+        $mech->post($edit_url . '/upload',
+                    Content_Type => 'form-data',
+                    Content => [
+                                attachment => [
+                                               $binfile,
+                                               $binfile,
+                                               Content_Type => 'image/png',
+                                              ],
+                               ]);
+        $count++;
+        is $site->attachments->count, $count, "File uploaded";
+    }
+    $mech->get_ok($edit_url);
+    $mech->form_id('museform');
+    $mech->click('commit');
+    foreach my $i (1..4) {
+        $mech->content_contains ("p-t-pippo-test-title-$i.mp4");
+    }
+    $mech->get_ok('/logout');
+    
+    $site->update({ mode => 'modwiki' });
+
+    $mech->get('/action/text/new');
+    ok($mech->form_id('ckform'), "Found the form for uploading stuff");
+    $mech->set_fields(author => 'pippo 2',
+                      title => 'Test title 2',
+                      textbody => "blablabla\n");
+    $mech->click;
+    $mech->content_contains('Created new text');
+
+    $edit_url = $mech->uri;
+    foreach my $embed (0, 1) {
+        $mech->get_ok($edit_url);
+        $mech->submit_form(with_fields => {
+                                           body => $body,
+                                           attachment => $binfile,
+                                           add_attachment_to_body => 0,
+                                          },
+                           button => 'preview');
+        is $site->attachments->count, $count, "File NOT not uploaded";
+    }
+
+    foreach my $embed (0, 1) {
+        $mech->post($edit_url . '/upload',
+                    Content_Type => 'form-data',
+                    Content => [
+                                attachment => [
+                                               $binfile,
+                                               $binfile,
+                                               Content_Type => 'image/png',
+                                              ],
+                               ]);
+        is $site->attachments->count, $count, "File NOT uploaded";
+    }
+}
 
