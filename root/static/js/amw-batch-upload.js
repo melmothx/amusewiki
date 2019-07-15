@@ -7,6 +7,9 @@ $(document).ready(function() {
     $.get("/api/lexicon.json", function(data) {
         messages = data;
     });
+    function is_image(uri) {
+        return uri.match(/\.(png|jpe?g)$/);
+    }
     function l(string) {
         return messages[string] || string;
     }
@@ -19,7 +22,8 @@ $(document).ready(function() {
                 var uri = data.uris[i];
                 var img;
                 var thumb;
-                if (uri.match(/\.(png|jpe?g)$/)) {
+                var fa_icon;
+                if (is_image(uri)) {
                     img = $('<img/>', {
                         class: "img-responsive img-thumbnail",
                         src: uri,
@@ -27,8 +31,18 @@ $(document).ready(function() {
                     });
                 }
                 else {
+                    fa_icon = 'fa-file';
+                    if (uri.match(/\.(pdf)/)) {
+                        fa_icon = 'fa-file-pdf-o';
+                    }
+                    else if (uri.match(/\.(avi|mkv|mov|mp4|mpe?g|ogv|webm)$/)) {
+                        fa_icon = 'fa-file-video-o';
+                    }
+                    else if (uri.match(/\.(mp3|flac|ogg)/)) {
+                        fa_icon = 'fa-file-audio-o';
+                    }
                     img = $("<a/>", { 'href': uri }).append(
-                        $('<span/>', { class: "fa fa-file-pdf-o fa-2x fa-border" })
+                        $('<span/>', { class: "fa " + fa_icon + " fa-2x fa-border" })
                     );
                 }
 
@@ -64,19 +78,27 @@ $(document).ready(function() {
                 else {
                     uri_is_present = 1;
                 }
+                var caption_string;
+                if (uri_is_present) {
+                    caption_string = l("File already in the body");
+                }
+                else if (is_image(uri)) {
+                    caption_string = l("Insert the file into the body at the cursor position");
+                }
+                else {
+                    caption_string = l("Attach");
+                }
                 caption.append($('<a/>',
                                  {
                                      'data-uri': uri,
                                      'href': "#",
                                      'class': "amw-image-use use-image-as-picture" + ( uri_is_present ? '-disabled' : ''),
-                                     'title': (uri_is_present ?
-                                               l("File already in the body") :
-                                               l("Insert the file into the body at the cursor position"))
+                                     'title': caption_string
                                  }).append(
                                      $("<span/>", { class: "fa fa-picture-o fa-2x fa-border" })
                                  ));
 
-                if (uri.match(/\.(png|jpe?g)$/)) {
+                if (is_image(uri)) {
                     if (body.search('#cover ' + uri) < 0) {
                         uri_is_cover = 0;
                     }
@@ -124,15 +146,7 @@ $(document).ready(function() {
         maintextarea.attr('readonly', 'readonly');
         var body = maintextarea.val();
         var finaloffset;
-        if (uri.match(/\.pdf$/)) {
-            if (body.match(/^#ATTACH .*$/m)) {
-                body = body.replace(/^(#ATTACH .*)$/m, '$1 ' + uri);
-            }
-            else {
-                body = '#ATTACH ' + uri + "\n" + body;
-            }
-        }
-        else {
+        if (is_image(uri)) {
             var chunk = "\n\n[[" + uri + " f]]\n\n";
             var offset = maintextarea.prop('selectionStart');
             if (offset) {
@@ -144,6 +158,14 @@ $(document).ready(function() {
             }
             else {
                 body = body + chunk;
+            }
+        }
+        else {
+            if (body.match(/^#ATTACH .*$/m)) {
+                body = body.replace(/^(#ATTACH .*)$/m, '$1 ' + uri);
+            }
+            else {
+                body = '#ATTACH ' + uri + "\n" + body;
             }
         }
         maintextarea.val(body);
