@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 258;
+use Test::More tests => 283;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
 use Path::Tiny;
@@ -263,3 +263,21 @@ foreach my $uri (@check) {
     }
 }
 
+# deletions
+{
+    my ($rev) = $site->create_new_text({ title => "Add and delete",
+                                         lang => 'en',
+                                         textbody => 'ciao',
+                                       }, 'text');
+    my @discard;
+    foreach my $f (path('t/binary-files')->children) {
+        my $outcome = $rev->add_attachment("$f");
+        ok $outcome->{attachment};
+        push @discard, $outcome->{attachment};
+    }
+    foreach my $u (@discard) {
+        my $res = $rev->remove_attachment($u);
+        ok $res->{success};
+    }
+    ok scalar($rev->all_attachments) == 0;
+}

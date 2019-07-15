@@ -3521,7 +3521,7 @@ sub allowed_binary_uploads {
     my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
     my %allowed;
     foreach my $ext (qw/png jpg pdf/) {
-        $allowed{$mime->{$ext}} ||= $ext;
+        $allowed{$mime->{$ext}} = $ext or die "Shouldn't happen";
     }
     if (!$options{restricted} and $self->allow_binary_uploads) {
         foreach my $ext (sort keys %$mime) {
