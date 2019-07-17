@@ -168,9 +168,11 @@
     </div>
     <div>
       <label for="attachment">
-        [% loc('Add an attachment (PNG, JPG or PDF)' ) %]
+        [% loc('Add an attachment') %] ([% allowed_upload_extensions | html %],
+        [% loc('max [_1] Mb', site.binary_upload_max_size_in_mega) %])
       </label>
       <input data-upload-url="[% binary_upload_uri | html %]"
+             data-max-upload-size="[% site.binary_upload_max_size_in_mega %]"
              class="simple-upload-input"
              id="attachment" name="attachment" type="file" multiple/>
     </div>
@@ -796,10 +798,6 @@ $(document).ready(function(){
     $('#goto-diff').click(function() { window.open('[% diffing_uri %]', '_blank') });
      load_preview();
  });
-</script>
-
-<script>
- var amw_batch_upload_settings = [% amw_batch_upload_settings_json %];
 </script>
 
 <script type="text/javascript"

@@ -123,7 +123,7 @@ $mech->content_lacks('amw-show-text-type');
 $mech->content_lacks('amw-show-text-type-and-number-of-pages');
 
 $site->site_options->update_or_create({ option_name => 'allow_binary_uploads',
-                                        option_value => 0 });
+                                        option_value => '' });
 $site->discard_changes;
 foreach my $type (qw/text special/) {
     my ($rev) = $site->create_new_text({ title => "Add $type",
@@ -140,7 +140,7 @@ foreach my $type (qw/text special/) {
 }
 
 $site->site_options->update_or_create({ option_name => 'allow_binary_uploads',
-                                        option_value => 1 });
+                                        option_value => 'flac mp3 ogg avi mkv mov mp4 mpeg mpg ogv webm epub' });
 
 my @check;
 
@@ -176,7 +176,7 @@ foreach my $uri (@check) {
 
 # now see how it works with the browsers
 {
-
+    $schema->resultset('User')->find({ username => 'root' })->update({ preferred_language => undef });
     my $count = $site->attachments->count;
     $mech->get_ok('/');
     $mech->get('/action/text/new');

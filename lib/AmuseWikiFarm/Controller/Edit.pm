@@ -440,20 +440,18 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;
     my $revision = $c->stash->{revision};
+    my $site = $c->stash->{site};
     $c->stash(
-              load_highlight => $c->stash->{site}->use_js_highlight,
+              load_highlight => $site->use_js_highlight,
               load_markitup_css => 1,
              );
 
     {
-        my $served_mime_types = AmuseWikiFarm::Utils::Paths::served_mime_types();
-        delete $served_mime_types->{muse};
-        my $settings = {
-                         extensions => [ keys %$served_mime_types ],
-                         mime_types => [ values %$served_mime_types ],
-                         max_file_size => $c->stash->{site}->binary_upload_max_size_in_mega * 1028 * 1028,
-                        };
-        $c->stash(amw_batch_upload_settings_json => AmuseWikiFarm::Utils::Amuse::to_json($settings));
+        my @exts = (qw/png jpg pdf/);
+        if ($c->user_exists && $site->allow_binary_uploads) {
+            push @exts, $site->allowed_upload_extensions;
+        }
+        $c->stash(allowed_upload_extensions => join(', ', map { uc($_) } @exts));
     }
 
     # layout settings

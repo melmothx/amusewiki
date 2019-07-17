@@ -183,6 +183,7 @@ $(document).ready(function() {
 
     $('#attachment').change(function() {
         var target = $(this).data('upload-url');
+        var max_size = $(this).data('max-upload-size') || 0;
         if (target) {
             $(this).simpleUpload(target, {
                 start: function(file) {
@@ -209,14 +210,12 @@ $(document).ready(function() {
 				    this.progressBar.remove();
                     $('#uploads-errors').text(l(error.name)).show();
 			    },
-                maxFileSize: amw_batch_upload_settings.max_file_size,
                 data: {
                     insert: $("#add-attachment-to-body").is(":checked") ? 1 : 0,
                     split_pdf: $("#split-pdf").is(":checked") ? 1 : 0,
                 },
                 expect: "json",
-                allowedExts: amw_batch_upload_settings.extensions,
-                allowedTypes: amw_batch_upload_settings.mime_types
+                maxFileSize: max_size * 1028 * 1028
 		    });
         }
     });
