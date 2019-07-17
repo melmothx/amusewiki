@@ -85,7 +85,7 @@ sub test_revision {
     is_deeply ($rev->add_attachment($garbage->filename)->{error},
                ["Unsupported file type [_1]", "text/plain"]);
 
-    # print Dumper($rev->attached_images, $rev->attached_files, $rev->attached_pdfs);
+    diag Dumper($rev->attached_images, $rev->attached_files, $rev->attached_pdfs);
 
     {
         my $discard = $rev->add_attachment($attach[0]);

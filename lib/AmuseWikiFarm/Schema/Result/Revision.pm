@@ -872,7 +872,7 @@ sub publish_text {
         my $dest = $files{$k};
         if ($dest ne $muse) {
             # this shouldn't happen
-            die "Attachment already exists" if -f $dest;
+            die "Attachment $dest already exists" if -f $dest;
         }
         copy($k, $dest) or die "Couldn't copy $k to $dest $!";
 
@@ -935,23 +935,10 @@ sub delete {
 
 sub purge_working_tree {
     my $self = shift;
-    my $working_tree = $self->working_dir;
-    if (-d $working_tree) {
-        opendir(my $dh, $working_tree) or die "Can't opendir $working_tree: $!";
-        my @files = grep { /^\w/ } readdir($dh);
-        closedir $dh;
-        foreach my $file (@files, '.lockfile') {
-            my $path = File::Spec->catfile($working_tree, $file);
-            if (-f $path) {
-                log_info { "Removing $path" };
-                unlink $path or log_warn { "Couldn't unlink $path $!" };
-            }
-        }
-        log_info {  "Removing $working_tree" };
-        rmdir $working_tree or warn "Error removing $working_tree: $!";
-    }
-    else {
-        log_fatal { "$working_tree is not a directory!" };
+    my $wd = Path::Tiny::path($self->working_dir);
+    if ($wd->exists) {
+        log_info { "Removing $wd" };
+        $wd->remove_tree;
     }
 }
 
