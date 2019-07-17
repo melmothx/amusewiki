@@ -129,8 +129,11 @@ sub served_mime_types {
                 mpeg => 'video/mpeg',
                 mpg => 'video/mpeg',
                 ogv => 'video/x-theora+ogg',
+                weba => 'audio/webm',
                 webm => 'video/webm',
-
+                webp => 'image/webp',
+              aac => 'audio/aac',
+              rtf => 'application/rtf',
               doc => 'application/msword',
               docx => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
               odt => 'application/vnd.oasis.opendocument.text',
@@ -138,7 +141,6 @@ sub served_mime_types {
               tiff => 'image/tiff',
               wav => 'audio/wav',
              };
-    # browser for ogv and ogg returns video/ogg
 }
 
 1;
