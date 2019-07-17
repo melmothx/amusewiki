@@ -3,11 +3,12 @@ use warnings;
 
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
-use Test::More tests => 9;
+use Test::More tests => 11;
 use Test::WWW::Mechanize::Catalyst;
 use File::Spec;
 use File::Copy qw/move/;
 use Data::Dumper;
+use Path::Tiny;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWiki::Tests qw/create_site/;
@@ -61,4 +62,18 @@ $mech->get($mech->uri . '?__language=en');
     ok $ws->ckeditor_use_cdn;
     ok $ws->highlight_use_cdn;
 }
+
+{
+    my $ws = AmuseWikiFarm::Utils::Webserver->new;
+    my $directions = $ws->generate_nginx_config($site);
+    diag $directions;
+    if ($directions =~ m!diff -Nu /etc/nginx/sites-enabled/amusewiki\s+(.+?)\s*$!m) {
+        my $file = path($1);
+        ok $file->exists;
+        diag $file;
+        my $content = $file->slurp_utf8;
+        like $content, qr{client_max_body_size 8m};
+    }
+}
+
 $schema->resultset('User')->update({ preferred_language => undef });

@@ -2743,7 +2743,7 @@ sub update_from_params_restricted {
                         ssl_chained_cert  => 'value_or_empty',
                         ssl_cert          => 'value_or_empty',
                         ssl_ca_cert       => 'value_or_empty',
-
+                        binary_upload_max_size_in_mega => 'value',
                        );
     my $abort;
     foreach my $value (keys %fixed_values) {
@@ -2848,7 +2848,8 @@ sub update_from_params {
     my %ranges = (
                   division => [9, 15],
                   fontsize => [10, 12],
-                  bb_page_limit => [10, 2000], # 2000 pages should be enough...
+                  bb_page_limit => [10, 8000],
+                  binary_upload_max_size_in_mega => [1, 2000], # 2 giga seems fair
                  );
 
     foreach my $integer (keys %ranges) {
@@ -3031,6 +3032,7 @@ sub update_from_params {
                            edit_option_preview_box_height
                            show_type_and_number_of_pages
                            enable_xapian_suggestions
+                           allow_binary_uploads
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3514,6 +3516,11 @@ sub mail_from_default {
 
 sub allow_binary_uploads {
     shift->get_option('allow_binary_uploads') || '';
+}
+
+sub known_file_extensions {
+    my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+    return join(' ', sort keys %$mime);
 }
 
 sub allowed_upload_extensions {
