@@ -750,6 +750,13 @@ How smart a lash that speech doth giue my Conscience?
         end of the document.') %]
         </li>
         <li>
+          <code>#blob 1</code><br /> [% loc('If present, hide the
+          generated format and the information box. This makes sense
+          with attachments, when the text version is poor or not
+          available and more relevance should be given to the attached
+          files.') %]
+        </li>
+        <li>
           <code>#nocoverpage 1</code> <br />
           [% loc('If this line is present, do not create a title page,
           but instead start the text on the very first page and
@@ -804,5 +811,5 @@ $(document).ready(function(){
         src="[% c.uri_for('/static/js/simpleUpload.min.js') %]">
 </script>
 <script type="text/javascript"
-        src="[% c.uri_for('/static/js/amw-batch-upload.js', { v => 2 }) %]">
+        src="[% c.uri_for('/static/js/amw-batch-upload.js', { v => 3 }) %]">
 </script>
