@@ -9,8 +9,12 @@
 [% FOREACH node IN node_list %]
   <div class="row" >
     <div class="col-xs-12">
-      <div class="well node-overview-list">
-        [% node %]
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="node-overview-list">
+            [% node %]
+          </div>
+        </div>
       </div>
     </div>
   </div>
