@@ -8,6 +8,7 @@ dedicated tree.
 
  - Handle Pg listening on 5433 instead of 5432 (debian packaging)
  - Fix the query params for the freenode webchat (they moved from
+   qwebirc to Kiwi IRC).
  - Symlink system wide fontspec.json if found installed
  - Display the --ttdir argument for muse-compiler.pl
 
