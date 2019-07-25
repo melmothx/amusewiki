@@ -4,6 +4,15 @@ WARNING: *NEVER* run the test suite in the production tree, as will
 leave stray logs and files. If you want to run 'make test', do it in a
 dedicated tree.
 
+2.390 2019-07-25
+
+ - Added experimental node system. It's accessible to logged in users
+   under /node. The basic functionality is there. Probably needs
+   refinement with locale-aware sorting. This permits to create
+   arbitrary category trees.
+ - Added experimental feature for adding binary files like
+   video/audio. Available in the configuration panel.
+
 2.331 2019-07-12
 
  - Handle Pg listening on 5433 instead of 5432 (debian packaging)
