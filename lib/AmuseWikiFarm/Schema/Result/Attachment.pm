@@ -115,6 +115,12 @@ __PACKAGE__->table("attachment");
   data_type: 'text'
   is_nullable: 1
 
+=head2 mime_type
+
+  data_type: 'varchar'
+  is_nullable: 1
+  size: 255
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -153,6 +159,8 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "comment_html",
   { data_type => "text", is_nullable => 1 },
+  "mime_type",
+  { data_type => "varchar", is_nullable => 1, size => 255 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -218,8 +226,8 @@ __PACKAGE__->belongs_to(
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07042 @ 2017-10-29 09:46:42
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Mw+7E+47hobdPiK7t4XC/A
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:Z8dT4nmTMCOTH5QTIHwLFg
 
 =head2 File classes
 
@@ -267,6 +275,7 @@ sub full_uri {
                 image => sub { '/library/' . $self->uri },
                 special_image => sub { '/special/' . $self->uri },
                 upload_pdf => sub { '/uploads/' . $self->site->id . '/' . $self->uri },
+                upload_binary => sub { '/uploads/' . $self->site->id . '/' . $self->uri },
                );
     if (my $sub = $type{$self->f_class}) {
         return $sub->();
@@ -319,9 +328,8 @@ sub generate_thumbnails {
     my $repo_root = $self->site->repo_root;
     die "$srcfile does not exists" unless -f $srcfile;
 
-    # sanity checks pointing to grave issues
     my $src = "$srcfile";
-    die "$src is wrong not a pdf nor a png/jpeg" unless $basename =~ m/\.(pdf|png|jpe?g)\z/;
+    return unless $basename =~ m/\.(pdf|png|jpe?g)\z/;
 
     if ($src =~ m/\.\./ or
         $src !~ m/\A\Q$repo_root\E/) {
@@ -357,6 +365,30 @@ sub generate_thumbnails {
 
 sub thumbnails {
     shift->global_site_files->thumbnails;
+}
+
+sub is_audio {
+    my $self = shift;
+    if ($self->mime_type =~ m|^audio|) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+sub is_video {
+    my $self = shift;
+    if ($self->mime_type =~ m|^video|) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+sub has_thumbnails {
+    return shift->f_class ne 'upload_binary';
 }
 
 __PACKAGE__->meta->make_immutable;

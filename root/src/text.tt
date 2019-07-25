@@ -20,6 +20,8 @@
   </div>
 </div>
 
+[% INCLUDE 'include/node_breadcrumbs.tt' %]
+
 [% # if we have the sidebars, we're cool, otherwise we have to shrink it %]
 <div class="row">
   <div class="col-sm-10 col-sm-push-1">
@@ -27,10 +29,12 @@
 
 <div lang="[% text.lang %]"
      id="page"[% IF text_json_api %] data-text-json-header-api="[% text_json_api | html %]"[% END %]>
+  [% UNLESS text.blob_container %]
   [% IF text.f_class == 'text' %]
   <div id="preamble-container" class="well">
   [% PROCESS 'include/preamble.tt' %]
   </div>
+  [% END %]
   [% END %]
   <div class="center">
     <div class="page-header">
@@ -71,13 +75,13 @@
       <div class="alert alert-warning" role="alert">[% loc('This text is not public yet') %]</div>
     </div>
     [% END %]
-
+    <div id="amw-blog-container-prepended"></div>
     [% text.html_body %]
   </div>
 
   [%- IF attached_pdfs -%]
   <div id="amw-attached-pdfs" style="margin: 80px 0">
-    <div class="row">
+    <div class="row" id="attached-pdf-separator-stars">
       <div class="center col-sm-12" style="margin-bottom: 40px">
         <strong> * * * * * </strong>
       </div>
@@ -249,6 +253,15 @@
       $("div#preamble-container").remove().appendTo("#text-optional-footer");
   });
 </script>
+[% END %]
+[% IF text.blob_container %]
+  <script>
+   $(document).ready(function() {
+       $("#attached-pdf-separator-stars").remove();
+       $("#amw-attached-pdfs").remove().appendTo("#amw-blog-container-prepended");
+       $("#amw-blog-container-prepended").append("<br /><hr /><br />");
+   });
+  </script>
 [% END %]
 
 <script src="[% c.uri_for('/static/js/amw-footnotes.js', { v => 1 }) %]"></script>

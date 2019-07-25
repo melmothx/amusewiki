@@ -233,11 +233,6 @@ valid only if root is C</etc>.
 
 =cut
 
-sub _my_suffixes {
-    return qr{\.(muse|png|jpe?g|pdf)};
-}
-
-
 sub muse_parse_file_path {
     my ($file, $root, $skip_path_checking) = @_;
     unless ($file && $root) {
@@ -256,8 +251,8 @@ sub muse_parse_file_path {
     my $rel_file = File::Spec->abs2rel($file, $root);
     # warn "Rel path is $rel_file";
 
-    my ($name, $path, $suffix)          = fileparse($file, _my_suffixes());
-    my ($relname, $relpath, $relsuffix) = fileparse($rel_file, _my_suffixes());
+    my ($name, $path, $suffix)          = fileparse($file, qr{\.[a-z0-9]{3,}});
+    my ($relname, $relpath, $relsuffix) = fileparse($rel_file, qr{\.[a-z0-9]{3,}});
 
 
     unless ($suffix) {
@@ -291,6 +286,7 @@ sub muse_parse_file_path {
                f_timestamp_epoch => $epoch_timestamp,
                f_full_path_name  => $file,
                f_suffix => $suffix,
+               mime_type => mimetype($file) || '',
               );
     # warn "Parsing $relpath";
     my @dirs = grep { $_ ne '' and $_ ne '.' } File::Spec->splitdir($relpath);
@@ -308,37 +304,6 @@ sub muse_parse_file_path {
     }
     return;
 }
-
-
-sub _parse_muse_file {
-    my ($file, $root) = @_;
-    my $fileinfo = muse_parse_file_path($file, $root);
-    return unless $fileinfo;
-    # remove the suffix key
-    if ($fileinfo->{f_suffix} ne '.muse') {
-        return $fileinfo;
-    }
-
-    # scan the directives;
-    my $directives = muse_fast_scan_header($fileinfo->{f_full_path_name},
-                                           'html');
-    unless ($directives && %$directives) {
-        # title is mandatory?
-        warn "$file couldn't be parsed by muse_fast_scan_header\n";
-        return;
-    }
-    my %lowered;
-    # we don't get clashes with the parsing of the muse file because
-    # directives have not underscors in them
-
-    my %out = (
-               %$fileinfo,
-               %lowered,
-              );
-
-    return \%out;
-}
-
 
 =head2 transliteration_table
 
@@ -711,7 +676,7 @@ sub muse_filepath_is_valid {
     my $relpath = shift;
     return unless $relpath;
     log_debug { "Scanning $relpath" };
-    my ($name, $path, $suffix) = fileparse($relpath, _my_suffixes());
+    my ($name, $path, $suffix) = fileparse($relpath, qr{\.[a-z0-9]{3,}});
     log_debug { "$name, $path, $suffix" };
     return unless $suffix && $path;
 
@@ -729,8 +694,13 @@ sub muse_filepath_is_valid {
     if (@dirs == 1) {
         my $dir = shift @dirs;
 
-        if ($dir eq 'uploads' and $suffix eq '.pdf') {
-            return 'upload_pdf';
+        if ($dir eq 'uploads') {
+            if ($suffix eq '.pdf') {
+                return 'upload_pdf';
+            }
+            else {
+                return 'upload_binary';
+            }
         }
         elsif ($dir eq 'specials') {
             if ($suffix =~ m/^\.(jpe?g|png)$/s) {
@@ -740,18 +710,18 @@ sub muse_filepath_is_valid {
                 return 'special';
             }
         }
-        # warn "$relpath not in the right dir!\n";
+        log_debug { "$relpath not in the right dir!" };
         return;
     }
     # then process the regular files.
     if (@dirs != 2) {
-        # warn "$relpath not two levels down\n";
+        log_debug { "$relpath not two levels down" };
         return;
     }
 
     # check the suffixes
     unless ($suffix =~ m/^\.(muse|jpe?g|png)$/s) {
-        # warn "$relpath has a suffix I don't recognize\n";
+        log_info { "$relpath has a suffix I don't recognize" };
         return;
     }
 

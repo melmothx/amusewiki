@@ -221,6 +221,13 @@ __PACKAGE__->table("title");
   default_value: 0
   is_nullable: 0
 
+=head2 blob_container
+
+  data_type: 'integer'
+  default_value: 0
+  is_nullable: 0
+  size: 1
+
 =head2 site_id
 
   data_type: 'varchar'
@@ -300,6 +307,8 @@ __PACKAGE__->add_columns(
   { data_type => "integer", default_value => 0, is_nullable => 0 },
   "attachment_index",
   { data_type => "integer", default_value => 0, is_nullable => 0 },
+  "blob_container",
+  { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
   "site_id",
   { data_type => "varchar", is_foreign_key => 1, is_nullable => 0, size => 16 },
 );
@@ -347,6 +356,21 @@ Related object: L<AmuseWikiFarm::Schema::Result::MuseHeader>
 __PACKAGE__->has_many(
   "muse_headers",
   "AmuseWikiFarm::Schema::Result::MuseHeader",
+  { "foreign.title_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
+=head2 node_titles
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::NodeTitle>
+
+=cut
+
+__PACKAGE__->has_many(
+  "node_titles",
+  "AmuseWikiFarm::Schema::Result::NodeTitle",
   { "foreign.title_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
@@ -476,9 +500,19 @@ Composing rels: L</text_months> -> monthly_archive
 
 __PACKAGE__->many_to_many("monthly_archives", "text_months", "monthly_archive");
 
+=head2 nodes
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-10-21 09:13:13
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:nBEL9Llh3MSI5tiON6BuqQ
+Type: many_to_many
+
+Composing rels: L</node_titles> -> node
+
+=cut
+
+__PACKAGE__->many_to_many("nodes", "node_titles", "node");
+
+
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:17
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:/pCllfccL1G90LMVI7t94Q
 
 =head2 translations
 

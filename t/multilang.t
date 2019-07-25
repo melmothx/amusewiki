@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 use utf8;
-use Test::More tests => 200;
+use Test::More tests => 213;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 
 use File::Spec::Functions qw/catfile catdir/;
@@ -71,6 +71,22 @@ MUSE
 }
 
 $site->update_db_from_tree;
+
+
+is $site->categories
+  ->by_type_and_uri(qw/author marco/)
+  ->titles->texts_only->by_lang('en')->count, 3,
+  "Found marco's texts in english";
+
+is $site->categories
+  ->by_type_and_uri(qw/author marco/)
+  ->titles->texts_only->by_lang('ru')->count, 0,
+  "Found marco's texts in english";
+
+
+ok $site->categories
+  ->by_type_and_uri(qw/author marco/)
+  ->titles->texts_only->language_stats;
 
 
 use Test::WWW::Mechanize::Catalyst;
@@ -247,3 +263,16 @@ foreach my $lang (qw/alksd als jp lad/) {
 $mech->get_ok("/?__language=sr");
 $mech->content_lacks("Napravi zbirku") or diag $mech->content;
 $schema->resultset('User')->update({ preferred_language => undef });
+
+
+$mech->get_ok("/category/topic/geo");
+$mech->content_contains('/library/a-test-id3-en');
+$mech->content_contains('/library/a-test-id3-hr');
+$mech->content_contains('/library/a-test-id3-it');
+$mech->content_like(qr{Italiano.*3.*Hrvatski.*3.*English.*3}s);
+
+$mech->get_ok("/category/topic/geo/it");
+$mech->content_lacks(   '/library/a-test-id3-en');
+$mech->content_lacks(   '/library/a-test-id3-hr');
+$mech->content_contains('/library/a-test-id3-it');
+$mech->content_like(qr{Italiano.*3.*Hrvatski.*3.*English.*3}s);

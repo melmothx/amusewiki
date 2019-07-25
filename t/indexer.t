@@ -131,6 +131,7 @@ my $expected = {
                 f_class => 'text',
                 slides => 0,
                 teaser => '',
+                mime_type => 'text/plain',
                };
 
 

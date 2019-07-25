@@ -373,6 +373,12 @@ __PACKAGE__->table("site");
   is_nullable: 0
   size: 1
 
+=head2 binary_upload_max_size_in_mega
+
+  data_type: 'integer'
+  default_value: 8
+  is_nullable: 0
+
 =head2 last_updated
 
   data_type: 'datetime'
@@ -524,6 +530,8 @@ __PACKAGE__->add_columns(
   },
   "twoside",
   { data_type => "integer", default_value => 0, is_nullable => 0, size => 1 },
+  "binary_upload_max_size_in_mega",
+  { data_type => "integer", default_value => 8, is_nullable => 0 },
   "last_updated",
   { data_type => "datetime", is_nullable => 1 },
 );
@@ -706,6 +714,21 @@ __PACKAGE__->has_many(
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
+=head2 nodes
+
+Type: has_many
+
+Related object: L<AmuseWikiFarm::Schema::Result::Node>
+
+=cut
+
+__PACKAGE__->has_many(
+  "nodes",
+  "AmuseWikiFarm::Schema::Result::Node",
+  { "foreign.site_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
+);
+
 =head2 redirections
 
 Type: has_many
@@ -852,8 +875,8 @@ Composing rels: L</user_sites> -> user
 __PACKAGE__->many_to_many("users", "user_sites", "user");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07046 @ 2018-02-03 20:01:21
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:emUAqdjyD58S+6sOj2+GJg
+# Created by DBIx::Class::Schema::Loader v0.07046 @ 2019-07-12 09:33:16
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:QxOGIMUTTJjMR6mYHy8S0Q
 
 =head2 other_sites
 
@@ -1577,7 +1600,21 @@ sub import_text_from_html_params {
 
     my $guard = $self->result_source->schema->txn_scope_guard;
     # title->can_spawn_revision will return false, so we have to force
-    my $revision = $self->titles->create($bogus)->new_revision('force');
+    my $created = $self->titles->create($bogus);
+    if ($params->{node_id}) {
+        Dlog_debug { "Assigning text to nodes $_" } $params->{node_id};
+        my @nodes = ref($params->{node_id}) ? (@{$params->{node_id}}) : ($params->{node_id});
+        foreach my $id (@nodes) {
+            if (my $node = $self->nodes->find($id)) {
+                log_info { "Assigned " . $created->uri . " to node " . $node->uri };
+                $created->add_to_nodes($node);
+            }
+            else {
+                log_error { "node $id not found in site " . $self->id };
+            }
+        }
+    }
+    my $revision = $created->new_revision('force');
 
     # save a copy of the html request
     my $html_copy = $revision->original_html;
@@ -1937,6 +1974,7 @@ sub index_file {
                    upload_pdf => 1,
                    special => 1,
                    special_image => 1,
+                   upload_binary => 1,
                    text => 1,
                   );
 
@@ -1944,9 +1982,11 @@ sub index_file {
 
     if ($class eq 'upload_pdf' or
         $class eq 'image' or
+        $class eq 'upload_binary' or
         $class eq 'special_image') {
         $logger->("Inserting data for attachment $file and generating thumbnails\n");
         my $attachment =  $self->attachments->update_or_create($details);
+        return $attachment if $class eq $attachment;
         try {
             $attachment->generate_thumbnails;
         } catch {
@@ -1955,7 +1995,9 @@ sub index_file {
         };
         return $attachment;
     }
-
+    else {
+        delete $details->{mime_type};
+    }
     # handle specials and texts
 
     # ready to store into titles?
@@ -1978,6 +2020,7 @@ sub index_file {
 
     delete $details->{coverwidth};
     $insertion{cover} = cover_filename_is_valid($insertion{cover});
+    $insertion{blob_container} = delete $details->{blob} ? 1 : 0;
 
     # this is needed because we insert it from title, and DBIC can't
     # infer the site_id from there (even if it should, but hey).
@@ -2700,7 +2743,7 @@ sub update_from_params_restricted {
                         ssl_chained_cert  => 'value_or_empty',
                         ssl_cert          => 'value_or_empty',
                         ssl_ca_cert       => 'value_or_empty',
-
+                        binary_upload_max_size_in_mega => 'value',
                        );
     my $abort;
     foreach my $value (keys %fixed_values) {
@@ -2805,7 +2848,8 @@ sub update_from_params {
     my %ranges = (
                   division => [9, 15],
                   fontsize => [10, 12],
-                  bb_page_limit => [10, 2000], # 2000 pages should be enough...
+                  bb_page_limit => [10, 8000],
+                  binary_upload_max_size_in_mega => [1, 2000], # 2 giga seems fair
                  );
 
     foreach my $integer (keys %ranges) {
@@ -2975,6 +3019,7 @@ sub update_from_params {
                            turn_links_to_images_into_images
                            enable_video_widgets
                            restrict_mirror
+                           home_page
                            show_preview_when_deferred
                            lists_are_always_flat
                            titles_category_default_sorting
@@ -2987,6 +3032,7 @@ sub update_from_params {
                            edit_option_preview_box_height
                            show_type_and_number_of_pages
                            enable_xapian_suggestions
+                           allow_binary_uploads
                           /) {
         my $value = delete $params->{$option} || '';
         # clean it up from leading and trailing spaces
@@ -3276,6 +3322,10 @@ sub restrict_mirror {
     return shift->get_option('restrict_mirror') || '';
 }
 
+sub home_page {
+    return shift->get_option('home_page') || '';
+}
+
 sub enable_video_widgets {
     return shift->get_option('enable_video_widgets') || '';
 }
@@ -3464,6 +3514,40 @@ sub mail_from_default {
     }
 }
 
+sub allow_binary_uploads {
+    shift->get_option('allow_binary_uploads') || '';
+}
+
+sub known_file_extensions {
+    my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+    return join(' ', sort keys %$mime);
+}
+
+sub allowed_upload_extensions {
+    my $self = shift;
+    my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+    my @exts = grep { $mime->{$_} } split(/\s+/, $self->allow_binary_uploads);
+    return @exts;
+}
+
+sub allowed_binary_uploads {
+    my ($self, %options) = @_;
+    my $mime = AmuseWikiFarm::Utils::Paths::served_mime_types();
+    my %allowed;
+    foreach my $ext (qw/png jpg pdf/) {
+        $allowed{$mime->{$ext}} = $ext or die "Shouldn't happen";
+    }
+    if (!$options{restricted} and $self->allow_binary_uploads) {
+        foreach my $ext ($self->allowed_upload_extensions) {
+            if (my $mime_type = $mime->{$ext}) {
+                $allowed{$mime_type} ||= $ext;
+            }
+        }
+    }
+    Dlog_debug { "Allowed mime_types: $_"} \%allowed;
+    return \%allowed;
+}
+
 sub popular_titles {
     my ($self, $page) = @_;
     return $self->title_stats->popular_texts($page, $self->pagination_size);
@@ -3537,8 +3621,72 @@ sub serialize_site {
         push @users, \%user_data;
     }
     $data{users} = \@users;
+    # and the nodes
+    $data{nodes} = [ map { $_->serialize } $self->nodes->sorted->all ];
     return \%data;
 }
+
+sub _validate_attached_uris {
+    my ($self, $string) = @_;
+    my @list = ref($string)
+          ? (@$string)
+          : (grep { length($_) } split(/\s+/, $string));
+    my $titles_rs = $self->titles;
+    my $cats_rs = $self->categories;
+    my (@done, @missing);
+  STRING:
+    foreach my $str (@list) {
+        if (my $title = $titles_rs->by_full_uri($str)) {
+            push @done, $str;
+        }
+        elsif (my $cat = $cats_rs->by_full_uri($str)) {
+            push @done, $str;
+        }
+        else {
+            push @missing, $str;
+        }
+    }
+    return +{
+             ok => \@done,
+             fail => \@missing,
+            };
+}
+
+
+
+sub deserialize_nodes {
+    my ($self, $nodes) = @_;
+    my $changed = $self->repo_find_changed_files;
+    return unless @$nodes;
+
+    my @fail;
+    foreach my $node (@$nodes) {
+        if (my $str = $node->{attached_uris}) {
+            my $validate = $self->_validate_attached_uris($str);
+            Dlog_debug { "$str => $_" } $validate;
+            push @fail, @{$validate->{fail} || []};
+        }
+    }
+    if (@fail) {
+        Dlog_error { $self->id . " cannot import nodes because of $_ non existing URIs,"
+                       . " please reimport after a bootstrap\n" } \@fail;
+        print map { $_ . "\n" } @fail;
+        print $self->id . " is missing the above attached URIs, please reimport after a boostrap\n";
+        return;
+    }
+    my $guard = $self->result_source->schema->txn_scope_guard;
+    $self->nodes->delete;
+    foreach my $node (@$nodes) {
+        $self->nodes->update_or_create_from_params({ %$node });
+    }
+    # here's the trick. We need to run it twice so the parents exist
+    foreach my $node (@$nodes) {
+        $self->nodes->update_or_create_from_params({ %$node });
+    }
+    $guard->commit;
+    return scalar(@$nodes);
+}
+
 
 sub populate_monthly_archives {
     my $self = shift;

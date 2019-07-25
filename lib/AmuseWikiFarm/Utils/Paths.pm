@@ -119,7 +119,28 @@ sub served_mime_types {
                 woff => 'application/font-woff',
                 woff2 => 'font/woff2',
                 torrent => 'application/x-bittorrent',
-               };
+                flac => 'audio/flac',
+                mp3 => 'audio/mpeg',
+                ogg  => 'audio/x-vorbis+ogg',
+                avi => 'video/x-msvideo',
+                mkv => 'video/x-matroska',
+                mov => 'video/quicktime',
+                mp4 => 'video/mp4',
+                mpeg => 'video/mpeg',
+                mpg => 'video/mpeg',
+                ogv => 'video/x-theora+ogg',
+                weba => 'audio/webm',
+                webm => 'video/webm',
+                webp => 'image/webp',
+              aac => 'audio/aac',
+              rtf => 'application/rtf',
+              doc => 'application/msword',
+              docx => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+              odt => 'application/vnd.oasis.opendocument.text',
+              tif => 'image/tiff',
+              tiff => 'image/tiff',
+              wav => 'audio/wav',
+             };
 }
 
 1;

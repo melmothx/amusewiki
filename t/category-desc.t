@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
-use Test::More tests => 146;
+use Test::More tests => 154;
 
 use File::Path qw/make_path remove_tree/;
 use File::Spec::Functions qw/catfile catdir/;
@@ -23,16 +23,18 @@ $site->update({
                multilanguage => 'en it hr',
                secure_site => 0,
               });
-my ($revision) = $site->create_new_text({ uri => 'the-text',
-                                          title => 'Hello',
-                                          lang => 'hr',
-                                          textbody => '',
-                                        }, 'text');
 
-$revision->edit("#title blabla\n#author Pippo\n#topics the cat\n#lang en\n\nblabla\n\n Hello world!\n");
-$revision->commit_version;
-my $uri = $revision->publish_text;
-ok $uri, "Found uri $uri";
+foreach my $lang (qw/hr en de/) {
+    my ($revision) = $site->create_new_text({ uri => 'the-text-' . $lang,
+                                              title => 'Hello',
+                                              lang => $lang,
+                                              textbody => '',
+                                            }, 'text');
+    $revision->edit("#title blabla $lang \n#author Pippo\n#topics the cat\n#lang $lang\n\nblabla\n\n Hello world!\n");
+    $revision->commit_version;
+    my $uri = $revision->publish_text;
+    ok $uri, "Found uri $uri";
+}
 
 my $mech = Test::WWW::Mechanize::Catalyst->new(catalyst_app => 'AmuseWikiFarm',
                                                host => "$site_id.amusewiki.org");
@@ -78,14 +80,18 @@ foreach my $uri ([qw/author pippo/],
 
 }
 
-my $title = $site->titles->find({ uri => 'the-text', f_class => 'text' });
-ok ($title, "Title found");
-unlink $title->f_full_path_name or die $!;
+foreach my $lang (qw/hr en de/) {
+    my $title = $site->titles->find({ uri => 'the-text-' . $lang, f_class => 'text' });
+    ok ($title, "Title found");
+    unlink $title->f_full_path_name or die $!;
+}
 
 $site->update_db_from_tree;
 
-$title = $site->titles->find({ uri => 'the-text', f_class => 'text' });
-ok (!$title, "Title was purged");
+foreach my $lang (qw/hr en de/) {
+    my $title = $site->titles->find({ uri => 'the-text-' . $lang, f_class => 'text' });
+    ok (!$title, "Title was purged");
+}
 
 foreach my $uri ([qw/author pippo/],
                  [qw/topic the-cat/]) {
@@ -98,16 +104,17 @@ foreach my $uri ([qw/author pippo/],
 
 # then redo the same thing and check if the descs are still there
 
-($revision) = $site->create_new_text({ uri => 'the-text',
-                                       title => 'Hello',
-                                       lang => 'hr',
-                                       textbody => '',
-                                     }, 'text');
-
-$revision->edit("#title blabla\n#author Pippo\n#topics the cat\n\nblabla\n\n Hello world!\n");
-$revision->commit_version;
-$uri = $revision->publish_text;
-ok $uri, "Found uri $uri";
+foreach my $lang (qw/hr en de/) {
+    my ($revision) = $site->create_new_text({ uri => 'the-text-' . $lang,
+                                              title => 'Hello',
+                                              lang => $lang,
+                                              textbody => '',
+                                            }, 'text');
+    $revision->edit("#title blabla $lang \n#author Pippo\n#topics the cat\n#lang $lang\n\nblabla\n\n Hello world!\n");
+    $revision->commit_version;
+    my $uri = $revision->publish_text;
+    ok $uri, "Found uri $uri";
+}
 
 foreach my $uri ([qw/author pippo/],
                  [qw/topic the-cat/]) {
@@ -121,11 +128,11 @@ foreach my $uri ([qw/author pippo/],
 
 # $site->delete;
 
-$mech->get_ok('/library/the-text');
+$mech->get_ok('/library/the-text-hr');
 $mech->content_contains('/category/author/pippo');
 $mech->content_contains('/category/topic/the-cat');
 
-foreach my $page ('/library/the-text', '/authors', '/topics',
+foreach my $page ('/library/the-text-hr', '/authors', '/topics',
                   '/authors/pippo', '/topics/the-cat') {
     $mech->get_ok($page);
     my $site_url = $site->canonical;
@@ -178,15 +185,15 @@ $mech->content_lacks('Pippo <em>is</em> a nice author', "No description, languag
 $mech->content_like(qr{<li\s+class="active"\s*>\s*
                        <a\s+href=".*?/category/author/pippo">\s*
                        Tutte\s*le\s*lingue}x) or diag $mech->content;
-$mech->content_unlike(qr{<a href=.*?/category/author/pippo/en">\s*English});
-$mech->content_like(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
+$mech->content_like(qr{<a href=.*?/category/author/pippo/en">\s*English});
+$mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
 
 $mech->get_ok('/category/author/pippo/en');
 # we are in italian locale, but we get the description because of /en
 $mech->content_contains('Pippo <em>is</em> a nice author');
 $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo">\s*Tutte le lingue});
 $mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
-$mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo/it">\s*Italiano});
+$mech->content_unlike(qr{<li\s*>\s*<a href=.*?/category/author/pippo/it">\s*Italiano});
 
 $mech->get_ok('/category/author/pippo/en/edit');
 $mech->content_contains('Pippo *is* a nice author'); # edit
@@ -201,7 +208,7 @@ $mech->get_ok('/category/author/pippo?__language=en');
 $mech->content_contains('Pippo <em>is</em> a nice author');
 $mech->content_contains('<meta name="description" content="Pippo is a nice author"');
 $mech->content_unlike(qr{<a href=.*?/category/author/pippo">\s*Tutte le lingue});
-$mech->content_unlike(qr{<a href=.*?/category/author/pippo/en">\s*English});
+$mech->content_like(qr{<a href=.*?/category/author/pippo/en">\s*English});
 $mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
 
 $mech->get_ok('/category/author/pippo/edit');
@@ -221,7 +228,7 @@ $mech->content_lacks('Pippo <em>is</em> a nice author');
 $mech->content_contains('<meta name="description" content="Pippo is a nice author"');
 $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo">\s*All languages});
 $mech->content_like(qr{<li\s*>\s*<a href=.*?/category/author/pippo/en">\s*English});
-$mech->content_like(qr{<li\s*class="active"\s*>\s*<a href=.*?/category/author/pippo/it">\s*Italiano});
+$mech->content_unlike(qr{<a href=.*?/category/author/pippo/it">\s*Italiano});
 $mech->content_contains('No text found!');
 
 $mech->get_ok("/category/author/pippo/en/edit");

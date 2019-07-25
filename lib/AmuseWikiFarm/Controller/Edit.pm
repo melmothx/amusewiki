@@ -12,6 +12,7 @@ use DateTime;
 use Text::Wrapper;
 use AmuseWikiFarm::Log::Contextual;
 use AmuseWikiFarm::Utils::Amuse qw/clean_username clean_html/;
+use AmuseWikiFarm::Utils::Paths ();
 use Path::Tiny ();
 
 =head1 NAME
@@ -66,13 +67,13 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
 
     my $site    = $c->stash->{site};
     my $f_class = $c->stash->{f_class} or die;
-    # if there was a posting, process it
-    Dlog_debug { "In the newtext route $_" } $c->request->body_params;
-    if ($c->request->body_params->{go}) {
 
-        # create a working copy of the params
-        my $params = { %{$c->request->body_params} };
-        Dlog_debug { "Params are $_" } $params;
+
+    # create a working copy of the params
+    my $params = { %{$c->request->body_params} };
+    Dlog_debug { "In the newtext route $_" } $params;
+    # if there was a posting, process it
+    if ($params->{go}) {
         my ($upload) = $c->request->upload('texthtmlfile');
         if ($upload) {
             log_debug { $upload->tempname . ' => '. $upload->size  };
@@ -126,6 +127,7 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
                 $c->stash->{site}->send_mail(newtext => \%mail);
             }
             $c->response->redirect($location);
+            return;
         }
         else {
             $c->stash(processed_params => $params);
@@ -144,6 +146,27 @@ sub newtext :Chained('root') :PathPart('new') :Args(0) {
     }
     else {
         log_debug { "Nothing to do, rendering form" };
+    }
+    if ($site->nodes->count) {
+        my $nodes = $site->nodes->as_list_with_path($c->stash->{current_locale_code});
+        # don't lose the selection
+        if ($params->{node_id}) {
+            my %selected;
+            if (ref($params->{node_id})) {
+                $selected{$_} = 1 for @{$params->{node_id}};
+            }
+            else {
+                $selected{$params->{node_id}} = 1;
+            }
+            Dlog_debug { "Found selected nodes: $_" } \%selected;
+            foreach my $n (@$nodes) {
+                if ($selected{$n->{value}}) {
+                    $n->{checked} = 1;
+                }
+            }
+        }
+        Dlog_debug { "Nodes are $_" } $nodes;
+        $c->stash(node_checkboxes => $nodes);
     }
 }
 
@@ -295,6 +318,7 @@ sub revision_can_be_edited :Chained('get_revision') :PathPart('') :CaptureArgs(0
 
 sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
     my ($self, $c) = @_;
+    my $site = $c->stash->{site};
     my @uris;
     my %out;
     if ($c->stash->{locked_editing}) {
@@ -310,9 +334,23 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
         if (my ($upload) = $c->request->upload('attachment')) {
             my $file =  $upload->tempname;
 
+            my $mime_type = AmuseWikiFarm::Utils::Amuse::mimetype($file);
+
+            log_info { "Attaching $file $mime_type" };
+            my $allowed = $c->stash->{site}->allowed_binary_uploads(restricted => !$c->user_exists);
+            unless ($allowed->{$mime_type}) {
+                Dlog_info { "$mime_type not allowed $_" } $allowed;
+                %out = (success => 0,
+                        insert => 0,
+                        error => { message => $c->loc("Unsupported file type [_1]", $mime_type) });
+                $c->stash(json => \%out);
+                $c->detach($c->view('JSON'));
+                return;
+            }
+
             my ($w, $h) = AmuseWikiFarm::Utils::Amuse::image_dimensions($file);
             if ($w && $h) {
-                if (my $limit = $c->stash->{site}->max_image_dimension) {
+                if (my $limit = $site->max_image_dimension) {
                     if ($w > $limit or $h > $limit) {
                         %out = (
                                 success => 0,
@@ -341,6 +379,9 @@ sub upload :Chained('revision_can_be_edited') :PathPart('upload') :Args(0) {
                 Dlog_debug { "add attachment outcome: $_" } $outcome;
                 if ($outcome->{attachment}) {
                     push @uris, $outcome->{attachment};
+                }
+                elsif ($outcome->{error} and ref($outcome->{error}) eq 'ARRAY') {
+                    $out{error}{message} = $c->loc(@{$outcome->{error}});
                 }
             }
         }
@@ -399,10 +440,19 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
     my ($self, $c) = @_;
     my $params = $c->request->body_params;
     my $revision = $c->stash->{revision};
+    my $site = $c->stash->{site};
     $c->stash(
-              load_highlight => $c->stash->{site}->use_js_highlight,
+              load_highlight => $site->use_js_highlight,
               load_markitup_css => 1,
              );
+
+    {
+        my @exts = (qw/png jpg pdf/);
+        if ($c->user_exists && $site->allow_binary_uploads) {
+            push @exts, $site->allowed_upload_extensions;
+        }
+        $c->stash(allowed_upload_extensions => join(', ', map { uc($_) } @exts));
+    }
 
     # layout settings
     my %layout_settings = (edit_option_preview_box_height => 0,
@@ -432,15 +482,24 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
     if ($params->{preview} || $params->{commit} || $params->{upload}) {
 
         # legacy handling of uploads
+      UPLOAD:
         foreach my $upload ($c->request->upload('attachment')) {
 
-            log_debug { $upload->tempname . ' => '. $upload->size  };
+            log_debug { $upload->tempname . ' => '. $upload->size . " User exists" . $c->user_exists };
             if (-f $upload->tempname) {
                 log_debug { $upload->tempname . ' exists' };
             }
             else {
                 log_error { $upload->tempname . ' does not exist' };
                 die "Shouldn't happen, " . $upload->tempname . ' does not exist';
+            }
+
+            my $mime_type = AmuseWikiFarm::Utils::Amuse::mimetype($upload->tempname);
+            my $allowed = $c->stash->{site}->allowed_binary_uploads(restricted => !$c->user_exists);
+            unless ($allowed->{$mime_type}) {
+                $c->flash(error_mgs => $c->loc("Unsupported file type [_1]", $mime_type));
+                Dlog_info { "Refusing to upload $mime_type: $_" } $allowed;
+                next UPLOAD;
             }
             my $outcome;
             if ($params->{add_attachment_to_body}) {

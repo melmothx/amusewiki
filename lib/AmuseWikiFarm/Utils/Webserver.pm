@@ -596,6 +596,7 @@ sub _insert_server_stanza {
         $out .= "    access_log $logpath $logformat;\n";
     }
     $out .= "    error_log " . File::Spec->catfile($self->nginx_log_dir, $canonical . '.err.log') . ";\n";
+    $out .= '    client_max_body_size ' . $site->binary_upload_max_size_in_mega . "m;\n";
 
     # the common config
     $out .= "    include ${amwbase}_include;\n";

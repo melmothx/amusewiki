@@ -57,11 +57,12 @@ my @stored;
 
 foreach my $file (@$files) {
     my $full_file = File::Spec->catfile($rev->working_dir, $file);
-    ok (-f $full_file, "Found $full_file");
+    ok (-f File::Spec->catfile($rev->working_dir, $file) ||
+        -f  File::Spec->catfile($rev->blob_directory, $file), "Found $file");
     push @stored, $full_file;
 }
 
-is scalar(@stored), 3, "Found 3 files";
+is scalar(@stored), 3, "Found 3 files" or die Dumper(\@stored);
 
 ok $site->titles->find({ uri => 'prova' });
 

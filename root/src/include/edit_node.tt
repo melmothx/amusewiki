@@ -1,0 +1,137 @@
+[%# -*- mode:web -*- %]
+[% INCLUDE 'include/markitup.tt' %]
+
+<div class="row">
+  <div class="col-xs-12">
+    <form method="POST" action="[% c.uri_for_action('nodes/update_node', [ node.uri]) %]"
+          class="form-horizontal" id="node-edit-form">
+      <input type="hidden" name="uri" value="[% edit_node.uri | html %]" />
+      <div class="form-group">
+        <div class="col-xs-12">
+          <label for="parent_node_id">
+            [% loc('Parent node') %]:
+          </label>
+          <select name="parent_node_uri" id="parent_node_uri" class="form-control">
+            <option value="0">[% loc('Root node') %]</option>
+            [% FOREACH node IN all_nodes %]
+              <option value="[% node.uri %]"
+                      [% IF node.value == edit_node.parent_node_id %]selected="selected"[% END %]>
+                [% node.title %]
+              </option>
+            [% END %]
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-12">
+          <label for="sorting_pos">
+            [% loc('Sorting:') %]
+          </label>
+          <input type="number" min="0" step="1" id="sorting_pos" name="sorting_pos"
+                 value="[% edit_node.sorting_pos | html %]" />
+        </div>
+      </div>
+      <div class="row">
+        [% FOREACH desc IN edit_node.prepare_form_tokens %]
+          <div class="col-md-6">
+            <fieldset>
+              <legend>[% desc.lang_label | html %]</legend>
+              [% IF desc.title_html %]
+                <div>
+                  <strong>[% desc.title_html %]</strong>
+                </div>
+              [% END %]
+              [% IF desc.body_html %]
+                <div>
+                  [% desc.body_html %]
+                </div>
+              [% END %]
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <label for="[% desc.title.param_name | html %]">
+                    [% loc('Title') %]
+                  </label>
+                </div>
+                <div class="col-xs-12">
+                  <input name="[% desc.title.param_name | html %]"
+                         id="[% desc.title.param_name | html %]"
+                         value="[% desc.title.param_value | html %]"
+                         class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <label for="[% desc.body.param_name | html %]">
+                    [% loc('Body') %]
+                  </label>
+                </div>
+                <div class="col-xs-12">
+                  <textarea name="[% desc.body.param_name | html %]"
+                            data-title-id="[% desc.title.param_name | html %]"
+                            id="[% desc.body.param_name | html %]"
+                            class="form-control text-muse-body node-body-text">[% desc.body.param_value | html %]</textarea>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        [% END %]
+      </div>
+      <div class="form-group">
+        <div class="col-sm-12">
+          <label for="attached_uris">
+            [% loc('List of URLs to attach to this node, one per line.') %]
+            [% loc('They can be texts, regular, authors or topics.') %]
+          </label>
+        </div>
+        <div class="col-sm-12">
+          <textarea name="attached_uris"
+                    id="attached_uris"
+                    rows="10"
+                    class="form-control">[% edit_node.serialize.attached_uris | html %]</textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <div class="center">
+              <button type="submit" class="btn btn-primary"
+                      name="update"
+                      value="update">
+                [% loc('Update') %]
+              </button>
+              <button type="submit"
+                      class="btn btn-danger delete-node"
+                      name="delete"
+                      value="delete">
+                [% loc('Delete permanently') %]
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+ function node_require_title() {
+     $('.node-body-text').each(function() {
+         if ($(this).val()) {
+             $('#' + $(this).data('title-id')).prop('required', true);
+         }
+         else {
+             $('#' + $(this).data('title-id')).prop('required', false);
+         }
+     });
+ }
+ $(document).ready(function() {
+     node_require_title();
+     $('.node-body-text').on('change', function() {
+         node_require_title();
+     });
+     $('.delete-node').on('click', function(e) {
+         if (!amw_confirm()) {
+             e.preventDefault();
+         }
+     });
+});
+</script>

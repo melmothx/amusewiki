@@ -229,9 +229,15 @@ sub authors_only {
 
 sub by_full_uri {
     my ($self, $url) = @_;
-    my ($prefix, $type, $uri) = grep { length($_) } split(/\//, $url);
-    if ($type && $uri) {
-        my $me = $self->current_source_alias;
+    my @elements = grep { length($_) } split(/\//, $url);
+    return if @elements < 2;
+    my $uri = $elements[-1];
+    my $type = $elements[-2];
+    my %types = (
+                 author => 'author',
+                 topic => 'topic',
+                );
+    if ($type && $uri && $types{$type}) {
         return $self->by_type($type)->by_uri($uri)->single;
     }
     else {

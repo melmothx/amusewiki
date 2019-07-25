@@ -21,6 +21,7 @@ $(document).ready(function() {
 </script>
 
 [%- BLOCK show_text_type %]
+[%- UNLESS text.blob_container %]
 <span class="amw-show-text-type"
       data-poload="[% text.full_toc_uri %]"
       data-title="[% loc('Table of Contents') %]">
@@ -35,11 +36,14 @@ $(document).ready(function() {
   </i>
 </span>
 [%- END -%]
+[%- END -%]
 
 [%- BLOCK show_page_nums %]
+[%- UNLESS text.blob_container %]
 <span class="amw-show-text-type-and-number-of-pages">
   <span class="label label-default">
     [% loc('[_1] pp.', text.pages_estimated) %]
   </span>
 </span>
+[%- END -%]
 [%- END -%]

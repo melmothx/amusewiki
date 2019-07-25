@@ -397,7 +397,11 @@ sub index :Chained('/site') :PathPart('') :Args(0) {
     my $target = $c->uri_for_action('/latest/index');
     my $site = $c->stash->{site};
     my $locale = $c->stash->{current_locale_code} || $site->locale;
-    if ($site->multilanguage and
+    my $home_page = $site->home_page;
+    if ($home_page and $home_page =~ m{^(/[a-z][a-z0-9/-]*)$}) {
+        $target = $c->uri_for($1);
+    }
+    elsif ($site->multilanguage and
         (my $locindex = $site->titles->special_by_uri('index-' . $locale))) {
         $target = $c->uri_for($locindex->full_uri);
     }

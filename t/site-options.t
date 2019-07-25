@@ -76,6 +76,7 @@ my %old = map { $_ => ($site->$_ || '') } qw/magic_answer
                                   ssl_ca_cert
                                   ssl_chained_cert
                                   theme
+                                  binary_upload_max_size_in_mega
                                  /;
 
 my $errors = $site->update_from_params({
