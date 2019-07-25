@@ -245,6 +245,7 @@ use Text::Amuse::Functions qw/muse_to_object
                               muse_format_line
                              /;
 use HTML::Entities qw/encode_entities/;
+use AmuseWikiFarm::Utils::Amuse ();
 
 sub children {
     return shift->nodes;
@@ -351,10 +352,12 @@ sub update_from_params {
 sub prepare_form_tokens {
     my $self = shift;
     my @out;
+    my $lang_labels = AmuseWikiFarm::Utils::Amuse::known_langs();
     foreach my $lang ($self->site->supported_locales) {
         my $desc = $self->node_bodies->find({ lang => $lang });
         push @out, {
                     lang => $lang,
+                    lang_label => $lang_labels->{$lang},
                     title => {
                               param_name => 'title_' . $lang,
                               param_value => $desc ? $desc->title_muse : '',

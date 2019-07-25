@@ -7,7 +7,7 @@ BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
 use AmuseWikiFarm::Schema;
-use Test::More tests => 106;
+use Test::More tests => 111;
 use Data::Dumper::Concise;
 use YAML qw/Dump Load/;
 
@@ -290,6 +290,25 @@ foreach my $checked ([ single => $node_ids[0] ], [ all => \@node_ids ]) {
     }
     is_deeply $round_trip, $check_site, "Serialization work" or diag Dumper([ $round_trip, $check_site ]);
     ok $new_site->nodes->count;
+}
+
+{
+    $mech->get_ok('/login');
+    ok $mech->submit_form(with_fields => {__auth_user => 'root', __auth_pass => 'root' });
+    $mech->get_ok('/node?__language=en');
+    $mech->submit_form(with_fields => {
+                                       uri => 'weird-one',
+                                       parent_node_uri => 0,
+                                      });
+    is $mech->uri->path, '/node/weird-one';
+    $mech->submit_form(with_fields => {
+                                       title_en => q{'"<script><em>Io</em>"'},
+                                       body_en => q{This is the body '"<script><em>Io</em>"'},
+                                      },
+                       button => 'update',
+                      );
+    my ($page_title) = $mech->content =~ m{<title>(.*?)</title>};
+    is $page_title, q{'&quot;Io&quot;' | };
 }
 
 

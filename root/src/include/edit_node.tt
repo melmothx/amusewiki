@@ -35,7 +35,7 @@
         [% FOREACH desc IN edit_node.prepare_form_tokens %]
           <div class="col-md-6">
             <fieldset>
-              <legend>[% desc.lang | html %]</legend>
+              <legend>[% desc.lang_label | html %]</legend>
               [% IF desc.title_html %]
                 <div>
                   <strong>[% desc.title_html %]</strong>

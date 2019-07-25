@@ -15,7 +15,7 @@ Catalyst Controller.
 =cut
 
 use AmuseWikiFarm::Log::Contextual;
-use HTML::Entities qw/encode_entities/;
+use HTML::Entities qw/encode_entities decode_entities/;
 
 sub root :Chained('/site') :PathPart('node') :CaptureArgs(0) {
     my ($self, $c) = @_;
@@ -66,7 +66,7 @@ sub display :Chained('root') :PathPart('') :Args {
                   node_breadcrumbs => [ $target->breadcrumbs($locale) ],
                   node_linked_pages => scalar(@pages) ? \@pages : undef,
                   node_children => scalar(@children) ? \@children : undef,
-                  page_title => $title,
+                  page_title => decode_entities($title), # we need an unescaped one.
                  );
         if ($c->user_exists) {
             $c->stash(edit_node => $target,
