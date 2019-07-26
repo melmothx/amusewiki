@@ -175,6 +175,17 @@ DISTRIBUTIONS
       Scalar::Util 1.21
       Test::More 0.98
       perl 5.006000
+  Bytes-Random-Secure-Tiny-1.008
+    pathname: D/DA/DAVIDO/Bytes-Random-Secure-Tiny-1.008.tar.gz
+    provides:
+      Bytes::Random::Secure::Tiny 1.008
+      Crypt::Random::Seed::Embedded 1.008
+      Math::Random::ISAAC::Embedded 1.008
+      Math::Random::ISAAC::PP::Embedded 1.008
+    requirements:
+      ExtUtils::MakeMaker 6.56
+      Test::More 0.98
+      perl 5.008000
   CAM-PDF-1.60
     pathname: C/CD/CDOLAN/CAM-PDF-1.60.tar.gz
     provides:
@@ -282,6 +293,13 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Storable 0
+  Call-Context-0.03
+    pathname: F/FE/FELIPE/Call-Context-0.03.tar.gz
+    provides:
+      Call::Context 0.03
+      Call::Context::X 0.03
+    requirements:
+      ExtUtils::MakeMaker 0
   Capture-Tiny-0.48
     pathname: D/DA/DAGOLDEN/Capture-Tiny-0.48.tar.gz
     provides:
@@ -834,6 +852,17 @@ DISTRIBUTIONS
       Class::Singleton 1.5
     requirements:
       ExtUtils::MakeMaker 0
+  Class-Tiny-1.006
+    pathname: D/DA/DAGOLDEN/Class-Tiny-1.006.tar.gz
+    provides:
+      Class::Tiny 1.006
+      Class::Tiny::Object 1.006
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.17
+      perl 5.006
+      strict 0
+      warnings 0
   Class-Unload-0.11
     pathname: I/IL/ILMARI/Class-Unload-0.11.tar.gz
     provides:
@@ -1019,6 +1048,121 @@ DISTRIBUTIONS
       Test::More 0.94
       strict 0
       warnings 0
+  Crypt-Perl-0.29
+    pathname: F/FE/FELIPE/Crypt-Perl-0.29.tar.gz
+    provides:
+      Crypt::Perl 0.29
+      Crypt::Perl::ASN1 undef
+      Crypt::Perl::ASN1::BitString undef
+      Crypt::Perl::ASN1::Encodee undef
+      Crypt::Perl::ASN1::Signatures undef
+      Crypt::Perl::BigInt undef
+      Crypt::Perl::ECDSA undef
+      Crypt::Perl::ECDSA::EC::Curve undef
+      Crypt::Perl::ECDSA::EC::CurvesDB undef
+      Crypt::Perl::ECDSA::EC::DB undef
+      Crypt::Perl::ECDSA::EC::FieldElement undef
+      Crypt::Perl::ECDSA::EC::Point undef
+      Crypt::Perl::ECDSA::ECParameters undef
+      Crypt::Perl::ECDSA::EncodedPoint undef
+      Crypt::Perl::ECDSA::Generate undef
+      Crypt::Perl::ECDSA::KeyBase undef
+      Crypt::Perl::ECDSA::Math undef
+      Crypt::Perl::ECDSA::NIST undef
+      Crypt::Perl::ECDSA::Parse undef
+      Crypt::Perl::ECDSA::PrivateKey undef
+      Crypt::Perl::ECDSA::PublicKey undef
+      Crypt::Perl::ECDSA::Utils undef
+      Crypt::Perl::Ed25519 undef
+      Crypt::Perl::Ed25519::KeyBase undef
+      Crypt::Perl::Ed25519::Math undef
+      Crypt::Perl::Ed25519::Parse undef
+      Crypt::Perl::Ed25519::PrivateKey undef
+      Crypt::Perl::Ed25519::PublicKey undef
+      Crypt::Perl::JWK undef
+      Crypt::Perl::KeyBase undef
+      Crypt::Perl::Math undef
+      Crypt::Perl::PK undef
+      Crypt::Perl::PKCS10 undef
+      Crypt::Perl::PKCS10::Attribute undef
+      Crypt::Perl::PKCS10::Attribute::challengePassword undef
+      Crypt::Perl::PKCS10::Attribute::extensionRequest undef
+      Crypt::Perl::PKCS10::Attributes undef
+      Crypt::Perl::PKCS8 undef
+      Crypt::Perl::RNG undef
+      Crypt::Perl::RSA undef
+      Crypt::Perl::RSA::Generate undef
+      Crypt::Perl::RSA::KeyBase undef
+      Crypt::Perl::RSA::PKCS1_v1_5 undef
+      Crypt::Perl::RSA::Parse undef
+      Crypt::Perl::RSA::PrivateKey undef
+      Crypt::Perl::RSA::PublicKey undef
+      Crypt::Perl::RSA::Template undef
+      Crypt::Perl::ToDER undef
+      Crypt::Perl::X undef
+      Crypt::Perl::X509::Extension undef
+      Crypt::Perl::X509::Extension::acmeValidation_v1 undef
+      Crypt::Perl::X509::Extension::authorityInfoAccess undef
+      Crypt::Perl::X509::Extension::authorityKeyIdentifier undef
+      Crypt::Perl::X509::Extension::basicConstraints undef
+      Crypt::Perl::X509::Extension::cRLDistributionPoints undef
+      Crypt::Perl::X509::Extension::certificatePolicies undef
+      Crypt::Perl::X509::Extension::ct_precert_poison undef
+      Crypt::Perl::X509::Extension::ct_precert_scts undef
+      Crypt::Perl::X509::Extension::extKeyUsage undef
+      Crypt::Perl::X509::Extension::freshestCRL undef
+      Crypt::Perl::X509::Extension::inhibitAnyPolicy undef
+      Crypt::Perl::X509::Extension::issuerAltName undef
+      Crypt::Perl::X509::Extension::keyUsage undef
+      Crypt::Perl::X509::Extension::nameConstraints undef
+      Crypt::Perl::X509::Extension::noCheck undef
+      Crypt::Perl::X509::Extension::policyConstraints undef
+      Crypt::Perl::X509::Extension::policyMappings undef
+      Crypt::Perl::X509::Extension::subjectAltName undef
+      Crypt::Perl::X509::Extension::subjectDirectoryAttributes undef
+      Crypt::Perl::X509::Extension::subjectInfoAccess undef
+      Crypt::Perl::X509::Extension::subjectKeyIdentifier undef
+      Crypt::Perl::X509::Extension::tlsFeature undef
+      Crypt::Perl::X509::Extensions undef
+      Crypt::Perl::X509::GeneralName undef
+      Crypt::Perl::X509::GeneralNames undef
+      Crypt::Perl::X509::InfoAccessBase undef
+      Crypt::Perl::X509::Name undef
+      Crypt::Perl::X509::RelativeDistinguishedName undef
+      Crypt::Perl::X509::SCT undef
+      Crypt::Perl::X509v3 undef
+      Crypt::Perl::X::ASN1::Decode undef
+      Crypt::Perl::X::ASN1::Encode undef
+      Crypt::Perl::X::ASN1::Find undef
+      Crypt::Perl::X::ASN1::Prepare undef
+      Crypt::Perl::X::Base undef
+      Crypt::Perl::X::ECDSA::CharacteristicTwoUnsupported undef
+      Crypt::Perl::X::ECDSA::NoCurveForNISTName undef
+      Crypt::Perl::X::ECDSA::NoCurveForName undef
+      Crypt::Perl::X::ECDSA::NoCurveForOID undef
+      Crypt::Perl::X::ECDSA::NoCurveForParameters undef
+      Crypt::Perl::X::Generic undef
+      Crypt::Perl::X::InvalidJWK undef
+      Crypt::Perl::X::TooLongToSign undef
+      Crypt::Perl::X::UnknownHash undef
+      Crypt::Perl::X::UnknownJWKkty undef
+    requirements:
+      Bytes::Random::Secure::Tiny 1.008
+      Class::Accessor::Fast 0.34
+      Convert::ASN1 0.27
+      Crypt::Format 0.06
+      Digest::SHA 0
+      ExtUtils::MakeMaker 0
+      MIME::Base64 3.11
+      Math::BigInt 1.999805
+      Math::ProvablePrime 0.043
+      Math::Utils 1.07
+      Symbol::Get 0.02
+      Try::Tiny 0
+      autodie 0
+      constant 1.23
+      parent 0.225
+      perl 5.008000
   Crypt-RC4-2.02
     pathname: S/SI/SIFUKURT/Crypt-RC4-2.02.tar.gz
     provides:
@@ -3391,6 +3535,36 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.36
       Socket 1.94
       Test::More 0
+  HTTP-Tiny-0.076
+    pathname: D/DA/DAGOLDEN/HTTP-Tiny-0.076.tar.gz
+    provides:
+      HTTP::Tiny 0.076
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      IO::Socket 0
+      MIME::Base64 0
+      Socket 0
+      Time::Local 0
+      bytes 0
+      perl 5.006
+      strict 0
+      warnings 0
+  HTTP-Tiny-UA-0.006
+    pathname: D/DA/DAGOLDEN/HTTP-Tiny-UA-0.006.tar.gz
+    provides:
+      HTTP::Tiny::UA 0.006
+      HTTP::Tiny::UA::Response 0.006
+    requirements:
+      Class::Tiny 1.000
+      ExtUtils::MakeMaker 6.17
+      HTTP::Tiny 0.036
+      perl 5.006
+      strict 0
+      subs 0
+      superclass 0
+      warnings 0
   Hash-Merge-0.300
     pathname: R/RE/REHSACK/Hash-Merge-0.300.tar.gz
     provides:
@@ -3992,6 +4166,26 @@ DISTRIBUTIONS
       Net::Domain 1.05
       Net::SMTP 1.03
       Test::More 0
+  Math-BigInt-1.999816
+    pathname: P/PJ/PJACKLAM/Math-BigInt-1.999816.tar.gz
+    provides:
+      Math::BigFloat 1.999816
+      Math::BigInt 1.999816
+      Math::BigInt::Calc 1.999816
+      Math::BigInt::Lib 1.999816
+    requirements:
+      ExtUtils::MakeMaker 6.58
+      Math::Complex 1.39
+      perl 5.006001
+  Math-ProvablePrime-0.045
+    pathname: F/FE/FELIPE/Math-ProvablePrime-0.045.tar.gz
+    provides:
+      Math::ProvablePrime 0.045
+      Math::ProvablePrime::Rand undef
+    requirements:
+      Bytes::Random::Secure::Tiny 1.008
+      ExtUtils::MakeMaker 0
+      Math::BigInt 1.999806
   Math-Random-ISAAC-1.004
     pathname: J/JA/JAWNSY/Math-Random-ISAAC-1.004.tar.gz
     provides:
@@ -4001,6 +4195,14 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.31
       Test::More 0.62
       Test::NoWarnings 0.084
+  Math-Utils-1.13
+    pathname: J/JG/JGAMBLE/Math-Utils-1.13.tar.gz
+    provides:
+      Math::Utils 1.13
+    requirements:
+      Module::Build 0.4
+      Test::More 0
+      perl v5.10.1
   Memoize-ExpireLRU-0.56
     pathname: N/NE/NEILB/Memoize-ExpireLRU-0.56.tar.gz
     provides:
@@ -4795,6 +4997,55 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Test 0
       perl 5.006
+  Net-ACME2-0.30
+    pathname: F/FE/FELIPE/Net-ACME2-0.30.tar.gz
+    provides:
+      Net::ACME2 0.30
+      Net::ACME2::AccessorBase undef
+      Net::ACME2::AccountKey undef
+      Net::ACME2::Authorization undef
+      Net::ACME2::Challenge undef
+      Net::ACME2::Challenge::dns_01 undef
+      Net::ACME2::Challenge::http_01 undef
+      Net::ACME2::Challenge::http_01::Handler undef
+      Net::ACME2::Challenge::tls_alpn_01 undef
+      Net::ACME2::Error undef
+      Net::ACME2::Error::Subproblem undef
+      Net::ACME2::HTTP undef
+      Net::ACME2::HTTP::Response undef
+      Net::ACME2::HTTP_Tiny undef
+      Net::ACME2::JWTMaker undef
+      Net::ACME2::JWTMaker::ECC undef
+      Net::ACME2::JWTMaker::RSA undef
+      Net::ACME2::LetsEncrypt undef
+      Net::ACME2::Order undef
+      Net::ACME2::X undef
+      Net::ACME2::X::ACME undef
+      Net::ACME2::X::Empty undef
+      Net::ACME2::X::Generic undef
+      Net::ACME2::X::HTTP::Network undef
+      Net::ACME2::X::HTTP::Protocol undef
+      Net::ACME2::X::InvalidCharacters undef
+      Net::ACME2::X::InvalidParameter undef
+      Net::ACME2::X::UnexpectedResponse undef
+      Net::ACME2::X::UnrecognizedKey undef
+      Net_ACME2_Example undef
+    requirements:
+      Call::Context 0.02
+      Crypt::Format 0.06
+      Crypt::Perl 0.18
+      ExtUtils::MakeMaker 0
+      HTTP::Tiny 0.058
+      HTTP::Tiny::UA::Response 0.004
+      IO::Socket::SSL 0
+      JSON 2.9
+      MIME::Base64 3.11
+      Module::Runtime 0
+      X::Tiny 0.12
+      autodie 0
+      constant 1.23
+      parent 0.225
+      perl 5.008009
   Net-DNS-1.19
     pathname: N/NL/NLNETLABS/Net-DNS-1.19.tar.gz
     provides:
@@ -6033,6 +6284,13 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  Symbol-Get-0.10
+    pathname: F/FE/FELIPE/Symbol-Get-0.10.tar.gz
+    provides:
+      Symbol::Get 0.10
+    requirements:
+      Call::Context 0
+      ExtUtils::MakeMaker 0
   Task-Weaken-1.06
     pathname: E/ET/ETHER/Task-Weaken-1.06.tar.gz
     provides:
@@ -6866,6 +7124,16 @@ DISTRIBUTIONS
       Fcntl 0
       URI 1.10
       perl 5.008001
+  X-Tiny-0.19
+    pathname: F/FE/FELIPE/X-Tiny-0.19.tar.gz
+    provides:
+      X::Tiny 0.19
+      X::Tiny::Base undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Module::Runtime 0
+      overload 0
+      perl 5.01
   XML-Atom-0.42
     pathname: M/MI/MIYAGAWA/XML-Atom-0.42.tar.gz
     provides:
@@ -7308,3 +7576,13 @@ DISTRIBUTIONS
       indirect 0
       multidimensional 0
       perl 5.006
+  superclass-0.003
+    pathname: D/DA/DAGOLDEN/superclass-0.003.tar.gz
+    provides:
+      superclass 0.003
+    requirements:
+      ExtUtils::MakeMaker 6.17
+      Module::Load 0.24
+      strict 0
+      version 0.9901
+      warnings 0
