@@ -5,8 +5,7 @@ package AmuseWikiFarm::Utils::LetsEncrypt;
 use Moo;
 use Types::Standard qw/Bool ArrayRef Str Object/;
 use Path::Tiny;
-use Protocol::ACME;
-use Protocol::ACME::Challenge::LocalFile;
+use Net::ACME2::LetsEncrypt;
 use Crypt::OpenSSL::X509;
 use DateTime;
 use Try::Tiny;
@@ -19,7 +18,18 @@ has directory => (is => 'ro', isa => Str, required => 1);
 
 has root => (is => 'ro', isa => Str, required => 1);
 
-has account_key => (is => 'lazy', isa => Str);
+has web_root => (is => 'lazy', isa => Object);
+
+has timeout => (is => 'ro', default => sub { 120 });
+
+sub _build_web_root {
+    my $self = shift;
+    my $web_root = path($self->root);
+    $web_root->mkpath unless -d $web_root;
+    return $web_root;
+}
+
+has account_key => (is => 'lazy', isa => Object);
 
 has names => (is => 'ro', isa => ArrayRef[Str], required => 1);
 
@@ -31,13 +41,21 @@ has working_directory => (is => 'ro', isa => Object,
 sub _build_account_key {
     my $self = shift;
     my $file = path($self->directory, 'account_key.pem');
+    $file->parent->mkpath unless -d $file->parent;
     unless (-f $file) {
         system(openssl => genrsa => -out => "$file", "2048") == 0
           or die "Cannot create $file!";
         $file->chmod(0600);
     }
     # this is not a Path::Tiny because it's a fixed one
-    return "$file";
+    return $file;
+}
+
+has key_id_file => (is => 'lazy', isa => Object);
+
+sub _build_key_id_file {
+    my $self = shift;
+    return path($self->directory, 'key_id');
 }
 
 has now_string => (is => 'ro', default => sub { my $now = DateTime->now;
@@ -179,32 +197,105 @@ CONF
     return $config_body;
 }
 
+has acme_instance => (is => 'lazy', isa => Object);
+
+sub _build_acme_instance {
+    my $self = shift;
+    my $key_id;
+    if ($self->key_id_file->exists) {
+        $key_id = $self->key_id_file->slurp_raw || undef;
+    }
+    my $acme = Net::ACME2::LetsEncrypt->new(
+                                            environment => $self->staging ? 'staging' : 'production',
+                                            key => $self->account_key->slurp_raw,
+                                            key_id => $key_id,
+                                           );
+    if (!$acme->key_id) {
+        $acme->get_terms_of_service;
+        $acme->create_account(termsOfServiceAgreed => 1);
+        log_debug { "Created account" };
+        $self->key_id_file->spew_raw($acme->key_id);
+    }
+    else {
+        log_debug { $acme->key_id . " exists" };
+    }
+    return $acme;
+}
+
+
 sub fetch {
     my ($self, $live) = @_;
     my $ok;
     try {
-        my $acme = Protocol::ACME->new(host => $self->host,
-                                       account_key => $self->account_key,
-                                       debug => 1,
-                                       mailto => $self->mailto);
-        $acme->directory;
-        $acme->register;
-        $acme->accept_tos;
-        foreach my $name (@{ $self->names }) {
-            $acme->authz($name);
-            my $challenge = Protocol::ACME::Challenge::LocalFile
-              ->new({ www_root => $self->root });
-            $acme->handle_challenge($challenge);
-            $acme->check_challenge;
-            $acme->cleanup_challenge($challenge);
+        my $acme = $self->acme_instance;
+        my $identifiers = [ map { +{ type => 'dns', value => $_ } } @{$self->names} ];
+        Dlog_debug { "identifiers: $_" } $identifiers;
+        my $order = $acme->create_new_order(identifiers => $identifiers);
+        # authorizations will return url, while get_authorization will get objects.
+        my @authzs = map { $acme->get_authorization($_) } $order->authorizations;
+        Dlog_debug { "My authorizations: $_" } \@authzs;
+
+        # we need to keep the handlers around, as the file gets
+        # removed on destroy.
+        my @handlers;
+        foreach my $auth (@authzs) {
+            my $domain = $auth->identifier->{value};
+            log_debug { "Authorizing $domain" };
+            # we just want the http-01
+            my ($challenge) = grep { $_->type eq 'http-01' } $auth->challenges;
+            die "No http-01 challenge returned!" unless $challenge;
+            log_debug { $self->web_root };
+            # keep it in scope
+            my $handler = $challenge->create_handler($acme, $self->web_root);
+            $acme->accept_challenge($challenge);
+            push @handlers, $handler;
         }
-        my $der = $acme->sign($self->csr->stringify);
-        my $chain = $acme->chain;
-        my $der_pem = $self->_convert_to_pem($der);
-        my $chain_pem = $self->_convert_to_pem($chain);
-        $self->fullchain->spew($der_pem, $chain_pem);
-        $self->cert->spew($der_pem);
-        $self->chain->spew($chain_pem);
+        my $timeout = $self->timeout;
+
+        my %completed_status = (
+                                valid => 1,
+                                invalid => 1,
+                                revoked => 1,
+                               );
+      POLL:
+        while ($timeout > 0) {
+            foreach my $auth (@authzs) {
+                next if $auth->status eq 'valid';
+                my $status = $acme->poll_authorization($auth);
+                log_debug { $auth->identifier->{value} . " is $status" };
+                last POLL if $status eq 'invalid';
+            }
+            last POLL unless scalar(grep { !$completed_status{$_->status} } @authzs);
+            sleep 1;
+            $timeout--;
+        }
+
+        if (grep { ($_->status // '') ne 'valid' } @authzs) {
+            Dlog_error { "Invalid: $_" } \@authzs;
+            die "Invalid authorization";
+        }
+        $acme->finalize_order($order, $self->csr->slurp_raw);
+        while (($order->status ne 'valid') and $timeout > 0) {
+            $acme->poll_order($order);
+            sleep 1;
+            $timeout--;
+        }
+        die Dumper($order) unless $order->status eq 'valid';
+
+        # write the file, that's it.
+        my $full_chain = $acme->get_certificate_chain($order);
+        $self->fullchain->spew($full_chain);
+        my @certs;
+        while ($full_chain =~ m/(-----BEGIN.*?\n.*?-----END.*?\n)/sg) {
+            push @certs, $1;
+        }
+        die "Chain incomplete $full_chain" unless @certs > 1;
+        $self->cert->spew($certs[0]);
+        $self->chain->spew($certs[1]);
+        log_info { "Certificate written to " . $self->fullchain };
+        foreach my $c ($self->cert, $self->chain) {
+            log_debug { system(openssl => x509 => -in => "$c" => -text => '-noout') };
+        }
         $ok = 1;
     } catch {
         my $error = $_;
@@ -328,6 +419,7 @@ sub self_check {
         $check_file->spew('OK');
         my $response = HTTP::Tiny->new
           ->get('http://' . $name . '/.well-known/acme-challenge/' . $filename);
+        Dlog_debug { "Self check: $_" } $response;
         unless ($response->{success}) {
             Dlog_warn { "$name couldn't be self-verified: $_" } $response;
             $failed++;
