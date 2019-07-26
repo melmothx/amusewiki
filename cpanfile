@@ -80,7 +80,7 @@ requires 'Crypt::XkcdPassword';
 requires 'Bytes::Random::Secure';
 # let's encrypt
 requires 'Crypt::OpenSSL::X509';
-requires 'Protocol::ACME' => '0.12';
+requires 'Net::ACME2' => '0.30';
 
 requires 'HTTP::BrowserDetect';
 requires 'HTML::Parser';
