@@ -323,7 +323,9 @@ sub texts {
             push @out, $obj;
         } catch {
             my $err = $_;
-            Dlog_error { "Cannot construct object from $_ " } $match->{pagedata};
+            # this happens when the Xapian DB is waiting to be
+            # rebuilt, so no point in spamming errors.
+            Dlog_info { "Cannot construct object from $_ " } $match->{pagedata};
         };
     }
     return \@out;
