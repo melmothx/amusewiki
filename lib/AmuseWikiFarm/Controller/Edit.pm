@@ -460,7 +460,7 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
                            edit_option_show_cheatsheet => 0,
                            edit_option_page_left_bs_columns => 0);
     {
-        my $setter = $c->user_exists ? $c->user->get_object->discard_changes : $c->stash->{site};
+        my $setter = $c->user_exists ? $c->user->get_object->discard_changes : $site;
         foreach my $k (keys %layout_settings) {
             $layout_settings{$k} = $setter->$k;
         }
@@ -495,7 +495,7 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
             }
 
             my $mime_type = AmuseWikiFarm::Utils::Amuse::mimetype($upload->tempname);
-            my $allowed = $c->stash->{site}->allowed_binary_uploads(restricted => !$c->user_exists);
+            my $allowed = $site->allowed_binary_uploads(restricted => !$c->user_exists);
             unless ($allowed->{$mime_type}) {
                 $c->flash(error_mgs => $c->loc("Unsupported file type [_1]", $mime_type));
                 Dlog_info { "Refusing to upload $mime_type: $_" } $allowed;
@@ -554,8 +554,8 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
                 # assert to have a fresh copy
                 $revision->discard_changes;
 
-                my $mail_to =   $c->stash->{site}->mail_notify;
-                my $mail_from = $c->stash->{site}->mail_from;
+                my $mail_to =   $site->mail_notify;
+                my $mail_from = $site->mail_from;
                 if ($mail_to && $mail_from) {
                     my $uri = $revision->title->uri;
                     my @url_args = ($revision->f_class, $uri, $revision->id);
@@ -585,7 +585,7 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
                                 messages => $revision->message,
                                );
                     log_info { "Sending mail from $mail_from to $mail_to" };
-                    $c->stash->{site}->send_mail(commit => \%mail);
+                    $site->send_mail(commit => \%mail);
                 }
                 $c->flash(status_msg => $c->loc("Changes saved, thanks! They are now waiting to be published"));
                 if ($c->user_exists || $c->stash->{site}->human_can_publish ) {
