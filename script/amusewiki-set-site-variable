@@ -1,0 +1,72 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use utf8;
+use lib 'lib';
+binmode STDOUT, ':encoding(UTF-8)';
+binmode STDERR, ':encoding(UTF-8)';
+use Getopt::Long;
+use Pod::Usage;
+use AmuseWikiFarm::Schema;
+
+my ($all, $help, %set);
+
+GetOptions('set=s%' => \%set,
+           'help' => \$help,
+           'all' => \$all);
+
+if ($help) {
+    pod2usage;
+    exit 2;
+}
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+amusewiki-set-site-variable
+
+=head1 SYNOPSIS
+
+Usage: amusewiki-set-site-variable [ --all | site_id site_id_2 ... ] --set name=value [ --set ... ]
+
+Set a site option from the command line. The site IDs should be passed
+as arguments, or you can use C<--all> to affect all of them.
+
+The option name/value pairs should be passed to C<--set> arguments as
+shown in the example.
+
+You can pass as many pairs you want.
+
+With the C<--help> option, show this help and exit.
+
+=cut
+
+my @sites = @ARGV;
+
+my $schema = AmuseWikiFarm::Schema->connect('amuse');
+
+if ($all && @sites) {
+    die "Either use --all or pass the site IDs as arguments";
+}
+elsif (!@sites && !$all) {
+    die "No site ID provided, please use --all";
+}
+elsif ($all) {
+    @sites = map { $_->id } $schema->resultset('Site')->all;
+}
+my $guard = $schema->txn_scope_guard;
+foreach my $id (@sites) {
+    if (my $site = $schema->resultset('Site')->find($id)) {
+        foreach my $k (keys %set) {
+            print "Updating $id $k => $set{$k}\n";
+            $site->update_option_value($k => $set{$k});
+        }
+    }
+    else {
+        die "$id doesn't exist";
+    }
+}
+$guard->commit;

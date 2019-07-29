@@ -3347,6 +3347,26 @@ sub pagination_needed {
 }
 
 
+sub update_option_value {
+    my ($self, $option, $value) = @_;
+    die "Missing option name" unless $option;
+    my %reserved = (id => 1,
+                    mode => 1,
+                    last_updated => 1);
+    die "$option is reserved, please use the admin panel" if $reserved{$option};
+    my %columns = map { $_ => !$reserved{$_} } $self->columns;
+    if ($columns{$option}) {
+        $self->update({ $option => $value });
+    }
+    else {
+        $self->site_options->update_or_create({
+                                               option_name => $option,
+                                               option_value => $value,
+                                              });
+    }
+    return $self->get_from_storage;
+}
+
 sub get_option {
     my ($self, $lookup) = @_;
     if ($lookup) {
