@@ -44,6 +44,10 @@ function update_status(url, reloaded, offset) {
                 $('a.sources').attr('href', data.sources);
                 $('a.sources').show();
             }
+            if ($('#job-logs').data('express-publishing')) {
+                console.log("Redirecting to " + data.produced_uri);
+                window.location = data.produced_uri;
+            }
         }
     });
 };
