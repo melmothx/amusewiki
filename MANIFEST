@@ -1166,6 +1166,7 @@ script/amusewiki-letsencrypt
 script/amusewiki-populate-monthly
 script/amusewiki-populate-webfonts
 script/amusewiki-reset-password
+script/amusewiki-set-site-variable
 script/amusewiki-upgrade-db
 script/amusewiki-upgrade-lexicon
 script/amusewikifarm_create.pl
@@ -1281,6 +1282,7 @@ t/editing.t
 t/embed-pdf.t
 t/entities.json
 t/entities.t
+t/express-publishing.t
 t/fail-on-cropmarks-109.t
 t/files/amw-version-22.pdf
 t/files/big.jpeg
