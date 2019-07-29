@@ -3020,6 +3020,7 @@ sub update_from_params {
                            enable_video_widgets
                            restrict_mirror
                            home_page
+                           express_publishing
                            show_preview_when_deferred
                            lists_are_always_flat
                            titles_category_default_sorting
@@ -3354,6 +3355,10 @@ sub get_option {
     else {
         return undef;
     }
+}
+
+sub express_publishing {
+    return shift->get_option('express_publishing');
 }
 
 sub html_special_page_bottom {

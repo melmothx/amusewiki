@@ -499,6 +499,20 @@ kpsewhich mylogo.pdf
         </label>
       </div>
     </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-6 col-sm-6">
+        <label>
+          <input type="checkbox"
+                 [% IF esite.express_publishing %]checked="checked"[% END %]
+                 value="ON"
+                 name="express_publishing" />
+          [% loc('Speed up the publishing process for logged-in skipping the revision page.') %]
+        </label>
+      </div>
+    </div>
+
+
     <div class="form-group">
       <div class="col-sm-offset-6 col-sm-6">
         <label>
