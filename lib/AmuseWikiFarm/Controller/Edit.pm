@@ -588,8 +588,17 @@ sub edit :Chained('edit_revision') :PathPart('') :Args(0) {
                     $site->send_mail(commit => \%mail);
                 }
                 $c->flash(status_msg => $c->loc("Changes saved, thanks! They are now waiting to be published"));
-                if ($c->user_exists || $c->stash->{site}->human_can_publish ) {
-                    $c->response->redirect($c->uri_for_action('/publish/pending'));
+                if ($c->user_exists || $site->human_can_publish ) {
+                    if ($site->express_publishing && $revision->only_one_pending) {
+                        log_debug { "Express publishing in effect" };
+                        my $job = $site->jobs->publish_add($revision,
+                                                           $c->user_exists ? $c->user->get("username") : '');
+                        $c->res->redirect($c->uri_for_action('/tasks/display',
+                                                             [$job->id]));
+                    }
+                    else {
+                        $c->response->redirect($c->uri_for_action('/publish/pending'));
+                    }
                 }
                 else {
                     $c->response->redirect($c->uri_for('/'));

@@ -3378,7 +3378,7 @@ sub get_option {
 }
 
 sub express_publishing {
-    return shift->get_option('express_publishing');
+    return shift->get_option('express_publishing') || '';
 }
 
 sub html_special_page_bottom {

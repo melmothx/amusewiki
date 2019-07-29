@@ -1055,6 +1055,17 @@ sub remove_attachment {
     return \%out;
 }
 
+sub only_one_pending {
+    my $self = shift;
+    if ($self->pending and
+        $self->can_be_merged and
+        $self->title->revisions->not_published->count == 1) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
 
 __PACKAGE__->meta->make_immutable;
 1;
