@@ -4054,6 +4054,7 @@ sub send_mail {
     else {
         $tokens->{lh} = $self->localizer;
     }
+    $tokens->{list_id} = $self->id;
     $self->mailer->send_mail($mkit => $tokens);
 }
 

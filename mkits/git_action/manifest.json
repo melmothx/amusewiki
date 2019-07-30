@@ -3,6 +3,7 @@
     "header": [
         { "From": "[% from %]" },
         { "To": "[% to %]" },
+        { "List-Id": "[% list_id %]" },
         { "Subject": "[% subject %]" }
     ],
     "type": "text/plain",

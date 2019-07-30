@@ -3,6 +3,7 @@
     "header": [
         { "From": "[% from %]" },
         { "To": "[% to %]" },
+        { "List-Id": "[% list_id %]" },
         { "Subject": "[% lh.loc('Password reset for [_1]', host) %]" }
     ],
     "type": "text/plain",

@@ -9,7 +9,7 @@ BEGIN {
     $ENV{DBIX_CONFIG_DIR} = "t";
 }
 
-use Test::More tests => 45;
+use Test::More tests => 57;
 use Data::Dumper::Concise;
 use File::Spec::Functions qw/catfile catdir/;
 use lib catdir(qw/t lib/);
@@ -125,7 +125,9 @@ while (@mails) {
     my $mail = shift @mails;
     if (@expected) {
         my $exp = shift @expected;
-        like $mail->{email}->as_string, $exp;
+        my $body = $mail->{email}->as_string;
+        like $body, $exp;
+        like $body, qr{List-Id: 0mail1}, "Found list-id identifier";
     }
     else {
         diag $mail->{email}->as_string;
