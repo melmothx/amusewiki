@@ -127,7 +127,7 @@ while (@mails) {
         my $exp = shift @expected;
         my $body = $mail->{email}->as_string;
         like $body, $exp;
-        like $body, qr{List-Id: 0mail1}, "Found list-id identifier";
+        like $body, qr{List-Id: 0mail1\.0mail1\.amusewiki\.org}, "Found list-id identifier";
     }
     else {
         diag $mail->{email}->as_string;
