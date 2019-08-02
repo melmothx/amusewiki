@@ -6654,10 +6654,10 @@ DISTRIBUTIONS
       File::Temp 0
       Test::More 0
       perl 5.010001
-  Text-Amuse-Compile-1.27
-    pathname: M/ME/MELMOTHX/Text-Amuse-Compile-1.27.tar.gz
+  Text-Amuse-Compile-1.31
+    pathname: M/ME/MELMOTHX/Text-Amuse-Compile-1.31.tar.gz
     provides:
-      Text::Amuse::Compile 1.27
+      Text::Amuse::Compile 1.31
       Text::Amuse::Compile::Devel undef
       Text::Amuse::Compile::File undef
       Text::Amuse::Compile::FileName undef
