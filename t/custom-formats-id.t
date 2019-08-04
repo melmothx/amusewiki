@@ -3,7 +3,7 @@
 use utf8;
 use strict;
 use warnings;
-use Test::More tests => 10;
+use Test::More tests => 12;
 BEGIN { $ENV{DBIX_CONFIG_DIR} = "t" };
 use File::Spec::Functions qw/catdir catfile/;
 use AmuseWikiFarm::Archive::BookBuilder;
@@ -75,4 +75,25 @@ run_all_jobs($schema);
     $mech->content_contains('\\setlength{\\emergencystretch}{50pt}');
     $mech->content_contains('\\setlength{\\emergencystretch}{50pt}');
     $mech->content_contains('areaset[current]{40mm}{40mm}');
+}
+
+$target_dir->child($cf_code . '-latex.tt')->spew_utf8("% this is my template\n",
+                                                      ${ Text::Amuse::Compile::Templates->new->latex });
+
+sleep 1;
+
+$muse->spew_utf8(<<'MUSE');
+#title Test
+#lang en
+
+Blablabla *x*
+MUSE
+
+$site->update_db_from_tree;
+run_all_jobs($schema);
+
+{
+    my $base = '';
+    $mech->get_ok('/library/test' . $base . '.' . $cf_code . '.tex');
+    like $mech->content, qr{\A% this is my template};
 }
