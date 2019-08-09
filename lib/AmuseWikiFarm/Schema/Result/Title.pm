@@ -879,24 +879,17 @@ sub new_revision {
                                             });
     my $uri = $revision->title->uri;
     die "Couldn't find uri for belonging title!" unless $uri;
-    my $target_dir = File::Spec->catdir($self->site->staging_dir, $revision->id);
+    my $rev_id = $revision->id;
+    die "Should not happen" unless $rev_id;
+
+    my $target_dir = Path::Tiny::path($self->site->staging_dir, $rev_id);
     if (-d $target_dir) {
-        # mm, some db backend is reusing the ids, so clean it up
-        opendir(my $dh, $target_dir) or die "Can't open dir $target_dir $!";
-        my @cleanup = grep {
-            -f File::Spec->catfile($target_dir, $_)
-        } readdir($dh);
-        closedir $dh;
-        foreach my $clean (@cleanup) {
-            log_info { "Removing $clean in $target_dir\n" };
-            unlink File::Spec->catfile($target_dir, $clean) or log_warn { "Cannot remove $target_dir/$clean $!" };
-        }
+        log_info { "Removing $target_dir, found existing when creating the revision\n" };
+        $target_dir->remove_tree;
     }
-    else {
-        mkdir $target_dir or  die "Couldn't create $target_dir $!";
-    }
-    my $fullpath = File::Spec->catfile($target_dir, $uri . '.muse');
-    $revision->f_full_path_name($fullpath);
+    $target_dir->mkpath;
+    my $fullpath = $target_dir->child($uri . '.muse');
+    $revision->f_full_path_name("$fullpath");
 
     # copy the file twice. The first is the starting file, the second the
     # actual revision.
